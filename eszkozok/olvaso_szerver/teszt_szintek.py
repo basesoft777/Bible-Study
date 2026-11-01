@@ -42,7 +42,7 @@ PROBA = 'hozzaferes_proba.toml'
 ALSO, KOZEP, FELSO = 'nyilvanos', 'regisztralt', 'kutato'
 
 # a próba-konfigban a `kutato` szinthez kötött blokkok (a saját fordításból jövők)
-HEBER_ZART = ('szo.bdb_magyar', 'szo.bdb_apparatus', 'szo.tbesh')
+HEBER_ZART = ('szo.bdb_magyar', 'szo.bdb_apparatus', 'szo.tbesh', 'szo.ubs_dbh')
 GOROG_ZART = ('szo.magyar_gorog', 'szo.thayer', 'szo.tbesg', 'szo.lsj', 'szo.ubs_dntg')
 
 

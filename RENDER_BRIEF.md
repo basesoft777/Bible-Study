@@ -103,6 +103,8 @@ Az R0 (R0.1–R0.7) lefutott, élő adatba nem írt (K3). A 0.7, 0.8, 0.10–0.1
 A RENDER végén `adatosítva`: TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH
 domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket a SZOTAR tölti.
 
+*Az arany lapon (ISTENTISZT-001; F131, DT272, DT371–j; kapcsoló: `lexikon_general.py` `SZOTARI_GERINC_MOTIVUMOK`) a „2. Szótári háttér” a szótári gerinccel kezdődik (BDB/Thayer jelentéstartomány, magyarul; SEMA 2.40), és a szerepmátrix szűkül: a tW, a TBESH, a teljes UBS (DNTG, DBH) és a Mounce helyén mutató áll a szónézetre, a TBESH-nél egysoros magyar jelentéssel; az előfordulás-tábla „Jelentés (a szó)” és „Funkció (a motívumban)” oszlopa egymás mellett áll, az „UBS-jelentés” oszlop az ÓSZ-soroknál a DBH igehelyszintű jelentését adja. A többi lapon a fenti szerepmátrix változatlan.*
+
 ---
 
 ## 3. Tételek

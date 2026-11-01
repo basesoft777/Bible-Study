@@ -1,0 +1,186 @@
+# F123: a `]`-bővítés hatása a bdb_vers_jelentes utvonal-mezőjére (csak a változó sorok) | készítő: naplok/F123_bdb_szelet_meres.py
+strong	sorszam	nyers	karoli_vers	utvonal_regi	utvonal_uj
+H0145	1	Zech 11:13	Zak 11:13	tagolatlan	-/1
+H0145	2	Micah 2:8	Mik 2:8	tagolatlan	-/2
+H2811	10	, 24	Ezsd 8:24	-/5	-/6
+H2811	11	Neh 10:12	Neh 10:11	-/5	-/6
+H2811	12	11:22	Neh 11:22	-/5	-/6
+H2811	13	12:24	Neh 12:24	-/5	-/6
+H2811	14	Neh 12:21	Neh 12:21	-/5	-/7
+H2811	15	Neh 3:17	Neh 3:17	-/5	-/8
+H2811	9	Ezra 8:19	Ezsd 8:19	-/5	-/6
+H6453	26	Exod 34:25	2Móz 34:25	-/2	-/3
+H6453	27	Lev 23:5	3Móz 23:5	-/2	-/3
+H6453	28	Num 28:16	4Móz 28:16	-/2	-/3
+H6453	29	33:3	4Móz 33:3	-/2	-/3
+H6453	30	Josh 5:11	Józs 5:11	-/2	-/3
+H6453	31	Ezek 45:21	Ez 45:21	-/2	-/3
+H6453	32	Exod 12:43	2Móz 12:43	-/2	-/3
+H6453	33	Num 9:12	4Móz 9:12	-/2	-/3
+H6453	34	, 14	4Móz 9:14	-/2	-/3
+H6453	35	Exod 12:48	2Móz 12:48	-/2	-/3
+H6453	36	Num 9:2	4Móz 9:2	-/2	-/3
+H6453	37	, 4	4Móz 9:4	-/2	-/3
+H6453	38	, 5	4Móz 9:5	-/2	-/3
+H6453	39	, 6	4Móz 9:6	-/2	-/3
+H6453	40	, 10	4Móz 9:10	-/2	-/3
+H6453	41	, 13	4Móz 9:13	-/2	-/3
+H6453	42	, 14	4Móz 9:14	-/2	-/3
+H6453	43	Josh 5:10	Józs 5:10	-/2	-/3
+H6453	44	Deut 16:1	5Móz 16:1	-/2	-/3
+H6453	45	2Kin 23:21	2Kir 23:21	-/2	-/3
+H6453	46	, 23	2Kir 23:23	-/2	-/3
+H6453	47	2Chr 30:1	2Krón 30:1	-/2	-/3
+H6453	48	, 5	2Krón 30:5	-/2	-/3
+H6453	49	35:1	2Krón 35:1	-/2	-/3
+H6453	50	, 16	2Krón 35:16	-/2	-/3
+H6453	51	, 17	2Krón 35:17	-/2	-/3
+H6453	52	, 18	2Krón 35:18	-/2	-/3
+H6453	53	35:19	2Krón 35:19	-/2	-/3
+H6453	54	Ezra 6:19	Ezsd 6:19	-/2	-/3
+H6453	55	Deut 16:1	5Móz 16:1	-/2	-/3
+H6453	56	16:6	5Móz 16:6	-/2	-/3
+H6453	57	Josh 5:10	Józs 5:10	-/2	-/3
+H6453	58	Ezek 45:21	Ez 45:21	-/2	-/3
+H6453	59	Exod 12:6	2Móz 12:6	-/2	-/3
+H6453	60	Lev 23:5	3Móz 23:5	-/2	-/3
+H6453	61	Num 9:5	4Móz 9:5	-/2	-/3
+H6453	62	9:10	4Móz 9:10	-/2	-/3
+H6453	63	, 12	4Móz 9:12	-/2	-/3
+H6563	1	Obadiah 14	Abd 1:14	tagolatlan	-/1
+H6563	2	Nahum 3:1	Náh 3:1	tagolatlan	-/2
+H6904	1	Ecclus 12:5		tagolatlan	-/1
+H6904	2	Ezek 26:9	Ez 26:9	tagolatlan	-/1
+H6904	3	2Kin 15:10	2Kir 15:10	tagolatlan	-/2
+H7200	216	Gen 9:22	1Móz 9:22	Qal/5/b	Qal/6/a
+H7200	217	42:9	1Móz 42:9	Qal/5/b	Qal/6/a
+H7200	218	, 12	1Móz 42:12	Qal/5/b	Qal/6/a
+H7200	219	Lev 13:3	3Móz 13:3	Qal/5/b	Qal/6/a
+H7200	220	, 15	3Móz 13:15	Qal/5/b	Qal/6/a
+H7200	221	Josh 2:1	Józs 2:1	Qal/5/b	Qal/6/a
+H7200	222	Deut 4:19	5Móz 4:19	Qal/5/b	Qal/6/a
+H7200	223	Job 31:26	Jób 31:26	Qal/5/b	Qal/6/a
+H7200	224	1Kin 9:12	1Kir 9:12	Qal/5/b	Qal/6/a
+H7200	225	Lev 14:36	3Móz 14:36	Qal/5/b	Qal/6/a
+H7200	226	Num 24:20	4Móz 24:20	Qal/5/b	Qal/6/a
+H7200	227	Exod 2:25	2Móz 2:25	Qal/5/b	Qal/6/a
+H7200	228	Lev 13:3	3Móz 13:3	Qal/5/b	Qal/6/a
+H7200	229	, 5	3Móz 13:5	Qal/5/b	Qal/6/a
+H7200	230	1Sam 9:16	1Sám 9:16	Qal/5/b	Qal/6/a
+H7200	231	19:15	1Sám 19:15	Qal/5/b	Qal/6/a
+H7200	232	Gen 16:13	1Móz 16:13	Qal/5/b	Qal/6/a
+H7200	233	Gen 9:16	1Móz 9:16	Qal/5/b	Qal/6/b
+H7200	234	11:5	1Móz 11:5	Qal/5/b	Qal/6/b
+H7200	235	Job 37:24	Jób 37:23	Qal/5/b	Qal/6/b
+H7200	236	Psa 138:6	Zsolt 138:6	Qal/5/b	Qal/6/b
+H7200	237	66:18	Zsolt 66:18	Qal/5/b	Qal/6/b
+H7200	238	Isa 53:11	Ézs 53:11	Qal/5/b	Qal/6/b
+H7200	239	Gen 8:13	1Móz 8:13	Qal/5/c	Qal/6/c
+H7200	240	18:2	1Móz 18:2	Qal/5/c	Qal/6/c
+H7200	241	Exod 3:2	2Móz 3:2	Qal/5/c	Qal/6/c
+H7200	242	Lev 13:8	3Móz 13:8	Qal/5/c	Qal/6/c
+H7200	243	Lam 3:50	Sir 3:50	Qal/5/c	Qal/6/c
+H7200	244	Gen 13:14	1Móz 13:14	Qal/5/c	Qal/6/c
+H7200	245	Deut 3:27	5Móz 3:27	Qal/5/c	Qal/6/c
+H7200	246	Ezek 40:4	Ez 40:4	Qal/5/c	Qal/6/c
+H7200	247	44:5	Ez 44:5	Qal/5/c	Qal/6/c
+H7200	248	Judg 7:17	Bír 7:17	Qal/5/c	Qal/6/c
+H7200	249	Gen 37:14	1Móz 37:14	Qal/5/d	Qal/6/d
+H7200	250	1Sam 15:35	1Sám 15:35	Qal/5/d	Qal/6/d
+H7200	251	20:29	1Sám 20:29	Qal/5/d	Qal/6/d
+H7200	252	2Sam 13:5	2Sám 13:5	Qal/5/d	Qal/6/d
+H7200	253	2Kin 8:29	2Kir 8:29	Qal/5/d	Qal/6/d
+H7200	254	2Chr 22:6	2Krón 22:6	Qal/5/d	Qal/6/d
+H7200	255	2Kin 9:16	2Kir 9:16	Qal/5/d	Qal/6/d
+H7200	256	Ezek 20:28	Ez 20:28	Qal/5/d	Qal/6/d
+H7200	257	Job 7:8	Jób 7:8	Qal/5/d	Qal/6/d
+H7200	258	1Sam 6:9	1Sám 6:9	Qal/5/e	Qal/6/e
+H7200	259	, 16	1Sám 6:16	Qal/5/e	Qal/6/e
+H7200	260	17:28	1Sám 17:28	Qal/5/e	Qal/6/e
+H7200	261	Eccl 8:16	Préd 9:1	Qal/5/e	Qal/6/e
+H7200	262	Hab 1:13	Hab 1:13	Qal/5/f	Qal/6/f
+H7200	263	2Kin 9:2	2Kir 9:2	Qal/5/g	Qal/6/g
+H7200	264	Gen 41:33	1Móz 41:33	Qal/5/g	Qal/6/g
+H7200	265	1Sam 16:17	1Sám 16:17	Qal/5/g	Qal/6/g
+H7200	266	2Kin 10:3	2Kir 10:3	Qal/5/g	Qal/6/g
+H7200	267	1Sam 16:1	1Sám 16:1	Qal/5/g	Qal/6/g
+H7200	268	Deut 33:21	5Móz 33:21	Qal/5/g	Qal/6/g
+H7200	269	Gen 22:8	1Móz 22:8	Qal/5/g	Qal/6/g
+H7200	270	22:14	1Móz 22:14	Qal/5/g	Qal/6/g
+H7200	271	Est 2:9	Eszt 2:9	Qal/5/g	Qal/6/g
+H7200	272	Gen 39:23	1Móz 39:23	Qal/5/h	Qal/6/h
+H7200	273	Gen 27:27	1Móz 27:27	Qal/5/h	Qal/7/a
+H7200	274	31:50	1Móz 31:50	Qal/5/h	Qal/7/a
+H7200	275	39:14	1Móz 39:14	Qal/5/h	Qal/7/a
+H7200	276	41:41	1Móz 41:41	Qal/5/h	Qal/7/a
+H7200	277	Exod 4:21	2Móz 4:21	Qal/5/h	Qal/7/a
+H7200	278	Deut 1:8	5Móz 1:8	Qal/5/h	Qal/7/a
+H7200	279	2Sam 24:22	2Sám 24:22	Qal/5/h	Qal/7/a
+H7200	280	1Chr 21:23	1Krón 21:23	Qal/5/h	Qal/7/a
+H7200	281	1Sam 24:16	1Sám 24:16	Qal/5/h	Qal/7/b
+H7200	282	Jer 2:31	Jer 2:31	Qal/5/h	Qal/7/c
+H7200	283	2Sam 13:28	2Sám 13:28	Qal/5/h	Qal/7/c
+H7200	284	2Kin 6:32	2Kir 6:32	Qal/5/h	Qal/7/c
+H7200	285	Exod 25:40	2Móz 25:40	Qal/5/h	Qal/7/c
+H7200	286	Psa 45:11	Zsolt 45:11	Qal/5/h	Qal/7/c
+H7200	287	1Kin 12:16	1Kir 12:16	Qal/5/h	Qal/7/c
+H7200	288	2Chr 10:16	2Krón 10:16	Qal/5/h	Qal/7/c
+H7200	289	Exod 10:10	2Móz 10:10	Qal/5/h	Qal/7/c
+H7200	290	2Kin 10:23	2Kir 10:23	Qal/5/h	Qal/7/c
+H7200	291	Eccl 1:16	Préd 1:16	Qal/5/h	Qal/7/d
+H7200	292	3:13	Préd 3:13	Qal/5/h	Qal/7/d
+H7200	293	Mal 3:18	Mal 3:18	Qal/5/h	Qal/7/e
+H7200	294	Eccl 7:14	Préd 7:14	Qal/5/h	Qal/7/f
+H7200	295	1Sam 6:19	1Sám 6:19	Qal/5/h	Qal/8/a
+H7200	296	Gen 34:1	1Móz 34:1	Qal/5/h	Qal/8/a
+H7200	297	Eccl 3:22	Préd 3:22	Qal/5/h	Qal/8/a
+H7200	298	Ezek 21:26	Ez 21:21	Qal/5/h	Qal/8/a
+H7200	299	Job 3:9	Jób 3:9	Qal/5/h	Qal/8/a
+H7200	300	2Chr 7:3	2Krón 7:3	Qal/5/h	Qal/8/a
+H7200	301	Psa 64:9	Zsolt 64:9	Qal/5/h	Qal/8/a
+H7200	302	Gen 29:32	1Móz 29:32	Qal/5/h	Qal/8/a
+H7200	303	1Sam 1:11	1Sám 1:11	Qal/5/h	Qal/8/a
+H7200	304	2Sam 16:12	2Sám 16:12	Qal/5/h	Qal/8/a
+H7200	305	Psa 106:44	Zsolt 106:44	Qal/5/h	Qal/8/a
+H7200	306	Exod 2:11	2Móz 2:11	Qal/5/h	Qal/8/a
+H7200	307	Gen 21:16	1Móz 21:16	Qal/5/h	Qal/8/a
+H7200	308	44:34	1Móz 44:34	Qal/5/h	Qal/8/a
+H7200	309	Num 11:15	4Móz 11:15	Qal/5/h	Qal/8/a
+H7200	310	2Kin 22:20	2Kir 22:20	Qal/5/h	Qal/8/a
+H7200	311	2Chr 34:28	2Krón 34:28	Qal/5/h	Qal/8/a
+H7200	312	Est 8:6	Eszt 8:6	Qal/5/h	Qal/8/a
+H7200	313	Isa 66:24	Ézs 66:24	Qal/5/h	Qal/8/a
+H7200	314	Eccl 11:4	Préd 11:4	Qal/5/h	Qal/8/a
+H7200	315	2Kin 10:16	2Kir 10:16	Qal/5/h	Qal/8/a
+H7200	316	Micah 7:9	Mik 7:9	Qal/5/h	Qal/8/a
+H7200	317	Jer 29:32	Jer 29:32	Qal/5/h	Qal/8/a
+H7200	318	Isa 52:8	Ézs 52:8	Qal/5/h	Qal/8/a
+H7200	319	Num 14:14	4Móz 14:14	Qal/5/h	Qal/8/a
+H7200	320	Job 20:17	Jób 20:17	Qal/5/h	Qal/8/a
+H7200	321	33:28	Jób 33:28	Qal/5/h	Qal/8/a
+H7200	322	Psalm 54:9	Zsolt 54:9	Qal/5/h	Qal/8/a
+H7200	323	Psa 106:5	Zsolt 106:5	Qal/5/h	Qal/8/a
+H7200	324	128:5	Zsolt 128:5	Qal/5/h	Qal/8/a
+H7200	325	Song 3:11	Én 3:11	Qal/5/h	Qal/8/a
+H7200	326	6:11	Én 6:8	Qal/5/h	Qal/8/a
+H7200	327	Eccl 2:1	Préd 2:2	Qal/5/h	Qal/8/a
+H7200	328	Judg 16:27	Bír 16:27	Qal/5/h	Qal/8/a
+H7200	329	Micah 7:10	Mik 7:10	Qal/5/h	Qal/8/a
+H7200	330	Ezek 28:17	Ez 28:17	Qal/5/h	Qal/8/a
+H7200	331	Obadiah 12	Abd 1:12	Qal/5/h	Qal/8/a
+H7200	332	, 13	Abd 1:13	Qal/5/h	Qal/8/a
+H7200	333	Psa 22:18	Zsolt 22:18	Qal/5/h	Qal/8/a
+H7200	334	112:8	Zsolt 112:8	Qal/5/h	Qal/8/a
+H7200	335	118:7	Zsolt 118:7	Qal/5/h	Qal/8/a
+H7200	336	Isa 17:7	Ézs 17:7	Qal/5/h	Qal/8/b
+H7200	337	Exod 5:21	2Móz 5:21	Qal/5/h	Qal/8/b
+H7200	338	1:16	2Móz 1:16	Qal/5/h	Qal/8/b
+H7200	339	1Sam 16:7	1Sám 16:7	Qal/5/h	Qal/8/c
+H7200	340	Psa 64:6	Zsolt 64:6	Qal/5/h	Qal/8/c
+H7200	341	1Chr 17:17	1Krón 17:17	Qal/5/h	Qal/8/c
+H7200	342	2Sam 7:19	2Sám 7:19	Qal/5/h	Qal/8/c
+H7200	343	Ezek 12:12	Ez 12:12	Qal/5/h	Qal/8/c
+H7200	344	Micah 6:9	Mik 6:9	Qal/5/h	Qal/8/c
+H7585	94	Isa 57:9	Ézs 57:9	-/3/b	-/4
+H7585	95	Hosea 13:14	Hós 13:14	-/3/b	-/4
+H7585	96	Isa 26:19	Ézs 26:19	-/3/b	-/4

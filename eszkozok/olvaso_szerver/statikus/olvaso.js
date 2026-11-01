@@ -16,6 +16,12 @@
     }
   });
 
+  // a BDB egybetűs rövidítése (N-F131x): a koppintás fókuszba teszi, így mobilon is megjelenik a feloldás (a CSS :focus felugrója)
+  document.addEventListener('click', function (ev) {
+    var r = ev.target.closest ? ev.target.closest('abbr.rovidites') : null;
+    if (r) { r.focus(); }
+  });
+
   // az olvasó helyi beállításai (csak a böngészőben, localStorage; sütit nem hoznak létre): a kapcsolt szavak jelölése, a színséma,
   // a szövegbeállítások (Aa) és a „Legutóbb” lista
   function tarol(kulcs, ertek) { try { window.localStorage.setItem(kulcs, ertek); } catch (e) { /* tiltott tároló: a beállítás csak az oldalra érvényes */ } }

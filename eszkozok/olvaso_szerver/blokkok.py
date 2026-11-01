@@ -33,6 +33,18 @@ def _pilot_modul(nev):
 
 import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pilot ugyanezt tölti be)
 
+
+def _eszkoz_modul(nev):
+    """Az `eszkozok/` közös modulja (a lexikon-generátorral közös kód, N-F131x), fájlútvonalról, a `sys.path` változtatása nélkül."""
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), nev + '.py')
+    spec = importlib.util.spec_from_file_location('eszkoz_' + nev, ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+bdb_rovidites = _eszkoz_modul('bdb_rovidites')
+
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
     'gepi': ('gépi feldolgozás', 'jelleg-gepi', 'determinisztikus szabály rendezi vagy párosítja a forrásadatot'),
@@ -619,6 +631,44 @@ def _bdb_adat(K):
     return K.memo('bdb', f)
 
 
+def _bdb_cimszo(K):
+    """(„lemma (kiejtés)”, a lemma alapbetűje) a BDB-rövidítések feloldásához: a szócikk Strongjának (alias esetén a tábla-Strongnak)
+    TBESH-lemmája, a jóváhagyott héber kiejtéssel (kiejtés-szabály: ha nincs, csak a lemma); ('', ''), ha nincs TBESH-sor."""
+    def f():
+        d = _bdb_adat(K)
+        r = q.tbesh_lemma(K.con, d['alias']['tabla_strong'] if d['alias'] else K.strong)
+        if not r:
+            return '', ''
+        return bdb_rovidites.cimszo_alak(r[0], bdb_rovidites.heber_kiejtes(*r)), bdb_rovidites.alapbetu(r[0])
+    return K.memo('bdb_cimszo', f)
+
+
+_CIMKE_RE = re.compile(r'(<[^>]*>)')
+
+
+def _rovidites(K, html):
+    """A BDB egybetűs rövidítései (׳י → י׳) <abbr class="rovidites">-ként a kész, escape-elt blokk-HTML szövegrészeiben (N-F131x; a jelölő
+    közös a lexikon-generátorral: `eszkozok/bdb_rovidites.py`). A címkék (és attribútumaik) érintetlenek; a jelölő csak héber betűt és
+    geres jelet fog meg, a cím escape-elve kerül be, így injekció nem lehet. `tabindex`: érintésre, fókuszra is megjelenik a feloldás;
+    hivatkozáson (a vázlat <a>-ján) belül nincs, ott a koppintás a hivatkozásé, a feloldás a `title`."""
+    cimszo, kezdo = _bdb_cimszo(K)
+    d = _bdb_adat(K)
+    alias = d.get('alias') if isinstance(d, dict) else None
+    strong = alias['tabla_strong'] if alias else getattr(K, 'strong', '')
+    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
+    reszek = _CIMKE_RE.split(str(html))
+    html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(r, strong)
+                                        for i, r in enumerate(reszek)))
+    ki, linkben = [], False
+    for i, r in enumerate(_CIMKE_RE.split(html)):
+        if i % 2:
+            linkben = (r.startswith('<a ') or r == '<a>') or (linkben and r != '</a>')
+            ki.append(r)
+        else:
+            ki.append(bdb_rovidites.jelol(r, cimszo, kezdo, cim_esc=lambda s: str(escape(s)), attr='' if linkben else ' tabindex="0"'))
+    return Markup(''.join(ki))
+
+
 def _alias_megj(a):
     return Markup('<p class="megj">A szócikk másik Strong-szám alatt áll (alias, gépi): %s, BDB-azonosító %s, szöveghasonlóság %s.</p>') % (a['tabla_strong'], a['bdb_id'], a['hasonlosag'])
 
@@ -946,7 +996,7 @@ def _r_bdb_apparatus(d, K):
         ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (
             Markup('').join(Markup('<span class="jel-cimke" title="BDB irodalmi hivatkozás (szerző^mű)">%s</span>') % x for x in a.get('irodalom') or []),
             Markup('').join(Markup('<span class="jel-cimke krit" title="a BDB jele">%s</span>') % x for x in a.get('krit') or [])))
-    return ki
+    return _rovidites(K, ki)
 
 
 def _f_lxx_tobblet(K):
@@ -964,7 +1014,7 @@ def _f_bdb_angol(K):
 
 
 def _r_bdb_angol(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _szoveg(d['en'])
+    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['en']))
 
 
 def _f_bdb_magyar(K):
@@ -973,7 +1023,7 @@ def _f_bdb_magyar(K):
 
 
 def _r_bdb_magyar(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _szoveg(d['hu'])
+    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['hu']))
 
 
 def _f_lxx_bridge(K):
@@ -1091,7 +1141,19 @@ def _f_magyar_gorog(K):
 
 
 def _r_magyar_gorog(d, K):
-    return Markup('').join(Markup('<h4>%s, %s. jelentés</h4>') % (sz, jsz or '') + _szoveg(fh) for sz, jsz, fh in d)
+    cimke = {'glosszak_hu': ' · glossza', 'definicio_hu': ' · definíció'}
+    return Markup('').join(Markup('<h4>%s, %s. jelentés%s</h4>') % (sz, jsz or '', cimke.get(mezo, '')) + _szoveg(fh) for sz, jsz, fh, mezo in d)
+
+
+def _f_ubs_dbh(K):
+    if not K.strong or K.strong[0] != 'H':
+        return None
+    return q.ubs_dbh_szo(K.con, K.strong) or None
+
+
+def _r_ubs_dbh(d, K):
+    return _tabla(['Azonosító', 'Domén', 'Glossza (magyar)', 'Definíció (magyar)', 'Glossza (angol)', 'Definíció (angol)'],
+                  [[lex, dom or '', gh or '(fordításra vár)', dh or '(fordításra vár)', ge or '', de or ''] for lex, dom, de, ge, dh, gh in d])
 
 
 def _f_usz(K):
@@ -1194,6 +1256,8 @@ REGISZTER = [
     B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
     B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
+    B('szo.ubs_dbh', 'szo_h', 'UBS DBH jelentések (a teljes szócikk, magyar fordítással)', ('forras', 'modell'), ('ubs_dbh_jelentesek', 'forditasok'), _f_ubs_dbh, _r_ubs_dbh,
+      'CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet (#121)'),
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
     B('szo.oshl', 'szo_h', 'OSHL: TWOT- és BDB-azonosító, BDB-helyek', 'forras', ('oshl_lexikalis_index', 'oshl_bdb_igehelyek'), _f_oshl, _r_oshl),

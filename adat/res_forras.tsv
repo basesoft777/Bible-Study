@@ -27,15 +27,15 @@ TEREMT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Te
 TEREMT-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 TEREMT-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
-ALVIL-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
-ALVIL-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
-ALVIL-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
-ALVIL-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md
-ALVIL-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
-ALVIL-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
-ALVIL-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-ALVIL-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-ALVIL-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
+ALVIL-001	kivonat	## Kivonat *(kézi)*	tanulmany	motivumok/ALVIL-001.md
+ALVIL-001	2b	### 2/b. Kiegészítő szótári adatok *(generált)*	adat	
+ALVIL-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	motivumok/ALVIL-001.md
+ALVIL-001	minosites	### Minősítés *(generált)*	adat	
+ALVIL-001	alatamasztas	### Alátámasztás *(generált)*	adat	
+ALVIL-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	motivumok/ALVIL-001.md
+ALVIL-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	tanulmany	motivumok/ALVIL-001.md
+ALVIL-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	Az ALVIL-001-re a nevesített tanítói keresés (7. lépés, B9) nem futott; a jóváhagyott listáról dedikáltan erre a témára szánt, ellenőrizhető forrás nem állt rendelkezésre. A hiány nincs kitöltve.
+ALVIL-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	motivumok/ALVIL-001.md
 MENNY-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
 MENNY-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
 MENNY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md

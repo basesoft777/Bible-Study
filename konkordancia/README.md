@@ -73,7 +73,9 @@ Generált tábla (`naplok/KAROLI_KK4_tabla_veglegesit.py`; kézzel nem szerkeszt
 - `KEZI`: kézi pár; az `igehely_mt` hagyományosan üres.
 - **Új kombináció (F117, DT-F117e):** `KEZI` **kitöltött** `igehely_mt`-vel = a Károli-szám eltér a KJV-től **és** az MT-től is; az `igehely_kjv` a versenkénti szöveg-összevetésből (`naplok/F117_itelet.tsv`), az `igehely_mt` a TAHOT↔Macula-MT levezetésből (`naplok/F117_mt_levezetes.tsv`) jön, `forras=szoveg_osszevetes_f117`. Ilyen sor 174 van (pl. Hós 2, Ézs 3, Jób 17, Én 5:17–6:10). Aki eddig a `KEZI` sorban üres `igehely_mt`-t feltételezett, a kitöltött értéket használja elsőbbséggel (a fogyasztók ellenőrzése: F117 4.6).
 
-A javított sorok verziózott kézi bemenete a `Karoli_versmegfeleltetes_javitas.tsv` (346 sor, soronkénti proveniencia), az alkalmazó modul az `eszkozok/versmegf_javitas.py` (halmaz-őrrel). Ismert korlát: a KJV-oldalt a szöveg-összevetés csak a Strong-címkézett szavakból olvasta (`KJV_Strongs_teljes.tsv`); a versfélen, mondathatáron vagy fejezetváltón múló 28 ítélet a teljes KJV-szövegen újraellenőrizendő (N-F117c).
+- **F146 (DT-F146b):** a Jóel Károli 2:28–3:21 = MT 3:1–4:21 (26 sor) is `KEZI` kitöltött `igehely_mt`-vel, `forras=macula_mt_f146`; itt a Károli-szám **azonos** a KJV-számmal, csak az MT tér el (Károli = KJV ≠ MT). Az `igehely_mt` a TAHOT↔Macula-MT mérésből (`naplok/F146_mt_felmeres.tsv`), KJV-tanúval (`naplok/F146_joel_kjv_tanu.py`). A felmérés további 956 igazolt Károli = KJV ≠ MT vagy Károli ≠ KJV = MT sora (pl. Mal 4, Jób 41, Neh 4/10, 1Krón 6) még üres `igehely_mt`-vel áll: N-F146a.
+
+A javított sorok verziózott kézi bemenete a `Karoli_versmegfeleltetes_javitas.tsv` (372 sor: F117 346, F146 26; soronkénti proveniencia), az alkalmazó modul az `eszkozok/versmegf_javitas.py` (halmaz-őrrel). Ismert korlát: a KJV-oldalt a szöveg-összevetés csak a Strong-címkézett szavakból olvasta (`KJV_Strongs_teljes.tsv`); a versfélen, mondathatáron vagy fejezetváltón múló 28 ítélet a teljes KJV-szövegen újraellenőrizendő (N-F117c).
 
 ## Forrás
 

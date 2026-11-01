@@ -856,5 +856,26 @@ class OshlGyokcsalad(unittest.TestCase):
         self.assertEqual(self.con.execute("SELECT etym_tipus FROM oshl_lexikalis_index WHERE strong='H3915'").fetchone()[0], 'single')
 
 
+class F140Licenc(unittest.TestCase):
+    """F140 (K8, DT-F140b): a `glosszak_heber_hu` tabla licenc-bejegyzese; az epites nem kell hozza (az Integracio
+    osztaly az N-F117a-ig kihagyott), a bejegyzes es a feloldas kozvetlenul vizsgalhato."""
+
+    def test_glosszak_heber_hu_tbesh_tahot_forrasjelolessel(self):
+        self.assertEqual(S.ADAT_LICENC['glosszak_heber_hu'], ['TBESH', 'TAHOT', 'projekt_adat'])
+        _, licencsorok = S.G.tsv_beolvas(os.path.join(ROOT, 'adat', 'licencek.tsv'))
+        tmp = tempfile.mkdtemp()
+        try:
+            ep = S.Epito(ROOT, os.path.join(tmp, 'k8.db'), 'minta')
+            ep.licencek = {r['dataset']: r for r in licencsorok}
+            allapot, kereskedelmi, dataset, cimke = ep.licenc_feloldas(S.ADAT_LICENC['glosszak_heber_hu'])
+            for k in ('TBESH', 'TAHOT', 'projekt_adat'):
+                self.assertIn(k, dataset)
+            self.assertIn('CC BY 4.0', cimke)
+            # a sima projekt_adat nem hordozza a forrasjelolest: a bejegyzes nelkul ez toltodne be
+            self.assertNotIn('CC BY 4.0', ep.licenc_feloldas(['projekt_adat'])[3])
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

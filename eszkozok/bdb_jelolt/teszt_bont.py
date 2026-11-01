@@ -204,14 +204,21 @@ class Javitas(unittest.TestCase):
 
     def test_kezi_sorok(self):
         k = [s for s in self.sorok if s['allapot'] == 'kezi']
-        self.assertEqual(len(k), len(self.fj.KEZI))
+        self.assertEqual(len(k), len(self.fj.KEZI) + len(self.fj.KEZI_HIVATKOZAS))
         for s in k:
             self.assertEqual(s['proveniencia'], 'manual')
-            self.assertIn(s['hiba'], ('jelolo_hianyzik', 'hamis_jelolo'))
+            self.assertIn(s['hiba'], ('jelolo_hianyzik', 'hamis_jelolo', 'hivatkozas_kezi'))
             self.assertTrue(s['indok'] and s['forras_alak'] and s['javitott_alak'])
 
+    def test_hivatkozas_kezi(self):
+        # DT381 (a): H8034 „26:35” → 26:25, a 2.30 7. sorában, az első előfordulás; F123: H7585 „Prov 25:11” → 15:11 (10. sor)
+        k = [s for s in self.sorok if s['hiba'] == 'hivatkozas_kezi']
+        self.assertEqual([(s['strong'], s['sorszam'], s['elofordulas'], s['forras_alak'], s['javitott_alak']) for s in k],
+                         [('H8034', '7', '1', '26:35', '26:25'), ('H7585', '10', '1', '25:11', '15:11')])
+
     def test_allapotok(self):
-        self.assertEqual(set(s['allapot'] for s in self.sorok), {'javitva', 'valodi_mem', 'jelolt_marad', 'kezi'})
+        self.assertEqual(set(s['allapot'] for s in self.sorok),
+                         {'javitva', 'valodi_mem', 'jelolt_marad', 'kezi', 'valodi_sorrend'})
         for s in self.sorok:
             if s['allapot'] == 'kezi':
                 continue
@@ -220,6 +227,45 @@ class Javitas(unittest.TestCase):
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
                 self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
                 self.assertTrue(s['bdb_id'])
+
+    def test_heber_sorrend_sorok(self):
+        # DT-F131z: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers
+        h = [s for s in self.sorok if s['hiba'] == 'heber_sorrend']
+        self.assertEqual(set(s['allapot'] for s in h), {'javitva', 'valodi_sorrend', 'jelolt_marad'})
+        szoveg = {(s['strong'], s['sorszam']): s for s in self.sorok}
+        for s in h:
+            self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
+            self.assertTrue(s['elofordulas'].isdigit() and s['proveniencia'].startswith('scope=%s |' % s['strong']))
+            if s['allapot'] == 'javitva':
+                self.assertNotRegex(s['forras_alak'], r'[,;.:0-9A-Za-z]')
+                self.assertIn('TAHOT', s['indok'])
+                self.assertEqual(sorted(s['forras_alak'].replace(' ', '')), sorted(s['javitott_alak'].replace(' ', '')))
+        self.assertTrue(szoveg)
+
+    def test_heber_sorrend_h7121(self):
+        import heber_sorrend as HS
+        # a kulcs a mássalhangzó-váz (a pontozás sorrendje forrásonként eltérhet)
+        h = {(s['sorszam'], HS.vaz(s['forras_alak'].replace(' ', '|'))): s for s in self.sorok
+             if s['strong'] == 'H7121' and s['hiba'] == 'heber_sorrend'}
+        s = h[('4', HS.vaz('גדול|בקול'))]
+        self.assertEqual((s['allapot'], HS.vaz(s['javitott_alak'].replace(' ', '|'))), ('javitva', HS.vaz('בקול|גדול')))
+        # a Qal 2.c kifejezése: a Biblia-próba nem dönt (mindkét alak illeszkedik), ezért a döntés szerint marad
+        s = h[('8', HS.vaz('קיבשם'))]
+        self.assertEqual(s['allapot'], 'jelolt_marad')
+        javaslat = s['indok'].split('javaslata: ')[1]
+        self.assertEqual((HS.vaz(javaslat), javaslat.count('׳'), javaslat.endswith('׳')), (HS.vaz('קבשםי'), 2, True))
+
+    def test_heber_sorrend_szabaly(self):
+        import heber_sorrend as HS
+        # H7121 Qal 2.c: a BDB.lexicon darabjai (vizuális darabsorrend) és a JSON-alak
+        self.assertEqual(HS.r0('׳ק י ׳בְּשֵׁם'), '׳בְּשֵׁם י ׳ק')
+        self.assertEqual(HS.r_lex('׳ק י ׳בְּשֵׁם', ['׳', 'בְּשֵׁם י', ' ', '׳', 'ק']), 'ק׳ בְּשֵׁם י׳')
+        self.assertEqual(HS.r_str('׳ק י ׳בְּשֵׁם'), 'ק׳ בְּשֵׁם י׳')
+        self.assertEqual(HS.r_hib('גְּדוֺל בְּקוֺל', None), 'בְּקוֺל גְּדוֺל')
+        self.assertIsNone(HS.r_lex('׳ק י', ['׳', 'ק']))     # a szerkezet nem vihető át
+        self.assertTrue(HS.tiszta('בְּקוֺל גְּדוֺל'))
+        self.assertFalse(HS.tiszta('ᵐ5 ׳ל'))
+        self.assertFalse(HS.tiszta('דָּבָר, תּוֺרָה'))
 
     def test_minta_mishpat(self):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
@@ -338,6 +384,46 @@ class HuIlleszt(unittest.TestCase):
         for szo in ('papok királysága', 'puszta proszthetikus', 'pap (késői héber', 'Pentateuchusban'):
             self.assertFalse([j for j in self._jelek(szo) if j.startswith('T:')], szo)
 
+    def test_kotetszamos_siglum(self):
+        # hu_illeszt (4), ISTENTISZT-001 arany lap, 2026-10-29: a „Kö^ii. 1. 104” lapszám nem jelölő (H8034), a valódi
+        # jelölő utána megmarad; a szerzői siglum és a záró zárójel utáni jel valódi jelölő lehet (H7442, H4557, H0450) —
+        # a szabály ezeket nem dobja
+        hu = 'vö. RS^K 213, 303 kk. Kö^ii. 1. 104; késői héber — név: 1 folyóé 1Móz 2:11'
+        poz = [p for p, j in self.hi.magyar_jelolok(hu) if j == '1']
+        self.assertEqual(poz, [hu.index('1 folyóé')])
+        self.assertNotIn('1', self._jelek('(Kö^ii. 1. 512), óarámi'))
+        self.assertIn('2', self._jelek('esetleg וָרֹק és köpés, Klo Che^Hpt. 2 nyomorúságban, JSir 2:19.'))
+        self.assertIn('2', self._jelek('így ᵐ5 Di So^Kau. 2 elbeszélés, előadás'))
+        self.assertIn('5', self._jelek('vö. RS^149). 5 az ember Istene'))
+        # végig az illesztésen: a H8034 feje nem a lapszámnál vágódik el
+        sorok = [{'jel': '', 'jelolo': 'fej', 'szoveg': ''}, {'jel': '1', 'jelolo': 'point', 'szoveg': 'of river Gen 2:11'}]
+        eredmeny = self.hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(eredmeny[1][:3], ['illeszkedik', '1', hu.index('1 folyóé')])
+
+    def test_reszleges_generalas(self):
+        # --strong: a Strong-szűrt generálás sorai = a teljes generálás e Strongokra eső sorai (ISTENTISZT-001 arany lap,
+        # 2026-10-29: H4397, H8034, H9004)
+        csak = {'H4397', 'H8034', 'H9004'}
+        teljes = [r for r in self.hi.general('2026-10-29')[0] if r[0] in csak]
+        self.assertEqual(self.hi.general('2026-10-29', csak)[0], teljes)
+
+    def test_reszleges_szoveg(self):
+        # csak a megnevezett Strong sorai cserélődnek, a többi bájtra marad; a --ts megmarad, a jelölés ismételhető
+        fej = ('# GENERÁLT: eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 — x.', '# forras: y', 'strong\tsorszam\tx')
+        regi = '\n'.join(fej + ('H0001\t1\ta', 'H0002\t1\tb', 'H0002\t2\tc', 'H0003\t1\td')) + '\n'
+        uj = self.hi.reszleges_szoveg(regi, [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, '2026-10-29')
+        s = uj.split('\n')
+        self.assertEqual(s[3:], ['H0001\t1\ta', 'H0002\t1\tB', 'H0002\t2\tC', 'H0003\t1\td', ''])
+        self.assertEqual(s[1:3], list(fej[1:]))
+        self.assertTrue(s[0].startswith(fej[0] + self.hi.RESZLEGES + ' H0002 (--strong, ts=2026-10-29;'))
+        self.assertEqual(s[0].split('--ts ')[1].split(' ')[0], '2026-10-18')
+        ujra = self.hi.reszleges_szoveg(uj, [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, '2026-10-29')
+        self.assertEqual(ujra, uj)
+        with self.assertRaises(ValueError):
+            self.hi.reszleges_szoveg(regi, [['H0002', '1', 'B']], {'H0002'}, '2026-10-29')
+        with self.assertRaises(ValueError):
+            self.hi.reszleges_szoveg(regi.replace('\n', '\r\n'), [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, 'x')
+
     def test_illesztes_es_horgony(self):
         sorok = [{'jelolo': 'fej', 'jel': '', 'szoveg': 'x'},
                  {'jelolo': 'point', 'jel': '1', 'szoveg': 'king of Gerar Gen 20:2'},
@@ -407,8 +493,11 @@ class Determinizmus(unittest.TestCase):
 
     def test_javitas_ellenoriz(self):
         with open(os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv'), encoding='utf-8') as f:
-            ts = f.readline().split('--ts ')[1].split(' ')[0]
-        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ellenoriz'],
+            elso = f.readline()
+        ts = elso.split('--ts ')[1].split(' ')[0]
+        tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
+                            '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

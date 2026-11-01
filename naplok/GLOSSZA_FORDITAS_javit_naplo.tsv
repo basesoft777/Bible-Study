@@ -1,0 +1,521 @@
+entry_id	regi_hu	uj_hu	datum	muvelet
+H9034	őt (nőt)	őt (női)	2026-10-25	javitas
+H9032	téged (nő)	téged (női)	2026-10-25	javitas
+H4714G	Mizraim	Egyiptom	2026-10-25	javitas + ? torolve
+H4714H	Mizraim	Egyiptom	2026-10-25	javitas + ? torolve
+H7760A	helyezni: csinálni	helyezni: létrehozni	2026-10-25	javitas
+H6310G	ajak	száj	2026-10-25	javitas
+H1056	Baka (Tófet)	Baka (völgye)	2026-10-25	javitas + ? torolve
+H1197A	égni: égetni	égni: meggyulladni	2026-10-25	javitas
+H1354	hát/perem/gerinc	hát/perem/gerinc	2026-10-25	? torolve
+H1361	ujjongani	ujjongani	2026-10-25	? torolve
+H2051	hordók	Vedán	2026-10-25	javitas + ? torolve
+H3104	kos/kürt	jubileum/kürt	2026-10-25	javitas
+H4578	belső	has	2026-10-25	javitas
+H4693	Mizraim	Egyiptom	2026-10-25	javitas + ? torolve
+H5289	újszülött	rázás/szórás	2026-10-25	javitas + ? torolve
+H5937	ujjongani	ujjongani	2026-10-25	? torolve
+H6114	elöljáró	visszatartás; elöljáró	2026-10-25	javitas + ? torolve
+H6424	irigykedni	irigyelni	2026-10-25	javitas + ? torolve
+H8577M	kígyó: kígyó	sárkány: kígyó	2026-10-25	javitas
+H9045	-nk	mi (alany)	2026-10-25	javitas + ? torolve
+H0029J	`az ő atyja`	az ő atyja	2026-10-26	javitas
+H0277H	`testvér`	testvér	2026-10-26	javitas
+H0384H	`Isten`	Isten	2026-10-26	javitas
+H0401	`elfáradt`	elfáradt	2026-10-26	javitas
+H1137K	`fiak`	fiak	2026-10-26	javitas
+H1373	`férfiak`	férfiak	2026-10-26	javitas
+H2059	`második`	második	2026-10-26	javitas
+H3377	`nagy`	nagy	2026-10-26	javitas
+H4036	`Rettegés körös-körül`	Rettegés körös-körül	2026-10-26	javitas
+H4453	`felügyelő`	felügyelő	2026-10-26	javitas
+H5543A	`vitézség`	vitézség	2026-10-26	javitas
+H5722	`felfegyverzett`	felfegyverzett	2026-10-26	javitas
+H7886	`adó`	adó	2026-10-26	javitas
+H6308	átadni	megszabadítani	2026-10-26	javitas
+H6117	megkerülni	megtámadni	2026-10-26	javitas
+H6424	irigyelni	irigyelni	2026-10-26	? visszaallitva
+H8577M	sárkány: kígyó	kígyó: kígyó	2026-10-26	javitas
+H0068I	(Zohelet) köve	Zohelet (köve)	2026-10-26	javitas
+H0206G	(Áven) völgye	Áven (völgye)	2026-10-26	javitas
+H0425L	(Éla) völgye	Éla (völgye)	2026-10-26	javitas
+H0436G	(Jósok) tölgye	Jósok (tölgye)	2026-10-26	javitas
+H0669J	(Efraim) hegye	Efraim (hegy)	2026-10-26	javitas
+H0669K	(Efraim) erdeje	Efraim (erdeje)	2026-10-26	javitas
+H0798	(Piszga) lejtői	Piszga (lejtői)	2026-10-26	javitas
+H0812H	(Eskol) völgye	Eskol (völgye)	2026-10-26	javitas
+H1004J	(az erdő) háza	az erdő (háza)	2026-10-26	javitas
+H1004K	(Libanon erdejének) háza	Libanon erdejének (háza)	2026-10-26	javitas
+H1144M	(Benjámin) kapuja	Benjámin (kapuja)	2026-10-26	javitas
+H1173G	(Baala) hegye	Baala (hegy)	2026-10-26	javitas
+H1179	(Baál-Hermon) hegye	Baál-Hermon (hegy)	2026-10-26	javitas
+H1237H	(Micpa) völgye	Micpa (völgye)	2026-10-26	javitas
+H1237I	(Libánon) völgye	Libánon (völgye)	2026-10-26	javitas
+H1237J	(Áven) völgye	Áven (völgye)	2026-10-26	javitas
+H1295G	(Selah) tava	Selah (tava)	2026-10-26	javitas
+H1516H	(Jiftáel) völgye	Jiftáel (völgye)	2026-10-26	javitas
+H1516I	(Cebóim) völgye	Cebóim (völgye)	2026-10-26	javitas
+H1516J	(Só) völgye	Só (völgye)	2026-10-26	javitas
+H1516L	(Cefáta) völgye	Cefáta (völgye)	2026-10-26	javitas
+H1516N	(Hámon-Gog) völgye	Hámon-Gog (völgye)	2026-10-26	javitas
+H1533H	(Gilboa) hegye	Gilboa (hegy)	2026-10-26	javitas
+H1568K	(Gileád) hegye	Gileád (hegy)	2026-10-26	javitas
+H1588G	(Uzza) kertje	Uzza (kertje)	2026-10-26	javitas
+H1630	(Gerizim) hegye	Gerizim (hegy)	2026-10-26	javitas
+H1870I	(a király) országútja	a király (országútja)	2026-10-26	javitas
+H2023G	(Hór) hegye	Hór (hegy)	2026-10-26	javitas
+H2023H	(Hór) hegye	Hór (hegy)	2026-10-26	javitas
+H2028G	(Tófet) mészárlása	Tófet (mészárlása)	2026-10-26	javitas
+H2041	(Pusztulás) városa	Pusztulás (városa)	2026-10-26	javitas
+H2132G	(az Olajfák) hegye	az Olajfák (hegye)	2026-10-26	javitas
+H2510	(Halak) hegye	Halak (hegy)	2026-10-26	javitas
+H2606	(Hananél) tornya	Hananél (tornya)	2026-10-26	javitas
+H2768	(Hermon) hegye	Hermon (hegy)	2026-10-26	javitas
+H3092K	(Jósafát) völgye	Jósafát (völgye)	2026-10-26	javitas
+H3270H	(Jázer) tengere	Jázer (tengere)	2026-10-26	javitas
+H3293H	(Efraim) erdeje	Efraim (erdeje)	2026-10-26	javitas
+H3293I	(az erdő háza)	az erdő (háza)	2026-10-26	javitas
+H3297	(Jearim) hegye	Jearim (hegy)	2026-10-26	javitas
+H3317	(Jifthael) völgye	Jifthael (völgye)	2026-10-26	javitas
+H3405H	(Jérikó) síksága	Jérikó (síksága)	2026-10-26	javitas
+H3603G	(Jérikó) síksága	Jérikó (síksága)	2026-10-26	javitas
+H3672G	(Kinneret) tengere	Kinneret (tengere)	2026-10-26	javitas
+H3678H	(a trón) csarnoka	a trón (csarnoka)	2026-10-26	javitas
+H3760H	Karmel (hegye)	Karmel (hegy)	2026-10-26	javitas
+H3844H	(a Libanon) hegye	a Libanon (hegy)	2026-10-26	javitas
+H3844I	(a Libanon) völgye	a Libanon (völgye)	2026-10-26	javitas
+H3844J	(Libanon erdejének háza)	Libanon erdejének (háza)	2026-10-26	javitas
+H3968	(Száz tornya)	Száz (tornya)	2026-10-26	javitas
+H4026G	(Hananeel) tornya	Hananeel (tornya)	2026-10-26	javitas
+H4026H	(a Száz) tornya	a Száz (tornya)	2026-10-26	javitas
+H4026I	(a Kemencék) tornya	a Kemencék (tornya)	2026-10-26	javitas
+H4057G	(a Sínai) pusztája	a Sínai (pusztája)	2026-10-26	javitas
+H4124I	(Moáb) síkjai	Moáb (síkjai)	2026-10-26	javitas
+H4179	(Mória) hegye	Mória (hegy)	2026-10-26	javitas
+H4307G	(Őrség kapuja)	Őrség (kapuja)	2026-10-26	javitas
+H4706	(Micár) hegye	Micár (hegy)	2026-10-26	javitas
+H4708J	(Micpe) völgye	Micpe (völgye)	2026-10-26	javitas
+H4714I	(Egyiptom) tengere	Egyiptom (tengere)	2026-10-26	javitas
+H4714J	(Egyiptom) patakja	Egyiptom (patakja)	2026-10-26	javitas
+H4941K	(az ítélet) csarnoka	az ítélet (csarnoka)	2026-10-26	javitas
+H5015H	(Nébó) hegye	Nébó (hegy)	2026-10-26	javitas
+H5158H	(Eskol) völgye	Eskol (völgye)	2026-10-26	javitas
+H5158I	(Sittim) völgye	Sittim (völgye)	2026-10-26	javitas
+H5158J	(Sórek) völgye	Sórek (völgye)	2026-10-26	javitas
+H5674G	(az Átutazók völgye)	az Átutazók (völgye)	2026-10-26	javitas
+H5858C	(Ébál) hegye	Ébál (hegy)	2026-10-26	javitas
+H5892G	(Ón) városa	Ón (városa)	2026-10-26	javitas
+H5911	(Ákor) völgye	Ákor (völgye)	2026-10-26	javitas
+H5982H	(az oszlopok) csarnoka	az oszlopok (csarnoka)	2026-10-26	javitas
+H6010G	(Ákhor) völgye	Ákhor (völgye)	2026-10-26	javitas
+H6010H	(Beráka) völgye	Beráka (völgye)	2026-10-26	javitas
+H6010I	(Ela) völgye	Ela (völgye)	2026-10-26	javitas
+H6010K	(Hebron) völgye	Hebron (völgye)	2026-10-26	javitas
+H6010L	(Tófet) völgye	Tófet (völgye)	2026-10-26	javitas
+H6010M	(Jezréel) völgye	Jezréel (völgye)	2026-10-26	javitas
+H6010N	(Kidron) völgye	Kidron (völgye)	2026-10-26	javitas
+H6010O	(a királyok) völgye	a királyok (völgye)	2026-10-26	javitas
+H6010P	(Refáim) völgye	Refáim (völgye)	2026-10-26	javitas
+H6010Q	(Siddim) völgye	Siddim (völgye)	2026-10-26	javitas
+H6085H	(Efron) hegye	Efron (hegy)	2026-10-26	javitas
+H6160H	(az Arábá) pataka	az Arábá (pataka)	2026-10-26	javitas
+H6160I	(Moáb) síkságai	Moáb (síkságai)	2026-10-26	javitas
+H6160K	(az Arábá) tengere	az Arábá (tengere)	2026-10-26	javitas
+H6215I	(Ézsau) hegye	Ézsau (hegy)	2026-10-26	javitas
+H6290H	(Párán) hegye	Párán (hegy)	2026-10-26	javitas
+H6430I	(a filiszteusok) tengere	a filiszteusok (tengere)	2026-10-26	javitas
+H6559	(Perácim) hegye	Perácim (hegy)	2026-10-26	javitas
+H6650H	(Cebojim) völgye	Cebojim (völgye)	2026-10-26	javitas
+H6697G	(Vadkecskék) sziklái	Vadkecskék (sziklái)	2026-10-26	javitas
+H6756A	(Calmon) hegye	Calmon (hegy)	2026-10-26	javitas
+H6787	(Cemaraim) hegye	Cemaraim (hegy)	2026-10-26	javitas
+H6944I	(a szentség) útja	a szentség (útja)	2026-10-26	javitas
+H7417C	(Rimmon) sziklája	Rimmon (sziklája)	2026-10-26	javitas
+H7497G	(Refaiták völgye)	Refaiták (völgye)	2026-10-26	javitas
+H7704H	(a ruhamosó) mezeje	a ruhamosó (mezeje)	2026-10-26	javitas
+H7796	(Sórek) völgye	Sórek (völgye)	2026-10-26	javitas
+H7851H	(Sittim) völgye	Sittim (völgye)	2026-10-26	javitas
+H7865	(Sirion) hegye	Sirion (hegy)	2026-10-26	javitas
+H8165G	(Széir) hegye	Széir (hegy)	2026-10-26	javitas
+H8165H	(Széir) hegye	Széir (hegy)	2026-10-26	javitas
+H8234	(Sáfer) hegye	Sáfer (hegy)	2026-10-26	javitas
+H8396G	(Tábor) hegye	Tábor (hegy)	2026-10-26	javitas
+H8574G	(Kemencék tornya)	Kemencék (tornya)	2026-10-26	javitas
+H3832	elrontani	elbukni, romlásba jutni	2026-10-26	javitas
+H3886B	hebegni	meggondolatlanul beszélni	2026-10-26	javitas
+H5137B	sarjadni	szökkenni, megriasztani	2026-10-26	javitas
+H6026	gyengédnek lenni	gyönyörködni	2026-10-26	javitas
+H8173B	gyengédnek lenni	gyönyörködni	2026-10-26	javitas
+H7473	pásztorolni	pásztor	2026-10-26	javitas
+H1610	egyes/magasság	egyedül; magasság	2026-10-26	javitas
+H2776H	(Héres) hegye	Héres (hegy)	2026-10-26	javitas
+H3770	belső	has	2026-10-26	javitas
+H5798G	(Uzzá) kertje	Uzzá (kertje)	2026-10-26	javitas
+H6175	ravasz	eszes, okos	2026-10-26	javitas
+H0833	megáldani	boldognak mondani	2026-10-26	javitas
+H6272	elégetni	kiégni, megperzselődni	2026-10-26	javitas
+H6642	szolgálni	nyújtani, kínálni	2026-10-26	javitas
+H7082	levetkőztetni	levágni, lefosztani	2026-10-26	javitas
+H7570	főzni	forralni, forrni	2026-10-26	javitas
+H7579	vonni	vizet meríteni	2026-10-26	javitas
+H8610	elfoglalni	megfogni, elfogni	2026-10-26	javitas
+H6808	lépegetni	lépegetni	2026-10-26	? beallitva
+H1512	belső	has	2026-10-26	javitas
+H2132G	az Olajfák (hegye)	az Olajfák (hegy)	2026-10-26	javitas
+H3220I	(Efron hegye) nyugaton	Efron (hegye) nyugaton	2026-10-26	javitas
+H3247G	(Alapkapu)	Alap (kapuja)	2026-10-26	javitas
+H2346H	(Széles) fal	Széles (fal)	2026-10-26	javitas
+H2570	belső	has, oldal a bordák alatt	2026-10-26	javitas
+H5845	belső	fejőedény, csöbör	2026-10-26	javitas
+H7703	elrontani	pusztítani, dúlni	2026-10-26	javitas
+H7843	elrontani	elpusztítani, megrontani	2026-10-26	javitas
+H2215	elégetni	felmelegedni, kiszáradni	2026-10-26	javitas
+H3344	elégetni	égni, lángra lobbanni	2026-10-26	javitas
+H3554	elégetni	megégni, megperzselődni	2026-10-26	javitas
+H6866	elégetni	megperzselődni, megégni	2026-10-26	javitas
+H6633	szolgálni	hadakozni, szolgálatot teljesíteni	2026-10-26	javitas
+H2834	levetkőztetni	lemezteleníteni, feltárni	2026-10-26	javitas
+H6209	levetkőztetni	lecsupaszítani, földig lerombolni	2026-10-26	javitas
+H2102	főzni	elbizakodni, kevélykedni	2026-10-26	javitas
+H3255	hozzátenni	hozzáadatni	2026-10-26	javitas
+H6033	megalázni	alázatosnak lenni; szegény	2026-10-26	javitas
+H2163	kijelölni	kijelöltetni, meghatároztatni	2026-10-26	javitas
+H5567	kijelölni	kijelöltetni	2026-10-26	javitas
+H8371	kijelölni	helyezni, tenni	2026-10-26	javitas
+H5446	hordozni	lerakatni, felemeltetni	2026-10-26	javitas
+H1743	verni	mozsárban törni	2026-10-26	javitas
+H1849	verni	zörgetni, döngetni; hajszolni	2026-10-26	javitas
+H2251	verni	csépelni, kiverni	2026-10-26	javitas
+H7554	verni	kalapálni; kiterjeszteni; dobbantani	2026-10-26	javitas
+H7567	verni	lerontani, összezúzni	2026-10-26	javitas
+H7833	verni	apróra törni, porrá zúzni; koptatni	2026-10-26	javitas
+H0631	megkötni	megkötözni; befogni; fogva tartani	2026-10-26	javitas
+H7576	megkötni	megkötözni; elszakadni	2026-10-26	javitas
+H2690	fújni	trombitálni, kürtölni	2026-10-26	javitas
+H8388A	határolni	húzódni, kanyarodni	2026-10-26	javitas
+H2490A	átfúrni	átdöfni, átszúrni; halálra sebezni	2026-10-26	javitas
+H1638	eltörni	összetörni; elepedni	2026-10-26	javitas
+H5214	eltörni	ugart feltörni, szántani	2026-10-26	javitas
+H5420	eltörni	lerontani, elrontani	2026-10-26	javitas
+H5421	eltörni	kitöretni, megsemmisülni	2026-10-26	javitas
+H6331	eltörni	megszegni; meghiúsítani	2026-10-26	javitas
+H6562	összetörni	leszakítani, levetni	2026-10-26	javitas
+H6565A	eltörni	megszegni, felbontani; meghiúsítani	2026-10-26	javitas
+H6626	eltörni	feldarabolni, szétmorzsolni	2026-10-26	javitas
+H6476	kitörni	ujjongásba törni; összetörni	2026-10-26	javitas
+H3306	lehelni	lihegni, nyögni	2026-10-26	javitas
+H4600	összetörni	összenyomni, szorongatni; beszúrni	2026-10-26	javitas
+H5549	építeni	utat feltölteni; magasztalni	2026-10-26	javitas
+H5239	megszűnni	bevégezni, véget vetni	2026-10-26	javitas
+H6284	ragaszkodni	darabokra zúzni, szétszórni	2026-10-26	javitas
+H6398	ragaszkodni	hasítani, átszúrni	2026-10-26	javitas
+H8156	ragaszkodni	kettéhasítani, széttépni	2026-10-26	javitas
+H5954	jönni	bemenni, bejönni; bevinni	2026-10-26	javitas
+H2986	vezényelni	vinni, hozni, vezetni	2026-10-26	javitas
+H8474	vitatkozni	versengeni, versenyezni	2026-10-26	javitas
+H3670	sarkosnak lenni	elrejtőzni, félreszorulni	2026-10-26	javitas
+H7106B	sarkosnak lenni	szegletekbe helyezve lenni	2026-10-26	javitas
+H3722B	betakarni	szurokkal bekenni	2026-10-26	javitas
+H5603	betakarni	befedni, deszkával bélelni	2026-10-26	javitas
+H2115	összezúzni	kinyomni, kifacsarni; eltaposni	2026-10-26	javitas
+H5344B	megátkozni	káromolni, átkozni	2026-10-26	javitas
+H1413	levágni	megvagdalni magát; csapatba gyűlni	2026-10-26	javitas
+H5243B	levágni	levágattatni; elhervadni	2026-10-26	javitas
+H5408	levágni	darabokra vágni, feldarabolni	2026-10-26	javitas
+H1214G	levágni	nyerészkedni; elvágni; elvégezni	2026-10-26	javitas
+H1468	levágni	tovatűnni, elmúlni; elhozni	2026-10-26	javitas
+H1629	levágni	elvettetni, kivágattatni	2026-10-26	javitas
+H6990	levágni	szétfoszlani, elszakadni	2026-10-26	javitas
+H1334	felszeletelni	kettévágni, kettéhasítani	2026-10-26	javitas
+H6004	elsötétülni	elhomályosítani; elhomályosulni	2026-10-26	javitas
+H3584	megtéveszteni	megtagadni, hazudni; hízelegni	2026-10-26	javitas
+H5144A	felszentelni	odaszentelni magát; elkülöníteni	2026-10-26	javitas
+H1351	megtisztátalanítani	beszennyeződni; beszennyezni	2026-10-26	javitas
+H2930A	megtisztátalanítani	tisztátalanná lenni; tisztátalanná tenni	2026-10-26	javitas
+H2836A	kívánni	szeretni, ragaszkodni, vágyni	2026-10-26	javitas
+H0007	elpusztulni	elveszni; elveszíteni	2026-10-26	javitas
+H5642B	elpusztulni	lerombolni, elpusztítani	2026-10-26	javitas
+H8046	elpusztulni	elpusztítani, megsemmisíteni	2026-10-26	javitas
+H1505	elhatározni	kiszakadni; jövendőt mondani	2026-10-26	javitas
+H2852	elhatározni	kiszabatni, elrendeltetni	2026-10-26	javitas
+H5365	ásni	kivájni, kiszúrni; kiásni	2026-10-26	javitas
+H0958	felosztani	átszelni, áthasítani	2026-10-26	javitas
+H1895	felosztani	égboltot vizsgálni	2026-10-26	javitas
+H2686A	felosztani	csapatokra oszlani; letelni	2026-10-26	javitas
+H6386	osztani	megoszlani, kettéoszlani	2026-10-26	javitas
+H6527	felosztani	dalolgatni, rögtönözni	2026-10-26	javitas
+H6537A	osztani	kettéosztatni, elosztatni	2026-10-26	javitas
+H2222A	csepegni	csepegtetni, megöntözni	2026-10-26	javitas
+H2325	veszélybe kerülni	veszélybe sodorni, bűnbe keverni	2026-10-26	javitas
+H1158	vizsgálni	kérdezni, kikutatni; forralni; kidudorodni	2026-10-26	javitas
+H1240	kérdezősködni	utánanézni, kutatni	2026-10-26	javitas
+H2196	felbőszíteni	haragudni, bosszankodni; bánkódni	2026-10-26	javitas
+H5968	beburkolni	beburkolózni; elalélni, elbágyadni	2026-10-26	javitas
+H4984	felmagasztalni	magát felmagasztalni, felmagasztaltatni	2026-10-26	javitas
+H2946	kinyúlni	kiterjeszteni; dédelgetni, felnevelni	2026-10-26	javitas
+H3447	kinyúlni	kinyújtani	2026-10-26	javitas
+H5263	elfáradni	sorvadozni, betegeskedni	2026-10-26	javitas
+H2109B	etetni	hizlaltnak lenni, jól tápláltnak lenni	2026-10-26	javitas
+H3739B	etetni	lakomát szerezni, megvendégelni	2026-10-26	javitas
+H1299	villogni	villámlani, villámot lövellni	2026-10-26	javitas
+H5323	menekülni	repülni, elrepülni	2026-10-26	javitas
+H6687	folyni	felüláradni; elárasztani; felúsztatni	2026-10-26	javitas
+H5425B	megszabadítani	feloldani; szabadon bocsátani	2026-10-26	javitas
+H1716	összegyűjteni	költeni, tojáson ülni	2026-10-26	javitas
+H7035	összegyűjteni	összegyűlni, egybegyűlni	2026-10-26	javitas
+H7092	összegyűjteni	bezárni, összezárni	2026-10-26	javitas
+H7683	eltévedni	tévedni; tudatlanságból vétkezni	2026-10-26	javitas
+H2786	őrölni	fogat csikorgatni	2026-10-26	javitas
+H0602	morogni	nyögni, sóhajtozni	2026-10-26	javitas
+H5008	morogni	nyögni	2026-10-26	javitas
+H6463	morogni	nyögni, jajgatni	2026-10-26	javitas
+H7735	nőni	körülsövényezni, bekeríteni	2026-10-26	javitas
+H7679	naggyá lenni	naggyá tenni, felnövelni; magasztalni	2026-10-26	javitas
+H7280C	megkeményíteni	megkeményedni, összehúzódni	2026-10-26	javitas
+H8158	kifaragni	darabokra vágni	2026-10-26	javitas
+H2247	elrejteni	elrejtőzni, visszahúzódni	2026-10-26	javitas
+H7936A	bérbe venni	felbérelni, bérért fogadni	2026-10-26	javitas
+H7936B	bérbe venni	felbérelni, bérért fogadni; elszegődni	2026-10-26	javitas
+H8566	bérbe venni	bérelni, szeretőket bérelni	2026-10-26	javitas
+H1922	megtisztelni	dicsőíteni, magasztalni	2026-10-26	javitas
+H4342	szaporodni	bőségben lenni, bőven adni	2026-10-26	javitas
+H7685B	szaporodni	növekedni, nagyra nőni; gyarapítani	2026-10-26	javitas
+H7673B	megtartani	szombatot tartani, nyugodni	2026-10-26	javitas
+H3321	tudni	bizonyosat tudni, megbizonyosodni	2026-10-26	javitas
+H8175C	tudni	ismerni, megismerni	2026-10-26	javitas
+H5737C	szűkölködni	hiányozni, elmaradni	2026-10-26	javitas
+H5243A	elsenyvedni	elhervadni, elfonnyadni	2026-10-26	javitas
+H5670	kölcsönadni	zálogra kölcsönadni; zálogot venni	2026-10-26	javitas
+H5376	felemelni	felvenni, elvinni; fellázadni	2026-10-26	javitas
+H6006	felemelni	megrakni, terhet hordozni	2026-10-26	javitas
+H8259	tekinteni	letekinteni, kitekinteni	2026-10-26	javitas
+H5689	vágyakozni	szerelemre gerjedni, bujálkodni	2026-10-26	javitas
+H0184	megjelölni	kijelölni, határt vonni	2026-10-26	javitas
+H2328	megjelölni	kört vonni, körülhatárolni	2026-10-26	javitas
+H8376	megjelölni	kijelölni, határt vonni	2026-10-26	javitas
+H0579	találkozni	kezébe juttatni; érni; okot keresni	2026-10-26	javitas
+H6923	találkozni	elébe menni, megelőzni; rátörni	2026-10-26	javitas
+H3547	szolgálatot teljesíteni	papként szolgálni	2026-10-26	javitas
+H6151	keverni	elegyedni, keveredni	2026-10-26	javitas
+H6475	kinyitni	szájat megnyitni; kiragadni, megmenteni	2026-10-26	javitas
+H6606	kinyitni	nyitva lenni, megnyílni	2026-10-26	javitas
+H7370	elárasztani	buzogni, felbuzdulni	2026-10-26	javitas
+H6088	fájdalmat okozni	szomorúnak lenni, bánkódni	2026-10-26	javitas
+H2498	átmenni	elmúlni, elvonulni; megváltozni, elváltoztatni	2026-10-26	javitas
+H6452A	átmenni	elmenni mellette, megkímélni	2026-10-26	javitas
+H2636	meghámozni	pikkelyesen hámlani	2026-10-26	javitas
+H5753B	elferdíteni	vétkezni, gonoszul cselekedni	2026-10-26	javitas
+H2944	átszúrni	átveretni, átszúratni	2026-10-26	javitas
+H3738B	átszúrni	ásni, kiásni; megnyitni	2026-10-26	javitas
+H5344A	átszúrni	átfúrni; név szerint kijelölni	2026-10-26	javitas
+H1727	epekedni	elsorvasztani	2026-10-26	javitas
+H6148	zálogba venni	kezeskedni, zálogba adni; elcserélni	2026-10-26	javitas
+H2050	ravaszkodni	rátámadni, nekirontani	2026-10-26	javitas
+H4804	megtépni	kitépetni	2026-10-26	javitas
+H8231	fényesíteni	szépnek lenni, tetszeni	2026-10-26	javitas
+H3251	önteni	rákenni, ráönteni	2026-10-26	javitas
+H5064	önteni	kiömleni, elfolyni; fegyvernek kiszolgáltatni	2026-10-26	javitas
+H6072	szorítani	széttaposni, kitaposni	2026-10-26	javitas
+H6484	szorítani	unszolni, kényszeríteni	2026-10-26	javitas
+H6671	szorítani	olajat ütni, sajtolni	2026-10-26	javitas
+H1878	boldogulni	meghízni; megkenni; hamut eltakarítani	2026-10-26	javitas
+H4843	ingerelni	keserűnek lenni; megkeseríteni; felbosszantani	2026-10-26	javitas
+H2956	üldözni	szüntelen csepegni	2026-10-26	javitas
+H1481B	veszekedni	viszályt szítani; ellene összegyűlni	2026-10-26	javitas
+H7301	eloltani	jóllakni, megrészegülni; megitatni, öntözni	2026-10-26	javitas
+H4305	esőzni	esőt bocsátani; hullatni	2026-10-26	javitas
+H3198	megdorgálni	megfeddeni, megfenyíteni; ítélni, perbe szállni	2026-10-26	javitas
+H5702	visszafogni	visszatartóztatni magát	2026-10-26	javitas
+H1898	eltávolodni	eltávolítani, elűzni	2026-10-26	javitas
+H5253	eltávolodni	eltávozni, elpártolni; határt elmozdítani	2026-10-26	javitas
+H8421H	visszatérni: megmenteni	visszatérni: visszaadni	2026-10-26	javitas
+H2224	korán kelni	felkelni, feltámadni; felragyogni	2026-10-26	javitas
+H7213	korán kelni	felmagasodni, kiemelkedni	2026-10-26	javitas
+H7313	emelkedni	felemelkedni; felmagasztalni	2026-10-26	javitas
+H7580	zúgni	ordítani; harsogni	2026-10-26	javitas
+H2760	pörkölni	megsütni	2026-10-26	javitas
+H6740	pörkölni	húst sütni	2026-10-26	javitas
+H7088	görgetni	összegöngyölni, összehajtani	2026-10-26	javitas
+H7325	futni	folyni, folyást ereszteni	2026-10-26	javitas
+H6743A	rohanni	rászállni, rárohanni	2026-10-26	javitas
+H8264	rohanni	futkosni, rohangálni; sóvárogni	2026-10-26	javitas
+H2236	szétszórni	hinteni, szórni	2026-10-26	javitas
+H6335B	szétszórni	szétszóródni, széledezni	2026-10-26	javitas
+H1623	kikaparni	vakarózni, vakarni magát	2026-10-26	javitas
+H5500	kikaparni	lekaparni, levakarni	2026-10-26	javitas
+H6362	elválasztani	elengedni, kiszabadítani; elmenekülni	2026-10-26	javitas
+H7896H	helyezni: adni	helyezni: tenni	2026-10-26	javitas
+H4131	megrázkódni	ingadozni, megtántorodni, megrendülni	2026-10-26	javitas
+H5128	megrázkódni	ingadozni, tántorogni; bujdosni; fejet csóválni	2026-10-26	javitas
+H7465	összetörni	összetört, romlott	2026-10-26	javitas
+H6670B	ragyogni	fényessé tenni, megfényesíteni	2026-10-26	javitas
+H7442B	énekelni	ujjongani, örvendezni	2026-10-26	javitas
+H7444	énekelni	ujjongani, kiáltozni	2026-10-26	javitas
+H7743	elsüllyedni	lehanyatlani, leroskadni; megalázódni	2026-10-26	javitas
+H6991	lemészárolni	megölni	2026-10-26	javitas
+H7290	aludni	mélyen aludni; elájulni	2026-10-26	javitas
+H4571	lehullani	megtántorodni, ingadozni, megcsúszni	2026-10-26	javitas
+H2505B	simává tenni	simának lenni; hízelegni	2026-10-26	javitas
+H3474	simává tenni	egyenesnek lenni, tetszeni; egyengetni	2026-10-26	javitas
+H4452	simává tenni	kellemesnek lenni, édesnek lenni	2026-10-26	javitas
+H4803	simává tenni	kopasszá tenni, tépni; fényesíteni	2026-10-26	javitas
+H6581	kiterjeszteni	terjedni, elterjedni	2026-10-26	javitas
+H5605	odaállni	küszöbön állni, ajtónálló lenni	2026-10-26	javitas
+H0553	megerősödni	erősnek, bátornak lenni; megerősíteni	2026-10-26	javitas
+H7257	kinyújtani	heverni, lefeküdni; lenyugtatni	2026-10-26	javitas
+H4229B	megverni	érni, odaérni	2026-10-26	javitas
+H5362A	megverni	levágni, lehántani	2026-10-26	javitas
+H3711	leigázni	lecsillapítani, elfordítani	2026-10-26	javitas
+H5134	szopni	szoptatni	2026-10-26	javitas
+H6075A	megdagadni	felfuvalkodni; vakmerően merészkedni	2026-10-26	javitas
+H5422	széttépni	lerombolni, lerontani	2026-10-26	javitas
+H6561	széttépni	letépni, leszakítani; megszabadítani	2026-10-26	javitas
+H7283	tolongani	zajongani, dühöngeni	2026-10-26	javitas
+H6080	dobni	porral hinteni, port hányni	2026-10-26	javitas
+H1760A	beletolni	taszítani, lökni; letaszíttatni	2026-10-26	javitas
+H1760B	beletolni	letaszíttatni, elűzetni	2026-10-26	javitas
+H1920	beletolni	taszítani, lökni; kiűzni	2026-10-26	javitas
+H3739A	kereskedni	megvásárolni, alkudni	2026-10-26	javitas
+H6206	remegni	rettegni; megrettenteni	2026-10-26	javitas
+H6470	megzavarni	nyugtalankodni; indítani	2026-10-26	javitas
+H7365	hinni	bízni	2026-10-26	javitas
+H5472	fordulni	visszafordulni; elpártolni	2026-10-26	javitas
+H5753A	sodorni	elferdíteni; meggörbedni	2026-10-26	javitas
+H6127	sodorni	elferdülni	2026-10-26	javitas
+H6140	sodorni	elferdíteni, elcsavarni	2026-10-26	javitas
+H6617	sodorni	tusakodni; visszásnak mutatkozni	2026-10-26	javitas
+H7806	sodorni	sodrott, sodorva készült	2026-10-26	javitas
+H8308	sodorni	ide-oda futkosni	2026-10-26	javitas
+H5110	bolyongani	bujdosni, ingadozni; részvétet mutatni	2026-10-26	javitas
+H7686	bolyongani	tévelyegni, tévedni; tántorogni	2026-10-26	javitas
+H1110	pusztává lenni	elpusztítani, feldúlni	2026-10-26	javitas
+H6244	pusztává lenni	elsenyvedni, elbágyadni	2026-10-26	javitas
+H7736	pusztává lenni	pusztítani	2026-10-26	javitas
+H5770	vigyázni	rossz szemmel nézni	2026-10-26	javitas
+H7551	szőni	hímezni, tarkán szőni	2026-10-26	javitas
+H5537	megmérni	felérni vele, megméretni	2026-10-26	javitas
+H5541B	megmérni	összemérhető lenni, felérni	2026-10-26	javitas
+H8625A	megmérni	megméretni	2026-10-26	javitas
+H8428	megsebezni	megbántani, fájdalmat okozni	2026-10-26	javitas
+H1751	összezúzni	összezúzódni, darabokra törni	2026-10-26	javitas
+H8581	utálni	utálni; utálatosan cselekedni	2026-10-26	javitas
+H3259	kijelölni	kijelölni, rendelni; összegyűlni, megjelenni	2026-10-26	javitas
+H7592	kérdezni	kérdezni, tudakozni; kérni	2026-10-26	javitas
+H7593	kérni	kérdezni, tudakozni; kérni	2026-10-26	javitas
+H8608	verni	dobolni, verni	2026-10-26	javitas
+H6286A	megdicsőíteni	megdicsőíteni, ékesíteni; dicsekedni	2026-10-26	javitas
+H8628	fújni	fújni; beleverni; kezet csapni	2026-10-26	javitas
+H7817	meghajolni	meghajolni, meggörnyedni; megaláztatni, csüggedni	2026-10-26	javitas
+H5301	lehelni	lehelni, fújni	2026-10-26	javitas
+H6315	lehelni	lehelni, fújni; hazugságot szólni	2026-10-26	javitas
+H0989	megszűnni	megszűnni; megakadályozni	2026-10-26	javitas
+H1584	megszűnni	megszűnni, elfogyni; elvégezni	2026-10-26	javitas
+H1820	megszűnni	megszűnni; elveszni; elveszíteni	2026-10-26	javitas
+H5486	megszűnni	megszűnni, elmúlni; véget vetni	2026-10-26	javitas
+H7673A	megszűnni	megszűnni, megnyugodni; megszüntetni	2026-10-26	javitas
+H4171	megváltoztatni	megváltoztatni; elcserélni	2026-10-26	javitas
+H8132	megváltoztatni	megváltozni; megváltoztatni	2026-10-26	javitas
+H8133	megváltozni	megváltozni; megváltoztatni; különbözni	2026-10-26	javitas
+H3847	felöltöztetni	felöltözni; felöltöztetni	2026-10-26	javitas
+H0858	jönni	jönni; hozni	2026-10-26	javitas
+H7999A	teljesnek lenni	teljesnek lenni; megfizetni, megtéríteni	2026-10-26	javitas
+H5329	vezényelni	felügyelni, vezényelni	2026-10-26	javitas
+H6887A	bekeríteni	bekeríteni; megkötni; szorongatni	2026-10-26	javitas
+H7378	vitatkozni	vitatkozni, versengeni; perelni	2026-10-26	javitas
+H7533	összezúzni	összezúzni; elnyomni, nyomorgatni	2026-10-26	javitas
+H2199	kiáltani	kiáltani; összehívni; összegyűlni	2026-10-26	javitas
+H7096	levágni	levágni; levakarni	2026-10-26	javitas
+H2821	elsötétülni	elsötétülni; elsötétíteni	2026-10-26	javitas
+H5182	leszállni	leszállni; elhelyezni; letétetni	2026-10-26	javitas
+H2255	elpusztulni	elpusztítani, ártani; elpusztulni	2026-10-26	javitas
+H2717B	elpusztítani	pusztává lenni; elpusztítani	2026-10-26	javitas
+H0926	megrémíteni	megrémülni; megrémíteni; sietni	2026-10-26	javitas
+H0927	megrémíteni	megrémíteni; sietni	2026-10-26	javitas
+H3488	lakni	ülni, leülni; lakni	2026-10-26	javitas
+H7324	kiüríteni	kiüríteni; kiönteni; kardot kirántani	2026-10-26	javitas
+H1239	vizsgálni	vizsgálni, tudakozódni; megfontolni	2026-10-26	javitas
+H4422	megmenekülni	megmenekülni; megmenteni	2026-10-26	javitas
+H1254B	meghízni	hízlalni, meghízni	2026-10-26	javitas
+H3950	összegyűjteni	összegyűjteni, összeszedni; tarlózni	2026-10-26	javitas
+H8582	eltévedni	eltévedni, tévelyegni; tévútra vezetni	2026-10-26	javitas
+H8551	megragadni	megragadni; megtartani, támogatni	2026-10-26	javitas
+H5098	morogni	nyögni; morogni, ordítani	2026-10-26	javitas
+H8511	felakasztani	felakasztani; függeni, ragaszkodni	2026-10-26	javitas
+H7185	megkeményíteni	nehéz, kemény lenni; megkeményíteni	2026-10-26	javitas
+H0213	sietni	sietni; sürgetni, szorongatni	2026-10-26	javitas
+H2244	elrejteni	elrejtőzni; elrejteni	2026-10-26	javitas
+H3582	elrejteni	elrejteni, eltitkolni; kiirtani	2026-10-26	javitas
+H3046	tudni	tudni; tudtul adni, megjelenteni	2026-10-26	javitas
+H2637	szűkölködni	szűkölködni, híjával lenni; fogyni	2026-10-26	javitas
+H1809	elsenyvedni	elsenyvedni, megnyomorodni; lecsüngni	2026-10-26	javitas
+H6711	nevetni	nevetni; tréfálni, játszadozni	2026-10-26	javitas
+H7832	nevetni	nevetni, kinevetni; játszani, vigadni	2026-10-26	javitas
+H5090A	vezetni	vezetni; hajtani, elhajtani	2026-10-26	javitas
+H7602A	vágyódni	vágyódni, áhítani; lihegni, kapkodni	2026-10-26	javitas
+H7136A	találkozni	találkozni; történni, érni	2026-10-26	javitas
+H6544B	elhanyagolni	elhanyagolni; szabadjára engedni; hajat kibontani	2026-10-26	javitas
+H5065	elnyomni	elnyomni, sanyargatni; behajtani, sarcolni	2026-10-26	javitas
+H7783	elárasztani	túlcsordulni; elárasztani	2026-10-26	javitas
+H5557	elferdíteni	elferdíteni; felforgatni, megbuktatni	2026-10-26	javitas
+H7951	boldogulni	nyugalomban lenni, boldogulni	2026-10-26	javitas
+H5608A	elbeszélni	elbeszélni, hirdetni; megszámlálni	2026-10-26	javitas
+H6884	megtisztítani	megolvasztani, megtisztítani; megpróbálni	2026-10-26	javitas
+H2502A	megmenteni	megmenteni, kiszabadítani; kihúzni, lehúzni	2026-10-26	javitas
+H0680	félretenni	félretenni, megtartani; elvenni, elvonni	2026-10-26	javitas
+H3240	megnyugodni	megnyugodni; nyugalmat adni; letenni, otthagyni	2026-10-26	javitas
+H5117	megnyugodni	megnyugodni; nyugalmat adni; letenni, otthagyni	2026-10-26	javitas
+H3607	visszatartani	visszatartani, megvonni; bezárni	2026-10-26	javitas
+H6113	visszatartani	visszatartani, megállítani; bezárni	2026-10-26	javitas
+H1993	zúgni	zúgni, zajongani; háborogni, nyugtalankodni	2026-10-26	javitas
+H6327A	szétszórni	szétszórni; szétszóródni, elszéledni	2026-10-26	javitas
+H2658	kutatni	ásni; kikémlelni, kutatni	2026-10-26	javitas
+H6504	elválasztani	elválasztani; elválni, szétválni	2026-10-26	javitas
+H7761G	tenni: csinálni	tenni: csinálni, elrendelni	2026-10-26	javitas
+H5287	megrázkódni	kirázni, lerázni; megrázkódni	2026-10-26	javitas
+H7094	nyírni	levágni; nyírni	2026-10-26	javitas
+H5050	ragyogni	ragyogni; megvilágosítani	2026-10-26	javitas
+H5264	ragyogni	felemelkedni, felemelni; ragyogni	2026-10-26	javitas
+H7411A	lőni	vetni, hajítani; lőni	2026-10-26	javitas
+H2324	megmutatni	megjelenteni, megfejteni, megmutatni	2026-10-26	javitas
+H3384B	mutatni	mutatni; tanítani, oktatni	2026-10-26	javitas
+H5462	bezárni	bezárni; kiszolgáltatni	2026-10-26	javitas
+H5394	lehullani	leoldani; lehullani; kiűzni	2026-10-26	javitas
+H8173A	bekenni	bekenni; megvakítani	2026-10-26	javitas
+H5324	odaállni	odaállni, megállni; felállítani	2026-10-26	javitas
+H0887	bűzleni	bűzleni; gyűlöletessé válni	2026-10-26	javitas
+H5062	megverni	megverni; vereséget szenvedni	2026-10-26	javitas
+H3243	szopni	szopni; szoptatni	2026-10-26	javitas
+H5564	támogatni	támogatni, megtartani; rátenni kezét	2026-10-26	javitas
+H1572	lenyelni	lenyelni; inni adni	2026-10-26	javitas
+H1758	taposni	taposni; csépelni	2026-10-26	javitas
+H1869	taposni	taposni; íjat feszíteni; vezetni	2026-10-26	javitas
+H6845	kincsként őrizni	elrejteni; kincsként őrizni	2026-10-26	javitas
+H8327	kitépni	kitépni; meggyökerezni	2026-10-26	javitas
+H5074	bolyongani	menekülni, bujdosni; bolyongani	2026-10-26	javitas
+H2522	elgyengülni	legyőzni; elgyengülni	2026-10-26	javitas
+H6850	suttogni	sipogni, csipogni; suttogni	2026-10-26	javitas
+H7682	felmagasztalni	magasztosnak lenni; felmagasztalni, oltalmazni	2026-10-26	javitas
+H8244	megkötni	megkötni	2026-10-26	? beallitva
+H0598	kényszeríteni	kényszeríteni	2026-10-26	? beallitva
+H4059	kinyúlni	kinyúlni	2026-10-26	? beallitva
+H5789	segíteni	segíteni	2026-10-26	? beallitva
+H1713A	tekinteni	tekinteni	2026-10-26	? beallitva
+H8323B	megerősödni	megerősödni	2026-10-26	? beallitva
+H3859	lenyelni	lenyelni	2026-10-26	? beallitva
+H1826B	jajgatni	jajgatni	2026-10-26	? beallitva
+H6358	kinyitni	kinyitni	2026-10-26	? beallitva
+H4178	meghámozni	meghámozni	2026-10-26	? beallitva
+H2102	elbizakodni, kevélykedni	főzni; elbizakodni, kevélykedni	2026-10-26	javitas
+H2834	lemezteleníteni, feltárni	lemezteleníteni, feltárni; meríteni	2026-10-26	javitas
+H6633	hadakozni, szolgálatot teljesíteni	hadakozni; szolgálatot teljesíteni	2026-10-26	javitas
+H2215	felmelegedni, kiszáradni	felmelegedni; kiszáradni	2026-10-26	javitas
+H6209	lecsupaszítani, földig lerombolni	lecsupaszítani; földig lerombolni	2026-10-26	javitas
+H3220I	Efron (hegye) nyugaton	Efron (hegy) nyugaton	2026-10-26	javitas
+H1254B	hízlalni, meghízni	hízlalni; meghízni	2026-10-26	javitas
+H5537	felérni vele, megméretni	felérni vele; megméretni	2026-10-26	javitas
+H7761G	tenni: csinálni, elrendelni	tenni: csinálni; elrendelni	2026-10-26	javitas
+H3474	egyenesnek lenni, tetszeni; egyengetni	egyenesnek lenni; tetszeni; egyengetni	2026-10-26	javitas
+H2498	elmúlni, elvonulni; megváltozni, elváltoztatni	elmúlni, elvonulni; megváltozni; elváltoztatni	2026-10-26	javitas
+H5264	felemelkedni, felemelni; ragyogni	felemelkedni; felemelni; ragyogni	2026-10-26	javitas
+H5137B	szökkenni, megriasztani	szökkenni; megriasztani	2026-10-26	javitas
+H4342	bőségben lenni, bőven adni	bőségben lenni; bőven adni	2026-10-26	javitas

@@ -1,0 +1,4 @@
+{"forras": "a31921872ddf1bf51.output", "sorok": 380, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 8684, "cache_read_input_tokens": 56894, "cache_creation_input_tokens": 83094, "total_tokens": 148676}
+{"forras": "a9c502faf0fed45c3.output", "sorok": 380, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 8287, "cache_read_input_tokens": 56894, "cache_creation_input_tokens": 82952, "total_tokens": 148137}
+{"forras": "ab78bb62bd6244c04.output", "sorok": 376, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 8856, "cache_read_input_tokens": 56905, "cache_creation_input_tokens": 82839, "total_tokens": 148604}
+{"forras": "a104f838af9ed991c.output", "sorok": 380, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 9782, "cache_read_input_tokens": 56894, "cache_creation_input_tokens": 83135, "total_tokens": 149815}

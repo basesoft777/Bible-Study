@@ -127,7 +127,9 @@ def _szam_minta():
     # szám, előtte szóköz/kezdet/gondolatjel, utána szóköz és nem szám/hivatkozás
     # változatok: „— 1 …”, „1. …”, „1.a …” (a betű az alpont), és hivatkozás utáni „… 48:14 2 first”
     # a „1. egyes szám”, „3. nőnemű”, „2. hímnemű többes szám” alak-személyek nem jelentés-sorszámok (H0157, H1869, H7121)
-    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?![a-e][;,]\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|[1-3][A-Z][a-z]+\.?\s+\d|\((?:c\.|kb\.|approximately|about)?\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
+    # F123 (2026-10-29): a szögletes zárójellel záruló szakasz utáni szám is jelölő („… post-Biblical Judaism and NT.] 4 ׳שׁ
+    # figurative …”, H7585); a teljes BDB-n 7 szócikk 184 sora kap helyes jelentéspontot (naplok/F123_bdb_szelet_meres.tsv)
+    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)\]]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?![a-e][;,]\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|[1-3][A-Z][a-z]+\.?\s+\d|\((?:c\.|kb\.|approximately|about)?\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
                       r'(?!\S*\^)')
 
 
@@ -684,6 +686,9 @@ _SIGLA_ELOTTE = re.compile(r'(?:^|\s)(?!R\^)[A-Z][A-Za-zäöü]*\^[^\s),;\]\d][^
 _SIGLA_LISTA = re.compile(r'^(?:Schr\^\S+|COT\.?|Dr|Dr\^\S*|MI|MI\^\S*|Fl\^\S+|De\^\S*|Hup\^\S*)$')
 _NEMI_TANU = re.compile(r'(?:masculine|feminine|plural|singular|hímnemű|nőnemű|főnév|_\d+)$')
 _FOLYTATAS = re.compile(r'\s*,\s*(\d{1,3})(?:\s*-\s*\d{1,3})?(?=[\s,;.)\]]|$)(?!\s*:)')
+# DT382 (A) (felhasználó, 2026-10-28): a kiírt vagy örökölt hivatkozás utáni verstartomány („1Kin 18:24-25, 26”): a tartomány
+# átlépése után a vers-folytatás keresése ugyanúgy fut, mint tartomány nélkül; a tartományt nem bontja ki (a „-25” nem lesz sor)
+_TARTOMANY = re.compile(r'\s*[-–]\s*(\d{1,3})(?![\d:])')
 # egyfejezetes könyv fejezetszám nélkül (DT-F99a (4)): „Obad 8”, „Obadiah 13” → 1. fejezet
 _EGYFEJEZETES = re.compile(r'(?<![A-Za-z0-9])(Obad|Obadiah)\.?\s+(\d{1,2})(?![\d:])')
 
@@ -760,10 +765,12 @@ def hivatkozasok(szoveg):
                     szavak.pop()
                 sajat = 'sigla_lista' if szavak and _SIGLA_LISTA.match(szavak[-1]) else 'sigla_kozel'
         ki.append({'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat})
-        q = e
+        t = _TARTOMANY.match(s, e)
+        q = t.end() if t else e
         while True:
             f = _FOLYTATAS.match(s, q)
-            if not f:
+            # a tartomány utáni „, 1 Samuel 21:16” „1”-e a következő kiírt hivatkozás kezdete, nem vers-folytatás (DT382 (A))
+            if not f or (t and f.start(1) in kiirt):
                 break
             ki.append({'poz': f.start(1), 'veg': f.end(), 'nyers': f.group(0).strip(), 'konyv': konyv, 'c': c, 'v': int(f.group(1)),
                        'konyv_mod': 'folytatas', 'okkod': sajat})

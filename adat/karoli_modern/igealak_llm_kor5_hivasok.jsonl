@@ -1,0 +1,2 @@
+{"forras": "a432c87d93f36e9fd.output", "sorok": 185, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 6981, "cache_read_input_tokens": 92827, "cache_creation_input_tokens": 45124, "total_tokens": 144936}
+{"forras": "afec69c7b0499730e.output", "sorok": 185, "modell": ["claude-opus-5-5"], "hivasok": 2, "input_tokens": 4, "output_tokens": 6106, "cache_read_input_tokens": 92827, "cache_creation_input_tokens": 41545, "total_tokens": 140482}

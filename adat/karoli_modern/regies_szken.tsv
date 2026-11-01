@@ -1,0 +1,1518 @@
+# GENERÁLT: eszkozok/karoli_modern/regies_szken.py (F96.3, 3. kör: N-F96d/e, DT316) — kézzel nem szerkeszthető | forras=adat/karoli_modern/karoli_modern.tsv (sha256:b33f78f474f6f80e42e2f2ab2fe0ab99132b0dfd9bf98723f0218d7f5d070d1e) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) | scope=a modern szövegben maradt régies-igealak-jelöltek: 1354 alak (3702 token), 162 vala előtti pár (342 token); a szabaly_jelolt a végződés szerinti mai alak (igeragozas.mult), modell_ellenorizetlen | ts=2026-10-25T12:07Z
+id	tipus	kerdes	gyakorisag	szabaly_jelolt	elso_igehely	versreszlet
+R0001	alak	adakozóé	1		Péld 19:6	nemeslelkű embernek és minden barát az [adakozóé]
+R0002	alak	adná	5	adnotta	4Móz 11:29	Úrnak minden népe próféta volna hogy [adná] az Úr az ő lelkét ő
+R0003	alak	adád	7	adtad	2Krón 20:7	az Izráel előtt és nem te [adád] é azt Ábrahámnak a te barátod
+R0004	alak	adófizetőikké	2	adófizetőikkotta	Bír 1:30	hanem közöttük lakozott a Kananeus és [adófizetőikké] lettek
+R0005	alak	adófizetőjévé	1	adófizetőjévta	Bír 1:28	És mikor Izráel megerősödött [adófizetőjévé] tette a Kananeust de elűzni nem
+R0006	alak	adófizetőkké	2	adófizetőkkotta	Bír 1:35	a József házának keze rájuk nehezedett [adófizetőkké] lettek
+R0007	alak	ajándékozná	1	ajándékoznotta	1Sám 17:25	Ha valaki megölné őt nagy gazdagsággal [ajándékozná] meg a király leányát is neki
+R0008	alak	akadának	1	akadtak	1Móz 26:19	a völgyben és élő víznek forrására [akadának] ott
+R0009	alak	akarná	2	akarnotta	2Sám 20:9	jobbkezével az Amasa szakálát mintha meg [akarná] csókolni
+R0010	alak	akarád	2	akartad	2Krón 20:10	hegyén lakozók a akiknek földjén nem [akarád] hogy általmenjenek az Izráel fiai mikor
+R0011	alak	aklaivá	1	aklaivta	Sof 2:6	vidéke legelőkké pásztorok tanyáivá és juhoknak [aklaivá] lesz
+R0012	alak	akárhová	1	akárhovta	Jer 40:5	lakjál vele a nép között vagy [akárhová] tetszik menned oda menj És adott
+R0013	alak	alakítá	1	alakította	2Móz 32:4	És elvette kezükből és [alakítá] azt vésővel így csinált abból öntött
+R0014	alak	alapkövén	1	alapköve	Ef 2:20	Kik fölépíttettetek az apostoloknak és prófétáknak [alapkövén] lévén a szegletkő maga Jézus Krisztus
+R0015	alak	alapítá	1	alapította	Ámós 9:6	boltozatát és annak íveit a földre [alapítá] a aki előhívja a tenger vizeit
+R0016	alak	alkalmasakká	1	alkalmasakkotta	Kol 1:12	Hálákat adva az Atyának ki [alkalmasakká] tett minket a szentek örökségében való
+R0017	alak	alkalmatosokká	1	alkalmatosokkotta	2Kor 3:6	A Aki [alkalmatosokká] tett minket arra hogy új szövetség
+R0018	alak	alkalmatossá	1	alkalmatossotta	2Móz 35:34	Azontúl [alkalmatossá] tette arra is hogy tanítson mind
+R0019	alak	aláfelé	1	aláfelte	Péld 15:24	számára hogy eltávozzék a pokoltól mely [aláfelé] van
+R0020	alak	alávalóvá	1	alávalóvta	5Móz 25:3	ha ennél több ütést üttet rá [alávalóvá] legyen előtted a te atyádfia
+R0021	alak	amazoké	1	amazokta	2Tim 3:9	nyilvánvaló lesz mindenek előtt a amiképpen [amazoké] is az lett
+R0022	alak	angyalává	1	angyalávta	2Kor 11:14	a Sátán is átváltoztatja magát világosság [angyalává]
+R0023	alak	apostolaivá	1	apostolaivta	2Kor 11:13	álnok munkások a akik a Krisztus [apostolaivá] változtatják át magukat
+R0024	alak	apostollá	2	apostollotta	1Tim 2:7	Ami végett rendeltettem én hirdetővé és [apostollá] igazságot szólok a Krisztusban nem hazudok
+R0025	alak	aprókká	1	aprókkotta	Jób 18:7	Erős léptei [aprókká] lesznek saját tanácsa rontja meg őt
+R0026	alak	arbé	1	arbotta	3Móz 11:22	Ezeket egyétek meg azok közül az [arbé] sáskát az ő nemével a szolám
+R0027	alak	arrafelé	2	arrafelta	1Kir 18:43	a tenger felé És felment és [arrafelé] nézett és mondta Nincsen semmi És
+R0028	alak	asszonnyá	1	asszonnyotta	Mk 10:6	a teremtés kezdete óta férfiúvá és [asszonnyá] teremtette őket az Isten
+R0029	alak	asszonyokká	1	asszonyokkotta	Jer 51:30	viadallal erősségeikben ülnek elfogyott a vitézségök [asszonyokká] lettek felgyújtották lakhelyeit zárait letörték
+R0030	alak	atyjává	5	atyjávta	1Móz 17:4	szövetségem te veled hogy népek sokaságának [atyjává] leszesz
+R0031	alak	atyádé	1	atyádta	Bír 6:25	Baál oltárát a amely a te [atyádé] és a berket a amely a
+R0032	alak	atyáinké	1	atyáinkotta	Dán 9:8	pirulása a mi királyainké fejedelmeinké és [atyáinké] a akik vétkeztünk ellened
+R0033	alak	atyámfiáé	1		1Kir 2:15	ország tőlem és lett az én [atyámfiáé] mert az Úrtól adatott neki
+R0034	alak	atyámé	1	atyámta	2Krón 2:13	értelmes férfit a aki az én [atyámé] Húrámé volt
+R0035	alak	atyánkfiáé	1		Ruth 4:3	a darab szántóföldet mely a mi [atyánkfiáé] Eliméleké volt eladja Naómi a aki
+R0036	alak	azoké	5	azokta	Bír 5:9	Szívem [azoké] kik parancsolnak Izráelben Kik a nép
+R0037	alak	azzá	1	azzotta	Mt 23:15	egy pogányt zsidóvá tegyetek és ha [azzá] lett a gyehenna fiává teszitek őt
+R0038	alak	balfelé	1	balfelta	2Sám 2:19	üldözte Abnert és se jobbfelé se [balfelé] nem tért ki Abner után való
+R0039	alak	balgataggá	1	balgataggotta	2Kor 12:11	Dicsekedve [balgataggá] lettem ti kényszerítettetek rá Mert nektek
+R0040	alak	balgatagokká	1	balgatagokkotta	Róm 1:22	Magokat bölcseknek vallva [balgatagokká] lettek
+R0041	alak	barlangjává	4	barlangjávta	Jer 7:11	Vajon latrok [barlangjává] lett é ez a ház ti
+R0042	alak	barlangokká	1	barlangokkotta	Ézs 32:14	város zaja elnémult torony és bástya [barlangokká] lettek örökre hol a vadszamár kedvére
+R0043	alak	barmoké	1	barmokta	Dán 5:21	ő szíve olyanná lett mint a [barmoké] és a vadszamarakkal lett az ő
+R0044	alak	beadá	1	beadta	2Sám 24:9	És [beadá] Joáb a megszámlált népnek számát a
+R0045	alak	beburkolá	1	beburkolta	1Móz 38:14	azért magáról özvegyi ruháját elfátyolozá és [beburkolá] magát és leüle Enajim kapujába mely
+R0046	alak	bedugák	1	bedugták	Zak 7:11	akarták meghallani sőt vállaikat vonogaták és [bedugák] füleiket hogy ne halljanak
+R0047	alak	bedugának	1	bedugtak	2Krón 32:4	Mert összegyűlve a sokaság [bedugának] minden forrást és az ország közepén
+R0048	alak	befedezé	3	befedezte	2Móz 40:34	És a felhő [befedezé] a gyülekezet sátorát és az Úrnak
+R0049	alak	befedezéd	1	befedezted	Ez 16:18	És vevéd hímes ruháidat és [befedezéd] azokat és olajomat és füstölőszeremet vetéd
+R0050	alak	begöngyölé	3	begöngyölte	Mt 27:59	És magához vévén József a testet [begöngyölé] azt tiszta gyolcsba
+R0051	alak	behordák	1	behordták	2Krón 31:12	[Behordák] azért az ajándékokat a tizedeket és
+R0052	alak	behívná	1	behívnette	Bír 19:15	volt senki a aki őket házába [behívná] éjszakára
+R0053	alak	beilleszté	1	beillesztette	2Móz 40:18	annak talpait a deszkáit is felállította [beilleszté] a reteszrúdakat és felállította annak oszlopait
+R0054	alak	bekené	1	bekente	2Móz 2:3	szerzett annak egy gyékény ládácskát és [bekené] azt gyantával és szurokkal s belétevé
+R0055	alak	belefúlának	1	belefúltak	Mk 5:13	rohant Voltak pedig mintegy kétezeren és [belefúlának] a tengerbe
+R0056	alak	belemeríté	1	belemerítette	2Kir 5:14	Bement azért a Jordánba és [belemeríté] magát abba hétszer az Isten emberének
+R0057	alak	beleveszté	1	belevesztette	2Móz 14:27	eleibe futottak vala és az Úr [beleveszté] az égyiptomiakat a tenger közepébe
+R0058	alak	beleüté	1	beleütötte	Bír 3:21	kirántá kardját a jobb tomporáról és [beleüté] azt annak hasába
+R0059	alak	belé	25	belte	2Móz 40:7	és az oltár közé és önts [belé] vizet
+R0060	alak	belétevé	1	belétevte	2Móz 2:3	bekené azt gyantával és szurokkal s [belétevé] a gyermeket és letette a folyóvíz
+R0061	alak	bepadlá	1	bepadlotta	1Kir 7:3	És [bepadlá] cédrusdeszkákkal felül a gerendák felett melyek
+R0062	alak	bepecsételé	1	bepecsételte	Jel 20:3	a mélységbe és bezárta azt és [bepecsételé] ő felette hogy többé el ne
+R0063	alak	bepólyálá	1	bepólyálta	Luk 2:7	szülte az ő elsőszülött fiát és [bepólyálá] őt és helyheztette őt a jászolba
+R0064	alak	beszélhetné	1	beszélhetnette	Zsolt 106:2	Ki [beszélhetné] el az Úr nagy tetteit és
+R0065	alak	beszélőkké	1	beszélőkkötte	Mk 7:37	is hallókká teszi a némákat is [beszélőkké]
+R0066	alak	betanítám	1	betanítottam	Ezsd 8:17	vala a Kászifia nevű helyen és [betanítám] őket hogy mit szóljanak Iddónak és
+R0067	alak	beteggé	5	beteggette	2Sám 13:2	gyötrelemben volt pedig Amnon úgy hogy [beteggé] lett az ő hugáért Támárért mert
+R0068	alak	betegségekké	1	betegségekkette	5Móz 28:59	és maradandó csapásokká gonosz és maradandó [betegségekké]
+R0069	alak	beteljesítéd	1	beteljesítetted	2Krón 6:15	mert te magad szóltál és kezeiddel [beteljesítéd] a amint e mai napon megtetszik
+R0070	alak	betolá	2	betolta	2Móz 37:5	És [betolá] a rúdakat a láda oldalán levő
+R0071	alak	betömé	1	betömte	2Krón 32:30	És Ezékiás volt az a aki [betömé] a Gihon vizeinek felső forrását és
+R0072	alak	betűé	1		2Kor 3:6	hogy új szövetség szolgái legyünk nem [betűé] hanem léleké mert a betű megöl
+R0073	alak	bevallám	1	bevallottam	Zsolt 32:5	Vétkemet [bevallám] neked bűnömet el nem fedeztem Azt
+R0074	alak	bevezetéd	1	bevezetted	1Krón 11:2	a aki az Izráelt ki és [bevezetéd] és ezt mondta a te Urad
+R0075	alak	bevivéd	1	bevivted	Neh 9:23	megsokasítád mint az ég csillagait és [bevivéd] őket a földre mely felől megmondád
+R0076	alak	bevonák	1	bevonták	1Móz 19:10	kinyújtották azok a férfiak kezeiket és [bevonák] Lótot magokhoz a házba és bezárták
+R0077	alak	bevádolná	1	bevádolnotta	Préd 10:17	szót és a szárnyas állat is [bevádolná] a te beszédedet
+R0078	alak	bezáratának	2	bezárattak	Neh 13:19	Jeruzsálem kapui a szombat előtt parancsolatomra [bezáratának] az ajtók s megparancsoltam hogy meg
+R0079	alak	bezárná	1	bezárnotta	Mal 1:10	Vajha valaki közületek [bezárná] az ajtót hiába ne tüzelnétek az
+R0080	alak	beárnyékozá	1	beárnyékozta	Luk 9:34	ezeket mondta felhő támadt és azokat [beárnyékozá] ők pedig megfélemlettek mikor azok bementek
+R0081	alak	birhatná	1	birhatnotta	Náh 1:6	állhatna meg haragja előtt és ki [birhatná] ki búsulásának tüzét Heve szétfoly mint
+R0082	alak	birtokotokká	1	birtokotokkotta	4Móz 32:22	Izráel előtt és az a föld [birtokotokká] lesz nektek az Úr előtt
+R0083	alak	birtokává	1	birtokávta	3Móz 27:21	mint valamely neki szentelt mező papok [birtokává] legyen az
+R0084	alak	birákká	1	birákkotta	Jak 2:4	és nem lettetek é gonosz gondolkozású [birákká]
+R0085	alak	biróvá	1	biróvta	Luk 12:14	neki Ember ki tett engem köztetek [biróvá] vagy osztóvá
+R0086	alak	bivalyé	2	bivalyta	4Móz 23:22	az ő ereje mint a vad [bivalyé]
+R0087	alak	bizonysággá	1	bizonysággotta	ApCsel 26:16	meg neked hogy téged szolgává és [bizonysággá] rendeljelek úgy azokban a amiket láttál
+R0088	alak	bizonyítád	2	bizonyítottad	Ez 16:51	övék és így nőtestvéreidet nálad igazabbaknak [bizonyítád] minden útálatosságiddal a amelyeket cselekvél
+R0089	alak	bocsátád	1	bocsátottad	2Sám 3:24	cselekedtél Ímé Abner hozzád jött miért [bocsátád] el őt hogy elmenjen
+R0090	alak	bolonddá	3	bolonddta	Jer 10:14	Minden ember [bolonddá] lett tudomány nélkül minden ötvös megszégyenül
+R0091	alak	bolondsággá	2	bolondsággotta	Ézs 44:25	megbolondítja a bölcseket megszégyeníti és tudományukat [bolondsággá] teszi
+R0092	alak	borrá	2	borrotta	Ján 2:9	Amint pedig megízlelte a násznagy a [borrá] lett vizet és nem tudta vala
+R0093	alak	boráé	1		Hós 14:8	szőlőtő híre olyan lesz mint Libánon [boráé]
+R0094	alak	borítád	1	borítottad	Neh 9:11	a tenger közepén üldözőiket pedig mélységbe [borítád] mint követ nagy vizekbe
+R0095	alak	bosszankodának	1	bosszankodtak	Mt 26:8	Látva pedig ezt az ő tanítványai [bosszankodának] mondva Mire való ez a tékozlás
+R0096	alak	bosszankodék	2	bosszankodtam	2Sám 6:8	És [bosszankodék] Dávid hogy az Úr ilyen romlással
+R0097	alak	botránkozássá	1	botránkozássotta	Róm 11:9	Legyen az ő asztaluk tőrré hálóvá [botránkozássá] és megtorlássá
+R0098	alak	bujdosókká	2	bujdosókkotta	Zsolt 59:12	őket hogy népem meg ne felejtkezzék [bujdosókká] tedd őket a te hatalmaddal és
+R0099	alak	bántalmazák	1	bántalmazták	Mt 22:6	többiek pedig megfogva az ő szolgáit [bántalmazák] és megölték őket
+R0100	alak	bántaná	1	bántanta	Bír 18:7	és nincs senki a aki őket [bántaná] az országban vagy úr volna felettök
+R0101	alak	bátorságosakká	1	bátorságosakkotta	1Ján 3:19	az igazságból vagyunk és így tesszük [bátorságosakká] ő előtte a mi szíveinket
+R0102	alak	bédugák	1	bédugták	ApCsel 7:57	Felkiáltva pedig nagy fenszóval füleiket [bédugák] és egyakarattal rá rohantak
+R0103	alak	békességessé	1	békességessette	Jób 8:6	vagy akkor legott felserken éretted és [békességessé] teszi a te igazságodnak hajlékát
+R0104	alak	bémenének	2	bémentek	1Móz 6:4	azután is mikor az Isten fiai [bémenének] az emberek leányaihoz és azok gyermekeket
+R0105	alak	bérévé	1	bérévte	Mik 1:7	béréből gyűjtögette azokat azért ismét paráznaság [bérévé] legyenek
+R0106	alak	bévevé	1	bévevte	1Móz 8:9	ő pedig kezét kinyujtotta megfogta és [bévevé] azt magához a bárkába
+R0107	alak	bévivé	1	bévivte	1Móz 47:14	a amelyet azok vettek vala és [bévivé] József a pénzt a Faraó házába
+R0108	alak	bírná	1	bírnette	Jób 4:2	zokon veszed é De hát ki [bírná] türtőztetni magát a beszédben
+R0109	alak	bírákká	1	bírákkotta	1Sám 8:1	Sámuel megvénhedett az ő fiait tette [bírákká] Izráel felett
+R0110	alak	bíróvá	3	bíróvta	2Móz 2:14	Kicsoda tett téged fő emberré és [bíróvá] mi rajtunk Talán engem is meg
+R0111	alak	bízná	1	bíznette	Luk 16:11	hamis mammonon hívek nem voltatok ki [bízná] rátok az igazi kincset
+R0112	alak	bölcsebbekké	1	bölcsebbekkette	Jób 35:11	tanít minket a mezei vadaknál és [bölcsebbekké] tesz az ég madarainál
+R0113	alak	bölcsebbé	1	bölcsebbette	Zsolt 119:98	Az én ellenségeimnél [bölcsebbé] teszel engem a te parancsolataiddal mert
+R0114	alak	bölcseké	1	bölcsekte	Préd 9:13	erőseké a viadal és nem a [bölcseké] a kenyér és nem az okosoké
+R0115	alak	bölcseségének	2	bölcseségtek	Zsolt 147:5	mi Urunk és igen hatalmas s [bölcseségének] nincsen határa
+R0116	alak	bújdosókká	1	bújdosókkotta	Jer 15:4	[Bújdosókká] teszem őket e földnek minden országában
+R0117	alak	búsulának	1	búsultak	Bír 20:34	férfiú tört Gibea ellen és neki [búsulának] a harcnak és amazok észre sem
+R0118	alak	büntetésének	1	büntetéstek	Jób 24:1	titkolja el a Mindenható az ő [büntetésének] idejét és miért is nem látják
+R0119	alak	bürökké	1	bürökkötte	Ámós 6:12	azt valaki ökrökön hogy az ítéletet [bürökké] tettétek az igazság gyümölcsét pedig ürömmé
+R0120	alak	bőségesekké	1	bőségesekkette	1Thessz 3:12	pedig gyarapítson az Úr és tegyen [bőségesekké] az egymás iránt és mindenki iránt
+R0121	alak	bőségessé	1	bőségessette	2Kor 4:15	kegyelem sokasodva sokak által a hálaadást [bőségessé] tegye az Isten dicsőségére
+R0122	alak	bővölködővé	2	bővölködővte	5Móz 28:11	És [bővölködővé] tesz téged az Úr minden jóban
+R0123	alak	bűnné	2	bűnnötte	Zsolt 109:7	jöjjön ki még az imádsága is [bűnné] legyen
+R0124	alak	bűnössé	8	bűnössötte	3Móz 4:22	amit nem kellett volna cselekedni és [bűnössé] lesz tévedésből
+R0125	alak	bűnösökké	3	bűnösökkötte	3Móz 4:13	amit nem kellett volna cselekedni és [bűnösökké] lesznek
+R0126	alak	csapdosák	2	csapdosták	Mt 26:67	Akkor szemébe köpdöstek és arcul [csapdosák] őt némelyek pedig botokkal verték
+R0127	alak	csapásokká	1	csapásokkotta	5Móz 28:59	te magodnak csapásait nagy és maradandó [csapásokká] gonosz és maradandó betegségekké
+R0128	alak	cselekedeteké	1	cselekedetekte	Róm 3:27	dicsekedés Kirekesztetett Mely törvény által A [cselekedeteké] által Nem hanem a hit törvénye
+R0129	alak	cselekedné	2	cselekednette	2Sám 16:11	származott kergeti az én életemet hogyne [cselekedné] tehát e Benjáminita Hagyjatok békét neki
+R0130	alak	cselekedéd	2	cselekedted	1Móz 22:16	mondja az Úr mivelhogy e dolgot [cselekedéd] és nem kedveztél a te fiadnak
+R0131	alak	cselekvé	1	cselekvette	Ézs 22:11	nem tekintetek arra a aki ezt [cselekvé] és a aki régen elvégezte ezt
+R0132	alak	csendesíté	1	csendesítette	4Móz 13:31	És jóllehet Káleb [csendesíté] a Mózes ellen háborgó népet és
+R0133	alak	csikorgaták	1	csikorgatták	ApCsel 5:33	Azok pedig ezeket hallva fogukat [csikorgaták] és arról tanácskoztak hogy megölik őket
+R0134	alak	csodálatossá	1	csodálatossotta	Zsolt 31:22	Áldott az Úr hogy [csodálatossá] tette kegyelmét rajtam mint egy megerősített
+R0135	alak	csodálkozám	1	csodálkoztam	Jel 17:6	Jézus bizonyságtevőinek vérétől és nagy csodálkozással [csodálkozám] mikor láttam őt
+R0136	alak	csudálatosakká	1	csudálatosakkotta	5Móz 28:59	[Csudálatosakká] teszi az Úr a te csapásaidat
+R0137	alak	csudává	9	csudávta	Zsolt 71:7	Mintegy [csudává] lettem sokaknak de te vagy az
+R0138	alak	császáré	4	császárta	Mt 22:21	Mondták neki A [császáré] Akkor mondta nekik Adjátok meg azért
+R0139	alak	cséplőhengerré	1	cséplőhengerrette	Ézs 41:15	Ímé én teszlek éles új [cséplőhengerré] a amelynek két élt van hegyeket
+R0140	alak	csúffá	4	csúffotta	1Móz 38:23	És mondta Júda Tartsa magának hogy [csúffá] ne legyünk ímé én megküldöttem volt
+R0141	alak	csúfjává	2	csúfjávta	Zsolt 39:9	minden álnokságomból ne tégy engem bolondok [csúfjává]
+R0142	alak	csúfsággá	6	csúfsággotta	Zsolt 31:12	Temérdek üldözőm miatt [csúfsággá] lettem kivált szomszédaimé és ismerőseimnek félelmévé
+R0143	alak	csúszómászóké	1	csúszómászókta	Jak 3:7	Mert minden természet vadállatoké madaraké [csúszómászóké] és vízieké megszelídíthető és meg is
+R0144	alak	csüggesztéd	1	csüggesztetted	1Móz 4:6	Kainnak Miért gerjedtél haragra és miért [csüggesztéd] le fejedet
+R0145	alak	dagadtá	1	dagadtotta	4Móz 5:21	te tomporodat és a te méhedet [dagadtá] tévén
+R0146	alak	dicsekvésének	1	dicsekvéstek	Ézs 13:19	Babilon a királyságok ékessége a Khaldeusok [dicsekvésének] dísze mint a hogyan elpusztította Isten
+R0147	alak	dicsérém	1	dicsértem	Préd 4:2	És [dicsérém] én a megholtakat a akik már
+R0148	alak	dicsőségessé	2	dicsőségessette	Ézs 42:21	hogy a törvényt naggyá teszi és [dicsőségessé]
+R0149	alak	dicsőítené	1	dicsőítente	Jel 15:4	félne téged Uram és ki ne [dicsőítené] a te nevedet mert csak egyedül
+R0150	alak	dicsőíttetvén	1	dicsőíttetve	Luk 4:15	És ő tanított azoknak zsinagógáiban [dicsőíttetvén] mindenektől
+R0151	alak	dobá	1	dobta	Bír 8:25	leterítettek egy ruhát és mindenki arra [dobá] a fülön függőket melyeket prédául ejtett
+R0152	alak	dolgoztaták	1	dolgoztatták	2Móz 1:13	Pedig kegyetlenül [dolgoztaták] az égyiptomiak az Izráel fiait
+R0153	alak	drágábbá	1	drágábbotta	Ézs 13:12	[Drágábbá] teszem az embert a színaranynál és
+R0154	alak	dárdákká	1	dárdákkotta	Jóel 3:10	Kovácsoljátok szántóvasaitokat kardokká kaszáitokat [dárdákká] mondja a beteg is Hős vagyok
+R0155	alak	dávidé	10	dávidta	Zsolt 25:1	[Dávidé] Hozzád emelem Uram lelkemet
+R0156	alak	délfelé	6	délfelte	1Móz 12:9	És tovább költözött Ábrám folyton [délfelé] húzódva
+R0157	alak	döfé	1	döfte	Ján 19:34	Hanem egy a vitézek közül dárdával [döfé] meg az ő oldalát és azonnal
+R0158	alak	egybefoglalák	2	egybefoglalták	2Móz 36:9	ismét a más öt kárpitot is [egybefoglalák] egyiket a másikkal
+R0159	alak	egybeüté	1	egybeütötte	4Móz 24:10	felgerjedt Báláknak haragja Bálám ellen és [egybeüté] kezeit és mondta Bálák Bálámnak Azért
+R0160	alak	egyenesekké	1	egyenesekkette	Luk 3:5	és halom megalacsonyíttatik és az egyenetlenek [egyenesekké] és a göröngyös útak símákká lesznek
+R0161	alak	egyenessé	3	egyenessette	Préd 7:13	az Istennek cselekedetit mert kicsoda teheti [egyenessé] a amit ő görbévé tett
+R0162	alak	egyenlőkké	1	egyenlőkkötte	Mt 20:12	az utolsók egyetlen óráig munkálkodtak és [egyenlőkké] tetted azokat velünk a akik a
+R0163	alak	egyenlővé	2	egyenlővte	Ézs 46:5	Kihez hasonlíttok engem és kivel tesztek [egyenlővé] És kivel vettek egybe hogy hasonlók
+R0164	alak	egyiké	1	egyte	3Móz 7:10	mind az Áron fiaié legyen közösen [egyiké] úgy mint a másiké
+R0165	alak	egymásfelé	1	egymásfelta	2Móz 25:20	fölfelé betakarva szárnyaikkal a fedelet arcaik [egymásfelé] legyenek a Kérubok arcai a fedél
+R0166	alak	egyé	2	egyte	Ez 45:7	olyan lesz mint a részek közül [egyé] a napnyugoti határtól a napkeleti határig
+R0167	alak	egészségesekké	1	egészségesekkette	2Kir 2:22	És [egészségesekké] lettek a vizek mind e mai
+R0168	alak	elbeszélé	1	elbeszélte	2Kir 8:6	a király az asszonyt és az [elbeszélé] neki és adott a király ő
+R0169	alak	elbocsátád	1	elbocsátottad	1Sám 19:17	Mi dolog hogy engem úgy megcsaltál [elbocsátád] az én ellenségemet és ő elmenekült
+R0170	alak	elbízád	1	elbíztad	Ez 16:15	De [elbízád] magadat szépségedben és paráznává lett híred
+R0171	alak	elcsené	1	elcsente	Ján 12:6	erszény és amit abba tettek vala [elcsené]
+R0172	alak	eledelévé	4	eledelévte	5Móz 28:26	És [eledelévé] lesz a te holttested az ég
+R0173	alak	eledelökké	1	eledelökkötte	Jer 7:33	madarainak és a mezei barmoknak lesz [eledelökké] és nem lesz a aki elriassza
+R0174	alak	elejének	2	elejtek	Ez 41:14	a ház és az elkülönített hely [elejének] szélességét kelet felé száz singre
+R0175	alak	elfedezé	2	elfedezte	1Móz 24:65	ő Akkor fogta a fátyolt és [elfedezé] magát
+R0176	alak	elfeledtté	1	elfeledttette	Náh 3:11	Te is megrészegedel [elfeledtté] leszel te is keresel majd menedéket
+R0177	alak	elfogadák	1	elfogadták	Eszt 9:27	Elhatározták és [elfogadák] a zsidók mind magokra mind ivadékokra
+R0178	alak	elfoglalná	1	elfoglalnotta	2Krón 35:20	az Eufrátes mellett való Kárkemis városát [elfoglalná] és Jósiás ellene ment
+R0179	alak	elfojtá	1	elfojtotta	Ámós 1:11	mert fegyverrel űzte saját atyjafiát és [elfojtá] szívében az irgalmasságot és haragja szüntelen
+R0180	alak	elfátyolozá	1	elfátyolozta	1Móz 38:14	Levetette azért magáról özvegyi ruháját [elfátyolozá] és beburkolá magát és leüle Enajim
+R0181	alak	elgondolám	1	elgondoltam	Ézs 14:24	seregeknek Ura mondva Úgy lesz mint [elgondolám] úgy megy véghez mint elvégeztem
+R0182	alak	elhagyottá	3	elhagyottotta	Zsolt 37:25	is vénhedtem de nem láttam hogy [elhagyottá] lett volna az igaz a magzatja
+R0183	alak	elhalasztá	1	elhalasztotta	ApCsel 24:22	Mikor pedig ezeket hallotta Félix [elhalasztá] dolgukat mivelhogy tüzetesebb tudomása volt e
+R0184	alak	elhallgatám	1	elhallgattam	Zsolt 32:3	Míg [elhallgatám] megavultak csontjaim a napestig való jajgatás
+R0185	alak	elhivaták	2	elhivatták	1Kir 12:3	És hozzá küldve [elhivaták] őt elmentek Jeroboám és az Izráel
+R0186	alak	elhordozám	1	elhordoztam	Józs 24:3	Ábrahámot a folyóvíz túlsó oldaláról és [elhordozám] őt az egész Kanaán földén és
+R0187	alak	elhordák	2	elhordták	1Kir 15:22	Júdát senkit ki nem hagyva és [elhordák] Rámának mind köveit mind fáját a
+R0188	alak	elhányák	2	elhányták	1Sám 7:4	[Elhányák] azért Izráel fiai a bálványokat és
+R0189	alak	elhívná	1	elhívnette	2Krón 18:12	pedig a aki elment volt hogy [elhívná] Mikeást szólt neki mondva Ímé a
+R0190	alak	eljövén	20	eljöve	1Sám 3:10	Akkor [eljövén] az Úr oda állt és szólította
+R0191	alak	elküldé	1	elküldte	Luk 15:15	a vidéknek egyik polgárához és az [elküldé] őt az ő mezeire disznókat legeltetni
+R0192	alak	elküldéd	1	elküldted	Ézs 57:9	királyhoz olajjal és megsokasítád keneteidet és [elküldéd] követeidet messze földre és megaláztad magadat
+R0193	alak	ellenségeddé	1	ellenségeddte	1Sám 28:16	ha az Úr eltávozott tőled és [ellenségeddé] lett
+R0194	alak	ellenségeimmé	1	ellenségeimmette	Zsolt 139:22	Teljes gyűlölettel gyűlölöm őket [ellenségeimmé] lettek
+R0195	alak	ellenségeivé	1	ellenségeivte	Sir 1:2	közül kik szerették mind megcsalták barátai [ellenségeivé] lettek
+R0196	alak	ellenségévé	1	ellenségévte	Jak 4:4	világ barátja akar lenni az Isten [ellenségévé] lesz
+R0197	alak	ellenségükké	1	ellenségükkötte	Ézs 63:10	és megszomorították szentségének lelkét és ő [ellenségükké] lett hadakozott ellenük
+R0198	alak	ellepé	1	ellepte	Zsolt 80:10	egyengettél előtte és gyökeret eresztett és [ellepé] a földet
+R0199	alak	ellepék	3	ellepett	2Móz 8:6	vizeire és békák jöttek fel és [ellepék] Égyiptom földét
+R0200	alak	ellövé	2	ellövte	1Sám 20:36	ellövök És mikor a gyermek elfutott [ellövé] a nyilat úgy hogy rajta túl
+R0201	alak	elmondaná	2	elmondanta	Jób 37:19	Elbeszélik é neki ha szólok Ha [elmondaná] valaki bizony vége volna
+R0202	alak	elmosám	1	elmostam	Ez 16:9	És megmosálak vízzel és [elmosám] rólad véredet és megkenélek olajjal
+R0203	alak	elmulának	1	elmultak	Jób 17:10	Napjaim [elmulának] szívemnek kincsei terveim meghiusulának
+R0204	alak	eloldaték	1	eloldatott	Jel 9:15	[Eloldaték] azért a négy angyal a aki
+R0205	alak	eloldák	2	eloldották	Mk 11:4	ajtónál kívül a kettős útnál és [eloldák] azt
+R0206	alak	eloszlatá	1	eloszlatta	1Krón 14:11	megverte és mondta Dávid Az Isten [eloszlatá] az én ellenségeimet az én kezem
+R0207	alak	elosztád	1	elosztottad	Neh 9:22	annakfelette nekik országokat és népeket és [elosztád] ezeket határok szerint és ők elfoglalták
+R0208	alak	elpusztítaná	1	elpusztítanta	1Krón 21:15	annakfelette angyalt az Úr Jeruzsálemre hogy [elpusztítaná] azt És mikor vágná a népet
+R0209	alak	elpusztítád	1	elpusztítottad	Ézs 14:20	Nem egyesülsz velük a sírban mert [elpusztítád] földedet megölted népedet nem él sokáig
+R0210	alak	elragadozák	1	elragadozták	Bír 2:14	adta őket a ragadozók kezébe és [elragadozák] őket és adta őket a körülöttük
+R0211	alak	elrejtéd	2	elrejtetted	Zsolt 30:8	jókedvedből erősséget állítottál föl hegyemre de [elrejtéd] orcádat és megroskadtam
+R0212	alak	elszakasztatának	1	elszakasztattak	Bír 20:31	a Benjámin fiai a nép ellen [elszakasztatának] a várostól és elkezdették a népet
+R0213	alak	elszakasztatánk	1	elszakasztattunk	1Thessz 2:17	Mi pedig atyámfiai a amint [elszakasztatánk] tőletek egy kevés ideig arcra nem
+R0214	alak	elszárasztá	1	elszárasztotta	Ez 19:12	földre vettetett és a napkeleti szél [elszárasztá] gyümölcsét letörettek és elszáradtak erős ágai
+R0215	alak	elszéleszté	3	elszélesztette	1Móz 11:8	És [elszéleszté] őket onnan az Úr az egész
+R0216	alak	elsülyedének	1	elsülyedtek	Luk 5:7	a két hajót annyira hogy csaknem [elsülyedének]
+R0217	alak	elsőszülöttemmé	1	elsőszülöttemmette	Zsolt 89:28	Én meg [elsőszülöttemmé] teszem őt és felebbvalóvá a föld
+R0218	alak	elsőszülötté	1	elsőszülöttötte	5Móz 21:16	teszi a maga jószágában nem teheti [elsőszülötté] a szeretettnek fiát a gyűlöltnek fia
+R0219	alak	eltheké	1	elthekte	Józs 19:44	[Eltheké] Gibbethon és Baaláth
+R0220	alak	eltávolítá	2	eltávolította	2Krón 33:15	És [eltávolítá] az idegen isteneket és a bálványt
+R0221	alak	eltékozlá	1	eltékozlotta	Luk 15:13	mindenét messze vidékre költözött és ott [eltékozlá] vagyonát mivelhogy dobzódva élt
+R0222	alak	eltökélé	1	eltökélte	Dán 1:8	De Dániel [eltökélé] az ő szívében hogy nem fertőzteti
+R0223	alak	eltöreté	1	eltörette	2Krón 14:3	oltárait és a magaslatokat a bálványokat [eltöreté] és az Aserákat kivágatta
+R0224	alak	eltörlé	1	eltörlötte	4Móz 21:3	és kézbe adta a Kananeust és [eltörlé] őket és azoknak városait És nevezte
+R0225	alak	eltörléd	1	eltörlötted	Ézs 26:14	meg és vesztéd el őket és [eltörléd] emlékezetöket
+R0226	alak	eltörlém	1	eltörlöttem	Józs 24:8	bírtátok az ő földüket őket pedig [eltörlém] a ti orcátok elől
+R0227	alak	elvagdaltatá	2	elvagdaltatta	2Sám 8:4	és húszezer gyalog embert és inaikat [elvagdaltatá] Dávid minden szekeres lovaknak és csak
+R0228	alak	elvagdalák	1	elvagdalták	2Sám 4:12	ő szolgáinak hogy megöljék őket és [elvagdalák] kezeiket és lábaikat és felakaszták őket
+R0229	alak	elvenné	1	elvennette	1Sám 25:39	elküldött Dávid és izent Abigailnak hogy [elvenné] őt feleségéül
+R0230	alak	elvesztené	1	elvesztente	Zsolt 139:19	Vajha [elvesztené] Isten a gonoszt Vérszopó emberek fussatok
+R0231	alak	elveszítém	1	elveszítettem	Ez 16:50	felfuvalkodtak s cselekedtek útálatosságot előttem és [elveszítém] őket mikor ezt megláttam
+R0232	alak	elvágák	1	elvágták	ApCsel 27:32	Akkor a vitézek [elvágák] a csolnak köteleit és ki hagyták
+R0233	alak	elzáraték	1	elzáratott	Ez 31:15	folyóikat úgy hogy a sok víz [elzáraték] s meggyászoltatám őt a Libánonnal és
+R0234	alak	elzárák	1	elzárták	Bír 7:24	És egybegyűle Efraimnak minden férfia és [elzárák] a vizeket Béthbaráig és a Jordánt
+R0235	alak	elájulék	1	elájultam	Dán 8:27	És én Dániel [elájulék] és beteg voltam néhány napig de
+R0236	alak	elám	3	eltem	1Krón 26:3	[Elám] ötödik Jóhanán hatodik Eljehoénai hetedik
+R0237	alak	elának	1	eltek	1Kir 16:14	[Elának] egyéb dolgai pedig és minden cselekedetei
+R0238	alak	elégíthetné	1	elégíthetnette	Mk 8:4	ő tanítványai pedig feleltek neki Honnan [elégíthetné] meg ezeket valaki kenyérrel itt e
+R0239	alak	eléhívatá	1	eléhívatta	Mt 25:14	ember a aki útra akarva kelni [eléhívatá] az ő szolgáit és a amije
+R0240	alak	elültetéd	1	elültetted	Zsolt 80:9	ki kiűzéd a pogányokat és azt [elültetéd]
+R0241	alak	előadá	1	előadta	1Sám 10:25	Sámuel pedig [előadá] a nép előtt a királyság jogát
+R0242	alak	előhivá	1	előhivte	Józs 4:4	[Előhivá] azért Józsué a tizenkét férfiút a
+R0243	alak	előhíván	1	előhíva	Mt 18:2	És [előhíván] Jézus egy kis gyermeket közéjük állította
+R0244	alak	előjövén	7	előjöve	Ézs 27:11	ha megszáradnak gallyai összetöretnek az asszonyok [előjövén] megégetik azokat mert értelem nélkül való
+R0245	alak	előljáróiddá	1	előljáróiddta	Ézs 60:17	és teszem fejedelmeiddé a békességet és [előljáróiddá] az igazságot
+R0246	alak	előljáróitokká	2	előljáróitokkotta	5Móz 1:13	törzseitekben ismeretes férfiakat és én azokat [előljáróitokká] teszem
+R0247	alak	előljárójává	1	előljárójávta	Dán 2:48	felett és a babiloni összes bölcseknek [előljárójává] tette őt
+R0248	alak	előljárókká	1	előljárókkotta	2Móz 18:21	gyűlölik a haszonlesést és tedd közöttük [előljárókká] ezeredesekké századosokká ötvenedesekké és tizedesekké
+R0249	alak	előljáróvá	4	előljáróvta	2Sám 23:23	ama hárommal nem ért fel És [előljáróvá] tette őt Dávid a tanácsosok között
+R0250	alak	előreállítá	1	előreállította	1Móz 33:2	És [előreállítá] a szolgálókat és azok gyermekeit ezek
+R0251	alak	előállatá	7	előállatta	3Móz 8:6	És [előállatá] Mózes Áront és az ő fiait
+R0252	alak	emberré	4	emberrette	2Móz 2:14	pedig mondta Kicsoda tett téged fő [emberré] és bíróvá mi rajtunk Talán engem
+R0253	alak	emberé	3	emberte	2Sám 18:7	ott azon a napon mintegy húszezer [emberé]
+R0254	alak	emberéé	1		Zsolt 37:37	becsületest mert a jövendő a béke [emberéé]
+R0255	alak	emelhetné	1	emelhetnette	1Sám 26:9	veszesd el őt Mert vajon ki [emelhetné] fel kezét az Úrnak felkentje ellen
+R0256	alak	emésztéd	1	emésztetted	Neh 9:31	De nagy irgalmasságod szerint meg nem [emésztéd] őket sem el nem hagyád őket
+R0257	alak	engedetlenné	1	engedetlennette	5Móz 2:30	te Istened az ő lelkét és [engedetlenné] tette az Ő szívét hogy a
+R0258	alak	engedné	2	engednette	Mt 24:43	el a tolvaj vigyázna és nem [engedné] hogy házába törjön
+R0259	alak	enyimekké	1	enyimekkette	Ez 23:4	nagyobbik és húga Oholibá és lettek [enyimekké] és szültek fiakat és leányokat A
+R0260	alak	epeszté	1	epesztette	Zsolt 106:14	Epekedés [epeszté] őket a pusztában és próbára tették
+R0261	alak	erdővé	1	erdővte	Hós 2:11	az én szeretőim adtak nekem és [erdővé] teszem azokat és a mezei vad
+R0262	alak	erősekké	4	erősekkette	Zsolt 147:13	Mert [erősekké] teszi kapuid zárait s megáldja benned
+R0263	alak	erőseké	1	erősekte	Préd 9:13	gyorsaké a futás és nem az [erőseké] a viadal és nem a bölcseké
+R0264	alak	erőssé	3	erőssötte	4Móz 30:13	a maga megsanyargattatására a férje teszi [erőssé] és a férje teszi azt erőtlenné
+R0265	alak	erősségévé	1	erősségévte	Zsolt 52:9	férfiú a aki nem Istent fogadta [erősségévé] hanem az ő gazdagságának sokaságában bízott
+R0266	alak	erőtelenekké	1	erőtelenekkette	4Móz 30:15	Ha pedig azután teszi [erőtelenekké] azokat minekutána hallotta vala ő hordozza
+R0267	alak	erőtelenné	5	erőtelennette	Ézs 14:27	Ura végezte és ki teszi azt [erőtelenné] Az ő keze fel van emelve
+R0268	alak	erőtlenné	5	erőtlennette	3Móz 25:35	a te atyádfia elszegényedik és keze [erőtlenné] lesz melletted segítsd meg őt akár
+R0269	alak	esetének	1	esettek	Róm 5:14	is a akik nem az Ádám [esetének] hasonlatossága szerint vétkeztek a aki ama
+R0270	alak	estefelé	2	estefelte	2Sám 11:2	És lett [estefelé] mikor felkelt Dávid az ő ágyából
+R0271	alak	estél	4	estettél	1Sám 15:19	hallgattál az Úrnak szavára és miért [estél] neki a prédának és cselekedted azt
+R0272	alak	esék	1	esett	Jób 3:25	rám és a amitől rettegtem az [esék] rajtam
+R0273	alak	esém	10	estem	Ez 1:28	dicsőségének formája és láttam és orcámra [esém] és hallottam egy szólónak szavát
+R0274	alak	evezének	1	eveztek	Luk 8:26	És [evezének] a Gaderénusok tartományaiba mely Galileával átellenben
+R0275	alak	evezénk	3	eveztünk	ApCsel 20:13	Mi pedig előremenve a hajóra Assusba [evezénk] ott akarva fölvenni Pált mert így
+R0276	alak	evém	2	ettem	1Móz 3:12	adott nekem arról a fáról úgy [evém]
+R0277	alak	ezeké	3	ezekte	Bír 21:17	mondták A Benjáminiták birtoka örökség szerint [ezeké] a akik megmaradtak mert nem szabad
+R0278	alak	ezeredesekké	2	ezeredesekkette	2Móz 18:21	a haszonlesést és tedd közöttük előljárókká [ezeredesekké] századosokká ötvenedesekké és tizedesekké
+R0279	alak	ezredesekké	3	ezredesekkette	5Móz 1:15	ismeretes férfiakat és tettem őket előljáróitokká [ezredesekké] századosokká ötvenedesekké tizedesekké és tiszttartókká a
+R0280	alak	ezredesévé	1	ezredesévte	1Sám 18:13	És Saul elbocsátotta őt magától és [ezredesévé] tette és kiment vala és bejött
+R0281	alak	ezüstsalakká	1	ezüstsalakkotta	Ez 22:18	vas és ólom a kemence közepette [ezüstsalakká] lettek
+R0282	alak	fakadékká	1	fakadékkotta	3Móz 13:2	és az ő testének bőrén poklos [fakadékká] lehet vigyék el az ilyet Áronhoz
+R0283	alak	fakósárgává	1	fakósárgávta	Jer 30:6	mintegy gyermekszűlőét és miért változtak orcáik [fakósárgává]
+R0284	alak	falevél	1	falevtál	3Móz 26:36	földén és megkergeti őket a szállongó [falevél] zörrenése és futnak mintha fegyver elől
+R0285	alak	farkká	1	farkkotta	5Móz 28:13	tesz téged az Úr és nem [farkká] és mindinkább feljebbvaló leszesz és nem
+R0286	alak	favágóivá	1	favágóivta	Józs 9:21	főemberek nekik Ám éljenek És lettek [favágóivá] és vízhordozóivá az egész gyülekezetnek a
+R0287	alak	favágókká	1	favágókkotta	Józs 9:27	tette őket Józsué azon a napon [favágókká] és vízhordókká a gyülekezethez és az
+R0288	alak	feddhetetlenekké	1	feddhetetlenekkette	1Thessz 3:13	Hogy erősekké tegye a ti szíveteket [feddhetetlenekké] a szentségben a mi Istenünk és
+R0289	alak	feddődém	1	feddődtem	Neh 13:25	Annakokáért [feddődém] velük és megátkoztam őket és megverték
+R0290	alak	fedezé	1	fedezte	Ez 1:11	két szárny összeért vala kettő pedig [fedezé] testüket
+R0291	alak	fedé	2	fedte	Ézs 6:2	hat hat szárnya volt kettővel orcáját [fedé] be kettővel lábait fedé be és
+R0292	alak	fehérré	9	fehérrette	3Móz 13:3	fakadékot Ha a szőr a fakadékban [fehérré] változott és ha a fakadéknak felülete
+R0293	alak	fejedelemmé	10	fejedelemmette	1Móz 41:41	Mondta továbbá a Faraó Józsefnek Ímé [fejedelemmé] tettelek az egész Égyiptom földén
+R0294	alak	fejedelemé	4	fejedelemte	Ez 48:21	A Ami pedig megmaradt a [fejedelemé] lesz a szent áldozatnak és a
+R0295	alak	fejedelmeiddé	1	fejedelmeiddte	Ézs 60:17	a kövek helyett vasat és teszem [fejedelmeiddé] a békességet és előljáróiddá az igazságot
+R0296	alak	fejedelmeinké	1	fejedelmeinkette	Dán 9:8	Uram orcánk pirulása a mi királyainké [fejedelmeinké] és atyáinké a akik vétkeztünk ellened
+R0297	alak	fejedelmekké	2	fejedelmekkette	Zsolt 45:17	Atyáid helyett fiaid lesznek megteszed őket [fejedelmekké] mind az egész földön
+R0298	alak	fejedelmévé	3	fejedelmévte	1Móz 45:8	házának urává és Égyiptom egész földének [fejedelmévé]
+R0299	alak	fejeivé	1	fejeivte	2Móz 18:25	Izráelből derék férfiakat és a nép [fejeivé] tette őket ezeredesekké századosokká ötvenedesekké és
+R0300	alak	fejetekké	1	fejetekkette	Bír 11:9	kezembe adja őket az Úr igazán [fejetekké] leszek
+R0301	alak	fejjé	1	fejjette	5Móz 28:13	És [fejjé] tesz téged az Úr és nem
+R0302	alak	fejté	1	fejtette	1Móz 41:12	álmainkat mindegyikünknek az ő álma szerint [fejté] meg
+R0303	alak	fejévé	10	fejévte	Bír 11:11	véneivel és a nép a maga [fejévé] és fejedelmévé tette őt És megmondta
+R0304	alak	feketévé	2	feketévte	Mt 5:36	egyetlen hajszálat sem tehetsz fehérré vagy [feketévé]
+R0305	alak	fekteté	4	fektette	1Sám 19:13	Mikál a theráfot és az ágyba [fekteté] azt és feje alá kecskeszőrből készült
+R0306	alak	fekvőhelyévé	2	fekvőhelyévte	Ézs 65:10	nyájak legelőjévé és Ákhor völgye barmok [fekvőhelyévé] népem számára a amely engem keresett
+R0307	alak	fekéllyé	1	fekéllyette	2Móz 9:9	s emberen és barmon hólyagosan fakadó [fekéllyé] legyen Égyiptomnak egész földén
+R0308	alak	felajánlá	1	felajánlotta	Bír 6:19	kivitte hozzá a cserfa alá és [felajánlá] neki
+R0309	alak	felakasztatá	3	felakasztatta	1Móz 40:22	A fősütőmestert pedig [felakasztatá] a amiképpen magyarázta vala nekik József
+R0310	alak	felakasztá	2	felakasztotta	Józs 8:29	Ainak királyát pedig [felakasztá] fára és ott volt estvéig de
+R0311	alak	felakaszták	4	felakasztották	2Sám 4:12	és elvagdalák kezeiket és lábaikat és [felakaszták] őket Hebronban a halastó mellett Isbósetnek
+R0312	alak	felcserélé	1	felcserélte	Jer 52:33	És [felcserélé] tömlöcbeli ruháit és mindenkor vele evett
+R0313	alak	feldarabolá	1	feldarabolta	1Sám 11:7	És vett egy pár ökröt és [feldarabolá] azokat és a követektől elküldte Izráelnek
+R0314	alak	felduzzasztá	1	felduzzasztotta	Zsolt 107:25	ugyanis és szélvészt támasztott a amely [felduzzasztá] a habokat
+R0315	alak	feldúlák	1	feldúlták	1Móz 34:27	Jákób fiai a megölteknek estek és [feldúlák] a várost mivelhogy megszeplősítették volt az
+R0316	alak	felebarátodé	2	felebarátodta	2Móz 20:17	és semmit a ami a te [felebarátodé]
+R0317	alak	felebbvalóvá	1	felebbvalóvta	Zsolt 89:28	Én meg elsőszülöttemmé teszem őt és [felebbvalóvá] a föld királyainál
+R0318	alak	felemelné	2	felemelnette	Ézs 10:15	aki őt felemelte és a pálca [felemelné] azt a ami nem fa
+R0319	alak	feleségemmé	1	feleségemmette	1Móz 20:12	én anyámnak leánya és így lett [feleségemmé]
+R0320	alak	feleségévé	3	feleségévte	5Móz 22:29	ezüst siklust a leány pedig legyen [feleségévé] Mivelhogy meggyalázta azt nem bocsáthatja el
+R0321	alak	felfakadának	1	felfakadtak	1Móz 7:11	második hónapban e hónap tizenhetedik napján [felfakadának] ezen a napon a nagy mélység
+R0322	alak	felfegyverzé	1	felfegyverzette	1Móz 14:14	hogy az ő atyjafia fogságba esett [felfegyverzé] házában növekedett háromszáz tizennyolc próbált legényét
+R0323	alak	felfogadák	2	felfogadták	2Sám 10:6	követet küldtek az Ammon fiai és [felfogadák] Siriában a Béth Réhóbbelieket és ugyancsak
+R0324	alak	felfuvalkodottá	1	felfuvalkodottotta	1Kor 8:1	hogy mindnyájunknak van ismeretünk Az ismeret [felfuvalkodottá] tesz a szeretet pedig épít
+R0325	alak	felgyujtatá	1	felgyujtatta	Józs 8:28	Ait pedig [felgyujtatá] Józsué és tette örökkévaló kőhalommá pusztassággá
+R0326	alak	felhalmozá	4	felhalmozta	1Móz 41:49	És [felhalmozá] József a gabonát mint a tenger
+R0327	alak	felingerlé	1	felingerlette	2Sám 24:1	az Úrnak haragja Izráel ellen és [felingerlé] Dávidot ő ellenek ezt mondva Eredj
+R0328	alak	feljebbvalóvá	1	feljebbvalóvta	5Móz 28:1	neked akkor e földnek minden népénél [feljebbvalóvá] tesz téged az Úr a te
+R0329	alak	feljövén	3	feljöve	2Kir 16:9	És engedett neki Assiria királya és [feljövén] Assiria királya Damaskus ellen bevette azt
+R0330	alak	felkelvén	2	felkelve	Mt 9:7	És az [felkelvén] haza ment
+R0331	alak	felkenéd	1	felkented	2Móz 40:15	őket a amint az ő atyjukat [felkenéd] hogy legyenek papjaim és lesz az
+R0332	alak	felköté	4	felkötötte	3Móz 8:13	ő köntöseikbe és felövezte őket övvel [felköté] nekik a süvegeket is a amint
+R0333	alak	felmagasztalád	1	felmagasztaltad	Zsolt 138:2	és igazságodért mert minden neveden felül [felmagasztalád] a te beszédedet
+R0334	alak	felnevelé	1	felnevelte	ApCsel 7:21	kitétetett a Faraó leánya felvette és [felnevelé] őt a saját fia gyanánt
+R0335	alak	feloldatá	1	feloldatta	ApCsel 22:30	bizonyos valóságot miben vádoltatik a zsidóktól [feloldatá] őt bilincseiből és megparancsolta hogy a
+R0336	alak	feloszlatá	1	feloszlatta	ApCsel 19:40	ezért a csődületért És ezeket mondva [feloszlatá] a gyűlést
+R0337	alak	felragadák	1	felragadták	Jón 1:15	És [felragadák] Jónást és bevetették őt a tengerbe
+R0338	alak	feltakarák	1	feltakarták	Ez 23:10	Azok [feltakarák] szemérmét fiait és leányit elvitték s
+R0339	alak	feltámadásáé	1		Róm 6:5	hasonlatossága szerint vele eggyé lettünk bizonyára [feltámadásáé] szerint is azok leszünk
+R0340	alak	felvagdalá	1	felvagdalta	1Kir 18:33	És oda készítette a fát és [felvagdalá] a tulkot és felrakta azt a
+R0341	alak	felvigyázójává	1	felvigyázójávta	1Móz 39:4	és szolgált vala neki és háza [felvigyázójává] tette és mindenét a amije volt
+R0342	alak	felzavará	1	felzavarta	Ján 5:4	időnként angyal szállt a tóra és [felzavará] a vizet a aki tehát először
+R0343	alak	feláldozák	1	feláldozták	Zsolt 106:37	És [feláldozák] fiaikat és leányaikat az ördögöknek
+R0344	alak	felékesítéd	1	felékesítetted	Ez 16:13	És [felékesítéd] magadat arannyal és ezüsttel és öltözeted
+R0345	alak	feléé	1		Józs 13:31	a Manassé fiának Mákirnak fiaié Mákir [feléé] az ő családjaik szerint
+R0346	alak	felövezéd	1	felövezted	Ján 21:18	mondom neked a amikor ifjabb voltál [felövezéd] magadat és oda mentél vala a
+R0347	alak	felügyelőkké	1	felügyelőkkötte	Neh 13:13	És [felügyelőkké] rendeltem a tárházak fölé Selemiát a
+R0348	alak	felülhaladá	1	felülhaladta	Dán 6:3	Akkor ez a Dániel [felülhaladá] az igazgatókat és a tiszttartókat mivelhogy
+R0349	alak	felüté	1	felütötte	1Móz 12:8	hegység felé ment Bétheltől keletre és [felüté] sátorát Béthel volt nyugatra Hái pedig
+R0350	alak	felűlének	1	felűltek	1Móz 24:61	Rebeka és az ő szolgálóleányai és [felűlének] a tevékre s követték azt a
+R0351	alak	fenyíték	1	fenyítettem	Péld 5:23	Ő meghal [fenyíték] híján és bolondságának sokasága miatt támolyog
+R0352	alak	fertelmessé	1	fertelmessette	3Móz 18:27	lakosai a amely előttetek van és [fertelmessé] lett az a föld
+R0353	alak	fertőzötté	2	fertőzöttötte	3Móz 18:25	És [fertőzötté] lett az a föld de meglátogatom
+R0354	alak	fiaidé	3	fiaidta	3Móz 10:15	kiszabott részed és veled a te [fiaidé] örökké a amint megparancsolta vala az
+R0355	alak	fiaimmá	1	fiaimmotta	2Kor 6:18	leszek nektek Atyátok és ti lesztek [fiaimmá] és leányaimmá azt mondja a mindenható
+R0356	alak	fiainké	2	fiainkotta	1Móz 31:16	mi atyánktól miénk és a mi [fiainké] Most azért valamit neked az Isten
+R0357	alak	fiaivá	2	fiaivta	Ján 1:12	őt hatalmat adott azoknak hogy Isten [fiaivá] legyenek azoknak a akik az ő
+R0358	alak	fiaié	20		2Móz 9:4	között és mindabból a ami Izráel [fiaié] egy sem vész el
+R0359	alak	fiává	3	fiávta	Jób 30:29	Atyjuk [fiává] lettem a sakáloknak és társokká a
+R0360	alak	fiáé	3		1Móz 24:24	neki Bethuél leánya vagyok a Milkha [fiáé] a akit ő Nákhornak szült
+R0361	alak	fogadád	1	fogadtad	2Krón 25:16	mivel ezt műveléd és tanácsomat nem [fogadád] meg
+R0362	alak	foganának	1	fogantak	1Móz 30:39	És a juhok a vesszők előtt [foganának] és elltek vala csíkos lábúakat pettyegetetteket
+R0363	alak	foghatná	1	foghatnotta	Ján 21:25	vélem hogy maga a világ sem [foghatná] be a könyveket a amelyeket írnának
+R0364	alak	foglalatosakká	2	foglalatosakkotta	Ez 44:8	szentségeimhez való szolgálatban hanem azokat tettétek [foglalatosakká] szolgálatomban az én szenthelyemen magatok helyett
+R0365	alak	foglyokká	2	foglyokkotta	Jer 43:12	isteneinek házaiban és felégeti azokat és [foglyokká] teszi őket és magára ölti Égyiptom
+R0366	alak	fonalakká	1	fonalakkotta	2Móz 39:3	aranyból vékony lapokat vertek és azokat [fonalakká] metélték hogy feldolgozzák a kék és
+R0367	alak	forgatná	1	forgatnotta	Ézs 10:15	aki vonsza azt Mintha a bot [forgatná] azt a aki őt felemelte és
+R0368	alak	forrásivá	2	forrásivta	Ézs 35:7	délibáb és a szomjú föld vizek [forrásivá] a sakálok lakhelyén a ahol feküsznek
+R0369	alak	forrássá	1	forrássotta	Zsolt 84:7	Átmenve a Siralom völgyén [forrássá] teszik azt bizony áldással borítja el
+R0370	alak	forrásává	1	forrásávta	Zsolt 114:8	álló tóvá és a szirtet vizek [forrásává]
+R0371	alak	fákká	1	fákkotta	Jer 5:14	te szádban ezt a népet pedig [fákká] hogy megeméssze őket
+R0372	alak	fáké	1	fákta	Ézs 65:22	egye a gyümölcsöt mert mint a [fáké] oly hosszú lesz népem élete és
+R0373	alak	fává	4	fávta	Ez 37:17	együvé azokat egyiket a másikhoz egy [fává] hogy eggyé legyenek kezedben
+R0374	alak	félelmévé	1	félelmévte	Zsolt 31:12	csúfsággá lettem kivált szomszédaimé és ismerőseimnek [félelmévé] a akik az utcán látnak elfutnak
+R0375	alak	félreszólítá	1	félreszólította	2Sám 3:27	Visszajövén Abner Hebronba [félreszólítá] őt Joáb a kapu között mintha
+R0376	alak	félágáé	1		Józs 13:29	örökséget És lett a Manassé fiainak [félágáé] az ő családjaik szerint
+R0377	alak	fényesebbé	1	fényesebbette	Zsolt 104:15	a amely megvidámítja a halandónak szívét [fényesebbé] teszi az orcát az olajnál és
+R0378	alak	fényessé	1	fényessette	Mal 3:3	ezüsttisztogató és megtisztítja Lévi fiait és [fényessé] teszi őket mint az aranyat és
+R0379	alak	férfiadé	1	férfiadta	5Móz 33:8	Thummimod és Urimod a te kegyes [férfiadé] a akit megkísértettél Masszában a akivel
+R0380	alak	férfiává	1	férfiávta	Jer 15:10	Jaj nekem anyám mert versengés [férfiává] és az egész föld ellen perlekedő
+R0381	alak	férfié	1		Hós 3:3	nálam nem paráználkodol és nem leszel [férfié] én is így leszek te irántad
+R0382	alak	férfiúvá	6	férfiúvta	1Móz 1:27	ő képére Isten képére teremtette őt [férfiúvá] és asszonnyá teremtette őket
+R0383	alak	férfiúé	2		5Móz 24:2	ő házából és elmegy és más [férfiúé] lesz
+R0384	alak	férjetekké	1	férjetekkette	Jer 3:14	azt mondja az Úr mert én [férjetekké] lettem nektek és magamhoz veszlek titeket
+R0385	alak	földdé	5	földdte	Zsolt 107:34	Gyümölcstermő földet meddő [földdé] a rajta lakó népnek gonoszsága miatt
+R0386	alak	földieké	2	földiekte	1Kor 15:40	más a mennyeiek dicsősége más a [földieké]
+R0387	alak	fölkenék	1	fölkentem	1Krón 29:22	Úrnak hogy lenne fejedelem Sádókot is [fölkenék] a főpapságra
+R0388	alak	fölmagasztalá	1	fölmagasztalta	Dán 2:48	Akkor a király [fölmagasztalá] Dánielt és sok nagy ajándékot adott
+R0389	alak	fölállítám	1	fölállítottam	Jób 29:7	fel a városon a köztéren székemet [fölállítám]
+R0390	alak	fölékesítéd	1	fölékesítetted	Ez 23:40	akiknek kedvéért megmosódtál kendőzéd szemeidet és [fölékesítéd] magad ékességgel
+R0391	alak	függesztvén	2	függesztve	ApCsel 7:55	teljes volt Szent Lélekkel a mennybe [függesztvén] szemeit látta Istennek dicsőségét és Jézust
+R0392	alak	fürtté	1	fürttötte	Ézs 18:5	véget ér és a virág érő [fürtté] lesz levágja a vesszőket metszőkésekkel és
+R0393	alak	füstté	1	füsttötte	Náh 2:13	azt mondja a Seregek Ura és [füstté] égetem szekereit Oroszlán kölykeidet kard emészti
+R0394	alak	főemberekké	1	főemberekkette	1Krón 12:18	Magához fogadta azért őket Dávid és [főemberekké] tette a seregben
+R0395	alak	főkké	1	főkkötte	Sir 1:5	Elnyomói [főkké] lettek ellenségei boldogok Bizony az Úr
+R0396	alak	főpapokká	1	főpapokkotta	Zsid 7:28	Mert a törvény gyarló embereket rendel [főpapokká] de a törvény után való esküvés
+R0397	alak	főpapoké	1	főpapokta	Luk 23:23	és az ő szavok és a [főpapoké] erőt vett vala
+R0398	alak	fővezérré	1	fővezérrette	2Sám 17:25	És Amasát tette Absolon [fővezérré] a sereg felett Joáb helyett Amasa
+R0399	alak	főzeté	1	főzette	2Sám 12:4	szegénytől az ő bárányát és azt [főzeté] meg a vendégnek a aki hozzá
+R0400	alak	fűvén	1	fűve	2Móz 10:15	maradt a fán sem a mezőnek [fűvén] egész Égyiptom földén
+R0401	alak	ganéjjá	2	ganéjjotta	Jer 8:2	nem szedetnek össze el sem temettetnek [ganéjjá] lesznek a föld színén
+R0402	alak	gazdaggá	1	gazdaggotta	Jel 3:18	végy tőlem tűzben megpróbált aranyat hogy [gazdaggá] légy és fehér ruhákat hogy öltözeted
+R0403	alak	gazdagokká	1	gazdagokkotta	Jer 5:27	házaik álnoksággal ezért lettek nagyokká és [gazdagokká]
+R0404	alak	gazdagságává	1	gazdagságávta	2Kor 8:2	örömük és igen nagy szegénységük jószívűségük [gazdagságává] növekedett
+R0405	alak	gondolkodám	1	gondolkodtam	Péld 24:32	Melyet én látva [gondolkodám] és nézve ezt a tanulságot vettem
+R0406	alak	gondviselőivé	1	gondviselőivta	1Móz 47:6	emberek tedd azokat az én barmaim [gondviselőivé]
+R0407	alak	gondviselőjévé	1	gondviselőjévta	1Móz 39:5	házának és a amije volt mindenének [gondviselőjévé] tette megáldotta az Úr az égyiptomi
+R0408	alak	gondviselőkké	1	gondviselőkkotta	1Krón 26:32	voltak családfők a akiket Dávid király [gondviselőkké] tett a Rubenitákon és Gáditákon és
+R0409	alak	gondviselővé	5	gondviselővta	1Móz 41:33	bölcs férfit és tegye Égyiptom földén [gondviselővé]
+R0410	alak	gonoszabbá	1	gonoszabbotta	2Pét 2:20	belekeveredve legyőzetnek az ő utolsó állapotjuk [gonoszabbá] lett az elsőnél
+R0411	alak	gonoszokká	1	gonoszokkotta	Mik 3:4	sőt elrejti akkor orcáját előlök mivelhogy [gonoszokká] lettek cselekedeteik
+R0412	alak	gyalázatossá	1	gyalázatossotta	Zsolt 109:25	Sőt [gyalázatossá] lettem előttök ha látnak engem fejüket
+R0413	alak	gyalázattá	5	gyalázattotta	Zsolt 79:4	[Gyalázattá] lettünk szomszédaink előtt csúfságul és nevetségül
+R0414	alak	gyermektelenekké	2	gyermektelenekkette	1Sám 15:33	Miként a te kardod asszonyokat tett [gyermektelenekké] úgy legyen gyermektelenné minden asszonyok felett
+R0415	alak	gyermektelenné	8	gyermektelennette	1Sám 15:33	kardod asszonyokat tett gyermektelenekké úgy legyen [gyermektelenné] minden asszonyok felett a te anyád
+R0416	alak	gyilkosaivá	1	gyilkosaivta	ApCsel 7:52	eljövetelét kinek ti most árulóivá és [gyilkosaivá] lettetek
+R0417	alak	gyógyíthatatlanná	1	gyógyíthatatlannotta	Jer 15:18	szünetlenné az én fájdalmam és halálossá [gyógyíthatatlanná] az én sebem Olyanná lettél nekem
+R0418	alak	gyönyörűséggé	1	gyönyörűséggette	Ézs 60:15	nem ment örökkévaló ékességgé teszlek és [gyönyörűséggé] nemzetségről nemzetségre
+R0419	alak	gyülekezeté	1	gyülekezette	Ezsd 10:14	álljanak hát elő fejedelmeink az egész [gyülekezeté] és mindenki a aki idegen feleséget
+R0420	alak	gyümölcstelenekké	1	gyümölcstelenekkette	2Pét 1:8	bennetek nem tesznek titeket hivalkodókká sem [gyümölcstelenekké] a mi Urunk Jézus Krisztus megismerésére
+R0421	alak	gyümölcsözővé	1	gyümölcsözővte	Ézs 55:10	hanem megöntözi a földet és termővé [gyümölcsözővé] teszi azt és magot ád a
+R0422	alak	gyűlének	8	gyűltek	2Móz 32:26	Aki az Úré ide hozzám és [gyűlének] ő hozzá mind a Lévi fiai
+R0423	alak	gyűlöletessé	2	gyűlöletessette	1Sám 13:4	Megverte Saul a Filiszteusok előőrsét és [gyűlöletessé] vált Izráel a Filiszteusok előtt A
+R0424	alak	gyűlölségessé	1	gyűlölségessette	Péld 13:5	gyűlöli az igaz az istentelen pedig [gyűlölségessé] tesz és megszégyenít
+R0425	alak	gyűlöltekké	1	gyűlöltekkette	2Sám 10:6	Látva pedig az Ammon fiai hogy [gyűlöltekké] lettek Dávid előtt követet küldtek az
+R0426	alak	gyűlöltté	1	gyűlölttötte	2Sám 16:21	egész Izráel hogy te atyád előtt [gyűlöltté] tetted magadat és annál inkább megerősödnek
+R0427	alak	görbévé	1	görbévte	Préd 7:13	kicsoda teheti egyenessé a amit ő [görbévé] tett
+R0428	alak	gúnydalukká	1	gúnydalukkotta	Sir 3:14	Egész népemnek csúfjává lettem és [gúnydalukká] napestig
+R0429	alak	gúnydalává	1	gúnydalávta	Jób 30:9	És most ezeknek lettem [gúnydalává] nekik levék beszédtárgyuk
+R0430	alak	gúnyjává	1	gúnyjávta	Jer 29:18	csudává és szörnyűséggé és mindama nemzetnek [gúnyjává] a amelyek közé kivetettem őket
+R0431	alak	hadnagyokká	2	hadnagyokkotta	1Sám 8:12	Ezredesekké teendi őket és [hadnagyokká] ötven ember felett velük szántatja meg
+R0432	alak	hagyád	2	hagytad	Neh 9:19	És te nagy irgalmasságodban nem [hagyád] el őket a pusztában a felhőnek
+R0433	alak	hajigálá	1	hajigálta	2Sám 16:6	És kővel [hajigálá] Dávidot és Dávid királynak minden szolgáit
+R0434	alak	hajlandóvá	1	hajlandóvta	2Krón 29:36	egész gyülekezet hogy az Isten erre [hajlandóvá] tette a népet mert hirtelen történt
+R0435	alak	hajlékoddá	1	hajlékoddta	Zsolt 91:9	oltalmam a Felségest választottad a te [hajlékoddá]
+R0436	alak	hajlékává	1	hajlékávta	Ef 2:22	Akiben ti is együtt építtettek Isten [hajlékává] a Lélek által
+R0437	alak	hajtaná	1	hajtanta	Jer 30:21	kicsoda az a aki szívét arra [hajtaná] hogy hozzám jöjjön azt mondja az
+R0438	alak	hajtásává	1	hajtásávta	Jer 2:21	változtál hát nekem idegen szőlőtőnek fattyú [hajtásává]
+R0439	alak	hajítá	1	hajította	Jer 36:23	az írástudónak késével és a tűzbe [hajítá] a amely a tűzhelyen volt mígnem
+R0440	alak	halaké	1	halakta	1Kor 15:39	más a barmoknak teste más a [halaké] más a madaraké
+R0441	alak	halasztá	1	halasztotta	1Móz 34:19	Nem is [halasztá] az ifjú a dolog véghezvitelét mivelhogy
+R0442	alak	halkabbakká	1	halkabbakkotta	Préd 12:6	és felkelnek a madár szóra és [halkabbakká] lesznek minden éneklő leányok
+R0443	alak	halkabbá	1	halkabbotta	Préd 12:6	a amikor is a malom zúgása [halkabbá] lesz és felkelnek a madár szóra
+R0444	alak	hallád	1	hallottad	2Krón 34:27	magadat megaláztad az Isten előtt mikor [hallád] az ő beszédeit e hely ellen
+R0445	alak	hallókká	1	hallókkotta	Mk 7:37	Mindent jól cselekedett a siketeket is [hallókká] teszi a némákat is beszélőkké
+R0446	alak	halmozná	1	halmoznotta	Jób 27:16	Ha mint a port úgy [halmozná] is össze az ezüstöt és úgy
+R0447	alak	halmává	1	halmávta	Ézs 17:1	Ímé Damaskus városa elpusztíttatik és romok [halmává] lesz
+R0448	alak	halottidézőé	1		Ézs 29:4	morog beszéded szavad olyan lesz mint [halottidézőé] a földből és porból sipog beszéded
+R0449	alak	halálossá	1	halálossotta	Jer 15:18	lett szünetlenné az én fájdalmam és [halálossá] gyógyíthatatlanná az én sebem Olyanná lettél
+R0450	alak	hamuvá	1	hamuvta	Ez 28:18	ez emésztett meg téged és tevélek [hamuvá] a földön mindenek láttára a akik
+R0451	alak	haná	1	hanta	1Krón 1:41	[Haná] fia Disón Disón fiai pedig Hamrán
+R0452	alak	harmadiké	1	harmadta	Jób 42:14	volt Jémima a másodiké Keciha a [harmadiké] Kéren Happuk
+R0453	alak	hasonlatossá	2	hasonlatossotta	Zsolt 88:5	[Hasonlatossá] lettem a sírba szállókhoz olyan vagyok
+R0454	alak	hasonlókká	3	hasonlókkotta	1Móz 34:15	Veletek csak úgy egyezünk ha [hasonlókká] lesztek hozzánk hogy minden férfiú körülmetélkedjék
+R0455	alak	hasonlóvá	9	hasonlóvta	Jób 30:19	A sárba vetett engem [hasonlóvá] lettem porhoz és hamuhoz
+R0456	alak	haszontalanná	1	haszontalannotta	Róm 4:14	valók hiábavalóvá lett a hit és [haszontalanná] az ígéret
+R0457	alak	haszontalanokká	1	haszontalanokkotta	Róm 3:12	Mindnyájan elhajlottak egyetemben [haszontalanokká] lettek nincs a aki jót cselekedjék
+R0458	alak	hatalmasabbá	1	hatalmasabbotta	1Móz 26:16	Izsáknak Menj el közűlünk mert sokkal [hatalmasabbá] lettél nálunknál
+R0459	alak	hatalmassá	5	hatalmassotta	1Móz 10:8	Khús nemzette Nimródot is ez kezdett [hatalmassá] lenni a földön
+R0460	alak	határozá	2	határozta	Ezsd 7:9	Ugyanis az első hónak első napján [határozá] el a Babilóniából való feljövetelt és
+R0461	alak	hazafelé	1	hazafelte	1Sám 18:6	És a amint [hazafelé] jöttek mikor Dávid visszatért miután a
+R0462	alak	hazamenének	1	hazamentek	2Sám 24:8	És mikor bejárták az egész országot [hazamenének] Jeruzsálembe kilenc hónap és húsz nap
+R0463	alak	hazaoszlának	1	hazaoszlottak	2Sám 20:22	Joábnak Akkor megfuvatá a trombitát és [hazaoszlának] a város alól kiki az ő
+R0464	alak	hazuggá	3	hazuggotta	Ján 8:55	hogy nem ismerem őt hozzátok hasonlóvá [hazuggá] leszek de ismerem őt és az
+R0465	alak	hazugsággá	1	hazugsággotta	Róm 1:25	Mint a akik az Isten igazságát [hazugsággá] változtatták és a teremtett dolgokat tisztelték
+R0466	alak	hehé	2	hehte	Zsolt 40:16	a akik azt mondják nekem Hehé [hehé]
+R0467	alak	helyezéd	1	helyezted	2Sám 19:28	mégis a te szolgádat azok közé [helyezéd] a akik asztalodnál esznek Azért micsoda
+R0468	alak	helyreállítá	2	helyreállította	2Krón 31:2	És [helyreállítá] Ezékiás a papok és Léviták osztályait
+R0469	alak	helyreállíták	1	helyreállították	1Sám 5:3	előtt És felvették Dágont és ismét [helyreállíták]
+R0470	alak	helyévé	1	helyévte	Mik 1:6	a mezőben való kőrakás szőlő plánták [helyévé] és lezúdítom a völgybe az ő
+R0471	alak	hevének	1	hevtek	Jel 19:15	ő nyomja a mindenható Isten haragja [hevének] borsajtóját
+R0472	alak	hinné	1	hinnette	Jób 41:32	Maga után világos ösvényt hagy azt [hinné] valaki a tenger megőszült
+R0473	alak	hirdetővé	2	hirdetővte	1Tim 2:7	A Ami végett rendeltettem én [hirdetővé] és apostollá igazságot szólok a Krisztusban
+R0474	alak	hitetőkké	1	hitetőkkötte	Ézs 9:16	Mert e nép vezérei [hitetőkké] lettek és a akiket vezettek elvesztek
+R0475	alak	hitszegőkké	1	hitszegőkkötte	Jer 3:20	az ő társa iránt úgy lettetek [hitszegőkké] irántam Izráel háza azt mondja az
+R0476	alak	hitszegővé	1	hitszegővte	Jer 3:20	Mindamellett a amint [hitszegővé] lesz az asszony az ő társa
+R0477	alak	hitének	1	hitettek	Róm 4:12	a mi atyánknak Ábrahámnak körülmetéletlenségében tanusított [hitének] nyomdokait
+R0478	alak	hivalkodókká	1	hivalkodókkotta	2Pét 1:8	és gyarapodnak bennetek nem tesznek titeket [hivalkodókká] sem gyümölcstelenekké a mi Urunk Jézus
+R0479	alak	hivattatának	1	hivattattak	Eszt 8:9	[Hivattatának] azért a király irnokai azonnal a
+R0480	alak	hivétek	1	hittetek	5Móz 1:32	Mindazáltal nem [hivétek] az Úrnak a ti Isteneteknek
+R0481	alak	hivőkké	1	hivőkkötte	ApCsel 19:2	Vajon vettetek é Szent Lelket minekutána [hivőkké] lettetek Azok pedig mondták neki Sőt
+R0482	alak	hiábavalókká	4	hiábavalókkotta	2Kir 17:15	őket és hiábavalóságot követve magok is [hiábavalókká] lettek és a körültök való pogányok
+R0483	alak	hiábavalóvá	5	hiábavalóvta	Jób 5:13	ő csalárdságukban és a hamisak tanácsát [hiábavalóvá] teszi
+R0484	alak	homlokúvá	1	homlokúvta	Jer 3:3	eső sem volt mégis parázna asszony [homlokúvá] lettél szégyenkezni nem akartál
+R0485	alak	hosszútűrővé	1	hosszútűrővta	Péld 19:11	Az embernek értelme [hosszútűrővé] teszi őt és ékességére van neki
+R0486	alak	hová	25	hovta	1Móz 16:8	Hágár Szárai szolgálója honnan jössz és [hová] mégy És az monda Az én
+R0487	alak	hozzá	359	hozzotta	1Móz 2:18	egyedül lenni szerzek neki segítő társat [hozzá] illőt
+R0488	alak	hozád	1	hoztad	Józs 7:7	Józsué Ah Uram Istenem Miért is [hozád] által ezt a népet a Jordánon
+R0489	alak	hullám	1	hullottam	Hab 3:10	tör a víz ár harsog a [hullám] és magasra emeli karjait
+R0490	alak	hurokká	1	hurokkotta	Józs 23:13	inkább lesznek ti nektek tőrré és [hurokká] oldalaitokban ostorrá szemeitekben pedig tövisekké míglen
+R0491	alak	háboríták	1	háborították	Dán 4:16	óráig rémüldözék és az ő gondolatai [háboríták] őt Szólt a király és mondta
+R0492	alak	hálóvá	3	hálóvta	Zsolt 69:23	asztalok előttök tőrré és a bátorságosoknak [hálóvá]
+R0493	alak	hátraesék	1	hátraestem	1Sám 4:18	hogy midőn az Isten ládáját említette [hátraesék] a székről a kapufélhez és nyakát
+R0494	alak	hátravoná	1	hátravonta	Sir 2:3	Felgerjedt haragjában letördelé Izráelnek minden szarvát [hátravoná] jobbkezét az ellenség elől Jákób ellen
+R0495	alak	háznépéé	1		2Sám 16:2	Felelt Siba A szamarak a király [háznépéé] legyenek hogy rajtok járjanak a kenyér
+R0496	alak	házzá	1	házzotta	1Pét 2:5	mint élő kövek épüljetek fel lelki [házzá] szent papsággá hogy lelki áldozatokkal áldozzatok
+R0497	alak	házává	1	házávta	Ján 2:16	tegyétek az én Atyámnak házát kalmárság [házává]
+R0498	alak	házáé	2		1Sám 9:20	tiéd és a te atyádnak egész [házáé]
+R0499	alak	héjazá	1	héjazta	Neh 3:15	tartományának fejedelme ő építette meg és [héjazá] be azt és állította fel ajtait
+R0500	alak	híresebbé	1	híresebbette	1Kir 1:47	Tegye az Isten a Salamon nevét [híresebbé] a te nevednél és magasztalja feljebb
+R0501	alak	híresekké	2	híresekkette	Sof 3:19	sántát és összeszedem a szétszórtakat és [híresekké] és nevesekké teszem őket az ő
+R0502	alak	híressé	3	híressette	1Sám 18:30	szolgáinál eszesebben viselte magát azért felette [híressé] lett az ő neve
+R0503	alak	hírré	4	hírrette	2Móz 36:5	Parancsolt azért Mózes és [hírré] tették a táborban Se férfi se
+R0504	alak	hívőkké	6	hívőkkötte	ApCsel 21:20	mely sok ezeren vannak zsidók kik [hívőkké] lettek és mindnyájan buzognak a törvény
+R0505	alak	hívővé	2	hívővte	ApCsel 11:21	nagy sokaság tért meg az Úrhoz [hívővé] lévén
+R0506	alak	hódítá	1	hódította	Józs 10:42	királyokat és azoknak földjét egy útban [hódítá] meg Józsué mivelhogy az Úr Izráelnek
+R0507	alak	hűtelenekké	2	hűtelenekkette	Jer 2:8	nem ismertek engem és a pásztorok [hűtelenekké] lettek hozzám a próféták pedig a
+R0508	alak	hűtelenné	6	hűtelennette	4Móz 5:6	bűnt követ el a amely által [hűtelenné] válik az Úrhoz az a lélek
+R0509	alak	idegenné	3	idegennette	Jób 19:17	Lehelletem [idegenné] lett házastársam előtt s könyörgésem az
+R0510	alak	igazakká	1	igazakkotta	Róm 5:19	lettek azonképen egynek engedelmessége által sokan [igazakká] lesznek
+R0511	alak	igazsággá	1	igazsággotta	2Kor 7:14	mi Titus előtt való dicsekvésünk is [igazsággá] lett
+R0512	alak	igenné	1	igennette	2Kor 1:20	Istennek valamennyi igérete ő benne lett [igenné] és ő benne lett Ámenné az
+R0513	alak	igérék	1	igértem	Mk 14:11	pedig a amint meghallották örvendeztek és [igérék] hogy pénzt adnak neki Ő pedig
+R0514	alak	ijesztővé	1	ijesztővte	Jób 17:5	tett engem a népek előtt és [ijesztővé] lettem előttök
+R0515	alak	ilyeneké	3	ilyenekte	Mt 19:14	meg nekik hogy hozzám jöjjenek mert [ilyeneké] a mennyeknek országa
+R0516	alak	imádkozám	9	imádkoztam	5Móz 9:20	akarta őt is pusztítani de ugyanakkor [imádkozám] Áronért is
+R0517	alak	indítaná	1	indítanta	2Krón 33:6	Úr szemei előtt hogy őt haragra [indítaná]
+R0518	alak	ingerlé	1	ingerlette	2Krón 28:25	az idegen isteneknek tömjénezzen és haragra [ingerlé] az Urat atyái Istenét
+R0519	alak	ingyenvalóvá	1	ingyenvalóvta	1Kor 9:18	tehát az én jutalmam Hogy prédikálásommal [ingyenvalóvá] tegyem a Krisztus evangyéliomát hogy ne
+R0520	alak	ismeretessé	2	ismeretessette	1Sám 4:1	És [ismeretessé] lett Sámuel beszéde egész Izráelben És
+R0521	alak	ismerhetné	1	ismerhetnette	Jer 17:9	szív mindennél és gonosz az kicsoda [ismerhetné] azt
+R0522	alak	ismertté	1	ismerttette	Mt 12:16	És megfenyegette őket hogy őt [ismertté] ne tegyék
+R0523	alak	istenökké	1	istenökkötte	Bír 8:33	paráználkodtak és a Baál Beritet tették [istenökké]
+R0524	alak	iszonyattá	1	iszonyattotta	5Móz 28:37	És [iszonyattá] példabeszéddé és gúnnyá leszel minden népnél
+R0525	alak	itélé	1	itélte	Bír 12:9	be kívül az ő fiainak és [itélé] Izráelt hét esztendeig
+R0526	alak	ivám	1	ittam	1Móz 24:46	tevéidnek is inni adok és én [ivám] s a tevéknek is inni adott
+R0527	alak	jaalá	2	jaalta	Ezsd 2:56	[Jaalá] fiai Darkón fiai Giddél fiai
+R0528	alak	jajjá	1	jajjotta	Ámós 8:3	Azon a napon [jajjá] változnak a templomi énekek így szól
+R0529	alak	jelekké	1	jelekkette	Zsolt 74:4	gyülekezeted hajlékában ordítanak jeleiket tűzték fel [jelekké]
+R0530	alak	jelentené	1	jelentente	Jób 11:6	És [jelentené] meg neked a bölcsességnek titkait hogy
+R0531	alak	jelenthetné	1	jelenthetnette	Zsolt 106:2	el az Úr nagy tetteit és [jelenthetné] ki minden dicsőségét
+R0532	alak	jobbfelé	1	jobbfelta	2Sám 2:19	És Asáel üldözte Abnert és se [jobbfelé] se balfelé nem tért ki Abner
+R0533	alak	jobbá	1	jobbotta	Préd 7:3	nevetésnél mert az orcának szomorúsága által [jobbá] lesz a szív
+R0534	alak	jobbágyokká	1	jobbágyokkotta	1Kir 9:21	az Izráeliták ki nem irthattak Salamon [jobbágyokká] tette mind e mai napig
+R0535	alak	járásává	1	járásávta	Ézs 7:25	hanem barmok legelőjévé lesznek és juhok [járásává]
+R0536	alak	jáván	1	jáva	Ez 27:13	[Jáván] Tubál és Mések ezek a te
+R0537	alak	jóakaróivá	1	jóakaróivta	Péld 16:7	valakinek útaihoz még annak ellenségeit is [jóakaróivá] teszi
+R0538	alak	jórá	1	jórta	Ezsd 2:18	[Jórá] fiai száztizenkettő
+R0539	alak	jóvá	1	jóvta	Luk 11:48	Tehát bizonyságot tesztek és [jóvá] hagyjátok atyáitok cselekedeteit mert azok megölték
+R0540	alak	józsué	16		2Móz 17:13	[Józsué] pedig leverte Amáleket és az ő
+R0541	alak	jövevényé	3	jövevényte	5Móz 24:19	ne térj vissza annak felvételére a [jövevényé] az árváé és az özvegyé legyen
+R0542	alak	jövél	1	jöttél	Ézs 37:29	és visszaviszlek az úton a amelyen [jövél]
+R0543	alak	jövén	8	jöve	2Kir 2:24	és az erdőből két nőstény medve [jövén] ki szétszaggatott közülök negyvenkét gyermeket
+R0544	alak	jövénk	1	jöttünk	Mt 2:2	az ő csillagát napkeleten és azért [jövénk] hogy tisztességet tegyünk neki
+R0545	alak	jövétek	1	jöttetek	5Móz 5:23	a hegy tűzzel égett vala hozzám [jövétek] a ti törzseiteknek minden fejedelmével és
+R0546	alak	jővén	1	jőve	Jel 22:1	az Istennek és a Báránynak királyiszékéből [jővén] ki
+R0547	alak	kalácsé	1	kalácsta	4Móz 11:8	pedig olyan volt mint az olajos [kalácsé]
+R0548	alak	kapcsolák	1	kapcsolták	2Móz 39:4	hozzá összekötött vállkötőket a két végükön [kapcsolák] össze
+R0549	alak	kapunállókká	1	kapunállókkotta	1Krón 16:42	énekének szerszámaival A Jédutun fiait pedig [kapunállókká] tette
+R0550	alak	kapákká	1	kapákkotta	Mik 4:3	nemzeteket nagy messze földig és fegyvereiket [kapákká] kovácsolják dárdáikat pedig sarlókká nép népre
+R0551	alak	kardokká	1	kardokkotta	Jóel 3:10	Kovácsoljátok szántóvasaitokat [kardokká] kaszáitokat dárdákká mondja a beteg is
+R0552	alak	kedveltjévé	1	kedveltjévte	Zsolt 4:4	Tudjátok meg hát hogy [kedveltjévé] választott az Úr meghallja az Úr
+R0553	alak	kedvelé	1	kedvelte	1Kor 10:5	De azoknak többségét nem [kedvelé] az Isten mert elhullottak a pusztában
+R0554	alak	kedvesebbé	1	kedvesebbette	1Sám 29:4	harcban mert ugyan mivel tehetné magát [kedvesebbé] ura előtt hacsak nem ezeknek a
+R0555	alak	kedvesekké	2	kedvesekkette	2Móz 28:38	Legyen azért szüntelen a homlokán hogy [kedvesekké] tegye őket az Úr előtt
+R0556	alak	kedvessé	7	kedvessette	1Móz 39:4	[Kedvessé] lett azért József az ő ura
+R0557	alak	kegyetlenné	1	kegyetlennette	Jób 30:21	[Kegyetlenné] változtál irántam kezed erejével harcolsz ellenem
+R0558	alak	kelvén	2	kelve	1Móz 29:1	Jákób azután lábára [kelvén] elment a napkeletre lakók földére
+R0559	alak	keményebbekké	1	keményebbekkette	Jer 5:3	nem akarják felvenni a dorgálást orcáik [keményebbekké] lettek a kősziklánál nem akartak megtérni
+R0560	alak	keményítéd	1	keményítetted	Ézs 63:17	eltévelyedni minket útaidról oh Uram miért [keményítéd] meg szívünket hogy ne féljünk tégedet
+R0561	alak	kenné	1	kennette	Zsolt 141:5	az ha dorgál engem mintha fejem [kenné] Nem vonakodik fejem sőt még imádkozom
+R0562	alak	kenyerekké	1	kenyerekkette	Mt 4:3	vagy mondd hogy e kövek változzanak [kenyerekké]
+R0563	alak	kenyérkéregetővé	1	kenyérkéregetővte	Zsolt 37:25	volna az igaz a magzatja pedig [kenyérkéregetővé]
+R0564	alak	kenyérré	1	kenyérrette	Luk 4:3	vagy mondd e kőnek hogy változzék [kenyérré]
+R0565	alak	kené	2	kente	Luk 7:46	nem kented ez pedig drága kenettel [kené] meg az én lábaimat
+R0566	alak	kenék	2	E1=kentem|T3=kenték	2Sám 5:3	Hebronban az Úr előtt és királlyá [kenék] Dávidot Izráel felett
+R0567	alak	keresné	3	keresnette	Bír 4:22	És ímé a amint Bárák űzve [keresné] Siserát Jáhel kiment elébe és mondta
+R0568	alak	keresztyénné	1	keresztyénnette	ApCsel 26:28	mondta Pálnak Majdnem ráveszel engem hogy [keresztyénné] legyek
+R0569	alak	keserűkké	1	keserűkkötte	Jel 8:11	sok ember meghalt a vizektől mivel [keserűkké] lettek
+R0570	alak	keserűvé	1	keserűvte	Ézs 5:20	a keserűt édessé s az édest [keserűvé]
+R0571	alak	ketté	19	kettette	3Móz 11:3	aminek hasadt a körme és egészen [ketté] hasadt körme van és kérődző a
+R0572	alak	kettészakasztá	1	kettészakasztotta	Bír 14:6	őt az Úrnak lelke és úgy [kettészakasztá] azt mint a hogyan kettészakasztatik a
+R0573	alak	kevesbítené	1	kevesbítente	Jób 16:5	csak a szájammal és ajakim mozgása [kevesbítené] fájdalmatokat
+R0574	alak	kevélységének	1	kevélységtek	Ez 7:24	házaikat s véget vetek a hatalmasok [kevélységének] s fertézett lesz templomuk
+R0575	alak	kevésbbé	8	kevésbbette	1Kir 8:27	egei be nem foghatnak téged mennyivel [kevésbbé] e ház a amelyet én építettem
+R0576	alak	kevésbé	2	kevésbette	Jób 25:6	Mennyivel [kevésbé] a halandó a aki féreg és
+R0577	alak	kevéssé	9	kevéssette	2Sám 16:1	Mikor pedig Dávid egy [kevéssé] alább ment a hegy tetejéről eleibe
+R0578	alak	kezdené	2	kezdente	Mt 24:49	És az ő szolgatársait verni [kezdené] a részegesekkel pedig enni és inni
+R0579	alak	kezesévé	1	kezesévte	Zsid 7:22	Annyiban jobb szövetségnek lett [kezesévé] Jézus
+R0580	alak	kicsépelé	1	kicsépelte	Ruth 2:17	szedegetett a mezőn mind estiglen és [kicsépelé] a amit szedegetett és lett abból
+R0581	alak	kietlenné	2	kietlennette	Ézs 64:9	pusztává lettenek Sion pusztává lett Jeruzsálem [kietlenné]
+R0582	alak	kifosztottakká	1	kifosztottakkotta	Jer 30:16	fogságra jut és a te fosztogatóidat [kifosztottakká] és minden te zsákmánylóidat zsákmánnyá teszem
+R0583	alak	kihordám	1	kihordtam	Ez 12:7	a amint parancsolva volt nekem eszközeimet [kihordám] nappal mint vándorútra való eszközöket és
+R0584	alak	kihozád	1	kihoztad	Neh 9:7	Isten a aki választottad Ábrámot és [kihozád] őt a Káldeusoknak Úr nevű városából
+R0585	alak	kihívaták	1	kihívatták	2Kir 18:18	És [kihívaták] a királyt És kiment hozzájuk Eliákim
+R0586	alak	kiirtaná	1	kiirtanta	Jób 31:12	pokolig emésztene és minden jövedelmemet tövestől [kiirtaná]
+R0587	alak	kijelentéd	1	kijelentetted	1Krón 17:19	cselekedéd mind e nagy dolgokat hogy [kijelentéd] mindezeket a csudálatos dolgokat
+R0588	alak	kijövél	3	kijövtél	Bír 5:4	Uram mikor Szeirből [kijövél] Mikor lépdelél Edom mezejéről Megrendült a
+R0589	alak	kijövén	8	kijöve	2Sám 11:17	[Kijövén] azért a városbeli nép megharcolának Joábbal
+R0590	alak	kikiálták	4	kikiáltották	1Kir 22:36	És [kikiálták] napnyugotkor a táborban mondva Minden ember
+R0591	alak	kikötének	1	kikötöttek	Mk 6:53	átkelve eljutottak a Genezáret földére és [kikötének]
+R0592	alak	kilövé	1	kilövte	1Kir 22:34	Egy ember pedig csak úgy találomra [kilövé] az ő kézívét és találta az
+R0593	alak	kimúlék	4	kimúlt	1Móz 25:8	És [kimúlék] és meghalt Ábrahám jó vénségben öregen
+R0594	alak	kioldá	2	kioldotta	1Móz 42:27	És egyik [kioldá] zsákját hogy abrakot adjon szamarának a
+R0595	alak	királyainké	1	királyainkotta	Dán 9:8	oh Uram orcánk pirulása a mi [királyainké] fejedelmeinké és atyáinké a akik vétkeztünk
+R0596	alak	királyaié	1		1Sám 27:6	Siklágot lett azért Siklág a Júda [királyaié] mind e mai napig
+R0597	alak	királyné	17	királynotta	2Kir 10:13	köszöntsük a király gyermekeit és a [királyné] fiait
+R0598	alak	királynévá	1	királynévta	Eszt 2:17	királyi koronát az ő fejére és [királynévá] tette Vásti helyett
+R0599	alak	királyokká	2	királyokkotta	Jel 1:6	És tett minket [királyokká] és papokká az ő Istenének és
+R0600	alak	királyoké	1	királyokta	2Krón 26:23	atyáival a temetőbe a amely a [királyoké] volt mert ezt mondják felőle bélpoklos
+R0601	alak	királyává	1	királyávta	1Kir 1:34	Sádók pap és Nátán próféta Izráelnek [királyává] és fújjátok meg a harsonákat és
+R0602	alak	királyé	2	királyta	2Kir 24:7	elvett a ami csak az égyiptomi [királyé] volt Égyiptom folyóvizétől az Eufrátes folyóvizéig
+R0603	alak	kirántá	3	kirántotta	Bír 3:21	kinyújtotta Ehud az ő balkezét és [kirántá] kardját a jobb tomporáról és beleüté
+R0604	alak	kisebbé	4	kisebbette	4Móz 26:54	örökséget a kisebb számúnak pedig tedd [kisebbé] az ő örökségét mindeniknek az ő
+R0605	alak	kissé	5	kissette	Ezsd 9:8	Istenünk s hogy megelevenítsen bennünket egy [kissé] a mi szolgaságunkban
+R0606	alak	kiszabadíthatná	1	kiszabadíthatnotta	2Kir 18:35	én kezemből hogy az Úr is [kiszabadíthatná] Jeruzsálemet az én kezemből
+R0607	alak	kiszakasztaték	1	kiszakasztatott	Dán 7:8	és három az elébbi szarvak közül [kiszakasztaték] ő előtte és ímé emberszemekhez hasonló
+R0608	alak	kitolatá	1	kitolatta	Jer 39:7	A Sedékiás szemeit pedig [kitolatá] és vasba verette őt hogy elvigye
+R0609	alak	kitoldaná	2	kitoldanta	Mt 9:16	ócska ruhára mert a ami azt [kitoldaná] még elszakít a ruhából és nagyobb
+R0610	alak	kivagdalák	1	kivagdalták	2Krón 31:1	s a bálványokat széttörték az Aserákat [kivagdalák] s lerontották a magaslatokat és oltárokat
+R0611	alak	kivettetém	1	kivettettem	Neh 13:8	gonosznak tetszett pedig ez nekem s [kivettetém] Tóbiás házának minden edényeit abból a
+R0612	alak	kivévén	5	kivéve	5Móz 3:5	erősítve magas kőfalakkal kapukkal és zárokkal [kivévén] igen sok kerítetlen várost
+R0613	alak	kiásám	1	kiástam	Jer 13:7	És elmentem az Eufrateshez és [kiásám] és kivettem arról a helyről az
+R0614	alak	kiírtaná	1	kiírtanta	2Krón 22:7	a akit az Úr felkenetett hogy [kiírtaná] az Akháb háznépét
+R0615	alak	kiüríté	1	kiürítette	1Móz 24:20	És sietett és [kiüríté] vedrét a válúba és ismét elfutott
+R0616	alak	kiütém	1	kiütöttem	Jób 29:17	kitördösém és fogai közül a prédát [kiütém] volt
+R0617	alak	kiűzetének	1	kiűzettek	2Móz 12:39	mert meg nem kelhet volt mivelhogy [kiűzetének] Égyiptomból és nem késhetének s még
+R0618	alak	kiűzéd	1	kiűzted	Zsolt 80:9	Égyiptomból szőlőt hoztál ki [kiűzéd] a pogányokat és azt elültetéd
+R0619	alak	koldussá	1	koldussotta	Bír 14:15	vagy azért hívtatok ide minket hogy [koldussá] tegyetek bennünket vagy nem
+R0620	alak	kárhozottá	1	kárhozottotta	Róm 5:16	által mert az ítélet egyből lett [kárhozottá] az ajándék pedig sok bűnből van
+R0621	alak	káromlá	1	káromlotta	3Móz 24:11	És [káromlá] az izráelbeli asszony fia az Isten
+R0622	alak	kénkővé	1	kénkővte	Ézs 34:9	És változnak patakjai szurokká és pora [kénkővé] és lesz földe égő szurokká
+R0623	alak	kényszeríté	4	kényszerítette	1Sám 14:24	azon a napon mert Saul esküvel [kényszeríté] a népet mondva Átkozott az a
+R0624	alak	kényszeríték	3	E1=kényszerítettem|T3=kényszerítették	1Sám 28:23	de szolgái és az asszony is [kényszeríték] őt és ő engedett szavoknak felkelt
+R0625	alak	kényszerítének	1	alanyi=kényszerítettek|targyas=kényszerítették	Mk 15:21	És [kényszerítének] egy mellettök elmenőt bizonyos cirénei Simont
+R0626	alak	képmutatóké	1	képmutatókta	Mt 6:16	legyen komor a nézéstek mint a [képmutatóké] a akik eltorzítják arcukat hogy lássák
+R0627	alak	kérlelé	1	kérlelte	Luk 15:28	bemenni Az ő atyja annakokáért kimenve [kérlelé] őt
+R0628	alak	készségesekké	1	készségesekkette	Zsid 13:21	Tegyen [készségesekké] titeket minden jóra hogy cselekedjétek az
+R0629	alak	készteté	1	késztette	2Sám 7:27	ezt mondva Házat építek neked Ezért [készteté] szolgádat az ő szíve hogy ilyen
+R0630	alak	késék	1	késtem	2Sám 20:5	hogy összegyűjtse Júdát de több ideig [késék] mint a ahogy a király meghagyta
+R0631	alak	kétfelé	14	kétfelte	1Móz 15:10	Elhozta azért mind ezeket és [kétfelé] hasította azokat és mindeniknek fele részét
+R0632	alak	kígyókká	1	kígyókkotta	2Móz 7:12	ugyanis mindenik az ő vesszejét és [kígyókká] lettek de az Áron vesszeje elnyelte
+R0633	alak	kígyóvá	4	kígyóvta	2Móz 4:3	vetette azt a földre és lett [kígyóvá] és Mózes elfutamodott előle
+R0634	alak	kígyóé	1		Jer 46:22	Az ő szava mint a csúszó [kígyóé] mert nagy sereggel indulnak és szekercékkel
+R0635	alak	kíséré	1	kísérte	ApCsel 20:4	[Kíséré] pedig őt Ázsiáig a béreai Sopater
+R0636	alak	kóré	4	kórta	4Móz 16:1	[Kóré] pedig az Ichár fia a aki
+R0637	alak	köré	1	körte	2Krón 32:6	nép fölé seregvezéreket tett és maga [köré] gyűjtve őket a város kapujának utcájára
+R0638	alak	körülköté	1	körülkötötte	Ján 13:4	felső ruháját és egy kendőt vévén [körülköté] magát
+R0639	alak	körülmetéletlenséggé	1	körülmetéletlenséggette	Róm 2:25	a törvényt áthágod a te körülmetélkedésed [körülmetéletlenséggé] lett
+R0640	alak	körülmetélé	4	körülmetélte	Józs 5:3	És csinált Józsué magának kőkéseket és [körülmetélé] Izráel fiait a körülmetéletlenség halmán
+R0641	alak	körülmetélésé	1	körülmetéléste	Gal 2:7	a körülmetéletlenség evangyélioma mint Péterre a [körülmetélésé]
+R0642	alak	körülvevé	3	körülvevte	Mt 21:33	aki szőlőt plántála és azt gyepűvel [körülvevé] sajtót ásott le benne és tornyot
+R0643	alak	körülvéteté	1	körülvétette	2Krón 33:14	völgyben a halkapu bemeneteléig Ofelt is [körülvéteté] magas kerítéssel és Júdának minden megerősített
+R0644	alak	körülállák	1	körülállták	ApCsel 25:7	Mikor pedig az megjelent [körülállák] a zsidók kik alámentek vala Jeruzsálemből
+R0645	alak	köszöntené	1	köszöntente	1Krón 18:10	királyhoz az ő fiát Hadorámot hogy [köszöntené] őt és megáldaná mivelhogy megharcolt volt
+R0646	alak	kötelezék	1	E1=köteleztem|T3=kötelezték	ApCsel 23:12	zsidók közül némelyek összeszövetkezve átok alatt [kötelezék] el magokat mondva hogy sem nem
+R0647	alak	köténk	1	kötöttünk	ApCsel 21:3	azt balkézre evezénk Siriába és Tirusban [köténk] ki mert a hajó ott rakta
+R0648	alak	kötöztetheté	1	kötöztethette	Zsolt 105:22	Hogy főembereit tetszése szerint [kötöztetheté] és véneit is bölcsességre taníthatá
+R0649	alak	követeivé	1	követeivte	Zsolt 104:4	A Aki a szeleket teszi [követeivé] a lángoló tüzet szolgáivá
+R0650	alak	követné	1	követnette	2Kir 11:15	sorok között és ha valaki őt [követné] öljétek meg fegyverrel Mert azt mondta
+R0651	alak	követőinkké	1	követőinkkette	1Thessz 1:6	És ti a mi [követőinkké] lettetek és az Úréi befogadva az
+R0652	alak	kövévé	1	kövévte	1Pét 2:7	lett a szegeletnek fejévé és megütközésnek [kövévé] s botránkozásnak sziklájává
+R0653	alak	közelvalókká	1	közelvalókkotta	Ef 2:13	Jézusban ti kik egykor távol voltatok [közelvalókká] lettetek a Krisztus vére által
+R0654	alak	közéd	1	közted	2Móz 33:5	nép vagy te egy szempillantásban ha [közéd] mennék megemésztenélek Azért most vesd le
+R0655	alak	kútfejévé	1	kútfejévta	Jer 9:1	vízzé változnék a szemem pedig könyhullatásnak [kútfejévé] hogy éjjel nappal sirathatnám az én
+R0656	alak	különíték	1	különítettem	Ezsd 9:1	a papok és a Léviták nem [különíték] el magokat e tartományok népeitől a
+R0657	alak	kőhalmokká	1	kőhalmokkotta	2Kir 19:25	ezt Most csak véghezvittem hogy puszta [kőhalmokká] döntsd össze az erős városokat
+R0658	alak	kőhalommá	4	kőhalommotta	Józs 8:28	pedig felgyujtatá Józsué és tette örökkévaló [kőhalommá] pusztassággá mind e napig
+R0659	alak	kőrakássá	2	kőrakássotta	Ézs 37:26	ezt és most előhoztam hogy puszta [kőrakássá] tégy erős városokat
+R0660	alak	kővágókká	1	kővágókkotta	1Krón 22:2	Izráel földén való jövevényeket a akiket [kővágókká] tett hogy faragni való köveket vágnának
+R0661	alak	lakatlanná	5	lakatlannotta	Jer 26:9	mint Siló és e város elpusztul [lakatlanná] lesz És összegyűle az egész nép
+R0662	alak	lakatlanokká	1	lakatlanokkotta	Jer 4:7	elpusztítsa a te földedet városaid lerontatnak [lakatlanokká] lesznek
+R0663	alak	lakhatatlanokká	1	lakhatatlanokkotta	Jer 34:22	tűzzel és pusztasággá teszem Júda városait [lakhatatlanokká]
+R0664	alak	lakhelyévé	3	lakhelyévta	Jer 49:33	És Házor sakálok [lakhelyévé] lesz örökkévaló pusztasággá senki nem lakik
+R0665	alak	lakosokká	2	lakosokkotta	4Móz 14:30	nézve felemeltem az én kezemet hogy [lakosokká] teszlek abban titeket Kálebet a Jefunné
+R0666	alak	lakozóké	1	lakozókta	Ézs 23:18	nem rejtetik mert az Úr előtt [lakozóké] lesz az ő nyeresége hogy egyenek
+R0667	alak	lakójává	1	lakójávta	Hós 12:9	Istened Égyiptom földétől kezdve Újra sátorok [lakójává] teszlek téged mint az ünneplés napjain
+R0668	alak	leesém	2	leestem	ApCsel 22:7	És [leesém] a földre és hallottam szót mely
+R0669	alak	legelőjévé	3	legelőjévte	Ézs 7:25	a tövistől és gaztól hanem barmok [legelőjévé] lesznek és juhok járásává
+R0670	alak	legelőkké	1	legelőkkötte	Sof 2:6	És a tenger vidéke [legelőkké] pásztorok tanyáivá és juhoknak aklaivá lesz
+R0671	alak	lelé	1	lelte	Mt 12:18	a akiben az én lelkem kedvét [lelé] lelkemet adom ő belé és ítéletet
+R0672	alak	lementének	1	lementettek	Józs 10:27	Lett pedig a nap [lementének] idején parancsolt Józsué és levették őket
+R0673	alak	lenyergelé	1	lenyergelte	1Móz 24:32	a férfiú a házhoz ő pedig [lenyergelé] a tevéket és adott a tevéknek
+R0674	alak	lenyiratá	1	lenyiratta	2Sám 10:4	a Dávid szolgáit és szakáloknak felét [lenyiratá] és ruháikat félben elmetszette az alfelekig
+R0675	alak	lepecsételvén	1	lepecsételve	Mt 27:66	elmenve a sírt őrizet alá helyezték [lepecsételvén] a követ az őrséggel
+R0676	alak	lepé	1	lepte	1Móz 15:12	És lett naplementekor mély álom [lepé] meg Ábrámot és ímé rémülés és
+R0677	alak	lerombolá	1	lerombolta	Ézs 23:13	azt a puszta lakosainak felállította őrtornyait [lerombolá] Tírus palotáit rommá tette azt
+R0678	alak	lerészegíté	1	lerészegítette	2Sám 11:13	ő vele evett és ivott és [lerészegíté] őt és kiment estve aludni az
+R0679	alak	letördelé	3	letördelte	Jób 19:10	elvesszek és reménységemet mint a fát [letördelé]
+R0680	alak	levivém	1	levivtem	ApCsel 23:28	tudni az okát miért vádolják őt [levivém] őt az ő tanácsuk elébe
+R0681	alak	levék	3	lettem	Jób 30:9	És most ezeknek lettem gúnydalává nekik [levék] beszédtárgyuk
+R0682	alak	levél	15	lettél	2Kir 5:6	Izráel királyának ezt írva Mikor e [levél] hozzád érkezik ímé az én szolgámat
+R0683	alak	levének	3	lettek	1Krón 5:20	És győzedelmesek [levének] azokon és kezekbe adattak a Hágárénusok
+R0684	alak	leának	1		1Móz 29:17	[Leának] pedig gyenge szemei voltak de Rákhel
+R0685	alak	leányaimmá	1	leányaimmotta	2Kor 6:18	Atyátok és ti lesztek fiaimmá és [leányaimmá] azt mondja a mindenható Úr
+R0686	alak	leírák	1	leírták	Józs 18:9	és által mentek a földön és [leírák] azt városonként hét részre könyvben azután
+R0687	alak	leöldösé	1	leöldöste	Józs 8:24	Mikor pedig [leöldösé] Izráel Ainak minden lakosát a mezőn
+R0688	alak	leölének	1	alanyi=leöltek|targyas=leölték	1Móz 37:31	vették a József felső ruháját és [leölének] egy kecskebakot és belemárták a felső
+R0689	alak	leüté	3	leütötte	Dán 2:35	Az a kő pedig a amely [leüté] az állóképet nagy heggyé lett és
+R0690	alak	leűlének	2	leűltek	1Móz 37:25	Azután [leűlének] kenyerezni és felemelték szemeiket és látták
+R0691	alak	lovasaivá	1	lovasaivta	1Sám 8:11	fiaitokat elveszi és szekér vezetőivé és [lovasaivá] teszi őket és szekere előtt futnak
+R0692	alak	lángjává	1	lángjávta	Zsid 1:7	teszi és az ő szolgáit tűz [lángjává]
+R0693	alak	látná	1	látnotta	Zsolt 49:10	ha örökké élne is és nem [látná] meg a sírgödört
+R0694	alak	látogatád	1	látogattad	Ézs 26:14	az árnyak nem kelnek föl ezért [látogatád] meg és vesztéd el őket és
+R0695	alak	látád	1	láttad	Dán 2:31	Te [látád] oh király és ímé egy nagy
+R0696	alak	látóvá	1	látóvta	2Móz 4:11	ki tesz némává vagy siketté vagy [látóvá] vagy vakká Nemde én az Úr
+R0697	alak	lélekké	2	lélekkette	1Móz 2:7	lehelletét Így lett az ember élő [lélekké]
+R0698	alak	léleké	1	lélekte	2Kor 3:6	szövetség szolgái legyünk nem betűé hanem [léleké] mert a betű megöl a lélek
+R0699	alak	lövé	2	lövte	2Sám 18:14	három nyilat kezébe és Absolonnak szívébe [lövé] minthogy még élt a cserfán
+R0700	alak	madaraké	2	madarakta	1Kor 15:39	teste más a halaké más a [madaraké]
+R0701	alak	magassá	2	magassotta	Ez 17:24	magas fát alacsonnyá az alacsony fát [magassá] megszáraztottam a zöldelő fát és zölddé
+R0702	alak	magasztalá	1	magasztalta	ApCsel 5:13	mert közéjük elegyedni hanem a nép [magasztalá] őket
+R0703	alak	magasztalák	1	magasztalták	1Móz 12:15	Mikor meglátták őt a Faraó főemberei [magasztalák] a Faraó előtt és elvitték az
+R0704	alak	magfolyóssá	1	magfolyóssotta	3Móz 15:19	Mikor asszony lesz [magfolyóssá] és véressé lesz az ő magfolyása
+R0705	alak	magtalanokká	1	magtalanokkotta	Jer 18:21	hegyére hogy legyenek az ő asszonyaik [magtalanokká] és özvegyekké férjeik pedig legyenek halál
+R0706	alak	magáé	1		4Móz 5:10	kinek kinek az ő szenteltje a [magáé] legyen a amit pedig kiki a
+R0707	alak	magáévá	3	magáévta	Zak 1:17	még az Úr a Siont és [magáévá] fogadja még Jeruzsálemet
+R0708	alak	makacskodának	1	makacskodtak	Neh 9:26	[Makacskodának] pedig és pártot ütöttek ellened és
+R0709	alak	manassé	1	manassotta	Józs 17:2	[Manassé] többi fiainak is jutott az ő
+R0710	alak	manasséé	1		Józs 17:8	[Manasséé] volt Tappuah földe de Tappuah a
+R0711	alak	maradékká	1	maradékkotta	Mik 4:7	És a sántát [maradékká] teszem az elszélesztettet pedig erős nemzetté
+R0712	alak	maradékáé	1		Sof 2:7	az a vidék a Júda házának [maradékáé] lesz ők legeltetnek azon estére Askelon
+R0713	alak	marasztá	1	marasztotta	Bír 19:7	az a férfiú hogy elmenjen addig [marasztá] őt az ipa hogy ott maradt
+R0714	alak	marná	1	marnotta	Ámós 5:19	kezét a falhoz támasztaná és kígyó [marná] meg
+R0715	alak	martalékává	1	martalékávta	Jer 18:21	és özvegyekké férjeik pedig legyenek halál [martalékává] ifjaikat fegyver verje le a harcon
+R0716	alak	medvéé	1		Jel 13:2	és az ő lábai mint a [medvéé] és az ő szája mint az
+R0717	alak	megadná	1	megadnotta	Jób 6:8	én kérésem teljesülne és az Isten [megadná] amit reménylek
+R0718	alak	megalapítá	1	megalapította	Ézs 51:13	az eget kiterjesztette és a földet [megalapítá] és hogy félsz szüntelen minden napon
+R0719	alak	megalázád	1	megaláztad	Neh 9:24	fiak és elfoglalták a földet és [megalázád] előttök a földnek lakóit a Kananeusokat
+R0720	alak	megberetválá	1	megberetválta	Jób 1:20	Akkor felkelt Jób megszaggatta köntösét [megberetválá] a fejét és a földre esett
+R0721	alak	megbélelteté	1	megbéleltette	2Krón 3:5	A derék házat pedig [megbélelteté] fenyőfákkal és finom arannyal borította be
+R0722	alak	megbéllelé	1	megbéllelte	1Kir 6:15	És [megbéllelé] a ház falait belől cédrusfával a
+R0723	alak	megbénítá	1	megbénítette	Józs 11:9	neki az Úr az ő lovaikat [megbénítá] szekereiket pedig tűzzel égette el
+R0724	alak	megcsapdosá	1	megcsapdosta	Jer 20:2	És [megcsapdosá] Passúr Jeremiást a prófétát és bevetette
+R0725	alak	megdicsőítéd	1	megdicsőítetted	Ézs 26:15	népet Uram megszaporítád e népet magadat [megdicsőítéd] kiterjesztetted a földnek minden határait
+R0726	alak	megelégelé	1	megelégelte	2Sám 24:16	ellen is hogy azt is elpusztítsa [megelégelé] az Úr a veszedelmet és mondta
+R0727	alak	megelégítené	1	megelégítente	Zsolt 81:17	És ő [megelégítené] őt java búzával és sziklából folyó
+R0728	alak	megelégíté	1	megelégítette	Zsolt 107:9	Hogy [megelégíté] a szomjúhozó lelket és az éhező
+R0729	alak	megelégítél	1	megelégítettél	Ez 27:33	vala árúid a tengerekből sok népet [megelégítél] gazdagságod és csereárúid sokaságával meggazdagítád a
+R0730	alak	megemlékezém	1	megemlékeztem	ApCsel 11:16	[Megemlékezém] pedig az Úrnak ama mondásáról a
+R0731	alak	megerősítené	1	megerősítente	2Krón 10:15	ezt az Úr fordította ekként hogy [megerősítené] az Úr az ő beszédét a
+R0732	alak	megerősödém	1	megerősödtem	Dán 10:19	bizony erős És mikor szólt velem [megerősödém] és mondtam Szóljon az én Uram
+R0733	alak	megfenyítém	1	megfenyítettem	Jer 50:18	királyt és az ő földét miként [megfenyítém] az assiriai királyt
+R0734	alak	megfertőztethetné	1	megfertőztethetnette	Mk 7:15	kívülvaló a ami bemenve ő belé [megfertőztethetné] őt hanem a amik belőle jönnek
+R0735	alak	megfertőztetné	1	megfertőztetnette	2Krón 26:16	ilyen módon megerősödött volna felfuvalkodott hogy [megfertőztetné] magát és vétkezett az Úr ellen
+R0736	alak	megfizetné	1	megfizetnette	4Móz 5:8	nincs az embernek atyjafia a akinek [megfizetné] a kárt a megtérített kár az
+R0737	alak	megfogaték	3	megfogatott	Ez 19:4	meghallották ezt róla a népek vermökben [megfogaték] és elvitték őt horgokon Égyiptom földjére
+R0738	alak	megfoghatná	1	megfoghatnotta	Dán 4:32	nincs a aki az ő kezét [megfoghatná] és ezt mondaná neki Mit cselekedtél
+R0739	alak	megfojtá	1	megfojtotta	2Sám 17:23	ő városába és elrendezve háznépének dolgát [megfojtá] magát és meghalt és eltemettetett az
+R0740	alak	megfuvatá	1	megfuvatta	2Sám 20:22	fiának fejét és kivetették Joábnak Akkor [megfuvatá] a trombitát és hazaoszlának a város
+R0741	alak	megfúvatá	1	megfúvatta	2Sám 18:16	[Megfúvatá] azután a trombitát Joáb és megtért
+R0742	alak	megfőzé	2	megfőzte	2Sám 13:8	és bélest csinált ő előtte és [megfőzé] a bélest
+R0743	alak	megfőzék	1	megfőzött	2Krón 35:13	a tűznél a megszenteltetett állatokat pedig [megfőzék] fazekakban vasfazekakban és üstökben és nagy
+R0744	alak	meggyógyítaná	1	meggyógyítanta	2Kir 5:3	a aki Samariában van kétség nélkül [meggyógyítaná] őt az ő bélpoklosságából
+R0745	alak	meggyúrá	1	meggyúrta	2Sám 13:8	pedig feküdt vala És lisztet vévén [meggyúrá] és bélest csinált ő előtte és
+R0746	alak	meghallgatád	2	meghallgattad	Neh 9:27	hozzád kiáltottak és te az égből [meghallgatád] és nagy irgalmasságod szerint adtál nekik
+R0747	alak	meghallád	2	meghallottad	Neh 9:9	való nyomorúságát és az ő kiáltásukat [meghallád] a Veres tengernél
+R0748	alak	megholtaké	1	megholtakta	Zsolt 143:3	a sötétségbe a amilyen a régen [megholtaké]
+R0749	alak	meghorgasztá	1	meghorgasztotta	Ézs 26:5	Mert [meghorgasztá] a magasban lakozókat a magas várost
+R0750	alak	megháborítád	1	megháborítottad	Ez 32:2	a tengerekben mert kijövél folyóidon és [megháborítád] lábaiddal a vizeket és felzavartad folyóikat
+R0751	alak	meghányám	1	meghánytam	Jób 29:16	voltam az ismeretlennek ügyét is jól [meghányám] vetettem
+R0752	alak	megigéré	1	megigérte	Luk 22:6	Ő pedig [megigéré] és keresett vala jó alkalmat hogy
+R0753	alak	megijedének	3	megijedtek	Józs 10:2	Igen [megijedének] mivelhogy nagy város volt Gibeon olyan
+R0754	alak	megismerheté	1	megismerhette	Ruth 3:14	felkelt mielőtt valaki az ő felebarátját [megismerheté] mert mondta Meg ne tudja senki
+R0755	alak	megittasodának	1	megittasodtak	1Móz 43:34	volt mindnyájuk részénél És ittak és [megittasodának] ő nála
+R0756	alak	megjelentéd	1	megjelentetted	Neh 9:14	A te szent szombatodat is [megjelentéd] nekik és parancsolatokat rendeléseket és törvényt
+R0757	alak	megkisértené	1	megkisértente	2Krón 32:31	lett elhagyta őt az Isten hogy [megkisértené] őt és meglátná mi volna az
+R0758	alak	megkérdezéd	1	megkérdezted	1Sám 22:13	kardot adtál neki és ő érette [megkérdezéd] az Istent hogy fellázadjon ellenem hogy
+R0759	alak	megköszöné	1	megköszönte	2Sám 14:22	leborult Joáb és térdet fejet hajtva [megköszöné] a királynak és mondta Joáb Ma
+R0760	alak	megláthatná	1	megláthatnotta	Jón 4:5	az alatt az árnyékban a amíg [megláthatná] mi lesz a városból
+R0761	alak	meglátná	1	meglátnotta	2Krón 32:31	az Isten hogy megkisértené őt és [meglátná] mi volna az ő szívében
+R0762	alak	meglátogatná	1	meglátogatnotta	2Krón 22:6	a Júda királyának fia aláment hogy [meglátogatná] Jórámot az Akháb fiát Jezréelben mert
+R0763	alak	megmondaná	1	megmondanta	1Sám 22:8	közöttetek a aki szánakoznék felettem és [megmondaná] nekem hogy fiam fellázította szolgámat ellenem
+R0764	alak	megmondhatná	1	megmondhatnotta	Préd 6:12	tölt el Kicsoda az a aki [megmondhatná] az embernek mi következik ő utána
+R0765	alak	megmondád	1	megmondtad	Neh 9:23	bevivéd őket a földre mely felől [megmondád] atyáiknak hogy bemennek arra hogy bírják
+R0766	alak	megmosakodám	2	megmosakodtam	Ján 9:11	mosódjál meg miután pedig elmentem és [megmosakodám] megjött látásom
+R0767	alak	megnedvesíté	1	megnedvesítette	1Móz 2:6	szállt vala fel a földről és [megnedvesíté] a föld egész színét
+R0768	alak	megnevekedém	1	megnevekedtem	Préd 2:10	És naggyá levék és [megnevekedém] mindazok felett a akik előttem voltak
+R0769	alak	megnyergelé	5	megnyergelte	1Móz 22:3	Felkelt azért Ábrahám jó reggel és [megnyergelé] az ő szamarát és maga mellé
+R0770	alak	megnyiratá	1	megnyiratta	1Krón 19:4	Hánun a Dávid szolgáit és azokat [megnyiratá] és ruhájukat félig elmetszette az ő
+R0771	alak	megnézém	1	megnéztem	ApCsel 11:6	Melyre szememet rávetve [megnézém] és láttam a földi négylábú állatokat
+R0772	alak	megoktathatná	1	megoktathatnotta	1Kor 2:16	érte fel az Úrnak értelmét hogy [megoktathatná] őt Bennünk pedig Krisztus értelme van
+R0773	alak	megoldaná	1	megoldanta	Jób 6:9	És tetszenék Istennek hogy összetörjön engem [megoldaná] kezét hogy szétvagdaljon engem
+R0774	alak	megpecsételé	1	megpecsételte	Eszt 8:10	És megírta Ahasvérus király nevében és [megpecsételé] a király gyűrűjével És küldött leveleket
+R0775	alak	megpecsételének	1	megpecsételtek	Neh 9:38	kötést szereztünk és azt aláírtuk melyet [megpecsételének] a mi fejedelmeink Lévitáink és papjaink
+R0776	alak	megpecsétlé	1	megpecsétlette	Dán 6:17	oda tették a verem szájára és [megpecsétlé] a király az ő gyűrűjével és
+R0777	alak	megpihenteté	1	megpihentette	1Móz 24:11	És [megpihenteté] a tevéket a városon kívül egy
+R0778	alak	megrendülék	1	megrendültem	Dán 7:15	[Megrendülék] én Dániel az én lelkemben ezek
+R0779	alak	megrendülének	3	megrendültek	2Sám 22:8	föld Az égnek fundamentumai inogtak És [megrendülének] mert haragudott Ő
+R0780	alak	megreszketteté	1	megreszkettette	Jób 4:14	Félelem szállt rám és rettegés s [megreszketteté] minden csontomat
+R0781	alak	megrettenék	2	E1=megrettentem|T3=megrettenték	Dán 8:17	én álltam és a amint jött [megrettenék] és orcámra esém és mondta nekem
+R0782	alak	megrettenének	4	alanyi=megrettentek|targyas=megrettenték	1Sám 17:11	Izráel a Filiszteusnak ezt a beszédét [megrettenének] és igen féltek vala
+R0783	alak	megrángatá	1	megrángatta	Luk 9:42	az ördög földhöz ütötte azt és [megrángatá] De Jézus megdorgálta a tisztátalan lelket
+R0784	alak	megrázám	1	megráztam	Neh 5:13	Ruhámat is [megrázám] és mondtam Épen így rázzon ki
+R0785	alak	megsegítené	1	megsegítente	2Krón 28:16	Akház király az Assiriabeli királyhoz hogy [megsegítené] őt
+R0786	alak	megsokasítád	3	megsokasítottad	Neh 9:23	Fiaikat pedig [megsokasítád] mint az ég csillagait és bevivéd
+R0787	alak	megszabadítaná	1	megszabadítanta	2Kir 14:26	nincs senki a aki az Izráelt [megszabadítaná]
+R0788	alak	megszabadítád	1	megszabadítottad	Neh 9:28	kiáltottak te az égből meghallgatád és [megszabadítád] őket irgalmasságod szerint sokszor
+R0789	alak	megszaporítád	2	megszaporítottad	Ézs 26:15	[Megszaporítád] e népet Uram megszaporítád e népet
+R0790	alak	megszenteltekké	1	megszenteltekkette	Ján 17:19	oda szentelem magamat hogy ők is [megszenteltekké] legyenek az igazságban
+R0791	alak	megszerzém	1	megszerzettem	Hós 3:2	És [megszerzém] azt magamnak tizenöt ezüstön és egy
+R0792	alak	megszomorodának	2	megszomorodtak	Mt 17:23	őt de harmadnapon föltámad És felettébb [megszomorodának]
+R0793	alak	megszomorodék	5	megszomorodtam	Eszt 4:4	és udvarmesterei és megmondták neki és [megszomorodék] a királyasszony nagyon és küldött ruhákat
+R0794	alak	megszünteté	1	megszüntette	2Krón 16:5	meghallott Baása abbanhagyta Ráma építését és [megszünteté] munkáját
+R0795	alak	megszünék	7	megszüntem	2Móz 36:5	készítsen ajándékot a szent munkára És [megszünék] a nép hordani
+R0796	alak	megtanulná	1	megtanulnotta	Ézs 7:16	Mert mielőtt e gyermek [megtanulná] megvetni a gonoszt és a jót
+R0797	alak	megtartóvá	1	megtartóvta	ApCsel 5:31	Ezt az Isten fejedelemmé és [megtartóvá] emelte jobbjával hogy adjon az Izráelnek
+R0798	alak	megtartóztatá	3	megtartóztatta	1Móz 43:31	Azután megmosta orcáját és kiment és [megtartóztatá] magát és mondta Hozzatok enni valót
+R0799	alak	megtekintéd	1	megtekintetted	Neh 9:9	[Megtekintéd] annakfelette a mi atyáinknak Égyiptomban való
+R0800	alak	megteljesítéd	1	megteljesítetted	Neh 9:8	hogy adod az ő magvának és [megteljesítéd] beszédeidet mert igaz vagy te
+R0801	alak	megterhelé	1	megterhelte	1Móz 44:13	Azok pedig meghasogatták ruhájukat és kiki [megterhelé] a maga szamarát és visszatértek a
+R0802	alak	megtompulának	1	megtompultak	1Sám 13:21	Minthogy [megtompulának] a kapák szántóvasak a háromágú villa
+R0803	alak	megtorlássá	1	megtorlássotta	Róm 11:9	ő asztaluk tőrré hálóvá botránkozássá és [megtorlássá]
+R0804	alak	megtépém	1	megtéptem	Neh 13:25	őket és megverték közülök néhányat és [megtépém] őket és megeskettem őket Istenre Bizony
+R0805	alak	megvadítá	1	megvadította	2Móz 32:25	hogy a nép megvadula mert Áron [megvadítá] volt őket ellenségeik csúfjára
+R0806	alak	megvonám	1	megvontam	2Sám 7:15	irgalmasságomat nem vonom meg tőle miképpen [megvonám] Saultól a akit kivágtam előtted
+R0807	alak	megválaszták	1	megválasztották	2Kor 8:19	pedig hanem a gyülekezetek útitársunknak is [megválaszták] ebben a jó ügyben a amelyet
+R0808	alak	megváltaná	2	megváltanta	Ruth 4:4	mert rajtad kívül nincs a aki [megváltaná] és én vagyok utánad És az
+R0809	alak	megád	1	megted	2Tim 4:8	eltétetett nekem az igazság koronája melyet [megád] nekem az Úr ama napon az
+R0810	alak	megáldaná	2	megáldanta	Józs 8:33	megparancsolta Mózes az Úr szolgája hogy [megáldaná] az Izráel népét először
+R0811	alak	megáldozád	1	megáldoztad	Ez 16:20	leányaidat kiket nekem szültél vala és [megáldozád] őket azoknak eledelül Avagy nem volt
+R0812	alak	megáldád	2	megáldottad	4Móz 23:11	azért hoztalak téged és ímé igen [megáldád] őket
+R0813	alak	megállapítá	1	megállapította	Péld 8:29	ne hágják az ő parancsolatját mikor [megállapítá] e földnek fundamentomait
+R0814	alak	megásá	1	megásta	1Móz 26:18	És ismét [megásá] Izsák a kútakat a amelyeket ástak
+R0815	alak	megátkozná	1	megátkoznotta	Neh 13:2	bérbe fogadták ellenük Bálámot hogy őket [megátkozná] de a mi Istenünk az átkot
+R0816	alak	megékesíté	1	megékesítette	2Kir 9:30	ment és Jézabel ezt meghallotta arcát [megékesíté] kenettel felékesítette fejét és kitámaszkodott az
+R0817	alak	megépítéd	1	megépítetted	Ez 16:25	És minden keresztútnál [megépítéd] magaslatodat s útálatossá tevéd szépségedet és
+R0818	alak	megérkezém	1	megérkeztem	Neh 2:9	És [megérkezém] a folyóvizen túl való tiszttartókhoz és
+R0819	alak	megérzé	1	megérzette	Mk 5:29	És vérének forrása azonnal kiszáradt és [megérzé] testében hogy kigyógyult bajából
+R0820	alak	megéteté	1	megétette	Ez 3:2	Felnyitottam azért számat és [megéteté] velem azt a türetet
+R0821	alak	megírták	1	megírtették	2Krón 27:7	dolgait minden hadakozásait és útjait ímé [megírták] az Izráel és a Júda királyainak
+R0822	alak	megírtál	1	megírtettél	Dán 6:13	király sem a tilalmat a amit [megírtál] hanem háromszor napjában elkönyörgi könyörgését
+R0823	alak	megölelgeté	1	megölelgette	1Móz 48:10	őket hozzá ő pedig megcsókolgatta és [megölelgeté] őket
+R0824	alak	megölné	1	megölnötte	1Sám 17:25	hogy gyalázattal illesse Izráelt Ha valaki [megölné] őt nagy gazdagsággal ajándékozná meg a
+R0825	alak	megöléd	3	megölted	2Móz 2:14	engem is meg akarsz ölni mint [megöléd] az égyiptomit Mózes pedig megfélemlettem és
+R0826	alak	megörvendeztetém	1	megörvendeztettem	Jób 29:13	áldása szállt rám az özvegynek szívét [megörvendeztetém]
+R0827	alak	megújíttatá	1	megújíttatta	2Krón 29:3	az Úr házának ajtait és azokat [megújíttatá]
+R0828	alak	megújítá	1	megújította	2Krón 15:8	amelyeket elfoglalt az Efraim hegységén és [megújítá] az Úr oltárát is a amely
+R0829	alak	megüresíté	1	megüresítette	Fil 2:7	Hanem önmagát [megüresíté] szolgai formát vévén föl emberekhez hasonlóvá
+R0830	alak	megőrizém	1	megőriztem	Ján 17:12	te nevedben a akiket nekem adtál [megőrizém] és senki el nem veszett közülök
+R0831	alak	melyiké	1	melyte	Mt 22:28	A feltámadáskor azért a hét közül [melyiké] lesz az asszony Mert mindeniké volt
+R0832	alak	mennyeieké	1	mennyeiekte	Fil 2:10	a Jézus nevére minden térd meghajoljon [mennyeieké] földieké és föld alatt valóké
+R0833	alak	merné	1	mernette	Préd 8:4	a király szava hatalmas és kicsoda [merné] neki ezt mondani mit mívelsz
+R0834	alak	meré	1	merte	ApCsel 7:32	Jákóbnak Istene Mózes pedig megrémülve nem [meré] megnézni
+R0835	alak	merék	1	E1=mertem|T3=merték	2Móz 2:16	mentek és vizet húztak és tele [merék] a válúkat hogy megitassák atyjuknak juhait
+R0836	alak	merének	2	alanyi=mertek|targyas=merték	2Sám 10:19	Izráellel és nekik szolgáltak és nem [merének] többé a Siriabeliek kijőni az Ammon
+R0837	alak	merészkedének	1	merészkedtek	4Móz 14:44	Mindazáltal [merészkedének] felmenni a hegy tetejére de az
+R0838	alak	mesterünkké	1	mesterünkkötte	Gal 3:24	Ekként a törvény Krisztusra vezérlő [mesterünkké] lett hogy hitből igazuljunk meg
+R0839	alak	mezítelenekké	2	mezítelenekkette	Jób 22:6	te atyádfiától méltatlanul és a szegényeket [mezítelenekké] tetted
+R0840	alak	mezítelenné	2	mezítelennette	Jer 49:10	Bizony én [mezítelenné] teszem Ézsaut titkait kijelentem és el
+R0841	alak	mezővé	1	mezővte	Mik 3:12	Azért ti miattatok [mezővé] szántatik a Sion és kőhalommá lesz
+R0842	alak	mindenfelé	9	mindenfelte	3Móz 13:12	a fakadékosnak egész bőrét tetőtől talpig [mindenfelé] a amerre a pap szemei látnak
+R0843	alak	mindeniké	1	mindente	Mt 22:28	közül melyiké lesz az asszony Mert [mindeniké] volt
+R0844	alak	mindenkié	1		2Thessz 3:2	alkalmatlan és gonosz emberektől Mert nem [mindenkié] a hit
+R0845	alak	mindenné	1	mindennette	1Kor 9:22	lettem hogy az erőteleneket megnyerjem Mindeneknek [mindenné] lettem hogy minden módon megtartsak némelyeket
+R0846	alak	mindnyájatoké	1	mindnyájatokta	2Kor 2:3	mindenitek felől hogy az én örömöm [mindnyájatoké]
+R0847	alak	mindörökké	110	mindörökkötte	2Móz 19:9	mikor beszélek veled és higyjenek neked [mindörökké] És elmondta Mózes az Úrnak a
+R0848	alak	minél	5	mintél	2Móz 1:12	De [minél] inkább sanyargatták vala őt annál inkább
+R0849	alak	mivé	4	mivte	1Móz 30:29	tudod mimódon szolgáltalak téged és hogy [mivé] lett nálam a te jószágod
+R0850	alak	mondaná	11	mondanta	2Móz 21:5	De ha a szolga azt [mondaná] Szeretem az én uramat az én
+R0851	alak	mondhatná	2	mondhatnotta	Péld 20:9	Ki [mondhatná] azt megtisztítottam szívemet tiszta vagyok az
+R0852	alak	mondá	2	mondta	Ján 1:33	elküldött engem hogy vízzel kereszteljek az [mondá] nekem A Akire látod a Lelket
+R0853	alak	mondád	22	mondtad	1Móz 32:9	atyámnak Izsáknak Istene Jehova ki azt [mondád] nekem Térj vissza hazádba a te
+R0854	alak	mozdítá	1	mozdította	1Móz 13:18	Elébb [mozdítá] azért sátorát Ábrám és elment és
+R0855	alak	mulván	1	mulva	2Sám 15:7	Lett pedig negyven esztendő [mulván] mondta Absolon a királynak Hadd menjek
+R0856	alak	munkatársaikká	1	munkatársaikkotta	3Ján 1:8	be kell fogadnunk az ilyeneket hogy [munkatársaikká] lehessünk az igazságban
+R0857	alak	másfelé	2	másfelta	2Sám 2:21	És mondta neki Abner Térj [másfelé] vagy jobbkézre vagy balkézre és fogj
+R0858	alak	másiké	1	másta	3Móz 7:10	legyen közösen egyiké úgy mint a [másiké]
+R0859	alak	másodiké	1	másodta	Jób 42:14	az elsőnek neve volt Jémima a [másodiké] Keciha a harmadiké Kéren Happuk
+R0860	alak	másé	1	másta	1Kor 10:24	hanem kiki azt a ami a [másé]
+R0861	alak	méltatlanná	1	méltatlannotta	1Kor 9:27	míg másoknak prédikálok magam valami módon [méltatlanná] ne legyek
+R0862	alak	méltókká	3	méltókkotta	Luk 20:35	De a akik [méltókká] tétetnek hogy ama világot elvegyék és
+R0863	alak	méltóvá	1	méltóvta	Dán 1:9	És az Isten kegyelemre és irgalomra [méltóvá] tette Dánielt az udvarmesterek fejedelme előtt
+R0864	alak	mélyebbé	1	mélyebbette	3Móz 13:32	és a varnak felülete nem lett [mélyebbé] a bőrnél
+R0865	alak	mérgévé	1	mérgévte	Jób 20:14	étke elváltozik az ő gyomrában vipera [mérgévé] lesz a belében
+R0866	alak	mértéklé	1	mértéklette	Ézs 40:12	meg markával a vizeket és ki [mértéklé] az egeket arasszal a föld porát
+R0867	alak	mérőkötéllé	1	mérőkötéllette	Ézs 28:17	És a jogosságot [mérőkötéllé] tettem és az igazságot színlelővé és
+R0868	alak	mívelé	1	mívelte	Ézs 48:5	hogy ezt ne mondd Faragott képem [mívelé] ezeket bálványom és öntött képem parancsolta
+R0869	alak	mívelék	2	E1=míveltem|T3=mívelték	1Kir 18:34	tegyétek meg És harmadszor is azt [mívelék]
+R0870	alak	múlván	1	múlva	1Móz 41:1	Lett pedig két esztendő [múlván] hogy a Faraó álmot látott s
+R0871	alak	műveléd	2	művelted	2Krón 21:13	az Izráel királyainak útján és azt [műveléd] hogy Júda és Jeruzsálem lakói paráználkodjanak
+R0872	alak	nagyobbá	2	nagyobbotta	1Móz 41:40	csak a királyiszék tesz engem nálad [nagyobbá]
+R0873	alak	nagyokká	3	nagyokkotta	Zsolt 144:12	fiaink olyanok legyenek mint a plánták [nagyokká] nőve ifjú korukban leányaink mint a
+R0874	alak	napjává	3	napjávta	Eszt 9:17	és tették azt vigalom és öröm [napjává]
+R0875	alak	nappallá	1	nappallotta	Jób 17:11	Az éjszakát [nappallá] változtatják és a világosság csakhamar sötétséggé
+R0876	alak	napé	1	napta	Hab 3:4	Ragyogása mint a [napé] sugarak támadnak mellőle és ott van
+R0877	alak	nehezebbé	4	nehezebbette	1Kir 12:11	rátok nehéz igát vetett én még [nehezebbé] teszem a ti igátokat ha az
+R0878	alak	nehézzé	1	nehézzette	Sir 3:7	Körülkerített hogy ki ne mehessek [nehézzé] tette láncomat
+R0879	alak	nemzetségeié	1		3Móz 25:30	városban van örökre azé és annak [nemzetségeié] marad a aki megvette azt nem
+R0880	alak	nemzetté	2	nemzettette	1Móz 12:2	És nagy [nemzetté] tészlek és megáldalak téged és felmagasztalom
+R0881	alak	nevelé	1	nevelte	Ez 19:2	közt feküdt vala fiatal oroszlánok között [nevelé] fel kölykeit
+R0882	alak	nevesekké	2	nevesekkette	Sof 3:19	összeszedem a szétszórtakat és híresekké és [nevesekké] teszem őket az ő gyalázatjuknak egész
+R0883	alak	nevetséggé	1	nevetséggette	Jer 19:8	És e várost csudává teszem és [nevetséggé] a aki csak átmegy rajta álmélkodik
+R0884	alak	nevezéd	1	nevezted	Neh 9:7	a Káldeusoknak Úr nevű városából és [nevezéd] őt Ábrahámnak
+R0885	alak	nevének	22	nevtek	1Kir 3:2	nem építtetett vala ház az Úr [nevének] mind ez ideig
+R0886	alak	nyilatkozék	1	nyilatkoztam	1Sám 19:4	És Jonathán kedvezően [nyilatkozék] Dávid felől az ő atyja Saul
+R0887	alak	nyilvánvalókká	8	nyilvánvalókkotta	Ez 21:24	Isten Mivelhogy emlékezetbe hozzátok vétketeket midőn [nyilvánvalókká] lesznek gonoszságaitok hogy megláttassanak bűneitek minden
+R0888	alak	nyilvánvalóvá	10	nyilvánvalóvta	Péld 18:2	hanem abban hogy az ő elméje [nyilvánvalóvá] legyen
+R0889	alak	nyitná	1	nyitnette	Jób 11:5	szólalna meg maga az Isten és [nyitná] meg ajkait te ellened
+R0890	alak	nyomorítád	1	nyomorítottad	4Móz 11:11	És mondta Mózes az Úrnak Miért [nyomorítád] meg a te szolgádat és miért
+R0891	alak	nyomtatókővé	1	nyomtatókővta	Zak 12:3	És azon a napon lesz hogy [nyomtatókővé] teszem Jeruzsálemet minden népnek a aki
+R0892	alak	nyíllá	1	nyíllette	Ézs 49:2	árnyékában rejtett el engem és fényes [nyíllá] tett engemet és tegzébe zárt be
+R0893	alak	négyfelé	1	négyfelte	1Krón 9:24	[Négyfelé] voltak az őrizők napkeletre napnyugotra északra
+R0894	alak	némává	1	némávta	2Móz 4:11	szájat az embernek Avagy ki tesz [némává] vagy siketté vagy látóvá vagy vakká
+R0895	alak	népeddé	1	népeddte	1Krón 17:22	És az Izráel népét a te [népeddé] tevéd mindörökké és te Uram nekik
+R0896	alak	népekké	2	népekkette	1Móz 17:6	És felette igen megsokasítalak téged és [népekké] teszlek és királyok is származnak tőled
+R0897	alak	népemmé	11	népemmette	2Móz 6:7	És [népemmé] fogadlak titeket s Istentekké lészek nektek
+R0898	alak	néppé	16	néppette	1Móz 17:20	nagyon tizenkét fejedelmet nemz és nagy [néppé] teszem őt
+R0899	alak	néptömegé	1	néptömegte	Ézs 13:4	Hah zsibongás a hegyeken mint nagy [néptömegé] hah összegyűlt népek országainak zúgása a
+R0900	alak	népé	2	népte	3Móz 9:15	való áldozat bakját a amely a [népé] és megölte azt és megáldozta azt
+R0901	alak	népévé	5	népévte	5Móz 26:18	kimondatni veled hogy az ő tulajdon [népévé] leszesz a amiképpen szólt neked és
+R0902	alak	odaadád	1	odaadtad	Ez 35:5	Mivelhogy örökkévaló gyűlölséget tartasz és [odaadád] Izráel fiait a fegyver kezébe veszedelmük
+R0903	alak	odaállítám	1	odaállítottam	Neh 4:13	és nyilt részeire a kőfal mögé [odaállítám] a népet nemzetségek szerint fegyvereikkel dárdáikkal
+R0904	alak	oholibámá	1	oholibámta	1Móz 36:41	[Oholibámá] fejedelem Éla fejedelem Pinon fejedelem
+R0905	alak	ohólibámá	1	ohólibámta	1Krón 1:52	[Ohólibámá] fejedelem Éla fejedelem és Pinon fejedelem
+R0906	alak	okosoké	1	okosokta	Préd 9:13	bölcseké a kenyér és nem az [okosoké] a gazdagság és nem a tudósoké
+R0907	alak	oktatná	1	oktatnotta	Neh 9:20	jó lelkedet adád nekik hogy őket [oktatná] és mannádat nem vonád meg szájuktól
+R0908	alak	olajfáé	1		Hós 14:7	lesz az ő ékessége mint az [olajfáé] illata pedig mint a Libánoné
+R0909	alak	oltalmazójává	1	oltalmazójávta	1Sám 28:2	És mondta Ákhis Dávidnak Ennélfogva fejem [oltalmazójává] teszlek mindenkorra
+R0910	alak	oltaná	1	oltanta	Jer 40:15	úgy hogy senki se tudja Miért [oltaná] el a te életedet Hiszen a
+R0911	alak	olyanná	59	olyannotta	1Móz 3:22	az Úr Isten Ímé az ember [olyanná] lett mint mi közűlünk egy jót
+R0912	alak	olyanokká	15	olyanokkotta	Zsolt 83:12	Tedd őket fejedelmüket [olyanokká] mint Orebet s mint Zeébet Zebahot
+R0913	alak	olybá	1	olybotta	Róm 8:36	hogy Te éretted gyilkoltatunk minden napon [olybá] tekintenek mint vágó juhokat
+R0914	alak	oroszlánná	3	oroszlánnotta	Ez 19:3	És fölnevele egyet kölykei közül fiatal [oroszlánná] lett és megtanult ragadományt ragadozni embereket
+R0915	alak	oroszláné	2	oroszlánta	Ézs 5:29	Ordítása mint az [oroszláné] és ordít mint az oroszlán kölykök
+R0916	alak	ostorrá	1	ostorrotta	Józs 23:13	ti nektek tőrré és hurokká oldalaitokban [ostorrá] szemeitekben pedig tövisekké míglen kivesztek erről
+R0917	alak	ostromlá	1	ostromlotta	2Sám 11:16	Lett azért hogy mikor [ostromlá] Joáb a várost állatá Uriást arra
+R0918	alak	oszloppá	1	oszloppotta	Jel 3:12	A Aki győz [oszloppá] teszem azt az én Istenemnek templomában
+R0919	alak	osztóvá	1	osztóvta	Luk 12:14	ki tett engem köztetek biróvá vagy [osztóvá]
+R0920	alak	padlásúvá	1	padlásúvta	1Móz 6:16	oldalt csináld alsó közép és harmad [padlásúvá] csináld azt
+R0921	alak	papjaimmá	2	papjaimmotta	2Móz 28:41	tisztjükbe és szenteld fel őket hogy [papjaimmá] legyenek
+R0922	alak	papjává	2	papjávta	Bír 17:12	felszentelte Míka a Lévitát így lett [papjává] az ifjú és maradt Míka házánál
+R0923	alak	papokká	4	papokkotta	Zsid 7:20	való mert amazok esküvés nélkül lettek [papokká]
+R0924	alak	papoké	7	papokta	2Kir 12:16	vitték az Úr házába az a [papoké] lett
+R0925	alak	pappá	2	pappotta	5Móz 10:6	és Eleázár az ő fia lett [pappá] helyette
+R0926	alak	papsággá	1	papsággotta	1Pét 2:5	kövek épüljetek fel lelki házzá szent [papsággá] hogy lelki áldozatokkal áldozzatok a amelyek
+R0927	alak	papé	7	papta	3Móz 5:13	és megbocsáttatik neki És legyen a [papé] mint az ételáldozat
+R0928	alak	parancsolád	3	parancsoltad	1Móz 27:19	te elsőszülötted aképen cselekedtem a amint [parancsolád] kelj fel kérlek űlj le és
+R0929	alak	parlaggá	1	parlaggotta	Ézs 5:6	És [parlaggá] teszem nem metszetik és nem kapáltatik
+R0930	alak	paráznákká	1	paráznákkotta	Zsolt 106:39	És tisztátalanokká lettek cselekedeteikben és [paráznákká] tetteikben
+R0931	alak	paráznává	5	paráznávta	3Móz 19:29	ne becstelenítsd paráznaságra adva azt hogy [paráznává] ne legyen a föld és be
+R0932	alak	perpatvarrá	1	perpatvarrotta	Zsolt 80:7	[Perpatvarrá] tevél minket szomszédaink között és a
+R0933	alak	perzselé	2	perzselte	Ézs 1:7	Országtok pusztaság városaitokat tűz [perzselé] föl földeteket szemetek láttára idegenek emésztik
+R0934	alak	plántálának	1	plántáltak	Zsolt 107:37	És mezőket vetettek be és szőlőket [plántálának] hogy hasznos gyümölcsöt szerezzenek
+R0935	alak	pogácsáé	1		2Móz 16:31	fehér és íze mint a mézes [pogácsáé]
+R0936	alak	pogányoké	3	pogányokta	Róm 3:29	a zsidóké e Avagy nem a [pogányoké] is Bizony a pogányoké is
+R0937	alak	pohárrá	1	pohárrotta	Zak 12:2	Ímé én részegítő [pohárrá] teszem Jeruzsálemet minden körülte való népnek
+R0938	alak	porrá	12	porrotta	1Móz 3:19	mert por vagy te s ismét [porrá] leszesz
+R0939	alak	pozdorjává	2	pozdorjávta	Jób 41:28	el nem űzi őt a parittyakövek [pozdorjává] változnak rajta
+R0940	alak	prédájává	1	prédájávta	Zak 2:9	felemelem kezemet ellenük és saját szolgáik [prédájává] lesznek és megtudjátok hogy a Seregeknek
+R0941	alak	prédává	8	prédávta	Jób 17:4	A Aki [prédává] juttatja barátait annak fiainak szemei elfogyatkoznak
+R0942	alak	próbálóvá	1	próbálóvta	Jer 6:27	[Próbálóvá] tettelek téged az én népem között
+R0943	alak	prófétálád	1	prófétáltad	Jer 28:6	Úr a te beszédeidet a amelyekkel [prófétálád] hogy az Úr házának edényei és
+R0944	alak	prófétává	1	prófétávta	1Kir 19:16	az Abelméholabeli Sáfát fiát pedig kenjed [prófétává] a te helyedbe
+R0945	alak	pusztassággá	1	pusztassággotta	Józs 8:28	felgyujtatá Józsué és tette örökkévaló kőhalommá [pusztassággá] mind e napig
+R0946	alak	pusztasággá	34	pusztasággotta	3Móz 26:33	és kivont fegyverrel űzetlek titeket és [pusztasággá] lesz a ti földetek városaitok pedig
+R0947	alak	pusztaságává	5	pusztaságávta	Ez 29:10	és teszem Égyiptom földjét nagy pusztaságok [pusztaságává] Migdoltól fogva Siénéig és Szerecsenország határáig
+R0948	alak	pusztulássá	1	pusztulássotta	2Kir 22:19	ezen helyen lakók ellen szóltam hogy [pusztulássá] és átokká lesznek és megszaggattad a
+R0949	alak	pusztákká	1	pusztákkotta	3Móz 26:22	kiirtsák barmaitokat és elfogyasszanak titeket hogy [pusztákká] legyenek a ti útaitok
+R0950	alak	pusztává	25	pusztávta	2Móz 8:24	szolgái házára és egész Égyiptom földén [pusztává] lett a föld az ártalmas bogarak
+R0951	alak	példabeszéddé	3	példabeszéddta	5Móz 28:37	És iszonyattá [példabeszéddé] és gúnnyá leszel minden népnél a
+R0952	alak	példaképekké	1	példaképekkotta	1Thessz 1:7	Úgy hogy [példaképekké] lettetek Macedóniában és Akhájában minden hívőre
+R0953	alak	példává	1	példávta	4Móz 5:21	tégedet az Úr átokká és eskü [példává] a te néped között megszárasztva az
+R0954	alak	rabjává	1	rabjávta	Abd 1:11	vele szembeálltál a amikor serege idegenek [rabjává] lett és idegenek törtek be kapuján
+R0955	alak	rabsaké	1	rabsakta	Ézs 37:8	[Rabsaké] pedig visszatérve találta az assiriai királyt
+R0956	alak	rabszolgákká	1	rabszolgákkotta	1Móz 43:18	hogy ránk rohanjon megtámadjon és minket [rabszolgákká] tegyen a mi szamarainkkal együtt
+R0957	alak	rakodának	1	rakodtak	Neh 4:17	kezükkel a amely a munkát végezte [rakodának] másik kezük pedig a fegyvert tartotta
+R0958	alak	rakád	1	raktad	Ez 16:19	és mézzel etettelek vala ő eléjük [rakád] kedves illatul így lett ezt mondja
+R0959	alak	reggellé	1	reggellette	Ámós 5:8	és a kaszáscsillagot teremtette a aki [reggellé] változtatja a homályt és a nappalt
+R0960	alak	rejtegetheté	1	rejtegethette	2Móz 2:3	De mikor tovább nem [rejtegetheté] szerzett annak egy gyékény ládácskát és
+R0961	alak	rejtegeté	1	rejtegette	2Móz 2:2	és látta hogy szép az és [rejtegeté] három hónapig
+R0962	alak	rejtekhelyévé	1	rejtekhelyévte	Zsolt 18:12	A sötétséget tette [rejtekhelyévé] sátora körülötte a sötét felhők és
+R0963	alak	remegéssé	1	remegéssette	Ézs 21:4	szívem iszonyúság rettent a kedves éjszakát [remegéssé] tette nekem
+R0964	alak	rendezék	1	rendeztem	2Móz 36:22	A deszkákat pedig így [rendezék] a hajlékhoz húsz deszkát déli oldalon
+R0965	alak	rendezének	1	rendeztek	2Krón 16:14	illatokkal és érette felette nagy égést [rendezének]
+R0966	alak	rettenetessé	2	rettenetessette	Jób 3:5	felhő lakozzék rajta nappali borulatok tegyék [rettenetessé]
+R0967	alak	robotossá	2	robotossotta	1Kir 5:13	egész Izráelből és harmincezer ember lett [robotossá]
+R0968	alak	roboám	1		1Kir 14:21	[Roboám] pedig a Salamon fia Júdában uralkodott
+R0969	alak	rombolá	1	rombolta	2Sám 20:15	az egész nép mely Joábbal volt [rombolá] hogy ledöntse a kőfalat
+R0970	alak	romhalommá	1	romhalommotta	Jer 49:2	hallatok Rabbában az Ammon fiaival és [romhalommá] lesz és leányai tűzzel égettetnek meg
+R0971	alak	rommá	9	rommotta	Ézs 23:13	lakosainak felállította őrtornyait lerombolá Tírus palotáit [rommá] tette azt
+R0972	alak	romokká	1	romokkotta	Zsolt 89:41	Lerontottad az ő kőfalait mind [romokká] tetted erősségeit
+R0973	alak	rontád	1	rontottad	Zsolt 89:11	Te [rontád] meg Égyiptomot mintegy átdöföttet erős karoddal
+R0974	alak	roskataggá	1	roskataggotta	Zsolt 69:24	és az ő derekukat tedd mindenkorra [roskataggá]
+R0975	alak	ruházatává	1	ruházatávta	Jób 38:9	Mikor [ruházatává] a felhőt tettem takarójául pedig a
+R0976	alak	rábízák	1	rábízták	Jer 39:14	elhozták Jeremiást a tömlöc pitvarából és [rábízák] őt Gedáliásra Ahikámnak a Sáfán fiának
+R0977	alak	ráilleszté	1	ráillesztotta	2Móz 37:13	négy arany karikát és a karikákat [ráilleszté] a négy láb négy szegletére
+R0978	alak	rákené	2	rákente	Ján 9:6	az ő nyálából sárt csinált és [rákené] a sarat a vak szemeire
+R0979	alak	rémségessé	1	rémségessette	Ez 28:19	ismertek a népek közt elborzadnak miattad [rémségessé] lettél s többé örökké nem leszel
+R0980	alak	részeseivé	3	részeseivte	Zsid 3:14	Mert [részeseivé] lettünk Krisztusnak ha ugyan az elkezdett
+R0981	alak	részesekké	1	részesekkette	Fil 4:14	Mindazáltal jól tettétek hogy nyomorúságomban [részesekké] lettetek
+R0982	alak	rézzé	1	rézzette	5Móz 28:23	Eged a amely fejed felett van [rézzé] a föld pedig a amely lábad
+R0983	alak	rónává	1	rónávta	Ézs 40:4	az egyenetlen egyenessé és a bércek [rónává]
+R0984	alak	sakálokévá	1	sakálokévta	Mal 1:3	hegyeit pusztává tettem örökségét pedig pusztai [sakálokévá]
+R0985	alak	salakká	3	salakkotta	Ézs 1:22	Ezüstöd [salakká] lett tiszta borod vízzel elegyítve
+R0986	alak	salamoné	1	salamonta	Zsolt 72:1	[Salamoné] Isten a te ítéletidet add a
+R0987	alak	sarlókká	1	sarlókkotta	Mik 4:3	és fegyvereiket kapákká kovácsolják dárdáikat pedig [sarlókká] nép népre fegyvert nem emel és
+R0988	alak	sasé	1	sasta	Zsolt 103:5	megújul a te ifjúságod mint a [sasé]
+R0989	alak	segéllék	1	segéllettem	1Krón 12:19	ellen ment volna harcolni de nem [segéllék] őket mert tanácsot tartva haza küldték
+R0990	alak	segítőjévé	1	segítőjévte	Zsolt 83:9	Az asszir is szövetkezett velük [segítőjévé] lettek a Lót fiainak Szela
+R0991	alak	sehová	1	sehovta	2Kir 5:25	Felelt Nem ment a te szolgád [sehová]
+R0992	alak	semmivé	23	semmivte	Ezsd 4:5	És felbérelni ellene tanácsosokat hogy [semmivé] tegyék szándékát Círusnak Persia királyának egész
+R0993	alak	sepredékké	1	sepredékkette	Sir 3:45	[Sepredékké] és útálattá tettél minket a népek
+R0994	alak	seprejévé	1	seprejévte	Jer 50:12	igen csúffá lesz Ímé a nemzetek [seprejévé] pusztává szárazfölddé sivataggá lesz
+R0995	alak	sereggé	1	sereggette	1Móz 32:10	ezen a Jordánon most pedig két [sereggé] lettem
+R0996	alak	siketté	1	sikettette	2Móz 4:11	embernek Avagy ki tesz némává vagy [siketté] vagy látóvá vagy vakká Nemde én
+R0997	alak	sikolték	1	sikoltottam	Jón 2:3	és meghallgatott engem a Seol torkából [sikolték] és meghallád az én szómat
+R0998	alak	siránkozék	3	siránkoztam	1Móz 50:1	az ő atyja orcájára borúla és [siránkozék] felette és csókolgatta őt
+R0999	alak	sivataggá	9	sivataggotta	3Móz 26:31	És városaitokat [sivataggá] teszem szenthelyeiteket is elpusztítom és nem
+R1000	alak	sokaságává	3	sokaságávta	1Móz 28:3	és sokasítson meg téged hogy népek [sokaságává] légy
+R1001	alak	sokasítá	1	sokasította	2Krón 33:23	atyja Manasse megalázta magát hanem még [sokasítá] Amon a bűnt
+R1002	alak	sokasítád	3	sokasítottad	Ez 16:25	vetéd lábaidat minden melletted elmenőnek és [sokasítád] paráznaságodat
+R1003	alak	szabaddá	3	szabaddta	1Sám 17:25	is neki adná és atyjának házát [szabaddá] tenné Izráelben
+R1004	alak	szabadokká	2	szabadokkotta	Ján 8:32	megismeritek az igazságot és az igazság [szabadokká] tesz titeket
+R1005	alak	szabadítád	1	szabadítottad	2Móz 5:23	bánik e néppel megszabadítani pedig nem [szabadítád] meg a te népedet
+R1006	alak	szabadítómmá	1	szabadítómmotta	2Móz 15:2	Erősségem az Úr és énekem [szabadítómmá] lett nekem ez az én Istenem
+R1007	alak	szakasztá	2	szakasztotta	1Móz 30:40	Azután külön [szakasztá] Jákób ezeket a bárányokat és a
+R1008	alak	szakasztának	1	szakasztottak	4Móz 13:24	a gránátalmákból és a figékből is [szakasztának]
+R1009	alak	szamlá	1	szamlotta	1Krón 1:48	[Szamlá] holta után uralkodott helyette Saul a
+R1010	alak	szarvasé	2	szarvasta	2Sám 22:34	Lábait olyanná teszi mint a [szarvasé] S magas helyekre állít engem
+R1011	alak	szavává	1	szavávta	Jób 30:31	Hegedűm sírássá változott sípom pedig jajgatók [szavává]
+R1012	alak	szegeletkővé	1	szegeletkővte	Zsolt 118:22	kő a amelyet az építők megvetettek [szegeletkővé] lett
+R1013	alak	szegénnyé	1	szegénnyette	2Kor 8:9	Jézus Krisztusnak jótéteményét hogy gazdag lévén [szegénnyé] lett érettetek hogy ti az ő
+R1014	alak	szekerévé	1	szekerévte	Zsolt 104:3	palotáját a felhőket rendeli az ő [szekerévé] jár a szeleknek szárnyain
+R1015	alak	szelekké	1	szelekkette	Zsid 1:7	így szól Ki az ő angyalait [szelekké] teszi és az ő szolgáit tűz
+R1016	alak	szellemmé	1	szellemmette	1Kor 15:45	élő lélekké az utolsó Ádám megelevenítő [szellemmé]
+R1017	alak	szemetjévé	2	szemetjévte	Zsolt 83:11	elvesztek vala Endornál és a föld [szemetjévé] lettek
+R1018	alak	szemlélém	3	szemléltem	Dán 7:8	Mialatt a szarvakat [szemlélém] ímé másik kicsiny szarv növekedett ki
+R1019	alak	szemétdombbá	2	szemétdombbotta	Ezsd 6:11	s felállíttatva szegeztessék rá háza pedig [szemétdombbá] tétessék e miatt
+R1020	alak	szemétdombokká	1	szemétdombokkotta	Dán 2:5	darabokra tépettek és a ti házaitok [szemétdombokká] tétetnek
+R1021	alak	szenthelyé	1	szenthelyte	Ez 45:2	Ebből legyen a [szenthelyé] ötszáz sing ötszáz singgel mérve egy
+R1022	alak	szentségtelenné	1	szentségtelennette	3Móz 21:4	magát az ő népe között hogy [szentségtelenné] ne legyen
+R1023	alak	szentségévé	1	szentségévte	2Móz 30:29	Így szenteld meg azokat hogy szentségek [szentségévé] legyenek Valami illeti azokat szent legyen
+R1024	alak	szentté	5	szenttette	Jóel 3:17	lakozom az én szent hegyemen És [szentté] lesz Jeruzsálem és idegenek nem vonulnak
+R1025	alak	szerelmesemé	2	szerelmesemte	Én 5:19	Én az én [szerelmesemé] vagyok és az én szerelmesem enyim
+R1026	alak	szerencsésekké	1	szerencsésekkette	Jer 10:21	keresték az Urat ezért nem lettek [szerencsésekké] és minden nyájuk szétszóratott
+R1027	alak	szerencséssé	6	szerencséssette	1Móz 24:21	veszteg hallgatott vala tudni akarva vajon [szerencséssé] teszi é az Úr az ő
+R1028	alak	szeretetének	1	szeretettek	Sof 1:18	haragjának napján és az ő féltő [szeretetének] tüze megemészti az egész földet mert
+R1029	alak	szeretné	1	szeretnette	Ján 15:19	Ha e világból volnátok a világ [szeretné] azt a ami az övé de
+R1030	alak	szeretteinkké	1	szeretteinkkette	1Thessz 2:8	a mi magunk lelkét is mivelhogy [szeretteinkké] lettetek nekünk
+R1031	alak	szerezné	1	szereznette	Jób 27:16	is össze az ezüstöt és úgy [szerezné] is össze ruháit mint a sarat
+R1032	alak	szerzéd	1	szerzetted	Zsolt 68:11	Benne tanyázott a te gyülekezeted te [szerzéd] jóvoltodból a szegénynek oh Isten
+R1033	alak	szidalmasakká	1	szidalmasakkotta	Mal 2:9	Azért én is [szidalmasakká] tettelek titeket és útálatosakká az egész
+R1034	alak	szidalommá	1	szidalommotta	Jer 44:12	miatt halnak meg és átokká csudává [szidalommá] és gyalázattá lesznek
+R1035	alak	szigetekké	1	szigetekkette	Ézs 42:15	és halmokat és megszáraztom minden fűvüket [szigetekké] teszek folyamokat és tavakat kiszáraztok
+R1036	alak	sziklájává	1	sziklájávta	1Pét 2:7	fejévé és megütközésnek kövévé s botránkozásnak [sziklájává]
+R1037	alak	sziklává	2	sziklávta	Ez 26:4	még porát is róla s kopasz [sziklává] teszem őt
+R1038	alak	szikrává	1	szikrávta	Ézs 1:31	csepüvé lesz az erős és munkája [szikrává] mindketten égni fognak és oltójuk nem
+R1039	alak	szilárdakká	1	szilárdakkotta	1Pét 5:10	szenvedtetek ő maga tegyen tökéletesekké erősekké [szilárdakká] és állhatatosokká
+R1040	alak	szokásossá	1	szokásossotta	2Krón 35:25	mind e mai napig a amelyek [szokásossá] lettek Izráelben s ímé azok meg
+R1041	alak	szokássá	2	szokássotta	Bír 11:39	ő soha nem ismert férfiút És [szokássá] lett Izráelben
+R1042	alak	szolgáddá	1	szolgáddta	5Móz 15:17	fülébe és az ajtóba és legyen [szolgáddá] mindvégig így cselekedjél szolgálóleányoddal is
+R1043	alak	szolgáivá	5	szolgáivta	2Krón 36:20	elhurcolta Babilóniába és neki és fiainak [szolgáivá] lettek mindaddig míg a persiai birodalom
+R1044	alak	szolgáié	2		Ez 45:4	földből legyen a papoké a szenthely [szolgáié] a akik ide járulnak szolgálni az
+R1045	alak	szolgájává	8	szolgájávta	2Kir 17:3	jött fel Salmanassár Assiria királya és [szolgájává] lett Hóseás és adót fizetett neki
+R1046	alak	szolgájáé	1		Zsolt 36:1	Az éneklőmesternek az Úr [szolgájáé] Dávidé
+R1047	alak	szolgákká	2	szolgákkotta	Jer 34:11	akiket szabadon bocsátottak vala és őket [szolgákká] és szolgálóleányokká tették
+R1048	alak	szolgálóleányokká	1	szolgálóleányokkotta	Jer 34:11	bocsátottak vala és őket szolgákká és [szolgálóleányokká] tették
+R1049	alak	szolgává	5	szolgávta	1Móz 49:15	teher alá hajtja hátát s robotoló [szolgává] lesz
+R1050	alak	szomszédaimé	1	szomszédaimta	Zsolt 31:12	Temérdek üldözőm miatt csúfsággá lettem kivált [szomszédaimé] és ismerőseimnek félelmévé a akik az
+R1051	alak	szoptatá	1	szoptatta	2Móz 2:9	vette az asszony a gyermeket és [szoptatá] azt
+R1052	alak	szorgalmazák	1	szorgalmazták	2Krón 34:13	felügyelők a munkások felett mindenféle dologban [szorgalmazák] a Léviták közül való íródeákok igazgatók
+R1053	alak	szurokká	2	szurokkotta	Ézs 34:9	És változnak patakjai [szurokká] és pora kénkővé és lesz földe
+R1054	alak	szálkákká	1	szálkákkotta	4Móz 33:55	elől akkor a akiket meghagytok közülök [szálkákká] lesznek a ti szemeitekben és tövisekké
+R1055	alak	szárazfölddé	1	szárazfölddta	Jer 50:12	lesz Ímé a nemzetek seprejévé pusztává [szárazfölddé] sivataggá lesz
+R1056	alak	szárazzá	3	szárazzotta	2Móz 14:21	keleti széllel hajtotta a tengert és [szárazzá] tette a tengert és kétfelé válának
+R1057	alak	századosokká	4	századosokkotta	2Móz 18:21	haszonlesést és tedd közöttük előljárókká ezeredesekké [századosokká] ötvenedesekké és tizedesekké
+R1058	alak	széleszté	1	szélesztette	1Móz 11:9	az egész föld nyelvét és onnan [széleszté] el őket az Úr az egész
+R1059	alak	széllé	1	széllette	Jer 5:13	A próféták is [széllé] lesznek és nem lesz a aki
+R1060	alak	szélének	1	széltek	Zsolt 65:6	igazságodban idvességünknek Istene e föld minden [szélének] és a messze tengernek bizodalma
+R1061	alak	széppé	2	széppette	Ez 31:7	És [széppé] lett magasságával hosszan kiterjedt ágaival mert
+R1062	alak	szétriadának	1	szétriadtak	Zsolt 104:7	Egy kiáltásodtól eloszlottak és mennydörgésednek szavától [szétriadának]
+R1063	alak	szétrombolá	1	szétrombolta	2Krón 34:4	a bálványokkal és öntött képekkel egyetembe [szétrombolá] és apróra töreté és elhintette azoknak
+R1064	alak	széttördelé	1	széttördelte	Zsolt 105:33	És elvette szőlőjüket és fügefájukat és [széttördelé] határuknak élő fáit
+R1065	alak	színlelővé	1	színlelővte	Ézs 28:17	jogosságot mérőkötéllé tettem és az igazságot [színlelővé] és jég söpri el a hazugság
+R1066	alak	szólád	1	szóltad	1Krón 17:26	te vagy az Isten és te [szólád] e jó dolgot a te szolgád
+R1067	alak	szórá	1	szórta	2Móz 9:10	álltak és Mózes az ég felé [szórá] azt és lett az emberen és
+R1068	alak	szórának	1	szórtak	ApCsel 22:23	kiabáltak és köntösüket elhányák és port [szórának] a levegőbe
+R1069	alak	szóvá	1	szóvta	2Sám 19:43	Avagy nem én tettem é legelőször [szóvá] hogy hozzuk haza a mi királyunkat
+R1070	alak	szörnyűséggé	3	szörnyűséggette	Jer 25:9	és elveszem őket és csudává és [szörnyűséggé] teszem őket és örökkévaló pusztasággá
+R1071	alak	szövetségévé	2	szövetségévte	Ézs 42:6	fogom kezedet és megőrizlek és népnek [szövetségévé] teszlek pogányoknak világosságává
+R1072	alak	szülőasszonyé	1	szülőasszonyta	Zsolt 48:7	ott őket fájdalom a amilyen a [szülőasszonyé]
+R1073	alak	szünetlenné	1	szünetlennette	Jer 15:18	Miért lett [szünetlenné] az én fájdalmam és halálossá gyógyíthatatlanná
+R1074	alak	szőlőtővé	2	szőlőtővte	Ez 17:6	És felsarjadt és lett elterülő alacsony [szőlőtővé] hogy vesszőit amahhoz fordítsa s gyökerei
+R1075	alak	sárrá	1	sárrotta	Jób 38:38	Mikor a por híg [sárrá] változik és a göröngyök összetapadnak
+R1076	alak	síksággá	1	síksággotta	Zak 14:10	Az egész föld [síksággá] változik Gebától kezdve Rimmonig déli irányban
+R1077	alak	símákká	1	símákkotta	Luk 3:5	egyenetlenek egyenesekké és a göröngyös útak [símákká] lesznek
+R1078	alak	sírássá	1	sírássotta	Jób 30:31	Hegedűm [sírássá] változott sípom pedig jajgatók szavává
+R1079	alak	söpredékévé	1	söpredékévte	1Kor 4:13	szinte a világ szemetjévé lettünk mindeneknek [söpredékévé] egész mostanig
+R1080	alak	sötétséggé	5	sötétséggette	Jób 17:11	nappallá változtatják és a világosság csakhamar [sötétséggé] lesz
+R1081	alak	sötétségé	1	sötétségte	1Thessz 5:5	nem vagyunk az éjszakáé sem a [sötétségé]
+R1082	alak	sülyedének	1	sülyedtek	Zsolt 107:26	Az égig emelkedtek a fenékig [sülyedének] lelkük elolvadt az inségben
+R1083	alak	tagadá	1	tagadta	Ján 1:20	És megvallotta és nem [tagadá] és megvallotta hogy Nem én vagyok
+R1084	alak	tagjaivá	1	tagjaivta	1Kor 6:15	Elszakítva hát a Krisztus tagjait paráznának [tagjaivá] tegyem Távol legyen
+R1085	alak	takarák	2	takarták	1Móz 9:23	mindketten vállokra vetették és háttal menve [takarák] be atyjuk mezítelenségét s arccal hátra
+R1086	alak	takarítá	2	takarította	1Móz 41:48	volt Égyiptom földén és a városokba [takarítá] az élelmet minden városba a körülte
+R1087	alak	találkozám	1	találkoztam	ApCsel 17:23	bejártam és szemlélém a ti szentélyeiteket [találkozám] egy oltárral is melyre ez volt
+R1088	alak	találád	1	találtad	Neh 9:8	És [találád] az ő szívét hűnek te előtted
+R1089	alak	tanyáivá	1	tanyáivta	Sof 2:6	És a tenger vidéke legelőkké pásztorok [tanyáivá] és juhoknak aklaivá lesz
+R1090	alak	tanyájává	3	tanyájávta	Jer 9:11	Jeruzsálemet pedig kőhalommá teszem sakálok [tanyájává] és Júda városait sivataggá változtatom hogy
+R1091	alak	tanácsolá	1	tanácsolta	ApCsel 15:37	És Barnabás azt [tanácsolá] hogy vegyék maguk mellé Jánost ki
+R1092	alak	taníthatá	1	taníthatta	Zsolt 105:22	szerint kötöztetheté és véneit is bölcsességre [taníthatá]
+R1093	alak	tanítványokká	2	tanítványokkotta	Mt 28:19	Elmenve azért tegyetek [tanítványokká] minden népeket megkeresztelve őket az Atyának
+R1094	alak	tanítójává	2	tanítójávta	1Tim 2:7	szólok a Krisztusban nem hazudok pogányok [tanítójává] hitben és igazságban
+R1095	alak	tartóztathatá	1	tartóztathatta	1Móz 45:1	És nem [tartóztathatá] magát tovább József mindazok előtt kik
+R1096	alak	tartóztatá	2	tartóztatta	Bír 19:4	És ott [tartóztatá] őt ipa a leánynak atyja és
+R1097	alak	tartóztaták	1	tartóztatták	Luk 4:42	sokaság felkereste őt és hozzámentek és [tartóztaták] őt hogy ne menjen el tőlök
+R1098	alak	tavakká	1	tavakkotta	Zsolt 107:35	Pusztaságot tett vala álló [tavakká] és kiaszott földet vízforrásokká
+R1099	alak	tavává	2	tavávta	Ézs 14:23	a sündisznónak örökségévé és álló vizek [tavává] teszem azt és elsöpröm azt a
+R1100	alak	tehetné	2	tehetnette	1Sám 29:4	forduljon a harcban mert ugyan mivel [tehetné] magát kedvesebbé ura előtt hacsak nem
+R1101	alak	teljessé	13	teljessette	2Móz 23:26	a te földeden semmi napjaid számát [teljessé] teszem
+R1102	alak	teljesítené	1	teljesítente	4Móz 23:19	Igér é valamit hogy azt ne [teljesítené]
+R1103	alak	telék	2	telt	2Móz 7:25	És hét nap [telék] el a amióta az Úr megsujtotta
+R1104	alak	telének	2	teltek	1Móz 5:4	És [telének] Ádám napjai minekutánna Séthet nemzette nyolcszáz
+R1105	alak	templommá	1	templommotta	Ef 2:21	épület szép renddel rakattatván növekedik szent [templommá] az Úrban
+R1106	alak	tenné	3	tennette	4Móz 23:19	é ő valamit hogy meg ne [tenné] Igér é valamit hogy azt ne
+R1107	alak	tenyérnyivé	1	tenyérnyivte	Zsolt 39:6	Ímé [tenyérnyivé] tetted napjaimat és az én életem
+R1108	alak	teremtéd	1	teremtetted	Ézs 37:16	a föld minden országainak Istene Te [teremtéd] a mennyet és a földet
+R1109	alak	terhelék	1	terheltem	Neh 5:15	helytartók a akik én előttem voltak [terhelék] a népet és vettek tőlök kenyérért
+R1110	alak	terhelél	1	terheltél	Ézs 43:24	kövérével jól nem tartottál csak bűneiddel [terhelél] vétkeiddel fárasztál engemet
+R1111	alak	termetének	1	termettek	1Sám 16:7	Ne nézd az ő külsőjét se [termetének] nagyságát mert megvetettem őt Mert az
+R1112	alak	termőfölddé	2	termőfölddte	Ézs 29:17	Nemde kevés idő multán a Libánon [termőfölddé] lesz és a termőföld erdőnek tartatik
+R1113	alak	termővé	1	termővte	Ézs 55:10	tér hanem megöntözi a földet és [termővé] gyümölcsözővé teszi azt és magot ád
+R1114	alak	testté	7	testtette	1Móz 2:24	és ragaszkodik feleségéhez és lesznek egy [testté]
+R1115	alak	testvéreié	1		1Ján 3:12	az ő cselekedetei gonoszok voltak a [testvéreié] pedig igazak
+R1116	alak	tetteté	3	tettette	1Sám 28:8	Másnak [tetteté] azért Saul magát és más ruhákat
+R1117	alak	tetvekké	2	tetvekkette	2Móz 8:16	sujtsd meg a föld porát hogy [tetvekké] legyen egész Égyiptom földén
+R1118	alak	tevéd	5	tetted	1Krón 17:22	az Izráel népét a te népeddé [tevéd] mindörökké és te Uram nekik Istenük
+R1119	alak	tevék	6	teszett	1Móz 24:22	És lett mikor a [tevék] már eleget ittak elévőn az ember
+R1120	alak	tevél	4	tettél	Neh 9:10	És [tevél] jeleket és csodákat a Faraón és
+R1121	alak	tevétek	1	tettetek	Jer 2:7	földemet és az én örökségemet útálatossá [tevétek]
+R1122	alak	tháré	1	thárta	1Móz 11:26	[Tháré] pedig hetven esztendős volt és nemzette
+R1123	alak	tiszteltté	1	tisztelttette	Péld 4:8	Magasztald fel azt és felmagasztal téged [tiszteltté] tesz téged ha hozzád öleled azt
+R1124	alak	tisztelé	2	tisztelte	2Krón 25:14	fiainak isteneit elhozta és Isten gyanánt [tisztelé] azokat a akik előtt magát meghajtotta
+R1125	alak	tisztelék	2	tisztelt	1Krón 29:20	az ő atyáik Istenét s leborulva [tisztelék] az Urat és a királyt
+R1126	alak	tiszttartókká	1	tiszttartókkotta	5Móz 1:15	előljáróitokká ezredesekké századosokká ötvenedesekké tizedesekké és [tiszttartókká] a ti törzseitek szerint
+R1127	alak	tiszttartóvá	6	tiszttartóvta	2Kir 25:23	embereik hogy Babilónia királya Gedáliát tette [tiszttartóvá] elmentek Gedáliához Mispába Izmáel a Nétánia
+R1128	alak	tisztulának	1	tisztultak	Luk 17:17	pedig Jézus mondta Avagy nem tízen [tisztulának] é meg A kilence pedig hol
+R1129	alak	tisztákká	1	tisztákkotta	4Móz 8:21	és engesztelést szerzett nekik Áron hogy [tisztákká] tegye őket
+R1130	alak	tisztátalanná	12	tisztátalannotta	3Móz 5:2	holttestét és nem tud arról hogy [tisztátalanná] lesz és vétkezik
+R1131	alak	tisztátalanokká	3	tisztátalanokkotta	3Móz 11:24	És ezekkel [tisztátalanokká] teszitek magatokat mindaz a aki illeti
+R1132	alak	tisztává	3	tisztávta	3Móz 12:7	és szerezzen neki engesztelést így lesz [tisztává] az ő vérfolyása után Ez a
+R1133	alak	titkolhatá	1	titkolhatta	Mk 7:24	akarta hogy valaki észrevegye de nem [titkolhatá] el magát
+R1134	alak	titkolná	1	titkolnotta	1Sám 20:2	hogy nekem meg ne mondaná Miért [titkolná] el azért atyám előlem ezt a
+R1135	alak	tizedesekké	3	tizedesekkette	2Móz 18:21	közöttük előljárókká ezeredesekké századosokká ötvenedesekké és [tizedesekké]
+R1136	alak	tolatá	1	tolatta	Jer 52:11	Sedékiás királynak pedig szemeit [tolatá] ki és láncra verette és vitette
+R1137	alak	továbbá	59	továbbotta	1Móz 41:41	Mondta [továbbá] a Faraó Józsefnek Ímé fejedelemmé tettelek
+R1138	alak	tudhatná	1	tudhatnotta	Zsolt 73:11	És mondják Mint [tudhatná] ezt az Isten s van é
+R1139	alak	tudná	5	tudnotta	Zsolt 74:9	többé és nincs közöttünk a aki [tudná] meddig tart ez
+R1140	alak	tudódék	1	tudódtam	Bír 16:9	ha tűz éri és ki nem [tudódék] miben volt az ő ereje
+R1141	alak	tudósoké	1	tudósokta	Préd 9:13	okosoké a gazdagság és nem a [tudósoké] a kedvesség hanem idő szerint és
+R1142	alak	tulajdonommá	1	tulajdonommotta	Mal 3:17	Seregeknek Ura a amelyet én szerzek [tulajdonommá] lesznek és kedvezek nekik a amint
+R1143	alak	támasztaná	1	támasztanta	Ámós 5:19	a házba és kezét a falhoz [támasztaná] és kígyó marná meg
+R1144	alak	tápláltatá	1	tápláltatta	2Sám 20:3	őrzésére és őrizet alá rekesztette és [tápláltatá] azokat de hozzájuk be nem ment
+R1145	alak	társaié	2		Ez 37:16	Júdáé és Izráel fiaié az ő [társaié] és végy egy másik fát és
+R1146	alak	társokká	1	társokkotta	Jób 30:29	Atyjuk fiává lettem a sakáloknak és [társokká] a strucc madaraknak
+R1147	alak	téríthetné	1	téríthetnette	Jób 23:13	Ő azonban megmarad egy mellett Kicsoda [téríthetné] el őt És a amit megkíván
+R1148	alak	tésztává	1	tésztávta	1Kor 5:7	a régi kovászt hogy legyetek új [tésztává] a minthogy kovász nélkül valók vagytok
+R1149	alak	tévén	17	téve	1Móz 18:19	az Úrnak útát igazságot és törvényt [tévén] hogy beteljesítse az Úr Ábrahámon a
+R1150	alak	tóvá	2	tóvta	Zsolt 114:8	A Aki átváltoztatja a kősziklát álló [tóvá] és a szirtet vizek forrásává
+R1151	alak	többé	297	többötte	1Móz 4:12	a földet míveled ne adja az [többé] neked az ő termő erejét bujdosó
+R1152	alak	tökéletesekké	2	tökéletesekkette	Zsid 10:14	Mert egyetlenegy áldozatával örökre [tökéletesekké] tette a megszentelteket
+R1153	alak	tökéletessé	5	tökéletessette	Zsolt 18:33	a aki felövez engem erővel és [tökéletessé] teszi útamat
+R1154	alak	töreté	1	törette	2Krón 34:4	öntött képekkel egyetembe szétrombolá és apróra [töreté] és elhintette azoknak temetőhelyén a akik
+R1155	alak	törlé	4	törlötte	Józs 11:21	és Izráelnek minden hegyéből városaikkal együtt [törlé] el őket Józsué
+R1156	alak	törvénynélkülivé	1	törvénynélkülivte	1Kor 9:21	A törvény nélkül valóknak [törvénynélkülivé] noha nem vagyok Isten törvénye nélkül
+R1157	alak	törvényszegővé	1	törvényszegővte	Jak 2:11	És ha nem paráználkodol de ölsz [törvényszegővé] lettél
+R1158	alak	tövisekké	3	tövisekkette	4Móz 33:55	szálkákká lesznek a ti szemeitekben és [tövisekké] a ti oldalaitokban és ellenségeitek lesznek
+R1159	alak	tünének	1	tüntek	Dán 5:5	Abban az órában emberi kéznek ujjai [tünének] fel és írtak a gyertyatartóval szemben
+R1160	alak	tőrré	5	tőrrötte	Józs 23:13	előletek sőt inkább lesznek ti nektek [tőrré] és hurokká oldalaitokban ostorrá szemeitekben pedig
+R1161	alak	tűzzé	1	tűzzötte	Jer 5:14	Miután ti ilyen szóval szóltatok ímé [tűzzé] teszem az én igémet a te
+R1162	alak	ugrál	2	ugrottál	2Sám 6:16	ablakon és látva hogy Dávid király [ugrál] és táncol az Úr előtt megútálá
+R1163	alak	undokokká	1	undokokkotta	Jer 19:13	Jeruzsálem házai és Júda királyainak házai [undokokká] lesznek mint a Tófet helye mindazok
+R1164	alak	unszolá	2	unszolta	1Móz 19:3	De nagyon [unszolá] őket és betértek hozzá és bementek
+R1165	alak	uraddá	1	uraddta	1Móz 27:37	Felelt Izsák és mondta Ézsaúnak Ímé [uraddá] tettem őt és minden atyjafiát szolgául
+R1166	alak	uraivá	1	uraivta	ApCsel 27:13	fúni azt gondolva hogy feltett szándékuknak [uraivá] lettek elindulva közelebb hajóztak el Kréta
+R1167	alak	uralkodóvá	2	uralkodóvta	Zsolt 105:21	tette őt az ő házán és [uralkodóvá] minden jószágán
+R1168	alak	urává	2	urávta	1Móz 45:8	Faraó atyjává tett és egész házának [urává] és Égyiptom egész földének fejedelmévé
+R1169	alak	uráé	1		2Móz 21:4	asszony gyermekeivel együtt legyen az ő [uráé] ő pedig egyedül menjen el
+R1170	alak	utálatossá	1	utálatossotta	1Móz 34:30	Simeonnak és Lévinek Megháborítottatok engem és [utálatossá] tettetek e föld lakosai előtt a
+R1171	alak	vadállatoké	1	vadállatokta	Jak 3:7	Mert minden természet [vadállatoké] madaraké csúszómászóké és vízieké megszelídíthető és
+R1172	alak	vagdalá	1	vagdalta	1Sám 15:33	felett a te anyád És darabokra [vagdalá] Sámuel Agágot az Úr előtt Gilgálban
+R1173	alak	vagdalák	1	vagdalták	3Móz 8:20	És a kost tagjaira [vagdalák] és Mózes elfüstölögtette annak a fejét
+R1174	alak	vakká	1	vakkotta	2Móz 4:11	némává vagy siketté vagy látóvá vagy [vakká] Nemde én az Úr
+R1175	alak	valahová	9	valahovta	1Móz 20:13	Ilyen kegyességet cselekedjél én velem mindenütt [valahová] megyünk azt mondjad én felőlem én
+R1176	alak	valóké	1	valókta	Fil 2:10	meghajoljon mennyeieké földieké és föld alatt [valóké]
+R1177	alak	valóvá	3	valóvta	5Móz 26:19	Hogy feljebb [valóvá] tegyen téged minden nemzetnél a amelyeket
+R1178	alak	vasoszloppá	1	vasoszloppotta	Jer 1:18	Mert ímé én erősített várossá [vasoszloppá] és ércbástyává teszlek ma téged mind
+R1179	alak	vassá	2	vassotta	5Móz 28:23	pedig a amely lábad alatt van [vassá] válik
+R1180	alak	veheté	1	vehette	Ézs 7:1	ellen hogy azt megostromolja de nem [veheté] meg azt
+R1181	alak	vejévé	1	vejévte	1Sám 18:23	kicsiny dolog előttetek hogy a király [vejévé] legyen valaki holott én szegény és
+R1182	alak	vendégekké	2	vendégekkette	1Kir 1:19	nagy sok kövér barmokkal bőségesen és [vendégekké] hívta a királynak minden fiait és
+R1183	alak	venné	3	vennette	2Sám 19:19	a király Jeruzsálemből kiment hogy szívére [venné] a király
+R1184	alak	vesszővé	1	vesszővte	2Móz 4:4	kinyújtotta kezét és megragadta azt és [vesszővé] lett az ő kezében
+R1185	alak	vesztéd	1	vesztetted	Ézs 26:14	kelnek föl ezért látogatád meg és [vesztéd] el őket és eltörléd emlékezetöket
+R1186	alak	vetéd	3	vetetted	4Móz 11:11	ez egész népnek terhét én rám [vetéd]
+R1187	alak	vevéd	4	vetted	Ézs 57:11	rólam meg nem emlékeztél szívedre sem [vevéd] vagy azért nem félsz engem hogy
+R1188	alak	vevél	1	vettél	Ez 16:16	És [vevél] a te ruháidból s csináltad magadnak
+R1189	alak	vezetéd	1	vezetted	Neh 9:12	És felhőnek oszlopában [vezetéd] őket nappal s tűznek oszlopában éjjel
+R1190	alak	vezetőivé	1	vezetőivte	1Sám 8:11	a hatalma fiaitokat elveszi és szekér [vezetőivé] és lovasaivá teszi őket és szekere
+R1191	alak	vezérlené	1	vezérlente	Neh 9:19	nem távozott el felőlök nappal hogy [vezérlené] őket az úton és a tűznek
+R1192	alak	vezérré	1	vezérrette	2Krón 11:22	a Maaka fiát tette testvérei között [vezérré] és előljáróvá mert őt akarta királlyá
+R1193	alak	vigasztalák	2	vigasztalták	Jób 42:11	az ő házában sajnálkozának felette és [vigasztalák] őt mindama nyomorúság miatt a amelyet
+R1194	alak	vigyázókká	1	vigyázókkotta	ApCsel 20:28	nyájra melyben a Szent Lélek titeket [vigyázókká] tett az Isten anyaszentegyházának legeltetésére melyet
+R1195	alak	világossággá	2	világossággotta	Ézs 5:20	jót gonosznak a akik a sötétséget [világossággá] s a világosságot sötétséggé teszik és
+R1196	alak	világosságává	1	világosságávta	Ézs 42:6	megőrizlek és népnek szövetségévé teszlek pogányoknak [világosságává]
+R1197	alak	vinné	1	vinnette	2Krón 36:6	kettős békót vetett lábaira hogy Babilóniába [vinné] őt
+R1198	alak	virradának	1	virradtak	2Sám 2:32	ő vitézei egész éjjel menve Hebronban [virradának] meg
+R1199	alak	virágzóvá	1	virágzóvta	Zak 9:17	nagy az ő kedvessége Ifjakat tesz [virágzóvá] a gabona és leányokat a must
+R1200	alak	viselné	1	viselnette	Fil 2:20	hasonló indulatú a aki igazán szívén [viselné] dolgaitokat
+R1201	alak	visszaadá	2	visszaadta	Bír 17:4	De ő megint [visszaadá] a pénzt anyjának és vett az
+R1202	alak	visszadugá	1	visszadugta	2Móz 4:7	Dugd vissza kebeledbe a kezed és [visszadugá] kezét kebelébe és kivette azt kebeléből
+R1203	alak	visszafelé	1	visszafelte	Zsolt 78:57	ugyanis és hűtlenek levének mint apáik [visszafelé] fordultak mint a csalfa kézív
+R1204	alak	visszajövén	1	visszajöve	2Sám 3:27	[Visszajövén] Abner Hebronba félreszólítá őt Joáb a
+R1205	alak	visszatartóztatának	1	visszatartóztattak	Luk 24:16	De az ő szemeik [visszatartóztatának] hogy őt meg ne ismerjék
+R1206	alak	visszatéríté	1	visszatérította	2Kir 20:11	könyörgött Ésaiás próféta az Úrhoz és [visszatéríté] az árnyékot Akház napóráján azokon a
+R1207	alak	vitézé	1	vitézte	Jer 50:9	bevétetik Nyilai olyanok mint a legyőzhetetlen [vitézé] a aki nem tér vissza sikertelenül
+R1208	alak	vivél	1	vittél	Ézs 57:6	te részed töltöttél nekik italáldozatot is [vivél] ételáldozatot és én jó néven vegyem
+R1209	alak	vonná	1	vonnotta	Jób 34:14	volna gondja lelkét és lehellését magához [vonná]
+R1210	alak	vonogaták	1	vonogatták	Zak 7:11	De nem akarták meghallani sőt vállaikat [vonogaták] és bedugák füleiket hogy ne halljanak
+R1211	alak	vonszoltatá	1	vonszoltatta	2Móz 14:25	És megállította szekereik kerekeit és nehezen [vonszoltatá] azokat És mondták az Égyiptombeliek Fussunk
+R1212	alak	vonszolák	1	vonszolták	ApCsel 17:6	nem találták Jásont és némely atyafiakat [vonszolák] a város előljárói elé kiáltozva hogy
+R1213	alak	vonszá	1	vonszotta	Jel 12:4	És a farka utána [vonszá] az ég csillagainak harmadrészét és a
+R1214	alak	vonád	1	vontad	Neh 9:20	hogy őket oktatná és mannádat nem [vonád] meg szájuktól s vizet adtál nekik
+R1215	alak	vádoltatván	1	vádoltatva	Ján 8:9	ezt hallva és a lelkiismeret által [vádoltatván] egymásután kimentek a vénektől kezdve mind
+R1216	alak	vágná	1	vágnotta	1Krón 21:15	Jeruzsálemre hogy elpusztítaná azt És mikor [vágná] a népet meglátta az Úr és
+R1217	alak	választád	1	választottad	Neh 9:11	És a tengert kétfelé [választád] ő előttök és szárazon mentek át
+R1218	alak	vállalkozának	1	vállalkoztak	Neh 11:2	nép mindazon férfiakat a akik önkéntesen [vállalkozának] arra hogy Jeruzsálemben lakoznak
+R1219	alak	változókká	1	változókkotta	Péld 5:6	életnek útát hogy ne követhesse ösvényei [változókká] lettek a nélkül hogy ő eszébe
+R1220	alak	válának	1	váltak	2Móz 14:21	szárazzá tette a tengert és kétfelé [válának] a vizek
+R1221	alak	válék	2	váltam	2Kir 2:8	azzal a vizet és az kétfelé [válék] úgy hogy mind a ketten szárazon
+R1222	alak	városokká	1	városokkotta	2Krón 8:5	az alsó Bethoront megépítette s megerősített [városokká] tette kőfalakkal kapukkal és zárokkal
+R1223	alak	várossá	2	várossotta	Jer 1:18	Mert ímé én erősített [várossá] vasoszloppá és ércbástyává teszlek ma téged
+R1224	alak	városé	1	városta	Luk 10:12	lesz ama napon hogynem azé a [városé]
+R1225	alak	védelmezé	1	védelmezte	2Krón 32:22	assiriai királytól és minden másoktól és [védelmezé] őket mindenfelől
+R1226	alak	vélék	1	E1=véltem|T3=vélték	ApCsel 21:29	ő vele a városban kiről azt [vélék] hogy Pál bevitte a templomba
+R1227	alak	véressé	1	véressette	3Móz 15:19	Mikor asszony lesz magfolyóssá és [véressé] lesz az ő magfolyása a testén
+R1228	alak	vérré	11	vérrette	2Móz 4:9	víz a amit a folyóvízből merítettél [vérré] lesz a szárazon
+R1229	alak	vétkessé	3	vétkessette	3Móz 5:17	kell cselekedni ha nem tudta is [vétkessé] lesz és hordozza az ő vétségének
+R1230	alak	vévén	47	véve	1Móz 31:23	Maga mellé [vévén] az ő rokonait hét napi járó
+R1231	alak	vígalommá	1	vígalommotta	Zak 8:19	hetediknek bőjtje és a tizediknek bőjtje [vígalommá] örvendezéssé és kedves ünnepekké lesznek Júda
+R1232	alak	vígassággá	1	vígassággotta	Ézs 65:18	amelyeket én teremtek mert ímé Jeruzsálemet [vígassággá] teremtem és az ő népét örömmé
+R1233	alak	vígasztalná	1	vígasztalnotta	Sir 1:2	borítja az orcáját Senki sincs ki [vígasztalná] azok közül kik szerették mind megcsalták
+R1234	alak	vízforrásokká	1	vízforrásokkotta	Zsolt 107:35	vala álló tavakká és kiaszott földet [vízforrásokká]
+R1235	alak	vízhordozóivá	1	vízhordozóivta	Józs 9:21	Ám éljenek És lettek favágóivá és [vízhordozóivá] az egész gyülekezetnek a amint szóltak
+R1236	alak	vízhordókká	1	vízhordókkotta	Józs 9:27	Józsué azon a napon favágókká és [vízhordókká] a gyülekezethez és az Úr oltárához
+R1237	alak	vízieké	1	víziekte	Jak 3:7	minden természet vadállatoké madaraké csúszómászóké és [vízieké] megszelídíthető és meg is szelidíttetett az
+R1238	alak	vízzé	1	vízzette	Jer 9:1	Bárcsak a fejem [vízzé] változnék a szemem pedig könyhullatásnak kútfejévé
+R1239	alak	zavará	1	zavarta	1Móz 11:9	nevezték annak nevét Bábelnek mert ott [zavará] össze az Úr az egész föld
+R1240	alak	zsidókká	1	zsidókkotta	Eszt 8:17	és sokan a föld népei közül [zsidókká] lettek mert a zsidóktól való félelem
+R1241	alak	zsidóké	1	zsidókta	Róm 3:29	Avagy Isten csak a [zsidóké] e Avagy nem a pogányoké is
+R1242	alak	zsidóvá	2	zsidóvta	Mt 23:15	és a földet hogy egy pogányt [zsidóvá] tegyetek és ha azzá lett a
+R1243	alak	zsákmányokká	1	zsákmányokkotta	Ez 36:5	és lelkük megvetésével hogy azt néptelenül [zsákmányokká] tegyék
+R1244	alak	zsámolyává	1	zsámolyávta	Zsid 1:13	én jobbkezem felől míglen ellenségeidet lábaidnak [zsámolyává] teszem
+R1245	alak	zölddé	1	zölddte	Ez 17:24	magassá megszáraztottam a zöldelő fát és [zölddé] tettem az asszú fát Én az
+R1246	alak	áldozád	1	áldoztad	Ez 16:21	oda adád őket midőn tűzben nekik [áldozád]
+R1247	alak	áldássá	2	áldássotta	Zsolt 21:7	Sőt [áldássá] tetted őt örökké megvidámítottad őt színed
+R1248	alak	állandókká	1	állandókkotta	Zsolt 119:152	te bizonyságaid felől hogy azokat örökké [állandókká] tetted
+R1249	alak	állandóvá	2	állandóvta	Zsolt 90:17	és a mi kezünknek munkáját tedd [állandóvá] nekünk és a mi kezünknek munkáját
+R1250	alak	állatá	9	állatta	4Móz 11:24	férfiút a nép vénei közül és [állatá] őket a sátor körül
+R1251	alak	állaták	4	állatták	Ezsd 3:10	templomának alapkövét Jésua és Zorobábel oda [állaták] a papokat öltözetükben kürtökkel s a
+R1252	alak	állatám	1	állattam	Ézs 45:12	az egeket és minden seregüket én [állatám] elő
+R1253	alak	állatának	3	állattak	ApCsel 1:23	[Állatának] azért elő kettőt Józsefet ki hivatik
+R1254	alak	állhatatosokká	1	állhatatosokkotta	1Pét 5:10	maga tegyen tökéletesekké erősekké szilárdakká és [állhatatosokká]
+R1255	alak	álmélkodám	2	álmélkodtam	Ézs 63:5	Körültekintették és nem volt segítő s [álmélkodám] és nem volt gyámolító és segített
+R1256	alak	általdöfé	1	általdöfta	4Móz 25:8	izráelita férfi után a sátorba és [általdöfé] mindkettőjüket mind az izráelita férfit mind
+R1257	alak	általfogák	1	általfogták	2Móz 38:28	horgait és beborították azoknak fejeit és [általfogák] azokat
+R1258	alak	általhozák	1	általhozták	Józs 4:8	Izráel fiai nemzetségeinek száma szerint és [általhozák] magokkal az éjjeli szállásra és ott
+R1259	alak	általveré	1	általverte	1Krón 11:23	kezéből a dárdát és saját dárdájával [általveré]
+R1260	alak	általverék	1	általvert	2Sám 18:15	a Joáb fegyverhordozó szolgái tízen és [általverék] Absolont és megölték őt
+R1261	alak	általüté	5	általütötte	2Sám 1:15	elő és öld meg őt Ki [általüté] azt és meghalt
+R1262	alak	általüték	1	általütöttem	2Sám 4:6	ezek a ház belsejébe gabonát vive [általüték] őt az ötödik oldalborda alatt s
+R1263	alak	árasztá	1	árasztotta	5Móz 11:4	seregével lovaival és szekereivel mivelhogy rájuk [árasztá] a Veres tenger vizeit mikor üldöztek
+R1264	alak	árnyékszékké	1	árnyékszékkotta	2Kir 10:27	képét is templomostól együtt és azt [árnyékszékké] tették mind e mai napig
+R1265	alak	árnyékává	1	árnyékávta	Jer 13:16	hegyekben mert világosságot vártok és halál [árnyékává] változtatja azt és sűrű homállyá fordítja
+R1266	alak	árulhatná	1	árulhatnotta	Mk 14:11	neki Ő pedig kereste vala mimódon [árulhatná] el őt jó alkalommal
+R1267	alak	árulóivá	1	árulóivta	ApCsel 7:52	amaz Igaznak eljövetelét kinek ti most [árulóivá] és gyilkosaivá lettetek
+R1268	alak	árulóvá	1	árulóvta	Luk 6:16	fiát és Iskariotes Júdást a aki [árulóvá] is lett
+R1269	alak	árvákká	2	árvákkotta	2Móz 22:24	özvegyekké lesznek a ti fiaitok pedig [árvákká]
+R1270	alak	árváé	3		5Móz 24:19	vissza annak felvételére a jövevényé az [árváé] és az özvegyé legyen az hogy
+R1271	alak	áspisé	1	áspista	Zsolt 58:5	a kígyónak mérge mint a siket [áspisé] a amely füleit bedugja
+R1272	alak	ásának	2	ástak	1Móz 26:21	Más kútat is [ásának] s azon is versengtek azért annak
+R1273	alak	átadád	1	átadtad	Neh 9:28	ismét gonoszt cselekvének előtted és te [átadád] őket ellenségeik kezébe a akik uralkodtak
+R1274	alak	áthozám	1	áthoztam	Józs 24:3	De [áthozám] a ti atyátokat Ábrahámot a folyóvíz
+R1275	alak	átkozottakká	1	átkozottakkotta	Józs 7:12	ellenségeik előtt hátat fordítottak ellenségeiknek mert [átkozottakká] lettek Nem leszek többé veletek ha
+R1276	alak	átkává	1	átkávta	Jer 26:6	várost pedig a föld minden nemzetének [átkává]
+R1277	alak	átköltözteté	2	átköltöztetta	1Móz 32:23	Vette hát azokat és [átköltözteté] a vízen azután átköltözteté mindenét valamije
+R1278	alak	átmérém	1	átmértem	Ezsd 8:25	És [átmérém] nekik az ezüstöt és aranyat és
+R1279	alak	átokká	10	átokkotta	4Móz 5:21	az asszonynak Tegyen tégedet az Úr [átokká] és eskü példává a te néped
+R1280	alak	átszámolá	1	átszámolta	Ezsd 1:8	Mithredáthes kincstartó kezeihez a aki is [átszámolá] azokat Sesbassárnak Júda fejedelmének
+R1281	alak	édessé	1	édessette	Ézs 5:20	sötétséggé teszik és teszik a keserűt [édessé] s az édest keserűvé
+R1282	alak	édességévé	1	édességévte	Jób 24:20	Elfelejti őt az anyaméh féregnek lesz [édességévé] nem emlékeznek róla többé és összetörik
+R1283	alak	éjszakává	1	éjszakávta	Ámós 5:8	változtatja a homályt és a nappalt [éjszakává] sötétíti a aki hívja a tenger
+R1284	alak	éjszakáé	1		1Thessz 5:5	és nappal fiai nem vagyunk az [éjszakáé] sem a sötétségé
+R1285	alak	ékessé	1	ékessette	Ez 27:10	sisakot függesztettek fel benned a amik [ékessé] tettek
+R1286	alak	ékességgé	1	ékességgette	Ézs 60:15	senki rajtad át nem ment örökkévaló [ékességgé] teszlek és gyönyörűséggé nemzetségről nemzetségre
+R1287	alak	ékesíté	1	ékesítette	2Sám 1:24	ki karmazsinba öltöztetett gyönyörűen és arannyal [ékesíté] fel ruhátokat
+R1288	alak	élám	2	éltem	Ezsd 2:7	[Élám] fiai ezerkétszázötvennégy
+R1289	alak	élének	1	éltek	Bír 19:25	Ezek pedig megszeplősítették őt és gonoszul [élének] vele egész éjszaka reggelig és csak
+R1290	alak	énekké	1	énekkette	Ámós 8:10	búra változtatom és minden dalotokat szomorú [énekké] Gyászruhát borítok minden derékra és kopaszságot
+R1291	alak	éneklé	2	éneklette	2Móz 15:1	Akkor [éneklé] Mózes és az Izráel fiai ezt
+R1292	alak	éppé	3	éppette	Mt 12:13	a kezedet És kinyújtotta és olyan [éppé] lett mint a másik
+R1293	alak	érezéd	1	érezted	Ézs 57:10	sem mondád mind hasztalan erőd megújulását [érezéd] így nem levél beteg
+R1294	alak	érhetné	1	érhetnette	1Móz 42:4	ő bátyjaival mert mondta Netalán veszedelem [érhetné]
+R1295	alak	érkezém	1	érkeztem	1Móz 24:42	Mikor ma a forráshoz [érkezém] mondtam Uram én uramnak Ábrahámnak Istene
+R1296	alak	érné	4	érnette	1Móz 42:38	ő maga maradt meg ha veszedelem [érné] őt az úton a amelyen elmentek
+R1297	alak	értelmessé	1	értelmessette	Jób 11:12	És [értelmessé] teheti a bolond embert is és
+R1298	alak	értesíté	1	értesítette	1Sám 25:14	Abigailt pedig a Nábál feleségét [értesíté] a szolgák közül egy ifjú mondva
+R1299	alak	érthetné	1	érthetnette	Jób 26:14	Ám az ő hatalmának mennydörgését ki [érthetné] meg
+R1300	alak	értheté	1	érthette	ApCsel 21:34	a sokaság között és mikor nem [értheté] meg a bizonyos valóságot a zajongás
+R1301	alak	értém	1	értettem	Dán 12:8	Én pedig hallottam ezt de nem [értém] és mondtam Uram mi lesz ezeknek
+R1302	alak	észrevevé	2	észrevevte	Mk 2:8	És Jézus azonnal [észrevevé] az ő lelkével hogy azok magukban
+R1303	alak	észrevevén	1	észreveve	Mk 5:30	Jézus pedig azonnal [észrevevén] magán hogy isteni erő áradott volt
+R1304	alak	ítélőbíróvá	1	ítélőbíróvta	2Sám 15:4	ismét Absolon Vajha valaki engem tenne [ítélőbíróvá] e földön és én hozzám jőne
+R1305	alak	ízlelék	2	ízleltem	1Sám 14:29	országot lássátok mennyire felvidultak szemeim hogy [ízlelék] egy keveset ebből a mézből
+R1306	alak	ölték	4	öltöttem	Bír 20:42	utólérte őket és az út közepén [ölték] le a városból jövőket
+R1307	alak	öltél	1	öltöttél	1Sám 24:19	adott engem és te még sem [öltél] meg engem
+R1308	alak	öltém	1	öltöttem	Jób 29:14	Az igazságot magamra [öltém] és az is magára ölte engem
+R1309	alak	öltétek	1	öltöttetek	4Móz 16:41	ellen és Áron ellen mondva Ti [öltétek] meg az Úrnak népét
+R1310	alak	ölének	3	alanyi=öltek|targyas=ölték	2Móz 24:5	áldozták égő áldozatokat és hálaáldozatul tulkokat [ölének] az Úrnak
+R1311	alak	önfejűvé	1	önfejűvte	2Krón 36:13	nevére megesküdtette vala s makaccsá és [önfejűvé] lett a helyett hogy megtért volna
+R1312	alak	öntél	1	öntöttél	Jób 10:10	Nem úgy [öntél] é engem mint a tejet és
+R1313	alak	öntének	1	alanyi=öntöttek|targyas=öntötték	2Móz 36:35	beborították azokat arannyal horgaik aranyból és [öntének] azokhoz négy ezüsttalpat
+R1314	alak	örvendezém	1	örvendeztem	2Sám 6:21	fejedelme legyek igen az Úr előtt [örvendezém]
+R1315	alak	örvendezéssé	1	örvendezéssette	Zak 8:19	bőjtje és a tizediknek bőjtje vígalommá [örvendezéssé] és kedves ünnepekké lesznek Júda házában
+R1316	alak	örökké	161	örökkötte	1Móz 3:22	élet fájáról is hogy egyék s [örökké] éljen
+R1317	alak	örökkévalóvá	1	örökkévalóvta	Zsolt 89:30	És az ő magvát [örökkévalóvá] teszem és az ő királyi székét
+R1318	alak	örökségeddé	1	örökségeddte	2Móz 34:9	vétkeinknek és gonoszságunknak és fogadj minket [örökségeddé]
+R1319	alak	örökségévé	2	örökségévte	Józs 24:32	pénzén és lettek a József fiainak [örökségévé]
+R1320	alak	örökségünkké	1	örökségünkkötte	5Móz 3:12	pedig a amelyet abban az időben [örökségünkké] tettünk Aróertől fogva a amely az
+R1321	alak	örököseivé	2	örököseivte	5Móz 3:28	nép előtt és ő teszi őket [örököseivé] annak a földnek a amelyet meglátsz
+R1322	alak	örökössé	1	örökössötte	Zak 8:12	az egek is megadják harmatjukat és [örökössé] teszem mindezeken e nép maradékát
+R1323	alak	örökösévé	3	örökösévte	Józs 1:6	majd e népet annak a földnek [örökösévé] a amely felől megesküdtem az ő
+R1324	alak	örökösökké	2	örökösökkötte	5Móz 21:16	napon a amelyen az ő fiait [örökösökké] teszi a maga jószágában nem teheti
+R1325	alak	örömmé	1	örömmötte	Ézs 65:18	vígassággá teremtem és az ő népét [örömmé]
+R1326	alak	összefoglalák	1	összefoglalták	2Móz 36:12	Csináltak ötven arany horgocskát is és [összefoglalák] a kárpitokat a horgocskákkal egyiket a
+R1327	alak	összeszámlálák	1	összeszámlálták	ApCsel 19:19	összehordva mindeneknek láttára megégették vala És [összeszámlálák] azoknak árát és találták ötvenezer ezüstpénznek
+R1328	alak	összetördelé	1	összetördelte	2Krón 34:7	oltárokat az Aserákat és a bálványokat [összetördelé] mind porrá és minden naposzlopot elpusztított
+R1329	alak	ösztökélé	1	ösztökélte	1Kir 21:25	a amelyre az ő felesége Jézabel [ösztökélé] őt
+R1330	alak	ötvenedesekké	3	ötvenedesekkette	2Móz 18:21	és tedd közöttük előljárókká ezeredesekké századosokká [ötvenedesekké] és tizedesekké
+R1331	alak	özvegyekké	2	özvegyekkette	2Móz 22:24	titeket fegyverrel és a ti feleségeitek [özvegyekké] lesznek a ti fiaitok pedig árvákká
+R1332	alak	özvegyé	3	özvegyte	5Móz 24:19	a jövevényé az árváé és az [özvegyé] legyen az hogy megáldjon téged az
+R1333	alak	özönné	1	özönnötte	1Móz 9:15	és nem lesz többé a víz [özönné] minden testnek elvesztésére
+R1334	alak	újjá	5	újjotta	Zsolt 104:30	Kibocsátod a te lelkedet megújulnak és [újjá] teszed a földnek színét
+R1335	alak	úrrá	5	úrrotta	5Móz 11:23	azokat a nemzeteket ti előletek és [úrrá] lesztek nálatoknál nagyobb és erősebb nemzeteken
+R1336	alak	úttá	2	úttotta	Ézs 49:11	És teszem minden hegyemet [úttá] és ösvényeim magasak lesznek
+R1337	alak	útálatosakká	1	útálatosakkotta	Mal 2:9	én is szidalmasakká tettelek titeket és [útálatosakká] az egész nép előtt a miatt
+R1338	alak	útálatosokká	1	útálatosokkotta	1Sám 3:13	jól tudott hogy miként tették vala [útálatosokká] magokat az ő fiai és ő
+R1339	alak	útálatossá	7	útálatossotta	4Móz 11:20	hónapig míglen kijön az orrotokon és [útálatossá] lesz előttetek mivelhogy megvetettétek az Urat
+R1340	alak	útálatossággá	1	útálatossággotta	Jer 6:10	nem figyelhetnek Ímé az Úr szava [útálatossággá] lett előttök nem gyönyörködnek abban
+R1341	alak	útálattá	4	útálattotta	Zsolt 88:9	Elszakasztottad ismerőseimet tőlem [útálattá] tettél előttök engem berekesztettem és ki
+R1342	alak	üdvösségé	1	üdvösségte	Fil 1:28	a veszedelem jele nektek pedig az [üdvösségé] és ez az Istentől van
+R1343	alak	ünnepekké	1	ünnepekkette	Zak 8:19	tizediknek bőjtje vígalommá örvendezéssé és kedves [ünnepekké] lesznek Júda házában Csak a hűséget
+R1344	alak	ünnepelék	1	ünnepeltem	Mt 14:6	Hanem mikor a Heródes születése napját [ünnepelék] táncola a Heródiás leánya ő előttük
+R1345	alak	ünneppé	1	ünneppette	Eszt 9:19	tették öröm és vigalom napjává és [ünneppé] a amelyen ajándékokat küldözgetnek egymásnak
+R1346	alak	ürömmé	3	ürömmötte	Ámós 5:7	A Akik [ürömmé] változtatják az ítéletet és az igazságot
+R1347	alak	őhozzá	1	őhozzotta	ApCsel 10:3	körül hogy az Istennek angyala bement [őhozzá] és mondta neki Kornélius
+R1348	alak	őrizkedék	1	őrizkedtem	2Sám 20:10	Amasa azonban nem [őrizkedék] a fegyvertől mely Joáb kezében volt
+R1349	alak	őrizém	1	őriztem	ApCsel 22:20	és helyeslém az ő megöletését és [őrizém] azoknak köntösét a akik őt megölték
+R1350	alak	őrizőié	1		Én 8:12	tiéd legyen a kétszáz annak gyümölcsének [őrizőié]
+R1351	alak	őrizőjévé	1	őrizőjévte	Én 1:6	anyámnak fiai ellenem megharagudtak a szőlőknek [őrizőjévé] tettek engem a magam szőlőjét nem
+R1352	alak	őrállójokká	1	őrállójokkotta	Ez 33:2	férfit ő magok közül és őt [őrállójokká] teszik
+R1353	alak	őrállóvá	1	őrállóvta	Jer 6:27	tettelek téged az én népem között [őrállóvá] hogy megismerd és megpróbáld az ő
+R1354	alak	űzéd	1	űzted	2Krón 20:7	Oh mi Istenünk nem te [űzéd] é ki e földnek lakóit a
+R1355	vala	alatt vala	2		Ez 42:9	És e kamarák [alatt] volt a bejáró hely napkelet felől
+R1356	vala	alatt valának	5		1Móz 7:19	mind elboríttattak melyek az egész ég [alatt] voltak
+R1357	vala	alatta vala	2		3Móz 15:10	aki illet valamit a ami annak [alatta] volt tisztátalan legyen estvéig és a
+R1358	vala	alkotott vala	2		1Móz 2:2	hetednapon az ő munkáját a amelyet [alkotott] volt megszűnt a hetedik napon minden
+R1359	vala	becsülete vala	1		1Móz 34:19	pedig atyja házanépe között mindenkinél nagyobb [becsülete] volt
+R1360	vala	befedezte vala	2		1Móz 38:15	Júda és tisztátalan személynek gondolta mivelhogy [befedezte] volt orcáját
+R1361	vala	befödött vala	1		Ézs 25:7	minden népeket és a takarót mely [befödött] volt minden népségeket
+R1362	vala	belőle valának	1		2Móz 37:22	Gombjaik és ágaik [belőle] voltak az egész egy vert munka
+R1363	vala	benne vala	9		Józs 6:24	tűzzel és mind azt a ami [benne] volt csakis az ezüstöt és aranyat
+R1364	vala	benne valának	4		Józs 10:28	sem engedett menekülni azokból a amelyek [benne] voltak Úgy cselekedett Makkedának királyával a
+R1365	vala	besorozta vala	1		Jer 52:25	főíródeákját a aki a föld népét [besorozta] volt és hatvan férfiút a föld
+R1366	vala	beszéde vala	1		1Móz 11:1	földnek pedig egy nyelve és egyféle [beszéde] volt
+R1367	vala	békességök vala	1		ApCsel 9:31	tehát egész Júdeában Galileában és Samariában [békességök] volt épülve és járva az Úrnak
+R1368	vala	civakodtak vala	1		1Móz 26:20	nevezte a kútnak nevét Észeknek mivelhogy [civakodtak] volt ő vele
+R1369	vala	csináltat vala	1		1Móz 37:3	nemzette volt őt és cifra ruhát [csináltat] volt neki
+R1370	vala	efraimita vala	1		1Sám 1:1	Tohu fia ki Sof fia volt [Efraimita] volt
+R1371	vala	elalélt vala	1		1Móz 47:13	igen nagy volt az éhség és [elalélt] volt Égyiptom földe és a Kanaán
+R1372	vala	elbújtak vala	1		Józs 10:27	behányták őket a barlangba a amelyben [elbújtak] volt és nagy köveket raktak a
+R1373	vala	elhatalmazott vala	1		1Móz 43:1	Az éhség pedig [elhatalmazott] volt az országon
+R1374	vala	elkezdődött vala	1		4Móz 16:47	futott a község közé és ímé [elkezdődött] volt a csapás a nép között
+R1375	vala	elkülönítették vala	1		Ezsd 6:21	visszajöttek vala és mindazok a akik [elkülönítették] volt magokat a föld népeinek tisztátalanságától
+R1376	vala	elnémította vala	1		Mt 22:34	farizeusok pedig hallva hogy a sadduceusokat [elnémította] volt egybegyűltek
+R1377	vala	elpecsételt vala	1		Jel 7:5	A Júda nemzetségéből tizenkétezer [elpecsételt] volt a Ruben nemzetségéből tizenkétezer elpecsételt
+R1378	vala	elsőszülött vala	2		2Sám 3:2	Fiai születtek Dávidnak Hebronban kik között [elsőszülött] volt Ammon a Jezréelből való Ahinoámtól
+R1379	vala	elsőszülötte vala	1		1Krón 3:1	fiai a akik Hebronban születtek neki [elsőszülötte] volt Amnon a Jezréelből való Ahinoámtól
+R1380	vala	előszámláltattak vala	1		4Móz 1:17	férfiakat a akik név szerint is [előszámláltattak] volt
+R1381	vala	előtt vala	13		3Móz 8:26	kenyerek kosarából a amely az Úr [előtt] volt vett egy kovásztalan lepényt egy
+R1382	vala	előtt valának	3		1Móz 19:11	embereket pedig kik a ház ajtaja [előtt] voltak vaksággal verték meg kicsinytől nagyig
+R1383	vala	előtte vala	1		1Sám 17:41	pedig a aki a pajzsát hordozza [előtte] volt
+R1384	vala	előtte valának	2		Eszt 1:3	hatalmasai főemberei és a tartományok fejedelmei [előtte] voltak
+R1385	vala	emésztették vala	1		4Móz 11:33	foguk között volt és meg sem [emésztették] volt a amikor az Úrnak haragja
+R1386	vala	feje vala	13		4Móz 10:14	seregei szerint és az ő seregének [feje] volt Naasson az Amminádáb fia
+R1387	vala	fejedelme vala	5		4Móz 25:15	között az ő atyja háza nemzetségeinek [fejedelme] volt
+R1388	vala	fejedelmei valának	4		4Móz 16:2	ötven ember a akik a gyülekezetnek [fejedelmei] voltak tanácsbeli híres neves emberek
+R1389	vala	fel vala	1		Jel 19:12	fején sok korona az ő neve [fel] volt írva a amit senki nem
+R1390	vala	fel valának	1		Józs 21:40	akik a Léviták családjai közül maradtak [fel] voltak az ő sorsuk szerint összesen
+R1391	vala	felett vala	4		4Móz 9:15	bizonyság sátorát és estve a hajlék [felett] volt tűznek ábrázatjában reggelig
+R1392	vala	felül vala	2		2Krón 4:4	és három napkeletre és a tenger [felül] volt rajtok hátuk pedig mind befelé
+R1393	vala	felül valának	1		Ezsd 3:8	a akik húsz esztendősök vagy azon [felül] voltak az Úr háza építésének vezetésére
+R1394	vala	formált vala	2		1Móz 2:8	abba helyeztette az embert a akit [formált] volt
+R1395	vala	formálta vala	1		1Móz 2:7	És [formálta] volt az Úr Isten az embert
+R1396	vala	fér vala	3		1Kir 7:38	rézből és mindenik mosdómedencébe negyven báth [fér] volt és mindenik mosdómedence négy singnyi
+R1397	vala	fölött vala	2		Ez 9:3	dicsősége elvonult a Kérubról a amely [fölött] volt a ház küszöbéhez és kiáltott
+R1398	vala	fölötte vala	1		Neh 8:5	az egész nép szemei előtt mert [fölötte] volt az egész népnek és mikor
+R1399	vala	gutaütött vala	2		Luk 5:18	ágyon egy embert hoztak a aki [gutaütött] volt és igyekeztek azt bevinni és
+R1400	vala	gyermekei valának	1		1Sám 1:2	a másikat pedig Peninnának hívták Peninnának [gyermekei] voltak de Annának nem voltak gyermekei
+R1401	vala	gyülekezet vala	1		2Krón 30:13	megtartsák a második hónapban igen nagy [gyülekezet] volt
+R1402	vala	hamu vala	1		Eszt 4:3	és siralom és jajgatás zsák és [hamu] volt terítve sokak alá
+R1403	vala	harcolt vala	1		Zak 14:3	ellen a népek ellen a amint [harcolt] volt ama napon a harcnak napján
+R1404	vala	hasította vala	1		1Móz 15:10	átellenébe helyeztette de a madarakat nem [hasította] volt kétfelé
+R1405	vala	hely vala	1		Ez 46:19	északra néznek és ímé ott egy [hely] volt leghátul nyugotra
+R1406	vala	holtak valátok	2		Ef 2:1	Titeket is megelevenített a akik [holtak] voltatok a ti vétkeitek és bűneitek
+R1407	vala	holttestek valának	1		2Krón 20:24	sokaság felé fordultak ímé csak elesett [holttestek] voltak a földön és senki sem
+R1408	vala	háborog vala	2		Ján 6:18	tenger a nagy szél fúvása miatt [háborog] volt
+R1409	vala	igérte vala	1		5Móz 12:20	kiszélesíti a te határodat a amiképpen [igérte] volt neked és ezt mondod Húst
+R1410	vala	isten vala	3		2Móz 20:21	közelebb ment a felhőhöz melyben az [Isten] volt
+R1411	vala	istene vala	1		2Sám 5:10	növekedett mert az Úr a Seregeknek [Istene] volt ő vele
+R1412	vala	kelhet vala	1		2Móz 12:39	vala kovásztalan pogácsákat mert meg nem [kelhet] volt mivelhogy kiűzetének Égyiptomból és nem
+R1413	vala	kert vala	1		Ján 18:1	a Kedron patakán a ahol egy [kert] volt a amelybe bementek ő és
+R1414	vala	kevesed vala	1		1Móz 30:30	Mert a ami [kevesed] volt én előttem sokra szaporodott és
+R1415	vala	keze vala	2		Luk 1:66	lesz e gyermekből És az Úrnak [keze] volt ő vele
+R1416	vala	kilencvenhat vala	1		Jer 52:23	A gránátalma pedig [kilencvenhat] volt kifelé összesen száz gránátalma volt
+R1417	vala	kiment vala	1		Ján 13:30	pedig mihelyt a falatot elvette azonnal [kiment] volt pedig éjszaka
+R1418	vala	körül valának	4		Józs 19:8	a faluk a amelyek e városok [körül] voltak Baalath Beérig délen Rámatig Ez
+R1419	vala	körülmetéltetett vala	1		Józs 5:8	Miután pedig mind az egész nép [körülmetéltetett] volt veszteg lettek az ő helyükön
+R1420	vala	körülötte valának	2		1Sám 25:42	az ő öt szolgálóleánya a akik [körülötte] voltak és elment Dávid követei után
+R1421	vala	körülöttök valának	1		4Móz 16:34	Az Izráeliták pedig a akik [körülöttök] voltak mind elfutottak azoknak kiáltására mert
+R1422	vala	kötelezte vala	1		2Krón 17:16	a aki magát szabadakaratjából az Úrnak [kötelezte] volt és ő vele kétszázezer harcos
+R1423	vala	köz vala	2		ApCsel 2:44	akik hittek együtt voltak és mindenük [köz] volt
+R1424	vala	közt vala	1		Józs 8:11	a völgy pedig köztök és Ai [közt] volt
+R1425	vala	köztök vala	1		4Móz 11:4	De a gyülevész nép a amely [köztök] volt kívánságba esett és Izráel fiai
+R1426	vala	között vala	5		4Móz 11:33	A hús még foguk [között] volt és meg sem emésztették volt
+R1427	vala	közöttetek valánk	1		1Thessz 3:4	Mert mikor [közöttetek] voltunk is előre megmondtuk nektek hogy
+R1428	vala	lecsillapodtak vala	1		Zsolt 107:30	És örültek hogy [lecsillapodtak] volt és vezérelte őket az ő
+R1429	vala	lehellete vala	1		1Móz 7:22	Mindaz a aminek orrában élő lélek [lehellete] volt a szárazon valók közül mind
+R1430	vala	lehellett vala	1		1Móz 2:7	az embert a földnek porából és [lehellett] volt az ő orrába életnek lehelletét
+R1431	vala	lelke vala	7		4Móz 24:2	az ő nemzetségei szerint és Istennek [lelke] volt ő rajta
+R1432	vala	lett vala	1		ApCsel 4:22	kin a gyógyításnak ez a csodája [lett] volt
+R1433	vala	lévita vala	3		Bír 17:7	Bethleheméből a Júda nemzetségéből való ki [Lévita] volt és ott tartózkodott vala
+R1434	vala	meg vala	5		1Móz 6:12	azért Isten a földre és ímé [meg] volt romolva mert minden test megrontotta
+R1435	vala	meg valának	2		5Móz 3:5	Ezek a városok mind [meg] voltak erősítve magas kőfalakkal kapukkal és
+R1436	vala	megerősödött vala	1		ApCsel 9:19	És miután evett [megerősödött] Volt pedig Saulus a damaskusi tanítványokkal
+R1437	vala	megett vala	1		1Móz 18:10	a sátor ajtajában mely annak háta [megett] volt
+R1438	vala	megfeszíttetett vala	1		Ján 19:41	Azon a helyen pedig a ahol [megfeszíttetett] volt egy kert és a kertben
+R1439	vala	megharagítottak vala	1		Zak 8:14	hogy veszedelmet hozok rátok mikor atyáitok [megharagítottak] volt engem így szól a Seregeknek
+R1440	vala	megharcolt vala	1		1Krón 18:10	hogy köszöntené őt és megáldaná mivelhogy [megharcolt] volt Hadadézerrel és megverte vala őt
+R1441	vala	megholt vala	1		1Móz 46:12	Hér Ónán Séla Perec Zerákh de [megholt] volt Hér és Ónán a Kanaán
+R1442	vala	megholtak vala	2		4Móz 16:49	És voltak a akik [megholtak] volt e csapás alatt tizennégy ezer
+R1443	vala	meghántott vala	1		1Móz 30:38	És a vesszőket melyeket [meghántott] volt felállította a csatornákba az itató
+R1444	vala	meghódított vala	1		2Krón 17:2	a amelyeket az ő atyja Asa [meghódított] volt
+R1445	vala	megidősödött vala	1		Józs 13:1	Mikor Józsué megvénhedett és igen [megidősödött] volt mondta az Úr neki Te
+R1446	vala	megkönnyebbedett vala	1		Ján 4:52	azért tőlük az órát a amelyben [megkönnyebbedett] volt és mondták neki Tegnap hét
+R1447	vala	megsebesíttetett vala	1		Jel 13:14	a fenevadnak képét a aki fegyverrel [megsebesíttetett] volt de megelevenedett
+R1448	vala	megsujtotta vala	1		2Móz 7:25	telék el a amióta az Úr [megsujtotta] volt a folyóvizet
+R1449	vala	megszeplősítették vala	1		1Móz 34:27	estek és feldúlák a várost mivelhogy [megszeplősítették] volt az ő húgokat
+R1450	vala	megszünt vala	2		1Móz 18:11	és Sára élemedett korú öregek voltak [megszünt] volt Sáránál az asszonyi természet
+R1451	vala	megvidámította vala	1		Ezsd 6:22	kenyerek ünnepét hét napon örömmel mert [megvidámította] volt őket az Úr hozzájuk hajtva
+R1452	vala	megvénhedett vala	2		1Móz 27:1	És lett a amikor [megvénhedett] volt Izsák és szemei annyira meghomályosodtak
+R1453	vala	megállt vala	1		1Sám 6:14	Semesből való Józsua mezejére és ott [megállt] Volt pedig ott egy nagy kő
+R1454	vala	megékesíttetett vala	1		Jel 17:4	az asszony bíborba és skárlátba és [megékesíttetett] volt arannyal és drágakővel és gyöngyökkel
+R1455	vala	mellett vala	8		1Móz 35:4	Jákób a cserfa alatt mely Sekhem [mellett] volt
+R1456	vala	mellett valának	5		2Móz 37:14	A karikák a karáj [mellett] voltak rúdtartókul hogy az asztalt hordozhassák
+R1457	vala	mellett valék	1		Dán 8:2	látomásban és ímé az Ulai folyam [mellett] voltam
+R1458	vala	mellette vala	1		1Sám 13:7	volt és az egész nép mely [mellette] volt rettegett
+R1459	vala	mellette valék	1		Péld 8:30	[Mellette] voltam mint kézmíves és gyönyörűsége voltam
+R1460	vala	mer vala	1		Mt 8:28	igen kegyetlenek annyira hogy senki sem [mer] volt elmenni azon az úton
+R1461	vala	mert vala	2		Mt 2:22	Heródesnek az ő atyjának helyén nem [mert] volt oda menni hanem minthogy álomban
+R1462	vala	mert valának	1		Luk 9:14	[Mert] voltak ott mintegy ötezeren férfiak Mondta
+R1463	vala	mert valátok	1		Ef 5:8	[Mert] voltatok régen sötétség most pedig világosság
+R1464	vala	mint valának	1		Ez 41:25	a szenthely ajtóin Kérubok és pálmák [mint] voltak készítve a falakon és faküszöb
+R1465	vala	mondta vala	2		Luk 13:6	És ezt a példázatot [mondta] Volt egy embernek egy fügefája szőlejébe
+R1466	vala	mível vala	1		Mk 3:8	is a amikor hallották hogy miket [mível] volt nagy sokasággal jöttek ő hozzá
+R1467	vala	mívelte vala	1		Ján 12:18	mivel hallotta hogy ezt a csodát [mívelte] volt
+R1468	vala	mögött vala	1		Ez 41:15	elkülönített hely felé mely ennek háta [mögött] volt és ennek folyosóit mind egyfelől
+R1469	vala	napon vala	1		Ján 1:40	lakik és nála maradtak azon a [napon] volt pedig körülbelül tíz óra
+R1470	vala	nemzett vala	1		1Krón 2:18	Káleb pedig a Khecrón fia [nemzett] volt az ő Azuba nevű feleségétől
+R1471	vala	nemzette vala	1		1Móz 37:3	szerette vala Józsefet mivelhogy vén korában [nemzette] volt őt és cifra ruhát csináltat
+R1472	vala	neve vala	11		4Móz 26:46	Áser leányának pedig [neve] volt Sérah
+R1473	vala	neveltetett vala	1		ApCsel 13:1	ki Heródessel a negyedes fejedelemmel együtt [neveltetett] volt és Saulus
+R1474	vala	nyíl vala	1		1Sám 20:37	a helyre érkezett a ahol a [nyíl] volt melyet Jonathán ellőtt a gyermek
+R1475	vala	oroz vala	1		Ef 4:28	A Aki [oroz] volt többé ne orozzon hanem inkább
+R1476	vala	próféta vala	2		Mk 11:32	azt tartotta vala Jánosról hogy valóban [próféta] volt
+R1477	vala	puszta vala	1		1Móz 1:2	A föld pedig kietlen és [puszta] volt és sötétség volt a mélység
+R1478	vala	péntek vala	3		Mk 15:42	És mikor immár este lett mivelhogy [péntek] volt azaz szombat előtt való nap
+R1479	vala	rajta vala	2		1Móz 37:23	felső ruháját a cifra ruhát mely [rajta] volt
+R1480	vala	rajta valának	1		2Móz 12:33	És az Égyiptombeliek erősen [rajta] voltak hogy a népet mentül hamarább
+R1481	vala	rajtok valának	1		5Móz 9:10	az Isten ujjával voltak beírva és [rajtok] voltak mind amaz ígék a amelyeket
+R1482	vala	rohant valának	1		Mk 5:13	a nyáj a meredekről a tengerbe [rohant] Voltak pedig mintegy kétezeren és belefúlának
+R1483	vala	romlott vala	1		1Móz 6:11	A föld pedig [romlott] volt Isten előtt és megtelt a
+R1484	vala	szakadoz vala	2		Luk 5:6	megtéve halaknak nagy sokaságát kerítették be [szakadoz] volt pedig az ő hálójuk
+R1485	vala	szegek valának	1		Ez 40:43	És a [szegek] voltak egy tenyérnyiek oda erősítve belől
+R1486	vala	szeme vala	2		Ezsd 5:5	És az ő Istenük [szeme] volt a zsidók vénein hogy nem
+R1487	vala	szeme valék	1		Jób 29:15	A vaknak én [szeme] voltam és a sántának lába
+R1488	vala	szemei valának	2		1Móz 29:17	Leának pedig gyenge [szemei] voltak de Rákhel szép termetű és
+R1489	vala	szerint vala	3		1Móz 25:28	vala azért Izsák Ézsaút mert szájaíze [szerint] volt a vad Rebeka pedig szerette
+R1490	vala	szerint valának	3		2Móz 39:14	A kövek pedig Izráel fiainak nevei [szerint] voltak tizenkettő volt az ő nevük
+R1491	vala	szokott vala	1		Mk 15:6	Ünnepenként pedig egy foglyot [szokott] volt elbocsátani nekik a akit épen
+R1492	vala	szokták vala	1		Dán 3:19	be a kemencét hétszerte inkább mint [szokták] volt befűteni
+R1493	vala	szíve vala	1		2Krón 15:17	nem irtották ki mindazáltal Asának tiszta [szíve] volt egész életében
+R1494	vala	szüksége vala	2		ApCsel 2:45	azokat mindenkinek a amint kinek kinek [szüksége] volt
+R1495	vala	sánta vala	2		2Sám 9:13	és ő mind a két lábára [sánta] volt
+R1496	vala	sújtotta vala	1		1Sám 6:19	hogy az Úr ily nagy csapással [sújtotta] volt a népet
+R1497	vala	tanácsolta vala	1		Ján 18:14	Kajafás pedig az volt a aki [tanácsolta] volt a zsidóknak hogy jobb hogy
+R1498	vala	testvére vala	3		1Sám 26:6	a Seruja fiának a aki Joábnak [testvére] volt mondva Ki jön le velem
+R1499	vala	testvérei valának	1		1Krón 26:26	Ez a Selómit és az ő [testvérei] voltak gondviselői minden megszentelt kincsnek a
+R1500	vala	tiszta vala	1		1Sám 21:5	elindultam és a szolgák holmija is [tiszta] volt jóllehet az út közönséges azért
+R1501	vala	tiszták valának	1		Ezsd 6:20	a papok és Léviták egyetemben mindnyájan [tiszták] voltak és megölték a húsvéti bárányt
+R1502	vala	tisztök vala	2		2Krón 5:13	Mert a kürtölőknek és éneklőknek [tisztök] volt egyenlőképen zengeni az Úrnak dicséretére
+R1503	vala	trombita vala	2		Jel 8:6	hét angyal a akinél a hét [trombita] volt készült a trombitáláshoz
+R1504	vala	táncol vala	1		2Sám 6:14	Dávid pedig teljes erejéből [táncol] volt az Úr előtt és gyolcs
+R1505	vala	türete vala	1		Ez 2:9	felém és ímé benne egy könyv [türete] volt
+R1506	vala	vadász vala	1		1Móz 10:9	Ez hatalmas [vadász] volt az Úr előtt azért mondják
+R1507	vala	vele vala	14		1Móz 32:7	Jákób és féltében a népet mely [vele] volt a juhokat a barmokat és
+R1508	vala	vele valának	32		1Móz 7:23	maradt meg és azok a akik [vele] voltak a bárkában
+R1509	vala	vele valánk	1		ApCsel 21:8	elmenve Pál és mi kik ő [vele] voltunk érkeztünk Cezáreába és bemenve a
+R1510	vala	veletek valék	3		Luk 24:44	beszédek melyeket szóltam nektek mikor még [veletek] voltam hogy szükség beteljesedni mindazoknak a
+R1511	vala	voltak vala	1		ApCsel 4:13	is ismerték őket hogy a Jézussal [voltak] volt
+R1512	vala	vétetett vala	1		1Móz 3:23	hogy mívelje a földet a amelyből [vétetett] volt
+R1513	vala	álmodott vala	1		1Móz 42:9	az álmokról a amelyeket azok felől [álmodott] volt És mondta nekik Kémek vagytok
+R1514	vala	áradott vala	1		Mk 5:30	azonnal észrevevén magán hogy isteni erő [áradott] volt ki belőle megfordult a sokaságban
+R1515	vala	élet vala	2		Ján 1:4	benne volt az élet és az [élet] volt az emberek világossága
+R1516	vala	értesült vala	1		Ján 12:9	A zsidók közül azért nagy sokaság [értesült] volt arról hogy ő ott van

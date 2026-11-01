@@ -63,23 +63,25 @@ class Alatamasztas(unittest.TestCase):
 
 class Kiegeszito2b(unittest.TestCase):
     def test_csak_kiegeszito_szotar_es_sajat_token(self):
+        # a SECE-sor nem a 2/b-ben áll (a 7. szerep és a Rokon szavak olvasható táblázata; a nyers LN/GK mező
+        # N-F33a szerint nem kerülhet a renderbe; ISTENTISZT-001 arany lap, 2026-10-29); a többi kiegészítő szótár igen
         sorok = [hiv('G1941', 'SECE_G'), hiv('G1941', 'BDB', jsz='1'), hiv('H7121', 'SECE_H'),
-                 hiv('G9999', 'SECE_G')]
+                 hiv('G9999', 'MCGED'), hiv('G1941', 'MCGED')]
         ki = LG.adatres_2b(['G1941', 'H7121'], sorok)
-        self.assertIn('**SECE_G G1941 — (részlet)**', ki)
-        self.assertIn('**SECE_H H7121 — (részlet)**', ki)
-        self.assertIn('> LN: 1.1 Hebrew: x', ki)
+        self.assertIn('**MCGED G1941 — (részlet)**', ki)
+        self.assertNotIn('SECE_G G1941', ki)
+        self.assertNotIn('SECE_H H7121', ki)
         self.assertIn('*Forrás: konkordancia/proba.tsv*', ki)
         self.assertNotIn('BDB', ki)
         self.assertNotIn('G9999', ki)
-        self.assertLess(ki.index('G1941'), ki.index('H7121'))
 
     def test_rokon_szavak_tokenjei(self):
         tok = LG.adatres_2b_tokenek(['G1941', 'H7121'], ['G0994', 'G1941', 'G2564'])
         self.assertEqual(tok, ['G1941', 'H7121', 'G0994', 'G2564'])
-        ki = LG.adatres_2b(tok, [hiv('G2564', 'SECE_G'), hiv('G0994', 'SECE_G'), hiv('G1941', 'SECE_G')])
+        ki = LG.adatres_2b(tok, [hiv('G2564', 'MCGED'), hiv('G0994', 'MCGED'), hiv('G1941', 'MCGED')])
         self.assertLess(ki.index('G1941'), ki.index('G0994'))
         self.assertLess(ki.index('G0994'), ki.index('G2564'))
+        self.assertTrue(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]).startswith('*Nincs a szerepmátrixon'))
 
     def test_ures(self):
         ki = LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')])

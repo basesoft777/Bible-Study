@@ -1,0 +1,95 @@
+# HEBER_KIEJTES_meres.py kimenete (N-F131w mérés; kísérleti, nem adat).
+# scope=adat/kiejtes_kivetelek.tsv (26 heber sor) + naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv (heber arany/valodi) + konkordancia/TAHOT_kivonat.tsv (ISTENTISZT-001 helyek) | forras=naplok/HEBER_KIEJTES_meres.py | ts=2026-10-30
+halmaz	strong	lemma	step_atiras	arany	gepi_niqqud	pontos	ekezet_nelkul	hossz_nelkul	hibaok_niqqud	gepi_step	s_pontos	s_ekezet_nelkul	s_hossz_nelkul	hibaok_step	loo_niqqud	loo_step
+A	H7121	קָרָא	qa.ra	kárá	kárá	igen	igen	igen		kárá	igen	igen	igen		kárá	kárá
+A	H8034	שֵׁם	shem	sém	sém	igen	igen	igen		sém	igen	igen	igen		sém	sém
+A	H0127	אֲדָמָה	a.da.mah	adámá	adámá	igen	igen	igen		ádáma	nem	igen	igen	hosszúság (a STEP nem jelöli)	adámá	ádáma
+A	H0430	אֱלֹהִים	e.lo.him	elóhím	elóhím	igen	igen	igen		elóhim	nem	igen	igen	hosszúság-heurisztika/konvenció: i	elóhím	elóhim
+A	H0779	אָרַר	a.rar	árar	árar	igen	igen	igen		árar	igen	igen	igen		árar	árar
+A	H0922	בֹּהוּ	bo.hu	bóhú	bóhú	igen	igen	igen		bóhú	igen	igen	igen		bóhú	bóhú
+A	H1121	בֵּן	ben	bén	bén	igen	igen	igen		bén	igen	igen	igen		bén	bén
+A	H2403	חַטָּאָה	chat.ta.ah	chattáá	chattáá	igen	igen	igen		chattáa	nem	igen	igen	hosszúság (a STEP nem jelöli)	chattáá	chattáa
+A	H2416	חַי	chay	chaj	chaj	igen	igen	igen		chaj	igen	igen	igen		chaj	chaj
+A	H2555	חָמָס	cha.mas	hámás	chámás	nem	nem	nem	ḥ (ח) ch/h	chámasz	nem	nem	nem	forrás-eltérés vagy átírási hiba	chámás	chámasz
+A	H3548	כֹּהֵן	ko.hen	kóhén	kóhén	igen	igen	igen		kóhén	igen	igen	igen		kóhén	kóhén
+A	H3678	כִּסֵּא	kis.se	kissé	kissé	igen	igen	igen		kissze	nem	nem	nem	forrás-eltérés vagy átírási hiba	kisszé	kissze
+A	H4467	מַמְלָכָה	mam.la.khah	mamláchá	mamláchá	igen	igen	igen		mamlácha	nem	igen	igen	hosszúság (a STEP nem jelöli)	mamláchá	mamlácha
+A	H5303	נְפִלִים	ne.phil	nefilím	nefilím	igen	igen	igen		nefil	nem	nem	nem	forrás-eltérés vagy átírási hiba	nefilím	nefil
+A	H5315	נֶ֫פֶשׁ	ne.phesh	nefes	nefes	igen	igen	igen		nefés	nem	igen	igen	hosszúság-heurisztika/konvenció: e_zart	nefes	nefés
+A	H6093	עִצָּבוֹן	its.tsa.von	iccávón	iccávón	igen	igen	igen		iccávón	igen	igen	igen		iccávón	íccávón
+A	H6975	קוֹץ	qots	kóc	kóc	igen	igen	igen		kóc	igen	igen	igen		kóc	kóc
+A	H7043	קָלַל	qa.lal	kálal	kálal	igen	igen	igen		kálal	igen	igen	igen		kálal	kálal
+A	H7451	רַע	ra	ra	ra	igen	igen	igen		rá	nem	igen	igen	hosszúság-heurisztika/konvenció: a_nyilt	ra	rá
+A	H7496	רְפָאִים	ra.pah	refáím	refáím	igen	igen	igen		rápa	nem	nem	nem	forrás-eltérés vagy átírási hiba	refáím	rápa
+A	H7497	רָפָה	ra.pah	ráfá	ráfá	igen	igen	igen		rápa	nem	nem	nem	forrás-eltérés vagy átírási hiba	ráfá	rápa
+A	H7585	שְׁאוֹל	she.ol	seól	seól	igen	igen	igen		seól	igen	igen	igen		seól	seól
+A	H7843	שָׁחַת	sha.chat	sáchat	sáchat	igen	igen	igen		sáchat	igen	igen	igen		sáchat	sáchat
+A	H8004	שָׁלֵם	sha.lem	sálém	sálém	igen	igen	igen		sálém	igen	igen	igen		sálém	sálém
+A	H8414	תֹּ֫הוּ	to.hu	tóhú	tóhú	igen	igen	igen		tóhú	igen	igen	igen		tóhú	tóhú
+A	H8415	תְּהוֹם	te.hom	tehóm	tehóm	igen	igen	igen		tehóm	igen	igen	igen		tehóm	tehóm
+B		קָרָא בְּשֵׁם יְהוָה		kárá besém JHVH	kárá besém JHVH	igen	igen	igen								
+B		זָכַר	za.khar	zákar	zákar	igen	igen	igen		zákar	igen	igen	igen			
+B		מָצָא	ma.tsa	mácá	mácá	igen	igen	igen		mácá	igen	igen	igen			
+B		נָקַב	na.qav	nákav	nákav	igen	igen	igen		nákav	igen	igen	igen			
+B		עָשָׂה	a.sah	ászá	ászá	igen	igen	igen		ásza	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		שׂוּם	sum	szúm	szúm	igen	igen	igen		szúm	igen	igen	igen			
+B		שָׁכַן	sha.khan	sákan	sákan	igen	igen	igen		sákan	igen	igen	igen			
+B		שֻׁם	shum	sum	sum	igen	igen	igen		súm	nem	igen	igen	hosszúság-heurisztika/konvenció: u		
+B		אָמַר	a.mar	ámar	ámar	igen	igen	igen		ámar	igen	igen	igen			
+B		בֹּוא		bó	bó	igen	igen	igen								
+B		דָבַר	da.var	dávar	dávar	igen	igen	igen		dávar	igen	igen	igen			
+B		הָיָה	ha.yah	hájá	hájá	igen	igen	igen		hája	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		זָעַק	za.aq	záak	záak	igen	igen	igen		záak	igen	igen	igen			
+B		לָקַח	la.qach	lákah	lákah	igen	igen	igen		láka	nem	nem	nem	forrás-eltérés vagy átírási hiba		
+B		עֲלַל	a.lal	alal	alal	igen	igen	igen		álal	nem	igen	igen	hosszúság-heurisztika/konvenció: a_nyilt		
+B		רוּם	rum	rúm	rúm	igen	igen	igen		rúm	igen	igen	igen			
+B		שֵׁם	shem	sém	sém	igen	igen	igen		sém	igen	igen	igen			
+B		הָגָה	ha.gah	hágá	hágá	igen	igen	igen		hága	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		הָמָה	ha.mah	hámá	hámá	igen	igen	igen		háma	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		זַעַק		zaak	zaak	igen	igen	igen								
+B		כָּנָה	ka.nah	káná	káná	igen	igen	igen		kána	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		נָהַם	na.ham	náham	náham	igen	igen	igen		náham	igen	igen	igen			
+B		נָהַק	na.haq	náhak	náhak	igen	igen	igen		náhak	igen	igen	igen			
+B		נָשָׂא	na.sa	nászá	nászá	igen	igen	igen		nászá	igen	igen	igen			
+B		פָּצַח	pa.tsach	pácah	pácah	igen	igen	igen		páca	nem	nem	nem	forrás-eltérés vagy átírási hiba		
+B		צָהַל	tsa.hal	cáhal	cáhal	igen	igen	igen		cáhal	igen	igen	igen			
+B		צָוַח	tsa.vach	cávah	cávah	igen	igen	igen		cáva	nem	nem	nem	forrás-eltérés vagy átírási hiba		
+B		צָעַק	tsa.aq	cáak	cáak	igen	igen	igen		cáak	igen	igen	igen			
+B		צָרַח	tsa.rach	cárah	cárah	igen	igen	igen		cára	nem	nem	nem	forrás-eltérés vagy átírási hiba		
+B		רוּעַ	ru.a	rúa	rúa	igen	igen	igen		rúá	nem	igen	igen	hosszúság-heurisztika/konvenció: a_nyilt		
+B		רָעַם	ra.am	ráam	ráam	igen	igen	igen		ráam	igen	igen	igen			
+B		שָׁאַג	sha.ag	sáag	sáag	igen	igen	igen		sáag	igen	igen	igen			
+B		שָׁבַע	sha.va	sáva	sáva	igen	igen	igen		sává	nem	igen	igen	hosszúság (a STEP nem jelöli)		
+B		שָׁעָה	sha.ah	sáá	sáá	igen	igen	igen		sáa	nem	igen	igen	hosszúság-heurisztika/konvenció: a_zart		
+B		קָרָא	qa.ra	kárá	kárá	igen	igen	igen		kárá	igen	igen	igen			
+B		עַל	al	al	al	igen	igen	igen		al	igen	igen	igen			
+B		בְּ		be	be	igen	igen	igen								
+B		מִקְרָא	miq.ra	mikrá	mikrá	igen	igen	igen		mikrá	igen	igen	igen			
+B		הַקְּרִיאָה		hakkeriá	hakkeríá	nem	igen	igen	mater jod (hirek)							
+B		אֶל	el	el	el	igen	igen	igen		él	nem	igen	igen	hosszúság-heurisztika/konvenció: e_zart		
+B		כֹּהֲנִים מַמְלֶכֶת		mamlekhet kóhaním	mamleket kóhaním	nem	nem	nem	többszavas: egyéb (szabályon kívüli)							
+B		מִדְיָן כֹּהֵן		kóhén midján	kóhén midján	igen	igen	igen								
+B		יְהוָֹה שֻׁם קָרָא		kárá sum JHVH	kárá sum JHVH	igen	igen	igen								
+B		יְהוָה בְּשֵׁם קָרָא		kárá besém JHVH	kárá besém JHVH	igen	igen	igen								
+B		הַשֵּׁם		hassém	hassém	igen	igen	igen								
+B		שְׁמָא		semá	semá	igen	igen	igen								
+C	H7121	יִּקְרָא	i.yik.Ra'		jikrá				nincs arany: 1Móz 4:26	ijikrá						
+C	H8034	שְׁמ	she.M		sem				nincs arany: 1Móz 4:26	sem						
+C	H7121	קְרֹא	k.Ro'		keró				nincs arany: 1Móz 4:26	kró						
+C	H8034	שֵׁם	Shem		sém				nincs arany: 1Móz 4:26	sém						
+C	H7121	קָרָאתִֽי	ka.Ra.ti		kárátí				nincs arany: 2Móz 33:19	káráti						
+C	H7121	קְרָאתֶם	ke.ra.Tem		kerátem				nincs arany: 1Kir 18:24	kerátém						
+C	H7121	אֶקְרָא	'ek.Ra'		ekrá				nincs arany: 1Kir 18:24	ékrá						
+C	H7121	קִרְאוּ	kir.'U		kirú				nincs arany: 1Kir 18:25	kirú						
+C	H8352	שֵׁת	Shet		sét				nincs arany: 1Móz 4:26	sét						
+C	H1571	גַּם	gam-		gam				nincs arany: 1Móz 4:26	gam						
+C	H1931	הוּא	hu'		hú				nincs arany: 1Móz 4:26	hú						
+C	H3205	יֻלַּד	yu.lad-		jullad				nincs arany: 1Móz 4:26	júlad						
+C	H1121	בֵּן	Ben		bén				nincs arany: 1Móz 4:26	bén						
+C	H0853	אֶת	'et-		et				nincs arany: 1Móz 4:26	ét						
+C	H0583	אֱנוֹשׁ	'e.No.osh		enós				nincs arany: 1Móz 4:26	enóós						
+C	H0227	אָז	'az		áz				nincs arany: 1Móz 4:26	az						
+C	H2490	הוּחַל	hu.Chal		húchal				nincs arany: 1Móz 4:26	húchal						
+C	H3068	יְהוָֽה	Yah.weh		JHVH				nincs arany: 1Móz 4:26	JHVH						
+C	H6275	יַּעְתֵּק	i.ya'.Tek		jaték				nincs arany: 1Móz 12:8	ijáték						
+C	H8033	שָּׁם	Sham		sám				nincs arany: 1Móz 12:8	sam						

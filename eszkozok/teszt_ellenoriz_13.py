@@ -117,7 +117,7 @@ class Szabaly13Szakasz(Szabaly13Teljes):
         super().setUp()
         with open(os.path.join(self.adat, 'bdb_szakaszok.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
             fh.write('# GENERÁLT: teszt\n# forras: teszt\n')
-            fh.write('strong\tbdb_id\tsorszam\tutvonal\tjelolo\tjel\tszoveg\tilleszes\n')
+            fh.write('strong\tbdb_id\tsorszam\tutvonal\tjelolo\tjel\tszoveg\tillesztes\n')
             fh.write('H0001\tBDB17\t1\tcim\tcim\t\tH1. ab\tegyezik\n')
             fh.write('H0001\tBDB17\t2\t-/1/-\tpoint\t1\tfather Gen 1:1\tegyezik\n')
         with open(os.path.join(self.adat, 'bdb_forras_javitas.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
@@ -159,6 +159,173 @@ class Szabaly13Szakasz(Szabaly13Teljes):
 
     def test_negativ_entry_id_elter(self):
         self.assertEqual(self._futtat([self._sz(1, SZ1, entry_id='H0001'), self._sz(2, SZ2)]).verdict, 'SÉRTÉS')
+
+
+TSZ1, TSZ2 = 'G1 — Α, ἄλφα', 'a first letter; cf. Homer'          # G0001: nyers (illesztés: egyezik)
+TJ1, TJ2_NYERS, TJ2 = 'G2 — x', 'abc def', 'abc XYZ def'            # G0002: a 2. szakaszba a javítótábla szúr be
+
+
+class Szabaly13Thayer(Szabaly13Teljes):
+    """F145 (DT-F142d): a Thayer `sz<sorszam>` sorainak forrásszövege a `thayer_szakaszok.tsv` szakasza a `thayer_forras_javitas.tsv`
+    beszúrásával (ugyanaz a szöveg és hash, amelyet a `forditas.py rogzit` használ); a nem `elavult` sorok a Strong összes szakaszát fedik."""
+
+    def setUp(self):
+        super().setUp()
+        with open(os.path.join(self.adat, 'thayer_szakaszok.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERÁLT: teszt\n# forras: teszt\n')
+            fh.write('strong\tsorszam\tutvonal\tjel\tszoveg\tillesztes\n')
+            fh.write('G0001\t1\tcim\t\t%s\tegyezik\n' % TSZ1)
+            fh.write('G0001\t2\t-/1/-\t1.\t%s\tegyezik\n' % TSZ2)
+            fh.write('G0002\t1\tcim\t\t%s\tjavitassal\n' % TJ1)
+            fh.write('G0002\t2\t-/1/-\t\t%s\tjavitassal\n' % TJ2_NYERS)
+        self._jav(['G0002\t2\ttsv_szovegvesztes\t10\t3\tabc\t XYZ\t\t4\tjavitva\tteszt'])
+
+    def _jav(self, sorok):
+        with open(os.path.join(self.adat, 'thayer_forras_javitas.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERÁLT: teszt\n# forras: teszt\n')
+            fh.write('strong\tsorszam\thiba\ttsv_poz\tsor_poz\telotte\tjavitott_alak\tutana\thossz\tallapot\tindok\n')
+            for r in sorok:
+                fh.write(r + '\n')
+
+    def _t(self, n, szoveg, strong='G0001', entry_id='G1', **kw):
+        alap = {'szotar': 'Thayer', 'strong': strong, 'entry_id': entry_id, 'jelentes_szam': 'sz%d' % n,
+                'mezo': 'forditas_hu', 'forras_hash': sha1(szoveg), 'forditas_hu': 'f%d' % n,
+                'allapot': 'sonnet', 'modell': 'claude-sonnet-5-5', 'datum': '2026.10.26'}
+        alap.update(kw)
+        return alap
+
+    G1 = ('G0001', 'G1')
+    G2 = ('G0002', 'G2')
+
+    def test_thayer_szakaszsorok_rendben(self):
+        # a 2. szakasz forrásszövege a jel + szöveg egy szóközzel
+        self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2)]).verdict, 'RENDBEN')
+
+    def test_thayer_javitott_nezet(self):
+        # a `javitassal` illesztésű Strong szakaszába a javítótábla beszúr; a hash a javított szövegé
+        sorok = [self._t(1, TJ1, *self.G2), self._t(2, TJ2, *self.G2)]
+        self.assertEqual(self._futtat(sorok).verdict, 'RENDBEN')
+
+    def test_negativ_thayer_nyers_szoveg_hash_bukik(self):
+        sorok = [self._t(1, TJ1, *self.G2), self._t(2, TJ2_NYERS, *self.G2)]
+        e = self._futtat(sorok)
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('forras_hash eltér' in h for h in e.peldak), e.peldak)
+
+    def test_negativ_thayer_hibas_hash_bukik(self):
+        self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, 'más szöveg')]).verdict, 'SÉRTÉS')
+
+    def test_negativ_thayer_hianyos_szakaszsorok(self):
+        e = self._futtat([self._t(1, TSZ1)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any(h.startswith('Thayer G0001: a szakaszsorok nem fedik le') for h in e.peldak), e.peldak)
+
+    def test_thayer_elavult_nem_szamit_a_lefedesbe(self):
+        self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2, allapot='elavult')]).verdict, 'SÉRTÉS')
+        self.assertEqual(self._futtat([self._t(1, TSZ1, allapot='elavult'), self._t(2, '1. ' + TSZ2, allapot='elavult')]).verdict,
+                         'RENDBEN')
+
+    def test_negativ_thayer_tablan_kivuli_strong(self):
+        e = self._futtat([self._t(1, TSZ1, strong='G9999', entry_id='G9999')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('nincs hozzá forrásszöveg' in h for h in e.peldak), e.peldak)
+
+    def test_negativ_thayer_entry_id_elter(self):
+        self.assertEqual(self._futtat([self._t(1, TSZ1, entry_id='G0001'), self._t(2, '1. ' + TSZ2, entry_id='G0001')]).verdict,
+                         'SÉRTÉS')
+
+    def test_negativ_szotar_nem_keveredik(self):
+        # a BDB-sor nem kap Thayer-forrást (és fordítva): a G-Strong BDB-ként forrásszöveg nélkül marad
+        e = self._futtat([self._t(1, TSZ1, szotar='BDB'), self._t(2, '1. ' + TSZ2, szotar='BDB')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+
+    def test_negativ_thayer_javitas_nem_illeszkedik(self):
+        # a javítótábla `elotte` mezője nem illeszkedik: SÉRTÉS az okkal (nem összeomlás)
+        self._jav(['G0002\t2\ttsv_szovegvesztes\t10\t3\tXXX\t XYZ\t\t4\tjavitva\tteszt'])
+        e = self._futtat([self._t(1, TJ1, *self.G2), self._t(2, TJ2, *self.G2)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('Thayer G0002' in h and 'nem illeszkedik' in h for h in e.peldak), e.peldak)
+
+    def test_thayer_nincs_tabla_nincs_forras(self):
+        os.remove(os.path.join(self.adat, 'thayer_szakaszok.tsv'))
+        self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2)]).verdict, 'SÉRTÉS')
+
+
+
+DBH_DEF = '= one or more words by which a person is known'
+DBH_GL = 'name'
+
+
+class Szabaly13DBH(Szabaly13Teljes):
+    """F121 (DT-F121b): az UBS_DBH sor forrasszovege az UBS_DBH_jelentesek.tsv `definicio_rovid` / `glosszak`
+    oszlopa (entry_id = lexid, jelentes_szam = em-dash); strongonkent az elso sor."""
+
+    def setUp(self):
+        super().setUp()
+        fej = ['strong', 'strong_kod', 'lemma', 'main_id', 'lexid', 'entry_kod', 'domen_kod', 'domen',
+               'definicio_rovid', 'definicio_hosszu', 'glosszak', 'megjegyzes']
+        sor = ['H8034', 'H8034', 'x', '1', '007442001001000', '-', '1', 'D', DBH_DEF, '-', DBH_GL, '-']
+        with open(os.path.join(self.gyoker, 'konkordancia', 'UBS_DBH_jelentesek.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERALT: teszt\n')
+            fh.write('\t'.join(fej) + '\n')
+            fh.write('\t'.join(sor) + '\n')
+
+    def _d(self, mezo, szoveg, **kw):
+        alap = {'szotar': 'UBS_DBH', 'strong': 'H8034', 'entry_id': '007442001001000', 'jelentes_szam': '—',
+                'mezo': mezo, 'forras_hash': sha1(szoveg), 'forditas_hu': 'forditás',
+                'allapot': 'sonnet', 'modell': 'claude-sonnet-5-5', 'datum': '2026.10.28'}
+        alap.update(kw)
+        return alap
+
+    def test_definicio_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('definicio_hu', DBH_DEF)]).verdict, 'RENDBEN')
+
+    def test_glossza_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('glosszak_hu', DBH_GL)]).verdict, 'RENDBEN')
+
+    def test_negativ_elrontott_hash_bukik(self):
+        e = self._futtat([self._d('definicio_hu', DBH_DEF, forras_hash='0' * 40)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('forras_hash eltér', e.peldak[0])
+
+    def test_negativ_ismeretlen_lexid_bukik(self):
+        e = self._futtat([self._d('definicio_hu', DBH_DEF, entry_id='999')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('nincs hozzá forrásszöveg', e.peldak[0])
+
+
+class Szabaly13Tovabbi(Szabaly13Teljes):
+    """F121 (DT-F121k): a TBESH/TBESG/tW/MCGED/LSJ/BDB-nyelvi háttér sor forrásszövege a konkordancia-fájlokból
+    (glossza_lexikon_forditas.tovabbi_forras); itt az LSJ és az MCGED."""
+
+    def setUp(self):
+        super().setUp()
+        for nev, szoveg in (('LSJ_teljes.tsv', 'Strong_padded\tStrong_eredeti\tTeljes_szocikk\nG0086\tG86\tLSJ-forrás\n'),
+                            ('MCGED_teljes.tsv', 'strong\tgk_szam\tlemma_gorog\tatirat\tgyakorisag\tglossza\n'
+                                                 'G0086\tG50087\tx\ty\t1\tthe abode of the dead\n')):
+            with open(os.path.join(self.gyoker, 'konkordancia', nev), 'w', encoding='utf-8', newline='\n') as fh:
+                fh.write(szoveg)
+
+    def _d(self, szotar, eid, jsz, mezo, szoveg, **kw):
+        alap = {'szotar': szotar, 'strong': 'G0086', 'entry_id': eid, 'jelentes_szam': jsz, 'mezo': mezo,
+                'forras_hash': sha1(szoveg), 'forditas_hu': 'forditás', 'allapot': 'sonnet',
+                'modell': 'claude-sonnet-5-5', 'datum': '2026.10.29'}
+        alap.update(kw)
+        return alap
+
+    def test_lsj_es_mcged_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('LSJ', 'G0086', 'teljes', 'forditas_hu', 'LSJ-forrás'),
+                                       self._d('MCGED', 'G50087', '—', 'glosszak_hu', 'the abode of the dead')]).verdict, 'RENDBEN')
+
+    def test_negativ_elrontott_hash_bukik(self):
+        e = self._futtat([self._d('LSJ', 'G0086', 'teljes', 'forditas_hu', 'LSJ-forrás', forras_hash='0' * 40)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('forras_hash eltér', e.peldak[0])
+
+    def test_negativ_ismeretlen_entry_id_bukik(self):
+        e = self._futtat([self._d('LSJ', 'G86', 'teljes', 'forditas_hu', 'LSJ-forrás')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('nincs hozzá forrásszöveg', e.peldak[0])
 
 
 if __name__ == '__main__':

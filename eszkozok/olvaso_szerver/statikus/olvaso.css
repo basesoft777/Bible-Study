@@ -164,6 +164,11 @@ ol.jel > li:target > details > summary .jcim, ol.al > li:target { background: va
 .jel-vazlat .vz-al { display: block; padding-left: 1.6rem; color: var(--muted); }
 /* a BDB rövidítései: a szövegben pontozott aláhúzás, rámutatva a feloldás; a blokk végén a jelmagyarázat */
 .jsz abbr[title] { text-decoration: underline dotted; text-decoration-color: var(--muted); text-underline-offset: 3px; cursor: help; }
+/* a BDB egybetűs rövidítései (N-F131x, mint a lexikonlapon): más színű háttér; a feloldás rámutatva (title), érintésre és fókuszra
+   kis felugróban (a koppintás fókuszt ad: olvaso.js; JS nélkül a billentyűzetes fókusz és a title marad) */
+abbr.rovidites { font-family: var(--font-he); unicode-bidi: isolate; background: var(--gold-soft); border-radius: var(--radius-kiemeles); padding: 0 2px; text-decoration: underline dotted; text-decoration-color: var(--muted); text-underline-offset: 3px; cursor: help; position: relative; }
+abbr.rovidites:focus { outline: 1px solid var(--gold); outline-offset: 1px; }
+abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0; top: 100%; z-index: 5; margin-top: 3px; padding: 3px 7px; width: max-content; max-width: 16rem; white-space: normal; direction: ltr; text-align: left; background: var(--panel); color: var(--fg); border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); font: var(--fs-sor)/var(--lh-forrassor) var(--font-ui); }
 .jelmagyarazat { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 4px 0 6px; font: var(--fs-sor)/var(--lh-forrassor) var(--font-ui); }
 .jelmagyarazat dt { font: 600 var(--fs-jelentes-jel) var(--font-mono); color: var(--accent); }
 .jelmagyarazat dd { margin: 0; }
