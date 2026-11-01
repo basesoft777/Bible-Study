@@ -1,7 +1,8 @@
-<article class="szolap" data-strong="{{ strong }}">
+<article class="szolap" data-strong="{{ strong }}"{% if lapcim %} data-lapcim="{{ lapcim }}" data-lapal="{{ lapal }}"{% endif %}>
   <h2 class="szocim">{{ strong }} <span class="{{ 'gor' if gorog else 'heb' }}"{% if gorog %} lang="grc"{% else %} lang="he" dir="rtl"{% endif %}>{{ lemma }}</span></h2>
   <p class="szoalcim">{{ atiras }}{% if atiras and jelentes %} · {% endif %}{{ jelentes }}</p>
   {% if alapjel %}<p class="alapjel" lang="{{ alapjel.nyelv }}"{% if alapjel.tisztitott %} title="Gépi tisztítás: a magyar BDB-sorból a héber betűk, hivatkozások és szófaji szavak kivéve"{% endif %}><span class="fcim">Alapjelentés</span> {{ alapjel.szoveg }}</p>{% endif %}
+  {% if vers_ut %}<p class="lap-versre-sor"><a class="lap-versre" href="{{ vers_ut }}">A vers: {{ vers_cim }} →</a></p>{% endif %}
   <p><a href="/szo/{{ strong }}">szó-lap önálló címen</a> · <a href="/kereses?strong={{ strong }}">előfordulások versenként</a></p>
   {{ blokkok }}
 </article>
