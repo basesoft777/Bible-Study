@@ -38,5 +38,5 @@ Módszer: a #150 `jelolt_eloszures.vizsgal` próbája a **beépített** sorokra:
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-nem futott (DT-F151a után)
+nem futott (DT443 után)
 <!-- MODELLES-VEGE -->

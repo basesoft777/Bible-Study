@@ -1,6 +1,6 @@
 # MOTIVUM_HATAR_naplo.md — F151 (#151) M0: a gépi rész
 
-*Modell: claude-sonnet-5-5 · 2026-11-01 · ág: `claude/f151-motivum-hatar-d33a81` · lépés: 4. szakasz 0. (M0), utána ⛔ DT-F151a.*
+*Modell: claude-sonnet-5-5 · 2026-11-01 · ág: `claude/f151-motivum-hatar-d33a81` · lépés: 4. szakasz 0. (M0), utána ⛔ DT443.*
 
 *(proveniencia: scope=adat/elofordulasok.tsv (beépített igehelyek, verssé bontva) + adat/motivumok.tsv (`azonossag_tipusa`, `negativ_kriterium`) + adat/motivum_kapcsolatok.tsv | forras=eszkozok/motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | ts=a bemeneti fájlok utolsó commitjának ideje, a kimenetek fejlécében)*
 
@@ -12,7 +12,7 @@
 2. **Negatív kritérium a beépített sorokon.** Csak `azonossag_tipusa=formulaikus` hordozón. A #150 `jelolt_eloszures.vizsgal` próbáját **importálom, nem másolom**: a beépített sor versében (tartománynál az összes versében) a TAHOT+TAGNT Strong-halmazban megvan-e legalább egy teljes gerinc-kombináció (a motívum `elofordulasok.tsv` `strong` mezői, nyelvtani Strongok nélkül). Ha nincs, kérdés a sor és a `negativ_kriterium` idézésével. Nincs szövegadat → „nem ellenőrizhető”, nem kérdés és nem negatív lelet. Nem formulaikus hordozón a próba nem fut, és a kimenet ezt kimondja.
 3. **Sorszámok** a fájl tényleges sorai (a `#` kommentsor is számít), nem az adatsor-index; a TSV olvasása `split('\t')`.
 4. **Proveniencia.** A `ts` a bemeneti fájlok utolsó git-commitjának ideje (`2026-10-29T15:36Z`), nem a futásé: determinisztikus.
-5. **A „Modelles rész”** a `HATAR_<ID>.md`-ben jelölők között áll (`<!-- MODELLES-KEZDET -->` … `<!-- MODELLES-VEGE -->`), tartalma: „nem futott (DT-F151a után)”. A szkript újrafuttatáskor a jelölők közötti tartalmat megőrzi.
+5. **A „Modelles rész”** a `HATAR_<ID>.md`-ben jelölők között áll (`<!-- MODELLES-KEZDET -->` … `<!-- MODELLES-VEGE -->`), tartalma: „nem futott (DT443 után)”. A szkript újrafuttatáskor a jelölők közötti tartalmat megőrzi.
 
 ## 2. Eredmény motívumonként
 
@@ -35,7 +35,7 @@
 - A lexikai hordozóra a próba kiterjesztése az **N-F150a** feladata; ide nem vettem be.
 - A motívum készítő modelljét a repó adataiból (`motivumok/*.md`, `jeloltek.tsv`) nem tudtam megállapítani (nincs modellnév-mező); a „másik modell” választása ezért a felhasználó tudására épül.
 
-## 4. DT-F151a — kérdés a felhasználónak (helyőrző; végleges szám a main-en)
+## 4. DT443 — kérdés a felhasználónak (helyőrző; végleges szám a main-en)
 
 **Kérdés:** legyen-e modelles rész (a `hatar-ellenor` subagent: következetlen határ + hígulás), és ha igen, melyik modellel?
 
