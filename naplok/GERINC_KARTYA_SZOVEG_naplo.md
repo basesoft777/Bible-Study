@@ -1,0 +1,148 @@
+# GERINC_KARTYA_SZOVEG_naplo.md — a #125 naplója
+
+*Modell: claude-sonnet-5-5 (a brief `modell`: sonnet, egyezik). Indítás: 2026-11-01, az orkesztrátor a felhasználó szó szerinti idézetével: „Igen, mind”, majd „#125: induljon az M0 mérés.”*
+
+## Egyeztetett eltérés a briefhez képest
+
+A felhasználó 2026-10-29-i („mehet”) tétele, a **két új munkamenet-lépés** (szakaszcímke ⛔ csak eltérésnél; fordítás a lap első generálása előtt, az `F148_*_BRIEF.md` 6. szakaszának szövege) a briefben **nem szerepel** (a 2.1 csak az A3b/A3c-t hozza). Az 1. lépés szövegjavaslatába felveszem; a brief szövegét jóváhagyás nélkül nem írtam át.
+
+## M0 — a mérőszkript próbája (`eszkozok/proza_lefedettseg.py`, 2.4 és 2.5)
+
+Mérés: `python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001`, 2026-11-01, a `motivumok/[ID].md` kézi prózáján (táblasor, jelölő és `【NAPLO` kihagyva). A névmatch heurisztika (könyv + fejezet:vers a bekezdésben, vagy a könyv említése mellett puszta fejezet:vers); a „12. vers” szóbeli alakot nem látja, ezért a „nem” sorok kézi ellenőrzést igényelnek.
+
+**Amit a mérés mutat:**
+- ISTENTISZT-001: az előfordulás 33/33 megnevezve; 3 kapcsolat (1Móz 4:26 → Sof 3:9, Jóel 2:32, 2Móz 33:19) és 1 nyitott jelölt (Ézs 41:25) nincs megnevezve. A Kivonat blokk 56, az 1. pont 125 karakter/elem, a 3. pont 388, a 7. 706: a lap eleje sűrű adat, kevés próza.
+- ALVIL-001: 72 előfordulásból 15 van megnevezve, 57 nem. Ezt a prózában a „63 egyedi igehely” gyűjtő mondat fedi, a generált tábla viszont soronként tartalmazza; a mérő jelenleg nem különbözteti meg a csoportos említést a hiánytól. A kapcsolat és a nyitott jelölt 0 (a kapcsolatok.tsv-ben nincs ALVIL-001 sor).
+- A „Károli rejtett párhuzama” (14. szerep) nem mérhető: nincs gépi adatforrása (DT424).
+
+### ISTENTISZT-001
+
+Próza: 88 bekezdés, 42072 karakter (táblasor, jelölő és napló nélkül).
+
+### Lefedettség (a próza nem nevezi meg)
+
+| rovat | adat | megnevezve | nem |
+|---|---|---|---|
+| előfordulás | 33 | 33 | 0 |
+| kapcsolat | 25 | 22 | 3 |
+| motívumközi kapcsolat | 3 | 3 | 0 |
+| nyitott jelölt | 6 | 5 | 1 |
+
+Név nélküli elemek:
+
+- kapcsolat: 1Móz 4:26 → Sof 3:9 (Párhuzam)
+- kapcsolat: 1Móz 4:26 → Jóel 2:32 (Párhuzam)
+- kapcsolat: 1Móz 4:26 → 2Móz 33:19 (Variáns)
+- nyitott jelölt: Ézs 41:25 (elofordulas; F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „hirdet)
+
+*A „Károli rejtett párhuzama” (14. szerep) nem mérhető: nincs gépi adatforrása (l. DT424); a mérő ezt nem tölti ki.*
+
+### Egyenetlenség (blokkonként)
+
+| blokk | karakter | megnevezett elem | karakter/elem | jel |
+|---|---|---|---|---|
+| Kivonat | 836 | 15 | 56 | kevés próza az elemre; a medián (388) 4x-ánál távolabb |
+| 1. Előfordulások összegyűjtése | 5502 | 44 | 125 | kevés próza az elemre |
+| 2. Eredeti nyelvi összevetés | 4809 | 18 | 267 |  |
+| 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva | 22113 | 57 | 388 |  |
+| 4. Kapcsolódás a kutatási sablonhoz | 307 | 0 | – |  |
+| 5. Alkalmazás és tanítványság | 1442 | 3 | 481 |  |
+| 7. Módszertan és nyitott kérdések | 7063 | 10 | 706 |  |
+
+Küszöbök (javaslat, DT-F125a): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
+
+Adatelemet egyáltalán nem megnevező bekezdés (értelmező, módszertani): 41 / 88
+
+### ALVIL-001
+
+Próza: 13 bekezdés, 5878 karakter (táblasor, jelölő és napló nélkül).
+
+### Lefedettség (a próza nem nevezi meg)
+
+| rovat | adat | megnevezve | nem |
+|---|---|---|---|
+| előfordulás | 72 | 15 | 57 |
+| kapcsolat | 0 | 0 | 0 |
+| motívumközi kapcsolat | 2 | 2 | 0 |
+| nyitott jelölt | 0 | 0 | 0 |
+
+Név nélküli elemek:
+
+- előfordulás: 1Móz 37:35 (Remez)
+- előfordulás: 1Móz 42:38 (Remez)
+- előfordulás: 1Móz 44:29 (Remez)
+- előfordulás: 1Móz 44:31 (Remez)
+- előfordulás: 4Móz 16:30 (Remez)
+- előfordulás: 4Móz 16:33 (Remez)
+- előfordulás: 5Móz 32:22 (Remez)
+- előfordulás: 1Sám 2:6 (Remez)
+- előfordulás: 1Kir 2:6 (Remez)
+- előfordulás: 1Kir 2:9 (Remez)
+- előfordulás: Jób 7:9 (Remez)
+- előfordulás: Jób 11:8 (Remez)
+- előfordulás: Jób 14:13 (Remez)
+- előfordulás: Jób 17:12 (Remez)
+- előfordulás: Jób 17:15 (Remez)
+- előfordulás: Jób 21:13 (Remez)
+- előfordulás: Jób 24:19 (Remez)
+- előfordulás: Jób 26:6 (Remez)
+- előfordulás: Zsolt 6:6 (Remez)
+- előfordulás: Zsolt 9:18 (Remez)
+- előfordulás: Zsolt 30:4 (Remez)
+- előfordulás: Zsolt 49:15 (Remez)
+- előfordulás: Zsolt 49:16 (Remez)
+- előfordulás: Zsolt 86:13 (Remez)
+- előfordulás: Zsolt 88:4 (Remez)
+- előfordulás: Zsolt 89:49 (Remez)
+- előfordulás: Zsolt 139:8 (Remez)
+- előfordulás: Zsolt 141:7 (Remez)
+- előfordulás: Péld 1:12 (Remez)
+- előfordulás: Péld 5:5 (Remez)
+- előfordulás: Péld 7:27 (Remez)
+- előfordulás: Péld 9:18 (Remez)
+- előfordulás: Péld 15:11 (Remez)
+- előfordulás: Péld 15:24 (Remez)
+- előfordulás: Péld 23:14 (Remez)
+- előfordulás: Péld 27:20 (Remez)
+- előfordulás: Péld 30:16 (Remez)
+- előfordulás: Préd 9:12 (Remez)
+- előfordulás: Én 8:6 (Remez)
+- előfordulás: Ézs 5:14 (Remez)
+- előfordulás: Ézs 7:11 (Remez)
+- előfordulás: Ézs 28:15 (Remez)
+- előfordulás: Ézs 28:18 (Remez)
+- előfordulás: Ézs 38:10 (Remez)
+- előfordulás: Ézs 38:18 (Remez)
+- előfordulás: Ézs 57:9 (Remez)
+- előfordulás: Ez 31:15 (Remez)
+- előfordulás: Ez 31:16 (Remez)
+- előfordulás: Ez 31:17 (Remez)
+- előfordulás: Ez 32:21 (Remez)
+- előfordulás: Ez 32:27 (Remez)
+- előfordulás: Ámós 9:2 (Remez)
+- előfordulás: Hab 2:5 (Remez)
+- előfordulás: ApCsel 2:27 (Peshat/Drash)
+- előfordulás: Luk 16:23 (Peshat)
+- előfordulás: Jel 6:8 (Peshat/Remez)
+- előfordulás: Mt 11:23 (Remez)
+
+*A „Károli rejtett párhuzama” (14. szerep) nem mérhető: nincs gépi adatforrása (l. DT424); a mérő ezt nem tölti ki.*
+
+### Egyenetlenség (blokkonként)
+
+| blokk | karakter | megnevezett elem | karakter/elem | jel |
+|---|---|---|---|---|
+| Kivonat | 778 | 4 | 194 |  |
+| 1. Előfordulások összegyűjtése | 633 | 2 | 316 |  |
+| 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva | 3901 | 15 | 260 |  |
+| 5. Alkalmazás és tanítványság | 289 | 0 | – |  |
+| 7. Módszertan és nyitott kérdések | 277 | 0 | – |  |
+
+Küszöbök (javaslat, DT-F125a): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
+
+Adatelemet egyáltalán nem megnevező bekezdés (értelmező, módszertani): 5 / 13
+
+
+## Nyitott: DT-F125a ⛔
+
+A küszöbök és a lista formája a felhasználóé (l. `DONTESEK.md`).
