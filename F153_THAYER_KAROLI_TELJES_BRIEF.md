@@ -103,3 +103,4 @@ kapuk). Javul az `adatblokk.py` docstringje. Az új ellenőrzőhöz teszt kész�
 ## 6. Döntésnapló
 
 - `DT-F153a` (⛔ M0): az eltérő sorok sorsa: szűk (b), a felhasználó „b” válasza; a G1941 sz1–sz4 újrafordítása nem változtatott a szövegen. *Alkalmazva.*
+- `DT-F153b` (javítókör 1, ELLENOR_F153 2.): holtversenynél a mérés `holtverseny`-t jelöl, váltást nem állít; az uralkodó tő szakaszonként számolódik; csak a mérőeszköz érintett, a fordítások nem. A felhasználó „Igen, mehet” válasza (c), majd (d). *Alkalmazva.*
