@@ -71,7 +71,7 @@ Modell-ellenőrzés: kért `fable`, tényleges `claude-fable-5-1` — egyezik. B
 
 (proveniencia: scope=adat/motivumok.tsv:4 + adat/jeloltek.tsv (id=ISTENTISZT-001, 133 sor) + adat/elofordulasok.tsv (id=ISTENTISZT-001, 33 sor) + adat/elutasitasi_okok.tsv + adat/motivum_kapcsolatok.tsv + motivumok/ISTENTISZT-001.md + naplok/HATAR_ISTENTISZT-001.md (Gépi rész) + konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (range: Róm 10:12–14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17, ApCsel 2:21, 7:59, 9:14, 9:21, 22:16, 2Kor 1:23; 2Móz 33:19, 34:5, Ézs 12:4, 41:25, 58:9, 65:24, Zsolt 50:15, 86:5, 91:15, 99:6, 105:1, Jer 29:12, 1Kir 18:24; split('\t')) | forras=modell:claude-fable-5-1 | ts=2026-11-01T11:16Z)
 
-**Felhasználói besorolás** *(nem a modell írta; 2026-11-01, DT-F151c)*
+**Felhasználói besorolás** *(nem a modell írta; 2026-11-01, DT476)*
 
 - K1: az 1Pét 1:17 kerüljön ki.
 - K2: a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14).
