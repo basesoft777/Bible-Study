@@ -1,0 +1,80 @@
+# proveniencia: scope=adat/forditasok.tsv (szotar=Thayer, mezo=forditas_hu, allapot!=elavult), adat/karoli_strong/parok_*.tsv (régi = Mt, Mk, Luk, Ján, ApCsel nélkül), adat/thayer_vers_jelentes.tsv (szakasz-versek) | forras=eszkozok/thayer_jelolt/karoli_ujraellenoriz.py --meres (négybetűs tő egyezés; uralkodó tő szakaszonként, holtversenynél `holtverseny`, DT-F153b) | ts=2026-11-01
+strong	szakasz	allapot	regi	teljes	uralkodo_hatokor	uralkodo_regi	uralkodo_teljes	uj_alakok_top10	link_regi>teljes	osszegzes
+G1941	teljes	kezi	egyezik	egyezik	szocikk	hívj	holtverseny(hívj,neve,segí)	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan+holtverseny
+G1944	teljes	kezi	egyezik	egyezik	szocikk	átko	átko		2>2	valtozatlan
+G5590	teljes	kezi	egyezik	egyezik	szocikk	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G0813	teljes	opus	egyezik	egyezik	szocikk	rend	rend		1>1	valtozatlan
+G0994	teljes	opus	egyezik	egyezik	szocikk	kiál	kiál	kiáltó,kiáltónak,kiálta,kiáltva,kiáltozva,kiáltanak	1>10	valtozatlan
+G0282	teljes	kezi	egyezik	egyezik	szocikk	holtverseny(anya,nélk)	holtverseny(anya,nélk)		2>2	valtozatlan+holtverseny
+G4151	teljes	kezi	egyezik	egyezik	szocikk	léle	léle		218>392	valtozatlan
+G0086	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			pokolig,pokolban	4>8	valtozatlan
+G0086	sz2	sonnet	nem_talal	nem_talal	szakasz			pokolig,pokolban	4>8	nem_talal_teljes
+G0086	sz3	sonnet	nem_talal	nem_talal	szakasz			pokolig,pokolban	4>8	nem_talal_teljes
+G0086	sz4	sonnet	nem_talal	nem_talal	szakasz	poko	poko	pokolig,pokolban	4>8	nem_talal_teljes
+G0540	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				2>2	valtozatlan
+G0540	sz2	sonnet	egyezik	egyezik	szakasz	holtverseny(apa,nélk)	holtverseny(apa,nélk)		2>2	valtozatlan+holtverseny
+G1941	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan
+G1941	sz2	sonnet	nem_talal	nem_talal	szakasz		appe	neveztetik,mellékneve,appellált,neveztetett,el	14>41	nem_talal_teljes+uralkodo_valt+nincs_a_forditasban
+G1941	sz3	sonnet	egyezik	egyezik	szakasz	holtverseny(hívj,neve)	neve	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan+holtverseny
+G1941	sz4	sonnet	egyezik	egyezik	szakasz	neve	neve	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan
+G1941	sz5	sonnet	egyezik	egyezik	szakasz			neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan
+G1941	sz6	sonnet	egyezik	egyezik	szakasz	hívo	appe	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan+uralkodo_valt+nincs_a_forditasban
+G1941	sz7	sonnet	egyezik	egyezik	szakasz	holtverseny(hívj,segí)	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan+holtverseny
+G2671	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				6>6	valtozatlan
+G2671	sz2	sonnet	egyezik	egyezik	szakasz	átok	átok		6>6	valtozatlan
+G2671	sz3	sonnet	nem_talal	nem_talal	szakasz				6>6	nem_talal_teljes
+G5356	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				9>9	valtozatlan
+G5356	sz2	sonnet	nem_talal	nem_talal	szakasz				9>9	nem_talal_teljes
+G5356	sz3	sonnet	egyezik	egyezik	szakasz	roml	roml		9>9	valtozatlan
+G0012	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				8>9	valtozatlan
+G0012	sz2	sonnet	egyezik	egyezik	szakasz	mély	mély		8>9	valtozatlan
+G0282	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				2>2	valtozatlan
+G0282	sz2	sonnet	egyezik	egyezik	szakasz				2>2	valtozatlan
+G0282	sz3	sonnet	egyezik	egyezik	szakasz				2>2	valtozatlan
+G0282	sz4	sonnet	nem_talal	nem_talal	szakasz				2>2	nem_talal_teljes
+G0282	sz5	sonnet	nem_talal	nem_talal	szakasz				2>2	nem_talal_teljes
+G0282	sz6	sonnet	egyezik	egyezik	szakasz				2>2	valtozatlan
+G0282	sz7	sonnet	nem_talal	nem_talal	szakasz	holtverseny(anya,nélk)	holtverseny(anya,nélk)		2>2	nem_talal_teljes+holtverseny
+G5010	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			sorában	10>11	valtozatlan
+G5010	sz2	sonnet	nem_talal	nem_talal	szakasz			sorában	10>11	nem_talal_teljes
+G5010	sz3	sonnet	egyezik	egyezik	szakasz			sorában	10>11	valtozatlan
+G5010	sz4	sonnet	egyezik	egyezik	szakasz		sorá	sorában	10>11	valtozatlan+uralkodo_valt+nincs_a_forditasban
+G5010	sz5	sonnet	egyezik	egyezik	szakasz	rend	rend	sorában	10>11	valtozatlan
+G5010	sz6	sonnet	nem_talal	nem_talal	szakasz	rend	rend	sorában	10>11	nem_talal_teljes
+G1311	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			nem,emészti	4>6	valtozatlan
+G1311	sz2	sonnet	nem_talal	nem_talal	szakasz			nem,emészti	4>6	nem_talal_teljes
+G1311	sz3	sonnet	egyezik	egyezik	szakasz	holtverseny(elpu,megb,pusz)	holtverseny(elpu,megb,pusz)	nem,emészti	4>6	valtozatlan+holtverseny
+G1311	sz4	sonnet	egyezik	egyezik	szakasz			nem,emészti	4>6	valtozatlan
+G1311	sz5	sonnet	nem_talal	nem_talal	szakasz	megr	holtverseny(emés,megr,nem)	nem,emészti	4>6	nem_talal_teljes+holtverseny
+G1311	sz6	sonnet	egyezik	egyezik	szakasz	holtverseny(elpu,pusz)	holtverseny(elpu,pusz)	nem,emészti	4>6	valtozatlan+holtverseny
+G1944	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				2>2	valtozatlan
+G1944	sz2	sonnet	egyezik	egyezik	szakasz	átko	átko		2>2	valtozatlan
+G5351	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				11>11	valtozatlan
+G5351	sz2	sonnet	egyezik	egyezik	szakasz	megr	megr		11>11	valtozatlan
+G5590	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			lelke,életemet	39>106	valtozatlan
+G5590	sz2	sonnet	egyezik	egyezik	szakasz			lelke,életemet	39>106	valtozatlan
+G5590	sz3	sonnet	nem_talal	nem_talal	szakasz			lelke,életemet	39>106	nem_talal_teljes
+G5590	sz4	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szív,élet)	lelk	lelke,életemet	39>106	valtozatlan+holtverseny+nincs_a_forditasban
+G5590	sz5	sonnet	egyezik	egyezik	szakasz	élet	élet	lelke,életemet	39>106	valtozatlan
+G5590	sz6	sonnet	nem_talal	nem_talal	szakasz	lelk	lelk	lelke,életemet	39>106	nem_talal_teljes
+G5590	sz7	sonnet	egyezik	egyezik	szakasz	léle	léle	lelke,életemet	39>106	valtozatlan
+G5590	sz8	sonnet	egyezik	egyezik	szakasz	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz9	sonnet	egyezik	egyezik	szakasz	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz10	sonnet	egyezik	egyezik	szakasz	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G4151	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz				218>392	valtozatlan
+G4151	sz2	sonnet	nem_talal	nem_talal	szakasz				218>392	nem_talal_teljes
+G4151	sz3	sonnet	nem_talal	nem_talal	szakasz				218>392	nem_talal_teljes
+G4151	sz4	sonnet	nem_talal	egyezik	szakasz	szel	holtverseny(léle,szel,szél)		218>392	megerosites+holtverseny
+G4151	sz5	sonnet	egyezik	egyezik	szakasz	holtverseny(lehe,lelk)	holtverseny(lehe,lelk)		218>392	valtozatlan+holtverseny
+G4151	sz6	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan
+G4151	sz7	sonnet	egyezik	egyezik	szakasz				218>392	valtozatlan
+G4151	sz8	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szel)	léle		218>392	valtozatlan+holtverseny+nincs_a_forditasban
+G4151	sz9	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
+G4151	sz10	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
+G4151	sz11	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan
+G4151	sz12	sonnet	egyezik	egyezik	szakasz				218>392	valtozatlan
+G4151	sz13	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan
+G4151	sz14	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan
+G4151	sz15	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
+G4151	sz16	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,léle)	holtverseny(lelk,léle)		218>392	valtozatlan+holtverseny
+G4151	sz17	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
