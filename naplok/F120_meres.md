@@ -101,3 +101,21 @@ A mai táblán a nem egyező versek fejezetei (≥ 3 vers): 4Móz 13 (33), 4Móz
 - a `bsb_import` tényleges `allapot`-a (melyik BSB-fejezet melyik MT-fejezetre képez, és ebből hány lesz `illesztetlen`);
 - a `fejezet_eltolasok()` `k`-feltétele;
 - egy újrafuttatás kimenete (a 3.5).
+
+## 6. Az átmeneti (c) út kihagyó őre (DT-F120a: „Igen, átmeneti”)
+
+*Eszköz: `naplok/F120_or_meres.py` (csak olvas; ugyanaz a szűrés és szabály, mint a `sqlite_epit.bsb_bizonytalan`). proveniencia: scope=BSB_Strongs.tsv (F71.2) × TAHOT_kivonat.tsv a Karoli_versmegfeleltetes.tsv-n át (9cf0e43a) | eszkoz=naplok/F120_or_meres.py | kuszob=0,5 (|T∩B|/|T|) | ts=2026-11-01*
+
+Szabály: a BSB-vers a leképezett Károli-versre csak akkor kerül, ha a cél TAHOT-Strong-halmazának (T) több mint fele megvan a BSB-vers Strong-halmazában (B) — a `bsb_import` F41-es illeszkedési mércéje; mindkét halmaz a `strong_parok` szűrésével (grammatikai Strongok és H9001–H9049 nélkül). Üres halmaz: nem ellenőrizhető → kimarad. A megmaradt versek közül ha több BSB-vers esik egy Károli-versre → mind kimarad. A kihagyott vers nem kerül más Károli-versre; jelentéssor: `normalizalas_jelentes`, `tabla=bsb`, `ok` = `bizonytalan: …` / `ütközés: …`.
+
+| | BSB-vers |
+|---|---|
+| illeszkedik (> 0,5) | 21 424 |
+| **kimarad: bizonytalan (≤ 0,5)** | **239** |
+| nincs ilyen Károli-vers (eddig is jelentve) | 32 |
+| nem ellenőrizhető | 0 |
+| ütközés az őr után | 0 |
+
+A kimaradó versek Károli-fejezetenként: 4Móz 13 (32), 4Móz 30 (11), Hós 2 (23), Hós 11 (1), Hós 12 (14), Hós 14 (9), Jób 17 (1), Jób 36 (1), Jób 37 (1), Jób 39 (27), Jób 40 (14), Jóel 2 (5: a BSB 3:1–5 → Károli 2:28–32 táblapár), Préd 2 (24), Préd 9 (16), Préd 10 (14), Préd 12 (12), Péld 12 (1), Zsolt 145 (1), Én 6 (1), Ézs 9 (19), Ézs 64 (11), 1Sám 20 (1). Az F117 hat ütközéséből a tartalommal nem egyező fél marad ki (Hós 2:1–3, Jób 17:1, 37:1, Péld 12:1 azonossága), a Jóel 2:28–32-ből a táblapár (BSB 3:1–5); a helyes sor mindenütt megmarad. Elszigetelt, a küszöbön álló esetek (Hós 11:11 0,45; Jób 36:33 0,50; Zsolt 145:13 0,50) is kimaradnak: az átmeneti úton a kihagyás a biztonságos irány, az (a) újragenerálás pótolja.
+
+**Mellékes lelet, nem e tétel tárgya:** a 4Móz 13-ban 32 `Számozás`=`mt` BSB-vers azonossággal (a tábla `KJV` osztályú sora szerint) nem egyezik a Károli-kulcsú TAHOT azonos versével. A versmegfeleltető tábla és a TAHOT itt eltérhet; a (a) lépés újramérése tisztázza (N-F120a).

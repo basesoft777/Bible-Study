@@ -178,23 +178,34 @@ class LicencHiany(Exception):
     pass
 
 
-class VersmegfKeziMt(Exception):
-    """F117.5 (DT-F117f (a)): a versmegfeleltető táblában KEZI osztályú sor kitöltött igehely_mt-vel áll."""
-    pass
+BSB_ILLESZKEDES_KUSZOB = 0.5   # F120 (DT-F120a): a bsb_import F41-es mércéje (a TAHOT-vers Strong-halmazának BSB-ben levő hányada)
 
 
-def kezi_mt_or(vm_sorok):
-    """F117.5 őr (DT-F117f (a), N-F117a): a `_bsb_szamozas` az igehely_mt-t úgy olvassa, mintha a kitöltött érték a
-    Károli-szám volna (MT osztály), és máshol azonosságot vesz; a DT-F117e (c) óta a KEZI osztályú sor kitöltött
-    igehely_mt-je a valódi MT-szám (Károli ≠ KJV és ≠ MT), ezért a leképezés ütközne (mért: 6 Károli-vers két
-    BSB MT-versen). A javításig (N-F117a) az építés itt érthető hibával leáll; nem kerülhető meg."""
-    hibas = [r['igehely_karoli'] for r in vm_sorok
-             if (r.get('osztaly') or '').strip() == 'KEZI' and (r.get('igehely_mt') or '').strip()]
-    if hibas:
-        raise VersmegfKeziMt(
-            'a konkordancia/Karoli_versmegfeleltetes.tsv %d KEZI osztályú sora kitöltött igehely_mt-t hordoz '
-            '(pl. %s); a sqlite_epit BSB-számozása (_bsb_szamozas) ezt még nem kezeli: az építés leáll. '
-            'Javítás: NYITOTT_FELADATOK.md N-F117a (DT-F117f (a)).' % (len(hibas), ', '.join(hibas[:5])))
+def bsb_bizonytalan(versek, tahot_halmaz, kuszob=BSB_ILLESZKEDES_KUSZOB):
+    """F120 (DT-F120a, átmeneti (c) út): a mai BSB_Strongs.tsv Igehely-kulcsa nem egységesen MT (Hós 2: KJV,
+    Jóel 3: Károli/KJV, és az F85.6 előtti TAHOT-eltolások fejezetei; naplok/F120_meres.md 4–5.), ezért a
+    leképezett Károli-célt a tartalom igazolja. versek: {bsb_kulcs: (karoli_cel, set(Strong))};
+    tahot_halmaz: {karoli_vers: set(Strong)}. Visszaad: {bsb_kulcs: ok} a kihagyandó versekre.
+    (1) bizonytalan: a cél TAHOT-halmazának legfeljebb `kuszob` hányada van meg a BSB-versben, vagy valamelyik
+        halmaz üres (nem ellenőrizhető);
+    (2) ütközés: a megmaradt versek közül több különböző BSB-kulcs ugyanarra a Károli-versre esik -> mind kimarad.
+    A kihagyott verset nem képezzük le más Károli-versre: az üres eredmény jelölt kimenet (CLAUDE.md 3. szabály)."""
+    ki, cel = {}, {}
+    for kulcs, (kk, b) in versek.items():
+        t = tahot_halmaz.get(kk) or set()
+        if not t or not b:
+            ki[kulcs] = 'bizonytalan: nem ellenőrizhető (TAHOT %d, BSB %d Strong)' % (len(t), len(b))
+            continue
+        arany = len(t & b) / len(t)
+        if arany <= kuszob:
+            ki[kulcs] = 'bizonytalan: Strong-illeszkedés a %s Károli-célhoz %.2f <= %.2f' % (kk, arany, kuszob)
+            continue
+        cel.setdefault(kk, []).append(kulcs)
+    for kk, kulcsok in cel.items():
+        if len(kulcsok) > 1:
+            for kulcs in kulcsok:
+                ki[kulcs] = 'ütközés: a %s Károli-versre %d BSB-vers esik' % (kk, len(kulcsok))
+    return ki
 
 
 def szo_kis(s):
@@ -383,6 +394,7 @@ class Epito(object):
         self.olvasoi_meta = []   # F92: (kulcs, ertek) meta-sorok az olvasoi tablakhoz
         self.ot_versek = set()   # F92: a TAHOT-ban heber tokent hordozo Karoli-versek (minta modban is teljes)
         self.token_strong_halmaz = set()   # minden TAHOT/TAGNT-ból kinyert alapszám (minta módban is teljes)
+        self.ot_vers_strongok = {}   # F120: Károli-vers -> TAHOT Strong-halmaz (a strong_parok szűrésével; a BSB-őrhöz, minta módban is teljes)
 
     # -- licenc ----------------------------------------------------------
     def licenc_feloldas(self, kulcsok):
@@ -543,7 +555,7 @@ class Epito(object):
 
     # -- TAHOT / TAGNT tokenek, strong_parok --------------------------------------
     def _eredeti_tokenek(self):
-        grammatikai = {r['strong'] for r in G.tsv_beolvas(
+        self.grammatikai = grammatikai = {r['strong'] for r in G.tsv_beolvas(
             os.path.join(self.adat, 'grammatikai_strongok.tsv'))[1]}
         tokenek, strongok = [], []
         vers_strongok = {}   # igehely -> set (strong_parok-hoz, a TELJES TAHOT/TAGNT-bol)
@@ -568,6 +580,8 @@ class Epito(object):
                     if s in grammatikai or ('H9001' <= s <= 'H9049'):
                         continue
                     vers_strongok.setdefault(ig, set()).add(s)
+                    if nyelv == 'H':
+                        self.ot_vers_strongok.setdefault(ig, set()).add(s)
                 if not self._benne(ig):
                     continue
                 n = szamlalo[ig]
@@ -764,18 +778,17 @@ class Epito(object):
     # -- BSB + szamozas ------------------------------------------------------------
     def _bsb_szamozas(self):
         vm = G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]
-        kezi_mt_or(vm)   # F117.5 őr (DT-F117f (a)): KEZI + kitöltött igehely_mt -> leáll (N-F117a)
         mt_kk = {}
         for r in vm:
             if r['igehely_mt']:
                 p = hu_igehely_parse(r['igehely_karoli'])
                 if p:
                     mt_kk[(p[0], r['igehely_mt'])] = r['igehely_karoli']
-        # BSB: MT-szamozas; a KK-ra a versmegfeleltetes MT-oszlopan at, kulonben azonos szam
-        # (feltetelezett -- jelolve a `kk_leképezés` oszlopban)
-        bsb, szamozas_vers = [], {}
-        rang = {'mt': 0, 'kjv': 1, 'ellenorizetlen': 2}
-        szamlalo = {}
+        # BSB: a Karoli-celt a versmegfeleltetes MT-oszlopan at, kulonben azonos szammal kepezzuk (jelolve a
+        # `kk_leképezés` oszlopban). A mai BSB_Strongs.tsv kulcsa nem egysegesen MT (F120, DT-F120a): az 1. kor
+        # a celt es a vers Strong-halmazat gyujti, a bsb_bizonytalan() a tartalommal nem igazolt es az utkozo
+        # verseket kihagyja (jelentessorral), a 2. kor csak a megmaradtakat irja.
+        nyers, versek = [], {}
         for r in G.tsv_beolvas(os.path.join(self.konk, 'BSB_Strongs.tsv'))[1]:
             m = STEP_IGEHELY_RE.match(r['Igehely'])
             if not m:
@@ -793,6 +806,27 @@ class Epito(object):
             if kk not in self.vi.halmaz:
                 self.jelent_norm('bsb', kk, 'nincs ilyen Károli-vers')
                 continue
+            try:
+                s = strong_normalizal(r['Strong-szám'])
+            except ValueError:
+                s = None   # jelentve a 2. korben, a beirt sorra (mint korabban)
+            kulcs = (konyv, mtkulcs)
+            halmaz = versek.setdefault(kulcs, (kk, set()))[1]
+            for e in (s.split('+') if s else []):
+                if e not in self.grammatikai and not ('H9001' <= e <= 'H9049'):
+                    halmaz.add(e)
+            nyers.append((kulcs, kk, mod, s, r))
+        kihagy = bsb_bizonytalan(versek, self.ot_vers_strongok)
+        for (konyv, mtkulcs), ok in sorted(kihagy.items()):
+            self.jelent_norm('bsb', '%s %s' % (konyv, mtkulcs), ok)
+        self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT-F120a: a Károli-cél tartalmilag nem igazolt '
+                                 'vagy ütközik; a jelentés `bsb` sorai)' % len(kihagy))
+        bsb, szamozas_vers = [], {}
+        rang = {'mt': 0, 'kjv': 1, 'ellenorizetlen': 2}
+        szamlalo = {}
+        for kulcs, kk, mod, s, r in nyers:
+            if kulcs in kihagy:
+                continue
             sz = r['Számozás']
             prev = szamozas_vers.get(kk)
             if prev is None or rang.get(sz, 2) > rang.get(prev, 2):
@@ -800,10 +834,7 @@ class Epito(object):
             if not self._benne(kk):
                 continue
             szamlalo[kk] = szamlalo.get(kk, 0) + 1
-            try:
-                s = strong_normalizal(r['Strong-szám'])
-            except ValueError:
-                s = None
+            if s is None:
                 self.jelent_norm('bsb', r['Strong-szám'], 'Strong-szám nem normalizálható')
             bsb.append((kk, szamlalo[kk], s, r['Angol szó'], r['Morfológiai kód'],
                         r['Angol szó állapota'], sz, r['Igehely'], mod, r['Szósorszám']))
