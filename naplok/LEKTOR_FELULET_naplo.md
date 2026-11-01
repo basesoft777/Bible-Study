@@ -107,3 +107,16 @@
 - Küszöb-állapot szerinti sorrend: a kézi index soraiban **nincs** küszöb-jelölés (csak az „Emlékeztető küszöb” kézi blokkjában és a `###` bejegyzések fejében: 1 „küszöb elérve”,
   2 „közel a küszöbhöz”, 1 „megerősítve” a fejekben; a 14 küszöb-közeli sor a blokkban). A sorrend tehát csak a küszöb-jelölt tételeknél (kb. 14–18) adható meg, a többi
   „jelöletlen” csoport.
+
+## M5 — döntés-kártyák (`dontes` forrás; DT-F157f: „mindkettő”)
+
+- `eszkozok/lektor_kerdesek.py --dontes` → `naplok/LEKTOR_DONTESEK.tsv`: **31 kártya** = 14 nyitott (🟡) `DONTESEK.md`-tétel + 17 megállt (`megallt` / `dontesre_var`) brief.
+  A táblázat soraiban az állapot az első emojis cella (a 39 „furcsa” sor miatt nem az oszlopszám); a briefeknél a fejléc `kovetkezo` mezője (karbantartott) és a ⛔ sorok
+  gépi, nem szűrt kivonata (a lezárt pontokat a kulcsszavak alapján kihagyja) áll a kártyán. A proveniencia: `scope=DONTESEK.md:<sor>` illetve `scope=<brief> (fejléc + ⛔ sorok)`
+  | `forras=lektor_kerdesek.py` | `ts=<futás napja>`.
+- Új séma-oszlop: `cimke` (tartalmi / uzleti / technikai / osztalyozatlan). A nem-döntés források tartalmiak. A régi fejlécű TSV-t a beolvasás elfogadja.
+- **Kézi szűrő:** `eszkozok/lektor_felulet/dontes_szuro.tsv` (azonosító → címke). A kezdeti tartalom *javaslat* (Sonnet), a felhasználó módosíthatja; ami nincs benne, `osztalyozatlan`.
+  A felület típus-szűrője alapból a „tartalmi”-t mutatja.
+- Életciklus: a lezárult kártya (a tétel ✅ lett, a brief már nem megállt) elhagyható, ha az állapota `atvezetve`; a megválaszolt, de át nem vezetett kártya eltűnése megállítja az írást.
+- **Ismert hiányosság:** a briefek ⛔ kivonata zajos (pl. szakaszcímek, általános szabálymondatok is bekerülhetnek); a döntő információ a `kovetkezo` sor. A `kod` nélküli brief (F22) „#22 F22”-ként jelenik meg.
+- A talált motívumok kártyái (`motivum_jelolt`) **nincsenek építve** (a javaslat-író még eldöntetlen).

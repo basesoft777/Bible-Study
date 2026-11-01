@@ -155,5 +155,57 @@ class ProzaJavaslatTeszt(unittest.TestCase):
         self.assertEqual((sorok[0]['allapot'], sorok[0]['valasz'], eltunt), ('megvalaszolva', 'legyen mondat', []))
 
 
+DONTESEK = (
+    "# DONTESEK\n| # | Feladat | Kérdés | Opciók | Javaslat | Állapot | Döntés | Napló |\n|---|---|---|---|---|---|---|---|\n"
+    "| DT1 | #5 SZOTAR (x) | Mi legyen? | a · b | a | ✅ | **a** | n |\n"
+    "| DT2 | #5 SZOTAR (y) | Kérdés | 1. egy · 2. kettő | 2. | 🟡 | — | n |\n"
+    "| DT3 | #9 X (z) | Furcsa | o | j | 🟢 eldöntve | d | n |\n"
+    "| DT4 | #7 Y (w) | Kérdés | a | b | és | pipe | 🟡 | — | n |\n"
+)
+
+BRIEF = "---\nfeladat: 9\nkod: PROBA\nallapot: %s\nkovetkezo: \"Te: dönts a K-ról\"\n---\n## 4. Lépések (⛔ a kötelező megállások)\n1. ⛔ döntsd el az X-et\n2. ⛔ A feloldva\n"
+
+
+class DontesTeszt(unittest.TestCase):
+    def test_nyitott_tetelek_furcsa_sorral(self):
+        k = L.dontesek_kartyak(DONTESEK, '2026-11-01', {'DT2': 'tartalmi'})
+        self.assertEqual([r['kerdes_id'] for r in k], ['dontes:DT2', 'dontes:DT4'])
+        self.assertEqual((k[0]['cimke'], k[1]['cimke']), ('tartalmi', 'osztalyozatlan'))
+        self.assertEqual(k[0]['motivum'], '#5 SZOTAR')
+        self.assertIn('ts=2026-11-01', k[0]['proveniencia'])
+        self.assertIn('Lehetőségek:', k[0]['kerdes'])
+
+    def test_megallt_brief_csak_a_nyitott_pont(self):
+        with tempfile.TemporaryDirectory() as t:
+            for nev, all_ in (('F9_PROBA_BRIEF.md', 'megallt'), ('F8_MAS_BRIEF.md', 'lezarva')):
+                with open(os.path.join(t, nev), 'w', encoding='utf-8', newline='') as f:
+                    f.write(BRIEF % all_)
+            k = L.megallt_briefek(t, '2026-11-01', {'F9': 'technikai'})
+        self.assertEqual([r['kerdes_id'] for r in k], ['dontes:F9'])
+        self.assertEqual(k[0]['cimke'], 'technikai')
+        self.assertIn('döntsd el az X-et', k[0]['kerdes'])
+        self.assertNotIn('feloldva', k[0]['kerdes'])
+        self.assertIn('Te: dönts a K-ról', k[0]['kerdes'])
+
+    def test_lezart_kartya_elhagyhato_a_megvalaszolatlan_nem(self):
+        k = L.dontesek_kartyak(DONTESEK, 't')
+        regi = {r['kerdes_id']: dict(r, allapot='atvezetve', valasz='x', atvezetes='PR') for r in k}
+        self.assertEqual(L.osszefesul([], regi)[1], [])
+        regi['dontes:DT2']['allapot'] = 'megvalaszolva'
+        self.assertEqual(L.osszefesul([], regi)[1], ['dontes:DT2'])
+
+    def test_regi_fejlec_beolvashato(self):
+        with tempfile.TemporaryDirectory() as t:
+            ut = os.path.join(t, 'LEKTOR_R.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write('\t'.join(L.MEZOK_REGI) + '\n' + '\t'.join(['a:b:c', 'hatar', 'R', '', 'k', '', 'p', 'nyitva', '', '']) + '\n')
+            self.assertEqual(L.beolvas(ut)['a:b:c']['cimke'], '')
+
+    def test_szuro_fajl_ervenyes(self):
+        sz = L.szuro_beolvas(L.ROOT)
+        self.assertTrue(sz)
+        self.assertTrue(set(sz.values()) <= {'tartalmi', 'uzleti', 'technikai'})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

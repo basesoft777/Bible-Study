@@ -80,6 +80,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   <div id="figy" class="figy" hidden></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
+  <div class="szurosor" id="sz-cimke"><span class="cim">típus</span></div>
   <div class="szurosor" id="sz-allapot"><span class="cim">állapot</span></div>
   <div class="lista" id="lista"></div>
 </div>
@@ -106,7 +107,7 @@ const PROZA_CIMKE = Object.fromEntries(PROZA_TIPUSOK);
 const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 let db = null;
-let szuro = { forras: '', motivum: '', allapot: 'nyitva' };
+let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi' };
 
 function lsOlvas() { try { return JSON.parse(localStorage.getItem('lektor_valaszok') || '{}'); } catch (e) { return {}; } }
 function lsIr() { try { localStorage.setItem('lektor_valaszok', JSON.stringify(valaszok)); } catch (e) { /* kényelmi tartalék */ } }
@@ -147,7 +148,7 @@ function allapotSzoveg(k) {
 function rajzol() {
   const lista = document.getElementById('lista');
   lista.replaceChildren();
-  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum)
+  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum) && (!szuro.cimke || (k.cimke || 'tartalmi') === szuro.cimke)
     && (!szuro.allapot || (szuro.allapot === 'nyitva') === !valaszok[k.kerdes_id]));
   if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
   lat.forEach((k) => {
@@ -240,6 +241,7 @@ function szurokRajzol() {
   const egyedi = (m) => [...new Set(ADAT.map((k) => k[m]))].sort();
   szuroSor('sz-forras', 'forras', [['', 'mind'], ...egyedi('forras').map((x) => [x, x])]);
   szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum').map((x) => [x, x])]);
+  szuroSor('sz-cimke', 'cimke', [['tartalmi', 'tartalmi'], ['uzleti', 'üzleti'], ['technikai', 'technikai'], ['osztalyozatlan', 'osztályozatlan'], ['', 'mind']]);
   szuroSor('sz-allapot', 'allapot', [['nyitva', 'nyitott'], ['kesz', 'megválaszolt'], ['', 'mind']]);
 }
 

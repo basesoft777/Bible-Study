@@ -1,0 +1,34 @@
+# Kézi szűrő a döntés-kártyákhoz (DT-F157f): tartalmi | uzleti | technikai. A DT-azonosító a DONTESEK.md tétele, az F<nn> a megállt brief. Kézzel szerkeszthető.
+# KEZDETI JAVASLAT (F157, Sonnet): a felhasználó módosíthatja; ami nincs itt, az `osztalyozatlan` címkével jelenik meg.
+azonosito	cimke	megjegyzes
+DT106	tartalmi	a tohu–bohu pár szótári szerepe
+DT133	tartalmi	az ÚSZ-előfordulás kanonikus számlálása
+DT134	tartalmi	versifikációs térkép
+DT169	tartalmi	modell-magyarázat a teljes BDB-re
+DT235	tartalmi	Mounce (MCGED) fordítása
+DT236	tartalmi	a TBESH forrásszövege
+DT237	tartalmi	a tW-szócikkek fordításának köre
+DT359	uzleti	alapítvány mint eladó (#86)
+DT365	uzleti	az eladói forma időzítése (#86)
+DT90	technikai	terv-szinkron
+DT126	technikai	KJV Strong-réteg licenc-következménye
+DT190	technikai	BDB-tagolás közös kulcsa
+DT338	technikai	kód-ütközés #121/#140
+DT388	technikai	eszköznév (végrehajtó dönt)
+F121	tartalmi	glossza-fordítás D1–D4 és a v4 terminológia
+F123	tartalmi	ALVIL-001 ⛔-jóváhagyás
+F125	tartalmi	kártyaszöveg-küszöb és szövegjavaslat
+F131	tartalmi	szótári gerinc: éles lexikon
+F140	tartalmi	glossza-fordítás: sor-választási szabály
+F151	tartalmi	motívum-határ kérdései
+F152	tartalmi	az ISTENTISZT-001 lap szövegjavaslata
+F38	tartalmi	BDB-fordítás terminológia és szúrópróba
+F86	uzleti	előfizetés/feed döntések
+F111	technikai	eltérés-parancs
+F134	technikai	olvasó alapnézet
+F146	technikai	versmegfeleltetés-javítás
+F148	technikai	új-motívum védőkorlát, merge
+F153	technikai	Thayer–Károli mérés
+F157	technikai	lektor-felület
+F22	technikai	Károli–Strong párosítás
+F52	technikai	terv-szinkron
