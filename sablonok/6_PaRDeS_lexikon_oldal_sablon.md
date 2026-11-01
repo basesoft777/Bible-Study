@@ -290,6 +290,7 @@ Forrás-study | Kereszthivatkozás-napló | Sablon-megfelelőség — a
 Blokk — a fájlban ténylegesen felhasznált forrásfájlok, fájlonkénti
 licenc-hozzárendeléssel. L. "Licenc és nyilvános repó" alább.
 A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott); a második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), a MUNKAMENET csak hivatkozik rá.
+A Kolofon rögzíti a **próza modelljét** is: a tényleges modellnevet (pl. `claude-opus-5-5`), a CLAUDE.md modell-szabálya szerint a futó környezetből, nem briefből másolva; ez teszi ellenőrizhetővé, hogy a `/kiadas` lektora (`.claude/agents/lektor.md`) a prózát író modelltől eltér (DT-F125c).
 
 ---
 
