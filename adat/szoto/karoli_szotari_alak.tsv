@@ -1,5 +1,5 @@
-# GENERÁLT: eszkozok/szoto/szotari_alak_epit.py (F94.3) — kézzel nem szerkeszthető | scope=a Károli 1908 korpusz-lexikonjának minden írásmódja (66824 alak) | forras=hibrid v3, C+K változat, simplemma nélkül (hibrid.py sha256:60e1c21510037dd09c589be81acf127c8a975694b03eaef8a6f3fbc9c7cd2efb) + adat/szoto/gyakori_alakok.tsv (K tábla, felhasználó által ellenőrzött; sha256:ffe73f0e0add) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68; konkordancia/Karoli_1908.tsv, közkincs) | ts=2026-10-13T17:14Z
-# allapot: a kiadott hibrid a C+K (DT139); a simplemma csak fejlesztési mérce, a táblába simplemma-eredetű szótári alak nem kerül. FIGYELEM, keresési mód: a mért pontosság a (c) módra érvényes (szótári alak VAGY Strong): a 4. (független) mintán az M2 (c) 98,4% (a K nélküli lemmákon 98,0%); tisztán szótári alakra keresve (a) a K nélküli lemmákon 91,8%, és a ritka alakokon alakonként gyengébb (N-F94g). A kereső (#76) a szótári alakot a Strong-ággal együtt használja.
+# GENERÁLT: eszkozok/szoto/szotari_alak_epit.py (F94.3) — kézzel nem szerkeszthető | scope=a Károli 1908 korpusz-lexikonjának minden írásmódja (66824 alak) | forras=hibrid v3, C+K változat, simplemma nélkül (hibrid.py sha256:d2576c4caa2fdaa26371c8a6a4789a6c346978736251486f7e93c2c5b640a763) + adat/szoto/gyakori_alakok.tsv (K tábla, felhasználó által ellenőrzött; sha256:1e60f2aa363a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68; konkordancia/Karoli_1908.tsv, közkincs) | ts=2026-10-13T17:14Z
+# allapot: a kiadott hibrid a C+K (DT-F94e); a simplemma csak fejlesztési mérce, a táblába simplemma-eredetű szótári alak nem kerül. FIGYELEM, keresési mód: a mért pontosság a (c) módra érvényes (szótári alak VAGY Strong): a 4. (független) mintán az M2 (c) 98,4% (a K nélküli lemmákon 98,0%); tisztán szótári alakra keresve (a) a K nélküli lemmákon 91,8%, és a ritka alakokon alakonként gyengébb (N-F94g). A kereső (#76) a szótári alakot a Strong-ággal együtt használja.
 # megjegyzes: modszer = k_tabla | kivetel | nev | szabaly | lexikon; szabaly_forras = korpusz_strong | manual | modell_ellenorizetlen | üres; regies_jegy értékkészlete: SEMA 2.27. A szótári alakok modell-állítások (szabály, kivételtábla) vagy a felhasználó által ellenőrzött K tábla; ismert korlátok: naplok/SZOTOVEZES_meres.md 11.6, 16. szakasz
 alak	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	modszer	szabaly_forras	regies_jegy
 -	-	-			lexikon		
@@ -143,12 +143,12 @@ Adin	Adin	Adin			nev
 Adithaim	Adithaim	Adithaim			nev		
 Adj	adj	adj			lexikon		
 Adja	ad	ad			k_tabla		
-Adjad	adj	adj			lexikon		
+Adjad	ad	ad			szabaly	modell_ellenorizetlen	
 Adjanak	ad	ad			szabaly	modell_ellenorizetlen	
 Adjatok	ad	ad			szabaly	modell_ellenorizetlen	
 Adjon	ad	ad			szabaly	modell_ellenorizetlen	
-Adják	adják	adják			lexikon		
-Adjátok	adja	adja			lexikon		
+Adják	ad	ad			szabaly	modell_ellenorizetlen	
+Adjátok	ad	ad			szabaly	modell_ellenorizetlen	
 Adlai	Adlai	Adlai			nev		
 Admata	Admata	Admata			nev		
 Admáh	Admáh	Admáh			nev		
@@ -1729,7 +1729,7 @@ Cselekedetei	cselekedet	cselekedet			lexikon
 Cselekedeteik	cselekedeteik	cselekedeteik			lexikon		
 Cselekedeteinek	cselekedet	cselekedet			lexikon		
 Cselekedje	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
-Cselekedjed	cselekedje	cselekedje			lexikon		
+Cselekedjed	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
 Cselekedjék	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
 Cselekedjél	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	felszolito.E2
 Cselekedék	cselekedik	cselekszik			k_tabla		mult.E3
@@ -2304,8 +2304,8 @@ Elfáradtam	elfárad	elfárad	fárad		szabaly	modell_ellenorizetlen
 Elfárasztottátok	elfárasztottátok	elfárasztottátok			lexikon		
 Elhada	Elhada	Elhada			nev		
 Elhagyja-é	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
-Elhagyjam	elhagyja	elhagyja			lexikon		
-Elhagyjam-é	elhagyja	elhagyja			lexikon		
+Elhagyjam	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
+Elhagyjam-é	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 Elhagyott	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 Elhagyta	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 Elhagytad	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
@@ -2550,7 +2550,7 @@ Elthekon	Elthekon	Elthekon			nev
 Eltheké	eltheké	eltheké			lexikon		
 Elthekét	Elthekét	Elthekét			nev		
 Elthólád	elthólád	elthólád			lexikon		
-Eltitkoljam-é	eltitkoljam	eltitkoljam			lexikon		
+Eltitkoljam-é	eltitkol	eltitkol			szabaly	modell_ellenorizetlen	
 Eltolád	eltolád	eltolád			lexikon		
 Eltávozott	eltávozik	eltávozik	távozik		szabaly	modell_ellenorizetlen	
 Eltávozék	eltávozik	eltávozik			szabaly	modell_ellenorizetlen	mult.E3
@@ -3204,7 +3204,7 @@ Foganatosb	foganatosb	foganatosb			lexikon
 Fogantok	fogant	fogant			lexikon		
 Fogd	fogd	fogd			lexikon		
 Fogj	fogj	fogj			lexikon		
-Fogjad	fogj	fogj			lexikon		
+Fogjad	fog	fog			szabaly	modell_ellenorizetlen	
 Fogjatok	fog	fog			szabaly	modell_ellenorizetlen	
 Fogjátok	fog	fog			szabaly	modell_ellenorizetlen	
 Foglalja	foglal	foglal			szabaly	modell_ellenorizetlen	
@@ -3256,7 +3256,7 @@ Félek	fél	fél			szabaly	modell_ellenorizetlen
 Félelem	félelem	félelem			lexikon		
 Félelmetes	félelmetes	félelmetes			lexikon		
 Félix	Félix	Félix			nev		
-Féljed	félj	félj			lexikon		
+Féljed	fél	fél			szabaly	modell_ellenorizetlen	
 Féljen	fél	fél			szabaly	modell_ellenorizetlen	
 Féljenek	fél	fél			szabaly	modell_ellenorizetlen	
 Féljetek	fél	fél			szabaly	modell_ellenorizetlen	
@@ -3766,7 +3766,7 @@ Haggitól	Haggitól	Haggitól			nev
 Hagyd	hagyd	hagyd			lexikon		
 Hagyj	hagyj	hagyj			lexikon		
 Hagyja	hagy	hagy			szabaly	modell_ellenorizetlen	
-Hagyjad	hagyj	hagyj			lexikon		
+Hagyjad	hagy	hagy			szabaly	modell_ellenorizetlen	
 Hagyjatok	hagy	hagy			szabaly	modell_ellenorizetlen	
 Hagyjátok	hagy	hagy			szabaly	modell_ellenorizetlen	
 Hagába	Hagába	Hagába			nev		
@@ -3816,7 +3816,7 @@ Hallgattak	hallgat	hallgat			szabaly	modell_ellenorizetlen
 Hallgattam	hallgat	hallgat			szabaly	modell_ellenorizetlen	
 Hallgattunk	hallgat	hallgat			szabaly	modell_ellenorizetlen	
 Hallja	hall	hall			szabaly	modell_ellenorizetlen	
-Halljad	hallj	hallj			lexikon		
+Halljad	hall	hall			szabaly	modell_ellenorizetlen	
 Halljuk	hall	hall			szabaly	modell_ellenorizetlen	
 Hallják	hall	hall			szabaly	modell_ellenorizetlen	
 Halljátok	hall	hall			szabaly	modell_ellenorizetlen	
@@ -6430,7 +6430,7 @@ Kéren-Happuk	Kéren-Happuk	Kéren-Happuk			nev
 Kéritek	kéritek	kéritek			lexikon		
 Kérith	Kérith	Kérith			nev		
 Kérj	kérj	kérj			lexikon		
-Kérjed	kérj	kérj			lexikon		
+Kérjed	kér	kér			szabaly	modell_ellenorizetlen	
 Kérjen	kér	kér			szabaly	modell_ellenorizetlen	
 Kérjetek	kér	kér			szabaly	modell_ellenorizetlen	
 Kérjétek	kér	kér			szabaly	modell_ellenorizetlen	
@@ -7017,8 +7017,8 @@ Magasságoshoz	Magasságos	Magasságos			nev
 Magasságosnak	Magasságos	Magasságos			nev		
 Magasztal	magasztal	magasztal			lexikon		
 Magasztald	magasztald	magasztald			lexikon		
-Magasztalja	magasztal	magasztal			lexikon		
-Magasztaljátok	magasztalja	magasztalja			lexikon		
+Magasztalja	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+Magasztaljátok	magasztal	magasztal			szabaly	modell_ellenorizetlen	
 Magasztallak	magasztallak	magasztallak			lexikon		
 Magasztaltassál	magasztaltat	magasztaltat			szabaly	modell_ellenorizetlen	
 Magasztaltassék	magasztaltat	magasztaltat			szabaly	modell_ellenorizetlen	
@@ -7964,7 +7964,7 @@ Monda	mond	mond			k_tabla		mult.alanyi.E3
 Mondd	mond	mond			k_tabla		
 Mondj	mondj	mondj			lexikon		
 Mondja	mond	mond			k_tabla		
-Mondjad	mondj	mondj			lexikon		
+Mondjad	mond	mond			szabaly	modell_ellenorizetlen	
 Mondjatok	mond	mond			szabaly	modell_ellenorizetlen	
 Mondják	mond	mond			k_tabla		
 Mondjátok	mond	mond			k_tabla		
@@ -8937,7 +8937,7 @@ Prédikálok	prédikál	prédikál			szabaly	modell_ellenorizetlen
 Prédikálván	prédikál	prédikál			szabaly	modell_ellenorizetlen	hatarozoi_igenev
 Prédára	préda	préda			lexikon		
 Próbálj	próbálj	próbálj			lexikon		
-Próbálja	próbálja	próbálja			lexikon		
+Próbálja	próbál	próbál			szabaly	modell_ellenorizetlen	
 Próbálóvá	próbálóvá	próbálóvá			lexikon		
 Próféta	próféta	próféta			k_tabla		
 Prófétái	próféta	próféta			lexikon		
@@ -10794,9 +10794,9 @@ Tisibeli	Tisibeli	Tisibeli			nev
 Tiszta	tiszta	tiszta			k_tabla		
 Tisztaságban	tisztaságban	tisztaságban			lexikon		
 Tiszteld	tiszteld	tiszteld			lexikon		
-Tiszteljed	tisztel	tisztel			lexikon		
-Tiszteljék	tiszteljék	tiszteljék			lexikon		
-Tiszteljétek	tisztelje	tisztelje			lexikon		
+Tiszteljed	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+Tiszteljék	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+Tiszteljétek	tisztel	tisztel			szabaly	modell_ellenorizetlen	
 Tisztelünk	tisztel	tisztel			lexikon		
 Tisztesség	tisztesség	tisztesség			lexikon		
 Tisztességemből	tisztesség	tisztesség			lexikon		
@@ -11396,7 +11396,7 @@ Váltságot	váltságot	váltságot			lexikon
 Várat	vár	vár			lexikon		
 Várj	várj	várj			lexikon		
 Várja	vár	vár			szabaly	modell_ellenorizetlen	
-Várjad	vár	vár			lexikon		
+Várjad	vár	vár			szabaly	modell_ellenorizetlen	
 Várjatok	vár	vár			szabaly	modell_ellenorizetlen	
 Várom	vár	vár			szabaly	modell_ellenorizetlen	
 Városai	város	város			lexikon		
@@ -11691,18 +11691,18 @@ adhatták	adhatták	adhatták			lexikon
 adhatunk	adhat	adhat	ad		szabaly	modell_ellenorizetlen	
 adj	adj	adj			lexikon		
 adja	ad	ad			k_tabla		
-adjad	adj	adj			lexikon		
+adjad	ad	ad			szabaly	modell_ellenorizetlen	
 adjak	ad	ad			szabaly	modell_ellenorizetlen	
-adjam	adj	adj			lexikon		
-adjam-é	adj	adj			lexikon		
+adjam	ad	ad			szabaly	modell_ellenorizetlen	
+adjam-é	ad	ad			szabaly	modell_ellenorizetlen	
 adjanak	ad	ad			szabaly	modell_ellenorizetlen	
 adjatok	ad	ad			szabaly	modell_ellenorizetlen	
 adjon	ad	ad			szabaly	modell_ellenorizetlen	
-adjuk	adj	adj			lexikon		
+adjuk	ad	ad			szabaly	modell_ellenorizetlen	
 adjunk	ad	ad			szabaly	modell_ellenorizetlen	
-adják	adják	adják			lexikon		
+adják	ad	ad			szabaly	modell_ellenorizetlen	
 adjándékot	adjándékot	adjándékot			lexikon		
-adjátok	adja	adja			lexikon		
+adjátok	ad	ad			szabaly	modell_ellenorizetlen	
 adlak	adlak	adlak			lexikon		
 adna	adna	adna			lexikon		
 adnak	adnak	adnak			lexikon		
@@ -12030,10 +12030,10 @@ ajánlak	ajánlak	ajánlak			lexikon
 ajánlanotok	ajánlanotok	ajánlanotok			lexikon		
 ajánld	ajánld	ajánld			lexikon		
 ajánlgatni	ajánlgatni	ajánlgatni			lexikon		
-ajánlja	ajánl	ajánl			lexikon		
-ajánljatok	ajánljatok	ajánljatok			lexikon		
-ajánljuk	ajánljuk	ajánljuk			lexikon		
-ajánlják	ajánlják	ajánlják			lexikon		
+ajánlja	ajánl	ajánl			szabaly	modell_ellenorizetlen	
+ajánljatok	ajánl	ajánl			szabaly	modell_ellenorizetlen	
+ajánljuk	ajánl	ajánl			szabaly	modell_ellenorizetlen	
+ajánlják	ajánl	ajánl			szabaly	modell_ellenorizetlen	
 ajánlkoztak	ajánlkoztak	ajánlkoztak			lexikon		
 ajánlom	ajánlom	ajánlom			lexikon		
 ajánlák	ajánlák	ajánlák			lexikon		
@@ -12324,7 +12324,7 @@ alsó-nadrág	alsó-nadrág	alsó-nadrág			lexikon
 alsóbb	alsóbb	alsóbb			lexikon		
 alsókhoz	alsókhoz	alsókhoz			lexikon		
 altashétre	altashétre	altashétre			lexikon		
-aludjam	aludjam	aludjam			lexikon		
+aludjam	alud	alud			szabaly	modell_ellenorizetlen	
 aludjanak	alud	alud			szabaly	modell_ellenorizetlen	
 aludjunk	alud	alud			szabaly	modell_ellenorizetlen	
 aludjék	alud	alud			szabaly	modell_ellenorizetlen	
@@ -13291,7 +13291,7 @@ barátait	barát	barát			lexikon
 barátaival	barát	barát			lexikon		
 barátaiért	barát	barát			lexikon		
 barátim	barátim	barátim			lexikon		
-barátja	barát	barát			lexikon		
+barátja	barát	barát			szabaly	modell_ellenorizetlen	
 barátjához	barátja	barátja			lexikon		
 barátjának	barátja	barátja			lexikon		
 barátját	barátja	barátja			lexikon		
@@ -13393,7 +13393,7 @@ becsüli-é	becsül	becsül			szabaly	modell_ellenorizetlen
 becsülik	becsülik	becsülik			lexikon		
 becsülj	becsülj	becsülj			lexikon		
 becsülje	becsül	becsül			szabaly	modell_ellenorizetlen	
-becsüljed	becsülje	becsülje			lexikon		
+becsüljed	becsül	becsül			szabaly	modell_ellenorizetlen	
 becsüljétek	becsül	becsül			szabaly	modell_ellenorizetlen	
 becsülnek	becsül	becsül			szabaly	modell_ellenorizetlen	
 becsülni	becsülni	becsülni			lexikon		
@@ -13752,7 +13752,7 @@ bensőm	bensőm	bensőm			lexikon
 bensőmben	bensőm	bensőm			lexikon		
 bent	bent	bent			lexikon		
 benyeli	benyelik	benyelik	nyelik		szabaly	modell_ellenorizetlen	
-benyelje	benyelik	benyelik	nyelik		szabaly	modell_ellenorizetlen	
+benyelje	benyel	benyel	nyelik		szabaly	modell_ellenorizetlen	
 benyelnek	benyelik	benyelik	nyelik		szabaly	modell_ellenorizetlen	
 benyelt	benyelt	benyelt			lexikon		
 benyelte	benyelik	benyelik	nyelik		szabaly	modell_ellenorizetlen	
@@ -13770,7 +13770,7 @@ bepecsételtessék	bepecsételtet	bepecsételtet			szabaly	modell_ellenorizetlen
 bepecsételtetett	bepecsételtetett	bepecsételtetett			lexikon		
 bepecsételé	bepecsételé	bepecsételé			lexikon		
 beplántálhatom	beplántálhatom	beplántálhatom			lexikon		
-beplántáljam	beplántáljam	beplántáljam			lexikon		
+beplántáljam	beplántál	beplántál	plántál		szabaly	modell_ellenorizetlen	
 beplántálom	beplántálom	beplántálom			lexikon		
 beplántáltad	beplántáltad	beplántáltad			lexikon		
 beplántáltam	beplántáltam	beplántáltam			lexikon		
@@ -13983,7 +13983,7 @@ betakará	betakar	betakar			szabaly	modell_ellenorizetlen	mult.targyas.E3
 betakarás	betakarás	betakarás			lexikon		
 betakarását	betakarás	betakarás			lexikon		
 betakaríthasd	betakaríthasd	betakaríthasd			lexikon		
-betakarítja	betakarítja	betakarítja			lexikon		
+betakarítja	betakarít	betakarít	takarít		szabaly	modell_ellenorizetlen	
 betakarítod	betakarítod	betakarítod			lexikon		
 betakarók	betakarók	betakarók			lexikon		
 betanított	betanít	betanít	tanít		szabaly	modell_ellenorizetlen	
@@ -14239,7 +14239,7 @@ bezáratnak	bezáratnak	bezáratnak			lexikon
 bezáratának	bezáratának	bezáratának			lexikon		
 bezáraték	bezáraték	bezáraték			lexikon		
 bezárja	bezár	bezár			szabaly	modell_ellenorizetlen	
-bezárjam-é	bezárja	bezárja			lexikon		
+bezárjam-é	bezár	bezár			szabaly	modell_ellenorizetlen	
 bezárják	bezár	bezár			szabaly	modell_ellenorizetlen	
 bezárjátok	bezár	bezár			szabaly	modell_ellenorizetlen	
 bezárkózott	bezárkózott	bezárkózott			lexikon		
@@ -14379,7 +14379,7 @@ bivalyfiat	bivalyfiat	bivalyfiat			lexikon
 bivalyok	bivalyok	bivalyok			lexikon		
 bivalyszarvak	bivalyszarvak	bivalyszarvak			lexikon		
 bivalyé	bivalyé	bivalyé			lexikon		
-bizakodjam	bizakodjam	bizakodjam			lexikon		
+bizakodjam	bizakod	bizakod			szabaly	modell_ellenorizetlen	
 bizakodjatok	bizakod	bizakod			szabaly	modell_ellenorizetlen	
 bizakodni	bizakod	bizakod			szabaly	modell_ellenorizetlen	
 bizakodnánk	bizakod	bizakod			szabaly	modell_ellenorizetlen	
@@ -15042,7 +15042,7 @@ bánjunk	bán	bán			szabaly	modell_ellenorizetlen
 bánják	bán	bán			szabaly	modell_ellenorizetlen	
 bánjék	bán	bán			szabaly	modell_ellenorizetlen	
 bánkódik	bánkódik	bánkódik			lexikon		
-bánkódjam	bánkódjam	bánkódjam			lexikon		
+bánkódjam	bánkódik	bánkódik			szabaly	modell_ellenorizetlen	
 bánkódjanak	bánkódik	bánkódik			szabaly	modell_ellenorizetlen	
 bánkódjatok	bánkódik	bánkódik			szabaly	modell_ellenorizetlen	
 bánkódjál	bánkódik	bánkódik			szabaly	modell_ellenorizetlen	felszolito.E2
@@ -15347,8 +15347,8 @@ bírhatják	bírhat	bírhat	bír		szabaly	modell_ellenorizetlen
 bírhatod	bírhat	bírhat	bír		szabaly	modell_ellenorizetlen	
 bírj	bírj	bírj			lexikon		
 bírja	bír	bír			szabaly	modell_ellenorizetlen	
-bírjad	bírja	bírja			lexikon		
-bírjam	bírja	bírja			lexikon		
+bírjad	bír	bír			szabaly	modell_ellenorizetlen	
+bírjam	bír	bír			szabaly	modell_ellenorizetlen	
 bírjanak	bír	bír			szabaly	modell_ellenorizetlen	
 bírjuk	bír	bír			szabaly	modell_ellenorizetlen	
 bírják	bír	bír			szabaly	modell_ellenorizetlen	
@@ -16169,8 +16169,8 @@ cselekedhetünk	cselekedhet	cselekedhet	cselekedik		szabaly	modell_ellenorizetle
 cselekedik	cselekedik	cselekszik			lexikon		
 cselekedj	cselekedj	cselekedj			lexikon		
 cselekedje	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
-cselekedjed	cselekedje	cselekedje			lexikon		
-cselekedjem	cselekedje	cselekedje			lexikon		
+cselekedjed	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
+cselekedjem	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
 cselekedjenek	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
 cselekedjetek	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
 cselekedjék	cselekedik	cselekszik			szabaly	modell_ellenorizetlen	
@@ -16511,7 +16511,7 @@ csonkán	csonkán	csonkán			lexikon
 csonkát	csonkát	csonkát			lexikon		
 csont	csont	csont			lexikon		
 csontaidnak	csontaidnak	csontaidnak			lexikon		
-csontja	csont	csont			lexikon		
+csontja	csont	csont			szabaly	modell_ellenorizetlen	
 csontjai	csont	csont			lexikon		
 csontjaiba	csont	csont			lexikon		
 csontjaiban	csont	csont			lexikon		
@@ -16658,7 +16658,7 @@ csókolgatni	csókolgatni	csókolgatni			lexikon
 csókolgatá	csókolgat	csókolgat			szabaly	modell_ellenorizetlen	mult.targyas.E3
 csókolgaták	csókolgaták	csókolgaták			lexikon		
 csókolj	csókolj	csókolj			lexikon		
-csókoljam	csókoljam	csókoljam			lexikon		
+csókoljam	csókol	csókol			szabaly	modell_ellenorizetlen	
 csókolnak	csókol	csókol			szabaly	modell_ellenorizetlen	
 csókolni	csókol	csókol			szabaly	modell_ellenorizetlen	
 csókolta	csókol	csókol			szabaly	modell_ellenorizetlen	
@@ -16976,7 +16976,7 @@ dicsekedhessetek	dicsekedhessetek	dicsekedhessetek			lexikon
 dicsekedhessünk	dicsekedhessünk	dicsekedhessünk			lexikon		
 dicsekedhetem	dicsekedhet	dicsekedhet	dicsekedik		szabaly	modell_ellenorizetlen	
 dicsekedik	dicsekedik	dicsekedik			lexikon		
-dicsekedjem	dicsekedjem	dicsekedjem			lexikon		
+dicsekedjem	dicsekedik	dicsekedik			szabaly	modell_ellenorizetlen	
 dicsekedjenek	dicsekedik	dicsekedik			szabaly	modell_ellenorizetlen	
 dicsekedjetek	dicsekedik	dicsekedik			szabaly	modell_ellenorizetlen	
 dicsekedjék	dicsekedik	dicsekedik			szabaly	modell_ellenorizetlen	
@@ -17045,7 +17045,7 @@ dicséri	dicsérik	dicsérik			szabaly	modell_ellenorizetlen
 dicsérik	dicsérik	dicsérik			lexikon		
 dicsérje	dicsérik	dicsérik			szabaly	modell_ellenorizetlen	
 dicsérjelek	dicsérjelek	dicsérjelek			lexikon		
-dicsérjem	dicsérje	dicsérje			lexikon		
+dicsérjem	dicsérik	dicsérik			szabaly	modell_ellenorizetlen	
 dicsérjen	dicsérik	dicsérik			szabaly	modell_ellenorizetlen	
 dicsérjenek	dicsérik	dicsérik			szabaly	modell_ellenorizetlen	
 dicsérjék	dicsérik	dicsérik			szabaly	modell_ellenorizetlen	
@@ -17388,7 +17388,7 @@ dícséretére	dícséret	dícséret			lexikon
 dícséretével	dícséret	dícséret			lexikon		
 dícséri	dícsérik	dícsérik			szabaly	modell_ellenorizetlen	
 dícsérik	dícsérik	dícsérik			lexikon		
-dícsérjed	dícsérjed	dícsérjed			lexikon		
+dícsérjed	dícsérik	dícsérik			szabaly	modell_ellenorizetlen	
 dícsérjék	dícsérik	dícsérik			szabaly	modell_ellenorizetlen	
 dícsérjétek	dícsérik	dícsérik			szabaly	modell_ellenorizetlen	
 dícsérjük	dícsérik	dícsérik			szabaly	modell_ellenorizetlen	
@@ -17721,7 +17721,7 @@ egyességet	egyesség	egyesség			lexikon
 egyességnek	egyességnek	egyességnek			lexikon		
 egyesztendős	egyesztendős	egyesztendős			lexikon		
 egyesül	egyesül	egyesül			lexikon		
-egyesüljön	egyesüljön	egyesüljön			lexikon		
+egyesüljön	egyesül	egyesül			szabaly	modell_ellenorizetlen	
 egyesülnek	egyesül	egyesül			szabaly	modell_ellenorizetlen	
 egyesülsz	egyesül	egyesül			szabaly	modell_ellenorizetlen	
 egyesült	egyesül	egyesül			lexikon		
@@ -17969,8 +17969,8 @@ elavulnak	elavulnak	elavulnak			lexikon
 elballagok	elballagok	elballagok			lexikon		
 elbeszéle	elbeszél	elbeszél	beszél		szabaly	modell_ellenorizetlen	mult.alanyi.E3
 elbeszélik	elbeszélik	elbeszélik			lexikon		
-elbeszéljed	elbeszéljed	elbeszéljed			lexikon		
-elbeszéljem	elbeszéljem	elbeszéljem			lexikon		
+elbeszéljed	elbeszél	elbeszél	beszél		szabaly	modell_ellenorizetlen	
+elbeszéljem	elbeszél	elbeszél	beszél		szabaly	modell_ellenorizetlen	
 elbeszéljék	elbeszél	elbeszél	beszél		szabaly	modell_ellenorizetlen	
 elbeszéljük	elbeszél	elbeszél	beszél		szabaly	modell_ellenorizetlen	
 elbeszélném	elbeszélném	elbeszélném			lexikon		
@@ -18478,7 +18478,7 @@ elhagyatvák	elhagyatvák	elhagyatvák			lexikon
 elhagyhatnám	elhagyhatnám	elhagyhatnám			lexikon		
 elhagyja	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 elhagyjalak	elhagyjalak	elhagyjalak			lexikon		
-elhagyjam	elhagyja	elhagyja			lexikon		
+elhagyjam	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 elhagyjon	elhagy	elhagy			szabaly	modell_ellenorizetlen	
 elhagyjuk	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
 elhagyják	elhagy	elhagy	hagy		szabaly	modell_ellenorizetlen	
@@ -19171,7 +19171,7 @@ elmetélé	elmetélik	elmetélik	metélik		szabaly	modell_ellenorizetlen	mult.ta
 elmonda	elmond	elmond	mond		kivetel		mult.alanyi.E3
 elmondaná	elmondaná	elmondaná			lexikon		
 elmondhassátok	elmondhat	elmondhat	mondhat		szabaly	modell_ellenorizetlen	
-elmondjam	elmondjam	elmondjam			lexikon		
+elmondjam	elmond	elmond	mond		szabaly	modell_ellenorizetlen	
 elmondod	elmond	elmond	mond		szabaly	modell_ellenorizetlen	
 elmondok	elmond	elmond	mond		szabaly	modell_ellenorizetlen	
 elmondom	elmond	elmond	mond		szabaly	modell_ellenorizetlen	
@@ -19263,7 +19263,7 @@ elnyeli	elnyel	elnyel	nyelik		szabaly	modell_ellenorizetlen
 elnyelik	elnyelik	elnyelik			lexikon		
 elnyelitek	elnyelitek	elnyelitek			lexikon		
 elnyelje	elnyel	elnyel	nyelik		szabaly	modell_ellenorizetlen	
-elnyeljem	elnyeljem	elnyeljem			lexikon		
+elnyeljem	elnyel	elnyel	nyelik		szabaly	modell_ellenorizetlen	
 elnyeljen	elnyel	elnyel			szabaly	modell_ellenorizetlen	
 elnyelni	elnyel	elnyel	nyelik		szabaly	modell_ellenorizetlen	
 elnyelte	elnyel	elnyel	nyelik		szabaly	modell_ellenorizetlen	
@@ -19721,7 +19721,7 @@ elsőt	első	első			lexikon
 elsővel	első	első			lexikon		
 elsűle	elsűle	elsüle			szabaly	korpusz_strong	
 elsűlyeszté	elsűlyeszt	elsülyeszt			szabaly	modell_ellenorizetlen	mult.targyas.E3
-eltagadja	eltagadja	eltagadja			lexikon		
+eltagadja	eltagad	eltagad	tagad		szabaly	modell_ellenorizetlen	
 eltakar	eltakar	eltakar			lexikon		
 eltakaratlan	eltakaratlan	eltakaratlan			lexikon		
 eltakarodék	eltakarodék	eltakarodék			lexikon		
@@ -19825,9 +19825,9 @@ eltitkolva	eltitkol	eltitkol			szabaly	modell_ellenorizetlen
 eltorzula	eltorzula	eltorzula			lexikon		
 eltorzítják	eltorzítják	eltorzítják			lexikon		
 eltávolodnak	eltávolodnak	eltávolodnak			lexikon		
-eltávolítja	eltávolítja	eltávolítja			lexikon		
-eltávolítják	eltávolítják	eltávolítják			lexikon		
-eltávolítjátok	eltávolítja	eltávolítja			lexikon		
+eltávolítja	eltávolít	eltávolít			szabaly	modell_ellenorizetlen	
+eltávolítják	eltávolít	eltávolít			szabaly	modell_ellenorizetlen	
+eltávolítjátok	eltávolít	eltávolít			szabaly	modell_ellenorizetlen	
 eltávolítod	eltávolítod	eltávolítod			lexikon		
 eltávolítom	eltávolítom	eltávolítom			lexikon		
 eltávolította	eltávolította	eltávolította			lexikon		
@@ -19911,9 +19911,9 @@ eltörék	eltörik	eltörik			szabaly	modell_ellenorizetlen	mult.E3
 eltörém	eltörém	eltörém			lexikon		
 eltöröl	eltöröl	eltöröl			lexikon		
 eltörölje	eltöröl	eltöröl	töröl		szabaly	modell_ellenorizetlen	
-eltöröljed	eltöröl	eltöröl			lexikon		
+eltöröljed	eltöröl	eltöröl	töröl		szabaly	modell_ellenorizetlen	
 eltöröljelek	eltöröljelek	eltöröljelek			lexikon		
-eltöröljem	eltöröl	eltöröl			lexikon		
+eltöröljem	eltöröl	eltöröl	töröl		szabaly	modell_ellenorizetlen	
 eltöröllek	eltöröllek	eltöröllek			lexikon		
 eltörölnek	eltöröl	eltöröl	töröl		szabaly	modell_ellenorizetlen	
 eltörölni	eltöröl	eltöröl	töröl		szabaly	modell_ellenorizetlen	
@@ -20099,7 +20099,7 @@ elvihető	elvihető	elvihető			lexikon
 elvinne	elvinne	elvinne			lexikon		
 elviselem	elvisel	elvisel	visel		szabaly	modell_ellenorizetlen	
 elviseli	elvisel	elvisel	visel		szabaly	modell_ellenorizetlen	
-elviseljem	elviseljem	elviseljem			lexikon		
+elviseljem	elvisel	elvisel	visel		szabaly	modell_ellenorizetlen	
 elviselésére	elviselés	elviselés			lexikon		
 elvisz	elvisz	elvisz	visz		kivetel		
 elviszem	elvisz	elvisz	visz		szabaly	modell_ellenorizetlen	
@@ -20135,7 +20135,7 @@ elvonultak	elvonul	elvonul	vonul		szabaly	modell_ellenorizetlen
 elvonulának	elvonul	elvonul			szabaly	modell_ellenorizetlen	mult.T3
 elvágattam	elvágatik	elvágatik	vágatik		szabaly	modell_ellenorizetlen	
 elvágatá	elvágatik	elvágatik	vágatik		szabaly	modell_ellenorizetlen	mult.targyas.E3
-elvágjam	elvágjam	elvágjam			lexikon		
+elvágjam	elvág	elvág	vág		szabaly	modell_ellenorizetlen	
 elvágtatunk	elvágtatunk	elvágtatunk			lexikon		
 elvágták	elvágták	elvágták			lexikon		
 elvágák	elvágák	elvágák			lexikon		
@@ -20441,7 +20441,7 @@ előljáróitoknak	előljáróit	előljáróit			lexikon
 előljáróitokról	előljáróit	előljáróit			lexikon		
 előljárója	előljáró	előljáró			lexikon		
 előljárójok	előljáró	előljáró			lexikon		
-előljárójuk	előljáró	előljáró			lexikon		
+előljárójuk	előljáró	előljáró			szabaly	modell_ellenorizetlen	
 előljárójának	előljáró	előljáró			lexikon		
 előljáróját	előljáró	előljáró			lexikon		
 előljárójává	előljáró	előljáró			lexikon		
@@ -20659,7 +20659,7 @@ emelik	emelik	emelik			lexikon
 emelitek	emelitek	emelitek			lexikon		
 emelj	emelj	emelj			lexikon		
 emelje	emel	emel			szabaly	modell_ellenorizetlen	
-emeljem	emelj	emelj			lexikon		
+emeljem	emel	emel			szabaly	modell_ellenorizetlen	
 emeljen	emel	emel			szabaly	modell_ellenorizetlen	
 emeljenek	emel	emel			szabaly	modell_ellenorizetlen	
 emeljetek	emel	emel			szabaly	modell_ellenorizetlen	
@@ -20889,8 +20889,8 @@ engedik	engedik	engedik			lexikon
 engeditek	engeditek	engeditek			lexikon		
 engedj	engedj	engedj			lexikon		
 engedje	enged	enged			szabaly	modell_ellenorizetlen	
-engedjem	engedj	engedj			lexikon		
-engedjem-é	engedj	engedj			lexikon		
+engedjem	enged	enged			szabaly	modell_ellenorizetlen	
+engedjem-é	enged	enged			szabaly	modell_ellenorizetlen	
 engedjen	enged	enged			szabaly	modell_ellenorizetlen	
 engedjetek	enged	enged			szabaly	modell_ellenorizetlen	
 engedjétek	enged	enged			szabaly	modell_ellenorizetlen	
@@ -22355,7 +22355,7 @@ feldúlák	feldúlák	feldúlák			lexikon
 fele	fel	fel			lexikon		
 felebarátaidon	felebarátaidon	felebarátaidon			lexikon		
 felebarátaikhoz	felebarátaikhoz	felebarátaikhoz			lexikon		
-felebarátja	felebarátja	felebarátja			lexikon		
+felebarátja	felebarát	felebarát			szabaly	modell_ellenorizetlen	
 felebarátjaik	felebarátjaik	felebarátjaik			lexikon		
 felebarátján	felebarátja	felebarátja			lexikon		
 felebarátjának	felebarátja	felebarátja			lexikon		
@@ -22473,7 +22473,7 @@ felemeli-é	felemelik	felemelik	emelik		szabaly	modell_ellenorizetlen
 felemelik	felemelik	felemelik			lexikon		
 felemelitek	felemelitek	felemelitek			lexikon		
 felemelje	felemelik	felemelik	emelik		szabaly	modell_ellenorizetlen	
-felemeljem	felemeljem	felemeljem			lexikon		
+felemeljem	felemelik	felemelik	emelik		szabaly	modell_ellenorizetlen	
 felemeljenek	felemelik	felemelik			szabaly	modell_ellenorizetlen	
 felemeljék	felemelik	felemelik	emelik		szabaly	modell_ellenorizetlen	
 felemelkedel	felemelkedel	felemelkedel			lexikon		
@@ -22872,7 +22872,7 @@ felkentednek	felkent	felkent			lexikon
 felkentedre	felkent	felkent			lexikon		
 felkentem	felkenik	felkenik			szabaly	modell_ellenorizetlen	
 felkentemnek	felkent	felkent			lexikon		
-felkentje	felkent	felkent			lexikon		
+felkentje	felkent	felkent			szabaly	modell_ellenorizetlen	
 felkentjeimet	felkent	felkent			lexikon		
 felkentjéhez	felkent	felkent			lexikon		
 felkentjének	felkent	felkent			lexikon		
@@ -22897,7 +22897,7 @@ felkiáltani	felkiált	felkiált	kiált		szabaly	modell_ellenorizetlen
 felkiáltott	felkiált	felkiált	kiált		szabaly	modell_ellenorizetlen	
 felkiáltának	felkiált	felkiált			szabaly	modell_ellenorizetlen	mult.T3
 felkoszorúzott	felkoszorúzott	felkoszorúzott			lexikon		
-felkutatják	felkutatják	felkutatják			lexikon		
+felkutatják	felkutat	felkutat	kutat		szabaly	modell_ellenorizetlen	
 felkutatták	felkutatták	felkutatták			lexikon		
 felkél	felkél	felkél			lexikon		
 felkészít	felkészít	felkészít			lexikon		
@@ -23144,7 +23144,7 @@ felszáradának	felszárad	felszárad	szárad		szabaly	modell_ellenorizetlen	mul
 felszínre	felszínre	felszínre			lexikon		
 felszínét	felszíne	felszíne	színe		lexikon		
 felszólala	felszólala	felszólala			lexikon		
-felszórják	felszórják	felszórják			lexikon		
+felszórják	felszór	felszór	szór		szabaly	modell_ellenorizetlen	
 felszóval	felszóval	felszóval			lexikon		
 felszökvén	felszök	felszök			szabaly	modell_ellenorizetlen	hatarozoi_igenev
 felszökött	felszök	felszök	szökik		szabaly	modell_ellenorizetlen	
@@ -23174,7 +23174,7 @@ feltaláltuk	feltaláltuk	feltaláltuk			lexikon
 feltartom	feltart	feltart	tart		szabaly	modell_ellenorizetlen	
 feltartsa	feltartsa	feltartsa			lexikon		
 feltartózhatlanul	feltartózhatlanul	feltartózhatlanul			lexikon		
-feltartóztatják	feltartóztatják	feltartóztatják			lexikon		
+feltartóztatják	feltartóztat	feltartóztat	tartóztat		szabaly	modell_ellenorizetlen	
 feltartóztatod	feltartóztatod	feltartóztatod			lexikon		
 feltekint	feltekint	feltekint			lexikon		
 feltekinte	feltekint	feltekint			szabaly	modell_ellenorizetlen	mult.alanyi.E3
@@ -23996,8 +23996,8 @@ fogházból	fogházból	fogházból			lexikon
 fogháznak	fogháznak	fogháznak			lexikon		
 fogj	fogj	fogj			lexikon		
 fogja	fog	fog			szabaly	modell_ellenorizetlen	
-fogjad	fogj	fogj			lexikon		
-fogjam	fogj	fogj			lexikon		
+fogjad	fog	fog			szabaly	modell_ellenorizetlen	
+fogjam	fog	fog			szabaly	modell_ellenorizetlen	
 fogjanak	fog	fog			szabaly	modell_ellenorizetlen	
 fogjon	fog	fog			szabaly	modell_ellenorizetlen	
 fogjuk	fog	fog			szabaly	modell_ellenorizetlen	
@@ -24801,9 +24801,9 @@ félik	félik	félik			lexikon
 félitek	félitek	félitek			lexikon		
 félj	félj	félj			lexikon		
 félje	fél	fél			szabaly	modell_ellenorizetlen	
-féljed	félj	félj			lexikon		
+féljed	fél	fél			szabaly	modell_ellenorizetlen	
 féljek	fél	fél			szabaly	modell_ellenorizetlen	
-féljem	félj	félj			lexikon		
+féljem	fél	fél			szabaly	modell_ellenorizetlen	
 féljen	fél	fél			szabaly	modell_ellenorizetlen	
 féljenek	fél	fél			szabaly	modell_ellenorizetlen	
 féljetek	fél	fél			szabaly	modell_ellenorizetlen	
@@ -25886,7 +25886,7 @@ gombolyagot	gombolyagot	gombolyagot			lexikon
 gomolygó	gomolygó	gomolygó			lexikon		
 gond	gond	gond			lexikon		
 gondatlanul	gondatlanul	gondatlanul			lexikon		
-gondja	gondja	gondja			lexikon		
+gondja	gond	gond			szabaly	modell_ellenorizetlen	
 gondjainak	gondja	gondja			lexikon		
 gondjaitól	gondja	gondja			lexikon		
 gondját	gondja	gondja			lexikon		
@@ -25939,7 +25939,7 @@ gondolják	gondol	gondol			szabaly	modell_ellenorizetlen
 gondoljátok	gondol	gondol			szabaly	modell_ellenorizetlen	
 gondoljátok-é	gondol	gondol			szabaly	modell_ellenorizetlen	
 gondolkodik	gondolkodik	gondolkodik			lexikon		
-gondolkodjam	gondolkodjam	gondolkodjam			lexikon		
+gondolkodjam	gondolkodik	gondolkodik			szabaly	modell_ellenorizetlen	
 gondolkodjatok	gondolkodik	gondolkodik			szabaly	modell_ellenorizetlen	
 gondolkodjál	gondolkodik	gondolkodik			szabaly	modell_ellenorizetlen	felszolito.E2
 gondolkodnak	gondolkodik	gondolkodik			szabaly	modell_ellenorizetlen	
@@ -26147,7 +26147,7 @@ gyakorlására	gyakorlás	gyakorlás			lexikon
 gyakorlását	gyakorlás	gyakorlás			lexikon		
 gyakorold	gyakorold	gyakorold			lexikon		
 gyakorolja	gyakorol	gyakorol			szabaly	modell_ellenorizetlen	
-gyakoroljad	gyakoroljad	gyakoroljad			lexikon		
+gyakoroljad	gyakorol	gyakorol			szabaly	modell_ellenorizetlen	
 gyakoroljon	gyakoroljon	gyakoroljon			lexikon		
 gyakoroljátok	gyakorol	gyakorol			szabaly	modell_ellenorizetlen	
 gyakorolta	gyakorol	gyakorol			szabaly	modell_ellenorizetlen	
@@ -26513,7 +26513,7 @@ gyékényből	gyékényből	gyékényből			lexikon
 gyémánt	gyémánt	gyémánt			lexikon		
 gyík	gyík	gyík			lexikon		
 gyógyulj	gyógyulj	gyógyulj			lexikon		
-gyógyuljon	gyógyuljon	gyógyuljon			lexikon		
+gyógyuljon	gyógyul	gyógyul			szabaly	modell_ellenorizetlen	
 gyógyulnak	gyógyul	gyógyul			szabaly	modell_ellenorizetlen	
 gyógyulsz	gyógyul	gyógyul			szabaly	modell_ellenorizetlen	
 gyógyult	gyógyult	gyógyult			lexikon		
@@ -26592,7 +26592,7 @@ gyönyörködhessem	gyönyörködhessem	gyönyörködhessem			lexikon
 gyönyörködhetem-é	gyönyörködhet	gyönyörködhet	gyönyörködik		szabaly	modell_ellenorizetlen	
 gyönyörködhetik-é	gyönyörködhet	gyönyörködhet	gyönyörködik		szabaly	modell_ellenorizetlen	
 gyönyörködik	gyönyörködik	gyönyörködik			lexikon		
-gyönyörködjem	gyönyörködjem	gyönyörködjem			lexikon		
+gyönyörködjem	gyönyörködik	gyönyörködik			szabaly	modell_ellenorizetlen	
 gyönyörködjék	gyönyörködik	gyönyörködik			szabaly	modell_ellenorizetlen	
 gyönyörködjél	gyönyörködik	gyönyörködik			szabaly	modell_ellenorizetlen	felszolito.E2
 gyönyörködnek	gyönyörködik	gyönyörködik			szabaly	modell_ellenorizetlen	
@@ -26658,7 +26658,7 @@ gyötrődött	gyötrőd	gyötrőd			szabaly	modell_ellenorizetlen
 gyötrődőkről	gyötrődőkről	gyötrődőkről			lexikon		
 gyötör	gyötör	gyötör			lexikon		
 gyötörj	gyötörj	gyötörj			lexikon		
-gyötörjem	gyötörjem	gyötörjem			lexikon		
+gyötörjem	gyötör	gyötör			szabaly	modell_ellenorizetlen	
 gyötörjön	gyötör	gyötör			szabaly	modell_ellenorizetlen	
 gyötörjük	gyötör	gyötör			szabaly	modell_ellenorizetlen	
 gyötörni	gyötör	gyötör			szabaly	modell_ellenorizetlen	
@@ -26892,7 +26892,7 @@ gyűlölhet	gyűlölhet	gyűlölhet	gyűlöl		szabaly	modell_ellenorizetlen
 gyűlöli	gyűlöl	gyűlöl			szabaly	modell_ellenorizetlen	
 gyűlölik	gyűlölik	gyűlölik			lexikon		
 gyűlölitek	gyűlölitek	gyűlölitek			lexikon		
-gyűlöljem-é	gyűlöljem	gyűlöljem			lexikon		
+gyűlöljem-é	gyűlöl	gyűlöl			szabaly	modell_ellenorizetlen	
 gyűlöljék	gyűlöl	gyűlöl			szabaly	modell_ellenorizetlen	
 gyűlöljétek	gyűlöl	gyűlöl			szabaly	modell_ellenorizetlen	
 gyűlöljön	gyűlöl	gyűlöl			szabaly	modell_ellenorizetlen	
@@ -27151,7 +27151,7 @@ hagyhatod-é	hagyhat	hagyhat	hagy		szabaly	modell_ellenorizetlen
 hagyj	hagyj	hagyj			lexikon		
 hagyja	hagy	hagy			szabaly	modell_ellenorizetlen	
 hagyja-é	hagy	hagy			szabaly	modell_ellenorizetlen	
-hagyjad	hagyj	hagyj			lexikon		
+hagyjad	hagy	hagy			szabaly	modell_ellenorizetlen	
 hagyjanak	hagy	hagy			szabaly	modell_ellenorizetlen	
 hagyjatok	hagy	hagy			szabaly	modell_ellenorizetlen	
 hagyjon	hagy	hagy			szabaly	modell_ellenorizetlen	
@@ -27593,8 +27593,8 @@ hallható	hallható	hallható			lexikon
 hallik	hallik	hallik			lexikon		
 hallj	hallj	hallj			lexikon		
 hallja	hall	hall			szabaly	modell_ellenorizetlen	
-halljad	hallj	hallj			lexikon		
-halljam	hallj	hallj			lexikon		
+halljad	hall	hall			szabaly	modell_ellenorizetlen	
+halljam	hall	hall			szabaly	modell_ellenorizetlen	
 halljanak	hall	hall			szabaly	modell_ellenorizetlen	
 halljatok	hall	hall			szabaly	modell_ellenorizetlen	
 halljon	hall	hall			szabaly	modell_ellenorizetlen	
@@ -28161,7 +28161,7 @@ hasznotokra	hasznot	hasznot			lexikon
 használ	használ	használ			lexikon		
 használ-é	használ	használ			lexikon		
 használa	használ	használ			szabaly	modell_ellenorizetlen	mult.alanyi.E3
-használjam	használjam	használjam			lexikon		
+használjam	használ	használ			szabaly	modell_ellenorizetlen	
 használják	használ	használ			szabaly	modell_ellenorizetlen	
 használnak	használ	használ			szabaly	modell_ellenorizetlen	
 használni	használni	használni			lexikon		
@@ -30219,7 +30219,7 @@ hívj	hívj	hívj			lexikon
 hívja	hív	hív			szabaly	modell_ellenorizetlen	
 hívjak	hív	hív			szabaly	modell_ellenorizetlen	
 hívjak-é	hív	hív			szabaly	modell_ellenorizetlen	
-hívjam	hív	hív			lexikon		
+hívjam	hív	hív			szabaly	modell_ellenorizetlen	
 hívjanak	hív	hív			szabaly	modell_ellenorizetlen	
 hívjatok	hív	hív			szabaly	modell_ellenorizetlen	
 hívják	hív	hív			szabaly	modell_ellenorizetlen	
@@ -31019,7 +31019,7 @@ immáron	immár	immár			lexikon
 imád	imád	imád			lexikon		
 imádd	imádd	imádd			lexikon		
 imádja	imád	imád			szabaly	modell_ellenorizetlen	
-imádjam	imádja	imádja			lexikon		
+imádjam	imád	imád			szabaly	modell_ellenorizetlen	
 imádjuk	imád	imád			szabaly	modell_ellenorizetlen	
 imádják	imád	imád			szabaly	modell_ellenorizetlen	
 imádjátok	imád	imád			szabaly	modell_ellenorizetlen	
@@ -31431,7 +31431,7 @@ ismeritek	ismeritek	ismeritek			lexikon
 ismeritek-é	ismeritek	ismeritek			lexikon		
 ismerje	ismer	ismer			szabaly	modell_ellenorizetlen	
 ismerjelek	ismerjelek	ismerjelek			lexikon		
-ismerjem	ismer	ismer			lexikon		
+ismerjem	ismer	ismer			szabaly	modell_ellenorizetlen	
 ismerjetek	ismer	ismer			szabaly	modell_ellenorizetlen	
 ismerjék	ismer	ismer			szabaly	modell_ellenorizetlen	
 ismerjétek	ismer	ismer			szabaly	modell_ellenorizetlen	
@@ -33702,7 +33702,7 @@ kezdik	kezdik	kezdik			lexikon
 kezditek	kezditek	kezditek			lexikon		
 kezdj	kezdj	kezdj			lexikon		
 kezdje	kezd	kezd			szabaly	modell_ellenorizetlen	
-kezdjed	kezdj	kezdj			lexikon		
+kezdjed	kezd	kezd			szabaly	modell_ellenorizetlen	
 kezdjétek	kezd	kezd			szabaly	modell_ellenorizetlen	
 kezdte	kezd	kezd			szabaly	modell_ellenorizetlen	
 kezdtek	kezd	kezd			szabaly	modell_ellenorizetlen	
@@ -33987,7 +33987,7 @@ kigunyoltatásra	kigunyoltatásra	kigunyoltatásra			lexikon
 kigyomlál	kigyomlál	kigyomlál			lexikon		
 kigyomlálja	kigyomlál	kigyomlál			szabaly	modell_ellenorizetlen	
 kigyomláljak	kigyomlál	kigyomlál			szabaly	modell_ellenorizetlen	
-kigyomláljam	kigyomláljam	kigyomláljam			lexikon		
+kigyomláljam	kigyomlál	kigyomlál			szabaly	modell_ellenorizetlen	
 kigyomlállak	kigyomlállak	kigyomlállak			lexikon		
 kigyomlálni	kigyomlálni	kigyomlálni			lexikon		
 kigyomlálom	kigyomlál	kigyomlál			szabaly	modell_ellenorizetlen	
@@ -34197,7 +34197,7 @@ kiké	kik	kik			lexikon
 kikéit	kiké	kiké			lexikon		
 kikél	kikél	kikél			lexikon		
 kikémlelje	kikémlel	kikémlel			szabaly	modell_ellenorizetlen	
-kikémleljem	kikémleljem	kikémleljem			lexikon		
+kikémleljem	kikémlel	kikémlel			szabaly	modell_ellenorizetlen	
 kikémleljék	kikémlel	kikémlel			szabaly	modell_ellenorizetlen	
 kikémlelni	kikémlelni	kikémlelni			lexikon		
 kikémlelteté	kikémlelteté	kikémlelteté			lexikon		
@@ -34443,7 +34443,7 @@ kiosztani	kioszt	kioszt	oszt		szabaly	modell_ellenorizetlen
 kiosztom	kioszt	kioszt	oszt		szabaly	modell_ellenorizetlen	
 kiosztott	kioszt	kioszt	oszt		szabaly	modell_ellenorizetlen	
 kipattan	kipattan	kipattan			lexikon		
-kipróbáljam	kipróbálja	kipróbálja	próbálja		lexikon		
+kipróbáljam	kipróbál	kipróbál	próbál		szabaly	modell_ellenorizetlen	
 kipróbált	kipróbált	kipróbált			lexikon		
 kipróbáltak	kipróbált	kipróbált			lexikon		
 kipróbáltuk	kipróbált	kipróbált			lexikon		
@@ -35450,7 +35450,7 @@ kutakat	kutakat	kutakat			lexikon
 kutass	kutass	kutass			lexikon		
 kutasson	kutasson	kutasson			lexikon		
 kutat	kutat	kutat			lexikon		
-kutatja	kutat	kutat			lexikon		
+kutatja	kutat	kutat			szabaly	modell_ellenorizetlen	
 kutatod	kutat	kutat			lexikon		
 kutatsz	kutatsz	kutatsz			lexikon		
 kutattuk	kutattuk	kutattuk			lexikon		
@@ -35746,7 +35746,7 @@ kérik	kérik	kérik			lexikon
 kéritek	kéritek	kéritek			lexikon		
 kérj	kérj	kérj			lexikon		
 kérje	kér	kér			szabaly	modell_ellenorizetlen	
-kérjed	kérj	kérj			lexikon		
+kérjed	kér	kér			szabaly	modell_ellenorizetlen	
 kérjek	kér	kér			szabaly	modell_ellenorizetlen	
 kérjen	kér	kér			szabaly	modell_ellenorizetlen	
 kérjenek	kér	kér			szabaly	modell_ellenorizetlen	
@@ -36142,7 +36142,7 @@ kívánatos	kívánatos	kívánatos			lexikon
 kívánd	kívánd	kívánd			lexikon		
 kívánj	kívánj	kívánj			lexikon		
 kívánja	kíván	kíván			szabaly	modell_ellenorizetlen	
-kívánjad	kíván	kíván			lexikon		
+kívánjad	kíván	kíván			szabaly	modell_ellenorizetlen	
 kívánjunk	kíván	kíván			szabaly	modell_ellenorizetlen	
 kívánják	kíván	kíván			szabaly	modell_ellenorizetlen	
 kívánjátok	kíván	kíván			szabaly	modell_ellenorizetlen	
@@ -37008,8 +37008,8 @@ köztől	köz	köz			lexikon
 közé	közé	közé			k_tabla		
 közéd	közé	közé			lexikon		
 közéje	közé	közé			lexikon		
-közéjök	közé	közé			lexikon		
-közéjük	közé	közé			lexikon		
+közéjök	közé	közé			szabaly	modell_ellenorizetlen	
+közéjük	közé	közé			szabaly	modell_ellenorizetlen	
 közén	köz	köz			lexikon		
 közénk	köze	köze			lexikon		
 közép	közép	közép			lexikon		
@@ -37026,8 +37026,8 @@ közöd	köz	köz			lexikon
 közöl	közöl	közöl			lexikon		
 közöld	közöld	közöld			lexikon		
 közölhessek	közölhessek	közölhessek			lexikon		
-közölje	közöl	közöl			lexikon		
-közöljük	közöljük	közöljük			lexikon		
+közölje	közöl	közöl			szabaly	modell_ellenorizetlen	
+közöljük	közöl	közöl			szabaly	modell_ellenorizetlen	
 közölt	közölt	közölt			lexikon		
 közöltek	közöltek	közöltek			lexikon		
 közöm	köz	köz			lexikon		
@@ -37401,7 +37401,7 @@ lakhelyül	lakhelyül	lakhelyül			lexikon
 lakhelyűl	lakhelyűl	lakhelyül			szabaly	modell_ellenorizetlen	
 lakik	lakik	lakik			lexikon		
 lakja	lakik	lakik			szabaly	modell_ellenorizetlen	
-lakjam	lakja	lakja			lexikon		
+lakjam	lakik	lakik			szabaly	modell_ellenorizetlen	
 lakjanak	lakik	lakik			szabaly	modell_ellenorizetlen	
 lakjatok	lakik	lakik			szabaly	modell_ellenorizetlen	
 lakjunk	lakik	lakik			szabaly	modell_ellenorizetlen	
@@ -38361,7 +38361,7 @@ letörettek	letör	letör	tör		szabaly	modell_ellenorizetlen
 letöretteték	letöretteték	letöretteték			lexikon		
 letöretének	letöretik	letöretik			szabaly	modell_ellenorizetlen	mult.T3
 letörik	letörik	letörik			lexikon		
-letörjem	letörjem	letörjem			lexikon		
+letörjem	letör	letör	tör		szabaly	modell_ellenorizetlen	
 letörjék	letör	letör	tör		szabaly	modell_ellenorizetlen	
 letörli	letörli	letörli			lexikon		
 letörte	letör	letör	tör		szabaly	modell_ellenorizetlen	
@@ -38373,7 +38373,7 @@ letöröljük	letöröl	letöröl	töröl		szabaly	modell_ellenorizetlen
 letöröm	letör	letör	tör		szabaly	modell_ellenorizetlen	
 letőn	letesz	letesz	tesz		kivetel		
 leugrott	leugrott	leugrott			lexikon		
-levagdalja	levagdalja	levagdalja			lexikon		
+levagdalja	levagdal	levagdal	vagdal		szabaly	modell_ellenorizetlen	
 levakartak	levakartak	levakartak			lexikon		
 levakarták	levakarták	levakarták			lexikon		
 levegye	levesz	levesz	vesz		kivetel		
@@ -38407,7 +38407,7 @@ levelű	levelű	levelű			lexikon
 leveretnek	leveretik	leveretik	veretik		szabaly	modell_ellenorizetlen	
 leverettek	lever	lever	ver		szabaly	modell_ellenorizetlen	
 leverik	leverik	leverik			lexikon		
-leverjem-é	leverjem	leverjem			lexikon		
+leverjem-é	lever	lever	ver		szabaly	modell_ellenorizetlen	
 levernek	lever	lever	ver		szabaly	modell_ellenorizetlen	
 levert	lever	lever	ver		lexikon		
 leverte	lever	lever	ver		szabaly	modell_ellenorizetlen	
@@ -39380,12 +39380,12 @@ magasságával	magasság	magasság			lexikon
 magasztal	magasztal	magasztal			lexikon		
 magasztald	magasztald	magasztald			lexikon		
 magasztalhatod	magasztalhatod	magasztalhatod			lexikon		
-magasztalja	magasztal	magasztal			lexikon		
-magasztaljad	magasztal	magasztal			lexikon		
-magasztaljam	magasztal	magasztal			lexikon		
-magasztaljuk	magasztal	magasztal			lexikon		
-magasztalják	magasztalják	magasztalják			lexikon		
-magasztaljátok	magasztalja	magasztalja			lexikon		
+magasztalja	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+magasztaljad	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+magasztaljam	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+magasztaljuk	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+magasztalják	magasztal	magasztal			szabaly	modell_ellenorizetlen	
+magasztaljátok	magasztal	magasztal			szabaly	modell_ellenorizetlen	
 magasztallak	magasztallak	magasztallak			lexikon		
 magasztalnak	magasztal	magasztal			lexikon		
 magasztalod	magasztal	magasztal			lexikon		
@@ -39764,7 +39764,7 @@ megadatott	megadatik	megadatik	ad		szabaly	modell_ellenorizetlen
 megadaték	megadatik	megadatik			szabaly	modell_ellenorizetlen	mult.E3
 megadhassa	megadhat	megadhat	adhat		szabaly	modell_ellenorizetlen	
 megadja	megad	megad	ad		szabaly	modell_ellenorizetlen	
-megadjad	megadja	megadja			lexikon		
+megadjad	megad	megad	ad		szabaly	modell_ellenorizetlen	
 megadják	megad	megad	ad		szabaly	modell_ellenorizetlen	
 megadjátok	megad	megad	ad		szabaly	modell_ellenorizetlen	
 megadni	megad	megad	ad		szabaly	modell_ellenorizetlen	
@@ -39988,8 +39988,8 @@ megcselekedett	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen
 megcselekedhesse	megcselekedhetik	megcselekedhetik	cselekedhetik		szabaly	modell_ellenorizetlen	
 megcselekedhetem	megcselekedhet	megcselekedhet	cselekedik		szabaly	modell_ellenorizetlen	
 megcselekedhetik	megcselekedhet	megcselekedhet	cselekedik		szabaly	modell_ellenorizetlen	
-megcselekedjed	megcselekedje	megcselekedje	cselekedje		lexikon		
-megcselekedjem	megcselekedje	megcselekedje	cselekedje		lexikon		
+megcselekedjed	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen	
+megcselekedjem	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen	
 megcselekedjék	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen	
 megcselekedjétek	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen	
 megcselekedni	megcseleked	megcseleked	cselekedik		szabaly	modell_ellenorizetlen	
@@ -40030,7 +40030,7 @@ megcsonkított	megcsonkított	megcsonkított			lexikon
 megcsíp	megcsíp	megcsíp			lexikon		
 megcsókolgatá	megcsókolgat	megcsókolgat	csókolgat		szabaly	modell_ellenorizetlen	mult.targyas.E3
 megcsókolja	megcsókol	megcsókol	csókol		szabaly	modell_ellenorizetlen	
-megcsókoljam	megcsókolja	megcsókolja			lexikon		
+megcsókoljam	megcsókol	megcsókol	csókol		szabaly	modell_ellenorizetlen	
 megcsókolnálak	megcsókolnálak	megcsókolnálak			lexikon		
 megcsókolok	megcsókol	megcsókol	csókol		szabaly	modell_ellenorizetlen	
 megcsókoltam	megcsókol	megcsókol	csókol		szabaly	modell_ellenorizetlen	
@@ -40784,7 +40784,7 @@ meghallgatád	meghallgatá	meghallgatá			lexikon
 meghallgatásra	meghallgatásra	meghallgatásra			lexikon		
 meghallgató	meghallgató	meghallgató			lexikon		
 meghallja	meghall	meghall	hall		szabaly	modell_ellenorizetlen	
-meghalljad	meghallja	meghallja			lexikon		
+meghalljad	meghall	meghall	hall		szabaly	modell_ellenorizetlen	
 meghallják	meghall	meghall	hall		szabaly	modell_ellenorizetlen	
 meghalljátok	meghall	meghall	hall		szabaly	modell_ellenorizetlen	
 meghallod	meghall	meghall	hall		szabaly	modell_ellenorizetlen	
@@ -41061,8 +41061,8 @@ megismeri	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen
 megismerik	megismerik	megismerik			lexikon		
 megismeritek	megismeritek	megismeritek			lexikon		
 megismerje	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen	
-megismerjed	megismerje	megismerje			lexikon		
-megismerjem	megismerje	megismerje			lexikon		
+megismerjed	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen	
+megismerjem	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen	
 megismerjenek	megismerik	megismerik			szabaly	modell_ellenorizetlen	
 megismerjék	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen	
 megismerjétek	megismerik	megismerik	ismerik		szabaly	modell_ellenorizetlen	
@@ -41254,7 +41254,7 @@ megkeresztelkedem	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenoriz
 megkeresztelkedett	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenorizetlen	
 megkeresztelkedhettek-é	megkeresztelkedhet	megkeresztelkedhet	megkeresztelkedik		szabaly	modell_ellenorizetlen	
 megkeresztelkedik	megkeresztelkedik	megkeresztelkedik			lexikon		
-megkeresztelkedjem	megkeresztelkedjem	megkeresztelkedjem			lexikon		
+megkeresztelkedjem	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenorizetlen	
 megkeresztelkedjenek	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenorizetlen	
 megkeresztelkedjék	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenorizetlen	
 megkeresztelkednek	megkeresztelkedik	megkeresztelkedik			szabaly	modell_ellenorizetlen	
@@ -41648,8 +41648,8 @@ megmondatott	megmondatik	megmondatik	mondatik		szabaly	modell_ellenorizetlen
 megmondaték	megmondaték	megmondaték			lexikon		
 megmondhatná	megmondhat	megmondhat	mond		szabaly	modell_ellenorizetlen	
 megmondja	megmond	megmond	mond		kivetel		
-megmondjad	megmondja	megmondja			lexikon		
-megmondjam	megmondja	megmondja			lexikon		
+megmondjad	megmond	megmond	mond		szabaly	modell_ellenorizetlen	
+megmondjam	megmond	megmond	mond		szabaly	modell_ellenorizetlen	
 megmondjuk	megmond	megmond	mond		szabaly	modell_ellenorizetlen	
 megmondják	megmond	megmond	mond		szabaly	modell_ellenorizetlen	
 megmondom	megmond	megmond	mond		szabaly	modell_ellenorizetlen	
@@ -41751,7 +41751,7 @@ megnyergelék	megnyergelék	megnyergelék			lexikon
 megnyeri	megnyer	megnyer	nyer		szabaly	modell_ellenorizetlen	
 megnyerik	megnyerik	megnyerik			lexikon		
 megnyeritek	megnyeritek	megnyeritek			lexikon		
-megnyerjem	megnyerjem	megnyerjem			lexikon		
+megnyerjem	megnyer	megnyer	nyer		szabaly	modell_ellenorizetlen	
 megnyerjük	megnyer	megnyer	nyer		szabaly	modell_ellenorizetlen	
 megnyert	megnyer	megnyer	nyer		lexikon		
 megnyerte	megnyer	megnyer	nyer		szabaly	modell_ellenorizetlen	
@@ -41881,8 +41881,8 @@ megoldani	megold	megold			szabaly	modell_ellenorizetlen
 megoldaná	megoldaná	megoldaná			lexikon		
 megoldasz	megolda	megolda			szabaly	modell_ellenorizetlen	
 megoldhatod-é	megoldhat	megoldhat	megold		szabaly	modell_ellenorizetlen	
-megoldjad	megoldjad	megoldjad			lexikon		
-megoldjam	megoldjam	megoldjam			lexikon		
+megoldjad	megold	megold			szabaly	modell_ellenorizetlen	
+megoldjam	megold	megold			szabaly	modell_ellenorizetlen	
 megoldotok	megoldotok	megoldotok			lexikon		
 megoldották	megoldották	megoldották			lexikon		
 megoldván	megold	megold			szabaly	modell_ellenorizetlen	hatarozoi_igenev
@@ -41973,7 +41973,7 @@ megpoklosodva	megpoklosodva	megpoklosodva			lexikon
 megposhasztja	megposhasztja	megposhasztja			lexikon		
 megpróbáld	megpróbáld	megpróbáld			lexikon		
 megpróbálja	megpróbál	megpróbál			szabaly	modell_ellenorizetlen	
-megpróbáljam	megpróbálja	megpróbálja			lexikon		
+megpróbáljam	megpróbál	megpróbál			szabaly	modell_ellenorizetlen	
 megpróbáljatok	megpróbál	megpróbál			szabaly	modell_ellenorizetlen	
 megpróbáljon	megpróbál	megpróbál			szabaly	modell_ellenorizetlen	
 megpróbálják	megpróbál	megpróbál			szabaly	modell_ellenorizetlen	
@@ -42001,7 +42001,7 @@ megrabolják	megrabol	megrabol	rabol		szabaly	modell_ellenorizetlen
 megragad	megragad	megragad			lexikon		
 megragada	megragad	megragad			szabaly	modell_ellenorizetlen	mult.alanyi.E3
 megragadja	megragad	megragad	ragad		szabaly	modell_ellenorizetlen	
-megragadjam	megragad	megragad			lexikon		
+megragadjam	megragad	megragad	ragad		szabaly	modell_ellenorizetlen	
 megragadjuk	megragad	megragad	ragad		szabaly	modell_ellenorizetlen	
 megragadják	megragad	megragad	ragad		szabaly	modell_ellenorizetlen	
 megragadta	megragad	megragad	ragad		szabaly	modell_ellenorizetlen	
@@ -42398,7 +42398,7 @@ megszenteli	megszentel	megszentel	szentel		szabaly	modell_ellenorizetlen
 megszentelik	megszentelik	megszentelik			lexikon		
 megszentelitek	megszentelitek	megszentelitek			lexikon		
 megszentelje	megszentel	megszentel	szentel		szabaly	modell_ellenorizetlen	
-megszenteljed	megszentelje	megszentelje			lexikon		
+megszenteljed	megszentel	megszentel	szentel		szabaly	modell_ellenorizetlen	
 megszenteljék	megszentel	megszentel	szentel		szabaly	modell_ellenorizetlen	
 megszenteljétek	megszentel	megszentel	szentel		szabaly	modell_ellenorizetlen	
 megszentellek	megszentellek	megszentellek			lexikon		
@@ -42624,7 +42624,7 @@ megszületnie	megszületnie	megszületnie			lexikon
 megszülettem	megszül	megszül	szül		szabaly	modell_ellenorizetlen	
 megszülettél	megszül	megszül	szül		szabaly	modell_ellenorizetlen	
 megszünik	megszünik	megszünik			lexikon		
-megszünjék	megszünjék	megszünjék			lexikon		
+megszünjék	megszünik	megszünik	szünik		szabaly	modell_ellenorizetlen	
 megszünnek	megszünnek	megszünnek			lexikon		
 megszünnék	megszünnék	megszünnék			lexikon		
 megszünsz	megszünsz	megszünsz			lexikon		
@@ -42700,7 +42700,7 @@ megtalálák	megtalálák	megtalálák			lexikon
 megtalálám	megtalálá	megtalálá			lexikon		
 megtanula	megtanul	megtanul	tanul		szabaly	modell_ellenorizetlen	mult.alanyi.E3
 megtanulja	megtanul	megtanul	tanul		szabaly	modell_ellenorizetlen	
-megtanuljam	megtanuljam	megtanuljam			lexikon		
+megtanuljam	megtanul	megtanul	tanul		szabaly	modell_ellenorizetlen	
 megtanulják	megtanul	megtanul	tanul		szabaly	modell_ellenorizetlen	
 megtanulná	megtanulná	megtanulná			lexikon		
 megtanulta	megtanul	megtanul	tanul		szabaly	modell_ellenorizetlen	
@@ -42813,8 +42813,8 @@ megtartónknak	megtartónknak	megtartónknak			lexikon
 megtartót	megtartó	megtartó			lexikon		
 megtartóvá	megtartó	megtartó			lexikon		
 megtartóztassátok	megtartóztassátok	megtartóztassátok			lexikon		
-megtartóztatja	megtartóztatja	megtartóztatja			lexikon		
-megtartóztatják	megtartóztatják	megtartóztatják			lexikon		
+megtartóztatja	megtartóztat	megtartóztat	tartóztat		szabaly	modell_ellenorizetlen	
+megtartóztatják	megtartóztat	megtartóztat	tartóztat		szabaly	modell_ellenorizetlen	
 megtartóztatnátok-é	megtartóztatnátok	megtartóztatnátok			lexikon		
 megtartóztatod	megtartóztatod	megtartóztatod			lexikon		
 megtartóztatod-é	megtartóztatod	megtartóztatod			lexikon		
@@ -42952,8 +42952,8 @@ megtudhassuk	megtudhassuk	megtudhassuk			lexikon
 megtudhassák	megtudhassák	megtudhassák			lexikon		
 megtudhatod	megtudhat	megtudhat	tud		szabaly	modell_ellenorizetlen	
 megtudja	megtud	megtud	tud		szabaly	modell_ellenorizetlen	
-megtudjad	megtudja	megtudja			lexikon		
-megtudjam	megtudja	megtudja			lexikon		
+megtudjad	megtud	megtud	tud		szabaly	modell_ellenorizetlen	
+megtudjam	megtud	megtud	tud		szabaly	modell_ellenorizetlen	
 megtudjon	megtud	megtud			szabaly	modell_ellenorizetlen	
 megtudjuk	megtud	megtud	tud		szabaly	modell_ellenorizetlen	
 megtudják	megtud	megtud	tud		szabaly	modell_ellenorizetlen	
@@ -43239,11 +43239,11 @@ megvirágzik	megvirágzik	megvirágzik			lexikon
 megvitték	megvitték	megvitték			lexikon		
 megvivé	megvisz	megvisz	visz		kivetel		mult.targyas.E3
 megvivék	megvisz	megvisz	visz		kivetel		mult.E1
-megvizsgálja	megvizsgálja	megvizsgálja			lexikon		
-megvizsgáljak	megvizsgáljak	megvizsgáljak			lexikon		
-megvizsgáljam	megvizsgálja	megvizsgálja			lexikon		
-megvizsgálják	megvizsgálják	megvizsgálják			lexikon		
-megvizsgáljátok	megvizsgálja	megvizsgálja			lexikon		
+megvizsgálja	megvizsgál	megvizsgál	vizsgál		szabaly	modell_ellenorizetlen	
+megvizsgáljak	megvizsgál	megvizsgál	vizsgál		szabaly	modell_ellenorizetlen	
+megvizsgáljam	megvizsgál	megvizsgál	vizsgál		szabaly	modell_ellenorizetlen	
+megvizsgálják	megvizsgál	megvizsgál	vizsgál		szabaly	modell_ellenorizetlen	
+megvizsgáljátok	megvizsgál	megvizsgál	vizsgál		szabaly	modell_ellenorizetlen	
 megvizsgálna	megvizsgálna	megvizsgálna			lexikon		
 megvizsgálod	megvizsgálod	megvizsgálod			lexikon		
 megvizsgáltad	megvizsgáltad	megvizsgáltad			lexikon		
@@ -43352,7 +43352,7 @@ megvígasztaltatásának	megvígasztaltatás	megvígasztaltatás			lexikon
 megvígasztaltál	megvígasztal	megvígasztal	vígasztal		szabaly	modell_ellenorizetlen	
 megvígasztalá	megvígasztal	megvígasztal	vígasztal		szabaly	modell_ellenorizetlen	mult.targyas.E3
 megvígasztalódik	megvígasztalódik	megvígasztalódik			lexikon		
-megvígasztalódjam	megvígasztalódjam	megvígasztalódjam			lexikon		
+megvígasztalódjam	megvígasztalód	megvígasztalód	vígasztalód		szabaly	modell_ellenorizetlen	
 megvígasztalódtunk	megvígasztalód	megvígasztalód	vígasztalód		szabaly	modell_ellenorizetlen	
 megvígasztalódék	megvígasztalód	megvígasztalód	vígasztalód		szabaly	modell_ellenorizetlen	mult.E1
 megvív	megvív	megvív			lexikon		
@@ -43396,7 +43396,7 @@ megáldatnak	megáldatik	megáldatik	áldatik		szabaly	modell_ellenorizetlen
 megáldatni	megáldatik	megáldatik	áld		szabaly	modell_ellenorizetlen	
 megáldja	megáld	megáld	áld		szabaly	modell_ellenorizetlen	
 megáldjalak	megáldjalak	megáldjalak			lexikon		
-megáldjam	megáld	megáld			lexikon		
+megáldjam	megáld	megáld	áld		szabaly	modell_ellenorizetlen	
 megáldjon	megáld	megáld			szabaly	modell_ellenorizetlen	
 megáldod	megáld	megáld	áld		szabaly	modell_ellenorizetlen	
 megáldom	megáld	megáld	áld		szabaly	modell_ellenorizetlen	
@@ -43728,8 +43728,8 @@ megöli-é	megöl	megöl	öl		szabaly	modell_ellenorizetlen
 megölik	megölik	megölik			lexikon		
 megölj	megölj	megölj			lexikon		
 megölje	megöl	megöl	öl		szabaly	modell_ellenorizetlen	
-megöljed	megöl	megöl			lexikon		
-megöljem	megöl	megöl			lexikon		
+megöljed	megöl	megöl	öl		szabaly	modell_ellenorizetlen	
+megöljem	megöl	megöl	öl		szabaly	modell_ellenorizetlen	
 megöljenek	megöl	megöl			szabaly	modell_ellenorizetlen	
 megöljetek	megöl	megöl			szabaly	modell_ellenorizetlen	
 megöljék	megöl	megöl	öl		szabaly	modell_ellenorizetlen	
@@ -43960,8 +43960,8 @@ mellyel	mellyel	mellyel			lexikon
 mellé	mellé	mellé			k_tabla		
 melléd	mellé	mellé			lexikon		
 melléje	mellé	mellé			lexikon		
-melléjök	mellé	mellé			lexikon		
-melléjük	mellé	mellé			lexikon		
+melléjök	mellé	mellé			szabaly	modell_ellenorizetlen	
+melléjük	mellé	mellé			szabaly	modell_ellenorizetlen	
 mellék	mell	mell			szabaly	modell_ellenorizetlen	mult.E1
 melléke	melléke	melléke			lexikon		
 mellékhelyiségéhez	mellékhelyiség	mellékhelyiség			lexikon		
@@ -44849,9 +44849,9 @@ mondj	mondj	mondj			lexikon
 mondja	mond	mond			k_tabla		
 mondja-e	mondja-e	mondja-e			lexikon		
 mondja-é	mond	mond			k_tabla		
-mondjad	mondj	mondj			lexikon		
+mondjad	mond	mond			szabaly	modell_ellenorizetlen	
 mondjak	mond	mond			szabaly	modell_ellenorizetlen	
-mondjam	mondj	mondj			lexikon		
+mondjam	mond	mond			szabaly	modell_ellenorizetlen	
 mondjatok	mond	mond			szabaly	modell_ellenorizetlen	
 mondjon	mond	mond			szabaly	modell_ellenorizetlen	
 mondjuk	mond	mond			szabaly	modell_ellenorizetlen	
@@ -45550,12 +45550,12 @@ míveli	mível	mível			lexikon
 mívelik	mívelik	mívelik			lexikon		
 mívelitek	mívelitek	mívelitek			lexikon		
 mívelj	mívelj	mívelj			lexikon		
-mívelje	mível	mível			lexikon		
-míveljek	míveljek	míveljek			lexikon		
-míveljem	mível	mível			lexikon		
-míveljetek	míveljetek	míveljetek			lexikon		
-míveljék	míveljék	míveljék			lexikon		
-míveljétek	mívelje	mívelje			lexikon		
+mívelje	mível	mível			szabaly	modell_ellenorizetlen	
+míveljek	mível	mível			szabaly	modell_ellenorizetlen	
+míveljem	mível	mível			szabaly	modell_ellenorizetlen	
+míveljetek	mível	mível			szabaly	modell_ellenorizetlen	
+míveljék	mível	mível			szabaly	modell_ellenorizetlen	
+míveljétek	mível	mível			szabaly	modell_ellenorizetlen	
 mívelsz	mívelsz	mívelsz			lexikon		
 mívelt	mível	mível			lexikon		
 mívelte	mívelt	mívelt			lexikon		
@@ -46122,9 +46122,9 @@ nevel	nevel	nevel			lexikon
 nevele	nevel	nevel			lexikon		
 nevelek	nevelek	nevelek			lexikon		
 neveli	neveli	neveli			lexikon		
-nevelje	nevel	nevel			lexikon		
-neveljenek	neveljenek	neveljenek			lexikon		
-neveljétek	nevelje	nevelje			lexikon		
+nevelje	nevel	nevel			szabaly	modell_ellenorizetlen	
+neveljenek	nevel	nevel			szabaly	modell_ellenorizetlen	
+neveljétek	nevel	nevel			szabaly	modell_ellenorizetlen	
 nevelnek	nevelnek	nevelnek			lexikon		
 nevelt	nevelt	nevelt			lexikon		
 nevelte	nevelt	nevelt			lexikon		
@@ -46812,7 +46812,7 @@ nyílásánál	nyílás	nyílás			lexikon
 nyílására	nyílás	nyílás			lexikon		
 nyílását	nyílás	nyílás			lexikon		
 nyírja	nyír	nyír			szabaly	modell_ellenorizetlen	
-nyírjad	nyírja	nyírja			lexikon		
+nyírjad	nyír	nyír			szabaly	modell_ellenorizetlen	
 nyírjanak	nyír	nyír			szabaly	modell_ellenorizetlen	
 nyírják	nyír	nyír			szabaly	modell_ellenorizetlen	
 nyírjátok	nyír	nyír			szabaly	modell_ellenorizetlen	
@@ -48436,7 +48436,7 @@ pergelt	pergelt	pergelt			lexikon
 pergessetek	pergessetek	pergessetek			lexikon		
 perlek	perlek	perlek			lexikon		
 perlekedhetik	perlekedhet	perlekedhet	perleked		szabaly	modell_ellenorizetlen	
-perlekedjem	perlekedjem	perlekedjem			lexikon		
+perlekedjem	perleked	perleked			szabaly	modell_ellenorizetlen	
 perlekedjék	perleked	perleked			szabaly	modell_ellenorizetlen	
 perlekednek	perleked	perleked			szabaly	modell_ellenorizetlen	
 perlekedtek	perleked	perleked			szabaly	modell_ellenorizetlen	
@@ -48566,9 +48566,9 @@ plántákat	plántákat	plántákat			lexikon
 plántál	plántál	plántál			lexikon		
 plántála	plántál	plántál			lexikon		
 plántálj	plántálj	plántálj			lexikon		
-plántáljam	plántálj	plántálj			lexikon		
-plántáljatok	plántálj	plántálj			lexikon		
-plántálják	plántálják	plántálják			lexikon		
+plántáljam	plántál	plántál			szabaly	modell_ellenorizetlen	
+plántáljatok	plántál	plántál			szabaly	modell_ellenorizetlen	
+plántálják	plántál	plántál			szabaly	modell_ellenorizetlen	
 plántállak	plántállak	plántállak			lexikon		
 plántálnak	plántál	plántál			lexikon		
 plántálok	plántál	plántál			lexikon		
@@ -48765,7 +48765,7 @@ prédájául	prédájául	prédájául			lexikon
 prédájává	préda	préda			lexikon		
 prédálj	prédálj	prédálj			lexikon		
 prédálja	prédál	prédál			szabaly	modell_ellenorizetlen	
-prédáljad	prédálj	prédálj			lexikon		
+prédáljad	prédál	prédál			szabaly	modell_ellenorizetlen	
 prédáljon	prédál	prédál			szabaly	modell_ellenorizetlen	
 prédálni	prédál	prédál			szabaly	modell_ellenorizetlen	
 prédálóikat	prédálóikat	prédálóikat			lexikon		
@@ -48784,11 +48784,11 @@ próbatételt	próbatételt	próbatételt			lexikon
 próbái	próbái	próbái			lexikon		
 próbája	próbája	próbája			lexikon		
 próbáját	próbáját	próbáját			lexikon		
-próbálja	próbálja	próbálja			lexikon		
-próbálja-é	próbálja	próbálja			lexikon		
-próbáljatok	próbáljatok	próbáljatok			lexikon		
-próbálják	próbálják	próbálják			lexikon		
-próbáljátok	próbálja	próbálja			lexikon		
+próbálja	próbál	próbál			szabaly	modell_ellenorizetlen	
+próbálja-é	próbál	próbál			szabaly	modell_ellenorizetlen	
+próbáljatok	próbál	próbál			szabaly	modell_ellenorizetlen	
+próbálják	próbál	próbál			szabaly	modell_ellenorizetlen	
+próbáljátok	próbál	próbál			szabaly	modell_ellenorizetlen	
 próbálod	próbálod	próbálod			lexikon		
 próbált	próbált	próbált			lexikon		
 próbálta	próbált	próbált			lexikon		
@@ -51699,7 +51699,7 @@ szedhető	szedhető	szedhető			lexikon
 szedi	szed	szed			szabaly	modell_ellenorizetlen	
 szedik	szedik	szedik			lexikon		
 szedje	szed	szed			szabaly	modell_ellenorizetlen	
-szedjed	szedje	szedje			lexikon		
+szedjed	szed	szed			szabaly	modell_ellenorizetlen	
 szedjen	szed	szed			szabaly	modell_ellenorizetlen	
 szedjenek	szed	szed			szabaly	modell_ellenorizetlen	
 szedjetek	szed	szed			szabaly	modell_ellenorizetlen	
@@ -51985,7 +51985,7 @@ szemléled	szemlél	szemlél			szabaly	modell_ellenorizetlen
 szemlélek	szemlél	szemlél			szabaly	modell_ellenorizetlen	
 szemlélheted	szemlélhet	szemlélhet	szemlél		szabaly	modell_ellenorizetlen	
 szemléli	szemlél	szemlél			szabaly	modell_ellenorizetlen	
-szemléljem	szemléljem	szemléljem			lexikon		
+szemléljem	szemlél	szemlél			szabaly	modell_ellenorizetlen	
 szemléltetsz	szemléltetsz	szemléltetsz			lexikon		
 szemléltünk	szemlél	szemlél			szabaly	modell_ellenorizetlen	
 szemlélvén	szemlélvén	szemlélvén			lexikon		
@@ -52106,8 +52106,8 @@ szentelik	szentelik	szentelik			lexikon
 szentelitek	szentelitek	szentelitek			lexikon		
 szentelj	szentelj	szentelj			lexikon		
 szentelje	szentel	szentel			szabaly	modell_ellenorizetlen	
-szenteljed	szentelj	szentelj			lexikon		
-szenteljem	szentelj	szentelj			lexikon		
+szenteljed	szentel	szentel			szabaly	modell_ellenorizetlen	
+szenteljem	szentel	szentel			szabaly	modell_ellenorizetlen	
 szenteljen	szentel	szentel			szabaly	modell_ellenorizetlen	
 szenteljetek	szentel	szentel			szabaly	modell_ellenorizetlen	
 szenteljék	szentel	szentel			szabaly	modell_ellenorizetlen	
@@ -52162,7 +52162,7 @@ szenthelyénél	szenthely	szenthely			lexikon
 szenthelyért	szenthely	szenthely			lexikon		
 szenthelyét	szenthely	szenthely			lexikon		
 szentház	szentház	szentház			lexikon		
-szentje	szent	szent			lexikon		
+szentje	szent	szent			szabaly	modell_ellenorizetlen	
 szentjei	szent	szent			lexikon		
 szentjébe	szent	szent			lexikon		
 szentjén	szent	szent			lexikon		
@@ -53453,9 +53453,9 @@ szándékukat	szándékukat	szándékukat			lexikon
 szándékukban	szándékukban	szándékukban			lexikon		
 szándékuknak	szándékuknak	szándékuknak			lexikon		
 szándékát	szándéka	szándéka			lexikon		
-szánja	szánja	szánja			lexikon		
-szánjam	szánjam	szánjam			lexikon		
-szánjátok	szánja	szánja			lexikon		
+szánja	szán	szán			szabaly	modell_ellenorizetlen	
+szánjam	szán	szán			szabaly	modell_ellenorizetlen	
+szánjátok	szán	szán			szabaly	modell_ellenorizetlen	
 szánk	szánk	szánk			lexikon		
 szánkkal	szánkkal	szánkkal			lexikon		
 szánkával	szánk	szánk			lexikon		
@@ -53977,7 +53977,7 @@ széttörtem	széttör	széttör	tör		szabaly	modell_ellenorizetlen
 széttörték	széttörték	széttörték			lexikon		
 széttörtél	széttör	széttör	tör		szabaly	modell_ellenorizetlen	
 széttöré	széttör	széttör	tör		szabaly	modell_ellenorizetlen	mult.targyas.E3
-szétvagdaljon	szétvagdaljon	szétvagdaljon			lexikon		
+szétvagdaljon	szétvagdal	szétvagdal	vagdal		szabaly	modell_ellenorizetlen	
 szétvagdalta	szétvagdal	szétvagdal			szabaly	modell_ellenorizetlen	
 szétvagdaltam	szétvagdal	szétvagdal			szabaly	modell_ellenorizetlen	
 szétverte	szétver	szétver	ver		szabaly	modell_ellenorizetlen	
@@ -54170,9 +54170,9 @@ szólhattam	szólhat	szólhat			szabaly	modell_ellenorizetlen
 szólhattok	szólhat	szólhat	szól		szabaly	modell_ellenorizetlen	
 szólj	szól	szól			k_tabla		
 szólja	szól	szól			szabaly	modell_ellenorizetlen	
-szóljad	szólj	szólj			lexikon		
+szóljad	szól	szól			szabaly	modell_ellenorizetlen	
 szóljak	szól	szól			szabaly	modell_ellenorizetlen	
-szóljam	szólj	szólj			lexikon		
+szóljam	szól	szól			szabaly	modell_ellenorizetlen	
 szóljanak	szól	szól			szabaly	modell_ellenorizetlen	
 szóljatok	szól	szól			szabaly	modell_ellenorizetlen	
 szóljon	szól	szól			szabaly	modell_ellenorizetlen	
@@ -54260,7 +54260,7 @@ szóra	szó	szó			lexikon
 szóratnak	szóratnak	szóratnak			lexikon		
 szóratta	szóratta	szóratta			lexikon		
 szórd	szórd	szórd			lexikon		
-szórja	szór	szór			lexikon		
+szórja	szór	szór			szabaly	modell_ellenorizetlen	
 szórnak	szór	szór			lexikon		
 szórok	szór	szór			lexikon		
 szórom	szór	szór			lexikon		
@@ -55143,9 +55143,9 @@ tagadd	tagadd	tagadd			lexikon
 tagadhatja	tagadhatja	tagadhatja			lexikon		
 tagadhatjuk	tagadhatjuk	tagadhatjuk			lexikon		
 tagadj	tagadj	tagadj			lexikon		
-tagadja	tagadja	tagadja			lexikon		
+tagadja	tagad	tagad			szabaly	modell_ellenorizetlen	
 tagadjalak	tagadjalak	tagadjalak			lexikon		
-tagadják	tagadják	tagadják			lexikon		
+tagadják	tagad	tagad			szabaly	modell_ellenorizetlen	
 tagadlak	tagadlak	tagadlak			lexikon		
 tagadod	tagadod	tagadod			lexikon		
 tagadom	tagadom	tagadom			lexikon		
@@ -55200,8 +55200,8 @@ takarva	takar	takar			szabaly	modell_ellenorizetlen
 takarák	takarák	takarák			lexikon		
 takaráskor	takaráskor	takaráskor			lexikon		
 takarítasz	takarítasz	takarítasz			lexikon		
-takarítja	takarítja	takarítja			lexikon		
-takarítjuk	takarítjuk	takarítjuk			lexikon		
+takarítja	takarít	takarít			szabaly	modell_ellenorizetlen	
+takarítjuk	takarít	takarít			szabaly	modell_ellenorizetlen	
 takarítlak	takarítlak	takarítlak			lexikon		
 takarítsd	takarítsd	takarítsd			lexikon		
 takarítsák	takarítsák	takarítsák			lexikon		
@@ -55345,7 +55345,7 @@ találós	találós	találós			lexikon
 talán	talán	talán			lexikon		
 tamaris	tamaris	tamaris			lexikon		
 tamariskusfákat	tamariskusfákat	tamariskusfákat			lexikon		
-tanakodjam	tanakodjam	tanakodjam			lexikon		
+tanakodjam	tanakod	tanakod			szabaly	modell_ellenorizetlen	
 tanakodnak	tanakod	tanakod			szabaly	modell_ellenorizetlen	
 tanakodni	tanakod	tanakod			szabaly	modell_ellenorizetlen	
 tanakodtak	tanakod	tanakod			szabaly	modell_ellenorizetlen	
@@ -55369,7 +55369,7 @@ tanuld	tanuld	tanuld			lexikon
 tanulhatja	tanulhat	tanulhat	tanul		szabaly	modell_ellenorizetlen	
 tanulj	tanulj	tanulj			lexikon		
 tanulja	tanul	tanul			szabaly	modell_ellenorizetlen	
-tanuljad	tanulj	tanulj			lexikon		
+tanuljad	tanul	tanul			szabaly	modell_ellenorizetlen	
 tanuljanak	tanul	tanul			szabaly	modell_ellenorizetlen	
 tanuljon	tanul	tanul			szabaly	modell_ellenorizetlen	
 tanulják	tanul	tanul			szabaly	modell_ellenorizetlen	
@@ -55827,7 +55827,7 @@ tartóztassátok	tartóztassátok	tartóztassátok			lexikon
 tartóztathatják	tartóztathatják	tartóztathatják			lexikon		
 tartóztathatjátok	tartóztathatjátok	tartóztathatjátok			lexikon		
 tartóztathatá	tartóztathatá	tartóztathatá			lexikon		
-tartóztatja	tartóztatja	tartóztatja			lexikon		
+tartóztatja	tartóztat	tartóztat			szabaly	modell_ellenorizetlen	
 tartóztatod	tartóztatod	tartóztatod			lexikon		
 tartóztatom	tartóztatom	tartóztatom			lexikon		
 tartóztattalak	tartóztattalak	tartóztattalak			lexikon		
@@ -56040,7 +56040,7 @@ teljenek	teljenek	teljenek			lexikon
 teljes	teljes	teljes			k_tabla		
 teljesedett	teljesedik	teljesedik			szabaly	modell_ellenorizetlen	
 teljesedik	teljesedik	teljesedik			lexikon		
-teljesedjem	teljesedjem	teljesedjem			lexikon		
+teljesedjem	teljesedik	teljesedik			szabaly	modell_ellenorizetlen	
 teljesedjetek	teljesedik	teljesedik			szabaly	modell_ellenorizetlen	
 teljesedjék	teljesedik	teljesedik			szabaly	modell_ellenorizetlen	
 teljesedjünk	teljesedik	teljesedik			szabaly	modell_ellenorizetlen	
@@ -56817,13 +56817,13 @@ tisztelhetnélek	tisztelhetnélek	tisztelhetnélek			lexikon
 tiszteli	tisztel	tisztel			lexikon		
 tisztelik	tisztelik	tisztelik			lexikon		
 tisztelitek-é	tisztelitek	tisztelitek			lexikon		
-tisztelje	tisztel	tisztel			lexikon		
-tiszteljed	tisztel	tisztel			lexikon		
-tiszteljenek	tisztel	tisztel			lexikon		
-tiszteljetek	tiszteljetek	tiszteljetek			lexikon		
-tiszteljék	tiszteljék	tiszteljék			lexikon		
-tiszteljétek	tisztelje	tisztelje			lexikon		
-tiszteljük	tisztel	tisztel			lexikon		
+tisztelje	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljed	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljenek	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljetek	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljék	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljétek	tisztel	tisztel			szabaly	modell_ellenorizetlen	
+tiszteljük	tisztel	tisztel			szabaly	modell_ellenorizetlen	
 tiszteljünk	tiszteljünk	tiszteljünk			lexikon		
 tisztellek	tisztellek	tisztellek			lexikon		
 tisztelnek	tisztel	tisztel			lexikon		
@@ -57000,10 +57000,10 @@ titkold	titkold	titkold			lexikon
 titkolhatjuk	titkolhatjuk	titkolhatjuk			lexikon		
 titkolhatá	titkolhatá	titkolhatá			lexikon		
 titkolhatók	titkolhatók	titkolhatók			lexikon		
-titkolja	titkolja	titkolja			lexikon		
-titkoljad	titkoljad	titkoljad			lexikon		
-titkoljuk	titkoljuk	titkoljuk			lexikon		
-titkoljátok	titkolja	titkolja			lexikon		
+titkolja	titkol	titkol			szabaly	modell_ellenorizetlen	
+titkoljad	titkol	titkol			szabaly	modell_ellenorizetlen	
+titkoljuk	titkol	titkol			szabaly	modell_ellenorizetlen	
+titkoljátok	titkol	titkol			szabaly	modell_ellenorizetlen	
 titkolná	titkolná	titkolná			lexikon		
 titkolok	titkolok	titkolok			lexikon		
 titkolom	titkolom	titkolom			lexikon		
@@ -57322,9 +57322,9 @@ tudhatom	tudhat	tudhat	tud		szabaly	modell_ellenorizetlen
 tudhattuk-é	tudhattuk	tudhattuk			lexikon		
 tudható	tudható	tudható			lexikon		
 tudja	tud	tud			szabaly	modell_ellenorizetlen	
-tudjad	tudja	tudja			lexikon		
+tudjad	tud	tud			szabaly	modell_ellenorizetlen	
 tudjak	tud	tud			szabaly	modell_ellenorizetlen	
-tudjam	tudja	tudja			lexikon		
+tudjam	tud	tud			szabaly	modell_ellenorizetlen	
 tudjanak	tud	tud			szabaly	modell_ellenorizetlen	
 tudjatok	tud	tud			szabaly	modell_ellenorizetlen	
 tudjon	tud	tud			szabaly	modell_ellenorizetlen	
@@ -57601,7 +57601,7 @@ támasszon	támasszon	támasszon			lexikon
 támaszai	támaszai	támaszai			lexikon		
 támaszd	támaszd	támaszd			lexikon		
 támaszkodik	támaszkodik	támaszkodik			lexikon		
-támaszkodjam	támaszkodjam	támaszkodjam			lexikon		
+támaszkodjam	támaszkodik	támaszkodik			szabaly	modell_ellenorizetlen	
 támaszkodjál	támaszkodik	támaszkodik			szabaly	modell_ellenorizetlen	felszolito.E2
 támaszkodjék	támaszkodik	támaszkodik			szabaly	modell_ellenorizetlen	
 támaszkodnak	támaszkodik	támaszkodik			szabaly	modell_ellenorizetlen	
@@ -57682,10 +57682,10 @@ tányéron	tányéron	tányéron			lexikon
 táplál	táplál	táplál			lexikon		
 táplálgatja	táplálgatja	táplálgatja			lexikon		
 táplálj	táplálj	táplálj			lexikon		
-táplálja	táplál	táplál			lexikon		
-tápláljanak	tápláljanak	tápláljanak			lexikon		
-táplálják	táplálják	táplálják			lexikon		
-tápláljátok	táplálja	táplálja			lexikon		
+táplálja	táplál	táplál			szabaly	modell_ellenorizetlen	
+tápláljanak	táplál	táplál			szabaly	modell_ellenorizetlen	
+táplálják	táplál	táplál			szabaly	modell_ellenorizetlen	
+tápláljátok	táplál	táplál			szabaly	modell_ellenorizetlen	
 táplálkozik	táplálkozik	táplálkozik			lexikon		
 táplálkozván	táplálkozván	táplálkozván			lexikon		
 táplálnak	táplálnak	táplálnak			lexikon		
@@ -58362,7 +58362,7 @@ török	tör	tör			szabaly	modell_ellenorizetlen
 töröld	töröld	töröld			lexikon		
 törölj	törölj	törölj			lexikon		
 törölje	töröl	töröl			szabaly	modell_ellenorizetlen	
-töröljem	töröljem	töröljem			lexikon		
+töröljem	töröl	töröl			szabaly	modell_ellenorizetlen	
 töröltek	töröltek	töröltek			lexikon		
 töröltessék	töröltet	töröltet			szabaly	modell_ellenorizetlen	
 töröltetik	töröltetik	töröltetik			lexikon		
@@ -58750,7 +58750,7 @@ uralkodandó	uralkodandó	uralkodandó			lexikon
 uralkodhatik	uralkodhat	uralkodhat	uralkodik		szabaly	modell_ellenorizetlen	
 uralkodhatnánk	uralkodhat	uralkodhat	uralkodik		szabaly	modell_ellenorizetlen	
 uralkodik	uralkodik	uralkodik			lexikon		
-uralkodjam	uralkodjam	uralkodjam			lexikon		
+uralkodjam	uralkodik	uralkodik			szabaly	modell_ellenorizetlen	
 uralkodjanak	uralkodik	uralkodik			szabaly	modell_ellenorizetlen	
 uralkodjatok	uralkodik	uralkodik			szabaly	modell_ellenorizetlen	
 uralkodjál	uralkodik	uralkodik			szabaly	modell_ellenorizetlen	felszolito.E2
@@ -59024,10 +59024,10 @@ vadászásban	vadászásban	vadászásban			lexikon
 vadászásából	vadászás	vadászás			lexikon		
 vadászásával	vadászás	vadászás			lexikon		
 vagdald	vagdald	vagdald			lexikon		
-vagdalja	vagdalja	vagdalja			lexikon		
-vagdaljanak	vagdalja	vagdalja			lexikon		
-vagdalják	vagdalják	vagdalják			lexikon		
-vagdaljátok	vagdalja	vagdalja			lexikon		
+vagdalja	vagdal	vagdal			szabaly	modell_ellenorizetlen	
+vagdaljanak	vagdal	vagdal			szabaly	modell_ellenorizetlen	
+vagdalják	vagdal	vagdal			szabaly	modell_ellenorizetlen	
+vagdaljátok	vagdal	vagdal			szabaly	modell_ellenorizetlen	
 vagdalnak	vagdalnak	vagdalnak			lexikon		
 vagdalod	vagdalod	vagdalod			lexikon		
 vagdalt	vagdalt	vagdalt			lexikon		
@@ -59460,7 +59460,7 @@ verik	verik	verik			lexikon
 verj	verj	verj			lexikon		
 verje	ver	ver			szabaly	modell_ellenorizetlen	
 verjelek	verjelek	verjelek			lexikon		
-verjem	verj	verj			lexikon		
+verjem	ver	ver			szabaly	modell_ellenorizetlen	
 verjen	ver	ver			szabaly	modell_ellenorizetlen	
 verjenek	ver	ver			szabaly	modell_ellenorizetlen	
 verjék	ver	ver			szabaly	modell_ellenorizetlen	
@@ -60225,7 +60225,7 @@ viselik	viselik	viselik			lexikon
 viselitek	viselitek	viselitek			lexikon		
 viselj	viselj	viselj			lexikon		
 viselje	visel	visel			szabaly	modell_ellenorizetlen	
-viseljed	viselj	viselj			lexikon		
+viseljed	visel	visel			szabaly	modell_ellenorizetlen	
 viseljen	visel	visel			szabaly	modell_ellenorizetlen	
 viseljenek	visel	visel			szabaly	modell_ellenorizetlen	
 viseljék	visel	visel			szabaly	modell_ellenorizetlen	
@@ -60572,10 +60572,10 @@ vizsgál	vizsgál	vizsgál			lexikon
 vizsgálat	vizsgálat	vizsgálat			lexikon		
 vizsgáld	vizsgáld	vizsgáld			lexikon		
 vizsgálgatám	vizsgálgatám	vizsgálgatám			lexikon		
-vizsgálja	vizsgálja	vizsgálja			lexikon		
-vizsgáljuk	vizsgáljuk	vizsgáljuk			lexikon		
-vizsgálják	vizsgálják	vizsgálják			lexikon		
-vizsgáljátok	vizsgálja	vizsgálja			lexikon		
+vizsgálja	vizsgál	vizsgál			szabaly	modell_ellenorizetlen	
+vizsgáljuk	vizsgál	vizsgál			szabaly	modell_ellenorizetlen	
+vizsgálják	vizsgál	vizsgál			szabaly	modell_ellenorizetlen	
+vizsgáljátok	vizsgál	vizsgál			szabaly	modell_ellenorizetlen	
 vizsgálod	vizsgál	vizsgál			lexikon		
 vizsgálom	vizsgálom	vizsgálom			lexikon		
 vizsgálta	vizsgálta	vizsgálta			lexikon		
@@ -60675,7 +60675,7 @@ vonul	vonul	vonul			lexikon
 vonula	vonul	vonul			szabaly	modell_ellenorizetlen	mult.alanyi.E3
 vonulhassak	vonulhassak	vonulhassak			lexikon		
 vonulj	vonulj	vonulj			lexikon		
-vonuljon	vonulj	vonulj			lexikon		
+vonuljon	vonul	vonul			szabaly	modell_ellenorizetlen	
 vonulnak	vonul	vonul			szabaly	modell_ellenorizetlen	
 vonulsz	vonul	vonul			szabaly	modell_ellenorizetlen	
 vonult	vonul	vonul			lexikon		
@@ -61030,7 +61030,7 @@ várban	vár	vár			lexikon
 várfalaid	várfalaid	várfalaid			lexikon		
 várhatok	várhat	várhat	vár		szabaly	modell_ellenorizetlen	
 várja	vár	vár			szabaly	modell_ellenorizetlen	
-várjad	vár	vár			lexikon		
+várjad	vár	vár			szabaly	modell_ellenorizetlen	
 várjak-é	vár	vár			szabaly	modell_ellenorizetlen	
 várjatok	vár	vár			szabaly	modell_ellenorizetlen	
 várjuk	vár	vár			szabaly	modell_ellenorizetlen	
@@ -61679,7 +61679,7 @@ vígasztalódni	vígasztalódni	vígasztalódni			lexikon
 vígasztalódással	vígasztalódással	vígasztalódással			lexikon		
 vígasztalója	vígasztaló	vígasztaló			lexikon		
 vígasztalójok	vígasztaló	vígasztaló			lexikon		
-vígasztalójuk	vígasztaló	vígasztaló			lexikon		
+vígasztalójuk	vígasztaló	vígasztaló			szabaly	modell_ellenorizetlen	
 vígasztalókat	vígasztalókat	vígasztalókat			lexikon		
 vígasztalóm	vígasztaló	vígasztaló			lexikon		
 vígasztalót	vígasztaló	vígasztaló			lexikon		
@@ -62243,7 +62243,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 Áldanálak	áldanálak	áldanálak			lexikon		
 Áldd	áldd	áldd			lexikon		
 Áldj	áldj	áldj			lexikon		
-Áldjad	áld	áld			lexikon		
+Áldjad	áld	áld			szabaly	modell_ellenorizetlen	
 Áldjon	áld	áld			szabaly	modell_ellenorizetlen	
 Áldjátok	áld	áld			szabaly	modell_ellenorizetlen	
 Áldlak	áldlak	áldlak			lexikon		
@@ -62569,7 +62569,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 Ímhol	ímhol	ímhol			lexikon		
 Ímé	íme	íme			k_tabla		
 Írd	írd	írd			lexikon		
-Írjátok	írja	írja			lexikon		
+Írjátok	ír	ír			szabaly	modell_ellenorizetlen	
 Írok	írok	írok			lexikon		
 Írtam	írt	írt			lexikon		
 Írá	ír	ír			szabaly	modell_ellenorizetlen	mult.targyas.E3
@@ -62902,9 +62902,9 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 áldd	áldd	áldd			lexikon		
 áldj	áldj	áldj			lexikon		
 áldja	áld	áld			szabaly	modell_ellenorizetlen	
-áldjad	áld	áld			lexikon		
+áldjad	áld	áld			szabaly	modell_ellenorizetlen	
 áldjak	áld	áld			szabaly	modell_ellenorizetlen	
-áldjam	áld	áld			lexikon		
+áldjam	áld	áld			szabaly	modell_ellenorizetlen	
 áldjanak	áld	áld			szabaly	modell_ellenorizetlen	
 áldjatok	áld	áld			szabaly	modell_ellenorizetlen	
 áldjon	áld	áld			szabaly	modell_ellenorizetlen	
@@ -63693,7 +63693,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 átkozódással	átkozódással	átkozódással			lexikon		
 átkozódék	átkozódik	átkozódik			szabaly	modell_ellenorizetlen	mult.E3
 átkozódót	átkozódót	átkozódót			lexikon		
-átkutatja	átkutatja	átkutatja			lexikon		
+átkutatja	átkutat	átkutat	kutat		szabaly	modell_ellenorizetlen	
 átkától	átka	átka			lexikon		
 átkává	átka	átka			lexikon		
 átköltözteté	átköltözteté	átköltözteté			lexikon		
@@ -64111,7 +64111,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 éljen-é	él	él			szabaly	modell_ellenorizetlen	
 éljenek	él	él			szabaly	modell_ellenorizetlen	
 éljetek	él	él			szabaly	modell_ellenorizetlen	
-éljétek	éljétek	éljétek			lexikon		
+éljétek	él	él			szabaly	modell_ellenorizetlen	
 éljünk	él	él			szabaly	modell_ellenorizetlen	
 élne	élne	élne			lexikon		
 élned	élne	élne			lexikon		
@@ -64193,7 +64193,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 énekelik	énekelik	énekelik			lexikon		
 énekelj	énekelj	énekelj			lexikon		
 énekeljek	énekel	énekel			szabaly	modell_ellenorizetlen	
-énekeljem	énekelj	énekelj			lexikon		
+énekeljem	énekel	énekel			szabaly	modell_ellenorizetlen	
 énekeljen	énekel	énekel			szabaly	modell_ellenorizetlen	
 énekeljenek	énekel	énekel			szabaly	modell_ellenorizetlen	
 énekeljetek	énekel	énekel			szabaly	modell_ellenorizetlen	
@@ -64434,7 +64434,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 érinté	érint	érint			szabaly	modell_ellenorizetlen	mult.targyas.E3
 érintése	érintés	érintés			lexikon		
 érje	érje	érje			lexikon		
-érjem	érje	érje			lexikon		
+érjem	ér	ér			szabaly	modell_ellenorizetlen	
 érjen	ér	ér			szabaly	modell_ellenorizetlen	
 érjenek	ér	ér			szabaly	modell_ellenorizetlen	
 érkezett	érkezik	érkezik			szabaly	modell_ellenorizetlen	
@@ -64793,13 +64793,13 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 írj	írj	írj			lexikon		
 írja	írj	írj			lexikon		
 írjak	ír	ír			szabaly	modell_ellenorizetlen	
-írjam	írj	írj			lexikon		
+írjam	ír	ír			szabaly	modell_ellenorizetlen	
 írjatok	ír	ír			szabaly	modell_ellenorizetlen	
 írjon	ír	ír			szabaly	modell_ellenorizetlen	
-írjuk	írj	írj			lexikon		
+írjuk	ír	ír			szabaly	modell_ellenorizetlen	
 írjunk	ír	ír			szabaly	modell_ellenorizetlen	
-írják	írják	írják			lexikon		
-írjátok	írja	írja			lexikon		
+írják	ír	ír			szabaly	modell_ellenorizetlen	
+írjátok	ír	ír			szabaly	modell_ellenorizetlen	
 írni	írni	írni			lexikon		
 írnom	írnom	írnom			lexikon		
 írnának	írnának	írnának			lexikon		
@@ -65181,15 +65181,15 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 ölik	ölik	ölik			lexikon		
 ölj	ölj	ölj			lexikon		
 ölje	ölj	ölj			lexikon		
-öljed	ölj	ölj			lexikon		
+öljed	öl	öl			szabaly	modell_ellenorizetlen	
 öljek	öl	öl			szabaly	modell_ellenorizetlen	
 öljelek	öljelek	öljelek			lexikon		
 öljenek	öl	öl			szabaly	modell_ellenorizetlen	
 öljetek	öl	öl			szabaly	modell_ellenorizetlen	
-öljék	öljék	öljék			lexikon		
-öljétek	ölje	ölje			lexikon		
+öljék	öl	öl			szabaly	modell_ellenorizetlen	
+öljétek	öl	öl			szabaly	modell_ellenorizetlen	
 öljön	ölj	ölj			lexikon		
-öljük	ölj	ölj			lexikon		
+öljük	öl	öl			szabaly	modell_ellenorizetlen	
 öllek	öllek	öllek			lexikon		
 ölne	ölne	ölne			lexikon		
 ölnek	ölnek	ölnek			lexikon		
@@ -65572,7 +65572,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 örökölendő	örökölendő	örökölendő			lexikon		
 örökölheti	örökölhet	örökölhet	örököl		szabaly	modell_ellenorizetlen	
 örökölhetik	örökölhet	örökölhet	örököl		szabaly	modell_ellenorizetlen	
-örököljed	örököljed	örököljed			lexikon		
+örököljed	örököl	örököl			szabaly	modell_ellenorizetlen	
 örököljenek	örököl	örököl			szabaly	modell_ellenorizetlen	
 örököljetek	örököl	örököl			szabaly	modell_ellenorizetlen	
 örököljétek	örököl	örököl			szabaly	modell_ellenorizetlen	
@@ -66257,7 +66257,7 @@ zűrzavaruk	zűrzavaruk	zűrzavaruk			lexikon
 útáld	útáld	útáld			lexikon		
 útálja	útál	útál			szabaly	modell_ellenorizetlen	
 útálja-é	útál	útál			szabaly	modell_ellenorizetlen	
-útáljam-é	útálja	útálja			lexikon		
+útáljam-é	útál	útál			szabaly	modell_ellenorizetlen	
 útáljuk	útál	útál			szabaly	modell_ellenorizetlen	
 útálják	útál	útál			szabaly	modell_ellenorizetlen	
 útáljátok	útál	útál			szabaly	modell_ellenorizetlen	
