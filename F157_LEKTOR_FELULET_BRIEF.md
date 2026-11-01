@@ -6,8 +6,8 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
-ad: egy közös kérdés-séma minden kérdés-forrásra (a `/kiadas` lektora, a határ-ellenőrzés `naplok/HATAR_<ID>.md`, a próza-lefedettség, a kiejtés-kalibráció, az artifact-kommentek); motívumonként generált `naplok/LEKTOR_<ID>.tsv`; egy artifact a kalibráló sablon mintájára (kérdésenként: elfogadom / elvetem / visszakérdezek / saját szöveg; szűrés forrás és motívum szerint; ugrás a lapnézet helyére); a válaszok tárolója és kérésre történő beolvasása; a szabályos visszaút (`jeloltek.tsv` sor `manual` provenienciával és a válasz idézetével, `DONTESEK.md` DT-F helyőrző, prózai teendő a forrásfájl feladataként), közvetlen út az adatba nincs
+allapot: megallt
+ad: egy közös kérdés-séma minden kérdés-forrásra (a `/kiadas` lektora, a határ-ellenőrzés `naplok/HATAR_<ID>.md`, a próza-lefedettség, a kiejtés-kalibráció, az artifact-kommentek, a `proza_javaslat`: a lektor olvasás közben is kérdezhet); motívumonként generált `naplok/LEKTOR_<ID>.tsv`; egy artifact a kalibráló sablon mintájára (kérdésenként: elfogadom / elvetem / visszakérdezek / saját szöveg; szűrés forrás és motívum szerint; ugrás a lapnézet helyére); a válaszok tárolója és kérésre történő beolvasása; a szabályos visszaút (`jeloltek.tsv` sor `manual` provenienciával és a válasz idézetével, `DONTESEK.md` DT-F helyőrző, prózai teendő a forrásfájl feladataként), közvetlen út az adatba nincs
 kovetkezo: "/kovetkezo, 0. ellenőrzés (db capability), M0"
 olvas: [naplok/HATAR_ISTENTISZT-001.md, naplok/HATAR_HAMART-001.md, eszkozok/motivum_hatar.py, eszkozok/kiejtes_szoveg.py, adat/jeloltek.tsv, adat/motivumok.tsv, adat/SEMA.md, DONTESEK.md, "lexikon/*_TUDOMANYOS.md", F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, F86_ELOFIZETES_FEED_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/lektor_kerdesek.py, eszkozok/teszt_lektor_kerdesek.py, eszkozok/lektor_felulet/, "naplok/LEKTOR_*.tsv", naplok/LEKTOR_FELULET_naplo.md]
@@ -53,7 +53,7 @@ Egy kérdés egy sor; a mezők:
 | mező | érték |
 |---|---|
 | `kerdes_id` | stabil azonosító: `<forras>:<motivum>:<sorszám vagy horgony-hash>`; újragenerálásra nem változik, ha a kérdés nem változott |
-| `forras` | `lektor` (`/kiadas`) · `hatar` (`naplok/HATAR_<ID>.md`) · `proza_lefedettseg` · `kiejtes_kalibracio` · `artifact_komment` |
+| `forras` | `lektor` (`/kiadas`) · `hatar` (`naplok/HATAR_<ID>.md`) · `proza_lefedettseg` · `proza_javaslat` (a lektor olvasás közben kérdez: az adatból ez következik, de a lap nem mondja ki) · `kiejtes_kalibracio` · `artifact_komment` |
 | `motivum` | motívum-ID |
 | `hely` | szakasz-horgony (a lexikonlap RÉS-/szakaszjelölője) vagy igehely (`1Móz 3:16`-alak) |
 | `kerdes` | a kérdés szövege, a forrás saját szavaival (idézett sorokkal, `fájl:sor`) |
@@ -88,6 +88,7 @@ Egy session **kérésre** beolvassa a válaszokat (6. szakasz, DT-F<nn>c, eldön
 - **jelöltdöntés:** `adat/jeloltek.tsv` sor `manual` provenienciával, az indoklásban a válasz idézetével és a `kerdes_id`-vel;
 - **tartalmi döntés:** `DONTESEK.md` tétel DT-F helyőrzővel, a válasz idézetével; ha a döntés a felhasználó jóváhagyását kéri,
   a session megáll;
+- **`proza_javaslat` „igen”:** prózai teendő (alább) — a kérdés megnevezi a forrás adatsort (`fájl:sor`, kötelező) és az adat saját proveniencia-sorát; a lektor mondatot **nem** ír és nem javasol (DT-F32b: a próza egy kézben, Opus), a mondatot a próza írója írja az egészet olvasva;
 - **prózai teendő:** a forrásfájl feladata (`/befogad`-dal, a felhasználó jóváhagyásával) — a lektor-felület prózát nem ír, a
   generált lapot nem szerkeszti;
 - a `LEKTOR_<ID>.tsv` sorába az átvezetés commitja/PR-ja kerül, az `allapot` `atvezetve` lesz.
@@ -138,3 +139,4 @@ továbbításában): „Igen, mind” — arra az üzenetre, amely kimondta, hog
 - **DT-F<nn>c ✅ eldöntve** (javaslat szerint; „Igen, mehet”, „Igen, mind”) — a beolvasás ütemezése: **kérésre**, nem minden
   merge után; a Feed belső rétege mutatja a „megválaszolva, de nincs átvezetve” számot, hogy a felhasználó lássa, mikor érdemes
   beolvastatni.
+- **DT-F157d ✅ eldöntve** (javaslat szerint; a felhasználó felvetése: „a lektor nem kaphat olyan kérdést" mi az amit az adatból meg lehet irni" prózát”, a javaslatra: „mehet”) — a lektor olvasás közben is kérdezhet (`proza_javaslat` forrás: adatsor és proveniencia kötelező), de prózát nem ír; az „igen” a forrásfájl prózai feladata, a mondatot a próza írója írja. Megvalósítva: `eszkozok/lektor_kerdesek.py` (`proza_javaslat_sor`), a felület gombjai, `naplok/LEKTOR_FELULET_naplo.md` M2.
