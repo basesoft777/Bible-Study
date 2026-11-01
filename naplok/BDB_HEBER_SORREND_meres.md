@@ -336,3 +336,21 @@ erősebb: a magyar könyvrövidítések számmal kezdődnek (`1Móz`, `2Sám`), 
   amely a rövidítéseket jelöli (N-F131x), és a sorrend-javítás (N-F131y) után fusson. A héber futam felismerése
   determinisztikus (`[\u0591-\u05f4\ufb1d-\ufb4f]` betűk és jelek, a köztük álló szóközzel és makkeffel); a futamon
   belüli számok és sziglumok (4.4/2.) külön esetek.
+
+## 10. Alkalmazás (DT-F131y, 2026-11-01)
+
+A felhasználó döntése (az orkesztrátoron át): a „csak az igazolt tételek, a többi jelölve marad” javaslatra „Mehet”. A kézi
+minta átnézése elmarad („a bdb sorrendet nem tudom eldönteni”).
+
+| Mi | Hol | Eredmény |
+|---|---|---|
+| javítótábla | `adat/bdb_forras_javitas.tsv`, `heber_sorrend` (generált: `forras_javit.py --ts 2026-10-18 --ts-heber-sorrend 2026-11-01`; szabály: `eszkozok/bdb_jelolt/heber_sorrend.py`) | `javitva` 14 976 · `valodi_sorrend` 224 · `jelolt_marad` 21 052 · nem talált 0; a régi 7 203 sor változatlan |
+| megjelenítés | `eszkozok/bdb_rovidites.py`: `heber_sorrend_javit` → `izolal` → `jelol`; hívja a `lexikon_general.bdb_rovidites_jelol` és az olvasó `blokkok._rovidites` | Strongonként betű szerinti csere az angol szövegben és a magyar fordításban |
+| szöveg-nézet | `nezet_general.py --heber-sorrend` | 14 976 csere, 0 sikertelen; `--pe-mem`-mel együtt 883 kifejezésben a pe/mem csere a kifejezésen belül van: ott a sorrend marad (a pe/mem nem vész el) |
+| fordító bemenete, hash | `szakasz_bemenet.py` | változatlan (a hash kérdése: N-F131z) |
+| fordítás | `naplok/BDB_HEBER_SORREND_forditas_kezi.tsv` | a lefordított Strongok 13 052 `javitva` kifejezéséből 3 nem áll betű szerint a magyarban (kézi lista) |
+| izolálás (9. szakasz) | `bdb_rovidites.izolal` | LRM a héber futam után, ha (semleges jelek és címkék után) szám következik |
+
+A H7121 Qal 2.c kifejezése (`׳ק י ׳בְּשֵׁם`) **nem javul**: a Biblia-próba mindkét alakot illeszti (a két rövidítés
+résmintája miatt), így `jelolt_marad`. A javaslat (`ק׳ בְּשֵׁם י׳`) az `indok` mezőben áll. A lapon a `׳ק` önálló
+rövidítésként `ק׳`-ként jelölődik (mint eddig).
