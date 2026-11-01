@@ -5,10 +5,10 @@ kod: OLVASO_ALAPNEZET
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/olvaso-alapnezet
 ad: az olvasó-szerver a mockup 9. változata szerint működik — kis képernyőn csak a Károli-szöveg, a navigáció és a részletek felugró lapon; nagy képernyőn állandó oldalblokk, kijelölés nélkül rövid útmutatóval (DT-F134l); világos alaptéma; mérve 375/768/1280 px-en és valódi telefonon
-kovetkezo: "Folytatás: M4 (mérés ⛔) — az M3 kész (naplok/OLVASO_ALAPNEZET_M3.md)"
+kovetkezo: "Te: M4 ⛔ — a mérés jóváhagyása és a telefonos próba (naplok/OLVASO_ALAPNEZET_M4.md)"
 munka: folyamat
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, F98_TERVEZO_MOD_BRIEF.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/TERVEZO_MOD_zaras.md]
 ir: [eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/arculat.json, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/arculat.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_arculat.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/regiszter_or.py, eszkozok/olvaso_szerver/export.py, eszkozok/olvaso_szerver/konfig/szerver.toml, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_kereses.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/m4_meres.py, eszkozok/olvaso_szerver/README.md, "naplok/OLVASO_ALAPNEZET_*.md"]
@@ -82,6 +82,8 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 - **DT-F134k** 🟢 — (b) kliensoldali javaslat könyvnévre és igehelyre (felhasználó, 2026-10-22, M0).
 - **DT-F134l** 🟢 — (a) üres állapotban rövid útmutató; a fejezet-kalauz kimarad; a DT293 és az E3 ennyiben módosul (felhasználó, 2026-10-22, M0).
 - **DT-F134m** 🟢 — (c) nincs „Másolás forrással” gomb (felhasználó, 2026-10-22, M0).
+- **DT-F134p** 🟡 — a részletek lapjának széles táblái (javaslat: (a) saját vízszintes görgetésű burkoló), nyitott (M4 ⛔).
+- **DT-F134q** 🟡 — a `.gordul` görgetődoboz a részletek lapján (javaslat: (a) a magasságkorlát feloldva a lapon belül), nyitott (M4 ⛔).
 
 A tételek teljes szövege a `DONTESEK.md`-ben.
 
