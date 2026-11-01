@@ -71,5 +71,58 @@ class TestBlokkTorzs(unittest.TestCase):
         self.assertIn('scope=manual', labj[0])
 
 
+class TestKozosProveniencia(unittest.TestCase):
+    """F152 B.2: a blokkban ismétlődő proveniencia-sor egyszer áll, jellel; nem vész el."""
+    P = 'scope=manual | forras=napló.md | ts=2026-10-11'
+
+    def test_minden_sor(self):
+        uj, megj = SZKZ.kozos_proveniencia(['forrás: `A | %s`' % self.P, 'forrás: `B | %s`' % self.P], 'K')
+        self.assertEqual(uj, ['forrás: `A | ‹K1›`', 'forrás: `B | ‹K1›`'])
+        self.assertEqual(megj, '*Minden sor forrásmegjelölése (‹K1›): `%s`*' % self.P)
+
+    def test_reszleges_es_egyedi(self):
+        q = 'scope=x | forras=y.md | ts=2026-09-05'
+        uj, megj = SZKZ.kozos_proveniencia(['A \\| %s' % self.P.replace('|', '\\|'), 'B | %s' % self.P,
+                                            'C | %s' % q, 'D'], 'M')
+        self.assertEqual(uj, ['A \\| ‹M1›', 'B | ‹M1›', 'C | %s' % q, 'D'])   # az egyszer álló a helyén marad
+        self.assertIn('‹M1› = `%s` (2 sor)' % self.P, megj)
+        self.assertNotIn(q, megj)
+
+    def test_nincs_ismetles(self):
+        s = ['A | %s' % self.P, 'B']
+        self.assertEqual(SZKZ.kozos_proveniencia(s, 'E'), (s, ''))
+
+    def test_lekerdezes_mezoi(self):
+        # a lekerdez.py hat mezős sora (strong=, n=, ts=, csatorna=) is egy proveniencia (ELLENOR_F152, B.2)
+        p = 'scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli'
+        uj, megj = SZKZ.kozos_proveniencia(['a · %s' % p, 'b · %s' % p], 'K')
+        self.assertEqual(uj, ['a · ‹K1›', 'b · ‹K1›'])
+        self.assertIn(p, megj)
+
+
+class TestOsszevon(unittest.TestCase):
+    """F152 B.3: az egymást követő, azonos indoklású versek egy sorban, tartományként."""
+
+    def test_tartomany(self):
+        t = ('Károli-kereszthivatkozás', '**elutasítva** — névadás: x', 'forrás: `K`')
+        sorok = [('1Móz 25:%d' % v,) + t for v in (21, 22, 23)] + [('1Móz 25:25',) + t, ('1Móz 26:1',) + t]
+        ki = SZKZ.osszevon(sorok)
+        self.assertEqual([k[0] for k in ki], ['1Móz 25:21–23', '1Móz 25:25', '1Móz 26:1'])
+        self.assertEqual(ki[0][1:], t)
+
+    def test_elteres_nem_von_ossze(self):
+        a = ('1Móz 25:21', 'K', 'x', 'f1')
+        b = ('1Móz 25:22', 'K', 'x', 'f2')   # más lábjegyzet
+        self.assertEqual(SZKZ.osszevon([a, b]), [a, b])
+
+    def test_blokk_torzs_osszevon(self):
+        sor = {'forras_kereses': 'Károli-KH ApCsel 2:21', 'dontes': 'elutasítva', 'indoklas': 'névadás, NEM releváns'}
+        sorok = [dict(sor, igehely='1Móz 25:%d' % v) for v in range(21, 27)]
+        tablak, labj, _ossz = SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
+        self.assertEqual(len(labj), 1)
+        self.assertIn('| 1Móz 25:21–26 |', tablak[1])
+        self.assertIn('(6)', tablak[0])
+
+
 if __name__ == '__main__':
     unittest.main()
