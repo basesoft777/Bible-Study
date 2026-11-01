@@ -290,6 +290,17 @@ hivatkozzon.
 *Validációs szabály:* ha a `strong` mező igét jelöl (a `Strong_szotar.tsv` szófaj-mezője
 `ige`), a numerikus érték **gyanús** — az `ellenoriz.py` jelezze, de ne utasítsa el.
 
+**`tagolatlan` (F148, DT-F148b).** Ha az előfordulás szócikke a BDB-ben nem tagol (a `bdb_szakaszok.tsv`-ben
+a Strongnak csak `cim`/`fej` sora van, pl. H0922 *bohu*), a tagolatlan Strong **nem lehet** `lexikon_entry_id`:
+összetett soron (H8414+H0922) a tagolt token az entry, a tagolatlan csak szótári példahelyként jelenik meg. Ha a
+sor egyetlen Strongja tagolatlan, a mezőben az explicit `tagolatlan` érték áll — **üres soha** (CLAUDE.md 3.
+szabály). A gerinc ilyenkor a `fej` szakaszt mutatja. A `teljes`/`részlet` itt továbbra is tilos.
+
+**Kötelező mezők (F148, `ellenoriz.py` 19. szabály).** Gerinces motívum (2.44: nincs `kivetel` sora) minden
+előfordulás-során a `karoli_szo`, a `lexikon_szotar`, a `lexikon_entry_id` és a `jelentes_szam` nem üres
+(SÉRTÉS); a gerinc 18. szabálya szerint a hármas által kijelölt szakasznak sora van a `szotar_szakasz_cimke.tsv`-
+ben (2.40). Kivétellistás motívumon a hiány JELENTÉS (darabszám), amíg a #123 el nem éri.
+
 ### 2.3 `kapcsolatok.tsv` — igehely-párok
 
 Kulcs: `forras_igehely` + `cel_igehely` + `id`.
@@ -1649,7 +1660,7 @@ leképezés itt áll, a `lexikon_hivatkozasok.tsv` sémája nem változik; ha a 
 A magyar Thayer-szöveg nem innen jön, hanem a #142 szakaszsoraiból (`forditasok.tsv` `sz<n>`, DT373 1.; az
 F131.1-ben itt tartott átmeneti kézi határok az F131.3.6-ban kivezetve). **A tábla saját tagolást nem tart:** minden sor létező szakaszra mutat. A címke a szóról
 szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak a szótári gerinccel
-renderelt motívumok (`lexikon_general.SZOTARI_GERINC_MOTIVUMOK`) Strongjai: az arany lap (ISTENTISZT-001), és a #123
+renderelt motívumok (`lexikon_general.gerinc_aktiv`, 2.44) Strongjai: az arany lap (ISTENTISZT-001), és a #123
 migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT417).
 Olvasás `split('\t')`.
 
@@ -1670,6 +1681,18 @@ Kulcs: `szotar` + `strong` + `szakasz`. **Ellenőrzés** (`ellenoriz.py` 17. sza
 `cimke_hu` nem tartalmaz tiltott minősítést (`motívum`, `invokál`, `invokáci`, önálló `nem`) és a
 `tiltott_fordulatok.tsv` (2.36) egyetlen mintáját sem. Állapot (F131.3.6, 2026-10-27): 8 sor (BDB 5, TBESG 1,
 Thayer 2), mind címkés.
+
+**Gépi levezetés (F148, DT-F148c).** Új sort a `eszkozok/szakasz_cimke_levezet.py ellenoriz --id [ID] --ir` is
+írhat, kizárólag jelzés nélküli előfordulás-sorból: a `jelentes_szam` → `szakasz` leképezés a 2.30/2.34 létező
+útvonalai közül (BDB: binyan + számozás; ha a számozás több binyan alatt áll, a vers Macula-morfológiája szűkít,
+csak egyértelműen), a `cimke_hu` a magyar szakaszszöveg (BDB: `bdb_szakasz_hu.tsv`; Thayer: a #142 `sz<n>` sora)
+első glosszája, a 17. szabály tiltó mintáin és a 2.36-on átengedve. A gépi sor proveniencia-alakja:
+`scope=<szotar> <strong> <szakasz> | forras=szakasz_cimke_levezet.py (gépi, DT-F148c) | ts=<dátum>`. Meglévő
+sor üres `lexikon_jelentes_szam`-ját pótolhatja (a `megjegyzes` mezőbe írt gépi nyommal), meglévő címkét nem ír
+felül. Jelzésnél (J1–J8: a szótár példahelye más pontra mutat, két pont, üres mező, nincs útvonal, tagolatlan
+szócikk, minősítő, a címke gépileg nem képezhető, eltérés a kézi leképezéstől) nem ír: a kutató dönt.
+A kivétel nélküli motívumok köre a 2.44 `SZOTARI_GERINC` kapcsolója (F148: alapból be, a még nem migrált motívum
+`kivetel`).
 
 
 ### 2.41 `tematikus_temak.tsv` — a tematikus index (12. szerep) jelöltjeinek döntése, motívumonként (ISTENTISZT-001 arany lap, 2026-10-29)
