@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ad: a kész Thayer-fordítások (forditasok.tsv, szotar = Thayer) soronként újraellenőrizve a teljes ÚSZ Károli–Strong párosításával (az evangéliumok és az ApCsel is); az eltérő sorok jóváhagyott döntés szerint újrafordítva (M3-lánc) vagy kézi ítéletre listázva; az adatblokk elavult könyvlistája javítva
 kovetkezo: "/kovetkezo (M0 mérés, ⛔ a mérés után: az eltérő sorok sorsa)"
 ag: claude/f153-thayer-2f248a
@@ -102,4 +102,4 @@ kapuk). Javul az `adatblokk.py` docstringje. Az új ellenőrzőhöz teszt kész�
 
 ## 6. Döntésnapló
 
-- `DT-F<nn>a` (⛔ M0): az eltérő sorok sorsa (a/b/c). *Nyitott.*
+- `DT-F153a` (⛔ M0): az eltérő sorok sorsa: szűk (b), a felhasználó „b” válasza; a G1941 sz1–sz4 újrafordítása nem változtatott a szövegen. *Alkalmazva.*
