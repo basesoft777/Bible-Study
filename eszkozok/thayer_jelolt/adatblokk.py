@@ -5,7 +5,7 @@ Csoportonként (a fordító egy hívásának szakaszai) gépileg előállított,
 Nem értelmez és nem egészít ki emlékezetből (CLAUDE.md 3. szabály); hiánynál kifejezett jelzés.
 
   1. Károli-alakok (2a/3): a Strong Károli-szóalakjai a #22 párosításából (`adat/karoli_strong/parok_*.tsv`), gyakorisággal,
-     magas / alacsony bizonyosság szerint; a párosítás le nem fedett ÚSZ-könyvei (ma: Mt, Mk, Lk, Jn, ApCsel) explicit.
+     magas / alacsony bizonyosság szerint; a párosítás le nem fedett ÚSZ-könyveit a fájlok alapján méri; 2026-11-01 óta nincs ilyen (PR #537).
   2. Idézett versek Károli-szövege (2a/4): a csoport szakaszaiban `bcv`-vel idézett versek (`adat/thayer_vers_jelentes.tsv`) a
      `Karoli_1908.tsv` szerint; Károli-kulcs nélkül `[nincs Károli-vers]`; hosszú vers `VERS_MAX` karakterre vágva (`…`).
   3. Siglák (2a/5): a csoport szövegében előforduló `adat/thayer_sigla.tsv`-sorok; besorolt sornál a kötelező alak; besorolatlannál
@@ -287,9 +287,9 @@ def blokk(strong, csoport=None, ts=None):
     fej = ['### Adatblokk — Thayer %s (gépi, a projekt adataiból; nem értelmezés)' % kulcs.strong_eredeti(sp)]
     if illeszt == 'javitassal':
         fej.append('[a forrásszöveg a Thayer_teljes.tsv szövegvesztése miatt a lexikonból kiegészítve (adat/thayer_forras_javitas.tsv, '
-                   'DT-F132i (2)); a szakaszok szövege teljes]')
+                   'DT333 (2)); a szakaszok szövege teljes]')
     elif illeszt != 'egyezik':
-        fej.append('[FIGYELEM: a forrásszöveg illesztése `%s` (a Thayer_teljes.tsv szövegrészt veszít; DT-F132i) — a hiányt ne pótold]'
+        fej.append('[FIGYELEM: a forrásszöveg illesztése `%s` (a Thayer_teljes.tsv szövegrészt veszít; DT333) — a hiányt ne pótold]'
                    % illeszt)
     return '\n'.join(fej + [''] + ['\n'.join(r) + '\n' for r in reszek]).rstrip('\n')
 

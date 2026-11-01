@@ -317,7 +317,7 @@ class Adatblokk(unittest.TestCase):
         for jel in ('**1. Károli-szóalakok**', '**2. Az idézett versek', '**3. Siglák', '**4. Nyelvközi híd**'):
             self.assertIn(jel, b)
         self.assertEqual(b.count('*proveniencia: scope=G0012') + b.count('*proveniencia: scope=G1941'), 4)
-        self.assertIn('Mt, Mk, Luk, Ján, ApCsel', b)          # a párosítás le nem fedett ÚSZ-könyvei, explicit
+        self.assertIn('le nem fedett könyvek: nincs', b)      # 2026-11-01 óta (PR #537) a teljes ÚSZ párosított; a fájlokból mért
         self.assertIn('1Pét 1:17 „És ha Atyának hívjátok őt', b)
         self.assertIn('= H7121', b)
 
@@ -359,9 +359,9 @@ class Adatblokk(unittest.TestCase):
         self.assertNotIn('⟪3⟫', b)
 
     def test_javitassal_jelzes(self):
-        # DT-F132i (2): a G4151 szövege a javítótáblával teljes — tájékoztató sor, nem „a hiányt ne pótold” figyelmeztetés
+        # DT333 (2): a G4151 szövege a javítótáblával teljes — tájékoztató sor, nem „a hiányt ne pótold” figyelmeztetés
         b = adatblokk.blokk('G4151', TB.szakaszok('G4151')[:2], ts='T')
-        self.assertIn('DT-F132i (2)', b)
+        self.assertIn('DT333 (2)', b)
         self.assertNotIn('FIGYELEM', b)
 
     def test_nincs(self):
@@ -458,6 +458,64 @@ class Lanc(unittest.TestCase):
         self.assertTrue(uj.startswith(eredeti))         # a régi sorok bájtra azonosak, csak hozzáfűzés
         sorok = [dict(zip(F.FEJLEC, s.split('\t'))) for s in uj.split('\n') if s.startswith('Thayer\tG1941\t')]
         self.assertEqual(TB.strong_magyar(sorok)[1], 'teljes')   # a kezi teljes sor az érvényes
+
+
+class TesztKaroliUjraellenoriz(unittest.TestCase):
+    """F153: a Károli-újraellenőrző egyezés- és régi/teljes mankó-logikája."""
+
+    def test_egyezes(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        al = collections.Counter({'segítségül': 9, 'hívják': 6})
+        self.assertEqual(KU.egyezes({'segí'}, al)[0], 'egyezik')
+        self.assertEqual(KU.egyezes({'neve'}, al)[0], 'nem_talal')
+        self.assertEqual(KU.egyezes({'segí'}, collections.Counter())[0], 'nincs_adat')
+        self.assertEqual(KU.egyezes(set(), al)[0], 'nincs_ellenorzendo')
+
+    def test_uralkodo_to_szinten(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        self.assertEqual(KU.uralkodo(collections.Counter({'lelke': 3, 'lelket': 2, 'élet': 4})), ('lelk', []))
+        self.assertEqual(KU.uralkodo(collections.Counter()), ('', []))
+
+    def test_uralkodo_holtverseny_nem_fajlsorrend(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        al = collections.Counter({'segítségül': 9, 'hívják': 5, 'hívja': 4, 'neveztetik': 9})
+        self.assertEqual(KU.uralkodo(al), ('', ['hívj', 'neve', 'segí']))          # 9 = 9 = 9
+        self.assertEqual(KU.uralkodo_szoveg(al), 'holtverseny(hívj,neve,segí)')
+        al2 = collections.Counter(dict(reversed(list(al.items()))))                # a beszúrási sorrend nem számít
+        self.assertEqual(KU.uralkodo(al2), KU.uralkodo(al))
+
+    def test_egyoldali_holtverseny_nincs_a_forditasban_jelzes(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        # a teljes oldalon egyértelmű tő (lelk), a régin holtverseny: a hiányt jelezni kell, váltást nem állítunk
+        regi = collections.Counter({'szívét': 2, 'lelkét': 2})
+        teljes = collections.Counter({'lelkét': 5, 'szívét': 2})
+        self.assertTrue(KU.uralkodo(regi)[1] and KU.uralkodo(teljes)[0] == 'lelk')
+        # a meres() ténylegesen jelzi (ELLENOR_F153_3 1.): G5590 sz4 és G4151 sz8 fordításában nincs meg az új tő, G1941 sz3-éban megvan
+        _prov, _fej, sorok = KU.meres()
+        osszeg = {(r[0], r[1]): r[-1] for r in sorok}
+        self.assertIn('+nincs_a_forditasban', osszeg[('G5590', 'sz4')])
+        self.assertIn('+nincs_a_forditasban', osszeg[('G4151', 'sz8')])
+        self.assertNotIn('+nincs_a_forditasban', osszeg[('G1941', 'sz3')])
+
+    def test_szamol_szakaszonkent(self):
+        import karoli_ujraellenoriz as KU
+        linkek = [('Mt 10:3', 'hívtak'), ('Mk 1:1', 'hívtak'), ('1Kor 1:2', 'segítségül')]
+        t, r = KU.szamol(linkek)
+        self.assertEqual((sum(t.values()), sum(r.values())), (3, 1))               # régi: Mt, Mk nélkül
+        t, r = KU.szamol(linkek, {'1Kor 1:2'})
+        self.assertEqual(dict(t), {'segítségül': 1})
+        self.assertEqual(KU.szamol(linkek, set())[0], {})
+
+    def test_teljes_tartalmazza_a_regit(self):
+        import karoli_ujraellenoriz as KU
+        teljes, regi = KU.parok_alakok('G1941')
+        self.assertGreater(sum(teljes.values()), sum(regi.values()))
+        for a, n in regi.items():
+            self.assertLessEqual(n, teljes[a])
 
 
 if __name__ == '__main__':
