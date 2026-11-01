@@ -118,3 +118,9 @@ A szöveget egészében olvasom (K1).
   > az nem tartozik ide.
   A passzív szerkezetről szóló mondat (nikrá … al) változatlan. Beírás az adatírással együtt.
 - Hátravan: a Kivonat 3. mondata (3. szakasz, (A)/(B)) és a K5-kivétel a `negativ_kriterium`-ban (5. szakasz).
+- **A Kivonat 3. mondata**: a felhasználó a (P) változatot választotta, szó szerint: „p”. Ez a (B) helyett áll,
+  és az orkesztrátor chatjében, a felhasználóval közösen fogalmazták át. A jóváhagyott szöveg:
+  > A motívum nem az imádság általában, hanem az, amikor valaki az Úr nevét kimondva fordul hozzá segítségért.
+  > Ha a név nem hangzik el, a segélykiáltás a tágabb körbe tartozik. Az Újszövetségben ezt nem az ige dönti el,
+  > mert az mindkét esetben ugyanaz, hanem a név (ApCsel 7:59; 2Tim 2:22; Róm 10:12, 14).
+  Beírás az adatírással együtt. Hátravan: a K5-kivétel a `negativ_kriterium`-ban.
