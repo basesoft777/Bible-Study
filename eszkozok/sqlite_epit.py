@@ -788,7 +788,7 @@ class Epito(object):
         # `kk_leképezés` oszlopban). A mai BSB_Strongs.tsv kulcsa nem egysegesen MT (F120, DT-F120a): az 1. kor
         # a celt es a vers Strong-halmazat gyujti, a bsb_bizonytalan() a tartalommal nem igazolt es az utkozo
         # verseket kihagyja (jelentessorral), a 2. kor csak a megmaradtakat irja.
-        nyers, versek = [], {}
+        nyers, versek, step_kulcs = [], {}, {}
         for r in G.tsv_beolvas(os.path.join(self.konk, 'BSB_Strongs.tsv'))[1]:
             m = STEP_IGEHELY_RE.match(r['Igehely'])
             if not m:
@@ -815,10 +815,11 @@ class Epito(object):
             for e in (s.split('+') if s else []):
                 if e not in self.grammatikai and not ('H9001' <= e <= 'H9049'):
                     halmaz.add(e)
+            step_kulcs.setdefault(kulcs, '%s.%s.%s' % (m.group(1), m.group(2), m.group(3)))
             nyers.append((kulcs, kk, mod, s, r))
         kihagy = bsb_bizonytalan(versek, self.ot_vers_strongok)
-        for (konyv, mtkulcs), ok in sorted(kihagy.items()):
-            self.jelent_norm('bsb', '%s %s' % (konyv, mtkulcs), ok)
+        for kulcs, ok in sorted(kihagy.items()):
+            self.jelent_norm('bsb', step_kulcs[kulcs], ok)   # BSB-kulcs STEP-alakban (nem tévesztheto ossze a Karoli-kulccsal)
         self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT-F120a: a Károli-cél tartalmilag nem igazolt '
                                  'vagy ütközik; a jelentés `bsb` sorai)' % len(kihagy))
         bsb, szamozas_vers = [], {}

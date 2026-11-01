@@ -106,6 +106,15 @@ def main():
     print('nem ellenőrizhető: %d' % len(nem_ell))
     for x in nem_ell:
         print('  ' + x)
+    # vers_szamozas mellékhatás: az a Károli-cél, amelyre csak kihagyott BSB-vers esett, `nincs_adat`-ot kap
+    kihagy_cel = defaultdict(set)
+    for (konyv, mk), b in bsb.items():
+        kk = mt_kk.get((konyv, mk), '%s %s' % (konyv, mk))
+        if kk in karoli and kk not in cel:
+            kihagy_cel[kk.rsplit(':', 1)[0]].add(kk)
+    print('vers_szamozas -> nincs_adat (BSB-adat nélkül maradó Károli-vers): %d' % sum(len(v) for v in kihagy_cel.values()))
+    for f, v in sorted(kihagy_cel.items()):
+        print('  %s: %d' % (f, len(v)))
     utk = {k: sorted(v) for k, v in cel.items() if len(v) > 1}
     print('ütközés az őr után: %d %s' % (len(utk), utk))
     print('proveniencia: scope=BSB_Strongs.tsv (F71.2) x TAHOT_kivonat.tsv a Karoli_versmegfeleltetes.tsv-n át | '

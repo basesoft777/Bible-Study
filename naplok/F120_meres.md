@@ -116,13 +116,20 @@ Szabály: a BSB-vers a leképezett Károli-versre csak akkor kerül, ha a cél T
 | nem ellenőrizhető | 0 |
 | ütközés az őr után | 0 |
 
-A kimaradó versek Károli-fejezetenként: 4Móz 13 (33), 4Móz 30 (11), Hós 2 (23), Hós 11 (1), Hós 12 (14), Hós 14 (9), Jób 17 (1), Jób 36 (1), Jób 37 (1), Jób 39 (30), Jób 40 (14), Jóel 2 (5: a BSB 3:1–5 → Károli 2:28–32 táblapár), Préd 2 (25), Préd 9 (18), Préd 10 (14), Préd 12 (14), Péld 12 (1), Zsolt 145 (1), Én 6 (1), Ézs 9 (19), Ézs 64 (11), 1Sám 20 (1). Az F117 hat ütközéséből a tartalommal nem egyező fél marad ki (Hós 2:1–3, Jób 17:1, 37:1, Péld 12:1 azonossága), a Jóel 2:28–32-ből a táblapár (BSB 3:1–5); a helyes sor mindenütt megmarad. Elszigetelt, a küszöbön álló esetek (Hós 11:11 0,45; Jób 36:33 0,50; Zsolt 145:13 0,50) is kimaradnak: az átmeneti úton a kihagyás a biztonságos irány, az (a) újragenerálás pótolja.
+A kimaradó versek Károli-fejezetenként: 4Móz 13 (33), 4Móz 30 (11), Hós 2 (23), Hós 11 (1), Hós 12 (14), Hós 14 (9), Jób 17 (1), Jób 36 (1), Jób 37 (1), Jób 39 (30), Jób 40 (14), Jóel 2 (5: a BSB 3:1–5 → Károli 2:28–32 táblapár), Préd 2 (25), Préd 9 (18), Préd 10 (14), Préd 12 (14), Péld 12 (1), Zsolt 145 (1), Én 6 (1), Ézs 9 (19), Ézs 64 (11), 1Sám 20 (1). Az F117 hat ütközéséből a tartalommal nem egyező fél marad ki (Hós 2:1–3, Jób 17:1, 37:1, Péld 12:1 azonossága), a Jóel 2:28–32-ből a táblapár (BSB 3:1–5); a Jób 17:1, Jób 37:1, Péld 12:1 és a Jóel 2:28–32 helyes sora megmarad. **A Hós 2-ben viszont egyik jelölt sem helyes** (a BSB-kulcs KJV): az azonossággal és a táblapárral érkező versek egyaránt kimaradnak, a Károli Hós 2 versei BSB-adat nélkül maradnak (ELLENOR_F120 1.). Elszigetelt, a küszöbön álló esetek (Hós 11:11 0,45; Jób 36:33 0,50; Zsolt 145:13 0,50) is kimaradnak: az átmeneti úton a kihagyás a biztonságos irány, az (a) újragenerálás pótolja.
 
 **Mellékes lelet, nem e tétel tárgya:** a 4Móz 13-ban 33 `Számozás`=`mt` BSB-vers azonossággal (a tábla `KJV` osztályú sora szerint) nem egyezik a Károli-kulcsú TAHOT azonos versével. A versmegfeleltető tábla és a TAHOT itt eltérhet; a (a) lépés újramérése tisztázza (N-F120a).
 
 *Javítás az első futás után: a mérőszkript a Károli-vershalmazt először a versmegfeleltető táblából vette (239 / 32), az építő a `Karoli_1908.tsv`-ből (`VersIndex`). A táblában 9 Károli-vers nem szerepel (pl. 4Móz 13:1, Jób 39:1–3, Préd 9:1–2), ezeket az első mérés „nincs Károli-vers”-nek számolta. A szkript azóta a `Karoli_1908.tsv`-t olvassa, és bájtra az építő számait adja (248 / 23). Ugyanez a különbség az 1–5. szakasz „nincs ilyen Károli-vers” értékeiben (32 / 266) is benne van; az ottani következtetéseket nem érinti.*
 
 **Mellékes lelet 2:** a 9 Károli-vers (4Móz 13:1, Jób 39:1–3, Préd 9:1–2 és társai) a `Karoli_1908.tsv`-ben van, a `Karoli_versmegfeleltetes.tsv`-ben nincs sor rá. Nem e tétel tárgya; a (a) lépés mérése előtt ellenőrizendő (N-F120a).
+
+**`vers_szamozas` mellékhatás (ELLENOR_F120 2.):** az a Károli-vers, amelyre csak kihagyott BSB-vers esett, BSB-adat nélkül marad, és a `vers_szamozas.szamozas` értéke `nincs_adat`: **237 Károli-vers** (`F120_or_meres.py`; Hós 2: 20, 4Móz 13: 33, Jób 39: 30, Préd 2: 25 …). A próba-db `vers_szamozas` eloszlása: mt 19 958, ellenorizetlen 1 401, nincs_adat 1 758, kjv 34, eltolodas_gyanu_N46 44.
+
+## 8. Tesztek
+
+- `python eszkozok/teszt_sqlite_epit.py` (F120.3 után): 78 teszt; az `Integracio` és a `FeliratHalmaz` újra fut és zöld; 1 FAIL: `Negativ.test_baseline_a_masolaton_zold` (13. szabály, fordítási gyorsítótár, 114 sor az `adat/`-ban; az `adat/` a diffben változatlan, nem e tétel tárgya). F120.6: `BsbOr` 7 teszt zöld; negatív próba (az őr kikapcsolva) piros.
+- `python eszkozok/teszt_futtat.py --gyors`, a régi élő db-n (2026-10-14): 5 zöld, 3 HIBA fájl (8 FAIL, pilot/BDB); az új próba-db-n (WSL-natív másolat, `~/f120_proba/pardes.db`): 3 zöld, 5 HIBA fájl (12 FAIL: pilot/BDB, Károli–Strong könyvszám, `allapot-folyamat` szelektor). Egyik sem BSB-hez kötött: a tesztek elvárásai régebbiek a mai adatnál; az élő újraépítés után ezek pirosak lesznek, külön tétel kell.
 
 ## 7. Építési próba a repón kívül (E6) és SQL-ellenőrzés (E2)
 

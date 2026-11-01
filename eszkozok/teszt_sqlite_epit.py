@@ -242,12 +242,49 @@ class BsbOr(unittest.TestCase):
         self.assertEqual(set(ki), {('Jóel', '3:1')})
         self.assertIn('Jóel 2:28', ki[('Jóel', '3:1')])
 
-    def test_hos2_azonossag_a_szomszed_fejezetbol_kimarad(self):
-        # az F117 mintája: a BSB Hós 2:1 azonossággal a Károli 2:1-re esne, de a tartalma más versé
-        tahot = {'Hós 2:1': {'H559', 'H251', 'H5971'}}
-        versek = {('Hós', '2:1'): ('Hós 2:1', {'H7378', 'H517'}),
-                  ('Hós', '2:4'): ('Hós 2:1', {'H559', 'H251', 'H5971'})}
-        self.assertEqual(set(S.bsb_bizonytalan(versek, tahot)), {('Hós', '2:1')})
+    def test_azonossag_a_szomszed_fejezetbol_kimarad(self):
+        # az F117 mintája (Jób 17:1): a BSB 17:1 azonossággal a Károli 17:1-re esne, de a tartalma a Károli 16:22-é;
+        # a táblapár (MT 17:2 -> Károli 17:1) tartalma egyezik. (A Hós 2:1–3-ban egyik jelölt sem egyezik: ott mind
+        # kimarad, l. naplok/F120_meres.md 6.)
+        tahot = {'Jób 17:1': {'H7307', 'H2254', 'H3117', 'H6913'}}
+        versek = {('Jób', '17:1'): ('Jób 17:1', {'H8141', 'H4557', 'H734'}),
+                  ('Jób', '17:2'): ('Jób 17:1', {'H7307', 'H2254', 'H3117', 'H6913'})}
+        self.assertEqual(set(S.bsb_bizonytalan(versek, tahot)), {('Jób', '17:1')})
+
+    def test_bsb_szamozas_fixturan_kezi_mt_par_es_kihagyas(self):
+        # brief 3.4: a KEZI + mt sor (Károli Jób 17:1 = MT 17:2) a _bsb_szamozas-on át a helyes Károli-versre képez,
+        # az azonossággal érkező, tartalommal nem igazolt BSB 17:1 kimarad (jelentéssor STEP-kulccsal), a vers_szamozas
+        # a megmaradt BSB-vers Számozás-át kapja; a kihagyott cél nélküli vers `nincs_adat`.
+        g = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, g, True)
+        os.makedirs(os.path.join(g, 'konkordancia'))
+        with open(os.path.join(g, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# teszt-fixtúra\nigehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes\n'
+                    'Jób 16:22\t16:22\t\tKJV\tszamlalas\t\n'
+                    'Jób 17:1\t17:2\t17:2\tKEZI\tszoveg_osszevetes_f117\t\n'
+                    'Jób 17:2\t17:3\t17:3\tKEZI\tszoveg_osszevetes_f117\t\n')
+        with open(os.path.join(g, 'konkordancia', 'BSB_Strongs.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\tAngol szó állapota\tSzámozás\n')
+            for ig, st, sz in (('Job.16.22', 'H8141', 'mt'), ('Job.17.1', 'H8141', 'ellenorizetlen'),
+                               ('Job.17.1', 'H734', 'ellenorizetlen'), ('Job.17.2', 'H7307', 'mt'),
+                               ('Job.17.2', 'H2254', 'mt'), ('Job.17.3', 'H7760', 'mt')):
+                f.write('%s\t1\t%s\tx\t\tforditva\t%s\n' % (ig, st, sz))
+        ep = S.Epito(g, os.path.join(g, 'x.db'), 'teljes')
+        ep.konyvek = S.Konyvek([{'STEPBible-rövidítés': 'Job', 'Magyar rövidítés': 'Jób', 'Forrás-alakok': ''}])
+        ep.vi = S.VersIndex([{'Igehely': k} for k in ('Jób 16:22', 'Jób 17:1', 'Jób 17:2')])
+        ep.minta, ep.grammatikai = None, set()
+        ep.ot_vers_strongok = {'Jób 16:22': {'H8141'},'Jób 17:1': {'H7307', 'H2254'}, 'Jób 17:2': {'H7760'}}
+        tablak = {}
+        ep.tabla = lambda nev, oszlopok, sorok, lic, indexek=(): tablak.__setitem__(nev, list(sorok))
+        ep._bsb_szamozas()
+        bsb = {(r[0], r[7], r[8]) for r in tablak['bsb']}
+        self.assertEqual(bsb, {('Jób 16:22', 'Job.16.22', 'azonos_feltetelezett'), ('Jób 17:1', 'Job.17.2', 'mt_tabla'),
+                               ('Jób 17:2', 'Job.17.3', 'mt_tabla')})
+        ok = [(n, o) for (t, n, o) in ep.norm_jelentes if t == 'bsb']
+        self.assertEqual([n for n, _ in ok], ['Job.17.1'])
+        self.assertTrue(ok[0][1].startswith('bizonytalan:'))
+        szam = {r[0]: r[4] for r in tablak['vers_szamozas']}
+        self.assertEqual(szam, {'Jób 16:22': 'mt', 'Jób 17:1': 'mt', 'Jób 17:2': 'mt'})
 
     def test_utkozes_mind_kimarad(self):
         tahot = {'Péld 12:1': {'H1', 'H2'}}
