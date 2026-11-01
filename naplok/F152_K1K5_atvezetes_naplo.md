@@ -145,3 +145,15 @@ Ezzel minden döntés megvan. Átvezetés: F152.14–.
 - **F152.16** (`naplok/F152_negativ_kriterium_ir.py`): a `motivumok.tsv` ISTENTISZT-001 `negativ_kriterium`-a három új
   részt kapott: a *besém* utáni JHVH-feltételt (DT-F152b, K4), az ÚSZ-ben a ὄνομα feltételét (K2) és az 1Kir 18:25–26
   kivételét (K5). A passzív szerkezetről szóló rész változatlan.
+- **F152.17** (`motivumok/ISTENTISZT-001.md`, a teljes szöveg átolvasásával): a Kivonat új számai: 22 hely (16 ÓSZ, 6 ÚSZ);
+  a LXX-egyezés 13/16 (mérés: `naplok/F152_proza_meres.py`, ts=2026-11-01T19:38Z). Bekerült a 2. mondat jóváhagyott
+  pontosítása és a (P) változatú fölérendelt-fogalom mondatok. A K5 jelölése a Kármel-szakaszba került. Az A/B/C-ben
+  az A 31 → 20 helyre változott. NAPLO-jegyzetre cserélődött a „hirdetés hármasa” (1Krón 16:8; Zsolt 105:1; Ézs 12:4),
+  a „küldetés és vád” (a ragos versek), a „3. A Róm 10:12” és a „Róm 10:14” szakasz. Pontosítva: a Thayer 5. ága
+  (a névvel / név nélkül tagolás a Thayer saját szövege), a BDB 2.c Jer 10:25 = Zsolt 79:6 párja, a „négy forrás”
+  bekezdés, a TSK-bekezdés (a 20 hely a 31 részhalmaza), az UBS 1Pét 1:17-mondatai és az alkalmazás 1. kérdése. Az új
+  görög idézet kiejtéssel áll (a kézi kiejtés-hiány 3 → 0).
+- **F152.18**: újragenerálás (`PARDES_DATUM=2026-10-29`): `general.py --cel lexikon --id ISTENTISZT-001 --ir`, majd
+  `--cel nyitott/naplo/index --ir`. A második generálás nulla diffet adott. `ellenoriz.py`: 0 SÉRTÉS (RENDBEN 17, KÉZI 2,
+  JELENTÉS 5). Az új JELENTÉS a 21. szabályé: helyőrző (DT-F151c/F152b/F152c) a generált lapon, ez ág-állapot.
+  `ellenorzes/futtat.py --teljes`: exit 0.
