@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 eszkozok/szakasz_cimke_levezet.py -- F148 (c): a szakaszcímke gépi levezetése a `jelentes_szam`-ból
-(F148_UJ_MOTIVUM_VEDOKORLAT_BRIEF.md 3. lépés, DT-F148b, DT-F148c; SEMA 2.40).
+(F148_UJ_MOTIVUM_VEDOKORLAT_BRIEF.md 3. lépés, DT438, DT439; SEMA 2.40).
 
 Az előfordulás-sor `lexikon_szotar` + `lexikon_entry_id` + `jelentes_szam` hármasából a szótár szakaszát
 vezeti le, csak a `bdb_szakaszok.tsv` / `thayer_szakaszok.tsv` létező útvonalai közül (BDB: binyan + számozás,
@@ -12,16 +12,16 @@ Eltérésnél JELEZ, nem választ és nem tölt ki (CLAUDE.md 3. szabály):
   J2 két pont: alternatíva (`Nif'ál / Hif'íl`), két szám, több binyan, vagy a példák két útvonalra mutatnak
   J3 üres mező
   J4 a jelnek nincs útvonala a szótárban
-  J5 tagolatlan szócikk (DT-F148b)
+  J5 tagolatlan szócikk (DT438)
   J6 minősítő alak (`2.c (tagadva)`)
-  J7 a címke gépileg nem képezhető (DT-F148c: üres / fordításra váró glossza, tiltott minta)
+  J7 a címke gépileg nem képezhető (DT439: üres / fordításra váró glossza, tiltott minta)
   J8 a levezetett szakasz eltér a táblában álló kézi leképezéstől, vagy a szakasz sora más kulcsra mutat
 
     python eszkozok/szakasz_cimke_levezet.py ellenoriz --id ALVIL-001 [--ki FAJL]
     python eszkozok/szakasz_cimke_levezet.py ellenoriz --id ALVIL-001 --ir
 
 Kimenet: `naplok/F148_levezetes_<ID>.tsv`, soronként proveniencia-sorral. Az `--ir` csak a jelzés nélküli
-sorokat írja a `adat/szotar_szakasz_cimke.tsv`-be: új sort (gépi címkével, DT-F148c (1)), vagy egy meglévő
+sorokat írja a `adat/szotar_szakasz_cimke.tsv`-be: új sort (gépi címkével, DT439 (1)), vagy egy meglévő
 sor üres `lexikon_jelentes_szam`-ját pótolja; meglévő címkét nem ír felül. Írás előtt az eredeti sorokkal
 összevet, eltérésnél megáll (minta: `eszkozok/igazolas_migracio.py`).
 """
@@ -209,7 +209,7 @@ def levezet_sor(adat, sor, lexhiv):
 
 
 def elso_glossza(szoveg):
-    """DT-F148c (1): a magyar szakaszszöveg első glosszája (a jel, a címkeszerű előtag és a héber/görög,
+    """DT439 (1): a magyar szakaszszöveg első glosszája (a jel, a címkeszerű előtag és a héber/görög,
     igehely, zárójel előtti rész)."""
     if not szoveg:
         return ''
@@ -350,7 +350,7 @@ def ir_tabla(ut, irando, ts):
             if k in idx:
                 raise SystemExit('megállás: a %s sor már létezik' % (k,))
             uj.append('\t'.join([k[0], k[1], k[2], kulcs, cimke,
-                                 'scope=%s %s %s | forras=szakasz_cimke_levezet.py (gépi, DT-F148c) | ts=%s'
+                                 'scope=%s %s %s | forras=szakasz_cimke_levezet.py (gépi, DT439) | ts=%s'
                                  % (k[0], k[1], k[2], ts), '']))
     for i, s in enumerate(sorok):
         if i not in potolt and uj[i] != s:

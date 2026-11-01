@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""A BDB héber kifejezéseinek sorrend- és geres-javítása: a szabály és a Biblia-próba (N-F131y, DT-F131y).
+"""A BDB héber kifejezéseinek sorrend- és geres-javítása: a szabály és a Biblia-próba (N-F131y, DT-F131z).
 
 A mérés: `naplok/BDB_HEBER_SORREND_meres.md` (a szabály és a próba onnan, változatlanul). A hiba a `DictBDB.json`-ban
 van: a készítője minden `<heb>` futam szóköz szerinti tokenjeit megfordította, egy régebbi, a geresnél darabolt, vizuális
@@ -13,7 +13,7 @@ Biblia-próba (TAHOT): a jelölt és a JSON-alak mássalhangzó-vázának mintá
 + legfeljebb 8 betűnyi rés, az ellipszis legfeljebb 60 betűnyi rés) egy versben. Ítélet: `helyes` (a javított alak
 előfordul, a JSON-alak nem), `rontott` (fordítva), `eldonthetetlen` (mindkettő / egyik sem / kevés anyag).
 
-Döntés (DT-F131y, felhasználó, 2026-10-30/11-01: „Mehet”): gépi javítás (`javitva`) csak a Biblia által igazolt, tiszta
+Döntés (DT-F131z, felhasználó, 2026-10-30/11-01: „Mehet”): gépi javítás (`javitva`) csak a Biblia által igazolt, tiszta
 (írásjel és sziglum nélküli) tételeken; ahol a Biblia a JSON-alakot igazolja: `valodi_sorrend`; minden más változó tétel
 `jelolt_marad`.
 """

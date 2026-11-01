@@ -261,7 +261,7 @@ class Megjelenites(unittest.TestCase):
             self.assertFalse(LG.gerinc_aktiv(mid))
 
     def test_kivetellista_adatbol(self):
-        # F148 (DT-F148a): a kivétellista az `adat/funkcio_kapcsolok.tsv` `kivetel` sora, és az `ellenoriz.py`
+        # F148 (DT437): a kivétellista az `adat/funkcio_kapcsolok.tsv` `kivetel` sora, és az `ellenoriz.py`
         # ugyanazt a függvényt hívja, mint a generátor (egyetlen hely)
         import szerep_karoli as SZK
         self.assertEqual(LG.GERINC_KIVETEL_MOTIVUMOK, SZK.kapcsolo_kivetelek('SZOTARI_GERINC'))

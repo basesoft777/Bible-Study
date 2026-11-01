@@ -229,7 +229,7 @@ class Javitas(unittest.TestCase):
                 self.assertTrue(s['bdb_id'])
 
     def test_heber_sorrend_sorok(self):
-        # DT-F131y: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers
+        # DT-F131z: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers
         h = [s for s in self.sorok if s['hiba'] == 'heber_sorrend']
         self.assertEqual(set(s['allapot'] for s in h), {'javitva', 'valodi_sorrend', 'jelolt_marad'})
         szoveg = {(s['strong'], s['sorszam']): s for s in self.sorok}

@@ -6,13 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: megallt
 ad: motívumonként egy kérdéslista a `naplok/HATAR_<ID>.md`-ben (soronként egy állítás a két idézett sorral, ahogy a /konzisztencia idéz), a motívum tartalmi határáról a lezárás után: (1) gépileg, ingyen: részhalmaz-e a motívum egy másiknak, és teljesíti-e minden beépített sor a saját negatív kritériumának gépileg ellenőrizhető részét; (2) egy friss kontextusú, a motívumot készítőtől eltérő modellel futó ellenőrző: következetlen határ (hasonló indoklás, eltérő döntés) és hígulás (csak a fölérendelt fogalmon át tartozik ide); a havi keretből, API-kulcs nélkül. Minden találat kérdés a felhasználóhoz, nem javítás
-kovetkezo: "Te: befogadás a /befogad-dal; utána /kovetkezo, M0 (gépi rész az ISTENTISZT-001-en és a HAMART-001-en), ⛔ a mérés után"
+kovetkezo: "Te: DT-F151a (a modelles rész használata és a modell: Fable 5.1 / Sonnet 5.5; javaslat: Fable 5.1, M1 csak az ISTENTISZT-001-en; l. naplok/MOTIVUM_HATAR_naplo.md 4.); utána az 1. lépés (hatar-ellenor subagent)"
 olvas: [adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/motivum_kapcsolatok.tsv, adat/kapcsolatok.tsv, adat/elutasitasi_okok.tsv, adat/SEMA.md, "motivumok/*.md", "tematikus_lezart/*_tematikus.md", konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, eszkozok/szerep_karoli.py, eszkozok/szerep_kizart.py, eszkozok/jelolt_eloszures.py, .claude/agents/fuggetlen-ellenor.md, .claude/commands/konzisztencia.md, CLAUDE.md]
 ir: [eszkozok/motivum_hatar.py, eszkozok/teszt_motivum_hatar.py, .claude/agents/hatar-ellenor.md, "naplok/HATAR_*.md", naplok/MOTIVUM_HATAR_naplo.md]
 fugg: [150]
 nem_fugg: [123, 131, 138]
+ag: claude/f151-motivum-hatar-d33a81
 ---
 
 # Fnn_MOTIVUM_HATAR_BRIEF.md — második vélemény egy lezárt motívum határáról

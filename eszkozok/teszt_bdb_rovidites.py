@@ -56,7 +56,7 @@ class Jelol(unittest.TestCase):
         self.assertEqual(BR.jelol(None), '')
 
     def test_javitott_alak_is(self):
-        # DT-F131y: a sorrend-javítás után a geres a betű után áll
+        # DT-F131z: a sorrend-javítás után a geres a betű után áll
         u = BR.jelol('ק׳ בְּשֵׁם י׳ x', CIMSZO, 'ק')
         self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> בְּשֵׁם', u)
         self.assertIn('<abbr class="rovidites" title="%s">י׳</abbr> x' % BR.JAHVE_CIM, u)

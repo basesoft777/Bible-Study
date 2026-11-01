@@ -7,7 +7,7 @@ nélkül), a `adat/bdb_forras_javitas.tsv` javításaival:
     egész-token előfordulása → `javitott_alak`;
   - `pe_mem` / `javitva` (csak `--pe-mem`): a táblasor `szoveg`-ének `szo_sorszam`-adik héber szavában az `elofordulas`-adik dagesses mem
     → dagesses pe (a forrás alakjában: a U+FB3E prezentációs formát U+FB44-re, különben a mem betűt pére cserélve);
-  - `heber_sorrend` / `javitva` (csak `--heber-sorrend`; DT-F131y): a táblasor `szoveg`-ében a `forras_alak` `elofordulas`-adik
+  - `heber_sorrend` / `javitva` (csak `--heber-sorrend`; DT-F131z): a táblasor `szoveg`-ében a `forras_alak` `elofordulas`-adik
     (héber betűvel nem határos) előfordulása → `javitott_alak`; a pe/mem javítás UTÁN, és ha az a kifejezésen belül cserélt,
     a sorrend-javítás kimarad (a pe/mem nem vész el; számolva);
   - `kezi` (szerkezeti forráshiba): a szöveget nem változtatja.

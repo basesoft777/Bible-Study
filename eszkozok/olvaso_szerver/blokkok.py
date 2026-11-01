@@ -655,7 +655,7 @@ def _rovidites(K, html):
     d = _bdb_adat(K)
     alias = d.get('alias') if isinstance(d, dict) else None
     strong = alias['tabla_strong'] if alias else getattr(K, 'strong', '')
-    # DT-F131y: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
+    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
     reszek = _CIMKE_RE.split(str(html))
     html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(r, strong)
                                         for i, r in enumerate(reszek)))

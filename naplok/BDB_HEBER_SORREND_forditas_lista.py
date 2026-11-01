@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""A héber sorrend-javítás (DT-F131y) kézi listája a fordításhoz: azok a `heber_sorrend` / `javitva` kifejezések, amelyek a
+"""A héber sorrend-javítás (DT-F131z) kézi listája a fordításhoz: azok a `heber_sorrend` / `javitva` kifejezések, amelyek a
 Strong magyar BDB-fordításában (`adat/forditasok.tsv`, BDB, `forditas_hu`) NEM állnak betű szerint, ezért a megjelenítés
 cseréje ott nem hat (a fordító átírta vagy szétszedte). Csak olvas; kimenet: naplok/BDB_HEBER_SORREND_forditas_kezi.tsv.
 
@@ -68,7 +68,7 @@ def main():
                    % (r['strong'], JAV, sha12(JAV), FORD, sha12(FORD), a.ts)])
     with open(KI, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: naplok/BDB_HEBER_SORREND_forditas_lista.py --ts %s — a javitva kifejezések, amelyek a magyar '
-                'fordításban nem állnak betű szerint (DT-F131y; kézi átnézésre).\n' % a.ts)
+                'fordításban nem állnak betű szerint (DT-F131z; kézi átnézésre).\n' % a.ts)
         f.write('\t'.join(['strong', 'sorszam', 'forras_alak', 'javitott_alak', 'kezi_megjegyzes', 'proveniencia']) + '\n')
         for s in ki:
             f.write('\t'.join(s) + '\n')

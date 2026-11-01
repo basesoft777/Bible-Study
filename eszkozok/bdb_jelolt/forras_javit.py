@@ -141,7 +141,7 @@ def general(ts, ts_heber=None):
     return ki, stat
 
 
-# ---------------------------------------------------------------- heber_sorrend (N-F131y, DT-F131y)
+# ---------------------------------------------------------------- heber_sorrend (N-F131y, DT-F131z)
 # A DictBDB.json héber kifejezéseinek szórend- és geres-hibája (naplok/BDB_HEBER_SORREND_meres.md). A szabály és a Biblia-próba:
 # heber_sorrend.py. Egy sor = egy változó kifejezés (R_hib ≠ a forrás alakja) a szakasztábla sorában; `elofordulas`: a `forras_alak`
 # hányadik (héber betűvel nem határos) előfordulása a sor `szoveg`-ében; a héber alakok a forrás alakjában (nem NFD), mert a
@@ -179,7 +179,7 @@ def heber_sorrend_sorok(stat, ts):
     for r in tabla_sorok():
         top, blokk = r['forras'].split(':', 1)[1].split('#')
         sorok_kulcs.setdefault(top, {})[int(blokk)] = r
-    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + TAHOT-próba (DT-F131y) | ts=%s'
+    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + TAHOT-próba (DT-F131z) | ts=%s'
     ki = []
     for top, sorok in sorok_kulcs.items():
         # a kifejezések a bontó blokkjai szerint (a tábla sora = a blokk, `forras` #n), a blokkon belül sorrendben
@@ -211,7 +211,7 @@ def heber_sorrend_sorok(stat, ts):
             it, v_js, v_uj = HS.itelet(bib, js, uj)
             if not HS.tiszta(js):
                 allapot, jav = 'jelolt_marad', ''
-                indok = 'írásjel vagy sziglum a futamban: gépi javítás nincs (DT-F131y); a szabály javaslata: %s' % uj
+                indok = 'írásjel vagy sziglum a futamban: gépi javítás nincs (DT-F131z); a szabály javaslata: %s' % uj
             elif it == 'helyes':
                 allapot, jav = 'javitva', uj
                 indok = ('a héber Biblia igazolja: a javított szórend a TAHOT %s versében áll, a forrás alakja egy versben sem '
@@ -222,7 +222,7 @@ def heber_sorrend_sorok(stat, ts):
                          'javaslata: %s' % (v_js, uj))
             else:
                 allapot, jav = 'jelolt_marad', ''
-                indok = ('a héber Biblia nem dönt (%s): gépi javítás nincs (DT-F131y); a szabály javaslata: %s'
+                indok = ('a héber Biblia nem dönt (%s): gépi javítás nincs (DT-F131z); a szabály javaslata: %s'
                          % ('mindkét alak áll' if v_js and v_uj else 'egyik alak sem áll, vagy kevés az anyag', uj))
             stat['heber_sorrend_' + allapot] += 1
             ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'heber_sorrend', '', str(k), js, jav, allapot, indok,

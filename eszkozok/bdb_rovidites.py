@@ -9,7 +9,7 @@ szó rövidités?”, majd: „ezt a felismerést rakljuk el az olvasó felület
 A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳י); a helyes alak a betű utáni
 (י׳). A `jelol` az önálló, egybetűs alakot jelöli (<abbr>, címmel), a forrás és a javított alakban is.
 
-A megjelenítés sorrendje (DT-F131y; a lexikon-generátor és az olvasó ugyanígy): `heber_sorrend_javit` (a több
+A megjelenítés sorrendje (DT-F131z; a lexikon-generátor és az olvasó ugyanígy): `heber_sorrend_javit` (a több
 szavas kifejezések Biblia által igazolt sorrend-javítása, `adat/bdb_forras_javitas.tsv` `heber_sorrend` /
 `javitva`) → `izolal` (LRM a héber futam után, ha szám következik) → `jelol`.
 
@@ -75,7 +75,7 @@ def feloldas(betu, cimszo='', kezdo=''):
     return ALTALANOS
 
 
-# A javított (helyes) alak: a geres a betű UTÁN (N-F131y, DT-F131y: a `heber_sorrend` javítás után „ק׳ בְּשֵׁם”).
+# A javított (helyes) alak: a geres a betű UTÁN (N-F131y, DT-F131z: a `heber_sorrend` javítás után „ק׳ בְּשֵׁם”).
 ROVIDITES_UTAN_RE = re.compile(r'(?<![%s%s׳])([%s][%s]*)׳(?![%s%s])' % (HEB_BETU, HEB_JEL, HEB_BETU, HEB_JEL,
                                                                        HEB_BETU, HEB_JEL))
 _EGYUTT_RE = re.compile('%s|%s' % (ROVIDITES_RE.pattern, ROVIDITES_UTAN_RE.pattern))
@@ -97,7 +97,7 @@ def jelol(szoveg, cimszo='', kezdo='', cim_esc=None, attr=''):
     return _EGYUTT_RE.sub(csere, szoveg or '')
 
 
-# ---------------------------------------------------------------- héber sorrend (N-F131y, DT-F131y)
+# ---------------------------------------------------------------- héber sorrend (N-F131y, DT-F131z)
 # A `adat/bdb_forras_javitas.tsv` `heber_sorrend` / `javitva` sorai (a Biblia által igazolt, tiszta tételek): a forrás alakja
 # → a javított alak, Strongonként, betű szerint (a forrás alakja az angol szövegben és a magyar fordításban is szó szerint
 # áll; újrafordítás nincs). A `valodi_sorrend` és a `jelolt_marad` sorokhoz a megjelenítés nem nyúl.
