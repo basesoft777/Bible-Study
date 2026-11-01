@@ -178,3 +178,11 @@ A régi (F125.2) mérés: 22 → 192, 23 → 77, ugyanezzel a paranccsal a mai m
 A felhasználó döntése (DT-F125b, 2026-11-01, az orkesztrátor-session továbbításával): „a) kód a szöveghez”. A 22. szabály (`eszkozok/ellenoriz.py` `szabaly22_kiejtes_hiany`) a jóváhagyott K-szöveghez igazítva: egy héber/görög szót akkor jelez, ha a szakaszban (két `##`/`###` cím között) SEHOL nem kap kiejtést; ha bármelyik előfordulása kap, nem jelez (`kiejtes_szoveg.elemez_szakaszonkent`). A hatókör a `lexikon/*_TUDOMANYOS.md` mellett a tanulmányok is: `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/` (a CLAUDE.md rétegtáblájának forrás-rétege; közvetlen `.md` fájlok, a `naplok/` almappa és a `Konnyu_ellenorzes*osszesito*` összesítők nélkül). Az F125.2 mérés (192) csak a `lexikon/` hatókörű volt.
 
 - Régi: 192 jelzés (lexikon, első előfordulás szerint). Új: 729 jelzés összesen, ebből a `lexikon/` hatókörön 176, a tanulmányokon 553. `scope=python eszkozok/ellenoriz.py (teljes futás, 22. szabály) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:24+01:00`
+
+## DT-F125d — commit-granularitás
+
+A felhasználó döntése (DT-F125d, 2026-11-01, az orkesztrátor-session továbbításával): „a) elfogadjuk”. Az `e6e7955d` (üzenet: „F125.2: eszköz és JELENTÉS-szabályok (22–23.), tesztek, DT-F125a eldöntve; F125.1: szövegjavaslat ⛔”) két tételt visz egy commitban; a pusholt történetet nem írjuk át (force-push nincs), a DT447 mintájára ez a helyesbítés.
+
+Mely tétel mely fájlt érintette (`git show --stat e6e7955d`):
+- F125.2 (eszköz, szabályok, mérés, DT-F125a): `eszkozok/proza_lefedettseg.py`, `eszkozok/teszt_proza_lefedettseg.py`, `eszkozok/ellenoriz.py`, `DONTESEK.md` (DT-F125a sora), `naplok/GERINC_KARTYA_SZOVEG_naplo.md`.
+- F125.1 (szövegjavaslat ⛔): `naplok/F125_SZOVEGJAVASLAT.md`; a brief hatókörének bővítése: `F125_GERINC_KARTYA_SZOVEG_BRIEF.md` (a fejléc).
