@@ -49,3 +49,22 @@
 **Javaslat: (b), az M1-et egyetlen motívumon, az ISTENTISZT-001-en futtatva** (a brief 4. szakasza szerint is), a következő okokból. Az ISTENTISZT-001-nek van mérhető aranystandardja (125 eldöntött jelölt: 33 beépített, 92 elutasított), tehát a hamis riasztás aránya a DT-F151b előtt számolható. A kérdés, amelyre a gép nem tud válaszolni (hígulás), értelmező ítélet: ott a gyengébb modell kockázata nagyobb, mint a havi keret többletköltsége egyetlen motívumon. **Feltétel:** a választás csak akkor jó, ha a motívumot készítő modell nem Fable; ezt a felhasználó tudja (a repó nem rögzíti). Ha a készítő Fable volt, a javaslat (c). A DT-F151b (kiterjesztés) az M1 után.
 
 *Megjegyzés:* a brief a Fable 5.1 / Sonnet 5.5 párt kínálja; egy harmadik modell (pl. Opus, amelyen a `fuggetlen-ellenor` fut) nincs a kínálatban, a döntésnél nem vettem be.
+
+## 5. DT443 — döntés (2026-11-01)
+
+A felhasználó az orkesztrátor chatjében döntött: **(b), modelles rész Fable 5.1-gyel, M1 csak az ISTENTISZT-001-en.** A válasz szó szerint: „Igen, Fable 5.1”. Rögzítve a `DONTESEK.md` DT443 sorában. A feltétel (a motívumot nem Fable készítette) a repóból nem ellenőrizhető; a felhasználó a döntéssel vállalta. A DT-F151b (kiterjesztés) ⛔ marad az M1 után.
+
+## 6. M1 — futás az ISTENTISZT-001-en (2026-11-01)
+
+*Modell: a `hatar-ellenor` szerepet `claude-fable-5-1` töltötte be (a modell-ellenőrzés egyezett a `fable` kéréssel); a futtató és mérő session `claude-sonnet-5-5`. A `hatar-ellenor` definíció ebben a sessionben még nincs regisztrálva az Agent-eszközben, ezért a futás `general-purpose` subagenttel, `model: fable`-lel, a definíciófájl szövegét követve ment; a következő sessiontől a definíció néven is hívható.*
+
+**Eredmény:** 5 kérdés (K1–K3 következetlen határ, K4 hígulás + következetlen határ, K5 hígulás) a `naplok/HATAR_ISTENTISZT-001.md` „Modelles rész” szakaszában. A futás után a `git status` szerint a subagent csak ezt a szakaszt írta (a `DONTESEK.md` és e napló módosítása az enyém).
+
+**Mérés az aranystandardhoz** (`adat/jeloltek.tsv`, ISTENTISZT-001: 133 sor = 35 beépítve + 92 elutasítva + 6 nyitva; a 35 = 33 `elofordulas` + 2 `motivumkozi`, a feladat „33 beépített” számát az `elofordulasok.tsv` adja). *(proveniencia: scope=adat/jeloltek.tsv (id=ISTENTISZT-001) + naplok/HATAR_ISTENTISZT-001.md | forras=scratchpad-szkript, `split('\t')` | ts=2026-11-01)*
+
+- **Idézés-pontosság:** a kérdések 22 különböző `jeloltek.tsv`-sorszámot idéznek; mind a 22 sor ISTENTISZT-001-é, az igehely és a döntés (beépítve/elutasítva/nyitva) egyezik az állítással. Hamis hivatkozás: **0/22**.
+- **Lefedettség:** a kérdések 19 eldöntött sort érintenek a 127-ből (15%; 21 sor a 22-ből, ebből 1 nyitva — Ézs 41:25 —, amelyről nem dönt). Nem kérdezett sor: 108 eldöntött.
+- **Hamis riasztás aránya:** gépileg nem állapítható meg — a kérdés értelmező ítélet (K1–K5 mindegyike a felhasználó szerint „valódi határ-kérdés” vagy „már eldöntött, tudatos”). Jelölések a lehetséges besoroláshoz: K3 maga jelzi, hogy a Zsolt 99:6 felhasználói döntés (2026-10-29), tehát a felhasználónak ismert kérdés; K5-nél a motívumfájl maga megnevezi a hamis isten nevét tartalmazó két sort (`motivumok/ISTENTISZT-001.md:446`), tehát a kérdés tudatos döntést kérdez újra. **A felhasználó besorolása kell:** kérdésenként „hasznos” / „hamis riasztás”; a rate = hamis / 5.
+- **Kimaradt-e valódi probléma** (hamis negatív): az aranystandarddal nem mérhető (nincs ismert hiba-lista); a modell „nem kérdés” felsorolása (35 = 33+2, D-minta, jogi/eskü, tagadó forma) ellenőrizhető, de nem bizonyíték.
+
+**⛔ DT-F151b** (kiterjesztés a többi lezárt motívumra) a felhasználóé; nem indítottam. Más motívumon nem futott a modelles rész.
