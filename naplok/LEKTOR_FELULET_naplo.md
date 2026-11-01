@@ -84,3 +84,9 @@
 1. A (1)-hez: a tartalmi-nyitott lista kézi szűrőből (javaslat) vagy a briefek `megallt`/`dontesre_var` fejlécéből is?
 2. A (2)-höz: a javaslat-szöveget (négy kérdés) ki és mikor írja — a lektor-futás (#125 után), vagy egy külön kör?
 3. Az `ir` lista szűk-e: a kártyák `naplok/LEKTOR_DONTESEK.tsv` és `naplok/LEKTOR_JELOLT_MOTIVUM.tsv` fájlba mennének (illeszkednek a `naplok/LEKTOR_*.tsv` mintához; az építő a fájlnévből veszi a „motívum” mezőt), ezért nem szűk; a **kézi szűrőlista** helye (pl. `adat/` vagy `naplok/`) új fájl, amelyet jóváhagyás nélkül nem hozok létre.
+
+## M4 — arculat: A. Olvasó (a felhasználó választása, 2026-11-01)
+
+- A `sablon.html` tokenjei és betűi a `KOZOS_TOKENEK.md` A változatára cserélve (világos és sötét mód a szabványos három blokkban): Source Serif 4 (cím),
+  IBM Plex Sans (szöveg), IBM Plex Mono (adat), sugár 4px; méretskála 12/13/14/16/28 px. Tokennevek változatlanok, kiegészítve `--cim`, `--sugar`-ral
+  (a #156 dashboarddal közös). Az artifact ugyanazon a linken frissítve (3. verzió). Nem ellenőrizve: a megjelenés böngészőben/telefonon (ArtifactCheck nem érhető el).
