@@ -10,7 +10,7 @@ Te a PaRDeS kiadás-vezetője vagy (F125, 2.7). A parancs a felhasználó kéré
 
 ## Menet
 
-1. **Lefedettség.** `python eszkozok/proza_lefedettseg.py <ID> --kimenet naplok/KIADAS_<ID>_lista.md`: mely adatlelet (előfordulás, kapcsolat, motívumközi kapcsolat, nyitott jelölt) nincs megnevezve a kézi prózában. A „csoportosan fedett” előfordulás nem hiány (DT-F125a). A Károli rejtett párhuzama (14. szerep) nem mérhető; ne töltsd ki.
+1. **Lefedettség.** `python eszkozok/proza_lefedettseg.py <ID> --kimenet naplok/KIADAS_<ID>_lista.md`: mely adatlelet (előfordulás, kapcsolat, motívumközi kapcsolat, nyitott jelölt) nincs megnevezve a kézi prózában. A „csoportosan fedett” előfordulás nem hiány (DT471). A Károli rejtett párhuzama (14. szerep) nem mérhető; ne töltsd ki.
 2. **Egyenetlenség.** Ugyanennek a kimenetnek az „Egyenetlenség” táblája: a jelölt blokkok (150 karakter/elem alatt „kevés”; a blokk-medián 4×-ánál távolabb „egyenetlen”; legalább 3 elem). Nem ítél minőségről, csak megmutatja, hol egyenetlen a lap.
 3. **Modelles lektor, csak a két lista helyein.** A `lektor` subagent (`.claude/agents/lektor.md`; Fable 5.1, a próza Opus): friss kontextusú, a prózát író modelltől **eltérő modellel** futó, a havi keretből; csak a jelölt helyeket (blokk, bekezdés, igehely) kapja. Kérdéslistát ad **átírás nélkül** (K1). A lektor ellenőrzi:
    - ellentmond-e a próza az adatnak;

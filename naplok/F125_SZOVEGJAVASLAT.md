@@ -34,7 +34,7 @@
 
 ## P — C-z: a próza-lefedettségi lista átnézése a lezárás előtt
 
-> **C-z.** A tanulmány vagy a lap lezárása előtt a végrehajtó lefuttatja a `python eszkozok/proza_lefedettseg.py <ID>` parancsot (lefedettség: a próza által meg nem nevezett előfordulás, kapcsolat, motívumközi kapcsolat, nyitott jelölt; egyenetlenség: blokkonként a karakter/elem, küszöb: 150 karakter alatt „kevés”, a blokk-medián 4×-ánál távolabb „egyenetlen”, legalább 3 elem; a gyűjtő mondat külön kategória; DT-F125a). A kimenet a naplóba kerül; a „kész” állapot feltétele, hogy a lista üres vagy minden tétele indokolt.
+> **C-z.** A tanulmány vagy a lap lezárása előtt a végrehajtó lefuttatja a `python eszkozok/proza_lefedettseg.py <ID>` parancsot (lefedettség: a próza által meg nem nevezett előfordulás, kapcsolat, motívumközi kapcsolat, nyitott jelölt; egyenetlenség: blokkonként a karakter/elem, küszöb: 150 karakter alatt „kevés”, a blokk-medián 4×-ánál távolabb „egyenetlen”, legalább 3 elem; a gyűjtő mondat külön kategória; DT471). A kimenet a naplóba kerül; a „kész” állapot feltétele, hogy a lista üres vagy minden tétele indokolt.
 
 ## G — C-w: a próza gazdája
 
