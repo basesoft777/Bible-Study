@@ -3,7 +3,7 @@
 """
 eszkozok/teszt_szakasz_cimke_levezet.py -- F148 (c): a `szakasz_cimke_levezet.py` tesztjei.
 
-  - regresszió (kötelező): az ISTENTISZT-001 33 és az ALVIL-001 13 kitöltött sorára a levezetett szakasz
+  - regresszió (kötelező): az ISTENTISZT-001 33 és az ALVIL-001 72 sorára (F148: a 13 kutatói és az 59 gépileg kitöltött) a levezetett szakasz
     azonos a `szotar_szakasz_cimke.tsv` kézi leképezésével (valódi adat);
   - a hat jelzéstípus (J1–J6) és a címke-jelzés (J7) egy-egy szintetikus esetre;
   - a binyan a vers morfológiájából (Qal/Niph'al azonos számozással);
@@ -204,7 +204,7 @@ class Teendo(unittest.TestCase):
 
 
 class Regresszio(unittest.TestCase):
-    """Kötelező: a valódi adaton a levezetett szakasz azonos a kézi leképezéssel (ISTENTISZT-001 33, ALVIL-001 13)."""
+    """Kötelező: a valódi adaton a levezetett szakasz azonos a kézi leképezéssel (ISTENTISZT-001 33, ALVIL-001 72)."""
 
     def _ellenoriz(self, mid):
         return [r for r in SL.ellenoriz(mid) if r['jelentes_szam']]
@@ -214,9 +214,9 @@ class Regresszio(unittest.TestCase):
         self.assertEqual(len(ki), 33)
         self.assertEqual([r['igehely'] for r in ki if r['egyezik'] != 'igen'], [])
 
-    def test_alvil_13(self):
+    def test_alvil_72(self):
         ki = self._ellenoriz('ALVIL-001')
-        self.assertEqual(len(ki), 13)
+        self.assertEqual(len(ki), 72)
         self.assertEqual([r['igehely'] for r in ki if r['egyezik'] != 'igen'], [])
         # a két ismert kutatói kérdés jelzett, de a kézi döntés szakaszát adja vissza
         jelzett = {r['igehely'] for r in ki if 'J1' in r['jelzes']}

@@ -235,9 +235,11 @@ class Szabaly21(Alap):
 
 class ValodiAdat(unittest.TestCase):
     def test_20_21_a_repon(self):
-        # a repó mai adatán a 20. és a 21. szabály tiszta (a 18./19. az ALVIL-001 59 sora miatt nem, ⛔ A)
+        # a repó mai adatán a 18–21. szabály tiszta (F148: az ALVIL-001 59 sora gépileg kitöltve, ⛔ A feloldva)
         adat = os.path.join(E.ROOT, 'adat')
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        self.assertEqual(E.szabaly18_gerinc_cimke(adat, elo_sorok).verdict, 'RENDBEN')
+        self.assertNotEqual(E.szabaly19_kotelezo_mezok(adat, elo_sorok).verdict, 'SÉRTÉS')
         self.assertEqual(E.szabaly20_jelentes_hu(adat, elo_sorok).verdict, 'RENDBEN')
         self.assertIn(E.szabaly21_lap_tisztasag(adat, main=True).verdict, ('RENDBEN',))
 

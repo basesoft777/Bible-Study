@@ -187,3 +187,19 @@ A brief 6. szakaszának két lépése a megvalósítás szerint pontosítva:
 ## 7. Független ellenőrzés és javítás (F148.8)
 
 `naplok/ELLENOR_F148_UJ_MOTIVUM_VEDOKORLAT.md`: 5 ELTÉRÉS (2 közepes, 3 alacsony). Az 1–4. javítva (mérőszkript, a Macula MT nélküli tartalékága, az `--ir` 17. szabály szerinti kulcsa, a lezárt N-tétel alakja), az 5. (commit-granularitás) dokumentált eltérés. `teszt_szakasz_cimke_levezet.py` 19 OK, `teszt_ellenoriz_vedokorlat.py` 26 OK; a regresszió változatlan.
+
+## 8. ⛔ A feloldása: az ALVIL-001 59 sorának gépi kitöltése (F148.11–F148.12, DT-F148e)
+
+A felhasználó 2026-11-01 (az orkesztrátor chatjében): „A #148 gépileg”; a proveniencia (K1) és a 3 új kulcs (K2) módjára: „menjen a javaslatod szerint”. Ez a brief „Nincs benne: adatjavítás” pontját és a 7. elfogadási feltétel `elofordulasok.tsv`/`lexikon/` részét a felhasználó döntésével felülírja.
+
+**Levezetés** (`naplok/F148_alvil_kitoltes.py`): mind az 59 sornak egy BDB-példaútja és a versben egy H7585-tokenje van; nem egyértelmű sor nem volt. Kulcsok: `1` ×41, `2.a` ×12, `2.b` ×3, `3.a` ×1, `3.b` ×1, `4` ×1. Soronkénti gépi proveniencia: `naplok/F148_alvil_kitoltes.tsv`; a sor `proveniencia`-mezőjének `forras`-a erre mutat (K1 (a)).
+
+**Írás, sorösszevetéssel:** `elofordulasok.tsv` 59 sor (3 mező + a `forras`), `lexikon_hivatkozasok.tsv` +3 sor (2.b, 3.a, 3.b; a `szoveg_en` a `bdb_szakaszok.tsv` szövege bájtra), `szotar_szakasz_cimke.tsv` 3 kulcspótlás (a címke változatlan).
+
+**Eredmény:** `ellenoriz.py` SÉRTÉS 0 (18. RENDBEN; 19. JELENTÉS, csak a kivétellistás motívumokon: 152 sor). A levező az ALVIL-001 mind a 72 sorát levezeti, 72/72 egyezik a táblával; jelzés 2 (Jób 17:12, Zsolt 88:4, ismert kutatói kérdés).
+
+**A lap újragenerálása** (`PARDES_DATUM=2026-10-29`, a lap első GENERÁLT ts-e; `general.py --cel lexikon --id ALVIL-001 --ir`): **59 sor változik, mind előfordulás-lábjegyzet.** A proveniencia `forras`-a „+ naplok/F148_alvil_kitoltes.tsv”-vel bővül, és a „jelentés-címke” után a generátor kiírja: „ez a kutatói hozzárendelés (1 → 1) alá esik, a címke a finomabb útvonalé”. A „Jelentés (a szó)” oszlop egyetlen cellája sem változik, mert a címke eddig is a BDB-példából jött, és a kitöltött kulcs ugyanarra a szakaszra mutat. **Új BDB-jelentés a lapon: 0.** A 3 új `lexikon_hivatkozasok`-sor a lapon nem jelenik meg külön blokkban. *Megfigyelés:* azonos útnál az „(1 → 1) alá esik, a címke a finomabb útvonalé” mondat redundáns; a generátor szövegét nem e feladat írja.
+
+**Párhuzamos menet:** a BDB-sorrend session (#528) szintén újragenerálja az ALVIL-001-et; a második merge előtt újragenerálás kell.
+
+`scope=adat/elofordulasok.tsv (ALVIL-001), lexikon/ALVIL-001_TUDOMANYOS.md | forras=naplok/F148_alvil_kitoltes.py, eszkozok/general.py, eszkozok/ellenoriz.py | ts=2026-11-01`
