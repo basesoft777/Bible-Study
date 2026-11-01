@@ -1,4 +1,4 @@
-# proveniencia: scope=adat/forditasok.tsv (szotar=Thayer, mezo=forditas_hu, allapot!=elavult), adat/karoli_strong/parok_*.tsv (régi = Mt, Mk, Luk, Ján, ApCsel nélkül), adat/thayer_vers_jelentes.tsv (szakasz-versek) | forras=eszkozok/thayer_jelolt/karoli_ujraellenoriz.py --meres (négybetűs tő egyezés; uralkodó tő szakaszonként, holtversenynél `holtverseny`, DT-F153b) | ts=2026-11-01
+# proveniencia: scope=adat/forditasok.tsv (szotar=Thayer, mezo=forditas_hu, allapot!=elavult), adat/karoli_strong/parok_*.tsv (régi = Mt, Mk, Luk, Ján, ApCsel nélkül), adat/thayer_vers_jelentes.tsv (szakasz-versek) | forras=eszkozok/thayer_jelolt/karoli_ujraellenoriz.py --meres (négybetűs tő egyezés; uralkodó tő szakaszonként, holtversenynél `holtverseny`, DT455) | ts=2026-11-01
 strong	szakasz	allapot	regi	teljes	uralkodo_hatokor	uralkodo_regi	uralkodo_teljes	uj_alakok_top10	link_regi>teljes	osszegzes
 G1941	teljes	kezi	egyezik	egyezik	szocikk	hívj	holtverseny(hívj,neve,segí)	neveztetik,mellékneve,appellált,neveztetett,el	14>41	valtozatlan+holtverseny
 G1944	teljes	kezi	egyezik	egyezik	szocikk	átko	átko		2>2	valtozatlan

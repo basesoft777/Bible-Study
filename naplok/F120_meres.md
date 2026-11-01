@@ -102,7 +102,7 @@ A mai táblán a nem egyező versek fejezetei (≥ 3 vers): 4Móz 13 (33), 4Móz
 - a `fejezet_eltolasok()` `k`-feltétele;
 - egy újrafuttatás kimenete (a 3.5).
 
-## 6. Az átmeneti (c) út kihagyó őre (DT-F120a: „Igen, átmeneti”)
+## 6. Az átmeneti (c) út kihagyó őre (DT457: „Igen, átmeneti”)
 
 *Eszköz: `naplok/F120_or_meres.py` (csak olvas; ugyanaz a szűrés és szabály, mint a `sqlite_epit.bsb_bizonytalan`). proveniencia: scope=BSB_Strongs.tsv (F71.2) × TAHOT_kivonat.tsv a Karoli_versmegfeleltetes.tsv-n át (9cf0e43a) | eszkoz=naplok/F120_or_meres.py | kuszob=0,5 (|T∩B|/|T|) | ts=2026-11-01*
 
@@ -147,7 +147,7 @@ A kimaradó versek Károli-fejezetenként: 4Móz 13 (33), 4Móz 30 (11), Hós 2 
 
 *proveniencia: scope=próba-pardes.db (teljes mód) | forras=eszkozok/sqlite_epit.py @ 0e844612, konkordancia/ @ 9cf0e43a | eszkoz=scratchpad sql.py (a lekérdezések fent) | ts=2026-11-01T11:49Z*
 
-## 9. A DT-F120a (a) lépésének próbája: a mai táblán nem tiszta (⛔, 2026-11-01)
+## 9. A DT457 (a) lépésének próbája: a mai táblán nem tiszta (⛔, 2026-11-01)
 
 *A BSB-klón: `D:\pardes_bsb\bsb-data-output`, commit a4a2c0558c26e0281ba4e3f0e5479398459e2183 (ugyanaz, amelyből a mai `BSB_Strongs.tsv` készült). A próbakód a helyi `claude/f120-a-vazlat` ágon (2f19ad15, nem pusholva); a PR ága a (c) állapotban maradt, a `BSB_Strongs.tsv` nem változott.*
 
@@ -167,4 +167,4 @@ Az ok minden kieső fejezetben egyetlen BSB-vers, amelynek nincs MT-párja (`nin
 
 *proveniencia: scope=BSB_Strongs.tsv régi (F71.2) / próba (a4a2c055 klón, a vázlatág kódja) | forras=eszkozok/fj2/bsb_import.py --munka D:/pardes_bsb, naplok/F120_bsb_osszevetes.py | ts=2026-11-01*
 
-**Döntés (2026-11-01):** a #545 a (c) változattal mergelhető; az (a) külön tétel (N-F120b), az olvasó-szerver 12 elavult tesztelvárása is (N-F120c) — a felhasználó döntése, 2026-11-01, az orkesztrátor chatjében (a session-üzenet idézete szerint): a javaslat „a #545 mergelhető a (c) változattal, az (a) pedig külön tétel lesz … a #120 sessionje N-F helyőrzőként felveszi az (a)-t … az olvasó-szerver 12 elavult tesztelvárása külön tételt kap”; a válasz szó szerint: „mehet”. (DT-F120a kiegészítése.)
+**Döntés (2026-11-01):** a #545 a (c) változattal mergelhető; az (a) külön tétel (N-F120b), az olvasó-szerver 12 elavult tesztelvárása is (N-F120c) — a felhasználó döntése, 2026-11-01, az orkesztrátor chatjében (a session-üzenet idézete szerint): a javaslat „a #545 mergelhető a (c) változattal, az (a) pedig külön tétel lesz … a #120 sessionje N-F helyőrzőként felveszi az (a)-t … az olvasó-szerver 12 elavult tesztelvárása külön tételt kap”; a válasz szó szerint: „mehet”. (DT457 kiegészítése.)
