@@ -1,0 +1,262 @@
+<title>Lektor-felület</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Elrendezés: egy keskeny munkaoszlop; kérdésenként egy lap, négy nagy gombbal; alul ragadós összesítő. */
+:root {
+  --papir: #f5f6f8; --lap: #ffffff; --tinta: #1c2230; --halvany: #5d6677; --vonal: #d8dce4;
+  --kiemel: #2c4f86; --kiemel-hatter: #e7edf7; --elfogad: #2f6b4f; --elfogad-hatter: #e4f1ea;
+  --elvet: #9a3b32; --elvet-hatter: #f7e8e6; --figyel: #8a5a12; --figyel-hatter: #fbf0d9;
+  --szoveg: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --adat: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papir: #12151b; --lap: #1a1f28; --tinta: #e4e7ed; --halvany: #9aa3b3; --vonal: #2e3442;
+  --kiemel: #9db7e3; --kiemel-hatter: #222c3d; --elfogad: #8fcfae; --elfogad-hatter: #1d3329;
+  --elvet: #e4a39b; --elvet-hatter: #3a2321; --figyel: #e6c07a; --figyel-hatter: #3a3020; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papir: #12151b; --lap: #1a1f28; --tinta: #e4e7ed; --halvany: #9aa3b3; --vonal: #2e3442;
+  --kiemel: #9db7e3; --kiemel-hatter: #222c3d; --elfogad: #8fcfae; --elfogad-hatter: #1d3329;
+  --elvet: #e4a39b; --elvet-hatter: #3a2321; --figyel: #e6c07a; --figyel-hatter: #3a3020; color-scheme: dark; }
+body { background: var(--papir); color: var(--tinta); font: 16px/1.55 var(--szoveg); }
+.keret { max-width: 760px; margin: 0 auto; padding-block: 24px 170px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font-size: 1.6rem; margin: 0 0 6px; text-wrap: balance; font-weight: 600; }
+.bev { color: var(--halvany); margin: 0 0 16px; max-width: 65ch; }
+.szurosor { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; align-items: center; }
+.szurosor .cim { font: 12px var(--adat); color: var(--halvany); min-width: 4.5em; }
+.szurosor button { font: 13px var(--adat); padding: 6px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--vonal);
+  background: var(--lap); color: var(--halvany); cursor: pointer; }
+.szurosor button[aria-pressed="true"] { background: var(--kiemel-hatter); color: var(--kiemel); border-color: var(--kiemel); }
+.lista { display: grid; gap: 14px; margin-top: 16px; }
+.ures { color: var(--halvany); padding: 24px 0; }
+.tetel { background: var(--lap); border: 1px solid var(--vonal); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; }
+.tetel.kesz { border-color: var(--elfogad); }
+.fej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font: 12.5px var(--adat); color: var(--halvany); }
+.fej .id { color: var(--tinta); font-weight: 500; overflow-wrap: anywhere; }
+.fej a { color: var(--kiemel); }
+.kerdes p { margin: 0 0 8px; overflow-wrap: anywhere; }
+.kerdes p:first-child { font-weight: 600; }
+.kerdes code { font: .85em var(--adat); background: var(--papir); padding: 1px 4px; border-radius: 4px; overflow-wrap: anywhere; }
+.kerdes details { margin-top: 2px; }
+.kerdes summary { cursor: pointer; font: 13px var(--adat); color: var(--kiemel); min-height: 32px; display: flex; align-items: center; }
+.rogzitett { background: var(--figyel-hatter); color: var(--figyel); border-radius: 8px; padding: 8px 10px; font-size: .92rem; }
+.rogzitett b { font: 500 12px var(--adat); display: block; margin-bottom: 2px; }
+.gombok { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (min-width: 560px) { .gombok { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.gombok button { font: 600 15px var(--szoveg); min-height: 48px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--vonal);
+  background: var(--lap); color: var(--tinta); cursor: pointer; }
+.gombok button[aria-pressed="true"].elfogadom { background: var(--elfogad); color: var(--lap); border-color: var(--elfogad); }
+.gombok button[aria-pressed="true"].elvetem { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
+.gombok button[aria-pressed="true"].visszakerdezek, .gombok button[aria-pressed="true"].sajat { background: var(--kiemel); color: var(--lap); border-color: var(--kiemel); }
+.szoveg { display: grid; gap: 6px; }
+.szoveg textarea { font: 1rem/1.4 var(--szoveg); padding: 8px 10px; border: 1px solid var(--vonal); border-radius: 8px;
+  background: var(--lap); color: var(--tinta); width: 100%; min-height: 80px; resize: vertical; }
+.szoveg .sor { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: 8px; border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
+.allapot { font: 12.5px var(--adat); color: var(--halvany); }
+.allapot.hiba { color: var(--elvet); }
+button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
+.also { position: fixed; left: 0; right: 0; bottom: 0; background: var(--lap); border-top: 1px solid var(--vonal);
+  padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.also-belso { max-width: 760px; margin: 0 auto; display: grid; gap: 6px; }
+.allas { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
+.allas b { font-variant-numeric: tabular-nums; }
+.kimenet { font: 12px/1.4 var(--adat); background: var(--papir); border: 1px solid var(--vonal); border-radius: 6px;
+  padding: 6px 8px; max-height: 5em; overflow: auto; overflow-wrap: anywhere; color: var(--halvany); white-space: pre-wrap; }
+.masol { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: 8px; border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; justify-self: start; }
+.uzenet { color: var(--elfogad); font-size: .85rem; min-height: 1em; }
+.figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: 8px; padding: 8px 10px; font-size: .9rem; margin: 0 0 12px; }
+@media (prefers-reduced-motion: no-preference) { .gombok button, .szurosor button { transition: background .15s, border-color .15s; } }
+</style>
+
+<div class="keret">
+  <h1>Lektor-felület</h1>
+  <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
+  <div id="figy" class="figy" hidden></div>
+  <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
+  <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
+  <div class="szurosor" id="sz-allapot"><span class="cim">állapot</span></div>
+  <div class="lista" id="lista"></div>
+</div>
+
+<div class="also"><div class="also-belso">
+  <div class="allas"><span><b id="n-valasz">0</b> / <b id="n-ossz">0</b> megválaszolva ebben a nézetben</span><span id="tarolo-allapot"></span></div>
+  <div class="kimenet" id="kimenet" aria-label="Másolható összesítő"></div>
+  <button class="masol" id="masol" type="button">Összesítő másolása</button>
+  <div class="uzenet" id="uzenet" role="status"></div>
+</div></div>
+
+<script>
+const ADAT = __ADAT__;
+const LAP_URL = __LAP_URL__;
+const TIPUSOK = [
+  ['elfogadom', 'Elfogadom'], ['elvetem', 'Elvetem'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
+];
+const CIMKE = Object.fromEntries(TIPUSOK);
+const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
+const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
+let db = null;
+let szuro = { forras: '', motivum: '', allapot: 'nyitva' };
+
+function lsOlvas() { try { return JSON.parse(localStorage.getItem('lektor_valaszok') || '{}'); } catch (e) { return {}; } }
+function lsIr() { try { localStorage.setItem('lektor_valaszok', JSON.stringify(valaszok)); } catch (e) { /* kényelmi tartalék */ } }
+const docId = (id) => id.replace(/[^A-Za-z0-9_\-.~:@+]/g, '_');
+
+function el(tag, attrs, ...gyerek) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === 'class') e.className = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v);
+  }
+  for (const g of gyerek) e.append(g);
+  return e;
+}
+function szoveges(s) { // `kód` kiemelése, a többi sima szöveg (textContent)
+  const f = document.createDocumentFragment();
+  s.split(/(`[^`]+`)/).forEach((r) => { if (r.startsWith('`') && r.endsWith('`') && r.length > 2) f.append(el('code', {}, r.slice(1, -1))); else f.append(r); });
+  return f;
+}
+function halvanyId(id) { return id.replace(/^.*?:/, ''); }
+
+function kerdesDoboz(k) {
+  const resz = k.kerdes.split(' ⏎ ');
+  const d = el('div', { class: 'kerdes' }, el('p', {}, szoveges(resz[0])));
+  if (resz.length > 1) {
+    const det = el('details', {}, el('summary', {}, 'Részletek (' + (resz.length - 1) + ')'));
+    resz.slice(1).forEach((r) => det.append(el('p', {}, szoveges(r))));
+    d.append(det);
+  }
+  return d;
+}
+
+function allapotSzoveg(k) {
+  const v = valaszok[k.kerdes_id];
+  if (!v) return '';
+  return CIMKE[v.tipus] + (v.szoveg ? ': ' + v.szoveg : '');
+}
+
+function rajzol() {
+  const lista = document.getElementById('lista');
+  lista.replaceChildren();
+  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum)
+    && (!szuro.allapot || (szuro.allapot === 'nyitva') === !valaszok[k.kerdes_id]));
+  if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
+  lat.forEach((k) => {
+    const v = valaszok[k.kerdes_id];
+    const t = el('section', { class: 'tetel' + (v ? ' kesz' : ''), 'aria-label': k.kerdes_id });
+    const fej = el('div', { class: 'fej' }, el('span', { class: 'id' }, halvanyId(k.kerdes_id)), el('span', {}, k.forras),
+      el('span', {}, k.motivum));
+    if (k.hely) fej.append(el('span', {}, k.hely));
+    if (LAP_URL) fej.append(el('a', { href: LAP_URL, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
+    t.append(fej, kerdesDoboz(k));
+    if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
+    const gombok = el('div', { class: 'gombok' });
+    TIPUSOK.forEach(([kod, cimke]) => {
+      gombok.append(el('button', { type: 'button', class: kod, 'aria-pressed': String(!!v && v.tipus === kod), onclick: () => valaszt(k, kod) }, cimke));
+    });
+    t.append(gombok);
+    const kell = (v && (v.tipus === 'visszakerdezek' || v.tipus === 'sajat')) || nyitottSzoveg[k.kerdes_id];
+    if (kell) {
+      const ta = el('textarea', { 'aria-label': 'Válasz szövege', placeholder: (nyitottSzoveg[k.kerdes_id] === 'visszakerdezek' || (v && v.tipus === 'visszakerdezek')) ? 'Mit kérdezel vissza?' : 'Saját szöveg' });
+      ta.value = v ? v.szoveg || '' : '';
+      const jelzes = el('span', { class: 'allapot' });
+      t.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
+        el('button', { type: 'button', class: 'mentes', onclick: () => mentSzoveg(k, ta.value, jelzes) }, 'Mentés'), jelzes)));
+    } else if (v) {
+      t.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
+    }
+    lista.append(t);
+  });
+  statusz(lat);
+  osszesito();
+}
+
+function statusz(lat) {
+  document.getElementById('n-valasz').textContent = lat.filter((k) => valaszok[k.kerdes_id]).length;
+  document.getElementById('n-ossz').textContent = lat.length;
+  document.getElementById('tarolo-allapot').textContent = db ? 'mentés: adatbázis' : 'mentés: csak ez a lap (másold ki)';
+}
+function osszesito() {
+  const sorok = ADAT.filter((k) => valaszok[k.kerdes_id]).map((k) => {
+    const v = valaszok[k.kerdes_id];
+    return ['LEKTOR-VALASZ', k.kerdes_id, v.tipus, (v.szoveg || '').replace(/\s+/g, ' ')].join(' | ');
+  });
+  document.getElementById('kimenet').textContent = sorok.length ? sorok.join('\n') : '(még nincs válasz)';
+}
+
+async function ment(k, v) {
+  valaszok[k.kerdes_id] = v;
+  lsIr();
+  if (!db) return true;
+  try {
+    await db.doc('valaszok/' + docId(k.kerdes_id)).set({ kerdes_id: k.kerdes_id, tipus: v.tipus, szoveg: v.szoveg || '', ts: v.ts });
+    return true;
+  } catch (e) {
+    if (e && (e.code === 'invalid_argument' || e.code === 'revoked' || e.code === 'not_granted')) db = null;
+    return false;
+  }
+}
+async function valaszt(k, tipus) {
+  const regi = valaszok[k.kerdes_id];
+  if (tipus === 'visszakerdezek' || tipus === 'sajat') {
+    nyitottSzoveg[k.kerdes_id] = tipus;
+    if (!regi || regi.tipus !== tipus) valaszok[k.kerdes_id] = { tipus, szoveg: '', ts: new Date().toISOString() };
+    rajzol();
+    return;
+  }
+  delete nyitottSzoveg[k.kerdes_id];
+  const ok = await ment(k, { tipus, szoveg: '', ts: new Date().toISOString() });
+  if (!ok) uzen('Az adatbázisba nem sikerült írni — a válasz csak ezen a lapon él, másold ki az összesítőt.', true);
+  rajzol();
+}
+async function mentSzoveg(k, szoveg, jelzes) {
+  const tipus = (valaszok[k.kerdes_id] && valaszok[k.kerdes_id].tipus) || nyitottSzoveg[k.kerdes_id] || 'sajat';
+  const ok = await ment(k, { tipus, szoveg: szoveg.trim(), ts: new Date().toISOString() });
+  jelzes.textContent = ok ? 'mentve' : 'csak a lapon él — másold ki az összesítőt';
+  jelzes.className = 'allapot' + (ok ? '' : ' hiba');
+  osszesito();
+  statusz(ADAT);
+}
+
+function uzen(s, hiba) { const u = document.getElementById('uzenet'); u.textContent = s; u.style.color = hiba ? 'var(--elvet)' : ''; }
+
+function szuroSor(azon, kulcs, ertekek) {
+  const sor = document.getElementById(azon);
+  sor.querySelectorAll('button').forEach((b) => b.remove());
+  ertekek.forEach(([ertek, cimke]) => {
+    sor.append(el('button', { type: 'button', 'aria-pressed': String(szuro[kulcs] === ertek), onclick: () => { szuro[kulcs] = ertek; szurokRajzol(); rajzol(); } }, cimke));
+  });
+}
+function szurokRajzol() {
+  const egyedi = (m) => [...new Set(ADAT.map((k) => k[m]))].sort();
+  szuroSor('sz-forras', 'forras', [['', 'mind'], ...egyedi('forras').map((x) => [x, x])]);
+  szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum').map((x) => [x, x])]);
+  szuroSor('sz-allapot', 'allapot', [['nyitva', 'nyitott'], ['kesz', 'megválaszolt'], ['', 'mind']]);
+}
+
+document.getElementById('masol').addEventListener('click', async () => {
+  const s = document.getElementById('kimenet').textContent;
+  try { await navigator.clipboard.writeText(s); uzen('Kimásolva.'); }
+  catch (e) { uzen('A másolás nem sikerült — jelöld ki és másold a szöveget kézzel.', true); }
+});
+
+function figyelmeztet(s) { const f = document.getElementById('figy'); f.textContent = s; f.hidden = false; }
+
+async function indul() {
+  Object.assign(valaszok, lsOlvas());
+  szurokRajzol();
+  rajzol();
+  try { db = (window.claude && claude.use) ? await claude.use('db') : null; } catch (e) { db = null; }
+  if (!db) { figyelmeztet('Az adatbázis most nem érhető el: a válaszaid csak ezen a lapon élnek. Az alsó összesítő sort másold ki.'); rajzol(); return; }
+  let kesz = false;
+  const idozito = setTimeout(() => { if (!kesz) figyelmeztet('Az adatbázist még nem érem el; ami látszik, lehet, hogy nem friss.'); }, 10000);
+  db.collection('valaszok').onSnapshot((snap) => {
+    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts }; });
+    if (!snap.metadata.fromCache) { kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true; }
+    lsIr();
+    rajzol();
+  }, (e) => { kesz = true; clearTimeout(idozito); db = null; figyelmeztet('Az adatbázis hibát adott (' + (e && e.code) + '): a válaszok csak ezen a lapon élnek.'); rajzol(); });
+}
+indul();
+</script>
