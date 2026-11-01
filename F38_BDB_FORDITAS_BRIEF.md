@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: megallt
 ag: claude/f38-adag13-api-bc60bb
-pr: 551
+pr: 556
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: "Te: a 13–14. adag (sorrend 5671–8073, a BDB-fordítás utolsó két adagja) Batch API-n kész, ellenőrzésre vár (PR); a sorrendtábla mind a 8073 sora kész — az Mz zárás (terminológiai javaslatok, szúrópróba, hibás-lista összesítés) a felhasználó jelzésére indul"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
