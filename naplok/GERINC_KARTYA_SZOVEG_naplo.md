@@ -166,7 +166,7 @@ Nincs kész: a kolofon kiadás-sorát a generátor még nem rendereli (a `lexiko
 
 ## F125.9 — a mért számok proveniencia-sora és az újramérés (ELLENOR_F125 6.)
 
-A fenti 57, 4, 192 és 77 szám az 1. tétel (F125.6) UTÁN újramérve, az ág `24971b44` állapotán; az eredmény a régivel egyező, eltérés nincs (az 57 azóta „csoportosan fedett”, mert a gyűjtő mondat N-je, 63, nem kisebb nála).
+A fenti 57, 4, 192 és 77 szám az 1. tétel (F125.6) UTÁN újramérve, az ág `24971b44` állapotán; az eredmény a régivel egyező, eltérés nincs (az 57 azóta „csoportosan fedett”, mert a kód N-je, 64 [a `max(N)` a `motivumok/ALVIL-001.md:13` „64 egyedi igehely” mondatából jön; a :23 „63 egyedi igehely” mondata kisebb], nem kisebb nála; ELLENOR_F125_2 1′: az eredeti szöveg 63-at írt). A 15. sor „63 egyedi igehely” idézete a :23 mondatot idézi pontosan, azt nem módosítottam. A `teszt_proza_lefedettseg.py` `test_csoportos_ALVIL_eset_63_legalabb_57` tesztje saját, szintetikus 63-as adatot használ, szándékosan, ezért ahhoz nem nyúltam.
 
 - ALVIL-001: 72 előfordulás, 15 megnevezve, 57 csoportosan fedett, 0 hiány; ISTENTISZT-001: 33/33 előfordulás megnevezve, 3 név nélküli kapcsolat + 1 nyitott jelölt = 4 név nélküli elem. `scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/jeloltek.tsv | ts=2026-11-01T16:52+01:00`
 - 22. szabály: 192 jelzés; 23. szabály: 77 jelzés. `scope=python eszkozok/ellenoriz.py (teljes futás, a 22. és 23. szabály jelzésszáma; az eszköznek nincs szabályonkénti kapcsolója) | forras=lexikon/*_TUDOMANYOS.md (22.), motivumok/*.md és adat/*.tsv (23.) | ts=2026-11-01T16:52+01:00`
