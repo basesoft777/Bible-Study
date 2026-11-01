@@ -34,5 +34,5 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-nem futott (DT-F151a után)
+nem futott (DT443 után)
 <!-- MODELLES-VEGE -->
