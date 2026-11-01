@@ -29,6 +29,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'proveniencia', 'allapot', 'valasz', 'atvezetes']
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
+FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'kiejtes_kalibracio', 'artifact_komment')
+# proza_javaslat: a lektor olvasás közben kérdez ("az adatból ez következik, de a lap nem mondja ki -- legyen róla mondat?").
+# A lektor prózát NEM ír (DT-F32b); az "igen" válasz a forrásfájl prózai feladata, a mondatot a próza írója írja.
+PROZA_VALASZLEHETOSEGEK = 'legyen mondat; nem kell; később'
 SORTORES = ' ⏎ '
 MODELLES_KEZDET = '<!-- MODELLES-KEZDET -->'
 MODELLES_VEGE = '<!-- MODELLES-VEGE -->'
@@ -153,6 +157,18 @@ def osszefesul(uj, regi):
     return ki, eltunt
 
 
+def proza_javaslat_sor(motivum, azon, hely, kerdes, adatsor, proveniencia):
+    """Egy `proza_javaslat` kérdés-sor. Kötelező: a forrás adatsor megnevezése (`fájl:sor`) és az adat saját proveniencia-sora;
+    a kérdés szövege csak kérdez, mondatot nem javasol."""
+    if not adatsor.strip() or not proveniencia.strip():
+        raise ValueError('proza_javaslat: adatsor és proveniencia kötelező (%s)' % azon)
+    r = {m: '' for m in MEZOK}
+    r.update(kerdes_id='proza_javaslat:%s:%s' % (motivum, azon), forras='proza_javaslat', motivum=motivum, hely=hely,
+             kerdes=SORTORES.join([egysor(kerdes), 'Adatsor: ' + egysor(adatsor)]), valaszlehetosegek=PROZA_VALASZLEHETOSEGEK,
+             proveniencia=proveniencia, allapot='nyitva')
+    return r
+
+
 def tsv_szoveg(motivum, sorok):
     ki = [FEJLEC % (motivum, motivum), '\t'.join(MEZOK)]
     ki += ['\t'.join(r[m] for m in MEZOK) for r in sorok]
@@ -178,6 +194,8 @@ def general(motivum, root=ROOT, kimenet=None, ir=True):
     if eltunt:
         raise ValueError('%s: megválaszolt/átvezetett sor tűnne el a forrásból: %s -- nem írok' % (ut, ', '.join(eltunt)))
     for r in sorok:
+        if r['forras'] not in FORRASOK:
+            raise ValueError('%s: ismeretlen forrás %r' % (r['kerdes_id'], r['forras']))
         if r['allapot'] not in ALLAPOTOK:
             raise ValueError('%s: ismeretlen állapot %r' % (r['kerdes_id'], r['allapot']))
     szoveg = tsv_szoveg(motivum, sorok)

@@ -135,5 +135,25 @@ class GeneralasTeszt(unittest.TestCase):
         self.assertEqual(k, [])
 
 
+class ProzaJavaslatTeszt(unittest.TestCase):
+    def test_sor_es_kotelezo_mezok(self):
+        r = L.proza_javaslat_sor('X-001', 'a1', '1Móz 1:1', 'Az adatból ez következik, de a lap nem mondja ki: legyen róla mondat?',
+                                 'adat/elofordulasok.tsv:40', 'scope=elofordulasok.tsv | forras=manual | ts=2026-11-01')
+        self.assertEqual(r['forras'], 'proza_javaslat')
+        self.assertEqual(r['allapot'], 'nyitva')
+        self.assertIn('Adatsor: adat/elofordulasok.tsv:40', r['kerdes'])
+        self.assertEqual(r['valaszlehetosegek'], L.PROZA_VALASZLEHETOSEGEK)
+        for rossz in (('', 'p'), ('adat/x.tsv:1', '')):
+            with self.assertRaises(ValueError):
+                L.proza_javaslat_sor('X-001', 'a2', '', 'k', *rossz)
+
+    def test_ismeretlen_forras_megall_es_javaslat_megorzodik(self):
+        r = L.proza_javaslat_sor('X-001', 'a1', '', 'k', 'adat/x.tsv:1', 'manual')
+        self.assertEqual(L.tsv_szoveg('X-001', [r]).split('\n')[2].split('\t')[1], 'proza_javaslat')
+        regi = {r['kerdes_id']: dict(r, allapot='megvalaszolva', valasz='legyen mondat')}
+        sorok, eltunt = L.osszefesul([dict(r)], regi)
+        self.assertEqual((sorok[0]['allapot'], sorok[0]['valasz'], eltunt), ('megvalaszolva', 'legyen mondat', []))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

@@ -94,7 +94,12 @@ const LAP_URL = __LAP_URL__;
 const TIPUSOK = [
   ['elfogadom', 'Elfogadom'], ['elvetem', 'Elvetem'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
 ];
+const PROZA_TIPUSOK = [
+  ['elfogadom', 'Legyen mondat'], ['elvetem', 'Nem kell'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
+];
+const tipusok = (k) => (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
 const CIMKE = Object.fromEntries(TIPUSOK);
+const PROZA_CIMKE = Object.fromEntries(PROZA_TIPUSOK);
 const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 let db = null;
@@ -133,7 +138,7 @@ function kerdesDoboz(k) {
 function allapotSzoveg(k) {
   const v = valaszok[k.kerdes_id];
   if (!v) return '';
-  return CIMKE[v.tipus] + (v.szoveg ? ': ' + v.szoveg : '');
+  return (k.forras === 'proza_javaslat' ? PROZA_CIMKE : CIMKE)[v.tipus] + (v.szoveg ? ': ' + v.szoveg : '');
 }
 
 function rajzol() {
@@ -152,7 +157,7 @@ function rajzol() {
     t.append(fej, kerdesDoboz(k));
     if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
     const gombok = el('div', { class: 'gombok' });
-    TIPUSOK.forEach(([kod, cimke]) => {
+    tipusok(k).forEach(([kod, cimke]) => {
       gombok.append(el('button', { type: 'button', class: kod, 'aria-pressed': String(!!v && v.tipus === kod), onclick: () => valaszt(k, kod) }, cimke));
     });
     t.append(gombok);
