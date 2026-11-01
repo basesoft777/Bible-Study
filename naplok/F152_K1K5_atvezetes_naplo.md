@@ -137,3 +137,8 @@ Ezzel minden döntés megvan. Átvezetés: F152.14–.
   2 motívumközi jelölt `nyitva` → `elutasítva` lett. Az indokokban a felhasználó szavai és `manual` proveniencia
   állnak; a régi indok „korábban” előtaggal megmaradt. Az `elofordulasok.tsv`-ből 11 sor törlődött, 2 sor (a K5) a
   kapcsolodás mezőben jelölést kapott. ISTENTISZT-001: 22 sor. A többi sor bájtra azonos maradt (összevetés a szkriptben).
+- **F152.15** (`naplok/F152_kapcsolatok_ir.py`): a `kapcsolatok.tsv`-ből 7 sor törlődött (Róm 10:13 → 10:14; Róm 10:14 →
+  2Tim 2:22, 1Pét 1:17; Zsolt 105:1 → 1Krón 16:8, Ézs 12:4; Jer 10:25 → Zsolt 79:6; Sof 3:9 → Zak 13:9). 3 sor a Róm 10:13-ra
+  horgonyzott át (→ 1Kor 1:2, ApCsel 9:14, ApCsel 22:16). Írás előtt ellenőrizve: mind a négy versben G1941 és G3686 áll.
+  Az indoklásban a Károli szava és `manual` proveniencia áll. ISTENTISZT-001: 25 → 18 sor. Az `ellenoriz.py` 11. szabálya
+  ekkor 2 SÉRTÉS-t ad (minosites, alatamasztas): a lap még a régi adatot mutatja, az újragenerálás javítja.
