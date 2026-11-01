@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-01",
-   "commit": "134342d9"
+   "commit": "5bc434c8"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -932,8 +932,8 @@
    "cim": "A jelöltek előszűrése — gépi szabály a szókapcsolat hiányára (GitHub Action), utána mért modelles lépés a nehéz esetekre, a havi keretből",
    "fazis": "1",
    "allapot": "stop",
-   "brief_allapot": "nem_indult",
-   "most": "Te: befogadás a /befogad-dal; utána /kovetkezo, M0 mérés, ⛔ a mérés után",
+   "brief_allapot": "megallt",
+   "most": "Te: merge; utána az Action első futása workflow_dispatch-csel és a kimenet ellenőrzése; az M3 (modelles lépés) a felhasználó későbbi döntése (DT-F150b); a lexikai javítás: N-F150a",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "",
@@ -4471,6 +4471,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 151
+  "kesz_db": 152
  }
 }

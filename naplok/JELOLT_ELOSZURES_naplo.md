@@ -1,6 +1,6 @@
 # JELOLT_ELOSZURES_naplo.md — F150 (#150) M0 mérés
 
-*Modell: claude-sonnet-5-5 · 2026-11-01 · ág: `claude/f150-jelolt-eloszures-8db30b` · lépés: 4. szakasz 0. (M0 mérés), utána ⛔ DT-F150a.*
+*Modell: claude-sonnet-5-5 · 2026-11-01 · ág: `claude/f150-jelolt-eloszures-8db30b` · lépés: 4. szakasz 0. (M0 mérés), utána ⛔ DT432.*
 
 *(proveniencia: scope=adat/jeloltek.tsv (`jelolt_tipus=elofordulas`, `dontes` = beépítve vagy elutasítva, n=604: 261 beépítve + 343 elutasítva) + adat/elofordulasok.tsv (gerinc-kombinációk) + adat/motivumok.tsv (`azonossag_tipusa`) + adat/elutasitasi_okok.tsv (mintaszótár) | forras=naplok/JELOLT_ELOSZURES_meres.py (szerep_karoli.vers_strongok: TAHOT+TAGNT, Károli-kulcs; lexikon_general.igehely_lista) | ts=2026-11-01)*
 
@@ -76,7 +76,7 @@ A két formulaikus motívumon (ISTENTISZT-001 + TEREMT-002) a szabály **0 hamis
 4. **Versszint, nem szinttartomány.** A szabály egy versben keresi a szópárt; a versen átnyúló párok (Luk 1:46–47 ψυχή ↔ πνεῦμα) a mai bemenettel hamis kizárást adnak. A tartomány-változat nem javít (a jelöltsorok már tartományok vagy külön versek).
 5. **A kombinációk a már beépített sorokból jönnek.** Új alakot (pl. melléknévi ψυχικός/πνευματικός) a halmaz nem ismer, amíg valaki fel nem veszi; ez a MENNY-001/ANTROP-001 hibaforrása.
 
-## 5. DT-F150a — kérdés a felhasználónak
+## 5. DT432 — kérdés a felhasználónak
 
 **Kérdés:** bevezessük-e a gépi előszűrőt (a gerinc-szókapcsolat hiánya → `valoszinu_ki`, csak átnézési sorrend, a `jeloltek.tsv` nem változik), és ha igen, milyen hatókörrel? A brief küszöbe: **0 hamis kizárás a lexikai motívumokon**. A mérés szerint ez a küszöb a lexikai hordozón **nem teljesül** (7 hamis kizárás: MENNY-001 3, ANTROP-001 4), a formulaikus hordozón **teljesül** (0/36).
 

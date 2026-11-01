@@ -1756,7 +1756,7 @@ próbában a H0430 Jób 38:7 BDB-példái több útvonalra mutatnak: kutatói k�
 
 ---
 
-### 2.45 `naplok/ELOSZURES_<ID>.tsv` — a jelöltek gépi elő-szűrésének munkalistája (F150, DT-F150a, 2026-11-01)
+### 2.45 `naplok/ELOSZURES_<ID>.tsv` — a jelöltek gépi elő-szűrésének munkalistája (F150, DT432, 2026-11-01)
 
 **Ez nem adattábla, hanem `naplok/` alatti munkalista** (átnézési sorrend): a döntés és az indoklás a `jeloltek.tsv`-ben
 marad, a felhasználóé; a munkalistából a `jeloltek.tsv`-be közvetlen út nincs (CLAUDE.md 2. szabály). Generált
