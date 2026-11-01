@@ -55,7 +55,7 @@ class Kicsi(Alap):
         bl = B.blokkok(k['prompt'])
         self.assertEqual(''.join(bl), k['prompt'])
         self.assertEqual(len(bl), 3)
-        tart = B.uzenet_tartalom(k['prompt'])
+        tart = B.uzenet_tartalom(k['prompt'], cache=True)
         self.assertIn('cache_control', tart[0])
         self.assertIn('cache_control', tart[1])
         self.assertNotIn('cache_control', tart[2])
@@ -84,7 +84,9 @@ class Kicsi(Alap):
     def test_terv_rendezes_es_csomag(self):
         t = B.terv(13, [STRONG, 'H8409', 'H8547'])
         self.assertEqual(sorted(k['strong'] for k in t), ['H8409', 'H8546', 'H8547'])
-        self.assertEqual(B.terv(13, [STRONG, 'H8409', 'H8547']), t)      # determinisztikus
+        # az adatblokk proveniencia-sora időbélyeget hordoz, ezért a sorrendet hasonlítjuk (a teljes adagnál a gyorsítótár rögzíti a promptot)
+        self.assertEqual([(k['strong'], k['csoport']) for k in B.terv(13, [STRONG, 'H8409', 'H8547'])],
+                         [(k['strong'], k['csoport']) for k in t])
         self.assertEqual([len(c) for c in B.csomagok(t * 2, 4)], [4, 2])
 
 
@@ -142,6 +144,53 @@ class Folyamat(Alap):
 
     def test_javito_uzenet(self):
         self.assertIn('- 14_szakasz: hianyzo token: 3', B.javito_uzenet(['14_szakasz: hianyzo token: 3']))
+
+
+class BUt(Alap):
+    def test_json_tomb(self):
+        self.assertEqual(len(B.json_tomb('```json\n[{"strong": "H1"}, {"strong": "H2"}]\n```')), 2)
+        self.assertEqual(B.json_tomb('nincs'), [])
+        self.assertEqual(B.json_tomb('{"a": 1}'), [])
+
+    def test_csoportok_hatar(self):
+        ker = {'H%04d' % i: [{'forras_kar': 3000, 'mod': 'szakasz'}] for i in range(1, 8)}
+        ker['H0009'] = [{'forras_kar': 10, 'mod': 'teljes'}]
+        cs, egyedi = B.b_csoportok_epit(list(ker), ker)
+        self.assertEqual(egyedi, ['H0009'])
+        self.assertEqual([len(v) for v in cs.values()], [2, 2, 2, 1])
+        self.assertTrue(all(sum(ker[s][0]['forras_kar'] for s in v) <= B.B_HATAR for v in cs.values()))
+
+    def test_b_prompt_szerkezet(self):
+        ks = [B.kerelmek_strongra('H8546')[0], B.kerelmek_strongra('H8409')[0]]
+        p = B.b_prompt(ks)
+        self.assertIn('### 1/2. szócikk', p)
+        self.assertIn('### 2/2. szócikk', p)
+        self.assertIn('Strong-szám: H8546', p)
+        self.assertIn('Strong-szám: H8409', p)
+        self.assertEqual(p.count('## Bemenet'), 1)
+        self.assertIn('egyetlen JSON-tömb', p)
+        self.assertEqual(p.count('Példapár'), ks[0]['prompt'].count('Példapár'))
+        # a közös szabály-rész az első Strong promptjának eleje, szó szerint
+        j = ks[0]['prompt'].find(B.KOT_JEL) + len(B.KOT_JEL)
+        self.assertTrue(p.startswith(ks[0]['prompt'][:j]))
+
+    def test_kot_unio(self):
+        self.assertEqual(B.kot_unio(['- `a` → b\n- `c` → d', '- `c` → d\n- `e` → f']), '- `a` → b\n- `c` → d\n- `e` → f')
+        self.assertEqual(B.kot_unio(['(nincs)', '(nincs)']), '(nincs)')
+
+    def test_b_szetbont(self):
+        os.makedirs(B.MUNKA, exist_ok=True)
+        with open(B.ut('b_csoportok.json'), 'w', encoding='utf-8') as f:
+            json.dump({'B001': ['H8546', 'H8409']}, f)
+        szoveg = json.dumps([{'strong': 'H8546', 'forditas_hu': 'x', 'bizonytalan_feloldasok': []}], ensure_ascii=False)
+        rek = {'custom_id': 'B001-p1', 'tipus': 'succeeded', 'modell': 'm', 'stop': 'end_turn', 'usage': {}, 'szoveg': szoveg,
+               'hiba': '', 'batch_id': 'b'}
+        ki = B.b_szetbont(rek)
+        self.assertEqual([r['custom_id'] for r in ki], ['H8546-c1-p1', 'H8409-c1-p1'])
+        self.assertEqual(B.json_valasz(ki[0]['szoveg'])[0], 'x')
+        self.assertEqual(ki[1]['szoveg'], '')      # a hiányzó objektum → javítandó
+        rek['stop'] = 'max_tokens'
+        self.assertTrue(all(r['szoveg'] == '' for r in B.b_szetbont(rek)))
 
 
 def futtat():

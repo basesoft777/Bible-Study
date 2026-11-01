@@ -55,7 +55,7 @@ def sorrend():
         for line in fh:
             m = line.rstrip('\n').split('\t')
             if m and m[0].isdigit():
-                ki.append((int(m[0]), m[1], int(m[3])))
+                ki.append((int(m[0]), m[1], int(m[3]), int(m[2]) if m[2].isdigit() else 0))
     return ki
 
 
@@ -97,14 +97,15 @@ def main():
     lefedett = set(B.lefedett_konyvek())
     tahot = tahot_konyvek()
 
-    tol = a.tol or next((sz for sz, st, _k in sor if st not in kesz), None)
+    tol = a.tol or next((sz for sz, st, _k, _g in sor if st not in kesz), None)
     if tol is None:
         print('A sorrend minden sora kesz.')
         return
 
     # adagok: kb. ADAG_KARAKTER forraskarakterenkent a tol-tol
     adagok, akt, c = [], [], 0
-    for sz, st, kar in sor:
+    nulla = {st for _sz, st, _k, g in sor if g == 0}   # TAHOT-gyakorisag 0: soha nem lehet Karoli-parjuk
+    for sz, st, kar, _g in sor:
         if sz < tol:
             continue
         akt.append((sz, st))
@@ -120,22 +121,25 @@ def main():
     ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
     print(f'Parositott konyvek: {", ".join(sorted(lefedett))}')
     print(f'Kuszob (DT-F38j): {KUSZOB:.0f}%\n')
-    print('| adag (sorrend) | szocikk | Karoli-par | % | indulhat |')
-    print('|---|---|---|---|---|')
+    print('| adag (sorrend) | szocikk | 0 gyakorisagu (kihagyva) | nevezo | Karoli-par | % | indulhat |')
+    print('|---|---|---|---|---|---|---|')
     for i, ad in enumerate(adagok, 1):
         n = len(ad)
-        van = sum(1 for _sz, st in ad if strong_szam(st) in parok)
-        p = 100.0 * van / max(n, 1)
-        print(f'| +{i} ({ad[0][0]}–{ad[-1][0]}) | {n} | {van} | {p:.0f}% | {"igen" if p >= KUSZOB else "nem"} |')
+        z = sum(1 for _sz, st in ad if st in nulla)
+        nev = n - z
+        van = sum(1 for _sz, st in ad if st not in nulla and strong_szam(st) in parok)
+        p = 100.0 * van / max(nev, 1)
+        print(f'| +{i} ({ad[0][0]}–{ad[-1][0]}) | {n} | {z} | {nev} | {van} | {p:.0f}% | {"igen" if p >= KUSZOB else "nem"} |')
 
     # konyvenkenti nyereseg: a mert adagok par nelkuli szocikkei, amelyek a konyvben elofordulnak
-    hianyzo = [strong_szam(st) for ad in adagok for _sz, st in ad if strong_szam(st) not in parok]
+    hianyzo = [strong_szam(st) for ad in adagok for _sz, st in ad if st not in nulla and strong_szam(st) not in parok]
     nyer = {}
     for k in hianyzo:
         for kv in tahot.get(k, ()):
             if kv not in lefedett:
                 nyer[kv] = nyer.get(kv, 0) + 1
-    print(f'\nPar nelkuli szocikk a mert adagokban: {len(hianyzo)}')
+    print('\nA 0 gyakorisagu Strongok (DT-F38u) kimaradnak a nevezobol: a TAHOT-ban nem fordulnak elo, Karoli-par nem lehet.')
+    print(f'Par nelkuli szocikk a mert adagokban (a 0 gyakorisaguak nelkul): {len(hianyzo)}')
     print('Konyvenkenti felso becsles (hany ilyen szocikk fordul elo a konyvben, TAHOT):')
     print('| konyv | uj tamasz (felso becsles) |')
     print('|---|---|')
