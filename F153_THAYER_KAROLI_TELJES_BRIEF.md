@@ -13,7 +13,7 @@ ag: claude/f153-thayer-2f248a
 olvas: [adat/forditasok.tsv, adat/karoli_strong/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/glossza_lexikon_forditas.py, eszkozok/forditas_kapuk.py, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, eszkozok/thayer_jelolt/adatblokk.py, eszkozok/thayer_jelolt/karoli_ujraellenoriz.py, eszkozok/thayer_jelolt/teszt_lanc.py, naplok/THAYER_KAROLI_TELJES_naplo.md, naplok/THAYER_KAROLI_TELJES_meres.tsv]
 fugg: []
-nem_fugg: [7, 12, 27, 38, 121, 131]
+nem_fugg: [7, 12, 27, 38, 121, 131, 154, 155]
 ---
 
 # Fnn_THAYER_KAROLI_TELJES_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)

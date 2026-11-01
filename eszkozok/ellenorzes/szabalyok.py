@@ -1766,6 +1766,17 @@ def _e27_ir_fedi(ir_lista, ut):
     return False
 
 
+def _e27_elo_iro(terkep, ut):
+    """Az elso nem lezart feladat briefje, amelynek `ir` mezoje fedi az utat, vagy None.
+
+    DT-F40c (b): barmely nem lezart feladat `ir`-je fedhet (nem csak a `fugg`-beliek);
+    az `olvas`-ag es (F156.2) a generalt blokk nyitott sorai kozosen hasznaljak."""
+    for a in terkep.values():
+        if a['allapot'] != 'lezarva' and _e27_ir_fedi(a['ir'], ut):
+            return a['brief']
+    return None
+
+
 E27_GENERALT_KEZDET = re.compile(r'<!--\s*GENERÁLT-KEZDET:.*?--cel\s+(\w+)')
 E27_GENERALT_VEGE = re.compile(r'<!--\s*GENERÁLT-VÉGE:')
 E27_SORSZAM = re.compile(r'^\|\s*(\d+)\s*\|')
@@ -1834,7 +1845,12 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                           kozvetlen=True)
                 elif not csak_chatben and not _e27_opcionalis_nyers(ut, sor) and not _e27_van_ut(ut):
                     uzenet = 'a hivatkozott fájl/könyvtár nem létezik: `%s`.' % ut
-                    if nyitott_sor:      # DT-F40a (a): mindig HIBA, diff-hatokor nelkul
+                    elo = _e27_elo_iro(terkep, ut) if nyitott_sor else None
+                    if elo:              # F156.2: mint az `olvas`-ag (DT-F40c (b)), egy nem lezart feladat irja
+                        jelez('FIGYELMEZTETES', relut, sorszam,
+                              'a hivatkozott fájl/könyvtár még nem létezik: `%s` (egy nem lezárt feladat '
+                              'állítja elő: `%s`).' % (ut, elo), kozvetlen=True)
+                    elif nyitott_sor:    # DT-F40a (a): mindig HIBA, diff-hatokor nelkul
                         jelez('HIBA', relut, sorszam, uzenet + forras, kozvetlen=True)
                     elif kesz:           # DT-F40a (c) / H2: figyelmeztetes
                         jelez('FIGYELMEZTETES', relut, sorszam,
@@ -1884,8 +1900,6 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
         sor = _e27_mezo_sorszam(szoveg, 'olvas')
         szam = brief_szam.get(relut)
         lezart = ((_e27_fejlec_mezo(szoveg, 'allapot') or [''])[0] == 'lezarva')
-        # DT-F40c (b): barmely nem lezart feladat `ir`-je fedhet (nem csak a `fugg`-beliek)
-        elo_feladatok = [a for a in terkep.values() if a['allapot'] != 'lezarva']
         for elem in _e27_fejlec_mezo(szoveg, 'olvas'):
             ut = elem.split('#')[0].strip()
             if not ut or any(c in ut for c in '*<>{} ') or ut.startswith(('http', '/')):
@@ -1901,11 +1915,11 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                           'az `olvas` mezőben hivatkozott fájl nem létezik: `%s` (lezárt feladat: a bemenet szándékosan eltűnhetett).' % ut,
                           kozvetlen=True)
                     continue
-                elo = [f for f in elo_feladatok if _e27_ir_fedi(f['ir'], ut)]
+                elo = _e27_elo_iro(terkep, ut)
                 if elo:
                     jelez('FIGYELMEZTETES', relut, sor,
                           'az `olvas` mezőben hivatkozott fájl még nem létezik: `%s` (egy nem lezárt feladat állítja elő: `%s`).'
-                          % (ut, elo[0]['brief']), kozvetlen=True)
+                          % (ut, elo), kozvetlen=True)
                 else:   # DT-F40a (b) / DT-F40c (b): HIBA
                     jelez('HIBA', relut, sor,
                           'az `olvas` mezőben hivatkozott fájl nem létezik: `%s`, és egyetlen nem lezárt feladat `ir` mezője sem fedi.' % ut,

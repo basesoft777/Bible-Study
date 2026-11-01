@@ -368,8 +368,10 @@ def blokk_13(sorai, ts):
     return out
 
 
-def blokk_14(sorai, ts):
-    """A 14. szerep bekezdései (lista); üres, ha nincs kulcsszó (nincs `karoli_szo` vagy `strong`)."""
+def blokk_14(sorai, ts, szo_nev=None):
+    """A 14. szerep bekezdései (lista); üres, ha nincs kulcsszó (nincs `karoli_szo` vagy `strong`). `szo_nev`: a
+    versben álló motívumszó olvasói neve Strong-számból („kárá (H7121)”, F152 A.3); alapból a Strong-szám."""
+    szo_nev = szo_nev or (lambda s: s)
     mid = sorai[0]['id'] if sorai else ''
     kulcs = collections.OrderedDict((k, v) for k, v in kulcsszavak(sorai).items() if v)
     if not kulcs:
@@ -381,17 +383,17 @@ def blokk_14(sorai, ts):
            'jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*' % kulcs_sz]
     rejt = rejtett_parhuzamok(sorai, kulcs=kulcs)
     out.append('**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját '
-               'gerinc-kombinációjának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
+               'szókapcsolatának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
     if rejt:
         out.append('\n'.join('- %s — „%s” (%s; hiányzik: %s)' % (h, k, s, ', '.join(hi)) for h, k, s, hi in rejt))
     hamis = hamis_parhuzamok(sorai, kulcs=kulcs)
-    out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció '
-               'minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — %d vers. A versben álló gerinc-Strong '
-               '(a kombináció egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a '
-               'kifejezést keresik.' % len(hamis))
+    out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a motívum szókapcsolata nélkül): Károli-versek valamely '
+               'szókapcsolat minden kulcsszavával, amelyekben a motívum egyik szókapcsolata sem teljes — %d vers. A versben '
+               'álló motívumszó (a szókapcsolat egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben '
+               'ugyanazt a kifejezést keresik.' % len(hamis))
     if hamis:
-        sorok = '\n'.join('- %s — %s · *gerinc a versben: %s*%s' % (
-            h, sz, ', '.join(g) if g else 'nincs', ' · *jelölt: %s*' % dontes[h] if h in dontes else '')
+        sorok = '\n'.join('- %s — %s · *a motívum szavaiból a versben: %s*%s' % (
+            h, sz, ', '.join(szo_nev(x) for x in g) if g else 'nincs', ' · *jelölt: %s*' % dontes[h] if h in dontes else '')
             for h, sz, g in hamis)
         out.append('<details>\n<summary>A %d vers</summary>\n\n%s\n\n</details>' % (len(hamis), sorok)
                    if len(hamis) > RESZLET_HATAR else sorok)
