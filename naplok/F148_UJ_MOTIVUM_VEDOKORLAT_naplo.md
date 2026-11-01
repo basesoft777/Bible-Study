@@ -104,3 +104,29 @@ A gerincen álló ALVIL-001 59 H7585-során nincs `lexikon_szotar`/`lexikon_entr
 - **(iii) újradefiniálása:** a „hiányzó egység = jelölés” egyenlőség helyett **a kiírt angol szöveg mérése**: a renderelés alatt a generátor `FORDITASRA_VAR`-kiírását és a `forditas_ehhez`→`None` utáni tényleges angol kiírást is naplózni; SÉRTÉS, ha egy kiírt angol egység jelöletlen. Ha ez a generátorban túl mély, a (iii) a #148-ban JELENTÉS, és az N-F148a nyitott tételként él tovább.
 
 **F — a 20. szabály mintái.** Kódbeli lista az `ellenoriz.py`-ban (nem új `tiltott_fordulatok.tsv`-oszlop); az `invokál` igei alak kimarad, csak a főnévi `invokáció` címke tiltott, mellette a `tiltott_fordulatok.tsv` meglévő mintái. Így a main-en 0 találat; az 1Kir 18:25–26 negatív teszt teljesül.
+
+### 0.6 Újramérés a mai main-en (2026-11-01, a felhasználó „Igen, folytassa” válasza után)
+
+Alap: az `origin/main` beolvasztva (`a4122290`, #517–#531). Ugyanaz a szkript (`naplok/F148_meres.py --forditas`).
+
+| pont | 2026-10-29 | 2026-11-01 | változás |
+|---|---|---|---|
+| 0.2 kitöltöttség | l. fent | **változatlan** (ALVIL-001 13/72 `jelentes_szam`) | — |
+| 0.3 gerinc | kódbeli konstans | **adat**: `adat/funkcio_kapcsolok.tsv` `SZOTARI_GERINC` `aktiv` sorai (ISTENTISZT-001, ALVIL-001; SEMA 2.44, DT427) | a DT-F148a ezt veszi alapul |
+| 0.4 / 18. | ALVIL-001 59 SÉRTÉS | **59 SÉRTÉS** (ugyanaz az 59 H7585-sor) | — |
+| 0.4 / 19. | ALVIL-001 59 SÉRTÉS | **59 SÉRTÉS** | — |
+| 0.4 / 20. | 26 (mind `invokál`) | **26** (mind `invokál`) | — |
+| 0.5 (i) helyőrző | ALVIL 3 (`DT-F123e`) | **0** (a számkiosztás lefutott; 402 `DT` sor) | ⛔ E megszűnt |
+| 0.5 (ii) „a(z)” | 0 | 0 | — |
+| 0.5 (iv) nem létező DT/N | 0 | 0 | — |
+| 0.5 (iii) hiányzó / jelölés | ALVIL 4/0, ISTENTISZT 6/0 | ALVIL **4/0**, ISTENTISZT **1/0**; ANTROP 120/122, HAMART 226/239, KIRALY 57/58, a többi egyenlő | a hívásszám továbbra sem a kiírás |
+
+`scope=adat/elofordulasok.tsv, adat/funkcio_kapcsolok.tsv, lexikon/*.md (14 lap), render 8 id-re ideiglenes könyvtárba | forras=naplok/F148_meres.py --forditas | ts=2026-11-01`
+
+**Döntések** (DT-F148a–d a `DONTESEK.md`-ben, helyőrzővel, a felhasználó idézetével): a (4) `funkcio_kapcsolok.tsv`, b (3)+(1), c (1), d (2). Az `invokál`-ra a 0. javaslat (csak a főnévi „invokáció” tiltott) az orkesztrátor közlése szerint elfogadva, és a mérés továbbra is igazolja.
+
+**A kivétel formája (DT-F148a, a végrehajtó javaslata).** A `SZOTARI_GERINC` motívum-sor `allapot`-ja `aktiv` vagy új értékként `kivetel`; sor nélkül a gerinc be van kapcsolva. Kivétel-sor: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 (a #123 hátralévő hat motívuma), valamint a **TEREMT-002** a #12 adatcommitjáig (A/3: 3/3 sora hiányos; a #12 állítja `aktiv`-ra). A `felfuggesztve` (a SzPA-join szünetelő funkciója) más jelentés, ezért nem azt használom.
+
+**Nyitva marad (a végén ⛔-ként jelentve):**
+- **A** — az ALVIL-001 59 sorának kitöltése (`lexikon_szotar`=BDB, `lexikon_entry_id`=H7585, `jelentes_szam` a BDB saját példahelyéből). Ez a kanonikus `adat/elofordulasok.tsv` 59 sorának írása, a brief viszont kizárja („Nincs benne: adatjavítás”; 4. elfogadási feltétel 7.: az `elofordulasok.tsv` nem változik). Ezért nem itt történik. Amíg nem kész, a 18. és a 19. szabály a main-en 59–59 SÉRTÉS-t ad, és a #148 nem mergelhető.
+- **(iii)** — a „hiányzó = jelölés” egyenlőség a mért adaton nem tartható (ALVIL 4/0, ISTENTISZT 1/0), és a mérés laponként teljes renderelést kíván, ami az E1 lépésbe nem fér. A 0. javaslat második ága szerint: a (iii) nem SÉRTÉS-szabály. Nyitott tétel lesz (N-F148a), a mérőszkript (`naplok/F148_meres.py --forditas`) adja a JELENTÉS-t.
