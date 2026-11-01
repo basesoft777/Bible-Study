@@ -194,3 +194,21 @@ A felhasználó döntése (DT-F125d, 2026-11-01, az orkesztrátor-session továb
 Mely tétel mely fájlt érintette (`git show --stat e6e7955d`):
 - F125.2 (eszköz, szabályok, mérés, DT-F125a): `eszkozok/proza_lefedettseg.py`, `eszkozok/teszt_proza_lefedettseg.py`, `eszkozok/ellenoriz.py`, `DONTESEK.md` (DT-F125a sora), `naplok/GERINC_KARTYA_SZOVEG_naplo.md`.
 - F125.1 (szövegjavaslat ⛔): `naplok/F125_SZOVEGJAVASLAT.md`; a brief hatókörének bővítése: `F125_GERINC_KARTYA_SZOVEG_BRIEF.md` (a fejléc).
+
+## DT-F125e — gyűjtő mondat
+
+A felhasználó döntése (DT-F125e, 2026-11-01, az orkesztrátor-session továbbításával): „Igen, a+b+c”. Az orkesztrátor értelmezése: (a) az összlétszámmal egyező N nem gyűjtő mondat; (b) a gyűjtő mondatban név szerint megnevezett helyek levonódnak az N-ből; (c) mindkettőre teszt. Alkalmazva: `eszkozok/proza_lefedettseg.py` `mer()`: az N-t a motívum `adat/elofordulasok.tsv`-beli sorainak száma (`len(el)`, ugyanaz a forrás, amelyből a lefedettség is számol) ellen vetjük; egyenlőségnél a mondat kimarad; különben keret = N − (a bekezdésben megnevezett előfordulás-sorok száma), a csoportos fedés a legnagyobb keretig terjed. A mondat azonosítása változatlanul a bekezdés. Értelmezés: az egyenlőség a sorok számával történik; a szkript egyedi igehelyet nem számol (ALVIL-001-en a 72 sor 72 különböző igehely, így a két mérték egybeesik, és az „N egyedi igehely” 64-es/63-as mondata nem összlétszám-mondat: a teljes ÓSZ-i részhalmazra szól, tehát gyűjtő marad).
+
+Tesztek: `test_dt_f125e_osszletszam_mondat_nem_gyujto` (5 előfordulás, „5 igehely”, 2 megnevezve → 0 csoportos, 3 hiány), `test_dt_f125e_megnevezett_helyek_levonodnak` („3 igehelyen”, mind a 3 megnevezve + 3 név nélküli → 0, 3), `test_dt_f125e_vegyes` („4 igehelyen”, 1 megnevezve, 5 név nélküli → 3 fedett, 2 hiány). A régi kódon mindhárom elbukik (21 teszt, 3 hiba), az újon mind zöld.
+
+Újramérés (előfordulás-rovat: adat, megnevezve, csoportosan fedett, hiány):
+
+| motívum | régi | új |
+|---|---|---|
+| ISTENTISZT-001 | 33, 33, 0, 0 | 33, 33, 0, 0 |
+| ALVIL-001 | 72, 15, 57, 0 | 72, 15, 57, 0 |
+| TEREMT-002 | 3, 3, 0, 0 | 3, 3, 0, 0 |
+
+A három valódi motívumon a szám nem változik (ISTENTISZT-001-en és TEREMT-002-n a megnevezés már teljes, ezért az összlétszám-mondat kiesése nem hoz hiányt; ALVIL-001-en a keret 64−4 = 60, illetve 63−1 = 62 ≥ 57). A javítás a kitett hibaosztályt zárja, nem e három mért értéket változtatja.
+
+`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef`

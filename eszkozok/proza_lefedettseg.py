@@ -116,10 +116,18 @@ def mer(id_, gyoker=GYOKER):
         ered['mk'].append((r, t))
     for r in nyit:
         ered['nyit'].append((r, lefed([r['igehely']])))
-    # DT-F125a: a gyűjtő mondat (szám + „igehely”) külön kategória, nem hamis hiány — csak az
-    # előfordulásokra; melyik igehelyet fedi, a mérő nem tudja, ezért csak szám szerint kezeli:
-    # a csoportosan fedett darabszám legfeljebb a gyűjtő mondat(ok) legnagyobb N-je (ELLENOR_F125 1.)
-    csoportos = max((int(m.group(1)) for _, p in par for m in CSOPORTOS.finditer(p)), default=0)
+    # DT-F125a/DT-F125e: a gyűjtő mondat (szám + „igehely”) külön kategória, nem hamis hiány — csak az
+    # előfordulásokra. (a) Az összlétszámmal (a motívum előfordulás-sorainak számával) egyező N összlétszám-
+    # mondat, nem gyűjtő. (b) A bekezdésben név szerint megnevezett előfordulások levonódnak az N-ből:
+    # keret = max(0, N − megnevezett). A csoportosan fedett darabszám legfeljebb a legnagyobb keret.
+    csoportos = 0
+    for _, p in par:
+        for m in CSOPORTOS.finditer(p):
+            n = int(m.group(1))
+            if n == len(el):
+                continue
+            nevezett = sum(1 for r in el if megnevezett(r['igehely'], p))
+            csoportos = max(csoportos, n - nevezett)
     return par, ered, csoportos
 
 

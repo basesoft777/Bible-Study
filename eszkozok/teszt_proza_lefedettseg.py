@@ -84,6 +84,27 @@ class TesztLefedettseg(Alap):
         self.ir('motivumok/T-001.md', '## Rész\n\nA szó még 63 egyedi igehelyen fordul elő.\n')
         self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (57, 0, 57, 0))
 
+    def test_dt_f125e_osszletszam_mondat_nem_gyujto(self):
+        # 5 elofordulas, a prozaban „5 igehely” (= osszletszam), 2 megnevezve -> csoportosan fedett 0, hiany 3
+        sorok = ''.join(f'T-001\t1Móz 1:{i}\tRemez\n' for i in range(1, 6))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nÖsszesen 5 igehely: az 1Móz 1:1 és az 1Móz 1:2 a legfontosabb.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (5, 2, 0, 3))
+
+    def test_dt_f125e_megnevezett_helyek_levonodnak(self):
+        # „3 igehelyen” + mindharom megnevezve, plusz 3 nev nelkuli -> keret 0: fedett 0, hiany 3
+        sorok = ''.join(f'T-001\t1Móz 1:{i}\tRemez\n' for i in range(1, 7))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nA pár 3 igehelyen áll együtt: 1Móz 1:1, 1Móz 1:2, 1Móz 1:3.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (6, 3, 0, 3))
+
+    def test_dt_f125e_vegyes(self):
+        # „4 igehelyen” + egy megnevezve, 5 nev nelkuli -> keret 3: fedett 3, hiany 2
+        sorok = ''.join(f'T-001\t1Móz 1:{i}\tRemez\n' for i in range(1, 7))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nA szó 4 igehelyen fordul elő, ezek közül az 1Móz 1:1 a legkorábbi.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (6, 1, 3, 2))
+
     def test_csoportos_csak_elofordulasra(self):
         self.adat('T-001\t1Móz 37:35\tRemez\n', kap='1Móz 1:1\t1Móz 2:2\tT-001\tPárhuzam\n')
         self.ir('motivumok/T-001.md', '## Rész\n\n63 egyedi igehelyen.\n')
