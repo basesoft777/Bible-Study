@@ -12,7 +12,7 @@ kovetkezo: "Te: a #535 merge-re kész (⛔ A feloldva, DT441; SÉRTÉS 0). A #52
 olvas: [tematikus_lezart/ALVIL-001*, tematikus_lezart/naplok/ALVIL-001*, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/teszt_ellenoriz_11.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/glossza_lexikon_forditas.py, adat/SEMA.md, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/lexikon_hivatkozasok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, lexikon/, DONTESEK.md, NYITOTT_FELADATOK.md, F131_SZOTARI_GERINC_BRIEF.md, naplok/F131_SZOTARI_GERINC_naplo.md, F123_MIGRACIO2_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, MUNKAMENET.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, .github/workflows/ellenorzes.yml]
 ir: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, lexikon/ALVIL-001_TUDOMANYOS.md, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/szerep_karoli.py, adat/funkcio_kapcsolok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, eszkozok/szakasz_cimke_levezet.py, eszkozok/teszt_szakasz_cimke_levezet.py, eszkozok/teszt_ellenoriz_vedokorlat.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, adat/SEMA.md, adat/szotar_szakasz_cimke.tsv, naplok/F148_*]
 fugg: []
-nem_fugg: [7, 12, 27, 38, 102, 103, 121, 123, 131, 133, 144]
+nem_fugg: [7, 12, 27, 38, 102, 103, 121, 123, 131, 133, 144, 154, 155]
 ---
 
 # F148_UJ_MOTIVUM_VEDOKORLAT_BRIEF.md — az új motívumok védőkorlátjai

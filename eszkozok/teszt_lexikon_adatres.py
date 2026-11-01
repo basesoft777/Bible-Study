@@ -107,6 +107,7 @@ class Minosites(unittest.TestCase):
         self.assertNotIn('Votes 14', ki)          # küszöb alatt
         self.assertNotIn('→ Róm 10:11 —', ki)      # cél nem előfordulás
         self.assertIn('(2 sor; beépítve 1, elutasítva 1)', ki)
+        self.assertIn('<details>', ki)   # DT-F152a (b): csukva
         self.assertIn('| Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19) | nincs \\| ige |', ki)
         self.assertNotIn('scan G1941', ki)
         self.assertNotIn('Mt 1:1', ki)

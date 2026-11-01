@@ -1,0 +1,3782 @@
+{
+ "ts": "2026-11-01T12:57:39",
+ "szerver": "http://127.0.0.1:8799",
+ "jelenetek": [
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4414,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 555
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_ures",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_ures_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4836,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 422
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 118,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+107"
+   ],
+   "erintes": {
+    "kicsi": 91,
+    "osszes": 608
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_szo",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.szo[data-strong=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_szo_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4836,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 422
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 3,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 41,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+77"
+   ],
+   "erintes": {
+    "kicsi": 113,
+    "osszes": 644
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_vers",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_vers_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1467,
+   "docH": 34468,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1321,
+    "bottom": -875,
+    "left": 16,
+    "right": 359,
+    "h": 447,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 1467
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 1889
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 118,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 189,
+    "bottom": 619,
+    "left": 16,
+    "right": 359,
+    "h": 430,
+    "w": 343,
+    "docTop": 1656
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+107"
+   ],
+   "erintes": {
+    "kicsi": 175,
+    "osszes": 727
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_il_szo",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1?reteg=il",
+   "kattintas": "#v3 a.er-fo[href*=\"szo=H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_il_szo_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4421,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 275,
+    "left": 16,
+    "right": 359,
+    "h": 129,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 1589,
+    "bottom": 1750,
+    "left": 16,
+    "right": 359,
+    "h": 161,
+    "w": 343,
+    "docTop": 1589
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 55,
+    "osszes": 533
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_ures",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_ures_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1509,
+   "docH": 4844,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1363,
+    "bottom": -1234,
+    "left": 16,
+    "right": 359,
+    "h": 129,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 1509
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 1931
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 3,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 147,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 80,
+    "bottom": 241,
+    "left": 16,
+    "right": 359,
+    "h": 161,
+    "w": 343,
+    "docTop": 1589
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+77"
+   ],
+   "erintes": {
+    "kicsi": 262,
+    "osszes": 812
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_vers",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_vers_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 14083,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 1160,
+    "bottom": 1218,
+    "left": 54,
+    "right": 340,
+    "h": 57,
+    "w": 287,
+    "docTop": 1160
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 290,
+    "left": 24,
+    "right": 351,
+    "h": 262,
+    "w": 327,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 5047,
+    "bottom": 13603,
+    "left": 24,
+    "right": 351,
+    "h": 8557,
+    "w": 327,
+    "docTop": 5047
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": false,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 2683,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 1289,
+    "bottom": 1379,
+    "left": 24,
+    "right": 330,
+    "h": 89,
+    "w": 306,
+    "docTop": 1289
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [],
+   "erintes": {
+    "kicsi": 50,
+    "osszes": 436
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_ures",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_ures_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 5047,
+   "docH": 12712,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -3887,
+    "bottom": -3829,
+    "left": 54,
+    "right": 340,
+    "h": 57,
+    "w": 287,
+    "docTop": 1160
+   },
+   "fejlec": {
+    "top": -5019,
+    "bottom": -4757,
+    "left": 24,
+    "right": 351,
+    "h": 262,
+    "w": 327,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 0,
+    "bottom": 7186,
+    "left": 24,
+    "right": 351,
+    "h": 7186,
+    "w": 327,
+    "docTop": 5047
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 2683,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": -3758,
+    "bottom": -3668,
+    "left": 24,
+    "right": 330,
+    "h": 89,
+    "w": 306,
+    "docTop": 1289
+   },
+   "celVersLatszikALapFolott": false,
+   "tartos": [
+    "fulek sticky 0+36"
+   ],
+   "erintes": {
+    "kicsi": 57,
+    "osszes": 443
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_szo",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .ow[title*=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_szo_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 5047,
+   "docH": 11055,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -3887,
+    "bottom": -3829,
+    "left": 54,
+    "right": 340,
+    "h": 57,
+    "w": 287,
+    "docTop": 1160
+   },
+   "fejlec": {
+    "top": -5019,
+    "bottom": -4757,
+    "left": 24,
+    "right": 351,
+    "h": 262,
+    "w": 327,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 0,
+    "bottom": 5529,
+    "left": 24,
+    "right": 351,
+    "h": 5529,
+    "w": 327,
+    "docTop": 5047
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 1115,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 22,
+   "celVers": {
+    "top": -3758,
+    "bottom": -3668,
+    "left": 24,
+    "right": 330,
+    "h": 89,
+    "w": 306,
+    "docTop": 1289
+   },
+   "celVersLatszikALapFolott": false,
+   "tartos": [
+    "fulek sticky 0+36"
+   ],
+   "erintes": {
+    "kicsi": 57,
+    "osszes": 471
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_vers",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .vszam",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_vers_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 6875,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 132,
+    "bottom": 271,
+    "left": 16,
+    "right": 352,
+    "h": 139,
+    "w": 336,
+    "docTop": 132
+   },
+   "fejlec": {
+    "top": 829,
+    "bottom": 1176,
+    "left": 0,
+    "right": 375,
+    "h": 347,
+    "w": 375,
+    "docTop": 829
+   },
+   "fejlecPos": "fixed",
+   "reszlet": null,
+   "celVers": {
+    "top": 1723,
+    "bottom": 1936,
+    "left": 16,
+    "right": 338,
+    "h": 213,
+    "w": 322,
+    "docTop": 1723
+   },
+   "tartos": [],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 13
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_ures",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_ures_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1643,
+   "docH": 7197,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1511,
+    "bottom": -1372,
+    "left": 16,
+    "right": 352,
+    "h": 139,
+    "w": 336,
+    "docTop": 132
+   },
+   "fejlec": {
+    "top": 830,
+    "bottom": 1180,
+    "left": 0,
+    "right": 375,
+    "h": 350,
+    "w": 375,
+    "docTop": 2473
+   },
+   "fejlecPos": "fixed",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 2065
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 143,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 80,
+    "bottom": 293,
+    "left": 16,
+    "right": 338,
+    "h": 213,
+    "w": 322,
+    "docTop": 1723
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel fixed 422+390",
+    "v9fogo sticky 423+92",
+    "fulek sticky 515+40"
+   ],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 20
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_vers",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_vers_375.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 2862,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 112,
+    "bottom": 149,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 241,
+    "bottom": 278,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 241
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 52,
+    "osszes": 555
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_ures",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_ures_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 3395,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 112,
+    "bottom": 149,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 532,
+    "bottom": 1024,
+    "left": 0,
+    "right": 768,
+    "h": 492,
+    "w": 768,
+    "docTop": 532
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 241,
+    "bottom": 278,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 241
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 532+492",
+    "lap-fej sticky 533+107"
+   ],
+   "erintes": {
+    "kicsi": 98,
+    "osszes": 608
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_szo",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.szo[data-strong=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_szo_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 3395,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 112,
+    "bottom": 149,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 532,
+    "bottom": 1024,
+    "left": 0,
+    "right": 768,
+    "h": 492,
+    "w": 768,
+    "docTop": 532
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 241,
+    "bottom": 278,
+    "left": 16,
+    "right": 752,
+    "h": 37,
+    "w": 736,
+    "docTop": 241
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 532+492",
+    "lap-fej sticky 533+77"
+   ],
+   "erintes": {
+    "kicsi": 112,
+    "osszes": 644
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_vers",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_vers_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 654,
+   "docH": 20442,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -542,
+    "bottom": -250,
+    "left": 16,
+    "right": 752,
+    "h": 292,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 654
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 532,
+    "bottom": 1024,
+    "left": 0,
+    "right": 768,
+    "h": 492,
+    "w": 768,
+    "docTop": 1186
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 423,
+    "bottom": 592,
+    "left": 16,
+    "right": 752,
+    "h": 170,
+    "w": 736,
+    "docTop": 1077
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 532+492",
+    "lap-fej sticky 533+107"
+   ],
+   "erintes": {
+    "kicsi": 183,
+    "osszes": 727
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_il_szo",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/1Moz/1?reteg=il",
+   "kattintas": "#v3 a.er-fo[href*=\"szo=H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_il_szo_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 2946,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 112,
+    "bottom": 186,
+    "left": 16,
+    "right": 752,
+    "h": 74,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 1099,
+    "bottom": 1210,
+    "left": 16,
+    "right": 752,
+    "h": 111,
+    "w": 736,
+    "docTop": 1099
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 55,
+    "osszes": 533
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_ures",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_ures_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 1019,
+   "docH": 3479,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -907,
+    "bottom": -833,
+    "left": 16,
+    "right": 752,
+    "h": 74,
+    "w": 736,
+    "docTop": 112
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 768,
+    "h": 49,
+    "w": 768,
+    "docTop": 1019
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 532,
+    "bottom": 1024,
+    "left": 0,
+    "right": 768,
+    "h": 492,
+    "w": 768,
+    "docTop": 1551
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 80,
+    "bottom": 191,
+    "left": 16,
+    "right": 752,
+    "h": 111,
+    "w": 736,
+    "docTop": 1099
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 532+492",
+    "lap-fej sticky 533+77"
+   ],
+   "erintes": {
+    "kicsi": 262,
+    "osszes": 812
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_vers",
+   "szelesseg": 768,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_vers_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 9550,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 688,
+    "bottom": 716,
+    "left": 60,
+    "right": 469,
+    "h": 28,
+    "w": 409,
+    "docTop": 688
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 197,
+    "left": 27,
+    "right": 741,
+    "h": 169,
+    "w": 714,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 3223,
+    "bottom": 9217,
+    "left": 27,
+    "right": 741,
+    "h": 5994,
+    "w": 714,
+    "docTop": 3223
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": false,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 2296,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 762,
+    "bottom": 827,
+    "left": 27,
+    "right": 589,
+    "h": 65,
+    "w": 561,
+    "docTop": 762
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [],
+   "erintes": {
+    "kicsi": 47,
+    "osszes": 436
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_ures",
+   "szelesseg": 768,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_ures_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 3223,
+   "docH": 8393,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -2535,
+    "bottom": -2507,
+    "left": 60,
+    "right": 469,
+    "h": 28,
+    "w": 409,
+    "docTop": 688
+   },
+   "fejlec": {
+    "top": -3195,
+    "bottom": -3026,
+    "left": 27,
+    "right": 741,
+    "h": 169,
+    "w": 714,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 0,
+    "bottom": 4836,
+    "left": 27,
+    "right": 741,
+    "h": 4836,
+    "w": 714,
+    "docTop": 3223
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 2296,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": -2461,
+    "bottom": -2396,
+    "left": 27,
+    "right": 589,
+    "h": 65,
+    "w": 561,
+    "docTop": 762
+   },
+   "celVersLatszikALapFolott": false,
+   "tartos": [
+    "fulek sticky 0+36"
+   ],
+   "erintes": {
+    "kicsi": 54,
+    "osszes": 443
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_szo",
+   "szelesseg": 768,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .ow[title*=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_szo_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 3223,
+   "docH": 7157,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -2535,
+    "bottom": -2507,
+    "left": 60,
+    "right": 469,
+    "h": 28,
+    "w": 409,
+    "docTop": 688
+   },
+   "fejlec": {
+    "top": -3195,
+    "bottom": -3026,
+    "left": 27,
+    "right": 741,
+    "h": 169,
+    "w": 714,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 0,
+    "bottom": 3600,
+    "left": 27,
+    "right": 741,
+    "h": 3600,
+    "w": 714,
+    "docTop": 3223
+   },
+   "reszletPos": "static",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 728,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 22,
+   "celVers": {
+    "top": -2461,
+    "bottom": -2396,
+    "left": 27,
+    "right": 589,
+    "h": 65,
+    "w": 561,
+    "docTop": 762
+   },
+   "celVersLatszikALapFolott": false,
+   "tartos": [
+    "fulek sticky 0+36"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 471
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_vers",
+   "szelesseg": 768,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .vszam",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_vers_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 0,
+   "docH": 3782,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 105,
+    "bottom": 207,
+    "left": 16,
+    "right": 600,
+    "h": 102,
+    "w": 584,
+    "docTop": 105
+   },
+   "fejlec": {
+    "top": 1038,
+    "bottom": 1309,
+    "left": 0,
+    "right": 768,
+    "h": 272,
+    "w": 768,
+    "docTop": 1038
+   },
+   "fejlecPos": "fixed",
+   "reszlet": null,
+   "celVers": {
+    "top": 956,
+    "bottom": 1095,
+    "left": 16,
+    "right": 598,
+    "h": 139,
+    "w": 582,
+    "docTop": 956
+   },
+   "tartos": [],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 13
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_ures",
+   "szelesseg": 768,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_ures_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 768,
+   "vh": 1024,
+   "scrollY": 876,
+   "docH": 4214,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -771,
+    "bottom": -669,
+    "left": 16,
+    "right": 600,
+    "h": 102,
+    "w": 584,
+    "docTop": 105
+   },
+   "fejlec": {
+    "top": 1038,
+    "bottom": 1313,
+    "left": 0,
+    "right": 768,
+    "h": 275,
+    "w": 768,
+    "docTop": 1914
+   },
+   "fejlecPos": "fixed",
+   "reszlet": {
+    "top": 532,
+    "bottom": 1024,
+    "left": 0,
+    "right": 768,
+    "h": 492,
+    "w": 768,
+    "docTop": 1408
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 80,
+    "bottom": 219,
+    "left": 16,
+    "right": 598,
+    "h": 139,
+    "w": 582,
+    "docTop": 956
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel fixed 532+492",
+    "v9fogo sticky 533+92",
+    "fulek sticky 625+40"
+   ],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 20
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_vers",
+   "szelesseg": 768,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_vers_768.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4025,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 488,
+    "h": 37,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 727,
+    "left": 504,
+    "right": 904,
+    "h": 641,
+    "w": 400,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 368,
+    "bottom": 442,
+    "left": 16,
+    "right": 488,
+    "h": 74,
+    "w": 472,
+    "docTop": 368
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+641",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 121,
+    "osszes": 627
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_ures",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_ures_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4025,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 488,
+    "h": 37,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 896,
+    "left": 504,
+    "right": 904,
+    "h": 810,
+    "w": 400,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 93,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 368,
+    "bottom": 442,
+    "left": 16,
+    "right": 488,
+    "h": 74,
+    "w": 472,
+    "docTop": 368
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+810",
+    "lap-fej sticky 87+101"
+   ],
+   "erintes": {
+    "kicsi": 162,
+    "osszes": 678
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_szo",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.szo[data-strong=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_szo_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4025,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 488,
+    "h": 37,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 896,
+    "left": 504,
+    "right": 904,
+    "h": 810,
+    "w": 400,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 1,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 17,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 368,
+    "bottom": 442,
+    "left": 16,
+    "right": 488,
+    "h": 74,
+    "w": 472,
+    "docTop": 368
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+810",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 180,
+    "osszes": 714
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_vers",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_vers_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 1058,
+   "docH": 26350,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -856,
+    "bottom": -432,
+    "left": 16,
+    "right": 488,
+    "h": 425,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 1058
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 82,
+    "bottom": 892,
+    "left": 504,
+    "right": 904,
+    "h": 810,
+    "w": 400,
+    "docTop": 1140
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 93,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 373,
+    "bottom": 676,
+    "left": 16,
+    "right": 488,
+    "h": 302,
+    "w": 472,
+    "docTop": 1431
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 82+810",
+    "lap-fej sticky 83+101"
+   ],
+   "erintes": {
+    "kicsi": 247,
+    "osszes": 797
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_il_szo",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/1Moz/1?reteg=il",
+   "kattintas": "#v3 a.er-fo[href*=\"szo=H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_il_szo_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4109,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 313,
+    "left": 16,
+    "right": 488,
+    "h": 111,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 727,
+    "left": 504,
+    "right": 904,
+    "h": 641,
+    "w": 400,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 1596,
+    "bottom": 1744,
+    "left": 16,
+    "right": 488,
+    "h": 148,
+    "w": 472,
+    "docTop": 1596
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+641",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 124,
+    "osszes": 606
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_ures",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_ures_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 1117,
+   "docH": 4109,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -915,
+    "bottom": -804,
+    "left": 16,
+    "right": 488,
+    "h": 111,
+    "w": 472,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 920,
+    "h": 74,
+    "w": 920,
+    "docTop": 1117
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 82,
+    "bottom": 892,
+    "left": 504,
+    "right": 904,
+    "h": 810,
+    "w": 400,
+    "docTop": 1199
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 3,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 123,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 479,
+    "bottom": 627,
+    "left": 16,
+    "right": 488,
+    "h": 148,
+    "w": 472,
+    "docTop": 1596
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 82+810",
+    "lap-fej sticky 83+71"
+   ],
+   "erintes": {
+    "kicsi": 330,
+    "osszes": 883
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_vers",
+   "szelesseg": 920,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_vers_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4664,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 700,
+    "left": 64,
+    "right": 409,
+    "h": 65,
+    "w": 344,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 31,
+    "right": 889,
+    "h": 116,
+    "w": 858,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 474,
+    "right": 889,
+    "h": 876,
+    "w": 415,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2595,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 848,
+    "left": 31,
+    "right": 394,
+    "h": 102,
+    "w": 363,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 46,
+    "osszes": 436
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_ures",
+   "szelesseg": 920,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_ures_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4664,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 700,
+    "left": 64,
+    "right": 409,
+    "h": 65,
+    "w": 344,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 31,
+    "right": 889,
+    "h": 116,
+    "w": 858,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 474,
+    "right": 889,
+    "h": 876,
+    "w": 415,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2595,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 848,
+    "left": 31,
+    "right": 394,
+    "h": 102,
+    "w": 363,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 443
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_szo",
+   "szelesseg": 920,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .ow[title*=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_szo_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4664,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 700,
+    "left": 64,
+    "right": 409,
+    "h": 65,
+    "w": 344,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 31,
+    "right": 889,
+    "h": 116,
+    "w": 858,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 474,
+    "right": 889,
+    "h": 876,
+    "w": 415,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 1027,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 22,
+   "celVers": {
+    "top": 746,
+    "bottom": 848,
+    "left": 31,
+    "right": 394,
+    "h": 102,
+    "w": 363,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 471
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_vers",
+   "szelesseg": 920,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .vszam",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_vers_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4468,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 220,
+    "bottom": 322,
+    "left": 16,
+    "right": 468,
+    "h": 102,
+    "w": 452,
+    "docTop": 220
+   },
+   "fejlec": {
+    "top": 37,
+    "bottom": 106,
+    "left": 0,
+    "right": 920,
+    "h": 69,
+    "w": 920,
+    "docTop": 37
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 126,
+    "bottom": 896,
+    "left": 504,
+    "right": 904,
+    "h": 770,
+    "w": 400,
+    "docTop": 126
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 1330,
+    "bottom": 1506,
+    "left": 16,
+    "right": 482,
+    "h": 176,
+    "w": 466,
+    "docTop": 1330
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "top sticky 37+69",
+    "panel v9-ures sticky 126+770",
+    "v9fogo sticky 127+42",
+    "also fixed 868+32"
+   ],
+   "erintes": {
+    "kicsi": 77,
+    "osszes": 115
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_ures",
+   "szelesseg": 920,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_ures_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 920,
+   "vh": 900,
+   "scrollY": 889,
+   "docH": 4586,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -669,
+    "bottom": -567,
+    "left": 16,
+    "right": 468,
+    "h": 102,
+    "w": 452,
+    "docTop": 220
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 69,
+    "left": 0,
+    "right": 920,
+    "h": 69,
+    "w": 920,
+    "docTop": 889
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 110,
+    "bottom": 880,
+    "left": 504,
+    "right": 904,
+    "h": 770,
+    "w": 400,
+    "docTop": 999
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 118,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 441,
+    "bottom": 675,
+    "left": 16,
+    "right": 484,
+    "h": 233,
+    "w": 468,
+    "docTop": 1330
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "top sticky 0+69",
+    "panel sticky 110+770",
+    "v9fogo sticky 111+80",
+    "fulek sticky 191+40",
+    "also fixed 865+35"
+   ],
+   "erintes": {
+    "kicsi": 96,
+    "osszes": 113
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_vers",
+   "szelesseg": 920,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_vers_920.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 3190,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 662,
+    "left": 680,
+    "right": 1264,
+    "h": 576,
+    "w": 584,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 331,
+    "bottom": 368,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 331
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+576",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 121,
+    "osszes": 627
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_ures",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_ures_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 3190,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 896,
+    "left": 680,
+    "right": 1264,
+    "h": 810,
+    "w": 584,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 331,
+    "bottom": 368,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 331
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+810",
+    "lap-fej sticky 87+101"
+   ],
+   "erintes": {
+    "kicsi": 164,
+    "osszes": 678
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_szo",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.szo[data-strong=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_szo_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 3190,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 239,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 896,
+    "left": 680,
+    "right": 1264,
+    "h": 810,
+    "w": 584,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 331,
+    "bottom": 368,
+    "left": 16,
+    "right": 664,
+    "h": 37,
+    "w": 648,
+    "docTop": 331
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+810",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 180,
+    "osszes": 714
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_vers",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_vers_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 793,
+   "docH": 20659,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -591,
+    "bottom": -299,
+    "left": 16,
+    "right": 664,
+    "h": 292,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 793
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 82,
+    "bottom": 892,
+    "left": 680,
+    "right": 1264,
+    "h": 810,
+    "w": 584,
+    "docTop": 875
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 373,
+    "bottom": 675,
+    "left": 16,
+    "right": 664,
+    "h": 302,
+    "w": 648,
+    "docTop": 1166
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 82+810",
+    "lap-fej sticky 83+101"
+   ],
+   "erintes": {
+    "kicsi": 249,
+    "osszes": 797
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_il_szo",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/1Moz/1?reteg=il",
+   "kattintas": "#v3 a.er-fo[href*=\"szo=H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_il_szo_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 3163,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 202,
+    "bottom": 276,
+    "left": 16,
+    "right": 664,
+    "h": 74,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 86,
+    "bottom": 662,
+    "left": 680,
+    "right": 1264,
+    "h": 576,
+    "w": 584,
+    "docTop": 86
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": false,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 1263,
+    "bottom": 1374,
+    "left": 16,
+    "right": 664,
+    "h": 111,
+    "w": 648,
+    "docTop": 1263
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 86+576",
+    "lap-fej sticky 87+71"
+   ],
+   "erintes": {
+    "kicsi": 124,
+    "osszes": 606
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_ures",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_ures_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 784,
+   "docH": 3163,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -582,
+    "bottom": -508,
+    "left": 16,
+    "right": 664,
+    "h": 74,
+    "w": 648,
+    "docTop": 202
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 74,
+    "left": 0,
+    "right": 1280,
+    "h": 74,
+    "w": 1280,
+    "docTop": 784
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 82,
+    "bottom": 892,
+    "left": 680,
+    "right": 1264,
+    "h": 810,
+    "w": 584,
+    "docTop": 866
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 479,
+    "bottom": 590,
+    "left": 16,
+    "right": 664,
+    "h": 111,
+    "w": 648,
+    "docTop": 1263
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+74",
+    "jobb-oszlop reszletek sticky 82+810",
+    "lap-fej sticky 83+71"
+   ],
+   "erintes": {
+    "kicsi": 330,
+    "osszes": 883
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_vers",
+   "szelesseg": 1280,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_vers_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4146,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 73,
+    "right": 482,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 40,
+    "right": 1240,
+    "h": 116,
+    "w": 1200,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 562,
+    "right": 1240,
+    "h": 876,
+    "w": 678,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2350,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 40,
+    "right": 494,
+    "h": 65,
+    "w": 454,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 47,
+    "osszes": 436
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_ures",
+   "szelesseg": 1280,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_ures_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4146,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 73,
+    "right": 482,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 40,
+    "right": 1240,
+    "h": 116,
+    "w": 1200,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 562,
+    "right": 1240,
+    "h": 876,
+    "w": 678,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2350,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 40,
+    "right": 494,
+    "h": 65,
+    "w": 454,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 54,
+    "osszes": 443
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_szo",
+   "szelesseg": 1280,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .ow[title*=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_szo_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 4146,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 73,
+    "right": 482,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 40,
+    "right": 1240,
+    "h": 116,
+    "w": 1200,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 1476,
+    "left": 562,
+    "right": 1240,
+    "h": 876,
+    "w": 678,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 782,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 22,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 40,
+    "right": 494,
+    "h": 65,
+    "w": 454,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+876",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 471
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_vers",
+   "szelesseg": 1280,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .vszam",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_vers_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 0,
+   "docH": 3611,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 220,
+    "bottom": 322,
+    "left": 16,
+    "right": 600,
+    "h": 102,
+    "w": 584,
+    "docTop": 220
+   },
+   "fejlec": {
+    "top": 37,
+    "bottom": 106,
+    "left": 0,
+    "right": 1280,
+    "h": 69,
+    "w": 1280,
+    "docTop": 37
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 126,
+    "bottom": 896,
+    "left": 686,
+    "right": 1264,
+    "h": 770,
+    "w": 578,
+    "docTop": 126
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 1071,
+    "bottom": 1210,
+    "left": 16,
+    "right": 598,
+    "h": 139,
+    "w": 582,
+    "docTop": 1071
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "top sticky 37+69",
+    "panel v9-ures sticky 126+770",
+    "v9fogo sticky 127+42",
+    "also fixed 868+32"
+   ],
+   "erintes": {
+    "kicsi": 77,
+    "osszes": 115
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_ures",
+   "szelesseg": 1280,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_ures_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 1280,
+   "vh": 900,
+   "scrollY": 630,
+   "docH": 3654,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -410,
+    "bottom": -308,
+    "left": 16,
+    "right": 600,
+    "h": 102,
+    "w": 584,
+    "docTop": 220
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 69,
+    "left": 0,
+    "right": 1280,
+    "h": 69,
+    "w": 1280,
+    "docTop": 630
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 110,
+    "bottom": 880,
+    "left": 686,
+    "right": 1264,
+    "h": 770,
+    "w": 578,
+    "docTop": 740
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 441,
+    "bottom": 619,
+    "left": 16,
+    "right": 598,
+    "h": 177,
+    "w": 582,
+    "docTop": 1071
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "top sticky 0+69",
+    "panel sticky 110+770",
+    "v9fogo sticky 111+80",
+    "fulek sticky 191+40",
+    "also fixed 865+35"
+   ],
+   "erintes": {
+    "kicsi": 96,
+    "osszes": 113
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_vers",
+   "szelesseg": 1280,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_vers_1280.png",
+   "telefon": false
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4414,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 555
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_ures",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_ures_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4836,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 422
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 118,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+107"
+   ],
+   "erintes": {
+    "kicsi": 91,
+    "osszes": 608
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_szo",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.szo[data-strong=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_szo_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4836,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 210,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 422
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 3,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 41,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 323,
+    "bottom": 388,
+    "left": 16,
+    "right": 359,
+    "h": 64,
+    "w": 343,
+    "docTop": 323
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+77"
+   ],
+   "erintes": {
+    "kicsi": 113,
+    "osszes": 644
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_vers",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1",
+   "kattintas": "#v3 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_vers_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1467,
+   "docH": 34468,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1321,
+    "bottom": -875,
+    "left": 16,
+    "right": 359,
+    "h": 447,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 1467
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 1889
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 2,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 118,
+   "reszletBelsoGorgetok": [
+    "szoveg gordul:340",
+    "szoveg gordul:340"
+   ],
+   "reszletTablakSzama": 7,
+   "reszletBlokkok": 16,
+   "celVers": {
+    "top": 189,
+    "bottom": 619,
+    "left": 16,
+    "right": 359,
+    "h": 430,
+    "w": 343,
+    "docTop": 1656
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+107"
+   ],
+   "erintes": {
+    "kicsi": 175,
+    "osszes": 727
+   },
+   "cim": "Mózes első könyve 1 – PaRDeS olvasó",
+   "jelenet": "szerver_1moz1_il_szo",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/1Moz/1?reteg=il",
+   "kattintas": "#v3 a.er-fo[href*=\"szo=H0216\"]",
+   "kattintas_ok": true,
+   "kep": "szerver_1moz1_il_szo_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 4421,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 146,
+    "bottom": 275,
+    "left": 16,
+    "right": 359,
+    "h": 129,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 0
+   },
+   "fejlecPos": "sticky",
+   "reszlet": null,
+   "celVers": {
+    "top": 1589,
+    "bottom": 1750,
+    "left": 16,
+    "right": 359,
+    "h": 161,
+    "w": 343,
+    "docTop": 1589
+   },
+   "tartos": [
+    "fejlec navlap sticky 0+49"
+   ],
+   "erintes": {
+    "kicsi": 55,
+    "osszes": 533
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_ures",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_ures_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1509,
+   "docH": 4844,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1363,
+    "bottom": -1234,
+    "left": 16,
+    "right": 359,
+    "h": 129,
+    "w": 343,
+    "docTop": 146
+   },
+   "fejlec": {
+    "top": 0,
+    "bottom": 49,
+    "left": 0,
+    "right": 375,
+    "h": 49,
+    "w": 375,
+    "docTop": 1509
+   },
+   "fejlecPos": "sticky",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 1931
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 3,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 147,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 12,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 80,
+    "bottom": 241,
+    "left": 16,
+    "right": 359,
+    "h": 161,
+    "w": 343,
+    "docTop": 1589
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "fejlec navlap sticky 0+49",
+    "jobb-oszlop reszletek fixed 422+390",
+    "lap-fej sticky 423+77"
+   ],
+   "erintes": {
+    "kicsi": 262,
+    "osszes": 812
+   },
+   "cim": "Ezékiel könyve 37 – PaRDeS olvasó",
+   "jelenet": "szerver_ez37_vers",
+   "szelesseg": 375,
+   "url": "http://127.0.0.1:8799/Ez/37",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "szerver_ez37_vers_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 981,
+   "vh": 2123,
+   "scrollY": 0,
+   "docH": 4405,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 66,
+    "right": 474,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 33,
+    "right": 948,
+    "h": 116,
+    "w": 915,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 2698,
+    "left": 505,
+    "right": 948,
+    "h": 2098,
+    "w": 443,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2570,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 33,
+    "right": 416,
+    "h": 65,
+    "w": 383,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+2098",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 47,
+    "osszes": 436
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_ures",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_ures_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 981,
+   "vh": 2123,
+   "scrollY": 0,
+   "docH": 4405,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 66,
+    "right": 474,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 33,
+    "right": 948,
+    "h": 116,
+    "w": 915,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 2698,
+    "left": 505,
+    "right": 948,
+    "h": 2098,
+    "w": 443,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 2570,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 23,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 33,
+    "right": 416,
+    "h": 65,
+    "w": 383,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+2098",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 54,
+    "osszes": 443
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_szo",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .ow[title*=\"H0216\"]",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_szo_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 981,
+   "vh": 2123,
+   "scrollY": 0,
+   "docH": 4405,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 635,
+    "bottom": 663,
+    "left": 66,
+    "right": 474,
+    "h": 28,
+    "w": 409,
+    "docTop": 635
+   },
+   "fejlec": {
+    "top": 28,
+    "bottom": 144,
+    "left": 33,
+    "right": 948,
+    "h": 116,
+    "w": 915,
+    "docTop": 28
+   },
+   "fejlecPos": "static",
+   "reszlet": {
+    "top": 600,
+    "bottom": 2698,
+    "left": 505,
+    "right": 948,
+    "h": 2098,
+    "w": 443,
+    "docTop": 600
+   },
+   "reszletPos": "sticky",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 1002,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 0,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 22,
+   "celVers": {
+    "top": 746,
+    "bottom": 811,
+    "left": 33,
+    "right": 416,
+    "h": 65,
+    "w": 383,
+    "docTop": 746
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel sticky 600+2098",
+    "fulek sticky 600+36"
+   ],
+   "erintes": {
+    "kicsi": 53,
+    "osszes": 471
+   },
+   "cim": "Károli-konkordancia próba · 1Móz 1:1–2:3",
+   "jelenet": "pilot_1moz1_vers",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/pilot/a/karoli_konkordancia_proba.html",
+   "kattintas": "#v-2 .vszam",
+   "kattintas_ok": true,
+   "kep": "pilot_1moz1_vers_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 0,
+   "docH": 6875,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": 132,
+    "bottom": 271,
+    "left": 16,
+    "right": 352,
+    "h": 139,
+    "w": 336,
+    "docTop": 132
+   },
+   "fejlec": {
+    "top": 829,
+    "bottom": 1176,
+    "left": 0,
+    "right": 375,
+    "h": 347,
+    "w": 375,
+    "docTop": 829
+   },
+   "fejlecPos": "fixed",
+   "reszlet": null,
+   "celVers": {
+    "top": 1723,
+    "bottom": 1936,
+    "left": 16,
+    "right": 338,
+    "h": 213,
+    "w": 322,
+    "docTop": 1723
+   },
+   "tartos": [],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 13
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_ures",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": null,
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_ures_375_telefon.png",
+   "telefon": true
+  },
+  {
+   "vw": 375,
+   "vh": 812,
+   "scrollY": 1643,
+   "docH": 7197,
+   "tulfolyas": 0,
+   "elsoVers": {
+    "top": -1511,
+    "bottom": -1372,
+    "left": 16,
+    "right": 352,
+    "h": 139,
+    "w": 336,
+    "docTop": 132
+   },
+   "fejlec": {
+    "top": 830,
+    "bottom": 1180,
+    "left": 0,
+    "right": 375,
+    "h": 350,
+    "w": 375,
+    "docTop": 2473
+   },
+   "fejlecPos": "fixed",
+   "reszlet": {
+    "top": 422,
+    "bottom": 812,
+    "left": 0,
+    "right": 375,
+    "h": 390,
+    "w": 375,
+    "docTop": 2065
+   },
+   "reszletPos": "fixed",
+   "reszletLathatoAViewportban": true,
+   "reszletSajatGorgetes": true,
+   "reszletBelsoTulfolyas": 0,
+   "reszletKilogoTablak": 0,
+   "reszletGorgethetoTablak": 0,
+   "reszletVizszTulfolyas": 143,
+   "reszletBelsoGorgetok": [],
+   "reszletTablakSzama": 0,
+   "reszletBlokkok": 0,
+   "celVers": {
+    "top": 80,
+    "bottom": 293,
+    "left": 16,
+    "right": 338,
+    "h": 213,
+    "w": 322,
+    "docTop": 1723
+   },
+   "celVersLatszikALapFolott": true,
+   "tartos": [
+    "panel fixed 422+390",
+    "v9fogo sticky 423+92",
+    "fulek sticky 515+40"
+   ],
+   "erintes": {
+    "kicsi": 12,
+    "osszes": 20
+   },
+   "cim": "Csak szöveg olvasó",
+   "jelenet": "mockup9_ez37_vers",
+   "szelesseg": 375,
+   "url": "file:///C:/Users/bases/AppData/Local/Temp/claude/C--Users-bases-Desktop-Bible-Study--claude-worktrees-f134-olvaso-031ecb/fd39f5e2-8256-4ecc-ae76-13cab3809e64/scratchpad/mockup/v9.html",
+   "kattintas": "#v12 a.versszam",
+   "kattintas_ok": true,
+   "kep": "mockup9_ez37_vers_375_telefon.png",
+   "telefon": true
+  }
+ ]
+}

@@ -271,10 +271,11 @@ def ures_cache():
         f.write('3\n')
 
 
-def nezetes(ut, nezet):
-    if nezet == 'olvaso':
+def retegges(ut, reteg):
+    """A mérési cím a réteggel (#134: nézetek helyett rétegek; '' = réteg nélkül, a folyó szöveg)."""
+    if not reteg:
         return ut
-    return ut + ('&' if '?' in ut else '?') + 'nezet=' + nezet
+    return ut + ('&' if '?' in ut else '?') + 'reteg=' + reteg
 
 
 def rbajt(cg):
@@ -366,8 +367,8 @@ def main():
         eredmeny['igazolas'] = sz.igazolas()
         print('igazolás:', json.dumps(eredmeny['igazolas'], ensure_ascii=False), flush=True)
         csoportok = {}
-        for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
-            csoportok['vers_' + nezet] = [('vers_' + nezet, c, nezetes(u, nezet)) for c, u in m['vers']]
+        for reteg, nev in (('', 'alap'), ('il', 'il')):
+            csoportok['vers_' + nev] = [('vers_' + nev, c, retegges(u, reteg)) for c, u in m['vers']]
         csoportok['vers_toredek'] = [('vers_toredek', c, u) for c, u in m['vers_toredek']]
         csoportok['szo_heber'] = [('szo_heber', c, u) for c, u in m['szo_heber']]
         csoportok['szo_gorog'] = [('szo_gorog', c, u) for c, u in m['szo_gorog']]

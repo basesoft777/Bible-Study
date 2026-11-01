@@ -12,7 +12,7 @@ munka: adat
 olvas: [konkordancia/TBESH.txt, eszkozok/tbesh_konszolidalt_import.py, konkordancia/TIPNR_kivonat.tsv, adat/forditasok.tsv]
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_TAGNT_README.md, eszkozok/alapjelentes_istennev_javit.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_alapjelentes.py, eszkozok/olvaso_szerver/teszt_alapjelentes_arany.tsv, adat/alapjelentes_kezi.tsv]
 fugg: [134]
-nem_fugg: [27]
+nem_fugg: [27, 154, 155]
 ---
 
 # F138_ALAPJELENTES_JAVITAS_BRIEF.md — A szó-lap alapjelentésének javítása
