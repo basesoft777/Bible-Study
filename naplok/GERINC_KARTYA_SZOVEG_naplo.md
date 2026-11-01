@@ -211,7 +211,7 @@ Tesztek: `test_dt_f125e_osszletszam_mondat_nem_gyujto` (5 előfordulás, „5 ig
 
 A három valódi motívumon a szám nem változik (ISTENTISZT-001-en és TEREMT-002-n a megnevezés már teljes, ezért az összlétszám-mondat kiesése nem hoz hiányt; ALVIL-001-en a keret 64−4 = 60, illetve 63−1 = 62 ≥ 57). A javítás a kitett hibaosztályt zárja, nem e három mért értéket változtatja.
 
-`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef`
+`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef` — *a `ts` utólag írt, nem a futásé; a mérés a „DT-F125e — a névfelismerés javítása” szakasz újramért, valódi időbélyegű sorában áll (ELLENOR_F125_3 1.).*
 
 ### DT-F125e — a névfelismerés javítása (ELLENOR_F125_3 1.)
 
