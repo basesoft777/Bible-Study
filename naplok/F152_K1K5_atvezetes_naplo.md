@@ -142,3 +142,6 @@ Ezzel minden döntés megvan. Átvezetés: F152.14–.
   horgonyzott át (→ 1Kor 1:2, ApCsel 9:14, ApCsel 22:16). Írás előtt ellenőrizve: mind a négy versben G1941 és G3686 áll.
   Az indoklásban a Károli szava és `manual` proveniencia áll. ISTENTISZT-001: 25 → 18 sor. Az `ellenoriz.py` 11. szabálya
   ekkor 2 SÉRTÉS-t ad (minosites, alatamasztas): a lap még a régi adatot mutatja, az újragenerálás javítja.
+- **F152.16** (`naplok/F152_negativ_kriterium_ir.py`): a `motivumok.tsv` ISTENTISZT-001 `negativ_kriterium`-a három új
+  részt kapott: a *besém* utáni JHVH-feltételt (DT-F152b, K4), az ÚSZ-ben a ὄνομα feltételét (K2) és az 1Kir 18:25–26
+  kivételét (K5). A passzív szerkezetről szóló rész változatlan.
