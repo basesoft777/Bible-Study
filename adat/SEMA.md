@@ -1745,14 +1745,21 @@ lista (`eszkozok/szerep_karoli.py` `funkcio_kapcsolok`, `kapcsolo_motivumok`). O
 |---|---|
 | `kapcsolo` | `SZPA_JOIN` (a SzPA konkordáns alternatíva, 13. szerep) \| `SZOTARI_GERINC` (DT272) \| `KAROLI_MEGFELELOK` (13–14. szerep) |
 | `id` | `*` vagy motívum-id (2.1) |
-| `allapot` | `aktiv` \| `felfuggesztve` |
+| `allapot` | `aktiv` \| `felfuggesztve` \| `kivetel` (csak `SZOTARI_GERINC` motívum-sorban, DT-F148a) |
 | `szerep_cim_resz` | a szerep nevéből elhagyott rész, amíg nem `aktiv` (csak `*` sorban) |
 | `indok` | a döntés indoka (a felhasználó szavaival, ha van) |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `kapcsolo` + `id`. Állapot (2026-10-29): 5 sor — SZPA_JOIN `*` felfüggesztve; SZOTARI_GERINC ISTENTISZT-001,
-ALVIL-001; KAROLI_MEGFELELOK ISTENTISZT-001, ALVIL-001. A gerinc más motívumon nem kapcsolható be döntés nélkül (a
-próbában a H0430 Jób 38:7 BDB-példái több útvonalra mutatnak: kutatói kérdés, `GerincHiba`).
+Kulcs: `kapcsolo` + `id`. Állapot (2026-11-01): 12 sor — SZPA_JOIN `*` felfüggesztve; SZOTARI_GERINC ISTENTISZT-001,
+ALVIL-001 `aktiv`, ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001, TEREMT-002 `kivetel`;
+KAROLI_MEGFELELOK ISTENTISZT-001, ALVIL-001.
+
+**A szótári gerinc fordított iránya (F148, DT-F148a).** A `SZOTARI_GERINC` alapból be van kapcsolva: sor nélkül a
+motívum gerinces (`lexikon_general.gerinc_aktiv`). A még nem migrált motívum sora `kivetel`; a #123 a migrációkor
+`aktiv`-ra állítja, a TEREMT-002-ét a #12 adatcommitja. A kivétellistát a generátor és az `ellenoriz.py` 18–21.
+szabálya ugyanazzal a függvénnyel olvassa (`szerep_karoli.kapcsolo_kivetelek`). A kivétel nem azonos a
+`felfuggesztve`-vel (az szünetelő funkció, nem migrációs állapot). Gerinces motívumon a próbában a H0430 Jób 38:7
+BDB-példái több útvonalra mutatnak: kutatói kérdés, `GerincHiba` — a kivétel-sor ezt nem oldja, csak halasztja.
 
 ---
 

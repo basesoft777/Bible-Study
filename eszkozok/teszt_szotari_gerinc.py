@@ -260,6 +260,35 @@ class Megjelenites(unittest.TestCase):
         for mid in ('HAMART-001', 'KIRALY-001', 'TEREMT-001', None):
             self.assertFalse(LG.gerinc_aktiv(mid))
 
+    def test_kivetellista_adatbol(self):
+        # F148 (DT-F148a): a kivétellista az `adat/funkcio_kapcsolok.tsv` `kivetel` sora, és az `ellenoriz.py`
+        # ugyanazt a függvényt hívja, mint a generátor (egyetlen hely)
+        import szerep_karoli as SZK
+        self.assertEqual(LG.GERINC_KIVETEL_MOTIVUMOK, SZK.kapcsolo_kivetelek('SZOTARI_GERINC'))
+        self.assertNotIn('ISTENTISZT-001', LG.GERINC_KIVETEL_MOTIVUMOK)
+        self.assertNotIn('ALVIL-001', LG.GERINC_KIVETEL_MOTIVUMOK)
+
+    def test_uj_motivum_kapcsolobejegyzes_nelkul(self):
+        # F148 (a), elfogadás 2.: a kivétellistán kívüli új motívumon a gerinc kapcsolóbejegyzés nélkül megjelenik
+        # (az előfordulás-tábla két oszlopa); kivétellistán nem
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        _, motivumok = G.tsv_beolvas(G.MOTIVUMOK_TSV)
+        import szerep_karoli as SZK
+        self.assertNotIn('UJTESZT-001', {r['id'] for r in SZK.funkcio_kapcsolok()})
+        m = dict(next(r for r in motivumok if r['id'] == 'ISTENTISZT-001'), id='UJTESZT-001')
+        sorai = [dict(r, id='UJTESZT-001') for r in elo_sorok if r['id'] == 'ISTENTISZT-001']
+        sorrend = G.konyv_sorrend_betolt()
+        self.assertTrue(LG.gerinc_aktiv('UJTESZT-001'))
+        szov, _ = LG.blokk_elofordulasok(m, sorai, sorrend, set())
+        self.assertIn('| Jelentés (a szó) | Funkció (a motívumban) |', szov)
+        regi = LG.GERINC_KIVETEL_MOTIVUMOK
+        try:
+            LG.GERINC_KIVETEL_MOTIVUMOK = regi | {'UJTESZT-001'}
+            szov2, _ = LG.blokk_elofordulasok(m, sorai, sorrend, set())
+        finally:
+            LG.GERINC_KIVETEL_MOTIVUMOK = regi
+        self.assertNotIn('Jelentés (a szó)', szov2)
+
 
 class Ellenoriz17(unittest.TestCase):
     def setUp(self):
@@ -516,7 +545,7 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn(LG.TAHOT_KIVONAT_FAJL, szov)
         self.assertIn((LG.TAHOT_KIVONAT_FAJL, LG.LC('TAHOT')), parok)
         self.assertEqual(LG.LC('TAHOT'), 'CC BY 4.0')
-        mas = next(i for i in sorted(mot) if i not in LG.SZOTARI_GERINC_MOTIVUMOK
+        mas = next(i for i in sorted(mot) if not LG.gerinc_aktiv(i)
                    and any(r['id'] == i for r in elo_sorok))
         _szov2, parok2 = LG.blokk_elofordulasok(mot[mas], [r for r in elo_sorok if r['id'] == mas], sorrend, set())
         self.assertNotIn(LG.TAHOT_KIVONAT_FAJL, [f for f, _l in parok2])
