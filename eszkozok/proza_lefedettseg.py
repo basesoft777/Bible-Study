@@ -95,6 +95,22 @@ def megnevezett(ih, par):
     return False
 
 
+def mondatok(par):
+    """A bekezdés mondatai. Határ: .!? után szóköz/sorvég, és a következő szó nagybetűvel
+    (vagy idézőjellel/zárójellel) kezdődik. Nem vág: a „12.” típusú sorszám (csak számjegy a pont
+    előtt, kettőspont nélkül), a rövidítés után kisbetűvel folytatott szöveg („vö. 1Móz”), az
+    igehely belső pontja. A „Hós 13:14. A” vág (a pont előtt a 13:14 kettőspontos igehely)."""
+    ki, kezd = [], 0
+    for m in re.finditer(r'[.!?]+(?=\s+[A-ZÁÉÍÓÖŐÚÜŰ„"(])', par):
+        elozo = re.search(r'(\S+)$', par[kezd:m.start()])
+        if elozo and re.fullmatch(r'\d+', elozo.group(1)):
+            continue
+        ki.append(par[kezd:m.end()])
+        kezd = m.end()
+    ki.append(par[kezd:])
+    return [x for x in ki if x.strip()]
+
+
 def mer(id_, gyoker=GYOKER):
     par = bekezdesek(id_, gyoker)
     el = [r for r in tsv('elofordulasok.tsv', gyoker) if r['id'] == id_]
@@ -124,16 +140,18 @@ def mer(id_, gyoker=GYOKER):
         ered['nyit'].append((r, lefed([r['igehely']])))
     # DT-F125a/DT-F125e: a gyűjtő mondat (szám + „igehely”) külön kategória, nem hamis hiány — csak az
     # előfordulásokra. (a) Az összlétszámmal (a motívum előfordulás-sorainak számával) egyező N összlétszám-
-    # mondat, nem gyűjtő. (b) A bekezdésben név szerint megnevezett előfordulások levonódnak az N-ből:
-    # keret = max(0, N − megnevezett). A csoportosan fedett darabszám legfeljebb a legnagyobb keret.
+    # mondat, nem gyűjtő. (b) Az N-ből a gyűjtő MONDATBAN (nem a bekezdésben) név szerint megnevezett
+    # előfordulások vonódnak le (ELLENOR_F125_3 3.): keret = max(0, N − megnevezett). A csoportosan fedett
+    # darabszám legfeljebb a legnagyobb keret.
     csoportos = 0
     for _, p in par:
-        for m in CSOPORTOS.finditer(p):
-            n = int(m.group(1))
-            if n == len(el):
-                continue
-            nevezett = sum(1 for r in el if megnevezett(r['igehely'], p))
-            csoportos = max(csoportos, n - nevezett)
+        for mondat in mondatok(p):
+            for m in CSOPORTOS.finditer(mondat):
+                n = int(m.group(1))
+                if n == len(el):
+                    continue
+                nevezett = sum(1 for r in el if megnevezett(r['igehely'], mondat))
+                csoportos = max(csoportos, n - nevezett)
     return par, ered, csoportos
 
 

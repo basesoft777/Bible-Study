@@ -228,3 +228,19 @@ A `megnevezett()` két hibája, az ellenőr jelentése szerint: (a) a kötőjele
 ALVIL-001: a keret az ellenőr szerint a :13 gyűjtő mondaton 64−5 = 59, a :23-on 63−3 = 60; mindkettő ≥ 55, a hiány 0 marad.
 
 `scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (osszesit()['el']; ág-HEAD 19db9998 + F125.32 munkafa) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:12:50+01:00`
+
+### DT-F125e — hatókör: mondat (ELLENOR_F125_3 3.)
+
+A felhasználó döntése (2026-11-01, az orkesztrátor-session továbbításával): „Igen, mondatból”. Alkalmazva: `eszkozok/proza_lefedettseg.py` `mer()`: a gyűjtő mondat N-jéből csak az ugyanabban a mondatban név szerint megnevezett előfordulások vonódnak le; az új `mondatok()` bont (határ: `.`, `!`, `?` után szóköz és nagybetűs/idézőjeles/zárójeles kezdet; nem vág a „12.” típusú, csak számjegyből álló sorszámnál és a kisbetűvel folytatott rövidítésnél, de vág a „Hós 13:14.” igehely-záró ponttal). Az összlétszám-szabály és a csoportos fedés logikája változatlan. Tesztek: `test_dt_f125e_levonas_a_mondatbol_nem_a_bekezdesbol` (egy bekezdés, két mondat: „4 igehelyen” + 1 megnevezett, a második mondatban 2 további; keret 4−1 = 3, a régi kódon fedett 1 / hiány 4 → `(8, 3, 1, 4)`, az újon `(8, 3, 3, 2)`), `test_mondatbontas_sorszam_es_rovidites_nem_vag`; 27 teszt, mind zöld az újon.
+
+Újramérés (előfordulás-rovat: adat, megnevezve, csoportosan fedett, hiány):
+
+| motívum | F125.32 | F125.35 |
+|---|---|---|
+| ISTENTISZT-001 | 33, 33, 0, 0 | 33, 33, 0, 0 |
+| ALVIL-001 | 72, 17, 55, 0 | 72, 17, 55, 0 |
+| TEREMT-002 | 3, 3, 0, 0 | 3, 3, 0, 0 |
+
+A három valódi motívumon a szám nem változik (az ALVIL-001 gyűjtő mondatai egy mondatban nevezik meg a helyeiket, vagy a keret így is ≥ 55).
+
+`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (osszesit()['el']; ág-HEAD e1690e0f + F125.35 munkafa) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:13:58+01:00`

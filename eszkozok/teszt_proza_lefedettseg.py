@@ -129,6 +129,20 @@ class TesztLefedettseg(Alap):
         self.ir('motivumok/T-001.md', '## Rész\n\nA Jel 20:13-14 és az 1Móz 1:1–3 tartomány.\n')
         self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (5, 4, 0, 1))
 
+    def test_dt_f125e_levonas_a_mondatbol_nem_a_bekezdesbol(self):
+        # ELLENOR_F125_3 3.: egy bekezdes, ket mondat; az elsoben "4 igehelyen" + 1 megnevezett, a masodikban 2 tovabbi
+        # megnevezett. Keret = 4-1 = 3 (bekezdes-szintu levonasnal 4-3 = 1). 8 sor: 3 megnevezett + 5 nev nelkuli
+        # -> fedett 3, hiany 2 (a regi kodon fedett 1, hiany 4).
+        sorok = ''.join(f'T-001\t1Móz 1:{i}\tRemez\n' for i in range(1, 9))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nA szó 4 igehelyen fordul elő, köztük az 1Móz 1:1. '
+                'Külön említjük az 1Móz 1:2 és az 1Móz 1:3 helyet is.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (8, 3, 3, 2))
+
+    def test_mondatbontas_sorszam_es_rovidites_nem_vag(self):
+        self.assertEqual(len(PL.mondatok('A 12. Vers a 4 igehelyen áll, vö. 1Móz 1:1. Új mondat.')), 2)
+        self.assertEqual(len(PL.mondatok('Lásd a Hós 13:14. Aztán a Jel 1:18 jön.')), 2)
+
     def test_csoportos_csak_elofordulasra(self):
         self.adat('T-001\t1Móz 37:35\tRemez\n', kap='1Móz 1:1\t1Móz 2:2\tT-001\tPárhuzam\n')
         self.ir('motivumok/T-001.md', '## Rész\n\n63 egyedi igehelyen.\n')
