@@ -184,7 +184,7 @@ hallgatólagos.
 
 ## 2. Eredeti nyelvi összevetés
 
-A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)? Kiejtés minden szónál kötelező.
+A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)?
 
 **Mélység-engedmény (2026.09.03):** a determinisztikus protokoll "Szint-korlátozás" szabálya szerint a bővített tanulmányoknál a kereszthivatkozásban idézett TOVÁBBI szavak lexikai mélysége (2-3. szint) csak explicit, névvel jelzett kérésre nyílik meg — ez tudatos korlátozás study-szinten. **A tematikus tanulmány az a hely, ahol ez a korlátozás alapértelmezésben feloldódik**, külön kérés nélkül: amit a bővített tanulmány tudatosan felszínen hagyott, itt kap teljes, 2-3. szintű feldolgozást is, ha a motívum szempontjából releváns.
 
