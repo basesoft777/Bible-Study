@@ -1,5 +1,5 @@
 ---
-feladat: 152
+feladat: 153
 cim: A Thayer-fordítás Károli-mankója a teljes Újszövetségre — a kész Thayer-sorok újraellenőrzése a teljes #22 párosítással
 kod: THAYER_KAROLI_TELJES
 tipus: feladat
