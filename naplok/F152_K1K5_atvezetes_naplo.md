@@ -107,3 +107,14 @@ kontrasztként megtartott 1Kir 18:25–26-ot”). A lapon pedig a K5 szerint ez 
 Zsolt 79:6, Ézs 64:6), a Zsolt 105:1 / 1Krón 16:8 / Ézs 12:4 párhuzam, a Zak 13:9, a „3. A Róm 10:12”
 és a „Róm 10:14” szakasz, valamint a 2Tim 2:22 és az 1Pét 1:17 említése. Ez a próza jelentős átírása.
 A szöveget egészében olvasom (K1).
+
+## 6. Jóváhagyások (2026-11-01, a felhasználó, az orkesztrátoron át)
+
+- **DT-F152c**: „Igen, (b)” (`DONTESEK.md` ✅). A két motívumközi jelölt elutasítását a felhasználó a (b)-vel
+  együtt látta. Az orkesztrátor szerint ez marad, hacsak a felhasználó nem jelez mást.
+- **A Kivonat 2. mondatának pontosítása**: „Igen, így”, a jóváhagyott szöveg:
+  > A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH)
+  > tartozik ide, amelyben a *besém* után az Úr neve, JHVH áll; ahol névmás áll a helyén („nevedet”, „nevét”),
+  > az nem tartozik ide.
+  A passzív szerkezetről szóló mondat (nikrá … al) változatlan. Beírás az adatírással együtt.
+- Hátravan: a Kivonat 3. mondata (3. szakasz, (A)/(B)) és a K5-kivétel a `negativ_kriterium`-ban (5. szakasz).
