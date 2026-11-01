@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: sonnet
-allapot: dontesre_var
+allapot: megallt
 ad: a kész Thayer-fordítások (forditasok.tsv, szotar = Thayer) soronként újraellenőrizve a teljes ÚSZ Károli–Strong párosításával (az evangéliumok és az ApCsel is); az eltérő sorok jóváhagyott döntés szerint újrafordítva (M3-lánc) vagy kézi ítéletre listázva; az adatblokk elavult könyvlistája javítva
 kovetkezo: "/kovetkezo (M0 mérés, ⛔ a mérés után: az eltérő sorok sorsa)"
 ag: claude/f153-thayer-2f248a
