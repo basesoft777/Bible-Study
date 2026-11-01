@@ -184,7 +184,7 @@ class Teendo(unittest.TestCase):
         self.assertIn('szakasz_cimke_levezet.py', potolt[6])
         uj = sorok[3].split('\t')
         self.assertEqual(uj[:5], ['BDB', 'H7585', '-/1/-', '1', 'az alvilág'])
-        self.assertIn('forras=szakasz_cimke_levezet.py (gépi, DT-F148c)', uj[5])
+        self.assertIn('forras=szakasz_cimke_levezet.py (gépi, DT439)', uj[5])
 
     def test_ir_tabla_megall(self):
         with self.assertRaises(SystemExit):
