@@ -127,7 +127,7 @@ Minta: `N_előfordulás igehely feldolgozva, M vizsgálat alatt, K kizárva; a n
 | motívum | mondat a mai adatból |
 |---|---|
 | KIRALY-001 | 9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 1 teljesül. |
-| ISTENTISZT-001 | 33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül. |
+| ISTENTISZT-001 | 35 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül. |
 | TEREMT-001 | 42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 2 teljesül. |
 | ALVIL-001 | 72 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 5 kizárva; a nyolc ellenőrzési lépésből 4 teljesül. |
 | MENNY-001 | 9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 1 teljesül. |
