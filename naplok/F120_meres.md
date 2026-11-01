@@ -146,3 +146,23 @@ A kimaradó versek Károli-fejezetenként: 4Móz 13 (33), 4Móz 30 (11), Hós 2 
 | Jób 17:1 / Jób 37:1 / Péld 12:1 | `Job.17.2` / `Job.37.2` / `Pro.12.2`, `mt_tabla` (az F117 párja; az azonosság-sor kihagyva) |
 
 *proveniencia: scope=próba-pardes.db (teljes mód) | forras=eszkozok/sqlite_epit.py @ 0e844612, konkordancia/ @ 9cf0e43a | eszkoz=scratchpad sql.py (a lekérdezések fent) | ts=2026-11-01T11:49Z*
+
+## 9. A DT-F120a (a) lépésének próbája: a mai táblán nem tiszta (⛔, 2026-11-01)
+
+*A BSB-klón: `D:\pardes_bsb\bsb-data-output`, commit a4a2c0558c26e0281ba4e3f0e5479398459e2183 (ugyanaz, amelyből a mai `BSB_Strongs.tsv` készült). A próbakód a helyi `claude/f120-a-vazlat` ágon (2f19ad15, nem pusholva); a PR ága a (c) állapotban maradt, a `BSB_Strongs.tsv` nem változott.*
+
+A próba: a `bsb_import` a Károli-kulcsú TAHOT-halmazokat a versmegfeleltető táblán át MT-kulcsra fordítja (`igehely_mt`; `KEZI` üres mt-nél `igehely_kjv`; különben a Károli-szám; ütközésnél az explicit pár nyer), az R4 helyett oda-vissza próba (Károli → MT → Károli: 0 eltérés), az építő ugyanennek az inverzét használja. Eredmény (`naplok/F120_bsb_osszevetes.py` a vázlatágon):
+
+| | régi (F71.2) | próba |
+|---|---|---|
+| sor | 278 166 | 274 528 (−3 638) |
+| `Számozás` mt / ellenorizetlen / kjv | 260 284 / 17 659 / 223 | 257 747 / 16 558 / 223 |
+| változatlan fejezet | | 859 |
+| **teljesen kieső (illesztetlen) BSB-fejezet** | | **17**: 4Móz 12, 29; 1Sám 21; Jób 17, 37, 38; Péld 12; Préd 1, 2, 8, 11; Ézs 9, 64; Hós 2, 11; Én 7 (részben), Jóel 3 (részben) |
+| Zsoltárok (E5) | | bájtra azonos (17 831 sor), a Zsolt 13 kézi kivétele is |
+
+Az ok minden kieső fejezetben egyetlen BSB-vers, amelynek nincs MT-párja (`nincs_mt_part`, R1): (1) a Károli összevont versei (`f22/versosszevonas.tsv`, pl. Jób 16:22 = MT 16:22 + 17:1, Péld 11:31 = MT 11:31 + 12:1, Hós 1:11 = MT 1:11 + 2:1, Ézs 64:1, Jób 36:33, Hós 11:11, 4Móz 29:39, Préd 2:26): az F85.6 óta a két MT-vers tokenjei egy Károli-kulcson állnak, a táblán át a második MT-vers nem állítható elő; (2) a táblából hiányzó 9 Károli-vers (N-F120a, N-F117d: 4Móz 13:1, Jób 39:1–3, Préd 2:1, 9:1–2, 12:1–2) és két ütköző vers (1Sám 21:1, Én 7:1). A régi `BSB_Strongs.tsv` ezeket a fejezeteket az F85.6 előtti TAHOT-kulccsal még illesztette.
+
+**Ami az (a)-hoz kellene (új döntés):** a TAHOT-tokenek szétválasztása a `f22/versosszevonas.tsv` `er_tol`–`er_ig` tartománya szerint (a beolvasztott MT-vers saját kulcsot kap), a 9 hiányzó táblasor pótlása (N-F117d, N-F120a), és a 956 KJV ≠ MT eltérés (N-F146a) kezelése, különben azokon a BSB-kulcs a KJV-szám marad (`ellenorizetlen`). Addig a (c) állapot az élesíthető: az építő a mai `BSB_Strongs.tsv`-ből 21 424 verset igazoltan helyesen tölt be, 248-at kihagy.
+
+*proveniencia: scope=BSB_Strongs.tsv régi (F71.2) / próba (a4a2c055 klón, a vázlatág kódja) | forras=eszkozok/fj2/bsb_import.py --munka D:/pardes_bsb, naplok/F120_bsb_osszevetes.py | ts=2026-11-01*

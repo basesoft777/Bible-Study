@@ -9,7 +9,7 @@ modell: opus
 allapot: megallt
 helyi_gep: igen
 ad: a BSB-import és az SQLite-építő helyesen kezeli a javított Károli-versmegfeleltető tábla 174 KEZI + kitöltött igehely_mt sorát; a DT-F117f őre és a két feltételes tesztkihagyás megszűnik, az olvasó adatbázisa újra építhető, a BSB Strong-tábla a döntés szerint újragenerálva
-kovetkezo: DT-F120a eldöntve (átmeneti út, 2026-11-01): 1. lépés (c) kihagyó őrrel kész (F120.3), független ellenőrzés és draft PR #545; 2. lépés (a): a BSB_Strongs.tsv MT-re újragenerálása a klónnal (D:\pardes_bsb, a4a2c055), a 3.3 és a 3.5 ⛔ szerint
+kovetkezo: ⛔ 3.5 — a DT-F120a (a) próbája a mai táblán 17 BSB-fejezetet ejt ki (naplok/F120_meres.md 9.); a (c) állapot merge-kész (PR #545); az (a) folytatásához döntés kell (f22/versosszevonas.tsv szerinti szétválasztás, N-F117d/N-F120a, N-F146a); vázlat: helyi ág claude/f120-a-vazlat
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, konkordancia/README.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_parameter_erzekenyseg.py, eszkozok/fj2/wlc_versek.py, naplok/F117_meres.md, naplok/F117_fogyaszto_proba.py, naplok/F117_mt_levezetes.tsv, naplok/F117_osztaly_utkozes.tsv, naplok/VERSMEGF_JAVITAS_zaras.md, naplok/ELLENOR_VERSMEGF_JAVITAS.md, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F85_jelentes.md, adat/SEMA.md, F117_VERSMEGF_JAVITAS_BRIEF.md]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/teszt_bsb_import.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, konkordancia/BSB_Strongs.tsv, naplok/F41_wlc_versszam_ellenorzes.tsv]
 fugg: [117]
