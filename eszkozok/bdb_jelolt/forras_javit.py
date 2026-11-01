@@ -55,8 +55,12 @@ def sha256_fajl(ut):
 
 
 def kod_hash():
-    with open(os.path.abspath(__file__), 'rb') as f:
-        return hashlib.sha256(f.read().replace(b'\r\n', b'\n')).hexdigest()
+    """A forras_javit.py és a heber_sorrend.py (a heber_sorrend osztály szabálya) együttes hash-e."""
+    h = hashlib.sha256()
+    for ut in (os.path.abspath(__file__), os.path.join(ITT, 'heber_sorrend.py')):
+        with open(ut, 'rb') as f:
+            h.update(f.read().replace(b'\r\n', b'\n'))
+    return h.hexdigest()
 
 
 def norm(szo):
@@ -103,7 +107,7 @@ def tabla_sorok():
     return [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
 
 
-def general(ts):
+def general(ts, ts_heber=None):
     lex = lexikon_szavak()
     ki, stat = [], collections.Counter()
     prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=%s'
@@ -133,7 +137,97 @@ def general(ts):
     ki.extend(kezi_sorok(stat))
     ki.extend(hivatkozas_sorok(stat, ts))
     ki.extend(kezi_hivatkozas_sorok(stat))
+    ki.extend(heber_sorrend_sorok(stat, ts_heber or ts))
     return ki, stat
+
+
+# ---------------------------------------------------------------- heber_sorrend (N-F131y, DT-F131z)
+# A DictBDB.json héber kifejezéseinek szórend- és geres-hibája (naplok/BDB_HEBER_SORREND_meres.md). A szabály és a Biblia-próba:
+# heber_sorrend.py. Egy sor = egy változó kifejezés (R_hib ≠ a forrás alakja) a szakasztábla sorában; `elofordulas`: a `forras_alak`
+# hányadik (héber betűvel nem határos) előfordulása a sor `szoveg`-ében; a héber alakok a forrás alakjában (nem NFD), mert a
+# megjelenítés betű szerint cserél (bdb_rovidites.heber_sorrend_javit). `javitva`: a Biblia igazolja a javított, tiszta alakot;
+# `valodi_sorrend`: a Biblia a forrás alakját igazolja; `jelolt_marad`: eldönthetetlen, vagy írásjel / sziglum a futamban.
+JSON_UT = os.path.join(GYOKER, 'konkordancia', 'lexikonok_nyers', 'DictBDB.json')
+TAHOT_UT = os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv')
+def heber_jel(c):
+    """Héber betű (a prezentációs alak is), pontozás vagy geres / gerszajim: a kifejezés ezzel nem határos."""
+    return 'א' <= c <= 'ת' or '\ufb1d' <= c <= '\ufb4f' or '֑' <= c <= 'ׇ' or c in '׳״'
+
+
+def kifejezes_elofordulasok(szoveg, alak):
+    """Az `alak` előfordulásai, amelyek előtt és után nem áll héber betű vagy jel."""
+    ki, i = [], szoveg.find(alak)
+    while i >= 0:
+        e = i + len(alak)
+        if not (i and heber_jel(szoveg[i - 1])) and not (e < len(szoveg) and heber_jel(szoveg[e])):
+            ki.append(i)
+        i = szoveg.find(alak, i + 1)
+    return ki
+
+
+def heber_sorrend_sorok(stat, ts):
+    sys.path.insert(0, ITT)
+    import heber_sorrend as HS
+    import json
+    import html as html_mod
+    import bont
+    with open(JSON_UT, encoding='utf-8') as f:
+        defek = {it['top']: it.get('def', '') for it in json.load(f)}
+    lex = HS.lexikon_csoportok(LEX_UT)
+    bib = HS.Biblia(TAHOT_UT)
+    sorok_kulcs = collections.OrderedDict()
+    for r in tabla_sorok():
+        top, blokk = r['forras'].split(':', 1)[1].split('#')
+        sorok_kulcs.setdefault(top, {})[int(blokk)] = r
+    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + TAHOT-próba (DT-F131z) | ts=%s'
+    ki = []
+    for top, sorok in sorok_kulcs.items():
+        # a kifejezések a bontó blokkjai szerint (a tábla sora = a blokk, `forras` #n), a blokkon belül sorrendben
+        kif, blokk_idx = [], []
+        for bi, (bh, _s1) in enumerate(bont.json_blokkok(defek.get(top, ''))):
+            for m in re.finditer(r'<heb><ref0[^>]*>(.*?)</ref0>', bh, re.S):
+                kif.append(HS.ws(html_mod.unescape(re.sub(r'<[^>]+>', '', m.group(1)))))
+                blokk_idx.append(bi)
+        bdb_idk = []
+        for bi in sorted(sorok):
+            if sorok[bi]['bdb_id'] and sorok[bi]['bdb_id'] not in bdb_idk:
+                bdb_idk.append(sorok[bi]['bdb_id'])
+        csop = [c for b in bdb_idk for c in lex.get(b, [])]
+        darabok = HS.parosit(kif, csop)
+        kurzor = collections.Counter()
+        for js, dar, bi in zip(kif, darabok, blokk_idx):
+            r = sorok.get(bi)
+            poz = [p for p in kifejezes_elofordulasok(r['szoveg'], js) if p >= kurzor[bi]] if r else []
+            hol = (bi, poz[0]) if poz else None
+            uj = HS.r_hib(js, dar)
+            if hol is None:
+                if uj != js:
+                    stat['heber_sorrend_nem_talalt'] += 1
+                continue
+            kurzor[bi] = hol[1] + len(js)
+            if uj == js:
+                continue
+            k = kifejezes_elofordulasok(r['szoveg'], js).index(hol[1]) + 1
+            it, v_js, v_uj = HS.itelet(bib, js, uj)
+            if not HS.tiszta(js):
+                allapot, jav = 'jelolt_marad', ''
+                indok = 'írásjel vagy sziglum a futamban: gépi javítás nincs (DT-F131z); a szabály javaslata: %s' % uj
+            elif it == 'helyes':
+                allapot, jav = 'javitva', uj
+                indok = ('a héber Biblia igazolja: a javított szórend a TAHOT %s versében áll, a forrás alakja egy versben sem '
+                         '(R_hib%s)' % (v_uj, ', a BDB.lexicon darabhatára szerint' if HS.G in js and dar is not None else ''))
+            elif it == 'rontott':
+                allapot, jav = 'valodi_sorrend', ''
+                indok = ('a héber Biblia a forrás alakját igazolja (TAHOT %s), a javítottat nem: a sorrend marad; a szabály '
+                         'javaslata: %s' % (v_js, uj))
+            else:
+                allapot, jav = 'jelolt_marad', ''
+                indok = ('a héber Biblia nem dönt (%s): gépi javítás nincs (DT-F131z); a szabály javaslata: %s'
+                         % ('mindkét alak áll' if v_js and v_uj else 'egyik alak sem áll, vagy kevés az anyag', uj))
+            stat['heber_sorrend_' + allapot] += 1
+            ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'heber_sorrend', '', str(k), js, jav, allapot, indok,
+                       prov % (r['strong'], ts)])
+    return ki
 
 
 # ---------------------------------------------------------------- hivatkozas (DT-F107c (d), felhasználó, 2026-10-18)
@@ -356,10 +450,13 @@ def kezi_sorok(stat):
     return ki
 
 
-def fajl_szoveg(sorok, ts):
-    fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.' % ts,
-           '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás) + kód@%s'
-           % (sha256_fajl(TABLA)[:12], sha256_fajl(LEX_UT)[:12], kod_hash()[:12]),
+def fajl_szoveg(sorok, ts, ts_heber=None):
+    fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s%s — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben (a heber_sorrend sorok a forrás alakjában).'
+           % (ts, ' --ts-heber-sorrend %s' % ts_heber if ts_heber else ''),
+           '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás és darabhatár) + '
+           'konkordancia/lexikonok_nyers/DictBDB.json@%s + konkordancia/TAHOT_kivonat.tsv@%s (heber_sorrend) + kód@%s'
+           % (sha256_fajl(TABLA)[:12], sha256_fajl(LEX_UT)[:12], sha256_fajl(JSON_UT)[:12], sha256_fajl(TAHOT_UT)[:12],
+              kod_hash()[:12]),
            '\t'.join(FEJLEC)]
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
 
@@ -367,15 +464,16 @@ def fajl_szoveg(sorok, ts):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
+    ap.add_argument('--ts-heber-sorrend', help='a heber_sorrend sorok proveniencia-ts-e (alap: --ts)')
     ap.add_argument('--meres', action='store_true')
     ap.add_argument('--ellenoriz', action='store_true')
     a = ap.parse_args()
-    sorok, stat = general(a.ts)
+    sorok, stat = general(a.ts, a.ts_heber_sorrend)
     print('sor: %d (pe_mem + kezi); %s; érintett Strong (javitva): %d' % (
         len(sorok), dict(stat), len(set(s[0] for s in sorok if s[8] == 'javitva'))))
     if a.meres:
         return 0
-    szoveg = fajl_szoveg(sorok, a.ts)
+    szoveg = fajl_szoveg(sorok, a.ts, a.ts_heber_sorrend)
     if a.ellenoriz:
         with open(KI_UT, encoding='utf-8', newline='') as f:
             if f.read() != szoveg:
