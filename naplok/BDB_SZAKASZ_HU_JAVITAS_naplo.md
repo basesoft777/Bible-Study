@@ -146,3 +146,12 @@ Bemenetek az M2-kor: `adat/forditasok.tsv` sha256 `7c43b398dfa3` (a main szerint
 A felhasználó átnézte a változott sorok mintáját: az orkesztrátor bemutatta a négy valódi hiba (H0001, H2199, H5027, H7043) előtte–utána mintáját, és elmagyarázta, hogy a lapon a jelölő külön címke. A felhasználó válasza szó szerint: „akkor mehet” (2026-11-01, az orkesztrátor chatjében; az orkesztrátor `local_2bdbd92d` üzenetében idézve). Az M3 elfogadva, a brief `lezarva`.
 
 **Nyitva marad (a #144-en kívül):** a 23 Strong lexikonlapjának és a BDB-nézetnek az újragenerálása (a #549 után, összehangolva); a teljes újragenerálás (N-F131f, a DT423 sorrendje szerint az N-F131g után; a szakaszos típuson az új szabály 101 Strongot érint). A `bont.py` műterméke nem kap N-tételt (nem volt döntés tárgya).
+
+## F144.7 — a lexikon összehangolt ellenőrzése a #549 után (2026-11-01)
+
+A main beolvasztva (`442e65db`, benne a #549 / #152, `06a17a20` után; a `DONTESEK.md` ütközése: mindkét sor marad, a DT449 elöl). Mind a 8 `lexikon/*_TUDOMANYOS.md` lap a repón kívülre újragenerálva (`general.py --cel lexikon --id <ID> --kimenet <tmp>`, `PARDES_DATUM` = a lap saját `ts`-e, az E28 útja), kétszer: a mai `adat/bdb_szakasz_hu.tsv`-vel és az M2 előttivel (sha1 `8b80639c86fa`, ideiglenesen a helyére téve, utána visszaállítva).
+
+proveniencia: `scope=lexikon/*_TUDOMANYOS.md (8 lap) | forras=eszkozok/general.py --cel lexikon (repón kívüli kimenet) + ad hoc összevetés (scratchpad lex_osszevet.py) | ts=2026-11-01`
+
+- **A két generálás mind a 8 lapon bájtra azonos**: a 23 Strong `bdb_szakasz_hu.tsv`-változása egyik lexikonlapot sem érinti, újragenerálandó lap nincs. A lexikon nem változott.
+- A két migrált nézet (`ISTENTISZT-001`, `ALVIL-001`, `eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) a repóbelivel is azonos (E28: 0 találat). A másik hat lap (ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001; `ts=2026-10-20`, nem migrált, nincs az E28 hatókörében) a mai generálástól eltér, de a #144 előtti táblával ugyanígy: ez a #144-től független, nem írtam újra.
