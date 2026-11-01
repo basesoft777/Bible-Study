@@ -8,7 +8,7 @@ munka: folyamat
 modell: opus
 allapot: dontesre_var
 ad: új motívumon a szótári gerinc kapcsoló nélkül fut, a még nem migrált régiek egy kivétellistán állnak (amely a #123 végén kiürül); az ellenoriz.py négy új szabálya gépileg kizárja a hiányos adatot és a hibás generált lapot; a szakaszcímke a jelentes_szam-ból gépileg vezetődik le, és eltérésnél jelez
-kovetkezo: "Te: a #535 merge-re kész (⛔ A feloldva, DT-F148e; SÉRTÉS 0). A #528 BDB-sorrend PR-ja után az ALVIL-001 újragenerálása kell; merge a felhasználóé"
+kovetkezo: "Te: a #535 merge-re kész (⛔ A feloldva, DT441; SÉRTÉS 0). A #528 BDB-sorrend PR-ja után az ALVIL-001 újragenerálása kell; merge a felhasználóé"
 olvas: [tematikus_lezart/ALVIL-001*, tematikus_lezart/naplok/ALVIL-001*, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/teszt_ellenoriz_11.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/glossza_lexikon_forditas.py, adat/SEMA.md, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/lexikon_hivatkozasok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, lexikon/, DONTESEK.md, NYITOTT_FELADATOK.md, F131_SZOTARI_GERINC_BRIEF.md, naplok/F131_SZOTARI_GERINC_naplo.md, F123_MIGRACIO2_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, MUNKAMENET.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, .github/workflows/ellenorzes.yml]
 ir: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, lexikon/ALVIL-001_TUDOMANYOS.md, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/szerep_karoli.py, adat/funkcio_kapcsolok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, eszkozok/szakasz_cimke_levezet.py, eszkozok/teszt_szakasz_cimke_levezet.py, eszkozok/teszt_ellenoriz_vedokorlat.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, adat/SEMA.md, adat/szotar_szakasz_cimke.tsv, naplok/F148_*]
 fugg: []
@@ -41,7 +41,7 @@ Három rész:
 - **(a)** `eszkozok/lexikon_general.py`: a `SZOTARI_GERINC_MOTIVUMOK` (ma `frozenset({'ISTENTISZT-001'})`, 1778. sor) helyett kivétellista. Az új motívumon a gerinc alapból bekapcsol. A még nem migrált régiek a listán állnak. A `gerinc_aktiv()` a lista ellentettje lesz. A lista a #123 végén kiürül, és ezzel a kapcsoló megszűnik (a #123 utolsó motívuma törli a konstanst és a `gerinc_aktiv()` ágát).
 - **(b)** `eszkozok/ellenoriz.py`: négy új tábla-szabály (18–21) tesztekkel. Az E1 CI-lépés (`.github/workflows/ellenorzes.yml`) futtatja, tehát a merge-kor a main-en **SÉRTÉS 0** kell.
 - **(c)** új eszköz (`eszkozok/szakasz_cimke_levezet.py`): a `jelentes_szam` → szótári szakasz leképezést gépileg vezeti le. Eltérésnél jelez, és nem választ. Írni csak az eltérés nélküli sorokat írja, és csak `--ir` kapcsolóval.
-- A SEMA 2.2.2 és 2.40 pontosítása a DT-F148b és a DT-F148c szerint.
+- A SEMA 2.2.2 és 2.40 pontosítása a DT438 és a DT439 szerint.
 
 **Nincs benne:**
 - **A `MUNKAMENET.md` módosítása.** Az a #125-é. Ez a brief a 6. szakaszban csak javasolja a két új lépés szövegét; a #125 írja át.
@@ -75,10 +75,10 @@ Három rész:
 5. A `lexikon/` lapjain a 21. szabály mintáinak találatai laponként (helyőrző, „a(z)”, fordítatlan egység, nem létező DT/N).
 
 Napló: `naplok/F148_UJ_MOTIVUM_VEDOKORLAT_naplo.md`, 0. szakasz.
-**⛔ megállás: a mérés és a DT-F148a–d a felhasználóé.**
+**⛔ megállás: a mérés és a DT437–d a felhasználóé.**
 
-**1. A gerinc-kapcsoló megfordítása (a).** A DT-F148a szerint.
-- A régi konstans helyett `GERINC_KIVETEL_MOTIVUMOK` (vagy a DT-F148a szerinti forma). Értéke a 0.3 mérés szerint a még nem migrált régiek, az ALVIL-001-es PR után várhatóan: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001.
+**1. A gerinc-kapcsoló megfordítása (a).** A DT437 szerint.
+- A régi konstans helyett `GERINC_KIVETEL_MOTIVUMOK` (vagy a DT437 szerinti forma). Értéke a 0.3 mérés szerint a még nem migrált régiek, az ALVIL-001-es PR után várhatóan: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001.
 - A `gerinc_aktiv(id)` = `id not in GERINC_KIVETEL_MOTIVUMOK`.
 - A két teszt, amely a konstanst felülírja (`eszkozok/teszt_szerepmatrix.py:45`, `eszkozok/teszt_szotari_gerinc.py:489`), az új formára áll át. A szerepmátrix általános renderét vizsgáló teszt a kivétellistát az összes motívumra állítja; ez nem lazítás, ugyanazt méri.
 - **Elfogadás:** a meglévő 8 lexikonlap és 7 törzscikk repón kívüli ideiglenes könyvtárba renderelve bájtra azonos a main-en renderelt lappal (a kapcsoló megfordítása a meglévő lapokon semmit nem változtat). A TEREMT-002-nek ma nincs lapja (nincs `res_forras.tsv`-sora); rá ez a lépés nem ad kimenetet.
@@ -86,7 +86,7 @@ Napló: `naplok/F148_UJ_MOTIVUM_VEDOKORLAT_naplo.md`, 0. szakasz.
 
 **2. Ellenőrző-szabályok (b).** Az `eszkozok/ellenoriz.py`-ban, a meglévő 17 szabály után. Ha közben más ág is számozott szabályt ad, a következő szabad szám. Minden szabályhoz pozitív és negatív teszt (`eszkozok/teszt_ellenoriz_vedokorlat.py`, a `teszt_ellenoriz_11.py` / `_13.py` mintájára, ideiglenes `adat/` könyvtárral). A kivétellista a szabályokban ugyanaz az objektum, mint a generátorban (import, nem másolat), hogy a kettő ne térhessen el. A `RETROAKTIV_IDK` (8. szabály) más fogalom; nem keverendő.
 - **18. Gerinc-Strong címkéje.** A gerincen álló motívum minden előfordulás-sorára: a `lexikon_szotar` + `lexikon_entry_id` + `jelentes_szam` által kijelölt szakasznak legyen sora az `adat/szotar_szakasz_cimke.tsv`-ben. A leképezés ugyanaz a függvény, mint a generátoré (`kutatoi_szakasz`), vagy a 3. lépés eszköze. Kivétellistás motívumon: nem fut. Hiány: SÉRTÉS.
-- **19. `jelentes_szam` és `karoli_szo` kötelező.** Nem kivétellistás motívum előfordulás-során a `karoli_szo`, a `lexikon_szotar`, a `lexikon_entry_id` és a `jelentes_szam` nem üres. Tagolatlan szócikknél (a DT-F148b szerint) az ott rögzített explicit érték is elfogadható; az üres soha. Kivétellistás motívumon JELENTÉS (darabszám), nem SÉRTÉS, így a #123 haladása is látszik.
+- **19. `jelentes_szam` és `karoli_szo` kötelező.** Nem kivétellistás motívum előfordulás-során a `karoli_szo`, a `lexikon_szotar`, a `lexikon_entry_id` és a `jelentes_szam` nem üres. Tagolatlan szócikknél (a DT438 szerint) az ott rögzített explicit érték is elfogadható; az üres soha. Kivétellistás motívumon JELENTÉS (darabszám), nem SÉRTÉS, így a #123 haladása is látszik.
 - **20. A `jelentes_hu` a szóról szól (N-F131a).** Tiltó minta a funkció-értelmezésre. Kiinduló minták, a 0.4 mérés szerint pontosítandók: zárójeles tagadó minősítés („(NEM …)”), „tagadó szerkezet”, „vádjaként”, „motívum”, „funkció”, „invokáció” mint értelmező címke, valamint a `tiltott_fordulatok.tsv` mintái. A minták helye egy kódbeli lista vagy a `tiltott_fordulatok.tsv` új oszlopa; döntés a 0. ⛔-nél. **Kötelező negatív teszt:** az 1Kir 18:25–26 „Baál nevével” értéke BDB-szöveg, nem értelmezés (az ISTENTISZT-001 „teljes” menetének mérése szerint), ezért a szabály nem jelezheti. Gerincen álló motívumon SÉRTÉS, kivétellistáson JELENTÉS.
 - **21. A generált lap tisztasága.** Minden `lexikon/*_TUDOMANYOS.md` (és `*_TORZSCIKK.md`) lapon:
   - (i) **nincs helyőrző:** `DT-F\d+`, `N-F\d+`, a generátor ismert helyőrző-szövegei (pl. „Kézzel írandó”);
@@ -94,7 +94,7 @@ Napló: `naplok/F148_UJ_MOTIVUM_VEDOKORLAT_naplo.md`, 0. szakasz.
   - (iii) **nincs jelöletlen fordítatlan egység:** a `glossza_lexikon_forditas.py lista` `hianyzik` állapotú egységeinek száma egyenlő a lapon álló `(fordításra vár)` jelölések számával;
   - (iv) **minden `DT\d+` és `N\d+` hivatkozás létező tételre mutat:** a `DT` a `DONTESEK.md` táblasorára, az `N` a `NYITOTT_FELADATOK.md` tételére. Ez az N-F131b-eset: a generátor nem létező tételre hivatkozott.
 
-  Súlyosság a DT-F148d szerint. Kivétellistás motívum lapján JELENTÉS, amíg a #123 el nem éri.
+  Súlyosság a DT440 szerint. Kivétellistás motívum lapján JELENTÉS, amíg a #123 el nem éri.
 - Commit tételenként: `F148.2: 18. szabály …`, `F148.3: …`, és így tovább.
 
 **3. A szakaszcímke gépi levezetése (c).** Új eszköz: `eszkozok/szakasz_cimke_levezet.py`, a CLAUDE.md shell- és TSV-szabályai szerint.
@@ -107,11 +107,11 @@ Napló: `naplok/F148_UJ_MOTIVUM_VEDOKORLAT_naplo.md`, 0. szakasz.
   - (5) tagolatlan szócikk (a `bdb_vers_jelentes.tsv` `tagolatlan` útja, pl. a H0922 *bohu*);
   - (6) minősítő alak (`2.c (tagadva)`, N-F131b).
 - Kimenet: `naplok/F148_levezetes_<ID>.tsv`; minden sor proveniencia-sorral (`scope=… | forras=szakasz_cimke_levezet.py | ts=…`).
-- `--ir`: csak a jelzés nélküli sorokat írja a `szotar_szakasz_cimke.tsv`-be. A `cimke_hu` értékét a DT-F148c szerint adja. Írás előtt az eredeti sorokkal összevet, eltérésnél megáll (minta: `eszkozok/igazolas_migracio.py`).
+- `--ir`: csak a jelzés nélküli sorokat írja a `szotar_szakasz_cimke.tsv`-be. A `cimke_hu` értékét a DT439 szerint adja. Írás előtt az eredeti sorokkal összevet, eltérésnél megáll (minta: `eszkozok/igazolas_migracio.py`).
 - **Regresszió (kötelező teszt):** az ISTENTISZT-001 33 és az ALVIL-001 (az ALVIL-001-es PR szerinti) sorára a levezetett szakasz azonos a táblában ma álló kézi leképezéssel. Ahol nem, az lelet, nem lazítás: **⛔ megállás**, a felhasználó dönt.
 - Commit: `F148.n: a szakaszcímke gépi levezetése (szakasz_cimke_levezet.py)`.
 
-**4. SEMA.** A 2.2.2 pontban a DT-F148b értéke; a 2.40 pontban a levezetett sor proveniencia-alakja és a DT-F148c. Commit külön.
+**4. SEMA.** A 2.2.2 pontban a DT438 értéke; a 2.40 pontban a levezetett sor proveniencia-alakja és a DT439. Commit külön.
 
 **5. Zárás.**
 - `python eszkozok/ellenoriz.py`: SÉRTÉS 0 a main-állapoton.
@@ -133,28 +133,28 @@ Napló: `naplok/F148_UJ_MOTIVUM_VEDOKORLAT_naplo.md`, 0. szakasz.
 
 ## 5. Döntésnapló
 
-**DT-F148a — a kivétellista helye és formája.** Kérdés: hol éljen a még nem migrált motívumok listája, amelyen a gerinc nem fut, és a 19–21. szabály csak jelent?
+**DT437 — a kivétellista helye és formája.** Kérdés: hol éljen a még nem migrált motívumok listája, amelyen a gerinc nem fut, és a 19–21. szabály csak jelent?
 - (1) **Kódbeli konstans** az `eszkozok/lexikon_general.py`-ban, az `ellenoriz.py` importálja. A #123 motívumonként egy sort töröl belőle, az utolsó a konstanst is.
 - (2) **Új oszlop a `motivumok.tsv`-ben** (pl. `gerinc` = `kivétel`). Sémamódosítás, és a #123 végén egy kiürült oszlop marad utána.
 - (3) A meglévő `motivumok.tsv` `statusz`/`forras_study` mezőből levezetve (migrált = van `motivumok/[ID].md` RÉS-jelölőkkel).
 
 *Javaslat: (1).* Átmeneti állapotot ír le, amely a #123 végén megszűnik, ezért nem való az adatrétegbe. A (3) rejtett szabály volna: a migráció félkész állapotában egy `motivumok/[ID].md` már létezhet.
 
-**DT-F148b — tagolatlan szócikk a `jelentes_szam`-ban.** Kérdés: mi álljon a mezőben, ha az előfordulás `lexikon_entry_id`-jének szócikke nem tagol? Ilyen a H0922 *bohu*: a BDB-ben csak `cim`/`fej` sora van, a `bdb_vers_jelentes.tsv` útja `tagolatlan`. A SEMA 2.2.2 szerint a `teljes`/`részlet` itt tilos.
-- (1) **új, explicit érték** (pl. `tagolatlan`) a SEMA 2.2.2-ben, csak akkor, ha a `bdb_szakaszok.tsv`-ben a Strongnak nincs `point` sora; a gerinc a `fej` szakaszt mutatja, a címke a DT-F148c szerint;
+**DT438 — tagolatlan szócikk a `jelentes_szam`-ban.** Kérdés: mi álljon a mezőben, ha az előfordulás `lexikon_entry_id`-jének szócikke nem tagol? Ilyen a H0922 *bohu*: a BDB-ben csak `cim`/`fej` sora van, a `bdb_vers_jelentes.tsv` útja `tagolatlan`. A SEMA 2.2.2 szerint a `teljes`/`részlet` itt tilos.
+- (1) **új, explicit érték** (pl. `tagolatlan`) a SEMA 2.2.2-ben, csak akkor, ha a `bdb_szakaszok.tsv`-ben a Strongnak nincs `point` sora; a gerinc a `fej` szakaszt mutatja, a címke a DT439 szerint;
 - (2) a mező üres marad, és a 19. szabály tagolatlan szócikknél kivételt tesz;
 - (3) az ilyen Strong nem lehet `lexikon_entry_id`; összetett soron (H8414+H0922) a tagolt token az entry, a tagolatlan csak szótári példahelyként jelenik meg.
 
 *Javaslat: (3), és mellette (1) arra az esetre, ha a sor egyetlen Strongja tagolatlan.* A (2) üres mezőt engedne, ezt a CLAUDE.md 3. szabálya kizárja (a hiány explicit jelölendő).
 
-**DT-F148c — a gépileg levezetett szakasz `cimke_hu`-ja.** Kérdés: ha az eszköz új szakaszt vezet le, honnan jön a címke szövege?
+**DT439 — a gépileg levezetett szakasz `cimke_hu`-ja.** Kérdés: ha az eszköz új szakaszt vezet le, honnan jön a címke szövege?
 - (1) **a `bdb_szakasz_hu.tsv` (Thayernél a 2.39 magyar sora) szakaszszövegének első glosszája**, a 17. szabály tiltó mintáin és a `tiltott_fordulatok.tsv`-n átengedve, `forras=szakasz_cimke_levezet.py (gépi)` proveniencia-sorral. ⛔ csak akkor, ha jelzés van, a minta tiltott, vagy a glossza üres vagy fordításra vár.
 - (2) a leképezés gépi, a `cimke_hu` mindig kézi, ⛔-vel motívumonként;
 - (3) címke nélkül: a cella csak a jelet mutatja („*(nincs címke: Qal 2.c)*”), amíg kézi címke nem kerül be.
 
 *Javaslat: (1).* A felhasználói kérés szerint a címke gépi, és ⛔ csak eltérésnél kell. A meglévő kézi címkék (ISTENTISZT-001, ALVIL-001) nem íródnak felül: az eszköz csak hiányzó sort ír.
 
-**DT-F148d — a 21. szabály súlyossága az ágon és a main-en.** A g2-eset (`ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md`): a `szamkiosztas` a forrásban kicserélte a helyőrzőt, a generált lapon `(DT-F121g)` maradt. Az ágon viszont a generátor új döntésre csak helyőrzővel hivatkozhat (a CI E26 a végleges számot elutasítja).
+**DT440 — a 21. szabály súlyossága az ágon és a main-en.** A g2-eset (`ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md`): a `szamkiosztas` a forrásban kicserélte a helyőrzőt, a generált lapon `(DT-F121g)` maradt. Az ágon viszont a generátor új döntésre csak helyőrzővel hivatkozhat (a CI E26 a végleges számot elutasítja).
 - (1) a helyőrző a lapon mindig SÉRTÉS; a generátor szövege új döntést csak a számkiosztás után idézhet;
 - (2) **az ágon JELENTÉS, a main-en SÉRTÉS**; a merge utáni első main-futás így kikényszeríti az újragenerálást a kiosztott számmal;
 - (3) mindig JELENTÉS.

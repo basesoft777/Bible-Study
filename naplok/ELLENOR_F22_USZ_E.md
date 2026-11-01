@@ -17,9 +17,9 @@
 | Ján 1:38–51 vershatár, lista teljessége | OK (szövegen igazolva; szúrópróba más Ján- és Luk-helyeken is egyezik). |
 | `--lazabb` próba | NEM ELLENŐRIZHETŐ (az ellenőr nem futtathatta). |
 | commit-granularitás | **ELTÉRÉS**: az F22.50 egy commitban hozza a Luk, Ján, ApCsel egyesítését, jelentését és a D javítókörét; a brief könyvenként két commitot kér. |
-| ⛔ versbeosztás-jóváhagyás | a felhasználó döntse el (az orkesztrátor hagyta jóvá, DT-F22k). |
+| ⛔ versbeosztás-jóváhagyás | a felhasználó döntse el (az orkesztrátor hagyta jóvá, DT436). |
 | ⛔ csomagonkénti megállás | a felhasználó döntse el: az E és az F a D és az E független ellenőrzése előtt indult. |
 | CI | saját futás HIBA nélkül (E27 csak JELENTES, E30 `kezi`). |
-| A1–A6, három szabály, DT-F22i/j/k | OK. |
+| A1–A6, három szabály, DT434/j/k | OK. |
 
 **Súlyossági sorrend:** (1) a Ján 4:30 okának hamis leírása a csomagjelentésben; (2) a Ján-jelentés nem nevezi meg a 2:8-at és a 4:30-at; (3) 9 `[nem TR]` token `fuggoben`, nem listázva; (4) egy commit több könyvre.

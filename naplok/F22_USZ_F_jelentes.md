@@ -1,6 +1,6 @@
 # F22_USZ_F_jelentes.md — a 22.9 F csomag összesítője (ApCsel) és az evangéliumok + ApCsel keretének zárása
 
-*Proveniencia: scope=ApCsel (1 006 Károli-vers); a keretösszesítés: Mt, Mk, Luk, Ján, ApCsel (4 785 vers) | forras=`naplok/F22_ApCsel_jelentes.md`, `naplok/F22_USZ_D_jelentes.md`, `naplok/F22_USZ_E_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT-F22i/j/k és a brief 22.9 szerint (l. a D, E jelentés).*
+*Proveniencia: scope=ApCsel (1 006 Károli-vers); a keretösszesítés: Mt, Mk, Luk, Ján, ApCsel (4 785 vers) | forras=`naplok/F22_ApCsel_jelentes.md`, `naplok/F22_USZ_D_jelentes.md`, `naplok/F22_USZ_E_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT434/j/k és a brief 22.9 szerint (l. a D, E jelentés).*
 
 ## 1. Az ApCsel
 
@@ -11,11 +11,11 @@
 
 Végleges kapuhiba: 0/1 006. A 17 javító körös kötegből 1 egész köteg formátumhiba (k025), a többi versenkénti kapuhiba. A plafon-őr az ApCsel egyedi felső becslését (17,17 USD) átengedte (124,07 + 17,17 = 141,23 < 141,53), részletekben küldés nem kellett.
 
-## 2. Tokenszintű vershatár (N-F22e, DT-F22k)
+## 2. Tokenszintű vershatár (N-F22e, DT436)
 
 A lazább küszöbű próba: **ApCsel 2 találat** (13:32→13:33, 24:2→24:3), mindkettő szövegen igazolt; `f22/kezi_versek_ApCsel.tsv`: ApCsel 13:32, 13:33, 24:2, 24:3 `kezi` (link nélkül, `fuggoben`; `naplok/F22_ApCsel_atnezes.tsv`); a pótlás az N-F22e-é.
 
-## 3. A teljes keret (DT-F22i: 38 USD)
+## 3. A teljes keret (DT434: 38 USD)
 
 | csomag | könyvek | vers | költség (USD) | USD/vers | végleges kapuhiba |
 |---|---|---|---|---|---|

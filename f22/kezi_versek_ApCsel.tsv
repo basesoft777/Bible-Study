@@ -1,5 +1,5 @@
 # F22 (F22.45, 2026.11.01): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
-# ok: tokenszintű vershatár-eltérés (`tokenszint_vershatar.py`, szövegen igazolva; DT-F22k, N-F22e).
+# ok: tokenszintű vershatár-eltérés (`tokenszint_vershatar.py`, szövegen igazolva; DT436, N-F22e).
 igehely	ok
 ApCsel 13:32	tokenszintű vershatár-eltérés (F22.45, N-F22e): a Károli 13:32 vége („hogy azt az Isten betöltötte nékünk, az ő fiaiknak feltámasztván Jézust:”) = a TAGNT 13:33 elejének („ὅτι ταύτην ὁ θεὸς ἐκπεπλήρωκεν … ἀναστήσας Ἰησοῦν”); a pótlás az N-F22e-é
 ApCsel 13:33	tokenszintű vershatár-eltérés (F22.45, N-F22e): a TAGNT 13:33 eleje („ὅτι ταύτην … ἀναστήσας Ἰησοῦν”) a Károli 13:32 végének felel meg; a Károli 13:33 („Mint a második zsoltárban …”) = a TAGNT 13:33 vége; a pótlás az N-F22e-é

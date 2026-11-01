@@ -12,9 +12,9 @@
 | (4) brief `ag`, `kovetkezo`, `allapot`, v2.47, 22.9 bekezdés | OK; `ir` mező **ELTÉRÉS** (enyhe): 21 írt fájl hiányzott; a 22.9 címe nem frissült. |
 | (5) Mt 11:19 / G2041 | **ELTÉRÉS**: a Mt-jelentés csak a táblasort tartalmazta, a lexikai hibát nem mondta ki. |
 | (6) DONTESEK formailag | OK: 8 oszlop, helyőrzők. |
-| (7) Ján 1:51 | OK (adattal igazolva). A `kezi_versek_Jan.tsv` DT-hivatkozása (DT-F22j) **ELTÉRÉS** (enyhe): az A út a DT-F22k (2). |
+| (7) Ján 1:51 | OK (adattal igazolva). A `kezi_versek_Jan.tsv` DT-hivatkozása (DT435) **ELTÉRÉS** (enyhe): az A út a DT436 (2). |
 | granularitás | **ELTÉRÉS** (enyhe): az F22.47/F22.48 két könyvet, az F22.50 az E-t, F-et és a D javítókört egy commitban hozza. |
 | E17/DT3 sorszám-Δ, kulcstartomány | OK. |
-| ⛔ versbeosztás | a felhasználó döntse el (DT-F22k). |
+| ⛔ versbeosztás | a felhasználó döntse el (DT436). |
 
 **Javítás a 2. kör után (F22.51):** az Mt-jelentés a lexikailag hamis linket kimondja; az `ir` mező és a 22.9 címe frissítve; a `kezi_versek_*` hivatkozások DT-F22k-ra javítva. A granularitás utólag nem pótolható.

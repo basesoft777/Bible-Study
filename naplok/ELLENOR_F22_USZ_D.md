@@ -18,7 +18,7 @@
 | P6 | **ELTÉRÉS** | Mt, Mk nincs a `datasetek.tsv`-ben és a `SEMA.md`-ben. |
 | `[nem TR]` táblaméret | enyhe (a végrehajtó ellenőrzése: a 223 a D commitban helyes; az ellenőr a későbbi, Luk utáni munkafát látta) | |
 | granularitás | **ELTÉRÉS** (enyhe) | a brief könyvenként két commitot kér, a D két könyvre egy-egy commitot kapott. |
-| DT-F22i/j | OK / **ELTÉRÉS** (formai) | a DT-F22j „választás” mezője „a”, az opciók (b)/(c)/(d); a Ján 1:38–51 döntése külön sor nélkül. |
+| DT434/j | OK / **ELTÉRÉS** (formai) | a DT435 „választás” mezője „a”, az opciók (b)/(c)/(d); a Ján 1:38–51 döntése külön sor nélkül. |
 | tokenszint-próba | NEM ELLENŐRIZHETŐ | bemásolt kimenet: 0 jelölt. |
 | Ján 1:38–51 | OK / pontatlanság | az eltolódás igazolt; a „Károli 1:51 = TAGNT 1:50 + 1:51 eleje” helyesen: a TAGNT 1:51 egésze. |
 | ApCsel 13:32–33, 24:2–3 | OK | igazolt. |
@@ -26,4 +26,4 @@
 | ⛔ versbeosztás | **ELTÉRÉS** (a felhasználó döntse el) | a brief a felhasználó közvetlen ellenőrzését kéri, a napló orkesztrátori jóváhagyást rögzít („Vedd át a döntéseket”). |
 | E17/DT3, törölt sorok, kulcstartomány, A2 | OK | sorszám-Δ és kulcsok rendben; az N-F22e valóban nyitott. |
 
-**Súlyossági sorrend:** (1) `NYITOTT_FELADATOK.md` sorvége (CI piros); (2) hamis formátumhiba-állítás; (3) P6; (4) brief fejléce; (5) ⛔ versbeosztás orkesztrátori jóváhagyása; (6) Mt 11:19 hamis link; (7) `[nem TR]` táblaméret; (8) nem könyvenkénti commit; (9) DT-F22j jelölés; (10) Ján 1:51 megfogalmazás.
+**Súlyossági sorrend:** (1) `NYITOTT_FELADATOK.md` sorvége (CI piros); (2) hamis formátumhiba-állítás; (3) P6; (4) brief fejléce; (5) ⛔ versbeosztás orkesztrátori jóváhagyása; (6) Mt 11:19 hamis link; (7) `[nem TR]` táblaméret; (8) nem könyvenkénti commit; (9) DT435 jelölés; (10) Ján 1:51 megfogalmazás.

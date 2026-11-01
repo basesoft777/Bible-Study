@@ -172,7 +172,7 @@ A `[nem TR]` sorok kezelése a meglévő eszközláncban kész: a bemenet (`beme
 
 *A keret (a felhasználó döntése, 2026.10.12): az ÚSZ-re **18 USD**. A futó összeg a 22.8 után 86,3698 USD, ezért az `api_koteg.py` globális plafonja `PLAFON_USD = 104.36` (86,3698 + 18, lefelé kerekítve); a futtató a felső becslés túllépésekor magától megáll. Az evangéliumok és az ApCsel (4 785 vers, vetítve kb. 26 USD) ebbe a keretbe nem férnek bele: ezek külön keretdöntés (D45).*
 
-*Az evangéliumok és az ApCsel (DT-F22i, 2026.11.01):* külön 38 USD-s keret, a futó összeg 103,5308 USD, ezért `api_koteg.PLAFON_USD` = 141,53. Csomagok (DT-F22j): **D** = Mt + Mk (1 749 vers), **E** = Luk + Ján (2 030), **F** = ApCsel (1 006); csomagonként futtatás → egyesítés → kapu (P1–P6) → `naplok/F22_USZ_<csomag>_jelentes.md` → `fuggetlen-ellenor`. A versbeosztás jóváhagyása és a tokenszintű vershatárok kezelése: DT-F22k (Ján 1:38–51, ApCsel 13:32–33, 24:2–3: `f22/kezi_versek_<könyv>.tsv`, N-F22e). Eredmény: 26,5511 USD, futó összeg 130,0820 USD.
+*Az evangéliumok és az ApCsel (DT434, 2026.11.01):* külön 38 USD-s keret, a futó összeg 103,5308 USD, ezért `api_koteg.PLAFON_USD` = 141,53. Csomagok (DT435): **D** = Mt + Mk (1 749 vers), **E** = Luk + Ján (2 030), **F** = ApCsel (1 006); csomagonként futtatás → egyesítés → kapu (P1–P6) → `naplok/F22_USZ_<csomag>_jelentes.md` → `fuggetlen-ellenor`. A versbeosztás jóváhagyása és a tokenszintű vershatárok kezelése: DT436 (Ján 1:38–51, ApCsel 13:32–33, 24:2–3: `f22/kezi_versek_<könyv>.tsv`, N-F22e). Eredmény: 26,5511 USD, futó összeg 130,0820 USD.
 
 **A csomagok** (versszám: `Karoli_1908.tsv`; becslés: a 22.8 egységára, 0,005521 USD/vers; rossz eset: a próba legdrágább könyve, 0,0066 USD/vers):
 
@@ -273,7 +273,7 @@ A `[nem TR]` sorok kezelése a meglévő eszközláncban kész: a bemenet (`beme
 |---|---|---|---|
 | v1 | 2026.09.30 | első változat: teljes Biblia, három külső modell (A, B, döntőbíró C), Opus-arany, KJV-import, pilot ⛔ | a felhasználó kérése (teljes feldolgozás) |
 | v2 | 2026.10.01 | v1 (három külső modell, a teljes Biblia) felváltva v2-vel, a #21 pilot eredménye alapján | a pilot mért pontossága: Sonnet 97,3%, Gemini 95,3%, a pár `magas` linkjei 98,7% |
-| v2.47 | 2026.11.01 | a 22.9 D, E, F csomag (Mt, Mk, Luk, Ján, ApCsel) lefutott (DT-F22i: 38 USD, `PLAFON_USD` 141,53; DT-F22j: csomagolás; DT-F22k: versbeosztás-jóváhagyás, Ján 1:38–51 és ApCsel 13:32–33, 24:2–3 `kezi`, N-F22e) | az orkesztrátor (a felhasználó megbízásából) |
+| v2.47 | 2026.11.01 | a 22.9 D, E, F csomag (Mt, Mk, Luk, Ján, ApCsel) lefutott (DT434: 38 USD, `PLAFON_USD` 141,53; DT435: csomagolás; DT436: versbeosztás-jóváhagyás, Ján 1:38–51 és ApCsel 13:32–33, 24:2–3 `kezi`, N-F22e) | az orkesztrátor (a felhasználó megbízásából) |
 | v2.46 | 2026.10.20 | a 22.9 C csomag (Róm, 1Kor, Jel) lefutott (DT-F22h (b): részletekben); nyolc tokenszintű vershatáros vers `kezi` (N-F22e) | a felhasználó döntése |
 | v2.45 | 2026.10.19 | a 2Kor lefutott, az N-F22c újrapárosítás (36 vers) egyesítve; a független ellenőr ELTÉRÉS: 8 tétele javítva (2Kor 8:13–14 `kezi`, N-F22e; DT262 opciói) | a felhasználó döntése és az ellenőri jelentés |
 | v2.44 | 2026.10.12 | a 22.9 B csomag (Gal, Ef, Zsid) lefutott, a 2Kor visszatartva; a 48 zárójeles csoport versei az egyesítés előtt `kezi`/`fuggoben` (D45, N-F22c) | a felhasználó döntése |
