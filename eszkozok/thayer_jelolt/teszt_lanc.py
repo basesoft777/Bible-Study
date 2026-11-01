@@ -475,7 +475,26 @@ class TesztKaroliUjraellenoriz(unittest.TestCase):
     def test_uralkodo_to_szinten(self):
         import collections
         import karoli_ujraellenoriz as KU
-        self.assertEqual(KU.uralkodo(collections.Counter({'lelke': 3, 'lelket': 2, 'élet': 4})), 'lelk')
+        self.assertEqual(KU.uralkodo(collections.Counter({'lelke': 3, 'lelket': 2, 'élet': 4})), ('lelk', []))
+        self.assertEqual(KU.uralkodo(collections.Counter()), ('', []))
+
+    def test_uralkodo_holtverseny_nem_fajlsorrend(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        al = collections.Counter({'segítségül': 9, 'hívják': 5, 'hívja': 4, 'neveztetik': 9})
+        self.assertEqual(KU.uralkodo(al), ('', ['hívj', 'neve', 'segí']))          # 9 = 9 = 9
+        self.assertEqual(KU.uralkodo_szoveg(al), 'holtverseny(hívj,neve,segí)')
+        al2 = collections.Counter(dict(reversed(list(al.items()))))                # a beszúrási sorrend nem számít
+        self.assertEqual(KU.uralkodo(al2), KU.uralkodo(al))
+
+    def test_szamol_szakaszonkent(self):
+        import karoli_ujraellenoriz as KU
+        linkek = [('Mt 10:3', 'hívtak'), ('Mk 1:1', 'hívtak'), ('1Kor 1:2', 'segítségül')]
+        t, r = KU.szamol(linkek)
+        self.assertEqual((sum(t.values()), sum(r.values())), (3, 1))               # régi: Mt, Mk nélkül
+        t, r = KU.szamol(linkek, {'1Kor 1:2'})
+        self.assertEqual(dict(t), {'segítségül': 1})
+        self.assertEqual(KU.szamol(linkek, set())[0], {})
 
     def test_teljes_tartalmazza_a_regit(self):
         import karoli_ujraellenoriz as KU
