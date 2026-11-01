@@ -187,3 +187,19 @@ névadásban már az 1Móz 2:19-ben is együtt áll) — `naplok/F152_A1b_joel_p
 
 A CL3 („a többi 6 lexikonlap nincs újragenerálva”): a brief B.5-je csak az ISTENTISZT-001 és az ALVIL-001 újragenerálását írja
 elő; a generátor-változás a többi lapon a következő újrageneráláskor jelenik meg (a #36 / #123 menetében).
+
+## 9. A két ⛔ döntés és alkalmazásuk (F152.7)
+
+A felhasználó a két pontról egyenként döntött (az orkesztrátoron át, 2026-11-01; egy korábbi, visszavont jóváhagyás nem
+számít):
+
+- **DT-F152a:** „b” — a Minősítés „Kereszthivatkozásból minősített jelöltek” táblája csukva (`<details>`, a `<summary>` a
+  tábla címe a sorszámmal); a tartalma és a közös forrásmegjelölés (‹M1›) változatlan. `eszkozok/lexikon_general.py`
+  `adatres_minosites`, teszt: `teszt_lexikon_adatres`. Minden lexikonra.
+- **A.2, a Kivonat:** a 7.1 javaslatának első két mondatára: „mehet” — beírva a `motivumok/ISTENTISZT-001.md` `kivonat`
+  résébe (a נִקְרָא (nikrá) … עַל (al) kiejtése szavanként, a kiejtés-mérő miatt). **Függő:** a javaslat 3. mondata (a
+  fölérendelt fogalom, az ApCsel 7:59) a #151 K1–K3 döntésére vár (`naplok/HATAR_ISTENTISZT-001.md`); a K1–K5-ből semmi nem
+  került be (`jeloltek.tsv`, `negativ_kriterium`, a motívum határa változatlan).
+
+Ezzel a 32 pontból az L1 (a Minősítés-tábla része) döntés szerint kész, az L8c részben: a negatív kritérium a Kivonatban, a
+fölérendelt fogalom a #151 után.

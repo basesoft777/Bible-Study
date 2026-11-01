@@ -8,6 +8,10 @@
 
 A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH), „segítségül hívni az Úr nevét" formulát és újszövetségi folytatását követi: formulaikus azonosság, 33 igehelyen (23 ószövetségi, 10 újszövetségi). A formula az 1Móz 4:26-ban jelenik meg először, a pátriárkák oltárépítéséhez kötődik, majd a zsoltárokban és a prófétáknál liturgikus és eszkatológiai formává válik (Jóel 2:32). A Septuaginta a 23 ószövetségi helyből 19-et az ἐπικαλέω (epikaleó) igével ad vissza; eltér a két isteni önkihirdetésnél (2Móz 33:19; 34:5: καλέω, kaleó) és az Ézs 12:4-ben (βοάω, boaó), a Zsolt 116:17-ben pedig a tagmondat hiányzik a görögből. Az Újszövetség a Jóel 2:32-t szó szerint idézi (ApCsel 2:21; Róm 10:13), és a formulát Krisztusra alkalmazza: a „segítségül hívók" a korai gyülekezet önmegnevezésévé válnak (ApCsel 9:14, 21; 1Kor 1:2).
 
+A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָא בְּשֵׁם (kárá besém) tartozik ide, amelyben valaki segítségül hívja Isten nevét. A passzív נִקְרָא (nikrá) … עַל (al) szerkezet, amely a név alatti hovatartozást fejezi ki (2Sám 6:2; Jer 7:10), akkor sem, ha ugyanazt a két gyököt használja.
+
+【NAPLO: F152 A.2, 2026-11-01 — a negatív kritérium a Kivonatban (`motivumok.tsv` `negativ_kriterium`; a 2Sám 6:2 és a Jer 7:10 az 1/b.-ben ezzel az indokkal elutasított jelölt). Jóváhagyás: a felhasználó az orkesztrátoron át, a javaslat első két mondatára, szó szerint: „mehet” (2026-11-01). A javaslat 3. mondata (a fölérendelt fogalom, az ApCsel 7:59) függ: a #151 K1–K3 döntésére vár (`naplok/HATAR_ISTENTISZT-001.md`).】
+
 【NAPLO: DT399, 2026-10-29 — az Ézs 64:6 beépítésével a számok 32→33, 22→23, a görög egyezés 18→19 (LXX Ézs 64:6: ἐπικαλούμενος, G1941); mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z · scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli】
 
 <!-- RÉS-VÉGE: kivonat -->

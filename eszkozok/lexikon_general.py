@@ -4482,14 +4482,17 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
         for j in jeloltek:
             szam[j['dontes']] = szam.get(j['dontes'], 0) + 1
         osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
-        tabla = ['**Kereszthivatkozásból minősített jelöltek** (%d sor; %s):' % (len(jeloltek), osszeg), '',
-                 '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
+        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll; a tartalma változatlan
+        tabla = ['<details>',
+                 '<summary>Kereszthivatkozásból minősített jelöltek (%d sor; %s)</summary>' % (len(jeloltek), osszeg),
+                 '', '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
         forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek], 'M')   # F152 B.2
         for j, fk in zip(jeloltek, forrasok):
             tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], fk,
                                                      _cella(j.get('indoklas') or EM_DASH)))
         if kozos:
             tabla += ['', kozos]
+        tabla += ['', '</details>']
         out.append('\n'.join(tabla))
     else:
         out.append('**Kereszthivatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz.')
