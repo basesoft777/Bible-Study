@@ -3,7 +3,7 @@
 *Modell: `claude-sonnet-5-5` (egyezik a brief `sonnet` mezőjével). Proveniencia: scope=adat/forditasok.tsv (Thayer, G1941 sz1–sz4), adat/karoli_strong/parok_*.tsv | forras=`eszkozok/thayer_jelolt/karoli_ujraellenoriz.py --meres`, `forditas.py elokeszit/ellenoriz` | ts=2026-11-01*
 
 ## M0 — mérés (`THAYER_KAROLI_TELJES_meres.tsv`)
-78 nem `elavult` Thayer-sor, régi (Mt, Mk, Luk, Ján, ApCsel nélküli) és teljes mankóval: 1 megerősítés (G4151 sz4), 53 változatlan, 17 `nem_talal` a teljes mankóval is (a régivel is az volt), 8 G1941-sor, ahol a leggyakoribb Károli-tő `hívj`→`segí`. Új, a pótlás miatti `nem_talal` nincs.
+78 nem `elavult` Thayer-sor, régi (Mt, Mk, Luk, Ján, ApCsel nélküli) és teljes mankóval: 1 megerősítés (G4151 sz4), 53 változatlan, 17 `nem_talal` a teljes mankóval is (a régivel is az volt), 8 G1941-sor, ahol a leggyakoribb Károli-tő `hívj`→`segí`. Új, a pótlás miatti `nem_talal` nincs. *Pontosítás (ELLENOR_F153 4.): a kategóriák átfedik egymást — a G1941 sz2 a 17 `nem_talal` és a 8 G1941-sor között is szerepel, így 1+53+17+8 = 79 > 78; a „4 sor, amelyből hiányzik az új uralkodó tő” a `nincs_ellenorzendo` sz1 címsort is számolja. Az `uralkodo_valt` jelölés holtverseny-melléktermék, l. DT-F153b.*
 
 ## Döntés — DT-F153a
 Felhasználó, 2026-11-01, az orkesztrátor chatjében, az orkesztrátor üzenetében szó szerint idézve: „b” (a szűk (b) javaslatra). Tartalma: csak a G1941 sz1–sz4 fordul újra; minden más sor marad; a `kezi` G1941 `teljes` sor csak listára kerül.
