@@ -94,3 +94,11 @@ A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv
 | Ján 18:21 | 4 | ἐρώτησον | G2065 | Kérdezd |
 | Ján 18:28 | 13 | πρωΐ. | G4404 | reggel |
 | Ján 18:29 | 9 | φησίν· | G5346 | monda |
+
+**A `[nem TR]` tokenek állapota (`szavak_Jan.tsv`):** forditatlan 372, fuggoben 9, parositva 42.
+
+Nem `forditatlan`, hanem `fuggoben` (a `kezi` versek tokenjei, link nélkül): Ján 1:38 er 20 (μεθερμηνευόμενον, G3177), Ján 1:39 er 5 (ὄψεσθε.¶, G3700), Ján 1:39 er 7 (οὖν, G3767), Ján 1:41 er 3 (πρῶτον, G4413), Ján 1:42 er 18 (Ἰωάννου·, G2491), Ján 1:46 er 13 (ὁ, G3588), Ján 1:50 er 9 (ὅτι, G3754), Ján 2:8 er 10 (οἱ, G3588), Ján 2:8 er 11 (δὲ, G1161).
+
+**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.
+
+**Végleges kapuhiba: 2/879 (Ján 2:8 és Ján 4:30; indokolt maradék: a javítókör egy újabb próbát ad).** Ján 2:8: az 1. próbán a „többször szereplő magyar szó” kapuhiba (3. pont, `_munka/Jan_k006.json`), a 2. próbán a vers hiányzott a válaszból (`Jan.jsonl`, `futasnaplo.tsv`). Ján 4:30: az 1. próbán a 4:29–4:38 köteg érvénytelen JSON volt (`_munka/Jan_k015.json`), a 2. próbán a többi vers rendben jött, csak a 4:30 hiányzott a válaszból. A két vers `kezi` (link nélkül, `fuggoben`; `naplok/F22_Jan_atnezes.tsv`) a Ján 1:38–51 14 verse mellett (N-F22e): összesen 16 `kezi` vers a Jánban.

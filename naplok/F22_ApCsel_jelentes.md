@@ -88,3 +88,13 @@ A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv
 | ApCsel 27:42 | 13 | διαφύγῃ. | G1309 | el szaladhasson |
 | ApCsel 28:27 | 33 | ἰάσομαι | G2390 | meg gyógyítsam |
 | ApCsel 28:28 | 9 | τοῦτο | G3778 | ez |
+
+**A `[nem TR]` tokenek állapota (`szavak_ApCsel.tsv`):** forditatlan 596, fuggoben 1, parositva 37.
+
+Nem `forditatlan`, hanem `fuggoben` (a `kezi` versek tokenjei, link nélkül): ApCsel 24:2 er 15 (διορθωμάτων, G1357).
+
+**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.
+
+Az ApCsel 13:32–33 és 24:2–3 tokenszintű vershatár-eltérése (N-F22e, DT-F22k) szövegen igazolt: `f22/kezi_versek_ApCsel.tsv`, a négy vers link nélkül, `fuggoben`; a pótlás az N-F22e-é.
+
+**Ismert pontatlanság (az ellenőri jelentés nyomán, ELLENOR_F22_USZ_F):** az ApCsel 2:27 és 2:31 „sírban” szavának párja csak az εἰς (G1519); az ᾅδην (G0086) mindkét versben `forditatlan`, és a 2:31 „nem hagyatott” `betoldas`. Ez a régi arany két hibás hármasa (3/5), a Hádész–Seól motívum két kulcshelye: a Strong-index itt hiányos, a `alacsony` bizonyosság ezt jelzi; a javítás az N-F22e / későbbi átnézés dolga.

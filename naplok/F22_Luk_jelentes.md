@@ -116,3 +116,7 @@ A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv
 | Luk 24:44 | 4 | αὐτούς· | G0846 | nékik |
 | Luk 24:47 | 8 | εἰς | G1519 | és |
 | Luk 24:47 | 15 | ἀρξάμενοι | G0757 | elkezdve |
+
+**A `[nem TR]` tokenek állapota (`szavak_Luk.tsv`):** forditatlan 642, parositva 67.
+
+**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.

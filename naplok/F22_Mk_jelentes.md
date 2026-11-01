@@ -106,3 +106,7 @@ A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv
 | Mk 15:30 | 4 | καταβὰς | G2597 | szállj le |
 | Mk 15:35 | 7 | ἴδε, | G2396 | Ímé |
 | Mk 15:36 | 3 | τις | G5100 | Egy ember |
+
+**A `[nem TR]` tokenek állapota (`szavak_Mk.tsv`):** forditatlan 606, parositva 57.
+
+**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.

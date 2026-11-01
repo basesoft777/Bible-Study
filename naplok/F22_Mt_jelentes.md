@@ -96,3 +96,9 @@ A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv
 | Mt 27:57 | 14 | ἐμαθητεύθη | G3100 | tanítványa volt |
 | Mt 27:59 | 9 | ἐν | G1722 | gyolcsba |
 | Mt 28:9 | 12 | ὑπήντησεν | G5221 | szembe jöve |
+
+**A `[nem TR]` tokenek állapota (`szavak_Mt.tsv`):** forditatlan 411, parositva 47.
+
+**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.
+
+**Lexikailag hamis link (az ellenőri jelentés, ELLENOR_F22_USZ_D, nyomán):** Mt 11:19 „fiaitól” ↔ ἔργων (G2041, „work”). A Károli a TR τέκνων szavát fordítja, amely nincs a kivonatban; a link a `[nem TR]` jelölőtáblában áll (`nem_tr_parositott.tsv`, `parok_Mt.tsv`), de lexikailag nem megfelelő. A `[nem TR]` párosítások ezért nem használhatók lexikai bizonyítékként a jelölőtábla átnézése nélkül; a javítás az N-F22e / későbbi átnézés dolga.

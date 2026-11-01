@@ -10,7 +10,7 @@
 | Ján | 879 | 102 | 4.7832 | 0.00544 | 32/879 | 14 | 2 | 423 | 42 | n.é. (0/0) |
 | **össz** | **2030** | **229** | **11.0483** | **0.00544** | **72/2030** | **25** | **5** | **1132** | **109** | |
 
-Végleges kapuhiba: **2/2 030**: a Luk 0/1 151, a Ján 2/879 (Ján 2:8: „többször szereplő magyar szó”; Ján 4:30: a 4:29–38 köteg mindkét próbán érvénytelen JSON; indokolt maradék, a két vers `kezi`, link nélkül). A 25 javító körös kötegből **5 egész köteg formátumhiba** (Luk 3, Ján 2), a többi versenkénti kapuhiba.
+Végleges kapuhiba: **2/2 030**: a Luk 0/1 151, a Ján 2/879 (Ján 2:8: az 1. próbán „többször szereplő magyar szó”, a 2. próbán a vers hiányzott a válaszból; Ján 4:30: az 1. próbán a 4:29–38 köteg érvénytelen JSON, a 2. próbán csak a 4:30 hiányzott a válaszból; indokolt maradék, a két vers `kezi`, link nélkül; részletek: `naplok/F22_Jan_jelentes.md`). A 25 javító körös kötegből **5 egész köteg formátumhiba** (Luk 3, Ján 2), a többi versenkénti kapuhiba.
 
 ## 2. Költség, keret, a mért egységár
 
@@ -26,6 +26,12 @@ A lazább küszöbű próba (`tokenszint_vershatar.py --lazabb`): **Luk 0 talál
 
 A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv`, D45 (a); a Luk után újraépítve: 290 sor, 25 ÚSZ-könyv; az F után 369 sor, 27 ÚSZ-könyv); a sorok a két könyvjelentés 4. szakaszában. A jelölés nem állítja, hogy a Strong a Károli forrásszövegéé (TR); l. a D-jelentés 5. szakaszát (Mt 11:19).
 
-## 5. Mi marad
+## 5. Az ellenőri jelentés nyomán (ELLENOR_F22_USZ_E)
+
+- A Ján 4:30 és 2:8 végleges kapuhibájának oka kijavítva (fent), a Ján-jelentés tételesen nevezi meg.
+- A `[nem TR]` tokenek állapot szerinti bontása a könyvjelentések 4. szakaszában (szkriptből): a Jánban 9 `[nem TR]` token `fuggoben` (a `kezi` versekben), listázva.
+- A commit-granularitás (egy commit a Luk, Ján, ApCsel egyesítésére) utólag nem pótolható.
+
+## 6. Mi marad
 
 - Az F csomag (ApCsel); független ellenőrzés: `naplok/ELLENOR_F22_USZ_E.md`; merge csak a felhasználótól.

@@ -134,6 +134,22 @@ def main():
             w('| %s | %s | %s | %s | %s |' % (r['vers'], r['er_sorszam'], r['er_szo'], r['strong'], r['hu_szo']))
     else:
         w('(nincs párosított)')
+    # a `[nem TR]` tokenek állapot szerinti bontása (P4): a nem párosítottak vagy `forditatlan`, vagy listázva
+    sorsz, nem_tr_all = {}, set()
+    for r in tagnt:
+        sorsz[r[0]] = sorsz.get(r[0], 0) + 1
+        if not re.search(r'\bTR\b|TR»|TR«', r[7]):
+            nem_tr_all.add((r[0], sorsz[r[0]]))
+    allapot = {}
+    for sz in er:
+        if (sz['vers'], int(sz['sorszam'])) in nem_tr_all:
+            allapot.setdefault(sz['allapot'], []).append(sz)
+    w('\n**A `[nem TR]` tokenek állapota (`szavak_%s.tsv`):** %s.' % (n, ', '.join('%s %d' % (x, len(v)) for x, v in sorted(allapot.items()))))
+    if allapot.get('fuggoben'):
+        w('\nNem `forditatlan`, hanem `fuggoben` (a `kezi` versek tokenjei, link nélkül): ' + ', '.join('%s er %s (%s, %s)' % (x['vers'], x['sorszam'], x['szo'], x['strong']) for x in allapot['fuggoben']) + '.')
+    w('\n**Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.')
+    if a.megjegyzes:
+        w('\n' + a.megjegyzes)
     s = '\n'.join(L) + '\n'
     if a.ki:
         with open(os.path.join(ROOT, a.ki), 'w', encoding='utf-8', newline='\n') as f:
