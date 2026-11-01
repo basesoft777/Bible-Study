@@ -19,6 +19,10 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GYOKER = Path(__file__).resolve().parent.parent
 CSOPORTOS = re.compile(r'(\d+)\s+(?:egyedi\s+)?igehely')  # „63 egyedi igehelyen”: gyűjtő mondat
+# Könyvnév-változatok a prózában (ELLENOR_F125_3 1.): a `konkordancia/Konyv_normalizalo_tabla.tsv` nem
+# tartalmazza a „Mát” alakot (csak `Mt`, „Máté evangéliuma”, forrás-alak nincs), ezért a legszűkebb
+# kiegészítés: csak a ténylegesen előforduló változat (ALVIL-001: „Mát 11:23”). Új változat ide kerül.
+KONYV_VALTOZAT = {'Mt': ('Mát',)}
 KEVES_PROZA = 150      # karakter/elem alatt „kevés” (M0 javaslat, DT-F125a)
 ELTERES_ARANY = 4.0    # két blokk elemre jutó prózája ennyiszeres eltérés fölött jelölt
 MIN_ELEM = 3           # ennél kevesebb elemű blokkot nem hasonlítunk
@@ -55,7 +59,8 @@ def igehely_bontas(ih):
         m = re.match(r'^(\S+)\s+(\d+)()$', ih.strip())
         return (m.group(1), int(m.group(2)), set()) if m else None
     versek = set()
-    for t in re.split(r'\s*,\s*', m.group(3).strip()):
+    # záró kötőjel/vessző = magyar rag („Hós 13:14-ben”), nem tartomány: a tartományhoz számjegy kell
+    for t in re.split(r'\s*,\s*', m.group(3).strip().rstrip(' ,-–')):
         r = re.split(r'[-–]', t)
         try:
             a, b = int(r[0]), int(r[-1])
@@ -72,20 +77,21 @@ def megnevezett(ih, par):
     b = igehely_bontas(ih)
     if not b:
         return ih in par
-    kony, fej, versek = b
-    for m in re.finditer(re.escape(kony) + r'\s*' + str(fej) + r':([\d,\-–\s]+)', par):
-        if not versek:
-            return True
-        vv = igehely_bontas(f'{kony} {fej}:{m.group(1)}')
-        if vv and vv[2] & versek:
-            return True
-    if re.search(re.escape(kony) + r'\s*' + str(fej) + r'\b', par) and not versek:
-        return True
-    if kony in par:
-        for m in re.finditer(r'(?<![\w:])' + str(fej) + r':([\d,\-–]+)', par):
-            vv = igehely_bontas(f'{kony} {fej}:{m.group(1)}')
-            if vv and (not versek or vv[2] & versek):
+    kony0, fej, versek = b
+    for kony in (kony0,) + KONYV_VALTOZAT.get(kony0, ()):
+        for m in re.finditer(re.escape(kony) + r'\s*' + str(fej) + r':([\d,\-–\s]+)', par):
+            if not versek:
                 return True
+            vv = igehely_bontas(f'{kony0} {fej}:{m.group(1)}')
+            if vv and vv[2] & versek:
+                return True
+        if re.search(re.escape(kony) + r'\s*' + str(fej) + r'\b', par) and not versek:
+            return True
+        if kony in par:
+            for m in re.finditer(r'(?<![\w:])' + str(fej) + r':([\d,\-–]+)', par):
+                vv = igehely_bontas(f'{kony0} {fej}:{m.group(1)}')
+                if vv and (not versek or vv[2] & versek):
+                    return True
     return False
 
 

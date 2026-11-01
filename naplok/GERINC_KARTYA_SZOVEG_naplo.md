@@ -212,3 +212,19 @@ Tesztek: `test_dt_f125e_osszletszam_mondat_nem_gyujto` (5 előfordulás, „5 ig
 A három valódi motívumon a szám nem változik (ISTENTISZT-001-en és TEREMT-002-n a megnevezés már teljes, ezért az összlétszám-mondat kiesése nem hoz hiányt; ALVIL-001-en a keret 64−4 = 60, illetve 63−1 = 62 ≥ 57). A javítás a kitett hibaosztályt zárja, nem e három mért értéket változtatja.
 
 `scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef`
+
+### DT-F125e — a névfelismerés javítása (ELLENOR_F125_3 1.)
+
+A `megnevezett()` két hibája, az ellenőr jelentése szerint: (a) a kötőjeles ragos alak („Hós 13:14-ben”, „Zsolt 49:15-ben”, „Jel 1:18-ban”) üres versek-halmazt adott, mert a záró kötőjel után `int('')` hibát nyelt a kód; (b) a „Mát 11:23” nem egyezett az adatbeli `Mt 11:23`-mal. Javítás: a verscsoport záró `-`, `–`, `,` karaktere rag, nem tartomány (a tartományhoz számjegy kell a kötőjel után, így a „Jel 20:13-14” és az „1Móz 1:1–3” változatlanul tartomány). A „Mát” nincs a `konkordancia/Konyv_normalizalo_tabla.tsv`-ben (a tábla `Mt`-hez nem vesz fel forrás-alakot), és nincs közös normalizáló-függvény a magyar prózai alakokra (az eszkozok/f3_4_*.py szkriptek saját helyi `HOSSZU` szótárat tartanak), ezért a legszűkebb, kódban dokumentált kiegészítés: `KONYV_VALTOZAT = {'Mt': ('Mát',)}`, csak a ténylegesen előforduló változat. Tesztek: `test_ragos_alak_megnevezi_a_verset` és `test_konyvnev_valtozat_mat` (a régi kódon elbuknak), `test_ragos_alak_nem_fed_mas_verset` és `test_tartomany_tovabbra_mindket_verset_fedi` (védőtesztek); összesen 25 teszt, mind zöld az újon.
+
+Újramérés (előfordulás-rovat: adat, megnevezve, csoportosan fedett, hiány):
+
+| motívum | F125.27 (ts-hibás sor) | F125.32 |
+|---|---|---|
+| ISTENTISZT-001 | 33, 33, 0, 0 | 33, 33, 0, 0 |
+| ALVIL-001 | 72, 15, 57, 0 | 72, 17, 55, 0 |
+| TEREMT-002 | 3, 3, 0, 0 | 3, 3, 0, 0 |
+
+ALVIL-001: a keret az ellenőr szerint a :13 gyűjtő mondaton 64−5 = 59, a :23-on 63−3 = 60; mindkettő ≥ 55, a hiány 0 marad.
+
+`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (osszesit()['el']; ág-HEAD 19db9998 + F125.32 munkafa) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:12:50+01:00`

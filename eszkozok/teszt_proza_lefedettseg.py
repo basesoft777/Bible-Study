@@ -105,6 +105,30 @@ class TesztLefedettseg(Alap):
         self.ir('motivumok/T-001.md', '## Rész\n\nA szó 4 igehelyen fordul elő, ezek közül az 1Móz 1:1 a legkorábbi.\n')
         self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (6, 1, 3, 2))
 
+    def test_ragos_alak_megnevezi_a_verset(self):
+        # ELLENOR_F125_3 1.: "Hós 13:14-ben", "Zsolt 49:15-ben", "Jel 1:18-ban" = a vers + magyar rag
+        # (a regi kod int('')-ValueError-t nyelt, a versek halmaza ures maradt)
+        self.adat('T-001\tHós 13:14\tRemez\nT-001\tZsolt 49:15\tRemez\nT-001\tJel 1:18\tRemez\n')
+        self.ir('motivumok/T-001.md', '## Rész\n\nA Hós 13:14-ben, a Zsolt 49:15-ben és a Jel 1:18-ban áll.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (3, 3, 0, 0))
+
+    def test_ragos_alak_nem_fed_mas_verset(self):
+        self.adat('T-001\tHós 13:15\tRemez\n')
+        self.ir('motivumok/T-001.md', '## Rész\n\nA Hós 13:14-ben áll.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (1, 0, 0, 1))
+
+    def test_konyvnev_valtozat_mat(self):
+        # ELLENOR_F125_3 1.: a prozaban "Mát 11:23", az adatban `Mt 11:23`
+        self.adat('T-001\tMt 11:23\tRemez\n')
+        self.ir('motivumok/T-001.md', '## Rész\n\nA Mát 11:23 a Kapernaum-szakasz.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (1, 1, 0, 0))
+
+    def test_tartomany_tovabbra_mindket_verset_fedi(self):
+        self.adat('T-001\tJel 20:13\tRemez\nT-001\tJel 20:14\tRemez\nT-001\t1Móz 1:1\tRemez\n'
+                  'T-001\t1Móz 1:3\tRemez\nT-001\t1Móz 1:4\tRemez\n')
+        self.ir('motivumok/T-001.md', '## Rész\n\nA Jel 20:13-14 és az 1Móz 1:1–3 tartomány.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (5, 4, 0, 1))
+
     def test_csoportos_csak_elofordulasra(self):
         self.adat('T-001\t1Móz 37:35\tRemez\n', kap='1Móz 1:1\t1Móz 2:2\tT-001\tPárhuzam\n')
         self.ir('motivumok/T-001.md', '## Rész\n\n63 egyedi igehelyen.\n')
