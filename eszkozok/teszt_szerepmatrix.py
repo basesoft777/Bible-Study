@@ -41,7 +41,7 @@ import lexikon_general as LG
 # F131 (DT272, DT371): az arany lapon (ISTENTISZT-001) a szótári gerinc a szerepmátrixot szűkíti
 # (kapcsoló: LG.gerinc_aktiv). Ez a teszt a szerepmátrix ÁLTALÁNOS renderét vizsgálja
 # (azt, amely a többi lapon él), az ISTENTISZT-001-et csak mint adatgazdag mintát használja, ezért a
-# kapcsolót itt kikapcsolja: F148 (DT-F148a) óta a gerinc alapból be van kapcsolva, ezért a kivétellista
+# kapcsolót itt kikapcsolja: F148 (DT437) óta a gerinc alapból be van kapcsolva, ezért a kivétellista
 # az összes motívum (nem lazítás: ugyanazt méri). A gerinc-renderet az eszkozok/teszt_szotari_gerinc.py vizsgálja.
 LG.GERINC_KIVETEL_MOTIVUMOK = frozenset(r['id'] for r in G.tsv_beolvas(G.MOTIVUMOK_TSV)[1])
 
