@@ -229,6 +229,10 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
    felugró lap (betekintés a képernyő feléig, ⤢: teljes nézet). A lap állapota a body osztálya (lap-nyitva, lap-egesz): a szerver a
    nyitott módot (szó, vers, ?ful=info) már nyitva adja, a JS (olvaso.js) kapcsolja. Az arculati finomítás (árnyék, fülsor, gombok) az M3. */
 .reszletek { padding-top: 0; }
+/* #134 M4 (DT-F134p, DT-F134q): a lapon belül a széles tábla saját, vízszintesen görgethető dobozban áll (a lap maga nem lóg ki);
+   a .gordul magasságkorlátja a lapon belül feloldva (a lap görget, nincs görgetés a görgetésben). A többi lapon változatlan. */
+.reszletek .tabla-doboz { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.reszletek .gordul { max-height: none; overflow: visible; }
 .lap-fej { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: var(--space-gombsor); margin: 0 0 8px; padding: 8px 0; background: var(--panel); border-bottom: 1px solid var(--rule); }
 .lap-cim { flex: 1; min-width: 0; margin: 0; }
 .lap-cim-fo { display: block; font: 600 var(--fs-igehely) var(--font-text); unicode-bidi: isolate; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

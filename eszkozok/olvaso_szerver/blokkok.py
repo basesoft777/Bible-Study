@@ -95,7 +95,8 @@ def _tabla(fejlec, sorok, osztaly=''):
     fh = Markup('').join(Markup('<th>%s</th>') % c for c in fejlec)
     sh = Markup('').join(
         Markup('<tr>%s</tr>') % Markup('').join(Markup('<td>%s</td>') % c for c in sor) for sor in sorok)
-    return Markup('<table class="adat %s"><thead><tr>%s</tr></thead><tbody>%s</tbody></table>') % (osztaly, fh, sh)
+    # DT-F134p: a burkoló a részletek lapján vízszintesen görgethető doboz (olvaso.css), máshol semleges blokk
+    return Markup('<div class="tabla-doboz"><table class="adat %s"><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>') % (osztaly, fh, sh)
 
 
 def _lista(elemek):

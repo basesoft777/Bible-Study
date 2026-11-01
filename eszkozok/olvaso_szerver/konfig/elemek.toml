@@ -1273,6 +1273,7 @@ legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-meg
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"
 lap-muv = "a részletek-lap fejsorának műveletsora (a szómód „A vers: … →” hivatkozása; flex-tároló)"
+tabla-doboz = "a táblázatok burkolója (DT-F134p): a részletek lapján vízszintesen görgethető doboz, máshol semleges blokk; a tábla tokenjeit nem érinti"
 # #134 M3 javítókör (a felhasználó visszajelzése, 2026-10-23; DT-F134n): a tájoló pirula kikerült (elem és horgok); új horgok és
 # állapot-osztályok, a megjelenésük meglévő elemekből és tokenekből
 navlap-gomb = "a ragadós sáv ⌕ gombja (900 px alatt; DT-F134n): a sáv alatt nyitja a keresőt, a kánon-sávot és a „Legutóbb”-ot (a jelölés-chip a DT-F134o óta a sávban); a megjelenés a lap-gomb elem"
