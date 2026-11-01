@@ -337,7 +337,7 @@ erősebb: a magyar könyvrövidítések számmal kezdődnek (`1Móz`, `2Sám`), 
   determinisztikus (`[\u0591-\u05f4\ufb1d-\ufb4f]` betűk és jelek, a köztük álló szóközzel és makkeffel); a futamon
   belüli számok és sziglumok (4.4/2.) külön esetek.
 
-## 10. Alkalmazás (DT-F131z, 2026-11-01)
+## 10. Alkalmazás (DT445, 2026-11-01)
 
 A felhasználó döntése (az orkesztrátoron át): a „csak az igazolt tételek, a többi jelölve marad” javaslatra „Mehet”. A kézi
 minta átnézése elmarad („a bdb sorrendet nem tudom eldönteni”).

@@ -1,4 +1,4 @@
-# GENERÁLT: naplok/BDB_HEBER_SORREND_forditas_lista.py --ts 2026-11-01 — a javitva kifejezések, amelyek a magyar fordításban nem állnak betű szerint (DT-F131z; kézi átnézésre).
+# GENERÁLT: naplok/BDB_HEBER_SORREND_forditas_lista.py --ts 2026-11-01 — a javitva kifejezések, amelyek a magyar fordításban nem állnak betű szerint (DT445; kézi átnézésre).
 strong	sorszam	forras_alak	javitott_alak	kezi_megjegyzes	proveniencia
 H1980	17	י י׳אֲרוֺן ׳)	אֲרוֺן י׳) י׳		scope=H1980 | forras=naplok/BDB_HEBER_SORREND_forditas_lista.py; adat/bdb_forras_javitas.tsv@6daf33ab54f8, adat/forditasok.tsv@8d3bc51a3690 | ts=2026-11-01
 H4828	2	מֵרָעָה (יָסֻר)	(יָסֻר) מֵרָעָה		scope=H4828 | forras=naplok/BDB_HEBER_SORREND_forditas_lista.py; adat/bdb_forras_javitas.tsv@6daf33ab54f8, adat/forditasok.tsv@8d3bc51a3690 | ts=2026-11-01
