@@ -56,7 +56,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     # az elem-regiszter (#98 M2): induláskor ellenőrzött (ismeretlen vagy nem állítható token indulási hiba), minden kiadásban
     regiszter = tervezo_modul.Regiszter.konfigbol(kdir, gyar.arculat.adat)
     suti = konf.get('suti', {})
-    suti_nev = suti.get('nev', 'pardes_nezet')
+    suti_nev = suti.get('nev', 'pardes_reteg')
     szint_suti_nev = suti.get('szint_nev', 'pardes_szint')
     gy = konf.get('gyorsitotar', {})
     cache = Gyorsitotar(gy.get('max_lap', 512), gy.get('max_bajt', 64 * 1024 * 1024))
@@ -72,10 +72,18 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         gyar.tervezo = True
         tervezo_modul.utvonalak(app, gyar, cache, regiszter)
 
-    # -- nézet és szint ---------------------------------------------------------------------------------------------------
-    def nezet_kerese():
-        """`?nezet=` > süti > alap. A süti itt NEM jön létre (csak a /nezet/<nev> útvonalon)."""
-        return oldalak.nezet_ervenyes(request.args.get('nezet') or request.cookies.get(suti_nev))
+    # -- réteg és szint ---------------------------------------------------------------------------------------------------
+    def reteg_kerese():
+        """A rétegek (#134, DT-F134f (b)): `?reteg=` > a régi `?nezet=` (álnév) > a `pardes_reteg` süti > réteg nélkül. A süti itt
+        NEM jön létre (csak a /reteg/<nev>/<be|ki> és a /nezet/<nev> útvonalon). A régi `pardes_nezet` sütit nem olvassuk."""
+        if 'reteg' in request.args:
+            return oldalak.reteg_ervenyes(request.args.get('reteg'))
+        if 'nezet' in request.args:
+            return oldalak.reteg_ervenyes(request.args.get('nezet'))
+        return oldalak.reteg_ervenyes(request.cookies.get(suti_nev))
+
+    def reteg_suti(r, ertek):
+        r.set_cookie(suti_nev, ertek, max_age=int(suti.get('max_kor_mp', 31536000)), samesite='Lax', httponly=True, secure=bool(suti.get('secure', False)), path='/')
 
     def aktualis_ut():
         return request.path
@@ -91,15 +99,15 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     # -- közös lap-kiszolgálás gyorsítótárral és ETaggel ---------------------------------------------------------------------
     def kiszolgal(kulcs_reszek, elo, fragment=False):
         szint = szint_kerese()
-        nezet = nezet_kerese()
+        reteg = reteg_kerese()
         # az arculat hash-e külön tag (#98): a token-fájl változása után nincs 304 és nincs régi lap a gyorsítótárból
-        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio,
+        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), reteg, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio,
                  gyar.arculat.hash, fragment, gyar.lablec.kap().kulcs() if gyar.lablec else None)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
             try:
-                hit = elo(nezet, szint)
+                hit = elo(reteg, szint)
             except oldalak.NemTalalhato as ex:
                 return hiba(404, str(ex))
             cache.tesz(kulcs, hit)
@@ -114,14 +122,14 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         r.headers['ETag'] = etag
         r.headers['Cache-Control'] = 'public, max-age=300' if nyilvanos_mod else 'no-cache'
         r.headers['X-Cache'] = allapot
-        # a nézet a sütitől függ: a közbenső gyorsítótárak ne keverjék
+        # a réteg a sütitől függ: a közbenső gyorsítótárak ne keverjék
         r.headers['Vary'] = 'Cookie'
         return r
 
     def hiba(kod, uzenet):
-        nezet = nezet_kerese()
+        reteg = reteg_kerese()
         try:
-            html = gyar.hiba_lap(kod, uzenet, nezet, request.path, szint_kerese())
+            html = gyar.hiba_lap(kod, uzenet, reteg, request.path, szint_kerese())
         except Exception:
             html = '<!doctype html><title>%s</title><p>%s</p>' % (kod, 'hiba')
         r = make_response(html, kod)
@@ -153,18 +161,19 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     @app.get('/')
     def kezdolap():
         ut = aktualis_ut()
-        return kiszolgal({}, lambda nezet, szint: gyar.kezdolap(nezet, ut, szint))
+        return kiszolgal({}, lambda reteg, szint: gyar.kezdolap(reteg, ut, szint))
 
     @app.get('/<konyv>')
     def konyv_lap(konyv):
         ut = aktualis_ut()
-        return kiszolgal({}, lambda nezet, szint: gyar.konyv_lap(konyv, nezet, ut, szint))
+        return kiszolgal({}, lambda reteg, szint: gyar.konyv_lap(konyv, reteg, ut, szint))
 
     def _fejezet(konyv, fej, vers):
         szo = lekerdezesek.hnorm(request.args.get('szo', '')[:12]) or ''
-        ful = request.args.get('ful', '') if request.args.get('ful') in ('szo', 'vers') else ''
+        # a lap módja és a versmód füle (#134 M1): szo | info | vers | kh | temak | motivum
+        ful = request.args.get('ful', '') if request.args.get('ful') in oldalak.FUL_ERTEKEK else ''
         ut = request.path + ('?' + urlencode([(k, v) for k, v in (('szo', szo), ('ful', ful)) if v]) if (szo or ful) else '')
-        return kiszolgal({'szo': szo, 'ful': ful}, lambda nezet, szint: gyar.fejezet_lap(konyv, fej, vers, nezet, szint, szo, ful, ut))
+        return kiszolgal({'szo': szo, 'ful': ful}, lambda reteg, szint: gyar.fejezet_lap(konyv, fej, vers, reteg, szint, szo, ful, ut))
 
     @app.get('/<konyv>/<int:fej>')
     def fejezet_lap(konyv, fej):
@@ -177,7 +186,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     @app.get('/szo/<strong>')
     def szo_lap(strong):
         ut = aktualis_ut()
-        return kiszolgal({}, lambda nezet, szint: gyar.szo_lap(strong, nezet, szint, ut))
+        return kiszolgal({}, lambda reteg, szint: gyar.szo_lap(strong, reteg, szint, ut))
 
     @app.get('/r/szo/<strong>')
     def szo_toredek(strong):
@@ -185,19 +194,33 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         m = re.match(r'^([A-Za-z0-9]{1,12})/([0-9]{1,3})/([0-9]{1,3})$', request.args.get('ig', ''))
         kk = gyar.kozos.slug_kk.get(m.group(1)) if m else None
         ig = '%s %d:%d' % (kk, int(m.group(2)), int(m.group(3))) if kk else None
-        return kiszolgal({'ig': ig or ''}, lambda nezet, szint: gyar.szo_fragment(strong, szint, ig), fragment=True)
+        return kiszolgal({'ig': ig or ''}, lambda reteg, szint: gyar.szo_fragment(strong, szint, ig), fragment=True)
 
     @app.get('/r/vers/<konyv>/<int:fej>/<int:vers>')
     def vers_toredek(konyv, fej, vers):
-        return kiszolgal({}, lambda nezet, szint: gyar.vers_fragment(konyv, fej, vers, szint), fragment=True)
+        return kiszolgal({}, lambda reteg, szint: gyar.vers_fragment(konyv, fej, vers, szint), fragment=True)
+
+    @app.get('/reteg/<nev>/<allas>')
+    def reteg_valtas(nev, allas):
+        """Egy réteg be- vagy kikapcsolása (#134, DT-F134f (b)): itt (és a /nezet/<nev> álnéven) jön létre a funkcionális süti
+        (DT146/4). A többi réteg a süti szerinti állapotában marad."""
+        if nev not in oldalak.RETEGEK or allas not in ('be', 'ki'):
+            return hiba(404, 'Ismeretlen réteg.')
+        most = set(x for x in oldalak.reteg_ervenyes(request.cookies.get(suti_nev)).split(',') if x)
+        most = most | {nev} if allas == 'be' else most - {nev}
+        r = redirect(oldalak.biztonsagos_vissza(request.args.get('vissza')), 302)
+        reteg_suti(r, oldalak.reteg_ervenyes(','.join(most)))
+        r.headers['Cache-Control'] = 'no-store'
+        return r
 
     @app.get('/nezet/<nev>')
     def nezet_valtas(nev):
-        """A nézet beállítása: itt (és csak itt) jön létre a funkcionális süti (DT146/4)."""
-        if nev not in oldalak.NEZETEK:
+        """A régi nézetváltó címe álnévként (DT-F134f (b)): 302 a `vissza` címre, a nézetnek megfelelő réteggel
+        (`interlinearis` → `il`, `olvaso` és `munkaasztal` → réteg nélkül). Ismeretlen név: 404, süti nélkül."""
+        if nev not in oldalak.NEZET_ALNEVEK:
             return hiba(404, 'Ismeretlen nézet.')
         r = redirect(oldalak.biztonsagos_vissza(request.args.get('vissza')), 302)
-        r.set_cookie(suti_nev, nev, max_age=int(suti.get('max_kor_mp', 31536000)), samesite='Lax', httponly=True, secure=bool(suti.get('secure', False)), path='/')
+        reteg_suti(r, oldalak.NEZET_ALNEVEK[nev])
         r.headers['Cache-Control'] = 'no-store'
         return r
 
@@ -236,7 +259,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         try:
             k = kereses_modul.ertelmez(request.args, gyar.kozos)
         except kereses_modul.KeresesHiba as ex:
-            html = gyar.kereses_lap(None, nezet_kerese(), szint_kerese(), ut, hiba=str(ex), urlap=urlap)
+            html = gyar.kereses_lap(None, reteg_kerese(), szint_kerese(), ut, hiba=str(ex), urlap=urlap)
             r = make_response(html, 400)
             r.headers['Content-Type'] = 'text/html; charset=utf-8'
             r.headers['Cache-Control'] = 'no-store'
@@ -248,7 +271,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         kulcs = {'urlap': tuple(sorted(urlap.items()))}
         if k is not None:
             kulcs.update({'tipus': k.tipus, 'szavak': tuple(k.szavak), 'szoveg': k.szoveg, 'mod': k.mod, 'tol': k.tol})
-        return kiszolgal(kulcs, lambda nezet, szint: gyar.kereses_lap(k, nezet, szint, ut, urlap=urlap))
+        return kiszolgal(kulcs, lambda reteg, szint: gyar.kereses_lap(k, reteg, szint, ut, urlap=urlap))
 
     @app.get('/statusz')
     def statusz():

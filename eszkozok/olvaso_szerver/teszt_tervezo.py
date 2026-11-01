@@ -57,16 +57,24 @@ def alap_arculat():
 # a regiszter
 # =====================================================================================================================
 class TestRegiszter(unittest.TestCase):
-    """Az elem-regiszter (`konfig/elemek.toml`) a jóváhagyott M0 1.1 szerint (83 sor), minden token létező és állítható."""
+    """Az elem-regiszter (`konfig/elemek.toml`) a jóváhagyott M0 1.1 szerint (83 sor) és a #134 M3 komponensstílusai (19 elem:
+    a navigáció és a műfajszínek; a javítókörben a tájoló pirula kikerült, DT-F134n: 18 maradt), minden token létező és állítható."""
 
     @classmethod
     def setUpClass(cls):
         cls.a = alap_arculat()
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
-    def test_83_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83)
+    def test_101_elem_egyedi_id(self):
+        self.assertEqual(len(self.r.elemek), 83 + 18)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18)
+        self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
+
+    def test_a_mufajszinek_irhatok(self):
+        """#134 M3 (DT296): a nyolc műfajszín (--g-*) és az árnyék színe regisztrált token, tehát a tervező módban írható."""
+        tok = self.r.tokenek()
+        for g in ('g-tor', 'g-tort', 'g-bolcs', 'g-prof', 'g-kis', 'g-ev', 'g-lev', 'g-apok', 'arnyek'):
+            self.assertIn(g, tok)
 
     def test_a_jovahagyott_nevek_mintai(self):
         nev = {e['id']: (e['nev'], e['szelektor']) for e in self.r.elemek}
@@ -140,15 +148,13 @@ class TestRegiszterOr(unittest.TestCase):
 
     def test_a_dinamikus_osztalyok_kibontva(self):
         latott = {e.osztaly for e in self.elof if e.dinamikus}
-        for o in ('nezet-olvaso', 'nezet-interlinearis', 'nezet-munkaasztal', 'par-magas', 'par-alacsony', 'jelleg-forras', 'jelleg-gepi',
+        for o in ('par-magas', 'par-alacsony', 'jelleg-forras', 'jelleg-gepi',
                   'jelleg-modell', 'st-link', 'strong', 'nyelvtani', 'folyamat', 'arany', 'aktiv', 'gor', 'heb'):
             self.assertIn(o, latott, o)
         self.assertIn('kijelolt', {e.osztaly for e in self.elof})               # a {% if %} … {% endif %} közti szöveg
-        try:
-            import oldalak
-        except ImportError:                                    # jinja2 nélkül a nézetlista összevetése kimarad
-            return
-        self.assertEqual(tuple(regiszter_or.NEZETEK), oldalak.NEZETEK)
+        # #134: a nézetek helyett rétegek; a `nezet-` dinamikus előtag megszűnt (a body horga literál: reteg-il / reteg-nincs)
+        self.assertFalse(hasattr(regiszter_or, 'NEZETEK'))
+        self.assertTrue({'reteg-il', 'reteg-nincs', 'lap-nyitva'} <= {e.osztaly for e in self.elof})
 
     @unittest.skipUnless(VAN_DB, 'nincs pardes.db: a par- értékkészlet a tartalék listából')
     def test_a_bizonyossag_az_adatbazisbol(self):
@@ -387,7 +393,7 @@ class TestSzinkron(unittest.TestCase):
         ki = self.sz.tokens_json(self.a, self.r, self.css, alap, '2026-10-15', 'teszt@0')
         acc = ki['color']['tokens'][0]
         self.assertEqual((acc['name'], acc['value'], acc['usage']), ('accent', self.a.adat['szin']['accent'], 'Régi leírás'))
-        self.assertEqual(len(ki['color']['tokens']), 10)
+        self.assertEqual(len(ki['color']['tokens']), 19)                                # 10 + a #134 M3 műfajszínei (8) és árnyéka
         g0 = ki['type']['groups'][0]
         self.assertEqual(g0['name'], 'Olvasószöveg')
         oc = g0['styles'][0]
@@ -459,7 +465,7 @@ class TestKiadasok(unittest.TestCase):
 
     def test_csp_nem_lazul_es_nincs_inline(self):
         for c in (self.belso, self.alkalmazas.letrehoz(db_ut=DB, kiadas='nyilvanos').test_client()):
-            for ut in ('/', '/1Moz/1', '/1Moz/1/2?ful=vers&nezet=munkaasztal', '/szo/H0430'):
+            for ut in ('/', '/1Moz/1', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh&reteg=il', '/1Moz/1?szo=H0430&ful=szo', '/szo/H0430'):
                 r = c.get(ut)
                 self.assertEqual(r.headers['Content-Security-Policy'], self.alkalmazas.CSP)
                 t = r.get_data(as_text=True)
@@ -711,7 +717,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83)
+        self.assertEqual(len(t['regiszter']), 83 + 18)                    # a tájoló pirula kikerült (DT-F134n)
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet
@@ -860,9 +866,9 @@ class TestIlleszto(unittest.TestCase):
 # a lapok, amelyeken a regiszter minden szelektorának találnia kell (a belső kiadás alapértelmezett szintjén)
 LAPOK = (
     '/', '/1Moz', '/nincs-ilyen-konyv',
-    '/1Moz/1?nezet=olvaso', '/1Moz/1?nezet=interlinearis', '/1Moz/1?nezet=munkaasztal',
-    '/1Moz/1/1?szo=H0430&ful=szo&nezet=munkaasztal', '/1Moz/1/2?ful=vers&nezet=munkaasztal',
-    '/Jan/1/1?szo=G3056&ful=szo&nezet=olvaso', '/Jan/1/1?nezet=interlinearis', '/Zsolt/22/2?szo=H0410&ful=szo&nezet=interlinearis',
+    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info',
+    '/1Moz/1/1?szo=H0430&ful=szo', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh', '/1Moz/1/2?ful=temak', '/1Moz/1/2?ful=motivum',
+    '/Jan/1/1?szo=G3056&ful=szo', '/Jan/1/1?reteg=il', '/Zsolt/22/2?szo=H0410&ful=szo&reteg=il',
     '/szo/H0430', '/szo/G3056', '/szo/H7307', '/szo/H6440',
     '/szo/H1254',                       # ige: törzscímek (.torzs h5, .vz-torzs), magyar fordítás nélkül (.allapot.folyamat)
 )

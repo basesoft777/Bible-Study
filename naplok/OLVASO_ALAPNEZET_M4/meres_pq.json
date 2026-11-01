@@ -1,0 +1,249 @@
+{
+ "ts": "2026-11-01T16:26:41",
+ "jelenetek": [
+  {
+   "lapTeteje": 422,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "szo.ubs_dbh:+136",
+    "szo.oshl:+131"
+   ],
+   "dobozok": 7,
+   "gordul": 3,
+   "szelesseg": 375,
+   "jelenet": "szo",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 756,
+   "nezetablak": 812,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 422,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "vers.eredeti:+28",
+    "vers.macula_morf:+22",
+    "vers.ubs:+59"
+   ],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 375,
+   "jelenet": "vers",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 756,
+   "nezetablak": 812,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 422,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "vers.par:+7",
+    "vers.eredeti:+91",
+    "vers.macula_morf:+95",
+    "vers.ubs:+165"
+   ],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 375,
+   "jelenet": "ez37vers",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 756,
+   "nezetablak": 812,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 532,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 7,
+   "gordul": 3,
+   "szelesseg": 768,
+   "jelenet": "szo",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 968,
+   "nezetablak": 1024,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 532,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 768,
+   "jelenet": "vers",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 968,
+   "nezetablak": 1024,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 532,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 768,
+   "jelenet": "ez37vers",
+   "kattintas_ok": true,
+   "teljesTeteje": 56,
+   "teljesMagassag": 968,
+   "nezetablak": 1024,
+   "egesz": true,
+   "teljesNezetben": {
+    "lapVizszTulfolyas": 0,
+    "belsoGorgetok": [],
+    "kilogo": []
+   }
+  },
+  {
+   "lapTeteje": 86,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "szo.ubs_dbh:+112",
+    "szo.oshl:+107"
+   ],
+   "dobozok": 7,
+   "gordul": 3,
+   "szelesseg": 920,
+   "jelenet": "szo",
+   "kattintas_ok": true
+  },
+  {
+   "lapTeteje": 86,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "vers.eredeti:+4",
+    "vers.ubs:+35"
+   ],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 920,
+   "jelenet": "vers",
+   "kattintas_ok": true
+  },
+  {
+   "lapTeteje": 82,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [
+    "vers.eredeti:+67",
+    "vers.macula_morf:+71",
+    "vers.ubs:+141"
+   ],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 920,
+   "jelenet": "ez37vers",
+   "kattintas_ok": true
+  },
+  {
+   "lapTeteje": 86,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 7,
+   "gordul": 3,
+   "szelesseg": 1280,
+   "jelenet": "szo",
+   "kattintas_ok": true
+  },
+  {
+   "lapTeteje": 86,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 1280,
+   "jelenet": "vers",
+   "kattintas_ok": true
+  },
+  {
+   "lapTeteje": 82,
+   "lapVizszTulfolyas": 0,
+   "oldalTulfolyas": 0,
+   "lapSajatGorget": true,
+   "belsoGorgetok": [],
+   "kilogo": [],
+   "gorgethetoDobozok": [],
+   "dobozok": 12,
+   "gordul": 0,
+   "szelesseg": 1280,
+   "jelenet": "ez37vers",
+   "kattintas_ok": true
+  }
+ ]
+}
