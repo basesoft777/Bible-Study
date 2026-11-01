@@ -1016,6 +1016,36 @@ class E27Teszt(unittest.TestCase):
         self.assertEqual([x.szint for x in t], ['HIBA'])
         self.assertIn('nem azonosít briefet', t[0].reszlet)
 
+    # --- F156.2: a generalt nyitott sor hianyzo fajlja, ha egy nyitott feladat `ir`-je fedi --
+
+    BRIEF_IRO = '---\nfeladat: 3\nallapot: nem_indult\nir: [eszkozok/uj_szkript.py, generalt/uj/]\nfugg: []\n---\n'
+
+    def test_f156_2_fedett_hivatkozas_nem_hiba(self):
+        f = self._gen(nyitott='`eszkozok/uj_szkript.py` és `generalt/uj/a.json`')
+        extra = {'F01_X_BRIEF.md': self.BRIEF1, 'F03_IRO_BRIEF.md': self.BRIEF_IRO}
+        t = self._fut(f, extra)
+        self.assertEqual([x for x in t if x.szint == 'HIBA'], [], t)
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES', 'FIGYELMEZTETES'])
+        self.assertIn('F03_IRO_BRIEF.md', t[0].reszlet)
+        self.assertEqual(self._kilepes(f, extra, hozzaadott=set()), 0)
+
+    def test_f156_2_nem_fedett_hivatkozas_tovabbra_is_hiba(self):
+        f = self._gen(nyitott='`eszkozok/mas_szkript.py`')
+        extra = {'F01_X_BRIEF.md': self.BRIEF1, 'F03_IRO_BRIEF.md': self.BRIEF_IRO}
+        h = [x for x in self._fut(f, extra) if x.szint == 'HIBA']
+        self.assertEqual(len(h), 1)
+        self.assertIn('eszkozok/mas_szkript.py', h[0].reszlet)
+        self.assertEqual(self._kilepes(f, extra, hozzaadott=set()), 1)
+
+    def test_f156_2_lezart_feladat_ir_mezoje_nem_fed(self):
+        f = self._gen(nyitott='`eszkozok/uj_szkript.py`')
+        extra = {'F01_X_BRIEF.md': self.BRIEF1,
+                 'F03_IRO_BRIEF.md': self.BRIEF_IRO.replace('nem_indult', 'lezarva')}
+        h = [x for x in self._fut(f, extra) if x.szint == 'HIBA']
+        self.assertEqual(len(h), 1)
+        self.assertIn('eszkozok/uj_szkript.py', h[0].reszlet)
+        self.assertEqual(self._kilepes(f, extra, hozzaadott=set()), 1)
+
     # --- DT-F40a (c): a Kesz szakasz --------------------------------------
 
     def test_kesz_szakasz_fajlhiany_figyelmeztetes_a_generalt_blokkban(self):

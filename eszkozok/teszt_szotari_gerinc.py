@@ -594,7 +594,8 @@ class Kulcsszavak(unittest.TestCase):
     def test_istentiszt(self):
         szov = LG.kulcsszavak_blokk('ISTENTISZT-001', self._sorai('ISTENTISZT-001'), {})
         self.assertTrue(szov.startswith(LG.KULCSSZAVAK_CIM))
-        self.assertIn('| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', szov)
+        self.assertIn('| Héber/görög szavak | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', szov)
+        self.assertNotIn('Gerinc', szov.split('\n\n', 3)[-1])   # F152 A.3: az olvasói táblában nincs „gerinc”
         self.assertIn('| H7121 + H8034 | ', szov)
         self.assertIn(' (kárá) + ', szov)
         self.assertIn(' (sém) | ', szov)
