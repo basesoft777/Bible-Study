@@ -1,0 +1,1116 @@
+{
+ "proveniencia": "scope=adat/elofordulasok.tsv (ALVIL-001, ANTROP-001, HAMART-001, HODIT-001, ISTENTISZT-001, KIRALY-001, MENNY-001, TEREMT-001; héber Strongok) + konkordancia/TAHOT_kivonat.tsv | forras=naplok/HEBER_KIEJTES_kalibracio.py (seed=20261107) | ts=2026-10-30 | javaslat és alternatíva: manual",
+ "utmutato": "Alakonként egy vagy több változat jelölhető elfogadhatónak, közülük egy preferált.",
+ "tetelek": [
+  {
+   "sorszam": 1,
+   "strong": "H5534",
+   "heber": "וַיִּסָּכְרוּ",
+   "lemma": "סָכַר",
+   "igehely": "1Móz 8:2",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "vajjisszácherú"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "vajjiszácherú"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vajjisszochrú"
+    }
+   ]
+  },
+  {
+   "sorszam": 2,
+   "strong": "H7404",
+   "heber": "רְכֻלָּתְךָ",
+   "lemma": "רְכֻלָּה",
+   "igehely": "Ez 28:16",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "rechulátechá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "rechullátechá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "rechullátchá"
+    }
+   ],
+   "megjegyzes": "kámec után a sevá kiejtett (rəḵullāṯəḵā); a szövegben nincs meteg"
+  },
+  {
+   "sorszam": 3,
+   "strong": "H4390",
+   "heber": "מָלְאָה",
+   "lemma": "מָלֵא",
+   "igehely": "1Móz 6:13",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "molá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "máleá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "málá"
+    }
+   ]
+  },
+  {
+   "sorszam": 4,
+   "strong": "H3427",
+   "heber": "יָשְׁבוּ",
+   "lemma": "יָשַׁב",
+   "igehely": "5Móz 2:20",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "jásevú"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "jásvú"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "josvú"
+    }
+   ]
+  },
+  {
+   "sorszam": 5,
+   "strong": "H6666",
+   "heber": "צִדְקָתְךָ",
+   "lemma": "צְדָקָה",
+   "igehely": "Zsolt 36:7",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "cidkatechá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "cidkátchá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "cidkátechá"
+    }
+   ]
+  },
+  {
+   "sorszam": 6,
+   "strong": "H6672",
+   "heber": "הַצָּהֳרַיִם",
+   "lemma": "צֹ֫הַר",
+   "igehely": "1Kir 18:26",
+   "kategoria": "kámec kátán (gyanú)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "haccohorajim"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "haccáhorajim"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "hacáhorajim"
+    }
+   ],
+   "megjegyzes": "hátef-kámec előtt a tibériási olvasat o (haccohorajim); a DT-F131y R2 szerint á"
+  },
+  {
+   "sorszam": 7,
+   "strong": "H7121",
+   "heber": "יִקְרָא",
+   "lemma": "קָרָא",
+   "igehely": "Jóel 2:32",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "jikra"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "jikerá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "jikrá"
+    }
+   ]
+  },
+  {
+   "sorszam": 8,
+   "strong": "H7585",
+   "heber": "בִּשְׁאוֹל",
+   "lemma": "שְׁאוֹל",
+   "igehely": "Jób 14:13",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "biseól"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "biseol"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "bisól"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma"
+  },
+  {
+   "sorszam": 9,
+   "strong": "H7585",
+   "heber": "לִשְׁאוֹל",
+   "lemma": "שְׁאוֹל",
+   "igehely": "Zsolt 16:10",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "liseol"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "liseól"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "lisól"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma"
+  },
+  {
+   "sorszam": 10,
+   "strong": "H7121",
+   "heber": "אֶקְרָא",
+   "lemma": "קָרָא",
+   "igehely": "1Kir 18:24",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "ekrá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "ekra"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "ekerá"
+    }
+   ]
+  },
+  {
+   "sorszam": 11,
+   "strong": "H7121",
+   "heber": "קִרְאוּ",
+   "lemma": "קָרָא",
+   "igehely": "1Krón 16:8",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "kireú"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "kirú"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "kireu"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma"
+  },
+  {
+   "sorszam": 12,
+   "strong": "H7585",
+   "heber": "לִשְׁאוֹלָה",
+   "lemma": "שְׁאוֹל",
+   "igehely": "Zsolt 9:18",
+   "kategoria": "nem szókezdő sevá",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "liseóla"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "lisólá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "liseólá"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma"
+  },
+  {
+   "sorszam": 13,
+   "strong": "H6398",
+   "heber": "פֹלֵחַ",
+   "lemma": "פָּלַח",
+   "igehely": "Zsolt 141:7",
+   "kategoria": "furtív patah",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "póléach"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "fóléach"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "póleach"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl"
+  },
+  {
+   "sorszam": 14,
+   "strong": "H7307",
+   "heber": "וּבְרוּחַ",
+   "lemma": "רוּחַ",
+   "igehely": "2Móz 15:8",
+   "kategoria": "furtív patah",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "úvrúach"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "úberúach"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "úverúach"
+    }
+   ]
+  },
+  {
+   "sorszam": 15,
+   "strong": "H7307",
+   "heber": "רוּחַ",
+   "lemma": "רוּחַ",
+   "igehely": "1Móz 6:17",
+   "kategoria": "furtív patah",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "rúach"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "ruach"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "rúcha"
+    }
+   ]
+  },
+  {
+   "sorszam": 16,
+   "strong": "H1234",
+   "heber": "וּבֹקֵעַ",
+   "lemma": "בָּקַע",
+   "igehely": "Zsolt 141:7",
+   "kategoria": "furtív patah",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "úbókéa"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "úvókéa"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "úvókea"
+    }
+   ]
+  },
+  {
+   "sorszam": 17,
+   "strong": "H1361",
+   "heber": "הַגְבֵּהַּ",
+   "lemma": "גָּבַהּ",
+   "igehely": "Ézs 7:11",
+   "kategoria": "furtív patah",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "hagebéah"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "hagbéa"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "hagbéah"
+    }
+   ]
+  },
+  {
+   "sorszam": 18,
+   "strong": "H5303",
+   "heber": "הַנְּפִלִים",
+   "lemma": "נְפִלִים",
+   "igehely": "1Móz 6:4",
+   "kategoria": "dáges forte",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "hannefilím"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "hanefilím"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "hannefílím"
+    }
+   ]
+  },
+  {
+   "sorszam": 19,
+   "strong": "H7121",
+   "heber": "וַיִּקְרְאוּ",
+   "lemma": "קָרָא",
+   "igehely": "1Kir 18:26",
+   "kategoria": "dáges forte",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "vajikreú"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "vajjikreú"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vajjikrú"
+    }
+   ]
+  },
+  {
+   "sorszam": 20,
+   "strong": "H6093",
+   "heber": "עִצְּבוֹנֵךְ",
+   "lemma": "עִצָּבוֹן",
+   "igehely": "1Móz 3:16",
+   "kategoria": "dáges forte",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "iccevónéch"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "iccevónech"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "icevónéch"
+    }
+   ]
+  },
+  {
+   "sorszam": 21,
+   "strong": "H6093",
+   "heber": "וּמֵעִצְּבוֹן",
+   "lemma": "עִצָּבוֹן",
+   "igehely": "1Móz 5:29",
+   "kategoria": "dáges forte",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "úméiccevón"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "uméiccevón"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "úméicevón"
+    }
+   ]
+  },
+  {
+   "sorszam": 22,
+   "strong": "H8415",
+   "heber": "וּמִתְּהֹמוֹת",
+   "lemma": "תְּהוֹם",
+   "igehely": "Zsolt 71:20",
+   "kategoria": "dáges forte",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "umittehómót"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "úmitehómót"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "úmittehómót"
+    }
+   ]
+  },
+  {
+   "sorszam": 23,
+   "strong": "H1129",
+   "heber": "וַיִּבֶן",
+   "lemma": "בָּנָה",
+   "igehely": "1Móz 12:8",
+   "kategoria": "makkef",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "vajiven"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "vajjiven"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vajjiben"
+    }
+   ]
+  },
+  {
+   "sorszam": 24,
+   "strong": "H5973",
+   "heber": "וְעִם",
+   "lemma": "עִם",
+   "igehely": "Ézs 28:15",
+   "kategoria": "makkef",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "ve-im"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "veím"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "veim"
+    }
+   ]
+  },
+  {
+   "sorszam": 25,
+   "strong": "H1571",
+   "heber": "גַם",
+   "lemma": "גַּם",
+   "igehely": "Jób 1:6",
+   "kategoria": "makkef",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "gam-"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "gám"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "gam"
+    }
+   ]
+  },
+  {
+   "sorszam": 26,
+   "strong": "H5650",
+   "heber": "עַבְדֵי",
+   "lemma": "עֶ֫בֶד",
+   "igehely": "1Móz 26:25",
+   "kategoria": "makkef",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "avedé"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "avdé"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "abdé"
+    }
+   ]
+  },
+  {
+   "sorszam": 27,
+   "strong": "H3027",
+   "heber": "בְיַד",
+   "lemma": "יָד",
+   "igehely": "1Krón 20:8",
+   "kategoria": "makkef",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "vejád"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "bejad"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vejad"
+    }
+   ]
+  },
+  {
+   "sorszam": 28,
+   "strong": "H3541",
+   "heber": "כֹה",
+   "lemma": "כֹּה",
+   "igehely": "Ez 26:19",
+   "kategoria": "szókezdő begadkefat dáges nélkül",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "kó"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "chó"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "kóh"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl"
+  },
+  {
+   "sorszam": 29,
+   "strong": "H3605",
+   "heber": "כֻלָּם",
+   "lemma": "כֹּל",
+   "igehely": "Sof 3:9",
+   "kategoria": "szókezdő begadkefat dáges nélkül",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "kulám"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "chullám"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "kullám"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl"
+  },
+  {
+   "sorszam": 30,
+   "strong": "H0953",
+   "heber": "בוֹר",
+   "lemma": "בּוֹר",
+   "igehely": "Ez 31:16",
+   "kategoria": "szókezdő begadkefat dáges nélkül",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "bor"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "bór"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vór"
+    }
+   ],
+   "megjegyzes": "a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl"
+  },
+  {
+   "sorszam": 31,
+   "strong": "H9031",
+   "heber": "בְךָ",
+   "lemma": "Os2m",
+   "igehely": "1Móz 12:3",
+   "kategoria": "szókezdő begadkefat dáges nélkül",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "bechá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "vecha"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vechá"
+    }
+   ]
+  },
+  {
+   "sorszam": 32,
+   "strong": "H0639",
+   "heber": "בְאַפִּי",
+   "lemma": "אַף",
+   "igehely": "5Móz 32:22",
+   "kategoria": "szókezdő begadkefat dáges nélkül",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "veappí"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "beappí"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "veapí"
+    }
+   ]
+  },
+  {
+   "sorszam": 33,
+   "strong": "H0611",
+   "heber": "אָסוֹן",
+   "lemma": "אָסוֹן",
+   "igehely": "1Móz 42:38",
+   "kategoria": "ס és שׂ (sz vagy s)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "ászon"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "ásón"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "ászón"
+    }
+   ]
+  },
+  {
+   "sorszam": 34,
+   "strong": "H4823",
+   "heber": "לְמִרְמָס",
+   "lemma": "מִרְמָס",
+   "igehely": "Ézs 28:18",
+   "kategoria": "ס és שׂ (sz vagy s)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "lemirmász"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "lemiremász"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "lemirmás"
+    }
+   ]
+  },
+  {
+   "sorszam": 35,
+   "strong": "H5375",
+   "heber": "יִשָּׂא",
+   "lemma": "נָשָׂא",
+   "igehely": "Zak 6:13",
+   "kategoria": "ס és שׂ (sz vagy s)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "jissá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "jisszá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "jiszá"
+    }
+   ]
+  },
+  {
+   "sorszam": 36,
+   "strong": "H5493",
+   "heber": "יָסוּר",
+   "lemma": "סוּר",
+   "igehely": "Jer 17:5",
+   "kategoria": "ס és שׂ (sz vagy s)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "jászúr"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "jásúr"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "jaszúr"
+    }
+   ]
+  },
+  {
+   "sorszam": 37,
+   "strong": "H3254",
+   "heber": "תֹסֵף",
+   "lemma": "יָסַף",
+   "igehely": "1Móz 4:12",
+   "kategoria": "ס és שׂ (sz vagy s)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "tósef"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "tószéf"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "tószef"
+    }
+   ]
+  },
+  {
+   "sorszam": 38,
+   "strong": "H7585",
+   "heber": "שְׁאֹל",
+   "lemma": "שְׁאוֹל",
+   "igehely": "1Kir 2:6",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "seól"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "seol"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "sól"
+    }
+   ]
+  },
+  {
+   "sorszam": 39,
+   "strong": "H7585",
+   "heber": "שְׁאוֹלָה",
+   "lemma": "שְׁאוֹל",
+   "igehely": "1Móz 42:38",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "seóla"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "seolá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "seólá"
+    }
+   ]
+  },
+  {
+   "sorszam": 40,
+   "strong": "H7451",
+   "heber": "רָעַת",
+   "lemma": "רָעָה",
+   "igehely": "1Móz 6:5",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "raat"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "ráat"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "ráát"
+    }
+   ]
+  },
+  {
+   "sorszam": 41,
+   "strong": "H7121",
+   "heber": "קָרָאוּ",
+   "lemma": "קָרָא",
+   "igehely": "Jer 10:25",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "karaú"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "kárú"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "káráú"
+    }
+   ]
+  },
+  {
+   "sorszam": 42,
+   "strong": "H7497",
+   "heber": "רְפָאִים",
+   "lemma": "רְפָאִים",
+   "igehely": "1Krón 11:15",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "refáím"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "rafáím"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "refaím"
+    }
+   ]
+  },
+  {
+   "sorszam": 43,
+   "strong": "H8034",
+   "heber": "שְׁמוֹ",
+   "lemma": "שֵׁם",
+   "igehely": "1Móz 4:26",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "semo"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "semó"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "smó"
+    }
+   ]
+  },
+  {
+   "sorszam": 44,
+   "strong": "H8034",
+   "heber": "וּבְשֵׁם",
+   "lemma": "שֵׁם",
+   "igehely": "Zsolt 116:13",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "úbesém"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "úvesém"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "uvsém"
+    }
+   ]
+  },
+  {
+   "sorszam": 45,
+   "strong": "H7497",
+   "heber": "לְהָרָפָא",
+   "lemma": "רָפָה",
+   "igehely": "1Krón 20:6",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "leharáfá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "leháráfa"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "leháráfá"
+    }
+   ]
+  },
+  {
+   "sorszam": 46,
+   "strong": "H1121",
+   "heber": "בְּנֵי",
+   "lemma": "בֵּן",
+   "igehely": "Jób 1:6",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "bené"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "bné"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "vené"
+    }
+   ]
+  },
+  {
+   "sorszam": 47,
+   "strong": "H7497",
+   "heber": "הָרָפָה",
+   "lemma": "רָפָה",
+   "igehely": "2Sám 21:16",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "háráfá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "hárafá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "háráfa"
+    }
+   ]
+  },
+  {
+   "sorszam": 48,
+   "strong": "H8415",
+   "heber": "תְּהֹמוֹת",
+   "lemma": "תְּהוֹם",
+   "igehely": "Péld 8:24",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "tehómót"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "tehomot"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "thómót"
+    }
+   ]
+  },
+  {
+   "sorszam": 49,
+   "strong": "H7843",
+   "heber": "לְשַׁחֵת",
+   "lemma": "שָׁחַת",
+   "igehely": "1Móz 6:17",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "lesahét"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "lessachét"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "lesachét"
+    }
+   ]
+  },
+  {
+   "sorszam": 50,
+   "strong": "H7585",
+   "heber": "שְׁאָלָה",
+   "lemma": "שְׁאוֹל",
+   "igehely": "Ézs 7:11",
+   "kategoria": "vegyes (nem nehéz)",
+   "variansok": [
+    {
+     "betu": "A",
+     "kiejtes": "sálá"
+    },
+    {
+     "betu": "B",
+     "kiejtes": "seálá"
+    },
+    {
+     "betu": "C",
+     "kiejtes": "seála"
+    }
+   ]
+  }
+ ]
+}

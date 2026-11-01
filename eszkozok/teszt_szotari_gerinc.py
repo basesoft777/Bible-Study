@@ -577,10 +577,12 @@ class Kulcsszavak(unittest.TestCase):
 
 
 class RagozottKiejtes(unittest.TestCase):
-    """A Kulcsszó cella: héberül a kiejtés jelölten a szótári alaké (a felhasználó döntése: „A: jelölt szótári alak”)."""
+    """A Kulcsszó cella: héberül (DT-F131y, 2026-10-30) a teljes ragozott szó saját gépi kiejtése, jelölve; pontozatlan
+    alaknál a szótári alak kiejtése, „szótári alak:” jelöléssel."""
 
     def test_heber_jelolt(self):
-        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT'), 'X (szótári alak: kárá)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT_LEMMA'), 'X (szótári alak: kárá)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'likró', 'TAHOT'), 'X (likró)')
 
     def test_gorog_ragozott(self):
         self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
@@ -592,8 +594,9 @@ class RagozottKiejtes(unittest.TestCase):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
         cella = LG.kulcsszo_cella(s)
-        self.assertIn('(szótári alak: kárá)', cella)
-        self.assertIn('(szótári alak: sém)', cella)
+        self.assertIn('(likró)', cella)   # a teljes szó: לִ + קְרֹא
+        self.assertNotIn('gépi', cella)   # DT430 kiegészítés: jelölés nélkül
+        self.assertIn('(besém)', cella)   # בְּ + שֵׁם
 
 
 class BdbRovidites(unittest.TestCase):
@@ -644,6 +647,31 @@ class Olvasoi1314(unittest.TestCase):
     def test_ures(self):
         self.assertIsNone(LG.olvasoi_13([]))
         self.assertIsNone(LG.olvasoi_14([]))
+
+class KaroliHelyette(unittest.TestCase):
+    """A 13. és a 14. szerep: mit ír a Károli a kulcsszó helyett (a felhasználó: „irjuk le azt is károli a motivom
+    kulcsszavai helyet jellemzően mit forditott”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_rejtett_helyettesitok(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        kulcs = {k: v for k, v in LG.SZK.kulcsszavak(sorai).items() if v}
+        rejt = LG.SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
+        hely = dict(LG.SZK.helyettesitok(sorai, [r[0] for r in rejt], [], kulcs))
+        self.assertEqual(sorted(hely['kiált']), ['2Móz 33:19', '2Móz 34:5'])
+        self.assertNotIn('név', hely)
+
+    def test_13_es_14_mondat(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        self.assertIn('Ahol nem a „hív” áll (3 helyen), ott a Károli jellemzően ezt írja helyette: „kiált” 2',
+                      LG.olvasoi_13(sorai))
+        m = LG.olvasoi_14(sorai)
+        self.assertIn('helyett jellemzően ezt írja: „kiált” (2 hely)', m)
+        self.assertIn('hacsak nem keres ezekre is: „kiált”', m)
+
 
 if __name__ == '__main__':
     unittest.main()

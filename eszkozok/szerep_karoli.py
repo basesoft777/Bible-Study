@@ -217,6 +217,49 @@ def kulcsszavak(sorai, arany=KULCS_ARANY, tabla=None, parositas=None):
     return ki
 
 
+def strongjai(sorai, szo):
+    """A motívumsorok gerinc-Strongjai, amelyekre a Károli–Strong párosításban a `szo` (szótári alak) párosul."""
+    tabla = szotari_alakok()
+    par = parok([s['igehely'] for s in sorai])
+    return {st for s in sorai for hu, st in par.get(s['igehely'], []) if st in _komb(s) and egyezik(hu, szo, tabla)}
+
+
+HELYETTESITO_TILTOTT = {'az', 'egy', 'és', 'is', 'nem', 'te', 'ti', 'ő', 'ők', 'én', 'mi'}
+
+
+def helyettesitok(sorai, helyek, kizart, kombonkent=None, strongok=None):
+    """[(szótári alak, [igehely, …])]: a megadott motívumhelyeken mivel fordít a Károli a motívum szava helyett — a
+    Károli–Strong párosításban a hely saját gerinc-Strongjaira párosuló szavak, ennek híján a `karoli_szo` szavai; a
+    `kizart` kulcsszavakkal és a hely saját kombinációjának kulcsszavaival (`kombonkent`: {kombináció: [kulcsszó]})
+    egyező szavak nélkül. Gyakoriság szerint (a felhasználó, 2026-10-30: „irjuk le azt is károli
+    a motivom kulcsszavai helyet jellemzően mit forditott”)."""
+    helyek = set(helyek)
+    tabla = szotari_alakok()
+    par = parok(sorted(helyek))
+    gyujt = collections.OrderedDict()
+    for s in sorai:
+        h = s['igehely']
+        if h not in helyek:
+            continue
+        k = _komb(s)
+        cel = strongok if strongok else k  # `strongok`: csak az ezekre párosuló szavak (pl. a leggyakoribb szó Strongjai)
+        szok = [hu for hu, st in par.get(h, []) if st in cel] or szavak(s.get('karoli_szo'))
+        for w in szok:
+            if any(egyezik(w, kw, tabla) for kw in list(kizart) + list((kombonkent or {}).get(k, []))):
+                continue
+            l = lemma(w, tabla)
+            if len(l) < 2 or l in HELYETTESITO_TILTOTT:
+                continue
+            if h not in gyujt.setdefault(l, []):
+                gyujt[l].append(h)
+    # a ragozott maradék a rövidebb, legalább 3 betűs alakba olvad (*seolban* → *seol*, *alvilágnál* → *alvilág*)
+    for l in sorted(gyujt, key=len, reverse=True):
+        alap = next((m for m in gyujt if m != l and len(m) >= 3 and l.startswith(m)), None)
+        if alap:
+            gyujt[alap] += [h for h in gyujt.pop(l) if h not in gyujt[alap]]
+    return sorted(gyujt.items(), key=lambda x: (-len(x[1]), x[0]))
+
+
 def vers_strongok():
     """{igehely: Strong-halmaz} a TAHOT és a TAGNT soraiból (a kulcs a Károli-vers)."""
     if 'strong' not in _CACHE:
