@@ -130,3 +130,25 @@ Alap: az `origin/main` beolvasztva (`a4122290`, #517–#531). Ugyanaz a szkript 
 **Nyitva marad (a végén ⛔-ként jelentve):**
 - **A** — az ALVIL-001 59 sorának kitöltése (`lexikon_szotar`=BDB, `lexikon_entry_id`=H7585, `jelentes_szam` a BDB saját példahelyéből). Ez a kanonikus `adat/elofordulasok.tsv` 59 sorának írása, a brief viszont kizárja („Nincs benne: adatjavítás”; 4. elfogadási feltétel 7.: az `elofordulasok.tsv` nem változik). Ezért nem itt történik. Amíg nem kész, a 18. és a 19. szabály a main-en 59–59 SÉRTÉS-t ad, és a #148 nem mergelhető.
 - **(iii)** — a „hiányzó = jelölés” egyenlőség a mért adaton nem tartható (ALVIL 4/0, ISTENTISZT 1/0), és a mérés laponként teljes renderelést kíván, ami az E1 lépésbe nem fér. A 0. javaslat második ága szerint: a (iii) nem SÉRTÉS-szabály. Nyitott tétel lesz (N-F148a), a mérőszkript (`naplok/F148_meres.py --forditas`) adja a JELENTÉS-t.
+
+## 1. A gerinc-kapcsoló megfordítása (F148.1)
+
+A `SZOTARI_GERINC` alapból be; a kivétel a `funkcio_kapcsolok.tsv` `kivetel` sora (7 motívum, l. 0.6). Elfogadás 1.: a 8 lexikonlap és a 6 törzscikk repón kívül renderelve a változás előtt és után bájtra azonos (14/14, `cmp`). Elfogadás 2.: `teszt_szotari_gerinc.py` `test_uj_motivum_kapcsolobejegyzes_nelkul`.
+
+## 2. Ellenőrző-szabályok (F148.2)
+
+A 18–21. szabály a repón (ág-állapot): 18. SÉRTÉS 59, 19. SÉRTÉS 59 (mind az ALVIL-001 H7585-sora, ⛔ A), 20. RENDBEN, 21. RENDBEN. A 19. kivétellistás JELENTÉS-e: ANTROP 8, HAMART 52, HODIT 33, KIRALY 5, MENNY 9, TEREMT-001 42, TEREMT-002 3. A négy szabály egy commitban (közös segédfüggvények és kivétellista-olvasás), a brief tételenkénti commitjától eltérve.
+
+`scope=adat/elofordulasok.tsv, adat/funkcio_kapcsolok.tsv, lexikon/*.md | forras=eszkozok/ellenoriz.py | ts=2026-11-01`
+
+## 3. A szakaszcímke gépi levezetése (F148.3)
+
+`eszkozok/szakasz_cimke_levezet.py`. **Regresszió:** ISTENTISZT-001 33/33, ALVIL-001 13/13 levezetett szakasz azonos a kézi leképezéssel (`naplok/F148_levezetes_ISTENTISZT-001.tsv`, `naplok/F148_levezetes_ALVIL-001.tsv`).
+
+Két mért lelet a megvalósítás közben, mindkettő adatból feloldva, választás nélkül:
+- **A binyan.** A H7121 `2.c` a BDB-ben a Qal és a Niph'al alatt is áll; a `jelentes_szam` binyant nem hordoz. Az eszköz a vers héber morfológiájából (`konkordancia/Macula_heber_*.tsv` `morf`, `V`+törzsbetű) szűkít, csak egyértelmű esetben; különben J2. Az ISTENTISZT-001 21 `2.c` sora így Qal.
+- **A Macula `karoli` oszlopa elavult.** Az F17-ben (2026-10-18) a #117/#146 előtti versmegfeleltetéssel készült: az Ézs 64:6 MT ott Károli 64:7, a mai `Karoli_versmegfeleltetes.tsv`-ben 64:6 (a TAHOT és az `elofordulasok.tsv` is 64:6). Az eszköz ezért a Macula MT-hivatkozását (`ref`) a mai versmegfeleltetésen át kulcsolja, a `karoli` oszlopot csak a könyv azonosítására használja. A Macula-táblák újragenerálása nem e feladaté; javasolt nyitott tétel (N-F148b).
+
+Jelzések a többi motívumon (tájékoztató, a #123 bemenete): HAMART-001 — J4 binyan-alakú `jelentes_szam` (`Qal pass. ptc.`, `Pi'él`, `Hif'íl` …, 13 sor), J2 `Nif'ál / Hif'íl`, J1 négy helyen (a BDB-példa más pontra mutat), J7 kettő; KIRALY-001 — J7 („pl. Melkisédek”: az első glossza nem glossza). A `--ir` nem futott: a #148 nem ír adatot (elfogadás 7.).
+
+`scope=adat/elofordulasok.tsv (ISTENTISZT-001, ALVIL-001, HAMART-001, KIRALY-001) + adat/szotar_szakasz_cimke.tsv + adat/bdb_*.tsv + konkordancia/Macula_heber_*.tsv + konkordancia/Karoli_versmegfeleltetes.tsv | forras=eszkozok/szakasz_cimke_levezet.py | ts=2026-11-01`
