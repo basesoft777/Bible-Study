@@ -141,6 +141,8 @@ Bemenetek az M2-kor: `adat/forditasok.tsv` sha256 `7c43b398dfa3` (a main szerint
 
 **Lexikon:** a 23 Strong `bdb_szakasz_hu.tsv`-sorai változtak; a lexikonlapjuk és a BDB-nézet újragenerálást kér. A #144 nem generál: a #152-vel összehangolva történik (orkesztrátor, 2026-11-01).
 
-## M3 — zárás ⛔
+## M3 — zárás (2026-11-01)
 
-A felhasználó átnézi a változott sorok mintáját (az M0 4. pontja és a fenti M2-táblázat). Utána a brief `lezarva`.
+A felhasználó átnézte a változott sorok mintáját: az orkesztrátor bemutatta a négy valódi hiba (H0001, H2199, H5027, H7043) előtte–utána mintáját, és elmagyarázta, hogy a lapon a jelölő külön címke. A felhasználó válasza szó szerint: „akkor mehet” (2026-11-01, az orkesztrátor chatjében; az orkesztrátor `local_2bdbd92d` üzenetében idézve). Az M3 elfogadva, a brief `lezarva`.
+
+**Nyitva marad (a #144-en kívül):** a 23 Strong lexikonlapjának és a BDB-nézetnek az újragenerálása (a #549 után, összehangolva); a teljes újragenerálás (N-F131f, a DT423 sorrendje szerint az N-F131g után; a szakaszos típuson az új szabály 101 Strongot érint). A `bont.py` műterméke nem kap N-tételt (nem volt döntés tárgya).
