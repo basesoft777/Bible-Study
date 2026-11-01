@@ -55,6 +55,51 @@ class Jelol(unittest.TestCase):
     def test_ures(self):
         self.assertEqual(BR.jelol(None), '')
 
+    def test_javitott_alak_is(self):
+        # DT-F131y: a sorrend-javítás után a geres a betű után áll
+        u = BR.jelol('ק׳ בְּשֵׁם י׳ x', CIMSZO, 'ק')
+        self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> בְּשֵׁם', u)
+        self.assertIn('<abbr class="rovidites" title="%s">י׳</abbr> x' % BR.JAHVE_CIM, u)
+        self.assertEqual(BR.jelol('לְשׁ׳ x', CIMSZO, 'ק'), 'לְשׁ׳ x')     # többbetűs: nem egybetűs rövidítés
+
+
+class HeberSorrend(unittest.TestCase):
+    JAV = {'H7121': [('׳ק י ׳בְּשֵׁם', 'ק׳ בְּשֵׁם י׳'), ('גְּדוֺל בְּקוֺל', 'בְּקוֺל גְּדוֺל')]}
+
+    def test_csere_betu_szerint(self):
+        u = BR.heber_sorrend_javit('c. ׳ק י ׳בְּשֵׁם hívni, és גְּדוֺל בְּקוֺל.', 'H7121', self.JAV)
+        self.assertEqual(u, 'c. ק׳ בְּשֵׁם י׳ hívni, és בְּקוֺל גְּדוֺל.')
+
+    def test_strong_kitoltes(self):
+        self.assertEqual(BR.heber_sorrend_javit('גְּדוֺל בְּקוֺל', 'H7121', self.JAV), 'בְּקוֺל גְּדוֺל')
+        self.assertEqual(BR.heber_sorrend_javit('גְּדוֺל בְּקוֺל', 'H0001', self.JAV), 'גְּדוֺל בְּקוֺל')
+
+    def test_heber_betuvel_hataros_nem(self):
+        sz = 'וּגְּדוֺל בְּקוֺל'
+        self.assertEqual(BR.heber_sorrend_javit(sz, 'H7121', self.JAV), sz)
+
+    def test_tabla(self):
+        # a generált tábla javitva sorai betöltődnek; a valodi_sorrend és a jelolt_marad nem
+        t = BR.sorrend_javitasok()
+        self.assertIn(('גְּדוֺל בְּקוֺל', 'בְּקוֺל גְּדוֺל'), t.get('H7121', []))
+        self.assertNotIn('׳ק י ׳בְּשֵׁם', dict(t.get('H7121', [])))
+
+
+class Izolal(unittest.TestCase):
+
+    def test_futam_utan_szam(self):
+        self.assertEqual(BR.izolal('יִקְרָא 1Móz 2:19'), 'יִקְרָא‎ 1Móz 2:19')
+        self.assertEqual(BR.izolal('׳י, 2Sám 7:1'), '׳י‎, 2Sám 7:1')
+        self.assertEqual(BR.izolal('יִקְרָא <a href="/v">1Móz 2:19</a>'), 'יִקְרָא‎ <a href="/v">1Móz 2:19</a>')
+
+    def test_nem_szam_utan_valtozatlan(self):
+        for sz in ('יִקְרָא hívni', 'Gen 2:19 יִקְרָא', 'יִקְרָא Gen 2:19'):
+            self.assertEqual(BR.izolal(sz), sz)
+
+    def test_idempotens(self):
+        egyszer = BR.izolal('יִקְרָא 1Móz 2:19')
+        self.assertEqual(BR.izolal(egyszer), egyszer)
+
 
 if __name__ == '__main__':
     unittest.main()
