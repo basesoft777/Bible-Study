@@ -51,7 +51,7 @@ A szómód lapjának 422 px-es teteje a nézetablak 52%-a (betekintés kb. féli
 | **E4** | M4-ben nem mértem újra (M1–M3 mérte) |
 | **E5** | M4-ben nem mértem újra (M3 mérte, 2. szakasz); a mérés világos rendszertémával futott, a lap világos |
 | **E6** | a beolvasztás nem okozott új piros tesztet (7. szakasz) |
-| **E7** | két „törik” sor nem javult (görgetődoboz, kilógó táblák): DT-F134p, DT-F134q |
+| **E7** | az M4 mérésekor két „törik” sor nem javult (görgetődoboz, kilógó táblák); a DT-F134p/q megvalósítása után javult (6.1) |
 
 ## 4. Összevetés a #60 pilottal, blokkonként
 
@@ -125,6 +125,28 @@ Ezek kis, elrendezési pontok; a felhasználó döntheti el, kellenek-e (a M5 el
 - **DT-F134q** — szómódban a lapon belüli két 340 px-es `.gordul` doboz (BDB angol, BDB magyar nyers): görgetés a görgetésben, kis képernyőn különösen. (a) a lapban a `.gordul` magasságkorlátja feloldva (a lap maga görget) · (b) a két nyers BDB-blokk alapból csukott `details` · (c) marad. **Javaslat: (a)**, csak a részletek lapján belül (a nem-fejezet lapokon a korlát marad).
 
 Mindkettő a brief `ir` mezőjén belüli CSS-változás, blokktartalom nem változik. Az 5. szakasz (a)–(c) pontja nem igényel külön DT-tételt, ha a felhasználó egyszerűen jelzi, melyik kell.
+
+### 6.1 A döntés és az újramérés (DT-F134p, DT-F134q; 2026-11-01)
+
+**A felhasználó döntése** (az orkesztrátoron át, 2026-11-01; egy korábbi, összevont jóváhagyását visszavonta, majd tételenként újra döntött): „javaslatod szerint” — mindkét tételben az (a). Megvalósítás: F134.19 (`02c6973b`). A `_tabla()` (`blokkok.py`) a táblát egy `tabla-doboz` burkolóba teszi; a `.reszletek .tabla-doboz` vízszintesen görget (`overflow-x: auto`), a `.reszletek .gordul` magasságkorlátja feloldva (a lap görget). A burkoló a részletek lapján kívül semleges blokk; a blokkok tartalma nem változott. `SABLON_VERZIO = 'f134-m4a'`.
+
+*Módszer:* mint az 1. szakaszban (headless Chrome, asztali emuláció, szerver 127.0.0.1:8799 a munkafa kódjával, ugyanazzal a DB-vel); szkript: `naplok/OLVASO_ALAPNEZET_M4/m4_ujrameres_pq.py`, nyers adat: `meres_pq.json`. 900 px alatt a ⤢ (teljes nézet) után is mérve. Proveniencia: `scope=olvaso_szerver 127.0.0.1:8799 @02c6973b (sablon_verzio f134-m4a) | forras=bongeszo-meres | ts=2026-11-01`.
+
+| Szélesség, jelenet | A lap teteje | A lap vízszintes túlfolyása | Kilógó tábla | Belső görgetődoboz | Saját dobozában görgető tábla (többlet px) | Teljes nézet (teteje / magassága) |
+|---|---|---|---|---|---|---|
+| 375, szómód (1Móz 1:3, H0216) | 422 | **0** (volt: 118) | **0** (volt: 2) | **nincs** (volt: 2 × `.gordul` 340 px) | `szo.ubs_dbh` +136, `szo.oshl` +131 | 56 / 756 px (812 px-es nézetablak) |
+| 375, versmód (1Móz 1:3) | 422 | **0** (volt: 41) | **0** (volt: 3) | nincs | `vers.eredeti` +28, `vers.macula_morf` +22, `vers.ubs` +59 | 56 / 756 |
+| 375, versmód (Ez 37:12) | 422 | **0** (volt: 147) | **0** (volt: 3) | nincs | `vers.par` +7, `vers.eredeti` +91, `vers.macula_morf` +95, `vers.ubs` +165 | 56 / 756 |
+| 768, szó / vers / Ez 37:12 | 532 | 0 | 0 | nincs | — | 56 / 968 (1024 px) |
+| 920, szómód | 86 (oldalblokk) | **0** (volt: 93) | 0 | **nincs** | `szo.ubs_dbh` +112, `szo.oshl` +107 | — |
+| 920, versmód / Ez 37:12 | 86 / 82 | **0** (volt: 17 / 123) | 0 | nincs | +4…+141 (2–3 tábla) | — |
+| 1280, szó / vers / Ez 37:12 | 86 / 86 / 82 | 0 | 0 | nincs | — | — |
+
+Az oldal vízszintes túlfolyása mind a 12 jelenetben 0. A teljes nézet a ragadós sáv alatt (56 px) a nézetablak aljáig ér (DT-F134n), benne sincs túlfolyás és belső görgetődoboz. A 2. szakasz két „nem javult” sora (görgetődoboz, kilógó táblák) ezzel javult; az E7 teljesül.
+
+Képek (teljes nézet, a táblához, illetve a BDB-blokkhoz görgetve): `pq_szerver_vers_375.png`, `pq_szerver_ez37vers_375.png` (a tábla jobb oszlopa a saját dobozában vágódik, a lap nem), `pq_szerver_szo_375.png` (a nyers BDB-szöveg a lapban folyik, doboz nélkül), és ugyanezek 768 px-en.
+
+Egy mérési megjegyzés: az első futás első jelenetében (375 px, szómód, hideg szerver) a töredék a 2 s-os várakozáson belül nem érkezett meg, a lap zárva maradt; a meleg szerverrel megismételt futás a fenti. A `meres_pq.json` a második futásé.
 
 ## 7. Tesztek
 
