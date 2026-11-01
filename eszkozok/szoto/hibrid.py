@@ -373,7 +373,7 @@ _MAI_VEG = sorted({'játok', 'jétek', 'ják', 'jék', 'juk', 'jük', 'jatok', '
                    'öttek', 'tak', 'tek', 'ottam', 'ettem', 'öttem', 'tam', 'tem', 'ottál', 'ettél', 'öttél', 'tál', 'tél',
                    'ottunk', 'ettünk', 'öttünk', 'tunk', 'tünk', 'ott', 'ett', 'ött', 'unk', 'ünk', 'nak', 'nek', 'tok',
                    'tök', 'ok', 'ek', 'ök', 'om', 'em', 'öm', 'sz', 'ja', 'je', 'ta', 'te', 'i', 'ni', 'ani', 'eni', 'va',
-                   've', 'tad', 'ted', 'od', 'ed', 'öd', 'jon', 'jen', 'jön', 'jak', 'jek', 'janak', 'jenek', 'nék', 'nánk', 'nénk', 'nák'},
+                   've', 'tad', 'ted', 'od', 'ed', 'öd', 'jon', 'jen', 'jön', 'jak', 'jek', 'janak', 'jenek', 'jad', 'jed', 'jam', 'jem', 'nék', 'nánk', 'nénk', 'nák'},
                   key=len, reverse=True)
 _SZEMELYRAG = ('nak', 'nek', 'tok', 'tek', 'tök', 'ok', 'ek', 'ök', 'unk', 'ünk', 'om', 'em', 'öm')
 _HASONULT = re.compile(r'^(.*)(ss|zz|cc)(a|e|ák|ék|uk|ük|átok|étek|on|en|ön|anak|enek|unk|ünk|ad|ed|ál|él|ék|ák)$')
@@ -393,6 +393,20 @@ def _ige_to(c):
         if _VALTOZAT == 'A' and _lem(c) == c + 'ik':
             return c + 'ik'
         return c
+    return None
+
+
+_SZEMELYES = ('om', 'em', 'öm', 'sz', 'lak', 'lek', 'ja', 'je', 'juk', 'jük', 'nak', 'nek', 'od', 'ed', 'öd', 't')
+
+
+def _ige_to_j(c):
+    """A -j- jelű igealak töve: _ige_to, vagy ha az igei végződések (IGEI_ATTEST) hiányoznak, legalább három különböző
+    személyragos alak (magasztal: -om, -od, -sz, -lak, -ja, -juk, -t) és egyetlen névszói esetrag-alak sem (N-F94i)."""
+    r = _ige_to(c)
+    if r or len(c) < 4 or c in IGEKOTO or any((c + x) in KIS for x in _ESETRAG):
+        return r
+    if sum(1 for x in _SZEMELYES if (c + x) in KIS) >= 3:
+        return c + 'ik' if (c + 'ik') in KIS and c not in KIS else c
     return None
 
 
@@ -455,10 +469,13 @@ def _mai_ige(w2):
     if _VALTOZAT == 'B':
         return None
     for v in _MAI_VEG:
-        if w2.endswith(v) and len(w2) - len(v) >= 3 and not (
+        # -j- jelű felszólító/határozott ragozás (magasztal-játok, ad-ják): lazább igei igazolás; az -ja/-je csak
+        # mássalhangzós, legalább háromjegyű tőn (híja ↛ hí, veje ↛ ve, polyvája ↛ polyvá)
+        j = v[0] == 'j' and (v not in ('ja', 'je') or (len(w2) - len(v) >= 3 and w2[-len(v) - 1] not in _MGH))
+        if w2.endswith(v) and len(w2) - len(v) >= (2 if j else 3) and not (
                 v[0] == 't' and w2[-len(v) - 1] in _MGH) and not (
                 v in _SZEMELYRAG and w2[-len(v) - 1] in 'aáeé'):  # születte-nek ↛  # a -ta/-te/-tam … múlt mássalhangzós tőre jár (nevezete ↛ neveze)
-            r = _igekotovel(w2[:-len(v)], _ige_to)
+            r = _igekotovel(w2[:-len(v)], _ige_to_j if j else _ige_to)
             if r:
                 _NYOM.append(('M', v, None))
                 return r
