@@ -90,3 +90,20 @@
 - A `sablon.html` tokenjei és betűi a `KOZOS_TOKENEK.md` A változatára cserélve (világos és sötét mód a szabványos három blokkban): Source Serif 4 (cím),
   IBM Plex Sans (szöveg), IBM Plex Mono (adat), sugár 4px; méretskála 12/13/14/16/28 px. Tokennevek változatlanok, kiegészítve `--cim`, `--sugar`-ral
   (a #156 dashboarddal közös). Az artifact ugyanazon a linken frissítve (3. verzió). Nem ellenőrizve: a megjelenés böngészőben/telefonon (ArtifactCheck nem érhető el).
+
+### M3 kiegészítés — a forrás-tanulmány megtalálhatósága (a felhasználó pontosítása: „eddig csak a igeszakasz tanulmányok következtében megjelent egy fájlban. és talan a tanulmány is utal rá”)
+
+- A `motivumlog/PaRDeS_motivumok.md` valóban a tanulmányokból gyűjt (7. sor: a tanulmány 3/b. pontja, „Ismétlődő motívum korábbi tanulmányodból”); saját
+  küszöb-jelölése van (⭐ küszöb elérve / közel a küszöbhöz / megerősítve). A bejegyzésekben **fájlhivatkozás nincs** (egyetlen `genezis/…` vagy `ujszovetseg/…` út sem
+  szerepel), a forrás-tanulmány tehát az igehelyből **levezetve** keresendő.
+- Módszer (heurisztika, nem lekérdezés): a bejegyzés igehelyeit (1Móz, Róm, Zsid, 1Thessz) összevetve a `genezis/` és `ujszovetseg/` fájlnevekbe kódolt vers-tartományokkal
+  (23 igeszakasz-tanulmány; a `melyelemzesek/` és `tematikus_lezart/` fájlok témára épülnek, nem vers-tartományra, ezeket nem vettem be).
+- Eredmény: a kézi kulcsszó-index 81 sorából **77-nél** (95%) van legalább egy igehely, amely egy igeszakasz-tanulmány tartományába esik; a „Kulcsszavak részletesen”
+  31 `###` bejegyzéséből **28-nál**. Forrás nélkül marad (nincs lefedő tanulmány az idézett igehelyeken): *Ádám mint szövetségszegő* (csoport), *Nimród — történelmi
+  azonosítási kísérletek*, *Hágár mint tipológiai alak*. A 23 tanulmányból **19-ben** van „Ismétlődő motívum” jelzés (a 3/b szerinti visszautalás).
+- **Fenntartás:** a levezetés azt mondja meg, melyik tanulmány *tartalmazza* az idézett verset, nem azt, hogy a motívum *melyikből indult*. Egy bejegyzés több tanulmányra
+  is illeszkedhet (az „előfordulás-pár” két oldala két tanulmány). A kártyán ezért „tanulmány(ok), amely(ek) az igehelyet tárgyalja/tárgyalják” szerepeljen, linkkel, és a
+  3/b sor idézete, ha van; ahol a levezetés nem ad találatot, a kártya ezt kimondja (nem töltjük ki).
+- Küszöb-állapot szerinti sorrend: a kézi index soraiban **nincs** küszöb-jelölés (csak az „Emlékeztető küszöb” kézi blokkjában és a `###` bejegyzések fejében: 1 „küszöb elérve”,
+  2 „közel a küszöbhöz”, 1 „megerősítve” a fejekben; a 14 küszöb-közeli sor a blokkban). A sorrend tehát csak a küszöb-jelölt tételeknél (kb. 14–18) adható meg, a többi
+  „jelöletlen” csoport.
