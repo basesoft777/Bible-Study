@@ -189,6 +189,25 @@ class Megjelenites(unittest.TestCase):
         self.assertEqual(sorted(t), ['a', 'b'])
         self.assertEqual(h, ['c'])
 
+    def test_jelolo_levag(self):
+        # a kibontott szakasz idézete nem ismétli a címke jelét („`3` — név…” után „> 3 név…”)
+        self.assertEqual(LG.jelolo_levag('3 név, mint Isten megjelölése', '3'), 'név, mint Isten megjelölése')
+        self.assertEqual(LG.jelolo_levag('2. a. rendszerint személyé', '2.a'), 'rendszerint személyé')
+        self.assertEqual(LG.jelolo_levag('c. hívni ׳י nevével', 'Qal 2.c'), 'hívni ׳י nevével')
+        self.assertEqual(LG.jelolo_levag('1. nevet adni', '1'), 'nevet adni')
+        self.assertEqual(LG.jelolo_levag('b. = hírnév', '2.b'), '= hírnév')
+        # nem a saját jele, névelő, igehely, üres maradék: változatlan
+        self.assertEqual(LG.jelolo_levag('4 hamis istenekről', '3'), '4 hamis istenekről')
+        self.assertEqual(LG.jelolo_levag('a név ereje', '2.a'), 'a név ereje')
+        self.assertEqual(LG.jelolo_levag('1Móz 4:26 szerint', '1'), '1Móz 4:26 szerint')
+        self.assertEqual(LG.jelolo_levag('3 ', '3'), '3 ')
+
+    def test_kibontott_idezet_jel_nelkul(self):
+        a = self._hu_adat('illeszkedik')
+        szov = '\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 55:13', '', strong='H8034', entry='')])[0])
+        self.assertIn('> = emlékjel **Ézs 55:13**', szov)
+        self.assertNotIn('> 5 ', szov)
+
     def test_meg_nem_talalt_pelda(self):
         uj, t, h = LG.kiemel('c. hívni: 1Móz 4:26', [('Jer 10:25', 'x')])
         self.assertNotIn('**', uj)
@@ -534,6 +553,124 @@ class ValodiAdat(unittest.TestCase):
 
     def test_szabaly17(self):
         self.assertEqual(E.szabaly17_szakasz_cimke(E.ALAPERTELMEZETT_ADAT).verdict, 'RENDBEN')
+
+
+class Kulcsszavak(unittest.TestCase):
+    """A 2. szakasz eleji kulcsszó-blokk (a felhasználó: „2. Szótári háttér előtt kellene egy motivum kulcsszavai blokk”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_istentiszt(self):
+        szov = LG.kulcsszavak_blokk('ISTENTISZT-001', self._sorai('ISTENTISZT-001'), {})
+        self.assertTrue(szov.startswith(LG.KULCSSZAVAK_CIM))
+        self.assertIn('| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', szov)
+        self.assertIn('| H7121 + H8034 | ', szov)
+        self.assertIn(' (kárá) + ', szov)
+        self.assertIn(' (sém) | ', szov)
+        self.assertIn('„segítségül”', szov)
+        self.assertIn('**Mit mutat ez a rész?**', szov)
+
+    def test_kapcsolo_nelkul_ures(self):
+        self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
+
+
+class RagozottKiejtes(unittest.TestCase):
+    """A Kulcsszó cella: héberül (DT-F131y, 2026-10-30) a teljes ragozott szó saját gépi kiejtése, jelölve; pontozatlan
+    alaknál a szótári alak kiejtése, „szótári alak:” jelöléssel."""
+
+    def test_heber_jelolt(self):
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT_LEMMA'), 'X (szótári alak: kárá)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'likró', 'TAHOT'), 'X (likró)')
+
+    def test_gorog_ragozott(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
+
+    def test_kiejtes_nelkul(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Z', '', 'TAHOT'), 'Z')
+
+    def test_1moz_4_26_cella(self):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
+        cella = LG.kulcsszo_cella(s)
+        self.assertIn('(likró)', cella)   # a teljes szó: לִ + קְרֹא
+        self.assertNotIn('gépi', cella)   # DT430 kiegészítés: jelölés nélkül
+        self.assertIn('(besém)', cella)   # בְּ + שֵׁם
+
+
+class BdbRovidites(unittest.TestCase):
+    """A BDB egybetűs rövidítései jelölve (a felhasználó: „nem lehetne jelölni a szövegben …, hogy a szó rövidités?”)."""
+
+    def test_jahve(self):
+        u = LG.bdb_rovidites_jelol('hívni ׳י nevével', 'H7121')
+        self.assertIn('<abbr class="rovidites" title="%s">י׳</abbr>' % LG.BDB_JAHVE_CIM, u)
+
+    def test_cimszo(self):
+        u = LG.bdb_rovidites_jelol('perfectum ׳ק 1Móz 11:9', 'H7121')
+        self.assertIn('title="a címszó: ', u)
+        self.assertIn('ק׳</abbr>', u)
+
+    def test_mas_betu_altalanos(self):
+        u = LG.bdb_rovidites_jelol('׳א x', 'H7121')
+        self.assertIn(LG.BDB_ROVIDITES_ALTALANOS, u)
+
+    def test_tobbbetus_szo_valtozatlan(self):
+        sz = '׳בשם x'
+        self.assertEqual(LG.bdb_rovidites_jelol(sz, 'H7121'), sz)
+
+
+class Olvasoi1314(unittest.TestCase):
+    """A 13. és a 14. szerep olvasói szövege: lelet számokkal, utána következtetés (a felhasználó: „mindig vanjuk le a
+    következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_13(self):
+        m = LG.olvasoi_13(self._sorai('ISTENTISZT-001'))
+        self.assertTrue(m.startswith('A motívum 33 igehelyén a Károli 17 különböző magyar szót használ.'))
+        self.assertIn('**Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 91%-án)', m)
+
+    def test_13_kuszob(self):
+        self.assertIn('változó szavakkal', LG.olvasoi_13(self._sorai('ALVIL-001')))
+
+    def test_14(self):
+        m = LG.olvasoi_14(self._sorai('ISTENTISZT-001'))
+        self.assertIn('33 helye közül 4 helyen', m)
+        self.assertIn('héberül a kárá és a sém, görögül az epikaleó', m)
+        self.assertNotIn('gerinc', m)
+        self.assertIn('1Kir 8:52 — „mikor téged segítségül hívnak”', m)
+        self.assertIn('a 46 találat 37%-a nem a motívumhoz tartozik', m)
+
+    def test_ures(self):
+        self.assertIsNone(LG.olvasoi_13([]))
+        self.assertIsNone(LG.olvasoi_14([]))
+
+class KaroliHelyette(unittest.TestCase):
+    """A 13. és a 14. szerep: mit ír a Károli a kulcsszó helyett (a felhasználó: „irjuk le azt is károli a motivom
+    kulcsszavai helyet jellemzően mit forditott”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_rejtett_helyettesitok(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        kulcs = {k: v for k, v in LG.SZK.kulcsszavak(sorai).items() if v}
+        rejt = LG.SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
+        hely = dict(LG.SZK.helyettesitok(sorai, [r[0] for r in rejt], [], kulcs))
+        self.assertEqual(sorted(hely['kiált']), ['2Móz 33:19', '2Móz 34:5'])
+        self.assertNotIn('név', hely)
+
+    def test_13_es_14_mondat(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        self.assertIn('Ahol nem a „hív” áll (3 helyen), ott a Károli jellemzően ezt írja helyette: „kiált” 2',
+                      LG.olvasoi_13(sorai))
+        m = LG.olvasoi_14(sorai)
+        self.assertIn('helyett jellemzően ezt írja: „kiált” (2 hely)', m)
+        self.assertIn('hacsak nem keres ezekre is: „kiált”', m)
 
 
 if __name__ == '__main__':

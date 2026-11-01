@@ -1,6 +1,6 @@
 # F123 — ALVIL-001: szakaszcímke-javaslat a szótári gerinchez (⛔, rögzítés előtt)
 
-*Modell: claude-opus-5-5 · 2026-10-29 · DT-F123g (a) · a javaslat a végrehajtóé, a döntés a felhasználóé (D50; DT-F121a (d): a címke a szóról szól, a hely funkcióját az 1. szakasz „Funkció” oszlopa adja). Az `adat/szotar_szakasz_cimke.tsv`-be jóváhagyás előtt semmi nem került.*
+*Modell: claude-opus-5-5 · 2026-10-29 · DT416 (a) · a javaslat a végrehajtóé, a döntés a felhasználóé (D50; DT-F121a (d): a címke a szóról szól, a hely funkcióját az 1. szakasz „Funkció” oszlopa adja). Az `adat/szotar_szakasz_cimke.tsv`-be jóváhagyás előtt semmi nem került.*
 
 ## 1. Az alap: melyik szakasz idézi a motívum helyeit
 

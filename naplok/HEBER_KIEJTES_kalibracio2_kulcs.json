@@ -1,0 +1,406 @@
+{
+ "proveniencia": "scope=adat/elofordulasok.tsv (ALVIL-001, ANTROP-001, HAMART-001, HODIT-001, ISTENTISZT-001, KIRALY-001, MENNY-001, TEREMT-001; héber Strongok) + konkordancia/TAHOT_kivonat.tsv | forras=naplok/HEBER_KIEJTES_kalibracio.py (seed=20261107) | ts=2026-10-30",
+ "megjegyzes": "A betűk forrása; a kalibráló oldalra NEM kerül.",
+ "kulcs": [
+  {
+   "sorszam": 1,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 2,
+   "forras": {
+    "A": "alternativa",
+    "B": "javaslat",
+    "C": "gepi"
+   }
+  },
+  {
+   "sorszam": 3,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 4,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 5,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 6,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 7,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 8,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 9,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 10,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 11,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 12,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 13,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 14,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 15,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 16,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 17,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 18,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 19,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 20,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 21,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 22,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 23,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 24,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 25,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 26,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 27,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 28,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 29,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 30,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 31,
+   "forras": {
+    "A": "alternativa",
+    "B": "alternativa2",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 32,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 33,
+   "forras": {
+    "A": "alternativa",
+    "B": "alternativa2",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 34,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 35,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 36,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 37,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 38,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 39,
+   "forras": {
+    "A": "alternativa",
+    "B": "alternativa2",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 40,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 41,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 42,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 43,
+   "forras": {
+    "A": "alternativa2",
+    "B": "gepi+javaslat",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 44,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 45,
+   "forras": {
+    "A": "alternativa2",
+    "B": "alternativa",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 46,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa2",
+    "C": "alternativa"
+   }
+  },
+  {
+   "sorszam": 47,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 48,
+   "forras": {
+    "A": "gepi+javaslat",
+    "B": "alternativa",
+    "C": "alternativa2"
+   }
+  },
+  {
+   "sorszam": 49,
+   "forras": {
+    "A": "alternativa",
+    "B": "alternativa2",
+    "C": "gepi+javaslat"
+   }
+  },
+  {
+   "sorszam": 50,
+   "forras": {
+    "A": "alternativa",
+    "B": "gepi+javaslat",
+    "C": "alternativa2"
+   }
+  }
+ ]
+}

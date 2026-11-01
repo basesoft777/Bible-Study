@@ -4,7 +4,7 @@
 
 *Döntés nélküli munkafájl: jelentéstartományt nem választ, prózát nem ír, motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`) és adattáblát (`adat/*.tsv`) nem ír (2b). A teljes sorok a mellékelt TSV-kben állnak, minden sor mellett a lekérdezés proveniencia-sorával; ez a fájl összegzés. A lekérdezések naplója: `naplok/F123_lekerdezesek.tsv` (`lekerdez.py --naplo F123`). Munkaszkript: `naplok/F123_adat_keszito.py` (alparancsok: `f108`, `szotar`, `proza`, `seol`).*
 
-*Hatókör (DT-F123b, A út): most csak az X.A fut; a szétválasztás (M1–M5), a `motivumok/ALVIL-001.md` forrás és a lexikongenerálás a #131 merge-e után (N-F11d).*
+*Hatókör (DT413, A út): most csak az X.A fut; a szétválasztás (M1–M5), a `motivumok/ALVIL-001.md` forrás és a lexikongenerálás a #131 merge-e után (N-F11d).*
 
 ## 1. A törzs összevetése a #108 eltérés-táblájával (2c)
 
@@ -119,9 +119,9 @@ A 7 hely egyike sem ALVIL-001-előfordulás. A dublett (2Sám 22 / Zsolt 18) nem
 
 Proveniencia: `scope=TAHOT-teljes: (H4194 | H8179[+H4194] | H0953 | H7845) ∩ (H7121 | H2199 | H6817 | H7768) egy versben, H7585 nélkül; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=2026-10-28T15:16Z`; kollokáció-naplók: `scope=TAHOT-teljes+TAGNT-teljes | … | strong=<pár> | n=… | ts=2026-10-28T15:15–16Z | csatorna=cli` (16 sor).
 
-## 5b. A Seól-scan ±2 verses ablakkal (DT-F123e (b))
+## 5b. A Seól-scan ±2 verses ablakkal (DT414 (b))
 
-**Döntés:** a felhasználó döntése (2026-10-28, az orkesztrátor chatjében, a session-üzenet idézete szerint): „(b) ±2 verses scan” — „A DT-F123e legyen (b): fusson le a ±2 verses ablakos scan, és az eredmény után én döntök a küszöbről.”
+**Döntés:** a felhasználó döntése (2026-10-28, az orkesztrátor chatjében, a session-üzenet idézete szerint): „(b) ±2 verses scan” — „A DT414 legyen (b): fusson le a ±2 verses ablakos scan, és az eredmény után én döntök a küszöbről.”
 
 **Lekérdezés:** horgony a fenyegetés-vers (H4194; H8179 csak H4194-gyel; H0953; H7845); az ablak a horgony ±2 verse azonos fejezetben; az ablakban mért mező a kiáltás (H7121, H2199, H6817, H7768), az istennév (H3068, H0410, H0430), a szabadulás-ige (H5337, H3467, H4422, H6403, H2502, H1350, H6299, H5927) és a H7585. Az átfedő ablakok egy önálló hely; a 2Sám 22 = Zsolt 18 dublett egy hely. A H7585-öt tartalmazó ablak nincs kiszűrve, hanem jelölve: ez a kontroll (a magversek megtalálása). Kimenet: `naplok/F123_adat_ALVIL-001_seol_ablak2.tsv` (`python naplok/F123_adat_keszito.py seol_ablak 2`).
 
@@ -137,7 +137,7 @@ Proveniencia: `scope=TAHOT-teljes: (H4194 | H8179[+H4194] | H0953 | H7845) ∩ (
 
 Proveniencia: `scope=TAHOT-teljes: horgony (H4194 | H8179[+H4194] | H0953 | H7845) egy versben; ablak ±2 vers, azonos fejezet; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=` a TSV soraiban.
 
-## 5c. A küszöb minősítése (DT-F123e ✅)
+## 5c. A küszöb minősítése (DT414 ✅)
 
 **Döntés:** orkesztrátor, a felhasználó felhatalmazásával (2026-10-28: „vedd át a döntést”). A mérce a legszigorúbb szint, a H5927 nélkül: gépi alap 3 hely. A küszöb (≥3) a minősített helyekre szól; jegyek: a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, a szabadulás ebből a veszélyből történik.
 
@@ -157,7 +157,7 @@ A teljes X.A újrafutott (`naplok/F123_adat_keszito.py f108 | szotar | proza | s
 
 | Kimenet | Eltérés |
 |---|---|
-| #108-összevetés | a jelöltsorok száma 74 → 77: a DT-F123e három `elutasítva` sora (`uj_J_sor_a_108_ota`); előfordulás-oldalon nincs eltérés |
+| #108-összevetés | a jelöltsorok száma 74 → 77: a DT414 három `elutasítva` sora (`uj_J_sor_a_108_ota`); előfordulás-oldalon nincs eltérés |
 | szótár | 1 sor: a `adat/bdb_vers_jelentes.tsv` H7585-sorainak száma 94 → 96 (a #131 F131.3.21 újragenerálása, DT381/DT382) |
 | szerepkínálat, hiányzó fordítások (13), próza-lefedettség, Seól-scanek, felmérés (kísérők, szomszédok, válasz-szavak) | nincs |
 | `naplok/F123_lekerdezesek.tsv` | az újrafutás lekérdezés-sorai hozzáfűzve (napló) |

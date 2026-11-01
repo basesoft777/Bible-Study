@@ -1,4 +1,4 @@
-# F123 ALVIL-001: a fordítási átadó lista (DT-F123h: külön Sonnet-menet, a #121 eszközével) | készítő: naplok/F123_forditas_atadas.py | proveniencia: scope=ALVIL-001 H7585+G0086 | forras=naplok/F123_adat_ALVIL-001_forditas_hiany.tsv + naplok/F123_adat_ALVIL-001_szotar.tsv (split) | ts=2026-10-29
+# F123 ALVIL-001: a fordítási átadó lista (DT417: külön Sonnet-menet, a #121 eszközével) | készítő: naplok/F123_forditas_atadas.py | proveniencia: scope=ALVIL-001 H7585+G0086 | forras=naplok/F123_adat_ALVIL-001_forditas_hiany.tsv + naplok/F123_adat_ALVIL-001_szotar.tsv (split) | ts=2026-10-29
 szotar	strong	entry_id	jelentes_szam	mezo	forras	forras_hossz	forras_sha1	hatas_a_lapon
 TBESG	G0086	G0086	teljes	forditas_hu	TBESG.txt	709	311f1da111	a szerepmátrix blokkja (2. szakasz)
 tW_szocikkek	H7585	kt/hades	—	forditas_hu	konkordancia/tW_szocikkek.tsv	2110	b3febf2ef236de3861ec8313ce9df19377051a8f	a szerepmátrix blokkja (2. szakasz)

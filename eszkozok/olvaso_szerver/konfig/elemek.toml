@@ -934,9 +934,10 @@ tulajdonsag = [
 id = "bdb-rovidites"
 nev = "BDB-rövidítés a szócikk-szövegben"
 csoport = "BDB-jelentésszerkezet"
-szelektor = ".jsz abbr[title]"
+szelektor = ".jsz abbr[title], abbr.rovidites"
 tulajdonsag = [
   { nev = "Aláhúzás színe", token = "muted" },
+  { nev = "Egybetűs rövidítés háttere (N-F131x)", token = "gold-soft" },
 ]
 
 [[elem]]
