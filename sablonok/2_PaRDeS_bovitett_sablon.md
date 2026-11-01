@@ -302,7 +302,6 @@ kiegeszites_BDB_arnyalat.md` 2. pont).
 
 - „Szentlélek" helyett mindig **„Szent Szellem"**
 - A Sod rétegnél „misztikus" helyett mindig **„spirituális"**
-- Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
 - **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
 - A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás

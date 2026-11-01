@@ -27,7 +27,6 @@ v10, tematikus v5, mélyelemzés v4)*
 Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A teljes szöveg a sablon-fájlokban és a memóriában érhető el.
 
 ## Nyelv és terminológia
-- Kiejtés minden görög/héber szó mellett
 - **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
 - Minden olvasói magyarázó szöveg **a lelettel kezdődik** (számok, konkrét szavak kiejtéssel, példahely), és **szabály szerinti következtetéssel zárul**. A következtetés determinisztikus, az adatból számolt szabály (küszöb, arány), a kódban (`eszkozok/olvasoi_kovetkeztetes.py`) és a lap üzemeltetői sorában rögzítve; új blokknál a függvényt oda kell felvenni. Belső szakszó (gerinc, szerep) nem kerül olvasói szövegbe: a motívum saját szavait nevezzük meg. *(A felhasználó: „mindig vanjuk le a következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”)*
 - „Szent Szellem", nem „Szentlélek"
