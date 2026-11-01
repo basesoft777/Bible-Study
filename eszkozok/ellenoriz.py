@@ -1141,7 +1141,7 @@ def szabaly17_szakasz_cimke(adat_dir):
 TAGOLATLAN = 'tagolatlan'  # DT-F148b (1): a `jelentes_szam` explicit erteke tagolatlan szocikknel (SEMA 2.2.2)
 KOTELEZO_MEZOK_19 = ('karoli_szo', 'lexikon_szotar', 'lexikon_entry_id', 'jelentes_szam')
 
-# 20. szabaly (N-F131a): a `jelentes_hu` a szorol szol, nem a hely funkciojarol. A minta a funkcio-ertelmezes
+# 20. szabaly (N62): a `jelentes_hu` a szorol szol, nem a hely funkciojarol. A minta a funkcio-ertelmezes
 # cimkeje; az igei „invokalni” a BDB *invoke* glosszaja (a szo jelentese), ezert csak a fonevi alak tiltott
 # (F148 0.4: az `invokál` minta 26 hamis talalatot adott).
 JELENTES_HU_TILTOTT = (
@@ -1270,9 +1270,9 @@ def szabaly19_kotelezo_mezok(adat_dir, elofordulasok, kivetel=None):
 
 
 def szabaly20_jelentes_hu(adat_dir, elofordulasok, kivetel=None):
-    """F148 (b) 20. (N-F131a): a `jelentes_hu` a szorol szol -- funkcio-ertelmezes cimkeje nem allhat benne
+    """F148 (b) 20. (N62): a `jelentes_hu` a szorol szol -- funkcio-ertelmezes cimkeje nem allhat benne
     (JELENTES_HU_TILTOTT, plusz a `tiltott_fordulatok.tsv` mintai). Gerincen SERTES, kivetellistan JELENTES."""
-    cim = '20. `jelentes_hu`: a szóról szól (F148, N-F131a)'
+    cim = '20. `jelentes_hu`: a szóról szól (F148, N62)'
     kivetel = gerinc_kivetelek(adat_dir) if kivetel is None else kivetel
     mintak = list(JELENTES_HU_TILTOTT) + [
         ('tiltott fordulat: %s' % t.get('magyar_alak', t['minta']), re.compile(t['minta'], re.I))
