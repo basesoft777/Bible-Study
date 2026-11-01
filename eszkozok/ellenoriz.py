@@ -1364,25 +1364,50 @@ def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
 
 
 
+KIEJTES_TANULMANY_MAPPAK = ('tematikus_lezart', 'genezis', 'ujszovetseg', 'melyelemzesek')
+
+
+def _kiejtes_fajlok(gyoker):
+    """A 22. szabaly hatokore: a lexikon/*_TUDOMANYOS.md es a tanulmanyok (CLAUDE.md forras-retege: a
+    tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/ kozvetlen .md fajljai; a naplok/ almappa es a
+    Konnyu_ellenorzes*osszesito* osszesitok nem; `# GENERALT:` fejleces fajl sem, mert az a lexikon-agon van)."""
+    ki = []
+    lex_dir = os.path.join(gyoker, 'lexikon')
+    if os.path.isdir(lex_dir):
+        ki += [os.path.join(lex_dir, n) for n in sorted(os.listdir(lex_dir)) if n.endswith('_TUDOMANYOS.md')]
+    for mappa in KIEJTES_TANULMANY_MAPPAK:
+        d = os.path.join(gyoker, mappa)
+        if not os.path.isdir(d):
+            continue
+        for n in sorted(os.listdir(d)):
+            ut = os.path.join(d, n)
+            if n.endswith('.md') and os.path.isfile(ut) and not ('osszesito' in n and n.startswith('Konnyu_ellenorzes')):
+                ki.append(ut)
+    return ki
+
+
 def szabaly22_kiejtes_hiany(adat_dir):
-    """F125 (JELENTES, nem gatol): a generalt lexikonlap (`*_TUDOMANYOS.md`) szakaszaiban hany heber/gorog szo
-    kap egyszer sem kiejtest az elso elofordulasnal (`kiejtes_szoveg.elemez`). Kozelites: a szakasz kesobbi
-    elofordulasa a mero szerint nem potolja az elso hianyat. A kiejtes-szabaly: sablonok/PaRDeS_gyorsreferencia.md."""
+    """F125 (JELENTES, nem gatol; DT-F125b): hany heber/gorog szo kap a szakaszban (ket `##`/`###` cim kozott)
+    egyszer sem kiejtest (`kiejtes_szoveg.elemez_szakaszonkent`) a `lexikon/*_TUDOMANYOS.md`-n es a tanulmanyokon
+    (`tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/`). Ha a szakasz barmelyik elofordulasa kap
+    kiejtest, nem jelez. A kiejtes-szabaly: sablonok/PaRDeS_gyorsreferencia.md."""
     cim = '22. Kiejtés nélküli héber/görög szó (F125)'
     gyoker = os.path.dirname(os.path.abspath(adat_dir))
-    lex_dir = os.path.join(gyoker, 'lexikon')
-    if not os.path.isdir(lex_dir):
-        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    fajlok = _kiejtes_fajlok(gyoker)
+    if not fajlok:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ és tanulmány-könyvtár')
     import kiejtes_szoveg as KSZ
     peldak, ossz = [], 0
-    for nev in sorted(os.listdir(lex_dir)):
-        if not nev.endswith('_TUDOMANYOS.md'):
+    for ut in fajlok:
+        with open(ut, encoding='utf-8') as f:
+            szoveg = f.read()
+        if szoveg.lstrip().startswith('# GENERÁLT:') and not ut.endswith('_TUDOMANYOS.md'):
             continue
-        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
-            hianyok = KSZ.elemez(f.read())
+        hianyok = KSZ.elemez_szakaszonkent(szoveg)
         ossz += len(hianyok)
         if hianyok:
-            peldak.append('%s: %d (pl. %s, sor %d)' % (nev, len(hianyok), hianyok[0][3], hianyok[0][0]))
+            peldak.append('%s: %d (pl. %s, sor %d)' % (os.path.relpath(ut, gyoker).replace(os.sep, '/'),
+                                                       len(hianyok), hianyok[0][3], hianyok[0][0]))
     return Sor(cim, 'JELENTÉS' if ossz else 'RENDBEN', ossz or None, peldak,
                megjegyzes='nem gátol; kézi részben a forrásban kell javítani')
 

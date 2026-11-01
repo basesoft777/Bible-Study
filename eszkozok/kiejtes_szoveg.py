@@ -239,6 +239,37 @@ def elemez(szoveg):
     return _bejar(szoveg.split('\n'), False)
 
 
+def elemez_szakaszonkent(szoveg):
+    """DT-F125b (a jóváhagyott K-szöveg): egy szó egy szakaszban (két `##`/`###` cím között) akkor hiányzik, ha a
+    szakaszban SEHOL nem kap kiejtést; ha bármelyik előfordulása (nem csak az első) kap, nem hiányzik. A
+    forrásidézet (BDB, Thayer, LSJ, TBESG) sorait kihagyja. Szókapcsolatnál a benne álló szavak külön kiejtése is
+    elég. Visszaadott elem, mint az `elemez`-nél: (sor, szakasz, rész, szó, ok, javasolt kiejtés), szakaszonként és
+    szavanként az első előfordulás sorával."""
+    sorok = szoveg.split('\n')
+    reszek = _sor_reszek(sorok)
+    elso = collections.OrderedDict()
+    van = collections.defaultdict(set)
+    for i, sor in enumerate(sorok):
+        gen, idezet, szakasz = reszek[i]
+        if idezet:
+            continue
+        for m in SZO.finditer(sor):
+            szo = m.group(0)
+            heber = bool(re.match(HEBER, szo))
+            kulcs = heber_kulcs(szo) if heber else alap(szo)
+            reszkulcsok = [heber_kulcs(w) for w in SZO_ELVALASZTO.split(szo)] if heber else [kulcs]
+            elso.setdefault((szakasz, kulcs), (i, m, gen, szo, reszkulcsok))
+            if _van_kiejtes(sorok, i, m):
+                van[szakasz].add(kulcs)
+                van[szakasz].update(reszkulcsok)
+    hiany = []
+    for (szakasz, kulcs), (i, m, gen, szo, reszkulcsok) in elso.items():
+        if kulcs in van[szakasz] or all(k in van[szakasz] for k in reszkulcsok):
+            continue
+        hiany.append((i + 1, szakasz, 'generált' if gen else 'kézi', szo, 'szakaszban egyszer sem', kiejtes(szo)))
+    return hiany
+
+
 def potol(szoveg):
     """(pótolt szöveg, a megmaradt hiányok listája)."""
     sorok = szoveg.split('\n')

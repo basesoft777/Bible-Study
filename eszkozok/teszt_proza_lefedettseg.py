@@ -126,6 +126,42 @@ class TesztSzabaly(Alap):
         s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
         self.assertEqual(s.verdict, 'RENDBEN')
 
+    def test_22_szakaszban_bar_egy_kiejtes_elég(self):
+        # DT-F125b: az elso elofordulas kiejtes nelkul, a masodik kiejtessel -> nincs jelzes (a regi kod jelzett)
+        self.ir('lexikon/T-001_TUDOMANYOS.md',
+                '## Rész\n\nA ἐπικατάρατος szó itt áll, majd ἐπικατάρατος (epikatáratosz) újra.\n')
+        s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
+        self.assertEqual(s.verdict, 'RENDBEN')
+
+    def test_22_szakaszban_egyszer_sem_jelez(self):
+        self.ir('lexikon/T-001_TUDOMANYOS.md',
+                '## Rész\n\nA ἐπικατάρατος szó, majd ἐπικατάρατος újra, kiejtés nélkül.\n')
+        s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
+        self.assertEqual(s.verdict, 'JELENTÉS')
+        self.assertEqual(s.n, 1)
+
+    def test_22_masik_szakasz_kiejtese_nem_potol(self):
+        self.ir('lexikon/T-001_TUDOMANYOS.md',
+                '## A\n\nἐπικατάρατος (epikatáratosz).\n\n## B\n\nἐπικατάρατος.\n')
+        s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
+        self.assertEqual(s.verdict, 'JELENTÉS')
+        self.assertEqual(s.n, 1)
+
+    def test_22_tanulmanyon_is_jelez(self):
+        os.makedirs(os.path.join(self.gy, 'tematikus_lezart'))
+        self.ir('tematikus_lezart/Teszt_tematikus.md', '## Rész\n\nA ἐπικατάρατος szó itt áll.\n')
+        s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
+        self.assertEqual(s.verdict, 'JELENTÉS')
+        self.assertIn('tematikus_lezart/Teszt_tematikus.md', ' '.join(s.peldak))
+
+    def test_22_tanulmany_naplo_es_osszesito_kimarad(self):
+        os.makedirs(os.path.join(self.gy, 'genezis', 'naplok'))
+        self.ir('genezis/naplok/x.md', '## R\n\nἐπικατάρατος.\n')
+        self.ir('genezis/Konnyu_ellenorzes_1-16_osszesito.md', '## R\n\nἐπικατάρατος.\n')
+        self.ir('genezis/Teszt_bovitett.md', '## R\n\nἐπικατάρατος (epikatáratosz).\n')
+        s = E.szabaly22_kiejtes_hiany(os.path.join(self.gy, 'adat'))
+        self.assertEqual(s.verdict, 'RENDBEN')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

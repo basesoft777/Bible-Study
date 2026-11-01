@@ -150,7 +150,7 @@ A felhasználó („a javaslat szerint”, az orkesztrátor-session idézetével
 ## F125.2 — eszköz és JELENTÉS-szabályok
 
 - `proza_lefedettseg.py`: új „csoportosan fedett” oszlop (a „N egyedi igehely” gyűjtő mondat, csak az előfordulásokra; ALVIL-001: 72 / megnevezve 15 / csoportosan fedett 57 / hiány 0). A mérő nem tudja, a gyűjtő mondat melyik igehelyeket fedi: csak darabszám szerint kezeli. A fedett darabszám a gyűjtő mondat N-jéig terjed (legfeljebb a prózában álló legnagyobb N, a többi név nélküli előfordulás hiány marad; javítás: ELLENOR_F125 1., F125.6).
-- `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát.
+- `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát. *(A DT-F125b óta nem érvényes: l. „DT-F125b — a 22. szabály”.)*
 - Tesztek: `teszt_proza_lefedettseg.py` (11, zöld) a két szabályt is lefedi; a briefben szereplő külön `teszt_ellenoriz_proza.py` nem készült (egy fájl, két téma).
 
 ## ⛔ A szövegjavaslatok
@@ -172,3 +172,9 @@ A fenti 57, 4, 192 és 77 szám az 1. tétel (F125.6) UTÁN újramérve, az ág 
 - 22. szabály: 192 jelzés; 23. szabály: 77 jelzés. `scope=python eszkozok/ellenoriz.py (teljes futás, a 22. és 23. szabály jelzésszáma; az eszköznek nincs szabályonkénti kapcsolója) | forras=lexikon/*_TUDOMANYOS.md (22.), motivumok/*.md és adat/*.tsv (23.) | ts=2026-11-01T16:52+01:00`
 
 A régi (F125.2) mérés: 22 → 192, 23 → 77, ugyanezzel a paranccsal a mai main-en; az F125.6 nem változtatta a 23. szabály jelzésszámát.
+
+## DT-F125b — a 22. szabály
+
+A felhasználó döntése (DT-F125b, 2026-11-01, az orkesztrátor-session továbbításával): „a) kód a szöveghez”. A 22. szabály (`eszkozok/ellenoriz.py` `szabaly22_kiejtes_hiany`) a jóváhagyott K-szöveghez igazítva: egy héber/görög szót akkor jelez, ha a szakaszban (két `##`/`###` cím között) SEHOL nem kap kiejtést; ha bármelyik előfordulása kap, nem jelez (`kiejtes_szoveg.elemez_szakaszonkent`). A hatókör a `lexikon/*_TUDOMANYOS.md` mellett a tanulmányok is: `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/` (a CLAUDE.md rétegtáblájának forrás-rétege; közvetlen `.md` fájlok, a `naplok/` almappa és a `Konnyu_ellenorzes*osszesito*` összesítők nélkül). Az F125.2 mérés (192) csak a `lexikon/` hatókörű volt.
+
+- Régi: 192 jelzés (lexikon, első előfordulás szerint). Új: 729 jelzés összesen, ebből a `lexikon/` hatókörön 176, a tanulmányokon 553. `scope=python eszkozok/ellenoriz.py (teljes futás, 22. szabály) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:24+01:00`
