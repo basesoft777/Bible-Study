@@ -165,8 +165,8 @@ Független ellenőr (`fuggetlen-ellenor`), jelentés: `naplok/ELLENOR_F12_*.md`.
 ## 6. Döntésnapló
 
 **DT-F12a — az összetett sor entry-tokenje és a H0922.** Kérdés: a `H8414+H0922` soron melyik token a `lexikon_entry_id`, és mi a tagolatlan H0922 sorsa?
-- (1) **entry = H8414, `jelentes_szam` = `1`**; a H0922 a gerincen a BDB saját példahelyeként jelenik meg (`fej`, tagolatlan), kutatói hozzárendelés nélkül; a `lexikon_hivatkozasok.tsv`-be a H0922 a #148 DT-F148b szerinti értékkel kerül;
-- (2) entry = H0922: a `jelentes_szam` a DT-F148b explicit értéke, a H8414 csak példahelyként;
+- (1) **entry = H8414, `jelentes_szam` = `1`**; a H0922 a gerincen a BDB saját példahelyeként jelenik meg (`fej`, tagolatlan), kutatói hozzárendelés nélkül; a `lexikon_hivatkozasok.tsv`-be a H0922 a #148 DT438 szerinti értékkel kerül;
+- (2) entry = H0922: a `jelentes_szam` a DT438 explicit értéke, a H8414 csak példahelyként;
 - (3) a sor két sorra bomlik (H8414, H0922), mindkettő saját `jelentes_szam`-mal. Ez a `gerinc_elem` = `tohu+bohu` páralakjával (SEMA 2.2, a T2 G5-döntése) ütközik.
 
 *Javaslat: (1).* A H8414 tagolt; a BDB maga mindhárom verset a `-/1` alatt idézi, és a H0922 szócikke szerint a *bohu* „mindig a תֹּהוּ szóval” áll. A (3) a formulaikus azonosságot (`azonossag_tipusa` = `formulaikus`) bontaná szét.

@@ -1,0 +1,79 @@
+name: jelolt-eloszures
+
+# F150 (DT-F150a): a dontesre varo elofordulas-jeloltek gepi elo-szurese (atnezesi sorrend, NEM dontes):
+# naplok/ELOSZURES_<ID>.tsv. Determinisztikus, modell, API-kulcs es koltseg nelkul; a szabaly csak
+# `formulaikus` hordozon ad `valoszinu_ki`-t. A kimenet commit a main-re, a `gerinc-terkep`
+# (gerinc_terkep.yml) mintajara: a main-t ruleset vedi, az egyetlen bypass a `pardes-feladatok`
+# GitHub App, a push az o tokenjevel megy; a workflow sajat GITHUB_TOKEN-je csak olvas.
+# Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY (ugyanazok, mint a feladatok.yml-ben).
+#
+# Az App-tokennel vegzett push uj futast indit, ezert a gep sajat commitjanak futasa a `[bot]` actor
+# miatt kimarad; a kimenet (naplok/) ezenkivul nincs a `paths:` listaban, es a generalas idempotens
+# (a `ts` a bemenet utolso commitjanak ideje, nem a futase; nincs diff -> nincs commit), tehat
+# nincs vegtelen hurok.
+#
+# A workflow agon nem fut le irassal; a probaja `workflow_dispatch` a merge utan.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'adat/jeloltek.tsv'
+      - 'adat/elofordulasok.tsv'
+      - 'adat/motivumok.tsv'
+      - 'adat/grammatikai_strongok.tsv'
+      - 'konkordancia/TAHOT_kivonat.tsv'
+      - 'konkordancia/TAGNT_kivonat.tsv'
+      - 'konkordancia/Karoli_1908.tsv'
+      - 'eszkozok/jelolt_eloszures.py'
+      - '.github/workflows/jelolt_eloszures.yml'
+  schedule:
+    - cron: '37 4 * * 1'      # tartalek: hetfo 04:37 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jelolt-eloszures
+  cancel-in-progress: false
+
+jobs:
+  eloszures:
+    if: ${{ !endsWith(github.actor, '[bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: App-token (pardes-feladatok)
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.FELADATOK_APP_ID }}
+          private-key: ${{ secrets.FELADATOK_APP_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Elo-szures generalasa
+        run: python eszkozok/jelolt_eloszures.py --kimenet naplok
+
+      - name: Gepi commit, ha van valtozas
+        run: |
+          if [ -z "$(git status --porcelain -- 'naplok/ELOSZURES_*.tsv')" ]; then
+            echo "Az elo-szures valtozatlan."
+            exit 0
+          fi
+          git config user.name "pardes-feladatok[bot]"
+          git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
+          git add 'naplok/ELOSZURES_*.tsv'
+          printf 'ELOSZURES frissítés (gép)\n' > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          git pull --rebase origin main
+          git push origin HEAD:main

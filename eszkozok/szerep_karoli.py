@@ -67,6 +67,13 @@ def kapcsolo_motivumok(kapcsolo, ut=None):
                      and r.get('allapot') == 'aktiv')
 
 
+def kapcsolo_kivetelek(kapcsolo, ut=None):
+    """Azok a motívum-id-k, amelyeken az alapból bekapcsolt funkció (a szótári gerinc, DT-F148a) `kivetel`
+    állapotú: a még nem migrált motívumok. A generátor és az `ellenoriz.py` ugyanezt hívja."""
+    return frozenset(r['id'] for r in funkcio_kapcsolok(ut) if r['kapcsolo'] == kapcsolo and r['id'] != '*'
+                     and r.get('allapot') == 'kivetel')
+
+
 def szpa_aktiv():
     """A SzPA-join (konkordáns alternatíva) állapota: igaz, ha a kapcsoló `aktiv` (vagy nincs sora)."""
     r = next((x for x in funkcio_kapcsolok() if x['kapcsolo'] == 'SZPA_JOIN' and x['id'] == '*'), None)

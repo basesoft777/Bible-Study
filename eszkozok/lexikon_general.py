@@ -2491,7 +2491,9 @@ def szo_felsorolas(tokenek):
 # a sorrendjében kapcsolja be (DT-F123g (a)): ALVIL-001.
 # A motívumonkénti bekapcsolás adat (`adat/funkcio_kapcsolok.tsv`, `SZOTARI_GERINC`), nem kódbeli lista (ISTENTISZT-001
 # arany lap, 2026-10-29: a blokk-szintű változások motívum-id szerinti kivétel nélkül; a tesztek felülírhatják).
-SZOTARI_GERINC_MOTIVUMOK = SZK.kapcsolo_motivumok('SZOTARI_GERINC')
+# F148 (DT-F148a): a gerinc alapból be van kapcsolva; a még nem migrált motívum sora `kivetel` (a #123 a migrációkor
+# `aktiv`-ra állítja). Az `ellenoriz.py` 18–21. szabálya ugyanezt a függvényt hívja.
+GERINC_KIVETEL_MOTIVUMOK = SZK.kapcsolo_kivetelek('SZOTARI_GERINC')
 
 SZAKASZ_CIMKE_FAJL = 'adat/szotar_szakasz_cimke.tsv'
 BDB_SZAKASZOK_FAJL = 'adat/bdb_szakaszok.tsv'
@@ -2525,7 +2527,7 @@ class GerincHiba(ValueError):
 
 
 def gerinc_aktiv(motivum_id):
-    return motivum_id in SZOTARI_GERINC_MOTIVUMOK
+    return bool(motivum_id) and motivum_id not in GERINC_KIVETEL_MOTIVUMOK
 
 
 def gerinc_utvonal_vag(utvonal):
