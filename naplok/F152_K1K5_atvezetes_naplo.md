@@ -62,3 +62,48 @@ Alap: `motivumok.tsv` `folerendelt_fogalom` („istentisztelet/imádság által�
    változattal írom.
 6. A lap újragenerálása, és utána egy második generálás: annak nulla diffet kell adnia (E28). Végül
    `ellenoriz.py` és `ellenorzes/futtat.py`.
+
+## 5. DT-F152b döntés után — újramérés (adatírás előtt)
+
+A felhasználó döntése (2026-11-01, az orkesztrátoron át): „Csak ahol JHVH áll” — a K4 szó szerint (a). A
+`DONTESEK.md` DT-F152b sora ✅. Adat még nem változott.
+
+**Számok** (scope=adat/elofordulasok.tsv, id=ISTENTISZT-001, n=33 | forras=TAHOT_kivonat.tsv
+(`naplok/F152_k4_meres.py`) | ts=2026-11-01T19:08Z): kikerül 4 (K1/K2) + 7 (DT-F152b) = 11 sor →
+**22 előfordulás, 16 ószövetségi, 6 újszövetségi**. A megmaradó 6 ÚSZ-sor (Róm 10:13; 1Kor 1:2;
+ApCsel 2:21; 9:14, 21; 22:16) mindegyikében ὄνομα áll.
+
+**Kapcsolatok** (`adat/kapcsolatok.tsv`, ISTENTISZT-001: 25 sor): a DT-F152b miatt mindenképp kiesik
+4 sor: 33 (Zsolt 105:1 → 1Krón 16:8), 34 (Zsolt 105:1 → Ézs 12:4), 35 (Jer 10:25 → Zsolt 79:6),
+36 (Sof 3:9 → Zak 13:9). A K1/K2 miatt kiesik 2 (19, 20). A DT-F152c négy sora (17, 18, 21, 23) ettől
+nem változik, a kérdés ugyanaz. Végeredmény: 19 sor, ha (b), 15 sor, ha (a).
+
+**Más táblák:** az `auditok.tsv` 228. és 231. sora (Ézs 64:6 adhoc lekérdezés) napló, marad. Az
+`lxx_dontesek.tsv` LD003 (Ézs 12:4, βοάω) versszintű LXX-döntés, motívum-id oszlopa nincs, marad;
+a Kivonat LXX-mondatából viszont kikerül. A `jeloltek.tsv`-ben a hét sor (38, 50–54, 631) `beépítve` →
+`elutasítva`. Motívumközi jelölt ezeken nincs.
+
+**A Kivonatra gyakorolt hatás:**
+- 1. bekezdés: „33 igehelyen (23 ószövetségi, 10 újszövetségi)” → 22 (16, 6). A LXX-mondat (19/23,
+  eltérés: 2Móz 33:19; 34:5; Ézs 12:4; Zsolt 116:17) az Ézs 12:4 nélkül → várhatóan 13/16. Ez a
+  meglévő mondatból levezetett szám, nem mérés; az átvezetéskor újramérem.
+- A DT399 NAPLO-jegyzete (Ézs 64:6 beépítése, 32 → 33) történeti, a visszafordítást új NAPLO-jegyzet
+  rögzíti.
+- **A jóváhagyott 2. mondat** („csak az aktív, invokáló קָרָא בְּשֵׁם (kárá besém) tartozik ide …”)
+  a DT-F152b után nem pontos: a határ most a *besém* utáni JHVH szó. Pontosítási javaslat (jóváhagyásra):
+  > A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָא בְּשֵׁם יְהוָה (kárá besém
+  > JHVH) tartozik ide, amelyben a *besém* után az Úr neve, JHVH áll; ahol névmás áll a helyén
+  > („nevedet”, „nevét”), az nem tartozik ide.
+  A passzívról szóló mondat (nikrá … al) változatlan.
+- **A 3. mondat** (B) változata nem függ a DT-F152b-től.
+
+**Feszültség a K5-tel (kérdés):** az 1Kir 18:25 (*elohéchem*) és a 18:26 (*ha-Báal*) a *besém* után
+nem JHVH-t hordoz. A K4 szó szerint kizárná őket, a K5 viszont kontrasztként megtartja. A 22-es szám
+ezt a két sort tartalmazza. Javaslat: a `negativ_kriterium` nevesítse a kivételt („… kivéve a
+kontrasztként megtartott 1Kir 18:25–26-ot”). A lapon pedig a K5 szerint ez áll: ott *Elohím*, illetve
+*ha-Báal* áll.
+
+**A prózára gyakorolt hatás** (`motivumok/ISTENTISZT-001.md`): kiesik a tagadó forma (Jer 10:25,
+Zsolt 79:6, Ézs 64:6), a Zsolt 105:1 / 1Krón 16:8 / Ézs 12:4 párhuzam, a Zak 13:9, a „3. A Róm 10:12”
+és a „Róm 10:14” szakasz, valamint a 2Tim 2:22 és az 1Pét 1:17 említése. Ez a próza jelentős átírása.
+A szöveget egészében olvasom (K1).
