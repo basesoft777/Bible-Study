@@ -83,3 +83,12 @@ A többi, az első kapufutáson megbukott szócikk (kb. 60 szócikk: hiányzó �
 - `python eszkozok/teszt_emeles.py`: Ran 31 tests, OK.
 - `python eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py`: Ran 25 tests, OK.
 - Lefedettség: a `naplok/BDB_FORDITAS_sorrend.tsv` 3981–5670. sorának mind az 1690 Strongja szerepel az `adat/forditasok.tsv`-ben `sonnet`/`claude-sonnet-5-5` állapottal (halmazkülönbség: 0).
+
+## 7. Javítókör 1/2 (`naplok/ELLENOR_F38_adag12.md`, ELTÉRÉS: 4 tétel)
+
+- **D10 (5), 4 sor.** A H6843 sz2, H6289 sz2, H8143 sz2 és H1999 sz2 sorban az AV/RV után álló angol glosszát (`AV morning`, `AV gather blackness`, `AV RV ivory`, `AV RV Da tumult`) a forrás szerint angolul hagytam; újrarögzítve (`szakasz_rogzit`/`szakasz_beir`), a kapuk átmentek.
+- **H7688 sz2.** „absolute: Participle” → „abszolút használatban: participium” (`adat/terminologia.tsv:67`); a DT361-felülbírálás (5_terminologia, a „see” igei használat) változatlan marad. A `forditasok.tsv`-ben összesen 5 sor módosult (5 / 5 `git diff --numstat`), törlés nincs.
+- **Brief `ir` mező.** A `naplok/BDB_FORDITAS_adag12_bontas.md` felvéve.
+- **Commitüzenet ékezetei (DT-F38k, eldöntött).** A pusholt `2c4b5fe3` (F38.435) üzenetében ékezet nélküli szavak állnak: *részleges* (`reszleges`), *gyakorisági* (`gyakorisagi`), *felülbírálás* (`felulbiralas`), *lásd* (`lasd`), *napló* (`naplo`), *lezárva* (`lezarva`). A történetet nem írtam át (az orkesztrátor döntése, 2026-11-01; ugyanez az elv az F38.355 csonka üzeneténél); a helyesbítés ez a bekezdés.
+- **„Kb. 60 szócikk” az 5. szakaszban.** Az első kapufutás bukásainak száma nem lekérdezésből, hanem a munkamenet-jegyzetemből származik (proveniencia: `manual`), pontos számként nem tekintendő.
+- **A tervezett 5671. sor.** A terv 3981–5671 (1691 szócikk); az adag a sorrendtábla szerint 3981–5670 (1690). Az 5671. sor a H8546, a `naplok/BDB_FORDITAS_sorrend.tsv` szerint a **13. adag első sora** (`^5671\tH8546\t2\t376\t13`), nem maradt ki. A Károli-mérés a korábbi adagokhoz hasonlóan az adag utáni első sorig számol (1691 szócikk), ez az eltérés forrása.
