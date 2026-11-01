@@ -18,7 +18,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 GYOKER = Path(__file__).resolve().parent.parent
-CSOPORTOS = re.compile(r'\d+\s+(?:egyedi\s+)?igehely')  # „63 egyedi igehelyen”: gyűjtő mondat
+CSOPORTOS = re.compile(r'(\d+)\s+(?:egyedi\s+)?igehely')  # „63 egyedi igehelyen”: gyűjtő mondat
 KEVES_PROZA = 150      # karakter/elem alatt „kevés” (M0 javaslat, DT-F125a)
 ELTERES_ARANY = 4.0    # két blokk elemre jutó prózája ennyiszeres eltérés fölött jelölt
 MIN_ELEM = 3           # ennél kevesebb elemű blokkot nem hasonlítunk
@@ -117,8 +117,9 @@ def mer(id_, gyoker=GYOKER):
     for r in nyit:
         ered['nyit'].append((r, lefed([r['igehely']])))
     # DT-F125a: a gyűjtő mondat (szám + „igehely”) külön kategória, nem hamis hiány — csak az
-    # előfordulásokra; melyik igehelyet fedi, a mérő nem tudja, ezért csak szám szerint kezeli
-    csoportos = any(CSOPORTOS.search(p) for _, p in par)
+    # előfordulásokra; melyik igehelyet fedi, a mérő nem tudja, ezért csak szám szerint kezeli:
+    # a csoportosan fedett darabszám legfeljebb a gyűjtő mondat(ok) legnagyobb N-je (ELLENOR_F125 1.)
+    csoportos = max((int(m.group(1)) for _, p in par for m in CSOPORTOS.finditer(p)), default=0)
     return par, ered, csoportos
 
 
@@ -130,7 +131,7 @@ def osszesit(id_, gyoker=GYOKER):
         n = len(lista)
         meg = sum(1 for _, t in lista if t)
         nincs = n - meg
-        csop = nincs if (k == 'el' and csoportos) else 0
+        csop = min(nincs, csoportos) if k == 'el' else 0
         ki[k] = (n, meg, csop, nincs - csop)
     return ki
 
@@ -157,11 +158,10 @@ def jelentes(id_):
     hianyok = []
     for k in ('el', 'kap', 'mk', 'nyit'):
         h = [r for r, t in ered[k] if not t]
-        csop = len(h) if (k == 'el' and csoportos) else 0
+        csop = min(len(h), csoportos) if k == 'el' else 0
         ki.append(f'| {nev[k]} | {len(ered[k])} | {len(ered[k]) - len(h)} | {csop} | {len(h) - csop} |')
-        if not csop:
-            hianyok += [(k, r) for r in h]
-    ki += ['', 'Név nélküli elemek (a csoportosan fedett előfordulás nélkül):', '']
+        hianyok += [(k, r) for r in h[csop:]]
+    ki += ['', 'Név nélküli elemek (a gyűjtő mondat N-jéig csoportosan fedett előfordulás nélkül):', '']
     ki += [f'- {nev[k]}: {sorcim(k, r)}' for k, r in hianyok] or ['- nincs']
     ki += ['', '*A „Károli rejtett párhuzama” (14. szerep) nem mérhető: nincs gépi adatforrása '
            '(l. DT424); a mérő ezt nem tölti ki.*', '']

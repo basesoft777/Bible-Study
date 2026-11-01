@@ -149,7 +149,7 @@ A felhasználó („a javaslat szerint”, az orkesztrátor-session idézetével
 
 ## F125.2 — eszköz és JELENTÉS-szabályok
 
-- `proza_lefedettseg.py`: új „csoportosan fedett” oszlop (a „N egyedi igehely” gyűjtő mondat, csak az előfordulásokra; ALVIL-001: 72 / megnevezve 15 / csoportosan fedett 57 / hiány 0). A mérő nem tudja, a gyűjtő mondat melyik igehelyeket fedi: csak darabszám szerint kezeli.
+- `proza_lefedettseg.py`: új „csoportosan fedett” oszlop (a „N egyedi igehely” gyűjtő mondat, csak az előfordulásokra; ALVIL-001: 72 / megnevezve 15 / csoportosan fedett 57 / hiány 0). A mérő nem tudja, a gyűjtő mondat melyik igehelyeket fedi: csak darabszám szerint kezeli. A fedett darabszám a gyűjtő mondat N-jéig terjed (legfeljebb a prózában álló legnagyobb N, a többi név nélküli előfordulás hiány marad; javítás: ELLENOR_F125 1., F125.6).
 - `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát.
 - Tesztek: `teszt_proza_lefedettseg.py` (11, zöld) a két szabályt is lefedi; a briefben szereplő külön `teszt_ellenoriz_proza.py` nem készült (egy fájl, két téma).
 

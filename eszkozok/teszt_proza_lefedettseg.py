@@ -70,6 +70,20 @@ class TesztLefedettseg(Alap):
         self.ir('motivumok/T-001.md', '## Rész\n\nA szó még 63 egyedi igehelyen fordul elő.\n')
         self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (2, 0, 2, 0))
 
+    def test_csoportos_darabszam_felso_korlat(self):
+        # TEREMT-002 tipus: „3 igehelyen” a prozaban, de 5 nev nelkuli elofordulas -> 3 fedett, 2 hiany
+        sorok = ''.join(f'T-001\t1Móz 1:{i}\tRemez\n' for i in range(1, 6))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nEz 3 igehelyen fordul elő.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (5, 0, 3, 2))
+
+    def test_csoportos_ALVIL_eset_63_legalabb_57(self):
+        # 63 >= 57 hiany -> mind a 57 fedett, hiany 0 (az ALVIL-001 valtozatlan merese)
+        sorok = ''.join(f'T-001\tJób {i}:1\tRemez\n' for i in range(1, 58))
+        self.adat(sorok)
+        self.ir('motivumok/T-001.md', '## Rész\n\nA szó még 63 egyedi igehelyen fordul elő.\n')
+        self.assertEqual(PL.osszesit('T-001', self.gy)['el'], (57, 0, 57, 0))
+
     def test_csoportos_csak_elofordulasra(self):
         self.adat('T-001\t1Móz 37:35\tRemez\n', kap='1Móz 1:1\t1Móz 2:2\tT-001\tPárhuzam\n')
         self.ir('motivumok/T-001.md', '## Rész\n\n63 egyedi igehelyen.\n')
