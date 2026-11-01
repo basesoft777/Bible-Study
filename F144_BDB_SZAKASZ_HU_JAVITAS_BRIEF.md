@@ -12,7 +12,7 @@ munka: folyamat
 olvas: [naplok/BDB_SZAKASZ_HU_JELOLO_JELENTES.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, F107_BDB_JELOLT_SZOVEG_BRIEF.md, adat/bdb_szakaszok.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/szakasz_bemenet.py]
 ir: [eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, adat/bdb_szakasz_hu.tsv, naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md]
 fugg: []
-nem_fugg: [27, 38]
+nem_fugg: [27, 38, 154, 155]
 ---
 
 # F144_BDB_SZAKASZ_HU_JAVITAS_BRIEF.md — A magyar BDB szakaszillesztésének javítása
