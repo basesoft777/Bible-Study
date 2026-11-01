@@ -619,6 +619,10 @@ mondat a lap készítőinek szól.
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
 
+**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel
+áll, a teljes proveniencia-sor egyszer, a blokk alatt. Az előtag a blokkot jelöli: E az előfordulások, K a kizárt és
+vizsgált helyek, M a minősítés.
+
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
 betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
@@ -833,7 +837,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
     torzs = '\n'.join(sorok)
     if labjegyzetek:
-        labjegyzetek, kozos = SZKZ.kozos_proveniencia(labjegyzetek)   # F152 B.2
+        labjegyzetek, kozos = SZKZ.kozos_proveniencia(labjegyzetek, 'E')   # F152 B.2
         torzs += '\n\n' + '\n'.join('[^%d]: %s' % (i, lj) for i, lj in enumerate(labjegyzetek, start=1))
         if kozos:
             torzs += '\n\n' + kozos
@@ -967,7 +971,7 @@ def blokk_kizart(m, n_motivum=0):
     if negativ:
         reszek.append('**Negatív kritérium** (`motivumok.tsv`): %s' % negativ)
     if labj:
-        labj, kozos = SZKZ.kozos_proveniencia(labj)   # F152 B.2
+        labj, kozos = SZKZ.kozos_proveniencia(labj, 'K')   # F152 B.2
         reszek.append('\n'.join('[^k%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
         if kozos:
             reszek.append(kozos)
@@ -4480,7 +4484,7 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
         osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
         tabla = ['**Kereszthivatkozásból minősített jelöltek** (%d sor; %s):' % (len(jeloltek), osszeg), '',
                  '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
-        forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek])   # F152 B.2
+        forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek], 'M')   # F152 B.2
         for j, fk in zip(jeloltek, forrasok):
             tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], fk,
                                                      _cella(j.get('indoklas') or EM_DASH)))

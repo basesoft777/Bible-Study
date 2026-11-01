@@ -76,21 +76,28 @@ class TestKozosProveniencia(unittest.TestCase):
     P = 'scope=manual | forras=napló.md | ts=2026-10-11'
 
     def test_minden_sor(self):
-        uj, megj = SZKZ.kozos_proveniencia(['forrás: `A | %s`' % self.P, 'forrás: `B | %s`' % self.P])
-        self.assertEqual(uj, ['forrás: `A | †`', 'forrás: `B | †`'])
-        self.assertEqual(megj, '*Minden sor forrásmegjelölése (†): `%s`*' % self.P)
+        uj, megj = SZKZ.kozos_proveniencia(['forrás: `A | %s`' % self.P, 'forrás: `B | %s`' % self.P], 'K')
+        self.assertEqual(uj, ['forrás: `A | ‹K1›`', 'forrás: `B | ‹K1›`'])
+        self.assertEqual(megj, '*Minden sor forrásmegjelölése (‹K1›): `%s`*' % self.P)
 
     def test_reszleges_es_egyedi(self):
         q = 'scope=x | forras=y.md | ts=2026-09-05'
         uj, megj = SZKZ.kozos_proveniencia(['A \\| %s' % self.P.replace('|', '\\|'), 'B | %s' % self.P,
-                                            'C | %s' % q, 'D'])
-        self.assertEqual(uj, ['A \\| †', 'B | †', 'C | %s' % q, 'D'])   # az egyszer álló a helyén marad
-        self.assertIn('† = `%s` (2 sor)' % self.P, megj)
+                                            'C | %s' % q, 'D'], 'M')
+        self.assertEqual(uj, ['A \\| ‹M1›', 'B | ‹M1›', 'C | %s' % q, 'D'])   # az egyszer álló a helyén marad
+        self.assertIn('‹M1› = `%s` (2 sor)' % self.P, megj)
         self.assertNotIn(q, megj)
 
     def test_nincs_ismetles(self):
         s = ['A | %s' % self.P, 'B']
-        self.assertEqual(SZKZ.kozos_proveniencia(s), (s, ''))
+        self.assertEqual(SZKZ.kozos_proveniencia(s, 'E'), (s, ''))
+
+    def test_lekerdezes_mezoi(self):
+        # a lekerdez.py hat mezős sora (strong=, n=, ts=, csatorna=) is egy proveniencia (ELLENOR_F152, B.2)
+        p = 'scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli'
+        uj, megj = SZKZ.kozos_proveniencia(['a · %s' % p, 'b · %s' % p], 'K')
+        self.assertEqual(uj, ['a · ‹K1›', 'b · ‹K1›'])
+        self.assertIn(p, megj)
 
 
 class TestOsszevon(unittest.TestCase):

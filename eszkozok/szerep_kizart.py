@@ -138,25 +138,28 @@ def _cella(s):
     return s.replace('|', '\\|').replace('\n', ' ')
 
 
-# F152 B.2: a blokkban ismétlődő proveniencia-sor (scope=… | forras=… | ts=…) a soron jellé rövidül, és a blokk alatt
-# egyszer áll; a táblacellában a `|` escape-elve (`\|`) is.
-PROV_HARMAS = re.compile(r'scope=[^|`\n]*?\s\\?\|\s*forras=[^|`\n]*?\s\\?\|\s*ts=[0-9T:Z-]+')
-PROV_JELEK = ('†', '‡') + tuple('†%d' % i for i in range(3, 30))
+# F152 B.2: a blokkban ismétlődő proveniencia-sor a soron jellé rövidül, és a blokk alatt egyszer áll; a táblacellában
+# a `|` escape-elve (`\|`) is. Alakja: `scope=… | forras=… | ts=…`, a lekérdezés további mezőivel a forras és a ts között
+# (`strong=… | n=…`) és a ts után (`csatorna=…`), ahogy a `lekerdez.py` írja.
+_SEP = r'\s\\?\|\s*'
+PROV_HARMAS = re.compile(r'scope=[^|`\n]*?' + _SEP + r'forras=[^|`\n]*?(?:' + _SEP + r'(?!ts=)[a-z_]+=[^|`\n]*?)*'
+                         + _SEP + r'ts=[0-9T:Z-]+(?:' + _SEP + r'csatorna=[a-z_]+)?')
 
 
-def kozos_proveniencia(szovegek, kuszob=2):
+def kozos_proveniencia(szovegek, elotag, kuszob=2):
     """(új szövegek, a blokk alá kerülő megjegyzés-sor vagy ''). Minden proveniencia-sor, amely a szövegek közül
-    legalább `kuszob`-ban áll, gyakoriság szerint jelet kap (†, ‡, †3 …); a szövegben a helyére a jel kerül, a
-    megjegyzés-sor a jelet és a teljes proveniencia-sort egyszer hordozza. A proveniencia nem vész el, csak nem
-    ismétlődik; az egyszer álló sor a helyén marad."""
+    legalább `kuszob`-ban áll, gyakoriság szerint jelet kap: ‹`elotag`1›, ‹`elotag`2› … — az előtag blokkonként más
+    (a lapon egy jel egy jelentés, és nem ütközik a szótárak saját jeleivel, pl. az Abbott-Smith †-ével); a szövegben a
+    helyére a jel kerül, a megjegyzés-sor a jelet és a teljes proveniencia-sort egyszer hordozza. A proveniencia nem
+    vész el, csak nem ismétlődik; az egyszer álló sor a helyén marad."""
     szaml = collections.Counter()
     for s in szovegek:
         for p in set(m.group(0).replace('\\|', '|') for m in PROV_HARMAS.finditer(s)):
             szaml[p] += 1
-    kozos = [p for p, n in sorted(szaml.items(), key=lambda x: (-x[1], x[0])) if n >= kuszob][:len(PROV_JELEK)]
+    kozos = [p for p, n in sorted(szaml.items(), key=lambda x: (-x[1], x[0])) if n >= kuszob]
     if not kozos:
         return list(szovegek), ''
-    jel = dict(zip(kozos, PROV_JELEK))
+    jel = {p: '‹%s%d›' % (elotag, i) for i, p in enumerate(kozos, 1)}
 
     def csere(m):
         p = m.group(0).replace('\\|', '|')

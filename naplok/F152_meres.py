@@ -13,7 +13,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-PROV = re.compile(r'scope=[^|`\n]*?\s*\\?\|\s*forras=[^|`\n]*?\s*\\?\|\s*ts=[0-9T:Z-]+')
+# a generátor mintája (a lekérdezés strong= / n= / csatorna= mezőivel is; ELLENOR_F152 B.2)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'eszkozok'))
+from szerep_kizart import PROV_HARMAS as PROV  # noqa: E402
 
 
 def mer(utvonal):

@@ -21,8 +21,8 @@
 | a 6. Értelmezés kezdete | 1 713. sor, a lap 80%-ánál | 1 373. sor, a lap 86%-ánál |
 | `scope=manual` | 162 | 74 |
 | `forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` | 120 (60 az 1/b.-ben, 60 a Minősítésben) | — |
-| `forras=Segitsegul_hivni_az_Urat_tematikus.md` | 41 (23 az 1.-ben, 10 az 1/b.-ben) | — |
-| proveniencia-sor (scope / forras / ts) | 192, ebből ugyanabban a szakaszban ismétlődő 161 | 82, ebből ismétlődő 73 (59 + 13 az 1.-ben) |
+| `forras=Segitsegul_hivni_az_Urat_tematikus.md` | 41 (31 az 1.-ben: 23 ts=2026-09-05, 7 ts=2026-09-08, 1 egyéb; 10 az 1/b.-ben) | — |
+| proveniencia-sor (scope / forras / ts) | 231, ebből ugyanabban a szakaszban ismétlődő 181 (a `lekerdez.py` hat mezős sorával együtt, l. 8.) | 84, ebből ismétlődő 73 (59 + 13 az 1.-ben) |
 | „gerinc” sor | 25, ebből nem dőlt üzemeltetői mondat 18 (oszlopfej 1, hamis-párhuzam sor 17) | 10, ebből 4 (oszlopfej 1, sor 3) |
 | az 1Móz 25:21–26 azonos indoklású sora az 1/b.-ben | 6 | — |
 | Minősítés jelölt-tábla | 61 sor, 20,3 KB (a címsortól a tábla végéig) | — |
@@ -48,9 +48,9 @@ javítva (F152.2).
 - **A.3:** a kulcsszó-tábla oszlopfeje „Héber/görög szavak”; a hamis-párhuzam soraiban „*a motívum szavaiból a versben: kárá
   (H7121)*” (`lexikon_general._szo_kiejtessel`, a `blokk_14` új `szo_nev` paraméterén át); a két bevezetőben „szókapcsolat”,
   „motívumszó”. A dőlt üzemeltetői mondatok („Szótári gerinc (DT272) …”, „Gerinc-kombinációnként …”) maradnak.
-- **B.2:** `szerep_kizart.kozos_proveniencia`: a blokkban legalább kétszer álló proveniencia-sor a helyén jellé rövidül (†, ‡,
-  †3 …), és a blokk alá egyszer kerül („*Minden sor forrásmegjelölése (†): …*”, ill. „*A közös forrásmegjelölések: † = … (n
-  sor)*”); az egyszer álló sor a helyén marad. Bekötve: az 1. előfordulás-lábjegyzetei, az 1/b. lábjegyzetei, a Minősítés
+- **B.2:** `szerep_kizart.kozos_proveniencia`: a blokkban legalább kétszer álló proveniencia-sor a helyén jellé rövidül (az F152.6 óta
+  blokkonként egyedi: ‹E1›, ‹K1›, ‹M1› …; eredetileg †, ‡), és a blokk alá egyszer kerül („*Minden sor forrásmegjelölése
+  (‹K1›): …*”, ill. „*A közös forrásmegjelölések: ‹K1› = … (n sor)*”); az egyszer álló sor a helyén marad. Bekötve: az 1. előfordulás-lábjegyzetei, az 1/b. lábjegyzetei, a Minősítés
   jelölt-táblájának „Forrás-keresés” oszlopa. Minden lexikonra.
 - **B.3:** `szerep_kizart.osszevon`: az 1/b. csoportján belül az egymást követő versek (ugyanaz a könyv és fejezet), azonos
   „miért lett jelölt”, döntés, indok és lábjegyzet mellett egy sorban, tartományként („1Móz 25:21–26”); a lábjegyzet egyszer áll
@@ -73,26 +73,26 @@ kérése a négy PaRDeS-szóra és a seólra, tehómra szólt): ISTENTISZT-001 �
 σωθήσεται, διεσώθησαν; ALVIL-001 ἄβυσσος (abüsszosz), ᾍδης (Hadész) négy szakaszban. A `motivumok/ALVIL-001.md` nem volt a brief
 `ir` mezőjében — felvéve.
 
-## 5. B.5 — újragenerálás és mérés a változás után (F152.4, `ba8e8393`)
+## 5. B.5 — újragenerálás és mérés a változás után (F152.4, `ba8e8393`; a számok az F152.6 utániak)
 
 `PARDES_DATUM=2026-10-29 python eszkozok/general.py --cel lexikon --id <ID> --ir` (a lap első GENERÁLT ts-e), majd
 `python naplok/F152_meres.py …` és `python naplok/F152_kiejtes_meres.py`.
 
 | Mérőszám | ISTENTISZT-001 előtte → utána | ALVIL-001 előtte → utána |
 |---|---|---|
-| méret | 252,5 KB, 2 237 sor → **233,8 KB**, 2 205 sor (−18,7 KB, −7,4%) | 140,9 KB → **134,7 KB** (−6,2 KB) |
+| méret | 252,5 KB, 2 237 sor → **232,9 KB**, 2 209 sor (−19,6 KB, −7,8%) | 140,9 KB → **135,4 KB** (−5,5 KB) |
 | a 6. Értelmezés kezdete | a lap 80%-ánál → 79%-ánál | 86% → 85% |
 | `scope=manual` | 162 → 7 | 74 → 3 |
 | `forras=…kereszthivatkozas_naplo.md` / `…tematikus.md` | 120 / 41 → 2 / 4 (a blokk alatti egy-egy megjegyzés-sorban) | — |
-| ugyanabban a szakaszban ismétlődő proveniencia-sor | 161 → 6 (mind a 6. Értelmezés kézi NAPLO-soraiban: a kézi forrás része, a generátor nem írja) | 73 → 0 |
+| ugyanabban a szakaszban ismétlődő proveniencia-sor | 181 → 6 (a maradék 6 a 6. Értelmezés kézi NAPLO-soraiban: a kézi forrás része, a generátor nem írja) | 73 → 0 |
 | olvasói „gerinc” | 18 → 0 (a maradék 5 dőlt üzemeltetői mondat) | 4 → 0 |
 | 1/b.: 1Móz 25:21–26 | 6 sor → 1 sor (+ Jer 7:10–11 és a többi szomszédos pár) | — |
-| Minősítés jelölt-tábla | 20,3 KB → 15,1 KB (61 sor; a DT-F152a tárgya) | — |
+| Minősítés jelölt-tábla | 20,3 KB → 15,4 KB (61 sor; a DT-F152a tárgya) | — |
 | kiejtés-hiány a lapon (kézi) | 4 (a PaRDeS négy szava) → 0 | 6 → 4 (a seól, a tehóm javítva; maradt: ἄβυσσος, ᾍδης ×3) |
 
 A Motívumlap-terv becslése (40–45 KB tartalomvesztés nélkül) a Minősítés-tábla (DT-F152a) és az N-F152f tételei nélkül nem
-érhető el; a mostani −18,7 KB a forrásmegjelölésből és a tartomány-összevonásból jön. A proveniencia nem veszett el: minden
-jel (†, ‡) a blokk alatti sorban a teljes `scope=… | forras=… | ts=…` alakot hordozza, a soronkénti szám mellett.
+érhető el; a mostani −19,6 KB a forrásmegjelölésből és a tartomány-összevonásból jön. A proveniencia nem veszett el: minden
+jel (‹E1›, ‹K1›, ‹M1› …) a blokk alatti sorban a teljes `scope=… | forras=… | ts=…` alakot hordozza, a soronkénti szám mellett.
 
 CI-emuláció (`eszkozok/ellenorzes/futtat.py`, 9cf0e43a..ba8e8393): kilépés 0, SÉRTÉS 0; FIGYELMEZTETÉS 4 — az ALVIL-001 Kivonat
 ἄβυσσος kiejtése (e tétel hatókörén kívül, l. 4.), a MUNKAMENET.md két régi D34-helye (nem e tétel), és egy commit-üzenet
@@ -164,5 +164,26 @@ a Jer 7:10 és az ApCsel 7:59 az 1/b.-ben ezzel az indokkal elutasított jelölt
 ### 7.2 DT-F152a — a Minősítés jelölt-táblája (`DONTESEK.md`)
 
 A 61 soros tábla minden sora az 1/b.-ben (60 elutasított) vagy az előfordulás-táblában (Róm 10:12, beépítve) is áll, ugyanazzal
-a döntéssel és indokkal; mérete a B.2 után 15,1 KB. (a) jelvény a soron, a tábla megszűnik (réslista-módosítás,
+a döntéssel és indokkal; mérete a B.2 után 15,4 KB. (a) jelvény a soron, a tábla megszűnik (réslista-módosítás,
 `adat/res_forras.tsv`); (b) csukva (`<details>`); (c) marad. Javaslat: (b).
+
+## 8. Az ellenőr eltérései és a javítás (F152.6)
+
+`naplok/ELLENOR_F152.md` (9cf0e43a..531d1f62): ELTÉRÉS 3 — mindhárom javítva.
+
+1. **B.2 lefedettség.** A `PROV_HARMAS` a `lekerdez.py` hat mezős sorát (`scope | forras | strong | n | ts | csatorna`) nem
+   ismerte fel; az 1/b. „Gépi keresés” 21 lábjegyzetében ugyanaz a sor maradt. Javítva: a minta a forras és a ts közötti
+   további mezőket és a ts utáni `csatorna=`-t is elfogadja (új teszt: `test_lekerdezes_mezoi`). A B0 újramérve ezzel a
+   mintával (a mérőszkript a generátor mintáját importálja): 192 → 231 proveniencia-sor, 161 → 181 ismétlődő; utána 6.
+2. **B.2 jel-ütközés.** A † / ‡ blokkonként mást jelentett, és ütközött az Abbott-Smith † jelével. Javítva: blokkonként egyedi
+   előtagú jel (‹E1› az előfordulások, ‹K1› a kizárt helyek, ‹M1› a minősítés), és a Jelmagyarázatban új bekezdés
+   („Közös forrásmegjelölés”) — ez a közös Jelmagyarázat-blokk, minden lexikonlapra érvényes. A † a lapon már csak az
+   Abbott-Smith jeleként áll (3 előfordulás).
+3. **A napló 1. táblája.** A tematikus forrásmegjelölés bontása 31 + 10 (javítva).
+
+A „NEM ELLENŐRIZHETŐ” A.1-sor nyomán az 1Móz 4:26 → Jóel 2:32 indoklása pontosítva: „az 1Móz 4:26-ban áll először az
+Ószövetségben” helyett „az 1Móz 4:26-ban, a motívum első ószövetségi helyén” (az előfordulás-tábla szerint; a Strong-hármas
+névadásban már az 1Móz 2:19-ben is együtt áll) — `naplok/F152_A1b_joel_pontosit.py`, sorösszevetés: 1 sor, 1 mező.
+
+A CL3 („a többi 6 lexikonlap nincs újragenerálva”): a brief B.5-je csak az ISTENTISZT-001 és az ALVIL-001 újragenerálását írja
+elő; a generátor-változás a többi lapon a következő újrageneráláskor jelenik meg (a #36 / #123 menetében).
