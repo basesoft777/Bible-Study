@@ -124,3 +124,16 @@ A szöveget egészében olvasom (K1).
   > Ha a név nem hangzik el, a segélykiáltás a tágabb körbe tartozik. Az Újszövetségben ezt nem az ige dönti el,
   > mert az mindkét esetben ugyanaz, hanem a név (ApCsel 7:59; 2Tim 2:22; Róm 10:12, 14).
   Beírás az adatírással együtt. Hátravan: a K5-kivétel a `negativ_kriterium`-ban.
+- **A K5-kivétel**: „Igen, kivételként” — a `negativ_kriterium` kivételként nevezze meg a kontrasztként megtartott
+  1Kir 18:25–26-ot (a *besém* után ott *elohéchem*, illetve *ha-Báal* áll).
+
+Ezzel minden döntés megvan. Átvezetés: F152.14–.
+
+## 7. Átvezetés
+
+- **F152.14** (`naplok/F152_k1k5_adat_ir.py`): írás előtt újramérés a TAHOT-ból és a TAGNT-ből (7 ragos sor, 3 Ézs-sor
+  és a 2 kontraszt-sor JHVH nélkül; a 4 ÚSZ-sorban ἐπικαλέομαι áll, ὄνομα (G3686) nincs). A `jeloltek.tsv` 18 sora
+  változott: 11 sor `beépítve` → `elutasítva`, a 3 Ézs-sor új indokot kapott, a 2 kontraszt-sor jelölést, és a
+  2 motívumközi jelölt `nyitva` → `elutasítva` lett. Az indokokban a felhasználó szavai és `manual` proveniencia
+  állnak; a régi indok „korábban” előtaggal megmaradt. Az `elofordulasok.tsv`-ből 11 sor törlődött, 2 sor (a K5) a
+  kapcsolodás mezőben jelölést kapott. ISTENTISZT-001: 22 sor. A többi sor bájtra azonos maradt (összevetés a szkriptben).
