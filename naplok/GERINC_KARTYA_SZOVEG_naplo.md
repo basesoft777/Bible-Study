@@ -179,6 +179,14 @@ A felhasználó döntése (DT-F125b, 2026-11-01, az orkesztrátor-session továb
 
 - Régi: 192 jelzés (lexikon, első előfordulás szerint). Új: 729 jelzés összesen, ebből a `lexikon/` hatókörön 176, a tanulmányokon 553. `scope=python eszkozok/ellenoriz.py (teljes futás, 22. szabály) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:24+01:00`
 
+**Javítás (ELLENOR_F125_2 4.): azonos bemeneten újramérve.** A fenti 192 → 176 összevetés két különböző bemeneten készült: a 192 a `24971b44` állapotán (16:52), a 176/729 a main merge UTÁN (19:24), és a merge a lexikonlapokat is megváltoztatta (ALVIL-001_TUDOMANYOS, ISTENTISZT-001_TUDOMANYOS), ezért a különbség nem csak a szabályváltozásból ered. Ugyanazon a HEAD-en (`be458e5b` munkafa-adatai, ideiglenes worktree), a két kódot egymás után futtatva:
+
+- Régi kód (`ca82e428~1`: `ellenoriz.py` és `kiejtes_szoveg.py`): **186** jelzés, mind a `lexikon/` hatókörön (a régi kód csak azt nézte), tanulmány: nincs mérve.
+- Új kód (a mostani `ellenoriz.py`): **729** jelzés, ebből `lexikon/` **176**, tanulmány **553**.
+- Azonos bemeneten tehát a lexikon-hatókörön a szabályváltozás hatása 186 → 176 (-10); a korábban jelzett 192 → 176 különbség 6 jelzése a merge által módosított lexikonlapok bemenet-különbsége. A 729 értéke (176 + 553) nem változott.
+
+`scope=python eszkozok/ellenoriz.py `szabaly22_kiejtes_hiany` (a 22. szabály, mindkét kód ugyanazon a munkafa-adaton, HEAD be458e5b) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:47+01:00`
+
 ## DT-F125d — commit-granularitás
 
 A felhasználó döntése (DT-F125d, 2026-11-01, az orkesztrátor-session továbbításával): „a) elfogadjuk”. Az `e6e7955d` (üzenet: „F125.2: eszköz és JELENTÉS-szabályok (22–23.), tesztek, DT-F125a eldöntve; F125.1: szövegjavaslat ⛔”) két tételt visz egy commitban; a pusholt történetet nem írjuk át (force-push nincs), a DT447 mintájára ez a helyesbítés.
