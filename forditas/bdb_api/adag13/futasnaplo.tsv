@@ -457,3 +457,6 @@ ts	custom_id	modell	effort	bemenet_token	cache_olvasas	cache_iras	kimenet_token	
 2026-11-01T15:18:29+00:00	H2780-c1-p2	claude-sonnet-5-5	high	3385	12514	0	407	end_turn	0.006671	11.718929
 2026-11-01T15:18:29+00:00	H2424-c1-p2	claude-sonnet-5-5	high	3518	12561	0	503	end_turn	0.007289	11.726218
 2026-11-01T15:18:29+00:00	H2242-c1-p2	claude-sonnet-5-5	high	3438	12539	0	701	end_turn	0.008197	11.734415
+2026-11-01T15:28:39+00:00	B002-p1	claude-sonnet-5-5	high	57753	0	0	21645	end_turn	0.165978	11.900392
+2026-11-01T15:28:39+00:00	B003-p1	claude-sonnet-5-5	high	50803	0	0	17448	end_turn	0.138043	12.038435
+2026-11-01T15:28:39+00:00	B001-p1	claude-sonnet-5-5	high	54484	0	0	18460	end_turn	0.146784	12.185219
