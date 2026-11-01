@@ -6,9 +6,11 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: lezarva
+pr: 533
 ad: motívumonkénti átnézési sorrend a döntésre váró jelöltekhez (`naplok/ELOSZURES_<ID>.tsv`), a döntést nem hozza meg: (1) determinisztikus előszűrő a lexikai motívumokon (a gerinc-szókapcsolat hiánya → valószínűleg ki), Actionként, ingyen; (2) a meglévő 600+ döntésen mért pontosság, kiemelten a hamis kizárásra; (3) a modelles lépés csak a gépileg el nem dönthető esetekre, helyben, Claude Code végrehajtóval, a havi előfizetés keretéből, API-kulcs nélkül
-kovetkezo: "Te: merge; utána az Action első futása workflow_dispatch-csel és a kimenet ellenőrzése; az M3 (modelles lépés) a felhasználó későbbi döntése (DT-F150b); a lexikai javítás: N-F150a"
+kovetkezo: "lezárva; az M3 (modelles lépés) a felhasználó későbbi döntése (DT-F150b); a lexikai kiterjesztés: N-F150a"
+lezarva_osszegzes: "Gépi előszűrő formulaikus hordozón (DT432 (a)): jelolt_eloszures.py teszttel, a jelolt-eloszures workflow a main-en (PR #533, merge 2026-11-01); a workflow_dispatch próbája 2026-11-01-én sikeres (futás 41291956969; gépi commit nem kellett, mert a kimenet változatlan, a naplok/ELOSZURES_*.tsv az F150.2 commitjából, 705f842f); 29 nyitott jelölt, valoszinu_ki nincs, a nem formulaikus motívumokon minden sor vizsgalando"
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, adat/elutasitasi_okok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/szerep_karoli.py, eszkozok/szerep_kizart.py, eszkozok/gerinc_szuro.py, eszkozok/gerinc_terkep.py, eszkozok/lexikon_general.py, .github/workflows/gerinc_terkep.yml, MUNKAMENET.md]
 ir: [eszkozok/jelolt_eloszures.py, eszkozok/teszt_jelolt_eloszures.py, .github/workflows/jelolt_eloszures.yml, "naplok/ELOSZURES_*.tsv", naplok/JELOLT_ELOSZURES_naplo.md, naplok/JELOLT_ELOSZURES_meres.py, adat/SEMA.md]
 fugg: []
