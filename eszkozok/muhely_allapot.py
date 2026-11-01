@@ -52,11 +52,13 @@ KRITERIUMOK = [
 
 # a nyilvanos reteg feherlistaja: csak ezek a mezok mennek at
 FEHERLISTA_MOTIVUM = ['id', 'cim', 'tema', 'pardes_szint', 'allasfokozat', 'kriteriumok', 'zold_db', 'ossz_db',
-                      'nyitott_jelolt_db', 'elvetett_jelolt_db', 'beepitett_jelolt_db', 'stash']
-FEHERLISTA_KRITERIUM = ['sorszam', 'nev', 'allapot']
+                      'nyitott_jelolt_db', 'elvetett_jelolt_db', 'beepitett_jelolt_db', 'stash', 'olvasoi_mondat']
+# a `nev` (belso kapunev) es az `allapot` (gepi kod) nem megy at; az `allapot` helyett az olvasoi szoveg
+FEHERLISTA_KRITERIUM = ['sorszam', 'szin', 'olvasoi_nev', 'olvasoi_allapot', 'olvasoi_szoveg']
+FEHERLISTA_ESEMENY = ['datum', 'motivum', 'olvasoi_esemeny']
 FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
                     'kapcsolatok_db', 'forditasi_lefedettseg', 'lektori_kerdes', 'utolso_generalas_commit',
-                    'verzio']
+                    'verzio', 'kotet_olvasoi']
 FEHERLISTA_TOP = ['_generalt', 'generalva', 'commit', 'rendszer', 'motivumok', 'merok_osszesen', 'heti_tortenes',
                   'elvetett_jeloltek_osszesen']
 
@@ -105,8 +107,84 @@ def datum_iso(s):
     return '%s-%s-%s' % m.groups() if m else None
 
 
-def uj(allapot, ertek, mero, motivum, reszlet=None):
-    return {'allapot': allapot, 'ertek': ertek, 'proveniencia': prov(mero, motivum), 'reszlet': reszlet or []}
+def uj(allapot, ertek, mero, motivum, reszlet=None, szam=None):
+    return {'allapot': allapot, 'ertek': ertek, 'proveniencia': prov(mero, motivum), 'reszlet': reszlet or [],
+            'szam': szam or {}}
+
+
+# --- olvasói megfogalmazás (DT-F156f, jóváhagyva: "Igen, így"); a nyilvános réteg csak ezeket mutatja ---
+OLV_NEV = {1: 'Az adatok összhangja', 2: 'A szövegek ellenőrzése', 3: 'Egy szerkesztett forrásból épül',
+           4: 'Eldöntendő igehelyek', 5: 'A motívum határa', 6: 'Olvasható lap', 7: 'Lektori átolvasás',
+           8: 'Függő munka'}
+OLV_ALLAPOT = {ZOLD: 'rendben', PIROS: 'munka van hátra', NINCS: 'még nem vizsgáltuk',
+               HIBA: 'az ellenőrzés nem futott le, újra próbáljuk'}
+OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek, ellentmondás nincs.',
+            2: 'A lap szövegei hibátlanul átmentek az ellenőrzésen.',
+            3: 'A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz.',
+            4: 'Minden vizsgált igehelyről döntöttünk.',
+            5: 'A motívum határáról szóló kérdések megválaszoltak.',
+            6: 'A lap minden része magyarázattal, kiejtéssel és fordítással áll.',
+            7: 'A lektor minden kérdése lezárult.',
+            8: 'Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka.'}
+OLV_NINCS = {1: 'Az adatellenőrzés még nem futott.', 2: 'Az ellenőrzés még nem futott.',
+             3: 'A lap még nincs egy forrásba rendezve.', 4: 'Az igehelyek vizsgálata még nem indult el.',
+             5: 'A határ vizsgálata még nem készült el.', 6: 'A lap még nem készült el.',
+             7: 'A lektori átolvasás még nem indult el.', 8: 'A függő munka még nem vizsgált.'}
+OLV_ALLAS = {'jelölt': 'Felmerült: igehelyeket gyűjtünk hozzá', 'feldolgozás': 'Feldolgozás alatt',
+             'ellenőrzés': 'Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül',
+             'lezárt (stash)': 'Kész, megjelenésre vár', 'kötetben': 'Megjelent a kötetben'}
+OLV_KOTET = 'Kötetbe még nincs beosztva'
+
+
+def olvasoi_kapu(k):
+    """A kapu olvasói szövege a mérő számaiból (a belső szavak nélkül)."""
+    sz, al, n = k['sorszam'], k['allapot'], k.get('szam', {})
+    if al == ZOLD:
+        return OLV_ZOLD[sz]
+    if al == NINCS:
+        return OLV_NINCS[sz]
+    if al == HIBA:
+        return OLV_ALLAPOT[HIBA] + '.'
+    if sz == 1:
+        return 'Az adatokban ellentmondás van, javítás alatt.'
+    if sz == 2:
+        return 'Az ellenőrzés %d hibát talált a szövegekben.' % n.get('n', 0)
+    if sz == 3:
+        return 'A lap még átállításra vár az új szerkesztési rendre.'
+    if sz == 4:
+        return '%d igehely vizsgálata folyamatban van.' % n.get('n', 0)
+    if sz == 5:
+        return '%d kérdés van nyitva arról, mi tartozik a motívumhoz.' % n.get('n', 0)
+    if sz == 6:
+        reszek = []
+        if n.get('kiejtes'):
+            reszek.append('%d kiejtés hiányzik' % n['kiejtes'])
+        if n.get('fordit'):
+            reszek.append('%d rész fordításra vár' % n['fordit'])
+        if n.get('blokk'):
+            reszek.append('%d rész magyarázat nélkül áll' % n['blokk'])
+        return 'A lapon ' + ', '.join(reszek) + '.' if reszek else 'A lap még javításra vár.'
+    if sz == 7:
+        return '%d lektori kérdés vár válaszra.' % n.get('n', 0)
+    return '%d kapcsolódó munka vagy kérdés vár megoldásra.' % n.get('n', 0)
+
+
+def olvasoi_mondat(feldolgozva, vizsgalat, kizarva, teljesul):
+    """`N igehely feldolgozva, M vizsgálat alatt, K kizárva; a nyolc ellenőrzési lépésből Z teljesül.`"""
+    reszek = ['%d igehely feldolgozva' % feldolgozva,
+              '%d vizsgálat alatt' % vizsgalat if vizsgalat else 'nincs vizsgálat alatt álló igehely']
+    if kizarva:
+        reszek.append('%d kizárva' % kizarva)
+    return ', '.join(reszek) + '; a nyolc ellenőrzési lépésből %d teljesül.' % teljesul
+
+
+def olvasoi_esemeny(e):
+    if e['esemeny'].endswith('beépítve'):
+        return '%d igehely bekerült a motívumba' % e['db']
+    if e['esemeny'].endswith('elutasítva'):
+        return '%d igehelyet kizártunk, mert nem illik a motívum határába' % e['db']
+    m = re.search(r'\((v\d+)\)', e['esemeny'])
+    return 'A motívum lapja új változatot kapott (%s. változat)' % m.group(1)[1:] if m else 'A motívum lapja frissült'
 
 
 # ----------------------------------------------------------------------------- mero-futtatasok (egyszer)
@@ -165,7 +243,7 @@ def kriterium_2(motivum):
         jelentes += int(j.group(1)) if j else 0
     allapot = ZOLD if rc == 0 and hiba == 0 else PIROS
     return uj(allapot, '%d HIBA, %d jelentés' % (hiba, jelentes), mero, motivum,
-              ['jelentés: %d (nem blokkol)' % jelentes] if jelentes else [])
+              ['jelentés: %d (nem blokkol)' % jelentes] if jelentes else [], {'n': hiba})
 
 
 def kriterium_3(motivum):
@@ -192,14 +270,14 @@ def kriterium_3(motivum):
         return uj(ZOLD, 'nulla-diff', mero, motivum)
     a, b = uj_szoveg.split('\n'), eredeti.split('\n')
     eltero = sum(1 for x, y in zip(a, b) if x != y) + abs(len(a) - len(b))
-    return uj(PIROS, '%d eltérő sor' % eltero, mero, motivum)
+    return uj(PIROS, '%d eltérő sor' % eltero, mero, motivum, None, {'n': eltero})
 
 
 def kriterium_4(motivum, jeloltek):
     mero = 'jeloltek.tsv'
     nyitva = [j for j in jeloltek if j['id'] == motivum and j['dontes'] == 'nyitva']
     reszlet = [j['igehely'] for j in nyitva]  # csak a hely: az indoklás adattábla-tartalom, nem kerül a Feedbe
-    return uj(PIROS if nyitva else ZOLD, '%d nyitott jelölt' % len(nyitva), mero, motivum, reszlet)
+    return uj(PIROS if nyitva else ZOLD, '%d nyitott jelölt' % len(nyitva), mero, motivum, reszlet, {'n': len(nyitva)})
 
 
 def kriterium_5(motivum):
@@ -214,7 +292,7 @@ def kriterium_5(motivum):
         return uj(HIBA, 'a határ-fájlban nincs kérdésszám', mero, motivum)
     cimek = re.findall(r'^\*\*(K\d+) — ', t, re.M)  # csak a jelölők: a kérdés szövege nem kerül a Feedbe
     n = sum(szamok)
-    return uj(PIROS if n else ZOLD, '%d nyitott kérdés' % n, mero, motivum, cimek)
+    return uj(PIROS if n else ZOLD, '%d nyitott kérdés' % n, mero, motivum, cimek, {'n': n})
 
 
 def kriterium_6(motivum):
@@ -241,6 +319,7 @@ def kriterium_6(motivum):
     ertek = '%d/%d blokk fedett (%d bevezetővel), kiejtés-hiány %d, fordításra vár %d' % (
         n_blokk - len(blokk_hiany), n_blokk, van, len(kiejtes_hiany), fordit)
     e = uj(ZOLD if zold else PIROS, ertek, mero, motivum, reszlet)
+    e['szam'] = {'kiejtes': len(kiejtes_hiany), 'fordit': fordit, 'blokk': len(blokk_hiany)}
     e['mertek'] = {'blokk_osszes': n_blokk, 'blokk_hiany': len(blokk_hiany), 'kiejtes_hiany': len(kiejtes_hiany),
                    'fordításra_var': fordit}
     return e
@@ -256,7 +335,8 @@ def kriterium_7(motivum):
     except Exception as ex:  # noqa: BLE001
         return uj(HIBA, 'a lektori tábla nem olvasható', mero, motivum, [repr(ex)[:300]])
     nyitott = [s for s in sorok if s.get('allapot', 'nyitva') in ('nyitva', 'nyitott')]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott lektori kérdés' % len(nyitott), mero, motivum)
+    return uj(PIROS if nyitott else ZOLD, '%d nyitott lektori kérdés' % len(nyitott), mero, motivum, None,
+              {'n': len(nyitott)})
 
 
 # ----------------------------------------------------------------------------- feladatok, DT-k
@@ -309,7 +389,7 @@ def kriterium_8(motivum, fejlecek, dt_lista):
     for d in dt_lista:
         if d['nyitott'] and d['feladat'] in erintett:
             reszlet.append('%s 🟡 (#%d)' % (d['id'], d['feladat']))
-    e = uj(PIROS if reszlet else ZOLD, '%d nyitott ⛔/🟡' % len(reszlet), mero, motivum, reszlet)
+    e = uj(PIROS if reszlet else ZOLD, '%d nyitott ⛔/🟡' % len(reszlet), mero, motivum, reszlet, {'n': len(reszlet)})
     e['feladatok'] = [{'feladat': n, 'allapot': f.get('allapot', ''), 'cim': f.get('cim', '')[:120]}
                       for n, f in sorted(erintett.items())]
     return e
@@ -360,7 +440,7 @@ def stash_adat(m, kriteriumok, elofordulasok, kapcsolatok, usz, commit_lapon):
     return {
         'cim': m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
         'terjedelem_szo': szavak,
-        'kotet': None, 'kotet_megjegyzes': 'nincs kötet-adat (DT-F156d)',
+        'kotet': None, 'kotet_megjegyzes': 'nincs kötet-adat (DT-F156d)', 'kotet_olvasoi': OLV_KOTET,
         'elofordulas_osz': osz, 'elofordulas_usz': len(sajat) - osz,
         'kapcsolatok_db': sum(1 for k in kapcsolatok if m['id'] in (k['id_a'], k['id_b'])),
         'forditasi_lefedettseg': round(fordit / len(sajat), 3) if sajat else None,
@@ -408,9 +488,11 @@ def feherlista(d, kulcsok):
 def nyilvanos(belso):
     ki = feherlista(belso, FEHERLISTA_TOP)
     ki['_generalt'] = belso['_generalt'].replace('feed_belso', 'feed_nyilvanos') + ' (a belső réteg fehérlistás szűrése)'
+    ki['heti_tortenes'] = [feherlista(x, FEHERLISTA_ESEMENY) for x in belso['heti_tortenes']]
     ki['motivumok'] = []
     for m in belso['motivumok']:
         e = feherlista(m, FEHERLISTA_MOTIVUM)
+        e['allasfokozat'] = m['allasfokozat_olvasoi']
         e['kriteriumok'] = [feherlista(k, FEHERLISTA_KRITERIUM) for k in m['kriteriumok']]
         if m.get('stash'):
             e['stash'] = feherlista(m['stash'], FEHERLISTA_STASH)
@@ -451,6 +533,10 @@ def main():
         for sz, nev in KRITERIUMOK:
             k = dict(krit[str(sz)])
             k['sorszam'], k['nev'] = sz, nev
+            k['szin'] = {ZOLD: 'zold', PIROS: 'piros', NINCS: 'szurke', HIBA: 'hiba'}[k['allapot']]  # csak a szinezeshez
+            k['olvasoi_nev'] = OLV_NEV[sz]
+            k['olvasoi_allapot'] = OLV_ALLAPOT[k['allapot']]
+            k['olvasoi_szoveg'] = olvasoi_kapu(k)
             lista.append(k)
         zold_db = sum(1 for k in lista if k['allapot'] == ZOLD)
         sajat_j = [j for j in jeloltek if j['id'] == mid]
@@ -461,6 +547,9 @@ def main():
         e = {
             'id': mid, 'cim': m['ui_cimke'] or m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
             'allasfokozat': allasfokozat(m, zold_db, len(lista), krit),
+            'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit)],
+            'olvasoi_mondat': olvasoi_mondat(st['elofordulas_osz'] + st['elofordulas_usz'],
+                                             sum(1 for j in sajat_j if j['dontes'] == 'nyitva'), len(elv), zold_db),
             'tsv_statusz': m['statusz'], 'tsv_statusz_eltérés': (m['statusz'] == 'publikálható') != (zold_db == 8),
             'kriteriumok': lista, 'zold_db': zold_db, 'ossz_db': len(lista),
             'nyitott_jelolt_db': sum(1 for j in sajat_j if j['dontes'] == 'nyitva'),
@@ -485,7 +574,7 @@ def main():
             'nyitott_jelolt': sum(x['nyitott_jelolt_db'] for x in ki),
         },
         'elvetett_jeloltek_osszesen': sum(x['elvetett_jelolt_db'] for x in ki),
-        'heti_tortenes': heti_tortenes(jeloltek, motivumok),
+        'heti_tortenes': [dict(x, olvasoi_esemeny=olvasoi_esemeny(x)) for x in heti_tortenes(jeloltek, motivumok)],
         'pr_hiba': pr_hiba,
         'ellenoriz_hiba': hiba1 or None,
         'motivumok': ki,

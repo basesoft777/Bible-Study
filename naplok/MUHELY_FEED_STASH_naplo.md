@@ -83,9 +83,9 @@ A Dashboard-artifact privát; hivatkozása a PR leírásában és a jelentésben
 
 | # | belső név | olvasói név | zöld | piros | nincs mérő |
 |---|---|---|---|---|---|
-| 1 | `ellenoriz.py` 1–21 | Az adatok rendben vannak | Az adattáblák egymásnak megfelelnek, ellentmondás nincs. | Az adatokban ellentmondás van, javítás alatt. | Az adatellenőrzés még nem futott. |
+| 1 | `ellenoriz.py` 1–21 | Az adatok összhangja | Az adattáblák egymásnak megfelelnek, ellentmondás nincs. | Az adatokban ellentmondás van, javítás alatt. | Az adatellenőrzés még nem futott. |
 | 2 | CI E2–E29 | A szövegek ellenőrzése | A lap szövegei hibátlanul átmentek az ellenőrzésen. | Az ellenőrzés N hibát talált a szövegekben. | Az ellenőrzés még nem futott. |
-| 3 | egyforrású, nulla-diff | Egy szerkesztett forrásból épül | A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz. | A lap még átállításra vár: N sorban eltér az újraépített változattól. | A lap még nincs egy forrásba rendezve. |
+| 3 | egyforrású, nulla-diff | Egy szerkesztett forrásból épül | A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz. | A lap még átállításra vár az új szerkesztési rendre. | A lap még nincs egy forrásba rendezve. |
 | 4 | `dontes=nyitva` jelölt | Eldöntendő igehelyek | Minden vizsgált igehelyről döntöttünk. | N igehely vizsgálata folyamatban van. | – |
 | 5 | `motivum_hatar` | A motívum határa | A motívum határáról szóló kérdések megválaszoltak. | N kérdés van nyitva arról, mi tartozik a motívumhoz. | A határ vizsgálata még nem készült el. |
 | 6 | olvasói blokk, kiejtés, fordítás | Olvasható lap | A lap minden része magyarázattal, kiejtéssel és fordítással áll. | A lapon N kiejtés hiányzik, M rész fordításra vár. | – |
@@ -138,6 +138,10 @@ Minta: `N_előfordulás igehely feldolgozva, M vizsgálat alatt, K kizárva; a n
 
 *Megjegyzés a számokhoz: a „feldolgozva” szám itt a beépített jelöltek száma (az `elofordulasok.tsv` sorainál a motívumközi sorok miatt kettővel kevesebb lehet, pl. ISTENTISZT-001: 35 beépített, 33 előfordulás-sor); a jóváhagyáskor kell eldönteni, melyik szám kerüljön az olvasói mondatba. A táblában a beépített jelöltek száma áll.*
 
-### Kérdés a felhasználónak (DT-F156f)
+### DT-F156f ✅ eldöntve
 
-Jóváhagyod-e a fenti szövegeket (esetleg módosítással), és az „igehely feldolgozva” szám a beépített jelöltek száma legyen, vagy az előfordulás-sorok száma? Jóváhagyás után kerül be a szöveg a generátorba (`feed_nyilvanos.json` új mezői), és csak ezután frissül a Dashboard.
+A felhasználó jóváhagyta (az orkesztrátor továbbításában, 2026-11-01): **„Igen, így”** — a „Jóváhagyod a Feed olvasói szövegeit, az előfordulások számával a mondatban?” kérdésre. A jóváhagyott változat e tábla két módosítással: (1) az 1. kapu olvasói neve „Az adatok összhangja”; (2) a 3. kapu piros szövege „A lap még átállításra vár az új szerkesztési rendre.” (a sorszám a belső rétegben marad). A „feldolgozva” szám az **előfordulás-sorok száma** (`elofordulasok.tsv`), nem a beépített jelölteké; a fenti mintamondatok ezért a jóváhagyás előtti (beépített-számú) szövegek, a valós mondat a `feed_nyilvanos.json` `olvasoi_mondat` mezőjében áll. Beírva a generátorba (F156.4): a nyilvános réteg kapuinál `olvasoi_nev`, `olvasoi_allapot`, `olvasoi_szoveg`, `szin` (a gépi állapotkód és a belső kapunév nem megy át); a motívumnál `olvasoi_mondat` és olvasói állásfokozat; a heti történésnél `olvasoi_esemeny`; a Stash-nél `kotet_olvasoi`. A #559 (ISTENTISZT-001: 22 előfordulás) merge-e után a számok változnak: a kimenetet újra kell futtatni.
+
+## Arculat (DT-F156g ✅ eldöntve)
+
+A felhasználó kérése: „kapjon modernebb színvilágot és tipót”. Három változat készült próba-artifactként (A. Olvasó, B. Termék, C. Műhely; tokenek: a megosztott jegyzetmappa `KOZOS_TOKENEK.md`), a felhasználó választása (az orkesztrátor továbbításában): **az A változat** („a”) — Source Serif 4 (cím) + IBM Plex Sans (szöveg) + IBM Plex Mono (adat), hűvös papír, mély kék kiemelés, világos és sötét mód. A #157 lektor-felület ugyanezeket a tokeneket használja (`--papir`, `--lap`, `--tinta`, `--halvany`, `--vonal`, `--kiemel(-hatter)`, `--elfogad(-hatter)`, `--elvet(-hatter)`, `--figyel(-hatter)`). A Dashboardra alkalmazva az olvasói szövegek beépítése után (F156.5).

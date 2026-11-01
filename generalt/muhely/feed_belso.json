@@ -1,7 +1,7 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_belso.json (belső réteg)",
- "generalva": "2026-11-01T19:25Z",
- "commit": "3a2dbd51",
+ "generalva": "2026-11-01T20:17Z",
+ "commit": "2726f092",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "merok_osszesen": {
   "motivum_db": 9,
@@ -16,19 +16,22 @@
    "datum": "2026-10-29",
    "motivum": "ISTENTISZT-001",
    "esemeny": "jelölt-döntés: beépítve",
-   "db": 1
+   "db": 1,
+   "olvasoi_esemeny": "1 igehely bekerült a motívumba"
   },
   {
    "datum": "2026-10-29",
    "motivum": "ISTENTISZT-001",
    "esemeny": "jelölt-döntés: elutasítva",
-   "db": 1
+   "db": 1,
+   "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
   },
   {
    "datum": "2026-10-28",
    "motivum": "ALVIL-001",
    "esemeny": "jelölt-döntés: elutasítva",
-   "db": 3
+   "db": 3,
+   "olvasoi_esemeny": "3 igehelyet kizártunk, mert nem illik a motívum határába"
   }
  ],
  "pr_hiba": null,
@@ -40,60 +43,93 @@
    "tema": "Krisztológia",
    "pardes_szint": "Drash/Sod",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 1 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenoriz.py | ts=2026-11-01T19:11Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenoriz.py | ts=2026-11-01T20:02Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "17 HIBA, 195 jelentés",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:04Z",
      "reszlet": [
       "jelentés: 195 (nem blokkol)"
      ],
+     "szam": {
+      "n": 17
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 17 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "1428 eltérő sor",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:04Z",
      "reszlet": [],
+     "szam": {
+      "n": 1428
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott jelölt",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=jeloltek.tsv | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=jeloltek.tsv | ts=2026-11-01T20:04Z",
      "reszlet": [
       "1Pét 2:9"
      ],
+     "szam": {
+      "n": 1
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_KIRALY-001.md",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=motivum_hatar.py | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=motivum_hatar.py | ts=2026-11-01T20:04Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "19/42 blokk fedett (0 bevezetővel), kiejtés-hiány 22, fordításra vár 0",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:04Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -141,6 +177,11 @@
       "kiejtés-hiány: sor 524 — τ",
       "kiejtés-hiány: sor 524 — ξις"
      ],
+     "szam": {
+      "kiejtes": 22,
+      "fordit": 0,
+      "blokk": 23
+     },
      "mertek": {
       "blokk_osszes": 42,
       "blokk_hiany": 23,
@@ -148,23 +189,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 22 kiejtés hiányzik, 23 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:04Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:04Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -188,7 +241,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 1,
@@ -204,6 +261,7 @@
     "terjedelem_szo": 7995,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 5,
     "elofordulas_usz": 4,
     "kapcsolatok_db": 0,
@@ -236,41 +294,60 @@
    "tema": "Pneumatológia/istentisztelet",
    "pardes_szint": "Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenoriz.py | ts=2026-11-01T19:13Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenoriz.py | ts=2026-11-01T20:04Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "zold",
      "ertek": "0 HIBA, 500 jelentés",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:14Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:06Z",
      "reszlet": [
       "jelentés: 500 (nem blokkol)"
      ],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
     },
     {
      "allapot": "zold",
      "ertek": "nulla-diff",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:06Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "zold",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
     },
     {
      "allapot": "piros",
      "ertek": "6 nyitott jelölt",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=jeloltek.tsv | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:06Z",
      "reszlet": [
       "Ézs 41:25",
       "Zsolt 116:4",
@@ -279,13 +356,20 @@
       "Róm 10:13",
       "Róm 10:14"
      ],
+     "szam": {
+      "n": 6
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "6 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "piros",
      "ertek": "5 nyitott kérdés",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=motivum_hatar.py | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:06Z",
      "reszlet": [
       "K1",
       "K2",
@@ -293,18 +377,30 @@
       "K4",
       "K5"
      ],
+     "szam": {
+      "n": 5
+     },
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "piros",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "5 kérdés van nyitva arról, mi tartozik a motívumhoz."
     },
     {
      "allapot": "piros",
      "ertek": "98/98 blokk fedett (51 bevezetővel), kiejtés-hiány 3, fordításra vár 0",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:06Z",
      "reszlet": [
       "kiejtés-hiány: sor 81 — י׳",
       "kiejtés-hiány: sor 82 — ק׳",
       "kiejtés-hiány: sor 82 — שׁ׳"
      ],
+     "szam": {
+      "kiejtes": 3,
+      "fordit": 0,
+      "blokk": 0
+     },
      "mertek": {
       "blokk_osszes": 98,
       "blokk_hiany": 0,
@@ -312,20 +408,29 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 3 kiejtés hiányzik."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:06Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "9 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:06Z",
      "reszlet": [
       "#121 ⛔ megállt feladat",
       "#131 ⛔ megállt feladat",
@@ -337,6 +442,9 @@
       "DT338 🟡 (#121)",
       "DT388 🟡 (#121)"
      ],
+     "szam": {
+      "n": 9
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -395,7 +503,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "9 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 3,
@@ -411,6 +523,7 @@
     "terjedelem_szo": 29612,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 23,
     "elofordulas_usz": 10,
     "kapcsolatok_db": 3,
@@ -516,6 +629,11 @@
    ],
    "nyitott_pr": [
     {
+     "szam": 559,
+     "cim": "F152.9: a K1–K5 (DT-F151c) átvezetése az ISTENTISZT-001-en",
+     "url": "https://github.com/basesoft777/Bible-Study/pull/559"
+    },
+    {
      "szam": 558,
      "cim": "F157: lektor-felület — M0 kérdés-séma és első artifact",
      "url": "https://github.com/basesoft777/Bible-Study/pull/558"
@@ -528,58 +646,91 @@
    "tema": "Teremtéstan",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenoriz.py | ts=2026-11-01T19:15Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenoriz.py | ts=2026-11-01T20:06Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 231 jelentés",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:07Z",
      "reszlet": [
       "jelentés: 231 (nem blokkol)"
      ],
+     "szam": {
+      "n": 1
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "1179 eltérő sor",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:08Z",
      "reszlet": [],
+     "szam": {
+      "n": 1179
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=jeloltek.tsv | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:08Z",
      "reszlet": [],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_TEREMT-001.md",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=motivum_hatar.py | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:08Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "34/49 blokk fedett (0 bevezetővel), kiejtés-hiány 35, fordításra vár 0",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:08Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -632,6 +783,11 @@
       "kiejtés-hiány: sor 783 — תְּהוֹם",
       "kiejtés-hiány: sor 783 — ἄβυσσος"
      ],
+     "szam": {
+      "kiejtes": 35,
+      "fordit": 0,
+      "blokk": 15
+     },
      "mertek": {
       "blokk_osszes": 49,
       "blokk_hiany": 15,
@@ -639,23 +795,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 35 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:08Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:08Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -674,7 +842,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 2,
@@ -690,6 +862,7 @@
     "terjedelem_szo": 8423,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 35,
     "elofordulas_usz": 7,
     "kapcsolatok_db": 0,
@@ -711,57 +884,88 @@
    "tema": "Eszkatológia",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "72 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 5 kizárva; a nyolc ellenőrzési lépésből 4 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenoriz.py | ts=2026-11-01T19:16Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenoriz.py | ts=2026-11-01T20:08Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "zold",
      "ertek": "0 HIBA, 292 jelentés",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:09Z",
      "reszlet": [
       "jelentés: 292 (nem blokkol)"
      ],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
     },
     {
      "allapot": "zold",
      "ertek": "nulla-diff",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:10Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "zold",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
     },
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=jeloltek.tsv | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=jeloltek.tsv | ts=2026-11-01T20:10Z",
      "reszlet": [],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_ALVIL-001.md",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=motivum_hatar.py | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=motivum_hatar.py | ts=2026-11-01T20:10Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "108/108 blokk fedett (48 bevezetővel), kiejtés-hiány 7, fordításra vár 0",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:10Z",
      "reszlet": [
       "kiejtés-hiány: sor 9 — ἄβυσσος",
       "kiejtés-hiány: sor 79 — י׳",
@@ -771,6 +975,11 @@
       "kiejtés-hiány: sor 1389 — ᾍδης",
       "kiejtés-hiány: sor 1430 — ᾍδης"
      ],
+     "szam": {
+      "kiejtes": 7,
+      "fordit": 0,
+      "blokk": 0
+     },
      "mertek": {
       "blokk_osszes": 108,
       "blokk_hiany": 0,
@@ -778,20 +987,29 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 7 kiejtés hiányzik."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:10Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "8 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:10Z",
      "reszlet": [
       "#121 ⛔ megállt feladat",
       "#123 ⛔ megállt feladat",
@@ -802,6 +1020,9 @@
       "DT338 🟡 (#121)",
       "DT388 🟡 (#121)"
      ],
+     "szam": {
+      "n": 8
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -835,7 +1056,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "8 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 4,
@@ -851,6 +1076,7 @@
     "terjedelem_szo": 18061,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 64,
     "elofordulas_usz": 8,
     "kapcsolatok_db": 2,
@@ -875,61 +1101,94 @@
    "tema": "Angyalológia",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 1 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenoriz.py | ts=2026-11-01T19:18Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenoriz.py | ts=2026-11-01T20:10Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 167 jelentés",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:19Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:11Z",
      "reszlet": [
       "jelentés: 167 (nem blokkol)"
      ],
+     "szam": {
+      "n": 1
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "1820 eltérő sor",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:11Z",
      "reszlet": [],
+     "szam": {
+      "n": 1820
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "piros",
      "ertek": "2 nyitott jelölt",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=jeloltek.tsv | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=jeloltek.tsv | ts=2026-11-01T20:11Z",
      "reszlet": [
       "Mt 24:38",
       "Luk 17:27"
      ],
+     "szam": {
+      "n": 2
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "2 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_MENNY-001.md",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=motivum_hatar.py | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=motivum_hatar.py | ts=2026-11-01T20:11Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "17/32 blokk fedett (0 bevezetővel), kiejtés-hiány 24, fordításra vár 0",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:11Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -971,6 +1230,11 @@
       "kiejtés-hiány: sor 421 — בְּנֵי",
       "kiejtés-hiány: sor 421 — הָ"
      ],
+     "szam": {
+      "kiejtes": 24,
+      "fordit": 0,
+      "blokk": 15
+     },
      "mertek": {
       "blokk_osszes": 32,
       "blokk_hiany": 15,
@@ -978,23 +1242,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 24 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:11Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:11Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -1013,7 +1289,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 1,
@@ -1029,6 +1309,7 @@
     "terjedelem_szo": 4531,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 6,
     "elofordulas_usz": 3,
     "kapcsolatok_db": 0,
@@ -1049,62 +1330,95 @@
    "tema": "Antropológia",
    "pardes_szint": "Pshat/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "8 igehely feldolgozva, 3 vizsgálat alatt; a nyolc ellenőrzési lépésből 1 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenoriz.py | ts=2026-11-01T19:20Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenoriz.py | ts=2026-11-01T20:11Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 151 jelentés",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:13Z",
      "reszlet": [
       "jelentés: 151 (nem blokkol)"
      ],
+     "szam": {
+      "n": 1
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "1482 eltérő sor",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:13Z",
      "reszlet": [],
+     "szam": {
+      "n": 1482
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "piros",
      "ertek": "3 nyitott jelölt",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=jeloltek.tsv | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=jeloltek.tsv | ts=2026-11-01T20:13Z",
      "reszlet": [
       "Fil 1:27",
       "1Pét 1:22",
       "Mt 12:18"
      ],
+     "szam": {
+      "n": 3
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "3 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_ANTROP-001.md",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=motivum_hatar.py | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=motivum_hatar.py | ts=2026-11-01T20:13Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "18/36 blokk fedett (0 bevezetővel), kiejtés-hiány 9, fordításra vár 0",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:13Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1134,6 +1448,11 @@
       "kiejtés-hiány: sor 385 — ψυχικός",
       "kiejtés-hiány: sor 385 — πνευματικός"
      ],
+     "szam": {
+      "kiejtes": 9,
+      "fordit": 0,
+      "blokk": 18
+     },
      "mertek": {
       "blokk_osszes": 36,
       "blokk_hiany": 18,
@@ -1141,23 +1460,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 9 kiejtés hiányzik, 18 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:13Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:13Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -1176,7 +1507,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 1,
@@ -1192,6 +1527,7 @@
     "terjedelem_szo": 9528,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 1,
     "elofordulas_usz": 7,
     "kapcsolatok_db": 0,
@@ -1210,42 +1546,63 @@
    "tema": "Teremtéstan",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "33 igehely feldolgozva, 14 vizsgálat alatt, 4 kizárva; a nyolc ellenőrzési lépésből 1 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenoriz.py | ts=2026-11-01T19:21Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenoriz.py | ts=2026-11-01T20:13Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 240 jelentés",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:22Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:14Z",
      "reszlet": [
       "jelentés: 240 (nem blokkol)"
      ],
+     "szam": {
+      "n": 1
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "994 eltérő sor",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:14Z",
      "reszlet": [],
+     "szam": {
+      "n": 994
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "piros",
      "ertek": "14 nyitott jelölt",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=jeloltek.tsv | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:14Z",
      "reszlet": [
       "5Móz 1:4",
       "5Móz 2:23",
@@ -1262,21 +1619,33 @@
       "1Krón 4:40",
       "1Móz 14:6"
      ],
+     "szam": {
+      "n": 14
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "14 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_HODIT-001.md",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=motivum_hatar.py | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:14Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "piros",
      "ertek": "32/47 blokk fedett (0 bevezetővel), kiejtés-hiány 19, fordításra vár 0",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:14Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1313,6 +1682,11 @@
       "kiejtés-hiány: sor 514 — גִּבֹּרִים",
       "kiejtés-hiány: sor 560 — גִּבֹּרִים"
      ],
+     "szam": {
+      "kiejtes": 19,
+      "fordit": 0,
+      "blokk": 15
+     },
      "mertek": {
       "blokk_osszes": 47,
       "blokk_hiany": 15,
@@ -1320,23 +1694,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 19 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:14Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:14Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -1355,7 +1741,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 1,
@@ -1371,6 +1761,7 @@
     "terjedelem_szo": 6992,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 33,
     "elofordulas_usz": 0,
     "kapcsolatok_db": 0,
@@ -1394,42 +1785,63 @@
    "tema": "Hamartológia",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
+   "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenoriz.py | ts=2026-11-01T19:23Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenoriz.py | ts=2026-11-01T20:14Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "piros",
      "ertek": "4 HIBA, 299 jelentés",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:16Z",
      "reszlet": [
       "jelentés: 299 (nem blokkol)"
      ],
+     "szam": {
+      "n": 4
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 4 hibát talált a szövegekben."
     },
     {
      "allapot": "piros",
      "ertek": "3628 eltérő sor",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:16Z",
      "reszlet": [],
+     "szam": {
+      "n": 3628
+     },
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "piros",
      "ertek": "8 nyitott jelölt",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=jeloltek.tsv | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=jeloltek.tsv | ts=2026-11-01T20:16Z",
      "reszlet": [
       "Jób 16:18",
       "Jób 31:38",
@@ -1440,21 +1852,35 @@
       "2Pét 3:12",
       "2Tim 3:8"
      ],
+     "szam": {
+      "n": 8
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "8 igehely vizsgálata folyamatban van."
     },
     {
      "allapot": "zold",
      "ertek": "0 nyitott kérdés",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=motivum_hatar.py | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=motivum_hatar.py | ts=2026-11-01T20:16Z",
      "reszlet": [],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "zold",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A motívum határáról szóló kérdések megválaszoltak."
     },
     {
      "allapot": "piros",
      "ertek": "57/88 blokk fedett (0 bevezetővel), kiejtés-hiány 67, fordításra vár 0",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:16Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1555,6 +1981,11 @@
       "kiejtés-hiány: sor 1203 — κατάρα",
       "kiejtés-hiány: sor 1205 — אָרַר"
      ],
+     "szam": {
+      "kiejtes": 67,
+      "fordit": 0,
+      "blokk": 31
+     },
      "mertek": {
       "blokk_osszes": 88,
       "blokk_hiany": 31,
@@ -1562,23 +1993,35 @@
       "fordításra_var": 0
      },
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 67 kiejtés hiányzik, 31 rész magyarázat nélkül áll."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:16Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:16Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
+     "szam": {
+      "n": 1
+     },
      "feladatok": [
       {
        "feladat": 10,
@@ -1597,7 +2040,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 2,
@@ -1613,6 +2060,7 @@
     "terjedelem_szo": 15562,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 43,
     "elofordulas_usz": 9,
     "kapcsolatok_db": 1,
@@ -1801,75 +2249,119 @@
    "tema": "Teremtéstan + Eszkatológia",
    "pardes_szint": "Remez",
    "allasfokozat": "feldolgozás",
+   "allasfokozat_olvasoi": "Feldolgozás alatt",
+   "olvasoi_mondat": "3 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 63 kizárva; a nyolc ellenőrzési lépésből 4 teljesül.",
    "tsv_statusz": "feldolgozás alatt",
    "tsv_statusz_eltérés": false,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenoriz.py | ts=2026-11-01T19:24Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenoriz.py | ts=2026-11-01T20:16Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
      ],
+     "szam": {},
      "sorszam": 1,
-     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)"
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
     },
     {
      "allapot": "zold",
      "ertek": "0 HIBA, 45 jelentés",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenorzes/futtat.py | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:17Z",
      "reszlet": [
       "jelentés: 45 (nem blokkol)"
      ],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 2,
-     "nev": "CI-ellenőrzés (E2–E29)"
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
     },
     {
      "allapot": "piros",
      "ertek": "nincs lexikon/TEREMT-002_TUDOMANYOS.md",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 3,
-     "nev": "egyforrású, nulla-diff újragenerálás"
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
     },
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=jeloltek.tsv | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=jeloltek.tsv | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {
+      "n": 0
+     },
      "sorszam": 4,
-     "nev": "nincs nyitott jelölt"
+     "nev": "nincs nyitott jelölt",
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_TEREMT-002.md",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=motivum_hatar.py | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=motivum_hatar.py | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 5,
-     "nev": "határ: 0 nyitott kérdés"
+     "nev": "határ: 0 nyitott kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs lexikon-lap",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 6,
-     "nev": "olvasói blokkok, kiejtés, fordítás"
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "szin": "szurke",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lap még nem készült el."
     },
     {
      "allapot": "nincs_mero",
      "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {},
      "sorszam": 7,
-     "nev": "nincs nyitott lektori kérdés"
+     "nev": "nincs nyitott lektori kérdés",
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
     },
     {
      "allapot": "zold",
      "ertek": "0 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T19:25Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:17Z",
      "reszlet": [],
+     "szam": {
+      "n": 0
+     },
      "feladatok": [
       {
        "feladat": 12,
@@ -1883,7 +2375,11 @@
       }
      ],
      "sorszam": 8,
-     "nev": "nincs nyitott DT / ⛔ feladat"
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "szin": "zold",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
     }
    ],
    "zold_db": 4,
@@ -1899,6 +2395,7 @@
     "terjedelem_szo": null,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva",
     "elofordulas_osz": 3,
     "elofordulas_usz": 0,
     "kapcsolatok_db": 0,
