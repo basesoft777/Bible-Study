@@ -1786,6 +1786,30 @@ BDB-példái több útvonalra mutatnak: kutatói kérdés, `GerincHiba` — a ki
 
 ---
 
+### 2.45 `naplok/ELOSZURES_<ID>.tsv` — a jelöltek gépi elő-szűrésének munkalistája (F150, DT432, 2026-11-01)
+
+**Ez nem adattábla, hanem `naplok/` alatti munkalista** (átnézési sorrend): a döntés és az indoklás a `jeloltek.tsv`-ben
+marad, a felhasználóé; a munkalistából a `jeloltek.tsv`-be közvetlen út nincs (CLAUDE.md 2. szabály). Generált
+(`eszkozok/jelolt_eloszures.py`, GitHub Action: `.github/workflows/jelolt_eloszures.yml`), kézzel szerkeszteni tilos. Motívumonként
+egy fájl, minden motívumra, amelynek van `elofordulas` típusú jelöltje (a nyitott jelölt nélkülié csak fejléc). Soronként egy
+`dontes=nyitva` előfordulás-jelölt. Olvasás `split('	')`; az első sor `# GENERÁLT: …` (motívum, n, a bemeneti fájlok
+HEAD-blobjai, `ts` = a bemenet utolsó commitjának ideje, nem a futásé: a kimenet ugyanarra a bemenetre bájtra azonos).
+
+| Oszlop | Jelentés |
+|---|---|
+| `igehely` | a jelölt igehelye (`jeloltek.tsv` `igehely`) |
+| `javaslat` | `vizsgalando` \| `valoszinu_ki` — rendezés: `vizsgalando` elöl, `valoszinu_ki` a végén, azon belül kanonikus versrend |
+| `ok` | pl. „a gerinc-szókapcsolat hiányzik: H0922+H8414; a versben a gerincből: H8414”, „a gerinc-szókapcsolat megvan: …”, „a hordozó nem formulaikus: a gépi szabály nem dönt”, „nincs szövegadat a TAHOT/TAGNT-ban …” |
+| `hordozo` | a motívum `azonossag_tipusa` (2.1) |
+| `proveniencia` | `scope=… \| forras=… \| motivum=… \| ts=…` |
+
+Szabály: `valoszinu_ki` **csak** `hordozo=formulaikus` sorra adható, és csak akkor, ha a vers (tartománynál mindegyik vers)
+Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs meg teljesen egy versben; minden más hordozón
+(lexikai, strukturális, …) és minden szövegadat nélküli sorra `vizsgalando`. A lexikai kiterjesztés: N-F150a. A `--meres` mód
+összesítője a stdout-ra megy, a fájlba nem.
+
+---
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
