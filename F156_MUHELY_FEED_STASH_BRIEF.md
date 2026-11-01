@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 156
 cim: A műhely állapota — kétrétegű Feed (nyilvános kirakat és belső műhely) és Stash (a kész, publikálásra váró anyag leírása és statja) a meglévő mérőkből, egy összegző szkripttel és Dashboard-felülettel
 kod: MUHELY_FEED_STASH
 tipus: feladat
@@ -8,11 +8,11 @@ modell: sonnet
 munka: folyamat
 allapot: nem_indult
 ad: egy összegző szkript (javasolt név `eszkozok/muhely_allapot.py`), amely új mérő nélkül, a meglévő mérőket csak olvasva futtatva generált JSON-t ír a Feedhez és a Stash-hez (kimenet réteg); a Feed két rétegben (nyilvános: állapotlánc motívumonként, összesített mérők, heti történés valódi dátummal, elvetett jelöltek, a Stash leírása és statja; belső: ugyanez kibontva, találatokkal, hibaszövegekkel, nyitott DT-kérdésekkel, PR-okkal, lektori kérdésekkel); a „kész” a 8 pontos kritériumból számolva, nem a `motivumok.tsv` `statusz`-ából; a felület egyelőre Dashboard-artifact; a #86 később a nyilvános réteget használja
-kovetkezo: "Te: befogadás a /befogad-dal (DT-F<nn>a, c, d eldöntve); utána /kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ DT-F<nn>b a mérés után"
+kovetkezo: "/kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ DT-F<nn>b a mérés után"
 olvas: [eszkozok/feladatok.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py, eszkozok/jelolt_eloszures.py, eszkozok/motivum_hatar.py, naplok/OLVASOI_blokk_teljesseg_meres.py, eszkozok/kiejtes_szoveg.py, eszkozok/gerinc_terkep.py, eszkozok/lexikon_general.py, .claude/commands/konzisztencia.md, adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivum_kapcsolatok.tsv, adat/forditasok.tsv, adat/SEMA.md, "motivumok/*.md", "lexikon/*_TUDOMANYOS.md", "naplok/HATAR_*.md", F86_ELOFIZETES_FEED_BRIEF.md, F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/muhely_allapot.py, eszkozok/teszt_muhely_allapot.py, generalt/muhely/, naplok/MUHELY_FEED_STASH_naplo.md]
 fugg: []
-nem_fugg: [86, 125, 151, 152]
+nem_fugg: [7, 10, 12, 27, 36, 38, 70, 86, 121, 123, 125, 131, 146, 148, 151, 152, 153]
 ---
 
 # Fnn_MUHELY_FEED_STASH_BRIEF.md — a műhely állapota: Feed és Stash

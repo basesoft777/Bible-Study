@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 157
 cim: Lektor-felület — a lektori és ellenőrző kérdések egy helyen, közös sémával; a felhasználó dönt, a válasz csak szabályos úton (jelöltdöntés vagy döntéstétel) jut a repóba
 kod: LEKTOR_FELULET
 tipus: feladat
@@ -8,11 +8,11 @@ modell: sonnet
 munka: folyamat
 allapot: nem_indult
 ad: egy közös kérdés-séma minden kérdés-forrásra (a `/kiadas` lektora, a határ-ellenőrzés `naplok/HATAR_<ID>.md`, a próza-lefedettség, a kiejtés-kalibráció, az artifact-kommentek); motívumonként generált `naplok/LEKTOR_<ID>.tsv`; egy artifact a kalibráló sablon mintájára (kérdésenként: elfogadom / elvetem / visszakérdezek / saját szöveg; szűrés forrás és motívum szerint; ugrás a lapnézet helyére); a válaszok tárolója és kérésre történő beolvasása; a szabályos visszaút (`jeloltek.tsv` sor `manual` provenienciával és a válasz idézetével, `DONTESEK.md` DT-F helyőrző, prózai teendő a forrásfájl feladataként), közvetlen út az adatba nincs
-kovetkezo: "Te: befogadás a /befogad-dal (DT-F<nn>a–c eldöntve); utána /kovetkezo, 0. ellenőrzés (db capability), M0"
+kovetkezo: "/kovetkezo, 0. ellenőrzés (db capability), M0"
 olvas: [naplok/HATAR_ISTENTISZT-001.md, naplok/HATAR_HAMART-001.md, eszkozok/motivum_hatar.py, eszkozok/kiejtes_szoveg.py, adat/jeloltek.tsv, adat/motivumok.tsv, adat/SEMA.md, DONTESEK.md, "lexikon/*_TUDOMANYOS.md", F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, F86_ELOFIZETES_FEED_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/lektor_kerdesek.py, eszkozok/teszt_lektor_kerdesek.py, eszkozok/lektor_felulet/, "naplok/LEKTOR_*.tsv", naplok/LEKTOR_FELULET_naplo.md]
 fugg: []
-nem_fugg: [86, 125, 151, 152]
+nem_fugg: [10, 12, 36, 86, 121, 123, 125, 131, 146, 148, 151, 152]
 ---
 
 # Fnn_LEKTOR_FELULET_BRIEF.md — lektor-felület
