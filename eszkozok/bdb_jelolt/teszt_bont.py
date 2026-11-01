@@ -217,7 +217,8 @@ class Javitas(unittest.TestCase):
                          [('H8034', '7', '1', '26:35', '26:25'), ('H7585', '10', '1', '25:11', '15:11')])
 
     def test_allapotok(self):
-        self.assertEqual(set(s['allapot'] for s in self.sorok), {'javitva', 'valodi_mem', 'jelolt_marad', 'kezi'})
+        self.assertEqual(set(s['allapot'] for s in self.sorok),
+                         {'javitva', 'valodi_mem', 'jelolt_marad', 'kezi', 'valodi_sorrend'})
         for s in self.sorok:
             if s['allapot'] == 'kezi':
                 continue
@@ -226,6 +227,45 @@ class Javitas(unittest.TestCase):
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
                 self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
                 self.assertTrue(s['bdb_id'])
+
+    def test_heber_sorrend_sorok(self):
+        # DT-F131y: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers
+        h = [s for s in self.sorok if s['hiba'] == 'heber_sorrend']
+        self.assertEqual(set(s['allapot'] for s in h), {'javitva', 'valodi_sorrend', 'jelolt_marad'})
+        szoveg = {(s['strong'], s['sorszam']): s for s in self.sorok}
+        for s in h:
+            self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
+            self.assertTrue(s['elofordulas'].isdigit() and s['proveniencia'].startswith('scope=%s |' % s['strong']))
+            if s['allapot'] == 'javitva':
+                self.assertNotRegex(s['forras_alak'], r'[,;.:0-9A-Za-z]')
+                self.assertIn('TAHOT', s['indok'])
+                self.assertEqual(sorted(s['forras_alak'].replace(' ', '')), sorted(s['javitott_alak'].replace(' ', '')))
+        self.assertTrue(szoveg)
+
+    def test_heber_sorrend_h7121(self):
+        import heber_sorrend as HS
+        # a kulcs a mássalhangzó-váz (a pontozás sorrendje forrásonként eltérhet)
+        h = {(s['sorszam'], HS.vaz(s['forras_alak'].replace(' ', '|'))): s for s in self.sorok
+             if s['strong'] == 'H7121' and s['hiba'] == 'heber_sorrend'}
+        s = h[('4', HS.vaz('גדול|בקול'))]
+        self.assertEqual((s['allapot'], HS.vaz(s['javitott_alak'].replace(' ', '|'))), ('javitva', HS.vaz('בקול|גדול')))
+        # a Qal 2.c kifejezése: a Biblia-próba nem dönt (mindkét alak illeszkedik), ezért a döntés szerint marad
+        s = h[('8', HS.vaz('קיבשם'))]
+        self.assertEqual(s['allapot'], 'jelolt_marad')
+        javaslat = s['indok'].split('javaslata: ')[1]
+        self.assertEqual((HS.vaz(javaslat), javaslat.count('׳'), javaslat.endswith('׳')), (HS.vaz('קבשםי'), 2, True))
+
+    def test_heber_sorrend_szabaly(self):
+        import heber_sorrend as HS
+        # H7121 Qal 2.c: a BDB.lexicon darabjai (vizuális darabsorrend) és a JSON-alak
+        self.assertEqual(HS.r0('׳ק י ׳בְּשֵׁם'), '׳בְּשֵׁם י ׳ק')
+        self.assertEqual(HS.r_lex('׳ק י ׳בְּשֵׁם', ['׳', 'בְּשֵׁם י', ' ', '׳', 'ק']), 'ק׳ בְּשֵׁם י׳')
+        self.assertEqual(HS.r_str('׳ק י ׳בְּשֵׁם'), 'ק׳ בְּשֵׁם י׳')
+        self.assertEqual(HS.r_hib('גְּדוֺל בְּקוֺל', None), 'בְּקוֺל גְּדוֺל')
+        self.assertIsNone(HS.r_lex('׳ק י', ['׳', 'ק']))     # a szerkezet nem vihető át
+        self.assertTrue(HS.tiszta('בְּקוֺל גְּדוֺל'))
+        self.assertFalse(HS.tiszta('ᵐ5 ׳ל'))
+        self.assertFalse(HS.tiszta('דָּבָר, תּוֺרָה'))
 
     def test_minta_mishpat(self):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
@@ -453,8 +493,11 @@ class Determinizmus(unittest.TestCase):
 
     def test_javitas_ellenoriz(self):
         with open(os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv'), encoding='utf-8') as f:
-            ts = f.readline().split('--ts ')[1].split(' ')[0]
-        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ellenoriz'],
+            elso = f.readline()
+        ts = elso.split('--ts ')[1].split(' ')[0]
+        tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
+                            '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

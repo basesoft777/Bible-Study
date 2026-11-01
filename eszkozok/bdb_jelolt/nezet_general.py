@@ -7,6 +7,9 @@ nélkül), a `adat/bdb_forras_javitas.tsv` javításaival:
     egész-token előfordulása → `javitott_alak`;
   - `pe_mem` / `javitva` (csak `--pe-mem`): a táblasor `szoveg`-ének `szo_sorszam`-adik héber szavában az `elofordulas`-adik dagesses mem
     → dagesses pe (a forrás alakjában: a U+FB3E prezentációs formát U+FB44-re, különben a mem betűt pére cserélve);
+  - `heber_sorrend` / `javitva` (csak `--heber-sorrend`; DT-F131y): a táblasor `szoveg`-ében a `forras_alak` `elofordulas`-adik
+    (héber betűvel nem határos) előfordulása → `javitott_alak`; a pe/mem javítás UTÁN, és ha az a kifejezésen belül cserélt,
+    a sorrend-javítás kimarad (a pe/mem nem vész el; számolva);
   - `kezi` (szerkezeti forráshiba): a szöveget nem változtatja.
 
 A kimenet NEM a `konkordancia/BDB_teljes_unabridged.tsv` (az változatlan, DT-F107c (d)), és nem a repó: a `--ki` útvonalra íródik
@@ -14,6 +17,7 @@ A kimenet NEM a `konkordancia/BDB_teljes_unabridged.tsv` (az változatlan, DT-F1
 
   --ki PATH       a nézet írása
   --pe-mem        a pe/mem javítás alkalmazása is
+  --heber-sorrend a héber sorrend-javítás (`heber_sorrend` / `javitva`) alkalmazása is
   --osszevet      a nézet összevetése a TSV-vel, osztályozva (azonos / sub / szokoz / forras_html / pe_mem / egyeb / nincs_a_nezetben)
 TSV: split('\\t') / '\\t'.join, csv modul nélkül.
 """
@@ -102,13 +106,34 @@ def pe_mem_sorban(szoveg, javitasok):
     return szoveg, hiba
 
 
-def general(pe_mem=False):
+def heber_sorrend_sorban(szoveg, nyers, javitasok):
+    """A sor szövegében a (forras_alak, elofordulas) helyek cseréje; az előfordulás a NYERS (pe/mem előtti) szövegben
+    számolódik (a pe/mem csere betűszámtartó). -> (szöveg, alkalmazott, pe/mem-ütközés, sikertelen)."""
+    cserek, utk, hiba = [], 0, 0
+    for d in javitasok:
+        poz = forras_javit.kifejezes_elofordulasok(nyers, d['forras_alak'])
+        k = int(d['elofordulas'])
+        if k < 1 or k > len(poz):
+            hiba += 1
+            continue
+        i, e = poz[k - 1], poz[k - 1] + len(d['forras_alak'])
+        if szoveg[i:e] != nyers[i:e]:
+            utk += 1
+            continue
+        cserek.append((i, e, d['javitott_alak']))
+    for i, e, uj in sorted(cserek, reverse=True):
+        szoveg = szoveg[:i] + uj + szoveg[e:]
+    return szoveg, len(cserek), utk, hiba
+
+
+def general(pe_mem=False, heber_sorrend=False):
     tab = collections.OrderedDict()
     for r in olvas(TABLA):
         tab.setdefault(r['strong'], []).append(r)
     jav = collections.defaultdict(list)
     for d in olvas(JAV):
-        if d['allapot'] == 'javitva' and (d['hiba'] == 'hivatkozas' or (pe_mem and d['hiba'] == 'pe_mem')):
+        if d['allapot'] == 'javitva' and (d['hiba'] == 'hivatkozas' or (pe_mem and d['hiba'] == 'pe_mem')
+                                          or (heber_sorrend and d['hiba'] == 'heber_sorrend')):
             jav[(d['strong'], d['hiba'])].append(d)
     ki, stat = collections.OrderedDict(), collections.Counter()
     for st, sorok in tab.items():
@@ -122,6 +147,18 @@ def general(pe_mem=False):
                     x['szoveg'], h = pe_mem_sorban(x['szoveg'], szerint[x['sorszam']])
                     stat['pe_mem_alkalmazva'] += len(szerint[x['sorszam']]) - h
                     stat['pe_mem_sikertelen'] += h
+        if heber_sorrend and jav.get((st, 'heber_sorrend')):
+            nyers = {x['sorszam']: x['szoveg'] for x in tab[st]}
+            sorok = [dict(x) for x in sorok]
+            szerint = collections.defaultdict(list)
+            for d in jav[(st, 'heber_sorrend')]:
+                szerint[d['sorszam']].append(d)
+            for x in sorok:
+                if x['sorszam'] in szerint:
+                    x['szoveg'], n, u, h = heber_sorrend_sorban(x['szoveg'], nyers[x['sorszam']], szerint[x['sorszam']])
+                    stat['heber_sorrend_alkalmazva'] += n
+                    stat['heber_sorrend_pe_mem_utkozes'] += u
+                    stat['heber_sorrend_sikertelen'] += h
         szoveg, _ = forras_javit.strong_nezet(sorok)
         # hivatkozás: a k-adik egész-token előfordulás cseréje, hátulról előre (a pozíciók ne csússzanak)
         cserek = []
@@ -180,9 +217,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ki')
     ap.add_argument('--pe-mem', action='store_true')
+    ap.add_argument('--heber-sorrend', action='store_true')
     ap.add_argument('--osszevet', action='store_true')
     a = ap.parse_args()
-    nezet, tab, stat = general(a.pe_mem)
+    nezet, tab, stat = general(a.pe_mem, a.heber_sorrend)
     print('NÉZET: %d Strong; %s' % (len(nezet), dict(stat)))
     if a.ki:
         if os.path.abspath(a.ki) == os.path.abspath(TSV):
@@ -199,8 +237,8 @@ def main():
         for o, l in minta.items():
             for e in l:
                 print('  %s\t%s' % (o, e))
-    print('proveniencia: scope=F107 nézet | forras=eszkozok/bdb_jelolt/nezet_general.py%s%s | ts=%s' % (
-        ' --pe-mem' if a.pe_mem else '', ' --osszevet' if a.osszevet else '', datetime.date.today().isoformat()))
+    print('proveniencia: scope=F107 nézet | forras=eszkozok/bdb_jelolt/nezet_general.py%s%s%s | ts=%s' % (
+        ' --pe-mem' if a.pe_mem else '', ' --heber-sorrend' if a.heber_sorrend else '', ' --osszevet' if a.osszevet else '', datetime.date.today().isoformat()))
     return 0
 
 
