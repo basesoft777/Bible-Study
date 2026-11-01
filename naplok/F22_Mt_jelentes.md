@@ -19,6 +19,7 @@
 | hívás | 133 |
 | kapuhiba (f22_statisztika.py) | Sonnet: 108 köteg, 1071 vers; kapuhiba első próbára 10.6% (113/1071); végleg 0.0% (0/1071) |
 | javító körbe került köteg | 25: k003, k010, k024, k027, k033, k034, k043, k046, k048, k051, k060, k061, k064, k068, k077, k078, k081, k083, k086, k093, k098, k101, k103, k106, k107 |
+| ebből egész köteg formátumhiba (érvénytelen JSON, `_munka/Mt_k*.json`) | 9: k010, k033, k046, k048, k051, k077, k083, k101, k107 |
 | link (`parok_Mt.tsv`) | 17515, bizonyosság: alacsony 17515, forrás: S |
 | szósor (`szavak_Mt.tsv`) | 37685 = 18787 Károli + 18898 eredeti |
 | Károli-oldal: párosítva / betoldás / fuggoben | 15413 / 3374 / 0 |

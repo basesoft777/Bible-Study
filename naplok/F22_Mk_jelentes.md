@@ -19,6 +19,7 @@
 | hívás | 73 |
 | kapuhiba (f22_statisztika.py) | Sonnet: 68 köteg, 678 vers; kapuhiba első próbára 2.1% (14/678); végleg 0.0% (0/678) |
 | javító körbe került köteg | 5: k033, k046, k050, k063, k065 |
+| ebből egész köteg formátumhiba (érvénytelen JSON, `_munka/Mk_k*.json`) | 1: k063 |
 | link (`parok_Mk.tsv`) | 10658, bizonyosság: alacsony 10658, forrás: S |
 | szósor (`szavak_Mk.tsv`) | 23620 = 11751 Károli + 11869 eredeti |
 | Károli-oldal: párosítva / betoldás / fuggoben | 9500 / 2251 / 0 |

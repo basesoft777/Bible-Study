@@ -12,6 +12,8 @@ Használat:
 """
 
 import argparse
+import glob
+import json
 import os
 import subprocess
 import sys
@@ -48,6 +50,7 @@ def main():
     ap.add_argument('--cimke', required=True, help='a batch-címke (batchek.tsv)')
     ap.add_argument('--csomag', required=True)
     ap.add_argument('--ki', default=None)
+    ap.add_argument('--megjegyzes', default=None, help='a jelentés végére kerülő kézi megjegyzés (egy bekezdés)')
     a = ap.parse_args()
     k = a.konyv
     n = sonnet_koteg.ascii_nev(k)
@@ -59,6 +62,8 @@ def main():
     bem = sum(int(r['bemenet_token'] or 0) for r in log)
     kim = sum(int(r['kimenet_token'] or 0) for r in log)
     javito = sorted({int(r['koteg']) for r in log if r['probalkozas'] == '2'})
+    munka = sorted(glob.glob(os.path.join(ROOT, 'f22', 'api_termeles', 'high', '_munka', '%s_k*.json' % n)))
+    json_hiba = [os.path.basename(f)[len(n) + 2:-5] for f in munka if 'nem érvényes JSON' in json.dumps(json.load(open(f, encoding='utf-8')).get('uzenet'), ensure_ascii=False)]
     hashek = sorted({r['prompt_sha256_12'] for r in log})
     batch = [r for r in tsv(os.path.join(ROOT, 'f22', 'api_termeles', 'batchek.tsv')) if r['cimke'] == a.cimke]
     parok = tsv(os.path.join(ROOT, 'adat', 'karoli_strong', 'parok_%s.tsv' % n))
@@ -101,6 +106,7 @@ def main():
     w('| hívás | %d |' % len(log))
     w('| %s | %s |' % ('kapuhiba (f22_statisztika.py)', stat[0].replace('|', '/')))
     w('| javító körbe került köteg | %d: %s |' % (len(javito), ', '.join('k%03d' % x for x in javito)))
+    w('| ebből egész köteg formátumhiba (érvénytelen JSON, `_munka/%s_k*.json`) | %d%s |' % (n, len(json_hiba), (': ' + ', '.join('k' + x for x in json_hiba)) if json_hiba else ''))
     w('| link (`parok_%s.tsv`) | %d, bizonyosság: %s, forrás: %s |' % (n, len(parok), ', '.join('%s %d' % (b, sum(1 for p in parok if p['bizonyossag'] == b)) for b in sorted({p['bizonyossag'] for p in parok})), ', '.join(sorted({p['forras'] for p in parok}))))
     w('| szósor (`szavak_%s.tsv`) | %d = %d Károli + %d eredeti |' % (n, len(szavak), karoli_szo, er_token))
     w('| Károli-oldal: párosítva / betoldás / fuggoben | %d / %d / %d |' % (db(hu, 'parositva'), db(hu, 'betoldas'), db(hu, 'fuggoben')))

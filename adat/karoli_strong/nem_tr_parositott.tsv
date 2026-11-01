@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Kor, 1Pet, 1Thessz, 1Tim, 2Jan, 2Kor, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jel, Jud, Kol, Mk, Mt, Rom, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-11-01T08:21:57+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Kor, 1Pet, 1Thessz, 1Tim, 2Jan, 2Kor, 2Pet, 2Thessz, 2Tim, 3Jan, ApCsel, Ef, Fil, Filem, Gal, Jak, Jan, Jel, Jud, Kol, Luk, Mk, Mt, Rom, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-11-01T08:42:52+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
 vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 1Ján 1:5	5	ἀγγελία	G0031	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	üzenet
 1Ján 2:13	16	Ἔγραψα	G1125	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	Írok
@@ -37,6 +37,43 @@ vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 2Kor 12:9	15	τελεῖται.	G5055	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16,17	végeztetik el
 2Pét 2:21	13	ὑποστρέψαι	G5290	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	elpártoljanak
 2Pét 2:22	18	κυλισμὸν	G2946	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	fertőjébe
+ApCsel 2:23	12	χειρὸς	G5495	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	kezeitekkel
+ApCsel 9:8	13	οὐδὲν	G3762	NA27+Tyn+SBL+WH+Treg	parositva	10	senkit
+ApCsel 11:28	13	μεγάλην	G3173	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	nagy
+ApCsel 11:28	20	ἥτις	G3748	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20,21	a mely
+ApCsel 14:10	12	ἥλατο	G0242	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	felszökött
+ApCsel 15:7	3	ζητήσεως	G2214	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4	vetekedés
+ApCsel 17:2	14	διελέξατο	G1256	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	13	vetekedék
+ApCsel 19:12	6	ἀποφέρεσθαι	G0667	NA28+NA27+Tyn+SBL+WH+Treg+KJV	parositva	6	elvivék
+ApCsel 19:12	25	ἐκπορεύεσθαι	G1607	NA28+NA27+Tyn+SBL+WH+Treg	parositva	23	kimenének
+ApCsel 19:13	23	ὁρκίζω	G3726	NA28+NA27+Tyn+SBL+WH+Treg	parositva	21	Kényszerítünk
+ApCsel 19:16	2	ἐφαλόμενος	G2177	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	ugorván
+ApCsel 21:3	13	κατήλθομεν	G2718	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13,14	köténk ki
+ApCsel 21:4	18	ἐπιβαίνειν	G1910	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19,20	menjen fel
+ApCsel 21:5	28	προσευξάμενοι	G4336	NA28+NA27+Tyn+SBL+WH+Treg	parositva	24	imádkozánk
+ApCsel 21:6	1	ἀπησπασάμεθα	G0782	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	elbúcsúzván
+ApCsel 21:6	4	ἀνέβημεν	G0305	NA28+NA27	parositva	4	beülénk
+ApCsel 21:8	9	ἤλθομεν	G2064	NA28+NA27+Tyn+SBL+WH+Treg+KJV	parositva	11	érkezénk
+ApCsel 22:22	22	καθῆκεν	G2520	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	20	illik
+ApCsel 23:6	15	ἔκραζεν	G2896	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	felkiálta
+ApCsel 23:6	25	Φαρισαίων·	G5330	NA28+NA27+Tyn+SBL+WH+Treg	parositva	28	farizeus
+ApCsel 24:27	12	χάριτα	G5485	NA28+NA27+Tyn+SBL+WH+Treg+KJV	parositva	14	kedveskedni
+ApCsel 25:2	2	τε	G5037	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	pedig
+ApCsel 25:2	5	ἀρχιερεῖς	G0749	NA28+NA27+Tyn+SBL+WH+Treg	parositva	6	főpap
+ApCsel 25:4	9	εἰς	G1519	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	Czézáreában
+ApCsel 25:4	10	Καισάρειαν,	G2542	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	Czézáreában
+ApCsel 25:5	14	ἄτοπον,	G0824	NA28+NA27+Tyn+SBL+WH+Treg+KJV	parositva	11	gonoszság
+ApCsel 25:7	15	καταφέροντες	G2702	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16,17	hozván fel
+ApCsel 25:9	20	κριθῆναι	G2919	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16,17	ítéltetni meg
+ApCsel 25:13	13	ἀσπασάμενοι	G0782	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12	köszöntsék
+ApCsel 26:22	13	μαρτυρόμενος	G3143	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	10,11	bizonyságot tévén
+ApCsel 26:24	10	φησιν·	G5346	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	monda
+ApCsel 26:28	13	ποιῆσαι.	G4160	NA28+NA27+Tyn+SBL+WH+Treg	parositva	10	legyek
+ApCsel 26:29	14	μεγάλῳ	G3173	NA28+NA27+Tyn+SBL+WH+Treg	parositva	10	nagyon
+ApCsel 26:31	13	τι	G5100	NA28+NA27+Tyn+SBL	parositva	12	dolgot
+ApCsel 27:42	13	διαφύγῃ.	G1309	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	14,16	el szaladhasson
+ApCsel 28:27	33	ἰάσομαι	G2390	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	28,30	meg gyógyítsam
+ApCsel 28:28	9	τοῦτο	G3778	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	ez
 Ef 3:6	15	Ἰησοῦ	G2424	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	Jézusban
 Ef 6:19	6	δοθῇ	G1325	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	5	adassék
 Fil 1:11	2	καρπὸν	G2590	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	gyümölcsével
@@ -93,6 +130,48 @@ Jel 22:11	14	ποιησάτω	G4160	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	20	
 Jel 22:12	16	ἐστὶν	G1510	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	lesz
 Jel 22:13	4	ἄλφα	G0001	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	4	Alfa
 Jel 22:16	27	πρωϊνός.	G4407	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	24	hajnali
+Ján 2:15	26	ἀνέτρεψεν,	G0396	NA28+NA27+Tyn+WH	parositva	23	feldönté
+Ján 2:17	14	καταφάγεταί	G2719	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	16	emészt
+Ján 3:25	9	Ἰουδαίου	G2453	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	9	judeaiak
+Ján 3:27	9	οὐδὲ	G3761	NA28+NA27+SBL	parositva	7	semmit
+Ján 3:27	10	ἓν	G1520	NA28+NA27+SBL	parositva	7	semmit
+Ján 4:1	5	Ἰησοῦς	G2424	NA28+NA27+SBL	parositva	5	Úr
+Ján 4:6	21	ὡς	G5613	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	Mintegy
+Ján 4:34	9	ποιήσω	G4160	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	cselekedjem
+Ján 5:25	14	ἀκούσουσιν	G0191	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	hallják
+Ján 5:25	24	ζήσουσιν.¶	G2198	NA28+NA27+Tyn+SBL+WH+Treg	parositva	25	élnek
+Ján 5:28	14	ἀκούσουσιν	G0191	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	meghallják
+Ján 6:51	19	ζήσει	G2198	NA28+NA27+SBL+WH	parositva	17	él
+Ján 6:57	17	ζήσει	G2198	NA28+NA27+Tyn+SBL+WH+Treg	parositva	21	él
+Ján 8:12	19	περιπατήσῃ	G4043	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	17	járhat
+Ján 8:25	6	εἶ;	G1510	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	vagy
+Ján 8:26	20	λαλῶ	G2980	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	beszélem
+Ján 8:54	5	δοξάσω	G1392	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	dicsőítem
+Ján 8:54	24	ἡμῶν	G3165	NA28+NA27+SBL+Treg+Byz	parositva	26,27	ti Istenetek
+Ján 8:55	17	ὑμῖν	G4771	NA28+NA27+SBL+WH+Treg	parositva	17	hozzátok
+Ján 9:30	20	ἤνοιξέν	G0455	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	20	megnyitotta
+Ján 10:14	12	γινώσκουσίν	G1097	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	ismernek
+Ján 10:14	13	με	G3165	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	engem
+Ján 10:14	14	τὰ	G3588	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	enyéim
+Ján 10:14	15	ἐμά,	G1473	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	enyéim
+Ján 10:16	22	γενήσονται	G1096	NA28+NA27+Tyn+SBL+WH+Treg	parositva	25	lészen
+Ján 10:22	2	τότε	G5119	NA28+NA27+Tyn+SBL+WH	parositva	2	pedig
+Ján 11:21	14	ἀπέθανεν	G0599	NA28+NA27+SBL+WH+Treg	parositva	11,13	halt meg
+Ján 13:38	1	ἀποκρίνεται	G0611	NA28+NA27+Tyn+SBL+WH+Treg	parositva	1	Felele
+Ján 13:38	18	φωνήσῃ	G5455	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	13	szól
+Ján 13:38	21	ἀρνήσῃ	G0720	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	megtagadsz
+Ján 16:15	15	λαμβάνει	G2983	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	13	vesz
+Ján 16:25	20	ἀπαγγελῶ	G0518	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	beszélek
+Ján 17:13	20	ἑαυτοῖς.	G1438	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	magokban
+Ján 18:10	18	ὠτάριον	G6090	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	fülét
+Ján 18:13	2	ἤγαγον	G0071	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2	vivék
+Ján 18:14	12	ἀποθανεῖν	G0599	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16,17	veszszen el
+Ján 18:20	7	λελάληκα	G2980	NA28+NA27+Tyn+SBL+WH+Treg	parositva	6	szólottam
+Ján 18:20	21	πάντες	G3956	NA28+NA27+Tyn+SBL+WH+Treg	parositva	21	mindenünnen
+Ján 18:21	3	ἐρωτᾷς;	G2065	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2	kérdesz
+Ján 18:21	4	ἐρώτησον	G2065	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4	Kérdezd
+Ján 18:28	13	πρωΐ.	G4404	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	9	reggel
+Ján 18:29	9	φησίν·	G5346	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	monda
 Kol 2:2	6	συμβιβασθέντες	G4822	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	egybeköttetvén
 Kol 2:2	13	πλοῦτος	G4149	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	gazdagságára
 Kol 2:12	5	βαπτισμῷ	G0909	NA28+NA27+SBL+Treg	parositva	6	keresztségben
@@ -103,6 +182,73 @@ Kol 4:12	18	σταθῆτε	G2476	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	megáll
 Kol 4:12	21	πεπληροφορημένοι	G4135	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19,20	teljes meggyőződéssel
 Kol 4:15	7	Νύμφαν	G3564	NA28+NA27+Tyn+SBL+WH	parositva	8	Nimfást
 Kol 4:15	12	αὐτῆς	G0846	NA28+NA27+SBL+WH	parositva	14,15	ő házánál
+Luk 2:3	8	ἑαυτοῦ	G1438	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	maga
+Luk 2:14	11	εὐδοκίας.¶	G2107	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14,15	jó akarat
+Luk 2:15	17	ἐλάλουν	G2980	NA28+NA27+Tyn+SBL+WH	parositva	12	mondának
+Luk 4:41	7	κραυγάζοντα	G2905	NA28+NA27+SBL	parositva	7	kiáltozván
+Luk 4:42	12	ἐπεζήτουν	G1934	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12	felkeresé
+Luk 4:43	19	ἐπὶ	G1909	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	azért
+Luk 4:43	21	ἀπεστάλην.	G0649	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	küldettem
+Luk 5:2	15	ἔπλυνον	G4150	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	mossák
+Luk 5:5	22	δίκτυα.	G1350	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22	hálót
+Luk 6:4	13	λαβὼν	G2983	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9,10	vette el
+Luk 6:49	23	συνέπεσεν,	G6081	NA28+NA27+Tyn+SBL+WH+Treg	parositva	28	összeomlott
+Luk 9:3	11	ῥάβδον	G4464	NA28+NA27+Tyn+SBL+WH+Treg	parositva	10	pálczákat
+Luk 9:5	5	δέχωνται	G1209	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3,5	be fogadnak
+Luk 9:5	19	ἀποτινάσσετε	G0660	NA28+NA27+SBL+WH	parositva	15,16	verjétek le
+Luk 9:7	20	ἠγέρθη	G1453	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22,23	támadt fel
+Luk 9:8	11	τις	G5100	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	valamelyik
+Luk 9:10	18	πόλιν	G4172	NA28+NA27+Tyn+SBL+WH+Treg	parositva	21	városnak
+Luk 9:10	19	καλουμένην	G2564	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	nevű
+Luk 9:11	8	ἀποδεξάμενος	G0588	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	fogadván
+Luk 9:23	10	ἔρχεσθαι,	G2064	NA28+NA27+Tyn+SBL+WH+Treg	parositva	10	jőni
+Luk 9:23	11	ἀρνησάσθω	G0720	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11,12	tagadja meg
+Luk 9:27	8	αὐτοῦ	G0847	NA28+NA27+Tyn+SBL+WH+Treg	parositva	8	itt
+Luk 9:27	13	γεύσωνται	G1089	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	15,17	meg kóstolják
+Luk 10:21	6	ἐν	G1722	NA28+NA27	parositva	5	lelkében
+Luk 11:49	20	διώξουσιν	G1377	NA28+NA27+Tyn+SBL+WH	parositva	20	elüldöznek
+Luk 12:26	3	οὐδὲ	G3761	NA28+NA27+Tyn+SBL+WH+Treg	parositva	8	sem
+Luk 12:28	18	ἀμφιέζει,	G6005	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	ruházza
+Luk 12:29	7	καὶ	G2532	NA28+NA27+Tyn+SBL+WH+Treg	parositva	6	vagy
+Luk 12:30	8	ἐπιζητοῦσιν·	G1934	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	kérdezik
+Luk 12:31	6	αὐτοῦ	G0846	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	országát
+Luk 12:36	10	ἀναλύσῃ	G0360	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	14,15	jő meg
+Luk 12:38	7	κἂν	G1437+G2532	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7,8	és ha
+Luk 12:39	20	διορυχθῆναι	G1358	NA28+NA27+SBL+WH	parositva	25	törjön
+Luk 12:56	17	οἴδατε	G6063	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	tudtok
+Luk 12:56	18	δοκιμάζειν;	G1381	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20,21	ítéletet tenni
+Luk 12:58	28	παραδώσει	G3860	NA28+NA27+Tyn+SBL+WH+Treg	parositva	25,27	át adjon
+Luk 12:58	35	βαλεῖ	G0906	NA28+NA27+Tyn+SBL+WH+Treg	parositva	37	vessen
+Luk 13:8	20	κόπρια·	G2874	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	17	megtrágyázom
+Luk 13:11	9	δεκαοκτὼ	G3638+G1176	NA28+NA27+Tyn+SBL	parositva	11	tizennyolcz
+Luk 13:14	24	αὐταῖς	G0846	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	azokon
+Luk 14:28	18	εἰς	G1519	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	17	mivel
+Luk 14:31	13	βουλεύσεται	G1011	NA28+NA27+Tyn+SBL+WH	parositva	15	tanácskozik
+Luk 14:31	20	ὑπαντῆσαι	G5221	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	szembeszállhat
+Luk 16:26	16	ἔνθεν	G6033	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	16	innét
+Luk 17:4	6	ἁμαρτήσῃ	G0264	NA28+NA27+Tyn+SBL+WH+Treg	parositva	6	vétkezik
+Luk 17:4	14	πρὸς	G4314	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	hozzád
+Luk 17:6	6	ἔχετε	G2192	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	8	volna
+Luk 17:27	4	ἐγαμίζοντο,	G1061	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4	férjhezmentek
+Luk 17:27	19	πάντας.	G3956	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	mindeneket
+Luk 17:28	2	καθὼς	G2531	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2	mint
+Luk 17:29	16	πάντας·	G3956	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	mindenkit
+Luk 17:30	3	αὐτὰ	G0846	NA28+NA27+SBL+WH+Treg	parositva	3	azon
+Luk 21:22	7	πλησθῆναι	G4130	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	7	beteljesedjenek
+Luk 22:30	14	καθήσεσθε	G2521	NA28+NA27+SBL+Treg+Byz	parositva	12	üljetek
+Luk 22:32	8	ἐκλίπῃ	G1587	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	6,8	el fogyatkozzék
+Luk 22:34	9	φωνήσει	G5455	NA28+NA27+Tyn+WH	parositva	9	szól
+Luk 22:34	12	ἕως	G2193	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	míg
+Luk 22:36	2	δὲ	G1161	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2	azért
+Luk 24:4	5	ἀπορεῖσθαι	G0639	NA28+NA27+Tyn+SBL+WH+Treg	parositva	8	megdöbbenének
+Luk 24:4	16	ἐσθῆτι	G2066	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	öltözetben
+Luk 24:4	17	ἀστραπτούσῃ.	G0797	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	fényes
+Luk 24:5	8	πρόσωπα	G4383	NA28+NA27+Tyn+SBL+WH+Treg	parositva	8	orczájokat
+Luk 24:19	13	Ναζαρηνοῦ,	G3479	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	Názáretbeli
+Luk 24:44	3	πρὸς	G4314	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	nékik
+Luk 24:44	4	αὐτούς·	G0846	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	nékik
+Luk 24:47	8	εἰς	G1519	NA28+NA27+WH	parositva	8	és
+Luk 24:47	15	ἀρξάμενοι	G0757	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	elkezdve
 Mk 3:8	20	ἀκούοντες	G0191	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18,19	mikor hallották
 Mk 3:11	8	ἐθεώρουν,	G2334	NA28+NA27+Tyn+SBL+WH+Treg	parositva	6	meglátták
 Mk 3:11	9	προσέπιπτον	G4363	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	leborulának
