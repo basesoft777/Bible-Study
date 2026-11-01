@@ -68,7 +68,7 @@ a legtöbb hiány az volt, hogy „volt adat de nem volt próza. vagy nem azonos
 
 - Blokkonként az adat mennyisége (sorok, helyek, kapcsolatok) és a hozzá tartozó próza hossza; jelzi, ahol sok az adat és kevés
   a próza, vagy ahol két hasonló súlyú összefüggés prózája nagyságrendben eltér. Nem ítél minőségről, csak megmutatja, hol
-  egyenetlen a lap. A küszöböt az M0 mérése után a felhasználó hagyja jóvá (⛔ DT-F125a).
+  egyenetlen a lap. A küszöböt az M0 mérése után a felhasználó hagyja jóvá (⛔ DT471).
 
 ### 2.6 A próza gazdája — `MUNKAMENET.md`
 

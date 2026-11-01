@@ -49,7 +49,7 @@ Név nélküli elemek:
 | 5. Alkalmazás és tanítványság | 1442 | 3 | 481 |  |
 | 7. Módszertan és nyitott kérdések | 7063 | 10 | 706 |  |
 
-Küszöbök (javaslat, DT-F125a): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
+Küszöbök (javaslat, DT471): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
 
 Adatelemet egyáltalán nem megnevező bekezdés (értelmező, módszertani): 41 / 88
 
@@ -138,19 +138,19 @@ Név nélküli elemek:
 | 5. Alkalmazás és tanítványság | 289 | 0 | – |  |
 | 7. Módszertan és nyitott kérdések | 277 | 0 | – |  |
 
-Küszöbök (javaslat, DT-F125a): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
+Küszöbök (javaslat, DT471): kevés = 150 karakter/elem alatt; eltérés = 4x a blokkok mediánjától; legalább 3 megnevezett elem.
 
 Adatelemet egyáltalán nem megnevező bekezdés (értelmező, módszertani): 5 / 13
 
 
-## DT-F125a — eldöntve (1. változat)
+## DT471 — eldöntve (1. változat)
 
 A felhasználó („a javaslat szerint”, az orkesztrátor-session idézetével): 150 karakter/elem alatt „kevés”; a blokk-medián négyszeresénél távolabb „egyenetlen”; legalább 3 elem; a csoportos említés külön kategória. Rögzítve: `DONTESEK.md`.
 
 ## F125.2 — eszköz és JELENTÉS-szabályok
 
 - `proza_lefedettseg.py`: új „csoportosan fedett” oszlop (a „N egyedi igehely” gyűjtő mondat, csak az előfordulásokra; ALVIL-001: 72 / megnevezve 15 / csoportosan fedett 57 / hiány 0). A mérő nem tudja, a gyűjtő mondat melyik igehelyeket fedi: csak darabszám szerint kezeli. A fedett darabszám a gyűjtő mondat N-jéig terjed (legfeljebb a prózában álló legnagyobb N, a többi név nélküli előfordulás hiány marad; javítás: ELLENOR_F125 1., F125.6).
-- `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát. *(A DT-F125b óta nem érvényes: l. „DT-F125b — a 22. szabály”.)*
+- `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát. *(A DT472 óta nem érvényes: l. „DT472 — a 22. szabály”.)*
 - Tesztek: `teszt_proza_lefedettseg.py` (11, zöld) a két szabályt is lefedi; a briefben szereplő külön `teszt_ellenoriz_proza.py` nem készült (egy fájl, két téma).
 
 ## ⛔ A szövegjavaslatok
@@ -173,9 +173,9 @@ A fenti 57, 4, 192 és 77 szám az 1. tétel (F125.6) UTÁN újramérve, az ág 
 
 A régi (F125.2) mérés: 22 → 192, 23 → 77, ugyanezzel a paranccsal a mai main-en; az F125.6 nem változtatta a 23. szabály jelzésszámát.
 
-## DT-F125b — a 22. szabály
+## DT472 — a 22. szabály
 
-A felhasználó döntése (DT-F125b, 2026-11-01, az orkesztrátor-session továbbításával): „a) kód a szöveghez”. A 22. szabály (`eszkozok/ellenoriz.py` `szabaly22_kiejtes_hiany`) a jóváhagyott K-szöveghez igazítva: egy héber/görög szót akkor jelez, ha a szakaszban (két `##`/`###` cím között) SEHOL nem kap kiejtést; ha bármelyik előfordulása kap, nem jelez (`kiejtes_szoveg.elemez_szakaszonkent`). A hatókör a `lexikon/*_TUDOMANYOS.md` mellett a tanulmányok is: `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/` (a CLAUDE.md rétegtáblájának forrás-rétege; közvetlen `.md` fájlok, a `naplok/` almappa és a `Konnyu_ellenorzes*osszesito*` összesítők nélkül). Az F125.2 mérés (192) csak a `lexikon/` hatókörű volt.
+A felhasználó döntése (DT472, 2026-11-01, az orkesztrátor-session továbbításával): „a) kód a szöveghez”. A 22. szabály (`eszkozok/ellenoriz.py` `szabaly22_kiejtes_hiany`) a jóváhagyott K-szöveghez igazítva: egy héber/görög szót akkor jelez, ha a szakaszban (két `##`/`###` cím között) SEHOL nem kap kiejtést; ha bármelyik előfordulása kap, nem jelez (`kiejtes_szoveg.elemez_szakaszonkent`). A hatókör a `lexikon/*_TUDOMANYOS.md` mellett a tanulmányok is: `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/` (a CLAUDE.md rétegtáblájának forrás-rétege; közvetlen `.md` fájlok, a `naplok/` almappa és a `Konnyu_ellenorzes*osszesito*` összesítők nélkül). Az F125.2 mérés (192) csak a `lexikon/` hatókörű volt.
 
 - Régi: 192 jelzés (lexikon, első előfordulás szerint). Új: 729 jelzés összesen, ebből a `lexikon/` hatókörön 176, a tanulmányokon 553. `scope=python eszkozok/ellenoriz.py (teljes futás, 22. szabály) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:24+01:00`
 
@@ -187,17 +187,17 @@ A felhasználó döntése (DT-F125b, 2026-11-01, az orkesztrátor-session továb
 
 `scope=python eszkozok/ellenoriz.py `szabaly22_kiejtes_hiany` (a 22. szabály, mindkét kód ugyanazon a munkafa-adaton, HEAD be458e5b) | forras=lexikon/*_TUDOMANYOS.md, tematikus_lezart/*.md, genezis/*.md, ujszovetseg/*.md, melyelemzesek/*.md | ts=2026-11-01T19:47+01:00`
 
-## DT-F125d — commit-granularitás
+## DT474 — commit-granularitás
 
-A felhasználó döntése (DT-F125d, 2026-11-01, az orkesztrátor-session továbbításával): „a) elfogadjuk”. Az `e6e7955d` (üzenet: „F125.2: eszköz és JELENTÉS-szabályok (22–23.), tesztek, DT-F125a eldöntve; F125.1: szövegjavaslat ⛔”) két tételt visz egy commitban; a pusholt történetet nem írjuk át (force-push nincs), a DT447 mintájára ez a helyesbítés.
+A felhasználó döntése (DT474, 2026-11-01, az orkesztrátor-session továbbításával): „a) elfogadjuk”. Az `e6e7955d` (üzenet: „F125.2: eszköz és JELENTÉS-szabályok (22–23.), tesztek, DT471 eldöntve; F125.1: szövegjavaslat ⛔”) két tételt visz egy commitban; a pusholt történetet nem írjuk át (force-push nincs), a DT447 mintájára ez a helyesbítés.
 
 Mely tétel mely fájlt érintette (`git show --stat e6e7955d`):
-- F125.2 (eszköz, szabályok, mérés, DT-F125a): `eszkozok/proza_lefedettseg.py`, `eszkozok/teszt_proza_lefedettseg.py`, `eszkozok/ellenoriz.py`, `DONTESEK.md` (DT-F125a sora), `naplok/GERINC_KARTYA_SZOVEG_naplo.md`.
+- F125.2 (eszköz, szabályok, mérés, DT471): `eszkozok/proza_lefedettseg.py`, `eszkozok/teszt_proza_lefedettseg.py`, `eszkozok/ellenoriz.py`, `DONTESEK.md` (DT471 sora), `naplok/GERINC_KARTYA_SZOVEG_naplo.md`.
 - F125.1 (szövegjavaslat ⛔): `naplok/F125_SZOVEGJAVASLAT.md`; a brief hatókörének bővítése: `F125_GERINC_KARTYA_SZOVEG_BRIEF.md` (a fejléc).
 
-## DT-F125e — gyűjtő mondat
+## DT475 — gyűjtő mondat
 
-A felhasználó döntése (DT-F125e, 2026-11-01, az orkesztrátor-session továbbításával): „Igen, a+b+c”. Az orkesztrátor értelmezése: (a) az összlétszámmal egyező N nem gyűjtő mondat; (b) a gyűjtő mondatban név szerint megnevezett helyek levonódnak az N-ből; (c) mindkettőre teszt. Alkalmazva: `eszkozok/proza_lefedettseg.py` `mer()`: az N-t a motívum `adat/elofordulasok.tsv`-beli sorainak száma (`len(el)`, ugyanaz a forrás, amelyből a lefedettség is számol) ellen vetjük; egyenlőségnél a mondat kimarad; különben keret = N − (a bekezdésben megnevezett előfordulás-sorok száma), a csoportos fedés a legnagyobb keretig terjed. A mondat azonosítása változatlanul a bekezdés. Értelmezés: az egyenlőség a sorok számával történik; a szkript egyedi igehelyet nem számol (ALVIL-001-en a 72 sor 72 különböző igehely, így a két mérték egybeesik, és az „N egyedi igehely” 64-es/63-as mondata nem összlétszám-mondat: a teljes ÓSZ-i részhalmazra szól, tehát gyűjtő marad).
+A felhasználó döntése (DT475, 2026-11-01, az orkesztrátor-session továbbításával): „Igen, a+b+c”. Az orkesztrátor értelmezése: (a) az összlétszámmal egyező N nem gyűjtő mondat; (b) a gyűjtő mondatban név szerint megnevezett helyek levonódnak az N-ből; (c) mindkettőre teszt. Alkalmazva: `eszkozok/proza_lefedettseg.py` `mer()`: az N-t a motívum `adat/elofordulasok.tsv`-beli sorainak száma (`len(el)`, ugyanaz a forrás, amelyből a lefedettség is számol) ellen vetjük; egyenlőségnél a mondat kimarad; különben keret = N − (a bekezdésben megnevezett előfordulás-sorok száma), a csoportos fedés a legnagyobb keretig terjed. A mondat azonosítása változatlanul a bekezdés. Értelmezés: az egyenlőség a sorok számával történik; a szkript egyedi igehelyet nem számol (ALVIL-001-en a 72 sor 72 különböző igehely, így a két mérték egybeesik, és az „N egyedi igehely” 64-es/63-as mondata nem összlétszám-mondat: a teljes ÓSZ-i részhalmazra szól, tehát gyűjtő marad).
 
 Tesztek: `test_dt_f125e_osszletszam_mondat_nem_gyujto` (5 előfordulás, „5 igehely”, 2 megnevezve → 0 csoportos, 3 hiány), `test_dt_f125e_megnevezett_helyek_levonodnak` („3 igehelyen”, mind a 3 megnevezve + 3 név nélküli → 0, 3), `test_dt_f125e_vegyes` („4 igehelyen”, 1 megnevezve, 5 név nélküli → 3 fedett, 2 hiány). A régi kódon mindhárom elbukik (21 teszt, 3 hiba), az újon mind zöld.
 
@@ -211,9 +211,9 @@ Tesztek: `test_dt_f125e_osszletszam_mondat_nem_gyujto` (5 előfordulás, „5 ig
 
 A három valódi motívumon a szám nem változik (ISTENTISZT-001-en és TEREMT-002-n a megnevezés már teljes, ezért az összlétszám-mondat kiesése nem hoz hiányt; ALVIL-001-en a keret 64−4 = 60, illetve 63−1 = 62 ≥ 57). A javítás a kitett hibaosztályt zárja, nem e három mért értéket változtatja.
 
-`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef` — *a `ts` utólag írt, nem a futásé; a mérés a „DT-F125e — a névfelismerés javítása” szakasz újramért, valódi időbélyegű sorában áll (ELLENOR_F125_3 1.).*
+`scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (régi: bdae32ef kódja, új: F125.27 munkafa; osszesit()['el']) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:30+01:00, ág-HEAD bdae32ef` — *a `ts` utólag írt, nem a futásé; a mérés a „DT475 — a névfelismerés javítása” szakasz újramért, valódi időbélyegű sorában áll (ELLENOR_F125_3 1.).*
 
-### DT-F125e — a névfelismerés javítása (ELLENOR_F125_3 1.)
+### DT475 — a névfelismerés javítása (ELLENOR_F125_3 1.)
 
 A `megnevezett()` két hibája, az ellenőr jelentése szerint: (a) a kötőjeles ragos alak („Hós 13:14-ben”, „Zsolt 49:15-ben”, „Jel 1:18-ban”) üres versek-halmazt adott, mert a záró kötőjel után `int('')` hibát nyelt a kód; (b) a „Mát 11:23” nem egyezett az adatbeli `Mt 11:23`-mal. Javítás: a verscsoport záró `-`, `–`, `,` karaktere rag, nem tartomány (a tartományhoz számjegy kell a kötőjel után, így a „Jel 20:13-14” és az „1Móz 1:1–3” változatlanul tartomány). A „Mát” nincs a `konkordancia/Konyv_normalizalo_tabla.tsv`-ben (a tábla `Mt`-hez nem vesz fel forrás-alakot), és nincs közös normalizáló-függvény a magyar prózai alakokra (az eszkozok/f3_4_*.py szkriptek saját helyi `HOSSZU` szótárat tartanak), ezért a legszűkebb, kódban dokumentált kiegészítés: `KONYV_VALTOZAT = {'Mt': ('Mát',)}`, csak a ténylegesen előforduló változat. Tesztek: `test_ragos_alak_megnevezi_a_verset` és `test_konyvnev_valtozat_mat` (a régi kódon elbuknak), `test_ragos_alak_nem_fed_mas_verset` és `test_tartomany_tovabbra_mindket_verset_fedi` (védőtesztek); összesen 25 teszt, mind zöld az újon.
 
@@ -229,7 +229,7 @@ ALVIL-001: a keret az ellenőr szerint a :13 gyűjtő mondaton 64−5 = 59, a :2
 
 `scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 TEREMT-002 (osszesit()['el']; ág-HEAD 19db9998 + F125.32 munkafa) | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, motivumok/TEREMT-002.md, adat/elofordulasok.tsv | ts=2026-11-01T20:12:50+01:00`
 
-### DT-F125e — hatókör: mondat (ELLENOR_F125_3 3.)
+### DT475 — hatókör: mondat (ELLENOR_F125_3 3.)
 
 A felhasználó döntése (2026-11-01, az orkesztrátor-session továbbításával): „Igen, mondatból”. Alkalmazva: `eszkozok/proza_lefedettseg.py` `mer()`: a gyűjtő mondat N-jéből csak az ugyanabban a mondatban név szerint megnevezett előfordulások vonódnak le; az új `mondatok()` bont (határ: `.`, `!`, `?` után szóköz és nagybetűs/idézőjeles/zárójeles kezdet; nem vág a „12.” típusú, csak számjegyből álló sorszámnál és a kisbetűvel folytatott rövidítésnél, de vág a „Hós 13:14.” igehely-záró ponttal). Az összlétszám-szabály és a csoportos fedés logikája változatlan. Tesztek: `test_dt_f125e_levonas_a_mondatbol_nem_a_bekezdesbol` (egy bekezdés, két mondat: „4 igehelyen” + 1 megnevezett, a második mondatban 2 további; keret 4−1 = 3, a régi kódon fedett 1 / hiány 4 → `(8, 3, 1, 4)`, az újon `(8, 3, 3, 2)`), `test_mondatbontas_sorszam_es_rovidites_nem_vag`; 27 teszt, mind zöld az újon.
 
