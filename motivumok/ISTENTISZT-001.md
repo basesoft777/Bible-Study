@@ -6,13 +6,15 @@
 
 <!-- RÉS-KEZDET: kivonat -->
 
-A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH), „segítségül hívni az Úr nevét" formulát és újszövetségi folytatását követi: formulaikus azonosság, 33 igehelyen (23 ószövetségi, 10 újszövetségi). A formula az 1Móz 4:26-ban jelenik meg először, a pátriárkák oltárépítéséhez kötődik, majd a zsoltárokban és a prófétáknál liturgikus és eszkatológiai formává válik (Jóel 2:32). A Septuaginta a 23 ószövetségi helyből 19-et az ἐπικαλέω (epikaleó) igével ad vissza; eltér a két isteni önkihirdetésnél (2Móz 33:19; 34:5: καλέω, kaleó) és az Ézs 12:4-ben (βοάω, boaó), a Zsolt 116:17-ben pedig a tagmondat hiányzik a görögből. Az Újszövetség a Jóel 2:32-t szó szerint idézi (ApCsel 2:21; Róm 10:13), és a formulát Krisztusra alkalmazza: a „segítségül hívók" a korai gyülekezet önmegnevezésévé válnak (ApCsel 9:14, 21; 1Kor 1:2).
+A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH), „segítségül hívni az Úr nevét" formulát és újszövetségi folytatását követi: formulaikus azonosság, 22 igehelyen (16 ószövetségi, 6 újszövetségi). A formula az 1Móz 4:26-ban jelenik meg először, a pátriárkák oltárépítéséhez kötődik, majd a zsoltárokban és a prófétáknál liturgikus és eszkatológiai formává válik (Jóel 2:32). A Septuaginta a 16 ószövetségi helyből 13-at az ἐπικαλέω (epikaleó) igével ad vissza; eltér a két isteni önkihirdetésnél (2Móz 33:19; 34:5: καλέω, kaleó), a Zsolt 116:17-ben pedig a tagmondat hiányzik a görögből. Az Újszövetség a Jóel 2:32-t szó szerint idézi (ApCsel 2:21; Róm 10:13), és a formulát Krisztusra alkalmazza: a „segítségül hívók" a korai gyülekezet önmegnevezésévé válnak (ApCsel 9:14, 21; 1Kor 1:2).
 
-A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָא בְּשֵׁם (kárá besém) tartozik ide, amelyben valaki segítségül hívja Isten nevét. A passzív נִקְרָא (nikrá) … עַל (al) szerkezet, amely a név alatti hovatartozást fejezi ki (2Sám 6:2; Jer 7:10), akkor sem, ha ugyanazt a két gyököt használja.
+A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH) tartozik ide, amelyben a *besém* után az Úr neve, JHVH áll; ahol névmás áll a helyén („nevedet”, „nevét”), az nem tartozik ide. A passzív נִקְרָא (nikrá) … עַל (al) szerkezet, amely a név alatti hovatartozást fejezi ki (2Sám 6:2; Jer 7:10), akkor sem, ha ugyanazt a két gyököt használja. A motívum nem az imádság általában, hanem az, amikor valaki az Úr nevét kimondva fordul hozzá segítségért. Ha a név nem hangzik el, a segélykiáltás a tágabb körbe tartozik. Az Újszövetségben ezt nem az ige dönti el, mert az mindkét esetben ugyanaz, hanem a név (ApCsel 7:59; 2Tim 2:22; Róm 10:12, 14).
 
-【NAPLO: F152 A.2, 2026-11-01 — a negatív kritérium a Kivonatban (`motivumok.tsv` `negativ_kriterium`; a 2Sám 6:2 és a Jer 7:10 az 1/b.-ben ezzel az indokkal elutasított jelölt). Jóváhagyás: a felhasználó az orkesztrátoron át, a javaslat első két mondatára, szó szerint: „mehet” (2026-11-01). A javaslat 3. mondata (a fölérendelt fogalom, az ApCsel 7:59) függ: a #151 K1–K3 döntésére vár (`naplok/HATAR_ISTENTISZT-001.md`).】
+【NAPLO: F152 A.2, 2026-11-01 — a negatív kritérium a Kivonatban (`motivumok.tsv` `negativ_kriterium`; a 2Sám 6:2 és a Jer 7:10 az 1/b.-ben ezzel az indokkal elutasított jelölt). Jóváhagyás: a felhasználó az orkesztrátoron át, a javaslat első két mondatára, szó szerint: „mehet” (2026-11-01).】
 
-【NAPLO: DT399, 2026-10-29 — az Ézs 64:6 beépítésével a számok 32→33, 22→23, a görög egyezés 18→19 (LXX Ézs 64:6: ἐπικαλούμενος, G1941); mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z · scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli】
+【NAPLO: F152.17, 2026-11-01 — a DT-F151c (K1–K5), a DT-F152b és a DT-F152c átvezetése: az 1Pét 1:17, a 2Tim 2:22, a Róm 10:12, 14 és a hét névmási ragos ószövetségi hely (Zak 13:9; Zsolt 105:1; 1Krón 16:8; Ézs 12:4; Jer 10:25; Zsolt 79:6; Ézs 64:6) kikerült, a számok 33 → 22, 23 → 16, 10 → 6, a görög egyezés 19 → 13. Az 1. mondat pontosítása a felhasználó szavával: „Igen, így”; a 3–5. mondat (a fölérendelt fogalom) a felhasználó választása: „p” (2026-11-01). Az 1Kir 18:25–26 kontrasztként marad (K5: „Igen, kivételként”). Mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=22) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+LXX_OS/*.tsv (naplok/F152_proza_meres.py, split('\t')) | ts=2026-11-01T19:38Z】
+
+【NAPLO: DT399, 2026-10-29 (az F152.17 óta történeti: az Ézs 64:6 a DT-F152b szerint kikerült) — az Ézs 64:6 beépítésével a számok 32→33, 22→23, a görög egyezés 18→19 (LXX Ézs 64:6: ἐπικαλούμενος, G1941); mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z · scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli】
 
 <!-- RÉS-VÉGE: kivonat -->
 
@@ -32,11 +34,11 @@ A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָ
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=BDB; strong=H7121; entry_id=H7121; jelentes_szam=3 -->
 
-**2Móz 33:19 / 34:5 — miért nem sorolható be tisztán:** ez az eset — Isten kihirdeti saját nevét, közvetlenül a Sínai-hegyi tulajdonság-kinyilatkoztatás (34:6-7) előtt — nem illik a meglévő kapcsolat-funkciók egyikébe sem, három konkrét okból: **(1) nem ELŐKÉP/BETELJESEDÉS**, mert mindkét vég ószövetségi, ugyanabban a jelenetben található — nincs ÓSZ→ÚSZ ív. **(2) nem ÖRÖKLÉS/MINTAÁTVÉTEL** (mint 13:4→26:25 apáról fiúra), mert nincs emberi generációs átadás — Isten saját magára alkalmazza a formulát, nem egy következő emberi szereplőre. **(3) nem egyszerű PÁRHUZAM** (mint a fenti Zsolt 105:1/Ézs 12:4 esetek), mert nem "ugyanaz a használat más szereplővel" — a formula szereplőinek grammatikai szerepe (alany/tárgy) cserélődik fel magán a szerkezeten belül: nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját. Ezt a szerkezeti fordulatot mind a görög fordítói hagyomány, mind a BDB saját jelentés-besorolása megerősíti.
+**2Móz 33:19 / 34:5 — miért nem sorolható be tisztán:** ez az eset — Isten kihirdeti saját nevét, közvetlenül a Sínai-hegyi tulajdonság-kinyilatkoztatás (34:6-7) előtt — nem illik a meglévő kapcsolat-funkciók egyikébe sem, három konkrét okból: **(1) nem ELŐKÉP/BETELJESEDÉS**, mert mindkét vég ószövetségi, ugyanabban a jelenetben található — nincs ÓSZ→ÚSZ ív. **(2) nem ÖRÖKLÉS/MINTAÁTVÉTEL** (mint 13:4→26:25 apáról fiúra), mert nincs emberi generációs átadás — Isten saját magára alkalmazza a formulát, nem egy következő emberi szereplőre. **(3) nem egyszerű PÁRHUZAM** (mint a kapcsolat-tábla Párhuzam-sorai, pl. Zsolt 116:4 → 116:13)【NAPLO: F152.17 — a korábbi példa, a Zsolt 105:1/Ézs 12:4, a DT-F152b óta nem a motívum helye】, mert nem "ugyanaz a használat más szereplővel" — a formula szereplőinek grammatikai szerepe (alany/tárgy) cserélődik fel magán a szerkezeten belül: nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját. Ezt a szerkezeti fordulatot mind a görög fordítói hagyomány, mind a BDB saját jelentés-besorolása megerősíti.
 
 【NAPLO: l. 2. pont pontosítása a görög fordítói hagyományra. Ez a `Bibliai_Motivumlexikon_tervezesi_naplo.md`-ben eddig csak vázlatosan felvetett kapcsolat-funkció-készlet egy valós, konkrét határesete — érdemes lehet ezt a tervezési naplóba is felvenni nyitott kérdésként, amikor a KAPCSOLATOK-réteg tervezése folytatódik.】
 
-**A 2Móz 33:19/34:5 eset tágabb mintázata — A/B/C tipológia:** az elutasított jelöltek (Ézs 43:1, 44:5, 45:3 — "Isten néven szólít egy embert") és a fenti "be nem sorolható" eset (2Móz 33:19/34:5 — "Isten kihirdeti saját nevét") együtt nézve nem véletlen zaj, hanem egy koherens, háromtagú mintázat részei. A קָרָא (*kará*, "hívni") + שֵׁם (*shém*, "név") szerkezet ugyanazokkal a szavakkal, de szisztematikusan variálódó alany/tárgy-szereposztással három, egymástól élesen elkülönülő teológiai aktust fejez ki: **A — fő motívum** (alany: ember, tárgy: Isten neve — 31 emberi invokáció, ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26)【NAPLO: 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) 31 itt is”) — a korábbi „a study 15 emberi-invokációs esete” helyett, a 7. szakasz A/B/C táblájával azonos mérés: naplok/ISTENTISZT001_arany_javitas_meres.py, ts=2026-10-29T09:20Z】); **B** (alany: Isten, tárgy: saját neve — 2Móz 33:19, 34:5, fent tárgyalva); **C** (alany: Isten, tárgy: ember neve — Ézs 43:1, 44:5, 45:3). Együtt nézve kiderül: mindhárom minta ugyanannak a nyelvi szerkezetnek a szisztematikus variánsa, nem esetleges egybeesés — a "B" tehát nem elszigetelt "be nem sorolható" anomália, hanem egy önálló, felismerhető harmadik mintázatba tartozik, aminek a "C" is tagja. **Amit ez NEM állít:** hogy A/B/C motívum-szinten összetartozna (a study fókusza jogosan marad az A mintán) — csak azt, hogy a lexikai szerkezet szintjén van egy magasabb rendű, közös minta.
+**A 2Móz 33:19/34:5 eset tágabb mintázata — A/B/C tipológia:** az elutasított jelöltek (Ézs 43:1, 44:5, 45:3 — "Isten néven szólít egy embert") és a fenti "be nem sorolható" eset (2Móz 33:19/34:5 — "Isten kihirdeti saját nevét") együtt nézve nem véletlen zaj, hanem egy koherens, háromtagú mintázat részei. A קָרָא (*kará*, "hívni") + שֵׁם (*shém*, "név") szerkezet ugyanazokkal a szavakkal, de szisztematikusan variálódó alany/tárgy-szereposztással három, egymástól élesen elkülönülő teológiai aktust fejez ki: **A — fő motívum** (alany: ember, tárgy: Isten neve — 20 emberi invokáció, ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26)【NAPLO: 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) 31 itt is”) — a korábbi „a study 15 emberi-invokációs esete” helyett, a 7. szakasz A/B/C táblájával azonos mérés: naplok/ISTENTISZT001_arany_javitas_meres.py, ts=2026-10-29T09:20Z. F152.17, 2026-11-01: 31 → 20, a 22 helyből a 2 B-eset nélkül (DT-F151c, DT-F152b)】); **B** (alany: Isten, tárgy: saját neve — 2Móz 33:19, 34:5, fent tárgyalva); **C** (alany: Isten, tárgy: ember neve — Ézs 43:1, 44:5, 45:3; a *besém* után itt nem JHVH áll, ez a kizárás határa, DT-F151c K4). Együtt nézve kiderül: mindhárom minta ugyanannak a nyelvi szerkezetnek a szisztematikus variánsa, nem esetleges egybeesés — a "B" tehát nem elszigetelt "be nem sorolható" anomália, hanem egy önálló, felismerhető harmadik mintázatba tartozik, aminek a "C" is tagja. **Amit ez NEM állít:** hogy A/B/C motívum-szinten összetartozna (a study fókusza jogosan marad az A mintán) — csak azt, hogy a lexikai szerkezet szintjén van egy magasabb rendű, közös minta.
 
 【NAPLO: felismerés eredete: 2026.09.06, Motívumlexikon-pilot. A jelöltek eredeti elutasítása: 2026.09.05-i audit. Study-ba visszaírva ugyanaznap.】
 
@@ -44,9 +46,9 @@ A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָ
 
 【NAPLO: felismerve és explicit kizárva, 2026.09.08.】
 
-**Kitekintés a teljes kánoni ívre** *(a motívum teljes súlyának megértéséhez, nem külön ⭐ számlálóként)*: a kifejezés az Ószövetségben tovább jelenik meg nyilvános/versengő kontextusban (1Kir 18:24-26, Illés a Kármelen), várakozás-cáfolatként (2Kir 5:11, Naámán), személyes hála-könyörgésként (Zsolt 116:4,13,17), és eszkatológiai ígéretként (Sof 3:9; Zak 13:9), mielőtt a Jóel 3:5 (MT) / 2:32 próféciában nyeri el végső ószövetségi megfogalmazását — amelyet Péter (ApCsel 2:21, Pünkösd) és Pál (Róm 10:13-14) is szó szerint idéz, majd az ÚSZ-i egyházi gyakorlatban önálló azonosító-formulává válik (1Kor 1:2, 2Tim 2:22, 1Pét 1:17), sőt az üldözési kontextusban a keresztények megnevezésévé (ApCsel 9:14, 9:21, 22:16).
+**Kitekintés a teljes kánoni ívre** *(a motívum teljes súlyának megértéséhez, nem külön ⭐ számlálóként)*: a kifejezés az Ószövetségben tovább jelenik meg nyilvános/versengő kontextusban (1Kir 18:24-26, Illés a Kármelen), várakozás-cáfolatként (2Kir 5:11, Naámán), személyes hála-könyörgésként (Zsolt 116:4,13,17), és eszkatológiai ígéretként (Sof 3:9), mielőtt a Jóel 3:5 (MT) / 2:32 próféciában nyeri el végső ószövetségi megfogalmazását — amelyet Péter (ApCsel 2:21, Pünkösd) és Pál (Róm 10:13) is szó szerint idéz, majd az ÚSZ-i egyházi gyakorlatban önálló azonosító-formulává válik (1Kor 1:2), sőt az üldözési kontextusban a keresztények megnevezésévé (ApCsel 9:14, 9:21, 22:16).
 
-【NAPLO: Zak 13:9 önálló táblázat-sorral 2026.09.08-tól; az ApCsel 9:14/9:21/22:16-os kiegészítés is 2026.09.08-i.】
+【NAPLO: Zak 13:9 önálló táblázat-sorral 2026.09.08-tól; az ApCsel 9:14/9:21/22:16-os kiegészítés is 2026.09.08-i. F152.17, 2026-11-01: a Zak 13:9 (DT-F152b), a Róm 10:14, a 2Tim 2:22 és az 1Pét 1:17 (DT-F151c K1/K2) kikerült a felsorolásból.】
 
 <!-- INAKTÍV: Logikai kötőszó szerinti bontás — a feltétel nem áll fenn: egyik előfordulás-sor sem igehely-tartomány -->
 
@@ -70,13 +72,15 @@ A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָ
 
 #### G0994
 
-*(Megjegyzés: a G0994 nem a motívum saját tokenje, ezért a 2. szakasz generált része nem ad hozzá szócikket; LXX-beli szerepét a 3. szakasz mutatja: Ézs 12:4.)*
+*(Megjegyzés: a G0994 nem a motívum saját tokenje, ezért a 2. szakasz generált része nem ad hozzá szócikket; a motívum helyei közül az 1Kir 18:24 görög szövegében áll, a Baál-hívók felszólításában.)*
 
-**Miért fontos ez a lelet:** a Thayer megerősíti az Abbott-Smith szinonima-magyarázatát (βοάω (boaó) ≠ ἐπικαλέομαι (epikaleomai), más érzelmi regiszter), és pontosítja, hogy az Ézs 12:4-nél használt fordítói döntés (βοάω, boaó) illeszkedik a βοάω (boaó) tipikus LXX-forrásaihoz (Ézs 40:3, Ézs 54:1 — mindkettő Ézsaiás-részlet, ahogy a mi versünk is!) — vagyis a fordító **stílusregiszterben és forráskönyvben is konzisztens** választást tett, nem véletlenszerű eltérést az ἐπικαλέομαι-tól (epikaleomai).
+【NAPLO: F152.17, 2026-11-01 — az Ézs 12:4, amelyhez ez a szócikk-lelet eredetileg kötődött, a DT-F152b óta nem a motívum helye (a *besém* után névmási rag áll: *bismó*). A lelet a szóról szól, ezért marad; a vers itt szótári példa, nem előfordulás.】
+
+**Miért fontos ez a lelet:** a Thayer megerősíti az Abbott-Smith szinonima-magyarázatát (βοάω (boaó) ≠ ἐπικαλέομαι (epikaleomai), más érzelmi regiszter), és pontosítja, hogy az Ézs 12:4-nél használt fordítói döntés (βοάω, boaó) illeszkedik a βοάω (boaó) tipikus LXX-forrásaihoz (Ézs 40:3, Ézs 54:1 — mindkettő Ézsaiás-részlet, ahogy az Ézs 12:4 is) — vagyis a fordító **stílusregiszterben és forráskönyvben is konzisztens** választást tett, nem véletlenszerű eltérést az ἐπικαλέομαι-tól (epikaleomai).
 
 #### Kiemelt módszertani jelentőség
 
-**Kiemelt módszertani jelentőség:** mindhárom ige SECE-listája tartalmazza a קָרָא-t (kárá) (kiemelve) mint egyik lehetséges héber forrását — ez **független megerősítés** arra, amit a mai LXX-audit talált: a קָרָא (kárá) fordítása mindhárom göröggel (ἐπικαλέομαι – epikaleomai, καλέω – kaleó, βοάω – boaó) **általánosan bevett, dokumentált gyakorlat** volt, nem a mi két "kivételes" versünkre (2Móz 33:19/34:5; Ézs 12:4) jellemző egyedi eset. A Louw-Nida domain-számok egy teljesen új, **jelentés szerinti** keresési dimenziót nyitnak meg a jövőre nézve — a jelenlegi Strong-szám-alapú módszertan csak azonos-gyökű szavakat talál meg, a Louw-Nida-alapú keresés viszont *azonos jelentésmezőbe* tartozó, eltérő gyökű szavakat is felszínre hozhatna.
+**Kiemelt módszertani jelentőség:** mindhárom ige SECE-listája tartalmazza a קָרָא-t (kárá) (kiemelve) mint egyik lehetséges héber forrását — ez **független megerősítés** arra, amit a mai LXX-audit talált: a קָרָא (kárá) fordítása mindhárom göröggel (ἐπικαλέομαι – epikaleomai, καλέω – kaleó, βοάω – boaó) **általánosan bevett, dokumentált gyakorlat** volt, nem a motívum két "kivételes" versére (2Móz 33:19/34:5) és az Ézs 12:4-re jellemző egyedi eset. A Louw-Nida domain-számok egy teljesen új, **jelentés szerinti** keresési dimenziót nyitnak meg a jövőre nézve — a jelenlegi Strong-szám-alapú módszertan csak azonos-gyökű szavakat talál meg, a Louw-Nida-alapú keresés viszont *azonos jelentésmezőbe* tartozó, eltérő gyökű szavakat is felszínre hozhatna.
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=SECE_G; strong=G1941; entry_id=G1941; jelentes_szam=részlet -->
 
@@ -97,7 +101,11 @@ invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
 alapja. A **Qal 2.c** idézett helyei (1Móz 4:26; 12:8; 2Kir 5:11; Jer
 10:25 = Zsolt 79:6; 1Kir 18:24; Baállal: 1Kir 18:24–26) **önállóan, a mi
 kutatásunktól függetlenül** csaknem pontosan egyeznek a tanulmány saját
-audit-eredményével — beleértve a Jer 10:25 = Zsolt 79:6 párt.
+audit-eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
+szó jelentése); a motívum határa a *besém* utáni JHVH szó, ezért a pár nem a
+motívum helye (a *besém* után ott névmási rag áll: *bismchá*, „nevedet”).
+
+【NAPLO: F152.17, 2026-11-01 — a korábbi „beleértve a Jer 10:25 = Zsolt 79:6 párt” helyett: a pár a DT-F152b („Csak ahol JHVH áll”) óta nem a motívum helye. A szótári jelentés és a motívum funkciója két réteg, egymás mellett áll.】
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=BDB; strong=H7121; entry_id=H7121; jelentes_szam=2.c -->
 
@@ -166,7 +174,7 @@ Beérseba).
 
 **Peshat — a motívum közepe【NAPLO: F126, 2026-10-20 — a próza-felmérés (naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md) 1., 7. és 10. összefüggése, saját méréssel: naplok/F126_meres.md; a név-horgony szabálya: felhasználói döntés, 2026-10-20】:**
 
-**A Kármel-jelenet (1Kir 18:24–26).** A 18:24-ben Illés a próbát két név szembeállításaként mondja ki: „Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten.” A 18:25-ben Baál prófétái kapják a felszólítást: „hívjátok segítségül a ti istenteknek nevét”. A 18:26-ban végrehajtják: „segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet.” A segítségül hívás szerkezete (קָרָא בְּשֵׁם, kárá besém) a két félnél azonos; a 18:25-ben a megszólított név „a ti istenteknek” neve (H0430), a 18:26-ban Baálé (H1168), a 18:24-ben Illésé az Úré (H3068)【NAPLO: DT401, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „Igen, mindkettő”) — a korábbi „a 18:25–26-ban a megszólított név Baálé (H1168)” helyett: a 18:25-ben a H1168 csak a „Baál prófétái” szerkezetben áll, a שֵׁם utáni token H0430】. A „felel” ige (H6030) a 18:24-ben és a 18:26-ban áll.
+**A Kármel-jelenet (1Kir 18:24–26).** A 18:24-ben Illés a próbát két név szembeállításaként mondja ki: „Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten.” A 18:25-ben Baál prófétái kapják a felszólítást: „hívjátok segítségül a ti istenteknek nevét”. A 18:26-ban végrehajtják: „segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet.” A segítségül hívás szerkezete (קָרָא בְּשֵׁם, kárá besém) a két félnél azonos; a 18:25-ben a megszólított név „a ti istenteknek” neve (H0430), a 18:26-ban Baálé (H1168), a 18:24-ben Illésé az Úré (H3068)【NAPLO: DT401, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „Igen, mindkettő”) — a korábbi „a 18:25–26-ban a megszólított név Baálé (H1168)” helyett: a 18:25-ben a H1168 csak a „Baál prófétái” szerkezetben áll, a שֵׁם utáni token H0430】. A „felel” ige (H6030) a 18:24-ben és a 18:26-ban áll. A motívum helyei közül csak ebben a két versben (18:25, 18:26) nem JHVH áll a *besém* után, hanem *elohéchem*, illetve *ha-Báal*: a két vers kontrasztként tartozik a motívumhoz, a negatív kritérium kivételeként【NAPLO: F152.17, DT-F151c K5 — a felhasználó, 2026-11-01: „kontrasztként marad”, „Igen, kivételként”; mérés: naplok/F152_k4_meres.py】.
 
 Értelmezés (Peshat): a két fél ugyanazt teszi — egy nevet hív segítségül —, és a próba azt dönti el, melyik név az Istené: Baálé vagy az Úré.
 
@@ -178,11 +186,7 @@ Beérseba).
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=elofordulasok.tsv (funkcio)+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:2Kir 5:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 
-**A név a hirdetés hármasában (1Krón 16:8; Zsolt 105:1; Ézs 12:4).** Az 1Krón 16:8-ban és a Zsolt 105:1-ben a felszólítás három tagja ugyanaz: „Dícsérjétek / Magasztaljátok az Urat, hívjátok segítségül az ő nevét, hirdessétek minden / a népek között az ő nagy dolgait / cselekedeteit”. Az Ézs 12:4-ben ugyanez a hármas áll, és a név kétszer: „magasztaljátok az Ő nevét … mondjátok, hogy nagy az Ő neve.” Mért tény: a „hálát ad” ige (H3034) a motívum 33 helye közül csak ebben a háromban áll, és a két első vers tartalmi szókészlete teljesen azonos.
-
-Értelmezés (Peshat): a név segítségül hívása itt nem egyéni kérés, hanem közösségi felszólítás, amely a hálaadás és a népek közti hirdetés közé áll; az Ézs 12:4-ben a név maga is a kimondás tárgya („nagy az Ő neve”).
-
-*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+grammatikai_strongok.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Krón 16:8, range:Zsolt 105:1, range:Ézs 12:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli · scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z*
+【NAPLO: F152.17, 2026-11-01 — itt állt „A név a hirdetés hármasában (1Krón 16:8; Zsolt 105:1; Ézs 12:4)” szakasz. A három vers a DT-F152b („Csak ahol JHVH áll”) óta nem a motívum helye: a *besém* után névmási rag áll (*bismó*, „nevét”). Az eredeti szöveg: git-előzmény (F152.16 előtt).】
 
 **ApCsel 9:21.** A vers az ApCsel 9:14 megnevezését ismétli meg, más beszélő szájából. A 9:14 a megszólított Úrhoz szól („kik a te nevedet segítségül hívják”); a 9:21-ben a hallgatók beszélnek harmadik személyben arról, aki üldözte „azokat, a kik ezt a nevet hívják segítségül”. A vers „mindnyájan” szava (πάντες, pantesz) a hallgatókra vonatkozik („Álmélkodnak vala pedig mindnyájan, a kik hallák”), a hívókra nem.
 
@@ -193,9 +197,9 @@ Beérseba).
 **Remez:** a minta a Séthita vonaltól a pátriárkákon át húzódik
 tovább, a próféták nyilvános, versengő kontextusán (1Kir 18) és a
 zsoltáros személyes könyörgésén (Zsolt 116) át egy eszkatológiai,
-univerzális ígéretig (Sof 3:9, Zak 13:9; Jóel 3:5/2:32), amely
+univerzális ígéretig (Sof 3:9; Jóel 3:5/2:32), amely
 Pünkösdkor (ApCsel 2:21) és Pál evangéliumi érvelésében (Róm
-10:13-14) nyeri el végső alkalmazását.
+10:13) nyeri el végső alkalmazását.【NAPLO: F152.17 — a Zak 13:9 (DT-F152b) és a Róm 10:14 (DT-F151c K2) kikerült.】
 
 **Miért nem csak véletlen szóegyezés ez:**
 amikor Péter és Pál görögül idézik a formulát, egy görög igét
@@ -229,18 +233,18 @@ mintát viszik tovább, csak már görögül.
 adatrétege (1-4. szakasz) három olyan leletet hozott, amely a fenti
 Remez-ívet pontosítja.
 
-**1. A Septuaginta fordítói következetessége.** A 23 ószövetségi
-igehely közül 19-ben ugyanaz a görög ige áll, az ἐπικαλέομαι
+**1. A Septuaginta fordítói következetessége.** A 16 ószövetségi
+igehely közül 13-ban ugyanaz a görög ige áll, az ἐπικαλέομαι
 (epikaleomai). A három eltérés nem szórvány, hanem magyarázható:
 a 2Móz 33:19-ben és a 34:5-ben a καλέω (kaleó) alapige áll, és ez
 pontosan a fenti A/B/C tipológia B-esete — ott nem ember hívja Isten
 nevét, hanem Isten hirdeti ki a sajátját, és a fordító is jelzi a
-szereposztás megfordulását. Az Ézs 12:4-ben a βοάω (boaó), a
-„hangos kiáltás" igéje áll, az eszkatológiai, nyilvános hirdetés
-regiszterében. A Zsolt 116:17-nél pedig a görögből maga a tagmondat
+szereposztás megfordulását. A Zsolt 116:17-nél pedig a görögből maga a tagmondat
 hiányzik (LXX-minusz), tehát ott nincs fordítói döntés, amit
 értelmezni lehetne. A formula görög megfelelője tehát stabil, és
 ahol nem az, ott az eltérésnek önálló jelentése van.
+
+【NAPLO: F152.17, 2026-11-01 — 23 → 16 hely, 19 → 13 egyezés; az Ézs 12:4 (βοάω, boaó) a DT-F152b óta nem a motívum helye, ezért a korábbi negyedik eltérés kikerült. Mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=22) | forras=LXX_OS/*.tsv (igehely_karoli, strong=1941) (naplok/F152_proza_meres.py, split('\t')) | ts=2026-11-01T19:38Z】
 
 **2. A Thayer jelentés-tagolása.** A Thayer öt jelentés-ágra bontja
 az igét: elnevezni (1.), valakinek a nevét rá-hívni
@@ -248,19 +252,20 @@ valakire (2.), váddal illetni (3.), segítségül hívni — segítőként,
 tanúként, illetve bíróként, azaz valakihez fellebbezni (4.), és
 külön, ötödikként azt az esetet, amikor a szó a héber
 קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH) fordítása. A motívum
-újszövetségi helyei — ApCsel 2:21; 9:14, 21; 22:16; Róm 10:12-13;
-1Kor 1:2; 2Tim 2:22 — ebben az ötödik ágban állnak. Vagyis nem a tág
+újszövetségi helyei — ApCsel 2:21; 9:14, 21; 22:16; Róm 10:13;
+1Kor 1:2 — ebben az ötödik ágban állnak. Vagyis nem a tág
 „hívni" jelentésről van szó, hanem arról a szűk kategóriáról,
-amelyet maga a szótár köt a héber formulához.
+amelyet maga a szótár köt a héber formulához. Az ötödik ágon belül a
+Thayer külön sorolja a névvel álló alakot
+(ἐπικαλοῦμαι τὸ ὄνομα τοῦ κυρίου, epikalúmai to onoma tú küriú: ez a hat hely)
+és a név nélkülit (τὸν κύριον, ton kürion: Róm 10:12; 2Tim 2:22); ez utóbbi kettő a név nélküli segítségül hívás, amely a
+motívum határán kívül, a tágabb körben áll.
+
+【NAPLO: F152.17, 2026-11-01 — a korábbi felsorolás („Róm 10:12-13; … 2Tim 2:22”) helyett: a Róm 10:12 és a 2Tim 2:22 a DT-F151c K2 óta nem a motívum helye. A névvel / név nélkül tagolás a Thayer saját szövege: `adat/thayer_szakaszok.tsv` G1941 7. sor (scope=G1941 | forras=thayer_jelolt/bont.py | ts=2026-10-25).】
 
 【NAPLO: F131.3.18, 2026-10-28 — a 2. pont tagolás-leírása a Thayer szövegéhez igazítva (`adat/thayer_szakaszok.tsv`, `adat/forditasok.tsv` Thayer G1941 sz3–sz7): az 1. ág „elnevezni” (DT379); a 4. ág a Thayerben „segítségül hívni (anrufen)” segítőként, tanúként és bíróként, a fellebbezés (ApCsel 25:11) ennek egyik esete. Az értelmezés nem változott; a felhasználó döntése: DT377 1. javítókör (C).】
 
-**3. A Róm 10:12【NAPLO: 2026.09.22-én felvéve】.** A 10:13-as Jóel-idézetet
-egy olyan mondat vezeti be, amely ugyanezt az igét használja, és a
-segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. Az
-egyetemes ígéret tehát nem a 13. versnél kezdődik: a 12. vers már
-kimondja, hogy ugyanaz az Úr gazdag mindazokhoz, akik őt segítségül
-hívják.
+【NAPLO: F152.17, 2026-11-01 — itt állt a „3. A Róm 10:12” pont (a 10:13-as Jóel-idézet bevezetése, a hívók köre zsidóra és görögre). A Róm 10:12 a DT-F151c K2 óta nem a motívum helye: a versben ἐπικαλέομαι áll, ὄνομα nélkül („a kik őt segítségül hívják”). Az eredeti szöveg: git-előzmény.】
 
 【NAPLO: a fenti, korábban 17/15-ös számokat 22/18-ra javító megjegyzés a RENDER
 2. menetében (R2.4, G13) lezárva — a lexikonoldal `ertelmezes` rése immár a
@@ -271,7 +276,7 @@ jelen szakaszból generálódik, a szám itt is a mai (22 hely, 18 egyezés)
 
 **Remez — a motívum közepe【NAPLO: F126, 2026-10-20 — a próza-felmérés 2., 6., 8., 9. és 12. összefüggése, saját méréssel: naplok/F126_meres.md; a név-horgony szabálya: felhasználói döntés, 2026-10-20】:** az alábbi felismerések a név segítségül hívását követik a motívum helyein; a versek kísérő szavai csak mért tényként állnak. Ahol két hely közös szókészlete áll egymás mellett, az közös szókészlet, nem idézés és nem szándékos utalás.
 
-**Két oltár.** Az „oltár” (מִזְבֵּחַ, mizbéah, H4196) a motívum 33 helye közül négyben áll: a pátriárkák három oltáránál (1Móz 12:8; 13:4; 26:25) és a Kármelen, ahol Baál prófétái „sántikáltak az oltár körül, a melyet készítettek” (1Kir 18:26).
+**Két oltár.** Az „oltár” (מִזְבֵּחַ, mizbéah, H4196) a motívum 22 helye közül négyben áll: a pátriárkák három oltáránál (1Móz 12:8; 13:4; 26:25) és a Kármelen, ahol Baál prófétái „sántikáltak az oltár körül, a melyet készítettek” (1Kir 18:26).
 
 Értelmezés (Remez): a külső forma — oltár és a név segítségül hívása — a pátriárkáknál és Baál prófétáinál ugyanaz; a két helycsoportot a megszólított név választja el: ott az Úr neve, itt Baálé. A próba tárgyát a szöveg maga nevezi meg: melyik „az Isten” (1Kir 18:24).
 
@@ -281,27 +286,19 @@ jelen szakaszból generálódik, a szám itt is a mai (22 hely, 18 egyezés)
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:Zsolt 116:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 
-**Zsolt 116:13.** A vers a formula második előfordulása ugyanabban a zsoltárban: „A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül.” Kísérő szavai közül a „szabadulás” (H3444), a „pohár” (H3563) és a „felemel” (H5375) a motívum 33 helye közül csak itt áll; a Jóel 2:32 „szabadulás” szava más héber szó (H6413). A hely a zsoltáron belüli ismétlés révén tartozik a motívumhoz (Zsolt 116:4 → 116:13 → 116:17); a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.
+**Zsolt 116:13.** A vers a formula második előfordulása ugyanabban a zsoltárban: „A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül.” Kísérő szavai közül a „szabadulás” (H3444), a „pohár” (H3563) és a „felemel” (H5375) a motívum 22 helye közül csak itt áll; a Jóel 2:32 „szabadulás” szava más héber szó (H6413). A hely a zsoltáron belüli ismétlés révén tartozik a motívumhoz (Zsolt 116:4 → 116:13 → 116:17); a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z*
 
-**A név körül: küldetés és vád.** A liturgikus versekben a felszólítás így szól: „hívjátok segítségül az ő nevét, hirdessétek minden / a népek között” (1Krón 16:8; Zsolt 105:1). A Zsolt 79:6-ban és a Jer 10:25-ben a harag azokra a nemzetekre szól, „a melyek nem hívják segítségül a te nevedet”. A Sof 3:9-ben a népek ajka megtisztul, „hogy mind segítségül hívják az Úr nevét”. Mért tény: az „ismer” ige (H3045) a bekezdés öt verse közül négyben áll (1Krón 16:8, Zsolt 105:1, Zsolt 79:6, Jer 10:25), a Sof 3:9-ben nem; a motívum helyei közül az Ézs 12:4-ben is (Károli: „hirdessétek” az 1Krón 16:8-ban, a Zsolt 105:1-ben és az Ézs 12:4-ben, illetve „nem ismernek” a két vádló versben); a népeket a liturgikus versek az עַם (am, H5971), a két vádló vers a גּוֹי (gój, H1471) szóval nevezik. A tagadó forma egy első személyű többes számú versben is áll【NAPLO: DT399, 2026-10-29 — az Ézs 64:6 beépítve】: „S nem volt, a ki segítségül hívta volna nevedet … orczádat elrejtéd tőlünk, és álnokságainkban minket megolvasztál” (Ézs 64:6); ebben a versben sem az „ismer” ige, sem a népek két szava nem áll.
+【NAPLO: F152.17, 2026-11-01 — itt állt „A név körül: küldetés és vád” szakasz (1Krón 16:8; Zsolt 105:1; Zsolt 79:6; Jer 10:25; Sof 3:9; Ézs 64:6). A hat vers közül öt a DT-F152b óta nem a motívum helye (*bismó* / *bismchá*); a megmaradó Sof 3:9 a „Mindaz, a ki” bekezdésben áll. Az eredeti szöveg: git-előzmény (F152.16 előtt).】
 
-Értelmezés (Remez): a név segítségül hívása körül két irány áll: a nevet segítségül hívó közösség a népek felé fordul, a nemzetek elleni vád megnevezett oka pedig az, hogy a nevet nem hívják segítségül. A Sof 3:9-ben a népek maguk hívják a nevet; a három helycsoport egymás mellé állítása felismerés.
+**„Mindaz, a ki”.** A hívókra vonatkozó „mind” az ószövetségi helyek közül a Jóel 2:32-ben („mindaz, a ki az Úrnak nevét hívja segítségül”) és a Sof 3:9-ben („hogy mind segítségül hívják az Úr nevét”) áll (כֹּל, kol, H3605), az újszövetségiek közül négy helyen (πᾶς, pász: ApCsel 2:21; 9:14; Róm 10:13; 1Kor 1:2). A genezisi helyeken a hívó egyetlen személy (Károli: „segítségűl hívá”, 1Móz 12:8; 13:4; 21:33; 26:25).
 
-*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Krón 16:8, range:Zsolt 105:1, range:Zsolt 79:6, range:Jer 10:25, range:Sof 3:9 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli · scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | ts=2026-10-29T08:37Z · scope=range:Ézs 64:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T08:31Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z*
-
-**„Mindaz, a ki”.** A hívókra vonatkozó „mind” az ószövetségi helyek közül a Jóel 2:32-ben („mindaz, a ki az Úrnak nevét hívja segítségül”) és a Sof 3:9-ben („hogy mind segítségül hívják az Úr nevét”) áll (כֹּל, kol, H3605), az újszövetségiek közül öt helyen (πᾶς, pász: ApCsel 2:21; 9:14; Róm 10:12; 10:13; 1Kor 1:2). A genezisi helyeken a hívó egyetlen személy (Károli: „segítségűl hívá”, 1Móz 12:8; 13:4; 21:33; 26:25).
-
-Értelmezés (Remez): az Úr nevének segítségül hívása egyes szereplők gyakorlatából mindazok jegyévé tágul, akik a nevet hívják; az 1Kor 1:2 a nevet meg is nevezi („a mi Urunk Jézus Krisztus nevét”), a Róm 10:12 a hívók körét zsidóra és görögre mondja ki (l. fent, 3.).
+Értelmezés (Remez): az Úr nevének segítségül hívása egyes szereplők gyakorlatából mindazok jegyévé tágul, akik a nevet hívják; az 1Kor 1:2 a nevet meg is nevezi („a mi Urunk Jézus Krisztus nevét”).【NAPLO: F152.17, 2026-11-01 — a Róm 10:12 (DT-F151c K2) kikerült; a számok 33 → 22, az ÚSZ-beli πᾶς 5 → 4. Mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=22) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (naplok/F152_proza_meres.py, split('\t')) | ts=2026-11-01T19:38Z】
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Kor 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 
-**Róm 10:14.** A vers a 10:13 Jóel-idézetét — „minden, a ki segítségül hívja az Úr nevét, megtartatik” — kérdéssorral folytatja: „Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?” A 10:14-ben a „név” szó nem áll; a „segítségül hív” (ἐπικαλέομαι, epikaleomai) tárgya névmás, amely a 10:13 Urára utal vissza. Mért tény: a versben a „hisz” (πιστεύω, piszteuó) és a „hall” (ἀκούω, akuó) kétszer, a „hirdet” (κηρύσσω, kérüsszó) egyszer áll. Szövegi adat: a TAGNT szerint a „hívják segítségül” alak (ἐπικαλέσωνται, epikaleszóntai), valamint a „hisznek” és a „hallanának” alakja hat kiadásban áll (NA28, NA27, Tyndale House, SBL, Westcott–Hort, Tregelles), a Textus Receptus és a bizánci szöveg nélkül; az utóbbiak alakját a repó adata nem tartalmazza.
-
-Értelmezés (Peshat): a kérdéssor a 10:13-ban ígért segítségül hívásra kérdez vissza: az Úr nevét az hívja segítségül, aki hisz benne. Értelmezés (Remez): a hit, a hallás és a hirdető így a név segítségül hívásának előzményeiként áll a versben, és a Jóel-ígéret a sor végére kerül.
-
-*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAGNT_kivonat.tsv (Kritikai kiadás)+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:Róm 10:13, range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+【NAPLO: F152.17, 2026-11-01 — itt állt a „Róm 10:14” szakasz (a 10:13 kérdéssoros folytatása: hit, hallás, hirdető). A Róm 10:14 a DT-F151c K2 óta nem a motívum helye: a versben a „név” szó nem áll, az ige tárgya névmás. Az eredeti szöveg: git-előzmény.】
 
 **Drash:** a motívum azt tanítja, hogy az istentisztelet magja nem a
 nyilvános teljesítmény vagy a rituálé pontossága, hanem a
@@ -352,7 +349,7 @@ lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták"), és
 **az ApCsel 9:14-et is ide sorolja**, nem a „segítségül hívni"
 jelentéshez; a szócikk megjegyzése ezt a verset a hagyományos
 értelmezéstől eltérőként nevezi meg. Az 1Pét 1:17 hozzárendelése a
-forrásban kettős marad.
+forrásban kettős marad; a vers a DT-F151c K1 óta nem a motívum helye.
 
 Ez azt jelenti, hogy a formula két iránya az Újszövetségben is
 megmarad. Az egyik irányban az ember hívja segítségül a nevet
@@ -396,7 +393,7 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 **Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás (gap))*:
 
-1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. a PaRDeS keretrendszer szakaszát); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
+1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem cselekvés: a hívó kimondja az Úr nevét, és hozzá fordul (Jóel 2:32; Róm 10:13)【NAPLO: F152.17 — a korábbi hivatkozás, a Róm 10:14, a DT-F151c K2 óta nem a motívum helye】; a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
 
@@ -410,12 +407,11 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 <!-- ADAT-NÉZET: 7.K Kereszthivatkozások + Minősítés | forrás: adat/jeloltek.tsv (dontes, indoklas, forras_kereses), TSK/Károli-KH ∩ előfordulások | cél: general.py --cel lexikon (minosites rés, res_forras forras=adat) | SZINT: apparatus -->
 
-**A 2Móz 33:19/34:5-ből a 31 emberi invokáció felé (az Ézs 12:4-et is
-beleértve) a lap küszöbén (TSK Votes ≥ 15) nincs kereszthivatkozás;
-küszöb alatt egy van: 2Móz 33:19 → Ézs 12:4 (Votes 3)**【NAPLO: DT401, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) pontosítva”) — a korábbi „a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás” helyett, küszöbbel és a küszöb alatti kapcsolattal】 — ez a felismerés
+**A 2Móz 33:19/34:5-ből a 20 emberi invokáció felé sem a lap küszöbén
+(TSK Votes ≥ 15), sem alatta nincs kereszthivatkozás**【NAPLO: F152.17, 2026-11-01 — a korábbi szöveg: „a 31 emberi invokáció felé (az Ézs 12:4-et is beleértve) a lap küszöbén nincs kereszthivatkozás; küszöb alatt egy van: 2Móz 33:19 → Ézs 12:4 (Votes 3)”. Az Ézs 12:4 a DT-F152b óta nem a motívum helye; a 20 hely a 31 részhalmaza, ezért a metszet a 2026-10-29-i mérésből levezetve üres.】【NAPLO: DT401, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) pontosítva”) — a korábbi „a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás” helyett, küszöbbel és a küszöb alatti kapcsolattal】 — ez a felismerés
 saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 
-*Proveniencia: scope=range:2Móz 33:19 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=19 | ts=2026-10-29T09:06Z | csatorna=cli · scope=range:2Móz 34:5 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=14 | ts=2026-10-29T09:06Z | csatorna=cli · metszet a 31 A-hellyel: naplok/ISTENTISZT001_arany_tsk_meres.py (elofordulasok.tsv, split('\t'))*
+*Proveniencia: scope=range:2Móz 33:19 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=19 | ts=2026-10-29T09:06Z | csatorna=cli · scope=range:2Móz 34:5 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=14 | ts=2026-10-29T09:06Z | csatorna=cli · metszet a 31 A-hellyel: naplok/ISTENTISZT001_arany_tsk_meres.py (elofordulasok.tsv, split('\t')); a 20 A-hely (F152.17) ennek részhalmaza*
 
 <!-- ADAT-NÉZET: 7.A Kapcsolatok + Alátámasztás | forrás: adat/kapcsolatok.tsv (indoklas) | cél: general.py --cel lexikon (alatamasztas rés, res_forras forras=adat) | SZINT: apparatus -->
 
@@ -425,9 +421,9 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 
 A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hívni”) gyermeknévadási formulát zajként hozta felszínre: a puszta gyökpár-egyezés nem elég a besoroláshoz, a versen belüli és szomszédos versre kiterjedő, pozíció-alapú keresés ezért szükséges feltétele a lelet megbízhatóságának.
 
-A BDB H7121 2.c citációs listájának egyezése a motívum saját audit-eredményével a Jer 10:25 = Zsolt 79:6 párnál nem független megerősítés: ezt a párt a kutatás a BDB-idézet alapján találta meg, nem önálló kereséssel.
+A BDB H7121 2.c citációs listájának egyezése a motívum saját audit-eredményével a Jer 10:25 = Zsolt 79:6 párnál nem független megerősítés volt: ezt a párt a kutatás a BDB-idézet alapján találta meg, nem önálló kereséssel. A pár a DT-F152b óta nem a motívum helye (a *besém* után névmási rag áll).
 
-**Négy forrás egybeesése a határeseteken【NAPLO: F126, 2026-10-20 — a próza-felmérés 11. összefüggése, saját méréssel: naplok/F126_meres.md】.** A 2Móz 33:19-ben és a 34:5-ben — ahol nem az ember hívja segítségül Isten nevét, hanem Isten kiáltja ki a sajátját — négy forrás jelöli ugyanazt az eltérést a motívum többi helyétől: a BDB a 3. jelentéshez sorolja („kihirdetni”; a többi hely 2.c), a görög fordítás a καλέω (kaleó) igét adja (a 23 ószövetségi hely közül 19-ben ἐπικαλέομαι (epikaleomai) áll), a BSB „proclaim”-et ír (a többi helyen a „call” valamely alakját, az Ézs 12:4 kivételével), a Károli „kiált”-ot (csak e két helyen). Az Ézs 12:4-ben három forrás tér el: a görög fordítás βοάω (boaó), a BSB „proclaim”, a Károli „magasztaljátok”; a BDB viszont 2.c-t ad. A B-eset határa tehát nem egyetlen szótári besoroláson áll: négy fordítói és szótári forrás ugyanazt a két verset különíti el, az Ézs 12:4 átmeneti eset. Korlát: a négy forrás egybeesése mért, a függetlenségük nem (a BSB fordítóinak szótárhasználatát a repó adata nem mutatja), ezért ez egybeesés, nem független megerősítés. A βοάω (boaó) nem csak az Ézs 12:4 görög szövegében áll: az 1Kir 18:24-ben a Baál-hívók felszólítását is ez adja, Illés saját hívását ott az ἐπικαλέομαι (epikaleomai), ezért a vers az egyező helyek között van.
+**Négy forrás egybeesése a határeseteken【NAPLO: F126, 2026-10-20 — a próza-felmérés 11. összefüggése, saját méréssel: naplok/F126_meres.md】.** A 2Móz 33:19-ben és a 34:5-ben — ahol nem az ember hívja segítségül Isten nevét, hanem Isten kiáltja ki a sajátját — négy forrás jelöli ugyanazt az eltérést a motívum többi helyétől: a BDB a 3. jelentéshez sorolja („kihirdetni”; a többi hely 2.c), a görög fordítás a καλέω (kaleó) igét adja (a 16 ószövetségi hely közül 13-ban ἐπικαλέομαι (epikaleomai) áll), a BSB „proclaim”-et ír (a többi helyen a „call” valamely alakját), a Károli „kiált”-ot (csak e két helyen). A B-eset határa tehát nem egyetlen szótári besoroláson áll: négy fordítói és szótári forrás ugyanazt a két verset különíti el. Korlát: a négy forrás egybeesése mért, a függetlenségük nem (a BSB fordítóinak szótárhasználatát a repó adata nem mutatja), ezért ez egybeesés, nem független megerősítés. A βοάω (boaó) a motívum helyei közül az 1Kir 18:24-ben áll: a Baál-hívók felszólítását ez adja, Illés saját hívását ott az ἐπικαλέομαι (epikaleomai), ezért a vers az egyező helyek között van.【NAPLO: F152.17, 2026-11-01 — 23 → 16 hely, 19 → 13 egyezés; az Ézs 12:4 („átmeneti eset”: βοάω, BSB „proclaim”, Károli „magasztaljátok”) a DT-F152b óta nem a motívum helye, ezért kikerült. A BSB-állítás („call” a többi helyen) a 2026-10-20-i mérés részhalmazára áll. Mérés: naplok/F152_proza_meres.py, ts=2026-11-01T19:38Z】
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=elofordulasok.tsv (jelentes_szam, karoli_szo)+BSB_Strongs.tsv+Konyv_normalizalo_tabla.tsv+lxx_dontesek.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:<a 22 ószövetségi hely> | forras=LXX_OS/*.tsv+TAGNT_kivonat.tsv | ts=2026-10-20T10:07Z–10:08Z | csatorna=cli (23 sor: naplok/F126_lekerdezesek.tsv; összesítés: naplok/F126_lxx_osszesit.py) · scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z (BSB Isa.64.7: „one calls”)*
 
@@ -447,11 +443,13 @@ elkülönülő teológiai aktust fejez ki:
 
 | Minta | Alany | Tárgy | Igehelyek | Eddigi kezelés |
 |---|---|---|---|---|
-| **A — fő motívum** | ember | Isten neve | 31 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26) | ✅ a study fő tárgya |
+| **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a study fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
-| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív" |
+| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív"; a *besém* után nem JHVH áll (DT-F151c K4) |
 
 【NAPLO: 2026-10-29, a felhasználó jóváhagyása (orkesztrátor-chat: „Igen, mehet”) — az A-sor száma a korábbi „15 emberi-invokációs eset” (a pilot 2026.09.06-i állapota) helyett mérve, a ⚠ ELTÉRÉS jelölés törölve. Mérés: az `elofordulasok.tsv` 33 ISTENTISZT-001 sorából 2 B-eset (`funkcio`: 2Móz 33:19, 34:5), a többi 31 emberi alany; a 31-ből kettőben a sor hívása hamis isten nevére szól: 1Kir 18:25 (שֵׁם + H0430, „a ti istenteknek nevét”) és 1Kir 18:26 (שֵׁם + H1168, „a Baálnak nevét”), mindkettő `jelentes_hu`-ja „Baál nevével”; az 1Kir 18:24-ben mindkét név áll, a sor Illés hívása (az Úr neve, H3068). Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=elofordulasok.tsv (funkcio, jelentes_szam, jelentes_hu)+TAHOT_kivonat.tsv (naplok/ISTENTISZT001_arany_javitas_meres.py, split('\t')) | ts=2026-10-29T09:20Z】
+
+【NAPLO: F152.17, 2026-11-01 — az A-sor 31 → 20: a 22 ISTENTISZT-001 sorból 2 B-eset (2Móz 33:19, 34:5), a többi 20 emberi alany; a két Kármel-vers kontrasztként marad (DT-F151c K5). Kikerült: 1Pét 1:17, 2Tim 2:22, Róm 10:12, 14 (K1/K2) és a hét névmási ragos hely (DT-F152b). Mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=22) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (naplok/F152_proza_meres.py, split('\t')) | ts=2026-11-01T19:38Z】
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
@@ -515,7 +513,7 @@ tévesen ne sorolja be a motívumba.】
 
 【NAPLO: F11 M3, 2026-10-18 — séma-korlát (a régi 7. pont 2. tétele): a kétpontos KAPCSOLATOK-séma nem ábrázolja az egy versen belüli kontrasztot (1Kir 18:24); N-tétel: N-F11c (a `NYITOTT_FELADATOK.md`-be a `/befogad` útján); az eredeti szöveg: `archivum/ISTENTISZT-001/`.】
 
-5. **UBS-besorolás**【NAPLO: 2026.09.22】 — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
+5. **UBS-besorolás**【NAPLO: 2026.09.22】 — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers a DT-F151c K1 óta nem a motívum helye). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 <!-- RÉS-VÉGE: modszertan -->
 
