@@ -6,8 +6,8 @@ Proveniencia: `scope=olvaso_szerver 127.0.0.1:8799 @9e7e0f98 (belso kiadás, kut
 
 ## 0. Összefoglaló
 
-- **A 6. szakasz minden „törik” sora javult, kettő kivétellel** (E7): a részletek lapja 375 és 768 px-en a képernyő felénél nyílik (422 / 532 px; a kiinduló állapot 3 874 / 34 277 px), az első vers 146 px-nél kezdődik (640 px volt), az oldal vízszintes túlfolyása mindenhol 0. **Nem javult:** (1) a lapon belül a széles táblák kilógnak (375 px-en 118 px, a 920 px-es oldalblokkban 93–123 px; a lap vízszintesen görget, a jobb oszlop levágva látszik); (2) szómódban a lap maga görget, benne két 340 px-es `.gordul` doboz (görgetés a görgetésben). Mindkettő ugyanígy áll a 9. változatban is (a mockup a szerver blokkjait mutatja). Döntés: DT-F134p, DT-F134q (6. szakasz).
-- **A 9. változathoz mérve** a geometria szinte azonos: a lap teteje 375 px-en 422 / 422 px, 768 px-en 532 / 532 px; az oldalblokk 920 px-en 400 / 400 px, 1280 px-en 584 / 578 px széles. A szándékos eltérések (DT-F134l, -m, -n, -o) a képeken látszanak, új eltérés három (5. szakasz).
+- **A 6. szakasz minden „törik” sora javult, kettő kivétellel** (E7): a részletek lapja 375 és 768 px-en a képernyő felénél nyílik (422 / 532 px; a kiinduló állapot 3 874 / 34 277 px), az első vers 146 px-nél kezdődik (640 px volt), az oldal vízszintes túlfolyása mindenhol 0. **Nem javult:** (1) a lapon belül a széles táblák kilógnak (375 px-en 118 px, a 920 px-es oldalblokkban 93–123 px; a lap vízszintesen görget, a jobb oszlop levágva látszik); (2) szómódban a lap maga görget, benne két 340 px-es `.gordul` doboz (görgetés a görgetésben). Mindkettő ugyanígy áll a 9. változatban is (a mockup a szerver blokkjait mutatja). Döntés: DT468, DT469 (6. szakasz).
+- **A 9. változathoz mérve** a geometria szinte azonos: a lap teteje 375 px-en 422 / 422 px, 768 px-en 532 / 532 px; az oldalblokk 920 px-en 400 / 400 px, 1280 px-en 584 / 578 px széles. A szándékos eltérések (DT464, -m, -n, -o) a képeken látszanak, új eltérés három (5. szakasz).
 - **A #60 pilothoz mérve** a szerkezeti különbség a lényeg: a pilot 900 px alatt a teljes részletek-panelt a szöveg alá teszi (375 px-en 5 047 px-nél), kattintásra odagörget, és a kattintott vers eltűnik a képről; a szerveren a lap a vers alatt nyílik, a vers látható marad. Valódi telefonon a pilot asztali elrendezésben, kicsinyítve jelenik meg (nincs `viewport` meta), a szerver a saját mobil elrendezésével. Blokkonként: 4. szakasz.
 - **Tesztek:** a beolvasztás után 8 piros teszt, mind a main-en is piros ugyanazzal az adatbázissal (7. szakasz) — a beolvasztásból nem ered hiba, javítás nem kellett.
 - **Nem futott:** a valódi telefonos próba (a felhasználóé, lépések: 8. szakasz); a téma (E5) és a szó↔vers váltás (E4) újramérése (az M1–M3 mérte, a kód azóta csak a beolvasztással változott).
@@ -28,13 +28,13 @@ Oldal: 1Móz 1, a 3. vers H0216-os szavára (szómód) vagy versszámára (versm
 |---|---|---|---|---|---|---|
 | A részletek teteje, szómód (Olvasópult → olvasó) | 3 874 / 2 727 / 284 px (375 / 768 / 1280) | **422 px** a nézetablakban, alsó lap (mockup 422; pilot 5 047 px a dokumentumban, kattintásra odagörget) | **532 px** (mockup 532; pilot 3 223) | 86 px, oldalblokk (mockup 126; pilot 600) | 86 px (mockup 126; pilot 600) | javult |
 | Ugyanez, interlineáris réteg | 34 277 / 22 281 / 284 px | **422 px** | **532 px** | 82 px | 82 px | javult |
-| Görgetődoboz a görgetett oldalon (`.gordul` 340 px) | igen / igen / ragadós | a lap görget, benne **2 × `.gordul` 340 px** (szómód) | ugyanígy | ugyanígy | ugyanígy | **nem javult** (DT-F134q) |
+| Görgetődoboz a görgetett oldalon (`.gordul` 340 px) | igen / igen / ragadós | a lap görget, benne **2 × `.gordul` 340 px** (szómód) | ugyanígy | ugyanígy | ugyanígy | **nem javult** (DT469) |
 | Az első vers kezdete | 640 / 495 / 454 px | **146 px** (mockup 132; pilot 1 160) | 112 px (mockup 105; pilot 688) | 202 px (mockup 220; pilot 635) | 202 px (mockup 220; pilot 635) | javult (E1 ≤ 200 px) |
-| A fejléc magassága | 210 / 132 / 91 px | 49 px, ragadós egysoros sáv (mockup: nincs, a navigáció alsó lapon; pilot 262, nem ragadós) | 49 px (mockup: nincs; pilot 169) | 74 px (mockup 69 + 37 px változat-sáv; pilot 116) | 74 px (ugyanígy) | javult; a sáv a DT-F134n szerint tartós |
-| A munkaasztal verslistája | 732 / 800 px / 180 px-es oszlop | — | — | — | — | kikerült (DT-F134g) |
+| A fejléc magassága | 210 / 132 / 91 px | 49 px, ragadós egysoros sáv (mockup: nincs, a navigáció alsó lapon; pilot 262, nem ragadós) | 49 px (mockup: nincs; pilot 169) | 74 px (mockup 69 + 37 px változat-sáv; pilot 116) | 74 px (ugyanígy) | javult; a sáv a DT466 szerint tartós |
+| A munkaasztal verslistája | 732 / 800 px / 180 px-es oszlop | — | — | — | — | kikerült (DT459) |
 | Vízszintes túlfolyás, oldal | 109 px (375) | **0** | 0 | 0 | 0 | javult |
-| Vízszintes túlfolyás a részletek lapján | — (az oldal folyt túl) | szómód 118 px, versmód 41 px (Ez 37:12: 147; mockup Ez 37:12: 143) | 0 | szómód 93 px, versmód 17 px (Ez 37:12: 123; mockup: 118) | 0 | **nem javult**, áthelyeződött (DT-F134p) |
-| Kilógó táblák a lapban | igen (375) | szómód 2 (`szo.ubs_dbh` 473 px, `szo.oshl` 468 px), versmód 3 (`vers.eredeti`, `vers.macula_morf`, `vers.ubs`) | 0 | szómód 2, versmód 1–3 | 0 | **nem javult** (DT-F134p) |
+| Vízszintes túlfolyás a részletek lapján | — (az oldal folyt túl) | szómód 118 px, versmód 41 px (Ez 37:12: 147; mockup Ez 37:12: 143) | 0 | szómód 93 px, versmód 17 px (Ez 37:12: 123; mockup: 118) | 0 | **nem javult**, áthelyeződött (DT468) |
+| Kilógó táblák a lapban | igen (375) | szómód 2 (`szo.ubs_dbh` 473 px, `szo.oshl` 468 px), versmód 3 (`vers.eredeti`, `vers.macula_morf`, `vers.ubs`) | 0 | szómód 2, versmód 1–3 | 0 | **nem javult** (DT468) |
 | 24 px-nél kisebb érintési cél | 45 / 323 (375), 56 / 429 (768) | 53 / 555, nyitott lappal 91 / 608 (pilot 50 / 436) | 52 / 555 | 121 / 627 | 121 / 627 | arányában javult (13,9% → 9,5% 375 px-en); nem célzott javítás |
 
 A szómód lapjának 422 px-es teteje a nézetablak 52%-a (betekintés kb. félig, a brief 2.3 szerint); a kattintott vers (1Móz 1:3: 323–388 px) a lap fölött látszik minden mért 900 px alatti szélességen, az Ez 37:12-n is (görgetés után 80–241 px). Telefon-emulációval a szerver számai a 375 px-es asztali emulációéval azonosak.
@@ -51,7 +51,7 @@ A szómód lapjának 422 px-es teteje a nézetablak 52%-a (betekintés kb. féli
 | **E4** | M4-ben nem mértem újra (M1–M3 mérte) |
 | **E5** | M4-ben nem mértem újra (M3 mérte, 2. szakasz); a mérés világos rendszertémával futott, a lap világos |
 | **E6** | a beolvasztás nem okozott új piros tesztet (7. szakasz) |
-| **E7** | az M4 mérésekor két „törik” sor nem javult (görgetődoboz, kilógó táblák); a DT-F134p/q megvalósítása után javult (6.1) |
+| **E7** | az M4 mérésekor két „törik” sor nem javult (görgetődoboz, kilógó táblák); a DT468/q megvalósítása után javult (6.1) |
 
 ## 4. Összevetés a #60 pilottal, blokkonként
 
@@ -62,11 +62,11 @@ Képek: `pilot_1moz1_*` és `szerver_1moz1_*` (375 / 768 / 920 / 1280 px, valami
 | Blokk | Pilot | Szerver (új) | Eltérés |
 |---|---|---|---|
 | Oldalfej | cím + alcím + számláló-címkék + téma-gombok, nem ragadós, 116–262 px | egysoros ragadós sáv (könyvválasztó, ‹ ›, Aa, Strong, ⚙, ⌕), 49 px; 900 px-től fejléc + kánon-sáv, 74 px | a szerver kisebb és ragadós; a pilot címe és alcíme nincs |
-| Számláló-címkék (34 vers, szó-lapok, BDB magyarul, Károli–Strong) | a fejlécben | az oldalblokk üres állapotában (900 px-től), 900 px alatt a „Forrás és számlálók” hivatkozás mögött | áthelyezve (DT-F134l) |
+| Számláló-címkék (34 vers, szó-lapok, BDB magyarul, Károli–Strong) | a fejlécben | az oldalblokk üres állapotában (900 px-től), 900 px alatt a „Forrás és számlálók” hivatkozás mögött | áthelyezve (DT464) |
 | „Hogyan olvasd ezt az oldalt?” | nyitott `details` a szöveg fölött (a szöveg 375 px-en 1 160 px-nél kezdődik) | az oldalblokk üres állapotában; 900 px alatt a lap „Forrás és számlálók” nézetében | áthelyezve; a szöveg ettől kezdődik 146 px-nél |
-| Károli-szöveg | folyó szöveg, nagy fejezetszám-iniciálé | versenként új sor (DT-F134o: az Aa-ban folyóra váltható), fejezetcím h1 | elrendezési döntés (DT148, DT-F134o) |
-| Kapcsolt szavak jelölése | jelölőnégyzet a szöveg fölött | „Strong számok” chip a sávban | áthelyezve (DT-F134o) |
-| Téma-váltó | három gomb a fejlécben, alap „Rendszer” | a ⚙ menüben, alap „Világos” | DT295, DT-F134i |
+| Károli-szöveg | folyó szöveg, nagy fejezetszám-iniciálé | versenként új sor (DT467: az Aa-ban folyóra váltható), fejezetcím h1 | elrendezési döntés (DT148, DT467) |
+| Kapcsolt szavak jelölése | jelölőnégyzet a szöveg fölött | „Strong számok” chip a sávban | áthelyezve (DT467) |
+| Téma-váltó | három gomb a fejlécben, alap „Rendszer” | a ⚙ menüben, alap „Világos” | DT295, DT461 |
 | A kattintott szó kiemelése | a szó minden előfordulása kitöltött háttérrel (`aktiv`) | **csak a vers** kap halvány hátteret, a szó nem | **új lelet**: a szerveren nincs szó-kiemelés (5. szakasz, c) |
 | Telefon (valódi mobil nézetablak) | nincs `viewport` meta: 980 px-es asztali elrendezés kicsinyítve, a szöveg és a panel egymás mellett, olvashatatlanul kicsi (`pilot_1moz1_ures_375_telefon.png`) | saját mobil elrendezés, azonos a 375 px-es méréssel (`szerver_1moz1_szo_375_telefon.png`) | a szerver javára |
 
@@ -77,8 +77,8 @@ Képek: `pilot_1moz1_*` és `szerver_1moz1_*` (375 / 768 / 920 / 1280 px, valami
 | Panel 900 px alatt | statikus panel a szöveg alatt (375 px: 5 047 px, 8 557 px magas); kattintásra a böngésző odagörget, a vers kikerül a képből (−3 758 px) | alsó lap 422 / 532 px-nél, a vers fölötte marad; teljes nézet a ⤢ gombbal | a szerver javára (E2) |
 | Panel 900 px-től | ragadós panel a szöveg mellett, 600 px-nél kezdődik (a fejléc és az útmutató alatt), 876 px magas | ragadós oldalblokk 86 px-nél, 576–810 px magas | a szerver feljebb kezd |
 | Fülek | Szó · Vers részletei · Bezárás × | versmódban Vers · Kereszthiv. · Témák · Motívum; szómódban fül nincs, a fejsorban „A vers: 1Móz 1:3 →” és ✕ | más szerkezet (DT293) |
-| Görgetés | a panel egészében görget, belső görgetődoboz nincs | a lap görget; szómódban benne 2 × `.gordul` 340 px | a pilot javára (DT-F134q) |
-| Táblák | a pilot csempékkel és listákkal dolgozik, táblázat a panelen nincs (0) | 7 (szómód) / 12 (versmód) táblázat, ebből 375 px-en 2–3 kilóg | a pilot javára (DT-F134p) |
+| Görgetés | a panel egészében görget, belső görgetődoboz nincs | a lap görget; szómódban benne 2 × `.gordul` 340 px | a pilot javára (DT469) |
+| Táblák | a pilot csempékkel és listákkal dolgozik, táblázat a panelen nincs (0) | 7 (szómód) / 12 (versmód) táblázat, ebből 375 px-en 2–3 kilóg | a pilot javára (DT468) |
 
 ### 4.3 Szó-lap (H0216, 1Móz 1:3) — blokksorrend
 
@@ -109,7 +109,7 @@ Képpárok: `szerver_ez37_vers_<sz>.png` ↔ `mockup9_ez37_vers_<sz>.png` (375 /
 
 **Azonos:** a színek, a betűk, a lap alakja (lekerekített felső sarkok, fogó, árnyék), a lap helye (422 / 532 px), a fejsor (igehely + a vers eleje, ⤢, ✕), a fülsor aláhúzott aktív füllel, a kiemelt vers halvány zöld háttere, a kánon-sáv műfajszínei, a 900 px-es oldalblokk szélessége (400 px), a pontozott aláhúzás.
 
-**Szándékos eltérés (döntéssel):** nincs „Másolás forrással” (DT-F134m); üres állapotban útmutató a fejezet-kalauz helyett (DT-F134l); 900 px alatt ragadós egysoros sáv a fejezetcímre koppintós navigáció és a tájoló pirula helyett (DT-F134n); versenként új sor és kitöltött szélesség a 60ch-s folyó szöveg helyett, „Strong számok” chip a sávban (DT-F134o); a „Legutóbb” a fejléc 2. sorában, nem alsó sávban (M2); a mockup jelölő chipjei (kereszthivatkozás, motívum, témák) és a szövegbeli ↗-kereszthivatkozás-jelek más változatok újdonságai, a hatókörön kívül.
+**Szándékos eltérés (döntéssel):** nincs „Másolás forrással” (DT465); üres állapotban útmutató a fejezet-kalauz helyett (DT464); 900 px alatt ragadós egysoros sáv a fejezetcímre koppintós navigáció és a tájoló pirula helyett (DT466); versenként új sor és kitöltött szélesség a 60ch-s folyó szöveg helyett, „Strong számok” chip a sávban (DT467); a „Legutóbb” a fejléc 2. sorában, nem alsó sávban (M2); a mockup jelölő chipjei (kereszthivatkozás, motívum, témák) és a szövegbeli ↗-kereszthivatkozás-jelek más változatok újdonságai, a hatókörön kívül.
 
 **Új, döntés nélküli eltérés (M4 lelet):**
 
@@ -121,12 +121,12 @@ Ezek kis, elrendezési pontok; a felhasználó döntheti el, kellenek-e (a M5 el
 
 ## 6. Nyitott döntések (⛔)
 
-- **DT-F134p** — a részletek lapjának széles táblái (375 px-en és a 920 px-es oldalblokkban kilógnak; a lap vízszintesen görget, a jobb oszlop levágva). (a) a táblák saját, vízszintesen görgethető burkolóba (`overflow-x: auto`), a lap maga nem görget vízszintesen · (b) tördelés: a tábla a lap szélességére (`table-layout`, `overflow-wrap`), a hosszú oszlopok több sorba · (c) marad, ahogy a mockupban. **Javaslat: (a)** — a tartalom változatlan, csak CSS; a 9. változat ugyanígy törik, tehát a mockuptól ez sem tér el látványban.
-- **DT-F134q** — szómódban a lapon belüli két 340 px-es `.gordul` doboz (BDB angol, BDB magyar nyers): görgetés a görgetésben, kis képernyőn különösen. (a) a lapban a `.gordul` magasságkorlátja feloldva (a lap maga görget) · (b) a két nyers BDB-blokk alapból csukott `details` · (c) marad. **Javaslat: (a)**, csak a részletek lapján belül (a nem-fejezet lapokon a korlát marad).
+- **DT468** — a részletek lapjának széles táblái (375 px-en és a 920 px-es oldalblokkban kilógnak; a lap vízszintesen görget, a jobb oszlop levágva). (a) a táblák saját, vízszintesen görgethető burkolóba (`overflow-x: auto`), a lap maga nem görget vízszintesen · (b) tördelés: a tábla a lap szélességére (`table-layout`, `overflow-wrap`), a hosszú oszlopok több sorba · (c) marad, ahogy a mockupban. **Javaslat: (a)** — a tartalom változatlan, csak CSS; a 9. változat ugyanígy törik, tehát a mockuptól ez sem tér el látványban.
+- **DT469** — szómódban a lapon belüli két 340 px-es `.gordul` doboz (BDB angol, BDB magyar nyers): görgetés a görgetésben, kis képernyőn különösen. (a) a lapban a `.gordul` magasságkorlátja feloldva (a lap maga görget) · (b) a két nyers BDB-blokk alapból csukott `details` · (c) marad. **Javaslat: (a)**, csak a részletek lapján belül (a nem-fejezet lapokon a korlát marad).
 
 Mindkettő a brief `ir` mezőjén belüli CSS-változás, blokktartalom nem változik. Az 5. szakasz (a)–(c) pontja nem igényel külön DT-tételt, ha a felhasználó egyszerűen jelzi, melyik kell.
 
-### 6.1 A döntés és az újramérés (DT-F134p, DT-F134q; 2026-11-01)
+### 6.1 A döntés és az újramérés (DT468, DT469; 2026-11-01)
 
 **A felhasználó döntése** (az orkesztrátoron át, 2026-11-01; egy korábbi, összevont jóváhagyását visszavonta, majd tételenként újra döntött): „javaslatod szerint” — mindkét tételben az (a). Megvalósítás: F134.19 (`02c6973b`). A `_tabla()` (`blokkok.py`) a táblát egy `tabla-doboz` burkolóba teszi; a `.reszletek .tabla-doboz` vízszintesen görget (`overflow-x: auto`), a `.reszletek .gordul` magasságkorlátja feloldva (a lap görget). A burkoló a részletek lapján kívül semleges blokk; a blokkok tartalma nem változott. `SABLON_VERZIO = 'f134-m4a'`.
 
@@ -142,7 +142,7 @@ Mindkettő a brief `ir` mezőjén belüli CSS-változás, blokktartalom nem vál
 | 920, versmód / Ez 37:12 | 86 / 82 | **0** (volt: 17 / 123) | 0 | nincs | +4…+141 (2–3 tábla) | — |
 | 1280, szó / vers / Ez 37:12 | 86 / 86 / 82 | 0 | 0 | nincs | — | — |
 
-Az oldal vízszintes túlfolyása mind a 12 jelenetben 0. A teljes nézet a ragadós sáv alatt (56 px) a nézetablak aljáig ér (DT-F134n), benne sincs túlfolyás és belső görgetődoboz. A 2. szakasz két „nem javult” sora (görgetődoboz, kilógó táblák) ezzel javult; az E7 teljesül.
+Az oldal vízszintes túlfolyása mind a 12 jelenetben 0. A teljes nézet a ragadós sáv alatt (56 px) a nézetablak aljáig ér (DT466), benne sincs túlfolyás és belső görgetődoboz. A 2. szakasz két „nem javult” sora (görgetődoboz, kilógó táblák) ezzel javult; az E7 teljesül.
 
 Képek (teljes nézet, a táblához, illetve a BDB-blokkhoz görgetve): `pq_szerver_vers_375.png`, `pq_szerver_ez37vers_375.png` (a tábla jobb oszlopa a saját dobozában vágódik, a lap nem), `pq_szerver_szo_375.png` (a nyers BDB-szöveg a lapban folyik, doboz nélkül), és ugyanezek 768 px-en.
 
@@ -167,7 +167,7 @@ Egy mérési megjegyzés: az első futás első jelenetében (375 px, szómód, 
 2. Ha a WSL NAT-módban fut (nem „mirrored”), rendszergazdai PowerShellben: `wsl -d pardes -e hostname -I` → a WSL IP; `netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=9765 connectaddress=<WSL IP> connectport=9765`.
 3. Tűzfal: `New-NetFirewallRule -DisplayName "PaRDeS olvaso 9765" -Direction Inbound -Protocol TCP -LocalPort 9765 -Action Allow -Profile Private`.
 4. Telefonon (ugyanazon a Wi-Fi-n): `http://<a gép IP-je>:9765/1Moz/1`, majd `/Ez/37`.
-5. **Mit kell nézni:** (a) a sáv egy sorban marad-e (a 375 px-es mérésben 3 px a tartalék; nagyobb rendszerbetűvel törhet); (b) versszámra és szóra koppintva a lap a képernyő felénél nyílik-e, a vers fölötte látszik-e; (c) a lap felhúzása teljes nézetre, lehúzása vissza és zárásra — a mozgás folyamatos-e (headlessben nem mérhető); (d) a lapon a széles táblák (DT-F134p) és a BDB-dobozok (DT-F134q) hogyan görgetnek ujjal; (e) a ⌕ mögötti kereső, a kánon-sáv és a „Legutóbb”; (f) a ⚙ téma-választás újratöltés után megmarad-e.
+5. **Mit kell nézni:** (a) a sáv egy sorban marad-e (a 375 px-es mérésben 3 px a tartalék; nagyobb rendszerbetűvel törhet); (b) versszámra és szóra koppintva a lap a képernyő felénél nyílik-e, a vers fölötte látszik-e; (c) a lap felhúzása teljes nézetre, lehúzása vissza és zárásra — a mozgás folyamatos-e (headlessben nem mérhető); (d) a lapon a széles táblák (DT468) és a BDB-dobozok (DT469) hogyan görgetnek ujjal; (e) a ⌕ mögötti kereső, a kánon-sáv és a „Legutóbb”; (f) a ⚙ téma-választás újratöltés után megmarad-e.
 6. A végén: `netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=9765` és a tűzfalszabály törlése, ha nem kell tovább.
 
 ## 9. Ami nem futott le, korlátok

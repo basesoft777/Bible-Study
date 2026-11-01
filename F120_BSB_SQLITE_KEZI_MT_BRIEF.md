@@ -13,7 +13,7 @@ kovetkezo: merge a felhasználótól (PR #545, a (c) változat); utána az élő
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/teszt_bsb_import.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, konkordancia/BSB_Strongs.tsv, naplok/F41_wlc_versszam_ellenorzes.tsv]
 fugg: [117]
 nem_fugg: [48]
-lezarva_osszegzes: DT-F120a átmeneti út; (c) kész és merge-kész; az (a) próbája a mai táblán 17 fejezetet ejtene ki, ezért külön tétel (N-F120b); N-F120a, N-F120c felvéve; ELLENOR_F120 6 eltérés javítva
+lezarva_osszegzes: DT457 átmeneti út; (c) kész és merge-kész; az (a) próbája a mai táblán 17 fejezetet ejtene ki, ezért külön tétel (N-F120b); N-F120a, N-F120c felvéve; ELLENOR_F120 6 eltérés javítva
 ---
 
 # F120_BSB_SQLITE_KEZI_MT_BRIEF.md — A bsb_import és a sqlite_epit javítása a KEZI + kitöltött igehely_mt sorokra
@@ -67,14 +67,14 @@ Kimenet: `naplok/F120_meres.md`, proveniencia-sorral (`scope=… | forras=… | 
 ### 3.2 ⛔ A `BSB_Strongs.tsv` `Igehely`-kulcsának szemantikája
 A `bsb_import` a BSB-verset a TAHOT verseihez illeszti (`mt_versek(forras, fmag)`, Strong-illeszkedés). A `BSB_Strongs.tsv` utolsó generálása 2026-10-02/06 (F41, F71), **az F85.6 versszintű átkulcsolása előtt**, amikor a TAHOT-kulcs még nem volt Károli-vers. Ma a TAHOT `Igehely`-kulcsa a Károli-vers. A mai fájlban a `Számozás` oszlop vegyes (`mt` / `kjv` / `ellenorizetlen`); a Hós 1:10–2:1 sorai például `ellenorizetlen`, KJV-szerű számozással.
 
-Ebből adódik a kérdés: **újrafuttatva a `bsb_import` milyen számozást ad az `Igehely`-be?** Ha a TAHOT Károli-kulcsú, a „MT-vers” valójában Károli-vers lesz. Ekkor a `sqlite_epit` MT→Károli leképezése (`mt_kk`) kétszeres leképezés volna, és a `kk_max` R4-ellenőrzésnek sincs értelme. A 3.1 mérése után vázold a lehetőségeket, előny–hátrány–javaslat formában, `DT-F120a` helyőrzővel. Legalább ezeket:
+Ebből adódik a kérdés: **újrafuttatva a `bsb_import` milyen számozást ad az `Igehely`-be?** Ha a TAHOT Károli-kulcsú, a „MT-vers” valójában Károli-vers lesz. Ekkor a `sqlite_epit` MT→Károli leképezése (`mt_kk`) kétszeres leképezés volna, és a `kk_max` R4-ellenőrzésnek sincs értelme. A 3.1 mérése után vázold a lehetőségeket, előny–hátrány–javaslat formában, `DT457` helyőrzővel. Legalább ezeket:
 - **(a)** a `BSB_Strongs.tsv` `Igehely` = MT-vers marad; a `bsb_import` az MT-kulcsot a TAHOT Károli-kulcsából a versmegfeleltető táblán át (Károli → `igehely_mt`, üres mt-nél `MT`/`KJV`-osztály szerint) állítja elő; a `sqlite_epit` MT→Károli leképezése értelmes marad;
 - **(b)** a `BSB_Strongs.tsv` `Igehely` = Károli-vers (a TAHOT-tal azonos kulcs); a `sqlite_epit` `_bsb_szamozas()` azonosságot vesz, az `mt_kk` kikerül; a SEMA/`datasetek.tsv` leírása és a fejléc módosul;
 - **(c)** a `BSB_Strongs.tsv` nem generálódik újra; csak a `sqlite_epit` javul a mai (F85.6 előtti, MT/KJV-vegyes) fájlra, és az újragenerálás külön tétel.
 
 Itt **megállsz**, a felhasználó dönt. Döntési tétel a `DONTESEK.md`-be (helyőrzővel).
 
-### 3.3 A `bsb_import` javítása (a DT-F120a szerint)
+### 3.3 A `bsb_import` javítása (a DT457 szerint)
 - Az R4 és a `fejezet_eltolasok()` a Károli↔MT párokra: az MT-fejezet maximumát az MT-oldali adattal vesd össze, ne a Károli-kulcsú TAHOT-maximummal. A `KJV` osztályú sorok kizárása (`kk_max_tabla` docstringje) marad. A `KEZI` + mt sor az MT-oldalra számít, a Károli-oldalra nem.
 - A Zsoltár-ág (F16, `k` = 0..2) és a Jób 41 / `KEZI_KIVETEL` (F71) viselkedése nem változhat: bájtra azonos import a Zsoltárokon (`naplok/F16_bsb_zsolt_megfeleltetes.tsv`), és a Zsolt 13 kézi kivétele is.
 - `teszt_bsb_import.py`: fixtúra (pici versmegfeleltető + TAHOT-max), R4 mindhárom osztályra; egy `KEZI` + mt fejezet **nem** lesz `illesztetlen`; egy valódi eltérés továbbra is az lesz (negatív próba: a régi viselkedés szándékos visszaállítására a teszt piros).
@@ -83,13 +83,13 @@ Itt **megállsz**, a felhasználó dönt. Döntési tétel a `DONTESEK.md`-be (h
 Commit: `F120.3:`.
 
 ### 3.4 A `sqlite_epit` javítása
-- `_bsb_szamozas()`: az azonosság-tartalék (`azonos_feltetelezett`) csak akkor, ha (i) a BSB-kulcs nem szerepel `mt_kk`-ban, **és** (ii) a kapott Károli-vers nem célja egy `mt_kk`-párnak (ugyanaz a Károli-vers nem kaphat két MT-forrást). Ütközésnél a tartalék sor **nem** kerül be csendben: `jelent_norm('bsb', …, 'azonosság ütközik táblapárral')`, és számlálva a jelentésbe. A DT-F120a (b) esetén a függvény egyszerűsödik, az ütközés-őr marad.
+- `_bsb_szamozas()`: az azonosság-tartalék (`azonos_feltetelezett`) csak akkor, ha (i) a BSB-kulcs nem szerepel `mt_kk`-ban, **és** (ii) a kapott Károli-vers nem célja egy `mt_kk`-párnak (ugyanaz a Károli-vers nem kaphat két MT-forrást). Ütközésnél a tartalék sor **nem** kerül be csendben: `jelent_norm('bsb', …, 'azonosság ütközik táblapárral')`, és számlálva a jelentésbe. A DT457 (b) esetén a függvény egyszerűsödik, az ütközés-őr marad.
 - A `kezi_mt_or`, a `VersmegfKeziMt` és a hívása törlendő; a `teszt_sqlite_epit.kezi_mt_or_kihagy()` és a két hívása szintén (N-F117a: „a segédfüggvény ekkor törölhető”). A `KeziMtOr` osztály átírandó: fixtúrával a `KEZI` + mt sor a helyes Károli-versre képez, a 6 ismert ütközés-mintából egy sem keletkezik.
 - `python eszkozok/teszt_sqlite_epit.py -v`: az `Integracio` (34 teszt) és a `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben` újra fut és zöld; a skip-szám 0 (vagy csak a nem e tételhez tartozó, megnevezett skip). A `test_mai_adat_zold` FAIL-ja marad (nem e tétel tárgya), és jelentve van.
 
 Commit: `F120.4:`.
 
-### 3.5 ⛔ Újragenerálás (a DT-F120a szerint) és mérés
+### 3.5 ⛔ Újragenerálás (a DT457 szerint) és mérés
 - Ha a döntés (a) vagy (b): `python eszkozok/fj2/bsb_import.py --munka <repón kívüli mappa>` a BSB-klónnal (helyi gép). Ha a klón nem elérhető, ⛔: a felhasználó adja meg a helyét, vagy a lépés a gépén fut.
 - Mérés, a régi és az új `BSB_Strongs.tsv` között: sorszám, fejezetenkénti `illesztetlen`, `Számozás`-eloszlás, a 13 érintett fejezet sorai, és a Zsoltárok bájtazonossága. Minden eltérést a táblához kell kötni (a 346 A–D′ vers vagy a 3.2 kulcsváltása); ami nem köthető, ⛔.
 - `pardes.db` építési próba a repón kívüli kimenetbe (`PARDES_DB` vagy `--kimenet`), WSL-natív úton (`eszkozok/teszt_futtat.py` mintájára, `/mnt/c` nélkül). Az építés nem állhat le, és a `bsb` táblában nincs Károli-vers két különböző MT-forrással (SQL-lel igazolva, a lekérdezés a naplóban).
@@ -114,7 +114,7 @@ Itt **megállsz**: a felhasználó jóváhagyja-e a `BSB_Strongs.tsv` cseréjét
 
 ## 5. Döntésnapló
 
-- **DT-F120a** (3.2 ⛔): a `BSB_Strongs.tsv` `Igehely`-kulcsának szemantikája az F85.6 Károli-kulcsú TAHOT-ja után: (a) MT marad, (b) Károli, (c) nincs újragenerálás. *Nyitott.*
+- **DT457** (3.2 ⛔): a `BSB_Strongs.tsv` `Igehely`-kulcsának szemantikája az F85.6 Károli-kulcsú TAHOT-ja után: (a) MT marad, (b) Károli, (c) nincs újragenerálás. *Nyitott.*
 - A 3.3-ban, ha a `fejezet_eltolasok()` szignatúrája változik: egyeztetett eltérés a `bsb_verseltolas_diag.py`-ra (nincs az `ir`-ben). *Feltételes.*
 
 ## 6. A fogyasztói újragenerálás (N-F117a, 2. rész) — külön tétel, javaslat
