@@ -6,14 +6,14 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: nem_indult
+allapot: lezarva
 helyi_gep: igen
-ad: a BSB-import és az SQLite-építő helyesen kezeli a javított Károli-versmegfeleltető tábla 174 KEZI + kitöltött igehely_mt sorát; a DT-F117f őre és a két feltételes tesztkihagyás megszűnik, az olvasó adatbázisa újra építhető, a BSB Strong-tábla a döntés szerint újragenerálva
-kovetkezo: indítás a /kovetkezo-val (opus, helyi gép: BSB-klón kell); első ⛔ a 3.2 kulcsszemantika-döntés (DT-F120a)
-olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, konkordancia/README.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_parameter_erzekenyseg.py, eszkozok/fj2/wlc_versek.py, naplok/F117_meres.md, naplok/F117_fogyaszto_proba.py, naplok/F117_mt_levezetes.tsv, naplok/F117_osztaly_utkozes.tsv, naplok/VERSMEGF_JAVITAS_zaras.md, naplok/ELLENOR_VERSMEGF_JAVITAS.md, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F85_jelentes.md, adat/SEMA.md, F117_VERSMEGF_JAVITAS_BRIEF.md]
+ad: a sqlite_epit a KEZI + kitöltött igehely_mt táblán újra épít (a DT-F117f őre kivezetve); kihagyó BSB-őr: csak tartalommal igazolt Károli-célra ír (248 BSB-vers kimarad, 0 kettős forrás); az Integracio és a FeliratHalmaz teszt újra fut; a BSB_Strongs.tsv változatlan (az MT-re újragenerálás: N-F120b)
+kovetkezo: merge a felhasználótól (PR #545, a (c) változat); utána az élő pardes.db újraépítése (orkesztrátor, frissesseg.py --manifest-keszit); az (a): N-F120b, az olvasó-szerver tesztjei: N-F120c
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/teszt_bsb_import.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, konkordancia/BSB_Strongs.tsv, naplok/F41_wlc_versszam_ellenorzes.tsv]
 fugg: [117]
 nem_fugg: [48]
+lezarva_osszegzes: DT-F120a átmeneti út; (c) kész és merge-kész; az (a) próbája a mai táblán 17 fejezetet ejtene ki, ezért külön tétel (N-F120b); N-F120a, N-F120c felvéve; ELLENOR_F120 6 eltérés javítva
 ---
 
 # F120_BSB_SQLITE_KEZI_MT_BRIEF.md — A bsb_import és a sqlite_epit javítása a KEZI + kitöltött igehely_mt sorokra
