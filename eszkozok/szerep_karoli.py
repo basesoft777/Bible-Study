@@ -68,7 +68,7 @@ def kapcsolo_motivumok(kapcsolo, ut=None):
 
 
 def kapcsolo_kivetelek(kapcsolo, ut=None):
-    """Azok a motívum-id-k, amelyeken az alapból bekapcsolt funkció (a szótári gerinc, DT-F148a) `kivetel`
+    """Azok a motívum-id-k, amelyeken az alapból bekapcsolt funkció (a szótári gerinc, DT437) `kivetel`
     állapotú: a még nem migrált motívumok. A generátor és az `ellenoriz.py` ugyanezt hívja."""
     return frozenset(r['id'] for r in funkcio_kapcsolok(ut) if r['kapcsolo'] == kapcsolo and r['id'] != '*'
                      and r.get('allapot') == 'kivetel')

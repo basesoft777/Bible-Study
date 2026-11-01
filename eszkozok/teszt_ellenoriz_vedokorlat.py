@@ -5,7 +5,7 @@ eszkozok/teszt_ellenoriz_vedokorlat.py -- F148_UJ_MOTIVUM_VEDOKORLAT_BRIEF.md 2.
 eszkozok/ellenoriz.py 18-21. szabalyanak pozitiv es negativ tesztjei.
 
 Ideiglenes (a repon kivuli) gyoker/adat/ + gyoker/lexikon/ konyvtarban fut; a kivetellista a
-`funkcio_kapcsolok.tsv` `kivetel` sora (DT-F148a), ugyanazzal a fuggvennyel olvasva, mint a generatorban.
+`funkcio_kapcsolok.tsv` `kivetel` sora (DT437), ugyanazzal a fuggvennyel olvasva, mint a generatorban.
 A valodi adaton a kotelezo negativ teszt: az 1Kir 18:25-26 „Baál nevével” erteke nem jelzett (20.).
 
     python eszkozok/teszt_ellenoriz_vedokorlat.py
@@ -135,7 +135,7 @@ class Szabaly19(Alap):
         self.assertIn('REGI-001: 2', s.megjegyzes)
 
     def test_tagolatlan_egyetlen_strong(self):
-        # DT-F148b (1): a sor egyetlen Strongja tagolatlan → explicit `tagolatlan`
+        # DT438 (1): a sor egyetlen Strongja tagolatlan → explicit `tagolatlan`
         s = E.szabaly19_kotelezo_mezok(self.adat, [elo('GERINC-001', '1Móz 1:2', strong='H0922',
                                                        lexikon_entry_id='H0922', jelentes_szam='tagolatlan')])
         self.assertEqual(s.verdict, 'RENDBEN')
@@ -148,7 +148,7 @@ class Szabaly19(Alap):
         self.assertEqual(s.verdict, 'SÉRTÉS')
 
     def test_tagolatlan_entry_osszetett_soron(self):
-        # DT-F148b (3): összetett soron (H8414+H0922) a tagolt token az entry
+        # DT438 (3): összetett soron (H8414+H0922) a tagolt token az entry
         s = E.szabaly19_kotelezo_mezok(self.adat, [elo('GERINC-001', '1Móz 1:2', strong='H8414+H0922',
                                                        lexikon_entry_id='H0922', jelentes_szam='tagolatlan')])
         self.assertEqual(s.verdict, 'SÉRTÉS')
@@ -193,7 +193,7 @@ class Szabaly21(Alap):
         self.assertEqual(E.szabaly21_lap_tisztasag(self.adat, main=True).verdict, 'RENDBEN')
 
     def test_helyorzo_ag_jelentes_main_sertes(self):
-        # DT-F148d (2)
+        # DT440 (2)
         self.lap('GERINC-001_TUDOMANYOS.md', self.TISZTA + '(DT-F121g)\n')
         self.assertEqual(E.szabaly21_lap_tisztasag(self.adat, main=False).verdict, 'JELENTÉS')
         self.assertEqual(E.szabaly21_lap_tisztasag(self.adat, main=True).verdict, 'SÉRTÉS')
