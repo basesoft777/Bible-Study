@@ -10,7 +10,7 @@
 | Ján | 879 | 102 | 4.7832 | 0.00544 | 32/879 | 14 | 2 | 423 | 42 | n.é. (0/0) |
 | **össz** | **2030** | **229** | **11.0483** | **0.00544** | **72/2030** | **25** | **5** | **1132** | **109** | |
 
-Végleges kapuhiba: **2/2 030**: a Luk 0/1 151, a Ján 2/879 (Ján 2:8: az 1. próbán „többször szereplő magyar szó”, a 2. próbán a vers hiányzott a válaszból; Ján 4:30: az 1. próbán a 4:29–38 köteg érvénytelen JSON, a 2. próbán csak a 4:30 hiányzott a válaszból; indokolt maradék, a két vers `kezi`, link nélkül; részletek: `naplok/F22_Jan_jelentes.md`). A 25 javító körös kötegből **5 egész köteg formátumhiba** (Luk 3, Ján 2), a többi versenkénti kapuhiba.
+Végleges kapuhiba: **2/2 030**: a Luk 0/1 151, a Ján 2/879 (Ján 2:8: az 1. próbán „többször szereplő magyar szó”; Ján 4:30: az 1. próbán a 4:29–38 köteg érvénytelen JSON; mindkét versnél a 2. próbán a vers benne volt a válaszban, de a `vers` kulcs vezető szóközzel állt (`" Ján 2:8"`, `" Ján 4:30"`), amit a kapu nem normalizál, ezért „hiányzik a válaszból” hibával `kezi` lett; indokolt maradék, a két vers `kezi`, link nélkül; részletek: `naplok/F22_Jan_jelentes.md`). A 25 javító körös kötegből **5 egész köteg formátumhiba** (Luk 3, Ján 2), a többi versenkénti kapuhiba.
 
 ## 2. Költség, keret, a mért egységár
 
