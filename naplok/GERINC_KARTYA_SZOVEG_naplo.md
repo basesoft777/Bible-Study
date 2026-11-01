@@ -161,5 +161,5 @@ A felhasználó („a javaslat szerint”, az orkesztrátor-session idézetével
 
 A 13 pont jóváhagyása (az orkesztrátor-session idézete; előbb a jóváhagyást visszavonták, majd újra megadták): az orkesztrátor a 13 pontot négy csoportban mutatta be („mind a 13 mehet”), a felhasználó válasza szó szerint: **„a javaslatod szerint”**. Beírva: `MUNKAMENET.md` (A3b, A3c, prioritási-térkép mondat, C-x, C-y, C-z, C-w), `2_` sablon v22, a kiejtés-szabály (K) az 1_, 2_, 4_, 5_, 6_ sablonban és a gyorsreferenciában, a 6_ sablon L és O szakasza és kolofon-kiadás sora, az olvasói elv a gyorsreferenciában, `.claude/commands/kiadas.md`. A C-x/C-y szövege az `F148` 6. szakaszából szó szerint (a brief hatókörét ezzel bővítettem).
 
-Nincs kész: a kolofon kiadás-sorát a generátor még nem rendereli (a `lexikon_general.py` a #152 fájlja); a `6_` sablon ezt szabályként rögzíti.
+Nincs kész: a kolofon kiadás-sorát a generátor még nem rendereli (a `lexikon_general.py` a #152 fájlja); a `6_` sablon ezt szabályként rögzíti. Nyitott tételként felvéve: `N-F125a` (`NYITOTT_FELADATOK.md`; ELLENOR_F125 4.).
 
