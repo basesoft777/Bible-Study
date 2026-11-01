@@ -163,3 +163,12 @@ A 13 pont jóváhagyása (az orkesztrátor-session idézete; előbb a jóváhagy
 
 Nincs kész: a kolofon kiadás-sorát a generátor még nem rendereli (a `lexikon_general.py` a #152 fájlja); a `6_` sablon ezt szabályként rögzíti. Nyitott tételként felvéve: `N-F125a` (`NYITOTT_FELADATOK.md`; ELLENOR_F125 4.).
 
+
+## F125.9 — a mért számok proveniencia-sora és az újramérés (ELLENOR_F125 6.)
+
+A fenti 57, 4, 192 és 77 szám az 1. tétel (F125.6) UTÁN újramérve, az ág `24971b44` állapotán; az eredmény a régivel egyező, eltérés nincs (az 57 azóta „csoportosan fedett”, mert a gyűjtő mondat N-je, 63, nem kisebb nála).
+
+- ALVIL-001: 72 előfordulás, 15 megnevezve, 57 csoportosan fedett, 0 hiány; ISTENTISZT-001: 33/33 előfordulás megnevezve, 3 név nélküli kapcsolat + 1 nyitott jelölt = 4 név nélküli elem. `scope=python eszkozok/proza_lefedettseg.py ISTENTISZT-001 ALVIL-001 | forras=motivumok/ISTENTISZT-001.md, motivumok/ALVIL-001.md, adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/jeloltek.tsv | ts=2026-11-01T16:52+01:00`
+- 22. szabály: 192 jelzés; 23. szabály: 77 jelzés. `scope=python eszkozok/ellenoriz.py (teljes futás, a 22. és 23. szabály jelzésszáma; az eszköznek nincs szabályonkénti kapcsolója) | forras=lexikon/*_TUDOMANYOS.md (22.), motivumok/*.md és adat/*.tsv (23.) | ts=2026-11-01T16:52+01:00`
+
+A régi (F125.2) mérés: 22 → 192, 23 → 77, ugyanezzel a paranccsal a mai main-en; az F125.6 nem változtatta a 23. szabály jelzésszámát.
