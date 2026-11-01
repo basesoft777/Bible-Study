@@ -460,6 +460,10 @@ def strong_allapot(strong, kerelmek, valaszok):
         if fh is None:
             hibak.append(biz)
             continue
+        ismeretlen = sorted({int(n) for n in E.HELYORZO.findall(fh) if not 1 <= int(n) <= len(k['hely'])})
+        if ismeretlen:
+            hibak.append('ismeretlen helyőrző: %s (a szócikkben 1–%d van)' % (ismeretlen, len(k['hely'])))
+            continue
         vissza, hiany, tobb = E.helyorzo_visszaallit(fh, k['hely'])
         if hiany or tobb:
             hibak.append('helyőrző-hiba: hiányzó %s, többször használt %s' % (hiany, tobb))
