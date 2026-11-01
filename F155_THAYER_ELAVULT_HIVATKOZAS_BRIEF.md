@@ -1,3 +1,20 @@
+---
+feladat: 155
+cim: A Thayer `elavult` sorok és a `forditas.py` elavult helyőrző-hivatkozásának (DT-F132c → DT329) javítása (THAYER_ELAVULT_HIVATKOZAS)
+kod: THAYER_ELAVULT_HIVATKOZAS
+tipus: feladat
+fazis: 1
+munka: adat
+modell: sonnet
+allapot: nem_indult
+ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
+kovetkezo: "/kovetkezo (⛔ a sorok megjegyzésének bájt-szintű cseréje vagy a történeti szöveg megtartása)"
+olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, DONTESEK.md, naplok/ELLENOR_F142.md]
+ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
+fugg: []
+nem_fugg: [27, 38, 154]
+---
+<!-- Sorrend: a #153 (THAYER_KAROLI_TELJES) előtt vagy vele egy menetben fusson; a javítást a #153 sessionje viszi. -->
 # Fnn_THAYER_ELAVULT_HIVATKOZAS_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
 
 *FELADATOK #nn · Modell: sonnet · v0 (tervezet) · 2026.10.27 · készítette: a #142 javítókörének végrehajtója (`claude-sonnet-5-5`),
