@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-01",
-   "commit": "9d05e847"
+   "commit": "63bc850a"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -956,8 +956,8 @@
    "cim": "Az ISTENTISZT-001 motívumlap-tervének hátraléka — kis forrásjavítások, az ismétlés csökkentése a generátorban, és az olvasói irány nyitott tételei",
    "fazis": "1",
    "allapot": "stop",
-   "brief_allapot": "nem_indult",
-   "most": "Te: befogadás a /befogad-dal; utána /kovetkezo, A ⛔ (a Kivonat szövege), B0 mérés, ⛔ DT-F<nn>a",
+   "brief_allapot": "megallt",
+   "most": "Te: merge (draft PR #549); a DT449 (b) és a Kivonat két mondata alkalmazva (F152.7); függő: a Kivonat 3. mondata (fölérendelt fogalom) a #151 K1–K3 döntése után; nyitva: N-F152a–g",
    "fugg": "#125*",
    "tervezett": false,
    "reszletes": "",
@@ -4610,6 +4610,18 @@
      "🟢"
     ],
     "sor": 492,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT449",
+    "feladat": "#152 ISTENTISZT_TERV_HATRALEK (⛔ B.4, a B0 mérés után)",
+    "kerdes": "A Minősítés rés „Kereszthivatkozásból minősített jelöltek” táblája (61 sor: beépítve 1, elutasítva 60) az 1/b. adatát ismétli: mind a 61 jelölt az 1/b.-ben (60) vagy az előfordulás-táblában (1, Róm 10:12) is áll, ugyanazzal a döntéssel és indokkal. Mért: a tábla a B.2 előtt 20,3 KB, utána 15,4 KB (a lap 233,8 KB-jából). Mi legyen vele? *(forrás: `F152_ISTENTISZT_TERV_HATRALEK_BRIEF.md` 3. B.4; mérés: `naplok/ISTENTISZT_TERV_HATRALEK_naplo.md` 1., 5.; proveniencia: scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 505,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }

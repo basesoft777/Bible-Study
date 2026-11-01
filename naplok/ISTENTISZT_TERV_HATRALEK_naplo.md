@@ -87,10 +87,10 @@ kérése a négy PaRDeS-szóra és a seólra, tehómra szólt): ISTENTISZT-001 �
 | ugyanabban a szakaszban ismétlődő proveniencia-sor | 181 → 6 (a maradék 6 a 6. Értelmezés kézi NAPLO-soraiban: a kézi forrás része, a generátor nem írja) | 73 → 0 |
 | olvasói „gerinc” | 18 → 0 (a maradék 5 dőlt üzemeltetői mondat) | 4 → 0 |
 | 1/b.: 1Móz 25:21–26 | 6 sor → 1 sor (+ Jer 7:10–11 és a többi szomszédos pár) | — |
-| Minősítés jelölt-tábla | 20,3 KB → 15,4 KB (61 sor; a DT-F152a tárgya) | — |
+| Minősítés jelölt-tábla | 20,3 KB → 15,4 KB (61 sor; a DT449 tárgya) | — |
 | kiejtés-hiány a lapon (kézi) | 4 (a PaRDeS négy szava) → 0 | 6 → 4 (a seól, a tehóm javítva; maradt: ἄβυσσος, ᾍδης ×3) |
 
-A Motívumlap-terv becslése (40–45 KB tartalomvesztés nélkül) a Minősítés-tábla (DT-F152a) és az N-F152f tételei nélkül nem
+A Motívumlap-terv becslése (40–45 KB tartalomvesztés nélkül) a Minősítés-tábla (DT449) és az N-F152f tételei nélkül nem
 érhető el; a mostani −19,6 KB a forrásmegjelölésből és a tartomány-összevonásból jön. A proveniencia nem veszett el: minden
 jel (‹E1›, ‹K1›, ‹M1› …) a blokk alatti sorban a teljes `scope=… | forras=… | ts=…` alakot hordozza, a soronkénti szám mellett.
 
@@ -127,7 +127,7 @@ Forrás: „Megvalósulás-jelentés ISTENTISZT-001” (Claude Docs, rev 7, 2026
 | E5 | Kapcsolódó motívumok — próza a kapcsolatról | részben | N-F152c |
 | E6 | Kilenclépéses prózasablon a `sablonok/`-ba | nem | N-F152g |
 | E7 | A névtelen hívás és a Seól | nem | N-F152c |
-| L1 | Minden elutasított jelölt háromszor (Minősítés-tábla, 4. KH nyers lista) | részben | ⛔ DT-F152a (a tábla); N-F152f (a 4. lista) |
+| L1 | Minden elutasított jelölt háromszor (Minősítés-tábla, 4. KH nyers lista) | részben | ⛔ DT449 (a tábla); N-F152f (a 4. lista) |
 | L2 | Ugyanaz a forrásmegjelölés 120-szor | nem | **kész** (F152.2/F152.4: 120 → 2) |
 | L3 | Egy előfordulás átlag 7 (ma 10,2) szakaszban | nem | N-F152f |
 | L4 | Tartományok szétbontva (1Móz 25:21–26) | nem | **kész** (F152.2/F152.4) |
@@ -161,7 +161,7 @@ Alap: a negatív kritérium és a fölérendelt fogalom a `motivumok.tsv`-ben (`
 a Jer 7:10 és az ApCsel 7:59 az 1/b.-ben ezzel az indokkal elutasított jelölt (`jeloltek.tsv`). Jóváhagyás után beírás és
 újragenerálás.
 
-### 7.2 DT-F152a — a Minősítés jelölt-táblája (`DONTESEK.md`)
+### 7.2 DT449 — a Minősítés jelölt-táblája (`DONTESEK.md`)
 
 A 61 soros tábla minden sora az 1/b.-ben (60 elutasított) vagy az előfordulás-táblában (Róm 10:12, beépítve) is áll, ugyanazzal
 a döntéssel és indokkal; mérete a B.2 után 15,4 KB. (a) jelvény a soron, a tábla megszűnik (réslista-módosítás,
@@ -193,7 +193,7 @@ elő; a generátor-változás a többi lapon a következő újrageneráláskor j
 A felhasználó a két pontról egyenként döntött (az orkesztrátoron át, 2026-11-01; egy korábbi, visszavont jóváhagyás nem
 számít):
 
-- **DT-F152a:** „b” — a Minősítés „Kereszthivatkozásból minősített jelöltek” táblája csukva (`<details>`, a `<summary>` a
+- **DT449:** „b” — a Minősítés „Kereszthivatkozásból minősített jelöltek” táblája csukva (`<details>`, a `<summary>` a
   tábla címe a sorszámmal); a tartalma és a közös forrásmegjelölés (‹M1›) változatlan. `eszkozok/lexikon_general.py`
   `adatres_minosites`, teszt: `teszt_lexikon_adatres`. Minden lexikonra.
 - **A.2, a Kivonat:** a 7.1 javaslatának első két mondatára: „mehet” — beírva a `motivumok/ISTENTISZT-001.md` `kivonat`
