@@ -178,6 +178,43 @@ class LicencHiany(Exception):
     pass
 
 
+def karoli_mt(kar, kjv, mt, osz):
+    """F120 (DT-F120a (a)): egy versmegfeleltető-sor MT-verse ('f:v'); azonos a fj2/bsb_import.karoli_mt szabályával (a kettő
+    egyezését a teszt_sqlite_epit.BsbOr ellenőrzi): a kitöltött igehely_mt; KEZI sornál üres mt-vel az igehely_kjv; különben a
+    Károli-szám."""
+    if re.fullmatch(r'\d+:\d+', mt or ''):
+        return mt
+    if osz == 'KEZI' and re.fullmatch(r'\d+:\d+', kjv or ''):
+        return kjv
+    return kar.rsplit(' ', 1)[1]
+
+
+def mt_karoli_inverz(vm_sorok):
+    """F120 (DT-F120a (a)): {(könyv, 'f:v' MT): Károli-igehely} ott, ahol az MT eltér a Károli-számtól (máshol azonosság), a
+    bsb_import.karoli_mt_terkep pontos inverze: ha több Károli-vers ugyanarra az MT-versre képez, a kitöltött igehely_mt-jű
+    (explicit) pár nyer, ha pontosan egy van; különben az MT-vers egyikhez sem kerül (a BSB-import sem ír rá)."""
+    jelolt = {}
+    for r in vm_sorok:
+        kar = r['igehely_karoli']
+        p = hu_igehely_parse(kar)
+        if not p:
+            continue
+        m = karoli_mt(kar, r['igehely_kjv'], r['igehely_mt'], (r.get('osztaly') or '').strip())
+        jelolt.setdefault((p[0], m), []).append((kar, bool(re.fullmatch(r'\d+:\d+', r['igehely_mt'] or ''))))
+    ki = {}
+    for (konyv, m), lista in jelolt.items():
+        if len(lista) == 1:
+            kar = lista[0][0]
+        else:
+            explicit = [k for k, e in lista if e]
+            kar = explicit[0] if len(explicit) == 1 else None
+        if kar is None:
+            ki[(konyv, m)] = None
+        elif kar.rsplit(' ', 1)[1] != m or len(lista) > 1:
+            ki[(konyv, m)] = kar
+    return ki
+
+
 BSB_ILLESZKEDES_KUSZOB = 0.5   # F120 (DT-F120a): a bsb_import F41-es mércéje (a TAHOT-vers Strong-halmazának BSB-ben levő hányada)
 
 
@@ -778,12 +815,7 @@ class Epito(object):
     # -- BSB + szamozas ------------------------------------------------------------
     def _bsb_szamozas(self):
         vm = G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]
-        mt_kk = {}
-        for r in vm:
-            if r['igehely_mt']:
-                p = hu_igehely_parse(r['igehely_karoli'])
-                if p:
-                    mt_kk[(p[0], r['igehely_mt'])] = r['igehely_karoli']
+        mt_kk = mt_karoli_inverz(vm)   # F120 (DT-F120a (a)): a bsb_import.karoli_mt_terkep inverze; None = ütköző MT-vers
         # BSB: a Karoli-celt a versmegfeleltetes MT-oszlopan at, kulonben azonos szammal kepezzuk (jelolve a
         # `kk_leképezés` oszlopban). A mai BSB_Strongs.tsv kulcsa nem egysegesen MT (F120, DT-F120a): az 1. kor
         # a celt es a vers Strong-halmazat gyujti, a bsb_bizonytalan() a tartalommal nem igazolt es az utkozo
@@ -801,6 +833,9 @@ class Epito(object):
             mtkulcs = '%d:%d' % (int(m.group(2)), int(m.group(3)))
             if (konyv, mtkulcs) in mt_kk:
                 kk, mod = mt_kk[(konyv, mtkulcs)], 'mt_tabla'
+                if kk is None:
+                    self.jelent_norm('bsb', r['Igehely'], 'ütköző MT-vers (több Károli-vers, explicit pár nélkül)')
+                    continue
             else:
                 kk, mod = '%s %s' % (konyv, mtkulcs), 'azonos_feltetelezett'
             if kk not in self.vi.halmaz:

@@ -303,6 +303,18 @@ class BsbOr(unittest.TestCase):
         self.assertEqual(set(ki), {('A', '1:1'), ('A', '1:3'), ('A', '1:4')})
         self.assertIn('nem ellenőrizhető', ki[('A', '1:3')])
 
+    def test_a_bsb_import_es_az_epito_ugyanazt_a_karoli_mt_szabalyt_hasznalja(self):
+        # F120 (DT-F120a (a)): a valós táblán az import Károli -> MT térképe és az építő MT -> Károli inverze egymás inverze
+        sys.path.insert(0, os.path.join(ROOT, 'eszkozok', 'fj2'))
+        import bsb_import as BI
+        kk = BI.kk_betolt()
+        terkep, _ = BI.karoli_mt_terkep(kk)
+        inv = S.mt_karoli_inverz(G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'))[1])
+        rossz = [(b, cv, m) for (b, cv), m in terkep.items()
+                 if inv.get((b, m), '%s %s' % (b, m)) != '%s %s' % (b, cv)]
+        self.assertEqual(rossz, [])
+        self.assertEqual(BI.oda_vissza(kk), [])
+
     def test_a_regi_or_nincs_a_kodban(self):
         # N-F117a: a DT-F117f őre és a teszt-kihagyás kivezetve
         with open(os.path.join(ROOT, 'eszkozok', 'sqlite_epit.py'), encoding='utf-8') as f:

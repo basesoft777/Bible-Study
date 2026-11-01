@@ -439,6 +439,75 @@ def kk_max_tabla(kk):
     return ki
 
 
+def karoli_mt(kar, kjv, mt, osz):
+    """F120 (DT-F120a (a)): egy Karoli-kulcs-sor MT-verse ('f:v'): a kitoltott igehely_mt; `KEZI` sornal ures mt-vel az igehely_kjv
+    (a kezi Karoli -> KJV par; az MT-t itt a KJV-vel azonosnak vesszuk); kulonben (KJV, MT osztaly) a Karoli-szam (a tabla szerint
+    a Karoli-szam az MT-szam; ahol nem az, a 7. oszlop WLC-osszevetese `ellenorizetlen`-t ad, N-F146a). A Zsoltarokon a KJV-osztaly
+    igehely_kjv-je a felirat miatt eltér, a Karoli-szam ott az MT. Ugyanez a szabaly: sqlite_epit.karoli_mt."""
+    if re.fullmatch(r'\d+:\d+', mt or ''):
+        return mt
+    if osz == 'KEZI' and re.fullmatch(r'\d+:\d+', kjv or ''):
+        return kjv
+    return kar.rsplit(' ', 1)[1]
+
+
+def karoli_mt_terkep(kk):
+    """F120 (DT-F120a (a)): ({(konyv, 'f:v' Karoli): 'f:v' MT}, [kimaradt Karoli-versek]) a Karoli-kulcsbol (karoli_mt szabaly).
+    Ha tobb Karoli-vers ugyanarra az MT-versre kepez (a tabla KJV = MT feltevese ott nem igaz, N-F146a): a kitoltott igehely_mt-jű
+    (explicit) par nyer, a tobbi kimarad; ha nincs pontosan egy explicit par, mind kimarad. A sqlite_epit ugyanezt forditja vissza."""
+    jelolt = {}
+    for kar, kjv, mt, osz in kk:
+        b, cv = kar.rsplit(' ', 1)
+        jelolt.setdefault((b, karoli_mt(kar, kjv, mt, osz)), []).append((cv, bool(re.fullmatch(r'\d+:\d+', mt or ''))))
+    ki, kimaradt = {}, []
+    for (b, m), lista in jelolt.items():
+        if len(lista) == 1:
+            ki[(b, lista[0][0])] = m
+            continue
+        explicit = [cv for cv, e in lista if e]
+        for cv, e in lista:
+            if len(explicit) == 1 and e:
+                ki[(b, cv)] = m
+            else:
+                kimaradt.append('%s %s' % (b, cv))
+    return ki, sorted(kimaradt)
+
+
+def tahot_mt_halmazok(forras, kk):
+    """F120 (DT-F120a (a)): a TAHOT az F85.6 ota Karoli-kulcsu; a BSB_Strongs.tsv Igehely-e MT (DT-F41d). A forras-halmazokat
+    (igehely -> Strongok) a Karoli-kulcson at (karoli_mt_terkep) MT-kulcsra forditja. A Karoli-kulcsban nem szereplo (N-F120a,
+    N-F117d) es az MT-utkozes miatt kimaradt TAHOT-vers kimarad: MT-szamat nem talalgatjuk.
+    Visszaad: ({MT-igehely: set(Strong)}, atforditott versek szama, [kimaradt Karoli-versek])."""
+    terkep, utkozo = karoli_mt_terkep(kk)
+    ki, at, kimaradt = {}, 0, []
+    for ig, s in sorted(forras.items()):
+        b, cv = ig.rsplit(' ', 1)
+        if (b, cv) not in terkep:
+            kimaradt.append(ig)
+            continue
+        mt = terkep[(b, cv)]
+        cel = '%s %s' % (b, mt)
+        if cel in ki:
+            raise SystemExit('HIBA (F120): ket Karoli-vers ugyanarra az MT-versre (%s) kepez' % cel)
+        at += mt != cv
+        ki[cel] = s
+    return ki, at, kimaradt
+
+
+def oda_vissza(kk):
+    """F120 (DT-F120a (a), az R4 helyett): a Karoli -> MT terkep es a sqlite_epit._bsb_szamozas MT -> Karoli visszakepzese
+    (ahol az MT eltér a Karoli-szamtol, a terkep inverze; kulonben azonossag) egymas inverze-e. Visszaad:
+    [(Karoli, MT, visszakepzett Karoli)] az elteresekre (ures = rendben)."""
+    terkep, _ = karoli_mt_terkep(kk)
+    mt_kk = {(b, mt): '%s %s' % (b, cv) for (b, cv), mt in terkep.items() if mt != cv}
+    hiba = []
+    for (b, cv), mt in sorted(terkep.items()):
+        vissza = mt_kk.get((b, mt), '%s %s' % (b, mt))
+        if vissza != '%s %s' % (b, cv):
+            hiba.append(('%s %s' % (b, cv), mt, vissza))
+    return hiba
+
+
 FEJLEC_SOR = 'Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\tAngol szó állapota\tSzámozás\n'
 
 
@@ -672,11 +741,17 @@ def fut(munka, parancs):
     commit, hiba = kozos.klonoz(URL, cel)
     if not commit:
         raise SystemExit('HIBA: a BSB nem toltheto le: %s' % hiba)
-    halm = {'H': forras_halmazok('H'), 'G': forras_halmazok('G')}
+    kk = kk_betolt()
+    tahot_mt, atforditva, kimaradt = tahot_mt_halmazok(forras_halmazok('H'), kk)
+    print('F120: a TAHOT Karoli-kulcsa MT-re forditva (karoli_mt): %d vers kulcsa valtozott; a Karoli-kulcsban nincs, kimarad: %d (%s)'
+          % (atforditva, len(kimaradt), ', '.join(kimaradt)))
+    ov = oda_vissza(kk)
+    print('F120 oda-vissza proba (Karoli -> MT -> Karoli): %d elteres%s' % (len(ov), (': ' + '; '.join('%s -> %s -> %s' % x for x in ov[:10])) if ov else ''))
+    halm = {'H': tahot_mt, 'G': forras_halmazok('G')}
     halm_na28 = forras_halmazok('G', na28=True)
     norm = tbesg_normalizalo()
     kep = lambda halmaz: {norm.get(x, x) for x in halmaz}  # noqa: E731
-    kkmax = kk_max_tabla(kk_betolt())
+    kkmax = {}  # F120 (DT-F120a (a)): az R4 kivezetve -- a TAHOT MT-kulcsu, a fejezet-max a TAHOT-bol jon; helyette oda_vissza()
     mappa = os.path.join(cel, 'base', 'display')
     lefedettseg, import_sorok, import_allapot_konyvenkent = [], [], {}
     nem_importalt = []  # minden feldolgozott sor, amely nem kerul a BSB_Strongs.tsv-be (USZ, kuszob alatti konyvek, illesztetlen fejezetek)
