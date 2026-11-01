@@ -1293,7 +1293,8 @@ def szabaly20_jelentes_hu(adat_dir, elofordulasok, kivetel=None):
 
 
 def _letezo_tetelek(gyoker):
-    """(DT-szamok, N-szamok): a `DONTESEK.md` `| DT<n> |` sorai, a `NYITOTT_FELADATOK.md` `**N<n>` tetelei."""
+    """(DT-szamok, N-szamok): a `DONTESEK.md` `| DT<n> |` sorai, a `NYITOTT_FELADATOK.md` `**N<n>` (nyitott) es
+    `* N<n> —` (lezart) tetelei."""
     def olvas(nev):
         ut = os.path.join(gyoker, nev)
         if not os.path.exists(ut):
@@ -1302,7 +1303,8 @@ def _letezo_tetelek(gyoker):
             return f.read()
     d, n = olvas('DONTESEK.md'), olvas('NYITOTT_FELADATOK.md')
     return (None if d is None else set(re.findall(r'^\| DT(\d+) \|', d, re.M)),
-            None if n is None else set(re.findall(r'\*\*N(\d+)\b', n)))
+            None if n is None else (set(re.findall(r'\*\*N(\d+)\b', n))
+                                    | set(re.findall(r'^\s*\*\s+N(\d+)\s+—', n, re.M))))
 
 
 def lap_hibak(szoveg, letezo_dt, letezo_n):

@@ -75,7 +75,7 @@ class Alap(unittest.TestCase):
         with open(os.path.join(self.gyoker, 'DONTESEK.md'), 'w', encoding='utf-8') as f:
             f.write('| DT | x |\n|---|---|\n| DT272 | gerinc |\n')
         with open(os.path.join(self.gyoker, 'NYITOTT_FELADATOK.md'), 'w', encoding='utf-8') as f:
-            f.write('- **N62 — valami** leírás\n')
+            f.write('- **N62 — valami** leírás\n## Lezárva\n* N63 — lezárt tétel, kiemelés nélkül\n')
 
     def tearDown(self):
         shutil.rmtree(self.gyoker)
@@ -186,7 +186,7 @@ class Szabaly20(Alap):
 
 
 class Szabaly21(Alap):
-    TISZTA = '# Lap\n\nA döntés: DT272; a nyitott tétel: N62.\n'
+    TISZTA = '# Lap\n\nA döntés: DT272; a nyitott tétel: N62; a lezárt: N63.\n'
 
     def test_rendben(self):
         self.lap('GERINC-001_TUDOMANYOS.md', self.TISZTA)
@@ -217,6 +217,7 @@ class Szabaly21(Alap):
         self.assertIn('N9999', szov)
         self.assertIn('DT9999', szov)
         self.assertNotIn('N62', szov)
+        self.assertNotIn('N63', szov)  # a lezárt, kiemelés nélküli tétel is létező (ELLENOR_F148 4.)
         self.assertNotIn('DT272', szov)
 
     def test_kivetel_lap_jelentes(self):

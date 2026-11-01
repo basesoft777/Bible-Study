@@ -108,6 +108,18 @@ class Levezetes(unittest.TestCase):
         self.assertEqual(jelek(SL.levezet_sor(adat(), sor('1Móz 1:2', 'tagolatlan', 'H0922'), set())[1]), {'J5'})
         self.assertEqual(jelek(SL.levezet_sor(adat(), sor('1Móz 1:2', '1', 'H0922'), set())[1]), {'J5'})
 
+    def test_macula_mt_nelkuli_vers(self):
+        # ELLENOR_F148 2.: ahol a versmegfeleltetés nem ad MT-t, a Károli fejezet:vers csak akkor MT, ha a Macula
+        # saját `karoli` oszlopa is azt adja (Mik 5:1: az MT 5:1 a Maculában Károli 5:2 → nincs morfológia)
+        mk = SL.MaculaKaroli({('MIC', '5:1'): {'q'}, ('XYZ', '1:1'): {'q'}}, {'Mik': 'MIC', 'Xyz': 'XYZ'},
+                             {('MIC', '5:1'): 'Mik 5:2', ('XYZ', '1:1'): 'Xyz 1:1'})
+        self.assertIsNone(mk.get('Mik 5:1'))
+        self.assertEqual(mk.get('Xyz 1:1'), {'q'})
+
+    def test_valodi_mik_5_1(self):
+        self.assertFalse(SL._versmegf().get('Mik 5:1'))  # a tábla itt nem ad MT-t
+        self.assertIsNone(SL.macula_torzsek('H3318').get('Mik 5:1'))
+
     def test_j6_minosito(self):
         ut, js = SL.levezet_sor(adat(), sor('1Móz 4:26', '2.c (tagadva)'), set())
         self.assertEqual(ut, 'Qal/2/c')
@@ -145,7 +157,10 @@ class Teendo(unittest.TestCase):
     def test_ellenoriz_teendok(self):
         elo = [dict(sor('1Móz 4:26', '2.c'), id='X-001'), dict(sor('Péld 1:12', '1', 'H7585'), id='X-001'),
                dict(sor('Ézs 38:18', '2.b', 'H7585'), id='X-001'), dict(sor('Jób 17:12', '1', 'H7585'), id='X-001')]
-        ki = {r['igehely']: r for r in SL.ellenoriz('X-001', adat(), elo, set(), ts='2026-11-01')}
+        lexhiv = {('BDB', 'H7585', '1'), ('BDB', 'H7585', '2.b')}
+        ki0 = {r['igehely']: r for r in SL.ellenoriz('X-001', adat(), elo, set(), ts='2026-11-01')}
+        self.assertEqual((ki0['Péld 1:12']['teendo'], ki0['Péld 1:12']['jelzes']), ('', 'J8'))  # 17. szabály kulcsa
+        ki = {r['igehely']: r for r in SL.ellenoriz('X-001', adat(), elo, lexhiv, ts='2026-11-01')}
         self.assertEqual(ki['1Móz 4:26']['egyezik'], 'igen')
         self.assertEqual(ki['1Móz 4:26']['teendo'], '')
         self.assertEqual((ki['Péld 1:12']['teendo'], ki['Péld 1:12']['cimke_hu_javaslat']), ('uj_sor', 'az alvilág'))

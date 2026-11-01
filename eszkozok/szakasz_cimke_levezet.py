@@ -81,7 +81,7 @@ def macula_torzsek(strong):
     megfeleltetéssel készült: az Ézs 64:6 MT ott Károli 64:7, a mai táblában 64:6)."""
     if strong in _macula_cache:
         return _macula_cache[strong]
-    mt_szerint, konyv = {}, {}
+    mt_szerint, konyv, macula_karoli = {}, {}, {}
     konk = os.path.join(ROOT, 'konkordancia')
     for nev in sorted(os.listdir(konk)):
         if not (nev.startswith(MACULA_GLOB) and nev.endswith('.tsv')):
@@ -97,29 +97,35 @@ def macula_torzsek(strong):
                     continue
                 kod, mt = m[fej['ref']].split('!')[0].split(' ')
                 konyv.setdefault(m[fej['karoli']].rsplit(' ', 1)[0], kod)
+                macula_karoli.setdefault((kod, mt), m[fej['karoli']])
                 if m[fej['strong']] != strong:
                     continue
                 morf = m[fej['morf']]
                 if morf.startswith('V') and len(morf) > 1:
                     mt_szerint.setdefault((kod, mt), set()).add(morf[1])
-    out = MaculaKaroli(mt_szerint, konyv)
+    out = MaculaKaroli(mt_szerint, konyv, macula_karoli)
     _macula_cache[strong] = out
     return out
 
 
 class MaculaKaroli(object):
-    """Károli-vers → {törzsbetű}: az MT-vers a versmegfeleltetésből, ahol a tábla nem ad MT-t, a Károli-vers
-    fejezet:verse (a két számozás ott azonos)."""
+    """Károli-vers → {törzsbetű}: az MT-vers a versmegfeleltetésből. Ahol a tábla nem ad MT-t (a KJV osztályú
+    sorok), a Károli fejezet:verse csak akkor MT, ha a Macula saját `karoli` oszlopa ugyanezt a verset adja;
+    eltérésnél (pl. Mik 5:1: az MT 5:1 a Maculában Károli 5:2) nincs morfológia, a levezetés jelez (ELLENOR_F148 2.)."""
 
-    def __init__(self, mt_szerint, konyv):
-        self.mt_szerint, self.konyv = mt_szerint, konyv
+    def __init__(self, mt_szerint, konyv, macula_karoli=None):
+        self.mt_szerint, self.konyv, self.macula_karoli = mt_szerint, konyv, macula_karoli or {}
 
     def get(self, karoli, alap=None):
         if ' ' not in karoli:
             return alap
         konyvnev, cv = karoli.rsplit(' ', 1)
         kod = self.konyv.get(konyvnev)
-        mt = _versmegf().get(karoli) or cv
+        mt = _versmegf().get(karoli)
+        if not mt:
+            mt = cv
+            if self.macula_karoli.get((kod, mt), karoli) != karoli:
+                return alap
         return self.mt_szerint.get((kod, mt), alap)
 
 
@@ -284,6 +290,9 @@ def ellenoriz(motivum_id, adat=None, elofordulasok=None, lexhiv=None, ts=None):
                 cimke, cj = cimke_javaslat(adat, szotar, strong, ut, tiltott)
                 jelzes += cj
                 teendo = 'uj_sor' if not cj else ''
+        if teendo and (szotar, strong, kulcs) not in lexhiv:
+            # 17. szabály: a `lexikon_jelentes_szam` létező `lexikon_hivatkozasok.tsv`-kulcs (ELLENOR_F148 3.)
+            jelzes.append(('J8', 'a kulcs (%s %s %s) nincs a lexikon_hivatkozasok.tsv-ben' % (szotar, strong, kulcs)))
         if jelzes:
             teendo = ''
         ki.append({

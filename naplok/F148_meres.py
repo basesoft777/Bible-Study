@@ -51,8 +51,9 @@ print('\nscope=adat/elofordulasok.tsv (%d id, %d sor) | forras=naplok/F148_meres
 
 # 0.3 -------------------------------------------------------------------------
 fejezet('0.3 Gerincen álló motívumok (main)')
-gerinc = sorted(LG.SZOTARI_GERINC_MOTIVUMOK)
-print('SZOTARI_GERINC_MOTIVUMOK =', gerinc)
+# F148.1 óta a kapcsoló adat (`adat/funkcio_kapcsolok.tsv`, `kivetel` sor); a gerinces kör `LG.gerinc_aktiv`
+gerinc = sorted(i for i in ids if LG.gerinc_aktiv(i))
+print('gerincen álló motívumok =', gerinc)
 kivetel = [i for i in ids if i not in gerinc]
 print('várható kivétellista:', kivetel)
 

@@ -149,7 +149,7 @@ Két mért lelet a megvalósítás közben, mindkettő adatból feloldva, válas
 - **A binyan.** A H7121 `2.c` a BDB-ben a Qal és a Niph'al alatt is áll; a `jelentes_szam` binyant nem hordoz. Az eszköz a vers héber morfológiájából (`konkordancia/Macula_heber_*.tsv` `morf`, `V`+törzsbetű) szűkít, csak egyértelmű esetben; különben J2. Az ISTENTISZT-001 21 `2.c` sora így Qal.
 - **A Macula `karoli` oszlopa elavult.** Az F17-ben (2026-10-18) a #117/#146 előtti versmegfeleltetéssel készült: az Ézs 64:6 MT ott Károli 64:7, a mai `Karoli_versmegfeleltetes.tsv`-ben 64:6 (a TAHOT és az `elofordulasok.tsv` is 64:6). Az eszköz ezért a Macula MT-hivatkozását (`ref`) a mai versmegfeleltetésen át kulcsolja, a `karoli` oszlopot csak a könyv azonosítására használja. A Macula-táblák újragenerálása nem e feladaté; javasolt nyitott tétel (N-F148b).
 
-Jelzések a többi motívumon (tájékoztató, a #123 bemenete): HAMART-001 — J4 binyan-alakú `jelentes_szam` (`Qal pass. ptc.`, `Pi'él`, `Hif'íl` …, 13 sor), J2 `Nif'ál / Hif'íl`, J1 négy helyen (a BDB-példa más pontra mutat), J7 kettő; KIRALY-001 — J7 („pl. Melkisédek”: az első glossza nem glossza). A `--ir` nem futott: a #148 nem ír adatot (elfogadás 7.).
+Jelzések a többi motívumon (tájékoztató, a #123 bemenete): HAMART-001 — J4 binyan-alakú `jelentes_szam` (`Qal pass. ptc.`, `Pi'él`, `Hif'íl` …, 13 sor), J2 `Nif'ál / Hif'íl`, J1 négy helyen (a BDB-példa más pontra mutat), J7 kettő; KIRALY-001 — J7 („pl. Melkisédek”: az első glossza nem glossza). A `--ir` nem futott: a #148 nem ír adatot (elfogadás 7.). Az ALVIL-001 Jób 17:12 és Zsolt 88:4 során J1/J2 jelzés áll (a BDB példahelye -/2/b, ill. -/3/b): ezek a #123 ismert kutatói kérdései (`naplok/F123_cimke_javaslat_ALVIL-001.md`), a kézi döntés szakaszát (`-/1/-`) az eszköz visszaadja.
 
 `scope=adat/elofordulasok.tsv (ISTENTISZT-001, ALVIL-001, HAMART-001, KIRALY-001) + adat/szotar_szakasz_cimke.tsv + adat/bdb_*.tsv + konkordancia/Macula_heber_*.tsv + konkordancia/Karoli_versmegfeleltetes.tsv | forras=eszkozok/szakasz_cimke_levezet.py | ts=2026-11-01`
 
@@ -172,9 +172,9 @@ Jelzések a többi motívumon (tájékoztató, a #123 bemenete): HAMART-001 — 
 | CI-emuláció (`eszkozok/ellenorzes/futtat.py --valtozott … --diff-alap origin/main`) | 0 HIBA (a PR-cím `[ELLENŐRZŐ]` előtaggal, E16) |
 | 4. elfogadás 7.: `lexikon/`, `adat/elofordulasok.tsv`, `MUNKAMENET.md` | nem változott |
 
-**A merge feltétele (⛔ A):** a 18. és a 19. szabály SÉRTÉS-e a main-en az E1 lépést pirosra állítaná. Az ALVIL-001 59 sorának kitöltése (`BDB`, `H7585`, a `jelentes_szam` a BDB saját példahelyéből, proveniencia-sorral) a #148 merge-e előtt kell, külön adat-commitban vagy a #123 kiegészítő menetében. A `szakasz_cimke_levezet.py` a kitöltött sorokat ugyanezen az úton ellenőrzi.
+**A merge feltétele (⛔ A):** a 18. és a 19. szabály SÉRTÉS-e az E1 lépést pirosra állítja — a PR-en is, nem csak a main-en (ELLENOR_F148). Az ALVIL-001 59 sorának kitöltése (`BDB`, `H7585`, a `jelentes_szam` a BDB saját példahelyéből, proveniencia-sorral) a #148 merge-e előtt kell, külön adat-commitban vagy a #123 kiegészítő menetében. A `szakasz_cimke_levezet.py` a kitöltött sorokat ugyanezen az úton ellenőrzi.
 
-**Mellékhatás:** a `naplok/F131_dbh_meres.py` (archív mérőszkript) a megszűnt `LG.SZOTARI_GERINC_MOTIVUMOK`-ot olvassa; újrafuttatáskor `LG.gerinc_aktiv`-ra állítandó. A brief nem írja, ezért nem nyúltam hozzá.
+**Mellékhatás:** a saját `naplok/F148_meres.py` az F148.8-ban átállítva (`LG.gerinc_aktiv`); a `naplok/F131_dbh_meres.py` (archív mérőszkript) a megszűnt `LG.SZOTARI_GERINC_MOTIVUMOK`-ot olvassa; újrafuttatáskor `LG.gerinc_aktiv`-ra állítandó. A brief nem írja, ezért nem nyúltam hozzá.
 
 ## 6. Javaslat a #125-nek (a `MUNKAMENET.md` szövege — ezt nem ez a feladat írja)
 
@@ -183,3 +183,7 @@ A brief 6. szakaszának két lépése a megvalósítás szerint pontosítva:
 > **C-x. Szakaszcímke (⛔ csak jelzésnél).** Az előfordulás-sorok `jelentes_szam`-ából a szótári szakaszt és a címkét a `python eszkozok/szakasz_cimke_levezet.py ellenoriz --id [ID]` vezeti le (a kimenet: `naplok/F148_levezetes_[ID].tsv`). Jelzés nélkül az `--ir` rögzíti. Jelzésnél (J1 a szótár példahelye más pontra mutat, J2 két pont, J3 üres mező, J4 nincs útvonal, J5 tagolatlan szócikk, J6 minősítő, J7 a címke gépileg nem képezhető, J8 eltérés a kézi leképezéstől) a menet megáll, és a kutató dönt; kitöltés nem gyenge vagy asszociatív anyaggal történik. Az új motívumon a gerinc kapcsoló nélkül fut; az `ellenoriz.py` 18–19. szabálya a hiányzó mezőt SÉRTÉS-ként jelzi.
 >
 > **C-y. Fordítás a lap előtt.** A lap generálása előtt a `python eszkozok/glossza_lexikon_forditas.py lista --id [ID]` listázza a lap fordítatlan szótári egységeit. A hiányzókat a #121 eszköze és kapui rögzítik az `adat/forditasok.tsv`-be. Ami a lapon fordítatlan marad, `(fordításra vár)` jelölést kap; a gépi mérése nyitott (N-F148a), addig `python naplok/F148_meres.py --forditas`.
+
+## 7. Független ellenőrzés és javítás (F148.8)
+
+`naplok/ELLENOR_F148_UJ_MOTIVUM_VEDOKORLAT.md`: 5 ELTÉRÉS (2 közepes, 3 alacsony). Az 1–4. javítva (mérőszkript, a Macula MT nélküli tartalékága, az `--ir` 17. szabály szerinti kulcsa, a lezárt N-tétel alakja), az 5. (commit-granularitás) dokumentált eltérés. `teszt_szakasz_cimke_levezet.py` 19 OK, `teszt_ellenoriz_vedokorlat.py` 26 OK; a regresszió változatlan.
