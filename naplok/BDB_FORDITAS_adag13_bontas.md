@@ -1,6 +1,6 @@
-# BDB_FORDITAS — a 13. adag (sorrend 5671–7921) és a 14. adag (7922–8073): Batch API-út, tábla-Δ, költség, commitonkénti bontás (DT-F38y, DT-F38u, DT56)
+# BDB_FORDITAS — a 13. adag (sorrend 5671–7921) és a 14. adag (7922–8073): Batch API-út, tábla-Δ, költség, commitonkénti bontás (DT451, DT452, DT56)
 
-*A #38 (BDB_FORDITAS) 13. adagja az Anthropic Message Batches API-n (`eszkozok/bdb_api_koteg.py`), próba nélkül (a felhasználó döntése, 2026-11-01, DT-F38y); `allapot=sonnet`, `modell=claude-sonnet-5-5` (a tényleges API-válasz modellneve), `effort=high`. A 14. adag (a sorrend utolsó 152 szócikke) a DT-F38u szerint a 13. adag maradékával együtt futott. Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 13. adag 5671–7921 (2251 szócikk, 499 871 forráskarakter) és 14. adag 7922–8073 (152 szócikk, 71 439 karakter).*
+*A #38 (BDB_FORDITAS) 13. adagja az Anthropic Message Batches API-n (`eszkozok/bdb_api_koteg.py`), próba nélkül (a felhasználó döntése, 2026-11-01, DT451); `allapot=sonnet`, `modell=claude-sonnet-5-5` (a tényleges API-válasz modellneve), `effort=high`. A 14. adag (a sorrend utolsó 152 szócikke) a DT452 szerint a 13. adag maradékával együtt futott. Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 13. adag 5671–7921 (2251 szócikk, 499 871 forráskarakter) és 14. adag 7922–8073 (152 szócikk, 71 439 karakter).*
 
 *Az adag állapota: lezárva: a fordítás kész; a sorrendtábla mind a 8073 sora szerepel az `adat/forditasok.tsv`-ben (halmazkülönbség: 0). Független ellenőrzésre vár.*
 
@@ -11,9 +11,9 @@ Proveniencia: `python naplok/BDB_FORDITAS_karoli_lefedettseg.py --tol 5671 --ada
 | adag (sorrend) | szócikk | Károli-pár | % | indulhat |
 |---|---|---|---|---|
 | 13. (5671–7922 a script szerint; az adag 7921-ig tart) | 2252 | 2249 | 100% | igen |
-| 14. (7923–8073) | 151 | 75 | 50% | nem (a DT-F38u előtt) |
+| 14. (7923–8073) | 151 | 75 | 50% | nem (a DT452 előtt) |
 
-**14. adag, DT-F38u (az orkesztrátor döntése a felhasználó megbízásából, 2026-11-01).** A script a 0 TAHOT-gyakoriságú Strongokat a nevezőből kihagyja és külön oszlopban mutatja (`--tol 7922 --adagok 1`, ts=2026-11-01 16:09): 152 szócikk, **87** nulla-gyakoriságú, nevező 65, Károli-pár 65, **100%**. (Az orkesztrátor üzenete 76 nulla-gyakoriságú Strongot említett; a script a 7922–8073 tartományban 87-et talál — a különbség okát nem vizsgáltam, a 100% mindkét számmal fennáll, mert a nem nulla-gyakoriságúak mind párosítottak.) A 13. adagban nulla-gyakoriságú Strong nincs.
+**14. adag, DT452 (az orkesztrátor döntése a felhasználó megbízásából, 2026-11-01).** A script a 0 TAHOT-gyakoriságú Strongokat a nevezőből kihagyja és külön oszlopban mutatja (`--tol 7922 --adagok 1`, ts=2026-11-01 16:09): 152 szócikk, **87** nulla-gyakoriságú, nevező 65, Károli-pár 65, **100%**. (Az orkesztrátor üzenete 76 nulla-gyakoriságú Strongot említett; a script a 7922–8073 tartományban 87-et talál — a különbség okát nem vizsgáltam, a 100% mindkét számmal fennáll, mert a nem nulla-gyakoriságúak mind párosítottak.) A 13. adagban nulla-gyakoriságú Strong nincs.
 
 ## 1. Tábla-Δ
 
@@ -45,7 +45,7 @@ Proveniencia: `forditas/bdb_api/adag13/futasnaplo.tsv` (kérésenként: bemeneti
 - **USD / forráskarakter:** 23,22 USD / 571 310 karakter (a sorrendtábla `karakter` oszlopa, 13.+14. adag) = **0,0000406 USD/karakter**; csak a 13. adagra (499 871 karakter, a 14. adag aránya nélkül) ugyanez az arány ~20,3 USD. Szócikkenként átlag 0,0097 USD.
 - **Hátralék:** nincs. A sorrendtábla 8073 sorából mind kész (a halmazkülönbség 0); a 14. adag volt az utolsó. Hátralékra vetítés ezért nem értelmezhető; a 14. adag költsége 1,2 USD körüli becslés volt (A: 3,0–3,3 USD).
 - **A/B összevetés (becslés ↔ mért):** a hálózat nélküli vetítés (`naplok/BDB_API_koltseg_valtozatok.py`, becslés, `manual`) a 13. adagra A: 43,7–48,4 USD, B: 17,3–17,6 USD volt; a mért B-út a 13. adag maradékára + a 14. adagra (1953 Strong) 10,41 USD, a teljes futás (A-csomag + javítók + B) 23,22 USD. A B-út Strongonként ~0,0053 USD, az A-csomag (cache-sel) 0,0259 USD/kérés: a kérésenkénti állandó prompt (~15 ezer token) felosztása ~5-szörös megtakarítás. A cache az A-úton rontott: 4,23 M token cache-írás (8,5 USD) mellett csak 1,41 M token olvasás.
-- **Plafon:** az 1. csomag után a plafon 15 USD volt (11,67 USD mért); a felhasználó a B-útra +20 USD-t hagyott jóvá (31,67 USD összesen, DT-F38y utáni jóváhagyás, 2026-11-01). A tényleges költség 23,22 USD, a plafon alatt.
+- **Plafon:** az 1. csomag után a plafon 15 USD volt (11,67 USD mért); a felhasználó a B-útra +20 USD-t hagyott jóvá (31,67 USD összesen, DT451 utáni jóváhagyás, 2026-11-01). A tényleges költség 23,22 USD, a plafon alatt.
 - **Kapuhiba az 1. próbán:** 51 / 2403 Strong = **2,1%** (1. csomag 8/450 = 1,8%; B-próba 3/75 = 4,0%; B-fő 40/1878 = 2,1%; a B-próba 3 bukottja a B-fő javító batch-ében, a 43 kérésben ment újra, ezért a javító kérések 8 + 43 = 51). A 2. próbán (javító batch a kapu hibaüzenetével) 46 / 51 átment; **5 Strong másodszor is bukott**, mind kapu-hamis pozitív (l. 3.). `naplok/BDB_FORDITAS_hibas.tsv`-be egyik sem került (mind felülbírálva).
 - **Strong-határ a B-úton:** a 66 B-kérés 1953 Strongjából 0 hiányzott a válaszból; egy B-kérés ért `max_tokens`-hez (B064, egyetlen Strong: H4984, 20 055 gondolkodási token a 27 295 kimeneti tokenből), az A-stílusú javító kérésben fordult le. A `⟦n⟧` helyőrzők az egy Strongon belüli számozással tartottak; egy esetben ismeretlen sorszám („ismeretlen helyőrző”) került a válaszba (a kapu hibaüzenetet adott, az eszköz javítva: IndexError helyett javítandó).
 
@@ -67,12 +67,12 @@ A felülbírálás-lista: `forditas/bdb_api/adag13/felulir.tsv`.
 
 | commit | tartalom | `forditasok.tsv` új sor |
 |---|---|---|
-| F38.454 | `eszkozok/bdb_api_koteg.py`, `eszkozok/teszt_bdb_api_koteg.py`, DT-F38y, brief-jelölések (#38 API-út, #136 okafogyott) | 0 |
+| F38.454 | `eszkozok/bdb_api_koteg.py`, `eszkozok/teszt_bdb_api_koteg.py`, DT451, brief-jelölések (#38 API-út, #136 okafogyott) | 0 |
 | F38.455 | az 1. csomag (450 kérés) beküldve | 0 |
 | F38.456 | az 1. csomag begyűjtve és kapuzva (11,67 USD, 8 javítandó) | 0 |
 | F38.457 | az 1. csomag 442 átment Strongja rögzítve; javító batch; költségvetítés | +931 |
 | F38.458 | a javító batch 8 Strongja rögzítve | +19 |
-| F38.459 | B-út az eszközben; DT56 nulla-gyakoriságúak külön oszlopban; DT-F38u | 0 |
+| F38.459 | B-út az eszközben; DT56 nulla-gyakoriságúak külön oszlopban; DT452 | 0 |
 | F38.460 | B-próbacsomag (3 kérés, 75 Strong) beküldve | 0 |
 | F38.461 | B-próba begyűjtve (0,45 USD) | 0 |
 | F38.462 | a B-út maradéka (63 kérés) beküldve | 0 |
@@ -94,12 +94,12 @@ Commitüzenet-helyesbítés (a pusholt történetet nem írtam át, DT447 mintá
 
 ## 6. Javítókör 1/2 (`naplok/ELLENOR_F38_adag13.md`, ELTÉRÉS: 8 tétel)
 
-- **Plafon.** A DT-F38y sora és a brief kiegészítve: az 1. csomag után a felhasználó +20 USD-t hagyott jóvá a B-útra (kód: 31,67 USD; tényleges költség 23,22 USD).
+- **Plafon.** A DT451 sora és a brief kiegészítve: az 1. csomag után a felhasználó +20 USD-t hagyott jóvá a B-útra (kód: 31,67 USD; tényleges költség 23,22 USD).
 - **AV/RV-glossza (D10 (5)), 2 sor.** H1761 sz2: „AV RV hangszer” → „AV RV instrument of music” (a forrás szerint angolul); H2082 sz3: „> AV és mások: velem lakik,” → „> AV and others dwell with me,”. A `normalizal.glossza_visszaallit` heurisztika a „(” határolót nem kezeli (korábbi korlát, nem javítottam).
 - **H0435 `megjegyzes`.** A modell téves állítása („a forrásszövegben nincs `Sept.`”) cserélve: a „Sept.” a szeptember rövidítése („Aug.—Sept. Neh 6:15”), az 5_terminologia jelzése téves találat (2 sor).
 - **H3901 sz2.** A forrás „but Bu^Comm.” részéből kimaradt „de” pótolva.
 - **Számok.** Sorbontás: 6398 szakaszsor + 2 teljes-úti; kapuhiba 51/2403 (2,1%), a 2. próbán 46/51 (l. 2.). A `forditasok.tsv` és az `EMELES_munka.tsv` 5-5 sora módosult, törlés nincs.
-- **F136-fejléc.** A #136 fejlécét (`allapot: lezarva`, okafogyott) az indító session megbízásából írtam át (a #38 API-útja a #136 vakpróbáját okafogyottá tette, DT-F38y); ez egyeztetett eltérés a „minden menet a saját briefje fejlécét frissíti” szabálytól.
+- **F136-fejléc.** A #136 fejlécét (`allapot: lezarva`, okafogyott) az indító session megbízásából írtam át (a #38 API-útja a #136 vakpróbáját okafogyottá tette, DT451); ez egyeztetett eltérés a „minden menet a saját briefje fejlécét frissíti” szabálytól.
 
 ## 7. Nyitott kérdések
 

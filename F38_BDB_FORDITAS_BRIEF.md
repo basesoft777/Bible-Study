@@ -63,7 +63,7 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 > `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 (`kezi`): újrafordul, a szakaszsorai `--kezi-marad`-dal kerülnek be, és
 > csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT290 (3)); az olvasók a közös összefűzőt használják (DT291 (a)).
 
-> **API-út (a 13. adagtól; DT-F38y, a felhasználó döntése, 2026-11-01).** A 13. adagtól a fordítás a Code-os session helyett a
+> **API-út (a 13. adagtól; DT451, a felhasználó döntése, 2026-11-01).** A 13. adagtól a fordítás a Code-os session helyett a
 > Message Batches API-n fut, próba nélkül (a #136 vakpróbája okafogyott): `eszkozok/bdb_api_koteg.py` (`szaraz` → `bekuld` →
 > `begyujt` → `kapuz` → `javit` → `rogzit`; önteszt: `eszkozok/teszt_bdb_api_koteg.py`). Prompt v5 és a szakasz-csoportok ugyanabból a
 > kódból (`emeles.prompt_epit`, `szakasz_bemenet.csoportok`), héber–görög helyőrzővel; modell `claude-sonnet-5-5`, `effort=high`,
