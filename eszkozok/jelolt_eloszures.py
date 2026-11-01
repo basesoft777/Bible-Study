@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-jelolt_eloszures.py -- F150 (DT-F150a): a dontesre varo (`dontes=nyitva`) elofordulas-jeloltek gepi
+jelolt_eloszures.py -- F150 (DT432): a dontesre varo (`dontes=nyitva`) elofordulas-jeloltek gepi
 elo-szurese: atnezesi sorrend, NEM dontes. Kimenet: `naplok/ELOSZURES_<ID>.tsv` (munkalista, nem adat;
 a `jeloltek.tsv`-t ez a szkript nem irja, CLAUDE.md 2. szabaly).
 
@@ -10,7 +10,7 @@ Szabaly (determinisztikus, modell es API nelkul): ha a jelolt versenek (tartoman
 gerinc-kombinacio sincs meg TELJESEN egy versben -- a kombinaciok a motivum `elofordulasok.tsv` `strong`
 mezoi, a nyelvtani Strongok (`szerep_karoli.nyelvtani`) kiszuerve --, a javaslat `valoszinu_ki`.
 
-HORDOZO (DT-F150a, 2026-11-01): `valoszinu_ki` CSAK `azonossag_tipusa=formulaikus` motivumon lehet; minden mas
+HORDOZO (DT432, 2026-11-01): `valoszinu_ki` CSAK `azonossag_tipusa=formulaikus` motivumon lehet; minden mas
 hordozon `vizsgalando` ("a hordozo nem formulaikus: a gepi szabaly nem dont"). A lexikai kiterjesztes
 (szomszedos versek, rokon alakok): N-F150a.
 

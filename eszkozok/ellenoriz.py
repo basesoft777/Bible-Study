@@ -1134,11 +1134,11 @@ def szabaly17_szakasz_cimke(adat_dir):
 # ---------------------------------------------------------------------------
 # 18-21. F148 (UJ_MOTIVUM_VEDOKORLAT): az uj motivumok vedokorlatjai
 # ---------------------------------------------------------------------------
-# A kivetellista (a meg nem migralt motivumok, DT-F148a) ugyanaz a fuggveny, amelyet a generator hiv
+# A kivetellista (a meg nem migralt motivumok, DT437) ugyanaz a fuggveny, amelyet a generator hiv
 # (`szerep_karoli.kapcsolo_kivetelek`, `adat/funkcio_kapcsolok.tsv`): kivetellistas motivumon a 19-21. szabaly
 # csak JELENTES, a 18. nem fut. A RETROAKTIV_IDK (8. szabaly) mas fogalom.
 
-TAGOLATLAN = 'tagolatlan'  # DT-F148b (1): a `jelentes_szam` explicit erteke tagolatlan szocikknel (SEMA 2.2.2)
+TAGOLATLAN = 'tagolatlan'  # DT438 (1): a `jelentes_szam` explicit erteke tagolatlan szocikknel (SEMA 2.2.2)
 KOTELEZO_MEZOK_19 = ('karoli_szo', 'lexikon_szotar', 'lexikon_entry_id', 'jelentes_szam')
 
 # 20. szabaly (N62): a `jelentes_hu` a szorol szol, nem a hely funkciojarol. A minta a funkcio-ertelmezes
@@ -1163,12 +1163,12 @@ LAP_UTOTAG = ('_TUDOMANYOS.md', '_TORZSCIKK.md')
 
 
 def gerinc_kivetelek(adat_dir):
-    """A kivetellista az adat-konyvtar `funkcio_kapcsolok.tsv`-jebol, a generatorral azonos fuggvennyel (DT-F148a)."""
+    """A kivetellista az adat-konyvtar `funkcio_kapcsolok.tsv`-jebol, a generatorral azonos fuggvennyel (DT437)."""
     return SZK.kapcsolo_kivetelek('SZOTARI_GERINC', os.path.join(adat_dir, 'funkcio_kapcsolok.tsv'))
 
 
 def main_agon(kenyszer=None):
-    """DT-F148d: a main-allapot-e a futas. CI-ben a push a main-re; helyben a kivett ag neve. `kenyszer`
+    """DT440: a main-allapot-e a futas. CI-ben a push a main-re; helyben a kivett ag neve. `kenyszer`
     ('main' / 'ag') felulirja (teszt, `--ag-allapot`)."""
     if kenyszer:
         return kenyszer == 'main'
@@ -1185,7 +1185,7 @@ def main_agon(kenyszer=None):
 
 
 def _bdb_tagolatlan_strongok(adat_dir):
-    """A BDB tagolatlan szocikkei (DT-F148b): a Strongnak a `bdb_szakaszok.tsv`-ben csak `cim`/`fej` sora van."""
+    """A BDB tagolatlan szocikkei (DT438): a Strongnak a `bdb_szakaszok.tsv`-ben csak `cim`/`fej` sora van."""
     utak = {}
     for r in _tsv_ha_van(adat_dir, 'bdb_szakaszok.tsv') or []:
         utak.setdefault(r['strong'], set()).add(r['utvonal'])
@@ -1237,7 +1237,7 @@ def szabaly18_gerinc_cimke(adat_dir, elofordulasok, kivetel=None):
 
 def szabaly19_kotelezo_mezok(adat_dir, elofordulasok, kivetel=None):
     """F148 (b) 19.: nem kivetellistas motivum elofordulas-soran a `karoli_szo`, a `lexikon_szotar`, a
-    `lexikon_entry_id` es a `jelentes_szam` nem ures. DT-F148b: tagolatlan BDB-szocikk nem lehet
+    `lexikon_entry_id` es a `jelentes_szam` nem ures. DT438: tagolatlan BDB-szocikk nem lehet
     `lexikon_entry_id`, kiveve, ha a sor egyetlen Strongja az; akkor a `jelentes_szam` explicit `tagolatlan`.
     Kivetellistas motivumon JELENTES (darabszam), igy a #123 haladasa is latszik."""
     cim = '19. Kötelező szótári mezők (F148, SEMA 2.2.2)'
@@ -1330,7 +1330,7 @@ def lap_hibak(szoveg, letezo_dt, letezo_n):
 
 def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
     """F148 (b) 21.: a generalt lexikonlap (`*_TUDOMANYOS.md`, `*_TORZSCIKK.md`) tisztasaga: (i) nincs helyorzo,
-    (ii) nincs „a(z)”, (iv) minden DT/N hivatkozas letezo tetelre mutat. Sulyossag (DT-F148d): az (i) az agon
+    (ii) nincs „a(z)”, (iv) minden DT/N hivatkozas letezo tetelre mutat. Sulyossag (DT440): az (i) az agon
     JELENTES, a main-en SERTES; a (ii) es a (iv) gerinces lapon mindig SERTES; kivetellistas motivum lapjan minden
     JELENTES. A (iii) nem gepi (N-F148a)."""
     cim = '21. Generált lap tisztasága (F148)'
@@ -1461,7 +1461,7 @@ def main():
                          help='study-fájl Q1/Q7 ellenőrzéséhez (ismételhető)')
     parser.add_argument('--md', default=None, help='a jelentés Markdown fájlba is')
     parser.add_argument('--ag-allapot', choices=['main', 'ag'], default=None,
-                        help='a 21. szabály súlyossága (DT-F148d); alapból CI-ben a push a main-re, helyben a kivett ág')
+                        help='a 21. szabály súlyossága (DT440); alapból CI-ben a push a main-re, helyben a kivett ág')
     args = parser.parse_args()
 
     try:
