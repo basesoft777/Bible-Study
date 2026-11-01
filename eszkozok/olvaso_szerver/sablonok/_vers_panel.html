@@ -1,4 +1,13 @@
-<article class="verslap" data-igehely="{{ igehely }}">
+<article class="verslap" data-igehely="{{ igehely }}" data-lapcim="{{ lapcim }}" data-lapal="{{ lapal }}">
   <h2 class="igehely">{{ igehely }}</h2>
-  {{ blokkok }}
+  {% if fulek|length > 1 %}
+  <div class="fulek" role="tablist">
+    {% for f in fulek %}<a class="ful{{ ' aktiv' if f.kod == ful else '' }}" role="tab" data-vful="{{ f.kod }}" aria-selected="{{ 'true' if f.kod == ful else 'false' }}" href="/{{ slug }}/{{ fej }}/{{ vers }}?ful={{ f.kod }}#v{{ vers }}">{{ f.nev }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% for f in fulek %}
+  <div class="ful-tartalom" data-vful="{{ f.kod }}"{% if f.kod != ful %} hidden{% endif %}>{{ f.html }}</div>
+  {% endfor %}
+  {% if not fulek %}<p class="ures">Ehhez a vershez ezen a hozzáférési szinten nincs látható blokk.</p>{% endif %}
 </article>

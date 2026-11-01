@@ -62,17 +62,6 @@ def modosit(gyoker, fajl, fn):
         f.write('\n'.join(ki) + '\n')
 
 
-def kezi_mt_or_kihagy():
-    """F117.8 (6) (DT-F117f (a)): ha a VALÓS versmegfeleltető táblán az sqlite_epit KEZI+igehely_mt-őre leállítana,
-    -> a kihagyás oka (str), különben None. Csak a VersmegfKeziMt-et kezeli; az N-F117a javításával magától megszűnik."""
-    sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'))[1]
-    try:
-        S.kezi_mt_or(sorok)
-    except S.VersmegfKeziMt as e:
-        return 'N-F117a: az sqlite_epit KEZI+igehely_mt-őre (DT-F117f) a valós táblán leállít; az N-F117a javításakor visszaveendő [%s]' % str(e)[:120]
-    return None
-
-
 def sertett_szabalyok(sertesek):
     return sorted(s.cim.split('.')[0] for s in sertesek)
 
@@ -235,40 +224,91 @@ class Negativ(unittest.TestCase):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
-class KeziMtOr(unittest.TestCase):
-    """F117.5 (DT-F117f (a)): KEZI osztályú sor kitöltött igehely_mt-vel -> az építés leáll (N-F117a)."""
-    FEJ = 'igehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes'
+class BsbOr(unittest.TestCase):
+    """F120 (DT-F120a, átmeneti (c) út): a BSB-vers Károli-célját a tartalom igazolja; a nem igazolt és az ütköző vers
+    kimarad, nem kerül más Károli-versre. Minták: naplok/F120_meres.md 3–5. (Jóel 3, Hós 2, az F117 hat esete)."""
 
-    def _gyoker(self, sorok):
-        tmp = tempfile.mkdtemp()
-        self.addCleanup(shutil.rmtree, tmp, True)
-        os.makedirs(os.path.join(tmp, 'konkordancia'))
-        with open(os.path.join(tmp, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-            f.write('# teszt-fixtúra\n' + self.FEJ + '\n' + '\n'.join(sorok) + '\n')
-        return tmp
+    def test_igazolt_vers_marad(self):
+        versek = {('Jón', '2:3'): ('Jón 2:3', {'H1', 'H2', 'H3'})}
+        self.assertEqual(S.bsb_bizonytalan(versek, {'Jón 2:3': {'H1', 'H2', 'H3'}}), {})
 
-    def test_kezi_kitoltott_mt_leall(self):
-        g = self._gyoker(['Hós 2:1\t2:2\t2:4\tKEZI\tszoveg_osszevetes_f117\t-',
-                          '1Móz 1:1\t1:1\t\tKJV\tszamlalas\t'])
-        ep = S.Epito(g, os.path.join(g, 'x.db'), 'minta')
-        with self.assertRaises(S.VersmegfKeziMt) as cm:
-            ep._bsb_szamozas()
-        self.assertIn('1 KEZI', str(cm.exception))
-        self.assertIn('Hós 2:1', str(cm.exception))
-        self.assertIn('N-F117a', str(cm.exception))
+    def test_joel3_a_helyes_azonossag_marad_a_hibas_tablapar_kimarad(self):
+        # a BSB Jóel 3:1 kulcsa KJV (= MT 4:1); a tábla MT 3:1 -> Károli 2:28 párja rossz célt adna.
+        # A 3.4-es (eredeti) őr itt a BSB 2:28-at dobta volna el; az új őr a 3:1-et.
+        tahot = {'Jóel 2:28': {'H8210', 'H7307', 'H1320'}, 'Jóel 3:1': {'H7725', 'H7622', 'H3063'}}
+        versek = {('Jóel', '2:28'): ('Jóel 2:28', {'H8210', 'H7307', 'H1320', 'H1121'}),
+                  ('Jóel', '3:1'): ('Jóel 2:28', {'H7725', 'H7622', 'H3063'})}
+        ki = S.bsb_bizonytalan(versek, tahot)
+        self.assertEqual(set(ki), {('Jóel', '3:1')})
+        self.assertIn('Jóel 2:28', ki[('Jóel', '3:1')])
 
-    def test_kezi_ures_mt_mt_es_kjv_nem_all_le(self):
-        sorok = [{'igehely_karoli': 'Préd 9:20', 'igehely_kjv': '9:18', 'igehely_mt': '', 'osztaly': 'KEZI'},
-                 {'igehely_karoli': 'Jón 2:3', 'igehely_kjv': '2:2', 'igehely_mt': '2:3', 'osztaly': 'MT'},
-                 {'igehely_karoli': '1Móz 1:1', 'igehely_kjv': '1:1', 'igehely_mt': '', 'osztaly': 'KJV'}]
-        S.kezi_mt_or(sorok)   # nem dob
-        g = self._gyoker(['Préd 9:20\t9:18\t\tKEZI\tkezi\traw=9:18', 'Jón 2:3\t2:2\t2:3\tMT\tszoveg_osszevetes_f117\t-',
-                          '1Móz 1:1\t1:1\t\tKJV\tszamlalas\t'])
-        ep = S.Epito(g, os.path.join(g, 'y.db'), 'minta')
-        # az őr átengedi; utána a fixtúrából hiányzó BSB-forrás (és csak az) állítja meg az építést
-        with self.assertRaises(FileNotFoundError) as cm:
-            ep._bsb_szamozas()
-        self.assertIn('BSB_Strongs.tsv', str(cm.exception.filename))
+    def test_azonossag_a_szomszed_fejezetbol_kimarad(self):
+        # az F117 mintája (Jób 17:1): a BSB 17:1 azonossággal a Károli 17:1-re esne, de a tartalma a Károli 16:22-é;
+        # a táblapár (MT 17:2 -> Károli 17:1) tartalma egyezik. (A Hós 2:1–3-ban egyik jelölt sem egyezik: ott mind
+        # kimarad, l. naplok/F120_meres.md 6.)
+        tahot = {'Jób 17:1': {'H7307', 'H2254', 'H3117', 'H6913'}}
+        versek = {('Jób', '17:1'): ('Jób 17:1', {'H8141', 'H4557', 'H734'}),
+                  ('Jób', '17:2'): ('Jób 17:1', {'H7307', 'H2254', 'H3117', 'H6913'})}
+        self.assertEqual(set(S.bsb_bizonytalan(versek, tahot)), {('Jób', '17:1')})
+
+    def test_bsb_szamozas_fixturan_kezi_mt_par_es_kihagyas(self):
+        # brief 3.4: a KEZI + mt sor (Károli Jób 17:1 = MT 17:2) a _bsb_szamozas-on át a helyes Károli-versre képez,
+        # az azonossággal érkező, tartalommal nem igazolt BSB 17:1 kimarad (jelentéssor STEP-kulccsal), a vers_szamozas
+        # a megmaradt BSB-vers Számozás-át kapja; a kihagyott cél nélküli vers `nincs_adat`.
+        g = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, g, True)
+        os.makedirs(os.path.join(g, 'konkordancia'))
+        with open(os.path.join(g, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# teszt-fixtúra\nigehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes\n'
+                    'Jób 16:22\t16:22\t\tKJV\tszamlalas\t\n'
+                    'Jób 17:1\t17:2\t17:2\tKEZI\tszoveg_osszevetes_f117\t\n'
+                    'Jób 17:2\t17:3\t17:3\tKEZI\tszoveg_osszevetes_f117\t\n')
+        with open(os.path.join(g, 'konkordancia', 'BSB_Strongs.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\tAngol szó állapota\tSzámozás\n')
+            for ig, st, sz in (('Job.16.22', 'H8141', 'mt'), ('Job.17.1', 'H8141', 'ellenorizetlen'),
+                               ('Job.17.1', 'H734', 'ellenorizetlen'), ('Job.17.2', 'H7307', 'mt'),
+                               ('Job.17.2', 'H2254', 'mt'), ('Job.17.3', 'H7760', 'mt')):
+                f.write('%s\t1\t%s\tx\t\tforditva\t%s\n' % (ig, st, sz))
+        ep = S.Epito(g, os.path.join(g, 'x.db'), 'teljes')
+        ep.konyvek = S.Konyvek([{'STEPBible-rövidítés': 'Job', 'Magyar rövidítés': 'Jób', 'Forrás-alakok': ''}])
+        ep.vi = S.VersIndex([{'Igehely': k} for k in ('Jób 16:22', 'Jób 17:1', 'Jób 17:2')])
+        ep.minta, ep.grammatikai = None, set()
+        ep.ot_vers_strongok = {'Jób 16:22': {'H8141'},'Jób 17:1': {'H7307', 'H2254'}, 'Jób 17:2': {'H7760'}}
+        tablak = {}
+        ep.tabla = lambda nev, oszlopok, sorok, lic, indexek=(): tablak.__setitem__(nev, list(sorok))
+        ep._bsb_szamozas()
+        bsb = {(r[0], r[7], r[8]) for r in tablak['bsb']}
+        self.assertEqual(bsb, {('Jób 16:22', 'Job.16.22', 'azonos_feltetelezett'), ('Jób 17:1', 'Job.17.2', 'mt_tabla'),
+                               ('Jób 17:2', 'Job.17.3', 'mt_tabla')})
+        ok = [(n, o) for (t, n, o) in ep.norm_jelentes if t == 'bsb']
+        self.assertEqual([n for n, _ in ok], ['Job.17.1'])
+        self.assertTrue(ok[0][1].startswith('bizonytalan:'))
+        szam = {r[0]: r[4] for r in tablak['vers_szamozas']}
+        self.assertEqual(szam, {'Jób 16:22': 'mt', 'Jób 17:1': 'mt', 'Jób 17:2': 'mt'})
+
+    def test_utkozes_mind_kimarad(self):
+        tahot = {'Péld 12:1': {'H1', 'H2'}}
+        versek = {('Péld', '12:1'): ('Péld 12:1', {'H1', 'H2'}), ('Péld', '12:2'): ('Péld 12:1', {'H1', 'H2', 'H3'})}
+        ki = S.bsb_bizonytalan(versek, tahot)
+        self.assertEqual(set(ki), {('Péld', '12:1'), ('Péld', '12:2')})
+        self.assertTrue(all(o.startswith('ütközés') for o in ki.values()))
+
+    def test_kuszob_es_nem_ellenorizheto(self):
+        tahot = {'A 1:1': {'H1', 'H2'}, 'A 1:2': {'H1', 'H2', 'H3', 'H4', 'H5'}, 'A 1:3': set()}
+        versek = {('A', '1:1'): ('A 1:1', {'H1'}),                    # 0,50: a küszöbön -> kimarad
+                  ('A', '1:2'): ('A 1:2', {'H1', 'H2', 'H3'}),        # 0,60 -> marad
+                  ('A', '1:3'): ('A 1:3', {'H1'}),                    # üres TAHOT -> nem ellenőrizhető
+                  ('A', '1:4'): ('A 1:4', set())}                     # nincs TAHOT, üres BSB
+        ki = S.bsb_bizonytalan(versek, tahot)
+        self.assertEqual(set(ki), {('A', '1:1'), ('A', '1:3'), ('A', '1:4')})
+        self.assertIn('nem ellenőrizhető', ki[('A', '1:3')])
+
+    def test_a_regi_or_nincs_a_kodban(self):
+        # N-F117a: a DT-F117f őre és a teszt-kihagyás kivezetve
+        with open(os.path.join(ROOT, 'eszkozok', 'sqlite_epit.py'), encoding='utf-8') as f:
+            kod = f.read()
+        for nev in ('kezi_mt_or', 'VersmegfKeziMt'):
+            self.assertNotIn(nev, kod)
 
 
 class Normalizalas(unittest.TestCase):
@@ -332,11 +372,6 @@ class Integracio(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # F117.8 (6): a közös építés a valós táblán fut; ha az őr (DT-F117f) leállítaná, az egész osztály kihagyva,
-        # kimondott okkal -- csak ebben a helyzetben (az N-F117a javításával magától visszaáll)
-        ok = kezi_mt_or_kihagy()
-        if ok:
-            raise unittest.SkipTest(ok)
         cls.tmp = tempfile.mkdtemp()
         cls.a = os.path.join(cls.tmp, 'a.db')
         cls.b = os.path.join(cls.tmp, 'b.db')
@@ -349,6 +384,14 @@ class Integracio(unittest.TestCase):
     def tearDownClass(cls):
         cls.con.close()
         shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def test_f120_bsb_egy_karoli_vers_egy_bsb_forras(self):
+        # F120 E2: egy Károli-vers sorai egyetlen BSB-versből jönnek (step_nyers), és a kihagyott versek jelentve vannak
+        ket = self.con.execute("SELECT igehely FROM bsb GROUP BY igehely HAVING COUNT(DISTINCT step_nyers) > 1").fetchall()
+        self.assertEqual(ket, [])
+        kihagy = self.con.execute("SELECT COUNT(*) FROM normalizalas_jelentes WHERE tabla='bsb' "
+                                  "AND (ok LIKE 'bizonytalan:%' OR ok LIKE 'ütközés:%')").fetchone()[0]
+        self.assertGreater(kihagy, 0)
 
     def test_g2_determinisztikus(self):
         ha, hb = S.tablak_hash(self.a), S.tablak_hash(self.b)
@@ -793,9 +836,6 @@ class FeliratHalmaz(unittest.TestCase):
         self.assertEqual(a, set(ZFH.felirat_versek()))
 
     def test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben(self):
-        ok = kezi_mt_or_kihagy()   # F117.8 (6): csak az őr (DT-F117f) helyzetében kihagyva, kimondott okkal
-        if ok:
-            self.skipTest(ok)
         import zsolt_felirat_halmaz as ZFH
         tmp = tempfile.mkdtemp()
         try:

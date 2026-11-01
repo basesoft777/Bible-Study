@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: megallt
-ag: claude/f38-adag12-55d932
-pr: 551
+ag: claude/f38-adag13-api-bc60bb
+pr: 556
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: "Te: [elteres_kor 2/2, TISZTA — naplok/ELLENOR_F38_adag12_3.md] a 12. adag PR #551 merge-re vár; merge után a 13. adag (sorrend 5671-től, H8546) indítható, előtte Károli-mérés (DT56)"
+kovetkezo: "Te: a 13–14. adag (sorrend 5671–8073, a BDB-fordítás utolsó két adagja) Batch API-n kész, ellenőrzésre vár (PR); a sorrendtábla mind a 8073 sora kész — az Mz zárás (terminológiai javaslatok, szúrópróba, hibás-lista összesítés) a felhasználó jelzésére indul"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
-ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_adag8_bontas.md, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md, naplok/BDB_FORDITAS_gyokcsoport_meres.py, naplok/F38_zaras.md, naplok/ELLENOR_F38_adag6.md, naplok/ELLENOR_F38_adag6_2.md, naplok/BDB_FORDITAS_karoli_lefedettseg.py, naplok/EMELES_munka.tsv, naplok/BDB_FORDITAS_adag7_bontas.md, eszkozok/teszt_emeles.py, naplok/BDB_FORDITAS_nf107b_bontas.md, eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py, naplok/BDB_FORDITAS_adag9_bontas.md, naplok/BDB_JAVITAS_KAPU_naplo.md, naplok/BDB_FORDITAS_adag10_bontas.md, naplok/BDB_FORDITAS_adag11_bontas.md, naplok/BDB_FORDITAS_adag12_bontas.md]
+ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_adag8_bontas.md, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md, naplok/BDB_FORDITAS_gyokcsoport_meres.py, naplok/F38_zaras.md, naplok/ELLENOR_F38_adag6.md, naplok/ELLENOR_F38_adag6_2.md, naplok/BDB_FORDITAS_karoli_lefedettseg.py, naplok/EMELES_munka.tsv, naplok/BDB_FORDITAS_adag7_bontas.md, eszkozok/teszt_emeles.py, naplok/BDB_FORDITAS_nf107b_bontas.md, eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py, naplok/BDB_FORDITAS_adag9_bontas.md, naplok/BDB_JAVITAS_KAPU_naplo.md, naplok/BDB_FORDITAS_adag10_bontas.md, naplok/BDB_FORDITAS_adag11_bontas.md, naplok/BDB_FORDITAS_adag12_bontas.md, eszkozok/bdb_api_koteg.py, eszkozok/teszt_bdb_api_koteg.py, naplok/BDB_API_koltseg_valtozatok.py, naplok/BDB_FORDITAS_adag13_bontas.md, forditas/bdb_api/]
 fugg: [34, 56, 67, 72, 73, 107, 128]
 nem_fugg: [9, 11]
 ---
@@ -62,6 +62,15 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 > sor `elavult`). A 9 táblán kívüli Strong a régi úton (prompt v4, `rogzit` / `beir`). Séma: `adat/SEMA.md` 2.14; napló:
 > `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 (`kezi`): újrafordul, a szakaszsorai `--kezi-marad`-dal kerülnek be, és
 > csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT290 (3)); az olvasók a közös összefűzőt használják (DT291 (a)).
+
+> **API-út (a 13. adagtól; DT451, a felhasználó döntése, 2026-11-01).** A 13. adagtól a fordítás a Code-os session helyett a
+> Message Batches API-n fut, próba nélkül (a #136 vakpróbája okafogyott): `eszkozok/bdb_api_koteg.py` (`szaraz` → `bekuld` →
+> `begyujt` → `kapuz` → `javit` → `rogzit`; önteszt: `eszkozok/teszt_bdb_api_koteg.py`). Prompt v5 és a szakasz-csoportok ugyanabból a
+> kódból (`emeles.prompt_epit`, `szakasz_bemenet.csoportok`), héber–görög helyőrzővel; modell `claude-sonnet-5-5`, `effort=high`,
+> **kemény plafon 15 USD az adagra** (csomagonként ellenőrizve; az 1. csomag után a felhasználó a B-útra +20 USD-t hagyott jóvá, kód: 31,67 USD, tényleges költség 23,22 USD); a kapusor változatlan (`forditas_kapuk.py`), a kapun bukott Strong egy
+> javító batch-et kap a kapu hibaüzenetével, másodszori bukás → `naplok/BDB_FORDITAS_hibas.tsv`. Az `allapot`/`modell` mező a tényleges
+> API-válasz modellnevéből. A DT56 „egy végrehajtó, egy kontextus” szabályát az API-úton a Strong-szintű egység és a kapusor váltja;
+> a Károli-lefedettségi küszöb (≥ 85%) adagonként marad. Munkamappa: `forditas/bdb_api/adag<n>/` (batch-azonosítók, nyers válaszok, költségnapló).
 
 ### M0 — Felmérés (csak olvas)
 
