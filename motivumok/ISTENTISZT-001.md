@@ -133,17 +133,17 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 négy hagyományos rétegének kezdőbetűiből áll össze — mindegyik más
 kérdést tesz fel ugyanarról a szövegről:
 
-- **Peshat** (פְּשָׁט, "egyszerű") — mit mond a szöveg a
+- **Peshat** (פְּשָׁט, pesát: "egyszerű") — mit mond a szöveg a
   legközvetlenebb, szó szerinti értelmében? Mi történik a
   történetben, mit tesznek a szereplők?
-- **Remez** (רֶמֶז, "utalás") — hová mutat ez a szöveg még? Milyen más
+- **Remez** (רֶמֶז, remez: "utalás") — hová mutat ez a szöveg még? Milyen más
   bibliai helyekkel cseng össze, milyen nagyobb ívbe illeszkedik? Itt
   még csak a kapcsolat *felismerése* a cél, következtetés nélkül —
   azt már a következő szint vonja le.
-- **Drash** (דְּרַשׁ, "keresés/magyarázat") — mit tanulhatunk ebből,
+- **Drash** (דְּרַשׁ, deras: "keresés/magyarázat") — mit tanulhatunk ebből,
   mit kell tennünk vele? Ez a normatív, alkalmazó szint: erkölcsi
   vagy gyakorlati tanulság, amit a szöveg felkínál.
-- **Sod** (סוֹד, "titok") — van-e ennek mélyebb, spirituális rétege?
+- **Sod** (סוֹד, szód: "titok") — van-e ennek mélyebb, spirituális rétege?
   Ez a legfegyelmezettebb szint: csak akkor szólal meg, ha
   ténylegesen levezethető a szövegből, nem szabad, hogy találgatás
   vagy allegorizálás legyen.
