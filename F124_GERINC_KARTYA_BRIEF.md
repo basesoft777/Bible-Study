@@ -6,10 +6,11 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
 pr: 507
 ad: determinisztikus, provenienciás gerinc-kártya egy igeszakaszra (a meglévő motívumok gerinc-elemei, kollokáció, állapotjelölés, a #110 szűrője a tág Strongokon) a vak olvasás után, kártya ↔ kulcsszó-táblázat összevetéssel; és egy ütemezett, gépi prioritási térkép a teljes Bibliára (hol sűrűsödnek a feldolgozatlan gerinc-találatok), GitHub Actionből, modell és költség nélkül; adatot nem ír, minden jelölt a jeloltek.tsv-n át, döntéssel
-kovetkezo: Te: merge, utána a workflow_dispatch próbája (gerinc-terkep); a #125 a jóváhagyott 2.3 szövegből
+kovetkezo: "lezárva; a #125 (GERINC_KARTYA_SZOVEG) a jóváhagyott 2.3 szövegből indulhat (brief kell)"
+lezarva_osszegzes: "Gerinc-kártya és prioritási térkép: gerinc_szuro.py, gerinc_kartya.py, gerinc_terkep.py tesztekkel; a gerinc-terkep workflow a main-en (PR #507, merge 2026-10-29); a workflow_dispatch próbája 2026-10-30-án sikeres (futás 41037491447, gépi commit 73f9042c, naplok/GERINC_TERKEP.md)"
 olvas: [adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/kulcsszavak.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, eszkozok/jelolt.py, eszkozok/lekerdez.py, eszkozok/general.py, eszkozok/kuszob.py, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, F110_SZURO_PILOT_ISTENTISZT_BRIEF.md, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv, .github/workflows/feladatok.yml, genezis/, ujszovetseg/, melyelemzesek/]
 ir: [eszkozok/gerinc_szuro.py, eszkozok/teszt_gerinc_szuro.py, eszkozok/gerinc_kartya.py, eszkozok/teszt_gerinc_kartya.py, eszkozok/gerinc_terkep.py, eszkozok/teszt_gerinc_terkep.py, .github/workflows/gerinc_terkep.yml, naplok/GERINC_TERKEP.tsv, naplok/GERINC_TERKEP.md, naplok/GERINC_KARTYA_naplo.md, naplok/GERINC_KARTYA_zaras.md, DONTESEK.md]
 fugg: [110]
