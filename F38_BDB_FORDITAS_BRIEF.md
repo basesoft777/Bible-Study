@@ -63,6 +63,15 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 > `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 (`kezi`): újrafordul, a szakaszsorai `--kezi-marad`-dal kerülnek be, és
 > csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT290 (3)); az olvasók a közös összefűzőt használják (DT291 (a)).
 
+> **API-út (a 13. adagtól; DT-F38y, a felhasználó döntése, 2026-11-01).** A 13. adagtól a fordítás a Code-os session helyett a
+> Message Batches API-n fut, próba nélkül (a #136 vakpróbája okafogyott): `eszkozok/bdb_api_koteg.py` (`szaraz` → `bekuld` →
+> `begyujt` → `kapuz` → `javit` → `rogzit`; önteszt: `eszkozok/teszt_bdb_api_koteg.py`). Prompt v5 és a szakasz-csoportok ugyanabból a
+> kódból (`emeles.prompt_epit`, `szakasz_bemenet.csoportok`), héber–görög helyőrzővel; modell `claude-sonnet-5-5`, `effort=high`,
+> **kemény plafon 15 USD az adagra** (csomagonként ellenőrizve); a kapusor változatlan (`forditas_kapuk.py`), a kapun bukott Strong egy
+> javító batch-et kap a kapu hibaüzenetével, másodszori bukás → `naplok/BDB_FORDITAS_hibas.tsv`. Az `allapot`/`modell` mező a tényleges
+> API-válasz modellnevéből. A DT56 „egy végrehajtó, egy kontextus” szabályát az API-úton a Strong-szintű egység és a kapusor váltja;
+> a Károli-lefedettségi küszöb (≥ 85%) adagonként marad. Munkamappa: `forditas/bdb_api/adag<n>/` (batch-azonosítók, nyers válaszok, költségnapló).
+
 ### M0 — Felmérés (csak olvas)
 
 1. Ellenőrzi, hogy az F34 a `main`-en van, és a 13. kapu csak a jóváhagyott F34-maradékon és az N-F34c körén jelezhet. Ha nem, megáll és jelez. *(Javítva 2026.10.01, DT-F38 (b): az eredeti „a 13. kapu a forráson 0 jelzést ad” feltétel hibás volt, mert az F34 a ψ-hiba B/R maradékát a DT-F34b/c szerint szándékosan hagyta meg; a mért 91 jelző szócikk — 83 F34-maradék, 8 N-F34c — a futást nem állítja meg.)*
