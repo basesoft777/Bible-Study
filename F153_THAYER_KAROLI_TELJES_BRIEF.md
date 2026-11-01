@@ -8,7 +8,7 @@ munka: adat
 modell: sonnet
 allapot: megallt
 ad: a kész Thayer-fordítások (forditasok.tsv, szotar = Thayer) soronként újraellenőrizve a teljes ÚSZ Károli–Strong párosításával (az evangéliumok és az ApCsel is); az eltérő sorok jóváhagyott döntés szerint újrafordítva (M3-lánc) vagy kézi ítéletre listázva; az adatblokk elavult könyvlistája javítva
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 153 — újraellenőrzés függ: naplok/ELLENOR_F153_3.md; kezi sor listán: G1941 teljes; N-F153a (Sigla-teszt) hatókörön kívül"
+kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F153_3 1. mechanikus (a teszt nem fedi le a meres() egyoldali holtverseny-jelzését); kezi sor listán: G1941 teljes; N-F153a (Sigla-teszt) hatókörön kívül"
 ag: claude/f153-thayer-2f248a
 olvas: [adat/forditasok.tsv, adat/karoli_strong/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/glossza_lexikon_forditas.py, eszkozok/forditas_kapuk.py, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, eszkozok/thayer_jelolt/adatblokk.py, eszkozok/thayer_jelolt/karoli_ujraellenoriz.py, eszkozok/thayer_jelolt/teszt_lanc.py, naplok/THAYER_KAROLI_TELJES_naplo.md, naplok/THAYER_KAROLI_TELJES_meres.tsv]
