@@ -5,9 +5,9 @@ kod: BDB_SZAKASZ_HU_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: folyamatban
+allapot: megallt
 ad: az adat/bdb_szakasz_hu.tsv-ben nincs olyan `illeszkedik` sor, amelynek magyar szövege csak a jelölő, kivéve a soronként igazolt szerkezeti eseteket; a hu_illeszt.py a szövegközi szám- és törzsnév-említést nem köti jelölőhöz; az újragenerált tábla kategória-eloszlása mérve, a B-kör (≈70 szócikk) szúrópróbával átnézve
-kovetkezo: "⛔ M0 kész (naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md): a felhasználó dönt a javítási szabályról (R2+R4+R3x), az M2 hatóköréről (--strong, 23 Strong) és a kivételekről; utána M1"
+kovetkezo: "Te: ⛔ M0 kész (naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md): a felhasználó dönt a javítási szabályról (R2+R4+R3x), az M2 hatóköréről (--strong, 23 Strong) és a kivételekről; utána M1"
 munka: folyamat
 olvas: [naplok/BDB_SZAKASZ_HU_JELOLO_JELENTES.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, F107_BDB_JELOLT_SZOVEG_BRIEF.md, adat/bdb_szakaszok.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/szakasz_bemenet.py]
 ir: [eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, adat/bdb_szakasz_hu.tsv, naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md, naplok/BDB_SZAKASZ_HU_JAVITAS_M0_hatas.py]
