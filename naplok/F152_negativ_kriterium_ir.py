@@ -1,4 +1,4 @@
-"""F152.16: az ISTENTISZT-001 `negativ_kriterium`-a a DT-F152b, a DT-F151c K2 és K5 után.
+"""F152.16: az ISTENTISZT-001 `negativ_kriterium`-a a DT-F152b, a DT476 K2 és K5 után.
 
 A régi szöveg „passzív …” része változatlan; elé kerül a JHVH-feltétel, az ÚSZ-feltétel és a
 K5-kivétel. Csak ez az egy mező változik; split('\t') / '\t'.join(), összevetéssel.
@@ -16,10 +16,10 @@ REGI_ELEJE = ('az igehelynek a קָרָא (kárá) + בְּ (be) (aktív, invok�
 UJ_ELEJE = ('az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló '
             'szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag '
             'áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név '
-            '(Ézs 44:5), az nem tartozik ide (DT-F152b, DT-F151c K4). Az Újszövetségben az ἐπικαλέομαι mellett '
+            '(Ézs 44:5), az nem tartozik ide (DT-F152b, DT476 K4). Az Újszövetségben az ἐπικαλέομαι mellett '
             'a névnek (ὄνομα) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik '
-            '(2Tim 2:22, Róm 10:12, 14; DT-F151c K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a '
-            'besém után elohéchem, illetve ha-Báal áll (DT-F151c K5). ')
+            '(2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a '
+            'besém után elohéchem, illetve ha-Báal áll (DT476 K5). ')
 
 with open(UT, encoding='utf-8', newline='') as f:
     S = f.read().split('\n')

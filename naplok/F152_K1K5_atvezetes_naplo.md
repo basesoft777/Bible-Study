@@ -1,10 +1,10 @@
-# F152 — a K1–K5 (DT-F151c) átvezetése az ISTENTISZT-001-en: mérés és megállás
+# F152 — a K1–K5 (DT476) átvezetése az ISTENTISZT-001-en: mérés és megállás
 
 Ág: `claude/f152-k1k5-atvezetes` (a main-ről, a #557 merge-e után, 3a2dbd51). Megbízás: az orkesztrátor, a
 felhasználó jóváhagyásával („Igen, utána”, a #557 merge-e után). Modell: `claude-opus-5-5`.
 
 Állapot: **⛔ megállt, adat nem változott.** A K1–K5 átvezetése előtt két kérdés jött elő, amelyre a
-DT-F151c válasza nem ad választ (DT-F152b, DT-F152c), és a Kivonat 3. mondata is jóváhagyásra vár (3.).
+DT476 válasza nem ad választ (DT-F152b, DT-F152c), és a Kivonat 3. mondata is jóváhagyásra vár (3.).
 
 ## 1. DT-F152b — a K4 hatóköre: mi áll a *besém* után
 
@@ -49,7 +49,7 @@ Alap: `motivumok.tsv` `folerendelt_fogalom` („istentisztelet/imádság által�
 
 ## 4. Ami a döntések után következik (terv)
 
-1. `jeloltek.tsv`: 1Pét 1:17, 2Tim 2:22, Róm 10:12, Róm 10:14 → `elutasítva`. Az indoklásuk a DT-F151c
+1. `jeloltek.tsv`: 1Pét 1:17, 2Tim 2:22, Róm 10:12, Róm 10:14 → `elutasítva`. Az indoklásuk a DT476
    felhasználói idézete, `manual` proveniencia, dátum. A `elofordulasok.tsv` négy sora törlődik, írás
    előtti összevetéssel.
 2. A K4 szerint (DT-F152b) az Ézs 43:1, 44:5, 45:3 indoklása új alapra kerül, és a `negativ_kriterium`
@@ -155,5 +155,5 @@ Ezzel minden döntés megvan. Átvezetés: F152.14–.
   görög idézet kiejtéssel áll (a kézi kiejtés-hiány 3 → 0).
 - **F152.18**: újragenerálás (`PARDES_DATUM=2026-10-29`): `general.py --cel lexikon --id ISTENTISZT-001 --ir`, majd
   `--cel nyitott/naplo/index --ir`. A második generálás nulla diffet adott. `ellenoriz.py`: 0 SÉRTÉS (RENDBEN 17, KÉZI 2,
-  JELENTÉS 5). Az új JELENTÉS a 21. szabályé: helyőrző (DT-F151c/F152b/F152c) a generált lapon, ez ág-állapot.
+  JELENTÉS 5). Az új JELENTÉS a 21. szabályé: helyőrző (DT476/F152b/F152c) a generált lapon, ez ág-állapot.
   `ellenorzes/futtat.py --teljes`: exit 0.

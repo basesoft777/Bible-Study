@@ -1,6 +1,6 @@
 """F158 mérés: az ISTENTISZT-001 beépített ÓSZ-előfordulásain mi áll a besém (H9003+H8034) után.
 
-A K4 (DT-F151c) elhatárolása: a besém után álló JHVH (H3068). A mérés megmutatja,
+A K4 (DT476) elhatárolása: a besém után álló JHVH (H3068). A mérés megmutatja,
 melyik beépített sor teljesíti szó szerint, és melyiknél áll névmási rag
 (pl. besimchá) vagy más név. Csak olvas; kimenet: stdout.
 """

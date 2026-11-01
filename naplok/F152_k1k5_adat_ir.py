@@ -1,6 +1,6 @@
-"""F152.14: a K1–K5 (DT-F151c), a DT-F152b és a DT-F152c jelölt-része az adatrétegben.
+"""F152.14: a K1–K5 (DT476), a DT-F152b és a DT-F152c jelölt-része az adatrétegben.
 
-A felhasználó döntései (2026-11-01; DONTESEK.md DT-F151c, DT-F152b, DT-F152c):
+A felhasználó döntései (2026-11-01; DONTESEK.md DT476, DT-F152b, DT-F152c):
 - K1/K2: 1Pét 1:17, 2Tim 2:22, Róm 10:12, Róm 10:14 kikerül;
 - DT-F152b („Csak ahol JHVH áll”): a hét névmási ragos sor kikerül;
 - K4: az Ézs 43:1, 44:5, 45:3 elutasítási indoka a besém utáni JHVH hiánya;
@@ -78,9 +78,9 @@ UT_J = 'adat/jeloltek.tsv'
 J = olvas(UT_J)
 J0 = list(J)
 
-IDEZ_K1 = ('DT-F151c K1 (a felhasználó, 2026-11-01: „az 1Pét 1:17 kerüljön ki”): „Atyának hívjátok” — '
+IDEZ_K1 = ('DT476 K1 (a felhasználó, 2026-11-01: „az 1Pét 1:17 kerüljön ki”): „Atyának hívjátok” — '
            'megszólítás, nem az Úr nevének segítségül hívása; a versben ὄνομα (G3686) nincs')
-IDEZ_K2 = ('DT-F151c K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, '
+IDEZ_K2 = ('DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, '
            'Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a '
            'tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`)')
 IDEZ_RAG = ('DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó '
@@ -88,13 +88,13 @@ IDEZ_RAG = ('DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): 
 RAG = {'Zak 13:9': 'bismí, „nevemet”', 'Zsolt 105:1': 'bismó, „nevét”', '1Krón 16:8': 'bismó, „nevét”',
        'Ézs 12:4': 'bismó, „nevét”', 'Jer 10:25': 'bismchá, „nevedet”', 'Zsolt 79:6': 'bismchá, „nevedet”',
        'Ézs 64:6': 'bismchá, „nevedet”'}
-IDEZ_K4 = ('DT-F151c K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH '
+IDEZ_K4 = ('DT476 K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH '
            'áll”): a besém után nem JHVH (H3068) áll, hanem %s')
 K4_MI = {'Ézs 43:1': 'névmási rag (besimchá, „a te neveden”), amely a megszólított Jákóbra utal',
          'Ézs 44:5': 'Jákób neve (besém Jaakóv)',
          'Ézs 45:3': 'névmási rag (besimchá, „a te neveden”), amely a megszólított Círusra utal'}
 IDEZ_MK = ('DT-F152c (a felhasználó, 2026-11-01: „Igen, (b)”; a motívumközi rész az elfogadott javaslat (i) '
-           'szerint): a %s a DT-F151c K2 óta nem ISTENTISZT-001-előfordulás, a motívumközi jelölt pedig az '
+           'szerint): a %s a DT476 K2 óta nem ISTENTISZT-001-előfordulás, a motívumközi jelölt pedig az '
            '`id` motívum előfordulásán áll (SEMA 2.4)')
 
 valtozott = {}
@@ -107,9 +107,9 @@ for i, s in enumerate(J):
     if tip == 'elofordulas' and h in NT_K1 + NT_K2 + OT_RAG:
         assert m[3] == 'beépítve', (h, m[3])
         if h in NT_K1:
-            ok, dt = IDEZ_K1, 'DT-F151c'
+            ok, dt = IDEZ_K1, 'DT476'
         elif h in NT_K2:
-            ok, dt = IDEZ_K2, 'DT-F151c'
+            ok, dt = IDEZ_K2, 'DT476'
         else:
             ok, dt = IDEZ_RAG % RAG[h], 'DT-F152b'
         m[3] = 'elutasítva'
@@ -118,13 +118,13 @@ for i, s in enumerate(J):
         uj = m
     elif tip == 'elofordulas' and h in K4_KINT:
         assert m[3] == 'elutasítva', (h, m[3])
-        m[4] = '%s | %s | korábbi indok (%s): %s' % (IDEZ_K4 % K4_MI[h], PROV % 'DT-F151c+DT-F152b', m[8], m[4])
+        m[4] = '%s | %s | korábbi indok (%s): %s' % (IDEZ_K4 % K4_MI[h], PROV % 'DT476+DT-F152b', m[8], m[4])
         m[8] = DATUM
         uj = m
     elif tip == 'elofordulas' and h in K5:
         assert m[3] == 'beépítve', (h, m[3])
         szo, karoli = K5[h]
-        m[4] = m[4] + (' Kontraszt (DT-F151c K5; a felhasználó, 2026-11-01: „kontrasztként marad”, „Igen, '
+        m[4] = m[4] + (' Kontraszt (DT476 K5; a felhasználó, 2026-11-01: „kontrasztként marad”, „Igen, '
                        'kivételként”): a besém után nem JHVH áll, hanem %s (%s).' % (szo, karoli))
         uj = m
     elif tip == 'motivumkozi' and h in MOTKOZI and m[10] == 'TEREMT-001':
@@ -156,7 +156,7 @@ for s in E:
         continue
     if len(m) > 2 and m[0] == ID and m[1] in K5:
         szo, karoli = K5[m[1]]
-        m[2] = m[2] + (' Kontraszt (DT-F151c K5): a besém után nem JHVH áll, hanem %s (%s).' % (szo, karoli))
+        m[2] = m[2] + (' Kontraszt (DT476 K5): a besém után nem JHVH áll, hanem %s (%s).' % (szo, karoli))
         s = '\t'.join(m)
         mod += 1
     uj_e.append(s)

@@ -203,13 +203,13 @@ Funkció: a formula először jelenik meg nyilvános, két isten közötti prób
 <a id="ige-1kir-18-25"></a>
 **1Kir 18:25**
 *És monda Illés a Baál prófétáinak: Válaszszátok el magatoknak az egyik tulkot, és készítsétek el ti először; mert ti többen vagytok, és hívjátok segítségül a ti istenteknek nevét, de tüzet ne tegyetek alája.*
-A Baál-próféták felszólítása: "hívjátok segítségül a ti istenetek nevét". Kontraszt (DT-F151c K5): a besém után nem JHVH áll, hanem elohéchem („a ti isteneteknek”).
+A Baál-próféták felszólítása: "hívjátok segítségül a ti istenetek nevét". Kontraszt (DT476 K5): a besém után nem JHVH áll, hanem elohéchem („a ti isteneteknek”).
 Funkció: a próbatétel gyakorlati végrehajtása
 
 <a id="ige-1kir-18-26"></a>
 **1Kir 18:26**
 *És vevék a tulkot, a melyet nékik adott, és azt elkészíték, és segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet. És ott sántikáltak az oltár körül, a melyet készítettek.*
-A Baál-próféták ismétlődő, sikertelen invokációja — a formula kudarca a kontraszt kiteljesedése. Kontraszt (DT-F151c K5): a besém után nem JHVH áll, hanem ha-Báal („a Baálnak”).
+A Baál-próféták ismétlődő, sikertelen invokációja — a formula kudarca a kontraszt kiteljesedése. Kontraszt (DT476 K5): a besém után nem JHVH áll, hanem ha-Báal („a Baálnak”).
 Funkció: a próbatétel kudarca
 
 <a id="ige-2kir-5-11"></a>
@@ -300,7 +300,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Róm 10:12 | TSK-ajánlás a Zak 13:9 helyről a Róm 10:12 helyre[^k1] | **elutasítva** — név nélküli forma: DT-F151c K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
+| Róm 10:12 | TSK-ajánlás a Zak 13:9 helyről a Róm 10:12 helyre[^k1] | **elutasítva** — név nélküli forma: DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
 | Zsolt 105:15 | TSK-ajánlás az 1Krón 16:8 helyről a Zsolt 105:15 helyre, szavazat: 22[^k2] | **elutasítva** — tartalmilag nem kapcsolódik: ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban) |
 | Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^k3] | **elutasítva** — a formula nincs a versben: ellenőrizve, nincs ἐπικαλέομαι (epikaleomai) / καλέω (kaleó) a versben, NEM releváns |
 | Zsolt 50:15 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k4] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם (sém) nélkül): rokon igei használat, nem a formula, NEM a motívum része |
@@ -382,9 +382,9 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Ézs 43:1 | a tematikus tanulmány felvetése (C-minta)[^k68] | **elutasítva** — egyéb: DT-F151c K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem névmási rag (besimchá, „a te neveden”), amely a megszólított Jákóbra utal |
-| Ézs 44:5 | a tematikus tanulmány felvetése (C-minta)[^k69] | **elutasítva** — egyéb: DT-F151c K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem Jákób neve (besém Jaakóv) |
-| Ézs 45:3 | a tematikus tanulmány felvetése (C-minta)[^k70] | **elutasítva** — egyéb: DT-F151c K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem névmási rag (besimchá, „a te neveden”), amely a megszólított Círusra utal |
+| Ézs 43:1 | a tematikus tanulmány felvetése (C-minta)[^k68] | **elutasítva** — egyéb: DT476 K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem névmási rag (besimchá, „a te neveden”), amely a megszólított Jákóbra utal |
+| Ézs 44:5 | a tematikus tanulmány felvetése (C-minta)[^k69] | **elutasítva** — egyéb: DT476 K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem Jákób neve (besém Jaakóv) |
+| Ézs 45:3 | a tematikus tanulmány felvetése (C-minta)[^k70] | **elutasítva** — egyéb: DT476 K4 és DT-F152b (a felhasználó, 2026-11-01: „itt ez az elhatárolás”; „Csak ahol JHVH áll”): a besém után nem JHVH (H3068) áll, hanem névmási rag (besimchá, „a te neveden”), amely a megszólított Círusra utal |
 | 2Sám 6:2 | a tematikus tanulmány felvetése (D-minta)[^k71] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
 | 1Krón 13:6 | a tematikus tanulmány felvetése (D-minta)[^k72] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
 | Jer 7:10–11 | a tematikus tanulmány felvetése (D-minta)[^k73] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
@@ -397,16 +397,16 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
 | Zak 13:9 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k77] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismí, „nevemet”) |
-| Róm 10:14 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k78] | **elutasítva** — név nélküli forma: DT-F151c K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
-| 2Tim 2:22 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k79] | **elutasítva** — név nélküli forma: DT-F151c K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
-| 1Pét 1:17 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k80] | **elutasítva** — egyéb: DT-F151c K1 (a felhasználó, 2026-11-01: „az 1Pét 1:17 kerüljön ki”): „Atyának hívjátok” — megszólítás, nem az Úr nevének segítségül hívása; a versben ὄνομα (G3686) nincs |
+| Róm 10:14 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k78] | **elutasítva** — név nélküli forma: DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
+| 2Tim 2:22 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k79] | **elutasítva** — név nélküli forma: DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) |
+| 1Pét 1:17 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k80] | **elutasítva** — egyéb: DT476 K1 (a felhasználó, 2026-11-01: „az 1Pét 1:17 kerüljön ki”): „Atyának hívjátok” — megszólítás, nem az Úr nevének segítségül hívása; a versben ὄνομα (G3686) nincs |
 | Zsolt 105:1 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k81] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismó, „nevét”) |
 | 1Krón 16:8 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k82] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismó, „nevét”) |
 | Ézs 12:4 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k83] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismó, „nevét”) |
 | Jer 10:25 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k84] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismchá, „nevedet”) |
 | Zsolt 79:6 | pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés[^k85] | **elutasítva** — egyéb: DT-F152b (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, hanem névmási rag (bismchá, „nevedet”) |
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT-F152b, DT-F151c K4). Az Újszövetségben az ἐπικαλέομαι mellett a névnek (ὄνομα) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT-F151c K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT-F151c K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT-F152b, DT476 K4). Az Újszövetségben az ἐπικαλέομαι mellett a névnek (ὄνομα) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)
 
 [^k1]: forrás: `TSK (Zak 13:9→Róm 10:12 Votes 18; ApCsel 2:21→Róm 10:12 Votes 29) + TAGNT G1941 + Thayer G1941 5. jelentés` · ‹K5› | korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti.
 [^k2]: forrás: `TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | ‹K1›`
@@ -494,7 +494,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 [^k84]: forrás: `pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés` · ‹K4› | korábban (beépítve, 2026.09.05): "…a nemzetségekre, akik a Te nevedet nem hívják segítségül" — a formula tagadó, vádló formában, fordított szórenddel.
 [^k85]: forrás: `pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés` · ‹K4› | korábban (beépítve, 2026.09.05): A Jer 10:25 szinte szó szerinti párhuzama, azonos vádló szerkezettel.
 
-*A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11` (42 sor) · ‹K2› = `scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli` (21 sor) · ‹K3› = `scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18` (9 sor) · ‹K4› = `scope=manual | forras=DONTESEK.md DT-F152b | ts=2026-11-01` (7 sor) · ‹K5› = `scope=manual | forras=DONTESEK.md DT-F151c | ts=2026-11-01` (4 sor) · ‹K6› = `scope=manual | forras=DONTESEK.md DT-F151c+DT-F152b | ts=2026-11-01` (3 sor) · ‹K7› = `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-21T09:18Z | csatorna=cli` (2 sor) · ‹K8› = `scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z` (2 sor)*
+*A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11` (42 sor) · ‹K2› = `scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli` (21 sor) · ‹K3› = `scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18` (9 sor) · ‹K4› = `scope=manual | forras=DONTESEK.md DT-F152b | ts=2026-11-01` (7 sor) · ‹K5› = `scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01` (4 sor) · ‹K6› = `scope=manual | forras=DONTESEK.md DT476+DT-F152b | ts=2026-11-01` (3 sor) · ‹K7› = `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-21T09:18Z | csatorna=cli` (2 sor) · ‹K8› = `scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z` (2 sor)*
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kizart -->
 
@@ -1215,7 +1215,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 | Igehely | Döntés | Forrás-keresés | Indoklás |
 |---|---|---|---|
-| Róm 10:12 | elutasítva | TSK (Zak 13:9→Róm 10:12 Votes 18; ApCsel 2:21→Róm 10:12 Votes 29) + TAGNT G1941 + Thayer G1941 5. jelentés | DT-F151c K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) \| scope=manual \| forras=DONTESEK.md DT-F151c \| ts=2026-11-01 \| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. |
+| Róm 10:12 | elutasítva | TSK (Zak 13:9→Róm 10:12 Votes 18; ApCsel 2:21→Róm 10:12 Votes 29) + TAGNT G1941 + Thayer G1941 5. jelentés | DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14)”): ἐπικαλέομαι ὄνομα (G3686) nélkül; a név nélküli segítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) \| scope=manual \| forras=DONTESEK.md DT476 \| ts=2026-11-01 \| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. |
 | Zsolt 105:15 | elutasítva | TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| ‹M1› | ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban) |
 | Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| ‹M1› | ellenőrizve, nincs ἐπικαλέομαι / καλέω a versben, NEM releváns |
 | Róm 3:13 | elutasítva | Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| ‹M1› | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
@@ -1600,7 +1600,7 @@ lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták"), és
 **az ApCsel 9:14-et is ide sorolja**, nem a „segítségül hívni"
 jelentéshez; a szócikk megjegyzése ezt a verset a hagyományos
 értelmezéstől eltérőként nevezi meg. Az 1Pét 1:17 hozzárendelése a
-forrásban kettős marad; a vers a DT-F151c K1 óta nem a motívum helye.
+forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye.
 
 Ez azt jelenti, hogy a formula két iránya az Újszövetségben is
 megmarad. Az egyik irányban az ember hívja segítségül a nevet
@@ -1696,7 +1696,7 @@ elkülönülő teológiai aktust fejez ki:
 |---|---|---|---|---|
 | **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a study fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
-| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív"; a *besém* után nem JHVH áll (DT-F151c K4) |
+| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív"; a *besém* után nem JHVH áll (DT476 K4) |
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
@@ -1747,7 +1747,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ### Nyitott kérdések és séma-korlátok
 
-5. **UBS-besorolás** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers a DT-F151c K1 óta nem a motívum helye). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
+5. **UBS-besorolás** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers a DT476 K1 óta nem a motívum helye). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 ## 8. Irodalom és idézés
 
@@ -1829,7 +1829,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | PaRDeS-szint | Drash |
 | Státusz | publikálható (`v3`, 2026.09.22) |
 | Azonosság típusa | formulaikus |
-| Negatív kritérium | az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT-F152b, DT-F151c K4). Az Újszövetségben az ἐπικαλέομαι (epikaleomai) mellett a névnek (ὄνομα (onoma)) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT-F151c K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT-F151c K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
+| Negatív kritérium | az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT-F152b, DT476 K4). Az Újszövetségben az ἐπικαλέομαι (epikaleomai) mellett a névnek (ὄνομα (onoma)) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
 | Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül) |
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
