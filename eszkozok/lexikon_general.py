@@ -619,6 +619,10 @@ mondat a lap készítőinek szól.
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
 
+**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel
+áll, a teljes proveniencia-sor egyszer, a blokk alatt. Az előtag a blokkot jelöli: E az előfordulások, K a kizárt és
+vizsgált helyek, M a minősítés.
+
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
 betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
@@ -833,7 +837,10 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
     torzs = '\n'.join(sorok)
     if labjegyzetek:
+        labjegyzetek, kozos = SZKZ.kozos_proveniencia(labjegyzetek, 'E')   # F152 B.2
         torzs += '\n\n' + '\n'.join('[^%d]: %s' % (i, lj) for i, lj in enumerate(labjegyzetek, start=1))
+        if kozos:
+            torzs += '\n\n' + kozos
 
     if gerinc:
         torzs += ('\n\n*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), '
@@ -964,7 +971,10 @@ def blokk_kizart(m, n_motivum=0):
     if negativ:
         reszek.append('**Negatív kritérium** (`motivumok.tsv`): %s' % negativ)
     if labj:
+        labj, kozos = SZKZ.kozos_proveniencia(labj, 'K')   # F152 B.2
         reszek.append('\n'.join('[^k%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
+        if kozos:
+            reszek.append(kozos)
     torzs = '\n\n'.join(reszek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d elutasított/nyitva maradt jelöltjét fedi a '
@@ -2249,7 +2259,8 @@ def kulcsszavak_blokk(motivum_id, sorai, fajl_licenc_kulcsok):
     if not kombok:
         return ''
     kulcs = SZK.kulcsszavak(sorai)
-    sorok = ['| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', '|---|---|---|---|']
+    # F152 A.3: a „gerinc” üzemeltetői szó, az olvasói oszlopfejben nem áll
+    sorok = ['| Héber/görög szavak | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', '|---|---|---|---|']
     for k in kombok:
         st = sorted(k, key=lambda s: (s[0] != 'G', s))
         szavak = ' + '.join(lemma_cim(lemma_kiejtes(s)) if lemma_kiejtes(s) else s for s in st)
@@ -2348,6 +2359,13 @@ def _szo_nev(strong):
     lk = lemma_kiejtes(strong)
     nev = (lk[1] or lk[0]) if lk else strong
     return '%s %s' % (_nevelo(nev), nev)
+
+
+def _szo_kiejtessel(strong):
+    """„kárá (H7121)” — a kiejtés (héberül a jóváhagyott), ennek híján a lemma, a Strong-számmal (F152 A.3)."""
+    lk = lemma_kiejtes(strong)
+    nev = (lk[1] or lk[0]) if lk else ''
+    return '%s (%s)' % (nev, strong) if nev else strong
 
 
 def _es_lista(xs):
@@ -3412,7 +3430,7 @@ def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
     sorai = ctx.get('sorai') or []
     if not sorai or sorai[0].get('id') not in SZEREP_KAROLI_MOTIVUMOK:
         return []
-    out = (SZK.blokk_13 if n == 13 else SZK.blokk_14)(sorai, G.TS)
+    out = SZK.blokk_13(sorai, G.TS) if n == 13 else SZK.blokk_14(sorai, G.TS, szo_nev=_szo_kiejtessel)
     if out:
         ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
         ctx['fl'].setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
@@ -4464,11 +4482,17 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
         for j in jeloltek:
             szam[j['dontes']] = szam.get(j['dontes'], 0) + 1
         osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
-        tabla = ['**Kereszthivatkozásból minősített jelöltek** (%d sor; %s):' % (len(jeloltek), osszeg), '',
-                 '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
-        for j in jeloltek:
-            tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], _cella(j['forras_kereses']),
+        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll; a tartalma változatlan
+        tabla = ['<details>',
+                 '<summary>Kereszthivatkozásból minősített jelöltek (%d sor; %s)</summary>' % (len(jeloltek), osszeg),
+                 '', '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
+        forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek], 'M')   # F152 B.2
+        for j, fk in zip(jeloltek, forrasok):
+            tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], fk,
                                                      _cella(j.get('indoklas') or EM_DASH)))
+        if kozos:
+            tabla += ['', kozos]
+        tabla += ['', '</details>']
         out.append('\n'.join(tabla))
     else:
         out.append('**Kereszthivatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz.')

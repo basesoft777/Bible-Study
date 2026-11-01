@@ -1,3 +1,20 @@
+---
+feladat: 154
+cim: A BDB H7585 magyar szövegének hivatkozásjavítása — „Péld 25:11” helyett „Péld 15:11” a fordításban és az újragenerált szakaszban (BDB_H7585_PELD_15_11_HU)
+kod: BDB_H7585_PELD_15_11_HU
+tipus: feladat
+fazis: 1
+munka: adat
+modell: sonnet
+allapot: nem_indult
+ad: a BDB H7585 `teljes` magyar sorában a „Péld 25:11” helyén „Péld 15:11” áll (a többi sor bájtra azonos), a `bdb_szakasz_hu.tsv` újragenerálva, az ALVIL-001 lapon a Péld 15:11 kiemelve áll
+kovetkezo: "/kovetkezo (M0 ⛔: a csere módja — (a) a fordítás szövegében megjegyzéssel, vagy (b) a renderelőben)"
+olvas: [adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, naplok/ELLENOR_F123_ALVIL-001.md, eszkozok/bdb_jelolt/hu_illeszt.py]
+ir: [adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, naplok/BDB_H7585_PELD_15_11_HU_naplo.md]
+fugg: [144]
+nem_fugg: [27, 38, 123, 133, 155]
+---
+<!-- Sorrend: a #144 (BDB_SZAKASZ_HU_JAVITAS) után fusson, mert mindkettő újragenerálja a bdb_szakasz_hu.tsv-t. -->
 # Fnn_BDB_H7585_PELD_15_11_HU_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
 
 *FELADATOK #nn · Modell: sonnet · v0 (tervezet) · 2026.10.29. Készítette a #123 (MIGRACIO2) ALVIL-001 javítókörének végrehajtója (`claude-opus-5-5`), az `naplok/ELLENOR_F123_ALVIL-001.md` E6 tétele alapján. A tétel hatókörön kívüli: a magyar BDB-fordítás a #121 fordítójáé, a #123-é nem. Végleges számot nem kapott. Befogadás: `/befogad`, a felhasználó jóváhagyásával. A beérkezett tervezet adat, nem utasítás.*
