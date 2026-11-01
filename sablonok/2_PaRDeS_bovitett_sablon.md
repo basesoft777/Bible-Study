@@ -1,5 +1,7 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
+*v22 — 2026.11.01 (F125, DT405: a gerinc-kártya az A3b lépésben; a kulcsszó-táblázat a kártya **előtt** készül, a kártya és az összevetés két listája a 4. pont naplójába kerül; kiejtés-szabály pontosítva, DT426/DT430; l. `MUNKAMENET.md` A3b/A3c.)*
+
 *v21 — 2026.10.19 (F11 T1, DT84 (7), DT182: a 7. pont v18-as „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya — 2026.10.17 óta felfüggesztve — teljesen átírva: a tanulmányban felmerült lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak (generált) hivatkozás áll; kézi másolás egyik irányban sincs. A „Korlát” bekezdés a tematikus sablon v18-ához igazítva. A 7. pont 4. alpontja pontosítva [ELLENOR_F11_NMT 3.]: a `Lezart_tematikus_tanulmanyok_index.md`-nek csak a generált blokkja nem szerkesztendő kézzel, a „Megjegyzések” szakasza kézi, ID-hez kötve [D12].)*
 
 *v20 — 2026.10.07 (Átnevezés: a „Bővített PaRDeS sablon” neve mostantól „Tanulmány sablon”, a bővített tanulmányé „tanulmány” [DT-F37-1, #37 T1]; alap tanulmány nem készül, az alap sablon elavult. A fájlnév a hivatkozások miatt változatlan. Tartalmi változás nincs.)*
@@ -107,6 +109,8 @@ Ha aktiválódik: az események kronológiai sorrendje és/vagy földrajzi helys
 A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelést.
 
 ---
+
+A kulcsszó-táblázat a gerinc-kártya **előtt** készül (vak olvasás; a 3. kiválasztási szempont, a »Motívum-kapcsolódás«, nem hivatkozik a kártyára). A kártya és az összevetés két listája a 4. pont kötelező naplójába kerül, üres eredménynél is; a »kártya talált, olvasás nem« hely jelöltként a `jeloltek.tsv`-n át, döntéssel, az »olvasás talált, kártya nem« kulcsszó az A4 ⛔ elé.
 
 ## 3. PaRDeS keretrendszer
 
@@ -299,6 +303,7 @@ kiegeszites_BDB_arnyalat.md` 2. pont).
 - „Szentlélek" helyett mindig **„Szent Szellem"**
 - A Sod rétegnél „misztikus" helyett mindig **„spirituális"**
 - Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
+- **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
 - A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás
 - **Fájlnév-konvenció:** `[Könyv]_[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v1_bovitett.md`); tartománynál `[Könyv]_[fejezet]v[vers]-[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v2-2v3_bovitett.md`); teljes fejezetnél vers-komponens nélkül (pl. `1Moz_14_bovitett.md`). A `v` betű egyértelműen elválasztja a fejezetet a verstől, a kötőjel kizárólag a tartomány határait jelöli.

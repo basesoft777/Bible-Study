@@ -108,8 +108,7 @@ fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή (pszükhé
 *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«)."
 
 ### 1. Előfordulások (generált)
-Tábla: Igehely | Kulcsszó (Károli-szó + eredeti szóalak **kiejtéssel**,
-a `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` `Kiejtés` oszlopából) |
+Tábla: Igehely | Kulcsszó (Károli-szó + eredeti szóalak magyaros **kiejtéssel**; nem a TAHOT/TAGNT angolos átírása, l. „Kiejtés és olvasói szöveg”) |
 Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés
 (csak ÚSZ-sornál, `L–N kód — magyar definíció` alakban, a magyar
 szöveg az `adat/forditas_ubs.tsv`-ből; hiányzó fordításnál az angol
@@ -277,6 +276,12 @@ felhasznált szótárak listája a forrás-README-k szerinti teljes
 megnevezéssel. A teljes szakirodalmi bibliográfia-tábla nem ennek a
 menetnek a tárgya (LEXV2_3).
 
+### Kiejtés és olvasói szöveg (kézi szabály)
+
+Az előfordulás-tábla „Kulcsszó” cellájában a Károli-szó mellett az eredeti szó **magyaros kiejtése** áll (nem a TAHOT angolos átírása: *k.Ro'*, *Shem* helyett héberül a lemma magyaros kiejtése, görögül gépi magyaros). Szó szerinti szótári idézetben nincs kiejtés. „Gépi” jelölés a kiejtés mellett nem áll.
+
+Minden olvasói magyarázó szöveg **a lelettel kezdődik** (számok, konkrét szavak kiejtéssel, példahely), és **szabály szerinti következtetéssel zárul**. A következtetés determinisztikus, az adatból számolt szabály (küszöb, arány), a kódban (`eszkozok/olvasoi_kovetkeztetes.py`) és a lap üzemeltetői sorában rögzítve; új blokknál a függvényt oda kell felvenni. Belső szakszó (gerinc, szerep) nem kerül olvasói szövegbe: a motívum saját szavait nevezzük meg. *(A felhasználó: „mindig vanjuk le a következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”)*
+
 ### Kolofon (generált)
 Tábla: ID | Rövid UI-címke | Teljes cím | Téma | PaRDeS-szint | Státusz
 | Azonosság típusa | Negatív kritérium | Fölérendelt fogalom |
@@ -284,6 +289,7 @@ Forrás-study | Kereszthivatkozás-napló | Sablon-megfelelőség — a
 `motivumok.tsv` sora szerint. Alatta tábla: Forrás | Fájl | Licenc |
 Blokk — a fájlban ténylegesen felhasznált forrásfájlok, fájlonkénti
 licenc-hozzárendeléssel. L. "Licenc és nyilvános repó" alább.
+A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott); a második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), a MUNKAMENET csak hivatkozik rá.
 
 ---
 
@@ -358,6 +364,7 @@ sablonnal)
 
 - „Szentlélek" helyett mindig **„Szent Szellem"**
 - Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
+- **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Kir 18:24")
 - Forrásmegjelölés kötelező minden idézetnél — fájlnév + (ha van)
   sor/Strong-szám
