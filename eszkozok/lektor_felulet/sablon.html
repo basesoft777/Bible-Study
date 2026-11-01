@@ -1,73 +1,76 @@
 <title>Lektor-felület</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
 <style>
-/* Elrendezés: egy keskeny munkaoszlop; kérdésenként egy lap, négy nagy gombbal; alul ragadós összesítő. */
+/* Elrendezés: egy keskeny munkaoszlop; kérdésenként egy lap, négy nagy gombbal; alul ragadós összesítő.
+   Arculat: A. Olvasó (KOZOS_TOKENEK.md, a felhasználó választása): Source Serif 4 cím, IBM Plex Sans szöveg, IBM Plex Mono adat, sugár 4px. */
 :root {
-  --papir: #f5f6f8; --lap: #ffffff; --tinta: #1c2230; --halvany: #5d6677; --vonal: #d8dce4;
-  --kiemel: #2c4f86; --kiemel-hatter: #e7edf7; --elfogad: #2f6b4f; --elfogad-hatter: #e4f1ea;
-  --elvet: #9a3b32; --elvet-hatter: #f7e8e6; --figyel: #8a5a12; --figyel-hatter: #fbf0d9;
-  --szoveg: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --papir: #f6f6f3; --lap: #ffffff; --tinta: #1c1f24; --halvany: #5d636d; --vonal: #dcddd8;
+  --kiemel: #1f5f7a; --kiemel-hatter: #e1eef3; --elfogad: #1d6b3f; --elfogad-hatter: #e0f0e6;
+  --elvet: #a3302a; --elvet-hatter: #f7e3e1; --figyel: #8a5a00; --figyel-hatter: #f8ecd0;
+  --cim: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --szoveg: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --adat: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --sugar: 4px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --papir: #12151b; --lap: #1a1f28; --tinta: #e4e7ed; --halvany: #9aa3b3; --vonal: #2e3442;
-  --kiemel: #9db7e3; --kiemel-hatter: #222c3d; --elfogad: #8fcfae; --elfogad-hatter: #1d3329;
-  --elvet: #e4a39b; --elvet-hatter: #3a2321; --figyel: #e6c07a; --figyel-hatter: #3a3020; color-scheme: dark; } }
+  --papir: #14171b; --lap: #1b1f24; --tinta: #e7e8ea; --halvany: #9aa0a9; --vonal: #2e333a;
+  --kiemel: #7cc0da; --kiemel-hatter: #1d3440; --elfogad: #7fd0a0; --elfogad-hatter: #17301f;
+  --elvet: #f0a39d; --elvet-hatter: #3b1e1c; --figyel: #e8c26a; --figyel-hatter: #3a2e12; color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --papir: #12151b; --lap: #1a1f28; --tinta: #e4e7ed; --halvany: #9aa3b3; --vonal: #2e3442;
-  --kiemel: #9db7e3; --kiemel-hatter: #222c3d; --elfogad: #8fcfae; --elfogad-hatter: #1d3329;
-  --elvet: #e4a39b; --elvet-hatter: #3a2321; --figyel: #e6c07a; --figyel-hatter: #3a3020; color-scheme: dark; }
-body { background: var(--papir); color: var(--tinta); font: 16px/1.55 var(--szoveg); }
+  --papir: #14171b; --lap: #1b1f24; --tinta: #e7e8ea; --halvany: #9aa0a9; --vonal: #2e333a;
+  --kiemel: #7cc0da; --kiemel-hatter: #1d3440; --elfogad: #7fd0a0; --elfogad-hatter: #17301f;
+  --elvet: #f0a39d; --elvet-hatter: #3b1e1c; --figyel: #e8c26a; --figyel-hatter: #3a2e12; color-scheme: dark; }
+body { background: var(--papir); color: var(--tinta); font: 14px/1.55 var(--szoveg); }
 .keret { max-width: 760px; margin: 0 auto; padding-block: 24px 170px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-h1 { font-size: 1.6rem; margin: 0 0 6px; text-wrap: balance; font-weight: 600; }
+h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .bev { color: var(--halvany); margin: 0 0 16px; max-width: 65ch; }
 .szurosor { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; align-items: center; }
 .szurosor .cim { font: 12px var(--adat); color: var(--halvany); min-width: 4.5em; }
-.szurosor button { font: 13px var(--adat); padding: 6px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--vonal);
+.szurosor button { font: 13px var(--adat); padding: 6px 12px; min-height: 36px; border-radius: var(--sugar); border: 1px solid var(--vonal);
   background: var(--lap); color: var(--halvany); cursor: pointer; }
 .szurosor button[aria-pressed="true"] { background: var(--kiemel-hatter); color: var(--kiemel); border-color: var(--kiemel); }
 .lista { display: grid; gap: 14px; margin-top: 16px; }
 .ures { color: var(--halvany); padding: 24px 0; }
-.tetel { background: var(--lap); border: 1px solid var(--vonal); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; }
+.tetel { background: var(--lap); border: 1px solid var(--vonal); border-radius: var(--sugar); padding: 14px 16px; display: grid; gap: 10px; }
 .tetel.kesz { border-color: var(--elfogad); }
-.fej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font: 12.5px var(--adat); color: var(--halvany); }
+.fej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font: 12px var(--adat); color: var(--halvany); }
 .fej .id { color: var(--tinta); font-weight: 500; overflow-wrap: anywhere; }
 .fej a { color: var(--kiemel); }
 .kerdes p { margin: 0 0 8px; overflow-wrap: anywhere; }
-.kerdes p:first-child { font-weight: 600; }
-.kerdes code { font: .85em var(--adat); background: var(--papir); padding: 1px 4px; border-radius: 4px; overflow-wrap: anywhere; }
+.kerdes p:first-child { font: 600 16px/1.4 var(--cim); }
+.kerdes code { font: 13px var(--adat); background: var(--papir); padding: 1px 4px; border-radius: var(--sugar); overflow-wrap: anywhere; }
 .kerdes details { margin-top: 2px; }
 .kerdes summary { cursor: pointer; font: 13px var(--adat); color: var(--kiemel); min-height: 32px; display: flex; align-items: center; }
-.rogzitett { background: var(--figyel-hatter); color: var(--figyel); border-radius: 8px; padding: 8px 10px; font-size: .92rem; }
+.rogzitett { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; }
 .rogzitett b { font: 500 12px var(--adat); display: block; margin-bottom: 2px; }
 .gombok { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 @media (min-width: 560px) { .gombok { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.gombok button { font: 600 15px var(--szoveg); min-height: 48px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--vonal);
+.gombok button { font: 600 14px var(--szoveg); min-height: 48px; padding: 8px 10px; border-radius: var(--sugar); border: 1px solid var(--vonal);
   background: var(--lap); color: var(--tinta); cursor: pointer; }
 .gombok button[aria-pressed="true"].elfogadom { background: var(--elfogad); color: var(--lap); border-color: var(--elfogad); }
 .gombok button[aria-pressed="true"].elvetem { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
 .gombok button[aria-pressed="true"].visszakerdezek, .gombok button[aria-pressed="true"].sajat { background: var(--kiemel); color: var(--lap); border-color: var(--kiemel); }
 .szoveg { display: grid; gap: 6px; }
-.szoveg textarea { font: 1rem/1.4 var(--szoveg); padding: 8px 10px; border: 1px solid var(--vonal); border-radius: 8px;
+.szoveg textarea { font: 14px/1.4 var(--szoveg); padding: 8px 10px; border: 1px solid var(--vonal); border-radius: var(--sugar);
   background: var(--lap); color: var(--tinta); width: 100%; min-height: 80px; resize: vertical; }
 .szoveg .sor { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: 8px; border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
-.allapot { font: 12.5px var(--adat); color: var(--halvany); }
+.mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
+.allapot { font: 12px var(--adat); color: var(--halvany); }
 .allapot.hiba { color: var(--elvet); }
 button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
 .also { position: fixed; left: 0; right: 0; bottom: 0; background: var(--lap); border-top: 1px solid var(--vonal);
   padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px));
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .also-belso { max-width: 760px; margin: 0 auto; display: grid; gap: 6px; }
-.allas { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
+.allas { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; }
 .allas b { font-variant-numeric: tabular-nums; }
-.kimenet { font: 12px/1.4 var(--adat); background: var(--papir); border: 1px solid var(--vonal); border-radius: 6px;
+.kimenet { font: 12px/1.4 var(--adat); background: var(--papir); border: 1px solid var(--vonal); border-radius: var(--sugar);
   padding: 6px 8px; max-height: 5em; overflow: auto; overflow-wrap: anywhere; color: var(--halvany); white-space: pre-wrap; }
-.masol { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: 8px; border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; justify-self: start; }
-.uzenet { color: var(--elfogad); font-size: .85rem; min-height: 1em; }
-.figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: 8px; padding: 8px 10px; font-size: .9rem; margin: 0 0 12px; }
+.masol { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; justify-self: start; }
+.uzenet { color: var(--elfogad); font-size: 12px; min-height: 1em; }
+.figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; margin: 0 0 12px; }
 @media (prefers-reduced-motion: no-preference) { .gombok button, .szurosor button { transition: background .15s, border-color .15s; } }
 </style>
 
