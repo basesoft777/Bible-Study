@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: megallt
 ad: a kész Thayer-fordítások (forditasok.tsv, szotar = Thayer) soronként újraellenőrizve a teljes ÚSZ Károli–Strong párosításával (az evangéliumok és az ApCsel is); az eltérő sorok jóváhagyott döntés szerint újrafordítva (M3-lánc) vagy kézi ítéletre listázva; az adatblokk elavult könyvlistája javítva
-kovetkezo: "/kovetkezo (M0 mérés, ⛔ a mérés után: az eltérő sorok sorsa)"
+kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F153_3 1. javítva a felhasználó engedélyével (F153.19), újraellenőrzés nincs; zárás a felhasználó döntésére; kezi sor listán: G1941 teljes; N66 (Sigla-teszt) hatókörön kívül"
+ag: claude/f153-thayer-2f248a
 olvas: [adat/forditasok.tsv, adat/karoli_strong/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/glossza_lexikon_forditas.py, eszkozok/forditas_kapuk.py, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, eszkozok/thayer_jelolt/adatblokk.py, eszkozok/thayer_jelolt/karoli_ujraellenoriz.py, eszkozok/thayer_jelolt/teszt_lanc.py, naplok/THAYER_KAROLI_TELJES_naplo.md, naplok/THAYER_KAROLI_TELJES_meres.tsv]
 fugg: []
@@ -101,4 +102,5 @@ kapuk). Javul az `adatblokk.py` docstringje. Az új ellenőrzőhöz teszt kész�
 
 ## 6. Döntésnapló
 
-- `DT-F<nn>a` (⛔ M0): az eltérő sorok sorsa (a/b/c). *Nyitott.*
+- `DT454` (⛔ M0): az eltérő sorok sorsa: szűk (b), a felhasználó „b” válasza; a G1941 sz1–sz4 újrafordítása nem változtatott a szövegen. *Alkalmazva.*
+- `DT455` (javítókör 1, ELLENOR_F153 2.): holtversenynél a mérés `holtverseny`-t jelöl, váltást nem állít; az uralkodó tő szakaszonként számolódik; csak a mérőeszköz érintett, a fordítások nem. A felhasználó „Igen, mehet” válasza (c), majd (d). *Alkalmazva.*

@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: megallt
 ag: claude/olvaso-alapnezet
-ad: az olvasó-szerver a mockup 9. változata szerint működik — kis képernyőn csak a Károli-szöveg, a navigáció és a részletek felugró lapon; nagy képernyőn állandó oldalblokk, kijelölés nélkül rövid útmutatóval (DT-F134l); világos alaptéma; mérve 375/768/1280 px-en és valódi telefonon
+ad: az olvasó-szerver a mockup 9. változata szerint működik — kis képernyőn csak a Károli-szöveg, a navigáció és a részletek felugró lapon; nagy képernyőn állandó oldalblokk, kijelölés nélkül rövid útmutatóval (DT464); világos alaptéma; mérve 375/768/1280 px-en és valódi telefonon
 kovetkezo: "Te: telefonos próba (naplok/OLVASO_ALAPNEZET_M4.md 8. szakasz), utána M5"
 munka: folyamat
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, F98_TERVEZO_MOD_BRIEF.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/TERVEZO_MOD_zaras.md]
@@ -30,28 +30,28 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 **Benne van**
 
-1. **Kis képernyő (900 px alatt):** nincs tartós fejléc és alsó sáv. A navigáció (kereső, könyvválasztó, ‹ ›, Aa, ⚙, kánon-sáv, jelölő chipek, „Legutóbb”; a Fejezet-kalauz gomb a DT-F134l szerint kimarad) a fejezetcímre koppintva felugró lapon nyílik; felfelé görgetésre egy átmeneti tájoló pirula („Ez 37 ▾”) is előhívja. *Módosítva (DT-F134n, 2026-10-23): a navigáció 900 px alatt is egysoros ragadós felső sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a kereső, a kánon-sáv, a jelölés és a „Legutóbb” a sáv ⌕ gombjával a sáv alatt nyílik; a tájoló pirula kikerült.*
-2. **A részletek lapja — egy komponens, két mód:** versszámra koppintva versmód (fejsor: igehely + a vers eleje; a „Másolás forrással” gomb a DT-F134m szerint nem kerül be; fülek: Vers · Kereszthiv. · Témák · Motívum), szóra koppintva szómód (fejsor: Strong-szám, héber/görög alak, alapjelentés; „A vers: … →”). Váltás a két mód között bezárás nélkül; ‹ az előző tartalomra lép (előzménylánc).
+1. **Kis képernyő (900 px alatt):** nincs tartós fejléc és alsó sáv. A navigáció (kereső, könyvválasztó, ‹ ›, Aa, ⚙, kánon-sáv, jelölő chipek, „Legutóbb”; a Fejezet-kalauz gomb a DT464 szerint kimarad) a fejezetcímre koppintva felugró lapon nyílik; felfelé görgetésre egy átmeneti tájoló pirula („Ez 37 ▾”) is előhívja. *Módosítva (DT466, 2026-10-23): a navigáció 900 px alatt is egysoros ragadós felső sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a kereső, a kánon-sáv, a jelölés és a „Legutóbb” a sáv ⌕ gombjával a sáv alatt nyílik; a tájoló pirula kikerült.*
+2. **A részletek lapja — egy komponens, két mód:** versszámra koppintva versmód (fejsor: igehely + a vers eleje; a „Másolás forrással” gomb a DT465 szerint nem kerül be; fülek: Vers · Kereszthiv. · Témák · Motívum), szóra koppintva szómód (fejsor: Strong-szám, héber/görög alak, alapjelentés; „A vers: … →”). Váltás a két mód között bezárás nélkül; ‹ az előző tartalomra lép (előzménylánc).
 3. **Két alak:** 900 px alatt alulról felugró lap (betekintés kb. a képernyő felééig, felhúzva teljes nézet, lehúzásra vissza, majd zárás; a koppintott vers a lap fölött látható marad); 900 px-től állandó, párhuzamos oldalblokk.
-4. **Üres állapot (DT-F134l):** kijelölés nélkül az oldalblokk rövid útmutatót mutat (koppints versszámra a vers, szóra a szó részleteiért), alatta a fejezet forrását és a számlálókat. A fejezet-kalauz (a mockup 5. változata) kimarad; később külön feladat lehet.
+4. **Üres állapot (DT464):** kijelölés nélkül az oldalblokk rövid útmutatót mutat (koppints versszámra a vers, szóra a szó részleteiért), alatta a fejezet forrását és a számlálókat. A fejezet-kalauz (a mockup 5. változata) kimarad; később külön feladat lehet.
 5. **Téma:** az alapértelmezett a világos; a sötét a ⚙ menüben választható marad (a Rendszer lehetőség a DT295 szerint).
 6. **Arculat:** a színtokenek és a betűk már azonosak a mockupéval (mérve 2026-10-22); új: a kánon-sáv műfajszínei (`--g-tor` … `--g-apok`, világos és sötét érték) az `konfig/arculat.json`-ba; a mockup komponensstílusai (egysoros fejléc nagy képernyőn, 32 px-es ikongombok, pirula-chipek, árnyékos felugró elemek, fülsor) a tokenrendszeren át.
-7. **Nézetek helyett rétegek (DT294):** a nézetváltó kikerül; az interlineáris sor az olvasóra kapcsolható réteg. A munkaasztalból nem marad réteg, verslista nincs (DT-F134g). Az állapot és a régi linkek: DT-F134f (a terv: `naplok/OLVASO_ALAPNEZET_M0.md` 4. szakasz).
-9. **Kereső (DT-F134k):** a meglévő űrlap a mockup stílusában, kliensoldali javaslattal a könyvnevekre és az igehely-mintára, új végpont nélkül.
+7. **Nézetek helyett rétegek (DT294):** a nézetváltó kikerül; az interlineáris sor az olvasóra kapcsolható réteg. A munkaasztalból nem marad réteg, verslista nincs (DT459). Az állapot és a régi linkek: DT458 (a terv: `naplok/OLVASO_ALAPNEZET_M0.md` 4. szakasz).
+9. **Kereső (DT463):** a meglévő űrlap a mockup stílusában, kliensoldali javaslattal a könyvnevekre és az igehely-mintára, új végpont nélkül.
 8. **Mérés:** a 6. szakasz kiinduló mérésének megismétlése az új állapotra (375 / 768 / 920 / 1280 px), valamint valódi telefonos próba a belső hálón (a portproxy- és tűzfal-lépéseket a felhasználó végzi).
 
 **Nincs benne**
 
 - Új adat, új blokk, a blokkok tartalmának módosítása.
-- A fejezet-kalauz és a „Másolás forrással” gomb (DT-F134l, DT-F134m).
+- A fejezet-kalauz és a „Másolás forrással” gomb (DT464, DT465).
 - A mockup többi változatának (1–4, 6–8) újdonságai, kivéve amit a 9. változat átvett.
-- Nyilvános telepítés. A statikus export az új elrendezést kapja ugyanabból a sablonból, a mai viselkedése teszttel őrizve (DT-F134h).
+- Nyilvános telepítés. A statikus export az új elrendezést kapja ugyanabból a sablonból, a mai viselkedése teszttel őrizve (DT460).
 - A Tervező mód (#98) működésének átírása; a Tervező kapcsoló a ⚙ menübe kerül, csak a belső kiadásban.
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
 - **M0 — előkészítés ⛔.** A #76 zárásának ellenőrzése a main-en (a `fugg` miatt); a 9. változat és az Alap mockup olvasása (Artifact `read`); a DT294 alkalmazási terve (mi marad a `nezet` sütiből, a `/nezet/<nev>` útvonalból, a DT148 elrendezéseiből). Megállás: terv a felhasználónak.
-- **M1 — vázszerkezet.** A részletek-lap komponense (szerveroldalon a meglévő `/r/szo` és `/r/vers` töredékekre építve), a két alak CSS-e és JS-e, a fejsor, az előzménylánc; az üres állapot útmutatója (DT-F134l).
+- **M1 — vázszerkezet.** A részletek-lap komponense (szerveroldalon a meglévő `/r/szo` és `/r/vers` töredékekre építve), a két alak CSS-e és JS-e, a fejsor, az előzménylánc; az üres állapot útmutatója (DT464).
 - **M2 — kis képernyő.** Fejléc nélküli olvasó, navigációs lap, tájoló pirula, húzás; a versműveletek a lap fejsorában.
 - **M3 — arculat.** Világos alaptéma; `--g-*` tokenek; komponensstílusok. A Tervező mód és az `arculat.json` őrei (#98) zöldek maradnak.
 - **M4 — mérés ⛔.** A 6. szakasz táblázatának megismétlése (szkripttel, böngészőben) és képernyőképek a három szélességen, vizuálisan a 9. változathoz mérve; valódi telefon. Megállás: mérési jelentés.
@@ -59,11 +59,11 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 ## 4. Elfogadási feltételek
 
-- **E1** 375 px-en az első vers a fejezetcím alatt kezdődik (mérve: ≤ 200 px a lap tetejétől); nincs tartós sáv; vízszintes túlfolyás 0 minden mért oldalon. *Módosítva (DT-F134n): a tartós sáv az egysoros ragadós navigációs sáv; a 200 px-es határ a sáv alatti első versre vonatkozik.*
+- **E1** 375 px-en az első vers a fejezetcím alatt kezdődik (mérve: ≤ 200 px a lap tetejétől); nincs tartós sáv; vízszintes túlfolyás 0 minden mért oldalon. *Módosítva (DT466): a tartós sáv az egysoros ragadós navigációs sáv; a 200 px-es határ a sáv alatti első versre vonatkozik.*
 - **E2** Versszámra és szóra koppintva a lap 375 és 768 px-en látható helyen nyílik (a mai állapotban 3 874 / 34 277 px-rel a szöveg alatt); a koppintott vers a betekintő lap fölött látszik.
-- **E3** 900 px-től az oldalblokk állandó; kijelölés nélkül a rövid útmutatót, a fejezet forrását és a számlálókat mutatja (DT-F134l).
+- **E3** 900 px-től az oldalblokk állandó; kijelölés nélkül a rövid útmutatót, a fejezet forrását és a számlálókat mutatja (DT464).
 - **E4** Szó- és versmód között bezárás nélkül lehet váltani, a ‹ az előzőre lép.
-- **E5** Alapértelmezett téma: világos; a Rendszer / Világos / Sötét választható, és a választás megmarad (a böngésző helyi tárolójában, DT-F134i).
+- **E5** Alapértelmezett téma: világos; a Rendszer / Világos / Sötét választható, és a választás megmarad (a böngésző helyi tárolójában, DT461).
 - **E6** A meglévő tesztek zöldek; a #98 Tervező mód és a hozzáférési szintek (DT129) működése változatlan.
 - **E7** A 6. szakasz minden „törik” sora javult, vagy a jelentés indokolja, miért nem.
 
@@ -74,16 +74,16 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 - **DT294** 🟢 — nézetek helyett rétegek: a nézetváltó kikerül; a DT129 (4) „három váltható nézet” és a DT148 ennyiben módosul (felhasználó, 2026-10-22).
 - **DT295** 🟢 — az alapértelmezett téma a világos, a sötét választható marad (felhasználó, 2026-10-22).
 - **DT296** 🟢 — a szerver új stílusa a mockup világos színsémája és betűkészlete; a `--g-*` műfajszínek az `arculat.json`-ba; a komponensstílusok a mockupból (felhasználó, 2026-10-22).
-- **DT-F134f** 🟢 — (b) egyetlen réteg (`il`), `pardes_reteg` süti csak kapcsoláskor, `?reteg=` felülírja; a régi `?nezet=` álnév, a `/nezet/<nev>` 302 (felhasználó, 2026-10-22, M0).
-- **DT-F134g** 🟢 — (c) nincs verslista; a munkaasztalból nem marad réteg (felhasználó, 2026-10-22, M0).
-- **DT-F134h** 🟢 — (a) a statikus export az új elrendezéssel, ugyanabból a sablonból (felhasználó, 2026-10-22, M0).
-- **DT-F134i** 🟢 — (a) a téma a böngésző helyi tárolójában; Rendszer / Világos / Sötét, alap Világos (felhasználó, 2026-10-22, M0).
-- **DT-F134j** 🟢 — (a) az `ir` bővül (a `lekerdezesek.py` nélkül) (felhasználó, 2026-10-22, M0).
-- **DT-F134k** 🟢 — (b) kliensoldali javaslat könyvnévre és igehelyre (felhasználó, 2026-10-22, M0).
-- **DT-F134l** 🟢 — (a) üres állapotban rövid útmutató; a fejezet-kalauz kimarad; a DT293 és az E3 ennyiben módosul (felhasználó, 2026-10-22, M0).
-- **DT-F134m** 🟢 — (c) nincs „Másolás forrással” gomb (felhasználó, 2026-10-22, M0).
-- **DT-F134p** 🟢 — (a) a részletek lapján a széles táblák saját, vízszintesen görgethető dobozban (felhasználó, 2026-11-01: „javaslatod szerint”; F134.19).
-- **DT-F134q** 🟢 — (a) a részletek lapján a magasságkorlát feloldva, a lap teljes képernyőre nyílhat, belső görgetődoboz nincs (felhasználó, 2026-11-01: „javaslatod szerint”; F134.19).
+- **DT458** 🟢 — (b) egyetlen réteg (`il`), `pardes_reteg` süti csak kapcsoláskor, `?reteg=` felülírja; a régi `?nezet=` álnév, a `/nezet/<nev>` 302 (felhasználó, 2026-10-22, M0).
+- **DT459** 🟢 — (c) nincs verslista; a munkaasztalból nem marad réteg (felhasználó, 2026-10-22, M0).
+- **DT460** 🟢 — (a) a statikus export az új elrendezéssel, ugyanabból a sablonból (felhasználó, 2026-10-22, M0).
+- **DT461** 🟢 — (a) a téma a böngésző helyi tárolójában; Rendszer / Világos / Sötét, alap Világos (felhasználó, 2026-10-22, M0).
+- **DT462** 🟢 — (a) az `ir` bővül (a `lekerdezesek.py` nélkül) (felhasználó, 2026-10-22, M0).
+- **DT463** 🟢 — (b) kliensoldali javaslat könyvnévre és igehelyre (felhasználó, 2026-10-22, M0).
+- **DT464** 🟢 — (a) üres állapotban rövid útmutató; a fejezet-kalauz kimarad; a DT293 és az E3 ennyiben módosul (felhasználó, 2026-10-22, M0).
+- **DT465** 🟢 — (c) nincs „Másolás forrással” gomb (felhasználó, 2026-10-22, M0).
+- **DT468** 🟢 — (a) a részletek lapján a széles táblák saját, vízszintesen görgethető dobozban (felhasználó, 2026-11-01: „javaslatod szerint”; F134.19).
+- **DT469** 🟢 — (a) a részletek lapján a magasságkorlát feloldva, a lap teljes képernyőre nyílhat, belső görgetődoboz nincs (felhasználó, 2026-11-01: „javaslatod szerint”; F134.19).
 
 A tételek teljes szövege a `DONTESEK.md`-ben.
 

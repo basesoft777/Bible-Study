@@ -70,4 +70,14 @@ Modell-ellenőrzés: kért `fable`, tényleges `claude-fable-5-1` — egyezik. B
 *Nem kérdés (ellenőrizve, rendben):* a 35 beépített `jeloltek`-sor = 33 `elofordulas` + 2 `motivumkozi` (`:633`, `:635`); a D-minta héber (623–629) és görög (596–615 K1_passziv) kizárása egységes; a jogi fellebbezés (606–611) és az esküformás tanúhívás (595) kizárásának nincs beépített párja; a tagadó forma (Jer 10:25, Zsolt 79:6, Ézs 64:6) következetes.
 
 (proveniencia: scope=adat/motivumok.tsv:4 + adat/jeloltek.tsv (id=ISTENTISZT-001, 133 sor) + adat/elofordulasok.tsv (id=ISTENTISZT-001, 33 sor) + adat/elutasitasi_okok.tsv + adat/motivum_kapcsolatok.tsv + motivumok/ISTENTISZT-001.md + naplok/HATAR_ISTENTISZT-001.md (Gépi rész) + konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (range: Róm 10:12–14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17, ApCsel 2:21, 7:59, 9:14, 9:21, 22:16, 2Kor 1:23; 2Móz 33:19, 34:5, Ézs 12:4, 41:25, 58:9, 65:24, Zsolt 50:15, 86:5, 91:15, 99:6, 105:1, Jer 29:12, 1Kir 18:24; split('\t')) | forras=modell:claude-fable-5-1 | ts=2026-11-01T11:16Z)
+
+**Felhasználói besorolás** *(nem a modell írta; 2026-11-01, DT-F151c)*
+
+- K1: az 1Pét 1:17 kerüljön ki.
+- K2: a név nélküli görög sorok kerüljenek ki (2Tim 2:22, Róm 10:12, Róm 10:14).
+- K3: marad így, a döntésem áll (Zsolt 99:6 kint marad).
+- K4: az elhatárolás a *besém* után álló JHVH (H3068): a 2Móz 33:19 és 34:5 teljesíti (`vekárati besém JHVH`, `vájikrá besém JHVH`), az Ézs 43:1 és 45:3 (*besimchá*, „a te neveden”) és a 44:5 (*besém Jaakóv*) nem.
+- K5: az 1Kir 18:25–26 kontrasztként marad; a lapon jelezni kell, hogy a *sém* után nem JHVH áll, hanem *Elohím* (18:25: *elohéchem*) illetve *ha-Báal* (18:26).
+
+*(proveniencia: scope=TAHOT_kivonat.tsv (2Móz 33:19, 34:5, 34:6; Ézs 43:1, 44:5, 45:3; 1Kir 18:24–26) | forras=manual: a felhasználó döntései a chatben | ts=2026-11-01)*
 <!-- MODELLES-VEGE -->

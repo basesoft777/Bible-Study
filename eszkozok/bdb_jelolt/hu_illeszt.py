@@ -99,6 +99,9 @@ KERDO_SZAM = re.compile(r'(?<=\? )(\d{1,2})(?= [^\W\d_])')
 #      számjelnek veszi. Csak ez az alak: a szerzői siglum után („Che^Hpt. 2 nyomorúságban”, „So^Kau. 2”, „Dr^Sm. b.”) és a záró
 #      zárójel után („RS^149). 5”) a jel valódi jelölő lehet (naplok/ISTENTISZT001_siglum_hatas.py).
 SIGLUM_ELOTT = re.compile(r'\^[ivx]+\.\s?$')
+#  (5) R2 (F144, DT-F144a): a vesszős kötetszámú siglum („CIS^iv, 1, 37 1. 2”, H0001) utáni számsor sem jelölő — a vessző- és
+#      számsor végéig (naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md, naplok/BDB_SZAKASZ_HU_JAVITAS_M0_hatas.py).
+SIGLUM_SOR = re.compile(r'\^[ivx]+,(?:\s?\d+[.,]?)+\s$')
 
 
 def torzs_kulcs(nev):
@@ -140,8 +143,14 @@ def magyar_jelolok(hu):
         ki.append((m.start(), m.group(1)))
     for m in KERDO_SZAM.finditer(hu):
         ki.append((m.start(), m.group(1)))
-    ki = [(p, j) for p, j in ki if j.startswith('T:') or not SIGLUM_ELOTT.search(hu[max(0, p - 12):p])]
+    ki = [(p, j) for p, j in ki if j.startswith('T:') or not (SIGLUM_ELOTT.search(hu[max(0, p - 12):p])
+                                                               or SIGLUM_SOR.search(hu[max(0, p - 40):p]))]
     return sorted(set(ki))
+
+
+def torzs_index(en_elotte, j):
+    """R4 (F144, DT-F144a): hány azonos törzsnév (`T:<kulcs>`) áll az angol forrásban a sor előtt."""
+    return sum(1 for m in TORZS_HU.finditer(en_elotte) if 'T:' + torzs_kulcs(m.group(1)) == j)
 
 
 def forditasok(ut=None):
@@ -175,19 +184,46 @@ def forditasok(ut=None):
 def strong_illeszt(sorok, hu):
     """Soronként (kategória, horgony, hu_kezdet) és a Strong-szintű szigorú / horgonyos kategória."""
     mj = magyar_jelolok(hu)
+    # F144, DT-F144a: a forrás szövege a sorok előtt (`jel` + `szoveg`, címkék nélkül) — az R4 / R3x törzsnév-indexéhez
+    en_elotte, acc = [], ''
+    for x in sorok:
+        en_elotte.append(acc)
+        acc += ' ' + x['jel'] + ' ' + re.sub(r'<[^>]+>', '', x['szoveg'])
+    jelek_l = [forras_jelolok(x['jel']) if x['jelolo'] in ('point', 'section', 'remarks') else [] for x in sorok]
+
+    def elofordulas(j, sor):
+        """A `j` törzsnév a magyarban annyiadik előfordulása (mj-index), ahányadik a forrásban a `sor` előtt; None, ha nincs."""
+        elof = [t for t in range(len(mj)) if mj[t][1] == j]
+        kk = torzs_index(en_elotte[sor], j)
+        return elof[kk] if kk < len(elof) else None
+
     kurzor = 0
     eredmeny = []
-    for x in sorok:
-        jelek = forras_jelolok(x['jel']) if x['jelolo'] in ('point', 'section', 'remarks') else []
+    for i, x in enumerate(sorok):
+        jelek = jelek_l[i]
         if not jelek:
             eredmeny.append(['jelolo_nelkul', '', None])
             continue
+        kovi = next((t for t in range(i + 1, len(sorok)) if jelek_l[t]), None)
+        kov = jelek_l[kovi][0] if kovi is not None else None
         poz, k = [], kurzor
         for j in jelek:
-            hol = next((i for i in range(k, len(mj)) if mj[i][1] == j), None)
+            hol = next((t for t in range(k, len(mj)) if mj[t][1] == j), None)
+            # R4: a törzsnév a forrás szerinti előfordulás-indexéhez kötődik, ha az a kurzoron vagy utána van
+            if j.startswith('T:') and hol is not None:
+                h4 = elofordulas(j, i)
+                if h4 is not None and h4 >= k:
+                    hol = h4
             if hol is None:
                 poz = None
                 break
+            # R3x: a sor első (nem törzsnév) jelölője nem kötődhet a következő sor törzsnév-jelölője mögé (annak a forrás
+            # szerinti előfordulása mögé); ilyenkor a sor elakad, és a horgony-lépés kezeli
+            if not poz and kov and kov.startswith('T:') and not j.startswith('T:'):
+                h3 = elofordulas(kov, kovi)
+                if h3 is not None and k <= h3 < hol:
+                    poz = None
+                    break
             poz.append(mj[hol][0])
             k = hol + 1
         if poz:
@@ -319,9 +355,13 @@ def reszleges_szoveg(regi, uj_sorok, csak, ts):
         if [test[i].split('\t')[1] for i in idx] != [x.split('\t')[1] for x in ujak] or idx != list(range(idx[0], idx[-1] + 1)):
             raise ValueError('%s: a sorkulcsok nem egyeznek a táblával' % st)
         test[idx[0]:idx[-1] + 1] = ujak
-    elso = s[0].split(RESZLEGES)[0]
+    # a korábbi részleges frissítések jelölése megmarad (F144: a H4397, H8034, H9004 a H0001 … előtt); csak az azonos
+    # Strong-halmazé cserélődik, így a jelölés ismételhető
+    darabok = s[0].split(RESZLEGES)
+    lista = ', '.join(sorted(csak))
+    elso = darabok[0] + ''.join(RESZLEGES + d for d in darabok[1:] if d.split(' (--strong')[0].strip() != lista)
     jel = ('%s %s (--strong, ts=%s; adat/forditasok.tsv@%s, kód@%s); a többi sor a --ts szerinti generálásé.'
-           % (RESZLEGES, ', '.join(sorted(csak)), ts, sha256_fajl(FORD)[:12], kod_hash()[:12]))
+           % (RESZLEGES, lista, ts, sha256_fajl(FORD)[:12], kod_hash()[:12]))
     return '\n'.join([elso + jel, s[1], s[2]] + test + [''])
 
 

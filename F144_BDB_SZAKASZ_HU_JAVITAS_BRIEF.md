@@ -5,12 +5,13 @@ kod: BDB_SZAKASZ_HU_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: lezarva
 ad: az adat/bdb_szakasz_hu.tsv-ben nincs olyan `illeszkedik` sor, amelynek magyar szövege csak a jelölő, kivéve a soronként igazolt szerkezeti eseteket; a hu_illeszt.py a szövegközi szám- és törzsnév-említést nem köti jelölőhöz; az újragenerált tábla kategória-eloszlása mérve, a B-kör (≈70 szócikk) szúrópróbával átnézve
-kovetkezo: "/kovetkezo (M0 ⛔: a 20 szócikk soronkénti átnézése és a javítási szabály)"
+kovetkezo: "nincs; nyitott (a #144-en kívül): a 23 Strong lexikonlapjának újragenerálása a #549 után, összehangolva; a teljes újragenerálás (N-F131f, a DT423 szerint az N-F131g után)"
+lezarva_osszegzes: "(11.01) A magyar BDB-szakaszillesztés javítva (DT456: R2+R4+R3x a hu_illeszt.py-ban, teszt_hu_illeszt.py); a bdb_szakasz_hu.tsv részlegesen frissítve a 23 teljes Strongra (52 tartalmilag változó sor, A′ 14 → 10, a 4 valódi hiba H0001, H2199, H5027, H7043 megszűnt, a 11 kivétel indokolt); a felhasználó az M3-at elfogadta („akkor mehet”); naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md"
 munka: folyamat
 olvas: [naplok/BDB_SZAKASZ_HU_JELOLO_JELENTES.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, F107_BDB_JELOLT_SZOVEG_BRIEF.md, adat/bdb_szakaszok.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/szakasz_bemenet.py]
-ir: [eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, adat/bdb_szakasz_hu.tsv, naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md]
+ir: [DONTESEK.md, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, adat/bdb_szakasz_hu.tsv, naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md, naplok/BDB_SZAKASZ_HU_JAVITAS_M0_hatas.py]
 fugg: []
 nem_fugg: [27, 38, 154, 155]
 ---
@@ -63,3 +64,4 @@ Ehhez jön a tágabb B-kör (≈70 szócikk, 79 sor: `illeszkedik`, jelölővel,
 ## 5. Döntésnapló
 
 - Előzmény (2026-10-25, chat, `manual`): a felhasználó jóváhagyta, hogy a jelentésből új feladat legyen, a már újrafordított szócikkek nélkül (a befogadáskor hat: H1980, H7200, H7725, H7971, H1129, H7218).
+- DT456 (2026-11-01, a felhasználó az orkesztrátor chatjében, egyenként: „mehet”): R2+R4+R3x; részleges frissítés a 23 `teljes` Strongra; a 11 sor indokolt kivétel, A′. M3 elfogadva: „akkor mehet” (`naplok/BDB_SZAKASZ_HU_JAVITAS_naplo.md` M3).

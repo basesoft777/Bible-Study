@@ -68,3 +68,7 @@ A felhasználó az orkesztrátor chatjében döntött: **(b), modelles rész Fab
 - **Kimaradt-e valódi probléma** (hamis negatív): az aranystandarddal nem mérhető (nincs ismert hiba-lista); a modell „nem kérdés” felsorolása (35 = 33+2, D-minta, jogi/eskü, tagadó forma) ellenőrizhető, de nem bizonyíték.
 
 **⛔ DT-F151b** (kiterjesztés a többi lezárt motívumra) a felhasználóé; nem indítottam. Más motívumon nem futott a modelles rész.
+
+## 7. K1–K5 besorolás (2026-11-01)
+
+A felhasználó a chatben kérdésenként döntött; a „mehet” a rögzítésre vonatkozott. Tartalom és idézetek a `DONTESEK.md` DT-F151c sorában és a `naplok/HATAR_ISTENTISZT-001.md` „Felhasználói besorolás” blokkjában. A beszélgetésből két szövegtény: (1) a *besém* után a K4 szerint JHVH (H3068) áll a 2Móz 33:19-ben és 34:5-ben, az Ézs 43:1, 44:5, 45:3-ban nem; (2) a 2Móz 34:5 *vájikrá* alanya a héberben kimondatlan, ezért az „Isten az alany” olvasat a K4-ben nem szöveg, hanem értelmezés, és nem indok. Adat- és prózaváltozás nem készült (jeloltek.tsv, negativ_kriterium, lap): azt a #152 vagy külön tétel végzi. A DT-F151b (kiterjesztés) ⛔ marad.
