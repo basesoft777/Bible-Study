@@ -1,0 +1,531 @@
+{
+ "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
+ "generalva": "2026-11-01T19:25Z",
+ "commit": "3a2dbd51",
+ "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
+ "motivumok": [
+  {
+   "id": "KIRALY-001",
+   "cim": "Melkizedek-rend",
+   "tema": "Krisztológia",
+   "pardes_szint": "Drash/Sod",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 1,
+   "elvetett_jelolt_db": 13,
+   "beepitett_jelolt_db": 9,
+   "stash": null
+  },
+  {
+   "id": "ISTENTISZT-001",
+   "cim": "Névbe vetett segítségülhívás",
+   "tema": "Pneumatológia/istentisztelet",
+   "pardes_szint": "Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 3,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 6,
+   "elvetett_jelolt_db": 92,
+   "beepitett_jelolt_db": 35,
+   "stash": null
+  },
+  {
+   "id": "TEREMT-001",
+   "cim": "Tehóm/Abüsszosz",
+   "tema": "Teremtéstan",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 2,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 2,
+   "beepitett_jelolt_db": 42,
+   "stash": null
+  },
+  {
+   "id": "ALVIL-001",
+   "cim": "Hádész/Seol",
+   "tema": "Eszkatológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 4,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 5,
+   "beepitett_jelolt_db": 72,
+   "stash": null
+  },
+  {
+   "id": "MENNY-001",
+   "cim": "Isten fiai/Nefilim",
+   "tema": "Angyalológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 2,
+   "elvetett_jelolt_db": 1,
+   "beepitett_jelolt_db": 9,
+   "stash": null
+  },
+  {
+   "id": "ANTROP-001",
+   "cim": "Pneuma/pszükhé",
+   "tema": "Antropológia",
+   "pardes_szint": "Pshat/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 3,
+   "elvetett_jelolt_db": 0,
+   "beepitett_jelolt_db": 8,
+   "stash": null
+  },
+  {
+   "id": "HODIT-001",
+   "cim": "Refáim/óriás-népek",
+   "tema": "Teremtéstan",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 14,
+   "elvetett_jelolt_db": 4,
+   "beepitett_jelolt_db": 33,
+   "stash": null
+  },
+  {
+   "id": "HAMART-001",
+   "cim": "Bűn gyűrűzése",
+   "tema": "Hamartológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "ellenőrzés",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "piros"
+    }
+   ],
+   "zold_db": 2,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 8,
+   "elvetett_jelolt_db": 163,
+   "beepitett_jelolt_db": 52,
+   "stash": null
+  },
+  {
+   "id": "TEREMT-002",
+   "cim": "Tohu va-vohu",
+   "tema": "Teremtéstan + Eszkatológia",
+   "pardes_szint": "Remez",
+   "allasfokozat": "feldolgozás",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "nev": "szabály-ellenőrzés (ellenoriz.py 1–21)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 2,
+     "nev": "CI-ellenőrzés (E2–E29)",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 3,
+     "nev": "egyforrású, nulla-diff újragenerálás",
+     "allapot": "piros"
+    },
+    {
+     "sorszam": 4,
+     "nev": "nincs nyitott jelölt",
+     "allapot": "zold"
+    },
+    {
+     "sorszam": 5,
+     "nev": "határ: 0 nyitott kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 6,
+     "nev": "olvasói blokkok, kiejtés, fordítás",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 7,
+     "nev": "nincs nyitott lektori kérdés",
+     "allapot": "nincs_mero"
+    },
+    {
+     "sorszam": 8,
+     "nev": "nincs nyitott DT / ⛔ feladat",
+     "allapot": "zold"
+    }
+   ],
+   "zold_db": 4,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 63,
+   "beepitett_jelolt_db": 3,
+   "stash": null
+  }
+ ],
+ "merok_osszesen": {
+  "motivum_db": 9,
+  "kesz_db": 0,
+  "kapu_zold": 19,
+  "kapu_ossz": 72,
+  "nyitott_jelolt": 34
+ },
+ "heti_tortenes": [
+  {
+   "datum": "2026-10-29",
+   "motivum": "ISTENTISZT-001",
+   "esemeny": "jelölt-döntés: beépítve",
+   "db": 1
+  },
+  {
+   "datum": "2026-10-29",
+   "motivum": "ISTENTISZT-001",
+   "esemeny": "jelölt-döntés: elutasítva",
+   "db": 1
+  },
+  {
+   "datum": "2026-10-28",
+   "motivum": "ALVIL-001",
+   "esemeny": "jelölt-döntés: elutasítva",
+   "db": 3
+  }
+ ],
+ "elvetett_jeloltek_osszesen": 343
+}
