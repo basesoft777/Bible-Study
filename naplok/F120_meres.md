@@ -111,11 +111,31 @@ Szabály: a BSB-vers a leképezett Károli-versre csak akkor kerül, ha a cél T
 | | BSB-vers |
 |---|---|
 | illeszkedik (> 0,5) | 21 424 |
-| **kimarad: bizonytalan (≤ 0,5)** | **239** |
-| nincs ilyen Károli-vers (eddig is jelentve) | 32 |
+| **kimarad: bizonytalan (≤ 0,5)** | **248** |
+| nincs ilyen Károli-vers (a `Karoli_1908.tsv`-ben; eddig is jelentve) | 23 |
 | nem ellenőrizhető | 0 |
 | ütközés az őr után | 0 |
 
-A kimaradó versek Károli-fejezetenként: 4Móz 13 (32), 4Móz 30 (11), Hós 2 (23), Hós 11 (1), Hós 12 (14), Hós 14 (9), Jób 17 (1), Jób 36 (1), Jób 37 (1), Jób 39 (27), Jób 40 (14), Jóel 2 (5: a BSB 3:1–5 → Károli 2:28–32 táblapár), Préd 2 (24), Préd 9 (16), Préd 10 (14), Préd 12 (12), Péld 12 (1), Zsolt 145 (1), Én 6 (1), Ézs 9 (19), Ézs 64 (11), 1Sám 20 (1). Az F117 hat ütközéséből a tartalommal nem egyező fél marad ki (Hós 2:1–3, Jób 17:1, 37:1, Péld 12:1 azonossága), a Jóel 2:28–32-ből a táblapár (BSB 3:1–5); a helyes sor mindenütt megmarad. Elszigetelt, a küszöbön álló esetek (Hós 11:11 0,45; Jób 36:33 0,50; Zsolt 145:13 0,50) is kimaradnak: az átmeneti úton a kihagyás a biztonságos irány, az (a) újragenerálás pótolja.
+A kimaradó versek Károli-fejezetenként: 4Móz 13 (33), 4Móz 30 (11), Hós 2 (23), Hós 11 (1), Hós 12 (14), Hós 14 (9), Jób 17 (1), Jób 36 (1), Jób 37 (1), Jób 39 (30), Jób 40 (14), Jóel 2 (5: a BSB 3:1–5 → Károli 2:28–32 táblapár), Préd 2 (25), Préd 9 (18), Préd 10 (14), Préd 12 (14), Péld 12 (1), Zsolt 145 (1), Én 6 (1), Ézs 9 (19), Ézs 64 (11), 1Sám 20 (1). Az F117 hat ütközéséből a tartalommal nem egyező fél marad ki (Hós 2:1–3, Jób 17:1, 37:1, Péld 12:1 azonossága), a Jóel 2:28–32-ből a táblapár (BSB 3:1–5); a helyes sor mindenütt megmarad. Elszigetelt, a küszöbön álló esetek (Hós 11:11 0,45; Jób 36:33 0,50; Zsolt 145:13 0,50) is kimaradnak: az átmeneti úton a kihagyás a biztonságos irány, az (a) újragenerálás pótolja.
 
-**Mellékes lelet, nem e tétel tárgya:** a 4Móz 13-ban 32 `Számozás`=`mt` BSB-vers azonossággal (a tábla `KJV` osztályú sora szerint) nem egyezik a Károli-kulcsú TAHOT azonos versével. A versmegfeleltető tábla és a TAHOT itt eltérhet; a (a) lépés újramérése tisztázza (N-F120a).
+**Mellékes lelet, nem e tétel tárgya:** a 4Móz 13-ban 33 `Számozás`=`mt` BSB-vers azonossággal (a tábla `KJV` osztályú sora szerint) nem egyezik a Károli-kulcsú TAHOT azonos versével. A versmegfeleltető tábla és a TAHOT itt eltérhet; a (a) lépés újramérése tisztázza (N-F120a).
+
+*Javítás az első futás után: a mérőszkript a Károli-vershalmazt először a versmegfeleltető táblából vette (239 / 32), az építő a `Karoli_1908.tsv`-ből (`VersIndex`). A táblában 9 Károli-vers nem szerepel (pl. 4Móz 13:1, Jób 39:1–3, Préd 9:1–2), ezeket az első mérés „nincs Károli-vers”-nek számolta. A szkript azóta a `Karoli_1908.tsv`-t olvassa, és bájtra az építő számait adja (248 / 23). Ugyanez a különbség az 1–5. szakasz „nincs ilyen Károli-vers” értékeiben (32 / 266) is benne van; az ottani következtetéseket nem érinti.*
+
+**Mellékes lelet 2:** a 9 Károli-vers (4Móz 13:1, Jób 39:1–3, Préd 9:1–2 és társai) a `Karoli_1908.tsv`-ben van, a `Karoli_versmegfeleltetes.tsv`-ben nincs sor rá. Nem e tétel tárgya; a (a) lépés mérése előtt ellenőrizendő (N-F120a).
+
+## 7. Építési próba a repón kívül (E6) és SQL-ellenőrzés (E2)
+
+`python eszkozok/sqlite_epit.py --mod teljes --kimenet <scratchpad>/proba/pardes.db` (Windows, a repón kívül; 0e844612 + a mérőszkript javítása): kilépési kód 0, 1 043,7 MB, 90 tábla, 135 s; `meta.epites_ts` = 2026-11-01T11:49:18Z. Az élő `~/pardes/pardes.db`-hez nem nyúltam.
+
+| SQL (a próba-db-n) | eredmény |
+|---|---|
+| `SELECT COUNT(*) FROM (SELECT igehely FROM bsb GROUP BY igehely HAVING COUNT(DISTINCT step_nyers) > 1)` | **0** (E2) |
+| `SELECT COUNT(*), COUNT(DISTINCT igehely) FROM bsb` | 275 042 sor, 21 424 vers |
+| `normalizalas_jelentes` `tabla='bsb'`, `ok LIKE 'bizonytalan:%'` / `'ütközés:%'` | 248 / 0 |
+| `… ok='nincs ilyen Károli-vers'` (SUM(darab), sor) | 271 |
+| Jóel 2:28 forrása | `Jol.2.28`, `azonos_feltetelezett` (a BSB 3:1 nem került ide) |
+| Jóel 3:1, Hós 2:1–3 | nincs BSB-sor (kihagyva, jelentve) |
+| Jób 17:1 / Jób 37:1 / Péld 12:1 | `Job.17.2` / `Job.37.2` / `Pro.12.2`, `mt_tabla` (az F117 párja; az azonosság-sor kihagyva) |
+
+*proveniencia: scope=próba-pardes.db (teljes mód) | forras=eszkozok/sqlite_epit.py @ 0e844612, konkordancia/ @ 9cf0e43a | eszkoz=scratchpad sql.py (a lekérdezések fent) | ts=2026-11-01T11:49Z*

@@ -56,7 +56,7 @@ def main():
     tahot = defaultdict(set)
     for r in sorok(os.path.join(K, 'TAHOT_kivonat.tsv')):
         tahot[r['Igehely']].update(halmaz_elem(r['Strong-szám'], gram))
-    karoli = {r['igehely_karoli'] for r in sorok(os.path.join(K, 'Karoli_versmegfeleltetes.tsv'))}
+    karoli = {r['Igehely'] for r in sorok(os.path.join(K, 'Karoli_1908.tsv'))}   # mint a sqlite_epit VersIndex-e
     mt_kk = {}
     for r in sorok(os.path.join(K, 'Karoli_versmegfeleltetes.tsv')):
         if r['igehely_mt']:
