@@ -1,0 +1,80 @@
+# proveniencia: scope=adat/forditasok.tsv (szotar=Thayer, mezo=forditas_hu, allapot!=elavult), adat/karoli_strong/parok_*.tsv (régi = Mt, Mk, Luk, Ján, ApCsel nélkül) | forras=eszkozok/thayer_jelolt/karoli_ujraellenoriz.py --meres (négybetűs tő egyezés) | ts=2026-11-01
+strong	szakasz	allapot	regi	teljes	uralkodo_regi	uralkodo_teljes	uj_alakok_top10	link_regi>teljes	osszegzes
+G1941	teljes	kezi	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt
+G1944	teljes	kezi	egyezik	egyezik	átko	átko		2>2	valtozatlan
+G5590	teljes	kezi	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G0813	teljes	opus	egyezik	egyezik	rend	rend		1>1	valtozatlan
+G0994	teljes	opus	egyezik	egyezik	kiál	kiál	kiáltó,kiáltónak,kiálta,kiáltva,kiáltozva,kiáltanak	1>10	valtozatlan
+G0282	teljes	kezi	egyezik	egyezik	anya	anya		2>2	valtozatlan
+G4151	teljes	kezi	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G0086	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	poko	poko	pokolig,pokolban	4>8	valtozatlan
+G0086	sz2	sonnet	nem_talal	nem_talal	poko	poko	pokolig,pokolban	4>8	nem_talal_teljes
+G0086	sz3	sonnet	nem_talal	nem_talal	poko	poko	pokolig,pokolban	4>8	nem_talal_teljes
+G0086	sz4	sonnet	nem_talal	nem_talal	poko	poko	pokolig,pokolban	4>8	nem_talal_teljes
+G0540	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	apa	apa		2>2	valtozatlan
+G0540	sz2	sonnet	egyezik	egyezik	apa	apa		2>2	valtozatlan
+G1941	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt+nincs_a_forditasban
+G1941	sz2	sonnet	nem_talal	nem_talal	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	nem_talal_teljes+uralkodo_valt
+G1941	sz3	sonnet	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt+nincs_a_forditasban
+G1941	sz4	sonnet	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt+nincs_a_forditasban
+G1941	sz5	sonnet	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt
+G1941	sz6	sonnet	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt
+G1941	sz7	sonnet	egyezik	egyezik	hívj	segí	neveztetik,mellékneve,appellált,neveztetett,el	14>41	uralkodo_valt
+G2671	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	átok	átok		6>6	valtozatlan
+G2671	sz2	sonnet	egyezik	egyezik	átok	átok		6>6	valtozatlan
+G2671	sz3	sonnet	nem_talal	nem_talal	átok	átok		6>6	nem_talal_teljes
+G5356	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	roml	roml		9>9	valtozatlan
+G5356	sz2	sonnet	nem_talal	nem_talal	roml	roml		9>9	nem_talal_teljes
+G5356	sz3	sonnet	egyezik	egyezik	roml	roml		9>9	valtozatlan
+G0012	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	mély	mély		8>9	valtozatlan
+G0012	sz2	sonnet	egyezik	egyezik	mély	mély		8>9	valtozatlan
+G0282	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	anya	anya		2>2	valtozatlan
+G0282	sz2	sonnet	egyezik	egyezik	anya	anya		2>2	valtozatlan
+G0282	sz3	sonnet	egyezik	egyezik	anya	anya		2>2	valtozatlan
+G0282	sz4	sonnet	nem_talal	nem_talal	anya	anya		2>2	nem_talal_teljes
+G0282	sz5	sonnet	nem_talal	nem_talal	anya	anya		2>2	nem_talal_teljes
+G0282	sz6	sonnet	egyezik	egyezik	anya	anya		2>2	valtozatlan
+G0282	sz7	sonnet	nem_talal	nem_talal	anya	anya		2>2	nem_talal_teljes
+G5010	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	rend	rend	sorában	10>11	valtozatlan
+G5010	sz2	sonnet	nem_talal	nem_talal	rend	rend	sorában	10>11	nem_talal_teljes
+G5010	sz3	sonnet	egyezik	egyezik	rend	rend	sorában	10>11	valtozatlan
+G5010	sz4	sonnet	egyezik	egyezik	rend	rend	sorában	10>11	valtozatlan
+G5010	sz5	sonnet	egyezik	egyezik	rend	rend	sorában	10>11	valtozatlan
+G5010	sz6	sonnet	nem_talal	nem_talal	rend	rend	sorában	10>11	nem_talal_teljes
+G1311	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	megb	megb	nem,emészti	4>6	valtozatlan
+G1311	sz2	sonnet	nem_talal	nem_talal	megb	megb	nem,emészti	4>6	nem_talal_teljes
+G1311	sz3	sonnet	egyezik	egyezik	megb	megb	nem,emészti	4>6	valtozatlan
+G1311	sz4	sonnet	egyezik	egyezik	megb	megb	nem,emészti	4>6	valtozatlan
+G1311	sz5	sonnet	nem_talal	nem_talal	megb	megb	nem,emészti	4>6	nem_talal_teljes
+G1311	sz6	sonnet	egyezik	egyezik	megb	megb	nem,emészti	4>6	valtozatlan
+G1944	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	átko	átko		2>2	valtozatlan
+G1944	sz2	sonnet	egyezik	egyezik	átko	átko		2>2	valtozatlan
+G5351	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	megr	megr		11>11	valtozatlan
+G5351	sz2	sonnet	egyezik	egyezik	megr	megr		11>11	valtozatlan
+G5590	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz2	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz3	sonnet	nem_talal	nem_talal	lelk	lelk	lelke,életemet	39>106	nem_talal_teljes
+G5590	sz4	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz5	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz6	sonnet	nem_talal	nem_talal	lelk	lelk	lelke,életemet	39>106	nem_talal_teljes
+G5590	sz7	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz8	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz9	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G5590	sz10	sonnet	egyezik	egyezik	lelk	lelk	lelke,életemet	39>106	valtozatlan
+G4151	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	léle	léle		218>392	valtozatlan
+G4151	sz2	sonnet	nem_talal	nem_talal	léle	léle		218>392	nem_talal_teljes
+G4151	sz3	sonnet	nem_talal	nem_talal	léle	léle		218>392	nem_talal_teljes
+G4151	sz4	sonnet	nem_talal	egyezik	léle	léle		218>392	megerosites
+G4151	sz5	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz6	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz7	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz8	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz9	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz10	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz11	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz12	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz13	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz14	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz15	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz16	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
+G4151	sz17	sonnet	egyezik	egyezik	léle	léle		218>392	valtozatlan
