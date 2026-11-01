@@ -183,6 +183,9 @@ def meres(ts=None):
             osszegzes += '+holtverseny'
         elif ur_r != ur_t:
             osszegzes += '+uralkodo_valt' + ('' if ur_t in t else '+nincs_a_forditasban')
+        # ha csak az egyik oldal holtverseny, de a teljes oldalon egyértelmű a tő, a hiányát akkor is jelezzük (váltást nem állítunk)
+        if holt and ur_r != ur_t and uralkodo(ut)[0] and uralkodo(ut)[0] not in t:
+            osszegzes += '+nincs_a_forditasban'
         sorok.append([s, d['jelentes_szam'], d['allapot'], er, et, hatokor, ur_r, ur_t,
                       ','.join(uj), '%d>%d' % (sum(regi.values()), sum(teljes.values())), osszegzes])
     prov = ('# proveniencia: scope=adat/forditasok.tsv (szotar=Thayer, mezo=forditas_hu, allapot!=elavult), '

@@ -54,7 +54,7 @@ G5351	sz2	sonnet	egyezik	egyezik	szakasz	megr	megr		11>11	valtozatlan
 G5590	sz1	sonnet	nincs_ellenorzendo	nincs_ellenorzendo	szakasz			lelke,életemet	39>106	valtozatlan
 G5590	sz2	sonnet	egyezik	egyezik	szakasz			lelke,életemet	39>106	valtozatlan
 G5590	sz3	sonnet	nem_talal	nem_talal	szakasz			lelke,életemet	39>106	nem_talal_teljes
-G5590	sz4	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szív,élet)	lelk	lelke,életemet	39>106	valtozatlan+holtverseny
+G5590	sz4	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szív,élet)	lelk	lelke,életemet	39>106	valtozatlan+holtverseny+nincs_a_forditasban
 G5590	sz5	sonnet	egyezik	egyezik	szakasz	élet	élet	lelke,életemet	39>106	valtozatlan
 G5590	sz6	sonnet	nem_talal	nem_talal	szakasz	lelk	lelk	lelke,életemet	39>106	nem_talal_teljes
 G5590	sz7	sonnet	egyezik	egyezik	szakasz	léle	léle	lelke,életemet	39>106	valtozatlan
@@ -68,7 +68,7 @@ G4151	sz4	sonnet	nem_talal	egyezik	szakasz	szel	holtverseny(léle,szel,szél)		2
 G4151	sz5	sonnet	egyezik	egyezik	szakasz	holtverseny(lehe,lelk)	holtverseny(lehe,lelk)		218>392	valtozatlan+holtverseny
 G4151	sz6	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan
 G4151	sz7	sonnet	egyezik	egyezik	szakasz				218>392	valtozatlan
-G4151	sz8	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szel)	léle		218>392	valtozatlan+holtverseny
+G4151	sz8	sonnet	egyezik	egyezik	szakasz	holtverseny(lelk,szel)	léle		218>392	valtozatlan+holtverseny+nincs_a_forditasban
 G4151	sz9	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
 G4151	sz10	sonnet	egyezik	egyezik	szakasz	lelk	lelk		218>392	valtozatlan
 G4151	sz11	sonnet	egyezik	egyezik	szakasz	léle	léle		218>392	valtozatlan

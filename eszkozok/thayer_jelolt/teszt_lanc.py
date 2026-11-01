@@ -487,6 +487,14 @@ class TesztKaroliUjraellenoriz(unittest.TestCase):
         al2 = collections.Counter(dict(reversed(list(al.items()))))                # a beszúrási sorrend nem számít
         self.assertEqual(KU.uralkodo(al2), KU.uralkodo(al))
 
+    def test_egyoldali_holtverseny_nincs_a_forditasban_jelzes(self):
+        import collections
+        import karoli_ujraellenoriz as KU
+        # a teljes oldalon egyértelmű tő (lelk), a régin holtverseny: a hiányt jelezni kell, váltást nem állítunk
+        regi = collections.Counter({'szívét': 2, 'lelkét': 2})
+        teljes = collections.Counter({'lelkét': 5, 'szívét': 2})
+        self.assertTrue(KU.uralkodo(regi)[1] and KU.uralkodo(teljes)[0] == 'lelk')
+
     def test_szamol_szakaszonkent(self):
         import karoli_ujraellenoriz as KU
         linkek = [('Mt 10:3', 'hívtak'), ('Mk 1:1', 'hívtak'), ('1Kor 1:2', 'segítségül')]
