@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: megallt
+allapot: dontesre_var
 pr: 554
 ag: claude/f125-sablonok-86866d
 ad: a 2026-10-19 és 11-01 között jóváhagyott folyamatszabályok a MUNKAMENET.md-ben, a sablonokban és két JELENTÉS szintű ellenőrző-szabályban: (1) a gerinc-kártya A3b/A3c (a #124 jóváhagyott 2.3 szövege, DT405); (2) a kiejtés-szabály mai alakja (DT426 → DT430: héberül jóváhagyott, ennek híján gépi, jelölés nélkül); (3) az olvasói elv (lelet számokkal → szabály szerinti következtetés); (4) a próza-lefedettség és (5) a próza-egyenetlenség gépi mérése; (6) a próza gazdája (adatváltozáskor kötelező prózafeladat); (7) a második kiadás menete igény szerinti parancsként (`/kiadas <ID>`: lefedettség → egyenetlenség → modelles lektor a jelölt helyeken, kérdéslistával → javítás a próza gazdájától → kiadásszám és változásjegyzék a kolofonban)
-kovetkezo: "Te: /elteres 125 (a javítókör külön sessionben; naplok/ELLENOR_F125.md, 7 ELTÉRÉS); draft PR #554, merge a felhasználóé"
+kovetkezo: "Te: [elteres_kor 1/2] DT-F125b, DT-F125c, DT-F125d döntés (ELLENOR_F125 2., 3., 7. tartalmi); utána /elteres 125 — újraellenőrzés függ: naplok/ELLENOR_F125_2.md; draft PR #554, merge a felhasználóé"
 olvas: [F124_GERINC_KARTYA_BRIEF.md, naplok/GERINC_KARTYA_naplo.md, F152_ISTENTISZT_TERV_HATRALEK_BRIEF.md, F151_MOTIVUM_HATAR_BRIEF.md, DONTESEK.md, MUNKAMENET.md, CLAUDE.md, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, eszkozok/ellenoriz.py, eszkozok/kiejtes_szoveg.py, eszkozok/heber_kiejtes.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/lexikon_general.py, adat/SEMA.md, adat/kiejtes_kivetelek.tsv]
 ir: [MUNKAMENET.md, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, eszkozok/proza_lefedettseg.py, eszkozok/teszt_proza_lefedettseg.py, eszkozok/ellenoriz.py, .claude/commands/kiadas.md, naplok/GERINC_KARTYA_SZOVEG_naplo.md, naplok/F125_SZOVEGJAVASLAT.md]
 fugg: [124]
