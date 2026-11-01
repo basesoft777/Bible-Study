@@ -74,3 +74,70 @@ A kimenet a `generalt/muhely/` (három JSON, GENERÁLT fejléccel); a Dashboard-
 ## Dashboard
 
 A Dashboard-artifact privát; hivatkozása a PR leírásában és a jelentésben áll. A belső fül **hibaszövegeket** tartalmaz: a hivatkozást megosztani csak a belső fül nélküli változat publikálása után szabad.
+
+## Olvasói megfogalmazás a nyilvános rétegben (⛔ DT-F156f — jóváhagyásra vár)
+
+*Az orkesztrátor kérése nyomán (a felhasználó: a Feed üzenetei az olvasónak értelmezhetetlenek). Ez a tábla **javaslat**: a generátor és a Dashboard addig nem változik. A nyilvános rétegben nem szerepel belső szó (gerinc, eszköz- és szabálynév, DT-szám, `nincs_mero`); a belső réteg megtartja a technikai nevet az olvasói szöveg mellett. Az `N` a mérőből jövő szám.*
+
+### A nyolc kapu
+
+| # | belső név | olvasói név | zöld | piros | nincs mérő |
+|---|---|---|---|---|---|
+| 1 | `ellenoriz.py` 1–21 | Az adatok rendben vannak | Az adattáblák egymásnak megfelelnek, ellentmondás nincs. | Az adatokban ellentmondás van, javítás alatt. | Az adatellenőrzés még nem futott. |
+| 2 | CI E2–E29 | A szövegek ellenőrzése | A lap szövegei hibátlanul átmentek az ellenőrzésen. | Az ellenőrzés N hibát talált a szövegekben. | Az ellenőrzés még nem futott. |
+| 3 | egyforrású, nulla-diff | Egy szerkesztett forrásból épül | A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz. | A lap még átállításra vár: N sorban eltér az újraépített változattól. | A lap még nincs egy forrásba rendezve. |
+| 4 | `dontes=nyitva` jelölt | Eldöntendő igehelyek | Minden vizsgált igehelyről döntöttünk. | N igehely vizsgálata folyamatban van. | – |
+| 5 | `motivum_hatar` | A motívum határa | A motívum határáról szóló kérdések megválaszoltak. | N kérdés van nyitva arról, mi tartozik a motívumhoz. | A határ vizsgálata még nem készült el. |
+| 6 | olvasói blokk, kiejtés, fordítás | Olvasható lap | A lap minden része magyarázattal, kiejtéssel és fordítással áll. | A lapon N kiejtés hiányzik, M rész fordításra vár. | – |
+| 7 | lektori kérdések | Lektori átolvasás | A lektor minden kérdése lezárult. | N lektori kérdés vár válaszra. | A lektori átolvasás még nem indult el. |
+| 8 | nyitott DT / ⛔ feladat | Függő munka | Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka. | N kapcsolódó munka vagy kérdés vár megoldásra. | – |
+
+### Az állapotok (a kapu jelzése)
+
+| belső | olvasói szöveg |
+|---|---|
+| `zold` | rendben |
+| `piros` | munka van hátra |
+| `nincs_mero` | még nem vizsgáltuk |
+| `hiba` | az ellenőrzés nem futott le, újra próbáljuk |
+
+### Az állásfokozatok
+
+| belső | olvasói szöveg |
+|---|---|
+| jelölt | Felmerült: igehelyeket gyűjtünk hozzá |
+| feldolgozás | Feldolgozás alatt |
+| ellenőrzés | Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül |
+| lezárt (stash) | Kész, megjelenésre vár |
+| kötetben | Megjelent a kötetben |
+| `kotet: null` („nincs kötet-adat”) | Kötetbe még nincs beosztva |
+
+### A heti történés
+
+| belső esemény | olvasói szöveg |
+|---|---|
+| `jelölt-döntés: beépítve` | N igehely bekerült a motívumba |
+| `jelölt-döntés: elutasítva` | N igehelyet kizártunk, mert nem illik a motívum határába |
+| `állapot: publikálható (v3)` | A motívum lapja új változatot kapott (3. változat) |
+
+### A motívumonkénti mondat
+
+Minta: `N_előfordulás igehely feldolgozva, M vizsgálat alatt, K kizárva; a nyolc ellenőrzési lépésből Z teljesül.` Ha M = 0: „…, nincs vizsgálat alatt álló igehely, …”; ha K = 0, a „kizárva” tag elmarad. Az előfordulás-szám az `elofordulasok.tsv` sorai (ÓSZ+ÚSZ), M a nyitott jelöltek, K az elutasítottak.
+
+| motívum | mondat a mai adatból |
+|---|---|
+| KIRALY-001 | 9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 1 teljesül. |
+| ISTENTISZT-001 | 33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül. |
+| TEREMT-001 | 42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 2 teljesül. |
+| ALVIL-001 | 72 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 5 kizárva; a nyolc ellenőrzési lépésből 4 teljesül. |
+| MENNY-001 | 9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 1 teljesül. |
+| ANTROP-001 | 8 igehely feldolgozva, 3 vizsgálat alatt; a nyolc ellenőrzési lépésből 1 teljesül. |
+| HODIT-001 | 33 igehely feldolgozva, 14 vizsgálat alatt, 4 kizárva; a nyolc ellenőrzési lépésből 1 teljesül. |
+| HAMART-001 | 52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 2 teljesül. |
+| TEREMT-002 | 3 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 63 kizárva; a nyolc ellenőrzési lépésből 4 teljesül. |
+
+*Megjegyzés a számokhoz: a „feldolgozva” szám itt a beépített jelöltek száma (az `elofordulasok.tsv` sorainál a motívumközi sorok miatt kettővel kevesebb lehet, pl. ISTENTISZT-001: 35 beépített, 33 előfordulás-sor); a jóváhagyáskor kell eldönteni, melyik szám kerüljön az olvasói mondatba. A táblában a beépített jelöltek száma áll.*
+
+### Kérdés a felhasználónak (DT-F156f)
+
+Jóváhagyod-e a fenti szövegeket (esetleg módosítással), és az „igehely feldolgozva” szám a beépített jelöltek száma legyen, vagy az előfordulás-sorok száma? Jóváhagyás után kerül be a szöveg a generátorba (`feed_nyilvanos.json` új mezői), és csak ezután frissül a Dashboard.
