@@ -494,6 +494,12 @@ class TesztKaroliUjraellenoriz(unittest.TestCase):
         regi = collections.Counter({'szívét': 2, 'lelkét': 2})
         teljes = collections.Counter({'lelkét': 5, 'szívét': 2})
         self.assertTrue(KU.uralkodo(regi)[1] and KU.uralkodo(teljes)[0] == 'lelk')
+        # a meres() ténylegesen jelzi (ELLENOR_F153_3 1.): G5590 sz4 és G4151 sz8 fordításában nincs meg az új tő, G1941 sz3-éban megvan
+        _prov, _fej, sorok = KU.meres()
+        osszeg = {(r[0], r[1]): r[-1] for r in sorok}
+        self.assertIn('+nincs_a_forditasban', osszeg[('G5590', 'sz4')])
+        self.assertIn('+nincs_a_forditasban', osszeg[('G4151', 'sz8')])
+        self.assertNotIn('+nincs_a_forditasban', osszeg[('G1941', 'sz3')])
 
     def test_szamol_szakaszonkent(self):
         import karoli_ujraellenoriz as KU
