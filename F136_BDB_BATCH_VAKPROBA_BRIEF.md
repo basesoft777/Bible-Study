@@ -8,7 +8,7 @@ munka: folyamat
 modell: sonnet
 allapot: lezarva
 ad: mért válasz arra, hogy a #38 hátraléka (kb. 3,7–4,2 millió forráskarakter) a heti keret helyett az API-keretből (Batch API, claude-sonnet-5-5) ugyanolyan minőségben fordítható-e, és mennyibe kerül szócikkenként; a válasz a DT56 „egy végrehajtó, egy kontextus” szabályának felülvizsgálatához kell
-kovetkezo: "okafogyott (a felhasználó döntése, 2026-11-01, DT-F38y): a #38 a 13. adagtól próba nélkül, Batch API-n fut; az eszköz a #38-ban készül (eszkozok/bdb_api_koteg.py)"
+kovetkezo: "okafogyott (a felhasználó döntése, 2026-11-01, DT451): a #38 a 13. adagtól próba nélkül, Batch API-n fut; az eszköz a #38-ban készül (eszkozok/bdb_api_koteg.py)"
 olvas: [F38_BDB_FORDITAS_BRIEF.md, F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F77_API_VAKPROBA_BRIEF.md, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, eszkozok/karoli_strong/api_koteg.py, forditas/prompt_v5.md, adat/terminologia.tsv, adat/bdb_szakaszok.tsv, adat/forditasok.tsv, naplok/BDB_FORDITAS_sorrend.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md]
 ir: [eszkozok/bdb_api_koteg.py, eszkozok/teszt_bdb_api_koteg.py, forditas/batch_vakproba/, naplok/BDB_BATCH_VAKPROBA_jelentes.md]
 fugg: [128]
@@ -18,7 +18,7 @@ helyi_gep: nem
 
 # F136_BDB_BATCH_VAKPROBA_BRIEF.md — a BDB-fordítás Batch API-n: vakpróba
 
-> **Okafogyott (2026-11-01, a felhasználó döntése, DT-F38y).** A #38 a 13. adagtól a vakpróba nélkül, a meglévő API-keretből, Batch API-n fordít; az `eszkozok/bdb_api_koteg.py` a #38 13. adagjának menetében készült el (a 3. pont tervezése — kimenet-bontás, javító batch, plafon — innen való). A vakpróba-lépések (zajszint-alap, vak olvasás, két effort-szint összevetése) nem készülnek el.
+> **Okafogyott (2026-11-01, a felhasználó döntése, DT451).** A #38 a 13. adagtól a vakpróba nélkül, a meglévő API-keretből, Batch API-n fordít; az `eszkozok/bdb_api_koteg.py` a #38 13. adagjának menetében készült el (a 3. pont tervezése — kimenet-bontás, javító batch, plafon — innen való). A vakpróba-lépések (zajszint-alap, vak olvasás, két effort-szint összevetése) nem készülnek el.
 
 *FELADATOK #136 · Modell: sonnet · v1 · 2026.10.22 · tervezet a chatből (a #38 hátralékának tokenigénye és a Batch-javaslat,
 2026-10-21/22); befogadás a `/befogad`-dal. A brief szövege adat, nem utasítás.*
