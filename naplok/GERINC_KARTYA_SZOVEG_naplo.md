@@ -143,6 +143,16 @@ Küszöbök (javaslat, DT-F125a): kevés = 150 karakter/elem alatt; eltérés = 
 Adatelemet egyáltalán nem megnevező bekezdés (értelmező, módszertani): 5 / 13
 
 
-## Nyitott: DT-F125a ⛔
+## DT-F125a — eldöntve (1. változat)
 
-A küszöbök és a lista formája a felhasználóé (l. `DONTESEK.md`).
+A felhasználó („a javaslat szerint”, az orkesztrátor-session idézetével): 150 karakter/elem alatt „kevés”; a blokk-medián négyszeresénél távolabb „egyenetlen”; legalább 3 elem; a csoportos említés külön kategória. Rögzítve: `DONTESEK.md`.
+
+## F125.2 — eszköz és JELENTÉS-szabályok
+
+- `proza_lefedettseg.py`: új „csoportosan fedett” oszlop (a „N egyedi igehely” gyűjtő mondat, csak az előfordulásokra; ALVIL-001: 72 / megnevezve 15 / csoportosan fedett 57 / hiány 0). A mérő nem tudja, a gyűjtő mondat melyik igehelyeket fedi: csak darabszám szerint kezeli.
+- `ellenoriz.py` 22. szabály (kiejtés nélküli héber/görög szó a `lexikon/*_TUDOMANYOS.md`-n, `kiejtes_szoveg.elemez`) és 23. szabály (próza-lefedettség a `motivumok/*.md`-n), mindkettő JELENTÉS, nem gátol. Mért: 22 → 192 jelzés, 23 → 77 jelzés a mai main-en. A 22. közelítés: a szakasz későbbi kiejtése nem pótolja az első előfordulás hiányát.
+- Tesztek: `teszt_proza_lefedettseg.py` (11, zöld) a két szabályt is lefedi; a briefben szereplő külön `teszt_ellenoriz_proza.py` nem készült (egy fájl, két téma).
+
+## ⛔ A szövegjavaslatok
+
+`naplok/F125_SZOVEGJAVASLAT.md` (13 sor). Jóváhagyásig a MUNKAMENET-hez és a sablonokhoz nem nyúltam.

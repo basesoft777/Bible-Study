@@ -18,21 +18,22 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 GYOKER = Path(__file__).resolve().parent.parent
+CSOPORTOS = re.compile(r'\d+\s+(?:egyedi\s+)?igehely')  # „63 egyedi igehelyen”: gyűjtő mondat
 KEVES_PROZA = 150      # karakter/elem alatt „kevés” (M0 javaslat, DT-F125a)
 ELTERES_ARANY = 4.0    # két blokk elemre jutó prózája ennyiszeres eltérés fölött jelölt
 MIN_ELEM = 3           # ennél kevesebb elemű blokkot nem hasonlítunk
 
 
-def tsv(nev):
-    sorok = (GYOKER / 'adat' / nev).read_text(encoding='utf-8').split('\n')
+def tsv(nev, gyoker=GYOKER):
+    sorok = (Path(gyoker) / 'adat' / nev).read_text(encoding='utf-8').split('\n')
     sorok = [s for s in sorok if s.strip() and not s.startswith('#')]
     fej = sorok[0].split('\t')
     return [dict(zip(fej, s.split('\t') + [''] * len(fej))) for s in sorok[1:]]
 
 
-def bekezdesek(id_):
+def bekezdesek(id_, gyoker=GYOKER):
     """[(blokk, szöveg)] — a kézi próza bekezdései; táblasor, jelölő és napló kihagyva."""
-    szoveg = (GYOKER / 'motivumok' / f'{id_}.md').read_text(encoding='utf-8')
+    szoveg = (Path(gyoker) / 'motivumok' / f'{id_}.md').read_text(encoding='utf-8')
     blokk, ki = '(fej)', []
     for par in re.split(r'\n\s*\n', szoveg):
         p = par.strip()
@@ -88,12 +89,12 @@ def megnevezett(ih, par):
     return False
 
 
-def mer(id_):
-    par = bekezdesek(id_)
-    el = [r for r in tsv('elofordulasok.tsv') if r['id'] == id_]
-    kap = [r for r in tsv('kapcsolatok.tsv') if r['id'] == id_]
-    mk = [r for r in tsv('motivum_kapcsolatok.tsv') if id_ in (r['id_a'], r['id_b'])]
-    nyit = [r for r in tsv('jeloltek.tsv') if r['id'] == id_ and r['dontes'] == 'nyitva']
+def mer(id_, gyoker=GYOKER):
+    par = bekezdesek(id_, gyoker)
+    el = [r for r in tsv('elofordulasok.tsv', gyoker) if r['id'] == id_]
+    kap = [r for r in tsv('kapcsolatok.tsv', gyoker) if r['id'] == id_]
+    mk = [r for r in tsv('motivum_kapcsolatok.tsv', gyoker) if id_ in (r['id_a'], r['id_b'])]
+    nyit = [r for r in tsv('jeloltek.tsv', gyoker) if r['id'] == id_ and r['dontes'] == 'nyitva']
 
     # elemenként: a megnevezésüket tartalmazó bekezdések
     def lefed(kell):
@@ -115,7 +116,23 @@ def mer(id_):
         ered['mk'].append((r, t))
     for r in nyit:
         ered['nyit'].append((r, lefed([r['igehely']])))
-    return par, ered
+    # DT-F125a: a gyűjtő mondat (szám + „igehely”) külön kategória, nem hamis hiány — csak az
+    # előfordulásokra; melyik igehelyet fedi, a mérő nem tudja, ezért csak szám szerint kezeli
+    csoportos = any(CSOPORTOS.search(p) for _, p in par)
+    return par, ered, csoportos
+
+
+def osszesit(id_, gyoker=GYOKER):
+    """{rovat: (adat, megnevezve, csoportosan_fedett, hiany)} — a JELENTÉS-szabály bemenete."""
+    _, ered, csoportos = mer(id_, gyoker)
+    ki = {}
+    for k, lista in ered.items():
+        n = len(lista)
+        meg = sum(1 for _, t in lista if t)
+        nincs = n - meg
+        csop = nincs if (k == 'el' and csoportos) else 0
+        ki[k] = (n, meg, csop, nincs - csop)
+    return ki
 
 
 def sorcim(kat, r):
@@ -129,20 +146,22 @@ def sorcim(kat, r):
 
 
 def jelentes(id_):
-    par, ered = mer(id_)
+    par, ered, csoportos = mer(id_)
     nev = {'el': 'előfordulás', 'kap': 'kapcsolat', 'mk': 'motívumközi kapcsolat',
            'nyit': 'nyitott jelölt'}
     ki = [f'## {id_}', '',
           f'Próza: {len(par)} bekezdés, {sum(len(p) for _, p in par)} karakter '
           f'(táblasor, jelölő és napló nélkül).', '',
           '### Lefedettség (a próza nem nevezi meg)', '',
-          '| rovat | adat | megnevezve | nem |', '|---|---|---|---|']
+          '| rovat | adat | megnevezve | csoportosan fedett | nem |', '|---|---|---|---|---|']
     hianyok = []
     for k in ('el', 'kap', 'mk', 'nyit'):
         h = [r for r, t in ered[k] if not t]
-        ki.append(f'| {nev[k]} | {len(ered[k])} | {len(ered[k]) - len(h)} | {len(h)} |')
-        hianyok += [(k, r) for r in h]
-    ki += ['', 'Név nélküli elemek:', '']
+        csop = len(h) if (k == 'el' and csoportos) else 0
+        ki.append(f'| {nev[k]} | {len(ered[k])} | {len(ered[k]) - len(h)} | {csop} | {len(h) - csop} |')
+        if not csop:
+            hianyok += [(k, r) for r in h]
+    ki += ['', 'Név nélküli elemek (a csoportosan fedett előfordulás nélkül):', '']
     ki += [f'- {nev[k]}: {sorcim(k, r)}' for k, r in hianyok] or ['- nincs']
     ki += ['', '*A „Károli rejtett párhuzama” (14. szerep) nem mérhető: nincs gépi adatforrása '
            '(l. DT424); a mérő ezt nem tölti ki.*', '']
