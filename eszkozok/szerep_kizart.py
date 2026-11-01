@@ -138,6 +138,62 @@ def _cella(s):
     return s.replace('|', '\\|').replace('\n', ' ')
 
 
+# F152 B.2: a blokkban ismétlődő proveniencia-sor (scope=… | forras=… | ts=…) a soron jellé rövidül, és a blokk alatt
+# egyszer áll; a táblacellában a `|` escape-elve (`\|`) is.
+PROV_HARMAS = re.compile(r'scope=[^|`\n]*?\s\\?\|\s*forras=[^|`\n]*?\s\\?\|\s*ts=[0-9T:Z-]+')
+PROV_JELEK = ('†', '‡') + tuple('†%d' % i for i in range(3, 30))
+
+
+def kozos_proveniencia(szovegek, kuszob=2):
+    """(új szövegek, a blokk alá kerülő megjegyzés-sor vagy ''). Minden proveniencia-sor, amely a szövegek közül
+    legalább `kuszob`-ban áll, gyakoriság szerint jelet kap (†, ‡, †3 …); a szövegben a helyére a jel kerül, a
+    megjegyzés-sor a jelet és a teljes proveniencia-sort egyszer hordozza. A proveniencia nem vész el, csak nem
+    ismétlődik; az egyszer álló sor a helyén marad."""
+    szaml = collections.Counter()
+    for s in szovegek:
+        for p in set(m.group(0).replace('\\|', '|') for m in PROV_HARMAS.finditer(s)):
+            szaml[p] += 1
+    kozos = [p for p, n in sorted(szaml.items(), key=lambda x: (-x[1], x[0])) if n >= kuszob][:len(PROV_JELEK)]
+    if not kozos:
+        return list(szovegek), ''
+    jel = dict(zip(kozos, PROV_JELEK))
+
+    def csere(m):
+        p = m.group(0).replace('\\|', '|')
+        return jel.get(p, m.group(0))
+    uj = [PROV_HARMAS.sub(csere, s) for s in szovegek]
+    if len(kozos) == 1 and szaml[kozos[0]] == len(szovegek):
+        return uj, '*Minden sor forrásmegjelölése (%s): `%s`*' % (jel[kozos[0]], kozos[0])
+    return uj, '*A közös forrásmegjelölések: %s*' % ' · '.join(
+        '%s = `%s` (%d sor)' % (jel[p], p, szaml[p]) for p in kozos)
+
+
+def _hely_reszek(hely):
+    m = re.fullmatch(r'(.+) (\d+):(\d+)', hely)
+    return (m.group(1), int(m.group(2)), int(m.group(3))) if m else None
+
+
+def osszevon(sorok_c):
+    """F152 B.3: a csoport egymást követő sorai, ha egymást követő versek (ugyanaz a könyv és fejezet), és a „miért
+    lett jelölt”, a döntés és az indok, valamint a lábjegyzet szövege azonos: egy sor, tartományként („1Móz
+    25:21–26”). A lábjegyzet egyszer áll (azonos szövegű volt minden soron), az adat nem változik."""
+    ki = []
+    for t in sorok_c:
+        if ki:
+            elozo, utolso = ki[-1]
+            a, b = _hely_reszek(utolso), _hely_reszek(t[0])
+            if a and b and a[:2] == b[:2] and b[2] == a[2] + 1 and elozo[1:] == t[1:]:
+                ki[-1] = (elozo, t[0])
+                continue
+        ki.append((t, t[0]))
+    eredmeny = []
+    for t, utolso in ki:
+        if utolso != t[0]:
+            t = ('%s–%d' % (t[0], _hely_reszek(utolso)[2]),) + tuple(t[1:])
+        eredmeny.append(t)
+    return eredmeny
+
+
 def blokk_torzs(sorok, motivum_id, okok_ut=None):
     """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz."""
     minta = okok(motivum_id, okok_ut)
@@ -165,10 +221,10 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
         if not sorok_c:
             continue
         sor_md = []
-        for hely, miert, dont, lj in sorok_c:
+        for hely, miert, dont, lj in osszevon(sorok_c):
             labj.append(lj)
             sor_md.append('| %s | %s[^k%d] | %s |' % (hely, miert, len(labj), dont))
-        ki.append('**%s** (%d)' % (c, len(sorok_c)))
+        ki.append('**%s** (%d)' % (c, len(sorok_c)))   # a darabszám a jelölteké, nem az összevont soroké
         ki.append('| Igehely | Miért lett jelölt | Döntés és indok |\n|---|---|---|\n' + '\n'.join(sor_md))
     ossz = {'ok': ok_szaml, 'forras': forras_szaml, 'egyeb': egyeb}
     return ki, labj, ossz
