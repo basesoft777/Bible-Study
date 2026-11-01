@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: opus
-allapot: fut
+allapot: dontesre_var
 ad: új motívumon a szótári gerinc kapcsoló nélkül fut, a még nem migrált régiek egy kivétellistán állnak (amely a #123 végén kiürül); az ellenoriz.py négy új szabálya gépileg kizárja a hiányos adatot és a hibás generált lapot; a szakaszcímke a jelentes_szam-ból gépileg vezetődik le, és eltérésnél jelez
-kovetkezo: "Végrehajtó: 1–4. lépés a DT-F148a–d szerint (a: funkcio_kapcsolok.tsv kivetel-sor); a merge előtt az ALVIL-001 59 sorának kitöltése (⛔ A)"
+kovetkezo: "Te: a draft PR kész (1–4. lépés, független ellenőr javítva); ⛔ A — az ALVIL-001 59 sorának kitöltése a merge előtt (a 18./19. szabály addig SÉRTÉS, az E1 piros); merge a felhasználóé"
 olvas: [eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/teszt_ellenoriz_11.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/glossza_lexikon_forditas.py, adat/SEMA.md, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/lexikon_hivatkozasok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, lexikon/, DONTESEK.md, NYITOTT_FELADATOK.md, F131_SZOTARI_GERINC_BRIEF.md, naplok/F131_SZOTARI_GERINC_naplo.md, F123_MIGRACIO2_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, MUNKAMENET.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, .github/workflows/ellenorzes.yml]
 ir: [eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/szerep_karoli.py, adat/funkcio_kapcsolok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, eszkozok/szakasz_cimke_levezet.py, eszkozok/teszt_szakasz_cimke_levezet.py, eszkozok/teszt_ellenoriz_vedokorlat.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, adat/SEMA.md, adat/szotar_szakasz_cimke.tsv, naplok/F148_*]
 fugg: []
