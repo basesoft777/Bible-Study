@@ -107,3 +107,40 @@ Mind az 52 sort átnéztem (régi ↔ új `szoveg_hu` eleje ↔ a forrássor ang
 2. Az M2 hatóköre: részleges frissítés a 23 `teljes` Strongra (javasolt), vagy a teljes újragenerálás (= N-F131f, a DT423 sorrendjével ellentétes).
 3. A 11 megmaradó sor indokolt kivétel (üres forrássor), és az elfogadási A-feltétel az A′ alakban mérendő.
 4. A bontó műterméke (a félkövér visszautalás külön sort nyit: „see Qal.”, „see Hiph`il above”, „both b. and c.”) a #144-en kívül esik; új N-tétel legyen-e (a `bont.py`-é, a #128 / #131 területe)?
+
+**A döntés (DT-F144a), 2026-11-01.** A felhasználó az orkesztrátor chatjében a 6. pont három részdöntésére egyenként, az orkesztrátor javaslatát idézve felelt: „mehet” (az orkesztrátor `local_2bdbd92d` üzenetében idézve). (1) A szabály R2 + R4 + R3x; az R3x-et külön is jóváhagyta, mert más úton jár, mint a DT423-ban elvetett személy-szabály. (2) Az M2 részleges frissítés, csak a 23 `teljes` Strongra (`--strong`, a DT423 H8034-mintája szerint); a teljes újragenerálás később. (3) A 11 megmaradó sor indokolt kivétel, az elfogadási feltétel az A′ alak. A 4. kérdésről (a `bont.py` N-tétele) nem volt külön döntés, ezért a #144 nem veszi fel. Előzmény: egy korábbi, összevont jóváhagyást („döntsük el kivéve 125”) a felhasználó visszavont („minden visszavonok”), a fenti az újra, egyenként hozott döntés.
+
+## M1 — a szabály a `hu_illeszt.py`-ban, tesztek (2026-11-01)
+
+Kiinduló állapot: a main beolvasztva (`b822386a`; a merge a `adat/forditasok.tsv`-t is hozta: sha256 `7c43b398dfa3`, sha1 `11c1f4e5a1ab`, a #38 12. adagja). A 23 Strong a mai bemenetben is mind `teljes` típusú, és repóbeli sorai (468) bájtra azonosak a régi kód mai kimenetével (`ts=2026-10-18`): a részleges csere sorkulcs-feltétele teljesül.
+
+- `eszkozok/bdb_jelolt/hu_illeszt.py`: (5) `SIGLUM_SOR` (R2) a `magyar_jelolok` szűrőjében; `torzs_index` (a forrás szerinti törzsnév-index); a `strong_illeszt`-ben az R4 és az R3x (a sorok előtti forrásszöveg: `jel` + `szoveg`, címkék nélkül). A `reszleges_szoveg` a korábbi részleges frissítések jelölését megtartja (eddig a H4397, H8034, H9004 jelölése egy újabb `--strong` futáskor elveszett volna), az azonos Strong-halmazé cserélődik.
+- **Egyezés az M0-mérővel:** az új `strong_illeszt` mind az 5 696 fordítással bíró Strongon (a táblában lévő 674-en) azonos a `naplok/BDB_SZAKASZ_HU_JAVITAS_M0_hatas.py` R2+R4+R3x változatával (0 eltérés). A régi kódhoz képest változik: `teljes` 23 Strong (pontosan a 6. pont listája), `szakasz` 101 Strong (nem íródik; a mai bemenet több szakaszos Strongot hoz, mint az M0-kori 90).
+- `eszkozok/bdb_jelolt/teszt_hu_illeszt.py` (9 teszt, zöld): R2, R4 (indexszel és index nélkül), R3x, a részleges jelölés megtartása; valós adaton H0001 (fejléc-számtöredék), H2199 ((b), törzsnév-említés), H7043 ((c), R3x), H3499 ((a), szerkezeti kivétel). Negatív kontroll: a régi kóddal 7 teszt bukik (az „index nélkül” és a H3499 a régi viselkedést rögzíti, ezek ott is zöldek).
+- `teszt_bont.py`: 55 teszt, 4 piros, mind a #144-től független: `HuIlleszt.test_ellenoriz` és `test_osszefuzo_a_mai_adaton_valtozatlan` (N-F131f: a tábla 674 Strongja a mai 5 696-hoz képest elavult; a main-en is piros), `Determinizmus.test_ellenoriz` (`bont.py --ellenoriz`) és `test_javitas_ellenoriz` (`forras_javit.py --ellenoriz`), amelyek a `hu_illeszt.py`-t nem hívják, és a beolvasztott main fájljain futnak. A #144 új piros tesztet nem okoz.
+
+## M2 — részleges frissítés és mérés (2026-11-01)
+
+`python eszkozok/bdb_jelolt/hu_illeszt.py --strong H0001,H2199,H2803,H2930,H3198,H3427,H3782,H3885,H3920,H5027,H5157,H5647,H5782,H5975,H6381,H6912,H6999,H7043,H7126,H7650,H7665,H8085,H8334 --ts 2026-11-01`, majd ugyanez `--ellenoriz`: **azonos**. Az első fejlécsor a két részleges frissítést jelöli (a H4397, H8034, H9004 2026-10-29-i és ez); a `# forras` sor a 2026-10-18-i teljes generálásé marad.
+
+proveniencia: `scope=adat/bdb_szakasz_hu.tsv (674 Strong, 9 664 sor; előtte sha1 8b80639c86fa, utána sha1 b724cba68102 / sha256 36c45a5a363b) | forras=eszkozok/bdb_jelolt/hu_illeszt.py --strong (23 Strong) @ kód 6ed44a36e766 + ad hoc mérés (scratchpad m2_meres.py, m2_bkor.py) | ts=2026-11-01`
+
+Bemenetek az M2-kor: `adat/forditasok.tsv` sha256 `7c43b398dfa3` (a main szerinti), `adat/bdb_szakaszok.tsv` `66bd24b9abb6`, `adat/bdb_vers_jelentes.tsv` `487607da93b8` — mindhárom bájtra azonos a main-nel, a #144 nem írta.
+
+| | előtte | utána |
+|---|---|---|
+| kategória (sor) | `illeszkedik` 6 395 · `jelolo_nelkul` 2 461 · `elakad` 606 · `horgonnyal` 202 | változatlan |
+| A-sor (a jelentés 2. pontja) | 26 (26 Strong) | **22** (22 Strong) |
+| A′-sor (A + a forrássor `szoveg`-e > 8 karakter) | 14 | **10** |
+| B-kör (`illeszkedik`, jel, `szoveg_hu` < 12, nem A) | 80 sor / 71 Strong | 80 / 71 |
+
+- **Változott sor:** 468 (a 23 Strong minden sora, a proveniencia `ts`-e miatt), ebből **tartalmilag 52** (23 Strong) — azonos az M0 4. pontjában átnézett 52 sorral. Kategória-átmenet: `illeszkedik → illeszkedik` 43, `jelolo_nelkul` (szöveg) 7, `illeszkedik → horgonnyal` 1 és `horgonnyal → illeszkedik` 1 (mindkettő H7043 15/16). Előtte helyes sor nem romlott (az M0 4. pontjának soronkénti átnézése szerint).
+- **A 15 szócikk eredménye:** a 4 valódi hiba (H0001, H2199, H5027, H7043) A′-sora megszűnt. A 11 indokolt kivétel (H3381, H5060, H6499, H5826, H6299, H7378, H7650; (a): H3499, H4519, H6965, H7130) A-sor maradt, de forrássoruk legfeljebb 8 karakter, így A′ szerint nem hiba.
+- **A megmaradó 10 A′-sor** mind szakaszonként újrafordított Strongé (H1129, H1980, H3423, H3603, H5324, H7122, H7200, H7725, H7896, H7971): a régi `teljes` soruk `elavult`, a szó-lap a szakaszsorokat használja; a #144 hatókörén kívül esnek (N-F131f / N-F131g).
+- **B-kör szúrópróba** (minden 3. Strong + a 23 közé esők: 24 Strong, 28 sor): mind helyes — a rövid forrássor hűen fordítva („surely.” → „1 bizony.”, „of man:” → „1 emberről:”, „above” → „Pi`el fent”), a következő sor a saját jelölőjénél kezdődik.
+
+**Lexikon:** a 23 Strong `bdb_szakasz_hu.tsv`-sorai változtak; a lexikonlapjuk és a BDB-nézet újragenerálást kér. A #144 nem generál: a #152-vel összehangolva történik (orkesztrátor, 2026-11-01).
+
+## M3 — zárás ⛔
+
+A felhasználó átnézi a változott sorok mintáját (az M0 4. pontja és a fenti M2-táblázat). Utána a brief `lezarva`.
