@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-teszt_jelolt_eloszures.py -- F150: a jelolt_eloszures.py tesztjei (DT-F150a: a gepi szabaly csak
+teszt_jelolt_eloszures.py -- F150: a jelolt_eloszures.py tesztjei (DT432: a gepi szabaly csak
 formulaikus hordozon dont). A 12 ismert hamis kizaras negativ teszt; a formulaikus motivumokon a mert
 0 hamis kizaras es a felismert elutasitasok pozitiv teszt; a hordozo-szabaly es az idempotencia.
 

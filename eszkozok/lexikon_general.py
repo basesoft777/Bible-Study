@@ -2491,7 +2491,7 @@ def szo_felsorolas(tokenek):
 # a sorrendjében kapcsolja be (DT-F123g (a)): ALVIL-001.
 # A motívumonkénti bekapcsolás adat (`adat/funkcio_kapcsolok.tsv`, `SZOTARI_GERINC`), nem kódbeli lista (ISTENTISZT-001
 # arany lap, 2026-10-29: a blokk-szintű változások motívum-id szerinti kivétel nélkül; a tesztek felülírhatják).
-# F148 (DT-F148a): a gerinc alapból be van kapcsolva; a még nem migrált motívum sora `kivetel` (a #123 a migrációkor
+# F148 (DT437): a gerinc alapból be van kapcsolva; a még nem migrált motívum sora `kivetel` (a #123 a migrációkor
 # `aktiv`-ra állítja). Az `ellenoriz.py` 18–21. szabálya ugyanezt a függvényt hívja.
 GERINC_KIVETEL_MOTIVUMOK = SZK.kapcsolo_kivetelek('SZOTARI_GERINC')
 
