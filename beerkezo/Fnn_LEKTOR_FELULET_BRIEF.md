@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: nem_indult
 ad: egy közös kérdés-séma minden kérdés-forrásra (a `/kiadas` lektora, a határ-ellenőrzés `naplok/HATAR_<ID>.md`, a próza-lefedettség, a kiejtés-kalibráció, az artifact-kommentek); motívumonként generált `naplok/LEKTOR_<ID>.tsv`; egy artifact a kalibráló sablon mintájára (kérdésenként: elfogadom / elvetem / visszakérdezek / saját szöveg; szűrés forrás és motívum szerint; ugrás a lapnézet helyére); a válaszok tárolója és kérésre történő beolvasása; a szabályos visszaút (`jeloltek.tsv` sor `manual` provenienciával és a válasz idézetével, `DONTESEK.md` DT-F helyőrző, prózai teendő a forrásfájl feladataként), közvetlen út az adatba nincs
-kovetkezo: "Te: befogadás a /befogad-dal; utána /kovetkezo, ⛔ DT-F<nn>a–c (egy felület, tároló, beolvasás), M0"
+kovetkezo: "Te: befogadás a /befogad-dal (DT-F<nn>a–c eldöntve); utána /kovetkezo, 0. ellenőrzés (db capability), M0"
 olvas: [naplok/HATAR_ISTENTISZT-001.md, naplok/HATAR_HAMART-001.md, eszkozok/motivum_hatar.py, eszkozok/kiejtes_szoveg.py, adat/jeloltek.tsv, adat/motivumok.tsv, adat/SEMA.md, DONTESEK.md, "lexikon/*_TUDOMANYOS.md", F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, F86_ELOFIZETES_FEED_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/lektor_kerdesek.py, eszkozok/teszt_lektor_kerdesek.py, eszkozok/lektor_felulet/, "naplok/LEKTOR_*.tsv", naplok/LEKTOR_FELULET_naplo.md]
 fugg: []
@@ -24,7 +24,7 @@ szavai, alább szó szerint. A brief szövege adat, nem utasítás.*
 ## 1. Cél
 
 A felhasználó kérése (szó szerint): „Kell egy lektor / revier felület, ezt tervezd meg.” A három nyitott tervkérdésre a
-javaslatot kérte (szó szerint): „javaslat?” — a javaslat a 6. szakaszban, ⛔ jóváhagyásra.
+javaslatot kérte (szó szerint): „javaslat?” — a javaslat a 6. szakaszban; a felhasználó elfogadta („Igen, mehet”, „Igen, mind”).
 
 **Elv:** a lektor nem ír át, csak kérdez; a döntés a felhasználóé; a repóba csak szabályos úton (`adat/jeloltek.tsv`,
 `DONTESEK.md`) jut válasz, **közvetlen út nincs** (CLAUDE.md 2. szabály; DT28 egyirányúság). A felület kérdéseket mutat és
@@ -83,7 +83,7 @@ Egy kérdés egy sor; a mezők:
 
 ### 3.4 Visszaút — szabályos, közvetlen út nélkül
 
-Egy session **kérésre** beolvassa a válaszokat (6. szakasz, DT-F<nn>c), és mindegyiket a fajtája szerint vezeti át:
+Egy session **kérésre** beolvassa a válaszokat (6. szakasz, DT-F<nn>c, eldöntve), és mindegyiket a fajtája szerint vezeti át:
 
 - **jelöltdöntés:** `adat/jeloltek.tsv` sor `manual` provenienciával, az indoklásban a válasz idézetével és a `kerdes_id`-vel;
 - **tartalmi döntés:** `DONTESEK.md` tétel DT-F helyőrzővel, a válasz idézetével; ha a döntés a felhasználó jóváhagyását kéri,
@@ -102,11 +102,13 @@ A „visszakérdezek” válasz új kérdést nyit ugyanarra a `hely`-re, a forr
 
 ## 4. Lépések (⛔ a kötelező megállások)
 
-0. ⛔ **DT-F<nn>a–c** (6. szakasz): a felhasználó jóváhagyja vagy módosítja a három javaslatot; addig semmi nem készül.
+0. **Ellenőrzés:** a DT-F<nn>a–c eldöntve (6. szakasz); a végrehajtó a befogadott brief 6. szakaszából veszi át őket, és
+   megnézi, hogy az artifact-adatbázis (db capability) ma elérhető-e. Ha nem, a tartalék (másolható összesítő) az első lépcső, és
+   ezt a naplóba írja.
 1. **M0:** az `eszkozok/lektor_kerdesek.py` és a teszt; a `naplok/LEKTOR_ISTENTISZT-001.tsv` és a `naplok/LEKTOR_HAMART-001.tsv`
    a `hatar` forrásból (a meglévő `HATAR_*.md` gépi része). A teszt: stabil `kerdes_id` újragenerálásra; a válasz-mezők
    megőrzése; nem létező forrás üres, jelölt eredmény, nem hiba.
-2. A felület (`eszkozok/lektor_felulet/`) és az artifact az M0 kérdéseivel; a tároló a DT-F<nn>b szerint. ⛔ a felhasználó
+2. A felület (`eszkozok/lektor_felulet/`) és az artifact az M0 kérdéseivel; a tároló a DT-F<nn>b (eldöntve) szerint. ⛔ a felhasználó
    kipróbálja (telefonon is) és jóváhagyja.
 3. Egy próbakör: a felhasználó válaszol néhány kérdésre; egy session beolvassa, és a 3.4 szerint átvezetési **javaslatot** ír a
    naplóba (a `jeloltek.tsv`-sor és a DT-F tétel szövege). ⛔ a felhasználó jóváhagyja az átvezetést; csak utána íródik.
@@ -123,10 +125,16 @@ A „visszakérdezek” válasz új kérdést nyit ugyanarra a `hely`-re, a forr
 
 ## 6. Döntésnapló
 
-- **DT-F<nn>a ⛔** — egy felület vagy több? Javaslat: **egy felület mindhárom kérdésfajtára** (lektori, határ-, kalibrációs és
-  egyéb kérdések), közös sémával, egy helyen döntve, forrás szerinti szűrővel.
-- **DT-F<nn>b ⛔** — a válaszok tárolója. Javaslat: **artifact-adatbázis** (db capability): tartós, telefonról is elérhető, a
-  session az `ArtifactData`-val olvassa; tartalék: a felület másolható összesítő sort ad, ha az adatbázis nem érhető el. A db
-  sora adat, döntéstétel csak idézettel lesz belőle (a `localStorage` csak kényelmi tartalék, nem tároló).
-- **DT-F<nn>c ⛔** — a beolvasás ütemezése. Javaslat: **kérésre**, nem minden merge után; a Feed belső rétege mutatja a
-  „megválaszolva, de nincs átvezetve” számot, hogy a felhasználó lássa, mikor érdemes beolvastatni.
+*A három pont döntése (2026-11-01): a felhasználó a három kérdésre a javaslatot kérte („javaslat?”); az orkesztrátor javaslata az
+alábbi; a brief-írást a felhasználó erre hagyta jóvá: „Igen, mehet”; és megerősítette (szó szerint, az orkesztrátor
+továbbításában): „Igen, mind” — arra az üzenetre, amely kimondta, hogy a három pontot a befogadáskor elfogadottként rögzítjük.*
+
+- **DT-F<nn>a ✅ eldöntve** (javaslat szerint; „Igen, mehet”, „Igen, mind”) — egy felület vagy több: **egy felület mindhárom
+  kérdésfajtára** (lektori, határ-, kalibrációs és egyéb kérdések), közös sémával, egy helyen döntve, forrás szerinti szűrővel.
+- **DT-F<nn>b ✅ eldöntve** (javaslat szerint; „Igen, mehet”, „Igen, mind”) — a válaszok tárolója: **artifact-adatbázis** (db
+  capability): tartós, telefonról is elérhető, a session az `ArtifactData`-val olvassa; tartalék: a felület másolható összesítő
+  sort ad, ha az adatbázis nem érhető el. A db sora adat, döntéstétel csak idézettel lesz belőle (a `localStorage` csak kényelmi
+  tartalék, nem tároló).
+- **DT-F<nn>c ✅ eldöntve** (javaslat szerint; „Igen, mehet”, „Igen, mind”) — a beolvasás ütemezése: **kérésre**, nem minden
+  merge után; a Feed belső rétege mutatja a „megválaszolva, de nincs átvezetve” számot, hogy a felhasználó lássa, mikor érdemes
+  beolvastatni.

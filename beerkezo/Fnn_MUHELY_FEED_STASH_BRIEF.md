@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: nem_indult
 ad: egy összegző szkript (javasolt név `eszkozok/muhely_allapot.py`), amely új mérő nélkül, a meglévő mérőket csak olvasva futtatva generált JSON-t ír a Feedhez és a Stash-hez (kimenet réteg); a Feed két rétegben (nyilvános: állapotlánc motívumonként, összesített mérők, heti történés valódi dátummal, elvetett jelöltek, a Stash leírása és statja; belső: ugyanez kibontva, találatokkal, hibaszövegekkel, nyitott DT-kérdésekkel, PR-okkal, lektori kérdésekkel); a „kész” a 8 pontos kritériumból számolva, nem a `motivumok.tsv` `statusz`-ából; a felület egyelőre Dashboard-artifact; a #86 később a nyilvános réteget használja
-kovetkezo: "Te: befogadás a /befogad-dal; utána /kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ a mérés után"
+kovetkezo: "Te: befogadás a /befogad-dal (DT-F<nn>a, c, d eldöntve); utána /kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ DT-F<nn>b a mérés után"
 olvas: [eszkozok/feladatok.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py, eszkozok/jelolt_eloszures.py, eszkozok/motivum_hatar.py, naplok/OLVASOI_blokk_teljesseg_meres.py, eszkozok/kiejtes_szoveg.py, eszkozok/gerinc_terkep.py, eszkozok/lexikon_general.py, .claude/commands/konzisztencia.md, adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivum_kapcsolatok.tsv, adat/forditasok.tsv, adat/SEMA.md, "motivumok/*.md", "lexikon/*_TUDOMANYOS.md", "naplok/HATAR_*.md", F86_ELOFIZETES_FEED_BRIEF.md, F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/muhely_allapot.py, eszkozok/teszt_muhely_allapot.py, generalt/muhely/, naplok/MUHELY_FEED_STASH_naplo.md]
 fugg: []
@@ -50,7 +50,7 @@ DT-F86e). A „kész” a mérőkből számolódik, **nem** a `motivumok.tsv` `s
 - A próza-lefedettség mérője (`eszkozok/proza_lefedettseg.py`) a #125 terméke, ma nem létezik; a lektori kérdések tárolója
   (`naplok/LEKTOR_<ID>.tsv`) a lektor-felület tervezetéé (`beerkezo/Fnn_LEKTOR_FELULET_BRIEF.md`), ma nem létezik.
   **Hiányzó mérő nem zöld:** a kritérium sora „nincs mérő” állapotot kap, és a motívum addig nem „kész” (CLAUDE.md 3. szabály:
-  az üres eredmény nem siker, explicit jelölendő). L. DT-F<nn>c.
+  az üres eredmény nem siker, explicit jelölendő). L. DT-F<nn>c (eldöntve).
 
 ## 3. Hatókör
 
@@ -110,11 +110,12 @@ Motívumonként, amelyre a 3.2 mind zöld:
 - **stat:** előfordulás ÓSZ/ÚSZ, kapcsolatok, fordítási lefedettség, lektori kérdések (nyitva/zárva), az utolsó generálás
   commitja, verzió.
 
-A kötet-hozzárendelés ma nincs adatban; a szkript üresen hagyja és jelöli („nincs kötet-adat”), nem találja ki (DT-F<nn>d).
+A kötet-hozzárendelés ma nincs adatban; a szkript üresen hagyja és jelöli („nincs kötet-adat”), nem találja ki (DT-F<nn>d,
+eldöntve).
 
 ### 3.5 Kimenet és felület
 
-- Generált JSON a `generalt/muhely/` alatt (javaslat; DT-F<nn>a): `feed_belso.json`, `feed_nyilvanos.json`, `stash.json`,
+- Generált JSON a `generalt/muhely/` alatt (DT-F<nn>a, eldöntve): `feed_belso.json`, `feed_nyilvanos.json`, `stash.json`,
   mindegyikben gépi jelöléssel (`"_generalt": "eszkozok/muhely_allapot.py …"`, a CLAUDE.md `# GENERÁLT` szabályának JSON-alakja).
   Kézzel szerkeszteni tilos.
 - Felület: Dashboard-artifact (a felhasználó: „egyenlőre dashboard”), a JSON-ból töltve, egy session kérésre frissíti.
@@ -157,11 +158,15 @@ A kötet-hozzárendelés ma nincs adatban; a szkript üresen hagyja és jelöli 
 
 ## 6. Döntésnapló
 
-- **DT-F<nn>a ⛔** — a generált JSON helye és bontása. Javaslat: `generalt/muhely/` alatt három fájl (`feed_belso.json`,
-  `feed_nyilvanos.json`, `stash.json`), a nyilvános a belső fehérlistás szűrése; verziózva, hogy a #86 delta-generátora
-  commitok között összevethesse.
+*Az a), c), d) pont döntése (2026-11-01): az orkesztrátor kérdése „Mehet a Feed/Stash a), c) és d) pontja a javaslat szerint?”,
+a felhasználó válasza (szó szerint, az orkesztrátor továbbításában): „Igen, mind”. Mindhárom a lent leírt javaslat szerint.*
+
+- **DT-F<nn>a ✅ eldöntve** (javaslat szerint, „Igen, mind”) — a generált JSON helye és bontása: `generalt/muhely/` alatt három
+  fájl (`feed_belso.json`, `feed_nyilvanos.json`, `stash.json`), a nyilvános a belső fehérlistás szűrése; verziózva, hogy a #86
+  delta-generátora commitok között összevethesse.
 - **DT-F<nn>b ⛔** — az M0 után: ha az ISTENTISZT-001 nem zöld, a lap javul, vagy a kritérium pontosodik (melyik pontja).
-- **DT-F<nn>c ⛔** — a még nem létező mérők (próza-lefedettség a #125-ből, lektori kérdések a lektor-felületből) addigi
-  kezelése. Javaslat: „nincs mérő”, a motívum nem „kész”; a 7. pont a lektor-felület M0-ja után élesedik.
-- **DT-F<nn>d ⛔** — a kötet-hozzárendelés (pl. Genezis I.) forrása. Javaslat: amíg nincs adatban, a Stash üresen és jelölve
-  mutatja; az adatba vétel külön feladat a `/befogad`-dal.
+- **DT-F<nn>c ✅ eldöntve** (javaslat szerint, „Igen, mind”) — a még nem létező mérők (próza-lefedettség a #125-ből, lektori
+  kérdések a lektor-felületből) addigi kezelése: „nincs mérő”, ilyenkor a motívum nem „kész”; a 7. pont a lektor-felület M0-ja
+  után élesedik.
+- **DT-F<nn>d ✅ eldöntve** (javaslat szerint, „Igen, mind”) — a kötet-hozzárendelés (pl. Genezis I.) forrása: amíg nincs
+  kötet-adat, a Stash üresen hagyja és jelöli („nincs kötet-adat”); az adatba vétel külön feladat a `/befogad`-dal.
