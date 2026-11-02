@@ -224,6 +224,49 @@ class KolofonNaploCella(unittest.TestCase):
         self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.EM_DASH)
 
 
+class KolofonKiadas(unittest.TestCase):
+    """N-F125a/b (DT-F125d): a Kolofon kiadásszáma, próza-modellje és változásjegyzéke az `adat/kiadasok.tsv`-ből."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix='teszt_kiadas_')
+        self.ut = os.path.join(self.tmp, 'kiadasok.tsv')
+        with open(self.ut, 'w', encoding='utf-8', newline='') as f:
+            T, N = chr(9), chr(10)
+            sorok = ['# megjegyzés',
+                     T.join(['id', 'kiadas', 'datum', 'valtozas', 'proza_modell', 'forras']),
+                     T.join(['ELO-001', '2', '2026.11.09', 'A lektor kérdései nyomán javított prózák.', 'claude-opus-5-5', 'manual']),
+                     T.join(['ELO-001', '1', '2026.11.02', 'Az első kiadás.', 'manual', 'manual']),
+                     T.join(['MAS-001', '1', '2026.11.02', 'Másik motívum.', 'manual', 'manual'])]
+            f.write(N.join(sorok) + N)
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_sorrend_es_szuro(self):
+        sorok = LG.kolofon_kiadasok('ELO-001', self.ut)
+        self.assertEqual([r['kiadas'] for r in sorok], ['1', '2'])
+        self.assertEqual(LG.kolofon_kiadasok('NINCS-001', self.ut), [])
+
+    def test_meta_es_valtozasjegyzek(self):
+        meta, jegyzek = LG.kolofon_kiadas_sorok(LG.kolofon_kiadasok('ELO-001', self.ut))
+        self.assertEqual(meta, ['| Kiadás | 2 |', '| Próza modellje | `claude-opus-5-5` |'])
+        self.assertIn('| 1 | 2026.11.02 | Az első kiadás. |', jegyzek)
+        self.assertIn('| 2 | 2026.11.09 | A lektor kérdései nyomán javított prózák. |', jegyzek)
+
+    def test_sor_nelkul_nincs_kiadas_sor(self):
+        self.assertEqual(LG.kolofon_kiadas_sorok([]), ([], []))
+
+    def test_hianyzo_fajl(self):
+        self.assertEqual(LG.kolofon_kiadasok('ELO-001', os.path.join(self.tmp, 'nincs.tsv')), [])
+
+    def test_igazi_tabla_istentiszt(self):
+        sorok = LG.kolofon_kiadasok('ISTENTISZT-001')
+        self.assertEqual(sorok[0]['kiadas'], '1')
+        self.assertEqual(sorok[0]['proza_modell'], 'manual')
+
+
 class GeneraltFejlec(unittest.TestCase):
     """F11 M4 (DT-F11h Á7): a helyben frissített lap fejléce után CRLF-es
     munkapéldányon is pontosan egy üres sor áll, mint az új fájlnál."""

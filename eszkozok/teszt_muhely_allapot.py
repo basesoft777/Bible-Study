@@ -15,30 +15,40 @@ import muhely_allapot as M  # noqa: E402
 
 
 def minta_belso():
-    krit = [{'sorszam': i, 'nev': 'ellenoriz.py k%d' % i, 'allapot': 'nincs_mero', 'szin': 'szurke',
-             'olvasoi_nev': M.OLV_NEV[i], 'olvasoi_allapot': M.OLV_ALLAPOT['nincs_mero'],
-             'olvasoi_szoveg': M.OLV_NINCS[i], 'ertek': 'titkos hibaszöveg',
-             'reszlet': ['döntésre váró kérdés szövege'], 'proveniencia': 'scope=x | forras=y | ts=z'}
-            for i in range(1, 9)]
+    allapotok = ['zold', 'zold', 'zold', 'piros', 'piros', 'nincs_mero', 'hiba', 'piros']
+    krit = []
+    for i, al in enumerate(allapotok, 1):
+        k = {'sorszam': i, 'nev': 'ellenoriz.py k%d' % i, 'allapot': al, 'szam': {'n': 3},
+             'ertek': 'titkos hibaszöveg', 'reszlet': ['döntésre váró kérdés szövege'],
+             'proveniencia': 'scope=x | forras=y | ts=z', 'olvasoi_nev': M.OLV_NEV[i],
+             'olvasoi_allapot': M.OLV_ALLAPOT[al]}
+        k['olvasoi_szoveg'] = M.olvasoi_kapu(k)
+        krit.append(k)
     st = {'cim': 'C', 'tema': 'T', 'pardes_szint': 'Drash', 'terjedelem_szo': 1, 'kotet': None,
           'elofordulas_osz': 1, 'elofordulas_usz': 1, 'kapcsolatok_db': 0, 'forditasi_lefedettseg': 1.0,
-          'lektori_kerdes': None, 'utolso_generalas_commit': 'abc', 'verzio': 'v1',
-          'kotet_megjegyzes': 'nincs kötet-adat'}
+          'lektori_kerdes': '3 nyitott', 'utolso_generalas_commit': 'abc', 'verzio': 'v1',
+          'kotet_megjegyzes': 'nincs kötet-adat', 'kotet_olvasoi': M.OLV_KOTET}
     return {
         '_generalt': 'eszkozok/muhely_allapot.py — feed_belso.json', 'generalva': 't', 'commit': 'abc',
-        'rendszer': 'r', 'merok_osszesen': {}, 'elvetett_jeloltek_osszesen': 0,
+        'rendszer': 'r', 'elvetett_jeloltek_osszesen': 0,
+        'merok_osszesen': {'motivum_db': 1, 'kesz_db': 0, 'kapu_zold': 3, 'kapu_ossz': 8, 'nyitott_jelolt': 4},
         'heti_tortenes': [{'datum': '2026-11-01', 'motivum': 'X-001', 'esemeny': 'jelölt-döntés: beépítve', 'db': 2,
                            'olvasoi_esemeny': '2 igehely bekerült a motívumba'}],
         'pr_hiba': 'belső', 'ellenoriz_hiba': 'belső',
-        'motivumok': [{'id': 'X-001', 'cim': 'c', 'tema': 't', 'pardes_szint': 'p', 'allasfokozat': 'lezárt (stash)', 'allasfokozat_olvasoi': 'Kész, megjelenésre vár',
-                       'olvasoi_mondat': 'x', 'tsv_statusz_x': 1,
-                       'kriteriumok': krit, 'zold_db': 8, 'ossz_db': 8, 'nyitott_jelolt_db': 0,
-                       'elvetett_jelolt_db': 0, 'beepitett_jelolt_db': 1, 'stash': st,
-                       'prémium_mező': 'PRÉMIUM',
-                       'elvetett_jeloltek': ['x'],
-                       'nyitott_pr': [{'szam': 1}], 'tsv_statusz': 'publikálható',
-                       'új_mező_alapból_belső': 'x'}],
+        'motivumok': [{'id': 'X-001', 'cim': 'c', 'tema': 't', 'pardes_szint': 'p', 'allasfokozat': 'ellenőrzés',
+                       'allasfokozat_olvasoi': M.OLV_ALLAS['ellenőrzés'], 'olvasoi_mondat': 'x vizsgálat alatt',
+                       'olvasoi_mondat_nyilvanos': M.olvasoi_mondat_nyilvanos(2, 3, 3),
+                       'kriteriumok': krit, 'zold_db': 3, 'ossz_db': 8, 'nyitott_jelolt_db': 4,
+                       'elvetett_jelolt_db': 3, 'beepitett_jelolt_db': 1, 'stash': st,
+                       'prémium_mező': 'PRÉMIUM', 'elvetett_jeloltek': ['x'], 'nyitott_pr': [{'szam': 1}],
+                       'tsv_statusz': 'publikálható', 'új_mező_alapból_belső': 'x'}],
     }
+
+
+# a nyilvános rétegben nem szerepelhet akadályt, hibát vagy nyitott munkát jelző szó (DT-F156j)
+TILTOTT_SZAVAK = ('piros', 'munka van hátra', 'nincs mérő', 'nincs_mero', 'még nem vizsgáltuk', 'megállt', 'hiba',
+                  'nyitott', 'vizsgálat alatt', 'vár', 'akadály', 'blokkol', 'nem teljesül', 'hiányzik',
+                  'folyamatban', 'döntésre', 'szurke')
 
 
 class Teszt(unittest.TestCase):
@@ -47,16 +57,26 @@ class Teszt(unittest.TestCase):
         self.assertTrue(set(ny) <= set(M.FEHERLISTA_TOP))
         m = ny['motivumok'][0]
         self.assertTrue(set(m) <= set(M.FEHERLISTA_MOTIVUM))
-        for k in m['kriteriumok']:
+        for k in m['teljesult_lepesek']:
             self.assertTrue(set(k) <= set(M.FEHERLISTA_KRITERIUM))
-            for tiltott in ('reszlet', 'ertek', 'nev', 'allapot', 'proveniencia'):
-                self.assertNotIn(tiltott, k)
         self.assertTrue(set(m['stash']) <= set(M.FEHERLISTA_STASH))
+        self.assertEqual(set(ny['merok_osszesen']), {'motivum_db', 'kesz_db', 'kapu_zold', 'kapu_ossz'})
         szoveg = repr(ny)
         for tiltott in ('PRÉMIUM', 'döntésre váró', 'titkos hibaszöveg', 'új_mező_alapból_belső', 'pr_hiba',
-                        'ellenoriz_hiba', "'nyitott_pr'", "'elvetett_jeloltek'", 'nincs_mero', 'ellenoriz.py',
-                        'jelölt-döntés', "'esemeny'"):
+                        'ellenoriz_hiba', "'nyitott_pr'", "'elvetett_jeloltek'", 'ellenoriz.py', 'jelölt-döntés',
+                        "'esemeny'", "'kriteriumok'", 'nyitott_jelolt', 'lektori_kerdes'):
             self.assertNotIn(tiltott, szoveg)
+
+    def test_nyilvanos_csak_elorehaladas(self):
+        ny = M.nyilvanos(minta_belso())
+        m = ny['motivumok'][0]
+        # csak a teljesült lépés látszik (3 a 8-ból), a többi nem
+        self.assertEqual([k['sorszam'] for k in m['teljesult_lepesek']], [1, 2, 3])
+        # az állapotlánc semleges: kész / aktuális / következő
+        self.assertEqual([x['allapot'] for x in m['lanc']], ['kesz', 'kesz', 'aktualis', 'kovetkezo', 'kovetkezo'])
+        olvashato = repr(ny).lower()
+        for szo in TILTOTT_SZAVAK:
+            self.assertNotIn(szo, olvashato, szo)
 
     def test_olvasoi_szoveg_nem_tartalmaz_belso_szot(self):
         belso_szavak = ('gerinc', 'ellenoriz', 'futtat', 'nulla-diff', 'DT', 'nincs_mero', '.py', 'CI', 'E2', 'jelölt',
@@ -104,10 +124,36 @@ class Teszt(unittest.TestCase):
 
     def test_masodik_kiadas_nem_blokkol(self):
         self.assertTrue(M.masodik_kiadas({'forras': 'lektor'}))
+        self.assertTrue(M.masodik_kiadas({'forras': 'proza_lefedettseg'}))
         self.assertFalse(M.masodik_kiadas({'forras': 'hatar'}))
         sz = M.olvasoi_kapu({'sorszam': 7, 'allapot': 'zold', 'szam': {'n': 0, 'kiadas2': 3}})
         self.assertIn('2. kiadáshoz: 3 kérdés', sz)
         self.assertNotIn('2. kiadáshoz', M.olvasoi_kapu({'sorszam': 7, 'allapot': 'zold', 'szam': {'n': 0}}))
+
+    def test_nyilvanos_szovegek_nem_akadalyt_jeloznek(self):
+        szovegek = list(M.OLV_ALLAS.values()) + [M.OLV_KOTET] + M.LANC
+        szovegek += [M.OLV_NEV[i] for i in M.OLV_NEV] + list(M.OLV_ZOLD.values())
+        szovegek += [M.olvasoi_mondat_nyilvanos(33, 0, 8), M.olvasoi_mondat_nyilvanos(1, 9, 0)]
+        szovegek += [M.olvasoi_esemeny({'esemeny': e, 'db': 2}) for e in
+                     ('jelölt-döntés: beépítve', 'jelölt-döntés: elutasítva', 'állapot: publikálható (v3)')]
+        for sz in szovegek:
+            for szo in TILTOTT_SZAVAK:
+                self.assertNotIn(szo, sz.lower(), sz)
+
+    def test_a_valos_nyilvanos_json_csak_elorehaladas(self):
+        ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'generalt', 'muhely',
+                          'feed_nyilvanos.json')
+        if not os.path.exists(ut):
+            self.skipTest('nincs generált kimenet')
+        import json
+        with open(ut, encoding='utf-8') as f:
+            d = json.load(f)
+        olvashato = json.dumps(d, ensure_ascii=False).lower()
+        for szo in TILTOTT_SZAVAK:
+            self.assertNotIn(szo, olvashato, szo)
+        for m in d['motivumok']:
+            self.assertNotIn('kriteriumok', m)
+            self.assertTrue(all('olvasoi_szoveg' in k for k in m['teljesult_lepesek']))
 
     def test_olvasoi_mondat(self):
         self.assertEqual(M.olvasoi_mondat(33, 6, 92, 3),

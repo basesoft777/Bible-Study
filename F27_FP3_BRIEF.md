@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: nem_indult
 ad: "a Thayer teljes Sonnet-fordításának mért alapja a #7-hez: a szakaszos lánc (#132) teljes Thayerre vett hiányai, gyakorisági sorrend és adagterv, egy kb. 150 ezer karakteres mérő adag API-n (Batch) az adat/forditasok.tsv-ben (szakaszsorok, allapot=sonnet), aranyminta-összevetés, költségmérés (USD) és kivetítés a teljes Thayerre"
-kovetkezo: "/kovetkezo a #158 (Thayer API-kötegelő) lezárása után; a D46 feloldva (DT-F27a)"
+kovetkezo: "/kovetkezo a #158 (Thayer API-kötegelő) lezárása után; a D46 feloldva (DT490)"
 olvas: [F132_THAYER_SZAKASZ_BRIEF.md, F142_THAYER_M3_BRIEF.md, F153_THAYER_KAROLI_TELJES_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, naplok/F132_THAYER_SZAKASZ_naplo.md, naplok/THAYER_API_KOTEG_naplo.md, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Konyv_normalizalo_tabla.tsv, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/thayer_api_koteg.py, eszkozok/forditas_kapuk.py, eszkozok/normalizal.py, DONTESEK.md]
 ir: [adat/forditasok.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, forditas/thayer_api/, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_hibas.tsv, naplok/FP3_M0.py, naplok/FP3_arany.md, DONTESEK.md]
 fugg: [158]
@@ -17,7 +17,7 @@ fugg: [158]
 
 *FELADATOK #27 · Modell: sonnet · v3 · 2026.11.02 · a #7 (Thayer éles) briefjét készíti elő*
 
-**Módosítva (2026.11.02, DT-F27a): a D46 feloldva, szakaszos lánc, API.** A felhasználó a D46 halasztását a #27-re és a #7-re
+**Módosítva (2026.11.02, DT490): a D46 feloldva, szakaszos lánc, API.** A felhasználó a D46 halasztását a #27-re és a #7-re
 feloldotta. A v2 a régi, teljes szócikkes láncra épült (`forditas/prompt_v4.md`, `eszkozok/emeles.py`); az azóta lezárt #132
 (THAYER_SZAKASZ) szakaszos láncot épített a Thayerre, és a #142 (THAYER_M3) és a #153 (THAYER_KAROLI_TELJES) ezen fordított. A v3
 ezt a láncot veszi át. A fordítás nem sessionből, hanem API-n (Message Batches, `PARDES_API_KEY`, a meglévő API-keretből) fut, a
@@ -167,4 +167,4 @@ A szokásos adagjelentésen felül (`naplok/FP3_naplo.md`):
 |---|---|---|---|
 | v1 | 2026.09.30 | Opus–Gemini összevetés, Max-keret méréssel, 40 szócikkes mintán, vak pontozással és vak olvasással | C út kihagyva; helyi gép |
 | v2 | 2026.10.12 | **Csak Sonnet**; a BDB-menet (#38) M0–M1-e a Thayeren: eszközlánc-próba, sorrend, mérő adag, aranyminta, keretmérés. Az `fp3/` kimenet, a prompt v4-kiegészítés, az OpenRouter és a vak összevetés elmarad. | DT121 (felhasználó, 2026.10.12); a v1 szövege a git-történetben |
-| v3 | 2026.11.02 | **A D46 feloldva; a #132 szakaszos lánca és API (Batch).** A régi teljes szócikkes lánc (`prompt_v4.md`, `emeles.py`) helyett a `thayer_jelolt/forditas.py`, a prompt v5.1, az adatblokk és a 14–16. kapu; a fordítás a #158 kötegelőjével Batch-on; a keretleolvasás helyett USD-plafon és költségnapló; előfeltételek és kockázatok (E1–E6: #158, #155, sigla, N66, N-F142a, ütközések). | DT-F27a (felhasználó, 2026.11.02); a v2 szövege a git-történetben |
+| v3 | 2026.11.02 | **A D46 feloldva; a #132 szakaszos lánca és API (Batch).** A régi teljes szócikkes lánc (`prompt_v4.md`, `emeles.py`) helyett a `thayer_jelolt/forditas.py`, a prompt v5.1, az adatblokk és a 14–16. kapu; a fordítás a #158 kötegelőjével Batch-on; a keretleolvasás helyett USD-plafon és költségnapló; előfeltételek és kockázatok (E1–E6: #158, #155, sigla, N66, N-F142a, ütközések). | DT490 (felhasználó, 2026.11.02); a v2 szövege a git-történetben |

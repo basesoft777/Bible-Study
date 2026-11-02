@@ -1,6 +1,6 @@
 # ISTENTISZT_TERV_HATRALEK — zárójelentés (#152, F152)
 
-*2026.11.02 · modell: claude-opus-5-5 · ág: claude/f152-lezaras · ⛔ a brief `lezarva` állapota és a `motivumok.tsv` két kérdésre vár (5.)*
+*2026.11.02 · modell: claude-opus-5-5 · ág: claude/f152-lezaras · lezárva (6.)*
 
 ## 1. Mi készült el
 
@@ -11,7 +11,7 @@
 
 ## 2. A kolofon kiadás-sora (DT486 3. pont)
 
-A kiadásszám és a változásjegyzék a generátorban ma nem renderelődik, és adatforrása sincs kijelölve (N-F125a). Az 1. kiadás sora ezért nem került sem adatba, sem forrásba. A lexikonlapot kézzel nem szerkesztettem. Ha az N-F125a elkészül, az 1. kiadás sora (2026.11.02, „az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése”) a kijelölt adatforrásba írható.
+A kiadásszám és a változásjegyzék a generátorban ma nem renderelődik, és adatforrása sincs kijelölve (N67). Az 1. kiadás sora ezért nem került sem adatba, sem forrásba. A lexikonlapot kézzel nem szerkesztettem. Ha az N67 elkészül, az 1. kiadás sora (2026.11.02, „az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése”) a kijelölt adatforrásba írható.
 
 ## 3. A próza-lefedettség a lezárás előtt (MUNKAMENET C-z)
 
@@ -44,3 +44,12 @@ Csendben egyik sem zárult le: mindegyik sorhoz jegyzet került a `NYITOTT_FELAD
 
 1. **MUNKAMENET C-w** (a #125 óta): ha a motívum adata érdemben változik, a lezárás előtt kötelező egy értelmező prózafeladat, és „az adatot író feladat nem zárhat le prózafeladat nélkül”. A K1–K5 adatváltozás ilyen. A prózát az F152.17 egészében átolvasta és átírta (értelmező modell, a teljes szöveg). Ezt viszont az adatot író feladat végezte, a C-z mérése pedig akkor még nem futott. Kérdés: elég-e az F152.17 a C-w-hez, és indokolható-e az egy meg nem nevezett kapcsolat (1Móz 4:26 → Sof 3:9)? Vagy előbb egy rövid prózafeladat kell (a pár kimondása)?
 2. **`motivumok.tsv` állapota** (SEMA 2.1.1): ma `publikálható`, `v3`, `2026.09.22`. A `véglegesített` állapotot csak új lexikai bizonyíték nyithatja újra, szerkesztői szándék nem. A felhasználó viszont a lektori átnézésből új kiadást vár, ez szerkesztői szándék. Ezért a `véglegesített` nem illik. A végrehajtó javaslata: `publikálható` marad, a verzió `v4`, a dátum `2026.11.02`, mert a K1–K5 a motívum határát érdemben változtatta. A SEMA ezt nem írja elő egyértelműen.
+
+## 6. Döntés és lezárás (2026-11-02)
+
+A felhasználó az 5. pont két kérdésére a javaslat szerint döntött, szó szerint: „Igen, mindkettő” (az orkesztrátoron át; `DONTESEK.md` DT486 kiegészítése).
+
+1. **C-w: (a).** A K1–K5 utáni prózaátírás (F152.17) elég. Az 1Móz 4:26 → Sof 3:9 pár kimondása a **2. kiadásba** kerül, a lektori kérdésekkel és az N-F152c-vel együtt (a `NYITOTT_FELADATOK.md` N-F152c jegyzete).
+2. **`motivumok.tsv`:** az ISTENTISZT-001 `publikálható` marad, `v3` → `v4`, `2026.09.22` → `2026.11.02` (`naplok/F152_lezaras_ir.py`, írás előtt soronkénti összevetés: egy sor, két mező).
+
+A brief fejléce `lezarva`. A lap az 1. kiadás; a kolofon kiadás-sora az N67 után írható adatba.

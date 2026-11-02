@@ -1758,7 +1758,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 **Hogyan hivatkozz:**
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
-- Státusz: publikálható (`v3`, 2026.09.22)
+- Státusz: publikálható (`v4`, 2026.11.02)
 - Generálva: 2026-10-29
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
@@ -1812,7 +1812,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
 
 **Mit mutat ez a rész?** A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.
 
@@ -1825,13 +1825,21 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | Teljes cím | Segítségül hívni az Úr nevét |
 | Téma | Pneumatológia/istentisztelet |
 | PaRDeS-szint | Drash |
-| Státusz | publikálható (`v3`, 2026.09.22) |
+| Státusz | publikálható (`v4`, 2026.11.02) |
 | Azonosság típusa | formulaikus |
 | Negatív kritérium | az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT478, DT476 K4). Az Újszövetségben az ἐπικαλέομαι (epikaleomai) mellett a névnek (ὄνομα (onoma)) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
 | Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül) |
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |
+| Kiadás | 1 |
+| Próza modellje | `manual` |
+
+**Változásjegyzék**
+
+| Kiadás | Dátum | Mi változott |
+|---|---|---|
+| 1 | 2026.11.02 | Az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése. |
 
 ---
 
