@@ -73,6 +73,7 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .torles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--halvany); }
 .torol { font: 500 13px var(--szoveg); min-height: 36px; padding: 6px 12px; border-radius: var(--sugar); border: 1px solid var(--vonal);
   background: var(--lap); color: var(--elvet); cursor: pointer; }
+.idegen { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 6px 10px; font-size: 13px; }
 .torol.igen { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
 button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
 .also { position: fixed; left: 0; right: 0; bottom: 0; background: var(--lap); border-top: 1px solid var(--vonal);
@@ -123,6 +124,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
   <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
+  <div id="mentetlen" class="figy torles" hidden></div>
   <div class="fulek" id="fulek" role="tablist" aria-label="Döntés kategóriája"></div>
   <div class="szurok">
   <div class="szurosor" id="sz-kiadas"><span class="cim">kiadás</span></div>
@@ -164,7 +166,9 @@ const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts, db}; db: true, ha 
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 const torlesKerdes = {};  // kerdes_id -> a „Válasz törlése” megerősítése nyitva
 const DOC_KERDES = {};    // adatbázis-dokumentum azonosító -> kerdes_id (a törölt dokumentumhoz)
+const torolve = {};       // kerdes_id -> a törlés folyamatban: a régi pillanatkép nem írhatja vissza
 let db = null;
+let ENYEM = '';           // a mostani néző azonosítója (user capability); a válasz-dokumentum `by` mezőjébe kerül
 let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi', kiadas: '*' };
 const KATEGORIAK = [['tartalmi', 'Tartalmi'], ['kiadoi', 'Kiadói'], ['uzleti', 'Üzleti'], ['fejlesztoi', 'Fejlesztői'], ['osztalyozatlan', 'Osztályozatlan']];
 const KAT_CIMKE = Object.fromEntries(KATEGORIAK);
@@ -180,7 +184,15 @@ const kategoria = (k) => k.cimke || 'tartalmi';
 const KIADAS_CIMKE = { '1': '1. kiadás', '2': '2. kiadás', '': 'kiadáson kívül' };
 
 function lsOlvas() { try { return JSON.parse(localStorage.getItem('lektor_valaszok') || '{}'); } catch (e) { return {}; } }
-function lsIr() { try { localStorage.setItem('lektor_valaszok', JSON.stringify(valaszok)); } catch (e) { /* kényelmi tartalék */ } }
+// A localStorage CSAK tartalék a még el nem küldött válaszoknak (DT-F162a): az adatbázisban már meglévő (db: true) válasz nem kerül bele,
+// és betöltéskor a böngészőből SOHA nem írunk az adatbázisba — legfeljebb rákérdezünk (mentetlenSor).
+function lsIr() {
+  try {
+    const o = {};
+    Object.keys(valaszok).forEach((kid) => { const v = valaszok[kid]; if (!v.db && !((v.tipus === 'visszakerdezek' || v.tipus === 'sajat') && !v.szoveg)) o[kid] = v; });
+    localStorage.setItem('lektor_valaszok', JSON.stringify(o));
+  } catch (e) { /* kényelmi tartalék */ }
+}
 const docId = (id) => id.replace(/[^A-Za-z0-9_\-.~:@+]/g, '_');
 
 function el(tag, attrs, ...gyerek) {
@@ -308,6 +320,11 @@ function rajzol() {
     } else if (v) {
       lab.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
     }
+    if (v && v.db && ENYEM && v.by !== ENYEM) {
+      lab.append(el('div', { class: 'idegen' }, v.by
+        ? 'Ezt a választ nem te adtad (másik néző írta, ' + (v.ts || '?') + '). Ha nem tőled való, töröld.'
+        : 'Ennek a válasznak nincs rögzítve a szerzője (a szerző-jelölés előtti, ' + (v.ts || '?') + '). Ha nem te adtad, töröld.'));
+    }
     if (v && k.allapot !== 'atvezetve') lab.append(torlesSor(k));
     lista.append(t);
   });
@@ -330,20 +347,26 @@ function torlesSor(k) {
   return sor;
 }
 async function torol(k) {
-  delete torlesKerdes[k.kerdes_id];
+  const kid = k.kerdes_id;
+  delete torlesKerdes[kid];
+  torolve[kid] = true;
   if (db) {
     try {
-      await db.doc('valaszok/' + docId(k.kerdes_id)).delete();
+      const ref = db.doc('valaszok/' + docId(kid));
+      await ref.delete();
+      const maradt = await ref.get(); // a törlést vissza kell olvasni: ha a dokumentum megvan, a törlés nem történt meg
+      if (maradt.exists) throw { code: 'a dokumentum megmaradt' };
     } catch (e) {
-      uzen('A válasz törlése nem sikerült (' + ((e && e.code) || 'hiba') + '): a válaszod megmaradt.', true);
+      delete torolve[kid];
+      uzen('A válasz törlése nem sikerült (' + ((e && (e.code || e.message)) || 'hiba') + '): a válaszod megmaradt.', true);
       rajzol();
       return;
     }
   }
-  delete valaszok[k.kerdes_id];
-  delete nyitottSzoveg[k.kerdes_id];
+  delete valaszok[kid];
+  delete nyitottSzoveg[kid];
   lsIr();
-  uzen(db ? 'A válasz törölve.' : 'A válasz törölve ezen a lapon (az adatbázis nem érhető el).');
+  uzen(db ? 'A válasz törölve (az adatbázisból és a böngészőből is).' : 'A válasz törölve ezen a lapon (az adatbázis nem érhető el).');
   rajzol();
 }
 
@@ -365,8 +388,8 @@ async function ment(k, v) {
   lsIr();
   if (!db) return true;
   try {
-    await db.doc('valaszok/' + docId(k.kerdes_id)).set({ kerdes_id: k.kerdes_id, tipus: v.tipus, szoveg: v.szoveg || '', ts: v.ts });
-    if (valaszok[k.kerdes_id] === v) { v.db = true; lsIr(); }
+    await db.doc('valaszok/' + docId(k.kerdes_id)).set({ kerdes_id: k.kerdes_id, tipus: v.tipus, szoveg: v.szoveg || '', ts: v.ts, by: ENYEM });
+    if (valaszok[k.kerdes_id] === v) { v.db = true; v.by = ENYEM; lsIr(); }
     return true;
   } catch (e) {
     if (e && (e.code === 'invalid_argument' || e.code === 'revoked' || e.code === 'not_granted')) db = null;
@@ -421,28 +444,51 @@ document.getElementById('masol').addEventListener('click', async () => {
 
 function figyelmeztet(s) { const f = document.getElementById('figy'); f.textContent = s; f.hidden = false; }
 
+// Betöltéskor a böngésző tartalékában maradt, az adatbázisban nem szereplő válaszról csak rákérdezünk; az adatbázisba nem írunk gombnyomás nélkül.
+function mentetlenSor(ls, bent) {
+  const kids = Object.keys(ls).filter((kid) => ADAT.some((k) => k.kerdes_id === kid) && !ls[kid].db && !bent.has(kid));
+  const sor = document.getElementById('mentetlen');
+  if (!kids.length) { sor.hidden = true; return; }
+  sor.replaceChildren(el('span', {}, 'A böngésződben ' + kids.length + ' mentetlen válasz van (' + kids.map(halvanyId).join(', ') + '). Feltöltöd az adatbázisba, vagy eldobod?'),
+    el('button', { type: 'button', class: 'torol igen', onclick: async () => {
+      for (const kid of kids) { const k = ADAT.find((x) => x.kerdes_id === kid); await ment(k, { tipus: ls[kid].tipus, szoveg: ls[kid].szoveg || '', ts: ls[kid].ts || new Date().toISOString() }); }
+      sor.hidden = true; rajzol();
+    } }, 'Feltöltöm'),
+    el('button', { type: 'button', class: 'torol', onclick: () => { lsIr(); sor.hidden = true; rajzol(); } }, 'Eldobom'));
+  sor.hidden = false;
+}
+
 async function indul() {
-  Object.assign(valaszok, lsOlvas());
+  const ls = lsOlvas();
   szurokRajzol();
   rajzol();
   try { db = (window.claude && claude.use) ? await claude.use('db') : null; } catch (e) { db = null; }
-  if (!db) { figyelmeztet('Az adatbázis most nem érhető el: a válaszaid csak ezen a lapon élnek. Az alsó összesítő sort másold ki.'); rajzol(); return; }
+  try { const u = (window.claude && claude.use) ? await claude.use('user') : null; ENYEM = u ? (await u.id()) || '' : ''; } catch (e) { ENYEM = ''; }
+  if (!db) { Object.assign(valaszok, ls); figyelmeztet('Az adatbázis most nem érhető el: a válaszaid csak ezen a lapon élnek. Az alsó összesítő sort másold ki.'); rajzol(); return; }
   let kesz = false;
   const idozito = setTimeout(() => { if (!kesz) figyelmeztet('Az adatbázist még nem érem el; ami látszik, lehet, hogy nem friss.'); }, 10000);
   ADAT.forEach((k) => { DOC_KERDES[docId(k.kerdes_id)] = k.kerdes_id; });
   db.collection('valaszok').onSnapshot((snap) => {
     const bent = new Set();
-    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) { bent.add(x.kerdes_id); valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts, db: true }; } });
+    snap.docs.forEach((d) => {
+      const x = d.data();
+      if (!x || !x.kerdes_id) return;
+      bent.add(x.kerdes_id);
+      if (torolve[x.kerdes_id]) return; // törlés folyamatban: a régi pillanatkép nem írja vissza
+      valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts, by: x.by || '', db: true };
+    });
+    Object.keys(torolve).forEach((kid) => { if (!bent.has(kid)) delete torolve[kid]; });
     // máshol (másik eszközön) törölt válasz: a dokumentum eltűnt, a helyi másolat sem maradhat
     snap.docChanges().forEach((c) => { if (c.type === 'removed') { const kid = DOC_KERDES[c.doc.id]; if (kid && !bent.has(kid)) delete valaszok[kid]; } });
     if (!snap.metadata.fromCache) {
       // a szerver nézete a mérvadó arra, ami valaha az adatbázisban volt; a csak helyben élő (db nélkül mentett) válasz marad
       Object.keys(valaszok).forEach((kid) => { if (valaszok[kid].db && !bent.has(kid)) delete valaszok[kid]; });
       kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true;
+      if (!mentetlenSor.mutatva) { mentetlenSor.mutatva = true; mentetlenSor(ls, bent); }
     }
     lsIr();
     rajzol();
-  }, (e) => { kesz = true; clearTimeout(idozito); db = null; figyelmeztet('Az adatbázis hibát adott (' + (e && e.code) + '): a válaszok csak ezen a lapon élnek.'); rajzol(); });
+  }, (e) => { kesz = true; clearTimeout(idozito); db = null; Object.assign(valaszok, ls); figyelmeztet('Az adatbázis hibát adott (' + (e && e.code) + '): a válaszok csak ezen a lapon élnek.'); rajzol(); });
 }
 indul();
 </script>
