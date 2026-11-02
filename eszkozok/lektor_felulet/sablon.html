@@ -52,6 +52,12 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
 .allapot { font: 12px var(--adat); color: var(--halvany); }
 .allapot.hiba { color: var(--elvet); }
+.hatarblokk { background: var(--papir); border: 1px solid var(--vonal); border-radius: var(--sugar); padding: 8px 12px; display: grid; gap: 4px; }
+.hatarblokk > b { font: 500 12px var(--adat); color: var(--halvany); text-transform: uppercase; letter-spacing: .04em; }
+.hatarblokk p { margin: 0; overflow-wrap: anywhere; font-size: 13px; }
+.hatarblokk p.prov { font: 11px/1.4 var(--adat); color: var(--halvany); }
+.hatarblokk ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13px; }
+.hatarblokk .gombnev { font-weight: 600; }
 .torles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--halvany); }
 .torol { font: 500 13px var(--szoveg); min-height: 36px; padding: 6px 12px; border-radius: var(--sugar); border: 1px solid var(--vonal);
   background: var(--lap); color: var(--elvet); cursor: pointer; }
@@ -165,6 +171,29 @@ function kerdesDoboz(k) {
   return d;
 }
 
+// Határ-kártya: „A jelenlegi határ” (gépileg az adatból, a generátor tölti; a proveniencia-sor halványan) és „Ha így döntesz…” (gombonként
+// a következmény; az első kettő a kézi összefoglalóból, a két utolsó minden határ-kártyán ugyanaz).
+const KOV_ALTALANOS = {
+  visszakerdezek: 'Semmi nem változik: a kérdésedre a következő körben választ kapsz; addig a határ-kérdés nem zárul le, és a lezárás vár.',
+  sajat: 'Az adat vagy a lap a te leírásod szerint változik; a változás az átvezetéskor kerül be, és a következő körben látod.',
+};
+function jelenlegiBlokk(k) {
+  const d = el('div', { class: 'hatarblokk' }, el('b', {}, 'A jelenlegi határ'));
+  if (!k.hatar_jelenlegi) { d.append(el('p', {}, 'Ennél a kártyánál a jelenlegi határ nem olvasható ki.')); return d; }
+  k.hatar_jelenlegi.split(' ⏎ ').forEach((s) => d.append(el('p', { class: s.startsWith('(proveniencia:') ? 'prov' : '' }, szoveges(s))));
+  return d;
+}
+function kovetkezmenyBlokk(k) {
+  const d = el('div', { class: 'hatarblokk' }, el('b', {}, 'Ha így döntesz…'));
+  const ul = el('ul', {});
+  tipusok(k).forEach(([kod, cimke]) => {
+    const s = kod === 'elfogadom' ? k.kov_elfogadom : kod === 'elvetem' ? k.kov_elvetem : KOV_ALTALANOS[kod];
+    ul.append(el('li', {}, el('span', { class: 'gombnev' }, cimke + ': '), s || 'a következmény ennél a kártyánál még nincs leírva.'));
+  });
+  d.append(ul);
+  return d;
+}
+
 function allapotSzoveg(k) {
   const v = valaszok[k.kerdes_id];
   if (!v) return '';
@@ -188,6 +217,7 @@ function rajzol() {
     const lapUrl = Object.prototype.hasOwnProperty.call(LAP_URLOK, k.motivum) ? LAP_URLOK[k.motivum] : '';
     if (lapUrl) fej.append(el('a', { href: lapUrl, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
     t.append(fej, kerdesDoboz(k));
+    if (k.forras === 'hatar') t.append(jelenlegiBlokk(k), kovetkezmenyBlokk(k));
     if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
     const gombok = el('div', { class: 'gombok' });
     tipusok(k).forEach(([kod, cimke]) => {

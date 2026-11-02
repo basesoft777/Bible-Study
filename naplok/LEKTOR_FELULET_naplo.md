@@ -194,3 +194,17 @@
   törlés (db-ből és localStorage-ból eltűnik, kártya megválaszolatlan) → újra válasz (db-be kerül) → máshol törölt (eltűnik); a többi válasz érintetlen. Az élő oldalon gombnyomásos próba nem
   futott; az élő db `valaszok` gyűjteménye (3 dokumentum) a publikálás előtt és után bájtra azonos (ArtifactData list).
 - Lektor-felület: ugyanaz a link, 12. verzió (a lapnézet-javítással együtt).
+
+## Határ-kártya: „A jelenlegi határ” és „Ha így döntesz…” (a felhasználó kérése: „lektor határellenőrzéskor jó lenne bent lenni mi a jelenlegi határ . és a döntés következményei”; 2026-11-02)
+
+- „A jelenlegi határ” (csak `forras=hatar`, általánosan): a `lektor_kerdesek.py` új `hatar_jelenlegi` mezője, gépileg az adatból — a motívum negatív kritériuma és fölérendelt fogalma szó szerint
+  az `adat/motivumok.tsv`-ből (a kanonikus helyük; a `motivumok/<ID>.md` ezeket nem tartalmazza), és a kártya igehelyeinek (a cím és az (a) rész igehelyei + a `hely` mező) mai állapota:
+  `elofordulasok.tsv` = bent van, `jeloltek.tsv` = döntés + indoklás, `fájl:sor` hivatkozással; saját proveniencia-sor. Ami nem olvasható ki (nincs motívum-sor, nincs igehely, nincs sor),
+  azt a kártya kimondja, nem tölti ki.
+- „Ha így döntesz…”: gombonként egy mondat. Az első két gombé a kézi összefoglalóból (`osszefoglalo_<ID>.tsv` új, elhagyható oszlopai: `kov_elfogadom`, `kov_elvetem`; csak határ-kártyán,
+  csak párban), a számok az adatból (ALVIL-001: 8 újszövetségi sor / 9 vers, 10 hádész-vers; ISTENTISZT-001: 22 előfordulás, az 1. kiadás az `adat/kiadasok.tsv`-ben); a Visszakérdezek és
+  a Saját megoldás mondata minden határ-kártyán ugyanaz (a sablonban). Kitöltve: az ALVIL-001 2 és az ISTENTISZT-001 5 határ-kártyáján.
+- A `LEKTOR_ALVIL-001.tsv` és a `LEKTOR_ISTENTISZT-001.tsv` újragenerálva: csak a három új oszlop változott (a válasz-mezők soronként azonosak); a többi `LEKTOR_*.tsv` régi fejléccel is
+  beolvasható. 4 új teszt (31 OK).
+- Lektor-felület: ugyanaz a link, 13. verzió; az élő db `valaszok` gyűjteménye változatlan (3 dokumentum, ArtifactData list). Helyben, db-utánzattal megnézve: a két blokk csak a határ-kártyán
+  jelenik meg, a lektori kártyán nem. Az élő oldalon a beépített böngésző bejelentkezést kér, ott a felhasználónak kell kipróbálnia.
