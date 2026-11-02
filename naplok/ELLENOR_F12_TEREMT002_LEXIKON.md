@@ -9,18 +9,18 @@ ELTÉRÉS: 15 tétel
 | 0 modell | OK | — | tényleges `claude-opus-5-5`, kért `opus` |
 | 0b `modell` mezők | NEM ELLENŐRIZHETŐ | `adat/forditasok.tsv` +9 sor; `motivumok/naplok/TEREMT-002_tanitoi_kereses.md:14` | `git diff cccd17a8..f58f38e8 -- adat/`: 8 sorban `claude-sonnet-5-5` (subagent), 1 sorban `claude-opus-5-5`. A subagent tényleges modellje a repóból nem mérhető. A napló 7. sorában `claude-opus-5-5`, ez a session modellje. |
 | 0c `modell` (UBS H8414) | ELTÉRÉS | `adat/forditasok.tsv:30442` | A `modell` mező `claude-sonnet-5-5`, a 2. tagot („kietlenség”) viszont a megjegyzés szerint az opus session írta át. A mező a végső szöveg tényleges szerzőjét nem adja vissza. |
-| DT-F12a | OK | `adat/lexikon_hivatkozasok.tsv` +2; `adat/elofordulasok.tsv` (3 sor) | diff: H8414 `1`, H0922 `tagolatlan`. A három sor: BDB/H8414/1/formlessness/formátlanság. |
-| DT-F12b | ELTÉRÉS (részleges) | `adat/bdb_szakasz_hu.tsv:9345` | Megtörtént: KEZI_HIVATKOZAS sor, `bdb_vers_jelentes.tsv` (49:19 → Ézs 49:4, `forras_javitas`). Igazolás: `lekerdez.py scan H8414 --szakasz "Ézs 49:19"` → n=0; a `scan H8414` 19 verse között ott az Ézs 49:4. A gerinc magyar szakaszszövegében viszont maradt „értéktelenség 49:19”. N-F12a megvan. |
-| DT-F12c | OK (adat) | `adat/lxx_dontesek.tsv` LD091–LD096 | `lekerdez.py lxx-hid "1Móz 1:2"`: G0517 ἀόρατος, ἀκατασκεύαστος Strong nélkül. `"Jer 4:23"`: G3762 οὐθέν. `"Ézs 34:11"`: G2048 ἐρήμου, σπαρτίον/γεωμετρίας Strong nélkül. A sorok ezzel egyeznek. A lapon megjelenő hiba külön sor (LXX-H0922). |
-| DT-F12d / A5 | OK · tartalom NEM ELLENŐRIZHETŐ | `motivumok/naplok/TEREMT-002_tanitoi_kereses.md` | Mind a 18 név a `sablonok/PaRDeS_tanitok_lista.md`-n áll (Derek Prince: 16., 24. sor). A gap-ek explicitek, a hiány is („kiinduló-állapot olvasat képviselője nincs”). A derekprince.com/sermons/372 tartalma webes forrás, nem ellenőrizhető. |
-| DT-F12e | OK | `adat/motivumok.tsv` | diff: `statusz` = `feldolgozás alatt`, `v1` változatlan |
-| DT-F12f | OK | `adat/funkcio_kapcsolok.tsv` | diff: `SZOTARI_GERINC TEREMT-002 aktiv`, új `KAROLI_MEGFELELOK TEREMT-002 aktiv` |
-| DT-F12g | OK (kód) · nulla-diff NEM ELLENŐRIZHETŐ | `eszkozok/szerep_karoli.py` (KOTOSZO) | diff ellenőrizve. A 9 lapra állított A/B nulla-diffet nem tudom futtatni. |
-| DT-F12h | OK | `NYITOTT_FELADATOK.md` (N-F12c) | N-F12c felvéve; a lapon „függőben” áll (`lexikon/TEREMT-002_TUDOMANYOS.md:546`) |
-| ⛔ DT-F12a–h döntője | NEM ELLENŐRIZHETŐ | `DONTESEK.md` DT-F12a–h | Mindegyiket az orkesztrátor hozta, a felhasználó 2026-11-02-i felhatalmazására hivatkozva. Maga a felhatalmazás a repóban nem igazolható. |
+| DT526 | OK | `adat/lexikon_hivatkozasok.tsv` +2; `adat/elofordulasok.tsv` (3 sor) | diff: H8414 `1`, H0922 `tagolatlan`. A három sor: BDB/H8414/1/formlessness/formátlanság. |
+| DT527 | ELTÉRÉS (részleges) | `adat/bdb_szakasz_hu.tsv:9345` | Megtörtént: KEZI_HIVATKOZAS sor, `bdb_vers_jelentes.tsv` (49:19 → Ézs 49:4, `forras_javitas`). Igazolás: `lekerdez.py scan H8414 --szakasz "Ézs 49:19"` → n=0; a `scan H8414` 19 verse között ott az Ézs 49:4. A gerinc magyar szakaszszövegében viszont maradt „értéktelenség 49:19”. N-F12a megvan. |
+| DT528 | OK (adat) | `adat/lxx_dontesek.tsv` LD091–LD096 | `lekerdez.py lxx-hid "1Móz 1:2"`: G0517 ἀόρατος, ἀκατασκεύαστος Strong nélkül. `"Jer 4:23"`: G3762 οὐθέν. `"Ézs 34:11"`: G2048 ἐρήμου, σπαρτίον/γεωμετρίας Strong nélkül. A sorok ezzel egyeznek. A lapon megjelenő hiba külön sor (LXX-H0922). |
+| DT529 / A5 | OK · tartalom NEM ELLENŐRIZHETŐ | `motivumok/naplok/TEREMT-002_tanitoi_kereses.md` | Mind a 18 név a `sablonok/PaRDeS_tanitok_lista.md`-n áll (Derek Prince: 16., 24. sor). A gap-ek explicitek, a hiány is („kiinduló-állapot olvasat képviselője nincs”). A derekprince.com/sermons/372 tartalma webes forrás, nem ellenőrizhető. |
+| DT530 | OK | `adat/motivumok.tsv` | diff: `statusz` = `feldolgozás alatt`, `v1` változatlan |
+| DT531 | OK | `adat/funkcio_kapcsolok.tsv` | diff: `SZOTARI_GERINC TEREMT-002 aktiv`, új `KAROLI_MEGFELELOK TEREMT-002 aktiv` |
+| DT532 | OK (kód) · nulla-diff NEM ELLENŐRIZHETŐ | `eszkozok/szerep_karoli.py` (KOTOSZO) | diff ellenőrizve. A 9 lapra állított A/B nulla-diffet nem tudom futtatni. |
+| DT533 | OK | `NYITOTT_FELADATOK.md` (N-F12c) | N-F12c felvéve; a lapon „függőben” áll (`lexikon/TEREMT-002_TUDOMANYOS.md:546`) |
+| ⛔ DT526–h döntője | NEM ELLENŐRIZHETŐ | `DONTESEK.md` DT526–h | Mindegyiket az orkesztrátor hozta, a felhasználó 2026-11-02-i felhatalmazására hivatkozva. Maga a felhatalmazás a repóban nem igazolható. |
 | ⛔ 4.7 (próbalap a felhasználónak) | ELTÉRÉS | `naplok/F12_TEREMT002_LEXIKON_naplo.md:106` | A brief szerint „a felhasználó a próbalapot látja” az éles írás előtt. A napló csak ennyit ír: „az orkesztrátor jóváhagyta az éles írást”. A felhasználó megtekintésének nincs nyoma. |
 | ⛔ 4.9 (merge) | OK | — | nem történt merge |
-| Brief-fejléc | ELTÉRÉS | `F12_TEREMT002_PROZA_BRIEF.md:9,11` | `allapot: fut`, `kovetkezo: "0. mérés kész; ⛔ DT-F12a–e az orkesztrátornál"` – elavult. A napló 169. sora szerint a fejléc `megallt`. |
+| Brief-fejléc | ELTÉRÉS | `F12_TEREMT002_PROZA_BRIEF.md:9,11` | `allapot: fut`, `kovetkezo: "0. mérés kész; ⛔ DT526–e az orkesztrátornál"` – elavult. A napló 169. sora szerint a fejléc `megallt`. |
 | 5.1 | OK | `adat/elofordulasok.tsv` | `jelentes_en` = „formlessness”, `jelentes_hu` = „formátlanság”: a -/1/- szöveg szó szerinti része, funkció-értelmezés nincs benne |
 | 5.2 | OK | `adat/szotar_szakasz_cimke.tsv:20` | Egyetlen gépi sor (`szakasz_cimke_levezet.py`, DT439): a H8414 -/1/-. A H0922 tagolatlan (DT438), a -/2/--t egyik motívumsor sem használja. Az ISTENTISZT-001 ugyanígy csak a használt szakaszokat címkézi (Grep a táblán). |
 | 5.3 | OK | `lexikon/TEREMT-002_TUDOMANYOS.md:114` | Grep „fordításra vár”: egyetlen találat, a jelmagyarázat |
@@ -44,7 +44,7 @@ ELTÉRÉS: 15 tétel
 | Lap: kolofon | ELTÉRÉS | lap `:915`; `adat/motivumok.tsv` (TEREMT-002) | A „Sablon-megfelelőség” cella üres, jelölés nélkül. A `sablon_verzio` üres maradt, holott a napló 0.3 E5 pontja szerint a 6. lépés kitölti. |
 | Ellenőrzőlista 1: törölt/kiszűrt sorok | OK | — | `git diff --numstat -- adat/`: adatsor nem törlődött. Módosult: `elofordulasok` 3, `motivumok` 1, `funkcio_kapcsolok` 1, `bdb_vers_jelentes` 1 (+ fejléc), `bdb_forras_javitas` fejléc 1. A forrásfájlból 98 sor törlődött, ebből 4 címsor, mind archiválva. |
 | Ellenőrzőlista 2: kulcstartomány | OK | — | Az LXX-sorok 3 vers × 2 Strong = 6/6, a `res_forras` 9/9 rés, a SECE 6 G-Strongjának fordítása 6/6, a `lexikon_hivatkozasok` H8414 és H0922 is megvan |
-| Ellenőrzőlista 3: nulla-diff hatóköre | NEM ELLENŐRIZHETŐ | napló `:107`, `:110` | Az állítás csak a DT-F12g kódváltozásra vonatkozik (9 lap) és arra, hogy a lap az F12.8 után változatlan. Nem fedi az F12.2b-t (`bdb_vers_jelentes`/`bdb_forras_javitas`), sem a `lexikon_general.py` változásait más lapokon. Saját futtatással nem igazolható. |
+| Ellenőrzőlista 3: nulla-diff hatóköre | NEM ELLENŐRIZHETŐ | napló `:107`, `:110` | Az állítás csak a DT532 kódváltozásra vonatkozik (9 lap) és arra, hogy a lap az F12.8 után változatlan. Nem fedi az F12.2b-t (`bdb_vers_jelentes`/`bdb_forras_javitas`), sem a `lexikon_general.py` változásait más lapokon. Saját futtatással nem igazolható. |
 | Ellenőrzőlista 4: sorszám-Δ (fejléc nélkül) | OK | — | `git diff --numstat`: auditok +3, bdb_forras_javitas +1, bdb_vers_jelentes 0, elofordulasok 0, forditasok +9, funkcio_kapcsolok +1, lexikon_hivatkozasok +2, lxx_dontesek +6, motivumok 0, res_forras +9, szotar_szakasz_cimke +1. `konkordancia/` 0. Egyik sem éri el a \|Δ\| ≥ 10-et. |
 | Ellenőrzőlista 5: ⛔ | l. a ⛔ 4.7 és ⛔ DT-F12 sorokat | — | — |
 | Tanulmány-ellenőrzés (F37 T4) | nem él | — | A tartományban nincs `*_bovitett.md` és `*_tanulmany.md` fájl |
@@ -57,7 +57,7 @@ ELTÉRÉS: 15 tétel
 5. ⛔ 4.7: nincs nyoma, hogy a felhasználó látta a próbalapot.
 6. 5.5: a tesztek nem zöldek.
 7. 8(c): Rokon szavak / Új felismerés jelölés nélkül.
-8. DT-F12b részleges (49:19 a `bdb_szakasz_hu.tsv`-ben).
+8. DT527 részleges (49:19 a `bdb_szakasz_hu.tsv`-ben).
 9. L2: folyamat- és dátummondatok a lapon.
 10. A kiejtés nem egységes.
 11. A kolofon cellája üres.

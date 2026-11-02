@@ -1,4 +1,4 @@
-# F12.1: a TEREMT-002 három sorának szótári mezői (naplok/F12_kitoltes.py); DT-F12a (1), az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával
+# F12.1: a TEREMT-002 három sorának szótári mezői (naplok/F12_kitoltes.py); DT526 (1), az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával
 id	igehely	lexikon_szotar	lexikon_entry_id	jelentes_szam	bdb_utvonal	tarsszo	jelentes_en	jelentes_hu	proveniencia
 TEREMT-002	1Móz 1:2	BDB	H8414	1	-/1/-	H0922=tagolatlan	formlessness	formátlanság	scope=H8414+H0922 1Móz 1:2 (adat/bdb_vers_jelentes.tsv: H8414 -/1, H0922 tagolatlan; TAHOT 1+1 token) | forras=adat/bdb_szakaszok.tsv + adat/bdb_szakasz_hu.tsv (H8414 -/1/-, részlet bájtra) | ts=2026-11-02
 TEREMT-002	Jer 4:23	BDB	H8414	1	-/1/-	H0922=tagolatlan	formlessness	formátlanság	scope=H8414+H0922 Jer 4:23 (adat/bdb_vers_jelentes.tsv: H8414 -/1, H0922 tagolatlan; TAHOT 1+1 token) | forras=adat/bdb_szakaszok.tsv + adat/bdb_szakasz_hu.tsv (H8414 -/1/-, részlet bájtra) | ts=2026-11-02

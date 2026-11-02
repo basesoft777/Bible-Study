@@ -1,8 +1,8 @@
-<!-- FORRÁSRÉTEG — kézzel írt B9-fájl (a 7. lépés saját fájlja, DT66 (a) 2.), a 7. sablon szerinti webes menet (F12, FELADATOK #12, DT-F12d (1)). NEM generált fájl. -->
+<!-- FORRÁSRÉTEG — kézzel írt B9-fájl (a 7. lépés saját fájlja, DT66 (a) 2.), a 7. sablon szerinti webes menet (F12, FELADATOK #12, DT529 (1)). NEM generált fájl. -->
 
 # PaRDeS — Nevesített tanítói keresés: TEREMT-002
 
-*A `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` (v1) szerint; F12 (FELADATOK #12), DT-F12d (1), 2026.11.02.*
+*A `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` (v1) szerint; F12 (FELADATOK #12), DT529 (1), 2026.11.02.*
 
 ---
 

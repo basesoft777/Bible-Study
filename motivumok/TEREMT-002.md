@@ -78,7 +78,7 @@ A mérőkötél és a függőón az építés eszköze; itt a rombolás mérték
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=BDB; strong=H0922; entry_id=H0922; jelentes_szam=tagolatlan -->
 
-【NAPLO: forrás — a BDB-idézet a `konkordancia/BDB_teljes_unabridged.tsv` H8414 és H0922 sorából, a magyar fordítás az `adat/forditasok.tsv` `BDB` soraiból (`mezo=forditas_hu`, `allapot=opus`, `modell=claude-opus-5-5`). A két szócikk héber idézeteinek sérült szórendjét a három motívumversen a DT445 gépi javítása rendezte (`adat/bdb_forras_javitas.tsv`, `heber_sorrend`, `javitva`); a maradék 9 töredék `jelolt_marad` (N-F12a). A H8414 2. pontjának „49:19” hivatkozása 49:4-re javítva (F12.2b, DT-F12b (1), `hivatkozas_kezi`). Az előfordulás-sorok szótári mezői és a `lexikon_hivatkozasok.tsv` két sora az F12.1-ben (DT-F12a (1)). A jelentés-bekezdés igehelyenkénti besorolása az UBS DBH versszintű adatából (`[^ubs-vers]`), nem értelmezés.】
+【NAPLO: forrás — a BDB-idézet a `konkordancia/BDB_teljes_unabridged.tsv` H8414 és H0922 sorából, a magyar fordítás az `adat/forditasok.tsv` `BDB` soraiból (`mezo=forditas_hu`, `allapot=opus`, `modell=claude-opus-5-5`). A két szócikk héber idézeteinek sérült szórendjét a három motívumversen a DT445 gépi javítása rendezte (`adat/bdb_forras_javitas.tsv`, `heber_sorrend`, `javitva`); a maradék 9 töredék `jelolt_marad` (N-F12a). A H8414 2. pontjának „49:19” hivatkozása 49:4-re javítva (F12.2b, DT527 (1), `hivatkozas_kezi`). Az előfordulás-sorok szótári mezői és a `lexikon_hivatkozasok.tsv` két sora az F12.1-ben (DT526 (1)). A jelentés-bekezdés igehelyenkénti besorolása az UBS DBH versszintű adatából (`[^ubs-vers]`), nem értelmezés.】
 
 **A magyar fordítás.** Károli az 1Móz 1:2-t és a Jer 4:23-at szó szerint azonosan fordítja („kietlen és puszta”), az Ézs 34:11-et másként („pusztaság … semmiség”);[^d-elof] a héber pár mindhárom helyen azonos.[^koll] A Jer 4:23 magyar olvasója így hallja a visszautalást, az Ézs 34:11-é nem.
 
@@ -98,7 +98,7 @@ A mérőkötél és a függőón az építés eszköze; itt a rombolás mérték
 
 A görög szavak újszövetségi előfordulásai nem adnak hidat. Az ἀόρατος öt újszövetségi verse (1Tim 1:17, Kol 1:15, Kol 1:16, Róm 1:20, Zsid 11:27) a láthatatlan Istenről és a láthatatlan dolgokról szól, nem a föld állapotáról;[^lxx-gen] az οὐθέν és az ἔρημος általános szókincs.[^lxx-jer][^lxx-ezs] Az 1Móz 1:2 LXX-szövegének ἀβύσσου (G0012) szava a vers *tehóm*-tagjához tartozik, nem ehhez a motívumhoz (l. 3. pont, Remez, elhatárolás).
 
-【NAPLO: LXX — a három vers fordítói döntése az F12.4-ben rögzítve (DT-F12c (1); `adat/lxx_dontesek.tsv` LD091–LD096): az 1Móz 1:2 két szava és az Ézs 34:11 *tohu*-ja `biztos` (a Macula szó-szintű illesztése és az LXX_OS egyezik), a Jer 4:23 οὐθέν-je és a két `lxx_minusz` sor `valoszinu` (a Macula a szavakat nem illeszti). A friss `lxx-hid` futás (2026-11-02) a 2026-10-08-ival szóra azonos; a régi, kivezetett forrásra mutató audit-sorokkal való eltérés: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.】
+【NAPLO: LXX — a három vers fordítói döntése az F12.4-ben rögzítve (DT528 (1); `adat/lxx_dontesek.tsv` LD091–LD096): az 1Móz 1:2 két szava és az Ézs 34:11 *tohu*-ja `biztos` (a Macula szó-szintű illesztése és az LXX_OS egyezik), a Jer 4:23 οὐθέν-je és a két `lxx_minusz` sor `valoszinu` (a Macula a szavakat nem illeszti). A friss `lxx-hid` futás (2026-11-02) a 2026-10-08-ival szóra azonos; a régi, kivezetett forrásra mutató audit-sorokkal való eltérés: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.】
 
 <!-- ADAT-NÉZET: 2.S Szótári háttér — szerepmátrix | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv | cél: general.py --cel lexikon#TEREMT-002#szocikkek | SZINT: apparatus -->
 
@@ -163,7 +163,7 @@ A szövegből mindkét irányban tehetők megfigyelések.
 
 Hogy az Ézs 45:18 a *tohu*-t mint célt vagy mint kiinduló állapotot tagadja-e, és hogy a הָיְתָה „vala” vagy „lett”, maga is az értelmezés tárgya. A szöveg-adat a vitát nem dönti el; a próza többi részében az egyik olvasatra épülő mondatok feltételes jelölést kapnak.
 
-【NAPLO: jelölés — a két olvasat leírása és a megfigyelések mérlegelése értelmezés (`manual`); a lábjegyzetek csak az idézett szövegre és szótári adatra mutatnak. A korábbi lezárás („a motívum a kiinduló-állapot olvasatot követi”) és a `kapcsolatok.tsv` irányára épülő érv a #64-ben kikerült (F64.15); a feltételes jelölések végállapota az F64.18 és az F64.21 szerint (archív szöveg: `archivum/TEREMT-002/TEREMT-002_forrasreteg_regi.md`). F12.6, 2026-11-02: „A két olvasat képviselői” bekezdés a 7. lépés eredményéből (`motivumok/naplok/TEREMT-002_tanitoi_kereses.md`, DT-F12d (1)); a ✅ forrás (MA-1001) Jer 4:23- és Ézs 34:11-megnevezését a session utólag ellenőrizte.】
+【NAPLO: jelölés — a két olvasat leírása és a megfigyelések mérlegelése értelmezés (`manual`); a lábjegyzetek csak az idézett szövegre és szótári adatra mutatnak. A korábbi lezárás („a motívum a kiinduló-állapot olvasatot követi”) és a `kapcsolatok.tsv` irányára épülő érv a #64-ben kikerült (F64.15); a feltételes jelölések végállapota az F64.18 és az F64.21 szerint (archív szöveg: `archivum/TEREMT-002/TEREMT-002_forrasreteg_regi.md`). F12.6, 2026-11-02: „A két olvasat képviselői” bekezdés a 7. lépés eredményéből (`motivumok/naplok/TEREMT-002_tanitoi_kereses.md`, DT529 (1)); a ✅ forrás (MA-1001) Jer 4:23- és Ézs 34:11-megnevezését a session utólag ellenőrizte.】
 
 <!-- RÉS-VÉGE: ertelmezes -->
 
@@ -239,7 +239,7 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 [^lxx-gen]: proveniencia: scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T11:33Z
 [^lxx-jer]: proveniencia: scope=range:Jer 4:23 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T11:33Z
 [^lxx-ezs]: proveniencia: scope=range:Ézs 34:11 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T11:33Z
-[^lxx-d]: proveniencia: scope=id=LD091–LD096 (TEREMT-002) | forras=adat/lxx_dontesek.tsv (Macula_heber + LXX_OS; naplok/F12_lxx_dontesek.py) | n=6 | dontes=DT-F12c(1) | ts=2026-11-02
+[^lxx-d]: proveniencia: scope=id=LD091–LD096 (TEREMT-002) | forras=adat/lxx_dontesek.tsv (Macula_heber + LXX_OS; naplok/F12_lxx_dontesek.py) | n=6 | dontes=DT528(1) | ts=2026-11-02
 [^tahot3]: proveniencia: scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | n=59 | ts=2026-10-08T06:23Z
 [^bdb-tohu]: proveniencia: scope=strong=H8414 (Teljes_szocikk, részlet) | forras=BDB_teljes_unabridged.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | strong=H8414 | n=1 | ts=2026-10-08T06:42Z
 [^bdb-bohu]: proveniencia: scope=strong=H0922 (Teljes_szocikk, részlet) | forras=BDB_teljes_unabridged.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | strong=H0922 | n=1 | ts=2026-10-08T06:42Z
