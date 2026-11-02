@@ -216,6 +216,15 @@ class Pozitiv(unittest.TestCase):
                  '(„a Baálnak nevét hívák”).')
         self.nincs(lap(egy_a=egy_a), 'IDEZET')
 
+    def test_modernizalt_helyesiras_es_kihagyas(self):
+        """A Károli régies helyesírása (setétség) és a kihagyott szavak nem tesznek saját fordítássá egy idézetet."""
+        egy_a = ('**1Móz 7:11**\n*Noé életének hatszázadik esztendejében, … felfakadának ezen a napon a nagy mélység '
+                 'minden forrásai, és az ég csatornái megnyilatkozának.*\nA dekreáció kezdete: „felfakadának a nagy '
+                 'mélység forrásai”, a teremtéskor elválasztott vizek újraegyesülnek.\n\n'
+                 '**1Móz 1:2**\n*És a föld kietlen és puszta vala, és setétség vala a mélység színén.*\n'
+                 'Az ősállapot: „sötétség vala a mélység színén”, a rendezés előtti kép.')
+        self.nincs(lap(egy_a=egy_a), 'IDEZET')
+
     def test_sajat_forditas_jelolve(self):
         egy_a = ('**1Móz 37:35**\n*… Sírva megyek fiamhoz a sírba …*\nJákób gyásza: „leszállok fiamhoz a Seolba, '
                  'gyászolva” (saját fordítás).')

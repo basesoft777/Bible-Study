@@ -41,6 +41,7 @@ Használat:
 Kilépési kód: 1, ha bármely lapon van BUKÁS; 0 egyébként.
 """
 import argparse
+import difflib
 import json
 import os
 import re
@@ -572,6 +573,42 @@ def blokkok_1a(sorok):
     return ki
 
 
+IDEZET_SZO_HASONLOSAG = 0.75  # szavanként: a modernizált helyesírás (setétség → sötétség) még egyezik
+# darabonként a kihagyott versszavak legfeljebb ennyiszerese az idézett szavaknak (pl. „felfakadának [ezen a napon]
+# a nagy mélység [minden] forrásai”); minden idézett szónak sorrendben egyeznie kell, ezért ez nem enged át parafrázist
+IDEZET_KIHAGYAS = 1
+
+
+def szo_egyezik(a, b):
+    return a == b or difflib.SequenceMatcher(None, a, b).ratio() >= IDEZET_SZO_HASONLOSAG
+
+
+def karoli_egyezik(idez, karoli_normal):
+    """Az idézet a Károli-vers szövege-e: minden „…”-tal elválasztott darabja a vers szavait sorrendben követi,
+    szavanként tűréssel (a Károli régies helyesírása), a darab szószámával arányos kihagyással.
+    A más igealak vagy más szó (kihirdetem ↔ kiáltom) saját fordítás."""
+    vers = karoli_normal.split()
+    for darab in re.split(r'\.\.\.|…|\[[^\]]*\]', idez):
+        szavak = normal_szoveg(darab).split()
+        if not szavak:
+            continue
+        keret = IDEZET_KIHAGYAS * len(szavak)
+        if not any(illeszt(szavak, vers, 0, k, 0, keret) for k in range(len(vers))):
+            return False
+    return True
+
+
+def illeszt(q, v, qi, vi, kihagy, keret):
+    """A q[qi:] szavai a v[vi:]-ben sorrendben, összesen legfeljebb `keret` kihagyott versszóval."""
+    if qi == len(q):
+        return True
+    if vi == len(v):
+        return False
+    if szo_egyezik(q[qi], v[vi]) and illeszt(q, v, qi + 1, vi + 1, kihagy, keret):
+        return True
+    return qi > 0 and kihagy < keret and illeszt(q, v, qi, vi + 1, kihagy + 1, keret)
+
+
 def ell_idezet(sorok):
     ki = []
     for ige, _, karoli, proza in blokkok_1a(sorok):
@@ -587,7 +624,7 @@ def ell_idezet(sorok):
                 idez = m.group(2) or m.group(3)
                 if len(normal_szoveg(idez).split()) < 3:
                     continue
-                if normal_szoveg(idez) in kn:
+                if karoli_egyezik(idez, kn):
                     continue
                 if re.search(r'saját fordítás|sajat forditas|szó szerint:|ford\.\s*:', s.szoveg, re.I):
                     continue
@@ -853,6 +890,7 @@ def main():
     ap.add_argument('--osszes', action='store_true', help='minden lexikon/*_TUDOMANYOS.md')
     ap.add_argument('--reszletes', action='store_true', help='minden találat soronként')
     ap.add_argument('--json', help='a teljes kimenet JSON-fájlba')
+    ap.add_argument('--markdown', help='motívumonkénti javítandó lista Markdown-fájlba (generált napló)')
     a = ap.parse_args()
     ids = a.id
     if a.osszes:
@@ -881,7 +919,37 @@ def main():
     if a.json:
         with open(a.json, 'w', encoding='utf-8', newline='\n') as f:
             json.dump(ossz, f, ensure_ascii=False, indent=1)
+    if a.markdown:
+        with open(a.markdown, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(markdown(ossz))
     return 1 if buk_ossz else 0
+
+
+def cella(s):
+    return (s or '').replace('|', '\\|').replace('\n', ' ')
+
+
+def markdown(ossz):
+    """A mérés generált naplója: összesítő és motívumonként a javítandó lista."""
+    ki = ['# GENERÁLT: eszkozok/olvasoi_kapu.py --markdown — kézzel szerkeszteni tilos', '',
+          '# Olvasói kapu — mérés a lexikonlapokon', '',
+          '*scope=lexikon/*_TUDOMANYOS.md | forras=eszkozok/olvasoi_kapu.py | ts=%s*' % os.environ.get(
+              'PARDES_DATUM', 'futáskor'), '',
+          'Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugyanaz a belső jel egy tábla '
+          'több sorában). A sorszám a lap Markdown-sora.', '',
+          '| Motívum | BUKÁS | FIGYELMEZTETÉS | Kapunként (B/F) |', '|---|---|---|---|']
+    for mid, d in ossz.items():
+        ki.append('| %s | %d | %d | %s |' % (mid, d['bukas'], d['figyelmeztetes'], ', '.join(
+            '%s %d/%d' % (k, v[BUKAS], v[FIGY]) for k, v in sorted(d['kapunkent'].items()))))
+    for mid, d in ossz.items():
+        ki += ['', '## %s — %d BUKÁS, %d FIGYELMEZTETÉS' % (mid, d['bukas'], d['figyelmeztetes']), '']
+        for m in d['megjegyzes']:
+            ki.append('*%s*' % m)
+        ki += ['', '| Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |', '|---|---|---|---|---|---|']
+        for t in sorted(d['talalatok'], key=lambda x: (x['sulyossag'] != BUKAS, x['sor'])):
+            ki.append('| %s | %s | %s | %d | %s | %s |' % (t['sor'], t['azonosito'], t['sulyossag'], t['db'],
+                                                          cella(t['uzenet']), cella(t['idezet'])))
+    return '\n'.join(ki) + '\n'
 
 
 if __name__ == '__main__':
