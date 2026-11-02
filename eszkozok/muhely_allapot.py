@@ -140,6 +140,8 @@ def olvasoi_kapu(k):
     """A kapu olvasói szövege a mérő számaiból (a belső szavak nélkül)."""
     sz, al, n = k['sorszam'], k['allapot'], k.get('szam', {})
     if al == ZOLD:
+        if sz == 7 and n.get('kiadas2'):
+            return OLV_ZOLD[7] + ' 2. kiadáshoz: %d kérdés.' % n['kiadas2']
         return OLV_ZOLD[sz]
     if al == NINCS:
         return OLV_NINCS[sz]
@@ -165,7 +167,8 @@ def olvasoi_kapu(k):
             reszek.append('%d rész magyarázat nélkül áll' % n['blokk'])
         return 'A lapon ' + ', '.join(reszek) + '.' if reszek else 'A lap még javításra vár.'
     if sz == 7:
-        return '%d lektori kérdés vár válaszra.' % n.get('n', 0)
+        s = '%d lektori kérdés vár válaszra.' % n.get('n', 0)
+        return s + ' 2. kiadáshoz: %d kérdés.' % n['kiadas2'] if n.get('kiadas2') else s
     return '%d kapcsolódó munka vagy kérdés vár megoldásra.' % n.get('n', 0)
 
 
@@ -302,6 +305,11 @@ def lektor_zart(sor):
     return sor.get('allapot', '').strip() == 'megvalaszolva'
 
 
+def masodik_kiadas(sor):
+    """A `/kiadas` lektori kérdései (forras=lektor) a következő kiadáshoz tartoznak: nem blokkolnak."""
+    return sor.get('forras', '').strip() == 'lektor'
+
+
 def kriterium_5(motivum):
     mero = 'motivum_hatar.py'
     ut = os.path.join(GYOKER, 'naplok', 'HATAR_%s.md' % motivum)
@@ -371,9 +379,12 @@ def kriterium_7(motivum):
     if sorok is None:
         return uj(NINCS, 'nincs naplok/LEKTOR_%s.tsv (a lektori kérdések még nincsenek generálva)' % motivum, mero,
                   motivum)
-    nyitott = [s for s in sorok if not lektor_zart(s)]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés' % (len(nyitott),
-              len(sorok) - len(nyitott)), mero, motivum, [s.get('kerdes_id', '') for s in nyitott], {'n': len(nyitott)})
+    nyitott = [s for s in sorok if not lektor_zart(s) and not masodik_kiadas(s)]
+    kiadas2 = [s for s in sorok if not lektor_zart(s) and masodik_kiadas(s)]
+    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés, 2. kiadáshoz %d' % (
+              len(nyitott), len(sorok) - len(nyitott) - len(kiadas2), len(kiadas2)), mero, motivum,
+              [s.get('kerdes_id', '') for s in nyitott] + ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in kiadas2],
+              {'n': len(nyitott), 'kiadas2': len(kiadas2)})
 
 
 # ----------------------------------------------------------------------------- feladatok, DT-k

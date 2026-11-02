@@ -1,7 +1,7 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; stash.json",
- "generalva": "2026-11-02T07:22Z",
- "commit": "0edc79bd",
+ "generalva": "2026-11-02T07:57Z",
+ "commit": "21e9da5d",
  "kritérium": "mind a 8 pont zöld (F156 3.2); a kötet-hozzárendelés nincs adatban (DT-F156d)",
  "tetelek": [],
  "kesz_db": 0

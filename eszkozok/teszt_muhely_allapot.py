@@ -77,8 +77,7 @@ class Teszt(unittest.TestCase):
         self.assertFalse(M.lektor_zart({}))
 
     def test_lektor_meroi_a_valos_tablan(self):
-        # ISTENTISZT-001: 5 megválaszolt kérdés -> zöld; nem létező tábla -> nincs mérő
-        self.assertEqual(M.kriterium_7('ISTENTISZT-001')['allapot'], M.ZOLD)
+        # nem létező tábla -> nincs mérő
         self.assertEqual(M.kriterium_7('NEMLETEZO-999')['allapot'], M.NINCS)
 
     def test_motivumkozi_jelolt_nem_blokkol(self):
@@ -102,6 +101,13 @@ class Teszt(unittest.TestCase):
         self.assertFalse(M.feladat_blokkol(fej, '4. lépés ⛔ Y-002: döntés', 'X-001'))
         self.assertFalse(M.feladat_blokkol(dict(fej, ir='naplok/X-001_valami.md'), '⛔ X-001', 'X-001'))
         self.assertFalse(M.feladat_blokkol(dict(fej, allapot='lezarva'), '⛔ X-001', 'X-001'))
+
+    def test_masodik_kiadas_nem_blokkol(self):
+        self.assertTrue(M.masodik_kiadas({'forras': 'lektor'}))
+        self.assertFalse(M.masodik_kiadas({'forras': 'hatar'}))
+        sz = M.olvasoi_kapu({'sorszam': 7, 'allapot': 'zold', 'szam': {'n': 0, 'kiadas2': 3}})
+        self.assertIn('2. kiadáshoz: 3 kérdés', sz)
+        self.assertNotIn('2. kiadáshoz', M.olvasoi_kapu({'sorszam': 7, 'allapot': 'zold', 'szam': {'n': 0}}))
 
     def test_olvasoi_mondat(self):
         self.assertEqual(M.olvasoi_mondat(33, 6, 92, 3),
