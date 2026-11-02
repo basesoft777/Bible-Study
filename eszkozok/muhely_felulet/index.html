@@ -77,7 +77,7 @@
         <p data-draw="stash_ures" data-source="stash">—</p>
         <div class="scroll">
           <table data-source="stash" data-row-key="id">
-            <thead><tr><th data-field="id">Motívum</th><th data-field="cim">Cím</th><th data-field="osz">Ószövetségi hely</th><th data-field="usz">Újszövetségi hely</th><th data-field="kapcs">Kapcsolat</th><th data-field="szo">Terjedelem (szó)</th><th data-field="kotet">Kötet</th></tr></thead>
+            <thead><tr><th data-field="id">Motívum</th><th data-field="cim">Cím</th><th data-field="osz">Ószövetségi hely</th><th data-field="usz">Újszövetségi hely</th><th data-field="kapcs">Kapcsolat</th><th data-field="szo">Terjedelem (szó)</th><th data-field="kotet">Kötet</th><th data-field="fole">Fölérendelt fogalom</th><th data-field="neg">Negatív kritérium</th></tr></thead>
             <tbody data-draw="stash_tabla"></tbody>
           </table>
         </div>
@@ -201,7 +201,7 @@
   dash.draw('stash_tabla', (el) => {
     const g = dash.data('stash');
     if (g.status !== 'ok') return;
-    tablaTolt(el, g.data, ['id', 'cim', 'osz', 'usz', 'kapcs', 'szo', 'kotet']);
+    tablaTolt(el, g.data, ['id', 'cim', 'osz', 'usz', 'kapcs', 'szo', 'kotet', 'fole', 'neg']);
   });
   dash.draw('stash_ures', (el) => {
     const g = dash.data('stash');

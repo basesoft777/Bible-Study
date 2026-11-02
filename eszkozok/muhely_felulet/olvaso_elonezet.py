@@ -56,6 +56,9 @@ CSS = """
   th { color: var(--halvany); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.02em; }
   td.adat { font-family: var(--adat); font-variant-numeric: tabular-nums; }
   .ures { color: var(--halvany); }
+  dl.leiras { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: 0.85rem; }
+  dl.leiras dt { color: var(--halvany); }
+  dl.leiras dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
   footer { color: var(--halvany); font-size: 0.78rem; }
 """
 
@@ -67,6 +70,18 @@ def kartya(m):
             '<ul class="lanc" aria-label="Állapot">%s</ul><p class="mondat">%s</p>'
             '<ul class="lepesek" aria-label="Teljesült lépések">%s</ul></article>'
             % (e(m['cim']), e(m['id']), lanc, e(m['olvasoi_mondat']), lepesek))
+
+
+def stash_kartya(x):
+    """A Stash leírása és statja (DT-F156e: negatív kritérium és fölérendelt fogalom is)."""
+    sor = [('Téma', x['tema']), ('PaRDeS-szint', x['pardes_szint']), ('Fölérendelt fogalom', x['folerendelt_fogalom']),
+           ('Ide nem tartozik', x['negativ_kriterium']), ('Terjedelem', '%s szó' % x['terjedelem_szo']),
+           ('Kötet', x['kotet_olvasoi'])]
+    stat = '%s ószövetségi és %s újszövetségi hely, %s kapcsolat' % (x['elofordulas_osz'], x['elofordulas_usz'],
+                                                                      x['kapcsolatok_db'])
+    return ('<article class="kartya"><div class="fej"><h3>%s</h3><span class="azon">%s</span></div><p class="mondat">%s</p>'
+            '<dl class="leiras">%s</dl></article>' % (e(x['cim']), e(x['id']), e(stat), ''.join(
+                '<dt>%s</dt><dd>%s</dd>' % (e(k), e(str(v))) for k, v in sor)))
 
 
 def main():
@@ -83,12 +98,7 @@ def main():
                        % (e(x['datum']), e(x['motivum']), e(x['olvasoi_esemeny'])) for x in ny['heti_tortenes'])
     tetelek = st['tetelek']
     if tetelek:
-        stash = '<div class="tab"><table><thead><tr><th>Motívum</th><th>Cím</th><th>Ószövetségi hely</th><th>Újszövetségi hely' \
-                '</th><th>Kapcsolat</th><th>Terjedelem (szó)</th><th>Kötet</th></tr></thead><tbody>%s</tbody></table></div>' % ''.join(
-                    '<tr><td>%s</td><td>%s</td><td class="adat">%s</td><td class="adat">%s</td><td class="adat">%s</td>'
-                    '<td class="adat">%s</td><td>%s</td></tr>' % (
-                        e(t['id']), e(t['cim']), t['elofordulas_osz'], t['elofordulas_usz'], t['kapcsolatok_db'],
-                        t['terjedelem_szo'], e(t['kotet_olvasoi'])) for t in tetelek)
+        stash = '<div class="kartyak">%s</div>' % ''.join(stash_kartya(x) for x in tetelek)
     else:
         stash = '<p class="ures">A kész motívumok leírása és számai itt jelennek meg.</p>'
     oldal = (

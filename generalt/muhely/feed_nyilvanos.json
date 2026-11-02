@@ -1,7 +1,7 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
- "generalva": "2026-11-02T08:19Z",
- "commit": "a315316c",
+ "generalva": "2026-11-02T09:08Z",
+ "commit": "a930b886",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "motivumok": [
   {
@@ -56,13 +56,28 @@
    "cim": "Névbe vetett segítségülhívás",
    "tema": "Pneumatológia/istentisztelet",
    "pardes_szint": "Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 7,
+   "allasfokozat": "Kész",
+   "zold_db": 8,
    "ossz_db": 8,
    "elvetett_jelolt_db": 106,
    "beepitett_jelolt_db": 24,
-   "stash": null,
-   "olvasoi_mondat": "22 igehely feldolgozva, 106 kizárva; a nyolc ellenőrzési lépésből 7 teljesül.",
+   "stash": {
+    "cim": "Segítségül hívni az Úr nevét",
+    "tema": "Pneumatológia/istentisztelet",
+    "pardes_szint": "Drash",
+    "negativ_kriterium": "az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: \"[valaki] hívja segítségül az Úr nevét\"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT478, DT476 K4). Az Újszövetségben az ἐπικαλέομαι mellett a névnek (ὄνομα) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)",
+    "folerendelt_fogalom": "istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül)",
+    "terjedelem_szo": 26827,
+    "kotet": null,
+    "elofordulas_osz": 16,
+    "elofordulas_usz": 6,
+    "kapcsolatok_db": 3,
+    "forditasi_lefedettseg": 0.955,
+    "utolso_generalas_commit": "3bce7209",
+    "verzio": "v4",
+    "kotet_olvasoi": "Kötetbe még nincs beosztva"
+   },
+   "olvasoi_mondat": "22 igehely feldolgozva, 106 kizárva; a nyolc ellenőrzési lépésből 8 teljesül.",
    "lanc": [
     {
      "nev": "Felmerült",
@@ -74,11 +89,11 @@
     },
     {
      "nev": "Ellenőrzés",
-     "allapot": "aktualis"
+     "allapot": "kesz"
     },
     {
      "nev": "Kész",
-     "allapot": "kovetkezo"
+     "allapot": "aktualis"
     },
     {
      "nev": "Kötetben",
@@ -120,6 +135,11 @@
      "sorszam": 7,
      "olvasoi_nev": "Lektori átolvasás",
      "olvasoi_szoveg": "A lektori átolvasás lezárult. 2. kiadáshoz: 17 kérdés."
+    },
+    {
+     "sorszam": 8,
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
     }
    ]
   },
@@ -480,8 +500,8 @@
  ],
  "merok_osszesen": {
   "motivum_db": 9,
-  "kesz_db": 0,
-  "kapu_zold": 28,
+  "kesz_db": 1,
+  "kapu_zold": 29,
   "kapu_ossz": 72
  },
  "heti_tortenes": [
@@ -489,6 +509,11 @@
    "datum": "2026-11-02",
    "motivum": "ISTENTISZT-001",
    "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
+  },
+  {
+   "datum": "2026-11-02",
+   "motivum": "ISTENTISZT-001",
+   "olvasoi_esemeny": "A motívum lapja új változatot kapott (4. változat)"
   },
   {
    "datum": "2026-11-01",
