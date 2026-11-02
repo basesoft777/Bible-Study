@@ -692,7 +692,9 @@ def _r_karoli_alakok(d, K):
     ki = Markup('<p>%d Károli-előfordulás, ebből %d magas bizonyosságú.</p>') % (ossz, magas)
     ki += _tabla(['Károli-alak', 'Darab'], [[a, str(n)] for a, n in top])
     kv = K.kozos.karoli_strong_konyvek
-    return ki + Markup('<p class="megj">A %d feldolgozott könyv (%s) szó szintű párjai alapján; a többi könyv még hiányzik.</p>') % (len(kv), ', '.join(kv))
+    # DT-F149a: a „a többi könyv még hiányzik” tagmondat csak akkor igaz, ha van párosítás nélküli könyv (az F22 óta mind a 66 párosított)
+    hianyzik = Markup('; a többi könyv még hiányzik') if len(kv) < len(K.kozos.konyvek) else Markup('')
+    return ki + Markup('<p class="megj">A %d feldolgozott könyv (%s) szó szintű párjai alapján%s.</p>') % (len(kv), ', '.join(kv), hianyzik)
 
 
 def _bdb_adat(K):

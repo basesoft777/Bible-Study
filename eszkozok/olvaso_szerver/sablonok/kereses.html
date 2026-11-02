@@ -63,7 +63,7 @@
 <p class="megj">{% for s in k.szavak %}<a href="/szo/{{ s }}">{{ s }} szó-lapja</a>{% if t.info.strong_alakok[s] %} — Károli-alakok a párosításban (modell-kimenet): {% for a, n in t.info.strong_alakok[s] %}{{ a }} {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
 {% endif %}
 {% for f in t.figyelmeztetes %}<p class="megj" role="note">{{ f }}</p>{% endfor %}
-{% if k.tipus in ('szo', 'frazis') %}
+{% if k.tipus in ('szo', 'frazis') and token_nelkuli %}
 <p class="megj">Nem keresett könyvek (nincs magyar szótoken): {{ token_nelkuli|join(', ') }}.</p>
 {% endif %}
 {% if not t.versek %}
