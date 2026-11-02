@@ -15,6 +15,8 @@ Alparancsok:
   seol    —       az ALVIL-001 2e. 4. scanje: halál/sír + kiáltás az Úrhoz, H7585 nélkül
   rokon   <ID> <A1,A2> <B1,B2> [ablak] — összetett gerinc-elem rokon alakokkal, azonos versben és ±ablak versben
                   (ANTROP-001: a negatív kritérium „melléknévi alak” és „egyazon mondat” kitétele)
+  lxx     <ID> <H1+H2> <A1,A2> <B1,B2> — a héber gerinc-pár kollokációs helyein az LXX-híd: áll-e ott a görög pár
+                  (ANTROP-001: DT-F123s)
 
 TSV-olvasás split('\\t') (lekerdez.read_tsv); a csv modul tilos (CLAUDE.md).
 Futtatás: python naplok/F123_adat_keszito.py <alparancs> [ID]
@@ -809,6 +811,52 @@ def cmd_rokon(mid, a_csop, b_csop, ablak=1):
         print('T\t' + '\t'.join(s))
 
 
+def cmd_lxx(mid, heber_par, a_csop, b_csop):
+    """F123.ANTROP.A8 (DT-F123s): a héber gerinc-pár (pl. H5315+H2416) kollokációs helyein az LXX-híd — megjelenik-e
+    az LXX-versben a görög A-csoport (pl. G4151|G4152) és B-csoport (pl. G5590|G5591) egy-egy tagja. Mért mező,
+    ítélet nélkül; minden `lxx-hid` lekérdezés naplózva (`--naplo F123`)."""
+    a_csop, b_csop = a_csop.split(','), b_csop.split(',')
+    ki, prov_k = lekerdez_futtat(['kollokacio'] + heber_par.split('+'))
+    helyek = [h for h in ki if not h.startswith('#') and not h.startswith('proveniencia:')]
+    E, J = motivum_sorok(mid)
+    E_v = set()
+    for r in E:
+        E_v.update(versre(r['igehely']))
+    J_v = {}
+    for r in J:
+        try:
+            for v in versre(r['igehely']):
+                J_v.setdefault(v, []).append(r['dontes'])
+        except ValueError:
+            J_v.setdefault(r['igehely'], []).append(r['dontes'])
+    sorok = []
+    for h in helyek:
+        out, prov = lekerdez_futtat(['lxx-hid', h])
+        fejs = [s for s in out if s.startswith('# LXX-vers:')]
+        g = set()
+        for s in out:
+            m = re.match(r'^(G\d{4})\t', s)
+            if m:
+                g.add(m.group(1))
+        av = [s for s in a_csop if s in g]
+        bv = [s for s in b_csop if s in g]
+        allapot = 'előfordulás' if h in E_v else ('jelölt (%s)' % '/'.join(J_v[h]) if h in J_v else 'ÚJ')
+        sorok.append([h, fejs[0][len('# LXX-vers:'):].strip() if fejs else 'nincs LXX-vers', '+'.join(av) or '—',
+                      '+'.join(bv) or '—', 'GÖRÖG PÁR AZ LXX-BEN' if av and bv else ('egy tag' if av or bv else 'nincs'),
+                      allapot, prov])
+    ir_tsv('F123_adat_%s_lxx_hid.tsv' % mid,
+           ['igehely', 'lxx_vers', 'a_csoport_az_lxx_ben', 'b_csoport_az_lxx_ben', 'gorog_par', 'allapot', 'proveniencia'],
+           sorok, 'F123 X.A LXX-híd a %s kollokációs helyein (%s × %s), %s — mért mezők, ítélet nélkül; kollokáció: %s'
+           % (heber_par, '|'.join(a_csop), '|'.join(b_csop), mid, prov_k))
+    print('PROV\t' + prov_k)
+    c = Counter((s[4], s[5].split(' (')[0]) for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB\t%s\t%s\t%d' % (k[0], k[1], v))
+    for s in sorok:
+        if s[4] == 'GÖRÖG PÁR AZ LXX-BEN':
+            print('PAR\t' + '\t'.join(s[:6]))
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -823,6 +871,8 @@ def main():
         cmd_seol()
     elif cmd == 'seol_ablak':
         cmd_seol_ablak(int(sys.argv[2]) if len(sys.argv) > 2 else 2)
+    elif cmd == 'lxx':
+        cmd_lxx(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
     elif cmd == 'rokon':
         cmd_rokon(sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else 1)
     else:
