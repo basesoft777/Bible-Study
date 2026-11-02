@@ -1,0 +1,64 @@
+# GENERÁLT: naplok/F123_adat_keszito.py | F123 X.A LXX-híd a HAMART-001 héber előfordulás-versein (G1944|G2671|G2672|G5351|G5356|G1311|G1312|G2704|G5349) — mért mezők, ítélet nélkül | 2026-11-02T13:18Z
+elofordulas	vers	gerinc_elem	lxx_vers	kriterium_gorog_eleme_az_lxx_ben	proveniencia
+1Móz 3:14	1Móz 3:14	H0779	Genesis 3:14 (karoli_ok=egyező)	G1944	scope=range:1Móz 3:14 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=40 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 3:16	1Móz 3:16	H6093	Genesis 3:16 (karoli_ok=egyező)	—	scope=range:1Móz 3:16 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 3:17	1Móz 3:17	H0127	Genesis 3:17 (karoli_ok=egyező)	G1944	scope=range:1Móz 3:17 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=42 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 3:18	1Móz 3:18	H6975+H1863	Genesis 3:18 (karoli_ok=egyező)	—	scope=range:1Móz 3:18 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 3:19	1Móz 3:19	H0127	Genesis 3:19 (karoli_ok=egyező)	—	scope=range:1Móz 3:19 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=26 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 3:23	1Móz 3:23	H0127	Genesis 3:23 (karoli_ok=egyező)	—	scope=range:1Móz 3:23 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:2-3	1Móz 4:2	H0127	Genesis 4:2 (karoli_ok=egyező)	—	scope=range:1Móz 4:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:2-3	1Móz 4:3	H0127	Genesis 4:3 (karoli_ok=egyező)	—	scope=range:1Móz 4:3 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:7	1Móz 4:7	H2403	Genesis 4:7 (karoli_ok=egyező)	—	scope=range:1Móz 4:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:10-11	1Móz 4:10	H0779	Genesis 4:10 (karoli_ok=egyező)	—	scope=range:1Móz 4:10 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:10-11	1Móz 4:11	H0779	Genesis 4:11 (karoli_ok=egyező)	G1944	scope=range:1Móz 4:11 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:12	1Móz 4:12	H0127	Genesis 4:12 (karoli_ok=egyező)	—	scope=range:1Móz 4:12 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 4:14	1Móz 4:14	H0127	Genesis 4:14 (karoli_ok=egyező)	—	scope=range:1Móz 4:14 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=30 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 5:29	1Móz 5:29	H6093	Genesis 5:29 (karoli_ok=egyező)	G2672	scope=range:1Móz 5:29 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=30 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:5	1Móz 6:5	H7451	Genesis 6:5 (karoli_ok=egyező)	—	scope=range:1Móz 6:5 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:7	1Móz 6:7	H0127	Genesis 6:7 (karoli_ok=egyező)	—	scope=range:1Móz 6:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=30 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:11	1Móz 6:11	H7843	Genesis 6:11 (karoli_ok=egyező)	G5351	scope=range:1Móz 6:11 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:12	1Móz 6:12	H7843	Genesis 6:12 (karoli_ok=egyező)	G2704	scope=range:1Móz 6:12 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:13	1Móz 6:13	H2555	Genesis 6:13 (karoli_ok=egyező)	G2704	scope=range:1Móz 6:13 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 6:17	1Móz 6:17	H7843	Genesis 6:17 (karoli_ok=egyező)	G2704	scope=range:1Móz 6:17 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 8:21	1Móz 8:21	H7043	Genesis 8:21 (karoli_ok=egyező)	G2672	scope=range:1Móz 8:21 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=47 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 9:11	1Móz 9:11	H7843	Genesis 9:11 (karoli_ok=egyező)	G2704	scope=range:1Móz 9:11 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 9:15	1Móz 9:15	H7843	Genesis 9:15 (karoli_ok=egyező)	—	scope=range:1Móz 9:15 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=33 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 9:25	1Móz 9:25	H0779	Genesis 9:25 (karoli_ok=egyező)	G1944	scope=range:1Móz 9:25 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=10 | ts=2026-11-02T13:18Z | csatorna=cli
+1Móz 12:3	1Móz 12:3	H0779	Genesis 12:3 (karoli_ok=egyező)	G2672	scope=range:1Móz 12:3 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T13:18Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:15	H0779	Deuteronomy 27:15 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:15 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:16	H0779	Deuteronomy 27:16 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:16 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:17	H0779	Deuteronomy 27:17 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:17 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:18	H0779	Deuteronomy 27:18 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:18 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:19	H0779	Deuteronomy 27:19 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:19 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:20	H0779	Deuteronomy 27:20 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:20 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:21	H0779	Deuteronomy 27:21 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:21 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:22	H0779	Deuteronomy 27:22 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:22 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:23	H0779	Deuteronomy 27:23 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:23 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:24	H0779	Deuteronomy 27:24 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:24 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:25	H0779	Deuteronomy 27:25 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:25 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 27:15-26	5Móz 27:26	H0779	Deuteronomy 27:26 (karoli_ok=egyező)	G1944	scope=range:5Móz 27:26 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 28:16-19	5Móz 28:16	H0779	Deuteronomy 28:16 (karoli_ok=egyező)	G1944	scope=range:5Móz 28:16 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=9 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 28:16-19	5Móz 28:17	H0779	Deuteronomy 28:17 (karoli_ok=egyező)	G1944	scope=range:5Móz 28:17 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=8 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 28:16-19	5Móz 28:18	H0779	Deuteronomy 28:18 (karoli_ok=egyező)	G1944	scope=range:5Móz 28:18 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T13:19Z | csatorna=cli
+5Móz 28:16-19	5Móz 28:19	H0779	Deuteronomy 28:19 (karoli_ok=egyező)	G1944	scope=range:5Móz 28:19 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-02T13:19Z | csatorna=cli
+Jer 17:5	Jer 17:5	H0779	Jeremiah (LXX) 17:5 (karoli_ok=egyező)	G1944	scope=range:Jer 17:5 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T13:19Z | csatorna=cli
+Zsolt 14:1	Zsolt 14:1	H7843	Psalms (LXX) 13:1 (karoli_ok=egyező)	G1311	scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-02T13:19Z | csatorna=cli
+Zsolt 53:2	Zsolt 53:2	H7843	Psalms (LXX) 52:2 (karoli_ok=mt_szamozas_kovetes)	G1311	scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T13:19Z | csatorna=cli
+Ez 7:23	Ez 7:23	málé+chámász	Ezekiel 7:23 (karoli_ok=egyező)	—	scope=range:Ez 7:23 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-02T13:19Z | csatorna=cli
+Ez 8:17	Ez 8:17	málé+chámász	Ezekiel 8:17 (karoli_ok=egyező)	—	scope=range:Ez 8:17 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-02T13:19Z | csatorna=cli
+Ez 28:16	Ez 28:16	málé+chámász	Ezekiel 28:16 (karoli_ok=egyező)	—	scope=range:Ez 28:16 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-02T13:19Z | csatorna=cli
+Zsolt 74:20	Zsolt 74:20	málé+chámász	Psalms (LXX) 73:20 (karoli_ok=egyező)	—	scope=range:Zsolt 74:20 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-02T13:19Z | csatorna=cli
+Mik 6:12	Mik 6:12	málé+chámász	Micah 6:12 (karoli_ok=egyező)	—	scope=range:Mik 6:12 | forras=LXX_OS/micah.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-02T13:19Z | csatorna=cli
+Sof 1:9	Sof 1:9	málé+chámász	Zephaniah 1:9 (karoli_ok=egyező)	—	scope=range:Sof 1:9 | forras=LXX_OS/zephaniah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T13:19Z | csatorna=cli
+Hab 2:8	Hab 2:8	H2555	Habakkuk 2:8 (karoli_ok=egyező)	—	scope=range:Hab 2:8 | forras=LXX_OS/habakkuk.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-02T13:19Z | csatorna=cli
+Hab 2:17	Hab 2:17	H2555	Habakkuk 2:17 (karoli_ok=egyező)	—	scope=range:Hab 2:17 | forras=LXX_OS/habakkuk.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-02T13:19Z | csatorna=cli
+Jón 3:8	Jón 3:8	H2555	Jonah 3:8 (karoli_ok=egyező)	—	scope=range:Jón 3:8 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=32 | ts=2026-11-02T13:19Z | csatorna=cli
+Ézs 60:18	Ézs 60:18	sámá+chámász	Isaiah 60:18 (karoli_ok=egyező)	—	scope=range:Ézs 60:18 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=28 | ts=2026-11-02T13:19Z | csatorna=cli
+Jer 6:7	Jer 6:7	sámá+chámász	Jeremiah (LXX) 6:7 (karoli_ok=egyező)	—	scope=range:Jer 6:7 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-02T13:19Z | csatorna=cli
+Jer 51:46	Jer 51:46	sámá+chámász	nincs LXX-vers	—	scope=range:Jer 51:46 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=0 | ts=2026-11-02T13:19Z | csatorna=cli
+Hab 1:2	Hab 1:2	sámá+chámász	Habakkuk 1:2 (karoli_ok=egyező)	—	scope=range:Hab 1:2 | forras=LXX_OS/habakkuk.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T13:19Z | csatorna=cli
+Ézs 24:5-6	Ézs 24:5	tematikus:1Móz 3:17	Isaiah 24:5 (karoli_ok=egyező)	—	scope=range:Ézs 24:5 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=18 | ts=2026-11-02T13:19Z | csatorna=cli
+Ézs 24:5-6	Ézs 24:6	tematikus:1Móz 3:17	Isaiah 24:6 (karoli_ok=egyező)	—	scope=range:Ézs 24:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-02T13:20Z | csatorna=cli
+Hós 4:1-3	Hós 4:1	tematikus:1Móz 3:17	Hosea 4:1 (karoli_ok=egyező)	—	scope=range:Hós 4:1 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=26 | ts=2026-11-02T13:20Z | csatorna=cli
+Hós 4:1-3	Hós 4:2	tematikus:1Móz 3:17	Hosea 4:2 (karoli_ok=egyező)	—	scope=range:Hós 4:2 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=18 | ts=2026-11-02T13:20Z | csatorna=cli
+Hós 4:1-3	Hós 4:3	tematikus:1Móz 3:17	Hosea 4:3 (karoli_ok=egyező)	—	scope=range:Hós 4:3 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=35 | ts=2026-11-02T13:20Z | csatorna=cli
