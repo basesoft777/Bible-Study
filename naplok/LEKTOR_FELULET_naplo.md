@@ -208,3 +208,12 @@
   beolvasható. 4 új teszt (31 OK).
 - Lektor-felület: ugyanaz a link, 13. verzió; az élő db `valaszok` gyűjteménye változatlan (3 dokumentum, ArtifactData list). Helyben, db-utánzattal megnézve: a két blokk csak a határ-kártyán
   jelenik meg, a lektori kártyán nem. Az élő oldalon a beépített böngésző bejelentkezést kér, ott a felhasználónak kell kipróbálnia.
+
+## A felület új neve: Kiadó (DT-F157h; a felhasználó: „A lektor kereszteljük át: Kiadó-ra”, pontosítva: „Csak a felület nevét”; 2026-11-02)
+
+- A felület címe (`<title>`) és fejléce „Kiadó” (`eszkozok/lektor_felulet/sablon.html`); az `epit.py` leírása „a Kiadó (felület)”.
+- Dokumentáció, ahol a felület mint hely szerepel: „Kiadó (felület)” — `MUNKAMENET.md` (C-h, C-l, C-k sora és a lezárás menete; 5 hely), `F10_LEXIKON_LEZARAS_BRIEF.md` (1),
+  `F123_MIGRACIO2_BRIEF.md` (3), `sablonok/4_PaRDeS_tematikus_sablon.md` (1).
+- Nem változik: a fájl- és eszköznevek (`naplok/LEKTOR_*.tsv`, `eszkozok/lektor_kerdesek.py`, `eszkozok/lektor_felulet/`), a `lektor` subagent, a „lektori kérdés / lektori kör”,
+  a `CLAUDE.md`, a generált `FELADATOK.md`, a korábbi döntések, naplók (ez a napló is) és idézetek szövege, a #156/#157 briefjében a feladat neve.
+- Az artifact ugyanazon a linken (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 14. verzió; a db válaszai érintetlenek.
