@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """F158 — a Thayer szakaszonkénti fordításának Batch-kötegelője (Anthropic Message Batches API; DT-F27a).
 
-A `bdb_api_koteg.py` Thayer-párja. A `thayer_jelolt/forditas.py` függvényeit hívja (prompt v5.1, adatblokk,
+A `bdb_api_koteg.py` Thayer-párja. A `thayer_jelolt/forditas.py` függvényeit hívja (prompt v5.2, adatblokk,
 javítóréteg + 14–16. kapu, szakaszsorok, beírás), nem másolja; a REST-hívó, a kulcskezelés (`PARDES_API_KEY`), a
 `tsv_olvas` / `tsv_hozzaad` az `eszkozok/karoli_strong/api_koteg.py`-ból, a tiszta segédek (költség, JSON-válasz,
 javító üzenet, modellnév) a `bdb_api_koteg.py`-ból jönnek. A kulcs nem íródik ki, fájlba nem kerül.
