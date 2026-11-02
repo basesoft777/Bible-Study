@@ -83,3 +83,7 @@ Proveniencia: l. 1. (szótár-háló sora).
 | 6. LXX-híd | Zsolt 16:10 (Psalms 15:10) és Hós 13:14: ᾅδης; teljes ÓSZ: l. 4. | ts=2026-11-02T19:47Z |
 
 A korábbi X.A-hoz (`naplok/F123_adat_ALVIL-001.md`, 2026-10-29) képest: **eltérés nincs** (64/10 vers, gerinc-elemet érintő változás nincs).
+
+## 6. Az eltérések elbírálása (U2, DT-F123o, 2026-11-02)
+
+A 28 egyenkénti jelölt (a 3. szakasz 18 helye, a 2. szakasz 3 közeli szava, a 4. szakasz 7 LXX-többlete; a Jób 38:17 kettős) `elutasítva`. A Károli-háló további 295 eltérése lexémánként egy blokk-sorként áll a `jeloltek.tsv`-ben: tehóm/abüsszosz 33, verem (bór, sahat) 18, temetkezési sír (kever, mnémeion) 68, sírás 130, egyéb (más mélység, siratóének, a sír/koporsó más szóért) 46 vers. A besorolás gépi, a vers Strongjai szerint, elsőbbségi sorrendben; versenkénti lista: `naplok/F123_teljesseg_ALVIL-001_blokkok.tsv`.

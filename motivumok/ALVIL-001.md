@@ -52,7 +52,7 @@ A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a hébe
 
 #### A Károli-fordítás szavai
 
-**Jelentősége:** a Károli a két szót hétféleképpen adja vissza: sír (29 hely), Seol (19), pokol (17), koporsó (5), alvilág (2), mélység (1) és holtak országa (1). Aki a magyar Bibliában a Seolra keres, csak a helyek negyedét találja meg ezen a néven. A sír és a pokol szó viszont sok olyan versben is áll, amely nem a halottak birodalmáról szól: a sír legtöbbször a temetkezési helyet vagy a sírást jelenti, a pokol a pusztulás helyét (Jób 28:22) vagy a tartaroszt (2Pét 2:4). A motívum helyét ezért nem a magyar szó, hanem az eredeti szöveg szava dönti el.
+**Jelentősége:** a Károli a két szót hétféleképpen adja vissza: sír (29 hely), Seol (19), pokol (17), koporsó (5), alvilág (2), mélység (1) és holtak országa (1). Aki a magyar Bibliában a Seolra keres, csak a helyek negyedét találja meg ezen a néven. A sír és a pokol szó viszont sok olyan versben is áll, amely nem a halottak birodalmáról szól: a sír legtöbbször a temetkezési helyet vagy a sírást jelenti, a pokol a pusztulás helyét (Jób 28:22) vagy a tartaroszt (2Pét 2:4). A 2Pét 2:4 a vétkes angyalok fogságáról szól, ezért az Isten fiairól, a nefilimekről és a gibborimokról szóló motívumhoz áll közel (vö. Júd 1:6), nem ide. A motívum helyét ezért nem a magyar szó, hanem az eredeti szöveg szava dönti el.
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, n=74; karoli_szo) | forras=split('\t') | ts=2026-11-02 · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/teljesseg_meres.py) | n=372 | ts=2026-11-02T19:45Z*
 
