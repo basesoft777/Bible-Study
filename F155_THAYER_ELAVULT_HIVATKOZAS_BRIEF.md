@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
 ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
-kovetkezo: "/kovetkezo (⛔ a sorok megjegyzésének bájt-szintű cseréje vagy a történeti szöveg megtartása)"
+kovetkezo: "nincs; nyitott (hatókörön kívül): a forditas.py docstring- és 211/216. sori DT-F132c literálja (E32 JELENTÉS, F141 javaslat); N66"
 olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, DONTESEK.md, naplok/ELLENOR_F142.md]
 ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
+ag: claude/f155-thayer-elavult-hivatkozas
+pr: 567
+lezarva_osszegzes: "A forditas.py a végleges DT329-et írja (teszttel); a 7 elavult Thayer-sor megjegyzése DT-F132c → DT329 (DT-F155a (a)), grep -c DT-F132c = 0, minden más sor bájtra azonos; a teszt_lanc.py G1941-állítása 10 → 6 (DT476, egyeztetett eltérés); ELLENOR_F155_3 TISZTA"
 fugg: []
 nem_fugg: [27, 38, 154]
 ---
@@ -54,4 +57,5 @@ Cél: (1) a `forditas.py:219` ne helyőrzőt írjon (a végleges `DT329` számot
 
 ## 5. Döntésnapló
 
-*(üres; a befogadáskor és a futásban tölti a végrehajtó.)*
+- **DT-F155a** — eldöntve: **(a)** csere `DT-F132c` → `DT329` a 7 `elavult` Thayer-sor megjegyzésében; a felhasználó szavaival: „(a) Csere DT329-re” (2026-11-02). Alkalmazva: F155.4. Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 5–6. szakasz.
+- **Egyeztetett eltérés** — a `teszt_lanc.py` G1941-állítása 10 → 6 (DT476 / F152.14), a felhasználó kérésére: „#155 és a teszt” (2026-11-02). Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 3. szakasz.
