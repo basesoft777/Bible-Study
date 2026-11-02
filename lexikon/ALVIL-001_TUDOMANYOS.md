@@ -1063,9 +1063,9 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** A motívum 72 helyéből 53 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 124. **Következtetés:** a helyek 74%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
+**Mit mutat ez a rész?** A motívum 72 helyéből 43 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 103. **Következtetés:** a helyek 60%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
 
-*Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 53 igehely ad legalább egy találatot (124 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 43 igehely ad legalább egy találatot (103 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható. 14 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Jób 14:13, Zsolt 6:6, Zsolt 49:15, Péld 15:24, Ézs 7:11, Ézs 14:15, Ézs 28:18, Ez 31:15, Ez 32:27, Jón 2:3, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31.*
 
 #### 1Móz 37:35
 - Károli-KH: 1Móz 42:38
@@ -1089,9 +1089,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 #### 1Kir 2:9
 - Károli-KH: 1Kir 2:36-46
 
-#### Jób 14:13
-- Károli-KH: Péld 6:26-29
-
 #### Jób 24:19
 - Károli-KH: Zsolt 49:15
 
@@ -1105,10 +1102,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - TSK: Zsolt 115:17 (Votes: 24)
 - TSK: Préd 9:12 (Votes: 22)
 - TSK: Zsolt 30:10 (Votes: 19)
-- Károli-KH: Zsolt 37:19
-- Károli-KH: Zsolt 34:6-7
-- Károli-KH: Zsolt 34:11
-- Károli-KH: Jób 5:20
 
 #### Zsolt 9:18
 - Károli-KH: Zsolt 41:6-9
@@ -1132,9 +1125,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### Zsolt 31:18
 - Károli-KH: Zsolt 6:11
-
-#### Zsolt 49:15
-- Károli-KH: Jób 27:17
 
 #### Zsolt 49:16
 - Károli-KH: Zsolt 16:10
@@ -1178,9 +1168,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 #### Péld 15:11
 - Károli-KH: Jób 26:6
 
-#### Péld 15:24
-- Károli-KH: Péld 22:2
-
 #### Péld 27:20
 - TSK: Préd 1:8 (Votes: 19)
 - Károli-KH: Préd 1:8
@@ -1199,23 +1186,14 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - TSK: Ézs 38:18 (Votes: 15)
 - TSK: Ézs 38:19 (Votes: 15)
 
-#### Ézs 7:11
-- Károli-KH: Ésa 13:21-22
-
 #### Ézs 14:11
 - Károli-KH: Jób 17:13
-
-#### Ézs 14:15
-- Károli-KH: 1Kir 7:2
 
 #### Ézs 28:15
 - Károli-KH: Jób 21:14
 - Károli-KH: Jer 2:31
 - Károli-KH: Zsolt 12:3-5
 - Károli-KH: Ésa 28:18
-
-#### Ézs 28:18
-- Károli-KH: Zsolt 96:11-13
 
 #### Ézs 38:10
 - Károli-KH: Ésa 41:26-27
@@ -1230,19 +1208,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Ezék 16:36
 - Károli-KH: Ezék 23:16-40
 
-#### Ez 31:15
-- Károli-KH: 3Móz 4:1
-- Károli-KH: 3Móz 6:1
-
 #### Ez 31:16
 - Károli-KH: Ésa 14:9-12
 
 #### Ez 32:21
 - Károli-KH: Ezék 32:12
-
-#### Ez 32:27
-- Károli-KH: Ezék 29:4
-- Károli-KH: Ésa 37:29
 
 #### Hós 13:14
 - TSK: Ézs 25:8 (Votes: 15)
@@ -1257,7 +1227,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - TSK: Zsolt 18:5 (Votes: 22)
 - TSK: Zsolt 18:7 (Votes: 22)
 - TSK: Zsolt 120:1 (Votes: 21)
-- Károli-KH: 5Móz 24:1
 
 #### Hab 2:5
 - Károli-KH: Péld 20:1
@@ -1267,21 +1236,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Mát 8:5
 - Károli-KH: Mát 9:1
 
-#### Luk 10:15
-- Károli-KH: Ésa 8:20
-
 #### Luk 16:23
 - TSK: 2Pét 2:4 (Votes: 23)
-- Károli-KH: Ésa 8:14-15
 
 #### ApCsel 2:27
 - TSK: Zsolt 16:10 (Votes: 17)
-- Károli-KH: 1Móz 46:27
-- Károli-KH: 2Móz 1:5
-- Károli-KH: 5Móz 10:22
-
-#### ApCsel 2:31
-- Károli-KH: 2Móz 1:8-22
 
 #### Jel 1:18
 - TSK: Róm 6:9 (Votes: 33)
@@ -1303,7 +1262,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** A 124 utalásból 21 a motívum két saját helyét köti össze, ez 19 helyet érint a 72-ból. **Következtetés:** a motívum helyeinek a 26%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
+**Mit mutat ez a rész?** A 103 utalásból 21 a motívum két saját helyét köti össze, ez 19 helyet érint a 72-ból. **Következtetés:** a motívum helyeinek a 26%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 

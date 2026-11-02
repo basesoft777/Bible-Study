@@ -28,6 +28,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `karoli_variancia.tsv` | `tipus` + `konyv` + `kulcs` + `ertek` + `bizonyossag` (+ `id` + `igehely` a `megerosites` sornál) | **generált** — `eszkozok/karoli_ellenorzes.py --variancia` (2.24, F65) |
 | `karoli_strong/nem_tr_parositott.tsv` | `vers` + `er_sorszam` | **generált** — `eszkozok/karoli_strong/nem_tr_lista.py` (2.20, F22 D45) |
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
+| `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 
 ---
 
@@ -1863,6 +1864,29 @@ a vers panelja ezt explicit jelzi.
 Proveniencia: scope=genezis/, ujszovetseg/, melyelemzesek/ + konkordancia/Karoli_1908.tsv | forras=`eszkozok/tanulmany_regiszter.py` (gépi kinyerés) | ts=az építés ideje
 (`pardes.db` `meta`). Tesztek: `eszkozok/teszt_tanulmany_regiszter.py`, `eszkozok/olvaso_szerver/teszt_tanulmany_oldal.py`. Mért állapot (2026-11-02):
 24 tanulmány (23 bővített, 1 mélyelemzés), 26 tartomány-sor, 1 660 hivatkozás-sor (`nev` 962, `tartomany` 698); lásd `naplok/OLVASO_TANULMANY_M0.md`.
+
+---
+
+### 2.48 `lap_atnezesek.tsv` — a lexikonlap vizuális átnézése (olvasói kapu, DT-F156k, DT-F156l, 2026-11-02)
+
+**Kézi** (`manual` proveniencia). Egy sor egy átnézés: a felhasználó a lap egy adott változatát (`lap_commit`) a renderelt nézetben
+blokkonként végignézte, és ezt saját szavaival jóváhagyta. A Feed 9. kapuja (`eszkozok/muhely_allapot.py` `kriterium_9`) ebből
+olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 0 BUKÁS-a. Olvasás `split('\t')`; a `#`-sor megjegyzés.
+
+| Oszlop | Jelentés |
+|---|---|
+| `id` | motívum-id (2.1) |
+| `lap_commit` | a `lexikon/[ID]_TUDOMANYOS.md` utolsó változásának commitja (`git log -1 --format=%H -- <lap>`), teljes vagy legalább 7 jegyű előtag |
+| `datum` | `ÉÉÉÉ.HH.NN` |
+| `ki` | `felhasználó` — más érték nem érvényes |
+| `idezet` | a felhasználó jóváhagyó szavai **szó szerint** (chat); nem üres |
+| `forras` | `scope=manual \| forras=… \| ts=…` (hol hangzott el) |
+
+**Érvényesség (DT-F156l).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
+a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
+nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
+
+Kulcs: `id` + `lap_commit`. Állapot (2026-11-02): 0 sor.
 
 ---
 

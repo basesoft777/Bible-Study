@@ -557,9 +557,9 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-02 -->
 
-**Mit mutat ez a rész?** A motívum 3 helyéből 3 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 33. **Következtetés:** a helyek 100%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
+**Mit mutat ez a rész?** A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 67%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
 
-*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 3 igehely ad legalább egy találatot (33 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 2 igehely ad legalább egy találatot (26 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Ézs 34:11, Jer 4:23.*
 
 #### 1Móz 1:2
 - TSK: Jer 4:23 (Votes: 84)
@@ -569,13 +569,6 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 - TSK: Jób 26:7 (Votes: 35)
 - TSK: Ézs 40:12 (Votes: 28)
 - TSK: Ézs 40:14 (Votes: 28)
-
-#### Ézs 34:11
-- Károli-KH: Ésa 66:12
-- Károli-KH: Ezék 34:12-16
-- Károli-KH: Ján 10:11
-- Károli-KH: 1Móz 33:13
-- Károli-KH: 4Móz 11:12
 
 #### Jer 4:23
 - TSK: Mt 24:29 (Votes: 35)
@@ -597,14 +590,12 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 - TSK: ApCsel 2:20 (Votes: 17)
 - TSK: Ézs 5:30 (Votes: 16)
 - TSK: Mt 24:35 (Votes: 15)
-- Károli-KH: Jer 9:15
-- Károli-KH: Zsolt 80:6-7
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kereszthivatkozasok -->
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** A 33 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet érint a 3-ból. **Következtetés:** a motívum helyeinek a 67%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.
+**Mit mutat ez a rész?** A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet érint a 3-ból. **Következtetés:** a motívum helyeinek a 67%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 

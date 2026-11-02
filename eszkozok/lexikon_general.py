@@ -3774,11 +3774,22 @@ def tsk_index():
     return _tsk_by_igehely
 
 
+_kh_kihagyott = set()
+
+
 def kh_index():
+    """A Károli-KH listák forrásversenként. A másolat-gyanús forrásversek listája nem kerül a lapra (DT-F156n, N-F156a:
+    a lista egy másik vers listájának másolata, `karoli_kh_epseg.gyanus_forrasok`); ezek a `_kh_kihagyott` halmazba
+    kerülnek, és a blokk hatókör-sora megnevezi a számukat."""
     global _kh_by_step
     if _kh_by_step is None:
+        import karoli_kh_epseg as KHE
+        gyanus = KHE.gyanus_forrasok()
         idx = {}
         for r in L.load_karoli_kh():
+            if r['Igehely'] in gyanus:
+                _kh_kihagyott.add(r['Igehely'])
+                continue
             idx.setdefault(r['Igehely'], []).append(r)
         _kh_by_step = idx
     return _kh_by_step
@@ -3795,6 +3806,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
     bekezdesek = []
     nem_vizsgalhato = []
+    kh_kihagyva = []
     talalat_szam = 0
 
     for s in sorai_rendezve:
@@ -3805,6 +3817,9 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             nem_vizsgalhato.append(igehely)
             continue
 
+        kh_index()
+        if step in _kh_kihagyott:
+            kh_kihagyva.append(igehely)
         tsk_talalatok = sorted(
             [r for r in tsk_index().get(igehely, []) if int(r['Votes']) >= 15],
             key=lambda r: -int(r['Votes'])
@@ -3831,6 +3846,9 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                'Károli-KH táblával; %d igehely ad legalább egy találatot (%d találat összesen), '
                '%d igehely versenkénti kereséssel nem vizsgálható.'
                % (m['id'], len(sorai_rendezve), len(bekezdesek), talalat_szam, len(nem_vizsgalhato)))
+    if kh_kihagyva:
+        hatokor += (' %d igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata '
+                    '(`eszkozok/karoli_kh_epseg.py`, N-F156a): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],

@@ -85,7 +85,7 @@ class Teszt(unittest.TestCase):
         belso_szavak = ('gerinc', 'ellenoriz', 'futtat', 'nulla-diff', 'DT', 'nincs_mero', '.py', 'CI', 'E2', 'jelölt',
                         'tsv')
         szovegek = list(M.OLV_NEV.values()) + list(M.OLV_ALLAPOT.values()) + list(M.OLV_ZOLD.values()) +             list(M.OLV_NINCS.values()) + list(M.OLV_ALLAS.values()) + [M.OLV_KOTET]
-        for sz in range(1, 9):
+        for sz in range(1, len(M.KRITERIUMOK) + 1):
             for al in ('zold', 'piros', 'nincs_mero', 'hiba'):
                 szovegek.append(M.olvasoi_kapu({'sorszam': sz, 'allapot': al,
                                                 'szam': {'n': 3, 'kiejtes': 1, 'fordit': 2, 'blokk': 1,
@@ -185,9 +185,54 @@ class Teszt(unittest.TestCase):
 
     def test_olvasoi_mondat(self):
         self.assertEqual(M.olvasoi_mondat(33, 6, 92, 3),
-                         '33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.')
+                         '33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a kilenc ellenőrzési lépésből 3 teljesül.')
         self.assertEqual(M.olvasoi_mondat(8, 0, 0, 1),
-                         '8 igehely feldolgozva, nincs vizsgálat alatt álló igehely; a nyolc ellenőrzési lépésből 1 teljesül.')
+                         '8 igehely feldolgozva, nincs vizsgálat alatt álló igehely; a kilenc ellenőrzési lépésből 1 teljesül.')
+
+    def test_kilenc_kapu(self):
+        """DT-F156k: a 9. kapu az olvasói kapu; minden kapunak van olvasói neve és szövege."""
+        self.assertEqual([k[0] for k in M.KRITERIUMOK], list(range(1, 10)))
+        for sz in range(1, 10):
+            self.assertIn(sz, M.OLV_NEV)
+            self.assertIn(sz, M.OLV_ZOLD)
+            self.assertIn(sz, M.OLV_NINCS)
+
+    def test_kriterium_9_atnezes_nelkul_nem_zold(self):
+        """A 9. kapu a felhasználó vizuális átnézése nélkül akkor sem zöld, ha a gépi kapu 0 BUKÁS-t adna."""
+        eredeti = M.vizualis_atnezes
+        try:
+            M.vizualis_atnezes = lambda m: None
+            k = M.kriterium_9('ISTENTISZT-001')
+            self.assertEqual(k['allapot'], M.PIROS)
+            self.assertEqual(k['szam']['atnezes'], 0)
+            self.assertIn('emberi átnézése', M.olvasoi_kapu(dict(k, sorszam=9)))
+        finally:
+            M.vizualis_atnezes = eredeti
+
+    def test_atnezes_ervenyessege(self):
+        """SEMA 2.48: csak a lap mai commitjáról, a felhasználótól, szó szerinti idézettel érvényes."""
+        c = 'abcdef1234567890'
+        jo = {'id': 'X-001', 'lap_commit': 'abcdef1', 'ki': 'felhasználó', 'idezet': 'Igen, így jó.'}
+        self.assertTrue(M.atnezes_ervenyes(jo, 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, idezet=' '), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, ki='claude-opus-5-5'), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, lap_commit='0000000'), 'X-001', c))  # a lap azóta változott
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, lap_commit='abc'), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(jo, 'Y-001', c))
+
+    def test_kiadott_lap_a_stashben_marad(self):
+        """DT-F156m: a kiadott lap a Stash-ben marad; ha egy kapu piros, kimondja a következő kiadás javítandóit."""
+        self.assertIsNone(M.kiadas_allapot(0, False))
+        self.assertEqual(M.kiadas_allapot(1, True), 'Az 1. kiadás érvényes.')
+        self.assertEqual(M.kiadas_allapot(1, False), 'Az 1. kiadás érvényes; a 2. kiadás javítandói nyitottak.')
+        self.assertEqual(M.kiadas_allapot(4, False), 'A 4. kiadás érvényes; az 5. kiadás javítandói nyitottak.')
+        self.assertEqual(M.allasfokozat({'statusz': 'publikálható'}, 8, 9, {}, kiadas=1), 'lezárt (stash)')
+        self.assertEqual(M.allasfokozat({'statusz': 'feldolgozás alatt'}, 8, 9, {}, kiadas=0), 'feldolgozás')
+        self.assertGreaterEqual(M.kiadas_szam('ISTENTISZT-001'), 1)
+        self.assertIn('kiadas_allapot', M.FEHERLISTA_STASH)
+
+    def test_kriterium_9_nincs_lap(self):
+        self.assertEqual(M.kriterium_9('NEMLETEZO-999')['allapot'], M.NINCS)
 
     def test_olvasoi_esemeny(self):
         self.assertEqual(M.olvasoi_esemeny({'esemeny': 'állapot: publikálható (v3)', 'db': 1}),
