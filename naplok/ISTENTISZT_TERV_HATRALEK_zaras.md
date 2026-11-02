@@ -7,9 +7,9 @@
 - **PR #549 (F152.0–F152.8), mergelve:** az A-pont két hibás indoklása javítva lett. A negatív kritérium bekerült a Kivonatba. A generátorban összevonódtak a közös forrásmegjelölések (181 → 6) és a tartományok. A „gerinc” szó az olvasói helyekről kikerült (18 → 0). Kiejtés került a kézi prózába. A Minősítés jelölt-táblája csukva áll (DT449).
 - **PR #559 (F152.9–F152.20), mergelve:** megtörtént a K1–K5 (DT476), a DT478 („Csak ahol JHVH áll”) és a DT479 átvezetése. Az ISTENTISZT-001 33 helyéből 22 maradt (16 ÓSZ, 6 ÚSZ), a kapcsolatokból 25 → 18. A `negativ_kriterium` bővült. A próza egészében átolvasva frissült, a Kivonat 2. és 3. mondata a felhasználó jóváhagyott szövegével áll.
 - **PR #563 (F152.21–22), mergelve:** az Ézs 41:25 elutasítva (DT478). Az N-F146b lezárva, mert a fordítás megvan.
-- **Ez az ág (F152.23):** bekerült a DT-F152d (a lap lezárható, 1. kiadás; a felhasználó: „ettől független lezárható / a lektori átnézés eredménye egy új kiadás”). Az N-F152a–g tételek mellé került, hova tartoznak, és ez a jelentés.
+- **Ez az ág (F152.23):** bekerült a DT486 (a lap lezárható, 1. kiadás; a felhasználó: „ettől független lezárható / a lektori átnézés eredménye egy új kiadás”). Az N-F152a–g tételek mellé került, hova tartoznak, és ez a jelentés.
 
-## 2. A kolofon kiadás-sora (DT-F152d 3. pont)
+## 2. A kolofon kiadás-sora (DT486 3. pont)
 
 A kiadásszám és a változásjegyzék a generátorban ma nem renderelődik, és adatforrása sincs kijelölve (N-F125a). Az 1. kiadás sora ezért nem került sem adatba, sem forrásba. A lexikonlapot kézzel nem szerkesztettem. Ha az N-F125a elkészül, az 1. kiadás sora (2026.11.02, „az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése”) a kijelölt adatforrásba írható.
 
