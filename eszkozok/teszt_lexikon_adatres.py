@@ -115,7 +115,7 @@ class Minosites(unittest.TestCase):
     def test_ures(self):
         ki = LG.adatres_minosites('PROBA-001', ['Mt 1:1'], [], {}, {})
         self.assertIn('**Független megerősítés:** nincs', ki)
-        self.assertIn('**Kereszthivatkozásból minősített jelölt:** nincs', ki)
+        self.assertIn('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs', ki)
 
 
 class ResTorzsAdatAg(unittest.TestCase):
@@ -220,8 +220,8 @@ class KolofonNaploCella(unittest.TestCase):
         self.assertNotIn('tematikus_lezart', ki)
 
     def test_nincs_sehol_es_nincs_terkep(self):
-        self.assertEqual(LG.kolofon_naplo_cella('HIANY-001'), LG.EM_DASH)
-        self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.EM_DASH)
+        self.assertEqual(LG.kolofon_naplo_cella('HIANY-001'), LG.NINCS_ROGZITVE)
+        self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.NINCS_ROGZITVE)
 
 
 class KolofonKiadas(unittest.TestCase):
@@ -256,7 +256,11 @@ class KolofonKiadas(unittest.TestCase):
         self.assertIn('| 2 | 2026.11.09 | A lektor kérdései nyomán javított prózák. |', jegyzek)
 
     def test_sor_nelkul_nincs_kiadas_sor(self):
-        self.assertEqual(LG.kolofon_kiadas_sorok([]), ([], []))
+        meta, jegyzek = LG.kolofon_kiadas_sorok([])
+        self.assertEqual(meta, ['| Kiadás | nincs kiadva — feldolgozás alatt |',
+                                '| Próza modellje | nincs kiadva — feldolgozás alatt |'])
+        self.assertEqual(jegyzek[0], '**Változásjegyzék**')
+        self.assertIn('Még nincs kiadás', jegyzek[-1])
 
     def test_hianyzo_fajl(self):
         self.assertEqual(LG.kolofon_kiadasok('ELO-001', os.path.join(self.tmp, 'nincs.tsv')), [])

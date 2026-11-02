@@ -6,7 +6,7 @@
 
 **Mit mutat ez a rész?** A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.
 
-A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם (*tehóm*)/ἄβυσσος (*abüsszosz*) kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
+A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם (*tehóm*)/ἄβυσσος (*abüsszosz*) kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben („Halál! hol a te fullánkod?”), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a „felmagasztalás→hádészig-taszítás” idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
 
 ## Tartalomjegyzék
 
@@ -76,7 +76,7 @@ ellenőrzéshez való, olvasáskor átugorható.
 vizsgált helyek, M a minősítés.
 
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
-betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a
 szócikk szövegéből derül ki.
 
@@ -253,7 +253,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-37-35"></a>
 **1Móz 37:35**
 *Felkelének pedig minden ő fiai, és minden ő leányai, hogy vígasztalják őt, de nem akara vígasztalódni, hanem monda: Sírva megyek fiamhoz a sírba; és siratá őt az atyja.*
-Jákób gyásza: "leszállok fiamhoz a Seolba, gyászolva"
+Jákób gyásza: „leszállok fiamhoz a Seolba, gyászolva”
 
 <a id="ige-1móz-42-38"></a>
 **1Móz 42:38**
@@ -278,27 +278,27 @@ Júda közbenjárása, folytatás
 <a id="ige-4móz-16-33"></a>
 **4Móz 16:33**
 *És alászállának azok és mindaz, a mi az övék, elevenen a pokolra: és befedezé őket a föld, és elveszének a község közül.*
-"és befedte őket a föld"
+„és befedte őket a föld”
 
 <a id="ige-5móz-32-22"></a>
 **5Móz 32:22**
 *Mert tűz lobban fel haragomban és leég a Seol fenekéig; megemészti a földet és gyümölcsét, és felgyújtja a hegyek alapjait.*
-Isten haragjának tüze "a Seol fenekéig" ég
+Isten haragjának tüze „a Seol fenekéig” ég
 
 <a id="ige-1sám-2-6"></a>
 **1Sám 2:6**
 *Az Úr öl és elevenít, Sírba visz és visszahoz.*
-"az Úr... Seolba visz és onnan felhoz" — Anna éneke
+„az Úr... Seolba visz és onnan felhoz” — Anna éneke
 
 <a id="ige-2sám-22-6"></a>
 **2Sám 22:6**
 *A pokol kötelei vettek körül, S a halál tőrei estek reám.*
-"a Seol kötelei körülvettek" (= Zsolt 18:6 párhuzam)
+„a Seol kötelei körülvettek” (= Zsolt 18:6 párhuzam)
 
 <a id="ige-1kir-2-6"></a>
 **1Kir 2:6**
 *Cselekedjél a te bölcseséged szerint, és ne engedd, hogy megőszülvén, békességgel menjen a koporsóba.*
-Dávid Salamonnak — Joáb "őszen szálljon a Seolba"
+Dávid Salamonnak — Joáb „őszen szálljon a Seolba”
 
 <a id="ige-1kir-2-9"></a>
 **1Kir 2:9**
@@ -308,52 +308,52 @@ ua. — Simei
 <a id="ige-jób-7-9"></a>
 **Jób 7:9**
 *A felhő eltünik és elmegy, így a ki leszáll a sírba, nem jő fel többé.*
-"aki leszáll a Seolba, nem jön fel"
+„aki leszáll a Seolba, nem jön fel”
 
 <a id="ige-jób-11-8"></a>
 **Jób 11:8**
 *Magasabb az égnél: mit teszel tehát? Mélyebb az alvilágnál; hogy ismerheted meg?*
-"mélyebb, mint a Seol" — Isten mindentudása
+„mélyebb, mint a Seol” — Isten mindentudása
 
 <a id="ige-jób-14-13"></a>
 **Jób 14:13**
 *Vajha engem a holtak országában tartanál; rejtegetnél engemet addig, a míg elmúlik a te haragod; határt vetnél nékem, azután megemlékeznél rólam!*
-"bár rejtenél el a Seolban"
+„bár rejtenél el a Seolban”
 
 <a id="ige-jób-17-12"></a>
 **Jób 17:12**
 *Ha reménykedem is, a sír már az én házam, a sötétségben vetettem az én ágyamat.*
-"ha várom is: a Seol az én házam"
+„ha várom is: a Seol az én házam”
 
 <a id="ige-jób-17-15"></a>
 **Jób 17:15**
 *Leszáll az majd a sír üregébe, velem együtt nyugoszik a porban.*
-"leszáll-e a Seol rúdjaihoz"
+„leszáll-e a Seol rúdjaihoz”
 
 <a id="ige-jób-21-13"></a>
 **Jób 21:13**
 *Jóllétben töltik el napjaikat, és egy pillanat alatt szállnak alá a sírba;*
-"egy pillanat alatt szállnak a Seolba"
+„egy pillanat alatt szállnak a Seolba”
 
 <a id="ige-jób-24-19"></a>
 **Jób 24:19**
 *Szárazság és hőség nyeli el a hó vizét, a pokol azokat, a kik vétkeznek.*
-"a Seol elragadja a bűnösöket"
+„a Seol elragadja a bűnösöket”
 
 <a id="ige-jób-26-6"></a>
 **Jób 26:6**
 *Az alvilág mezítelen előtte, és eltakaratlan a holtak országa.*
-"a Seol mezítelen Isten előtt"
+„a Seol mezítelen Isten előtt”
 
 <a id="ige-zsolt-6-6"></a>
 **Zsolt 6:6**
 *Mert nincs emlékezés rólad a halálban, a seolban kicsoda dicsőít téged?*
-"nincs Rólad emlékezés a Seolban"
+„nincs Rólad emlékezés a Seolban”
 
 <a id="ige-zsolt-9-18"></a>
 **Zsolt 9:18**
 *Seolba jutnak a gonoszok, oda minden nép, a mely elfeledkezik Istenről.*
-"a gonoszok visszatérnek a Seolba"
+„a gonoszok visszatérnek a Seolba”
 
 <a id="ige-zsolt-16-10"></a>
 **Zsolt 16:10**
@@ -363,67 +363,67 @@ ua. — Simei
 <a id="ige-zsolt-18-6"></a>
 **Zsolt 18:6**
 *A Seol kötelei vettek körül; a halál tőrei fogtak meg engem.*
-"a Seol kötelei körülvettek" (= 2Sám 22:6)
+„a Seol kötelei körülvettek” (= 2Sám 22:6)
 
 <a id="ige-zsolt-30-4"></a>
 **Zsolt 30:4**
 *Uram, felhoztad a Seolból az én lelkemet, fölélesztettél a sírbaszállók közül.*
-hálaadás — "kihoztad lelkem a Seolból"
+hálaadás — „kihoztad lelkem a Seolból”
 
 <a id="ige-zsolt-31-18"></a>
 **Zsolt 31:18**
 *Uram, ne szégyenüljek meg, mivelhogy hívlak téged; a gonoszok szégyenüljenek meg és pusztuljanak a Seolba.*
-"hallgassanak el a gonoszok a Seolban"
+„hallgassanak el a gonoszok a Seolban”
 
 <a id="ige-zsolt-49-15"></a>
 **Zsolt 49:15**
 *Mint juhok, a Seolra vettetnek, a halál legelteti őket, és az igazak uralkodnak rajtok reggel; alakjokat elemészti a Seol, távol az ő lakásuktól.*
-"mint juhok a Seolnak rendelve"
+„mint juhok a Seolnak rendelve”
 
 <a id="ige-zsolt-49-16"></a>
 **Zsolt 49:16**
 *Csak Isten válthatja ki lelkemet a Seol kezéből, mikor az megragad engem. Szela.*
-"Isten megváltja lelkemet a Seol kezéből"
+„Isten megváltja lelkemet a Seol kezéből”
 
 <a id="ige-zsolt-55-16"></a>
 **Zsolt 55:16**
 *A halál vegye őket körül, elevenen szálljanak a Seolba; mert gonoszság van lakásukban, kebelökben.*
-"szálljanak élve a Seolba"
+„szálljanak élve a Seolba”
 
 <a id="ige-zsolt-86-13"></a>
 **Zsolt 86:13**
 *Mert nagy én rajtam a te kegyelmed, és kiszabadítottad lelkemet a mélységes pokolból.*
-"kihoztad lelkem a legmélyebb Seolból"
+„kihoztad lelkem a legmélyebb Seolból”
 
 <a id="ige-zsolt-88-4"></a>
 **Zsolt 88:4**
 *Mert betelt a lelkem nyomorúságokkal, és életem a Seolig jutott.*
-"életem közel a Seolhoz"
+„életem közel a Seolhoz”
 
 <a id="ige-zsolt-89-49"></a>
 **Zsolt 89:49**
 *Kicsoda oly erős, hogy éljen és ne lásson halált s megszabadítsa magát a Seolnak kezéből? Szela.*
-"ki menti meg lelkét a Seol kezéből"
+„ki menti meg lelkét a Seol kezéből”
 
 <a id="ige-zsolt-116-3"></a>
 **Zsolt 116:3**
 *Körülvettek engem a halál kötelei, és a pokol szorongattatásai támadtak meg engem; nyomorúságba és ínségbe jutottam.*
-"a Seol szorongatásai megragadtak"
+„a Seol szorongatásai megragadtak”
 
 <a id="ige-zsolt-139-8"></a>
 **Zsolt 139:8**
 *Ha a mennybe hágok fel, ott vagy; ha a Seolba vetek ágyat, ott is jelen vagy.*
-"ha a Seolban vetek ágyat, ott is vagy" — Isten mindenütt-jelenvalósága
+„ha a Seolban vetek ágyat, ott is vagy” — Isten mindenütt-jelenvalósága
 
 <a id="ige-zsolt-141-7"></a>
 **Zsolt 141:7**
 *Mint a ki a földet vágja és hányja, úgy szóratnak szét csontjaik a Seol torkában.*
-"mint mikor szántanak... a Seol szájánál"
+„mint mikor szántanak... a Seol szájánál”
 
 <a id="ige-péld-1-12"></a>
 **Péld 1:12**
 *Nyeljük el azokat, mint a sír elevenen, és egészen, mint a kik mélységbe szállottak;*
-"elnyeljük őket elevenen, mint a Seol"
+„elnyeljük őket elevenen, mint a Seol”
 
 <a id="ige-péld-5-5"></a>
 **Péld 5:5**
@@ -448,32 +448,32 @@ Seol és Abaddón Isten előtt
 <a id="ige-péld-15-24"></a>
 **Péld 15:24**
 *Az életnek úta felfelé van az értelmes ember számára, hogy eltávozzék a pokoltól, mely aláfelé van.*
-"hogy elkerülje a Seolt alant"
+„hogy elkerülje a Seolt alant”
 
 <a id="ige-péld-23-14"></a>
 **Péld 23:14**
 *Te vesszővel vered meg őt: és az ő lelkét a pokolból ragadod ki.*
-"kiragadod lelkét a Seolból"
+„kiragadod lelkét a Seolból”
 
 <a id="ige-péld-27-20"></a>
 **Péld 27:20**
 *Mint a sír és a pokol meg nem elégednek, úgy az embernek szemei meg nem elégednek.*
-"a Seol és Abaddón nem elégszik meg"
+„a Seol és Abaddón nem elégszik meg”
 
 <a id="ige-péld-30-16"></a>
 **Péld 30:16**
 *A sír és a meddő asszony, a föld meg nem elégszik a vízzel, és a tűz nem mondja: elég!*
-Seol a négy "nem-elégedő" dolog közt
+Seol a négy „nem-elégedő” dolog közt
 
 <a id="ige-préd-9-12"></a>
 **Préd 9:12**
 *Valamit hatalmadban van cselekedni erőd szerint, azt cselekedjed; mert semmi cselekedet, okoskodás, tudomány és bölcseség nincs a Seolban, a hová menendő vagy.*
-"nincs tudás, munka, terv a Seolban, ahová mégy"
+„nincs tudás, munka, terv a Seolban, ahová mégy”
 
 <a id="ige-én-8-6"></a>
 **Én 8:6**
 *Tégy engem mintegy pecsétet a te szívedre, mintegy pecsétet a te karodra; mert erős a szeretet, mint a halál, kemény, mint a sír a buzgó szerelem; lángjai tűznek lángjai, az Úrnak lángjai.*
-"a szerelem kemény, mint a Seol"
+„a szerelem kemény, mint a Seol”
 
 <a id="ige-ézs-5-14"></a>
 **Ézs 5:14**
@@ -483,7 +483,7 @@ Júda ítélete — a Seol kitágítja torkát
 <a id="ige-ézs-7-11"></a>
 **Ézs 7:11**
 *Kérj jelt magadnak az Úrtól, a te Istenedtől, kérj a mélységben vagy fent a magasban!*
-"kérj jelt... tégy mélyre, mint a Seol"
+„kérj jelt... tégy mélyre, mint a Seol”
 
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
@@ -493,37 +493,37 @@ Babilon-gúnydal — a Seol megmozdul (ugyanaz a szakasz, ahol a רְפָאִי�
 <a id="ige-ézs-14-11"></a>
 **Ézs 14:11**
 *Kevélységed és lantjaid zengése a sírba szállt; fekvő ágyad férgek, és takaró lepled pondrók!*
-"büszkeséged leszállt a Seolba"
+„büszkeséged leszállt a Seolba”
 
 <a id="ige-ézs-14-15"></a>
 **Ézs 14:15**
 *Pedig a sírba szállsz alá, sírgödör mélységébe!*
-"a Seol legmélyére vitetel"
+„a Seol legmélyére vitetel”
 
 <a id="ige-ézs-28-15"></a>
 **Ézs 28:15**
 *Mert így szóltok: Frigyet kötöttünk a halállal, a sírral meg szövetséget csináltunk; az ostorozó áradat ha jő, nem ér el minket; mert a hazugságot választók oltalmunkul, és csalásba rejtezénk el!*
-"szövetséget kötöttünk a Seollal"
+„szövetséget kötöttünk a Seollal”
 
 <a id="ige-ézs-28-18"></a>
 **Ézs 28:18**
 *És eltöröltetik a halállal való frigyetek, és a sírral való szövetségtek meg nem áll; az ostorozó áradat ha eljő, eltapod titeket,*
-"szövetségetek a Seollal nem áll meg"
+„szövetségetek a Seollal nem áll meg”
 
 <a id="ige-ézs-38-10"></a>
 **Ézs 38:10**
 *Én azt mondám: hát napjaimnak nyugalmában kell alászállanom a sír kapuihoz, megfosztva többi éveimtől!*
-Ezékiás betegség-éneke — "a Seol kapuiba kell mennem"
+Ezékiás betegség-éneke — „a Seol kapuiba kell mennem”
 
 <a id="ige-ézs-38-18"></a>
 **Ézs 38:18**
 *Mert nem a sír dicsőít Téged, és nem a halál magasztal Téged, hűségedre nem a sírverembe szállók várnak!*
-"a Seol nem dicsőít téged"
+„a Seol nem dicsőít téged”
 
 <a id="ige-ézs-57-9"></a>
 **Ézs 57:9**
 *És menél a királyhoz olajjal, és megsokasítád keneteidet, és elküldéd követeidet messze földre, és megaláztad magadat a sírig.*
-bálványimádás — "egészen a Seolig alázkodtál"
+bálványimádás — „egészen a Seolig alázkodtál”
 
 <a id="ige-ez-31-15"></a>
 **Ez 31:15**
@@ -543,7 +543,7 @@ ua.
 <a id="ige-ez-32-21"></a>
 **Ez 32:21**
 *Szólni fognak felőle a vitézek hatalmasai a sír közepéből együtt az ő segítőivel: alászállottak, hogy itt feküdjenek a körülmetéletlenek, mint fegyverrel megöltek!*
-"a hatalmasok szólnak hozzá a Seolból"
+„a hatalmasok szólnak hozzá a Seolból”
 
 <a id="ige-ez-32-27"></a>
 **Ez 32:27**
@@ -553,17 +553,17 @@ körülmetéletlenek a Seolban, fegyvereikkel
 <a id="ige-hós-13-14"></a>
 **Hós 13:14**
 *Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?! Megbánás elrejtetett én előlem.*
-"Hol van a te veszedelmed, oh Seol?" — Pál idézi 1Kor 15:55-ben, ⭐ kiemelt lelet
+„Hol van a te veszedelmed, oh Seol?” — Pál idézi 1Kor 15:55-ben, ⭐ kiemelt lelet
 
 <a id="ige-ámós-9-2"></a>
 **Ámós 9:2**
 *Ha a Seolba ássák is be magokat, kezem onnan is kiragadja őket; és ha az égbe hágnának is fel, onnan is levonszom őket!*
-"ha a Seolba ásnak is, onnan is kihozom kezem"
+„ha a Seolba ásnak is, onnan is kihozom kezem”
 
 <a id="ige-jón-2-3"></a>
 **Jón 2:3**
 *És mondá: Nyomorúságomban az Úrhoz kiálték és meghallgata engem; a Seol torkából sikolték és meghallád az én szómat.*
-"a Seol gyomrából kiáltottam"
+„a Seol gyomrából kiáltottam”
 
 <a id="ige-hab-2-5"></a>
 **Hab 2:5**
@@ -578,7 +578,7 @@ a kevély, mint a Seol, sosem elégszik meg
 <a id="ige-luk-10-15"></a>
 **Luk 10:15**
 *És te Kapernaum, mely mind az égig felmagasztaltattál, a pokolig fogsz lealáztatni.*
-ᾍδης (hadész) — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete)
+ᾍδης (hadész) — „égig felmagasztaltattál... hádészig fogsz lealáztatni” (Kapernaum ítélete)
 
 <a id="ige-luk-16-23"></a>
 **Luk 16:23**
@@ -588,12 +588,12 @@ a kevély, mint a Seol, sosem elégszik meg
 <a id="ige-apcsel-2-27"></a>
 **ApCsel 2:27**
 *Mert nem hagyod az én lelkemet a sírban, és nem engeded, hogy a te szented rothadást lásson.*
-Péter Zsolt 16:10-et idézi: "mert nem hagyod az én lelkemet a sírban [hádész]"
+Péter Zsolt 16:10-et idézi: „mert nem hagyod az én lelkemet a sírban [hádész]”
 
 <a id="ige-apcsel-2-31"></a>
 **ApCsel 2:31**
 *Előre látván ezt, szólott a Krisztus feltámadásáról, hogy az ő lelke nem hagyatott a sírban, sem az ő teste rothadást nem látott.*
-Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírban [hádész]"
+Péter folytatja: Krisztus feltámadásáról szólva — „nem hagyatott a sírban [hádész]”
 
 <a id="ige-jel-1-18"></a>
 **Jel 1:18**
@@ -629,23 +629,23 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| 2Móz 12:29 | gépi keresés a szó környezetében (Seol-ablak)[^k1] | **elutasítva** — egyéb: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
-| Zsolt 49:10 | gépi keresés a szó környezetében (Seol-ablak)[^k2] | **elutasítva** — a formula nincs a versben: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
-| Zsolt 107:18 | gépi keresés a szó környezetében (Seol-ablak)[^k3] | **elutasítva** — egyéb: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
+| 2Móz 12:29 | gépi keresés a szó környezetében (Seol-ablak)[^k1] | **elutasítva** — egyéb: Minősítési mérce: a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az chatjében: „Megerősítem”. |
+| Zsolt 49:10 | gépi keresés a szó környezetében (Seol-ablak)[^k2] | **elutasítva** — a formula nincs a versben: Minősítési mérce: a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az chatjében: „Megerősítem”. |
+| Zsolt 107:18 | gépi keresés a szó környezetében (Seol-ablak)[^k3] | **elutasítva** — egyéb: Minősítési mérce: a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az chatjében: „Megerősítem”. |
 
 **Kutatói felvetés** (2)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| 1Kor 15:55 | a kereszthivatkozás-napló kutatói minősítése[^k4] | **elutasítva** — egyéb: a kritikai szövegkiadás mindkét tagmondatban θάνατος-t (thanatosz) hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva |
+| 1Kor 15:55 | a kereszthivatkozás-napló kutatói minősítése[^k4] | **elutasítva** — egyéb: a kritikai szövegkiadás mindkét tagmondatban θάνατος-t (thanatosz) hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen keresés tárgya — dokumentálva, nem hallgatólagosan kihagyva |
 | Mt 16:18 | a kereszthivatkozás-napló kutatói minősítése[^k5] | **elutasítva** — egyéb: ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül |
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
+**Negatív kritérium:** az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
 
-[^k1]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›`
-[^k2]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›`
-[^k3]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›`
-[^k4]: forrás: `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | ‹K2›`
+[^k1]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›` · indoklás (nyers): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+[^k2]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›` · indoklás (nyers): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+[^k3]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — ‹K1›` · indoklás (nyers): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT414, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+[^k4]: forrás: `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | ‹K2›` · indoklás (nyers): a kritikai szövegkiadás mindkét tagmondatban θάνατος-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva
 [^k5]: forrás: `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | ‹K2›`
 
 *A közös forrásmegjelölések: ‹K1› = `scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28` (3 sor) · ‹K2› = `scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11` (2 sor)*
@@ -697,7 +697,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
-**A szócikk feje (nyelvi háttér).** ᾅδης,, ὁ (a régebbi Ἀΐδης alakból, amelyet Homérosz használ, ez pedig a megfosztó alfából és a ἰδεῖν szóból, nem látni (vö. Lob. Path. Element. 2:6f)); a klasszikus nyelvben
+**A szócikk feje (nyelvi háttér).** ᾅδης, ὁ (a régebbi Ἀΐδης alakból, amelyet Homérosz használ, ez pedig a megfosztó alfából és a ἰδεῖν szóból, nem látni (vö. Lob. Path. Element. 2:6f)); a klasszikus nyelvben
 
 <details>
 <summary>1 (1 szakasz)</summary>
@@ -782,7 +782,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
 
-**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
+**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
 
 #### 2. Mélységi szócikk
 
@@ -792,11 +792,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל‎ 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév^**Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr^ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr^Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem^Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö^De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup^Ps. 6 6 De^5:14 Beer^Bibl. Hades in Holtzmann^Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl^pa 121, Prol.47. 145 Jastr^Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib^s.v.; ellene Bertin^TSBA viii. 269 Jen^Kosmol.223 kk. Zim^KAT 3. 636 és mások; l. még Muss-Arn^JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל‎ 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל‎ **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
+**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל‎ 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév **Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup Ps. 6 6 De 5:14 Beer Bibl. Hades in Holtzmann Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl pa 121, Prol.47. 145 Jastr Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib s.v.; ellene Bertin TSBA viii. 269 Jen Kosmol.223 kk. Zim KAT 3. 636 és mások; l. még Muss-Arn JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל‎ 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל‎ **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
 
 - **`1` — alvilág, ahová a halottak alászállnak**
 
-  > az alvilág, <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> תַּחְתִּית‎ 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת‎ **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, חֶבְלֵי <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
+  > az alvilág, <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> תַּחְתִּית‎ 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת‎ **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, חֶבְלֵי <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
 
 <details>
 <summary>2 (1 szakasz)</summary>
@@ -831,7 +831,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - **`4` — átvitt értelem: lealacsonyodás, száműzetés**
 
   > <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> átvitt értelemben a bűnben való végső lealacsonyodásról **Ézs 57:9**; mint Izráel száműzetésének helye **Hós 13:14** (a versben kétszer) (vö. Ézs 26:19).
-  > *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `adat/bdb_szakasz_hu.tsv` kategoria = horgonnyal)*
+  > *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 5 (5Móz 32:22, fej); bdb_vers_jelentes.tsv sorszam 9 (Jób 17:15, fej); bdb_vers_jelentes.tsv sorszam 31 (4Móz 16:30, -/1); bdb_vers_jelentes.tsv sorszam 32 (4Móz 16:33, -/1); bdb_vers_jelentes.tsv sorszam 12 (5Móz 32:22, -/1); bdb_vers_jelentes.tsv sorszam 55 (Jób 17:12, -/1); bdb_vers_jelentes.tsv sorszam 38 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 56 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 63 (Préd 9:12, -/1); bdb_vers_jelentes.tsv sorszam 88 (Jób 17:12, -/2/b); bdb_vers_jelentes.tsv sorszam 92 (Péld 15:11, -/3/b) · Ez 31:16: a BDB a helyet nem önállóan idézi, hanem a 2.a szakaszban az Ez 31:15–16 verstartomány belsejében (a BDB-ben: „Ezek 31:15-16”; `adat/bdb_vers_jelentes.tsv` sorszam 76); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
 
@@ -867,7 +867,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H7585** · 62 vers az LXX_OS-ben (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης (Hadész, G0086): 57 vers; καταβαίνω (katabainó, G2597): 16 vers; θάνατος (thanatosz, G2288): 15 vers; γῆ (gé, G1093): 11 vers; εἰμί (eimi, G1510): 11 vers; κατάγω (katagó, G2609): 10 vers; ψυχή (pszükhé, G5590): 9 vers; κύριος (küriosz, G2962): 8 vers; λέγω (legó, G3004): 8 vers; πᾶς (pasz, G3956): 8 vers
+**H7585** · 62 vers a Septuagintában (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης (Hadész, G0086): 57 vers; καταβαίνω (katabainó, G2597): 16 vers; θάνατος (thanatosz, G2288): 15 vers; γῆ (gé, G1093): 11 vers; εἰμί (eimi, G1510): 11 vers; κατάγω (katagó, G2609): 10 vers; ψυχή (pszükhé, G5590): 9 vers; κύριος (küriosz, G2962): 8 vers; λέγω (legó, G3004): 8 vers; πᾶς (pasz, G3956): 8 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -990,70 +990,70 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
 | 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 17:12 | — | שְׁא֣וֹל (seól) | — | szamozas_elteres | LXX_OS |
-| Jób 17:15 | — | שְׁאֹ֣ל (seól) | — | szamozas_elteres | LXX_OS |
-| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (seól) | — | kutatói azonosítás függőben | LXX_OS |
-| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 17:12 | — | שְׁא֣וֹל (seól) | — | szamozas_elteres | Septuaginta |
+| Jób 17:15 | — | שְׁאֹ֣ל (seól) | — | szamozas_elteres | Septuaginta |
+| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (seól) | — | kutatói azonosítás függőben | Septuaginta |
+| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
 | Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (seálá) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (seálá) | — | kutatói azonosítás függőben | Septuaginta |
+| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
 | Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól) | βόθρος (bothrosz) | eltérő | adat/lxx_dontesek.tsv |
-| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
 
 *Összesítés: egyező=57, eltérő=3, LXX-minusz=0, kutatói azonosítás függőben=2, szamozas_elteres=2.*
 
@@ -1116,8 +1116,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Zsolt 86:13
 - Károli-KH: Zsolt 88:6-7
 - Károli-KH: Zsolt 116:8-9
-- Károli-KH: Csel 2:31
-- Károli-KH: Ésa 53:10-12
+- Károli-KH: ApCsel 2:31
+- Károli-KH: Ézs 53:10-12
 
 #### Zsolt 30:4
 - Károli-KH: Zsolt 116:3-4
@@ -1193,10 +1193,10 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Jób 21:14
 - Károli-KH: Jer 2:31
 - Károli-KH: Zsolt 12:3-5
-- Károli-KH: Ésa 28:18
+- Károli-KH: Ézs 28:18
 
 #### Ézs 38:10
-- Károli-KH: Ésa 41:26-27
+- Károli-KH: Ézs 41:26-27
 
 #### Ézs 38:18
 - Károli-KH: Zsolt 6:6
@@ -1205,14 +1205,14 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Zsolt 88:13
 
 #### Ézs 57:9
-- Károli-KH: Ezék 16:36
-- Károli-KH: Ezék 23:16-40
+- Károli-KH: Ez 16:36
+- Károli-KH: Ez 23:16-40
 
 #### Ez 31:16
-- Károli-KH: Ésa 14:9-12
+- Károli-KH: Ézs 14:9-12
 
 #### Ez 32:21
-- Károli-KH: Ezék 32:12
+- Károli-KH: Ez 32:12
 
 #### Hós 13:14
 - TSK: Ézs 25:8 (Votes: 15)
@@ -1232,9 +1232,9 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Károli-KH: Péld 20:1
 
 #### Mt 11:23
-- Károli-KH: Mát 4:13
-- Károli-KH: Mát 8:5
-- Károli-KH: Mát 9:1
+- Károli-KH: Mt 4:13
+- Károli-KH: Mt 8:5
+- Károli-KH: Mt 9:1
 
 #### Luk 16:23
 - TSK: 2Pét 2:4 (Votes: 23)
@@ -1292,7 +1292,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - Ámós 9:2 → Zsolt 139:8 — Károli-KH
 - ApCsel 2:27 → Zsolt 16:10 — TSK (Votes 17)
 
-**Kereszthivatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz.
+**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
 *Proveniencia: `scope=id:ALVIL-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-10-29`*
 
@@ -1304,7 +1304,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.*
 
-Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
+Ehhez a motívumhoz nincs rögzített kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolatok -->
 
@@ -1328,8 +1328,8 @@ A motívumhoz nincs rögzített kapcsolat.
 
 | Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
 |---|---|---|---|---|---|---|---|
-| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
-| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. |
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. |
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
 
@@ -1343,17 +1343,17 @@ A motívumhoz nincs rögzített kapcsolat.
 
 **Peshat.** A hádész-vonal az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A gazdag ember és Lázár példázatában (Luk 16:23) a hádész a halál utáni, tudatos szenvedés helyeként jelenik meg. A Jelenések könyvében a Halál és a Hádész személyesített párosként lép fel (6:8), amely a végső ítéletben magával a hádésszel együtt semmisül meg (20:13-14).
 
-**Remez.** A minta íve: a halál birodalma, amelybe minden halandó alászáll, de amelyben Krisztus nem maradt (ApCsel 2:31) — ez a győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történelem végén maga a hádész is megsemmisüljön (Jel 20:14) — egyfajta *"végső bezárás"*, amely tartalmilag rokon azzal, ahogyan a tehóm-motívumban a mélység forrásai bezárultak (1Móz 8:2) — de ez **csak tartalmi, nem lexikai** párhuzam a két motívum között.
+**Remez.** A minta íve: a halál birodalma, amelybe minden halandó alászáll, de amelyben Krisztus nem maradt (ApCsel 2:31) — ez a győzelem adja az alapot ahhoz, hogy Ő birtokolja „a halál és a hádész kulcsait” (Jel 1:18), és hogy a történelem végén maga a hádész is megsemmisüljön (Jel 20:14) — egyfajta *„végső bezárás”*, amely tartalmilag rokon azzal, ahogyan a tehóm-motívumban a mélység forrásai bezárultak (1Móz 8:2) — de ez **csak tartalmi, nem lexikai** párhuzam a két motívum között.
 
-**Második hádész-használati mintázat — hübrisz és megaláztatás**. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót — ᾍδης (*hádész*) — használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seol/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
+**Második hádész-használati mintázat — hübrisz és megaláztatás**. Luk 10:15 és párhuzamos helye, Mt 11:23, Jézus szájából ugyanazt a szót — ᾍδης (*hádész*) — használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke „égig felmagasztaltatását” állítja szembe az eljövendő „hádészig” való megaláztatással. Ez a „felmagasztalás→Seol/Hádész-taszítás” idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
 
-**Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
+**Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem „elkerülte” a hádészt, hanem belépett oda és győztesen távozott, ezért „birtokolja a kulcsait” — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
 
-**Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, "a halál és a pokol/hádész pedig vettetének a tüzes tóba") azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
+**Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, „a halál és a pokol/hádész pedig vettetének a tüzes tóba”) azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
 
 ### Új felismerés — Hós 13:14 → 1Kor 15:55
 
-"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?!”)* — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
+„Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?” *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?!”)* — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: „Halál! hol a te fullánkod? Pokol! hol a te diadalmad?” A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot „Pokol”-lal (= hádész) adja vissza.
 
 ### ↳ Alpont: kiáltás a Seol szorításából
 
@@ -1370,7 +1370,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 **Mit mutat ez a rész?** Mit jelent a motívum a hívő életében ma. A kutató írta.
 
-A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lelki félelem nem végső hatalom a hívő élete fölött — Krisztus, aki "a halál és a hádész kulcsait" tartja, garantálja, hogy a halál sem jelenben (szorongás, gyász), sem véglegesen (a feltámadás reménye) nem az utolsó szó.
+A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lelki félelem nem végső hatalom a hívő élete fölött — Krisztus, aki „a halál és a hádész kulcsait” tartja, garantálja, hogy a halál sem jelenben (szorongás, gyász), sem véglegesen (a feltámadás reménye) nem az utolsó szó.
 
 ### Tanítói egyezés *(kézi)*
 
@@ -1469,6 +1469,12 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 | Forrás-study | `motivumok/ALVIL-001.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ALVIL-001/Hadesz_Seol_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |
+| Kiadás | nincs kiadva — feldolgozás alatt |
+| Próza modellje | nincs kiadva — feldolgozás alatt |
+
+**Változásjegyzék**
+
+Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első kiadással indul.
 
 ---
 

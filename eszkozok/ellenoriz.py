@@ -681,6 +681,13 @@ def res_elvart_es_tenyleges(LG, lex_szoveg, motivum_id, res, r):
     return elvart, tenyleges
 
 
+def res_egyezik(elvart, tenyleges):
+    """A rés egyezik-e: a lap olvasói szövegét a generátor a kész lapon egységesíti (olvasoi_utofeldolg, 2026-11-02);
+    az egységesítés előtt generált (még nem újragenerált) lap a nyers elvárttal egyezik."""
+    import olvasoi_utofeldolg as OU
+    return tenyleges in (elvart, OU.alkalmaz(elvart))
+
+
 def szabaly11_res_forras_egyezes(adat_dir):
     """G4: SÉRTÉS, ha egy `tanulmany`/`adat` forrású rés a lexikonoldalon
     eltér a `res_forras.tsv` + a tanulmány/napló szerint elvárttól -- azaz
@@ -732,7 +739,7 @@ def szabaly11_res_forras_egyezes(adat_dir):
         except Exception as exc:
             hibas.append('%s / %s -- hiba: %s' % (motivum_id, res, exc))
             continue
-        if elvart != tenyleges:
+        if not res_egyezik(elvart, tenyleges):
             hibas.append('%s / %s -- eltér a tábla + tanulmány szerint elvárttól' % (motivum_id, res))
     if hibas:
         return Sor(cim, 'SÉRTÉS', len(hibas), hibas)

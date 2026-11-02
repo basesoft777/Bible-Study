@@ -217,7 +217,7 @@ def tagol(szoveg):
             lat = def_szoveg
         elif t.startswith('|'):
             fajta = 'tabla'
-            cellak = t.strip('|').split('|')
+            cellak = re.split(r'(?<!\\)\|', t.strip('|'))
             if tabla_fej is None:
                 tabla_fej = [c.strip() for c in cellak]
             elif len(cellak) == len(tabla_fej):
@@ -868,8 +868,11 @@ def lap_meres(szoveg, kh=True, atvett=True, arany=True):
     return csoportosit(ki, sorok), megj
 
 
+LEXIKON_KONYVTAR = os.path.join(GYOKER, 'lexikon')
+
+
 def motivum_meres(mid):
-    ut = os.path.join(GYOKER, 'lexikon', mid + '_TUDOMANYOS.md')
+    ut = os.path.join(LEXIKON_KONYVTAR, mid + '_TUDOMANYOS.md')
     if not os.path.exists(ut):
         return None, ['nincs lexikon/%s_TUDOMANYOS.md' % mid]
     with open(ut, encoding='utf-8') as f:
@@ -890,11 +893,15 @@ def main():
     ap.add_argument('--osszes', action='store_true', help='minden lexikon/*_TUDOMANYOS.md')
     ap.add_argument('--reszletes', action='store_true', help='minden találat soronként')
     ap.add_argument('--json', help='a teljes kimenet JSON-fájlba')
+    ap.add_argument('--lexikon-konyvtar', help='a lapok könyvtára (alapból lexikon/; pl. egy --kimenet próba lexikon/ mappája)')
     ap.add_argument('--markdown', help='motívumonkénti javítandó lista Markdown-fájlba (generált napló)')
     a = ap.parse_args()
+    global LEXIKON_KONYVTAR
+    if a.lexikon_konyvtar:
+        LEXIKON_KONYVTAR = os.path.abspath(a.lexikon_konyvtar)
     ids = a.id
     if a.osszes:
-        ids = sorted(n[:-len('_TUDOMANYOS.md')] for n in os.listdir(os.path.join(GYOKER, 'lexikon'))
+        ids = sorted(n[:-len('_TUDOMANYOS.md')] for n in os.listdir(LEXIKON_KONYVTAR)
                      if n.endswith('_TUDOMANYOS.md'))
     if not ids:
         ap.error('adj meg motívum-ID-t vagy --osszes')

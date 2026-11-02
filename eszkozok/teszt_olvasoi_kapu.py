@@ -271,7 +271,7 @@ class Pozitiv(unittest.TestCase):
 
 
 class Arany(unittest.TestCase):
-    """Az arany lap ismert hibái (G-sorok) megjelennek a valódi lapon."""
+    """Az arany lap ismert hibái (G-sorok): a javítatlanok megjelennek a valódi lapon, a javítottak nem."""
 
     @classmethod
     def setUpClass(cls):
@@ -282,13 +282,18 @@ class Arany(unittest.TestCase):
         self.assertTrue(any(t['azonosito'] == azon and minta in (t['uzenet'] + t['idezet']) for t in self.tal),
                         '%s / %s nincs a találatok között' % (azon, minta))
 
+    def nincs(self, azon, minta):
+        self.assertFalse(any(t['azonosito'] == azon and minta in (t['uzenet'] + t['idezet']) for t in self.tal),
+                         '%s / %s a találatok között van' % (azon, minta))
+
     def test_G1_masolt_kh(self):
         """DT-F156n óta a másolat-gyanús KH-lista nem kerül a lapra: a G1 sorai eltűntek, a kapu nem jelez."""
         self.assertFalse(any(t['azonosito'] == 'KH_MASOLT' for t in self.tal))
 
     def test_G4_szurojel_es_angol(self):
-        self.van('BELSO', 'F110')
-        self.van('ANGOL', 'was called')
+        """OLVJ.1 óta az 1/b. táblában az olvasói ok áll, a szűrő-jel és az angol címke a lábjegyzetben."""
+        self.nincs('BELSO', 'F110')
+        self.nincs('ANGOL', 'was called')
 
     def test_G6_hianyjel(self):
         self.van('HIANYJEL', 'nincs hozzárendelés')
@@ -297,10 +302,12 @@ class Arany(unittest.TestCase):
         self.van('BELSO', 'DT476')
 
     def test_G8_idezojel(self):
-        self.van('IDEZOJEL', 'segítségül hívni az Úr nevét')
+        """OLVJ.2 óta a lap utófeldolgozása az egyenes idézőjelet „…”-ra cseréli."""
+        self.assertFalse(any(t['azonosito'] == 'IDEZOJEL' for t in self.tal))
 
     def test_G9_bdb_jel(self):
-        self.van('BDB_JEL', 'nyers ^')
+        """OLVJ.4 óta a ^ jel nem marad a lapon."""
+        self.nincs('BDB_JEL', 'nyers ^')
 
 
 if __name__ == '__main__':

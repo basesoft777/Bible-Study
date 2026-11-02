@@ -82,7 +82,7 @@ ellenőrzéshez való, olvasáskor átugorható.
 vizsgált helyek, M a minősítés.
 
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
-betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a
 szócikk szövegéből derül ki.
 
@@ -121,19 +121,19 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-1-2"></a>
 **1Móz 1:2**
 *A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett.*
-"A föld pedig kietlen és puszta vala" — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár a föld teremtés előtti állapotának megnevezése
+„A föld pedig kietlen és puszta vala” — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár a föld teremtés előtti állapotának megnevezése
 Funkció: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal
 
 <a id="ige-ézs-34-11"></a>
 **Ézs 34:11**
 *És örökségül bírándja azt ökörbika, sündisznó; és gém és holló lakja azt, és fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit.*
-"fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit" — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár Edom ítéletében, mérőkötél és függőón képében
+„fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit” — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár Edom ítéletében, mérőkötél és függőón képében
 Funkció: a tohu/bohu mint a rombolás mérőeszköze
 
 <a id="ige-jer-4-23"></a>
 **Jer 4:23**
 *Nézek a földre, de ímé kietlen és puszta; és az égre, de nincsen világossága!*
-"Nézek a földre, de ímé kietlen és puszta" — az 1Móz 1:2 párja Júda ítéletének képeként
+„Nézek a földre, de ímé kietlen és puszta” — az 1Móz 1:2 párja Júda ítéletének képeként
 Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#elofordulasok -->
@@ -200,11 +200,11 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 |---|---|---|
 | Jer 9:15 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k40] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
 | Zsolt 80:6-7 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k41] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
-| Ézs 66:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k42] | **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| Ez 34:12-16 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k43] | **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| Ján 10:11 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k44] | **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| 1Móz 33:13 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k45] | **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| 4Móz 11:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k46] | **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
+| Ézs 66:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k42] | **elutasítva** — egyéb |
+| Ez 34:12-16 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k43] | **elutasítva** — egyéb |
+| Ján 10:11 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k44] | **elutasítva** — egyéb |
+| 1Móz 33:13 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k45] | **elutasítva** — egyéb |
+| 4Móz 11:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k46] | **elutasítva** — egyéb |
 
 **Gépi keresés** (16)
 
@@ -227,7 +227,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 | Ézs 49:4 | gépi Strong-keresés: H8414[^k61] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
 | Ézs 59:4 | gépi Strong-keresés: H8414[^k62] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) — a תֹּהוּ (tóhú) önmagában nem elég, sem a „semmiség/hiábavalóság” jelentésben (Ézs 40:17, 44:9), sem a „puszta, úttalan vidék” jelentésben (5Móz 32:10, Zsolt 107:40); és a lexikai pár nélküli kozmikus elsötétülés- vagy pusztulás-kép sem (Jóel 2:10, Mt 24:29)
+**Negatív kritérium:** az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) — a תֹּהוּ (tóhú) önmagában nem elég, sem a „semmiség/hiábavalóság” jelentésben (Ézs 40:17, 44:9), sem a „puszta, úttalan vidék” jelentésben (5Móz 32:10, Zsolt 107:40); és a lexikai pár nélküli kozmikus elsötétülés- vagy pusztulás-kép sem (Jóel 2:10, Mt 24:29)
 
 [^k1]: forrás: `TSK 1Móz 1:2 (Votes=61)`
 [^k2]: forrás: `TSK 1Móz 1:2 (Votes=40)`
@@ -270,11 +270,11 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 [^k39]: forrás: `TSK Ézs 34:11 (Votes=2)`
 [^k40]: forrás: `Károli-KH (forrás-vers: Jer 4:23)`
 [^k41]: forrás: `Károli-KH (forrás-vers: Jer 4:23)`
-[^k42]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)`
-[^k43]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)`
-[^k44]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)`
-[^k45]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)`
-[^k46]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)`
+[^k42]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^k43]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^k44]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^k45]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^k46]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
 [^k47]: forrás: `scan H8414`
 [^k48]: forrás: `scan H8414`
 [^k49]: forrás: `scan H8414`
@@ -327,9 +327,9 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 **Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
 
-**H0922** · üresség *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H0922](/szo/H0922) · forrás: `konkordancia/TBESH.txt`
+**H0922** · üresség *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H0922](/szo/H0922) · forrás: `konkordancia/TBESH.txt`
 
-**H8414** · formátlanság *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H8414](/szo/H8414) · forrás: `konkordancia/TBESH.txt`
+**H8414** · formátlanság *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H8414](/szo/H8414) · forrás: `konkordancia/TBESH.txt`
 
 #### 2. Mélységi szócikk
 
@@ -339,7 +339,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H922. bohu בֹּ֫הוּ főnév [hímnemű]: üresség (az alakról l. Ges^§ 84a, 1 b Sta^§ 95, 198 a, a használatról vö. Lag^Or. ii. 60 k.) mindig a תֹּהוּ szóval, l. ott; — תֹּהוּ וָבֹהוּ‎ 1Móz 1:2 az ősi földről; Jer 4:23 a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> ítélete alatt álló földről; קַותֿֿהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a pusztaság mérőzsinórja és az üresség kövei, azaz függőónok, amelyeket nem a szokott módon építésre, hanem falak lerombolására használnak; vö. Di & l. alább אבן‎ 6
+**A szócikk feje (nyelvi háttér).** H922. bohu בֹּ֫הוּ főnév [hímnemű]: üresség (az alakról l. Ges § 84a, 1 b Sta § 95, 198 a, a használatról vö. Lag Or. ii. 60 k.) mindig a תֹּהוּ szóval, l. ott; — תֹּהוּ וָבֹהוּ‎ 1Móz 1:2 az ősi földről; Jer 4:23 a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> ítélete alatt álló földről; קַותהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a pusztaság mérőzsinórja és az üresség kövei, azaz függőónok, amelyeket nem a szokott módon építésre, hanem falak lerombolására használnak; vö. Di & l. alább אבן‎ 6
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 1 (1Móz 1:2, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorszam 3 (Ézs 34:11, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorszam 2 (Jer 4:23, tagolatlan): az útvonal nincs a szakasztáblában.*
 
@@ -349,11 +349,11 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H8414. tohu תֹּ֫הוּ hímnemű főnév^1Sám 12:21 (Albr^ZAW xvi (1896), 112): formátlanság, zűrzavar, valótlanság, üresség (az alapjelentés nehezen megragadható; Vrss rendszerint Κενόν, οὐδέν, μάταιον, inane, vacuum, vanum; vö. Lag^Or. ii. 60; BN 144); —
+**A szócikk feje (nyelvi háttér).** H8414. tohu תֹּ֫הוּ hímnemű főnév 1Sám 12:21 (Albr ZAW xvi (1896), 112): formátlanság, zűrzavar, valótlanság, üresség (az alapjelentés nehezen megragadható; Vrss rendszerint Κενόν, οὐδέν, μάταιον, inane, vacuum, vanum; vö. Lag Or. ii. 60; BN 144); —
 
 - **`1` — formátlanság**
 
-  > formátlanság, az ősi földről **1Móz 1:2** (P), az ősi káoszba visszasüllyesztett földről **Jer 4:23** (mindkettő + וָבֹהוּ: és üresség), **Ézs 34:11** ׳קַותֿֿ (|| אַבְנֵי בֹהוּ‎), 45:18 לֹא <abbr class="rovidites" title="a címszó: תֹּ֫הוּ (tóhú)">ת׳</abbr> בְרָאָהּ (|| יְצָרָתּ לָשֶׁבֶת‎); 24:10 ׳קִרְיַתאתּ: a káosz városa (a romba dőlt városról); = semmiség, üres tér, Jób 26:7 עַלתּֿ׳ תֹּלֶה אֶרֶץ; üres, úttalan pusztaságról 5Móz 32:10 (|| מִדְבָּר), Jób 6:18; 12:24 = Zsolt 107:40.
+  > formátlanság, az ősi földről **1Móz 1:2** (P), az ősi káoszba visszasüllyesztett földről **Jer 4:23** (mindkettő + וָבֹהוּ: és üresség), **Ézs 34:11** ׳קַות (|| אַבְנֵי בֹהוּ‎), 45:18 לֹא <abbr class="rovidites" title="a címszó: תֹּ֫הוּ (tóhú)">ת׳</abbr> בְרָאָהּ (|| יְצָרָתּ לָשֶׁבֶת‎); 24:10 ׳קִרְיַתאתּ: a káosz városa (a romba dőlt városról); = semmiség, üres tér, Jób 26:7 עַלתּ׳ תֹּלֶה אֶרֶץ; üres, úttalan pusztaságról 5Móz 32:10 (|| מִדְבָּר), Jób 6:18; 12:24 = Zsolt 107:40.
 
 <details>
 <summary>2 (1 szakasz)</summary>
@@ -404,9 +404,9 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H0922** · 3 vers az LXX_OS-ben (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 2 vers; εἰμί (eimi, G1510): 2 vers; ἄβυσσος (abüsszosz, G0012): 1 vers; ἀόρατος (aoratosz, G0517): 1 vers; ἐπάνω (epanó, G1883): 1 vers; ἐπιβάλλω (epiballó, G1911): 1 vers; ἐπιβλέπω (epiblepó, G1914): 1 vers; ἐπιφέρω (epiferó, G2018): 1 vers; ἔρημος (erémosz, G2048): 1 vers; θεός (theosz, G2316): 1 vers
+**H0922** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 2 vers; εἰμί (eimi, G1510): 2 vers; ἄβυσσος (abüsszosz, G0012): 1 vers; ἀόρατος (aoratosz, G0517): 1 vers; ἐπάνω (epanó, G1883): 1 vers; ἐπιβάλλω (epiballó, G1911): 1 vers; ἐπιβλέπω (epiblepó, G1914): 1 vers; ἐπιφέρω (epiferó, G2018): 1 vers; ἔρημος (erémosz, G2048): 1 vers; θεός (theosz, G2316): 1 vers
 
-**H8414** · 19 vers az LXX_OS-ben (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 8 vers; εἰμί (eimi, G1510): 8 vers; οὐδείς (údeisz, G3762): 7 vers; πᾶς (pasz, G3956): 5 vers; ποιέω (poieó, G4160): 5 vers; μάταιος (mataiosz, G3152): 4 vers; ἄρχων (arkhón, G0758): 3 vers; θεός (theosz, G2316): 3 vers; κύριος (küriosz, G2962): 3 vers; λέγω (legó, G3004): 3 vers
+**H8414** · 19 vers a Septuagintában (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 8 vers; εἰμί (eimi, G1510): 8 vers; οὐδείς (údeisz, G3762): 7 vers; πᾶς (pasz, G3956): 5 vers; ποιέω (poieó, G4160): 5 vers; μάταιος (mataiosz, G3152): 4 vers; ἄρχων (arkhón, G0758): 3 vers; θεός (theosz, G2316): 3 vers; κύριος (küriosz, G2962): 3 vers; λέγω (legó, G3004): 3 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -546,7 +546,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
 | 1Móz 1:2 | 1Móz 1:2 | תֹ֙הוּ֙ (tóhú) | ἀόρατος (aoratosz G0517) | eltérő | adat/lxx_dontesek.tsv |
-| Jer 4:23 | Jer 4:23 | תֹ֖הוּ (tóhú) | — | kutatói azonosítás függőben | LXX_OS |
+| Jer 4:23 | Jer 4:23 | תֹ֖הוּ (tóhú) | — | kutatói azonosítás függőben | Septuaginta |
 | Ézs 34:11 | Ézs 34:11 | תֹ֖הוּ (tóhú) | ἔρημος (erémosz G2048) | eltérő | adat/lxx_dontesek.tsv |
 
 *Összesítés: egyező=0, eltérő=2, LXX-minusz=0, kutatói azonosítás függőben=1, szamozas_elteres=0.*
@@ -609,7 +609,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 <details>
 <summary>Kereszthivatkozásból minősített jelöltek (47 sor; elutasítva 47)</summary>
 
-| Igehely | Döntés | Forrás-keresés | Indoklás |
+| Igehely | Döntés | Forrás | Indoklás |
 |---|---|---|---|
 | Zsolt 104:30 | elutasítva | TSK 1Móz 1:2 (Votes=61) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Zsolt 33:6 | elutasítva | TSK 1Móz 1:2 (Votes=40) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
@@ -653,11 +653,11 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 | Jel 18:23 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Ézs 13:20 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Ézs 13:22 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 66:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| Ez 34:12-16 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| Ján 10:11 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| 1Móz 33:13 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
-| 4Móz 11:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | adathiba: az Isa.34.11 lista az Isa.40.11 másolata |
+| Ézs 66:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
+| Ez 34:12-16 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
+| Ján 10:11 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
+| 1Móz 33:13 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
+| 4Móz 11:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
 
 </details>
 
@@ -708,7 +708,7 @@ graph LR
 
 *Generált a `kapcsolatok.tsv` `indoklas` mezőjéből: soronként miért ez a funkció-címke, miért ez a bizonyossági szint.*
 
-A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben.
+A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás.
 
 *Proveniencia: `scope=id:TEREMT-002 | forras=adat/kapcsolatok.tsv | ts=2026-11-02`*
 
@@ -720,7 +720,7 @@ A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcso
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
-A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
+A motívumhoz nincs rögzített motívumközi kapcsolat.
 
 *Proveniencia: `scope=id:TEREMT-002 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-02`*
 
@@ -940,8 +940,14 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 | Negatív kritérium | az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) — a תֹּהוּ (tóhú) önmagában nem elég, sem a „semmiség/hiábavalóság” jelentésben (Ézs 40:17, 44:9), sem a „puszta, úttalan vidék” jelentésben (5Móz 32:10, Zsolt 107:40); és a lexikai pár nélküli kozmikus elsötétülés- vagy pusztulás-kép sem (Jóel 2:10, Mt 24:29) |
 | Fölérendelt fogalom | az isteni ítélet mint pusztulás / kozmikus felbomlás általában (prófétai pusztulás-, elsötétülés- és romhalmaz-képek), a תֹהוּ וָבֹהוּ (tohu va-vohu) páron kívül |
 | Forrás-study | `motivumok/TEREMT-002.md` |
-| Kereszthivatkozás-napló | — |
-| Sablon-megfelelőség |  |
+| Kereszthivatkozás-napló | nincs rögzítve |
+| Sablon-megfelelőség | nincs rögzítve |
+| Kiadás | nincs kiadva — feldolgozás alatt |
+| Próza modellje | nincs kiadva — feldolgozás alatt |
+
+**Változásjegyzék**
+
+Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első kiadással indul.
 
 ---
 

@@ -562,7 +562,7 @@ class TestLapok(unittest.TestCase):
             latott += 1
             i = t.index('data-blokk="%s"' % b)
             blokk = t[i:t.index('</section>', i)]
-            self.assertIn('<abbr class="rovidites" title="יְהוָה (Jahve), az Úr" tabindex="0">י׳</abbr>', blokk, b)
+            self.assertIn('<abbr class="rovidites" title="יְהוָה (JHVH), az Úr" tabindex="0">י׳</abbr>', blokk, b)
             if b != 'szo.bdb_angol':
                 self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)" tabindex="0">ק׳</abbr>', blokk, b)
             szoveg = re.sub(r'<[^>]*>', ' ', blokk)
