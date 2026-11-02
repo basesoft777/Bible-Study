@@ -35,12 +35,15 @@ for s in strongok:
         szotar[s] = [r[0][0], r[0][1], (r[0][2] or '')[:60], n]
 
 # kereszthivatkozások (STEP-alak → magyar megjelenítés)
+sys.path.insert(0, f'{ROOT}/eszkozok')
+import karoli_kh_szuro  # noqa: E402  (N-F156a)
+_KH_GYANUS = karoli_kh_szuro.gyanus_forrasok()
 kh = defaultdict(list)
 with open(f'{ROOT}/konkordancia/Karoli_kereszthivatkozasok.tsv', encoding='utf-8') as f:
     next(f)
     for s in f:
         m = s.rstrip('\n').split('\t')
-        if m[0].startswith('Jol.2.'):
+        if m[0].startswith('Jol.2.') and m[0] not in _KH_GYANUS:
             kh[f"{KONYV} {FEJ}:{m[0].split('.')[2]}"].append(m[2])
 
 nave = defaultdict(list)

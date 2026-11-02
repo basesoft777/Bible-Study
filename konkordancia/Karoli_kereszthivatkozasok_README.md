@@ -85,3 +85,13 @@ Gen.2.4-Gen.2.5, Psa.33.6, Psa.89.12, Psa.136.5, Act.14.15, Act.17.24, Heb.11.3,
 
 Azok a versek, amikhez a forrásban nincs kereszthivatkozás, egyszerűen kimaradtak a
 fájlból — nincs üres sor.
+
+## Forráshiba: másolt jegyzet-listák (N-F156a, 2026-11-02)
+
+A tábla a forrás XML-hez **hű**: az `eszkozok/karoli_kh_osis_konverzio.py` (a fenti módszer újraírása) a HunKar
+commit `0e244494dd190e4a6b132c1afddfa307e73792f8` `hunkaroli_rev.osis.xml`-jéből mind a 32 407 sort a jelenlegi táblával soronként
+azonosan állítja elő (0 eltérés). A hiba a **forrásban** van: sok vershez a jegyzet másik vers listáját hordozza (pl. `Act.2.18`–`2.47`
+= `Act.7.5`–`7.34` listái). Az eredeti, helyes listák ebből a forrásból nem nyerhetők vissza, ezért a főtábla változatlan (nyers-hű), a
+gyanús forrásversek a `Karoli_kereszthivatkozasok_gyanus.tsv`-ben állnak (`eszkozok/karoli_kh_gyanus_general.py`; osztály `blokk`:
+konstans eltolású másolat-blokk, a legerősebb bizonyíték; `egyedi`: nagyobb hamis-pozitív kockázat). **A fogyasztók a gyanús
+forrásverseket kihagyják** (`eszkozok/karoli_kh_szuro.py`). Jelentés: `naplok/N_F156a_jelentes.md`.
