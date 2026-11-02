@@ -237,7 +237,7 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
 - Indítás: a felhasználó (DT-F151b) az orkesztrátornak, 2026-11-02: „inditsuk el”, az újraindításra: „Igen, indítsd”.
 - Bemenet: `naplok/HATAR_ALVIL-001.md` (Gépi rész: 0 kérdés, a lexikai hordozón a negatív-kritérium próba nem fut; Modelles rész: a `hatar-ellenor`,
   `claude-fable-5-1`, 2 kérdés, hígulás 0) és `naplok/KIADAS_ALVIL-001_lektor.md` (a `lektor`, `claude-fable-5-1`, 28 kérdés). A `/kiadas` jelölt-listája
-  (`naplok/KIADAS_ALVIL-001_lista.md`) üres volt, ezért a lektor a teljes kézi prózát kapta (DT-F125f).
+  (`naplok/KIADAS_ALVIL-001_lista.md`) üres volt, ezért a lektor a teljes kézi prózát kapta (DT515).
 - `naplok/LEKTOR_ALVIL-001.tsv`: **30 kérdés** = 2 `hatar` (1. kiadás) + 28 `lektor` (2. kiadás), mind `nyitva`; kézi kártya-összefoglaló mind a 30-hoz
   (`eszkozok/lektor_felulet/osszefoglalo_ALVIL-001.tsv`, `manual`; egyiknél sem volt konkrét javítási javaslat, mind `nincs`).
 - Artifact: ugyanaz a link (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 10. verzió; `epit.py` az összes `LEKTOR_*.tsv`-ből, `--lap-url` változatlan.
@@ -282,7 +282,7 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
 - Lektor-felület: ugyanaz a link, 13. verzió; az élő db `valaszok` gyűjteménye változatlan (3 dokumentum, ArtifactData list). Helyben, db-utánzattal megnézve: a két blokk csak a határ-kártyán
   jelenik meg, a lektori kártyán nem. Az élő oldalon a beépített böngésző bejelentkezést kér, ott a felhasználónak kell kipróbálnia.
 
-## A felület új neve: Kiadó (DT-F157h; a felhasználó: „A lektor kereszteljük át: Kiadó-ra”, pontosítva: „Csak a felület nevét”; 2026-11-02)
+## A felület új neve: Kiadó (DT516; a felhasználó: „A lektor kereszteljük át: Kiadó-ra”, pontosítva: „Csak a felület nevét”; 2026-11-02)
 
 - A felület címe (`<title>`) és fejléce „Kiadó” (`eszkozok/lektor_felulet/sablon.html`); az `epit.py` leírása „a Kiadó (felület)”.
 - Dokumentáció, ahol a felület mint hely szerepel: „Kiadó (felület)” — `MUNKAMENET.md` (C-h, C-l, C-k sora és a lezárás menete; 5 hely), `F10_LEXIKON_LEZARAS_BRIEF.md` (1),
