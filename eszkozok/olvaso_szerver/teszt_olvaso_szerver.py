@@ -1044,6 +1044,26 @@ def _pilot_json(szakasz, azon):
         return json.load(f)
 
 
+def _forditasok_elavult(con):
+    """Üres szöveg, ha a `pardes.db` a mai `adat/forditasok.tsv`-ből épült; különben a kihagyás indoka. A D2 a pilot JSON-t a TSV-ből építi,
+    a szerver az adatbázisból olvas; a fordítás folyamatosan bővül (pl. a Thayer-sorok), ezért egy régebbi adatbázissal az összevetés
+    nem a szerver hibáját mérné. Az építési állapot a `meta` `hash:forditasok` sorából jön (`<sorszám>|<sha256>`): a sorszám a TSV adatsoraival
+    egyezik, ha az adatbázis friss (kihagyás, nem siker: az adatbázis elavult, építsd újra: `python eszkozok/sqlite_epit.py --mod teljes`)."""
+    try:
+        r = con.execute("SELECT ertek FROM meta WHERE kulcs='hash:forditasok'").fetchone()
+        ut = GY + 'adat/forditasok.tsv'
+        if not r or not os.path.isfile(ut):
+            return ''
+        db_sor = int(r[0].split('|')[0])
+        with open(ut, encoding='utf-8') as f:
+            tsv_sor = sum(1 for ln in f if ln.strip() and not ln.startswith('#')) - 1       # a fejléc nélkül
+    except Exception as ex:                                                                  # a őr nem lehet a hiba oka
+        return ''
+    if db_sor != tsv_sor:
+        return 'az adatbázis elavult — építsd újra: a forditasok táblában %d sor van, az adat/forditasok.tsv-ben %d' % (db_sor, tsv_sor)
+    return ''
+
+
 @unittest.skipUnless(VAN_DB and VAN_FLASK and os.path.exists(GY + 'konkordancia/Karoli_1908.tsv'), 'nincs pardes.db, Flask vagy konkordancia/ (a pilot TSV-ből épül)')
 class TestD2PilotEgyezes(unittest.TestCase):
     """A szerver saját lekérdezései (`lekerdezesek.py`, `blokkok.py`) a #60 D2 összehasonlítójával (db_meres.py):
@@ -1057,6 +1077,9 @@ class TestD2PilotEgyezes(unittest.TestCase):
         cls.dm = db_meres
         cls.db = adatbazis.Adatbazis(DB, 'belso')
         cls.con = cls.db.kapcsolat()
+        elavult = _forditasok_elavult(cls.con)
+        if elavult:
+            raise unittest.SkipTest(elavult)
         cls.kozos = oldalak.Kozos(cls.con)
 
     # a szerver lekérdezéseiből a db_meres.db_vers / db_szo / db_gorog alakú szótárak
