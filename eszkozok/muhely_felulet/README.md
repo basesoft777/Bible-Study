@@ -4,7 +4,7 @@ Kézzel írt forrás (nem generált): a Dashboard-artifact oldala és kiegészí
 
 | fájl | szerep |
 |---|---|
-| `index.html` | az oldal (`files/index.html` a Dashboardban); a téma a `data-mode` ősből olvasódik (`.sotet` osztály), az A. Olvasó tokenek saját osztályokon |
+| `index.html` | az oldal (`files/index.html` a Dashboardban); az A. Olvasó tokenek saját osztályokon, mindig a világos készlet (DT-F156h) |
 | `look.json` | a `dash/look` dokumentum (az A értékei tartalékként) |
 | `adat_laposit.py` | `feed_*.json` → a Dashboard öt adatfájlja (motivumok, kapuk, stash, tortenes, belso_kapuk) |
 | `betu_css.py` | az öt betű-CSS (`files/*.css`, `data:` URL) az olvasó-szerver OFL betűfájljaiból |

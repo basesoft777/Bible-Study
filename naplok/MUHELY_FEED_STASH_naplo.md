@@ -164,3 +164,7 @@ A Dashboard (`https://claude.ai/artifact/S5LqyrUsFN8RXHXLrURnpk`) oldala nem gen
 - `betu_css.py`: az öt betű-CSS (`files/*.css`, data: URL) az olvasó-szerver OFL betűfájljaiból.
 
 Frissítés: `muhely_allapot.py` → `adat_laposit.py <könyvtár>` → a fájlok feltöltése az artifact asset-tárába → a `datasets/*` dokumentumok `source.url`-jének cseréje; az oldal vagy a betű-CSS változásakor a `files/` dokumentumok írása (`{"text": …}`).
+
+## DT-F156h ✅ eldöntve — a Feed mindig világos
+
+A felhasználó (az orkesztrátor továbbításában, 2026-11-02): **„Igen, mindig világos”** — a Feed a témától függetlenül mindig az A világos változatát mutatja (papír `#f6f6f3`, lap `#ffffff`, kiemelés `#1f5f7a`), sötét módban is. A sötét A-készlet és a `.sotet` kapcsolás kikerült az `eszkozok/muhely_felulet/index.html`-ből (a DT-F156g téma-olvasása megszűnt); az `.mh` `color-scheme: light`. A `dash/look` sötét halmaza a típus kereténél marad.

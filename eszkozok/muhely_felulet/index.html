@@ -5,8 +5,7 @@
   .mh { --cim: "Source Serif 4", Georgia, serif; --szoveg: "IBM Plex Sans", system-ui, sans-serif; --adat: "IBM Plex Mono", ui-monospace, monospace; --sugar: 4px;
         --papir: #f6f6f3; --lap: #ffffff; --tinta: #1c1f24; --halvany: #5d636d; --vonal: #dcddd8; --kiemel: #1f5f7a; --kiemel-hatter: #e1eef3;
         --elfogad: #1d6b3f; --elfogad-hatter: #e0f0e6; --elvet: #a3302a; --elvet-hatter: #f7e3e1; --figyel: #8a5a00; --figyel-hatter: #f8ecd0; }
-  .mh.sotet { --papir: #14171b; --lap: #1b1f24; --tinta: #e7e8ea; --halvany: #9aa0a9; --vonal: #2e333a; --kiemel: #7cc0da; --kiemel-hatter: #1d3440;         --elfogad: #7fd0a0; --elfogad-hatter: #17301f; --elvet: #f0a39d; --elvet-hatter: #3b1e1c; --figyel: #e8c26a; --figyel-hatter: #3a2e12; }
-  .mh { display: flex; flex-direction: column; gap: 20px; font-family: var(--szoveg); color: var(--tinta); background: var(--papir); padding: 24px clamp(16px, 3vw, 40px) 36px; box-sizing: border-box; }
+  .mh { color-scheme: light; display: flex; flex-direction: column; gap: 20px; font-family: var(--szoveg); color: var(--tinta); background: var(--papir); padding: 24px clamp(16px, 3vw, 40px) 36px; box-sizing: border-box; }
   .mh > * { width: 100%; max-width: 78rem; margin-inline: auto; box-sizing: border-box; }
   .mh h1 { font-family: var(--cim); font-weight: 600; font-size: 2rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
   .mh h2 { font-family: var(--szoveg); font-size: 1rem; font-weight: 600; margin: 0; }
@@ -243,18 +242,6 @@
     if (g.status !== 'ok') return;
     tablaTolt(el, g.data.filter((r) => r.allapot !== 'zold'), ['motivum', 'kapu', 'allapot', 'ertek', 'reszlet', 'prov']);
   });
-
-  // A gazdaoldal témaváltója a data-mode attribútum (dark | light | system); a sötét A-tokenek a .sotet osztályra kapcsolnak.
-  const kor = document.getElementById('mh');
-  const sotetMod = window.matchMedia('(prefers-color-scheme: dark)');
-  function temaIgazit() {
-    const gazda = kor.closest('[data-mode]');
-    const mod = gazda ? gazda.getAttribute('data-mode') : 'system';
-    kor.classList.toggle('sotet', mod === 'dark' || (mod !== 'light' && sotetMod.matches));
-  }
-  temaIgazit();
-  sotetMod.addEventListener('change', temaIgazit);
-  new MutationObserver(temaIgazit).observe(document.documentElement, {attributes: true, attributeFilter: ['data-mode', 'class'], subtree: true});
 
   const tabok = document.querySelectorAll('.mh .tab');
   function fulVal(nev) {
