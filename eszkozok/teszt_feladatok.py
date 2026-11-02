@@ -293,6 +293,18 @@ class EllenorizTest(Alap):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, valami='x'))
         self.assertTrue(any('ismeretlen kulcs' in u for _, u in self.hibak()))
 
+    def test_motivum_kesz_csak_az_ir_motivuma(self):
+        # DT-F123n: a `motivum_kesz` lista; eleme csak olyan motívum, amelynek kézi forrása az `ir`-ben áll
+        def kesz_hibak():
+            return [u for _, u in self.hibak() if 'motivum_kesz' in u]
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, ir=['motivumok/X-001.md'], motivum_kesz='[X-001]'))
+        self.assertEqual(kesz_hibak(), [])
+        self.assertEqual(F.briefek_beolvas(self.g.ut)[0].fej['motivum_kesz'], ['X-001'])
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, ir=['motivumok/X-001.md'], motivum_kesz='[Y-002]'))
+        self.assertTrue(any('Y-002 nincs az `ir`-ben' in u for u in kesz_hibak()))
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, ir=['motivumok/X-001.md'], motivum_kesz='X-001'))
+        self.assertTrue(any('értéke lista' in u for _, u in self.hibak()))
+
 
 class GeneralTest(Alap):
     def felallit(self):
