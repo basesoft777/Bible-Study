@@ -13,7 +13,7 @@
 | `effort` | **új**: `--effort high|medium` (a `bdb_api_koteg.py`-ban konstans, ezért a Thayerben saját `kerelem_params`) |
 | javító kör | a bukott/hiányzó Strong egyenként (A-stílus); ha nincs mit javítani (üres B-válasz-objektum), friss kérés assistant-forduló nélkül |
 
-A `bdb_api_koteg.py`, az `api_koteg.py`, a `thayer_jelolt/` eszközei és a `prompt_v5_1.md` változatlanok (`git diff main --stat`: csak a `thayer_api_koteg.py` és a tesztje).
+A `bdb_api_koteg.py`, az `api_koteg.py`, a `thayer_jelolt/` eszközei és a `prompt_v5_1.md` változatlanok (`git diff 0c597b1e..HEAD` ezekre üres; a diffben a `thayer_api_koteg.py`, a tesztje, a brief, a napló, a mérő Strong-lista és a két munkamappa szerepel).
 
 ## 2. Az adatblokk szűkítése (2. követelmény)
 
@@ -48,7 +48,7 @@ Mindkét ágon ugyanaz a 60 Strong és ugyanaz a csoportbontás (`b_csoportok.js
 | max_tokens (beállított / használt kimenet, B001–B004) | 64 000, 64 000, 64 000, 39 489 / 25 366, 22 664, 14 311, 4 987 | ugyanaz / 21 418, 16 484, 9 433, 1 776 |
 | stop_reason | mind `end_turn` | mind `end_turn` |
 
-**Mért teljes költség: 1,187 USD ≤ 4 USD** (K3). Összehasonlításul az F27 M1 egy Strongos útja a kicsi Strongokra 0,071 USD / 1000 karakter volt (`naplok/FP3_naplo.md`); a B-út összesen 0,016–0,020, vagyis a kicsi/közepes Strongokon kb. 3,5–4,3-szer olcsóbb (a minta kicsi: 60 Strong).
+**Mért teljes költség: 1,187 USD ≤ 4 USD** (K3). Összehasonlításul az F27 M1 egy Strongos útja a kicsi Strongokra 0,071 USD / 1000 karakter volt (az `naplok/FP3_naplo.md` kivetítésének illesztett modelljéből, nem közvetlenül mért); a B-út összesen 0,016–0,020, vagyis a kicsi/közepes Strongokon kb. 3,5–4,4-szer olcsóbb (a minta kicsi: 60 Strong).
 
 ### Kapubukás (Strong-szinten, kapunként)
 
@@ -85,24 +85,25 @@ Egyetlen Strong sem hiányzott, nem folyt össze másikkal; a Strongonkénti kap
 | kimenet token / Strong | (1 134 / kérés) | **343** | **74** |
 | kimenet token / forráskarakter | 1,654 | **1,452** | **1,411** |
 
-Az illesztés 4 ponton áll, a Strongonkénti kimeneti állandó nem megbízható (a high 343, a medium 74: a két paraméter együtt mozog), az összkimenet jó becslő: kb. 1 120 (high) és 820 (medium) token / Strong ezen a mintán. A bemeneti állandó (14,4 ezer token) a szűkített szabály-részé a kérésben, nagyobb a száraz 10,4 ezernél; a kalibráció tehát konzervatív volt a bemenetre (a becslő 0,77 USD, a mért 0,50/0,41 első körös). Az `ALLANDO_REF_KAR`, `BE_*`, `KI_*` konstansokat a #7 előtt a nagyobb mintával kell újraillesztetni; most nem írtam át őket (a mérő eredmény N-F27a lezárásához a mért értékek ebben a naplóban vannak).
+Az illesztés 4 ponton áll, a Strongonkénti kimeneti állandó nem megbízható (a high 343, a medium 74: a két paraméter együtt mozog), az összkimenet jó becslő: kb. 1 120 (high) és 820 (medium) token / Strong ezen a mintán. A bemeneti állandó (14,4 ezer token) a szűkített szabály-részé a kérésben, nagyobb a száraz 10,4 ezernél; a becslő bemenete gyakorlatilag pontos volt (4 × ~10 400 + 3,721 × 32 718 ≈ 163 ezer token becsült, 161 687 mért). A túlbecslés (0,77 USD becsült, 0,50/0,41 mért első kör) a **kimenetből** jön: a becsült kb. 122 ezer token (1 134 × 60 + 1,654 × 32 718), a mért 67 328 (high), illetve 49 111 (medium). Az `ALLANDO_REF_KAR`, `BE_*`, `KI_*` konstansokat a #7 előtt a nagyobb mintával kell újraillesztetni; most nem írtam át őket (a mérő eredmény N-F27a lezárásához a mért értékek ebben a naplóban vannak).
 
 ## 6. Kivetítés a teljes Thayerre a B-úttal (`manual`, 60 Strong mintából)
 
-Alap: 5 385 fordítandó Strong; kicsi/közepes 5 176 Strong (3 288 + 1 888), 2 914 221 forráskarakter, 289 B-kérés (20 Strong / 16 000 karakter); nagy/többcsoportos 209 Strong, 233 kérés, 1 474 862 karakter. A kicsi/közepes B-kérés költsége a 5. pont együtthatóival; a javító kör a mért arányokkal (high 13,3%, medium 11,7% Strongonként, a mért javító-kérés költségével); a nagyra **nincs mérés**: ott a mért bemeneti együtthatók, az M1 kimeneti illesztése (1 134 / kérés + 1,654 / karakter) és a mért javító arány, a medium kimenete a mért 0,729-es medium/high kimeneti aránnyal; ez extrapoláció, a nagy Strongok bukása valószínűleg magasabb.
+Alap: 5 385 fordítandó Strong; kicsi/közepes 5 176 Strong (3 288 + 1 888), 2 914 221 forráskarakter, 289 B-kérés (20 Strong / 16 000 karakter); nagy/többcsoportos 209 Strong, 233 kérés, 1 474 862 karakter. A kicsi/közepes B-kérés költsége a 5. pont együtthatóival; a javító kör a mért arányokkal (high 13,3%, medium 11,7% Strongonként, a mért javító-kérés költségével); a nagyra **nincs mérés**: ott a mért bemeneti együtthatók, az M1 kimeneti illesztése (1 134 / kérés + 1,654 / karakter) és a javító kör költsége az F27 M1-ben a nagyokra mért javító/1. kör arány (0,43; `naplok/FP3_naplo.md`) szerint, a medium kimenete a mért 0,729-es medium/high kimeneti aránnyal; ez extrapoláció.
 
 | Kategória | high: 1. kör + javító | medium: 1. kör + javító |
 |---|---|---|
 | kicsi (3 288 Strong, 894 191 kar.) | 17,62 + 8,60 = **26,22** | 13,02 + 6,83 = **19,85** |
 | közepes (1 888 Strong, 2 020 030 kar.) | 25,84 + 4,94 = **30,78** | 22,89 + 3,92 = **26,82** |
-| nagy (209 Strong, 233 kérés; extrapoláció) | 21,57 + 0,61 = **22,18** | 17,91 + 0,48 = **18,39** |
-| **összesen (USD, `manual`)** | **79,2** | **65,1** |
+| nagy (209 Strong, 233 kérés; extrapoláció) | 21,57 + 9,27 = **30,84** | 17,91 + 7,70 = **25,61** |
+| **összesen (USD, `manual`)** | **87,8** | **72,3** |
 
-Összevetés: az F27 M1 egy Strongos útja 207–311 USD; a brief 79–113 USD-s B-út becslése; a kivetítés **79 (high) / 65 (medium) USD < 130 USD** → a megállási feltétel nem teljesül. A kivetítés bizonytalansága: a mérő minta 60 Strong (±), a kicsi/közepes kategória költségének kb. harmada a javító körből jön (egy Strongos javító kérés a teljes szabály-részt újra viszi: 13–14 ezer bemeneti token) → a #7 briefjének mérlegelnie kell a javító kör csoportosítását (B-stílusú javító kör), ami a kicsi/közepes javító költségét (high 13,5, medium 10,8 USD) jelentősen csökkentené. Számítás: `eszkozok`-on kívüli scratch-szkript (`proj.py`), az együtthatók és arányok ebben a naplóban teljesek.
+Összevetés: az F27 M1 egy Strongos útja 207–311 USD; a brief 79–113 USD-s B-út becslése; a kivetítés **88 (high) / 72 (medium) USD < 130 USD** → a megállási feltétel nem teljesül. A 130 USD-s és a 10 százalékpontos küszöb forrása: az orkesztrátor feladat-megbízása (F159, 2026-11-02) és megerősítő üzenete (2026-11-02, „a korábbi megállási feltételek érvényesek”); a briefben és a DONTESEK.md-ben nem szerepel. A kivetítés bizonytalansága: a mérő minta 60 Strong (±), a kicsi/közepes kategória költségének kb. harmada a javító körből jön (egy Strongos javító kérés a teljes szabály-részt újra viszi: 13–14 ezer bemeneti token) → a #7 briefjének mérlegelnie kell a javító kör csoportosítását (B-stílusú javító kör), ami a kicsi/közepes javító költségét (high 13,5, medium 10,8 USD) jelentősen csökkentené. Számítás: `eszkozok`-on kívüli scratch-szkript (`proj.py`), az együtthatók és arányok ebben a naplóban teljesek.
 
 ## 7. Zárás
 
 - N-F27a (becslő a mért modellre): a kalibrált együtthatók a kötegelőben (M1 illesztés) és az újraillesztés az 5. pontban → lezárásra javasolt.
-- N-F27b (mért futó összeg a plafonban): `plafon_ellenorzes` + tesztek → lezárásra javasolt.
+- N-F27b (mért futó összeg a plafonban): `plafon_ellenorzes` + tesztek → lezárásra javasolt. Az N-F27g ugyanez a követelmény, az N-F27f (Thayer B-út, szűkítés, `effort=medium`-mérés) ennek a feladatnak a tárgya → mindkettő lezárásra javasolt a #159 merge-ével.
+- A független ellenőr észrevétele (a `bekuld` és a `bbekuld` összehangolása): javítva és tesztelve (a `bekuld` a már beküldött vagy megválaszolt kéréseket kihagyja; `test_bekuld_a_b_utan_nem_kuldi_ujra_a_b_strongokat`); a `begyujtve_*.txt` darabszáma nem íródik felül (`test_begyujtve_jelolo_nem_irodik_felul`).
 - N-F27d (prompt-cache) kívül marad. A max_tokens-bukások (G1722, G1510, G4151) a #7-é.
 - Döntés-helyőrző javaslat a #7 briefjéhez: `effort=medium` a kicsi/közepes B-úton (−18% költség, első körös bukás nem rosszabb, de a javító kör után 4 / 60 marad) vs `high`; csoportméret 20 Strong / 16 000 karakter; a javító kör B-stílusú csoportosítása.

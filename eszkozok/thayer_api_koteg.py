@@ -422,13 +422,14 @@ def bekuld(strongok, cimke, plafon=None, hivo=None):
               file=sys.stderr)
         return 3
     hivo = hivo or AK.http
-    ker = terv(strongok)
-    kesz = bekuldott_cidek()
+    kesz = bekuldott_cidek() | {r['custom_id'] for r in jsonl_olvas(ut('valaszok.jsonl'))}
+    # a már beküldött vagy megválaszolt kérések (pl. a `bbekuld` B-csoportjai) kimaradnak: nincs kettős költség
+    ker = [k for k in terv(strongok) if custom_id(k['strong'], k['csoport'], 1) not in kesz]
     csom = csomagok(ker)
-    index = next((i for i, c in enumerate(csom) if custom_id(c[0]['strong'], c[0]['csoport'], 1) not in kesz), None)
-    if index is None:
+    if not csom:
         print('minden csomag beküldve')
         return 0
+    index = 0
     cs = csom[index]
     becs = becsles(cs)[2]
     rendben, szoveg = plafon_ellenorzes(plafon, becs)
@@ -440,11 +441,12 @@ def bekuld(strongok, cimke, plafon=None, hivo=None):
                  'params': kerelem_params([{'role': 'user', 'content': uzenet(kuldendo_prompt(k))}], k['forras_kar'])} for k in cs]
     b = hivo('POST', '/v1/messages/batches', {'requests': kerelmek})
     os.makedirs(ut(), exist_ok=True)
-    with open(ut('csomag_%02d.txt' % (index + 1)), 'w', encoding='utf-8', newline='\n') as f:
+    sorszam = 1 + len([f for f in os.listdir(ut()) if f.startswith('csomag_') and f[7:9].isdigit()])
+    with open(ut('csomag_%02d.txt' % sorszam), 'w', encoding='utf-8', newline='\n') as f:
         f.write(''.join(k['custom_id'] + '\n' for k in kerelmek))
     with open(ut('becsles_%s.txt' % b['id']), 'w', encoding='utf-8', newline='\n') as f:
         f.write('%.4f' % becs)
-    ujra_naplo(b['id'], cimke, 1, index + 1, len(kerelmek))
+    ujra_naplo(b['id'], cimke, 1, sorszam, len(kerelmek))
     print('batch beküldve: %s (%d kérés)' % (b['id'], len(kerelmek)))
     return 0
 
@@ -497,8 +499,9 @@ def begyujt(cimke, hivo=None):
                 'cache_iras': u.get('cache_creation_input_tokens', 0), 'kimenet_token': u.get('output_tokens', 0),
                 'stop_reason': stop, 'koltseg_usd': '%.6f' % c, 'futo_osszeg_usd': '%.6f' % futo})
         uj += len(rekordok)
-        with open(ut('begyujtve_%s.txt' % b['batch_id']), 'w', encoding='utf-8', newline='\n') as f:
-            f.write('%d\n' % len(rekordok))
+        if not os.path.exists(ut('begyujtve_%s.txt' % b['batch_id'])):      # az újrafutás nem írja felül a darabszámot
+            with open(ut('begyujtve_%s.txt' % b['batch_id']), 'w', encoding='utf-8', newline='\n') as f:
+                f.write('%d\n' % len(rekordok))
         print('%s: %d új válasz' % (b['batch_id'], len(rekordok)))
     print('új válasz összesen: %d; futó összeg %.4f USD' % (uj, futo_osszeg()))
     return 0

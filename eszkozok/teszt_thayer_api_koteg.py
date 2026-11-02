@@ -452,6 +452,37 @@ class BUt(Alap):
         self.assertEqual(T.b_bekuld(B_STRONGOK, 'teszt', 0, 100.0, hivo=hivo), 0)      # minden B-csoport be van küldve
         self.assertEqual(len(hivott), 1)
 
+    def test_bekuld_a_b_utan_nem_kuldi_ujra_a_b_strongokat(self):
+        hivott = []
+
+        def hivo(m, ut, torzs=None, nyers=False):
+            hivott.append(torzs)
+            return {'id': 'msgbatch_%d' % len(hivott)}
+        self.assertEqual(T.b_bekuld(B_STRONGOK, 'teszt', 0, 50.0, hivo=hivo), 0)
+        lista = B_STRONGOK + ['G1941']      # a nagy Strong egyenként, a `bekuld`-del
+        self.assertEqual(T.bekuld(lista, 'teszt', 50.0, hivo=hivo), 0)
+        self.assertEqual([k['custom_id'] for k in hivott[1]['requests']], ['G1941-c1-p1'])
+        self.assertEqual(T.bekuld(lista, 'teszt', 50.0, hivo=hivo), 0)      # minden be van küldve
+        self.assertEqual(len(hivott), 2)
+        self.assertTrue(os.path.exists(T.ut('csomag_01.txt')) and os.path.exists(T.ut('csomag_B001.txt')))
+
+    def test_begyujtve_jelolo_nem_irodik_felul(self):
+        os.makedirs(T.MUNKA, exist_ok=True)
+        with open(T.ut('b_csoportok.json'), 'w', encoding='utf-8') as f:
+            json.dump({'B001': B_STRONGOK[:2], 'egyedi': []}, f)
+        T.ujra_naplo('msgbatch_b', 'teszt', 1, 'B:B001-B001', 1)
+        valasz, _ = b_hamis_valasz(B_STRONGOK[:2])
+        eredmeny = {'custom_id': 'B001-p1', 'result': {'type': 'succeeded', 'message': {
+            'model': 'claude-sonnet-5-5', 'stop_reason': 'end_turn', 'usage': {'input_tokens': 10, 'output_tokens': 10},
+            'content': [{'type': 'text', 'text': valasz}]}}}
+
+        def hivo(m, ut, torzs=None, nyers=False):
+            return json.dumps(eredmeny) + '\n' if nyers else {'processing_status': 'ended', 'results_url': 'http://x/r'}
+        T.begyujt('teszt', hivo=hivo)
+        T.begyujt('teszt', hivo=hivo)
+        with open(T.ut('begyujtve_msgbatch_b.txt'), encoding='utf-8') as f:
+            self.assertEqual(f.read().strip(), '3')
+
     def test_effort_a_kereseben(self):
         regi = T.EFFORT
         T.EFFORT = 'medium'
