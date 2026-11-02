@@ -40,6 +40,17 @@
     jeloles.addEventListener('change', function () { tarol('pardes_jeloles', jeloles.checked ? 'be' : 'ki'); jelolesAllit(); });
   }
 
+  // a tanulmányok margójele (F149, DT-F149c): ugyanaz a minta, mint a Strong-jelölésnél; alapból be, a választás hibatűrően tárolt
+  var tanJeloles = document.getElementById('tan-jeloles');
+  if (tanJeloles) {
+    var tanAllit = function () {
+      document.querySelectorAll('.szoveg-oszlop').forEach(function (o) { o.classList.toggle('nincs-tan-jeloles', !tanJeloles.checked); });
+    };
+    tanJeloles.checked = olvas('pardes_tan_jeloles') !== 'ki';
+    tanAllit();
+    tanJeloles.addEventListener('change', function () { tarol('pardes_tan_jeloles', tanJeloles.checked ? 'be' : 'ki'); tanAllit(); });
+  }
+
   // a színséma (#134 M3; DT295, DT-F134i (a)): az alap a világos; a tárolt választást az első rajzolás előtt a statikus/tema.js
   // alkalmazza, itt csak a választó állapota és a váltás. „Rendszer”: attribútum nélkül a rendszer-beállítás.
   var temaGombok = document.querySelectorAll('.tema button[data-tema]');

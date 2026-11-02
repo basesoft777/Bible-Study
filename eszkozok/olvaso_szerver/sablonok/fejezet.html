@@ -1,8 +1,9 @@
 {% extends "alap.html" %}
 {% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
-{% macro vers_folyo(v) %}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
+{% macro tan_jel(v) %}{% for t in v.tan %}<a class="tan-jel" href="/tanulmany/{{ t[0] }}" title="A tanulmány oldala">▸ {{ 'Folytatás – ' if t[3] else '' }}{{ 'Mélyelemzés' if t[1] == 'melyelemzes' else 'Tanulmány' }}: {{ t[2] }}</a>{% endfor %}{% endmacro %}
+{% macro vers_folyo(v) %}{{ tan_jel(v) }}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
 {% macro interlinearis(v) %}
-<div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
+{{ tan_jel(v) }}<div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>
   <div class="il-szavak">
     {% for w in v.szavak %}

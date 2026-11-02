@@ -109,6 +109,12 @@ a.he-fo:hover, a.he-fo:focus-visible { background: var(--accent-soft); border-ra
 .folyo .vers { margin: 0; }
 .kapcs { display: inline-flex; gap: 6px; align-items: center; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); margin: 0 0 8px; }
 .nincs-jeloles .szo { text-decoration: none; }
+/* F149: a tanulmányok halvány margójele a tartomány első verse előtt; kikapcsolható, mobilon nincs (csak a vers paneljén él) */
+.tan-jel { display: block; margin: 10px 0 2px; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); opacity: .75; text-decoration: none; }
+.tan-jel:hover, .tan-jel:focus-visible { opacity: 1; text-decoration: underline; }
+.nincs-tan-jeloles .tan-jel { display: none; }
+.tan-blokk { margin: 6px 0 10px; }
+.motivum-lanc { margin: 8px 0; }
 .tema { display: flex; gap: 2px; }
 .tema button { font: var(--fs-gomb-kis) var(--font-ui); padding: 3px 8px; border: 1px solid var(--rule); background: var(--panel); color: var(--fg); cursor: pointer; }
 .tema button:first-child { border-radius: var(--radius-csempe) 0 0 var(--radius-csempe); }
@@ -308,6 +314,7 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
 .lap-muv .lap-versre { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-pill); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
 .versenkent .folyo .vers { display: block; margin: 0 0 .45em; }
 @media (max-width: 899.98px) {
+  .tan-jel, .tan-jelolo { display: none; }                      /* F149: mobilon a tanulmány csak a vers paneljén jelenik meg */
   /* DT-F134n: a fejezet-lap fejléce 900 px alatt is felül marad: egysoros ragadós sáv (könyvválasztó, ‹ ›, Aa, a „Strong számok”
      chip (DT-F134o), ⚙, ⌕); a könyvválasztó, az Aa és a ⚙ a sávból lenyíló panel; a ⌕ (a fejezetcím, a Ctrl+K) a sáv alatt nyitja a
      keresőt, a kánon-sávot és a „Legutóbb”-ot (body.navlap-nyitva; JS nélkül a #navigacio cél) */
@@ -427,3 +434,16 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .szoveg-oszlop.szel-kozepes { max-width: 60ch; }
 .szoveg-oszlop.szel-szeles { max-width: 80ch; }
 @media (prefers-reduced-motion: reduce) { .reszletek { transition: none; } }
+
+/* F149 M3: a tanulmány-oldal (generált nézet) */
+.tanulmany-oldal { max-width: 78ch; margin: 0 auto; padding: 0 var(--space-oldal); }
+.tanulmany-oldal .tan-meta, .tanulmany-oldal .tan-olvaso { font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); margin: 0 0 6px; }
+.tan-szoveg h2 { margin-top: 1.6em; }
+.tan-szoveg a.igehely { text-decoration: underline dotted; color: inherit; }
+.tan-szoveg a.igehely:hover { text-decoration: underline; color: var(--accent); }
+.tan-szoveg blockquote { margin: .8em 0; padding: 0 0 0 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+.tan-szoveg .tabla-gordul { overflow-x: auto; margin: .8em 0; }
+.tan-szoveg table.tan-tabla { border-collapse: collapse; font-size: var(--fs-sor); }
+.tan-szoveg table.tan-tabla th, .tan-szoveg table.tan-tabla td { border: 1px solid var(--rule); padding: 3px 8px; vertical-align: top; }
+.tan-toc ul { list-style: none; padding-left: 0; }
+.tan-toc li.szint-3 { padding-left: 1.2em; }

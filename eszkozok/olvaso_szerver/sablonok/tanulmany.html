@@ -1,0 +1,12 @@
+{% extends "alap.html" %}
+{# F149 M3: a tanulmány kézi forrásából generált nézet (kézzel nem szerkeszthető); az igehely-hivatkozások az olvasó versére mutatnak #}
+{% block tartalom %}
+<article class="tanulmany-oldal">
+  <p class="tan-fej"><a href="/">← kezdőlap</a></p>
+  <p class="tan-meta">{{ 'Mélyelemzés' if t[1] == 'melyelemzes' else 'Bővített tanulmány' }} · {{ t[3] }} · generált nézet a kézi forrásból</p>
+  {% if olvaso %}<p class="tan-olvaso">Az olvasóban: {% for szoveg, ut in olvaso %}<a href="{{ ut }}">{{ szoveg }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+  {{ jegy }}
+  {% if toc %}<details class="tan-toc"><summary>Szakaszok</summary><ul>{% for hor, cim, szint in toc %}<li class="szint-{{ szint }}"><a href="#{{ hor }}">{{ cim }}</a></li>{% endfor %}</ul></details>{% endif %}
+  <div class="tan-szoveg">{{ html }}</div>
+</article>
+{% endblock %}

@@ -1175,7 +1175,7 @@ class TestReszletekLapja(unittest.TestCase):
         kiosztas = {r.split('"', 1)[0]: set(re.findall(r'data-blokk="([^"]+)"', r)) for r in reszek}
         self.assertEqual(kiosztas['kh'], {'vers.kh', 'vers.tsk'})
         self.assertEqual(kiosztas['temak'], {'vers.nave', 'vers.tipnr'})
-        self.assertEqual(kiosztas['motivum'], {'vers.motivum', 'vers.kapcsolat'})
+        self.assertEqual(kiosztas['motivum'], {'vers.motivum', 'vers.kapcsolat', 'vers.tanulmany'})
         self.assertIn('vers.karoli', kiosztas['vers'])
         self.assertFalse(kiosztas['vers'] & set(oldalak.FULBLOKK))
         self.assertIn('<div class="ful-tartalom" data-vful="vers">', h)
