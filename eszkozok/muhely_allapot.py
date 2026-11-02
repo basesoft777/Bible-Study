@@ -280,6 +280,18 @@ def kriterium_4(motivum, jeloltek):
     return uj(PIROS if nyitva else ZOLD, '%d nyitott jelölt' % len(nyitva), mero, motivum, reszlet, {'n': len(nyitva)})
 
 
+def lektor_sorok(motivum):
+    """naplok/LEKTOR_<ID>.tsv sorai (F157); None, ha a fájl nincs. Hiba esetén kivétel."""
+    ut = os.path.join(GYOKER, 'naplok', 'LEKTOR_%s.tsv' % motivum)
+    if not os.path.exists(ut):
+        return None
+    return tsv('naplok/LEKTOR_%s.tsv' % motivum)
+
+
+def lektor_zart(sor):
+    return sor.get('allapot', '').strip() == 'megvalaszolva'
+
+
 def kriterium_5(motivum):
     mero = 'motivum_hatar.py'
     ut = os.path.join(GYOKER, 'naplok', 'HATAR_%s.md' % motivum)
@@ -292,6 +304,16 @@ def kriterium_5(motivum):
         return uj(HIBA, 'a határ-fájlban nincs kérdésszám', mero, motivum)
     cimek = re.findall(r'^\*\*(K\d+) — ', t, re.M)  # csak a jelölők: a kérdés szövege nem kerül a Feedbe
     n = sum(szamok)
+    # a modelles K-kérdések a lektori táblában is szerepelnek (kerdes_id: hatar:<ID>:mK<n>); a megválaszolt zárt
+    try:
+        sorok = lektor_sorok(motivum) or []
+    except Exception as ex:  # noqa: BLE001
+        return uj(HIBA, 'a lektori tábla nem olvasható', mero, motivum, [repr(ex)[:300]])
+    zart = {s['kerdes_id'].rsplit(':m', 1)[-1] for s in sorok if s.get('kerdes_id', '').startswith('hatar:%s:m' % motivum)
+            and lektor_zart(s)}
+    megvalaszolt = [c for c in cimek if c in zart]
+    n -= len(megvalaszolt)
+    cimek = [c for c in cimek if c not in zart]
     return uj(PIROS if n else ZOLD, '%d nyitott kérdés' % n, mero, motivum, cimek, {'n': n})
 
 
@@ -327,16 +349,16 @@ def kriterium_6(motivum):
 
 def kriterium_7(motivum):
     mero = 'lektori kérdések (naplok/LEKTOR_<ID>.tsv)'
-    ut = os.path.join(GYOKER, 'naplok', 'LEKTOR_%s.tsv' % motivum)
-    if not os.path.exists(ut):
-        return uj(NINCS, 'nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)', mero, motivum)
     try:
-        sorok = tsv('naplok/LEKTOR_%s.tsv' % motivum)
+        sorok = lektor_sorok(motivum)
     except Exception as ex:  # noqa: BLE001
         return uj(HIBA, 'a lektori tábla nem olvasható', mero, motivum, [repr(ex)[:300]])
-    nyitott = [s for s in sorok if s.get('allapot', 'nyitva') in ('nyitva', 'nyitott')]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott lektori kérdés' % len(nyitott), mero, motivum, None,
-              {'n': len(nyitott)})
+    if sorok is None:
+        return uj(NINCS, 'nincs naplok/LEKTOR_%s.tsv (a lektori kérdések még nincsenek generálva)' % motivum, mero,
+                  motivum)
+    nyitott = [s for s in sorok if not lektor_zart(s)]
+    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés' % (len(nyitott),
+              len(sorok) - len(nyitott)), mero, motivum, [s.get('kerdes_id', '') for s in nyitott], {'n': len(nyitott)})
 
 
 # ----------------------------------------------------------------------------- feladatok, DT-k

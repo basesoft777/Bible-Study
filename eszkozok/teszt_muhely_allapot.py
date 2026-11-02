@@ -70,6 +70,17 @@ class Teszt(unittest.TestCase):
             for szo in belso_szavak:
                 self.assertNotIn(szo, sz, sz)
 
+    def test_lektor_zart(self):
+        self.assertTrue(M.lektor_zart({'allapot': 'megvalaszolva'}))
+        self.assertFalse(M.lektor_zart({'allapot': 'nyitva'}))
+        self.assertFalse(M.lektor_zart({'allapot': ''}))
+        self.assertFalse(M.lektor_zart({}))
+
+    def test_lektor_meroi_a_valos_tablan(self):
+        # ISTENTISZT-001: 5 megválaszolt kérdés -> zöld; nem létező tábla -> nincs mérő
+        self.assertEqual(M.kriterium_7('ISTENTISZT-001')['allapot'], M.ZOLD)
+        self.assertEqual(M.kriterium_7('NEMLETEZO-999')['allapot'], M.NINCS)
+
     def test_olvasoi_mondat(self):
         self.assertEqual(M.olvasoi_mondat(33, 6, 92, 3),
                          '33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.')
