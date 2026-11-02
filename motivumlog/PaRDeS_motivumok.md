@@ -21,7 +21,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 5 fő előfordulás / 8 igehely-sor — publikálható (v3, 2026.08.22)
 
 **Eszkatológia**
-- Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 72 igehely-sor — publikálható (v2, 2026.09.10)
+- Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v2, 2026.09.10)
 
 **Hamartológia**
 - A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 52 igehely-sor — publikálható (v1, 2026.09.11)
@@ -491,7 +491,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 250 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 252 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -521,12 +521,12 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Hab | 5 | Hab 1:2 [HAMART-001], Hab 2:5 [ALVIL-001], Hab 2:8 [HAMART-001], Hab 2:17 [HAMART-001], Hab 3:10 [TEREMT-001] |
 | Sof | 2 | Sof 1:9 [HAMART-001], Sof 3:9 [ISTENTISZT-001] |
 | Zak | 1 | Zak 6:13 [KIRALY-001] |
-| Mt | 2 | Mt 11:23 [ALVIL-001], Mt 15:19 [HAMART-001] |
+| Mt | 3 | Mt 11:23 [ALVIL-001], Mt 15:19 [HAMART-001], Mt 16:18 [ALVIL-001] |
 | Mk | 1 | Mk 7:21-23 [HAMART-001] |
 | Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
 | ApCsel | 6 | ApCsel 2:21 [ISTENTISZT-001], ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
 | Róm | 3 | Róm 8:20-22 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:13 [ISTENTISZT-001] |
-| 1Kor | 4 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001] |
+| 1Kor | 5 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001], 1Kor 15:55 [ALVIL-001] |
 | Gal | 2 | Gal 3:10 [HAMART-001], Gal 3:13 [HAMART-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
 | Zsid | 6 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:7-8 [HAMART-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
