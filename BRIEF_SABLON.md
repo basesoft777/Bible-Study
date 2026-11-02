@@ -43,6 +43,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `ag`, `pr` | nem | a menet tölti ki |
 | `forras` | nem | csonk-briefnél: hol van a tényleges leírás (`fájl#szakasz`) |
 | `lezarva_osszegzes` | nem | a „Kész” listába kerülő mondat; a zárócommit tölti ki |
+| `motivum_kesz` | nem | több motívumot író briefben (pl. #123) a kész motívumok listája: a brief róluk már nem hoz ⛔-t, a fájljaikat csak a lezárás (C5) írja. Eleme csak olyan motívum, amelynek `motivumok/[ID].md` forrása az `ir`-ben áll (`feladatok.py ellenoriz`). Az ilyen motívumon a Feed 8. kapuja a briefet nem veszi blokkolónak, kivéve a feladat nyitott 🟡 DT-jét, amely a motívumot megnevezi (DT-F123n) |
 
 A `munka` mező szabályai (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”):
 
