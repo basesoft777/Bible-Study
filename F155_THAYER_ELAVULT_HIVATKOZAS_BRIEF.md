@@ -6,9 +6,9 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
-kovetkezo: "F155.1: forditas.py:219 DT329 + teszt"
+kovetkezo: "Te: DT-F155a (a 7 elavult Thayer-sor megjegyzése: (a) DT-F132c → DT329 bájt-szintű csere vagy (b) a történeti szöveg marad; javaslat: (a))"
 olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, DONTESEK.md, naplok/ELLENOR_F142.md]
 ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
 ag: claude/f155-thayer-elavult-hivatkozas
