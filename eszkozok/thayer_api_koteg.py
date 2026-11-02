@@ -86,7 +86,7 @@ ALLANDO_KAR_TOKEN = ALLANDO_REF_KAR / BE_KERES     # karakter / token az álland
 # B-út (csoportos): a kicsi (< KICSI_HATAR) és a közepes (< NAGY_HATAR) Strongok n Strongonként egy kérésben, a nagyok egyenként
 KICSI_HATAR, NAGY_HATAR = 500, 3000
 B_DB = 20                          # Strong / B-kérés (15–25; a mérés tárgya, --b-db)
-B_KAR = 12000                      # forráskarakter / B-kérés felső határa (a kimenet ne lépje át a max_tokens-t)
+B_KAR = 16000                      # forráskarakter / B-kérés felső határa (a kimenet ne lépje át a max_tokens-t)
 SZUKIT = True                      # a terminológia- és a Károli-tábla szűkítése a kérés forrására (--nincs-szukites: ki)
 AR_BE, AR_KI = B.AR_BE, B.AR_KI
 NAPLO_FEJLEC = B.NAPLO_FEJLEC
