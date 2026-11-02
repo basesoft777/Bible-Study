@@ -1831,6 +1831,41 @@ Kulcs: `id` + `kiadas`. Állapot (2026-11-02): 1 sor — ISTENTISZT-001, 1. kiad
 
 ---
 
+### 2.47 A `pardes.db` tanulmány-táblái — `tanulmany`, `tanulmany_tartomany`, `tanulmany_hivatkozas`, `tanulmany_szoveg` (F149, FELADATOK #149, DT512, DT513, DT514)
+
+**Generált kimenet** (nem `adat/*.tsv`; a forrás a tanulmány fájlja, DT28): a `genezis/*_bovitett.md`, `ujszovetseg/*_bovitett.md` és
+`melyelemzesek/*_melyelemzes.md` fájlokból az `eszkozok/tanulmany_regiszter.py` állítja elő, a `sqlite_epit.py` építi a `pardes.db`-be
+(licenc: `projekt_adat`). A tanulmányba semmi nem íródik vissza. A tematikus tanulmányok (`tematikus_lezart/`) nem tartományosak: a
+motívumon át érhetők el, a regiszterben nincsenek.
+
+**Tartomány (DT512 (c)).** A tanulmány tartományát a fájl első címsorából nyeri ki (`# 1Mózes 14:18-20 / Zsoltárok 110:4 / Zsidók 5-7 — …`),
+és a fájlnévvel veti össze. Egyezés híján a tanulmány **nem kerül a regiszterbe**: a kimenet megnevezi a fájlt és az okot
+(`normalizalas_jelentes`, tabla=`tanulmany`), mert az üres eredmény jobb, mint a hibás horgony. Az egész fejezet alakot (`1Moz_14`, `Zsidók 5-7`)
+a Károli verszámából egészíti ki; a könyvnév a `Konyv_normalizalo_tabla.tsv` szerint (normalizálás nélkül néma nem-találat). A bővített
+sorozat hézagait és átfedéseit a kinyerő figyelmeztetésként jelenti (nem hiba: a sorozat félbe is maradhat).
+
+| Tábla | Oszlopok | Megjegyzés |
+|---|---|---|
+| `tanulmany` | `tanulmany_id`, `fajl`, `tipus` (`bovitett` · `melyelemzes`), `cim`, `tartomany` (szöveg), `sorrend` | `tanulmany_id` = a fájlnév a `_bovitett.md` / `_melyelemzes.md` nélkül; a `sorrend` a kezdő vers kánoni helye |
+| `tanulmany_tartomany` | `tanulmany_id`, `resz`, `kezdo`, `veg`, `kezdo_sorrend`, `veg_sorrend` | tanulmányonként annyi sor, ahány folytonos tartománya van; az igehely a CLAUDE.md formátumában; a `*_sorrend` a `vers.sorrend` |
+| `tanulmany_hivatkozas` | `tanulmany_id`, `szakasz_horgony`, `szakasz_cim`, `igehely`, `fokozat`, `hivatkozas`, `tartomanyban` | vers → tanulmány-szakasz index (lent) |
+| `tanulmany_szoveg` | `tanulmany_id`, `szoveg` | a kézi forrás változatlan szövege a `/tanulmany/<id>` oldalnak (a szerver csak a `pardes.db`-t látja); nézet, kézzel nem szerkeszthető |
+
+**Index (`tanulmany_hivatkozas`).** Soronként egy (tanulmány, szakasz, igehely). A szakasz a `##` / `###` címsor; a horgonya a cím ASCII-sített alakja
+(ismétlődő címnél `-2`, `-3`), a `/tanulmany/<id>#<horgony>` oldal ugyanezt az azonosítót viseli. **Két fokozat (DT513):** `nev` — a szakasz
+egyedi versre hivatkozik (`3:8`, `Zsolt 110:4`, „18. v.”, a táblázat versszám-cellája); `tartomany` — a szakasz tartományt említ („10:1–11:32”, „1–6. v.”).
+A `hivatkozas` az eredeti szöveg. `tartomanyban`: 1, ha a vers a tanulmány saját tartományába esik. Nem kerül be: a fejléc-blokk és a „0. Sorozat-kontextus”
+szakasz (a sorozat navigációja, nem a vers tárgyalása); a tanulmány saját teljes tartományának megnevezése; a **tartományon kívüli tartomány-említés**
+(nem „tárgyalás”). A bekezdésben megnevezett könyv a sor végéig érvényes; a „3. v.” alak és a táblázat első cellája csak egyetlen fejezetet vizsgáló
+tanulmányban oldható fel. **Üres eredmény elfogadható** (CLAUDE.md 3. szabály): a tartományba eső, de névvel nem hivatkozott vers sora nem keletkezik;
+a vers panelja ezt explicit jelzi.
+
+Proveniencia: scope=genezis/, ujszovetseg/, melyelemzesek/ + konkordancia/Karoli_1908.tsv | forras=`eszkozok/tanulmany_regiszter.py` (gépi kinyerés) | ts=az építés ideje
+(`pardes.db` `meta`). Tesztek: `eszkozok/teszt_tanulmany_regiszter.py`, `eszkozok/olvaso_szerver/teszt_tanulmany_oldal.py`. Mért állapot (2026-11-02):
+24 tanulmány (23 bővített, 1 mélyelemzés), 26 tartomány-sor, 1 660 hivatkozás-sor (`nev` 962, `tartomany` 698); lásd `naplok/OLVASO_TANULMANY_M0.md`.
+
+---
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

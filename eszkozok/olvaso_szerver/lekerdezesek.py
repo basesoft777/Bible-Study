@@ -321,10 +321,122 @@ def kapcsolatok(con, ig):
 
 def motivum_elofordulasok(con, ig):
     """Az adatréteg motívum-előfordulásai az igehelyen (a `kapcsolodas` az igehely-tartomány szövege; a mező a lekérdezés
-    saját proveniencia-sorát hordozza). A mérlegelhető tartományi egyezést az `igehely_tartomany` tábla adja."""
+    saját proveniencia-sorát hordozza). A mérlegelhető tartományi egyezést az `igehely_tartomany` tábla adja.
+    Sor: (id, igehely, funkcio, strong, karoli_szo, megbizhatosag, proveniencia, cim, pardes_szint, forras_tanulmany)."""
     return con.execute(
-        'SELECT e.id, e.igehely, e.funkcio, e.strong, e.karoli_szo, e.megbizhatosag, e.proveniencia, m.cim '
-        'FROM elofordulasok e LEFT JOIN motivumok m ON m.id=e.id WHERE e.igehely=? ORDER BY e.id', (ig,)).fetchall()
+        'SELECT e.id, e.igehely, e.funkcio, e.strong, e.karoli_szo, e.megbizhatosag, e.proveniencia, m.cim, e.pardes_szint, '
+        'e.forras_tanulmany FROM elofordulasok e LEFT JOIN motivumok m ON m.id=e.id WHERE e.igehely=? ORDER BY e.id', (ig,)).fetchall()
+
+
+def motivum_szomszedok(con, mid, ig):
+    """A motívum előző és következő előfordulása a kánoni (Károli-) sorrendben: ((igehely, funkcio) | None, (igehely, funkcio) | None).
+    Az igehelyek az `elofordulasok` kulcsai; a sorrend a `vers.sorrend`, a nem egy versre szóló kulcs (tartomány) kimarad."""
+    sor = con.execute(
+        'SELECT v.sorrend, e.igehely, e.funkcio FROM elofordulasok e JOIN vers v ON v.igehely=e.igehely WHERE e.id=? '
+        'ORDER BY v.sorrend, e.igehely', (mid,)).fetchall()
+    uj = [i for i, r in enumerate(sor) if r[1] == ig]
+    if not uj:
+        return None, None
+    i = uj[0]
+    elozo = next(((sor[k][1], sor[k][2]) for k in range(i - 1, -1, -1) if sor[k][1] != ig), None)
+    kov = next(((sor[k][1], sor[k][2]) for k in range(i + 1, len(sor)) if sor[k][1] != ig), None)
+    return elozo, kov
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# tanulmányok (F149): a regiszter és a vers -> szakasz index a `pardes.db` generált tábláiból; a tábla hiánya (régebbi építés) üres eredmény
+# ---------------------------------------------------------------------------------------------------------------------
+def tanulmany_tabla_van(con):
+    return con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='tanulmany_hivatkozas'").fetchone() is not None
+
+
+def tanulmany_van(con, tid):
+    """(tanulmany_id, tipus, cim, tartomany, fajl) vagy None."""
+    try:
+        return con.execute('SELECT tanulmany_id, tipus, cim, tartomany, fajl FROM tanulmany WHERE tanulmany_id=?', (tid,)).fetchone()
+    except sqlite3.OperationalError:
+        return None
+
+
+def tanulmany_szoveg(con, tid):
+    """A tanulmány markdown-szövege a `tanulmany_szoveg` táblából (a /tanulmany/<id> oldalnak) vagy None."""
+    try:
+        r = con.execute('SELECT szoveg FROM tanulmany_szoveg WHERE tanulmany_id=?', (tid,)).fetchone()
+    except sqlite3.OperationalError:
+        return None
+    return r[0] if r else None
+
+
+def tanulmany_tartomanyok(con, tid):
+    """[(kezdo, veg)] igehelyek a tanulmány tartományaihoz, a részek sorrendjében."""
+    try:
+        return con.execute('SELECT kezdo, veg FROM tanulmany_tartomany WHERE tanulmany_id=? ORDER BY resz', (tid,)).fetchall()
+    except sqlite3.OperationalError:
+        return []
+
+
+def konyv_tabla_sorok(con):
+    """A könyvnév-felismeréshez: [(STEP-kód, kk_kod, teljes név, '')] a `konyv` táblából (a Konyv_normalizalo_tabla sorai)."""
+    return [(st or '', kk, nev or '', '') for kk, st, nev in con.execute('SELECT kk_kod, step_kod, teljes_nev FROM konyv ORDER BY sorrend')]
+
+
+def tanulmanyok_versre(con, ig):
+    """([tartalmazó], [hivatkozó]) az igehelyre. tartalmazó: [(id, tipus, cim, tartomany, sorrend, [(horgony, szakasz_cim, fokozat, hivatkozas)])]
+    a bővített → mélyelemzés sorrendben; hivatkozó: a tartományán kívül név szerint hivatkozó tanulmányok [(id, tipus, cim, tartomany,
+    [(horgony, szakasz_cim, hivatkozas)])]."""
+    try:
+        sorr = con.execute('SELECT sorrend FROM vers WHERE igehely=?', (ig,)).fetchone()
+        if not sorr:
+            return [], []
+        tart = con.execute(
+            'SELECT DISTINCT t.tanulmany_id, t.tipus, t.cim, t.tartomany, t.sorrend FROM tanulmany_tartomany r JOIN tanulmany t '
+            'ON t.tanulmany_id=r.tanulmany_id WHERE r.kezdo_sorrend<=? AND r.veg_sorrend>=? '
+            "ORDER BY CASE t.tipus WHEN 'bovitett' THEN 0 ELSE 1 END, t.sorrend", (sorr[0], sorr[0])).fetchall()
+        hiv = con.execute(
+            'SELECT h.tanulmany_id, h.szakasz_horgony, h.szakasz_cim, h.fokozat, h.hivatkozas, h.tartomanyban FROM tanulmany_hivatkozas h '
+            'WHERE h.igehely=? ORDER BY h.tanulmany_id, h.rowid', (ig,)).fetchall()
+    except sqlite3.OperationalError:
+        return [], []
+    belul = {}
+    kivul = {}
+    for tid, hor, cim, fok, ref, tb in hiv:
+        if tb:
+            belul.setdefault(tid, []).append((hor, cim, fok, ref))
+        else:
+            kivul.setdefault(tid, []).append((hor, cim, ref))
+    tart_ids = {t[0] for t in tart}
+    tartalmazo = [(tid, tip, cim, tt, so, belul.get(tid, [])) for tid, tip, cim, tt, so in tart]
+    hivatkozo = []
+    for tid, lista in kivul.items():
+        if tid in tart_ids:
+            continue
+        t = tanulmany_van(con, tid)
+        if t:
+            hivatkozo.append((t[0], t[1], t[2], t[3], lista))
+    hivatkozo.sort(key=lambda x: (0 if x[1] == 'bovitett' else 1, x[0]))
+    return tartalmazo, hivatkozo
+
+
+def tanulmany_sav(con, kk, fej):
+    """A fejezetlap margójeléhez: {vers_szam: [(tanulmany_id, tipus, tartomany, folytatas)]}. `folytatas`: a tartomány a fejezet elején
+    már tart (a jel a fejezet első verse előtt áll); különben a tartomány első verse előtt."""
+    try:
+        ho = con.execute('SELECT MIN(sorrend), MAX(sorrend) FROM vers WHERE konyv=? AND fejezet=?', (kk, fej)).fetchone()
+        if not ho or ho[0] is None:
+            return {}
+        sor = con.execute(
+            'SELECT r.tanulmany_id, t.tipus, t.tartomany, r.kezdo_sorrend FROM tanulmany_tartomany r JOIN tanulmany t ON t.tanulmany_id=r.tanulmany_id '
+            'WHERE r.kezdo_sorrend<=? AND r.veg_sorrend>=? ORDER BY r.kezdo_sorrend, t.sorrend, r.resz', (ho[1], ho[0])).fetchall()
+        vers_sorr = dict(con.execute('SELECT sorrend, vers FROM vers WHERE konyv=? AND fejezet=?', (kk, fej)).fetchall())
+    except sqlite3.OperationalError:
+        return {}
+    ki = {}
+    for tid, tip, tt, kez in sor:
+        folyt = kez < ho[0]
+        vers = vers_sorr.get(ho[0] if folyt else kez)
+        if vers is not None:
+            ki.setdefault(vers, []).append((tid, tip, tt, folyt))
+    return ki
 
 
 def tsk(con, ig):

@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: dontesre_var
 ad: az olvasó-szerverben a kész tanulmányok a Károli-szövegre horgonyozva: generált tanulmány-regiszter a fájlnevekből (tartományok, sorozat-folytonosság ellenőrzéssel), generált vers → tanulmány-szakasz index, halvány, kikapcsolható margójel a fejezetlapon (mobilon csak a vers paneljén), új `vers.tanulmany` blokk, a `vers.motivum` blokk kereszthivatkozás-lánca (lexikonlap, előző/következő előfordulás, forrástanulmány), és a `/tanulmany/<id>` oldal visszahorgonyokkal; a tanulmányba semmi nem íródik vissza (DT28)
 kovetkezo: "M0 mérés, ⛔ a mérés után (a mélyelemzés tartomány-kódolása, a finom szint sűrűsége). A befogadás kész (F149.0, 2026-10-29); a #134 munkája a PR #550-nel a main-en (2026-11-01), de a #134 fejléce még megallt (telefonos próba), ezért a fugg: [134] addig nyitottnak látszik"
 olvas: [genezis/, ujszovetseg/, melyelemzesek/, tematikus_lezart/, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/kulcsszavak.tsv, adat/SEMA.md, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/, F134_OLVASO_ALAPNEZET_BRIEF.md, F101_ADATBAZIS_FRISSITES_BRIEF.md, F25_OLVASOI_HTML_BRIEF.md, MUNKAMENET.md]

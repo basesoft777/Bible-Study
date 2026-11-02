@@ -44,6 +44,7 @@ def _eszkoz_modul(nev):
 
 
 bdb_rovidites = _eszkoz_modul('bdb_rovidites')
+tanulmany_regiszter = _eszkoz_modul('tanulmany_regiszter')
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -70,6 +71,10 @@ class Blokk:
     kovet: tuple = ()            # azok a blokkok, amelyek láthatóságát követi (a bontott BDB ugyanazt a magyar szócikket mutatja, mint a szo.bdb_magyar)
     jelleg_fn: Callable = None   # az adatból függő jelleg (pl. a bontott BDB: modell-kimenet csak magyar bontásnál)
     vers_kell: bool = False      # csak vers-kontextussal jelenik meg (a szó-lap „Ebben a versben” blokkja)
+    opcionalis: bool = False     # a blokk táblái hiányozhatnak a régebbi `pardes.db`-ből (F149): hiányuknál a blokk kimarad, nem indulási hiba
+
+    def hianyzik(self, kozos):
+        return self.opcionalis and any(t not in kozos.licenc for t in self.tablak)
 
     def __post_init__(self):
         j = (self.jelleg,) if isinstance(self.jelleg, str) else tuple(self.jelleg)
@@ -354,9 +359,84 @@ def _f_motivum(K):
     return q.motivum_elofordulasok(K.con, K.ig)
 
 
+def _forras_tanulmany_id(ertek):
+    """Az `elofordulasok.forras_tanulmany` fájlútjából a regiszter azonosítója (`genezis/1Moz_12v1-20_bovitett.md` -> `1Moz_12v1-20`)."""
+    if not ertek:
+        return None
+    nev = ertek.replace('\\', '/').rsplit('/', 1)[-1]
+    for veg in ('_bovitett.md', '_melyelemzes.md'):
+        if nev.endswith(veg):
+            return nev[:-len(veg)]
+    return None
+
+
 def _r_motivum(mot, K):
-    return _tabla(['Azonosító', 'Motívum', 'Funkció', 'Strong', 'Károli-szó', 'Megbízhatóság', 'Proveniencia'],
-                  [[a, cim or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', pr or ''] for a, ig, fk, st, kszo, mb, pr, cim in mot])
+    """Táblázat + előző/következő előfordulás a kánoni sorrendben + a „hol merült fel” tanulmány (csak ha a mező ki van töltve és a
+    tanulmány a regiszterben van: üres mezőnél nincs hivatkozás, nem találgat)."""
+    ki = _tabla(['Azonosító', 'Motívum', 'PaRDeS-szint', 'Funkció', 'Strong', 'Károli-szó', 'Megbízhatóság', 'Proveniencia'],
+                [[a, cim or '', szint or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', pr or ''] for a, ig, fk, st, kszo, mb, pr, cim, szint, ft in mot])
+    for a, ig, fk, st, kszo, mb, pr, cim, szint, ft in mot:
+        sor = []
+        elozo, kov = q.motivum_szomszedok(K.con, a, ig)
+        for felirat, x in (('Előző előfordulás', elozo), ('Következő előfordulás', kov)):
+            if x:
+                sor.append(Markup('%s: %s%s') % (felirat, ig_link(K, x[0]), Markup(' (%s)') % x[1] if x[1] else Markup('')))
+        tid = _forras_tanulmany_id(ft)
+        t = q.tanulmany_van(K.con, tid) if tid else None
+        if t:
+            sor.append(Markup('Hol merült fel: <a href="/tanulmany/%s">%s</a>') % (tid, tanulmany_nev(t[3], t[2])))
+        if sor:
+            ki += Markup('<div class="motivum-lanc"><p><b>%s</b>%s</p>%s</div>') % (a, Markup(' – %s') % cim if cim else Markup(''), _lista(sor))
+    return ki
+
+
+TANULMANY_TIPUS = {'bovitett': 'bővített tanulmány', 'melyelemzes': 'mélyelemzés'}
+
+
+def tanulmany_nev(tartomany, cim):
+    """A tanulmány megjelenített neve: a tartomány, és a cím, ha az nem csak a tanulmány fajtáját mondja („bővített PaRDeS-tanulmány”)."""
+    c = (cim or '').strip()
+    ltd = c.lower()
+    if not c or 'pardes' in ltd or ltd.startswith(('bővített', 'mélyelemzés')):
+        return tartomany
+    return '%s — %s' % (tartomany, c)
+
+
+def _f_tanulmany(K):
+    tart, hiv = q.tanulmanyok_versre(K.con, K.ig)
+    return (tart, hiv) if (tart or hiv) else None
+
+
+def _szakasz_link(tid, hor, cim):
+    return Markup('<a href="/tanulmany/%s#%s">%s</a>') % (tid, hor, cim)
+
+
+def _r_tanulmany(d, K):
+    """A tartalmazó tanulmány(ok) és tartományuk; a versre név szerint hivatkozó szakasz(ok), ill. a tartományt egészében tárgyaló szakasz;
+    hivatkozás nélkül explicit jelzés (DT-F149b). A tanulmány szövege nem másolódik ide: csak a szakaszcímek és a hivatkozások."""
+    tart, hiv = d
+    ki = Markup('')
+    for tid, tip, cim, tt, so, sorok in tart:
+        nev = [(h, c, r) for h, c, f, r in sorok if f == 'nev']
+        tr = [(h, c, r) for h, c, f, r in sorok if f == 'tartomany']
+        reszek = []
+        if nev:
+            reszek.append(Markup('<li>A tanulmány erről a versről név szerint szól: %s</li>') % Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in nev))
+        if tr:
+            reszek.append(Markup('<li>A tanulmány ezt a szakaszt egészében tárgyalja (%s): %s</li>') % (
+                ', '.join(sorted({r for _, _, r in tr})), Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in tr)))
+        if not reszek:
+            reszek.append(Markup('<li>A tanulmány ezt a szakaszt tárgyalja, de erre a versre külön nem hivatkozik.</li>'))
+        ki += Markup('<div class="tan-blokk"><p><a href="/tanulmany/%s"><b>%s</b></a> <span class="megj">%s · %s</span></p><ul class="lista">%s</ul></div>') % (
+            tid, tanulmany_nev(tt, cim), TANULMANY_TIPUS.get(tip, tip), tt, Markup('').join(reszek))
+    if hiv:
+        ki += Markup('<p class="megj">Más tanulmányok is hivatkoznak erre a versre:</p>')
+        elemek = []
+        for tid, tip, cim, tt, lista in hiv:
+            elemek.append(Markup('<a href="/tanulmany/%s">%s</a> (%s): %s') % (
+                tid, tanulmany_nev(tt, cim), TANULMANY_TIPUS.get(tip, tip), Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in lista)))
+        ki += _lista(elemek)
+    return ki
 
 
 def _f_kapcsolat(K):
@@ -1236,7 +1316,9 @@ REGISZTER = [
     B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', ('forras', 'gepi'), ('nave_vers', 'nave_basokant'), _f_nave, _r_nave),
     B('vers.tipnr', 'vers', 'Tulajdonnevek (TIPNR)', ('forras', 'gepi'), ('tipnr',), _f_tipnr, _r_tipnr),
     B('vers.morf_hu', 'vers', 'Az igealak magyar feloldása', 'gepi', ('morf_kulcs_heber', 'token_macula', 'morf_nyelv_aramai'), _f_morf_hu, _r_morf_hu),
-    B('vers.motivum', 'vers', 'Motívumadat (adatréteg)', 'forras', ('elofordulasok', 'motivumok'), _f_motivum, _r_motivum, 'soronként saját proveniencia-mező'),
+    B('vers.motivum', 'vers', 'Motívumadat (adatréteg)', 'forras', ('elofordulasok', 'motivumok', 'vers'), _f_motivum, _r_motivum, 'soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből'),
+    B('vers.tanulmany', 'vers', 'Tanulmányok erről a versről', ('forras', 'gepi'), ('tanulmany', 'tanulmany_tartomany', 'tanulmany_hivatkozas'), _f_tanulmany, _r_tanulmany,
+      'a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül', opcionalis=True),
     B('vers.kapcsolat', 'vers', 'Igehely-kapcsolatok (adatréteg)', 'forras', ('kapcsolatok',), _f_kapcsolat, _r_kapcsolat),
     B('vers.lxx_dontes', 'vers', 'LXX-fordítói döntések (adatréteg)', 'forras', ('lxx_dontesek',), _f_lxx_dontes, _r_lxx_dontes, 'soronként saját proveniencia-mező'),
     B('vers.lxx_par', 'vers', 'LXX versszintű együttelőfordulás', 'forras', ('lxx_versszintu_parok',), _f_lxx_par, _r_lxx_par, 'együttelőfordulás a versben, nem szóillesztés'),
@@ -1363,6 +1445,16 @@ def szoveg_jegy_html(kozos, il=False):
         '<div class="szoveg-jegy"><p><b>Károli-szöveg</b> %s<br><span class="forras">%s</span></p>'
         '<p><b>%s</b> Károli–Strong párosítás %s<br><span class="forras">%s</span></p></div>') % (
             jelleg_cimkek(SZOVEG_FORRAS.jelleg), forras_sor(SZOVEG_FORRAS, kozos), par, jelleg_cimkek(SZOVEG_PAR.jelleg), forras_sor(SZOVEG_PAR, kozos))
+
+
+# a tanulmány-oldal (F149 M3) jelleg- és forrássora: a tanulmány kézi forrás, az oldal generált nézet
+TANULMANY_OLDAL = B('tanulmany.oldal', 'tanulmany', 'Tanulmány-oldal', 'forras', ('tanulmany', 'tanulmany_szoveg'), None, None,
+                    'a kézi forrásból generált nézet, kézzel nem szerkeszthető', opcionalis=True)
+
+
+def tanulmany_oldal_jegy_html(kozos):
+    return Markup('<div class="szoveg-jegy"><p><b>Tanulmány</b> %s <span class="megj">%s</span><br><span class="forras">%s</span></p></div>') % (
+        jelleg_cimkek(TANULMANY_OLDAL.jelleg), TANULMANY_OLDAL.jelleg_megj, forras_sor(TANULMANY_OLDAL, kozos))
 
 
 # a keresés (M3) találatlistáinak jelölése: jelleg-címke, forrás- és licencsor (a regiszterből, mint a blokkoké). A lapon nem blokkként
