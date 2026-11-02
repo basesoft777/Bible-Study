@@ -25,6 +25,18 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
   background: var(--lap); color: var(--halvany); cursor: pointer; }
 .szurosor button[aria-pressed="true"] { background: var(--kiemel-hatter); color: var(--kiemel); border-color: var(--kiemel); }
 .lista { display: grid; gap: 14px; margin-top: 16px; }
+.fulek { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.fulek button { font: 600 14px var(--szoveg); min-height: 44px; padding: 6px 12px; border-radius: var(--sugar); border: 1px solid var(--vonal);
+  background: var(--lap); color: var(--halvany); cursor: pointer; display: inline-flex; gap: 8px; align-items: baseline; }
+.fulek button .db { font: 500 13px var(--adat); font-variant-numeric: tabular-nums; }
+.fulek button .nyitott { font: 400 11px var(--adat); }
+.fulek button[aria-selected="true"] { background: var(--kiemel); color: var(--lap); border-color: var(--kiemel); }
+.fulek button.osztalyozatlan:not([aria-selected="true"]) { color: var(--figyel); border-color: var(--figyel); background: var(--figyel-hatter); }
+.kat { display: grid; gap: 2px; font-size: 12px; color: var(--halvany); border-left: 3px solid var(--kiemel); padding-left: 8px; }
+.kat b { font: 500 12px var(--adat); color: var(--tinta); }
+.kat.fejlesztoi { border-left-color: var(--halvany); }
+.kat.osztalyozatlan { border-left-color: var(--figyel); }
+.kat .ki { color: var(--tinta); }
 .ures { color: var(--halvany); padding: 24px 0; }
 .tetel { background: var(--lap); border: 1px solid var(--vonal); border-radius: var(--sugar); padding: 14px 16px; display: grid; gap: 10px; }
 .tetel.kesz { border-color: var(--elfogad); }
@@ -111,11 +123,11 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
   <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
+  <div class="fulek" id="fulek" role="tablist" aria-label="Döntés kategóriája"></div>
   <div class="szurok">
   <div class="szurosor" id="sz-kiadas"><span class="cim">kiadás</span></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
-  <div class="szurosor" id="sz-cimke"><span class="cim">típus</span></div>
   <div class="szurosor" id="sz-allapot"><span class="cim">állapot</span></div>
   </div>
   <div class="lista" id="lista"></div>
@@ -152,6 +164,17 @@ const torlesKerdes = {};  // kerdes_id -> a „Válasz törlése” megerősít�
 const DOC_KERDES = {};    // adatbázis-dokumentum azonosító -> kerdes_id (a törölt dokumentumhoz)
 let db = null;
 let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi', kiadas: '*' };
+const KATEGORIAK = [['tartalmi', 'Tartalmi'], ['kiadoi', 'Kiadói'], ['uzleti', 'Üzleti'], ['fejlesztoi', 'Fejlesztői'], ['osztalyozatlan', 'Osztályozatlan']];
+const KAT_CIMKE = Object.fromEntries(KATEGORIAK);
+// Ki dönt? A fejlesztői kártyákat az orkesztrátor dönti (tájékoztató; a gombokkal felülbírálható), a többi a tiéd.
+const KAT_KI = {
+  tartalmi: 'A te döntésed — a lexikon állítását változtatja meg.',
+  kiadoi: 'A te döntésed — hogyan és mikor jelenik meg (kiadás, kolofon, olvasói nyelv, arculat, felület, licenc).',
+  uzleti: 'A te döntésed — ügyfél, számlázás, megrendelés, előfizetés, árazás; pénzt és ügyfelet érint.',
+  fejlesztoi: 'Tájékoztató — ezt az orkesztrátor dönti (döntötte); az alábbi gombokkal bármikor felülbírálhatod.',
+  osztalyozatlan: 'A gép nem tudta besorolni; a kézi szűrő (dontes_szuro.tsv) adhat neki kategóriát.',
+};
+const kategoria = (k) => k.cimke || 'tartalmi';
 const KIADAS_CIMKE = { '1': '1. kiadás', '2': '2. kiadás', '': 'kiadáson kívül' };
 
 function lsOlvas() { try { return JSON.parse(localStorage.getItem('lektor_valaszok') || '{}'); } catch (e) { return {}; } }
@@ -216,6 +239,26 @@ function kovetkezmenyBlokk(k) {
   return d;
 }
 
+function katSor(k) {
+  const kat = kategoria(k);
+  const indok = k.cimke_indok || 'lektori vagy határ-kérdés: a lap tartalmáról szól, ezért tartalmi.';
+  return el('div', { class: 'kat ' + kat }, el('b', {}, 'Kategória: ' + KAT_CIMKE[kat]),
+    el('span', { class: 'ki' }, KAT_KI[kat]), el('span', {}, 'Miért ide: ' + indok));
+}
+function fulekRajzol() {
+  const f = document.getElementById('fulek');
+  f.replaceChildren();
+  const nyitott = (k) => !valaszok[k.kerdes_id];
+  [...KATEGORIAK, ['', 'Mind']].forEach(([kod, cimke]) => {
+    const csoport = ADAT.filter((k) => !kod || kategoria(k) === kod);
+    const b = el('button', { type: 'button', role: 'tab', class: kod, 'aria-selected': String(szuro.cimke === kod),
+      onclick: () => { szuro.cimke = kod; fulekRajzol(); rajzol(); } },
+      el('span', {}, cimke), el('span', { class: 'db' }, String(csoport.length)),
+      el('span', { class: 'nyitott' }, csoport.filter(nyitott).length + ' nyitott'));
+    f.append(b);
+  });
+}
+
 function allapotSzoveg(k) {
   const v = valaszok[k.kerdes_id];
   if (!v) return '';
@@ -226,7 +269,7 @@ function allapotSzoveg(k) {
 function rajzol() {
   const lista = document.getElementById('lista');
   lista.replaceChildren();
-  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum) && (!szuro.cimke || (k.cimke || 'tartalmi') === szuro.cimke) && (szuro.kiadas === '*' || (k.kiadas || '') === szuro.kiadas)
+  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum) && (!szuro.cimke || kategoria(k) === szuro.cimke) && (szuro.kiadas === '*' || (k.kiadas || '') === szuro.kiadas)
     && (!szuro.allapot || (szuro.allapot === 'nyitva') === !valaszok[k.kerdes_id]));
   if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
   lat.forEach((k) => {
@@ -244,7 +287,7 @@ function rajzol() {
     const lapUrl = Object.prototype.hasOwnProperty.call(LAP_URLOK, k.motivum) ? LAP_URLOK[k.motivum] : '';
     if (lapUrl) fej.append(el('a', { href: lapUrl, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
     t.append(fej, bal);
-    bal.append(kerdesDoboz(k));
+    bal.append(katSor(k), kerdesDoboz(k));
     if (hatar) t.append(el('div', { class: 'jobb' }, jelenlegiBlokk(k), kovetkezmenyBlokk(k)));
     t.append(lab);
     if (k.valasz) bal.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
@@ -268,6 +311,7 @@ function rajzol() {
   });
   statusz(lat);
   osszesito();
+  fulekRajzol();
 }
 
 // A megválaszolt kártya alja: „Válasz törlése”, majd helyben megerősítés (a böngésző confirm() ablaka a beágyazott lapon tiltott lehet).
@@ -364,7 +408,6 @@ function szurokRajzol() {
   szuroSor('sz-kiadas', 'kiadas', [['*', 'mind (' + ADAT.length + ')'], ['1', '1. kiadás (' + db_('1') + ')'], ['2', '2. kiadás (' + db_('2') + ')'], ['', 'kiadáson kívül (' + db_('') + ')']]);
   szuroSor('sz-forras', 'forras', [['', 'mind'], ...egyedi('forras').map((x) => [x, x])]);
   szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum', (k) => k.forras !== 'dontes').map((x) => [x, x])]);
-  szuroSor('sz-cimke', 'cimke', [['tartalmi', 'tartalmi'], ['uzleti', 'üzleti'], ['technikai', 'technikai'], ['osztalyozatlan', 'osztályozatlan'], ['', 'mind']]);
   szuroSor('sz-allapot', 'allapot', [['nyitva', 'nyitott'], ['kesz', 'megválaszolt'], ['', 'mind']]);
 }
 

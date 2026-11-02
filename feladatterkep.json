@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-02",
-   "commit": "f046c8d2"
+   "commit": "e56b0e94"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4640,21 +4640,9 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F07b",
+    "id": "DT519",
     "feladat": "#7 THAYER_ELES (M0 (c): a nagy szócikkek `max_tokens`-bukása, N70/N75)",
     "kerdes": "Emelés vagy további darabolás?",
-    "allapot": "ellenorizendo",
-    "jelek": [
-     "✅"
-    ],
-    "sor": 560,
-    "oszlopszam": 10,
-    "fejlec_oszlopszam": 8
-   },
-   {
-    "id": "DT-F07c",
-    "feladat": "#7 THAYER_ELES (M0 (d): a `Sir` és az `1 Cor.` alias helye, N72/N-F142a)",
-    "kerdes": "Hol javuljon a `Sir` (JSir-alias) és az `1 Cor.`?",
     "allapot": "ellenorizendo",
     "jelek": [
      "✅"
@@ -4664,9 +4652,9 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F07d",
-    "feladat": "#7 THAYER_ELES (M0 (e): effort)",
-    "kerdes": "`high` vagy `medium` a teljes Thayerre?",
+    "id": "DT520",
+    "feladat": "#7 THAYER_ELES (M0 (d): a `Sir` és az `1 Cor.` alias helye, N72/N-F142a)",
+    "kerdes": "Hol javuljon a `Sir` (JSir-alias) és az `1 Cor.`?",
     "allapot": "ellenorizendo",
     "jelek": [
      "✅"
@@ -4676,9 +4664,9 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F07e",
-    "feladat": "#7 THAYER_ELES (M0 (d1), (d2): sigla- és terminológia-jóváhagyás)",
-    "kerdes": "A 164 `jelolt` sigla és a 31 terminológiai sor jóváhagyása",
+    "id": "DT521",
+    "feladat": "#7 THAYER_ELES (M0 (e): effort)",
+    "kerdes": "`high` vagy `medium` a teljes Thayerre?",
     "allapot": "ellenorizendo",
     "jelek": [
      "✅"
@@ -4688,18 +4676,30 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F07g",
+    "id": "DT522",
+    "feladat": "#7 THAYER_ELES (M0 (d1), (d2): sigla- és terminológia-jóváhagyás)",
+    "kerdes": "A 164 `jelolt` sigla és a 31 terminológiai sor jóváhagyása",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 564,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT524",
     "feladat": "#7 THAYER_ELES (M0: a `Heb.` terminológia-sor és a könyvhivatkozás ütközése; a `8_idezojel` mérése)",
     "kerdes": "(1) A `Heb.` c:v előtt `Zsid`, c:v nélkül `héb.`? (2) Fogadja-e el a 8. kapu a `'…'`→`„…”` cserét?",
     "allapot": "ellenorizendo",
     "jelek": [
      "✅"
     ],
-    "sor": 565,
+    "sor": 566,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 198
+  "kesz_db": 199
  }
 }
