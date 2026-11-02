@@ -77,6 +77,8 @@ def stash_kartya(x):
     sor = [('Téma', x['tema']), ('PaRDeS-szint', x['pardes_szint']), ('Fölérendelt fogalom', x['folerendelt_fogalom']),
            ('Ide nem tartozik', x['negativ_kriterium']), ('Terjedelem', '%s szó' % x['terjedelem_szo']),
            ('Kötet', x['kotet_olvasoi'])]
+    if x.get('kiadas_allapot'):  # DT-F156m: a kiadott lap a következő kiadás nyitott javítandóival is itt marad
+        sor.insert(0, ('Kiadás', x['kiadas_allapot']))
     stat = '%s ószövetségi és %s újszövetségi hely, %s kapcsolat' % (x['elofordulas_osz'], x['elofordulas_usz'],
                                                                       x['kapcsolatok_db'])
     return ('<article class="kartya"><div class="fej"><h3>%s</h3><span class="azon">%s</span></div><p class="mondat">%s</p>'
@@ -107,7 +109,7 @@ def main():
         '&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">'
         '<style>%s</style><div class="o"><header><h1>A motívumlexikon előrehaladása</h1>'
         '<p class="al">%d motívum, %d teljesült ellenőrzési lépés a %d-ből. „Kész” az a motívum, amelynél mind a kilenc '
-        'ellenőrzési lépés teljesül.</p></header>'
+        'ellenőrzési lépés teljesül, vagy amelynek lapja kiadást kapott.</p></header>'
         '<section class="csempek">%s</section>'
         '<section><h2>Hol tart az egyes motívum</h2><div class="kartyak">%s</div></section>'
         '<section><h2>Az elmúlt 7 nap</h2><div class="tab"><table><thead><tr><th>Dátum</th><th>Motívum</th><th>Mi történt'

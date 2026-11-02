@@ -63,7 +63,7 @@ FEHERLISTA_KRITERIUM = ['sorszam', 'olvasoi_nev', 'olvasoi_szoveg']
 FEHERLISTA_ESEMENY = ['datum', 'motivum', 'olvasoi_esemeny']
 FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'negativ_kriterium', 'folerendelt_fogalom', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
                     'kapcsolatok_db', 'forditasi_lefedettseg', 'utolso_generalas_commit',
-                    'verzio', 'kotet_olvasoi']
+                    'verzio', 'kotet_olvasoi', 'kiadas_allapot']
 FEHERLISTA_TOP = ['_generalt', 'generalva', 'commit', 'rendszer', 'motivumok', 'merok_osszesen', 'heti_tortenes',
                   'elvetett_jeloltek_osszesen']
 
@@ -602,6 +602,29 @@ def usz_konyvek():
     return set()
 
 
+def kiadas_szam(motivum):
+    """A motívum legnagyobb kiadásszáma az `adat/kiadasok.tsv`-ből (SEMA 2.46); 0, ha nincs kiadása."""
+    try:
+        return max((int(s['kiadas']) for s in tsv('adat/kiadasok.tsv') if s.get('id') == motivum), default=0)
+    except (OSError, ValueError):
+        return 0
+
+
+def kiadas_allapot(kiadas, minden_zold):
+    """DT-F156m: a kiadott lap a Stash-ben marad; ha egy kapu (pl. a 9.) azóta piros, ezt kimondja."""
+    if not kiadas:
+        return None
+    elso = '%s %d. kiadás érvényes' % (nevelo(kiadas).capitalize(), kiadas)
+    if minden_zold:
+        return elso + '.'
+    return '%s; %s %d. kiadás javítandói nyitottak.' % (elso, nevelo(kiadas + 1), kiadas + 1)
+
+
+def nevelo(n):
+    """A számnév előtti névelő: az 1., 5., 50. … előtt „az” (egy, öt, ötven), egyébként „a”."""
+    return 'az' if str(n)[0] in '15' else 'a'
+
+
 def stash_adat(m, kriteriumok, elofordulasok, kapcsolatok, usz, commit_lapon):
     sajat = [e for e in elofordulasok if e['id'] == m['id']]
     osz = sum(1 for e in sajat if e['igehely'].split(' ')[0] not in usz)
@@ -647,8 +670,8 @@ def heti_tortenes(jeloltek, motivumok, nap=7):
     return sorted(ki, key=lambda x: x['datum'], reverse=True)
 
 
-def allasfokozat(m, zold_db, ossz_db, kriteriumok):
-    if zold_db == ossz_db:
+def allasfokozat(m, zold_db, ossz_db, kriteriumok, kiadas=0):
+    if zold_db == ossz_db or kiadas:  # DT-F156m: a kiadott lap kész marad, a következő kiadás javítandóival
         return 'lezárt (stash)'
     if m['statusz'] == 'feldolgozás alatt':
         return 'feldolgozás'
@@ -726,10 +749,13 @@ def main():
         rc, o, _ = futtat(['git', 'log', '-1', '--format=%h', '--', 'lexikon/%s_TUDOMANYOS.md' % mid])
         lapon = o.strip() if rc == 0 and o.strip() else None
         st = stash_adat(m, krit, elofordulasok, kapcsolatok, usz, lapon)
+        kiadas = kiadas_szam(mid)
+        st['kiadas_allapot'] = kiadas_allapot(kiadas, zold_db == len(lista))
+        stashben = zold_db == len(lista) or bool(kiadas)
         e = {
             'id': mid, 'cim': m['ui_cimke'] or m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
-            'allasfokozat': allasfokozat(m, zold_db, len(lista), krit),
-            'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit)],
+            'allasfokozat': allasfokozat(m, zold_db, len(lista), krit, kiadas),
+            'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit, kiadas)],
             'olvasoi_mondat_nyilvanos': olvasoi_mondat_nyilvanos(st['elofordulas_osz'] + st['elofordulas_usz'], len(elv), zold_db),
             'olvasoi_mondat': olvasoi_mondat(st['elofordulas_osz'] + st['elofordulas_usz'],
                                              sum(1 for j in sajat_j if blokkolo_jelolt(j)), len(elv), zold_db),
@@ -739,7 +765,7 @@ def main():
             'nyitott_motivumkozi_db': sum(1 for j in sajat_j if j['dontes'] == 'nyitva' and not blokkolo_jelolt(j)),
             'elvetett_jelolt_db': len(elv),
             'beepitett_jelolt_db': sum(1 for j in sajat_j if j['dontes'].startswith('beépít')),
-            'stash': st if zold_db == len(lista) else None,
+            'stash': st if stashben else None,
             # --- csak belso ---
             'stash_jelolt': st,
             'elvetett_jeloltek': [j['igehely'] for j in elv],
@@ -767,11 +793,11 @@ def main():
     stash = {
         '_generalt': '%s — GENERÁLT, kézzel szerkeszteni tilos; stash.json' % SCRIPT,
         'generalva': belso['generalva'], 'commit': commit,
-        'kritérium': 'mind a %d pont zöld (F156 3.2; a 9.: DT-F156k); a kötet-hozzárendelés nincs adatban (DT-F156d)'
-                     % len(KRITERIUMOK),
-        'tetelek': [dict(feherlista(x['stash_jelolt'], FEHERLISTA_STASH), id=x['id']) for x in ki
-                    if x['zold_db'] == x['ossz_db']],
-        'kesz_db': belso['merok_osszesen']['kesz_db'],
+        'kritérium': 'mind a %d pont zöld (F156 3.2; a 9.: DT-F156k), vagy a lapnak van kiadása (DT-F156m: a '
+                     '`kiadas_allapot` mondja ki a következő kiadás nyitott javítandóit); a kötet-hozzárendelés nincs '
+                     'adatban (DT-F156d)' % len(KRITERIUMOK),
+        'tetelek': [dict(feherlista(x['stash'], FEHERLISTA_STASH), id=x['id']) for x in ki if x['stash']],
+        'kesz_db': sum(1 for x in ki if x['stash']),
     }
 
     os.makedirs(a.kimenet, exist_ok=True)
@@ -779,7 +805,7 @@ def main():
         with open(os.path.join(a.kimenet, nev), 'w', encoding='utf-8', newline='\n') as f:
             json.dump(tartalom, f, ensure_ascii=False, indent=1, sort_keys=False)
             f.write('\n')
-    print('kész: %d motívum, %d kész (%d/%d); kimenet: %s' % (len(ki), stash['kesz_db'], len(KRITERIUMOK),
+    print('kész: %d motívum, %d a Stash-ben (%d/%d vagy kiadott); kimenet: %s' % (len(ki), stash['kesz_db'], len(KRITERIUMOK),
                                                                len(KRITERIUMOK), a.kimenet))
 
 

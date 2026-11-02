@@ -219,6 +219,17 @@ class Teszt(unittest.TestCase):
         self.assertFalse(M.atnezes_ervenyes(dict(jo, lap_commit='abc'), 'X-001', c))
         self.assertFalse(M.atnezes_ervenyes(jo, 'Y-001', c))
 
+    def test_kiadott_lap_a_stashben_marad(self):
+        """DT-F156m: a kiadott lap a Stash-ben marad; ha egy kapu piros, kimondja a következő kiadás javítandóit."""
+        self.assertIsNone(M.kiadas_allapot(0, False))
+        self.assertEqual(M.kiadas_allapot(1, True), 'Az 1. kiadás érvényes.')
+        self.assertEqual(M.kiadas_allapot(1, False), 'Az 1. kiadás érvényes; a 2. kiadás javítandói nyitottak.')
+        self.assertEqual(M.kiadas_allapot(4, False), 'A 4. kiadás érvényes; az 5. kiadás javítandói nyitottak.')
+        self.assertEqual(M.allasfokozat({'statusz': 'publikálható'}, 8, 9, {}, kiadas=1), 'lezárt (stash)')
+        self.assertEqual(M.allasfokozat({'statusz': 'feldolgozás alatt'}, 8, 9, {}, kiadas=0), 'feldolgozás')
+        self.assertGreaterEqual(M.kiadas_szam('ISTENTISZT-001'), 1)
+        self.assertIn('kiadas_allapot', M.FEHERLISTA_STASH)
+
     def test_kriterium_9_nincs_lap(self):
         self.assertEqual(M.kriterium_9('NEMLETEZO-999')['allapot'], M.NINCS)
 
