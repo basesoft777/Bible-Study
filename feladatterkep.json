@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-02",
-   "commit": "80d24494"
+   "commit": "17c8fbdd"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -605,7 +605,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: az ALVIL-001 lezárása (a migráció kész: PR #513; előkészítés: F123.ALVIL.Z1–Z3, naplok/F123_ALVIL_lezaras_elokeszites.md) — Feed 6/8; vár: a hatar-ellenor indítása (MUNKAMENET C-h, 5. kapu) és a döntések a lektor-felületen (C-l, 7. kapu); utána új ágon C5: Feed 8/8, 1. kiadás az adat/kiadasok.tsv-ben, motivumok.tsv verzió-emelés. Kész: kiejtés (Z1), N-F123e (DT498, motivum_kesz, Z2), az M4 hiánylista (TBESG G0086 2. szakasz lefordítva, F121.18; a 2 Seól a kapcsolat-sorokban javítva). Utána ⛔ DT-F123c (a 9_ sablon v1), majd a következő motívum: ANTROP-001 (DT413; az X.A addig is futhat, 2b). A lezárás itteni helye és ez a sorrend: DT497 ✅. Menet motívumonként: X.A → X.M1–X.M5 → X.M6 fuggetlen-ellenor + /elteres (max. 2 kör) → [a felhasználó indítja a határ-ellenőrzést] → döntések a lektor-felületen → Feed 8/8 → 1. kiadás; a lezárt motívum a motivum_kesz mezőbe kerül",
+   "most": "Te: az ALVIL-001 lezárása (a migráció kész: PR #513; előkészítés: F123.ALVIL.Z1–Z3, naplok/F123_ALVIL_lezaras_elokeszites.md) — Feed 6/8; vár: a hatar-ellenor indítása (MUNKAMENET C-h, 5. kapu) és a döntések a Kiadóban (felület) (C-l, 7. kapu); utána új ágon C5: Feed 8/8, 1. kiadás az adat/kiadasok.tsv-ben, motivumok.tsv verzió-emelés. Kész: kiejtés (Z1), N-F123e (DT498, motivum_kesz, Z2), az M4 hiánylista (TBESG G0086 2. szakasz lefordítva, F121.18; a 2 Seól a kapcsolat-sorokban javítva). Utána ⛔ DT-F123c (a 9_ sablon v1), majd a következő motívum: ANTROP-001 (DT413; az X.A addig is futhat, 2b). A lezárás itteni helye és ez a sorrend: DT497 ✅. Menet motívumonként: X.A → X.M1–X.M5 → X.M6 fuggetlen-ellenor + /elteres (max. 2 kör) → [a felhasználó indítja a határ-ellenőrzést] → döntések a Kiadóban (felület) → Feed 8/8 → 1. kiadás; a lezárt motívum a motivum_kesz mezőbe kerül",
    "fugg": "#11 (kész), #125*, #126 (kész), #127 (kész)",
    "tervezett": false,
    "reszletes": "",
@@ -4649,6 +4649,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 187
+  "kesz_db": 189
  }
 }
