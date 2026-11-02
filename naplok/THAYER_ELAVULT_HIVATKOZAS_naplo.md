@@ -45,3 +45,13 @@ Az egyetlen hiba az ismert N66 sigla-teszt; a többi 39 zöld (a `Szolista` és 
 ## 5. Nyitott: ⛔ DT-F155a
 
 A 7 `elavult` Thayer-sor megjegyzése: (a) bájt-szintű csere `DT-F132c` → `DT329`, vagy (b) a történeti szöveg marad. Lásd `DONTESEK.md` DT-F155a. Az (a) elfogadási feltétele: `grep -c "DT-F132c" adat/forditasok.tsv` = 0, minden más sor bájtra azonos; a (b)-é: 7, dokumentálva.
+
+## 6. Alkalmazás (DT-F155a (a), a felhasználó döntése 2026-11-02: „(a) Csere DT329-re”)
+
+scope=adat/forditasok.tsv | forras=`naplok/THAYER_ELAVULT_HIVATKOZAS_csere.py` (split/join, soronkénti összevetés); `grep -c`; `diff` a csere előtti másolattal | ts=2026-11-02
+
+- Előzetesen az `origin/main` beolvasva (F156); a `DONTESEK.md` ütközésénél mindkét oldal sorai megmaradtak (a DT-F155a is).
+- A szkript a 7 `elavult` Thayer-sor (fájlsorok 66, 67, 69, 70, 71, 73, 79: G1311, G2671, G5010, G5356, G0012, G5351, G0086) `megjegyzes` mezőjében cserélt `DT-F132c` → `DT329`-et; soronként ellenőrizte, hogy csak a `megjegyzes` mező tér el. Eltérés nem volt.
+- Mérés 1: `grep -c "DT-F132c" adat/forditasok.tsv` = **0** (előtte 7).
+- Mérés 2: a régi és új fájl `diff`-je pontosan 7 sort érint (`66,67c`, `69,71c`, `73c`, `79c`); visszacsere (`DT329` → `DT-F132c`) bájtra az eredetit adja.
+- Mérés 3: `teszt_lanc.py` 40 teszt, 1 hiba (az ismert N66 sigla-teszt); `ellenoriz.py` `RENDBEN: 18 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 6`; `feladatok.py ellenoriz` 177 brief, 0 hiba, 0 figyelmeztetés.
