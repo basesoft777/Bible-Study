@@ -427,8 +427,16 @@ def lap_commit(motivum):
     return o.strip() or None if rc == 0 else None
 
 
+def atnezes_ervenyes(sor, motivum, commit):
+    """SEMA 2.48, DT-F156l: a sor a lap mai commitjáról szól (legalább 7 jegyű előtag), a `ki` a felhasználó, és az
+    `idezet` a felhasználó szavai (nem üres). Session vagy modell nem írhat érvényes sort a felhasználó idézete nélkül."""
+    lc = (sor.get('lap_commit') or '').strip()
+    return (sor.get('id') == motivum and len(lc) >= 7 and commit.startswith(lc)
+            and (sor.get('ki') or '').strip() == 'felhasználó' and bool((sor.get('idezet') or '').strip()))
+
+
 def vizualis_atnezes(motivum):
-    """A felhasználó vizuális átnézése a lap MAI változatáról: a tábla sora, vagy None.
+    """A felhasználó vizuális átnézése a lap MAI változatáról: a tábla érvényes sora, vagy None.
     Az átnézés a lap commitjához kötött: ha a lap azóta újragenerálódott, a régi átnézés nem érvényes."""
     if not os.path.exists(os.path.join(GYOKER, ATNEZES_TABLA)):
         return None
@@ -436,7 +444,7 @@ def vizualis_atnezes(motivum):
     if not commit:
         return None
     for s in tsv(ATNEZES_TABLA):
-        if s.get('id') == motivum and s.get('lap_commit') and commit.startswith(s['lap_commit']):
+        if atnezes_ervenyes(s, motivum, commit):
             return s
     return None
 

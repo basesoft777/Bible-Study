@@ -208,6 +208,17 @@ class Teszt(unittest.TestCase):
         finally:
             M.vizualis_atnezes = eredeti
 
+    def test_atnezes_ervenyessege(self):
+        """SEMA 2.48: csak a lap mai commitjáról, a felhasználótól, szó szerinti idézettel érvényes."""
+        c = 'abcdef1234567890'
+        jo = {'id': 'X-001', 'lap_commit': 'abcdef1', 'ki': 'felhasználó', 'idezet': 'Igen, így jó.'}
+        self.assertTrue(M.atnezes_ervenyes(jo, 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, idezet=' '), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, ki='claude-opus-5-5'), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, lap_commit='0000000'), 'X-001', c))  # a lap azóta változott
+        self.assertFalse(M.atnezes_ervenyes(dict(jo, lap_commit='abc'), 'X-001', c))
+        self.assertFalse(M.atnezes_ervenyes(jo, 'Y-001', c))
+
     def test_kriterium_9_nincs_lap(self):
         self.assertEqual(M.kriterium_9('NEMLETEZO-999')['allapot'], M.NINCS)
 
