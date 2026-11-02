@@ -1,1 +1,5 @@
 strong	kapu	ok	probalkozas	modell	datum	proveniencia
+G3588	8_idezojel,11_konyvek	8_idezojel: forras 1 par, forditas 2 par | 11_konyvek: a forditasbol hianyzik: 1Makk×1, 2Makk×1; a forditasban tobb: Makk×2	API Batch, 2. próba	claude-sonnet-5-5	2026.11.02	scope=G3588 | forras=thayer_api_koteg.py rogzit | ts=2026.11.02
+G1722	api	a kérés nem adott használható választ (max_tokens) | a kérés nem adott használható választ (max_tokens)	API Batch, 2. próba	claude-sonnet-5-5	2026.11.02	scope=G1722 | forras=thayer_api_koteg.py rogzit | ts=2026.11.02
+G1510	api	a kérés nem adott használható választ (max_tokens) | a kérés nem adott használható választ (max_tokens) | a kérés nem adott használható választ (max_tokens)	API Batch, 2. próba	claude-sonnet-5-5	2026.11.02	scope=G1510 | forras=thayer_api_koteg.py rogzit | ts=2026.11.02
+G1519	11_konyvek,16_sigla	11_konyvek: a forditasbol hianyzik: Bölcs×1 | 16_sigla: Wis. -> Bölcs hiányzik	API Batch, 2. próba	claude-sonnet-5-5	2026.11.02	scope=G1519 | forras=thayer_api_koteg.py rogzit | ts=2026.11.02

@@ -1,0 +1,12 @@
+# GENERÁLT: kétszer bukott Strongok az F27 M1-ben (M1: adag1, aranyminta: adag99; az aranyminta nem került a bukottak.tsv-be) | scope=forditas/thayer_api/adag1,adag99 | forras=kapu_eredmeny.jsonl | ts=2026-11-02
+adag	strong	kapu	szakasz	ok
+adag1	G3588	8_idezojel	-	forras 1 par, forditas 2 par
+adag1	G3588	11_konyvek	-	a forditasbol hianyzik: 1Makk×1, 2Makk×1; a forditasban tobb: Makk×2
+adag1	G1722	max_tokens	-	a kérés nem adott használható választ (max_tokens)
+adag1	G1722	max_tokens	-	a kérés nem adott használható választ (max_tokens)
+adag1	G1510	max_tokens	-	a kérés nem adott használható választ (max_tokens)
+adag1	G1510	max_tokens	-	a kérés nem adott használható választ (max_tokens)
+adag1	G1510	max_tokens	-	a kérés nem adott használható választ (max_tokens)
+adag1	G1519	11_konyvek	-	a forditasbol hianyzik: Bölcs×1
+adag1	G1519	16_sigla	-	Wis. -> Bölcs hiányzik
+adag99	G4151	max_tokens	-	a kérés nem adott használható választ (max_tokens)
