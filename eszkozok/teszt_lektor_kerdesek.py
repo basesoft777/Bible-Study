@@ -278,5 +278,47 @@ class KiadasTeszt(unittest.TestCase):
             self.assertEqual({r['forras'] for r in m.values()}, {'lektor', 'proza_lefedettseg'})
 
 
+OSSZ_TSV = "# megjegyzés\nkerdes_id\ttipus\tgond\tjavaslat\tproveniencia\nlektor:X-001:1\tnincs\tEgyszerű gond.\tA lektor nem javasolt konkrét javítást.\tmanual\n"
+
+
+class OsszefoglaloTeszt(unittest.TestCase):
+    def _irj_ossz(self, t, szoveg):
+        os.makedirs(os.path.join(t, 'eszkozok', 'lektor_felulet'), exist_ok=True)
+        with open(os.path.join(t, 'eszkozok', 'lektor_felulet', 'osszefoglalo_X-001.tsv'), 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+
+    def test_beolvas_es_ratolt(self):
+        with tempfile.TemporaryDirectory() as t:
+            self._irj_ossz(t, OSSZ_TSV)
+            o = L.osszefoglalo_beolvas('X-001', t)
+            self.assertEqual(o['lektor:X-001:1'][0], 'nincs')
+            uj = L.osszefoglalo_ra(L.lektor_kerdesek(LEKTOR_MD, 'X-001'), o)
+            self.assertEqual(uj[0]['gond'], 'Egyszerű gond.')
+            self.assertEqual(uj[0]['javaslat_tipus'], 'nincs')
+            self.assertEqual(uj[1].get('gond', ''), '')
+
+    def test_ismeretlen_kerdes_es_hibas_tipus_hiba(self):
+        with tempfile.TemporaryDirectory() as t:
+            self._irj_ossz(t, OSSZ_TSV.replace('lektor:X-001:1', 'lektor:X-001:99'))
+            o = L.osszefoglalo_beolvas('X-001', t)
+            with self.assertRaises(ValueError):
+                L.osszefoglalo_ra(L.lektor_kerdesek(LEKTOR_MD, 'X-001'), o)
+            self._irj_ossz(t, OSSZ_TSV.replace('\tnincs\t', '\tvalami\t'))
+            with self.assertRaises(ValueError):
+                L.osszefoglalo_beolvas('X-001', t)
+
+    def test_nincs_fajl_ures(self):
+        with tempfile.TemporaryDirectory() as t:
+            self.assertEqual(L.osszefoglalo_beolvas('X-001', t), {})
+
+    def test_az_istentiszt_mind_a_22_kerdesehez_van_osszefoglalo(self):
+        szoveg, n, _m = L.general('ISTENTISZT-001', L.ROOT, ir=False)
+        sorok = [x.split('\t') for x in szoveg.split('\n') if x and not x.startswith('#')][1:]
+        fej = L.MEZOK
+        gi, ti = fej.index('gond'), fej.index('javaslat_tipus')
+        self.assertEqual(n, 22)
+        self.assertTrue(all(r[gi].strip() and r[ti] in L.JAVASLAT_TIPUSOK for r in sorok))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

@@ -137,3 +137,16 @@
   elemek” → `forras=proza_lefedettseg`, `hely` az igehely; a lista nem hordoz proveniencia-sort, ezért `manual`). Az egyenetlenség-tábla nem kérdés, nem kerül be. 18 teszt.
 - `naplok/LEKTOR_ISTENTISZT-001.tsv`: **22 kérdés** = 5 `hatar` + 15 `lektor` + 2 `proza_lefedettseg`. Átfedés: a lektor 1. és 2. kérdése ugyanaz a két hiány, mint a lista két sora
   (1Móz 4:26 → Sof 3:9; Ézs 41:25); a kártyák külön azonosítóval külön válaszolhatók, ez szándékos (a két forrás egymástól független).
+
+## M8 — érthető kártyák (felhasználói visszajelzés: „egyáltalán nem világos”)
+
+- Ok: a kártya a lektor nyers szövegét mutatta (sorszámok, proveniencia), és a gombok nem mondták meg, mit jelentenek. A kártya most: **Mi a gond** (egy egyszerű mondat) →
+  **Mit javasol a lektor** (egy mondat; „a lektor nem javasolt konkrét javítást”, ha a lektor-fájlból konkrét javítás nem vezethető le) → a nyers szöveg a lenyitható **Részletek** alatt.
+- A gombfeliratok a kérdés fajtájához igazodnak (`javaslat_tipus`): `konkret` (Elfogadom — javítsuk így), `nincs` (Javítandó — a próza írója megoldja / Maradjon így), `hiany` (Legyen róla mondat /
+  Szándékos, maradjon így), `dontott` (Marad a rögzített döntésem / Mégis másképp). Mind a négy: Visszakérdezek — nem értem / kérdésem van; Saját megoldás — én írom le. A tárolt válasz típusa
+  változatlan (`elfogadom` / `elvetem` / `visszakerdezek` / `sajat`). Mindig látható súgósor a lap tetején.
+- Az összefoglaló mondatok **kézzel írt, értelmező összefoglalók** (`eszkozok/lektor_felulet/osszefoglalo_ISTENTISZT-001.tsv`, `manual` proveniencia): a lektor/forrás állítását adják vissza, újat nem tesznek
+  hozzá. A `lektor_kerdesek.py` kerdes_id szerint olvassa be (ismeretlen kerdes_id és ismeretlen típus hiba); az ISTENTISZT-001 mind a 22 kérdéséhez van összefoglaló (teszt).
+  A lektor 15 kérdése közül egyiknél sem volt konkrét javítási javaslat, ezért mind `nincs` (vagy `hiany`).
+- A 31 döntés-kártya (`dontes`) még a régi formában van (nincs összefoglalójuk).
+- Felület: az ISTENTISZT-001 kártyái elöl, a döntés-kártyák utána; a motívum-szűrő nem sorolja fel a döntés-kártyák feladatait.
