@@ -289,7 +289,7 @@ Forrás-study | Kereszthivatkozás-napló | Sablon-megfelelőség — a
 `motivumok.tsv` sora szerint. Alatta tábla: Forrás | Fájl | Licenc |
 Blokk — a fájlban ténylegesen felhasznált forrásfájlok, fájlonkénti
 licenc-hozzárendeléssel. L. "Licenc és nyilvános repó" alább.
-A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott); a második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), a MUNKAMENET csak hivatkozik rá.
+A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott). **Forrása az `adat/kiadasok.tsv`** (SEMA 2.46, DT492): a kiadásszám a motívum legnagyobb `kiadas` értéke, a változásjegyzék a motívum sorai; motívum sora nélkül a kolofon nem ír kiadás-sort. A kolofont kézzel szerkeszteni tilos, a sor a táblába kerül. **Lezáráskor** (`MUNKAMENET.md` C5: a Feed 8 kapuja zöld) ide kerül az **1. kiadás** sora (`kiadas=1`), a `motivumok.tsv` verzió-emelésével együtt; utána a lap újragenerálódik. A második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), és annak 5. lépése írja a következő sort; a MUNKAMENET csak hivatkozik rá (C-k). A `/kiadas` kérdései a következő kiadás bemenetei, a lezárást nem akasztják (DT486).
 A Kolofon rögzíti a **próza modelljét** is: a tényleges modellnevet (pl. `claude-opus-5-5`), a CLAUDE.md modell-szabálya szerint a futó környezetből, nem briefből másolva; ez teszi ellenőrizhetővé, hogy a `/kiadas` lektora (`.claude/agents/lektor.md`) a prózát író modelltől eltér (DT473).
 
 ---
