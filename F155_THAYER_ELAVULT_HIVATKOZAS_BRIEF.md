@@ -55,4 +55,5 @@ Cél: (1) a `forditas.py:219` ne helyőrzőt írjon (a végleges `DT329` számot
 
 ## 5. Döntésnapló
 
-*(üres; a befogadáskor és a futásban tölti a végrehajtó.)*
+- **DT-F155a** — eldöntve: **(a)** csere `DT-F132c` → `DT329` a 7 `elavult` Thayer-sor megjegyzésében; a felhasználó szavaival: „(a) Csere DT329-re” (2026-11-02). Alkalmazva: F155.4. Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 5–6. szakasz.
+- **Egyeztetett eltérés** — a `teszt_lanc.py` G1941-állítása 10 → 6 (DT476 / F152.14), a felhasználó kérésére: „#155 és a teszt” (2026-11-02). Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 3. szakasz.
