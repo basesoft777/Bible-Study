@@ -168,3 +168,15 @@ Frissítés: `muhely_allapot.py` → `adat_laposit.py <könyvtár>` → a fájlo
 ## DT-F156h ✅ eldöntve — a Feed mindig világos
 
 A felhasználó (az orkesztrátor továbbításában, 2026-11-02): **„Igen, mindig világos”** — a Feed a témától függetlenül mindig az A világos változatát mutatja (papír `#f6f6f3`, lap `#ffffff`, kiemelés `#1f5f7a`), sötét módban is. A sötét A-készlet és a `.sotet` kapcsolás kikerült az `eszkozok/muhely_felulet/index.html`-ből (a DT-F156g téma-olvasása megszűnt); az `.mh` `color-scheme: light`. A `dash/look` sötét halmaza a típus kereténél marad.
+
+## DT-F156b ✅ eldöntve — a kritérium pontosítása az ISTENTISZT-001 M0 után
+
+A felhasználó (az orkesztrátor javaslataira, 2026-11-02): **„Igen, mind”**, három pontban. Alkalmazva a `muhely_allapot.py`-ban (teszttel):
+
+- **(a) 4. kapu:** a motívumközi jelölt (`jelolt_tipus=motivumkozi`) nyitva maradhat, nem blokkol (tájékoztatásként látszik a belső rétegben); csak a motívum saját előfordulás-jelöltje blokkol. A motívumonkénti „vizsgálat alatt” szám is csak a blokkolókat számolja.
+- **(b) 6. kapu:** a generált Jelmagyarázat szótári rövidítései (pl. `י׳`, `ק׳`, `שׁ׳`) nem kiejtés-kötelesek; a mérés a Jelmagyarázat szakaszt kihagyja, a prózában álló héber/görög szavak kötelesek maradnak.
+- **(c) 8. kapu:** csak az a megállt vagy döntésre váró feladat blokkol, amelynek `ir` listájában a motívum valamelyik fájlja áll (`motivumok/<ID>.md`, `lexikon/<ID>_…`, `motivumlog/<ID>…`), ÉS a briefjének valamelyik ⛔ pontja a motívumról szól; a többi tájékoztatásként látszik. A DT-F156e (a negatív kritérium a nyilvános Stash-ben) halasztva marad.
+
+## A 7. kapu és a következő kiadás (2026-11-02)
+
+A felhasználó: az ISTENTISZT-001 „ettől független lezárható / a lektori átnézés eredménye egy új kiadás”. A `/kiadas` lektori kérdései (`forras=lektor`) ezért a következő kiadáshoz tartoznak: a 7. kapu nem számolja őket blokkolónak, a Feed „2. kiadáshoz: N kérdés” jelöléssel mutatja (belső és nyilvános rétegben is, a kapu olvasói szövegében). A határ- és lefedettségi kérdések (`forras=hatar`, `proza_lefedettseg`) blokkolók maradnak. A #561 merge-e után a DT-F156b alkalmazása (F156.10) ide, erre az ágra került át.

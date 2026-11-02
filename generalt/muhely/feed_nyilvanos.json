@@ -1,7 +1,7 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
- "generalva": "2026-11-02T06:33Z",
- "commit": "000cd2e2",
+ "generalva": "2026-11-02T07:57Z",
+ "commit": "21e9da5d",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "motivumok": [
   {
@@ -62,19 +62,19 @@
     },
     {
      "sorszam": 8,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Függő munka",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
     }
    ],
-   "zold_db": 1,
+   "zold_db": 2,
    "ossz_db": 8,
    "nyitott_jelolt_db": 1,
    "elvetett_jelolt_db": 13,
    "beepitett_jelolt_db": 9,
    "stash": null,
-   "olvasoi_mondat": "9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+   "olvasoi_mondat": "9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
   },
   {
    "id": "ISTENTISZT-001",
@@ -106,10 +106,10 @@
     },
     {
      "sorszam": 4,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Eldöntendő igehelyek",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "4 igehely vizsgálata folyamatban van."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
     },
     {
      "sorszam": 5,
@@ -120,33 +120,33 @@
     },
     {
      "sorszam": 6,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Olvasható lap",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "A lapon 3 kiejtés hiányzik."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap minden része magyarázattal, kiejtéssel és fordítással áll."
     },
     {
      "sorszam": 7,
-     "szin": "zold",
+     "szin": "piros",
      "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_allapot": "rendben",
-     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "2 lektori kérdés vár válaszra. 2. kiadáshoz: 15 kérdés."
     },
     {
      "sorszam": 8,
      "szin": "piros",
      "olvasoi_nev": "Függő munka",
      "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "9 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
-   "zold_db": 5,
+   "zold_db": 6,
    "ossz_db": 8,
-   "nyitott_jelolt_db": 4,
-   "elvetett_jelolt_db": 105,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 106,
    "beepitett_jelolt_db": 24,
    "stash": null,
-   "olvasoi_mondat": "22 igehely feldolgozva, 4 vizsgálat alatt, 105 kizárva; a nyolc ellenőrzési lépésből 5 teljesül."
+   "olvasoi_mondat": "22 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 106 kizárva; a nyolc ellenőrzési lépésből 6 teljesül."
   },
   {
    "id": "TEREMT-001",
@@ -206,19 +206,19 @@
     },
     {
      "sorszam": 8,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Függő munka",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
     }
    ],
-   "zold_db": 2,
+   "zold_db": 3,
    "ossz_db": 8,
    "nyitott_jelolt_db": 0,
    "elvetett_jelolt_db": 2,
    "beepitett_jelolt_db": 42,
    "stash": null,
-   "olvasoi_mondat": "42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
+   "olvasoi_mondat": "42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 3 teljesül."
   },
   {
    "id": "ALVIL-001",
@@ -267,7 +267,7 @@
      "szin": "piros",
      "olvasoi_nev": "Olvasható lap",
      "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "A lapon 7 kiejtés hiányzik."
+     "olvasoi_szoveg": "A lapon 4 kiejtés hiányzik."
     },
     {
      "sorszam": 7,
@@ -281,7 +281,7 @@
      "szin": "piros",
      "olvasoi_nev": "Függő munka",
      "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "8 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_szoveg": "2 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
    "zold_db": 4,
@@ -350,19 +350,19 @@
     },
     {
      "sorszam": 8,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Függő munka",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
     }
    ],
-   "zold_db": 1,
+   "zold_db": 2,
    "ossz_db": 8,
    "nyitott_jelolt_db": 2,
    "elvetett_jelolt_db": 1,
    "beepitett_jelolt_db": 9,
    "stash": null,
-   "olvasoi_mondat": "9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+   "olvasoi_mondat": "9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
   },
   {
    "id": "ANTROP-001",
@@ -494,19 +494,19 @@
     },
     {
      "sorszam": 8,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "Függő munka",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
     }
    ],
-   "zold_db": 1,
+   "zold_db": 2,
    "ossz_db": 8,
    "nyitott_jelolt_db": 14,
    "elvetett_jelolt_db": 4,
    "beepitett_jelolt_db": 33,
    "stash": null,
-   "olvasoi_mondat": "33 igehely feldolgozva, 14 vizsgálat alatt, 4 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+   "olvasoi_mondat": "33 igehely feldolgozva, 14 vizsgálat alatt, 4 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
   },
   {
    "id": "HAMART-001",
@@ -656,11 +656,16 @@
  "merok_osszesen": {
   "motivum_db": 9,
   "kesz_db": 0,
-  "kapu_zold": 22,
+  "kapu_zold": 27,
   "kapu_ossz": 72,
-  "nyitott_jelolt": 32
+  "nyitott_jelolt": 28
  },
  "heti_tortenes": [
+  {
+   "datum": "2026-11-02",
+   "motivum": "ISTENTISZT-001",
+   "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
+  },
   {
    "datum": "2026-11-01",
    "motivum": "ISTENTISZT-001",
@@ -677,5 +682,5 @@
    "olvasoi_esemeny": "3 igehelyet kizártunk, mert nem illik a motívum határába"
   }
  ],
- "elvetett_jeloltek_osszesen": 356
+ "elvetett_jeloltek_osszesen": 357
 }

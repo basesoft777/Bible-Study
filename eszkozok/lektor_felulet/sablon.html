@@ -65,6 +65,9 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 .uzenet { color: var(--elfogad); font-size: 12px; min-height: 1em; }
 .suga { background: var(--kiemel-hatter); color: var(--tinta); border-radius: var(--sugar); padding: 10px 12px; font-size: 13px; margin: 0 0 14px; max-width: 70ch; }
 .suga b { color: var(--kiemel); }
+.kiadasjel { font: 500 11px var(--adat); padding: 1px 7px; border-radius: var(--sugar); border: 1px solid var(--vonal); white-space: nowrap; }
+.kiadasjel.k1 { background: var(--elfogad-hatter); color: var(--elfogad); border-color: var(--elfogad); }
+.kiadasjel.k2 { background: var(--kiemel-hatter); color: var(--kiemel); border-color: var(--kiemel); }
 .gond, .javaslat { display: grid; gap: 2px; }
 .gond > b, .javaslat > b { font: 500 12px var(--adat); color: var(--halvany); text-transform: uppercase; letter-spacing: .04em; }
 .gond > span { font: 600 16px/1.4 var(--cim); overflow-wrap: anywhere; }
@@ -78,6 +81,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
   <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
+  <div class="szurosor" id="sz-kiadas"><span class="cim">kiadás</span></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
   <div class="szurosor" id="sz-cimke"><span class="cim">típus</span></div>
@@ -113,7 +117,8 @@ const tipusok = (k) => GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat
 const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 let db = null;
-let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi' };
+let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi', kiadas: '*' };
+const KIADAS_CIMKE = { '1': '1. kiadás', '2': '2. kiadás', '': 'kiadáson kívül' };
 
 function lsOlvas() { try { return JSON.parse(localStorage.getItem('lektor_valaszok') || '{}'); } catch (e) { return {}; } }
 function lsIr() { try { localStorage.setItem('lektor_valaszok', JSON.stringify(valaszok)); } catch (e) { /* kényelmi tartalék */ } }
@@ -164,7 +169,7 @@ function allapotSzoveg(k) {
 function rajzol() {
   const lista = document.getElementById('lista');
   lista.replaceChildren();
-  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum) && (!szuro.cimke || (k.cimke || 'tartalmi') === szuro.cimke)
+  const lat = ADAT.filter((k) => (!szuro.forras || k.forras === szuro.forras) && (!szuro.motivum || k.motivum === szuro.motivum) && (!szuro.cimke || (k.cimke || 'tartalmi') === szuro.cimke) && (szuro.kiadas === '*' || (k.kiadas || '') === szuro.kiadas)
     && (!szuro.allapot || (szuro.allapot === 'nyitva') === !valaszok[k.kerdes_id]));
   if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
   lat.forEach((k) => {
@@ -172,6 +177,7 @@ function rajzol() {
     const t = el('section', { class: 'tetel' + (v ? ' kesz' : ''), 'aria-label': k.kerdes_id });
     const fej = el('div', { class: 'fej' }, el('span', { class: 'id' }, halvanyId(k.kerdes_id)), el('span', {}, k.forras),
       el('span', {}, k.motivum));
+    fej.append(el('span', { class: 'kiadasjel k' + (k.kiadas || '0') }, KIADAS_CIMKE[k.kiadas || '']));
     if (k.hely) fej.append(el('span', {}, k.hely));
     if (LAP_URL) fej.append(el('a', { href: LAP_URL, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
     t.append(fej, kerdesDoboz(k));
@@ -255,6 +261,8 @@ function szuroSor(azon, kulcs, ertekek) {
 }
 function szurokRajzol() {
   const egyedi = (m, fel) => [...new Set(ADAT.filter(fel || (() => true)).map((k) => k[m]))].sort();
+  const db_ = (v) => ADAT.filter((k) => (k.kiadas || '') === v).length;
+  szuroSor('sz-kiadas', 'kiadas', [['*', 'mind (' + ADAT.length + ')'], ['1', '1. kiadás (' + db_('1') + ')'], ['2', '2. kiadás (' + db_('2') + ')'], ['', 'kiadáson kívül (' + db_('') + ')']]);
   szuroSor('sz-forras', 'forras', [['', 'mind'], ...egyedi('forras').map((x) => [x, x])]);
   szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum', (k) => k.forras !== 'dontes').map((x) => [x, x])]);
   szuroSor('sz-cimke', 'cimke', [['tartalmi', 'tartalmi'], ['uzleti', 'üzleti'], ['technikai', 'technikai'], ['osztalyozatlan', 'osztályozatlan'], ['', 'mind']]);

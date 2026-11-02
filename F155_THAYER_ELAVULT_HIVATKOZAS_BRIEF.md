@@ -13,7 +13,7 @@ olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py
 ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
 ag: claude/f155-thayer-elavult-hivatkozas
 pr: 567
-lezarva_osszegzes: "A forditas.py a végleges DT329-et írja (teszttel); a 7 elavult Thayer-sor megjegyzése DT-F132c → DT329 (DT-F155a (a)), grep -c DT-F132c = 0, minden más sor bájtra azonos; a teszt_lanc.py G1941-állítása 10 → 6 (DT476, egyeztetett eltérés); ELLENOR_F155_3 TISZTA"
+lezarva_osszegzes: "A forditas.py a végleges DT329-et írja (teszttel); a 7 elavult Thayer-sor megjegyzése DT-F132c → DT329 (DT488 (a)), grep -c DT-F132c = 0, minden más sor bájtra azonos; a teszt_lanc.py G1941-állítása 10 → 6 (DT476, egyeztetett eltérés); ELLENOR_F155_3 TISZTA"
 fugg: []
 nem_fugg: [27, 38, 154]
 ---
@@ -57,5 +57,5 @@ Cél: (1) a `forditas.py:219` ne helyőrzőt írjon (a végleges `DT329` számot
 
 ## 5. Döntésnapló
 
-- **DT-F155a** — eldöntve: **(a)** csere `DT-F132c` → `DT329` a 7 `elavult` Thayer-sor megjegyzésében; a felhasználó szavaival: „(a) Csere DT329-re” (2026-11-02). Alkalmazva: F155.4. Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 5–6. szakasz.
+- **DT488** — eldöntve: **(a)** csere `DT-F132c` → `DT329` a 7 `elavult` Thayer-sor megjegyzésében; a felhasználó szavaival: „(a) Csere DT329-re” (2026-11-02). Alkalmazva: F155.4. Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 5–6. szakasz.
 - **Egyeztetett eltérés** — a `teszt_lanc.py` G1941-állítása 10 → 6 (DT476 / F152.14), a felhasználó kérésére: „#155 és a teszt” (2026-11-02). Napló: `naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md` 3. szakasz.
