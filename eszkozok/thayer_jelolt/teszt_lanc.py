@@ -70,7 +70,8 @@ class Szolista(unittest.TestCase):
         g = szolista.gerinc_strongok()
         self.assertTrue(all(k.startswith('G') and len(k) == 5 for k in g))
         self.assertIn('G0012', g)
-        self.assertEqual(g['G1941'], 10)
+        # DT476 / F152.14 (K1–K5 átvezetés): az ISTENTISZT-001-ből szándékosan kikerült a Róm 10:12, 10:14, 2Tim 2:22, 1Pét 1:17 hely, így 10 helyett 6
+        self.assertEqual(g['G1941'], 6)
 
     def test_dinamikus_es_kihagyas(self):
         elof = os.path.join(self.tmp, 'e.tsv')
@@ -443,6 +444,9 @@ class Lanc(unittest.TestCase):
         self.assertEqual(len(valt), 1)                      # csak a régi teljes sor
         self.assertIn('\tG0813\tG813\tteljes\t', uj[valt[0]])
         self.assertIn('\telavult\t', uj[valt[0]])
+        # F155: a beírt megjegyzés a végleges DT329-re hivatkozik, nem a DT-F132c helyőrzőre (a teszt ideiglenes másolaton dolgozik)
+        self.assertIn('felváltva: szakaszonkénti fordítás (2026.10.25; DT329)', uj[valt[0]])
+        self.assertNotIn('DT-F132c', uj[valt[0]])
         self.assertEqual(n, 1 + len(TB.szakaszok('G0813')))
 
     def test_beir_kezi_marad(self):

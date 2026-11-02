@@ -216,7 +216,7 @@ def beir(strongok, allapot, datum=None, megjegyzes=None, regi_elavult=False, kez
                 raise SystemExit('%s: van régi `teljes` sor — --regi-elavult kell (DT-F132c (i))' % sp)
             if not regi_marad and regi[i_all] != 'elavult':
                 regi[i_all] = 'elavult'
-                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT-F132c)' % datum) if x)
+                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT329)' % datum) if x)
                 sorok[idx[teljes_k]] = '\t'.join(regi)
                 valtozott.add(idx[teljes_k])
         for r in sajat:
