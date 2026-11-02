@@ -39,3 +39,25 @@ melyelemzesek/, konkordancia/Karoli_1908.tsv | forras=`eszkozok/tanulmany_regisz
 - A mélyelemzés (3 tartomány) tartományon kívüli, név szerinti hivatkozásai („Más tanulmányok is hivatkoznak…”) a Zsolt 110 és Zsid 5–7 versein a
   mélyelemzésre mutatnak (tartományon belül); a bővített `1Moz_14` hivatkozásai a Zsolt 110:4 stb. versén a „más tanulmányok” csoportban jelennek meg.
 - A `pardes.db` újraépítése és a manifest újragenerálása (`frissesseg.py --manifest-keszit`) a merge után az orkesztrátoré (a brief: #101).
+
+## 5. A tesztek bukáslistája: az alap (origin/main) és az ág egymás mellett (2026-11-02)
+
+Futtatás: `eszkozok/olvaso_szerver/teszt_*.py` fájlonként, WSL venv. **Alap:** az `origin/main` ideiglenes worktree-je az eredeti WSL-natív `~/pardes/pardes.db`-n (építés: 2026-11-02T06:23Z). **Ág:** ez az ág a próba-adatbázison (az eredeti másolata + a négy `tanulmany*` tábla és `tabla_licenc` sor; az eredetit nem módosítottam). A két futás bukáslistája azonos (11 teszt); a `teszt_tanulmany_oldal.py` (17) és a `teszt_tanulmany_regiszter.py` (11) zöld.
+
+| Teszt | Alap | Ág | A teszt bevezetése |
+|---|---|---|---|
+| `teszt_olvaso_szerver` · `TestD2PilotEgyezes.test_1moz_1_25` | bukik | bukik | F76.12 (b7c9c83e, 2026-10-14) |
+| `teszt_olvaso_szerver` · `TestD2PilotEgyezes.test_zsolt_22` | bukik | bukik | F76.12 (b7c9c83e, 2026-10-14) |
+| `teszt_olvaso_szerver` · `TestLapok.test_interlinearis_parositatlan_sor_es_nt` | bukik | bukik | F76.12 (b7c9c83e, 2026-10-14) |
+| `teszt_pilot_aranymintaval` · `test_DT_F76f_magyar_alapjelentes_a_szo_lapon` | bukik | bukik | F76.25 / F76.30 (6d1e79f1, 6a0a49d1; 2026-10-14) |
+| `teszt_pilot_aranymintaval` · `test_DT_F76g_bdb_bontas_egyezik_a_pilottal_szocikkenkent` | bukik | bukik | F76.25 / F76.30 (6d1e79f1, 6a0a49d1; 2026-10-14) |
+| `teszt_pilot_aranymintaval` · `test_cimkek_es_utmutato_a_fejezet_lapon` | bukik | bukik | F76.25 / F76.30 (6d1e79f1, 6a0a49d1; 2026-10-14) |
+| `teszt_pilot_aranymintaval` · `test_karoli_strong_konyvek_jelzese_a_szo_lapon` | bukik | bukik | F76.25 / F76.30 (6d1e79f1, 6a0a49d1; 2026-10-14) |
+| `teszt_pilot_aranymintaval` · `test_magyar_tartalom_a_szo_lapokon` | bukik | bukik | F76.25 / F76.30 (6d1e79f1, 6a0a49d1; 2026-10-14) |
+| `teszt_kereses` · `TestKeresesLap.test_szotoken_nelkuli_konyvek_jelzese` | bukik | bukik | F76.44 (3799ac57, 2026-10-18) |
+| `teszt_tervezo` · `TestSzelektorokAValodiLapokon.test_minden_szelektor_talal` | bukik | bukik | F98.19 (5010b5f0, 2026-10-15) |
+| `teszt_bdb_vers_jelentes` · `Ujrageneralas.test_bajtra_azonos` | bukik | bukik | F99.11 (b164b873, 2026-10-15) |
+
+Az ág első futásán két további bukás volt, mindkettő az enyém, javítva (F149.5, F149.7): a blokk-regiszter tesztje (51 blokk, nincs pilot-megfelelő), a tervező regiszter-őre (az új CSS-osztályok az `elemek.toml` `[kizart]` táblájába) és a pilot Károli-szöveg tesztje (a margójel szövege attribútumba). A `teszt_sqlite_epit.py` egyetlen bukása (`test_baseline_a_masolaton_zold`, a 13. szabály a `forditasok` sorain) a `main`-en sem javult; az `adat/`-hoz nem nyúltam.
+
+**Ok (nem bisectelt):** a közös ok valószínűleg az, hogy a tesztek a WSL-natív `pardes.db`-t használják, amely a `main` mai kódjánál/adatánál régebbi építés; a bukások tartalmi része (Károli–Strong könyvlista, BDB-bontás, UBS-jelentés) a kód és az adat eltéréséből jön, nem a #149-ből. Újraépítés után újra mérendő: N-F149a.
