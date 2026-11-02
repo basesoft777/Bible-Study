@@ -111,6 +111,7 @@ a.he-fo:hover, a.he-fo:focus-visible { background: var(--accent-soft); border-ra
 .nincs-jeloles .szo { text-decoration: none; }
 /* F149: a tanulmányok halvány margójele a tartomány első verse előtt; kikapcsolható, mobilon nincs (csak a vers paneljén él) */
 .tan-jel { display: block; margin: 10px 0 2px; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); opacity: .75; text-decoration: none; }
+.tan-jel::before { content: attr(data-jel); }   /* a szöveg attribútumban él: a fejezet szövegébe (másolás, kereső) nem kerül bele */
 .tan-jel:hover, .tan-jel:focus-visible { opacity: 1; text-decoration: underline; }
 .nincs-tan-jeloles .tan-jel { display: none; }
 .tan-blokk { margin: 6px 0 10px; }

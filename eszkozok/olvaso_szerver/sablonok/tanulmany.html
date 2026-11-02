@@ -6,7 +6,7 @@
   <p class="tan-meta">{{ 'Mélyelemzés' if t[1] == 'melyelemzes' else 'Bővített tanulmány' }} · {{ t[3] }} · generált nézet a kézi forrásból</p>
   {% if olvaso %}<p class="tan-olvaso">Az olvasóban: {% for szoveg, ut in olvaso %}<a href="{{ ut }}">{{ szoveg }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
   {{ jegy }}
-  {% if toc %}<details class="tan-toc"><summary>Szakaszok</summary><ul>{% for hor, cim, szint in toc %}<li class="szint-{{ szint }}"><a href="#{{ hor }}">{{ cim }}</a></li>{% endfor %}</ul></details>{% endif %}
+  {% if toc %}<details class="tan-toc"><summary>Szakaszok</summary><ul>{% for hor, cim, szint in toc %}<li{% if szint == 3 %} class="szint-3"{% endif %}><a href="#{{ hor }}">{{ cim }}</a></li>{% endfor %}</ul></details>{% endif %}
   <div class="tan-szoveg">{{ html }}</div>
 </article>
 {% endblock %}

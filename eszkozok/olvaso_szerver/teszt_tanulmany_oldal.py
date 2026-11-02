@@ -166,6 +166,7 @@ class Oldalak(unittest.TestCase):
         s, h = self.get('/1Moz/4')
         self.assertEqual(s, 200)
         self.assertEqual(len(re.findall(r'class="tan-jel"', h)), 2)
+        self.assertEqual(re.findall(r'class="tan-jel"[^>]*></a>', h).__len__(), 2)     # a jel szövege attribútumban él (nem szennyezi a szöveget)
         self.assertIn('id="tan-jeloles"', h)
         s, h = self.get('/1Moz/5')
         self.assertIn('Folytatás', h)
