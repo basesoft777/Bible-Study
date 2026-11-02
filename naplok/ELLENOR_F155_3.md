@@ -25,6 +25,6 @@ TISZTA
 | Lista 2: kulcstartomány | OK (nem érintett) | — | nincs Strong- vagy kulcstartományt érintő változás |
 | Lista 3: nulla-diff hatóköre | OK | — | nulla a diff a tartományban: `adat/`, `konkordancia/`, `eszkozok/`, `DONTESEK.md`, `naplok/ELLENOR_F155.md`, `naplok/ELLENOR_F155_2.md`, `naplok/THAYER_ELAVULT_HIVATKOZAS_*`. Nem nulla: a brief (1 sor) és a válaszfájl útvonala (a tartalma nulla-diff) |
 | Lista 4: E17/DT3 táblasor-Δ | OK | `adat/forditasok.tsv` | tartomány: `git diff --numstat 2299451e..HEAD -- adat konkordancia` üres, minden tábla Δ = 0. A main-hez: `git diff --numstat origin/main...HEAD -- adat konkordancia` → `adat/forditasok.tsv` +7/−7, Δ = 0; minden más tábla Δ = 0. Küszöb (10) alatt, bontási napló nem kell |
-| Lista 5: brief ⛔ | OK | `F155_…_BRIEF.md:46` | a ⛔ döntése (DT-F155a) változatlan; a tartomány nem nyúl a `forditasok.tsv`-hez, és nem hoz új tartalmi döntést |
+| Lista 5: brief ⛔ | OK | `F155_…_BRIEF.md:46` | a ⛔ döntése (DT488) változatlan; a tartomány nem nyúl a `forditasok.tsv`-hez, és nem hoz új tartalmi döntést |
 
 **ELTÉRÉS-ek súlyossági sorrendben:** nincs.
