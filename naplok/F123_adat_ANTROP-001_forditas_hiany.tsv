@@ -1,0 +1,101 @@
+# GENERÁLT: naplok/F123_adat_keszito.py | F123 X.A hiányzó fordítások ANTROP-001 (a forditasok.tsv-be NEM írva) | 2026-11-02T10:49Z
+nyelv	szerep_sorrend	forras	strong	szotar	strong_kulcs	entry_id	jelentes_szam	mezo	proveniencia
+gorog	1	TBESG.txt	G4151	TBESG	G4151	G4151	teljes	forditas_hu	scope=TBESG.txt G4151 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G4151	tW_szocikkek	H2932	kt/demon	—	forditas_hu	scope=tW_szocikkek G4151 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G4151	tW_szocikkek	H0205	kt/evil	—	forditas_hu	scope=tW_szocikkek G4151 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G4151	tW_szocikkek	H0136	kt/god	—	forditas_hu	scope=tW_szocikkek G4151 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G4151	tW_szocikkek	H3068	kt/holyspirit	—	forditas_hu	scope=tW_szocikkek G4151 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G4151	tW_szocikkek	H0178	kt/spirit	—	forditas_hu	scope=tW_szocikkek G4151 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001003000	12.37	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001003000	12.37	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001004000	12.42	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001004000	12.42	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001006000	30.6	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001006000	30.6	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001007000	14.4	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001007000	14.4	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001008000	23.186	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001008000	23.186	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001009000	12.39	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001009000	12.39	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001010000	12.38	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001010000	12.38	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001011000	25.73	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001011000	25.73	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001012000	23.110	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001012000	23.110	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001013000	88.57	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001013000	88.57	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001014000	30.76	definicio_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G4151	UBS_DNTG	G4151	004054001014000	30.76	glosszak_hu	scope=UBS_DNTG_jelentesek G4151 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G4151	MCGED	G4151	G54460	—	glosszak_hu	scope=MCGED G4151 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T10:49Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G4151	LSJ	G4151	G4151	teljes	forditas_hu	scope=LSJ G4151 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T10:49Z
+gorog	1	TBESG.txt	G5590	TBESG	G5590	G5590	teljes	forditas_hu	scope=TBESG.txt G5590 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G5590	tW_szocikkek	H5082	kt/soul	—	forditas_hu	scope=tW_szocikkek G5590 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G5590	tW_szocikkek	H3629	other/mind	—	forditas_hu	scope=tW_szocikkek G5590 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001004000	4.1	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001004000	4.1	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001005000	25.280	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001005000	25.280	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001006000	88.200	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001006000	88.200	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001007000	25.291	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001007000	25.291	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001008000	21.20	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001008000	21.20	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001009000	21.7	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001009000	21.7	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001010000	21.24	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001010000	21.24	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001011000	25.279	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001011000	25.279	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001012000	23.113	definicio_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5590	UBS_DNTG	G5590	005475001012000	23.113	glosszak_hu	scope=UBS_DNTG_jelentesek G5590 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T10:49Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G5590	MCGED	G5590	G56034	—	glosszak_hu	scope=MCGED G5590 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T10:49Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G5590	LSJ	G5590	G5590	teljes	forditas_hu	scope=LSJ G5590 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T10:49Z
+heber	1	TBESH.txt	H2416	TBESH	H2416	H2416	teljes	forditas_hu	scope=TBESH.txt H2416 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T10:49Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2416	tW_szocikkek	H0338	other/beast	—	forditas_hu	scope=tW_szocikkek H2416 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2416	tW_szocikkek	H2416	other/bookoflife	—	forditas_hu	scope=tW_szocikkek H2416 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2416	tW_szocikkek	H1320	other/creature	—	forditas_hu	scope=tW_szocikkek H2416 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002232001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001006000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002236001006000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002240001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002240001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002240001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2416	UBS_DBH	H2416	002240001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2416 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H2416	BDB	H2416	H2416	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H2416 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T10:49Z
+heber	1	TBESH.txt	H5315	TBESH	H5315	H5315	teljes	forditas_hu	scope=TBESH.txt H5315 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T10:49Z
+heber	3	konkordancia/tW_szocikkek.tsv	H5315	tW_szocikkek	H1004	other/member	—	forditas_hu	scope=tW_szocikkek H5315 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001006000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880001006000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880002001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H5315	UBS_DBH	H5315	004880002001000	—	definicio_hu	scope=UBS_DBH_jelentesek H5315 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T10:49Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H5315	BDB	H5315	H5315	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H5315 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T10:49Z

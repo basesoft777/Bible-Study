@@ -10,7 +10,7 @@
 
 <!-- RÉS-KEZDET: kivonat -->
 
-A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם (*tehóm*)/ἄβυσσος kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
+A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם (*tehóm*)/ἄβυσσος (*abüsszosz*) kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
 
 <!-- RÉS-VÉGE: kivonat -->
 
@@ -39,7 +39,7 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 <!-- ADAT-NÉZET: 2/b Kiegészítő szótári adatok | forrás: adat/lexikon_hivatkozasok.tsv | cél: general.py --cel lexikon (2b rés, res_forras forras=adat) | SZINT: apparatus -->
 
 <!-- RÉS-KEZDET: miert_fontos -->
-**שְׁאוֹל** (*seól*, héber) és **ᾍδης — *hádész*** (görög, eredetileg az alvilág görög istenének neve, majd a LXX-ban a *seól* rendszeres fordítása). **Fontos megkülönböztetés a tehóm/abüsszosz-komplexumtól:** a seól/hádész **NEM azonos** a tehóm/abüsszosszal. A seól/hádész az **egyéni halottak** birodalma — minden halandó sorsa —, míg a tehóm/abüsszosz **kozmikus-mitológiai** fogalom, a teremtés előtti káosz. A két szócsalád eredetileg élesen elkülönül a héber gondolkodásban, és a Szentírás sosem azonosítja őket egymással.
+**שְׁאוֹל** (*seól*, héber) és **ᾍδης** (*hádész*, görög, eredetileg az alvilág görög istenének neve, majd a LXX-ban a *seól* rendszeres fordítása). **Fontos megkülönböztetés a tehóm/abüsszosz-komplexumtól:** a seól/hádész **NEM azonos** a tehóm/abüsszosszal. A seól/hádész az **egyéni halottak** birodalma — minden halandó sorsa —, míg a tehóm/abüsszosz **kozmikus-mitológiai** fogalom, a teremtés előtti káosz. A két szócsalád eredetileg élesen elkülönül a héber gondolkodásban, és a Szentírás sosem azonosítja őket egymással.
 <!-- RÉS-VÉGE: miert_fontos -->
 
 ## 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva
@@ -51,7 +51,7 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 
 【NAPLO: DT419, 2026-10-29 (orkesztrátor, a felhasználó felhatalmazásával; ELLENOR_F123_ALVIL-001 E11) — a Remez és a következő („Második hádész-használati mintázat”) bekezdés bájtra az örökölt szöveg, és két jelöletlen következtetést tartalmaz. (1) A Remezben: „ez a győzelem adja az alapot ahhoz, hogy …” — Krisztus hádész fölötti győzelméből (ApCsel 2:31) vezeti le a kulcsok birtoklását (Jel 1:18) és a hádész megsemmisülését (Jel 20:14); az igehelyek egymás mellé állítása adat, a köztük lévő ok-okozati viszony értelmezés. (2) A következő bekezdésben: „tehát nem a jelen tanulmány fő ívéhez … kapcsolódik” — az idióma szerkezeti egyezéséből (Lk 10:15 / Mt 11:23 ~ Ézs 14:9-15) vont besorolás, szintén értelmezés. A szöveg nem változott.】
 
-**Második hádész-használati mintázat — hübrisz és megaláztatás**. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót (ᾍδης) használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seol/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
+**Második hádész-használati mintázat — hübrisz és megaláztatás**. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót — ᾍδης (*hádész*) — használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seol/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
 
 **Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
 
@@ -109,7 +109,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 
 ### Nyitott kérdések és séma-korlátok
 
-1. **Mt 16:18** (ᾍδης, „a pokol kapui”, ekkleziológiai kontextus): külön motívumként kezelendő, ha valaha sorra kerül.
+1. **Mt 16:18** — ᾍδης (*hádész*), „a pokol kapui”, ekkleziológiai kontextus: külön motívumként kezelendő, ha valaha sorra kerül.
 
 <!-- RÉS-VÉGE: modszertan -->
 
