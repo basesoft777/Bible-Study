@@ -312,6 +312,8 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 ### Görög szavak
 
 <!-- ÜRES-NYELV: gorog | nincs Strong-token -->
+**Mit mutat ez a rész?** A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.
+
 *A motívumnak nincs görög Strong-tokenje; a görög szerepek nem alkalmazhatók.*
 
 ### Héber szavak: H0922, H8414

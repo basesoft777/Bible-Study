@@ -452,6 +452,9 @@ OLVASOI_SABLON = {
     '1a': 'A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.',
     'nyelv': 'A motívumot hordozó %(nyelv)s szavak (%(szavak)s) szótári anyaga, számozott pontokban: minden pont egy '
              'kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).',
+    # F12 (TEREMT-002, az első motívum görög szó nélkül): az ÜRES-NYELV blokk olvasói bevezetője (Feed 6. kapu)
+    'nyelv_ures': 'A motívum %(nyelv)s szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért '
+                  'ez a rész üres; a szótári anyag a másik nyelv szavainál áll.',
     'nyelvfuggetlen': 'A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar '
                       'szavai, és a rejtett vagy hamis párhuzamok.',
     'rokon': 'A motívum szavaival rokon, a lapon hivatkozott szavak (%(szavak)s) szótári anyaga.',
@@ -2220,9 +2223,10 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
         if not tok_ny:
-            reszek_szoveg.append('### %s szavak\n\n<!-- ÜRES-NYELV: %s | nincs Strong-token -->\n'
+            reszek_szoveg.append('### %s szavak\n\n<!-- ÜRES-NYELV: %s | nincs Strong-token -->\n%s\n\n'
                                  '*A motívumnak nincs %s Strong-tokenje; a %s szerepek nem alkalmazhatók.*'
-                                 % (cim, nyelv, cim.lower(), cim.lower()))
+                                 % (cim, nyelv, olvasoi_bekezdes(OLVASOI_SABLON['nyelv_ures'] % {'nyelv': cim.lower()}),
+                                    cim.lower(), cim.lower()))
             continue
         blokkok = ['### %s szavak: %s' % (cim, ', '.join(tok_ny)),
                    olvasoi_bekezdes(OLVASOI_SABLON['nyelv'] % {'nyelv': cim.lower(), 'szavak': szo_felsorolas(tok_ny)})]
