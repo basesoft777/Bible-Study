@@ -96,3 +96,74 @@ A kérdések a lexikon ág orkesztrátorához mentek (`local_20eed447-…`; az e
 **A tesztek.** `teszt_szerepmatrix.py` 3, `teszt_szotari_gerinc.py` 5, `bdb_jelolt/teszt_bont.py` 3 bukás marad; mind a három fájl ugyanezeket a bukásokat adja a main változatán is (a módosított fájlok `origin/main`-változatával futtatva, 2026-11-02): az ISTENTISZT-001 #152 utáni számai (33 → 22 sor, 23 → 16 hely, G0994 rokon szó) és a BDB-tábla mai állapota (`Determinizmus`, `HuIlleszt`). A TEREMT-002-t érintő két teszt és a `test_hivatkozas_kezi` az új állapotra írva, zöld. → N-F12b.
 
 **A 3. lépés sorrendje.** A `glossza_lexikon_forditas.py lista` a `res_forras.tsv` sorai nélkül nem renderel lapot (`KIHAGYVA`), ezért a fordítási kör a 6. lépés után fut.
+
+## 3. lépés — fordítás a lap előtt (F12.3, F12.7c)
+
+A lista (`glossza_lexikon_forditas.py lista`, a forrás bekötése után) 10 egységet adott: 6 TBESG `rovid` (a H8414 SECE-megfelelői), 2 UBS_DBH `glosszak_hu`, 2 BDB (H8414 `1`, H0922 `tagolatlan`). A nyolc rövid glosszát a `vegrehajto-sonnet` (`claude-sonnet-5-5`) fordította tervezetbe, kapukkal (`naplok/F12_forditas_tervezet.tsv`, `naplok/F12_forditas_naplo.md`). **Egy eltérés a tervezettől:** a H8414 „waste; desolation; chaos” 2. tagja „elpusztítottság” helyett „kietlenség” — a rangsor szerint (szójegyzék > Károli > BDB > szótár) a Károli „kietlen” szava a *tohu* megfelelője (1Móz 1:2; Jer 4:23), és a nyelvközi egység elve szerint a fogalomnak egy magyar szava van; az orkesztrátor elfogadta. A két BDB-egység a gerincen a `bdb_szakasz_hu.tsv`-ből (a 2026.10.01-i Opus-teljesfordítás szakaszai) magyarul áll; az E19 a H0922 `tagolatlan` sort fordítássorral kérte, ezért az a meglévő teljes fordítás `fej`-szakaszából került át (F12.7c), új fordítás nélkül. A #64 5.3 lelete (a BDB-fordítást ugyanaz a modell írta, mint a prózát) a forrás 7. pontjában módszertani mondat. Fizetős API-hívás nem volt.
+
+## 7. lépés — generálás (F12.7a–d, F12.8)
+
+- A próbalap repón kívül (`--kimenet`), mérés: `naplok/F12_proba_meres.py`. ⛔ a próbalap után: DT-F12g, DT-F12h; az orkesztrátor jóváhagyta az éles írást.
+- DT-F12g: `szerep_karoli.py` `KOTOSZO = {'és'}`. Nulla-diff: A/B generálás mind a kilenc lapra (régi és új kód, `PARDES_DATUM=2026-11-02`): nyolc lap bájtra azonos; az ISTENTISZT-001 és az ALVIL-001 a saját `PARDES_DATUM`-ával (2026-10-29) 0 eltérő sor a commitolt lappal.
+- Éles: `general.py --cel lexikon --id TEREMT-002 --ir`; a második futás „változatlan”. `naplo`, `nyitott` `--ir`, majd `--ellenoriz`: zöld.
+- F12.7d: a „Görög szavak” ÜRES-NYELV blokkjának nem volt olvasói bevezetője (az első motívum görög Strong-token nélkül), a Feed 6. kapuja 46/47-et mért; a generátor új `nyelv_ures` sablont kapott (ÜRES-NYELV blokk csak ezen a lapon áll).
+- F12.8: a friss main (`cccd17a8`) beolvasztva; a lap utána „változatlan”, a `naplo`/`nyitott` zöld.
+
+## 8. lépés — ellenőrzés az arany lap mércéje szerint
+
+**(a) Gépi.** `ellenoriz.py`: RENDBEN 18 | SÉRTÉS 0 | KÉZI 2 | JELENTÉS 6; a 18–21. szabály a TEREMT-002-n RENDBEN. `ellenorzes/futtat.py` (`--valtozott`, `[ELLENŐRZŐ]` PR-cím): HIBA csak az E5 (négy törölt címsor), a commit-üzenet `TÖRLÉS-SZÁNDÉKOS:` sora oldja fel (F12.9). `kuszob.py`: 3 fő előfordulás, kitöltött. `gate.py`: egy átfedés, 1Móz 1:2 a TEREMT-001-gyel — a forrás 3. pontjának „Elhatárolás”-a kezeli (más mondatrész, más funkció). Kiejtés: kézi hiány 0, generált 3 (a jelmagyarázat; az arany lapon ugyanez).
+
+**Feed (`muhely_allapot.py`, 2026-11-02): 6/8.** Zöld: 1, 2, 3 (nulla-diff), 4, 6 (47/47 blokk, kiejtés-hiány 0, fordításra vár 0), 8. Mérő nélkül: 5 (határ: `naplok/HATAR_TEREMT-002.md`), 7 (lektor: `naplok/LEKTOR_TEREMT-002.tsv`) — a felhasználó indítja (DT-F12e (1)).
+
+**(b) Sablon-kapu** (6_ L1–L7, DT2, a 9_ sablon 8. pontja):
+
+| Kapu | Állapot | Mivel |
+|---|---|---|
+| L1 szerkezeti teljesség | ✅ | a 9_ sablon 4. pontjának minden aktív `kezi_forras` szakasza; inaktív: 0., 1.L, 2/b (`INAKTÍV`, indokkal); `adat` szakaszok `ADAT-NÉZET`-tel |
+| L2 napló-jelölés | ✅ | dátum-, eredet-, döntés- és folyamatmondat `【NAPLO】`-ban; a megbízhatóságot érintő módszertani mondat (a BDB-fordítás nem független; a szótári besorolás gépi) a 7. pontban, apparátusként |
+| L3 lexikai vs. tematikus | ✅ | Ézs 45:18, Ézs 24:10, a mérőkötél: „tematikus, nem lexikai” |
+| L4 kereszt-motívum | ✅ | TEREMT-001: elhatárolás a 3. pontban; a TEREMT-001 sorai változatlanok |
+| L5 nevesített tanító | ✅ | hivatkozás a 7. lépés fájljára (5. pont), a lapon „Tanítói egyezés” rés |
+| L6 a)–f), L7 PaRDeS-rétegfegyelem | ✅ | a #64-ben mérve, a próza érvelése nem változott; új bekezdés: „A két olvasat képviselői” (3.V, olvasói) |
+| DT2/1 rések | ✅ | kilenc rés: hat kézi (kivonat, miert_fontos, ertelmezes, alkalmazas, tanitoi, modszertan), három generált (2b, minosites, alatamasztas) |
+| DT2/2 adat-forrás jelölés | ✅ | `ADAT-NÉZET` minden adatból generált helyen; `ADAT-HIV` öt sorra (kinyerés: 0 hiba) |
+| Kivonat határ-elemek (9_ v0.4) | ✅ | a negatív kritérium szó szerint (két szó egy versben; a *tohu* egyedül nem; a „kietlen” magyar szó sem dönt, Zsolt 107:40); kivétel nincs, a két kapcsolt hely megnevezve; a fölérendelt fogalom mondata belső szó és forrásnév nélkül |
+
+**(c) Arany-összevetés, blokkonként** (`naplok/F12_proba_meres.py`):
+
+| Blokk | ISTENTISZT-001 | TEREMT-002 | Megjegyzés |
+|---|---|---|---|
+| szótári gerinc (DT272) | 3 | 2 | a TEREMT-002-nek két héber szava van, görög nincs |
+| „Jelentés (a szó)” / „Funkció (a motívumban)” | 2 / 2 | 2 / 2 | — |
+| ⓘ-lábjegyzet | 66 | 12 | a helyek száma (22 / 3) szerint |
+| „Mit mutat ez a rész?” | 51 | 39 | a görög szerepek nélkül; az ÜRES-NYELV blokk bevezetővel (F12.7d) |
+| LXX-fordítói döntések | ✅ | ✅ | a Jer 4:23 „függőben” (DT-F12h, N-F12c) |
+| 12. / 13. / 14. szerep | ✅ | ✅ | a 12. az arany lapon kitöltött, itt `javaslat` állapotú explicit üres blokk (`ÜRES-BLOKK`, 1); a 13–14. az „és” nélkül |
+| Kolofon, Irodalom és idézés | ✅ | ✅ | a kiadás-sor nélkül (DT-F12e) |
+| Rések (kivonat … modszertan) | ✅ | ✅ | — |
+| Rokon szavak | ✅ | — | **a lapon explicit hiányjelölés nincs**: a generátor a szakaszt rokon szó nélkül elhagyja; a TEREMT-002-nek nincs a lapon hivatkozott rokon szava |
+| Új felismerés | ✅ | — | tartalmi: a TEREMT-002-n nincs ilyen |
+| „fordításra vár” | 1 | 1 | a jelmagyarázat |
+
+**(d) A fordított irány mérése: ahol kézi javítás kellett.** A #13 új motívumainak folyamathibái; a #148/#125-nek szóló tétel mellettük.
+
+| # | Hol | Mi kellett kézzel | Tétel |
+|---|---|---|---|
+| 1 | a brief 3.13 és 5.4 | a DT437 (2026-11-01) a TEREMT-002-t a gerinc-kivétellistára tette, a brief még „nincs rajta”-t mért; a `KAROLI_MEGFELELOK` motívumonként kapcsolandó, a brief nem említette | DT-F12f |
+| 2 | `bdb_jelolt/forras_javit.py` | a kódban a DT-F131z helyőrző maradt, az adat DT445-öt írt; enélkül az újragenerálás 36 253 sort írt vissza | N-F12d |
+| 3 | BDB „49:19” | kézi hivatkozás-javítás, utána a `bdb_vers_jelentes.tsv` újragenerálása; a lánc nincs leírva | DT-F12b (1) |
+| 4 | a 3. lépés sorrendje és eszköze | a fordítási lista a `res_forras.tsv` nélkül nem renderel; téves `nincs_forras` a gerincen fordított BDB-szakaszra és a TBESG `rovid`-ra; a repóba ír | N-F12e |
+| 5 | a lap címe | a `motivumok.tsv` `cim`-változása meglévő lapra nem kerül át | N-F12f |
+| 6 | H0922 gerinc-ⓘ | tagolatlan szócikk: technikai ⓘ-szöveg a példahelyeknél | N-F12g |
+| 7 | kiejtés | a forrásban 9 kézi kiejtés-hiány; a `motivumok.tsv` címe és negatív kritériuma kiejtés nélkül | javítva (F12.6) |
+| 8 | 13–14. szerep | az „és” kötőszó kulcsszóként | javítva (F12.7b, DT-F12g) |
+| 9 | ÜRES-NYELV blokk | olvasói bevezető nélkül | javítva (F12.7d) |
+| 10 | E19 | a tagolatlan sor fordítássort kér, bár a gerinc a szakasz magyarját mutatja | javítva (F12.7c) |
+| 11 | tesztek | három tesztfájl a main-en is bukik | N-F12b |
+| 12 | E16 / E5 | a PR-cím `[ELLENŐRZŐ]` előtagja (e28-sor); a commit-üzenet `TÖRLÉS-SZÁNDÉKOS:` sora (a forrás átszerkesztése) | folyamat |
+
+**Ami nem kellett kézzel:** a szakaszcímke (gépi, 0 jelzés), a szótári mezők (gépi, a BDB saját példahelyeiből), a gerinc, a fordítások (subagent + kapuk), a lap generálása és fixpontja.
+
+## 9. Zárás
+
+Draft PR; a brief fejléce `megallt`: a lap 6/8-on, a határ- és a lektori kör a felhasználóé, utána a 8/8, a kiadás-sor és a verzió-emelés külön tételben (DT-F12e (1)). ⛔ A merge a felhasználóé. Független ellenőrzés: `naplok/ELLENOR_F12_TEREMT002_LEXIKON.md`.
