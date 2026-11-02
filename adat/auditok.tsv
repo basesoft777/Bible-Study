@@ -255,3 +255,6 @@ ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_ki
 ALVIL-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=66 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
 ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
 ALVIL-001	B4	scope=range:Hós 13:14 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H8415 | n=1 | ts=2026-11-02T20:00Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0086+G0012 | n=0 | ts=2026-11-02T20:01Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0011 | n=2 | ts=2026-11-02T20:01Z | csatorna=cli	2026.11.02
