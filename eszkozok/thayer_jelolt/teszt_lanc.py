@@ -402,9 +402,8 @@ class Lanc(unittest.TestCase):
         shutil.rmtree(self.tmp)
 
     def test_prompt_v5_1(self):
-        # DT-F132k (2): a Thayer a v5.1-et használja; a v5.1 = a v5 szó szerint + egyetlen új blokk; a v5 a BDB-é marad
-        self.assertTrue(F.PROMPT_UT.endswith(os.path.join('forditas', 'prompt_v5_1.md')))
-        with open(F.PROMPT_UT, encoding='utf-8') as fh:
+        # DT-F132k (2): a v5.1 = a v5 szó szerint + egyetlen új blokk; a v5 a BDB-é marad (a v5.1 fájl változatlan, a v5.2 alapja)
+        with open(os.path.join(os.path.dirname(F.PROMPT_UT), 'prompt_v5_1.md'), encoding='utf-8') as fh:
             v51 = fh.read()
         with open(F.E.PROMPT_V5_UT, encoding='utf-8') as fh:
             v5 = fh.read()
@@ -417,6 +416,27 @@ class Lanc(unittest.TestCase):
         p = F.prompt_epit('G1941', TB.szakaszok('G1941'))
         self.assertIn(blokk_eleje, p)
         self.assertNotIn('Verziónapló (v5.1)', p)  # a jelölő fölötti rész nem kerül a promptba
+
+    def test_prompt_v5_2(self):
+        # F07 A1, DT-F07j: a Thayer a v5.2-t használja; a v5.2 = a v5.1 szó szerint + egyetlen új (idézőjel) blokk
+        self.assertTrue(F.PROMPT_UT.endswith(os.path.join('forditas', 'prompt_v5_2.md')))
+        with open(F.PROMPT_UT, encoding='utf-8') as fh:
+            v52 = fh.read()
+        with open(os.path.join(os.path.dirname(F.PROMPT_UT), 'prompt_v5_1.md'), encoding='utf-8') as fh:
+            v51 = fh.read()
+        jelolo = F.E.PROMPT_JELOLO
+        blokk_eleje = '## Kiegészítő szabály (v5.2) — idézőjelek a Thayer-szócikkben'
+        vege = '## Ideiglenes terminológia (kötelező megfeleltetés'
+        t52, t51 = v52.split(jelolo, 1)[1], v51.split(jelolo, 1)[1]
+        i, j = t52.index(blokk_eleje), t52.index(vege)
+        self.assertEqual(t52[:i] + t52[j:], t51)
+        p = F.prompt_epit('G1941', TB.szakaszok('G1941'))
+        self.assertIn(blokk_eleje, p)
+        self.assertIn('Kiegészítő szabály (v5.1) — Thayer-szócikk', p)
+        self.assertNotIn('Verziónapló (v5.2)', p)
+        # a BDB-lánc a v5.0-t használja: a v5.2 blokk nem kerül a BDB-promptba
+        with open(F.E.PROMPT_V5_UT, encoding='utf-8') as fh:
+            self.assertNotIn('v5.2', fh.read())
 
     def test_prompt(self):
         sz = TB.szakaszok('G1941')

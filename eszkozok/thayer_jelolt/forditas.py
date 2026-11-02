@@ -5,7 +5,7 @@ A #128 BDB-ágának (`eszkozok/emeles.py szakasz_*`) Thayer-párja; a #128 fájl
 importálja: a helyőrzőket, a terminológiát, a Károli-táblát és a kötelező alakokat (`emeles.py`), a javítóréteget
 (`normalizal.py`), a tokent, a kulcsot és a csoportosítást (`bdb_jelolt/szakasz_bemenet.py`, a `thayer_bemenet.py`-on át), a
 közös kapukat (`forditas_kapuk.kapuk_futtat_szakaszos`, benne `14_szakasz`, `15_tiltott`) a `16_sigla`-val (`thayer_kapuk.py`).
-Prompt: `forditas/prompt_v5_1.md` (DT-F132k (2): a v5 + „Kiegészítő szabály (v5.1) — Thayer-szócikk”); `{{ADATBLOKK}}`:
+Prompt: `forditas/prompt_v5_2.md` (DT-F132k (2): a v5 + „Kiegészítő szabály (v5.1) — Thayer-szócikk”; F07 A1, DT-F07j: + „Kiegészítő szabály (v5.2) — idézőjelek”); `{{ADATBLOKK}}`:
 `thayer_jelolt/adatblokk.py`.
 
 Ez a modul NEM fordít: a fordítást a hívó (az M3 Sonnet-menete, DT-F132d (S), DT-F132g) végzi a kiírt promptokból.
@@ -48,7 +48,7 @@ import thayer_bemenet as TB  # noqa: E402
 import thayer_kapuk as TK  # noqa: E402
 
 SZOTAR = TB.SZOTAR
-PROMPT_UT = os.path.join(GYOKER, 'forditas', 'prompt_v5_1.md')  # DT-F132k (2): a v5 + Thayer-kiegészítés; a v5 a BDB-é
+PROMPT_UT = os.path.join(GYOKER, 'forditas', 'prompt_v5_2.md')  # DT-F132k (2) + DT-F07j: a v5 + Thayer-kiegészítés (v5.1) + idézőjel-blokk (v5.2); a v5 a BDB-é
 FORDITASOK_UT = E.FORDITASOK_UT
 MUNKA_UT = os.path.join(GYOKER, 'naplok', 'F132_THAYER_SZAKASZ_munka.tsv')
 FEJLEC = E.FORDITASOK_FEJLEC
