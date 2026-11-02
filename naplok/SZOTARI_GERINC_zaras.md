@@ -61,6 +61,6 @@ A zárás nem mérte újra, hogy a c, e és i tételt a későbbi munka (#142/#1
 - N-F131v: görög glossza-tábla;
 - N-F131w: héber kiejtések;
 - N-F131y: alkalmazva, DT445;
-- N-F131z: a BDB-fordítás elavulás-jele, döntésre vár.
+- N77: a BDB-fordítás elavulás-jele, döntésre vár.
 
 A brief lezárása ezektől nem függ.

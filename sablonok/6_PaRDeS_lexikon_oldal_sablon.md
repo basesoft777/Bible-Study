@@ -1,6 +1,6 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
-*v3.1 — 2026.11.02 (F123.3, DT-F123w, DT-F123x): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
+*v3.1 — 2026.11.02 (F123.3, DT546, DT547): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
 
 *v3 — 2026.09.22 (LEXV2_2): a TUDOMÁNYOS változat oldalszerkezete
 lexikon-oldal v2-re váltott (LEXV2_2_BRIEF.md G1). Az `LXX_OS` bekötve

@@ -347,7 +347,7 @@ minta átnézése elmarad („a bdb sorrendet nem tudom eldönteni”).
 | javítótábla | `adat/bdb_forras_javitas.tsv`, `heber_sorrend` (generált: `forras_javit.py --ts 2026-10-18 --ts-heber-sorrend 2026-11-01`; szabály: `eszkozok/bdb_jelolt/heber_sorrend.py`) | `javitva` 14 976 · `valodi_sorrend` 224 · `jelolt_marad` 21 052 · nem talált 0; a régi 7 203 sor változatlan |
 | megjelenítés | `eszkozok/bdb_rovidites.py`: `heber_sorrend_javit` → `izolal` → `jelol`; hívja a `lexikon_general.bdb_rovidites_jelol` és az olvasó `blokkok._rovidites` | Strongonként betű szerinti csere az angol szövegben és a magyar fordításban |
 | szöveg-nézet | `nezet_general.py --heber-sorrend` | 14 976 csere, 0 sikertelen; `--pe-mem`-mel együtt 883 kifejezésben a pe/mem csere a kifejezésen belül van: ott a sorrend marad (a pe/mem nem vész el) |
-| fordító bemenete, hash | `szakasz_bemenet.py` | változatlan (a hash kérdése: N-F131z) |
+| fordító bemenete, hash | `szakasz_bemenet.py` | változatlan (a hash kérdése: N77) |
 | fordítás | `naplok/BDB_HEBER_SORREND_forditas_kezi.tsv` | a lefordított Strongok 13 052 `javitva` kifejezéséből 3 nem áll betű szerint a magyarban (kézi lista) |
 | izolálás (9. szakasz) | `bdb_rovidites.izolal` | LRM a héber futam után, ha (semleges jelek és címkék után) szám következik |
 
