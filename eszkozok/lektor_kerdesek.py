@@ -36,15 +36,15 @@ MEZOK_V3 = MEZOK_V2 + OSSZEFOGLALO_MEZOK
 # kiadas: melyik kiadás bemenete a kérdés. A határ-kérdések (hatar) a mostani, 1. kiadáshoz tartoznak; a /kiadas kimenetéből jövők (lektor, proza_lefedettseg,
 # proza_javaslat) a következő, 2. kiadás bemenetei; a többi (dontes stb.) nem kiadás-kérdés: üres.
 KIADAS_FORRASONKENT = {'hatar': '1', 'lektor': '2', 'proza_lefedettseg': '2', 'proza_javaslat': '2'}
-MEZOK = MEZOK_V3 + ['kiadas', 'cimke_indok']  # cimke: tartalmi | kiadoi | fejlesztoi | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak); cimke_indok: miért abba a kategóriába került
+MEZOK = MEZOK_V3 + ['kiadas', 'cimke_indok']  # cimke: tartalmi | kiadoi | uzleti | fejlesztoi | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak); cimke_indok: miért abba a kategóriába került
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
 # proza_javaslat: a lektor olvasás közben kérdez ("az adatból ez következik, de a lap nem mondja ki -- legyen róla mondat?").
 # A lektor prózát NEM ír (DT-F32b); az "igen" válasz a forrásfájl prózai feladata, a mondatot a próza írója írja.
 PROZA_VALASZLEHETOSEGEK = 'legyen mondat; nem kell; később'
-CIMKEK = ('tartalmi', 'kiadoi', 'fejlesztoi', 'osztalyozatlan')
-CIMKE_REGI = {'uzleti': 'kiadoi', 'technikai': 'fejlesztoi'}  # a beolvasás a régi értéket is elfogadja
+CIMKEK = ('tartalmi', 'kiadoi', 'uzleti', 'fejlesztoi', 'osztalyozatlan')
+CIMKE_REGI = {'technikai': 'fejlesztoi'}  # a beolvasás a régi értéket is elfogadja (az `uzleti` önálló kategória maradt)
 SORTORES = ' ⏎ '
 MODELLES_KEZDET = '<!-- MODELLES-KEZDET -->'
 MODELLES_VEGE = '<!-- MODELLES-VEGE -->'
@@ -364,13 +364,15 @@ def szuro_beolvas(root=ROOT):
     return ki
 
 
-# --- a döntés-kártyák gépi besorolása (DT-F161a): mit változtat meg a döntés? tartalmi > kiadói > fejlesztői -----------------
+# --- a döntés-kártyák gépi besorolása (DT-F161a): mit változtat meg a döntés? tartalmi > kiadói > üzleti > fejlesztői -----------------
 TARTALMI_UT = ('motivumok/', 'tematikus_lezart/', 'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'motivumlog/', 'lexikon/')
 TARTALMI_ADAT = {'elofordulasok', 'jeloltek', 'motivumok', 'forditasok', 'motivum_kapcsolatok', 'kapcsolatok', 'terminologia',
                  'tiltott_fordulatok', 'lexikon_hivatkozasok', 'szotar_szakasz_cimke'}
 KIADOI_UT = ('adat/kiadasok.tsv', 'adat/licencek.tsv', 'eszkozok/olvaso_szerver/', 'eszkozok/muhely_felulet/',
-             'eszkozok/lektor_felulet/', 'eszkozok/feed_epit.py')
-KIADOI_KODOK = {'ELOFIZETES_FEED'}  # a #86: árazás/előfizetés
+             'eszkozok/lektor_felulet/')
+# üzleti: ügyfélszolgálat, számlázás, megrendelés, előfizetés, árazás, fizetési mód, alapítvány/jogi forma, szerződés
+UZLETI_UT = ('eszkozok/feed_epit.py', 'adat/szamlazas', 'adat/megrendel', 'adat/elofizet')
+UZLETI_KODOK = {'ELOFIZETES_FEED'}  # a #86
 FEJLESZTOI_UT = ('eszkozok/', '.github/', '.claude/', 'adat/SEMA.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'CLAUDE.md')
 FEJLESZTOI_MUNKA = ('folyamat', 'adat')
 
@@ -387,7 +389,7 @@ def _tartalmi_ut(u):
 
 
 def gepi_kategoria(fej):
-    """Egy brief fejlécéből (`brief_fejlec`) -> (kategória, indok). tartalmi > kiadói > fejlesztői; amit nem tud: osztalyozatlan.
+    """Egy brief fejlécéből (`brief_fejlec`) -> (kategória, indok). tartalmi > kiadói > üzleti > fejlesztői; amit nem tud: osztalyozatlan.
     A jel a brief `ir` és `munka` mezője (brief-szinten: a tétel a brief feladatát követi)."""
     ir, munka, kod = ir_lista(fej.get('ir', '')), fej.get('munka', ''), fej.get('kod', '')
     szam = fej.get('feladat', '?')
@@ -398,9 +400,12 @@ def gepi_kategoria(fej):
             jel.append('munka: ertelmezo')
         return 'tartalmi', 'gépi: a #%s brief %s (a lexikon állítását érinti)' % (szam, '; '.join(jel))
     k = [u for u in ir if u.startswith(KIADOI_UT)]
-    if k or kod in KIADOI_KODOK:
-        jel = ('ír: ' + ', '.join(k[:2])) if k else 'a tétel az árazás/előfizetés (%s)' % kod
-        return 'kiadoi', 'gépi: a #%s brief %s (megjelenés, licenc, felület)' % (szam, jel)
+    if k:
+        return 'kiadoi', 'gépi: a #%s brief ír: %s (megjelenés, licenc, felület)' % (szam, ', '.join(k[:2]))
+    z = [u for u in ir if u.startswith(UZLETI_UT)]
+    if z or kod in UZLETI_KODOK:
+        jel = ('ír: ' + ', '.join(z[:2])) if z else 'a tétel a %s (előfizetés, árazás, jogi forma)' % kod
+        return 'uzleti', 'gépi: a #%s brief %s (ügyfél, számlázás, megrendelés, árazás)' % (szam, jel)
     f = [u for u in ir if u.startswith(FEJLESZTOI_UT)]
     if f or munka in FEJLESZTOI_MUNKA:
         jel = ['ír: ' + ', '.join(f[:2])] if f else []

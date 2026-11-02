@@ -161,7 +161,7 @@
 
 ## 7. Döntés-kártyák három kategóriája (DT-F161a, 2026-11-02, „mehet”)
 
-*Besorolás: mit változtat meg a döntés? tartalmi > kiadói > fejlesztői; a gépi jel a forrás-brief `ir` és `munka` mezője (`lektor_kerdesek.gepi_kategoria`); a `dontes_szuro.tsv` kézi címkéje elsőbbséget élvez. A „kézi” oszlop a mai (régi) címke. Mért: 28 mai kártya (a korábbi 31-ből az F131, F148, F152 lezárult).*
+*Besorolás: mit változtat meg a döntés? négy kategória (tartalmi · kiadói · üzleti · fejlesztői), ütközésnél tartalmi > kiadói > üzleti > fejlesztői; a felhasználó szó szerint (2026-11-02, az orkesztrátoron át): „egy új kategória is lesz: üzleti / ahol ügyfélszolgálat / számlázás/ megrendelés stb”; az üzleti kártyák a felhasználóéi, a fejlesztőieket az orkesztrátor dönti; a gépi jel a forrás-brief `ir` és `munka` mezője (`lektor_kerdesek.gepi_kategoria`); a `dontes_szuro.tsv` kézi címkéje elsőbbséget élvez. A „kézi” oszlop a mai (régi) címke. Mért: 28 mai kártya (a korábbi 31-ből az F131, F148, F152 lezárult).*
 
 | kártya | kézi (mai) | gépi | eltér | indok |
 |---|---|---|---|---|
@@ -177,8 +177,8 @@
 | DT237 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
 | DT338 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
 | DT388 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
-| DT359 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
-| DT365 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
+| DT359 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
+| DT365 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
 | F111 | fejlesztoi | fejlesztoi |  | gépi: a #111 brief csak ír: .claude/commands/elteres.md, .claude/commands/kovetkezo.md; munka: folyamat (eszköz, séma, munkafolyamat) |
 | F121 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
 | F123 | tartalmi | tartalmi |  | gépi: a #123 brief ír: motivumok/ALVIL-001.md, motivumok/ANTROP-001.md; munka: ertelmezo (a lexikon állítását érinti) |
@@ -192,6 +192,6 @@
 | F22 | fejlesztoi | fejlesztoi |  | gépi: a #22 brief csak ír: eszkozok/karoli_strong/tokenszint_vershatar.py, eszkozok/karoli_strong/nem_tr_lista.py (eszköz, séma, munkafolyamat) |
 | F38 | tartalmi | tartalmi |  | gépi: a #38 brief ír: adat/forditasok.tsv (a lexikon állítását érinti) |
 | F52 | fejlesztoi | fejlesztoi |  | gépi: a #52 brief csak ír: CLAUDE.md; munka: folyamat (eszköz, séma, munkafolyamat) |
-| F86 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
+| F86 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
 
 Eltér: 13 / 28.

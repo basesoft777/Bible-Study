@@ -207,7 +207,7 @@ class DontesTeszt(unittest.TestCase):
     def test_szuro_fajl_ervenyes(self):
         sz = L.szuro_beolvas(L.ROOT)
         self.assertTrue(sz)
-        self.assertTrue(set(sz.values()) <= {'tartalmi', 'kiadoi', 'fejlesztoi'})
+        self.assertTrue(set(sz.values()) <= {'tartalmi', 'kiadoi', 'uzleti', 'fejlesztoi'})
 
 
 def fejlec(**kv):
@@ -227,7 +227,11 @@ class GepiKategoriaTeszt(unittest.TestCase):
     def test_kiadoi(self):
         self.assertEqual(L.gepi_kategoria(fejlec(ir='[adat/licencek.tsv]'))[0], 'kiadoi')
         self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/lektor_felulet/]'))[0], 'kiadoi')
-        self.assertEqual(L.gepi_kategoria(fejlec(kod='ELOFIZETES_FEED', ir='[adat/SEMA.md]'))[0], 'kiadoi')
+
+    def test_uzleti(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(kod='ELOFIZETES_FEED', ir='[adat/SEMA.md]'))[0], 'uzleti')
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/feed_epit.py]'))[0], 'uzleti')
+        self.assertEqual(L.gepi_kategoria(fejlec(kod='ELOFIZETES_FEED', ir='[adat/licencek.tsv]'))[0], 'kiadoi')
 
     def test_fejlesztoi(self):
         self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/x.py, .github/y.yml]'))[0], 'fejlesztoi')
@@ -252,7 +256,7 @@ class GepiKategoriaTeszt(unittest.TestCase):
             os.makedirs(os.path.join(t, 'eszkozok', 'lektor_felulet'))
             with open(os.path.join(t, L.SZURO_UT), 'w', encoding='utf-8', newline='') as f:
                 f.write('azonosito\tcimke\tmegjegyzes\nDT1\tuzleti\tx\nDT2\ttechnikai\ty\nDT3\ttartalmi\tz\n')
-            self.assertEqual(L.szuro_beolvas(t), {'DT1': 'kiadoi', 'DT2': 'fejlesztoi', 'DT3': 'tartalmi'})
+            self.assertEqual(L.szuro_beolvas(t), {'DT1': 'uzleti', 'DT2': 'fejlesztoi', 'DT3': 'tartalmi'})
 
     def test_dontes_kartya_indokkal_es_briefbol(self):
         with tempfile.TemporaryDirectory() as t:
