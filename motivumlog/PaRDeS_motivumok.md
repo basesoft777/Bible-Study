@@ -37,7 +37,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Rafeusok/óriás-népek `[ID: HODIT-001]` — 1 fő előfordulás / 33 igehely-sor — publikálható (v3, 2026.09.10)
 
 **Teremtéstan + Eszkatológia**
-- Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` — 3 fő előfordulás / 3 igehely-sor — feldolgozás alatt (v1, 2026.09.25)
+- Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` — 3 fő előfordulás / 3 igehely-sor — feldolgozás alatt (v1, 2026.09.25)
 
 <!-- GENERÁLT-VÉGE: naplo#attekintes -->
 
@@ -173,7 +173,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma** `[ID: TEREMT-001]` — publikálható (v4, 2026.09.10), 5 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/TEREMT-001.md`-ből fűződik ide)*
 
-**Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor** `[ID: TEREMT-002]` — feldolgozás alatt (v1, 2026.09.25), 3 fő előfordulás.
+**Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor** `[ID: TEREMT-002]` — feldolgozás alatt (v1, 2026.09.25), 3 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/TEREMT-002.md`-ből fűződik ide)*
 
 <!-- GENERÁLT-VÉGE: naplo#kuszob -->
