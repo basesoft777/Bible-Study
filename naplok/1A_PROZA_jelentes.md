@@ -75,6 +75,62 @@ A `funkcio` mező állapota az adatban:
 
 ## 5. Döntések (⛔)
 
-- **DT-F1Aa** — a 24. szabály szintje és a Feed. Javaslat: **(b)**, l. `DONTESEK.md`.
-- **DT-F1Ab** — a generátor a „ — ” nélküli `funkcio`-t is írja ki az 1/a-ban. Javaslat: **(a)**, l. `DONTESEK.md`.
+- **DT-F1Aa** — a 24. szabály szintje és a Feed: **(b)**, alkalmazva (6. szakasz).
+- **DT-F1Ab** — a generátor a „ — ” nélküli `funkcio`-t is kiírja az 1/a-ban: **(a)**, alkalmazva (6. szakasz).
 - Az új próza menete: **N-F1Aa** (`NYITOTT_FELADATOK.md`).
+
+## 6. Alkalmazás és újramérés (DT-F1Aa (b), DT-F1Ab (a); 2026-11-02)
+
+*Döntés: az orkesztrátor, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«; a felhasználó szavai a hibáról: „volt kerek proza, amiket most csinálunk nincs vagy töredékek … ez súlyos hiba”.*
+
+**Egy mondatban az ok:** ezeken a helyeken igehelyenkénti kerek próza **soha nem volt** (az ALVIL-001-en és a TEREMT-001-en csak csoportos, több igehelyet együtt leíró próza, amelyet az `5efba149` bontott táblázatsorokra); adat nem veszett el, a hiány a betöltés óta fennáll, és eddig egyetlen kapu sem mérte.
+
+**Alkalmazva:**
+- 1A.3 — `eszkozok/lexikon_general.py`: a „ — ” nélküli `funkcio` „: ” utáni része, annak híján a teljes érték (vezető emoji nélkül) is a „Funkció:” sorba kerül. Újragenerálva: ISTENTISZT-001, TEREMT-002. Az ALVIL-001 lapján tartalmi változás nem volna, a többi lap még nem migrált (a mostani generátorral újragenerálva több száz sora változna), ezért azok nem változtak; a KIRALY-001 8 új sora a lapja következő újragenerálásakor jelenik meg.
+- 1A.4 — a Feed 6. kapuja (`muhely_allapot.py` `kriterium_6`) piros, ha az 1/a-ban van nem arany szintű igehely; az `ellenoriz.py` 24. szabálya JELENTÉS marad.
+
+**Az ISTENTISZT-001 (1. kiadás) lapváltozása, szó szerint** (`git show 7844ff72 -- lexikon/ISTENTISZT-001_TUDOMANYOS.md`; a tartalmi rész teljes, a többi 20 eltérő sor a generálási dátum: `ts=2026-10-29` → `ts=2026-11-02` a blokk-jelölőkben és a proveniencia-sorokban, valamint a kolofon „Generálva:” sora):
+
+```diff
+@@ 2Kir 5:11
+ Naámán elvárása Elizeus felől — a formula ismertsége a nem-izraeli szereplő szájában is.
++Funkció: ismétlődés, kívülálló szemszögéből
+@@ Zsolt 116:4
+ A zsoltáros saját, személyes hála-könyörgésének első megfogalmazása: "segítségül hívom az Úr nevét".
++Funkció: ismétlődés, személyes könyörgésben
+@@ Zsolt 116:13
+ A formula második, szó szerinti megismétlése ugyanabban a zsoltárban, a "szabadulás poharának" felemelése kontextusában.
++Funkció: ismétlődés, személyes könyörgésben
+@@ Zsolt 116:17
+ A formula harmadik megismétlése, hála-áldozat felajánlása kontextusában.
++Funkció: ismétlődés, személyes könyörgésben
+```
+
+A változás a 2. kiadás függő változásaként rögzítve: **N-F1Ab** (`NYITOTT_FELADATOK.md`; az `adat/kiadasok.tsv`-ben nincs mező függő változásra). A TEREMT-002 lapján: +3 „Funkció:” sor (1Móz 1:2, Jer 4:23, Ézs 34:11).
+
+**Újramérés — Feed** (`python eszkozok/muhely_allapot.py --motivum ISTENTISZT-001 TEREMT-002 ALVIL-001 --nincs-gh`, repón kívüli kimenettel):
+
+| motívum | 6. kapu | érték | az 1/a hiánya |
+|---|---|---|---|
+| ISTENTISZT-001 | **zöld** | 83/83 blokk, kiejtés-hiány 0, fordításra vár 0, 1/a hiányos igehely 0 | — (22/22 arany szintű) |
+| TEREMT-002 | piros | 47/47 blokk, 0, 0, 1/a hiányos 1 | Jer 4:23: a próza töredék („az 1Móz 1:2 párja Júda ítéletének képeként”, 6 szó), Funkció van |
+| ALVIL-001 | piros | 108/108 blokk, 0, 0, 1/a hiányos 72 | mind a 72 (64 töredék próza, 72 hiányzó Funkció) |
+
+Az ISTENTISZT-001 Feed-állása 7/8: a 2. kapu („2 HIBA”) e menet előtt is piros volt — a futás előtti mérésben az E28 a még nem commitolt újragenerálást jelezte; a commit után az E28 és az E29 0 találat. *(A 2. kapu többi oka nem e menet tárgya.)*
+
+**Motívumonként — ez a próza-menetek mérete:**
+
+| motívum | igehely | arany szintű most | gépileg javult (DT-F1Ab) | új prózát igényel (igehely) | ebből próza-sor | ebből Funkció-sor |
+|---|---:|---:|---:|---:|---:|---:|
+| ALVIL-001 | 72 | 0 | 0 | **72** | 64 | 72 |
+| TEREMT-001 | 41 | 0 | 0 | **41** | 34 | 41 |
+| HODIT-001 | 33 | 0 | 0 | **33** | 29 | 33 |
+| HAMART-001 | 52 | 0 | 0 | **52** | 9 | 52 |
+| MENNY-001 | 9 | 0 | 0 | **9** | 3 | 9 |
+| ANTROP-001 | 8 | 0 | 0 | **8** | 1 | 8 |
+| KIRALY-001 | 9 | 1 | 8 a lap újragenerálásakor (ebből 6 arany szintűvé válik) | **2** (Zsid 5:10, 6:20) | 2 | 2 |
+| ISTENTISZT-001 | 22 | **22** | 4 | 0 | 0 | 0 |
+| TEREMT-002 | 3 | 2 | 3 | **1** (Jer 4:23) | 1 | 0 |
+| **összesen** | **249** | **24** | **15** (7 most, 8 a KIRALY-001-en) | **218** | **143** | **217** |
+
+*A „gépileg javult” Funkció-sorok a meglévő címkéből jönnek; a mérő 3 szótól elfogadja őket („ismétlődés, személyes könyörgésben”). Hogy a címke a próza-menetben teljes funkció-mondattá bővüljön-e, az a menet ítélete.*
