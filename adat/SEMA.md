@@ -27,6 +27,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
 | `karoli_variancia.tsv` | `tipus` + `konyv` + `kulcs` + `ertek` + `bizonyossag` (+ `id` + `igehely` a `megerosites` sornál) | **generált** — `eszkozok/karoli_ellenorzes.py --variancia` (2.24, F65) |
 | `karoli_strong/nem_tr_parositott.tsv` | `vers` + `er_sorszam` | **generált** — `eszkozok/karoli_strong/nem_tr_lista.py` (2.20, F22 D45) |
+| `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 
 ---
 
@@ -1807,6 +1808,26 @@ Szabály: `valoszinu_ki` **csak** `hordozo=formulaikus` sorra adható, és csak 
 Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs meg teljesen egy versben; minden más hordozón
 (lexikai, strukturális, …) és minden szövegadat nélküli sorra `vizsgalando`. A lexikai kiterjesztés: N-F150a. A `--meres` mód
 összesítője a stdout-ra megy, a fájlba nem.
+
+---
+
+### 2.46 `kiadasok.tsv` — a lexikonlap kiadásai (N-F125a, N-F125b, DT-F125d, 2026-11-02)
+
+**Kézi** (`manual` proveniencia; jóváhagyás: DT-F125d). Egy sor egy kiadás; a `/kiadas <ID>` 5. lépése új sort ír. Ebből generálódik a
+`lexikon/[ID]_TUDOMANYOS.md` Kolofonjának „Kiadás”, „Próza modellje” sora és a „Változásjegyzék” táblája
+(`eszkozok/lexikon_general.py` `blokk_kolofon`; a kolofont kézzel szerkeszteni tilos). Motívum sora nélkül a kolofon nem ír
+kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('	')`; a `#`-sor megjegyzés.
+
+| Oszlop | Jelentés |
+|---|---|
+| `id` | motívum-id (2.1) |
+| `kiadas` | egész, 1-től, folytonos; az 1 a generált első lap. A kolofon kiadásszáma a legnagyobb érték |
+| `datum` | `ÉÉÉÉ.HH.NN` |
+| `valtozas` | egy mondat: mi változott (a változásjegyzék harmadik oszlopa) |
+| `proza_modell` | a lap prózáját író tényleges modellnév a futó környezetből (CLAUDE.md modell-szabálya, DT473), vagy `manual`, ha nem megállapítható (DT443); nem üres |
+| `forras` | `scope=manual \| forras=… \| ts=…` |
+
+Kulcs: `id` + `kiadas`. Állapot (2026-11-02): 1 sor — ISTENTISZT-001, 1. kiadás, `proza_modell=manual`.
 
 ---
 
