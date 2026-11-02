@@ -184,7 +184,7 @@ hallgatólagos.
 
 ## 2. Eredeti nyelvi összevetés
 
-A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)? Kiejtés minden szónál kötelező.
+A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)?
 
 **Mélység-engedmény (2026.09.03):** a determinisztikus protokoll "Szint-korlátozás" szabálya szerint a bővített tanulmányoknál a kereszthivatkozásban idézett TOVÁBBI szavak lexikai mélysége (2-3. szint) csak explicit, névvel jelzett kérésre nyílik meg — ez tudatos korlátozás study-szinten. **A tematikus tanulmány az a hely, ahol ez a korlátozás alapértelmezésben feloldódik**, külön kérés nélkül: amit a bővített tanulmány tudatosan felszínen hagyott, itt kap teljes, 2-3. szintű feldolgozást is, ha a motívum szempontjából releváns.
 
@@ -432,7 +432,7 @@ Ugyanezt mondja a tanulmány sablon (`2_PaRDeS_bovitett_sablon.md` v21)
 ## Terminológiai és formai szabályok (megegyezik a többi sablonnal)
 
 - „Szentlélek" helyett mindig **„Szent Szellem"**
-- Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
+- **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
 - A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás
 
