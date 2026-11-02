@@ -18,7 +18,7 @@ nem_fugg: [9]
 # F07_THAYER_ELES_BRIEF.md — a Thayer teljes magyar fordítása (éles)
 
 *FELADATOK #7 · Modell: sonnet · v1 · 2026.11.02 · készítette: `claude-opus-5-5` az orkesztrátor megbízásából (a csonk-brief
-kitöltése); a tartalmi döntések az orkesztrátoréi (a felhasználó megbízásából, 2026-11-02; DT-F07a); a merge a felhasználóé.*
+kitöltése); a tartalmi döntések az orkesztrátoréi (a felhasználó megbízásából, 2026-11-02; DT505); a merge a felhasználóé.*
 
 **Címzett.** E brief minden ⛔ pontjának és döntési kérdésének címzettje az **orkesztrátor-session** (nem a felhasználó). A végrehajtó
 a kérdést a `DONTESEK.md`-be veszi fel helyőrzővel (`DT-F07<betű>`), elküldi az orkesztrátornak, és megáll. Merge csak a
@@ -125,7 +125,7 @@ G1510, G1519) a választott út(ak)kal. **⛔ (c): az út kiválasztása mérés
   az `adat/terminologia.tsv`-be.
 - **A G0282 kész sorának `Heb.` kapuhibája** (`5_terminologia`: „Heb. → héb. hiányzik”): a G0282 az A1 adagba kerül, és
   újrafordul (`beir --regi-elavult --kezi-marad`); a `kezi` sora marad. A sor kézi javítása tilos, mert így a gépi sor
-  provenienciája tiszta marad (DT-F07a 3.).
+  provenienciája tiszta marad (DT505 3.).
 
 **(e) Effort-döntés.** Az aranyminta (G0282, G1941, G1944, G4151, G5590; a `kezi` sorok az összevetés alapja) egy kis Batch-csel
 `effort=high` és `effort=medium` mellett is, a #7 útján (B-út, az (a)–(d) javításai után; a G4151 a (c) döntése után). Az eredmény
@@ -134,7 +134,7 @@ medium egymás alatt, és Strongonként a tartalmi eltérések listája (kihagy�
 szóválasztás, kapueredmény), plusz mért költség és kapubukás effortonként. Ítéletet a végrehajtó nem hoz. **⛔ (e): az effort-döntés
 az orkesztrátoré** (DT-F07d).
 
-**(f) A #159 mérő Strongjainak beírása (0 USD; DT-F07a 2.).** A #159 mérő batchének 60 Strongja
+**(f) A #159 mérő Strongjainak beírása (0 USD; DT505 2.).** A #159 mérő batchének 60 Strongja
 (`naplok/THAYER_B_UT_mero_strongok.txt`) nincs a `forditasok.tsv`-ben. Az (e) döntése után a választott effort ágának eredménye
 (`forditas/thayer_api/adag1591/`: high, `adag1592/`: medium) a mostani, (a)–(d) utáni kapukkal **újrakapuzódik** (`kapuz`);
 ami átmegy, az `rogzit` és `beir --regi-elavult --kezi-marad --allapot sonnet` útján kerül be. Ennek a sornak a `megjegyzes`
@@ -148,7 +148,7 @@ A `modell` a futásnapló tényleges modellneve. Ami nem megy át, az az adagokb
    lehet kisebb); adagonként a kalibrált becslés (első kör + javító kör) és az adagplafon (1,3 ×). Ha az összes adag becslése
    120 USD fölött van: ⛔.
 3. **M0 plafon:** az M0 mérő batchjei ((c) és (e)) együtt legfeljebb **5 USD** mért költség, ami az összplafonba
-   beszámít (DT-F07a 1.). Az (f) nem küld be semmit.
+   beszámít (DT505 1.). Az (f) nem küld be semmit.
 4. **Zárás:** tesztek zöldek (`eszkozok/teszt_thayer_api_koteg.py`, `teszt_normalizal.py`, `teszt_forditas_kapuk.py`,
    `eszkozok/thayer_jelolt/teszt_*.py`; a `teszt_lanc.py` N66-tesztje és a #27 naplójában igazolt előzetes bukások kivételek),
    `python eszkozok/ellenoriz.py` SÉRTÉS 0, `python eszkozok/feladatok.py ellenoriz` 0 hiba, `fuggetlen-ellenor`, draft PR. **⛔ M0:**
@@ -218,7 +218,7 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 
 | Tétel | Tárgy | Állapot |
 |---|---|---|
-| DT-F07a | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása (külön PR, előbb mergelendő); 5. a #138 és a #154 `nem_fugg`-jába a 7 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT505 | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása (külön PR, előbb mergelendő); 5. a #138 és a #154 `nem_fugg`-jába a 7 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07b | M0 (c): max_tokens-emelés vagy további darabolás | ✅ orkesztrátor, 2026-11-02: nincs emelés és nincs darabolás (`DONTESEK.md`) |
 | DT-F07c | M0 (d): a `Sir` alias javításának helye, az `1 Cor.` | ✅ orkesztrátor, 2026-11-02: a `Sir` marad; `1 Cor` alias csak c:v előtt (`DONTESEK.md`) |
 | DT-F07d | M0 (e): effort | ✅ orkesztrátor, 2026-11-02: `high` (`DONTESEK.md`) |
@@ -231,4 +231,4 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
-| v1 | 2026.11.02 | A csonk kitöltése: B-út, M0 (a)–(f), adagok ~500 000 karakterrel, adagplafon 1,3 × becslés, 30%-os megállás, összplafon 120 USD, Mz. A befogadás kérdései (a kitöltött fejléc függési köre, `feladatok.py ellenoriz`): a #27 és a #159 fejléce lezárul, külön, előbb mergelendő PR-ban (mindkettő tartalmilag kész és mergelve: PR #578, PR #581); a #7 `fugg: [159]` marad; az `olvas` a `forditasok.tsv`-vel bővül (a `lista` és a `beir` olvassa); a #138 és a #154 `nem_fugg`-jába bekerül a 7, mert a #138 és a #154 BDB- és alapjelentés-sorokat ír, Thayer-sort nem. Csak a sorrendi függés esik ki: a `KIZAR 7 154` (`forditasok.tsv`, írás–írás) megmarad; a #138 a `forditasok.tsv`-t nem írja, ezért vele nincs KIZAR-él, és nem is kell | orkesztrátor (a felhasználó megbízásából), 2026-11-02; DT-F07a |
+| v1 | 2026.11.02 | A csonk kitöltése: B-út, M0 (a)–(f), adagok ~500 000 karakterrel, adagplafon 1,3 × becslés, 30%-os megállás, összplafon 120 USD, Mz. A befogadás kérdései (a kitöltött fejléc függési köre, `feladatok.py ellenoriz`): a #27 és a #159 fejléce lezárul, külön, előbb mergelendő PR-ban (mindkettő tartalmilag kész és mergelve: PR #578, PR #581); a #7 `fugg: [159]` marad; az `olvas` a `forditasok.tsv`-vel bővül (a `lista` és a `beir` olvassa); a #138 és a #154 `nem_fugg`-jába bekerül a 7, mert a #138 és a #154 BDB- és alapjelentés-sorokat ír, Thayer-sort nem. Csak a sorrendi függés esik ki: a `KIZAR 7 154` (`forditasok.tsv`, írás–írás) megmarad; a #138 a `forditasok.tsv`-t nem írja, ezért vele nincs KIZAR-él, és nem is kell | orkesztrátor (a felhasználó megbízásából), 2026-11-02; DT505 |
