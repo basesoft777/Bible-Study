@@ -6,13 +6,14 @@ tipus: feladat
 fazis: 2
 munka: ertelmezo
 modell: opus
-allapot: nem_indult
+allapot: megallt
 ad: az első natív egyforrású motívum az új mércével: a jelentes_szam és a karoli_szo az adatban, a szakaszcímke gépileg, a szótári egységek a lap előtt lefordítva, a szótári gerinc kapcsoló nélkül, a motivumok/TEREMT-002.md a 9_ forrássablon szerint, a lexikon/TEREMT-002_TUDOMANYOS.md az ISTENTISZT-001 arany lapjának mércéjén zöld
-kovetkezo: "Te: a #148 (védőkorlátok) merge-e után /kovetkezo (a #148 maga a #123 ALVIL-001-es PR-jára vár); első lépés a 0. mérés, utána ⛔ DT-F12a–e"
+kovetkezo: "Te: a TEREMT-002 lapja Feed 6/8; a határ-ellenőrzés (hatar-ellenor) és a lektori kör a felhasználóé, utána külön tételben a 8/8, az 1. kiadás sora és a motivumok.tsv verzió-emelése (DT-F12e (1)); a draft PR merge-e a felhasználóé"
 olvas: [motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*", motivumok/ISTENTISZT-001.md, motivumok/TEREMT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/TEREMT-001_TUDOMANYOS.md, generalt_proba/TEREMT-002_proza_proba/, naplok/TEREMT002_PROZA_PROBA_meres.md, naplok/TEREMT002_PROZA_PROBA_M0.md, naplok/TEREMT002_PROZA_PROBA_lxx_friss.md, naplok/ELLENOR_TEREMT002_PROZA_PROBA.md, naplok/T1_TEREMT002_scan.md, naplok/T1_TEREMT002_gate.md, naplok/T2_TEREMT002_minosites.tsv, naplok/T2_TEREMT002_kapcsolatok_javaslat.tsv, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, naplok/F131_SZOTARI_GERINC_naplo.md, TEREMT002_KUTATAS_BRIEF.md, F64_TEREMT002_PROZA_PROBA_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F121_GLOSSZA_FORDITAS_BRIEF.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/PaRDeS_tanitok_lista.md, sablonok/PaRDeS_gyorsreferencia.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, adat/motivumok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/auditok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_forras_javitas.tsv, adat/glosszak_heber_hu.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/szotar_szerepek.tsv, adat/grammatikai_strongok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, eszkozok/lekerdez.py, eszkozok/glossza_lexikon_forditas.py, eszkozok/forditas_kapuk.py, eszkozok/ellenoriz.py, eszkozok/kuszob.py, eszkozok/gate.py]
-ir: [motivumok/TEREMT-002.md, motivumok/naplok/TEREMT-002_tanitoi_kereses.md, lexikon/TEREMT-002_TUDOMANYOS.md, adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/forditasok.tsv, adat/lxx_dontesek.tsv, adat/res_forras.tsv, adat/auditok.tsv, adat/motivumok.tsv, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumlog/PaRDeS_motivumok.md, naplok/F12_*, naplok/ELLENOR_F12_*]
+ir: [motivumok/TEREMT-002.md, adat/funkcio_kapcsolok.tsv, adat/bdb_forras_javitas.tsv, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/szerep_karoli.py, naplok/F148_levezetes_TEREMT-002.tsv, adat/bdb_vers_jelentes.tsv, "archivum/TEREMT-002/*", DONTESEK.md, NYITOTT_FELADATOK.md, motivumok/naplok/TEREMT-002_tanitoi_kereses.md, lexikon/TEREMT-002_TUDOMANYOS.md, adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/forditasok.tsv, adat/lxx_dontesek.tsv, adat/res_forras.tsv, adat/auditok.tsv, adat/motivumok.tsv, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumlog/PaRDeS_motivumok.md, naplok/F12_*, naplok/ELLENOR_F12_*]
 fugg: [148]
 nem_fugg: [10, 36, 38, 70, 74, 102, 103, 123, 131, 133, 138, 140, 144, 146]
+ag: claude/f12-teremt002-bc1f07
 ---
 
 # F12_TEREMT002_PROZA_BRIEF.md — TEREMT-002: lexikonlap a fordított irányban
@@ -155,7 +156,7 @@ Független ellenőr (`fuggetlen-ellenor`), jelentés: `naplok/ELLENOR_F12_*.md`.
 1. A három előfordulás-sor `jelentes_szam`-a, `lexikon_entry_id`-je, `jelentes_en`-je és `jelentes_hu`-ja ki van töltve vagy a DT-F12a szerint explicit; a `jelentes_hu` nem hordoz funkció-értelmezést.
 2. A gerinc-Strongok minden szakaszának van sora a `szotar_szakasz_cimke.tsv`-ben, és a sorok a #148 eszközéből jöttek (proveniencia); kézi címke csak ⛔-döntés után.
 3. A lapon nincs jelöletlen fordítatlan szótári egység.
-4. A lapon a szótári gerinc megjelenik, kapcsolóbejegyzés nélkül (a TEREMT-002 nincs a kivétellistán, és nem került rá).
+4. A lapon a szótári gerinc megjelenik; a TEREMT-002 nincs a kivétellistán (a #12 levette: a DT437 `kivetel` sora `aktiv`, DT-F12f). A 13–14. szerep (`KAROLI_MEGFELELOK`) a lapon megvan (DT-F12f).
 5. `ellenoriz.py`: SÉRTÉS 0. A tesztek zöldek. `feladatok.py ellenoriz`: 0 hiba.
 6. Az L1–L7 és a DT2 két rés-szabálya a lapon és a forráson teljesül (8. b).
 7. Az arany-összevetés (8. c) táblája kitöltött, hiánynál explicit jelöléssel.

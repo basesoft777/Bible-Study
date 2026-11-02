@@ -211,10 +211,12 @@ class Javitas(unittest.TestCase):
             self.assertTrue(s['indok'] and s['forras_alak'] and s['javitott_alak'])
 
     def test_hivatkozas_kezi(self):
-        # DT381 (a): H8034 „26:35” → 26:25, a 2.30 7. sorában, az első előfordulás; F123: H7585 „Prov 25:11” → 15:11 (10. sor)
+        # DT381 (a): H8034 „26:35” → 26:25, a 2.30 7. sorában, az első előfordulás; F123: H7585 „Prov 25:11” → 15:11 (10. sor);
+        # F12 (DT-F12b (1)): H8414 „49:19” → 49:4 (4. sor)
         k = [s for s in self.sorok if s['hiba'] == 'hivatkozas_kezi']
         self.assertEqual([(s['strong'], s['sorszam'], s['elofordulas'], s['forras_alak'], s['javitott_alak']) for s in k],
-                         [('H8034', '7', '1', '26:35', '26:25'), ('H7585', '10', '1', '25:11', '15:11')])
+                         [('H8034', '7', '1', '26:35', '26:25'), ('H7585', '10', '1', '25:11', '15:11'),
+                          ('H8414', '4', '1', '49:19', '49:4')])
 
     def test_allapotok(self):
         self.assertEqual(set(s['allapot'] for s in self.sorok),

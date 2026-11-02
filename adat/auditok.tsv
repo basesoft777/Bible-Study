@@ -240,3 +240,6 @@ ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=TSK_kereszthivatkozasok.tsv+Karoli
 ALVIL-001	B4	scope=range:Hós 13:14 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=29 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
 ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=5 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
 ALVIL-001	B4	scope=range:Hós 13:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+TEREMT-002	B4	scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T11:33Z	2026.11.02
+TEREMT-002	B4	scope=range:Jer 4:23 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T11:33Z	2026.11.02
+TEREMT-002	B4	scope=range:Ézs 34:11 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T11:33Z	2026.11.02

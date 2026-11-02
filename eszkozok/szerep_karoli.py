@@ -10,7 +10,7 @@ döntés kiírásához). Mind determinisztikus; a 14. csak megjelenít: jelölt 
 A szó a szótári alakja szerint számít (a mai helyesírású `szotari_alak_mai`, kisbetűvel): a *segítségűl* és a *segítségül*,
 a *nevét* és a *nevedet* egy szó; a táblában nem álló alak önmaga.
 
-- 13. **Károli-megfelelők:** a motívumsorok `karoli_szo`-jának szavai (névelő nélkül), szótári alakonként: a szóalakok, és
+- 13. **Károli-megfelelők:** a motívumsorok `karoli_szo`-jának szavai (névelő és az „és” kötőszó nélkül, F12), szótári alakonként: a szóalakok, és
   hány igehelyen, melyiken. A „+SZPA” rész csak akkor áll (jelölt hiányként), ha az `adat/funkcio_kapcsolok.tsv`
   `SZPA_JOIN` kapcsolója `aktiv`; felfüggesztve a sor és a szerepcím „(+ SZPA)” része elmarad (ISTENTISZT-001 arany lap, 2026-10-29).
 - 14. **Rejtett / hamis párhuzam** (a szerepmátrix szerint). A motívum *gerinc-kombinációi* a sorok `strong` mezőjének
@@ -81,6 +81,7 @@ def szpa_aktiv():
 
 
 NEVELO = frozenset({'a', 'az'})
+KOTOSZO = frozenset({'és'})  # F12 (DT-F12g): a mellérendelő kötőszó nem kulcsszó („kietlen és puszta”)
 KULCS_ARANY = 0.5
 KULCS_MIN_SOR = 3
 ELOTAG_MARADEK = 3  # a mérés: 3-nál az ISTENTISZT-001 hamis párhuzama 17 (+ hívnám), 4-nél a KIRALY-001-é 19 → 61
@@ -143,7 +144,7 @@ def karoli_megfelelok(sorai, tabla=None):
     for s in sorai:
         for w in szavak(s.get('karoli_szo')):
             l = lemma(w, tabla)
-            if l in NEVELO:
+            if l in NEVELO or l in KOTOSZO:
                 continue
             if w not in alak[l]:
                 alak[l].append(w)

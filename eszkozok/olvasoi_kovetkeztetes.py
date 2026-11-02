@@ -144,10 +144,23 @@ def kulcsszavak(kombok):
 
 # --- 3. LXX-fordítói döntések, 6. szerep ---
 
-def lxx(n, egyezo, eltero, hianyzik, egyeb, gorog_nev):
-    """`gorog_nev`: a motívum görög szava névelővel, kiejtéssel („az epikaleó”), vagy ''."""
+def lxx(n, egyezo, eltero, hianyzik, egyeb, gorog_nev, nincs_gorog=False):
+    """`gorog_nev`: a motívum görög szava névelővel, kiejtéssel („az epikaleó”), vagy ''. `nincs_gorog`: a motívumnak
+    nincs görög (újszövetségi) szava (F12, TEREMT-002): nincs mivel egyezzen, a mondat ezt mondja ki."""
     if not n:
         return None
+    if nincs_gorog:
+        tobbi = []
+        if eltero:
+            tobbi.append('%d helyen saját görög szóval adja vissza' % eltero)
+        if hianyzik:
+            tobbi.append('%d helyen a görögből hiányzik' % hianyzik)
+        if egyeb:
+            tobbi.append('%d helyen az azonosítás függőben' % egyeb)
+        lelet = ('A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög '
+                 'fordítás (Septuaginta) a motívum %d ószövetségi helyéből %s.' % (n, ', '.join(tobbi) or 'egyiket sem adja vissza'))
+        return ('%s %s a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt '
+                'mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).' % (lelet, KOVETKEZTETES))
     szo = ' (%s)' % gorog_nev.split(' ', 1)[1] if gorog_nev else ''
     lelet = ('A motívum %d ószövetségi helyéből %d helyen a görög fordítás (Septuaginta) ugyanazt a szót használja%s, '
              'mint az Újszövetség' % (n, egyezo, szo))
@@ -256,13 +269,24 @@ def kapcsolodo(sajat, nyitott):
 
 # --- 7. szerep (SECE) ---
 
-def sece(szo_nev, n_megfelelo, sajat_nevek, tars=''):
+def sece(szo_nev, n_megfelelo, sajat_nevek, tars='', nincs_masik=False, lxx_nevek=()):
     """`szo_nev`: a szó névelővel („az epikaleó”); `sajat_nevek`: a megfelelők közül a motívum saját szavai (névelővel);
     `tars`: a szókapcsolat másik szava (névelővel), amely párosul a motívum másik nyelvű szavával (pl. a sém mellett
-    a kárá), vagy ''."""
+    a kárá), vagy ''. `nincs_masik` (F12, TEREMT-002): a motívumnak nincs szava a másik nyelven; `lxx_nevek`: a
+    megfelelők közül azok (névelővel), amelyekkel a Septuaginta a motívum helyein fordít (`lxx_dontesek.tsv`)."""
     if not n_megfelelo:
         return None
     lelet = 'A kétnyelvű szótár (SECE) %s szónak %d megfelelőjét adja a másik bibliai nyelven' % (szo_nev, n_megfelelo)
+    if nincs_masik:
+        if lxx_nevek:
+            tobb = len(lxx_nevek) > 1
+            return ('%s; a motívumnak a másik nyelven nincs saját szava, de a megfelelők között van %s, %s a '
+                    'Septuaginta a motívum helyein fordít. %s a szótár ismeri %s, %s a fordítás a szót visszaadja; '
+                    'a motívumnak a másik nyelven nincs párja.'
+                    % (lelet, _lista(list(lxx_nevek)), 'amelyekkel' if tobb else 'amellyel', KOVETKEZTETES,
+                       'azokat a szavakat' if tobb else 'azt a szót', 'amelyekkel' if tobb else 'amellyel'))
+        return ('%s; a motívumnak a másik nyelven nincs saját szava. %s a szótár csak a szó lehetséges megfelelőit '
+                'mutatja, a motívumnak a másik nyelven nincs párja.' % (lelet, KOVETKEZTETES))
     if sajat_nevek:
         return ('%s; köztük van a motívum saját szava, %s. %s a szótár is megerősíti, hogy a két szó egymás párja.'
                 % (lelet, _lista(sajat_nevek), KOVETKEZTETES))

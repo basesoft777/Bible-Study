@@ -72,3 +72,12 @@ HAMART-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Bu
 HAMART-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HAMART-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
+TEREMT-002	kivonat	## Kivonat *(kézi)*	tanulmany	motivumok/TEREMT-002.md
+TEREMT-002	2b	### 2/b. Kiegészítő szótári adatok *(generált)*	adat	
+TEREMT-002	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	motivumok/TEREMT-002.md
+TEREMT-002	minosites	### Minősítés *(generált)*	adat	
+TEREMT-002	alatamasztas	### Alátámasztás *(generált)*	adat	
+TEREMT-002	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	motivumok/TEREMT-002.md
+TEREMT-002	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	tanulmany	motivumok/TEREMT-002.md
+TEREMT-002	tanitoi	### Tanítói egyezés *(kézi)*	tanulmany	motivumok/naplok/TEREMT-002_tanitoi_kereses.md
+TEREMT-002	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	motivumok/TEREMT-002.md
