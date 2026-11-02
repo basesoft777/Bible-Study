@@ -52,8 +52,8 @@ A `funkcio` mező állapota az adatban:
 ## 3. Gépi kapu
 
 - `eszkozok/proza_1a.py` — a mérő (modul + parancssor).
-- `eszkozok/ellenoriz.py` **24. szabály** („Az 1/a igehelyenkénti prózája (arany lap)”) — ma **JELENTÉS**, nem gátol; motívumonként: hány igehely nem arany szintű, ebből próza töredék/hiányzik, Funkció töredék/hiányzik. Mostani kimenet: JELENTÉS, 9 motívum, 230 igehely.
-- `eszkozok/teszt_proza_1a.py` — 10 teszt (arany lap kerek; a felhasználó kilenc töredéke; héber/zárójel nem számít; HTML-megjegyzés nem próza; az 1/a határa; a 24. szabály RENDBEN/JELENTÉS/KÉZI).
+- `eszkozok/ellenoriz.py` **25. szabály** (a 24. a #595 lábjegyzet-szabálya) („Az 1/a igehelyenkénti prózája (arany lap)”) — ma **JELENTÉS**, nem gátol; motívumonként: hány igehely nem arany szintű, ebből próza töredék/hiányzik, Funkció töredék/hiányzik. Mostani kimenet: JELENTÉS, 9 motívum, 230 igehely.
+- `eszkozok/teszt_proza_1a.py` — 11 teszt (arany lap kerek; az élő arany lap 22/22; a felhasználó kilenc töredéke; héber/zárójel nem számít; HTML-megjegyzés nem próza; az 1/a határa; a 25. szabály RENDBEN/JELENTÉS/KÉZI).
 - **A Feed (`muhely_allapot.py`) nem változott.** A beemelés a 6. kapuba (és ezzel a szint) döntés: **DT-F1Aa**.
 
 ## 4. Motívumonként: mi állítható vissza gépileg, mennyi új próza kell
@@ -75,7 +75,7 @@ A `funkcio` mező állapota az adatban:
 
 ## 5. Döntések (⛔)
 
-- **DT-F1Aa** — a 24. szabály szintje és a Feed: **(b)**, alkalmazva (6. szakasz).
+- **DT-F1Aa** — a 25. szabály szintje és a Feed: **(b)**, alkalmazva (6. szakasz).
 - **DT-F1Ab** — a generátor a „ — ” nélküli `funkcio`-t is kiírja az 1/a-ban: **(a)**, alkalmazva (6. szakasz).
 - Az új próza menete: **N-F1Aa** (`NYITOTT_FELADATOK.md`).
 
@@ -87,7 +87,7 @@ A `funkcio` mező állapota az adatban:
 
 **Alkalmazva:**
 - 1A.3 — `eszkozok/lexikon_general.py`: a „ — ” nélküli `funkcio` „: ” utáni része, annak híján a teljes érték (vezető emoji nélkül) is a „Funkció:” sorba kerül. Újragenerálva: ISTENTISZT-001, TEREMT-002. Az ALVIL-001 lapján tartalmi változás nem volna, a többi lap még nem migrált (a mostani generátorral újragenerálva több száz sora változna), ezért azok nem változtak; a KIRALY-001 8 új sora a lapja következő újragenerálásakor jelenik meg.
-- 1A.4 — a Feed 6. kapuja (`muhely_allapot.py` `kriterium_6`) piros, ha az 1/a-ban van nem arany szintű igehely; az `ellenoriz.py` 24. szabálya JELENTÉS marad.
+- 1A.4 — a Feed 6. kapuja (`muhely_allapot.py` `kriterium_6`) piros, ha az 1/a-ban van nem arany szintű igehely; az `ellenoriz.py` 25. szabálya JELENTÉS marad.
 
 **Az ISTENTISZT-001 (1. kiadás) lapváltozása, szó szerint** (`git show 7844ff72 -- lexikon/ISTENTISZT-001_TUDOMANYOS.md`; a tartalmi rész teljes, a többi 20 eltérő sor a generálási dátum: `ts=2026-10-29` → `ts=2026-11-02` a blokk-jelölőkben és a proveniencia-sorokban, valamint a kolofon „Generálva:” sora):
 

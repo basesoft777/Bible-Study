@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 eszkozok/teszt_proza_1a.py -- DT-F1Aa: az `eszkozok/proza_1a.py` mérő és az
-`eszkozok/ellenoriz.py` 24. szabályának tesztjei. A mérce az arany lap
+`eszkozok/ellenoriz.py` 25. szabályának tesztjei. A mérce az arany lap
 (ISTENTISZT-001, 1Móz 4:26); az ellenpéldák a felhasználó 2026-11-02-i ALVIL-001-
 töredékei. A szabály-tesztek ideiglenes (repón kívüli) könyvtárban futnak.
 
@@ -98,7 +98,7 @@ class AranyLap(unittest.TestCase):
         self.assertEqual(d['arany'], d['igehely'], [x[:3] for x in m if x[1:3] != ('kerek', 'van')])
 
 
-class Szabaly24(unittest.TestCase):
+class Szabaly25(unittest.TestCase):
 
     def setUp(self):
         self.gyoker = tempfile.mkdtemp(prefix='teszt_proza_1a_')
@@ -114,20 +114,20 @@ class Szabaly24(unittest.TestCase):
 
     def test_rendben_ha_minden_arany(self):
         self.ir('ARANY-001', lap(ARANY))
-        s = E.szabaly24_proza_1a(os.path.join(self.gyoker, 'adat'))
+        s = E.szabaly25_proza_1a(os.path.join(self.gyoker, 'adat'))
         self.assertEqual(s.verdict, 'RENDBEN')
 
     def test_jelentes_toredeknel(self):
         self.ir('ARANY-001', lap(ARANY))
         self.ir('TORED-001', lap(blokk('1Móz 42:38', 'Benjámin miatti félelem'), ARANY))
-        s = E.szabaly24_proza_1a(os.path.join(self.gyoker, 'adat'))
+        s = E.szabaly25_proza_1a(os.path.join(self.gyoker, 'adat'))
         self.assertEqual(s.verdict, 'JELENTÉS')
         self.assertEqual(s.n, 1)
         self.assertTrue(s.peldak[0].startswith('TORED-001: 1/2'))
 
     def test_kezi_lap_nelkul(self):
         shutil.rmtree(os.path.join(self.gyoker, 'lexikon'))
-        s = E.szabaly24_proza_1a(os.path.join(self.gyoker, 'adat'))
+        s = E.szabaly25_proza_1a(os.path.join(self.gyoker, 'adat'))
         self.assertEqual(s.verdict, 'KÉZI')
 
 

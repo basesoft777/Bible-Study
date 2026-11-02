@@ -1439,12 +1439,12 @@ def szabaly23_proza_lefedettseg(adat_dir):
                megjegyzes='nem gátol; lista: python eszkozok/proza_lefedettseg.py <ID>')
 
 
-def szabaly24_proza_1a(adat_dir):
+def szabaly25_proza_1a(adat_dir):
     """DT-F1Aa (JELENTES, nem gatol; a vegleges szint a DT-F1Aa-ra var): motivumonkent az 1/a igehelyei,
     amelyek alatt nincs kerek proza vagy „Funkció:” sor, az arany lap (ISTENTISZT-001) mercejevel.
     A merest a `lexikon/[ID]_TUDOMANYOS.md` lapon vegzi (`eszkozok/proza_1a.py`), mert az olvaso
     a lapot latja: a hianyzo adat es a generator kihagyasa is megjelenik."""
-    cim = '24. Az 1/a igehelyenkénti prózája (arany lap)'
+    cim = '25. Az 1/a igehelyenkénti prózája (arany lap)'
     gyoker = os.path.dirname(os.path.abspath(adat_dir))
     import proza_1a as P
     idk = P.lap_idk(gyoker)
@@ -1612,7 +1612,7 @@ def main():
                                                    main=main_agon(args.ag_allapot)))
         tabla_sorok.append(szabaly22_kiejtes_hiany(args.adat))
         tabla_sorok.append(szabaly23_proza_lefedettseg(args.adat))
-        tabla_sorok.append(szabaly24_proza_1a(args.adat))
+        tabla_sorok.append(szabaly25_proza_1a(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
