@@ -891,6 +891,41 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#idezes -->
 
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-02 -->
+
+*A kézi rések (Kivonat, Miért fontos, Értelmezés, Módszertan) forrásjegyzetei, a kézi forrás „Proveniencia-sorok” szakaszából.*
+
+[^koll]: proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8414+H0922 | n=3 | ts=2026-11-02T11:38Z
+[^scan-bohu]: proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0922 | n=3 | ts=2026-11-02T11:38Z
+[^d-elof]: proveniencia: scope=id=TEREMT-002 (kapcsolodas, funkcio, karoli_szo, gerinc_elem, jelentes_szam) | forras=adat/elofordulasok.tsv | n=3 | ts=2026-11-02
+[^scan-tohu]: proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8414 | n=19 | ts=2026-11-02T11:38Z
+[^d-mot]: proveniencia: scope=id=TEREMT-002 (negativ_kriterium, folerendelt_fogalom) | forras=adat/motivumok.tsv | n=1 | ts=2026-11-02
+[^k-zsolt10740]: proveniencia: scope=range:Zsolt 107:40 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-11-02 (a vers Károli-szövege: „út nélkül való kietlenben”; a jelölt `karoli_szo`-ja: „kietlenben”)
+[^d-jel]: proveniencia: scope=id=TEREMT-002 (dontes, indoklas, forras_kereses, karoli_szo) | forras=adat/jeloltek.tsv | n=66 | ts=2026-11-02
+[^d-kapcs]: proveniencia: scope=id=TEREMT-002 (tipus, funkcio, bizonyossag) | forras=adat/kapcsolatok.tsv | n=5 | ts=2026-11-02
+[^lxx-gen]: proveniencia: scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T11:33Z
+[^lxx-jer]: proveniencia: scope=range:Jer 4:23 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T11:33Z
+[^lxx-ezs]: proveniencia: scope=range:Ézs 34:11 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T11:33Z
+[^bdb-vers]: proveniencia: scope=strong=H8414+H0922, a BDB saját példahelyei | forras=adat/bdb_vers_jelentes.tsv (H8414 -/1: a motívum három verse + Ézs 45:18, 24:10, 5Móz 32:10, Jób 6:18, 12:24, 26:7, Zsolt 107:40; H8414 -/2: többek közt Ézs 40:17, 41:29, 44:9, 49:4; H0922: tagolatlan) + naplok/F148_levezetes_TEREMT-002.tsv (szakasz_cimke_levezet.py, jelzés nélkül) + naplok/F12_kitoltes.tsv | n=3 | ts=2026-11-02
+[^k-gen3]: proveniencia: scope=range:1Móz 1:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^k-jer]: proveniencia: scope=range:Jer 4:23 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-11-02T11:39Z
+[^k-jer24]: proveniencia: scope=range:Jer 4:24 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^k-jer25]: proveniencia: scope=range:Jer 4:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^k-jer26]: proveniencia: scope=range:Jer 4:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^k-jer27]: proveniencia: scope=range:Jer 4:27 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^k-ezs]: proveniencia: scope=range:Ézs 34:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=5 | ts=2026-11-02T11:39Z
+[^k-ezs3410]: proveniencia: scope=range:Ézs 34:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-11-02T11:39Z
+[^tahot3]: proveniencia: scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | n=59 | ts=2026-10-08T06:23Z
+[^p2]: proveniencia: scope=manual | forras=naplok/T1_TEREMT002_scan.md 2.1–2.2 (mező-hipotézis; a kollokációk saját sorai: naplok/T1_TEREMT002_auditok_munkalap.tsv) | ts=2026-09-25
+[^k-ezs4518]: proveniencia: scope=range:Ézs 45:18 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-11-02T11:39Z
+[^k-ezs2410]: proveniencia: scope=range:Ézs 24:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-11-02T11:39Z
+[^gate]: proveniencia: scope=manual | forras=naplok/T1_TEREMT002_gate.md 3. pont (átfedés-számítás és funkció-különbség) | ts=2026-09-25
+[^bdb-tohu]: proveniencia: scope=strong=H8414 (Teljes_szocikk, részlet) | forras=BDB_teljes_unabridged.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | strong=H8414 | n=1 | ts=2026-10-08T06:42Z
+[^ford-tohu]: proveniencia: scope=szotar=BDB, strong=H8414, mezo=forditas_hu (részlet) | forras=adat/forditasok.tsv (sorkivonat `split('\t')`-tel) | strong=H8414 | n=1 | allapot=opus (gépi fordítás, claude-opus-5-5, 2026.10.01) | ts=2026-10-08T06:42Z
+[^k-gen]: proveniencia: scope=range:1Móz 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-11-02T11:39Z
+
+<!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#res_labjegyzet -->
+
 ## Kolofon
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-02 -->
