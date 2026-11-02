@@ -1,4 +1,4 @@
-# A KH-elrejtés lapváltozása szó szerint (DT-F156n, N-F156b, 2026-11-02)
+# A KH-elrejtés lapváltozása szó szerint (DT556, N-F156b, 2026-11-02)
 
 ## ISTENTISZT-001
 

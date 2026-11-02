@@ -1,2 +1,2 @@
-# Lexikonlap vizuális átnézései (SEMA 2.48): egy sor egy átnézés a lap egy változatáról; kulcs: id + lap_commit. Érvényes, ha a lap_commit a lap mai utolsó commitja, a ki = felhasználó, és az idezet a felhasználó szavai szó szerint (DT-F156l). Csak a felhasználó jóváhagyása után írható.
+# Lexikonlap vizuális átnézései (SEMA 2.48): egy sor egy átnézés a lap egy változatáról; kulcs: id + lap_commit. Érvényes, ha a lap_commit a lap mai utolsó commitja, a ki = felhasználó, és az idezet a felhasználó szavai szó szerint (DT554). Csak a felhasználó jóváhagyása után írható.
 id	lap_commit	datum	ki	idezet	forras

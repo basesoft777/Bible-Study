@@ -25,7 +25,7 @@
 - **Hány ma elrejtett lista lesz helyes?** **Egy sem.** A helyes lista a másolt helyeken ebből a forrásból nincs; a gyanús versek listája nem javul, csak kimarad. A nem gyanús versek (a lapokon ma is megjelenők) listái változatlanok.
 - **A gyanú-szabály okafogyottá válik-e?** Nem: a karantén-fájl pontosan ennek a szabálynak a kimenete, a szabály most a *forrás* hibájának kezelése. Ha a (d) út (szentiras.hu/KG, N-F156d) helyes adatot ad, a karantén kiürül, és a szabály okafogyottá válik; a generátorból most nem vettünk ki semmit.
 
-## Kezelés (DT-F156q, (a))
+## Kezelés (DT557, (a))
 
 - Főtábla nyers-hű, változatlan. Új: `konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv` (forrásvers, osztály, blokk-eltolás, ok, a gazda, a lista, proveniencia).
 - Fogyasztók (`eszkozok/karoli_kh_szuro.py`): `sqlite_epit.py`, `lekerdez.py` (`karoli`: kiírja, hány sort hagyott ki), `olvaso_pilot/adat.py`. Nem módosítva (a feladat szerint): `lexikon_general.py` (N-F156c, a gépi kör merge-e után), `lexikon/`. Szűrve még: `olvaso_mockup/nav_kinyer.py` (csak Jóel 2, 7 gyanús vers). Szűrés nélkül: `f110_ir2.py` (csak proveniencia-szöveg), `olvaso_pilot/felmeres.py`/`db_meres.py` (mérések, nem fogyasztók).

@@ -6,7 +6,7 @@
 
 A felhasználó (2026-11-02, az orkesztrátornak): „legyen igy. De a gate-eket amiknek ez ilyen hibát meg kellet volna
 fogni irjuk meg.” Korábban („mehet”): a lezárás feltétele egy gépi és egy vizuális lapellenőrzés, 9. Feed-kapuként
-(DT-F156k; a DT497 (3) ebben a pontban visszavonva).
+(DT553; a DT497 (3) ebben a pontban visszavonva).
 
 ## 1. Mi készült
 
@@ -112,14 +112,14 @@ vizsgálata kell (forrás- vagy konverziós hiba?): **N-F156a**. A lapon addig K
 
 ## 6. Döntések (az orkesztrátor, a felhasználó 2026-11-02-i felhatalmazásával)
 
-- **DT-F156l (b):** a vizuális átnézés helye az `adat/lap_atnezesek.tsv` (SEMA 2.48), a lap commitjához kötve. A `ki`
+- **DT554 (b):** a vizuális átnézés helye az `adat/lap_atnezesek.tsv` (SEMA 2.48), a lap commitjához kötve. A `ki`
   csak „felhasználó” lehet, az `idezet` az ő szavai szó szerint; üres idézettel vagy más szerzővel a sor nem érvényes
   (`muhely_allapot.atnezes_ervenyes`, teszttel). A tábla ma üres, ezért a 9. kapu minden lapon piros.
-- **DT-F156m (1):** a kapu az arany lapra is érvényes, az ISTENTISZT-001 8/9. A kiadott lap a Stash-ben marad, a
+- **DT555 (1):** a kapu az arany lapra is érvényes, az ISTENTISZT-001 8/9. A kiadott lap a Stash-ben marad, a
   `kiadas_allapot` mondattal („Az 1. kiadás érvényes; a 2. kiadás javítandói nyitottak.”); ez a Feed Stash-táblájában
   („Kiadás” oszlop) és az olvasói előnézet kártyáján is látszik. Végponttól mérve (`muhely_allapot.py --motivum
   ISTENTISZT-001 ALVIL-001`): az arany lap 8/9, a Stash-ben marad; az ALVIL-001 6/9.
-- **DT-F156n (1): a másolat-gyanús KH-listák nem kerülnek a lapra** (OLVK.10). A generátor (`lexikon_general.py`
+- **DT556 (1): a másolat-gyanús KH-listák nem kerülnek a lapra** (OLVK.10). A generátor (`lexikon_general.py`
   `kh_index`) kihagyja őket, a 4. szakasz hatókör-sora megnevezi a kimaradt igehelyeket; a három migrált lap
   (ISTENTISZT-001, ALVIL-001, TEREMT-002) újragenerálva, csak a 4. szakasz és a Minősítés összesítője változott
   (szó szerint: `naplok/KH_ELREJTES_lapdiff.md`). Az orkesztrátor két feltétele:
@@ -140,7 +140,7 @@ vizsgálata kell (forrás- vagy konverziós hiba?): **N-F156a**. A lapon addig K
     hamis felmentéseké 150–205-ben). **A teljes 5 078 gyanús forrásversre nincs igazolva**; a hamis gyanú és a meg nem fogott
     másolat aránya a teljes táblán ismeretlen. Ez az N-F156a feladata (a nyers HunKar-forrással együtt).
 
-## 7. Az arany lap 2. kiadásának javítandói, osztályonként (DT-F156m)
+## 7. Az arany lap 2. kiadásának javítandói, osztályonként (DT555)
 
 A 2026-11-02-i mérés 61 BUKÁS-tétele (az orkesztrátor üzenetében „63”: az a kalibráció korábbi állása; az idézet-tűrés
 2 hamis jelzést megszüntetett). Sorszám: a `lexikon/ISTENTISZT-001_TUDOMANYOS.md` mai Markdown-sora; a teljes lista

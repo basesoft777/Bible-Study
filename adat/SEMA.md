@@ -1867,7 +1867,7 @@ Proveniencia: scope=genezis/, ujszovetseg/, melyelemzesek/ + konkordancia/Karoli
 
 ---
 
-### 2.48 `lap_atnezesek.tsv` — a lexikonlap vizuális átnézése (olvasói kapu, DT-F156k, DT-F156l, 2026-11-02)
+### 2.48 `lap_atnezesek.tsv` — a lexikonlap vizuális átnézése (olvasói kapu, DT553, DT554, 2026-11-02)
 
 **Kézi** (`manual` proveniencia). Egy sor egy átnézés: a felhasználó a lap egy adott változatát (`lap_commit`) a renderelt nézetben
 blokkonként végignézte, és ezt saját szavaival jóváhagyta. A Feed 9. kapuja (`eszkozok/muhely_allapot.py` `kriterium_9`) ebből
@@ -1882,7 +1882,7 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 | `idezet` | a felhasználó jóváhagyó szavai **szó szerint** (chat); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` (hol hangzott el) |
 
-**Érvényesség (DT-F156l).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
+**Érvényesség (DT554).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
 a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
