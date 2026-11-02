@@ -91,7 +91,7 @@ B_BE_ALLANDO = 0.684               # bemeneti token / állandó karakter a szűk
 B_BE_KAR = 3.178                   # bemeneti token / forráskarakter a B-kérésben (4 pont, átl. |hiba| 7,5%)
 B_KI_KAR = {'high': 1.959, 'medium': 1.5207}     # kimeneti (gondolkodással) token / forráskarakter a B-kérésben, effortonként (4-4 pont)
 A_KI_EFFORT = {'high': 1.0, 'medium': 0.51}  # az egy Strongos kimenet effort-szorzója (F07 M0 (e): medium/high kimenet 33 660 / 66 300 token az 5 nagy kérésen)
-JAVITO_ARANY = {'A': 0.73, 'B': 0.15}           # javító kör költsége / 1. kör költsége. A = nagy: pooled 10,11 / 11,37 USD = 0,890 azokban a futásokban, ahol a javító kör az összes bukott
+JAVITO_ARANY = {'A': 0.73, 'B': 0.15}           # javító kör költsége / 1. kör költsége. A = nagy: pooled A1-ig 10,11 / 11,37 USD = 0,890 (A2-vel 0,73, l. lent) azokban a futásokban, ahol a javító kör az összes bukott
 #                                                  Strongra lefutott (adag1 0,867, adag99 0,883, adag7902 0,84, adag7903 0,95, adag701 0,899 [6,5247 / 7,2575]); az adag7901 részleges javító köre kimarad.
 #                                                  B = kicsi/közepes B-javító: az adag701 mért J001 kérése 0,0174 USD / a B-kérés 0,0471 USD = 0,37 (3 Strong, mind kapun bukott az 1. körben:
 #                                                  8_idezojel, 16_sigla; az M0 J001: 0,0233 USD, 2 Strong); kis minta, manual — a B-rész az adag költségének ~0,6%-a (F07 A1)
