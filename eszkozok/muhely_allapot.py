@@ -51,13 +51,14 @@ KRITERIUMOK = [
 ]
 
 # a nyilvanos reteg feherlistaja: csak ezek a mezok mennek at
-FEHERLISTA_MOTIVUM = ['id', 'cim', 'tema', 'pardes_szint', 'allasfokozat', 'kriteriumok', 'zold_db', 'ossz_db',
-                      'nyitott_jelolt_db', 'elvetett_jelolt_db', 'beepitett_jelolt_db', 'stash', 'olvasoi_mondat']
+FEHERLISTA_MOTIVUM = ['id', 'cim', 'tema', 'pardes_szint', 'allasfokozat', 'lanc', 'teljesult_lepesek', 'zold_db',
+                      'ossz_db', 'elvetett_jelolt_db', 'beepitett_jelolt_db', 'stash', 'olvasoi_mondat']
 # a `nev` (belso kapunev) es az `allapot` (gepi kod) nem megy at; az `allapot` helyett az olvasoi szoveg
-FEHERLISTA_KRITERIUM = ['sorszam', 'szin', 'olvasoi_nev', 'olvasoi_allapot', 'olvasoi_szoveg']
+# a nyilvános rétegben csak a teljesült lépés szerepel (olvasói név és szöveg)
+FEHERLISTA_KRITERIUM = ['sorszam', 'olvasoi_nev', 'olvasoi_szoveg']
 FEHERLISTA_ESEMENY = ['datum', 'motivum', 'olvasoi_esemeny']
 FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
-                    'kapcsolatok_db', 'forditasi_lefedettseg', 'lektori_kerdes', 'utolso_generalas_commit',
+                    'kapcsolatok_db', 'forditasi_lefedettseg', 'utolso_generalas_commit',
                     'verzio', 'kotet_olvasoi']
 FEHERLISTA_TOP = ['_generalt', 'generalva', 'commit', 'rendszer', 'motivumok', 'merok_osszesen', 'heti_tortenes',
                   'elvetett_jeloltek_osszesen']
@@ -118,21 +119,21 @@ OLV_NEV = {1: 'Az adatok összhangja', 2: 'A szövegek ellenőrzése', 3: 'Egy s
            8: 'Függő munka'}
 OLV_ALLAPOT = {ZOLD: 'rendben', PIROS: 'munka van hátra', NINCS: 'még nem vizsgáltuk',
                HIBA: 'az ellenőrzés nem futott le, újra próbáljuk'}
-OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek, ellentmondás nincs.',
-            2: 'A lap szövegei hibátlanul átmentek az ellenőrzésen.',
+OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek.',
+            2: 'A lap szövegei átmentek az ellenőrzésen.',
             3: 'A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz.',
             4: 'Minden vizsgált igehelyről döntöttünk.',
-            5: 'A motívum határáról szóló kérdések megválaszoltak.',
+            5: 'A motívum határa tisztázott.',
             6: 'A lap minden része magyarázattal, kiejtéssel és fordítással áll.',
-            7: 'A lektor minden kérdése lezárult.',
-            8: 'Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka.'}
+            7: 'A lektori átolvasás lezárult.',
+            8: 'A motívum körül minden kérdés rendezett.'}
 OLV_NINCS = {1: 'Az adatellenőrzés még nem futott.', 2: 'Az ellenőrzés még nem futott.',
              3: 'A lap még nincs egy forrásba rendezve.', 4: 'Az igehelyek vizsgálata még nem indult el.',
              5: 'A határ vizsgálata még nem készült el.', 6: 'A lap még nem készült el.',
              7: 'A lektori átolvasás még nem indult el.', 8: 'A függő munka még nem vizsgált.'}
-OLV_ALLAS = {'jelölt': 'Felmerült: igehelyeket gyűjtünk hozzá', 'feldolgozás': 'Feldolgozás alatt',
-             'ellenőrzés': 'Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül',
-             'lezárt (stash)': 'Kész, megjelenésre vár', 'kötetben': 'Megjelent a kötetben'}
+OLV_ALLAS = {'jelölt': 'Felmerült', 'feldolgozás': 'Feldolgozás alatt',
+             'ellenőrzés': 'Ellenőrzés alatt',
+             'lezárt (stash)': 'Kész', 'kötetben': 'Megjelent a kötetben'}
 OLV_KOTET = 'Kötetbe még nincs beosztva'
 
 
@@ -179,6 +180,25 @@ def olvasoi_mondat(feldolgozva, vizsgalat, kizarva, teljesul):
     if kizarva:
         reszek.append('%d kizárva' % kizarva)
     return ', '.join(reszek) + '; a nyolc ellenőrzési lépésből %d teljesül.' % teljesul
+
+
+LANC = ['Felmerült', 'Feldolgozás', 'Ellenőrzés', 'Kész', 'Kötetben']
+LANC_FOK = {'jelölt': 0, 'feldolgozás': 1, 'ellenőrzés': 2, 'lezárt (stash)': 3, 'kötetben': 4}
+
+
+def olvasoi_mondat_nyilvanos(feldolgozva, kizarva, teljesul):
+    """Csak előrehaladás: `N igehely feldolgozva, K kizárva; a nyolc ellenőrzési lépésből Z teljesül.`"""
+    reszek = ['%d igehely feldolgozva' % feldolgozva]
+    if kizarva:
+        reszek.append('%d kizárva' % kizarva)
+    return ', '.join(reszek) + '; a nyolc ellenőrzési lépésből %d teljesül.' % teljesul
+
+
+def lanc(fok):
+    """Az állapotlánc: a motívum melyik fokon áll (kész / aktuális / következő, semleges szavakkal)."""
+    i = LANC_FOK[fok]
+    return [{'nev': n, 'allapot': 'kesz' if k < i else 'aktualis' if k == i else 'kovetkezo'}
+            for k, n in enumerate(LANC)]
 
 
 def olvasoi_esemeny(e):
@@ -306,8 +326,8 @@ def lektor_zart(sor):
 
 
 def masodik_kiadas(sor):
-    """A `/kiadas` lektori kérdései (forras=lektor) a következő kiadáshoz tartoznak: nem blokkolnak."""
-    return sor.get('forras', '').strip() == 'lektor'
+    """A `/kiadas` kimenetéből jövő kérdések (forras=lektor és proza_lefedettseg) a következő kiadáshoz tartoznak: nem blokkolnak."""
+    return sor.get('forras', '').strip() in ('lektor', 'proza_lefedettseg')
 
 
 def kriterium_5(motivum):
@@ -559,14 +579,20 @@ def feherlista(d, kulcsok):
 
 
 def nyilvanos(belso):
+    """A nyilvános réteg: CSAK előrehaladás (DT-F156j). Fehérlista, nem feketelista: piros kapu, hibaszám, nyitott
+    jelölt, megállt feladat és bármely akadályt jelző mező nem megy át."""
     ki = feherlista(belso, FEHERLISTA_TOP)
     ki['_generalt'] = belso['_generalt'].replace('feed_belso', 'feed_nyilvanos') + ' (a belső réteg fehérlistás szűrése)'
+    o = belso['merok_osszesen']
+    ki['merok_osszesen'] = {k: o[k] for k in ('motivum_db', 'kesz_db', 'kapu_zold', 'kapu_ossz')}
     ki['heti_tortenes'] = [feherlista(x, FEHERLISTA_ESEMENY) for x in belso['heti_tortenes']]
     ki['motivumok'] = []
     for m in belso['motivumok']:
         e = feherlista(m, FEHERLISTA_MOTIVUM)
         e['allasfokozat'] = m['allasfokozat_olvasoi']
-        e['kriteriumok'] = [feherlista(k, FEHERLISTA_KRITERIUM) for k in m['kriteriumok']]
+        e['lanc'] = lanc(m['allasfokozat'])
+        e['teljesult_lepesek'] = [feherlista(k, FEHERLISTA_KRITERIUM) for k in m['kriteriumok'] if k['allapot'] == ZOLD]
+        e['olvasoi_mondat'] = m['olvasoi_mondat_nyilvanos']
         if m.get('stash'):
             e['stash'] = feherlista(m['stash'], FEHERLISTA_STASH)
         ki['motivumok'].append(e)
@@ -621,6 +647,7 @@ def main():
             'id': mid, 'cim': m['ui_cimke'] or m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
             'allasfokozat': allasfokozat(m, zold_db, len(lista), krit),
             'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit)],
+            'olvasoi_mondat_nyilvanos': olvasoi_mondat_nyilvanos(st['elofordulas_osz'] + st['elofordulas_usz'], len(elv), zold_db),
             'olvasoi_mondat': olvasoi_mondat(st['elofordulas_osz'] + st['elofordulas_usz'],
                                              sum(1 for j in sajat_j if blokkolo_jelolt(j)), len(elv), zold_db),
             'tsv_statusz': m['statusz'], 'tsv_statusz_eltérés': (m['statusz'] == 'publikálható') != (zold_db == 8),

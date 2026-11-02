@@ -42,9 +42,9 @@
 </style>
 <div class="mh" id="mh">
   <header>
-    <h1>A műhely állapota</h1>
+    <h1>A műhely előrehaladása</h1>
     <p id="mh-summary"><span data-draw="osszegzes" data-source="osszes">—</span></p>
-    <p class="muted">„Kész” az a motívum, amelynél mind a nyolc ellenőrzési lépés teljesül. Ami még nem teljesül, az is látszik.</p>
+    <p class="muted">„Kész” az a motívum, amelynél mind a nyolc ellenőrzési lépés teljesül.</p>
   </header>
 
   <div class="tabs" role="tablist">
@@ -56,48 +56,24 @@
     <div class="tiles">
       <div class="tile"><b data-draw="t_kesz" data-source="osszes" data-field="kesz">—</b><span>motívum kész</span></div>
       <div class="tile"><b data-draw="t_kapu" data-source="osszes" data-field="kapu_zold">—</b><span>teljesült ellenőrzési lépés</span></div>
-      <div class="tile"><b data-draw="t_nyitott" data-source="osszes" data-field="nyitott_jelolt">—</b><span>igehely vizsgálat alatt</span></div>
-      <div class="tile"><b data-draw="t_elvetett" data-source="osszes" data-field="elvetett_jelolt">—</b><span>igehely kizárva, indoklással</span></div>
+      <div class="tile"><b data-draw="t_beepitett" data-source="osszes" data-field="beepitett">—</b><span>igehely a motívumokban</span></div>
+      <div class="tile"><b data-draw="t_elvetett" data-source="osszes" data-field="elvetett">—</b><span>igehely kizárva, indoklással</span></div>
     </div>
 
     <div class="card">
       <h2>Hol tart az egyes motívum</h2>
-      <p class="muted">Zöld: rendben. Piros: munka van hátra. Sárga: még nem vizsgáltuk. A vizsgálat alatt álló igehelyek még nem eredmények.</p>
       <div class="scroll">
-        <table data-source="matrix" data-row-key="id">
-          <thead><tr>
-            <th data-field="id">Motívum</th>
-            <th data-field="mondat">Hol tart</th>
-            <th data-field="allas">Állapot</th>
-            <th data-field="k1">Az adatok összhangja</th>
-            <th data-field="k2">A szövegek ellenőrzése</th>
-            <th data-field="k3">Egy szerkesztett forrásból épül</th>
-            <th data-field="k4">Eldöntendő igehelyek</th>
-            <th data-field="k5">A motívum határa</th>
-            <th data-field="k6">Olvasható lap</th>
-            <th data-field="k7">Lektori átolvasás</th>
-            <th data-field="k8">Függő munka</th>
-          </tr></thead>
-          <tbody data-draw="matrix_tabla"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Mi van hátra</h2>
-      <p class="muted">Minden lépés, amely még nem teljesül, a saját szövegével.</p>
-      <div class="scroll">
-        <table data-source="hatra" data-row-key="kulcs">
-          <thead><tr><th data-field="motivum">Motívum</th><th data-field="nev">Lépés</th><th data-field="allapot">Állapot</th><th data-field="szoveg">Mi történik</th></tr></thead>
-          <tbody data-draw="hatra_tabla"></tbody>
+        <table data-source="motivumok" data-row-key="id">
+          <thead><tr><th data-field="id">Motívum</th><th data-field="allas">Állapot</th><th data-field="mondat">Hol tart</th><th data-field="lepesek">Teljesült lépések</th></tr></thead>
+          <tbody data-draw="mot_tabla"></tbody>
         </table>
       </div>
     </div>
 
     <div class="grid2">
       <div class="card">
-        <h2>Kész, megjelenésre váró motívumok</h2>
-        <p class="muted">Azok a motívumok, amelyeknél mind a nyolc ellenőrzési lépés teljesül, leírással és számokkal.</p>
+        <h2>Kész motívumok</h2>
+        <p class="muted">Leírással és számokkal, amint egy motívumnál mind a nyolc lépés teljesül.</p>
         <p data-draw="stash_ures" data-source="stash">—</p>
         <div class="scroll">
           <table data-source="stash" data-row-key="id">
@@ -123,6 +99,32 @@
     <p class="warn">Belső réteg: hibaszövegek és mérőrészletek. Ne oszd meg a hivatkozást, amíg ez a fül a lapon van.</p>
     <p class="muted">Forrás: a repó meglévő mérői, az eszkozok/muhely_allapot.py összesítésében. A „kész” a nyolc kapuból számolódik, nem a motívumtábla állapotmezőjéből.</p>
     <div class="card">
+      <h2>Mind a nyolc kapu</h2>
+      <p class="muted">Zöld: rendben. Piros: munka van hátra. Sárga: még nem vizsgáltuk.</p>
+      <div class="scroll">
+        <table data-source="belso_matrix" data-row-key="id">
+          <thead><tr>
+            <th data-field="id">Motívum</th><th data-field="mondat">Hol tart</th><th data-field="allas">Állapot</th>
+            <th data-field="k1">Az adatok összhangja</th><th data-field="k2">A szövegek ellenőrzése</th>
+            <th data-field="k3">Egy szerkesztett forrásból épül</th><th data-field="k4">Eldöntendő igehelyek</th>
+            <th data-field="k5">A motívum határa</th><th data-field="k6">Olvasható lap</th>
+            <th data-field="k7">Lektori átolvasás</th><th data-field="k8">Függő munka</th>
+          </tr></thead>
+          <tbody data-draw="matrix_tabla"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Mi van hátra</h2>
+      <p class="muted">Minden lépés, amely még nem teljesül, a saját szövegével.</p>
+      <div class="scroll">
+        <table data-source="belso_hatra" data-row-key="kulcs">
+          <thead><tr><th data-field="motivum">Motívum</th><th data-field="nev">Lépés</th><th data-field="allapot">Állapot</th><th data-field="szoveg">Mi történik</th></tr></thead>
+          <tbody data-draw="hatra_tabla"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
       <h2>Mérők részletei</h2>
       <p class="muted">Minden sor a mérő saját proveniencia-sorával. Csak a nem zöld sorok látszanak.</p>
       <div class="scroll">
@@ -139,42 +141,21 @@
   const fmt = d3.format(',');
 
   dash.calc('osszes', {
-    title: 'Összesítés', description: 'A motívumok ellenőrzési lépéseinek összesítése.',
+    title: 'Összesítés', description: 'A motívumok előrehaladásának összesítése.',
     inputs: ['motivumok'],
     fn: (motivumok) => [{
       kesz: motivumok.filter((m) => Number(m.zold_db) === Number(m.ossz_db)).length,
       kapu_zold: motivumok.reduce((s, m) => s + Number(m.zold_db), 0),
       kapu_ossz: motivumok.reduce((s, m) => s + Number(m.ossz_db), 0),
-      nyitott_jelolt: motivumok.reduce((s, m) => s + Number(m.nyitott_jelolt), 0),
-      elvetett_jelolt: motivumok.reduce((s, m) => s + Number(m.elvetett_jelolt), 0),
+      beepitett: motivumok.reduce((s, m) => s + Number(m.beepitett), 0),
+      elvetett: motivumok.reduce((s, m) => s + Number(m.elvetett), 0),
       db: motivumok.length,
     }],
   });
 
-  dash.calc('matrix', {
-    title: 'Lépések motívumonként', description: 'Motívumonként a nyolc ellenőrzési lépés állapota szavakkal.',
-    inputs: ['motivumok', 'kapuk'],
-    fn: (motivumok, kapuk) => motivumok.map((m) => {
-      const o = {id: m.id, mondat: m.mondat, allas: m.allas};
-      for (let i = 1; i <= 8; i++) {
-        const k = kapuk.find((x) => x.motivum === m.id && Number(x.sorszam) === i);
-        o['k' + i] = k ? k.allapot : '';
-        o['s' + i] = k ? k.szin : '';
-      }
-      return o;
-    }),
-  });
-
-  dash.calc('hatra', {
-    title: 'Mi van hátra', description: 'A még nem teljesülő lépések.',
-    inputs: ['kapuk'],
-    fn: (kapuk) => kapuk.filter((k) => k.szin !== 'zold'),
-  });
-
   function osztaly(sz) { return sz === 'zold' ? 'zold' : sz === 'piros' ? 'piros' : sz === 'hiba' ? 'hiba' : 'nincs'; }
 
-  function tablaTolt(tbl, rows, oszlopok) {
-    const tb = tbl;
+  function tablaTolt(tb, rows, oszlopok) {
     tb.replaceChildren();
     for (const r of rows) {
       const tr = document.createElement('tr');
@@ -205,22 +186,17 @@
     const o = g.data[0];
     el.textContent = o.kesz + ' motívum kész a ' + o.db + '-ből; ' + o.kapu_zold + ' ellenőrzési lépés teljesül a ' + o.kapu_ossz + '-ből.';
   });
-  for (const [nev, mezo] of [['t_kesz', 'kesz'], ['t_kapu', 'kapu_zold'], ['t_nyitott', 'nyitott_jelolt'], ['t_elvetett', 'elvetett_jelolt']]) {
+  for (const [nev, mezo] of [['t_kesz', 'kesz'], ['t_kapu', 'kapu_zold'], ['t_beepitett', 'beepitett'], ['t_elvetett', 'elvetett']]) {
     dash.draw(nev, (el) => {
       const g = dash.data('osszes');
       if (g.status !== 'ok' || !g.data.length) return;
       el.textContent = fmt(g.data[0][mezo]);
     });
   }
-  dash.draw('matrix_tabla', (el) => {
-    const g = dash.data('matrix');
+  dash.draw('mot_tabla', (el) => {
+    const g = dash.data('motivumok');
     if (g.status !== 'ok') return;
-    tablaTolt(el, g.data, ['id', 'mondat', 'allas', 'k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8']);
-  });
-  dash.draw('hatra_tabla', (el) => {
-    const g = dash.data('hatra');
-    if (g.status !== 'ok') return;
-    tablaTolt(el, g.data, ['motivum', 'nev', 'allapot', 'szoveg']);
+    tablaTolt(el, g.data, ['id', 'allas', 'mondat', 'lepesek']);
   });
   dash.draw('stash_tabla', (el) => {
     const g = dash.data('stash');
@@ -230,12 +206,22 @@
   dash.draw('stash_ures', (el) => {
     const g = dash.data('stash');
     if (g.status !== 'ok') return;
-    el.textContent = g.data.length ? '' : 'Még egy motívumnál sem teljesül mind a nyolc ellenőrzési lépés.';
+    el.textContent = g.data.length ? '' : 'A kész motívumok itt jelennek meg.';
   });
   dash.draw('tortenes_tabla', (el) => {
     const g = dash.data('tortenes');
     if (g.status !== 'ok') return;
     tablaTolt(el, g.data, ['datum', 'motivum', 'esemeny']);
+  });
+  dash.draw('matrix_tabla', (el) => {
+    const g = dash.data('belso_matrix');
+    if (g.status !== 'ok') return;
+    tablaTolt(el, g.data, ['id', 'mondat', 'allas', 'k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8']);
+  });
+  dash.draw('hatra_tabla', (el) => {
+    const g = dash.data('belso_hatra');
+    if (g.status !== 'ok') return;
+    tablaTolt(el, g.data, ['motivum', 'nev', 'allapot', 'szoveg']);
   });
   dash.draw('belso_tabla', (el) => {
     const g = dash.data('belso_kapuk');

@@ -180,3 +180,16 @@ A felhasználó (az orkesztrátor javaslataira, 2026-11-02): **„Igen, mind”*
 ## A 7. kapu és a következő kiadás (2026-11-02)
 
 A felhasználó: az ISTENTISZT-001 „ettől független lezárható / a lektori átnézés eredménye egy új kiadás”. A `/kiadas` lektori kérdései (`forras=lektor`) ezért a következő kiadáshoz tartoznak: a 7. kapu nem számolja őket blokkolónak, a Feed „2. kiadáshoz: N kérdés” jelöléssel mutatja (belső és nyilvános rétegben is, a kapu olvasói szövegében). A határ- és lefedettségi kérdések (`forras=hatar`, `proza_lefedettseg`) blokkolók maradnak. A #561 merge-e után a DT-F156b alkalmazása (F156.10) ide, erre az ágra került át.
+
+## DT-F156i ✅ eldöntve — a `/kiadas` kimenetéből jövő kérdések a 2. kiadáshoz tartoznak
+
+A felhasználó (az orkesztrátor továbbításában, 2026-11-02): **„Igen, mindkettő”** — a két lefedettségi kérdés (Ézs 41:25, közben elutasítva; 1Móz 4:26 → Sof 3:9, a lezárásnál a 2. kiadásba sorolva) is a 2. kiadáshoz tartozik. Általános szabály: a `/kiadas` kimenetéből jövő kérdések (`forras=lektor` és `forras=proza_lefedettseg`) a következő kiadás bemenetei, a 7. kaput nem blokkolják, „2. kiadáshoz: N kérdés”-ként látszanak; a határ-kérdések (`forras=hatar`) blokkolók maradnak. Alkalmazva a `masodik_kiadas`-ban, teszttel.
+
+## DT-F156j ✅ eldöntve — olvasói előnézet, a nyilvános réteg csak előrehaladást mutat
+
+A felhasználó (az orkesztrátor továbbításában, 2026-11-02): önálló olvasói előnézet a Feedből és a Stash-ből („a feed / stash olvasó előnézet”), és a feltétele: **„ott nem kell látszani hogy megakadt valami”**. (Ugyanekkor visszavonta a kiadás szerinti bontást a Feedből: az a lektori felületre való; a Dashboardból és a generátorból kivettem.)
+
+- **Nyilvános réteg (JSON, Dashboard „nyilvános” fül, előnézet): csak előrehaladás.** Állapotlánc (melyik fokon áll: kész / aktuális / következő), feldolgozott igehelyek, a teljesült lépések (csak a teljesültek, név szerint), heti történés (új igehely, új változat, kizárt igehely „indoklással”), a Stash leírása és statja. **Nem szerepel:** piros kapu, „munka van hátra”, „nincs mérő”, megállt/függő feladat, hibaszám, nyitott jelölt vagy döntés, „vizsgálat alatt”, a lektori kérdések száma. A zöld lépések szövege is akadályt nem említő szóval készült.
+- **Belső réteg és Dashboard belső füle:** minden kapu, a „Mi van hátra”, a hibaszövegek, a proveniencia.
+- **Teszt:** a nyilvános kimenet fehérlistás, csak teljesült lépést hordoz, és egyetlen szövege sem tartalmaz akadályt, hibát vagy nyitott munkát jelző szót (`TILTOTT_SZAVAK`).
+- **Előnézet:** `eszkozok/muhely_felulet/olvaso_elonezet.py` → sima HTML-artifact, A. Olvasó arculat, mindig világos, a generált JSON-ból.
