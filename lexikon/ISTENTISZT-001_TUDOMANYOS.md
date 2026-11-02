@@ -1758,7 +1758,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 **Hogyan hivatkozz:**
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
-- Státusz: publikálható (`v3`, 2026.09.22)
+- Státusz: publikálható (`v4`, 2026.11.02)
 - Generálva: 2026-10-29
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
@@ -1825,7 +1825,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | Teljes cím | Segítségül hívni az Úr nevét |
 | Téma | Pneumatológia/istentisztelet |
 | PaRDeS-szint | Drash |
-| Státusz | publikálható (`v3`, 2026.09.22) |
+| Státusz | publikálható (`v4`, 2026.11.02) |
 | Azonosság típusa | formulaikus |
 | Negatív kritérium | az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: "[valaki] hívja segítségül az Úr nevét"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT478, DT476 K4). Az Újszövetségben az ἐπικαλέομαι (epikaleomai) mellett a névnek (ὄνομα (onoma)) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
 | Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül) |
