@@ -2637,3 +2637,64 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
 SZINT['E32'] = 'HIBA'
 HATOKOR_SZABALYOK.add('E32')
 SZABALYOK_FUGGVENYEI['E32'] = e32_kiosztott_helyorzo_literalban
+
+
+# ---------------------------------------------------------------------------
+# E33 -- az uj/modositott tanulmanyfajl bekerul-e a tanulmany-regiszterbe (#149, DT-F149a)
+# ---------------------------------------------------------------------------
+# A `pardes.db` minden epitesekor a `sqlite_epit.py` ujragenerálja a regisztert a
+# `genezis/`, `ujszovetseg/`, `melyelemzesek/` fajljaibol (`eszkozok/tanulmany_regiszter.py`).
+# Ha az uj tanulmany fajlneve vagy elso cimsora nem ertelmezheto, vagy a kettő tartomanya
+# eltér, a tanulmany NEM kerul a regiszterbe -- ez a szabaly a PR-ban mondja meg, melyik es miert
+# (JELENTES-szint: nem sertes, nem buktat). A `tematikus_lezart/` fajlok nem tartomanyosak:
+# a motivumon at erhetok el; itt csak a nevkonvenciot (`*_tematikus.md`) nezzuk.
+
+E33_MAPPAK = ('genezis', 'ujszovetseg', 'melyelemzesek')
+E33_MINTA = {'genezis': '_bovitett.md', 'ujszovetseg': '_bovitett.md', 'melyelemzesek': '_melyelemzes.md'}
+E33_NEM_TANULMANY = ('Konnyu_ellenorzes',)
+
+
+def e33_tanulmany_regiszterbe_kerul(fajlok):
+    """E33: a genezis/, ujszovetseg/, melyelemzesek/ uj vagy modositott .md fajlja, amely a tanulmany-regiszterbe
+    nem kerulne (nev- vagy cimsor-hiba, tartomany-eltérés), es a tematikus_lezart/ fajl nevkonvenciojanak serulese.
+    FIGYELMEZTETES (JELENTES): a PR-ban latszik, nem buktat."""
+    import sys as _sys
+    talalatok = []
+    teljes = bool(fajlok) and fajlok[0] == '__TELJES__'
+    lista = sorted(f.replace(os.sep, '/') for f in fajlok) if not teljes else []
+    if teljes:
+        for m in E33_MAPPAK + ('tematikus_lezart',):
+            d = os.path.join(ROOT, m)
+            if os.path.isdir(d):
+                lista += [m + '/' + n for n in sorted(os.listdir(d)) if n.endswith('.md')]
+    erdekes = [f for f in lista if f.endswith('.md') and f.split('/')[0] in E33_MAPPAK + ('tematikus_lezart',)
+               and f.count('/') == 1]
+    if not erdekes:
+        return talalatok
+    _sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    import tanulmany_regiszter as TR
+    kihagyott = None
+    for f in erdekes:
+        mappa, nev = f.split('/')
+        if mappa == 'tematikus_lezart':
+            if not nev.startswith(E33_NEM_TANULMANY) and not nev.endswith('_tematikus.md'):
+                talalatok.append(Talalat('E33', SZINT['E33'], f, 0,
+                                         'a tematikus tanulmány neve nem `*_tematikus.md` (a motívumon át érhető el, a regiszterbe nem kerül; l. sablonok/4_PaRDeS_tematikus_sablon.md)'))
+            continue
+        if nev.startswith(E33_NEM_TANULMANY):
+            continue
+        if not nev.endswith(E33_MINTA[mappa]):
+            talalatok.append(Talalat('E33', SZINT['E33'], f, 0,
+                                     'nem kerül a tanulmány-regiszterbe: a fájlnév nem `*%s` végű (l. sablonok/2_PaRDeS_bovitett_sablon.md, Fájlnév-konvenció)' % E33_MINTA[mappa]))
+            continue
+        if kihagyott is None:
+            kihagyott = dict(TR.kinyer(ROOT, TR.karoli_kulcsok(ROOT)).kihagyott)
+        if f in kihagyott:
+            talalatok.append(Talalat('E33', SZINT['E33'], f, 0,
+                                     'nem kerül a tanulmány-regiszterbe: %s (l. sablonok/2_PaRDeS_bovitett_sablon.md, Fájlnév-konvenció és első címsor)' % kihagyott[f]))
+    return talalatok
+
+
+SZINT['E33'] = 'FIGYELMEZTETES'
+FAJLSZINTU_SZABALYOK.add('E33')
+SZABALYOK_FUGGVENYEI['E33'] = e33_tanulmany_regiszterbe_kerul
