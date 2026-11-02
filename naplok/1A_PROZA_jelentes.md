@@ -131,6 +131,14 @@ Az ISTENTISZT-001 Feed-állása a commit és a friss main beolvasztása után **
 | KIRALY-001 | 9 | 1 | 8 a lap újragenerálásakor (ebből 6 arany szintűvé válik) | **2** (Zsid 5:10, 6:20) | 2 | 2 |
 | ISTENTISZT-001 | 22 | **22** | 4 | 0 | 0 | 0 |
 | TEREMT-002 | 3 | 2 | 3 | **1** (Jer 4:23) | 1 | 0 |
-| **összesen** | **249** | **24** | **15** (7 most, 8 a KIRALY-001-en) | **218** | **143** | **217** |
+| **összesen** | **249** | **25** | **15** (7 most, 8 a KIRALY-001-en) | **218** | **143** | **217** |
 
 *A „gépileg javult” Funkció-sorok a meglévő címkéből jönnek; a mérő 3 szótól elfogadja őket („ismétlődés, személyes könyörgésben”). Hogy a címke a próza-menetben teljes funkció-mondattá bővüljön-e, az a menet ítélete.*
+
+## 7. Beolvasztás a #595 után (2026-11-02)
+
+A #595 (TEREMT-002, definíció nélküli lábjegyzet) szabálya a 24.; az 1/a próza-szabály az orkesztrátor megállapodása szerint a **25.** (1A.8). A friss main beolvasztása (1A.9) után az `ellenoriz.py`-ban mindkettő fut: a 24. RENDBEN, a 25. JELENTÉS (8 motívum, 224 nem arany szintű igehely); a teljes futás RENDBEN 19, SÉRTÉS 0, KÉZI 2, JELENTÉS 7. Tesztek: `teszt_proza_1a.py` 11 OK, `teszt_ellenoriz_vedokorlat.py` (a 24. szabály tesztjei is) 31 OK, `teszt_muhely_allapot.py` 21 OK.
+
+A TEREMT-002 lapja a beolvasztott generátorral újragenerálva (1A.10): a három DT-F1Ab „Funkció:” sor megmaradt; a lapon 131 lábjegyzet-hivatkozás, 93 különböző kulcs, **0 definíció nélküli**. A másodszori újragenerálás bájtra azonos (stabil); a main lapjához képest az egyetlen eltérés két üres sor a lábjegyzet-blokk előtt, amelyet a beolvasztott generátor ír.
+
+*Javítás:* a 6. szakasz összesítő sorában az arany szintű igehelyek száma 25 (22 + 1 + 2), nem 24; a KIRALY-001 újragenerálása után 31.
