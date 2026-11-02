@@ -31,7 +31,7 @@ HEB_BETU = 'א-ת\ufb1d-\ufb4f'  # a prezentációs alakok (pl. U+FB2A) is; esca
 HEB_JEL = 'ְ-ׇ'
 ROVIDITES_RE = re.compile(r'(?<![%s%s])׳([%s][%s]*)(?![%s%s])' % (HEB_BETU, HEB_JEL, HEB_BETU, HEB_JEL,
                                                                      HEB_BETU, HEB_JEL))
-JAHVE_CIM = 'יְהוָה (Jahve), az Úr'
+JAHVE_CIM = 'יְהוָה (JHVH), az Úr'
 ALTALANOS = 'a BDB rövidítése; a feloldás a szócikk szövegéből derül ki'
 
 

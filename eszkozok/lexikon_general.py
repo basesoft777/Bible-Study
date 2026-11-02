@@ -628,7 +628,7 @@ ellenőrzéshez való, olvasáskor átugorható.
 vizsgált helyek, M a minősítés.
 
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
-betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
 szócikk szövegéből derül ki.
 

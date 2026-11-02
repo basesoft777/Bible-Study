@@ -10,7 +10,7 @@ kézi forrás nem változik (DT28), a javítás a kimenet rétegben él, ezért 
     idezojel   egyenes " -> „…” a magyar szövegben (a kód, a HTML, a hivatkozás-cél és a proveniencia érintetlen)
     konyv      a könyvrövidítés a `konkordancia/Konyv_normalizalo_tabla.tsv` magyar alakjára; a szó szerint idézett,
                angol nyelvű sor (a szótár eredetije) nem változik
-    bdb        a BDB torz jelei (lásd BDB_CSERE) és a héber szóhoz tapadt latin pontjel
+    bdb        a BDB-átalakítás maradék jelei: a felső index ^ jele, a dupla vessző, a héber rafe (lásd BDB_CSERE)
 
 Az olvasói szöveg határa megegyezik az olvasói kapuéval (`olvasoi_kapu.py`): nem olvasói a HTML-megjegyzés, a kódblokk,
 az idézetblokk (`>`, a szótár angol eredetije), a proveniencia-lábjegyzet, valamint a Tartalomjegyzék, a Jelmagyarázat és
@@ -78,13 +78,15 @@ def konyv_alias():
 
 
 # --- BDB ---------------------------------------------------------------------------------------------------------------
-# A BDB OCR-jének torz jelei: a sajtóhibás szöveg olvasható alakja. A héber betűhöz tapadó latin pontjel (rafe) a BDB
-# nyomtatott pontozása, az olvasónak zaj.
+# A BDB digitális szövegének (DictBDB.json) átalakításából maradt jelek. Eredet: a `konkordancia/_convert_bdb.py` a
+# <sup>…</sup> felső indexet `^…`-ra írta (Ges<sup>§ 48d</sup> -> Ges^§ 48d), az OCR a ", " helyére ",,"-t is tett; a
+# rafe (U+05BF) a nyomtatott héber pontozás jele, olvasásnál zaj. A nyers forrás és a konverzió nem változik; a
+# megjelenítés olvasható alakot ad. NEM javítja a „She®°ôl”-féle torz átírást: ott a helyes alak csak találgatható
+# (a hiány nem tölthető ki asszociatív anyaggal), ezért az a kapun maradék.
 BDB_CSERE = [
-    (re.compile('ֿ'), ''),                      # rafe (U+05BF)
-    (re.compile(r'(?<=[^\s,]),,'), ','),         # dupla vessző (OCR)
-    (re.compile(r'(?<=[a-z])\^(?=[A-Za-z§])'), ' '),   # „Ges^§ 48d”, „Kö^ii”: a nyomtatott felső index jele
-    (re.compile(r'[®°]'), ''),
+    (re.compile('ֿ'), ''),                          # rafe
+    (re.compile(r'(?<=[^\s,]),,'), ','),            # dupla vessző (OCR)
+    (re.compile(r' ?(?<!\[)\^ ?'), ' '),             # a felső index jele; a lábjegyzet-jel [^k1] érintetlen
 ]
 
 
@@ -144,7 +146,8 @@ def bdb_sor(sor):
 
 
 def olvasoi_sorok(szoveg):
-    """(sorszám, sor) az olvasói szöveg soraiból; a többit a hívó változatlanul hagyja."""
+    """(sorszám, sor, idézetblokk-e) az olvasói szöveg soraiból; a többit a hívó változatlanul hagyja. Az idézetblokk a
+    szótár szó szerinti idézete: csak a konverzió maradék jelei (bdb) javulnak benne."""
     komment = kod = False
     szakasz = ''
     for n, sor in enumerate(szoveg.split('\n')):
@@ -166,22 +169,22 @@ def olvasoi_sorok(szoveg):
         m = re.match(r'^(#{1,2})\s+(.*)', s)
         if m:
             szakasz = m.group(2).strip()
-        if szakasz.startswith(KIZART_SZAKASZ) or s.startswith('>'):
+        if szakasz.startswith(KIZART_SZAKASZ):
             continue
         if re.match(r'^\[\^[^\]]+\]:\s*(?:proveniencia|forrás)\s*:', s) or 'scope=' in s and s.startswith('[^'):
             continue
-        yield n, sor
+        yield n, sor, s.startswith('>')
 
 
-def alkalmaz(szoveg, idezojel=True, konyv=True, bdb=False):
+def alkalmaz(szoveg, idezojel=True, konyv=True, bdb=True):
     sorok = szoveg.split('\n')
-    for n, sor in olvasoi_sorok(szoveg):
+    for n, sor, idezet in olvasoi_sorok(szoveg):
         uj = sor
         if bdb:
             uj = bdb_sor(uj)
-        if konyv:
+        if konyv and not idezet:
             uj = konyv_sor(uj)
-        if idezojel:
+        if idezojel and not idezet:
             uj = idezojel_sor(uj)
         sorok[n] = uj
     return '\n'.join(sorok)

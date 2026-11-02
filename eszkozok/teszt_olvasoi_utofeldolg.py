@@ -62,6 +62,22 @@ class TestKonyv(unittest.TestCase):
         self.assertEqual(OU.konyv_sor(s), '`Csel 2:21` és [ApCsel 2:21](Csel_2:21.md)')
 
 
+class TestBdb(unittest.TestCase):
+    def test_felso_index_jele(self):
+        self.assertEqual(OU.bdb_sor('(Ges^§ 48d Nes^Marg. 15) és Kö^ii. 1. 512'),
+                         '(Ges § 48d Nes Marg. 15) és Kö ii. 1. 512')
+
+    def test_labjegyzet_jel_marad(self):
+        self.assertEqual(OU.bdb_sor('szöveg[^k12] és [^m3]'), 'szöveg[^k12] és [^m3]')
+
+    def test_dupla_vessszo_es_rafe(self):
+        self.assertEqual(OU.bdb_sor('ᾅδης,, ὁ'), 'ᾅδης, ὁ')
+        self.assertEqual(OU.bdb_sor('שֶׁםֿ 1Sám'), 'שֶׁם 1Sám')
+
+    def test_torz_atiras_nem_talalgat(self):
+        self.assertEqual(OU.bdb_sor('She®°ôl'), 'She®°ôl')
+
+
 class TestAlkalmaz(unittest.TestCase):
     def test_hatarok(self):
         szoveg = '\n'.join([
@@ -74,6 +90,7 @@ class TestAlkalmaz(unittest.TestCase):
         ki = OU.alkalmaz(szoveg).split('\n')
         self.assertEqual(ki[2], 'Szó „egy” és Sof 3:9.')
         self.assertEqual(ki[3], '> "idézetblokk" Zef 3:9')
+        self.assertEqual(OU.alkalmaz('> Ges^§ 48d "x" Zef 3:9'), '> Ges § 48d "x" Zef 3:9')
         self.assertEqual(ki[4], '<!-- "komment" Zef 3:9 -->')
         self.assertEqual(ki[6], '"kód" Zef 3:9')
         self.assertEqual(ki[8], '[^k1]: forrás: `x` · "nyers" Zef 3:9')
