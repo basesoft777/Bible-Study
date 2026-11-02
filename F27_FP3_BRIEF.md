@@ -11,6 +11,7 @@ kovetkezo: "/kovetkezo a #158 (Thayer API-kötegelő) lezárása után; a D46 fe
 olvas: [F132_THAYER_SZAKASZ_BRIEF.md, F142_THAYER_M3_BRIEF.md, F153_THAYER_KAROLI_TELJES_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, naplok/F132_THAYER_SZAKASZ_naplo.md, naplok/THAYER_API_KOTEG_naplo.md, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Konyv_normalizalo_tabla.tsv, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/thayer_api_koteg.py, eszkozok/forditas_kapuk.py, eszkozok/normalizal.py, DONTESEK.md]
 ir: [naplok/FP3_koltseg.py, naplok/FP3_arany.py, naplok/FP3_arany_strongok.txt, naplok/FP3_veletlen.py, naplok/FP3_veletlen.md, naplok/FP3_m1_strongok.tsv, naplok/FP3_m1_strongok.txt, NYITOTT_FELADATOK.md, adat/forditasok.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, forditas/thayer_api/, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_hibas.tsv, naplok/FP3_M0.py, naplok/FP3_arany.md, DONTESEK.md]
 fugg: [158]
+nem_fugg: [159]
 ---
 
 # F27_FP3_BRIEF.md — Thayer-fordítás Sonnettel: felmérés és mérő adag a #132 szakaszos láncán, API-n
