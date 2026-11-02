@@ -57,7 +57,7 @@ FEHERLISTA_MOTIVUM = ['id', 'cim', 'tema', 'pardes_szint', 'allasfokozat', 'lanc
 # a nyilvános rétegben csak a teljesült lépés szerepel (olvasói név és szöveg)
 FEHERLISTA_KRITERIUM = ['sorszam', 'olvasoi_nev', 'olvasoi_szoveg']
 FEHERLISTA_ESEMENY = ['datum', 'motivum', 'olvasoi_esemeny']
-FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
+FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'negativ_kriterium', 'folerendelt_fogalom', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
                     'kapcsolatok_db', 'forditasi_lefedettseg', 'utolso_generalas_commit',
                     'verzio', 'kotet_olvasoi']
 FEHERLISTA_TOP = ['_generalt', 'generalva', 'commit', 'rendszer', 'motivumok', 'merok_osszesen', 'heti_tortenes',
@@ -532,6 +532,7 @@ def stash_adat(m, kriteriumok, elofordulasok, kapcsolatok, usz, commit_lapon):
     k6 = kriteriumok['6']
     return {
         'cim': m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
+        'negativ_kriterium': m['negativ_kriterium'], 'folerendelt_fogalom': m['folerendelt_fogalom'],  # DT-F156e
         'terjedelem_szo': szavak,
         'kotet': None, 'kotet_megjegyzes': 'nincs kötet-adat (DT-F156d)', 'kotet_olvasoi': OLV_KOTET,
         'elofordulas_osz': osz, 'elofordulas_usz': len(sajat) - osz,

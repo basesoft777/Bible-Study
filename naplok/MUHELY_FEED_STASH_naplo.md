@@ -193,3 +193,7 @@ A felhasználó (az orkesztrátor továbbításában, 2026-11-02): önálló olv
 - **Belső réteg és Dashboard belső füle:** minden kapu, a „Mi van hátra”, a hibaszövegek, a proveniencia.
 - **Teszt:** a nyilvános kimenet fehérlistás, csak teljesült lépést hordoz, és egyetlen szövege sem tartalmaz akadályt, hibát vagy nyitott munkát jelző szót (`TILTOTT_SZAVAK`).
 - **Előnézet:** `eszkozok/muhely_felulet/olvaso_elonezet.py` → sima HTML-artifact, A. Olvasó arculat, mindig világos, a generált JSON-ból.
+
+## DT-F156e ✅ eldöntve — a nyilvános Stash-leírásban a negatív kritérium és a fölérendelt fogalom
+
+A felhasználó (az orkesztrátor továbbításában, 2026-11-02): **„Igen, mindkettő”** — a nyilvános Stash leírásában szerepel a motívum negatív kritériuma és fölérendelt fogalma (a `motivumok.tsv`-ből, ahogy a jóváhagyott terv eredetileg is a Stash leírásába sorolta). A prémium tartalom (lapszöveg, adattáblák) továbbra sem nyilvános. A `FEHERLISTA_STASH` bővült a `negativ_kriterium` és `folerendelt_fogalom` mezővel (csak a kész, 8/8 motívumoknál jelennek meg), teszttel; az olvasói előnézet a Stash-t kártyákon mutatja („Ide nem tartozik”), a Dashboard Stash-táblája két új oszloppal.

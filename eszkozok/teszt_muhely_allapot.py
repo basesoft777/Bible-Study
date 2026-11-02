@@ -25,7 +25,7 @@ def minta_belso():
         k['olvasoi_szoveg'] = M.olvasoi_kapu(k)
         krit.append(k)
     st = {'cim': 'C', 'tema': 'T', 'pardes_szint': 'Drash', 'terjedelem_szo': 1, 'kotet': None,
-          'elofordulas_osz': 1, 'elofordulas_usz': 1, 'kapcsolatok_db': 0, 'forditasi_lefedettseg': 1.0,
+          'negativ_kriterium': 'NEG-KRIT', 'folerendelt_fogalom': 'FOLEREND', 'elofordulas_osz': 1, 'elofordulas_usz': 1, 'kapcsolatok_db': 0, 'forditasi_lefedettseg': 1.0,
           'lektori_kerdes': '3 nyitott', 'utolso_generalas_commit': 'abc', 'verzio': 'v1',
           'kotet_megjegyzes': 'nincs kötet-adat', 'kotet_olvasoi': M.OLV_KOTET}
     return {
@@ -60,6 +60,9 @@ class Teszt(unittest.TestCase):
         for k in m['teljesult_lepesek']:
             self.assertTrue(set(k) <= set(M.FEHERLISTA_KRITERIUM))
         self.assertTrue(set(m['stash']) <= set(M.FEHERLISTA_STASH))
+        # DT-F156e: a Stash leírása a negatív kritériumot és a fölérendelt fogalmat is hordozza
+        self.assertEqual(m['stash']['negativ_kriterium'], 'NEG-KRIT')
+        self.assertEqual(m['stash']['folerendelt_fogalom'], 'FOLEREND')
         self.assertEqual(set(ny['merok_osszesen']), {'motivum_db', 'kesz_db', 'kapu_zold', 'kapu_ossz'})
         szoveg = repr(ny)
         for tiltott in ('PRÉMIUM', 'döntésre váró', 'titkos hibaszöveg', 'új_mező_alapból_belső', 'pr_hiba',
@@ -148,6 +151,8 @@ class Teszt(unittest.TestCase):
         import json
         with open(ut, encoding='utf-8') as f:
             d = json.load(f)
+        for m in d['motivumok']:
+            m.pop('stash', None)  # a Stash tartalmi leírása (negatív kritérium) szabad szöveg, nem állapotjelzés
         olvashato = json.dumps(d, ensure_ascii=False).lower()
         for szo in TILTOTT_SZAVAK:
             self.assertNotIn(szo, olvashato, szo)

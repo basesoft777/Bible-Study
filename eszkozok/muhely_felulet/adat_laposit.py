@@ -27,7 +27,8 @@ for m in ny['motivumok']:
                 'lepesek': ' · '.join(k['olvasoi_nev'] for k in m['teljesult_lepesek'])})
     if st:
         stash.append({'id': m['id'], 'cim': st['cim'], 'osz': st['elofordulas_osz'], 'usz': st['elofordulas_usz'],
-                      'kapcs': st['kapcsolatok_db'], 'szo': st['terjedelem_szo'], 'kotet': st['kotet_olvasoi']})
+                      'kapcs': st['kapcsolatok_db'], 'szo': st['terjedelem_szo'], 'kotet': st['kotet_olvasoi'],
+                      'fole': st['folerendelt_fogalom'], 'neg': st['negativ_kriterium']})
 for e in ny['heti_tortenes']:
     tort.append({'kulcs': '%s|%s|%s' % (e['datum'], e['motivum'], e['olvasoi_esemeny']), 'datum': e['datum'],
                  'motivum': e['motivum'], 'esemeny': e['olvasoi_esemeny']})
