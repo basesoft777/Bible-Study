@@ -11,8 +11,15 @@ gerinc-kombinacio sincs meg TELJESEN egy versben -- a kombinaciok a motivum `elo
 mezoi, a nyelvtani Strongok (`szerep_karoli.nyelvtani`) kiszuerve --, a javaslat `valoszinu_ki`.
 
 HORDOZO (DT432, 2026-11-01): `valoszinu_ki` CSAK `azonossag_tipusa=formulaikus` motivumon lehet; minden mas
-hordozon `vizsgalando` ("a hordozo nem formulaikus: a gepi szabaly nem dont"). A lexikai kiterjesztes
-(szomszedos versek, rokon alakok): N-F150a.
+hordozon `vizsgalando` ("a hordozo nem formulaikus: a gepi szabaly nem dont").
+
+LEXIKAI KITERJESZTES (N-F150a, DT432 (d)): a `LEXIKAI_BEKAPCSOLT` motivumain (alapertelmezetten ures: a
+bevezetes a meres utan a felhasznalo/orkesztrator dontese) a lexikai hordozo is dont, de KITERJESZTETT
+szaballyal (`vizsgal_lexikai`): (1) szomszedos versek: a jelolt versei +-1 vers egyutt adja az ablakot
+(versen atnyulo parok: Luk 1:46-47); (2) rokon alakok: a kombinacio egy tagja a verssel kielegitett, ha az
+ablakban van egy belole SZARMAZTATOTT szo (`Strong_szotar.tsv` "Gyok/Szarmaztatas": psuchikos <- G5590);
+(3) nyelv: csak a jelolt nyelvu (G/H) kombinaciok szamitanak; ha a motivumnak nincs ilyen kombinacioja,
+a gep nem dont (MENNY-001 ujszovetsegi helyei: a kombinaciok mind hebereek).
 
 Oszlopok: igehely, javaslat, ok, hordozo, proveniencia. Rendezes: `vizsgalando` elol, `valoszinu_ki` a vegen,
 azon belul kanonikus versrend. Fajl keszul MINDEN motivumra, amelynek van elofordulas-jeloltje (a nyitott
@@ -32,6 +39,7 @@ import argparse
 import collections
 import datetime
 import os
+import re
 import subprocess
 import sys
 
@@ -49,6 +57,12 @@ import lexikon_general as LG  # noqa: E402  (csak importalva: igehely_lista)
 ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 ALAPERTELMEZETT_KIMENET = os.path.join(ROOT, 'naplok')
 DONTO_HORDOZO = 'formulaikus'
+LEXIKAI_HORDOZO = 'lexikai'
+# A lexikai motivumok, amelyeken a kiterjesztett szabaly dont (N-F150a). Ures: a bevezetes ⛔ a meres utan.
+LEXIKAI_BEKAPCSOLT = frozenset()
+STRONG_SZOTAR = os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv')
+VERS_RE = re.compile(r'^(.+) (\d+):(\d+)$')
+STRONG_RE = re.compile(r'[GH]\d{1,4}')
 OK_NEM_DONT = 'a hordozó nem formulaikus: a gépi szabály nem dönt'
 FEJLEC = ['igehely', 'javaslat', 'ok', 'hordozo', 'proveniencia']
 BEMENETI_FAJLOK = [
@@ -100,8 +114,70 @@ def vizsgal(igehely, kombok, vers_st):
         ', '.join('+'.join(sorted(k)) for k in kombok), ', '.join(sorted(gerinc & uni)) or 'semmi')
 
 
-def javaslat(motivum, hordozo, igehely, komb, vers_st):
-    """(javaslat, ok) egy jelöltre."""
+def szarmazas(ut=STRONG_SZOTAR):
+    """{Strong: frozenset(Strongok, amelyekből származtatott)} a `Strong_szotar.tsv` 5. oszlopából
+    (Gyök/Származtatás, pl. 'πνεῦμα (G4151)', 'from H5307'); a számok 4 jegyre kiegészítve."""
+    ki = {}
+    if not os.path.exists(ut):
+        return ki
+    with open(ut, encoding='utf-8', newline='') as f:
+        for sor in f.read().split('\n')[1:]:
+            m = sor.rstrip('\r').split('\t')
+            if len(m) < 5 or not m[0]:
+                continue
+            refs = frozenset(x[0] + x[1:].zfill(4) for x in STRONG_RE.findall(m[4]))
+            if refs:
+                ki[m[0]] = refs
+    return ki
+
+
+def ablak_versei(versek, vers_st):
+    """A jelölt versei és a szomszédos (-1, +1) versek, amelyekre van szövegadat; kanonikus sorrendben."""
+    ki = []
+    for v in versek:
+        m = VERS_RE.match(v)
+        for x in ([v] if not m else ['%s %s:%d' % (m.group(1), m.group(2), int(m.group(3)) + d) for d in (-1, 0, 1)]):
+            if x not in ki and vers_st.get(x):
+                ki.append(x)
+    return ki
+
+
+def vizsgal_lexikai(igehely, kombok, vers_st, szarm=None, szomszed=True, rokon=True, nyelv=True):
+    """Mint a `vizsgal`, de a lexikai kiterjesztett szabállyal (l. a modul docstringje).
+    (megvan: bool|None, ok)."""
+    if not kombok:
+        return None, 'nincs gerinc-kombináció a motívumhoz (elofordulasok.tsv strong)'
+    versek = LG.igehely_lista(igehely.replace('–', '-'))
+    sajat = [vers_st.get(v) for v in versek if vers_st.get(v)]
+    if not sajat:
+        return None, 'nincs szövegadat a TAHOT/TAGNT-ban ehhez az igehelyhez'
+    ablak = ablak_versei(versek, vers_st) if szomszed else [v for v in versek if vers_st.get(v)]
+    uni = set().union(*(vers_st[v] for v in ablak))
+    if nyelv:
+        ny = 'G' if any(x.startswith('G') for x in set().union(*sajat)) else 'H'
+        kombok = [k for k in kombok if all(x.startswith(ny) for x in k)]
+        if not kombok:
+            return None, 'a motívumnak nincs %s-nyelvű gerinc-kombinációja: a gépi szabály nem dönt' % ny
+    szarm = szarm or {}
+
+    def kielegit(s):
+        return s in uni or (rokon and any(s in szarm.get(y, ()) for y in uni))
+
+    megvan = [k for k in kombok if all(kielegit(s) for s in k)]
+    if megvan:
+        return True, 'a gerinc-szókapcsolat megvan: %s' % ', '.join('+'.join(sorted(k)) for k in megvan)
+    gerinc = set().union(*kombok)
+    return False, 'a gerinc-szókapcsolat hiányzik: %s; az ablakban a gerincből: %s' % (
+        ', '.join('+'.join(sorted(k)) for k in kombok), ', '.join(sorted(gerinc & uni)) or 'semmi')
+
+
+def javaslat(motivum, hordozo, igehely, komb, vers_st, szarm=None, lexikai_be=None):
+    """(javaslat, ok) egy jelöltre. `lexikai_be`: a lexikai motívumok, ahol a kiterjesztett szabály dönt
+    (alapértelmezés: LEXIKAI_BEKAPCSOLT)."""
+    lexikai_be = LEXIKAI_BEKAPCSOLT if lexikai_be is None else lexikai_be
+    if hordozo == LEXIKAI_HORDOZO and motivum in lexikai_be:
+        megvan, ok = vizsgal_lexikai(igehely, komb.get(motivum, []), vers_st, szarm)
+        return ('valoszinu_ki' if megvan is False else 'vizsgalando'), ok
     if hordozo != DONTO_HORDOZO:
         return 'vizsgalando', OK_NEM_DONT
     megvan, ok = vizsgal(igehely, komb.get(motivum, []), vers_st)
@@ -117,12 +193,13 @@ def jeloltek_elofordulas(jeloltek):
     return list(d.values())
 
 
-def sorok_szamit(adat_dir, dontesek=('nyitva',), vers_st=None):
+def sorok_szamit(adat_dir, dontesek=('nyitva',), vers_st=None, lexikai_be=None):
     """{motivum_id: [(igehely, javaslat, ok, hordozo, dontes)]} a megadott döntésű jelöltekre; minden
     előfordulás-jelöltes motívum szerepel (esetleg üres listával)."""
     vers_st = vers_st if vers_st is not None else SZK.vers_strongok()
     mot = {r['id']: r for r in beolvas(os.path.join(adat_dir, 'motivumok.tsv'))}
     komb = kombinaciok(beolvas(os.path.join(adat_dir, 'elofordulasok.tsv')))
+    szarm = szarmazas()
     jel = jeloltek_elofordulas(beolvas(os.path.join(adat_dir, 'jeloltek.tsv')))
     ki = collections.OrderedDict((m, []) for m in sorted({r['id'] for r in jel}))
     for r in jel:
@@ -130,7 +207,7 @@ def sorok_szamit(adat_dir, dontesek=('nyitva',), vers_st=None):
             continue
         m = r['id']
         hordozo = mot.get(m, {}).get('azonossag_tipusa', '?')
-        j, ok = javaslat(m, hordozo, r['igehely'], komb, vers_st)
+        j, ok = javaslat(m, hordozo, r['igehely'], komb, vers_st, szarm, lexikai_be)
         ki[m].append((r['igehely'], j, ok, hordozo, r['dontes']))
     for m in ki:
         ki[m].sort(key=lambda x: (x[1] == 'valoszinu_ki', SZK.vers_kulcs(x[0])))
@@ -181,9 +258,9 @@ def futtat(adat_dir=ALAPERTELMEZETT_ADAT, root=ROOT, kimenet_dir=None, bemenet_f
     return szovegek
 
 
-def meres(adat_dir=ALAPERTELMEZETT_ADAT, vers_st=None):
+def meres(adat_dir=ALAPERTELMEZETT_ADAT, vers_st=None, lexikai_be=None):
     """Az eldöntött jelöltekre: motívumonként (beépítve, hamis kizárás, elutasítva, felismert). Csak stdout."""
-    ki = sorok_szamit(adat_dir, dontesek=('beépítve', 'elutasítva'), vers_st=vers_st)
+    ki = sorok_szamit(adat_dir, dontesek=('beépítve', 'elutasítva'), vers_st=vers_st, lexikai_be=lexikai_be)
     mot = {r['id']: r for r in beolvas(os.path.join(adat_dir, 'motivumok.tsv'))}
     ossz = collections.OrderedDict()
     for m, sorok in ki.items():
