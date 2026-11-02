@@ -73,6 +73,12 @@ class IgehelyRov(unittest.TestCase):
         uj, _ = N.szabaly_igehely_rov('Joh 3:16; Mat 5:3; Song of Solomon 2:4; Rev 1:8')
         self.assertEqual(uj, 'Ján 3:16; Mt 5:3; Én 2:4; Jel 1:8')
 
+    def test_1cor_szokozos_alak_csak_cv_elott(self):
+        # F07 M0 (N72): 119 / 124 `1 Cor.` a Thayerben Clement of Rome `fejezet, szakasz` hivatkozasa (nem c:v) -> valtozatlan
+        self.assertEqual(N.szabaly_igehely_rov('1 Cor 16:31')[0], '1Kor 16:31')
+        szoveg = 'Clement of Rome, 1 Cor. 20, 5 [ET]; 1 Cor. (iv. 8)'
+        self.assertEqual(N.szabaly_igehely_rov(szoveg), (szoveg, 0))
+
     def test_lam_jsir(self):
         # DT24 (a): a Jeremiás siralmai Károli-rövidítése JSir, nem Sir
         # (a Sir a Sirák fia könyvével ütközne)
@@ -349,6 +355,35 @@ class GlosszaVisszaallit(unittest.TestCase):
 
     def test_zaro_jel_elter_valtozatlan(self):
         self.assertEqual(N.glossza_visszaallit('RV breath) x', 'RV: lehelet; x'), ('RV: lehelet; x', []))
+
+
+class Apokrif(unittest.TestCase):
+    """F07 M0 (N72): a Thayer apokrif könyvei a fordításban (a mért #27/#159 bukások alakjai)."""
+
+    def test_szokozos_es_forras_alak(self):
+        uj, n = N.szabaly_apokrif('(1 Makk 9:38, 40); 2 Makk 3:25; Wis. 8:18; Tobit 12:13; Judith 16:9; Macc. 12:45')
+        self.assertEqual(uj, '(1Makk 9:38, 40); 2Makk 3:25; Bölcs 8:18; Tób 12:13; Judit 16:9; Makk 12:45')
+        self.assertEqual(n, 6)
+
+    def test_jovahagyott_alak_marad(self):
+        szoveg = '1Makk 3:58; Bölcs 8:18; Tób 7:15; Judit 16:9; Sir 29:12; 3Makk 3:24'
+        self.assertEqual(N.szabaly_apokrif(szoveg), (szoveg, 0))
+
+    def test_csak_igehely_elott(self):
+        szoveg = 'a Wis. szó; Wisdom of Solomon; a Tobit könyve'
+        self.assertEqual(N.szabaly_apokrif(szoveg), (szoveg, 0))
+
+    def test_sir_nem_csere(self):
+        # N-F142a: a `Sir` azonos alak, a javítás helye külön döntés (DT-F07c)
+        self.assertEqual(N.szabaly_apokrif('Sir. 1:3'), ('Sir. 1:3', 0))
+
+    def test_csak_thayerre_fut(self):
+        self.assertEqual(N.normalizal('Wis. 8:18', 'BDB')[0], 'Wis. 8:18')
+        self.assertEqual(N.normalizal('Wis. 8:18', 'Thayer')[0], 'Bölcs 8:18')
+
+    def test_3macc_alias_a_forras_oldalon(self):
+        self.assertEqual(N.APOKRIF_ALIAS['3Macc'], '3Makk')
+        self.assertEqual(N.APOKRIF_ALIAS['Wisd'], 'Bölcs')
 
 
 if __name__ == '__main__':

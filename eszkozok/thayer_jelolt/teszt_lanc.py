@@ -114,6 +114,31 @@ class Sigla(unittest.TestCase):
         self.assertEqual(TK.ellenoriz_sigla('Rec. text', 'szöveg', s)[0], 'JELZES')
         self.assertEqual(TK.ellenoriz_sigla('semmi', 'semmi', s)[0], 'RENDBEN')
 
+    def test_toldalek_tove_hosszulo_a_e(self):
+        """F07.5 (orkesztrátori döntés, 2026-11-02): a szóvégi a/e a toldalék előtt á/é (Septuagintában); a mért esetek: G1944, G5009."""
+        s = [{'forrasalak': 'Sept.', 'allapot': 'besorolt', 'magyar_alak': 'Septuaginta', 'tipus': 'rövidítés'}]
+        for fordit in ('a Septuagintában', 'Septuagintából', 'Septuaginta', 'a Septuagintát', 'Septuagintája', 'Septuagintával'):
+            self.assertEqual(TK.ellenoriz_sigla('in the Sept. often', fordit, s)[0], 'RENDBEN', fordit)
+        # negatív: a valódi hiányzó sigla továbbra is bukik
+        for fordit in ('a LXX-ben', 'az ószövetségi görög fordításban', 'Septuagin', 'aSeptuagintában'):
+            self.assertEqual(TK.ellenoriz_sigla('in the Sept. often', fordit, s)[0], 'SERTES', fordit)
+        s = [{'forrasalak': 'x.', 'allapot': 'besorolt', 'magyar_alak': 'Philóne', 'tipus': 'antik szerző'}]
+        self.assertEqual(TK.ellenoriz_sigla('x. here', 'Philónéban', s)[0], 'RENDBEN')
+
+    def test_toldalek_tove_a_mert_esetekre(self):
+        """A G1944 (mindkét effort) és a G5009 (medium) valódi kimenete: korábban hamis `Sept. -> Septuaginta hiányzik`."""
+        import json
+        import thayer_bemenet as _TB
+        gyoker = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'forditas', 'thayer_api')
+        for adag, sp in (('adag7902', 'G1944'), ('adag7903', 'G1944'), ('adag1592', 'G5009')):
+            fajl = os.path.join(gyoker, adag, 'kapu_eredmeny.jsonl')
+            if not os.path.exists(fajl):
+                self.skipTest(fajl)
+            r = [json.loads(l) for l in open(fajl, encoding='utf-8') if json.loads(l)['strong'] == sp][0]
+            self.assertIn('Septuagint', r['vegleges'])
+            eredm = TK.ellenoriz_sigla(_TB.nezet(_TB.szakaszok(sp)), r['vegleges'])
+            self.assertNotIn('Sept. -> Septuaginta', eredm[1], (adag, sp))
+
     def test_kapu_javaslat_es_nincs_egyseges(self):
         # DT-F132j (3): a jóváhagyatlan javaslat nem gátol (besorolatlan); a besorolt `nincs_egyseges` nem ellenőrzött
         s = [{'forrasalak': 'Rec.', 'allapot': 'javaslat', 'magyar_alak': TK.VALTOZATLAN},
