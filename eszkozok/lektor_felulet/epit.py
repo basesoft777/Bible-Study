@@ -24,12 +24,13 @@ ROOT = os.path.dirname(os.path.dirname(HELY))
 sys.path.insert(0, os.path.dirname(HELY))
 import lektor_kerdesek as L  # noqa: E402
 
-BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke']
+BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus']
 
 
 def kerdesek(motivumok=None, root=ROOT):
     ki = []
-    for ut in sorted(glob.glob(os.path.join(root, 'naplok', 'LEKTOR_*.tsv'))):
+    for ut in sorted(glob.glob(os.path.join(root, 'naplok', 'LEKTOR_*.tsv')),
+                     key=lambda u: (os.path.basename(u) == 'LEKTOR_DONTESEK.tsv', u)):
         m = os.path.basename(ut)[len('LEKTOR_'):-len('.tsv')]
         if motivumok and m not in motivumok:
             continue

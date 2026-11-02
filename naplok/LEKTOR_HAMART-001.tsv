@@ -1,2 +1,2 @@
 # GENERÁLT: python eszkozok/lektor_kerdesek.py --motivum HAMART-001 (F157); kézzel ne szerkeszd, a válasz-mezők a felületről és a beolvasásból jönnek; forrás: naplok/HATAR_HAMART-001.md
-kerdes_id	forras	motivum	hely	kerdes	valaszlehetosegek	proveniencia	allapot	valasz	atvezetes	cimke
+kerdes_id	forras	motivum	hely	kerdes	valaszlehetosegek	proveniencia	allapot	valasz	atvezetes	cimke	gond	javaslat	javaslat_tipus	osszefoglalo_proveniencia

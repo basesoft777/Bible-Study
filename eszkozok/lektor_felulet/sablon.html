@@ -63,6 +63,12 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   padding: 6px 8px; max-height: 5em; overflow: auto; overflow-wrap: anywhere; color: var(--halvany); white-space: pre-wrap; }
 .masol { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; justify-self: start; }
 .uzenet { color: var(--elfogad); font-size: 12px; min-height: 1em; }
+.suga { background: var(--kiemel-hatter); color: var(--tinta); border-radius: var(--sugar); padding: 10px 12px; font-size: 13px; margin: 0 0 14px; max-width: 70ch; }
+.suga b { color: var(--kiemel); }
+.gond, .javaslat { display: grid; gap: 2px; }
+.gond > b, .javaslat > b { font: 500 12px var(--adat); color: var(--halvany); text-transform: uppercase; letter-spacing: .04em; }
+.gond > span { font: 600 16px/1.4 var(--cim); overflow-wrap: anywhere; }
+.javaslat > span { overflow-wrap: anywhere; }
 .figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; margin: 0 0 12px; }
 @media (prefers-reduced-motion: no-preference) { .gombok button, .szurosor button { transition: background .15s, border-color .15s; } }
 </style>
@@ -70,6 +76,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 <div class="keret">
   <h1>Lektor-felület</h1>
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
+  <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
@@ -94,9 +101,15 @@ const TIPUSOK = [
 const PROZA_TIPUSOK = [
   ['elfogadom', 'Legyen mondat'], ['elvetem', 'Nem kell'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
 ];
-const tipusok = (k) => (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
-const CIMKE = Object.fromEntries(TIPUSOK);
-const PROZA_CIMKE = Object.fromEntries(PROZA_TIPUSOK);
+const VISSZA = ['visszakerdezek', 'Visszakérdezek — nem értem / kérdésem van'];
+const SAJAT = ['sajat', 'Saját megoldás — én írom le'];
+const GOMBOK = {
+  konkret: [['elfogadom', 'Elfogadom — javítsuk így'], ['elvetem', 'Elvetem — maradjon így'], VISSZA, SAJAT],
+  nincs: [['elfogadom', 'Javítandó — a próza írója megoldja'], ['elvetem', 'Maradjon így'], VISSZA, SAJAT],
+  hiany: [['elfogadom', 'Legyen róla mondat — a próza írója megírja'], ['elvetem', 'Szándékos, maradjon így'], VISSZA, SAJAT],
+  dontott: [['elfogadom', 'Marad a rögzített döntésem'], ['elvetem', 'Mégis másképp — gondold újra'], VISSZA, SAJAT],
+};
+const tipusok = (k) => GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
 const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 let db = null;
@@ -123,6 +136,15 @@ function halvanyId(id) { return id.replace(/^.*?:/, ''); }
 
 function kerdesDoboz(k) {
   const resz = k.kerdes.split(' ⏎ ');
+  if (k.gond) {
+    const d = el('div', { class: 'kerdes' },
+      el('div', { class: 'gond' }, el('b', {}, 'Mi a gond'), el('span', {}, szoveges(k.gond))),
+      el('div', { class: 'javaslat' }, el('b', {}, 'Mit javasol a lektor'), el('span', {}, szoveges(k.javaslat))));
+    const det = el('details', {}, el('summary', {}, 'Részletek (az eredeti szöveg)'));
+    resz.forEach((r) => det.append(el('p', {}, szoveges(r))));
+    d.append(det);
+    return d;
+  }
   const d = el('div', { class: 'kerdes' }, el('p', {}, szoveges(resz[0])));
   if (resz.length > 1) {
     const det = el('details', {}, el('summary', {}, 'Részletek (' + (resz.length - 1) + ')'));
@@ -135,7 +157,8 @@ function kerdesDoboz(k) {
 function allapotSzoveg(k) {
   const v = valaszok[k.kerdes_id];
   if (!v) return '';
-  return (k.forras === 'proza_javaslat' ? PROZA_CIMKE : CIMKE)[v.tipus] + (v.szoveg ? ': ' + v.szoveg : '');
+  const m = tipusok(k).find((x) => x[0] === v.tipus);
+  return (m ? m[1] : v.tipus) + (v.szoveg ? ': ' + v.szoveg : '');
 }
 
 function rajzol() {
@@ -160,7 +183,7 @@ function rajzol() {
     t.append(gombok);
     const kell = (v && (v.tipus === 'visszakerdezek' || v.tipus === 'sajat')) || nyitottSzoveg[k.kerdes_id];
     if (kell) {
-      const ta = el('textarea', { 'aria-label': 'Válasz szövege', placeholder: (nyitottSzoveg[k.kerdes_id] === 'visszakerdezek' || (v && v.tipus === 'visszakerdezek')) ? 'Mit kérdezel vissza?' : 'Saját szöveg' });
+      const ta = el('textarea', { 'aria-label': 'Válasz szövege', placeholder: (nyitottSzoveg[k.kerdes_id] === 'visszakerdezek' || (v && v.tipus === 'visszakerdezek')) ? 'Mit nem értesz, mit kérdezel? A következő körben választ kapsz.' : 'Írd le, mi legyen.' });
       ta.value = v ? v.szoveg || '' : '';
       const jelzes = el('span', { class: 'allapot' });
       t.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
@@ -231,9 +254,9 @@ function szuroSor(azon, kulcs, ertekek) {
   });
 }
 function szurokRajzol() {
-  const egyedi = (m) => [...new Set(ADAT.map((k) => k[m]))].sort();
+  const egyedi = (m, fel) => [...new Set(ADAT.filter(fel || (() => true)).map((k) => k[m]))].sort();
   szuroSor('sz-forras', 'forras', [['', 'mind'], ...egyedi('forras').map((x) => [x, x])]);
-  szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum').map((x) => [x, x])]);
+  szuroSor('sz-motivum', 'motivum', [['', 'mind'], ...egyedi('motivum', (k) => k.forras !== 'dontes').map((x) => [x, x])]);
   szuroSor('sz-cimke', 'cimke', [['tartalmi', 'tartalmi'], ['uzleti', 'üzleti'], ['technikai', 'technikai'], ['osztalyozatlan', 'osztályozatlan'], ['', 'mind']]);
   szuroSor('sz-allapot', 'allapot', [['nyitva', 'nyitott'], ['kesz', 'megválaszolt'], ['', 'mind']]);
 }
