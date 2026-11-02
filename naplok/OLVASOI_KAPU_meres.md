@@ -20,7 +20,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## ALVIL-001 — 73 BUKÁS, 32 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -133,7 +132,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## ANTROP-001 — 29 BUKÁS, 8 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -178,7 +176,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## HAMART-001 — 66 BUKÁS, 12 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -264,7 +261,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## HODIT-001 — 45 BUKÁS, 25 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -342,7 +338,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## ISTENTISZT-001 — 61 BUKÁS, 10 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -421,7 +416,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## KIRALY-001 — 42 BUKÁS, 20 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -491,7 +485,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## MENNY-001 — 36 BUKÁS, 29 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -564,7 +557,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## TEREMT-001 — 68 BUKÁS, 19 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -659,7 +651,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## TEREMT-002 — 33 BUKÁS, 30 FIGYELMEZTETÉS
 
-*LABJEGYZET: az ellenoriz.lap_labjegyzet_hianyok még nincs a main-en (PR #595) — nem mérve*
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
@@ -692,11 +683,11 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 818 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyit |
 | 833 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újraf |
 | 833 | BELSO | BUKÁS | 1 | munkalépés-jel: P3 | A P3 teljes scanje a héber szöveg egészére fut; a 2026 |
-| 894 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
-| 894 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
-| 894 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
-| 914 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
-| 915 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
+| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
+| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
+| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
+| 949 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
+| 950 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 6 | „tohu” — a lapon máshol: tóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 15 | KIVONAT_SZAM | FIGYELMEZTETÉS | 1 | a Kivonat minden LXX-helyről állít, de a 3. szakasz összesítője szerint 1 hely „kutatói azonosítás függőben” | A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος καὶ ἀκατασκεύαστος (aoratosz kai akataszkeuasztosz), οὐθέν (úthen), illetve σπαρτίον γεωμετρίας |
