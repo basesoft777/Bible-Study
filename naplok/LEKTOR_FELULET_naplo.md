@@ -159,7 +159,7 @@
 - Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
 - Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
 
-## 7. Döntés-kártyák három kategóriája (DT-F161a, 2026-11-02, „mehet”)
+## 7. Döntés-kártyák három kategóriája (DT518, 2026-11-02, „mehet”)
 
 *Besorolás: mit változtat meg a döntés? négy kategória (tartalmi · kiadói · üzleti · fejlesztői), ütközésnél tartalmi > kiadói > üzleti > fejlesztői; a felhasználó szó szerint (2026-11-02, az orkesztrátoron át): „egy új kategória is lesz: üzleti / ahol ügyfélszolgálat / számlázás/ megrendelés stb”; az üzleti kártyák a felhasználóéi, a fejlesztőieket az orkesztrátor dönti; a gépi jel a forrás-brief `ir` és `munka` mezője (`lektor_kerdesek.gepi_kategoria`); a `dontes_szuro.tsv` kézi címkéje elsőbbséget élvez. A „kézi” oszlop a mai (régi) címke. Mért: 28 mai kártya (a korábbi 31-ből az F131, F148, F152 lezárult).*
 
@@ -196,7 +196,7 @@
 
 Eltér: 13 / 28.
 
-### 7.1 Végleges besorolás (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-02; DT-F161a)
+### 7.1 Végleges besorolás (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-02; DT518)
 
 A 13 eltérésből a kézi marad: DT106, DT133, DT134, DT169, F125, F151 (tartalmi), DT190 (fejlesztői); a gépi érvényes: DT338, DT388, F146, F153 → tartalmi, F134, F157 → kiadói (a `dontes_szuro.tsv`-ben frissítve). Lefelé-védelem: a gépi jel nem sorol lejjebb kézzel tartalminak/kiadóinak/üzletinek jelölt kártyát (az indokban jelezve). Szűk bővítés: `naplok/HATAR_` az `ir`-ben tartalmi jel.
 

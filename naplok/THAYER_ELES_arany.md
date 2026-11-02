@@ -3,7 +3,7 @@
 *Ítélet nélküli összevetés; az eredmény nem kerül a `forditasok.tsv`-be (`beir` nem futott). Forrás: a javított forrásnézet; `kezi`: a régi teljes szócikk-sor (`allapot=kezi`, nem szakaszos, ezért a szakaszonkénti sorokban a `kezi` a teljes szövegben szerepel); high / medium: az első kör (és ahol futott, a javító kör) utolsó próbájának feldolgozott szövege, a kapueredménnyel (a kapun bukott szöveg is látszik). Mérő adagok: `forditas/thayer_api/adag7902/` (high), `adag7903/` (medium). proveniencia: scope=G0282, G1941, G1944, G4151, G5590 | forras=forditas/thayer_api/adag7902,adag7903 + adat/forditasok.tsv | ts=2026-11-02*
 
 
-## Összegzés (a végrehajtó olvasata; ítélet nélkül, az effort-döntés az orkesztrátoré — DT-F07d)
+## Összegzés (a végrehajtó olvasata; ítélet nélkül, az effort-döntés az orkesztrátoré — DT521)
 
 **Mért költség és kapubukás** (a javított 16. kapuval újrakapuzva; forrás: `forditas/thayer_api/adag7902/` és `adag7903/` `futasnaplo.tsv`, `kapu_eredmeny.jsonl`):
 
