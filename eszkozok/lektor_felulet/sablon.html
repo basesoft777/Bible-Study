@@ -98,7 +98,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 
 <script>
 const ADAT = __ADAT__;
-const LAP_URL = __LAP_URL__;
+const LAP_URLOK = __LAP_URLOK__;  // motívum -> a saját lapnézete; ami nincs benne, annak nincs linkje
 const TIPUSOK = [
   ['elfogadom', 'Elfogadom'], ['elvetem', 'Elvetem'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
 ];
@@ -179,7 +179,8 @@ function rajzol() {
       el('span', {}, k.motivum));
     fej.append(el('span', { class: 'kiadasjel k' + (k.kiadas || '0') }, KIADAS_CIMKE[k.kiadas || '']));
     if (k.hely) fej.append(el('span', {}, k.hely));
-    if (LAP_URL) fej.append(el('a', { href: LAP_URL, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
+    const lapUrl = Object.prototype.hasOwnProperty.call(LAP_URLOK, k.motivum) ? LAP_URLOK[k.motivum] : '';
+    if (lapUrl) fej.append(el('a', { href: lapUrl, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
     t.append(fej, kerdesDoboz(k));
     if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
     const gombok = el('div', { class: 'gombok' });

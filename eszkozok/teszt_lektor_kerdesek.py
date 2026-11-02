@@ -348,5 +348,37 @@ class KiadasJelTeszt(unittest.TestCase):
             self.assertEqual(r['kiadas'], '')
 
 
+class LapnezetTeszt(unittest.TestCase):
+    """A „lapnézet” link motívumonként (lapnezetek.tsv); ami nincs a táblában, annak nincs linkje."""
+
+    def test_tabla_beolvasasa(self):
+        import importlib
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lektor_felulet'))
+        E = importlib.import_module('epit')
+        with tempfile.TemporaryDirectory() as t:
+            ut = os.path.join(t, 'lapnezetek.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('# megj\nmotivum\turl\tmegjegyzes\nA-001\thttps://x/a\t\nB-001\thttps://x/b\tm\n')
+            self.assertEqual(E.lapnezetek(ut), {'A-001': 'https://x/a', 'B-001': 'https://x/b'})
+            self.assertEqual(E.lapnezetek(os.path.join(t, 'nincs.tsv')), {})
+            with open(ut, 'a', encoding='utf-8', newline='\n') as f:
+                f.write('A-001\thttps://x/c\t\n')
+            with self.assertRaises(ValueError):
+                E.lapnezetek(ut)
+
+    def test_a_repo_tablaja_es_a_sablon(self):
+        import importlib
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lektor_felulet'))
+        E = importlib.import_module('epit')
+        n = E.lapnezetek()
+        self.assertIn('ALVIL-001', n)
+        self.assertNotEqual(n['ALVIL-001'], n.get('ISTENTISZT-001'))
+        with tempfile.TemporaryDirectory() as t:
+            os.makedirs(os.path.join(t, 'naplok'))
+            html = E.epit(nezetek={'A-001': 'https://x/a'}, root=t)
+        self.assertIn('const LAP_URLOK = {"A-001": "https://x/a"};', html)
+        self.assertNotIn('__LAP_URLOK__', html)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

@@ -170,3 +170,15 @@
 - Artifact: ugyanaz a link (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 10. verzió; `epit.py` az összes `LEKTOR_*.tsv`-ből, `--lap-url` változatlan.
   Az élő változattal összevetve: a sablon azonos, a meglévő 53 kártya bájtra egyező adatú, új a 30 ALVIL-001 kártya (összesen 83). A kérdésekre ez a menet
   nem válaszolt, és semmit nem vezetett át.
+
+## Lapnézet motívumonként (hibajelzés, a felhasználó szavaival: „minden lapnézet az istentisztelet artifactra mutat”; 2026-11-02)
+
+- Ok: a `sablon.html` egyetlen `LAP_URL`-t használt (az ISTENTISZT-001 arany lapja), így minden kártya, az ALVIL-001 és a döntés-kártyák is, oda vitt.
+- Javítás: kézi tábla `eszkozok/lektor_felulet/lapnezetek.tsv` (`motivum`, `url`, `megjegyzes`); az `epit.py` ebből tölti a `LAP_URLOK`-at (a `--lap-url` kapcsoló megszűnt),
+  a kártya a saját motívumának nézetére mutat; ami nincs a táblában (más motívum, döntés-kártya), annak nincs linkje. 2 új teszt (`teszt_lektor_kerdesek.py`, 27 OK).
+- Az ALVIL-001 nézete ugyanazzal az eszközzel, ahogy az arany lapé (`C:\Users\bases\pardes_eszkozok\epit_nezet.py lexikon/ALVIL-001_TUDOMANYOS.md … 6edf842d`), új privát
+  artifactként: https://claude.ai/artifact/44gJuUTb1cu5ewgupXmyAQ. Az eszköz sablonfeliratai az ISTENTISZT-001-re vannak drótozva (cím, fejléc, forrásmegjelölés): a kimenetben ez a négy
+  felirat ALVIL-001-re cserélve, a beágyazott lapszöveg érintetlen.
+- Lektor-felület: ugyanaz a link, 11. verzió; az élő változattal összevetve csak a link-logika változott (a 83 kártya adata azonos, a db-beli válaszok érintetlenek).
+- Ellenőrzés böngészőben (a claude.ai a beépített böngészőben bejelentkezést kér, ezért a publikált HTML helyi kiszolgálásával): 67 megjelenő kártyán az ALVIL-001-é (30) az ALVIL-001
+  nézetére, az ISTENTISZT-001-é (22) az arany lapra mutat, a 15 döntés-kártyán nincs link; az ALVIL-001 nézet renderel.
