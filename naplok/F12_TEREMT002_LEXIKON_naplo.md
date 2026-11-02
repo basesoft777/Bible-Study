@@ -164,6 +164,30 @@ A lista (`glossza_lexikon_forditas.py lista`, a forrás bekötése után) 10 egy
 
 **Ami nem kellett kézzel:** a szakaszcímke (gépi, 0 jelzés), a szótári mezők (gépi, a BDB saját példahelyeiből), a gerinc, a fordítások (subagent + kapuk), a lap generálása és fixpontja.
 
+## 10. Javítókör a független ellenőr után (F12.9–F12.10)
+
+A `fuggetlen-ellenor` (`claude-opus-5-5`, `cccd17a8..f58f38e8`) 15 ELTÉRÉS-t talált; a jelentés a subagent helyett a session mentésével: `naplok/ELLENOR_F12_TEREMT002_LEXIKON.md`.
+
+| # | Eltérés | Sorsa |
+|---|---|---|
+| 1 | E5: négy törölt címsor, a hivatkozott F12.9 nem létezett | javítva: az F12.9 commit-üzenetének `TÖRLÉS-SZÁNDÉKOS:` sora; `futtat.py --commit-uzenet-fajl`: 0 HIBA |
+| 2 | LXX: a H0922 sora a H8414-ét ismétli | javítva (F12.10): tokenenkénti verdikt a saját döntéssorból; a H0922: eltérő 1 · függőben 2. Az összesítés „LXX-minusz=0” helyes: a két `lxx_minusz` sor `valoszinu`, a DT23 szerint „függőben” jelenik meg (N-F12c) |
+| 3 | A1: „a BDB-határ a motívumhatár” | javítva (F12.10): a szótári tagolás a mező két ágát választja szét, a motívumhatárt a pár húzza meg |
+| 4 | sablonos LXX- és SECE-következtetés görög szó nélkül | javítva (F12.10), új ág a `olvasoi_kovetkeztetes`-ben; A/B: a kiadott lapok bájtra azonosak, a HODIT-001 és a MENNY-001 újragenerálásnál ugyanezt a javított mondatot kapná (a commitolt lapjuk nem változik) |
+| 5 | ⛔ 4.7: nincs nyoma, hogy a felhasználó látta a próbalapot | a próbalap a közös jegyzetmappában állt (`F12_TEREMT-002_TUDOMANYOS_proba.md`), az éles írást az orkesztrátor hagyta jóvá a felhasználó 2026-11-02-i felhatalmazásával; a felhasználó a lapot a PR-ben és a lektor-körben látja |
+| 6 | a tesztek nem zöldek | a három bukó fájl a main-en is bukik (N-F12b) |
+| 7 | Rokon szavak / Új felismerés jelölés nélkül | Rokon szavak: N-F12h (a generátor-változás a kiadott lapokat is érintené); Új felismerés: tartalmi, nem mérce-blokk |
+| 8 | 49:19 a `bdb_szakasz_hu.tsv`-ben | a lapon nem jelenik meg; N-F12a-hoz jegyezve |
+| 9 | L2: első személyű folyamatmondatok a lapon (a tanítói rés) | javítva (F12.10): harmadik személy, a folyamat-nyom NAPLO-ban |
+| 10 | a kiejtés nem egységes | javítva (F12.10): a Kivonat „tóhú vávóhú”, az Ézs 34:11 `kapcsolodas`-a kiejtéssel. A token-kiejtés (vábóhú) a generátor `kiejtes_ehhez`-éé, a jóváhagyott kiejtési szabály kimenete; a forrás nem írja |
+| 11 | a kolofon „Sablon-megfelelőség” cellája üres | N-F12i (a natív motívum `sablon_verzio`-ja döntés) |
+| 12 | a brief fejléce elavult | javítva (F12.11) |
+| 13 | N-F12d hatóköre hiányos | javítva: hét fájl |
+| 14 | a UBS H8414 `modell`-mezője | javítva: „claude-sonnet-5-5; claude-opus-5-5 (2. tag)” |
+| 15 | az F12.7c nem kapott külön commitot | elismerve: a H0922 `tagolatlan` fordítássor az F12.7 (`5d2505bc`) része; a történet nem íródik át |
+
+A javítókör után: `ellenoriz.py` SÉRTÉS 0; a `naplo`/`nyitott` zöld; a lap fixpontja megvan; kézi kiejtés-hiány 0.
+
 ## 9. Zárás
 
 Draft PR; a brief fejléce `megallt`: a lap 6/8-on, a határ- és a lektori kör a felhasználóé, utána a 8/8, a kiadás-sor és a verzió-emelés külön tételben (DT-F12e (1)). ⛔ A merge a felhasználóé. Független ellenőrzés: `naplok/ELLENOR_F12_TEREMT002_LEXIKON.md`.
