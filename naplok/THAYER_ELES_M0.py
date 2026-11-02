@@ -242,7 +242,102 @@ def sorrend(ts, kizar=()):
     return 0
 
 
+ARANY = ['G0282', 'G1941', 'G1944', 'G4151', 'G5590']
+ARANY_ADAG = {'high': 'adag7902', 'medium': 'adag7903'}
+TOK = __import__('re').compile(r'⟪\d+⟫')
+SZAM = __import__('re').compile(r'\d+[:,]\d+')
+SZO = __import__('re').compile(r'[^\W\d_]{3,}', __import__('re').U)
+
+
+def szavak(s):
+    import collections
+    return collections.Counter(w.lower() for w in SZO.findall(TOK.sub(' ', s)))
+
+
+def szakaszok_szoveg(s):
+    """A tokenes kimenet szakaszonkénti szövege (a ⟪n⟫ tokenek között)."""
+    ki, cur = [], None
+    for r in TOK.split(s):
+        ki.append(r.strip())
+    return [x for x in ki if x]
+
+
+def arany():
+    """naplok/THAYER_ELES_arany.md: szakaszonként forrás, kezi, high, medium; Strongonként a mért tartalmi jellemzők és a költség."""
+    import collections
+    tb = T.TB
+    kezi = {}
+    for sor in open(os.path.join(ROOT, 'adat', 'forditasok.tsv'), encoding='utf-8'):
+        m = sor.rstrip('\n').rstrip('\r').split('\t')
+        if len(m) > 8 and m[0] == 'Thayer' and m[1] in ARANY and 'kezi' in m:
+            kezi.setdefault(m[1], []).append(m)
+    # a kezi sor (teljes szócikk) mezői: a forditasok.tsv fejléce szerint
+    fej = None
+    for sor in open(os.path.join(ROOT, 'adat', 'forditasok.tsv'), encoding='utf-8'):
+        if sor.startswith('szotar\t'):
+            fej = sor.rstrip('\n').split('\t')
+            break
+    kezi_szoveg = {}
+    for sp, rows in kezi.items():
+        for m in rows:
+            d = dict(zip(fej, m))
+            if d.get('mezo') == 'forditas_hu' and d.get('allapot') == 'kezi':
+                kezi_szoveg[sp] = d['forditas_hu']
+    ered = {}
+    for effort, adag in ARANY_ADAG.items():
+        ered[effort] = {}
+        for l in open(os.path.join(MUNKA, adag, 'kapu_eredmeny.jsonl'), encoding='utf-8'):
+            r = json.loads(l)
+            ered[effort][r['strong']] = r
+    ki = ['# THAYER_ELES arany — az aranyminta (G0282, G1941, G1944, G4151, G5590) `effort=high` és `effort=medium` fordítása a #7 útján (M0 (e))\n',
+          '*Ítélet nélküli összevetés; az eredmény nem kerül a `forditasok.tsv`-be (`beir` nem futott). Forrás: a javított forrásnézet; `kezi`: a régi teljes szócikk-sor '
+          '(`allapot=kezi`, nem szakaszos, ezért a szakaszonkénti sorokban a `kezi` a teljes szövegben szerepel); high / medium: az első kör (és ahol futott, a javító kör) utolsó próbájának '
+          'feldolgozott szövege, a kapueredménnyel (a kapun bukott szöveg is látszik). Mérő adagok: `forditas/thayer_api/adag7902/` (high), `adag7903/` (medium). '
+          'proveniencia: scope=%s | forras=forditas/thayer_api/adag7902,adag7903 + adat/forditasok.tsv | ts=2026-11-02*\n' % ', '.join(ARANY)]
+    for sp in ARANY:
+        szak = tb.szakaszok(sp)
+        forras = tb.nezet(szak)
+        k = kezi_szoveg.get(sp, '')
+        h, m_ = ered['high'].get(sp, {}), ered['medium'].get(sp, {})
+        sh, sm = h.get('vegleges') or '', m_.get('vegleges') or ''
+        ki.append('\n## %s\n' % sp)
+        ki.append('| | forrás | `kezi` | high | medium |\n|---|---|---|---|---|')
+        ki.append('| karakter (token nélkül) | %d | %d | %d | %d |' % (len(forras), len(k), len(TOK.sub('', sh)), len(TOK.sub('', sm))))
+        ki.append('| igehely-alak (c:v) | %d | %d | %d | %d |' % (len(SZAM.findall(forras)), len(SZAM.findall(k)), len(SZAM.findall(sh)), len(SZAM.findall(sm))))
+        ki.append('| kapu | — | — | %s (próba %s) | %s (próba %s) |' % (h.get('allapot', '—'), h.get('proba', '—'), m_.get('allapot', '—'), m_.get('proba', '—')))
+        ki.append('| kapuhiba | — | — | %s | %s |' % ('; '.join(h.get('hibak', [])) or 'nincs', '; '.join(m_.get('hibak', [])) or 'nincs'))
+        # szakaszonként a hossz
+        rh, rm = szakaszok_szoveg(sh), szakaszok_szoveg(sm)
+        if len(rh) == len(szak) and len(rm) == len(szak):
+            ki.append('\nSzakaszonkénti karakterszám (forrás / high / medium):\n')
+            ki.append('| szakasz | forrás | high | medium | medium/high |\n|---|---|---|---|---|')
+            for i, sz in enumerate(szak):
+                fs = len(tb.nezet([sz]))
+                ki.append('| %d | %d | %d | %d | %.2f |' % (i + 1, fs, len(rh[i]), len(rm[i]), len(rm[i]) / max(1, len(rh[i]))))
+        # szóválasztás: a high/medium/kezi szókészlet különbsége (a leggyakoribb eltérők)
+        wh, wm, wk = szavak(sh), szavak(sm), szavak(k)
+        def elter(a, b, n=12):
+            d = {w: a[w] - b[w] for w in set(a) | set(b) if a[w] - b[w] >= 3}
+            return ', '.join('%s (+%d)' % (w, c) for w, c in sorted(d.items(), key=lambda x: -x[1])[:n]) or '—'
+        ki.append('\nSzóválasztás (szóalakok gyakorisági különbsége, ≥ 3): ')
+        ki.append('- gyakoribb high-ban, mint medium-ban: %s' % elter(wh, wm))
+        ki.append('- gyakoribb medium-ban, mint high-ban: %s' % elter(wm, wh))
+        ki.append('- gyakoribb `kezi`-ben, mint high+medium átlagában: %s' % elter(wk, collections.Counter({w: (wh[w] + wm[w]) // 2 for w in set(wh) | set(wm)})))
+        ki.append('- gyakoribb high+medium átlagában, mint `kezi`-ben: %s' % elter(collections.Counter({w: (wh[w] + wm[w]) // 2 for w in set(wh) | set(wm)}), wk))
+        ki.append('\n**Forrás** (angol)\n\n```\n%s\n```\n' % forras)
+        ki.append('**`kezi`**\n\n%s\n' % k)
+        ki.append('**high**\n\n%s\n' % (TOK.sub('', sh) if sh else '*nincs használható válasz*'))
+        ki.append('**medium**\n\n%s\n' % (TOK.sub('', sm) if sm else '*nincs használható válasz*'))
+    ut = os.path.join(ROOT, 'naplok', 'THAYER_ELES_arany.md')
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(ki))
+    print('kész', os.path.getsize(ut))
+    return 0
+
+
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == 'arany':
+        sys.exit(arany())
     if len(sys.argv) > 1 and sys.argv[1] == 'illeszt':
         sys.exit(illeszt())
     if len(sys.argv) > 1 and sys.argv[1] == 'sorrend':

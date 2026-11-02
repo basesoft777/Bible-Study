@@ -1,0 +1,166 @@
+# JAVASLAT (nem döntés): naplok/THAYER_ELES_sigla_javaslat.tsv — az adat/thayer_sigla.tsv 164 `jelolt` sorának besorolási javaslata a #7 M0 (d1) szerint. Az orkesztrátor soronként jóváhagyja (⛔ d1); az adat/thayer_sigla.tsv csak a jóváhagyás után változik (`besorolt`). A `Sept.`, `Wis.`, `Macc.`, `Sir.` már `besorolt`. | scope=adat/thayer_sigla.tsv (allapot=jelolt, 164 sor, 5 708 előfordulás) | forras=manual — modell-javaslat (claude-sonnet-5-5), nem lekérdezés: a forrás szövegkörnyezete alapján (az előfordulás és a példa-Strong a táblából) | ts=2026-11-02
+sigla	javasolt_tipus	kibontas	javasolt_magyar_alak	elofordulas	pelda_strong	megjegyzes
+Lightfoot	modern szerző	J. B. Lightfoot (angol bibliakutató, kommentárok)	változatlan	340	G0019	
+Phryn.	műcím-rövidítés	Phrynichus: Ecloga (Rutherford: New Phrynichus)	változatlan	300	G0032	
+Vulg.	rövidítés	Vulgata (latin bibliafordítás)	Vulgáta	293	G0029	magyar szóalak javasolt; a `Vulg.angariare` tapadt alak is előfordul
+Lucian	antik szerző	Lukianosz (szamoszatai Lukianosz)	Lukianosz	262	G0064	új görög névalak a terminológia mintájára; alternatíva: változatlan
+Proleg.	műcím-rövidítés	Prolegomena (Tischendorf: Novum Testamentum Graece, Prolegomena)	változatlan	212	G0011	
+Alex.	nem sigla	Alexandriai (Alexandriai Kelemen jelzője: `Clement, Alex. protr`)	változatlan	170	G0112	
+C.	nem sigla	személynév-kezdőbetű (`C. F. A. Fritzsche`)	változatlan	115	G0553	
+Esdr.	könyvrövidítés	Ezsdrás apokrif könyvei (1–2 Esdr.; a `Dan 7:2 Esdr. 8:28` OCR-tapadás)	változatlan	107	G0039	a Károli-listában nincs apokrif Ezsdrás; `Ezsd` a kánoni Ezsdrásé, ezért nem javasolható; ⛔ ha a 11. kapunak alak kell
+Athen.	antik szerző	Athénaiosz (Deipnosophistai)	Athénaiosz	97	G0106	új görög névalak; alternatíva: változatlan
+n.	nem sigla	`h. n.` (Plinius: Historia naturalis) része; a forrás alakjában marad	változatlan	89	G0105	
+iv.	rövidítés	kötetszám (római)	változatlan	88	G0039	mint az `iii.` besorolt sor
+rep.	műcím-rövidítés	Platón: Állam (De republica)	változatlan	84	G0171	
+Ausf.	műcím-rövidítés	Ausführliche (Buttmann: Ausführliche Sprachlehre)	változatlan	80	G0100	
+Spr.	műcím-rövidítés	Sprache / Sprachlehre (német műcím)	változatlan	74	G0100	
+mor.	műcím-rövidítés	Plutarkhosz: Moralia	változatlan	68	G0457	
+dial.	műcím-rövidítés	dialectus / dialogi (Sturz: De dialecto Macedonica; Lucian: dialogi)	változatlan	66	G0140	
+vit.	műcím-rövidítés	vita (De virtutibus et vitiis; Philón: De vita Moysis)	változatlan	64	G0114	
+comp.	műcím-rövidítés	De verborum compositione (Winer)	változatlan	63	G0303	
+Anthol.	műcím-rövidítés	Anthologia Graeca	változatlan	62	G0064	
+Griesbach	modern szerző	J. J. Griesbach (görög ÚSZ-kiadás; a `G` sigla kiírt alakja)	változatlan	60	G0071	
+xii.	rövidítés	római szám (`xii. Patr.`: a Tizenkét pátriárka testamentuma)	változatlan	58	G0016	
+Herm.	modern szerző	G. Hermann (klasszika-filológus; `Herm. ad Vig.`)	változatlan	57	G0473	
+Anm.	műcím-rövidítés	Anmerkung (német: megjegyzés; `§ 339 Anm. 5`)	változatlan	56	G0001	
+Patr.	műcím-rövidítés	Patriarcharum (Testamenta xii. Patriarcharum)	változatlan	55	G0016	
+Hell.	műcím-rövidítés	Xenophón: Hellénika	változatlan	53	G0085	
+Vig.	műcím-rövidítés	Vigerus: De praecipuis Graecae dictionis idiotismis	változatlan	53	G0473	
+leg.	műcím-rövidítés	Philón: Legum allegoriae (`de leg. alleg.`)	változatlan	52	G0076	
+oec.	műcím-rövidítés	Xenophón: Oikonomikosz	változatlan	52	G0018	
+Devar.	műcím-rövidítés	Devarius: De Graecae linguae particulis (Klotz-kiadás)	változatlan	48	G0235	
+oneir.	műcím-rövidítés	Artemidórosz: Oneirokritika	változatlan	48	G0394	
+Zeitschr.	műcím-rövidítés	Zeitschrift (német folyóirat)	változatlan	47	G0220	
+Tragg.	rövidítés	Tragici: a görög tragédiaköltők	változatlan	46	G1773	
+Treg.	kiadás-sigla	Tregelles (a `Tr` sigla kiírt alakja)	változatlan	44	G0140	mint a `Tdf.` és a `Lachmann` besorolt sor
+Theod.	rövidítés	Theodotión (görög bibliafordító)	változatlan	43	G0426	
+Etym.	műcím-rövidítés	Etymologicum Magnum	változatlan	41	G0121	
+Moys.	műcím-rövidítés	Philón: De vita Moysis	változatlan	41	G0165	
+rhet.	műcím-rövidítés	Arisztotelész: Rétorika	változatlan	41	G0027	
+vi.	rövidítés	római szám (kötet / fejezet)	változatlan	40	G0032	
+Matt.	nem sigla	Matthew / Mount (`the rocky Matt. Sinai`: OCR-torzult alak)	változatlan	38	G0028	
+Aufl.	rövidítés	Auflage (német: kiadás; `4te Aufl.`)	változatlan	36	G0039	
+hist.	műcím-rövidítés	historia (Theophrasztosz: Historia plantarum; Aelianus)	változatlan	36	G0305	
+symp.	műcím-rövidítés	Plutarkhosz: Symposiaka (Quaestiones convivales)	változatlan	36	G0358	
+Phil.	műcím-rövidítés	Isokratész: Ad Philippum (`ad Phil.`)	változatlan	34	G0159	
+Prof.	rövidítés	professzor (`Prof. Ezra Abbot`)	prof.	33	G0154	magyar szokás szerint kisbetűs; alternatíva: változatlan
+Ps.	rövidítés	Pseudo- / Psalmi (`Ps. Sal.`: Salamon zsoltárai)	változatlan	33	G0025	
+Untersuch.	műcím-rövidítés	Untersuchungen (német műcím)	változatlan	32	G0060	
+Schol.	rövidítés	scholia / scholiast	változatlan	31	G0536	
+Hist.	műcím-rövidítés	History (Tristram: Natural History of the Bible)	változatlan	31	G0065	
+Zeitgesch.	műcím-rövidítés	Zeitgeschichte (Schürer: Neutestamentliche Zeitgeschichte)	változatlan	30	G0452	
+alleg.	műcím-rövidítés	Philón: Legum allegoriae	változatlan	30	G0076	
+Antiq.	műcím-rövidítés	Antiquities (Dict. of Christian Antiquities; Josephus)	változatlan	28	G0026	
+Ev.	műcím-rövidítés	Evangelium (`Lehrbegriff des Ev. Joh.`; `Ev. Nicod.`)	változatlan	28	G0026	
+Jahrbb.	műcím-rövidítés	Jahrbücher (német folyóirat)	változatlan	26	G0039	
+Neutest.	műcím-rövidítés	neutestamentlich (Schürer: Neutest. Zeitgesch.)	változatlan	26	G0452	
+col.	rövidítés	columna: hasáb (`Thesaurus i. col. 875`)	hasáb	26	G0121	a terminológiában nincs; alternatíva: változatlan
+id.	rövidítés	idem: ugyanő (terminológia: `id.` → `ua.`) vagy Theokritosz: Idüllion (`id. 4, 60`)	nincs_egyseges	26	G0188	⛔ a terminológia `id.` → `ua.` sora és a Theokritosz-mű ütközik; ajánlat: nincs_egyseges
+Maced.	rövidítés	Macedonicus (`De dial. Maced.`)	változatlan	25	G0140	
+Nicod.	műcím-rövidítés	Evangelium Nicodemi (Nikodémus evangéliuma)	változatlan	25	G0225	
+deor.	műcím-rövidítés	Cicero: De natura deorum	változatlan	25	G0018	
+Gr.	műcím-rövidítés	Grammar / Greek (`N. T. Gr.`)	változatlan	24	G0455	
+Sap.	könyvrövidítés	Sapientia Salomonis = a Bölcsesség könyve (a `Wis.` párja; `Sap. xvi. 10`, római számos)	Bölcs	23	G0492	a 11. kapu c:v-t keres, a római számos alakot nem érinti; alternatíva: változatlan
+quaest.	műcím-rövidítés	quaestiones (Plutarkhosz; Origenész)	változatlan	23	G0165	
+viii.	rövidítés	római szám (kötet)	változatlan	23	G0026	
+Ald.	kiadás-sigla	az Aldina (Aldus Manutius velencei Septuaginta-kiadása, 1518)	változatlan	22	G0392	
+Aq.	rövidítés	Aquila (görög bibliafordító)	változatlan	22	G0387	
+Paralip.	műcím-rövidítés	Lobeck: Paralipomena grammaticae Graecae	változatlan	21	G0065	
+Symm.	rövidítés	Symmachus (görög bibliafordító)	változatlan	21	G0087	
+Norv.	műcím-rövidítés	Field: Otium Norvicense	változatlan	20	G0074	
+Syn.	műcím-rövidítés	Synonyms / Synonymik (Tittmann: De synonymis)	változatlan	20	G2309	
+Dr.	rövidítés	doktor (`Dr. Gregory`)	változatlan	19	G0235	
+F.	nem sigla	személynév-kezdőbetű (`C. F. A. Fritzsche`)	változatlan	19	G0553	
+Iph.	műcím-rövidítés	Euripidész: Iphigeneia Taurisban	változatlan	19	G0443	
+Pal.	műcím-rövidítés	Anthologia Palatina	változatlan	19	G0211	
+aa.	nem sigla	betűjel: harmadik szintű alpont (`d. aa.`)	változatlan	19	G0575	mint a `bb.` besorolt sor
+nub.	műcím-rövidítés	Arisztophanész: Felhők (Nubes)	változatlan	19	G0337	
+vii.	rövidítés	római szám	változatlan	19	G0026	
+Ag.	műcím-rövidítés	Aiszkhülosz: Agamemnón	változatlan	18	G0171	
+Apoll.	műcím-rövidítés	Plutarkhosz: Consolatio ad Apollonium	változatlan	18	G0630	
+Chris.	műcím-rövidítés	Christian (`Dict. of Chris. Biog.`)	változatlan	18	G0758	
+Einl.	műcím-rövidítés	Einleitung (német: bevezetés)	változatlan	18	G0032	
+Evang.	műcím-rövidítés	Evangelium / Evangelien (német műcím)	változatlan	18	G0394	
+Mang.	modern szerző	Th. Mangey (Philón-kiadás, 1742)	változatlan	18	G0076	
+Nat.	műcím-rövidítés	Natural (`Nat. Hist. of the Bible`)	változatlan	18	G0065	
+fab.	műcím-rövidítés	Aiszóposz: Fabulae	változatlan	18	G0219	
+Griech.	műcím-rövidítés	Griechisch (`Griech. Personennamen`)	változatlan	17	G0625	
+ed.	rövidítés	editio: kiadás (`Lachmann (ed. min.)`)	kiad.	17	G0520	alternatíva: változatlan
+somn.	műcím-rövidítés	Philón: De somniis	változatlan	17	G0165	
+Anth.	műcím-rövidítés	Anthologia Palatina	változatlan	16	G0215	
+Br.	műcím-rövidítés	Brief (német: levél; `Commentar u. d. Br. an d. Galater`)	változatlan	16	G1344	
+Gaisf.	modern szerző	Th. Gaisford (klasszika-filológus, kiadások)	változatlan	16	G0490	
+Hipp.	műcím-rövidítés	Euripidész: Hippolütosz / Platón: Hippias	változatlan	16	G0053	
+Luc.	antik szerző	Lukianosz (`Luc. dial. mort.`)	változatlan	16	G0659	a `Lucian` soron javasolt alaktól függetlenül marad a forrás alakja
+Merc.	műcím-rövidítés	Homéroszi himnusz Hermészhez (`h. Merc.`)	változatlan	16	G0968	
+ann.	műcím-rövidítés	annales (Tacitus; Nicetas)	változatlan	16	G0692	
+av.	műcím-rövidítés	Arisztophanész: Madarak (Aves)	változatlan	16	G1064	
+min.	műcím-rövidítés	minor (`Hipp. min.`, `Cat. min.`, `ed. min.`)	változatlan	16	G0264	
+pol.	műcím-rövidítés	Arisztotelész: Politika	változatlan	16	G0592	
+polit.	műcím-rövidítés	Platón: Politikosz (Politicus)	változatlan	16	G0844	
+Aj.	műcím-rövidítés	Szophoklész: Aiasz	változatlan	15	G0899	
+Alc.	műcím-rövidítés	Platón: Alkibiadész	változatlan	15	G0888	
+Autol.	műcím-rövidítés	Theophilosz: Ad Autolycum	változatlan	15	G1308	
+Pers.	műcím-rövidítés	Ktésziasz: Persica	változatlan	15	G0140	
+anim.	műcím-rövidítés	Arisztotelész: De generatione animalium	változatlan	15	G0198	
+char.	műcím-rövidítés	Theophrasztosz: Karakterek	változatlan	15	G0348	
+nat.	műcím-rövidítés	Cicero: De natura deorum	változatlan	15	G0018	
+x.	nem sigla	római szám (kötet / könyv) vagy betűjel	változatlan	15	G0166	
+Ages.	műcím-rövidítés	Xenophón: Agésziláosz	változatlan	14	G0249	
+Att.	műcím-rövidítés	Cicero: Epistulae ad Atticum	változatlan	14	G0115	
+Cat.	műcím-rövidítés	Plutarkhosz: Cato minor	változatlan	14	G0333	
+Palaeph.	műcím-rövidítés	Palaiphatosz: Hitetlen történetek	változatlan	14	G1223	
+Rem.	rövidítés	Remark: megjegyzés (`§ 8 Rem. 3`)	változatlan	14	G0189	
+nom.	műcím-rövidítés	Philón: De mutatione nominum	változatlan	14	G0165	
+poen.	műcím-rövidítés	Philón: De praemiis et poenis	változatlan	14	G0165	
+xiii.	rövidítés	római szám	változatlan	14	G2440	
+Abr.	műcím-rövidítés	Philón: De migratione Abrahami	változatlan	13	G0165	
+Flacc.	műcím-rövidítés	Philón: In Flaccum	változatlan	13	G0359	
+Hdbch.	műcím-rövidítés	Handbuch (Fritzsche: Handbuch zu den Apokryphen)	változatlan	13	G2719	
+Prom.	műcím-rövidítés	Aiszkhülosz: Leláncolt Prométheusz	változatlan	13	G0312	
+Prot.	műcím-rövidítés	Platón: Prótagorasz	változatlan	13	G0060	
+cherub.	műcím-rövidítés	Philón: De cherubim	változatlan	13	G0126	
+ix.	rövidítés	római szám	változatlan	13	G0457	
+pl.	műcím-rövidítés	Theophrasztosz: Historia plantarum (`hist. pl.`)	változatlan	13	G0432	
+probl.	műcím-rövidítés	Arisztotelész: Problémák	változatlan	13	G0358	
+Fab.	műcím-rövidítés	Plutarkhosz: Fabius Maximus	változatlan	12	G1107	
+Graec.	műcím-rövidítés	Graeca (`Eccl. Graec. Mon.`: Coteler)	változatlan	12	G0244	
+Luth.	modern szerző	Luther (Luther-fordítás; `Luth.: im Schauen`)	változatlan	12	G1491	
+mand.	műcím-rövidítés	Hermas Pásztora: Mandata	változatlan	12	G0182	
+mut.	műcím-rövidítés	Philón: De mutatione nominum	változatlan	12	G0165	
+Diogn.	műcím-rövidítés	Levél Diognétoszhoz	változatlan	11	G2227	
+Encycl.	műcím-rövidítés	Encyclopädie (Ersch–Gruber)	változatlan	11	G0500	
+Geog.	műcím-rövidítés	Geography (`Dict. of Greek and Roman Geog.`)	változatlan	11	G0099	
+Geogr.	műcím-rövidítés	Geography (`Dict. of Geogr.`)	változatlan	11	G0490	
+Gesch.	műcím-rövidítés	Geschichte (német műcím)	változatlan	11	G0717	
+Grammat.	műcím-rövidítés	Grammatica (Hoffmann: Grammatica Syriaca)	változatlan	11	G1446	
+Locr.	antik szerző	Timaiosz Lokriszi (Timaeus Locrus)	változatlan	11	G0088	
+Lond.	nem sigla	London (kiadási hely)	változatlan	11	G0735	
+Pathol.	műcím-rövidítés	Lobeck: Pathologia	változatlan	11	G0085	
+Tusc.	műcím-rövidítés	Cicero: Tusculanae disputationes	változatlan	11	G0810	
+Unters.	műcím-rövidítés	Untersuchungen (német műcím)	változatlan	11	G0331	
+conv.	műcím-rövidítés	Plutarkhosz: Quaestiones convivales	változatlan	11	G0217	
+hom.	műcím-rövidítés	homiliae (Pszeudo-Kelemen: Homíliák)	változatlan	11	G0532	
+orat.	műcím-rövidítés	Nazianzoszi Gergely: Orationes	változatlan	11	G0165	
+prooem.	műcím-rövidítés	Josephus: prooemium	változatlan	11	G0165	
+strom.	műcím-rövidítés	Alexandriai Kelemen: Stromata	változatlan	11	G0165	
+Apollod.	műcím-rövidítés	Apollodórosz: Bibliotheca	változatlan	10	G0941	
+Exeget.	műcím-rövidítés	Exegetical (`Journ. of Exeget. Soc.`)	változatlan	10	G0137	
+Hier.	műcím-rövidítés	Xenophón: Hierón	változatlan	10	G0249	
+Lexil.	műcím-rövidítés	Buttmann: Lexilogus	változatlan	10	G0085	
+Ol.	műcím-rövidítés	Pindarosz: Olümpiai ódák	változatlan	10	G0973	
+Philostr.	antik szerző	Philostratos (`Philostr. her.`: Hérőikosz)	változatlan	10	G0262	
+Pomp.	műcím-rövidítés	Plutarkhosz: Pompeius	változatlan	10	G0221	
+S.	nem sigla	személynév-kezdőbetű (`E. S. Goodwin`)	változatlan	10	G0165	
+Theact.	műcím-rövidítés	Platón: Theaitétosz	változatlan	10	G0915	
+Trall.	műcím-rövidítés	Ignatiosz: levél a trallesiaiakhoz	változatlan	10	G0112	
+apost.	műcím-rövidítés	Canones apostolici (apostoli kánonok)	változatlan	10	G0509	
+conviv.	műcím-rövidítés	Plutarkhosz: Quaestiones convivales	változatlan	10	G0271	
+k.	nem sigla	betűjel (grammatika-alszakasz: `§ 31, 1 k.`)	változatlan	10	G1658	
+luth.	rövidítés	lutherisch (német; `Zeitschr. f. luth. Theol.`)	változatlan	10	G1042	
+orac.	műcím-rövidítés	Plutarkhosz: De defectu oraculorum	változatlan	10	G0049	
+vesp.	műcím-rövidítés	Arisztophanész: Darazsak	változatlan	10	G1194	
+virt.	műcím-rövidítés	De virtutibus (et vitiis)	változatlan	10	G0114	
+xiv.	rövidítés	római szám	változatlan	10	G0840	
+Apocr.	rövidítés	Apocrypha (`Libri Apocr.`)	változatlan	9	G0025	
+Tischendorf	modern szerző	C. von Tischendorf (a `T` / `Tdf.` kiírt alakja)	változatlan	7	G0426	

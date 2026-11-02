@@ -1,0 +1,33 @@
+# JAVASLAT (nem döntés): naplok/THAYER_ELES_terminologia_javaslat.tsv — az adat/terminologia.tsv-ben sor nélküli, leggyakoribb angol nyelvtani és szótári szavak (a #27 M0 5. pontjának javaslatlistája, bővítve; naplok/FP3_naplo.md). Az orkesztrátor jóváhagyja (⛔ d2); az adat/terminologia.tsv csak a jóváhagyás után változik. A `javasolt_kapu` mindenhol `nem` (JELZES, nem gátló): a ragozott magyar alak miatt az 5. kapu kötelező alakja ezeknél hamis bukást adna. | scope=konkordancia/Thayer_teljes.tsv (teljes Thayer, egész szó, kis/nagybetű nélkül) | forras=egyszeri szógyakoriság-számolás (regex b szó b, kis-nagybetű nélkül) a Thayer_teljes.tsv-n; a magyar alak: manual — modell-javaslat (claude-sonnet-5-5), nem lekérdezés | ts=2026-11-02
+angol	javasolt_magyar	elofordulas	pelda_strong	javasolt_kapu	megjegyzes
+aorist	aoristos	1821	G0015	nem	görög igeidő; a magyar nyelvtanokban aoristos
+passive	szenvedő (alak)	1378	G0025	nem	passive voice: szenvedő alak; a `pass.` rövidítés sora már megvan
+active	cselekvő (alak)	124	G0021	nem	active voice: cselekvő alak
+middle	médium (közép alak)	577	G0021	nem	középső alak: görög médium; a „middle” mint „közép” szó nem azonos — csak igei jelentésben
+genitive	birtokos eset (genitivus)	938	G0026	nem	esetnév; a Thayer az „accusative”-ot is használja (tárgyeset)
+dative	részes eset (dativus)	548	G0021	nem	esetnév
+accusative	tárgyeset (accusativus)	759	G0025	nem	esetnév
+nominative	alanyeset (nominativus)	55	G0102	nem	esetnév
+infinitive	főnévi igenév (infinitivus)	659	G0015	nem	igenév
+participle	melléknévi igenév (participium)	598	G0025	nem	igenév
+subjunctive	kötőmód (coniunctivus)	270	G0118	nem	igemód
+indicative	kijelentő mód	119	G0302	nem	igemód
+plural	többes szám	715	G0018	nem	szám
+singular	egyes szám	279	G0118	nem	szám
+future	jövő idő	725	G0025	nem	igeidő; a „future” főnévként (a jövő) ritka
+present	jelen idő	714	G0025	nem	igeidő; a „present” mint „ajándék” / „jelenlevő” nem ide tartozik
+neuter	semleges nem	210	G0018	nem	nem (genus)
+noun	főnév	107	G0444	nem	szófaj
+adjective	melléknév	124	G0012	nem	szófaj
+adverb	határozószó	286	G0084	nem	szófaj
+preposition	elöljárószó	104	G0165	nem	szófaj
+particle	partikula	106	G0001	nem	szófaj
+article	névelő	209	G0125	nem	szófaj
+grammar	nyelvtan	2935	G0001	nem	a `Winers Grammar`, `Buttmann`, `N. T. Gram.` sigla / műcím marad a thayer_sigla.tsv szerint; ez csak a folyó szöveg „grammar” szava
+metaphorically	átvitt értelemben	391	G0086	nem	a Thayer egyik leggyakoribb jelentés-jelölője
+absolutely	önállóan (tárgy nélkül)	359	G0027	nem	az „absolute use”: tárgy nélküli használat
+properly	tulajdonképpen	685	G0033	nem	alapjelentést bevezető szó
+namely	tudniillik	523	G0009	nem	a `sc.` → `ti.` sor már megvan; a kiírt „namely” azonos alak
+secular	világi	317	G0012	nem	a „secular writings / authors” = világi írások / szerzők
+reading	olvasat	1287	G0016	nem	szövegkritikai „reading” (a „reading” mint olvasás nem ide tartozik)
+edition	kiadás	735	G0001	nem	a `ed.` sigla-javaslat „kiad.”; a kiírt szó „kiadás”
