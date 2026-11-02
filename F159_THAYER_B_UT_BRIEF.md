@@ -5,7 +5,7 @@ kod: THAYER_B_UT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: folyamatban
 ad: "eszkozok/thayer_api_koteg.py B-úttal (15–25 kicsi/közepes Strong egy kérésben, Strongonkénti visszabontás és kapuk, egyenkénti javító kör), a kérés Strongjaira szűkített terminológia- és Károli-blokkal, az F27 M1 mérésére kalibrált becslővel és mért futó összeggel számoló plafonnal; egy kb. 60 Strongos mérő batch effort=high és effort=medium mellett (legfeljebb 4 USD, csak naplóba), és a teljes Thayer B-úti kivetítése"
 kovetkezo: "/kovetkezo a #27 (FP3) lezárása után; utána a #7 briefje ennek a mérésével készül"
 olvas: [eszkozok/thayer_api_koteg.py, eszkozok/bdb_api_koteg.py, eszkozok/karoli_strong/api_koteg.py, eszkozok/thayer_jelolt/, forditas/prompt_v5_1.md, adat/terminologia.tsv, adat/karoli_strong/, adat/thayer_szakaszok.tsv, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/THAYER_API_KOTEG_naplo.md, F158_THAYER_API_KOTEG_BRIEF.md, F27_FP3_BRIEF.md, DONTESEK.md]

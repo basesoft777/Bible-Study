@@ -12,6 +12,8 @@ A forrás a csoport `helyorzo_bont` ⟦n⟧ helyőrzőit kapja (a héber/görög
 
   lista     [--ki PATH] [--ts NAP]  a teljes Thayer futási listája (a `szolista.allapot` szabályával); repóba nem ír
   szaraz    --adag N --strongok FÁJL   a kérések összeállítása hálózat nélkül: kérés-, csoport-, karakterszám, becslés, csomagolás
+  bszaraz   a B-út (15–25 kicsi/közepes Strong / kérés) száraz futása: kérésszám, szűkített állandó rész, kalibrált becslés
+  bbekuld   a B-kérések beküldése (--db: az első DB; plafon: mért futó összeg + becslés; a nagyok a `bekuld`-del, egyenként)
   bekuld    a következő csomag beküldése — csak a megadott plafonnal (--plafon USD; alapérték 0 = tilos)
   allapot   a batch-ek állapota
   begyujt   a kész batch-ek nyers válaszai a valaszok.jsonl-be, költségnapló
@@ -56,6 +58,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 import api_koteg as AK  # noqa: E402
 import emeles as E  # noqa: E402
 import forditas as F  # noqa: E402
+import forditas_kapuk as K  # noqa: E402  (csak a terminológia-kulcs illesztése: `_angol_minta`, ugyanaz, mint az 5. kapué)
 import kulcs  # noqa: E402
 import szolista  # noqa: E402
 import thayer_bemenet as TB  # noqa: E402
@@ -63,20 +66,33 @@ import bdb_api_koteg as B  # noqa: E402  (csak a tiszta segédei: költség, JSO
 
 ROOT = AK.tokenek.ROOT
 MODELL = AK.MODELL                 # claude-sonnet-5-5 (a kérésben kért; a rögzítés a válasz tényleges modellnevét írja)
-EFFORT = B.EFFORT
-PLAFON_USD = 0.0                   # beküldés tilos, amíg a felhasználó plafonja (#27 ⛔ M1) nincs megadva (--plafon)
+PLAFON_USD = 0.0                   # beküldés tilos, amíg a plafon nincs megadva (--plafon)
+ELOZO_KIADAS_USD = 0.0             # egy közös plafon alatt futó másik adag(ok) mért költsége (--elozo-kiadas)
 MUNKA_GYOKER = os.path.join(ROOT, 'forditas', 'thayer_api')
 MUNKA_TABLA = F.MUNKA_UT
 BUKOTT_UT = os.path.join(ROOT, 'naplok', 'F132_THAYER_SZAKASZ_bukottak.tsv')
 BUKOTT_FEJLEC = ['strong', 'kapu', 'ok', 'probalkozas', 'modell', 'datum', 'proveniencia']
 CSOMAG = 450                       # kérés / batch (a plafon csomagonként ellenőrződik)
-TOKEN_KARAKTER = 2.8               # becslés (manual): prompt-karakter / token
-KIMENET_ARANY = 0.5                # becslés (manual): kimeneti token / forráskarakter
-GONDOLKODAS_BECSLES = 1500         # becslés (manual): gondolkodási token / kérés (effort=high)
+EFFORT = 'high'                    # --effort high|medium (a kérés `output_config.effort`-ja és a futásnapló oszlopa)
+EFFORTOK = ('high', 'medium')
+# A becslő kalibrálása az F27 M1 mért illesztéséből (naplok/FP3_naplo.md, naplok/FP3_koltseg.py; 51 első körös kérés,
+# legkisebb négyzetek; N-F27a). Mind becslés (manual) a mérő batch újraillesztéséig.
+BE_KERES = 17136                   # bemeneti token / kérés (a prompt állandó része, szűkítés ELŐTT)
+BE_KAR = 3.721                     # bemeneti token / forráskarakter (az adatblokk és a forrás)
+KI_KERES = 1134                    # kimeneti (gondolkodással) token / kérés
+KI_KAR = 1.654                     # kimeneti (gondolkodással) token / forráskarakter
+ALLANDO_REF_KAR = 36257            # a G25 kérés állandó részének karaktere (nem Strongonkénti rész), szűkítés ELŐTT
+ALLANDO_KAR_TOKEN = ALLANDO_REF_KAR / BE_KERES     # karakter / token az állandó részre (~2,12; manual)
+# B-út (csoportos): a kicsi (< KICSI_HATAR) és a közepes (< NAGY_HATAR) Strongok n Strongonként egy kérésben, a nagyok egyenként
+KICSI_HATAR, NAGY_HATAR = 500, 3000
+B_DB = 20                          # Strong / B-kérés (15–25; a mérés tárgya, --b-db)
+B_KAR = 12000                      # forráskarakter / B-kérés felső határa (a kimenet ne lépje át a max_tokens-t)
+SZUKIT = True                      # a terminológia- és a Károli-tábla szűkítése a kérés forrására (--nincs-szukites: ki)
 AR_BE, AR_KI = B.AR_BE, B.AR_KI
 NAPLO_FEJLEC = B.NAPLO_FEJLEC
 BATCH_FEJLEC = B.BATCH_FEJLEC
 CID = re.compile(r'^(?P<strong>G\d{4}[a-z]?)-c(?P<csoport>\d+)-p(?P<proba>\d)$')      # csak görög (Thayer)
+CID_B = re.compile(r'^B(?P<n>\d{3})-p(?P<proba>\d)$')
 FORRAS_JEL = 'Forrás (Thayer, angol):'
 KIMENET_JEL = '## Kimenet'
 
@@ -103,12 +119,42 @@ jsonl_hozzaad = B.jsonl_hozzaad
 json_valasz = B.json_valasz
 javito_uzenet = B.javito_uzenet
 modell_allapot = B.modell_allapot
-kerelem_params = B.kerelem_params
-max_tokens_kerelemre = B.max_tokens_kerelemre
+
+
+def max_tokens_kerelemre(forras_kar):
+    """Egy Strongos kérés max_tokens-e: a kalibrált kimenet-becslés háromszorosa (felső korlát, nem költség)."""
+    return int(min(64000, max(16000, 3 * (forras_kar * KI_KAR + KI_KERES) + 4000)))
+
+
+def kerelem_params(uzenetek, forras_kar, max_tokens=None):
+    return {'model': MODELL, 'max_tokens': max_tokens or max_tokens_kerelemre(forras_kar),
+            'thinking': {'type': 'adaptive'}, 'output_config': {'effort': EFFORT}, 'messages': uzenetek}
 
 
 def futo_osszeg():
+    """Az eddig begyűjtött batchek MÉRT költsége (USD, a válaszok usage-éből; `futasnaplo.tsv`)."""
     return sum(float(s['koltseg_usd'] or 0) for s in AK.tsv_olvas(ut('futasnaplo.tsv')))
+
+
+def fuggo_becsles(cimke=None):
+    """A beküldött, de még be nem gyűjtött batchek beküldéskori becslése (USD, manual) — a mért összeg még nem tartalmazza."""
+    ossz = 0.0
+    for b in AK.tsv_olvas(ut('batchek.tsv')):
+        if cimke is not None and b['cimke'] != cimke:
+            continue
+        if not os.path.exists(ut('begyujtve_%s.txt' % b['batch_id'])) and os.path.exists(ut('becsles_%s.txt' % b['batch_id'])):
+            with open(ut('becsles_%s.txt' % b['batch_id']), encoding='utf-8') as f:
+                ossz += float(f.read() or 0)
+    return ossz
+
+
+def plafon_ellenorzes(plafon, becs):
+    """(rendben, szöveg): ELOZO_KIADAS_USD (a közös plafon alatti, másik adag mért költsége) + a mért futó összeg + a még
+    be nem gyűjtött batchek beküldéskori becslése + a most beküldendő kérések kalibrált becslése <= plafon (F159, N-F27b)."""
+    mert, fuggo = futo_osszeg(), fuggo_becsles()
+    ossz = ELOZO_KIADAS_USD + mert + fuggo + becs
+    return ossz <= plafon, ('becslés %.2f USD (manual); eddig mért %.4f USD + másik adag %.4f + függő %.2f; összesen %.2f / plafon %.2f USD'
+                            % (becs, mert, ELOZO_KIADAS_USD, fuggo, ossz, plafon))
 
 
 def strongok_olvas(fajl):
@@ -193,8 +239,16 @@ def kerelmek_strongra(strong):
     for i, c in enumerate(cs):
         prompt, hely, kar = helyorzos_prompt(sp, c, E.darab_info_szoveg(i, len(cs)))
         ki.append({'strong': sp, 'csoport': i + 1, 'db': len(cs), 'prompt': prompt, 'hely': hely, 'forras_kar': kar,
-                   'kot': E.kotelezo_alakok_szoveg(TB.nezet(c))})
+                   'kot': E.kotelezo_alakok_szoveg(TB.nezet(c)), 'nezet': TB.nezet(c)})
     return ki
+
+
+def konnyu_strongra(strong):
+    """A tervezéshez (adatblokk és prompt nélkül, gyors): [{strong, csoport, db, forras_kar, nezet}] csoportonként."""
+    sp, szak = F.forras(strong)
+    cs = TB.csoportok(szak)
+    return [{'strong': sp, 'csoport': i + 1, 'db': len(cs), 'forras_kar': len(TB.tokenes(c)), 'nezet': TB.nezet(c)}
+            for i, c in enumerate(cs)]
 
 
 def terv(strongok):
@@ -209,10 +263,28 @@ def ker_index(strongok):
     return ki
 
 
+def becsles_adat(allando_kar, forras_kar_osszeg, strongok_db):
+    """(bemenet_token, kimenet_token, USD) — Batch-ár, cache nélkül; a kalibrált F27 M1 illesztés (BE_KERES, BE_KAR, KI_KERES,
+    KI_KAR; manual). A kérésenkénti állandó a (szűkített) prompt állandó része karakterből; a kimenet Strongonként egy
+    kérésnyi állandóval (a B-útra konzervatív felső érték)."""
+    be = allando_kar / ALLANDO_KAR_TOKEN + BE_KAR * forras_kar_osszeg
+    ki = KI_KERES * strongok_db + KI_KAR * forras_kar_osszeg
+    return be, ki, (be * AR_BE + ki * AR_KI) / 1e6
+
+
+def allando_kar(prompt):
+    """A prompt nem Strongonkénti része (szabályok, terminológia, Károli-tábla, kimenet-séma, példa) karakterben."""
+    i = prompt.rfind(BEMENET_JEL)
+    j = prompt.find(KIMENET_JEL, i)
+    return len(prompt) - (j - i)
+
+
 def becsles(ker):
-    """(bemenet_token, kimenet_token, USD) — Batch-ár, cache nélkül; mind becslés (manual)."""
-    be = sum(len(k['prompt']) / TOKEN_KARAKTER for k in ker)
-    ki = sum(k['forras_kar'] * KIMENET_ARANY + GONDOLKODAS_BECSLES for k in ker)
+    """Egy Strongos (A-stílusú) kérések becslése -> (bemenet_token, kimenet_token, USD) — manual."""
+    be = ki = 0.0
+    for k in ker:
+        b, o, _ = becsles_adat(allando_kar(kuldendo_prompt(k)), k['forras_kar'], 1)
+        be, ki = be + b, ki + o
     return be, ki, (be * AR_BE + ki * AR_KI) / 1e6
 
 
@@ -222,6 +294,80 @@ def csomagok(ker, meret=CSOMAG):
 
 def uzenet(prompt):
     return [{'type': 'text', 'text': prompt}]
+
+
+# ---------- a terminológia- és a Károli-tábla szűkítése (F159, követelmény 2) ----------
+
+TERM_FEJ = '## Ideiglenes terminológia'
+KAROLI_FEJ = '## Károli-rövidítéslista'
+BEMENET_JEL = '## Bemenet'
+KOT_JEL = 'Az e forrásban előforduló kulcsok gépi kigyűjtése:\n\n'
+_TABLA = {}
+
+
+def term_sorok():
+    """[(angol, sor-szöveg)] — a sor-szöveg betűre azonos az `emeles.terminologia_szoveg` soraival."""
+    if 'term' not in _TABLA:
+        ki = []
+        for r in E.tsv_dict_sorok(E.TERMINOLOGIA_UT):
+            if r.get('megjegyzes'):
+                ki.append((r['angol'], '- `%s` = %s (%s)' % (r['angol'], r['magyar'], r['megjegyzes'])))
+            else:
+                ki.append((r['angol'], '- `%s` = %s' % (r['angol'], r['magyar'])))
+        _TABLA['term'] = ki
+    return _TABLA['term']
+
+
+def karoli_sorok():
+    """[(keresett_alakok, sor-szöveg)] — a sor-szöveg betűre azonos az `emeles.karoli_szoveg` soraival; az alakok: a
+    STEPBible-rövidítés, a Forrás-alakok és az angol teljes könyvnév (konkordancia/Angol_konyvnev_STEPBible_tabla.tsv)."""
+    if 'karoli' not in _TABLA:
+        angol = {}
+        with open(os.path.join(ROOT, 'konkordancia', 'Angol_konyvnev_STEPBible_tabla.tsv'), encoding='utf-8') as f:
+            next(f)
+            for sor in f:
+                m = sor.rstrip('\n').rstrip('\r').split('\t')
+                if len(m) >= 2:
+                    angol.setdefault(m[1], []).append(m[0])
+        ki = []
+        for r in E.tsv_dict_sorok(E.KAROLI_UT):
+            rov = r['STEPBible-rövidítés']
+            alakok = [rov] + [x.strip() for x in (r.get('Forrás-alakok') or '').split(',') if x.strip()] + angol.get(rov, [])
+            ki.append((alakok, '- `%s` → `%s`' % (rov, r['Magyar rövidítés'])))
+        _TABLA['karoli'] = ki
+    return _TABLA['karoli']
+
+
+def _alak_minta(alak):
+    vege = r'(?![A-Za-z])' if alak[-1:].isalpha() else ''
+    return re.compile(r'(?<![A-Za-z0-9])' + re.escape(alak) + vege)
+
+
+def szukitett_tablak(forrasok):
+    """(terminológia-szöveg, Károli-szöveg) a megadott források uniójára: csak azok a sorok, amelyek angol kulcsa
+    (terminológia: `forditas_kapuk._angol_minta`, az 5. kapu illesztése; kapu=nem sorok is), illetve rövidítése / forrás-alakja /
+    angol könyvneve a forrásban előfordul."""
+    egy = '\n'.join(forrasok)
+    term = [sor for angol, sor in term_sorok() if K._angol_minta(angol).search(egy)]
+    karoli = [sor for alakok, sor in karoli_sorok() if any(_alak_minta(a).search(egy) for a in alakok)]
+    return ('\n'.join(term) or '(a forrásban nincs terminológiai sor)',
+            '\n'.join(karoli) or '(a forrásban nincs bibliai könyvnév)')
+
+
+def szukit(prompt, forrasok):
+    """A prompt terminológia- és Károli-táblája a források uniójára szűkítve; minden más bájtra azonos."""
+    ti = prompt.index(TERM_FEJ)
+    t0 = prompt.index('\n\n', ti) + 2
+    k0 = prompt.index('\n\n' + KAROLI_FEJ, t0)
+    ki = prompt.index('\n\n', k0 + 2) + 2
+    ke = prompt.index('\n\n' + BEMENET_JEL, ki)
+    term, karoli = szukitett_tablak(forrasok)
+    return prompt[:t0] + term + prompt[k0:ki] + karoli + prompt[ke:]
+
+
+def kuldendo_prompt(k):
+    """Az A-stílusú (egy Strongos) kérés szövege: a prompt, szűkítve (SZUKIT), a kérés saját forrására."""
+    return szukit(k['prompt'], [k['nezet']]) if SZUKIT else k['prompt']
 
 
 # ---------- szaraz ----------
@@ -234,9 +380,10 @@ def szaraz(strongok):
     csom = csomagok(ker)
     print('%d Strong, %d kérés (%d többcsoportos Strong), forrás %d karakter (tokenes bemenet)' % (
         len(strongok), len(ker), len({k['strong'] for k in ker if k['db'] > 1}), kar))
-    print('promptok: összesen %d karakter, átlag %d' % (sum(len(k['prompt']) for k in ker), sum(len(k['prompt']) for k in ker) // max(1, len(ker))))
-    print('becslés (manual; %.1f karakter/token, kimenet %.2f token/forráskarakter + %d gondolkodási token/kérés): '
-          'bemenet %.0f token, kimenet %.0f token' % (TOKEN_KARAKTER, KIMENET_ARANY, GONDOLKODAS_BECSLES, be, ki))
+    print('promptok: összesen %d karakter, átlag %d' % (sum(len(kuldendo_prompt(k)) for k in ker),
+                                                     sum(len(kuldendo_prompt(k)) for k in ker) // max(1, len(ker))))
+    print('becslés (manual; F27 M1 illesztés: bemenet %d token/kérés + %.3f token/forráskarakter, kimenet %d token/kérés + %.3f '
+          'token/forráskarakter): bemenet %.0f token, kimenet %.0f token' % (BE_KERES, BE_KAR, KI_KERES, KI_KAR, be, ki))
     print('költség Batch-áron, cache nélkül: %.2f USD (becslés, manual); plafon %.2f USD' % (usd, PLAFON_USD))
     print('csomagok: %d × ~%d kérés' % (len(csom), CSOMAG))
     if ker:
@@ -284,18 +431,19 @@ def bekuld(strongok, cimke, plafon=None, hivo=None):
         return 0
     cs = csom[index]
     becs = becsles(cs)[2]
-    ossz = futo_osszeg() + becs
-    print('csomag %d/%d: %d kérés; költség-felső (becslés, manual, cache nélkül): %.2f USD; eddig %.4f USD; plafon %.2f USD' % (
-        index + 1, len(csom), len(cs), becs, futo_osszeg(), plafon))
-    if ossz > plafon:
-        print('MEGÁLLÁS: a becsült költség (%.2f USD) a plafon (%.2f USD) fölött lenne' % (ossz, plafon), file=sys.stderr)
+    rendben, szoveg = plafon_ellenorzes(plafon, becs)
+    print('csomag %d/%d: %d kérés; %s' % (index + 1, len(csom), len(cs), szoveg))
+    if not rendben:
+        print('MEGÁLLÁS: a mért futó összeg + a becsült költség a plafon (%.2f USD) fölött lenne' % plafon, file=sys.stderr)
         return 3
     kerelmek = [{'custom_id': custom_id(k['strong'], k['csoport'], 1),
-                 'params': kerelem_params([{'role': 'user', 'content': uzenet(k['prompt'])}], k['forras_kar'])} for k in cs]
+                 'params': kerelem_params([{'role': 'user', 'content': uzenet(kuldendo_prompt(k))}], k['forras_kar'])} for k in cs]
     b = hivo('POST', '/v1/messages/batches', {'requests': kerelmek})
     os.makedirs(ut(), exist_ok=True)
     with open(ut('csomag_%02d.txt' % (index + 1)), 'w', encoding='utf-8', newline='\n') as f:
         f.write(''.join(k['custom_id'] + '\n' for k in kerelmek))
+    with open(ut('becsles_%s.txt' % b['id']), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('%.4f' % becs)
     ujra_naplo(b['id'], cimke, 1, index + 1, len(kerelmek))
     print('batch beküldve: %s (%d kérés)' % (b['id'], len(kerelmek)))
     return 0
@@ -326,7 +474,7 @@ def begyujt(cimke, hivo=None):
         rekordok, napl = [], []
         for s in sorok:      # custom_id szerint, soha nem pozíció szerint
             cid = s['custom_id']
-            if cid in kesz or not custom_id_bont(cid):
+            if cid in kesz or not (custom_id_bont(cid) or CID_B.match(cid)):
                 continue
             res = s.get('result', {})
             msg = res.get('message') or {}
@@ -337,6 +485,8 @@ def begyujt(cimke, hivo=None):
                              'batch_id': b['batch_id']})
             napl.append((cid, msg.get('model', ''), usage, msg.get('stop_reason') or res.get('type'), koltseg(usage)))
             kesz.add(cid)
+            if CID_B.match(cid):      # a B-kérés válasza Strongonkénti szintetikus rekordokra bomlik
+                rekordok.extend(b_szetbont(rekordok[-1]))
         jsonl_hozzaad(ut('valaszok.jsonl'), rekordok)
         futo = futo_osszeg()
         for cid, mod, u, stop, c in napl:
@@ -347,6 +497,8 @@ def begyujt(cimke, hivo=None):
                 'cache_iras': u.get('cache_creation_input_tokens', 0), 'kimenet_token': u.get('output_tokens', 0),
                 'stop_reason': stop, 'koltseg_usd': '%.6f' % c, 'futo_osszeg_usd': '%.6f' % futo})
         uj += len(rekordok)
+        with open(ut('begyujtve_%s.txt' % b['batch_id']), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('%d\n' % len(rekordok))
         print('%s: %d új válasz' % (b['batch_id'], len(rekordok)))
     print('új válasz összesen: %d; futó összeg %.4f USD' % (uj, futo_osszeg()))
     return 0
@@ -438,22 +590,26 @@ def javit(strongok, cimke, plafon=None, hivo=None):
             if cid in kesz:
                 continue
             nyers = r['nyers'][k['csoport'] - 1] if k['csoport'] - 1 < len(r['nyers']) else ''
-            msgs = [{'role': 'user', 'content': uzenet(k['prompt'])},
-                    {'role': 'assistant', 'content': nyers or '(üres válasz)'},
-                    {'role': 'user', 'content': javito_uzenet(r['hibak'])}]
+            msgs = [{'role': 'user', 'content': uzenet(kuldendo_prompt(k))}]
+            if nyers.strip():      # a hiányzó (B-válaszból kimaradt) Strong javító köre friss kérés: nincs mit megjavítani
+                msgs += [{'role': 'assistant', 'content': nyers},
+                         {'role': 'user', 'content': javito_uzenet(r['hibak'])}]
             kerelmek.append({'custom_id': cid, 'params': kerelem_params(msgs, k['forras_kar'])})
             ker_meta.append(k)
     if not kerelmek:
         print('a javító kérések már be vannak küldve')
         return 0
     becs = becsles(ker_meta)[2] * 1.3
-    print('javító batch: %d kérés; költség-felső (becslés, manual) %.2f USD; eddig %.4f; plafon %.2f' % (len(kerelmek), becs, futo_osszeg(), plafon))
-    if plafon <= 0 or futo_osszeg() + becs > plafon:
+    rendben, szoveg = plafon_ellenorzes(plafon, becs)
+    print('javító batch: %d kérés; %s' % (len(kerelmek), szoveg))
+    if plafon <= 0 or not rendben:
         print('MEGÁLLÁS: a plafon fölött lenne (vagy nincs megadva)', file=sys.stderr)
         return 3
     b = hivo('POST', '/v1/messages/batches', {'requests': kerelmek})
     with open(ut('csomag_javito.txt'), 'a', encoding='utf-8', newline='\n') as f:
         f.write(''.join(k['custom_id'] + '\n' for k in kerelmek))
+    with open(ut('becsles_%s.txt' % b['id']), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('%.4f' % becs)
     ujra_naplo(b['id'], cimke, 2, 'javito', len(kerelmek))
     print('javító batch beküldve: %s (%d kérés)' % (b['id'], len(kerelmek)))
     return 0
@@ -537,17 +693,234 @@ def beir(strongok, allapot, datum=None, megjegyzes=None, regi_elavult=False, kez
     return F.beir(strongok, allapot, datum, megjegyzes, regi_elavult, kezi_felulir, kezi_marad, **kw)
 
 
+# ---------- B-út: kérésenként több Strong (F159; a bdb_api_koteg.py B-útja szerint) ----------
+
+def kategoria(konnyu):
+    """'kicsi' (< KICSI_HATAR forráskarakter), 'kozepes' (< NAGY_HATAR) vagy 'nagy' (>= NAGY_HATAR vagy több csoportos)."""
+    if len(konnyu) > 1 or konnyu[0]['forras_kar'] >= NAGY_HATAR:
+        return 'nagy'
+    return 'kicsi' if konnyu[0]['forras_kar'] < KICSI_HATAR else 'kozepes'
+
+
+def b_csoportok_epit(strongok, konnyu_index, b_db=None, b_kar=None):
+    """A Strongok sorrendben, legfeljebb b_db Strong és b_kar forráskarakter kérésenként; -> ({nev: [strong]}, [egyedi Strongok]).
+    A nagy és a többcsoportos Strongok egyedi (A-stílusú) kérések."""
+    b_db, b_kar = b_db or B_DB, b_kar or B_KAR
+    csoportok, egyedi, cur, kar = {}, [], [], 0
+    for s in strongok:
+        ks = konnyu_index[s]
+        if kategoria(ks) == 'nagy':
+            egyedi.append(s)
+            continue
+        if cur and (len(cur) >= b_db or kar + ks[0]['forras_kar'] > b_kar):
+            csoportok['B%03d' % (len(csoportok) + 1)] = cur
+            cur, kar = [], 0
+        cur.append(s)
+        kar += ks[0]['forras_kar']
+    if cur:
+        csoportok['B%03d' % (len(csoportok) + 1)] = cur
+    return csoportok, egyedi
+
+
+def kot_unio(kotok):
+    sorok = []
+    for k in kotok:
+        for l in k.split('\n'):
+            if l.startswith('- ') and l not in sorok:
+                sorok.append(l)
+    return '\n'.join(sorok) if sorok else kotok[0]
+
+
+def b_strong_blokk(k, i, n):
+    """Egy Strong B-kérésbeli része: az egy Strongos prompt bemeneti részének (adatblokk + forrás) betűhű szövege."""
+    p = k['prompt']
+    c = p.rfind(BEMENET_JEL)
+    return '### %d/%d. szócikk\n%s' % (i + 1, n, p[c + len(BEMENET_JEL):p.index(KIMENET_JEL, c)].strip('\n'))
+
+
+def b_prompt(ks):
+    """Több Strong egy kérésben. A prompt v5.1 szabálytartalma változatlan (ugyanabból a `forditas.prompt_epit`-ből): a közös
+    szabály-rész egyszer áll, a kötelező-alak lista a Strongok uniója, a terminológia- és a Károli-tábla a Strongok forrásának
+    uniójára szűkítve (SZUKIT); utána Strongonként az adatblokk és a forrás; a válasz Strongonként egy objektumot
+    tartalmazó JSON-tömb."""
+    p0 = ks[0]['prompt']
+    j = p0.find(KOT_JEL) + len(KOT_JEL)
+    cut = p0.rfind(BEMENET_JEL)
+    kimenet = p0.index(KIMENET_JEL, cut)
+    if p0[j:j + len(ks[0]['kot'])] != ks[0]['kot']:
+        raise SystemExit('a kötelező-alak lista nem a várt helyen áll: %s' % ks[0]['strong'])
+    farok = p0[j + len(ks[0]['kot']):cut]
+    json0 = p0.index('```json', kimenet)
+    json1 = p0.index('```\n', json0 + 7) + 4
+    blokk = [b_strong_blokk(k, i, len(ks)) for i, k in enumerate(ks)]
+    bemenet = ('## Bemenet\n\nEgyetlen kérésben %d Thayer-szócikk érkezik. Mindegyiket külön, önmagában álló szövegként fordítsd a '
+               'fenti szabályok szerint: a `⟪n⟫` határtokenek és a `⟦n⟧` helyőrzők az adott szócikken belül számozottak, szócikkek '
+               'között nem keverheted, nem vonhatod össze és nem viheted át őket. A kötelező terminológiai alakok listája az összes '
+               'szócikk forrására vonatkozik.\n\n' % len(ks)) + '\n\n'.join(blokk) + '\n\n'
+    kim = ('## Kimenet\n\nKIZÁRÓLAG a következő JSON-sémájú választ add, semmi mást (sem Markdown code fence,\n'
+           'sem magyarázat a JSON előtt/után): egyetlen JSON-tömb, szócikkenként pontosan egy objektum, a fenti sorrendben '
+           '(a `strong` a szócikk Strong-száma):\n\n```json\n[{"strong": "<a szócikk Strong-száma>", "forditas_hu": '
+           '"<a hű magyar fordítás>", "bizonytalan_feloldasok": ["<rövidítés, ha van bizonytalan feloldás>"]}, ...]\n```\n')
+    ki = p0[:j] + kot_unio([k['kot'] for k in ks]) + farok + bemenet + kim + p0[json1:]
+    return szukit(ki, [k['nezet'] for k in ks]) if SZUKIT else ki
+
+
+def b_max_tokens(ks):
+    return int(min(64000, max(16000, 3 * sum(k['forras_kar'] * KI_KAR + KI_KERES for k in ks) + 4000)))
+
+
+def b_becsles_konnyu(strongok, konnyu_ix, allando):
+    """(bemenet_token, kimenet_token, USD) egy B-kérésre prompt-építés nélkül: az állandó rész karaktere `allando` (manual)."""
+    kar = sum(konnyu_ix[s][0]['forras_kar'] for s in strongok)
+    return becsles_adat(allando, kar, len(strongok))
+
+
+def b_csoportok_olvas():
+    with open(ut('b_csoportok.json'), encoding='utf-8') as f:
+        return json.load(f)
+
+
+def konnyu_index(strongok):
+    return {s: konnyu_strongra(s) for s in strongok}
+
+
+def b_lista(strongok):
+    valasz = {r['custom_id'] for r in jsonl_olvas(ut('valaszok.jsonl'))}
+    kuldott = bekuldott_cidek()
+    return [x for x in strongok if custom_id(x, 1, 1) not in valasz and custom_id(x, 1, 1) not in kuldott]
+
+
+def b_csoportok_betolt(strongok):
+    f = ut('b_csoportok.json')
+    if os.path.exists(f):
+        return b_csoportok_olvas()
+    lista = b_lista(strongok)
+    cs, egyedi = b_csoportok_epit(lista, konnyu_index(lista))
+    if egyedi:
+        print('%d Strong nem B-úti (nagy vagy többcsoportos): egyenként kerül sorra' % len(egyedi), file=sys.stderr)
+    os.makedirs(ut(), exist_ok=True)
+    with open(f, 'w', encoding='utf-8', newline='\n') as h:
+        json.dump(dict(cs, egyedi=egyedi), h, ensure_ascii=False, indent=0)
+    return dict(cs, egyedi=egyedi)
+
+
+def json_tomb(szoveg):
+    t = re.sub(r'^```(?:json)?\s*|\s*```$', '', (szoveg or '').strip())
+    i = t.find('[')
+    if i < 0:
+        return []
+    try:
+        d, _ = json.JSONDecoder().raw_decode(t[i:])
+    except ValueError:
+        return []
+    return [x for x in d if isinstance(x, dict)] if isinstance(d, list) else []
+
+
+def b_szetbont(rek):
+    """A B-kérés nyers válasza -> Strongonkénti szintetikus válaszrekordok (`<strong>-c1-p1`), hogy a kapuz/javit/rogzit
+    ugyanúgy dolgozzon, mint az egy Strongos kéréseknél. Hiányzó objektum -> üres szöveg (javítandó)."""
+    nev = 'B' + CID_B.match(rek['custom_id']).group('n')
+    strongok = b_csoportok_olvas()[nev]
+    mapa = {}
+    if rek['tipus'] == 'succeeded' and rek['stop'] not in ('refusal', 'max_tokens'):
+        for x in json_tomb(rek['szoveg']):
+            mapa[kulcs.strong_pad(str(x.get('strong', '')))] = x
+    return [{'custom_id': custom_id(sp, 1, 1), 'tipus': rek['tipus'], 'modell': rek['modell'], 'stop': rek['stop'], 'usage': {},
+             'szoveg': json.dumps(mapa[sp], ensure_ascii=False) if sp in mapa else '', 'hiba': rek['hiba'],
+             'batch_id': rek['batch_id'], 'forras': nev} for sp in strongok]
+
+
+def b_szaraz(strongok):
+    t0 = time.time()
+    lista = b_lista(strongok)
+    ix = konnyu_index(lista)
+    cs, egyedi = b_csoportok_epit(lista, ix)
+    # az állandó rész karaktere: néhány minta-kérés tényleges (szűkített) B-promptjából; a többire az átlaguk
+    allandok = []
+    for nev, csop in list(cs.items())[:3]:
+        allandok.append(allando_kar(b_prompt([kerelmek_strongra(s)[0] for s in csop])))
+    allando = sum(allandok) / len(allandok) if allandok else 0
+    be = ki = usd = 0.0
+    kat = {'kicsi': 0, 'kozepes': 0, 'nagy': 0}
+    for s in lista:
+        kat[kategoria(ix[s])] += 1
+    for nev, csop in cs.items():
+        b, k, u = b_becsles_konnyu(csop, ix, allando)
+        be, ki, usd = be + b, ki + k, usd + u
+    # az egyedi (nagy) Strongok A-stílusú kérései
+    egyedi_kar = sum(k['forras_kar'] for s in egyedi for k in ix[s])
+    egyedi_ker = sum(len(ix[s]) for s in egyedi)
+    egy_allando = allando_kar(kuldendo_prompt(kerelmek_strongra(egyedi[0])[0])) if egyedi else 0
+    eb, ek, eu = becsles_adat(egy_allando * egyedi_ker, egyedi_kar, egyedi_ker)
+    kar = sum(ix[s][0]['forras_kar'] for g in cs.values() for s in g)
+    print('B-út: %d Strong (kicsi %d, közepes %d), %d B-kérés (átlag %.1f Strong, %.0f forráskarakter); nagy/többcsoportos '
+          '(egyenként): %d Strong, %d kérés' % (len(lista) - len(egyedi), kat['kicsi'], kat['kozepes'], len(cs),
+                                              (len(lista) - len(egyedi)) / max(1, len(cs)), kar / max(1, len(cs)),
+                                              len(egyedi), egyedi_ker))
+    print('szűkített állandó rész: ~%.0f karakter (~%.0f token) / B-kérés; a szűkítés előtti: %d karakter (%d token, F27 M1 mért)' % (
+        allando, allando / ALLANDO_KAR_TOKEN, ALLANDO_REF_KAR, BE_KERES))
+    print('B-kérések becslése (manual): bemenet %.2f M token, kimenet %.2f M token, %.2f USD' % (be / 1e6, ki / 1e6, usd))
+    if egyedi:
+        print('egyedi kérések becslése (manual): bemenet %.2f M token, kimenet %.2f M token, %.2f USD' % (eb / 1e6, ek / 1e6, eu))
+    print('összesen: %.2f USD (becslés, manual; effort %s, Batch-ár, cache nélkül); mért eddig %.4f USD; plafon %.2f USD; (%.1f mp)' % (
+        usd + eu, EFFORT, futo_osszeg(), PLAFON_USD, time.time() - t0))
+    return 0
+
+
+def b_bekuld(strongok, cimke, db, plafon=None, hivo=None):
+    plafon = PLAFON_USD if plafon is None else plafon
+    if plafon <= 0:
+        print('MEGÁLLÁS: a plafon %.2f USD — beküldés csak megadott plafonnal (--plafon) lehetséges' % plafon, file=sys.stderr)
+        return 3
+    hivo = hivo or AK.http
+    cs = b_csoportok_betolt(strongok)
+    kuldott = bekuldott_cidek()
+    nevek = [n for n in cs if n != 'egyedi' and custom_id(cs[n][0], 1, 1) not in kuldott]
+    if db:
+        nevek = nevek[:db]
+    if not nevek:
+        print('nincs beküldendő B-csoport')
+        return 0
+    kerelmek, becs = [], 0.0
+    for n in nevek:
+        ks = [kerelmek_strongra(s)[0] for s in cs[n]]
+        prompt = b_prompt(ks)
+        becs += becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks))[2]
+        kerelmek.append({'custom_id': '%s-p1' % n, 'params': kerelem_params(
+            [{'role': 'user', 'content': uzenet(prompt)}], 0, b_max_tokens(ks))})
+    rendben, szoveg = plafon_ellenorzes(plafon, becs)
+    print('B-csomag: %d kérés (%d Strong); %s' % (len(kerelmek), sum(len(cs[n]) for n in nevek), szoveg))
+    if not rendben:
+        print('MEGÁLLÁS: a mért futó összeg + a becsült költség a plafon (%.2f USD) fölött lenne' % plafon, file=sys.stderr)
+        return 3
+    b = hivo('POST', '/v1/messages/batches', {'requests': kerelmek})
+    for n in nevek:
+        with open(ut('csomag_%s.txt' % n), 'w', encoding='utf-8', newline='\n') as f:
+            f.write(''.join(custom_id(s, 1, 1) + '\n' for s in cs[n]))
+    with open(ut('becsles_%s.txt' % b['id']), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('%.4f' % becs)
+    ujra_naplo(b['id'], cimke, 1, 'B:' + nevek[0] + '-' + nevek[-1], len(kerelmek))
+    print('B-batch beküldve: %s (%d kérés)' % (b['id'], len(kerelmek)))
+    return 0
+
+
 # ---------- main ----------
 
 def main(argv=None):
-    global MUNKA, PLAFON_USD
+    global MUNKA, PLAFON_USD, ELOZO_KIADAS_USD, EFFORT, B_DB, B_KAR, SZUKIT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('parancs', nargs='?', choices=['lista', 'szaraz', 'bekuld', 'allapot', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'])
+    ap.add_argument('parancs', nargs='?', choices=['lista', 'szaraz', 'bszaraz', 'bbekuld', 'bekuld', 'allapot', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'])
     ap.add_argument('--adag', type=int, default=None)
     ap.add_argument('--strongok', default=None, help='a futási lista fájlja (soronként egy Strong)')
     ap.add_argument('--cimke', default=None)
     ap.add_argument('--munka', default=None, help='munkamappa (felülírja a forditas/thayer_api/adag<N>/-t; száraz futáshoz a repón kívül)')
     ap.add_argument('--plafon', type=float, default=0.0, help='USD; alapérték 0: a beküldés tilos')
+    ap.add_argument('--effort', default='high', choices=EFFORTOK, help='a kérések effortja (a futásnapló oszlopa is)')
+    ap.add_argument('--b-db', type=int, default=B_DB, help='B-út: Strong / kérés (15–25)')
+    ap.add_argument('--b-kar', type=int, default=B_KAR, help='B-út: forráskarakter / kérés felső határa')
+    ap.add_argument('--db', type=int, default=0, help='bbekuld: az első DB beküldetlen B-kérés (0: mind)')
+    ap.add_argument('--elozo-kiadas', type=float, default=0.0, help='a közös plafon alatt futó másik adag mért költsége (USD)')
+    ap.add_argument('--nincs-szukites', action='store_true', help='a terminológia- és a Károli-tábla szűkítése nélkül')
     ap.add_argument('--ki', default=None)
     ap.add_argument('--ts', default=None)
     ap.add_argument('--allapot', default=None, choices=E.ALLAPOTOK)
@@ -572,13 +945,16 @@ def main(argv=None):
         return 2
     MUNKA = a.munka or os.path.join(MUNKA_GYOKER, 'adag%d' % a.adag)
     PLAFON_USD = a.plafon
+    ELOZO_KIADAS_USD, EFFORT, B_DB, B_KAR, SZUKIT = a.elozo_kiadas, a.effort, a.b_db, a.b_kar, not a.nincs_szukites
     cimke = a.cimke or 'adag%d' % a.adag
     strongok = strongok_olvas(a.strongok)
     if a.parancs == 'szaraz':
         return szaraz(strongok)
+    if a.parancs == 'bszaraz':
+        return b_szaraz(strongok)
     kod = futtat_parancs(a, strongok, cimke)
-    if a.commit and kod == 0 and a.parancs in ('bekuld', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'):
-        git_mentes('F158: Thayer API-köteg — %s (%s)' % (a.parancs, cimke), a.parancs)
+    if a.commit and kod == 0 and a.parancs in ('bekuld', 'bbekuld', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'):
+        git_mentes('F159: Thayer API-köteg — %s (%s)' % (a.parancs, cimke), a.parancs)
     return kod
 
 
@@ -597,6 +973,8 @@ def git_mentes(uzenet, parancs):
 def futtat_parancs(a, strongok, cimke):
     if a.parancs == 'bekuld':
         return bekuld(strongok, cimke, a.plafon)
+    if a.parancs == 'bbekuld':
+        return b_bekuld(strongok, cimke, a.db, a.plafon)
     if a.parancs == 'allapot':
         allapot(cimke)
         return 0
