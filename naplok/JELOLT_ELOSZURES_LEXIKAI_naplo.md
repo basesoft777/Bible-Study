@@ -70,3 +70,26 @@ Javaslat: bekapcsolni mind a hat lexikai motívumon (a küszöb 0 hamis kizárá
 2. A szabály az ablakban ±1 vers egyesített halmazát nézi: ez nagyobb ablak, tehát *kevesebb* kizárást ad (a hibás kizárás ritkább, a haszon kisebb). A HODIT-001 mutatja a kompromisszum árát.
 3. A rokonság egy lépés, csak a származtatott irány (szülő → származék); a testvér- és többlépéses rokonságot nem vesszük, ami óvatosan javít (kevesebb felismerés, nem több hamis kizárás).
 4. A nyelvszűrés a vers nyelvét a Strong-halmaz első betűjéből (G/H) veszi; kevert (arám/LXX) helyekre nem külön szabály.
+
+## 7. Döntések (2026-11-02; DT-F160a, DT-F160b)
+
+Az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«.
+
+- **DT-F160a:** MENNY-001 → (A) nyelvszűrés; a `motivumok.tsv` nem változik. A (B) átsorolás a #123 MENNY-001 migrációjában dől el (N-F160a; Mt 24:38, Luk 17:27).
+- **DT-F160b:** `LEXIKAI_BEKAPCSOLT` = ALVIL-001, KIRALY-001, TEREMT-001, MENNY-001. Az ANTROP-001 (0 elutasítás) és a HODIT-001 (nincs haszon) kimarad; újramérésük a #123 migrációi után (N-F160b).
+
+## 8. A HAMART-001 hordozója
+
+A `motivumok.tsv` szerint a HAMART-001 `azonossag_tipusa` = **strukturális** (nem lexikai, nem formulaikus). A #150 formulaikus szabálya sem a #160 lexikai szabálya nem vonatkozik rá: a hordozó-szabály szerint minden sora `vizsgalando` („a hordozó nem formulaikus: a gépi szabály nem dönt”; ma 8 nyitott sor). Mért ok: hordozó-szűrés nélkül a szabály 83/163 elutasítást ismerne fel, de 5 hamis kizárást adna (Ézs 24:5-6, Hós 4:1-3, Mt 15:19, Mk 7:21-23, 2Pét 3:6-7; `naplok/JELOLT_ELOSZURES_naplo.md` 3.1). Tehát a #123 HAMART-001 menetében a gépi sorrend nem segít: az átnézés sorrendje kézi. Ez nem a lexikai tétel feladata, a hordozót nem módosítottuk.
+
+## 9. A kimenet változása lokálisan (a `jelolt_eloszures.py` futása a bekapcsolt halmazzal)
+
+A `naplok/ELOSZURES_*.tsv` fájlok közül két sor-halmaz változik; a többi (ALVIL-001, TEREMT-001, ANTROP-001, HODIT-001, HAMART-001, ISTENTISZT-001, TEREMT-002) bájtra azonos.
+
+| motívum | sor | előtte | utána |
+|---|---|---|---|
+| MENNY-001 | Mt 24:38 | vizsgalando (a hordozó nem formulaikus) | vizsgalando (nincs G-nyelvű gerinc-kombináció) |
+| MENNY-001 | Luk 17:27 | vizsgalando (a hordozó nem formulaikus) | vizsgalando (nincs G-nyelvű gerinc-kombináció) |
+| KIRALY-001 | 1Pét 2:9 | vizsgalando (a hordozó nem formulaikus) | **valoszinu_ki** (G0282+G0540+G5010, G5010 hiányzik; az ablakban a gerincből: semmi) |
+
+**⚠ Figyelmeztetés a KIRALY-001 1Pét 2:9 soráról.** A `jeloltek.tsv` indoklása szerint a hely a régi napló szerint beépítve (2026.09.09, retroaktív pótlás, „szó szerinti LXX-idézés, G0934+G2406”), csak a `jeloltek.tsv`-ben és az `elofordulasok.tsv`-ben nincs sor (elbírálás: N-F63a). A gép `valoszinu_ki`-t ad, mert a KIRALY-001 jelenlegi kombinációi közt a G0934+G2406 (βασίλειον ἱεράτευμα) nincs benne. Ez **ismert ellenpélda**: a kombináció-halmaz hiányos, tehát ez egy hamis kizárás-jelölt egy nyitott soron — a mérés (0/173) a *döntött* sorokra igaz, ezt nem fogta meg. A kimenet csak átnézési sorrend (a döntés a felhasználóé, a `jeloltek.tsv` nem változik), de a küszöb szellemében a KIRALY-001 bekapcsolása az N-F63a eldöntéséig kérdéses: a `LEXIKAI_BEKAPCSOLT`-ból egy sor törlése elegendő. A döntés az orkesztrátoré.

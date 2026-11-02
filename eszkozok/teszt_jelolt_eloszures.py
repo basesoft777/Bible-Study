@@ -150,7 +150,7 @@ class ValosAdat(unittest.TestCase):
     def test_nem_formulaikus_motivumon_egy_sor_sem_valoszinu_ki(self):
         mot = {r['id']: r['azonossag_tipusa'] for r in J.beolvas(os.path.join(J.ALAPERTELMEZETT_ADAT, 'motivumok.tsv'))}
         for m, sorok in valos(MINDEN_DONTES).items():
-            if mot[m] != 'formulaikus':
+            if mot[m] != 'formulaikus' and m not in J.LEXIKAI_BEKAPCSOLT:
                 self.assertEqual([s for s in sorok if s[1] == 'valoszinu_ki'], [], m)
                 self.assertTrue(all(s[2] == J.OK_NEM_DONT and s[3] == mot[m] for s in sorok), m)
 
@@ -190,10 +190,10 @@ class LexikaiValosAdat(unittest.TestCase):
         self.assertTrue(nt)
         self.assertTrue(all(s[1] == 'vizsgalando' for s in nt))
 
-    def test_alapertelmezett_bekapcsolt_halmaz_a_mai_adat_szerint(self):
-        # a LEXIKAI_BEKAPCSOLT alapból üres (a bevezetés ⛔ döntés): a kimenet lexikai sora nem dönt
-        if not J.LEXIKAI_BEKAPCSOLT:
-            for m, sorok in valos(MINDEN_DONTES).items():
+    def test_bekapcsolt_halmaz_dontes_szerint(self):
+        self.assertEqual(J.LEXIKAI_BEKAPCSOLT, frozenset({'ALVIL-001', 'KIRALY-001', 'TEREMT-001', 'MENNY-001'}))
+        for m, sorok in valos(MINDEN_DONTES).items():
+            if m not in J.LEXIKAI_BEKAPCSOLT:
                 self.assertFalse([s for s in sorok if s[3] == 'lexikai' and s[1] == 'valoszinu_ki'], m)
 
 

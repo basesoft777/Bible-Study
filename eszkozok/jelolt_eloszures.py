@@ -13,8 +13,8 @@ mezoi, a nyelvtani Strongok (`szerep_karoli.nyelvtani`) kiszuerve --, a javaslat
 HORDOZO (DT432, 2026-11-01): `valoszinu_ki` CSAK `azonossag_tipusa=formulaikus` motivumon lehet; minden mas
 hordozon `vizsgalando` ("a hordozo nem formulaikus: a gepi szabaly nem dont").
 
-LEXIKAI KITERJESZTES (N-F150a, DT432 (d)): a `LEXIKAI_BEKAPCSOLT` motivumain (alapertelmezetten ures: a
-bevezetes a meres utan a felhasznalo/orkesztrator dontese) a lexikai hordozo is dont, de KITERJESZTETT
+LEXIKAI KITERJESZTES (N-F150a, DT432 (d)): a `LEXIKAI_BEKAPCSOLT` motivumain (ALVIL-001, KIRALY-001, TEREMT-001,
+MENNY-001: DT-F160b) a lexikai hordozo is dont, de KITERJESZTETT
 szaballyal (`vizsgal_lexikai`): (1) szomszedos versek: a jelolt versei +-1 vers egyutt adja az ablakot
 (versen atnyulo parok: Luk 1:46-47); (2) rokon alakok: a kombinacio egy tagja a verssel kielegitett, ha az
 ablakban van egy belole SZARMAZTATOTT szo (`Strong_szotar.tsv` "Gyok/Szarmaztatas": psuchikos <- G5590);
@@ -58,8 +58,10 @@ ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 ALAPERTELMEZETT_KIMENET = os.path.join(ROOT, 'naplok')
 DONTO_HORDOZO = 'formulaikus'
 LEXIKAI_HORDOZO = 'lexikai'
-# A lexikai motivumok, amelyeken a kiterjesztett szabaly dont (N-F150a). Ures: a bevezetes ⛔ a meres utan.
-LEXIKAI_BEKAPCSOLT = frozenset()
+# A lexikai motivumok, amelyeken a kiterjesztett szabaly dont (N-F150a, DT-F160b): ahol a hamis kizaras ES a
+# felismeres is merve van (0/173 hamis kizaras). ANTROP-001 (0 elutasitas: a haszon nem merheto) es HODIT-001 (a
+# szomszed-ablak elveszi a felismerest) kimarad; ujramerese a #123 migraciok utan (N-F160b).
+LEXIKAI_BEKAPCSOLT = frozenset({'ALVIL-001', 'KIRALY-001', 'TEREMT-001', 'MENNY-001'})
 STRONG_SZOTAR = os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv')
 VERS_RE = re.compile(r'^(.+) (\d+):(\d+)$')
 STRONG_RE = re.compile(r'[GH]\d{1,4}')
