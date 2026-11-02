@@ -1,0 +1,267 @@
+# GENERÁLT: naplok/F123_adat_keszito.py | F123 X.A hiányzó fordítások HAMART-001 (a forditasok.tsv-be NEM írva) | 2026-11-02T13:08Z
+nyelv	szerep_sorrend	forras	strong	szotar	strong_kulcs	entry_id	jelentes_szam	mezo	proveniencia
+gorog	1	TBESG.txt	G1311	TBESG	G1311	G1311	teljes	forditas_hu	scope=TBESG.txt G1311 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T13:08Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G1311	tW_szocikkek	H0006	kt/perish	—	forditas_hu	scope=tW_szocikkek G1311 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G1311	tW_szocikkek	H2610	other/corrupt	—	forditas_hu	scope=tW_szocikkek G1311 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G1311	tW_szocikkek	H0006	other/destroyer	—	forditas_hu	scope=tW_szocikkek G1311 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G1311	UBS_DNTG	G1311	001325001003000	23.146	definicio_hu	scope=UBS_DNTG_jelentesek G1311 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G1311	UBS_DNTG	G1311	001325001003000	23.146	glosszak_hu	scope=UBS_DNTG_jelentesek G1311 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G1311	MCGED	G1311	G51425	—	glosszak_hu	scope=MCGED G1311 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G1311	LSJ	G1311	G1311	teljes	forditas_hu	scope=LSJ G1311 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	1	TBESG.txt	G1944	TBESG	G1944	G1944	teljes	forditas_hu	scope=TBESG.txt G1944 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T13:08Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G1944	tW_szocikkek	H0422	kt/curse	—	forditas_hu	scope=tW_szocikkek G1944 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G1944	UBS_DNTG	G1944	001900001001000	33.475	definicio_hu	scope=UBS_DNTG_jelentesek G1944 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G1944	UBS_DNTG	G1944	001900001001000	33.475	glosszak_hu	scope=UBS_DNTG_jelentesek G1944 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G1944	MCGED	G1944	G52129	—	glosszak_hu	scope=MCGED G1944 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G1944	LSJ	G1944	G1944	teljes	forditas_hu	scope=LSJ G1944 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	1	TBESG.txt	G2671	TBESG	G2671	G2671	teljes	forditas_hu	scope=TBESG.txt G2671 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G2671	UBS_DNTG	G2671	002680001001000	33.471	definicio_hu	scope=UBS_DNTG_jelentesek G2671 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G2671	UBS_DNTG	G2671	002680001001000	33.471	glosszak_hu	scope=UBS_DNTG_jelentesek G2671 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G2671	UBS_DNTG	G2671	002680001002000	33.473	definicio_hu	scope=UBS_DNTG_jelentesek G2671 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G2671	UBS_DNTG	G2671	002680001002000	33.473	glosszak_hu	scope=UBS_DNTG_jelentesek G2671 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G2671	MCGED	G2671	G52932	—	glosszak_hu	scope=MCGED G2671 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G2671	LSJ	G2671	G2671	teljes	forditas_hu	scope=LSJ G2671 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	1	TBESG.txt	G5351	TBESG	G5351	G5351	teljes	forditas_hu	scope=TBESG.txt G5351 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5351	UBS_DNTG	G5351	005241001001000	20.39	definicio_hu	scope=UBS_DNTG_jelentesek G5351 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5351	UBS_DNTG	G5351	005241001001000	20.39	glosszak_hu	scope=UBS_DNTG_jelentesek G5351 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5351	UBS_DNTG	G5351	005241001002000	20.23	definicio_hu	scope=UBS_DNTG_jelentesek G5351 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5351	UBS_DNTG	G5351	005241001002000	20.23	glosszak_hu	scope=UBS_DNTG_jelentesek G5351 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G5351	MCGED	G5351	G55780	—	glosszak_hu	scope=MCGED G5351 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G5351	LSJ	G5351	G5351	teljes	forditas_hu	scope=LSJ G5351 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	1	TBESG.txt	G5356	TBESG	G5356	G5356	teljes	forditas_hu	scope=TBESG.txt G5356 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5356	UBS_DNTG	G5356	005246001001000	20.38	definicio_hu	scope=UBS_DNTG_jelentesek G5356 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5356	UBS_DNTG	G5356	005246001001000	20.38	glosszak_hu	scope=UBS_DNTG_jelentesek G5356 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G5356	UBS_DNTG	G5356	005246001003000	88.267	definicio_hu	scope=UBS_DNTG_jelentesek G5356 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G5356	UBS_DNTG	G5356	005246001003000	88.267	glosszak_hu	scope=UBS_DNTG_jelentesek G5356 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-11-02T13:08Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G5356	MCGED	G5356	G55785	—	glosszak_hu	scope=MCGED G5356 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-11-02T13:08Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G5356	LSJ	G5356	G5356	teljes	forditas_hu	scope=LSJ G5356 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H0127	TBESH	H0127	H0127	teljes	forditas_hu	scope=TBESH.txt H0127 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz1	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz2	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz3	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz4	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz5	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz6	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz7	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz8	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0127	BDB	H0127	H0127	sz9	forditas_hu	scope=H0127 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	konkordancia/BDB_teljes_unabridged.tsv	H0127	BDB	H0127	H0127	teljes	forditas_hu	scope=BDB_teljes_unabridged H0127 | forras=konkordancia/BDB_teljes_unabridged.tsv | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H0127	tW_szocikkek	H0127	other/earth	—	forditas_hu	scope=tW_szocikkek H0127 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H0127	UBS_DBH	H0127	000128001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H0127 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H0127	UBS_DBH	H0127	000128001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H0127 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H0127	UBS_DBH	H0127	000128002001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H0127 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H0127	UBS_DBH	H0127	000128002001000	—	definicio_hu	scope=UBS_DBH_jelentesek H0127 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H0127	BDB	H0127	H0127	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H0127 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H0779	TBESH	H0779	H0779	teljes	forditas_hu	scope=TBESH.txt H0779 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz1	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz2	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz3	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz4	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz5	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H0779	BDB	H0779	H0779	sz6	forditas_hu	scope=H0779 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	konkordancia/BDB_teljes_unabridged.tsv	H0779	BDB	H0779	H0779	teljes	forditas_hu	scope=BDB_teljes_unabridged H0779 | forras=konkordancia/BDB_teljes_unabridged.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H0779	UBS_DBH	H0779	000717001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H0779 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H0779	UBS_DBH	H0779	000717001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H0779 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H0779	UBS_DBH	H0779	000717001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H0779 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H0779	UBS_DBH	H0779	000717001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H0779 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H0779	BDB	H0779	H0779	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H0779 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H2403	TBESH	H2403	H2403	teljes	forditas_hu	scope=TBESH.txt H2403 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz1	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz2	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz3	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz4	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz5	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz6	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz7	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz8	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz9	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz10	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz11	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz12	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz13	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz14	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz15	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz16	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz17	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz18	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2403	BDB	H2403	H2403	sz19	forditas_hu	scope=H2403 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H2403	tW_szocikkek	H1249	kt/purify	—	forditas_hu	scope=tW_szocikkek H2403 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2403	tW_szocikkek	H0817	kt/sin	—	forditas_hu	scope=tW_szocikkek H2403 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2403	tW_szocikkek	H0539	other/commit	—	forditas_hu	scope=tW_szocikkek H2403 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2403	tW_szocikkek	H0801	other/sacrifice	—	forditas_hu	scope=tW_szocikkek H2403 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2403	tW_szocikkek	H2401	other/sinoffering	—	forditas_hu	scope=tW_szocikkek H2403 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002220001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002220001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002220001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002220001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2403	UBS_DBH	H2403	002221001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H2403 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H2403	BDB	H2403	H2403	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H2403 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H2555	TBESH	H2555	H2555	teljes	forditas_hu	scope=TBESH.txt H2555 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H2555	BDB	H2555	H2555	sz1	forditas_hu	scope=H2555 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H2555	BDB	H2555	H2555	sz2	forditas_hu	scope=H2555 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H2555	tW_szocikkek	H0205	kt/justice	—	forditas_hu	scope=tW_szocikkek H2555 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2555	tW_szocikkek	H0205	kt/righteous	—	forditas_hu	scope=tW_szocikkek H2555 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H2555	tW_szocikkek	H0205	other/wrong	—	forditas_hu	scope=tW_szocikkek H2555 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H2555	UBS_DBH	H2555	002361001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H2555 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H2555	BDB	H2555	H2555	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H2555 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H6093	TBESH	H6093	H6093	teljes	forditas_hu	scope=TBESH.txt H6093 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H6093	UBS_DBH	H6093	005603001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H6093 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H6093	UBS_DBH	H6093	005603001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H6093 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H6093	BDB	H6093	H6093	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H6093 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H6975	TBESH	H6975	H6975	teljes	forditas_hu	scope=TBESH.txt H6975 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H6975	BDB	H6975	H6975	sz1	forditas_hu	scope=H6975 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H6975	BDB	H6975	H6975	sz2	forditas_hu	scope=H6975 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H6975	BDB	H6975	H6975	sz3	forditas_hu	scope=H6975 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H6975	BDB	H6975	H6975	sz4	forditas_hu	scope=H6975 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H6975	tW_szocikkek	H0329	other/thorn	—	forditas_hu	scope=tW_szocikkek H6975 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H6975	UBS_DBH	H6975	006425001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H6975 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H6975	UBS_DBH	H6975	006425001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H6975 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H6975	UBS_DBH	H6975	006425002001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H6975 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H6975	UBS_DBH	H6975	006425002001000	—	definicio_hu	scope=UBS_DBH_jelentesek H6975 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H6975	BDB	H6975	H6975	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H6975 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H7043	TBESH	H7043	H7043	teljes	forditas_hu	scope=TBESH.txt H7043 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz1	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz2	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz3	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz4	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz5	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz6	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz7	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz8	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz9	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz10	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz11	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz12	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz13	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz14	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz15	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz16	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz17	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz18	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz19	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz20	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz21	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz22	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz23	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7043	BDB	H7043	H7043	sz24	forditas_hu	scope=H7043 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H7043	tW_szocikkek	H0936	other/contempt	—	forditas_hu	scope=tW_szocikkek H7043 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7043	tW_szocikkek	H1540	other/dishonor	—	forditas_hu	scope=tW_szocikkek H7043 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7043	tW_szocikkek	H0937	other/shame	—	forditas_hu	scope=tW_szocikkek H7043 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001006000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001006000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001007000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001007000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001008000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001008000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001009000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001009000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001010000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001010000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001011000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7043	UBS_DBH	H7043	006488001011000	—	definicio_hu	scope=UBS_DBH_jelentesek H7043 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H7043	BDB	H7043	H7043	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H7043 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H7451	TBESH	H7451	H7451	teljes	forditas_hu	scope=TBESH.txt H7451 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz1	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz2	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz3	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz4	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz5	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz6	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz7	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz8	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz9	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz10	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz11	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz12	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz13	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz14	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz15	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz16	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz17	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz18	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz19	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz20	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz21	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz22	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz23	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz24	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz25	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7451	BDB	H7451	H7451	sz26	forditas_hu	scope=H7451 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H7451	tW_szocikkek	H2932	kt/demon	—	forditas_hu	scope=tW_szocikkek H7451 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7451	tW_szocikkek	H0205	kt/evil	—	forditas_hu	scope=tW_szocikkek H7451 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7451	tW_szocikkek	H0205	other/afflict	—	forditas_hu	scope=tW_szocikkek H7451 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7451	tW_szocikkek	H0006	other/ruin	—	forditas_hu	scope=tW_szocikkek H7451 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7451	tW_szocikkek	H0205	other/trouble	—	forditas_hu	scope=tW_szocikkek H7451 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001006000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006852001006000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7451	UBS_DBH	H7451	006864001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H7451 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H7451	BDB	H7451	H7451	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H7451 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
+heber	1	TBESH.txt	H7843	TBESH	H7843	H7843	teljes	forditas_hu	scope=TBESH.txt H7843 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-11-02T13:08Z
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz1	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz2	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz3	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz4	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz5	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz6	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz7	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz8	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz9	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz10	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	2	adat/bdb_szakaszok.tsv	H7843	BDB	H7843	H7843	sz11	forditas_hu	scope=H7843 | forras=bdb_jelolt/bont.py (fejléc) | ts=2026-10-18
+heber	3	konkordancia/tW_szocikkek.tsv	H7843	tW_szocikkek	H1110	other/devastated	—	forditas_hu	scope=tW_szocikkek H7843 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7843	tW_szocikkek	H0183	other/lust	—	forditas_hu	scope=tW_szocikkek H7843 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7843	tW_szocikkek	H0535	other/waste	—	forditas_hu	scope=tW_szocikkek H7843 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001002000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001002000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001003000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001003000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001004000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001004000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001005000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001005000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001006000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001006000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001007000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7843	UBS_DBH	H7843	007312001007000	—	definicio_hu	scope=UBS_DBH_jelentesek H7843 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-11-02T13:08Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H7843	BDB	H7843	H7843	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H7843 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-11-02T13:08Z
