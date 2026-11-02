@@ -45,7 +45,7 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .fej a { color: var(--kiemel); }
 .kerdes p { margin: 0 0 8px; overflow-wrap: anywhere; }
 .kerdes p:first-child { font: 600 16px/1.4 var(--cim); }
-.kerdes code { font: 13px var(--adat); background: var(--papir); padding: 1px 4px; border-radius: var(--sugar); overflow-wrap: anywhere; }
+.kerdes code, .hatarblokk code { font: 13px var(--adat); background: var(--papir); padding: 1px 4px; border-radius: var(--sugar); overflow-wrap: anywhere; }
 .kerdes details { margin-top: 2px; }
 .kerdes summary { cursor: pointer; font: 13px var(--adat); color: var(--kiemel); min-height: 32px; display: flex; align-items: center; }
 .rogzitett { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; }
@@ -56,7 +56,7 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
   background: var(--lap); color: var(--tinta); cursor: pointer; }
 .gombok button[aria-pressed="true"].elfogadom { background: var(--elfogad); color: var(--lap); border-color: var(--elfogad); }
 .gombok button[aria-pressed="true"].elvetem { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
-.gombok button[aria-pressed="true"].visszakerdezek, .gombok button[aria-pressed="true"].sajat { background: var(--kiemel); color: var(--lap); border-color: var(--kiemel); }
+.gombok button[aria-pressed="true"].visszakerdezek, .gombok button[aria-pressed="true"].sajat, .gombok button[aria-pressed="true"].harmadik { background: var(--kiemel); color: var(--lap); border-color: var(--kiemel); }
 .szoveg { display: grid; gap: 6px; }
 .szoveg textarea { font: 14px/1.4 var(--szoveg); padding: 8px 10px; border: 1px solid var(--vonal); border-radius: var(--sugar);
   background: var(--lap); color: var(--tinta); width: 100%; min-height: 80px; resize: vertical; }
@@ -157,7 +157,9 @@ const GOMBOK = {
   hiany: [['elfogadom', 'Legyen róla mondat — a próza írója megírja'], ['elvetem', 'Szándékos, maradjon így'], VISSZA, SAJAT],
   dontott: [['elfogadom', 'Marad a rögzített döntésem'], ['elvetem', 'Mégis másképp — gondold újra'], VISSZA, SAJAT],
 };
-const tipusok = (k) => GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
+// Háromválaszos határ-kártya: a három saját felirat a kártyából (`gombok`, ' | '-vel), utána a szokásos Visszakérdezek és Saját megoldás.
+const haromGomb = (k) => { const g = k.gombok.split(' | '); return [['elfogadom', g[0]], ['elvetem', g[1]], ['harmadik', g[2]], VISSZA, SAJAT]; };
+const tipusok = (k) => (k.gombok ? haromGomb(k) : GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK));
 const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts, db}; db: true, ha az adatbázisban is megvan
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
 const torlesKerdes = {};  // kerdes_id -> a „Válasz törlése” megerősítése nyitva
@@ -232,8 +234,8 @@ function kovetkezmenyBlokk(k) {
   const d = el('div', { class: 'hatarblokk' }, el('b', {}, 'Ha így döntesz…'));
   const ul = el('ul', {});
   tipusok(k).forEach(([kod, cimke]) => {
-    const s = kod === 'elfogadom' ? k.kov_elfogadom : kod === 'elvetem' ? k.kov_elvetem : KOV_ALTALANOS[kod];
-    ul.append(el('li', {}, el('span', { class: 'gombnev' }, cimke + ': '), s || 'a következmény ennél a kártyánál még nincs leírva.'));
+    const s = kod === 'elfogadom' ? k.kov_elfogadom : kod === 'elvetem' ? k.kov_elvetem : kod === 'harmadik' ? k.kov_harmadik : KOV_ALTALANOS[kod];
+    ul.append(el('li', {}, el('span', { class: 'gombnev' }, cimke + ': '), s ? szoveges(s) : 'a következmény ennél a kártyánál még nincs leírva.'));
   });
   d.append(ul);
   return d;

@@ -15,6 +15,11 @@ Alparancsok:
   seol    —       az ALVIL-001 2e. 4. scanje: halál/sír + kiáltás az Úrhoz, H7585 nélkül
   rokon   <ID> <A1,A2> <B1,B2> [ablak] — összetett gerinc-elem rokon alakokkal, azonos versben és ±ablak versben
                   (ANTROP-001: a negatív kritérium „melléknévi alak” és „egyazon mondat” kitétele)
+  kollok  <ID> <A+B,…> — a negatív kritérium kollokációi egy versben (HAMART-001)
+  csalad  <ID> — a φθείρω-család a TAGNT Szótő-mezőjéből (HAMART-001)
+  lanc    <ID> <S1,S2,…> [ablak] — legalább 2 különböző lánc-lexéma versben / ±ablak versben (HAMART-001)
+  lxx_e   <ID> <G1,G2,…> — LXX-híd a héber előfordulás-verseken: a kritérium görög elemei (HAMART-001)
+  nf63e   <ID> <S1,S2,…> — a tág új helyek közül a csak listán kívüli Strongot hordozók (HAMART-001, DT-F123u)
   lxx     <ID> <H1+H2> <A1,A2> <B1,B2> — a héber gerinc-pár kollokációs helyein az LXX-híd: áll-e ott a görög pár
                   (ANTROP-001: DT-F123s)
 
@@ -26,6 +31,7 @@ import hashlib
 import re
 import subprocess
 import sys
+import unicodedata
 from collections import defaultdict, Counter
 from pathlib import Path
 
@@ -857,6 +863,218 @@ def cmd_lxx(mid, heber_par, a_csop, b_csop):
             print('PAR\t' + '\t'.join(s[:6]))
 
 
+# ---------------------------------------------------------------------------
+# F123.HAMART: a strukturális hordozójú HAMART-001 negatív kritériumának gépileg mérhető kitételei
+def _allapot_fn(mid):
+    """(E-vers → strong, J-vers → döntések, állapot-függvény a versek listájára)."""
+    E, J = motivum_sorok(mid)
+    E_v, J_v = {}, {}
+    for r in E:
+        for v in versre(r['igehely']):
+            E_v.setdefault(v, []).append(r['gerinc_elem'])
+    for r in J:
+        try:
+            for v in versre(r['igehely']):
+                J_v.setdefault(v, []).append(r['dontes'])
+        except ValueError:
+            J_v.setdefault(r['igehely'], []).append(r['dontes'])
+
+    def allapot(vlist):
+        e = [v for v in vlist if v in E_v]
+        j = [v for v in vlist if v in J_v]
+        if e:
+            return 'előfordulás (%s)' % ', '.join('%s: %s' % (v, '/'.join(E_v[v])) for v in e)
+        if j:
+            return 'jelölt (%s)' % ', '.join('%s: %s' % (v, '/'.join(J_v[v])) for v in j)
+        return 'ÚJ'
+    return E_v, J_v, allapot
+
+
+def _versek_strongjai():
+    versek = defaultdict(set)
+    for r in L.load_tahot() + L.load_tagnt():
+        for s in r['Strong-szám'].split('+'):
+            versek[r['_parsed']].add(s.strip())
+    sorrend = {}
+    for i, k in enumerate(L.load_karoli_1908()):
+        try:
+            sorrend[L.parse_igehely(k)] = i
+        except ValueError:
+            pass
+    return versek, sorrend
+
+
+def _ig(p):
+    return '%s %d:%d' % p
+
+
+def cmd_kollok(mid, parok):
+    """F123.HAMART.A5: a negatív kritériumban megnevezett kollokációk (pl. málé+chámász = H4390+H2555,
+    sámá+chámász = H8085+H2555) és az összetett gerinc-elem (H6975+H1863) egy versben, a #108 módján
+    (`lekerdez.py kollokacio`). Mért mező, ítélet nélkül."""
+    _, _, allapot = _allapot_fn(mid)
+    sorok, provs = [], []
+    for par in parok.split(','):
+        ki, prov = lekerdez_futtat(['kollokacio'] + par.split('+'))
+        provs.append(prov)
+        for h in ki:
+            if h.startswith('#') or h.startswith('proveniencia:'):
+                continue
+            sorok.append([par, h, allapot([h]), prov])
+    ir_tsv('F123_adat_%s_kollokacio.tsv' % mid, ['par', 'igehely', 'allapot', 'proveniencia'], sorok,
+           'F123 X.A a negatív kritérium kollokációi %s (%s) — mért mezők, ítélet nélkül' % (mid, parok))
+    for p in provs:
+        print('PROV\t' + p)
+    c = Counter((s[0], s[2].split(' (')[0]) for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB\t%s\t%s\t%d' % (k[0], k[1], v))
+    for s in sorok:
+        if s[2] == 'ÚJ':
+            print('UJ\t%s\t%s' % (s[0], s[1]))
+
+
+CSALAD_RX = re.compile(r'φθειρ|φθορ|φθαρ')
+PRIVATIV_RX = re.compile(r'^α(δια)?φθ')
+
+
+def _alap(szo):
+    """Ékezet és szellemjel nélküli kisbetűs alak (NFD, a kombináló jelek nélkül), a családtag-illesztéshez."""
+    return ''.join(c for c in unicodedata.normalize('NFD', szo) if not unicodedata.combining(c)).lower()
+
+
+def cmd_csalad(mid):
+    """F123.HAMART.A6: a negatív kritérium „φθείρω-család” kitétele. A család a TAGNT `Szótő` mezőjéből, ékezet nélkül,
+    reguláris kifejezéssel (CSALAD_RX), nem kézi listából; a privatív alakok (ἀφθαρσία, ἄφθαρτος, ἀδιαφθορία)
+    külön jelölve. Minden tag `lekerdez.py scan`-nel naplózva. Mért mező, ítélet nélkül."""
+    tagok = {}
+    for r in L.load_tagnt():
+        if CSALAD_RX.search(_alap(r['Szótő'])):
+            for s in r['Strong-szám'].split('+'):
+                tagok.setdefault(s.strip(), r['Szótő'])
+    _, _, allapot = _allapot_fn(mid)
+    sorok, provs = [], []
+    for s in sorted(tagok):
+        ki, prov = lekerdez_futtat(['scan', s])
+        provs.append(prov)
+        tipus = 'privatív' if PRIVATIV_RX.search(_alap(tagok[s])) else 'pozitív'
+        for h in ki:
+            if h.startswith('#') or h.startswith('proveniencia:'):
+                continue
+            sorok.append([s, tagok[s], tipus, h, allapot([h]), prov])
+    ir_tsv('F123_adat_%s_csalad.tsv' % mid, ['strong', 'szoto', 'tipus', 'igehely', 'allapot', 'proveniencia'], sorok,
+           'F123 X.A a φθείρω-család (TAGNT Szótő ~ %s) %s — mért mezők, ítélet nélkül' % (CSALAD_RX.pattern, mid))
+    for p in provs:
+        print('PROV\t' + p)
+    c = Counter((s[0], s[1], s[2], s[4].split(' (')[0]) for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB\t%s\t%s\t%s\t%s\t%d' % (k + (v,)))
+    for s in sorok:
+        if s[4] == 'ÚJ':
+            print('UJ\t%s\t%s\t%s' % (s[0], s[2], s[3]))
+
+
+def cmd_lanc(mid, strongok, ablak=1):
+    """F123.HAMART.A7: a lánc-lexémák együttállása. A negatív kritérium szerint a hely a gerinc valamelyik elemén át
+    a genezisi átok→föld→romlás láncra utal vissza; ez gépileg nem dönthető. Mérhető közelítése: hány KÜLÖNBÖZŐ
+    lánc-lexéma áll egy versben, illetve ±ablak versen belül (azonos fejezet). Sorrendező mező az értelmező
+    menetnek, nem szűrő és nem ítélet: az egy lexémás hely is tartozhat ide, a kettős is eshet ki."""
+    lista = strongok.split(',')
+    versek, sorrend = _versek_strongjai()
+    _, _, allapot = _allapot_fn(mid)
+    sorok = []
+    latott = set()
+    for p in sorted(versek, key=lambda p: sorrend.get(p, 10 ** 9)):
+        sajat = [s for s in lista if s in versek[p]]
+        if not sajat:
+            continue
+        ablakban = set(sajat)
+        for d in range(-ablak, ablak + 1):
+            q = (p[0], p[1], p[2] + d)
+            if d and q in versek:
+                ablakban.update(s for s in lista if s in versek[q])
+        if len(ablakban) < 2:
+            continue
+        sorok.append([_ig(p), len(set(sajat)), '+'.join(sajat), len(ablakban),
+                      '+'.join(s for s in lista if s in ablakban), allapot([_ig(p)])])
+        latott.add(p)
+    prov = ('scope=TAHOT-teljes+TAGNT-teljes: legalább 2 különböző lánc-lexéma (%s) egy versben vagy ±%d versen belül, '
+            'azonos fejezet | forras=konkordancia/TAHOT_kivonat.tsv, TAGNT_kivonat.tsv (lekerdez.load_tahot/load_tagnt), '
+            'split(\'\\t\') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (%s) | ts=%s'
+            % ('|'.join(lista), ablak, mid, TS))
+    ir_tsv('F123_adat_%s_lanc_ablak%d.tsv' % (mid, ablak),
+           ['igehely', 'lexema_a_versben_db', 'lexema_a_versben', 'lexema_az_ablakban_db', 'lexema_az_ablakban',
+            'allapot', 'proveniencia'], [s + [prov] for s in sorok],
+           'F123 X.A lánc-lexémák együttállása %s — sorrendező mért mező, ítélet nélkül' % mid)
+    print('PROV\t' + prov)
+    c = Counter(('versben>=2' if s[1] >= 2 else 'csak ablakban', s[5].split(' (')[0]) for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB\t%s\t%s\t%d' % (k[0], k[1], v))
+    for s in sorok:
+        if s[5] == 'ÚJ' and s[1] >= 2:
+            print('UJ2\t%s\t%s' % (s[0], s[2]))
+
+
+def cmd_lxx_e(mid, gorog):
+    """F123.HAMART.A8: LXX-híd a héber előfordulás-verseken — a negatív kritérium görög elemei (pl. ἐπικατάρατος,
+    κατάρα, a φθείρω-család) közül melyik áll az LXX-versben. Minden `lxx-hid` naplózva. Mért mező, ítélet nélkül."""
+    lista = gorog.split(',')
+    E, _ = motivum_sorok(mid)
+    ujsz = {r['_parsed'][0] for r in L.load_tagnt()}
+    sorok = []
+    for r in E:
+        if r['igehely'].split(' ')[0] in ujsz:
+            continue
+        for v in versre(r['igehely']):
+            out, prov = lekerdez_futtat(['lxx-hid', v])
+            fejs = [s for s in out if s.startswith('# LXX-vers:')]
+            g = set()
+            for s in out:
+                m = re.match(r'^(G\d{4})\t', s)
+                if m:
+                    g.add(m.group(1))
+            talalt = [s for s in lista if s in g]
+            sorok.append([r['igehely'], v, r['gerinc_elem'],
+                          fejs[0][len('# LXX-vers:'):].strip() if fejs else 'nincs LXX-vers',
+                          '+'.join(talalt) or '—', prov])
+    ir_tsv('F123_adat_%s_lxx_hid.tsv' % mid,
+           ['elofordulas', 'vers', 'gerinc_elem', 'lxx_vers', 'kriterium_gorog_eleme_az_lxx_ben', 'proveniencia'],
+           sorok, 'F123 X.A LXX-híd a %s héber előfordulás-versein (%s) — mért mezők, ítélet nélkül' % (mid, '|'.join(lista)))
+    c = Counter(s[4] != '—' for s in sorok)
+    print('DB\tgorog_elem_van\t%d\tnincs\t%d' % (c[True], c[False]))
+    for s in sorok:
+        print('L\t' + '\t'.join(s[:5]))
+
+
+def cmd_nf63e(mid, lista):
+    """F123.HAMART.A13 (DT-F123u): a #108-összevetés tág új helyei közül azok a versek, amelyek CSAK a negatív
+    kritérium lexémalistáján kívüli Strongot hordoznak. Blokk-kizárás nincs: a sorok `N-F63e-függő` jelöléssel
+    várnak, amíg az N-F63e (a H7451/H7043 gerinc-státusza) el nem dől. Bemenet: a `f108` alparancs kimenete."""
+    krit = set(lista.split(','))
+    nev = 'F123_adat_%s_f108_osszevetes.tsv' % mid
+    f108 = [r for r in L.read_tsv_skip_comments(NAPLOK / nev)
+            if r['tabla'] == 'ujrascan' and r['valtozas'].startswith('UJ_HELY')]
+    versek = defaultdict(set)
+    for r in f108:
+        versek[r['igehely']].add(r['strong'])
+    sorrend = {}
+    for i, k in enumerate(L.load_karoli_1908()):
+        sorrend[k] = i
+    sorok = []
+    for v in sorted(versek, key=lambda x: sorrend.get(x, 10 ** 9)):
+        if versek[v] & krit:
+            continue
+        sorok.append([v, '+'.join(sorted(versek[v])), 'N-F63e-függő'])
+    prov = ('scope=%s: naplok/%s (UJ_HELY sorok), a negatív kritérium listáján (%s) kívüli Strongot hordozó versek | '
+            'forras=split(\'\\t\') | ts=%s' % (mid, nev, '|'.join(sorted(krit)), TS))
+    ir_tsv('F123_adat_%s_nf63e_fuggo.tsv' % mid, ['igehely', 'strong', 'allapot', 'proveniencia'],
+           [s + [prov] for s in sorok], 'F123 X.A DT-F123u: N-F63e-függő tág helyek %s — blokk-kizárás nélkül' % mid)
+    print('PROV	' + prov)
+    c = Counter(s[1] for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB	%s	%d' % (k, v))
+    print('OSSZES	%d' % len(sorok))
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -875,6 +1093,16 @@ def main():
         cmd_lxx(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
     elif cmd == 'rokon':
         cmd_rokon(sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else 1)
+    elif cmd == 'kollok':
+        cmd_kollok(sys.argv[2], sys.argv[3])
+    elif cmd == 'csalad':
+        cmd_csalad(sys.argv[2])
+    elif cmd == 'lanc':
+        cmd_lanc(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 1)
+    elif cmd == 'nf63e':
+        cmd_nf63e(sys.argv[2], sys.argv[3])
+    elif cmd == 'lxx_e':
+        cmd_lxx_e(sys.argv[2], sys.argv[3])
     else:
         sys.exit('ismeretlen alparancs: %s' % cmd)
 

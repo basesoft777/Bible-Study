@@ -233,6 +233,41 @@ class Szabaly21(Alap):
         self.assertFalse(E.main_agon('ag'))
 
 
+class Szabaly24(Alap):
+    """A 24. szabály: definíció nélküli lábjegyzet-hivatkozás a generált lapon SÉRTÉS (TEREMT-002, 2026-11-02)."""
+
+    def test_rendben(self):
+        self.lap('GERINC-001_TUDOMANYOS.md', 'Állítás.[^koll] Másik.[^1]\n\n[^koll]: proveniencia: x\n[^1]: forrás: y\n')
+        self.assertEqual(E.szabaly24_labjegyzet_definicio(self.adat).verdict, 'RENDBEN')
+
+    def test_hianyzo_definicio_sertes(self):
+        self.lap('GERINC-001_TUDOMANYOS.md', 'Állítás.[^koll] Másik.[^d-elof]\n\n[^koll]: proveniencia: x\n')
+        s = E.szabaly24_labjegyzet_definicio(self.adat)
+        self.assertEqual(s.verdict, 'SÉRTÉS')
+        self.assertIn('d-elof', s.peldak[0])
+        self.assertNotIn('koll', s.peldak[0])
+
+    def test_torzscikk_is_mas_fajl_nem(self):
+        self.lap('GERINC-001_TORZSCIKK.md', 'A.[^x]\n')
+        self.lap('README.md', 'B.[^y]\n')
+        s = E.szabaly24_labjegyzet_definicio(self.adat)
+        self.assertEqual(s.verdict, 'SÉRTÉS')
+        self.assertEqual(len(s.peldak), 1)
+
+    def test_definicio_sor_nem_hivatkozas(self):
+        self.assertEqual(E.lap_labjegyzet_hianyok('[^a]: def\n'), [])
+
+    def test_generator_atviszi_a_forras_definiciojat(self):
+        # a generátor függvénye ugyanazt méri, és a valódi TEREMT-002 lapon nincs hiány
+        ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'lexikon',
+                          'TEREMT-002_TUDOMANYOS.md')
+        with open(ut, encoding='utf-8') as f:
+            szoveg = f.read()
+        self.assertEqual(E.lap_labjegyzet_hianyok(szoveg), [])
+        self.assertEqual(LG.lap_labjegyzet_hiany(szoveg), [])
+        self.assertIn('[^koll]: proveniencia:', szoveg)
+
+
 class ValodiAdat(unittest.TestCase):
     def test_20_21_a_repon(self):
         # a repó mai adatán a 18–21. szabály tiszta (F148: az ALVIL-001 59 sora gépileg kitöltve, ⛔ A feloldva)

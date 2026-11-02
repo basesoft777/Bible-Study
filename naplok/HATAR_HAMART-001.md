@@ -34,5 +34,19 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-nem futott (DT443 után)
+*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: az N-F63e kérdése a #123 HAMART-001 X.A menetének munkafájljából (`naplok/F123_adat_HAMART-001.md` 7. szakasz, a PR #592 ágán; DT-F123u), átfogalmazás nélkül, a kártya mezőire bontva; a három válasz mért következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-ben. Felvette: a #12 TEREMT-002 C-l menete (PR #591), az orkesztrátor kérésére, 2026-11-02.*
+
+**1 kérdés.**
+
+**K1 — A gerinc-lexémák és a negatív kritérium: maradjon-e a H7451 (ra', gonoszság) és a H7043 (qalal, megátkoz/könnyűvé tesz) a HAMART-001 gerincében?**
+Érintett beépített igehelyek (a lenti pontokból; a Kiadó „A jelenlegi határ” blokkja ezek mai állapotát mutatja): 1Móz 6:5, 1Móz 8:21, 1Móz 3:18.
+**A jelenlegi határ** (az adatból):
+- Negatív kritérium (`adat/motivumok.tsv`): a hely a gerinc valamelyik elemén — **arar (H0779), adamá (H0127), itzávón (H6093), chattát (H2403), chámász (H2555), sáchat (H7843); ἐπικατάρατος, κατάρα, φθείρω-család** — vagy a málé+chámász, sámá+chámász kollokáción át a genezisi átok→föld→romlás láncra utal vissza. A **H7451 és a H7043 nincs a felsorolásban.**
+- Fölérendelt fogalom (a hígulás iránya): a bűn / hamartológia általában.
+- Mégis: két beépített előfordulás ezekre a Strongokra épül — **1Móz 6:5** (`gerinc_elem`=H7451: „a gonoszság … a szív minden gondolat-alkotásában”) és **1Móz 8:21** (`gerinc_elem`=H7043: „az ígéret nem a 3:17 arar-t vonja vissza, hanem egy másik…”); a 1Móz 3:18 a H6975+H1863 **pár** (a magányos H6975 nem gerinc-elem).
+- A mai scan e két Strongra (és a magányos H6975-re) **651 új verset** ad, amely egyetlen kritérium-lexémát sem hordoz (H7451 573, H7043 71, H6975 7); ezek most `N-F63e-függő` jelöléssel várnak.
+A magányos H6975 (7 vers) mindhárom esetben kizárandó: a gerinc-elem a pár (H6975+H1863), a magányos „tövis” egyik válaszban sem az.
+*(A számok mértek: E-sor a `adat/elofordulasok.tsv`-ből; vers a `naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv`-ből; fordítási kulcs a `naplok/F123_adat_HAMART-001_forditas_hiany.tsv`-ből (H7451 51, H7043 51). A „Maradnak” sor 1 249-es összege a 605 + 644.)*
+
+(proveniencia: scope=adat/motivumok.tsv (HAMART-001 negativ_kriterium), adat/elofordulasok.tsv (52 sor), naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv (651 sor) | forras=split('\t') | ts=2026-11-02T13:26Z; előzmény: N-F63e, DT97 (C), naplok/JELOLTEK_RETRO_lelet_meres.md)
 <!-- MODELLES-VEGE -->

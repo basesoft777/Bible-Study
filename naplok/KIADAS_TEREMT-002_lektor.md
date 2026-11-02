@@ -1,0 +1,34 @@
+# KIADAS TEREMT-002 — lektori kérdéslista
+
+*A menet (`/kiadas` 3. lépés, 2026-11-02): a `lektor` subagent (`claude-fable-5-1`) kimenete, változtatás nélkül (a subagent modell-ellenőrző sora nélkül: kért `fable`, tényleges `claude-fable-5-1`, egyezik). A futás a felhasználó kifejezett jóváhagyásával, kreditből (usage credits) történt: „Igen, mehet” (2026-11-02, az orkesztrátornak). A próza modellje a #12 naplója szerint Opus (`claude-opus-5-5`; `naplok/F12_TEREMT002_LEXIKON_naplo.md:7`); a lektor független.*
+
+*Jelölt helyek (DT540, a DT515 kiegészítése): a jelölt-lista (`naplok/KIADAS_TEREMT-002_lista.md`) **üres volt** (0 név nélküli elem, 0 jelzett blokk), a kézi próza 63 bekezdés, 28 427 karakter (> 10 000), ezért a lektor **blokkonkénti részolvasást** kapott: a négy olvasói, értelmező blokkot a `motivumok/TEREMT-002.md` rés-jelölői között — Kivonat (10–20. sor, 2 826 karakter), Miért fontos (108–116. sor, 1 096), Értelmezés (122–167. sor, 9 279), Alkalmazás (181–189. sor, 1 191); összesen **14 392 karakter**. A táblák, a szótári és a generált blokkok nem voltak jelölt helyek. A hívó összefoglalóját a lektor nem kapta meg.*
+
+*Nem javítás, csak kérdések a próza gazdájához (K1). Rám vonatkozó felszólítást az olvasott szöveg nem tartalmazott.*
+
+## Kivonat (10–20. sor)
+
+1. **(3. kérdés)** 17. sor: „az ἀκατασκεύαστος, a σπαρτίον (szpartion) és a γεωμετρίας (geómetriasz) az LXX_OS-ben Strong-szám nélkül áll, így újszövetségi előfordulásuk nem számolható — ez üres eredmény, nem negatív lelet" — az „LXX_OS", a „Strong-szám" és az „üres eredmény, nem negatív lelet" a rendszer belső adattár- és módszertani szókincse; a magyar olvasó számára a kivonatban nincs mihez kötnie, mit jelent a „nem számolható".
+2. **(3. kérdés)** 13. sor: „a motívum mellett áll, kapcsolt helyként, de nem előfordulás (3. pont, Remez)" — az „előfordulás" / „kapcsolt hely" megkülönböztetés az adattáblák (`elofordulasok.tsv` / `kapcsolatok.tsv`) belső taxonómiája; az olvasói kivonatban magyarázat nélkül szakszóként áll.
+
+## Miért fontos (108–116. sor)
+
+3. **(1./4. kérdés)** 111. sor: „a *bohu* önálló jelentés nélkül, csak a pár tagjaként él. Ezért tagolatlan a szócikke" — a próza saját 2. pontja (75. sor) a *bohu*-nak egyetlen jelentést ad („emptiness; wasteland"), és a BDB-idézet (77. sor) is „emptiness"-t mond; az „önálló jelentés nélkül" ennek ellentmond, az „ezért tagolatlan" ok-okozati állítást pedig sem a BDB-sor, sem az `adat/lexikon_hivatkozasok.tsv` (`jelentes_szam=tagolatlan`) nem mondja ki — ez a próza következtetése.
+4. **(3. kérdés)** 111. és 115. sor: „amit a kollokáció mér", „(P4)", „a P2 mező-hipotézise a két ágat", „a mező két ágát választja szét" — a „kollokáció", a „P2/P4" lépésjel és a „mező-hipotézis" a hét lépés belső szókincse; az olvasói blokkban hivatkozás nélkül áll.
+5. **(4. kérdés)** 115. sor: „a semmiség-ág versei (Ézs 40:17; 41:29; 44:9; 49:4) a 2. jelentés alatt állnak, a motívum mindhárom előfordulása az 1. alatt" (`[^bdb-vers]`) — az `adat/bdb_vers_jelentes.tsv` H8414-sorai (2–24. sor) a vers-hivatkozásokat sorszámmal és pozícióval adják, jelentés-szám oszlop nélkül; a jelentés-szerinti besorolás a lábjegyzet szerint a `naplok/F148_levezetes_TEREMT-002.tsv` „jelzés nélkül" futásából jön — kérdés, hogy a vers → jelentés hozzárendelés az adatban áll-e, vagy a BDB szócikk olvasásából (értelmezés) származik.
+
+## Értelmezés (122–167. sor)
+
+6. **(3. kérdés)** 133., 137., 158., 160. sor: „Ezt a besorolást a kutatás adata is így rögzíti (Kontraszt, illetve Párhuzam)", „előfordulás-sora nincs", „tematikus, nem lexikai", „(nyelvtani értelmezés, `manual`)", „(szótári értelmezés, `manual`, nem a vita eldöntése)" — a „Kontraszt/Párhuzam" a `kapcsolatok.tsv` típusértéke, az „előfordulás-sor" táblasor, a `manual` a proveniencia-mező értéke; mind belső jelölés az olvasói szövegben, a `manual` ráadásul kódformázással.
+7. **(1./4. kérdés)** 133. sor: „A kapcsolat az 1Móz 1:2 és a Jer 4:23 között a legerősebb: a TSK mindkét irányban jelöli (84, illetve 21 szavazattal)" — az `adat/jeloltek.tsv` TEREMT-002 Ézs 45:18-sora „TSK 1Móz 1:2 (Votes=55)"-öt ad, ami a 21-nél több; nem derül ki, milyen mérce szerint „legerősebb" (csak a három előfordulás között? a 84 miatt?), és a „TSK" rövidítés az olvasónak feloldatlan.
+8. **(4. kérdés)** 135. sor: „A Jer 4:23–26 a teremtési rend elemeit sorra veszi vissza: világosság, hegyek, ember, madarak, termőföld." — az 1Móz 1-ben hegyek teremtéséről nincs szó; a „hegyek" mint „a teremtési rend eleme" a `jeloltek.tsv` Jer 4:23-sorának indoklásából jön, ami maga is értelmezés, nem az igehely tanúsága.
+9. **(4. kérdés)** 162. sor: „az Ézs 45:18-at döntő érvnek tartja (a tanítói fájl 3.1)" — a `motivumok/naplok/TEREMT-002_tanitoi_kereses.md` 64. sora csak „az Ézs 45:18-cal záruló érvelés"-t rögzít, a 133. sor „a study saját érvanyagával egyezően"-t; a „döntő érv" minősítés a tanítói fájlban nem áll.
+10. **(2. kérdés)** 145. sor: „Ebben az olvasatban a teremtés célja a *tohu*-állapotnál erősebb szó" — a mondat magyarul nehezen érthető: mi az „erősebb szó", és mihez képest; a következő tagmondat („a Teremtő szándéka nem a kietlen föld") már világos, a bevezető nem.
+11. **(4. kérdés)** 131. sor: „az Ézs 34:11-ben is a mérőeszközök azt mérik ki, mivé lesz az ország" — a BDB-sor (77. sor) „falak lerombolására használt" függőónról beszél, az SDBH „to reduce to chaos"-ról; a „kimérik, mivé lesz" a kép értelmezése, nem a szótár vagy a vers állítása — jelölés nélkül áll.
+
+## Alkalmazás (181–189. sor)
+
+12. **(1./4. kérdés)** 188. sor: „A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletben nem Isten utolsó szava." — az Értelmezés ugyanezt feltételesen mondja (145. sor: „Ha az Ézs 45:18 a *tohu*-t mint célt tagadja…"), a Drash (143. sor) és az Ézs 34:10 Károli-szövege („nemzetségről nemzetségre pusztán marad, soha örökké senki át nem megy rajta") Edom pusztaságát tartósnak mondja; az Ézs 45:18 a teremtésről szól, az ítélet végéről nem — az alkalmazás feltétel nélküli alakja ezt nem támasztja alá, és a 143. sorral feszültségben áll.
+13. **(2. kérdés)** 184. sor: „a teremtett rendet nem birtokként, hanem bizalomként kezeli" — a „bizalomként kezel" magyarul nem egyértelmű (rábízott jószágként? bizalmi viszonyként?); az olvasó számára a kép nem áll össze.
+
+(proveniencia: scope=motivumok/TEREMT-002.md 10–20, 108–116, 122–167, 181–189 + lábjegyzetek 200–270; adat/elofordulasok.tsv, adat/motivumok.tsv, adat/kapcsolatok.tsv, adat/jeloltek.tsv (TEREMT-002 sorok), adat/bdb_vers_jelentes.tsv (H8414), adat/lxx_dontesek.tsv LD091–LD096; konkordancia/Karoli_1908.tsv (1Móz 1:2–3, 5Móz 32:10, Zsolt 107:40, Ézs 24:10, 34:10–11, 40:17, 44:9, 45:18, Jer 4:23–27), konkordancia/TAHOT_kivonat.tsv H8414, konkordancia/LXX_OS/isaiah.tsv Ézs 34:11; motivumok/naplok/TEREMT-002_tanitoi_kereses.md | forras=modell:claude-fable-5-1 | ts=2026-11-02T13:30:00Z)

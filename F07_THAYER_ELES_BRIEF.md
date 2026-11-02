@@ -225,10 +225,10 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 | DT522 | M0 (d1), (d2): a sigla- és terminológia-jóváhagyás | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT523 | M0: a 16. kapu toldalék-tűrése (a→á, e→é), F07.5 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT524 | M0: `Heb.` c:v előtt könyvhivatkozás; a `8_idezojel` mérése (50%: marad a javító körnél) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07h | A1: a 3. kapu `3Makk` hibája (apokrif magyar alakok) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07i | A1: a `9_tagolas` kapu prózai utalásai (maszk) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07j | A1: prompt v5.2 (idézőjelek a Thayer-szócikkben) | ✅ orkesztrátor, 2026-11-02: (a), az aposztrófos idézet marad (`DONTESEK.md`) |
-| DT-F07k | A1: a bukottak újrakapuzása, harmadik kör kivétele, `--plafon` kumulatív szabálya | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT535 | A1: a 3. kapu `3Makk` hibája (apokrif magyar alakok) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT536 | A1: a `9_tagolas` kapu prózai utalásai (maszk) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT537 | A1: prompt v5.2 (idézőjelek a Thayer-szócikkben) | ✅ orkesztrátor, 2026-11-02: (a), az aposztrófos idézet marad (`DONTESEK.md`) |
+| DT538 | A1: a bukottak újrakapuzása, harmadik kör kivétele, `--plafon` kumulatív szabálya | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07l … | adag-megállások, plafonemelés | a menet veszi fel |
 
 ## Verziónapló
