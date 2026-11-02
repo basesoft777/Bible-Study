@@ -489,6 +489,28 @@ class BUt(Alap):
         self.assertAlmostEqual(be20, 17136 + 3.721 * 20000, delta=1)
         self.assertAlmostEqual(ki20, 20 * 1134 + 1.654 * 20000, delta=1)
 
+    def test_b_becslo_effortonkent_es_javito_kor(self):
+        """F07 M0 (a): a B-kérés saját együtthatói, effortonként külön kimenettel; a javító kör a mért aránnyal."""
+        be, ki_h, usd_h = T.becsles_adat(21084, 10000, 20, 'B', 'high')
+        _, ki_m, usd_m = T.becsles_adat(21084, 10000, 20, 'B', 'medium')
+        self.assertAlmostEqual(be, 0.684 * 21084 + 3.178 * 10000, delta=1)
+        self.assertAlmostEqual(ki_h, 19590, delta=1)
+        self.assertAlmostEqual(ki_m, 15207, delta=1)
+        self.assertLess(usd_m, usd_h)
+        # az effort-érzéketlen alap nem változott: az A-út 'high' értéke az F27 M1 illesztése
+        self.assertEqual(T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1, 'A', 'high'), T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1))
+        self.assertLess(T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1, 'A', 'medium')[1], T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1)[1])
+        self.assertAlmostEqual(T.javito_kor_becsles(2.0, 'B'), 2.0 * T.JAVITO_ARANY['B'])
+        self.assertGreater(T.JAVITO_ARANY['A'], T.JAVITO_ARANY['B'])
+
+    def test_mero_adag_becslese_a_mert_koltseg_kozeleben(self):
+        """A #159 mérő B-kéréseinek becslése az újraillesztett együtthatókkal: a mért 0,4983 (high) / 0,4072 (medium) USD ±5%."""
+        for effort, mert in (('high', 0.4983), ('medium', 0.4072)):
+            usd = 0.0
+            for allando, kar, db in ((18591, 2353, 13), (21476, 9438, 20), (19713, 6094, 20), (24557, 14833, 7)):
+                usd += T.becsles_adat(allando, kar, db, 'B', effort)[2]
+            self.assertAlmostEqual(usd / mert, 1.0, delta=0.05, msg=effort)
+
     def test_plafon_mert_futo_osszeggel(self):
         hivott = []
 

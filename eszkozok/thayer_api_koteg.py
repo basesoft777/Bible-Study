@@ -83,6 +83,15 @@ KI_KERES = 1134                    # kimeneti (gondolkodással) token / kérés
 KI_KAR = 1.654                     # kimeneti (gondolkodással) token / forráskarakter
 ALLANDO_REF_KAR = 36257            # a G25 kérés állandó részének karaktere (nem Strongonkénti rész), szűkítés ELŐTT
 ALLANDO_KAR_TOKEN = ALLANDO_REF_KAR / BE_KERES     # karakter / token az állandó részre (~2,12; manual)
+# F07 M0 (a) (N68 lezárása): az újraillesztés a #27 M1 (51 egy Strongos 1. körös kérés) és a #159 mérő batch (4 B-kérés mindkét
+# effortra, 15 javító kérés) mért adataiból: `python naplok/THAYER_ELES_M0.py illeszt`, a részletek a naplok/THAYER_ELES_naplo.md-ben.
+# A fenti egy Strongos (A) konstansok az 51 pontra változatlanul érvényesek (R² 0,93 / 0,95); a B-kérés saját együtthatót kap.
+B_BE_ALLANDO = 0.684               # bemeneti token / állandó karakter a szűkített B-kérésben (14 426 token / ~21 100 karakter; 4 pont)
+B_BE_KAR = 3.178                   # bemeneti token / forráskarakter a B-kérésben (4 pont, átl. |hiba| 7,5%)
+B_KI_KAR = {'high': 1.959, 'medium': 1.5207}     # kimeneti (gondolkodással) token / forráskarakter a B-kérésben, effortonként (4-4 pont)
+A_KI_EFFORT = {'high': 1.0, 'medium': 0.776}     # az egy Strongos kimenet effort-szorzója (a B-kérések medium/high aránya; az (e) mérés felülírja)
+JAVITO_ARANY = {'A': 0.87, 'B': 0.315}           # javító kör költsége / 1. kör költsége: A = nagy (mért: adag1 0,867, adag99 0,883),
+#                                                  B = kicsi/közepes (high 0,315, medium 0,306; a régi egyenkénti javítással); a B-javító mérése felülírja
 # B-út (csoportos): a kicsi (< KICSI_HATAR) és a közepes (< NAGY_HATAR) Strongok n Strongonként egy kérésben, a nagyok egyenként
 KICSI_HATAR, NAGY_HATAR = 500, 3000
 B_DB = 20                          # Strong / B-kérés (15–25; a mérés tárgya, --b-db)
@@ -264,13 +273,23 @@ def ker_index(strongok):
     return ki
 
 
-def becsles_adat(allando_kar, forras_kar_osszeg, strongok_db):
+def becsles_adat(allando_kar, forras_kar_osszeg, strongok_db, ut='A', effort=None):
     """(bemenet_token, kimenet_token, USD) — Batch-ár, cache nélkül; a kalibrált F27 M1 illesztés (BE_KERES, BE_KAR, KI_KERES,
     KI_KAR; manual). A kérésenkénti állandó a (szűkített) prompt állandó része karakterből; a kimenet Strongonként egy
     kérésnyi állandóval (a B-útra konzervatív felső érték)."""
-    be = allando_kar / ALLANDO_KAR_TOKEN + BE_KAR * forras_kar_osszeg
-    ki = KI_KERES * strongok_db + KI_KAR * forras_kar_osszeg
+    effort = effort or EFFORT
+    if ut == 'B':      # csoportos kérés: a B-mérés együtthatói (F07 M0 (a)), effortonként külön kimenettel
+        be = allando_kar * B_BE_ALLANDO + B_BE_KAR * forras_kar_osszeg
+        ki = B_KI_KAR[effort] * forras_kar_osszeg
+    else:
+        be = allando_kar / ALLANDO_KAR_TOKEN + BE_KAR * forras_kar_osszeg
+        ki = (KI_KERES * strongok_db + KI_KAR * forras_kar_osszeg) * A_KI_EFFORT[effort]
     return be, ki, (be * AR_BE + ki * AR_KI) / 1e6
+
+
+def javito_kor_becsles(elso_kor_usd, ut):
+    """A javító kör becsült költsége (USD, manual): a mért javító/1. kör költségarány × az 1. kör becslése."""
+    return elso_kor_usd * JAVITO_ARANY[ut]
 
 
 def allando_kar(prompt):
@@ -385,7 +404,9 @@ def szaraz(strongok):
                                                      sum(len(kuldendo_prompt(k)) for k in ker) // max(1, len(ker))))
     print('becslés (manual; F27 M1 illesztés: bemenet %d token/kérés + %.3f token/forráskarakter, kimenet %d token/kérés + %.3f '
           'token/forráskarakter): bemenet %.0f token, kimenet %.0f token' % (BE_KERES, BE_KAR, KI_KERES, KI_KAR, be, ki))
-    print('költség Batch-áron, cache nélkül: %.2f USD (becslés, manual); plafon %.2f USD' % (usd, PLAFON_USD))
+    jav = javito_kor_becsles(usd, 'A')
+    print('költség Batch-áron, cache nélkül (egy Strongos út, effort %s): első kör %.2f + javító kör %.2f (mért arány %.2f) = %.2f USD '
+          '(becslés, manual); plafon %.2f USD' % (EFFORT, usd, jav, JAVITO_ARANY['A'], usd + jav, PLAFON_USD))
     print('csomagok: %d × ~%d kérés' % (len(csom), CSOMAG))
     if ker:
         print('max_tokens: %d–%d; modell %s, effort %s; (%.1f mp)' % (
@@ -630,7 +651,7 @@ def javito_becsles(tetelek):
             be += len(nyers) / ALLANDO_KAR_TOKEN
         else:
             ks, nyers, prompt = t[1], t[2], t[3]
-            be, ki, _ = becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks))
+            be, ki, _ = becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks), 'B')
             be += (sum(len(x) for x in nyers) + 200 * len(ks)) / ALLANDO_KAR_TOKEN
         usd += (be * AR_BE + ki * AR_KI) / 1e6
     return usd
@@ -843,7 +864,7 @@ def b_max_tokens(ks):
 def b_becsles_konnyu(strongok, konnyu_ix, allando):
     """(bemenet_token, kimenet_token, USD) egy B-kérésre prompt-építés nélkül: az állandó rész karaktere `allando` (manual)."""
     kar = sum(konnyu_ix[s][0]['forras_kar'] for s in strongok)
-    return becsles_adat(allando, kar, len(strongok))
+    return becsles_adat(allando, kar, len(strongok), 'B')
 
 
 def b_csoportok_olvas():
@@ -934,6 +955,7 @@ def b_szaraz(strongok):
     egyedi_ker = sum(len(ix[s]) for s in egyedi)
     egy_allando = allando_kar(kuldendo_prompt(kerelmek_strongra(egyedi[0])[0])) if egyedi else 0
     eb, ek, eu = becsles_adat(egy_allando * egyedi_ker, egyedi_kar, egyedi_ker)
+    jb, je = javito_kor_becsles(usd, 'B'), javito_kor_becsles(eu, 'A')
     kar = sum(ix[s][0]['forras_kar'] for g in cs.values() for s in g)
     print('B-út: %d Strong (kicsi %d, közepes %d), %d B-kérés (átlag %.1f Strong, %.0f forráskarakter); nagy/többcsoportos '
           '(egyenként): %d Strong, %d kérés' % (len(lista) - len(egyedi), kat['kicsi'], kat['kozepes'], len(cs),
@@ -944,8 +966,10 @@ def b_szaraz(strongok):
     print('B-kérések becslése (manual): bemenet %.2f M token, kimenet %.2f M token, %.2f USD' % (be / 1e6, ki / 1e6, usd))
     if egyedi:
         print('egyedi kérések becslése (manual): bemenet %.2f M token, kimenet %.2f M token, %.2f USD' % (eb / 1e6, ek / 1e6, eu))
+    print('első kör: %.2f USD (B %.2f + egyedi %.2f); javító kör: %.2f USD (B-javító %.2f + egyenkénti %.2f; mért arányok %.2f / %.2f)' % (
+        usd + eu, usd, eu, jb + je, jb, je, JAVITO_ARANY['B'], JAVITO_ARANY['A']))
     print('összesen: %.2f USD (becslés, manual; effort %s, Batch-ár, cache nélkül); mért eddig %.4f USD; plafon %.2f USD; (%.1f mp)' % (
-        usd + eu, EFFORT, futo_osszeg(), PLAFON_USD, time.time() - t0))
+        usd + eu + jb + je, EFFORT, futo_osszeg(), PLAFON_USD, time.time() - t0))
     return 0
 
 
@@ -967,7 +991,7 @@ def b_bekuld(strongok, cimke, db, plafon=None, hivo=None):
     for n in nevek:
         ks = [kerelmek_strongra(s)[0] for s in cs[n]]
         prompt = b_prompt(ks)
-        becs += becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks))[2]
+        becs += becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks), 'B')[2]
         kerelmek.append({'custom_id': '%s-p1' % n, 'params': kerelem_params(
             [{'role': 'user', 'content': uzenet(prompt)}], 0, b_max_tokens(ks))})
     rendben, szoveg = plafon_ellenorzes(plafon, becs)
