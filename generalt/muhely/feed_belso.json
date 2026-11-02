@@ -1,23 +1,23 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_belso.json (belső réteg)",
- "generalva": "2026-11-01T20:17Z",
- "commit": "2726f092",
+ "generalva": "2026-11-02T06:33Z",
+ "commit": "000cd2e2",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "merok_osszesen": {
   "motivum_db": 9,
   "kesz_db": 0,
-  "kapu_zold": 19,
+  "kapu_zold": 22,
   "kapu_ossz": 72,
-  "nyitott_jelolt": 34
+  "nyitott_jelolt": 32
  },
- "elvetett_jeloltek_osszesen": 343,
+ "elvetett_jeloltek_osszesen": 356,
  "heti_tortenes": [
   {
-   "datum": "2026-10-29",
+   "datum": "2026-11-01",
    "motivum": "ISTENTISZT-001",
-   "esemeny": "jelölt-döntés: beépítve",
-   "db": 1,
-   "olvasoi_esemeny": "1 igehely bekerült a motívumba"
+   "esemeny": "jelölt-döntés: elutasítva",
+   "db": 16,
+   "olvasoi_esemeny": "16 igehelyet kizártunk, mert nem illik a motívum határába"
   },
   {
    "datum": "2026-10-29",
@@ -51,10 +51,12 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenoriz.py | ts=2026-11-01T20:02Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenoriz.py | ts=2026-11-02T06:21Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -67,7 +69,7 @@
     {
      "allapot": "piros",
      "ertek": "17 HIBA, 195 jelentés",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:23Z",
      "reszlet": [
       "jelentés: 195 (nem blokkol)"
      ],
@@ -84,7 +86,7 @@
     {
      "allapot": "piros",
      "ertek": "1428 eltérő sor",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:23Z",
      "reszlet": [],
      "szam": {
       "n": 1428
@@ -99,7 +101,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott jelölt",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=jeloltek.tsv | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=jeloltek.tsv | ts=2026-11-02T06:23Z",
      "reszlet": [
       "1Pét 2:9"
      ],
@@ -116,7 +118,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_KIRALY-001.md",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=motivum_hatar.py | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=motivum_hatar.py | ts=2026-11-02T06:23Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -129,7 +131,7 @@
     {
      "allapot": "piros",
      "ertek": "19/42 blokk fedett (0 bevezetővel), kiejtés-hiány 22, fordításra vár 0",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:23Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -197,8 +199,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:04Z",
+     "ertek": "nincs naplok/LEKTOR_KIRALY-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:23Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -211,7 +213,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:KIRALY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:KIRALY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:23Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -295,16 +297,19 @@
    "pardes_szint": "Drash",
    "allasfokozat": "ellenőrzés",
    "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
-   "olvasoi_mondat": "33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.",
+   "olvasoi_mondat": "22 igehely feldolgozva, 4 vizsgálat alatt, 105 kizárva; a nyolc ellenőrzési lépésből 5 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenoriz.py | ts=2026-11-01T20:04Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenoriz.py | ts=2026-11-02T06:23Z",
      "reszlet": [
-      "8/c. Kézi dataset-lefedettség: KÉZI"
+      "8/c. Kézi dataset-lefedettség: KÉZI",
+      "21. Generált lap tisztasága (F148): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -316,10 +321,10 @@
     },
     {
      "allapot": "zold",
-     "ertek": "0 HIBA, 500 jelentés",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:06Z",
+     "ertek": "0 HIBA, 502 jelentés",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:24Z",
      "reszlet": [
-      "jelentés: 500 (nem blokkol)"
+      "jelentés: 502 (nem blokkol)"
      ],
      "szam": {
       "n": 0
@@ -334,7 +339,7 @@
     {
      "allapot": "zold",
      "ertek": "nulla-diff",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:06Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:25Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 3,
@@ -346,51 +351,43 @@
     },
     {
      "allapot": "piros",
-     "ertek": "6 nyitott jelölt",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:06Z",
+     "ertek": "4 nyitott jelölt",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=jeloltek.tsv | ts=2026-11-02T06:25Z",
      "reszlet": [
       "Ézs 41:25",
       "Zsolt 116:4",
       "1Móz 4:26",
-      "Róm 10:12",
-      "Róm 10:13",
-      "Róm 10:14"
+      "Róm 10:13"
      ],
      "szam": {
-      "n": 6
+      "n": 4
      },
      "sorszam": 4,
      "nev": "nincs nyitott jelölt",
      "szin": "piros",
      "olvasoi_nev": "Eldöntendő igehelyek",
      "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "6 igehely vizsgálata folyamatban van."
+     "olvasoi_szoveg": "4 igehely vizsgálata folyamatban van."
     },
     {
-     "allapot": "piros",
-     "ertek": "5 nyitott kérdés",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:06Z",
-     "reszlet": [
-      "K1",
-      "K2",
-      "K3",
-      "K4",
-      "K5"
-     ],
+     "allapot": "zold",
+     "ertek": "0 nyitott kérdés",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=motivum_hatar.py | ts=2026-11-02T06:25Z",
+     "reszlet": [],
      "szam": {
-      "n": 5
+      "n": 0
      },
      "sorszam": 5,
      "nev": "határ: 0 nyitott kérdés",
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "A motívum határa",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "5 kérdés van nyitva arról, mi tartozik a motívumhoz."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A motívum határáról szóló kérdések megválaszoltak."
     },
     {
      "allapot": "piros",
-     "ertek": "98/98 blokk fedett (51 bevezetővel), kiejtés-hiány 3, fordításra vár 0",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:06Z",
+     "ertek": "83/83 blokk fedett (50 bevezetővel), kiejtés-hiány 3, fordításra vár 0",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:25Z",
      "reszlet": [
       "kiejtés-hiány: sor 81 — י׳",
       "kiejtés-hiány: sor 82 — ק׳",
@@ -402,7 +399,7 @@
       "blokk": 0
      },
      "mertek": {
-      "blokk_osszes": 98,
+      "blokk_osszes": 83,
       "blokk_hiany": 0,
       "kiejtes_hiany": 3,
       "fordításra_var": 0
@@ -415,22 +412,24 @@
      "olvasoi_szoveg": "A lapon 3 kiejtés hiányzik."
     },
     {
-     "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:06Z",
+     "allapot": "zold",
+     "ertek": "0 nyitott, 5 megválaszolt lektori kérdés",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:25Z",
      "reszlet": [],
-     "szam": {},
+     "szam": {
+      "n": 0
+     },
      "sorszam": 7,
      "nev": "nincs nyitott lektori kérdés",
-     "szin": "szurke",
+     "szin": "zold",
      "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_allapot": "még nem vizsgáltuk",
-     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
     },
     {
      "allapot": "piros",
      "ertek": "9 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:06Z",
+     "proveniencia": "scope=motivum:ISTENTISZT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:25Z",
      "reszlet": [
       "#121 ⛔ megállt feladat",
       "#131 ⛔ megállt feladat",
@@ -510,30 +509,40 @@
      "olvasoi_szoveg": "9 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
-   "zold_db": 3,
+   "zold_db": 5,
    "ossz_db": 8,
-   "nyitott_jelolt_db": 6,
-   "elvetett_jelolt_db": 92,
-   "beepitett_jelolt_db": 35,
+   "nyitott_jelolt_db": 4,
+   "elvetett_jelolt_db": 105,
+   "beepitett_jelolt_db": 24,
    "stash": null,
    "stash_jelolt": {
     "cim": "Segítségül hívni az Úr nevét",
     "tema": "Pneumatológia/istentisztelet",
     "pardes_szint": "Drash",
-    "terjedelem_szo": 29612,
+    "terjedelem_szo": 26751,
     "kotet": null,
     "kotet_megjegyzes": "nincs kötet-adat (DT-F156d)",
     "kotet_olvasoi": "Kötetbe még nincs beosztva",
-    "elofordulas_osz": 23,
-    "elofordulas_usz": 10,
+    "elofordulas_osz": 16,
+    "elofordulas_usz": 6,
     "kapcsolatok_db": 3,
-    "forditasi_lefedettseg": 0.939,
+    "forditasi_lefedettseg": 0.955,
     "forditasra_var_jeloles": 0,
-    "lektori_kerdes": null,
-    "utolso_generalas_commit": "c166f37b",
+    "lektori_kerdes": "0 nyitott, 5 megválaszolt lektori kérdés",
+    "utolso_generalas_commit": "04fc99e9",
     "verzio": "v3"
    },
    "elvetett_jeloltek": [
+    "Zak 13:9",
+    "Róm 10:14",
+    "2Tim 2:22",
+    "1Pét 1:17",
+    "Zsolt 105:1",
+    "1Krón 16:8",
+    "Ézs 12:4",
+    "Jer 10:25",
+    "Zsolt 79:6",
+    "Róm 10:12",
     "Zsolt 105:15",
     "Róm 10:11",
     "Róm 3:13",
@@ -625,18 +634,16 @@
     "Jer 7:14",
     "Jer 7:30",
     "5Móz 28:10",
+    "Ézs 64:6",
+    "Róm 10:12",
+    "Róm 10:14",
     "Zsolt 99:6"
    ],
    "nyitott_pr": [
     {
-     "szam": 559,
-     "cim": "F152.9: a K1–K5 (DT-F151c) átvezetése az ISTENTISZT-001-en",
-     "url": "https://github.com/basesoft777/Bible-Study/pull/559"
-    },
-    {
-     "szam": 558,
-     "cim": "F157: lektor-felület — M0 kérdés-séma és első artifact",
-     "url": "https://github.com/basesoft777/Bible-Study/pull/558"
+     "szam": 562,
+     "cim": "F157: lektor-felület — felmérés (döntés-kártyák, talált motívumok) és A. Olvasó arculat",
+     "url": "https://github.com/basesoft777/Bible-Study/pull/562"
     }
    ]
   },
@@ -654,10 +661,12 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenoriz.py | ts=2026-11-01T20:06Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenoriz.py | ts=2026-11-02T06:25Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -670,7 +679,7 @@
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 231 jelentés",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:07Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:25Z",
      "reszlet": [
       "jelentés: 231 (nem blokkol)"
      ],
@@ -687,7 +696,7 @@
     {
      "allapot": "piros",
      "ertek": "1179 eltérő sor",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:26Z",
      "reszlet": [],
      "szam": {
       "n": 1179
@@ -702,7 +711,7 @@
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=jeloltek.tsv | ts=2026-11-02T06:26Z",
      "reszlet": [],
      "szam": {
       "n": 0
@@ -717,7 +726,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_TEREMT-001.md",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=motivum_hatar.py | ts=2026-11-02T06:26Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -730,7 +739,7 @@
     {
      "allapot": "piros",
      "ertek": "34/49 blokk fedett (0 bevezetővel), kiejtés-hiány 35, fordításra vár 0",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:26Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -803,8 +812,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:08Z",
+     "ertek": "nincs naplok/LEKTOR_TEREMT-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:26Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -817,7 +826,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:TEREMT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:TEREMT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:26Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -892,9 +901,10 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenoriz.py | ts=2026-11-01T20:08Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenoriz.py | ts=2026-11-02T06:26Z",
      "reszlet": [
-      "8/c. Kézi dataset-lefedettség: KÉZI"
+      "8/c. Kézi dataset-lefedettség: KÉZI",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -907,7 +917,7 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA, 292 jelentés",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:09Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:27Z",
      "reszlet": [
       "jelentés: 292 (nem blokkol)"
      ],
@@ -924,7 +934,7 @@
     {
      "allapot": "zold",
      "ertek": "nulla-diff",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:27Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 3,
@@ -937,7 +947,7 @@
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=jeloltek.tsv | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=jeloltek.tsv | ts=2026-11-02T06:27Z",
      "reszlet": [],
      "szam": {
       "n": 0
@@ -952,7 +962,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_ALVIL-001.md",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=motivum_hatar.py | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=motivum_hatar.py | ts=2026-11-02T06:27Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -965,7 +975,7 @@
     {
      "allapot": "piros",
      "ertek": "108/108 blokk fedett (48 bevezetővel), kiejtés-hiány 7, fordításra vár 0",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:27Z",
      "reszlet": [
       "kiejtés-hiány: sor 9 — ἄβυσσος",
       "kiejtés-hiány: sor 79 — י׳",
@@ -995,8 +1005,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:10Z",
+     "ertek": "nincs naplok/LEKTOR_ALVIL-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:27Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -1009,7 +1019,7 @@
     {
      "allapot": "piros",
      "ertek": "8 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ALVIL-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:ALVIL-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:27Z",
      "reszlet": [
       "#121 ⛔ megállt feladat",
       "#123 ⛔ megállt feladat",
@@ -1109,10 +1119,12 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenoriz.py | ts=2026-11-01T20:10Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenoriz.py | ts=2026-11-02T06:27Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -1125,7 +1137,7 @@
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 167 jelentés",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:28Z",
      "reszlet": [
       "jelentés: 167 (nem blokkol)"
      ],
@@ -1142,7 +1154,7 @@
     {
      "allapot": "piros",
      "ertek": "1820 eltérő sor",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:28Z",
      "reszlet": [],
      "szam": {
       "n": 1820
@@ -1157,7 +1169,7 @@
     {
      "allapot": "piros",
      "ertek": "2 nyitott jelölt",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=jeloltek.tsv | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=jeloltek.tsv | ts=2026-11-02T06:28Z",
      "reszlet": [
       "Mt 24:38",
       "Luk 17:27"
@@ -1175,7 +1187,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_MENNY-001.md",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=motivum_hatar.py | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=motivum_hatar.py | ts=2026-11-02T06:28Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -1188,7 +1200,7 @@
     {
      "allapot": "piros",
      "ertek": "17/32 blokk fedett (0 bevezetővel), kiejtés-hiány 24, fordításra vár 0",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:28Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1250,8 +1262,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:11Z",
+     "ertek": "nincs naplok/LEKTOR_MENNY-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:28Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -1264,7 +1276,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:MENNY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:MENNY-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:28Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -1338,10 +1350,12 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenoriz.py | ts=2026-11-01T20:11Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenoriz.py | ts=2026-11-02T06:28Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -1354,7 +1368,7 @@
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 151 jelentés",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:29Z",
      "reszlet": [
       "jelentés: 151 (nem blokkol)"
      ],
@@ -1371,7 +1385,7 @@
     {
      "allapot": "piros",
      "ertek": "1482 eltérő sor",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:29Z",
      "reszlet": [],
      "szam": {
       "n": 1482
@@ -1386,7 +1400,7 @@
     {
      "allapot": "piros",
      "ertek": "3 nyitott jelölt",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=jeloltek.tsv | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=jeloltek.tsv | ts=2026-11-02T06:29Z",
      "reszlet": [
       "Fil 1:27",
       "1Pét 1:22",
@@ -1405,7 +1419,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_ANTROP-001.md",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=motivum_hatar.py | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=motivum_hatar.py | ts=2026-11-02T06:29Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -1418,7 +1432,7 @@
     {
      "allapot": "piros",
      "ertek": "18/36 blokk fedett (0 bevezetővel), kiejtés-hiány 9, fordításra vár 0",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:29Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1468,8 +1482,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:13Z",
+     "ertek": "nincs naplok/LEKTOR_ANTROP-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:29Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -1482,7 +1496,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:ANTROP-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:ANTROP-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:29Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -1554,10 +1568,12 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenoriz.py | ts=2026-11-01T20:13Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenoriz.py | ts=2026-11-02T06:29Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -1570,7 +1586,7 @@
     {
      "allapot": "piros",
      "ertek": "1 HIBA, 240 jelentés",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:30Z",
      "reszlet": [
       "jelentés: 240 (nem blokkol)"
      ],
@@ -1587,7 +1603,7 @@
     {
      "allapot": "piros",
      "ertek": "994 eltérő sor",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:30Z",
      "reszlet": [],
      "szam": {
       "n": 994
@@ -1602,7 +1618,7 @@
     {
      "allapot": "piros",
      "ertek": "14 nyitott jelölt",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=jeloltek.tsv | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=jeloltek.tsv | ts=2026-11-02T06:30Z",
      "reszlet": [
       "5Móz 1:4",
       "5Móz 2:23",
@@ -1632,7 +1648,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_HODIT-001.md",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=motivum_hatar.py | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=motivum_hatar.py | ts=2026-11-02T06:30Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -1645,7 +1661,7 @@
     {
      "allapot": "piros",
      "ertek": "32/47 blokk fedett (0 bevezetővel), kiejtés-hiány 19, fordításra vár 0",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:30Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -1702,8 +1718,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:14Z",
+     "ertek": "nincs naplok/LEKTOR_HODIT-001.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:30Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -1716,7 +1732,7 @@
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:HODIT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HODIT-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:30Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -1786,17 +1802,19 @@
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "ellenőrzés",
    "allasfokozat_olvasoi": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
-   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
+   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.",
    "tsv_statusz": "publikálható",
    "tsv_statusz_eltérés": true,
    "kriteriumok": [
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenoriz.py | ts=2026-11-01T20:14Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenoriz.py | ts=2026-11-02T06:30Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
-      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
+      "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS",
+      "22. Kiejtés nélküli héber/görög szó (F125): JELENTÉS",
+      "23. Próza-lefedettség (F125): JELENTÉS"
      ],
      "szam": {},
      "sorszam": 1,
@@ -1809,7 +1827,7 @@
     {
      "allapot": "piros",
      "ertek": "4 HIBA, 299 jelentés",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:31Z",
      "reszlet": [
       "jelentés: 299 (nem blokkol)"
      ],
@@ -1826,7 +1844,7 @@
     {
      "allapot": "piros",
      "ertek": "3628 eltérő sor",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:32Z",
      "reszlet": [],
      "szam": {
       "n": 3628
@@ -1841,7 +1859,7 @@
     {
      "allapot": "piros",
      "ertek": "8 nyitott jelölt",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=jeloltek.tsv | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=jeloltek.tsv | ts=2026-11-02T06:32Z",
      "reszlet": [
       "Jób 16:18",
       "Jób 31:38",
@@ -1865,7 +1883,7 @@
     {
      "allapot": "zold",
      "ertek": "0 nyitott kérdés",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=motivum_hatar.py | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=motivum_hatar.py | ts=2026-11-02T06:32Z",
      "reszlet": [],
      "szam": {
       "n": 0
@@ -1880,7 +1898,7 @@
     {
      "allapot": "piros",
      "ertek": "57/88 blokk fedett (0 bevezetővel), kiejtés-hiány 67, fordításra vár 0",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:32Z",
      "reszlet": [
       "blokk-hiány: sor 9 ## Tartalomjegyzék",
       "blokk-hiány: sor 32 ## Jelmagyarázat és rövidítések",
@@ -2000,22 +2018,24 @@
      "olvasoi_szoveg": "A lapon 67 kiejtés hiányzik, 31 rész magyarázat nélkül áll."
     },
     {
-     "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:16Z",
+     "allapot": "zold",
+     "ertek": "0 nyitott, 0 megválaszolt lektori kérdés",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:32Z",
      "reszlet": [],
-     "szam": {},
+     "szam": {
+      "n": 0
+     },
      "sorszam": 7,
      "nev": "nincs nyitott lektori kérdés",
-     "szin": "szurke",
+     "szin": "zold",
      "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_allapot": "még nem vizsgáltuk",
-     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
     },
     {
      "allapot": "piros",
      "ertek": "1 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:HAMART-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:HAMART-001 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:32Z",
      "reszlet": [
       "#123 ⛔ megállt feladat"
      ],
@@ -2047,7 +2067,7 @@
      "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
-   "zold_db": 2,
+   "zold_db": 3,
    "ossz_db": 8,
    "nyitott_jelolt_db": 8,
    "elvetett_jelolt_db": 163,
@@ -2066,7 +2086,7 @@
     "kapcsolatok_db": 1,
     "forditasi_lefedettseg": 0.808,
     "forditasra_var_jeloles": 0,
-    "lektori_kerdes": null,
+    "lektori_kerdes": "0 nyitott, 0 megválaszolt lektori kérdés",
     "utolso_generalas_commit": "57f41f24",
     "verzio": "v1"
    },
@@ -2237,9 +2257,9 @@
    ],
    "nyitott_pr": [
     {
-     "szam": 558,
-     "cim": "F157: lektor-felület — M0 kérdés-séma és első artifact",
-     "url": "https://github.com/basesoft777/Bible-Study/pull/558"
+     "szam": 562,
+     "cim": "F157: lektor-felület — felmérés (döntés-kártyák, talált motívumok) és A. Olvasó arculat",
+     "url": "https://github.com/basesoft777/Bible-Study/pull/562"
     }
    ]
   },
@@ -2257,7 +2277,7 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenoriz.py | ts=2026-11-01T20:16Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenoriz.py | ts=2026-11-02T06:32Z",
      "reszlet": [
       "8/c. Kézi dataset-lefedettség: KÉZI",
       "19. Kötelező szótári mezők (F148, SEMA 2.2.2): JELENTÉS"
@@ -2273,7 +2293,7 @@
     {
      "allapot": "zold",
      "ertek": "0 HIBA, 45 jelentés",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenorzes/futtat.py | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=ellenorzes/futtat.py | ts=2026-11-02T06:33Z",
      "reszlet": [
       "jelentés: 45 (nem blokkol)"
      ],
@@ -2290,7 +2310,7 @@
     {
      "allapot": "piros",
      "ertek": "nincs lexikon/TEREMT-002_TUDOMANYOS.md",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=general.py --cel lexikon (nulla-diff) | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 3,
@@ -2303,7 +2323,7 @@
     {
      "allapot": "zold",
      "ertek": "0 nyitott jelölt",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=jeloltek.tsv | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=jeloltek.tsv | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {
       "n": 0
@@ -2318,7 +2338,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs naplok/HATAR_TEREMT-002.md",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=motivum_hatar.py | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=motivum_hatar.py | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 5,
@@ -2331,7 +2351,7 @@
     {
      "allapot": "nincs_mero",
      "ertek": "nincs lexikon-lap",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 6,
@@ -2343,8 +2363,8 @@
     },
     {
      "allapot": "nincs_mero",
-     "ertek": "nincs mérő (a lektor-felület tárolója még nem létezik; DT-F156c)",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-01T20:17Z",
+     "ertek": "nincs naplok/LEKTOR_TEREMT-002.tsv (a lektori kérdések még nincsenek generálva)",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=lektori kérdések (naplok/LEKTOR_<ID>.tsv) | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {},
      "sorszam": 7,
@@ -2357,7 +2377,7 @@
     {
      "allapot": "zold",
      "ertek": "0 nyitott ⛔/🟡",
-     "proveniencia": "scope=motivum:TEREMT-002 | forras=feladatok.py + DONTESEK.md | ts=2026-11-01T20:17Z",
+     "proveniencia": "scope=motivum:TEREMT-002 | forras=feladatok.py + DONTESEK.md | ts=2026-11-02T06:33Z",
      "reszlet": [],
      "szam": {
       "n": 0

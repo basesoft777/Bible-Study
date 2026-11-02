@@ -145,3 +145,11 @@ A felhasználó jóváhagyta (az orkesztrátor továbbításában, 2026-11-01): 
 ## Arculat (DT-F156g ✅ eldöntve)
 
 A felhasználó kérése: „kapjon modernebb színvilágot és tipót”. Három változat készült próba-artifactként (A. Olvasó, B. Termék, C. Műhely; tokenek: a megosztott jegyzetmappa `KOZOS_TOKENEK.md`), a felhasználó választása (az orkesztrátor továbbításában): **az A változat** („a”) — Source Serif 4 (cím) + IBM Plex Sans (szöveg) + IBM Plex Mono (adat), hűvös papír, mély kék kiemelés, világos és sötét mód. A #157 lektor-felület ugyanezeket a tokeneket használja (`--papir`, `--lap`, `--tinta`, `--halvany`, `--vonal`, `--kiemel(-hatter)`, `--elfogad(-hatter)`, `--elvet(-hatter)`, `--figyel(-hatter)`). A Dashboardra alkalmazva az olvasói szövegek beépítése után (F156.5).
+
+## Frissített állapot (2026-11-02, a #559 és a lektori tároló után)
+
+Az 5. és a 7. kapu a `naplok/LEKTOR_<ID>.tsv`-ből számol (megválaszolt = zárt; a határ modelles K-kérdései, amelyek ott megválaszoltak, nem nyitottak — ez a DT-F156b határ-kérdését érinti: az ISTENTISZT-001 5. kapuja zöld). **ISTENTISZT-001: 5/8 zöld** (szabályok, CI, egyforrású, határ, lektor); piros: eldöntendő igehelyek (4), olvasható lap (3 kiejtés-hiány), függő munka (9). 9 motívumból továbbra is 0 kész. Az olvasói mondat: „22 igehely feldolgozva, 4 vizsgálat alatt, 105 kizárva; a nyolc ellenőrzési lépésből 5 teljesül.” A korábbi M0-tábla a 2026-11-01-i állapotot mutatja.
+
+## Dashboard-arculat (A. Olvasó, a Dashboard-típuson belül)
+
+A betűk (Source Serif 4, IBM Plex Sans, IBM Plex Mono; OFL, a `eszkozok/olvaso_szerver/statikus/fonts/` fájljaiból, latin + latin-ext) a Dashboard `files/*.css` dokumentumaiban `data:` URL-lel állnak, az oldal saját osztályain az A-tokenek (világos/sötét), a háttér az A „papír”; a típus kerete a típusé. A `dash/look` az A-értékeket tartalékként hordozza. A privát oldalt renderelni nem tudtam (bejelentkezés kell), a típus `check` dokumentuma csak megnyitás után jön létre.

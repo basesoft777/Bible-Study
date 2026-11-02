@@ -1,7 +1,7 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
- "generalva": "2026-11-01T20:17Z",
- "commit": "2726f092",
+ "generalva": "2026-11-02T06:33Z",
+ "commit": "000cd2e2",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "motivumok": [
   {
@@ -109,14 +109,14 @@
      "szin": "piros",
      "olvasoi_nev": "Eldöntendő igehelyek",
      "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "6 igehely vizsgálata folyamatban van."
+     "olvasoi_szoveg": "4 igehely vizsgálata folyamatban van."
     },
     {
      "sorszam": 5,
-     "szin": "piros",
+     "szin": "zold",
      "olvasoi_nev": "A motívum határa",
-     "olvasoi_allapot": "munka van hátra",
-     "olvasoi_szoveg": "5 kérdés van nyitva arról, mi tartozik a motívumhoz."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A motívum határáról szóló kérdések megválaszoltak."
     },
     {
      "sorszam": 6,
@@ -127,10 +127,10 @@
     },
     {
      "sorszam": 7,
-     "szin": "szurke",
+     "szin": "zold",
      "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_allapot": "még nem vizsgáltuk",
-     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
     },
     {
      "sorszam": 8,
@@ -140,13 +140,13 @@
      "olvasoi_szoveg": "9 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
-   "zold_db": 3,
+   "zold_db": 5,
    "ossz_db": 8,
-   "nyitott_jelolt_db": 6,
-   "elvetett_jelolt_db": 92,
-   "beepitett_jelolt_db": 35,
+   "nyitott_jelolt_db": 4,
+   "elvetett_jelolt_db": 105,
+   "beepitett_jelolt_db": 24,
    "stash": null,
-   "olvasoi_mondat": "33 igehely feldolgozva, 6 vizsgálat alatt, 92 kizárva; a nyolc ellenőrzési lépésből 3 teljesül."
+   "olvasoi_mondat": "22 igehely feldolgozva, 4 vizsgálat alatt, 105 kizárva; a nyolc ellenőrzési lépésből 5 teljesül."
   },
   {
    "id": "TEREMT-001",
@@ -559,10 +559,10 @@
     },
     {
      "sorszam": 7,
-     "szin": "szurke",
+     "szin": "zold",
      "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_allapot": "még nem vizsgáltuk",
-     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
     },
     {
      "sorszam": 8,
@@ -572,13 +572,13 @@
      "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
     }
    ],
-   "zold_db": 2,
+   "zold_db": 3,
    "ossz_db": 8,
    "nyitott_jelolt_db": 8,
    "elvetett_jelolt_db": 163,
    "beepitett_jelolt_db": 52,
    "stash": null,
-   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
+   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 3 teljesül."
   },
   {
    "id": "TEREMT-002",
@@ -656,15 +656,15 @@
  "merok_osszesen": {
   "motivum_db": 9,
   "kesz_db": 0,
-  "kapu_zold": 19,
+  "kapu_zold": 22,
   "kapu_ossz": 72,
-  "nyitott_jelolt": 34
+  "nyitott_jelolt": 32
  },
  "heti_tortenes": [
   {
-   "datum": "2026-10-29",
+   "datum": "2026-11-01",
    "motivum": "ISTENTISZT-001",
-   "olvasoi_esemeny": "1 igehely bekerült a motívumba"
+   "olvasoi_esemeny": "16 igehelyet kizártunk, mert nem illik a motívum határába"
   },
   {
    "datum": "2026-10-29",
@@ -677,5 +677,5 @@
    "olvasoi_esemeny": "3 igehelyet kizártunk, mert nem illik a motívum határába"
   }
  ],
- "elvetett_jeloltek_osszesen": 343
+ "elvetett_jeloltek_osszesen": 356
 }
