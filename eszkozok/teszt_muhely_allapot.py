@@ -125,6 +125,28 @@ class Teszt(unittest.TestCase):
         self.assertFalse(M.feladat_blokkol(dict(fej, ir='naplok/X-001_valami.md'), '⛔ X-001', 'X-001'))
         self.assertFalse(M.feladat_blokkol(dict(fej, allapot='lezarva'), '⛔ X-001', 'X-001'))
 
+    def test_motivum_kesz_nem_blokkol(self):
+        # DT-F123n: a több motívumot író brief kész motívuma nem függő munka; a többi motívuma blokkol
+        fej = {'feladat': '9', 'allapot': 'megallt', 'ir': '[motivumok/X-001.md, motivumok/Y-002.md]',
+               'motivum_kesz': '[X-001]'}
+        szoveg = '⛔ X-001: alpont · ⛔ Y-002: határ'.replace(' · ', '\n')
+        self.assertFalse(M.feladat_blokkol(fej, szoveg, 'X-001'))
+        self.assertTrue(M.feladat_blokkol(fej, szoveg, 'Y-002'))
+        self.assertTrue(M.feladat_blokkol(dict(fej, motivum_kesz=''), szoveg, 'X-001'))
+        # a feladat nyitott 🟡 DT-je, amely a kész motívumot nevezi meg, mégis blokkol; más feladaté vagy lezárt nem
+        dt = [{'id': 'DT1', 'feladat': 9, 'nyitott': True, 'kerdes': 'X-001 alpontja?'}]
+        self.assertTrue(M.feladat_blokkol(fej, szoveg, 'X-001', dt))
+        self.assertFalse(M.feladat_blokkol(fej, szoveg, 'X-001', [dict(dt[0], nyitott=False)]))
+        self.assertFalse(M.feladat_blokkol(fej, szoveg, 'X-001', [dict(dt[0], feladat=8)]))
+        self.assertFalse(M.feladat_blokkol(fej, szoveg, 'X-001', [dict(dt[0], kerdes='Y-002?')]))
+
+    def test_kriterium_8_kesz_motivum_tajekoztato(self):
+        fejlecek = {9: {'feladat': '9', 'allapot': 'megallt', 'ir': '[motivumok/X-001.md]', 'motivum_kesz': '[X-001]',
+                        '_fajl': 'F123_MIGRACIO2_BRIEF.md'}}
+        e = M.kriterium_8('X-001', fejlecek, [])
+        self.assertEqual(e['allapot'], M.ZOLD)
+        self.assertTrue(any('motivum_kesz' in r for r in e['reszlet']))
+
     def test_masodik_kiadas_nem_blokkol(self):
         self.assertTrue(M.masodik_kiadas({'forras': 'lektor'}))
         self.assertTrue(M.masodik_kiadas({'forras': 'proza_lefedettseg'}))
