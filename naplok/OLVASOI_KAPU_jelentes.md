@@ -85,15 +85,15 @@ közül a 3 PONT a forrás saját számozására mutat (valós), a 2 MOTIVUM_ID 
 
 | Motívum | BUKÁS | FIGYELMEZTETÉS | Legnagyobb tételek |
 |---|---|---|---|
-| ALVIL-001 | 73 | 32 | IDEZET 43, BELSO 10, KH_MASOLT 15 (F), KONYV 5, IDEZOJEL 4, KOLOFON 3, FUNKCIO_URES 1 (72 cella) |
+| ALVIL-001 | 73 | 17 | IDEZET 43, BELSO 10, KONYV 5, IDEZOJEL 4, KOLOFON 3, FUNKCIO_URES 1 (72 cella) |
 | ANTROP-001 | 29 | 8 | BELSO 10, IDEZOJEL 6, KOLOFON 4, IDEZET 4 |
 | HAMART-001 | 66 | 12 | BELSO 20, KONYV 12, ANGOL 9, ATIRAS 9 |
-| HODIT-001 | 45 | 25 | BELSO 16, ANGOL 8, IDEZET 7, IDEZOJEL 6, PONT 12 (F) |
-| ISTENTISZT-001 | 61 | 10 | BELSO 25, ANGOL 9, IDEZOJEL 9, KONYV 6, IDEZET 5 |
-| KIRALY-001 | 42 | 20 | BELSO 13, IDEZOJEL 8, ANGOL 7, PONT 5+9 |
+| HODIT-001 | 45 | 24 | BELSO 16, ANGOL 8, IDEZET 7, IDEZOJEL 6, PONT 12 (F) |
+| ISTENTISZT-001 | 61 | 7 | BELSO 25, ANGOL 9, IDEZOJEL 9, KONYV 6, IDEZET 5 |
+| KIRALY-001 | 42 | 19 | BELSO 13, IDEZOJEL 8, ANGOL 7, PONT 5+9 |
 | MENNY-001 | 36 | 29 | BELSO 14, ANGOL 6, IDEZOJEL 6, ATIRAS_VALT 9 (F) |
 | TEREMT-001 | 68 | 19 | IDEZET 28, BELSO 14, KONYV 7, IDEZOJEL 7, KH_MASOLT 7 (F) |
-| TEREMT-002 | 33 | 30 | BELSO 9, ANGOL 7, KOLOFON 5, PONT 3+8, ATIRAS 3, ATIRAS_VALT 12 (F) |
+| TEREMT-002 | 31 | 28 | BELSO 9, ANGOL 7, KOLOFON 5, PONT 3+8, ATIRAS 3, ATIRAS_VALT 12 (F) |
 
 Tételenként, sorszámmal: `naplok/OLVASOI_KAPU_meres.md`. A számok különálló hibák (egy szakaszon belül az ismétlődés
 egy tétel). A LABJEGYZET a #595 merge-e után aktív: mind a 9 lapon 0. A PROZA_1A a #593 merge-e után kapcsol be
@@ -117,9 +117,26 @@ vizsgálata kell (forrás- vagy konverziós hiba?): **N-F156a**. A lapon addig K
   `kiadas_allapot` mondattal („Az 1. kiadás érvényes; a 2. kiadás javítandói nyitottak.”); ez a Feed Stash-táblájában
   („Kiadás” oszlop) és az olvasói előnézet kártyáján is látszik. Végponttól mérve (`muhely_allapot.py --motivum
   ISTENTISZT-001 ALVIL-001`): az arany lap 8/9, a Stash-ben marad; az ALVIL-001 6/9.
-- **A gyanús KH-sorok elrejtése:** a hatás mérve (`naplok/KH_ELREJTES_hatas.py`): 241 Károli-KH sorból 52 tűnne el,
-  28 igehely-fejléc üresedne ki, a Minősítés 16 KH-párjából 1. A bekapcsolás generátor-változtatás, a Feed 3. kapuját
-  (nulla-diff) az érintett lapokon pirosra fordítja az újragenerálásig — a kérdés az orkesztrátornál.
+- **DT-F156n (1): a másolat-gyanús KH-listák nem kerülnek a lapra** (OLVK.10). A generátor (`lexikon_general.py`
+  `kh_index`) kihagyja őket, a 4. szakasz hatókör-sora megnevezi a kimaradt igehelyeket; a három migrált lap
+  (ISTENTISZT-001, ALVIL-001, TEREMT-002) újragenerálva, csak a 4. szakasz és a Minősítés összesítője változott
+  (szó szerint: `naplok/KH_ELREJTES_lapdiff.md`). Az orkesztrátor két feltétele:
+  - *Soronkénti igazolás* (`naplok/KH_ELREJTES_igazolas.md`): az első mérés 52 sora (35 forrásvers) közül a Károli-szöveg
+    alapján 3 forrásvers / 3 sor hamis gyanú volt (Péld 1:12 → Jób 26:6, 1Krón 20:4 → Józs 21:21, Zsolt 76:3 →
+    Zsolt 132:13: közös szó seol, Gézer, Sion). Ezek megmaradnak, a szabály pontosítva: nem gyanús a lista, ha valamelyik
+    eleme 150-nél kevesebb versben álló tartalmi Strong-számon osztozik a forrásverssel. Elrejtve: **49 sor
+    (32 forrásvers)**; 25 igehely-fejléc ürült ki. Bizonytalan, elrejtve: Hab 2:17 → Ézs 33:1 és Zsolt 49:15 → Jób 27:17
+    (tartalmilag rokon, közös Strong nélkül). **A Minősítés KH-párjai közül egy sem esik ki** (az első mérés egyetlen
+    kieső párja, Péld 1:12 → Jób 26:6, éppen a hamis gyanú volt).
+  - *Az arany lap változása* a 2. kiadás függő változása: **N-F156b** (Zsolt 116:13, ApCsel 2:21, ApCsel 9:14; 5 sor;
+    a 4. szakasz összesítője 26 → 21 utalás).
+  - *Feed 3. kapu* (egyforrású, nulla-diff újragenerálás, `muhely_allapot.kriterium_3`) a három újragenerált lapon:
+    ISTENTISZT-001, ALVIL-001, TEREMT-002 — mind **zöld (nulla-diff)**.
+  - Az új mérés (4. szakasz tábla, `naplok/OLVASOI_KAPU_meres.md`) az újragenerált lapokon fut; a régi sablonú lapok
+    FIGYELMEZTETÉS-száma is változott, mert a pontosított szabály kevesebb listát tart gyanúsnak.
+  - **Korlát:** a 150-es küszöb a 9 lap 35 forrásversén kalibrált (a valódi kapcsolatok közös szava 14–139 versben áll, a
+    hamis felmentéseké 150–205-ben). **A teljes 5 078 gyanús forrásversre nincs igazolva**; a hamis gyanú és a meg nem fogott
+    másolat aránya a teljes táblán ismeretlen. Ez az N-F156a feladata (a nyers HunKar-forrással együtt).
 
 ## 7. Az arany lap 2. kiadásának javítandói, osztályonként (DT-F156m)
 
@@ -139,7 +156,7 @@ történik, utána újragenerálás).
 | ZAROJEL | 2 / 2 | csonka BDB-szakasz (722 „(vö. Qal 5”); 759 bizonytalan (a BDB „(||” jele) | `adat/bdb_szakasz_hu.tsv` |
 | ATIRAS | 1 / 1 | יְהוָה: „Jahve” (81) és „JHVH” (407) | kézi forrás és a Jelmagyarázat egységesítése |
 
-FIGYELMEZTETÉS (nem blokkol, a 2. kiadásban átnézendő): KH_MASOLT ×3 (Zsolt 116:13, ApCsel 2:21, 9:14), PONT ×3
+FIGYELMEZTETÉS (nem blokkol, a 2. kiadásban átnézendő): PONT ×3
 („a tematikus study 2. és 3. pontjába”, „l. 1. pont”), MOTIVUM_ID ×2 (a 5/b „Mit mutat” sora), HIANYJEL ×1 (16 cellában
 „*(nincs hozzárendelés)*”), ATIRAS_VALT ×1 (epikaleszetai / epikaleszétai).
 

@@ -8,17 +8,17 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 | Motívum | BUKÁS | FIGYELMEZTETÉS | Kapunként (B/F) |
 |---|---|---|---|
-| ALVIL-001 | 73 | 32 | ANGOL 3/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/4, BDB_JEL 3/0, BELSO 10/0, FUNKCIO_URES 1/0, IDEZET 43/0, IDEZOJEL 4/0, KH_MASOLT 0/15, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 5/0, MOTIVUM_ID 0/6, SZINT_ALATT 0/5 |
+| ALVIL-001 | 73 | 17 | ANGOL 3/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/4, BDB_JEL 3/0, BELSO 10/0, FUNKCIO_URES 1/0, IDEZET 43/0, IDEZOJEL 4/0, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 5/0, MOTIVUM_ID 0/6, SZINT_ALATT 0/5 |
 | ANTROP-001 | 29 | 8 | ANGOL 1/0, ATIRAS 1/0, BELSO 10/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 4/0, IDEZOJEL 6/0, KH_MASOLT 0/2, KIVONAT_SZAM 0/1, KOLOFON 4/0, KONYV 2/0, SZINT_ALATT 0/4 |
 | HAMART-001 | 66 | 12 | ANGOL 9/0, ANGOL_SOR 0/1, ATIRAS 9/0, ATIRAS_VALT 0/3, BELSO 20/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 5/0, KH_MASOLT 0/2, KOLOFON 3/0, KONYV 12/0, PONT 2/3, SZINT_ALATT 0/2 |
-| HODIT-001 | 45 | 25 | ANGOL 8/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/3, BELSO 16/0, FUNKCIO_URES 1/0, IDEZET 7/0, IDEZOJEL 6/0, KH_MASOLT 0/2, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 3/0, MOTIVUM_ID 0/3, PONT 0/12, SZINT_ALATT 0/3 |
-| ISTENTISZT-001 | 61 | 10 | ANGOL 9/0, ATIRAS 1/0, ATIRAS_VALT 0/1, BDB_JEL 4/0, BELSO 25/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 9/0, KH_MASOLT 0/3, KONYV 6/0, MOTIVUM_ID 0/2, PONT 0/3, ZAROJEL 2/0 |
-| KIRALY-001 | 42 | 20 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS_VALT 0/4, BELSO 13/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 8/0, KH_MASOLT 0/2, KOLOFON 3/0, KONYV 1/0, PONT 5/9, SZINT_ALATT 0/3 |
+| HODIT-001 | 45 | 24 | ANGOL 8/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/3, BELSO 16/0, FUNKCIO_URES 1/0, IDEZET 7/0, IDEZOJEL 6/0, KH_MASOLT 0/1, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 3/0, MOTIVUM_ID 0/3, PONT 0/12, SZINT_ALATT 0/3 |
+| ISTENTISZT-001 | 61 | 7 | ANGOL 9/0, ATIRAS 1/0, ATIRAS_VALT 0/1, BDB_JEL 4/0, BELSO 25/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 9/0, KONYV 6/0, MOTIVUM_ID 0/2, PONT 0/3, ZAROJEL 2/0 |
+| KIRALY-001 | 42 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS_VALT 0/4, BELSO 13/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 8/0, KH_MASOLT 0/1, KOLOFON 3/0, KONYV 1/0, PONT 5/9, SZINT_ALATT 0/3 |
 | MENNY-001 | 36 | 29 | ANGOL 6/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/9, BELSO 14/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 1/0, IDEZOJEL 6/0, KIVONAT_SZAM 0/3, KOLOFON 3/0, KONYV 2/0, MOTIVUM_ID 0/2, PONT 2/10, SZINT_ALATT 0/3 |
 | TEREMT-001 | 68 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/2, BELSO 14/0, FUNKCIO_URES 1/0, IDEZET 28/0, IDEZOJEL 7/0, KH_MASOLT 0/7, KIVONAT_SZAM 0/2, KOLOFON 3/0, KONYV 7/0, MOTIVUM_ID 0/1, PONT 0/3, SZINT_ALATT 0/3 |
-| TEREMT-002 | 33 | 30 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 3/0, ATIRAS_VALT 0/12, BDB_JEL 2/0, BELSO 9/0, HIANYJEL 0/2, IDEZOJEL 1/0, KH_MASOLT 0/2, KIVONAT_SZAM 0/1, KOLOFON 5/0, KONYV 2/0, MOTIVUM_ID 0/2, PONT 3/8, SZINT_ALATT 0/2, ZAROJEL 1/0 |
+| TEREMT-002 | 31 | 28 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 3/0, ATIRAS_VALT 0/12, BDB_JEL 2/0, BELSO 9/0, HIANYJEL 0/2, IDEZOJEL 1/0, KIVONAT_SZAM 0/1, KOLOFON 5/0, MOTIVUM_ID 0/2, PONT 3/8, SZINT_ALATT 0/2, ZAROJEL 1/0 |
 
-## ALVIL-001 — 73 BUKÁS, 32 FIGYELMEZTETÉS
+## ALVIL-001 — 73 BUKÁS, 17 FIGYELMEZTETÉS
 
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
@@ -84,19 +84,19 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 795 | BDB_JEL | BUKÁS | 1 | nyers ^ elválasztó | ל‎ 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév^**Zsolt 86:13** (láthatóan hímnemű **Jób |
 | 795 | BDB_JEL | BUKÁS | 1 | torzult jel (® / °) | s 14:9**, l. Albr^ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a |
 | 870 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: LXX_OS | **H7585** · 62 vers az LXX_OS-ben (ebből 62 vers görög tartalmi szóval); leggya |
-| 1126 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:31 |
-| 1127 | KONYV | BUKÁS | 8 | könyvrövidítés nem a normalizáló tábla alakjával: „Ésa” | - Károli-KH: Ésa 53:10-12 |
-| 1230 | KONYV | BUKÁS | 4 | könyvrövidítés nem a normalizáló tábla alakjával: „Ezék” | - Károli-KH: Ezék 16:36 |
-| 1266 | KONYV | BUKÁS | 3 | könyvrövidítés nem a normalizáló tábla alakjával: „Mát” | - Károli-KH: Mát 4:13 |
-| 1336 | BELSO | BUKÁS | 1 | belső fájl: .tsv | vatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz. |
-| 1348 | BELSO | BUKÁS | 1 | belső fájl: .tsv | Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz. |
-| 1372 | BELSO | BUKÁS | 2 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
-| 1387 | IDEZOJEL | BUKÁS | 5 | egyenes " a magyar szövegben (a „…” helyett) | győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történe |
-| 1389 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Mat” | uk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a sz |
-| 1414 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | végső hatalom a hívő élete fölött — Krisztus, aki "a halál és a hádész kulcsait" tartja, garantálja, hogy a ha |
-| 1491 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
-| 1491 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
-| 1491 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
+| 1119 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:31 |
+| 1120 | KONYV | BUKÁS | 4 | könyvrövidítés nem a normalizáló tábla alakjával: „Ésa” | - Károli-KH: Ésa 53:10-12 |
+| 1208 | KONYV | BUKÁS | 3 | könyvrövidítés nem a normalizáló tábla alakjával: „Ezék” | - Károli-KH: Ezék 16:36 |
+| 1235 | KONYV | BUKÁS | 3 | könyvrövidítés nem a normalizáló tábla alakjával: „Mát” | - Károli-KH: Mát 4:13 |
+| 1295 | BELSO | BUKÁS | 1 | belső fájl: .tsv | vatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz. |
+| 1307 | BELSO | BUKÁS | 1 | belső fájl: .tsv | Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz. |
+| 1331 | BELSO | BUKÁS | 2 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
+| 1346 | IDEZOJEL | BUKÁS | 5 | egyenes " a magyar szövegben (a „…” helyett) | győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történe |
+| 1348 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Mat” | uk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a sz |
+| 1373 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | végső hatalom a hívő élete fölött — Krisztus, aki "a halál és a hádész kulcsait" tartja, garantálja, hogy a ha |
+| 1450 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
+| 1450 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
+| 1450 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
 | 3 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „Seol” — a lapon máshol: seól | # 📖 ALVIL-001 — Hádész (Seol) — a halottak birodalma |
 | 9 | KIVONAT_SZAM | FIGYELMEZTETÉS | 1 | a Kivonat „tíz ᾍδης-előfordulás” darabszáma (10) ≠ az 1. tábla újszövetségi helyeinek száma (8) | elyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. |
 | 491 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: HODIT-001 | szakasz, ahol a רְפָאִים (refáím) is szerepel, l. HODIT-001) |
@@ -104,31 +104,16 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 632 | MOTIVUM_ID | FIGYELMEZTETÉS | 3 | motívum-azonosító link nélkül: ALVIL-001 | talmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasz |
 | 643 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása) |
 | 729 | ANGOL_SOR | FIGYELMEZTETÉS | 1 | 3 angol funkciószó (of, the) | **G0086** · **Szemantikai domén:** 001003 Regions Below the Surface of the Earth, 012002 Supernatural Powers, 023007 Live, Die |
-| 1093 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Job.31.12); javítás: N-F156a | Jób 14:13 → Károli-KH: Péld 6:26-29 |
-| 1108 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Psa.33.19); javítás: N-F156a | Zsolt 6:6 → Károli-KH: Zsolt 37:19 |
-| 1137 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Pro.13.22); javítás: N-F156a | Zsolt 49:15 → Károli-KH: Jób 27:17 |
-| 1170 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Pro.15.11); javítás: N-F156a | Péld 1:12 → Károli-KH: Jób 26:6 |
-| 1182 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Pro.29.13); javítás: N-F156a | Péld 15:24 → Károli-KH: Péld 22:2 |
-| 1203 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Isa.34.13); javítás: N-F156a | Ézs 7:11 → Károli-KH: Ésa 13:21-22 |
-| 1209 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: 1Ki.10.17, Isa.22.8); javítás: N-F156a | Ézs 14:15 → Károli-KH: 1Kir 7:2 |
-| 1218 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Psa.98.9, Isa.52.9); javítás: N-F156a | Ézs 28:18 → Károli-KH: Zsolt 96:11-13 |
-| 1234 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Ezk.40.39); javítás: N-F156a | Ez 31:15 → Károli-KH: 3Móz 4:1 |
-| 1244 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Ezk.38.4); javítás: N-F156a | Ez 32:27 → Károli-KH: Ezék 29:4 |
-| 1260 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Mat.19.7); javítás: N-F156a | Jón 2:3 → Károli-KH: 5Móz 24:1 |
-| 1271 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Luk.16.29); javítás: N-F156a | Luk 10:15 → Károli-KH: Ésa 8:20 |
-| 1275 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Isa.28.13, Luk.2.34, Luk.20.18); javítás: N-F156a | Luk 16:23 → Károli-KH: Ésa 8:14-15 |
-| 1279 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Act.7.14); javítás: N-F156a | ApCsel 2:27 → Károli-KH: 1Móz 46:27 |
-| 1284 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Act.7.18); javítás: N-F156a | ApCsel 2:31 → Károli-KH: 2Móz 1:8-22 |
-| 1340 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 62 szó, az arany lapon 1031 (< 25%) | 5. Kapcsolatok |
-| 1344 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen. |
-| 1366 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ISTENTISZT-001 | utat ez a rész?** 2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. ** |
-| 1397 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „Seol” — a lapon máshol: seól | "Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „M |
-| 1406 | MOTIVUM_ID | FIGYELMEZTETÉS | 2 | motívum-azonosító link nélkül: ISTENTISZT-001 | - **Viszony a név segítségül hívásához (ISTENTISZT-001):** a két motívum egyetlen közös helye a Zsolt 11 |
-| 1408 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 103 szó, az arany lapon 671 (< 25%) | 6/b. Alkalmazás és tanítói egyezés |
-| 1420 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | Az ALVIL-001-re a nevesített tanítói keresés (7. lépés, B9) ne |
-| 1420 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | 01-re a nevesített tanítói keresés (7. lépés, B9) nem futott; a jóváhagyott listáról dedikáltan erre a témára |
-| 1422 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 53 szó, az arany lapon 869 (< 25%) | 7. Módszertan és nyitott kérdések |
-| 1442 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „Seol” — a lapon máshol: seól | - Cím: Hádész (Seol) — a halottak birodalma |
+| 1299 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 62 szó, az arany lapon 1031 (< 25%) | 5. Kapcsolatok |
+| 1303 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen. |
+| 1325 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ISTENTISZT-001 | utat ez a rész?** 2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. ** |
+| 1356 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „Seol” — a lapon máshol: seól | "Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „M |
+| 1365 | MOTIVUM_ID | FIGYELMEZTETÉS | 2 | motívum-azonosító link nélkül: ISTENTISZT-001 | - **Viszony a név segítségül hívásához (ISTENTISZT-001):** a két motívum egyetlen közös helye a Zsolt 11 |
+| 1367 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 103 szó, az arany lapon 671 (< 25%) | 6/b. Alkalmazás és tanítói egyezés |
+| 1379 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | Az ALVIL-001-re a nevesített tanítói keresés (7. lépés, B9) ne |
+| 1379 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | 01-re a nevesített tanítói keresés (7. lépés, B9) nem futott; a jóváhagyott listáról dedikáltan erre a témára |
+| 1381 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 53 szó, az arany lapon 869 (< 25%) | 7. Módszertan és nyitott kérdések |
+| 1401 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „Seol” — a lapon máshol: seól | - Cím: Hádész (Seol) — a halottak birodalma |
 
 ## ANTROP-001 — 29 BUKÁS, 8 FIGYELMEZTETÉS
 
@@ -259,7 +244,7 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 1163 | PONT | FIGYELMEZTETÉS | 1 | „4. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | 2. **Az érintett bővített tanulmányok 4. pontja** — `1Moz_3v7-24_bovitett.md`: a 🔗-blokkok a por/ |
 | 1176 | PONT | FIGYELMEZTETÉS | 1 | „4. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | a hat kötelező szakasz jelen van és kitöltött; a 4. pont explicit, indokolt kihagyással zárva, nem placeho |
 
-## HODIT-001 — 45 BUKÁS, 25 FIGYELMEZTETÉS
+## HODIT-001 — 45 BUKÁS, 24 FIGYELMEZTETÉS
 
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
@@ -315,7 +300,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 329 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | - **1Móz 14:6** (nyitva, `study 1. pont táblázata (kontextuális sor)`): חֹרִים (Hórim) ne |
 | 334 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: MENNY-001 | נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök |
 | 386 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „nefilim” — a lapon máshol: nefilím | **Fontos módszertani megjegyzés a projekt szabálya szerint:** a Refáim szótő **teljesen elkülönül** a גִּבֹּרִים (*gibborim*) és נְפִילִים ( |
-| 474 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Num.35.6); javítás: N-F156a | 1Krón 20:4 → Károli-KH: Józs 21:21 |
 | 480 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Psa.107.22); javítás: N-F156a | Zsolt 88:11 → Károli-KH: Zsolt 50:14-23 |
 | 522 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | gehely (Józs 15:8, 17:15, 18:16) beépítve a study 1. pontjának táblázatába. A H7496/H7497 Strong-szám szerinti m |
 | 522 | PONT | FIGYELMEZTETÉS | 1 | „2. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | a. A H7496/H7497 Strong-szám szerinti megoszlás a 2. pontban rögzítve. A 4Móz 13:33→13:34 hiba minden előfordu |
@@ -336,7 +320,7 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 609 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | lva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; |
 | 611 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „Nefilim” — a lapon máshol: nefilím | **2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** három új igehely (Józs 15:8; 17:15; 18:16), H7496/H7497 |
 
-## ISTENTISZT-001 — 61 BUKÁS, 10 FIGYELMEZTETÉS
+## ISTENTISZT-001 — 61 BUKÁS, 7 FIGYELMEZTETÉS
 
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
@@ -374,47 +358,44 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 1006 | IDEZOJEL | BUKÁS | 5 | egyenes " a magyar szövegben (a „…” helyett) | szi theoi) („akit Briareósznak neveznek az istenek"), Iliász 1.403; ὄνομα καλεῖν τινα (onoma kalein tina), „né |
 | 1006 | KONYV | BUKÁS | 5 | könyvrövidítés nem a normalizáló tábla alakjával: „Lk” | trosz), „apja nevén nevezni", Lk 1:59 … Szenvedő alakban: ὁ καλούμε |
 | 1014 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „1Jn” | Lk 1:35; Róm 9:26; Jak 2:23; 1Jn 3:1. (Abbott-Smith) |
-| 1185 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:21 |
-| 1216 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | es 29) + TAGNT G1941 + Thayer G1941 5. jelentés \| DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
-| 1216 | BELSO | BUKÁS | 1 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`)  \\| korábban (beépítve, 2 |
-| 1216 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | rtozik (   )  \\| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag minden |
-| 1217 | BELSO | BUKÁS | 60 | belső fájl: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ítva \| TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \\| ‹M1› \| ellenőrizve, tartal |
-| 1222 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | 13:3 \| elutasítva \| Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_U |
-| 1374 | IDEZOJEL | BUKÁS | 4 | egyenes " a magyar szövegben (a „…” helyett) | formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyáj |
-| 1378 | BELSO | BUKÁS | 3 | döntés-azonosító: DT479 | zepes bizonyosság. Áthorgonyozva a Róm 10:14-ről (DT479, a felhasználó, 2026-11-01: „Igen, (b)”)  \| |
-| 1402 | BELSO | BUKÁS | 3 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
-| 1424 | IDEZOJEL | BUKÁS | 16 | egyenes " a magyar szövegben (a „…” helyett) | - **Peshat** (פְּשָׁט, pesát: "egyszerű") — mit mond a szöveg a |
-| 1586 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: study | A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakine |
-| 1595 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Ám” | 15:17-et — amely az Ám 9:12-t idézi — és a Jak 2:7-et. Az |
-| 1601 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye. |
-| 1617 | BELSO | BUKÁS | 2 | belső fájl: .tsv | jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktí |
-| 1633 | ANGOL | BUKÁS | 15 | angol maradék / zsargon: gap | enneth Hagint is beleértve, nincs igazolt forrás (gap))*: |
-| 1633 | BELSO | BUKÁS | 1 | belső fájl: fájlban | t/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ rés |
-| 1636 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | tosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakíta |
-| 1637 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | etére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez |
-| 1657 | BELSO | BUKÁS | 1 | belső fájl: 001_tanitoi_kereses.md | nkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`). |
-| 1664 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | eg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 n |
-| 1664 | BELSO | BUKÁS | 1 | belső fájl: naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md | egyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`. |
-| 1664 | BELSO | BUKÁS | 1 | proveniencia-érték (manual): manual | ítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT |
-| 1675 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hív |
-| 1677 | BELSO | BUKÁS | 1 | döntés-azonosító: DT478 | apján találta meg, nem önálló kereséssel. A pár a DT478 óta nem a motívum helye (a *besém* után névmási r |
-| 1683 | IDEZOJEL | BUKÁS | 17 | egyenes " a magyar szövegben (a „…” helyett) | #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C) |
-| 1695 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: study | ontrasztként, a negatív kritérium kivétele) \| ✅ a study fő tárgya \| |
-| 1697 | BELSO | BUKÁS | 2 | döntés-azonosító: DT476 | va, "hamis pozitív"; a *besém* után nem JHVH áll (DT476 K4) \| |
-| 1720 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scan | A H7121+H8034 kombinált teljes-előfordulás scan |
-| 1721 | BELSO | BUKÁS | 1 | belső fájl: 001/Segitsegul_hivni_az_Urat_tematikus.md | (`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`, |
+| 1176 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:21 |
+| 1207 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | es 29) + TAGNT G1941 + Thayer G1941 5. jelentés \| DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
+| 1207 | BELSO | BUKÁS | 1 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`)  \\| korábban (beépítve, 2 |
+| 1207 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | rtozik (   )  \\| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag minden |
+| 1208 | BELSO | BUKÁS | 60 | belső fájl: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ítva \| TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \\| ‹M1› \| ellenőrizve, tartal |
+| 1213 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | 13:3 \| elutasítva \| Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_U |
+| 1365 | IDEZOJEL | BUKÁS | 4 | egyenes " a magyar szövegben (a „…” helyett) | formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyáj |
+| 1369 | BELSO | BUKÁS | 3 | döntés-azonosító: DT479 | zepes bizonyosság. Áthorgonyozva a Róm 10:14-ről (DT479, a felhasználó, 2026-11-01: „Igen, (b)”)  \| |
+| 1393 | BELSO | BUKÁS | 3 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
+| 1415 | IDEZOJEL | BUKÁS | 16 | egyenes " a magyar szövegben (a „…” helyett) | - **Peshat** (פְּשָׁט, pesát: "egyszerű") — mit mond a szöveg a |
+| 1577 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: study | A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakine |
+| 1586 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Ám” | 15:17-et — amely az Ám 9:12-t idézi — és a Jak 2:7-et. Az |
+| 1592 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye. |
+| 1608 | BELSO | BUKÁS | 2 | belső fájl: .tsv | jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktí |
+| 1624 | ANGOL | BUKÁS | 15 | angol maradék / zsargon: gap | enneth Hagint is beleértve, nincs igazolt forrás (gap))*: |
+| 1624 | BELSO | BUKÁS | 1 | belső fájl: fájlban | t/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ rés |
+| 1627 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | tosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakíta |
+| 1628 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | etére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez |
+| 1648 | BELSO | BUKÁS | 1 | belső fájl: 001_tanitoi_kereses.md | nkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`). |
+| 1655 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | eg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 n |
+| 1655 | BELSO | BUKÁS | 1 | belső fájl: naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md | egyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`. |
+| 1655 | BELSO | BUKÁS | 1 | proveniencia-érték (manual): manual | ítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT |
+| 1666 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hív |
+| 1668 | BELSO | BUKÁS | 1 | döntés-azonosító: DT478 | apján találta meg, nem önálló kereséssel. A pár a DT478 óta nem a motívum helye (a *besém* után névmási r |
+| 1674 | IDEZOJEL | BUKÁS | 17 | egyenes " a magyar szövegben (a „…” helyett) | #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C) |
+| 1686 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: study | ontrasztként, a negatív kritérium kivétele) \| ✅ a study fő tárgya \| |
+| 1688 | BELSO | BUKÁS | 2 | döntés-azonosító: DT476 | va, "hamis pozitív"; a *besém* után nem JHVH áll (DT476 K4) \| |
+| 1711 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scan | A H7121+H8034 kombinált teljes-előfordulás scan |
+| 1712 | BELSO | BUKÁS | 1 | belső fájl: 001/Segitsegul_hivni_az_Urat_tematikus.md | (`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`, |
 | 100 | HIANYJEL | FIGYELMEZTETÉS | 11 | belső hiányjelzés az olvasói szövegben: *(nincs hozzárendelés)* | ségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ \| 🌱 alap-előfordulás \| Dras |
 | 1117 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „epikaleszetai” — a lapon máshol: epikaleszétai | \| 2Kir 5:11 \| 2Kir 5:11 \| וְקָרָא֙ (vekárá) \| ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) \| egyező \|\| |
-| 1148 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Psa.140.4); javítás: N-F156a | Zsolt 116:13 → Károli-KH: Róm 3:13 |
-| 1168 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Jos.24.4, Act.7.8); javítás: N-F156a | ApCsel 2:21 → Károli-KH: 1Móz 25:21-26 |
-| 1171 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Act.13.22); javítás: N-F156a | ApCsel 9:14 → Károli-KH: 1Sám 13:13-14 |
-| 1396 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | utat ez a rész?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 dö |
-| 1396 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: HAMART-001 | z?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 döntésre vár. ** |
-| 1624 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a |
-| 1695 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | ** \| ember \| Isten neve \| 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1K |
-| 1696 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | neve \| 2Móz 33:19, 34:5 \| "be nem sorolható" — l. 1. pont \| |
+| 1387 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | utat ez a rész?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 dö |
+| 1387 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: HAMART-001 | z?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 döntésre vár. ** |
+| 1615 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a |
+| 1686 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | ** \| ember \| Isten neve \| 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1K |
+| 1687 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | neve \| 2Móz 33:19, 34:5 \| "be nem sorolható" — l. 1. pont \| |
 
-## KIRALY-001 — 42 BUKÁS, 20 FIGYELMEZTETÉS
+## KIRALY-001 — 42 BUKÁS, 19 FIGYELMEZTETÉS
 
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
@@ -469,7 +450,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 280 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „kohaním” — a lapon máshol: kóhaním | **BDB H3548 — "priest-king" ("pap-király") jelentés:** a BDB szótár a כֹּהֵן szócikk 1. jelentésárnyalatát kifejezetten **"priest-king"** (" |
 | 314 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „amétór” — a lapon máshol: amētōr | **Görög megfelelő (Zsid 7:3):** ἀπάτωρ, ἀμήτωρ, ἀγενεαλόγητος (*apátór, amétór, ageneálogétosz* — "apa nélkül, anya nélkül, nemzetség nélkül |
 | 320 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | a" jelentést is (l. 0. pont, a bővített tanulmány 7. pontjának tárgyalása). Ez a *jelen*, Melkizedek-motívum sze |
-| 357 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Psa.74.2, Psa.78.68); javítás: N-F156a | Zsolt 76:3 → Károli-KH: Zsolt 132:13-14 |
 | 380 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Heb.12.6); javítás: N-F156a | Zsid 6:20 → Károli-KH: Jel 3:19 |
 | 402 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | 2Móz 19:6, Zak 6:13, Zsolt 76:3) beépítve a study 1. pontjának táblázatába. A H7069 és a BDB "chieftain" alkateg |
 | 404 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 223 szó, az arany lapon 1031 (< 25%) | 5. Kapcsolatok |
@@ -649,7 +629,7 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 714 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | es repón (2026.09.10): a study kizárólag a saját (TEREMT-001) motívumára vonatkozó leleteket tartalmazza (a Ta |
 | 715 | PONT | FIGYELMEZTETÉS | 1 | „5. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel. |
 
-## TEREMT-002 — 33 BUKÁS, 30 FIGYELMEZTETÉS
+## TEREMT-002 — 31 BUKÁS, 28 FIGYELMEZTETÉS
 
 *PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
@@ -671,23 +651,21 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 404 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: LXX_OS | **H0922** · 3 vers az LXX_OS-ben (ebből 3 vers görög tartalmi szóval); leggyak |
 | 529 | BELSO | BUKÁS | 1 | munkalépés-jel: P4 | át nemcsak a három vers számlálásából következik (P4), hanem a szócikk saját megállapítása is; a *bohu |
 | 533 | BELSO | BUKÁS | 1 | munkalépés-jel: P2 | valótlan, a bálványok) ott választja szét, ahol a P2 mező-hipotézise a két ágat: a semmiség-ág versei |
-| 571 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Ésa” | - Károli-KH: Ésa 66:12 |
-| 572 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Ezék” | - Károli-KH: Ezék 34:12-16 |
-| 662 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | Károli-KH (forrás-vers: Ézs 34:11) \| adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
-| 717 | BELSO | BUKÁS | 1 | belső fájl: .tsv | egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
-| 729 | BELSO | BUKÁS | 1 | belső fájl: .tsv | ített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben. |
-| 759 | PONT | BUKÁS | 1 | „3. pont, Remez”: a lap 3. szakasza „LXX-fordítói döntések” | a cél a lakhatóság (Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18). Ebben az olvasatban a teremtés célja |
-| 772 | BELSO | BUKÁS | 2 | proveniencia-érték (manual): manual | (hájtá) „vala” jelentésű (nyelvtani értelmezés, `manual`), és Károli is „vala”-nak fordítja; a BDB fenti |
-| 776 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | 1:2-re, és az Ézs 45:18-at döntő érvnek tartja (a tanítói fájl 3.1). A kiinduló-állapot olvasat nevesített képvi |
-| 798 | ANGOL | BUKÁS | 13 | angol maradék / zsargon: gap | íthető anyag a *tohu va-vohu* párra; 17 tanítónál gap.** Prince-nél két találat-sor (1 ✅, 1 ⚠️) és egy, |
-| 818 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyit |
-| 833 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újraf |
-| 833 | BELSO | BUKÁS | 1 | munkalépés-jel: P3 | A P3 teljes scanje a héber szöveg egészére fut; a 2026 |
-| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
-| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
-| 929 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
-| 949 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
-| 950 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
+| 653 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | Károli-KH (forrás-vers: Ézs 34:11) \| adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
+| 708 | BELSO | BUKÁS | 1 | belső fájl: .tsv | egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
+| 720 | BELSO | BUKÁS | 1 | belső fájl: .tsv | ített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben. |
+| 750 | PONT | BUKÁS | 1 | „3. pont, Remez”: a lap 3. szakasza „LXX-fordítói döntések” | a cél a lakhatóság (Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18). Ebben az olvasatban a teremtés célja |
+| 763 | BELSO | BUKÁS | 2 | proveniencia-érték (manual): manual | (hájtá) „vala” jelentésű (nyelvtani értelmezés, `manual`), és Károli is „vala”-nak fordítja; a BDB fenti |
+| 767 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | 1:2-re, és az Ézs 45:18-at döntő érvnek tartja (a tanítói fájl 3.1). A kiinduló-állapot olvasat nevesített képvi |
+| 789 | ANGOL | BUKÁS | 13 | angol maradék / zsargon: gap | íthető anyag a *tohu va-vohu* párra; 17 tanítónál gap.** Prince-nél két találat-sor (1 ✅, 1 ⚠️) és egy, |
+| 809 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyit |
+| 824 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újraf |
+| 824 | BELSO | BUKÁS | 1 | munkalépés-jel: P3 | A P3 teljes scanje a héber szöveg egészére fut; a 2026 |
+| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
+| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
+| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
+| 940 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
+| 941 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 6 | „tohu” — a lapon máshol: tóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 15 | KIVONAT_SZAM | FIGYELMEZTETÉS | 1 | a Kivonat minden LXX-helyről állít, de a 3. szakasz összesítője szerint 1 hely „kutatói azonosítás függőben” | A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος καὶ ἀκατασκεύαστος (aoratosz kai akataszkeuasztosz), οὐθέν (úthen), illetve σπαρτίον γεωμετρίας |
@@ -696,25 +674,23 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 341 | HIANYJEL | FIGYELMEZTETÉS | 1 | belső hiányjelzés az olvasói szövegben: nincs a szakasztáblában | 1:2, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorsza |
 | 529 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | **Miért fontos ez a lelet:** a szótár maga mondja ki, amit a kollokáció mér: a *bohu* „mindig a תֹּהוּ (tóhú) szóval” áll. A pár kötöttsége |
 | 533 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „tohu” — a lapon máshol: tóhú | **Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) ott vál |
-| 571 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Isa.40.11); javítás: N-F156a | Ézs 34:11 → Károli-KH: Ésa 66:12 |
-| 597 | KH_MASOLT | FIGYELMEZTETÉS | 1 | a Károli-KH lista feltehetően más vers másolata (azonos listájú: Jer.8.14); javítás: N-F156a | Jer 4:23 → Károli-KH: Jer 9:15 |
-| 685 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: KIRALY-001 | nem a cél; a végpont nem előfordulás (precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9) \| közepes \| Remez \| |
-| 686 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | \|\| Ézs 34:11 \| Párhuzam \| ítélet-kontextusú önálló tohu (qirjat-tohu, „rommá lőn” — H7665) az Ézs 24 föld-kiüresítő keretében (24:1, 24:3: H |
-| 717 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
-| 721 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 50 szó, az arany lapon 259 (< 25%) | 5/b. Kapcsolódó motívumok |
-| 743 | ATIRAS_VALT | FIGYELMEZTETÉS | 16 | „tohu” — a lapon máshol: tóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
-| 743 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
-| 753 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | *Elhatárolás.* Az 1Móz 1:2 a TEREMT-001 (*tehóm*, a mélység) motívumnak is előfordulása, |
-| 770 | ANGOL_SOR | FIGYELMEZTETÉS | 1 | 3 angol funkciószó (of, to) | *Közös, nem különböztető tények.* Mindkét olvasat elfogadja, hogy a Jer 4:23 és az Ézs 34:11 ítéletet ír le (Júda, „az Úr haragjának tüze”; |
-| 776 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | tanítói körből nem került elő; ez explicit hiány (7. pont). |
-| 786 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 3. pont megállapításaiból három alkalmazás következik. |
-| 792 | ATIRAS_VALT | FIGYELMEZTETÉS | 4 | „tohu” — a lapon máshol: tóhú | A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletbe |
-| 792 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | y ítélet nyoma, azt a két olvasat eltérően látja (3. pont, ⚠️); az 1Móz 1:2 után azonban mindkettőben az 1: |
-| 816 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül. |
-| 818 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **re |
-| 818 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | apcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olv |
-| 829 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „tohu” — a lapon máshol: tóhú | A három előfordulás szótári jelentése (a *tohu* 1. jelentése) a szótár saját példahelyeiből gépileg vezethető le: a szótár mindhárom verset |
-| 831 | PONT | FIGYELMEZTETÉS | 1 | „2. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 2. pont BDB-idézeteinek magyar fordítása gépi, és ugyanaz |
-| 833 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatás a 2026-10-08-i futással azonos számokat adott (19 *tohu*-vers, 3 |
-| 837 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | asat nevesített képviselője megvan (Derek Prince, 3. pont), a kiinduló-állapot olvasaté a jóváhagyott tanít |
-| 838 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | úciós olvasat egy korábbi ítélet nyomának tartja (3. pont, ⚠️). |
+| 676 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: KIRALY-001 | nem a cél; a végpont nem előfordulás (precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9) \| közepes \| Remez \| |
+| 677 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | \|\| Ézs 34:11 \| Párhuzam \| ítélet-kontextusú önálló tohu (qirjat-tohu, „rommá lőn” — H7665) az Ézs 24 föld-kiüresítő keretében (24:1, 24:3: H |
+| 708 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
+| 712 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 50 szó, az arany lapon 259 (< 25%) | 5/b. Kapcsolódó motívumok |
+| 734 | ATIRAS_VALT | FIGYELMEZTETÉS | 16 | „tohu” — a lapon máshol: tóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
+| 734 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
+| 744 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | *Elhatárolás.* Az 1Móz 1:2 a TEREMT-001 (*tehóm*, a mélység) motívumnak is előfordulása, |
+| 761 | ANGOL_SOR | FIGYELMEZTETÉS | 1 | 3 angol funkciószó (of, to) | *Közös, nem különböztető tények.* Mindkét olvasat elfogadja, hogy a Jer 4:23 és az Ézs 34:11 ítéletet ír le (Júda, „az Úr haragjának tüze”; |
+| 767 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | tanítói körből nem került elő; ez explicit hiány (7. pont). |
+| 777 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 3. pont megállapításaiból három alkalmazás következik. |
+| 783 | ATIRAS_VALT | FIGYELMEZTETÉS | 4 | „tohu” — a lapon máshol: tóhú | A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletbe |
+| 783 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | y ítélet nyoma, azt a két olvasat eltérően látja (3. pont, ⚠️); az 1Móz 1:2 után azonban mindkettőben az 1: |
+| 807 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül. |
+| 809 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **re |
+| 809 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | apcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olv |
+| 820 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „tohu” — a lapon máshol: tóhú | A három előfordulás szótári jelentése (a *tohu* 1. jelentése) a szótár saját példahelyeiből gépileg vezethető le: a szótár mindhárom verset |
+| 822 | PONT | FIGYELMEZTETÉS | 1 | „2. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 2. pont BDB-idézeteinek magyar fordítása gépi, és ugyanaz |
+| 824 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatás a 2026-10-08-i futással azonos számokat adott (19 *tohu*-vers, 3 |
+| 828 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | asat nevesített képviselője megvan (Derek Prince, 3. pont), a kiinduló-állapot olvasaté a jóváhagyott tanít |
+| 829 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | úciós olvasat egy korábbi ítélet nyomának tartja (3. pont, ⚠️). |
