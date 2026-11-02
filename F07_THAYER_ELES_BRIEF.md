@@ -6,9 +6,9 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: "a teljes Thayer (a kész Strongok nélkül kb. 5 385 Strong) szakaszonkénti magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet, a tényleges modellnévvel), a #159 B-útján Message Batches API-n, kb. 500 000 karakteres adagokban, adagonként mért költséggel; a kétszer bukott Strongok a bukottak-táblában, kézi ítéletre"
-kovetkezo: "/kovetkezo: M0 (a kötegelő javításai, a becslő újraillesztése, az effort-döntés ⛔ az orkesztrátornak), utána adagonként új session"
+kovetkezo: "A1 (új session, az M0 PR mergelése után): adag701, naplok/THAYER_ELES_sorrend.tsv adag=1 (35 Strong: G0282 elöl), --effort high; becslés és adagplafon: naplok/THAYER_ELES_naplo.md M0 8."
 olvas: [adat/forditasok.tsv, F27_FP3_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, F159_THAYER_B_UT_BRIEF.md, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_koltseg.py, naplok/FP3_arany.md, naplok/THAYER_B_UT_naplo.md, naplok/THAYER_B_UT_mero_strongok.txt, naplok/THAYER_API_KOTEG_naplo.md, forditas/prompt_v5_1.md, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/thayer_jelolt/, DONTESEK.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, eszkozok/thayer_api_koteg.py, eszkozok/teszt_thayer_api_koteg.py, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/thayer_jelolt/thayer_bemenet.py, eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, forditas/thayer_api/, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, naplok/THAYER_ELES_naplo.md, naplok/THAYER_ELES_sorrend.tsv, naplok/THAYER_ELES_koltseg.tsv, naplok/THAYER_ELES_arany.md, naplok/THAYER_ELES_sigla_javaslat.tsv, naplok/THAYER_ELES_terminologia_javaslat.tsv, naplok/THAYER_ELES_M0.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [3, 5, 14, 159]
@@ -219,10 +219,13 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 | Tétel | Tárgy | Állapot |
 |---|---|---|
 | DT-F07a | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása (külön PR, előbb mergelendő); 5. a #138 és a #154 `nem_fugg`-jába a 7 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07b | ⛔ M0 (c): max_tokens-emelés vagy további darabolás | nyitva, M0 |
-| DT-F07c | ⛔ M0 (d): a `Sir` alias javításának helye (és ha kell, az `1 Cor.`) | nyitva, M0 |
-| DT-F07d | ⛔ M0 (e): effort (`high` / `medium`) | nyitva, M0 |
-| DT-F07e … | a sigla- és terminológia-jóváhagyás (d1, d2), adag-megállások, plafonemelés | a menet veszi fel |
+| DT-F07b | M0 (c): max_tokens-emelés vagy további darabolás | ✅ orkesztrátor, 2026-11-02: nincs emelés és nincs darabolás (`DONTESEK.md`) |
+| DT-F07c | M0 (d): a `Sir` alias javításának helye, az `1 Cor.` | ✅ orkesztrátor, 2026-11-02: a `Sir` marad; `1 Cor` alias csak c:v előtt (`DONTESEK.md`) |
+| DT-F07d | M0 (e): effort | ✅ orkesztrátor, 2026-11-02: `high` (`DONTESEK.md`) |
+| DT-F07e | M0 (d1), (d2): a sigla- és terminológia-jóváhagyás | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07f | M0: a 16. kapu toldalék-tűrése (a→á, e→é), F07.5 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07g | M0: `Heb.` c:v előtt könyvhivatkozás; a `8_idezojel` mérése (50%: marad a javító körnél) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07h … | adag-megállások, plafonemelés | a menet veszi fel |
 
 ## Verziónapló
 
