@@ -1,6 +1,6 @@
 # F155 zárónapló (THAYER_ELAVULT_HIVATKOZAS)
 
-**Mi készült el.** A `eszkozok/thayer_jelolt/forditas.py:219` a régi `teljes` sor megjegyzésébe ezentúl a végleges `DT329`-et írja, nem a `DT-F132c` helyőrzőt. Ezt a `Lanc.test_beir_opus_regi_elavul` teszt ellenőrzi. Az `adat/forditasok.tsv` 7 `elavult` Thayer-sorában (G1311, G2671, G5010, G5356, G0012, G5351, G0086) a megjegyzés-mezőben `DT-F132c` → `DT329`. Mindez a DT-F155a (a) szerint történt; a felhasználó döntése: „(a) Csere DT329-re”, 2026-11-02.
+**Mi készült el.** A `eszkozok/thayer_jelolt/forditas.py:219` a régi `teljes` sor megjegyzésébe ezentúl a végleges `DT329`-et írja, nem a `DT-F132c` helyőrzőt. Ezt a `Lanc.test_beir_opus_regi_elavul` teszt ellenőrzi. Az `adat/forditasok.tsv` 7 `elavult` Thayer-sorában (G1311, G2671, G5010, G5356, G0012, G5351, G0086) a megjegyzés-mezőben `DT-F132c` → `DT329`. Mindez a DT488 (a) szerint történt; a felhasználó döntése: „(a) Csere DT329-re”, 2026-11-02.
 
 **Mért eredmények.**
 - `grep -c "DT-F132c" adat/forditasok.tsv`: 7 → 0. A diff pontosan 7 sort érint, csak a `megjegyzes` mezőt, a táblasor-Δ 0.
