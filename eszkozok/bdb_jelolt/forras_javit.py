@@ -141,7 +141,7 @@ def general(ts, ts_heber=None):
     return ki, stat
 
 
-# ---------------------------------------------------------------- heber_sorrend (N-F131y, DT-F131z)
+# ---------------------------------------------------------------- heber_sorrend (N-F131y, DT445)
 # A DictBDB.json héber kifejezéseinek szórend- és geres-hibája (naplok/BDB_HEBER_SORREND_meres.md). A szabály és a Biblia-próba:
 # heber_sorrend.py. Egy sor = egy változó kifejezés (R_hib ≠ a forrás alakja) a szakasztábla sorában; `elofordulas`: a `forras_alak`
 # hányadik (héber betűvel nem határos) előfordulása a sor `szoveg`-ében; a héber alakok a forrás alakjában (nem NFD), mert a
@@ -179,7 +179,7 @@ def heber_sorrend_sorok(stat, ts):
     for r in tabla_sorok():
         top, blokk = r['forras'].split(':', 1)[1].split('#')
         sorok_kulcs.setdefault(top, {})[int(blokk)] = r
-    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + TAHOT-próba (DT-F131z) | ts=%s'
+    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + TAHOT-próba (DT445) | ts=%s'
     ki = []
     for top, sorok in sorok_kulcs.items():
         # a kifejezések a bontó blokkjai szerint (a tábla sora = a blokk, `forras` #n), a blokkon belül sorrendben
@@ -211,7 +211,7 @@ def heber_sorrend_sorok(stat, ts):
             it, v_js, v_uj = HS.itelet(bib, js, uj)
             if not HS.tiszta(js):
                 allapot, jav = 'jelolt_marad', ''
-                indok = 'írásjel vagy sziglum a futamban: gépi javítás nincs (DT-F131z); a szabály javaslata: %s' % uj
+                indok = 'írásjel vagy sziglum a futamban: gépi javítás nincs (DT445); a szabály javaslata: %s' % uj
             elif it == 'helyes':
                 allapot, jav = 'javitva', uj
                 indok = ('a héber Biblia igazolja: a javított szórend a TAHOT %s versében áll, a forrás alakja egy versben sem '
@@ -222,7 +222,7 @@ def heber_sorrend_sorok(stat, ts):
                          'javaslata: %s' % (v_js, uj))
             else:
                 allapot, jav = 'jelolt_marad', ''
-                indok = ('a héber Biblia nem dönt (%s): gépi javítás nincs (DT-F131z); a szabály javaslata: %s'
+                indok = ('a héber Biblia nem dönt (%s): gépi javítás nincs (DT445); a szabály javaslata: %s'
                          % ('mindkét alak áll' if v_js and v_uj else 'egyik alak sem áll, vagy kevés az anyag', uj))
             stat['heber_sorrend_' + allapot] += 1
             ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'heber_sorrend', '', str(k), js, jav, allapot, indok,
@@ -414,6 +414,12 @@ KEZI_HIVATKOZAS = [
      'a BDB „׳שׁ וַאֲבַדּוֺן Prov 25:11” sora a Péld 25:11-et idézi; ott a שְׁאוֹל nem áll (aranyalma ezüst tányéron), a TAHOT '
      'szerint a „Seól és Abaddón” párosa a Péld 15:11-ben áll (H7585 + H0011), és a BDB a 27:20-at (a pár másik helyét) a '
      'szócikk 1. pontjában külön idézi: sajtóhiba a forrásban, 25:11 → 15:11 (a DT381 (a) mintájára)'),
+    # F12 (DT-F12b (1), az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával): a H8414 2. pontja
+    ('H8414', 'worthlessness 49:19', '49:19', '49:4',
+     'a BDB „worthlessness 49:19 ׳לְת כִלֵּיתִי כֹּחִי וְהֶבֶל” sora (Ézs) a 49:19-et idézi; ott a תֹּהוּ nem áll (a TAHOT '
+     'Ézs 49:19 versében nincs H8414-token), a TAHOT szerint az idézett „לְתֹהוּ וְהֶבֶל כֹּחִי כִלֵּיתִי” az Ézs 49:4-ben áll '
+     '(H8414), és a heber_sorrend sor is a TAHOT Ézs 49:4 versével igazolja a szórendet: sajtóhiba a forrásban, '
+     '49:19 → 49:4 (a DT381 (a) mintájára)'),
 ]
 
 
