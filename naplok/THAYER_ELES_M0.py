@@ -4,6 +4,8 @@
 
     python naplok/THAYER_ELES_M0.py illeszt        # az együtthatók, a pontszám, a maradék hiba (kiírja; a naplóba másolandó)
     python naplok/THAYER_ELES_M0.py sorrend [ts]   # naplok/THAYER_ELES_sorrend.tsv + adagterv (becslés effortonként)
+    python naplok/THAYER_ELES_M0.py idezojel       # a 8_idezojel-bukások mérése (DT-F07g)
+    python naplok/THAYER_ELES_M0.py arany          # naplok/THAYER_ELES_arany.md
 
 Bemenet (csak olvas): forditas/thayer_api/adag1 (F27 M1, egy Strongos út, effort=high), adag99 (aranyminta, high),
 adag1591 (F159 B-út high) és adag1592 (medium): futasnaplo.tsv, kapu_eredmeny.jsonl, b_csoportok.json.
@@ -242,6 +244,56 @@ def sorrend(ts, kizar=()):
     return 0
 
 
+def idezojel():
+    """A `8_idezojel` bukások mérése (DT-F07g): az 1. próbás válaszok a mai kapukkal újrakapuzva (a munkamappák nem módosulnak:
+    ideiglenes mappa); a hibás Strongok közül hány a tiszta `'…'` → `„…”` csere (a fordítás–forrás párszám-különbség = a forrás
+    aposztrófos idézeteinek száma)."""
+    import contextlib
+    import io
+    import re
+    import shutil
+    import tempfile
+    egy = re.compile(r"(?<![\w])'([^']{1,400}?)'(?![\w])")
+    sorok = []
+    for adag in ('adag1', 'adag99', 'adag1591', 'adag1592', 'adag7901', 'adag7902', 'adag7903'):
+        d = os.path.join(MUNKA, adag)
+        tmp = tempfile.mkdtemp()
+        for fn in ('b_csoportok.json', 'bj_csoportok.json'):
+            if os.path.exists(os.path.join(d, fn)):
+                shutil.copy(os.path.join(d, fn), tmp)
+        strongok = []
+        with open(os.path.join(tmp, 'valaszok.jsonl'), 'w', encoding='utf-8', newline='\n') as out:
+            for l in open(os.path.join(d, 'valaszok.jsonl'), encoding='utf-8'):
+                r = json.loads(l)
+                if r['custom_id'].endswith('-p1') and not r['custom_id'].startswith('B'):
+                    out.write(l)
+                    strongok.append(r['custom_id'].split('-')[0])
+        T.MUNKA = tmp
+        with contextlib.redirect_stdout(io.StringIO()):
+            T.kapuz(list(dict.fromkeys(strongok)))
+        for l in open(os.path.join(tmp, 'kapu_eredmeny.jsonl'), encoding='utf-8'):
+            r = json.loads(l)
+            if r['allapot'] != 'varakozik':
+                sorok.append((adag, r))
+    ossz = tiszta = 0
+    for adag, r in sorok:
+        hib = [h for h in r.get('hibak', []) if h.startswith('8_idezojel')]
+        if not hib:
+            continue
+        m = re.search(r'forras (\d+) par, forditas (\d+) par', hib[0])
+        a, b = int(m.group(1)), int(m.group(2))
+        n_egy = len(egy.findall(T.TB.nezet(T.TB.szakaszok(r['strong']))))
+        ossz += 1
+        tiszta_e = b > a and (b - a) == n_egy
+        tiszta += tiszta_e
+        print(adag, r['strong'], 'forrás', a, 'fordítás', b, 'forrás-aposztrófos idézet', n_egy, 'TISZTA CSERE' if tiszta_e else '')
+    bukott = [r for _, r in sorok if r['allapot'] != 'kesz']
+    print('feldolgozott 1. körös Strong %d; bukott %d; 8_idezojel-bukás %d; ebből tiszta csere %d (%.0f%%)' % (
+        len(sorok), len(bukott), ossz, tiszta, 100.0 * tiszta / max(1, ossz)))
+    print('az 8_idezojel az egyetlen bukó kapu: %d Strongon' % sum(1 for r in bukott if all(h.startswith('8_idezojel') for h in r['hibak'])))
+    return 0
+
+
 ARANY = ['G0282', 'G1941', 'G1944', 'G4151', 'G5590']
 ARANY_ADAG = {'high': 'adag7902', 'medium': 'adag7903'}
 TOK = __import__('re').compile(r'⟪\d+⟫')
@@ -336,6 +388,8 @@ def arany():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == 'idezojel':
+        sys.exit(idezojel())
     if len(sys.argv) > 1 and sys.argv[1] == 'arany':
         sys.exit(arany())
     if len(sys.argv) > 1 and sys.argv[1] == 'illeszt':
