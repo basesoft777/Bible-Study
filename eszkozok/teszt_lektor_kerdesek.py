@@ -207,5 +207,76 @@ class DontesTeszt(unittest.TestCase):
         self.assertTrue(set(sz.values()) <= {'tartalmi', 'uzleti', 'technikai'})
 
 
+LEKTOR_MD = """# KIADAS X-001 — lektori kérdéslista
+
+*Nem javítás.*
+
+## Lefedettség
+
+1. **(4. kérdés)** Kapcsolat 1Móz 4:26 → Sof 3:9 nincs a próza elemei között. Szándékos?
+
+## Kivonat (5–19. sor)
+
+2. **(1./2. kérdés)** 11. sor: a kritérium kivétel nélkül szerepel.
+
+---
+
+Ellenőrzött és nem kérdéses: semmi.
+
+(proveniencia: scope=motivumok/X-001.md | forras=modell:claude-fable-5-1 | ts=2026-11-02T08:00Z)
+"""
+
+LISTA_MD = """## X-001
+
+### Lefedettség (a próza nem nevezi meg)
+
+| rovat | adat |
+|---|---|
+| kapcsolat | 18 |
+
+Név nélküli elemek (a gyűjtő mondat N-jéig csoportosan fedett előfordulás nélkül):
+
+- kapcsolat: 1Móz 4:26 → Sof 3:9 (Párhuzam)
+- nyitott jelölt: Ézs 41:25 (elofordulas; F110 szűrő)
+
+*A „Károli rejtett párhuzama” nem mérhető.*
+
+### Egyenetlenség (blokkonként)
+
+- ez már nem elem
+"""
+
+
+class KiadasTeszt(unittest.TestCase):
+    def test_lektor_tetelek(self):
+        k = L.lektor_kerdesek(LEKTOR_MD, 'X-001')
+        self.assertEqual([r['kerdes_id'] for r in k], ['lektor:X-001:1', 'lektor:X-001:2'])
+        self.assertEqual((k[0]['forras'], k[0]['hely']), ('lektor', 'Lefedettség'))
+        self.assertIn('Szándékos?', k[0]['kerdes'])
+        self.assertIn('forras=modell:claude-fable-5-1', k[1]['proveniencia'])
+        self.assertNotIn('Ellenőrzött', ' '.join(r['kerdes'] for r in k))
+
+    def test_lista_hianyok(self):
+        k = L.lista_hianyok(LISTA_MD, 'X-001')
+        self.assertEqual(len(k), 2)
+        self.assertEqual({r['forras'] for r in k}, {'proza_lefedettseg'})
+        self.assertEqual(k[1]['hely'], 'Ézs 41:25')
+        self.assertTrue(k[0]['kerdes_id'].startswith('proza_lefedettseg:X-001:'))
+        self.assertEqual(k[0]['proveniencia'], 'manual')
+        # stabil azonosító újrafuttatásra
+        self.assertEqual(k[0]['kerdes_id'], L.lista_hianyok(LISTA_MD, 'X-001')[0]['kerdes_id'])
+
+    def test_general_a_ket_kiadas_fajlbol(self):
+        with tempfile.TemporaryDirectory() as t:
+            irj(t, 'KIADAS_X-001_lektor.md', LEKTOR_MD)
+            irj(t, 'KIADAS_X-001_lista.md', LISTA_MD)
+            sz, n, megj = L.general('X-001', t)
+            self.assertEqual((n, megj), (4, ''))
+            sz2, _n, _m = L.general('X-001', t)
+            self.assertEqual(sz, sz2)
+            m = L.beolvas(os.path.join(t, 'naplok', 'LEKTOR_X-001.tsv'))
+            self.assertEqual({r['forras'] for r in m.values()}, {'lektor', 'proza_lefedettseg'})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

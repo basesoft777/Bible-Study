@@ -127,3 +127,13 @@
 - A `sablon.html`-ből kikerült a sötét token-készlet, a `prefers-color-scheme` blokk és a `[data-theme]` kapcsolás; a `:root` a világos tokeneket adja (`--papir: #f6f6f3`),
   a `color-scheme: light` az Artifact-váz alapja. A többi (betűk, méretek, sugár) változatlan. Az artifact újrapublikálva (6. verzió).
 
+
+## M7 — a /kiadas kimenete a felületen (`lektor` és `proza_lefedettseg` forrás)
+
+- Bemenet (a fő checkoutból, változatlanul átmásolva; a bájtazonosságot `cmp` igazolta): `naplok/KIADAS_ISTENTISZT-001_lektor.md` (a `lektor` subagent, Fable 5.1 kimenete, 15 kérdés) és
+  `naplok/KIADAS_ISTENTISZT-001_lista.md` (a próza-lefedettség mérőjének kimenete). Az ISTENTISZT-001 `/kiadas` menetét az orkesztrátor-session indította a felhasználó
+  „csináljuk” kérésére; az átolvasás része volt, hogy „a kérdések a lektor-felületre kerülnek”.
+- `eszkozok/lektor_kerdesek.py`: `lektor_kerdesek()` (számozott tétel = kérdés, a `## ` szakasz a `hely`, a szöveg változatlan, a proveniencia a fájl záró sora) és `lista_hianyok()` („Név nélküli
+  elemek” → `forras=proza_lefedettseg`, `hely` az igehely; a lista nem hordoz proveniencia-sort, ezért `manual`). Az egyenetlenség-tábla nem kérdés, nem kerül be. 18 teszt.
+- `naplok/LEKTOR_ISTENTISZT-001.tsv`: **22 kérdés** = 5 `hatar` + 15 `lektor` + 2 `proza_lefedettseg`. Átfedés: a lektor 1. és 2. kérdése ugyanaz a két hiány, mint a lista két sora
+  (1Móz 4:26 → Sof 3:9; Ézs 41:25); a kártyák külön azonosítóval külön válaszolhatók, ez szándékos (a két forrás egymástól független).

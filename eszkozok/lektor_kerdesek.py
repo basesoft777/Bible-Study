@@ -17,6 +17,7 @@ I/O: split('\\t') / '\\t'.join(), nem a csv modul (CLAUDE.md). A kérdés sortö
 """
 import argparse
 import datetime
+import hashlib
 import os
 import re
 import sys
@@ -211,11 +212,80 @@ def kiir(nev, uj, root=ROOT, kimenet=None, ir=True, megj=''):
     return szoveg, len(sorok), megj
 
 
+# --- lektor és proza_lefedettseg: a /kiadas kimenete (naplok/KIADAS_<ID>_lektor.md és _lista.md) ----------------------
+_LEKTOR_TETEL = re.compile(r'^(\d+)\. \*\*\(([^)]*)\)\*\* (.*)$')
+_LISTA_ELEM = re.compile(r'^- ([^:]+): (.*)$')
+_IGEHELY_ALAK = re.compile(r'(?:[1-3]\s?)?[^\W\d_]+\.? \d+:\d+(?:[–-]\d+)?')
+PROZA_LEFEDETTSEG_VALASZLEHETOSEGEK = 'szándékos; legyen mondat; később'
+
+
+def lektor_kerdesek(szoveg, motivum):
+    """A `lektor` subagent kérdéslistájából (`naplok/KIADAS_<ID>_lektor.md`) a `forras=lektor` sorok: egy számozott tétel egy kérdés,
+    a szakasz (`## …`) a `hely`. A kérdés szövege változatlan (a lektor nem javít, a lista csak kérdez)."""
+    sorok = szoveg.replace('\r\n', '\n').split('\n')
+    prov = next((_PROV.match(x).group(1) for x in sorok if _PROV.match(x)), 'manual')
+    ki, szakasz = [], ''
+    for x in sorok:
+        if x.startswith('## '):
+            szakasz = x[3:].strip()
+            continue
+        if x.strip() == '---':
+            break
+        m = _LEKTOR_TETEL.match(x)
+        if not m:
+            continue
+        n, kat, txt = m.groups()
+        ki.append(dict(kerdes_id='lektor:%s:%s' % (motivum, n), forras='lektor', motivum=motivum, hely=szakasz,
+                       kerdes=SORTORES.join(['%s — (%s)' % (szakasz or 'lektori kérdés', kat), egysor(txt)]),
+                       valaszlehetosegek='', proveniencia=prov, cimke='tartalmi'))
+    return ki
+
+
+def lista_hianyok(szoveg, motivum):
+    """A próza-lefedettség listájából (`naplok/KIADAS_<ID>_lista.md`) a „Név nélküli elemek” (a próza nem nevezi meg) sorai:
+    `forras=proza_lefedettseg`. Az egyenetlenség-tábla nem kérdés."""
+    ki, bent = [], False
+    for x in szoveg.replace('\r\n', '\n').split('\n'):
+        if x.startswith('Név nélküli elemek'):
+            bent = True
+            continue
+        if bent and (x.startswith('#') or x.startswith('*')):
+            break
+        m = _LISTA_ELEM.match(x) if bent else None
+        if not m:
+            continue
+        rovat, elem = m.group(1).strip(), egysor(m.group(2))
+        azon = hashlib.sha1(('%s|%s' % (rovat, elem)).encode('utf-8')).hexdigest()[:8]
+        ig = _IGEHELY_ALAK.search(elem)
+        ki.append(dict(kerdes_id='proza_lefedettseg:%s:%s' % (motivum, azon), forras='proza_lefedettseg', motivum=motivum,
+                       hely=ig.group(0) if ig else '',
+                       kerdes=SORTORES.join(['A próza nem nevezi meg ezt az adatelemet (%s)' % rovat, elem,
+                                            'Szándékos, hogy a lapon nem szerepel, vagy legyen róla mondat?']),
+                       valaszlehetosegek=PROZA_LEFEDETTSEG_VALASZLEHETOSEGEK,
+                       proveniencia='manual', cimke='tartalmi'))
+    return ki
+
+
+def _fajl(root, nev):
+    ut = os.path.join(root, 'naplok', nev)
+    if not os.path.exists(ut):
+        return None
+    with open(ut, encoding='utf-8', newline='') as f:
+        return f.read()
+
+
 def general(motivum, root=ROOT, kimenet=None, ir=True):
-    """-> (szöveg, sorok száma, megjegyzés) a `hatar` forrásból."""
+    """-> (szöveg, sorok száma, megjegyzés): `hatar` (HATAR_<ID>.md), `lektor` és `proza_lefedettseg` (KIADAS_<ID>_lektor.md / _lista.md).
+    Ami a forrásfájlból hiányzik, az üres eredmény, nem hiba."""
     sz = forras_szoveg(motivum, root)
     uj = hatar_kerdesek(sz, motivum) if sz is not None else []
-    return kiir(motivum, uj, root, kimenet, ir, 'nincs forrásfájl' if sz is None else '')
+    lk = _fajl(root, 'KIADAS_%s_lektor.md' % motivum)
+    if lk is not None:
+        uj += lektor_kerdesek(lk, motivum)
+    li = _fajl(root, 'KIADAS_%s_lista.md' % motivum)
+    if li is not None:
+        uj += lista_hianyok(li, motivum)
+    return kiir(motivum, uj, root, kimenet, ir, 'nincs forrásfájl' if (sz is None and lk is None and li is None) else '')
 
 
 # --- dontes: a DONTESEK.md nyitott (🟡) tételei és a megállt briefek -------------------------------------------------
