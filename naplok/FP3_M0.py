@@ -9,6 +9,7 @@
   python naplok/FP3_M0.py sigla        sigla-fedés (jelolt / besorolt) a teljes Thayerben és az M1-adagban
   python naplok/FP3_M0.py term         terminológia-fedés (javaslatlista)
 
+Megjegyzés: a `sorrend` és a `szaraz` a futás pillanatának listáját használja (kész Strongok kimaradnak); az M1 beírása (28 Strong) után a `sorrend` újrafuttatása más, rövidebb sorrendet írna, ezért a commitolt `FP3_sorrend.tsv` az M0 pillanatának állapota. A `szaraz` a `naplok/FP3_szaraz_hibak.tsv`-be is ír (hibalista). A `minta` a fájl végén fut.
 TSV: split('\\t'), '\\t'.join(); csv modul nincs. Számok csak innen (proveniencia: scope=teljes Thayer | forras=ez a szkript).
 """
 import collections

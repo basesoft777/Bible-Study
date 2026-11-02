@@ -29,7 +29,7 @@ Az újrakapuzás G0282-jelzése a kész sorokat érinti (nem az M1 adagját); a 
 
 ### 3. Könyv- és hivatkozásfedés
 
-c:v előtti szó a forrásban: 70 058 előfordulás, 420 különböző alak; leképezett könyvnevek találata 66 576. **Nem leképezett: 311 alak, 3 489 előfordulás** (első 15): Antiquities 534, Polybius 328, Herodotus 254, Diodorus 229, Iliad 179, Cyril 146, Thucydides 142, **1 Cor. 112**, Odyssey 106, 3Macc. 103, 1 Esdr. 59, Apion 58, Barnabas 58, Hell. 52, Antoninus 41. Ezek javarészt klasszikus szerzők/művek (nem bibliai könyv); a `11_konyvek` kapu a leképezettekre vonatkozik, a többi szó szerint marad. Külön sorok: `Sir c:v` 536 (E5); Kelemen-hivatkozás: a „1 Cor. c, v” vessző-alak 0, a pontos alakú `1 Cor.` 112, `2 Cor.` 7 a nem leképezettek között (kérdés a DT-F27b-be); klasszikus szerzők: Josephus 838, Philo 426, Lucian 262, Antoninus 47.
+c:v előtti szó a forrásban: 70 058 előfordulás, 420 különböző alak; leképezett könyvnevek találata 66 576. **Nem leképezett: 311 alak, 3 489 előfordulás** (első 15): Antiquities 534, Polybius 328, Herodotus 254, Diodorus 229, Iliad 179, Cyril 146, Thucydides 142, **1 Cor. 112**, Odyssey 106, 3Macc. 103, 1 Esdr. 59, Apion 58, Barnabas 58, Hell. 52, Antoninus 41. Ezek javarészt klasszikus szerzők/művek (nem bibliai könyv); a `11_konyvek` kapu a leképezettekre vonatkozik, a többi szó szerint marad. Külön sorok: `Sir c:v` 536 (E5); Kelemen-hivatkozás: a vessző-alakú „Cor. c, v” hivatkozás 119 (javítva: a korábbi „0” a szkript regexének hibája volt; `naplok/FP3_naplo.md` ellenőri javítása), a `1 Cor.` 112, `2 Cor.` 7 a nem leképezettek között (kérdés a DT-F27b-be); klasszikus szerzők: Josephus 838, Philo 426, Lucian 262, Antoninus 47.
 
 ### 4. Sigla-fedés (E3)
 
@@ -111,13 +111,13 @@ A brief szerinti első ~150 000 karakter (a sorrend első 9 Strongja, a „funkc
 
 Téves riasztás / valódi hiba (a nyers válaszok elolvasása nélkül, a hibaüzenetekből; jelölve: manual): a `8_idezojel` üzenetei („forrás 0 pár, fordítás n pár”) a forrás ASCII-idézőjel-számolásából adódnak, téves riasztás gyanú; a `11_konyvek` hibái (`Makk`, `Tób`, `Bölcs`) az apokrif könyvek hiányos leképezéséhez köthetők (l. M0 3. pont), kapu-/normalizálóhiba gyanú; valódi fordítási hiba a `16_sigla` („Sept.”, „Wis.” kibontatlan), a `5_terminologia` („Heb.” → „héb.”) és a `9_tagolas`.
 
-Kétszer bukottak: G3588: `8_idezojel` + `11_konyvek` (1Makk/2Makk); G1722 és G1510: **max_tokens**, a kérés nem adott használható választ (a nagy, sok szakaszos szócikkek kimenete a limit fölé nőtt, a javító körben is); G1519: `11_konyvek` (Bölcs.) + `16_sigla` (Wis.).
+Kétszer bukottak: G3588: `8_idezojel` + `11_konyvek` (1Makk/2Makk); G1722 és G1510: **max_tokens**, a kérés nem adott használható választ (az 1. körben a G1722 és a G1510 kapuhibával bukott, a javító körben a kérések `max_tokens`-szel álltak le, használható válasz nélkül); G1519: `11_konyvek` (Bölcs.) + `16_sigla` (Wis.).
 
 ### Beírás
 
 `beir --regi-elavult --kezi-marad --allapot sonnet` a 28 Strongra: `adat/forditasok.tsv` +185 sor, 0 törölt vagy módosított sor; minden új sor `allapot=sonnet`, `modell=claude-sonnet-5-5`, `datum=2026.11.02`, `jelentes_szam=sz<n>`. Beírás előtt `origin/main`-nel összevetve: az `adat/forditasok.tsv` a main-en nem változott (bájtazonos a merge előtt és után); #38 és #154 nem fut (orkesztrátor).
 
-Ellenőrzések: `eszkozok/ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba; `teszt_forditas_kapuk.py` OK; `teszt_lanc.py` 39/40 (N66). **Bukó tesztek:** `teszt_bont.py` 2 (`test_ellenoriz`, `test_forras_javit_ellenoriz`: a forrás-javítás 15 lyuka miatt a vizsgált parancs kilépési kódja 1) és `teszt_vers_jelentes.py` 1 (`test_ellenoriz`: Károli-vers nélküli sor ÚSZ 29, ÓSZ 12). A menet ezeket a táblákat nem módosította (a diffben csak a `forditasok.tsv`, a munkatábla, a bukottak tábla és `naplok/`, `forditas/thayer_api/` szerepel), tehát a bukás előzetes; a main-en külön nem futtattam (jelölve: manual).
+Ellenőrzések: `eszkozok/ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba; `teszt_forditas_kapuk.py` OK; `teszt_lanc.py` 39/40 (N66). **Bukó tesztek:** `teszt_bont.py` 2 (`test_ellenoriz`, `test_forras_javit_ellenoriz`: a forrás-javítás 15 lyuka miatt a vizsgált parancs kilépési kódja 1) és `teszt_vers_jelentes.py` 1 (`test_ellenoriz`: Károli-vers nélküli sor ÚSZ 29, ÓSZ 12). A menet ezeket a táblákat nem módosította (a diffben csak a `forditasok.tsv`, a munkatábla, a bukottak tábla és `naplok/`, `forditas/thayer_api/` szerepel), tehát a bukás előzetes. **Igazolva (ellenőri javítókör):** ugyanezek a tesztek a friss `origin/main` ideiglenes worktree-jében is ugyanígy buknak (`teszt_bont.py` 2, `teszt_vers_jelentes.py` 1).
 
 ### 5 véletlen Strong
 
@@ -135,7 +135,7 @@ Ellenőrzések: `eszkozok/ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 h
 | G4151 | 17 | 23 726 | 24 473 | — | 517 / 515 / — | **javítandó** (max_tokens, nincs válasz) |
 | G5590 | 10 | 5 950 | 6 055 | 6 112 | 121 / 121 / 121 | átment (2. próba) |
 
-Feltűnő eltérések (felsorolva, ítélet nélkül): a G4151-re az API nem adott használható választ (17 szakasz, 23 726 karakter, mindkét körben max_tokens); a G1941 `kezi` szövege 23%-kal hosszabb a forrásnál, a Sonnet-é 6,5%-kal; a G4151 `kezi` sora 515 igehelyalakot visz a forrás 517-éből. A tartalmi összevetés (szóválasztás, terminológia) a felhasználóé.
+Feltűnő eltérések (felsorolva, ítélet nélkül): a G4151-re az API nem adott használható választ (17 szakasz, 23 726 karakter; az 1. kör kapun bukott, a javító kör `max_tokens`-szel állt le); a G1941 `kezi` szövege 23%-kal hosszabb a forrásnál, a Sonnet-é 6,5%-kal; a G4151 `kezi` sora 515 igehelyalakot visz a forrás 517-éből. A tartalmi összevetés (szóválasztás, terminológia) a felhasználóé.
 
 ### Kivetítés a teljes Thayerre (mért tokenekből; `naplok/FP3_koltseg.py`)
 
@@ -151,14 +151,14 @@ Illesztés az 51 első körös kérésre (M1 + aranyminta), legkisebb négyzetek
 | funkciószó (a 9 M1-Strong; külön kategória, a teljes listán a 3 kategória részei) | 21 | 161 115 | 2,41 (mért) | 0,92 |
 | **1. kör összesen** | 5 437 | 4 400 898 | **176,76** | |
 
-A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,71 × 1,43 = **206,7 USD** (alsó becslés). Az M1 egészére mért javító/1. kör arány (0,74 USD, 0,57 kérés) alkalmazásával: **310,9 USD** (felső becslés; a két max_tokens-hibás nagy Strong újrapróbái is benne vannak).
+A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,71 × 1,43 = **206,7 USD** (alsó becslés). Az M1 egészére mért javító/1. kör arány (M1 + aranyminta együtt: javító/1. kör = 2,9388 / 3,8735 = 0,759 USD-arány; M1 egyedül 0,74) alkalmazásával: 176,76 × 1,759 = **310,9 USD** (felső becslés; a `max_tokens`-szel leállt javító kérések is benne vannak).
 
-**A teljes Thayer kivetített költsége: kb. 207–311 USD (a nagy kategóriára 3, a kicsire 11 Strong a minta: kis minta).** A kötegelő 119,32 USD-s becslése ennek a fele sem. Becslés, nem mért érték; jelölve. A költség ~86%-a a kérésenkénti állandó (prompt) rész: 5 437 kérés × 17 136 bemeneti token ≈ 93 millió token. A kicsi Strongok fajlagosan ötszörösen drágábbak a funkciószavaknál (0,071 vs 0,015 USD / 1000 forráskarakter).
+**A teljes Thayer kivetített költsége: kb. 207–311 USD (a nagy kategóriára 3, a kicsire 11 Strong a minta: kis minta).** A kötegelő 119,32 USD-s becslése ennek a fele sem. Becslés, nem mért érték; jelölve. A bemeneti tokenek ~85%-a a kérésenkénti állandó (prompt) rész (5 437 × 17 136 ≈ 93,2 millió token a 109,6 millióból); költségben ez az első kör 176,76 USD-jének **~53%-a** (93,2 USD). A kicsi Strongok fajlagosan ötszörösen drágábbak a funkciószavaknál (0,071 vs 0,015 USD / 1000 forráskarakter).
 
 ### Megfigyelések (a DT-F27b és az N-F27a… tételek bemenete)
 
 1. A kötegelő költségbecslője kalibrálatlan (N-F27a); a plafon beküldés előtti becslésre épül, a mért költség átléphette (N-F27b).
-2. A max_tokens-hiba a nagy szócikkeknél a javító körben is megismétlődött (G1722, G1510; aranyminta: G4151): a nagy szócikkek csoportosítása, max_tokens (N-F27c).
+2. A javító körben a nagy szócikkek kérései `max_tokens`-szel leálltak (G1722, G1510; aranyminta: G4151); az 1. körben ezek kapun bukták (N-F27c).
 3. Prompt-gyorsítótár: a kérésenkénti 17 136 bemeneti token a legnagyobb megtakarítási lehetőség; a Batch-úton a kötegelőben ki van kapcsolva (BDB-tapasztalat); a #7 előtt mérendő (N-F27d).
 4. `11_konyvek`: az apokrif könyvek leképezése hiányos; a `1 Cor.` (112) és `Sir` (536) a #7 bemenete (N-F27e).
 5. `16_sigla`: 5 758 `jelolt` sigla-előfordulás a teljes Thayerben (79 az M1-ben); a „Sept.” és „Wis.” kibontása gyakran hiányzik; jóváhagyás a felhasználóé.
@@ -167,7 +167,20 @@ A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,
 ## Javaslat a #7 (Thayer éles) briefjéhez (nem brief; futtatni nem kezdtem)
 
 - **Hatókör:** a `naplok/FP3_sorrend.tsv` 5 413 − 28 (beírt) = 5 385 Strong marad (a 4 kétszer bukott G3588, G1722, G1510, G1519 köztük van); adagok a sorrend szerint, kb. 500 000 forráskarakter; adagonként új session.
-- **Előfeltételek a #7 előtt (a DT-F27b (b) döntésétől függően):** N-F27a (becslő kalibrálása a mért modellre), N-F27b (mért futó összeg a plafon-ellenőrzésben), N-F27c (max_tokens a nagy szócikkeknél), N-F27d (gyorsítótár mérése), N-F27e (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
+- **A #7 a mostani kéréskiosztással nem indul (orkesztrátor, 2026-11-02).** Blokkoló előfeltételek: N-F27f (Thayer B-út a kötegelőben: kicsi/közepes Strongok 15–25/kérés, adatblokk-szűkítés, `effort=medium`-mérés), N-F27g (mért-költség plafon, kalibrált becslő); becslés B-úttal kb. 78–115 USD.
+- **Egyéb előfeltételek a #7 előtt (a DT-F27b (b) döntésétől függően):** N-F27a (becslő kalibrálása a mért modellre), N-F27b (mért futó összeg a plafon-ellenőrzésben), N-F27c (max_tokens a nagy szócikkeknél), N-F27d (gyorsítótár mérése), N-F27e (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
 - **Költség:** mért kivetítés 207–311 USD a teljes Thayerre (l. fent); adagonként plafon = az adag mért-modell szerinti becslésének 1,5-szerese, mért futó összeggel.
 - **Lépések adagonként:** `szaraz` → plafon → `bekuld` → `allapot` (5 perces ciklus) → `begyujt` → `kapuz` → `javit` (1 kör) → `rogzit` → `beir --regi-elavult --kezi-marad` → adagjelentés; a kétszer bukottak a `bukottak.tsv`-be.
 - **Nyitott a felhasználóra:** DT-F27b (a)–(c).
+
+### Kivetítés B-úttal (becslés, `manual`; az orkesztrátor kérése, 2026-11-02)
+
+*Nem mért érték: ugyanaz az illesztett modell (bemenet 17 136·kérés + 3,721·kar.; kimenet 1 134·kérés + 1,654·kar.), csak a kérésszám csökken: a kicsi és közepes (<3 000 kar.) 5 198 Strong (2 878 071 kar.) n Strongonként egy kérésben, a nagy 215 Strong (1 522 827 kar., 239 kérés) egyenként. Az adatblokk szűkítése és az `effort=medium` NINCS benne (nem mértem); a kimeneti tokenek karakterenkénti aránya változatlan. `naplok/FP3_koltseg.py` (`b_ut`).*
+
+| Strong / kérés | kérés (kicsi+közepes) | 1. kör, USD | + javító kör (alsó: 0,13 / 0,43 arány) | + javító kör (felső: 0,74) |
+|---|---|---|---|---|
+| 15 | 347 | 66,14 | 81,9 | 115,1 |
+| 20 | 260 | 64,15 | 79,6 | 111,6 |
+| 25 | 208 | 62,97 | 78,3 | 109,6 |
+
+**Kb. 78–115 USD a teljes Thayerre B-úttal** (a jelenlegi egy-Strong-kérésenkénti 207–311 USD helyett); a kisebb szócikkek fajlagos költsége ~0,071 → ~0,014 USD / 1 000 kar. szintre esne, a nagyoké (23,71 USD az 1. körben) változatlan. A javító kör B-úton várhatóan más arányú lesz (nagyobb kérések, több kapuhiba egy kérésben): ez mérendő.

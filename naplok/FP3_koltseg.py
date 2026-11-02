@@ -122,3 +122,26 @@ def javit_kategoriankent():
 
 
 javit_kategoriankent()
+
+
+def b_ut():
+    """B-út kivetítés (becslés, manual): kicsi + közepes Strongok csoportosan n Strong/kérés, a nagyok egyenként; ugyanaz az illesztett modell."""
+    AB, BB, AK, BK = 17136, 3.721, 1134, 1.654          # a 'main' illesztése (l. fent)
+    sor = tsv(os.path.join(ITT, 'FP3_sorrend.tsv'))
+    kis = [r for r in sor if int(r['karakter']) < 3000]
+    nagy = [r for r in sor if int(r['karakter']) >= 3000]
+    nagy_ker = sum(len(TK.kerelmek_strongra(r['strong'])) for r in nagy)
+    kis_kar = sum(int(r['karakter']) for r in kis)
+    nagy_kar = sum(int(r['karakter']) for r in nagy)
+    print('B-út: kicsi+közepes %d Strong (%d kar.), nagy %d Strong (%d kérés, %d kar.)' % (len(kis), kis_kar, len(nagy), nagy_ker, nagy_kar))
+    for n in (15, 20, 25):
+        ker = -(-len(kis) // n)
+        be = AB * ker + BB * kis_kar; ki = AK * ker + BK * kis_kar
+        kis_usd = (be * AR_BE + ki * AR_KI) / 1e6
+        nbe = AB * nagy_ker + BB * nagy_kar; nki = AK * nagy_ker + BK * nagy_kar
+        nagy_usd = (nbe * AR_BE + nki * AR_KI) / 1e6
+        print('n=%d: kis kérés %d -> %.2f USD; nagy %.2f USD; 1. kör %.2f USD; javító (alsó: kicsi 0 / közepes 0,30 / nagy 0,43 arányok súlyozva): kb. +%.2f (kicsi+közepes súlyozott 0,13); felső (0,74): +%.2f' % (
+            n, ker, kis_usd, nagy_usd, kis_usd + nagy_usd, 0.13 * kis_usd + 0.43 * nagy_usd, 0.74 * (kis_usd + nagy_usd)))
+
+
+b_ut()

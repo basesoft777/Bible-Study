@@ -51,7 +51,7 @@ for sp in STRONGOK:
     ki.append('- kapu: %s (próba: %s); hiba: %s' % (r.get('allapot', '—'), r.get('proba', '—'), '; '.join(r.get('hibak', [])) or 'nincs'))
     ki.append('- igehely-alakok (c:v) száma: forrás %d, `kezi` %d, Sonnet %d' % (
         len(SZAM.findall(forras)), len(SZAM.findall(k)), len(SZAM.findall(s))))
-    ki.append('\n**Forrás**\n\n%s\n' % forras)
+    ki.append('\n**Forrás** (kódblokkban: angol forrásszöveg)\n\n```\n%s\n```\n' % forras)
     ki.append('**`kezi`**\n\n%s\n' % k)
     ki.append('**Sonnet (API)**\n\n%s\n' % (s if r.get('vegleges') else '*nincs használható válasz — ' + str(r.get('hibak')) + '*'))
 with open(os.path.join(ITT, 'FP3_arany.md'), 'w', encoding='utf-8', newline='\n') as f:
