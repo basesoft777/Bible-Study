@@ -1811,9 +1811,9 @@ Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs
 
 ---
 
-### 2.46 `kiadasok.tsv` — a lexikonlap kiadásai (N-F125a, N-F125b, DT-F125d, 2026-11-02)
+### 2.46 `kiadasok.tsv` — a lexikonlap kiadásai (N67, N-F125b, DT492, 2026-11-02)
 
-**Kézi** (`manual` proveniencia; jóváhagyás: DT-F125d). Egy sor egy kiadás; a `/kiadas <ID>` 5. lépése új sort ír. Ebből generálódik a
+**Kézi** (`manual` proveniencia; jóváhagyás: DT492). Egy sor egy kiadás; a `/kiadas <ID>` 5. lépése új sort ír. Ebből generálódik a
 `lexikon/[ID]_TUDOMANYOS.md` Kolofonjának „Kiadás”, „Próza modellje” sora és a „Változásjegyzék” táblája
 (`eszkozok/lexikon_general.py` `blokk_kolofon`; a kolofont kézzel szerkeszteni tilos). Motívum sora nélkül a kolofon nem ír
 kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('	')`; a `#`-sor megjegyzés.
