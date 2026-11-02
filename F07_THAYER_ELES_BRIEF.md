@@ -9,7 +9,7 @@ modell: sonnet
 allapot: nem_indult
 ad: "a teljes Thayer (a kész Strongok nélkül kb. 5 385 Strong) szakaszonkénti magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet, a tényleges modellnévvel), a #159 B-útján Message Batches API-n, kb. 500 000 karakteres adagokban, adagonként mért költséggel; a kétszer bukott Strongok a bukottak-táblában, kézi ítéletre"
 kovetkezo: "/kovetkezo: M0 (a kötegelő javításai, a becslő újraillesztése, az effort-döntés ⛔ az orkesztrátornak), utána adagonként új session"
-olvas: [F27_FP3_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, F159_THAYER_B_UT_BRIEF.md, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_koltseg.py, naplok/FP3_arany.md, naplok/THAYER_B_UT_naplo.md, naplok/THAYER_B_UT_mero_strongok.txt, naplok/THAYER_API_KOTEG_naplo.md, forditas/prompt_v5_1.md, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/thayer_jelolt/, DONTESEK.md]
+olvas: [adat/forditasok.tsv, F27_FP3_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, F159_THAYER_B_UT_BRIEF.md, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_koltseg.py, naplok/FP3_arany.md, naplok/THAYER_B_UT_naplo.md, naplok/THAYER_B_UT_mero_strongok.txt, naplok/THAYER_API_KOTEG_naplo.md, forditas/prompt_v5_1.md, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/thayer_jelolt/, DONTESEK.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, eszkozok/thayer_api_koteg.py, eszkozok/teszt_thayer_api_koteg.py, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/thayer_jelolt/thayer_bemenet.py, forditas/thayer_api/, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, naplok/THAYER_ELES_naplo.md, naplok/THAYER_ELES_sorrend.tsv, naplok/THAYER_ELES_koltseg.tsv, naplok/THAYER_ELES_arany.md, naplok/THAYER_ELES_sigla_javaslat.tsv, naplok/THAYER_ELES_terminologia_javaslat.tsv, naplok/THAYER_ELES_M0.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [3, 5, 14, 159]
 nem_fugg: [9]
@@ -218,7 +218,7 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 
 | Tétel | Tárgy | Állapot |
 |---|---|---|
-| DT-F07a | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07a | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása (külön PR, előbb mergelendő); 5. a #138 és a #154 `nem_fugg`-jába a 7 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07b | ⛔ M0 (c): max_tokens-emelés vagy további darabolás | nyitva, M0 |
 | DT-F07c | ⛔ M0 (d): a `Sir` alias javításának helye (és ha kell, az `1 Cor.`) | nyitva, M0 |
 | DT-F07d | ⛔ M0 (e): effort (`high` / `medium`) | nyitva, M0 |
@@ -228,4 +228,4 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
-| v1 | 2026.11.02 | A csonk kitöltése: B-út, M0 (a)–(e), adagok ~500 000 karakterrel, adagplafon 1,3 × becslés, 30%-os megállás, összplafon 120 USD, Mz | orkesztrátor (a felhasználó megbízásából), 2026-11-02; DT-F07a |
+| v1 | 2026.11.02 | A csonk kitöltése: B-út, M0 (a)–(f), adagok ~500 000 karakterrel, adagplafon 1,3 × becslés, 30%-os megállás, összplafon 120 USD, Mz. A befogadás kérdései (a kitöltött fejléc függési köre, `feladatok.py ellenoriz`): a #27 és a #159 fejléce lezárul, külön, előbb mergelendő PR-ban (mindkettő tartalmilag kész és mergelve: PR #578, PR #581); a #7 `fugg: [159]` marad; az `olvas` a `forditasok.tsv`-vel bővül (a `lista` és a `beir` olvassa); a #138 és a #154 `nem_fugg`-jába bekerül a 7, mert a #138 és a #154 BDB- és alapjelentés-sorokat ír, Thayer-sort nem. Csak a sorrendi függés esik ki: a `KIZAR 7 154` (`forditasok.tsv`, írás–írás) megmarad; a #138 a `forditasok.tsv`-t nem írja, ezért vele nincs KIZAR-él, és nem is kell | orkesztrátor (a felhasználó megbízásából), 2026-11-02; DT-F07a |

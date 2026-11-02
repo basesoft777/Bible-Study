@@ -12,7 +12,7 @@ kovetkezo: "/kovetkezo (M0 ⛔: a csere módja — (a) a fordítás szövegében
 olvas: [adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, naplok/ELLENOR_F123_ALVIL-001.md, eszkozok/bdb_jelolt/hu_illeszt.py]
 ir: [adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, naplok/BDB_H7585_PELD_15_11_HU_naplo.md]
 fugg: [144]
-nem_fugg: [27, 38, 123, 133, 155]
+nem_fugg: [7, 27, 38, 123, 133, 155]
 ---
 <!-- Sorrend: a #144 (BDB_SZAKASZ_HU_JAVITAS) után fusson, mert mindkettő újragenerálja a bdb_szakasz_hu.tsv-t. -->
 # Fnn_BDB_H7585_PELD_15_11_HU_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
