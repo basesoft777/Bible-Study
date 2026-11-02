@@ -1131,9 +1131,9 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** A motívum 22 helyéből 13 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 59%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
+**Mit mutat ez a rész?** A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 21. **Következtetés:** a helyek 50%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 13 igehely ad legalább egy találatot (26 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 11 igehely ad legalább egy találatot (21 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 3 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Zsolt 116:13, ApCsel 2:21, ApCsel 9:14.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12:8
@@ -1143,10 +1143,6 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 #### 2Móz 34:5
 - Károli-KH: 2Móz 33:19
-
-#### Zsolt 116:13
-- Károli-KH: Róm 3:13
-- Károli-KH: Jak 3:8
 
 #### Zsolt 116:17
 - Károli-KH: 2Sám 7:9
@@ -1165,11 +1161,6 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 - TSK: Róm 10:13 (Votes: 29)
 - TSK: Jóel 2:32 (Votes: 26)
 - TSK: Zsolt 86:5 (Votes: 20)
-- Károli-KH: 1Móz 25:21-26
-
-#### ApCsel 9:14
-- Károli-KH: 1Sám 13:13-14
-- Károli-KH: Zsolt 89:21-22
 
 #### ApCsel 9:21
 - Károli-KH: Gal 1:23
@@ -1191,7 +1182,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** A 26 utalásból 8 a motívum két saját helyét köti össze, ez 7 helyet érint a 22-ból. **Következtetés:** a motívum helyeinek a 32%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
+**Mit mutat ez a rész?** A 21 utalásból 8 a motívum két saját helyét köti össze, ez 7 helyet érint a 22-ból. **Következtetés:** a motívum helyeinek a 32%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 

@@ -11,9 +11,9 @@
 | a listája szó szerint megegyezik egy másik forrásversével | 12322 |
 | … ebből legalább kételemű listával | 4089 |
 | egyetlen eleme sem támogatott (TSK ±3 vers, Károli-visszautalás) | 8479 |
-| **gyanús (másolt) forrásvers**: duplikált + saját támogatás 0 + a pár támogatott | 5471 |
-| … a gyanús listák KH-sorai | 8688 |
-| … a támogatott pár ugyanabban a könyvben | 3314 |
+| **gyanús (másolt) forrásvers**: duplikált + saját támogatás 0 + a pár támogatott | 5078 |
+| … a gyanús listák KH-sorai | 7971 |
+| … a támogatott pár ugyanabban a könyvben | 3055 |
 
 ## Ismert esetek (az átvilágításból)
 

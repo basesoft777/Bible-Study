@@ -93,8 +93,55 @@ def tamogatott(forras, cel, kh, tsk):
     return False
 
 
+# a lexikai támogatásnál csak az ennél kevesebb versben álló Strong számít. Kalibrálva a 9 lap 35 gyanús forrásversén
+# (2026-11-02, naplok/KH_ELREJTES_igazolas.md): a valódi kapcsolatok közös szava Gézer 14, seol 64, Sion 139 vers; a
+# másolatoké natah („kifeszít”) 205, mávet („halál”) 150 — ezért a határ 150 (szigorúan alatta). Kis mintán kalibrált.
+RITKA_STRONG = 150
+_STRONG = None
+
+
+def strong_index():
+    """({STEP-vers: {Strong}}, {Strong: versszám}) a TAHOT és a TAGNT kivonatból, a grammatikai Strongok nélkül.
+    A TAHOT/TAGNT kulcsa a magyar igehely (Károli-vers); a STEP-alakra a normalizáló tábla fordít."""
+    global _STRONG
+    if _STRONG is None:
+        norm = hu_step()
+        gram = {m[0] for m in sorok('adat/grammatikai_strongok.tsv') if m and m[0][:1] in 'HG'}
+        versek = collections.defaultdict(set)
+        for rel in ('konkordancia/TAHOT_kivonat.tsv', 'konkordancia/TAGNT_kivonat.tsv'):
+            for m in sorok(rel):
+                if len(m) < 2:
+                    continue
+                r = re.match(r'(\S+) (\d+):(\d+)$', m[0])
+                s = re.match(r'[HG]\d+', m[1] or '')
+                if not r or not s or r.group(1) not in norm or s.group(0) in gram:
+                    continue
+                versek['%s.%s.%s' % (norm[r.group(1)], r.group(2), r.group(3))].add(s.group(0))
+        gyak = collections.Counter(x for v in versek.values() for x in v)
+        _STRONG = (versek, gyak)
+    return _STRONG
+
+
+def lexikai_tamogatas(forras, cel):
+    """A forrásvers és a cél (a tartomány minden verse, egy fejezeten belül) közös ritka tartalmi Strong-számai.
+    Ha van ilyen, a cél a forrással lexikailag is összefügg: nem lehet pusztán egy másik vers listájának másolata
+    (pl. Hab 2:17 → Ézs 33:1, közös ige: „pusztít”; 1Krón 20:4 → Józs 21:21, közös név: Gézer)."""
+    versek, gyak = strong_index()
+    kezd = step_ref(cel.split('-')[0])
+    veg = step_ref(cel.split('-')[-1]) or kezd
+    if not kezd:
+        return set()
+    utolso = veg[2] if veg[0] == kezd[0] and veg[1] == kezd[1] else kezd[2]
+    cel_strong = set()
+    for v in range(kezd[2], utolso + 1):
+        cel_strong |= versek.get('%s.%d.%d' % (kezd[0], kezd[1], v), set())
+    return {s for s in versek.get(forras, set()) & cel_strong if gyak[s] < RITKA_STRONG}
+
+
 def gyanus_forrasok(kh=None, tsk=None):
-    """{forrásvers: [azonos listájú, támogatott forrásversek]} a gyanús (másolt) listákra."""
+    """{forrásvers: [azonos listájú, támogatott forrásversek]} a gyanús (másolt) listákra.
+    Pontosítás (az 52 lapsor kézi igazolása, 2026-11-02): nem gyanús az a lista, amelynek valamelyik eleme
+    ritka tartalmi Strong-számon osztozik a forrásverssel (lexikai támogatás)."""
     if kh is None:
         kh, tsk = betolt()
     csoport = collections.defaultdict(list)
@@ -109,7 +156,7 @@ def gyanus_forrasok(kh=None, tsk=None):
         if not jo:
             continue
         for k in tagok:
-            if not tam[k]:
+            if not tam[k] and not any(lexikai_tamogatas(k, c) for c in kh[k]):
                 ki[k] = jo
     return ki
 
