@@ -61,7 +61,22 @@
 
 ### 0.5 Feed (muhely_allapot)
 
-l. 0.5-kiegészítés lent, ha a futás lezárult.
+`scope=motivum:TEREMT-002 | forras=python eszkozok/muhely_allapot.py --motivum TEREMT-002 --kimenet <repón kívüli> --nincs-gh | ts=2026-11-02T11:01Z`
+
+**4/8 zöld** („a nyolc ellenőrzési lépésből 4 teljesül”).
+
+| # | Kritérium | Állapot | Érték |
+|---|---|---|---|
+| 1 | szabály-ellenőrzés (`ellenoriz.py` 1–21) | zöld | 0 HIBA |
+| 2 | CI-ellenőrzés (E2–E29) | zöld | 0 HIBA, 43 jelentés |
+| 3 | egyforrású, nulla-diff újragenerálás | piros | nincs `lexikon/TEREMT-002_TUDOMANYOS.md` |
+| 4 | nincs nyitott jelölt | zöld | 0 |
+| 5 | határ: 0 nyitott kérdés | nincs mérő | nincs `naplok/HATAR_TEREMT-002.md` |
+| 6 | olvasói blokkok, kiejtés, fordítás | nincs mérő | nincs lexikonlap |
+| 7 | nincs nyitott lektori kérdés | nincs mérő | nincs `naplok/LEKTOR_TEREMT-002.tsv` |
+| 8 | nincs nyitott DT / ⛔ | zöld | 0 |
+
+**E7 — a 8/8 nem a #12 kezében van.** Az 5. és a 7. kritérium a `hatar-ellenor`, illetve a lektor kimenete, ezeket a felhasználó indítja. A #12 a 3. és a 6. kritériumot tudja zöldre vinni (6/8). A DT-F12e (1) ehhez igazodik: a #12 6/8-ig visz, a 8/8 és a kiadás-sor a lektor-kör után jön.
 
 ### ⛔ DT-F12a–f
 
