@@ -1,4 +1,4 @@
-<title>Lektor-felület</title>
+<title>Kiadó</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
 <style>
@@ -52,6 +52,16 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
 .allapot { font: 12px var(--adat); color: var(--halvany); }
 .allapot.hiba { color: var(--elvet); }
+.hatarblokk { background: var(--papir); border: 1px solid var(--vonal); border-radius: var(--sugar); padding: 8px 12px; display: grid; gap: 4px; }
+.hatarblokk > b { font: 500 12px var(--adat); color: var(--halvany); text-transform: uppercase; letter-spacing: .04em; }
+.hatarblokk p { margin: 0; overflow-wrap: anywhere; font-size: 13px; }
+.hatarblokk p.prov { font: 11px/1.4 var(--adat); color: var(--halvany); }
+.hatarblokk ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13px; }
+.hatarblokk .gombnev { font-weight: 600; }
+.torles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--halvany); }
+.torol { font: 500 13px var(--szoveg); min-height: 36px; padding: 6px 12px; border-radius: var(--sugar); border: 1px solid var(--vonal);
+  background: var(--lap); color: var(--elvet); cursor: pointer; }
+.torol.igen { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
 button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
 .also { position: fixed; left: 0; right: 0; bottom: 0; background: var(--lap); border-top: 1px solid var(--vonal);
   padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px));
@@ -73,19 +83,41 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 .gond > span { font: 600 16px/1.4 var(--cim); overflow-wrap: anywhere; }
 .javaslat > span { overflow-wrap: anywhere; }
 .figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; margin: 0 0 12px; }
+.bal, .jobb, .lab { display: grid; gap: 10px; min-width: 0; }
+/* Széles képernyő: a tartalom kiszélesedik (legfeljebb 1240 px), a lektori kártyák két hasábban, a határ-kártya teljes szélességben, benne a kérdés
+   és a gombok balra, a jelenlegi határ és a következmények jobbra; a szűrők két hasábban. A folyó szöveg sora így sem lesz ~75 karakternél hosszabb
+   (a kártyák hasábja ~600 px). Telefonon minden marad egy hasábban. */
+@media (min-width: 1100px) {
+  .keret, .also-belso { max-width: 1240px; }
+  /* sorhossz-korlát em-ben (a `ch` a számjegy szélessége, azzal ~100 karakter férne egy sorba): ~75 karakter */
+  .bev, .suga { max-width: 32em; }
+  .kerdes p, .javaslat > span, .hatarblokk p, .hatarblokk li { max-width: 30em; }
+  .gond > span { max-width: 33em; }
+  .szurok { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+  .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .lista > .ures { grid-column: 1 / -1; }
+  .tetel.hatar { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr;
+    grid-template-areas: "fej fej" "bal jobb" "lab jobb"; column-gap: 24px; align-items: start; }
+  .tetel.hatar > .fej { grid-area: fej; }
+  .tetel.hatar > .bal { grid-area: bal; }
+  .tetel.hatar > .jobb { grid-area: jobb; }
+  .tetel.hatar > .lab { grid-area: lab; }
+}
 @media (prefers-reduced-motion: no-preference) { .gombok button, .szurosor button { transition: background .15s, border-color .15s; } }
 </style>
 
 <div class="keret">
-  <h1>Lektor-felület</h1>
+  <h1>Kiadó</h1>
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
   <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
+  <div class="szurok">
   <div class="szurosor" id="sz-kiadas"><span class="cim">kiadás</span></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
   <div class="szurosor" id="sz-cimke"><span class="cim">típus</span></div>
   <div class="szurosor" id="sz-allapot"><span class="cim">állapot</span></div>
+  </div>
   <div class="lista" id="lista"></div>
 </div>
 
@@ -98,7 +130,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 
 <script>
 const ADAT = __ADAT__;
-const LAP_URL = __LAP_URL__;
+const LAP_URLOK = __LAP_URLOK__;  // motívum -> a saját lapnézete; ami nincs benne, annak nincs linkje
 const TIPUSOK = [
   ['elfogadom', 'Elfogadom'], ['elvetem', 'Elvetem'], ['visszakerdezek', 'Visszakérdezek'], ['sajat', 'Saját szöveg']
 ];
@@ -114,8 +146,10 @@ const GOMBOK = {
   dontott: [['elfogadom', 'Marad a rögzített döntésem'], ['elvetem', 'Mégis másképp — gondold újra'], VISSZA, SAJAT],
 };
 const tipusok = (k) => GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
-const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
+const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts, db}; db: true, ha az adatbázisban is megvan
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
+const torlesKerdes = {};  // kerdes_id -> a „Válasz törlése” megerősítése nyitva
+const DOC_KERDES = {};    // adatbázis-dokumentum azonosító -> kerdes_id (a törölt dokumentumhoz)
 let db = null;
 let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi', kiadas: '*' };
 const KIADAS_CIMKE = { '1': '1. kiadás', '2': '2. kiadás', '': 'kiadáson kívül' };
@@ -159,6 +193,29 @@ function kerdesDoboz(k) {
   return d;
 }
 
+// Határ-kártya: „A jelenlegi határ” (gépileg az adatból, a generátor tölti; a proveniencia-sor halványan) és „Ha így döntesz…” (gombonként
+// a következmény; az első kettő a kézi összefoglalóból, a két utolsó minden határ-kártyán ugyanaz).
+const KOV_ALTALANOS = {
+  visszakerdezek: 'Semmi nem változik: a kérdésedre a következő körben választ kapsz; addig a határ-kérdés nem zárul le, és a lezárás vár.',
+  sajat: 'Az adat vagy a lap a te leírásod szerint változik; a változás az átvezetéskor kerül be, és a következő körben látod.',
+};
+function jelenlegiBlokk(k) {
+  const d = el('div', { class: 'hatarblokk' }, el('b', {}, 'A jelenlegi határ'));
+  if (!k.hatar_jelenlegi) { d.append(el('p', {}, 'Ennél a kártyánál a jelenlegi határ nem olvasható ki.')); return d; }
+  k.hatar_jelenlegi.split(' ⏎ ').forEach((s) => d.append(el('p', { class: s.startsWith('(proveniencia:') ? 'prov' : '' }, szoveges(s))));
+  return d;
+}
+function kovetkezmenyBlokk(k) {
+  const d = el('div', { class: 'hatarblokk' }, el('b', {}, 'Ha így döntesz…'));
+  const ul = el('ul', {});
+  tipusok(k).forEach(([kod, cimke]) => {
+    const s = kod === 'elfogadom' ? k.kov_elfogadom : kod === 'elvetem' ? k.kov_elvetem : KOV_ALTALANOS[kod];
+    ul.append(el('li', {}, el('span', { class: 'gombnev' }, cimke + ': '), s || 'a következmény ennél a kártyánál még nincs leírva.'));
+  });
+  d.append(ul);
+  return d;
+}
+
 function allapotSzoveg(k) {
   const v = valaszok[k.kerdes_id];
   if (!v) return '';
@@ -174,33 +231,74 @@ function rajzol() {
   if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
   lat.forEach((k) => {
     const v = valaszok[k.kerdes_id];
-    const t = el('section', { class: 'tetel' + (v ? ' kesz' : ''), 'aria-label': k.kerdes_id });
+    const hatar = k.forras === 'hatar';
+    const t = el('section', { class: 'tetel' + (v ? ' kesz' : '') + (hatar ? ' hatar' : ''), 'aria-label': k.kerdes_id });
+    // Három rész: bal (a kérdés), jobb (csak határ-kártyán: a jelenlegi határ és a következmények), lab (gombok, válasz, törlés).
+    // Telefonon egymás alatt (bal, jobb, lab); széles képernyőn a határ-kártyán a jobb rész a bal és a lab mellett áll.
+    const bal = el('div', { class: 'bal' });
+    const lab = el('div', { class: 'lab' });
     const fej = el('div', { class: 'fej' }, el('span', { class: 'id' }, halvanyId(k.kerdes_id)), el('span', {}, k.forras),
       el('span', {}, k.motivum));
     fej.append(el('span', { class: 'kiadasjel k' + (k.kiadas || '0') }, KIADAS_CIMKE[k.kiadas || '']));
     if (k.hely) fej.append(el('span', {}, k.hely));
-    if (LAP_URL) fej.append(el('a', { href: LAP_URL, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
-    t.append(fej, kerdesDoboz(k));
-    if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
+    const lapUrl = Object.prototype.hasOwnProperty.call(LAP_URLOK, k.motivum) ? LAP_URLOK[k.motivum] : '';
+    if (lapUrl) fej.append(el('a', { href: lapUrl, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
+    t.append(fej, bal);
+    bal.append(kerdesDoboz(k));
+    if (hatar) t.append(el('div', { class: 'jobb' }, jelenlegiBlokk(k), kovetkezmenyBlokk(k)));
+    t.append(lab);
+    if (k.valasz) bal.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
     const gombok = el('div', { class: 'gombok' });
     tipusok(k).forEach(([kod, cimke]) => {
       gombok.append(el('button', { type: 'button', class: kod, 'aria-pressed': String(!!v && v.tipus === kod), onclick: () => valaszt(k, kod) }, cimke));
     });
-    t.append(gombok);
+    lab.append(gombok);
     const kell = (v && (v.tipus === 'visszakerdezek' || v.tipus === 'sajat')) || nyitottSzoveg[k.kerdes_id];
     if (kell) {
       const ta = el('textarea', { 'aria-label': 'Válasz szövege', placeholder: (nyitottSzoveg[k.kerdes_id] === 'visszakerdezek' || (v && v.tipus === 'visszakerdezek')) ? 'Mit nem értesz, mit kérdezel? A következő körben választ kapsz.' : 'Írd le, mi legyen.' });
       ta.value = v ? v.szoveg || '' : '';
       const jelzes = el('span', { class: 'allapot' });
-      t.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
+      lab.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
         el('button', { type: 'button', class: 'mentes', onclick: () => mentSzoveg(k, ta.value, jelzes) }, 'Mentés'), jelzes)));
     } else if (v) {
-      t.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
+      lab.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
     }
+    if (v && k.allapot !== 'atvezetve') lab.append(torlesSor(k));
     lista.append(t);
   });
   statusz(lat);
   osszesito();
+}
+
+// A megválaszolt kártya alja: „Válasz törlése”, majd helyben megerősítés (a böngésző confirm() ablaka a beágyazott lapon tiltott lehet).
+// Az átvezetett kártyán nincs: a repóba már átvezetett döntést a törlés nem vonná vissza.
+function torlesSor(k) {
+  const sor = el('div', { class: 'torles' });
+  if (!torlesKerdes[k.kerdes_id]) {
+    sor.append(el('button', { type: 'button', class: 'torol', onclick: () => { torlesKerdes[k.kerdes_id] = true; rajzol(); } }, 'Válasz törlése'));
+    return sor;
+  }
+  sor.append(el('span', {}, 'Biztosan törlöd a válaszod? A kártya újra megválaszolatlan lesz.'),
+    el('button', { type: 'button', class: 'torol igen', onclick: () => torol(k) }, 'Igen, törlöm'),
+    el('button', { type: 'button', class: 'torol', onclick: () => { delete torlesKerdes[k.kerdes_id]; rajzol(); } }, 'Mégse'));
+  return sor;
+}
+async function torol(k) {
+  delete torlesKerdes[k.kerdes_id];
+  if (db) {
+    try {
+      await db.doc('valaszok/' + docId(k.kerdes_id)).delete();
+    } catch (e) {
+      uzen('A válasz törlése nem sikerült (' + ((e && e.code) || 'hiba') + '): a válaszod megmaradt.', true);
+      rajzol();
+      return;
+    }
+  }
+  delete valaszok[k.kerdes_id];
+  delete nyitottSzoveg[k.kerdes_id];
+  lsIr();
+  uzen(db ? 'A válasz törölve.' : 'A válasz törölve ezen a lapon (az adatbázis nem érhető el).');
+  rajzol();
 }
 
 function statusz(lat) {
@@ -222,6 +320,7 @@ async function ment(k, v) {
   if (!db) return true;
   try {
     await db.doc('valaszok/' + docId(k.kerdes_id)).set({ kerdes_id: k.kerdes_id, tipus: v.tipus, szoveg: v.szoveg || '', ts: v.ts });
+    if (valaszok[k.kerdes_id] === v) { v.db = true; lsIr(); }
     return true;
   } catch (e) {
     if (e && (e.code === 'invalid_argument' || e.code === 'revoked' || e.code === 'not_granted')) db = null;
@@ -285,9 +384,17 @@ async function indul() {
   if (!db) { figyelmeztet('Az adatbázis most nem érhető el: a válaszaid csak ezen a lapon élnek. Az alsó összesítő sort másold ki.'); rajzol(); return; }
   let kesz = false;
   const idozito = setTimeout(() => { if (!kesz) figyelmeztet('Az adatbázist még nem érem el; ami látszik, lehet, hogy nem friss.'); }, 10000);
+  ADAT.forEach((k) => { DOC_KERDES[docId(k.kerdes_id)] = k.kerdes_id; });
   db.collection('valaszok').onSnapshot((snap) => {
-    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts }; });
-    if (!snap.metadata.fromCache) { kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true; }
+    const bent = new Set();
+    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) { bent.add(x.kerdes_id); valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts, db: true }; } });
+    // máshol (másik eszközön) törölt válasz: a dokumentum eltűnt, a helyi másolat sem maradhat
+    snap.docChanges().forEach((c) => { if (c.type === 'removed') { const kid = DOC_KERDES[c.doc.id]; if (kid && !bent.has(kid)) delete valaszok[kid]; } });
+    if (!snap.metadata.fromCache) {
+      // a szerver nézete a mérvadó arra, ami valaha az adatbázisban volt; a csak helyben élő (db nélkül mentett) válasz marad
+      Object.keys(valaszok).forEach((kid) => { if (valaszok[kid].db && !bent.has(kid)) delete valaszok[kid]; });
+      kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true;
+    }
     lsIr();
     rajzol();
   }, (e) => { kesz = true; clearTimeout(idozito); db = null; figyelmeztet('Az adatbázis hibát adott (' + (e && e.code) + '): a válaszok csak ezen a lapon élnek.'); rajzol(); });

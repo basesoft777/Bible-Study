@@ -183,6 +183,11 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def vers_lap(konyv, fej, vers):
         return _fejezet(konyv, fej, vers)
 
+    @app.get('/tanulmany/<tid>')
+    def tanulmany_lap(tid):
+        ut = aktualis_ut()
+        return kiszolgal({}, lambda reteg, szint: gyar.tanulmany_lap(tid, reteg, szint, ut))
+
     @app.get('/szo/<strong>')
     def szo_lap(strong):
         ut = aktualis_ut()

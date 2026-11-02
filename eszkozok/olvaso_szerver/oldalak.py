@@ -19,8 +19,9 @@ import arculat as arculat_modul
 import blokkok
 import kereses as kereses_modul
 import lekerdezesek as q
+import tanulmany_oldal as oldal_megjelenito
 
-SABLON_VERZIO = 'f134-m4a'
+SABLON_VERZIO = 'f149-m3'
 # nézetek helyett rétegek (#134, DT294, DT-F134f (b), DT-F134g (c)): egyetlen réteg, az interlineáris sor (`il`); az alap a folyó
 # Károli-szöveg réteg nélkül. A réteg-állapot szöveg: a bekapcsolt rétegek vesszővel, a RETEGEK sorrendjében ('' = nincs réteg).
 RETEGEK = ('il',)
@@ -31,7 +32,7 @@ NEZET_ALNEVEK = {'olvaso': '', 'interlinearis': 'il', 'munkaasztal': ''}
 # a részletek lapja (#134 M1, DT293): a versmód fülei és a blokkok kiosztása (a mockup 9. változatának FULBLOKK-ja, M0 2.1);
 # a ki nem osztott vers-blokk a „Vers” fülre kerül
 VERS_FULEK = (('vers', 'Vers'), ('kh', 'Kereszthiv.'), ('temak', 'Témák'), ('motivum', 'Motívum'))
-FULBLOKK = {'vers.kh': 'kh', 'vers.tsk': 'kh', 'vers.nave': 'temak', 'vers.tipnr': 'temak', 'vers.motivum': 'motivum', 'vers.kapcsolat': 'motivum'}
+FULBLOKK = {'vers.kh': 'kh', 'vers.tsk': 'kh', 'vers.nave': 'temak', 'vers.tipnr': 'temak', 'vers.motivum': 'motivum', 'vers.kapcsolat': 'motivum', 'vers.tanulmany': 'motivum'}
 # a lap `?ful=` értékei: a szómód, a versmód fülei, és az üres állapot nyitott lapon (kis képernyőn a forrás és a számlálók)
 FUL_ERTEKEK = ('szo', 'info') + tuple(k for k, _ in VERS_FULEK)
 # a navigáció (#134 M2): a könyvválasztó és a kánon-sáv műfaji csoportjai a kánon sorrendjében (a mockup 9. változatának MUFAJ-a);
@@ -172,6 +173,8 @@ class OldalGyar:
                                  trim_blocks=True, lstrip_blocks=True)
         # a regisztert egyszer ellenőrzi: minden tábla licencsora megvan (hiány indulási hiba)
         for b in blokkok.REGISZTER + [blokkok.SZOVEG_FORRAS, blokkok.SZOVEG_PAR] + list(blokkok.KERESES.values()):
+            if b.hianyzik(self.kozos):
+                continue                                  # opcionális blokk, amelynek táblái a régebbi adatbázisban még nincsenek (F149)
             blokkok.forras_sor(b, self.kozos)
         # elgépelt blokk-azonosító a hozzáférési konfigban indulási hiba (ne maradjon csendben nyitva); a keresési módok azonosítói is ismertek
         self.hozz.ellenoriz_blokkok(blokkok.ismert_azonositok())
@@ -181,14 +184,14 @@ class OldalGyar:
     # -- belső ---------------------------------------------------------------------------------------------------------
     def _latszik(self, blokk_id, szint):
         b = blokkok.BLOKK_ID[blokk_id]
-        return (not b.kiadas_kizart(self.kiadas) and self.hozz.lathato(b.id, szint)
+        return (not b.hianyzik(self.kozos) and not b.kiadas_kizart(self.kiadas) and self.hozz.lathato(b.id, szint)
                 and all(self._latszik(k, szint) for k in b.kovet))
 
     def _blokk_lista(self, oldal, K, szint):
         """[(blokk, html)] a látható blokkokra, a regiszter sorrendjében."""
         ki = []
         for b in blokkok.blokkok_oldalra(oldal):
-            if b.kiadas_kizart(self.kiadas):
+            if b.kiadas_kizart(self.kiadas) or b.hianyzik(self.kozos):
                 continue
             if b.vers_kell and not K.ig:
                 continue                                  # vers-kontextus nélkül nincs értelme (pl. „Ebben a versben”)
@@ -308,7 +311,7 @@ class OldalGyar:
             raise NemTalalhato('ismeretlen könyv')
         return self._render('konyv.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fejezetek=self.kozos.fejezet_szam[kk], reteg=reteg, ut=ut, szint=szint, cim=self.kozos.nev[kk])
 
-    def navigacio(self, kk, fej, elozo, kovetkezo, jeloles):
+    def navigacio(self, kk, fej, elozo, kovetkezo, jeloles, tan_jeloles=False):
         """A fejezet-lap navigációja (#134 M2): 900 px alatt a fejezetcímre nyíló navigációs lap, fölötte a fejléc. A könyvválasztó
         (műfaji csoportok, a könyv fejezetei), a kánon-sáv (a könyvek szélessége a fejezetszámukkal arányos, SVG-téglalapok: a CSP
         miatt `style=""` nélkül) és a kereső kliensoldali javaslatának könyvlistája (DT-F134k (b)) ugyanabból a meglévő
@@ -337,7 +340,7 @@ class OldalGyar:
             mufajok.append({'kod': kod, 'nev': nev, 'konyvek': sor})
         return {'kk': kk, 'slug': self.kozos.slug[kk], 'nev': self.kozos.nev[kk], 'fej': fej, 'elozo': elozo, 'kovetkezo': kovetkezo,
                 'fejezetek': [f for f, _ in self.kozos.fejezet_szam[kk]], 'mufajok': mufajok, 'kanon': kanon, 'kanon_w': '%g' % max(x - 1, 1),
-                'jeloles': jeloles}
+                'jeloles': jeloles, 'tan_jeloles': tan_jeloles}
 
     def fejezet_lap(self, slug, fej, vers, reteg, szint, szo, ful, ut):
         """A fejezet-lap: a Károli-szöveg (réteg nélkül folyó szöveg, az `il` réteggel versenkénti interlineáris csempék) és a
@@ -369,6 +372,10 @@ class OldalGyar:
                 van_par = van_par or bool(parok)
                 ws.append({'sz': sz, 'szo': szo_, 'kiir': kiir, 'szokoz': szokoz, 'fo': fo[0] if fo else None, 'biz': fo[1] if fo else None, 'parok': parok})
             vlista.append({'ig': ig, 'vers': v, 'szoveg': szoveg, 'szavak': ws, 'van_par': van_par})
+        # a tanulmányok margójele (F149, 3.3): a tartomány első verse előtt; a `vers.tanulmany` blokk láthatóságát követi, a tábla hiánya üres
+        sav = q.tanulmany_sav(con, kk, fej) if self._latszik('vers.tanulmany', szint) else {}
+        for v in vlista:
+            v['tan'] = sav.get(v['vers'], [])
         # az Interlineáris csempék az eredeti szavak és a párosítás blokkjainak láthatóságát követik (zárt blokknál nem jelennek meg)
         csempe_ok = self._latszik('vers.eredeti', szint) and self._latszik('vers.par', szint)
         parositatlan = q.fejezet_parositatlan(con, kk, fej) if (il and csempe_ok) else {}
@@ -403,8 +410,56 @@ class OldalGyar:
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, reteg=reteg,
                             szo=szo_n if mod == 'szo' else None, lap_html=lap_html, lap_cim=lap_cim, lap_al=lap_al, mod=mod, vers_ful=vers_ful,
                             lap_nyitva=(mod != 'ures' or ful == 'info'), ures_fo=cim, ures_al='Útmutató, forrás és számlálók',
-                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek, nav=self.navigacio(kk, fej, elozo, kovetkezo, not il),
+                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek, nav=self.navigacio(kk, fej, elozo, kovetkezo, not il, bool(sav)),
                             szint=szint, cim=cim, szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, il))
+
+    # -- tanulmány-oldal (F149 M3) -----------------------------------------------------------------------------------
+    def _tan_kar(self, con):
+        """A hivatkozás-felismerés Károli-indexe (egyszer épül): a verslista és a könyvnevek az adatbázisból."""
+        if getattr(self, '_tan_kar_obj', None) is None:
+            kulcsok = [ig for ig, _ in sorted(self.kozos.vers_sorrend.items(), key=lambda x: x[1])]
+            self._tan_kar_obj = blokkok.tanulmany_regiszter.Karoli(kulcsok, tabla_sorok=q.konyv_tabla_sorok(con))
+        return self._tan_kar_obj
+
+    def tanulmany_lap(self, tid, reteg, szint, ut):
+        """A /tanulmany/<id> oldal: a tanulmány kézi forrásából generált nézet; az igehely-hivatkozások az olvasó versére mutatnak
+        (visszahorgony). A tanulmány a `vers.tanulmany` blokk szintjén látszik; a táblák hiánya (régebbi építés) 404."""
+        if not re.match(r'^[A-Za-z0-9_-]{1,80}$', tid or ''):
+            raise NemTalalhato('ismeretlen tanulmány')
+        b = blokkok.BLOKK_ID['vers.tanulmany']
+        if b.hianyzik(self.kozos) or not self._latszik('vers.tanulmany', szint):
+            raise NemTalalhato('ismeretlen tanulmány')
+        con = self.con()
+        t = q.tanulmany_van(con, tid)
+        szoveg = q.tanulmany_szoveg(con, tid) if t else None
+        if not t or szoveg is None:
+            raise NemTalalhato('ismeretlen tanulmány')
+        T = blokkok.tanulmany_regiszter
+        kar = self._tan_kar(con)
+        tartomanyok = q.tanulmany_tartomanyok(con, tid)
+
+        def href(kulcs):
+            m = re.match(r'^(\S+) (\d+):(\d+)$', kulcs)
+            sl = self.kozos.slug.get(m.group(1)) if m else None
+            return '/%s/%s/%s#v%s' % (sl, m.group(2), m.group(3), m.group(3)) if sl else None
+        fejezetek = {(kez.split(' ')[0], int(kez.split(' ')[1].split(':')[0])) for kez, veg in tartomanyok} | \
+                    {(veg.split(' ')[0], int(veg.split(' ')[1].split(':')[0])) for kez, veg in tartomanyok}
+        egy = None
+        if len({k for k, _ in fejezetek}) == 1:
+            k0 = next(iter(fejezetek))[0]
+            fs = {f for k, f in fejezetek}
+            if len(fs) == 1:
+                egy = (k0, next(iter(fs)))
+        alap = tartomanyok[0][0].split(' ')[0] if tartomanyok else None
+        html, toc = oldal_megjelenito.Megjelenito(T, kar, href, alap, egy).megjelenit(szoveg)
+        # a tartományok linkjei az olvasóba (a visszahorgony fejléce)
+        olvaso = []
+        for kez, veg in tartomanyok:
+            u = href(kez)
+            if u:
+                olvaso.append((kez if kez == veg else '%s – %s' % (kez, veg), u))
+        jegy = blokkok.tanulmany_oldal_jegy_html(self.kozos)
+        return self._render('tanulmany.html', t=t, html=html, toc=toc, olvaso=olvaso, jegy=jegy, reteg=reteg, ut=ut, szint=szint, cim=blokkok.tanulmany_nev(t[3], t[2]))
 
     def szamlalok(self, igehelyek, szint=None):
         """A fejléc-számlálók a versek halmazára (a #60 pilot szabálya): héber szó-lapok (a versek héber szavai, nyelvtani nélkül), görög

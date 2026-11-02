@@ -56,6 +56,7 @@ import nave_bontas as NB  # noqa: E402
 import zsolt_felirat_halmaz as ZFH  # noqa: E402
 import ellenoriz as E  # noqa: E402
 import tsk_kulcs as TK  # noqa: E402
+import tanulmany_regiszter as TR  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
 
@@ -111,6 +112,9 @@ SZARMAZTATOTT_LICENC = {
     'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
     'igehely_tartomany': ['projekt_adat'], 'normalizalas_jelentes': ['projekt_adat'],
+    # F149: a tanulmány-regiszter és a vers -> szakasz index a tanulmányok fájlneveiből/címsoraiból generált nézet
+    'tanulmany': ['projekt_adat'], 'tanulmany_tartomany': ['projekt_adat'], 'tanulmany_hivatkozas': ['projekt_adat'],
+    'tanulmany_szoveg': ['projekt_adat'],
     'meta': ['projekt_adat'], 'fts_motivum': ['projekt_adat'],
     'oshl_bdb_igehelyek': ['OSHL_BDB'], 'oshl_lexikalis_index': ['OSHL'],
     # F92 (DT-F92a): az olvasoi lapok hiany-tablai
@@ -498,6 +502,7 @@ class Epito(object):
         self._adat_tablak()
         self._olvasoi_tablak()
         self._tartomanyok()
+        self._tanulmanyok()
         self._fts()
         self._jelentes_tabla()
         self._meta()
@@ -1269,6 +1274,14 @@ class Epito(object):
         self.tabla('igehely_tartomany', [('forras_tabla', 'TEXT'), ('forras_kulcs', 'TEXT'),
                                          ('oszlop', 'TEXT'), ('ertek', 'TEXT'), ('igehely', 'TEXT')],
                    sorok, SZARMAZTATOTT_LICENC['igehely_tartomany'], ['igehely', 'forras_tabla, forras_kulcs'])
+
+    # -- tanulmány-regiszter (F149) -------------------------------------------------------
+    def _tanulmanyok(self):
+        e = TR.kinyer(self.gyoker, self.vi.lista)
+        for fajl, ok in e.kihagyott:
+            self.jelent_norm('tanulmany', fajl, 'nem kerül a regiszterbe: ' + ok)
+        for nev, oszl, sorok, indexek in TR.tablak(e):
+            self.tabla(nev, oszl, sorok, SZARMAZTATOTT_LICENC[nev], indexek)
 
     # -- FTS -----------------------------------------------------------------------------
     def _fts(self):
