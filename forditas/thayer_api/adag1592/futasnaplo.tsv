@@ -1,0 +1,12 @@
+ts	custom_id	modell	effort	bemenet_token	cache_olvasas	cache_iras	kimenet_token	stop_reason	koltseg_usd	futo_osszeg_usd
+2026-11-02T10:11:56+00:00	B002-p1	claude-sonnet-5-5	medium	47425	0	0	16484	end_turn	0.129845	0.129845
+2026-11-02T10:11:56+00:00	B001-p1	claude-sonnet-5-5	medium	59260	0	0	21418	end_turn	0.166350	0.296195
+2026-11-02T10:11:56+00:00	B003-p1	claude-sonnet-5-5	medium	35805	0	0	9433	end_turn	0.082970	0.379165
+2026-11-02T10:11:56+00:00	B004-p1	claude-sonnet-5-5	medium	19197	0	0	1776	end_turn	0.028077	0.407242
+2026-11-02T10:18:03+00:00	G5009-c1-p2	claude-sonnet-5-5	medium	13774	0	0	426	end_turn	0.015904	0.423146
+2026-11-02T10:18:03+00:00	G4270-c1-p2	claude-sonnet-5-5	medium	14346	0	0	800	end_turn	0.018346	0.441492
+2026-11-02T10:18:03+00:00	G0163-c1-p2	claude-sonnet-5-5	medium	13501	0	0	540	end_turn	0.016201	0.457693
+2026-11-02T10:18:03+00:00	G5086-c1-p2	claude-sonnet-5-5	medium	10717	0	0	169	end_turn	0.011562	0.469255
+2026-11-02T10:18:03+00:00	G2837-c1-p2	claude-sonnet-5-5	medium	16262	0	0	724	end_turn	0.019882	0.489137
+2026-11-02T10:18:03+00:00	G2917-c1-p2	claude-sonnet-5-5	medium	20689	0	0	2022	end_turn	0.030799	0.519936
+2026-11-02T10:18:03+00:00	G2253-c1-p2	claude-sonnet-5-5	medium	10827	0	0	231	end_turn	0.011982	0.531918

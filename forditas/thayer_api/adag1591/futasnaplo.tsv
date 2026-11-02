@@ -1,0 +1,13 @@
+ts	custom_id	modell	effort	bemenet_token	cache_olvasas	cache_iras	kimenet_token	stop_reason	koltseg_usd	futo_osszeg_usd
+2026-11-02T10:11:48+00:00	B004-p1	claude-sonnet-5-5	high	19197	0	0	4987	end_turn	0.044132	0.044132
+2026-11-02T10:11:48+00:00	B002-p1	claude-sonnet-5-5	high	47425	0	0	22664	end_turn	0.160745	0.204877
+2026-11-02T10:11:48+00:00	B003-p1	claude-sonnet-5-5	high	35805	0	0	14311	end_turn	0.107360	0.312237
+2026-11-02T10:11:48+00:00	B001-p1	claude-sonnet-5-5	high	59260	0	0	25366	end_turn	0.186090	0.498327
+2026-11-02T10:17:57+00:00	G4270-c1-p2	claude-sonnet-5-5	high	14382	0	0	2153	end_turn	0.025147	0.523474
+2026-11-02T10:17:57+00:00	G1463-c1-p2	claude-sonnet-5-5	high	11917	0	0	875	end_turn	0.016292	0.539766
+2026-11-02T10:17:57+00:00	G5086-c1-p2	claude-sonnet-5-5	high	10714	0	0	991	end_turn	0.015669	0.555435
+2026-11-02T10:17:57+00:00	G2253-c1-p2	claude-sonnet-5-5	high	10841	0	0	328	end_turn	0.012481	0.567916
+2026-11-02T10:17:57+00:00	G2722-c1-p2	claude-sonnet-5-5	high	19347	0	0	1886	end_turn	0.028777	0.596693
+2026-11-02T10:17:57+00:00	G5009-c1-p2	claude-sonnet-5-5	high	13798	0	0	469	end_turn	0.016143	0.612836
+2026-11-02T10:17:57+00:00	G0163-c1-p2	claude-sonnet-5-5	high	13555	0	0	795	end_turn	0.017530	0.630366
+2026-11-02T10:17:57+00:00	G2837-c1-p2	claude-sonnet-5-5	high	16238	0	0	1729	end_turn	0.024883	0.655249
