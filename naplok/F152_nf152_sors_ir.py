@@ -16,7 +16,7 @@ SORS = {
     'N-F152a': 'nyitva marad; rendszerszintű olvasó-szerver tétel (#149-cel), nem az ISTENTISZT-001 2. kiadásának feltétele',
     'N-F152b': 'nyitva marad; szerkezeti döntés minden lexikonra, nem az ISTENTISZT-001 2. kiadásának feltétele',
     'N-F152c': '**az ISTENTISZT-001 2. kiadására tartozik**, a lektori kérdésekkel (`naplok/KIADAS_ISTENTISZT-001_lektor.md`) együtt (DT-F152d)',
-    'N-F152d': 'nyitva marad, részben megvalósult: a #125 a mérőt (`eszkozok/proza_lefedettseg.py`, DT471) és a MUNKAMENET C-z lépését elkészítette; a JELENTÉS szintű ellenőrző-szabály (az `ellenorzes/` alatt) nincs meg. A lezárás a hiányzó rész ellenőrzése után',
+    'N-F152d': 'nyitva marad, részben megvalósult: a #125 a mérőt (`eszkozok/proza_lefedettseg.py`, DT471) és a MUNKAMENET C-z lépését elkészítette; a JELENTÉS szintű ellenőrző-szabály (az `eszkozok/ellenorzes/` alatt) nincs meg. A lezárás a hiányzó rész ellenőrzése után',
     'N-F152e': 'nyitva marad, részben megvalósult: a (2) a MUNKAMENET C-w lépése (#125); az (1), a motívumonkénti értelmező feladat mint a „kész” állapot feltétele, nincs rögzítve',
     'N-F152f': 'nyitva marad; generátor-tétel minden lexikonra, nem az ISTENTISZT-001 2. kiadásának feltétele',
     'N-F152g': 'nyitva marad; a `sablonok/`-ban kilenclépéses prózasablon nincs (a #125 körébe tartozik)',

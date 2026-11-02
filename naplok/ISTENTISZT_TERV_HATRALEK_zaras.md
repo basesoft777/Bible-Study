@@ -33,7 +33,7 @@ Egyenetlenség-jel: Kivonat (68 karakter/elem, „kevés”) és 7. Módszertan 
 | N-F152a | nyitva; rendszerszintű olvasó-tétel (#149) |
 | N-F152b | nyitva; szerkezeti döntés minden lexikonra |
 | **N-F152c** | **az ISTENTISZT-001 2. kiadására tartozik**, a lektori kérdésekkel együtt |
-| N-F152d | nyitva, részben megvalósult (#125: mérő és C-z lépés; az `ellenorzes/` szabály hiányzik) |
+| N-F152d | nyitva, részben megvalósult (#125: mérő és C-z lépés; az `eszkozok/ellenorzes/` szabály hiányzik) |
 | N-F152e | nyitva, részben megvalósult (#125: C-w lépés; a motívumonkénti értelmező feladat nincs rögzítve) |
 | N-F152f | nyitva; generátor-tétel minden lexikonra |
 | N-F152g | nyitva; kilenclépéses prózasablon nincs a `sablonok/`-ban (#125 köre) |
