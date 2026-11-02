@@ -365,7 +365,7 @@ def szuro_beolvas(root=ROOT):
 
 
 # --- a döntés-kártyák gépi besorolása (DT-F161a): mit változtat meg a döntés? tartalmi > kiadói > üzleti > fejlesztői -----------------
-TARTALMI_UT = ('motivumok/', 'tematikus_lezart/', 'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'motivumlog/', 'lexikon/')
+TARTALMI_UT = ('motivumok/', 'tematikus_lezart/', 'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'motivumlog/', 'lexikon/', 'naplok/HATAR_')
 TARTALMI_ADAT = {'elofordulasok', 'jeloltek', 'motivumok', 'forditasok', 'motivum_kapcsolatok', 'kapcsolatok', 'terminologia',
                  'tiltott_fordulatok', 'lexikon_hivatkozasok', 'szotar_szakasz_cimke'}
 KIADOI_UT = ('adat/kiadasok.tsv', 'adat/licencek.tsv', 'eszkozok/olvaso_szerver/', 'eszkozok/muhely_felulet/',
@@ -411,7 +411,7 @@ def gepi_kategoria(fej):
         jel = ['ír: ' + ', '.join(f[:2])] if f else []
         if munka in FEJLESZTOI_MUNKA:
             jel.append('munka: ' + munka)
-        return 'fejlesztoi', 'gépi: a #%s brief csak %s (eszköz, séma, munkafolyamat)' % (szam, '; '.join(jel))
+        return 'fejlesztoi', 'gépi: a #%s brief csak %s (eszköz, séma, munkafolyamat; felülbírálható)' % (szam, '; '.join(jel))
     return 'osztalyozatlan', 'gépi: a #%s brief fejlécéből nem dönthető el' % szam
 
 
@@ -427,10 +427,19 @@ def brief_besorolo(root):
     return besorol
 
 
+RANG = {'tartalmi': 0, 'kiadoi': 1, 'uzleti': 2, 'fejlesztoi': 3}
+
+
 def kategoria(azon, szuro, besorol, szam):
-    """-> (cimke, indok): a kézi szűrő elsőbbséget élvez, különben a brief gépi besorolása."""
+    """-> (cimke, indok): a kézi szűrő elsőbbséget élvez, különben a brief gépi besorolása. Lefelé-védelem: a gépi jel soha nem
+    sorol lejjebb egy kézzel tartalminak, kiadóinak vagy üzletinek jelölt kártyát; ha lejjebb mondana, a kézi marad, és az indok jelzi."""
     if azon in szuro:
-        return szuro[azon], 'kézi besorolás (dontes_szuro.tsv)'
+        kezi, indok = szuro[azon], 'kézi besorolás (dontes_szuro.tsv)'
+        if besorol is not None and szam and kezi in RANG and RANG[kezi] < RANG['fejlesztoi']:
+            gep = besorol(szam)[0]
+            if RANG.get(gep, 9) > RANG[kezi] and gep != 'osztalyozatlan':
+                indok += '; a gépi jel alacsonyabbat (%s) mondana, a kézi marad' % gep
+        return kezi, indok
     if besorol is None or not szam:
         return 'osztalyozatlan', 'nincs feladatszám vagy besoroló'
     return besorol(szam)

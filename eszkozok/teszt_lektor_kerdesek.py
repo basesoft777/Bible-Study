@@ -258,6 +258,18 @@ class GepiKategoriaTeszt(unittest.TestCase):
                 f.write('azonosito\tcimke\tmegjegyzes\nDT1\tuzleti\tx\nDT2\ttechnikai\ty\nDT3\ttartalmi\tz\n')
             self.assertEqual(L.szuro_beolvas(t), {'DT1': 'uzleti', 'DT2': 'fejlesztoi', 'DT3': 'tartalmi'})
 
+    def test_lefele_vedelem(self):
+        b = lambda szam: ('fejlesztoi', 'gépi')
+        kat, indok = L.kategoria('DT2', {'DT2': 'tartalmi'}, b, '5')
+        self.assertEqual(kat, 'tartalmi')
+        self.assertIn('a kézi marad', indok)
+        self.assertNotIn('a kézi marad', L.kategoria('DT2', {'DT2': 'fejlesztoi'}, b, '5')[1])
+        self.assertNotIn('a kézi marad', L.kategoria('DT2', {'DT2': 'tartalmi'}, lambda z: ('tartalmi', 'g'), '5')[1])
+
+    def test_motivum_hatar_tartalmi_jel(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(munka='adat', ir='[eszkozok/x.py, \"naplok/HATAR_*.md\"]'))[0], 'tartalmi')
+        self.assertIn('felülbírálható', L.gepi_kategoria(fejlec(ir='[eszkozok/x.py]'))[1])
+
     def test_dontes_kartya_indokkal_es_briefbol(self):
         with tempfile.TemporaryDirectory() as t:
             with open(os.path.join(t, 'F5_SZOTAR_BRIEF.md'), 'w', encoding='utf-8', newline='') as f:

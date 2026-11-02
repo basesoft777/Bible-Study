@@ -195,3 +195,40 @@
 | F86 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
 
 Eltér: 13 / 28.
+
+### 7.1 Végleges besorolás (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-02; DT-F161a)
+
+A 13 eltérésből a kézi marad: DT106, DT133, DT134, DT169, F125, F151 (tartalmi), DT190 (fejlesztői); a gépi érvényes: DT338, DT388, F146, F153 → tartalmi, F134, F157 → kiadói (a `dontes_szuro.tsv`-ben frissítve). Lefelé-védelem: a gépi jel nem sorol lejjebb kézzel tartalminak/kiadóinak/üzletinek jelölt kártyát (az indokban jelezve). Szűk bővítés: `naplok/HATAR_` az `ir`-ben tartalmi jel.
+
+| kártya | régi kézi | gépi | végleges | indok |
+|---|---|---|---|---|
+| DT90 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT106 | tartalmi | osztalyozatlan | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT126 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT133 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| DT134 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| DT169 | tartalmi | kiadoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (kiadoi) mondana, a kézi marad |
+| DT190 | fejlesztoi | osztalyozatlan | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT235 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT236 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT237 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT338 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT388 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT359 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+| DT365 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+| F111 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F121 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F123 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F125 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| F134 | fejlesztoi | kiadoi | kiadoi | kézi besorolás (dontes_szuro.tsv) |
+| F140 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F146 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F151 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F153 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F157 | fejlesztoi | kiadoi | kiadoi | kézi besorolás (dontes_szuro.tsv) |
+| F22 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F38 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F52 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F86 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+
+Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
