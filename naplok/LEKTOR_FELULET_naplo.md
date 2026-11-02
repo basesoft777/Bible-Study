@@ -150,3 +150,11 @@
   A lektor 15 kérdése közül egyiknél sem volt konkrét javítási javaslat, ezért mind `nincs` (vagy `hiany`).
 - A 31 döntés-kártya (`dontes`) még a régi formában van (nincs összefoglalójuk).
 - Felület: az ISTENTISZT-001 kártyái elöl, a döntés-kártyák utána; a motívum-szűrő nem sorolja fel a döntés-kártyák feladatait.
+
+## M9 — kiadás-jelölés (felhasználó: „melyik ügyek tartoznak már az új kiadásra / melyik az iniciál kiadásra”)
+
+- A döntés (az orkesztrátor közvetítésével): a `/kiadas` kimenetéből jövő kérdések (`forras=lektor`, `proza_lefedettseg`, és a `proza_javaslat`) a következő, **2. kiadás** bemenetei; a határ-kérdések (`hatar`)
+  a mostani, **1. kiadáshoz** tartoznak. A besorolás a forrásból következik (`KIADAS_FORRASONKENT`), nem kézi mező; új séma-oszlop: `kiadas` (`1` | `2` | üres).
+- A döntés-kártyák (`dontes`) nem kiadás-kérdések: `kiadas` üres, a felületen „kiadáson kívül”.
+- Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
+- Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
