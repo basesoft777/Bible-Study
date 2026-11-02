@@ -88,7 +88,8 @@ class Teszt(unittest.TestCase):
         for sz in range(1, len(M.KRITERIUMOK) + 1):
             for al in ('zold', 'piros', 'nincs_mero', 'hiba'):
                 szovegek.append(M.olvasoi_kapu({'sorszam': sz, 'allapot': al,
-                                                'szam': {'n': 3, 'kiejtes': 1, 'fordit': 2, 'blokk': 1}}))
+                                                'szam': {'n': 3, 'kiejtes': 1, 'fordit': 2, 'blokk': 1,
+                                                         'proza1a': 4}}))
         for sz in szovegek:
             for szo in belso_szavak:
                 self.assertNotIn(szo, sz, sz)

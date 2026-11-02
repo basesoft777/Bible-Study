@@ -135,23 +135,29 @@ def db_vers(con, ig):
             'macula': macula, 'lxx_szavak': lxx_szavak, 'lxx_formak': lxx_formak, 'nave': nave}
 
 
+def _bdb_hu(con, strong):
+    """A magyar BDB-szócikk a közös összefűzővel (F128, DT-F128a (a), DT-F128f (3)): a szakaszsorok összefűzése, a `kezi` `teljes`
+    sor elsőbbségével — nem az „utolsó sor nyer”. A mérő önálló lekérdezéssel olvas, csak az összefűző szabálya közös."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'bdb_jelolt'))
+    from szakasz_bemenet import strong_magyar_sorok
+    nevek = ('jelentes_szam', 'mezo', 'forditas_hu', 'allapot', 'modell', 'datum')
+    sorok = [dict(zip(nevek, r)) for r in con.execute(
+        "SELECT jelentes_szam, mezo, forditas_hu, allapot, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (strong,))]
+    szoveg = strong_magyar_sorok(sorok)[0]
+    return szoveg.replace('\\n', '\n') if szoveg else None
+
+
 def db_szo(con, strong):
     sz = con.execute('SELECT szoto, kiejtes, szofaj, jelentes FROM strong_szotar WHERE strong=?', (strong,)).fetchone()
     bdb_en = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (strong,)).fetchone()
-    bdb_hu = None
-    for (szoveg,) in con.execute("SELECT forditas_hu FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (strong,)):
-        if szoveg and szoveg.strip():
-            bdb_hu = szoveg.replace('\\n', '\n')
+    bdb_hu = _bdb_hu(con, strong)
     alias = None
     if not bdb_hu and not (bdb_en and bdb_en[0]) and _van_tabla(con, 'bdb_alias'):
         # F92: a szocikk masik Strong-szam alatt all (bdb_alias); a pilot szabalya szerint csak ha a sajat szocikk hianyzik
         a = con.execute('SELECT tabla_strong, bdb_id, szoveg_hasonlosag FROM bdb_alias WHERE masodlagos_strong=?', (strong,)).fetchone()
         if a:
             en2 = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (a[0],)).fetchone()
-            hu2 = None
-            for (szoveg,) in con.execute("SELECT forditas_hu FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (a[0],)):
-                if szoveg and szoveg.strip():
-                    hu2 = szoveg.replace('\\n', '\n')
+            hu2 = _bdb_hu(con, a[0])
             if hu2 or (en2 and en2[0]):
                 alias = {'tabla_strong': a[0], 'bdb_id': a[1], 'hasonlosag': a[2]}
                 bdb_en, bdb_hu = en2, hu2

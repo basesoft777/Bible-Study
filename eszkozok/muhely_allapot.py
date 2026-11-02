@@ -46,7 +46,7 @@ KRITERIUMOK = [
     (3, 'egyforrású, nulla-diff újragenerálás'),
     (4, 'nincs nyitott jelölt'),
     (5, 'határ: 0 nyitott kérdés'),
-    (6, 'olvasói blokkok, kiejtés, fordítás'),
+    (6, 'olvasói blokkok, kiejtés, fordítás, 1/a próza'),
     (7, 'nincs nyitott lektori kérdés'),
     (8, 'nincs nyitott DT / ⛔ feladat'),
     (9, 'olvasói kapu: 0 BUKÁS + a felhasználó vizuális átnézése'),
@@ -128,7 +128,7 @@ OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek.',
             3: 'A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz.',
             4: 'Minden vizsgált igehelyről döntöttünk.',
             5: 'A motívum határa tisztázott.',
-            6: 'A lap minden része magyarázattal, kiejtéssel és fordítással áll.',
+            6: 'A lap minden része magyarázattal, kiejtéssel és fordítással áll, minden igehely alatt magyarázattal.',
             7: 'A lektori átolvasás lezárult.',
             8: 'A motívum körül minden kérdés rendezett.',
             9: 'A lapot gépi és emberi szemmel is átolvastuk.'}
@@ -172,6 +172,8 @@ def olvasoi_kapu(k):
             reszek.append('%d rész fordításra vár' % n['fordit'])
         if n.get('blokk'):
             reszek.append('%d rész magyarázat nélkül áll' % n['blokk'])
+        if n.get('proza1a'):
+            reszek.append('%d igehely alatt hiányos a magyarázat' % n['proza1a'])
         return 'A lapon ' + ', '.join(reszek) + '.' if reszek else 'A lap még javításra vár.'
     if sz == 7:
         s = '%d lektori kérdés vár válaszra.' % n.get('n', 0)
@@ -372,18 +374,21 @@ def kiejtes_szuro(hianyok):
 
 
 def kriterium_6(motivum):
-    mero = 'OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py'
+    mero = 'OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py + proza_1a.py'
     ut = os.path.join(GYOKER, 'lexikon', motivum + '_TUDOMANYOS.md')
     if not os.path.exists(ut):
         return uj(NINCS, 'nincs lexikon-lap', mero, motivum)
     try:
         import OLVASOI_blokk_teljesseg_meres as OB
         import kiejtes_szoveg as KSZ
+        import proza_1a as P1A
         ki, _ = OB.meres(ut)
         blokk_hiany = [(i, s) for i, s, van, ok in ki if van == 'nincs' and ok == 'HIÁNY']
         with open(ut, encoding='utf-8') as f:
             szoveg = f.read()
         kiejtes_hiany = kiejtes_szuro(KSZ.elemez(szoveg))
+        # DT-F1Aa (b): az 1/a minden igehelye alatt kerek próza és „Funkció:” sor (mérce: az arany lap)
+        proza_hiany = [x for x in P1A.meres(szoveg) if not (x[1] == 'kerek' and x[2] == 'van')]
     except Exception as ex:  # noqa: BLE001 -- a mero hibaja "hiba", nem nulla
         return uj(HIBA, 'a mérő hibával állt le', mero, motivum, [repr(ex)[:300]])
     fordit = szoveg.replace('\r', '').count('*(fordításra vár)*')
@@ -391,13 +396,15 @@ def kriterium_6(motivum):
     van = sum(1 for x in ki if x[2] == 'van')
     reszlet = ['blokk-hiány: sor %d %s' % (i, s[:80]) for i, s in blokk_hiany]
     reszlet += ['kiejtés-hiány: sor %s — %s' % (k[0], k[3]) for k in kiejtes_hiany]
-    zold = not blokk_hiany and not kiejtes_hiany and fordit == 0
-    ertek = '%d/%d blokk fedett (%d bevezetővel), kiejtés-hiány %d, fordításra vár %d' % (
-        n_blokk - len(blokk_hiany), n_blokk, van, len(kiejtes_hiany), fordit)
+    reszlet += ['1/a: %s — próza %s, Funkció %s' % (x[0], x[1], x[2]) for x in proza_hiany]
+    zold = not blokk_hiany and not kiejtes_hiany and fordit == 0 and not proza_hiany
+    ertek = '%d/%d blokk fedett (%d bevezetővel), kiejtés-hiány %d, fordításra vár %d, 1/a hiányos igehely %d' % (
+        n_blokk - len(blokk_hiany), n_blokk, van, len(kiejtes_hiany), fordit, len(proza_hiany))
     e = uj(ZOLD if zold else PIROS, ertek, mero, motivum, reszlet)
-    e['szam'] = {'kiejtes': len(kiejtes_hiany), 'fordit': fordit, 'blokk': len(blokk_hiany)}
+    e['szam'] = {'kiejtes': len(kiejtes_hiany), 'fordit': fordit, 'blokk': len(blokk_hiany),
+                 'proza1a': len(proza_hiany)}
     e['mertek'] = {'blokk_osszes': n_blokk, 'blokk_hiany': len(blokk_hiany), 'kiejtes_hiany': len(kiejtes_hiany),
-                   'fordításra_var': fordit}
+                   'fordításra_var': fordit, 'proza_1a_hiany': len(proza_hiany)}
     return e
 
 

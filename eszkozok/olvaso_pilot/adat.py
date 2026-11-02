@@ -131,12 +131,27 @@ for f in sorted(os.listdir(GY + 'adat/karoli_strong')):
                 karoli_konyv[n].add(r[0].split(' ')[0])
 
 # --- BDB: magyar fordítás és angol eredeti
-bdb_hu = {}
+# F128.12 (DT-F128a (a), DT-F128f (3)): a szakaszonként fordított Strong szövege a szakaszsorok összefűzése, a jóváhagyott `kezi`
+# `teljes` sor elsőbbségével — ugyanaz a közös összefűző, mint a szerveren (nem az „utolsó sor nyer”).
+sys.path.insert(0, os.path.join(GY, 'eszkozok', 'bdb_jelolt'))
+from szakasz_bemenet import strong_magyar_sorok  # noqa: E402
+_FN = ('jelentes_szam', 'mezo', 'forditas_hu', 'allapot', 'modell', 'datum')
+_bdb_sorok = defaultdict(list)
 for r in sorok('adat/forditasok.tsv'):
-    if len(r) > 7 and r[0] == 'BDB' and r[6].strip():
+    if len(r) > 9 and r[0] == 'BDB':
         n = hnorm(r[1])
         if n:
-            bdb_hu[n] = {'szoveg': r[6].replace('\\n', '\n'), 'allapot': r[7], 'modell': r[8], 'datum': r[9]}
+            _bdb_sorok[n].append(dict(zip(_FN, (r[3], r[4], r[6], r[7], r[8], r[9]))))
+bdb_hu = {}
+for n, _sr in _bdb_sorok.items():
+    _sz, _, _hasznalt = strong_magyar_sorok(_sr)
+    if _sz:
+        _modellek = []
+        for _r in _hasznalt:
+            if _r['modell'] not in _modellek:
+                _modellek.append(_r['modell'])
+        bdb_hu[n] = {'szoveg': _sz.replace('\\n', '\n'), 'modell': ' / '.join(str(m) for m in _modellek),
+                     'datum': max(str(_r['datum']) for _r in _hasznalt)}
 bdb_en = {}
 for r in sorok('konkordancia/BDB_teljes_unabridged.tsv'):
     n = hnorm(r[0]) if r else None
