@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
 ad: a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból újragenerálva; a nulla-diff / várt diff dokumentálva (az F28 fordításai, a javított ψ-igehelyek, a Szent Szellem-szöveg)
-kovetkezo: befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); utána: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt
+kovetkezo: "okafogyott (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával, DT-F36b): a #11 egyforrású modellje óta a lap motívumonként generálódik; a #123 X.M5 újragenerál; az élő maradék: N-F123c, N-F123d"
+lezarva_osszegzes: "(11.02) Okafogyott, futás nélkül (DT-F36b). Az éles lexikon/ egészének újragenerálását a #11 (D34) óta a motívumonkénti generálás váltja fel: az ISTENTISZT-001 és az ALVIL-001 lapja migrálva, a többi hat a #123 X.M5-ben generálódik újra, a törzscikk archiválással megszűnik. Mért maradék (2026-11-02) a hat nem migrált lapon: 17–17 projekt-adat címke (N-F89a), a TAHOT hiánya az Irodalomból (N-F36a), a KIRALY-001 G0813-alszakasza (N-F132a) → N-F123c, N-F123d."
 olvas: [lexikon/, naplok/F89_M0_felmeres.md, adat/licencek.tsv, eszkozok/lexikon_general.py, RENDER_BRIEF.md, adat/forditasok.tsv, adat/res_forras.tsv, ATALAKITASI_TERV.md.md]
 ir: [lexikon/, generalt_proba/]
 fugg: [28, 34, 35, 113]
@@ -16,6 +17,8 @@ nem_fugg: [7, 10, 27, 38, 121, 123, 126, 127, 131, 132]
 ---
 
 # Éles lexikon/ újragenerálása
+
+> **Lezárva, okafogyott (2026-11-02, F36.2, DT-F36b).** A brief az egyforrású modell (#11, D34) előtti állapotra készült: egy futás az egész `lexikon/`-t generálta volna újra a régi forrásrétegből. Ma a lap motívumonként, a kézi forrásból generálódik. A két migrált lap (ISTENTISZT-001, ALVIL-001) friss, a hat nem migrált lapot a #123 X.M5 lépése generálja újra, a törzscikkét archiválja. Az alábbi kiegészítések élő tételei nem vesznek el: a #123 méri őket motívumonként (N-F123c: licenc-címke, TAHOT-forrásmegjelölés, STEPBible-kettőzés; N-F123d: KIRALY-001 G0813 → G0540). A brief többi szövege történeti.
 
 ## Háttér
 Az F28 fordításai (39 szócikk), a ψ-javítás és a Szent Szellem-egységesítés a generált kimenetbe csak újragenerálás után kerülnek be. Generált fájlt kézzel szerkeszteni tilos (CLAUDE.md); a `generalt_proba/` verziózott könyvtár, nem scratch.
