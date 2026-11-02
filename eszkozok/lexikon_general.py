@@ -823,6 +823,11 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
         funkcio_teljes = s.get('funkcio') or ''
         funkcio_cimke, _sep, funkcio_magyarazat = funkcio_teljes.partition(' — ')
+        if funkcio_teljes and not _sep:
+            # DT-F1Ab: „ — ” nélkül a „: ” utáni rész, annak híján a teljes érték (a vezető emoji nélkül)
+            # az 1/a „Funkció:” sorába; a táblázat cellája változatlanul a teljes érték
+            _c, sep2, utana = funkcio_teljes.partition(': ')
+            funkcio_magyarazat = utana if sep2 else re.sub(r'^[^\w"„(]+', '', funkcio_teljes)
         funkcio_cella = funkcio_cimke if funkcio_teljes else EM_DASH
 
         if gerinc:
@@ -836,7 +841,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                 s.get('pardes_szint') or EM_DASH, s.get('strong') or EM_DASH,
                 szotari_jelentes, ubs_cella, megb))
 
-        tetelek_1a.append((anchor, s, funkcio_magyarazat if _sep else ''))
+        tetelek_1a.append((anchor, s, funkcio_magyarazat))
 
     torzs = '\n'.join(sorok)
     if labjegyzetek:

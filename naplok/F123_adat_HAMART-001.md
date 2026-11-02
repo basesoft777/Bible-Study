@@ -20,7 +20,7 @@ Mért adathiány a soron (nem e menet dolga, az értelmező menet elé): mind az
 
 **A hordozóból következő korlát:** a `strukturális` hordozón sem a #150 formulaikus, sem a #160 lexikai gépi előszűrő nem dönt; az 5 mért hamis kizárás (Ézs 24:5-6, Hós 4:1-3, Mt 15:19, Mk 7:21-23, 2Pét 3:6-7 — mind `tematikus:` sor) mutatja, miért (`naplok/JELOLT_ELOSZURES_LEXIKAI_naplo.md` 8.). Ez a menet ezért nem szűr, hanem a negatív kritérium **gépileg mérhető kitételeit** méri (1b–1e.), sorrendező mezőként.
 
-**A határ-anyag:** `naplok/HATAR_HAMART-001.md` (gépi rész, 2026-10-29): 0 részhalmaz-kérdés, a negatív kritérium gépi próbája strukturális hordozón nem fut, a modelles rész nem futott; `naplok/LEKTOR_HAMART-001.tsv`: 0 kérdés (csak fejléc). Az X.A határkérdése (DT-F123u) ott nem áll kérdésként; nincs mit duplikálni.
+**A határ-anyag:** `naplok/HATAR_HAMART-001.md` (gépi rész, 2026-10-29): 0 részhalmaz-kérdés, a negatív kritérium gépi próbája strukturális hordozón nem fut, a modelles rész nem futott; `naplok/LEKTOR_HAMART-001.tsv`: 0 kérdés (csak fejléc). Az X.A határkérdése (DT543) ott nem áll kérdésként; nincs mit duplikálni.
 
 Proveniencia: `scope=HAMART-001: adat/motivumok.tsv (1 sor), adat/elofordulasok.tsv (52 sor), adat/jeloltek.tsv (223 sor) | forras=split('\t'), ág claude/f123-hamart-adat-f698da | ts=2026-11-02`
 
@@ -174,19 +174,19 @@ Proveniencia: `scope=HAMART-001: adat/elofordulasok.tsv (52 sor) × kézi rések
 
 ## 6. Döntések és nyitott pontok
 
-A három ⛔-kérdést az orkesztrátor döntötte el, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«. A tételek: `DONTESEK.md` DT-F123t, DT-F123u, DT-F123v.
+A három ⛔-kérdést az orkesztrátor döntötte el, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«. A tételek: `DONTESEK.md` DT542, DT543, DT544.
 
-1. **DT-F123t (a), a kritérium-mérések új helyei:** 27 `nyitva` jelölt a `jeloltek.tsv`-ben (F123.HAMART.A12, `naplok/F123_jelolt_ir_HAMART-001.py`; a HAMART-001 sorai: 223 → 250), indoklás-típusonként:
+1. **DT542 (a), a kritérium-mérések új helyei:** 27 `nyitva` jelölt a `jeloltek.tsv`-ben (F123.HAMART.A12, `naplok/F123_jelolt_ir_HAMART-001.py`; a HAMART-001 sorai: 223 → 250), indoklás-típusonként:
    - „kollokáció (1Móz 3:18 gerinc-pár)” — 1: Hós 10:8;
    - „φθείρω-család — a kritérium lexémája” — 12: G1312 ApCsel 2:27, 2:31, 13:34–37 (a sorokon az **ALVIL-001-közelség** jelölve: a Zsolt 16:10 idézetének közege, az ApCsel 2:27 és 2:31 ALVIL-001-előfordulás — motívumközi kérdés lehet); G5349 Róm 1:23, 1Kor 9:25, 15:53, 15:54, 1Pét 1:18, 1:23;
    - „lánc-együttállás — gyenge, strukturális közelítés; az értelmező menet dönt” — 14 hely (az egymást követő versek egy hely): 5Móz 9:26-27, 5Móz 19:15-16, 1Kir 8:34-35, 1Kir 13:34, 1Kir 14:15-16, 2Kir 17:22-23, 2Krón 6:25-26, Neh 9:1-2, Zsolt 25:18-19, Ez 12:19, Ez 28:17, Hós 9:9, Mik 6:13, Mal 3:11.
 
    **A 15 privatív alak (ἀφθαρσία, ἄφθαρτος, ἀδιαφθορία) ellentétes jelentés, nem jelölt;** a sorai a `naplok/F123_adat_HAMART-001_csalad.tsv`-ben maradnak. Beépítés vagy elutasítás egyik új sorra sincs: az a B5 az értelmező menetben.
-2. **DT-F123u, módosított (b), a tág helyek (F124):**
+2. **DT543, módosított (b), a tág helyek (F124):**
    - a negatív kritérium lexémalistáján **belüli** Strongot hordozó **605 vers** szűretlen marad, az értelmező menet kézi átnézésére, a lánc-mérés (1d.) sorrendjében; a sorok a `naplok/F123_adat_HAMART-001_f108_osszevetes.tsv`-ben;
    - a listán **kívüli** Strongot hordozó **651 vers** (H7451 573, H7043 71, magányos H6975 7) blokk-kizárása **most nem történik**: meglévő E-sorok `gerinc_elem`-je (1Móz 6:5 H7451, 1Móz 8:21 H7043) ezekre a Strongokra mutat, a kizárás ellentmondana az adatnak, amíg az N-F63e el nem dől. A 651 vers `N-F63e-függő` jelöléssel vár: `naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv` (F123.HAMART.A13; `nf63e` alparancs). A „jelöltlista” itt ez a munkafájl-tábla, nem a `jeloltek.tsv`: a 651 vers a 605-höz hasonlóan nem kap jelöltsort, amíg a döntés nincs meg (a `jeloltek.tsv` `dontes` mezője zárt: `nyitva` 651 sorral a nyitott jelöltek közé keverné őket);
    - az N-F63e a Kiadóra kerül tartalmi kártyaként (7.).
-3. **DT-F123v (a):** a 8 régi `nyitva` sor (Jób 16:18, 31:38; 5Móz 4:25, Bír 2:19, Sof 3:7; 2Pét 3:10, 3:12; 2Tim 3:8) az értelmező menetre marad.
+3. **DT544 (a):** a 8 régi `nyitva` sor (Jób 16:18, 31:38; 5Móz 4:25, Bír 2:19, Sof 3:7; 2Pét 3:10, 3:12; 2Tim 3:8) az értelmező menetre marad.
 
 Nyitott (nem az X.A dolga):
 
@@ -197,7 +197,7 @@ Nyitott (nem az X.A dolga):
 
 ## 7. Az N-F63e Kiadó-kártyája (tartalom, felvételre)
 
-*Forrás: `hatar`, motívum: HAMART-001, címke: `tartalmi`, kiadás: 1. A kártya felvétele a `naplok/HATAR_HAMART-001.md` Modelles részébe és a `lektor_kerdesek.py --motivum HAMART-001` futtatása, a gombok következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-be — mindhárom a #123 `ir`-jén kívül, ezért itt csak a tartalom áll (DT-F123u).*
+*Forrás: `hatar`, motívum: HAMART-001, címke: `tartalmi`, kiadás: 1. A kártya felvétele a `naplok/HATAR_HAMART-001.md` Modelles részébe és a `lektor_kerdesek.py --motivum HAMART-001` futtatása, a gombok következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-be — mindhárom a #123 `ir`-jén kívül, ezért itt csak a tartalom áll (DT543).*
 
 **K-N-F63e — A gerinc-lexémák és a negatív kritérium: maradjon-e a H7451 (ra', gonoszság) és a H7043 (qalal, megátkoz/könnyűvé tesz) a HAMART-001 gerincében?**
 
