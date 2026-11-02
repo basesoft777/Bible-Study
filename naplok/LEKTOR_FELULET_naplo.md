@@ -305,7 +305,7 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
 ## A TEREMT-002 15 kérdése (a #12 C-h és C-l menete, DT-F151b; 2026-11-02)
 
 - Forrás: `naplok/LEKTOR_TEREMT-002.tsv` (2 határ-kérdés, 1. kiadás; 13 lektori kérdés, 2. kiadás), a kézi összefoglaló `eszkozok/lektor_felulet/osszefoglalo_TEREMT-002.tsv`
-  (a két határ-kártyán a gombonkénti következmény az adatból: 3 előfordulás; az Ézs 34:11 a prózában 23 helyen). A lektor részolvasást kapott (DT-F12i: a négy értelmező blokk, 14 392 karakter).
+  (a két határ-kártyán a gombonkénti következmény az adatból: 3 előfordulás; az Ézs 34:11 a prózában 23 helyen). A lektor részolvasást kapott (DT540: a négy értelmező blokk, 14 392 karakter).
 - Lapnézet: új privát artifact (https://claude.ai/artifact/4wztGijeFNUhZ5GW5wstnW; `epit_nezet.py`, a cím és a fejléc a TEREMT-002-re átírva), a link a `lapnezetek.tsv`-ben.
 - Az `epit.py` kimenete 96 kártya: a meglévő 81 bájtra azonos adattal (kerdes_id-nként összevetve az élő 16. verzióval), új a 15 TEREMT-002; a sablon-részben csak a `LAP_URLOK` bővült.
 - Élő próba a felhasználó Chrome-jában (Claude in Chrome, saját fülön): a Tartalmi fülön a TEREMT-002 motívum-szűrő 15 kártyát ad (0 / 15 megválaszolva); a határ-kártyán „A jelenlegi határ”
