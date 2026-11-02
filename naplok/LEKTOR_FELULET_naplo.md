@@ -217,3 +217,14 @@
 - Nem változik: a fájl- és eszköznevek (`naplok/LEKTOR_*.tsv`, `eszkozok/lektor_kerdesek.py`, `eszkozok/lektor_felulet/`), a `lektor` subagent, a „lektori kérdés / lektori kör”,
   a `CLAUDE.md`, a generált `FELADATOK.md`, a korábbi döntések, naplók (ez a napló is) és idézetek szövege, a #156/#157 briefjében a feladat neve.
 - Az artifact ugyanazon a linken (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 14. verzió; a db válaszai érintetlenek.
+
+## Reszponzív elrendezés és élő próba Chrome-ban (a felhasználó: „böngészőben nagyon keskeny az oldal”; 2026-11-02)
+
+- `sablon.html`: 1100 px fölött a tartalom legfeljebb 1240 px széles; a lektori kártyák két hasábban, a határ-kártya teljes szélességben, benne balra a kérdés és a gombok,
+  jobbra a „Jelenlegi határ” és a „Ha így döntesz…”; a szűrősorok két hasábban. Telefonon egy hasáb marad (kérdés → határ-blokk → nagy gombok). A folyó szöveg sorhossza em-alapú
+  korláttal ~70–75 karakter (mérve 1400 px-en: bevezető 75, „Mi a gond” 75, a határ-blokk 69–72; a nyers „Részletek” sorai a hosszú kód-azonosítók miatt 79-ig).
+- Élő próba a felhasználó Chrome-jában (Claude in Chrome, saját fülön; az ablak maximalizált, ezért a szélességet a beágyazó keret szélességével állítottam: 1400 és 390 px):
+  cím „Kiadó”; 1400 px-en két hasábos lektori kártyák és kettéosztott határ-kártya; 390 px-en egy hasáb, vízszintes görgetés nélkül; a határ-blokk megjelenik; törlés-próba
+  (az ALVIL-001:mK1-en próbaválasz → „Válasz törlése” → „Igen, törlöm”): a kártya visszaállt nyitottra, a próbaválasz nincs a db-ben, a felhasználó 3 válasza bájtra azonos;
+  konzolhiba nincs. A lapnézet-link célját kattintással nem lehetett igazolni (az új fül a próba fülcsoportján kívül nyílik); a közzétett oldal motívum → nézet táblája helyes.
+- Artifact: ugyanaz a link, 15. verzió.

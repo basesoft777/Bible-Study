@@ -83,6 +83,26 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
 .gond > span { font: 600 16px/1.4 var(--cim); overflow-wrap: anywhere; }
 .javaslat > span { overflow-wrap: anywhere; }
 .figy { background: var(--figyel-hatter); color: var(--figyel); border-radius: var(--sugar); padding: 8px 10px; font-size: 13px; margin: 0 0 12px; }
+.bal, .jobb, .lab { display: grid; gap: 10px; min-width: 0; }
+/* Széles képernyő: a tartalom kiszélesedik (legfeljebb 1240 px), a lektori kártyák két hasábban, a határ-kártya teljes szélességben, benne a kérdés
+   és a gombok balra, a jelenlegi határ és a következmények jobbra; a szűrők két hasábban. A folyó szöveg sora így sem lesz ~75 karakternél hosszabb
+   (a kártyák hasábja ~600 px). Telefonon minden marad egy hasábban. */
+@media (min-width: 1100px) {
+  .keret, .also-belso { max-width: 1240px; }
+  /* sorhossz-korlát em-ben (a `ch` a számjegy szélessége, azzal ~100 karakter férne egy sorba): ~75 karakter */
+  .bev, .suga { max-width: 32em; }
+  .kerdes p, .javaslat > span, .hatarblokk p, .hatarblokk li { max-width: 30em; }
+  .gond > span { max-width: 33em; }
+  .szurok { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+  .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .lista > .ures { grid-column: 1 / -1; }
+  .tetel.hatar { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr;
+    grid-template-areas: "fej fej" "bal jobb" "lab jobb"; column-gap: 24px; align-items: start; }
+  .tetel.hatar > .fej { grid-area: fej; }
+  .tetel.hatar > .bal { grid-area: bal; }
+  .tetel.hatar > .jobb { grid-area: jobb; }
+  .tetel.hatar > .lab { grid-area: lab; }
+}
 @media (prefers-reduced-motion: no-preference) { .gombok button, .szurosor button { transition: background .15s, border-color .15s; } }
 </style>
 
@@ -91,11 +111,13 @@ button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-vis
   <p class="bev">A lektor és az ellenőrzők kérdései egy helyen. <b>Te döntesz</b>: a válasz csak adat — a repóba egy session viszi át, kérésre, a szabályos úton (jelöltsor vagy döntéstétel, a válaszod idézetével).</p>
   <div class="suga" id="suga"><b>Hogyan működik?</b> Minden kártya egy kérdés vagy észrevétel a lapról. <b>Te döntesz</b>; a válaszod nem írja át a lapot, a próza írója végzi el a jóváhagyásod után. Négy gomb van: az első elfogadja, amit a kártya javasol, a második azt mondja, hogy maradjon így, a harmadikkal visszakérdezel (a kérdésed a következő körben választ kap), a negyedikkel te írod le, mi legyen. A nyers részletek a „Részletek” alatt nyithatók le.</div>
   <div id="figy" class="figy" hidden></div>
+  <div class="szurok">
   <div class="szurosor" id="sz-kiadas"><span class="cim">kiadás</span></div>
   <div class="szurosor" id="sz-forras"><span class="cim">forrás</span></div>
   <div class="szurosor" id="sz-motivum"><span class="cim">motívum</span></div>
   <div class="szurosor" id="sz-cimke"><span class="cim">típus</span></div>
   <div class="szurosor" id="sz-allapot"><span class="cim">állapot</span></div>
+  </div>
   <div class="lista" id="lista"></div>
 </div>
 
@@ -209,32 +231,39 @@ function rajzol() {
   if (!lat.length) lista.append(el('p', { class: 'ures' }, szuro.allapot === 'nyitva' ? 'Nincs nyitott kérdés ebben a nézetben.' : 'Nincs kérdés ebben a nézetben.'));
   lat.forEach((k) => {
     const v = valaszok[k.kerdes_id];
-    const t = el('section', { class: 'tetel' + (v ? ' kesz' : ''), 'aria-label': k.kerdes_id });
+    const hatar = k.forras === 'hatar';
+    const t = el('section', { class: 'tetel' + (v ? ' kesz' : '') + (hatar ? ' hatar' : ''), 'aria-label': k.kerdes_id });
+    // Három rész: bal (a kérdés), jobb (csak határ-kártyán: a jelenlegi határ és a következmények), lab (gombok, válasz, törlés).
+    // Telefonon egymás alatt (bal, jobb, lab); széles képernyőn a határ-kártyán a jobb rész a bal és a lab mellett áll.
+    const bal = el('div', { class: 'bal' });
+    const lab = el('div', { class: 'lab' });
     const fej = el('div', { class: 'fej' }, el('span', { class: 'id' }, halvanyId(k.kerdes_id)), el('span', {}, k.forras),
       el('span', {}, k.motivum));
     fej.append(el('span', { class: 'kiadasjel k' + (k.kiadas || '0') }, KIADAS_CIMKE[k.kiadas || '']));
     if (k.hely) fej.append(el('span', {}, k.hely));
     const lapUrl = Object.prototype.hasOwnProperty.call(LAP_URLOK, k.motivum) ? LAP_URLOK[k.motivum] : '';
     if (lapUrl) fej.append(el('a', { href: lapUrl, target: '_blank', rel: 'noopener' }, 'lapnézet ↗'));
-    t.append(fej, kerdesDoboz(k));
-    if (k.forras === 'hatar') t.append(jelenlegiBlokk(k), kovetkezmenyBlokk(k));
-    if (k.valasz) t.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
+    t.append(fej, bal);
+    bal.append(kerdesDoboz(k));
+    if (hatar) t.append(el('div', { class: 'jobb' }, jelenlegiBlokk(k), kovetkezmenyBlokk(k)));
+    t.append(lab);
+    if (k.valasz) bal.append(el('div', { class: 'rogzitett' }, el('b', {}, 'korábban rögzített döntés (' + (k.allapot || 'megvalaszolva') + ')'), k.valasz));
     const gombok = el('div', { class: 'gombok' });
     tipusok(k).forEach(([kod, cimke]) => {
       gombok.append(el('button', { type: 'button', class: kod, 'aria-pressed': String(!!v && v.tipus === kod), onclick: () => valaszt(k, kod) }, cimke));
     });
-    t.append(gombok);
+    lab.append(gombok);
     const kell = (v && (v.tipus === 'visszakerdezek' || v.tipus === 'sajat')) || nyitottSzoveg[k.kerdes_id];
     if (kell) {
       const ta = el('textarea', { 'aria-label': 'Válasz szövege', placeholder: (nyitottSzoveg[k.kerdes_id] === 'visszakerdezek' || (v && v.tipus === 'visszakerdezek')) ? 'Mit nem értesz, mit kérdezel? A következő körben választ kapsz.' : 'Írd le, mi legyen.' });
       ta.value = v ? v.szoveg || '' : '';
       const jelzes = el('span', { class: 'allapot' });
-      t.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
+      lab.append(el('div', { class: 'szoveg' }, ta, el('div', { class: 'sor' },
         el('button', { type: 'button', class: 'mentes', onclick: () => mentSzoveg(k, ta.value, jelzes) }, 'Mentés'), jelzes)));
     } else if (v) {
-      t.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
+      lab.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
     }
-    if (v && k.allapot !== 'atvezetve') t.append(torlesSor(k));
+    if (v && k.allapot !== 'atvezetve') lab.append(torlesSor(k));
     lista.append(t);
   });
   statusz(lat);
