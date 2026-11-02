@@ -1,4 +1,4 @@
-# Prompt v5.2 — F07_THAYER_ELES_BRIEF.md, DT-F07j (a v5.1-ből)
+# Prompt v5.2 — F07_THAYER_ELES_BRIEF.md, DT537 (a v5.1-ből)
 
 *A `forditas/prompt_v5_1.md` (v5.1) szó szerinti másolata, egyetlen új blokkal: „Kiegészítő szabály (v5.2) — idézőjelek a Thayer-szócikkben” (a v5.1 blokkja után, az „Ideiglenes terminológia” előtt). A v5.1 egyetlen sora sem módosult; a v5.1 fejléce és verziónaplója alább változatlanul áll. Csak a Thayerre (G-Strong) vonatkozik; a BDB-lánc a v5.0-t használja. A #7 A1 mért adata alapján: a 8. kapu 21 első körös bukásából 14 a glosszák köré tett többlet-idézőjel, a kapu a forrás aposztrófos idézetét nem számolja.*
 
@@ -6,7 +6,7 @@
 
 | Verzió | Dátum | Változás | Ok |
 |---|---|---|---|
-| v5.2 | 2026.11.02 | a v5.1 másolata + „Kiegészítő szabály (v5.2) — idézőjelek a Thayer-szócikkben” blokk | F07 A1, DT-F07j |
+| v5.2 | 2026.11.02 | a v5.1 másolata + „Kiegészítő szabály (v5.2) — idézőjelek a Thayer-szócikkben” blokk | F07 A1, DT537 |
 
 ---
 
