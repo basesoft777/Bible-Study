@@ -4174,6 +4174,9 @@ def megjeloles_reszek(szoveg):
     return [r.strip() for r in re.split(r'(?<=\.);\s+', szoveg) if r.strip()]
 
 
+NINCS_ROGZITVE = 'nincs rögzítve'
+
+
 def kolofon_naplo_cella(motivum_id):
     """A Kolofon „Kereszthivatkozás-napló” cellája. A nem migrált motívumnál
     a `tematikus_lezart/naplok/` alatti napló; a migrált motívumnál (F11 M3,
@@ -4181,16 +4184,17 @@ def kolofon_naplo_cella(motivum_id):
     `jeloltek.tsv`-ből generált -- a cella ezt mondja ki, nem a megszűnt utat."""
     naplo_fajlnev = G.ID_NAPLO_TERKEP.get(motivum_id)
     if not naplo_fajlnev:
-        return EM_DASH
+        return NINCS_ROGZITVE
     if os.path.exists(os.path.join(ROOT, 'tematikus_lezart', 'naplok', naplo_fajlnev)):
         return '`tematikus_lezart/naplok/%s`' % naplo_fajlnev
     archiv = 'archivum/%s/%s' % (motivum_id, naplo_fajlnev)
     if os.path.exists(os.path.join(ROOT, *archiv.split('/'))):
         return ('generált (`adat/jeloltek.tsv`); a régi napló archívum: `%s`' % archiv)
-    return EM_DASH
+    return NINCS_ROGZITVE
 
 
 KIADASOK_TSV = os.path.join(ADAT, 'kiadasok.tsv')
+NINCS_KIADVA = 'nincs kiadva — feldolgozás alatt'
 
 
 def kolofon_kiadasok(motivum_id, ut=None):
@@ -4205,9 +4209,12 @@ def kolofon_kiadasok(motivum_id, ut=None):
 
 def kolofon_kiadas_sorok(kiadasok):
     """A Kolofon metaadat-táblájának „Kiadás” és „Próza modellje” sora (a legutóbbi kiadásé), és a
-    „Változásjegyzék” tábla; sor nélkül: két üres lista (a lap kolofonja változatlan)."""
+    „Változásjegyzék” tábla. Kiadás-sor nélkül (a lap még nincs kiadva) a három hely kitöltött, de nem állít kiadást:
+    „nincs kiadva — feldolgozás alatt” (olvasói kapu, KOLOFON, 2026-11-02)."""
     if not kiadasok:
-        return [], []
+        return (['| Kiadás | %s |' % NINCS_KIADVA, '| Próza modellje | %s |' % NINCS_KIADVA],
+                ['**Változásjegyzék**', '', 'Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első '
+                 'kiadással indul.'])
     utolso = kiadasok[-1]
     meta = ['| Kiadás | %s |' % utolso['kiadas'].strip(),
             '| Próza modellje | `%s` |' % ((utolso.get('proza_modell') or '').strip() or 'manual')]
@@ -4238,7 +4245,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
         '| Fölérendelt fogalom | %s |' % m.get('folerendelt_fogalom', EM_DASH),
         '| Forrás-study | %s |' % forras_study_cella,
         '| Kereszthivatkozás-napló | %s |' % naplo_cella,
-        '| Sablon-megfelelőség | %s |' % m.get('sablon_verzio', EM_DASH),
+        '| Sablon-megfelelőség | %s |' % (m.get('sablon_verzio') or NINCS_ROGZITVE),
     ]
     kiadasok = kolofon_kiadasok(m['id'])
     kiadas_meta, kiadas_jegyzek = kolofon_kiadas_sorok(kiadasok)
