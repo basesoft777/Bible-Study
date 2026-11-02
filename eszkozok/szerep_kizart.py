@@ -131,11 +131,85 @@ def jeloles_oka(forras_kereses):
         return CSOPORTOK[3], 'szótári felvetés (BDB)'
     if fo.startswith('study') or fo.startswith('döntési fájl'):
         return CSOPORTOK[3], 'a tanulmány felvetése'
-    return CSOPORTOK[4], fo or '—'
+    return CSOPORTOK[4], (olvasoi_indok(fo) or 'egyéb jelölés') if fo else '—'
 
 
 def _cella(s):
     return s.replace('|', '\\|').replace('\n', ' ')
+
+
+# --- Az indoklás olvasói alakja (olvasói kapu, 2026-11-02) ---------------------------------------------------------
+# Az `indoklas` adatmező a munkafolyamat naplója is: döntés-azonosítót, fájlnevet, munkaszereplőt, angol címkét hordoz.
+# Az adat nem változik (DT28); a lapra az olvasói alak kerül, a nyers szöveg a lábjegyzetben marad.
+BELSO_KIFEJEZES = [re.compile(x, re.I) for x in (
+    r'\bF\d{1,3}(?:\.\d+)? szűrő\b', r'\b[A-D] osztály\b', r'\bK\d_\w+\b', r'\bkézi olvasás\b',
+    r'\bretroaktív F\d+\.\d+ betöltés\b', r'\borkesztrátor(?:-chat)?\b')]
+ANGOL_CSERE = [(re.compile(r'\bscanje\b'), 'keresése'), (re.compile(r'\bscan\b'), 'keresés'),
+               (re.compile(r'\bstudy\b'), 'tanulmány'), (re.compile(r'\bgap\b'), 'hiány')]
+AZON_ELEJEN = re.compile(r'^(?:(?:DT-?F?|N-?F?|F)\d+[a-z]?(?:\.\d+)?(?:\s+K\d(?:/K\d)?)?[\s:,;]*)+')
+DONTES_MONDAT = re.compile(r'\s*Döntés:\s*(?:DT-?F?\d+[a-z]?)\s*(?:\([^()]*\))?\.?')
+
+
+def _piszkos(t):
+    """Belső jelölés, angol zsargon vagy egyenes idézőjel van benne (az olvasói kapu szabályai szerint)."""
+    import olvasoi_kapu as K   # a kapu szabályai az egyetlen mérce: amit megfog, azt itt is kivesszük
+    return (any(rx.search(t) for rx, _ in K.BELSO) or bool(K.ANGOL_SZO.search(K.kod_nelkul(t)))
+            or '"' in K.kod_nelkul(t))
+
+
+def _felso_zarojelek(t):
+    """A legkülső zárójelcsoportok (kezdet, vég) helyei; a beágyazott zárójel a csoport része."""
+    ki, mely, kezd = [], 0, 0
+    for i, c in enumerate(t):
+        if c == '(':
+            if mely == 0:
+                kezd = i
+            mely += 1
+        elif c == ')' and mely:
+            mely -= 1
+            if mely == 0:
+                ki.append((kezd, i + 1))
+    return ki
+
+
+def olvasoi_indok(szoveg):
+    """Az indoklás olvasói alakja, vagy None, ha tisztítás után sem olvasói szöveg. A belső jelölést hordozó zárójeles
+    csoportot (pl. „(DT478, a felhasználó …)”), kód-jelölést és munkafolyamat-kifejezést elhagyja; az ok maga marad.
+    Ha nincs benne belső jelölés, változatlanul adja vissza (az egyenes idézőjelet a lap utófeldolgozása javítja)."""
+    t = szoveg or ''
+    if not _piszkos(t.replace('"', '')):
+        return t
+    for rx in BELSO_KIFEJEZES:
+        t = rx.sub('', t)
+    elso = AZON_ELEJEN.match(t.strip())
+    if elso:   # „DT478 (a felhasználó, …): ok” — az azonosítót követő minősítő zárójel is a naplóhoz tartozik
+        t = t.strip()[elso.end():]
+        if t.startswith('(') and _felso_zarojelek(t):
+            t = t[_felso_zarojelek(t)[0][1]:]
+    for a, b in reversed(_felso_zarojelek(t)):
+        if _piszkos(t[a:b].replace('"', '')):
+            t = t[:a] + t[b:]
+    t = re.sub(r'`[^`]*`', lambda m: '' if _piszkos(m.group(0)) else m.group(0), t)
+    t = DONTES_MONDAT.sub('', t)
+    t = AZON_ELEJEN.sub('', t.strip())
+    for rx, ki in ANGOL_CSERE:
+        t = rx.sub(ki, t)
+    t = re.sub(r'\s+([:,;.])', r'\1', t)
+    t = re.sub(r'([,;:])\s*(?:[,;:]\s*)+', r'\1 ', t)
+    t = re.sub(r'\s{2,}', ' ', t).strip(' ,;:')
+    if len(re.findall(r'[^\W\d_]{3,}', t)) < 2 or _piszkos(t.replace('"', '')):
+        return None
+    return t
+
+
+def indok_cella(indoklas, ures='—'):
+    """Az indoklás táblacellába szánt olvasói alakja: a nyers szöveg proveniencia-farka (` | scope=…`) változatlan;
+    ha a főszöveg tisztítás után sem olvasói, a cella `ures` (a nyers szöveg az adattáblában van)."""
+    fo, sep, farok = (indoklas or '').partition(' | ')
+    olv = olvasoi_indok(fo)
+    if olv is None:
+        olv = ures
+    return _cella(olv + sep + farok)
 
 
 # F152 B.2: a blokkban ismétlődő proveniencia-sor a soron jellé rövidül, és a blokk alatt egyszer áll; a táblacellában
@@ -217,8 +291,14 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
             if ok == EGYEB_OK:
                 egyeb.append(r['igehely'])
             dontes = '**elutasítva** — %s' % ok
+        olv = olvasoi_indok(fo_ind)
         lj = 'forrás: `%s`%s' % (r.get('forras_kereses') or '—', (' · ' + farok) if farok else '')
-        csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, _cella(fo_ind) or '—'), lj))
+        if olv != fo_ind:
+            lj += ' · indoklás (nyers): %s' % _cella(fo_ind)
+        if olv is None:
+            csop[c].append((r['igehely'], _cella(miert), dontes, lj))
+        else:
+            csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, _cella(olv) or '—'), lj))
     ki = []
     for c, sorok_c in csop.items():
         if not sorok_c:

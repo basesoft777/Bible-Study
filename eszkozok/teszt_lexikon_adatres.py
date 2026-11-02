@@ -115,7 +115,7 @@ class Minosites(unittest.TestCase):
     def test_ures(self):
         ki = LG.adatres_minosites('PROBA-001', ['Mt 1:1'], [], {}, {})
         self.assertIn('**Független megerősítés:** nincs', ki)
-        self.assertIn('**Kereszthivatkozásból minősített jelölt:** nincs', ki)
+        self.assertIn('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs', ki)
 
 
 class ResTorzsAdatAg(unittest.TestCase):

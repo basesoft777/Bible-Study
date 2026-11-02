@@ -124,5 +124,50 @@ class TestOsszevon(unittest.TestCase):
         self.assertIn('(6)', tablak[0])
 
 
+class TestOlvasoiIndok(unittest.TestCase):
+    """Az indoklás olvasói alakja: belső jelölés nem kerül a lapra (olvasói kapu, 2026-11-02)."""
+
+    def test_dontes_azonosito_es_minosito_zarojel(self):
+        t = ('DT478 (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a JHVH (H3068) szó áll, '
+             'hanem névmási rag')
+        self.assertEqual(SZKZ.olvasoi_indok(t), 'a besém után nem a JHVH (H3068) szó áll, hanem névmási rag')
+
+    def test_belso_zarojel_elmarad_az_ok_marad(self):
+        t = 'Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor): a halálveszélyben lévő maga kiált'
+        self.assertEqual(SZKZ.olvasoi_indok(t), 'Minősítési mérce: a halálveszélyben lévő maga kiált')
+
+    def test_szuro_osztaly_kifejezes(self):
+        t = 'F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az Istent hívom” — eskü'
+        self.assertEqual(SZKZ.olvasoi_indok(t), 'Károli: „Én pedig az Istent hívom” — eskü')
+
+    def test_angol_cimke_es_kod(self):
+        self.assertEqual(SZKZ.olvasoi_indok('K1_passziv: nevezett (was called); passzív'), 'nevezett; passzív')
+        self.assertEqual(SZKZ.olvasoi_indok('nem a jelen scan tárgya — dokumentálva'),
+                         'nem a jelen keresés tárgya — dokumentálva')
+        self.assertEqual(SZKZ.olvasoi_indok('nélkül (`motivumok.tsv` `folerendelt_fogalom`) történik'), 'nélkül történik')
+
+    def test_tiszta_szoveg_valtozatlan(self):
+        t = 'a vers névadás („nevezék nevét Ézsaunak”), nem segítségül hívás'
+        self.assertEqual(SZKZ.olvasoi_indok(t), t)
+
+    def test_nem_menthet_none(self):
+        self.assertIsNone(SZKZ.olvasoi_indok('DT283 N59'))
+
+    def test_cella_proveniencia_farka_marad(self):
+        c = SZKZ.indok_cella('DT476 K2 (a felhasználó): a név nélküli forma | scope=manual | forras=x | ts=2026-11-01')
+        self.assertTrue(c.startswith('a név nélküli forma'))
+        self.assertIn('scope=manual', c)
+        self.assertNotIn('DT476', c)
+
+    def test_blokk_torzs_nyers_indoklas_labjegyzetben(self):
+        sorok = [{'igehely': 'Zak 13:9', 'dontes': 'elutasítva', 'forras_kereses': 'scan H7121',
+                  'indoklas': 'DT478 (a felhasználó): névmási rag áll | scope=manual | forras=x | ts=2026-11-01'}]
+        ki, labj, _ossz = SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
+        tabla = chr(10).join(ki)
+        self.assertNotIn('DT478', tabla)
+        self.assertIn('névmási rag áll', tabla)
+        self.assertIn('indoklás (nyers): DT478', labj[0])
+
+
 if __name__ == '__main__':
     unittest.main()

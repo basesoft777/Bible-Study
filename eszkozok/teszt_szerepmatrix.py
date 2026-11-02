@@ -628,7 +628,7 @@ class TestTeologiaiF09(unittest.TestCase):
         b = self._szerep('ISTENTISZT-001', 'heber', 6)
         self.assertIn('*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*', b)
         self.assertIn('Versszintű együtt-előfordulás, nem szóillesztés', b)
-        self.assertIn('**H8034** · 764 vers az LXX_OS-ben', b)
+        self.assertIn('**H8034** · 764 vers a Septuagintában', b)
         self.assertIn('Proveniencia (a tábla soraiból): scope=LXX_OS-versszint', b)
         # a görög oldalon nincs ilyen sor (a tábla héber-kulcsú)
         self.assertNotIn('versszint', self._szerep('ISTENTISZT-001', 'gorog', 6))
