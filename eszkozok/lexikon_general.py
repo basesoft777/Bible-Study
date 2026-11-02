@@ -43,6 +43,7 @@ import szerep_nave as SZN
 import szerep_kizart as SZKZ
 import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
 import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
+import olvasoi_utofeldolg as OU  # az olvasói szöveg egységesítése a kész lapon (olvasói kapu, 2026-11-02)
 import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
 
 ROOT = G.ROOT
@@ -5100,6 +5101,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
+            uj_szoveg = OU.alkalmaz(uj_szoveg)
             allapot = 'változatlan' if uj_szoveg == meglevo else 'frissítve'
         else:
             uj_szoveg = epit_uj_fajl(m, blokkok)
@@ -5107,6 +5109,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
+            uj_szoveg = OU.alkalmaz(uj_szoveg)
             allapot = 'új fájl'
 
         if args.ellenoriz:
