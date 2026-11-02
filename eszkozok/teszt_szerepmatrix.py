@@ -280,14 +280,15 @@ class TestVazTeremt(unittest.TestCase):
         tabla = sorted((r for r in _tsv_sorok() if r['nyelv'] == 'heber' and int(r['sorrend']) < 12),
                        key=lambda r: int(r['sorrend']))
         self.assertEqual(h, [(int(r['sorrend']), r['szerep']) for r in tabla])
-        # lexikon_hivatkozasok-sor nincs: az 1. és 2. szerep adatosítva, de nincs sor -> jelölt üres blokk
-        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', sz['heber'])
-        self.assertIn('#12b', sz['heber'])  # a TEREMT-002 szótári bekötése a #12b-é (DT187)
-        self.assertNotIn('#9 dolga', sz['heber'])
-        self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
+        # F12.2: a DT187-mutató kivezetve; az 1. és 2. szerep szótári szöveget ad (TBESH, illetve BDB)
+        self.assertNotIn('ÜRES-BLOKK: Alapjelentés', sz['heber'])
+        self.assertNotIn('#12b', sz['heber'])
+        self.assertNotIn('ÜRES-BLOKK: Mélységi szócikk', sz['heber'])
         for n in (1, 2):
             m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz['heber'], re.M | re.S)
-            self.assertNotIn('\n> ', m.group(0), n)  # nincs szótári szöveg: a bekötés a #12b-é
+            self.assertIn('\n> ', m.group(0), n)
+        self.assertIn('##### BDB H8414 — 1. jelentés', sz['heber'])
+        self.assertIn('##### BDB H0922 — (tagolatlan szócikk)', sz['heber'])
         # a TWOT és a domén megvan, a tokenhez kötve
         self.assertIn('**H8414** · **TWOT:**', sz['heber'])
 
@@ -490,10 +491,10 @@ class TestTbeshF09(unittest.TestCase):
         tiszta = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', raw)).strip()
         self.assertIn(r['szoveg_en'], tiszta)
 
-    def test_teremt002_tokenekhez_nincs_hivatkozas_sor(self):
-        # DT187 (2): a TEREMT-002 szótári bekötése a #12b-é, adatsort a #9 nem ír
-        for t in ('H8414', 'H0922'):
-            self.assertEqual(LG.lexikon_hivatkozasok_ehhez(t), [], t)
+    def test_teremt002_tokenek_bekotve(self):
+        # F12.1 (DT-F12a (1), DT438): a H8414 az 1. jelentéssel, a tagolatlan H0922 a szócikkfejjel bekötve
+        self.assertEqual([r['jelentes_szam'] for r in LG.lexikon_hivatkozasok_ehhez('H8414')], ['1'])
+        self.assertEqual([r['jelentes_szam'] for r in LG.lexikon_hivatkozasok_ehhez('H0922')], ['tagolatlan'])
 
     def test_konszolidalt_pontos_strong_sor_es_nem_targyalja(self):
         szoveg = _blokk('HAMART-001')[0]

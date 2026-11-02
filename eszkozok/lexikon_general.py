@@ -1041,6 +1041,8 @@ def _jsz_cimke(jelentes_szam):
         return '(teljes szócikk)'
     if jelentes_szam == 'részlet':
         return '(részlet)'
+    if jelentes_szam == 'tagolatlan':  # DT438: a szócikk nem tagol (pl. H0922), a sor a teljes szócikkfej
+        return '(tagolatlan szócikk)'
     return '%s. jelentés' % jelentes_szam
 
 
@@ -1347,7 +1349,7 @@ def _token_mutato_blokk(szerep, token, mutato):
 
 def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
     """Héber 1. szerep (Alapjelentés): TBESH. Sorrend tokenenként: (1) kijelölt mutató (H7121: BDB 2.c,
-    DT-F42a; a TEREMT-002 tokenjei: #12b, DT187); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
+    DT-F42a); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
     szó szerinti kivonat, F6.3-minta, DT187); (3) a konszolidált tábla sorai; (4) `a forrás nem tárgyalja`."""
     out = []
     for t in tokenek_ny:
@@ -2073,16 +2075,11 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
 
 
 # DT-F78d (lezárva): a TBESH (CC BY 4.0, DT-F33f) a héber 1. szerep forrása marad, `adatosítva`; a DT-F42a csak a
-# H7121 „részlet” sorát váltotta ki BDB-vel. F09 (DT187): a TEREMT-002 két tokenének (H8414, H0922) szótári
-# bekötése a #12b dolga; a render ezeken a helyeken a mutatót adja, adatsort a #9 nem ír.
+# H7121 „részlet” sorát váltotta ki BDB-vel. A TEREMT-002 két tokenének (H8414, H0922) DT187-mutatója az F12.2-ben
+# kivezetve: a szótári bekötést a #12 elvégezte (F12.1).
 # Tokenenkénti mutató az üres blokkon.
-_TEREMT002_MUTATO = 'a TEREMT-002 szótári bekötése a #12b dolga (DT187)'
 SZEREP_TOKEN_MUTATO = {
     ('heber', 1, 'H7121'): 'a H7121 alapjelentését a BDB 2.c adja (DT-F42a)',
-    ('heber', 1, 'H8414'): _TEREMT002_MUTATO,
-    ('heber', 1, 'H0922'): _TEREMT002_MUTATO,
-    ('heber', 2, 'H8414'): _TEREMT002_MUTATO,
-    ('heber', 2, 'H0922'): _TEREMT002_MUTATO,
 }
 
 
