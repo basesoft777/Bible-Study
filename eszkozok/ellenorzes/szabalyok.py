@@ -2671,6 +2671,8 @@ def e33_tanulmany_regiszterbe_kerul(fajlok):
                and f.count('/') == 1]
     if not erdekes:
         return talalatok
+    if not os.path.exists(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv')):
+        return talalatok            # Károli-szöveg nélkül a tartomány nem ellenőrizhető (pl. ideiglenes teszt-gyökér)
     _sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     import tanulmany_regiszter as TR
     kihagyott = None
