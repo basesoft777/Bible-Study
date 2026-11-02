@@ -283,7 +283,8 @@ class Arany(unittest.TestCase):
                         '%s / %s nincs a találatok között' % (azon, minta))
 
     def test_G1_masolt_kh(self):
-        self.van('KH_MASOLT', 'Zsolt 116:13')
+        """DT-F156n óta a másolat-gyanús KH-lista nem kerül a lapra: a G1 sorai eltűntek, a kapu nem jelez."""
+        self.assertFalse(any(t['azonosito'] == 'KH_MASOLT' for t in self.tal))
 
     def test_G4_szurojel_es_angol(self):
         self.van('BELSO', 'F110')
