@@ -421,5 +421,94 @@ class KiadasJelTeszt(unittest.TestCase):
             self.assertEqual(r['kiadas'], '')
 
 
+class HatarJelenlegiTeszt(unittest.TestCase):
+    """A határ-kártya „A jelenlegi határ” blokkja az adatból; hiányzó adatnál kimondja, nem tölti ki."""
+
+    def _adat(self, t):
+        os.makedirs(os.path.join(t, 'adat'))
+
+        def irj_adat(nev, sz):
+            with open(os.path.join(t, 'adat', nev), 'w', encoding='utf-8', newline='\n') as f:
+                f.write(sz)
+        irj_adat('motivumok.tsv', '# fej\nid\tcim\tnegativ_kriterium\tfolerendelt_fogalom\nX-001\tCím\t"idézőjeles" kritérium\ttágabb kör\n')
+        irj_adat('elofordulasok.tsv', '# fej\nid\tigehely\tkapcsolodas\nX-001\tLuk 10:15\tbent levő hely\nY-001\tMt 16:18\tmás motívum\n')
+        irj_adat('jeloltek.tsv', '# fej\nid\tigehely\tdontes\tindoklas\tjelolt_tipus\nX-001\tMt 16:18\telutasítva\tmás téma\t\n'
+                 'X-001\tLuk 10:15\tbeépítve\tbent\t\n')
+
+    def test_allapot_es_proveniencia(self):
+        with tempfile.TemporaryDirectory() as t:
+            self._adat(t)
+            sz = L.hatar_jelenlegi('X-001', ['Mt 16:18', 'Luk 10:15', 'Ján 1:1'], t, ts='2026-11-02')
+        s = sz.split(L.SORTORES)
+        self.assertIn('Negatív kritérium: "idézőjeles" kritérium (`adat/motivumok.tsv:3`)', s[0])
+        self.assertIn('Fölérendelt fogalom: tágabb kör', s[1])
+        self.assertTrue(s[2].startswith('Mt 16:18: elutasítva — jelölt (`adat/jeloltek.tsv:3`'))
+        self.assertTrue(s[3].startswith('Luk 10:15: bent van — előfordulás (`adat/elofordulasok.tsv:3`'))
+        self.assertEqual(len([x for x in s if x.startswith('Luk 10:15')]), 1)  # a beépített jelölt nem ismétlődik
+        self.assertIn('Ján 1:1: nincs sora', s[4])
+        self.assertTrue(s[-1].startswith('(proveniencia: scope=') and 'talalt=2' in s[-1])
+
+    def test_nincs_motivum_sor(self):
+        with tempfile.TemporaryDirectory() as t:
+            self._adat(t)
+            sz = L.hatar_jelenlegi('Z-001', ['Mt 16:18'], t)
+        self.assertIn('nem olvasható ki', sz)
+
+    def test_kartya_igehelyei(self):
+        k = {'kerdes': 'Cím: az Mt 16:18 kint, a Luk 10:15 bent ⏎ (a) 1Kor 15:55 ⏎ (b) Jel 1:18', 'hely': 'Mt 16:18'}
+        self.assertEqual(L.kartya_igehelyek(k), ['Mt 16:18', 'Luk 10:15', '1Kor 15:55'])
+
+    def test_kovetkezmeny_csak_hataron_es_parban(self):
+        with tempfile.TemporaryDirectory() as t:
+            d = os.path.join(t, 'eszkozok', 'lektor_felulet')
+            os.makedirs(d)
+            fej = 'kerdes_id\ttipus\tgond\tjavaslat\tproveniencia\tkov_elfogadom\tkov_elvetem\n'
+            ut = os.path.join(d, 'osszefoglalo_X-001.tsv')
+
+            def ir(sz):
+                with open(ut, 'w', encoding='utf-8') as f:
+                    f.write(fej + sz)
+            ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\tb\nlektor:X-001:1\tnincs\tg\tj\tmanual\t\t\n')
+            self.assertEqual(L.osszefoglalo_beolvas('X-001', t)['hatar:X-001:mK1'][4:], ('a', 'b'))
+            ir('lektor:X-001:1\tnincs\tg\tj\tmanual\ta\tb\n')
+            with self.assertRaises(ValueError):
+                L.osszefoglalo_beolvas('X-001', t)
+            ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\t\n')
+            with self.assertRaises(ValueError):
+                L.osszefoglalo_beolvas('X-001', t)
+
+
+class LapnezetTeszt(unittest.TestCase):
+    """A „lapnézet” link motívumonként (lapnezetek.tsv); ami nincs a táblában, annak nincs linkje."""
+
+    def test_tabla_beolvasasa(self):
+        import importlib
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lektor_felulet'))
+        E = importlib.import_module('epit')
+        with tempfile.TemporaryDirectory() as t:
+            ut = os.path.join(t, 'lapnezetek.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('# megj\nmotivum\turl\tmegjegyzes\nA-001\thttps://x/a\t\nB-001\thttps://x/b\tm\n')
+            self.assertEqual(E.lapnezetek(ut), {'A-001': 'https://x/a', 'B-001': 'https://x/b'})
+            self.assertEqual(E.lapnezetek(os.path.join(t, 'nincs.tsv')), {})
+            with open(ut, 'a', encoding='utf-8', newline='\n') as f:
+                f.write('A-001\thttps://x/c\t\n')
+            with self.assertRaises(ValueError):
+                E.lapnezetek(ut)
+
+    def test_a_repo_tablaja_es_a_sablon(self):
+        import importlib
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lektor_felulet'))
+        E = importlib.import_module('epit')
+        n = E.lapnezetek()
+        self.assertIn('ALVIL-001', n)
+        self.assertNotEqual(n['ALVIL-001'], n.get('ISTENTISZT-001'))
+        with tempfile.TemporaryDirectory() as t:
+            os.makedirs(os.path.join(t, 'naplok'))
+            html = E.epit(nezetek={'A-001': 'https://x/a'}, root=t)
+        self.assertIn('const LAP_URLOK = {"A-001": "https://x/a"};', html)
+        self.assertNotIn('__LAP_URLOK__', html)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
