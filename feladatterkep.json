@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-02",
-   "commit": "0b81dff9"
+   "commit": "dd65cc9e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -196,7 +196,7 @@
    "fazis": "1",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "A1 (új session, az M0 PR mergelése után): adag701, naplok/THAYER_ELES_sorrend.tsv adag=1 (35 Strong: G0282 elöl), --effort high; becslés és adagplafon: naplok/THAYER_ELES_naplo.md M0 8.",
+   "most": "A2 (új session, az A1 PR mergelése után): adag702 = az A1 6 bukottja (G3588 G3756 G3004 G1063 G1223 G1487) v5.2-es első körrel + az eredeti A2 (79 Strong, 498 937 forráskarakter): összesen 85 Strong, 611 808 forráskarakter, --effort high; becslés 17,59 USD (első kör 9,46 + javító 8,14), adagplafon 22,87, --plafon 41,0 (kumulatív: az eddigi mért 18,1337 + 22,87); naplok/THAYER_ELES_naplo.md A1 8–10; a `beir --megjegyzes` rögzítse a prompt verzióját (`prompt v5.2`).",
    "fugg": "#3 (kész), #5 (kész), #14 (kész), #154*, #159 (kész)",
    "tervezett": false,
    "reszletes": "",
@@ -4776,6 +4776,54 @@
      "✅"
     ],
     "sor": 566,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT535",
+    "feladat": "#7 THAYER_ELES (A1: a 3. kapu `3Makk` hibája)",
+    "kerdes": "Az A1-ben a G2316, G3956, G5613 a javító kör után is a `3_karoli_roviditesek` `3Makk`-ján bukott. Felvegyük-e az apokrif magyar alakokat?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 575,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT536",
+    "feladat": "#7 THAYER_ELES (A1: a `9_tagolas` kapu hamis bukása prózai utalásokon)",
+    "kerdes": "A kapu a `cf. 5 below`, `see III. 2 below`, `differently below, II. 1`, `see αἰών, 1 b.` alakú utalások számait/betűit/római számait jelölőnek olvassa; a magyar szórend megcseréli a sorrendjüket (A1: 18 Strong az 1. körben, 6 a javító kör után).",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 576,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT537",
+    "feladat": "#7 THAYER_ELES (A1: az idézőjelek a Thayer-promptban; v5.1 → v5.2)",
+    "kerdes": "Az A1 első körének 21 `8_idezojel`-bukásából 14 a glosszák köré tett többlet-„…”, 3 tiszta `'…'`→`„…”` csere. A kapu a forrás aposztrófos idézetét nem számolja (csak `\"`//2 + “ + «), a fordítás minden „ és » jelét igen.",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 577,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT538",
+    "feladat": "#7 THAYER_ELES (A1: a bukottak újrakapuzása, harmadik kör, `--plafon` kumulatív szabálya)",
+    "kerdes": "(1) Az A1 14 bukottjának újrakapuzása az új kapukkal (0 USD). (2) A kapun kétszer bukott Strongok harmadik köre a promptváltás miatt. (3) A `--plafon` az `--elozo-kiadas`-szal kumulatív.",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 578,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }
