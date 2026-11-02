@@ -166,7 +166,7 @@ A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,
 
 ## Javaslat a #7 (Thayer éles) briefjéhez (nem brief; futtatni nem kezdtem)
 
-- **Hatókör:** a `naplok/FP3_sorrend.tsv` 5 413 − 28 (beírt) − 9 (az M1-ben kétszer bukott Strongok közül 4) = a még hátralévő Strongok; adagok a sorrend szerint, kb. 500 000 forráskarakter; adagonként új session.
+- **Hatókör:** a `naplok/FP3_sorrend.tsv` 5 413 − 28 (beírt) = 5 385 Strong marad (a 4 kétszer bukott G3588, G1722, G1510, G1519 köztük van); adagok a sorrend szerint, kb. 500 000 forráskarakter; adagonként új session.
 - **Előfeltételek a #7 előtt (a DT-F27b (b) döntésétől függően):** N-F27a (becslő kalibrálása a mért modellre), N-F27b (mért futó összeg a plafon-ellenőrzésben), N-F27c (max_tokens a nagy szócikkeknél), N-F27d (gyorsítótár mérése), N-F27e (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
 - **Költség:** mért kivetítés 207–311 USD a teljes Thayerre (l. fent); adagonként plafon = az adag mért-modell szerinti becslésének 1,5-szerese, mért futó összeggel.
 - **Lépések adagonként:** `szaraz` → plafon → `bekuld` → `allapot` (5 perces ciklus) → `begyujt` → `kapuz` → `javit` (1 kör) → `rogzit` → `beir --regi-elavult --kezi-marad` → adagjelentés; a kétszer bukottak a `bukottak.tsv`-be.
