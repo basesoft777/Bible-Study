@@ -7,7 +7,7 @@ modell: sonnet
 allapot: brief_kell
 ad: a görög mélységi szócikk magyarul, adatként
 kovetkezo: halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja
-fugg: [3, 5, 14]
+fugg: [3, 5, 14, 159]
 nem_fugg: [9]
 olvas: [adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/Thayer_teljes.tsv]
 ir: [adat/forditasok.tsv]
