@@ -17,11 +17,11 @@ nem_fugg: [7, 12, 22, 27, 38, 121, 153, 154]
 # F158_THAYER_API_KOTEG_BRIEF.md — a Thayer szakaszos fordításának API-kötegelője
 
 *FELADATOK #158 · Modell: sonnet · v1 · 2026.11.02 · készítette: `claude-opus-5-5` a `/befogad` menetében, a felhasználó döntése
-szerint (DT-F27a, chat, 2026-11-02: „Mehet, külön #158”); a #27 (FP3) előfeltétele.*
+szerint (DT490, chat, 2026-11-02: „Mehet, külön #158”); a #27 (FP3) előfeltétele.*
 
 ## 1. Cél
 
-A felhasználó döntése szerint (DT-F27a) a Thayer teljes magyar fordítása (#27 mérő adag, #7 éles) API-n, a Message Batches úton
+A felhasználó döntése szerint (DT490) a Thayer teljes magyar fordítása (#27 mérő adag, #7 éles) API-n, a Message Batches úton
 fut, nem sessionből. A #132 szakaszos lánca (`eszkozok/thayer_jelolt/forditas.py`) **nem fordít**: a docstringje szerint a hívó
 végzi a fordítást a kiírt promptokból. A BDB-nek van Batch-kötegelője (`eszkozok/bdb_api_koteg.py`, #38, a 13. adagtól), a Thayernek
 nincs. Ez a feladat megírja: `eszkozok/thayer_api_koteg.py`.
@@ -105,4 +105,4 @@ nyúlni: megállás, tétel a `DONTESEK.md`-be); a sigla-tábla.
 
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
-| v1 | 2026.11.02 | Első változat: a Thayer Batch-kötegelője és a teljes Thayer futási listája, valódi beküldés nélkül | DT-F27a (felhasználó, 2026.11.02: „Mehet, külön #158”) |
+| v1 | 2026.11.02 | Első változat: a Thayer Batch-kötegelője és a teljes Thayer futási listája, valódi beküldés nélkül | DT490 (felhasználó, 2026.11.02: „Mehet, külön #158”) |
