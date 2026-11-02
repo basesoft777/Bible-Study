@@ -867,7 +867,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | publikálható | v2 | 2026.09.10 | 1 fő / 9 sor | 1 | tematikus_lezart/Melkizedek_tematikus.md |
 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | publikálható | v4 | 2026.09.10 | 1 fő / 9 sor | 2 | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md |
 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | publikálható | v4 | 2026.09.10 | 5 fő / 42 sor | 0 | tematikus_lezart/Tehom_tematikus.md |
-| Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` | feldolgozás alatt | v1 | 2026.09.25 | 3 fő / 3 sor | 0 | — |
+| Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` | feldolgozás alatt | v1 | 2026.09.25 | 3 fő / 3 sor | 0 | motivumok/TEREMT-002.md |
 
 <!-- GENERÁLT-VÉGE: nyitott -->
 
