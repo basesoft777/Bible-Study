@@ -15,6 +15,11 @@ Alparancsok:
   seol    —       az ALVIL-001 2e. 4. scanje: halál/sír + kiáltás az Úrhoz, H7585 nélkül
   rokon   <ID> <A1,A2> <B1,B2> [ablak] — összetett gerinc-elem rokon alakokkal, azonos versben és ±ablak versben
                   (ANTROP-001: a negatív kritérium „melléknévi alak” és „egyazon mondat” kitétele)
+  kollok  <ID> <A+B,…> — a negatív kritérium kollokációi egy versben (HAMART-001)
+  csalad  <ID> — a φθείρω-család a TAGNT Szótő-mezőjéből (HAMART-001)
+  lanc    <ID> <S1,S2,…> [ablak] — legalább 2 különböző lánc-lexéma versben / ±ablak versben (HAMART-001)
+  lxx_e   <ID> <G1,G2,…> — LXX-híd a héber előfordulás-verseken: a kritérium görög elemei (HAMART-001)
+  nf63e   <ID> <S1,S2,…> — a tág új helyek közül a csak listán kívüli Strongot hordozók (HAMART-001, DT-F123u)
   lxx     <ID> <H1+H2> <A1,A2> <B1,B2> — a héber gerinc-pár kollokációs helyein az LXX-híd: áll-e ott a görög pár
                   (ANTROP-001: DT-F123s)
 
@@ -1040,6 +1045,36 @@ def cmd_lxx_e(mid, gorog):
         print('L\t' + '\t'.join(s[:5]))
 
 
+def cmd_nf63e(mid, lista):
+    """F123.HAMART.A13 (DT-F123u): a #108-összevetés tág új helyei közül azok a versek, amelyek CSAK a negatív
+    kritérium lexémalistáján kívüli Strongot hordoznak. Blokk-kizárás nincs: a sorok `N-F63e-függő` jelöléssel
+    várnak, amíg az N-F63e (a H7451/H7043 gerinc-státusza) el nem dől. Bemenet: a `f108` alparancs kimenete."""
+    krit = set(lista.split(','))
+    nev = 'F123_adat_%s_f108_osszevetes.tsv' % mid
+    f108 = [r for r in L.read_tsv_skip_comments(NAPLOK / nev)
+            if r['tabla'] == 'ujrascan' and r['valtozas'].startswith('UJ_HELY')]
+    versek = defaultdict(set)
+    for r in f108:
+        versek[r['igehely']].add(r['strong'])
+    sorrend = {}
+    for i, k in enumerate(L.load_karoli_1908()):
+        sorrend[k] = i
+    sorok = []
+    for v in sorted(versek, key=lambda x: sorrend.get(x, 10 ** 9)):
+        if versek[v] & krit:
+            continue
+        sorok.append([v, '+'.join(sorted(versek[v])), 'N-F63e-függő'])
+    prov = ('scope=%s: naplok/%s (UJ_HELY sorok), a negatív kritérium listáján (%s) kívüli Strongot hordozó versek | '
+            'forras=split(\'\\t\') | ts=%s' % (mid, nev, '|'.join(sorted(krit)), TS))
+    ir_tsv('F123_adat_%s_nf63e_fuggo.tsv' % mid, ['igehely', 'strong', 'allapot', 'proveniencia'],
+           [s + [prov] for s in sorok], 'F123 X.A DT-F123u: N-F63e-függő tág helyek %s — blokk-kizárás nélkül' % mid)
+    print('PROV	' + prov)
+    c = Counter(s[1] for s in sorok)
+    for k, v in sorted(c.items()):
+        print('DB	%s	%d' % (k, v))
+    print('OSSZES	%d' % len(sorok))
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -1064,6 +1099,8 @@ def main():
         cmd_csalad(sys.argv[2])
     elif cmd == 'lanc':
         cmd_lanc(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 1)
+    elif cmd == 'nf63e':
+        cmd_nf63e(sys.argv[2], sys.argv[3])
     elif cmd == 'lxx_e':
         cmd_lxx_e(sys.argv[2], sys.argv[3])
     else:
