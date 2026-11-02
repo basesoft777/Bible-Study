@@ -1469,6 +1469,30 @@ def szabaly24_labjegyzet_definicio(adat_dir):
             hibak.append('%s: %d definíció nélküli hivatkozás (%s)' % (nev, len(hiany), ', '.join(hiany[:12])))
     return Sor(cim, 'SÉRTÉS' if hibak else 'RENDBEN', len(hibak) or None, hibak)
 
+
+def szabaly25_proza_1a(adat_dir):
+    """DT-F1Aa (b) (JELENTES, nem gatol; a Feed 6. kapuja piros ra): motivumonkent az 1/a igehelyei,
+    amelyek alatt nincs kerek proza vagy „Funkció:” sor, az arany lap (ISTENTISZT-001) mercejevel.
+    A merest a `lexikon/[ID]_TUDOMANYOS.md` lapon vegzi (`eszkozok/proza_1a.py`), mert az olvaso
+    a lapot latja: a hianyzo adat es a generator kihagyasa is megjelenik."""
+    cim = '25. Az 1/a igehelyenkénti prózája (arany lap)'
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    import proza_1a as P
+    idk = P.lap_idk(gyoker)
+    if not idk:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    peldak, ossz = [], 0
+    for mid in idk:
+        d = P.osszesit(P.lap_meres(mid, gyoker) or [])
+        hiany = d['igehely'] - d['arany']
+        ossz += hiany
+        if hiany:
+            peldak.append('%s: %d/%d igehely nem arany szintű (próza töredék %d, hiányzik %d; Funkció töredék %d, '
+                          'hiányzik %d)' % (mid, hiany, d['igehely'], d['töredék'], d['hiányzik'],
+                                            d['funkcio_töredék'], d['funkcio_hiányzik']))
+    return Sor(cim, 'JELENTÉS' if ossz else 'RENDBEN', len(peldak) or None, peldak,
+               megjegyzes='%d igehely; nem gátol; lista: python eszkozok/proza_1a.py <ID> --reszletes' % ossz)
+
 # ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
@@ -1620,6 +1644,7 @@ def main():
         tabla_sorok.append(szabaly22_kiejtes_hiany(args.adat))
         tabla_sorok.append(szabaly23_proza_lefedettseg(args.adat))
         tabla_sorok.append(szabaly24_labjegyzet_definicio(args.adat))
+        tabla_sorok.append(szabaly25_proza_1a(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
