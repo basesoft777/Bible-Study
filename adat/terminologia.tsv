@@ -84,3 +84,33 @@ grave	sír	F121 ALVIL-001 menet (DT409, jóváhagyva 2026-10-29): Károli H7585 
 pit	verem	F121 ALVIL-001 menet (DT409, jóváhagyva 2026-10-29): UBS G12 ἄβυσσος „verem”; kapu=nem: a „pit” többjelentésű (H7845 stb.)	v4	nem
 lake of fire	tüzes tó	F121 ALVIL-001 menet (DT409, jóváhagyva 2026-10-29): Károli Jel 19:20 „tüzes tóba”; Jel 20:15 „a tűznek tavába”	v4	nem
 Bibl. Hades	Bibl. Hades	F121 ALVIL-001 menet (DT409, jóváhagyva 2026-10-29): Beer „Bibl. Hades” műcíme a BDB H7585 szócikkében, nem fordítandó (a „Hades” kapu a címet nem érintheti)	v4	igen
+aorist	aorisztosz	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: nincs adat; Thayer kezi (G1941): aorisztosz 3×, aoristos 0×; kapu=nem (JELZES)	v5	nem
+passive	szenvedő	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+active	aktív	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: aktív 210×, cselekvő 38×; Thayer kezi: nincs; kapu=nem (JELZES)	v5	nem
+middle	közép alak	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: közép 57×, középső 28×; Thayer kezi (G1941): közép alak; kapu=nem (JELZES)	v5	nem
+genitive	birtokos eset	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: genitivus 49×, birtokos eset 34×; a magyar eseteknevek egységes alakja (a tárgyeset a BDB-ben 2608×); kapu=nem (JELZES)	v5	nem
+dative	részes eset	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: dativus 16×, részes eset 10×; Thayer kezi: datívusz 6× (G4151); a közös magyar alak a részes eset; kapu=nem (JELZES)	v5	nem
+nominative	alanyeset	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+infinitive	infinitivus	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: infinitivus 1550×, főnévi igenév 40×; Thayer kezi: 1× / 1×; kapu=nem (JELZES)	v5	nem
+participle	participium	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB: participium 1917×, melléknévi igenév 0×; Thayer kezi: nincs; kapu=nem (JELZES)	v5	nem
+subjunctive	kötőmód	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+indicative	kijelentő mód	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+plural	többes szám	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+singular	egyes szám	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+future	jövő idő	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+present	jelen idő	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+neuter	semleges nem	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+noun	főnév	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+adjective	melléknév	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+adverb	határozószó	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+preposition	elöljárószó	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+particle	partikula	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+article	névelő	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+grammar	nyelvtan	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+metaphorically	átvitt értelemben	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+absolutely	önállóan (tárgy nélkül)	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+properly	tulajdonképpen	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+namely	tudniillik	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+secular	világi	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+reading	olvasat	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem
+edition	kiadás	F07 M0 (d2), DT-F07e: naplok/THAYER_ELES_terminologia_javaslat.tsv; BDB-egyeztetés: a BDB-sorok alakjával nem ütközik; kapu=nem (JELZES)	v5	nem

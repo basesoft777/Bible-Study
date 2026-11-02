@@ -204,6 +204,27 @@ class Konyvek(unittest.TestCase):
         self.assertEqual(K.ellenoriz_konyvek('Lam 3:57; Sir. 1:3', 'JSir 3:57; Sir 1:3')[0], 'RENDBEN')
         self.assertEqual(K.ellenoriz_konyvek('Lam 3:57', 'Sir 3:57')[0], 'SERTES')
 
+    def test_heb_c_v_elott_konyv_nem_terminologia(self):
+        """F07 M0: a `Heb.` c:v előtt könyvhivatkozás: a `Heb. -> héb.` sor nem követeli a `héb.` alakot; c:v nélkül igen."""
+        t = [{'angol': 'Heb.', 'magyar': 'héb.', 'kapu': 'igen'}]
+        self.assertEqual(K.ellenoriz_terminologia('of Melchizedek, Heb. 7:3; cf. Heb 9:1', 'Melkisédekről, Zsid 7:3', t, [])[0], 'RENDBEN')
+        self.assertEqual(K.ellenoriz_terminologia('Bleek on Heb. vol. ii.', 'Bleek a Zsidókhoz, II. köt.', t, [])[0], 'SERTES')
+        self.assertEqual(K.ellenoriz_terminologia('Bleek on Heb. vol. ii.', 'Bleek a héb.-hez, II. köt.', t, [])[0], 'RENDBEN')
+        # a c:v-s és a c:v nélküli előfordulás együtt: a c:v nélküli követeli az alakot
+        self.assertEqual(K.ellenoriz_terminologia('Heb. 7:3 and Heb. vol. ii.', 'Zsid 7:3 és Zsid. II.', t, [])[0], 'SERTES')
+
+    def test_apokrif_forras_alakok(self):
+        # F07 M0 (N72): a #27 M1 / #159 bukásainak forrás-alakjai (1 Macc., 2 Macc., 3Macc., Wis., Tobit, Judith)
+        forras = 'cf. 1 Macc. 9:38; 2 Macc. 3:25; 3Macc. 3:24; Wis. 8:18; Tobit 12:13; Judith 16:9'
+        forditas = 'vö. 1Makk 9:38; 2Makk 3:25; 3Makk 3:24; Bölcs 8:18; Tób 12:13; Judit 16:9'
+        self.assertEqual(K.ellenoriz_konyvek(forras, forditas)[0], 'RENDBEN')
+
+    def test_apokrif_rossz_alak_sertes(self):
+        # a nyers `1 Makk` (szóközzel) csak a normalizáló (`apokrif` szabály) után RENDBEN
+        self.assertEqual(K.ellenoriz_konyvek('1 Macc. 9:38', '1 Makk 9:38')[0], 'SERTES')
+        import normalizal as N
+        self.assertEqual(K.ellenoriz_konyvek('1 Macc. 9:38; Wis. 8:18', N.normalizal('1 Makk 9:38; Wis. 8:18', 'Thayer')[0])[0], 'RENDBEN')
+
 
 class KaroliNagybetusSzo(unittest.TestCase):
     """F38, DT-F38c (e): a c:v előtti nagybetűs, nem könyvnév szó nem 3. kapus hiba

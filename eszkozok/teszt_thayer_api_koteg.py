@@ -376,8 +376,7 @@ class BUt(Alap):
             self.assertEqual(eredm[s]['allapot'], 'kesz', (s, eredm[s]['hibak']))
             self.assertEqual(eredm[s]['vegleges'], fin_ok[s])      # betűhű visszaállítás Strongonként
 
-    def test_hianyzo_strong_javitando_es_egyenkent_javul(self):
-        valasz, _ = b_hamis_valasz(B_STRONGOK, hianyzo=('G1944',))
+    def _b_kapu(self, valasz):
         os.makedirs(T.MUNKA, exist_ok=True)
         with open(T.ut('b_csoportok.json'), 'w', encoding='utf-8') as f:
             json.dump({'B001': B_STRONGOK, 'egyedi': []}, f)
@@ -385,7 +384,12 @@ class BUt(Alap):
                'usage': {}, 'szoveg': valasz, 'hiba': '', 'batch_id': 'b'}
         T.jsonl_hozzaad(T.ut('valaszok.jsonl'), T.b_szetbont(rek))
         T.kapuz(B_STRONGOK)
-        eredm = {r['strong']: r for r in T.jsonl_olvas(T.ut('kapu_eredmeny.jsonl'))}
+        return {r['strong']: r for r in T.jsonl_olvas(T.ut('kapu_eredmeny.jsonl'))}
+
+    def test_hianyzo_strong_javitando_es_csoportosan_javul(self):
+        """F07 M0 (b): a B-válaszból hiányzó kicsi/közepes Strong friss kérésként, B-javító (J001-p2) kérésben megy újra."""
+        valasz, _ = b_hamis_valasz(B_STRONGOK, hianyzo=('G1944',))
+        eredm = self._b_kapu(valasz)
         self.assertEqual([eredm[s]['allapot'] for s in B_STRONGOK], ['kesz', 'javitando', 'kesz'])
         hivott = []
 
@@ -394,8 +398,76 @@ class BUt(Alap):
             return {'id': 'msgbatch_j'}
         self.assertEqual(T.javit(B_STRONGOK, 'teszt', 50.0, hivo=hivo), 0)
         kerelmek = hivott[0]['requests']
-        self.assertEqual([k['custom_id'] for k in kerelmek], ['G1944-c1-p2'])      # egyenként, A-stílusban
-        self.assertEqual([m['role'] for m in kerelmek[0]['params']['messages']], ['user'])      # nincs mit javítani: friss kérés
+        self.assertEqual([k['custom_id'] for k in kerelmek], ['J001-p2'])
+        msgs = kerelmek[0]['params']['messages']
+        self.assertEqual([m['role'] for m in msgs], ['user'])      # egyetlen felhasználói forduló: a kimenet nem megy kétszer
+        szoveg = msgs[0]['content'][0]['text']
+        self.assertIn('nem érkezett használható válasz', szoveg)
+        self.assertNotIn('Az előző kísérlet kimenete', szoveg)      # nincs mit megjavítani
+        self.assertEqual(json.load(open(T.ut('bj_csoportok.json'), encoding='utf-8')), {'J001': ['G1944']})
+        # a már beküldött javító kérés nem megy újra
+        self.assertEqual(T.javit(B_STRONGOK, 'teszt', 50.0, hivo=hivo), 0)
+        self.assertEqual(len(hivott), 1)
+
+    def test_b_javito_kerelem_strongonkenti_resze_bajtra_a_vart(self):
+        valasz, _ = b_hamis_valasz(B_STRONGOK)
+        tomb = json.loads(valasz)
+        tomb[0]['forditas_hu'] = tomb[0]['forditas_hu'].replace('⟦1⟧', '')      # helyőrző-hiba: a kapu előtt bukik
+        eredm = self._b_kapu(json.dumps(tomb, ensure_ascii=False))
+        r = eredm[B_STRONGOK[0]]
+        self.assertEqual(r['allapot'], 'javitando')
+        ks = [T.kerelmek_strongra(s)[0] for s in (B_STRONGOK[0], B_STRONGOK[1])]
+        p = T.b_prompt(ks, [(r['nyers'][0], r['hibak']), ('', [])])
+        resz = ('\n\n#### Az előző kísérlet kimenete erre a szócikkre\n\n```json\n%s\n```\n\n#### Javítandó\n\n%s'
+                % (r['nyers'][0].strip(), T.javito_resz(r['hibak'])))
+        self.assertIn(T.b_strong_blokk(ks[0], 0, 2) + resz, p)      # a hibaüzenet bájtra ott áll, ahol várjuk
+        self.assertIn('helyőrző', T.javito_resz(r['hibak']))
+        self.assertEqual(p.count('## Példapár'), 1)      # a szabály-rész egyszer áll
+        self.assertNotIn(' Add vissza', T.javito_resz(r['hibak']))
+
+    def test_b_javito_visszabontas_es_kapuzas_strongonkent(self):
+        valasz, fin_ok = b_hamis_valasz(B_STRONGOK, hianyzo=('G1944',))
+        self._b_kapu(valasz)
+
+        def hivo(m, ut, torzs=None, nyers=False):
+            return {'id': 'msgbatch_j'}
+        T.javit(B_STRONGOK, 'teszt', 50.0, hivo=hivo)
+        javitott, _ = b_hamis_valasz(['G1944'])
+        rek = {'custom_id': 'J001-p2', 'tipus': 'succeeded', 'modell': 'claude-sonnet-5-5', 'stop': 'end_turn', 'usage': {},
+               'szoveg': javitott, 'hiba': '', 'batch_id': 'j'}
+        bontott = T.b_szetbont(rek)
+        self.assertEqual([r['custom_id'] for r in bontott], ['G1944-c1-p2'])
+        T.jsonl_hozzaad(T.ut('valaszok.jsonl'), bontott)
+        T.kapuz(B_STRONGOK)
+        eredm = {r['strong']: r for r in T.jsonl_olvas(T.ut('kapu_eredmeny.jsonl'))}
+        self.assertEqual((eredm['G1944']['allapot'], eredm['G1944']['proba']), ('kesz', 2))
+        self.assertEqual(eredm['G1944']['vegleges'], fin_ok['G1944'])
+
+    def test_b_javito_plafon_mert_futo_osszeggel(self):
+        valasz, _ = b_hamis_valasz(B_STRONGOK, hianyzo=('G1944',))
+        self._b_kapu(valasz)
+        T.AK.tsv_hozzaad(T.ut('futasnaplo.tsv'), T.NAPLO_FEJLEC, {'ts': 'x', 'custom_id': 'B000-p1', 'modell': 'm', 'effort': 'high',
+                                                                 'bemenet_token': 1, 'cache_olvasas': 0, 'cache_iras': 0,
+                                                                 'kimenet_token': 1, 'stop_reason': 'end_turn',
+                                                                 'koltseg_usd': '3.500000', 'futo_osszeg_usd': '3.500000'})
+        hivott = []
+
+        def hivo(m, ut, torzs=None, nyers=False):
+            hivott.append(torzs)
+            return {'id': 'msgbatch_j'}
+        self.assertEqual(T.javit(B_STRONGOK, 'teszt', 3.5, hivo=hivo), 3)      # a mért futó összeg már kitölti a plafont
+        self.assertEqual(hivott, [])
+        self.assertEqual(T.javit(B_STRONGOK, 'teszt', 0.0, hivo=hivo), 3)
+        self.assertEqual(T.javit(B_STRONGOK, 'teszt', 50.0, hivo=hivo), 0)
+
+    def test_nagy_strong_javitasa_egyenkent_marad(self):
+        """A nagy / többcsoportos Strong javító köre egyenként, az előző válasz assistant-fordulóként."""
+        r = {'strong': 'G4151', 'proba': 1, 'allapot': 'javitando', 'nyers': ['{"strong": "G4151"}', 'x', 'y'], 'hibak': ['8_idezojel: x']}
+        kerelmek, tetelek, bj = T.javito_kerelmek([r], ['G4151'])
+        self.assertEqual([x['custom_id'] for x in kerelmek], ['G4151-c1-p2', 'G4151-c2-p2', 'G4151-c3-p2'])
+        self.assertEqual([m['role'] for m in kerelmek[0]['params']['messages']], ['user', 'assistant', 'user'])
+        self.assertEqual(bj, {})
+        self.assertEqual({t[0] for t in tetelek}, {'A'})
 
     def test_max_tokens_kimenet_egy_b_batch_mar_nem_ad_semmit(self):
         rek = {'custom_id': 'B001-p1', 'tipus': 'succeeded', 'modell': 'm', 'stop': 'max_tokens', 'usage': {},
@@ -416,6 +488,28 @@ class BUt(Alap):
         be20, ki20, _ = T.becsles_adat(T.ALLANDO_REF_KAR, 20000, 20)
         self.assertAlmostEqual(be20, 17136 + 3.721 * 20000, delta=1)
         self.assertAlmostEqual(ki20, 20 * 1134 + 1.654 * 20000, delta=1)
+
+    def test_b_becslo_effortonkent_es_javito_kor(self):
+        """F07 M0 (a): a B-kérés saját együtthatói, effortonként külön kimenettel; a javító kör a mért aránnyal."""
+        be, ki_h, usd_h = T.becsles_adat(21084, 10000, 20, 'B', 'high')
+        _, ki_m, usd_m = T.becsles_adat(21084, 10000, 20, 'B', 'medium')
+        self.assertAlmostEqual(be, 0.684 * 21084 + 3.178 * 10000, delta=1)
+        self.assertAlmostEqual(ki_h, 19590, delta=1)
+        self.assertAlmostEqual(ki_m, 15207, delta=1)
+        self.assertLess(usd_m, usd_h)
+        # az effort-érzéketlen alap nem változott: az A-út 'high' értéke az F27 M1 illesztése
+        self.assertEqual(T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1, 'A', 'high'), T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1))
+        self.assertLess(T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1, 'A', 'medium')[1], T.becsles_adat(T.ALLANDO_REF_KAR, 1000, 1)[1])
+        self.assertAlmostEqual(T.javito_kor_becsles(2.0, 'B'), 2.0 * T.JAVITO_ARANY['B'])
+        self.assertGreater(T.JAVITO_ARANY['A'], T.JAVITO_ARANY['B'])
+
+    def test_mero_adag_becslese_a_mert_koltseg_kozeleben(self):
+        """A #159 mérő B-kéréseinek becslése az újraillesztett együtthatókkal: a mért 0,4983 (high) / 0,4072 (medium) USD ±5%."""
+        for effort, mert in (('high', 0.4983), ('medium', 0.4072)):
+            usd = 0.0
+            for allando, kar, db in ((18591, 2353, 13), (21476, 9438, 20), (19713, 6094, 20), (24557, 14833, 7)):
+                usd += T.becsles_adat(allando, kar, db, 'B', effort)[2]
+            self.assertAlmostEqual(usd / mert, 1.0, delta=0.05, msg=effort)
 
     def test_plafon_mert_futo_osszeggel(self):
         hivott = []

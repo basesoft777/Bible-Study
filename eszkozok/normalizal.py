@@ -63,12 +63,13 @@ SZABALYOK = {
     'kk_k': {'Thayer', 'BDB'},
     'szerzonevek': {'Thayer', 'BDB'},
     'igehely_rov': {'Thayer', 'BDB'},
+    'apokrif': {'Thayer'},
     'konyvnevek': {'Thayer', 'BDB'},
     'elofordulas': {'BDB'},
     'nevalakok': {'BDB'},
     'konyv_rov': {'BDB'},
 }
-SZABALY_SORREND = ['igehely_rov', 'kk_k', 'szerzonevek', 'konyvnevek',
+SZABALY_SORREND = ['igehely_rov', 'apokrif', 'kk_k', 'szerzonevek', 'konyvnevek',
                    'elofordulas', 'nevalakok', 'konyv_rov']
 
 
@@ -136,6 +137,7 @@ def szabaly_szerzonevek(szoveg):
 FORRAS_ALIAS = {
     # Thayer
     'Joh': 'Jhn', 'Mar': 'Mrk', 'Jam': 'Jas', 'Phi': 'Php', 'Eze': 'Ezk',
+    '1 Cor': '1Co', '2 Cor': '2Co',     # F07 M0 (N72): a szokozos alak c:v elott egyertelmuen Korintus (a Clem. Rom. 1 Cor. `20, 5` alakja nem c:v)
     'Joe': 'Jol', '1Jo': '1Jn', '2Jo': '2Jn', '3Jo': '3Jn', 'Jude': 'Jud',
     'Psalm': 'Psa', 'Song of Solomon': 'Sng',
     # BDB
@@ -166,6 +168,8 @@ APOKRIF_ALIAS = {
     '3 Macc': '3Makk', '4 Macc': '4Makk', '1Macc': '1Makk', '2Macc': '2Makk',
     'Tob': 'Tób', 'Tobit': 'Tób', 'Bar': 'Báruk', 'Baruch': 'Báruk', 'Jdt': 'Judit',
     'Judith': 'Judit',
+    # F07 M0 (N72): a Thayer tovabbi alakjai (a 11. kapu forras-oldala is ezt latja)
+    '3Macc': '3Makk', '4Macc': '4Makk', 'Wisd': 'Bölcs',
 }
 
 
@@ -362,7 +366,23 @@ def szabaly_konyv_rov(szoveg):
     return HIBAS_KONYV_MINTA.subn(lambda m: KAROLI[HIBAS_KONYV_ROV[m.group(1)]][0] + m.group(2), szoveg)
 
 
+# F07 M0 (N72, DT-F07a): a Thayer apokrif konyvei a fordításban. A modell a forras-alakot (`Wis. 8:18`) vagy szokozos
+# magyar alakot (`1 Makk 9:38`) is irhat; a jovahagyott alak szokoz nelkuli (`Bölcs 8:18`, `1Makk 9:38`), mint a Károli-alak
+# (`1Kir`, `2Krón`). Csak a Thayerre fut (a BDB-ben az apokrif alakok szandekosan maradnak). A `Sir` azonos alak: nem csere.
+APOKRIF_LEK = {a: hu for a, hu in APOKRIF_ALIAS.items() if a != hu}
+for _hu in [h for h in set(APOKRIF_ALIAS.values()) if h[:1].isdigit()]:
+    APOKRIF_LEK[_hu[0] + ' ' + _hu[1:]] = _hu          # `1 Makk` -> `1Makk`
+_APOKRIF_KULCSOK = sorted(APOKRIF_LEK, key=len, reverse=True)
+APOKRIF_MINTA = re.compile(
+    r'(?<![%s0-9])(%s)\.?(\s+)(?=\d{1,3}:\d)' % (_BETU, '|'.join(re.escape(k) for k in _APOKRIF_KULCSOK)))
+
+
+def szabaly_apokrif(szoveg):
+    return APOKRIF_MINTA.subn(lambda m: APOKRIF_LEK[m.group(1)] + m.group(2), szoveg)
+
+
 FUGGVENYEK = {
+    'apokrif': szabaly_apokrif,
     'kk_k': szabaly_kk_k,
     'szerzonevek': szabaly_szerzonevek,
     'igehely_rov': szabaly_igehely_rov,
