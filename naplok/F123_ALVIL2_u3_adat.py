@@ -189,9 +189,7 @@ JELOLT_INDOK = {
                      'A hely a halálveszélyben elmondott imádság tágabb körébe tartozik, nem a halottak birodalmának motívumába.'),
 }
 
-NEGATIV = ('a versben a שְׁאוֹל (seól), az Újszövetségben a ᾍδης (hadész) szó áll; ahol más szó (sír, verem, mélység, '
-           'halál) vagy a Károli „pokol”, „sír”, „koporsó” fordítása más szóért áll, az nem tartozik ide; a תְּהוֹם (tehóm) és az '
-           'ἄβυσσος (abüsszosz) kozmikus mélysége sem')
+NEGATIV = ('A versben a héber szövegben a שְׁאוֹל (seól), az Újszövetségben a Károli alapszövege (TR) szerint a ᾍδης (hadész) szó áll; ahol a kritikai kiadások ettől eltérnek, a lap jelöli (1Kor 15:55). Ahol a Károli sírt, koporsót, poklot vagy mélységet ír, de az eredetiben más szó áll (a temetkezési sír, a verem, a pusztulás helye, a görög tartarosz), az nem tartozik ide; a תְּהוֹם (tehóm) és az ἄβυσσος (abüsszosz) kozmikus mélysége sem.')  # DT-F123p: a felhasználó jóváhagyásával, 2026-11-02
 FOLERENDELT = 'a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül'
 CIMKE_2A = 'a gonoszok sorsa; az igaz félelme és szabadulása'
 TANITOI = ('Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hiány nincs kitöltve.')
