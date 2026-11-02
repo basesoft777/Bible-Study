@@ -4,7 +4,7 @@
 
 *Döntés nélküli munkafájl: jelentéstartományt nem választ, prózát nem ír, motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`) és adattáblát (`adat/*.tsv`) nem ír (2b). A teljes sorok a mellékelt TSV-kben állnak, minden sor mellett a lekérdezés proveniencia-sorával; ez a fájl összegzés. A lekérdezések naplója: `naplok/F123_lekerdezesek.tsv` (`lekerdez.py --naplo F123`). Munkaszkript: `naplok/F123_adat_keszito.py` (az ALVIL-001-é; alparancsok: `f108`, `szotar`, `proza`, `rokon`), felmérő eszköz: `eszkozok/motivum_felmeres.py`. Futtatás: `PARDES_DATUM=2026-11-02`, a `c813fd34` (main) commiton.*
 
-*Hatókör (DT-F10a (2)): csak az X.A. Az X.M1–X.M5 (leképezési tábla, szétválasztás, mérés, törzscikk) és minden prózát író lépés a DT-F123c (a `9_` sablon v1) ⛔ után jön. Az ANTROP-001-nek nincs külön kereszthivatkozás-naplója (N18, N-F63b; 2a. 3.); ezt az X.M1 tábla mondja ki.*
+*Hatókör (DT497 (2)): csak az X.A. Az X.M1–X.M5 (leképezési tábla, szétválasztás, mérés, törzscikk) és minden prózát író lépés a DT-F123c (a `9_` sablon v1) ⛔ után jön. Az ANTROP-001-nek nincs külön kereszthivatkozás-naplója (N18, N-F63b; 2a. 3.); ezt az X.M1 tábla mondja ki.*
 
 ## 0. A motívum az adatrétegben
 
@@ -58,13 +58,13 @@ A negatív kritérium két, gépileg mérhető kitételt tartalmaz, amelyet a sz
 - **Az új helyek egyike sincs a `jeloltek.tsv`-ben.** Az 1Kor 15:44 és 15:46 a tanulmányban egyszer áll, a 15:44 is csak egy prooftext-lista „1Kor 15:44-45” tagjaként (a „Az összevetés eredménye” bekezdésben); a 15:46-ot és a Júd 1:19-et a tanulmány nem említi (saját grep, 2026-11-02).
 - A **héber** elemre (H5315+H2416) rokon alak vagy versablak nincs mérve: a negatív kritérium a görög szópárról szól, a héber megfelelő (pl. a H7307 rúah + H5315) kiválasztása mező-hipotézis (2. lépés, B3/P2), nem determinisztikus lépés.
 
-Sorok: `naplok/F123_adat_ANTROP-001_rokon_ablak1.tsv` (21 sor). A 9 új hely a mérés idején nem állt a `jeloltek.tsv`-ben; a DT-F123q (a) szerint azóta `nyitva` jelöltként benne van (6. 1.; a `jeloltek.tsv` ANTROP-001-sorai: 11 → 20).
+Sorok: `naplok/F123_adat_ANTROP-001_rokon_ablak1.tsv` (21 sor). A 9 új hely a mérés idején nem állt a `jeloltek.tsv`-ben; a DT501 (a) szerint azóta `nyitva` jelöltként benne van (6. 1.; a `jeloltek.tsv` ANTROP-001-sorai: 11 → 20).
 
 Proveniencia: `scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`; a négy kollokáció-pár proveniencia-sora (G4151+G5590 n=6, G4151+G5591 n=2, G4152+G5590 n=0, G4152+G5591 n=2) a `naplok/F123_lekerdezesek.tsv`-ben.
 
-## 1c. LXX-híd a H5315+H2416 61 kollokációs helyén (DT-F123s)
+## 1c. LXX-híd a H5315+H2416 61 kollokációs helyén (DT503)
 
-A DT-F123s (b) szerint a 60 tág hely kizárása az értelmező menetben, blokkban, egy közös indoklással történik; **ha valamelyiken a görög pár LXX-hídon megjelenik, az külön sor.** A mérés: a 61 kollokációs hely mindegyikére `lekerdez.py lxx-hid` (61 naplózott lekérdezés), és megnéztem, áll-e az LXX-versben (G4151 | G4152) és (G5590 | G5591) egy-egy tagja (`python naplok/F123_adat_keszito.py lxx ANTROP-001 H5315+H2416 G4151,G4152 G5590,G5591`).
+A DT503 (b) szerint a 60 tág hely kizárása az értelmező menetben, blokkban, egy közös indoklással történik; **ha valamelyiken a görög pár LXX-hídon megjelenik, az külön sor.** A mérés: a 61 kollokációs hely mindegyikére `lekerdez.py lxx-hid` (61 naplózott lekérdezés), és megnéztem, áll-e az LXX-versben (G4151 | G4152) és (G5590 | G5591) egy-egy tagja (`python naplok/F123_adat_keszito.py lxx ANTROP-001 H5315+H2416 G4151,G4152 G5590,G5591`).
 
 | LXX-vers | Hely |
 |---|---|
@@ -72,7 +72,7 @@ A DT-F123s (b) szerint a 60 tág hely kizárása az értelmező menetben, blokkb
 | egy tag (csak G5590) | 58, köztük az 1Móz 2:7 előfordulás (ott a πνοή áll, nem a πνεῦμα) |
 | nincs LXX-vers | 1 — 1Sám 17:55 |
 
-A két hely a 60 tág hely közül való; az értelmező menet a blokkos kizárástól **külön sorban** bírálja el, a `jeloltek.tsv`-n át (DT-F123s). Ez a menet nem írja be és nem minősíti őket. Mért tény, nem állítás: az LXX-beli szópár nem bizonyítja a megkülönböztető szerepet; azt a negatív kritérium szerint az értelmező menet olvassa.
+A két hely a 60 tág hely közül való; az értelmező menet a blokkos kizárástól **külön sorban** bírálja el, a `jeloltek.tsv`-n át (DT503). Ez a menet nem írja be és nem minősíti őket. Mért tény, nem állítás: az LXX-beli szópár nem bizonyítja a megkülönböztető szerepet; azt a negatív kritérium szerint az értelmező menet olvassa.
 
 Sorok: `naplok/F123_adat_ANTROP-001_lxx_hid.tsv` (61 sor, mindegyiken a saját `lxx-hid` proveniencia-sorával).
 
@@ -147,14 +147,14 @@ Proveniencia: `scope=ANTROP-001: adat/elofordulasok.tsv (8 sor) × kézi rések 
 
 ## 6. Döntések és nyitott pontok
 
-A három ⛔-kérdést az orkesztrátor döntötte el, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«. A tételek: `DONTESEK.md` DT-F123q, r, s.
+A három ⛔-kérdést az orkesztrátor döntötte el, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«. A tételek: `DONTESEK.md` DT501, r, s.
 
-1. **DT-F123q (a), az 1b. 9 új helye:** mind a 9 `nyitva` jelöltként a `jeloltek.tsv`-ben (F123.ANTROP.A7). Indoklás: „azonos vers” (1Kor 15:44, 15:46, Júd 1:19), illetve „szomszédos vers — a mondathatár az értelmező menetben ellenőrizendő” (Luk 9:55-56, ApCsel 4:31-32, ApCsel 20:23-24, 2Kor 1:22-23, 1Pét 3:19-20, Júd 1:19-20). Beépítés vagy elutasítás egyikre sincs; az a B5 az értelmező menetben. Indok: a versablak nem mondathatár, a Luk 1:46–47 is két versen átnyúló egy mondat.
-2. **DT-F123r (a), gerinc-elem az összetett sorokon (F3.4):** a `gerinc_elem` marad a horgony-pár (`G4151+G5590`), a `strong` mezőbe a versben álló Strong kerül. Végrehajtás az X.M3-ban; az X.A nem írja az `elofordulasok.tsv`-t. A NYITOTT F3.4-tételnél jelölve.
-3. **DT-F123s (b), a H5315+H2416 60 tág helye (F124):** szűrő nem készül. A kizárás az értelmező menetben, blokkban, a `jeloltek.tsv`-n át, egy közös indoklással; a fölérendelt fogalom: az ember mint élőlény. Az LXX-hídon görög párt hordozó 2 hely (Jób 12:10, Jón 4:8; 1c.) külön sor. Az F124-tétel ANTROP-része jelölve: megválaszolva.
+1. **DT501 (a), az 1b. 9 új helye:** mind a 9 `nyitva` jelöltként a `jeloltek.tsv`-ben (F123.ANTROP.A7). Indoklás: „azonos vers” (1Kor 15:44, 15:46, Júd 1:19), illetve „szomszédos vers — a mondathatár az értelmező menetben ellenőrizendő” (Luk 9:55-56, ApCsel 4:31-32, ApCsel 20:23-24, 2Kor 1:22-23, 1Pét 3:19-20, Júd 1:19-20). Beépítés vagy elutasítás egyikre sincs; az a B5 az értelmező menetben. Indok: a versablak nem mondathatár, a Luk 1:46–47 is két versen átnyúló egy mondat.
+2. **DT502 (a), gerinc-elem az összetett sorokon (F3.4):** a `gerinc_elem` marad a horgony-pár (`G4151+G5590`), a `strong` mezőbe a versben álló Strong kerül. Végrehajtás az X.M3-ban; az X.A nem írja az `elofordulasok.tsv`-t. A NYITOTT F3.4-tételnél jelölve.
+3. **DT503 (b), a H5315+H2416 60 tág helye (F124):** szűrő nem készül. A kizárás az értelmező menetben, blokkban, a `jeloltek.tsv`-n át, egy közös indoklással; a fölérendelt fogalom: az ember mint élőlény. Az LXX-hídon görög párt hordozó 2 hely (Jób 12:10, Jón 4:8; 1c.) külön sor. Az F124-tétel ANTROP-része jelölve: megválaszolva.
 
 Nyitott (nem az X.A dolga):
 
 4. **Hiányzó fordítások (98 kulcs):** külön adatfeladat (`forditasok.tsv`, a #123 `ir`-jén kívül; 2b), API-keretből — a költés a felhasználóé.
-5. **N-F160b:** ha az értelmező menet elutasított sort termel (pl. a DT-F123s blokkja), a gépi előszűrő az ANTROP-001-en újramérendő (DT-F160b).
-6. **Az értelmező menet bemenete az X.A-ból:** a 12 `nyitva` jelölt (3 régi + 9 új), a 60 tág hely blokkja és a 2 LXX-sor, a DT-F123r végrehajtása az X.M3-ban, és a próza-lefedettség átvitele a `motivumok/naplok/`-ba.
+5. **N-F160b:** ha az értelmező menet elutasított sort termel (pl. a DT503 blokkja), a gépi előszűrő az ANTROP-001-en újramérendő (DT500).
+6. **Az értelmező menet bemenete az X.A-ból:** a 12 `nyitva` jelölt (3 régi + 9 új), a 60 tág hely blokkja és a 2 LXX-sor, a DT502 végrehajtása az X.M3-ban, és a próza-lefedettség átvitele a `motivumok/naplok/`-ba.

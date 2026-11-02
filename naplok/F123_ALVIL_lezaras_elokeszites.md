@@ -1,6 +1,6 @@
 # F123 — az ALVIL-001 lezárásának előkészítése (X.Z, a felhasználótól független rész)
 
-*2026-11-02 · modell: claude-opus-5-5 · ág: claude/f123-alvil-lezaras-099225 · menet: DT-F10a (1), `MUNKAMENET.md` C-h → C-l → C5*
+*2026-11-02 · modell: claude-opus-5-5 · ág: claude/f123-alvil-lezaras-099225 · menet: DT497 (1), `MUNKAMENET.md` C-h → C-l → C5*
 
 A határ-ellenőrzést (C-h) a felhasználó indítja (DT-F151b), a lektor-felületen a döntések az övéi (C-l); ez a menet
 egyiket sem indította. A C5 (1. kiadás sora, verzió-emelés, a brief lezárása) a határ- és a lektori kapu után jön, új
@@ -17,7 +17,7 @@ menetben.
 | 5 | határ: 0 nyitott kérdés | nincs mérő | nincs mérő | **a felhasználóra vár**: `naplok/HATAR_ALVIL-001.md` (C-h: `motivum_hatar.py` + `hatar-ellenor`) |
 | 6 | olvasói blokkok, kiejtés, fordítás | piros (kiejtés-hiány 4) | **zöld** | F123.ALVIL.Z1: a kézi forrás négy görög szava kiejtéssel (ἄβυσσος *abüsszosz*; ᾍδης *hádész* ×3) |
 | 7 | nincs nyitott lektori kérdés | nincs mérő | nincs mérő | **a felhasználóra vár**: a `naplok/LEKTOR_ALVIL-001.tsv` a `HATAR_ALVIL-001.md`-ből generálódik (`lektor_kerdesek.py`), tehát az 5. után; a döntések a lektor-felületen |
-| 8 | nincs nyitott DT / ⛔ feladat | piros (#123 blokkoló) | **zöld** (0 blokkoló, 7 tájékoztató) | F123.ALVIL.Z2: DT-F123n (d), a `motivum_kesz` fejlécmező; a #121 megállt, de ⛔-je nem az ALVIL-001-ről szól (tájékoztató, mint eddig) |
+| 8 | nincs nyitott DT / ⛔ feladat | piros (#123 blokkoló) | **zöld** (0 blokkoló, 7 tájékoztató) | F123.ALVIL.Z2: DT498 (d), a `motivum_kesz` fejlécmező; a #121 megállt, de ⛔-je nem az ALVIL-001-ről szól (tájékoztató, mint eddig) |
 
 Összesen: **4/8 → 6/8**.
 
