@@ -93,6 +93,7 @@ NAPLO_FEJLEC = B.NAPLO_FEJLEC
 BATCH_FEJLEC = B.BATCH_FEJLEC
 CID = re.compile(r'^(?P<strong>G\d{4}[a-z]?)-c(?P<csoport>\d+)-p(?P<proba>\d)$')      # csak görög (Thayer)
 CID_B = re.compile(r'^B(?P<n>\d{3})-p(?P<proba>\d)$')
+CID_BJ = re.compile(r'^J(?P<n>\d{3})-p(?P<proba>\d)$')      # F07 M0 (b): B-stílusú javító kérés (kicsi/közepes Strongok csoportosan)
 FORRAS_JEL = 'Forrás (Thayer, angol):'
 KIMENET_JEL = '## Kimenet'
 
@@ -476,7 +477,7 @@ def begyujt(cimke, hivo=None):
         rekordok, napl = [], []
         for s in sorok:      # custom_id szerint, soha nem pozíció szerint
             cid = s['custom_id']
-            if cid in kesz or not (custom_id_bont(cid) or CID_B.match(cid)):
+            if cid in kesz or not (custom_id_bont(cid) or CID_B.match(cid) or CID_BJ.match(cid)):
                 continue
             res = s.get('result', {})
             msg = res.get('message') or {}
@@ -487,7 +488,7 @@ def begyujt(cimke, hivo=None):
                              'batch_id': b['batch_id']})
             napl.append((cid, msg.get('model', ''), usage, msg.get('stop_reason') or res.get('type'), koltseg(usage)))
             kesz.add(cid)
-            if CID_B.match(cid):      # a B-kérés válasza Strongonkénti szintetikus rekordokra bomlik
+            if CID_B.match(cid) or CID_BJ.match(cid):      # a B-kérés (és a B-javító kérés) válasza Strongonkénti szintetikus rekordokra bomlik
                 rekordok.extend(b_szetbont(rekordok[-1]))
         jsonl_hozzaad(ut('valaszok.jsonl'), rekordok)
         futo = futo_osszeg()
@@ -577,6 +578,64 @@ def kapuz(strongok):
 
 # ---------- javító batch ----------
 
+def javito_kerelmek(elozo, strongok):
+    """(kerelmek, meta, bj) a kapun bukott / hiányzó Strongok javító kéréseiből (F07 M0 (b)). A kicsi és közepes Strongok
+    csoportosan (B-javító kérés, `J001-p2` …: a közös szabály-rész egyszer, Strongonként a forrás, az előző nyers válasz és a
+    kapu hibaüzenete; a hiányzó válaszú Strongnál friss fordítás), a nagyok és a többcsoportosak egyenként (A-stílus: az előző
+    válasz assistant-fordulóként). A már beküldött javító kérés nem megy újra. -> (kerelmek, [becslés-tételek], új bj csoportok)."""
+    kesz = bekuldott_cidek()
+    index = ker_index([r['strong'] for r in elozo])
+    kerelmek, tetelek, uj_bj = [], [], {}
+    konnyu = {r['strong']: kategoria(konnyu_strongra(r['strong'])) for r in elozo}
+    kicsik = [r for r in elozo if konnyu[r['strong']] != 'nagy' and custom_id(r['strong'], 1, 2) not in kesz]
+    for r in elozo:
+        if konnyu[r['strong']] != 'nagy':
+            continue
+        for k in index[r['strong']]:
+            cid = custom_id(k['strong'], k['csoport'], 2)
+            if cid in kesz:
+                continue
+            nyers = r['nyers'][k['csoport'] - 1] if k['csoport'] - 1 < len(r['nyers']) else ''
+            msgs = [{'role': 'user', 'content': uzenet(kuldendo_prompt(k))}]
+            if nyers.strip():
+                msgs += [{'role': 'assistant', 'content': nyers},
+                         {'role': 'user', 'content': javito_uzenet(r['hibak'])}]
+            kerelmek.append({'custom_id': cid, 'params': kerelem_params(msgs, k['forras_kar'])})
+            tetelek.append(('A', [k], nyers))
+    if kicsik:
+        lista = [r['strong'] for r in kicsik]
+        hibak = {r['strong']: r['hibak'] for r in kicsik}
+        nyers = {r['strong']: (r['nyers'][0] if r['nyers'] else '') for r in kicsik}
+        cs, _ = b_csoportok_epit(lista, {s: konnyu_strongra(s) for s in lista})
+        regi = bj_csoportok_olvas()
+        for i, (_, tagok) in enumerate(cs.items()):
+            nev = 'J%03d' % (len(regi) + i + 1)
+            uj_bj[nev] = tagok
+            ks = [kerelmek_strongra(s)[0] for s in tagok]
+            prompt = b_prompt(ks, [(nyers[s], hibak[s]) for s in tagok])
+            kerelmek.append({'custom_id': '%s-p2' % nev, 'params': kerelem_params(
+                [{'role': 'user', 'content': uzenet(prompt)}], 0, b_max_tokens(ks))})
+            tetelek.append(('B', ks, [nyers[s] for s in tagok], prompt))
+    return kerelmek, tetelek, uj_bj
+
+
+def javito_becsles(tetelek):
+    """A javító kérések becslése (USD, manual): A-tétel: az egy Strongos kérés becslése + a bemenetben az előző válasz;
+    B-tétel: a B-kérés becslése + a bemenetben az előző válaszok és a hibaüzenetek. A javító kimenet a teljes Strongot adja vissza."""
+    usd = 0.0
+    for t in tetelek:
+        if t[0] == 'A':
+            k, nyers = t[1][0], t[2]
+            be, ki, _ = becsles_adat(allando_kar(kuldendo_prompt(k)), k['forras_kar'], 1)
+            be += len(nyers) / ALLANDO_KAR_TOKEN
+        else:
+            ks, nyers, prompt = t[1], t[2], t[3]
+            be, ki, _ = becsles_adat(allando_kar(prompt), sum(k['forras_kar'] for k in ks), len(ks))
+            be += (sum(len(x) for x in nyers) + 200 * len(ks)) / ALLANDO_KAR_TOKEN
+        usd += (be * AR_BE + ki * AR_KI) / 1e6
+    return usd
+
+
 def javit(strongok, cimke, plafon=None, hivo=None):
     plafon = PLAFON_USD if plafon is None else plafon
     hivo = hivo or AK.http
@@ -584,33 +643,26 @@ def javit(strongok, cimke, plafon=None, hivo=None):
     if not elozo:
         print('nincs javítandó Strong')
         return 0
-    kesz = bekuldott_cidek()
-    index = ker_index(strongok)
-    kerelmek, ker_meta = [], []
-    for r in elozo:
-        for k in index[r['strong']]:
-            cid = custom_id(k['strong'], k['csoport'], 2)
-            if cid in kesz:
-                continue
-            nyers = r['nyers'][k['csoport'] - 1] if k['csoport'] - 1 < len(r['nyers']) else ''
-            msgs = [{'role': 'user', 'content': uzenet(kuldendo_prompt(k))}]
-            if nyers.strip():      # a hiányzó (B-válaszból kimaradt) Strong javító köre friss kérés: nincs mit megjavítani
-                msgs += [{'role': 'assistant', 'content': nyers},
-                         {'role': 'user', 'content': javito_uzenet(r['hibak'])}]
-            kerelmek.append({'custom_id': cid, 'params': kerelem_params(msgs, k['forras_kar'])})
-            ker_meta.append(k)
+    kerelmek, tetelek, uj_bj = javito_kerelmek(elozo, strongok)
     if not kerelmek:
         print('a javító kérések már be vannak küldve')
         return 0
-    becs = becsles(ker_meta)[2] * 1.3
+    becs = javito_becsles(tetelek) * 1.3
     rendben, szoveg = plafon_ellenorzes(plafon, becs)
-    print('javító batch: %d kérés; %s' % (len(kerelmek), szoveg))
+    print('javító batch: %d kérés (%d B-javító, %d egyenkénti); %s' % (
+        len(kerelmek), len(uj_bj), len(kerelmek) - len(uj_bj), szoveg))
     if plafon <= 0 or not rendben:
         print('MEGÁLLÁS: a plafon fölött lenne (vagy nincs megadva)', file=sys.stderr)
         return 3
     b = hivo('POST', '/v1/messages/batches', {'requests': kerelmek})
+    os.makedirs(ut(), exist_ok=True)
+    if uj_bj:
+        osszes = dict(bj_csoportok_olvas(), **uj_bj)      # előbb olvas, aztán nyit írásra
+        with open(ut('bj_csoportok.json'), 'w', encoding='utf-8', newline='\n') as f:
+            json.dump(osszes, f, ensure_ascii=False, indent=0)
     with open(ut('csomag_javito.txt'), 'a', encoding='utf-8', newline='\n') as f:
-        f.write(''.join(k['custom_id'] + '\n' for k in kerelmek))
+        f.write(''.join(custom_id(s, 1, 2) + '\n' for tagok in uj_bj.values() for s in tagok))
+        f.write(''.join(k['custom_id'] + '\n' for k in kerelmek if CID.match(k['custom_id'])))
     with open(ut('becsles_%s.txt' % b['id']), 'w', encoding='utf-8', newline='\n') as f:
         f.write('%.4f' % becs)
     ujra_naplo(b['id'], cimke, 2, 'javito', len(kerelmek))
@@ -741,8 +793,14 @@ def b_strong_blokk(k, i, n):
     return '### %d/%d. szócikk\n%s' % (i + 1, n, p[c + len(BEMENET_JEL):p.index(KIMENET_JEL, c)].strip('\n'))
 
 
-def b_prompt(ks):
-    """Több Strong egy kérésben. A prompt v5.1 szabálytartalma változatlan (ugyanabból a `forditas.prompt_epit`-ből): a közös
+def javito_resz(hibak):
+    """Egy Strong javító blokkja a B-javító kérésben: a kapu hibái + a javítási utasítás (a `bdb_api_koteg.javito_uzenet` szövege
+    a JSON-formára vonatkozó záró mondat nélkül: az a kérés végén, a Kimenet szakaszban egyszer áll)."""
+    return B.javito_uzenet(hibak).rsplit(' Add vissza', 1)[0]
+
+
+def b_prompt(ks, javito=None):
+    """Több Strong egy kérésben (`javito`: Strongonként (előző nyers válasz, kapu-hibák) — a B-stílusú javító kör, F07 M0 (b)). A prompt v5.1 szabálytartalma változatlan (ugyanabból a `forditas.prompt_epit`-ből): a közös
     szabály-rész egyszer áll, a kötelező-alak lista a Strongok uniója, a terminológia- és a Károli-tábla a Strongok forrásának
     uniójára szűkítve (SZUKIT); utána Strongonként az adatblokk és a forrás; a válasz Strongonként egy objektumot
     tartalmazó JSON-tömb."""
@@ -756,10 +814,20 @@ def b_prompt(ks):
     json0 = p0.index('```json', kimenet)
     json1 = p0.index('```\n', json0 + 7) + 4
     blokk = [b_strong_blokk(k, i, len(ks)) for i, k in enumerate(ks)]
-    bemenet = ('## Bemenet\n\nEgyetlen kérésben %d Thayer-szócikk érkezik. Mindegyiket külön, önmagában álló szövegként fordítsd a '
+    if javito:      # Strongonként az előző nyers válasz és a kapu hibaüzenete; a hiányzó válaszú Strongnál friss fordítás
+        for i, (nyers, hibak) in enumerate(javito):
+            if (nyers or '').strip():
+                blokk[i] += ('\n\n#### Az előző kísérlet kimenete erre a szócikkre\n\n```json\n%s\n```\n\n#### Javítandó\n\n%s'
+                             % (nyers.strip(), javito_resz(hibak)))
+            else:
+                blokk[i] += ('\n\n#### Javítandó\n\nErre a szócikkre az előző kísérletben nem érkezett használható válasz: '
+                             'fordítsd le a fenti szabályok szerint.')
+    bemenet = (('## Bemenet\n\nEgyetlen kérésben %d Thayer-szócikk érkezik' % len(ks))
+               + (', mindegyik az előző kísérlet kapuellenőrzésén elbukott vagy hiányzott; a javítandó szócikkeknél a hibák '
+                  'felsorolása áll' if javito else '') + '. Mindegyiket külön, önmagában álló szövegként fordítsd a '
                'fenti szabályok szerint: a `⟪n⟫` határtokenek és a `⟦n⟧` helyőrzők az adott szócikken belül számozottak, szócikkek '
                'között nem keverheted, nem vonhatod össze és nem viheted át őket. A kötelező terminológiai alakok listája az összes '
-               'szócikk forrására vonatkozik.\n\n' % len(ks)) + '\n\n'.join(blokk) + '\n\n'
+               'szócikk forrására vonatkozik.\n\n') + '\n\n'.join(blokk) + '\n\n'
     kim = ('## Kimenet\n\nKIZÁRÓLAG a következő JSON-sémájú választ add, semmi mást (sem Markdown code fence,\n'
            'sem magyarázat a JSON előtt/után): egyetlen JSON-tömb, szócikkenként pontosan egy objektum, a fenti sorrendben '
            '(a `strong` a szócikk Strong-száma):\n\n```json\n[{"strong": "<a szócikk Strong-száma>", "forditas_hu": '
@@ -781,6 +849,14 @@ def b_becsles_konnyu(strongok, konnyu_ix, allando):
 def b_csoportok_olvas():
     with open(ut('b_csoportok.json'), encoding='utf-8') as f:
         return json.load(f)
+
+
+def bj_csoportok_olvas():
+    f = ut('bj_csoportok.json')
+    if not os.path.exists(f):
+        return {}
+    with open(f, encoding='utf-8') as h:
+        return json.load(h)
 
 
 def konnyu_index(strongok):
@@ -822,13 +898,16 @@ def json_tomb(szoveg):
 def b_szetbont(rek):
     """A B-kérés nyers válasza -> Strongonkénti szintetikus válaszrekordok (`<strong>-c1-p1`), hogy a kapuz/javit/rogzit
     ugyanúgy dolgozzon, mint az egy Strongos kéréseknél. Hiányzó objektum -> üres szöveg (javítandó)."""
-    nev = 'B' + CID_B.match(rek['custom_id']).group('n')
-    strongok = b_csoportok_olvas()[nev]
+    m = CID_B.match(rek['custom_id']) or CID_BJ.match(rek['custom_id'])
+    javito = bool(CID_BJ.match(rek['custom_id']))
+    nev = ('J' if javito else 'B') + m.group('n')
+    proba = int(m.group('proba'))
+    strongok = (bj_csoportok_olvas() if javito else b_csoportok_olvas())[nev]
     mapa = {}
     if rek['tipus'] == 'succeeded' and rek['stop'] not in ('refusal', 'max_tokens'):
         for x in json_tomb(rek['szoveg']):
             mapa[kulcs.strong_pad(str(x.get('strong', '')))] = x
-    return [{'custom_id': custom_id(sp, 1, 1), 'tipus': rek['tipus'], 'modell': rek['modell'], 'stop': rek['stop'], 'usage': {},
+    return [{'custom_id': custom_id(sp, 1, proba), 'tipus': rek['tipus'], 'modell': rek['modell'], 'stop': rek['stop'], 'usage': {},
              'szoveg': json.dumps(mapa[sp], ensure_ascii=False) if sp in mapa else '', 'hiba': rek['hiba'],
              'batch_id': rek['batch_id'], 'forras': nev} for sp in strongok]
 
