@@ -40,7 +40,11 @@ MEZOK_V4 = MEZOK_V3 + ['kiadas']  # cimke: tartalmi | kiadoi | uzleti | fejleszt
 # hatar_jelenlegi: a határ-kártya „A jelenlegi határ” blokkja, gépileg az adatból (`adat/motivumok.tsv` negatív kritérium és fölérendelt fogalom,
 # a kártya igehelyeinek állapota az `elofordulasok.tsv`-ben / `jeloltek.tsv`-ben), saját proveniencia-sorral; kov_elfogadom / kov_elvetem: a két
 # első gomb következménye olvasói nyelven, a kézi összefoglalóból (`osszefoglalo_<ID>.tsv`). Csak a `hatar` forráson töltődnek.
-MEZOK = MEZOK_V4 + ['hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem', 'cimke_indok']
+MEZOK_V5 = MEZOK_V4 + ['hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem', 'cimke_indok']
+# gombok / kov_harmadik: a háromválaszos határ-kártya (pl. HAMART-001 N-F63e): a három saját gomb felirata (' | '-vel elválasztva; az első kettő az
+# `elfogadom` és az `elvetem` kódot kapja, a harmadik a `harmadik` kódot) és a harmadik gomb következménye; üres -> a szokásos gombok.
+MEZOK = MEZOK_V5 + ['gombok', 'kov_harmadik']
+GOMB_ELVALASZTO = ' | '
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
@@ -205,35 +209,42 @@ def forras_szoveg(motivum, root):
 
 OSSZEFOGLALO_FEJ = ['kerdes_id', 'tipus', 'gond', 'javaslat', 'proveniencia']
 OSSZEFOGLALO_KOV = ['kov_elfogadom', 'kov_elvetem']  # elhagyható oszlopok: a határ-kártya két első gombjának következménye
+OSSZEFOGLALO_HAROM = ['gombok', 'kov_harmadik']  # elhagyható oszlopok: a háromválaszos határ-kártya gombjai és a harmadik következménye
 
 
 def osszefoglalo_beolvas(motivum, root=ROOT):
-    """{kerdes_id: (tipus, gond, javaslat, proveniencia, kov_elfogadom, kov_elvetem)} a kézi `eszkozok/lektor_felulet/osszefoglalo_<ID>.tsv`-ből;
-    nincs fájl -> {}. A két `kov_` oszlop elhagyható (régebbi fejléc)."""
+    """{kerdes_id: (tipus, gond, javaslat, proveniencia, kov_elfogadom, kov_elvetem, gombok, kov_harmadik)} a kézi
+    `eszkozok/lektor_felulet/osszefoglalo_<ID>.tsv`-ből; nincs fájl -> {}. A `kov_` és a `gombok` oszlopok elhagyhatók (régebbi fejléc)."""
     ut = os.path.join(root, 'eszkozok', 'lektor_felulet', 'osszefoglalo_%s.tsv' % motivum)
     if not os.path.exists(ut):
         return {}
     with open(ut, encoding='utf-8', newline='') as f:
         sorok = [x.rstrip('\r') for x in f.read().split('\n') if x.strip() and not x.startswith('#')]
     fej = sorok[0].split('\t')
-    if fej not in (OSSZEFOGLALO_FEJ, OSSZEFOGLALO_FEJ + OSSZEFOGLALO_KOV):
+    if fej not in (OSSZEFOGLALO_FEJ, OSSZEFOGLALO_FEJ + OSSZEFOGLALO_KOV, OSSZEFOGLALO_FEJ + OSSZEFOGLALO_KOV + OSSZEFOGLALO_HAROM):
         raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
     ki = {}
     for x in sorok[1:]:
         r = dict(zip(fej, x.split('\t')))
-        for m in OSSZEFOGLALO_KOV:
+        for m in OSSZEFOGLALO_KOV + OSSZEFOGLALO_HAROM:
             r[m] = r.get(m, '').strip()
         if bool(r['kov_elfogadom']) != bool(r['kov_elvetem']):
             raise ValueError('%s: a két következmény csak együtt adható meg (%s)' % (ut, r['kerdes_id']))
         if r['kov_elfogadom'] and not r['kerdes_id'].startswith('hatar:'):
             raise ValueError('%s: következmény csak határ-kártyán (%s)' % (ut, r['kerdes_id']))
+        if r['gombok'] or r['kov_harmadik']:
+            if len(r['gombok'].split(GOMB_ELVALASZTO)) != 3 or not all(g.strip() for g in r['gombok'].split(GOMB_ELVALASZTO)):
+                raise ValueError('%s: a `gombok` pontosan három nem üres felirat (%s)' % (ut, r['kerdes_id']))
+            if not (r['kov_harmadik'] and r['kov_elfogadom']):
+                raise ValueError('%s: háromválaszos kártyán mindhárom következmény kötelező (%s)' % (ut, r['kerdes_id']))
         if r['tipus'] not in JAVASLAT_TIPUSOK:
             raise ValueError('%s: ismeretlen típus %r (%s)' % (ut, r['tipus'], r['kerdes_id']))
         if not r['gond'].strip() or not r['javaslat'].strip():
             raise ValueError('%s: üres összefoglaló (%s)' % (ut, r['kerdes_id']))
         if r['kerdes_id'] in ki:
             raise ValueError('%s: kétszer szerepel: %s' % (ut, r['kerdes_id']))
-        ki[r['kerdes_id']] = (r['tipus'], r['gond'], r['javaslat'], r['proveniencia'] or 'manual', r['kov_elfogadom'], r['kov_elvetem'])
+        ki[r['kerdes_id']] = (r['tipus'], r['gond'], r['javaslat'], r['proveniencia'] or 'manual', r['kov_elfogadom'], r['kov_elvetem'],
+                              r['gombok'], r['kov_harmadik'])
     return ki
 
 
@@ -246,7 +257,7 @@ def osszefoglalo_ra(uj, ossz):
     for k in uj:
         if k['kerdes_id'] in ossz:
             (k['javaslat_tipus'], k['gond'], k['javaslat'], k['osszefoglalo_proveniencia'],
-             k['kov_elfogadom'], k['kov_elvetem']) = ossz[k['kerdes_id']]
+             k['kov_elfogadom'], k['kov_elvetem'], k['gombok'], k['kov_harmadik']) = ossz[k['kerdes_id']]
     return uj
 
 
