@@ -158,3 +158,40 @@
 - A döntés-kártyák (`dontes`) nem kiadás-kérdések: `kiadas` üres, a felületen „kiadáson kívül”.
 - Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
 - Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
+
+## 7. Döntés-kártyák három kategóriája (DT-F161a, 2026-11-02, „mehet”)
+
+*Besorolás: mit változtat meg a döntés? tartalmi > kiadói > fejlesztői; a gépi jel a forrás-brief `ir` és `munka` mezője (`lektor_kerdesek.gepi_kategoria`); a `dontes_szuro.tsv` kézi címkéje elsőbbséget élvez. A „kézi” oszlop a mai (régi) címke. Mért: 28 mai kártya (a korábbi 31-ből az F131, F148, F152 lezárult).*
+
+| kártya | kézi (mai) | gépi | eltér | indok |
+|---|---|---|---|---|
+| DT90 | fejlesztoi | fejlesztoi |  | gépi: a #52 brief csak ír: CLAUDE.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| DT106 | tartalmi | osztalyozatlan | igen | nincs F5_*_BRIEF.md, és kézi besorolás sincs |
+| DT126 | fejlesztoi | fejlesztoi |  | gépi: a #60 brief csak ír: eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT133 | tartalmi | fejlesztoi | igen | gépi: a #92 brief csak ír: eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT134 | tartalmi | fejlesztoi | igen | gépi: a #92 brief csak ír: eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT169 | tartalmi | kiadoi | igen | gépi: a #99 brief ír: eszkozok/olvaso_szerver/, eszkozok/olvaso_szerver/bdb_vers_jelentes.py (megjelenés, licenc, felület) |
+| DT190 | fejlesztoi | osztalyozatlan | igen | nincs F9_*_BRIEF.md, és kézi besorolás sincs |
+| DT235 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT236 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT237 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT338 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT388 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT359 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
+| DT365 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
+| F111 | fejlesztoi | fejlesztoi |  | gépi: a #111 brief csak ír: .claude/commands/elteres.md, .claude/commands/kovetkezo.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F121 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| F123 | tartalmi | tartalmi |  | gépi: a #123 brief ír: motivumok/ALVIL-001.md, motivumok/ANTROP-001.md; munka: ertelmezo (a lexikon állítását érinti) |
+| F125 | tartalmi | fejlesztoi | igen | gépi: a #125 brief csak ír: MUNKAMENET.md, eszkozok/proza_lefedettseg.py; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F134 | fejlesztoi | kiadoi | igen | gépi: a #134 brief ír: eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/ (megjelenés, licenc, felület) |
+| F140 | tartalmi | tartalmi |  | gépi: a #140 brief ír: adat/glosszak_heber_hu.tsv (a lexikon állítását érinti) |
+| F146 | fejlesztoi | tartalmi | igen | gépi: a #146 brief ír: lexikon/ISTENTISZT-001_TUDOMANYOS.md (a lexikon állítását érinti) |
+| F151 | tartalmi | fejlesztoi | igen | gépi: a #151 brief csak ír: eszkozok/motivum_hatar.py, eszkozok/teszt_motivum_hatar.py; munka: adat (eszköz, séma, munkafolyamat) |
+| F153 | fejlesztoi | tartalmi | igen | gépi: a #153 brief ír: adat/forditasok.tsv (a lexikon állítását érinti) |
+| F157 | fejlesztoi | kiadoi | igen | gépi: a #157 brief ír: eszkozok/lektor_felulet/ (megjelenés, licenc, felület) |
+| F22 | fejlesztoi | fejlesztoi |  | gépi: a #22 brief csak ír: eszkozok/karoli_strong/tokenszint_vershatar.py, eszkozok/karoli_strong/nem_tr_lista.py (eszköz, séma, munkafolyamat) |
+| F38 | tartalmi | tartalmi |  | gépi: a #38 brief ír: adat/forditasok.tsv (a lexikon állítását érinti) |
+| F52 | fejlesztoi | fejlesztoi |  | gépi: a #52 brief csak ír: CLAUDE.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F86 | kiadoi | kiadoi |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (megjelenés, licenc, felület) |
+
+Eltér: 13 / 28.

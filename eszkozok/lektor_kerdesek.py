@@ -36,14 +36,15 @@ MEZOK_V3 = MEZOK_V2 + OSSZEFOGLALO_MEZOK
 # kiadas: melyik kiadás bemenete a kérdés. A határ-kérdések (hatar) a mostani, 1. kiadáshoz tartoznak; a /kiadas kimenetéből jövők (lektor, proza_lefedettseg,
 # proza_javaslat) a következő, 2. kiadás bemenetei; a többi (dontes stb.) nem kiadás-kérdés: üres.
 KIADAS_FORRASONKENT = {'hatar': '1', 'lektor': '2', 'proza_lefedettseg': '2', 'proza_javaslat': '2'}
-MEZOK = MEZOK_V3 + ['kiadas']  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
+MEZOK = MEZOK_V3 + ['kiadas', 'cimke_indok']  # cimke: tartalmi | kiadoi | fejlesztoi | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak); cimke_indok: miért abba a kategóriába került
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
 # proza_javaslat: a lektor olvasás közben kérdez ("az adatból ez következik, de a lap nem mondja ki -- legyen róla mondat?").
 # A lektor prózát NEM ír (DT-F32b); az "igen" válasz a forrásfájl prózai feladata, a mondatot a próza írója írja.
 PROZA_VALASZLEHETOSEGEK = 'legyen mondat; nem kell; később'
-CIMKEK = ('tartalmi', 'uzleti', 'technikai', 'osztalyozatlan')
+CIMKEK = ('tartalmi', 'kiadoi', 'fejlesztoi', 'osztalyozatlan')
+CIMKE_REGI = {'uzleti': 'kiadoi', 'technikai': 'fejlesztoi'}  # a beolvasás a régi értéket is elfogadja
 SORTORES = ' ⏎ '
 MODELLES_KEZDET = '<!-- MODELLES-KEZDET -->'
 MODELLES_VEGE = '<!-- MODELLES-VEGE -->'
@@ -356,13 +357,81 @@ def szuro_beolvas(root=ROOT):
     fej = sorok[0].split('\t')
     for x in sorok[1:]:
         r = dict(zip(fej, x.split('\t')))
-        if r['cimke'] not in CIMKEK or r['cimke'] == 'osztalyozatlan':
+        c = CIMKE_REGI.get(r['cimke'], r['cimke'])
+        if c not in CIMKEK or c == 'osztalyozatlan':
             raise ValueError('%s: ismeretlen címke %r (%s)' % (SZURO_UT, r['cimke'], r['azonosito']))
-        ki[r['azonosito']] = r['cimke']
+        ki[r['azonosito']] = c
     return ki
 
 
-def dontesek_kartyak(szoveg, ts, szuro=None):
+# --- a döntés-kártyák gépi besorolása (DT-F161a): mit változtat meg a döntés? tartalmi > kiadói > fejlesztői -----------------
+TARTALMI_UT = ('motivumok/', 'tematikus_lezart/', 'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'motivumlog/', 'lexikon/')
+TARTALMI_ADAT = {'elofordulasok', 'jeloltek', 'motivumok', 'forditasok', 'motivum_kapcsolatok', 'kapcsolatok', 'terminologia',
+                 'tiltott_fordulatok', 'lexikon_hivatkozasok', 'szotar_szakasz_cimke'}
+KIADOI_UT = ('adat/kiadasok.tsv', 'adat/licencek.tsv', 'eszkozok/olvaso_szerver/', 'eszkozok/muhely_felulet/',
+             'eszkozok/lektor_felulet/', 'eszkozok/feed_epit.py')
+KIADOI_KODOK = {'ELOFIZETES_FEED'}  # a #86: árazás/előfizetés
+FEJLESZTOI_UT = ('eszkozok/', '.github/', '.claude/', 'adat/SEMA.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'CLAUDE.md')
+FEJLESZTOI_MUNKA = ('folyamat', 'adat')
+
+
+def ir_lista(ertek):
+    """A brief fejléc `ir: [a, "b/*.md", c]` mezőjéből az útvonalak (idézőjel nélkül)."""
+    return [x.strip().strip('"\'') for x in ertek.strip().strip('[]').split(',') if x.strip().strip('"\'')]
+
+
+def _tartalmi_ut(u):
+    if u.startswith(TARTALMI_UT) or u.startswith('adat/glosszak_'):
+        return True
+    return u.startswith('adat/') and u.endswith('.tsv') and u[5:-4] in TARTALMI_ADAT
+
+
+def gepi_kategoria(fej):
+    """Egy brief fejlécéből (`brief_fejlec`) -> (kategória, indok). tartalmi > kiadói > fejlesztői; amit nem tud: osztalyozatlan.
+    A jel a brief `ir` és `munka` mezője (brief-szinten: a tétel a brief feladatát követi)."""
+    ir, munka, kod = ir_lista(fej.get('ir', '')), fej.get('munka', ''), fej.get('kod', '')
+    szam = fej.get('feladat', '?')
+    t = [u for u in ir if _tartalmi_ut(u)]
+    if t or munka == 'ertelmezo':
+        jel = ['ír: ' + ', '.join(t[:2])] if t else []
+        if munka == 'ertelmezo':
+            jel.append('munka: ertelmezo')
+        return 'tartalmi', 'gépi: a #%s brief %s (a lexikon állítását érinti)' % (szam, '; '.join(jel))
+    k = [u for u in ir if u.startswith(KIADOI_UT)]
+    if k or kod in KIADOI_KODOK:
+        jel = ('ír: ' + ', '.join(k[:2])) if k else 'a tétel az árazás/előfizetés (%s)' % kod
+        return 'kiadoi', 'gépi: a #%s brief %s (megjelenés, licenc, felület)' % (szam, jel)
+    f = [u for u in ir if u.startswith(FEJLESZTOI_UT)]
+    if f or munka in FEJLESZTOI_MUNKA:
+        jel = ['ír: ' + ', '.join(f[:2])] if f else []
+        if munka in FEJLESZTOI_MUNKA:
+            jel.append('munka: ' + munka)
+        return 'fejlesztoi', 'gépi: a #%s brief csak %s (eszköz, séma, munkafolyamat)' % (szam, '; '.join(jel))
+    return 'osztalyozatlan', 'gépi: a #%s brief fejlécéből nem dönthető el' % szam
+
+
+def brief_besorolo(root):
+    """-> függvény: feladatszám (str) -> (kategória, indok); ha nincs `F<szám>_*_BRIEF.md`, osztalyozatlan."""
+    def besorol(szam):
+        for fn in sorted(os.listdir(root)):
+            if re.match(r'^F%s_.*_BRIEF\.md$' % re.escape(str(szam)), fn):
+                with open(os.path.join(root, fn), encoding='utf-8', newline='') as f:
+                    fej, _ = brief_fejlec(f.read())
+                return gepi_kategoria(fej)
+        return 'osztalyozatlan', 'nincs F%s_*_BRIEF.md, és kézi besorolás sincs' % szam
+    return besorol
+
+
+def kategoria(azon, szuro, besorol, szam):
+    """-> (cimke, indok): a kézi szűrő elsőbbséget élvez, különben a brief gépi besorolása."""
+    if azon in szuro:
+        return szuro[azon], 'kézi besorolás (dontes_szuro.tsv)'
+    if besorol is None or not szam:
+        return 'osztalyozatlan', 'nincs feladatszám vagy besoroló'
+    return besorol(szam)
+
+
+def dontesek_kartyak(szoveg, ts, szuro=None, besorol=None):
     """A DONTESEK.md táblázatából a nyitott (🟡) tételek. A táblázat sorai ` | `-t tartalmazhatnak a szövegben, ezért az állapot-oszlopot
     az első, emojival kezdődő cella adja (nem az oszlopszám)."""
     szuro = szuro or {}
@@ -386,10 +455,12 @@ def dontesek_kartyak(szoveg, ts, szuro=None):
         if javaslat and javaslat != '—':
             szoveg_k.append('Javaslat: ' + vag(javaslat, 400))
         mot = _FELADAT.search(feladat)
+        szm = re.match(r'#(\d+)', feladat)
+        cimke, indok = kategoria(azon, szuro, besorol, szm.group(1) if szm else '')
         ki.append(dict(kerdes_id='dontes:%s' % azon, forras='dontes', motivum=mot.group(0) if mot else 'DONTESEK', hely='',
                        kerdes=SORTORES.join(szoveg_k), valaszlehetosegek=vag(opciok, 300) if opciok != '—' else '',
                        proveniencia='scope=DONTESEK.md:%d | forras=lektor_kerdesek.py | ts=%s' % (ln, ts),
-                       cimke=szuro.get(azon, 'osztalyozatlan')))
+                       cimke=cimke, cimke_indok=indok))
     return ki
 
 
@@ -407,7 +478,7 @@ def brief_fejlec(szoveg):
     return f, sorok
 
 
-def megallt_briefek(root, ts, szuro=None):
+def megallt_briefek(root, ts, szuro=None, besorol=None):
     """A `megallt` / `dontesre_var` állapotú briefek kártyái: a fejléc `kovetkezo` mezője (aki karbantartja, naprakész) és a ⛔ sorok
     gépi kivonata (nem szűrt: a lezárt pontokat a kulcsszavak alapján kihagyja)."""
     szuro = szuro or {}
@@ -421,6 +492,7 @@ def megallt_briefek(root, ts, szuro=None):
             continue
         szam, kod = fej.get('feladat', ''), fej.get('kod', fn)
         azon = 'F%s' % szam
+        cimke, indok = kategoria(azon, szuro, besorol, szam)
         pontok = []
         for i, x in enumerate(sorok, 1):
             if '⛔' in x and not _LEZART_ISMERTETO.search(x) and not x.startswith(('kovetkezo:', 'ad:', 'olvas:')):
@@ -432,7 +504,7 @@ def megallt_briefek(root, ts, szuro=None):
         ki.append(dict(kerdes_id='dontes:%s' % azon, forras='dontes', motivum='#%s %s' % (szam, kod), hely='',
                        kerdes=SORTORES.join(sz), valaszlehetosegek='',
                        proveniencia='scope=%s (fejléc + ⛔ sorok) | forras=lektor_kerdesek.py | ts=%s' % (fn, ts),
-                       cimke=szuro.get(azon, 'osztalyozatlan')))
+                       cimke=cimke, cimke_indok=indok))
     return ki
 
 
@@ -440,7 +512,8 @@ def general_dontes(root=ROOT, kimenet=None, ir=True, ts=None):
     ts = ts or datetime.date.today().isoformat()
     szuro = szuro_beolvas(root)
     with open(os.path.join(root, 'DONTESEK.md'), encoding='utf-8', newline='') as f:
-        uj = dontesek_kartyak(f.read(), ts, szuro) + megallt_briefek(root, ts, szuro)
+        besorol = brief_besorolo(root)
+        uj = dontesek_kartyak(f.read(), ts, szuro, besorol) + megallt_briefek(root, ts, szuro, besorol)
     return kiir('DONTESEK', uj, root, kimenet, ir)
 
 
