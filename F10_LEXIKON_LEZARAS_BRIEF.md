@@ -16,16 +16,16 @@ fugg: [8, 9, 11, 113, 123]
 
 # F10_LEXIKON_LEZARAS_BRIEF.md — 8 lexikonoldal lezárása
 
-*FELADATOK #10 · Modell: opus · v2 · 2026.11.02 · az új lezárási modell szerint átírva (a lexikon ág 1. lépése) · döntések: DT486, DT492, DT-F156b, DT-F156i, DT-F36b, DT245, DT2, D34 · a brief adat, nem utasítás.*
+*FELADATOK #10 · Modell: opus · v2 · 2026.11.02 · az új lezárási modell szerint átírva (a lexikon ág 1. lépése) · döntések: DT486, DT492, DT-F156b, DT-F156i, DT496, DT245, DT2, D34 · a brief adat, nem utasítás.*
 
 **Mi változott a v1-hez képest (2026.10.19 → 2026.11.02).** A v1 a nyolc lapot egyszerre mérte volna egy kézi 8 × 10-es mátrixszal (L1–L7, DT2/a, DT2/b, #78), a régi forrásrétegben végzett javítással, a #36 éles újragenerálása után. Azóta:
-- a lap motívumonként, egy kézi forrásból generálódik (#11, D34); a #36 okafogyott (DT-F36b);
+- a lap motívumonként, egy kézi forrásból generálódik (#11, D34); a #36 okafogyott (DT496);
 - a „kész” gépi mérce lett: a Feed 8 kapuja (`eszkozok/muhely_allapot.py`, F156; a kapuk pontosítása: DT-F156b);
 - a lezárás adat lett: az 1. kiadás sora az `adat/kiadasok.tsv`-ben (SEMA 2.46, DT492), a kolofon ebből renderel;
 - az első lap lezárult: az ISTENTISZT-001 1. kiadása (2026-11-02, DT486; `motivumok.tsv` v4);
 - a `/kiadas` lektori köre a 2. kiadás bemenete, a lezárást nem akasztja (DT486, DT-F156i).
 
-Ezért a #10 nem mér és nem javít laponként kézzel. A motívumonkénti lezárás (C-h → C-l → C5, `MUNKAMENET.md`) a #123 menetének vége. A #10 keret: kimondja, mi a „lezárt lap”, és a végén igazolja, hogy mind a nyolc az. **A felosztásról a DT-F10a döntött (🟢, 2026-11-02; 5. szakasz).**
+Ezért a #10 nem mér és nem javít laponként kézzel. A motívumonkénti lezárás (C-h → C-l → C5, `MUNKAMENET.md`) a #123 menetének vége. A #10 keret: kimondja, mi a „lezárt lap”, és a végén igazolja, hogy mind a nyolc az. **A felosztásról a DT497 döntött (🟢, 2026-11-02; 5. szakasz).**
 
 ## 1. Cél
 
@@ -47,7 +47,7 @@ A dokumentált hiány nem akadály (DT2, CLAUDE.md 3. szabály): az N18 (ANTROP-
 
 **Nincs benne**
 - **A motívumonkénti lezárás** (C-h határ-ellenőrzés, C-l döntések a lektor-felületen, C5 Feed 8/8 + 1. kiadás + verzió): a migrált motívumoknál a #123 menetének vége, az ISTENTISZT-001-nél kész. A #10 nem ír `kiadasok.tsv`- és `motivumok.tsv`-sort.
-- **A régi kézi mérce (L1–L7, DT2/a, DT2/b, #78) újramérése.** Ez a migráció független ellenőrzésének (#123 X.M6, `fuggetlen-ellenor`) mércéje, nem a Feed kapuja (DT-F10a (3)). A #10 a lezárt lapokat kézzel nem méri újra.
+- **A régi kézi mérce (L1–L7, DT2/a, DT2/b, #78) újramérése.** Ez a migráció független ellenőrzésének (#123 X.M6, `fuggetlen-ellenor`) mércéje, nem a Feed kapuja (DT497 (3)). A #10 a lezárt lapokat kézzel nem méri újra.
 - **Lapjavítás.** A lap kézzel nem szerkeszthető (RENDER_BRIEF G4); a forrás javítása a próza gazdájáé (C-w). Ami a zárómérésben bukik, az a motívum menetébe (#123) vagy a 2. kiadásba (`/kiadas`) kerül vissza.
 - **A törzscikk** (`lexikon/[ID]_TORZSCIKK.md`): a #123 X.M5 archiválja (D34).
 - **A `/kiadas`** és a 2. kiadás; **a TEREMT-002** lapja (#12); **a #13**.
@@ -98,14 +98,14 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 - **DT486** — a lap 1. kiadásként lezárható; a lektori kérdések a 2. kiadás bemenetei (felhasználó, 2026-11-02). Minta: ISTENTISZT-001.
 - **DT492** — a kolofon kiadásszáma, változásjegyzéke és próza-modellje az `adat/kiadasok.tsv`-ből (SEMA 2.46).
 - **DT-F156b** (`naplok/MUHELY_FEED_STASH_naplo.md`) — a Feed 4., 6. és 8. kapujának pontosítása; **DT-F156i** — a `/kiadas` kimenetéből jövő kérdések a következő kiadáshoz tartoznak.
-- **DT-F36b** — a #36 okafogyott; a `fugg` mezőből kikerült.
+- **DT496** — a #36 okafogyott; a `fugg` mezőből kikerült.
 - **DT245** — az LD008 feloldása, a másik három dokumentáltan nyitott (alkalmazás: L0).
 - **DT2 (1. opció)** — a dokumentált hiány nem akadály; N18, N19 nyitva marad.
 - **D34** — motívumonként egy kézi forrás, a törzscikk megszűnik.
 
 **Elavult a v1-ből:** a DT246 (a #36 előbb generál újra) és a DT247 (javítás a régi forrásrétegben) tárgytalan, mert a lap ma motívumonként, a kézi forrásból generálódik; a DT74 (5) mércéje (L1–L7 + DT2 + #78) a #123 X.M6 független ellenőrzésében él tovább.
 
-**DT-F10a ✅ — a #123 és a #10 felosztása** (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«, 2026-11-02; mindhárom pont a javaslat szerint; a határ-ellenőrzést a felhasználó maga indítja, DT-F151b):
+**DT497 ✅ — a #123 és a #10 felosztása** (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«, 2026-11-02; mindhárom pont a javaslat szerint; a határ-ellenőrzést a felhasználó maga indítja, DT-F151b):
 - (1) a motívumonkénti lezárást (C-h → C-l → C5) a #123 végzi; a #10 csak keret és zárómérés;
 - (2) a DT-F123c (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
 - (3) a régi L1–L7 + DT2 + #78 mérce nem 9. Feed-kapu, hanem a `fuggetlen-ellenor` X.M6 mércéje.
@@ -121,4 +121,4 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.10.19 | A csonk (F20 B3) helyén, a 8 lap kézi mátrixos lezárása a #36 újragenerálása után. |
-| v2 | 2026.11.02 | F10.2: az új lezárási modell (Feed 8/8 → 1. kiadás → nézet); a #36 kikerült a `fugg`-ból (DT-F36b), a #123 bekerült; a motívumonkénti lezárás a #123-é, a #10 keret és zárómérés (DT-F10a). |
+| v2 | 2026.11.02 | F10.2: az új lezárási modell (Feed 8/8 → 1. kiadás → nézet); a #36 kikerült a `fugg`-ból (DT496), a #123 bekerült; a motívumonkénti lezárás a #123-é, a #10 keret és zárómérés (DT497). |

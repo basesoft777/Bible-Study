@@ -71,12 +71,12 @@ Javaslat: bekapcsolni mind a hat lexikai motívumon (a küszöb 0 hamis kizárá
 3. A rokonság egy lépés, csak a származtatott irány (szülő → származék); a testvér- és többlépéses rokonságot nem vesszük, ami óvatosan javít (kevesebb felismerés, nem több hamis kizárás).
 4. A nyelvszűrés a vers nyelvét a Strong-halmaz első betűjéből (G/H) veszi; kevert (arám/LXX) helyekre nem külön szabály.
 
-## 7. Döntések (2026-11-02; DT-F160a, DT-F160b)
+## 7. Döntések (2026-11-02; DT499, DT500)
 
 Az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«.
 
-- **DT-F160a:** MENNY-001 → (A) nyelvszűrés; a `motivumok.tsv` nem változik. A (B) átsorolás a #123 MENNY-001 migrációjában dől el (N-F160a; Mt 24:38, Luk 17:27).
-- **DT-F160b:** `LEXIKAI_BEKAPCSOLT` = ALVIL-001, KIRALY-001, TEREMT-001, MENNY-001. Az ANTROP-001 (0 elutasítás) és a HODIT-001 (nincs haszon) kimarad; újramérésük a #123 migrációi után (N-F160b).
+- **DT499:** MENNY-001 → (A) nyelvszűrés; a `motivumok.tsv` nem változik. A (B) átsorolás a #123 MENNY-001 migrációjában dől el (N-F160a; Mt 24:38, Luk 17:27).
+- **DT500:** `LEXIKAI_BEKAPCSOLT` = ALVIL-001, KIRALY-001, TEREMT-001, MENNY-001. Az ANTROP-001 (0 elutasítás) és a HODIT-001 (nincs haszon) kimarad; újramérésük a #123 migrációi után (N-F160b).
 
 ## 8. A HAMART-001 hordozója
 
