@@ -8,9 +8,9 @@ munka: adat
 modell: sonnet
 allapot: fut
 ad: "a teljes Thayer (a kész Strongok nélkül kb. 5 385 Strong) szakaszonkénti magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet, a tényleges modellnévvel), a #159 B-útján Message Batches API-n, kb. 500 000 karakteres adagokban, adagonként mért költséggel; a kétszer bukott Strongok a bukottak-táblában, kézi ítéletre"
-kovetkezo: "A1 (új session, az M0 PR mergelése után): adag701, naplok/THAYER_ELES_sorrend.tsv adag=1 (35 Strong: G0282 elöl), --effort high; becslés és adagplafon: naplok/THAYER_ELES_naplo.md M0 8."
+kovetkezo: "A2 (új session, az A1 PR mergelése után): adag702 = az A1 6 bukottja (G3588 G3756 G3004 G1063 G1223 G1487) v5.2-es első körrel + az eredeti A2 (79 Strong, 498 937 forráskarakter): összesen 85 Strong, 611 808 forráskarakter, --effort high; becslés 17,59 USD (első kör 9,46 + javító 8,14), adagplafon 22,87, --plafon 41,0 (kumulatív: az eddigi mért 18,1337 + 22,87); naplok/THAYER_ELES_naplo.md A1 8–10; a `beir --megjegyzes` rögzítse a prompt verzióját (`prompt v5.2`)."
 olvas: [adat/forditasok.tsv, F27_FP3_BRIEF.md, F158_THAYER_API_KOTEG_BRIEF.md, F159_THAYER_B_UT_BRIEF.md, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_koltseg.py, naplok/FP3_arany.md, naplok/THAYER_B_UT_naplo.md, naplok/THAYER_B_UT_mero_strongok.txt, naplok/THAYER_API_KOTEG_naplo.md, forditas/prompt_v5_1.md, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/karoli_strong/, adat/SEMA.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/thayer_jelolt/, DONTESEK.md]
-ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, eszkozok/thayer_api_koteg.py, eszkozok/teszt_thayer_api_koteg.py, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/thayer_jelolt/thayer_bemenet.py, eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, forditas/thayer_api/, naplok/THAYER_ELES_M0_*_strongok.txt, naplok/ELLENOR_F07_M0.md, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, naplok/THAYER_ELES_naplo.md, naplok/THAYER_ELES_sorrend.tsv, naplok/THAYER_ELES_koltseg.tsv, naplok/THAYER_ELES_arany.md, naplok/THAYER_ELES_sigla_javaslat.tsv, naplok/THAYER_ELES_terminologia_javaslat.tsv, naplok/THAYER_ELES_M0.py, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [forditas/prompt_v5_2.md, eszkozok/thayer_jelolt/forditas.py, adat/forditasok.tsv, adat/thayer_sigla.tsv, adat/terminologia.tsv, eszkozok/thayer_api_koteg.py, eszkozok/teszt_thayer_api_koteg.py, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/thayer_jelolt/thayer_bemenet.py, eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, forditas/thayer_api/, naplok/THAYER_ELES_M0_*_strongok.txt, naplok/ELLENOR_F07_M0.md, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, naplok/THAYER_ELES_naplo.md, naplok/THAYER_ELES_sorrend.tsv, naplok/THAYER_ELES_koltseg.tsv, naplok/THAYER_ELES_arany.md, naplok/THAYER_ELES_sigla_javaslat.tsv, naplok/THAYER_ELES_terminologia_javaslat.tsv, naplok/THAYER_ELES_M0.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [3, 5, 14, 159]
 nem_fugg: [9]
 ---
@@ -225,7 +225,11 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 | DT522 | M0 (d1), (d2): a sigla- és terminológia-jóváhagyás | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT523 | M0: a 16. kapu toldalék-tűrése (a→á, e→é), F07.5 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT524 | M0: `Heb.` c:v előtt könyvhivatkozás; a `8_idezojel` mérése (50%: marad a javító körnél) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07h … | adag-megállások, plafonemelés | a menet veszi fel |
+| DT-F07h | A1: a 3. kapu `3Makk` hibája (apokrif magyar alakok) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07i | A1: a `9_tagolas` kapu prózai utalásai (maszk) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07j | A1: prompt v5.2 (idézőjelek a Thayer-szócikkben) | ✅ orkesztrátor, 2026-11-02: (a), az aposztrófos idézet marad (`DONTESEK.md`) |
+| DT-F07k | A1: a bukottak újrakapuzása, harmadik kör kivétele, `--plafon` kumulatív szabálya | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07l … | adag-megállások, plafonemelés | a menet veszi fel |
 
 ## Verziónapló
 

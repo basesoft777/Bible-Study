@@ -170,6 +170,8 @@ APOKRIF_ALIAS = {
     'Judith': 'Judit',
     # F07 M0 (N72): a Thayer tovabbi alakjai (a 11. kapu forras-oldala is ezt latja)
     '3Macc': '3Makk', '4Macc': '4Makk', 'Wisd': 'Bölcs',
+    # F07 A1 (DT-F07h): a Thayer kiirt konyvnevei (`4 Maccabees 8:3`, mert a forras igy irja)
+    '1 Maccabees': '1Makk', '2 Maccabees': '2Makk', '3 Maccabees': '3Makk', '4 Maccabees': '4Makk',
 }
 
 
