@@ -1,6 +1,8 @@
 # 9. PaRDeS motívum-forrás sablon (`motivumok/[ID].md`)
 
-**Állapot: tervezet, a #12 pilotja véglegesíti** (a #11 1. lépcsőjének tapasztalatával együtt, DT84 (13)).
+**Állapot: tervezet; a v1-et a #123 DT-F123c tétele véglegesíti** (az ALVIL-001 új cikkének lezárása után, DT497 (2); a #12 2026-11-02-án lezárult, a TEREMT-002 a #123-é; DT84 (13)).
+
+*v0.5 — 2026.11.02 (F123.3, a felhasználó 2026-11-02-i döntései, DT-F123w, DT-F123y: a hátralévő motívumok új cikkként készülnek. A 4. pontban, a Kivonat határ-elemei után három új bekezdés: „Az 1/a igehelyenkénti prózája — kötelező forma” (a `kapcsolodas` kerek mondat, a `funkcio` „címke — magyarázat”, minta: ISTENTISZT-001, 1Móz 4:26), „A próza nem hivatkozik a régi tanulmány pontszámaira”, „Teljesség-mérés — három háló”; a 8. pontban a gépi kapuk (24., 25. szabály, olvasói kapu). Változatlanul tervezet.)*
 
 *v0.4 — 2026.11.02 (a lexikon ág 1. lépése, az ISTENTISZT-001 1. kiadásának tanulsága: a 4. pont után „A Kivonat két kötelező határ-eleme” — a negatív kritérium szó szerint ellenőrizhető, kivétel név szerint; a fölérendelt fogalom mondata olvasói nyelven. Szabály-kiegészítés; a v1 véglegesítése (DT-F123c) továbbra is nyitott, változatlanul tervezet.)*
 
@@ -98,6 +100,40 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 
 1. **A negatív kritérium szó szerint ellenőrizhető.** Megnevezi, mely alakok tartoznak ide és melyek nem, úgy, hogy egy igehelyről a szövegből (a Károli-szóból és az eredeti nyelvű alakból) eldönthető legyen; tág minősítés („lényegében”, „jellemzően”) nem elég. Minta (a #151 K4 tanulsága, `naplok/HATAR_ISTENTISZT-001.md`): „a *besém* után az Úr neve, JHVH áll; ahol névmás áll a helyén („nevedet”, „nevét”), az nem tartozik ide” — a ragos alak (*besimchá*, „a te neveden”) és a más név (*besém Jaakóv*) nem. **A kivétel név szerint áll**, indokkal: ha egy hely a minimális jegy nélkül is a motívumban marad, a Kivonat vagy a 3. szakasz megnevezi, és megmondja, milyen szerepben (minta: az 1Kir 18:25–26, ahol a *sém* után nem JHVH, hanem „a ti istenteknek”, illetve Baál neve áll; a hely kontrasztként, kimondott kivételként marad, K5). Ami így nem fogalmazható meg, az határkérdés: a C-h határ-ellenőrzés (`MUNKAMENET.md`) elé kerül, nem a prózába.
 2. **A fölérendelt fogalom mondata olvasói nyelven.** A Kivonat kimondja, mi tartozik ide és mi nem, és miért nem a szó (az ige) dönt, hanem a minimális jegy. Belső szó (gerinc, szerep, negatív kritérium, fölérendelt fogalom, hígulás) és forrásnév (BDB, Thayer, TAHOT, SDBH) nincs benne. Minta: a `motivumok/ISTENTISZT-001.md` Kivonatának 2. bekezdése (a felhasználó választása, 2026-11-01): „A motívum nem az imádság általában, hanem az, amikor valaki az Úr nevét kimondva fordul hozzá segítségért. Ha a név nem hangzik el, a segélykiáltás a tágabb körbe tartozik. Az Újszövetségben ezt nem az ige dönti el, mert az mindkét esetben ugyanaz, hanem a név (…).”
+
+**Az 1/a igehelyenkénti prózája — kötelező forma** (v0.5; DT-F123w, a 25. szabály; az ok és a mérés: `naplok/1A_PROZA_jelentes.md`, PR #593). A lexikonoldal 1/a-ja igehelyenként a Károli-vers alatt két sort mutat: a leíró prózát és a „Funkció:” sort. **Mindkettő adat**, nem a `motivumok/[ID].md` szövege: az `adat/elofordulasok.tsv` `kapcsolodas` és `funkcio` mezője (SEMA 2.2). A prózai menet írja őket, a `jeloltek.tsv`-n át, döntéssel, `manual` provenienciával (DT28; 2. szabály); a forrásba nem kerülnek vissza.
+
+1. **A `kapcsolodas`: legalább egy kerek mondat.** Nagybetűvel kezdődik, ponttal zárul, és megmondja, mi történik ezen a helyen a motívummal: ki, kinek, milyen helyzetben, és mi benne a motívumbeli jegy. Nem lehet csak idézet, címszó, gondolatjeles töredék vagy „ua.” (a régi 2/b-csoportpróza szétbontásából maradt alak). A 25. szabály mérője az idézőjeles és zárójeles betéten, valamint a héber/görög szón kívül legalább 7 magyar szót kér (az arany lap legrövidebb kerek prózája ennyi); ez alsó korlát, nem a minőség mércéje. Az idézőjeles betét a fölötte álló Károli-szöveg szó szerinti része; ha nem az (saját vagy más fordítás), a mondat ezt kimondja. Idézőjel a magyar „…”.
+2. **A `funkcio`: „címke — magyarázat”.** A gondolatjel (` — `) előtt a rövid címke (pl. `🌱 alap-előfordulás`), utána a motívumbeli szerep egy tagmondatban: mit tesz ez a hely a motívum egészében (első megjelenés, ismétlés, kontraszt, betöltés, kivétel stb.). A generátor a gondolatjel utáni részt írja a „Funkció:” sorba, a címkét az 1. tábla „Funkció (a motívumban)” oszlopába. A kettőspontos (`címke: magyarázat`) és a csak címkés alak nem ez a forma: a generátor kiírja (DT-F1Ab), de a prózai menet „címke — magyarázat” alakra hozza.
+3. **Minden igehelyen mindkettő.** Igehely nem maradhat próza vagy „Funkció:” sor nélkül; a tartomány-sor minden verse külön mondatot kap, ha a funkciója más.
+
+**Minta — ISTENTISZT-001, 1Móz 4:26** (az arany lap; `adat/elofordulasok.tsv`, szó szerint):
+
+| mező | érték |
+|---|---|
+| `kapcsolodas` | A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele. |
+| `funkcio` | 🌱 alap-előfordulás — a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza |
+
+A lapon (`lexikon/ISTENTISZT-001_TUDOMANYOS.md`, 1/a):
+
+```
+**1Móz 4:26**
+*Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.*
+A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele.
+Funkció: a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza
+```
+
+**A próza nem hivatkozik a régi tanulmány pontszámaira** (v0.5; a TEREMT-002 lapjának tanulsága, 2026-11-02). A régi tematikus tanulmány és a régi motívumforrás saját számozása („3. pont, Remez”, „7. pont”, „P2/P3/P4”) a lapon más szakaszra mutat, vagy sehova. A forrás prózája csak a lap saját szakaszaira hivatkozik, a szakasz nevével (pl. „az LXX-fordítói döntések szakasza”); a P1–P7 lépésjel, a DT-, N-, F-szám, a `.tsv`-fájlnév és a belső szó (gerinc, szerep) az olvasói rétegben nem áll (ha kell, `belso` blokk vagy `【NAPLO】`, 2. pont). A régi tanulmány csak alapanyag: az új cikk mondata nem költözik belőle bájtra (DT-F123w).
+
+**Teljesség-mérés — három háló** (v0.5; DT-F123y). Minden új cikk prózája előtt lefut, és a levezetés üres eredménynél is dokumentált (CLAUDE.md, kutatási menet):
+
+| háló | mit keres | mivel |
+|---|---|---|
+| (1) Strong-scan | a motívum gerinc-Strongjainak minden előfordulása az ÓSZ-ben és az ÚSZ-ben | `eszkozok/lekerdez.py` |
+| (2) Károli-szavak | a motívum Károli-megfelelőinek (`karoli_szo`, a szótári alakok a szótövező táblán át) minden előfordulása a Károli-szövegben | Károli-szöveg + szótövezés |
+| (3) szótári igehelyek | a BDB és a Thayer által a motívum Strongjainál idézett igehelyek | `adat/bdb_vers_jelentes.tsv`, Thayer-hivatkozások |
+
+Mindhárom háló találata a motívum `elofordulasok.tsv`- és `jeloltek.tsv`-soraival vetendő össze. **Az eltérés** (a háló talál, az adat nem ismeri) a `jeloltek.tsv`-be kerül `nyitva` sorként, a háló nevével az indoklásban; döntés a B5 szerint, gyenge vagy asszociatív anyaggal nem tölthető ki (3. szabály). A mérés helye a motívum naplója (a #123-ban: `naplok/F123_teljesseg_<ID>.md`), hálónként a találat, az egyezés és az eltérés száma, proveniencia-sorral. **Fogalmi és strukturális azonosság-hordozónál** (`motivumok.tsv` `azonossag_tipusa`) a Kivonat egy olvasói mondatban kimondja, hogy az előfordulások listája keresési módszer eredménye, nem kimerítő felsorolás.
 
 **A 7.N tételenkénti besorolása** (DT66 (a) 4.; a lekepezes `7. Nyitott kérdések` sora): a *tartalmi* nyitott kérdés (értelmezési, exegetikai) `kezi_forras`, `apparatus`, a 7.N-ben marad; a *séma-korlát* (a tábla nem tudja ábrázolni) és az *adatállapot* (forrás hiányzik, bekötés hiányzik) nem a motívum érvelése: N-tétel a `NYITOTT_FELADATOK.md`-ben (a `/befogad` útján), a forrásban legfeljebb `【NAPLO】` mutató; a *lezárt* tétel (áthúzott) a migrációban archívum (DT84 (5); az ISTENTISZT-001 öt tételére alkalmazva: pilot-terv 4.4).
 
@@ -220,6 +256,8 @@ A mérce: a lexikonoldal-sablon Minőségi kapuja **L1–L7** + a **DT2 két ré
 
 A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` a kiadható kimenetben): `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
 
+**Gépi kapuk a generált lapon** (v0.5; DT-F123w, DT-F123x). A forrás és az adat akkor kész, ha a belőlük generált lapon az `ellenoriz.py` **24. szabálya** (minden lábjegyzet-hivatkozásnak van definíciója) és **25. szabálya** (az 1/a minden igehelye arany szintű: kerek próza + „Funkció:” sor, l. 4. pont) RENDBEN, az **olvasói kapu** (Feed 9, `eszkozok/olvasoi_kapu.py`) 0 BUKÁS, és a teljesség-mérés (4. pont) lefutott. A kapuk a szerkezetet és a gépesíthető olvasói hibát mérik; a mondat minősége (kerek-e, és a Funkció tényleg a motívumbeli szerepet mondja-e) a lektori kör és a felhasználó vizuális átnézése (`MUNKAMENET.md` C-v).
+
 ## 9. A v0 nyitott pontjai — eldöntve (DT84, 🟢, felhasználó, 2026-10-12)
 
 A zárójeles szám a DT84 pontjának száma (DT84 (1)–(8), (10)); a DT84 (9), (11)–(13) a pilot-tervben áll.
@@ -234,4 +272,4 @@ A zárójeles szám a DT84 pontjának száma (DT84 (1)–(8), (10)); a DT84 (9),
 - **(8) Séma-kérdések:** Alátámasztás → új `indoklas` oszlop a `kapcsolatok.tsv`-ben; független megerősítés → a minősítés-nézetben generált, séma-bővítés nélkül; Módszertan-tábla és kapu-eredmény → archívum, a nézet a meglévő audit-sorokból (4. pont; SEMA 3.10.7).
 - **(10) Kiadható nézet:** a lexikonoldal és a motívumcikk kiadható `apparatus` nézet (a DT-F86a szerint prémium), az E29 rájuk is fut; a `【NAPLO】` csak folyamat-nyom (0. és 2. pont). A DT84 (9), (11)–(12) a pilot-tervet érinti (`naplok/MOTIVUM_FORRAS_pilot_terv.md` 8. szakasz); a (13): lent.
 
-A sablon a pilotok után válik véglegessé (DT84 (13): a #11 1. lépcsője a v0.1-en fut, a #12 a két pilot tapasztalatával véglegesít); addig tervezet.
+A sablon a pilotok után válik véglegessé (DT84 (13): a #11 1. lépcsője a v0.1-en fut, a #12 a két pilot tapasztalatával véglegesít); addig tervezet. *A #12 2026-11-02-án lezárult; a véglegesítés (v1) a #123 DT-F123c tétele (DT497 (2)).*

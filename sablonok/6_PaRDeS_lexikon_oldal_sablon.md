@@ -1,5 +1,7 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
+*v3.1 — 2026.11.02 (F123.3, DT-F123w, DT-F123x): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
+
 *v3 — 2026.09.22 (LEXV2_2): a TUDOMÁNYOS változat oldalszerkezete
 lexikon-oldal v2-re váltott (LEXV2_2_BRIEF.md G1). Az `LXX_OS` bekötve
 a régi `LXX_kivonat_*.tsv` helyett (3. szakasz), a Thayer-szótár
@@ -127,8 +129,11 @@ A „2. Szótári háttér” a szótári gerinccel kezdődik (SEMA 2.40).
 
 #### 1/a. Az igehelyek szövege (generált)
 Igehelyenként: horgony (`<a id="...">`), a Károli-vers szó szerinti
-szövege (`Karoli_1908.tsv`-ből; tartomány esetén minden vers külön), és
-alatta a `kapcsolodas` mező szövege.
+szövege (`Karoli_1908.tsv`-ből; tartomány esetén minden vers külön),
+alatta a `kapcsolodas` mező szövege (legalább egy kerek mondat), és
+`Funkció:` sor a `funkcio` mező „ — ” utáni részéből (DT-F1Ab). A két
+mező kötelező formája és a minta (ISTENTISZT-001, 1Móz 4:26):
+`9_PaRDeS_motivum_forras_sablon.md` 4. pont; mérője a 25. szabály.
 
 ### 1/b. Kizárt és vizsgált helyek (generált)
 A `jeloltek.tsv` `elutasítva` és `nyitva` sorai indoklással, plusz a
@@ -462,6 +467,11 @@ lexikon-oldal saját kockázataira szabva:
       névtévesztéssel vagy figyelmetlenségből — ez a hiba már
       ténylegesen előfordult (2026.09.07, Zakariás 6:13/Melkizedek-
       lelet egy ISTENTISZT-001 mintaoldalon).
+- [ ] **L8. Gépi és olvasói kapuk** (v3.1) — az `ellenoriz.py` 24.
+      (lábjegyzet-definíció) és 25. (1/a próza) szabálya RENDBEN; az
+      olvasói kapu (Feed 9) 0 BUKÁS; a felhasználó a renderelt lapot
+      átnézte, és ez rögzítve (`MUNKAMENET.md` C-o, C-v). Ez a pont a
+      lezárás feltétele, nem csak a commité.
 - [ ] **L5. Nevesített tanítói szakasz átvéve** — ha a forrás-study
       5. pontja tartalmaz nevesített tanítói egyezés-keresést, az a
       lexikon-oldalon is szerepel (jelenleg nincs kötelező szakaszként
