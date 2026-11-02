@@ -29,7 +29,10 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEZOK_REGI = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'proveniencia', 'allapot', 'valasz', 'atvezetes']
-MEZOK = MEZOK_REGI + ['cimke']  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
+MEZOK_V2 = MEZOK_REGI + ['cimke']
+OSSZEFOGLALO_MEZOK = ['gond', 'javaslat', 'javaslat_tipus', 'osszefoglalo_proveniencia']
+JAVASLAT_TIPUSOK = ('konkret', 'nincs', 'hiany', 'dontott')
+MEZOK = MEZOK_V2 + OSSZEFOGLALO_MEZOK  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
@@ -126,12 +129,13 @@ def beolvas(ut):
     if not sorok:
         return {}
     fej = sorok[0].split('\t')
-    if fej not in (MEZOK, MEZOK_REGI):
+    if fej not in (MEZOK, MEZOK_V2, MEZOK_REGI):
         raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
     ki = {}
     for s in sorok[1:]:
         r = dict(zip(fej, s.split('\t')))
-        r.setdefault('cimke', '')
+        for m in MEZOK:
+            r.setdefault(m, '')
         ki[r['kerdes_id']] = r
     return ki
 
@@ -187,6 +191,41 @@ def forras_szoveg(motivum, root):
         return None
     with open(ut, encoding='utf-8', newline='') as f:
         return f.read()
+
+
+def osszefoglalo_beolvas(motivum, root=ROOT):
+    """{kerdes_id: (tipus, gond, javaslat, proveniencia)} a kézi `eszkozok/lektor_felulet/osszefoglalo_<ID>.tsv`-ből; nincs fájl -> {}."""
+    ut = os.path.join(root, 'eszkozok', 'lektor_felulet', 'osszefoglalo_%s.tsv' % motivum)
+    if not os.path.exists(ut):
+        return {}
+    with open(ut, encoding='utf-8', newline='') as f:
+        sorok = [x.rstrip('\r') for x in f.read().split('\n') if x.strip() and not x.startswith('#')]
+    fej = sorok[0].split('\t')
+    if fej != ['kerdes_id', 'tipus', 'gond', 'javaslat', 'proveniencia']:
+        raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
+    ki = {}
+    for x in sorok[1:]:
+        r = dict(zip(fej, x.split('\t')))
+        if r['tipus'] not in JAVASLAT_TIPUSOK:
+            raise ValueError('%s: ismeretlen típus %r (%s)' % (ut, r['tipus'], r['kerdes_id']))
+        if not r['gond'].strip() or not r['javaslat'].strip():
+            raise ValueError('%s: üres összefoglaló (%s)' % (ut, r['kerdes_id']))
+        if r['kerdes_id'] in ki:
+            raise ValueError('%s: kétszer szerepel: %s' % (ut, r['kerdes_id']))
+        ki[r['kerdes_id']] = (r['tipus'], r['gond'], r['javaslat'], r['proveniencia'] or 'manual')
+    return ki
+
+
+def osszefoglalo_ra(uj, ossz):
+    """Rátölti az összefoglalókat a kérdés-sorokra; ismeretlen kerdes_id az összefoglalóban hiba (elavult sor)."""
+    idk = {k['kerdes_id'] for k in uj}
+    ismeretlen = [i for i in ossz if i not in idk]
+    if ismeretlen:
+        raise ValueError('összefoglaló olyan kérdéshez, amely nincs a forrásban: %s' % ', '.join(ismeretlen))
+    for k in uj:
+        if k['kerdes_id'] in ossz:
+            k['javaslat_tipus'], k['gond'], k['javaslat'], k['osszefoglalo_proveniencia'] = ossz[k['kerdes_id']]
+    return uj
 
 
 def kiir(nev, uj, root=ROOT, kimenet=None, ir=True, megj=''):
@@ -285,6 +324,7 @@ def general(motivum, root=ROOT, kimenet=None, ir=True):
     li = _fajl(root, 'KIADAS_%s_lista.md' % motivum)
     if li is not None:
         uj += lista_hianyok(li, motivum)
+    uj = osszefoglalo_ra(uj, osszefoglalo_beolvas(motivum, root))
     return kiir(motivum, uj, root, kimenet, ir, 'nincs forrásfájl' if (sz is None and lk is None and li is None) else '')
 
 
