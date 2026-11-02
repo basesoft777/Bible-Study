@@ -33,7 +33,7 @@ fordított. Ugyanezzel az úttal a Thayer becsült költsége 79–113 USD; az a
 kevesebb (becslés, `manual`). Ez a feladat a B-utat, a szűkítést, a kalibrált becslőt és a mért költségű plafont építi be a
 Thayer-kötegelőbe, és egy mérő batch-csel számszerűsíti a hatásukat, hogy a #7 briefje mért alapra készüljön.
 
-A #27 nyitott tételei közül ez a feladat zárja az **N-F27a**-t (a becslő kalibrálása a mért modellre) és az **N-F27b**-t (mért futó
+A #27 nyitott tételei közül ez a feladat zárja az **N68**-t (a becslő kalibrálása a mért modellre) és az **N69**-t (mért futó
 összeg a plafon-ellenőrzésben); l. `naplok/FP3_naplo.md`.
 
 ## 2. Hatókör
@@ -44,7 +44,7 @@ API-keretből (`PARDES_API_KEY`), összesen legfeljebb 4 USD mért költséggel;
 **Nincs benne:**
 - a teljes Thayer fordítása (#7), és az `adat/forditasok.tsv` írása (a mérő batch eredménye csak naplóba kerül);
 - a max_tokens-bukások (G1722, G1510, G4151) kezelése: a #7 briefjéé;
-- a prompt-gyorsítótár mérése (N-F27d): külön marad, mert a B-út a kérésszám csökkentésével az állandó részt már leosztja, a BDB-n
+- a prompt-gyorsítótár mérése (N71): külön marad, mert a B-út a kérésszám csökkentésével az állandó részt már leosztja, a BDB-n
   pedig a Batch-cache rontott (4,23 M token írás, 1,41 M olvasás);
 - a #132 eszközeinek (`eszkozok/thayer_jelolt/`), a `bdb_api_koteg.py`-nak, az `api_koteg.py`-nak és a `prompt_v5_1.md`
   szabálytartalmának módosítása (ha a B-út ezek nélkül nem megy: ⛔ megállás, tétel a `DONTESEK.md`-be).
@@ -101,12 +101,12 @@ API-keretből (`PARDES_API_KEY`), összesen legfeljebb 4 USD mért költséggel;
   eszközei, a `bdb_api_koteg.py` és az `api_koteg.py` bájtra változatlan.
 - K2: a tesztek zöldek, hálózati hívás nélkül.
 - K3: a mérő batch lefutott mindkét `effort`-ral, a mért összköltség ≤ 4 USD; az `adat/forditasok.tsv` változatlan.
-- K4: a napló a mért összevetéssel, az újraillesztett együtthatókkal és a teljes Thayer kivetítésével (`manual`); az N-F27a és az
-  N-F27b lezárásra javasolva, hivatkozással.
+- K4: a napló a mért összevetéssel, az újraillesztett együtthatókkal és a teljes Thayer kivetítésével (`manual`); az N68 és az
+  N69 lezárásra javasolva, hivatkozással.
 - K5: a `fuggetlen-ellenor` jelentése `TISZTA`.
 
 ## Verziónapló
 
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
-| v1 | 2026.11.02 | Első változat: B-út, adatblokk-szűkítés, kalibrált becslő, mért költségű plafon, mérő batch (≤ 4 USD), kivetítés | felvétel: a felhasználó (chat, 2026-11-02: „Igen, vedd fel”); a befogadás kérdései (a #27 `nem_fugg: [159]` a függési kör feloldására; a #7 `fugg`-ja kiegészítve a 159-cel; az N-F27d kívül marad): orkesztrátori döntés a felhasználó megbízásából, 2026-11-02 |
+| v1 | 2026.11.02 | Első változat: B-út, adatblokk-szűkítés, kalibrált becslő, mért költségű plafon, mérő batch (≤ 4 USD), kivetítés | felvétel: a felhasználó (chat, 2026-11-02: „Igen, vedd fel”); a befogadás kérdései (a #27 `nem_fugg: [159]` a függési kör feloldására; a #7 `fugg`-ja kiegészítve a 159-cel; az N71 kívül marad): orkesztrátori döntés a felhasználó megbízásából, 2026-11-02 |

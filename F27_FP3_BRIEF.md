@@ -120,7 +120,7 @@ A szokásos adagjelentésen felül (`naplok/FP3_naplo.md`):
 - 5 véletlen Strong (seed = 27, hossz szerinti harmadokból) forrás és fordítás egymás alatt, hogy a felhasználó beleolvashasson;
 - az aranyminta-összevetés;
 - a költségmérés és a kivetítés;
-- egy `DONTESEK.md`-tétel (`DT-F27b`) a felhasználó döntéseivel: (a) a #7 indulhat-e ezzel a lánccal és kötegelővel; (b) a M0-ban
+- egy `DONTESEK.md`-tétel (`DT494`) a felhasználó döntéseivel: (a) a #7 indulhat-e ezzel a lánccal és kötegelővel; (b) a M0-ban
   talált hiányok közül mit kell a #7 előtt javítani (sigla-jóváhagyás a teljes Thayerre, E3; a Sirák-alias, E5; normalizáló-alias,
   terminológia, prompt), külön feladatként vagy a #7 M0-jában; (c) a #7 költségplafonja és adagmérete.
 
@@ -159,7 +159,7 @@ A szokásos adagjelentésen felül (`naplok/FP3_naplo.md`):
   `teszt_lanc.py` N66-tesztje kivétel, amíg az N66 nyitott).
 - K3: `naplok/FP3_arany.md` az 5 Stronggal.
 - K4: a költségmérés (USD, a kötegelő naplójából) és a kivetítés a naplóban.
-- K5: a DT-F27b nyitva.
+- K5: a DT494 nyitva.
 - K6: a `fuggetlen-ellenor` jelentése `TISZTA`.
 
 ## Verziónapló
