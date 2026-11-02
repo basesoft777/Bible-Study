@@ -894,8 +894,6 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#idezes -->
 
-
-
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-02 -->
 
 *A kézi rések (Kivonat, Miért fontos, Értelmezés, Módszertan) forrásjegyzetei, a kézi forrás „Proveniencia-sorok” szakaszából.*
