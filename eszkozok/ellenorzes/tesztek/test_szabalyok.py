@@ -1830,5 +1830,54 @@ class E32Teszt(unittest.TestCase):
         self.assertTrue(all(not SZ._e32_kizart(x.fajl) for x in t))
 
 
+# ---------------------------------------------------------------------------
+# E33 (#149, DT-F149a): az uj/modositott tanulmany bekerul-e a tanulmany-regiszterbe
+# ---------------------------------------------------------------------------
+
+class E33Teszt(unittest.TestCase):
+    """E33: nev- vagy cimsor-hiba, tartomany-eltérés -> FIGYELMEZTETES a PR-ban; a rendes tanulmany nem jelez."""
+
+    REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+    def _fut(self, fajlok):
+        with _IdeiglenesGyoker() as gy:
+            os.makedirs(os.path.join(gy, 'konkordancia'))
+            for n in ('Karoli_1908.tsv', 'Konyv_normalizalo_tabla.tsv'):
+                shutil.copy(os.path.join(self.REPO, 'konkordancia', n), os.path.join(gy, 'konkordancia', n))
+            for rel, szoveg in fajlok.items():
+                _ir(gy, rel, szoveg)
+            return SZ.e33_tanulmany_regiszterbe_kerul(sorted(fajlok))
+
+    def test_rendes_tanulmany_nem_jelez(self):
+        self.assertEqual(self._fut({'genezis/1Moz_14v18-20_bovitett.md': '# 1Mózes 14:18–20 — x\n\n## 1. A\nszöveg\n'}), [])
+
+    def test_eltero_cimsor_jelez(self):
+        t = self._fut({'genezis/1Moz_14v18-20_bovitett.md': '# 1Mózes 14:18–21 — x\n\n## 1. A\nszöveg\n'})
+        self.assertEqual([(x.szabaly, x.szint, x.fajl) for x in t], [('E33', 'FIGYELMEZTETES', 'genezis/1Moz_14v18-20_bovitett.md')])
+        self.assertIn('nem egyezik', t[0].reszlet)
+
+    def test_ertelmezhetetlen_cimsor_jelez(self):
+        t = self._fut({'ujszovetseg/Rom_8v10_bovitett.md': '# Valami cím\n\nszöveg\n'})
+        self.assertEqual(len(t), 1)
+        self.assertIn('nem értelmezhető', t[0].reszlet)
+
+    def test_rossz_fajlnev_vegzodes_jelez(self):
+        t = self._fut({'genezis/1Moz_17_bovit.md': '# 1Mózes 17 — x\n'})
+        self.assertEqual(len(t), 1)
+        self.assertIn('_bovitett.md', t[0].reszlet)
+
+    def test_nem_tanulmany_es_tematikus_nev(self):
+        self.assertEqual(self._fut({'genezis/Konnyu_ellenorzes_1-16_osszesito.md': 'x\n', 'tematikus_lezart/Rafaim_tematikus.md': 'x\n'}), [])
+        t = self._fut({'tematikus_lezart/Valami.md': 'x\n'})
+        self.assertEqual(len(t), 1)
+
+    def test_szint_jelentes_nem_buktat(self):
+        self.assertEqual(SZ.SZINT['E33'], 'FIGYELMEZTETES')
+        self.assertIn('E33', SZ.FAJLSZINTU_SZABALYOK)
+
+    def test_eles_repo_minden_tanulmany_bekerul(self):
+        self.assertEqual(SZ.e33_tanulmany_regiszterbe_kerul(['__TELJES__']), [])
+
+
 if __name__ == '__main__':
     unittest.main()

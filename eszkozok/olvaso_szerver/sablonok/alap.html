@@ -71,6 +71,8 @@
      (a JS az id="jeloles"-t figyeli, a .szo szavak pontozott aláhúzását kapcsolja). A felhasználó döntése („A”): 900 px alatt a
      felirat „Strong”, 900 px-től „Strong számok”; mindkettő a jelölésben, a CSS választ; a title és az aria-label a hosszú leírás #}
   {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs chip" title="Strong számok: a Strong-számmal párosított szavak jelölése (pontozott aláhúzás)"><input type="checkbox" id="jeloles" checked aria-label="Strong számok: a Strong-számmal párosított szavak jelölése (pontozott aláhúzás)"> <span class="jelolo-hosszu">Strong számok</span><span class="jelolo-rovid">Strong</span></label></div>{% endif %}
+  {# F149 (DT-F149c): a tanulmányok margójelének kapcsolója, a „Strong számok” mintájára; 900 px alatt nincs (mobilon a jel csak a vers paneljén él) #}
+  {% if nav.tan_jeloles %}<div class="jelolo tan-jelolo" role="group" aria-label="Tanulmányok jelölése"><label class="kapcs chip" title="Tanulmányok jelölése: halvány jel a tanulmány első verse előtt"><input type="checkbox" id="tan-jeloles" checked aria-label="Tanulmányok jelölése: halvány jel a tanulmány első verse előtt"> <span>Tanulmányok jelölése</span></label></div>{% endif %}
   {% endif %}
   <details class="beall" id="beall">
     <summary class="lap-gomb" aria-label="Beállítások" title="Beállítások">⚙</summary>
