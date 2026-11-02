@@ -1,4 +1,4 @@
-# Kézi szűrő a döntés-kártyákhoz (DT483): tartalmi | uzleti | technikai. A DT-azonosító a DONTESEK.md tétele, az F<nn> a megállt brief. Kézzel szerkeszthető.
+# Kézi szűrő a döntés-kártyákhoz (DT483, DT-F161a): tartalmi | kiadoi | uzleti | fejlesztoi (a régi `technikai` érték fejlesztoi-nek számít). A DT-azonosító a DONTESEK.md tétele, az F<nn> a megállt brief. Kézzel szerkeszthető.
 # KEZDETI JAVASLAT (F157, Sonnet): a felhasználó módosíthatja; ami nincs itt, az `osztalyozatlan` címkével jelenik meg.
 azonosito	cimke	megjegyzes
 DT106	tartalmi	a tohu–bohu pár szótári szerepe
@@ -13,8 +13,8 @@ DT365	uzleti	az eladói forma időzítése (#86)
 DT90	technikai	terv-szinkron
 DT126	technikai	KJV Strong-réteg licenc-következménye
 DT190	technikai	BDB-tagolás közös kulcsa
-DT338	technikai	kód-ütközés #121/#140
-DT388	technikai	eszköznév (végrehajtó dönt)
+DT338	tartalmi	kód-ütközés #121/#140 — kezi: a gépi besorolás érvényes (#121 ir: forditasok.tsv)
+DT388	tartalmi	eszköznév (végrehajtó dönt) — kezi: a gépi besorolás érvényes (#121 ir: forditasok.tsv)
 F121	tartalmi	glossza-fordítás D1–D4 és a v4 terminológia
 F123	tartalmi	ALVIL-001 ⛔-jóváhagyás
 F125	tartalmi	kártyaszöveg-küszöb és szövegjavaslat
@@ -25,10 +25,10 @@ F152	tartalmi	az ISTENTISZT-001 lap szövegjavaslata
 F38	tartalmi	BDB-fordítás terminológia és szúrópróba
 F86	uzleti	előfizetés/feed döntések
 F111	technikai	eltérés-parancs
-F134	technikai	olvasó alapnézet
-F146	technikai	versmegfeleltetés-javítás
+F134	kiadoi	olvasó alapnézet — kezi: a gépi besorolás érvényes (olvasó megjelenése)
+F146	tartalmi	versmegfeleltetés-javítás — kezi: a gépi besorolás érvényes (ír: lexikon/ISTENTISZT-001_TUDOMANYOS.md)
 F148	technikai	új-motívum védőkorlát, merge
-F153	technikai	Thayer–Károli mérés
-F157	technikai	lektor-felület
+F153	tartalmi	Thayer–Károli mérés — kezi: a gépi besorolás érvényes (ír: adat/forditasok.tsv)
+F157	kiadoi	lektor-felület — kezi: a gépi besorolás érvényes (a Kiadó felülete)
 F22	technikai	Károli–Strong párosítás
 F52	technikai	terv-szinkron

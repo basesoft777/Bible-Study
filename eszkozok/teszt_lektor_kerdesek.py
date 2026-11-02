@@ -171,6 +171,8 @@ class DontesTeszt(unittest.TestCase):
         k = L.dontesek_kartyak(DONTESEK, '2026-11-01', {'DT2': 'tartalmi'})
         self.assertEqual([r['kerdes_id'] for r in k], ['dontes:DT2', 'dontes:DT4'])
         self.assertEqual((k[0]['cimke'], k[1]['cimke']), ('tartalmi', 'osztalyozatlan'))
+        with tempfile.TemporaryDirectory() as t:
+            self.assertIn('nincs F7_*_BRIEF', L.dontesek_kartyak(DONTESEK, 't', {}, L.brief_besorolo(t))[1]['cimke_indok'])
         self.assertEqual(k[0]['motivum'], '#5 SZOTAR')
         self.assertIn('ts=2026-11-01', k[0]['proveniencia'])
         self.assertIn('Lehetőségek:', k[0]['kerdes'])
@@ -180,9 +182,10 @@ class DontesTeszt(unittest.TestCase):
             for nev, all_ in (('F9_PROBA_BRIEF.md', 'megallt'), ('F8_MAS_BRIEF.md', 'lezarva')):
                 with open(os.path.join(t, nev), 'w', encoding='utf-8', newline='') as f:
                     f.write(BRIEF % all_)
-            k = L.megallt_briefek(t, '2026-11-01', {'F9': 'technikai'})
+            k = L.megallt_briefek(t, '2026-11-01', {'F9': 'fejlesztoi'})
         self.assertEqual([r['kerdes_id'] for r in k], ['dontes:F9'])
-        self.assertEqual(k[0]['cimke'], 'technikai')
+        self.assertEqual(k[0]['cimke'], 'fejlesztoi')
+        self.assertEqual(k[0]['cimke_indok'], 'kézi besorolás (dontes_szuro.tsv)')
         self.assertIn('döntsd el az X-et', k[0]['kerdes'])
         self.assertNotIn('feloldva', k[0]['kerdes'])
         self.assertIn('Te: dönts a K-ról', k[0]['kerdes'])
@@ -204,7 +207,77 @@ class DontesTeszt(unittest.TestCase):
     def test_szuro_fajl_ervenyes(self):
         sz = L.szuro_beolvas(L.ROOT)
         self.assertTrue(sz)
-        self.assertTrue(set(sz.values()) <= {'tartalmi', 'uzleti', 'technikai'})
+        self.assertTrue(set(sz.values()) <= {'tartalmi', 'kiadoi', 'uzleti', 'fejlesztoi'})
+
+
+def fejlec(**kv):
+    return dict({'feladat': '1', 'kod': 'X', 'munka': '', 'ir': ''}, **kv)
+
+
+class GepiKategoriaTeszt(unittest.TestCase):
+    def test_ir_lista_idezojel_es_zarojel(self):
+        self.assertEqual(L.ir_lista('[adat/a.tsv, "naplok/B_*.md", eszkozok/c.py]'), ['adat/a.tsv', 'naplok/B_*.md', 'eszkozok/c.py'])
+        self.assertEqual(L.ir_lista(''), [])
+
+    def test_tartalmi_adat_es_motivum(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[adat/jeloltek.tsv]'))[0], 'tartalmi')
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[motivumok/ALVIL-001.md]'))[0], 'tartalmi')
+        self.assertEqual(L.gepi_kategoria(fejlec(munka='ertelmezo', ir='[naplok/x.md]'))[0], 'tartalmi')
+
+    def test_kiadoi(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[adat/licencek.tsv]'))[0], 'kiadoi')
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/lektor_felulet/]'))[0], 'kiadoi')
+
+    def test_uzleti(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(kod='ELOFIZETES_FEED', ir='[adat/SEMA.md]'))[0], 'uzleti')
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/feed_epit.py]'))[0], 'uzleti')
+        self.assertEqual(L.gepi_kategoria(fejlec(kod='ELOFIZETES_FEED', ir='[adat/licencek.tsv]'))[0], 'kiadoi')
+
+    def test_fejlesztoi(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[eszkozok/x.py, .github/y.yml]'))[0], 'fejlesztoi')
+        self.assertEqual(L.gepi_kategoria(fejlec(munka='folyamat', ir='[naplok/x.md]'))[0], 'fejlesztoi')
+
+    def test_magasabb_nyer(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(munka='folyamat', ir='[eszkozok/x.py, adat/licencek.tsv]'))[0], 'kiadoi')
+        self.assertEqual(L.gepi_kategoria(fejlec(ir='[adat/licencek.tsv, adat/forditasok.tsv]'))[0], 'tartalmi')
+
+    def test_osztalyozatlan_es_indok(self):
+        kat, indok = L.gepi_kategoria(fejlec(feladat='7', ir='[naplok/x.md]'))
+        self.assertEqual(kat, 'osztalyozatlan')
+        self.assertIn('#7', indok)
+        self.assertIn('adat/jeloltek.tsv', L.gepi_kategoria(fejlec(ir='[adat/jeloltek.tsv]'))[1])
+
+    def test_kezi_szuro_elsobbsege_es_regi_ertek(self):
+        b = lambda szam: ('fejlesztoi', 'gépi')
+        self.assertEqual(L.kategoria('DT2', {'DT2': 'tartalmi'}, b, '5')[0], 'tartalmi')
+        self.assertEqual(L.kategoria('DT3', {}, b, '5')[0], 'fejlesztoi')
+        self.assertEqual(L.kategoria('DT3', {}, b, '')[0], 'osztalyozatlan')
+        with tempfile.TemporaryDirectory() as t:
+            os.makedirs(os.path.join(t, 'eszkozok', 'lektor_felulet'))
+            with open(os.path.join(t, L.SZURO_UT), 'w', encoding='utf-8', newline='') as f:
+                f.write('azonosito\tcimke\tmegjegyzes\nDT1\tuzleti\tx\nDT2\ttechnikai\ty\nDT3\ttartalmi\tz\n')
+            self.assertEqual(L.szuro_beolvas(t), {'DT1': 'uzleti', 'DT2': 'fejlesztoi', 'DT3': 'tartalmi'})
+
+    def test_lefele_vedelem(self):
+        b = lambda szam: ('fejlesztoi', 'gépi')
+        kat, indok = L.kategoria('DT2', {'DT2': 'tartalmi'}, b, '5')
+        self.assertEqual(kat, 'tartalmi')
+        self.assertIn('a kézi marad', indok)
+        self.assertNotIn('a kézi marad', L.kategoria('DT2', {'DT2': 'fejlesztoi'}, b, '5')[1])
+        self.assertNotIn('a kézi marad', L.kategoria('DT2', {'DT2': 'tartalmi'}, lambda z: ('tartalmi', 'g'), '5')[1])
+
+    def test_motivum_hatar_tartalmi_jel(self):
+        self.assertEqual(L.gepi_kategoria(fejlec(munka='adat', ir='[eszkozok/x.py, \"naplok/HATAR_*.md\"]'))[0], 'tartalmi')
+        self.assertIn('felülbírálható', L.gepi_kategoria(fejlec(ir='[eszkozok/x.py]'))[1])
+
+    def test_dontes_kartya_indokkal_es_briefbol(self):
+        with tempfile.TemporaryDirectory() as t:
+            with open(os.path.join(t, 'F5_SZOTAR_BRIEF.md'), 'w', encoding='utf-8', newline='') as f:
+                f.write('---\nfeladat: 5\nkod: SZOTAR\nmunka: adat\nir: [adat/forditasok.tsv]\n---\n')
+            k = L.dontesek_kartyak(DONTESEK, 't', {'DT4': 'kiadoi'}, L.brief_besorolo(t))
+        self.assertEqual((k[0]['cimke'], k[1]['cimke']), ('tartalmi', 'kiadoi'))
+        self.assertIn('adat/forditasok.tsv', k[0]['cimke_indok'])
+        self.assertEqual(k[1]['cimke_indok'], 'kézi besorolás (dontes_szuro.tsv)')
 
 
 LEKTOR_MD = """# KIADAS X-001 — lektori kérdéslista

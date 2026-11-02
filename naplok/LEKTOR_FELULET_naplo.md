@@ -159,6 +159,79 @@
 - Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
 - Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
 
+## 7. Döntés-kártyák három kategóriája (DT-F161a, 2026-11-02, „mehet”)
+
+*Besorolás: mit változtat meg a döntés? négy kategória (tartalmi · kiadói · üzleti · fejlesztői), ütközésnél tartalmi > kiadói > üzleti > fejlesztői; a felhasználó szó szerint (2026-11-02, az orkesztrátoron át): „egy új kategória is lesz: üzleti / ahol ügyfélszolgálat / számlázás/ megrendelés stb”; az üzleti kártyák a felhasználóéi, a fejlesztőieket az orkesztrátor dönti; a gépi jel a forrás-brief `ir` és `munka` mezője (`lektor_kerdesek.gepi_kategoria`); a `dontes_szuro.tsv` kézi címkéje elsőbbséget élvez. A „kézi” oszlop a mai (régi) címke. Mért: 28 mai kártya (a korábbi 31-ből az F131, F148, F152 lezárult).*
+
+| kártya | kézi (mai) | gépi | eltér | indok |
+|---|---|---|---|---|
+| DT90 | fejlesztoi | fejlesztoi |  | gépi: a #52 brief csak ír: CLAUDE.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| DT106 | tartalmi | osztalyozatlan | igen | nincs F5_*_BRIEF.md, és kézi besorolás sincs |
+| DT126 | fejlesztoi | fejlesztoi |  | gépi: a #60 brief csak ír: eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT133 | tartalmi | fejlesztoi | igen | gépi: a #92 brief csak ír: eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT134 | tartalmi | fejlesztoi | igen | gépi: a #92 brief csak ír: eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py; munka: adat (eszköz, séma, munkafolyamat) |
+| DT169 | tartalmi | kiadoi | igen | gépi: a #99 brief ír: eszkozok/olvaso_szerver/, eszkozok/olvaso_szerver/bdb_vers_jelentes.py (megjelenés, licenc, felület) |
+| DT190 | fejlesztoi | osztalyozatlan | igen | nincs F9_*_BRIEF.md, és kézi besorolás sincs |
+| DT235 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT236 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT237 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT338 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT388 | fejlesztoi | tartalmi | igen | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| DT359 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
+| DT365 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
+| F111 | fejlesztoi | fejlesztoi |  | gépi: a #111 brief csak ír: .claude/commands/elteres.md, .claude/commands/kovetkezo.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F121 | tartalmi | tartalmi |  | gépi: a #121 brief ír: adat/forditasok.tsv, adat/terminologia.tsv (a lexikon állítását érinti) |
+| F123 | tartalmi | tartalmi |  | gépi: a #123 brief ír: motivumok/ALVIL-001.md, motivumok/ANTROP-001.md; munka: ertelmezo (a lexikon állítását érinti) |
+| F125 | tartalmi | fejlesztoi | igen | gépi: a #125 brief csak ír: MUNKAMENET.md, eszkozok/proza_lefedettseg.py; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F134 | fejlesztoi | kiadoi | igen | gépi: a #134 brief ír: eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/ (megjelenés, licenc, felület) |
+| F140 | tartalmi | tartalmi |  | gépi: a #140 brief ír: adat/glosszak_heber_hu.tsv (a lexikon állítását érinti) |
+| F146 | fejlesztoi | tartalmi | igen | gépi: a #146 brief ír: lexikon/ISTENTISZT-001_TUDOMANYOS.md (a lexikon állítását érinti) |
+| F151 | tartalmi | fejlesztoi | igen | gépi: a #151 brief csak ír: eszkozok/motivum_hatar.py, eszkozok/teszt_motivum_hatar.py; munka: adat (eszköz, séma, munkafolyamat) |
+| F153 | fejlesztoi | tartalmi | igen | gépi: a #153 brief ír: adat/forditasok.tsv (a lexikon állítását érinti) |
+| F157 | fejlesztoi | kiadoi | igen | gépi: a #157 brief ír: eszkozok/lektor_felulet/ (megjelenés, licenc, felület) |
+| F22 | fejlesztoi | fejlesztoi |  | gépi: a #22 brief csak ír: eszkozok/karoli_strong/tokenszint_vershatar.py, eszkozok/karoli_strong/nem_tr_lista.py (eszköz, séma, munkafolyamat) |
+| F38 | tartalmi | tartalmi |  | gépi: a #38 brief ír: adat/forditasok.tsv (a lexikon állítását érinti) |
+| F52 | fejlesztoi | fejlesztoi |  | gépi: a #52 brief csak ír: CLAUDE.md; munka: folyamat (eszköz, séma, munkafolyamat) |
+| F86 | uzleti | uzleti |  | gépi: a #86 brief ír: eszkozok/feed_epit.py (ügyfél, számlázás, megrendelés, árazás) |
+
+Eltér: 13 / 28.
+
+### 7.1 Végleges besorolás (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-02; DT-F161a)
+
+A 13 eltérésből a kézi marad: DT106, DT133, DT134, DT169, F125, F151 (tartalmi), DT190 (fejlesztői); a gépi érvényes: DT338, DT388, F146, F153 → tartalmi, F134, F157 → kiadói (a `dontes_szuro.tsv`-ben frissítve). Lefelé-védelem: a gépi jel nem sorol lejjebb kézzel tartalminak/kiadóinak/üzletinek jelölt kártyát (az indokban jelezve). Szűk bővítés: `naplok/HATAR_` az `ir`-ben tartalmi jel.
+
+| kártya | régi kézi | gépi | végleges | indok |
+|---|---|---|---|---|
+| DT90 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT106 | tartalmi | osztalyozatlan | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT126 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT133 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| DT134 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| DT169 | tartalmi | kiadoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (kiadoi) mondana, a kézi marad |
+| DT190 | fejlesztoi | osztalyozatlan | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| DT235 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT236 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT237 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT338 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT388 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| DT359 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+| DT365 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+| F111 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F121 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F123 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F125 | tartalmi | fejlesztoi | tartalmi | kézi besorolás (dontes_szuro.tsv); a gépi jel alacsonyabbat (fejlesztoi) mondana, a kézi marad |
+| F134 | fejlesztoi | kiadoi | kiadoi | kézi besorolás (dontes_szuro.tsv) |
+| F140 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F146 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F151 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F153 | fejlesztoi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F157 | fejlesztoi | kiadoi | kiadoi | kézi besorolás (dontes_szuro.tsv) |
+| F22 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F38 | tartalmi | tartalmi | tartalmi | kézi besorolás (dontes_szuro.tsv) |
+| F52 | fejlesztoi | fejlesztoi | fejlesztoi | kézi besorolás (dontes_szuro.tsv) |
+| F86 | uzleti | uzleti | uzleti | kézi besorolás (dontes_szuro.tsv) |
+
+Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
 ## ALVIL-001 — a határ- és a lektori kör kérdései a felületen (MUNKAMENET C-h, C-l; 2026-11-02)
 
 - Indítás: a felhasználó (DT-F151b) az orkesztrátornak, 2026-11-02: „inditsuk el”, az újraindításra: „Igen, indítsd”.
