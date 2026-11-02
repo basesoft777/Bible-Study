@@ -8,22 +8,93 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 | Motívum | BUKÁS | FIGYELMEZTETÉS | Kapunként (B/F) |
 |---|---|---|---|
-| ALVIL-001 | 73 | 17 | ANGOL 3/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/4, BDB_JEL 3/0, BELSO 10/0, FUNKCIO_URES 1/0, IDEZET 43/0, IDEZOJEL 4/0, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 5/0, MOTIVUM_ID 0/6, SZINT_ALATT 0/5 |
-| ANTROP-001 | 29 | 8 | ANGOL 1/0, ATIRAS 1/0, BELSO 10/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 4/0, IDEZOJEL 6/0, KH_MASOLT 0/2, KIVONAT_SZAM 0/1, KOLOFON 4/0, KONYV 2/0, SZINT_ALATT 0/4 |
-| HAMART-001 | 66 | 12 | ANGOL 9/0, ANGOL_SOR 0/1, ATIRAS 9/0, ATIRAS_VALT 0/3, BELSO 20/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 5/0, KH_MASOLT 0/2, KOLOFON 3/0, KONYV 12/0, PONT 2/3, SZINT_ALATT 0/2 |
-| HODIT-001 | 45 | 24 | ANGOL 8/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/3, BELSO 16/0, FUNKCIO_URES 1/0, IDEZET 7/0, IDEZOJEL 6/0, KH_MASOLT 0/1, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 3/0, MOTIVUM_ID 0/3, PONT 0/12, SZINT_ALATT 0/3 |
+| ALVIL-001 | 145 | 17 | ANGOL 3/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/4, BDB_JEL 3/0, BELSO 10/0, FUNKCIO_URES 1/0, IDEZET 43/0, IDEZOJEL 4/0, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 5/0, MOTIVUM_ID 0/6, PROZA_1A 72/0, SZINT_ALATT 0/5 |
+| ANTROP-001 | 37 | 8 | ANGOL 1/0, ATIRAS 1/0, BELSO 10/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 4/0, IDEZOJEL 6/0, KH_MASOLT 0/2, KIVONAT_SZAM 0/1, KOLOFON 4/0, KONYV 2/0, PROZA_1A 8/0, SZINT_ALATT 0/4 |
+| HAMART-001 | 118 | 12 | ANGOL 9/0, ANGOL_SOR 0/1, ATIRAS 9/0, ATIRAS_VALT 0/3, BELSO 20/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 5/0, KH_MASOLT 0/2, KOLOFON 3/0, KONYV 12/0, PONT 2/3, PROZA_1A 52/0, SZINT_ALATT 0/2 |
+| HODIT-001 | 78 | 24 | ANGOL 8/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/3, BELSO 16/0, FUNKCIO_URES 1/0, IDEZET 7/0, IDEZOJEL 6/0, KH_MASOLT 0/1, KIVONAT_SZAM 0/1, KOLOFON 3/0, KONYV 3/0, MOTIVUM_ID 0/3, PONT 0/12, PROZA_1A 33/0, SZINT_ALATT 0/3 |
 | ISTENTISZT-001 | 61 | 7 | ANGOL 9/0, ATIRAS 1/0, ATIRAS_VALT 0/1, BDB_JEL 4/0, BELSO 25/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 9/0, KONYV 6/0, MOTIVUM_ID 0/2, PONT 0/3, ZAROJEL 2/0 |
-| KIRALY-001 | 42 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS_VALT 0/4, BELSO 13/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 8/0, KH_MASOLT 0/1, KOLOFON 3/0, KONYV 1/0, PONT 5/9, SZINT_ALATT 0/3 |
-| MENNY-001 | 36 | 29 | ANGOL 6/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/9, BELSO 14/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 1/0, IDEZOJEL 6/0, KIVONAT_SZAM 0/3, KOLOFON 3/0, KONYV 2/0, MOTIVUM_ID 0/2, PONT 2/10, SZINT_ALATT 0/3 |
-| TEREMT-001 | 68 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/2, BELSO 14/0, FUNKCIO_URES 1/0, IDEZET 28/0, IDEZOJEL 7/0, KH_MASOLT 0/7, KIVONAT_SZAM 0/2, KOLOFON 3/0, KONYV 7/0, MOTIVUM_ID 0/1, PONT 0/3, SZINT_ALATT 0/3 |
-| TEREMT-002 | 31 | 28 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 3/0, ATIRAS_VALT 0/12, BDB_JEL 2/0, BELSO 9/0, HIANYJEL 0/2, IDEZOJEL 1/0, KIVONAT_SZAM 0/1, KOLOFON 5/0, MOTIVUM_ID 0/2, PONT 3/8, SZINT_ALATT 0/2, ZAROJEL 1/0 |
+| KIRALY-001 | 50 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS_VALT 0/4, BELSO 13/0, HIANYJEL 0/1, IDEZET 5/0, IDEZOJEL 8/0, KH_MASOLT 0/1, KOLOFON 3/0, KONYV 1/0, PONT 5/9, PROZA_1A 8/0, SZINT_ALATT 0/3 |
+| MENNY-001 | 45 | 29 | ANGOL 6/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/9, BELSO 14/0, FUNKCIO_URES 1/0, HIANYJEL 0/1, IDEZET 1/0, IDEZOJEL 6/0, KIVONAT_SZAM 0/3, KOLOFON 3/0, KONYV 2/0, MOTIVUM_ID 0/2, PONT 2/10, PROZA_1A 9/0, SZINT_ALATT 0/3 |
+| TEREMT-001 | 109 | 19 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 1/0, ATIRAS_VALT 0/2, BELSO 14/0, FUNKCIO_URES 1/0, IDEZET 28/0, IDEZOJEL 7/0, KH_MASOLT 0/7, KIVONAT_SZAM 0/2, KOLOFON 3/0, KONYV 7/0, MOTIVUM_ID 0/1, PONT 0/3, PROZA_1A 41/0, SZINT_ALATT 0/3 |
+| TEREMT-002 | 32 | 28 | ANGOL 7/0, ANGOL_SOR 0/1, ATIRAS 3/0, ATIRAS_VALT 0/12, BDB_JEL 2/0, BELSO 9/0, HIANYJEL 0/2, IDEZOJEL 1/0, KIVONAT_SZAM 0/1, KOLOFON 5/0, MOTIVUM_ID 0/2, PONT 3/8, PROZA_1A 1/0, SZINT_ALATT 0/2, ZAROJEL 1/0 |
 
-## ALVIL-001 — 73 BUKÁS, 17 FIGYELMEZTETÉS
+## ALVIL-001 — 145 BUKÁS, 17 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 37:35 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 42:38 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 44:29 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 44:31 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 4Móz 16:30 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 4Móz 16:33 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 32:22 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Sám 2:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 22:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Kir 2:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Kir 2:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 7:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 11:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 14:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 17:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 17:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 21:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 24:19 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 26:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 6:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 9:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsolt 16:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 18:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 30:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 31:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 49:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 49:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 55:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 86:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 88:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 89:49 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 116:3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 139:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 141:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 1:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 5:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 7:27 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 9:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 15:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 15:24 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 23:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 27:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 30:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Préd 9:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Én 8:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 5:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 7:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Ézs 14:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 14:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 14:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 28:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 28:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 38:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 38:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 57:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Ez 31:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 31:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 31:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 32:21 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 32:27 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Hós 13:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ámós 9:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jón 2:3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Hab 2:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Mt 11:23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Luk 10:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Luk 16:23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | ApCsel 2:27 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | ApCsel 2:31 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 1:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 6:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 20:13-14 |
 | 9 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | 55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20 |
 | 9 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | lyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Kri |
 | 98 | FUNKCIO_URES | BUKÁS | 72 | üres „Funkció” cella | [1Móz 37:35] |
@@ -115,12 +186,19 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 1381 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 53 szó, az arany lapon 869 (< 25%) | 7. Módszertan és nyitott kérdések |
 | 1401 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „Seol” — a lapon máshol: seól | - Cím: Hádész (Seol) — a halottak birodalma |
 
-## ANTROP-001 — 29 BUKÁS, 8 FIGYELMEZTETÉS
+## ANTROP-001 — 37 BUKÁS, 8 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 2:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Luk 1:46 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Luk 1:47 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Kor 2:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Kor 2:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Kor 15:45 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Thessz 5:23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsid 4:12 |
 | 7 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | vum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") és ψυχή (*pszükhé*, "lélek") öt újszövetségi hely |
 | 70 | FUNKCIO_URES | BUKÁS | 8 | üres „Funkció” cella | [1Móz 2:7] |
 | 96 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | az ember נֶפֶשׁ חַיָּה ("élő lélek") lesz Isten leheletétől; Pál ezt állítja szembe |
@@ -159,12 +237,63 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 397 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 38 szó, az arany lapon 671 (< 25%) | 6/b. Alkalmazás és tanítói egyezés |
 | 407 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 114 szó, az arany lapon 869 (< 25%) | 7. Módszertan és nyitott kérdések |
 
-## HAMART-001 — 66 BUKÁS, 12 FIGYELMEZTETÉS
+## HAMART-001 — 118 BUKÁS, 12 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 3:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 3:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 3:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 3:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 3:19 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 3:23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 4:2-3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 4:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 4:10-11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 4:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 4:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 5:29 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 6:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 8:21 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 9:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 9:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 9:25 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 12:3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 5Móz 27:15-26 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 5Móz 28:16-19 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsolt 14:1 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsolt 53:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 74:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Ézs 24:5-6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Ézs 60:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jer 6:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jer 17:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jer 51:46 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 7:23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Ez 8:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 28:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Hós 4:1-3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jón 3:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Mik 6:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Hab 1:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Hab 2:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Hab 2:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Sof 1:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Mt 15:19 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Mk 7:21-23 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Róm 8:20-22 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Gal 3:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Gal 3:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsid 6:7-8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Pét 3:6-7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 11:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 19:2 |
 | 70 | FUNKCIO_URES | BUKÁS | 52 | üres „Funkció” cella | [1Móz 3:14] |
 | 78 | KONYV | BUKÁS | 7 | könyvrövidítés nem a normalizáló tábla alakjával: „Gen” | al pass. ptc. — átkozott — l. Gen 3:14, 17; 4:11; 9:25 \| — *(ÓSZ)* \| |
 | 199 | ATIRAS | BUKÁS | 1 | egy szó 3 kiejtéssel: kotz (sor 73), kóc (sor 199), qots (sor 596) | ק֥וֹץ (Kotz) · קוֹץ וְדַרְדַּר (kóc vedardar) · קוֹץ (qots) |
@@ -244,12 +373,44 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 1163 | PONT | FIGYELMEZTETÉS | 1 | „4. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | 2. **Az érintett bővített tanulmányok 4. pontja** — `1Moz_3v7-24_bovitett.md`: a 🔗-blokkok a por/ |
 | 1176 | PONT | FIGYELMEZTETÉS | 1 | „4. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | a hat kötelező szakasz jelen van és kitöltött; a 4. pont explicit, indokolt kihagyással zárva, nem placeho |
 
-## HODIT-001 — 45 BUKÁS, 24 FIGYELMEZTETÉS
+## HODIT-001 — 78 BUKÁS, 24 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 14:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 15:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 4Móz 13:34 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 2:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 5Móz 2:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 3:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 3:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Józs 12:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Józs 13:12 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Józs 15:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Józs 17:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Józs 18:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Sám 5:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 5:22 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 21:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 21:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 21:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 21:22 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 2Sám 23:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Krón 11:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Krón 14:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Krón 20:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Krón 20:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Krón 20:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 26:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 88:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 2:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 9:18 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 21:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 14:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 17:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 26:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 26:19 |
 | 70 | FUNKCIO_URES | BUKÁS | 33 | üres „Funkció” cella | [1Móz 14:5] |
 | 151 | ATIRAS | BUKÁS | 1 | egy szó 2 kiejtéssel: refáim (sor 7), refáím (sor 151) | רְפָאִים (*refáim*) · רְפָאִים (refáím) |
 | 156 | IDEZOJEL | BUKÁS | 9 | egyenes " a magyar szövegben (a „…” helyett) | ים (nefilím ⇒ anákím) — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a |
@@ -322,7 +483,6 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 
 ## ISTENTISZT-001 — 61 BUKÁS, 7 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
@@ -332,75 +492,82 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 194 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | 2Móz 34:5: „az Úr nevében kiáltott” |
 | 200 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | 1Kir 18:24: „ti a ti isteneitek nevét hívjátok, és én segítségül hívom az Úr nevét” |
 | 206 | BELSO | BUKÁS | 2 | döntés-azonosító: DT476 | átok segítségül a ti istenetek nevét". Kontraszt (DT476 K5): a besém után nem JHVH áll, hanem elohéchem ( |
-| 223 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | Zsolt 116:4: „segítségül hívom az Úr nevét” |
-| 238 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | Jóel 2:32: „mindaz, aki segítségül hívja az Úr nevét, megmenekül” |
-| 301 | BELSO | BUKÁS | 7 | döntés-azonosító: DT476 | 0:12 helyre \| **elutasítva** — név nélküli forma: DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
-| 301 | BELSO | BUKÁS | 12 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) \| |
-| 328 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | \| Károli-kereszthivatkozás a Zef 3:9 helyről \| **elutasítva** — a |
-| 335 | IDEZOJEL | BUKÁS | 2 | egyenes " a magyar szövegben (a „…” helyett) | — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM relevá |
-| 354 | BELSO | BUKÁS | 22 | döntés-azonosító: DT283 | **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az I |
-| 354 | BELSO | BUKÁS | 21 | F-tétel: F110 | és: G1941 \| **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „ |
-| 355 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: was called | 0 szűrő (DT283), K1_passziv: passzív/megnevezett (was called); negatív kritérium: passzív/megnevezés jellegű v |
-| 356 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: having been | 0 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés je |
-| 375 | BELSO | BUKÁS | 9 | döntés-azonosító: DT478 | -keresés: H7121 + H8034 \| **elutasítva** — egyéb: DT478 (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”; |
-| 377 | BELSO | BUKÁS | 1 | N-tétel: N59 | -keresés: H7121 + H8034 \| **elutasítva** — egyéb: N59, kézi olvasás: Károli: „Sámuel az ő nevét segítsé |
-| 377 | BELSO | BUKÁS | 1 | munkafolyamat-szereplő: orkesztrátor | jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64 |
-| 397 | BELSO | BUKÁS | 9 | F-tétel: F3.1 | pú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés \| **elutasítva** — egyéb: DT478 (a felha |
-| 407 | ATIRAS | BUKÁS | 1 | egy szó 2 kiejtéssel: jahve (sor 81), jhvh (sor 407) | יְהוָה (Jahve) · יְהוָה (JHVH) |
-| 641 | BELSO | BUKÁS | 3 | belső fájl: .tsv | rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H712 |
-| 653 | BDB_JEL | BUKÁS | 1 | torzult jel (® / °) | ívni; arab felolvasni, recitálni (a '†or°¹n), a †or°a¹n; arámi קְלרא, hívni stb., |
-| 659 | BDB_JEL | BUKÁS | 5 | nyers ^ elválasztó | és máshol, וָאֶקְרָאֶר‎ 1Sám 28:15 (Ges^§ 48d Nes^Marg. 15) |
-| 722 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | -   — megidéztetni (vö. Qal 5 |
-| 736 | BDB_JEL | BUKÁS | 2 | rafe (ֿ) pontjel a héber szóban | ׳</abbr>‎ **12:8** és máshol, ritkán שֶׁםֿ‎ 1Sám 8:2 és máshol; suffixummal שְׁמִי‎ |
-| 736 | BDB_JEL | BUKÁS | 2 | dupla vessző | r 124; etióp arab , , , ; arámi שְׁמָא שֵׁם,, továbbá שֻׁם שׁוּם, (Kö^ii. 1. 512), , , |
-| 759 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | -   — = emlékjel, emlékmű Ézs 55:13 (\|\| אוֺת *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellen |
-| 807 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: LXX_OS | **H7121** · 680 vers az LXX_OS-ben (ebből 680 vers görög tartalmi szóval); leggy |
-| 1006 | IDEZOJEL | BUKÁS | 5 | egyenes " a magyar szövegben (a „…” helyett) | szi theoi) („akit Briareósznak neveznek az istenek"), Iliász 1.403; ὄνομα καλεῖν τινα (onoma kalein tina), „né |
-| 1006 | KONYV | BUKÁS | 5 | könyvrövidítés nem a normalizáló tábla alakjával: „Lk” | trosz), „apja nevén nevezni", Lk 1:59 … Szenvedő alakban: ὁ καλούμε |
-| 1014 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „1Jn” | Lk 1:35; Róm 9:26; Jak 2:23; 1Jn 3:1. (Abbott-Smith) |
-| 1176 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:21 |
-| 1207 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | es 29) + TAGNT G1941 + Thayer G1941 5. jelentés \| DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
-| 1207 | BELSO | BUKÁS | 1 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`)  \\| korábban (beépítve, 2 |
-| 1207 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | rtozik (   )  \\| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag minden |
-| 1208 | BELSO | BUKÁS | 60 | belső fájl: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ítva \| TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \\| ‹M1› \| ellenőrizve, tartal |
-| 1213 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | 13:3 \| elutasítva \| Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_U |
-| 1365 | IDEZOJEL | BUKÁS | 4 | egyenes " a magyar szövegben (a „…” helyett) | formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyáj |
-| 1369 | BELSO | BUKÁS | 3 | döntés-azonosító: DT479 | zepes bizonyosság. Áthorgonyozva a Róm 10:14-ről (DT479, a felhasználó, 2026-11-01: „Igen, (b)”)  \| |
-| 1393 | BELSO | BUKÁS | 3 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
-| 1415 | IDEZOJEL | BUKÁS | 16 | egyenes " a magyar szövegben (a „…” helyett) | - **Peshat** (פְּשָׁט, pesát: "egyszerű") — mit mond a szöveg a |
-| 1577 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: study | A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakine |
-| 1586 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Ám” | 15:17-et — amely az Ám 9:12-t idézi — és a Jak 2:7-et. Az |
-| 1592 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye. |
-| 1608 | BELSO | BUKÁS | 2 | belső fájl: .tsv | jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktí |
-| 1624 | ANGOL | BUKÁS | 15 | angol maradék / zsargon: gap | enneth Hagint is beleértve, nincs igazolt forrás (gap))*: |
-| 1624 | BELSO | BUKÁS | 1 | belső fájl: fájlban | t/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ rés |
-| 1627 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | tosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakíta |
-| 1628 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | etére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez |
-| 1648 | BELSO | BUKÁS | 1 | belső fájl: 001_tanitoi_kereses.md | nkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`). |
-| 1655 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | eg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 n |
-| 1655 | BELSO | BUKÁS | 1 | belső fájl: naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md | egyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`. |
-| 1655 | BELSO | BUKÁS | 1 | proveniencia-érték (manual): manual | ítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT |
-| 1666 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hív |
-| 1668 | BELSO | BUKÁS | 1 | döntés-azonosító: DT478 | apján találta meg, nem önálló kereséssel. A pár a DT478 óta nem a motívum helye (a *besém* után névmási r |
-| 1674 | IDEZOJEL | BUKÁS | 17 | egyenes " a magyar szövegben (a „…” helyett) | #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C) |
-| 1686 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: study | ontrasztként, a negatív kritérium kivétele) \| ✅ a study fő tárgya \| |
-| 1688 | BELSO | BUKÁS | 2 | döntés-azonosító: DT476 | va, "hamis pozitív"; a *besém* után nem JHVH áll (DT476 K4) \| |
-| 1711 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scan | A H7121+H8034 kombinált teljes-előfordulás scan |
-| 1712 | BELSO | BUKÁS | 1 | belső fájl: 001/Segitsegul_hivni_az_Urat_tematikus.md | (`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`, |
+| 224 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | Zsolt 116:4: „segítségül hívom az Úr nevét” |
+| 242 | IDEZET | BUKÁS | 1 | az idézet nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés | Jóel 2:32: „mindaz, aki segítségül hívja az Úr nevét, megmenekül” |
+| 305 | BELSO | BUKÁS | 7 | döntés-azonosító: DT476 | 0:12 helyre \| **elutasítva** — név nélküli forma: DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
+| 305 | BELSO | BUKÁS | 12 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`) \| |
+| 332 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | \| Károli-kereszthivatkozás a Zef 3:9 helyről \| **elutasítva** — a |
+| 339 | IDEZOJEL | BUKÁS | 2 | egyenes " a magyar szövegben (a „…” helyett) | — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM relevá |
+| 358 | BELSO | BUKÁS | 22 | döntés-azonosító: DT283 | **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az I |
+| 358 | BELSO | BUKÁS | 21 | F-tétel: F110 | és: G1941 \| **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „ |
+| 359 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: was called | 0 szűrő (DT283), K1_passziv: passzív/megnevezett (was called); negatív kritérium: passzív/megnevezés jellegű v |
+| 360 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: having been | 0 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés je |
+| 379 | BELSO | BUKÁS | 9 | döntés-azonosító: DT478 | -keresés: H7121 + H8034 \| **elutasítva** — egyéb: DT478 (a felhasználó, 2026-11-01: „Csak ahol JHVH áll”; |
+| 381 | BELSO | BUKÁS | 1 | N-tétel: N59 | -keresés: H7121 + H8034 \| **elutasítva** — egyéb: N59, kézi olvasás: Károli: „Sámuel az ő nevét segítsé |
+| 381 | BELSO | BUKÁS | 1 | munkafolyamat-szereplő: orkesztrátor | jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64 |
+| 401 | BELSO | BUKÁS | 9 | F-tétel: F3.1 | pú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés \| **elutasítva** — egyéb: DT478 (a felha |
+| 411 | ATIRAS | BUKÁS | 1 | egy szó 2 kiejtéssel: jahve (sor 81), jhvh (sor 411) | יְהוָה (Jahve) · יְהוָה (JHVH) |
+| 645 | BELSO | BUKÁS | 3 | belső fájl: .tsv | rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H712 |
+| 657 | BDB_JEL | BUKÁS | 1 | torzult jel (® / °) | ívni; arab felolvasni, recitálni (a '†or°¹n), a †or°a¹n; arámi קְלרא, hívni stb., |
+| 663 | BDB_JEL | BUKÁS | 5 | nyers ^ elválasztó | és máshol, וָאֶקְרָאֶר‎ 1Sám 28:15 (Ges^§ 48d Nes^Marg. 15) |
+| 726 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | -   — megidéztetni (vö. Qal 5 |
+| 740 | BDB_JEL | BUKÁS | 2 | rafe (ֿ) pontjel a héber szóban | ׳</abbr>‎ **12:8** és máshol, ritkán שֶׁםֿ‎ 1Sám 8:2 és máshol; suffixummal שְׁמִי‎ |
+| 740 | BDB_JEL | BUKÁS | 2 | dupla vessző | r 124; etióp arab , , , ; arámi שְׁמָא שֵׁם,, továbbá שֻׁם שׁוּם, (Kö^ii. 1. 512), , , |
+| 763 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | -   — = emlékjel, emlékmű Ézs 55:13 (\|\| אוֺת *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellen |
+| 811 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: LXX_OS | **H7121** · 680 vers az LXX_OS-ben (ebből 680 vers görög tartalmi szóval); leggy |
+| 1010 | IDEZOJEL | BUKÁS | 5 | egyenes " a magyar szövegben (a „…” helyett) | szi theoi) („akit Briareósznak neveznek az istenek"), Iliász 1.403; ὄνομα καλεῖν τινα (onoma kalein tina), „né |
+| 1010 | KONYV | BUKÁS | 5 | könyvrövidítés nem a normalizáló tábla alakjával: „Lk” | trosz), „apja nevén nevezni", Lk 1:59 … Szenvedő alakban: ὁ καλούμε |
+| 1018 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „1Jn” | Lk 1:35; Róm 9:26; Jak 2:23; 1Jn 3:1. (Abbott-Smith) |
+| 1180 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Csel” | - Károli-KH: Csel 2:21 |
+| 1211 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | es 29) + TAGNT G1941 + Thayer G1941 5. jelentés \| DT476 K2 (a felhasználó, 2026-11-01: „a név nélküli gör |
+| 1211 | BELSO | BUKÁS | 1 | belső fájl: .tsv | gítségül hívás a tágabb körbe tartozik (`motivumok.tsv` `folerendelt_fogalom`)  \\| korábban (beépítve, 2 |
+| 1211 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | rtozik (   )  \\| korábban (beépítve, 2026.09.22): "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag minden |
+| 1212 | BELSO | BUKÁS | 60 | belső fájl: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ítva \| TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \\| ‹M1› \| ellenőrizve, tartal |
+| 1217 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Zef” | 13:3 \| elutasítva \| Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_U |
+| 1369 | IDEZOJEL | BUKÁS | 4 | egyenes " a magyar szövegben (a „…” helyett) | formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyáj |
+| 1373 | BELSO | BUKÁS | 3 | döntés-azonosító: DT479 | zepes bizonyosság. Áthorgonyozva a Róm 10:14-ről (DT479, a felhasználó, 2026-11-01: „Igen, (b)”)  \| |
+| 1397 | BELSO | BUKÁS | 3 | döntés-azonosító: DT280 | önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). \| |
+| 1419 | IDEZOJEL | BUKÁS | 16 | egyenes " a magyar szövegben (a „…” helyett) | - **Peshat** (פְּשָׁט, pesát: "egyszerű") — mit mond a szöveg a |
+| 1581 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: study | A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakine |
+| 1590 | KONYV | BUKÁS | 2 | könyvrövidítés nem a normalizáló tábla alakjával: „Ám” | 15:17-et — amely az Ám 9:12-t idézi — és a Jak 2:7-et. Az |
+| 1596 | BELSO | BUKÁS | 1 | döntés-azonosító: DT476 | forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye. |
+| 1612 | BELSO | BUKÁS | 2 | belső fájl: .tsv | jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktí |
+| 1628 | ANGOL | BUKÁS | 15 | angol maradék / zsargon: gap | enneth Hagint is beleértve, nincs igazolt forrás (gap))*: |
+| 1628 | BELSO | BUKÁS | 1 | belső fájl: fájlban | t/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ rés |
+| 1631 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | tosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakíta |
+| 1632 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | etére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez |
+| 1652 | BELSO | BUKÁS | 1 | belső fájl: 001_tanitoi_kereses.md | nkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`). |
+| 1659 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | eg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 n |
+| 1659 | BELSO | BUKÁS | 1 | belső fájl: naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md | egyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`. |
+| 1659 | BELSO | BUKÁS | 1 | proveniencia-érték (manual): manual | ítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT |
+| 1670 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hív |
+| 1672 | BELSO | BUKÁS | 1 | döntés-azonosító: DT478 | apján találta meg, nem önálló kereséssel. A pár a DT478 óta nem a motívum helye (a *besém* után névmási r |
+| 1678 | IDEZOJEL | BUKÁS | 17 | egyenes " a magyar szövegben (a „…” helyett) | #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C) |
+| 1690 | ANGOL | BUKÁS | 4 | angol maradék / zsargon: study | ontrasztként, a negatív kritérium kivétele) \| ✅ a study fő tárgya \| |
+| 1692 | BELSO | BUKÁS | 2 | döntés-azonosító: DT476 | va, "hamis pozitív"; a *besém* után nem JHVH áll (DT476 K4) \| |
+| 1715 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scan | A H7121+H8034 kombinált teljes-előfordulás scan |
+| 1716 | BELSO | BUKÁS | 1 | belső fájl: 001/Segitsegul_hivni_az_Urat_tematikus.md | (`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`, |
 | 100 | HIANYJEL | FIGYELMEZTETÉS | 11 | belső hiányjelzés az olvasói szövegben: *(nincs hozzárendelés)* | ségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ \| 🌱 alap-előfordulás \| Dras |
-| 1117 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „epikaleszetai” — a lapon máshol: epikaleszétai | \| 2Kir 5:11 \| 2Kir 5:11 \| וְקָרָא֙ (vekárá) \| ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) \| egyező \|\| |
-| 1387 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | utat ez a rész?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 dö |
-| 1387 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: HAMART-001 | z?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 döntésre vár. ** |
-| 1615 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a |
-| 1686 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | ** \| ember \| Isten neve \| 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1K |
-| 1687 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | neve \| 2Móz 33:19, 34:5 \| "be nem sorolható" — l. 1. pont \| |
+| 1121 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „epikaleszetai” — a lapon máshol: epikaleszétai | \| 2Kir 5:11 \| 2Kir 5:11 \| וְקָרָא֙ (vekárá) \| ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) \| egyező \|\| |
+| 1391 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: ALVIL-001 | utat ez a rész?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 dö |
+| 1391 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: HAMART-001 | z?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 döntésre vár. ** |
+| 1619 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a |
+| 1690 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | ** \| ember \| Isten neve \| 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1K |
+| 1691 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | neve \| 2Móz 33:19, 34:5 \| "be nem sorolható" — l. 1. pont \| |
 
-## KIRALY-001 — 42 BUKÁS, 19 FIGYELMEZTETÉS
+## KIRALY-001 — 50 BUKÁS, 19 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Móz 19:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsolt 76:3 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsolt 110:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zak 6:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsid 5:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsid 5:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsid 6:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Zsid 7:1-28 |
 | 7 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | azonosságot követi, amelyet a BDB H3548 (*kohén*) "pap-király" jelentés-kategóriája köt össze: Melkizedek (1Mó |
 | 72 | KONYV | BUKÁS | 1 | könyvrövidítés nem a normalizáló tábla alakjával: „Gen” | explicit Zsolt 76:3-at idézi Gen 14:18 mellett \| — *(ÓSZ)* \| magas · |
 | 74 | IDEZOJEL | BUKÁS | 7 | egyenes " a magyar szövegben (a „…” helyett) | ap — כֹהֵן֙ (kho.Hen); כִּסְא֔ (kis.') \| explicit "pap a trónon" kép, próféciai megerősítés \| Remez \| H3548+H3 |
@@ -463,12 +630,20 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 522 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | elező szakasz jelen van, egyik sem placeholder; a 3. pont (korábban hiányzott) most explicit Peshat/Remez/D |
 | 523 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | z a `Javasolt_sablon_kiegeszites_BDB_arnyalat.md` 3. pontja szerint "nem determinisztikus kiegészítés"-nek mi |
 
-## MENNY-001 — 36 BUKÁS, 29 FIGYELMEZTETÉS
+## MENNY-001 — 45 BUKÁS, 29 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 6:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 6:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 4Móz 13:34 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jób 1:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 2:1 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 38:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Pét 2:4-5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Júd 1:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Júd 1:14-15 |
 | 7 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | komplexum: a בְּנֵי הָאֱלֹהִים (*bené ha'Elohim*, "Isten fiai") névelővel négy helyen (1Móz 6:2, 6:4; Jób 1:6, |
 | 70 | FUNKCIO_URES | BUKÁS | 9 | üres „Funkció” cella | [1Móz 6:2] |
 | 98 | IDEZOJEL | BUKÁS | 4 | egyenes " a magyar szövegben (a „…” helyett) | בְּנֵי הָאֱלֹהִים (bené háelóhím) — "Isten fiai" látják és elveszik az emberek lányait |
@@ -535,12 +710,52 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 364 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „nefilim” — a lapon máshol: nefilím | ✅ **LEZÁRVA 2026.08.21.** A `PaRDeS_motivumok.md` naplóban az "Isten fiai — angyali/Séthita vita" motívum (a "gibborim/nefilim — a hibrid ut |
 | 368 | PONT | FIGYELMEZTETÉS | 1 | „1. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | nőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási j |
 
-## TEREMT-001 — 68 BUKÁS, 19 FIGYELMEZTETÉS
+## TEREMT-001 — 109 BUKÁS, 19 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 1:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 7:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 1Móz 8:2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 1Móz 49:25 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Móz 15:5 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | 2Móz 15:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 8:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | 5Móz 33:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 28:14 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 38:16 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jób 38:30 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 33:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 36:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 42:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 71:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 77:17 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 78:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 104:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 106:9 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 107:26 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 135:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Zsolt 148:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 3:20 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 8:24 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 8:27 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Péld 8:28 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 51:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ézs 63:13 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 26:19 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 31:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ez 31:15 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Ámós 7:4 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jón 2:6 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Hab 3:10 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Luk 8:31 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Róm 10:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza kerek, Funkció hiányzik | Jel 9:1-2 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jel 9:11 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jel 11:7 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jel 17:8 |
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció hiányzik | Jel 20:1-3 |
 | 7 | IDEZOJEL | BUKÁS | 1 | egyenes " a magyar szövegben (a „…” helyett) | A motívum lexikai azonosságú: a תְּהוֹם (*tehóm*, "mélység") szó a Genezisben négyszer jelöli ugyanazt az őste |
 | 70 | FUNKCIO_URES | BUKÁS | 41 | üres „Funkció” cella | [1Móz 1:2] |
 | 162 | IDEZOJEL | BUKÁS | 34 | egyenes " a magyar szövegben (a „…” helyett) | mtés előtti, differenciálatlan, formátlan vizek — "sötétség vala a mélység színén" |
@@ -629,68 +844,68 @@ Egy tétel = egy hiba egy szakaszban; a `db` az ismétlődések száma (pl. ugya
 | 714 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | es repón (2026.09.10): a study kizárólag a saját (TEREMT-001) motívumára vonatkozó leleteket tartalmazza (a Ta |
 | 715 | PONT | FIGYELMEZTETÉS | 1 | „5. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel. |
 
-## TEREMT-002 — 31 BUKÁS, 28 FIGYELMEZTETÉS
+## TEREMT-002 — 32 BUKÁS, 28 FIGYELMEZTETÉS
 
-*PROZA_1A: a proza_1a.py még nincs a main-en (PR #593) — nem mérve*
 
 | Sor | Ellenőrzés | Súlyosság | db | Mi a hiba | Idézet |
 |---|---|---|---|---|---|
+| 0 | PROZA_1A | BUKÁS | 1 | 1/a: próza töredék, Funkció van | Jer 4:23 |
 | 11 | PONT | BUKÁS | 1 | „3. pont, Remez”: a lap 3. szakasza „LXX-fordítói döntések” | llett áll, kapcsolt helyként, de nem előfordulás (3. pont, Remez). |
 | 15 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: LXX_OS | τίον (szpartion) és a γεωμετρίας (geómetriasz) az LXX_OS-ben Strong-szám nélkül áll, így újszövetségi előf |
 | 15 | PONT | BUKÁS | 1 | „2. pont, Septuaginta”: a lap 2. szakasza „Szótári háttér” | rtelmezés szerint nem a föld állapotáról szólnak (2. pont, „Septuaginta”). |
 | 104 | ATIRAS | BUKÁS | 1 | egy szó 2 kiejtéssel: tohu (sor 11), tóhú (sor 104) | תֹהוּ (*tohu*) · תֹ֙הוּ֙ (tóhú) |
 | 105 | ATIRAS | BUKÁS | 1 | egy szó 2 kiejtéssel: bohu (sor 11), bóhú (sor 105) | בֹהוּ (*bohu*) · בֹֽהוּ (bóhú) |
-| 124 | ATIRAS | BUKÁS | 1 | egy szó 3 kiejtéssel: vábóhú (sor 104), vávóhú (sor 124), va-vohu (sor 227) | וָבֹ֔הוּ (vábóhú) · תֹהוּ וָבֹהוּ (tóhú vávóhú) · תֹהוּ וָבֹהוּ (tohu va-vohu) |
+| 124 | ATIRAS | BUKÁS | 1 | egy szó 3 kiejtéssel: vábóhú (sor 104), vávóhú (sor 124), va-vohu (sor 230) | וָבֹ֔הוּ (vábóhú) · תֹהוּ וָבֹהוּ (tóhú vávóhú) · תֹהוּ וָבֹהוּ (tohu va-vohu) |
 | 124 | IDEZOJEL | BUKÁS | 3 | egyenes " a magyar szövegben (a „…” helyett) | "A föld pedig kietlen és puszta vala" — a תֹהוּ וָבֹהוּ (tóh |
-| 200 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | 11 helyről \| **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
-| 227 | BELSO | BUKÁS | 1 | belső fájl: .tsv | **Negatív kritérium** (`motivumok.tsv`): az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) s |
-| 327 | BELSO | BUKÁS | 2 | belső fájl: .tsv | rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H092 |
-| 339 | BDB_JEL | BUKÁS | 2 | nyers ^ elválasztó | év [hímnemű]: üresség (az alakról l. Ges^§ 84a, 1 b Sta^§ 95, 198 a, a használatr |
-| 339 | BDB_JEL | BUKÁS | 2 | rafe (ֿ) pontjel a héber szóban | </abbr> ítélete alatt álló földről; קַותֿֿהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a puszt |
-| 358 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | mben arról, ami üres, valótlan, mint a bálványok 1Sám 12:21 (gyűjtőnévként |
-| 404 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: LXX_OS | **H0922** · 3 vers az LXX_OS-ben (ebből 3 vers görög tartalmi szóval); leggyak |
-| 529 | BELSO | BUKÁS | 1 | munkalépés-jel: P4 | át nemcsak a három vers számlálásából következik (P4), hanem a szócikk saját megállapítása is; a *bohu |
-| 533 | BELSO | BUKÁS | 1 | munkalépés-jel: P2 | valótlan, a bálványok) ott választja szét, ahol a P2 mező-hipotézise a két ágat: a semmiség-ág versei |
-| 653 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | Károli-KH (forrás-vers: Ézs 34:11) \| adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
-| 708 | BELSO | BUKÁS | 1 | belső fájl: .tsv | egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
-| 720 | BELSO | BUKÁS | 1 | belső fájl: .tsv | ített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben. |
-| 750 | PONT | BUKÁS | 1 | „3. pont, Remez”: a lap 3. szakasza „LXX-fordítói döntések” | a cél a lakhatóság (Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18). Ebben az olvasatban a teremtés célja |
-| 763 | BELSO | BUKÁS | 2 | proveniencia-érték (manual): manual | (hájtá) „vala” jelentésű (nyelvtani értelmezés, `manual`), és Károli is „vala”-nak fordítja; a BDB fenti |
-| 767 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | 1:2-re, és az Ézs 45:18-at döntő érvnek tartja (a tanítói fájl 3.1). A kiinduló-állapot olvasat nevesített képvi |
-| 789 | ANGOL | BUKÁS | 13 | angol maradék / zsargon: gap | íthető anyag a *tohu va-vohu* párra; 17 tanítónál gap.** Prince-nél két találat-sor (1 ✅, 1 ⚠️) és egy, |
-| 809 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyit |
-| 824 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újraf |
-| 824 | BELSO | BUKÁS | 1 | munkalépés-jel: P3 | A P3 teljes scanje a héber szöveg egészére fut; a 2026 |
-| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
-| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
-| 920 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
-| 940 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
-| 941 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
+| 203 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | 11 helyről \| **elutasítva** — egyéb: adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
+| 230 | BELSO | BUKÁS | 1 | belső fájl: .tsv | **Negatív kritérium** (`motivumok.tsv`): az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) s |
+| 330 | BELSO | BUKÁS | 2 | belső fájl: .tsv | rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H092 |
+| 342 | BDB_JEL | BUKÁS | 2 | nyers ^ elválasztó | év [hímnemű]: üresség (az alakról l. Ges^§ 84a, 1 b Sta^§ 95, 198 a, a használatr |
+| 342 | BDB_JEL | BUKÁS | 2 | rafe (ֿ) pontjel a héber szóban | </abbr> ítélete alatt álló földről; קַותֿֿהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a puszt |
+| 361 | ZAROJEL | BUKÁS | 1 | nyitva maradt zárójel | mben arról, ami üres, valótlan, mint a bálványok 1Sám 12:21 (gyűjtőnévként |
+| 407 | ANGOL | BUKÁS | 2 | angol maradék / zsargon: LXX_OS | **H0922** · 3 vers az LXX_OS-ben (ebből 3 vers görög tartalmi szóval); leggyak |
+| 532 | BELSO | BUKÁS | 1 | munkalépés-jel: P4 | át nemcsak a három vers számlálásából következik (P4), hanem a szócikk saját megállapítása is; a *bohu |
+| 536 | BELSO | BUKÁS | 1 | munkalépés-jel: P2 | valótlan, a bálványok) ott választja szét, ahol a P2 mező-hipotézise a két ágat: a semmiség-ág versei |
+| 656 | ANGOL | BUKÁS | 5 | angol maradék / zsargon: Isa.34.11 | Károli-KH (forrás-vers: Ézs 34:11) \| adathiba: az Isa.34.11 lista az Isa.40.11 másolata \| |
+| 711 | BELSO | BUKÁS | 1 | belső fájl: .tsv | egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
+| 723 | BELSO | BUKÁS | 1 | belső fájl: .tsv | ített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben. |
+| 753 | PONT | BUKÁS | 1 | „3. pont, Remez”: a lap 3. szakasza „LXX-fordítói döntések” | a cél a lakhatóság (Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18). Ebben az olvasatban a teremtés célja |
+| 766 | BELSO | BUKÁS | 2 | proveniencia-érték (manual): manual | (hájtá) „vala” jelentésű (nyelvtani értelmezés, `manual`), és Károli is „vala”-nak fordítja; a BDB fenti |
+| 770 | BELSO | BUKÁS | 1 | belső fájl: tanítói fájl | 1:2-re, és az Ézs 45:18-at döntő érvnek tartja (a tanítói fájl 3.1). A kiinduló-állapot olvasat nevesített képvi |
+| 792 | ANGOL | BUKÁS | 13 | angol maradék / zsargon: gap | íthető anyag a *tohu va-vohu* párra; 17 tanítónál gap.** Prince-nél két találat-sor (1 ✅, 1 ⚠️) és egy, |
+| 812 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: study | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyit |
+| 827 | ANGOL | BUKÁS | 1 | angol maradék / zsargon: scanje | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újraf |
+| 827 | BELSO | BUKÁS | 1 | munkalépés-jel: P3 | A P3 teljes scanje a héber szöveg egészére fut; a 2026 |
+| 923 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Kiadás” sor |  |
+| 923 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs „Próza modellje” sor |  |
+| 923 | KOLOFON | BUKÁS | 1 | a Kolofonban nincs Változásjegyzék |  |
+| 943 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Kereszthivatkozás-napló | \| Kereszthivatkozás-napló \| — \| |
+| 944 | KOLOFON | BUKÁS | 1 | üres törzsadat-mező: Sablon-megfelelőség | \| Sablon-megfelelőség \|  \| |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 6 | „tohu” — a lapon máshol: tóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 9 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 é |
 | 15 | KIVONAT_SZAM | FIGYELMEZTETÉS | 1 | a Kivonat minden LXX-helyről állít, de a 3. szakasz összesítője szerint 1 hely „kutatói azonosítás függőben” | A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος καὶ ἀκατασκεύαστος (aoratosz kai akataszkeuasztosz), οὐθέν (úthen), illetve σπαρτίον γεωμετρίας |
 | 104 | HIANYJEL | FIGYELMEZTETÉS | 3 | belső hiányjelzés az olvasói szövegben: *(nincs címke: tagolatlan)* | 414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)* ⓘ \| prototípus: a föld teremt |
-| 227 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | **Negatív kritérium** (`motivumok.tsv`): az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) |
-| 341 | HIANYJEL | FIGYELMEZTETÉS | 1 | belső hiányjelzés az olvasói szövegben: nincs a szakasztáblában | 1:2, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorsza |
-| 529 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | **Miért fontos ez a lelet:** a szótár maga mondja ki, amit a kollokáció mér: a *bohu* „mindig a תֹּהוּ (tóhú) szóval” áll. A pár kötöttsége |
-| 533 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „tohu” — a lapon máshol: tóhú | **Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) ott vál |
-| 676 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: KIRALY-001 | nem a cél; a végpont nem előfordulás (precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9) \| közepes \| Remez \| |
-| 677 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | \|\| Ézs 34:11 \| Párhuzam \| ítélet-kontextusú önálló tohu (qirjat-tohu, „rommá lőn” — H7665) az Ézs 24 föld-kiüresítő keretében (24:1, 24:3: H |
-| 708 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
-| 712 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 50 szó, az arany lapon 259 (< 25%) | 5/b. Kapcsolódó motívumok |
-| 734 | ATIRAS_VALT | FIGYELMEZTETÉS | 16 | „tohu” — a lapon máshol: tóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
-| 734 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
-| 744 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | *Elhatárolás.* Az 1Móz 1:2 a TEREMT-001 (*tehóm*, a mélység) motívumnak is előfordulása, |
-| 761 | ANGOL_SOR | FIGYELMEZTETÉS | 1 | 3 angol funkciószó (of, to) | *Közös, nem különböztető tények.* Mindkét olvasat elfogadja, hogy a Jer 4:23 és az Ézs 34:11 ítéletet ír le (Júda, „az Úr haragjának tüze”; |
-| 767 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | tanítói körből nem került elő; ez explicit hiány (7. pont). |
-| 777 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 3. pont megállapításaiból három alkalmazás következik. |
-| 783 | ATIRAS_VALT | FIGYELMEZTETÉS | 4 | „tohu” — a lapon máshol: tóhú | A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletbe |
-| 783 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | y ítélet nyoma, azt a két olvasat eltérően látja (3. pont, ⚠️); az 1Móz 1:2 után azonban mindkettőben az 1: |
-| 807 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül. |
-| 809 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **re |
-| 809 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | apcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olv |
-| 820 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „tohu” — a lapon máshol: tóhú | A három előfordulás szótári jelentése (a *tohu* 1. jelentése) a szótár saját példahelyeiből gépileg vezethető le: a szótár mindhárom verset |
-| 822 | PONT | FIGYELMEZTETÉS | 1 | „2. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 2. pont BDB-idézeteinek magyar fordítása gépi, és ugyanaz |
-| 824 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatás a 2026-10-08-i futással azonos számokat adott (19 *tohu*-vers, 3 |
-| 828 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | asat nevesített képviselője megvan (Derek Prince, 3. pont), a kiinduló-állapot olvasaté a jóváhagyott tanít |
-| 829 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | úciós olvasat egy korábbi ítélet nyomának tartja (3. pont, ⚠️). |
+| 230 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | **Negatív kritérium** (`motivumok.tsv`): az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) |
+| 344 | HIANYJEL | FIGYELMEZTETÉS | 1 | belső hiányjelzés az olvasói szövegben: nincs a szakasztáblában | 1:2, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorsza |
+| 532 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „bohu” — a lapon máshol: bóhú | **Miért fontos ez a lelet:** a szótár maga mondja ki, amit a kollokáció mér: a *bohu* „mindig a תֹּהוּ (tóhú) szóval” áll. A pár kötöttsége |
+| 536 | ATIRAS_VALT | FIGYELMEZTETÉS | 2 | „tohu” — a lapon máshol: tóhú | **Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) ott vál |
+| 679 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: KIRALY-001 | nem a cél; a végpont nem előfordulás (precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9) \| közepes \| Remez \| |
+| 680 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „tohu” — a lapon máshol: tóhú | \|\| Ézs 34:11 \| Párhuzam \| ítélet-kontextusú önálló tohu (qirjat-tohu, „rommá lőn” — H7665) az Ézs 24 föld-kiüresítő keretében (24:1, 24:3: H |
+| 711 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | üres vagy hiányt jelző blokk | A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás a `kapcsolatok.tsv`-ben. |
+| 715 | SZINT_ALATT | FIGYELMEZTETÉS | 1 | a szakasz 50 szó, az arany lapon 259 (< 25%) | 5/b. Kapcsolódó motívumok |
+| 737 | ATIRAS_VALT | FIGYELMEZTETÉS | 16 | „tohu” — a lapon máshol: tóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
+| 737 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit. Az el |
+| 747 | MOTIVUM_ID | FIGYELMEZTETÉS | 1 | motívum-azonosító link nélkül: TEREMT-001 | *Elhatárolás.* Az 1Móz 1:2 a TEREMT-001 (*tehóm*, a mélység) motívumnak is előfordulása, |
+| 764 | ANGOL_SOR | FIGYELMEZTETÉS | 1 | 3 angol funkciószó (of, to) | *Közös, nem különböztető tények.* Mindkét olvasat elfogadja, hogy a Jer 4:23 és az Ézs 34:11 ítéletet ír le (Júda, „az Úr haragjának tüze”; |
+| 770 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | tanítói körből nem került elő; ez explicit hiány (7. pont). |
+| 780 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 3. pont megállapításaiból három alkalmazás következik. |
+| 786 | ATIRAS_VALT | FIGYELMEZTETÉS | 4 | „tohu” — a lapon máshol: tóhú | A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletbe |
+| 786 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | y ítélet nyoma, azt a két olvasat eltérően látja (3. pont, ⚠️); az 1Móz 1:2 után azonban mindkettőben az 1: |
+| 810 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül. |
+| 812 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | **Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **re |
+| 812 | PONT | FIGYELMEZTETÉS | 1 | „7. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | apcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olv |
+| 823 | ATIRAS_VALT | FIGYELMEZTETÉS | 3 | „tohu” — a lapon máshol: tóhú | A három előfordulás szótári jelentése (a *tohu* 1. jelentése) a szótár saját példahelyeiből gépileg vezethető le: a szótár mindhárom verset |
+| 825 | PONT | FIGYELMEZTETÉS | 1 | „2. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | A 2. pont BDB-idézeteinek magyar fordítása gépi, és ugyanaz |
+| 827 | ATIRAS_VALT | FIGYELMEZTETÉS | 1 | „bohu” — a lapon máshol: bóhú | A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatás a 2026-10-08-i futással azonos számokat adott (19 *tohu*-vers, 3 |
+| 831 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | asat nevesített képviselője megvan (Derek Prince, 3. pont), a kiinduló-állapot olvasaté a jóváhagyott tanít |
+| 832 | PONT | FIGYELMEZTETÉS | 1 | „3. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása? | úciós olvasat egy korábbi ítélet nyomának tartja (3. pont, ⚠️). |

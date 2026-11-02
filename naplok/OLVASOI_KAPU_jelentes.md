@@ -85,15 +85,17 @@ közül a 3 PONT a forrás saját számozására mutat (valós), a 2 MOTIVUM_ID 
 
 | Motívum | BUKÁS | FIGYELMEZTETÉS | Legnagyobb tételek |
 |---|---|---|---|
-| ALVIL-001 | 73 | 17 | IDEZET 43, BELSO 10, KONYV 5, IDEZOJEL 4, KOLOFON 3, FUNKCIO_URES 1 (72 cella) |
-| ANTROP-001 | 29 | 8 | BELSO 10, IDEZOJEL 6, KOLOFON 4, IDEZET 4 |
-| HAMART-001 | 66 | 12 | BELSO 20, KONYV 12, ANGOL 9, ATIRAS 9 |
-| HODIT-001 | 45 | 24 | BELSO 16, ANGOL 8, IDEZET 7, IDEZOJEL 6, PONT 12 (F) |
+| ALVIL-001 | 145 | 17 | PROZA_1A 72, IDEZET 43, BELSO 10, KONYV 5, IDEZOJEL 4, KOLOFON 3, FUNKCIO_URES 1 (72 cella) |
+| ANTROP-001 | 37 | 8 | PROZA_1A 8, BELSO 10, IDEZOJEL 6, KOLOFON 4, IDEZET 4 |
+| HAMART-001 | 118 | 12 | PROZA_1A 52, BELSO 20, KONYV 12, ANGOL 9, ATIRAS 9 |
+| HODIT-001 | 78 | 24 | PROZA_1A 33, BELSO 16, ANGOL 8, IDEZET 7, IDEZOJEL 6, PONT 12 (F) |
 | ISTENTISZT-001 | 61 | 7 | BELSO 25, ANGOL 9, IDEZOJEL 9, KONYV 6, IDEZET 5 |
-| KIRALY-001 | 42 | 19 | BELSO 13, IDEZOJEL 8, ANGOL 7, PONT 5+9 |
-| MENNY-001 | 36 | 29 | BELSO 14, ANGOL 6, IDEZOJEL 6, ATIRAS_VALT 9 (F) |
-| TEREMT-001 | 68 | 19 | IDEZET 28, BELSO 14, KONYV 7, IDEZOJEL 7, KH_MASOLT 7 (F) |
-| TEREMT-002 | 31 | 28 | BELSO 9, ANGOL 7, KOLOFON 5, PONT 3+8, ATIRAS 3, ATIRAS_VALT 12 (F) |
+| KIRALY-001 | 50 | 19 | PROZA_1A 8, BELSO 13, IDEZOJEL 8, ANGOL 7, PONT 5+9 |
+| MENNY-001 | 45 | 29 | PROZA_1A 9, BELSO 14, ANGOL 6, IDEZOJEL 6, ATIRAS_VALT 9 (F) |
+| TEREMT-001 | 109 | 19 | PROZA_1A 41, IDEZET 28, BELSO 14, KONYV 7, IDEZOJEL 7, KH_MASOLT 7 (F) |
+| TEREMT-002 | 32 | 28 | PROZA_1A 1, BELSO 9, ANGOL 7, KOLOFON 5, PONT 3+8, ATIRAS 3, ATIRAS_VALT 12 (F) |
+
+A #593 merge-e óta a PROZA_1A (az 1/a igehelyenkénti prózája, `proza_1a.meres`) is mér: igehelyenként egy BUKÁS, ahol a próza töredék vagy hiányzik, vagy nincs „Funkció:” sor (9 lapon 224; az arany lapon 0). A sorszám ezeknél 0 (a mérő igehelyet ad, nem sort).
 
 Tételenként, sorszámmal: `naplok/OLVASOI_KAPU_meres.md`. A számok különálló hibák (egy szakaszon belül az ismétlődés
 egy tétel). A LABJEGYZET a #595 merge-e után aktív: mind a 9 lapon 0. A PROZA_1A a #593 merge-e után kapcsol be
