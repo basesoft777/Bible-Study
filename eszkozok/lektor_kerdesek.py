@@ -36,7 +36,11 @@ MEZOK_V3 = MEZOK_V2 + OSSZEFOGLALO_MEZOK
 # kiadas: melyik kiadás bemenete a kérdés. A határ-kérdések (hatar) a mostani, 1. kiadáshoz tartoznak; a /kiadas kimenetéből jövők (lektor, proza_lefedettseg,
 # proza_javaslat) a következő, 2. kiadás bemenetei; a többi (dontes stb.) nem kiadás-kérdés: üres.
 KIADAS_FORRASONKENT = {'hatar': '1', 'lektor': '2', 'proza_lefedettseg': '2', 'proza_javaslat': '2'}
-MEZOK = MEZOK_V3 + ['kiadas']  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
+MEZOK_V4 = MEZOK_V3 + ['kiadas']  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
+# hatar_jelenlegi: a határ-kártya „A jelenlegi határ” blokkja, gépileg az adatból (`adat/motivumok.tsv` negatív kritérium és fölérendelt fogalom,
+# a kártya igehelyeinek állapota az `elofordulasok.tsv`-ben / `jeloltek.tsv`-ben), saját proveniencia-sorral; kov_elfogadom / kov_elvetem: a két
+# első gomb következménye olvasói nyelven, a kézi összefoglalóból (`osszefoglalo_<ID>.tsv`). Csak a `hatar` forráson töltődnek.
+MEZOK = MEZOK_V4 + ['hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem']
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
@@ -198,26 +202,37 @@ def forras_szoveg(motivum, root):
         return f.read()
 
 
+OSSZEFOGLALO_FEJ = ['kerdes_id', 'tipus', 'gond', 'javaslat', 'proveniencia']
+OSSZEFOGLALO_KOV = ['kov_elfogadom', 'kov_elvetem']  # elhagyható oszlopok: a határ-kártya két első gombjának következménye
+
+
 def osszefoglalo_beolvas(motivum, root=ROOT):
-    """{kerdes_id: (tipus, gond, javaslat, proveniencia)} a kézi `eszkozok/lektor_felulet/osszefoglalo_<ID>.tsv`-ből; nincs fájl -> {}."""
+    """{kerdes_id: (tipus, gond, javaslat, proveniencia, kov_elfogadom, kov_elvetem)} a kézi `eszkozok/lektor_felulet/osszefoglalo_<ID>.tsv`-ből;
+    nincs fájl -> {}. A két `kov_` oszlop elhagyható (régebbi fejléc)."""
     ut = os.path.join(root, 'eszkozok', 'lektor_felulet', 'osszefoglalo_%s.tsv' % motivum)
     if not os.path.exists(ut):
         return {}
     with open(ut, encoding='utf-8', newline='') as f:
         sorok = [x.rstrip('\r') for x in f.read().split('\n') if x.strip() and not x.startswith('#')]
     fej = sorok[0].split('\t')
-    if fej != ['kerdes_id', 'tipus', 'gond', 'javaslat', 'proveniencia']:
+    if fej not in (OSSZEFOGLALO_FEJ, OSSZEFOGLALO_FEJ + OSSZEFOGLALO_KOV):
         raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
     ki = {}
     for x in sorok[1:]:
         r = dict(zip(fej, x.split('\t')))
+        for m in OSSZEFOGLALO_KOV:
+            r[m] = r.get(m, '').strip()
+        if bool(r['kov_elfogadom']) != bool(r['kov_elvetem']):
+            raise ValueError('%s: a két következmény csak együtt adható meg (%s)' % (ut, r['kerdes_id']))
+        if r['kov_elfogadom'] and not r['kerdes_id'].startswith('hatar:'):
+            raise ValueError('%s: következmény csak határ-kártyán (%s)' % (ut, r['kerdes_id']))
         if r['tipus'] not in JAVASLAT_TIPUSOK:
             raise ValueError('%s: ismeretlen típus %r (%s)' % (ut, r['tipus'], r['kerdes_id']))
         if not r['gond'].strip() or not r['javaslat'].strip():
             raise ValueError('%s: üres összefoglaló (%s)' % (ut, r['kerdes_id']))
         if r['kerdes_id'] in ki:
             raise ValueError('%s: kétszer szerepel: %s' % (ut, r['kerdes_id']))
-        ki[r['kerdes_id']] = (r['tipus'], r['gond'], r['javaslat'], r['proveniencia'] or 'manual')
+        ki[r['kerdes_id']] = (r['tipus'], r['gond'], r['javaslat'], r['proveniencia'] or 'manual', r['kov_elfogadom'], r['kov_elvetem'])
     return ki
 
 
@@ -229,7 +244,103 @@ def osszefoglalo_ra(uj, ossz):
         raise ValueError('összefoglaló olyan kérdéshez, amely nincs a forrásban: %s' % ', '.join(ismeretlen))
     for k in uj:
         if k['kerdes_id'] in ossz:
-            k['javaslat_tipus'], k['gond'], k['javaslat'], k['osszefoglalo_proveniencia'] = ossz[k['kerdes_id']]
+            (k['javaslat_tipus'], k['gond'], k['javaslat'], k['osszefoglalo_proveniencia'],
+             k['kov_elfogadom'], k['kov_elvetem']) = ossz[k['kerdes_id']]
+    return uj
+
+
+# --- „A jelenlegi határ”: a határ-kártya tárgyának mai állapota az adatból ----------------------------------------------
+JELENLEGI_IDEZET = 220
+
+
+def _tabla(root, nev):
+    """[(sorszám, dict)] egy `adat/*.tsv`-ből (a # sorok kihagyva, a sorszám a fájl tényleges sora); nincs fájl -> None."""
+    ut = os.path.join(root, 'adat', nev)
+    if not os.path.exists(ut):
+        return None
+    with open(ut, encoding='utf-8', newline='') as f:
+        sorok = f.read().replace('\r\n', '\n').split('\n')
+    ki, fej = [], None
+    for i, x in enumerate(sorok, 1):
+        if not x or x.startswith('#'):
+            continue
+        if fej is None:
+            fej = x.split('\t')
+            continue
+        ki.append((i, dict(zip(fej, x.split('\t')))))
+    return ki
+
+
+def _versek(igehely):
+    """Egy igehely versei (tartomány: minden vers, `lexikon_general.igehely_lista`); hibánál maga az igehely."""
+    ig = igehely.replace('–', '-').strip()
+    if '-' not in ig:
+        return {ig}
+    try:
+        import lexikon_general as LG  # noqa: E402  (lassú betöltés: csak tartománynál)
+        return set(LG.igehely_lista(ig))
+    except Exception:  # noqa: BLE001
+        return {ig}
+
+
+def kartya_igehelyek(k):
+    """A kártya tárgyának igehelyei: a cím és az (a) rész igehelyei, plusz a `hely` mező; sorrendtartó, ismétlés nélkül."""
+    resz = k['kerdes'].split(SORTORES)[:2]
+    ki = [m.group(0).replace('–', '-') for r in resz for m in _IGEHELY_ALAK.finditer(r)]
+    if k.get('hely'):
+        ki.append(k['hely'].replace('–', '-'))
+    return list(dict.fromkeys(ki))
+
+
+def hatar_jelenlegi(motivum, igehelyek, root=ROOT, ts=None):
+    """A „jelenlegi határ” szövege (sorai ` ⏎ `-vel): negatív kritérium, fölérendelt fogalom (`adat/motivumok.tsv`, szó szerint), a kártya
+    igehelyeinek állapota (`elofordulasok.tsv`: bent; `jeloltek.tsv`: döntés + indoklás), végül saját proveniencia-sor. Amit nem olvas ki,
+    azt kimondja, nem tölti ki."""
+    ts = ts or datetime.date.today().isoformat()
+    mot = _tabla(root, 'motivumok.tsv')
+    sor = next(((i, r) for i, r in (mot or []) if r.get('id') == motivum), None)
+    if sor is None:
+        return 'A jelenlegi határ nem olvasható ki: a motívum sora nincs az `adat/motivumok.tsv`-ben.'
+    i, r = sor
+    ki = []
+    for mezo, cim in (('negativ_kriterium', 'Negatív kritérium'), ('folerendelt_fogalom', 'Fölérendelt fogalom')):
+        ertek = egysor(r.get(mezo, ''))
+        ki.append('%s: %s (`adat/motivumok.tsv:%d`)' % (cim, ertek, i) if ertek else '%s: nincs kitöltve (`adat/motivumok.tsv:%d`).' % (cim, i))
+    elo = [(n, x) for n, x in (_tabla(root, 'elofordulasok.tsv') or []) if x.get('id') == motivum]
+    jel = [(n, x) for n, x in (_tabla(root, 'jeloltek.tsv') or []) if x.get('id') == motivum and x.get('jelolt_tipus', '') in ('', 'elofordulas')]
+    elo_v = [(n, x, _versek(x.get('igehely', ''))) for n, x in elo]
+    jel_v = [(n, x, _versek(x.get('igehely', ''))) for n, x in jel]
+    talalt, latott = 0, set()
+    for ig in igehelyek:
+        v = _versek(ig)
+        e = [(n, x) for n, x, vv in elo_v if v & vv]
+        j = [(n, x) for n, x, vv in jel_v if v & vv]
+        if (e or j) and {('e', n) for n, _x in e} | {('j', n) for n, _x in j} <= latott:
+            continue  # egy korábbi (pl. tartomány-) igehely már megmutatta ezeket a sorokat
+        latott |= {('e', n) for n, _x in e} | {('j', n) for n, _x in j}
+        if not e and not j:
+            ki.append('%s: nincs sora a motívum adatában (sem előfordulás, sem jelölt).' % ig)
+            continue
+        talalt += 1
+        for n, x in e:
+            ki.append('%s: bent van — előfordulás (`adat/elofordulasok.tsv:%d`, %s): „%s”' % (ig, n, x.get('igehely', ''), vag(x.get('kapcsolodas', ''), JELENLEGI_IDEZET)))
+        for n, x in j:
+            if e and x.get('dontes') == 'beépítve':
+                continue  # a beépített jelölt már az előfordulás sorában látszik
+            ki.append('%s: %s — jelölt (`adat/jeloltek.tsv:%d`, %s): „%s”' % (ig, x.get('dontes', '') or 'döntés nélkül', n, x.get('igehely', ''),
+                                                                          vag(x.get('indoklas', ''), JELENLEGI_IDEZET)))
+    if not igehelyek:
+        ki.append('A kártyából nem olvasható ki igehely, ezért az érintett sorok állapota nem jelenik meg.')
+    ki.append('(proveniencia: scope=adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv | motivum=%s | igehely=%s | talalt=%d | '
+              'forras=lektor_kerdesek.py hatar_jelenlegi | ts=%s)' % (motivum, ', '.join(igehelyek) or '–', talalt, ts))
+    return SORTORES.join(ki)
+
+
+def jelenlegi_ra(uj, motivum, root=ROOT, ts=None):
+    """A `hatar` kártyákra rátölti a `hatar_jelenlegi` mezőt."""
+    for k in uj:
+        if k.get('forras') == 'hatar':
+            k['hatar_jelenlegi'] = hatar_jelenlegi(motivum, kartya_igehelyek(k), root, ts)
     return uj
 
 
@@ -330,6 +441,7 @@ def general(motivum, root=ROOT, kimenet=None, ir=True):
     if li is not None:
         uj += lista_hianyok(li, motivum)
     uj = osszefoglalo_ra(uj, osszefoglalo_beolvas(motivum, root))
+    uj = jelenlegi_ra(uj, motivum, root)
     return kiir(motivum, uj, root, kimenet, ir, 'nincs forrásfájl' if (sz is None and lk is None and li is None) else '')
 
 

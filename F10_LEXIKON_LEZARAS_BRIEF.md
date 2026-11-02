@@ -46,7 +46,7 @@ A dokumentált hiány nem akadály (DT2, CLAUDE.md 3. szabály): az N18 (ANTROP-
 - **Z.** zárómérés: a nyolc lap az 1. szakasz négy feltétele szerint; független ellenőrzés; zárónapló.
 
 **Nincs benne**
-- **A motívumonkénti lezárás** (C-h határ-ellenőrzés, C-l döntések a lektor-felületen, C5 Feed 8/8 + 1. kiadás + verzió): a migrált motívumoknál a #123 menetének vége, az ISTENTISZT-001-nél kész. A #10 nem ír `kiadasok.tsv`- és `motivumok.tsv`-sort.
+- **A motívumonkénti lezárás** (C-h határ-ellenőrzés, C-l döntések a Kiadóban (felület), C5 Feed 8/8 + 1. kiadás + verzió): a migrált motívumoknál a #123 menetének vége, az ISTENTISZT-001-nél kész. A #10 nem ír `kiadasok.tsv`- és `motivumok.tsv`-sort.
 - **A régi kézi mérce (L1–L7, DT2/a, DT2/b, #78) újramérése.** Ez a migráció független ellenőrzésének (#123 X.M6, `fuggetlen-ellenor`) mércéje, nem a Feed kapuja (DT497 (3)). A #10 a lezárt lapokat kézzel nem méri újra.
 - **Lapjavítás.** A lap kézzel nem szerkeszthető (RENDER_BRIEF G4); a forrás javítása a próza gazdájáé (C-w). Ami a zárómérésben bukik, az a motívum menetébe (#123) vagy a 2. kiadásba (`/kiadas`) kerül vissza.
 - **A törzscikk** (`lexikon/[ID]_TORZSCIKK.md`): a #123 X.M5 archiválja (D34).
