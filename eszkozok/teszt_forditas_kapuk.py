@@ -919,9 +919,15 @@ class TagolasUtalas(unittest.TestCase):
         # a forrás-oldali maszk sem nyel el szabad szöveg utáni jelölőt
         self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see ἐκκλησία, 4 b. aa.); b. y', True)), ['b'])
 
+    def test_a3_negy_kitolto_szonal_tobb_nem_maszkol(self):
+        # a bevezető és a szócikk-szó között legfeljebb négy kitöltő szó: öt után nincs maszk, a `b.` jelölő marad
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see more at length in also πιστεύω, 1 b. γ.)', True)), ['b'])
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see more at length in πιστεύω, 1 b. γ.)', True)), [])
+
     def test_a3_kotet_es_kiadasszam_marad_kezi_iteletre(self):
         # a 2. lépés nincs jóváhagyva: `vol. ii.` -> `II. köt.` és `Tdf. 7` nem maszkolt (G4183, G2983)
-        self.assertEqual(self._e('b. vol. ii., p. 1013a; x', 'b. II. köt., o. 1013a; x'), 'RENDBEN')
+        # a `vol. ii.` -> `II. köt.` a fordításban új római jelölő, a forrásban nincs; a kötetszám nem jelölő a forrás-oldalon
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('b. vol. ii., p. 1013a; x', True)), ['b'])
         self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('(in Tdf. 7 after B*)', True)), ['7'])
 
     def test_maszk_pozicio_nem_csuszik(self):

@@ -229,6 +229,7 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 | DT536 | A1: a `9_tagolas` kapu prózai utalásai (maszk) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT537 | A1: prompt v5.2 (idézőjelek a Thayer-szócikkben) | ✅ orkesztrátor, 2026-11-02: (a), az aposztrófos idézet marad (`DONTESEK.md`) |
 | DT538 | A1: a bukottak újrakapuzása, harmadik kör kivétele, `--plafon` kumulatív szabálya | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT-F07m | A3: a `9_tagolas` kapu lexikon-belső utalás-maszkja (a javító kör után, adagon belül; a 7. szabály ⛔-ja) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`): az (1) jóváhagyva, a (2) kötet-/kiadásszám nem |
 | DT-F07l … | adag-megállások, plafonemelés | a menet veszi fel |
 
 ## Verziónapló
