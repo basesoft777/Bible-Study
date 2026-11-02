@@ -28,13 +28,21 @@ ISMERT_12 = [
     ('HAMART-001', 'Mk 7:21-23'), ('HAMART-001', '2Pét 3:6-7'),
 ]
 MINDEN_DONTES = ('nyitva', 'beépítve', 'elutasítva')
+# N-F150a: a 7 ismert LEXIKAI hamis kizárás (a HAMART-001 5 sora strukturális hordozó, ott a hordozó-szabály véd).
+ISMERT_7_LEXIKAI = [i for i in ISMERT_12 if i[0] != 'HAMART-001']
 _CACHE = {}
 
 
-def valos(dontesek):
-    if dontesek not in _CACHE:
-        _CACHE[dontesek] = J.sorok_szamit(J.ALAPERTELMEZETT_ADAT, dontesek=dontesek)
-    return _CACHE[dontesek]
+def valos(dontesek, lexikai_be=None):
+    kulcs = (dontesek, None if lexikai_be is None else tuple(sorted(lexikai_be)))
+    if kulcs not in _CACHE:
+        _CACHE[kulcs] = J.sorok_szamit(J.ALAPERTELMEZETT_ADAT, dontesek=dontesek, lexikai_be=lexikai_be)
+    return _CACHE[kulcs]
+
+
+def lexikai_motivumok():
+    mot = {r['id']: r['azonossag_tipusa'] for r in J.beolvas(os.path.join(J.ALAPERTELMEZETT_ADAT, 'motivumok.tsv'))}
+    return frozenset(m for m, h in mot.items() if h == 'lexikai')
 
 
 class Szabaly(unittest.TestCase):
@@ -68,6 +76,54 @@ class Szabaly(unittest.TestCase):
             self.assertEqual(ok, 'a hordozó nem formulaikus: a gépi szabály nem dönt')
 
 
+class LexikaiSzabaly(unittest.TestCase):
+    """N-F150a: a kiterjesztett lexikai szabály, szintetikus bemenettel."""
+    KOMB = {'L-1': [frozenset({'G4151', 'G5590'})], 'M-1': [frozenset({'H1121', 'H0430'})]}
+    SZARM = {'G5591': frozenset({'G5590'}), 'G4152': frozenset({'G4151'})}
+    BE = frozenset({'L-1', 'M-1'})
+
+    def jav(self, motivum, igehely, vers_st):
+        return J.javaslat(motivum, 'lexikai', igehely, self.KOMB, vers_st, self.SZARM, self.BE)
+
+    def test_alapertelmezetten_lexikai_hordozon_nem_dont(self):
+        j, ok = J.javaslat('L-1', 'lexikai', 'Luk 1:46', self.KOMB, {'Luk 1:46': {'G5590'}}, self.SZARM)
+        self.assertEqual((j, ok), ('vizsgalando', J.OK_NEM_DONT))
+
+    def test_szomszed_vers_par_nem_kizaras(self):
+        st = {'Luk 1:46': {'G5590'}, 'Luk 1:47': {'G4151'}}
+        self.assertEqual(self.jav('L-1', 'Luk 1:46', st)[0], 'vizsgalando')
+        self.assertEqual(self.jav('L-1', 'Luk 1:47', st)[0], 'vizsgalando')
+
+    def test_rokon_alak_a_szarmaztatott_szo(self):
+        st = {'1Kor 2:14': {'G4151', 'G5591'}}
+        self.assertEqual(self.jav('L-1', '1Kor 2:14', st)[0], 'vizsgalando')
+        self.assertEqual(self.jav('L-1', '1Kor 2:14', {'1Kor 2:14': {'G4151'}})[0], 'valoszinu_ki')
+
+    def test_tavoli_vers_nem_menti(self):
+        st = {'Luk 1:46': {'G5590'}, 'Luk 1:49': {'G4151'}}
+        self.assertEqual(self.jav('L-1', 'Luk 1:46', st)[0], 'valoszinu_ki')
+
+    def test_nyelv_nem_egyezik_nem_dont(self):
+        j, ok = self.jav('M-1', 'Júd 1:6', {'Júd 1:6': {'G0032', 'G0166'}})
+        self.assertEqual(j, 'vizsgalando')
+        self.assertIn('nincs G-nyelvű', ok)
+
+    def test_a_hianyzo_par_a_sajat_nyelven_kizaras(self):
+        j, ok = self.jav('M-1', 'Jób 1:6', {'Jób 1:6': {'H0430'}})
+        self.assertEqual(j, 'valoszinu_ki')
+        self.assertIn('az ablakban a gerincből: H0430', ok)
+
+    def test_szarmazas_a_szotarbol(self):
+        sz = J.szarmazas()
+        self.assertIn('G5590', sz['G5591'])   # ψυχικός <- ψυχή
+        self.assertIn('G4151', sz['G4152'])   # πνευματικός <- πνεῦμα
+        self.assertIn('H5307', sz['H5303'])   # נְפִלִים <- H5307 (4 jegyre kiegészítve)
+
+    def test_ablak_versei(self):
+        st = {'Luk 1:45': {'x'}, 'Luk 1:46': {'x'}, 'Luk 1:47': {'x'}, 'Luk 1:48': {'x'}}
+        self.assertEqual(J.ablak_versei(['Luk 1:46', 'Luk 1:47'], st), ['Luk 1:45', 'Luk 1:46', 'Luk 1:47', 'Luk 1:48'])
+
+
 class ValosAdat(unittest.TestCase):
     def test_a_12_ismert_eset_nem_kaphat_valoszinu_ki_t(self):
         sorok = {(m, s[0]): s for m, ss in valos(('beépítve',)).items() for s in ss}
@@ -94,7 +150,7 @@ class ValosAdat(unittest.TestCase):
     def test_nem_formulaikus_motivumon_egy_sor_sem_valoszinu_ki(self):
         mot = {r['id']: r['azonossag_tipusa'] for r in J.beolvas(os.path.join(J.ALAPERTELMEZETT_ADAT, 'motivumok.tsv'))}
         for m, sorok in valos(MINDEN_DONTES).items():
-            if mot[m] != 'formulaikus':
+            if mot[m] != 'formulaikus' and m not in J.LEXIKAI_BEKAPCSOLT:
                 self.assertEqual([s for s in sorok if s[1] == 'valoszinu_ki'], [], m)
                 self.assertTrue(all(s[2] == J.OK_NEM_DONT and s[3] == mot[m] for s in sorok), m)
 
@@ -105,6 +161,40 @@ class ValosAdat(unittest.TestCase):
             self.assertEqual(flag, sorted(flag), m)
             van = van or any(flag)
         self.assertTrue(van)
+
+
+class LexikaiValosAdat(unittest.TestCase):
+    """N-F150a: a kiterjesztett szabály a valós döntéseken; a küszöb 0 hamis kizárás."""
+
+    def test_a_7_ismert_lexikai_hamis_kizaras_nem_kaphat_valoszinu_ki_t(self):
+        sorok = {(m, s[0]): s for m, ss in valos(('beépítve',), lexikai_motivumok()).items() for s in ss}
+        self.assertEqual(len(ISMERT_7_LEXIKAI), 7)
+        for kulcs in ISMERT_7_LEXIKAI:
+            self.assertIn(kulcs, sorok, 'az ismert eset nincs a jeloltek.tsv-ben: %s %s' % kulcs)
+            self.assertEqual(sorok[kulcs][1], 'vizsgalando', '%s %s' % kulcs)
+
+    def test_nulla_hamis_kizaras_minden_lexikai_motivumon(self):
+        v = valos(('beépítve',), lexikai_motivumok())
+        for m in lexikai_motivumok():
+            if m in v:
+                self.assertEqual([s[0] for s in v[m] if s[1] == 'valoszinu_ki'], [], m)
+
+    def test_van_felismert_elutasitas_a_lexikai_motivumokon(self):
+        v = valos(('elutasítva',), lexikai_motivumok())
+        felismert = [(m, s[0]) for m in lexikai_motivumok() if m in v for s in v[m] if s[1] == 'valoszinu_ki']
+        self.assertGreaterEqual(len(felismert), 1)
+
+    def test_a_menny_nt_helyei_a_gep_nem_dont(self):
+        v = valos(('beépítve', 'nyitva'), lexikai_motivumok())
+        nt = [s for s in v['MENNY-001'] if s[0].split(' ')[0] in ('Júd', '2Pét', 'Mt', 'Luk')]
+        self.assertTrue(nt)
+        self.assertTrue(all(s[1] == 'vizsgalando' for s in nt))
+
+    def test_bekapcsolt_halmaz_dontes_szerint(self):
+        self.assertEqual(J.LEXIKAI_BEKAPCSOLT, frozenset({'ALVIL-001', 'KIRALY-001', 'TEREMT-001', 'MENNY-001'}))
+        for m, sorok in valos(MINDEN_DONTES).items():
+            if m not in J.LEXIKAI_BEKAPCSOLT:
+                self.assertFalse([s for s in sorok if s[3] == 'lexikai' and s[1] == 'valoszinu_ki'], m)
 
 
 class Kimenet(unittest.TestCase):

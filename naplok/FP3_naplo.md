@@ -139,7 +139,7 @@ Feltűnő eltérések (felsorolva, ítélet nélkül): a G4151-re az API nem ado
 
 ### Kivetítés a teljes Thayerre (mért tokenekből; `naplok/FP3_koltseg.py`)
 
-*A kötegelő becslője (`TOKEN_KARAKTER` 2,8; gondolkodási token 1 500/kérés) a mérthez képest alulbecsül; nem írtam át (nincs az `ir` mezőben; N-F27a).*
+*A kötegelő becslője (`TOKEN_KARAKTER` 2,8; gondolkodási token 1 500/kérés) a mérthez képest alulbecsül; nem írtam át (nincs az `ir` mezőben; N68).*
 
 Illesztés az 51 első körös kérésre (M1 + aranyminta), legkisebb négyzetekkel: **bemenet = 17 136 token/kérés + 3,721 token/forráskarakter**; **kimenet = 1 134 token/kérés + 1,654 token/forráskarakter**. A kérésenkénti 17 136 bemeneti token a prompt állandó része (terminológia, Károli-tábla, szabályok).
 
@@ -155,23 +155,23 @@ A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,
 
 **A teljes Thayer kivetített költsége: kb. 207–311 USD (a nagy kategóriára 3, a kicsire 11 Strong a minta: kis minta).** A kötegelő 119,32 USD-s becslése ennek a fele sem. Becslés, nem mért érték; jelölve. A bemeneti tokenek ~85%-a a kérésenkénti állandó (prompt) rész (5 437 × 17 136 ≈ 93,2 millió token a 109,6 millióból); költségben ez az első kör 176,76 USD-jének **~53%-a** (93,2 USD). A kicsi Strongok fajlagosan ötszörösen drágábbak a funkciószavaknál (0,071 vs 0,015 USD / 1000 forráskarakter).
 
-### Megfigyelések (a DT-F27b és az N-F27a… tételek bemenete)
+### Megfigyelések (a DT494 és az N68… tételek bemenete)
 
-1. A kötegelő költségbecslője kalibrálatlan (N-F27a); a plafon beküldés előtti becslésre épül, a mért költség átléphette (N-F27b).
-2. A javító körben a nagy szócikkek kérései `max_tokens`-szel leálltak (G1722, G1510; aranyminta: G4151); az 1. körben ezek kapun bukták (N-F27c).
-3. Prompt-gyorsítótár: a kérésenkénti 17 136 bemeneti token a legnagyobb megtakarítási lehetőség; a Batch-úton a kötegelőben ki van kapcsolva (BDB-tapasztalat); a #7 előtt mérendő (N-F27d).
-4. `11_konyvek`: az apokrif könyvek leképezése hiányos; a `1 Cor.` (112) és `Sir` (536) a #7 bemenete (N-F27e).
+1. A kötegelő költségbecslője kalibrálatlan (N68); a plafon beküldés előtti becslésre épül, a mért költség átléphette (N69).
+2. A javító körben a nagy szócikkek kérései `max_tokens`-szel leálltak (G1722, G1510; aranyminta: G4151); az 1. körben ezek kapun bukták (N70).
+3. Prompt-gyorsítótár: a kérésenkénti 17 136 bemeneti token a legnagyobb megtakarítási lehetőség; a Batch-úton a kötegelőben ki van kapcsolva (BDB-tapasztalat); a #7 előtt mérendő (N71).
+4. `11_konyvek`: az apokrif könyvek leképezése hiányos; a `1 Cor.` (112) és `Sir` (536) a #7 bemenete (N72).
 5. `16_sigla`: 5 758 `jelolt` sigla-előfordulás a teljes Thayerben (79 az M1-ben); a „Sept.” és „Wis.” kibontása gyakran hiányzik; jóváhagyás a felhasználóé.
 6. A G0282 kész `sonnet` soránál az újrakapuzás `5_terminologia` SÉRTÉST ad („Heb. → héb. hiányzik”); ebben a feladatban nem javítottam, csak listázom.
 
 ## Javaslat a #7 (Thayer éles) briefjéhez (nem brief; futtatni nem kezdtem)
 
 - **Hatókör:** a `naplok/FP3_sorrend.tsv` 5 413 − 28 (beírt) = 5 385 Strong marad (a 4 kétszer bukott G3588, G1722, G1510, G1519 köztük van); adagok a sorrend szerint, kb. 500 000 forráskarakter; adagonként új session.
-- **A #7 a mostani kéréskiosztással nem indul (orkesztrátor, 2026-11-02).** Blokkoló előfeltételek: N-F27f (Thayer B-út a kötegelőben: kicsi/közepes Strongok 15–25/kérés, adatblokk-szűkítés, `effort=medium`-mérés), N-F27g (mért-költség plafon, kalibrált becslő); becslés B-úttal kb. 78–115 USD.
-- **Egyéb előfeltételek a #7 előtt (a DT-F27b (b) döntésétől függően):** N-F27a (becslő kalibrálása a mért modellre), N-F27b (mért futó összeg a plafon-ellenőrzésben), N-F27c (max_tokens a nagy szócikkeknél), N-F27d (gyorsítótár mérése), N-F27e (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
+- **A #7 a mostani kéréskiosztással nem indul (orkesztrátor, 2026-11-02).** Blokkoló előfeltételek: N73 (Thayer B-út a kötegelőben: kicsi/közepes Strongok 15–25/kérés, adatblokk-szűkítés, `effort=medium`-mérés), N74 (mért-költség plafon, kalibrált becslő); becslés B-úttal kb. 78–115 USD.
+- **Egyéb előfeltételek a #7 előtt (a DT494 (b) döntésétől függően):** N68 (becslő kalibrálása a mért modellre), N69 (mért futó összeg a plafon-ellenőrzésben), N70 (max_tokens a nagy szócikkeknél), N71 (gyorsítótár mérése), N72 (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
 - **Költség:** mért kivetítés 207–311 USD a teljes Thayerre (l. fent); adagonként plafon = az adag mért-modell szerinti becslésének 1,5-szerese, mért futó összeggel.
 - **Lépések adagonként:** `szaraz` → plafon → `bekuld` → `allapot` (5 perces ciklus) → `begyujt` → `kapuz` → `javit` (1 kör) → `rogzit` → `beir --regi-elavult --kezi-marad` → adagjelentés; a kétszer bukottak a `bukottak.tsv`-be.
-- **Nyitott a felhasználóra:** DT-F27b (a)–(c).
+- **Nyitott a felhasználóra:** DT494 (a)–(c).
 
 ### Kivetítés B-úttal (becslés, `manual`; az orkesztrátor kérése, 2026-11-02)
 
