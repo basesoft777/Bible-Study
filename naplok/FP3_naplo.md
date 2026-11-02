@@ -163,3 +163,11 @@ A javító kör kategóriánként mért arányával: 87,19 + 65,86 × 1,30 + 23,
 4. `11_konyvek`: az apokrif könyvek leképezése hiányos; a `1 Cor.` (112) és `Sir` (536) a #7 bemenete (N-F27e).
 5. `16_sigla`: 5 758 `jelolt` sigla-előfordulás a teljes Thayerben (79 az M1-ben); a „Sept.” és „Wis.” kibontása gyakran hiányzik; jóváhagyás a felhasználóé.
 6. A G0282 kész `sonnet` soránál az újrakapuzás `5_terminologia` SÉRTÉST ad („Heb. → héb. hiányzik”); ebben a feladatban nem javítottam, csak listázom.
+
+## Javaslat a #7 (Thayer éles) briefjéhez (nem brief; futtatni nem kezdtem)
+
+- **Hatókör:** a `naplok/FP3_sorrend.tsv` 5 413 − 28 (beírt) − 9 (az M1-ben kétszer bukott Strongok közül 4) = a még hátralévő Strongok; adagok a sorrend szerint, kb. 500 000 forráskarakter; adagonként új session.
+- **Előfeltételek a #7 előtt (a DT-F27b (b) döntésétől függően):** N-F27a (becslő kalibrálása a mért modellre), N-F27b (mért futó összeg a plafon-ellenőrzésben), N-F27c (max_tokens a nagy szócikkeknél), N-F27d (gyorsítótár mérése), N-F27e (apokrif-könyvek, `1 Cor.`, `Sir`, sigla-jóváhagyás).
+- **Költség:** mért kivetítés 207–311 USD a teljes Thayerre (l. fent); adagonként plafon = az adag mért-modell szerinti becslésének 1,5-szerese, mért futó összeggel.
+- **Lépések adagonként:** `szaraz` → plafon → `bekuld` → `allapot` (5 perces ciklus) → `begyujt` → `kapuz` → `javit` (1 kör) → `rogzit` → `beir --regi-elavult --kezi-marad` → adagjelentés; a kétszer bukottak a `bukottak.tsv`-be.
+- **Nyitott a felhasználóra:** DT-F27b (a)–(c).
