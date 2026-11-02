@@ -139,6 +139,6 @@ Az ISTENTISZT-001 Feed-állása a commit és a friss main beolvasztása után **
 
 A #595 (TEREMT-002, definíció nélküli lábjegyzet) szabálya a 24.; az 1/a próza-szabály az orkesztrátor megállapodása szerint a **25.** (1A.8). A friss main beolvasztása (1A.9) után az `ellenoriz.py`-ban mindkettő fut: a 24. RENDBEN, a 25. JELENTÉS (8 motívum, 224 nem arany szintű igehely); a teljes futás RENDBEN 19, SÉRTÉS 0, KÉZI 2, JELENTÉS 7. Tesztek: `teszt_proza_1a.py` 11 OK, `teszt_ellenoriz_vedokorlat.py` (a 24. szabály tesztjei is) 31 OK, `teszt_muhely_allapot.py` 21 OK.
 
-A TEREMT-002 lapja a beolvasztott generátorral újragenerálva (1A.10): a három DT-F1Ab „Funkció:” sor megmaradt; a lapon 131 lábjegyzet-hivatkozás, 93 különböző kulcs, **0 definíció nélküli**. A másodszori újragenerálás bájtra azonos (stabil); a main lapjához képest az egyetlen eltérés két üres sor a lábjegyzet-blokk előtt, amelyet a beolvasztott generátor ír.
+A TEREMT-002 lapja a beolvasztás után (1A.9): a három DT-F1Ab „Funkció:” sor megmaradt; a lapon 131 lábjegyzet-hivatkozás, 93 különböző kulcs, **0 definíció nélküli** (24. szabály RENDBEN); az E28 és az E29 0 találat. *Generátor-eltérés (nem e menet hibája, jelentve):* a helyben futtatott `general.py --cel lexikon --id TEREMT-002 --ir` két üres sort tesz a `res_labjegyzet` blokk elé, az E28 újragenerálása nem; ezért a lap a beolvasztás utáni, E28-egyező változatban maradt (1A.10 → 1A.11).
 
 *Javítás:* a 6. szakasz összesítő sorában az arany szintű igehelyek száma 25 (22 + 1 + 2), nem 24; a KIRALY-001 újragenerálása után 31.
