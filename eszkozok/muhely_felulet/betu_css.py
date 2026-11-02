@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """F156: a Dashboard betű-CSS-ei (data: URL) az olvasó-szerver OFL betűfájljaiból (latin + latin-ext).
-Használat: python generalt/muhely/dashboard/betu_css.py <kimeneti könyvtár>"""
+Használat: python eszkozok/muhely_felulet/betu_css.py <kimeneti könyvtár>"""
 import base64
 import os
 import re
@@ -10,7 +10,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-GYOKER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+GYOKER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 F = os.path.join(GYOKER, 'eszkozok', 'olvaso_szerver', 'statikus', 'fonts')
 css_src = open(os.path.join(F, '..', 'fonts.css'), encoding='utf-8').read()
 SPEC = [

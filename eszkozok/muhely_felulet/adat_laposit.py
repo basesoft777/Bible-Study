@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """F156: a nyilvános/belső Feed-JSON laposítása a Dashboard adatfájljaihoz (motivumok, kapuk, stash, tortenes,
-belso_kapuk). Használat: python generalt/muhely/dashboard/adat_laposit.py <kimeneti könyvtár>"""
+belso_kapuk). Használat: python eszkozok/muhely_felulet/adat_laposit.py <kimeneti könyvtár>"""
 import json
 import os
 import sys
@@ -9,7 +9,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-G = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+G = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'generalt', 'muhely')
 out = sys.argv[1]
 os.makedirs(out, exist_ok=True)
 ny = json.load(open(os.path.join(G, 'feed_nyilvanos.json'), encoding='utf-8'))

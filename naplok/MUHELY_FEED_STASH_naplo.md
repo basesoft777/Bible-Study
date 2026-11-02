@@ -156,7 +156,7 @@ A betűk (Source Serif 4, IBM Plex Sans, IBM Plex Mono; OFL, a `eszkozok/olvaso_
 
 ## A Dashboard forrása a repóban (újraépíthetőség)
 
-A Dashboard (`https://claude.ai/artifact/S5LqyrUsFN8RXHXLrURnpk`) oldala nem generálódik, kézzel írt: a forrás a `generalt/muhely/dashboard/` alatt van, hogy a következő frissítés ne írja felül a javításokat.
+A Dashboard (`https://claude.ai/artifact/S5LqyrUsFN8RXHXLrURnpk`) oldala nem generálódik, kézzel írt: a forrás az `eszkozok/muhely_felulet/` alatt van (a `generalt/` a kimenet rétege, kézzel írt fájl nem kerül oda; README-vel), hogy a következő frissítés ne írja felül a javításokat.
 
 - `index.html`: az oldal (`files/index.html` a Dashboardban); a téma a `data-mode` ősből olvasódik (`.sotet` osztály), az A-tokenek saját osztályokon.
 - `look.json`: a `dash/look` (az A értékei tartalékként).
