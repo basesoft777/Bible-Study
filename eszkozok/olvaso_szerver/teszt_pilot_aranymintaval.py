@@ -293,6 +293,8 @@ class TestPilotAranymintaval(unittest.TestCase):
 
     def test_karoli_strong_konyvek_jelzese_a_szo_lapon(self):
         t = szoveg(self.szo_panel('H6440'))
+        # DT-F149a: „a többi könyv még hiányzik” csak akkor áll, ha van párosítás nélküli könyv
+        self.assertEqual('a többi könyv még hiányzik' in t, len(self.kozos.karoli_strong_konyvek) < len(self.kozos.konyvek))
         self.assertIn('%d feldolgozott könyv' % len(self.kozos.karoli_strong_konyvek), t)           # az F22 óta mind a 66 (nem a pilot 57-je)
 
     # -- 7. a döntések (DT-F76e–i, felhasználó, 2026-10-14) kódja: valódi tesztek ---------------------------------------------
