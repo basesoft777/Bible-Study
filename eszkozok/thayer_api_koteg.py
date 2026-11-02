@@ -67,6 +67,7 @@ import bdb_api_koteg as B  # noqa: E402  (csak a tiszta segédei: költség, JSO
 ROOT = AK.tokenek.ROOT
 MODELL = AK.MODELL                 # claude-sonnet-5-5 (a kérésben kért; a rögzítés a válasz tényleges modellnevét írja)
 PLAFON_USD = 0.0                   # beküldés tilos, amíg a plafon nincs megadva (--plafon)
+EREDET = ''                        # --eredet: a rogzit megjegyzésébe kerülő eredet-szöveg (F07 M0 (f))
 ELOZO_KIADAS_USD = 0.0             # egy közös plafon alatt futó másik adag(ok) mért költsége (--elozo-kiadas)
 MUNKA_GYOKER = os.path.join(ROOT, 'forditas', 'thayer_api')
 MUNKA_TABLA = F.MUNKA_UT
@@ -89,9 +90,10 @@ ALLANDO_KAR_TOKEN = ALLANDO_REF_KAR / BE_KERES     # karakter / token az álland
 B_BE_ALLANDO = 0.684               # bemeneti token / állandó karakter a szűkített B-kérésben (14 426 token / ~21 100 karakter; 4 pont)
 B_BE_KAR = 3.178                   # bemeneti token / forráskarakter a B-kérésben (4 pont, átl. |hiba| 7,5%)
 B_KI_KAR = {'high': 1.959, 'medium': 1.5207}     # kimeneti (gondolkodással) token / forráskarakter a B-kérésben, effortonként (4-4 pont)
-A_KI_EFFORT = {'high': 1.0, 'medium': 0.776}     # az egy Strongos kimenet effort-szorzója (a B-kérések medium/high aránya; az (e) mérés felülírja)
-JAVITO_ARANY = {'A': 0.87, 'B': 0.315}           # javító kör költsége / 1. kör költsége: A = nagy (mért: adag1 0,867, adag99 0,883),
-#                                                  B = kicsi/közepes (high 0,315, medium 0,306; a régi egyenkénti javítással); a B-javító mérése felülírja
+A_KI_EFFORT = {'high': 1.0, 'medium': 0.51}  # az egy Strongos kimenet effort-szorzója (F07 M0 (e): medium/high kimenet 33 660 / 66 300 token az 5 nagy kérésen)
+JAVITO_ARANY = {'A': 0.90, 'B': 0.10}           # javító kör költsége / 1. kör költsége. A = nagy: mért pooled 4,50 / 5,00 USD (adag1, adag99, adag7901, adag7902-3);
+#                                                  B = kicsi/közepes B-javító: 1 mért J001 kérés (0,0233 USD, 2 Strong: a szabály-rész 14,4 ezer token egyszer) + a 60 Strong
+#                                                  utáni 6,7% Strongonkénti bukás -> konzervatív 0,10 (manual; az A7+ adagok mért adata felülírja)
 # B-út (csoportos): a kicsi (< KICSI_HATAR) és a közepes (< NAGY_HATAR) Strongok n Strongonként egy kérésben, a nagyok egyenként
 KICSI_HATAR, NAGY_HATAR = 500, 3000
 B_DB = 20                          # Strong / B-kérés (15–25; a mérés tárgya, --b-db)
@@ -660,7 +662,8 @@ def javito_becsles(tetelek):
 def javit(strongok, cimke, plafon=None, hivo=None):
     plafon = PLAFON_USD if plafon is None else plafon
     hivo = hivo or AK.http
-    elozo = [r for r in jsonl_olvas(ut('kapu_eredmeny.jsonl')) if r['allapot'] == 'javitando' and r['proba'] == 1]
+    lista = set(strongok)      # csak a megadott listából javít (egy részlistával a javító kör szűkíthető)
+    elozo = [r for r in jsonl_olvas(ut('kapu_eredmeny.jsonl')) if r['allapot'] == 'javitando' and r['proba'] == 1 and r['strong'] in lista]
     if not elozo:
         print('nincs javítandó Strong')
         return 0
@@ -734,7 +737,14 @@ def rogzit(strongok, datum=None, szaraz_futas=False, munka_ut=None, bukott_ut=No
         sp = r['strong']
         if r['allapot'] == 'kesz':
             allapot, mod = modell_allapot(r['modellek'])        # a válasz ténylegesen futott modellnevéből
-            megj = '; '.join(x for x in ('API Batch (effort=%s, %d. próba)' % (EFFORT, r['proba']),
+            eredet = ''
+            if EREDET:      # F07 M0 (f): a #159 mérő batchéből származó, újrakapuzott sor: az adag és a batch-azonosító(k)
+                batchek_ = []
+                for rek in jsonl_olvas(ut('valaszok.jsonl')):
+                    if rek['custom_id'] in (custom_id(sp, 1, p_) for p_ in range(1, r['proba'] + 1)) and rek.get('batch_id') not in batchek_:
+                        batchek_.append(rek.get('batch_id'))
+                eredet = '%s; batch: %s' % (EREDET, ', '.join(str(b_) for b_ in batchek_))
+            megj = '; '.join(x for x in ('API Batch (effort=%s, %d. próba)' % (EFFORT, r['proba']), eredet,
                                          ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(r['kivetel'])) if r['kivetel'] else '') if x)
             uj_sorok += F.szakasz_sorok(sp, TB.szakaszok(sp), r['vegleges'], allapot, mod, datum, term_verzio, megj)
             E.kisnagybetu_naplo(sp, [tuple(v) for v in r['valtozasok'] if v[0].startswith('5_kisnagybetu')])
@@ -1013,7 +1023,7 @@ def b_bekuld(strongok, cimke, db, plafon=None, hivo=None):
 # ---------- main ----------
 
 def main(argv=None):
-    global MUNKA, PLAFON_USD, ELOZO_KIADAS_USD, EFFORT, B_DB, B_KAR, SZUKIT
+    global MUNKA, PLAFON_USD, ELOZO_KIADAS_USD, EREDET, EFFORT, B_DB, B_KAR, SZUKIT
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('parancs', nargs='?', choices=['lista', 'szaraz', 'bszaraz', 'bbekuld', 'bekuld', 'allapot', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'])
     ap.add_argument('--adag', type=int, default=None)
@@ -1035,6 +1045,7 @@ def main(argv=None):
     ap.add_argument('--regi-elavult', action='store_true')
     ap.add_argument('--kezi-felulir', action='store_true')
     ap.add_argument('--kezi-marad', action='store_true')
+    ap.add_argument('--eredet', default='', help='rogzit: az eredet szövege a megjegyzésben (pl. a #159 mérő batchéből, újrakapuzva, adag1591)')
     ap.add_argument('--commit', action='store_true', help='bekuld/begyujt/javit/rogzit után a munkamappa commitja és pusholása (api_koteg.git_mentes)')
     ap.add_argument('--onteszt', action='store_true')
     a = ap.parse_args(argv)
@@ -1051,6 +1062,7 @@ def main(argv=None):
         return 2
     MUNKA = a.munka or os.path.join(MUNKA_GYOKER, 'adag%d' % a.adag)
     PLAFON_USD = a.plafon
+    EREDET = a.eredet
     ELOZO_KIADAS_USD, EFFORT, B_DB, B_KAR, SZUKIT = a.elozo_kiadas, a.effort, a.b_db, a.b_kar, not a.nincs_szukites
     cimke = a.cimke or 'adag%d' % a.adag
     strongok = strongok_olvas(a.strongok)

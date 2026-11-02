@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""F07 M0 (a) — a becslő újraillesztése a #27 M1 és a #159 mért adataiból (N68 lezárása).
+"""F07 M0 (a), (e) — a becslő újraillesztése a #27 M1 és a #159 mért adataiból (N68 lezárása).
 
     python naplok/THAYER_ELES_M0.py illeszt        # az együtthatók, a pontszám, a maradék hiba (kiírja; a naplóba másolandó)
     python naplok/THAYER_ELES_M0.py sorrend [ts]   # naplok/THAYER_ELES_sorrend.tsv + adagterv (becslés effortonként)
