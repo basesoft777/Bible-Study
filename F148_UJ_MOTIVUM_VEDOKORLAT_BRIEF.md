@@ -6,9 +6,12 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: opus
-allapot: dontesre_var
+allapot: lezarva
+ag: claude/f148-vedokorlat-4b117b
+pr: 535
 ad: új motívumon a szótári gerinc kapcsoló nélkül fut, a még nem migrált régiek egy kivétellistán állnak (amely a #123 végén kiürül); az ellenoriz.py négy új szabálya gépileg kizárja a hiányos adatot és a hibás generált lapot; a szakaszcímke a jelentes_szam-ból gépileg vezetődik le, és eltérésnél jelez
-kovetkezo: "Te: a #535 merge-re kész (⛔ A feloldva, DT441; SÉRTÉS 0). A #528 BDB-sorrend PR-ja után az ALVIL-001 újragenerálása kell; merge a felhasználóé"
+kovetkezo: "Te: a zárás PR-jének átnézése és a merge (a munka a PR #535-tel 2026-11-01-én bekerült a main-be)"
+lezarva_osszegzes: "(11.02) A szótári gerinc alapból be: a kivétel az adat/funkcio_kapcsolok.tsv `kivetel` sora (DT437; 7 motívum: a #123 hat hátralévője és a TEREMT-002 a #12 adatcommitjáig). Az ellenoriz.py 18–21. szabálya (gerinc-címke, kötelező mezők, a jelentes_hu a szóról szól, a lap tisztasága), a szakasz_cimke_levezet.py (regresszió: ISTENTISZT-001 33/33, ALVIL-001 72/72), SEMA 2.2.2/2.40/2.44; az ALVIL-001 59 H7585-sora gépileg kitöltve (DT441). DT437–DT441 🟢; PR #535 mergelve 2026-11-01, a #528 utáni ALVIL-001-lap friss (a zárás újrarenderelte: a sorvégen kívül azonos). Továbbadva: N-F148a, b (már felvéve), N-F148c, d, e (zárójelentés: naplok/UJ_MOTIVUM_VEDOKORLAT_zaras.md)."
 olvas: [tematikus_lezart/ALVIL-001*, tematikus_lezart/naplok/ALVIL-001*, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/teszt_ellenoriz_11.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/glossza_lexikon_forditas.py, adat/SEMA.md, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/lexikon_hivatkozasok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, lexikon/, DONTESEK.md, NYITOTT_FELADATOK.md, F131_SZOTARI_GERINC_BRIEF.md, naplok/F131_SZOTARI_GERINC_naplo.md, F123_MIGRACIO2_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, MUNKAMENET.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, .github/workflows/ellenorzes.yml]
 ir: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, lexikon/ALVIL-001_TUDOMANYOS.md, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/szerep_karoli.py, adat/funkcio_kapcsolok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, eszkozok/szakasz_cimke_levezet.py, eszkozok/teszt_szakasz_cimke_levezet.py, eszkozok/teszt_ellenoriz_vedokorlat.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, adat/SEMA.md, adat/szotar_szakasz_cimke.tsv, naplok/F148_*]
 fugg: []
@@ -174,3 +177,4 @@ A #125 (`F125_GERINC_KARTYA_SZOVEG_BRIEF.md`, `ir: [MUNKAMENET.md, …]`) a geri
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v0 | 2026.10.29 | Tervezet a felhasználó 2026-10-29-i kérésére („ez a teljes feladatsort orkesztráld le”), az orkesztrátor megbízásából; befogadásra vár. |
+| zárás | 2026.11.02 | F148.13: a fejléc `lezarva`; zárójelentés `naplok/UJ_MOTIVUM_VEDOKORLAT_zaras.md`; a naplóból át nem vezetett három tétel a `NYITOTT_FELADATOK.md`-be (N-F148c, d, e). A brief szövege (v0) a végrehajtás előtti terv; a megvalósult alakot (a kivétellista helye a DT437 szerint adat, nem kódbeli konstans; a négy szabály egy commitban) a napló rögzíti. |
