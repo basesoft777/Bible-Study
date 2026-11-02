@@ -1,4 +1,4 @@
-# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@822376b72d,adat/elofordulasok.tsv@6f5dc48902,adat/jeloltek.tsv@cb61f44e0e,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@a7f6298c93,eszkozok/lekerdez.py@b9dd893f71,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-01T20:10Z
+# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@189dc7cf3c,adat/elofordulasok.tsv@6f5dc48902,adat/jeloltek.tsv@314b15d06b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@a7f6298c93,eszkozok/lekerdez.py@b9dd893f71,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-02T07:11Z
 
 # Prioritási térkép — hol sűrűsödnek a feldolgozatlan gerinc-találatok
 
@@ -39,7 +39,7 @@ A `szuretlen_tag` arány azt mutatja, a motívum új találatainak mekkora hány
 |---|---|---|---|---|
 | ANTROP-001 | 431 | 1033 | 71% | 3 |
 | HAMART-001 | 8 | 1234 | 99% | 4 |
-| ISTENTISZT-001 | 11 | 0 | 0% | 1 |
+| ISTENTISZT-001 | 11 | 0 | 0% | 0 |
 | KIRALY-001 | 225 | 643 | 74% | 0 |
 | MENNY-001 | 0 | 5496 | 100% | 0 |
 

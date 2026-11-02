@@ -1,0 +1,681 @@
+{
+ "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
+ "generalva": "2026-11-02T06:33Z",
+ "commit": "000cd2e2",
+ "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
+ "motivumok": [
+  {
+   "id": "KIRALY-001",
+   "cim": "Melkizedek-rend",
+   "tema": "Krisztológia",
+   "pardes_szint": "Drash/Sod",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 17 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 22 kiejtés hiányzik, 23 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 1,
+   "elvetett_jelolt_db": 13,
+   "beepitett_jelolt_db": 9,
+   "stash": null,
+   "olvasoi_mondat": "9 igehely feldolgozva, 1 vizsgálat alatt, 13 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+  },
+  {
+   "id": "ISTENTISZT-001",
+   "cim": "Névbe vetett segítségülhívás",
+   "tema": "Pneumatológia/istentisztelet",
+   "pardes_szint": "Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
+    },
+    {
+     "sorszam": 3,
+     "szin": "zold",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "4 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "zold",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A motívum határáról szóló kérdések megválaszoltak."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 3 kiejtés hiányzik."
+    },
+    {
+     "sorszam": 7,
+     "szin": "zold",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "9 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 5,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 4,
+   "elvetett_jelolt_db": 105,
+   "beepitett_jelolt_db": 24,
+   "stash": null,
+   "olvasoi_mondat": "22 igehely feldolgozva, 4 vizsgálat alatt, 105 kizárva; a nyolc ellenőrzési lépésből 5 teljesül."
+  },
+  {
+   "id": "TEREMT-001",
+   "cim": "Tehóm/Abüsszosz",
+   "tema": "Teremtéstan",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 35 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 2,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 2,
+   "beepitett_jelolt_db": 42,
+   "stash": null,
+   "olvasoi_mondat": "42 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 2 kizárva; a nyolc ellenőrzési lépésből 2 teljesül."
+  },
+  {
+   "id": "ALVIL-001",
+   "cim": "Hádész/Seol",
+   "tema": "Eszkatológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
+    },
+    {
+     "sorszam": 3,
+     "szin": "zold",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
+    },
+    {
+     "sorszam": 4,
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 7 kiejtés hiányzik."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "8 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 4,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 5,
+   "beepitett_jelolt_db": 72,
+   "stash": null,
+   "olvasoi_mondat": "72 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 5 kizárva; a nyolc ellenőrzési lépésből 4 teljesül."
+  },
+  {
+   "id": "MENNY-001",
+   "cim": "Isten fiai/Nefilim",
+   "tema": "Angyalológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "2 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 24 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 2,
+   "elvetett_jelolt_db": 1,
+   "beepitett_jelolt_db": 9,
+   "stash": null,
+   "olvasoi_mondat": "9 igehely feldolgozva, 2 vizsgálat alatt, 1 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+  },
+  {
+   "id": "ANTROP-001",
+   "cim": "Pneuma/pszükhé",
+   "tema": "Antropológia",
+   "pardes_szint": "Pshat/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "3 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 9 kiejtés hiányzik, 18 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 3,
+   "elvetett_jelolt_db": 0,
+   "beepitett_jelolt_db": 8,
+   "stash": null,
+   "olvasoi_mondat": "8 igehely feldolgozva, 3 vizsgálat alatt; a nyolc ellenőrzési lépésből 1 teljesül."
+  },
+  {
+   "id": "HODIT-001",
+   "cim": "Refáim/óriás-népek",
+   "tema": "Teremtéstan",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 1 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "14 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 19 kiejtés hiányzik, 15 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 1,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 14,
+   "elvetett_jelolt_db": 4,
+   "beepitett_jelolt_db": 33,
+   "stash": null,
+   "olvasoi_mondat": "33 igehely feldolgozva, 14 vizsgálat alatt, 4 kizárva; a nyolc ellenőrzési lépésből 1 teljesül."
+  },
+  {
+   "id": "HAMART-001",
+   "cim": "Bűn gyűrűzése",
+   "tema": "Hamartológia",
+   "pardes_szint": "Remez/Drash",
+   "allasfokozat": "Ellenőrzés alatt: a lap megvan, a kapuk egy része még nem teljesül",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "piros",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "Az ellenőrzés 4 hibát talált a szövegekben."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "piros",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "8 igehely vizsgálata folyamatban van."
+    },
+    {
+     "sorszam": 5,
+     "szin": "zold",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A motívum határáról szóló kérdések megválaszoltak."
+    },
+    {
+     "sorszam": 6,
+     "szin": "piros",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lapon 67 kiejtés hiányzik, 31 rész magyarázat nélkül áll."
+    },
+    {
+     "sorszam": 7,
+     "szin": "zold",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lektor minden kérdése lezárult."
+    },
+    {
+     "sorszam": 8,
+     "szin": "piros",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "1 kapcsolódó munka vagy kérdés vár megoldásra."
+    }
+   ],
+   "zold_db": 3,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 8,
+   "elvetett_jelolt_db": 163,
+   "beepitett_jelolt_db": 52,
+   "stash": null,
+   "olvasoi_mondat": "52 igehely feldolgozva, 8 vizsgálat alatt, 163 kizárva; a nyolc ellenőrzési lépésből 3 teljesül."
+  },
+  {
+   "id": "TEREMT-002",
+   "cim": "Tohu va-vohu",
+   "tema": "Teremtéstan + Eszkatológia",
+   "pardes_szint": "Remez",
+   "allasfokozat": "Feldolgozás alatt",
+   "kriteriumok": [
+    {
+     "sorszam": 1,
+     "szin": "zold",
+     "olvasoi_nev": "Az adatok összhangja",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek, ellentmondás nincs."
+    },
+    {
+     "sorszam": 2,
+     "szin": "zold",
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "A lap szövegei hibátlanul átmentek az ellenőrzésen."
+    },
+    {
+     "sorszam": 3,
+     "szin": "piros",
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_allapot": "munka van hátra",
+     "olvasoi_szoveg": "A lap még átállításra vár az új szerkesztési rendre."
+    },
+    {
+     "sorszam": 4,
+     "szin": "zold",
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
+    },
+    {
+     "sorszam": 5,
+     "szin": "szurke",
+     "olvasoi_nev": "A motívum határa",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A határ vizsgálata még nem készült el."
+    },
+    {
+     "sorszam": 6,
+     "szin": "szurke",
+     "olvasoi_nev": "Olvasható lap",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lap még nem készült el."
+    },
+    {
+     "sorszam": 7,
+     "szin": "szurke",
+     "olvasoi_nev": "Lektori átolvasás",
+     "olvasoi_allapot": "még nem vizsgáltuk",
+     "olvasoi_szoveg": "A lektori átolvasás még nem indult el."
+    },
+    {
+     "sorszam": 8,
+     "szin": "zold",
+     "olvasoi_nev": "Függő munka",
+     "olvasoi_allapot": "rendben",
+     "olvasoi_szoveg": "Nincs a motívumot érintő megoldatlan kérdés vagy megállt munka."
+    }
+   ],
+   "zold_db": 4,
+   "ossz_db": 8,
+   "nyitott_jelolt_db": 0,
+   "elvetett_jelolt_db": 63,
+   "beepitett_jelolt_db": 3,
+   "stash": null,
+   "olvasoi_mondat": "3 igehely feldolgozva, nincs vizsgálat alatt álló igehely, 63 kizárva; a nyolc ellenőrzési lépésből 4 teljesül."
+  }
+ ],
+ "merok_osszesen": {
+  "motivum_db": 9,
+  "kesz_db": 0,
+  "kapu_zold": 22,
+  "kapu_ossz": 72,
+  "nyitott_jelolt": 32
+ },
+ "heti_tortenes": [
+  {
+   "datum": "2026-11-01",
+   "motivum": "ISTENTISZT-001",
+   "olvasoi_esemeny": "16 igehelyet kizártunk, mert nem illik a motívum határába"
+  },
+  {
+   "datum": "2026-10-29",
+   "motivum": "ISTENTISZT-001",
+   "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
+  },
+  {
+   "datum": "2026-10-28",
+   "motivum": "ALVIL-001",
+   "olvasoi_esemeny": "3 igehelyet kizártunk, mert nem illik a motívum határába"
+  }
+ ],
+ "elvetett_jeloltek_osszesen": 356
+}
