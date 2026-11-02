@@ -108,15 +108,42 @@ Heb.6.19 = Heb.12.5). Az átvilágítás 11 ismert esetéből 9-et fog meg; az e
 22:16 → Jón 1:5; Péld 9:18) nem — ez korlát. A javítás előtt a nyers HunKar-forrás és a 2026-08-24-i konverzió
 vizsgálata kell (forrás- vagy konverziós hiba?): **N-F156a**. A lapon addig KH_MASOLT figyelmeztetés.
 
-## 6. Nyitott ⛔ (az orkesztrátornak feltéve, 2026-11-02)
+## 6. Döntések (az orkesztrátor, a felhasználó 2026-11-02-i felhatalmazásával)
 
-- **DT-F156l — a vizuális átnézés helye:** (a) `kiadasok.tsv` új oszlop · **(b) új `adat/lap_atnezesek.tsv`, a lap
-  commitjához kötve (javaslat)** · (c) napló gépi sora. A `kriterium_9` addig a (b) szerint olvas, és a tábla hiányában
-  egyetlen motívumot sem enged zöldre (konzervatív). A tábla és a SEMA-szakasz csak a döntés után készül.
-- **Az arany lap a 9. kapun:** (1) a kapu mindenkire érvényes, az ISTENTISZT-001 8/9, a lista a 2. kiadás bemenete
-  (javaslat) · (2) az 1. kiadás mentesül · (3) egyes osztályok (IDEZOJEL, KONYV, ATIRAS) FIGYELMEZTETÉS-re lefokozva.
+- **DT-F156l (b):** a vizuális átnézés helye az `adat/lap_atnezesek.tsv` (SEMA 2.48), a lap commitjához kötve. A `ki`
+  csak „felhasználó” lehet, az `idezet` az ő szavai szó szerint; üres idézettel vagy más szerzővel a sor nem érvényes
+  (`muhely_allapot.atnezes_ervenyes`, teszttel). A tábla ma üres, ezért a 9. kapu minden lapon piros.
+- **DT-F156m (1):** a kapu az arany lapra is érvényes, az ISTENTISZT-001 8/9. A kiadott lap a Stash-ben marad, a
+  `kiadas_allapot` mondattal („Az 1. kiadás érvényes; a 2. kiadás javítandói nyitottak.”); ez a Feed Stash-táblájában
+  („Kiadás” oszlop) és az olvasói előnézet kártyáján is látszik. Végponttól mérve (`muhely_allapot.py --motivum
+  ISTENTISZT-001 ALVIL-001`): az arany lap 8/9, a Stash-ben marad; az ALVIL-001 6/9.
+- **A gyanús KH-sorok elrejtése:** a hatás mérve (`naplok/KH_ELREJTES_hatas.py`): 241 Károli-KH sorból 52 tűnne el,
+  28 igehely-fejléc üresedne ki, a Minősítés 16 KH-párjából 1. A bekapcsolás generátor-változtatás, a Feed 3. kapuját
+  (nulla-diff) az érintett lapokon pirosra fordítja az újragenerálásig — a kérdés az orkesztrátornál.
 
-## 7. Korlátok és követő tételek
+## 7. Az arany lap 2. kiadásának javítandói, osztályonként (DT-F156m)
+
+A 2026-11-02-i mérés 61 BUKÁS-tétele (az orkesztrátor üzenetében „63”: az a kalibráció korábbi állása; az idézet-tűrés
+2 hamis jelzést megszüntetett). Sorszám: a `lexikon/ISTENTISZT-001_TUDOMANYOS.md` mai Markdown-sora; a teljes lista
+idézettel: `naplok/OLVASOI_KAPU_meres.md`. A „hol javítandó” a valószínű forrás (a lap generált: a javítás a forrásban
+történik, utána újragenerálás).
+
+| Osztály | Tétel / előfordulás | Mi | Hol javítandó |
+|---|---|---|---|
+| BELSO | 25 / 167 | az 1/b indokaiban `F110 szűrő (DT283)`, `DT476 K2/K4`, `DT478`, `N59`, „orkesztrátor-chat”, `motivumok.tsv`; a Minősítés napló-fájlneve (1217–1220); `DT479`, `DT280` az 5. szakaszban; `DT476 K5` az 1/a-ban (206, 212); belső fájlutak és „tanítói fájl” a 6/b-ben és a 7.-ben (1633, 1637, 1657, 1664, 1721) | `adat/jeloltek.tsv` indoklás · `adat/kapcsolatok.tsv` · a kézi forrás (`motivumok/ISTENTISZT-001.md`) |
+| IDEZOJEL | 9 / 67 | egyenes `"` a Kivonatban (9), az 1/a-ban (176–280), az 1/b-ben, a Rokon szavakban, a Minősítésben, a 6. PaRDeS-keretben (1424–1434) és a 7.-ben | kézi forrás; `jeloltek.tsv`; a szótári fordítás |
+| ANGOL | 9 / 31 | „was called”, „having been called” (1/b), „LXX_OS” (807, 809), „study” (1586, 1624, 1695–1714), „gap” (6/b tábla), „scan/scanje” (1675, 1720); a 1664 „study guide” könyvcím — hamis jelzés | `jeloltek.tsv`; a generátor (LXX-híd mondata); kézi forrás |
+| KONYV | 6 / 13 | „Zef” (328, 1222), „Csel” (1185, KH-megjelenítés), „Ám” (1595, 1615), „Lk”, „1Jn” (a TBESG/LSJ-fordításban) | `jeloltek.tsv`; a KH-tábla megjelenítő alakja (generátor: a normalizáló tábla alakjára kell fordítani); kézi forrás; szótári fordítás |
+| IDEZET | 5 / 5 | jelöletlen saját fordítás az 1/a-ban: 2Móz 33:19 „kihirdetem” (Károli: „kiáltom”), 2Móz 34:5, 1Kir 18:24, Zsolt 116:4, Jóel 2:32 | kézi forrás (`kapcsolodas`) |
+| BDB_JEL | 4 / 10 | `®°` (653), `^` (659–750), rafe (736, 750), `,,` (736, 750) | a BDB-fordítás / forrásszöveg (`adat/bdb_szakasz_hu.tsv`) |
+| ZAROJEL | 2 / 2 | csonka BDB-szakasz (722 „(vö. Qal 5”); 759 bizonytalan (a BDB „(||” jele) | `adat/bdb_szakasz_hu.tsv` |
+| ATIRAS | 1 / 1 | יְהוָה: „Jahve” (81) és „JHVH” (407) | kézi forrás és a Jelmagyarázat egységesítése |
+
+FIGYELMEZTETÉS (nem blokkol, a 2. kiadásban átnézendő): KH_MASOLT ×3 (Zsolt 116:13, ApCsel 2:21, 9:14), PONT ×3
+(„a tematikus study 2. és 3. pontjába”, „l. 1. pont”), MOTIVUM_ID ×2 (a 5/b „Mit mutat” sora), HIANYJEL ×1 (16 cellában
+„*(nincs hozzárendelés)*”), ATIRAS_VALT ×1 (epikaleszetai / epikaleszétai).
+
+## 8. Korlátok és követő tételek
 
 - A súlyosságok a jelen kalibráció; a BELSO/ANGOL listák bővíthetők, ha új zsargon jelenik meg.
 - A briefek (`F10_LEXIKON_LEZARAS_BRIEF.md`, `F123_MIGRACIO2_BRIEF.md`) „Feed 8/8” szövegét ez az ág nem írta át (a saját
