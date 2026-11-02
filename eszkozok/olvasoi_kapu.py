@@ -641,7 +641,8 @@ def ell_kivonat(sorok):
                     continue
                 fonev = m.group(0).lower()
                 # a testamentum: a darabszó saját jelzője, vagy a mondatban előtte álló utolsó testamentum-szó
-                elotte = re.findall(r'[Úú]jszövetség|[Óó]szövetség', mondat[:m.start()])
+                # csak a főnév („az Újszövetségben”); a jelzői „újszövetségi folytatás” nem szűkít
+                elotte = re.findall(r'Újszövetség(?!i)|Ószövetség(?!i)', mondat[:m.start()])
                 testamentum = 'ú' if 'újszövetségi' in fonev else 'ó' if 'ószövetségi' in fonev else \
                     (elotte[-1][0].lower() if elotte else '')
                 if testamentum == 'ú':
