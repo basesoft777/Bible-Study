@@ -95,6 +95,9 @@ def _re(alak):
                       + (r'(?![\w])' if alak[-1:].isalnum() else '') + (_LANC_UTAN if egybetus else ''))
 
 
+HOSSZULO = {'a': 'á', 'e': 'é'}      # F07.5: szóvégi a/e -> á/é toldalék előtt
+
+
 def _re_cel(alak, tipus=''):
     """A cél-oldali (fordítás-beli) keresés (F145 (b), (c)): `_re` + toldalék-tűrés (a legalább `TOLDALEK_MIN` betűs, nem könyvrövidítés cél-alaknál), számjegy-előtag a könyvrövidítésnél."""
     if len(alak) == 1 and alak.isalpha():
@@ -102,6 +105,9 @@ def _re_cel(alak, tipus=''):
     elotte = r'(?<![^\W\d_])' if tipus == KONYVROV else r'(?<![\w])'
     toldalekos = tipus != KONYVROV and len(alak) >= TOLDALEK_MIN
     veg = r'(?![\w])' if alak[-1:].isalnum() and not toldalekos else ''
+    if toldalekos and alak[-1] in HOSSZULO:
+        # F07.5: a magyar toldalék előtt a szóvégi a/e hosszú lesz (Septuaginta -> Septuagintában, Philóne -> ...): a tő + a|á, e|é
+        return re.compile(elotte + re.escape(alak[:-1]) + '[' + alak[-1] + HOSSZULO[alak[-1]] + ']')
     return re.compile(elotte + re.escape(alak) + veg)
 
 

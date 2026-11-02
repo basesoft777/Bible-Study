@@ -355,8 +355,16 @@ def _magyar_alak_megvan(angol, magyar, szoveg):
     return any(m.search(szoveg) for m in _magyar_mintak(angol, magyar))
 
 
+# F07 M0 (orkesztrátori döntés, 2026-11-02): a `Heb.` c:v előtt könyvhivatkozás (`Heb. 7:3` -> `Zsid 7:3`, a normalizáló/11. kapu kezeli),
+# nem a `héb.` (héber) rövidítés; a terminológia-sor csak c:v nélkül él.
+CV_ELOTT_NEM = {'Heb.'}
+CV_UTAN = r'(?!\s*\d{1,3}:\d)'
+
+
 def _angol_minta(angol):
     vege = r'(?![A-Za-z])' if angol[-1:].isalpha() else ''
+    if angol in CV_ELOTT_NEM:
+        vege += CV_UTAN
     return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
 
 
