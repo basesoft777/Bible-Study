@@ -184,7 +184,47 @@ def tagolas_igazitas(forras, forditas):
     return ki
 
 
+# F07 A1 (DT-F07i): a prozaban allo utalasok (`see b. below`, `cf. II. 8 above`, `see αἰών, 1 b.`; magyarul `l. alább III. 2`,
+# `vö. 6 b. lent`) belso szamai/betui/romai szamai nem szakaszjelolok: a magyar szorend megcsereli a sorrendjuket, a
+# kapu pedig hamisan buktatott (A1: 6 Strong az 1. kor utan is). A maszk helyben szokozre cserel (a pozicio nem csuszik).
+_UTAL_TOK = r'(?:[IVX]{1,4}|\d{1,2}[a-i]?|[a-i]|[A-D]|[α-ω])\b\.?'
+_UTAL_SOR = r'(?:%s[\s,]*(?:(?:and|és)\s+)?){1,4}' % _UTAL_TOK
+_UTAL_E_CUE = r'\b(?:cf|see|compare|vide|and see|differently)\.?\s+'
+_UTAL_E_IRANY = r'(?:below|above)'
+_UTAL_FORRAS = re.compile('|'.join([
+    # `see b. below`, `differently in II. 9 below`, `but see under II. 9 below`
+    _UTAL_E_CUE + r'(?:(?:under|in|at)\s+)?' + _UTAL_SOR + _UTAL_E_IRANY + r'\b',
+    # `differently below, II. 1`
+    _UTAL_E_CUE + _UTAL_E_IRANY + r',?\s+(?:(?:under|in|at)\s+)?' + _UTAL_SOR,
+    # `see αἰών, 1 b.`, `see ἕως, II. 2 c.`
+    _UTAL_E_CUE + r'[^\W\d_]+,\s*' + _UTAL_SOR,
+    # `see 5 d.γ.` (csak mondat-/zarojelvegen)
+    r'\b(?:cf|see)\.?\s+' + _UTAL_SOR + r'(?=[;,)\]]|\.\s|\.$|$)',
+]))
+_UTAL_IRANY = r'(?:alább|fent|lent|feljebb|lejjebb)'
+_UTAL_PONT = r'(?:pontot|pontban|pont|alatt|szakaszt|szakaszban)'
+_UTAL_H_CUE = r'\b(?:vö|l|lásd|másként|másképp|eltérően)\.?\s+'
+_UTAL_H_DET = r'(?:(?:a|az)\s+)?'
+_UTAL_HU = re.compile('|'.join([
+    # `l. alább III. 2`, `másképp alább, a II. 9 alatt`
+    _UTAL_H_CUE + _UTAL_IRANY + r',?\s+' + _UTAL_H_DET + _UTAL_SOR + r'(?:' + _UTAL_PONT + r'\b)?',
+    # `vö. 6 b. lent`, `l. II. 1 lent`
+    _UTAL_H_CUE + _UTAL_H_DET + _UTAL_SOR + _UTAL_IRANY + r'\b',
+    # `l. a II. 9 pontot`
+    _UTAL_H_CUE + _UTAL_H_DET + _UTAL_SOR + _UTAL_PONT + r'\b',
+    # `l. αἰών, 1 b.`
+    _UTAL_H_CUE + r'[^\W\d_]+,\s*' + _UTAL_SOR,
+    # a puszta `l. 3 d.` nincs maszkolva: a `l.` itt `sor` is lehet (`Winer's Grammar, § 49, l. 3 d.`), a forras jeloloje marad
+]))
+
+
+def utalas_maszk(szoveg, forras_oldal):
+    """A prozai utalasok (`see b. below`, `l. alább III. 2`) szokozre cserelve, azonos hosszal."""
+    return (_UTAL_FORRAS if forras_oldal else _UTAL_HU).sub(lambda m: ' ' * len(m.group(0)), szoveg)
+
+
 def jelolok_pozicioval(szoveg, forras_oldal):
+    szoveg = utalas_maszk(szoveg, forras_oldal)
     talalat = []  # (pozicio, jel)
     for m in _PONT_SZAM.finditer(szoveg):
         talalat.append((m.start(), m.group(1)))
@@ -540,6 +580,10 @@ def ellenoriz_karoli(forras, forditas, karoli):
     tokenek = [t.strip() for t in reszlet.split(':', 1)[1].split(',')]
     forras_tokenek = {m.group(1) for m in _p4.KONYV_ROVIDITES_MINTA.finditer(forras)}
     maradek = [t for t in tokenek if not (t in forras_tokenek and t not in lek)]
+    # F07 A1 (DT-F07h): a jovahagyott apokrif magyar alakok (`3Makk`, `4Makk`, `Bölcs` ...; normalizal.APOKRIF_ALIAS ertekei)
+    # nem Karoli-rovidites, de a normalizalo ezeket irja: nem ismeretlen. A 11. kapu a konyvnev-egyezest ettol fuggetlenul nezi.
+    import normalizal as _N
+    maradek = [t for t in maradek if t not in set(_N.APOKRIF_ALIAS.values())]
     # DT-F38c (e): a c:v elotti nagybetus szo (`Isten 23:16`, `Júdáról 12:6`,
     # `A 4:16` -- a BDB lancolt, konyvnev nelkuli igehelye a magyar szorend
     # miatt) nem Karoli-jelzes. Hiba csak az marad, ami konyvnevnek latszik:

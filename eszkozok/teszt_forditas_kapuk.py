@@ -804,5 +804,75 @@ class BdbJavitas(unittest.TestCase):
         self.assertEqual(K._strong_kulcs('H7223'), 'H7223')
 
 
+class ApokrifKaroli3(unittest.TestCase):
+    """F07 A1 (DT-F07h): a jóváhagyott apokrif magyar alakok (3Makk, 4Makk, Bölcs …) nem „ismeretlen rövidítések”
+    a 3. kapuban (A1: G2316, G3956, G5613 a javító kör után is buktak a `3Makk`-on)."""
+
+    def setUp(self):
+        self.karoli, _ = K._betolt()
+
+    def _e(self, forras, forditas):
+        return K.ellenoriz_karoli(forras, forditas, self.karoli)[0]
+
+    def test_3makk_4makk_rendben(self):
+        self.assertEqual(self._e('3 Macc. 3:24; 4 Macc. 8:3', '3Makk 3:24; 4Makk 8:3'), 'RENDBEN')
+
+    def test_ismeretlen_angol_alak_tovabbra_is_sertes(self):
+        self.assertEqual(self._e('Gen 1:1', 'Gen 1:1'), 'SERTES')
+
+    def test_kiirt_makkabeus_alias(self):
+        import normalizal as N
+        for alak, hu in (('1 Maccabees', '1Makk'), ('2 Maccabees', '2Makk'), ('3 Maccabees', '3Makk'),
+                         ('4 Maccabees', '4Makk')):
+            self.assertEqual(N.APOKRIF_ALIAS[alak], hu)
+
+
+class TagolasUtalas(unittest.TestCase):
+    """F07 A1 (DT-F07i): a prózai utalásokban álló jelölők (`see b. below`, `l. alább III. 2`) nem számítanak a
+    jelölősorrendbe; a valódi szakaszjelölők megléte és sorrendje továbbra is kötelező."""
+
+    def _e(self, forras, forditas):
+        return K.ellenoriz_tagolas(forras, forditas)[0]
+
+    def test_g1223_sz6_see_below(self):
+        f = 'a. x (others take διά here instrumentally; see III. 2 below), 2Co 5:10; b. y'
+        h = 'a. x (mások a ⟦29⟧ szót itt eszközhatározónak veszik; l. alább III. 2), 2Kor 5:10; b. y'
+        self.assertEqual(self._e(f, h), 'RENDBEN')
+
+    def test_g3754_sz5_cf_below(self):
+        f = '2. in formulas (others omit τί; cf. 5 below, and see ὅστις, 4); Luk 2:49. 3. next'
+        h = '2. képletekben (mások kihagyják a τί-t; vö. alább 5, és l. ὅστις, 4); Luk 2:49. 3. következő'
+        self.assertEqual(self._e(f, h), 'RENDBEN')
+
+    def test_g1909_sz48_differently_below(self):
+        f = 'd. x (differently below, II. 1): Act 4:17; y (differently II. 1 below): Mat 25:40'
+        h = 'd. x (másként lent, II. 1): ApCsel 4:17; y (másként II. 1 lent): Mt 25:40'
+        self.assertEqual(self._e(f, h), 'RENDBEN')
+
+    def test_g5547_sz5_see_above_betu(self):
+        f = 'a. x (see b. below)); b. y (see a. above); c. z'
+        h = 'a. x (l. b. lent)); b. y (l. a. fent); c. z'
+        self.assertEqual(self._e(f, h), 'RENDBEN')
+
+    def test_valodi_jelolo_elhagyasa_tovabbra_is_sertes(self):
+        f = 'a. x (see b. below); b. y; c. z'
+        h = 'a. x (l. b. lent); c. z'
+        self.assertEqual(self._e(f, h), 'SERTES')
+
+    def test_valodi_jelolok_felcserelese_tovabbra_is_sertes(self):
+        f = '1. x (cf. 5 below); 2. y; 3. z'
+        h = '2. y; 1. x (vö. 5 lent); 3. z'
+        self.assertEqual(self._e(f, h), 'SERTES')
+
+    def test_puszta_l_sor_nem_maszkolt(self):
+        # `Winer's Grammar, § 49, l. 3 d.`: a `l.` itt sor, a 3 a forrásban jelölő marad
+        self.assertEqual(self._e('g. x (Winer, § 49, l. 3 d.): y', 'g. x (Winer, § 49, l. 3 d.): y'), 'RENDBEN')
+        self.assertEqual(self._e('g. x (Winer, § 49, l. 3 d.): y', 'g. x (Winer, § 49): y'), 'SERTES')
+
+    def test_maszk_pozicio_nem_csuszik(self):
+        szoveg = 'x (see b. below) y'
+        self.assertEqual(len(K.utalas_maszk(szoveg, True)), len(szoveg))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
