@@ -19,6 +19,7 @@ from bdb_szelet import szeletel, alap_jelentes  # noqa: E402
 from bovites import MorfKulcs, bovit  # noqa: E402
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import tsk_kulcs  # noqa: E402
+import karoli_kh_szuro  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -191,9 +192,10 @@ for r in tsk_kulcs.forras_sorok(_tsk_nyers, set(VERSEK)):
                               r['Kapcsolódó igehely magyar megjelenítése']))
 kh = defaultdict(list)
 STEP_HU = step_tabla()
+_KH_GYANUS = karoli_kh_szuro.gyanus_forrasok()  # N-F156a: a forrás-XML másolt listái kimaradnak
 for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
-    if m and len(r) > 2:
+    if m and len(r) > 2 and r[0] not in _KH_GYANUS:
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
         if kulcs in VERSEK:
             kh[kulcs].append(r[2])
