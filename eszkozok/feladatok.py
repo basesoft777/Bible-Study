@@ -56,8 +56,8 @@ MODELLEK = ('sonnet', 'opus', 'haiku')
 MUNKAK = ('adat', 'ertelmezo', 'folyamat')   # F32 (K2): a munka fajtaja
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka')
-LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz')
+LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz')
 KOTELEZO = {
     'feladat': ('feladat', 'cim', 'tipus', 'fazis', 'modell', 'allapot', 'ad', 'kovetkezo'),
     'naplozas': ('feladat', 'cim', 'tipus', 'modell', 'allapot', 'ad', 'kovetkezo'),
@@ -398,6 +398,9 @@ def ellenoriz(briefek, gyoker=REPO):
             hibak.append((b.fajl, mh[1]))
         if fej.get('helyi_gep') not in (None, 'igen', 'nem'):
             hibak.append((b.fajl, 'helyi_gep: igen | nem'))
+        for mid in fej.get('motivum_kesz', []):  # DT-F123n: csak a brief által írt motívum lehet kész
+            if 'motivumok/%s.md' % mid not in fej.get('ir', []):
+                hibak.append((b.fajl, 'motivum_kesz: %s nincs az `ir`-ben (motivumok/%s.md)' % (mid, mid)))
         m = re.match(r'^F(\d{2,})_', b.fajl)
         if m:
             if b.szam is None:

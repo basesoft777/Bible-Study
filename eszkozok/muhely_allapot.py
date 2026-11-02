@@ -457,9 +457,26 @@ def pont_a_motivumrol(szoveg, motivum):
     return any('⛔' in s and motivum in s for s in szoveg.splitlines())
 
 
-def feladat_blokkol(fej, szoveg, motivum):
-    """DT-F156b (c): megállt/döntésre váró feladat, `ir`-ben a motívum fájlja ÉS a ⛔ pontja róla szól."""
-    return fej.get('allapot') in ('megallt', 'dontesre_var') and sajat_fajl(motivum, fej.get('ir', ''))         and pont_a_motivumrol(szoveg, motivum)
+def lista_mezo(ertek):
+    """A fejléc `[a, b]` listája elemekre bontva."""
+    return [x.strip().strip('"\'') for x in (ertek or '').strip().strip('[]').split(',') if x.strip()]
+
+
+def motivum_kesz(fej, motivum, dt_lista=()):
+    """DT-F123n: több motívumot író briefben a `motivum_kesz` fejlécmezőben álló motívum része kész — a brief erről a
+    motívumról már nem hoz ⛔-t, a fájljait csak a lezárás (C5) írja. A feladat nyitott 🟡 DT-je, amely a motívumot
+    megnevezi, ettől még blokkol."""
+    if motivum not in lista_mezo(fej.get('motivum_kesz')):
+        return False
+    return not any(d['nyitott'] and d['feladat'] == int(fej.get('feladat', -1)) and motivum in d['kerdes']
+                   for d in dt_lista)
+
+
+def feladat_blokkol(fej, szoveg, motivum, dt_lista=()):
+    """DT-F156b (c): megállt/döntésre váró feladat, `ir`-ben a motívum fájlja ÉS a ⛔ pontja róla szól — kivéve, ha a
+    motívum része a briefben kész (`motivum_kesz`, DT-F123n)."""
+    return fej.get('allapot') in ('megallt', 'dontesre_var') and sajat_fajl(motivum, fej.get('ir', '')) \
+        and pont_a_motivumrol(szoveg, motivum) and not motivum_kesz(fej, motivum, dt_lista)
 
 
 def kriterium_8(motivum, fejlecek, dt_lista):
@@ -472,12 +489,13 @@ def kriterium_8(motivum, fejlecek, dt_lista):
                 szoveg = fh.read()
         except OSError:
             continue
-        if feladat_blokkol(f, szoveg, motivum):
+        if feladat_blokkol(f, szoveg, motivum, dt_lista):
             blokkolo[n] = f
     reszlet, info = [], []
     for n, f in sorted(erintett.items()):
         if f.get('allapot') in ('megallt', 'dontesre_var'):
-            (reszlet if n in blokkolo else info).append('#%d ⛔ megállt feladat' % n)
+            kesz = ' (a motívum része kész: motivum_kesz)' if motivum_kesz(f, motivum, dt_lista) else ''
+            (reszlet if n in blokkolo else info).append('#%d ⛔ megállt feladat%s' % (n, kesz))
     for d in dt_lista:
         if d['nyitott'] and d['feladat'] in erintett:
             (reszlet if d['feladat'] in blokkolo else info).append('%s 🟡 (#%d)' % (d['id'], d['feladat']))
