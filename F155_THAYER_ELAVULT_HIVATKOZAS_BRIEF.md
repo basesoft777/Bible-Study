@@ -6,12 +6,14 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 155 — újraellenőrzés függ: naplok/ELLENOR_F155_3.md"
+kovetkezo: "nincs; nyitott (hatókörön kívül): a forditas.py docstring- és 211/216. sori DT-F132c literálja (E32 JELENTÉS, F141 javaslat); N66"
 olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, DONTESEK.md, naplok/ELLENOR_F142.md]
 ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
 ag: claude/f155-thayer-elavult-hivatkozas
+pr: 567
+lezarva_osszegzes: "A forditas.py a végleges DT329-et írja (teszttel); a 7 elavult Thayer-sor megjegyzése DT-F132c → DT329 (DT-F155a (a)), grep -c DT-F132c = 0, minden más sor bájtra azonos; a teszt_lanc.py G1941-állítása 10 → 6 (DT476, egyeztetett eltérés); ELLENOR_F155_3 TISZTA"
 fugg: []
 nem_fugg: [27, 38, 154]
 ---
