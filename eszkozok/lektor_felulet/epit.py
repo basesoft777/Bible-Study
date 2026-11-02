@@ -24,7 +24,7 @@ ROOT = os.path.dirname(os.path.dirname(HELY))
 sys.path.insert(0, os.path.dirname(HELY))
 import lektor_kerdesek as L  # noqa: E402
 
-BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus']
+BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus', 'kiadas']
 
 
 def kerdesek(motivumok=None, root=ROOT):

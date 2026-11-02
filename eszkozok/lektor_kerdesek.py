@@ -32,7 +32,11 @@ MEZOK_REGI = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetos
 MEZOK_V2 = MEZOK_REGI + ['cimke']
 OSSZEFOGLALO_MEZOK = ['gond', 'javaslat', 'javaslat_tipus', 'osszefoglalo_proveniencia']
 JAVASLAT_TIPUSOK = ('konkret', 'nincs', 'hiany', 'dontott')
-MEZOK = MEZOK_V2 + OSSZEFOGLALO_MEZOK  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
+MEZOK_V3 = MEZOK_V2 + OSSZEFOGLALO_MEZOK
+# kiadas: melyik kiadás bemenete a kérdés. A határ-kérdések (hatar) a mostani, 1. kiadáshoz tartoznak; a /kiadas kimenetéből jövők (lektor, proza_lefedettseg,
+# proza_javaslat) a következő, 2. kiadás bemenetei; a többi (dontes stb.) nem kiadás-kérdés: üres.
+KIADAS_FORRASONKENT = {'hatar': '1', 'lektor': '2', 'proza_lefedettseg': '2', 'proza_javaslat': '2'}
+MEZOK = MEZOK_V3 + ['kiadas']  # cimke: tartalmi | uzleti | technikai | osztalyozatlan (a felület szűrője; a nem-döntés források tartalmiak)
 MEGORZOTT = ['allapot', 'valasz', 'atvezetes']
 ALLAPOTOK = ('nyitva', 'megvalaszolva', 'atvezetve')
 FORRASOK = ('lektor', 'hatar', 'proza_lefedettseg', 'proza_javaslat', 'dontes', 'motivum_jelolt', 'kiejtes_kalibracio', 'artifact_komment')
@@ -129,7 +133,7 @@ def beolvas(ut):
     if not sorok:
         return {}
     fej = sorok[0].split('\t')
-    if fej not in (MEZOK, MEZOK_V2, MEZOK_REGI):
+    if fej != MEZOK[:len(fej)] or len(fej) < len(MEZOK_REGI):  # a régebbi fejlécek a mai fejléc elejei
         raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
     ki = {}
     for s in sorok[1:]:
@@ -149,6 +153,7 @@ def osszefesul(uj, regi):
     ki = []
     for k in uj:
         r = {m: k.get(m, '') for m in MEZOK}
+        r['kiadas'] = KIADAS_FORRASONKENT.get(r['forras'], '')
         o = regi.get(r['kerdes_id'])
         besor = k.get('_besorolas', '')
         if o and _van_valasz(o):
