@@ -869,6 +869,18 @@ class TagolasUtalas(unittest.TestCase):
         self.assertEqual(self._e('g. x (Winer, § 49, l. 3 d.): y', 'g. x (Winer, § 49, l. 3 d.): y'), 'RENDBEN')
         self.assertEqual(self._e('g. x (Winer, § 49, l. 3 d.): y', 'g. x (Winer, § 49): y'), 'SERTES')
 
+    def test_lezaratlan_utalas_nem_nyeli_el_a_valodi_alpontot(self):
+        # ellenőri eltérés (ELLENOR_F07_A1 3b): a `cf. below, 2. a. of persons` alpontja (`a.`) valódi jelölő marad
+        f = '1. x; cf. below, 2. a. of persons; b. y'
+        self.assertEqual(self._e(f, '1. x; vö. lent, 2. személyek; b. y'), 'SERTES')
+        self.assertEqual(self._e(f, '1. x; (lent) 2. a. személyek; b. y'), 'RENDBEN')
+        self.assertEqual(self._e('x. see 3. a. text; b. y', 'x. l. 3. szöveg; b. y'), 'SERTES')
+
+    def test_utalas_vegi_kifejezes_es_szo_vesszo_nelkul(self):
+        # `see γεννάω 2 d.`, `cf. 2 a. at the end below`: a jelölők maszkoltak (a `at the …` szöveg marad, jelölő nincs benne)
+        for szoveg in ('see above, 1 a. at the beginning;', 'cf. 2 a. at the end below)', 'see γεννάω 2 d.;'):
+            self.assertEqual(K.tagolas_sorozat(K.utalas_maszk(szoveg, True)), [], szoveg)
+
     def test_maszk_pozicio_nem_csuszik(self):
         szoveg = 'x (see b. below) y'
         self.assertEqual(len(K.utalas_maszk(szoveg, True)), len(szoveg))

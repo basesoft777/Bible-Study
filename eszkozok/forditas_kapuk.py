@@ -187,19 +187,22 @@ def tagolas_igazitas(forras, forditas):
 # F07 A1 (DT-F07i): a prozaban allo utalasok (`see b. below`, `cf. II. 8 above`, `see αἰών, 1 b.`; magyarul `l. alább III. 2`,
 # `vö. 6 b. lent`) belso szamai/betui/romai szamai nem szakaszjelolok: a magyar szorend megcsereli a sorrendjuket, a
 # kapu pedig hamisan buktatott (A1: 6 Strong az 1. kor utan is). A maszk helyben szokozre cserel (a pozicio nem csuszik).
-_UTAL_TOK = r'(?:[IVX]{1,4}|\d{1,2}[a-i]?|[a-i]|[A-D]|[α-ω])\b\.?'
+_UTAL_TOK = r'(?:[IVX]{1,4}|\d{1,2}[a-i]?|[a-i]|[A-D]|[α-ω])\b(?:\.|(?!\.))'
 _UTAL_SOR = r'(?:%s[\s,]*(?:(?:and|és)\s+)?){1,4}' % _UTAL_TOK
+# az utalás vége: nem folytatódhat szabad kisbetűs szóval (and/at/under/below/above/the/p kivétel) — különben az utána álló valódi
+# jelölő is elnyelődne (`cf. below, 2. a. of persons`: az `a.` jelölő marad)
+_UTAL_LEZAR = r'(?!\s*(?!(?:and|at|under|below|above|the|pp?)\b)[a-zá-űα-ω]{2,}\b)'
 _UTAL_E_CUE = r'\b(?:cf|see|compare|vide|and see|differently)\.?\s+'
 _UTAL_E_IRANY = r'(?:below|above)'
 _UTAL_FORRAS = re.compile('|'.join([
     # `see b. below`, `differently in II. 9 below`, `but see under II. 9 below`
     _UTAL_E_CUE + r'(?:(?:under|in|at)\s+)?' + _UTAL_SOR + _UTAL_E_IRANY + r'\b',
     # `differently below, II. 1`
-    _UTAL_E_CUE + _UTAL_E_IRANY + r',?\s+(?:(?:under|in|at)\s+)?' + _UTAL_SOR,
+    _UTAL_E_CUE + _UTAL_E_IRANY + r',?\s+(?:(?:under|in|at)\s+)?' + _UTAL_SOR + _UTAL_LEZAR,
     # `see αἰών, 1 b.`, `see ἕως, II. 2 c.`
-    _UTAL_E_CUE + r'[^\W\d_]+,\s*' + _UTAL_SOR,
-    # `see 5 d.γ.` (csak mondat-/zarojelvegen)
-    r'\b(?:cf|see)\.?\s+' + _UTAL_SOR + r'(?=[;,)\]]|\.\s|\.$|$)',
+    _UTAL_E_CUE + r'[^\W\d_]+,?\s*' + _UTAL_SOR + _UTAL_LEZAR,
+    # `see 5 d.γ.` (csak zarójel-/mondatvégen)
+    r'\b(?:cf|see)\.?\s+' + _UTAL_SOR + _UTAL_LEZAR,
 ]))
 _UTAL_IRANY = r'(?:alább|fent|lent|feljebb|lejjebb)'
 _UTAL_PONT = r'(?:pontot|pontban|pont|alatt|szakaszt|szakaszban)'
