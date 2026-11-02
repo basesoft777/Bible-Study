@@ -69,7 +69,7 @@ A „2. szakasz” táblázatának `Vers` oszlopa a fájlnév tartományában va
 | ujszovetseg/Rom_8v10_bovitett.md | 1 | 0 | 0 | 1 | 1 | 100% | 12 |
 | ujszovetseg/Zsid_4v12_bovitett.md | 1 | 0 | 0 | 1 | 1 | 100% | 12 |
 
-## 4. Mélyelemzés (⛔ DT-F149a)
+## 4. Mélyelemzés (⛔ DT512)
 
 - `melyelemzesek/1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`; első címsor: „# 1Mózes 14:18-20 / Zsoltárok 110:4 / Zsidók 5-7 — Mélyelemzés”
   - fájlnévből az általános minta nem illik (több szétszórt tartomány: 1Móz 14:18–20; Zsolt 110:4; Zsid 5–7).

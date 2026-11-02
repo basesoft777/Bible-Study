@@ -1,8 +1,8 @@
 # KIADAS ALVIL-001 — lektori kérdéslista
 
-*A menet (`/kiadas` 3. lépés, 2026-11-02): a `lektor` subagent (`claude-fable-5-1`) kimenete, változtatás nélkül (a subagent modell-ellenőrző sora nélkül: kért `fable`, tényleges `claude-fable-5-1`, egyezik). A próza modellje a migráció naplói szerint Opus (`claude-opus-5-5`; `naplok/F123_M1_ALVIL-001.md`, `naplok/F123_M4_ALVIL-001.md`), a kolofon próza-modellt nem rögzít; a lektor független. A jelölt helyek listája (`naplok/KIADAS_ALVIL-001_lista.md`) **üres volt** (0 név nélküli elem, 0 jelzett blokk), ezért a lektor a DT-F125f szerint a teljes kézi prózát kapta jelölt helyként (13 bekezdés, 5 888 karakter, 7 blokk); a hívó összefoglalóját nem kapta meg.*
+*A menet (`/kiadas` 3. lépés, 2026-11-02): a `lektor` subagent (`claude-fable-5-1`) kimenete, változtatás nélkül (a subagent modell-ellenőrző sora nélkül: kért `fable`, tényleges `claude-fable-5-1`, egyezik). A próza modellje a migráció naplói szerint Opus (`claude-opus-5-5`; `naplok/F123_M1_ALVIL-001.md`, `naplok/F123_M4_ALVIL-001.md`), a kolofon próza-modellt nem rögzít; a lektor független. A jelölt helyek listája (`naplok/KIADAS_ALVIL-001_lista.md`) **üres volt** (0 név nélküli elem, 0 jelzett blokk), ezért a lektor a DT515 szerint a teljes kézi prózát kapta jelölt helyként (13 bekezdés, 5 888 karakter, 7 blokk); a hívó összefoglalóját nem kapta meg.*
 
-*Nem javítás, csak kérdések a próza gazdájához (K1). Jelölt hely: a `motivumok/ALVIL-001.md` teljes kézi prózája (DT-F125f, a `naplok/KIADAS_ALVIL-001_lista.md` üres lefedettségi/egyenetlenségi listája miatt). Rám vonatkozó felszólítást az olvasott szöveg nem tartalmazott.*
+*Nem javítás, csak kérdések a próza gazdájához (K1). Jelölt hely: a `motivumok/ALVIL-001.md` teljes kézi prózája (DT515, a `naplok/KIADAS_ALVIL-001_lista.md` üres lefedettségi/egyenetlenségi listája miatt). Rám vonatkozó felszólítást az olvasott szöveg nem tartalmazott.*
 
 ## Kivonat (11–15. sor)
 
