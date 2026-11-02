@@ -11,7 +11,7 @@
 
 ## 2. A kolofon kiadás-sora (DT486 3. pont)
 
-A kiadásszám és a változásjegyzék a generátorban ma nem renderelődik, és adatforrása sincs kijelölve (N-F125a). Az 1. kiadás sora ezért nem került sem adatba, sem forrásba. A lexikonlapot kézzel nem szerkesztettem. Ha az N-F125a elkészül, az 1. kiadás sora (2026.11.02, „az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése”) a kijelölt adatforrásba írható.
+A kiadásszám és a változásjegyzék a generátorban ma nem renderelődik, és adatforrása sincs kijelölve (N67). Az 1. kiadás sora ezért nem került sem adatba, sem forrásba. A lexikonlapot kézzel nem szerkesztettem. Ha az N67 elkészül, az 1. kiadás sora (2026.11.02, „az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése”) a kijelölt adatforrásba írható.
 
 ## 3. A próza-lefedettség a lezárás előtt (MUNKAMENET C-z)
 
@@ -52,4 +52,4 @@ A felhasználó az 5. pont két kérdésére a javaslat szerint döntött, szó 
 1. **C-w: (a).** A K1–K5 utáni prózaátírás (F152.17) elég. Az 1Móz 4:26 → Sof 3:9 pár kimondása a **2. kiadásba** kerül, a lektori kérdésekkel és az N-F152c-vel együtt (a `NYITOTT_FELADATOK.md` N-F152c jegyzete).
 2. **`motivumok.tsv`:** az ISTENTISZT-001 `publikálható` marad, `v3` → `v4`, `2026.09.22` → `2026.11.02` (`naplok/F152_lezaras_ir.py`, írás előtt soronkénti összevetés: egy sor, két mező).
 
-A brief fejléce `lezarva`. A lap az 1. kiadás; a kolofon kiadás-sora az N-F125a után írható adatba.
+A brief fejléce `lezarva`. A lap az 1. kiadás; a kolofon kiadás-sora az N67 után írható adatba.

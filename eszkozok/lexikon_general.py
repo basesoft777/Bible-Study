@@ -4144,6 +4144,33 @@ def kolofon_naplo_cella(motivum_id):
     return EM_DASH
 
 
+KIADASOK_TSV = os.path.join(ADAT, 'kiadasok.tsv')
+
+
+def kolofon_kiadasok(motivum_id, ut=None):
+    """A motívum kiadás-sorai kiadásszám szerint (`adat/kiadasok.tsv`, SEMA 2.46; N-F125a/b, DT-F125d);
+    sor nélkül, vagy ha a fájl hiányzik: üres lista. A kiadásszám egész, a rendezés számszerű."""
+    ut = ut or KIADASOK_TSV
+    if not os.path.isfile(ut):
+        return []
+    sorok = [r for r in L.read_tsv_skip_comments(ut) if (r.get('id') or '').strip() == motivum_id]
+    return sorted(sorok, key=lambda r: int(r['kiadas']))
+
+
+def kolofon_kiadas_sorok(kiadasok):
+    """A Kolofon metaadat-táblájának „Kiadás” és „Próza modellje” sora (a legutóbbi kiadásé), és a
+    „Változásjegyzék” tábla; sor nélkül: két üres lista (a lap kolofonja változatlan)."""
+    if not kiadasok:
+        return [], []
+    utolso = kiadasok[-1]
+    meta = ['| Kiadás | %s |' % utolso['kiadas'].strip(),
+            '| Próza modellje | `%s` |' % ((utolso.get('proza_modell') or '').strip() or 'manual')]
+    jegyzek = ['**Változásjegyzék**', '', '| Kiadás | Dátum | Mi változott |', '|---|---|---|']
+    for r in kiadasok:
+        jegyzek.append('| %s | %s | %s |' % (r['kiadas'].strip(), r.get('datum', '').strip(), r.get('valtozas', '').strip()))
+    return meta, jegyzek
+
+
 def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
@@ -4167,6 +4194,9 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
         '| Kereszthivatkozás-napló | %s |' % naplo_cella,
         '| Sablon-megfelelőség | %s |' % m.get('sablon_verzio', EM_DASH),
     ]
+    kiadasok = kolofon_kiadasok(m['id'])
+    kiadas_meta, kiadas_jegyzek = kolofon_kiadas_sorok(kiadasok)
+    metaadat_sorok += kiadas_meta
 
     per_fajl = {}
     for fajl, licenc, blokk_nev in fajl_licenc_blokk_lista:
@@ -4197,13 +4227,16 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
             if szoveg not in megjelolesek:
                 megjelolesek.append(szoveg)
 
-    torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
+    torzs = '\n'.join(metaadat_sorok)
+    if kiadas_jegyzek:
+        torzs += '\n\n' + '\n'.join(kiadas_jegyzek)
+    torzs += '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:
         torzs += '\n\n' + '\n\n'.join(megjelolesek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
-    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'}),
+    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'} | ({'adat/kiadasok.tsv'} if kiadasok else set())),
                            sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs, olvasoi('kolofon'))
 
 
