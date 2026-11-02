@@ -106,7 +106,7 @@ használt kimenet, csoportonként) a `forditas/thayer_api/adag1/` és `adag99/` 
 javító kör bemenete (az előző válasz assistant-fordulóként: a kimenet kétszer megy). Két út: **(1)** a `max_tokens` emelése (a
 modell megengedett kimeneti maximumáig, a `claude-api` referencia szerint), vagy **(2)** további darabolás (kisebb csoportok a
 `thayer_bemenet.csoportok`-ban, illetve a javító kör csak a bukott csoportra). Kis mérő batch a négy Strongon (G3588, G1722,
-G1510, G1519) a választott út(ak)kal. **⛔ (c): az út kiválasztása mérésből, az orkesztrátor dönt** (DT-F07b).
+G1510, G1519) a választott út(ak)kal. **⛔ (c): az út kiválasztása mérésből, az orkesztrátor dönt** (DT519).
 
 **(d) A #27 M0/M1 talált hiányai (N72).**
 - **Apokrif könyvek leképezése** a `11_konyvek` kapuban és a `normalizal.py`-ban (Makk, 3Macc., Tób, Judit, Bölcs/Wis., 1 Esdr.;
@@ -116,7 +116,7 @@ G1510, G1519) a választott út(ak)kal. **⛔ (c): az út kiválasztása mérés
   (`Clem. Rom. 1 Cor.`) a hivatkozás; az alias csak az egyértelmű alakra kerül be. Ha a kettő gépileg nem választható szét: ⛔.
 - **`Sir` alias** (536 előfordulás): a fordítás a Sirák fiát `Sir`-ként írja, a `lekerdez.py` / `nave_bontas.py` viszont a
   `Sir`-t a JSir aliasaként olvassa (N-F142a). Mérés: melyik olvasót érinti a teljes Thayer beírása. A javítás helye (az olvasó
-  aliasa vagy a fordítás alakja) ⛔ (DT-F07c), mert a `lekerdez.py` nem ennek a feladatnak az `ir`-je.
+  aliasa vagy a fordítás alakja) ⛔ (DT520), mert a `lekerdez.py` nem ennek a feladatnak az `ir`-je.
 - **Sigla-jóváhagyás a teljes Thayerre:** a 5 758 `jelolt` sigla-előfordulás (`adat/thayer_sigla.tsv`) besorolási javaslata
   (`naplok/THAYER_ELES_sigla_javaslat.tsv`: sigla, kibontás, előfordulás, példa-Strong; külön a „Sept.” és a „Wis.”). **⛔ (d1)**:
   az orkesztrátor soronként jóváhagyja; a `thayer_sigla.tsv` csak a jóváhagyás után változik (`besorolt`).
@@ -132,7 +132,7 @@ G1510, G1519) a választott út(ak)kal. **⛔ (c): az út kiválasztása mérés
 nem kerül a `forditasok.tsv`-be (`beir` nem fut), csak a `naplok/THAYER_ELES_arany.md`-be: szakaszonként forrás, `kezi`, high,
 medium egymás alatt, és Strongonként a tartalmi eltérések listája (kihagyás, terminológia, értelmi eltérés, a `kezi`-től eltérő
 szóválasztás, kapueredmény), plusz mért költség és kapubukás effortonként. Ítéletet a végrehajtó nem hoz. **⛔ (e): az effort-döntés
-az orkesztrátoré** (DT-F07d).
+az orkesztrátoré** (DT521).
 
 **(f) A #159 mérő Strongjainak beírása (0 USD; DT505 2.).** A #159 mérő batchének 60 Strongja
 (`naplok/THAYER_B_UT_mero_strongok.txt`) nincs a `forditasok.tsv`-ben. Az (e) döntése után a választott effort ágának eredménye
@@ -208,7 +208,7 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 ## 8. Kész, ha
 
 - K1 (M0): a becslő újraillesztve, a B-stílusú javító kör és az (c)–(d) javításai a kötegelőben és a normalizálóban, tesztekkel;
-  az N68, N69 lezárva; a `THAYER_ELES_sorrend.tsv` és az adagterv kész; a DT-F07b–d eldöntve.
+  az N68, N69 lezárva; a `THAYER_ELES_sorrend.tsv` és az adagterv kész; a DT519–d eldöntve.
 - K2 (adagonként): az adag szakaszsorai az `adat/forditasok.tsv`-ben (`allapot=sonnet`, tényleges modellnév), minden más sor
   bájtra változatlan; ellenőrzések zöldek; mért költség a koltseg-táblában, az adagplafonon belül.
 - K3 (Mz): a teljességi ellenőrzés különbsége 0; a bukottak kézi ítéletre átadva; az összköltség ≤ 120 USD (vagy az orkesztrátor
@@ -219,12 +219,12 @@ bukottak-táblában sem áll. Munkamappa: `forditas/thayer_api/adag7<nn>/` (A1 =
 | Tétel | Tárgy | Állapot |
 |---|---|---|
 | DT505 | a brief kerete (út, M0 tartalma, adagméret, plafonok, címzett); 1. M0 plafon 5 USD; 2. a #159 mérő Strongjai újrakapuzva beírhatók; 3. G0282 újrafordul, kézi javítás nélkül; 4. a függési kör: a #27 és a #159 fejlécének lezárása (külön PR, előbb mergelendő); 5. a #138 és a #154 `nem_fugg`-jába a 7 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07b | M0 (c): max_tokens-emelés vagy további darabolás | ✅ orkesztrátor, 2026-11-02: nincs emelés és nincs darabolás (`DONTESEK.md`) |
-| DT-F07c | M0 (d): a `Sir` alias javításának helye, az `1 Cor.` | ✅ orkesztrátor, 2026-11-02: a `Sir` marad; `1 Cor` alias csak c:v előtt (`DONTESEK.md`) |
-| DT-F07d | M0 (e): effort | ✅ orkesztrátor, 2026-11-02: `high` (`DONTESEK.md`) |
-| DT-F07e | M0 (d1), (d2): a sigla- és terminológia-jóváhagyás | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07f | M0: a 16. kapu toldalék-tűrése (a→á, e→é), F07.5 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
-| DT-F07g | M0: `Heb.` c:v előtt könyvhivatkozás; a `8_idezojel` mérése (50%: marad a javító körnél) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT519 | M0 (c): max_tokens-emelés vagy további darabolás | ✅ orkesztrátor, 2026-11-02: nincs emelés és nincs darabolás (`DONTESEK.md`) |
+| DT520 | M0 (d): a `Sir` alias javításának helye, az `1 Cor.` | ✅ orkesztrátor, 2026-11-02: a `Sir` marad; `1 Cor` alias csak c:v előtt (`DONTESEK.md`) |
+| DT521 | M0 (e): effort | ✅ orkesztrátor, 2026-11-02: `high` (`DONTESEK.md`) |
+| DT522 | M0 (d1), (d2): a sigla- és terminológia-jóváhagyás | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT523 | M0: a 16. kapu toldalék-tűrése (a→á, e→é), F07.5 | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
+| DT524 | M0: `Heb.` c:v előtt könyvhivatkozás; a `8_idezojel` mérése (50%: marad a javító körnél) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07h | A1: a 3. kapu `3Makk` hibája (apokrif magyar alakok) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07i | A1: a `9_tagolas` kapu prózai utalásai (maszk) | ✅ orkesztrátor, 2026-11-02 (`DONTESEK.md`) |
 | DT-F07j | A1: prompt v5.2 (idézőjelek a Thayer-szócikkben) | 🟡 az (a) út készült; az orkesztrátor visszaigazolására vár (`DONTESEK.md`) |

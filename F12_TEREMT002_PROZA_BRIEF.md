@@ -6,13 +6,14 @@ tipus: feladat
 fazis: 2
 munka: ertelmezo
 modell: opus
-allapot: nem_indult
+allapot: megallt
 ad: az első natív egyforrású motívum az új mércével: a jelentes_szam és a karoli_szo az adatban, a szakaszcímke gépileg, a szótári egységek a lap előtt lefordítva, a szótári gerinc kapcsoló nélkül, a motivumok/TEREMT-002.md a 9_ forrássablon szerint, a lexikon/TEREMT-002_TUDOMANYOS.md az ISTENTISZT-001 arany lapjának mércéjén zöld
-kovetkezo: "Te: a #148 (védőkorlátok) merge-e után /kovetkezo (a #148 maga a #123 ALVIL-001-es PR-jára vár); első lépés a 0. mérés, utána ⛔ DT-F12a–e"
+kovetkezo: "Te: a TEREMT-002 lapja Feed 6/8; a határ-ellenőrzés (hatar-ellenor) és a lektori kör a felhasználóé, utána külön tételben a 8/8, az 1. kiadás sora és a motivumok.tsv verzió-emelése (DT530 (1)); a draft PR merge-e a felhasználóé"
 olvas: [motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*", motivumok/ISTENTISZT-001.md, motivumok/TEREMT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/TEREMT-001_TUDOMANYOS.md, generalt_proba/TEREMT-002_proza_proba/, naplok/TEREMT002_PROZA_PROBA_meres.md, naplok/TEREMT002_PROZA_PROBA_M0.md, naplok/TEREMT002_PROZA_PROBA_lxx_friss.md, naplok/ELLENOR_TEREMT002_PROZA_PROBA.md, naplok/T1_TEREMT002_scan.md, naplok/T1_TEREMT002_gate.md, naplok/T2_TEREMT002_minosites.tsv, naplok/T2_TEREMT002_kapcsolatok_javaslat.tsv, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS.md, naplok/ELLENOR_ISTENTISZT001_ARANY_JAVITAS_2.md, naplok/F131_SZOTARI_GERINC_naplo.md, TEREMT002_KUTATAS_BRIEF.md, F64_TEREMT002_PROZA_PROBA_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F121_GLOSSZA_FORDITAS_BRIEF.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/PaRDeS_tanitok_lista.md, sablonok/PaRDeS_gyorsreferencia.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, adat/motivumok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/auditok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_forras_javitas.tsv, adat/glosszak_heber_hu.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/szotar_szerepek.tsv, adat/grammatikai_strongok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, eszkozok/lekerdez.py, eszkozok/glossza_lexikon_forditas.py, eszkozok/forditas_kapuk.py, eszkozok/ellenoriz.py, eszkozok/kuszob.py, eszkozok/gate.py]
-ir: [motivumok/TEREMT-002.md, motivumok/naplok/TEREMT-002_tanitoi_kereses.md, lexikon/TEREMT-002_TUDOMANYOS.md, adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/forditasok.tsv, adat/lxx_dontesek.tsv, adat/res_forras.tsv, adat/auditok.tsv, adat/motivumok.tsv, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumlog/PaRDeS_motivumok.md, naplok/F12_*, naplok/ELLENOR_F12_*]
+ir: [motivumok/TEREMT-002.md, adat/funkcio_kapcsolok.tsv, adat/bdb_forras_javitas.tsv, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/szerep_karoli.py, naplok/F148_levezetes_TEREMT-002.tsv, adat/bdb_vers_jelentes.tsv, "archivum/TEREMT-002/*", DONTESEK.md, NYITOTT_FELADATOK.md, motivumok/naplok/TEREMT-002_tanitoi_kereses.md, lexikon/TEREMT-002_TUDOMANYOS.md, adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/forditasok.tsv, adat/lxx_dontesek.tsv, adat/res_forras.tsv, adat/auditok.tsv, adat/motivumok.tsv, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumlog/PaRDeS_motivumok.md, naplok/F12_*, naplok/ELLENOR_F12_*]
 fugg: [148]
 nem_fugg: [10, 36, 38, 70, 74, 102, 103, 123, 131, 133, 138, 140, 144, 146]
+ag: claude/f12-teremt002-bc1f07
 ---
 
 # F12_TEREMT002_PROZA_BRIEF.md — TEREMT-002: lexikonlap a fordított irányban
@@ -42,7 +43,7 @@ A D38 / DT-F32a / DT-F26b szerint a #12a (a próza-próba) a #64-ben lefutott, a
 - a lap szótári egységeinek fordítása (`adat/forditasok.tsv`);
 - a három „függő (#12b)” LXX-hely döntése (`adat/lxx_dontesek.tsv`);
 - a `motivumok/TEREMT-002.md` átírása a #64 tematikus szakaszrendjéből a 9_ forrássablon szerkezetébe (RÉS-jelölők), értelmező prózával;
-- a 7. lépés (nevesített tanító) a DT-F12d szerint;
+- a 7. lépés (nevesített tanító) a DT529 szerint;
 - a `res_forras.tsv` sorai; a `lexikon/TEREMT-002_TUDOMANYOS.md` első generálása;
 - a DT187-mutató kivezetése a generátorból (`lexikon_general.py`, `_TEREMT002_MUTATO`, a `SZEREP_TOKEN_MUTATO` négy H8414/H0922-sora): a mutató azt mondja, hogy „a TEREMT-002 szótári bekötése a #12b dolga”, és ez a feladat éppen ezt köti be.
 
@@ -73,12 +74,12 @@ A D38 / DT-F32a / DT-F26b szerint a #12a (a próza-próba) a #64-ben lefutott, a
 | 3.13 | gerinc | a main-en `SZOTARI_GERINC_MOTIVUMOK = {'ISTENTISZT-001'}` (a #148 után: kivétellista, a TEREMT-002 nincs rajta) |
 
 **A mért állapotból adódó ⛔ pontok (5. szakasz):**
-- az összetett sor (H8414+H0922) entry-tokenje → DT-F12a;
-- a H0922 tagolatlan → DT-F12a, illetve a #148 DT-F148b-je;
-- a BDB-forrás két hibája (a #64 6.1–6.2) → DT-F12b;
-- a három függő LXX-hely → DT-F12c;
-- a 7. lépés → DT-F12d;
-- a `statusz` lezárása → DT-F12e.
+- az összetett sor (H8414+H0922) entry-tokenje → DT526;
+- a H0922 tagolatlan → DT526, illetve a #148 DT-F148b-je;
+- a BDB-forrás két hibája (a #64 6.1–6.2) → DT527;
+- a három függő LXX-hely → DT528;
+- a 7. lépés → DT529;
+- a `statusz` lezárása → DT530.
 
 A H8414-en eltérés nem várható. A BDB mindhárom verset a `-/1` alatt idézi, a kutatói `1` ugyanoda mutat, tehát a #148 eszköze jelzés nélkül vezet le. Ha mégis jelez, az lelet: ⛔.
 
@@ -90,14 +91,14 @@ A H8414-en eltérés nem várható. A BDB mindhárom verset a `-/1` alatt idézi
 - a 3. szakasz újramérése (`naplok/F12_meres.py`, `split('\t')`);
 - a #148 levezető eszközének próbafutása (`ellenoriz --id TEREMT-002`), még írás nélkül.
 
-Napló: `naplok/F12_TEREMT002_LEXIKON_naplo.md`. **⛔ DT-F12a–e: a felhasználó dönt.**
+Napló: `naplok/F12_TEREMT002_LEXIKON_naplo.md`. **⛔ DT526–e: a felhasználó dönt.**
 
-**1. Adat: a szótári mezők.** A DT-F12a szerint, a három sorra:
+**1. Adat: a szótári mezők.** A DT526 szerint, a három sorra:
 - `lexikon_szotar` = BDB, `lexikon_entry_id` = H8414 (javaslat), `jelentes_szam` = `1`;
 - `jelentes_en` a BDB `-/1/-` szakaszának szövegéből, szó szerint;
 - `jelentes_hu` a `bdb_szakasz_hu.tsv` azonos szakaszából, szó szerint. **A szóról szól, nem a motívumbeli funkcióról** (DT272 (d), N-F131a; a #148 20. szabálya méri).
 
-A `lexikon_hivatkozasok.tsv` sorai: (BDB, H8414, `1`), valamint a H0922 a DT-F12a szerint. Írás előtt a sorok összevetése az eredetivel, eltérésnél megállás (`eszkozok/igazolas_migracio.py` mintája). A proveniencia a lekérdezésé, ha futott, egyébként `manual`. Commit: `F12.1: TEREMT-002 szótári mezői (jelentes_szam, lexikon_entry_id)`.
+A `lexikon_hivatkozasok.tsv` sorai: (BDB, H8414, `1`), valamint a H0922 a DT526 szerint. Írás előtt a sorok összevetése az eredetivel, eltérésnél megállás (`eszkozok/igazolas_migracio.py` mintája). A proveniencia a lekérdezésé, ha futott, egyébként `manual`. Commit: `F12.1: TEREMT-002 szótári mezői (jelentes_szam, lexikon_entry_id)`.
 
 **2. Szakaszcímke, gépileg.** `python eszkozok/szakasz_cimke_levezet.py ellenoriz --id TEREMT-002`.
 - Jelzés nélkül: `--ir` (a `cimke_hu` a #148 DT-F148c-je szerint).
@@ -112,14 +113,14 @@ A generátor DT187-mutatójának kivezetése itt történik: `_TEREMT002_MUTATO`
 
 **Elfogadás:** a lista `hianyzik` állapota 0, vagy a maradék a lapon `(fordításra vár)` jelölésű (a #148 21. szabályának (iii) pontja). Commit: `F12.3: TEREMT-002 szótári egységeinek fordítása`.
 
-**4. LXX-döntések.** A DT-F12c szerint, a `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md` friss futásából:
+**4. LXX-döntések.** A DT528 szerint, a `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md` friss futásából:
 - 1Móz 1:2: ἀόρατος καὶ ἀκατασκεύαστος (az ἀκατασκεύαστος Strong-szám nélkül);
 - Jer 4:23: οὐθέν;
 - Ézs 34:11: σπαρτίον γεωμετρίας ἐρήμου; a *bohu*-köveknek nincs görög megfelelője.
 
 A régi 58 `lxx-hid` audit-sor kivezetett forrásra mutat; a három vers sora friss `lekerdez.py lxx-hid` futással újraírandó (az `auditok.tsv`-be). Commit: `F12.4: TEREMT-002 LXX-döntések`.
 
-**5. 7. lépés (nevesített tanító).** A DT-F12d szerint. Ha fut: `tanito-kereso` subagent (webes lépés, a felhasználó tapasztalata szerint Sonnet), a `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` és a `sablonok/PaRDeS_tanitok_lista.md` szerint, kimenet: `motivumok/naplok/TEREMT-002_tanitoi_kereses.md`, önálló menet, saját fájl. Ha nem fut: `INAKTÍV` hiányjelzés a forrásban (a #64 L5-mintája). Commit: `F12.5: …`.
+**5. 7. lépés (nevesített tanító).** A DT529 szerint. Ha fut: `tanito-kereso` subagent (webes lépés, a felhasználó tapasztalata szerint Sonnet), a `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` és a `sablonok/PaRDeS_tanitok_lista.md` szerint, kimenet: `motivumok/naplok/TEREMT-002_tanitoi_kereses.md`, önálló menet, saját fájl. Ha nem fut: `INAKTÍV` hiányjelzés a forrásban (a #64 L5-mintája). Commit: `F12.5: …`.
 
 **6. Forrás: `motivumok/TEREMT-002.md` a 9_ sablon szerint (értelmező próza, egy kézben).**
 - A #64 prózája a sablon 4. pontjának szakaszrendjébe kerül, `<!-- RÉS-KEZDET: [rés] --> … <!-- RÉS-VÉGE -->` jelölőkkel (a `motivumok/ISTENTISZT-001.md` mintája).
@@ -147,15 +148,15 @@ Commit (a jóváhagyás után): `F12.7: lexikon/TEREMT-002_TUDOMANYOS.md generá
 Független ellenőr (`fuggetlen-ellenor`), jelentés: `naplok/ELLENOR_F12_*.md`.
 
 **9. Zárás.** Draft PR, a brief fejléce, a zárónapló.
-- **⛔ DT-F12e** (a `motivumok.tsv` `statusz`-a).
+- **⛔ DT530** (a `motivumok.tsv` `statusz`-a).
 - **⛔ a merge a felhasználóé.**
 
 ## 5. Elfogadási feltételek
 
-1. A három előfordulás-sor `jelentes_szam`-a, `lexikon_entry_id`-je, `jelentes_en`-je és `jelentes_hu`-ja ki van töltve vagy a DT-F12a szerint explicit; a `jelentes_hu` nem hordoz funkció-értelmezést.
+1. A három előfordulás-sor `jelentes_szam`-a, `lexikon_entry_id`-je, `jelentes_en`-je és `jelentes_hu`-ja ki van töltve vagy a DT526 szerint explicit; a `jelentes_hu` nem hordoz funkció-értelmezést.
 2. A gerinc-Strongok minden szakaszának van sora a `szotar_szakasz_cimke.tsv`-ben, és a sorok a #148 eszközéből jöttek (proveniencia); kézi címke csak ⛔-döntés után.
 3. A lapon nincs jelöletlen fordítatlan szótári egység.
-4. A lapon a szótári gerinc megjelenik, kapcsolóbejegyzés nélkül (a TEREMT-002 nincs a kivétellistán, és nem került rá).
+4. A lapon a szótári gerinc megjelenik; a TEREMT-002 nincs a kivétellistán (a #12 levette: a DT437 `kivetel` sora `aktiv`, DT531). A 13–14. szerep (`KAROLI_MEGFELELOK`) a lapon megvan (DT531).
 5. `ellenoriz.py`: SÉRTÉS 0. A tesztek zöldek. `feladatok.py ellenoriz`: 0 hiba.
 6. Az L1–L7 és a DT2 két rés-szabálya a lapon és a forráson teljesül (8. b).
 7. Az arany-összevetés (8. c) táblája kitöltött, hiánynál explicit jelöléssel.
@@ -164,33 +165,33 @@ Független ellenőr (`fuggetlen-ellenor`), jelentés: `naplok/ELLENOR_F12_*.md`.
 
 ## 6. Döntésnapló
 
-**DT-F12a — az összetett sor entry-tokenje és a H0922.** Kérdés: a `H8414+H0922` soron melyik token a `lexikon_entry_id`, és mi a tagolatlan H0922 sorsa?
+**DT526 — az összetett sor entry-tokenje és a H0922.** Kérdés: a `H8414+H0922` soron melyik token a `lexikon_entry_id`, és mi a tagolatlan H0922 sorsa?
 - (1) **entry = H8414, `jelentes_szam` = `1`**; a H0922 a gerincen a BDB saját példahelyeként jelenik meg (`fej`, tagolatlan), kutatói hozzárendelés nélkül; a `lexikon_hivatkozasok.tsv`-be a H0922 a #148 DT438 szerinti értékkel kerül;
 - (2) entry = H0922: a `jelentes_szam` a DT438 explicit értéke, a H8414 csak példahelyként;
 - (3) a sor két sorra bomlik (H8414, H0922), mindkettő saját `jelentes_szam`-mal. Ez a `gerinc_elem` = `tohu+bohu` páralakjával (SEMA 2.2, a T2 G5-döntése) ütközik.
 
 *Javaslat: (1).* A H8414 tagolt; a BDB maga mindhárom verset a `-/1` alatt idézi, és a H0922 szócikke szerint a *bohu* „mindig a תֹּהוּ szóval” áll. A (3) a formulaikus azonosságot (`azonossag_tipusa` = `formulaikus`) bontaná szét.
 
-**DT-F12b — a BDB-forrás két hibája (a #64 6.1–6.2).** A H8414/H0922 héber idézetei sérültek (fordított szórend, hibás maqqef: pl. `קַותֿֿהֹוּ`); a H8414 szócikk „49:19”-et ír, a *tohu*-vers az Ézs 49:4. A gerinc a szakaszszöveget mutatja, ezért a hiba a lapra kerülne.
+**DT527 — a BDB-forrás két hibája (a #64 6.1–6.2).** A H8414/H0922 héber idézetei sérültek (fordított szórend, hibás maqqef: pl. `קַותֿֿהֹוּ`); a H8414 szócikk „49:19”-et ír, a *tohu*-vers az Ézs 49:4. A gerinc a szakaszszöveget mutatja, ezért a hiba a lapra kerülne.
 - (1) kézi sor a `bdb_forras_javitas.tsv`-ben (a DT381 (a) mintája, `manual`, indokkal), az ⓘ a javítás forrását nevezi meg;
 - (2) a hiba a lapon marad, NAPLO-jelöléssel;
 - (3) külön feladat a BDB-forrás héber idézeteire.
 
 *Javaslat: (1) a „49:19”-re, (3) a héber idézetekre*, mert az utóbbi nem TEREMT-002-specifikus (a #64 6.1 a `forditasok.tsv`-ben is továbbviszi). Ha az (1) mellett dönt a felhasználó, az `ir` kiegészül az `adat/bdb_forras_javitas.tsv`-vel; a befogadáskor ez eldönthető.
 
-**DT-F12c — a három függő LXX-hely.** A javasolt `lxx_dontesek.tsv`-sorokat a 4. lépés munkalapja adja.
+**DT528 — a három függő LXX-hely.** A javasolt `lxx_dontesek.tsv`-sorokat a 4. lépés munkalapja adja.
 - (1) mindhárom vers döntése most, a friss futásból; az ἀκατασκεύαστος Strong-szám nélküli állapota explicit;
 - (2) csak az 1Móz 1:2 és a Jer 4:23; az Ézs 34:11 (a *bohu*-köveknek nincs görög megfelelője) nyitott tétel.
 
 *Javaslat: (1)*, a hiány explicit jelölésével (CLAUDE.md 3.).
 
-**DT-F12d — a 7. lépés.** A #64-ben nem futott (L5: `INAKTÍV` hiányjelzés).
+**DT529 — a 7. lépés.** A #64-ben nem futott (L5: `INAKTÍV` hiányjelzés).
 - (1) most fut, `tanito-kereso` subagenttel, saját fájlba;
 - (2) inaktív marad, a hiány explicit; később önálló menet.
 
 *Javaslat: (1).* Az arany lapnak van nevesített tanítói szakasza (#130); a fordított irány próbája csak teljes lappal mér.
 
-**DT-F12e — a `motivumok.tsv` `statusz`-a a zárás után.** Ma `feldolgozás alatt` (T2 G2).
+**DT530 — a `motivumok.tsv` `statusz`-a a zárás után.** Ma `feldolgozás alatt` (T2 G2).
 - (1) a lezárt motívumok értéke a 9_ sablon / #11 szerint;
 - (2) marad, amíg a #13 első új motívuma meg nem erősíti a folyamatot.
 
