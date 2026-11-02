@@ -230,7 +230,8 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         # +2 (F76.30–31): a bontott BDB-szócikk (szo.bdb_apparatus) és az „LXX többlet” blokk (vers.lxx_tobblet, „az adat még nincs a DB-ben”)
         # +1 (F99 M1): a „Rokon szavak (OSHL-gyökcsalád)” blokk (szo.oshl_csalad)
         # +1 (F121, DT393): az UBS DBH-jelentések szónézet-blokkja (szo.ubs_dbh)
-        self.assertEqual(len(blokkok.REGISZTER), 50)
+        # +1 (F149): a „Tanulmányok erről a versről” blokk (vers.tanulmany)
+        self.assertEqual(len(blokkok.REGISZTER), 51)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
     def test_minden_tablanak_van_licencsora(self):
@@ -288,6 +289,9 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
             if b.id == 'szo.ubs_dbh':          # F121 (DT393): nincs pilot-megfelelője; angol forrás + magyar modell-fordítás
                 self.assertEqual(b.jelleg, ('forras', 'modell'))
                 continue
+            if b.id == 'vers.tanulmany':       # F149: nincs pilot-megfelelője; a tanulmány saját szöveg, a szakasz-jegyzék gépi
+                self.assertEqual(b.jelleg, ('forras', 'gepi'))
+                continue
             cim, pontos = self.PILOT_CIM[b.id]
             self.assertIn(cim, pilot, '%s: nincs ilyen pilot-cím: %s' % (b.id, cim))
             mine, theirs = set(b.jelleg), pilot[cim]
@@ -295,7 +299,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
                 self.assertEqual(mine, theirs, '%s ↔ %s' % (b.id, cim))
             else:
                 self.assertTrue(mine <= theirs, '%s ↔ %s: %s ⊄ %s' % (b.id, cim, mine, theirs))
-        self.assertEqual(set(self.PILOT_CIM) | {'szo.magyar_gorog', 'szo.ubs_dbh'}, set(blokkok.BLOKK_ID))
+        self.assertEqual(set(self.PILOT_CIM) | {'szo.magyar_gorog', 'szo.ubs_dbh', 'vers.tanulmany'}, set(blokkok.BLOKK_ID))
 
     def test_licenc_jelzesek(self):
         b = blokkok.BLOKK_ID['szo.mcged']
