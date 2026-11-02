@@ -140,6 +140,8 @@ def olvasoi_kapu(k):
     """A kapu olvasói szövege a mérő számaiból (a belső szavak nélkül)."""
     sz, al, n = k['sorszam'], k['allapot'], k.get('szam', {})
     if al == ZOLD:
+        if sz == 7 and n.get('kiadas2'):
+            return OLV_ZOLD[7] + ' 2. kiadáshoz: %d kérdés.' % n['kiadas2']
         return OLV_ZOLD[sz]
     if al == NINCS:
         return OLV_NINCS[sz]
@@ -165,7 +167,8 @@ def olvasoi_kapu(k):
             reszek.append('%d rész magyarázat nélkül áll' % n['blokk'])
         return 'A lapon ' + ', '.join(reszek) + '.' if reszek else 'A lap még javításra vár.'
     if sz == 7:
-        return '%d lektori kérdés vár válaszra.' % n.get('n', 0)
+        s = '%d lektori kérdés vár válaszra.' % n.get('n', 0)
+        return s + ' 2. kiadáshoz: %d kérdés.' % n['kiadas2'] if n.get('kiadas2') else s
     return '%d kapcsolódó munka vagy kérdés vár megoldásra.' % n.get('n', 0)
 
 
@@ -273,11 +276,21 @@ def kriterium_3(motivum):
     return uj(PIROS, '%d eltérő sor' % eltero, mero, motivum, None, {'n': eltero})
 
 
+def blokkolo_jelolt(j):
+    """DT-F156b (a): csak a motívum saját előfordulás-jelöltje blokkol; a motívumközi nyitva marad, tájékoztatás."""
+    return j['dontes'] == 'nyitva' and j.get('jelolt_tipus', '') != 'motivumkozi'
+
+
 def kriterium_4(motivum, jeloltek):
     mero = 'jeloltek.tsv'
-    nyitva = [j for j in jeloltek if j['id'] == motivum and j['dontes'] == 'nyitva']
-    reszlet = [j['igehely'] for j in nyitva]  # csak a hely: az indoklás adattábla-tartalom, nem kerül a Feedbe
-    return uj(PIROS if nyitva else ZOLD, '%d nyitott jelölt' % len(nyitva), mero, motivum, reszlet, {'n': len(nyitva)})
+    sajat = [j for j in jeloltek if j['id'] == motivum and j['dontes'] == 'nyitva']
+    nyitva = [j for j in sajat if blokkolo_jelolt(j)]
+    kozi = [j for j in sajat if not blokkolo_jelolt(j)]
+    # csak a hely: az indoklás adattábla-tartalom, nem kerül a Feedbe
+    reszlet = [j['igehely'] for j in nyitva] + ['tájékoztató (motívumközi, nem blokkol): ' + j['igehely'] for j in kozi]
+    e = uj(PIROS if nyitva else ZOLD, '%d nyitott jelölt, %d motívumközi (tájékoztató)' % (len(nyitva), len(kozi)),
+           mero, motivum, reszlet, {'n': len(nyitva), 'kozi': len(kozi)})
+    return e
 
 
 def lektor_sorok(motivum):
@@ -290,6 +303,11 @@ def lektor_sorok(motivum):
 
 def lektor_zart(sor):
     return sor.get('allapot', '').strip() == 'megvalaszolva'
+
+
+def masodik_kiadas(sor):
+    """A `/kiadas` lektori kérdései (forras=lektor) a következő kiadáshoz tartoznak: nem blokkolnak."""
+    return sor.get('forras', '').strip() == 'lektor'
 
 
 def kriterium_5(motivum):
@@ -317,6 +335,11 @@ def kriterium_5(motivum):
     return uj(PIROS if n else ZOLD, '%d nyitott kérdés' % n, mero, motivum, cimek, {'n': n})
 
 
+def kiejtes_szuro(hianyok):
+    """DT-F156b (b): a generált Jelmagyarázat szótári rövidítései nem kiejtés-kötelesek."""
+    return [h for h in hianyok if not str(h[1]).startswith('Jelmagyarázat')]
+
+
 def kriterium_6(motivum):
     mero = 'OLVASOI_blokk_teljesseg_meres.py + kiejtes_szoveg.py'
     ut = os.path.join(GYOKER, 'lexikon', motivum + '_TUDOMANYOS.md')
@@ -329,7 +352,7 @@ def kriterium_6(motivum):
         blokk_hiany = [(i, s) for i, s, van, ok in ki if van == 'nincs' and ok == 'HIÁNY']
         with open(ut, encoding='utf-8') as f:
             szoveg = f.read()
-        kiejtes_hiany = KSZ.elemez(szoveg)
+        kiejtes_hiany = kiejtes_szuro(KSZ.elemez(szoveg))
     except Exception as ex:  # noqa: BLE001 -- a mero hibaja "hiba", nem nulla
         return uj(HIBA, 'a mérő hibával állt le', mero, motivum, [repr(ex)[:300]])
     fordit = szoveg.replace('\r', '').count('*(fordításra vár)*')
@@ -356,9 +379,12 @@ def kriterium_7(motivum):
     if sorok is None:
         return uj(NINCS, 'nincs naplok/LEKTOR_%s.tsv (a lektori kérdések még nincsenek generálva)' % motivum, mero,
                   motivum)
-    nyitott = [s for s in sorok if not lektor_zart(s)]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés' % (len(nyitott),
-              len(sorok) - len(nyitott)), mero, motivum, [s.get('kerdes_id', '') for s in nyitott], {'n': len(nyitott)})
+    nyitott = [s for s in sorok if not lektor_zart(s) and not masodik_kiadas(s)]
+    kiadas2 = [s for s in sorok if not lektor_zart(s) and masodik_kiadas(s)]
+    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés, 2. kiadáshoz %d' % (
+              len(nyitott), len(sorok) - len(nyitott) - len(kiadas2), len(kiadas2)), mero, motivum,
+              [s.get('kerdes_id', '') for s in nyitott] + ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in kiadas2],
+              {'n': len(nyitott), 'kiadas2': len(kiadas2)})
 
 
 # ----------------------------------------------------------------------------- feladatok, DT-k
@@ -401,17 +427,42 @@ def nyitott_dt():
     return ki
 
 
+def sajat_fajl(motivum, ir):
+    """A brief `ir` listájában a motívum valamelyik fájlja áll (nem csak a neve valamelyik naplóban)."""
+    return any(x % motivum in ir for x in ('motivumok/%s.md', 'lexikon/%s_', 'motivumlog/%s'))
+
+
+def pont_a_motivumrol(szoveg, motivum):
+    """A brief valamelyik ⛔ pontja a motívumról szól."""
+    return any('⛔' in s and motivum in s for s in szoveg.splitlines())
+
+
+def feladat_blokkol(fej, szoveg, motivum):
+    """DT-F156b (c): megállt/döntésre váró feladat, `ir`-ben a motívum fájlja ÉS a ⛔ pontja róla szól."""
+    return fej.get('allapot') in ('megallt', 'dontesre_var') and sajat_fajl(motivum, fej.get('ir', ''))         and pont_a_motivumrol(szoveg, motivum)
+
+
 def kriterium_8(motivum, fejlecek, dt_lista):
     mero = 'feladatok.py + DONTESEK.md'
     erintett = {n: f for n, f in fejlecek.items() if motivum in f.get('ir', '')}
-    reszlet = []
+    blokkolo = {}
+    for n, f in erintett.items():
+        try:
+            with open(os.path.join(GYOKER, f['_fajl']), encoding='utf-8') as fh:
+                szoveg = fh.read()
+        except OSError:
+            continue
+        if feladat_blokkol(f, szoveg, motivum):
+            blokkolo[n] = f
+    reszlet, info = [], []
     for n, f in sorted(erintett.items()):
-        if f.get('allapot') == 'megallt':
-            reszlet.append('#%d ⛔ megállt feladat' % n)
+        if f.get('allapot') in ('megallt', 'dontesre_var'):
+            (reszlet if n in blokkolo else info).append('#%d ⛔ megállt feladat' % n)
     for d in dt_lista:
         if d['nyitott'] and d['feladat'] in erintett:
-            reszlet.append('%s 🟡 (#%d)' % (d['id'], d['feladat']))
-    e = uj(PIROS if reszlet else ZOLD, '%d nyitott ⛔/🟡' % len(reszlet), mero, motivum, reszlet, {'n': len(reszlet)})
+            (reszlet if d['feladat'] in blokkolo else info).append('%s 🟡 (#%d)' % (d['id'], d['feladat']))
+    e = uj(PIROS if reszlet else ZOLD, '%d blokkoló, %d tájékoztató ⛔/🟡' % (len(reszlet), len(info)), mero, motivum,
+           reszlet + ['tájékoztató: ' + x for x in info], {'n': len(reszlet), 'info': len(info)})
     e['feladatok'] = [{'feladat': n, 'allapot': f.get('allapot', ''), 'cim': f.get('cim', '')[:120]}
                       for n, f in sorted(erintett.items())]
     return e
@@ -571,10 +622,11 @@ def main():
             'allasfokozat': allasfokozat(m, zold_db, len(lista), krit),
             'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit)],
             'olvasoi_mondat': olvasoi_mondat(st['elofordulas_osz'] + st['elofordulas_usz'],
-                                             sum(1 for j in sajat_j if j['dontes'] == 'nyitva'), len(elv), zold_db),
+                                             sum(1 for j in sajat_j if blokkolo_jelolt(j)), len(elv), zold_db),
             'tsv_statusz': m['statusz'], 'tsv_statusz_eltérés': (m['statusz'] == 'publikálható') != (zold_db == 8),
             'kriteriumok': lista, 'zold_db': zold_db, 'ossz_db': len(lista),
-            'nyitott_jelolt_db': sum(1 for j in sajat_j if j['dontes'] == 'nyitva'),
+            'nyitott_jelolt_db': sum(1 for j in sajat_j if blokkolo_jelolt(j)),
+            'nyitott_motivumkozi_db': sum(1 for j in sajat_j if j['dontes'] == 'nyitva' and not blokkolo_jelolt(j)),
             'elvetett_jelolt_db': len(elv),
             'beepitett_jelolt_db': sum(1 for j in sajat_j if j['dontes'].startswith('beépít')),
             'stash': st if zold_db == len(lista) else None,
