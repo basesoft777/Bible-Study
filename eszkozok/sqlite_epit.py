@@ -56,6 +56,7 @@ import nave_bontas as NB  # noqa: E402
 import zsolt_felirat_halmaz as ZFH  # noqa: E402
 import ellenoriz as E  # noqa: E402
 import tsk_kulcs as TK  # noqa: E402
+import karoli_kh_szuro as KHSZ  # noqa: E402  (N-F156a: másolt Károli-KH listák kihagyása)
 import tanulmany_regiszter as TR  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
@@ -736,7 +737,10 @@ class Epito(object):
         self.tabla('tsk', [('igehely', 'TEXT'), ('cel_igehely', 'TEXT'), ('votes', 'INTEGER')],
                    tsk, SZARMAZTATOTT_LICENC['tsk'], ['igehely', 'cel_igehely'])
         kh = []
+        kh_gyanus = KHSZ.gyanus_forrasok()  # a forrás-XML másolt listái (Karoli_kereszthivatkozasok_gyanus.tsv)
         for r in G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]:
+            if r['Igehely'] in kh_gyanus:
+                continue
             fo = self.konyvek.step_igehely(r['Igehely'])
             cel = self.konyvek.step_tartomany(r['Kapcsolódó igehely'])
             if fo is None:
