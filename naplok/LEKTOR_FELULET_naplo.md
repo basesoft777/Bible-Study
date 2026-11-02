@@ -301,3 +301,30 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
   (az ALVIL-001:mK1-en próbaválasz → „Válasz törlése” → „Igen, törlöm”): a kártya visszaállt nyitottra, a próbaválasz nincs a db-ben, a felhasználó 3 válasza bájtra azonos;
   konzolhiba nincs. A lapnézet-link célját kattintással nem lehetett igazolni (az új fül a próba fülcsoportján kívül nyílik); a közzétett oldal motívum → nézet táblája helyes.
 - Artifact: ugyanaz a link, 15. verzió.
+
+## A TEREMT-002 15 kérdése (a #12 C-h és C-l menete, DT-F151b; 2026-11-02)
+
+- Forrás: `naplok/LEKTOR_TEREMT-002.tsv` (2 határ-kérdés, 1. kiadás; 13 lektori kérdés, 2. kiadás), a kézi összefoglaló `eszkozok/lektor_felulet/osszefoglalo_TEREMT-002.tsv`
+  (a két határ-kártyán a gombonkénti következmény az adatból: 3 előfordulás; az Ézs 34:11 a prózában 23 helyen). A lektor részolvasást kapott (DT-F12i: a négy értelmező blokk, 14 392 karakter).
+- Lapnézet: új privát artifact (https://claude.ai/artifact/4wztGijeFNUhZ5GW5wstnW; `epit_nezet.py`, a cím és a fejléc a TEREMT-002-re átírva), a link a `lapnezetek.tsv`-ben.
+- Az `epit.py` kimenete 96 kártya: a meglévő 81 bájtra azonos adattal (kerdes_id-nként összevetve az élő 16. verzióval), új a 15 TEREMT-002; a sablon-részben csak a `LAP_URLOK` bővült.
+- Élő próba a felhasználó Chrome-jában (Claude in Chrome, saját fülön): a Tartalmi fülön a TEREMT-002 motívum-szűrő 15 kártyát ad (0 / 15 megválaszolva); a határ-kártyán „A jelenlegi határ”
+  (negatív kritérium, fölérendelt fogalom, a három előfordulás `fájl:sor`-ral) és a „Ha így döntesz…” kitöltött. A lapnézet-link kattintásra a próba fülcsoportján kívül nyílik (mint az ALVIL-001-nél);
+  a cél közvetlenül megnyitva a „TEREMT-002 lapnézet” (a TEREMT-002 lexikonlapja). Próbaválasz nem kellett; az élő db `valaszok` gyűjteménye (3 dokumentum) a publikálás előtt és után azonos.
+- Artifact: ugyanaz a link, 17. verzió. A kérdésekre a menet nem válaszolt.
+
+## Háromválaszos határ-kártya: a HAMART-001 N-F63e kérdése (az orkesztrátor kérése, 2026-11-02; a PR #591-en, hogy ne publikáljon két session párhuzamosan)
+
+- Eszköz (általános, elhagyható): az `osszefoglalo_<ID>.tsv` két új oszlopa, `gombok` (három saját felirat, " | "-vel; az első kettő az `elfogadom` és az `elvetem` kódot kapja,
+  a harmadik a `harmadik` kódot) és `kov_harmadik` (a harmadik gomb következménye); csak határ-kártyán, csak mindhárom következménnyel együtt. A `LEKTOR_*.tsv` fejléce a két
+  mezővel bővül a végén (a régi fejlécek beolvashatók); a sablon ilyenkor öt gombot rajzol (a három saját + Visszakérdezek, Saját megoldás), a „Ha így döntesz…” mindháromnak a
+  saját következményét mutatja. A „Ha így döntesz…” szövegében a `kód` mostantól formázva jelenik meg (eddig nyers visszafordított idézőjelekkel). 2 új teszt (44 OK).
+- Tartalom: a `naplok/HATAR_HAMART-001.md` Modelles részébe K1-ként, a #123 HAMART-001 X.A menetének munkafájljából (`naplok/F123_adat_HAMART-001.md` 7. szakasz, a PR #592 ágán;
+  DT-F123u), átfogalmazás nélkül, mezőkre bontva: a cím a „Mi a gond”, a magányos H6975-ről szóló mondat a „Mit javasol”, a táblázat három sora a három gomb (felirat + „Mit jelent /
+  E-sor mozdul / Új vers / Egyéb”, a `**` kiemelés nélkül). Egy rámutató sor került a cím alá (az érintett beépített igehelyek: 1Móz 6:5, 1Móz 8:21, 1Móz 3:18), hogy a generált
+  „A jelenlegi határ” blokk ezek mai állapotát mutassa. A K1 nem a `hatar-ellenor` kimenete; a Modelles rész fejléce ezt kimondja.
+- `naplok/LEKTOR_HAMART-001.tsv`: 1 kérdés (`hatar:HAMART-001:mK1`, tartalmi, 1. kiadás, nyitva).
+- Az `epit.py` kimenete 97 kártya: a meglévő 96 tartalma azonos (a két új mező üresen), új a HAMART-001 kártyája. Artifact: ugyanaz a link, 18. verzió (a kártya), majd 19. verzió
+  (a kód-formázás). Élő próba a felhasználó Chrome-jában (saját fülön): a Tartalmi fülön a HAMART-001 szűrő 1 kártyát ad; öt gomb; „A jelenlegi határ” a három igehely állapotával;
+  a „Ha így döntesz…” a Kivesszük (2 E-sor, 651 kizárás), a Maradnak (0 E-sor, 7 kizárás, 644 kézi átnézés) és a Részben (1 E-sor, 580 kizárás, 71 kézi átnézés) következményével.
+  Az élő db `valaszok` gyűjteménye (3 dokumentum) változatlan. A kérdésre a menet nem válaszolt.
