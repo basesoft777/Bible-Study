@@ -108,7 +108,7 @@
   2 „közel a küszöbhöz”, 1 „megerősítve” a fejekben; a 14 küszöb-közeli sor a blokkban). A sorrend tehát csak a küszöb-jelölt tételeknél (kb. 14–18) adható meg, a többi
   „jelöletlen” csoport.
 
-## M5 — döntés-kártyák (`dontes` forrás; DT-F157f: „mindkettő”)
+## M5 — döntés-kártyák (`dontes` forrás; DT483: „mindkettő”)
 
 - `eszkozok/lektor_kerdesek.py --dontes` → `naplok/LEKTOR_DONTESEK.tsv`: **31 kártya** = 14 nyitott (🟡) `DONTESEK.md`-tétel + 17 megállt (`megallt` / `dontesre_var`) brief.
   A táblázat soraiban az állapot az első emojis cella (a 39 „furcsa” sor miatt nem az oszlopszám); a briefeknél a fejléc `kovetkezo` mezője (karbantartott) és a ⛔ sorok
@@ -121,7 +121,7 @@
 - **Ismert hiányosság:** a briefek ⛔ kivonata zajos (pl. szakaszcímek, általános szabálymondatok is bekerülhetnek); a döntő információ a `kovetkezo` sor. A `kod` nélküli brief (F22) „#22 F22”-ként jelenik meg.
 - A talált motívumok kártyái (`motivum_jelolt`) **nincsenek építve** (a javaslat-író még eldöntetlen).
 
-## M6 — mindig világos (DT-F157g)
+## M6 — mindig világos (DT484)
 
 - A felhasználó döntése: a lektor-felület mindig az A. Olvasó világos változatát mutatja, a témától függetlenül (a Feedre: „Igen, mindig világos”; a lektor-felületre: „igen”).
 - A `sablon.html`-ből kikerült a sötét token-készlet, a `prefers-color-scheme` blokk és a `[data-theme]` kapcsolás; a `:root` a világos tokeneket adja (`--papir: #f6f6f3`),
