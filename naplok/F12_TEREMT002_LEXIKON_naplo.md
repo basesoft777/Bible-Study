@@ -80,4 +80,19 @@
 
 ### ⛔ DT-F12a–f
 
-A kérdéseket az orkesztrátor kapja (`local_2bdbd92d-…`), a felhasználó 2026-11-02-i felhatalmazásával dönt. A válasz a `DONTESEK.md`-be kerül.
+A kérdések a lexikon ág orkesztrátorához mentek (`local_20eed447-…`; az első küldés tévesen a `local_2bdbd92d-…` címre). A döntés (2026-11-02, a felhasználó felhatalmazásával): a (1), b (1) + (i), c (1), d (1), e (1), f (1); rögzítve: `DONTESEK.md` DT-F12a–f, N-F12a (F12.0, `27d8bf44`).
+
+## 1–6. lépés (2026-11-02)
+
+| Tétel | Commit | Eredmény |
+|---|---|---|
+| F12.1 | `cb31e347` | a három sor `BDB` / `H8414` / `1` / „formlessness” / „formátlanság” (a -/1/- definíciós feje bájtra; az ISTENTISZT-001 mintája: a jelentés minden során azonos); `lexikon_hivatkozasok.tsv` +2 (H8414 1, H0922 `tagolatlan`); `SZOTARI_GERINC` `aktiv`, új `KAROLI_MEGFELELOK` sor. Napló: `naplok/F12_kitoltes.tsv` |
+| F12.2 | `da3ba78c` | `szakasz_cimke_levezet.py --ir`: 3 sor levezetve, jelzés 0; új sor BDB H8414 -/1/- → „formátlanság”. DT187-mutató kivezetve; a `tagolatlan` címke a lapon „(tagolatlan szócikk)” |
+| F12.2b | `b4b8c7bf` | 49:19 → 49:4 (`hivatkozas_kezi`); a generátorban a DT-F131z helyőrző DT445-re javítva (l. F1 alább) |
+| F12.4 | `b59dc49c` | LD091–LD096; 3 friss B4 audit-sor |
+| F12.5 | `407659bc` | tanítói keresés: 18 tanító, 1 találat (Derek Prince, ✅ + ⚠️), 17 gap; a ✅ sor utóellenőrizve |
+| F12.6 | `dc307643` | a forrás a 9_ sablon szerint; `res_forras.tsv` 9 sor, E28-sor, `forras_study`; archív: `archivum/TEREMT-002/`; `bdb_vers_jelentes.tsv` újragenerálva (Ézs 49:19 → 49:4, `forras_javitas`) |
+
+**A tesztek.** `teszt_szerepmatrix.py` 3, `teszt_szotari_gerinc.py` 5, `bdb_jelolt/teszt_bont.py` 3 bukás marad; mind a három fájl ugyanezeket a bukásokat adja a main változatán is (a módosított fájlok `origin/main`-változatával futtatva, 2026-11-02): az ISTENTISZT-001 #152 utáni számai (33 → 22 sor, 23 → 16 hely, G0994 rokon szó) és a BDB-tábla mai állapota (`Determinizmus`, `HuIlleszt`). A TEREMT-002-t érintő két teszt és a `test_hivatkozas_kezi` az új állapotra írva, zöld. → N-F12b.
+
+**A 3. lépés sorrendje.** A `glossza_lexikon_forditas.py lista` a `res_forras.tsv` sorai nélkül nem renderel lapot (`KIHAGYVA`), ezért a fordítási kör a 6. lépés után fut.
