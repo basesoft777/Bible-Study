@@ -87,6 +87,17 @@ class Osztalyozas(unittest.TestCase):
         self.assertEqual(P.osszesit(m)['arany'], 1)
 
 
+class AranyLap(unittest.TestCase):
+
+    def test_az_elo_arany_lap_minden_igehelye_arany_szintu(self):
+        # DT-F1Ab óta a „ — ” nélküli `funkcio` is a „Funkció:” sorba kerül
+        m = P.lap_meres('ISTENTISZT-001')
+        if m is None:
+            self.skipTest('nincs lexikon/ISTENTISZT-001_TUDOMANYOS.md')
+        d = P.osszesit(m)
+        self.assertEqual(d['arany'], d['igehely'], [x[:3] for x in m if x[1:3] != ('kerek', 'van')])
+
+
 class Szabaly24(unittest.TestCase):
 
     def setUp(self):

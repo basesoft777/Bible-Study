@@ -122,16 +122,19 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 **1Móz 1:2**
 *A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett.*
 "A föld pedig kietlen és puszta vala" — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár a föld teremtés előtti állapotának megnevezése
+Funkció: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal
 
 <a id="ige-ézs-34-11"></a>
 **Ézs 34:11**
 *És örökségül bírándja azt ökörbika, sündisznó; és gém és holló lakja azt, és fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit.*
 "fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit" — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár Edom ítéletében, mérőkötél és függőón képében
+Funkció: a tohu/bohu mint a rombolás mérőeszköze
 
 <a id="ige-jer-4-23"></a>
 **Jer 4:23**
 *Nézek a földre, de ímé kietlen és puszta; és az égre, de nincsen világossága!*
 "Nézek a földre, de ímé kietlen és puszta" — az 1Móz 1:2 párja Júda ítéletének képeként
+Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#elofordulasok -->
 
