@@ -1831,14 +1831,14 @@ Kulcs: `id` + `kiadas`. Állapot (2026-11-02): 1 sor — ISTENTISZT-001, 1. kiad
 
 ---
 
-### 2.47 A `pardes.db` tanulmány-táblái — `tanulmany`, `tanulmany_tartomany`, `tanulmany_hivatkozas`, `tanulmany_szoveg` (F149, FELADATOK #149, DT-F149a, DT-F149b, DT-F149c)
+### 2.47 A `pardes.db` tanulmány-táblái — `tanulmany`, `tanulmany_tartomany`, `tanulmany_hivatkozas`, `tanulmany_szoveg` (F149, FELADATOK #149, DT512, DT513, DT514)
 
 **Generált kimenet** (nem `adat/*.tsv`; a forrás a tanulmány fájlja, DT28): a `genezis/*_bovitett.md`, `ujszovetseg/*_bovitett.md` és
 `melyelemzesek/*_melyelemzes.md` fájlokból az `eszkozok/tanulmany_regiszter.py` állítja elő, a `sqlite_epit.py` építi a `pardes.db`-be
 (licenc: `projekt_adat`). A tanulmányba semmi nem íródik vissza. A tematikus tanulmányok (`tematikus_lezart/`) nem tartományosak: a
 motívumon át érhetők el, a regiszterben nincsenek.
 
-**Tartomány (DT-F149a (c)).** A tanulmány tartományát a fájl első címsorából nyeri ki (`# 1Mózes 14:18-20 / Zsoltárok 110:4 / Zsidók 5-7 — …`),
+**Tartomány (DT512 (c)).** A tanulmány tartományát a fájl első címsorából nyeri ki (`# 1Mózes 14:18-20 / Zsoltárok 110:4 / Zsidók 5-7 — …`),
 és a fájlnévvel veti össze. Egyezés híján a tanulmány **nem kerül a regiszterbe**: a kimenet megnevezi a fájlt és az okot
 (`normalizalas_jelentes`, tabla=`tanulmany`), mert az üres eredmény jobb, mint a hibás horgony. Az egész fejezet alakot (`1Moz_14`, `Zsidók 5-7`)
 a Károli verszámából egészíti ki; a könyvnév a `Konyv_normalizalo_tabla.tsv` szerint (normalizálás nélkül néma nem-találat). A bővített
@@ -1852,7 +1852,7 @@ sorozat hézagait és átfedéseit a kinyerő figyelmeztetésként jelenti (nem 
 | `tanulmany_szoveg` | `tanulmany_id`, `szoveg` | a kézi forrás változatlan szövege a `/tanulmany/<id>` oldalnak (a szerver csak a `pardes.db`-t látja); nézet, kézzel nem szerkeszthető |
 
 **Index (`tanulmany_hivatkozas`).** Soronként egy (tanulmány, szakasz, igehely). A szakasz a `##` / `###` címsor; a horgonya a cím ASCII-sített alakja
-(ismétlődő címnél `-2`, `-3`), a `/tanulmany/<id>#<horgony>` oldal ugyanezt az azonosítót viseli. **Két fokozat (DT-F149b):** `nev` — a szakasz
+(ismétlődő címnél `-2`, `-3`), a `/tanulmany/<id>#<horgony>` oldal ugyanezt az azonosítót viseli. **Két fokozat (DT513):** `nev` — a szakasz
 egyedi versre hivatkozik (`3:8`, `Zsolt 110:4`, „18. v.”, a táblázat versszám-cellája); `tartomany` — a szakasz tartományt említ („10:1–11:32”, „1–6. v.”).
 A `hivatkozas` az eredeti szöveg. `tartomanyban`: 1, ha a vers a tanulmány saját tartományába esik. Nem kerül be: a fejléc-blokk és a „0. Sorozat-kontextus”
 szakasz (a sorozat navigációja, nem a vers tárgyalása); a tanulmány saját teljes tartományának megnevezése; a **tartományon kívüli tartomány-említés**

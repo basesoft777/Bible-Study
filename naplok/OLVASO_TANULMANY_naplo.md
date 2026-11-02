@@ -7,9 +7,9 @@ melyelemzesek/, konkordancia/Karoli_1908.tsv | forras=`eszkozok/tanulmany_regisz
 
 | Tétel | Döntés | Alkalmazva |
 |---|---|---|
-| DT-F149a | (c): a tartomány a fájl első címsorából, fájlnév–címsor egyezés-ellenőrzéssel; eltérésnél a tanulmány nem kerül a regiszterbe, a kimenet megnevezi; a kinyerő függvény a #124-nek is hívható | `tanulmany_regiszter.py`: `tartomany_cimsorbol`, `kinyer`; `NYITOTT_FELADATOK.md` F124-tétel jelölve |
-| DT-F149b | (a)+(c): két fokozat (`nev`, `tartomany`), a panel megkülönbözteti, kitöltés nincs; olvasói nyelvű szöveg | `tanulmany_hivatkozas.fokozat`, `blokkok._r_tanulmany` |
-| DT-F149c | az N-F152a-ból csak a „Tanulmányok jelölése” kapcsoló; a többi nyitva marad | `alap.html` (`#tan-jeloles`), `olvaso.js` |
+| DT512 | (c): a tartomány a fájl első címsorából, fájlnév–címsor egyezés-ellenőrzéssel; eltérésnél a tanulmány nem kerül a regiszterbe, a kimenet megnevezi; a kinyerő függvény a #124-nek is hívható | `tanulmany_regiszter.py`: `tartomany_cimsorbol`, `kinyer`; `NYITOTT_FELADATOK.md` F124-tétel jelölve |
+| DT513 | (a)+(c): két fokozat (`nev`, `tartomany`), a panel megkülönbözteti, kitöltés nincs; olvasói nyelvű szöveg | `tanulmany_hivatkozas.fokozat`, `blokkok._r_tanulmany` |
+| DT514 | az N-F152a-ból csak a „Tanulmányok jelölése” kapcsoló; a többi nyitva marad | `alap.html` (`#tan-jeloles`), `olvaso.js` |
 
 ## 2. Mért állapot
 
