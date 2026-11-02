@@ -153,3 +153,14 @@ Az 5. és a 7. kapu a `naplok/LEKTOR_<ID>.tsv`-ből számol (megválaszolt = zá
 ## Dashboard-arculat (A. Olvasó, a Dashboard-típuson belül)
 
 A betűk (Source Serif 4, IBM Plex Sans, IBM Plex Mono; OFL, a `eszkozok/olvaso_szerver/statikus/fonts/` fájljaiból, latin + latin-ext) a Dashboard `files/*.css` dokumentumaiban `data:` URL-lel állnak, az oldal saját osztályain az A-tokenek (világos/sötét), a háttér az A „papír”; a típus kerete a típusé. A `dash/look` az A-értékeket tartalékként hordozza. A privát oldalt renderelni nem tudtam (bejelentkezés kell), a típus `check` dokumentuma csak megnyitás után jön létre.
+
+## A Dashboard forrása a repóban (újraépíthetőség)
+
+A Dashboard (`https://claude.ai/artifact/S5LqyrUsFN8RXHXLrURnpk`) oldala nem generálódik, kézzel írt: a forrás a `generalt/muhely/dashboard/` alatt van, hogy a következő frissítés ne írja felül a javításokat.
+
+- `index.html`: az oldal (`files/index.html` a Dashboardban); a téma a `data-mode` ősből olvasódik (`.sotet` osztály), az A-tokenek saját osztályokon.
+- `look.json`: a `dash/look` (az A értékei tartalékként).
+- `adat_laposit.py`: a `feed_*.json`-ból a Dashboard öt adatfájlja (motivumok, kapuk, stash, tortenes, belso_kapuk).
+- `betu_css.py`: az öt betű-CSS (`files/*.css`, data: URL) az olvasó-szerver OFL betűfájljaiból.
+
+Frissítés: `muhely_allapot.py` → `adat_laposit.py <könyvtár>` → a fájlok feltöltése az artifact asset-tárába → a `datasets/*` dokumentumok `source.url`-jének cseréje; az oldal vagy a betű-CSS változásakor a `files/` dokumentumok írása (`{"text": …}`).
