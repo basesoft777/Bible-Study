@@ -40,7 +40,7 @@ def _lap():
 def _egyezik(lap, res):
     r = LG.res_forras_sorok()[(MOTIVUM, res)]
     elvart, tenyleges = E.res_elvart_es_tenyleges(LG, lap, MOTIVUM, res, r)
-    return elvart == tenyleges
+    return E.res_egyezik(elvart, tenyleges)
 
 
 class Szabaly11Ts(unittest.TestCase):
