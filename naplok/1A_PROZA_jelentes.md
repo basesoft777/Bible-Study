@@ -116,7 +116,7 @@ A változás a 2. kiadás függő változásaként rögzítve: **N-F1Ab** (`NYIT
 | TEREMT-002 | piros | 47/47 blokk, 0, 0, 1/a hiányos 1 | Jer 4:23: a próza töredék („az 1Móz 1:2 párja Júda ítéletének képeként”, 6 szó), Funkció van |
 | ALVIL-001 | piros | 108/108 blokk, 0, 0, 1/a hiányos 72 | mind a 72 (64 töredék próza, 72 hiányzó Funkció) |
 
-Az ISTENTISZT-001 Feed-állása 7/8: a 2. kapu („2 HIBA”) e menet előtt is piros volt — a futás előtti mérésben az E28 a még nem commitolt újragenerálást jelezte; a commit után az E28 és az E29 0 találat. *(A 2. kapu többi oka nem e menet tárgya.)*
+Az ISTENTISZT-001 Feed-állása a commit és a friss main beolvasztása után **8/8 zöld** (újramérés, `f7bf73e2`). Az első mérés 2. kapuja („2 HIBA”) az E28 jelzése volt a még nem commitolt újragenerálásra; a commit után az E28 és az E29 0 találat.
 
 **Motívumonként — ez a próza-menetek mérete:**
 
