@@ -141,8 +141,12 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn('Hogyan olvasd ezt az oldalt?', h)
         self.assertRegex(h, r'<span class="cimke">31 vers</span>')
         self.assertRegex(h, r'<span class="cimke">\d+ héber \+ \d+ görög szó-lap</span>')
-        self.assertRegex(h, r'<span class="cimke arany">BDB magyarul: \d+/\d+</span>')       # nem teljes → arany
-        self.assertRegex(h, r'<span class="cimke">Károli–Strong: 57 könyv</span>')
+        # a BDB-címke arany, ha a magyar BDB nem teljes (az F128/F38 fordítások óta az 1Móz 1 teljes: sima címke); a Károli–Strong-könyvek
+        # száma az adatból jön (az F22 óta mind a 66 könyv párosított, nem a pilot 57-je)
+        m = re.search(r'<span class="cimke( arany)?">BDB magyarul: (\d+)/(\d+)</span>', h)
+        self.assertTrue(m)
+        self.assertEqual(bool(m.group(1)), int(m.group(2)) < int(m.group(3)))
+        self.assertRegex(h, r'<span class="cimke">Károli–Strong: %d könyv</span>' % len(self.kozos.karoli_strong_konyvek))
         for jelleg in ('forrásadat', 'gépi feldolgozás', 'modell-kimenet'):
             self.assertIn(jelleg, szoveg(h[h.index('id="utmutato"'):h.index('class="lap-tartalom')]))
 
@@ -278,13 +282,18 @@ class TestPilotAranymintaval(unittest.TestCase):
                 if not l['bdb_hu']:
                     continue
                 t = szoveg(self.szo_panel(strong))
-                self.assertIn(szoveg(l['bdb_hu'])[:40], t, strong)
+                # N-F131y.2/DT-F131z (9f7ac0e7): a közös BDB-megjelenítő a Biblia által igazolt héber sorrend-javítást végzi (pl. „׳ג” → „ג׳”),
+                # és a héber futam után LRM-et (U+200E) tesz; a héber írásjegyeket és az LRM-et ezért mindkét oldalon kivesszük, a magyar szöveg
+                # egyezését nézzük (a héber sorrend-javítás tesztje a bdb_rovidites saját tesztjében van)
+                def latin(x):
+                    return re.sub(r'\s+', ' ', re.sub('[\u0590-\u05ff\ufb1d-\ufb4f\u200e\u200f]', '', x))
+                self.assertIn(latin(szoveg(l['bdb_hu']))[:30], latin(t), strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
                 self.assertIn('%d Károli-előfordulás, ebből %d magas' % (l['karoli_osszes'], l['karoli_magas']), t, strong)
 
     def test_karoli_strong_konyvek_jelzese_a_szo_lapon(self):
         t = szoveg(self.szo_panel('H6440'))
-        self.assertIn('57 feldolgozott könyv', t)
+        self.assertIn('%d feldolgozott könyv' % len(self.kozos.karoli_strong_konyvek), t)           # az F22 óta mind a 66 (nem a pilot 57-je)
 
     # -- 7. a döntések (DT-F76e–i, felhasználó, 2026-10-14) kódja: valódi tesztek ---------------------------------------------
     def test_DT_F76f_magyar_alapjelentes_a_szo_lapon(self):

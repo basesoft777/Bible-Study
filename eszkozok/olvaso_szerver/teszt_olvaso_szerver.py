@@ -709,7 +709,10 @@ class TestLapok(unittest.TestCase):
         h = self.get('/1Moz/1/4?reteg=il').get_data(as_text=True)
         self.assertIn('Párosítatlan eredeti szavak', h)       # pl. az אֶת (H0853)
         h = self.get('/Mt/1/1?reteg=il').get_data(as_text=True)
-        self.assertIn('nincs Károli–Strong párosítás', h)        # ÚSZ: nincs token_par: explicit üres, nem néma
+        # ÚSZ: az F22 óta (Mt: da0a8ea1) van token_par, tehát a párosított versen nincs „nincs párosítás” jelzés; a jelzés explicit üres, nem néma,
+        # ha egy versnek mégsincs párja (a sablon `not v.van_par` ága)
+        self.assertNotIn('nincs Károli–Strong párosítás', h)
+        self.assertIn('il-szo', h)
 
     def _rokon(self, strong):
         h = self.get('/r/szo/' + strong).get_data(as_text=True)
