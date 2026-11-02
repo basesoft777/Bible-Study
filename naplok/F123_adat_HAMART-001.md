@@ -174,4 +174,48 @@ Proveniencia: `scope=HAMART-001: adat/elofordulasok.tsv (52 sor) × kézi rések
 
 ## 6. Döntések és nyitott pontok
 
-*(A döntés után kitöltendő.)*
+A három ⛔-kérdést az orkesztrátor döntötte el, a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«. A tételek: `DONTESEK.md` DT-F123t, DT-F123u, DT-F123v.
+
+1. **DT-F123t (a), a kritérium-mérések új helyei:** 27 `nyitva` jelölt a `jeloltek.tsv`-ben (F123.HAMART.A12, `naplok/F123_jelolt_ir_HAMART-001.py`; a HAMART-001 sorai: 223 → 250), indoklás-típusonként:
+   - „kollokáció (1Móz 3:18 gerinc-pár)” — 1: Hós 10:8;
+   - „φθείρω-család — a kritérium lexémája” — 12: G1312 ApCsel 2:27, 2:31, 13:34–37 (a sorokon az **ALVIL-001-közelség** jelölve: a Zsolt 16:10 idézetének közege, az ApCsel 2:27 és 2:31 ALVIL-001-előfordulás — motívumközi kérdés lehet); G5349 Róm 1:23, 1Kor 9:25, 15:53, 15:54, 1Pét 1:18, 1:23;
+   - „lánc-együttállás — gyenge, strukturális közelítés; az értelmező menet dönt” — 14 hely (az egymást követő versek egy hely): 5Móz 9:26-27, 5Móz 19:15-16, 1Kir 8:34-35, 1Kir 13:34, 1Kir 14:15-16, 2Kir 17:22-23, 2Krón 6:25-26, Neh 9:1-2, Zsolt 25:18-19, Ez 12:19, Ez 28:17, Hós 9:9, Mik 6:13, Mal 3:11.
+
+   **A 15 privatív alak (ἀφθαρσία, ἄφθαρτος, ἀδιαφθορία) ellentétes jelentés, nem jelölt;** a sorai a `naplok/F123_adat_HAMART-001_csalad.tsv`-ben maradnak. Beépítés vagy elutasítás egyik új sorra sincs: az a B5 az értelmező menetben.
+2. **DT-F123u, módosított (b), a tág helyek (F124):**
+   - a negatív kritérium lexémalistáján **belüli** Strongot hordozó **605 vers** szűretlen marad, az értelmező menet kézi átnézésére, a lánc-mérés (1d.) sorrendjében; a sorok a `naplok/F123_adat_HAMART-001_f108_osszevetes.tsv`-ben;
+   - a listán **kívüli** Strongot hordozó **651 vers** (H7451 573, H7043 71, magányos H6975 7) blokk-kizárása **most nem történik**: meglévő E-sorok `gerinc_elem`-je (1Móz 6:5 H7451, 1Móz 8:21 H7043) ezekre a Strongokra mutat, a kizárás ellentmondana az adatnak, amíg az N-F63e el nem dől. A 651 vers `N-F63e-függő` jelöléssel vár: `naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv` (F123.HAMART.A13; `nf63e` alparancs). A „jelöltlista” itt ez a munkafájl-tábla, nem a `jeloltek.tsv`: a 651 vers a 605-höz hasonlóan nem kap jelöltsort, amíg a döntés nincs meg (a `jeloltek.tsv` `dontes` mezője zárt: `nyitva` 651 sorral a nyitott jelöltek közé keverné őket);
+   - az N-F63e a Kiadóra kerül tartalmi kártyaként (7.).
+3. **DT-F123v (a):** a 8 régi `nyitva` sor (Jób 16:18, 31:38; 5Móz 4:25, Bír 2:19, Sof 3:7; 2Pét 3:10, 3:12; 2Tim 3:8) az értelmező menetre marad.
+
+Nyitott (nem az X.A dolga):
+
+4. **Hiányzó fordítások (265 kulcs):** külön adatfeladat (`forditasok.tsv`, a #123 `ir`-jén kívül; 2b), API-keretből — a költés a felhasználóé. Az N-F63e (1) válasza 102 kulccsal szűkítené.
+5. **A Kiadó-kártya felvétele (7.):** a brief `ir`-jén kívüli fájlokat írna, ezért az orkesztrátoré.
+6. **N-F160b:** ha az értelmező menet elutasított sort termel, a gépi előszűrő a HAMART-001-en újramérendő (DT500) — strukturális hordozón a szabály nem dönt, a mérés csak a hamis kizárásokat számolja.
+7. **Az értelmező menet bemenete az X.A-ból:** 35 `nyitva` jelölt (8 régi + 27 új), a 605 szűretlen vers a lánc-sorrendben, a 651 N-F63e-függő vers, a próza-lefedettség átvitele a `motivumok/naplok/`-ba (2 meg nem nevezett előfordulás), az LXX-híd (1e.) és a felmérés (3.), valamint a 2. pont szótári kínálata.
+
+## 7. Az N-F63e Kiadó-kártyája (tartalom, felvételre)
+
+*Forrás: `hatar`, motívum: HAMART-001, címke: `tartalmi`, kiadás: 1. A kártya felvétele a `naplok/HATAR_HAMART-001.md` Modelles részébe és a `lektor_kerdesek.py --motivum HAMART-001` futtatása, a gombok következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-be — mindhárom a #123 `ir`-jén kívül, ezért itt csak a tartalom áll (DT-F123u).*
+
+**K-N-F63e — A gerinc-lexémák és a negatív kritérium: maradjon-e a H7451 (ra', gonoszság) és a H7043 (qalal, megátkoz/könnyűvé tesz) a HAMART-001 gerincében?**
+
+**A jelenlegi határ** (az adatból):
+- Negatív kritérium (`adat/motivumok.tsv`): a hely a gerinc valamelyik elemén — **arar (H0779), adamá (H0127), itzávón (H6093), chattát (H2403), chámász (H2555), sáchat (H7843); ἐπικατάρατος, κατάρα, φθείρω-család** — vagy a málé+chámász, sámá+chámász kollokáción át a genezisi átok→föld→romlás láncra utal vissza. A **H7451 és a H7043 nincs a felsorolásban.**
+- Fölérendelt fogalom (a hígulás iránya): a bűn / hamartológia általában.
+- Mégis: két beépített előfordulás ezekre a Strongokra épül — **1Móz 6:5** (`gerinc_elem`=H7451: „a gonoszság … a szív minden gondolat-alkotásában”) és **1Móz 8:21** (`gerinc_elem`=H7043: „az ígéret nem a 3:17 arar-t vonja vissza, hanem egy másik…”); a 1Móz 3:18 a H6975+H1863 **pár** (a magányos H6975 nem gerinc-elem).
+- A mai scan e két Strongra (és a magányos H6975-re) **651 új verset** ad, amely egyetlen kritérium-lexémát sem hordoz (H7451 573, H7043 71, H6975 7); ezek most `N-F63e-függő` jelöléssel várnak.
+- *(proveniencia: scope=adat/motivumok.tsv (HAMART-001 negativ_kriterium), adat/elofordulasok.tsv (52 sor), naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv (651 sor) | forras=split('\t') | ts=2026-11-02T13:26Z; előzmény: N-F63e, DT97 (C), naplok/JELOLTEK_RETRO_lelet_meres.md)*
+
+**Válaszok és következményük:**
+
+| Gomb | Mit jelent | E-sor mozdul | Új vers | Egyéb |
+|---|---|---|---|---|
+| **Kivesszük** (a kritérium listája az irányadó) | a H7451 és a H7043 nem gerinc-elem; a 1Móz 6:5 és 8:21 a kritérium „tematikus, nem lexikai” jelölésével marad (`gerinc_elem` = `tematikus:…`), vagy az értelmező menet más gerinc-elemet talál a versben | **2** (1Móz 6:5, 8:21: a `gerinc_elem` és a `strong` mező) | **651** blokk-kizárás (`elutasítva`, közös indoklás: „nem a negatív kritérium lexémája”) a `jeloltek.tsv`-n át | 102 hiányzó fordítási kulcs kiesik a pótlandó körből; a negatív kritérium szövege nem változik |
+| **Maradnak** (a kritérium listája bővül) | a H7451 és a H7043 gerinc-elem; a negatív kritérium felsorolása kiegészül velük (`adat/motivumok.tsv`) | **0** | **7** blokk-kizárás (magányos H6975); **644** vers a 605 mellé kerül kézi átnézésre (összesen 1 249 vers) | a kritérium szövege változik; a 644 vers egyike sem hordoz a mai listán álló lexémát |
+| **Részben** (a H7043 marad, a H7451 ki) | érv: a 1Móz 8:21 sora a qalalt a 3:17 arar mellé állítja (`kapcsolodas`), a 1Móz 6:5 sora a ra'-t a szív diagnózisaként | **1** (1Móz 6:5) | **580** blokk-kizárás (H7451 573 + magányos H6975 7), **71** H7043-vers kézi átnézésre | a kritérium felsorolása a qalallal bővül; 51 fordítási kulcs kiesik (a H7451-é) |
+
+A magányos H6975 (7 vers) mindhárom esetben kizárandó: a gerinc-elem a pár (H6975+H1863), a magányos „tövis” egyik válaszban sem az.
+
+*(A számok mértek: E-sor a `adat/elofordulasok.tsv`-ből; vers a `naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv`-ből; fordítási kulcs a `naplok/F123_adat_HAMART-001_forditas_hiany.tsv`-ből (H7451 51, H7043 51). A „Maradnak” sor 1 249-es összege a 605 + 644.)*
