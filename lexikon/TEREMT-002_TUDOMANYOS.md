@@ -822,8 +822,6 @@ A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt,
 - A Hagin-gap hozzáférési korlát (403), nem tartalmi negatív lelet; kézi, böngészős ellenőrzéssel pótolható.
 - A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
 
-【NAPLO: F12.5, 2026-11-02 — a kivonatot a `tanito-kereso` (claude-sonnet-5-5) összefoglaló lépéssel nyerte ki; a MA-1001 két versmegnevezését a #12 session (claude-opus-5-5) a derekprince.com/sermons/372 átiratán utólag ellenőrizte. F12.9 javítókör (ELLENOR_F12 L2): az első személyű folyamatmondatok harmadik személyben, a folyamat-nyom ebben a NAPLO-ban.】
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
 **Mit mutat ez a rész?** Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.
