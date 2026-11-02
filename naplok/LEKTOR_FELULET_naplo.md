@@ -179,6 +179,18 @@
 - Az ALVIL-001 nézete ugyanazzal az eszközzel, ahogy az arany lapé (`C:\Users\bases\pardes_eszkozok\epit_nezet.py lexikon/ALVIL-001_TUDOMANYOS.md … 6edf842d`), új privát
   artifactként: https://claude.ai/artifact/44gJuUTb1cu5ewgupXmyAQ. Az eszköz sablonfeliratai az ISTENTISZT-001-re vannak drótozva (cím, fejléc, forrásmegjelölés): a kimenetben ez a négy
   felirat ALVIL-001-re cserélve, a beágyazott lapszöveg érintetlen.
-- Lektor-felület: ugyanaz a link, 11. verzió; az élő változattal összevetve csak a link-logika változott (a 83 kártya adata azonos, a db-beli válaszok érintetlenek).
+- Lektor-felület: ugyanaz a link, 11. verzió (a 12. a törlés-gombbal együtt); az élő változattal összevetve csak a link-logika változott (a 83 kártya adata azonos, a db-beli válaszok érintetlenek).
 - Ellenőrzés böngészőben (a claude.ai a beépített böngészőben bejelentkezést kér, ezért a publikált HTML helyi kiszolgálásával): 67 megjelenő kártyán az ALVIL-001-é (30) az ALVIL-001
   nézetére, az ISTENTISZT-001-é (22) az arany lapra mutat, a 15 döntés-kártyán nincs link; az ALVIL-001 nézet renderel.
+
+## Válasz törlése (a felhasználó kérése: „kellene egy válasz törlése gomb is. ahol egy megadott választ törlők”; 2026-11-02)
+
+- `sablon.html`: a megválaszolt kártya alján „Válasz törlése”; kattintásra helyben megerősítés („Biztosan törlöd a válaszod? …” — Igen, törlöm / Mégse; a böngésző `confirm()` ablaka a
+  beágyazott lapon tiltott lehet). Az „Igen” a `valaszok/<kerdes_id>` dokumentumot törli a db-ből (`doc().delete()`), majd a helyi tartalékból (localStorage) is, és a kártya újra megválaszolatlan.
+  Ha a db-törlés nem sikerül, a felület kiírja („A válasz törlése nem sikerült (…): a válaszod megmaradt.”), és a válasz marad. Az átvezetett (`atvezetve`) kártyán nincs törlés-gomb.
+- A máshol (másik eszközön) törölt válasz sem tér vissza: a válaszok `db` jelölést kapnak, ha az adatbázisban is megvannak; a snapshot `removed` változása és a szerver-nézetből hiányzó,
+  korábban adatbázisbeli válasz törlődik a helyi másolatból; a csak helyben (adatbázis nélkül) mentett válasz marad.
+- Próba (helyben, memóriabeli db-utánzattal, mert a claude.ai a beépített böngészőben bejelentkezést kér): válasz → törlés-gomb → Mégse (marad) → sikertelen törlés (marad, hibaüzenet) →
+  törlés (db-ből és localStorage-ból eltűnik, kártya megválaszolatlan) → újra válasz (db-be kerül) → máshol törölt (eltűnik); a többi válasz érintetlen. Az élő oldalon gombnyomásos próba nem
+  futott; az élő db `valaszok` gyűjteménye (3 dokumentum) a publikálás előtt és után bájtra azonos (ArtifactData list).
+- Lektor-felület: ugyanaz a link, 12. verzió (a lapnézet-javítással együtt).

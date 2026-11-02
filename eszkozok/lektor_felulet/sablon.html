@@ -52,6 +52,10 @@ h1 { font: 600 28px/1.2 var(--cim); margin: 0 0 6px; text-wrap: balance; }
 .mentes { font: 600 14px var(--szoveg); min-height: 40px; padding: 6px 14px; border-radius: var(--sugar); border: 0; background: var(--kiemel); color: var(--lap); cursor: pointer; }
 .allapot { font: 12px var(--adat); color: var(--halvany); }
 .allapot.hiba { color: var(--elvet); }
+.torles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--halvany); }
+.torol { font: 500 13px var(--szoveg); min-height: 36px; padding: 6px 12px; border-radius: var(--sugar); border: 1px solid var(--vonal);
+  background: var(--lap); color: var(--elvet); cursor: pointer; }
+.torol.igen { background: var(--elvet); color: var(--lap); border-color: var(--elvet); }
 button:focus-visible, textarea:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
 .also { position: fixed; left: 0; right: 0; bottom: 0; background: var(--lap); border-top: 1px solid var(--vonal);
   padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px));
@@ -114,8 +118,10 @@ const GOMBOK = {
   dontott: [['elfogadom', 'Marad a rögzített döntésem'], ['elvetem', 'Mégis másképp — gondold újra'], VISSZA, SAJAT],
 };
 const tipusok = (k) => GOMBOK[k.javaslat_tipus] || (k.forras === 'proza_javaslat' ? PROZA_TIPUSOK : TIPUSOK);
-const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts}
+const valaszok = {};      // kerdes_id -> {tipus, szoveg, ts, db}; db: true, ha az adatbázisban is megvan
 const nyitottSzoveg = {}; // kerdes_id -> szerkesztő nyitva
+const torlesKerdes = {};  // kerdes_id -> a „Válasz törlése” megerősítése nyitva
+const DOC_KERDES = {};    // adatbázis-dokumentum azonosító -> kerdes_id (a törölt dokumentumhoz)
 let db = null;
 let szuro = { forras: '', motivum: '', allapot: 'nyitva', cimke: 'tartalmi', kiadas: '*' };
 const KIADAS_CIMKE = { '1': '1. kiadás', '2': '2. kiadás', '': 'kiadáson kívül' };
@@ -198,10 +204,42 @@ function rajzol() {
     } else if (v) {
       t.append(el('div', { class: 'allapot' }, 'Válaszod: ' + allapotSzoveg(k)));
     }
+    if (v && k.allapot !== 'atvezetve') t.append(torlesSor(k));
     lista.append(t);
   });
   statusz(lat);
   osszesito();
+}
+
+// A megválaszolt kártya alja: „Válasz törlése”, majd helyben megerősítés (a böngésző confirm() ablaka a beágyazott lapon tiltott lehet).
+// Az átvezetett kártyán nincs: a repóba már átvezetett döntést a törlés nem vonná vissza.
+function torlesSor(k) {
+  const sor = el('div', { class: 'torles' });
+  if (!torlesKerdes[k.kerdes_id]) {
+    sor.append(el('button', { type: 'button', class: 'torol', onclick: () => { torlesKerdes[k.kerdes_id] = true; rajzol(); } }, 'Válasz törlése'));
+    return sor;
+  }
+  sor.append(el('span', {}, 'Biztosan törlöd a válaszod? A kártya újra megválaszolatlan lesz.'),
+    el('button', { type: 'button', class: 'torol igen', onclick: () => torol(k) }, 'Igen, törlöm'),
+    el('button', { type: 'button', class: 'torol', onclick: () => { delete torlesKerdes[k.kerdes_id]; rajzol(); } }, 'Mégse'));
+  return sor;
+}
+async function torol(k) {
+  delete torlesKerdes[k.kerdes_id];
+  if (db) {
+    try {
+      await db.doc('valaszok/' + docId(k.kerdes_id)).delete();
+    } catch (e) {
+      uzen('A válasz törlése nem sikerült (' + ((e && e.code) || 'hiba') + '): a válaszod megmaradt.', true);
+      rajzol();
+      return;
+    }
+  }
+  delete valaszok[k.kerdes_id];
+  delete nyitottSzoveg[k.kerdes_id];
+  lsIr();
+  uzen(db ? 'A válasz törölve.' : 'A válasz törölve ezen a lapon (az adatbázis nem érhető el).');
+  rajzol();
 }
 
 function statusz(lat) {
@@ -223,6 +261,7 @@ async function ment(k, v) {
   if (!db) return true;
   try {
     await db.doc('valaszok/' + docId(k.kerdes_id)).set({ kerdes_id: k.kerdes_id, tipus: v.tipus, szoveg: v.szoveg || '', ts: v.ts });
+    if (valaszok[k.kerdes_id] === v) { v.db = true; lsIr(); }
     return true;
   } catch (e) {
     if (e && (e.code === 'invalid_argument' || e.code === 'revoked' || e.code === 'not_granted')) db = null;
@@ -286,9 +325,17 @@ async function indul() {
   if (!db) { figyelmeztet('Az adatbázis most nem érhető el: a válaszaid csak ezen a lapon élnek. Az alsó összesítő sort másold ki.'); rajzol(); return; }
   let kesz = false;
   const idozito = setTimeout(() => { if (!kesz) figyelmeztet('Az adatbázist még nem érem el; ami látszik, lehet, hogy nem friss.'); }, 10000);
+  ADAT.forEach((k) => { DOC_KERDES[docId(k.kerdes_id)] = k.kerdes_id; });
   db.collection('valaszok').onSnapshot((snap) => {
-    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts }; });
-    if (!snap.metadata.fromCache) { kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true; }
+    const bent = new Set();
+    snap.docs.forEach((d) => { const x = d.data(); if (x && x.kerdes_id) { bent.add(x.kerdes_id); valaszok[x.kerdes_id] = { tipus: x.tipus, szoveg: x.szoveg || '', ts: x.ts, db: true }; } });
+    // máshol (másik eszközön) törölt válasz: a dokumentum eltűnt, a helyi másolat sem maradhat
+    snap.docChanges().forEach((c) => { if (c.type === 'removed') { const kid = DOC_KERDES[c.doc.id]; if (kid && !bent.has(kid)) delete valaszok[kid]; } });
+    if (!snap.metadata.fromCache) {
+      // a szerver nézete a mérvadó arra, ami valaha az adatbázisban volt; a csak helyben élő (db nélkül mentett) válasz marad
+      Object.keys(valaszok).forEach((kid) => { if (valaszok[kid].db && !bent.has(kid)) delete valaszok[kid]; });
+      kesz = true; clearTimeout(idozito); document.getElementById('figy').hidden = true;
+    }
     lsIr();
     rajzol();
   }, (e) => { kesz = true; clearTimeout(idozito); db = null; figyelmeztet('Az adatbázis hibát adott (' + (e && e.code) + '): a válaszok csak ezen a lapon élnek.'); rajzol(); });
