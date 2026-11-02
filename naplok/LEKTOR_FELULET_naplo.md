@@ -158,3 +158,15 @@
 - A döntés-kártyák (`dontes`) nem kiadás-kérdések: `kiadas` üres, a felületen „kiadáson kívül”.
 - Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
 - Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
+
+## ALVIL-001 — a határ- és a lektori kör kérdései a felületen (MUNKAMENET C-h, C-l; 2026-11-02)
+
+- Indítás: a felhasználó (DT-F151b) az orkesztrátornak, 2026-11-02: „inditsuk el”, az újraindításra: „Igen, indítsd”.
+- Bemenet: `naplok/HATAR_ALVIL-001.md` (Gépi rész: 0 kérdés, a lexikai hordozón a negatív-kritérium próba nem fut; Modelles rész: a `hatar-ellenor`,
+  `claude-fable-5-1`, 2 kérdés, hígulás 0) és `naplok/KIADAS_ALVIL-001_lektor.md` (a `lektor`, `claude-fable-5-1`, 28 kérdés). A `/kiadas` jelölt-listája
+  (`naplok/KIADAS_ALVIL-001_lista.md`) üres volt, ezért a lektor a teljes kézi prózát kapta (DT-F125f).
+- `naplok/LEKTOR_ALVIL-001.tsv`: **30 kérdés** = 2 `hatar` (1. kiadás) + 28 `lektor` (2. kiadás), mind `nyitva`; kézi kártya-összefoglaló mind a 30-hoz
+  (`eszkozok/lektor_felulet/osszefoglalo_ALVIL-001.tsv`, `manual`; egyiknél sem volt konkrét javítási javaslat, mind `nincs`).
+- Artifact: ugyanaz a link (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 10. verzió; `epit.py` az összes `LEKTOR_*.tsv`-ből, `--lap-url` változatlan.
+  Az élő változattal összevetve: a sablon azonos, a meglévő 53 kártya bájtra egyező adatú, új a 30 ALVIL-001 kártya (összesen 83). A kérdésekre ez a menet
+  nem válaszolt, és semmit nem vezetett át.
