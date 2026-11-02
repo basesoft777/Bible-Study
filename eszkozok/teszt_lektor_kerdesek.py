@@ -469,13 +469,43 @@ class HatarJelenlegiTeszt(unittest.TestCase):
                 with open(ut, 'w', encoding='utf-8') as f:
                     f.write(fej + sz)
             ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\tb\nlektor:X-001:1\tnincs\tg\tj\tmanual\t\t\n')
-            self.assertEqual(L.osszefoglalo_beolvas('X-001', t)['hatar:X-001:mK1'][4:], ('a', 'b'))
+            self.assertEqual(L.osszefoglalo_beolvas('X-001', t)['hatar:X-001:mK1'][4:], ('a', 'b', '', ''))
             ir('lektor:X-001:1\tnincs\tg\tj\tmanual\ta\tb\n')
             with self.assertRaises(ValueError):
                 L.osszefoglalo_beolvas('X-001', t)
             ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\t\n')
             with self.assertRaises(ValueError):
                 L.osszefoglalo_beolvas('X-001', t)
+
+    def test_haromvalaszos_kartya(self):
+        with tempfile.TemporaryDirectory() as t:
+            d = os.path.join(t, 'eszkozok', 'lektor_felulet')
+            os.makedirs(d)
+            fej = 'kerdes_id\ttipus\tgond\tjavaslat\tproveniencia\tkov_elfogadom\tkov_elvetem\tgombok\tkov_harmadik\n'
+            ut = os.path.join(d, 'osszefoglalo_X-001.tsv')
+
+            def ir(sz):
+                with open(ut, 'w', encoding='utf-8') as f:
+                    f.write(fej + sz)
+            ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\tb\tKi | Marad | Részben\tc\nhatar:X-001:mK2\tnincs\tg\tj\tmanual\ta\tb\t\t\n')
+            o = L.osszefoglalo_beolvas('X-001', t)
+            self.assertEqual(o['hatar:X-001:mK1'][4:], ('a', 'b', 'Ki | Marad | Részben', 'c'))
+            self.assertEqual(o['hatar:X-001:mK2'][6:], ('', ''))
+            for rossz in ('Ki | Marad\tc', 'Ki | Marad | Részben\t', 'Ki |  | Részben\tc'):
+                ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\ta\tb\t%s\n' % rossz)
+                with self.assertRaises(ValueError):
+                    L.osszefoglalo_beolvas('X-001', t)
+            ir('hatar:X-001:mK1\tnincs\tg\tj\tmanual\t\t\tKi | Marad | Részben\tc\n')
+            with self.assertRaises(ValueError):
+                L.osszefoglalo_beolvas('X-001', t)
+
+    def test_regi_fejlec_beolvashato(self):
+        with tempfile.TemporaryDirectory() as t:
+            ut = os.path.join(t, 'LEKTOR_X-001.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('# fej\n' + '\t'.join(L.MEZOK_V5) + '\n' + '\t'.join(['hatar:X-001:mK1'] + [''] * (len(L.MEZOK_V5) - 1)) + '\n')
+            r = L.beolvas(ut)['hatar:X-001:mK1']
+            self.assertEqual((r['gombok'], r['kov_harmadik']), ('', ''))
 
 
 class LapnezetTeszt(unittest.TestCase):

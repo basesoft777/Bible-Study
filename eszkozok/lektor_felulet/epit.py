@@ -28,7 +28,7 @@ import lektor_kerdesek as L  # noqa: E402
 
 LAPNEZET_UT = os.path.join(HELY, 'lapnezetek.tsv')
 BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus', 'kiadas',
-            'hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem', 'cimke_indok']
+            'hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem', 'cimke_indok', 'gombok', 'kov_harmadik']
 
 
 def kerdesek(motivumok=None, root=ROOT):
