@@ -106,3 +106,17 @@ F123	B4	scope=range:Zsolt 78:50 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv
 F123	B4	scope=range:Zsolt 84:3 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-02T11:01Z | csatorna=cli	2026.11.02
 F123	B4	scope=range:Zsolt 88:4 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-02T11:01Z | csatorna=cli	2026.11.02
 F123	B4	scope=range:Zsolt 143:3 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-02T11:01Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1311 | n=5 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1944 | n=2 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G2671 | n=5 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5351 | n=8 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5356 | n=8 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0127 | n=211 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0779 | n=52 | ts=2026-11-02T13:06Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2403 | n=271 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2555 | n=59 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H6093 | n=3 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H6975 | n=12 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7043 | n=79 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7451 | n=621 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7843 | n=135 | ts=2026-11-02T13:07Z | csatorna=cli	2026.11.02
