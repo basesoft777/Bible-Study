@@ -29,7 +29,7 @@ Használat:
     python eszkozok/thayer_api_koteg.py --adag 1 --strongok strongok.txt allapot|begyujt|kapuz|javit|rogzit
     python eszkozok/thayer_api_koteg.py --adag 1 --strongok strongok.txt beir --regi-elavult --allapot sonnet
 
-A `--strongok` fájl soronként egy Strong (G1941 vagy G1941a; üres és `#` sorok kimaradnak; egy sor első tabig számít).
+A `--strongok` fájl soronként egy Strong (G1941; üres és `#` sorok kimaradnak; egy sor első tabig számít).
 Kilépési kódok: 0 rendben; 2 hibás paraméter/előfeltétel; 3 a plafon megállít; 4/5 az api_koteg.py szerint.
 TSV: split('\\t'), '\\t'.join(); csv modul nincs.
 """
@@ -371,7 +371,7 @@ def strong_allapot(sp, kerelmek, valaszok):
         if v['tipus'] != 'succeeded' or v['stop'] in ('refusal', 'max_tokens'):
             hibak.append('a kérés nem adott használható választ (%s%s)' % (v['tipus'] if v['tipus'] != 'succeeded' else v['stop'],
                                                                            ': ' + v['hiba'][:120] if v['hiba'] else ''))
-            stop_hibas = v['stop'] == 'refusal' or v['tipus'] != 'succeeded'
+            stop_hibas = stop_hibas or v['stop'] == 'refusal'      # csak a refusal végleges; az errored/expired újrapróbálható
             continue
         fh, biz = json_valasz(v['szoveg'])
         if fh is None:
@@ -468,24 +468,43 @@ def bukott_sor(sp, r, modell, datum):
                       'scope=%s | forras=thayer_api_koteg.py rogzit | ts=%s' % (sp, datum)])
 
 
+def munka_ir(munka_ut, strongok, uj_sorok):
+    """A munkatábla frissítése: a megnevezett Thayer-Strongok régi sorai kiesnek, az újak a végére kerülnek; minden más sor
+    (a `#` megjegyzések, a fejléc, a többi Strong) bájtra azonos, ezt írás előtt ellenőrzi."""
+    if os.path.exists(munka_ut):
+        with open(munka_ut, encoding='utf-8', newline='') as f:
+            sorok = f.read().split('\n')
+        if not sorok or sorok.pop() != '':
+            raise SystemExit('a munkatábla nem sortöréssel végződik')
+    else:
+        sorok = ['# F132 munkatábla (adat/forditasok.tsv sémája) — beírás előtt; írja: python eszkozok/thayer_api_koteg.py rogzit',
+                 '\t'.join(F.FEJLEC)]
+
+    def torlendo(s):
+        m = s.split('\t')
+        return len(m) > 1 and m[0] == F.SZOTAR and m[1] in strongok
+    marad = [s for s in sorok if not torlendo(s)]
+    uj = marad + ['\t'.join(str(r.get(m, '')) for m in F.FEJLEC) for r in uj_sorok]
+    if uj[:len(marad)] != marad or [s for s in uj[len(marad):] if torlendo(s) is False]:
+        raise SystemExit('a munkatábla többi sora eltér — megállok')
+    with open(munka_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(uj) + '\n')
+
+
 def rogzit(strongok, datum=None, szaraz_futas=False, munka_ut=None, bukott_ut=None):
-    """A kapun átment Strongok szakaszsorai a munkatáblába (a többi sor bájtra azonos); a kétszer bukottak a bukottak.tsv-be."""
+    """A kapun átment Strongok szakaszsorai a munkatáblába (a többi sor bájtra azonos); a kétszer bukottak (és a refusal) a bukottak.tsv-be."""
     munka_ut, bukott_ut = munka_ut or MUNKA_TABLA, bukott_ut or BUKOTT_UT
-    index = ker_index(strongok)
     eredm = jsonl_olvas(ut('kapu_eredmeny.jsonl'))
     datum = datum or datetime.date.today().strftime('%Y.%m.%d')
-    munka = list(E.tsv_dict_sorok(munka_ut)) if os.path.exists(munka_ut) else []
     _, term_verzio = E.terminologia_szoveg()
-    rogzitett, bukottak = [], []
+    rogzitett, uj_sorok, bukottak = [], [], []
     for r in eredm:
         sp = r['strong']
         if r['allapot'] == 'kesz':
             allapot, mod = modell_allapot(r['modellek'])        # a válasz ténylegesen futott modellnevéből
             megj = '; '.join(x for x in ('API Batch (effort=%s, %d. próba)' % (EFFORT, r['proba']),
                                          ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(r['kivetel'])) if r['kivetel'] else '') if x)
-            szak = TB.szakaszok(sp)
-            uj = F.szakasz_sorok(sp, szak, r['vegleges'], allapot, mod, datum, term_verzio, megj)
-            munka = [x for x in munka if not (x['szotar'] == F.SZOTAR and x['strong'] == sp)] + uj
+            uj_sorok += F.szakasz_sorok(sp, TB.szakaszok(sp), r['vegleges'], allapot, mod, datum, term_verzio, megj)
             E.kisnagybetu_naplo(sp, [tuple(v) for v in r['valtozasok'] if v[0].startswith('5_kisnagybetu')])
             rogzitett.append(sp)
         elif r['allapot'] == 'kapuhiba' or (r['allapot'] == 'javitando' and r['proba'] == 2):
@@ -494,16 +513,23 @@ def rogzit(strongok, datum=None, szaraz_futas=False, munka_ut=None, bukott_ut=No
     if szaraz_futas:
         return 0
     if rogzitett:
-        E.tsv_ir(munka_ut, F.FEJLEC, munka, megjegyzes='F132 munkatábla (adat/forditasok.tsv sémája) — beírás előtt; '
-                                                      'írja: python eszkozok/thayer_api_koteg.py rogzit')
+        munka_ir(munka_ut, set(rogzitett), uj_sorok)
     if bukottak:
+        letezo = set()
+        if os.path.exists(bukott_ut):
+            letezo = {tuple(x.rstrip('\n').rstrip('\r').split('\t')[:4]) for x in open(bukott_ut, encoding='utf-8')}
         uj_fajl = not os.path.exists(bukott_ut)
+        irt = []
         with open(bukott_ut, 'a', encoding='utf-8', newline='\n') as f:
             if uj_fajl:
                 f.write('\t'.join(BUKOTT_FEJLEC) + '\n')
             for sp, r in bukottak:
-                f.write(bukott_sor(sp, r, ','.join(r.get('modellek') or []), datum) + '\n')
-        print('bukott-listára: %s' % ', '.join(sp for sp, _ in bukottak))
+                sor = bukott_sor(sp, r, ','.join(r.get('modellek') or []), datum)
+                if tuple(sor.split('\t')[:4]) in letezo:      # az újrafuttatott rogzit nem duplikál
+                    continue
+                f.write(sor + '\n')
+                irt.append(sp)
+        print('bukott-listára: %s' % (', '.join(irt) or '(már rajta volt)'))
     return 0
 
 
@@ -530,6 +556,7 @@ def main(argv=None):
     ap.add_argument('--regi-elavult', action='store_true')
     ap.add_argument('--kezi-felulir', action='store_true')
     ap.add_argument('--kezi-marad', action='store_true')
+    ap.add_argument('--commit', action='store_true', help='bekuld/begyujt/javit/rogzit után a munkamappa commitja és pusholása (api_koteg.git_mentes)')
     ap.add_argument('--onteszt', action='store_true')
     a = ap.parse_args(argv)
     if a.onteszt:
@@ -549,6 +576,25 @@ def main(argv=None):
     strongok = strongok_olvas(a.strongok)
     if a.parancs == 'szaraz':
         return szaraz(strongok)
+    kod = futtat_parancs(a, strongok, cimke)
+    if a.commit and kod == 0 and a.parancs in ('bekuld', 'begyujt', 'kapuz', 'javit', 'rogzit', 'beir'):
+        git_mentes('F158: Thayer API-köteg — %s (%s)' % (a.parancs, cimke), a.parancs)
+    return kod
+
+
+def git_mentes(uzenet, parancs):
+    """A parancs kimenetének commitja és pusholása (`api_koteg.git_mentes`; csak a megnevezett utak)."""
+    if os.path.splitdrive(os.path.abspath(MUNKA))[0] != os.path.splitdrive(ROOT)[0] or not os.path.abspath(MUNKA).startswith(os.path.abspath(ROOT)):
+        print('GIT-FIGYELMEZTETÉS: a munkamappa a repón kívül van, nincs mit commitolni', file=sys.stderr)
+        return 'nincs_valtozas'
+    utak = [os.path.relpath(MUNKA, ROOT).replace(os.sep, '/')]
+    if parancs in ('rogzit', 'beir'):
+        utak += [os.path.relpath(x, ROOT).replace(os.sep, '/') for x in (MUNKA_TABLA, BUKOTT_UT, E.KISNAGYBETU_UT, E.FORDITASOK_UT)
+                 if os.path.exists(x)]
+    return AK.git_mentes(uzenet, utak)
+
+
+def futtat_parancs(a, strongok, cimke):
     if a.parancs == 'bekuld':
         return bekuld(strongok, cimke, a.plafon)
     if a.parancs == 'allapot':

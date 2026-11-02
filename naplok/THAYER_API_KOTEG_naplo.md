@@ -72,7 +72,7 @@ fordítandó és a kész Strongok tokenes forrása (a `nezet`) összesen 4 443 3
 
 ## 5. Száraz futások (`szaraz`, hálózat nélkül, `--munka` a repón kívülre)
 
-*(proveniencia: `scope=lista.tsv fordítandó Strongjai | forras=eszkozok/thayer_api_koteg.py szaraz @a #158 ág | ts=2026-11-02`; a becslések **jelöltek, `manual`**: 2,8 karakter/token a promptra, 0,5 kimeneti token/forráskarakter + 1 500 gondolkodási token/kérés, Batch-ár 1,00 / 5,00 USD/MTok, prompt-cache nélkül, `effort=high`)*
+*(proveniencia: `scope=lista.tsv mind az 5 426 Strong (a 13 kész is; a minta: a 195 fordítandó) | forras=eszkozok/thayer_api_koteg.py szaraz @a #158 ág | ts=2026-11-02`; a becslések **jelöltek, `manual`**: 2,8 karakter/token a promptra, 0,5 kimeneti token/forráskarakter + 1 500 gondolkodási token/kérés, Batch-ár 1,00 / 5,00 USD/MTok, prompt-cache nélkül, `effort=high`)*
 
 | | mintaadag (a lista első fordítandó Strongjai Strong-szám szerint: G0001–G0200) | a teljes Thayer (mind az 5 426) |
 |---|---|---|
@@ -90,7 +90,7 @@ A mintaadag a brief „kb. 150 000 karakter” méretét a lista első Strongjai
 a gyakorisági sorrend a #27 M0-é). A száraz futás ideje: 5 mp, ill. 83 mp.
 
 **Megfigyelések a #27 M1 számára** (mind becslés/`manual`, mérés nincs):
-- A kérésenkénti prompt nagy (átlag ~35 000 karakter): a bemenet a költség ~57%-a (67,6 M token × 1,00 USD), mert minden kérés a
+- A kérésenkénti prompt nagy (átlag ~35 000 karakter): a bemenet a költség ~56%-a (67,6 M token × 1,00 USD), mert minden kérés a
   teljes szabályszöveget, a terminológiát, a Károli-táblát és az adatblokkot hordozza. A prefix a `## Bemenet` elé eső rész
   (G0001: 27 396 / 35 934 karakter, G1941: 35 943 / 54 986), de a kötelező-alak lista Strongonként más, ezért a közös,
   cache-elhető prefix rövidebb, mint ez a szám; a kötegelő a cache-t **nem** kapcsolja be (mint a BDB-n), ezt az első mért
@@ -100,10 +100,22 @@ a gyakorisági sorrend a #27 M0-é). A száraz futás ideje: 5 mp, ill. 83 mp.
   ebből adódik; az első adag mért értéke váltja.
 - A `bekuld` plafonja: a #27 ⛔ M1 felhasználói döntésére vár; a kötegelő alapértéke 0, `--plafon USD` nélkül nem küld.
 
-## 6. Kész, ha — állapot
+## 6. Az ellenőri jelentés (`naplok/ELLENOR_F158.md`) tételei és javításuk
+
+1. Köv. 8 — a `rogzit` a munkatáblát `tsv_ir`-rel újraírta, összevetés nélkül → javítva: `munka_ir` (a `#` sorok, a fejléc és a többi
+   Strong sora bájtra megmarad, írás előtt ellenőrizve); teszt: `test_rogzit_a_tobbi_sort_bajtra_megtartja`.
+2. Köv. 7 — az 1. próbán `kapuhiba` (átmeneti `errored`/`expired`) újrapróba nélkül bukott → javítva: csak a `refusal` végleges, a többi
+   `javitando`; a `stop_hibas` nem íródik felül csoportonként; az újrafuttatott `rogzit` nem duplikálja a bukott sorokat;
+   tesztek: `test_atmeneti_hiba_javitando_refusal_bukott`, `test_bukott_sor_nem_duplazodik`.
+3. Köv. 1 — a git-mentés importja hiányzott → pótolva: `--commit` (a `bekuld`/`begyujt`/`kapuz`/`javit`/`rogzit`/`beir` után
+   `api_koteg.git_mentes`; a repón kívüli munkamappát nem commitolja).
+4. A napló/docstring pontatlanságai (hatókör-jelölés, 56%, a `G1941a` alak) → javítva.
+5. E30 (ékezetek a már pusholt commit-üzenetekben) → a korábbi commitokat nem írtam át; az újak ékezetesek.
+
+## 7. Kész, ha — állapot
 
 - K1 ✅ a kötegelő a brief 3. pontjának alparancsaival; a #132 eszközei, `emeles.py`, `bdb_api_koteg.py`, `api_koteg.py` bájtra változatlanok.
 - K2 ✅ a tesztek zöldek, hálózati hívás nélkül.
 - K3 ✅ a napló (felmérés, lista, két `szaraz` becslés).
 - K4 ✅ az `adat/forditasok.tsv` változatlan; a `forditas/thayer_api/` nem jött létre.
-- K5 — a `fuggetlen-ellenor` jelentése (`naplok/ELLENOR_F158.md`) után.
+- K5 — az ellenőr első menete 5 eltérést adott (6. szakasz), mind javítva; újraellenőrzés kérésre.

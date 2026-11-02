@@ -203,6 +203,46 @@ class Folyamat(Alap):
         self.assertEqual(sorok[1].split('\t')[0], 'G1941')
         self.assertEqual(hivott, [])
 
+    def _kesz_valasz(self):
+        _, valasz = hamis_valasz(STRONG, hu_sorok(STRONG))
+        rek = {'custom_id': 'G1941-c1-p1', 'tipus': 'succeeded', 'modell': 'claude-sonnet-5-5', 'stop': 'end_turn', 'usage': {},
+               'hiba': '', 'batch_id': 'b', 'szoveg': json.dumps({'forditas_hu': valasz}, ensure_ascii=False)}
+        T.jsonl_hozzaad(T.ut('valaszok.jsonl'), [rek])
+        T.kapuz([STRONG])
+
+    def test_rogzit_a_tobbi_sort_bajtra_megtartja(self):
+        munka = os.path.join(T.MUNKA, 'munka.tsv')
+        egyeb = 'Thayer\tG0099\tG99\tsz1\tforditas_hu\tabc\tx\tsonnet\tm\t2026.10.01\tv3\t'
+        regi = 'Thayer\tG1941\tG1941\tsz1\tforditas_hu\tregiertek\tx\tsonnet\tm\td\tv\t'
+        with open(munka, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(['# megjegyzés', '\t'.join(F.FEJLEC), egyeb, regi]) + '\n')
+        self._kesz_valasz()
+        T.rogzit([STRONG], datum='2026.11.02', munka_ut=munka, bukott_ut=os.path.join(T.MUNKA, 'b.tsv'))
+        sorok = open(munka, encoding='utf-8').read().split('\n')
+        self.assertEqual(sorok[:3], ['# megjegyzés', '\t'.join(F.FEJLEC), egyeb])
+        self.assertEqual(len(sorok), 3 + 7 + 1)
+        self.assertNotIn('regiertek', '\n'.join(sorok))
+
+    def test_atmeneti_hiba_javitando_refusal_bukott(self):
+        base = {'custom_id': 'G1941-c1-p1', 'modell': 'claude-sonnet-5-5', 'usage': {}, 'szoveg': '', 'batch_id': 'b'}
+        T.jsonl_hozzaad(T.ut('valaszok.jsonl'), [dict(base, tipus='errored', stop=None, hiba='{"type":"overloaded"}')])
+        T.kapuz([STRONG])
+        self.assertEqual(T.jsonl_olvas(T.ut('kapu_eredmeny.jsonl'))[0]['allapot'], 'javitando')
+        T.MUNKA = tempfile.mkdtemp()
+        T.jsonl_hozzaad(T.ut('valaszok.jsonl'), [dict(base, tipus='succeeded', stop='refusal', hiba='')])
+        T.kapuz([STRONG])
+        self.assertEqual(T.jsonl_olvas(T.ut('kapu_eredmeny.jsonl'))[0]['allapot'], 'kapuhiba')
+
+    def test_bukott_sor_nem_duplazodik(self):
+        T.jsonl_hozzaad(T.ut('valaszok.jsonl'), [
+            {'custom_id': 'G1941-c1-p%d' % p, 'tipus': 'succeeded', 'modell': 'claude-sonnet-5-5', 'stop': 'end_turn',
+             'usage': {}, 'hiba': '', 'batch_id': 'b', 'szoveg': 'nem json'} for p in (1, 2)])
+        T.kapuz([STRONG])
+        bukott = os.path.join(T.MUNKA, 'bukott.tsv')
+        for _ in range(2):
+            T.rogzit([STRONG], datum='2026.11.02', munka_ut=os.path.join(T.MUNKA, 'm.tsv'), bukott_ut=bukott)
+        self.assertEqual(len([x for x in open(bukott, encoding='utf-8') if x.strip()]), 2)      # fejléc + 1 sor
+
     def test_javit_nulla_plafonnal_nem_kuld(self):
         rek = {'custom_id': 'G1941-c1-p1', 'tipus': 'succeeded', 'modell': 'claude-sonnet-5-5', 'stop': 'end_turn', 'usage': {},
                'hiba': '', 'batch_id': 'b', 'szoveg': 'nem json'}
