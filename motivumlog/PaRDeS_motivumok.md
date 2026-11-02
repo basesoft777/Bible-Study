@@ -30,7 +30,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
 
 **Pneumatológia/istentisztelet**
-- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 22 igehely-sor — publikálható (v3, 2026.09.22)
+- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 22 igehely-sor — publikálható (v4, 2026.11.02)
 
 **Teremtéstan**
 - Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` — 5 fő előfordulás / 42 igehely-sor — publikálható (v4, 2026.09.10)
@@ -161,7 +161,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Rafeusok/óriás-népek** `[ID: HODIT-001]` — publikálható (v3, 2026.09.10), 1 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/HODIT-001.md`-ből fűződik ide)*
 
-**Segítségül hívni az Úr nevét** `[ID: ISTENTISZT-001]` — publikálható (v3, 2026.09.22), 5 fő előfordulás.
+**Segítségül hívni az Úr nevét** `[ID: ISTENTISZT-001]` — publikálható (v4, 2026.11.02), 5 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ISTENTISZT-001.md`-ből fűződik ide)*
 
 **Melkizedek — király-pap rendje, kenyér és bor** `[ID: KIRALY-001]` — publikálható (v2, 2026.09.10), 1 fő előfordulás.
