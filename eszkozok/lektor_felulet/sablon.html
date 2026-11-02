@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
 <style>
 /* Elrendezés: egy keskeny munkaoszlop; kérdésenként egy lap, négy nagy gombbal; alul ragadós összesítő.
-   Arculat: A. Olvasó (KOZOS_TOKENEK.md, a felhasználó választása): Source Serif 4 cím, IBM Plex Sans szöveg, IBM Plex Mono adat, sugár 4px. */
+   Arculat: A. Olvasó (KOZOS_TOKENEK.md, a felhasználó választása): Source Serif 4 cím, IBM Plex Sans szöveg, IBM Plex Mono adat, sugár 4px.
+   Mindig a világos A változat (a felhasználó döntése, DT-F157g): nincs sötét készlet és nincs téma-kapcsolás; a :root a világos tokeneket adja, a `color-scheme: light` a vázból jön. */
 :root {
   --papir: #f6f6f3; --lap: #ffffff; --tinta: #1c1f24; --halvany: #5d636d; --vonal: #dcddd8;
   --kiemel: #1f5f7a; --kiemel-hatter: #e1eef3; --elfogad: #1d6b3f; --elfogad-hatter: #e0f0e6;
@@ -13,14 +14,6 @@
   --adat: "IBM Plex Mono", ui-monospace, Consolas, monospace;
   --sugar: 4px;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --papir: #14171b; --lap: #1b1f24; --tinta: #e7e8ea; --halvany: #9aa0a9; --vonal: #2e333a;
-  --kiemel: #7cc0da; --kiemel-hatter: #1d3440; --elfogad: #7fd0a0; --elfogad-hatter: #17301f;
-  --elvet: #f0a39d; --elvet-hatter: #3b1e1c; --figyel: #e8c26a; --figyel-hatter: #3a2e12; color-scheme: dark; } }
-:root[data-theme="dark"] {
-  --papir: #14171b; --lap: #1b1f24; --tinta: #e7e8ea; --halvany: #9aa0a9; --vonal: #2e333a;
-  --kiemel: #7cc0da; --kiemel-hatter: #1d3440; --elfogad: #7fd0a0; --elfogad-hatter: #17301f;
-  --elvet: #f0a39d; --elvet-hatter: #3b1e1c; --figyel: #e8c26a; --figyel-hatter: #3a2e12; color-scheme: dark; }
 body { background: var(--papir); color: var(--tinta); font: 14px/1.55 var(--szoveg); }
 .keret { max-width: 760px; margin: 0 auto; padding-block: 24px 170px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
