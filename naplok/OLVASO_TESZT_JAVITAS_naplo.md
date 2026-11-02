@@ -1,4 +1,4 @@
-# Olvasó-szerver tesztjavítás (N-F149a) — napló
+# Olvasó-szerver tesztjavítás (N76) — napló
 
 Dátum: 2026-11-02 · modell: `claude-sonnet-5-5` · ág: `claude/olvaso-teszt-javitas-c029d1` · alap: `origin/main` (c43c1b4d).
 
@@ -18,12 +18,12 @@ Futtatás: `python eszkozok/teszt_futtat.py` (WSL venv, WSL-natív `~/pardes/par
 | `teszt_olvaso_szerver` · `TestLapok.test_interlinearis_parositatlan_sor_es_nt` | Az F22 óta az ÚSZ-nek is van `token_par`-ja (Mt: da0a8ea1), ezért az „nincs Károli–Strong párosítás” jelzés a Mt 1:1-en nem jelenhet meg | a teszt megfordítva (F149.9) |
 | `teszt_tervezo` · `test_minden_szelektor_talal` | A `.cimkek .cimke.arany` (nem teljes BDB) és az `.allapot.folyamat` („Magyar fordítás nincs”) elem a teljes BDB-magyar óta valódi lapon nem jelenhet meg | indokolt kivétel-lista (`ADATALLAPOT_MIATT_NEM_ELERHETO`), amelynek elemei létező regiszter-elemek kell legyenek (F149.9) |
 | `teszt_bdb_vers_jelentes` · `Ujrageneralas.test_bajtra_azonos` | a d940d1d7 (szamkiosztas: DT-F131z → DT445) átírta az `adat/bdb_forras_javitas.tsv`-t, a generált `adat/bdb_vers_jelentes.tsv` fejlécének forrás-hash-e (`6daf33ab54f8`) elavult | újragenerálás `--ts 2026-10-28`-cal; egyetlen fejlécsor változott, soradat nem (F149.10) |
-| `teszt_kereses` · `test_szotoken_nelkuli_konyvek_jelzese` | Az F22 óta nincs párosítás nélküli könyv. A teszt elvárása avult; de a szerver is hamis állítást tett: a „Nem keresett könyvek (…): .” sor üres listával is megjelent | DT-F149a (A): a sor csak nem üres listánál; a teszt mindkét ágat nézi (F149.11) |
-| (új, a bukáson kívül) szó-lap Károli-alakok | „…a többi könyv még hiányzik” — 66/66 könyvnél hamis | DT-F149a (A): a tagmondat csak akkor áll, ha van párosítás nélküli könyv (F149.11) |
+| `teszt_kereses` · `test_szotoken_nelkuli_konyvek_jelzese` | Az F22 óta nincs párosítás nélküli könyv. A teszt elvárása avult; de a szerver is hamis állítást tett: a „Nem keresett könyvek (…): .” sor üres listával is megjelent | DT550 (A): a sor csak nem üres listánál; a teszt mindkét ágat nézi (F149.11) |
+| (új, a bukáson kívül) szó-lap Károli-alakok | „…a többi könyv még hiányzik” — 66/66 könyvnél hamis | DT550 (A): a tagmondat csak akkor áll, ha van párosítás nélküli könyv (F149.11) |
 
-## 3. N-F131z — a fennmaradó három kifejezés
+## 3. N77 — a fennmaradó három kifejezés
 
-DT-F149b ((a) változat): a BDB-fordítás `forras_hash`-e a javítás nélküli forrásnézetet követi; a héber sorrend-cserét a megjelenítés végzi a magyar szövegben is. A `javitva` kifejezések 13 049 / 13 052-je betű szerint áll a magyarban; a fennmaradó 3 (a fordító átírta vagy szétszedte a héber futamot), a `naplok/BDB_HEBER_SORREND_forditas_kezi.tsv` szerint:
+DT551 ((a) változat): a BDB-fordítás `forras_hash`-e a javítás nélküli forrásnézetet követi; a héber sorrend-cserét a megjelenítés végzi a magyar szövegben is. A `javitva` kifejezések 13 049 / 13 052-je betű szerint áll a magyarban; a fennmaradó 3 (a fordító átírta vagy szétszedte a héber futamot), a `naplok/BDB_HEBER_SORREND_forditas_kezi.tsv` szerint:
 
 | Strong | szakasz | mi tér el |
 |---|---|---|
