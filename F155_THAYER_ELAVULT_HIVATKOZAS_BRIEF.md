@@ -8,7 +8,7 @@ munka: adat
 modell: sonnet
 allapot: megallt
 ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
-kovetkezo: "Te: /elteres 155"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 155 — újraellenőrzés függ: naplok/ELLENOR_F155_2.md"
 olvas: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, DONTESEK.md, naplok/ELLENOR_F142.md]
 ir: [eszkozok/thayer_jelolt/forditas.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/forditasok.tsv, naplok/THAYER_ELAVULT_HIVATKOZAS_naplo.md]
 ag: claude/f155-thayer-elavult-hivatkozas
