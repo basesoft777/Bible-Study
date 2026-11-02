@@ -34,7 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: az N-F63e kérdése a #123 HAMART-001 X.A menetének munkafájljából (`naplok/F123_adat_HAMART-001.md` 7. szakasz, a PR #592 ágán; DT-F123u), átfogalmazás nélkül, a kártya mezőire bontva; a három válasz mért következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-ben. Felvette: a #12 TEREMT-002 C-l menete (PR #591), az orkesztrátor kérésére, 2026-11-02.*
+*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: az N-F63e kérdése a #123 HAMART-001 X.A menetének munkafájljából (`naplok/F123_adat_HAMART-001.md` 7. szakasz, a PR #592 ágán; DT543), átfogalmazás nélkül, a kártya mezőire bontva; a három válasz mért következménye az `eszkozok/lektor_felulet/osszefoglalo_HAMART-001.tsv`-ben. Felvette: a #12 TEREMT-002 C-l menete (PR #591), az orkesztrátor kérésére, 2026-11-02.*
 
 **1 kérdés.**
 
