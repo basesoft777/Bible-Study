@@ -1,0 +1,3 @@
+# Lexikonlap-kiadások (SEMA 2.46): egy sor egy kiadás; kulcs: id + kiadas. A kolofon kiadásszáma a motívum legnagyobb `kiadas` értéke, a változásjegyzék a sorokból áll. Motívum sora nélkül a kolofon nem ír kiadás-sort. `proza_modell`: tényleges modellnév a futó környezetből, vagy `manual` (DT-F125d).
+id	kiadas	datum	valtozas	proza_modell	forras
+ISTENTISZT-001	1	2026.11.02	Az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése.	manual	scope=manual | forras=naplok/ISTENTISZT_TERV_HATRALEK_zaras.md | ts=2026-11-02
