@@ -25,7 +25,7 @@ fugg: [8, 9, 11, 113, 123]
 - az első lap lezárult: az ISTENTISZT-001 1. kiadása (2026-11-02, DT486; `motivumok.tsv` v4);
 - a `/kiadas` lektori köre a 2. kiadás bemenete, a lezárást nem akasztja (DT486, DT-F156i).
 
-Ezért a #10 nem mér és nem javít laponként kézzel. A motívumonkénti lezárás (C-h → C-l → C5, `MUNKAMENET.md`) a #123 menetének vége. A #10 keret: kimondja, mi a „lezárt lap”, és a végén igazolja, hogy mind a nyolc az. **A felosztás javaslat; az orkesztrátor jóváhagyására vár (⛔ DT-F10a, 5. szakasz).**
+Ezért a #10 nem mér és nem javít laponként kézzel. A motívumonkénti lezárás (C-h → C-l → C5, `MUNKAMENET.md`) a #123 menetének vége. A #10 keret: kimondja, mi a „lezárt lap”, és a végén igazolja, hogy mind a nyolc az. **A felosztásról a DT-F10a döntött (🟢, 2026-11-02; 5. szakasz).**
 
 ## 1. Cél
 
@@ -105,7 +105,7 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 
 **Elavult a v1-ből:** a DT246 (a #36 előbb generál újra) és a DT247 (javítás a régi forrásrétegben) tárgytalan, mert a lap ma motívumonként, a kézi forrásból generálódik; a DT74 (5) mércéje (L1–L7 + DT2 + #78) a #123 X.M6 független ellenőrzésében él tovább.
 
-**⛔ DT-F10a — a #123 és a #10 felosztása** (javaslat, az orkesztrátor jóváhagyására vár, 2026-11-02):
+**DT-F10a ✅ — a #123 és a #10 felosztása** (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«, 2026-11-02; mindhárom pont a javaslat szerint; a határ-ellenőrzést a felhasználó maga indítja, DT-F151b):
 - (1) a motívumonkénti lezárást (C-h → C-l → C5) a #123 végzi; a #10 csak keret és zárómérés;
 - (2) a DT-F123c (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
 - (3) a régi L1–L7 + DT2 + #78 mérce nem 9. Feed-kapu, hanem a `fuggetlen-ellenor` X.M6 mércéje.
@@ -121,4 +121,4 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.10.19 | A csonk (F20 B3) helyén, a 8 lap kézi mátrixos lezárása a #36 újragenerálása után. |
-| v2 | 2026.11.02 | F10.2: az új lezárási modell (Feed 8/8 → 1. kiadás → nézet); a #36 kikerült a `fugg`-ból (DT-F36b), a #123 bekerült; a motívumonkénti lezárás a #123-é, a #10 keret és zárómérés (⛔ DT-F10a). |
+| v2 | 2026.11.02 | F10.2: az új lezárási modell (Feed 8/8 → 1. kiadás → nézet); a #36 kikerült a `fugg`-ból (DT-F36b), a #123 bekerült; a motívumonkénti lezárás a #123-é, a #10 keret és zárómérés (DT-F10a). |
