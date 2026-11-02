@@ -130,11 +130,13 @@ A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt,
 - **Csak az 1Móz 1:2 (és a pár nélküli Ézs 45:18):** *The Rebellion Of Lucifer* (MA-1002-100-ENG); a Jer 4:23-at és az Ézs 34:11-et ott nem említi.
 - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül.
 
-**Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont 7. tétel):** Prince a **restitúciós olvasat** nevesített képviselője, a study saját érvanyagával egyezően (Jer 4:23, Ézs 45:18; a הָיְתָה (hájtá) „lett”). A **kiinduló-állapot olvasat** nevesített képviselője a jóváhagyott körből ezen a menetben nem került elő; a kör többi tagjánál gap, tehát az olvasat másik oldala forrás híján továbbra is bemutatatlan. Hogy ez kitölthető-e a listán kívüli (nem jóváhagyott) forrással, a felhasználó döntése; ebben a menetben nem vontam be.
+**Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olvasat** nevesített képviselője, a study saját érvanyagával egyezően (Jer 4:23, Ézs 45:18; a הָיְתָה (hájtá) „lett”). A **kiinduló-állapot olvasat** nevesített képviselője a jóváhagyott körből nem került elő; a kör többi tagjánál gap, tehát az olvasat másik oldala forrás híján bemutatatlan. Hogy ez kitölthető-e a listán kívüli (nem jóváhagyott) forrással, a felhasználó döntése; listán kívüli forrás nincs bevonva.
 
-**Figyelmeztetések a felhasználónak:**
-- Az átiratok tartalmát egy rövid összefoglaló lépéssel nyertem ki a megnyitott oldalakból, nem soronkénti olvasással; az átiratok nem számozottak, ezért a „hely” a szakasz, nem sor. A 372-es előadás Jer 4:23- és Ézs 34:11-megnevezését a session utólag ellenőrizte (2026.11.02, a derekprince.com/sermons/372 átirata): az előadás mindkét verset név szerint idézi, a két héber szót megnevezi, és a három helyet a pár egyetlen három együttes előfordulásaként, ítélet-párhuzamként tárgyalja.
+**A keresés korlátai:**
+- Az átiratok nem számozottak, ezért a „hely” a szakasz, nem a sor; a tartalmuk összefoglaló kivonatból származik, nem soronkénti olvasásból. A ✅ forrás (MA-1001) Jer 4:23- és Ézs 34:11-megnevezése az átiraton ellenőrzött: az előadás mindkét verset név szerint idézi, a két héber szót megnevezi, és a három helyet a pár egyetlen három együttes előfordulásaként, ítélet-párhuzamként tárgyalja.
 - A Hagin-gap hozzáférési korlát (403), nem tartalmi negatív lelet; kézi, böngészős ellenőrzéssel pótolható.
-- A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
+- A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
+
+【NAPLO: F12.5, 2026-11-02 — a kivonatot a `tanito-kereso` (claude-sonnet-5-5) összefoglaló lépéssel nyerte ki; a MA-1001 két versmegnevezését a #12 session (claude-opus-5-5) a derekprince.com/sermons/372 átiratán utólag ellenőrizte. F12.9 javítókör (ELLENOR_F12 L2): az első személyű folyamatmondatok harmadik személyben, a folyamat-nyom ebben a NAPLO-ban.】
 
 <!-- RÉS-VÉGE: tanitoi -->

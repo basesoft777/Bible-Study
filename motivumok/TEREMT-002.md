@@ -8,7 +8,7 @@
 
 <!-- RÉS-KEZDET: kivonat -->
 
-A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhu vá-vóhu) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
+A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
 
 Ide az a hely tartozik, ahol a תֹהוּ (*tohu*) és a בֹהוּ (*bohu*) ugyanabban a versben áll; Károlinál ez „kietlen és puszta” (1Móz 1:2; Jer 4:23), illetve „a pusztaság mérőkötele és a semmiségnek kövei” (Ézs 34:11).[^d-elof] A *tohu* egyedül nem elég: a 19 *tohu*-versből 16-ban a pár nem áll,[^scan-tohu] és ezek nem tartoznak ide, akár „semmiség”, „hiábavaló” értelemben áll a szó (Ézs 40:17; 44:9), akár puszta, úttalan vidékről szól (5Móz 32:10; Zsolt 107:40).[^d-mot] A magyar szó sem dönt: a Zsolt 107:40 „kietlenben” szava mögött a héberben csak a *tohu* áll, a pár nem.[^k-zsolt10740][^d-jel] Kivétel nincs; az Ézs 45:18 és az Ézs 24:10 a *tohu* miatt a motívum mellett áll, kapcsolt helyként, de nem előfordulás (3. pont, Remez).[^d-kapcs]
 
@@ -112,7 +112,7 @@ A görög szavak újszövetségi előfordulásai nem adnak hidat. Az ἀόρατ
 
 #### H8414 — תֹּהוּ (tóhú) · BDB
 
-**Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) éppen ott választja szét, ahol a motívum határa húzódik: mindhárom előfordulás az 1. jelentéshez tartozik, a semmiség-ág versei (Ézs 40:17; 41:29; 44:9; 49:4) a 2.-hoz.[^bdb-vers] A szótári tagolás így ugyanazt a vonalat húzza meg, amelyet a P2 mező-hipotézise a két ág között húz. A jelentés a szóról szól; hogy a formátlanság-ágon belül miért éppen a pár a határ, azt nem a szótár, hanem a formula dönti el (Kivonat).
+**Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) ott választja szét, ahol a P2 mező-hipotézise a két ágat: a semmiség-ág versei (Ézs 40:17; 41:29; 44:9; 49:4) a 2. jelentés alatt állnak, a motívum mindhárom előfordulása az 1. alatt.[^bdb-vers] Az 1. jelentés alatt azonban a pár nélküli *tohu*-versek is ott vannak (Ézs 45:18; 24:10; 5Móz 32:10; Jób 6:18; 12:24; 26:7; Zsolt 107:40).[^bdb-vers] A szótári tagolás tehát a mező két ágát választja szét, a motívum határát nem: azt az 1. jelentésen belül a pár húzza meg (Kivonat). A jelentés a szóról szól, a határ a formuláé.
 
 <!-- RÉS-VÉGE: miert_fontos -->
 
@@ -243,7 +243,7 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 [^tahot3]: proveniencia: scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | n=59 | ts=2026-10-08T06:23Z
 [^bdb-tohu]: proveniencia: scope=strong=H8414 (Teljes_szocikk, részlet) | forras=BDB_teljes_unabridged.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | strong=H8414 | n=1 | ts=2026-10-08T06:42Z
 [^bdb-bohu]: proveniencia: scope=strong=H0922 (Teljes_szocikk, részlet) | forras=BDB_teljes_unabridged.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | strong=H0922 | n=1 | ts=2026-10-08T06:42Z
-[^bdb-vers]: proveniencia: scope=strong=H8414+H0922, a motívum három verse | forras=adat/bdb_vers_jelentes.tsv (H8414: -/1 mindhárom versben; H0922: tagolatlan) + naplok/F148_levezetes_TEREMT-002.tsv (szakasz_cimke_levezet.py, jelzés nélkül) + naplok/F12_kitoltes.tsv | n=3 | ts=2026-11-02
+[^bdb-vers]: proveniencia: scope=strong=H8414+H0922, a BDB saját példahelyei | forras=adat/bdb_vers_jelentes.tsv (H8414 -/1: a motívum három verse + Ézs 45:18, 24:10, 5Móz 32:10, Jób 6:18, 12:24, 26:7, Zsolt 107:40; H8414 -/2: többek közt Ézs 40:17, 41:29, 44:9, 49:4; H0922: tagolatlan) + naplok/F148_levezetes_TEREMT-002.tsv (szakasz_cimke_levezet.py, jelzés nélkül) + naplok/F12_kitoltes.tsv | n=3 | ts=2026-11-02
 [^ford-tohu]: proveniencia: scope=szotar=BDB, strong=H8414, mezo=forditas_hu (részlet) | forras=adat/forditasok.tsv (sorkivonat `split('\t')`-tel) | strong=H8414 | n=1 | allapot=opus (gépi fordítás, claude-opus-5-5, 2026.10.01) | ts=2026-10-08T06:42Z
 [^ford-bohu]: proveniencia: scope=szotar=BDB, strong=H0922, mezo=forditas_hu (részlet) | forras=adat/forditasok.tsv (sorkivonat `split('\t')`-tel) | strong=H0922 | n=1 | allapot=opus (gépi fordítás, claude-opus-5-5, 2026.10.01) | ts=2026-10-08T06:42Z
 [^k-gen]: proveniencia: scope=range:1Móz 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-11-02T11:39Z

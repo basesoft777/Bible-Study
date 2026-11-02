@@ -2136,8 +2136,18 @@ def szerep_olvasoi(nyelv, n, tokenek_ny, ctx):
         return lxx_olvasoi(lxx_osszevetes(sorai, tok)[1], tok)
     if n == 7:
         adat = {t: sece_sajat(t, set(tok)) for t in tokenek_ny}
+        # F12 (TEREMT-002): a motívumnak nincs szava a másik nyelven -> a SECE-megfelelők közül az LXX-döntések szavai
+        masik = 'G' if nyelv == 'heber' else 'H'
+        nincs_masik = not any(x.startswith(masik) for x in tok)
+        lxx_strongok = set()
+        if nincs_masik:
+            igehelyek = {v for s in sorai for v in igehely_lista(s['igehely'])}
+            lxx_strongok = {(r.get('gorog_strong') or '').strip()
+                            for v in igehelyek for r in lxx_dontesek_index().get(v, [])}
         reszek = [OK.sece(_szo_nev(t), db, [_szo_nev(x) for x in sj],
-                          tars=next((_szo_nev(u) for u in tokenek_ny if u != t and adat[u][1]), ''))
+                          tars=next((_szo_nev(u) for u in tokenek_ny if u != t and adat[u][1]), ''),
+                          nincs_masik=nincs_masik,
+                          lxx_nevek=[_szo_nev(x) for x in sece_sajat(t, lxx_strongok)[1]] if nincs_masik else ())
                   for t, (db, sj) in adat.items()]
         return ' '.join(r for r in reszek if r) or None
     if n == 9:
@@ -3601,7 +3611,7 @@ def lxx_olvasoi(szamlalo, tokenek):
     return OK.lxx(sum(szamlalo.values()), szamlalo.get('egyező', 0), szamlalo.get('eltérő', 0),
                   szamlalo.get('LXX-minusz', 0),
                   szamlalo.get('kutatói azonosítás függőben', 0) + szamlalo.get('szamozas_elteres', 0),
-                  _szo_nev(g[0]) if len(g) == 1 else '')
+                  _szo_nev(g[0]) if len(g) == 1 else '', nincs_gorog=not g)
 
 
 def lxx_olvasoi_osszegzes(szamlalo):
@@ -3623,6 +3633,18 @@ def lxx_osszevetes(sorai, tokenek):
     heber_szamlalo = {}
     forras_fajlok = set()
 
+    # F12 (TEREMT-002, összetett sor): ha egy héber tokennek saját döntéssora van, a tokenenkénti számláló azt
+    # használja (a nem megjelenő bizonyosságú sor „függőben”); saját sor nélkül a vers verdiktje (a korábbi viselkedés).
+    sajat_dontes = {(r['igehely'], (r.get('heber_strong') or '').strip()) for r in G.tsv_beolvas(LXX_DONTESEK_TSV)[1]}
+
+    def token_verdikt(vers, ht, kulcs):
+        if kulcs not in ('eltérő', 'LXX-minusz', 'kutatói azonosítás függőben') or (vers, ht) not in sajat_dontes:
+            return kulcs
+        r = next((x for x in dontesek_idx.get(vers, []) if (x.get('heber_strong') or '').strip() == ht), None)
+        if r is None:
+            return 'kutatói azonosítás függőben'
+        return 'LXX-minusz' if (r.get('tipus') or '').strip() == 'lxx_minusz' else 'eltérő'
+
     for s in osz_sorai:
         strong_field = s.get('strong') or ''
         heber_tokenek = [t.strip() for t in strong_field.split('+') if t.strip().startswith('H')]
@@ -3631,7 +3653,7 @@ def lxx_osszevetes(sorai, tokenek):
             szamlalo[kulcs] += 1
             for ht in heber_tokenek:
                 hsz = heber_szamlalo.setdefault(ht, dict.fromkeys(LXX_SZAMLALO_KULCSOK, 0))
-                hsz[kulcs] += 1
+                hsz[token_verdikt(vers, ht, kulcs)] += 1
 
         for vers in igehely_lista(s['igehely']):
             konyv, karoli_fej, karoli_vers = L.parse_igehely(vers)

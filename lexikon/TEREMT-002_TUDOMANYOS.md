@@ -6,7 +6,7 @@
 
 **Mit mutat ez a rész?** A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.
 
-A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhu vá-vóhu) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
+A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
 
 Ide az a hely tartozik, ahol a תֹהוּ (*tohu*) és a בֹהוּ (*bohu*) ugyanabban a versben áll; Károlinál ez „kietlen és puszta” (1Móz 1:2; Jer 4:23), illetve „a pusztaság mérőkötele és a semmiségnek kövei” (Ézs 34:11).[^d-elof] A *tohu* egyedül nem elég: a 19 *tohu*-versből 16-ban a pár nem áll,[^scan-tohu] és ezek nem tartoznak ide, akár „semmiség”, „hiábavaló” értelemben áll a szó (Ézs 40:17; 44:9), akár puszta, úttalan vidékről szól (5Móz 32:10; Zsolt 107:40).[^d-mot] A magyar szó sem dönt: a Zsolt 107:40 „kietlenben” szava mögött a héberben csak a *tohu* áll, a pár nem.[^k-zsolt10740][^d-jel] Kivétel nincs; az Ézs 45:18 és az Ézs 24:10 a *tohu* miatt a motívum mellett áll, kapcsolt helyként, de nem előfordulás (3. pont, Remez).[^d-kapcs]
 
@@ -126,7 +126,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-ézs-34-11"></a>
 **Ézs 34:11**
 *És örökségül bírándja azt ökörbika, sündisznó; és gém és holló lakja azt, és fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit.*
-"fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit" — a תֹהוּ וָבֹהוּ pár Edom ítéletében, mérőkötél és függőón képében
+"fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit" — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár Edom ítéletében, mérőkötél és függőón képében
 
 <a id="ige-jer-4-23"></a>
 **Jer 4:23**
@@ -391,11 +391,11 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A motívum 3 ószövetségi helyéből 0 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 2 helyen mást, 1 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség csak a helyek 0%-án használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.
+**Mit mutat ez a rész?** A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).
 
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
 
-**H0922 — בֹּהוּ (bóhú)** · a motívum 3 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: eltérő 2 · azonosításra vár 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+**H0922 — בֹּהוּ (bóhú)** · a motívum 3 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: eltérő 1 · azonosításra vár 2 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 **H8414 — תֹּ֫הוּ (tóhú)** · a motívum 3 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: eltérő 2 · azonosításra vár 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
@@ -409,7 +409,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a tóhú szónak 6 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szótár ezt a párt nem ismeri; a kapcsolatot csak a fordítás (LXX) mutatja.
+**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a tóhú szónak 6 megfelelőjét adja a másik bibliai nyelven; a motívumnak a másik nyelven nincs saját szava, de a megfelelők között van az aoratosz és az erémosz, amelyekkel a Septuaginta a motívum helyein fordít. **Következtetés:** a szótár ismeri azokat a szavakat, amelyekkel a fordítás a szót visszaadja; a motívumnak a másik nyelven nincs párja.
 
 **H0922** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*
 
@@ -530,13 +530,13 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 #### H8414 — תֹּהוּ (tóhú) · BDB
 
-**Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) éppen ott választja szét, ahol a motívum határa húzódik: mindhárom előfordulás az 1. jelentéshez tartozik, a semmiség-ág versei (Ézs 40:17; 41:29; 44:9; 49:4) a 2.-hoz.[^bdb-vers] A szótári tagolás így ugyanazt a vonalat húzza meg, amelyet a P2 mező-hipotézise a két ág között húz. A jelentés a szóról szól; hogy a formátlanság-ágon belül miért éppen a pár a határ, azt nem a szótár, hanem a formula dönti el (Kivonat).
+**Miért fontos ez a lelet:** a szótár a *tohu* két jelentését (1. formátlanság; 2. átvitt értelemben az üres, valótlan, a bálványok) ott választja szét, ahol a P2 mező-hipotézise a két ágat: a semmiség-ág versei (Ézs 40:17; 41:29; 44:9; 49:4) a 2. jelentés alatt állnak, a motívum mindhárom előfordulása az 1. alatt.[^bdb-vers] Az 1. jelentés alatt azonban a pár nélküli *tohu*-versek is ott vannak (Ézs 45:18; 24:10; 5Móz 32:10; Jób 6:18; 12:24; 26:7; Zsolt 107:40).[^bdb-vers] A szótári tagolás tehát a mező két ágát választja szét, a motívum határát nem: azt az 1. jelentésen belül a pár húzza meg (Kivonat). A jelentés a szóról szól, a határ a formuláé.
 
 ## 3. LXX-fordítói döntések
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-02 -->
 
-**Mit mutat ez a rész?** A motívum 3 ószövetségi helyéből 0 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 2 helyen mást, 1 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség csak a helyek 0%-án használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.
+**Mit mutat ez a rész?** A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -815,12 +815,14 @@ A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt,
 - **Csak az 1Móz 1:2 (és a pár nélküli Ézs 45:18):** *The Rebellion Of Lucifer* (MA-1002-100-ENG); a Jer 4:23-at és az Ézs 34:11-et ott nem említi.
 - **Nem a pár:** *The Adamic Race* (MA-1004-100-ENG): csak az 1Móz 1:2, a *tohu*/*bohu* szavak nélkül.
 
-**Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont 7. tétel):** Prince a **restitúciós olvasat** nevesített képviselője, a study saját érvanyagával egyezően (Jer 4:23, Ézs 45:18; a הָיְתָה (hájtá) „lett”). A **kiinduló-állapot olvasat** nevesített képviselője a jóváhagyott körből ezen a menetben nem került elő; a kör többi tagjánál gap, tehát az olvasat másik oldala forrás híján továbbra is bemutatatlan. Hogy ez kitölthető-e a listán kívüli (nem jóváhagyott) forrással, a felhasználó döntése; ebben a menetben nem vontam be.
+**Kapcsolat a study vitatott pontjával (3. pont, ⚠️; 7. pont, 1. nyitott kérdés):** Prince a **restitúciós olvasat** nevesített képviselője, a study saját érvanyagával egyezően (Jer 4:23, Ézs 45:18; a הָיְתָה (hájtá) „lett”). A **kiinduló-állapot olvasat** nevesített képviselője a jóváhagyott körből nem került elő; a kör többi tagjánál gap, tehát az olvasat másik oldala forrás híján bemutatatlan. Hogy ez kitölthető-e a listán kívüli (nem jóváhagyott) forrással, a felhasználó döntése; listán kívüli forrás nincs bevonva.
 
-**Figyelmeztetések a felhasználónak:**
-- Az átiratok tartalmát egy rövid összefoglaló lépéssel nyertem ki a megnyitott oldalakból, nem soronkénti olvasással; az átiratok nem számozottak, ezért a „hely” a szakasz, nem sor. A 372-es előadás Jer 4:23- és Ézs 34:11-megnevezését a session utólag ellenőrizte (2026.11.02, a derekprince.com/sermons/372 átirata): az előadás mindkét verset név szerint idézi, a két héber szót megnevezi, és a három helyet a pár egyetlen három együttes előfordulásaként, ítélet-párhuzamként tárgyalja.
+**A keresés korlátai:**
+- Az átiratok nem számozottak, ezért a „hely” a szakasz, nem a sor; a tartalmuk összefoglaló kivonatból származik, nem soronkénti olvasásból. A ✅ forrás (MA-1001) Jer 4:23- és Ézs 34:11-megnevezése az átiraton ellenőrzött: az előadás mindkét verset név szerint idézi, a két héber szót megnevezi, és a három helyet a pár egyetlen három együttes előfordulásaként, ítélet-párhuzamként tárgyalja.
 - A Hagin-gap hozzáférési korlát (403), nem tartalmi negatív lelet; kézi, böngészős ellenőrzéssel pótolható.
-- A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
+- A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
+
+【NAPLO: F12.5, 2026-11-02 — a kivonatot a `tanito-kereso` (claude-sonnet-5-5) összefoglaló lépéssel nyerte ki; a MA-1001 két versmegnevezését a #12 session (claude-opus-5-5) a derekprince.com/sermons/372 átiratán utólag ellenőrizte. F12.9 javítókör (ELLENOR_F12 L2): az első személyű folyamatmondatok harmadik személyben, a folyamat-nyom ebben a NAPLO-ban.】
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
