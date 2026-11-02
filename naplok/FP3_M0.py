@@ -239,3 +239,41 @@ STOP = set("that with from this which have their also used were been into than t
 
 if __name__ == '__main__':
     {'sorrend': sorrend, 'szaraz': szaraz, 'kapu': kapu, 'konyv': konyv, 'sigla': sigla, 'term': term}.get(sys.argv[1] if len(sys.argv) > 1 else '', lambda: print(__doc__))()
+
+
+def minta_valaszt():
+    """M1 rétegzett kiegészítés (orkesztrátori döntés, 2026-11-02): seed 27, hosszkategóriánként véletlen, +legfeljebb 30 000 karakter."""
+    import random
+    r = [l.rstrip('\n').split('\t') for l in open(os.path.join(ITT, 'FP3_sorrend.tsv'), encoding='utf-8') if not l.startswith('#')][1:]
+    alap = [x for x in r if x[5] == '1']
+    pool = [x for x in r if x[5] != '1']
+    kat = lambda k: 'kicsi' if k < 500 else ('kozepes' if k < 3000 else 'nagy')   # noqa: E731
+    rnd = random.Random(27)
+    cel = [('kicsi', 11), ('kozepes', 9), ('nagy', 5)]
+    ki, kum = [], 0
+    for nev, db in cel:
+        jel = [x for x in pool if kat(int(x[3])) == nev]
+        rnd.shuffle(jel)
+        n = 0
+        for x in jel:
+            if n == db:
+                break
+            if kum + int(x[3]) > 30000:
+                continue
+            ki.append((nev, x))
+            kum += int(x[3])
+            n += 1
+    ut = os.path.join(ITT, 'FP3_m1_strongok.tsv')
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: naplok/FP3_M0.py minta (F27 M1; seed=27; kicsi <500, közepes 500–2999, nagy ≥3000 karakter; +≤30 000) | scope=teljes Thayer, M1 | forras=naplok/FP3_sorrend.tsv\n')
+        f.write('strong\tkategoria\tkarakter\tszakasz\n')
+        for x in alap:
+            f.write('%s\tfunkciószó\t%s\t%s\n' % (x[1], x[3], x[4]))
+        for nev, x in ki:
+            f.write('%s\t%s\t%s\t%s\n' % (x[1], nev, x[3], x[4]))
+    print('alap %d Strong %d kar; minta %d Strong %d kar' % (len(alap), sum(int(x[3]) for x in alap), len(ki), kum))
+    print(collections.Counter(n for n, _ in ki))
+
+
+if len(sys.argv) > 1 and sys.argv[1] == 'minta':
+    minta_valaszt()
