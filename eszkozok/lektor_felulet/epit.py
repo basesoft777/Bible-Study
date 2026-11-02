@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-epit.py -- F157: a lektor-felület artifact-oldala a `naplok/LEKTOR_*.tsv` kérdéseiből és a `sablon.html`-ből.
+epit.py -- F157: a Kiadó (felület; korábbi neve lektor-felület) artifact-oldala a `naplok/LEKTOR_*.tsv` kérdéseiből és a `sablon.html`-ből.
 
 A kimenet az Artifact-eszköznek szánt oldal (a váz nélkül). A TSV-ből csak a kérdés-mezők és a repóban már rögzített döntés
 (`valasz`, `allapot`) kerülnek be -- a felhasználó artifact-beli válaszai SOHA (az adatbázisban élnek, nem az oldalban).
 
-    python eszkozok/lektor_felulet/epit.py <kimenet.html> [--motivum ID ...] [--lap-url URL]
+A „lapnézet” link motívumonként a `lapnezetek.tsv`-ből jön; ami ott nincs, annak a kártyáján nincs link.
+
+    python eszkozok/lektor_felulet/epit.py <kimenet.html> [--motivum ID ...]
 """
 import argparse
 import glob
@@ -24,7 +26,9 @@ ROOT = os.path.dirname(os.path.dirname(HELY))
 sys.path.insert(0, os.path.dirname(HELY))
 import lektor_kerdesek as L  # noqa: E402
 
-BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus', 'kiadas']
+LAPNEZET_UT = os.path.join(HELY, 'lapnezetek.tsv')
+BE_MEZOK = ['kerdes_id', 'forras', 'motivum', 'hely', 'kerdes', 'valaszlehetosegek', 'allapot', 'valasz', 'cimke', 'gond', 'javaslat', 'javaslat_tipus', 'kiadas',
+            'hatar_jelenlegi', 'kov_elfogadom', 'kov_elvetem']
 
 
 def kerdesek(motivumok=None, root=ROOT):
@@ -39,23 +43,42 @@ def kerdesek(motivumok=None, root=ROOT):
     return ki
 
 
-def epit(motivumok=None, lap_url='', root=ROOT):
+def lapnezetek(ut=LAPNEZET_UT):
+    """{motivum: url} a kézi `lapnezetek.tsv`-ből; nincs fájl -> {} (egy kártyán sincs link)."""
+    if not os.path.exists(ut):
+        return {}
+    with open(ut, encoding='utf-8', newline='') as f:
+        sorok = [x.rstrip('\r') for x in f.read().split('\n') if x.strip() and not x.startswith('#')]
+    fej = sorok[0].split('\t')
+    if fej != ['motivum', 'url', 'megjegyzes']:
+        raise ValueError('%s: váratlan fejléc %r' % (ut, fej))
+    ki = {}
+    for x in sorok[1:]:
+        r = dict(zip(fej, x.split('\t')))
+        if not r.get('url', '').startswith('https://'):
+            raise ValueError('%s: hibás url (%s)' % (ut, r['motivum']))
+        if r['motivum'] in ki:
+            raise ValueError('%s: kétszer szerepel: %s' % (ut, r['motivum']))
+        ki[r['motivum']] = r['url']
+    return ki
+
+
+def epit(motivumok=None, nezetek=None, root=ROOT):
     with open(os.path.join(HELY, 'sablon.html'), encoding='utf-8') as f:
         sablon = f.read()
     adat = json.dumps(kerdesek(motivumok, root), ensure_ascii=False).replace('</', '<\\/')
-    url = json.dumps(lap_url, ensure_ascii=False).replace('</', '<\\/')
-    if sablon.count('__ADAT__') != 1 or sablon.count('__LAP_URL__') != 1:
+    url = json.dumps(lapnezetek() if nezetek is None else nezetek, ensure_ascii=False).replace('</', '<\\/')
+    if sablon.count('__ADAT__') != 1 or sablon.count('__LAP_URLOK__') != 1:
         raise ValueError('a sablon helyőrzői hiányoznak vagy ismétlődnek')
-    return sablon.replace('__ADAT__', adat).replace('__LAP_URL__', url)
+    return sablon.replace('__ADAT__', adat).replace('__LAP_URLOK__', url)
 
 
 def main():
-    ap = argparse.ArgumentParser(description='F157 -- lektor-felület építése')
+    ap = argparse.ArgumentParser(description='F157 -- a Kiadó (felület) építése')
     ap.add_argument('kimenet')
     ap.add_argument('--motivum', nargs='*', default=None)
-    ap.add_argument('--lap-url', default='')
     a = ap.parse_args()
-    szoveg = epit(a.motivum, a.lap_url)
+    szoveg = epit(a.motivum)
     with open(a.kimenet, 'w', encoding='utf-8', newline='\n') as f:
         f.write(szoveg)
     print('  %s: %d kérdés' % (a.kimenet, len(kerdesek(a.motivum))), file=sys.stderr)

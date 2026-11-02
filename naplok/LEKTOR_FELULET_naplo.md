@@ -158,3 +158,73 @@
 - A döntés-kártyák (`dontes`) nem kiadás-kérdések: `kiadas` üres, a felületen „kiadáson kívül”.
 - Felület: minden kártyán kiadás-jelvény; a lap tetején kiadás-szűrő darabszámokkal: mind (53) · 1. kiadás (5) · 2. kiadás (17) · kiadáson kívül (31). A régebbi fejlécű TSV beolvasható.
 - Nincs `DONTESEK.md` tétel a besorolásról (nem kérték); ha kell, DT-F157 helyőrzővel rögzíthető.
+
+## ALVIL-001 — a határ- és a lektori kör kérdései a felületen (MUNKAMENET C-h, C-l; 2026-11-02)
+
+- Indítás: a felhasználó (DT-F151b) az orkesztrátornak, 2026-11-02: „inditsuk el”, az újraindításra: „Igen, indítsd”.
+- Bemenet: `naplok/HATAR_ALVIL-001.md` (Gépi rész: 0 kérdés, a lexikai hordozón a negatív-kritérium próba nem fut; Modelles rész: a `hatar-ellenor`,
+  `claude-fable-5-1`, 2 kérdés, hígulás 0) és `naplok/KIADAS_ALVIL-001_lektor.md` (a `lektor`, `claude-fable-5-1`, 28 kérdés). A `/kiadas` jelölt-listája
+  (`naplok/KIADAS_ALVIL-001_lista.md`) üres volt, ezért a lektor a teljes kézi prózát kapta (DT-F125f).
+- `naplok/LEKTOR_ALVIL-001.tsv`: **30 kérdés** = 2 `hatar` (1. kiadás) + 28 `lektor` (2. kiadás), mind `nyitva`; kézi kártya-összefoglaló mind a 30-hoz
+  (`eszkozok/lektor_felulet/osszefoglalo_ALVIL-001.tsv`, `manual`; egyiknél sem volt konkrét javítási javaslat, mind `nincs`).
+- Artifact: ugyanaz a link (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 10. verzió; `epit.py` az összes `LEKTOR_*.tsv`-ből, `--lap-url` változatlan.
+  Az élő változattal összevetve: a sablon azonos, a meglévő 53 kártya bájtra egyező adatú, új a 30 ALVIL-001 kártya (összesen 83). A kérdésekre ez a menet
+  nem válaszolt, és semmit nem vezetett át.
+
+## Lapnézet motívumonként (hibajelzés, a felhasználó szavaival: „minden lapnézet az istentisztelet artifactra mutat”; 2026-11-02)
+
+- Ok: a `sablon.html` egyetlen `LAP_URL`-t használt (az ISTENTISZT-001 arany lapja), így minden kártya, az ALVIL-001 és a döntés-kártyák is, oda vitt.
+- Javítás: kézi tábla `eszkozok/lektor_felulet/lapnezetek.tsv` (`motivum`, `url`, `megjegyzes`); az `epit.py` ebből tölti a `LAP_URLOK`-at (a `--lap-url` kapcsoló megszűnt),
+  a kártya a saját motívumának nézetére mutat; ami nincs a táblában (más motívum, döntés-kártya), annak nincs linkje. 2 új teszt (`teszt_lektor_kerdesek.py`, 27 OK).
+- Az ALVIL-001 nézete ugyanazzal az eszközzel, ahogy az arany lapé (`C:\Users\bases\pardes_eszkozok\epit_nezet.py lexikon/ALVIL-001_TUDOMANYOS.md … 6edf842d`), új privát
+  artifactként: https://claude.ai/artifact/44gJuUTb1cu5ewgupXmyAQ. Az eszköz sablonfeliratai az ISTENTISZT-001-re vannak drótozva (cím, fejléc, forrásmegjelölés): a kimenetben ez a négy
+  felirat ALVIL-001-re cserélve, a beágyazott lapszöveg érintetlen.
+- Lektor-felület: ugyanaz a link, 11. verzió (a 12. a törlés-gombbal együtt); az élő változattal összevetve csak a link-logika változott (a 83 kártya adata azonos, a db-beli válaszok érintetlenek).
+- Ellenőrzés böngészőben (a claude.ai a beépített böngészőben bejelentkezést kér, ezért a publikált HTML helyi kiszolgálásával): 67 megjelenő kártyán az ALVIL-001-é (30) az ALVIL-001
+  nézetére, az ISTENTISZT-001-é (22) az arany lapra mutat, a 15 döntés-kártyán nincs link; az ALVIL-001 nézet renderel.
+
+## Válasz törlése (a felhasználó kérése: „kellene egy válasz törlése gomb is. ahol egy megadott választ törlők”; 2026-11-02)
+
+- `sablon.html`: a megválaszolt kártya alján „Válasz törlése”; kattintásra helyben megerősítés („Biztosan törlöd a válaszod? …” — Igen, törlöm / Mégse; a böngésző `confirm()` ablaka a
+  beágyazott lapon tiltott lehet). Az „Igen” a `valaszok/<kerdes_id>` dokumentumot törli a db-ből (`doc().delete()`), majd a helyi tartalékból (localStorage) is, és a kártya újra megválaszolatlan.
+  Ha a db-törlés nem sikerül, a felület kiírja („A válasz törlése nem sikerült (…): a válaszod megmaradt.”), és a válasz marad. Az átvezetett (`atvezetve`) kártyán nincs törlés-gomb.
+- A máshol (másik eszközön) törölt válasz sem tér vissza: a válaszok `db` jelölést kapnak, ha az adatbázisban is megvannak; a snapshot `removed` változása és a szerver-nézetből hiányzó,
+  korábban adatbázisbeli válasz törlődik a helyi másolatból; a csak helyben (adatbázis nélkül) mentett válasz marad.
+- Próba (helyben, memóriabeli db-utánzattal, mert a claude.ai a beépített böngészőben bejelentkezést kér): válasz → törlés-gomb → Mégse (marad) → sikertelen törlés (marad, hibaüzenet) →
+  törlés (db-ből és localStorage-ból eltűnik, kártya megválaszolatlan) → újra válasz (db-be kerül) → máshol törölt (eltűnik); a többi válasz érintetlen. Az élő oldalon gombnyomásos próba nem
+  futott; az élő db `valaszok` gyűjteménye (3 dokumentum) a publikálás előtt és után bájtra azonos (ArtifactData list).
+- Lektor-felület: ugyanaz a link, 12. verzió (a lapnézet-javítással együtt).
+
+## Határ-kártya: „A jelenlegi határ” és „Ha így döntesz…” (a felhasználó kérése: „lektor határellenőrzéskor jó lenne bent lenni mi a jelenlegi határ . és a döntés következményei”; 2026-11-02)
+
+- „A jelenlegi határ” (csak `forras=hatar`, általánosan): a `lektor_kerdesek.py` új `hatar_jelenlegi` mezője, gépileg az adatból — a motívum negatív kritériuma és fölérendelt fogalma szó szerint
+  az `adat/motivumok.tsv`-ből (a kanonikus helyük; a `motivumok/<ID>.md` ezeket nem tartalmazza), és a kártya igehelyeinek (a cím és az (a) rész igehelyei + a `hely` mező) mai állapota:
+  `elofordulasok.tsv` = bent van, `jeloltek.tsv` = döntés + indoklás, `fájl:sor` hivatkozással; saját proveniencia-sor. Ami nem olvasható ki (nincs motívum-sor, nincs igehely, nincs sor),
+  azt a kártya kimondja, nem tölti ki.
+- „Ha így döntesz…”: gombonként egy mondat. Az első két gombé a kézi összefoglalóból (`osszefoglalo_<ID>.tsv` új, elhagyható oszlopai: `kov_elfogadom`, `kov_elvetem`; csak határ-kártyán,
+  csak párban), a számok az adatból (ALVIL-001: 8 újszövetségi sor / 9 vers, 10 hádész-vers; ISTENTISZT-001: 22 előfordulás, az 1. kiadás az `adat/kiadasok.tsv`-ben); a Visszakérdezek és
+  a Saját megoldás mondata minden határ-kártyán ugyanaz (a sablonban). Kitöltve: az ALVIL-001 2 és az ISTENTISZT-001 5 határ-kártyáján.
+- A `LEKTOR_ALVIL-001.tsv` és a `LEKTOR_ISTENTISZT-001.tsv` újragenerálva: csak a három új oszlop változott (a válasz-mezők soronként azonosak); a többi `LEKTOR_*.tsv` régi fejléccel is
+  beolvasható. 4 új teszt (31 OK).
+- Lektor-felület: ugyanaz a link, 13. verzió; az élő db `valaszok` gyűjteménye változatlan (3 dokumentum, ArtifactData list). Helyben, db-utánzattal megnézve: a két blokk csak a határ-kártyán
+  jelenik meg, a lektori kártyán nem. Az élő oldalon a beépített böngésző bejelentkezést kér, ott a felhasználónak kell kipróbálnia.
+
+## A felület új neve: Kiadó (DT-F157h; a felhasználó: „A lektor kereszteljük át: Kiadó-ra”, pontosítva: „Csak a felület nevét”; 2026-11-02)
+
+- A felület címe (`<title>`) és fejléce „Kiadó” (`eszkozok/lektor_felulet/sablon.html`); az `epit.py` leírása „a Kiadó (felület)”.
+- Dokumentáció, ahol a felület mint hely szerepel: „Kiadó (felület)” — `MUNKAMENET.md` (C-h, C-l, C-k sora és a lezárás menete; 5 hely), `F10_LEXIKON_LEZARAS_BRIEF.md` (1),
+  `F123_MIGRACIO2_BRIEF.md` (3), `sablonok/4_PaRDeS_tematikus_sablon.md` (1).
+- Nem változik: a fájl- és eszköznevek (`naplok/LEKTOR_*.tsv`, `eszkozok/lektor_kerdesek.py`, `eszkozok/lektor_felulet/`), a `lektor` subagent, a „lektori kérdés / lektori kör”,
+  a `CLAUDE.md`, a generált `FELADATOK.md`, a korábbi döntések, naplók (ez a napló is) és idézetek szövege, a #156/#157 briefjében a feladat neve.
+- Az artifact ugyanazon a linken (https://claude.ai/artifact/GqczbTiP918WHpRVnzxZZv), 14. verzió; a db válaszai érintetlenek.
+
+## Reszponzív elrendezés és élő próba Chrome-ban (a felhasználó: „böngészőben nagyon keskeny az oldal”; 2026-11-02)
+
+- `sablon.html`: 1100 px fölött a tartalom legfeljebb 1240 px széles; a lektori kártyák két hasábban, a határ-kártya teljes szélességben, benne balra a kérdés és a gombok,
+  jobbra a „Jelenlegi határ” és a „Ha így döntesz…”; a szűrősorok két hasábban. Telefonon egy hasáb marad (kérdés → határ-blokk → nagy gombok). A folyó szöveg sorhossza em-alapú
+  korláttal ~70–75 karakter (mérve 1400 px-en: bevezető 75, „Mi a gond” 75, a határ-blokk 69–72; a nyers „Részletek” sorai a hosszú kód-azonosítók miatt 79-ig).
+- Élő próba a felhasználó Chrome-jában (Claude in Chrome, saját fülön; az ablak maximalizált, ezért a szélességet a beágyazó keret szélességével állítottam: 1400 és 390 px):
+  cím „Kiadó”; 1400 px-en két hasábos lektori kártyák és kettéosztott határ-kártya; 390 px-en egy hasáb, vízszintes görgetés nélkül; a határ-blokk megjelenik; törlés-próba
+  (az ALVIL-001:mK1-en próbaválasz → „Válasz törlése” → „Igen, törlöm”): a kártya visszaállt nyitottra, a próbaválasz nincs a db-ben, a felhasználó 3 válasza bájtra azonos;
+  konzolhiba nincs. A lapnézet-link célját kattintással nem lehetett igazolni (az új fül a próba fülcsoportján kívül nyílik); a közzétett oldal motívum → nézet táblája helyes.
+- Artifact: ugyanaz a link, 15. verzió.
