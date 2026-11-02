@@ -34,5 +34,5 @@
 ## Nyitott
 
 - **N-F156c** `lexikon_general.py` → `karoli_kh_szuro` (a gépi kör merge-e után), lapok újragenerálása.
-- **N-F156d** szentiras.hu/KG egy-lekérés (ApCsel 2:27) — a felhasználó külön engedélyére vár; nem hajtottam végre.
+- **N-F156d — lezárva:** a szentiras.hu KG ugyanazt a hibát hordozza, onnan nem javítható. Az orkesztrátor kézi oldalmegnyitása (ts=2026-11-02, `https://szentiras.hu/biblia/kg/csel/2,1`; slug: `csel`): Csel 2:27 → „1Móz. 46,27. 2Móz. 1,5. 5Móz. 10,22.”; 2:25 helyes; 2:18–2:21, 2:26, 2:28, 2:31 a Csel 7-es blokk listáit hordozza. A session két lekérése (`/KG/ApCsel2,27`, `/biblia/kg/apcsel/2,27`) rossz slug miatt 404 volt (nyers válasz a scratchpadben, nem a repóban).
 - A szabály a nem duplikált hibás listát nem fogja meg (ApCsel 22:16 → Jón 1:5): korlát, nem negatív lelet.
