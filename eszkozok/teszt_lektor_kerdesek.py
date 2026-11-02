@@ -320,5 +320,33 @@ class OsszefoglaloTeszt(unittest.TestCase):
         self.assertTrue(all(r[gi].strip() and r[ti] in L.JAVASLAT_TIPUSOK for r in sorok))
 
 
+class KiadasJelTeszt(unittest.TestCase):
+    def test_forrasonkenti_kiadas(self):
+        with tempfile.TemporaryDirectory() as t:
+            irj(t, 'HATAR_X-001.md', HATAR)
+            irj(t, 'KIADAS_X-001_lektor.md', LEKTOR_MD)
+            irj(t, 'KIADAS_X-001_lista.md', LISTA_MD)
+            L.general('X-001', t)
+            m = L.beolvas(os.path.join(t, 'naplok', 'LEKTOR_X-001.tsv'))
+        ki = {}
+        for r in m.values():
+            ki.setdefault(r['forras'], set()).add(r['kiadas'])
+        self.assertEqual(ki, {'hatar': {'1'}, 'lektor': {'2'}, 'proza_lefedettseg': {'2'}})
+
+    def test_dontes_nem_kiadas_kerdes(self):
+        k = L.dontesek_kartyak(DONTESEK, 't')
+        sorok, _e = L.osszefesul(k, {})
+        self.assertEqual({r['kiadas'] for r in sorok}, {''})
+
+    def test_regebbi_fejlec_is_beolvashato(self):
+        with tempfile.TemporaryDirectory() as t:
+            ut = os.path.join(t, 'LEKTOR_R.tsv')
+            fej = L.MEZOK_V3
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write('\t'.join(fej) + '\n' + '\t'.join(['a:b:c', 'hatar', 'R', '', 'k', '', 'p', 'nyitva', '', '', 'tartalmi', '', '', '', '']) + '\n')
+            r = L.beolvas(ut)['a:b:c']
+            self.assertEqual(r['kiadas'], '')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
