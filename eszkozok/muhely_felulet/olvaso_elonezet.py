@@ -106,7 +106,7 @@ def main():
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600'
         '&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">'
         '<style>%s</style><div class="o"><header><h1>A motívumlexikon előrehaladása</h1>'
-        '<p class="al">%d motívum, %d teljesült ellenőrzési lépés a %d-ből. „Kész” az a motívum, amelynél mind a nyolc '
+        '<p class="al">%d motívum, %d teljesült ellenőrzési lépés a %d-ből. „Kész” az a motívum, amelynél mind a kilenc '
         'ellenőrzési lépés teljesül.</p></header>'
         '<section class="csempek">%s</section>'
         '<section><h2>Hol tart az egyes motívum</h2><div class="kartyak">%s</div></section>'
