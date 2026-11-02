@@ -1439,8 +1439,39 @@ def szabaly23_proza_lefedettseg(adat_dir):
                megjegyzes='nem gátol; lista: python eszkozok/proza_lefedettseg.py <ID>')
 
 
+# 24. szabaly (TEREMT-002, 2026-11-02, a felhasznalo hibajelzese: a lap Kivonataban nyers `[^koll]` jelek): a generalt
+# lap minden labjegyzet-hivatkozasanak van definicioja. A generator (`lexikon_general.res_labjegyzetek_alkalmaz`) a
+# kezi resek nevesitett lablegyzeteit a forras „Proveniencia-sorok” szakaszabol hozza at.
+LJ_HIV_RE = re.compile(r'\[\^([^\]\s]+)\](?!:)')
+LJ_DEF_RE = re.compile(r'^\[\^([^\]\s]+)\]:', re.M)
+
+
+def lap_labjegyzet_hianyok(szoveg):
+    """A lap definicio nelkuli labjegyzet-hivatkozasai, elso elofordulasuk sorrendjeben."""
+    defs = set(LJ_DEF_RE.findall(szoveg))
+    return list(dict.fromkeys(k for k in LJ_HIV_RE.findall(szoveg) if k not in defs))
+
+
+def szabaly24_labjegyzet_definicio(adat_dir):
+    """A generalt lexikonlapon (`*_TUDOMANYOS.md`, `*_TORZSCIKK.md`) definicio nelkuli labjegyzet-hivatkozas
+    SERTES: a lapon nyers `[^kulcs]` jelkent latszik."""
+    cim = '24. Lábjegyzet-definíció a generált lapon'
+    lex_dir = os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    hibak = []
+    for nev in sorted(os.listdir(lex_dir)):
+        if not any(nev.endswith(u) for u in LAP_UTOTAG):
+            continue
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            hiany = lap_labjegyzet_hianyok(f.read())
+        if hiany:
+            hibak.append('%s: %d definíció nélküli hivatkozás (%s)' % (nev, len(hiany), ', '.join(hiany[:12])))
+    return Sor(cim, 'SÉRTÉS' if hibak else 'RENDBEN', len(hibak) or None, hibak)
+
+
 def szabaly25_proza_1a(adat_dir):
-    """DT-F1Aa (JELENTES, nem gatol; a vegleges szint a DT-F1Aa-ra var): motivumonkent az 1/a igehelyei,
+    """DT-F1Aa (b) (JELENTES, nem gatol; a Feed 6. kapuja piros ra): motivumonkent az 1/a igehelyei,
     amelyek alatt nincs kerek proza vagy „Funkció:” sor, az arany lap (ISTENTISZT-001) mercejevel.
     A merest a `lexikon/[ID]_TUDOMANYOS.md` lapon vegzi (`eszkozok/proza_1a.py`), mert az olvaso
     a lapot latja: a hianyzo adat es a generator kihagyasa is megjelenik."""
@@ -1612,6 +1643,7 @@ def main():
                                                    main=main_agon(args.ag_allapot)))
         tabla_sorok.append(szabaly22_kiejtes_hiany(args.adat))
         tabla_sorok.append(szabaly23_proza_lefedettseg(args.adat))
+        tabla_sorok.append(szabaly24_labjegyzet_definicio(args.adat))
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
