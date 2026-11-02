@@ -268,7 +268,7 @@ Ha a Strong-szám G-vel kezdődik, a forrás Thayer görög szótárának szóci
 
 ## Kiegészítő szabály (v5.2) — idézőjelek a Thayer-szócikkben
 
-Csak a Thayer-szócikkre (G-Strong) vonatkozik. Az idézőjelet a forrás szerint kezeled; a gép az idézőjel-párok számát ellenőrzi.
+Csak a Thayer-szócikkre (G-Strong) vonatkozik. Az idézőjelet a forrás szerint kezeled; a gép az idézőjel-párok számát ellenőrzi. Az indok: a forrás jelölését betűhíven követjük, és a glossza nem idézet.
 
 1. **Glosszára, magyarázatra nem teszel idézőjelet.** A forrás angol jelentés-megadása (a glossza: `to love`, `one`), a fordítási
    magyarázat, a megjegyzés és a szakkifejezés köré a fordításban nem kerül idézőjel; ha a forrásban nincs, te sem teszel oda
