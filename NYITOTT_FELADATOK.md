@@ -855,7 +855,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 | Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` | publikálható | v3 | 2026.08.22 | 5 fő / 8 sor | 3 | tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md |
 | A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | publikálható | v1 | 2026.09.11 | 4 fő / 52 sor | 8 | tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md |
 | Rafeusok/óriás-népek `[ID: HODIT-001]` | publikálható | v3 | 2026.09.10 | 1 fő / 33 sor | 14 | tematikus_lezart/Rafaim_tematikus.md |
-| Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | publikálható | v3 | 2026.09.22 | 5 fő / 22 sor | 0 | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md |
+| Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | publikálható | v4 | 2026.11.02 | 5 fő / 22 sor | 0 | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md |
 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | publikálható | v2 | 2026.09.10 | 1 fő / 9 sor | 1 | tematikus_lezart/Melkizedek_tematikus.md |
 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | publikálható | v4 | 2026.09.10 | 1 fő / 9 sor | 2 | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md |
 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | publikálható | v4 | 2026.09.10 | 5 fő / 42 sor | 0 | tematikus_lezart/Tehom_tematikus.md |
