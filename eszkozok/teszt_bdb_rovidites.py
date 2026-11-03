@@ -63,6 +63,20 @@ class Jelol(unittest.TestCase):
         self.assertEqual(BR.jelol('לְשׁ׳ x', CIMSZO, 'ק'), 'לְשׁ׳ x')     # többbetűs: nem egybetűs rövidítés
 
 
+class Atiras(unittest.TestCase):
+    JAV = {'H0011': [('Sh®°ôl', 'Sheʾôl')]}
+
+    def test_csere_toldalekkal(self):
+        # DT-F162a: részszöveg szerint, a magyar toldalékkal is
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl).', 'H11', self.JAV), 'a Sheʾôlban (Sheʾôl).')
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban', 'H0001', self.JAV), 'a Sh®°ôlban')
+
+    def test_tabla(self):
+        t = BR.atiras_javitasok()
+        self.assertIn(('She®°ôl', 'Sheʾôl'), t.get('H7585', []))
+        self.assertNotIn('H7848', t)          # jelolt_marad: nincs csere
+
+
 class HeberSorrend(unittest.TestCase):
     JAV = {'H7121': [('׳ק י ׳בְּשֵׁם', 'ק׳ בְּשֵׁם י׳'), ('גְּדוֺל בְּקוֺל', 'בְּקוֺל גְּדוֺל')]}
 

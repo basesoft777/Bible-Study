@@ -269,6 +269,29 @@ class Javitas(unittest.TestCase):
         self.assertFalse(HS.tiszta('ᵐ5 ׳ל'))
         self.assertFalse(HS.tiszta('דָּבָר, תּוֺרָה'))
 
+    def test_atiras_szabaly(self):
+        # DT-F162a: „e?®” → „e”, „°” → „ʾ”
+        self.assertEqual(self.fj.atiras_szabaly('Sh®°ôl'), 'Sheʾôl')
+        self.assertEqual(self.fj.atiras_szabaly('She®°ôl'), 'Sheʾôl')
+        self.assertEqual(self.fj.atiras_szabaly('sh®°ôl'), 'sheʾôl')
+        self.assertEqual([m.group(0) for m in self.fj.ATIRAS_ALAK.finditer('in Sh®°ôl). 30° fra-s®nhana')],
+                         ['Sh®°ôl', 's®nhana'])
+
+    def test_atiras_sorok(self):
+        # B3: a „®”-t hordozó minden alak egy sor; javitva csak a BDB.lexicon által igazolt (Seól-család)
+        a = [s for s in self.sorok if s['hiba'] == 'atiras']
+        self.assertEqual(len(set(s['strong'] for s in a)), 33)
+        for s in a:
+            self.assertIn('®', s['forras_alak'])
+            self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
+            self.assertIn(s['allapot'], ('javitva', 'jelolt_marad'))
+            if s['allapot'] == 'javitva':
+                self.assertEqual(s['javitott_alak'], self.fj.atiras_szabaly(s['forras_alak']))
+                self.assertNotRegex(s['javitott_alak'], '[®°]')
+        self.assertEqual(sorted(s['strong'] for s in a if s['allapot'] == 'jelolt_marad'), ['H2609', 'H6573', 'H7848'])
+        self.assertIn(('H7585', 'She®°ôl', 'Sheʾôl'),
+                      [(s['strong'], s['forras_alak'], s['javitott_alak']) for s in a])
+
     def test_minta_mishpat(self):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
                             and self.fj.norm(s['javitott_alak']) == self.fj.norm('מִשְׁפַּט')
@@ -503,8 +526,9 @@ class Determinizmus(unittest.TestCase):
             elso = f.readline()
         ts = elso.split('--ts ')[1].split(' ')[0]
         tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
+        tsa = elso.split('--ts-atiras ')[1].split(' ')[0] if '--ts-atiras ' in elso else ts
         r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
-                            '--ellenoriz'],
+                            '--ts-atiras', tsa, '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

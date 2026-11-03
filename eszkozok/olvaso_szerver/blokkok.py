@@ -740,7 +740,8 @@ def _rovidites(K, html):
     strong = alias['tabla_strong'] if alias else getattr(K, 'strong', '')
     # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
     reszek = _CIMKE_RE.split(str(html))
-    html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(r, strong)
+    html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(
+                                            bdb_rovidites.atiras_javit(r, strong), strong)
                                         for i, r in enumerate(reszek)))
     ki, linkben = [], False
     for i, r in enumerate(_CIMKE_RE.split(html)):
