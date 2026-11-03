@@ -668,7 +668,7 @@ def ell_kivonat(sorok):
     ki = []
     szam = r'(\d+|%s)' % '|'.join(sorted((re.escape(k) for k in SZAMNEV), key=len, reverse=True))
     for s in sorok:
-        if not s.szakasz.startswith('Kivonat') or s.fajta != 'proza' or s.szoveg.startswith('**Mit mutat'):
+        if not s.szakasz.startswith('Kivonat') or s.fajta != 'proza' or s.nyers.rstrip().endswith('<!-- olvasói -->'):
             continue
         for mondat in re.split(r'(?<=[.!?])\s+(?=[A-ZÁÉÍÓÖŐÚÜŰ„])', s.szoveg):
             lxx_m = re.search(r'Septuaginta|LXX|görög fordítás', mondat)

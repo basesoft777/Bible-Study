@@ -374,7 +374,8 @@ class DbhOszlop(unittest.TestCase):
         self.assertNotIn('= action by which', c)
         self.assertIn(' · H8034: ', c)
         h7121 = c.split(' · H8034: ')[0]
-        self.assertEqual(h7121.count('`0065620'), 2)
+        self.assertEqual(h7121.count('`0065620'), 0)                       # 2026-11-03: a 15 jegyű kód nem látszik
+        self.assertEqual(h7121.count('[ⓘ](/szo/H7121)'), 2)               # a két DBH-egység külön glosszával
         if 'fordításra vár' not in c:
             self.assertNotIn('= action by which', c)
 
@@ -600,7 +601,8 @@ class Kulcsszavak(unittest.TestCase):
         self.assertIn(' (kárá) + ', szov)
         self.assertIn(' (sém) | ', szov)
         self.assertIn('„segítségül”', szov)
-        self.assertIn('**Mit mutat ez a rész?**', szov)
+        self.assertIn(LG.OLVASOI_CIMKE, szov)
+        self.assertNotIn('Mit mutat ez a rész', szov)
 
     def test_kapcsolo_nelkul_ures(self):
         self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')

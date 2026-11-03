@@ -47,7 +47,7 @@ KRITERIUMOK = [
     (4, 'nincs nyitott jelölt'),
     (5, 'határ: 0 nyitott kérdés'),
     (6, 'olvasói blokkok, kiejtés, fordítás, 1/a próza'),
-    (7, 'nincs nyitott lektori kérdés'),
+    (7, 'a lektori kör lefutott'),
     (8, 'nincs nyitott DT / ⛔ feladat'),
     (9, 'olvasói kapu: 0 BUKÁS + a felhasználó vizuális átnézése'),
 ]
@@ -417,12 +417,14 @@ def kriterium_7(motivum):
     if sorok is None:
         return uj(NINCS, 'nincs naplok/LEKTOR_%s.tsv (a lektori kérdések még nincsenek generálva)' % motivum, mero,
                   motivum)
-    nyitott = [s for s in sorok if not lektor_zart(s) and not masodik_kiadas(s)]
-    kiadas2 = [s for s in sorok if not lektor_zart(s) and masodik_kiadas(s)]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés, 2. kiadáshoz %d' % (
-              len(nyitott), len(sorok) - len(nyitott) - len(kiadas2), len(kiadas2)), mero, motivum,
-              [s.get('kerdes_id', '') for s in nyitott] + ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in kiadas2],
-              {'n': len(nyitott), 'kiadas2': len(kiadas2)})
+    # DT-F123j (a lépésszám-szabály): a kapu azt mondja ki, hogy a lektori kör lefutott; a megválaszolatlan lektori
+    # kérdés a 2. kiadás bemenete, nem gátol
+    nyitott = [s for s in sorok if not lektor_zart(s)]
+    kiadas2 = [s for s in nyitott if masodik_kiadas(s)]
+    return uj(ZOLD, 'a lektori kör lefutott: %d megválaszolt, a 2. kiadás bemenete %d' % (
+              len(sorok) - len(nyitott), len(nyitott)), mero, motivum,
+              ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in nyitott],
+              {'n': 0, 'kiadas2': len(nyitott)})
 
 
 ATNEZES_TABLA = 'adat/lap_atnezesek.tsv'

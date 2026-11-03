@@ -421,7 +421,8 @@ def _lexikon_blokk(motivum_id, blokk_nev, forras_lista, licenc_lista, hatokor_so
 # Minden generált szakasz és minden szerep-blokk a cím alatt 1–3 mondatos olvasói bevezetőt kap. A mondatok sablonok,
 # az adatból töltve (szám, szó, kiejtés); motívumra szabott kézi értelmezés nincs bennük, fájlnév és szerepkód sem.
 
-OLVASOI_CIMKE = '**Mit mutat ez a rész?**'
+# a címke 2026-11-03-tól nem látszik (a felhasználó észrevétele); a bekezdést a végén álló láthatatlan jel azonosítja
+OLVASOI_CIMKE = '<!-- olvasói -->'
 OLVASOI_SABLON = {
     'tartalom': 'A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő '
                 'az adattáblákból.',
@@ -522,8 +523,13 @@ def motivum_mezo(ctx, mezo):
     return ((_motivumok_cache.get(sorai[0].get('id')) or {}).get(mezo) or '').strip() if sorai else ''
 
 
+def ikon_nelkul(szoveg):
+    """A szöveg elejéről leszedi az ikont/emojit (nem betű, nem számjegy, nem idézőjel/zárójel)."""
+    return re.sub(r'^[^\w"„(]+', '', szoveg or '')
+
+
 def olvasoi_bekezdes(szoveg):
-    return '%s %s' % (OLVASOI_CIMKE, szoveg)
+    return '%s%s' % (szoveg, OLVASOI_CIMKE)   # a jel a sor végén áll: a sor elején álló <!-- … --> HTML-blokk lenne, és a szöveg nyersen jelenne meg
 
 
 def olvasoi(kulcs, **adat):
@@ -616,7 +622,7 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
 jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
-**Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
+**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
 **Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
@@ -718,7 +724,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
         # F121 (DT393): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
         szoveg = ubs_glossza_cella('UBS_DNTG', strong, lexid, entry_kod, glosszak)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
-        tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
+        tokenenkent.setdefault(strong, []).append('%s%s' % (szoveg, jelolt))   # a 15 jegyű kód nem látszik (2026-11-03)
 
     if len(strong_tokens) == 1:
         cellak = tokenenkent.get(strong_tokens[0])
@@ -812,7 +818,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             labjegyzet_jel = '[^%d]' % len(labjegyzetek)
 
         if gerinc:
-            szotari_jelentes = '%s ⓘ%s' % (jelentes_szo, labjegyzet_jel)
+            szotari_jelentes = '%s%s' % (jelentes_szo, labjegyzet_jel)
         else:
             szotari_jelentes = lexikon_jelentes_cella(s)
         ubs_cella = ubs_jelentes_cella(s['id'], s['igehely'], s.get('strong') or '')
@@ -829,7 +835,9 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             # az 1/a „Funkció:” sorába; a táblázat cellája változatlanul a teljes érték
             _c, sep2, utana = funkcio_teljes.partition(': ')
             funkcio_magyarazat = utana if sep2 else re.sub(r'^[^\w"„(]+', '', funkcio_teljes)
-        funkcio_cella = funkcio_cimke if funkcio_teljes else EM_DASH
+        # 2026-11-03: a cellában és az 1/a „Funkció:” sorában nincs vezető ikon/emoji, a szöveg marad
+        funkcio_cella = ikon_nelkul(funkcio_cimke) if funkcio_teljes else EM_DASH
+        funkcio_magyarazat = ikon_nelkul(funkcio_magyarazat)
 
         if gerinc:
             sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
@@ -876,7 +884,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         if s.get('kapcsolodas'):
             reszek.append(SZKZ.olvasoi_indok(s['kapcsolodas']) or s['kapcsolodas'])
         if funkcio_magyarazat:
-            reszek.append('Funkció: %s' % funkcio_magyarazat)
+            reszek.append('\nFunkció: %s' % funkcio_magyarazat)   # új bekezdés: a renderelt nézetben is új sor
         torzs += '\n\n' + '\n'.join(reszek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d igehely-sorát fedi az `elofordulasok.tsv`-ből, '
@@ -894,7 +902,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     ]
     if gerinc:
         hatokor += (' A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja '
-                    '(`%s`, `%s`, `%s`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” '
+                    '(`%s`, `%s`, `%s`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” '
                     'a hely motívumbeli funkcióját (F131, DT272 (d)).'
                     % (SZAKASZ_CIMKE_FAJL, BDB_VERS_JELENTES_FAJL, THAYER_VERS_JELENTES_FAJL))
         for fajl, kulcs in ((SZAKASZ_CIMKE_FAJL, 'projekt_adat'), (BDB_VERS_JELENTES_FAJL, 'BDB'),
@@ -2905,10 +2913,10 @@ def dbh_jelentes_cella(igehely, strong_field):
             for lx in sorted(set(hivatkozasok.get((t, mt), []))):
                 r = jelentesek.get(t, {}).get(lx)
                 if r is None:
-                    cellak.append('`%s` — *(a jelentés nincs a DBH-táblában)*' % lx)
+                    cellak.append('*(a jelentés nincs a DBH-táblában)*')
                     continue
                 szov = ubs_glossza_cella('UBS_DBH', t, lx, EM_DASH, r['glosszak'])
-                cellak.append('`%s` — %s%s' % (lx, szov, '' if mt == vers else ' *(MT: %s)*' % mt))
+                cellak.append('%s%s' % (szov, '' if mt == vers else ' *(MT: %s)*' % mt))
         if cellak:
             van = True
             reszek.append((t, '; '.join(cellak)))
@@ -4806,7 +4814,7 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     body_start = offsets[slot_idx] + len(fejlec)
     body_end = offsets[slot_idx + 1]
     torzs = fajl_szoveg[body_start:body_end].strip('\r\n')
-    if torzs.startswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
+    if torzs.split('\n', 1)[0].endswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
         torzs = torzs.split('\n', 1)[1].strip('\r\n') if '\n' in torzs else ''
     return torzs
 
