@@ -98,34 +98,44 @@ adat/terminologia.tsv (v5) | ts=2026-11-03*
 *proveniencia: scope=a 9 lap #121-listájának TBESH-sorai, összevetve az `adat/glosszak_heber_hu.tsv`-vel (11 677 sor) és a
 `forditasok.tsv` TBESH-soraival | forras=a fenti listák | ts=2026-11-03*
 
-22 egyedi kulcs (23 lap-sor). **Kulcseltérés egy sincs**: a lapok a teljes TBESH-szócikk fordítását keresik
-(`TBESH|<Strong>|<Strong>|teljes|forditas_hu`), a `glosszak_heber_hu.tsv` viszont csak a rövid glosszát adja (más kulcson
-sincs teljes fordítás; a `forditasok.tsv`-ben 1 TBESH-sor van, más Strongra). Mind a 22 valóban hiányzik (N-F161c).
+22 egyedi kulcs (23 lap-sor). **Kulcseltérés egy sincs.** A `TBESH|<Strong>|<Strong>|teljes|forditas_hu` kulcsot csak a
+régi formátumú lap kéri (`_tbesh_konsz_blokk`, `eszkozok/lexikon_general.py`): a HAMART-001, MENNY-001, KIRALY-001,
+HODIT-001 és TEREMT-001 lapja. Az új formátumú lap (ALVIL-001, ISTENTISZT-001, TEREMT-002) héber 1. szerepe
+(`_gerinc_tbesh`) a `glosszak_heber_hu.tsv` rövid magyar glosszáját mutatja, a teljes szócikkre csak a szónézet
+hivatkozása mutat (pl. ALVIL-001: „**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk:
+[szónézet: /szo/H7585]”); az ISTENTISZT-001 H8034 kulcsát a lista hívásként mutatja, a lap nem kéri. A teljes szócikk
+fordítása mind a 22-nél hiányzik (más kulcson sincs; a `forditasok.tsv`-ben 1 TBESH-sor van, más Strongra), de ez a
+szónézetet érinti, a lapot nem (N-F161c).
+
+*Gépi ellenőrzés (F161.13; proveniencia: scope=a 22 kulcs Strongja, `adat/glosszak_heber_hu.tsv`, `fo=igen` és nem üres
+`glossza_hu` | forras=adat/glosszak_heber_hu.tsv | ts=2026-11-03):* mind a 22-höz van ilyen sor; hiányzó egy sincs. A betűs
+kulcsoknál a Strong `fo=igen` sora áll (H1121a → H1121A, H2403a/b → H2403A, H7451a–c → H7451C). A táblázat 3. oszlopa
+ezt a sort mutatja.
 
 | lap(ok) | a lap keresett kulcsa | glosszak_heber_hu (strong, entry_id → glossza_hu) | forditasok.tsv más TBESH-kulcson | ítélet |
 |---|---|---|---|---|
-| HAMART-001 | `TBESH|H0127|H0127|teljes|forditas_hu` | H0127 H0127G → föld: talaj | — | valóban hiányzik (a teljes szócikk) |
-| MENNY-001 | `TBESH|H0430|H0430|teljes|forditas_hu` | H0430 H0430G → Isten | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H0779|H0779|teljes|forditas_hu` | H0779 H0779 → megátkozni | — | valóban hiányzik (a teljes szócikk) |
-| MENNY-001 | `TBESH|H1121a|H1121a|teljes|forditas_hu` | H1121 H1121A → fiú: gyermek (+7) | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H2403a|H2403a|teljes|forditas_hu` | H2403 H2403A → bűn (+3) | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H2403b|H2403b|teljes|forditas_hu` | H2403 H2403A → bűn (+3) | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H2555|H2555|teljes|forditas_hu` | H2555 H2555 → erőszak | — | valóban hiányzik (a teljes szócikk) |
-| KIRALY-001 | `TBESH|H3548|H3548|teljes|forditas_hu` | H3548 H3548 → pap | — | valóban hiányzik (a teljes szócikk) |
-| KIRALY-001 | `TBESH|H3678|H3678|teljes|forditas_hu` | H3678 H3678G → trón | — | valóban hiányzik (a teljes szócikk) |
-| KIRALY-001 | `TBESH|H4467|H4467|teljes|forditas_hu` | H4467 H4467 → királyság | — | valóban hiányzik (a teljes szócikk) |
-| HODIT-001, MENNY-001 | `TBESH|H5303|H5303|teljes|forditas_hu` | H5303 H5303 → nefilek | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H6093|H6093|teljes|forditas_hu` | H6093 H6093 → fáradság | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H6975|H6975|teljes|forditas_hu` | H6975 H6975 → tövis | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H7043|H7043|teljes|forditas_hu` | H7043 H7043 → könnyűnek lenni | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H7451a|H7451a|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H7451b|H7451b|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H7451c|H7451c|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | valóban hiányzik (a teljes szócikk) |
-| HODIT-001 | `TBESH|H7496|H7496|teljes|forditas_hu` | H7496 H7496 → árny | — | valóban hiányzik (a teljes szócikk) |
-| HAMART-001 | `TBESH|H7843|H7843|teljes|forditas_hu` | H7843 H7843 → elpusztítani, megrontani | — | valóban hiányzik (a teljes szócikk) |
-| KIRALY-001 | `TBESH|H8004|H8004|teljes|forditas_hu` | H8004 H8004 → Sálem | — | valóban hiányzik (a teljes szócikk) |
-| ISTENTISZT-001 | `TBESH|H8034|H8034|teljes|forditas_hu` | H8034 H8034 → név | — | valóban hiányzik (a teljes szócikk) |
-| TEREMT-001 | `TBESH|H8415|H8415|teljes|forditas_hu` | H8415 H8415 → mélység | — | valóban hiányzik (a teljes szócikk) |
+| HAMART-001 | `TBESH|H0127|H0127|teljes|forditas_hu` | H0127 H0127G → föld: talaj | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| MENNY-001 | `TBESH|H0430|H0430|teljes|forditas_hu` | H0430 H0430G → Isten | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H0779|H0779|teljes|forditas_hu` | H0779 H0779 → megátkozni | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| MENNY-001 | `TBESH|H1121a|H1121a|teljes|forditas_hu` | H1121 H1121A → fiú: gyermek (+7) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H2403a|H2403a|teljes|forditas_hu` | H2403 H2403A → bűn (+3) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H2403b|H2403b|teljes|forditas_hu` | H2403 H2403A → bűn (+3) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H2555|H2555|teljes|forditas_hu` | H2555 H2555 → erőszak | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| KIRALY-001 | `TBESH|H3548|H3548|teljes|forditas_hu` | H3548 H3548 → pap | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| KIRALY-001 | `TBESH|H3678|H3678|teljes|forditas_hu` | H3678 H3678G → trón | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| KIRALY-001 | `TBESH|H4467|H4467|teljes|forditas_hu` | H4467 H4467 → királyság | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HODIT-001, MENNY-001 | `TBESH|H5303|H5303|teljes|forditas_hu` | H5303 H5303 → nefilek | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H6093|H6093|teljes|forditas_hu` | H6093 H6093 → fáradság | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H6975|H6975|teljes|forditas_hu` | H6975 H6975 → tövis | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H7043|H7043|teljes|forditas_hu` | H7043 H7043 → könnyűnek lenni | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H7451a|H7451a|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H7451b|H7451b|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H7451c|H7451c|teljes|forditas_hu` | H7451 H7451C → nyomorúság: kár (+4) | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HODIT-001 | `TBESH|H7496|H7496|teljes|forditas_hu` | H7496 H7496 → árny | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| HAMART-001 | `TBESH|H7843|H7843|teljes|forditas_hu` | H7843 H7843 → elpusztítani, megrontani | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| KIRALY-001 | `TBESH|H8004|H8004|teljes|forditas_hu` | H8004 H8004 → Sálem | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| ISTENTISZT-001 | `TBESH|H8034|H8034|teljes|forditas_hu` | H8034 H8034 → név | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
+| TEREMT-001 | `TBESH|H8415|H8415|teljes|forditas_hu` | H8415 H8415 → mélység | — | a teljes szócikk hiányzik (szónézet); rövid glossza megvan |
 
 ## 6. Tesztek
 
