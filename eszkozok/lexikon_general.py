@@ -511,10 +511,11 @@ OLVASOI_SZEREP = {
     13: 'A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést '
         '(a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; '
         'utána a ragozott alakok és az igehelyek.',
-    14: 'Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar '
-        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, '
+    # F123.ANTROP2 (olvasói kapu, BELSO): a „gerinc” belső szó helyett olvasói megnevezés
+    14: 'Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcsszavai”) és a Károli magyar '
+        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a motívum szavai állnak, '
         'de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis '
-        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc '
+        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a motívum '
         'szavai, így a magyar olvasó tévesen kapcsolná ide.',
 }
 
@@ -3187,7 +3188,11 @@ def _elso_tagmondat(szoveg, hatar=90):
     if m and m.start() <= hatar:
         s = s[:m.start()]
     elif len(s) > hatar:
-        s = s[:hatar].rstrip() + '…'
+        s = s[:hatar].rstrip()
+        # nyitva maradó zárójel elé vágunk (olvasói kapu ZAROJEL, N-F123f)
+        if s.count('(') > s.count(')'):
+            s = s[:s.rfind('(')].rstrip(' ,;')
+        s = s + '…'
     return s.strip() or EM_DASH
 
 
@@ -3585,6 +3590,8 @@ def bdb_fej_rovid(hu):
     utolsó „: ” utáni rész, a gyök a „√” utáni megjegyzés, a rokon nyelvek a megnevezések sorrendjében."""
     eleje = hu.split('(')[0]
     alap = eleje.split(': ')[-1].strip(' ;,—') if ': ' in eleje else ''
+    # a „; —” utáni alakjegyzék (pl. „— ׳ח 1Móz 25:6 és máshol”) nem az alapjelentés része (N-F123l)
+    alap = alap.split('; —')[0].strip(' ;,—')
     gy = re.search(r'√\s*([^;,)]+)', hu)
     nyelvek = []
     for m in re.finditer(r'(?<![\wáéíóöőúüű])(%s)(?![\wáéíóöőúüű])' % '|'.join(BDB_ROKON_NYELVEK), hu):
@@ -3612,7 +3619,7 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
         reszek_t = []
         if alap:
-            reszek_t.append('alapjelentés: %s' % alap)
+            reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t))
         else:
             # a BDB-fej nem mondja ki az alapjelentést (pl. H7585): a TBESH rövid magyar jelentése, jelölve
             rj, van = rovid_jelentes(t)

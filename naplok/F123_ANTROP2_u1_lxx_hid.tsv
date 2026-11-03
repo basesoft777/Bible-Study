@@ -1,0 +1,63 @@
+# GENERÁLT: naplok/F123_adat_keszito.py | F123 X.A LXX-híd a H5315+H2416 kollokációs helyein (G4151|G4152 × G5590|G5591), ANTROP-001 — mért mezők, ítélet nélkül; kollokáció: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-11-03T08:44Z | csatorna=cli | 2026-11-03T08:44Z
+igehely	lxx_vers	a_csoport_az_lxx_ben	b_csoport_az_lxx_ben	gorog_par	allapot	proveniencia
+1Kir 1:29	1 Kings 1:29 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Kir 1:29 | forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-03T08:44Z | csatorna=cli
+1Kir 20:32	1 Kings 21:32 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Kir 20:32 | forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 1:20	Genesis 1:20 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 1:20 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 1:21	Genesis 1:21 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 1:21 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=32 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 1:24	Genesis 1:24 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 1:24 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 1:30	Genesis 1:30 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 1:30 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=34 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 2:7	Genesis 2:7 (karoli_ok=egyező)	—	G5590	egy tag	előfordulás	scope=range:1Móz 2:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 2:19	Genesis 2:19 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 2:19 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=41 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 9:5	Genesis 9:5 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 9:5 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=26 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 9:10	Genesis 9:10 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 9:10 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=28 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 9:12	Genesis 9:12 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 9:12 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=33 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 9:15	Genesis 9:15 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 9:15 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=33 | ts=2026-11-03T08:44Z | csatorna=cli
+1Móz 9:16	Genesis 9:16 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Móz 9:16 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=31 | ts=2026-11-03T08:44Z | csatorna=cli
+1Sám 1:26	1 Samuel 1:26 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Sám 1:26 | forras=LXX_OS/1-samuel.tsv+TAGNT_kivonat.tsv | n=21 | ts=2026-11-03T08:44Z | csatorna=cli
+1Sám 17:55	nincs LXX-vers	—	—	nincs	ÚJ	scope=range:1Sám 17:55 | forras=LXX_OS/1-samuel.tsv+TAGNT_kivonat.tsv | n=0 | ts=2026-11-03T08:44Z | csatorna=cli
+1Sám 20:3	1 Samuel 20:3 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:1Sám 20:3 | forras=LXX_OS/1-samuel.tsv+TAGNT_kivonat.tsv | n=45 | ts=2026-11-03T08:44Z | csatorna=cli
+1Sám 25:26	1 Samuel 25:26 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Sám 25:26 | forras=LXX_OS/1-samuel.tsv+TAGNT_kivonat.tsv | n=41 | ts=2026-11-03T08:44Z | csatorna=cli
+1Sám 25:29	1 Samuel 25:29 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:1Sám 25:29 | forras=LXX_OS/1-samuel.tsv+TAGNT_kivonat.tsv | n=34 | ts=2026-11-03T08:44Z | csatorna=cli
+2Kir 2:2	2 Kings 2:2 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Kir 2:2 | forras=LXX_OS/2-kings.tsv+TAGNT_kivonat.tsv | n=31 | ts=2026-11-03T08:44Z | csatorna=cli
+2Kir 2:4	2 Kings 2:4 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Kir 2:4 | forras=LXX_OS/2-kings.tsv+TAGNT_kivonat.tsv | n=31 | ts=2026-11-03T08:44Z | csatorna=cli
+2Kir 2:6	2 Kings 2:6 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Kir 2:6 | forras=LXX_OS/2-kings.tsv+TAGNT_kivonat.tsv | n=30 | ts=2026-11-03T08:44Z | csatorna=cli
+2Kir 4:30	2 Kings 4:30 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Kir 4:30 | forras=LXX_OS/2-kings.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-03T08:44Z | csatorna=cli
+2Sám 4:9	2 Samuel 4:9 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Sám 4:9 | forras=LXX_OS/2-samuel.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-03T08:45Z | csatorna=cli
+2Sám 11:11	2 Samuel 11:11 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Sám 11:11 | forras=LXX_OS/2-samuel.tsv+TAGNT_kivonat.tsv | n=56 | ts=2026-11-03T08:45Z | csatorna=cli
+2Sám 14:19	2 Samuel 14:19 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:2Sám 14:19 | forras=LXX_OS/2-samuel.tsv+TAGNT_kivonat.tsv | n=65 | ts=2026-11-03T08:45Z | csatorna=cli
+3Móz 5:2	Leviticus 5:2 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:3Móz 5:2 | forras=LXX_OS/leviticus.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-03T08:45Z | csatorna=cli
+3Móz 11:10	Leviticus 11:10 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:3Móz 11:10 | forras=LXX_OS/leviticus.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-03T08:45Z | csatorna=cli
+3Móz 11:46	Leviticus 11:46 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:3Móz 11:46 | forras=LXX_OS/leviticus.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-03T08:45Z | csatorna=cli
+5Móz 4:9	Deuteronomy 4:9 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:5Móz 4:9 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=42 | ts=2026-11-03T08:45Z | csatorna=cli
+5Móz 30:6	Deuteronomy 30:6 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:5Móz 30:6 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=31 | ts=2026-11-03T08:45Z | csatorna=cli
+Bír 16:30	Judges (Alexandrinus A-text) 16:30 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Bír 16:30 | forras=LXX_OS/judges.tsv+TAGNT_kivonat.tsv | n=48 | ts=2026-11-03T08:45Z | csatorna=cli
+Ez 14:20	Ezekiel 14:20 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Ez 14:20 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-03T08:45Z | csatorna=cli
+Ez 47:9	Ezekiel 47:9 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Ez 47:9 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=43 | ts=2026-11-03T08:45Z | csatorna=cli
+Jer 38:16	Jeremiah (LXX) 45:16 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jer 38:16 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=26 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 3:20	Job (LXX) 3:20 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 3:20 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 9:21	Job (LXX) 9:21 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 9:21 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 10:1	Job (LXX) 10:1 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 10:1 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 12:10	Job (LXX) 12:10 (karoli_ok=egyező)	G4151	G5590	GÖRÖG PÁR AZ LXX-BEN	ÚJ	scope=range:Jób 12:10 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 27:2	Job (LXX) 27:2 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 27:2 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 33:18	Job (LXX) 33:18 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 33:18 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 33:20	Job (LXX) 33:20 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 33:20 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 33:22	Job (LXX) 33:22 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 33:22 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 33:28	Job (LXX) 33:28 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 33:28 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 33:30	Job (LXX) 33:30 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 33:30 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-03T08:45Z | csatorna=cli
+Jób 36:14	Job (LXX) 36:14 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jób 36:14 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Jón 4:3	Jonah 4:3 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Jón 4:3 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=18 | ts=2026-11-03T08:45Z | csatorna=cli
+Jón 4:8	Jonah 4:8 (karoli_ok=egyező)	G4151	G5590	GÖRÖG PÁR AZ LXX-BEN	ÚJ	scope=range:Jón 4:8 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-03T08:45Z | csatorna=cli
+Péld 3:22	Proverbs 3:22 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Péld 3:22 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-03T08:45Z | csatorna=cli
+Péld 11:30	Proverbs 11:30 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Péld 11:30 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-03T08:45Z | csatorna=cli
+Sir 3:58	Lamentations 3:58 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Sir 3:58 | forras=LXX_OS/lamentations.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 7:6	Psalms (LXX) 7:6 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 7:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=24 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 26:9	Psalms (LXX) 25:9 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 26:9 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 42:3	Psalms (LXX) 41:3 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 42:3 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 49:19	Psalms (LXX) 48:19 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 49:19 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 56:14	Psalms (LXX) 55:14 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 56:14 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=21 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 66:9	Psalms (LXX) 65:9 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 66:9 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 74:19	Psalms (LXX) 73:19 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 74:19 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 78:50	Psalms (LXX) 77:50 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 78:50 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 84:3	Psalms (LXX) 83:3 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 84:3 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 88:4	Psalms (LXX) 87:4 (karoli_ok=mt_szamozas_kovetes)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 88:4 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:45Z | csatorna=cli
+Zsolt 143:3	Psalms (LXX) 142:3 (karoli_ok=egyező)	—	G5590	egy tag	ÚJ	scope=range:Zsolt 143:3 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-03T08:45Z | csatorna=cli

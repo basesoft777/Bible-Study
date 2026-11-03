@@ -94,5 +94,38 @@ class Halok(unittest.TestCase):
         self.assertIn('"a Seol" hatalmából', k)  # az idézőjel nem vész el (nem csv-olvasás)
 
 
+class Szoparmod(unittest.TestCase):
+    """--kollokacio (F123.ANTROP2.2): a pár minden tagja (vagy rokon alakja) egy versben."""
+
+    def test_rokon_terkep(self):
+        self.assertEqual(T.rokon_terkep('G4151=G4152, G5590=G5591'),
+                         {'G4151': {'G4151', 'G4152'}, 'G5590': {'G5590', 'G5591'}})
+
+    def test_halo_par(self):
+        vs = {'1Thessz 5:23': {'G4151', 'G5590'},   # főnévpár
+              'Júd 1:19': {'G4151', 'G5591'},       # rokon alakkal
+              'Luk 1:46': {'G5590'},                # csak az egyik tag
+              '1Móz 2:7': {'H5315', 'H2416'}}       # a héber pár
+        rokon = T.rokon_terkep('G4151=G4152,G5590=G5591')
+        t = T.halo_par([('G4151', 'G5590'), ('H5315', 'H2416')], rokon, vs)
+        self.assertEqual(sorted(t), ['1Móz 2:7', '1Thessz 5:23', 'Júd 1:19'])
+        self.assertEqual(t['Júd 1:19'], ['G4151', 'G5591'])
+        self.assertEqual(set(T.halo_par([('G4151', 'G5590')], {}, vs)), {'1Thessz 5:23'})
+
+    def test_parok_gerinc_elembol(self):
+        d = tempfile.mkdtemp()
+        try:
+            elof = os.path.join(d, 'e.tsv')
+            with open(elof, 'w', encoding='utf-8') as f:
+                f.write('id\tigehely\tgerinc_elem\tstrong\n'
+                        'X-001\tLuk 1:46\tG4151+G5590\tG5590\n'
+                        'X-001\t1Móz 2:7\tH5315+H2416\tH5315+H2416\n'
+                        'X-001\tZsid 4:12\tG4151+G5590\tG4151+G5590\n'
+                        'Y-001\tMt 1:1\tG1+G2\tG1\n')
+            self.assertEqual(T.parok('X-001', elof), [('G4151', 'G5590'), ('H5315', 'H2416')])
+        finally:
+            shutil.rmtree(d)
+
+
 if __name__ == '__main__':
     unittest.main()

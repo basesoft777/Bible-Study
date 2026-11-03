@@ -1,3 +1,4 @@
+<!-- ARCHÍV: lexikon/ANTROP-001_TORZSCIKK.md @ a972767c · F123 ANTROP-001 új cikk, U3 (X.M5) · 2026-11-03 · nem forrás, nem szerkesztendő -->
 # ANTROP-001 — Pneuma/pszükhé megkülönböztetés
 
 *Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](ANTROP-001_TUDOMANYOS.md).*
