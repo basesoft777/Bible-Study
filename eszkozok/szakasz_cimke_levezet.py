@@ -42,8 +42,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 ROOT = G.ROOT
 CIMKE_TSV = os.path.join(ROOT, LG.SZAKASZ_CIMKE_FAJL)
-CIMKE_FEJ = ['szotar', 'strong', 'szakasz', 'lexikon_jelentes_szam', 'cimke_hu', 'proveniencia', 'megjegyzes']
-KI_FEJ = ['id', 'igehely', 'szotar', 'strong', 'jelentes_szam', 'levezetett_szakasz', 'kezi_szakasz', 'egyezik',
+CIMKE_FEJ = ['szotar', 'strong', 'bdb_id', 'szakasz', 'lexikon_jelentes_szam', 'cimke_hu', 'proveniencia', 'megjegyzes']
+KI_FEJ = ['id', 'igehely', 'szotar', 'strong', 'jelentes_szam', 'bdb_id', 'levezetett_szakasz', 'kezi_szakasz', 'egyezik',
           'jelzes', 'jelzes_reszlet', 'cimke_hu_javaslat', 'teendo', 'proveniencia']
 TAGOLATLAN = 'tagolatlan'
 SZAM_RE = re.compile(r'^\d+(?:\.[0-9a-zα-ω]+)*$')
@@ -141,10 +141,17 @@ def ala_esik(a, b):
 
 def szotar_utvonalak(adat, szotar, strong):
     """A szócikk szakaszútvonalai (`cim`/`fej` nélkül)."""
+    return [k[1] for k in szotar_kulcsok(adat, szotar, strong)]
+
+
+def szotar_kulcsok(adat, szotar, strong):
+    """A szakaszok kulcsai (bdb_id, utvonal), `cim`/`fej` nélkül (F123.BDBGER: a BDB-útvonal csak a szócikken belül
+    egyedi; a Thayer kulcsa ('', utvonal))."""
     kulcs = {'BDB': 'bdb_sz', 'Thayer': 'th_sz'}.get(szotar)
     if not kulcs:
         return []
-    return [r['utvonal'] for r in adat[kulcs].get(strong, []) if r['utvonal'] not in ('cim', 'fej')]
+    return [(r.get('bdb_id', '') if szotar == 'BDB' else '', r['utvonal'])
+            for r in adat[kulcs].get(strong, []) if r['utvonal'] not in ('cim', 'fej')]
 
 
 def tagolatlan_szocikk(adat, szotar, strong):
@@ -161,7 +168,7 @@ def peldak(adat, szotar, strong, vers):
 
 
 def levezet_sor(adat, sor, lexhiv):
-    """(levezetett szakasz vagy None, [(jelzés, részlet)])."""
+    """(levezetett szakaszkulcs (bdb_id, utvonal) vagy None, [(jelzés, részlet)])."""
     szotar, strong = sor.get('lexikon_szotar', ''), sor.get('lexikon_entry_id', '')
     jsz = (sor.get('jelentes_szam') or '').strip()
     if not (szotar and strong and jsz):
@@ -177,34 +184,37 @@ def levezet_sor(adat, sor, lexhiv):
         return None, jelzes + [('J2', 'alternatíva vagy két szám: „%s”' % kulcs)]
     if szotar == 'TBESG':
         if (szotar, strong, kulcs) in lexhiv:
-            return kulcs, jelzes
+            return ('', kulcs), jelzes
         return None, jelzes + [('J4', 'a TBESG-kulcs nincs a lexikon_hivatkozasok.tsv-ben: %s' % kulcs)]
     if not SZAM_RE.match(kulcs):
         return None, jelzes + [('J4', 'a jel nem számozás („%s”), nincs útvonala' % kulcs)]
     szegm = kulcs.split('.')
-    jeloltek = sorted({u for u in szotar_utvonalak(adat, szotar, strong) if vag(u).split('/')[1:] == szegm})
+    jeloltek = sorted({k for k in szotar_kulcsok(adat, szotar, strong) if vag(k[1]).split('/')[1:] == szegm})
     if not jeloltek:
         return None, jelzes + [('J4', '„%s”: nincs ilyen útvonal a %s %s szócikkben' % (kulcs, szotar, strong))]
+    if len({k[0] for k in jeloltek}) > 1:
+        # F123.BDBGER: a számozás a Strong több BDB-szócikkében is áll; a jelentésszám nem mondja meg, melyikben
+        return None, jelzes + [('J2', 'több szócikk: %s' % ', '.join('%s %s' % k for k in jeloltek))]
     if len(jeloltek) > 1 and szotar == 'BDB':
         torzsek = (adat.get('macula') or macula_torzsek)(strong).get(sor.get('igehely', ''), set())
         binyanok = {TORZS_BINYAN.get(t, '?%s' % t) for t in torzsek}
-        szukitett = [u for u in jeloltek if u.split('/')[0] in binyanok]
+        szukitett = [k for k in jeloltek if k[1].split('/')[0] in binyanok]
         if len(szukitett) == 1 and len(binyanok) == 1:
             jeloltek = szukitett
             jelzes.append(('I', 'binyan a Macula-héber morfológiájából (V%s)' % next(iter(torzsek))))
         else:
             return None, jelzes + [('J2', 'több binyan: %s; a vers morfológiája (Macula): %s'
-                                    % (', '.join(jeloltek), ', '.join(sorted(binyanok)) or 'nincs igei token'))]
+                                    % (', '.join(k[1] for k in jeloltek), ', '.join(sorted(binyanok)) or 'nincs igei token'))]
     if len(jeloltek) > 1:
-        return None, jelzes + [('J2', 'több útvonal: %s' % ', '.join(jeloltek))]
+        return None, jelzes + [('J2', 'több útvonal: %s' % ', '.join(k[1] for k in jeloltek))]
     ut = jeloltek[0]
     pl = peldak(adat, szotar, strong, sor.get('igehely', ''))
     kulon = sorted({vag(p) for p in pl})
     if len(kulon) > 1 and not all(ala_esik(a, b) or ala_esik(b, a) for a in kulon for b in kulon):
         jelzes.append(('J2', 'a szótár példái két útvonalra mutatnak: %s' % ', '.join(kulon)))
     for p in kulon:
-        if not (ala_esik(p, ut) or ala_esik(ut, p)):
-            jelzes.append(('J1', 'a szótár példahelye %s, a levezetett %s (egyik sem esik a másik alá)' % (p, vag(ut))))
+        if not (ala_esik(p, ut[1]) or ala_esik(ut[1], p)):
+            jelzes.append(('J1', 'a szótár példahelye %s, a levezetett %s (egyik sem esik a másik alá)' % (p, vag(ut[1]))))
     return ut, jelzes
 
 
@@ -221,11 +231,13 @@ def elso_glossza(szoveg):
     return s.strip(' .:—–-')
 
 
-def szakasz_hu(adat, szotar, strong, ut):
-    """A szakasz magyar szövege: BDB a `bdb_szakasz_hu.tsv`-ből, Thayer a #142 `sz<n>` soraiból; None, ha nincs."""
+def szakasz_hu(adat, szotar, strong, k):
+    """A szakasz (kulcs: (bdb_id, utvonal)) magyar szövege: BDB a `bdb_szakasz_hu.tsv`-ből, Thayer a #142 `sz<n>`
+    soraiból; None, ha nincs."""
+    ut = k[1]
     if szotar == 'BDB':
         for r in adat['bdb_sz'].get(strong, []):
-            if r['utvonal'] == ut:
+            if r.get('bdb_id', '') == k[0] and r['utvonal'] == ut:
                 hu = adat['bdb_hu'].get((strong, r['sorszam'])) or {}
                 return hu.get('szoveg_hu') or None
         return None
@@ -277,13 +289,13 @@ def ellenoriz(motivum_id, adat=None, elofordulasok=None, lexhiv=None, ts=None):
         teendo = ''
         cimke = ''
         if ut and kezi:
-            egyezik = 'igen' if vag(ut) == vag(kezi) else 'nem'
+            egyezik = 'igen' if (ut[0], vag(ut[1])) == (kezi[0], vag(kezi[1])) else 'nem'
             if egyezik == 'nem':
-                jelzes.append(('J8', 'a táblában álló kézi leképezés: %s' % kezi))
+                jelzes.append(('J8', 'a táblában álló kézi leképezés: %s' % ' '.join(x for x in kezi if x)))
         elif ut:
-            meglevo = adat['cimke'].get((szotar, strong, ut))
+            meglevo = adat['cimke'].get((szotar, strong) + ut)
             if meglevo is not None and meglevo.get('lexikon_jelentes_szam'):
-                jelzes.append(('J8', 'a %s szakasz sora más kulcsra mutat: „%s”' % (ut, meglevo['lexikon_jelentes_szam'])))
+                jelzes.append(('J8', 'a %s szakasz sora más kulcsra mutat: „%s”' % (ut[1], meglevo['lexikon_jelentes_szam'])))
             elif meglevo is not None:
                 teendo, cimke = 'kulcs_potlas', meglevo.get('cimke_hu', '')
             else:
@@ -297,7 +309,8 @@ def ellenoriz(motivum_id, adat=None, elofordulasok=None, lexhiv=None, ts=None):
             teendo = ''
         ki.append({
             'id': sor['id'], 'igehely': sor['igehely'], 'szotar': szotar, 'strong': strong,
-            'jelentes_szam': sor.get('jelentes_szam', ''), 'levezetett_szakasz': ut or '', 'kezi_szakasz': kezi or '',
+            'jelentes_szam': sor.get('jelentes_szam', ''), 'bdb_id': (ut or kezi or ('', ''))[0],
+            'levezetett_szakasz': ut[1] if ut else '', 'kezi_szakasz': kezi[1] if kezi else '',
             'egyezik': egyezik, 'jelzes': ','.join(sorted({j for j, _ in jelzes})),
             'jelzes_reszlet': ' · '.join(r for _, r in jelzes), 'cimke_hu_javaslat': cimke, 'teendo': teendo,
             'proveniencia': 'scope=%s %s (%s %s „%s”) | forras=szakasz_cimke_levezet.py%s | ts=%s'
@@ -307,13 +320,13 @@ def ellenoriz(motivum_id, adat=None, elofordulasok=None, lexhiv=None, ts=None):
 
 
 def irasok(ki):
-    """{(szotar, strong, szakasz): (teendő, kulcs, címke)} a jelzés nélküli sorokból; ugyanarra a szakaszra két
+    """{(szotar, strong, bdb_id, szakasz): (teendő, kulcs, címke)} a jelzés nélküli sorokból; ugyanarra a szakaszra két
     különböző kulcs vagy teendő: ValueError (nem választ)."""
     out = {}
     for r in ki:
         if not r['teendo']:
             continue
-        k = (r['szotar'], r['strong'], r['levezetett_szakasz'])
+        k = (r['szotar'], r['strong'], r['bdb_id'], r['levezetett_szakasz'])
         ertek = (r['teendo'], LG.kutatoi_kulcs(r['jelentes_szam'])[0], r['cimke_hu_javaslat'])
         if k in out and out[k] != ertek:
             raise ValueError('ugyanarra a szakaszra két írás: %s → %s / %s' % (k, out[k], ertek))
@@ -334,30 +347,30 @@ def ir_tabla(ut, irando, ts):
     if fej != CIMKE_FEJ:
         raise SystemExit('a szotar_szakasz_cimke.tsv fejléce eltér: %s' % fej)
     uj, potolt = list(sorok), set()
-    idx = {tuple(s.split('\t')[:3]): i for i, s in enumerate(sorok) if i}
+    idx = {tuple(s.split('\t')[:4]): i for i, s in enumerate(sorok) if i}
     for k, (teendo, kulcs, cimke) in sorted(irando.items()):
         if teendo == 'kulcs_potlas':
             i = idx[k]
             mezok = uj[i].split('\t')
-            if mezok[3]:
-                raise SystemExit('megállás: a %s sor kulcsa nem üres („%s”)' % (k, mezok[3]))
-            mezok[3] = kulcs
-            mezok[6] = ('%s; ' % mezok[6] if mezok[6] else '') + \
+            if mezok[4]:
+                raise SystemExit('megállás: a %s sor kulcsa nem üres („%s”)' % (k, mezok[4]))
+            mezok[4] = kulcs
+            mezok[7] = ('%s; ' % mezok[7] if mezok[7] else '') + \
                 'lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=%s' % ts
             uj[i] = '\t'.join(mezok)
             potolt.add(i)
         elif teendo == 'uj_sor':
             if k in idx:
                 raise SystemExit('megállás: a %s sor már létezik' % (k,))
-            uj.append('\t'.join([k[0], k[1], k[2], kulcs, cimke,
+            uj.append('\t'.join([k[0], k[1], k[2], k[3], kulcs, cimke,
                                  'scope=%s %s %s | forras=szakasz_cimke_levezet.py (gépi, DT439) | ts=%s'
-                                 % (k[0], k[1], k[2], ts), '']))
+                                 % (k[0], k[1], k[3], ts), '']))
     for i, s in enumerate(sorok):
         if i not in potolt and uj[i] != s:
             raise SystemExit('megállás: az eredeti %d. sor megváltozott volna' % i)
     for i in potolt:
         a, b = sorok[i].split('\t'), uj[i].split('\t')
-        if [x for j, x in enumerate(a) if j not in (3, 6)] != [x for j, x in enumerate(b) if j not in (3, 6)]:
+        if [x for j, x in enumerate(a) if j not in (4, 7)] != [x for j, x in enumerate(b) if j not in (4, 7)]:
             raise SystemExit('megállás: a pótolt %d. sorban más mező is változott volna' % i)
     with open(ut, 'w', encoding='utf-8', newline='') as f:
         f.write(sorveg.join(uj) + sorveg)
