@@ -3312,6 +3312,8 @@ def bdb_fej_rovid(hu):
     utolsó „: ” utáni rész, a gyök a „√” utáni megjegyzés, a rokon nyelvek a megnevezések sorrendjében."""
     eleje = hu.split('(')[0]
     alap = eleje.split(': ')[-1].strip(' ;,—') if ': ' in eleje else ''
+    # a „; —” utáni alakjegyzék (pl. „— ׳ח 1Móz 25:6 és máshol”) nem az alapjelentés része (N-F123l)
+    alap = alap.split('; —')[0].strip(' ;,—')
     gy = re.search(r'√\s*([^;,)]+)', hu)
     nyelvek = []
     for m in re.finditer(r'(?<![\wáéíóöőúüű])(%s)(?![\wáéíóöőúüű])' % '|'.join(BDB_ROKON_NYELVEK), hu):

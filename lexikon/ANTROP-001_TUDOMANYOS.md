@@ -782,7 +782,7 @@ A kétnyelvű szótár (SECE) a chaj szónak 13 megfelelőjét adja a másik bib
 
 A szó eredete és nyelvi háttere.<!-- olvasói -->
 
-**H2416 — חַי (chaj)** · alapjelentés: élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י (cháj)‎ 3:20 és máshol, חֵי (ché) Ámós 8:14, összesen 15-ször — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+**H2416 — חַי (chaj)** · alapjelentés: élő, eleven — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 **H5315 — נֶ֫פֶשׁ (nefes)** · alapjelentés: lélek *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
