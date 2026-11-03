@@ -33,9 +33,9 @@ bevallás), a teljes kulcs-egyediség (szkript nélkül), a #609, a repón kív�
 | # | az ellenőr szavai | kezelés |
 |---|---|---|
 | 1 | CI E5 HIBA 2. A napló két címsora „TÖRLÉS-SZÁNDÉKOS:” jelölés nélkül törlődött | a napló a PR-ban új fájl: a main-hez mért CI-ben (PR-mód) nincs törölt címsor, a lokális futás 0 HIBA; a jelölés az F161.11 üzenetében mégis szerepel |
-| 2 | Kisbetűs tulajdonnevek, 4 sor. „adáma”, „benjámin”, „ráfa” ×2. A kapuk ezt nem jelzik | F161.11: kézi javítás (Adáma, Benjámin, Ráfa ×2), a megjegyzésben jelölve; a kapu és a prompt pótlása: N-F161d |
-| 3 | G1944 / 001900001001000 (ἐπάρατος), 2 sor. Olyan bejegyzés kapott fordítást, amelyet a LEXV2_2 kizárt, és az azonos forrású kezi definíciótól eltér | F161.11: a definíció a kezi sor szavával („átkozott állapotra vonatkozó”); hogy a lap ezt a kulcsot keresi-e: N-F161d |
-| 4 | Angol köznév a `{L:…}`-jelölésben, 6 sor. A prompt v2 és a G2 kivétel ezt átengedi | a jelölést egyetlen renderelő sem kezeli (a régi `{L:Noah…}` sor is nyers): megjelenítési kérdés, N-F161d; a fordítás nem változott |
+| 2 | Kisbetűs tulajdonnevek, 4 sor. „adáma”, „benjámin”, „ráfa” ×2. A kapuk ezt nem jelzik | F161.11: kézi javítás (Adáma, Benjámin, Ráfa ×2), a megjegyzésben jelölve; a kapu és a prompt pótlása: N88 |
+| 3 | G1944 / 001900001001000 (ἐπάρατος), 2 sor. Olyan bejegyzés kapott fordítást, amelyet a LEXV2_2 kizárt, és az azonos forrású kezi definíciótól eltér | F161.11: a definíció a kezi sor szavával („átkozott állapotra vonatkozó”); hogy a lap ezt a kulcsot keresi-e: N88 |
+| 4 | Angol köznév a `{L:…}`-jelölésben, 6 sor. A prompt v2 és a G2 kivétel ezt átengedi | a jelölést egyetlen renderelő sem kezeli (a régi `{L:Noah…}` sor is nyers): megjelenítési kérdés, N88; a fordítás nem változott |
 | 5 | Helyesírás. „alárendeltted” (31569. sor) | F161.11: „alárendelted” |
 | 6 | A prompt v2 verziónaplójából hiányzik a v2-bejegyzés | F161.11: pótolva (a fejlécben, a PROMPT-KEZDET előtt: a kérés szövege nem változik) |
 

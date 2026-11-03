@@ -1046,16 +1046,31 @@ def _e19_lekepezett_szakaszok(szotar, strong, jelentes_szam, cache):
     if 'cimke' not in cache:
         ut = os.path.join(ADAT, 'szotar_szakasz_cimke.tsv')
         cache['cimke'] = dict_sorok(ut) if os.path.exists(ut) else []
-    csucsok = [r.get('szakasz') for r in cache['cimke']
+    csucsok = [(r.get('bdb_id') or '', r.get('szakasz')) for r in cache['cimke']
                if r.get('szotar') == szotar and _e19_strong(r.get('strong')) == strong
                and (r.get('lexikon_jelentes_szam') or '').strip() == (jelentes_szam or '').strip()]
-    if len(csucsok) != 1 or not csucsok[0]:
+    if len(csucsok) != 1 or not csucsok[0][1]:
         return None
     szak = _e19_szakaszlista(szotar, strong, cache)
     if szak is None:
         return None
-    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucsok[0])}
+    # F123.BDBGER: a BDB-szakasz kulcsa szócikk + útvonal; a szócikk sorai a `bdb_szakaszok.tsv` szerint
+    bdb_id, csucs = csucsok[0]
+    sajat = _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache) if szotar == 'BDB' else None
+    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucs)
+               and (sajat is None or x['sorszam'] in sajat)}
     return keszlet or None
+
+
+def _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache):
+    """A Strong `bdb_id` szócikkének sorszámai (int) a `bdb_szakaszok.tsv`-ből (F123.BDBGER)."""
+    if 'bdb_szocikk' not in cache:
+        ut = os.path.join(ADAT, 'bdb_szakaszok.tsv')
+        idx = {}
+        for r in (dict_sorok(ut) if os.path.exists(ut) else []):
+            idx.setdefault((r.get('strong'), r.get('bdb_id')), set()).add(int(r['sorszam']))
+        cache['bdb_szocikk'] = idx
+    return cache['bdb_szocikk'].get((strong, bdb_id), set())
 
 
 def _e19_szakaszlista(szotar, strong, cache):
@@ -2184,7 +2199,41 @@ def e28_generalt_nezet_egyezes(fajlok):
                  'a commitolt nézet eltér az újragenerálttól (PARDES_DATUM=%s). '
                  'commitolt: %s | generált: %s. Javítás: %s'
                  % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
+        _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba)
     return talalatok
+
+
+def _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba):
+    """B4: a helyben frissítő út (`--ir`: a meglévő lapot olvassa be és frissíti)
+    bájtra ugyanazt adja, mint a nulláról generálás. A bemenet a commitolt lap
+    CRLF-es példánya -- a core.autocrlf=true munkapéldánya ilyen --, a generátor
+    ugyanazzal a PARDES_DATUM-mal fut, a kimenet a repón kívül marad. Az eltérés
+    generátorhiba: a lapot kézzel igazítani tilos (TEREMT-002, 1A.11, SABLON.6)."""
+    import shutil
+    import tempfile
+    tmp = tempfile.mkdtemp(prefix='e28h_')
+    try:
+        ut = os.path.join(tmp, *relut.split('/'))
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'wb') as f:
+            f.write(_lf(commitolt).replace('\n', '\r\n').encode('utf-8'))
+        kod, hibakimenet = _e28_general_futtat(cel, azonosito, datum, tmp)
+        if kod != 0:
+            hiba(relut, 0, 'a helyben frissítő út nem futott le (kilépési kód %s): %s'
+                 % (kod, hibakimenet.strip()[-200:]))
+            return
+        with open(ut, 'rb') as f:
+            helyben = f.read().decode('utf-8')
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    el = _e28_elso_elteres(generalt, helyben)
+    if el:
+        i, sa, sb = el
+        hiba(relut, i + 1,
+             'a helyben frissítő út (--ir, CRLF-es munkapéldányon) eltér a nulláról generálttól '
+             '(PARDES_DATUM=%s). nulláról: %s | helyben: %s. Javítás: a generátorban '
+             '(eszkozok/lexikon_general.py run), nem a lapon'
+             % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb)))
 
 
 SZABALYOK_FUGGVENYEI['E28'] = e28_generalt_nezet_egyezes
