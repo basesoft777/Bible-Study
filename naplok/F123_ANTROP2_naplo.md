@@ -10,7 +10,7 @@ A kért modell (a brief `modell` mezője): `opus`; a session tényleges modellje
 
 ## U1. Gépi lépések és teljesség-mérés
 
-Napló: `naplok/F123_teljesseg_ANTROP-001.md` (F123.ANTROP2.2). Az eszköz szópár-módot kapott (`--kollokacio --rokon`), mert a motívum azonossága két szó együttállása. Röviden: a szópár-háló 71 verse közül 11 a görög pár (5 E, 6 J), 60 a héber nefes + chajjá (DT503); a Károli- (1 072) és a szótár-háló (1 357) eltéréseiben a görög pár egyszer sem áll; E-vers, amelyet egyik háló sem ad: 0. A TR/kritikai vizsgálat: az E-helyeken eltérés nincs, három J-szó csak a TR-ben áll (1Pét 1:22, Luk 9:55, 9:56). Az X.A-hoz mérve: új hely 0, gerinc-eltérés nincs.
+Napló: `naplok/F123_teljesseg_ANTROP-001.md` (F123.ANTROP2.2). Az eszköz szópár-módot kapott (`--kollokacio --rokon`), mert a motívum azonossága két szó együttállása. Röviden: a szópár-háló 71 verse közül 10 a görög pár (4 E, 6 J), 61 a héber nefes + chajjá (1 E: 1Móz 2:7; 60: DT503); a Károli- (1 072) és a szótár-háló (1 357) eltéréseiben a görög pár egyszer sem áll; E-vers, amelyet egyik háló sem ad: 0. A TR/kritikai vizsgálat: az E-helyeken eltérés nincs, három J-szó csak a TR-ben áll (1Pét 1:22, Luk 9:55, 9:56). Az X.A-hoz mérve: új hely 0, gerinc-eltérés nincs.
 
 ## U2. Döntések átvétele és a nyitott jelöltek elbírálása (F123.ANTROP2.3)
 
