@@ -126,5 +126,72 @@ class Valos(unittest.TestCase):
                     self.assertLessEqual(len(re.sub(r'<[^>]+>', '', x['szoveg']).strip()), 8, x['sorszam'])
 
 
+class SzakaszEgyAzEgyhez(unittest.TestCase):
+    """F123.BDBILL (DT-F123y): a szakaszonként fordított Strong `sz<n>` sorai igazolt 1:1-ben a szakasztábla soraihoz."""
+
+    @staticmethod
+    def _szak(*szovegek):
+        import szakasz_bemenet as sb
+        return [{'sorszam': i + 1, 'jel': '', 'utvonal': '', 'szoveg': t, 'hash': sb.sha1(t)} for i, t in enumerate(szovegek)]
+
+    @staticmethod
+    def _sz(n, hu, hash_):
+        return {'jelentes_szam': 'sz%d' % n, 'forditas_hu': hu, 'forras_hash': hash_}
+
+    def test_igazolt(self):
+        szak = self._szak('1 animal:', 'a. in general')
+        sz11, ok = hi.szakasz_egyezes([self._sz(1, '1 állat:', szak[0]['hash']), self._sz(2, 'a. általában', szak[1]['hash'])], szak)
+        self.assertIsNone(ok)
+        self.assertEqual(sz11, {1: '1 állat:', 2: 'a. általában'})
+
+    def test_hash_elteres_nem_igazolt(self):
+        szak = self._szak('1 animal:', 'a. in general')
+        sz11, ok = hi.szakasz_egyezes([self._sz(1, '1 állat:', szak[0]['hash']), self._sz(2, 'a. általában', 'x')], szak)
+        self.assertIsNone(sz11)
+        self.assertIn('forras_hash', ok)
+
+    def test_szakaszszam_elteres_nem_igazolt(self):
+        szak = self._szak('1 animal:', 'a. in general')
+        sz11, ok = hi.szakasz_egyezes([self._sz(1, '1 állat:', szak[0]['hash'])], szak)
+        self.assertIsNone(sz11)
+        self.assertIn('szakaszszám', ok)
+
+    def test_szakasz_sorok_kezdet(self):
+        # a hu_kezdet a közös összefűző szövegében (egy szóköz) áll, a széli szóköz nélkül
+        sorok = [{'sorszam': '1'}, {'sorszam': '2'}]
+        ki = hi.szakasz_sorok(sorok, {1: 'abc', 2: ' de'})
+        ossz = ' '.join(['abc', ' de'])
+        self.assertEqual([(k, h, ossz[p:p + len(t)], t) for k, h, p, t in ki],
+                         [('szakasz', 'sz1', 'abc', 'abc'), ('szakasz', 'sz2', 'de', 'de')])
+
+
+class SzakaszValos(unittest.TestCase):
+    """A javítás a mai adaton: H2416 (BDB2718, a 13–19. sor korábban elcsúszott) és H1419 (a 3. sorban az 1.1 jel, a 4.
+    `elakad` volt)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.sorok = dict(((r[0], r[1]), r) for r in hi.general('teszt', {'H2416', 'H1419'})[0])
+        cls.ford = hi.forditasok()
+
+    def _sz(self, st, n):
+        return self.ford[st]['szakaszonkent'][n].strip()
+
+    def test_h2416_13_19(self):
+        self.assertIsNone(self.ford['H2416']['nem_igazolt'])
+        for n in range(13, 20):
+            r = self.sorok[('H2416', str(n))]
+            self.assertEqual((r[7], r[8], r[11]), ('szakasz', 'sz%d' % n, self._sz('H2416', n)), n)
+        self.assertEqual(self.sorok[('H2416', '13')][11], '1 állat, mint élő, tevékeny lény:')
+        self.assertTrue(self.sorok[('H2416', '14')][11].startswith('a. általában'))
+        self.assertTrue(self.sorok[('H2416', '19')][11].startswith('4 újjáéledés'))
+
+    def test_h1419_3_4(self):
+        r3, r4 = self.sorok[('H1419', '3')], self.sorok[('H1419', '4')]
+        self.assertTrue(r3[11].startswith('1 méretben és kiterjedésben'), r3[11][:40])
+        self.assertTrue(r4[11].startswith('2 számban'), r4[11][:40])
+        self.assertEqual((r3[7], r4[7]), ('szakasz', 'szakasz'))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -16,6 +16,12 @@ Illesztés Strongonként:
   4. a magyar szakasz a sor horgonyától a következő horgonyig tart; a jelölő nélküli sor (fej utáni bekezdés, cím, fej, alcímszó)
      `jelolo_nelkul`: a szövege az előző szakaszban van (`szoveg_hu` üres), a cím és a fej a magyar szöveg elejét kapja.
 
+Szakaszonként fordított Strong (F123.BDBILL, DT-F123y): az 1–4. lépés nem fut, ha a `sz<n>` sorok a szakasztábla soraival
+igazoltan 1:1-ben megfeleltethetők (`szakasz_egyezes`: a felhasznált `sz<n>` sorszámok halmaza = a Strong szakaszainak sorszámai,
+és minden `sz<n>` `forras_hash`-e = a szakasz javított szövegének SHA-1-e, `szakasz_bemenet.szakaszok`; a hash a `jel`-et is
+fedi). Ilyenkor a sor magyar szövege a saját `sz<n>` sora, a kategória `szakasz`, a horgony `sz<n>`. Ha a megfeleltetés nem
+igazolható, a horgonyos illesztés marad, és a `proveniencia` megnevezi az okot (`1:1 nem igazolt: …`).
+
 A Strong-szintű mérés a kiinduló számhoz (355 / 89 / 230, 2026-10-16, `manual`) a kapu szigorú illesztőjével (`_illeszt`, az első nem
 talált kötelező jelölőnél megáll) a tábla jelölősorozatán: `illeszkedik` / `tagolatlan` (nincs jelölő) / `elakad`; és a horgonnyal
 kiegészítve: `illeszkedik` / `horgonnyal` (minden jelölős sor illeszkedik vagy horgonnyal) / `elakad` / `tagolatlan`.
@@ -172,13 +178,35 @@ def forditasok(ut=None):
         szoveg, tipus, hasznalt = sb.strong_magyar_sorok(ds)
         if not szoveg:
             continue
+        sz11, ok = None, None
         if tipus == 'szakasz':
             szak = sb.szakaszok(st)
             h = sb.sha1(sb.nezet(szak)) if szak else ''
+            sz11, ok = szakasz_egyezes(hasznalt, szak)
         else:
             h = hasznalt[0].get('forras_hash', '')
-        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h}
+        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h, 'szakaszonkent': sz11, 'nem_igazolt': ok}
     return ki
+
+
+def szakasz_egyezes(hasznalt, szak):
+    """A `sz<n>` sorok 1:1-es megfeleltetése a szakasztábla soraival (F123.BDBILL, DT-F123y). hasznalt: a közös összefűző
+    `sz<n>` sorai (sorszám szerint); szak: `szakasz_bemenet.szakaszok(strong)`. -> ({sorszam: forditas_hu}, None), ha minden
+    szakasznak pontosan egy `sz<n>` sora van, és mindegyik `forras_hash`-e a szakasz javított szövegének SHA-1-e (a hash a
+    `jel`-et és az útvonal szövegét is fedi); különben (None, az ok)."""
+    import szakasz_bemenet as sb
+    if not szak:
+        return None, 'nincs a szakasztáblában'
+    sorszamok = [sb.sorszam_jelentesbol(r.get('jelentes_szam')) for r in hasznalt]
+    if len(set(sorszamok)) != len(sorszamok):
+        return None, 'ismétlődő sz<n>'
+    forras = dict((x['sorszam'], x) for x in szak)
+    if set(sorszamok) != set(forras):
+        return None, 'szakaszszám: %d sz<n> / %d szakasz' % (len(sorszamok), len(forras))
+    elteres = [n for n, r in zip(sorszamok, hasznalt) if r.get('forras_hash') != forras[n]['hash']]
+    if elteres:
+        return None, 'forras_hash eltér: %s' % ', '.join('sz%d' % n for n in sorted(elteres)[:5])
+    return dict(zip(sorszamok, (r['forditas_hu'] for r in hasznalt))), None
 
 
 def strong_illeszt(sorok, hu):
@@ -275,9 +303,23 @@ def strong_illeszt(sorok, hu):
     return eredmeny, szigoru, horgonyos
 
 
-def general(ts, csak=None):
+def szakasz_sorok(sorok, sz11):
+    """Az igazolt 1:1-es Strong sorai: [(kategória, horgony, hu_kezdet, szoveg_hu)]; a `hu_kezdet` a közös összefűző szövegében
+    (a `sz<n>` sorok egy szóközzel) áll."""
+    ki, p = [], 0
+    for x in sorok:
+        n = int(x['sorszam'])
+        hu = sz11[n]
+        sz = hu.strip()
+        ki.append(('szakasz', 'sz%d' % n, p + (len(hu) - len(hu.lstrip())), sz))
+        p += len(hu) + 1
+    return ki
+
+
+def general(ts, csak=None, egy_az_egyhez=True):
     """A tábla sorai a mai bemenetből; `csak` (Strong-halmaz) megadásakor csak ezeké — ugyanaz a kód, ugyanaz a kimenet,
-    mint a teljes generálás e Strongokra eső sorai (a Strongonkénti illesztés független)."""
+    mint a teljes generálás e Strongokra eső sorai (a Strongonkénti illesztés független). `egy_az_egyhez=False`: a
+    DT-F123y előtti viselkedés (csak a mérésnek, F123.BDBILL)."""
     tab = collections.OrderedDict()
     with open(TABLA, encoding='utf-8', newline='') as f:
         s = f.read().split('\n')
@@ -296,6 +338,19 @@ def general(ts, csak=None):
             nincs.append(st)
             continue
         sorok, hu = tab[st], ford[st]['forditas_hu']
+        sz11 = ford[st]['szakaszonkent'] if egy_az_egyhez else None
+        if sz11 is not None:
+            stat[('szigoru', 'szakasz')] += 1
+            stat[('horgonyos', 'szakasz')] += 1
+            for x, (kat, horgony, p, szoveg_hu) in zip(sorok, szakasz_sorok(sorok, sz11)):
+                sor_stat[kat] += 1
+                ki.append([st, x['sorszam'], x['bdb_id'], x.get('szakasz', ''), x['resz'], x['utvonal'], x['jel'], kat, horgony,
+                           str(p), str(len(szoveg_hu)), szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
+                           'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc; %s 1:1) | ts=%s' % (st, horgony, ts)])
+            continue
+        jeloles = ''
+        if egy_az_egyhez and ford[st]['nem_igazolt']:
+            jeloles = '; szakaszos fordítás, 1:1 nem igazolt: %s' % ford[st]['nem_igazolt']
         eredmeny, szigoru, horgonyos = strong_illeszt(sorok, hu)
         stat[('szigoru', szigoru)] += 1
         stat[('horgonyos', horgonyos)] += 1
@@ -317,7 +372,7 @@ def general(ts, csak=None):
             ki.append([st, x['sorszam'], x['bdb_id'], x.get('szakasz', ''), x['resz'], x['utvonal'], x['jel'], kat, horgony,
                        '' if p is None else str(p), '' if p is None else str(len(szoveg_hu)),
                        szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
-                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc) | ts=%s' % (st, ts)])
+                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc%s) | ts=%s' % (st, jeloles, ts)])
     return ki, stat, sor_stat, nincs, len(ford)
 
 
