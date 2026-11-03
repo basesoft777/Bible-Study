@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-03",
-   "commit": "b9b38bff"
+   "commit": "8fa5edf9"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4381,6 +4381,16 @@
      "🟢"
     ],
     "sor": 615
+   },
+   {
+    "id": "DT581",
+    "feladat": "B3 (a BDB forrás-átírási hibája a forrásjavító rétegben; KEZI_FOLTOK felmérés; 2026-11-03)",
+    "kerdes": "A DictBDB.json latin betűs átírásaiban a „®” (ᵉ) és a „°” (ʾ) torz kód (pl. „Sh®°ôl”, 33 Strong); a H7585-nél a jóváhagyott fordítást írták át kézzel (4e2cfc27), mert a `bdb_forras_javitas.tsv`-nek nem volt átírás-osztálya. Hol és hogyan javuljon?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 616
    }
   ],
   "javasolt": [],
