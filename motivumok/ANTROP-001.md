@@ -142,7 +142,7 @@ A teológiában régi vita, hogy az ember két részből (test és lélek) vagy 
 
 ### Nyitott kérdések és séma-korlátok
 
-1. **Párhuzam vagy megkülönböztetés.** Mária énekében (Luk 1:46–47) a két szó a héber költészet párhuzamos sorában áll, ahol a második sor gyakran ugyanazt mondja más szóval. A lap a helyet a motívumban tartja, mert a két szónak saját igéje van; a Fil 1:27 „egy lélekben, egy érzéssel” párosát viszont kizárja, mert ott a két szó ugyanannak az egységnek két megnevezése. A két döntés határa értelmezési kérdés.
+1. **Párhuzam vagy megkülönböztetés.** Mária énekében (Luk 1:46–47) a két szó a héber költészet párhuzamos sorában áll, ahol a második sor gyakran ugyanazt mondja más szóval. A lap a helyet a motívumban tartja, mert a két szónak saját igéje van: a lélek magasztal, a szellem örvendez. Hogy a mellérendelt, párhuzamos tagok mikor számítanak megkülönböztetésnek, az értelmezési kérdés, és a hasonló szerkezetű helyek elbírálását is érinti.
 2. **A héber előzmény.** A nefes és a rúah néhány ószövetségi versben együtt áll (Jób 7:11; Ézs 26:9), a Septuaginta egy ilyen helyen a két görög szót is egymás mellé teszi (Jób 12:10). Nyitott, hogy a héber szópár érdemel-e külön feldolgozást, amely a motívum ószövetségi hátterét kiterjesztené.
 
 <!-- RÉS-VÉGE: modszertan -->

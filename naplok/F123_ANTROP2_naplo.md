@@ -36,7 +36,13 @@ A szótári gerinc hozzárendelése (X.K; javaslat, ugyanígy): Thayer G4151 2. 
 
 ### U2 — a válasz
 
-*Az orkesztrátor válasza ide kerül; a végrehajtás addig a javaslat szerint áll (F123.ANTROP2.3), eltérő döntésnél a `naplok/F123_ANTROP2_u3_adat.py` módosításával újrafut.*
+Az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03), három üzenetben (DT-F123k, DT-F123l):
+
+- **(1)–(3) elfogadva**, a Fil 1:27 = (b): elutasítva („párhuzamos tagok, a két szó a közösség egységét fejezi ki”, a Thayer G4151 2. és G5590 2. alapján), de **határkérdés, a felhasználóé**: határkártya a `naplok/HATAR_ANTROP-001.md` K1-ben (kézi K1, nem a `hatar-ellenor` kimenete), a `naplok/LEKTOR_ANTROP-001.tsv`-ben és az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben; (b) a javasolt opció. A Kiadóra az orkesztrátor teszi fel az U4 után. A próza a Fil 1:27-et egy mondatban, a Kivonat kizárt példájaként említi.
+- A Luk 9:55–56 elutasításának oka: nem egy mondat; a csak-TR állás külön megjegyzés (a TR-mérce szerint nem kizáró ok) — F123.ANTROP2.7.
+- A rúah+nefes blokk (5 vers) a P2 bővítés jelöltje, a felhasználóé: N-F123i.
+- **(B) a szótári gerinc** jóváhagyva (a hét szakasz, a címkék, a soronkénti entry, a `strong` a DT502 szerint): a D50 jelentéstartomány-választás, az ALVIL-001 DT417/DT418 mintájára.
+- **E19:** a G4152/1, G4152/3.b, G5591/b fordításáig a lapon az angol Thayer-szöveg áll „(fordításra vár)” jelöléssel; az E19-ben szűk, adatvezérelt kivétel (`eszkozok/ellenorzes/e19_forditasra_var.tsv`; a felhasználó javaslata: „forditásig lehet angol is szerintem”). Ez váltja az előző (a) döntést (külön fordítási feladat, piros CI). A fordítás: N-F123g, a #7 következő adagjának elején.
 
 ## U3. A próza (F123.ANTROP2.3)
 

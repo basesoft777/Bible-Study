@@ -234,13 +234,13 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Fil 1:27 | a tanulmány felvetése[^k3] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az „egy lélekben, egy érzéssel” két párhuzamos tagja a közösség egységét mondja ki, a görögben a πνεῦμα és a ψυχή itt egymás szinonimája (a Thayer szerint a ψυχή helyén a „szív” is állhatna). Határeset: a lap a módszertani részben megnevezi. |
+| Fil 1:27 | a tanulmány felvetése[^k3] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az „egy lélekben, egy érzéssel” két párhuzamos tagja a közösség egységét fejezi ki, nem az ember két belső rétegét különbözteti meg. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja. Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak. |
 
 **Egyéb** (19)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Luk 9:55-56 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. A két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs. |
+| Luk 9:55-56 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. Megjegyzés: a két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs; a Textus Receptus mércéje szerint ez önmagában nem kizáró ok. |
 | ApCsel 4:31-32 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k5] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a 31. versben a Szent Lélek tölti be a hívőket, a 32. versben a hívők sokaságának „szíve-lelke egy vala”; a két vers két külön mondat. |
 | ApCsel 20:23-24 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k6] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a Szent Lélek bizonyságtétele és Pál élete („az én életem sem drága nékem”) két külön mondatban áll. |
 | 2Kor 1:22-23 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k7] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „léleknek zálogát” és az „Istent hívom bizonyságul az én lelkemre” két külön mondat. |
@@ -264,7 +264,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 [^k1]: forrás: `kollokacio G4151 G5590 | ‹K2›`
 [^k2]: forrás: `kollokacio G4151 G5590 | ‹K2›`
-[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)`
+[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · indoklás (nyers): A két szó nem megkülönböztető szerepben áll: az „egy lélekben, egy érzéssel” két párhuzamos tagja a közösség egységét fejezi ki, nem az ember két belső rétegét különbözteti meg. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja (adat/thayer_szakaszok.tsv, G4151 -/2/-, G5590 -/2/-). Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak.
 [^k4]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k5]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k6]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
@@ -1125,7 +1125,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ### Nyitott kérdések és séma-korlátok
 
-1. **Párhuzam vagy megkülönböztetés.** Mária énekében (Luk 1:46–47) a két szó a héber költészet párhuzamos sorában áll, ahol a második sor gyakran ugyanazt mondja más szóval. A lap a helyet a motívumban tartja, mert a két szónak saját igéje van; a Fil 1:27 „egy lélekben, egy érzéssel” párosát viszont kizárja, mert ott a két szó ugyanannak az egységnek két megnevezése. A két döntés határa értelmezési kérdés.
+1. **Párhuzam vagy megkülönböztetés.** Mária énekében (Luk 1:46–47) a két szó a héber költészet párhuzamos sorában áll, ahol a második sor gyakran ugyanazt mondja más szóval. A lap a helyet a motívumban tartja, mert a két szónak saját igéje van: a lélek magasztal, a szellem örvendez. Hogy a mellérendelt, párhuzamos tagok mikor számítanak megkülönböztetésnek, az értelmezési kérdés, és a hasonló szerkezetű helyek elbírálását is érinti.
 2. **A héber előzmény.** A nefes és a rúah néhány ószövetségi versben együtt áll (Jób 7:11; Ézs 26:9), a Septuaginta egy ilyen helyen a két görög szót is egymás mellé teszi (Jób 12:10). Nyitott, hogy a héber szópár érdemel-e külön feldolgozást, amely a motívum ószövetségi hátterét kiterjesztené.
 
 ## 8. Irodalom és idézés

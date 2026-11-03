@@ -617,6 +617,47 @@ class E19Teszt(unittest.TestCase):
         self.assertEqual(len(t), 1)
 
 
+class E19KivetelTeszt(unittest.TestCase):
+    """F123.ANTROP2 (DT-F123l): az `e19_forditasra_var.tsv` szuk kivetele -- csak a listazott kulcsra hat."""
+
+    LEX = (
+        "strong\tszotar\tentry_id\tjelentes_szam\tszoveg_en\tforrasfajl\n"
+        "G4152\tThayer\tG4152\t1\tx\tk\n"
+        "G5591\tThayer\tG5591\tb\tx\tk\n"
+    )
+    FEJ = "szotar\tstrong\tentry_id\tjelentes_szam\tmezo\tforras_hash\tforditas_hu\tallapot\n"
+    KIV_FEJ = "# kivetel\nszotar\tstrong\tentry_id\tjelentes_szam\tnf\tindok\n"
+
+    def _futtat(self, kivetel_sorok, ford_sorok=()):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/lexikon_hivatkozasok.tsv', self.LEX)
+            _ir(gy, 'adat/forditasok.tsv', self.FEJ + ''.join(ford_sorok))
+            _ir(gy, 'eszkozok/ellenorzes/e19_forditasra_var.tsv', self.KIV_FEJ + ''.join(kivetel_sorok))
+            return [(x.szint, x.fajl, x.sor) for x in SZ.e19_szotari_forditas_hiany(['adat/lexikon_hivatkozasok.tsv'])]
+
+    def test_listan_van_nem_hiba(self):
+        t = self._futtat(["Thayer\tG4152\tG4152\t1\tN-F1a\ti\n"])
+        self.assertIn(('FIGYELMEZTETES', 'adat/lexikon_hivatkozasok.tsv', 2), t)
+        self.assertNotIn(('HIBA', 'adat/lexikon_hivatkozasok.tsv', 2), t)
+
+    def test_nincs_listan_hiba(self):
+        # a G5591/b nincs a listan: HIBA marad (a kivetel csak a listazott kulcsra hat)
+        t = self._futtat(["Thayer\tG4152\tG4152\t1\tN-F1a\ti\n"])
+        self.assertIn(('HIBA', 'adat/lexikon_hivatkozasok.tsv', 3), t)
+        self.assertEqual(len([x for x in t if x[0] == 'HIBA']), 1)
+
+    def test_listan_de_mar_leforditva_elavult(self):
+        t = self._futtat(["Thayer\tG4152\tG4152\t1\tN-F1a\ti\n", "Thayer\tG5591\tG5591\tb\tN-F1a\ti\n"],
+                         ["Thayer\tG4152\tG4152\t1\tforditas_hu\th\tf\topus\n"])
+        self.assertIn(('FIGYELMEZTETES', 'eszkozok/ellenorzes/e19_forditasra_var.tsv', 3), t)  # a G4152/1 kivetel-sora
+        self.assertNotIn('HIBA', [x[0] for x in t])
+
+    def test_mas_jelentes_szam_nem_fedett(self):
+        # a kulcs jelentes_szam-ra pontos: a G4152/3.b kivetel a G4152/1-et nem menti
+        t = self._futtat(["Thayer\tG4152\tG4152\t3.b\tN-F1a\ti\n", "Thayer\tG5591\tG5591\tb\tN-F1a\ti\n"])
+        self.assertIn(('HIBA', 'adat/lexikon_hivatkozasok.tsv', 2), t)
+
+
 class E19SzakaszTeszt(unittest.TestCase):
     """F145 (DT-F142d, 2b): a `teljes` hivatkozast a Strong osszes szotari szakaszat lefedo `sz<n>` sorok is fedik."""
 
