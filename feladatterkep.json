@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-03",
-   "commit": "8fa5edf9"
+   "commit": "8e9fa117"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5017,6 +5017,30 @@
     ],
     "sor": 592,
     "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F123ga",
+    "feladat": "#123 BDBGER (a BDB-gerinc szócikk-összevonása, az N-F123m második fele; 2026-11-03)",
+    "kerdes": "A `lexikon_general.py` BDB-gerince a szakaszokat csak útvonal szerint (`-/1/-`) azonosította, így egy több BDB-szócikkű Strong (`bdb_id`: I., II., arámi) különböző szócikkeinek azonos útvonalú szakaszai, és mindegyik szócikk feje, egy szakaszba folytak össze (H2416: az `1` a BDB2718, BDB2721 és BDB9522 szövegét fűzte egybe; a 2.30-ban 1 583 Strong érintett, ebből 133-ban a fejen kívül is). Mi legyen a szakasz kulcsa, és hogyan álljon a lapon?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 617,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F123gb",
+    "feladat": "#123 BDBGER (kapu a BDB-gerinc szócikk-összevonására; 2026-11-03)",
+    "kerdes": "A régi összevonást egyik kapu sem jelezte. Milyen kapu, és milyen fokozatú?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 618,
+    "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    }
   ],
