@@ -18,7 +18,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v4, 2026.09.10)
 
 **Antropológia**
-- Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 7 fő előfordulás / 11 igehely-sor — publikálható (v3, 2026.08.22)
+- Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 7 fő előfordulás / 11 igehely-sor — publikálható (v4, 2026.11.03)
 
 **Eszkatológia**
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
@@ -152,7 +152,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Hádész (Seol) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v3, 2026.11.03), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
 
-**Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v3, 2026.08.22), 7 fő előfordulás.
+**Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v4, 2026.11.03), 7 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ANTROP-001.md`-ből fűződik ide)*
 
 **A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v1, 2026.09.11), 4 fő előfordulás.
