@@ -111,7 +111,7 @@ A motívum 11 igehelyen fordul elő, 6 bibliai könyvben (1 ószövetségi, 10 �
 | [Zsid 4:12](#ige-zsid-4-12) | szívnek; léleknek — πνεύματος (pneumatosz); ψυχῆς (pszükhész) | G4151: az ember szelleme: az élet és a gondolkodás elve · Thayer 2; G5590: *(nincs hozzárendelés)*[^10] | szétválasztás | Peshat/Sod | G4151+G5590 | G4151: szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) · G5590: belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)*; élet [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^10] |
 | [Júd 1:19](#ige-júd-1-19) | érzékiek; Szent Lélek — πνεῦμα (pneuma); ψυχικοί (pszükhikoi) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^11] | figyelmeztetés | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: nem szellemi; világi; természetes [ⓘ](/szo/G5591) | magas · tartalom-alapú[^11] |
 
-[^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H5315 — BDB-példa: a BDB a 2. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 47, 52); ez a kutatói hozzárendelés (2 → 2) alá esik, a címke a finomabb útvonalé · H2416 — a BDB a verset az 1., 1.d szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 196, 436), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre
+[^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H5315 — BDB-példa: a BDB a 2. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 47, 52); ez a kutatói hozzárendelés (2 → 2) alá esik, a címke a finomabb útvonalé · H2416 — a BDB a verset az 1.d, BDB2721 1 szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 196, 436), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre
 [^2]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`)
 [^3]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`)
 [^4]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — a Thayer saját példahelye: Thayer 4.a (`adat/thayer_vers_jelentes.tsv` sorszam 217) · G5591 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „b” → Thayer b, `adat/szotar_szakasz_cimke.tsv`)
@@ -597,7 +597,9 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** I. חַי melléknév élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י‎ 3:20 és máshol, חֵי Ámós 8:14 összesen 15-ször (Ew § 329 status constructusként magyarázza, de Ges § 93, R 7 n és mások összevont status absolutusként); nőnemű חַיָּה‎ 1Móz 1:20 és máshol; többes szám חַיִּים Zsolt 116:9 és máshol; — II. [חַי] főnév [hímnemű] rokonság (arab: életbe vágó kötelékekkel egyesült családok csoportja RS K 36-40 Dr Sm 119), többes szám suffixummal חַיַּי‎ 1Sám 18:18, helytelenül pontozva az életem értelmezéssel RV, de olv. חַיִּי rokonságom, We Ki Dr RS SS RVm VB. A משׁפחת אבי glossza magyarázza We (Klo olvasata וּ אַחַי). I. חַיָּה nőnemű főnév élőlény, állat (Zendzsirli: vadállat DHM Sendsch. 34) — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 8:17 és máshol; status constructus חַיַּת Ézs 57:10 és máshol; régi esetvégződéssel (költői) חַיְתוֺ‎ 1Móz 1:24; Zsolt 50:10; 79:2; 104:11; 104:20; Ézs 56:9 (a versben kétszer); Sof 2:14; suffixummal חַיָּתִי Zsolt 143:3 stb.; többes szám חַיּוֺת‎ 3Móz 14:4 összesen 12-szer. — II. חַיָּה nőnemű főnév (si vera lectio) közösség ( = a II. חַי nőneműje Nö ZMG, 1886, 176 szerint) — וְחַיַּת מְּלִשְׁתִּים חֹנָה és a filiszteusok egy közössége (azaz szövetséges családok csoportja, amely együtt portyázott) táborozott 2Sám 23:13 ( = מַחֲנֵה‎ 1Krón 11:15); talán Zsolt 68:11 is (vö. alább) Megjegyzés. — Több más hely kétséges: וַיֵּאָסְפוּ פְלִשְׁתִּים לַחַיָּה‎ 2Sám 23:11 csapatba gyűltek, vagy csapatonként (RV, de egyik fordítás sem indokolt: Bö Ew We Klo Dr helyesen olvassa לֶ֫חְיָה Leµi felé, vö. Bír 15:9, a szó véletlenül kimaradt a || 1Krón 11:13-ban Dr); חַיָּתְךָ יָָֽשְׁבוּבָהּ Zsolt 68:11 csapatod lakott benne (Thes SS RVm Hi Ri Che, de ᵑ6 ᵐ5 Jeromos Pe: (élő) teremtményeid, a népről; Hup ua., a fürjekre vonatkoztatva; valószínűtlen); אַלתִּתֵּן לְחַיַּת נֶפֶשׁ תּוֺרֶךָ חַיַּת עֲנִיֶּיךָ אַלתִּשְׁכַּח לָנֶ֫צַח‎ 74:19 ne add gerlicéd lelkét a vadállatoknak, nyomorultjaid életéről ne feledkezz meg mindörökre: RV Hi Pe Bae Sch így fordítják, a חית szónak a két tagmondatban különböző jelentést adva, az előbbi archaikus nőnemű status absolutus Ges § 80, 2. R. 2; a szöveg kétségtelenül romlott, olvasandó talán למות Schr Ri, לחית helyett, vagy לשׁחת Kroch; Gr e kettő bármelyikét; Che bármelyiket, vagy még inkább לחרב. חַיִּים hímnemű főnév 5Móz 28:66 többes szám elvont emphaticus élet, <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7** és máshol; חַיִּין Jób 24:22 (arámizmus Ges § 87 (1) a); חַיֵּי‎ 1Móz 23:1 és máshol; suffixummal חַיַּי‎ 47:9 és máshol; חַיָּ֑יְכִי Zsolt 103:4; (Ges § 91 (2) R. 2), stb.; — חַי melléknév élő (bibliai héber ua.); — חֵיוָה חֵיוָא, nőnemű főnév vadállat (bibliai héber II. חַיָה); — status absolutus אָ֯ Dán 4:13, הָ֯ 7:5. 7:7; emphaticus חֵיוְתָא‎ 7:6. 7:11. 7:19, 23, és (gyűjtőnévként) 4:11-12, 5:21; status constructus (gyűjtőnévként) חֵיוַת בָּרָא‎ 2:38; 4:9, 18, 20, 22, 29; többes szám status absolutus חֵיוָן‎ 7:3, emphaticus חֵיוָתָא‎ 7:7, 12. 7:17.
+**BDB2716 · I. חַי** *(a H2416 1. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** I. חַי melléknév élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י‎ 3:20 és máshol, חֵי Ámós 8:14 összesen 15-ször (Ew § 329 status constructusként magyarázza, de Ges § 93, R 7 n és mások összevont status absolutusként); nőnemű חַיָּה‎ 1Móz 1:20 és máshol; többes szám חַיִּים Zsolt 116:9 és máshol; —
 
 <details>
 <summary>1.a – 1.c (3 szakasz)</summary>
@@ -621,16 +623,62 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 </details>
 
-- **`1`**
+**BDB2717 · II. חַי** *(a H2416 2. BDB-szócikke a 7-ből)*
 
-  > állat, mint élő, tevékeny lény: 1 élet: testi 1Móz 27:46; 2Móz 1:14 (P), 5Móz 28:66 (a versben kétszer); 2Sám 11:11; 15:21; Ézs 38:12; Jer 8:23; JSir 3:53, 58; Ez 7:13; Jób 3:20; 7:7; 9:21; 10:12; 24:22; Zsolt 7:6; 17:14; 21:5; 26:9; 31:11; 34:13; 63:4; 64:2; 66:9; 88:4; 103:4; Péld 18:21; Préd 2:17; 6:12; 7:13; 9:9 (a versben kétszer); 10:19; Jón 2:7; 4:3, 8; חַיֵּי שׂרה Sára élete 1Móz 23:1(P) ח ׳שְׁנֵי valakinek életének évei 2Sám 19:35; 1Móz 23:1; 25:7, 17; 47:8-9, (a versben kétszer); 47:28; 2Móz 6:16, 18, 20 (P); לח ׳שָׁנָה‎ 1Móz 7:11 (P); שְׁנוֺת חַיִּים Péld 3:2; 4:10; 9:11; ח ׳יְמֵי valakinek életének napjai Préd 2:3; 5:17; 5:19; 6:12; 8:15; 9:9; כֹּל יְמֵי <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 3:14, 17 (J) 5Móz 4:9; 6:2; 16:3; 17:19; Józs 1:5; 4:14 (D) 1Sám 1:11; 7:15; 1Kir 5:1; 11:34; 15:5-6, 2Kir 25:29-30, = Jer 52:33-34, Ézs 38:20 (Ezékiás költeménye) Zsolt 23:6; 27:4; 128:5; Péld 31:12; ׳בּח valakinek életében vagy élete során 1Móz 27:46 (P) 3Móz 18:18 (H) Bír 16:30; 2Sám 1:23; 18:18; Zsolt 49:19; 63:5; 104:33; 146:2; Jób 10:1; Préd 3:12; 9:3; ח ׳רוּחַ‎ 1Móz 6:17; 7:15 (P); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> רוּחִי Ézs 38:16 (Ezékiás költeménye); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> בשׂרים Péld 14:30; נִשְׁמַת (רוּחַ) <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7**; 7:22 (J). 1 Istenről: status absolutus <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Dán 4:31, emphaticus חַיָא‎ 6:21. 27; emberek, többes szám emphaticus חַיַיָא az élők 2:30; 4:14.
+**A szócikk feje (nyelvi háttér).** II. [חַי] főnév [hímnemű] rokonság (arab: életbe vágó kötelékekkel egyesült családok csoportja RS K 36-40 Dr Sm 119), többes szám suffixummal חַיַּי‎ 1Sám 18:18, helytelenül pontozva az életem értelmezéssel RV, de olv. חַיִּי rokonságom, We Ki Dr RS SS RVm VB. A משׁפחת אבי glossza magyarázza We (Klo olvasata וּ אַחַי).
+
+**BDB2718 · I. חַיָּה (chajjá)** *(a H2416 3. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** I. חַיָּה nőnemű főnév élőlény, állat (Zendzsirli: vadállat DHM Sendsch. 34) — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 8:17 és máshol; status constructus חַיַּת Ézs 57:10 és máshol; régi esetvégződéssel (költői) חַיְתוֺ‎ 1Móz 1:24; Zsolt 50:10; 79:2; 104:11; 104:20; Ézs 56:9 (a versben kétszer); Sof 2:14; suffixummal חַיָּתִי Zsolt 143:3 stb.; többes szám חַיּוֺת‎ 3Móz 14:4 összesen 12-szer. —
 
 <details>
-<summary>4 (1 szakasz)</summary>
+<summary>1 – 4 (7 szakasz)</summary>
 
+- `1` — állat, mint élő, tevékeny lény
+- `1.a` — általában, 1Móz 8:17
+- `1.b` — vadállatok, életerejük és tevékenységük miatt 1Móz 7:14, 21
+- `1.c` — élőlények, a kerub-szekérről Ez 1:5, 13 (a versben kétszer)
+- `2` — élet, csak késői költészetben, Zsolt 143:3
+- `3` — étvágy, az éhség működése
 - `4` — újjáéledés, megújulás
 
 </details>
+
+**BDB2719 · II. חַיָּה** *(a H2416 4. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** II. חַיָּה nőnemű főnév (si vera lectio) közösség ( = a II. חַי nőneműje Nö ZMG, 1886, 176 szerint) — וְחַיַּת מְּלִשְׁתִּים חֹנָה és a filiszteusok egy közössége (azaz szövetséges családok csoportja, amely együtt portyázott) táborozott 2Sám 23:13 ( = מַחֲנֵה‎ 1Krón 11:15); talán Zsolt 68:11 is (vö. alább) Megjegyzés. — Több más hely kétséges: וַיֵּאָסְפוּ פְלִשְׁתִּים לַחַיָּה‎ 2Sám 23:11 csapatba gyűltek, vagy csapatonként (RV, de egyik fordítás sem indokolt: Bö Ew We Klo Dr helyesen olvassa לֶ֫חְיָה Leµi felé, vö. Bír 15:9, a szó véletlenül kimaradt a || 1Krón 11:13-ban Dr); חַיָּתְךָ יָָֽשְׁבוּבָהּ Zsolt 68:11 csapatod lakott benne (Thes SS RVm Hi Ri Che, de ᵑ6 ᵐ5 Jeromos Pe: (élő) teremtményeid, a népről; Hup ua., a fürjekre vonatkoztatva; valószínűtlen); אַלתִּתֵּן לְחַיַּת נֶפֶשׁ תּוֺרֶךָ חַיַּת עֲנִיֶּיךָ אַלתִּשְׁכַּח לָנֶ֫צַח‎ 74:19 ne add gerlicéd lelkét a vadállatoknak, nyomorultjaid életéről ne feledkezz meg mindörökre: RV Hi Pe Bae Sch így fordítják, a חית szónak a két tagmondatban különböző jelentést adva, az előbbi archaikus nőnemű status absolutus Ges § 80, 2. R. 2; a szöveg kétségtelenül romlott, olvasandó talán למות Schr Ri, לחית helyett, vagy לשׁחת Kroch; Gr e kettő bármelyikét; Che bármelyiket, vagy még inkább לחרב.
+
+**BDB2721 · חַיִּים (chajjím)** *(a H2416 5. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** חַיִּים hímnemű főnév 5Móz 28:66 többes szám elvont emphaticus élet, <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7** és máshol; חַיִּין Jób 24:22 (arámizmus Ges § 87 (1) a); חַיֵּי‎ 1Móz 23:1 és máshol; suffixummal חַיַּי‎ 47:9 és máshol; חַיָּ֑יְכִי Zsolt 103:4; (Ges § 91 (2) R. 2), stb.; —
+
+- **`1`**
+
+  > élet: testi 1Móz 27:46; 2Móz 1:14 (P), 5Móz 28:66 (a versben kétszer); 2Sám 11:11; 15:21; Ézs 38:12; Jer 8:23; JSir 3:53, 58; Ez 7:13; Jób 3:20; 7:7; 9:21; 10:12; 24:22; Zsolt 7:6; 17:14; 21:5; 26:9; 31:11; 34:13; 63:4; 64:2; 66:9; 88:4; 103:4; Péld 18:21; Préd 2:17; 6:12; 7:13; 9:9 (a versben kétszer); 10:19; Jón 2:7; 4:3, 8; חַיֵּי שׂרה Sára élete 1Móz 23:1(P) ח ׳שְׁנֵי valakinek életének évei 2Sám 19:35; 1Móz 23:1; 25:7, 17; 47:8-9, (a versben kétszer); 47:28; 2Móz 6:16, 18, 20 (P); לח ׳שָׁנָה‎ 1Móz 7:11 (P); שְׁנוֺת חַיִּים Péld 3:2; 4:10; 9:11; ח ׳יְמֵי valakinek életének napjai Préd 2:3; 5:17; 5:19; 6:12; 8:15; 9:9; כֹּל יְמֵי <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 3:14, 17 (J) 5Móz 4:9; 6:2; 16:3; 17:19; Józs 1:5; 4:14 (D) 1Sám 1:11; 7:15; 1Kir 5:1; 11:34; 15:5-6, 2Kir 25:29-30, = Jer 52:33-34, Ézs 38:20 (Ezékiás költeménye) Zsolt 23:6; 27:4; 128:5; Péld 31:12; ׳בּח valakinek életében vagy élete során 1Móz 27:46 (P) 3Móz 18:18 (H) Bír 16:30; 2Sám 1:23; 18:18; Zsolt 49:19; 63:5; 104:33; 146:2; Jób 10:1; Préd 3:12; 9:3; ח ׳רוּחַ‎ 1Móz 6:17; 7:15 (P); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> רוּחִי Ézs 38:16 (Ezékiás költeménye); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> בשׂרים Péld 14:30; נִשְׁמַת (רוּחַ) <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7**; 7:22 (J).
+
+<details>
+<summary>2 – 3 (2 szakasz)</summary>
+
+- `2` — élet
+- `3` — táplálék, ellátás
+
+</details>
+
+**BDB9522 · חַי · arámi** *(a H2416 6. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** חַי melléknév élő (bibliai héber ua.); —
+
+<details>
+<summary>1 – 2 (2 szakasz)</summary>
+
+- `1` — Istenről
+- `2` — többes szám elvont főnévként, élet (bibliai héber חַיִּים)
+
+</details>
+
+**BDB9523 · חֵיוָה (chévá) · arámi** *(a H2416 7. BDB-szócikke a 7-ből)*
+
+**A szócikk feje (nyelvi háttér).** חֵיוָה חֵיוָא, nőnemű főnév vadállat (bibliai héber II. חַיָה); — status absolutus אָ֯ Dán 4:13, הָ֯ 7:5. 7:7; emphaticus חֵיוְתָא‎ 7:6. 7:11. 7:19, 23, és (gyűjtőnévként) 4:11-12, 5:21; status constructus (gyűjtőnévként) חֵיוַת בָּרָא‎ 2:38; 4:9, 18, 20, 22, 29; többes szám status absolutus חֵיוָן‎ 7:3, emphaticus חֵיוָתָא‎ 7:7, 12. 7:17.
 
 *A teljes szócikk: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
@@ -778,7 +826,7 @@ A kétnyelvű szótár (SECE) a chaj szónak 13 megfelelőjét adja a másik bib
 
 A szó eredete és nyelvi háttere.<!-- olvasói -->
 
-**H2416 — חַי (chaj)** · alapjelentés: élő *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* · rokon nyelvi adat: arab — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+**H2416 — חַי (chaj)** · alapjelentés: élő *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 **H5315 — נֶ֫פֶשׁ (nefes)** · alapjelentés: lélek *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
@@ -887,7 +935,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 90. **Következtetés:** a helyek 82%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum 11 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 9 igehely ad legalább egy találatot (90 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Luk 1:46, Luk 1:47.*
+*Ez a blokk a `[ID: ANTROP-001]` motívum 11 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 9 igehely ad legalább egy találatot (90 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Luk 1:46, Luk 1:47.*
 
 #### 1Móz 2:7
 - TSK: 1Kor 15:45 (Votes: 38)
