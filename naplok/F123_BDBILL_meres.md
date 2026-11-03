@@ -131,7 +131,7 @@ proveniencia: scope=bdb_szakasz_hu.tsv T0 (HEAD 8578a109) ↔ T2 | forras=saját
 
 ## 9. Kapu (DT-F123z)
 
-`ellenoriz.py` 26. szabály (`hu_illeszt.kapu_elteresek`): a commitolt tábla törzse egyezik-e a mai generálással; a fejléc és a `proveniencia` `ts=` része nem számít. Fokozat: **SÉRTÉS (gátló), javasolt**, az indok a DT-F123z-ben.
+`ellenoriz.py` 26. szabály (`hu_illeszt.kapu_elteresek`): a commitolt tábla törzse egyezik-e a mai generálással; a fejléc és a `proveniencia` `ts=` része nem számít. Fokozat: **SÉRTÉS (gátló)**; a DT-F123z 🟢, az orkesztrátor döntése a felhasználó felhatalmazásával (2026-11-03), az indok ott áll.
 
 - A javított táblán: RENDBEN (~4 mp).
 - A régi (HEAD) táblán: SÉRTÉS 7 521 = 7 416 hiányzó + 105 eltérő (98 szakaszos + 7 kategória). Pontosan a fenti osztályok.
