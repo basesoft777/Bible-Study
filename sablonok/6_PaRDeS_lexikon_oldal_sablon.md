@@ -121,9 +121,9 @@ igehely horgony-link az 1/a alszakaszra mutat. A `proveniencia` és az
 *Arany lap (ISTENTISZT-001, F131; a többi lapra a kiterjesztés külön
 feladat):* a „Szótári jelentés” helyén „Jelentés (a szó)” áll (a szótári
 szakasz címkéje és jele, `adat/szotar_szakasz_cimke.tsv`; a címke forrása
-a sor lábjegyzetében, ⓘ), mellette „Funkció (a motívumban)”; az
+a sor lábjegyzetében; a lábjegyzet-jel mellett külön ⓘ nem áll), mellette „Funkció (a motívumban)” (ikon/emoji nélkül, csak a címke szövege); az
 „UBS-jelentés” ÓSZ-sornál is kitöltött: az UBS DBH igehelyszintű
-jelentése tokenenként (`lexid — definíció`; magyarul, ahol van, különben
+jelentése tokenenként (csak a definíció szövege, a 15 jegyű kód nem látszik, az adatban marad; magyarul, ahol van, különben
 az angol `(fordításra vár)` jelöléssel; hivatkozás híján kimondott hiány).
 A „2. Szótári háttér” a szótári gerinccel kezdődik (SEMA 2.40).
 
@@ -131,7 +131,7 @@ A „2. Szótári háttér” a szótári gerinccel kezdődik (SEMA 2.40).
 Igehelyenként: horgony (`<a id="...">`), a Károli-vers szó szerinti
 szövege (`Karoli_1908.tsv`-ből; tartomány esetén minden vers külön),
 alatta a `kapcsolodas` mező szövege (legalább egy kerek mondat), és
-`Funkció:` sor a `funkcio` mező „ — ” utáni részéből (DT-F1Ab). A két
+`Funkció:` sor (mindig új bekezdésben, a renderelt nézetben is új sorban) a `funkcio` mező „ — ” utáni részéből (DT-F1Ab). A két
 mező kötelező formája és a minta (ISTENTISZT-001, 1Móz 4:26):
 `9_PaRDeS_motivum_forras_sablon.md` 4. pont; mérője a 25. szabály.
 
@@ -501,3 +501,5 @@ DT74 (5); a #10 mércéje ez + a DT2 két rés-szabálya.)*
 lezárt tematikus study, a négyforrásos módszertan lefutott-e minden
 igehelyre (nem csak mintavétellel), és a lexikai/tematikus
 kapcsolatok explicit el vannak-e választva egymástól.*
+
+*Olvasói bevezető (2026-11-03, a felhasználó észrevétele):* a „Mit mutat ez a rész?” címke nem látszik; az összefoglaló bekezdés marad, a generátor láthatatlan jellel (`<!-- olvasói -->`) azonosítja.

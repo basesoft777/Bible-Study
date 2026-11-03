@@ -600,7 +600,8 @@ class Kulcsszavak(unittest.TestCase):
         self.assertIn(' (kárá) + ', szov)
         self.assertIn(' (sém) | ', szov)
         self.assertIn('„segítségül”', szov)
-        self.assertIn('**Mit mutat ez a rész?**', szov)
+        self.assertIn(LG.OLVASOI_CIMKE, szov)
+        self.assertNotIn('Mit mutat ez a rész', szov)
 
     def test_kapcsolo_nelkul_ures(self):
         self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
