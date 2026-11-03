@@ -1,4 +1,4 @@
-# F123.BDBILL — a szakaszos BDB-fordítás 1:1-es illesztése: mérés (DT-F123y)
+# F123.BDBILL — a szakaszos BDB-fordítás 1:1-es illesztése: mérés (DT573)
 
 proveniencia: scope=bdb_szakasz_hu.tsv (T0 HEAD 8578a109, T1 régi logika, T2 új logika) | forras=naplok/F123_BDBILL_meres.py + eszkozok/bdb_jelolt/hu_illeszt.py@418b92f8d0ae | ts=2026-11-03
 
@@ -129,9 +129,9 @@ proveniencia: scope=bdb_szakasz_hu.tsv T0 (HEAD 8578a109) ↔ T2 | forras=saját
   - H8415 (elavult): 6-ból régi 1 → új 0; a `-/2/-` alatt „2. 5.”, a `-/3/-` és a `-/5/-` alatt töredék.
 - **Szónézet** (olvasó szerver, `lekerdezesek.bdb_magyar`): **nem érintett.** A `forditasok.tsv`-ből a közös összefűzővel a teljes magyar szócikket adja, a `bdb_szakasz_hu.tsv`-t nem olvassa. A `pardes.db` manifestje (`manifest_pardes_db.tsv`: `bdb_szakasz_hu 9664`) a következő adatbázis-építéskor frissül (36 621).
 
-## 9. Kapu (DT-F123z)
+## 9. Kapu (DT574)
 
-`ellenoriz.py` 26. szabály (`hu_illeszt.kapu_elteresek`): a commitolt tábla törzse egyezik-e a mai generálással; a fejléc és a `proveniencia` `ts=` része nem számít. Fokozat: **SÉRTÉS (gátló)**; a DT-F123z 🟢, az orkesztrátor döntése a felhasználó felhatalmazásával (2026-11-03), az indok ott áll.
+`ellenoriz.py` 26. szabály (`hu_illeszt.kapu_elteresek`): a commitolt tábla törzse egyezik-e a mai generálással; a fejléc és a `proveniencia` `ts=` része nem számít. Fokozat: **SÉRTÉS (gátló)**; a DT574 🟢, az orkesztrátor döntése a felhasználó felhatalmazásával (2026-11-03), az indok ott áll.
 
 - A javított táblán: RENDBEN (~4 mp).
 - A régi (HEAD) táblán: SÉRTÉS 7 521 = 7 416 hiányzó + 105 eltérő (98 szakaszos + 7 kategória). Pontosan a fenti osztályok.

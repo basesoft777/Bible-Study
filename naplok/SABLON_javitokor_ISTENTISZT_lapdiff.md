@@ -1,4 +1,4 @@
-# Az ISTENTISZT-001 lapjának változása a sablon-javítókörben (N-F161c, 2026-11-03)
+# Az ISTENTISZT-001 lapjának változása a sablon-javítókörben (N87, 2026-11-03)
 
 Az 1. kiadás lapja a generátor javítása miatt változott — **a 2. kiadás függő változása** (az `OLVJ_ISTENTISZT_lapdiff.md` módján).
 Adatváltozás és tartalmi állítás nincs; csak a forma (a felhasználó lapnézet-észrevételei, 2026-11-03):
