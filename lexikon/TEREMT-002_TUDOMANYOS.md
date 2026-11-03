@@ -562,7 +562,7 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 67%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 2 igehely ad legalább egy találatot (26 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Ézs 34:11, Jer 4:23.*
+*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 2 igehely ad legalább egy találatot (26 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Ézs 34:11, Jer 4:23.*
 
 #### 1Móz 1:2
 - TSK: Jer 4:23 (Votes: 84)

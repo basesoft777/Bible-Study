@@ -22,8 +22,17 @@ kijelölése (melyik szó fordítja a motívum szavát, és melyik csak a körny
 döntés. Paraméter nélkül az eszköz csak a jelölt szótári alakokat listázza
 (`karoli_szo`-mezők → szótári alak, soronkénti darabszámmal), scant nem futtat.
 
+Szópár-mód (`--kollokacio`, az ANTROP-001-nél készült, F123.ANTROP2.2): ha a motívum azonossága
+két szó együttállása (a `gerinc_elem` `A+B` alakú), az 1. háló nem a Strongok egyenkénti
+előfordulása, hanem azok a versek, amelyekben a pár minden tagja áll (a `--rokon A=A2,B=B2`
+leképezéssel a tag rokon alakja is számít, pl. a főnév melléknévi alakja). A 2. és a 3. háló
+`gerinc_a_versben` mezője ekkor azt mondja meg, hogy a pár áll-e a versben, a `reszlet` mező
+végén pedig a versben álló egyes Strongok szerepelnek (`[a versben: …]`): a más lexémás és a
+csak egyik tagot hordozó találat így lexémánként csoportosítható (`sablonok/9_…` v1, 2. szabály).
+
 Használat:
     python eszkozok/teljesseg_meres.py ID [--karoli-szavak sír,pokol,...] [--ki naplok/F123_teljesseg_ID]
+    python eszkozok/teljesseg_meres.py ID --kollokacio [--rokon G4151=G4152,G5590=G5591] [...]
 """
 import argparse
 import os
@@ -87,6 +96,44 @@ def motivum_adat(mid, elof_ut, jelolt_ut):
         for v in versekre(r['igehely']):
             j_versek.setdefault(v, r.get('dontes', ''))
     return strongok, e_versek, j_versek, karoli
+
+
+def parok(mid, elof_ut):
+    """A `gerinc_elem` mező `A+B` alakú elemei, tagonként: [('G4151', 'G5590'), ...]."""
+    ki = set()
+    for r in olvas(elof_ut):
+        if r.get('id') == mid and '+' in (r.get('gerinc_elem') or ''):
+            ki.add(tuple(s.strip() for s in r['gerinc_elem'].split('+') if s.strip()))
+    return sorted(ki)
+
+
+def rokon_terkep(szoveg):
+    """'G4151=G4152,G5590=G5591' → {'G4151': {'G4151', 'G4152'}, 'G5590': {'G5590', 'G5591'}}"""
+    t = {}
+    for tag in (x.strip() for x in szoveg.split(',') if x.strip()):
+        a, _, b = tag.partition('=')
+        t.setdefault(a.strip(), {a.strip()}).add(b.strip())
+    return t
+
+
+def vers_strongjai(strongok, tahot, tagnt):
+    """{vers: {Strong, ...}} a megadott Strongokra (a 2. és 3. háló `reszlet`-kiegészítéséhez)."""
+    v = defaultdict(set)
+    for r in list(tahot) + list(tagnt):
+        if r['Strong-szám'] in strongok:
+            v[r['Igehely']].add(r['Strong-szám'])
+    return v
+
+
+def halo_par(par_lista, rokon, vs):
+    """{vers: [Strong, ...]} azokra a versekre, amelyekben egy pár minden tagja (vagy rokon alakja) áll."""
+    talalat = {}
+    for vers, jelen in vs.items():
+        for par in par_lista:
+            if all(jelen & rokon.get(tag, {tag}) for tag in par):
+                talalat[vers] = sorted(jelen)
+                break
+    return talalat
 
 
 def allapot(vers, e_versek, j_versek):
@@ -177,6 +224,9 @@ def main():
     ap.add_argument('--karoli-szavak', default='',
                     help='vesszővel elválasztott szótári alakok (a 2. háló); nélküle csak a jelölt alakok listája')
     ap.add_argument('--ki', default='', help='kimeneti előtag (.tsv és .md); nélküle csak összegzés a konzolra')
+    ap.add_argument('--kollokacio', action='store_true',
+                    help='szópár-mód: az 1. háló a gerinc_elem A+B párjának együttállása egy versben')
+    ap.add_argument('--rokon', default='', help='a pár tagjainak rokon alakjai, pl. G4151=G4152,G5590=G5591')
     a = ap.parse_args()
 
     mid = a.id
@@ -196,9 +246,23 @@ def main():
     lemmak = {x.strip() for x in a.karoli_szavak.split(',') if x.strip()}
 
     halok = {}
-    halok['strong'] = halo_strong(strongok, L.load_tahot(), L.load_tagnt())
-    prov_strong = ('scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv '
-                   '| strong=%s | n=%d | ts=%s' % ('+'.join(sorted(strongok)), len(halok['strong']), most))
+    vs = {}
+    if a.kollokacio:
+        par_lista = parok(mid, elof)
+        if not par_lista:
+            sys.exit('%s: --kollokacio, de nincs A+B alakú gerinc_elem' % mid)
+        rokon = rokon_terkep(a.rokon)
+        strongok = set().union(*[set(p) for p in par_lista], *[rokon.get(x, set()) for p in par_lista for x in p])
+        vs = vers_strongjai(strongok, L.load_tahot(), L.load_tagnt())
+        halok['strong'] = halo_par(par_lista, rokon, vs)
+        leiras = ' | '.join('+'.join('(%s)' % '|'.join(sorted(rokon.get(x, {x}))) for x in p) for p in par_lista)
+        prov_strong = ('scope=TAHOT-teljes+TAGNT-teljes: egy versben %s | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv '
+                       '| n=%d | ts=%s' % (leiras, len(halok['strong']), most))
+        print('# szópár-mód: %s; a szótár-háló Strongjai: %s' % (leiras, ', '.join(sorted(strongok))))
+    else:
+        halok['strong'] = halo_strong(strongok, L.load_tahot(), L.load_tagnt())
+        prov_strong = ('scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv '
+                       '| strong=%s | n=%d | ts=%s' % ('+'.join(sorted(strongok)), len(halok['strong']), most))
     prov_karoli = ''
     if lemmak:
         halok['karoli'] = halo_karoli(lemmak, L.load_karoli_1908(), tabla)
@@ -221,6 +285,8 @@ def main():
             if all_ == 'ELTÉRÉS':
                 db['ELTÉRÉS, gerinc ' + gerinc] += 1
             reszlet = ', '.join(sorted(t[vers])) if nev == 'strong' else '; '.join(t[vers])
+            if a.kollokacio and nev != 'strong':
+                reszlet += ' [a versben: %s]' % (', '.join(sorted(vs.get(vers, ()))) or '—')
             sorok.append((nev, vers, all_, gerinc, reszlet, provok[nev]))
         osszeg[nev] = db
     # a fordított irány: E-vers, amelyet egyik háló sem ad

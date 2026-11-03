@@ -611,7 +611,7 @@ class SzakaszKeszMagyar(unittest.TestCase):
         sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt'))
         import szakasz_bemenet as SB
         strongok = sorted({r['strong'] for r in SB.nezet_general.olvas(SB.HU_TABLA)})
-        self.assertEqual(len(strongok), 674)
+        self.assertEqual(len(strongok), 8090)   # F123.BDBILL: a teljes újragenerálás után (korábban 674)
         hibak, n = [], 0
         for st in strongok:
             p = SB.kesz_magyar_csoportositva(st)
@@ -622,7 +622,7 @@ class SzakaszKeszMagyar(unittest.TestCase):
             if e != 'RENDBEN':
                 hibak.append((st, d))
         self.assertEqual(hibak, [])
-        self.assertEqual(n, 674)
+        self.assertEqual(n, 8090)
 
 
 class Tiltott(unittest.TestCase):

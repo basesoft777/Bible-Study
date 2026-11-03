@@ -45,15 +45,15 @@ MENNY-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Ist
 MENNY-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 MENNY-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 MENNY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
-ANTROP-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
-ANTROP-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
-ANTROP-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
-ANTROP-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
-ANTROP-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
-ANTROP-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
-ANTROP-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-ANTROP-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-ANTROP-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
+ANTROP-001	kivonat	## Kivonat *(kézi)*	tanulmany	motivumok/ANTROP-001.md
+ANTROP-001	2b	### 2/b. Kiegészítő szótári adatok *(generált)*	adat	
+ANTROP-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	motivumok/ANTROP-001.md
+ANTROP-001	minosites	### Minősítés *(generált)*	adat	
+ANTROP-001	alatamasztas	### Alátámasztás *(generált)*	adat	A motívumhoz nincs rögzített kapcsolat.
+ANTROP-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	motivumok/ANTROP-001.md
+ANTROP-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	tanulmany	motivumok/ANTROP-001.md
+ANTROP-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	Ehhez a motívumhoz nevesített tanítói egyezés még nem került a lapra; a hiány nincs kitöltve.
+ANTROP-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	motivumok/ANTROP-001.md
 HODIT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
 HODIT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
 HODIT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md

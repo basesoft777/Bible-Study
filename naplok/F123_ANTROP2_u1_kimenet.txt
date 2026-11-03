@@ -1,0 +1,1936 @@
+## 1. gerinc-metszet
+# napló: hozzáfűzve -> auditok.tsv
+# gerinc-metszet — 2 szakasz
+#   1Thessz 5:23: 21 egyedi Strong
+#   Zsid 4:12: 24 egyedi Strong
+# metszet (szűretlen): 5
+# grammatikai szűrővel kiszűrve (2): G2532,G3588
+# gerinc-jelölt (marad): 3
+G2316
+G4151
+G5590
+proveniencia: scope=range:1Thessz 5:23+Zsid 4:12 | forras=TAGNT_kivonat.tsv | n=3 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# gerinc-metszet — 2 szakasz
+#   Luk 1:46-47: 13 egyedi Strong
+#   1Kor 15:45: 14 egyedi Strong
+# metszet (szűretlen): 4
+# grammatikai szűrővel kiszűrve (2): G2532,G3588
+# gerinc-jelölt (marad): 2
+G4151
+G5590
+proveniencia: scope=range:Luk 1:46-47+1Kor 15:45 | forras=TAGNT_kivonat.tsv | n=2 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# gerinc-metszet — 2 szakasz
+#   1Móz 2:7: 19 egyedi Strong
+#   1Kor 15:45: 14 egyedi Strong
+# metszet (szűretlen): 0
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 0
+proveniencia: scope=range:1Móz 2:7+1Kor 15:45 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-03T08:46Z | csatorna=cli
+## 3. teljes scan (a négy főnév és a két melléknév)
+# napló: hozzáfűzve -> auditok.tsv
+# scan G4151 — 351 igehely, 386 szó-előfordulás
+1Ján 3:24
+1Ján 4:1
+1Ján 4:2
+1Ján 4:3
+1Ján 4:6
+1Ján 4:13
+1Ján 5:6
+1Ján 5:7
+1Ján 5:8
+1Kor 2:4
+1Kor 2:10
+1Kor 2:11
+1Kor 2:12
+1Kor 2:13
+1Kor 2:14
+1Kor 3:16
+1Kor 4:21
+1Kor 5:3
+1Kor 5:4
+1Kor 5:5
+1Kor 6:11
+1Kor 6:17
+1Kor 6:19
+1Kor 6:20
+1Kor 7:34
+1Kor 7:40
+1Kor 12:3
+1Kor 12:4
+1Kor 12:7
+1Kor 12:8
+1Kor 12:9
+1Kor 12:10
+1Kor 12:11
+1Kor 12:13
+1Kor 14:2
+1Kor 14:12
+1Kor 14:14
+1Kor 14:15
+1Kor 14:16
+1Kor 14:32
+1Kor 15:45
+1Kor 16:18
+1Pét 1:2
+1Pét 1:11
+1Pét 1:12
+1Pét 1:22
+1Pét 3:4
+1Pét 3:18
+1Pét 3:19
+1Pét 4:6
+1Pét 4:14
+1Thessz 1:5
+1Thessz 1:6
+1Thessz 4:8
+1Thessz 5:19
+1Thessz 5:23
+1Tim 3:16
+1Tim 4:1
+1Tim 4:12
+2Kor 1:22
+2Kor 2:13
+2Kor 3:3
+2Kor 3:6
+2Kor 3:8
+2Kor 3:17
+2Kor 3:18
+2Kor 4:13
+2Kor 5:5
+2Kor 6:6
+2Kor 7:1
+2Kor 7:13
+2Kor 11:4
+2Kor 12:18
+2Kor 13:13
+2Pét 1:21
+2Thessz 2:2
+2Thessz 2:8
+2Thessz 2:13
+2Tim 1:7
+2Tim 1:14
+2Tim 4:22
+ApCsel 1:2
+ApCsel 1:5
+ApCsel 1:8
+ApCsel 1:16
+ApCsel 2:4
+ApCsel 2:17
+ApCsel 2:18
+ApCsel 2:33
+ApCsel 2:38
+ApCsel 4:8
+ApCsel 4:25
+ApCsel 4:31
+ApCsel 5:3
+ApCsel 5:9
+ApCsel 5:16
+ApCsel 5:32
+ApCsel 6:3
+ApCsel 6:5
+ApCsel 6:10
+ApCsel 7:51
+ApCsel 7:55
+ApCsel 7:59
+ApCsel 8:7
+ApCsel 8:15
+ApCsel 8:17
+ApCsel 8:18
+ApCsel 8:19
+ApCsel 8:29
+ApCsel 8:39
+ApCsel 9:17
+ApCsel 9:31
+ApCsel 10:19
+ApCsel 10:38
+ApCsel 10:44
+ApCsel 10:45
+ApCsel 10:47
+ApCsel 11:12
+ApCsel 11:15
+ApCsel 11:16
+ApCsel 11:24
+ApCsel 11:28
+ApCsel 13:2
+ApCsel 13:4
+ApCsel 13:9
+ApCsel 13:52
+ApCsel 15:8
+ApCsel 15:28
+ApCsel 16:6
+ApCsel 16:7
+ApCsel 16:16
+ApCsel 16:18
+ApCsel 17:16
+ApCsel 18:25
+ApCsel 19:2
+ApCsel 19:6
+ApCsel 19:12
+ApCsel 19:13
+ApCsel 19:15
+ApCsel 19:16
+ApCsel 19:21
+ApCsel 20:22
+ApCsel 20:23
+ApCsel 20:28
+ApCsel 21:4
+ApCsel 21:11
+ApCsel 23:8
+ApCsel 23:9
+ApCsel 28:25
+Ef 1:13
+Ef 1:17
+Ef 2:2
+Ef 2:18
+Ef 2:22
+Ef 3:5
+Ef 3:16
+Ef 4:3
+Ef 4:4
+Ef 4:23
+Ef 4:30
+Ef 5:18
+Ef 6:17
+Ef 6:18
+Fil 1:19
+Fil 1:27
+Fil 2:1
+Fil 3:3
+Fil 4:23
+Filem 1:25
+Gal 3:2
+Gal 3:3
+Gal 3:5
+Gal 3:14
+Gal 4:6
+Gal 4:29
+Gal 5:5
+Gal 5:16
+Gal 5:17
+Gal 5:18
+Gal 5:22
+Gal 5:25
+Gal 6:1
+Gal 6:8
+Gal 6:18
+Jak 2:26
+Jak 4:5
+Jel 1:4
+Jel 1:10
+Jel 2:7
+Jel 2:11
+Jel 2:17
+Jel 2:29
+Jel 3:1
+Jel 3:6
+Jel 3:13
+Jel 3:22
+Jel 4:2
+Jel 4:5
+Jel 5:6
+Jel 11:11
+Jel 13:15
+Jel 14:13
+Jel 16:13
+Jel 16:14
+Jel 17:3
+Jel 18:2
+Jel 19:10
+Jel 21:10
+Jel 22:6
+Jel 22:17
+Ján 1:32
+Ján 1:33
+Ján 3:5
+Ján 3:6
+Ján 3:8
+Ján 3:34
+Ján 4:23
+Ján 4:24
+Ján 6:63
+Ján 7:39
+Ján 11:33
+Ján 13:21
+Ján 14:17
+Ján 14:26
+Ján 15:26
+Ján 16:13
+Ján 19:30
+Ján 20:22
+Júd 1:19
+Júd 1:20
+Kol 1:8
+Kol 2:5
+Luk 1:15
+Luk 1:17
+Luk 1:35
+Luk 1:41
+Luk 1:47
+Luk 1:67
+Luk 1:80
+Luk 2:25
+Luk 2:26
+Luk 2:27
+Luk 2:40
+Luk 3:16
+Luk 3:22
+Luk 4:1
+Luk 4:14
+Luk 4:18
+Luk 4:33
+Luk 4:36
+Luk 6:18
+Luk 7:21
+Luk 8:2
+Luk 8:29
+Luk 8:55
+Luk 9:39
+Luk 9:42
+Luk 9:55
+Luk 10:20
+Luk 10:21
+Luk 11:13
+Luk 11:24
+Luk 11:26
+Luk 12:10
+Luk 12:12
+Luk 13:11
+Luk 23:46
+Luk 24:37
+Luk 24:39
+Mk 1:8
+Mk 1:10
+Mk 1:12
+Mk 1:23
+Mk 1:26
+Mk 1:27
+Mk 2:8
+Mk 3:11
+Mk 3:29
+Mk 3:30
+Mk 5:2
+Mk 5:8
+Mk 5:13
+Mk 6:7
+Mk 7:25
+Mk 8:12
+Mk 9:17
+Mk 9:20
+Mk 9:25
+Mk 12:36
+Mk 13:11
+Mk 14:38
+Mt 1:18
+Mt 1:20
+Mt 3:11
+Mt 3:16
+Mt 4:1
+Mt 5:3
+Mt 8:16
+Mt 10:1
+Mt 10:20
+Mt 12:18
+Mt 12:28
+Mt 12:31
+Mt 12:32
+Mt 12:43
+Mt 12:45
+Mt 22:43
+Mt 26:41
+Mt 27:50
+Mt 28:19
+Róm 1:4
+Róm 1:9
+Róm 2:29
+Róm 5:5
+Róm 7:6
+Róm 8:1
+Róm 8:2
+Róm 8:4
+Róm 8:5
+Róm 8:6
+Róm 8:9
+Róm 8:10
+Róm 8:11
+Róm 8:13
+Róm 8:14
+Róm 8:15
+Róm 8:16
+Róm 8:23
+Róm 8:26
+Róm 8:27
+Róm 9:1
+Róm 11:8
+Róm 12:11
+Róm 14:17
+Róm 15:13
+Róm 15:16
+Róm 15:19
+Róm 15:30
+Tit 3:5
+Zsid 1:7
+Zsid 1:14
+Zsid 2:4
+Zsid 3:7
+Zsid 4:12
+Zsid 6:4
+Zsid 9:8
+Zsid 9:14
+Zsid 10:15
+Zsid 10:29
+Zsid 12:9
+Zsid 12:23
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4151 | n=351 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan G5590 — 96 igehely, 106 szó-előfordulás
+1Ján 3:16
+1Kor 15:45
+1Pét 1:9
+1Pét 1:22
+1Pét 2:11
+1Pét 2:25
+1Pét 3:20
+1Pét 4:19
+1Thessz 2:8
+1Thessz 5:23
+2Kor 1:23
+2Kor 12:15
+2Pét 2:8
+2Pét 2:14
+3Ján 1:2
+ApCsel 2:27
+ApCsel 2:31
+ApCsel 2:41
+ApCsel 2:43
+ApCsel 3:23
+ApCsel 4:32
+ApCsel 7:14
+ApCsel 14:2
+ApCsel 14:22
+ApCsel 15:24
+ApCsel 15:26
+ApCsel 20:10
+ApCsel 20:24
+ApCsel 27:10
+ApCsel 27:22
+ApCsel 27:37
+Ef 6:6
+Fil 1:27
+Fil 2:30
+Jak 1:21
+Jak 5:20
+Jel 6:9
+Jel 8:9
+Jel 12:11
+Jel 16:3
+Jel 18:13
+Jel 18:14
+Jel 20:4
+Ján 10:11
+Ján 10:15
+Ján 10:17
+Ján 10:24
+Ján 12:25
+Ján 12:27
+Ján 13:37
+Ján 13:38
+Ján 15:13
+Júd 1:15
+Kol 3:23
+Luk 1:46
+Luk 2:35
+Luk 6:9
+Luk 9:24
+Luk 9:56
+Luk 10:27
+Luk 12:19
+Luk 12:20
+Luk 12:22
+Luk 12:23
+Luk 14:26
+Luk 17:33
+Luk 21:19
+Mk 3:4
+Mk 8:35
+Mk 8:36
+Mk 8:37
+Mk 10:45
+Mk 12:30
+Mk 12:33
+Mk 14:34
+Mt 2:20
+Mt 6:25
+Mt 10:28
+Mt 10:39
+Mt 11:29
+Mt 12:18
+Mt 16:25
+Mt 16:26
+Mt 20:28
+Mt 22:37
+Mt 26:38
+Róm 2:9
+Róm 11:3
+Róm 13:1
+Róm 16:4
+Zsid 4:12
+Zsid 6:19
+Zsid 10:38
+Zsid 10:39
+Zsid 12:3
+Zsid 13:17
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5590 | n=96 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan G4152 — 21 igehely, 26 szó-előfordulás
+1Kor 2:13
+1Kor 2:15
+1Kor 3:1
+1Kor 9:11
+1Kor 10:3
+1Kor 10:4
+1Kor 12:1
+1Kor 14:1
+1Kor 14:37
+1Kor 15:44
+1Kor 15:46
+1Pét 2:5
+Ef 1:3
+Ef 5:19
+Ef 6:12
+Gal 6:1
+Kol 1:9
+Kol 3:16
+Róm 1:11
+Róm 7:14
+Róm 15:27
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4152 | n=21 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan G5591 — 5 igehely, 6 szó-előfordulás
+1Kor 2:14
+1Kor 15:44
+1Kor 15:46
+Jak 3:15
+Júd 1:19
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5591 | n=5 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan H5315 — 683 igehely, 754 szó-előfordulás
+1Kir 1:12
+1Kir 1:29
+1Kir 2:4
+1Kir 2:23
+1Kir 3:11
+1Kir 8:48
+1Kir 11:37
+1Kir 17:21
+1Kir 17:22
+1Kir 19:2
+1Kir 19:3
+1Kir 19:4
+1Kir 19:10
+1Kir 19:14
+1Kir 20:31
+1Kir 20:32
+1Kir 20:39
+1Kir 20:42
+1Krón 5:21
+1Krón 11:19
+1Krón 22:19
+1Krón 28:9
+1Móz 1:20
+1Móz 1:21
+1Móz 1:24
+1Móz 1:30
+1Móz 2:7
+1Móz 2:19
+1Móz 9:4
+1Móz 9:5
+1Móz 9:10
+1Móz 9:12
+1Móz 9:15
+1Móz 9:16
+1Móz 12:5
+1Móz 12:13
+1Móz 14:21
+1Móz 17:14
+1Móz 19:17
+1Móz 19:19
+1Móz 19:20
+1Móz 23:8
+1Móz 27:4
+1Móz 27:19
+1Móz 27:25
+1Móz 27:31
+1Móz 32:30
+1Móz 34:3
+1Móz 34:8
+1Móz 35:18
+1Móz 36:6
+1Móz 37:21
+1Móz 42:21
+1Móz 44:30
+1Móz 46:15
+1Móz 46:18
+1Móz 46:22
+1Móz 46:25
+1Móz 46:26
+1Móz 46:27
+1Móz 49:6
+1Sám 1:10
+1Sám 1:15
+1Sám 1:26
+1Sám 2:16
+1Sám 2:33
+1Sám 2:35
+1Sám 17:55
+1Sám 18:1
+1Sám 18:3
+1Sám 19:5
+1Sám 19:11
+1Sám 20:1
+1Sám 20:3
+1Sám 20:4
+1Sám 20:17
+1Sám 22:2
+1Sám 22:22
+1Sám 22:23
+1Sám 23:15
+1Sám 23:20
+1Sám 24:12
+1Sám 25:26
+1Sám 25:29
+1Sám 26:21
+1Sám 26:24
+1Sám 28:9
+1Sám 28:21
+1Sám 30:6
+2Kir 1:13
+2Kir 1:14
+2Kir 2:2
+2Kir 2:4
+2Kir 2:6
+2Kir 4:27
+2Kir 4:30
+2Kir 7:7
+2Kir 9:15
+2Kir 10:24
+2Kir 12:4
+2Kir 23:3
+2Kir 23:25
+2Krón 1:11
+2Krón 6:38
+2Krón 15:12
+2Krón 34:31
+2Móz 1:5
+2Móz 4:19
+2Móz 12:4
+2Móz 12:15
+2Móz 12:16
+2Móz 12:19
+2Móz 15:9
+2Móz 16:16
+2Móz 21:23
+2Móz 21:30
+2Móz 23:9
+2Móz 30:12
+2Móz 30:15
+2Móz 30:16
+2Móz 31:14
+2Sám 1:9
+2Sám 3:21
+2Sám 4:8
+2Sám 4:9
+2Sám 5:8
+2Sám 11:11
+2Sám 14:7
+2Sám 14:14
+2Sám 14:19
+2Sám 16:11
+2Sám 17:8
+2Sám 18:13
+2Sám 19:5
+2Sám 23:17
+3Móz 2:1
+3Móz 4:2
+3Móz 4:27
+3Móz 5:1
+3Móz 5:2
+3Móz 5:4
+3Móz 5:15
+3Móz 5:17
+3Móz 6:2
+3Móz 7:18
+3Móz 7:20
+3Móz 7:21
+3Móz 7:25
+3Móz 7:27
+3Móz 11:10
+3Móz 11:43
+3Móz 11:44
+3Móz 11:46
+3Móz 16:29
+3Móz 16:31
+3Móz 17:10
+3Móz 17:11
+3Móz 17:12
+3Móz 17:14
+3Móz 17:15
+3Móz 18:29
+3Móz 19:8
+3Móz 19:28
+3Móz 20:6
+3Móz 20:25
+3Móz 21:1
+3Móz 21:11
+3Móz 22:3
+3Móz 22:4
+3Móz 22:6
+3Móz 22:11
+3Móz 23:27
+3Móz 23:29
+3Móz 23:30
+3Móz 23:32
+3Móz 24:17
+3Móz 24:18
+3Móz 26:11
+3Móz 26:15
+3Móz 26:16
+3Móz 26:30
+3Móz 26:43
+3Móz 27:2
+4Móz 5:2
+4Móz 5:6
+4Móz 6:6
+4Móz 6:11
+4Móz 9:6
+4Móz 9:7
+4Móz 9:10
+4Móz 9:13
+4Móz 11:6
+4Móz 15:27
+4Móz 15:28
+4Móz 15:30
+4Móz 15:31
+4Móz 16:38
+4Móz 19:11
+4Móz 19:13
+4Móz 19:18
+4Móz 19:20
+4Móz 19:22
+4Móz 21:4
+4Móz 21:5
+4Móz 23:10
+4Móz 29:7
+4Móz 30:2
+4Móz 30:4
+4Móz 30:5
+4Móz 30:6
+4Móz 30:7
+4Móz 30:8
+4Móz 30:9
+4Móz 30:10
+4Móz 30:11
+4Móz 30:12
+4Móz 30:13
+4Móz 31:19
+4Móz 31:28
+4Móz 31:35
+4Móz 31:40
+4Móz 31:46
+4Móz 31:50
+4Móz 35:11
+4Móz 35:15
+4Móz 35:30
+4Móz 35:31
+5Móz 4:9
+5Móz 4:15
+5Móz 4:29
+5Móz 6:5
+5Móz 10:12
+5Móz 10:22
+5Móz 11:13
+5Móz 11:18
+5Móz 12:15
+5Móz 12:20
+5Móz 12:21
+5Móz 12:23
+5Móz 13:3
+5Móz 13:6
+5Móz 14:26
+5Móz 18:6
+5Móz 19:6
+5Móz 19:11
+5Móz 19:21
+5Móz 21:14
+5Móz 22:26
+5Móz 23:24
+5Móz 24:6
+5Móz 24:7
+5Móz 24:15
+5Móz 26:16
+5Móz 27:25
+5Móz 28:65
+5Móz 30:2
+5Móz 30:6
+5Móz 30:10
+Bír 5:18
+Bír 5:21
+Bír 9:17
+Bír 10:16
+Bír 12:3
+Bír 16:16
+Bír 16:30
+Bír 18:25
+Eszt 4:13
+Eszt 7:3
+Eszt 7:7
+Eszt 8:11
+Eszt 9:16
+Eszt 9:31
+Ez 3:19
+Ez 3:21
+Ez 4:14
+Ez 7:19
+Ez 13:18
+Ez 13:19
+Ez 13:20
+Ez 14:14
+Ez 14:20
+Ez 16:5
+Ez 16:27
+Ez 17:17
+Ez 18:4
+Ez 18:20
+Ez 18:27
+Ez 22:25
+Ez 22:27
+Ez 23:17
+Ez 23:18
+Ez 23:22
+Ez 23:28
+Ez 24:21
+Ez 24:25
+Ez 25:6
+Ez 25:15
+Ez 27:13
+Ez 27:31
+Ez 32:10
+Ez 33:5
+Ez 33:6
+Ez 33:9
+Ez 36:5
+Ez 47:9
+Hab 2:4
+Hab 2:5
+Hab 2:10
+Hag 2:13
+Hós 4:8
+Hós 9:4
+Jer 2:24
+Jer 2:34
+Jer 3:11
+Jer 4:10
+Jer 4:19
+Jer 4:30
+Jer 4:31
+Jer 5:9
+Jer 5:29
+Jer 6:8
+Jer 6:16
+Jer 9:9
+Jer 11:21
+Jer 12:7
+Jer 13:17
+Jer 14:19
+Jer 15:1
+Jer 15:9
+Jer 17:21
+Jer 18:20
+Jer 19:7
+Jer 19:9
+Jer 20:13
+Jer 21:7
+Jer 21:9
+Jer 22:25
+Jer 22:27
+Jer 26:19
+Jer 31:12
+Jer 31:14
+Jer 31:25
+Jer 32:41
+Jer 34:16
+Jer 34:20
+Jer 34:21
+Jer 37:9
+Jer 38:2
+Jer 38:16
+Jer 38:17
+Jer 38:20
+Jer 39:18
+Jer 40:14
+Jer 40:15
+Jer 42:20
+Jer 43:6
+Jer 44:7
+Jer 44:14
+Jer 44:30
+Jer 45:5
+Jer 46:26
+Jer 48:6
+Jer 49:37
+Jer 50:19
+Jer 51:6
+Jer 51:14
+Jer 51:45
+Jer 52:29
+Jer 52:30
+Jób 2:4
+Jób 2:6
+Jób 3:20
+Jób 6:7
+Jób 6:11
+Jób 7:11
+Jób 7:15
+Jób 9:21
+Jób 10:1
+Jób 11:20
+Jób 12:10
+Jób 13:14
+Jób 14:22
+Jób 16:4
+Jób 18:4
+Jób 19:2
+Jób 21:25
+Jób 23:13
+Jób 24:12
+Jób 27:2
+Jób 27:8
+Jób 30:16
+Jób 30:25
+Jób 31:30
+Jób 31:39
+Jób 32:2
+Jób 33:18
+Jób 33:20
+Jób 33:22
+Jób 33:28
+Jób 33:30
+Jób 36:14
+Jób 41:21
+Jón 1:14
+Jón 2:6
+Jón 2:8
+Jón 4:3
+Jón 4:8
+Józs 2:13
+Józs 2:14
+Józs 9:24
+Józs 10:28
+Józs 10:30
+Józs 10:32
+Józs 10:35
+Józs 10:37
+Józs 10:39
+Józs 11:11
+Józs 20:3
+Józs 20:9
+Józs 22:5
+Józs 23:11
+Józs 23:14
+Mik 6:7
+Mik 7:1
+Mik 7:3
+Préd 2:25
+Préd 4:8
+Préd 6:2
+Préd 6:3
+Préd 6:7
+Préd 6:9
+Préd 7:28
+Péld 1:18
+Péld 1:19
+Péld 2:10
+Péld 3:22
+Péld 6:16
+Péld 6:26
+Péld 6:30
+Péld 6:32
+Péld 7:23
+Péld 8:36
+Péld 10:3
+Péld 11:17
+Péld 11:25
+Péld 11:30
+Péld 12:9
+Péld 13:2
+Péld 13:3
+Péld 13:4
+Péld 13:8
+Péld 13:19
+Péld 13:25
+Péld 14:10
+Péld 14:25
+Péld 15:32
+Péld 16:17
+Péld 16:24
+Péld 16:26
+Péld 18:7
+Péld 19:2
+Péld 19:8
+Péld 19:15
+Péld 19:16
+Péld 19:18
+Péld 20:2
+Péld 21:10
+Péld 21:23
+Péld 22:5
+Péld 22:23
+Péld 22:25
+Péld 23:2
+Péld 23:7
+Péld 23:14
+Péld 24:12
+Péld 24:14
+Péld 25:13
+Péld 25:25
+Péld 27:7
+Péld 27:9
+Péld 28:17
+Péld 28:25
+Péld 29:10
+Péld 29:17
+Péld 29:24
+Péld 31:6
+Ruth 4:15
+Sir 1:11
+Sir 1:16
+Sir 1:19
+Sir 2:12
+Sir 2:19
+Sir 3:17
+Sir 3:20
+Sir 3:24
+Sir 3:25
+Sir 3:51
+Sir 3:58
+Sir 5:9
+Zak 11:8
+Zsolt 3:3
+Zsolt 6:4
+Zsolt 6:5
+Zsolt 7:3
+Zsolt 7:6
+Zsolt 10:3
+Zsolt 11:1
+Zsolt 11:5
+Zsolt 13:3
+Zsolt 16:10
+Zsolt 17:9
+Zsolt 17:13
+Zsolt 19:8
+Zsolt 22:21
+Zsolt 22:30
+Zsolt 23:3
+Zsolt 24:4
+Zsolt 25:1
+Zsolt 25:13
+Zsolt 25:20
+Zsolt 26:9
+Zsolt 27:12
+Zsolt 30:4
+Zsolt 31:8
+Zsolt 31:10
+Zsolt 31:14
+Zsolt 33:19
+Zsolt 33:20
+Zsolt 34:3
+Zsolt 34:23
+Zsolt 35:3
+Zsolt 35:4
+Zsolt 35:7
+Zsolt 35:9
+Zsolt 35:12
+Zsolt 35:13
+Zsolt 35:17
+Zsolt 35:25
+Zsolt 38:13
+Zsolt 40:15
+Zsolt 41:3
+Zsolt 41:5
+Zsolt 42:2
+Zsolt 42:3
+Zsolt 42:5
+Zsolt 42:6
+Zsolt 42:7
+Zsolt 42:12
+Zsolt 43:5
+Zsolt 44:26
+Zsolt 49:9
+Zsolt 49:16
+Zsolt 49:19
+Zsolt 54:5
+Zsolt 54:6
+Zsolt 55:19
+Zsolt 56:7
+Zsolt 56:14
+Zsolt 57:2
+Zsolt 57:5
+Zsolt 57:7
+Zsolt 59:4
+Zsolt 62:2
+Zsolt 62:6
+Zsolt 63:2
+Zsolt 63:6
+Zsolt 63:9
+Zsolt 63:10
+Zsolt 66:9
+Zsolt 66:16
+Zsolt 69:2
+Zsolt 69:11
+Zsolt 69:19
+Zsolt 70:3
+Zsolt 71:10
+Zsolt 71:13
+Zsolt 71:23
+Zsolt 72:13
+Zsolt 72:14
+Zsolt 74:19
+Zsolt 77:3
+Zsolt 78:18
+Zsolt 78:50
+Zsolt 84:3
+Zsolt 86:2
+Zsolt 86:4
+Zsolt 86:13
+Zsolt 86:14
+Zsolt 88:4
+Zsolt 88:15
+Zsolt 89:49
+Zsolt 94:17
+Zsolt 94:19
+Zsolt 94:21
+Zsolt 97:10
+Zsolt 103:1
+Zsolt 103:2
+Zsolt 103:22
+Zsolt 104:1
+Zsolt 104:35
+Zsolt 105:18
+Zsolt 105:22
+Zsolt 106:15
+Zsolt 107:5
+Zsolt 107:9
+Zsolt 107:18
+Zsolt 107:26
+Zsolt 109:20
+Zsolt 109:31
+Zsolt 116:4
+Zsolt 116:7
+Zsolt 116:8
+Zsolt 119:20
+Zsolt 119:25
+Zsolt 119:28
+Zsolt 119:81
+Zsolt 119:109
+Zsolt 119:129
+Zsolt 119:167
+Zsolt 119:175
+Zsolt 120:2
+Zsolt 120:6
+Zsolt 121:7
+Zsolt 123:4
+Zsolt 124:4
+Zsolt 124:5
+Zsolt 124:7
+Zsolt 130:5
+Zsolt 130:6
+Zsolt 131:2
+Zsolt 138:3
+Zsolt 139:14
+Zsolt 141:8
+Zsolt 142:5
+Zsolt 142:8
+Zsolt 143:3
+Zsolt 143:6
+Zsolt 143:8
+Zsolt 143:11
+Zsolt 143:12
+Zsolt 146:1
+Ámós 2:14
+Ámós 2:15
+Ámós 6:8
+Én 1:7
+Én 3:1
+Én 3:2
+Én 3:3
+Én 3:4
+Én 5:6
+Én 6:9
+Ézs 1:14
+Ézs 3:10
+Ézs 3:21
+Ézs 5:14
+Ézs 10:18
+Ézs 15:4
+Ézs 19:10
+Ézs 26:8
+Ézs 26:9
+Ézs 29:8
+Ézs 32:6
+Ézs 38:15
+Ézs 38:17
+Ézs 42:1
+Ézs 43:4
+Ézs 44:20
+Ézs 46:2
+Ézs 47:14
+Ézs 49:7
+Ézs 51:23
+Ézs 53:10
+Ézs 53:11
+Ézs 53:12
+Ézs 55:2
+Ézs 55:3
+Ézs 56:11
+Ézs 58:3
+Ézs 58:5
+Ézs 58:10
+Ézs 58:11
+Ézs 61:10
+Ézs 66:3
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H5315 | n=683 | ts=2026-11-03T08:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan H2416 — 449 igehely, 498 szó-előfordulás
+1Kir 1:29
+1Kir 2:24
+1Kir 3:22
+1Kir 3:23
+1Kir 3:25
+1Kir 3:26
+1Kir 3:27
+1Kir 4:21
+1Kir 8:40
+1Kir 11:34
+1Kir 12:6
+1Kir 15:5
+1Kir 15:6
+1Kir 17:1
+1Kir 17:12
+1Kir 17:23
+1Kir 18:10
+1Kir 18:15
+1Kir 20:18
+1Kir 20:32
+1Kir 21:15
+1Kir 22:14
+1Móz 1:20
+1Móz 1:21
+1Móz 1:24
+1Móz 1:25
+1Móz 1:28
+1Móz 1:30
+1Móz 2:7
+1Móz 2:9
+1Móz 2:19
+1Móz 2:20
+1Móz 3:1
+1Móz 3:14
+1Móz 3:17
+1Móz 3:20
+1Móz 3:22
+1Móz 3:24
+1Móz 6:17
+1Móz 6:19
+1Móz 7:11
+1Móz 7:14
+1Móz 7:15
+1Móz 7:21
+1Móz 7:22
+1Móz 8:1
+1Móz 8:17
+1Móz 8:19
+1Móz 8:21
+1Móz 9:2
+1Móz 9:3
+1Móz 9:5
+1Móz 9:10
+1Móz 9:12
+1Móz 9:15
+1Móz 9:16
+1Móz 18:10
+1Móz 18:14
+1Móz 23:1
+1Móz 25:6
+1Móz 25:7
+1Móz 25:17
+1Móz 26:19
+1Móz 27:46
+1Móz 37:20
+1Móz 37:33
+1Móz 42:15
+1Móz 42:16
+1Móz 43:7
+1Móz 43:27
+1Móz 43:28
+1Móz 45:3
+1Móz 45:26
+1Móz 45:28
+1Móz 46:30
+1Móz 47:8
+1Móz 47:9
+1Móz 47:28
+1Sám 1:11
+1Sám 1:26
+1Sám 2:15
+1Sám 7:15
+1Sám 14:39
+1Sám 14:45
+1Sám 15:8
+1Sám 17:26
+1Sám 17:36
+1Sám 17:46
+1Sám 17:55
+1Sám 18:18
+1Sám 19:6
+1Sám 20:3
+1Sám 20:14
+1Sám 20:21
+1Sám 25:6
+1Sám 25:26
+1Sám 25:29
+1Sám 25:34
+1Sám 26:10
+1Sám 26:16
+1Sám 28:10
+1Sám 29:6
+2Kir 2:2
+2Kir 2:4
+2Kir 2:6
+2Kir 3:14
+2Kir 4:16
+2Kir 4:17
+2Kir 4:30
+2Kir 5:16
+2Kir 5:20
+2Kir 7:12
+2Kir 10:14
+2Kir 14:9
+2Kir 19:4
+2Kir 19:16
+2Kir 25:29
+2Kir 25:30
+2Krón 6:31
+2Krón 10:6
+2Krón 18:13
+2Krón 25:12
+2Krón 25:18
+2Móz 1:14
+2Móz 4:18
+2Móz 6:16
+2Móz 6:18
+2Móz 6:20
+2Móz 21:35
+2Móz 22:4
+2Móz 23:11
+2Móz 23:29
+2Sám 1:23
+2Sám 2:27
+2Sám 4:9
+2Sám 11:11
+2Sám 12:5
+2Sám 12:18
+2Sám 12:21
+2Sám 12:22
+2Sám 14:11
+2Sám 14:19
+2Sám 15:21
+2Sám 18:14
+2Sám 18:18
+2Sám 19:6
+2Sám 19:34
+2Sám 21:10
+2Sám 22:47
+2Sám 23:11
+2Sám 23:13
+3Móz 5:2
+3Móz 11:2
+3Móz 11:10
+3Móz 11:27
+3Móz 11:46
+3Móz 11:47
+3Móz 13:10
+3Móz 13:14
+3Móz 13:15
+3Móz 13:16
+3Móz 14:4
+3Móz 14:5
+3Móz 14:6
+3Móz 14:7
+3Móz 14:50
+3Móz 14:51
+3Móz 14:52
+3Móz 14:53
+3Móz 15:13
+3Móz 16:10
+3Móz 16:20
+3Móz 16:21
+3Móz 17:13
+3Móz 18:18
+3Móz 25:7
+3Móz 26:6
+3Móz 26:22
+4Móz 14:21
+4Móz 14:28
+4Móz 16:30
+4Móz 16:33
+4Móz 16:48
+4Móz 19:17
+4Móz 35:3
+5Móz 4:4
+5Móz 4:9
+5Móz 4:10
+5Móz 5:3
+5Móz 5:26
+5Móz 6:2
+5Móz 7:22
+5Móz 12:1
+5Móz 16:3
+5Móz 17:19
+5Móz 28:66
+5Móz 30:6
+5Móz 30:15
+5Móz 30:19
+5Móz 30:20
+5Móz 31:13
+5Móz 31:27
+5Móz 32:40
+5Móz 32:47
+Bír 8:19
+Bír 16:30
+Dán 8:4
+Dán 12:2
+Dán 12:7
+Ez 1:5
+Ez 1:13
+Ez 1:14
+Ez 1:15
+Ez 1:19
+Ez 1:20
+Ez 1:21
+Ez 1:22
+Ez 3:13
+Ez 5:11
+Ez 5:17
+Ez 7:13
+Ez 10:15
+Ez 10:17
+Ez 10:20
+Ez 14:15
+Ez 14:16
+Ez 14:18
+Ez 14:20
+Ez 14:21
+Ez 16:48
+Ez 17:16
+Ez 17:19
+Ez 18:3
+Ez 20:3
+Ez 20:31
+Ez 20:33
+Ez 26:20
+Ez 29:5
+Ez 31:6
+Ez 31:13
+Ez 32:4
+Ez 32:23
+Ez 32:24
+Ez 32:25
+Ez 32:26
+Ez 32:27
+Ez 32:32
+Ez 33:11
+Ez 33:15
+Ez 33:27
+Ez 34:5
+Ez 34:8
+Ez 34:25
+Ez 34:28
+Ez 35:6
+Ez 35:11
+Ez 38:20
+Ez 39:4
+Ez 39:17
+Ez 47:9
+Hós 1:10
+Hós 2:11
+Hós 2:17
+Hós 4:3
+Hós 4:15
+Hós 13:8
+Jer 2:13
+Jer 4:2
+Jer 5:2
+Jer 8:3
+Jer 10:10
+Jer 11:19
+Jer 12:9
+Jer 12:16
+Jer 16:14
+Jer 16:15
+Jer 17:13
+Jer 21:8
+Jer 22:24
+Jer 23:7
+Jer 23:8
+Jer 23:36
+Jer 27:6
+Jer 28:14
+Jer 38:16
+Jer 44:26
+Jer 46:18
+Jer 52:33
+Jer 52:34
+Jób 3:20
+Jób 5:22
+Jób 5:23
+Jób 7:7
+Jób 9:21
+Jób 10:1
+Jób 10:12
+Jób 12:10
+Jób 19:25
+Jób 24:22
+Jób 27:2
+Jób 28:13
+Jób 28:21
+Jób 30:23
+Jób 33:18
+Jób 33:20
+Jób 33:22
+Jób 33:28
+Jób 33:30
+Jób 36:14
+Jób 37:7
+Jób 39:1
+Jób 39:18
+Jób 40:15
+Jón 2:7
+Jón 4:3
+Jón 4:8
+Józs 1:5
+Józs 3:10
+Józs 4:14
+Józs 8:23
+Mal 2:5
+Préd 2:4
+Préd 2:18
+Préd 3:12
+Préd 4:2
+Préd 4:15
+Préd 5:18
+Préd 5:20
+Préd 6:8
+Préd 6:12
+Préd 7:2
+Préd 8:15
+Préd 9:5
+Préd 9:6
+Préd 9:7
+Préd 9:11
+Préd 10:16
+Péld 1:12
+Péld 2:19
+Péld 3:2
+Péld 3:18
+Péld 3:22
+Péld 4:10
+Péld 4:13
+Péld 4:22
+Péld 4:23
+Péld 5:6
+Péld 6:23
+Péld 8:35
+Péld 9:11
+Péld 10:11
+Péld 10:16
+Péld 10:17
+Péld 11:19
+Péld 11:30
+Péld 12:27
+Péld 13:12
+Péld 13:14
+Péld 14:27
+Péld 14:30
+Péld 15:4
+Péld 15:24
+Péld 15:31
+Péld 16:15
+Péld 16:22
+Péld 18:21
+Péld 19:23
+Péld 21:21
+Péld 22:4
+Péld 27:27
+Péld 31:12
+Ruth 2:20
+Ruth 3:13
+Sir 3:39
+Sir 3:53
+Sir 3:58
+Sof 2:9
+Sof 2:14
+Sof 2:15
+Zak 14:8
+Zsolt 7:6
+Zsolt 16:11
+Zsolt 17:14
+Zsolt 18:47
+Zsolt 21:5
+Zsolt 23:6
+Zsolt 26:9
+Zsolt 27:1
+Zsolt 27:4
+Zsolt 27:13
+Zsolt 30:6
+Zsolt 31:11
+Zsolt 34:13
+Zsolt 36:10
+Zsolt 38:20
+Zsolt 42:3
+Zsolt 42:9
+Zsolt 49:19
+Zsolt 50:10
+Zsolt 52:7
+Zsolt 55:16
+Zsolt 56:14
+Zsolt 58:10
+Zsolt 63:4
+Zsolt 63:5
+Zsolt 64:2
+Zsolt 66:9
+Zsolt 68:11
+Zsolt 68:31
+Zsolt 69:29
+Zsolt 74:19
+Zsolt 78:50
+Zsolt 79:2
+Zsolt 84:3
+Zsolt 88:4
+Zsolt 103:4
+Zsolt 104:11
+Zsolt 104:20
+Zsolt 104:25
+Zsolt 104:33
+Zsolt 116:9
+Zsolt 124:3
+Zsolt 128:5
+Zsolt 133:3
+Zsolt 142:6
+Zsolt 143:2
+Zsolt 143:3
+Zsolt 145:16
+Zsolt 146:2
+Zsolt 148:10
+Ámós 8:14
+Én 4:15
+Ézs 4:3
+Ézs 8:19
+Ézs 35:9
+Ézs 37:4
+Ézs 37:17
+Ézs 38:11
+Ézs 38:12
+Ézs 38:16
+Ézs 38:19
+Ézs 38:20
+Ézs 40:16
+Ézs 43:20
+Ézs 46:1
+Ézs 49:18
+Ézs 53:8
+Ézs 56:9
+Ézs 57:10
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2416 | n=449 | ts=2026-11-03T08:47Z | csatorna=cli
+## 4. kollokáció
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció G4151 + G5590 — 6 vers
+1Kor 15:45
+1Pét 1:22
+1Thessz 5:23
+Fil 1:27
+Mt 12:18
+Zsid 4:12
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció G4151 + G5591 — 2 vers
+1Kor 2:14
+Júd 1:19
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5591 | n=2 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció G4152 + G5590 — 0 vers
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4152+G5590 | n=0 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció G4152 + G5591 — 2 vers
+1Kor 15:44
+1Kor 15:46
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4152+G5591 | n=2 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H5315 + H2416 — 61 vers
+1Kir 1:29
+1Kir 20:32
+1Móz 1:20
+1Móz 1:21
+1Móz 1:24
+1Móz 1:30
+1Móz 2:7
+1Móz 2:19
+1Móz 9:5
+1Móz 9:10
+1Móz 9:12
+1Móz 9:15
+1Móz 9:16
+1Sám 1:26
+1Sám 17:55
+1Sám 20:3
+1Sám 25:26
+1Sám 25:29
+2Kir 2:2
+2Kir 2:4
+2Kir 2:6
+2Kir 4:30
+2Sám 4:9
+2Sám 11:11
+2Sám 14:19
+3Móz 5:2
+3Móz 11:10
+3Móz 11:46
+5Móz 4:9
+5Móz 30:6
+Bír 16:30
+Ez 14:20
+Ez 47:9
+Jer 38:16
+Jób 3:20
+Jób 9:21
+Jób 10:1
+Jób 12:10
+Jób 27:2
+Jób 33:18
+Jób 33:20
+Jób 33:22
+Jób 33:28
+Jób 33:30
+Jób 36:14
+Jón 4:3
+Jón 4:8
+Péld 3:22
+Péld 11:30
+Sir 3:58
+Zsolt 7:6
+Zsolt 26:9
+Zsolt 42:3
+Zsolt 49:19
+Zsolt 56:14
+Zsolt 66:9
+Zsolt 74:19
+Zsolt 78:50
+Zsolt 84:3
+Zsolt 88:4
+Zsolt 143:3
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H7307 + H5315 — 8 vers
+1Sám 1:15
+Jer 2:24
+Jób 7:11
+Jób 12:10
+Jón 4:8
+Préd 6:9
+Ézs 26:9
+Ézs 42:1
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7307+H5315 | n=8 | ts=2026-11-03T08:47Z | csatorna=cli
+## 5. igealak
+# napló: hozzáfűzve -> auditok.tsv
+# igealak-ellenőrzés G5591 — 6 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+1Kor 2:14	ψυχικὸς	psuchikos	natural	[The] natural
+1Kor 15:44	ψυχικόν,	psuchikon	natural	natural,
+1Kor 15:44	ψυχικόν,	psuchikon	natural	natural,
+1Kor 15:46	ψυχικόν,	psuchikon	natural	natural,
+Jak 3:15	ψυχικὴ	psuchikē	natural	unspiritual
+Júd 1:19	ψυχικοί,	psuchikoi	natural	worldly-minded,
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5591 | n=6 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# igealak-ellenőrzés G4152 — 26 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+1Kor 2:13	πνευματικοῖς	pneumatikois	spiritual	by spiritual [means]
+1Kor 2:13	πνευματικὰ	pneumatika	spiritual	spiritual things
+1Kor 2:15	πνευματικὸς	pneumatikos	spiritual	spiritual
+1Kor 3:1	πνευματικοῖς	pneumatikois	spiritual	to spiritual
+1Kor 9:11	πνευματικὰ	pneumatika	spiritual	spiritual things
+1Kor 10:3	πνευματικὸν	pneumatikon	spiritual	spiritual
+1Kor 10:4	πνευματικὸν	pneumatikon	spiritual	spiritual
+1Kor 10:4	πνευματικῆς	pneumatikēs	spiritual	[the] spiritual
+1Kor 12:1	πνευματικῶν,	pneumatikōn	spiritual	spiritual [gifts],
+1Kor 14:1	πνευματικά,	pneumatika	spiritual	spiritual gifts,
+1Kor 14:37	πνευματικός,	pneumatikos	spiritual	spiritual,
+1Kor 15:44	πνευματικόν.	pneumatikon	spiritual	spiritual.
+1Kor 15:44	πνευματικόν.	pneumatikon	spiritual	spiritual.
+1Kor 15:46	πνευματικὸν	pneumatikon	spiritual	spiritual
+1Kor 15:46	πνευματικόν.¶	pneumatikon	spiritual	spiritual.
+1Pét 2:5	πνευματικὸς	pneumatikos	spiritual	spiritual
+1Pét 2:5	πνευματικὰς	pneumatikas	spiritual	spiritual
+Ef 1:3	πνευματικῇ	pneumatikēa	spiritual	spiritual
+Ef 5:19	πνευματικαῖς,	pneumatikais	spiritual	spiritual,
+Ef 6:12	πνευματικὰ	pneumatika	spiritual	spiritual [forces]
+Gal 6:1	πνευματικοὶ	pneumatikoi	spiritual	spiritual [ones]
+Kol 1:9	πνευματικῇ	pneumatikēa	spiritual	spiritual
+Kol 3:16	πνευματικαῖς	pneumatikais	spiritual	spiritual
+Róm 1:11	πνευματικὸν	pneumatikon	spiritual	spiritual
+Róm 7:14	πνευματικός	pneumatikos	spiritual	spiritual
+Róm 15:27	πνευματικοῖς	pneumatikois	spiritual	spiritual
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4152 | n=26 | ts=2026-11-03T08:47Z | csatorna=cli
+## 6. LXX-híd
+# napló: hozzáfűzve -> auditok.tsv
+# LXX-híd 1Móz 2:7 — 25 görög szó-előfordulás
+# LXX-vers: Genesis 2:7 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G4111	ἔπλασεν	verb aor ind act 3rd sg
+G3588	ὁ	article masc nom sg
+G2316	θεὸς	noun masc nom sg
+G3588	τὸν	article masc acc sg
+G0444	ἄνθρωπον	noun masc acc sg
+	χοῦν	noun masc acc sg
+G0575	ἀπὸ	preposition
+G3588	τῆς	article fem gen sg
+G1093	γῆς	noun fem gen sg
+G2532	καὶ	conjunction
+G1720	ἐνεφύσησεν	verb aor ind act 3rd sg
+G1519	εἰς	preposition
+G3588	τὸ	article neut nom/voc/acc sg
+G4383	πρόσωπον	noun neut nom/voc/acc sg
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G4157	πνοὴν	noun fem acc sg
+G2222	ζωῆς	noun fem gen sg
+G2532	καὶ	conjunction
+G1096	ἐγένετο	verb aor ind mid/pass 3rd sg
+G3588	ὁ	article masc nom sg
+G0444	ἄνθρωπος	noun masc nom sg
+G1519	εἰς	preposition
+G5590	ψυχὴν	noun fem acc sg
+G2198	ζῶσαν	participle pres ptc act fem acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0444: 503 ÚSZ-vers — 1Ján 5:9, 1Kor 1:25, 1Kor 2:5, 1Kor 2:9, 1Kor 2:11, 1Kor 2:14, 1Kor 3:3, 1Kor 3:4, 1Kor 3:21, 1Kor 4:1 ...
+  G0575: 623 ÚSZ-vers — 1Ján 1:1, 1Ján 1:5, 1Ján 1:7, 1Ján 1:9, 1Ján 2:7, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20, 1Ján 2:24, 1Ján 2:27 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1096: 636 ÚSZ-vers — 1Ján 2:18, 1Kor 1:30, 1Kor 2:3, 1Kor 3:13, 1Kor 3:18, 1Kor 4:5, 1Kor 4:9, 1Kor 4:13, 1Kor 4:16, 1Kor 6:15 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G1720: 1 ÚSZ-vers — Ján 20:22
+  G2198: 127 ÚSZ-vers — 1Ján 4:9, 1Kor 7:39, 1Kor 9:14, 1Kor 15:45, 1Pét 1:3, 1Pét 1:23, 1Pét 2:4, 1Pét 2:5, 1Pét 2:24, 1Pét 4:5 ...
+  G2222: 128 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 2:25, 1Ján 3:14, 1Ján 3:15, 1Ján 5:11, 1Ján 5:12, 1Ján 5:13, 1Ján 5:16, 1Ján 5:20 ...
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4111: 2 ÚSZ-vers — 1Tim 2:13, Róm 9:20
+  G4157: 2 ÚSZ-vers — ApCsel 2:2, ApCsel 17:25
+  G4383: 73 ÚSZ-vers — 1Kor 13:12, 1Kor 14:25, 1Pét 3:12, 1Thessz 2:17, 1Thessz 3:10, 2Kor 1:11, 2Kor 2:10, 2Kor 3:7, 2Kor 3:13, 2Kor 3:18 ...
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:1Móz 2:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# LXX-híd Jób 12:10 — 13 görög szó-előfordulás
+# LXX-vers: Job (LXX) 12:10 (karoli_ok=egyező)
+G1487	εἰ	conjunction
+G3361	μὴ	particle
+G1722	ἐν	preposition
+G5495	χειρὶ	noun fem dat sg
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G5590	ψυχὴ	noun fem nom sg
+G3956	πάντων	adjective masc/neut gen pl
+G3588	τῶν	article masc/fem/neut gen pl
+G2198	ζώντων	participle pres ptc act masc/neut gen pl
+G2532	καὶ	conjunction
+G4151	πνεῦμα	noun neut nom/voc/acc sg
+G3956	παντὸς	adjective masc gen sg
+G0444	ἀνθρώπου	noun masc gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0444: 503 ÚSZ-vers — 1Ján 5:9, 1Kor 1:25, 1Kor 2:5, 1Kor 2:9, 1Kor 2:11, 1Kor 2:14, 1Kor 3:3, 1Kor 3:4, 1Kor 3:21, 1Kor 4:1 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1487: 474 ÚSZ-vers — 1Ján 2:19, 1Ján 2:22, 1Ján 3:13, 1Ján 4:1, 1Ján 4:11, 1Ján 5:5, 1Ján 5:9, 1Kor 1:14, 1Kor 1:16, 1Kor 2:2 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2198: 127 ÚSZ-vers — 1Ján 4:9, 1Kor 7:39, 1Kor 9:14, 1Kor 15:45, 1Pét 1:3, 1Pét 1:23, 1Pét 2:4, 1Pét 2:5, 1Pét 2:24, 1Pét 4:5 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3361: 935 ÚSZ-vers — 1Ján 2:1, 1Ján 2:4, 1Ján 2:15, 1Ján 2:22, 1Ján 2:28, 1Ján 3:10, 1Ján 3:13, 1Ján 3:14, 1Ján 3:18, 1Ján 3:21 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G4151: 351 ÚSZ-vers — 1Ján 3:24, 1Ján 4:1, 1Ján 4:2, 1Ján 4:3, 1Ján 4:6, 1Ján 4:13, 1Ján 5:6, 1Ján 5:7, 1Ján 5:8, 1Kor 2:4 ...
+  G5495: 171 ÚSZ-vers — 1Ján 1:1, 1Kor 4:12, 1Kor 12:15, 1Kor 12:21, 1Kor 16:21, 1Pét 5:6, 1Thessz 4:11, 1Tim 2:8, 1Tim 4:14, 1Tim 5:22 ...
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:Jób 12:10 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# LXX-híd Jón 4:8 — 37 görög szó-előfordulás
+# LXX-vers: Jonah 4:8 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G1096	ἐγένετο	verb aor ind mid/pass 3rd sg
+G0260	ἅμα	adverb
+G3588	τῷ	article masc/neut dat sg
+G0393	ἀνατεῖλαι	verb aor inf act
+G3588	τὸν	article masc acc sg
+G2246	ἥλιον	noun masc acc sg
+G2532	καὶ	conjunction
+G4367	προσέταξεν	verb aor ind act 3rd sg
+G3588	ὁ	article masc nom sg
+G2316	θεὸς	noun masc nom sg
+G4151	πνεύματι	noun neut dat sg
+G2742	καύσωνος	noun masc gen sg
+	συγκαίοντι	participle pres ptc act masc/neut dat sg
+G2532	καὶ	conjunction
+G3960	ἐπάταξεν	verb aor ind act 3rd sg
+G3588	ὁ	article masc nom sg
+G2246	ἥλιος	noun masc nom sg
+G1909	ἐπὶ	preposition
+G3588	τὴν	article fem acc sg
+G2776	κεφαλὴν	noun fem acc sg
+G2495	Ιωνα	proper noun masc gen sg
+G2532	καὶ	conjunction
+	ὠλιγοψύχησεν	verb aor ind act 3rd sg
+G2532	καὶ	conjunction
+	ἀπελέγετο	verb imperf ind mid/pass 3rd sg
+G3588	τὴν	article fem acc sg
+G5590	ψυχὴν	noun fem acc sg
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G2532	καὶ	conjunction
+G3004	εἶπεν	verb aor ind act 3rd sg
+G2570	καλόν	adjective neut nom/voc/acc sg
+G1473	μοι	pronoun 1st dat sg
+G0599	ἀποθανεῖν	verb aor inf act
+G1473	με	pronoun 1st acc sg
+G2228	ἢ	conjunction
+G2198	ζῆν	verb pres inf act
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0260: 10 ÚSZ-vers — 1Thessz 4:17, 1Thessz 5:10, 1Tim 5:13, ApCsel 24:26, ApCsel 27:40, Filem 1:22, Kol 4:3, Mt 13:29, Mt 20:1, Róm 3:12
+  G0393: 9 ÚSZ-vers — 2Pét 1:19, Jak 1:11, Luk 12:54, Mk 4:6, Mk 16:2, Mt 4:16, Mt 5:45, Mt 13:6, Zsid 7:14
+  G0599: 101 ÚSZ-vers — 1Kor 8:11, 1Kor 9:15, 1Kor 15:3, 1Kor 15:22, 1Kor 15:31, 1Kor 15:32, 1Kor 15:36, 1Thessz 4:14, 1Thessz 5:10, 2Kor 5:14 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1096: 636 ÚSZ-vers — 1Ján 2:18, 1Kor 1:30, 1Kor 2:3, 1Kor 3:13, 1Kor 3:18, 1Kor 4:5, 1Kor 4:9, 1Kor 4:13, 1Kor 4:16, 1Kor 6:15 ...
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2198: 127 ÚSZ-vers — 1Ján 4:9, 1Kor 7:39, 1Kor 9:14, 1Kor 15:45, 1Pét 1:3, 1Pét 1:23, 1Pét 2:4, 1Pét 2:5, 1Pét 2:24, 1Pét 4:5 ...
+  G2228: 290 ÚSZ-vers — 1Ján 4:4, 1Kor 1:13, 1Kor 2:1, 1Kor 3:5, 1Kor 4:3, 1Kor 4:21, 1Kor 5:10, 1Kor 5:11, 1Kor 6:2, 1Kor 6:9 ...
+  G2246: 32 ÚSZ-vers — 1Kor 15:41, ApCsel 2:20, ApCsel 13:11, ApCsel 26:13, ApCsel 27:20, Ef 4:26, Jak 1:11, Jel 1:16, Jel 6:12, Jel 7:2 ...
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2495: 7 ÚSZ-vers — Luk 11:29, Luk 11:30, Luk 11:32, Mt 12:39, Mt 12:40, Mt 12:41, Mt 16:4
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2570: 91 ÚSZ-vers — 1Kor 5:6, 1Kor 7:1, 1Kor 7:8, 1Kor 7:26, 1Kor 9:15, 1Pét 2:12, 1Pét 4:10, 1Thessz 5:21, 1Tim 1:8, 1Tim 1:18 ...
+  G2742: 3 ÚSZ-vers — Jak 1:11, Luk 12:55, Mt 20:12
+  G2776: 68 ÚSZ-vers — 1Kor 11:3, 1Kor 11:4, 1Kor 11:5, 1Kor 11:7, 1Kor 11:10, 1Kor 12:21, 1Pét 2:7, ApCsel 4:11, ApCsel 18:6, ApCsel 18:18 ...
+  G3004: 1255 ÚSZ-vers — 1Ján 2:4, 1Ján 2:6, 1Ján 2:9, 1Ján 5:16, 1Kor 1:10, 1Kor 1:12, 1Kor 3:4, 1Kor 6:5, 1Kor 7:6, 1Kor 7:8 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3960: 10 ÚSZ-vers — ApCsel 7:24, ApCsel 12:7, ApCsel 12:23, Jel 11:6, Jel 19:15, Luk 22:49, Luk 22:50, Mk 14:27, Mt 26:31, Mt 26:51
+  G4151: 351 ÚSZ-vers — 1Ján 3:24, 1Ján 4:1, 1Ján 4:2, 1Ján 4:3, 1Ján 4:6, 1Ján 4:13, 1Ján 5:6, 1Ján 5:7, 1Ján 5:8, 1Kor 2:4 ...
+  G4367: 7 ÚSZ-vers — ApCsel 10:33, ApCsel 10:48, ApCsel 17:26, Luk 5:14, Mk 1:44, Mt 1:24, Mt 8:4
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:Jón 4:8 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-03T08:47Z | csatorna=cli

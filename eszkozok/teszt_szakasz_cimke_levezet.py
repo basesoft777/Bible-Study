@@ -35,10 +35,10 @@ def sz(strong, sorszam, utvonal):
 
 def adat(macula=None):
     a = {
-        'cimke': {('BDB', 'H7121', 'Qal/2/c'): {'szotar': 'BDB', 'strong': 'H7121', 'szakasz': 'Qal/2/c',
-                                                'lexikon_jelentes_szam': '2.c', 'cimke_hu': 'segítségül hívni'},
-                  ('BDB', 'H7585', '-/2/b'): {'szotar': 'BDB', 'strong': 'H7585', 'szakasz': '-/2/b',
-                                              'lexikon_jelentes_szam': '', 'cimke_hu': 'az igaz kiváltása'}},
+        'cimke': {('BDB', 'H7121', '', 'Qal/2/c'): {'szotar': 'BDB', 'strong': 'H7121', 'szakasz': 'Qal/2/c',
+                                                    'lexikon_jelentes_szam': '2.c', 'cimke_hu': 'segítségül hívni'},
+                  ('BDB', 'H7585', '', '-/2/b'): {'szotar': 'BDB', 'strong': 'H7585', 'szakasz': '-/2/b',
+                                                  'lexikon_jelentes_szam': '', 'cimke_hu': 'az igaz kiváltása'}},
         'bdb_sz': {
             'H7121': [sz('H7121', 1, 'fej'), sz('H7121', 2, 'Qal/2/c'), sz('H7121', 3, "Niph'al/2/c"),
                       sz('H7121', 4, 'Qal/3/-')],
@@ -70,18 +70,18 @@ def jelek(js):
 class Levezetes(unittest.TestCase):
     def test_binyan_a_morfologiabol(self):
         ut, js = SL.levezet_sor(adat(), sor('1Móz 4:26', '2.c'), set())
-        self.assertEqual(ut, 'Qal/2/c')
+        self.assertEqual(ut, ('', 'Qal/2/c'))
         self.assertEqual(jelek(js), set())
         ut, _ = SL.levezet_sor(adat(), sor('Ézs 43:7', '2.c'), set())
-        self.assertEqual(ut, "Niph'al/2/c")
+        self.assertEqual(ut, ('', "Niph'al/2/c"))
 
     def test_szam_binyan_nelkul(self):
-        self.assertEqual(SL.levezet_sor(adat(), sor('Ézs 14:11', '2.a', 'H7585'), set())[0], '-/2/a')
-        self.assertEqual(SL.levezet_sor(adat(), sor('Péld 1:12', '1', 'H7585'), set())[0], '-/1/-')
+        self.assertEqual(SL.levezet_sor(adat(), sor('Ézs 14:11', '2.a', 'H7585'), set())[0], ('', '-/2/a'))
+        self.assertEqual(SL.levezet_sor(adat(), sor('Péld 1:12', '1', 'H7585'), set())[0], ('', '-/1/-'))
 
     def test_j1_pelda_mas_pontra(self):
         ut, js = SL.levezet_sor(adat(), sor('Jób 17:12', '1', 'H7585'), set())
-        self.assertEqual(ut, '-/1/-')  # nem választ: a levezetett marad, a jelzés kimondja
+        self.assertEqual(ut, ('', '-/1/-'))  # nem választ: a levezetett marad, a jelzés kimondja
         self.assertIn('J1', jelek(js))
 
     def test_j2_alternativa_ket_binyan_ket_pelda(self):
@@ -102,7 +102,7 @@ class Levezetes(unittest.TestCase):
 
     def test_tbesg_kulcs(self):
         self.assertEqual(SL.levezet_sor(adat(), sor('Róm 10:13', '2', 'G1941', 'TBESG'),
-                                        {('TBESG', 'G1941', '2')})[0], '2')
+                                        {('TBESG', 'G1941', '2')})[0], ('', '2'))
 
     def test_j5_tagolatlan(self):
         self.assertEqual(jelek(SL.levezet_sor(adat(), sor('1Móz 1:2', 'tagolatlan', 'H0922'), set())[1]), {'J5'})
@@ -122,7 +122,7 @@ class Levezetes(unittest.TestCase):
 
     def test_j6_minosito(self):
         ut, js = SL.levezet_sor(adat(), sor('1Móz 4:26', '2.c (tagadva)'), set())
-        self.assertEqual(ut, 'Qal/2/c')
+        self.assertEqual(ut, ('', 'Qal/2/c'))
         self.assertIn('J6', jelek(js))
 
 
@@ -134,10 +134,10 @@ class Cimke(unittest.TestCase):
 
     def test_j7(self):
         a = adat()
-        self.assertEqual(SL.cimke_javaslat(a, 'BDB', 'H7585', '-/1/-', [])[0], 'az alvilág')
-        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7585', '-/2/-', [])[1]))  # nincs magyar szöveg
-        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7585', '-/2/a', [])[1]))  # tiltott: motívum
-        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7121', 'Qal/3/-',
+        self.assertEqual(SL.cimke_javaslat(a, 'BDB', 'H7585', ('', '-/1/-'), [])[0], 'az alvilág')
+        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7585', ('', '-/2/-'), [])[1]))  # nincs magyar szöveg
+        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7585', ('', '-/2/a'), [])[1]))  # tiltott: motívum
+        self.assertIn('J7', jelek(SL.cimke_javaslat(a, 'BDB', 'H7121', ('', 'Qal/3/-'),
                                                     [{'minta': 'kihirdet', 'magyar_alak': 'x'}])[1]))
 
 
@@ -146,8 +146,8 @@ class Teendo(unittest.TestCase):
         self.d = tempfile.mkdtemp(prefix='F148_lev_')
         self.ut = os.path.join(self.d, 'szotar_szakasz_cimke.tsv')
         self.eredeti = ('\t'.join(SL.CIMKE_FEJ) + '\n'
-                        'BDB\tH7121\tQal/2/c\t2.c\tsegítségül hívni\tscope=manual | forras=x | ts=2026-10-26\t\n'
-                        'BDB\tH7585\t-/2/b\t\taz igaz kiváltása\tscope=manual | forras=y | ts=2026-10-28\t\n')
+                        'BDB\tH7121\t\tQal/2/c\t2.c\tsegítségül hívni\tscope=manual | forras=x | ts=2026-10-26\t\n'
+                        'BDB\tH7585\t\t-/2/b\t\taz igaz kiváltása\tscope=manual | forras=y | ts=2026-10-28\t\n')
         with open(self.ut, 'w', encoding='utf-8', newline='') as f:
             f.write(self.eredeti)
 
@@ -169,35 +169,56 @@ class Teendo(unittest.TestCase):
         self.assertIn('forras=szakasz_cimke_levezet.py', ki['1Móz 4:26']['proveniencia'])
         self.assertIn('Macula', ki['1Móz 4:26']['proveniencia'])
         irando = SL.irasok(ki.values())
-        self.assertEqual(set(irando), {('BDB', 'H7585', '-/1/-'), ('BDB', 'H7585', '-/2/b')})
+        self.assertEqual(set(irando), {('BDB', 'H7585', '', '-/1/-'), ('BDB', 'H7585', '', '-/2/b')})
 
     def test_ir_tabla(self):
-        irando = {('BDB', 'H7585', '-/1/-'): ('uj_sor', '1', 'az alvilág'),
-                  ('BDB', 'H7585', '-/2/b'): ('kulcs_potlas', '2.b', 'az igaz kiváltása')}
+        irando = {('BDB', 'H7585', '', '-/1/-'): ('uj_sor', '1', 'az alvilág'),
+                  ('BDB', 'H7585', '', '-/2/b'): ('kulcs_potlas', '2.b', 'az igaz kiváltása')}
         p, u = SL.ir_tabla(self.ut, irando, '2026-11-01')
         self.assertEqual((p, u), (1, 1))
         with open(self.ut, encoding='utf-8', newline='') as f:
             sorok = f.read().split('\n')
         self.assertEqual(sorok[1], self.eredeti.split('\n')[1])  # meglévő kézi sor bájtra változatlan
         potolt = sorok[2].split('\t')
-        self.assertEqual((potolt[3], potolt[4]), ('2.b', 'az igaz kiváltása'))  # a címke nem íródik felül
-        self.assertIn('szakasz_cimke_levezet.py', potolt[6])
+        self.assertEqual((potolt[4], potolt[5]), ('2.b', 'az igaz kiváltása'))  # a címke nem íródik felül
+        self.assertIn('szakasz_cimke_levezet.py', potolt[7])
         uj = sorok[3].split('\t')
-        self.assertEqual(uj[:5], ['BDB', 'H7585', '-/1/-', '1', 'az alvilág'])
-        self.assertIn('forras=szakasz_cimke_levezet.py (gépi, DT439)', uj[5])
+        self.assertEqual(uj[:6], ['BDB', 'H7585', '', '-/1/-', '1', 'az alvilág'])
+        self.assertIn('forras=szakasz_cimke_levezet.py (gépi, DT439)', uj[6])
 
     def test_ir_tabla_megall(self):
         with self.assertRaises(SystemExit):
-            SL.ir_tabla(self.ut, {('BDB', 'H7121', 'Qal/2/c'): ('uj_sor', '2.c', 'x')}, '2026-11-01')
+            SL.ir_tabla(self.ut, {('BDB', 'H7121', '', 'Qal/2/c'): ('uj_sor', '2.c', 'x')}, '2026-11-01')
         with self.assertRaises(SystemExit):
-            SL.ir_tabla(self.ut, {('BDB', 'H7121', 'Qal/2/c'): ('kulcs_potlas', '3', 'x')}, '2026-11-01')
+            SL.ir_tabla(self.ut, {('BDB', 'H7121', '', 'Qal/2/c'): ('kulcs_potlas', '3', 'x')}, '2026-11-01')
         with open(self.ut, encoding='utf-8', newline='') as f:
             self.assertEqual(f.read(), self.eredeti)
 
     def test_ket_kulcs_egy_szakaszra(self):
-        ki = [{'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'levezetett_szakasz': '-/1/-',
+        ki = [{'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'bdb_id': 'BDB1', 'levezetett_szakasz': '-/1/-',
                'jelentes_szam': '1', 'cimke_hu_javaslat': 'a'},
-              {'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'levezetett_szakasz': '-/1/-',
+              {'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'bdb_id': 'BDB1', 'levezetett_szakasz': '-/1/-',
+               'jelentes_szam': '1', 'cimke_hu_javaslat': 'b'}]
+        with self.assertRaises(ValueError):
+            SL.irasok(ki)
+
+    def test_tobb_szocikk(self):
+        # F123.BDBGER: a számozás a Strong több BDB-szócikkében is áll (H2416: BDB2718, BDB2721 `-/1/-`): nem választ
+        a = adat()
+        a['bdb_sz']['H2416'] = [dict(sz('H2416', 1, 'fej'), bdb_id='BDB2718'), dict(sz('H2416', 2, '-/1/-'), bdb_id='BDB2718'),
+                                dict(sz('H2416', 3, 'fej'), bdb_id='BDB2721'), dict(sz('H2416', 4, '-/1/-'), bdb_id='BDB2721')]
+        ut, js = SL.levezet_sor(a, sor('1Móz 2:7', '1', 'H2416'), set())
+        self.assertIsNone(ut)
+        self.assertIn('J2', jelek(js))
+        self.assertIn('több szócikk', ' '.join(r for _j, r in js))
+        a['bdb_sz']['H2416'] = a['bdb_sz']['H2416'][2:]
+        ut, js = SL.levezet_sor(a, sor('1Móz 2:7', '1', 'H2416'), set())
+        self.assertEqual(ut, ('BDB2721', '-/1/-'))
+
+    def test_ket_kulcs_egy_szakaszra_vege(self):
+        ki = [{'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'bdb_id': 'BDB1', 'levezetett_szakasz': '-/1/-',
+               'jelentes_szam': '1', 'cimke_hu_javaslat': 'a'},
+              {'teendo': 'uj_sor', 'szotar': 'BDB', 'strong': 'H1', 'bdb_id': 'BDB1', 'levezetett_szakasz': '-/1/-',
                'jelentes_szam': '1', 'cimke_hu_javaslat': 'b'}]
         with self.assertRaises(ValueError):
             SL.irasok(ki)

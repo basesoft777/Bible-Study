@@ -585,6 +585,17 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(h.count('tabindex'), 1)
         self.assertTrue(h.startswith('<a href="#x"><span><abbr class="rovidites" title="a címszó: &lt;i&gt;&#34;x&#34;&lt;/i&gt;">ק׳</abbr>'))
 
+    def test_bdb_atiras_magyar_es_angol(self):
+        """B3, DT-F164a (felhasználó, 2026-11-03: „Seól álljon”): a torz átírás („Sh®°ôl”) a magyar blokkban „Seól”, az angolban a
+        helyreállított „Sheʾôl” (adat/bdb_forras_javitas.tsv `atiras` / `javitva`)."""
+        class K:
+            strong = 'H0011'
+
+            def memo(self, kulcs, f):
+                return '', ''
+        self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>a Sh®°ôlban</p>'), magyar=True)), '<p>a Seólban</p>')
+        self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>in Sh®°ôl</p>'))), '<p>in Sheʾôl</p>')
+
     def test_bdb_proba_es_mert_pontossag(self):
         """DT-F99l (c): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll (F99, seed-101)."""
         t = self.get('/r/szo/H7451').get_data(as_text=True)

@@ -1320,8 +1320,10 @@ class E28Teszt(unittest.TestCase):
         forras = open(os.path.join(gy, 'motivumok', 'ZZTESZT-001.md'), encoding='utf-8').read()
         return (self.GEN_FEJ % datum) + '## 2. Adat\n' + adat + '## 3. Olvasoi\n' + forras
 
-    def _futtat(self, gy, fajlok=('__TELJES__',), marker_celok=()):
+    def _futtat(self, gy, fajlok=('__TELJES__',), marker_celok=(), generator=None):
         def hamis_generator(cel, azonosito, datum, kimenet):
+            if generator:
+                return generator(cel, azonosito, datum, kimenet)
             ut = os.path.join(kimenet, *_LAP.split('/'))
             os.makedirs(os.path.dirname(ut), exist_ok=True)
             with open(ut, 'w', encoding='utf-8', newline='') as f:
@@ -1440,6 +1442,68 @@ class E28Teszt(unittest.TestCase):
             t = self._futtat(gy)
             self.assertEqual(len(t), 1)
             self.assertIn('nincs GENERÁLT jelölő', t[0].reszlet)
+
+    # B4: a helyben frissítő út (--ir) == a nulláról generálás
+
+    def _futtat_helyben(self, gy, helyben_torzs):
+        """A hamis generátor új fájlnál a _render kimenetét írja; meglévő fájlnál
+        (a helyben frissítő út) a `helyben_torzs(meglevo_bajtok, render)` kimenetét."""
+        latott = []
+
+        def hamis_generator(cel, azonosito, datum, kimenet):
+            ut = os.path.join(kimenet, *_LAP.split('/'))
+            os.makedirs(os.path.dirname(ut), exist_ok=True)
+            uj = self._render(gy, datum)
+            if os.path.exists(ut):
+                with open(ut, 'rb') as f:
+                    meglevo = f.read()
+                latott.append(meglevo)
+                uj = helyben_torzs(meglevo, uj)
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write(uj)
+            return 0, ''
+
+        return self._futtat(gy, generator=hamis_generator), latott
+
+    def test_helyben_ag_crlf_bemenetet_kap_es_egyezo_kimenet_zold(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, latott = self._futtat_helyben(gy, lambda meglevo, uj: uj)
+            self.assertEqual(t, [])
+            self.assertEqual(len(latott), 1)
+            self.assertIn(b'\r\n', latott[0])
+            self.assertNotIn(b'\n', latott[0].replace(b'\r\n', b''))
+
+    def test_negativ_helyben_ket_ures_sorral_tobb_piros(self):
+        # a TEREMT-002 esete: a --ir két üres sort tett a res_labjegyzet blokk elé
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, _ = self._futtat_helyben(gy, lambda meglevo, uj: uj.replace('## 3.', '\n\n## 3.'))
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('helyben frissítő út', t[0].reszlet)
+            self.assertIn('nem a lapon', t[0].reszlet)
+            self.assertGreater(t[0].sor, 1)
+
+    def test_negativ_helyben_crlf_kimenet_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, _ = self._futtat_helyben(gy, lambda meglevo, uj: meglevo.decode('utf-8'))
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('helyben frissítő út', t[0].reszlet)
+
+    def test_kimeneti_ut_kiirasa_mas_meghajton_nem_bukik(self):
+        # a munkakönyvtár D:-n, az E28 ideiglenes --kimenet-e a C:-n: a relpath ValueError-t dob
+        from unittest import mock
+        G = SZ._general_modul()
+        tmp = os.path.join(tempfile.gettempdir(), 'e28_x', 'lexikon', 'ZZTESZT-001_TUDOMANYOS.md')
+
+        def mas_meghajto(ut, start=None):
+            raise ValueError("path is on mount 'C:', start on mount 'D:'")
+
+        with mock.patch.object(G.os.path, 'relpath', mas_meghajto):
+            self.assertEqual(G.kiirt_ut(tmp), os.path.abspath(tmp))
+        self.assertEqual(G.kiirt_ut(os.path.join(G.ROOT, 'lexikon', 'x.md')),
+                         os.path.join('lexikon', 'x.md'))
 
     def test_negativ_crlf_blob_lf_generalt_kimenettel_piros(self):
         # CI-terv 1. szakasz 3. pont: a sorvegnek is egyeznie kell (nincs normalizalas)
