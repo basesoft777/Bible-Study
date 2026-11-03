@@ -444,6 +444,40 @@ class PrTerkepOrTest(unittest.TestCase):
     def test_nincs_alap_nincs_hiba(self):
         self.assertEqual(F.pr_terkep_ellenorzes(self.ut, 'nincs/ilyen'), [])
 
+    # CI.PRALAP.1: a PR-ellenorzes alapja a refs/pull/N/merge elso szuloje (HEAD^1),
+    # nem az elavulhato base.sha.
+    def _merge_ref(self, pr_valtoztat=False):
+        """A main bot-committal tovabblep a PR nyitasa utan; a kicsekkolt merge-ref."""
+        self.git('checkout', '-q', '-b', 'pr')
+        self.fajl('y.txt', 'b')
+        if pr_valtoztat:
+            self.fajl('FELADATTERKEP.html', '<html>')
+        self.commit('pr')
+        self.git('checkout', '-q', 'main')
+        elavult = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=self.ut, check=True,
+                                 stdout=subprocess.PIPE).stdout.decode().strip()
+        self.fajl('feladatterkep.json', '3')
+        self.commit('bot')
+        self.git('checkout', '-q', '--detach', 'main')
+        self.git('merge', '-q', '--no-ff', '--no-edit', 'pr')
+        return elavult
+
+    def test_elavult_base_sha_regi_viselkedes_bukik(self):
+        elavult = self._merge_ref()
+        self.assertTrue(self.ellenoriz_alappal(elavult))
+
+    def test_merge_ref_elso_szuloje_nem_bukik_elavult_base_mellett(self):
+        self._merge_ref()
+        self.assertEqual(self.ellenoriz_alappal('HEAD^1'), [])
+
+    def test_merge_ref_elso_szuloje_a_pr_sajat_valtoztatasat_elkapja(self):
+        self._merge_ref(pr_valtoztat=True)
+        self.assertEqual([f for f, _ in self.ellenoriz_alappal('HEAD^1')],
+                         ['FELADATTERKEP.html'])
+
+    def ellenoriz_alappal(self, alap):
+        return F.pr_terkep_ellenorzes(self.ut, alap)
+
 
 class AtvetelTest(Alap):
     def test_tabla_sorok_es_atvetel(self):
