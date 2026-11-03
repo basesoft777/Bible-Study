@@ -921,6 +921,17 @@ def render_study_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
 # Kimenet-írás
 # ---------------------------------------------------------------------------
 
+def kiirt_ut(ut):
+    """Az út a futásnaplóba: a repón belül ROOT-relatív, máshol abszolút. A
+    `--kimenet` (pl. az E28 ideiglenes könyvtára) más meghajtón is lehet,
+    mint a repó (Windows: a munkakönyvtár D:-n, a TEMP C:-n), és ott az
+    os.path.relpath ValueError-t dob."""
+    try:
+        return os.path.relpath(ut, ROOT)
+    except ValueError:
+        return os.path.abspath(ut)
+
+
 def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     domináns, crlf, lf = sorveg_elemez(forras_ut_a_sorveghez)
     print('  sorvég a célfájlban (%s): CRLF=%d, LF=%d -> domináns=%r'
@@ -935,7 +946,7 @@ def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     sorok = tartalom.split('\n')
     with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
         f.write(domináns.join(sorok))
-    print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
+    print('  megírva: %s (%d bájt)' % (kiirt_ut(cel_ut), os.path.getsize(cel_ut)))
     return cel_ut
 
 
@@ -955,7 +966,7 @@ def hianylista_ir(args, sorok, jeloltek):
     os.makedirs(os.path.dirname(cel_ut), exist_ok=True)
     with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
         f.write(tartalom)
-    print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
+    print('  megírva: %s (%d bájt)' % (kiirt_ut(cel_ut), os.path.getsize(cel_ut)))
     return cel_ut
 
 
