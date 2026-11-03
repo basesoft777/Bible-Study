@@ -10,7 +10,7 @@ A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳�
 (י׳). A `jelol` az önálló, egybetűs alakot jelöli (<abbr>, címmel), a forrás és a javított alakban is.
 
 A megjelenítés sorrendje (DT-F131z; a lexikon-generátor és az olvasó ugyanígy): `atiras_javit` (a latin betűs
-átírások betűkészlet-hibája, `adat/bdb_forras_javitas.tsv` `atiras` / `javitva`, DT-F162a) → `heber_sorrend_javit` (a több
+átírások betűkészlet-hibája, `adat/bdb_forras_javitas.tsv` `atiras` / `javitva`, B3) → `heber_sorrend_javit` (a több
 szavas kifejezések Biblia által igazolt sorrend-javítása, `heber_sorrend` / `javitva`) → `izolal` (LRM a héber futam után,
 ha szám következik) → `jelol`.
 
@@ -152,7 +152,7 @@ def atiras_javitasok(ut=None):
 
 def atiras_javit(szoveg, strong, javitasok=None):
     """A Strong `javitva` átírásainak cseréje a szövegben, részszöveg szerint (a torz alak az angol szövegben és a magyar
-    fordításban is szó szerint áll, a fordításban toldalékkal: „Sh®°ôlban” → „Sheʾôlban”; DT-F162a)."""
+    fordításban is szó szerint áll, a fordításban toldalékkal: „Sh®°ôlban” → „Sheʾôlban”; B3)."""
     parok = (javitasok if javitasok is not None else atiras_javitasok()).get(_strong_kulcs(strong))
     if not parok or not szoveg:
         return szoveg

@@ -67,7 +67,7 @@ class Atiras(unittest.TestCase):
     JAV = {'H0011': [('Sh®°ôl', 'Sheʾôl')]}
 
     def test_csere_toldalekkal(self):
-        # DT-F162a: részszöveg szerint, a magyar toldalékkal is
+        # DT-F164a: részszöveg szerint, a magyar toldalékkal is
         self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl).', 'H11', self.JAV), 'a Sheʾôlban (Sheʾôl).')
         self.assertEqual(BR.atiras_javit('a Sh®°ôlban', 'H0001', self.JAV), 'a Sh®°ôlban')
 

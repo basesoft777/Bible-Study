@@ -231,13 +231,13 @@ def heber_sorrend_sorok(stat, ts):
     return ki
 
 
-# ---------------------------------------------------------------- atiras (B3, DT-F162a)
+# ---------------------------------------------------------------- atiras (B3, DT-F164a)
 # A DictBDB.json latin betűs átírásainak betűkészlet-hibája: a „®” a redukált magánhangzó (ᵉ), a „°” az álef (ʾ) rossz kódja
 # (pl. „Sh®°ôl” = Sheʾôl, H0011 és 32 további Strong). Egy sor = egy „®”-t tartalmazó szóalak egy előfordulása a szakasztábla
 # sorában (`elofordulas`: a `forras_alak` hányadik részszöveg-előfordulása a sor `szoveg`-ében). A javított alak a SZABÁLYBÓL jön
 # („e?®” → „e”, „°” → „ʾ”); a BDB.lexicon csak igazol: `javitva`, ha a javított alak (ʾ → ') a lexikon bármely szócikkében tiszta
 # szóként áll (DT225 (i)); különben `jelolt_marad`, javítás nélkül. A csak „°”-t hordozó alakok (fokjel, akkád/egyiptomi átírás)
-# kívül esnek (N-F162a). A megjelenítés (bdb_rovidites.atiras_javit) részszöveg szerint cserél, az angol szövegben és a magyar
+# kívül esnek (N-F164a). A megjelenítés (bdb_rovidites.atiras_javit) részszöveg szerint cserél, az angol szövegben és a magyar
 # fordításban is (a torz alak a fordításban szó szerint áll, toldalékkal); a fordító bemenete és az `sz<n>` hash nem változik.
 ATIRAS_ALAK = re.compile(r'(?:[^\W\d_]|[®°])*®(?:[^\W\d_]|[®°])*')
 LEX_SZO = re.compile(r"(?:[^\W\d_]|['ʾ])+")
@@ -260,7 +260,7 @@ def lexikon_latin_szavak():
 
 def atiras_sorok(stat, ts):
     lex = lexikon_latin_szavak()
-    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): atiras-szabály + BDB.lexicon-igazolás (DT-F162a) | ts=%s'
+    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): atiras-szabály + BDB.lexicon-igazolás | ts=%s'
     ki = []
     for r in tabla_sorok():
         kurzor = collections.Counter()

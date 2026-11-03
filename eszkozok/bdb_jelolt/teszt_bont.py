@@ -270,7 +270,7 @@ class Javitas(unittest.TestCase):
         self.assertFalse(HS.tiszta('דָּבָר, תּוֺרָה'))
 
     def test_atiras_szabaly(self):
-        # DT-F162a: „e?®” → „e”, „°” → „ʾ”
+        # DT-F164a: „e?®” → „e”, „°” → „ʾ”
         self.assertEqual(self.fj.atiras_szabaly('Sh®°ôl'), 'Sheʾôl')
         self.assertEqual(self.fj.atiras_szabaly('She®°ôl'), 'Sheʾôl')
         self.assertEqual(self.fj.atiras_szabaly('sh®°ôl'), 'sheʾôl')

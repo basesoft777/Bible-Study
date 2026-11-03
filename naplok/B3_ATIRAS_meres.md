@@ -1,4 +1,4 @@
-# B3 — a BDB forrás-átírási hibája: `atiras` hibaosztály (DT-F162a), mérés
+# B3 — a BDB forrás-átírási hibája: `atiras` hibaosztály (DT-F164a), mérés
 
 2026-11-03 · modell: claude-opus-5-5 · ág: `claude/optimistic-wozniak-ac2f08` (a main 410e59fa-ről, a #611 után)
 Szkript: `python naplok/B3_ATIRAS_meres.py` (csak olvas).
@@ -20,7 +20,7 @@ nagyrészt ugyanígy torzan hordozza, két szócikkben viszont tisztán: H7496 �
   H0011, H0734, H0776, H0953, H1004, H1086, H1097, H1323, H1802, H2670, H2706, H3331, H3344, H5117, H5181, H5315,
   H5971, H6009, H6174, H6310, H6931, H6986, H7496, H7585, H7646, H7845, H7901, H8371, H8482, H8551.
 - **`jelolt_marad`** — 3 sor: H2609 `néns®`, H6573 `s®nhana`, H7848 `šond®t` (a szabály szerinti alak a lexikonban
-  nem áll; N-F162c).
+  nem áll; N-F164c).
 
 Szabály: „e?®” → „e”, „°” → „ʾ”; igazolás: a szabály szerinti alak (ʾ → ') tiszta latin szóként áll a BDB.lexicon
 valamely BDB-szócikkében. A tábla többi sora (pe_mem, hivatkozas, kezi, heber_sorrend) bájtra változatlan; a
@@ -50,13 +50,13 @@ A megjelenítés (`bdb_rovidites.atiras_javit`) részszöveg szerint cserél, ez
 | H7845 | sz4 | sonnet | 1 | 0 | nincs |
 | H7901 | sz17 | sonnet | 1 | 0 | nincs |
 | H8371 | sz3 | sonnet | 1 | 0 | nincs |
-| **H2609** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F162c), utána esetleg új fordítás |
-| **H6573** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F162c), utána esetleg új fordítás |
-| **H7848** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F162c), utána esetleg új fordítás |
+| **H2609** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F164c), utána esetleg új fordítás |
+| **H6573** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F164c), utána esetleg új fordítás |
+| **H7848** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F164c), utána esetleg új fordítás |
 | H1004, H5971, H7901 | teljes | elavult | 1, 2, 1 | 0 | nincs (elavult sor) |
 
-**Új fordítás a jelenlegi döntéssel (DT-F162a (a)) nem kell.** Ha a magyar szövegben a tár „Seól” alakja kell a
-BDB-átírás helyett (N-F162b), akkor a fenti 18 nem elavult, javított sor (17 Strong) új fordítást vagy terminológiai
+**Új fordítás a jelenlegi döntéssel (DT-F164a (a)) nem kell.** Ha a magyar szövegben a tár „Seól” alakja kell a
+BDB-átírás helyett (N-F164b), akkor a fenti 18 nem elavult, javított sor (17 Strong) új fordítást vagy terminológiai
 csereréteget kíván.
 
 A H7585 `kezi` sorai (teljes, nyelvi_hatter) a fordítás szövegében már „Seól”-t hordoznak (4e2cfc27), a „She®°ôl”

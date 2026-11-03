@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""B3 (DT-F162a): az `atiras` hibaosztály hatásának mérése a BDB-fordításokon és a lexikonlapokon.
+"""B3: az `atiras` hibaosztály hatásának mérése a BDB-fordításokon és a lexikonlapokon.
 
 1. A `adat/bdb_forras_javitas.tsv` `atiras` sorai Strongonként (javitva / jelolt_marad).
 2. Az `adat/forditasok.tsv` BDB-sorai, amelyek `forditas_hu` mezője „®”-t hordoz: a megjelenítési csere
