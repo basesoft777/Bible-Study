@@ -78,4 +78,4 @@ Proveniencia: `naplok/F123_ANTROP2_u1_lxx_hid.tsv` (a mai újrafuttatás, 61 sor
 
 ## 6. Az eltérések elbírálása (U2)
 
-*Az U2 döntése után kerül ide (`naplok/F123_ANTROP2_naplo.md`).*
+A 12 egyenkénti jelölt: 3 `beépítve` (1Kor 15:44, 15:46, Júd 1:19), 9 `elutasítva` (nem egy mondat 4, nem megkülönböztető szerepben 4, a Júd 1:19–20 tartomány-sora 1); a héber pár Septuaginta-hídjának két helye (Jób 12:10, Jón 4:8) külön sorban `elutasítva`; a 2. szakasz 1 715 eltérő verse 11 lexémánkénti blokk-sorban (a héber pár blokkja 58 vers: a 60-ból a két külön sor nélkül). Az elutasítási okok: `adat/elutasitasi_okok.tsv`, 5 ANTROP-001-sor. A döntés és forrása: `naplok/F123_ANTROP2_naplo.md` U2.
