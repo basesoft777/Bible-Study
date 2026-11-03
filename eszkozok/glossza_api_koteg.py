@@ -57,11 +57,14 @@ import glossza_lexikon_forditas as GLF  # noqa: E402  (a #121 feloldója és man
 import olvasoi_kapu as OK  # noqa: E402  (az olvasói kapu tiltásai: BELSO, ANGOL_SZO, ANGOL_FUNKCIO)
 
 ROOT = os.path.dirname(ITT)
-PROMPT_UT = os.path.join(ROOT, 'forditas', 'prompt_glossza_v1.md')
-PROMPT_VERZIO = 'glossza v1'
+PROMPT_UT = os.path.join(ROOT, 'forditas', 'prompt_glossza_v2.md')      # v2: a v1 + a UBS-definíció kiegészítő szabálya
+PROMPT_VERZIO = 'glossza v2'
 MENETJEL = 'F161'                  # a megjegyzés eleje (a #121 `menet_sorai` / `egyenertek_tabla` kizárója)
 SZOTARAK = ('UBS_DNTG', 'UBS_DBH', 'TBESG')
 SZOTAR_NEV = {'UBS_DNTG': 'UBS DNTG', 'UBS_DBH': 'UBS DBH', 'TBESG': 'TBESG (rövid jelentés)'}
+BELSO_KIVETEL = ('belső szó (gerinc)',)   # a lap prózájának belső szava; a szótári glosszában köznapi magyar szó (gerinc = backbone)
+MEZO_NEV = {'glosszak_hu': 'glossza', 'definicio_hu': 'definíció'}
+UBS_JEL = re.compile(r'\{L:[^{}]*\}|[=≈◄►]')   # a UBS saját jelei és hivatkozás-jelölése (prompt v2, kiegészítő szabály)
 FORRAS_FAJL = {'UBS_DNTG': 'konkordancia/UBS_DNTG_jelentesek.tsv', 'UBS_DBH': 'konkordancia/UBS_DBH_jelentesek.tsv',
                'TBESG': 'konkordancia/TBESG.txt'}
 MODELL = AK.MODELL                 # a kérésben kért modell; a rögzítés a válasz tényleges modellnevét írja
@@ -136,8 +139,10 @@ def egysegek_listabol(lista_ut, cache=None):
     cache = cache if cache is not None else {}
     ki, hibak = [], []
     for r in tsv_be(lista_ut):
-        if r.get('szotar') not in SZOTARAK or r.get('allapot') != 'hianyzik':
+        if r.get('szotar') not in SZOTARAK or r.get('allapot') != 'hianyzik' or r.get('mezo') not in MEZO_NEV:
             continue
+        if r['szotar'] == 'TBESG' and r.get('jelentes_szam') != 'rovid':
+            continue            # a TBESG teljes szócikke nem glossza (a lánc csak a rövid jelentést veszi fel)
         forras = GLF.forras_szoveg(r, cache=cache)
         if forras is None:
             hibak.append('%s: a forrás nem oldható fel' % '|'.join(r[k] for k in E.FORDITASOK_FEJLEC[:5]))
@@ -221,11 +226,14 @@ def kontextus(e):
                 ki.append(('Louw–Nida-domén', '%s (%s)' % (r['entry_kod'], r['domen'])))
             elif r.get('domen'):
                 ki.append(('Domén', r['domen']))
-            if e['mezo'] == 'glosszak_hu' and r.get('definicio_rovid') and r['definicio_rovid'] != GLF.EM_DASH:
-                ki.append(('Definíció (angol)', r['definicio_rovid']))
-                hu = _forditasok().get((sz, st, e['entry_id'], e['jelentes_szam'], 'definicio_hu'))
+            masik = {'glosszak_hu': ('definicio_hu', 'definicio_rovid', 'Definíció'),
+                     'definicio_hu': ('glosszak_hu', 'glosszak', 'Glosszák')}.get(e['mezo'])
+            if masik and r.get(masik[1]) and r[masik[1]] != GLF.EM_DASH:
+                ki.append(('%s (angol)' % masik[2], r[masik[1]]))
+                hu = _forditasok().get((sz, st, e['entry_id'], e['jelentes_szam'], masik[0]))
                 if hu:
-                    ki.append(('Definíció (magyar, jóváhagyott)', hu['forditas_hu']))
+                    ki.append(('%s (magyar, %s)' % (masik[2], 'jóváhagyott' if hu['allapot'] == 'kezi' else 'gépi, nem lektorált'),
+                               hu['forditas_hu']))
     elif sz == 'TBESG':
         lemma = _tbesg_lemma().get(st)
         if lemma:
@@ -255,7 +263,7 @@ def manko(e, tabla, karoli_cache):
 
 
 def egyseg_blokk(e, tabla, karoli_cache):
-    sorok = ['### %s' % e['id'], 'Szótár: %s' % SZOTAR_NEV[e['szotar']]]
+    sorok = ['### %s' % e['id'], 'Szótár: %s' % SZOTAR_NEV[e['szotar']], 'Mező: %s' % MEZO_NEV[e['mezo']]]
     sorok += ['%s: %s' % x for x in kontextus(e)]
     m = manko(e, tabla, karoli_cache)
     sorok += ['Mankó — %s: %s' % x for x in m] if m else ['Mankó: (nincs)']
@@ -366,11 +374,9 @@ def prompt_ki(cid, ki_ut):
     if k is None:
         raise SystemExit('nincs ilyen kérés: %s' % cid)
     uz = k['params']['messages']
-    if len(uz) == 1:
-        szoveg = uz[0]['content'][0]['text']
-    else:
-        szoveg = '\n\n'.join('=== %s ===\n%s' % ({'user': 'FELHASZNÁLÓ', 'assistant': 'A KORÁBBI VÁLASZOD'}[m['role']],
-                                                 ''.join(b['text'] for b in m['content'])) for m in uz)
+    if len(uz) != 1 or uz[0]['role'] != 'user' or len(uz[0]['content']) != 1:
+        raise SystemExit('%s: nem egyetlen user-üzenet — a subagent nem kaphatja szó szerint' % cid)
+    szoveg = uz[0]['content'][0]['text']
     with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write(szoveg)
     print('%s: %d karakter -> %s' % (cid, len(szoveg), ki_ut))
@@ -396,18 +402,18 @@ def bekuld(kor, plafon, hivo=None):
         print('MEGÁLLÁS: beküldés csak a felhasználó által megadott plafonnal (--plafon USD)', file=sys.stderr)
         return 3
     ker, fajl = kerelmek_be(kor)
-    if kor == 1:
-        friss = jsonl_szoveg(kerelmek_epit(egysegek_be()))
-        with open(fajl, encoding='utf-8') as f:
-            if f.read() != friss:
-                print('MEGÁLLÁS: a keresek.jsonl nem a mai adatokból épülő kérés (futtasd újra a szaraz-at)', file=sys.stderr)
-                return 2
+    friss = jsonl_szoveg(kerelmek_epit(egysegek_be()) if kor == 1 else javito_kerelmek()[0])
+    with open(fajl, encoding='utf-8') as f:
+        if f.read() != friss:
+            print('MEGÁLLÁS: a %s nem a mai adatokból épülő kérés (futtasd újra: %s)' % (
+                os.path.basename(fajl), 'szaraz' if kor == 1 else 'javit'), file=sys.stderr)
+            return 2
     kesz = bekuldott() | set(valaszok())
     ker = [k for k in ker if k['custom_id'] not in kesz]
     if not ker:
         print('nincs beküldendő kérés')
         return 0
-    becs = becsles(ker, sum(1 for e in egysegek_be() if any(e['id'] in k['params']['messages'][-1]['content'][0]['text']
+    becs = becsles(ker, sum(1 for e in egysegek_be() if any(('### %s\n' % e['id']) in k['params']['messages'][0]['content'][0]['text']
                                                              for k in ker)))[2]
     ossz = futo_osszeg() + becs
     print('%d kérés; becslés %.3f USD (manual) + eddig mért %.4f = %.3f / plafon %.2f USD' % (len(ker), becs, futo_osszeg(), ossz, plafon))
@@ -517,7 +523,7 @@ def valasz_bont(szoveg):
 def _angol_maradek(forras, hu):
     """A forrás latin betűs (≥ 4 betűs) szava szó szerint a fordításban — angol maradék."""
     hu_szavak = {w.lower() for w in re.findall(r'[A-Za-zÀ-ɏ]+', hu)}
-    return sorted({w for w in re.findall(r'[A-Za-z]{4,}', forras) if w.lower() in hu_szavak})
+    return sorted({w for w in re.findall(r'[A-Za-z]{4,}', forras) if w.lower() in hu_szavak and not w[0].isupper()})
 
 
 def egyseg_kapuk(e, hu, bizonytalan):
@@ -544,10 +550,15 @@ def egyseg_kapuk(e, hu, bizonytalan):
         n_h = len([x for x in vegleges.split(';') if x.strip()])
         eredm.append(('G1_elemszam', 'RENDBEN' if n_f == n_h else 'SERTES',
                       '' if n_f == n_h else 'a forrás %d elemű, a fordítás %d elemű' % (n_f, n_h)))
-    t = _HG.sub(' ', vegleges)
-    am = [m.group(0) for m in OK.ANGOL_SZO.finditer(t)] + OK.ANGOL_FUNKCIO.findall(t) + _angol_maradek(e['forras'], t)
+    if e['szotar'] in ('UBS_DNTG', 'UBS_DBH'):
+        jf, jh = sorted(UBS_JEL.findall(e['forras'])), sorted(UBS_JEL.findall(vegleges))
+        eredm.append(('G5_ubs_jelek', 'RENDBEN' if jf == jh else 'SERTES', '' if jf == jh else
+                      'a UBS-jelek / {L:…} jelölések nem a forráséi: forrás %s, fordítás %s' % (jf, jh)))
+    jelolo = re.compile(r'\{L:[^{}]*\}')         # a jelölésben álló név nem angol maradék (prompt v2)
+    t = _HG.sub(' ', jelolo.sub(' ', vegleges))
+    am = [m.group(0) for m in OK.ANGOL_SZO.finditer(t)] + OK.ANGOL_FUNKCIO.findall(t) + _angol_maradek(jelolo.sub(' ', e['forras']), t)
     eredm.append(('G2_angol', 'SERTES' if am else 'RENDBEN', ('angol maradék: ' + ', '.join(am)) if am else ''))
-    bj = [nev + ': ' + rx.search(vegleges).group(0) for rx, nev in OK.BELSO if rx.search(vegleges)]
+    bj = [nev + ': ' + rx.search(vegleges).group(0) for rx, nev in OK.BELSO if nev not in BELSO_KIVETEL and rx.search(vegleges)]
     eredm.append(('G3_belso', 'SERTES' if bj else 'RENDBEN', '; '.join(bj)))
     eredm.append(('G4_egyenes_idezojel', 'SERTES' if '"' in vegleges else 'RENDBEN', 'egyenes " a fordításban' if '"' in vegleges else ''))
     ok = hely == 'RENDBEN' and K.atment([x for x in eredm if x[0] not in KIZAR_GATOLO]) and all(
@@ -580,9 +591,7 @@ def kapuz():
             if v is None:
                 continue
             ids = [e['id'] for e in egys.values() if e['keres'] == n and ('### %s\n' % e['id']) in
-                   k['params']['messages'][-1 if proba == 1 else 0]['content'][0]['text']]
-            if proba == 2:
-                ids = [i for i in ids if ('- %s:' % i) in k['params']['messages'][-1]['content'][0]['text']]
+                   k['params']['messages'][0]['content'][0]['text']]
             bont, hiba = valasz_bont(v['szoveg']) if v.get('tipus') == 'succeeded' else ({}, 'a kérés nem sikerült: %s' % v.get('hiba'))
             for i in ids:
                 e = egys[i]
@@ -622,30 +631,42 @@ def vegso_allapot(rekordok=None):
 
 # ---------- javító kör ----------
 
-def javit():
-    """A kapun bukott egységek javító kérése: az eredeti kérés + a korábbi válasz + a hibaüzenet (egyszer, p2)."""
-    vegso = vegso_allapot()
-    if any(r['proba'] == 2 for r in vegso.values()):
-        raise SystemExit('a javító kör már lefutott (legfeljebb egy javító kör)')
+def javito_kerelmek():
+    """A kapun bukott egységek javító kérései (p2), determinisztikusan: kérésenként egyetlen user-üzenet — a prompt a bukott
+    egységek blokkjaival, utána a korábbi válasz (egységenként) és a kapu hibaüzenete. Így API-n és subagenttel ugyanaz. Csak az
+    1. kör kapu-rekordjaiból épül, ezért a 2. kör válaszai után is ugyanazt adja (a `bekuld` ezzel veti össze)."""
+    vegso = vegso_allapot([r for r in B.jsonl_olvas(ut('kapu_eredmeny.jsonl')) if r['proba'] == 1])
+    egys = {e['id']: e for e in egysegek_be()}
     bukott = {}
     for i, r in vegso.items():
         if not r['atment']:
             bukott.setdefault(r['custom_id'], []).append(r)
-    val = valaszok()
-    ker1 = {k['custom_id']: k for k in kerelmek_be(1)[0]}
+    tabla = GLF.egyenertek_tabla(kizar=(MENETJEL,))
+    karoli_cache = {}
     ki = []
     for cid, rek in sorted(bukott.items()):
-        hibak = ['%s: %s' % (r['id'], '; '.join('%s — %s' % (n, d or er) for n, er, d in r['eredmenyek'] if er == 'SERTES'))
-                 for r in sorted(rek, key=lambda r: r['id'])]
-        szoveg = ('A fordításod egyes egységei a kapuellenőrzésen elbuktak. A hibák:\n' + '\n'.join('- ' + h for h in hibak)
-                  + '\n\nJavítsd ki ezeket az egységeket a forrás és a fenti szabályok szerint (a ⟦n⟧ helyőrzők változatlanul, '
-                    'pontosan egyszer). Csak a felsorolt egységeket add vissza, ugyanabban a JSON-formában; KIZÁRÓLAG a JSON-t.')
-        uz = ker1[cid]['params']['messages'] + [{'role': 'assistant', 'content': [{'type': 'text', 'text': val[cid]['szoveg']}]},
-                                                 user(szoveg)]
-        ki.append({'custom_id': cid.replace('-p1', '-p2'), 'params': kerelem_params(uz)})
+        rek = sorted(rek, key=lambda r: r['id'])
+        alap = prompt_epit([egys[r['id']] for r in rek], tabla, karoli_cache)
+        sorok = []
+        for r in rek:
+            hibak = '; '.join('%s — %s' % (n, d or er) for n, er, d in r['eredmenyek'] if er == 'SERTES')
+            elozo = r['nyers'] if isinstance(r.get('nyers'), str) and r['nyers'].strip() else '(nincs korábbi válasz)'
+            sorok.append('- %s: korábbi fordításod: %s\n  a kapu hibája: %s' % (r['id'], elozo, hibak))
+        szoveg = (alap + '\n\n## Javító kör\n\nEzeknek az egységeknek a korábbi fordítása a kapuellenőrzésen elbukott:\n\n'
+                  + '\n'.join(sorok) + '\n\nJavítsd ki őket a forrás és a fenti szabályok szerint (a ⟦n⟧ helyőrzők '
+                  'változatlanul, pontosan egyszer). A fenti JSON-formában add vissza mindegyiket; KIZÁRÓLAG a JSON-t.')
+        ki.append({'custom_id': cid.replace('-p1', '-p2'), 'params': kerelem_params([user(szoveg)])})
+    return ki, sum(len(v) for v in bukott.values())
+
+
+def javit():
+    """A javító kör (legfeljebb egyszer, p2)."""
+    if any(r['proba'] == 2 for r in vegso_allapot().values()):
+        raise SystemExit('a javító kör már lefutott (legfeljebb egy javító kör)')
+    ki, db = javito_kerelmek()
     with open(ut('keresek_p2.jsonl'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(jsonl_szoveg(ki))
-    print('javító kérések: %d (%d egység) -> %s' % (len(ki), sum(len(v) for v in bukott.values()), ut('keresek_p2.jsonl')))
+    print('javító kérések: %d (%d egység) -> %s' % (len(ki), db, ut('keresek_p2.jsonl')))
     return 0
 
 

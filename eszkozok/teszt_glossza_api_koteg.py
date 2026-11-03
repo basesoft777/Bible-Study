@@ -115,6 +115,11 @@ class Szaraz(Alap):
             f.write('\n')
         self.assertEqual(L.bekuld(1, 1.0, hivo=lambda *a, **k: self.fail('nem hívhat')), 2)
 
+    def test_tbesg_csak_rovid(self):
+        lista_ir(self.lista, kulcsok=KULCSOK + [('TBESG', 'G1941', 'G1941', 'teljes', 'forditas_hu')])
+        self.assertEqual([(e['szotar'], e['jelentes_szam']) for e in L.egysegek_listabol(self.lista)],
+                         [('UBS_DNTG', '12.37'), ('TBESG', 'rovid')])
+
     def test_elavult_lista_megall(self):
         lista_ir(self.lista, hash_ront=True)
         with self.assertRaises(SystemExit):
@@ -166,6 +171,22 @@ class Kapuk(unittest.TestCase):
         e = egyseg('demon; evil spirit')
         self.assertIn('5_terminologia', bukott_kapuk(e, 'démon; gonosz lélek'))
 
+    def test_ubs_definicio_jelek_es_jeloles(self):
+        e = egyseg('= fortified town; ◄ territory of {L:Naphtali<SDBH:נַפְתָּלִי>}', mezo='definicio_hu', szotar='UBS_DBH',
+                   strong='H7152')
+        v, _, er, ok = L.egyseg_kapuk(e, '= megerősített város; ◄ {L:Naphtali<SDBH:⟦1⟧>} területe', [])
+        self.assertTrue(ok, er)                                                   # a jelölésben álló név nem angol maradék
+        self.assertIn('{L:Naphtali<SDBH:נַפְתָּלִי>}', v)
+        self.assertIn('G5_ubs_jelek', bukott_kapuk(e, '= megerősített város; {L:Naphtali<SDBH:⟦1⟧>} területe'))
+        self.assertIn('G5_ubs_jelek', bukott_kapuk(e, '= megerősített város; ◄ {L:Naftáli<SDBH:⟦1⟧>} területe'))
+        self.assertNotIn('G1_elemszam', [n for n, _, _ in er])                  # definíciónál nincs elemszám-kapu
+
+    def test_tulajdonnev_es_gerinc_nem_hamis_pozitiv(self):
+        e = egyseg('Simon; Anna')
+        self.assertNotIn('G2_angol', bukott_kapuk(e, 'Simon; Anna'))
+        e = egyseg('= the bone extending from the backbone', mezo='definicio_hu', szotar='UBS_DBH', strong='H2180')
+        self.assertNotIn('G3_belso', bukott_kapuk(e, '= a gerinctől kiinduló csont'))
+
     def test_ures_es_sortores(self):
         e = egyseg('ghost')
         self.assertEqual(bukott_kapuk(e, ''), ['0_json'])
@@ -203,9 +224,23 @@ class TeljesUt(Alap):
         p2 = L.kerelmek_be(2)[0]
         self.assertEqual([k['custom_id'] for k in p2], ['G001-p2'])
         uz = p2[0]['params']['messages']
-        self.assertEqual([m['role'] for m in uz], ['user', 'assistant', 'user'])
-        self.assertIn('- e001:', uz[-1]['content'][0]['text'])
-        self.assertNotIn('- e002:', uz[-1]['content'][0]['text'])
+        self.assertEqual([m['role'] for m in uz], ['user'])                     # egyetlen user-üzenet: API-n és subagenttel azonos
+        sz = uz[0]['content'][0]['text']
+        self.assertIn('### e001' + chr(10), sz)
+        self.assertNotIn('### e002' + chr(10), sz)                                     # csak a bukott egység
+        self.assertIn('- e001: korábbi fordításod: démon; evil spirit', sz)
+        ki = os.path.join(self.tmp, 'p2.txt')
+        L.prompt_ki('G001-p2', ki)
+        with open(ki, encoding='utf-8') as f:
+            self.assertEqual(f.read(), sz)
+        kuldott = {}
+
+        def hivo(m, ut, torzs=None, nyers=False):
+            kuldott['torzs'] = torzs
+            return {'id': 'msgbatch_p2'}
+        self.assertEqual(L.bekuld(2, 1.0, hivo=hivo), 0)                         # a 2. kör is bájtra ellenőrizve
+        with open(L.ut('keresek_p2.jsonl'), encoding='utf-8') as f:
+            self.assertEqual(L.jsonl_szoveg(kuldott['torzs']['requests']), f.read())
         L.bevesz('G001-p2', self.valasz([{'id': 'e001', 'forditas_hu': 'démon; gonosz szellem'}]), 'claude-sonnet-5-5')
         L.kapuz()
         v = L.vegso_allapot()
@@ -216,7 +251,7 @@ class TeljesUt(Alap):
         rog = L.tsv_be(L.ut('rogzitett.tsv'))
         self.assertEqual(len(rog), 2)
         self.assertTrue(all(r['allapot'] == 'sonnet' and r['modell'] == 'claude-sonnet-5-5' for r in rog))
-        self.assertTrue(all(r['megjegyzes'].startswith('F161 (glossza-lánc, prompt glossza v1') and 'scope=' in r['megjegyzes']
+        self.assertTrue(all(r['megjegyzes'].startswith('F161 (glossza-lánc, prompt %s' % L.PROMPT_VERZIO) and 'scope=' in r['megjegyzes']
                             and '| forras=' in r['megjegyzes'] and '| ts=' in r['megjegyzes'] for r in rog))
 
         # beírás egy másolatba: a meglévő sorok bájtra változatlanok, az új sorok a végén
