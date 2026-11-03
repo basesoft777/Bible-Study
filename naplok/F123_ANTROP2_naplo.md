@@ -84,3 +84,5 @@ A független ellenőr 12 ELTÉRÉS-e (`naplok/ELLENOR_F123_ANTROP-001.md`), az o
 | 12 | G4152 sz7 | kézi javítás (`allapot=kezi`, `modell=claude-opus-5-5`) |
 
 Generátor (N-F123f (3–4)): a `lexikon_general._elso_tagmondat` a nyitva maradó zárójel elé vág; a kilenc lap repón kívüli előtte–utána generálása: nyolc lapon 0 eltérő sor, az ANTROP-001-en a két összecsukott kivonat. Az olvasói kapu: 4 → 2 BUKÁS (a BDB H2416 1.a angol kivonata, adathiány, N-F123f (1–2)); a próza 0 BUKÁS-t ad.
+
+A független ellenőrzés 2. köre (D2: az utolsó): `naplok/ELLENOR_F123_ANTROP-001_2.md`, ELTÉRÉS: 5 (1 közepes). Utójavítás harmadik kör nélkül (F123.ANTROP2.16): a Kivonat kizáró mondata a kritérium szavára, az elutasítási ok megjegyzése, a 8 jelöltsor forrás-nyoma, a brief `kovetkezo` mezője; a maradék: N-F123k. Kapuk utána: `ellenoriz.py` SÉRTÉS 0; `proza_1a.py` 11/11 arany; olvasói kapu 2 BUKÁS (generált BDB-kivonat); a lap `--ellenoriz` szerint a forrásból generált. Lapnézet: https://claude.ai/artifact/Y8fk3pKkFeENF8XQhn8Rpe (világos téma), a renderelt lap a javított helyeken átnézve.
