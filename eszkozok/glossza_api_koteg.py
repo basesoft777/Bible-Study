@@ -82,6 +82,9 @@ FEJLEC = E.FORDITASOK_FEJLEC
 _HG = re.compile('[%s]' % E._HG_KAR)
 KIZAR_GATOLO = ('6_hosszarany',)   # JELZES-kapu; a rövid glosszán nem értelmezhető, de az eredményben marad
 MUNKA = None
+# a subagent-út jelölése a megjegyzésben (orkesztrátor, 2026-11-03): a kérés ugyanaz, a futtató környezet más
+SUBAGENT_EREDET = ('Code-session (előfizetői keret), general-purpose subagent %s, a kérés szó szerint; eltérés az API-tól: '
+                   'Claude Code alap rendszerutasítás, effort/max_tokens nem állítható')
 
 
 def ut(*r):
@@ -665,7 +668,8 @@ def rogzit(datum=None):
             all_, mod = allapot_modellbol(r['modell'])
             megj = ('%s (glossza-lánc, prompt %s, %s, %s): kapuk átmentek%s%s; terminológia %s | scope=%s %s %s %s %s | '
                     'forras=%s | ts=%s' % (
-                        MENETJEL, PROMPT_VERZIO, r['custom_id'], 'subagent' if r['eredet'] == 'subagent' else 'Batch API',
+                        MENETJEL, PROMPT_VERZIO, r['custom_id'], (SUBAGENT_EREDET % r['modell']) if r['eredet'] == 'subagent'
+                        else 'Batch API',
                         '; javítóréteg: ' + ', '.join(x[0] for x in r['valtozasok']) if r['valtozasok'] else '',
                         '; bizonytalan: ' + ', '.join(r['bizonytalan']) if r['bizonytalan'] else '',
                         term_verzio, e['szotar'], e['strong'], e['entry_id'], e['jelentes_szam'], e['mezo'],
@@ -712,7 +716,8 @@ def beir(jelzes_atnezve=False, felulir=False, forditasok_ut=None):
         raise SystemExit('a forditasok.tsv fejléce nem a várt: %s' % sorok[fej_i])
     i_all = FEJLEC.index('allapot')
     idx = {tuple(s.split('\t')[:5]): i for i, s in enumerate(sorok) if i > fej_i and s and not s.startswith('#')}
-    valtozott = set()
+    csere, beszur = {}, {}          # régi index -> új sor; horgony-index -> [új sorok]
+    adat = [(i, s.split('\t')) for i, s in enumerate(sorok) if i > fej_i and s and not s.startswith('#')]
     for r in uj:
         sor = '\t'.join(r[m] for m in FEJLEC)
         k = tuple(sor.split('\t')[:5])
@@ -722,22 +727,46 @@ def beir(jelzes_atnezve=False, felulir=False, forditasok_ut=None):
                 raise SystemExit('védett kezi sor: %s' % (k,))
             if not felulir:
                 raise SystemExit('már van sor ehhez a kulcshoz (%s): csak --felulir-ral' % (k,))
-            sorok[idx[k]] = sor
-            valtozott.add(idx[k])
+            csere[idx[k]] = sor
         else:
-            sorok.append(sor)
-            idx[k] = len(sorok) - 1
-            valtozott.add(len(sorok) - 1)
-    for i, s in enumerate(eredeti.split('\n')[:-1]):
-        if i not in valtozott and sorok[i] != s:
-            raise SystemExit('váratlan eltérés a %d. sorban — megállok' % (i + 1))
-    for s in sorok:
+            beszur.setdefault(horgony(adat, k), []).append(sor)
+    ki = []
+    for i, s in enumerate(sorok):
+        ki.append(csere.get(i, s))
+        ki.extend(beszur.get(i, []))
+    ki.extend(beszur.get(None, []))
+    # ellenőrzés: a beszúrt sorok nélkül és a cserék visszaállításával a tábla bájtra az eredeti
+    vissza = []
+    beszurtak = {s for v in beszur.values() for s in v}
+    for s in ki:
+        if s in beszurtak:
+            continue
+        vissza.append(s)
+    if [sorok[i] if i not in csere else csere[i] for i in range(len(sorok))] != vissza:
+        raise SystemExit('váratlan eltérés a táblában — megállok')
+    for s in ki:
         if not s.startswith('#') and len(s.split('\t')) != len(FEJLEC):
             raise SystemExit('hibás oszlopszám: %s' % s[:80])
     with open(forditasok_ut, 'w', encoding='utf-8', newline='') as fh:
-        fh.write('\n'.join(sorok) + '\n')
-    print('beírva: %d sor -> %s' % (len(valtozott), forditasok_ut))
-    return len(valtozott)
+        fh.write('\n'.join(ki) + '\n')
+    n = len(csere) + len(beszurtak)
+    print('beírva: %d sor (%d új, a tábla rendje szerinti helyre; %d csere) -> %s' % (n, len(beszurtak), len(csere), forditasok_ut))
+    return n
+
+
+def horgony(adat, k):
+    """Az új sor helye (a tábla nem teljesen rendezett, és a vége más PR-ok hozzáfűzési helye): az azonos (szótár, Strong,
+    mező) blokk kulcs szerint előző sora mögé; ennek híján az azonos (szótár, mező[, rovid]) sorok kulcs szerinti helyére;
+    ennek híján az azonos szótár utolsó sora mögé; csak ha az sincs, a tábla végére (None)."""
+    szotar, strong, _, jsz, mezo = k
+    for szuro in (lambda c: c[0] == szotar and c[1] == strong and c[4] == mezo,
+                  lambda c: c[0] == szotar and c[4] == mezo and (szotar != 'TBESG' or c[3] == jsz),
+                  lambda c: c[0] == szotar):
+        jelolt = [(i, c) for i, c in adat if szuro(c)]
+        if jelolt:
+            elotte = [i for i, c in jelolt if tuple(c[:5]) < k]
+            return elotte[-1] if elotte else jelolt[0][0] - 1
+    return None
 
 
 # ---------- parancssor ----------

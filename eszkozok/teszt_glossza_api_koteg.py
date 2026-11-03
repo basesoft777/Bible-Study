@@ -231,9 +231,14 @@ class TeljesUt(Alap):
         self.assertEqual(L.beir(jelzes_atnezve=True, forditasok_ut=masolat), 2)
         with open(masolat, encoding='utf-8', newline='') as f:
             utana = f.read()
-        self.assertTrue(utana.startswith(elotte))
-        uj = utana[len(elotte):].splitlines()
+        e_sorok, u_sorok = elotte.split('\n'), utana.split('\n')
+        uj = [s for s in u_sorok if s.endswith('ts=%s' % L.datetime.date.today().isoformat()) and s.startswith(('UBS_DNTG', 'TBESG'))]
         self.assertEqual(len(uj), 2)
+        self.assertEqual([s for s in u_sorok if s not in uj], e_sorok)          # a többi sor bájtra és sorrendben változatlan
+        self.assertEqual(u_sorok[-2], e_sorok[-2])                              # nem a tábla végére (ott más PR-ok fűznek)
+        for s in uj:                                                            # a saját szótár-blokkjában áll
+            i = u_sorok.index(s)
+            self.assertEqual(u_sorok[i - 1].split('\t')[0], s.split('\t')[0])
         self.assertTrue(all(len(s.split('\t')) == len(L.FEJLEC) for s in uj))
         # ugyanaz másodszor: a kulcs már megvan — csak --felulir-ral
         with self.assertRaises(SystemExit):
