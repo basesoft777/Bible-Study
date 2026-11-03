@@ -380,30 +380,26 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
-**A szócikk feje (nyelvi háttér).** > πνευματικῇ, πνευματικόν (πνεῦμα), spiritual (Vulg.spiritalis); in the N. T. *(fordításra vár)*
+**A szócikk feje (nyelvi háttér).** πνευματικῇ, πνευματικόν (πνεῦμα), szellemi (Vulgáta spiritalis); az Újszövetségben
 
 - **`1` — az ember szellemére vonatkozó, a lélekkel szembeállítva**
 
-  > 1. relating to the human spirit, or rational soul, as the part of man which is akin to God and serves as his instrument or organ, opposed to ἡ ψυχή (see πνεῦμα, 2): hence, τό πνευματικόν, that which possesses the nature of the rational soul, opposed to τό ψυχικόν, 1Co 15:46 (cf. Winer's Grammar, 592 (551)); σῶμα πνευματικόν, the body which is animated and controlled only by the rational soul and by means of which the rational life, of life of the πενυμα, is lived; opposed to σῶμα ψυχικόν, verse 44.
-
-  *(fordításra vár)*
+  > az emberi szellemre vagy az értelmes lélekre vonatkozó, mint az ember Istennel rokon részére, amely az ő eszköze vagy szerve, szemben ezzel: ἡ ψυχή (l. πνεῦμα, 2): innen τό πνευματικόν, vagyis az, ami az értelmes lélek természetével bír, szemben ezzel: τό ψυχικόν, **1Kor 15:46** (vö. Winer's Grammar, 592 (551)); σῶμα πνευματικόν, az a test, amelyet csak az értelmes lélek éltet és irányít, és amelynek közvetítésével az értelmes élet, a πενυμα élete, megélhető; szemben ezzel: σῶμα ψυχικόν, a 44. vers.
 
 <details>
 <summary>2 – 3.a (3 szakasz)</summary>
 
-- `2` — belonging to a spirit, or a being higher than man but inferior to God (see πνεῦμα, 3 c.)
+- `2` — szellemhez, vagyis az embernél magasabb, de Istennél alacsonyabb rendű lényhez tartozó (l.…
 - `3` — az isteni Lélekhez tartozó
-- `3.a` — in reference to things
+- `3.a` — dolgokra vonatkozóan
 
 </details>
 
 - **`3.b` — Isten Lelkétől betöltött és vezetett ember**
 
-  > b. in reference to persons; one who is filled with and governed by the Spirit of God: 1Co 2:15 (cf. 1Co 2:10-13,16>); (); ; Gal 6:1; οἶκος πνευματικός, of a body of Christians (see οἶκος, 1 b. at the end), 1Pe 2:5. (The word is not found in the O. T. (cf. Winers Grammar, § 34, 3). In secular writings from Aristotle, down it means pertaining to the wind or breath; windy, exposed to the wind; blowing; (but Sophocles' Lexicon, under the words, πνεῦμα οὐσία, Cleo. med. 1, 8, p. 46; τό πνεῦμα τό πάντων τούτων αἴτιον, Strabo 1, 3, 5, p. 78, 10 edition Kramer; and we find it opposed to σωματικον in Plutarch, mor., p. 129 c. (de sanitate praecepta 14); cf. Anthol. Pal. 8, 76. 175).)
+  > személyekre vonatkozóan; aki eltelt Isten Szellemével, és a Szellem vezérli: **1Kor 2:15** (vö. 1Kor 2:10-13,16>); (); ; Gal 6:1; οἶκος πνευματικός, keresztények közösségéről (l. οἶκος, 1 b. a végén), 1Pét 2:5. (A szó nem található az Ószövetségben (vö. Winers Grammar, § 34, 3). A világi írásokban Arisztotelésztől kezdve azt jelenti: a szélre vagy a lélegzetre vonatkozó; szeles, a szélnek kitett; fújó; (de l. Sophocles' Lexicon, a szavak alatt, πνεῦμα οὐσία, Cleo. med. 1, 8, o. 46; τό πνεῦμα τό πάντων τούτων αἴτιον, Strabo 1, 3, 5, o. 78, 10. Kramer-kiadás; és ezzel szemben találjuk: σωματικον Plutarkhosznál, mor., o. 129 c. (de sanitate praecepta 14); vö. Anthol. Pal. 8, 76. 175).)
 
-  *(fordításra vár)*
-
-*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 1 (1Kor 15:46, -/1/-); thayer_vers_jelentes.tsv sorszam 19 (1Kor 2:15, -/3/b) · a szótár nem idézi: 1Kor 15:44.*
+*ⓘ Kutatói megjegyzés: a szótár nem idézi: 1Kor 15:44.*
 
 *A teljes szócikk: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
@@ -467,15 +463,13 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
-**A szócikk feje (nyelvi háttér).** > ψυχική, ψυχικόν (ψυχή) (Vulg.animalis, Gem.sinnlich), „of or belonging to the ψυχή; *(fordításra vár)*
+**A szócikk feje (nyelvi háttér).** ψυχική, ψυχικόν (ψυχή) (Vulgáta animalis, Gem.sinnlich), „a következőhöz tartozó vagy azzal kapcsolatos: ψυχή;
 
 - **`b` — az érzéki természettől vezérelt**
 
-  > b. "governed by the ψυχή i. e. the sensuous nature with its subjection to appetite and passion (as though made up of nothing but ψυχή): ἄνθρωπος (equivalent to σαρκικός (or σάρκινος, which see 3) in ), 1Co 2:14; ψυχικοί, πνεῦμα μή ἔχοντες, Jude 1:19 (A. V. sensual (R. V. with marginal reading 'Or natural, Or animal'); so in the following example); σοφία, a wisdom in harmony with the corrupt desires and affections, and springing from them (see σοφία, a., p. 581b bottom), Jam 3:15. (In various other senses in secular authors from Aristotle and Polybius down.)
+  > "a következő uralma alatt álló: ψυχή, azaz az érzéki természet a vágynak és a szenvedélynek való alávetettségével (mintha csak ψυχή állna belőle): ἄνθρωπος (= σαρκικός (vagy σάρκινος, l. ott 3) a következőben: ), **1Kor 2:14**; ψυχικοί, πνεῦμα μή ἔχοντες, Júd 1:19 (A. V. sensual (R. V. széljegyzet: 'Or natural, Or animal'); így a következő példában is); σοφία, a romlott vágyakkal és hajlamokkal összhangban álló, azokból fakadó bölcsesség (l. σοφία, a., 581b. o. alja), Jak 3:15. (Különféle más értelmekben világi szerzőknél Arisztotelésztől és Polübiosztól kezdve.)
 
-  *(fordításra vár)*
-
-*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 1 (1Kor 15:44, fej); thayer_vers_jelentes.tsv sorszam 2 (1Kor 15:46, fej); thayer_vers_jelentes.tsv sorszam 6 (1Kor 2:14, -/-/b) · a szótár nem idézi: Júd 1:19.*
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 1 (1Kor 15:44, fej); thayer_vers_jelentes.tsv sorszam 2 (1Kor 15:46, fej) · a szótár nem idézi: Júd 1:19.*
 
 *A teljes szócikk: [szónézet: /szo/G5591](/szo/G5591) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
