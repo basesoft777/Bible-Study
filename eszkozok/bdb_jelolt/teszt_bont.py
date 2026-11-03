@@ -355,7 +355,9 @@ class HuIlleszt(unittest.TestCase):
             f = self.hi.forditasok(ut)
         self.assertEqual(f['H0001']['forditas_hu'], ' '.join('m%d' % x['sorszam'] for x in szak))
         self.assertEqual(f['H0001']['forras_hash'], sb.sha1(sb.nezet(szak)))
-        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2'})
+        # F123.BDBILL (DT-F123y): az igazolt 1:1 sorszám szerint, a teljes sornál nincs szakaszos megfeleltetés
+        self.assertEqual(f['H0001']['szakaszonkent'], dict((x['sorszam'], 'm%d' % x['sorszam']) for x in szak))
+        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2', 'szakaszonkent': None, 'nem_igazolt': None})
 
     def test_forras_jelolok(self):
         self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
@@ -442,11 +444,14 @@ class HuIlleszt(unittest.TestCase):
         self.assertEqual(horgonyos, 'horgonnyal')
 
     def test_kategoriak_es_hash(self):
-        self.assertEqual(set(x['kategoria'] for x in self.sorok), {'illeszkedik', 'horgonnyal', 'elakad', 'jelolo_nelkul'})
+        # F123.BDBILL (DT-F123y): a szakaszonként fordított Strong sorai `szakasz` kategóriájúak; `elakad` a mai adaton nincs
+        kat = set(x['kategoria'] for x in self.sorok)
+        self.assertIn('szakasz', kat)
+        self.assertLessEqual(kat, {'szakasz', 'illeszkedik', 'horgonnyal', 'elakad', 'jelolo_nelkul'})
         for x in self.sorok:
             self.assertRegex(x['forditas_forras_hash'], r'^[0-9a-f]{40}$')
             self.assertEqual(bool(x['szoveg_hu']) or x['hu_kezdet'] == '' or x['hu_hossz'] == '0', True)
-        self.assertEqual(len(set(x['strong'] for x in self.sorok)), 674)
+        self.assertEqual(len(set(x['strong'] for x in self.sorok)), 8090)
 
     def test_h0040(self):
         h = {x['sorszam']: x for x in self.sorok if x['strong'] == 'H0040'}
