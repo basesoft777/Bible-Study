@@ -4,7 +4,7 @@
 
 ## Kivonat *(kézi)*
 
-**Mit mutat ez a rész?** A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
 
 A motívum a halottak birodalmát követi a Bibliában, két szó nyomán: az ószövetségi שְׁאוֹל (seól) és az újszövetségi ᾍδης (hadész) minden előfordulását. A seól 64 ószövetségi helyen áll; a Károli-fordítás hol Seolnak, hol sírnak, koporsónak, pokolnak, alvilágnak vagy mélységnek fordítja. A hádész tíz újszövetségi helyen áll, a Károliban többnyire pokol. Az Ószövetségben a Seol minden ember közös végállomása (1Móz 37:35), ahonnan nincs visszatérés (Jób 7:9), és ahol elnémul Isten dicsérete (Zsolt 6:6). Mégsem esik kívül Isten hatalmán: előtte nyitva áll (Péld 15:11), ott is jelen van (Zsolt 139:8), és ő az, aki levisz oda és felhoz onnan (1Sám 2:6; Zsolt 30:4).
 
@@ -14,9 +14,9 @@ A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a hébe
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.
+A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -39,9 +39,9 @@ A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a hébe
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.
+A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -68,7 +68,7 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
 jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
-**Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
+**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
 **Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
@@ -91,88 +91,88 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívum 74 igehelyen fordul elő, 22 bibliai könyvben (64 ószövetségi, 10 újszövetségi hely); a legtöbb hely: Zsolt (15). 71 hely azonosítása magas megbízhatóságú, 3 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.
+A motívum 74 igehelyen fordul elő, 22 bibliai könyvben (64 ószövetségi, 10 újszövetségi hely); a legtöbb hely: Zsolt (15). 71 hely azonosítása magas megbízhatóságú, 3 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
-*Ez a blokk a `[ID: ALVIL-001]` motívum 74 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
+*Ez a blokk a `[ID: ALVIL-001]` motívum 74 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 37:35](#ige-1móz-37-35) | a sírba — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^1] | 🌱 alap-előfordulás | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^1] |
-| [1Móz 42:38](#ige-1móz-42-38) | a koporsóba — שְׁאֽוֹלָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^2] | 🔁 ismétlődés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^2] |
-| [1Móz 44:29](#ige-1móz-44-29) | a koporsóba — שְׁאֹֽלָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^3] | 🔁 ismétlődés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^3] |
-| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — שְׁאֹֽלָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^4] | 🔁 ismétlődés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^4] |
-| [4Móz 16:30](#ige-4móz-16-30) | pokolba — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^5] | ⚡ élve alászállás | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^5] |
-| [4Móz 16:33](#ige-4móz-16-33) | a pokolra — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^6] | ⚡ élve alászállás | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^6] |
-| [5Móz 32:22](#ige-5móz-32-22) | a Seol fenekéig — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^7] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^7] |
-| [1Sám 2:6](#ige-1sám-2-6) | Sírba — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^8] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^8] |
-| [2Sám 22:6](#ige-2sám-22-6) | A pokol kötelei — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^9] | 🙏 kiáltás a Seol szorításából | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^9] |
-| [1Kir 2:6](#ige-1kir-2-6) | a koporsóba — שְׁאֹֽל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^10] | ⚖️ ítélet a halál módjában | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^10] |
-| [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^11] | ⚖️ ítélet a halál módjában | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^11] |
-| [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^12] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^12] |
-| [Jób 11:8](#ige-jób-11-8) | az alvilágnál — מִ֝שְּׁא֗וֹל (misseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^13] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^13] |
-| [Jób 14:13](#ige-jób-14-13) | a holtak országában — בִּשְׁא֬וֹל (biseól) | az igaz kiváltása a Seolból · 2.b ⓘ[^14] | 🕊️ remény a Seolban | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
-| [Jób 17:12](#ige-jób-17-12) | a sír — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^15] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:13)* | magas · tartalom-alapú[^15] |
-| [Jób 17:15](#ige-jób-17-15) | a sír üregébe — שְׁאֹ֣ל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^16] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:16)* | közepes · tartalom-alapú[^16] |
-| [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^17] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^17] |
-| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^18] | ⚖️ a gonoszok sorsa | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
-| [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^19] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^19] |
-| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — בִּ֝שְׁא֗וֹל (biseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^20] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
-| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — לִשְׁא֑וֹלָה (liseólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^21] | ⚖️ a gonoszok sorsa | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
-| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — לִשְׁא֑וֹל (liseól) | az igaz kiváltása a Seolból · 2.b ⓘ[^22] | 🎯 előkép | Peshat/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
-| [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^23] | 🙏 kiáltás a Seol szorításából | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^23] |
-| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^24] | 🕊️ szabadulás a Seolból | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
-| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — לִשְׁאֽוֹל (liseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^25] | ⚖️ a gonoszok sorsa | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
-| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^26] | ⚖️ a gonoszok sorsa | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
-| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (seól) | az igaz kiváltása a Seolból · 2.b ⓘ[^27] | 🕊️ szabadulás a Seolból | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
-| [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^28] | ⚖️ a gonoszok sorsa | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^28] |
-| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — מִשְּׁא֥וֹל (misseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^29] | 🕊️ szabadulás a Seolból | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
-| [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — לִשְׁא֥וֹל (liseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^30] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^30] |
-| [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^31] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^31] |
-| [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^32] | 🙏 kiáltás a Seol szorításából | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^32] |
-| [Zsolt 139:8](#ige-zsolt-139-8) | a Seolba — שְּׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^33] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^33] |
-| [Zsolt 141:7](#ige-zsolt-141-7) | a Seol torkában — שְׁאֽוֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^34] | 🕳️ a Seol torka | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^34] |
-| [Péld 1:12](#ige-péld-1-12) | a sír — כִּשְׁא֣וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^35] | 📜 bölcsességi intés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^35] |
-| [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^36] | 📜 bölcsességi intés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^36] |
-| [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^37] | 📜 bölcsességi intés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^37] |
-| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (seól) | a Seol mélységei · 3.a ⓘ[^38] | 📜 bölcsességi intés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
-| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (seól) | Seol és Abaddón; verem · 3.b ⓘ[^39] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
-| [Péld 15:24](#ige-péld-15-24) | a pokoltól — מִשְּׁא֥וֹל (misseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^40] | 📜 bölcsességi intés | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^40] |
-| [Péld 23:14](#ige-péld-23-14) | a pokolból — מִשְּׁא֥וֹל (misseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^41] | 🕊️ szabadulás a Seolból | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
-| [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^42] | 🕳️ telhetetlenség | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^42] |
-| [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^43] | 🕳️ telhetetlenség | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^43] |
-| [Préd 9:12](#ige-préd-9-12) | a Seolban — בִּשְׁא֕וֹל (biseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^44] | 🪦 a halottak helye | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva)* | közepes · tartalom-alapú[^44] |
-| [Én 8:6](#ige-én-8-6) | a sír — כִשְׁא֖וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^45] | 💞 hasonlat | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^45] |
-| [Ézs 5:14](#ige-ézs-5-14) | a sír — שְּׁאוֹל֙ (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^46] | 🕳️ a Seol torka | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^46] |
-| [Ézs 7:11](#ige-ézs-7-11) | a mélységben — שְׁאָ֔לָה (seálá) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^47] | 👑 Isten hatalma | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: keresett MT-vers: Ézs 7:11)* | közepes · tartalom-alapú[^47] |
-| [Ézs 14:9](#ige-ézs-14-9) | a sír — שְׁא֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^48] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^48] |
-| [Ézs 14:11](#ige-ézs-14-11) | a sírba — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^49] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^49] |
-| [Ézs 14:15](#ige-ézs-14-15) | a sírba — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^50] | ⬇️ felmagasztalás és megaláztatás | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^50] |
-| [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^51] | ⚖️ hamis biztonság | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^51] |
-| [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^52] | ⚖️ hamis biztonság | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^52] |
-| [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^53] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^53] |
-| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^54] | 🪦 a halottak helye | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
-| [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (seól) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^55] | ⬇️ megaláztatás | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^55] |
-| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָה֙ (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^56] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
-| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָה (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^57] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
-| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָה (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^58] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
-| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^59] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
-| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a ⓘ[^60] | 📯 prófétai gúnydal | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
-| [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (seól) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^61] | 🎯 előkép | Remez/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^61] |
-| [Ámós 9:2](#ige-ámós-9-2) | a Seolba — בִשְׁא֔וֹל (viseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^62] | 👑 Isten hatalma | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^62] |
-| [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^63] | 🙏 kiáltás a Seol szorításából | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^63] |
-| [Hab 2:5](#ige-hab-2-5) | a Seol — כִּשְׁא֜וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^64] | 🕳️ telhetetlenség | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^64] |
-| [Mt 11:23](#ige-mt-11-23) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^65] | ⬇️ felmagasztalás és megaláztatás | Remez | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^65] |
-| [Mt 16:18](#ige-mt-16-18) | a pokol kapui — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^66] | ⛪ az egyház és a halál hatalma | Remez | G0086 | 12.50 — halál [ⓘ](/szo/G0086) | magas · tartalom-alapú[^66] |
-| [Luk 10:15](#ige-luk-10-15) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^67] | ⬇️ felmagasztalás és megaláztatás | Remez | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^67] |
-| [Luk 16:23](#ige-luk-16-23) | a pokolban — ᾅδῃ (hadé) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^68] | ⚖️ a gonoszok sorsa | Peshat | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^68] |
-| [ApCsel 2:27](#ige-apcsel-2-27) | a sírban — ᾅδην (hadén) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^69] | 🎯 beteljesedés | Peshat/Drash | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^69] |
-| [ApCsel 2:31](#ige-apcsel-2-31) | a sírban — ᾅδην (hadén) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^70] | 🎯 beteljesedés | Peshat/Drash | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^70] |
-| [1Kor 15:55](#ige-1kor-15-55) | Pokol! — — | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^71] | 🏆 diadal a halál felett | Remez/Drash | G0086 | 23.108 — halál; a halál hatalma [ⓘ](/szo/G0086) | magas · tartalom-alapú[^71] |
-| [Jel 1:18](#ige-jel-1-18) | a pokolnak — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^72] | 🗝️ Krisztus hatalma | Drash/Sod | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^72] |
-| [Jel 6:8](#ige-jel-6-8) | a pokol — ᾅδης (hadész) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^73] | ⚔️ megszemélyesítés | Peshat/Remez | G0086 | 23.108 — halál; a halál hatalma [ⓘ](/szo/G0086) | magas · tartalom-alapú[^73] |
-| [Jel 20:13-14](#ige-jel-20-13-14) | a pokol — ᾅδης (hadész) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^74] | 🔥 végső megszűnés | Remez/Drash | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^74] |
+| [1Móz 37:35](#ige-1móz-37-35) | a sírba — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^1] | alap-előfordulás | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^1] |
+| [1Móz 42:38](#ige-1móz-42-38) | a koporsóba — שְׁאֽוֹלָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^2] | ismétlődés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^2] |
+| [1Móz 44:29](#ige-1móz-44-29) | a koporsóba — שְׁאֹֽלָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^3] | ismétlődés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^3] |
+| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — שְׁאֹֽלָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^4] | ismétlődés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^4] |
+| [4Móz 16:30](#ige-4móz-16-30) | pokolba — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^5] | élve alászállás | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^5] |
+| [4Móz 16:33](#ige-4móz-16-33) | a pokolra — שְׁאֹ֑לָה (seólá) | alvilág, ahová a halottak alászállnak · 1[^6] | élve alászállás | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^6] |
+| [5Móz 32:22](#ige-5móz-32-22) | a Seol fenekéig — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^7] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^7] |
+| [1Sám 2:6](#ige-1sám-2-6) | Sírba — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^8] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^8] |
+| [2Sám 22:6](#ige-2sám-22-6) | A pokol kötelei — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^9] | kiáltás a Seol szorításából | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^9] |
+| [1Kir 2:6](#ige-1kir-2-6) | a koporsóba — שְׁאֹֽל (seól) | alvilág, ahová a halottak alászállnak · 1[^10] | ítélet a halál módjában | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^10] |
+| [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^11] | ítélet a halál módjában | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^11] |
+| [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^12] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^12] |
+| [Jób 11:8](#ige-jób-11-8) | az alvilágnál — מִ֝שְּׁא֗וֹל (misseól) | alvilág, ahová a halottak alászállnak · 1[^13] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^13] |
+| [Jób 14:13](#ige-jób-14-13) | a holtak országában — בִּשְׁא֬וֹל (biseól) | az igaz kiváltása a Seolból · 2.b[^14] | remény a Seolban | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
+| [Jób 17:12](#ige-jób-17-12) | a sír — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^15] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:13)* | magas · tartalom-alapú[^15] |
+| [Jób 17:15](#ige-jób-17-15) | a sír üregébe — שְׁאֹ֣ל (seól) | alvilág, ahová a halottak alászállnak · 1[^16] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:16)* | közepes · tartalom-alapú[^16] |
+| [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^17] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^17] |
+| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^18] | a gonoszok sorsa | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
+| [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^19] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^19] |
+| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — בִּ֝שְׁא֗וֹל (biseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^20] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
+| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — לִשְׁא֑וֹלָה (liseólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^21] | a gonoszok sorsa | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
+| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — לִשְׁא֑וֹל (liseól) | az igaz kiváltása a Seolból · 2.b[^22] | előkép | Peshat/Drash | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
+| [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^23] | kiáltás a Seol szorításából | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^23] |
+| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^24] | szabadulás a Seolból | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
+| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — לִשְׁאֽוֹל (liseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^25] | a gonoszok sorsa | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
+| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^26] | a gonoszok sorsa | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
+| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (seól) | az igaz kiváltása a Seolból · 2.b[^27] | szabadulás a Seolból | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
+| [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^28] | a gonoszok sorsa | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^28] |
+| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — מִשְּׁא֥וֹל (misseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^29] | szabadulás a Seolból | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
+| [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — לִשְׁא֥וֹל (liseól) | alvilág, ahová a halottak alászállnak · 1[^30] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^30] |
+| [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^31] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^31] |
+| [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^32] | kiáltás a Seol szorításából | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^32] |
+| [Zsolt 139:8](#ige-zsolt-139-8) | a Seolba — שְּׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^33] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^33] |
+| [Zsolt 141:7](#ige-zsolt-141-7) | a Seol torkában — שְׁאֽוֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^34] | a Seol torka | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^34] |
+| [Péld 1:12](#ige-péld-1-12) | a sír — כִּשְׁא֣וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1[^35] | bölcsességi intés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^35] |
+| [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^36] | bölcsességi intés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^36] |
+| [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^37] | bölcsességi intés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^37] |
+| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (seól) | a Seol mélységei · 3.a[^38] | bölcsességi intés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
+| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (seól) | Seol és Abaddón; verem · 3.b[^39] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
+| [Péld 15:24](#ige-péld-15-24) | a pokoltól — מִשְּׁא֥וֹל (misseól) | alvilág, ahová a halottak alászállnak · 1[^40] | bölcsességi intés | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^40] |
+| [Péld 23:14](#ige-péld-23-14) | a pokolból — מִשְּׁא֥וֹל (misseól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^41] | szabadulás a Seolból | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
+| [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^42] | telhetetlenség | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^42] |
+| [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (seól) | alvilág, ahová a halottak alászállnak · 1[^43] | telhetetlenség | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^43] |
+| [Préd 9:12](#ige-préd-9-12) | a Seolban — בִּשְׁא֕וֹל (biseól) | alvilág, ahová a halottak alászállnak · 1[^44] | a halottak helye | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva)* | közepes · tartalom-alapú[^44] |
+| [Én 8:6](#ige-én-8-6) | a sír — כִשְׁא֖וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1[^45] | hasonlat | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^45] |
+| [Ézs 5:14](#ige-ézs-5-14) | a sír — שְּׁאוֹל֙ (seól) | alvilág, ahová a halottak alászállnak · 1[^46] | a Seol torka | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^46] |
+| [Ézs 7:11](#ige-ézs-7-11) | a mélységben — שְׁאָ֔לָה (seálá) | alvilág, ahová a halottak alászállnak · 1[^47] | Isten hatalma | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: keresett MT-vers: Ézs 7:11)* | közepes · tartalom-alapú[^47] |
+| [Ézs 14:9](#ige-ézs-14-9) | a sír — שְׁא֗וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^48] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^48] |
+| [Ézs 14:11](#ige-ézs-14-11) | a sírba — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^49] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^49] |
+| [Ézs 14:15](#ige-ézs-14-15) | a sírba — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^50] | felmagasztalás és megaláztatás | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^50] |
+| [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^51] | hamis biztonság | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^51] |
+| [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^52] | hamis biztonság | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^52] |
+| [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^53] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^53] |
+| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^54] | a halottak helye | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
+| [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (seól) | átvitt értelem: lealacsonyodás, száműzetés · 4[^55] | megaláztatás | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^55] |
+| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָה֙ (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^56] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
+| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָה (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^57] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
+| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָה (seólá) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^58] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
+| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^59] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
+| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (seól) | a gonoszok sorsa; az igaz félelme és szabadulása · 2.a[^60] | prófétai gúnydal | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
+| [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (seól) | átvitt értelem: lealacsonyodás, száműzetés · 4[^61] | előkép | Remez/Drash | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^61] |
+| [Ámós 9:2](#ige-ámós-9-2) | a Seolba — בִשְׁא֔וֹל (viseól) | alvilág, ahová a halottak alászállnak · 1[^62] | Isten hatalma | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^62] |
+| [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (seól) | alvilág, ahová a halottak alászállnak · 1[^63] | kiáltás a Seol szorításából | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^63] |
+| [Hab 2:5](#ige-hab-2-5) | a Seol — כִּשְׁא֜וֹל (kiseól) | alvilág, ahová a halottak alászállnak · 1[^64] | telhetetlenség | Remez | H7585 | a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^64] |
+| [Mt 11:23](#ige-mt-11-23) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2[^65] | felmagasztalás és megaláztatás | Remez | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^65] |
+| [Mt 16:18](#ige-mt-16-18) | a pokol kapui — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2[^66] | az egyház és a halál hatalma | Remez | G0086 | halál [ⓘ](/szo/G0086) | magas · tartalom-alapú[^66] |
+| [Luk 10:15](#ige-luk-10-15) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2[^67] | felmagasztalás és megaláztatás | Remez | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^67] |
+| [Luk 16:23](#ige-luk-16-23) | a pokolban — ᾅδῃ (hadé) | az alvilág, a halottak birodalma · Thayer 2[^68] | a gonoszok sorsa | Peshat | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^68] |
+| [ApCsel 2:27](#ige-apcsel-2-27) | a sírban — ᾅδην (hadén) | az alvilág, a halottak birodalma · Thayer 2[^69] | beteljesedés | Peshat/Drash | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^69] |
+| [ApCsel 2:31](#ige-apcsel-2-31) | a sírban — ᾅδην (hadén) | az alvilág, a halottak birodalma · Thayer 2[^70] | beteljesedés | Peshat/Drash | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^70] |
+| [1Kor 15:55](#ige-1kor-15-55) | Pokol! — — | az alvilág, a halottak birodalma · Thayer 2[^71] | diadal a halál felett | Remez/Drash | G0086 | halál; a halál hatalma [ⓘ](/szo/G0086) | magas · tartalom-alapú[^71] |
+| [Jel 1:18](#ige-jel-1-18) | a pokolnak — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2[^72] | Krisztus hatalma | Drash/Sod | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^72] |
+| [Jel 6:8](#ige-jel-6-8) | a pokol — ᾅδης (hadész) | az alvilág, a halottak birodalma · Thayer 2[^73] | megszemélyesítés | Peshat/Remez | G0086 | halál; a halál hatalma [ⓘ](/szo/G0086) | magas · tartalom-alapú[^73] |
+| [Jel 20:13-14](#ige-jel-20-13-14) | a pokol — ᾅδης (hadész) | az alvilág, a halottak birodalma · Thayer 2[^74] | végső megszűnés | Remez/Drash | G0086 | a halottak világa; Hádész [ⓘ](/szo/G0086) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^74] |
 
 [^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: BDB-példa: a BDB az 1. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 19); ez a kutatói hozzárendelés (1 → 1) alá esik, a címke a finomabb útvonalé
 [^2]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: BDB-példa: a BDB az 1. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 20); ez a kutatói hozzárendelés (1 → 1) alá esik, a címke a finomabb útvonalé
@@ -255,445 +255,518 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 #### 1/a. Az igehelyek szövege
 
-**Mit mutat ez a rész?** A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.
+A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.<!-- olvasói -->
 
 
 <a id="ige-1móz-37-35"></a>
 **1Móz 37:35**
 *Felkelének pedig minden ő fiai, és minden ő leányai, hogy vígasztalják őt, de nem akara vígasztalódni, hanem monda: Sírva megyek fiamhoz a sírba; és siratá őt az atyja.*
 Jákób nem fogad vigasztalást József vélt halála után, és kijelenti: „Sírva megyek fiamhoz a sírba”. A héber szöveg itt a seólt nevezi meg először a Bibliában, a gyászoló apa céljaként, ahová a halott fia után ő is lemegy.
+
 Funkció: a szó első megjelenése: a halottak helye, ahová a gyászoló a halott után lemegy
 
 <a id="ige-1móz-42-38"></a>
 **1Móz 42:38**
 *Az pedig monda: Nem megy le oda az én fiam ti veletek, mert az ő bátyja megholt és ő maga maradt meg; ha veszedelem érné őt az úton, a melyen elmentek, ősz fejemet búba borítva bocsátanátok le a koporsóba.*
 Jákób nem engedi Benjámint a testvéreivel Egyiptomba, mert ha baj érné, az ő ősz fejét „búba borítva bocsátanátok le a koporsóba”. A fia elvesztése miatti bánat vinné le az öreg apát a Seolba.
+
 Funkció: a Jákób-történet gyászmondata visszatér: a fiú elvesztése az apát a Seolba vinné
 
 <a id="ige-1móz-44-29"></a>
 **1Móz 44:29**
 *Ha ezt is elviszitek szemeim elől, s veszedelem találja érni, akkor az én ősz fejemet keserűségtől borítva bocsátjátok alá a koporsóba.*
 Júda Józsefnek idézi fel atyja szavait: ha Benjámint is elviszik, az öreg Jákób ősz fejét „keserűségtől borítva bocsátjátok alá a koporsóba”. A gyászmondat itt már egy könyörgés érve.
+
 Funkció: a gyászmondat Júda szájából, a közbenjárás érveként
 
 <a id="ige-1móz-44-31"></a>
 **1Móz 44:31**
 *Ha meglátja, hogy nincs meg a gyermek, meghal s akkor a te szolgáid, a te szolgádnak, a mi atyánknak ősz fejét búba borítva bocsátják alá a koporsóba.*
 Júda végigviszi az érvet: ha a gyermek nem tér haza, az apa meghal, és a testvérek lesznek azok, akik ősz fejét „búba borítva bocsátják alá a koporsóba”. Az apa Seolba jutásának felelőssége így a fiakra száll.
+
 Funkció: a gyászmondat utolsó előfordulása: a Seolba jutás felelőssége a testvérekre hárul
 
 <a id="ige-4móz-16-30"></a>
 **4Móz 16:30**
 *Ha pedig az Úr valami új dolgot cselekszik, és a föld megnyitja az ő száját, és elnyeli őket, és mindazt, a mi az övék, és elevenen szállanak alá pokolba: akkor megismeritek, hogy gyalázták ezek az emberek az Urat.*
 Mózes kijelenti, hogy ha Kóré és társai „elevenen szállanak alá pokolba”, abból tudja meg a nép, hogy ezek az emberek az Urat gyalázták. A Seolba jutás itt nem a halál rendes útja, hanem az Úr új, mindenki által látható ítélete.
+
 Funkció: a Seol az isteni ítélet eszköze, amely a lázadókat elevenen nyeli el
 
 <a id="ige-4móz-16-33"></a>
 **4Móz 16:33**
 *És alászállának azok és mindaz, a mi az övék, elevenen a pokolra: és befedezé őket a föld, és elveszének a község közül.*
 A föld megnyílik, és Kóré lázadói mindenükkel együtt „elevenen a pokolra” szállnak, majd a föld befedi őket. A 16:30-ban meghirdetett jel itt szó szerint teljesedik.
+
 Funkció: a meghirdetett ítélet végrehajtása: a lázadók élve jutnak a Seolba
 
 <a id="ige-5móz-32-22"></a>
 **5Móz 32:22**
 *Mert tűz lobban fel haragomban és leég a Seol fenekéig; megemészti a földet és gyümölcsét, és felgyújtja a hegyek alapjait.*
 Mózes énekében az Úr haragjának tüze „leég a Seol fenekéig”, megemészti a földet, és a hegyek alapjait is felgyújtja. A Seol itt a világ legalsó pontja, ameddig Isten ítélete leér.
+
 Funkció: Isten haragja a Seol mélyéig ér, a halottak helye sincs kívül az ítéletén
 
 <a id="ige-1sám-2-6"></a>
 **1Sám 2:6**
 *Az Úr öl és elevenít, Sírba visz és visszahoz.*
 Anna hálaénekében az Úr az, aki „öl és elevenít, Sírba visz és visszahoz”. A Seolba vitel és az onnan való visszahozás egyaránt az Úr kezében van.
+
 Funkció: az Úr levisz a Seolba és felhoz onnan: élet és halál egyedül az övé
 
 <a id="ige-2sám-22-6"></a>
 **2Sám 22:6**
 *A pokol kötelei vettek körül, S a halál tőrei estek reám.*
 Dávid szabadulási énekében a halál fenyegetését így mondja el: „A pokol kötelei vettek körül, S a halál tőrei estek reám.” A következő versben az Úrhoz kiált, és Isten meghallgatja.
+
 Funkció: a Seol köti meg az énekest, aki az Úrhoz kiált és megszabadul; párja a Zsolt 18:6
 
 <a id="ige-1kir-2-6"></a>
 **1Kir 2:6**
 *Cselekedjél a te bölcseséged szerint, és ne engedd, hogy megőszülvén, békességgel menjen a koporsóba.*
 Dávid halála előtt arra inti Salamont, hogy Joábot ne engedje, hogy megőszülve „békességgel menjen a koporsóba”. Itt nem az a kérdés, hogy valaki a Seolba jut-e, hanem az, hogy büntetlenül jut-e oda.
+
 Funkció: a vétkes ne érje el békében a Seolt
 
 <a id="ige-1kir-2-9"></a>
 **1Kir 2:9**
 *Te azonban ne hagyd őt büntetés nélkül, és mivel eszes férfiú vagy, tudod, mit kelljen cselekedned vele, hogy az ő vénségét vérrel bocsássad a koporsóba.*
 Dávid Simeiről is rendelkezik: Salamon ne hagyja büntetlenül, hanem „az ő vénségét vérrel bocsássad a koporsóba”. Ez a 2:6 párja, ugyanazzal az ítélettel.
+
 Funkció: a 2:6 párja: a büntetlen öregkori halál helyett erőszakos vég
 
 <a id="ige-jób-7-9"></a>
 **Jób 7:9**
 *A felhő eltünik és elmegy, így a ki leszáll a sírba, nem jő fel többé.*
 Jób a halál véglegességét az eltűnő felhőhöz hasonlítja: „a ki leszáll a sírba, nem jő fel többé”. A Seolból ebben a panaszban nincs visszatérés.
+
 Funkció: a Seol a visszatérés nélküli hely, az emberi élet végpontja
 
 <a id="ige-jób-11-8"></a>
 **Jób 11:8**
 *Magasabb az égnél: mit teszel tehát? Mélyebb az alvilágnál; hogy ismerheted meg?*
 Cófár Isten bölcsességéről azt mondja, hogy magasabb az égnél, és „Mélyebb az alvilágnál”. A Seol itt a legnagyobb mélység mértéke, amelynél Isten bölcsessége még mélyebb.
+
 Funkció: Isten bölcsessége a Seolnál is mélyebb, ember nem érheti fel
 
 <a id="ige-jób-14-13"></a>
 **Jób 14:13**
 *Vajha engem a holtak országában tartanál; rejtegetnél engemet addig, a míg elmúlik a te haragod; határt vetnél nékem, azután megemlékeznél rólam!*
 Jób azt kívánja, hogy Isten rejtse el őt „a holtak országában”, amíg haragja elmúlik, aztán szabjon neki határt, és emlékezzen meg róla. A Seol itt átmeneti rejtekhely, ahonnan Isten visszahívhatja.
+
 Funkció: Jób a Seolt rejtekként kéri, ahol Isten megemlékezik róla
 
 <a id="ige-jób-17-12"></a>
 **Jób 17:12**
 *Ha reménykedem is, a sír már az én házam, a sötétségben vetettem az én ágyamat.*
 Jób kimondja, hogy reménykedése ellenére „a sír már az én házam”, és a sötétségben vetett ágyat magának. A Seol itt az a lakóhely, amely felé a beteg ember már elindult.
+
 Funkció: Jób a Seolt már a saját házának tekinti
 
 <a id="ige-jób-17-15"></a>
 **Jób 17:15**
 *Leszáll az majd a sír üregébe, velem együtt nyugoszik a porban.*
 Jób azt kérdezi, mi lesz a reménységével, és így felel: „Leszáll az majd a sír üregébe”, és vele együtt nyugszik a porban. A Seolba nemcsak ő, a reménysége is vele száll.
+
 Funkció: a Seolba nemcsak az ember, a reménysége is leszáll
 
 <a id="ige-jób-21-13"></a>
 **Jób 21:13**
 *Jóllétben töltik el napjaikat, és egy pillanat alatt szállnak alá a sírba;*
 Jób a gonoszok jólétét panaszolja: napjaikat bőségben töltik, és „egy pillanat alatt szállnak alá a sírba”, hosszú szenvedés nélkül. A Seol mindenki közös vége, és a gonosz könnyű halála Jób szemében igazságtalanság.
+
 Funkció: a gonosz is gyötrelem nélkül jut a Seolba, ez Jób panaszának tárgya
 
 <a id="ige-jób-24-19"></a>
 **Jób 24:19**
 *Szárazság és hőség nyeli el a hó vizét, a pokol azokat, a kik vétkeznek.*
 Ahogy a szárazság és a hőség elnyeli a hó vizét, úgy nyeli el „a pokol azokat, a kik vétkeznek”. A mondásban a Seol a bűnösök gyors és nyomtalan eltűnése.
+
 Funkció: a Seol elnyeli a vétkezőket, ahogy a hőség a vizet
 
 <a id="ige-jób-26-6"></a>
 **Jób 26:6**
 *Az alvilág mezítelen előtte, és eltakaratlan a holtak országa.*
 Jób Isten nagyságát dicsérve mondja: „Az alvilág mezítelen előtte”, és a pusztulás helye sincs eltakarva. A Seol semmit sem rejt el Isten szeme elől.
+
 Funkció: a Seol nyitva áll Isten előtt
 
 <a id="ige-zsolt-6-6"></a>
 **Zsolt 6:6**
 *Mert nincs emlékezés rólad a halálban, a seolban kicsoda dicsőít téged?*
 A beteg zsoltáros arra hivatkozik, hogy a halálban nincs emlékezés Istenről, és megkérdezi: „a seolban kicsoda dicsőít téged?” Mivel a Seolban elnémul a dicséret, az életéért könyörög.
+
 Funkció: a Seolban nincs dicséret: ez a szabadításért mondott ima érve
 
 <a id="ige-zsolt-9-18"></a>
 **Zsolt 9:18**
 *Seolba jutnak a gonoszok, oda minden nép, a mely elfeledkezik Istenről.*
 A zsoltár kimondja: „Seolba jutnak a gonoszok”, és vele minden nép, amely elfeledkezik Istenről. A Seol itt az Istent elfelejtők végső sorsa.
+
 Funkció: a Seol az Istenről megfeledkező népek célja
 
 <a id="ige-zsolt-16-10"></a>
 **Zsolt 16:10**
 *Mert nem hagyod lelkemet a Seolban; nem engeded, hogy a te szented rothadást lásson.*
 Dávid bizalommal mondja Istennek: „nem hagyod lelkemet a Seolban”, és nem engedi, hogy szentje rothadást lásson. Péter pünkösdi beszéde ezt a verset Krisztus feltámadására idézi.
+
 Funkció: a Seolban nem maradó szent ígérete, amely az Újszövetségben Krisztus feltámadásában teljesedik
 
 <a id="ige-zsolt-18-6"></a>
 **Zsolt 18:6**
 *A Seol kötelei vettek körül; a halál tőrei fogtak meg engem.*
 Ugyanaz a vallomás, mint a 2Sám 22:6-ban: „A Seol kötelei vettek körül”, és a halál tőrei fogták meg a zsoltárost. A következő versben az Úrhoz kiált, és Isten meghallja a hangját.
+
 Funkció: a 2Sám 22:6 párja a Zsoltárok könyvében
 
 <a id="ige-zsolt-30-4"></a>
 **Zsolt 30:4**
 *Uram, felhoztad a Seolból az én lelkemet, fölélesztettél a sírbaszállók közül.*
 A zsoltáros hálát ad: „Uram, felhoztad a Seolból az én lelkemet”, és felélesztette őt a sírba szállók közül. A Seol itt az a hely, ahonnan Isten már kimentette.
+
 Funkció: hálaadás a már megtörtént kimentésért
 
 <a id="ige-zsolt-31-18"></a>
 **Zsolt 31:18**
 *Uram, ne szégyenüljek meg, mivelhogy hívlak téged; a gonoszok szégyenüljenek meg és pusztuljanak a Seolba.*
 A szorongatott zsoltáros azt kéri, hogy ő ne szégyenüljön meg, a gonoszok viszont „pusztuljanak a Seolba”. Itt a Seol az ellenség kívánt sorsa, nem a hívőt fenyegető hatalom.
+
 Funkció: az imádkozó az ellenségnek kívánja a Seolt
 
 <a id="ige-zsolt-49-15"></a>
 **Zsolt 49:15**
 *Mint juhok, a Seolra vettetnek, a halál legelteti őket, és az igazak uralkodnak rajtok reggel; alakjokat elemészti a Seol, távol az ő lakásuktól.*
 A gazdagságukban bízókról mondja a zsoltár: „Mint juhok, a Seolra vettetnek”, a halál legelteti őket, és alakjukat a Seol emészti el. A vagyon nem menti meg őket a közös végtől.
+
 Funkció: a gazdagságban bízók nyájként jutnak a Seolba
 
 <a id="ige-zsolt-49-16"></a>
 **Zsolt 49:16**
 *Csak Isten válthatja ki lelkemet a Seol kezéből, mikor az megragad engem. Szela.*
 A zsoltáros szembeállítja velük a saját reményét: „Csak Isten válthatja ki lelkemet a Seol kezéből”. A Seol hatalmából egyedül Isten válthat ki.
+
 Funkció: az igaz reménye, hogy Isten kiváltja őt a Seol hatalmából
 
 <a id="ige-zsolt-55-16"></a>
 **Zsolt 55:16**
 *A halál vegye őket körül, elevenen szálljanak a Seolba; mert gonoszság van lakásukban, kebelökben.*
 Az áruló barát miatt gyötrődő zsoltáros azt kéri, hogy ellenségei „elevenen szálljanak a Seolba”. A kép Kóré lázadóinak élve alászállására emlékeztet.
+
 Funkció: ítélet kérése az ellenségre; itt a Seol nem a hívőt szorongatja
 
 <a id="ige-zsolt-86-13"></a>
 **Zsolt 86:13**
 *Mert nagy én rajtam a te kegyelmed, és kiszabadítottad lelkemet a mélységes pokolból.*
 A zsoltáros Isten nagy kegyelmét dicséri, mert „kiszabadítottad lelkemet a mélységes pokolból”. A Seol legmélyéről való szabadítás a hála oka.
+
 Funkció: hála a legmélyebb Seolból való kimentésért
 
 <a id="ige-zsolt-88-4"></a>
 **Zsolt 88:4**
 *Mert betelt a lelkem nyomorúságokkal, és életem a Seolig jutott.*
 A súlyos beteg panaszolja, hogy lelke betelt nyomorúsággal, és „életem a Seolig jutott”. Az élő ember itt már a Seol határán áll, és onnan beszél Istenhez.
+
 Funkció: az élő ember a Seol határára jut, és innen panaszolja helyzetét
 
 <a id="ige-zsolt-89-49"></a>
 **Zsolt 89:49**
 *Kicsoda oly erős, hogy éljen és ne lásson halált s megszabadítsa magát a Seolnak kezéből? Szela.*
 A zsoltár azt kérdezi, kicsoda olyan erős, hogy ne lásson halált, „s megszabadítsa magát a Seolnak kezéből”. A válasz kimondatlan: senki sem mentheti ki magát a Seolból.
+
 Funkció: a Seol minden embert elér, magát senki nem szabadíthatja meg
 
 <a id="ige-zsolt-116-3"></a>
 **Zsolt 116:3**
 *Körülvettek engem a halál kötelei, és a pokol szorongattatásai támadtak meg engem; nyomorúságba és ínségbe jutottam.*
 A zsoltáros felidézi, hogy körülvették a halál kötelei, és „a pokol szorongattatásai támadtak meg engem”. A következő versben az Úr nevét hívja segítségül, és szabadulást nyer.
+
 Funkció: a Seol szorongatja a hívőt, aki az Úrhoz kiált; itt ér össze a motívum az Úr nevének segítségül hívásával
 
 <a id="ige-zsolt-139-8"></a>
 **Zsolt 139:8**
 *Ha a mennybe hágok fel, ott vagy; ha a Seolba vetek ágyat, ott is jelen vagy.*
 A zsoltáros Isten jelenlétéről vallja: ha a mennybe megy fel, ott van, és „ha a Seolba vetek ágyat, ott is jelen vagy”. A Seol sincs kívül Isten jelenlétén.
+
 Funkció: Isten jelen van a Seolban is
 
 <a id="ige-zsolt-141-7"></a>
 **Zsolt 141:7**
 *Mint a ki a földet vágja és hányja, úgy szóratnak szét csontjaik a Seol torkában.*
 A zsoltáros a megöltek sorsát így írja le: ahogy a szántáskor szétszóródik a föld, úgy szóródnak szét a csontjaik „a Seol torkában”. A Seol nyitott torokként fogadja a halottakat.
+
 Funkció: a Seol mint elnyelő száj képe
 
 <a id="ige-péld-1-12"></a>
 **Péld 1:12**
 *Nyeljük el azokat, mint a sír elevenen, és egészen, mint a kik mélységbe szállottak;*
 Az erőszakos bűntársak így csábítják a fiatalt: „Nyeljük el azokat, mint a sír elevenen”. A gonoszok a Seol elnyelő hatalmát akarják utánozni áldozataikon.
+
 Funkció: a Seol elnyelő ereje a gonoszok szavában, intő példaként
 
 <a id="ige-péld-5-5"></a>
 **Péld 5:5**
 *Az ő lábai a halálra mennek, az ő léptei a sírba törekszenek.*
 Az idegen asszonyról mondja az intelem: „Az ő lábai a halálra mennek, az ő léptei a sírba törekszenek.” Aki vele jár, a Seol felé halad.
+
 Funkció: a parázna útja a Seolba vezet
 
 <a id="ige-péld-7-27"></a>
 **Péld 7:27**
 *Sírba vívő út az ő háza, a mely levisz a halálnak hajlékába.*
 A csábító asszony házáról mondja a tanító: „Sírba vívő út az ő háza”, amely levisz a halál hajlékába. A ház küszöbe a Seolba vezető út kezdete.
+
 Funkció: a ház, amely a Seolba vezető út
 
 <a id="ige-péld-9-18"></a>
 **Péld 9:18**
 *És az nem tudja, hogy ott élet nélkül valók vannak; és a pokol mélyébe esnek az ő hivatalosai!*
 A balgaság asszonyának vendégei nem tudják, hogy ott halottak vannak, és hogy meghívottai „a pokol mélyébe esnek”. A lakoma a Seol mélyén végződik.
+
 Funkció: a balgaság hívása a Seol mélyére vezet
 
 <a id="ige-péld-15-11"></a>
 **Péld 15:11**
 *A sír és a pokol az Úr előtt vannak; mennyivel inkább az emberek szíve.*
 A mondás szerint „A sír és a pokol az Úr előtt vannak”, mennyivel inkább az emberek szíve. A Seol és a pusztulás helye is nyitva áll az Úr előtt.
+
 Funkció: ha a Seol nyitva áll az Úr előtt, az emberi szív sem rejtőzhet el
 
 <a id="ige-péld-15-24"></a>
 **Péld 15:24**
 *Az életnek úta felfelé van az értelmes ember számára, hogy eltávozzék a pokoltól, mely aláfelé van.*
 Az értelmes ember útja felfelé visz, „hogy eltávozzék a pokoltól, mely aláfelé van”. A bölcsesség az életre vezet, a Seoltól el.
+
 Funkció: a bölcs út a Seoltól elvezet
 
 <a id="ige-péld-23-14"></a>
 **Péld 23:14**
 *Te vesszővel vered meg őt: és az ő lelkét a pokolból ragadod ki.*
 A tanító azt mondja a fiát fenyítő apának, hogy ha vesszővel megveri, „az ő lelkét a pokolból ragadod ki”. A nevelés itt a Seoltól óvja meg a gyermeket.
+
 Funkció: a fegyelmezés a gyermeket a Seoltól menti meg
 
 <a id="ige-péld-27-20"></a>
 **Péld 27:20**
 *Mint a sír és a pokol meg nem elégednek, úgy az embernek szemei meg nem elégednek.*
 „Mint a sír és a pokol meg nem elégednek”, úgy az ember szeme sem elégszik meg soha. A Seol telhetetlensége az emberi kívánság képe.
+
 Funkció: a soha meg nem telő Seol az emberi vágy mértéke
 
 <a id="ige-péld-30-16"></a>
 **Péld 30:16**
 *A sír és a meddő asszony, a föld meg nem elégszik a vízzel, és a tűz nem mondja: elég!*
 A soha nem elégedő dolgok felsorolásában az első „A sír”, a meddő asszony, a víztől soha nem telő föld és a tűz mellett. A Seol a telhetetlenség példája.
+
 Funkció: a Seol a soha nem elégedő dolgok sorának élén
 
 <a id="ige-préd-9-12"></a>
 **Préd 9:12**
 *Valamit hatalmadban van cselekedni erőd szerint, azt cselekedjed; mert semmi cselekedet, okoskodás, tudomány és bölcseség nincs a Seolban, a hová menendő vagy.*
 A Prédikátor arra biztat, hogy amit lehet, most tegyen meg az ember, mert semmi cselekedet és bölcsesség „nincs a Seolban, a hová menendő vagy”. A Seolban a tett és a tudás megszűnik.
+
 Funkció: a Seolban megszűnik a munka és a tudás, ezért most kell cselekedni
 
 <a id="ige-én-8-6"></a>
 **Én 8:6**
 *Tégy engem mintegy pecsétet a te szívedre, mintegy pecsétet a te karodra; mert erős a szeretet, mint a halál, kemény, mint a sír a buzgó szerelem; lángjai tűznek lángjai, az Úrnak lángjai.*
 A menyasszony a szerelem erejéről beszél: erős a szeretet, mint a halál, és „kemény, mint a sír a buzgó szerelem”. A Seol hajthatatlansága itt a szerelem erejének mértéke.
+
 Funkció: a Seol hajthatatlansága a szerelem erejét méri
 
 <a id="ige-ézs-5-14"></a>
 **Ézs 5:14**
 *Azért a sír kiszélesíti torkát és feltátja száját szertelen, és leszállnak abba népem főemberei, és zajongó sokasága, és minden örvendezői;*
 Júda dőzsölő vezetőiről mondja a próféta, hogy „a sír kiszélesíti torkát és feltátja száját szertelen”, és leszállnak bele főemberei és zajongó sokasága. A Seol éhes torokként nyeli el a népet.
+
 Funkció: ítélet: a Seol kitágult torka nyeli el a dőzsölőket
 
 <a id="ige-ézs-7-11"></a>
 **Ézs 7:11**
 *Kérj jelt magadnak az Úrtól, a te Istenedtől, kérj a mélységben vagy fent a magasban!*
 Ézsaiás felszólítja Áház királyt, hogy kérjen jelt az Úrtól, „kérj a mélységben vagy fent a magasban!” A héber szöveg itt a Seolt nevezi meg: a jel a legmélyebbtől a legmagasabbig bárhonnan jöhet.
+
 Funkció: a Seol mélye és az ég magassága között minden Isten jelének tere
 
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
 *Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
 A babiloni király elleni gúnydalban „Alant a sír megindul” az érkező miatt, és felriasztja a halottak árnyait, a föld egykori hatalmasait. A Seol lakói gúnyos fogadtatást készítenek a bukott uralkodónak.
+
 Funkció: a Seol felkél, hogy fogadja a bukott királyt
 
 <a id="ige-ézs-14-11"></a>
 **Ézs 14:11**
 *Kevélységed és lantjaid zengése a sírba szállt; fekvő ágyad férgek, és takaró lepled pondrók!*
 A gúnydal így folytatódik: „Kevélységed és lantjaid zengése a sírba szállt”, a király ágya férgek, takarója pondrók. A pompa a Seolban semmivé lesz.
+
 Funkció: a kevély uralkodó dicsősége a Seolba hull
 
 <a id="ige-ézs-14-15"></a>
 **Ézs 14:15**
 *Pedig a sírba szállsz alá, sírgödör mélységébe!*
 Az égig törni akaró király ítélete: „Pedig a sírba szállsz alá, sírgödör mélységébe!” A legmagasabbra törőt a Seol legmélye várja.
+
 Funkció: a gőgös a Seol mélyére zuhan; a minta Kapernaum ítéletében tér vissza
 
 <a id="ige-ézs-28-15"></a>
 **Ézs 28:15**
 *Mert így szóltok: Frigyet kötöttünk a halállal, a sírral meg szövetséget csináltunk; az ostorozó áradat ha jő, nem ér el minket; mert a hazugságot választók oltalmunkul, és csalásba rejtezénk el!*
 Jeruzsálem vezetői azzal kérkednek, hogy frigyet kötöttek a halállal, és „a sírral meg szövetséget csináltunk”. Azt hiszik, hogy a Seollal kötött egyezség megvédi őket a csapástól.
+
 Funkció: a Seollal kötött szövetség a vezetők önámítása
 
 <a id="ige-ézs-28-18"></a>
 **Ézs 28:18**
 *És eltöröltetik a halállal való frigyetek, és a sírral való szövetségtek meg nem áll; az ostorozó áradat ha eljő, eltapod titeket,*
 Az Úr válasza az, hogy „a sírral való szövetségtek meg nem áll”, és a halállal kötött frigyük eltöröltetik. A Seol felett az Úr dönt, nem az emberi egyezség.
+
 Funkció: a Seollal kötött szövetség érvénytelen
 
 <a id="ige-ézs-38-10"></a>
 **Ézs 38:10**
 *Én azt mondám: hát napjaimnak nyugalmában kell alászállanom a sír kapuihoz, megfosztva többi éveimtől!*
 Ezékiás király betegségében azt mondja, élete delén kell lemennie „a sír kapuihoz”, megfosztva hátralévő éveitől. A Seol itt a korai halál fenyegetése.
+
 Funkció: a beteg király a Seol kapuja előtt áll
 
 <a id="ige-ézs-38-18"></a>
 **Ézs 38:18**
 *Mert nem a sír dicsőít Téged, és nem a halál magasztal Téged, hűségedre nem a sírverembe szállók várnak!*
 Meggyógyulása után Ezékiás azt mondja: „nem a sír dicsőít Téged”, és nem a halál magasztalja Istent. A dicséret az élők dolga, a Seolban elnémul.
+
 Funkció: a Seolban nincs dicséret, ezért a megmentett élet hálát ad
 
 <a id="ige-ézs-57-9"></a>
 **Ézs 57:9**
 *És menél a királyhoz olajjal, és megsokasítád keneteidet, és elküldéd követeidet messze földre, és megaláztad magadat a sírig.*
 A hűtlen nép idegen királyokhoz küldött követeket és ajándékokat, és a próféta szerint „megaláztad magadat a sírig”. A Seol itt a megalázkodás legmélyebb pontja.
+
 Funkció: a hűtlenség a Seolig alázza a népet
 
 <a id="ige-ez-31-15"></a>
 **Ez 31:15**
 *Így szól az Úr Isten: Azon a napon, a melyen sírba aláméne, gyászba öltöztetém miatta a mélység vizeit, és megtartóztatám folyóikat, úgy hogy a sok víz elzáraték, s meggyászoltatám őt a Libánonnal, és a mező minden fája elepede miatta.*
 Az Úr Isten a fáraót a libanoni cédrushoz hasonlítja, és azt mondja, hogy azon a napon, amelyen „sírba aláméne”, gyászba borította miatta a vizeket és a mező fáit. A Seolba szállás itt egy nagyhatalom bukása.
+
 Funkció: a cédrus-fáraó Seolba zuhanása gyászba borítja a teremtett világot
 
 <a id="ige-ez-31-16"></a>
 **Ez 31:16**
 *Zuhanásának hangja miatt megreszkettetém a nemzeteket, mikor leszállítám őt a sírba együtt velök, kik sírgödörbe szállnak; és vígasztalást vőn a mélység országában Éden minden fája, a Libánon szépsége és java, minden vízivó.*
 A cédrus zuhanásának hangja megrengeti a nemzeteket, és az Úr így szól róla: „leszállítám őt a sírba” a verembe szállókkal együtt. A bukás a Seolban is visszhangzik, ahol a régebben elbukottak vigasztalódnak.
+
 Funkció: a bukás a Seolban is visszhangzik, a már ott lévők vigasztalódnak
 
 <a id="ige-ez-31-17"></a>
 **Ez 31:17**
 *Ezek is alászállottak vele a sírba azokhoz, a kik fegyverrel ölettek meg, s a kik mint segítőtársai árnyékában ülének a nemzetek között.*
 A fáraóval a szövetségesei is „alászállottak vele a sírba”, a fegyverrel megöltekhez. A nagyhatalom kísérete osztozik a sorsában.
+
 Funkció: a szövetségesek is a fáraóval együtt jutnak a Seolba
 
 <a id="ige-ez-32-21"></a>
 **Ez 32:21**
 *Szólni fognak felőle a vitézek hatalmasai a sír közepéből együtt az ő segítőivel: alászállottak, hogy itt feküdjenek a körülmetéletlenek, mint fegyverrel megöltek!*
 A hősök hatalmasai „a sír közepéből” szólnak Egyiptomról, amely közéjük, a körülmetéletlenek és a fegyverrel megöltek közé száll le. A Seol itt a bukott népek közössége, ahol a halottak beszélnek.
+
 Funkció: a Seol lakói fogadják és megszólítják a bukott Egyiptomot
 
 <a id="ige-ez-32-27"></a>
 **Ez 32:27**
 *És nem feküsznek együtt az erősekkel, kik elestek a körülmetéletlenek közül, kik hadiszerszámaikkal szálltak alá a sírba s kiknek az ő fegyvereiket fejük alá tették; mert lőn az ő vétkök csontjaikon, mivelhogy félelmére valának a vitézeknek az élők földjén.*
 A próféta szerint a bukott nép nem fekszik együtt a régi hősökkel, akik „hadiszerszámaikkal szálltak alá a sírba”, fegyverüket a fejük alá téve. A Seolban is különbség van a halottak között.
+
 Funkció: a Seolban is rang szerint fekszenek a halottak, a bukott nép a megvetettek közé jut
 
 <a id="ige-hós-13-14"></a>
 **Hós 13:14**
 *Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?! Megbánás elrejtetett én előlem.*
 Az Úr Efraim felől azt mondja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól!”, majd magát a Seolt szólítja meg: „Hol van a te romlásod oh Seol?!” Pál az 1Kor 15:55-ben ezt a felkiáltást idézi a feltámadás diadalénekében.
+
 Funkció: Isten győzelmi kérdése a Seol felett, amelyet az Újszövetség a feltámadásra alkalmaz
 
 <a id="ige-ámós-9-2"></a>
 **Ámós 9:2**
 *Ha a Seolba ássák is be magokat, kezem onnan is kiragadja őket; és ha az égbe hágnának is fel, onnan is levonszom őket!*
 Az Úr kijelenti, hogy aki elől menekül, ha „a Seolba ássák is be magokat”, keze onnan is kiragadja őket, és ha az égbe hágnak fel, onnan is levonszolja őket. A Seol nem rejtekhely Isten ítélete elől.
+
 Funkció: a Seol sem véd meg Isten ítéletétől
 
 <a id="ige-jón-2-3"></a>
 **Jón 2:3**
 *És mondá: Nyomorúságomban az Úrhoz kiálték és meghallgata engem; a Seol torkából sikolték és meghallád az én szómat.*
 Jónás a hal gyomrából mondja el imáját: „Nyomorúságomban az Úrhoz kiálték és meghallgata engem; a Seol torkából sikolték”. A Seol fenyegetéséből kiáltott az Úrhoz, és Isten meghallotta a szavát.
+
 Funkció: a Seol torkából kiáltó próféta meghallgatást nyer
 
 <a id="ige-hab-2-5"></a>
 **Hab 2:5**
 *És bizony, a bor is megcsal: felgerjed a férfiú és nincsen nyugalma; ő, a ki tátja száját, mint a Seol, és olyan ő, mint a halál: telhetetlen, és magához ragad minden népet és magához csatol minden nemzetet.*
 A kevély, rabló hatalomról mondja a próféta, hogy „tátja száját, mint a Seol”, és telhetetlen, mint a halál, magához ragad minden népet. A Seol telhetetlensége a hódító mohóságának képe.
+
 Funkció: a hódító mohósága olyan, mint a soha meg nem telő Seol
 
 <a id="ige-mt-11-23"></a>
 **Mt 11:23**
 *Te is Kapernaum, a ki az égig felmagasztaltattál, a pokolig fogsz megaláztatni; mert ha Sodomában történnek vala azok a csodák, a melyek te benned lőnek, mind e mai napig megmaradt volna.*
 Máté evangéliuma ugyanezt az ítéletet hozza: Kapernaum, „a ki az égig felmagasztaltattál, a pokolig fogsz megaláztatni”, mert nem tért meg a csodák láttán. Az indoklásban Sodoma a mérce, amely ilyen csodák láttán megmaradt volna.
+
 Funkció: a Lukács-hely párhuzama, Sodoma példájával kiegészítve
 
 <a id="ige-mt-16-18"></a>
 **Mt 16:18**
 *De én is mondom néked, hogy te Péter vagy, és ezen a kősziklán építem fel az én anyaszentegyházamat, és a pokol kapui sem vesznek rajta diadalmat.*
 Jézus Péternek mondja, hogy erre a kősziklára építi egyházát, és „a pokol kapui sem vesznek rajta diadalmat”. A halottak birodalmának kapui itt a halál hatalmát jelentik, amely az egyházat nem győzheti le.
+
 Funkció: más szerep, mint a többi helyen: nem a halottak helye, hanem a halál ereje, amely az egyházon nem győz
 
 <a id="ige-luk-10-15"></a>
 **Luk 10:15**
 *És te Kapernaum, mely mind az égig felmagasztaltattál, a pokolig fogsz lealáztatni.*
 Jézus Kapernaumnak mondja: „mely mind az égig felmagasztaltattál, a pokolig fogsz lealáztatni”. A gőgös város ítélete ugyanaz a mozgás, mint a babiloni királyé az Ézs 14:15-ben.
+
 Funkció: az égig emelt gőg a halottak birodalmáig zuhan
 
 <a id="ige-luk-16-23"></a>
 **Luk 16:23**
 *És a pokolban felemelé az ő szemeit, kínokban lévén, és látá Ábrahámot távol, és Lázárt annak kebelében.*
 A gazdag emberről és Lázárról szóló példázatban a gazdag „a pokolban” emeli fel a szemét, kínok között, és messziről látja Ábrahámot és Lázárt. Itt a halottak birodalma a halál utáni, tudatos szenvedés helye.
+
 Funkció: a példázatban a halottak birodalma a halál utáni gyötrelem helye
 
 <a id="ige-apcsel-2-27"></a>
 **ApCsel 2:27**
 *Mert nem hagyod az én lelkemet a sírban, és nem engeded, hogy a te szented rothadást lásson.*
 Péter pünkösdkor a Zsolt 16:10-et idézi: „nem hagyod az én lelkemet a sírban”, és a zsoltár ígéretét Jézusra alkalmazza. A Károli itt sírnak fordítja azt a görög szót, amely a zsoltár Seoljának felel meg.
+
 Funkció: a Seolban nem maradó szent ígérete Krisztusra alkalmazva
 
 <a id="ige-apcsel-2-31"></a>
 **ApCsel 2:31**
 *Előre látván ezt, szólott a Krisztus feltámadásáról, hogy az ő lelke nem hagyatott a sírban, sem az ő teste rothadást nem látott.*
 Péter kimondja, hogy Dávid előre látva szólt a Krisztus feltámadásáról: „az ő lelke nem hagyatott a sírban”, és teste sem látott rothadást. A halottak birodalma nem tarthatta fogva a Messiást.
+
 Funkció: a feltámadás mint a halottak birodalma fogságának megtörése
 
 <a id="ige-1kor-15-55"></a>
 **1Kor 15:55**
 *Halál! hol a te fullánkod? Pokol! hol a te diadalmad?*
 Pál a feltámadás diadalénekében kiált fel: „Halál! hol a te fullánkod? Pokol! hol a te diadalmad?” A Károli alapszövegében a második felkiáltás a halottak birodalmát szólítja meg; a kritikai szövegkiadások itt mindkét helyen a halált, θάνατε (thanate) olvassák.
+
 Funkció: a Hós 13:14 győzelmi kérdése a feltámadás bizonyosságában teljesedik
 
 <a id="ige-jel-1-18"></a>
 **Jel 1:18**
 *És az Élő; pedig halott valék, és ímé élek örökkön örökké Ámen, és nálam vannak a pokolnak és a halálnak kulcsai.*
 A feltámadott Krisztus mondja, hogy halott volt, és íme, örökké él, és „nálam vannak a pokolnak és a halálnak kulcsai”. A halottak birodalmának nyitása és zárása az ő hatalmában van.
+
 Funkció: a halottak birodalmának kulcsai a feltámadott Krisztusnál vannak
 
 <a id="ige-jel-6-8"></a>
 **Jel 6:8**
 *És látám, és ímé egy sárgaszínű ló; és a ki rajta üle, annak a neve halál, és a pokol követi vala azt; és adaték azoknak hatalom a földnek negyedrészén, hogy öljenek fegyverrel és éhséggel és halállal és a földnek fenevadai által.*
 A sárga lovon ülő lovas neve halál, és „a pokol követi vala azt”, hatalmat kapva, hogy a föld negyedrészén öljenek. Itt a halottak birodalma megszemélyesített hatalom, a halál kísérője.
+
 Funkció: a halottak birodalma a halál kísérőjeként az ítélet eszköze
 
 <a id="ige-jel-20-13-14"></a>
@@ -701,15 +774,16 @@ Funkció: a halottak birodalma a halál kísérőjeként az ítélet eszköze
 *És a tenger kiadá a halottakat, a kik ő benne voltak; és a halál és a pokol is kiadá a halottakat, a kik ő nálok voltak; és megítéltetének mindnyájan az ő cselekedeteik szerint.*
 *A pokol pedig és a halál vettetének a tűznek tavába. Ez a második halál, a tűznek tava.*
 Az utolsó ítéletkor „a halál és a pokol is kiadá a halottakat”, akik náluk voltak, és mindenkit cselekedetei szerint ítélnek meg. Utána a 14. vers szerint a pokol és a halál maga is a tűz tavába vettetik, és ez a második halál.
+
 Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#elofordulasok -->
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** 36 helyet vizsgáltunk meg jelöltként; elutasítva: 36. A leggyakoribb ok: „szótári összevető hely, a szó nem áll benne” (18), utána „a Septuaginta többlete, a héberben nincs seól” (7). A jelöltek forrása: Egyéb 33, Gépi keresés 3. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (36, illetve 74). A határt leginkább ez az ok húzza meg: „szótári összevető hely, a szó nem áll benne”.
+36 helyet vizsgáltunk meg jelöltként; elutasítva: 36. A leggyakoribb ok: „szótári összevető hely, a szó nem áll benne” (18), utána „a Septuaginta többlete, a héberben nincs seól” (7). A jelöltek forrása: Egyéb 33, Gépi keresés 3. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (36, illetve 74). A határt leginkább ez az ok húzza meg: „szótári összevető hely, a szó nem áll benne”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 36 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -808,15 +882,15 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívumot hordozó szavak szótári háttere: héberül a seól (H7585), görögül a Hadész (G0086). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.
+A motívumot hordozó szavak szótári háttere: héberül a seól (H7585), görögül a Hadész (G0086). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
 ### A motívum kulcsszavai
 
-**Mit mutat ez a rész?** A motívumot nyelvenként egy szó hordozza: héberül a seól (64 hely), görögül a Hadész (10 hely). **Következtetés:** mindkét szövetségben egyetlen szó jelzi a motívumot.
+A motívumot nyelvenként egy szó hordozza: héberül a seól (64 hely), görögül a Hadész (10 hely). **Következtetés:** mindkét szövetségben egyetlen szó jelzi a motívumot.<!-- olvasói -->
 
 *Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 74 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
 
@@ -827,11 +901,11 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ### Görög szavak: G0086
 
-**Mit mutat ez a rész?** A motívumot hordozó görög szavak (görögül a Hadész (G0086)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).
+A motívumot hordozó görög szavak (görögül a Hadész (G0086)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
 
 #### 1. Alapjelentés
 
-**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
+A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
 ##### TBESG G0086 — 2. jelentés
 
@@ -843,7 +917,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 2. Mélységi szócikk
 
-**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
+A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
 ##### G0086 — ᾍδης (Hadész) · Thayer
 
@@ -872,31 +946,31 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 3. Teológiai szócikk
 
-**Mit mutat ez a rész?** Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.
+Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
 
 **G0086** · tW: `kt/hades`, `kt/hell` — a szócikkek szövege a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/tW_szocikkek.tsv`
 
 #### 4. Jelentésszerkezet, szemantikai mező
 
-**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
+A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
 
 **G0086** · **Szemantikai domén:** 001003 Regions Below the Surface of the Earth, 012002 Supernatural Powers, 023007 Live, Die
 
 #### 5. Tömör jelentés, előfordulás
 
-**Mit mutat ez a rész?** A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.
+A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
 
 **G0086** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
+A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
 **G0086** · az LXX a motívum 64 ószövetségi versében: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2 *(egyező: a görög szövegben is G0086 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a Hadész szónak 5 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a seól. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.
+A kétnyelvű szótár (SECE) a Hadész szónak 5 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a seól. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
 
 **G0086 — ᾍδης (Hadész)** · SECE — héber megfelelők (5):
 
@@ -912,35 +986,35 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 8. Nyelvi háttér
 
-**Mit mutat ez a rész?** A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).
+A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).<!-- olvasói -->
 
 *Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben, és a rokon szavaknál sincs: jelölt hiány.*
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** A motívum 10 újszövetségi helyéből 9 helyen a Hadész egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.
+A motívum 10 újszövetségi helyéből 9 helyen a Hadész egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
 **G0086 — ᾍδης (Hadész)** · a motívum 10 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
-**Mit mutat ez a rész?** A szó magyaros kiejtése.
+A szó magyaros kiejtése.<!-- olvasói -->
 
 **G0086** · ᾍδης (Hadész)
 
 ### Héber szavak: H7585
 
-**Mit mutat ez a rész?** A motívumot hordozó héber szavak (héberül a seól (H7585)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).
+A motívumot hordozó héber szavak (héberül a seól (H7585)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
 
 #### 1. Alapjelentés
 
-**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
+A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
 **H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
 
 #### 2. Mélységi szócikk
 
-**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
+A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
 ##### H7585 — שְׁאוֹל (seól) · BDB
 
@@ -993,7 +1067,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 3. Teológiai szócikk
 
-**Mit mutat ez a rész?** Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.
+Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
 
 **H7585** · **TWOT:** 2303c
 
@@ -1001,19 +1075,19 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 4. Jelentésszerkezet, szemantikai mező
 
-**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
+A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
 
 **H7585** · **Szemantikai domén:** 001003 Regions Under the Earth
 
 #### 5. Tömör jelentés, előfordulás
 
-**Mit mutat ez a rész?** A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.
+A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
 
 **H7585** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
+A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
 
@@ -1027,7 +1101,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a seól szónak 2 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a Hadész. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.
+A kétnyelvű szótár (SECE) a seól szónak 2 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a Hadész. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
 
 **H7585 — שְׁאוֹל (seól)** · SECE — görög megfelelők (2):
 
@@ -1040,36 +1114,36 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 #### 8. Nyelvi háttér
 
-**Mit mutat ez a rész?** A szó eredete és nyelvi háttere.
+A szó eredete és nyelvi háttere.<!-- olvasói -->
 
 **H7585 — שְׁאוֹל (seól)** · alapjelentés: pokol: Seol *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* · gyök (√): kétséges · rokon nyelvi adat: óarámi, szír, asszír (kétséges) — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 62 helyen a seól egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.
+A motívum 64 ószövetségi helyéből 62 helyen a seól egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
 **H7585 — שְׁאוֹל (seól)** · a motívum 64 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (62 helyen egy jelentés, 2 helyen nincs hozzárendelés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
-**Mit mutat ez a rész?** A szó magyaros kiejtése.
+A szó magyaros kiejtése.<!-- olvasói -->
 
 **H7585** · שְׁאוֹל (seól)
 
 ### Nyelvfüggetlen szerepek
 
-**Mit mutat ez a rész?** A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.
+A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
 
-**Mit mutat ez a rész?** Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).
+Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).<!-- olvasói -->
 
 <!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** A motívum 74 igehelyén a Károli 21 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „sír” 29, „seol” 19, „pokol” 17. Ahol nem a „sír” áll (45 helyen), ott a Károli jellemzően ezt írja helyette: „seol” 19, „pokol” 17, „koporsóba” 5. **Következtetés:** a Károli a motívumot változó szavakkal adja vissza (a leggyakoribb szó is csak a helyek 39%-án áll), ezért magyarul olvasva nehezen követhető. A sorokban a ragozott alakok és az igehelyek állnak.
+A motívum 74 igehelyén a Károli 21 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „sír” 29, „seol” 19, „pokol” 17. Ahol nem a „sír” áll (45 helyen), ott a Károli jellemzően ezt írja helyette: „seol” 19, „pokol” 17, „koporsóba” 5. **Következtetés:** a Károli a motívumot változó szavakkal adja vissza (a leggyakoribb szó is csak a helyek 39%-án áll), ezért magyarul olvasva nehezen követhető. A sorokban a ragozott alakok és az igehelyek állnak.<!-- olvasói -->
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -1095,11 +1169,11 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 - **út** (1) — út: Péld 7:27
 - **üregébe** (1) — üregébe: Jób 17:15
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=74 | ts=2026-11-02)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=74 | ts=2026-11-03)*
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** A motívum 74 helye közül 2 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a seól, görögül a Hadész), de a Károli más magyar szóval fordítja, például: ApCsel 2:27 — „a sírban”. Ez a **rejtett párhuzam**. Ezeken a helyeken a Károli a motívum magyar kulcsszavai helyett jellemzően ezt írja: „sír” (2 hely). Ugyanakkor 2 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („pokol”), de az eredetiben nem a motívum szavai, például: Jób 28:22 — „A pokol és halál azt mondják”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 2 helyét nem találja meg, hacsak nem keres ezekre is: „sír”, és a 10 találat 20%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.
+A motívum 74 helye közül 2 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a seól, görögül a Hadész), de a Károli más magyar szóval fordítja, például: ApCsel 2:27 — „a sírban”. Ez a **rejtett párhuzam**. Ezeken a helyeken a Károli a motívum magyar kulcsszavai helyett jellemzően ezt írja: „sír” (2 hely). Ugyanakkor 2 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („pokol”), de az eredetiben nem a motívum szavai, például: Jób 28:22 — „A pokol és halál azt mondják”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 2 helyét nem találja meg, hacsak nem keres ezekre is: „sír”, és a 10 találat 20%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.<!-- olvasói -->
 
 *Kulcsszavak gerinc-kombinációnként: G0086: „pokol” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
@@ -1113,23 +1187,23 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 - Jób 28:22 — A pokol és halál azt mondják: Csak hírét hallottuk füleinkkel! · *a motívum szavaiból a versben: nincs* · *jelölt: elutasítva*
 - Jób 31:12 — Mert tűz volna ez, a mely pokolig emésztene, és minden jövedelmemet tövestől kiirtaná. · *a motívum szavaiból a versben: nincs* · *jelölt: elutasítva*
 
-*(proveniencia: scope=Károli teljes (G0086: „pokol”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=4 | ts=2026-11-02)*
+*(proveniencia: scope=Károli teljes (G0086: „pokol”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=4 | ts=2026-11-03)*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#szocikkek -->
 
 ### 2/b. Kiegészítő szótári adatok *(generált)*
 
-**Mit mutat ez a rész?** A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.
+A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: adat/lexikon_hivatkozasok.tsv -->
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
-**Mit mutat ez a rész?** Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.
+Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
 
 #### H7585 — שְׁאוֹל (seól) · BDB
 
@@ -1155,9 +1229,9 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
+A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -1234,9 +1308,9 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 127. **Következtetés:** a helyek 61%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
+A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 127. **Következtetés:** a helyek 61%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 74 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 45 igehely ad legalább egy találatot (127 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható. 14 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Jób 14:13, Zsolt 6:6, Zsolt 49:15, Péld 15:24, Ézs 7:11, Ézs 14:15, Ézs 28:18, Ez 31:15, Ez 32:27, Jón 2:3, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31.*
 
@@ -1463,7 +1537,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** A 127 utalásból 24 a motívum két saját helyét köti össze, ez 21 helyet érint a 74-ból. **Következtetés:** a motívum helyeinek a 28%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
+A 127 utalásból 24 a motívum két saját helyét köti össze, ez 21 helyet érint a 74-ból. **Következtetés:** a motívum helyeinek a 28%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -1498,13 +1572,13 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 **Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.
+Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.*
 
@@ -1514,19 +1588,19 @@ Ehhez a motívumhoz nincs rögzített kapcsolat.
 
 ### Alátámasztás *(generált)*
 
-**Mit mutat ez a rész?** Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.
+Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: alatamasztas | general.py --cel lexikon | forrás: adat/kapcsolatok.tsv -->
 
 A motívumhoz nincs rögzített kapcsolat.
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-03`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** 2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.
+2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
@@ -1537,13 +1611,13 @@ A motívumhoz nincs rögzített kapcsolat.
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolodo -->
 
 ## 6. Értelmezés *(kézi)*
 
-**Mit mutat ez a rész?** A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
 ### PaRDeS keretrendszer
 
@@ -1577,7 +1651,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ### Alkalmazás és tanítványság *(kézi)*
 
-**Mit mutat ez a rész?** Mit jelent a motívum a hívő életében ma. A kutató írta.
+Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
 
 **A gyász komolyan vétele.** A Biblia nem szégyelli a halál fájdalmát: Jákób nem fogad vigasztalást, Jób a sírt már a házának nevezi, a zsoltáros az életéért alkudozik. A motívum első tanulsága, hogy a hívő gyásza és halálfélelme nem hitetlenség; a Szentírás szavakat ad hozzá, és ezek a szavak Isten elé viszik.
 
@@ -1589,13 +1663,13 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ### Tanítói egyezés *(kézi)*
 
-**Mit mutat ez a rész?** Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.
+Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
 Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hiány nincs kitöltve.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-**Mit mutat ez a rész?** Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.
+Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
 **Hogyan készült a lista.** A helyeket három, egymástól független keresés ellenőrzi. Az első a két szó minden előfordulását kereste a héber és a görög szövegben: 64 ószövetségi és 10 újszövetségi verset talált, és mind a lap táblázatában áll. A második a Károli-fordítás szavait kereste (sír, koporsó, pokol, Seol, alvilág, mélység) a teljes magyar szövegben: 372 versben talált ilyen szót, ebből 298 versben az eredeti szövegben nem a motívum szava áll, hanem más (legtöbbször a sírás igéje, a temetkezési sír, a verem vagy a kozmikus mélység). A harmadik a szótárak által a két szónál idézett helyeket vetette össze a listával: 18 olyan helyet idéznek, amelyben a szó nem áll (összevető helyek, például a halottak nyugalmáról vagy a halálon túli reményről). Egyik keresés sem hozott olyan helyet, amelyben a szó állna, és a listából hiányzna.
 
@@ -1612,9 +1686,9 @@ Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hián
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.
+Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1622,7 +1696,7 @@ Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hián
 - ID: `ALVIL-001`
 - Cím: Hádész (Seol) — a halottak birodalma
 - Státusz: publikálható (`v2`, 2026.09.10)
-- Generálva: 2026-11-02
+- Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
@@ -1671,9 +1745,9 @@ Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hián
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.
+A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 

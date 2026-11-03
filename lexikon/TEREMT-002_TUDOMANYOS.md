@@ -4,7 +4,7 @@
 
 ## Kivonat *(kézi)*
 
-**Mit mutat ez a rész?** A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
 
 A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
 
@@ -16,9 +16,9 @@ A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος κ�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.
+A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -41,9 +41,9 @@ A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος κ�
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.
+A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -70,7 +70,7 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
 jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
-**Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
+**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
 **Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
@@ -93,17 +93,17 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv | licenc: CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv | licenc: CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívum 3 igehelyen fordul elő, 3 bibliai könyvben (3 ószövetségi hely). 3 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum néhány könyvben, csak az Ószövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.
+A motívum 3 igehelyen fordul elő, 3 bibliai könyvben (3 ószövetségi hely). 3 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum néhány könyvben, csak az Ószövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
-*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
+*Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 1:2](#ige-1móz-1-2) | kietlen és puszta — תֹ֙הוּ֙ (tóhú); וָבֹ֔הוּ (vábóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)* ⓘ[^1] | prototípus: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal | Peshat | H8414+H0922 | H8414: `007726001001000` — pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: `000856001001000` — üresség; pusztaság [ⓘ](/szo/H0922) | magas · szó-szintű-gépi[^1] |
-| [Ézs 34:11](#ige-ézs-34-11) | pusztaság … semmiségnek — תֹ֖הוּ (tóhú); בֹֽהוּ (bóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)* ⓘ[^2] | ítélet-alkalmazás Edomra: a tohu/bohu mint a rombolás mérőeszköze | Remez | H8414+H0922 | H8414: `007726001001000` — pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: `000856001001000` — üresség; pusztaság [ⓘ](/szo/H0922) | magas · tartalom-alapú[^2] |
-| [Jer 4:23](#ige-jer-4-23) | kietlen és puszta — תֹ֖הוּ (tóhú); וָבֹ֑הוּ (vábóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)* ⓘ[^3] | ítélet-alkalmazás Júdára: a föld visszarendeződése a teremtés előtti állapotba (4:23–26) | Remez | H8414+H0922 | H8414: `007726001001000` — pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: `000856001001000` — üresség; pusztaság [ⓘ](/szo/H0922) | magas · tartalom-alapú[^3] |
+| [1Móz 1:2](#ige-1móz-1-2) | kietlen és puszta — תֹ֙הוּ֙ (tóhú); וָבֹ֔הוּ (vábóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)*[^1] | prototípus: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal | Peshat | H8414+H0922 | H8414: pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: üresség; pusztaság [ⓘ](/szo/H0922) | magas · szó-szintű-gépi[^1] |
+| [Ézs 34:11](#ige-ézs-34-11) | pusztaság … semmiségnek — תֹ֖הוּ (tóhú); בֹֽהוּ (bóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)*[^2] | ítélet-alkalmazás Edomra: a tohu/bohu mint a rombolás mérőeszköze | Remez | H8414+H0922 | H8414: pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: üresség; pusztaság [ⓘ](/szo/H0922) | magas · tartalom-alapú[^2] |
+| [Jer 4:23](#ige-jer-4-23) | kietlen és puszta — תֹ֖הוּ (tóhú); וָבֹ֑הוּ (vábóhú) | H8414: formátlanság · 1; H0922: *(nincs címke: tagolatlan)*[^3] | ítélet-alkalmazás Júdára: a föld visszarendeződése a teremtés előtti állapotba (4:23–26) | Remez | H8414+H0922 | H8414: pusztaság; kietlenség; káosz [ⓘ](/szo/H8414) · H0922: üresség; pusztaság [ⓘ](/szo/H0922) | magas · tartalom-alapú[^3] |
 
 [^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H8414 — BDB-példa: a BDB az 1. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 2); ez a kutatói hozzárendelés (1 → 1) alá esik, a címke a finomabb útvonalé · H0922 — BDB-példa: a BDB a tagolatlan szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 1)
 [^2]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H8414 — BDB-példa: a BDB az 1. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 4); ez a kutatói hozzárendelés (1 → 1) alá esik, a címke a finomabb útvonalé · H0922 — BDB-példa: a BDB a tagolatlan szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 3)
@@ -115,34 +115,37 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 #### 1/a. Az igehelyek szövege
 
-**Mit mutat ez a rész?** A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.
+A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.<!-- olvasói -->
 
 
 <a id="ige-1móz-1-2"></a>
 **1Móz 1:2**
 *A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett.*
 „A föld pedig kietlen és puszta vala” — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár a föld teremtés előtti állapotának megnevezése
+
 Funkció: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal
 
 <a id="ige-ézs-34-11"></a>
 **Ézs 34:11**
 *És örökségül bírándja azt ökörbika, sündisznó; és gém és holló lakja azt, és fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit.*
 „fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit” — a תֹהוּ וָבֹהוּ (tóhú vávóhú) pár Edom ítéletében, mérőkötél és függőón képében
+
 Funkció: a tohu/bohu mint a rombolás mérőeszköze
 
 <a id="ige-jer-4-23"></a>
 **Jer 4:23**
 *Nézek a földre, de ímé kietlen és puszta; és az égre, de nincsen világossága!*
 „Nézek a földre, de ímé kietlen és puszta” — az 1Móz 1:2 párja Júda ítéletének képeként
+
 Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#elofordulasok -->
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** 63 helyet vizsgáltunk meg jelöltként; elutasítva: 63. A leggyakoribb ok: „a formula nincs a versben” (18). A jelöltek forrása: TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 7. **Következtetés:** 21-szor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (63, illetve 3). A határt több ok együtt húzza meg.
+63 helyet vizsgáltunk meg jelöltként; elutasítva: 63. A leggyakoribb ok: „a formula nincs a versben” (18). A jelöltek forrása: TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 7. **Következtetés:** 21-szor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (63, illetve 3). A határt több ok együtt húzza meg.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 63 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -296,15 +299,15 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívumot hordozó szavak szótári háttere: héberül a bóhú (H0922) és a tóhú (H8414). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.
+A motívumot hordozó szavak szótári háttere: héberül a bóhú (H0922) és a tóhú (H8414). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 2 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
 ### A motívum kulcsszavai
 
-**Mit mutat ez a rész?** A motívumot egy szókapcsolat hordozza: héberül a bóhú és a tóhú együtt (3 hely). **Következtetés:** az Ószövetségben két szó együttes jelenléte kell a motívumhoz.
+A motívumot egy szókapcsolat hordozza: héberül a bóhú és a tóhú együtt (3 hely). **Következtetés:** az Ószövetségben két szó együttes jelenléte kell a motívumhoz.<!-- olvasói -->
 
 *Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 3 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
 
@@ -315,17 +318,17 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 ### Görög szavak
 
 <!-- ÜRES-NYELV: gorog | nincs Strong-token -->
-**Mit mutat ez a rész?** A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.
+A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.<!-- olvasói -->
 
 *A motívumnak nincs görög Strong-tokenje; a görög szerepek nem alkalmazhatók.*
 
 ### Héber szavak: H0922, H8414
 
-**Mit mutat ez a rész?** A motívumot hordozó héber szavak (héberül a bóhú (H0922) és a tóhú (H8414)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).
+A motívumot hordozó héber szavak (héberül a bóhú (H0922) és a tóhú (H8414)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
 
 #### 1. Alapjelentés
 
-**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
+A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
 **H0922** · üresség *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H0922](/szo/H0922) · forrás: `konkordancia/TBESH.txt`
 
@@ -333,7 +336,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 2. Mélységi szócikk
 
-**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
+A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
 ##### H0922 — בֹּהוּ (bóhú) · BDB
 
@@ -366,7 +369,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 3. Teológiai szócikk
 
-**Mit mutat ez a rész?** Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.
+Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
 
 **H0922** · **TWOT:** 205a
 
@@ -378,7 +381,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 4. Jelentésszerkezet, szemantikai mező
 
-**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
+A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
 
 **H0922** · **Szemantikai domén:** 002002002006 Non-Exist
 
@@ -386,7 +389,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 5. Tömör jelentés, előfordulás
 
-**Mit mutat ez a rész?** A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.
+A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
 
 **H0922** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H0922](/szo/H0922) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
@@ -394,7 +397,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).
+A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).<!-- olvasói -->
 
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
 
@@ -412,7 +415,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a tóhú szónak 6 megfelelőjét adja a másik bibliai nyelven; a motívumnak a másik nyelven nincs saját szava, de a megfelelők között van az aoratosz és az erémosz, amelyekkel a Septuaginta a motívum helyein fordít. **Következtetés:** a szótár ismeri azokat a szavakat, amelyekkel a fordítás a szót visszaadja; a motívumnak a másik nyelven nincs párja.
+A kétnyelvű szótár (SECE) a tóhú szónak 6 megfelelőjét adja a másik bibliai nyelven; a motívumnak a másik nyelven nincs saját szava, de a megfelelők között van az aoratosz és az erémosz, amelyekkel a Septuaginta a motívum helyein fordít. **Következtetés:** a szótár ismeri azokat a szavakat, amelyekkel a fordítás a szót visszaadja; a motívumnak a másik nyelven nincs párja.<!-- olvasói -->
 
 **H0922** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*
 
@@ -431,7 +434,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 8. Nyelvi háttér
 
-**Mit mutat ez a rész?** A szó eredete és nyelvi háttere.
+A szó eredete és nyelvi háttere.<!-- olvasói -->
 
 **H0922 — בֹּהוּ (bóhú)** · alapjelentés: üresség — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
@@ -439,7 +442,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** A motívum 3 ószövetségi helyéből 3 helyen a bóhú egyetlen jelentésben áll; a motívum 3 ószövetségi helyéből 3 helyen a tóhú egyetlen jelentésben áll. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.
+A motívum 3 ószövetségi helyéből 3 helyen a bóhú egyetlen jelentésben áll; a motívum 3 ószövetségi helyéből 3 helyen a tóhú egyetlen jelentésben áll. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
 **H0922 — בֹּהוּ (bóhú)** · a motívum 3 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (3 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H0922](/szo/H0922) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
@@ -447,7 +450,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 #### 10. Kiejtés (magyaros)
 
-**Mit mutat ez a rész?** A szó magyaros kiejtése.
+A szó magyaros kiejtése.<!-- olvasói -->
 
 **H0922** · בֹּהוּ (bóhú)
 
@@ -455,18 +458,18 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ### Nyelvfüggetlen szerepek
 
-**Mit mutat ez a rész?** A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.
+A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
 
-**Mit mutat ez a rész?** Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).
+Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).<!-- olvasói -->
 
 <!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** A motívum 3 igehelyén a Károli 3 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „puszta” 3, „kietlen” 2, „semmiség” 1. **Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 100%-án) ugyanazzal a szóval adja vissza, ezért magyarul olvasva is jól követhető. A sorokban a ragozott alakok és az igehelyek állnak.
+A motívum 3 igehelyén a Károli 3 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „puszta” 3, „kietlen” 2, „semmiség” 1. **Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 100%-án) ugyanazzal a szóval adja vissza, ezért magyarul olvasva is jól követhető. A sorokban a ragozott alakok és az igehelyek állnak.<!-- olvasói -->
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -474,11 +477,11 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 - **kietlen** (2) — kietlen: 1Móz 1:2, Jer 4:23
 - **semmiség** (1) — semmiségnek: Ézs 34:11
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=TEREMT-002, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=3 | ts=2026-11-02)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=TEREMT-002, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=3 | ts=2026-11-03)*
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** A motívum 3 helye közül 1 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a bóhú és a tóhú), de a Károli más magyar szóval fordítja, például: Ézs 34:11 — „pusztaság … semmiségnek”. Ez a **rejtett párhuzam**. Ezeken a helyeken a Károli a motívum magyar kulcsszavai helyett jellemzően ezt írja: „semmiség” (1 hely). Ugyanakkor 15 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („puszta” és „kietlen”), de az eredetiben nem a motívum szavai, például: 3Móz 16:22 — „Hogy vigye el magán a bak minden ő hamisságukat kietlen földre”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 1 helyét nem találja meg, hacsak nem keres ezekre is: „semmiség”, és a 17 találat 88%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.
+A motívum 3 helye közül 1 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a bóhú és a tóhú), de a Károli más magyar szóval fordítja, például: Ézs 34:11 — „pusztaság … semmiségnek”. Ez a **rejtett párhuzam**. Ezeken a helyeken a Károli a motívum magyar kulcsszavai helyett jellemzően ezt írja: „semmiség” (1 hely). Ugyanakkor 15 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („puszta” és „kietlen”), de az eredetiben nem a motívum szavai, például: 3Móz 16:22 — „Hogy vigye el magán a bak minden ő hamisságukat kietlen földre”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 1 helyét nem találja meg, hacsak nem keres ezekre is: „semmiség”, és a 17 találat 88%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.<!-- olvasói -->
 
 *Kulcsszavak gerinc-kombinációnként: H0922+H8414: „puszta”, „kietlen” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
@@ -509,23 +512,23 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 </details>
 
-*(proveniencia: scope=Károli teljes (H0922+H8414: „puszta”, „kietlen”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=16 | ts=2026-11-02)*
+*(proveniencia: scope=Károli teljes (H0922+H8414: „puszta”, „kietlen”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=16 | ts=2026-11-03)*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#szocikkek -->
 
 ### 2/b. Kiegészítő szótári adatok *(generált)*
 
-**Mit mutat ez a rész?** A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.
+A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: adat/lexikon_hivatkozasok.tsv -->
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
-**Mit mutat ez a rész?** Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.
+Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
 
 #### H0922 — בֹּהוּ (bóhú) · BDB
 
@@ -537,9 +540,9 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).
+A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 3 ószövetségi helyéből 2 helyen saját görög szóval adja vissza, 1 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -555,9 +558,9 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 67%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
+A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 67%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 3 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 2 igehely ad legalább egy találatot (26 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Ézs 34:11, Jer 4:23.*
 
@@ -595,7 +598,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet érint a 3-ból. **Következtetés:** a motívum helyeinek a 67%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.
+A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet érint a 3-ból. **Következtetés:** a motívum helyeinek a 67%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -661,13 +664,13 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 </details>
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** 5 kapcsolat 5 helyet köt össze: 3 kontraszt, 2 párhuzam; 2 magas, 3 alacsonyabb bizonyosságú. **Következtetés:** a motívum helyei között többféle kapcsolat van, egyik sem uralkodó, és a kapcsolatok többsége bizonytalan.
+5 kapcsolat 5 helyet köt össze: 3 kontraszt, 2 párhuzam; 2 magas, 3 alacsonyabb bizonyosságú. **Következtetés:** a motívum helyei között többféle kapcsolat van, egyik sem uralkodó, és a kapcsolatok többsége bizonytalan.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 5 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 5 igehely-csomóponttal.*
 
@@ -702,7 +705,7 @@ graph LR
 
 ### Alátámasztás *(generált)*
 
-**Mit mutat ez a rész?** Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.
+Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: alatamasztas | general.py --cel lexikon | forrás: adat/kapcsolatok.tsv -->
 
@@ -710,25 +713,25 @@ graph LR
 
 A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás.
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/kapcsolatok.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/kapcsolatok.tsv | ts=2026-11-03`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A motívumnak még nincs rögzített kapcsolata más motívummal.
+A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-02`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kapcsolodo -->
 
 ## 6. Értelmezés *(kézi)*
 
-**Mit mutat ez a rész?** A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
 **Peshat.** A három szöveg szó szerint ugyanazt az állapotot mondja ki a földről, három különböző helyzetben. Az 1Móz 1:2 a föld állapotát írja le a teremtő szavak előtt: kietlen és puszta. A kiinduló-állapot olvasat szerint a vers nem mond el semmilyen eseményt, amely ezt az állapotot előidézte, csak állapotot rögzít (a restitúciós olvasat ezt másként látja; l. ⚠️ Vitatott pontok). Ez az állapot az, amelyből a következő versek rendezése kiindul — az első teremtő szó a világosság: „Legyen világosság: és lőn világosság.”[^k-gen3]
 
@@ -775,7 +778,7 @@ Hogy az Ézs 45:18 a *tohu*-t mint célt vagy mint kiinduló állapotot tagadja-
 
 ### Alkalmazás és tanítványság *(kézi)*
 
-**Mit mutat ez a rész?** Mit jelent a motívum a hívő életében ma. A kutató írta.
+Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
 
 A 3. pont megállapításaiból három alkalmazás következik.
 
@@ -787,7 +790,7 @@ A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatósá
 
 ### Tanítói egyezés *(kézi)*
 
-**Mit mutat ez a rész?** Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.
+Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
 A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt, nevesíthető anyag a *tohu va-vohu* párra; 17 tanítónál gap.** Prince-nél két találat-sor (1 ✅, 1 ⚠️) és egy, a párra nem vonatkozó gap-sor áll.
 
@@ -818,7 +821,7 @@ A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt,
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-**Mit mutat ez a rész?** Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.
+Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
 A három előfordulás szótári jelentése (a *tohu* 1. jelentése) a szótár saját példahelyeiből gépileg vezethető le: a szótár mindhárom verset az 1. jelentés alatt idézi, és a versben pontosan egy *tohu* áll.[^bdb-vers] A szótári besorolás és a motívum határa ezért nem két független tanú: a szótár a szóról mond jelentést, a motívumot a formula határolja.
 
@@ -833,9 +836,9 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.
+Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -843,7 +846,7 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 - ID: `TEREMT-002`
 - Cím: Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor
 - Státusz: feldolgozás alatt (`v1`, 2026.09.25)
-- Generálva: 2026-11-02
+- Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-002_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
@@ -885,7 +888,9 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#idezes -->
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-02 -->
+
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 *A kézi rések (Kivonat, Miért fontos, Értelmezés, Módszertan) forrásjegyzetei, a kézi forrás „Proveniencia-sorok” szakaszából.*
 
@@ -922,9 +927,9 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-02 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
-**Mit mutat ez a rész?** A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.
+A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
