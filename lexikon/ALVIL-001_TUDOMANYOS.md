@@ -1020,7 +1020,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל‎ 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév **Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup Ps. 6 6 De 5:14 Beer Bibl. Hades in Holtzmann Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl pa 121, Prol.47. 145 Jastr Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib s.v.; ellene Bertin TSBA viii. 269 Jen Kosmol.223 kk. Zim KAT 3. 636 és mások; l. még Muss-Arn JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל‎ 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל‎ **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
+**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל‎ 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév **Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr ZAW xvi(1896), 51) Seól, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup Ps. 6 6 De (5:14) Beer Bibl. Hades in Holtzmann Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl pa 121, Prol.47. 145 Jastr Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib s.v.; ellene Bertin TSBA viii. 269 Jen Kosmol.223 kk. Zim KAT 3. 636 és mások; l. még Muss-Arn JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל‎ 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל‎ **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
 
 - **`1` — alvilág, ahová a halottak alászállnak**
 
@@ -1505,7 +1505,7 @@ A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyom�
 - TSK: Zak 6:13 (Votes: 16)
 - TSK: Ef 5:32 (Votes: 15)
 - Károli-KH: Ján 1:42
-- Károli-KH: Eféz 2:20
+- Károli-KH: Ef 2:20
 
 #### Luk 16:23
 - TSK: 2Pét 2:4 (Votes: 23)
@@ -1695,7 +1695,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 **Hogyan hivatkozz:**
 - ID: `ALVIL-001`
 - Cím: Hádész (Seol) — a halottak birodalma
-- Státusz: publikálható (`v2`, 2026.09.10)
+- Státusz: publikálható (`v3`, 2026.11.03)
 - Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
 
@@ -1745,7 +1745,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -1758,19 +1758,21 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Teljes cím | Hádész (Seol) — a halottak birodalma |
 | Téma | Eszkatológia |
 | PaRDeS-szint | Remez/Drash |
-| Státusz | publikálható (`v2`, 2026.09.10) |
+| Státusz | publikálható (`v3`, 2026.11.03) |
 | Azonosság típusa | lexikai |
 | Negatív kritérium | A versben a héber szövegben a שְׁאוֹל (seól), az Újszövetségben a Károli alapszövege (TR) szerint a ᾍδης (hadész) szó áll; ahol a kritikai kiadások ettől eltérnek, a lap jelöli (1Kor 15:55). Ahol a Károli sírt, koporsót, poklot vagy mélységet ír, de az eredetiben más szó áll (a temetkezési sír, a verem, a pusztulás helye, a görög tartarosz), az nem tartozik ide; a תְּהוֹם (tehóm) és az ἄβυσσος (abüsszosz) kozmikus mélysége sem. |
 | Fölérendelt fogalom | a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül |
 | Forrás-study | `motivumok/ALVIL-001.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ALVIL-001/Hadesz_Seol_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |
-| Kiadás | nincs kiadva — feldolgozás alatt |
-| Próza modellje | nincs kiadva — feldolgozás alatt |
+| Kiadás | 1 |
+| Próza modellje | `claude-opus-5-5` |
 
 **Változásjegyzék**
 
-Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első kiadással indul.
+| Kiadás | Dátum | Mi változott |
+|---|---|---|
+| 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után három gépi forrásadat-javítás a szótári részben (Seól átírás, De (5:14), Ef). |
 
 ---
 

@@ -21,7 +21,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 5 fő előfordulás / 8 igehely-sor — publikálható (v3, 2026.08.22)
 
 **Eszkatológia**
-- Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v2, 2026.09.10)
+- Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
 - A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 52 igehely-sor — publikálható (v1, 2026.09.11)
@@ -149,7 +149,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 *Ez a blokk a táblában betöltött 9 motívum-ID fejsorát fedi.*
 
-**Hádész (Seol) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v2, 2026.09.10), 6 fő előfordulás.
+**Hádész (Seol) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v3, 2026.11.03), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
 
 **Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v3, 2026.08.22), 5 fő előfordulás.
