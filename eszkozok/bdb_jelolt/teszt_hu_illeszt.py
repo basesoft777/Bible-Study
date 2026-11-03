@@ -193,5 +193,47 @@ class SzakaszValos(unittest.TestCase):
         self.assertEqual((r3[7], r4[7]), ('szakasz', 'szakasz'))
 
 
+class Kapu(unittest.TestCase):
+    """F123.BDBILL, DT-F123z: az `ellenoriz.py` 26. szabálya (`kapu_elteresek`) a mai adat másolatán, ideiglenes könyvtárban."""
+
+    def setUp(self):
+        import shutil
+        import tempfile
+        self.d = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.d)
+        for f in ('bdb_szakaszok.tsv', 'forditasok.tsv', 'bdb_forras_javitas.tsv', 'bdb_szakasz_hu.tsv'):
+            shutil.copy(os.path.join(os.path.dirname(hi.TABLA), f), self.d)
+
+    def _cserel(self, fajl, fv):
+        ut = os.path.join(self.d, fajl)
+        with open(ut, encoding='utf-8', newline='') as f:
+            sorok = f.read().split('\n')
+        with open(ut, 'w', encoding='utf-8', newline='') as f:
+            f.write('\n'.join(fv(sorok)))
+
+    def test_naprakesz_es_ts_fuggetlen(self):
+        # a proveniencia ts-e és a fejléc nem számít
+        self._cserel('bdb_szakasz_hu.tsv', lambda s: ['# x', '# y'] + s[2:3] + [x.replace('| ts=2026-11-03', '| ts=2020-01-01')
+                                                                             for x in s[3:]])
+        self.assertEqual(hi.kapu_elteresek(self.d), [])
+
+    def test_hianyzo_strong(self):
+        self._cserel('bdb_szakasz_hu.tsv', lambda s: [x for x in s if not x.startswith('H0509\t')])
+        self.assertEqual(hi.kapu_elteresek(self.d), ['H0509: van BDB-fordítása, de a bdb_szakasz_hu.tsv-ben nincs sora'])
+
+    def test_elavult_szakaszforditas(self):
+        # a H2416 sz13 magyar szövege változik, a tábla nem: elavult
+        self._cserel('forditasok.tsv', lambda s: [x.replace('\t1 állat, mint élő, tevékeny lény:\t', '\t1 állat:\t')
+                                                  if x.startswith('BDB\tH2416\tH2416\tsz13\t') else x for x in s])
+        h = hi.kapu_elteresek(self.d)
+        self.assertEqual(len(h), 1)
+        # a 13. sor szövege, és a hu_kezdet eltolódása miatt az utána következők is
+        self.assertRegex(h[0], r'^H2416: \d+ sor elavult vagy eltér \(pl\. 13, ')
+
+    def test_nem_bdb_sor_nem_bukik(self):
+        self._cserel('forditasok.tsv', lambda s: s[:-1] + ['Thayer\tG9999\tG9999\tteljes\tforditas_hu\tx\tpróba\tsonnet\tm\td\tv\t', ''])
+        self.assertEqual(hi.kapu_elteresek(self.d), [])
+
+
 if __name__ == '__main__':
     unittest.main()

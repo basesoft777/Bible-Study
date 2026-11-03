@@ -1401,7 +1401,7 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 
 ### 2.32 `bdb_szakasz_hu.tsv` — a kész magyar BDB-fordítás illesztése a szakaszokhoz (F107, FELADATOK #107, 7. lépés)
 
-**Generált** (`python eszkozok/bdb_jelolt/hu_illeszt.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt: `teszt_bont.py`, `teszt_hu_illeszt.py`). A kész
+**Generált** (`python eszkozok/bdb_jelolt/hu_illeszt.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt: `teszt_bont.py`, `teszt_hu_illeszt.py`; **kapu: `ellenoriz.py` 26. szabály**, SÉRTÉS, ha a tábla törzse — a fejléc és a `proveniencia` `ts=` része nélkül — eltér a mai generálástól, vagy BDB-fordítású Strong hiányzik belőle; F123.BDBILL, DT-F123z). A kész
 magyar BDB-fordítás (`adat/forditasok.tsv` BDB-sorai Strongonként a közös összefűzőn át, 2.14 — F128 előtt: az utolsó nem üres `forditas_hu`, a mai adaton azonos eredménnyel; **a fájl nem íródik**, az a #38-é)
 szakaszhatárai a szakasztábla (2.30) soraihoz illesztve, a #38 szakaszonkénti fordításának (DT181 (b)) előkészítéseként. Soronként a
 szakasztábla egy sora (csak a lefordított Strongok). Első két sor `# GENERÁLT` / `# forras` (a bemenetek és a kód hash-e), a harmadik a
