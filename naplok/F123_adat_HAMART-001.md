@@ -4,7 +4,7 @@
 
 *Döntés nélküli munkafájl: jelentéstartományt nem választ, prózát nem ír, motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`) nem ír (2b). A teljes sorok a mellékelt TSV-kben állnak, minden sor mellett a lekérdezés proveniencia-sorával; ez a fájl összegzés. A lekérdezések naplója: `naplok/F123_lekerdezesek.tsv` (`lekerdez.py --naplo F123`). Munkaszkript: `naplok/F123_adat_keszito.py` (az ALVIL-001/ANTROP-001-é; új alparancsok: `kollok`, `csalad`, `lanc`, `lxx_e`), felmérő eszköz: `eszkozok/motivum_felmeres.py`. Futtatás: `PARDES_DATUM=2026-11-02`, a `c43c1b4d` (main) commiton.*
 
-*Hatókör (DT497 (2), DT508 (2)): csak az X.A. Az X.M1–X.M5, az X.T (a tanulmány 307–316. sora) és minden prózát író lépés a DT-F123c (a `9_` sablon v1) ⛔ után jön. A HAMART-001 a DT413 szerint az utolsó migrált motívum (előtte új N0-kontroll); az X.A ettől függetlenül futhat (2a., végrehajtási rend). A HAMART-001-nek **van** külön kereszthivatkozás-naplója: `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`.*
+*Hatókör (DT497 (2), DT508 (2)): csak az X.A. Az X.M1–X.M5, az X.T (a tanulmány 307–316. sora) és minden prózát író lépés a DT585 (a `9_` sablon v1) ⛔ után jön. A HAMART-001 a DT413 szerint az utolsó migrált motívum (előtte új N0-kontroll); az X.A ettől függetlenül futhat (2a., végrehajtási rend). A HAMART-001-nek **van** külön kereszthivatkozás-naplója: `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`.*
 
 ## 0. A motívum az adatrétegben
 

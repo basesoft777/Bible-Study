@@ -110,7 +110,7 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 
 **DT497 ✅ — a #123 és a #10 felosztása** (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«, 2026-11-02; mindhárom pont a javaslat szerint; a határ-ellenőrzést a felhasználó maga indítja, DT-F151b):
 - (1) a motívumonkénti lezárást (C-h → C-l → C5) a #123 végzi; a #10 csak keret és zárómérés;
-- (2) a DT-F123c (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
+- (2) a DT585 (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
 - (3) ~~a régi L1–L7 + DT2 + #78 mérce nem 9. Feed-kapu, hanem a `fuggetlen-ellenor` X.M6 mércéje.~~ **Visszavonva (DT547, a felhasználó, 2026-11-02: „mehet”):** a Feed 9. kapuja az olvasói kapu (`eszkozok/olvasoi_kapu.py`; nem a régi L1–L7 mátrix, hanem a 2026-11-02-i lap-átvilágítás gépesíthető olvasói hibaosztályai), és a lezárás feltétele a felhasználó vizuális átnézése (1. szakasz, 1/b). A régi L1–L7 a `fuggetlen-ellenor` mércéjében él tovább.
 
 ## 6. Nyitott kérdések (nem blokkolnak)

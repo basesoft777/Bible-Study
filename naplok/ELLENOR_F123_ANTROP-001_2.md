@@ -4,7 +4,7 @@ ELTÉRÉS: 5 tétel
 
 # ELLENŐR, 2. kör — F123_MIGRACIO2_BRIEF.md (ANTROP-001 új cikk, U4 javítókör) · `c332f160..16667248`
 
-*A `fuggetlen-ellenor` jelentése, 2026-11-03 (claude-opus-5-5; modell-ellenőrzés: EGYEZIK). Hatókör: az 1. kör 12 ELTÉRÉS-ének javítása (DT-F123r). Az ellenőr íróeszköz nélkül futott; ez a fő szál által rögzített kivonat az ELTÉRÉS-listából és az összegző táblából, a megfogalmazás az ellenőré. Az ellenőr jelezte: a `futtat.py` kimenetét háromszor a repón kívüli scratchpadbe irányította; a `general.py --ellenoriz` és az olvasói kapu nem volt megengedett parancsa (ezek pontjai NEM ELLENŐRIZHETŐ). A D2 szerint ez az utolsó kör.*
+*A `fuggetlen-ellenor` jelentése, 2026-11-03 (claude-opus-5-5; modell-ellenőrzés: EGYEZIK). Hatókör: az 1. kör 12 ELTÉRÉS-ének javítása (DT588). Az ellenőr íróeszköz nélkül futott; ez a fő szál által rögzített kivonat az ELTÉRÉS-listából és az összegző táblából, a megfogalmazás az ellenőré. Az ellenőr jelezte: a `futtat.py` kimenetét háromszor a repón kívüli scratchpadbe irányította; a `general.py --ellenoriz` és az olvasói kapu nem volt megengedett parancsa (ezek pontjai NEM ELLENŐRIZHETŐ). A D2 szerint ez az utolsó kör.*
 
 ## ELTÉRÉS-ek súlyossági sorrendben
 
@@ -26,13 +26,13 @@ ELTÉRÉS: 5 tétel
 | 3 Drash nem zárja le; nincs jelöletlen történeti állítás; a nevek forrása (archív 78–79. sor) | EGYEZIK | — |
 | 4 a 8 sor proveniencia-mezője | EGYEZIK | — |
 | 4 jelöltsor-nyom | ELTÉRÉS (3.) | alacsony |
-| 4 N-F123j; ALVIL-001-hez nem nyúltak | EGYEZIK | — |
-| 5 DT-F123k (b) | EGYEZIK | — |
+| 4 N95; ALVIL-001-hez nem nyúltak | EGYEZIK | — |
+| 5 DT586 (b) | EGYEZIK | — |
 | 6 G5590 -/2/- címke (2.a–2.c) | EGYEZIK | — |
 | 7 Remez, Sod | EGYEZIK | — |
 | 8 Jób 7:11 (rúah = lelkem, nefes = szívem; TAHOT-sorrend) | EGYEZIK | — |
 | 9 „két hely” | EGYEZIK | — |
-| 10 N-F123f számai | EGYEZIK a `nyitott/uj`-ban; ELTÉRÉS (4.) a briefben | alacsony |
+| 10 N92 számai | EGYEZIK a `nyitott/uj`-ban; ELTÉRÉS (4.) a briefben | alacsony |
 | 11 E16 (előtag nélküli címmel 1 HIBA, `[ELLENŐRZŐ]` címmel 0) | EGYEZIK | — |
 | 12 G4152 sz7 (jelentés, `kezi`, megjegyzés) | EGYEZIK | — |
 | `_elso_tagmondat`, más lap | EGYEZIK statikusan (egy hívó; más lapon nincs érintett sor); rejtett hiba: 5. | alacsony |
@@ -41,7 +41,7 @@ ELTÉRÉS: 5 tétel
 
 ## Utójavítás (fő szál, F123.ANTROP2.16; harmadik ellenőri kör nélkül, D2)
 
-- **1.** A Kivonat kizáró mondata visszakerült a kritérium szavára („egymás szinonimája”), a Fil 1:27 határesetként jelölve (Mária énekének saját igével álló párhuzamos sorai bent vannak); az elutasítási ok megjegyzéséből kikerült a „párhuzamos tag”. A jelöltsor-indoklások (az orkesztrátor szövege, DT-F123r (2)) és a Fil 1:27 ↔ Luk 1:46–47 kérdés: N-F123k, illetve a K1 határkártya.
-- **3.** A 8 jelöltsor forrás-nyoma a próza szerzőjére és a régi szöveg archívumára mutat, nem a céltáblára; a `datum` oszlop: N-F123k.
+- **1.** A Kivonat kizáró mondata visszakerült a kritérium szavára („egymás szinonimája”), a Fil 1:27 határesetként jelölve (Mária énekének saját igével álló párhuzamos sorai bent vannak); az elutasítási ok megjegyzéséből kikerült a „párhuzamos tag”. A jelöltsor-indoklások (az orkesztrátor szövege, DT588 (2)) és a Fil 1:27 ↔ Luk 1:46–47 kérdés: N96, illetve a K1 határkártya.
+- **3.** A 8 jelöltsor forrás-nyoma a próza szerzőjére és a régi szöveg archívumára mutat, nem a céltáblára; a `datum` oszlop: N96.
 - **4.** A brief `kovetkezo` mezője javítva.
-- **2., 5.:** generátor-korlátok, N-F123k.
+- **2., 5.:** generátor-korlátok, N96.

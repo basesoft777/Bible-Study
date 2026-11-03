@@ -2,7 +2,7 @@
 
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-【NAPLO: F123 ANTROP-001 új cikk, 2026-11-03 — a forrás nulláról, egy kézből készült (claude-opus-5-5; DT546, F123_MIGRACIO2_BRIEF.md U3), a mai adat és a meglévő döntések (DT501–DT503, és az U2 döntései: naplok/F123_ANTROP2_naplo.md) felhasználásával. Sablon: 9_ v1 (DT-F123c), az első motívum a v1-en. A régi tanulmány archívumban: `archivum/ANTROP-001/Pneuma_pszukhe_megkulonboztetes_tematikus.md`; a régi forrásréteg: `archivum/ANTROP-001/ANTROP-001_forrasreteg_regi.md`; a régi 1/a próza: `archivum/ANTROP-001/ANTROP-001_1a_proza_regi.tsv`; a régi törzscikk: `archivum/ANTROP-001/ANTROP-001_torzscikk_regi.md`. Mondat a régi szövegből nem költözött át. A teljesség-mérés: `naplok/F123_teljesseg_ANTROP-001.md`.】
+【NAPLO: F123 ANTROP-001 új cikk, 2026-11-03 — a forrás nulláról, egy kézből készült (claude-opus-5-5; DT546, F123_MIGRACIO2_BRIEF.md U3), a mai adat és a meglévő döntések (DT501–DT503, és az U2 döntései: naplok/F123_ANTROP2_naplo.md) felhasználásával. Sablon: 9_ v1 (DT585), az első motívum a v1-en. A régi tanulmány archívumban: `archivum/ANTROP-001/Pneuma_pszukhe_megkulonboztetes_tematikus.md`; a régi forrásréteg: `archivum/ANTROP-001/ANTROP-001_forrasreteg_regi.md`; a régi 1/a próza: `archivum/ANTROP-001/ANTROP-001_1a_proza_regi.tsv`; a régi törzscikk: `archivum/ANTROP-001/ANTROP-001_torzscikk_regi.md`. Mondat a régi szövegből nem költözött át. A teljesség-mérés: `naplok/F123_teljesseg_ANTROP-001.md`.】
 
 ## Kivonat
 

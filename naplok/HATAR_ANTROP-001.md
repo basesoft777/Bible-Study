@@ -34,7 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: a #123 ANTROP-001 új cikkének U2-jében az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03) — a Fil 1:27 egyelőre elutasítva, de a hely határkérdés, ezért a felhasználóé (`naplok/F123_ANTROP2_naplo.md` U2). A K2 ugyanígy kézi: az U4 javítókörében (DT-F123r (1)) az 1Kor 2:15 név szerinti kivétellel bent marad, a kérdés a 2. kiadás bemenete. A válaszok következménye az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben.*
+*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: a #123 ANTROP-001 új cikkének U2-jében az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03) — a Fil 1:27 egyelőre elutasítva, de a hely határkérdés, ezért a felhasználóé (`naplok/F123_ANTROP2_naplo.md` U2). A K2 ugyanígy kézi: az U4 javítókörében (DT588 (1)) az 1Kor 2:15 név szerinti kivétellel bent marad, a kérdés a 2. kiadás bemenete. A válaszok következménye az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben.*
 
 **2 kérdés.**
 

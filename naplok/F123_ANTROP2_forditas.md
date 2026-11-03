@@ -1,10 +1,10 @@
-# F123 ANTROP-001 — a lap fordítatlan Thayer-szócikkeinek fordítása (DT-F123l)
+# F123 ANTROP-001 — a lap fordítatlan Thayer-szócikkeinek fordítása (DT587)
 
 *2026-11-03 · ág: `claude/confident-brahmagupta-93518c` · a felhasználó döntése: „ezeket a szócikkaket atljeséghez forditsuk most előfizetői keretből”; „de ugyanazzal a promptal és szabályokkal mint a batch api-t”; „csak azokat vinném most amit most a lexikon cikkek legenerálása érint. csak azik a szócikkek menjenek most / mérni nem kell”. A végrehajtás módja: az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03).*
 
 ## Hatókör (a lap mérése)
 
-A lap hat szavának Thayer- és BDB-szakaszai közül fordítatlan volt: **Thayer G4152 πνευματικός (7 szakasz)** és **Thayer G5591 ψυχικός (4 szakasz)**. A Thayer G4151 (17), G5590 (10), a BDB H2416 (30) és H5315 (43) minden szakaszának van érvényes `sz<n>` fordítása. A lapon egy BDB H2416-blokk ennek ellenére angolul, „(fordításra vár)” jelöléssel áll: generátor-hiba (a 1Móz 2:7 BDB-példájának útvonala), fordítással nem javítható (N-F123f). A „Megfelelők” táblák TBESG-glosszái nem Thayer/BDB-szakaszok, nem tartoznak a hatókörbe.
+A lap hat szavának Thayer- és BDB-szakaszai közül fordítatlan volt: **Thayer G4152 πνευματικός (7 szakasz)** és **Thayer G5591 ψυχικός (4 szakasz)**. A Thayer G4151 (17), G5590 (10), a BDB H2416 (30) és H5315 (43) minden szakaszának van érvényes `sz<n>` fordítása. A lapon egy BDB H2416-blokk ennek ellenére angolul, „(fordításra vár)” jelöléssel áll: generátor-hiba (a 1Móz 2:7 BDB-példájának útvonala), fordítással nem javítható (N92). A „Megfelelők” táblák TBESG-glosszái nem Thayer/BDB-szakaszok, nem tartoznak a hatókörbe.
 
 ## Menet
 
