@@ -597,14 +597,14 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H2416. chay I. חַי melléknév: élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י‎ 3:20 és máshol, חֵי Ámós 8:14, összesen 15-ször (Ew § 329 status constructusként magyarázza, de Ges § 93, R 7 n és mások összevont status absolutusként); nőnemű חַיָּה‎ 1Móz 1:20 és máshol; többes szám חַיִּים Zsolt 116:9 és máshol; —
+**A szócikk feje (nyelvi háttér).** I. חַי melléknév élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י‎ 3:20 és máshol, חֵי Ámós 8:14 összesen 15-ször (Ew § 329 status constructusként magyarázza, de Ges § 93, R 7 n és mások összevont status absolutusként); nőnemű חַיָּה‎ 1Móz 1:20 és máshol; többes szám חַיִּים Zsolt 116:9 és máshol; — II. [חַי] főnév [hímnemű] rokonság (arab: életbe vágó kötelékekkel egyesült családok csoportja RS K 36-40 Dr Sm 119), többes szám suffixummal חַיַּי‎ 1Sám 18:18, helytelenül pontozva az életem értelmezéssel RV, de olv. חַיִּי rokonságom, We Ki Dr RS SS RVm VB. A משׁפחת אבי glossza magyarázza We (Klo olvasata וּ אַחַי). I. חַיָּה nőnemű főnév élőlény, állat (Zendzsirli: vadállat DHM Sendsch. 34) — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 8:17 és máshol; status constructus חַיַּת Ézs 57:10 és máshol; régi esetvégződéssel (költői) חַיְתוֺ‎ 1Móz 1:24; Zsolt 50:10; 79:2; 104:11; 104:20; Ézs 56:9 (a versben kétszer); Sof 2:14; suffixummal חַיָּתִי Zsolt 143:3 stb.; többes szám חַיּוֺת‎ 3Móz 14:4 összesen 12-szer. — II. חַיָּה nőnemű főnév (si vera lectio) közösség ( = a II. חַי nőneműje Nö ZMG, 1886, 176 szerint) — וְחַיַּת מְּלִשְׁתִּים חֹנָה és a filiszteusok egy közössége (azaz szövetséges családok csoportja, amely együtt portyázott) táborozott 2Sám 23:13 ( = מַחֲנֵה‎ 1Krón 11:15); talán Zsolt 68:11 is (vö. alább) Megjegyzés. — Több más hely kétséges: וַיֵּאָסְפוּ פְלִשְׁתִּים לַחַיָּה‎ 2Sám 23:11 csapatba gyűltek, vagy csapatonként (RV, de egyik fordítás sem indokolt: Bö Ew We Klo Dr helyesen olvassa לֶ֫חְיָה Leµi felé, vö. Bír 15:9, a szó véletlenül kimaradt a || 1Krón 11:13-ban Dr); חַיָּתְךָ יָָֽשְׁבוּבָהּ Zsolt 68:11 csapatod lakott benne (Thes SS RVm Hi Ri Che, de ᵑ6 ᵐ5 Jeromos Pe: (élő) teremtményeid, a népről; Hup ua., a fürjekre vonatkoztatva; valószínűtlen); אַלתִּתֵּן לְחַיַּת נֶפֶשׁ תּוֺרֶךָ חַיַּת עֲנִיֶּיךָ אַלתִּשְׁכַּח לָנֶ֫צַח‎ 74:19 ne add gerlicéd lelkét a vadállatoknak, nyomorultjaid életéről ne feledkezz meg mindörökre: RV Hi Pe Bae Sch így fordítják, a חית szónak a két tagmondatban különböző jelentést adva, az előbbi archaikus nőnemű status absolutus Ges § 80, 2. R. 2; a szöveg kétségtelenül romlott, olvasandó talán למות Schr Ri, לחית helyett, vagy לשׁחת Kroch; Gr e kettő bármelyikét; Che bármelyiket, vagy még inkább לחרב. חַיִּים hímnemű főnév 5Móz 28:66 többes szám elvont emphaticus élet, <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7** és máshol; חַיִּין Jób 24:22 (arámizmus Ges § 87 (1) a); חַיֵּי‎ 1Móz 23:1 és máshol; suffixummal חַיַּי‎ 47:9 és máshol; חַיָּ֑יְכִי Zsolt 103:4; (Ges § 91 (2) R. 2), stb.; — חַי melléknév élő (bibliai héber ua.); — חֵיוָה חֵיוָא, nőnemű főnév vadállat (bibliai héber II. חַיָה); — status absolutus אָ֯ Dán 4:13, הָ֯ 7:5. 7:7; emphaticus חֵיוְתָא‎ 7:6. 7:11. 7:19, 23, és (gyűjtőnévként) 4:11-12, 5:21; status constructus (gyűjtőnévként) חֵיוַת בָּרָא‎ 2:38; 4:9, 18, 20, 22, 29; többes szám status absolutus חֵיוָן‎ 7:3, emphaticus חֵיוָתָא‎ 7:7, 12. 7:17.
 
 <details>
 <summary>1.a – 1.c (3 szakasz)</summary>
 
 - `1.a` — Istenről, mint az Élőről, az élet forrásáról חַי אֵל Józs 3:10 (J), Hós 2:1
 - `1.b` — emberről
-- `1.c` — állatokról
+- `1.c` — állatokról, élő, eleven
 
 </details>
 
@@ -615,17 +615,15 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>1.e – 3 (3 szakasz)</summary>
 
-- `1.e` — (kétséges) növényzetről, mint a tövisekről
-- `2` — élet, csak késői költészetben, Zsolt 143:3 *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
-- `3` — reviving
+- `1.e` — (kétséges) növényzetről, mint a tövisekről, zöld, Zsolt 58:10…
+- `2` — (kétséges) élénk, tevékeny
+- `3` — újjáéledő
 
 </details>
 
 - **`1`**
 
-  > 1 animal, as living, active being: 1 life: physical Gen 27:46; Exod 1:14 (P), Deut 28:66 (twice in verse); 2Sam 11:11; 15:21; Isa 38:12; Jeremiah 8:23; Lam 3:53, 58; Ezek 7:13; Job 3:20; 7:7; 9:21; 10:12; 24:22; Psa 7:6; 17:14; 21:5; 26:9; 31:11; 34:13; 63:4; 64:2; 66:9; 88:4; 103:4; Prov 18:21; Eccl 2:17; 6:12; 7:13; 9:9 (twice in verse); 10:19; Jonah 2:7; 4:3, 8; חַיֵּי שׂרה life of Sarah Gen 23:1(P) ח ׳שְׁנֵי years of the life of 2Sam 19:35; Gen 23:1; 25:7, 17; 47:8-9, (twice in verse); 47:28; Exod 6:16, 18, 20 (P); לח ׳שָׁנָה Gen 7:11 (P); שְׁנוֺת חַיִּים Prov 3:2; 4:10; 9:11; ח ׳יְמֵי days of the life of Eccl 2:3; 5:17; 5:19; 6:12; 8:15; 9:9; כֹּל יְמֵי <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Gen 3:14, 17 (J) Deut 4:9; 6:2; 16:3; 17:19; Josh 1:5; 4:14 (D) 1Sam 1:11; 7:15; 1Kin 5:1; 11:34; 15:5-6, 2Kin 25:29-30, = Jer 52:33-34, Isa 38:20 (poem of Hez.) Psa 23:6; 27:4; 128:5; Prov 31:12; ׳בּח in or during one's life Gen 27:46 (P) Lev 18:18 (H) Judg 16:30; 2Sam 1:23; 18:18; Psa 49:19; 63:5; 104:33; 146:2; Job 10:1; Eccl 3:12; 9:3; ח ׳רוּחַ Gen 6:17; 7:15 (P); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> רוּחִי Isa 38:16 (poem of Hez.); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> בשׂרים Prov 14:30; נִשְׁמַת (רוּחַ) <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Gen 2:7; 7:22 (J). 1 of God: absolute <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Dan 4:31, emphatic חַיָא‎ 6:21. 27; men, plural emphatic חַיַיָא the lilving 2:30; 4:14.
-
-  *(fordításra vár)*
+  > állat, mint élő, tevékeny lény: 1 élet: testi 1Móz 27:46; 2Móz 1:14 (P), 5Móz 28:66 (a versben kétszer); 2Sám 11:11; 15:21; Ézs 38:12; Jer 8:23; JSir 3:53, 58; Ez 7:13; Jób 3:20; 7:7; 9:21; 10:12; 24:22; Zsolt 7:6; 17:14; 21:5; 26:9; 31:11; 34:13; 63:4; 64:2; 66:9; 88:4; 103:4; Péld 18:21; Préd 2:17; 6:12; 7:13; 9:9 (a versben kétszer); 10:19; Jón 2:7; 4:3, 8; חַיֵּי שׂרה Sára élete 1Móz 23:1(P) ח ׳שְׁנֵי valakinek életének évei 2Sám 19:35; 1Móz 23:1; 25:7, 17; 47:8-9, (a versben kétszer); 47:28; 2Móz 6:16, 18, 20 (P); לח ׳שָׁנָה‎ 1Móz 7:11 (P); שְׁנוֺת חַיִּים Péld 3:2; 4:10; 9:11; ח ׳יְמֵי valakinek életének napjai Préd 2:3; 5:17; 5:19; 6:12; 8:15; 9:9; כֹּל יְמֵי <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 3:14, 17 (J) 5Móz 4:9; 6:2; 16:3; 17:19; Józs 1:5; 4:14 (D) 1Sám 1:11; 7:15; 1Kir 5:1; 11:34; 15:5-6, 2Kir 25:29-30, = Jer 52:33-34, Ézs 38:20 (Ezékiás költeménye) Zsolt 23:6; 27:4; 128:5; Péld 31:12; ׳בּח valakinek életében vagy élete során 1Móz 27:46 (P) 3Móz 18:18 (H) Bír 16:30; 2Sám 1:23; 18:18; Zsolt 49:19; 63:5; 104:33; 146:2; Jób 10:1; Préd 3:12; 9:3; ח ׳רוּחַ‎ 1Móz 6:17; 7:15 (P); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> רוּחִי Ézs 38:16 (Ezékiás költeménye); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> בשׂרים Péld 14:30; נִשְׁמַת (רוּחַ) <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ **1Móz 2:7**; 7:22 (J). 1 Istenről: status absolutus <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Dán 4:31, emphaticus חַיָא‎ 6:21. 27; emberek, többes szám emphaticus חַיַיָא az élők 2:30; 4:14.
 
 <details>
 <summary>4 (1 szakasz)</summary>
@@ -634,20 +632,18 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 </details>
 
-*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 340 (1Móz 2:7, fej); bdb_vers_jelentes.tsv sorszam 436 (1Móz 2:7, -/1).*
-
 *A teljes szócikk: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
 ##### H5315 — נֶ֫פֶשׁ (nefes) · BDB
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H5315. nephesh נֶ֫פֶשׁ‎_756 nőnemű főnév 1Móz 49:6 (így még 2:19; 4Móz 31:28; 1Kir 19:2 is, l. Albr ZAW xvi (1896), 42 SS): lélek, élőlény, élet, maga, személy, vágy, étvágy, érzelem és szenvedély (Sir 3:18; 4:1 (a versben kétszer); Préd 4:2(a versben kétszer); Sir 13:12; Sir 14:11); — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr>‎ 1Móz 1:20 és máshol; נָ֑פֶשׁ‎ 37:21 és máshol; suffixummal נַפְשִׁי‎ 12:13 és máshol; többes szám נְפָשׁוֺת Ez 13:18, összesen 13-szor; נְפָשֹׁת‎ 2Móz 12:4; 3Móz 27:2; status constructus נַפְשׁוֺת‎ 1Móz 36:6, összesen 4-szer; נַפְשֹׁת‎ 3Móz 21:11; נְפָשִׁים Ez 13:20 (de olv. חָפְשִׁים, l. Co Berthol Toy); suffixummal נַפְשׁוֺתָם‎ 2Sám 23:17 és máshol; נַפְשֹׁתָם‎ 4Móz 17:3 és máshol: — 1 = ami lélegzik, a lélegző lényeg vagy lény = ψυχή, anima, a lélek, az ember belső lénye:
+**A szócikk feje (nyelvi háttér).** נֶ֫פֶשׁ nőnemű főnév 1Móz 49:6 (így még 2:19; 4Móz 31:28; 1Kir 19:2 is, l. Albr ZAW xvi (1896), 42 SS) lélek, élőlény, élet, maga, személy, vágy, étvágy, érzelem és szenvedély (Sir 3:18; 4:1 (a versben kétszer); Préd 4:2 (a versben kétszer); Sir 13:12; Sir 14:11); — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr>‎ 1Móz 1:20 és máshol; נָ֑פֶשׁ‎ 37:21 és máshol; suffixummal נַפְשִׁי‎ 12:13 és máshol; többes szám נְפָשׁוֺת Ez 13:18 összesen 13-szor; נְפָשֹׁת‎ 2Móz 12:4; 3Móz 27:2; status constructus נַפְשׁוֺת‎ 1Móz 36:6 összesen 4-szer; נַפְשֹׁת‎ 3Móz 21:11; נְפָשִׁים Ez 13:20 (de olv. חָפְשִׁים, l. Co Berthol Toy); suffixummal נַפְשׁוֺתָם‎ 2Sám 23:17 és máshol; נַפְשֹׁתָם‎ 4Móz 17:3 és máshol: — 7, 8, 9; és így a D által befolyásolt későbbi íróknál (hacsak nem gondolhatjuk, hogy a <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">ל׳</abbr> az értelemre, a <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> pedig az érzésekre vonatkozik): így נפשׁ ובכל לבב בכל (l. לבב): דרשׁ mellett 5Móz 4:29; 2Krón 15:12; עשׂה‎ 5Móz 26:16; אהב‎ 6:5; 13:4; 30:6; ידע Józs 23:14; עבד‎ 5Móz 10:12; 11:13; Józs 22:5; שׁמע בקלו‎ 5Móz 30:2; אל שׁוב‎ 30:10; 1Kir 8:48 2Krón 6:38; 2Kir 23:25; שׁמר מצות‎ 23:3 2Krón 34:31; הלך לפני‎ 1Kir 2:4; és 5Móz 11:18; 1Sám 2:35; 1Krón 22:19; 28:9; Jer 32:41; Zsolt 13:8; Péld 2:10; 24:12. Megjegyzés. — Három esetben általában a feltételezett alapjelentéshez, a lélegzethez való közelebbi megközelítést találni: —
 
 <details>
 <summary>1 – 1.d (5 szakasz)</summary>
 
-- `1` — = that which breathes, the breathing substance or being = ψυχή, anima, the soul, the inner…
+- `1` — = ami lélegzik, a lélegző lényeg vagy lény = ψυχή, anima, a lélek, az ember belső lénye
 - `1.a` — megkülönböztetve a בָּשָׂר וְעַד מִנֶּפֶשׁ ׃בָּשָׂר-tól Ézs 10:18
 - `1.b` — mind a belső נפשׁ, mind a külső בשׂר közös alapon nyugvónak van elgondolva
 - `1.c` — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> a halálkor eltávozik, és az élettel visszatér
@@ -657,38 +653,38 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **`2` — Isten leheletétől élő lénnyé lett lélek**
 
-  > A נפשׁ élőlénnyé lesz: azáltal, hogy Isten נשׁמת חיים-t lehel a בשׂר orrlyukaiba; az emberről **1Móz 2:7** (J); hallgatólagosan az állatokról is 2:19 (J); így Zsolt 104:29; 104:30; vö. 66:9; az ember נֶפֶשׁ חַיָּה, élő, lélegző lény **1Móz 2:7** (J); másutt a נפשׁ חיּה mindig állatokról 1:20, 24, 30; 9:12, 15, 16 (mind P), Ez 47:9; így נפשׁ החיּה‎ 1Móz 1:21; 9:10 (mindkettő P), 3Móz 11:10, 46 (H); נפשׁ השׁרצת‎ 11:46 (H); נפשׁ כל חי Jób 12:10. A נפשׁ gyakran áll a ׃חיה וחיתה נפשׁ igével 1Móz 12:13; 19:20 (mindkettő J), 1Kir 20:32 (E), Zsolt 119:175; Jer 38:17, 20; חֵי נַפְשְׁךָ‎ 1Sám 1:26; 17:55; 20:3; 25:26; 2Sám 11:11; 14:9; 2Kir 2:2, 4, 6; 4:30 (mind J E); vö. נ ׳יְחַיֶּה‎ 1Kir 20:31 (E), Ez 18:27; Zsolt 22:30; továbbá 1Móz 19:19; Ézs 55:3; Péld 3:22.
+  > A נפשׁ élőlénnyé lesz: azáltal, hogy Isten נשׁמת חיים-t lehel a בשׂר orrlyukaiba; az emberről **1Móz 2:7** (J); hallgatólagosan az állatokról is 2:19 (J); így Zsolt 104:29; 104:30; vö. 66:9; az ember נֶפֶשׁ חַיָּה, élő, lélegző lény **1Móz 2:7** (J); másutt a נפשׁ חיּה mindig az állatokról 1:20, 24, 30; 9:12, 15, 16 (mind P), Ez 47:9; így נפשׁ החיּה‎ 1Móz 1:21; 9:10 (mindkettő P), 3Móz 11:10, 46 (H); נפשׁ השׁרצת‎ 11:46 (H); נפשׁ כל חי Jób 12:10. A נפשׁ gyakran használatos az ige mellett: ׃חיה וחיתה נפשׁ‎ 1Móz 12:13; 19:20 (mindkettő J), 1Kir 20:32 (E), Zsolt 119:175; Jer 38:17, 20; חֵי נַפְשְׁךָ‎ 1Sám 1:26; 17:55; 20:3; 25:26; 2Sám 11:11; 14:9; 2Kir 2:2, 4, 6; 4:30 (mind J E); vö. נ ׳יְחַיֶּה‎ 1Kir 20:31 (E), Ez 18:27; Zsolt 22:30; továbbá 1Móz 19:19; Ézs 55:3; Péld 3:22.
 
 <details>
 <summary>3 – 10.c (27 szakasz)</summary>
 
-- `3` — A נפשׁ (a חיה főnév vagy ige nélkül) közelebbről
-- `3.a` — élőlény, amelynek élete a vérben lakozik [így az arabban We Skizzen iii. 217 G. Jacob Arab…
-- `3.b` — az élet elleni súlyos támadás ennek a belső élőlénynek a megtámadása 2Sám 1:9
-- `3.c` — נפשׁ magára az életre használatos 171-szer, állatokéra Péld 12:10, és az emberére 1Móz 44:3…
-- `4` — A נפשׁ mint az ember lényege magát az embert jelenti
-- `4.a` — személyes névmás körülírása, különösen költészetben és emelkedett beszédben, 70-szer
-- `4.b` — = visszaható, maga, 53-szor
-- `4.c` — = az ember személye, egyén, 144-szer, először a D 2-ben
-- `5` — נפשׁ = az étvágy székhelye, minden korszakban (46-szor) —
+- `3` — A נפשׁ (חיה főnév vagy ige nélkül) közelebbről meghatározott
+- `3.a` — élőlény, amelynek élete a vérben lakozik [így arabul We Skizzen iii. 217 G. Jacob Arab. Di…
+- `3.b` — az élet elleni súlyos támadás e belső élő lény elleni támadás 2Sám 1:9
+- `3.c` — נפשׁ magára az életre használatos összesen 171-szer, állatokról Péld 12:10, és emberről 1Mó…
+- `4` — A נפשׁ mint az ember lényege magát az embert képviseli
+- `4.a` — személyes névmás körülírása, főként költészetben és díszes beszédben, összesen 70-szer
+- `4.b` — = visszaható, maga, összesen 53-szor
+- `4.c` — = az ember személye, egyén, összesen 144-szer, először D 2-ben
+- `5` — נפשׁ = az étvágyak székhelye, minden korszakban (összesen 46-szor) —
 - `5.a` — éhség
 - `5.b` — szomjúság
 - `5.c` — étvágy általában
-- `6` — = <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> seat of emotions and passions (151 t.) —
+- `6` — = <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> az érzelmek és szenvedélyek székhelye (összesen 151-szer) —
 - `6.a` — vágy
 - `6.b` — utálat, undor
-- `6.c` — bánat és szorongás
+- `6.c` — bánat és nyomorúság
 - `6.d` — öröm
 - `6.e` — szeretet
 - `6.f` — elidegenedés, gyűlölet, bosszú
 - `6.g` — egyéb érzelmek és érzések
-- `7` — נפשׁ alkalmanként szellemi cselekvésekre is használatos + לבב (l. 10)
+- `7` — נפשׁ olykor elmebeli tevékenységekre használatos + לבב (l. 10)
 - `8` — נפשׁ akarati cselekvésekre kétséges
 - `9` — נפשׁ = jellem még kétségesebb
-- `10` — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr>a D-ben, ha a לבב-val együtt áll, hozzá hasonul, és osztozik vele a 7, 8, 9 jelentésekbe…
-- `a` — שׁמן וקטרת ישׂמח לב ומתק רעהו מעצת נפשׁ Péld 27:9. Ges (Döderlein nyomán) így fordítja
-- `10.b` — נַפְשׁוֺ גֶּחָלִים תְּלַהֵט Jób 41:13
-- `10.c` — בָּתֵּי הַנֶּפֶשׁ Ézs 3:20
+- `10` — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> D-ben, ha a לבב mellett áll, hasonul hozzá, és osztozik vele a következők jelentéseiben
+- `a` — שׁמן וקטרת ישׂמח לב ומתק רעהו מעצת נפשׁ Péld 27:9. Ges (Döderlein nyomán) fordítása a. נ ׳מעצ…
+- `10.b` — נַפְשׁוֺ גֶּחָלִים תְּלַהֵט Jób 41:13 lehelete szenet gyújt (a krokodilusról). A rész a kön…
+- `10.c` — בָּתֵּי הַנֶּפֶשׁ Ézs 3:20 illatszeres dobozok
 
 </details>
 
@@ -782,7 +778,7 @@ A kétnyelvű szótár (SECE) a chaj szónak 13 megfelelőjét adja a másik bib
 
 A szó eredete és nyelvi háttere.<!-- olvasói -->
 
-**H2416 — חַי (chaj)** · alapjelentés: élő, eleven — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+**H2416 — חַי (chaj)** · alapjelentés: élő *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* · rokon nyelvi adat: arab — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 **H5315 — נֶ֫פֶשׁ (nefes)** · alapjelentés: lélek *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
