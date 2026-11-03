@@ -86,3 +86,11 @@ A független ellenőr 12 ELTÉRÉS-e (`naplok/ELLENOR_F123_ANTROP-001.md`), az o
 Generátor (N-F123f (3–4)): a `lexikon_general._elso_tagmondat` a nyitva maradó zárójel elé vág; a kilenc lap repón kívüli előtte–utána generálása: nyolc lapon 0 eltérő sor, az ANTROP-001-en a két összecsukott kivonat. Az olvasói kapu: 4 → 2 BUKÁS (a BDB H2416 1.a angol kivonata, adathiány, N-F123f (1–2)); a próza 0 BUKÁS-t ad.
 
 A független ellenőrzés 2. köre (D2: az utolsó): `naplok/ELLENOR_F123_ANTROP-001_2.md`, ELTÉRÉS: 5 (1 közepes). Utójavítás harmadik kör nélkül (F123.ANTROP2.16): a Kivonat kizáró mondata a kritérium szavára, az elutasítási ok megjegyzése, a 8 jelöltsor forrás-nyoma, a brief `kovetkezo` mezője; a maradék: N-F123k. Kapuk utána: `ellenoriz.py` SÉRTÉS 0; `proza_1a.py` 11/11 arany; olvasói kapu 2 BUKÁS (generált BDB-kivonat); a lap `--ellenoriz` szerint a forrásból generált. Lapnézet: https://claude.ai/artifact/Y8fk3pKkFeENF8XQhn8Rpe (világos téma), a renderelt lap a javított helyeken átnézve.
+
+## Átnézés és a DT566 javítóköre (F123.ANTROP2.17–19; DT-F123s)
+
+- K1/K2: a felhasználó válasza („elfogadom”, „elfogadom”, „maradnak”) a `HATAR` „Felhasználói besorolás” blokkján át a LEKTOR-táblába (F123.ANTROP2.17).
+- Átnézés: „mehet”, 4. nézetváltozat, lap-commit 68c09968 (`naplok/F123_atnezes_ANTROP-001.md`, `adat/lap_atnezesek.tsv`; F123.ANTROP2.18).
+- A javítókör tételei: (1) **próza, csak kiejtés, tartalom nem:** a Kivonat kivétel-mondata és a `motivumok.tsv` `negativ_kriterium` mezője: „(pszükhikosz anthróposz)”, „(ho pneumatikosz)”, szó szerint egyezően; (2) generátor: a BDB-szócikkfej rövid formájának „alapjelentés” része a `bdb_rovidites_jelol`-on megy át (a „ח” rövidítés jelölt); nulla-diff: kilenc lap repón kívüli generálása a változás előtt és után, nyolc lapon 0 eltérő sor, az ANTROP-001-en egy (785. sor); (3) a BDB H2416 al-szócikk-összevonásának próbája: nyolc lapon 0 eltérő sor, az ANTROP-001-en hibás szerkezet (46 sor; l. DT-F123s (1)) — visszavonva, N-F123l.
+- A glossza-fordítás nem futott (N-F123l (2)); a kiadás nem futott.
+- Kapuk: `ellenoriz.py` SÉRTÉS 0; `proza_1a.py` 11/11 arany; olvasói kapu 2 BUKÁS (generált); Feed: l. a jelentést.

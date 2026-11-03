@@ -3337,7 +3337,7 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
         reszek_t = []
         if alap:
-            reszek_t.append('alapjelentés: %s' % alap)
+            reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t))
         else:
             # a BDB-fej nem mondja ki az alapjelentést (pl. H7585): a TBESH rövid magyar jelentése, jelölve
             rj, van = rovid_jelentes(t)
