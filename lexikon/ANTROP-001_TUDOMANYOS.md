@@ -602,7 +602,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>1.a – 1.c (3 szakasz)</summary>
 
-- `1.a` — of God, as the living one, the fountain of life חַי אֵל Josh 3:10 (J), Hosea 2:1
+- `1.a` — Istenről, mint az Élőről, az élet forrásáról חַי אֵל Józs 3:10 (J), Hós 2:1
 - `1.b` — emberről *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
 - `1.c` — állatokról *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
 
