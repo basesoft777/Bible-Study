@@ -8,10 +8,10 @@ modell: opus
 munka: folyamat
 allapot: megallt
 ag: claude/glossza-lanc-1a9f9f
-ad: "eszkozok/glossza_api_koteg.py: rögzített prompt (forditas/prompt_glossza_v1.md), mankó, szaraz / prompt / bekuld / begyujt / bevesz / kapuz / javit / rogzit / beir; a #121 lista közös feloldója (TBESG); 18 teszt; próba 5 glosszán subagenttel, beírás nélkül (naplok/F161_GLOSSZA_LANC_naplo.md)"
-kovetkezo: "Te: draft PR; a merge a felhasználóé; utána az ANTROP-001 54 glosszája a lánccal, a #608 ágán (az ANTROP-001 sessionje)"
+ad: "eszkozok/glossza_api_koteg.py: rögzített prompt (forditas/prompt_glossza_v2.md; v1 + UBS-definíció), mankó, szaraz / prompt / bekuld / begyujt / bevesz / kapuz / javit / rogzit / beir; a #121 lista közös feloldója (TBESG); 21 teszt; a 9 lexikonlap hiányzó UBS- és TBESG-glosszái: 366 sor az adat/forditasok.tsv-ben (Sonnet subagent, 366/366 kapun át); TBESH-ellenőrzés (naplok/F161_GLOSSZA_LANC_naplo.md)"
+kovetkezo: "Te: draft PR; a merge a felhasználóé; utána az ANTROP-001 lapja a #608 ágán újragenerálódik (az ANTROP-001 sessionje), a többi hét lap a saját új-cikk sessionjében"
 olvas: [F121_GLOSSZA_FORDITAS_BRIEF.md, eszkozok/glossza_lexikon_forditas.py, naplok/F121_GLOSSZA_FORDITAS_manko.tsv, eszkozok/thayer_api_koteg.py, eszkozok/thayer_jelolt/forditas.py, eszkozok/bdb_api_koteg.py, eszkozok/forditas_kapuk.py, eszkozok/olvasoi_kapu.py, eszkozok/emeles.py, forditas/prompt_v5_2.md, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, adat/SEMA.md]
-ir: [F161_GLOSSZA_LANC_BRIEF.md, eszkozok/glossza_api_koteg.py, eszkozok/teszt_glossza_api_koteg.py, forditas/prompt_glossza_v1.md, eszkozok/glossza_lexikon_forditas.py, naplok/F161_GLOSSZA_LANC_naplo.md, dontesek/uj/glossza-lanc-1a9f9f.md, nyitott/uj/glossza-lanc-1a9f9f.md]
+ir: [F161_GLOSSZA_LANC_BRIEF.md, eszkozok/glossza_api_koteg.py, eszkozok/teszt_glossza_api_koteg.py, forditas/prompt_glossza_v1.md, forditas/prompt_glossza_v2.md, adat/forditasok.tsv, eszkozok/glossza_lexikon_forditas.py, naplok/F161_GLOSSZA_LANC_naplo.md, dontesek/uj/glossza-lanc-1a9f9f.md, nyitott/uj/glossza-lanc-1a9f9f.md]
 fugg: []
 nem_fugg: [7, 38, 121, 153, 154, 158]
 ---
@@ -69,6 +69,15 @@ A BDB és a Thayer fordítása saját API-láncon fut (rögzített prompt, mank�
 8. **Tesztek:** `eszkozok/teszt_glossza_api_koteg.py`.
 
 ## 3. Próba és határ
+
+**Hatókör-módosítás (2026-11-03, a felhasználó szavai az orkesztrátoron át, szó szerint):** „ubs re kértem forditást most /
+az lánc szerint”, „minden kész lexikoncikk hiányzó UBS-eleme / mind a 7 lexikoncikk” (az orkesztrátor értelmezésében a
+`lexikon/` mind a 9 lapja), és a TBESG-ről: „menjen ez is”. A TBESH-et csak ellenőrizni kell (kulcshiba-e), fordítás
+nélkül. A fordítás tehát most fut, a lánccal, előfizetői keretből (kérésenként egy `general-purpose` Sonnet subagent, a
+kérés szó szerint); a 400 egység fölött előbb a számok mennek az orkesztrátornak. Csak az ISTENTISZT-001 és az ALVIL-001
+lapja generálódhat újra ebben a PR-ban, próza-nulla-diffel; a többi lap a saját sessionjében. Az alábbi eredeti
+próba-pontokat ez felváltja.
+
 
 - A `szaraz` az ANTROP-001 54 egységén (a #608 ágának állapotán, repón kívüli munkafában); utána egy kis próba: 5
   glossza `general-purpose` Sonnet subagenttel, a kérés user-szövege szó szerint, majd `kapuz` (és `rogzit` a
