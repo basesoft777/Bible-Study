@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-03",
-   "commit": "d7911df3"
+   "commit": "e7a4f4da"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 15
+   "db": 14
   }
  ],
  "sor": [],
@@ -1149,16 +1149,6 @@
      "🟡"
     ],
     "sor": 464
-   },
-   {
-    "id": "DT549",
-    "feladat": "#123 MIGRACIO2 (a hátralévő öt motívum sorrendje; 0.2)",
-    "kerdes": "Az ALVIL-001 → ANTROP-001 → HAMART-001 után milyen sorrendben jön a TEREMT-002, KIRALY-001, MENNY-001, HODIT-001, TEREMT-001?",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 588
    }
   ],
   "alkalmazasra_var": [
@@ -4246,6 +4236,16 @@
     "sor": 587
    },
    {
+    "id": "DT549",
+    "feladat": "#123 MIGRACIO2 (a hátralévő öt motívum sorrendje; 0.2)",
+    "kerdes": "Az ALVIL-001 → ANTROP-001 → HAMART-001 után milyen sorrendben jön a TEREMT-002, KIRALY-001, MENNY-001, HODIT-001, TEREMT-001?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 588
+   },
+   {
     "id": "DT553",
     "feladat": "#156 MUHELY_FEED_STASH és #10 LEXIKON_LEZARAS (olvasói kapu, 2026-11-02: a lezárás felé vitt lapokon — ALVIL-001, TEREMT-002 — olvasói hibák, amelyeket a Feed 1–8 kapuja átengedett)",
     "kerdes": "Legyen-e a lezárás feltétele egy gépi és egy vizuális lapellenőrzés, 9. Feed-kapuként?",
@@ -4913,6 +4913,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 215
+  "kesz_db": 216
  }
 }
