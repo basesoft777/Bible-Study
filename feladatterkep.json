@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-03",
-   "commit": "8e9fa117"
+   "commit": "0d035dd7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -580,7 +580,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: ⛔ az ALVIL-001 új cikke az U4 után megállt (ág: claude/alvil-uj-cikk-b72389, draft PR #604). Hátra (DT566): a felhasználó átnézése a lapnézeten → egy javítókör → 1. kiadás; a régi lektori kártyák „az újraírás okafogyottá tette” jelöléssel a Kiadón (külön lépés, a Kiadó javítása után); a Fable-kör a 2. kiadás bemenete, csak jóváhagyással. Utána: ⛔ DT549 és az ANTROP-001.",
+   "most": "Te: ⛔ az ANTROP-001 1. kiadása kész (F123.ANTROP2.27, PR #608, a merge a felhasználóé). Következő: HAMART-001 — az U1 a hamart-u1 sessionben lefutott (PR #609); az U2-től új Opus-session, a #608 merge-e után (egyszerre egy nyitott PR). A Fable-kör a 2. kiadás bemenete, csak jóváhagyással.",
    "fugg": "#11 (kész), #12 (kész), #102*, #103*, #125*, #126 (kész), #127 (kész), #151*, #156*, #157*",
    "tervezett": false,
    "reszletes": "",
@@ -5020,6 +5020,54 @@
     "fejlec_oszlopszam": 8
    },
    {
+    "id": "DT-F170a",
+    "feladat": "CI.PRALAP.1 (a PR-ellenőrzések alapja; 2026-11-03)",
+    "kerdes": "A PR CI-ja (E18 térkép- és blokk-ellenőrzés, az `ellenorzes.yml` diff-számítása) a `github.event.pull_request.base.sha`-ra támaszkodott. Ez elavul, ha a main a PR nyitása után tovább lép (bot-commit: „FELADATOK.md frissítés (gép)”, amely a térképet is írja), a kicsekkolt `refs/pull/N/merge` viszont már az új csúcsra épül, így a main saját bot-commitja a PR-t terhelte (#608, 41706403359-es futás). Mi legyen az alap?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 617,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F170b",
+    "feladat": "CI.PRALAP.2 (elvesző számkiosztás-futás; 2026-11-03)",
+    "kerdes": "A #608 merge-ére (fdc321b5) indult `szamkiosztas` a közös `feladatok-frissites` csoportban várakozott, és a következő, bot-commitra indult (job-szinten kimaradó) futás kiszorította (csoportonként egy várakozó futás lehet, `cancel-in-progress: false` mellett is); a helyőrzők szám nélkül maradtak (21. szabály, E1 piros a main-en). Hogyan javuljon?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 618,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F123k",
+    "feladat": "#123 MIGRACIO2 (ANTROP-001 új cikk, U2: a nyitott jelöltek, a teljesség-mérés eltérései és a szótári gerinc; 2026-11-03)",
+    "kerdes": "(1) Mi legyen a 12 nyitott jelölttel és a Jób 12:10, Jón 4:8 külön sorával? (2) Hogyan kerüljön a `jeloltek.tsv`-be a teljesség-mérés 1 715 eltérő verse? (3) Mely Thayer/BDB-jelentésre mutasson a 11 előfordulás-sor (D50, X.K)?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 620,
+    "oszlopszam": 11,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F123r",
+    "feladat": "#123 MIGRACIO2 (ANTROP-001 új cikk, U4 javítókör: a független ellenőr 12 ELTÉRÉS-e, `naplok/ELLENOR_F123_ANTROP-001.md`; 2026-11-03)",
+    "kerdes": "(1) Bent maradjon-e az 1Kor 2:15, amelyben csak a πνευματικός áll? (2) Hogyan legyen következetes az elutasítások mércéje? (3) Hogyan viszonyuljon a Drash a vitatott ponthoz? (4) Hogyan kerüljön a 8 újraírt 1/a sor a DT28 útjára? (5–12) az alacsony tételek",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 622,
+    "oszlopszam": 11,
+    "fejlec_oszlopszam": 8
+   },
+   {
     "id": "DT-F123ga",
     "feladat": "#123 BDBGER (a BDB-gerinc szócikk-összevonása, az N-F123m második fele; 2026-11-03)",
     "kerdes": "A `lexikon_general.py` BDB-gerince a szakaszokat csak útvonal szerint (`-/1/-`) azonosította, így egy több BDB-szócikkű Strong (`bdb_id`: I., II., arámi) különböző szócikkeinek azonos útvonalú szakaszai, és mindegyik szócikk feje, egy szakaszba folytak össze (H2416: az `1` a BDB2718, BDB2721 és BDB9522 szövegét fűzte egybe; a 2.30-ban 1 583 Strong érintett, ebből 133-ban a fejen kívül is). Mi legyen a szakasz kulcsa, és hogyan álljon a lapon?",
@@ -5027,7 +5075,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 617,
+    "sor": 626,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    },
@@ -5039,11 +5087,11 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 618,
+    "sor": 627,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 216
+  "kesz_db": 221
  }
 }
