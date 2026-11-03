@@ -38,7 +38,7 @@ A szótári gerinc hozzárendelése (X.K; javaslat, ugyanígy): Thayer G4151 2. 
 
 Az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03), három üzenetben (DT-F123k, DT-F123l):
 
-- **(1)–(3) elfogadva**, a Fil 1:27 = (b): elutasítva („párhuzamos tagok, a két szó a közösség egységét fejezi ki”, a Thayer G4151 2. és G5590 2. alapján), de **határkérdés, a felhasználóé**: határkártya a `naplok/HATAR_ANTROP-001.md` K1-ben (kézi K1, nem a `hatar-ellenor` kimenete), a `naplok/LEKTOR_ANTROP-001.tsv`-ben és az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben; (b) a javasolt opció. A Kiadóra az orkesztrátor teszi fel az U4 után. A próza a Fil 1:27-et egy mondatban, a Kivonat kizárt példájaként említi.
+- **(1)–(3) elfogadva**, a Fil 1:27 elutasítva (a DT-F123k (1) (a) opciója; a határkártyán ez a (b) = kint marad) („párhuzamos tagok, a két szó a közösség egységét fejezi ki”, a Thayer G4151 2. és G5590 2. alapján), de **határkérdés, a felhasználóé**: határkártya a `naplok/HATAR_ANTROP-001.md` K1-ben (kézi K1, nem a `hatar-ellenor` kimenete), a `naplok/LEKTOR_ANTROP-001.tsv`-ben és az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben; a kártyán a (b) = kint marad a javasolt opció. A Kiadóra az orkesztrátor teszi fel az U4 után. A próza a Fil 1:27-et egy mondatban, a Kivonat kizárt példájaként említi.
 - A Luk 9:55–56 elutasításának oka: nem egy mondat; a csak-TR állás külön megjegyzés (a TR-mérce szerint nem kizáró ok) — F123.ANTROP2.7.
 - A rúah+nefes blokk (5 vers) a P2 bővítés jelöltje, a felhasználóé: N-F123i.
 - **(B) a szótári gerinc** jóváhagyva (a hét szakasz, a címkék, a soronkénti entry, a `strong` a DT502 szerint): a D50 jelentéstartomány-választás, az ALVIL-001 DT417/DT418 mintájára.
@@ -59,7 +59,28 @@ Az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrát
 - `ellenoriz.py`: SÉRTÉS 0; a 24. RENDBEN; a 25. listáján az ANTROP-001 nincs (`proza_1a.py`: 11/11 arany); 17–18. RENDBEN (a szótári gerinc aktív).
 - Olvasói kapu: **4 BUKÁS**, mind generált szótári szövegben (a próza nem éri el): BDB H2416 1.a kivonat „Josh”, „Hosea”; két összecsukott Thayer-kivonat csonkolt zárójele (G5590 2.c, G4152 2.) — N-F123f.
 - Feed: 1, 2, 3, 4, 7, 8 zöld; 5 piros (a Fil 1:27 határkártyája, a felhasználóé); 6 piros (UBS/TBESG „fordításra vár” glosszák és 1 generált héber kiejtés — nem Thayer/BDB, a hatókörön kívül); 9 piros (4 BUKÁS + az átnézés).
-- Helyi CI (`futtat.py`, PR-mód): 0 HIBA; `feladatok.py ellenoriz`: 0 hiba; `test_szabalyok` a main változatán; `teszt_teljesseg_meres` 11 OK.
+- Helyi CI (`futtat.py`, PR-mód): 0 HIBA a PR #608 tényleges, `[ELLENŐRZŐ]` előtagú címével (`--pr-cim`); más, előtag nélküli címmel az E16 HIBA-t adna; `feladatok.py ellenoriz`: 0 hiba; `test_szabalyok` a main változatán; `teszt_teljesseg_meres` 11 OK.
 - C-z (`proza_lefedettseg.py`): megnevezetlen elem nincs.
 - A Thayer G4152, G5591 fordítása: `naplok/F123_ANTROP2_forditas.md` (DT-F123l).
 - Független ellenőrzés: `naplok/ELLENOR_F123_ANTROP-001.md`.
+
+## U4 javítókör (F123.ANTROP2.15; DT-F123r)
+
+A független ellenőr 12 ELTÉRÉS-e (`naplok/ELLENOR_F123_ANTROP-001.md`), az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03). Új opus-session (claude-opus-5-5), a próza gazdájaként; a forrást egészében olvasta.
+
+| # | Tétel | Javítás |
+|---|---|---|
+| 1 | 1Kor 2:15 | bent marad; a negatív kritérium név szerinti kivétele (`motivumok.tsv` = Kivonat, szó szerint); határkártya K2 ((a) javasolt), a 2. kiadás bemenete; `scan G4152 --szakasz "1Kor 2:15"` n=1, G4151/G5590/G5591 n=0 (ts=2026-11-03T10:41Z) |
+| 2 | A mérce | az 1Pét 1:22, Fil 1:27, 1Pét 3:19–20 indoklása és az elutasítási ok megjegyzése a kritérium szavaival (szembeállítás / megkülönböztetés); a K1 összefoglalója ugyanígy |
+| 3 | Drash ↔ vitatott pont | a Drash a lap jelölt olvasata, a vitát nyitva hagyja; a vitatott pont a két olvasatot írja le, a régi tanulmány névsora jelölten, ellenőrizetlenként, `manual` provenienciával |
+| 4 | DT28 | a 8 újraírt sor a `jeloltek.tsv`-n át (`forras_kereses`, `indoklas`), az `elofordulasok.tsv` proveniencia-mezője erre mutat; az ALVIL-001: N-F123j |
+| 5 | DT-F123k (b) | a kártya és a döntési sor opció-betűi szétválasztva |
+| 6 | G5590 -/2/- | a címke a 2.a–2.c-t fedi |
+| 7 | Remez, Sod | a Remez-következtetés tényre írva; a megelevenítő szellem Krisztusé (1Kor 15:45) |
+| 8 | Jób 7:11 | „lelkemnek” = rúah, „szívemnek” = nefes |
+| 9 | „Három helyen” | két hely (Luk 1:46–47, 1Kor 2:14–15) |
+| 10 | N-F123f | 4 BUKÁS egységesen, a tételszámozás (1)–(5) |
+| 11 | E16 | a napló U4-ében a PR-cím feltétele kimondva |
+| 12 | G4152 sz7 | kézi javítás (`allapot=kezi`, `modell=claude-opus-5-5`) |
+
+Generátor (N-F123f (3–4)): a `lexikon_general._elso_tagmondat` a nyitva maradó zárójel elé vág; a kilenc lap repón kívüli előtte–utána generálása: nyolc lapon 0 eltérő sor, az ANTROP-001-en a két összecsukott kivonat. Az olvasói kapu: 4 → 2 BUKÁS (a BDB H2416 1.a angol kivonata, adathiány, N-F123f (1–2)); a próza 0 BUKÁS-t ad.

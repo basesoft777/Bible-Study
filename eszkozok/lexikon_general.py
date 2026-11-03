@@ -3003,7 +3003,11 @@ def _elso_tagmondat(szoveg, hatar=90):
     if m and m.start() <= hatar:
         s = s[:m.start()]
     elif len(s) > hatar:
-        s = s[:hatar].rstrip() + '…'
+        s = s[:hatar].rstrip()
+        # nyitva maradó zárójel elé vágunk (olvasói kapu ZAROJEL, N-F123f)
+        if s.count('(') > s.count(')'):
+            s = s[:s.rfind('(')].rstrip(' ,;')
+        s = s + '…'
     return s.strip() or EM_DASH
 
 

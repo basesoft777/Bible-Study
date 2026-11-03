@@ -34,17 +34,27 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
-*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: a #123 ANTROP-001 új cikkének U2-jében az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03) — a Fil 1:27 egyelőre elutasítva, de a hely határkérdés, ezért a felhasználóé (`naplok/F123_ANTROP2_naplo.md` U2). A két válasz következménye az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben.*
+*A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: a #123 ANTROP-001 új cikkének U2-jében az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03) — a Fil 1:27 egyelőre elutasítva, de a hely határkérdés, ezért a felhasználóé (`naplok/F123_ANTROP2_naplo.md` U2). A K2 ugyanígy kézi: az U4 javítókörében (DT-F123r (1)) az 1Kor 2:15 név szerinti kivétellel bent marad, a kérdés a 2. kiadás bemenete. A válaszok következménye az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben.*
 
-**1 kérdés.**
+**2 kérdés.**
 
 **K1 — Bekerüljön-e a Fil 1:27 („egy lélekben, egy érzéssel”) a motívumba?**
 Érintett igehelyek: Fil 1:27, Luk 1:46, Luk 1:47.
 **A jelenlegi határ** (az adatból):
 - Negatív kritérium (`adat/motivumok.tsv`): a πνεῦμα és a ψυχή (vagy melléknévi alakjuk) egy mondatban áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja; nem tartozik ide, ahol a kettő egymás szinonimája.
-- A Fil 1:27-ben a két szó egy mondatban, két mellérendelt tagként áll: „megállotok egy lélekben (πνεῦμα), egy érzéssel (ψυχή)”. A Thayer a πνεῦμα 2. jelentésénél megjegyzi, hogy itt a μία ψυχή helyett „μία καρδία” (egy szív) is állhatna, a ψυχή-nál pedig az ApCsel 4:32 („szíve-lelke egy vala”) mellé, az érzelmek székhelye jelentés alá sorolja: a két szó itt a közösség egységét fejezi ki.
+- A Fil 1:27-ben a két szó egy mondatban, két mellérendelt tagként áll: „megállotok egy lélekben (πνεῦμα), egy érzéssel (ψυχή)”. A Thayer a πνεῦμα 2. jelentésénél megjegyzi, hogy itt a μία ψυχή helyett „μία καρδία” (egy szív) is állhatna, a ψυχή-nál pedig az ApCsel 4:32 („szíve-lelke egy vala”) mellé, az érzelmek székhelye jelentés alá sorolja: a mondat a két szót nem szembeállítja, hanem párhuzamos tagként említi egymás mellett, együtt a közösség egységét fejezik ki.
 - Mégis: a Luk 1:46–47 (Mária éneke) szintén két mellérendelt, párhuzamos tag („Magasztalja az én lelkem … És örvendez az én lelkem”), és bent van, mert mindkét szónak saját igéje van. A „megkülönböztető szerepben” mérce a két helyen nem ad egyértelmű választ.
 Válaszok: (a) a Fil 1:27 bekerül, a Luk 1:46–47 mintájára (11 → 12 igehely); (b) kint marad, a Thayer-indokkal (javasolt; a lap határesetként említi).
 
 (proveniencia: scope=adat/jeloltek.tsv (ANTROP-001 Fil 1:27), adat/elofordulasok.tsv (11 sor), adat/thayer_szakaszok.tsv (G4151 -/2/-, G5590 -/2/-) | forras=split('\t') | ts=2026-11-03)
+
+**K2 — Bent maradjon-e az 1Kor 2:15 („A lelki ember azonban mindent megítél”) a név szerinti kivétellel?**
+Érintett igehelyek: 1Kor 2:14, 1Kor 2:15.
+**A jelenlegi határ** (az adatból):
+- Negatív kritérium (`adat/motivumok.tsv`): nem tartozik ide a vers, amelyben csak az egyik szó áll, vagy amelyben a két szó két külön mondatban áll; név szerinti kivétel az 1Kor 2:14–15 ellentétpárja (ψυχικὸς ἄνθρωπος ↔ ὁ πνευματικός), amely egy érvelés két versben.
+- Az 1Kor 2:15-ben csak a πνευματικός áll (`scan G4152 --szakasz "1Kor 2:15"`: 1 találat; a G4151, G5590, G5591 nincs a versben). A 2:14 és a 2:15 két mondat, de a 2:15 („A lelki ember azonban …”) a 2:14 kifejezett szembeállítását közvetlenül folytatja.
+- Mégis: az ApCsel 4:31–32, 20:23–24, 2Kor 1:22–23 és Luk 9:55–56 helyeken a két szó szintén szomszédos versekben áll, és kint van; ezekben a két szó csak közel áll egymáshoz, szembeállítás nélkül. A csak a πνευματικός szót hordozó többi vers (16 vers, blokk-sor) kint marad.
+Válaszok: (a) bent marad, a név szerinti kivétellel (javasolt; 11 igehely); (b) kizárva, az 1Kor 2:14 marad (11 → 10 igehely).
+
+(proveniencia: scope=adat/motivumok.tsv (ANTROP-001 negativ_kriterium), adat/jeloltek.tsv (ANTROP-001 1Kor 2:15, ApCsel 4:31-32, ApCsel 20:23-24, 2Kor 1:22-23, Luk 9:55-56, 1Kor 3:1 blokk), naplok/ELLENOR_F123_ANTROP-001.md 1. tétel | forras=split('\t') | ts=2026-11-03 · scope=range:1Kor 2:15 | forras=TAGNT_kivonat.tsv | strong=G4152 | n=1 | ts=2026-11-03T10:41Z; ugyanígy G4151, G5590, G5591: n=0)
 <!-- MODELLES-VEGE -->
