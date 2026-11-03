@@ -86,8 +86,9 @@ _HG = re.compile('[%s]' % E._HG_KAR)
 KIZAR_GATOLO = ('6_hosszarany',)   # JELZES-kapu; a rövid glosszán nem értelmezhető, de az eredményben marad
 MUNKA = None
 # a subagent-út jelölése a megjegyzésben (orkesztrátor, 2026-11-03): a kérés ugyanaz, a futtató környezet más
-SUBAGENT_EREDET = ('Code-session (előfizetői keret), general-purpose subagent %s, a kérés szó szerint; eltérés az API-tól: '
-                   'Claude Code alap rendszerutasítás, effort/max_tokens nem állítható')
+SUBAGENT_EREDET = ('Code-session (előfizetői keret), general-purpose subagent %s, a kérés szó szerint (a `prompt` fájljából beolvasva, '
+                   'a válasz fájlba írásának utasításával); eltérés az API-tól: Claude Code alap rendszerutasítás, effort/max_tokens '
+                   'nem állítható')
 
 
 def ut(*r):
