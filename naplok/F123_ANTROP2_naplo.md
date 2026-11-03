@@ -96,3 +96,7 @@ A független ellenőrzés 2. köre (D2: az utolsó): `naplok/ELLENOR_F123_ANTROP
 - A glossza-fordítás nem futott (N-F123l (2)); a kiadás nem futott.
 - Kapuk: `ellenoriz.py` SÉRTÉS 0; `proza_1a.py` 11/11 arany; olvasói kapu 2 BUKÁS (generált); Feed: l. a jelentést.
 - **A 2 BUKÁS (DT-F123t, F123.ANTROP2.21):** a `bdb_szakasz_hu.tsv` H2416 14. sorának kézi sorjavítása (BDB2718 -/1/a: `elakad` → `illeszkedik`, a szöveg a `forditasok.tsv` sz14 sora; az ALVIL.1 mintája). Nulla-diff: nyolc lapon 0 eltérő sor, az ANTROP-001-en egy (1.a magyarul). Olvasói kapu: 0 BUKÁS. Az átkulcsolás és a BDB2718-blokk illesztése: N-F123m. Csak a szótári rész: az átnézés érvényes (DT-F123q minta).
+
+### H2416 BDB2718-blokk (DT-F123u, F123.ANTROP2.23)
+
+A #610 után a lapon egy „fordításra vár” maradt: a BDB H2416 hordozó `1` blokkja. A `hu_illeszt.py --strong H2416` újrafuttatása nem segít, mert a szakaszos fordítást összefűzi és újravágja (visszavonva, N-F123m). A 13., 15–19. sor kézzel kapta meg a `forditasok.tsv` sz13, sz15–sz19 szövegét; előtte mindegyiket összevetettem az angol szakasszal (`naplok/F123_ANTROP2_bdb_h2416_b.py`). Nulla-diff: nyolc lap 0, az ANTROP-001-en 3 sor (1.b, 1.c horgonyjelölés megszűnt, a 4 magyarul). **A Feed 6 piros marad:** az `1` blokk útvonal szerint a 13., 24. (BDB2721) és 28. (BDB9522, `elakad`) sort vonja össze, és az `elakad` sor miatt a csoport magyar szövege elmarad. Megállás, a kiadás nem indult el.
