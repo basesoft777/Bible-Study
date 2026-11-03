@@ -7,14 +7,14 @@
 ## 0. A motívum a forrás szerint
 
 - Cím: „A bűn következményeinek gyűrűzése — átok, föld és romlás” (S1). Azonosság: strukturális; a lánc *arar → adamá → itzávón → chattát → chámász → sáchat* (S7) négy szakaszon át: 1Móz 3, 4, 6:1-8, 6:9-22 (S22). A kivonat szerint összesen 52 igehely (S7; NL242 szerint a táblázat 46 sor: 20 + 18 + 8).
-- A gerinc azonosítása: a négy szakasz Strong-halmazának metszete egyetlen tartalmi szót ad, a H0127-et; a többi a szemantikai mező célzott scanjéből jön (N15-22; S39).
-- Gerinc-szavak és a forrás teljes-előfordulás számai (S43-54, N28-47): H0779 arar (63 szóalak / 52 igehely), H0127 adamá (225 / 211), H6093 itzávón (3 / 3), H2403 chattát (295 / 271), H2555 chámász (60 / 59), H7843 sáchat (146 / 135); G1944 ἐπικατάρατος (2), G2671 κατάρα (6 / 5), G5356 φθορά (9 / 8), G1311 διαφθείρω (6 / 5). Kontroll-szavak a naplóban: H7451, H7043, H4390, H8085, H6087, G2672, G5351, G0093 (N36-47).
+- A gerinc azonosítása: a négy szakasz Strong-halmazának metszete egyetlen tartalmi szót ad, a H0127-et; a többi a szemantikai mező célzott scanjéből jön (NL15-22; S39).
+- Gerinc-szavak és a forrás teljes-előfordulás számai (S43-54, NL28-47): H0779 arar (63 szóalak / 52 igehely), H0127 adamá (225 / 211), H6093 itzávón (3 / 3), H2403 chattát (295 / 271), H2555 chámász (60 / 59), H7843 sáchat (146 / 135); G1944 ἐπικατάρατος (2), G2671 κατάρα (6 / 5), G5356 φθορά (9 / 8), G1311 διαφθείρω (6 / 5). Kontroll-szavak a naplóban: H7451, H7043, H4390, H8085, H6087, G2672, G5351, G0093 (NL36-47).
 - Kollokációk: H4390+H2555 azonos versben 8 hely (1Móz 6:11, 6:13, Zsolt 74:20, Ez 7:23, 8:17, 28:16, Mik 6:12, Sof 1:9); H8085+H2555 4 hely (Jer 6:7, Jer 51:46, Ézs 60:18, Hab 1:2) (S173-175; NL57).
 - Belső következetlenség a forrásban (jelzés, nem ítélet): S137 „öt” arar-kimondást ígér, négy passzív participiumot sorol (3:14, 3:17, 4:11, 9:25) plusz az 5:29 Pi'élt; S211 az „öt kimondás” 3:14, 3:17, 4:11, 5:29, 9:25.
 
 ## 1. Igehelyek és a hozzájuk tartozó állítás (S = tanulmány, NL = napló)
 
-### A) A genezisi lánc (S64-83; N146-154)
+### A) A genezisi lánc (S64-83; NL146-154)
 
 | Igehely | Állítás a forrás szerint | Hely |
 |---|---|---|
@@ -39,7 +39,7 @@
 | 1Móz 9:25 | אָרוּר כְּנָעַן: az átok-lánc az özönvíz után újraindul; csak lexikai tagként, a Khám-vétek értelmezése nélkül | S82; NL153 |
 | 1Móz 12:3 | a lánc megfordítása: arar + adamá, áldás keretében (H0779, H7043, H1288, H0127) | S83, S211; NL154 |
 
-### B) Kánoni kiterjedés az ÓSZ-ben (S91-108; N155-162)
+### B) Kánoni kiterjedés az ÓSZ-ben (S91-108; NL155-162)
 
 | Igehely | Állítás | Hely |
 |---|---|---|
@@ -62,7 +62,7 @@
 | Ézs 24:5-6 | föld/átok/lakosok hármas szerkezet, de אָלָה (H0423), nem arar: **tematikus, nem lexikai** (TSK 1Móz 3:17 → 10 szavazat) | S107; NL176 |
 | Hós 4:1-3 | a lakosok bűne és a föld sorvadása; chámász nélkül: **tematikus, nem lexikai** (TSK 1Móz 6:11, 6:13) | S108; NL177 |
 
-### C) Az újszövetségi oldal (S114-121; N164-168)
+### C) Az újszövetségi oldal (S114-121; NL164-168)
 
 | Igehely | Állítás | Hely |
 |---|---|---|
@@ -76,7 +76,7 @@
 | 2Pét 3:6-7 | az özönvíz-világ elpusztulása, a 6:13 ítélet-logikája: **tematikus, nem lexikai** (TSK 4-5) | S121; NL179 |
 | 2Pét 3:10, 3:12 | csak a naplóban („2Pét 3:6-7, 3:10, 3:12” egy sorban, TSK 1Móz 6:13); a tanulmány táblájában nincs | NL179 |
 
-### D) A LXX-egyeztetés (N74-90, S181; csak amit a forrás állít)
+### D) A LXX-egyeztetés (NL74-90, S181; csak amit a forrás állít)
 
 1Móz 3:14, 3:17, 4:11, 9:25 és 5Móz 27:26 = ἐπικατάρατος (G1944); 1Móz 3:18 = ἀκάνθας καὶ τριβόλους (G0173+G5146); 1Móz 6:11 = ἐφθάρη … ἀδικίας (G5351+G4130+G0093); 6:12 = κατέφθειρεν (G2704); 6:13, 6:17 = καταφθείρω; 5Móz 21:23 = κεκατηραμένος (G2672); Zsolt 14:1 διέφθειραν, 53:2 (LXX 52:2) διεφθάρησαν (G1311). Az 5:29-hez a LXX-kivonat nem ad G1944-alakot (NL90). A G0093 (ἀδικία) a LXX *chámász*-fordítása 6:11,13-ban, de az ÚSZ-beli előfordulásai (24) elutasítva (NL47, NL220).
 
@@ -96,7 +96,7 @@
 
 ## 3. Kizárások és határesetek
 
-**A forrás elhatárolásai szomszédos motívumoktól (S28; N225-235):**
+**A forrás elhatárolásai szomszédos motívumoktól (S28; NL225-235):**
 - „Isten fájdalma (*acav*)”: 1Móz 6:6 יִּתְעַצֵּב (H6087) **kimarad** (ige vs. főnév, Isten vs. ember).
 - „Kánaán-átok”: 1Móz 9:25 **részleges átvétel**, csak az arar-lánc tagjaként.
 - „jetzer — a szív romlott hajlama”: 1Móz 6:5, 8:21 H3336 **kimarad**; ezért esik ki a Jer 17:9 és Jer 4:14.
@@ -105,14 +105,14 @@
 - „תהו/בהו — teremtés-visszavonás” (TEREMT-002): Jer 4:23 **kimarad**.
 - „halál refrénje”: 1Móz 5 **kimarad** (az 5:29-ből csak a három kulcsszó).
 
-**A napló elutasított TSK/Károli-jelöltjei (N180-201):** Jer 17:9, Jer 4:14 (jetzer); Préd 7:29, 9:3; Róm 1:28, 1:31; Ef 2:1, 2:3 (az öröklött bűnösség kérdését a tanulmány nem dönti el); Tit 3:3; csoportosan: Jób 5:6-7, 14:1, 21:17, Préd 1:2-3, 1:13-14, 2:11, 2:17, 2:22-23, 5:17, Zsolt 90:7, 90:9, 127:2 (fáradság-toposz; a Zsolt 127:2 a rokon H6089-et hordozza); Luk 19:22, Mt 25:26-27, 22:12, 25:45, 1Sám 15:23-24, Jer 7:23-24, Róm 3:19; Zsolt 104:2, 104:14-15, 90:3, Jób 1:21, Róm 14:2; Péld 22:5, 24:31, Ézs 5:6, 7:23, 32:13, Jer 4:3, 12:13, Józs 23:13, Mt 13:7, Jób 5:5, 31:40 (tövis mint kép, de nem az ἄκανθα+τρίβολος együtt; csak a Zsid 6:8); 5Móz 29:19, 29:21, 28:15, 28:20, 28:23-24, 28:65-66, 3Móz 26:20, 26:36 (átok-szakaszok arar nélkül); Ézs 26:21, Jel 12:16; Hós 9:17, Zsolt 109:10, Jer 20:3-4; Zsolt 11:5, 55:9, 140:11 (chámász kollokáció nélkül); 1Móz 10:9, 13:13 (Nimród, Sodoma: önálló motívumok); Luk 1:6, Róm 2:13, 3:19, 2Krón 34:27; Péld 15:3, 1Móz 18:21, Zsolt 33:13-14, Jób 22:15, 22:17, 33:27, Luk 3:6; 1Pét 3:19-20, 2Pét 2:5, Zsid 11:7; Ez 7:2, 7:6, Ámós 8:2, Jer 51:13 (a „vég” קֵץ formula: más kulcsszó, esetleges önálló motívum); Jer 4:23, 4:28 (TEREMT-002); 1Pét 4:7.
+**A napló elutasított TSK/Károli-jelöltjei (NL180-201):** Jer 17:9, Jer 4:14 (jetzer); Préd 7:29, 9:3; Róm 1:28, 1:31; Ef 2:1, 2:3 (az öröklött bűnösség kérdését a tanulmány nem dönti el); Tit 3:3; csoportosan: Jób 5:6-7, 14:1, 21:17, Préd 1:2-3, 1:13-14, 2:11, 2:17, 2:22-23, 5:17, Zsolt 90:7, 90:9, 127:2 (fáradság-toposz; a Zsolt 127:2 a rokon H6089-et hordozza); Luk 19:22, Mt 25:26-27, 22:12, 25:45, 1Sám 15:23-24, Jer 7:23-24, Róm 3:19; Zsolt 104:2, 104:14-15, 90:3, Jób 1:21, Róm 14:2; Péld 22:5, 24:31, Ézs 5:6, 7:23, 32:13, Jer 4:3, 12:13, Józs 23:13, Mt 13:7, Jób 5:5, 31:40 (tövis mint kép, de nem az ἄκανθα+τρίβολος együtt; csak a Zsid 6:8); 5Móz 29:19, 29:21, 28:15, 28:20, 28:23-24, 28:65-66, 3Móz 26:20, 26:36 (átok-szakaszok arar nélkül); Ézs 26:21, Jel 12:16; Hós 9:17, Zsolt 109:10, Jer 20:3-4; Zsolt 11:5, 55:9, 140:11 (chámász kollokáció nélkül); 1Móz 10:9, 13:13 (Nimród, Sodoma: önálló motívumok); Luk 1:6, Róm 2:13, 3:19, 2Krón 34:27; Péld 15:3, 1Móz 18:21, Zsolt 33:13-14, Jób 22:15, 22:17, 33:27, Luk 3:6; 1Pét 3:19-20, 2Pét 2:5, Zsid 11:7; Ez 7:2, 7:6, Ámós 8:2, Jer 51:13 (a „vég” קֵץ formula: más kulcsszó, esetleges önálló motívum); Jer 4:23, 4:28 (TEREMT-002); 1Pét 4:7.
 
-**A gerinc-scanek elutasított előfordulásai (N208-220):** H0779 29 igehely (1Móz 27:29, 49:7; 2Móz 22:28; 4Móz 5:18-27, 22:6, 22:12, 23:7, 24:9; Józs 6:26, 9:23; Bír 5:23, 21:18; 1Sám 14:24, 14:28, 26:19; 2Kir 9:34; Jób 3:8; Zsolt 119:21; Jer 11:3, 20:14, 20:15, 48:10; Mal 1:14, 2:2, 3:9: rituális/jogi/indulati átok, a következmény-terjedés szerkezete nélkül); H2555 47 igehely (általános használat, kollokáció nélkül; külön: 1Móz 16:5 és 49:5 genezisi, de nem a föld megtelése); H7843 127 + Hif'íl-alakok: 2Krón 34:11, Ézs 37:12, Jer 36:29, 49:9, 51:20, Dán 8:24 (fizikai pusztítás, elutasítva); H0127 ~195 (köznyelvi; genezisi határeset: 1Móz 6:1, 6:20, 8:8, 8:13, 9:2, 9:20); H2403 270 (levitikus bűnáldozat, csak a 4:7); G2672 6 (Mt 5:44, 25:41, Mk 11:21, Luk 6:28, Róm 12:14, Jak 3:9); G2671: Jak 3:10, 2Pét 2:14; G5351: 1Kor 3:17, 15:33, 2Kor 7:2, 11:3, Ef 4:22, 2Pét 2:12, Júd 1:10; G5356: 1Kor 15:42, 15:50, Gal 6:8, Kol 2:22, 2Pét 1:4, 2:12, 2:19 (a Róm 8:21 az egyetlen, amely a teremtett világhoz köt); G1311: Luk 12:33, 2Kor 4:16, 1Tim 6:5, Jel 8:9; G0093 24 igehely.
+**A gerinc-scanek elutasított előfordulásai (NL208-220):** H0779 29 igehely (1Móz 27:29, 49:7; 2Móz 22:28; 4Móz 5:18-27, 22:6, 22:12, 23:7, 24:9; Józs 6:26, 9:23; Bír 5:23, 21:18; 1Sám 14:24, 14:28, 26:19; 2Kir 9:34; Jób 3:8; Zsolt 119:21; Jer 11:3, 20:14, 20:15, 48:10; Mal 1:14, 2:2, 3:9: rituális/jogi/indulati átok, a következmény-terjedés szerkezete nélkül); H2555 47 igehely (általános használat, kollokáció nélkül; külön: 1Móz 16:5 és 49:5 genezisi, de nem a föld megtelése); H7843 127 + Hif'íl-alakok: 2Krón 34:11, Ézs 37:12, Jer 36:29, 49:9, 51:20, Dán 8:24 (fizikai pusztítás, elutasítva); H0127 ~195 (köznyelvi; genezisi határeset: 1Móz 6:1, 6:20, 8:8, 8:13, 9:2, 9:20); H2403 270 (levitikus bűnáldozat, csak a 4:7); G2672 6 (Mt 5:44, 25:41, Mk 11:21, Luk 6:28, Róm 12:14, Jak 3:9); G2671: Jak 3:10, 2Pét 2:14; G5351: 1Kor 3:17, 15:33, 2Kor 7:2, 11:3, Ef 4:22, 2Pét 2:12, Júd 1:10; G5356: 1Kor 15:42, 15:50, Gal 6:8, Kol 2:22, 2Pét 1:4, 2:12, 2:19 (a Róm 8:21 az egyetlen, amely a teremtett világhoz köt); G1311: Luk 12:33, 2Kor 4:16, 1Tim 6:5, Jel 8:9; G0093 24 igehely.
 
 ## 4. Nevesített tanítók és források
 
 - **Derek Prince** — *Blessing or Curse: You Can Choose*; kísérő vázlat: *Curses: Cause and Cure*; web_search-ellenőrizve 2026.09.11-én (S268). A forrás szerint az 1Móz 3:14 → 3:17 → 4:11 láncot tárgyalja, és a Gal 3:13-14-hez köti. **Hiány:** a 6:1-8 / 6:9-22 egyetemes-chámász vonalra és a kánoni kiterjesztésre nincs dedikált, nevesíthető forrás a jóváhagyott körben (S270); a többi tanítónál (Hagin, Copeland, Roberts, Osborn, Capps, Mumford, Basham, Baxter, Simpson, Wigglesworth, Lake, Bosworth, Kuhlman, Lindsay, Wommack, Savelle, Price) forrás-ellenőrzés nem futott (S272). A Gal 3:13 mint Word of Faith-igehely általános ismeret, nem ellenőrzött (S272). Az X.M7-hez a saját tanítói fájl a mérvadó (DT249).
-- **Szótári és korpuszforrások, amelyekre a régi szöveg hivatkozik:** BDB (`BDB_teljes_unabridged.tsv`; a J/E/P/D jelölések a BDB-ből, nem külön szakirodalomból: S241), TSK (`TSK_kereszthivatkozasok.tsv`, szavazatszámokkal: N94-113), Károli-kereszthivatkozás (`Karoli_kereszthivatkozasok.tsv`: öt sor, N117-122), TAHOT/TAGNT, LXX (a régi `LXX_kivonat_*.tsv`; a Zsolt 14:1/53:2 ellenőrzése a ma helyes `LXX_OS`-en megismételve: S278, NL88, NL272).
+- **Szótári és korpuszforrások, amelyekre a régi szöveg hivatkozik:** BDB (`BDB_teljes_unabridged.tsv`; a J/E/P/D jelölések a BDB-ből, nem külön szakirodalomból: S241), TSK (`TSK_kereszthivatkozasok.tsv`, szavazatszámokkal: NL94-113), Károli-kereszthivatkozás (`Karoli_kereszthivatkozasok.tsv`: öt sor, NL117-122), TAHOT/TAGNT, LXX (a régi `LXX_kivonat_*.tsv`; a Zsolt 14:1/53:2 ellenőrzése a ma helyes `LXX_OS`-en megismételve: S278, NL88, NL272).
 - **Forráselmélet (S239-241):** a BDB „(P)”/„(J)” jelölései szerint a sáchat/chámász szókincs P-hez, az arar/itzávón/adamá J-hez kötődik; a tanulmány a kanonikus alakkal dolgozik, a kérdést dokumentálja, nem dönti el.
 
 ## 5. Nyitott kérdések a forrás szerint
