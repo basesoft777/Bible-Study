@@ -1,20 +1,20 @@
-szotar	strong	szakasz	lexikon_jelentes_szam	cimke_hu	proveniencia	megjegyzes
-BDB	H7121	Qal/2/c	2.c	segítségül hívni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-BDB	H7121	Qal/3/-	3	kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-BDB	H7121	Qal/3/b		a nevet kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-BDB	H8034	-/3/-		név: Isten megjelölése	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-BDB	H8034	-/4/-		név: hamis istenekről	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-TBESG	G1941	2	2	segítségül hívni, folyamodni valakihez	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	a TBESG tagolása (a lexikon_hivatkozasok.tsv kulcsa); DT373 (a)
-Thayer	G1941	-/1/-		elnevezni	scope=manual | forras=F131 (DT379, a felhasználó döntése) | ts=2026-10-27	DT379
-Thayer	G1941	-/5/-		segítségül hívni a név kimondásával	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
-BDB	H7585	-/1/-	1	alvilág, ahová a halottak alászállnak	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	a Jób 17:12 és a Zsolt 88:4 kutatói hozzárendelése ide (DT417)
-BDB	H7585	-/2/-		az igazak és a gonoszok állapota	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
-BDB	H7585	-/2/a	2.a	a gonoszok sorsa; az igaz félelme és szabadulása	scope=manual | forras=F123 ALVIL-001 új cikk (a BDB 2.a teljes szövege: gonoszok; az igazak rettegnek tőle; a megszabadulás belőle áldás; lap-átvilágítás 2026-11-02, A3) | ts=2026-11-02	
-BDB	H7585	-/2/b	2.b	az igaz kiváltása a Seolból	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	a jóváhagyott „az igazat nem hagyják a Seólban” tagadás nélkül (ellenoriz.py 17.: a címkében tagadás nem állhat, DT272 (d)); a BDB „is ransomed from ׳שׁ” fordulata; lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
-BDB	H7585	-/3/-		a helyek megkülönböztetése	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
-BDB	H7585	-/3/a	3.a	a Seol mélységei	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
-BDB	H7585	-/3/b	3.b	Seol és Abaddón; verem	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
-BDB	H7585	-/4/-	4	átvitt értelem: lealacsonyodás, száműzetés	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
-Thayer	G0086	-/1/-		Hádész, az alvilág istene (tulajdonnév)	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
-Thayer	G0086	-/2/-	2	az alvilág, a halottak birodalma	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
-BDB	H8414	-/1/-	1	formátlanság	scope=BDB H8414 -/1/- | forras=szakasz_cimke_levezet.py (gépi, DT439) | ts=2026-11-02	
+szotar	strong	bdb_id	szakasz	lexikon_jelentes_szam	cimke_hu	proveniencia	megjegyzes
+BDB	H7121	BDB7550	Qal/2/c	2.c	segítségül hívni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H7121	BDB7550	Qal/3/-	3	kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H7121	BDB7550	Qal/3/b		a nevet kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H8034	BDB8776	-/3/-		név: Isten megjelölése	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H8034	BDB8776	-/4/-		név: hamis istenekről	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+TBESG	G1941		2	2	segítségül hívni, folyamodni valakihez	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	a TBESG tagolása (a lexikon_hivatkozasok.tsv kulcsa); DT373 (a)
+Thayer	G1941		-/1/-		elnevezni	scope=manual | forras=F131 (DT379, a felhasználó döntése) | ts=2026-10-27	DT379
+Thayer	G1941		-/5/-		segítségül hívni a név kimondásával	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H7585	BDB8375	-/1/-	1	alvilág, ahová a halottak alászállnak	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	a Jób 17:12 és a Zsolt 88:4 kutatói hozzárendelése ide (DT417)
+BDB	H7585	BDB8375	-/2/-		az igazak és a gonoszok állapota	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
+BDB	H7585	BDB8375	-/2/a	2.a	a gonoszok sorsa; az igaz félelme és szabadulása	scope=manual | forras=F123 ALVIL-001 új cikk (a BDB 2.a teljes szövege: gonoszok; az igazak rettegnek tőle; a megszabadulás belőle áldás; lap-átvilágítás 2026-11-02, A3) | ts=2026-11-02	
+BDB	H7585	BDB8375	-/2/b	2.b	az igaz kiváltása a Seolból	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	a jóváhagyott „az igazat nem hagyják a Seólban” tagadás nélkül (ellenoriz.py 17.: a címkében tagadás nem állhat, DT272 (d)); a BDB „is ransomed from ׳שׁ” fordulata; lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
+BDB	H7585	BDB8375	-/3/-		a helyek megkülönböztetése	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
+BDB	H7585	BDB8375	-/3/a	3.a	a Seol mélységei	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
+BDB	H7585	BDB8375	-/3/b	3.b	Seol és Abaddón; verem	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417; a „Seol” írásmód: DT420, F123.ALVIL.J17) | ts=2026-10-29	lexikon_jelentes_szam: szakasz_cimke_levezet.py (gépi, F148), ts=2026-11-01
+BDB	H7585	BDB8375	-/4/-	4	átvitt értelem: lealacsonyodás, száműzetés	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
+Thayer	G0086		-/1/-		Hádész, az alvilág istene (tulajdonnév)	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
+Thayer	G0086		-/2/-	2	az alvilág, a halottak birodalma	scope=manual | forras=F123 (naplok/F123_cimke_javaslat_ALVIL-001.md, a végrehajtó javaslata; jóváhagyás: DT417) | ts=2026-10-29	
+BDB	H8414	BDB9112	-/1/-	1	formátlanság	scope=BDB H8414 -/1/- | forras=szakasz_cimke_levezet.py (gépi, DT439) | ts=2026-11-02	

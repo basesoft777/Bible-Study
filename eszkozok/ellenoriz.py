@@ -1076,7 +1076,8 @@ def szakasz_cimke_hibak(adat_dir):
     hibak = []
     bdb = {}
     for r in _tsv_ha_van(adat_dir, 'bdb_szakaszok.tsv') or []:
-        bdb.setdefault(r['strong'], set()).add(utvonal_vag(r['utvonal']))
+        # F123.BDBGER: a BDB-szakasz kulcsa szócikk + útvonal (a Strongnak több szócikke lehet)
+        bdb.setdefault(r['strong'], set()).add((r.get('bdb_id', ''), utvonal_vag(r['utvonal'])))
     thayer = {}
     for r in _tsv_ha_van(adat_dir, 'thayer_szakaszok.tsv') or []:
         thayer.setdefault(r['strong'], []).append(r['utvonal'])
@@ -1087,13 +1088,17 @@ def szakasz_cimke_hibak(adat_dir):
     kulcsok = {}
     ljsz = {}
     for r in sorok:
-        k = (r['szotar'], r['strong'], r['szakasz'])
+        k = (r['szotar'], r['strong'], r.get('bdb_id', ''), r['szakasz'])
         kulcsok[k] = kulcsok.get(k, 0) + 1
         if not (r.get('proveniencia') or '').strip():
             hibak.append('%s: üres proveniencia' % (k,))
         if r['szotar'] == 'BDB':
-            if utvonal_vag(r['szakasz']) not in bdb.get(r['strong'], set()):
-                hibak.append('%s: a szakasz nincs a bdb_szakaszok.tsv-ben' % (k,))
+            if not r.get('bdb_id'):
+                hibak.append('%s: üres bdb_id (a BDB-sor kulcsa szócikk + szakasz)' % (k,))
+            elif (r['bdb_id'], utvonal_vag(r['szakasz'])) not in bdb.get(r['strong'], set()):
+                hibak.append('%s: a szakasz nincs a bdb_szakaszok.tsv-ben (ebben a szócikkben)' % (k,))
+        elif r.get('bdb_id'):
+            hibak.append('%s: a bdb_id csak BDB-sorban állhat' % (k,))
         elif r['szotar'] == 'Thayer':
             if r['szakasz'] not in thayer.get(r['strong'], []):
                 hibak.append('%s: a szakasz nincs a thayer_szakaszok.tsv-ben' % (k,))
@@ -1107,7 +1112,7 @@ def szakasz_cimke_hibak(adat_dir):
             if lk not in lexhiv:
                 hibak.append('%s: a lexikon_jelentes_szam (%s) nem lexikon_hivatkozasok.tsv-kulcs'
                              % (k, r['lexikon_jelentes_szam']))
-            ljsz.setdefault(lk, []).append(r['szakasz'])
+            ljsz.setdefault(lk, []).append((r.get('bdb_id', ''), r['szakasz']))
         if r['cimke_hu'] and SZAKASZ_CIMKE_TILTOTT.search(r['cimke_hu']):
             hibak.append('%s: a címke tiltott minősítést tartalmaz: %r' % (k, r['cimke_hu']))
         for t in tiltott:
@@ -1218,7 +1223,7 @@ def szabaly18_gerinc_cimke(adat_dir, elofordulasok, kivetel=None):
     sorok = _tsv_ha_van(adat_dir, 'szotar_szakasz_cimke.tsv')
     if sorok is None:
         return Sor(cim, 'KÉZI', megjegyzes='nincs adat/szotar_szakasz_cimke.tsv')
-    adat = {'cimke': {(r['szotar'], r['strong'], r['szakasz']): r for r in sorok}}
+    adat = {'cimke': {LG.cimke_kulcs(r): r for r in sorok}}
     hibak = []
     for r in elofordulasok:
         if not r.get('id') or r['id'] in kivetel:
@@ -1612,6 +1617,85 @@ def szabaly26_bdb_szakasz_hu(adat_dir):
     return Sor(cim, 'RENDBEN')
 
 
+GERINC_BDB_CIM_RE = re.compile(r'^##### (H\d{4})\b.*· BDB\s*$')
+GERINC_SZOCIKK_FEJ_RE = re.compile(r'^\*\*(BDB\d+)(?: · [^*]*)?\*\*')
+
+
+def bdb_szocikk_sorrend(adat_dir):
+    """{strong: [bdb_id, ...]} a `bdb_szakaszok.tsv` (2.30) sorrendjében, es a sorok {strong: [sor, ...]}."""
+    sorok = {}
+    for r in _tsv_ha_van(adat_dir, 'bdb_szakaszok.tsv') or []:
+        sorok.setdefault(r['strong'], []).append(r)
+    ids = {}
+    for s, rs in sorok.items():
+        rs.sort(key=lambda r: int(r['sorszam']))
+        for r in rs:
+            if r.get('bdb_id', '') not in ids.setdefault(s, []):
+                ids[s].append(r.get('bdb_id', ''))
+    return ids, sorok
+
+
+def gerinc_szocikk_hibak(adat_dir):
+    """A 27. szabaly: (hibak, jelentes). Hiba: a lap BDB-gerince (`##### H… · BDB`) egy tobb szocikku Strongnal nem
+    szocikkenkent all (a szocikkek fejcime — `**BDB<n> · …**` — nem pontosan a 2.30 szocikkei, a BDB sorrendjeben): ilyenkor
+    a regi generator kulonbozo szocikkek azonos utvonalu szakaszait egy szakaszba vonta. Jelentes: a 2.32 jelolo nelkuli,
+    magyar szoveg nelkuli sora, amelynek szovege egy masik szocikk soraban all (a lapon jelolve, a forras a
+    `hu_illeszt.py`)."""
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    lex_dir = os.path.join(gyoker, 'lexikon')
+    ids, szak = bdb_szocikk_sorrend(adat_dir)
+    hu = {(r['strong'], r['sorszam']): r for r in (_tsv_ha_van(adat_dir, 'bdb_szakasz_hu.tsv') or [])}
+    hibak, jelentes = [], []
+    if not os.path.isdir(lex_dir):
+        return None, None
+    for nev in sorted(os.listdir(lex_dir)):
+        if not nev.endswith('_TUDOMANYOS.md'):
+            continue
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            sorok = f.read().split('\n')
+        i = 0
+        while i < len(sorok):
+            m = GERINC_BDB_CIM_RE.match(sorok[i])
+            if not m:
+                i += 1
+                continue
+            strong = m.group(1)
+            j = i + 1
+            while j < len(sorok) and not sorok[j].startswith('#'):
+                j += 1
+            fejek = [f.group(1) for f in (GERINC_SZOCIKK_FEJ_RE.match(x) for x in sorok[i + 1:j]) if f]
+            vart = ids.get(strong, [])
+            if len(vart) > 1 and fejek != vart:
+                hibak.append('%s %s: a BDB-gerinc nem szócikkenként áll (a lapon: %s; a bdb_szakaszok.tsv szócikkei: %s), '
+                             'így különböző szócikkek azonos útvonalú szakaszai egy szakaszba kerülnek'
+                             % (nev, strong, ', '.join(fejek) or 'nincs szócikkfej', ', '.join(vart)))
+            if len(vart) > 1:
+                utolso = None
+                for r in szak.get(strong, []):
+                    h = hu.get((strong, r['sorszam'])) or {}
+                    if h.get('szoveg_hu'):
+                        utolso = r
+                    elif (h.get('kategoria') == 'jelolo_nelkul' and utolso is not None and r['utvonal'] != 'cim'
+                          and utolso.get('bdb_id') != r.get('bdb_id')):
+                        jelentes.append('%s %s: a %s %s sor magyar szövege a %s %s sorában áll (bdb_szakasz_hu.tsv, '
+                                        'jelölő nélküli sor szócikkhatáron át)'
+                                        % (nev, strong, r.get('bdb_id'), r['utvonal'], utolso.get('bdb_id'), utolso['utvonal']))
+            i = j
+    return hibak, jelentes
+
+
+def szabaly27_gerinc_szocikkenkent(adat_dir):
+    """F123.BDBGER (DT-F123ga): a lap BDB-gerince szocikkenkent all — egy szakasz nem vonja ossze tobb BDB-szocikk
+    (`bdb_id`) szoveget (SERTES, gatol). A 2.32 szocikkhataron at elnyelt sora JELENTES (a lapon jelolve; javitasa a
+    `hu_illeszt.py`-e, N-F123ga)."""
+    cim = '27. A BDB-gerinc szócikkenként (F123.BDBGER)'
+    hibak, jelentes = gerinc_szocikk_hibak(adat_dir)
+    if hibak is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    return Sor(cim, _verdikt(hibak, jelentes), (len(hibak) or len(jelentes)) or None, hibak or jelentes,
+               megjegyzes='javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir)' if hibak else None)
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1675,6 +1759,7 @@ def main():
         tabla_sorok.append(szabaly24_labjegyzet_definicio(args.adat))
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
+        tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

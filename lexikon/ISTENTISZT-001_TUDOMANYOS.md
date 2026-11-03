@@ -759,6 +759,8 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
+**BDB8776 · I. שֵׁם** *(a H8034 1. BDB-szócikke a 2-ből)*
+
 **A szócikk feje (nyelvi háttér).** H8034. shem I. שֵׁם‎_864 hímnemű főnév 2Sám 7:9: név (a √ ismeretlen; Thes שׁמה, vö. Ba ZMG xli (1887), 635; Lag BN 160 ושׁם, arab bélyeg, jel, vö. RS K 213, 303 kk. Kö ii. 1. 104; késői héber = bibliai héber (különösen הַשֵּׁם = יהוה); föníciai שם Lzb 377; asszír šumu; szabeus סם Hom Chr 124; etióp arab , , , ; arámi שְׁמָא שֵׁם, továbbá שֻׁם שׁוּם, (Kö ii. 1. 512), , , óarámi, palmürai שם Lzb 377); — status absolutus <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr>‎ 1Móz 6:4 és máshol; status constructus <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr>‎ **12:8** és máshol, ritkán שֶׁם‎ 1Sám 8:2 és máshol; suffixummal שְׁמִי‎ 2Móz 3:15 és máshol, שִׁמְךָ‎ 1Móz 32:9 és máshol, שְׁמֶ֑ךָ‎ 1Kir 18:31 és máshol, stb.; többes szám שֵׁמוֺת (ritkán שֵׁמֹת‎) 1Móz 2:20 és máshol; status constructus שְׁמוֺת‎ 2Móz 6:16 és máshol, suffixummal שְׁמוֺתָם‎ 4Móz 13:4 és máshol, שְׁמוֺתָן Ez 23:4 (a versben kétszer); — név:
 
 <details>
@@ -782,11 +784,15 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>5 (1 szakasz)</summary>
 
-- `5` — = emlékjel, emlékmű Ézs 55:13 (|| אוֺת *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
+- `5` — = emlékjel, emlékmű Ézs 55:13 (|| אוֺת *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)* *(a magyar szöveg a BDB9963 szócikk fejét is tartalmazza)*
 
 </details>
 
-*ⓘ Kutatói megjegyzés: a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”; `adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
+**BDB9963 · שֻׁם (sum) · arámi** *(a H8034 2. BDB-szócikke a 2-ből)*
+
+**A szócikk feje (nyelvi háttér).** *A magyar szöveg a BDB8776 szócikk 5. szakaszának fordításában áll (a fordítás nem választja külön).*
+
+*ⓘ Kutatói megjegyzés: a magyar szöveg szócikkhatáron át az előző sorban áll (`adat/bdb_szakasz_hu.tsv`, jelölő nélküli sor): BDB9963 fej → BDB8776 -/5/- · a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”; `adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
 
 *A teljes szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 

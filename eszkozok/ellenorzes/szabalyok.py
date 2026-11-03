@@ -1046,16 +1046,31 @@ def _e19_lekepezett_szakaszok(szotar, strong, jelentes_szam, cache):
     if 'cimke' not in cache:
         ut = os.path.join(ADAT, 'szotar_szakasz_cimke.tsv')
         cache['cimke'] = dict_sorok(ut) if os.path.exists(ut) else []
-    csucsok = [r.get('szakasz') for r in cache['cimke']
+    csucsok = [(r.get('bdb_id') or '', r.get('szakasz')) for r in cache['cimke']
                if r.get('szotar') == szotar and _e19_strong(r.get('strong')) == strong
                and (r.get('lexikon_jelentes_szam') or '').strip() == (jelentes_szam or '').strip()]
-    if len(csucsok) != 1 or not csucsok[0]:
+    if len(csucsok) != 1 or not csucsok[0][1]:
         return None
     szak = _e19_szakaszlista(szotar, strong, cache)
     if szak is None:
         return None
-    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucsok[0])}
+    # F123.BDBGER: a BDB-szakasz kulcsa szócikk + útvonal; a szócikk sorai a `bdb_szakaszok.tsv` szerint
+    bdb_id, csucs = csucsok[0]
+    sajat = _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache) if szotar == 'BDB' else None
+    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucs)
+               and (sajat is None or x['sorszam'] in sajat)}
     return keszlet or None
+
+
+def _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache):
+    """A Strong `bdb_id` szócikkének sorszámai (int) a `bdb_szakaszok.tsv`-ből (F123.BDBGER)."""
+    if 'bdb_szocikk' not in cache:
+        ut = os.path.join(ADAT, 'bdb_szakaszok.tsv')
+        idx = {}
+        for r in (dict_sorok(ut) if os.path.exists(ut) else []):
+            idx.setdefault((r.get('strong'), r.get('bdb_id')), set()).add(int(r['sorszam']))
+        cache['bdb_szocikk'] = idx
+    return cache['bdb_szocikk'].get((strong, bdb_id), set())
 
 
 def _e19_szakaszlista(szotar, strong, cache):

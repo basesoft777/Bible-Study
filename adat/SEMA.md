@@ -1672,15 +1672,17 @@ Olvasás `split('\t')`.
 |---|---|
 | `szotar` | `BDB` \| `Thayer` \| `TBESG` |
 | `strong` | a Strong-szám a forrástábla alakjában (`H7121`, `G1941`) |
+| `bdb_id` | `BDB`: a szakasz szócikke, a `bdb_szakaszok.tsv` (2.30) `bdb_id`-je (`BDB8375`); egy Strongnak több BDB-szócikke lehet (I., II., arámi), és az útvonal csak a szócikken belül egyedi (F123.BDBGER). `Thayer`, `TBESG`: üres |
 | `szakasz` | `BDB`: a `bdb_szakaszok.tsv` (2.30) `utvonal`-a (`Qal/2/c`, `-/3/-`); `Thayer`: a `thayer_szakaszok.tsv` (2.34) `utvonal`-a (`cim`, `fej`, `-/5/-`); `TBESG`: a `lexikon_hivatkozasok.tsv` `jelentes_szam`-a (`2`) |
 | `lexikon_jelentes_szam` | üres, vagy a kutatói `jelentes_szam` (minősítő nélkül, `2.c`), amely erre a szakaszra képeződik; a `lexikon_hivatkozasok.tsv` (`szotar`, `strong`, `jelentes_szam`) kulcsa. Egy kulcs legfeljebb egy szakaszra |
 | `cimke_hu` | üres, vagy a szakasz rövid magyar címkéje (a magyar szakasz vezérszavaiból, a végrehajtó javaslata; jóváhagyás: DT377; a Thayer G1941 1. rész „elnevezni”: DT379) |
 | `proveniencia` | `scope=… \| forras=… \| ts=…` |
 | `megjegyzes` | szabad szöveg |
 
-Kulcs: `szotar` + `strong` + `szakasz`. **Ellenőrzés** (`ellenoriz.py` 17. szabály, SÉRTÉS): a kulcs egyedi; minden
-`BDB`-szakasz létezik a 2.30-ban (a záró `/-` levágásával összevetve, mert a 2.29 `-/3`, a 2.30 `-/3/-` alakot
-ír), minden `Thayer`-szakasz a 2.34-ben, minden `TBESG`-szakasz a `lexikon_hivatkozasok.tsv`-ben; minden nem üres
+Kulcs: `szotar` + `strong` + `bdb_id` + `szakasz` (F123.BDBGER, 2026-11-03; előtte `szotar` + `strong` + `szakasz`, a
+régi → új kulcs leképezése: `naplok/F123_BDBGER_cimke_lekepezes.tsv`). **Ellenőrzés** (`ellenoriz.py` 17. szabály,
+SÉRTÉS): a kulcs egyedi; minden `BDB`-sor `bdb_id`-je nem üres, és a szakasza ennek a szócikknek a 2.30-beli útvonala (a záró
+`/-` levágásával összevetve, mert a 2.29 `-/3`, a 2.30 `-/3/-` alakot ír); nem `BDB`-sorban a `bdb_id` üres; minden `Thayer`-szakasz a 2.34-ben, minden `TBESG`-szakasz a `lexikon_hivatkozasok.tsv`-ben; minden nem üres
 `lexikon_jelentes_szam` létező `lexikon_hivatkozasok.tsv`-kulcs, és egy kulcs legfeljebb egy szakaszra mutat; a
 `cimke_hu` nem tartalmaz tiltott minősítést (`motívum`, `invokál`, `invokáci`, önálló `nem`) és a
 `tiltott_fordulatok.tsv` (2.36) egyetlen mintáját sem. Állapot (F131.3.6, 2026-10-27): 8 sor (BDB 5, TBESG 1,
