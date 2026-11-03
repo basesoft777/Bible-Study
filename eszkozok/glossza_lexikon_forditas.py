@@ -155,6 +155,24 @@ def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
     return None
 
 
+def forras_szoveg(sor, konkordancia_dir=KONKORDANCIA, cache=None):
+    """F161: egy forditasok.tsv-kulcs forrásszövege, egy feloldóval — UBS_DBH (`dbh_forras_idx`), UBS_DNTG (lexid +
+    L–N kód), minden más a `tovabbi_forras` (a 13. szabály feloldója; így a TBESG rövid jelentés is). None: nem oldható fel."""
+    cache = cache if cache is not None else {}
+    szotar, mezo = sor.get('szotar'), sor.get('mezo')
+    if szotar == 'UBS_DBH':
+        if 'UBS_DBH' not in cache:
+            cache['UBS_DBH'] = dbh_forras_idx(konkordancia_dir)
+        return cache['UBS_DBH'].get((sor['strong'], sor['entry_id'], mezo))
+    if szotar == 'UBS_DNTG':
+        if 'UBS_DNTG' not in cache:
+            cache['UBS_DNTG'] = {(r['strong'], r['lexid'], r['entry_kod']): r
+                                 for r in tsv_sorok(os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv'))}
+        r = cache['UBS_DNTG'].get((sor['strong'], sor['entry_id'], sor['jelentes_szam']))
+        return r.get(DBH_MEZOK.get(mezo, ''), None) if r else None
+    return tovabbi_forras(sor, konkordancia_dir, cache)
+
+
 def _strong_padded(s):
     m = re.match(r'^([GH])0*(\d{1,4})([a-z]?)$', s or '')
     return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else None
@@ -189,21 +207,13 @@ def lista(motivum_id, kimenet=None):
     if os.path.abspath(kimenet).startswith(GYOKER):
         raise SystemExit('a --kimenet a repon kivuli konyvtar legyen')
     hivasok = lista_keszit(motivum_id, kimenet)
-    dbh = dbh_forras_idx()
-    dntg = {(r['strong'], r['lexid'], r['entry_kod']): r for r in tsv_sorok(os.path.join(KONKORDANCIA, 'UBS_DNTG_jelentesek.tsv'))}
+    cache = {}
     kimeneti = []
     for kulcs, van in sorted(hivasok.items()):
-        szotar, strong, entry_id, jsz, mezo = kulcs
         if van:
             continue
-        forras = None
-        if szotar == 'UBS_DBH':
-            forras = dbh.get((strong, entry_id, mezo))
-        elif szotar == 'UBS_DNTG':
-            r = dntg.get((strong, entry_id, jsz))
-            if r:
-                forras = r.get({'definicio_hu': 'definicio_rovid', 'glosszak_hu': 'glosszak'}.get(mezo, ''), None)
-        kimeneti.append((kulcs, forras))
+        kimeneti.append((kulcs, forras_szoveg(dict(zip(('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo'), kulcs)),
+                                              cache=cache)))
     with open(LISTA, 'w', encoding='utf-8', newline='') as f:
         f.write('\t'.join(FEJLEC) + '\n')
         for kulcs, forras in kimeneti:
