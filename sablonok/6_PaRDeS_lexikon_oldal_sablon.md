@@ -502,4 +502,4 @@ lezárt tematikus study, a négyforrásos módszertan lefutott-e minden
 igehelyre (nem csak mintavétellel), és a lexikai/tematikus
 kapcsolatok explicit el vannak-e választva egymástól.*
 
-*Olvasói bevezető (2026-11-03, a felhasználó észrevétele):* a „Mit mutat ez a rész?” címke nem látszik; az összefoglaló bekezdés marad, a generátor láthatatlan jellel (`<!-- olvasói -->`) azonosítja.
+*Olvasói bevezető (2026-11-03, a felhasználó észrevétele):* a „Mit mutat ez a rész?” címke nem látszik; az összefoglaló bekezdés marad, a generátor a bekezdés végén álló láthatatlan jellel (`<!-- olvasói -->`) azonosítja.

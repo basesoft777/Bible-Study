@@ -374,7 +374,8 @@ class DbhOszlop(unittest.TestCase):
         self.assertNotIn('= action by which', c)
         self.assertIn(' · H8034: ', c)
         h7121 = c.split(' · H8034: ')[0]
-        self.assertEqual(h7121.count('`0065620'), 2)
+        self.assertEqual(h7121.count('`0065620'), 0)                       # 2026-11-03: a 15 jegyű kód nem látszik
+        self.assertEqual(h7121.count('[ⓘ](/szo/H7121)'), 2)               # a két DBH-egység külön glosszával
         if 'fordításra vár' not in c:
             self.assertNotIn('= action by which', c)
 

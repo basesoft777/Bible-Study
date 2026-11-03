@@ -37,8 +37,8 @@ class Egyseg(unittest.TestCase):
     def test_olvasoi_bekezdes_cimke_nelkul(self):
         b = LG.olvasoi_bekezdes('Összefoglaló.')
         self.assertNotIn('Mit mutat', b)
-        self.assertTrue(b.startswith(LG.OLVASOI_CIMKE))
-        self.assertTrue(b.endswith('Összefoglaló.'))
+        self.assertTrue(b.endswith(LG.OLVASOI_CIMKE))
+        self.assertTrue(b.startswith('Összefoglaló.'))
 
 
 class GeneraltLapok(unittest.TestCase):

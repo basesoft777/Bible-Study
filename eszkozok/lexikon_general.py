@@ -421,7 +421,7 @@ def _lexikon_blokk(motivum_id, blokk_nev, forras_lista, licenc_lista, hatokor_so
 # Minden generált szakasz és minden szerep-blokk a cím alatt 1–3 mondatos olvasói bevezetőt kap. A mondatok sablonok,
 # az adatból töltve (szám, szó, kiejtés); motívumra szabott kézi értelmezés nincs bennük, fájlnév és szerepkód sem.
 
-# a címke 2026-11-03-tól nem látszik (a felhasználó észrevétele); a bekezdést láthatatlan jel azonosítja
+# a címke 2026-11-03-tól nem látszik (a felhasználó észrevétele); a bekezdést a végén álló láthatatlan jel azonosítja
 OLVASOI_CIMKE = '<!-- olvasói -->'
 OLVASOI_SABLON = {
     'tartalom': 'A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő '
@@ -529,7 +529,7 @@ def ikon_nelkul(szoveg):
 
 
 def olvasoi_bekezdes(szoveg):
-    return '%s%s' % (OLVASOI_CIMKE, szoveg)
+    return '%s%s' % (szoveg, OLVASOI_CIMKE)   # a jel a sor végén áll: a sor elején álló <!-- … --> HTML-blokk lenne, és a szöveg nyersen jelenne meg
 
 
 def olvasoi(kulcs, **adat):
@@ -4814,7 +4814,7 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     body_start = offsets[slot_idx] + len(fejlec)
     body_end = offsets[slot_idx + 1]
     torzs = fajl_szoveg[body_start:body_end].strip('\r\n')
-    if torzs.startswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
+    if torzs.split('\n', 1)[0].endswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
         torzs = torzs.split('\n', 1)[1].strip('\r\n') if '\n' in torzs else ''
     return torzs
 
