@@ -540,7 +540,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             f.write(torzscikk_tartalom)
         print('  %s: %s (%d bájt) -- igehely=%d (%d ÓSZ), kapcsolat=%d, lxx_sor=%d, kereszthivatkozas=%d '
               '-- lexikonoldal: %s'
-              % (m['id'], os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut),
+              % (m['id'], G.kiirt_ut(cel_ut), os.path.getsize(cel_ut),
                  stat['igehely'], stat['igehely_osz'], stat['kapcsolat'], stat['lxx_sor'],
-                 stat['kereszthivatkozas_talalat'], os.path.relpath(lex_path, ROOT)))
+                 stat['kereszthivatkozas_talalat'], G.kiirt_ut(lex_path)))
     return 0

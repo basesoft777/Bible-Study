@@ -20,7 +20,7 @@ adat/forditasok.tsv | ts=2026-11-03*
 | BDB | 1 nincs_forras | 1 nincs_forras (szakaszsor; a BDB-lánc dolga) |
 
 A main-en (az ANTROP-001 régi lapja) ugyanígy feloldódik a TBESH 6, a tW 11, az MCGED 2 és a BDB nyelvi háttér 2
-egysége is (N-F161b); ezeket a lánc nem veszi fel.
+egysége is (N86); ezeket a lánc nem veszi fel.
 
 ## 2. `szaraz` az ANTROP-001 54 egységén
 
@@ -105,7 +105,7 @@ HODIT-001 és TEREMT-001 lapja. Az új formátumú lap (ALVIL-001, ISTENTISZT-00
 hivatkozása mutat (pl. ALVIL-001: „**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk:
 [szónézet: /szo/H7585]”); az ISTENTISZT-001 H8034 kulcsát a lista hívásként mutatja, a lap nem kéri. A teljes szócikk
 fordítása mind a 22-nél hiányzik (más kulcson sincs; a `forditasok.tsv`-ben 1 TBESH-sor van, más Strongra), de ez a
-szónézetet érinti, a lapot nem (N-F161c).
+szónézetet érinti, a lapot nem (N87).
 
 *Gépi ellenőrzés (F161.13; proveniencia: scope=a 22 kulcs Strongja, `adat/glosszak_heber_hu.tsv`, `fo=igen` és nem üres
 `glossza_hu` | forras=adat/glosszak_heber_hu.tsv | ts=2026-11-03):* mind a 22-höz van ilyen sor; hiányzó egy sincs. A betűs
@@ -145,4 +145,4 @@ ezt a sort mutatja.
 
 Az F161.0–F161.4 tartományon (`fuggetlen-ellenor`): ELTÉRÉS 6 — mind javítva az F161.7-ben (tulajdonnév és „gerinc” hamis
 pozitív, TBESG `rovid`-szűrés, a 2. kör bájtra azonossága, a „jóváhagyott” címke, üres korábbi válasz). Az F161.5–F161.9
-második ellenőrzése: ELTÉRÉS 6; javítva az F161.11-ben (4 kisbetűs tulajdonnév, a G1944 001900 definíciója a kezi sor szavával, egy helyesírási hiba — 6 sor kézzel, a megjegyzésben jelölve; a v2 verziónapló-bejegyzése), nyitott: N-F161d. Mindkét kör: `naplok/ELLENOR_F161.md`.
+második ellenőrzése: ELTÉRÉS 6; javítva az F161.11-ben (4 kisbetűs tulajdonnév, a G1944 001900 definíciója a kezi sor szavával, egy helyesírási hiba — 6 sor kézzel, a megjegyzésben jelölve; a v2 verziónapló-bejegyzése), nyitott: N88. Mindkét kör: `naplok/ELLENOR_F161.md`.

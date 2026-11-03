@@ -65,7 +65,7 @@ KONYV-tétel döntő része (HAMART 29 előfordulás-tétel) a hat régi lapon �
 
 ## 4. Az ISTENTISZT-001 (1. kiadás) változása
 
-A lap a 2. kiadás függő változása (N-F161a): `naplok/OLVJ_ISTENTISZT_lapdiff.md` (szó szerinti diff, 196 cserélt sor:
+A lap a 2. kiadás függő változása (N85): `naplok/OLVJ_ISTENTISZT_lapdiff.md` (szó szerinti diff, 196 cserélt sor:
 73 idézőjel, 31 könyvrövidítés, 26 belső jelölés az 1/b.-ben, 66 egyéb forma). Tartalmi állítás nem változott.
 
 ## 5. Ellenőrzés

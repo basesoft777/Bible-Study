@@ -3866,7 +3866,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                % (m['id'], len(sorai_rendezve), len(bekezdesek), talalat_szam, len(nem_vizsgalhato)))
     if kh_kihagyva:
         hatokor += (' %d igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata '
-                    '(`eszkozok/karoli_kh_epseg.py`, N-F156a): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
+                    '(`eszkozok/karoli_kh_epseg.py`, DT557): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],
@@ -5119,8 +5119,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         cel_ut = os.path.join(kimenet_gyoker, '%s_TUDOMANYOS.md' % m['id'])
 
         if os.path.exists(cel_ut):
-            with io.open(cel_ut, encoding='utf-8', newline='') as f:
-                meglevo = f.read()
+            # B4: LF-re normalizálva (mint a general.eles_fajl_beolvas). A
+            # core.autocrlf=true munkapéldánya CRLF-es; nyersen a '\n\n'-re
+            # illesztő lépések (pl. res_labjegyzetek_alkalmaz) nem találtak,
+            # és a helyben frissített lap két üres sorral tért el az új
+            # fájlként generálttól (TEREMT-002, 1A.11, SABLON.6).
+            meglevo, _sorveg, _crlf, _lf = G.eles_fajl_beolvas(cel_ut)
             uj_szoveg = frissit_meglevo_fajlt(meglevo, m, blokkok)
             uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
@@ -5145,13 +5149,13 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(uj_szoveg)
         print('  %s: %s (%s, %d bájt)'
-              % (m['id'], os.path.relpath(cel_ut, ROOT), allapot, os.path.getsize(cel_ut)))
+              % (m['id'], G.kiirt_ut(cel_ut), allapot, os.path.getsize(cel_ut)))
         h = KIEJTES_JELOLT_HIANY.get(m['id']) or []
         if h:
             print('    kiejtés-szabály: %d hiány maradt — generált %d (jóváhagyott héber alak nélkül), kézi %d '
                   '(a forrásban javítandó); részletek: python naplok/KIEJTES_elso_elofordulas_meres.py %s'
                   % (len(h), sum(1 for x in h if x[2] == 'generált'), sum(1 for x in h if x[2] == 'kézi'),
-                     os.path.relpath(cel_ut, ROOT)))
+                     G.kiirt_ut(cel_ut)))
 
     print('  tisztázatlan licencű forrás érintett-e (motívumonként): %s'
           % ', '.join('%s=%s' % (k, 'igen' if v else 'nem') for k, v in osszesitett_tisztazatlan.items()))
