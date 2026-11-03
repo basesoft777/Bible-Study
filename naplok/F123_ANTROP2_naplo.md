@@ -42,7 +42,7 @@ Az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrát
 - A Luk 9:55–56 elutasításának oka: nem egy mondat; a csak-TR állás külön megjegyzés (a TR-mérce szerint nem kizáró ok) — F123.ANTROP2.7.
 - A rúah+nefes blokk (5 vers) a P2 bővítés jelöltje, a felhasználóé: N-F123i.
 - **(B) a szótári gerinc** jóváhagyva (a hét szakasz, a címkék, a soronkénti entry, a `strong` a DT502 szerint): a D50 jelentéstartomány-választás, az ALVIL-001 DT417/DT418 mintájára.
-- **E19:** a G4152/1, G4152/3.b, G5591/b fordításáig a lapon az angol Thayer-szöveg áll „(fordításra vár)” jelöléssel; az E19-ben szűk, adatvezérelt kivétel (`eszkozok/ellenorzes/e19_forditasra_var.tsv`; a felhasználó javaslata: „forditásig lehet angol is szerintem”). Ez váltja az előző (a) döntést (külön fordítási feladat, piros CI). A fordítás: N-F123g, a #7 következő adagjának elején.
+- **E19 / fordítás (DT-F123l):** a felhasználó döntése (2026-11-03): „ezeket a szócikkaket atljeséghez forditsuk most előfizetői keretből”; „de ugyanazzal a promptal és szabályokkal mint a batch api-t”; „csak azokat vinném most amit most a lexikon cikkek legenerálása érint. csak azik a szócikkek menjenek most / mérni nem kell”. Ez váltja az orkesztrátor két korábbi döntését (külön feladat, majd angol szöveg + szűk E19-kivétel); a kivétel kikerült (F123.ANTROP2.10). A fordítás: `naplok/F123_ANTROP2_forditas.md`.
 
 ## U3. A próza (F123.ANTROP2.3)
 

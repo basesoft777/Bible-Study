@@ -1003,24 +1003,7 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
 
 E19_SZOTARAK = ('Thayer', 'BDB')
 E19_ALLAPOTOK = ('opus', 'sonnet', 'kezi')
-E19_FAJLOK = ('adat/lexikon_hivatkozasok.tsv', 'adat/forditasok.tsv', 'eszkozok/ellenorzes/e19_forditasra_var.tsv')
-# F123.ANTROP2 (DT-F123l): szuk, adatvezerelt kivetel. Az `e19_forditasra_var.tsv` soraiban felsorolt kulcsok
-# (szotar + strong + entry_id + jelentes_szam) hianyzo forditasa FIGYELMEZTETES, nem HIBA (a lapon az angol eredeti
-# all `(fordításra vár)` jelolessel); ha a kulcs idokozben fedett, a kivetel-sor elavult: FIGYELMEZTETES, torlendo.
-E19_KIVETEL = ('eszkozok', 'ellenorzes', 'e19_forditasra_var.tsv')
-
-
-def _e19_kivetelek():
-    """{(szotar, strong_padded, entry_id, jelentes_szam): (sorszam, nf)} a kivetel-tablabol; ures, ha nincs."""
-    ut = os.path.join(ROOT, *E19_KIVETEL)
-    if not os.path.exists(ut):
-        return {}
-    ki = {}
-    for sorszam, d in dict_sorok_sorszammal(ut):
-        k = (d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip(),
-             (d.get('jelentes_szam') or '').strip())
-        ki[k] = (sorszam, d.get('nf') or '')
-    return ki
+E19_FAJLOK = ('adat/lexikon_hivatkozasok.tsv', 'adat/forditasok.tsv')
 
 
 def _e19_strong(s):
@@ -1120,8 +1103,6 @@ def e19_szotari_forditas_hiany(fajlok):
                 if m:
                     szakaszsorok.setdefault(alap, set()).add(int(m.group(1)))
     cache = {}
-    kivetel = _e19_kivetelek()
-    hasznalt = set()
     for sorszam, d in dict_sorok_sorszammal(lex_ut):
         szotar = d.get('szotar')
         if szotar not in E19_SZOTARAK:
@@ -1141,28 +1122,11 @@ def e19_szotari_forditas_hiany(fajlok):
             kell = _e19_lekepezett_szakaszok(szotar, alap[1], d.get('jelentes_szam'), cache)
             if kell and kell <= szakaszsorok[alap]:
                 continue
-        kk = alap + ((d.get('jelentes_szam') or '').strip(),)
-        if kk in kivetel:
-            hasznalt.add(kk)
-            talalatok.append(Talalat(
-                'E19', 'FIGYELMEZTETES', 'adat/lexikon_hivatkozasok.tsv', sorszam,
-                '%s %s %s/%s -- forditasra var (kivetel: %s, %s)'
-                % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'), '/'.join(E19_KIVETEL),
-                   kivetel[kk][1])
-            ))
-            continue
         talalatok.append(Talalat(
             'E19', SZINT['E19'], 'adat/lexikon_hivatkozasok.tsv', sorszam,
             '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre, sem a szakaszok teljes lefedettsege)'
             % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'))
         ))
-    for kk, (sorszam, nf) in sorted(kivetel.items(), key=lambda x: x[1][0]):
-        if kk not in hasznalt:
-            talalatok.append(Talalat(
-                'E19', 'FIGYELMEZTETES', '/'.join(E19_KIVETEL), sorszam,
-                '%s %s %s/%s -- elavult kivetel-sor (a kulcs mar fedett vagy nincs ilyen hivatkozas): torlendo (%s)'
-                % (kk[0], kk[1], kk[2], kk[3], nf)
-            ))
     return talalatok
 
 # --------------------------------------------------------------------------
