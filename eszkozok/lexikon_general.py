@@ -5117,8 +5117,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         cel_ut = os.path.join(kimenet_gyoker, '%s_TUDOMANYOS.md' % m['id'])
 
         if os.path.exists(cel_ut):
-            with io.open(cel_ut, encoding='utf-8', newline='') as f:
-                meglevo = f.read()
+            # B4: LF-re normalizálva (mint a general.eles_fajl_beolvas). A
+            # core.autocrlf=true munkapéldánya CRLF-es; nyersen a '\n\n'-re
+            # illesztő lépések (pl. res_labjegyzetek_alkalmaz) nem találtak,
+            # és a helyben frissített lap két üres sorral tért el az új
+            # fájlként generálttól (TEREMT-002, 1A.11, SABLON.6).
+            meglevo, _sorveg, _crlf, _lf = G.eles_fajl_beolvas(cel_ut)
             uj_szoveg = frissit_meglevo_fajlt(meglevo, m, blokkok)
             uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
