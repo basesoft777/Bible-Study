@@ -18,7 +18,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v4, 2026.09.10)
 
 **Antropológia**
-- Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 5 fő előfordulás / 8 igehely-sor — publikálható (v3, 2026.08.22)
+- Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 7 fő előfordulás / 11 igehely-sor — publikálható (v4, 2026.11.03)
 
 **Eszkatológia**
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
@@ -152,7 +152,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Hádész (Seol) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v3, 2026.11.03), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
 
-**Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v3, 2026.08.22), 5 fő előfordulás.
+**Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v4, 2026.11.03), 7 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ANTROP-001.md`-ből fűződik ide)*
 
 **A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v1, 2026.09.11), 4 fő előfordulás.
@@ -247,7 +247,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Kulcsszó | Téma | ÓSZ/ÚSZ | Fő előfordulás | Igehelyek |
 |---|---|---|---|---|
 | Hádész/Seol `[ID: ALVIL-001]` | Eszkatológia | ÓSZ+ÚSZ | 6 | Zsolt 16:10 ⇒ ApCsel 2:27,31, Luk 10:15/Mát 11:23, Luk 16:23, Jel 1:18, Jel 6:8, Jel 20:13-14 |
-| Pneuma/pszükhé `[ID: ANTROP-001]` | Antropológia | ÓSZ+ÚSZ | 5 | 1Móz 2:7 ⇒ 1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15, 1Thessz 5:23, Zsid 4:12 |
+| Pneuma/pszükhé `[ID: ANTROP-001]` | Antropológia | ÓSZ+ÚSZ | 7 | 1Móz 2:7 ⇒ 1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15, 1Kor 15:44-46, 1Thessz 5:23, Zsid 4:12, Júd 1:19 |
 | Bűn gyűrűzése `[ID: HAMART-001]` | Hamartológia | ÓSZ+ÚSZ | 4 | 1Móz 3:7-19, 1Móz 4:1-24, 1Móz 6:1-8, 1Móz 6:9-22 |
 | Refáim/óriás-népek `[ID: HODIT-001]` | Teremtéstan | ÓSZ | 1 | 1Móz 14:5 |
 | Névbe vetett segítségülhívás `[ID: ISTENTISZT-001]` | Pneumatológia/istentisztelet | ÓSZ+ÚSZ | 5 | 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25 |
@@ -491,7 +491,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 252 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 255 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -526,12 +526,12 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
 | ApCsel | 6 | ApCsel 2:21 [ISTENTISZT-001], ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
 | Róm | 3 | Róm 8:20-22 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:13 [ISTENTISZT-001] |
-| 1Kor | 5 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001], 1Kor 15:55 [ALVIL-001] |
+| 1Kor | 7 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:44 [ANTROP-001], 1Kor 15:45 [ANTROP-001], 1Kor 15:46 [ANTROP-001], 1Kor 15:55 [ALVIL-001] |
 | Gal | 2 | Gal 3:10 [HAMART-001], Gal 3:13 [HAMART-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
 | Zsid | 6 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:7-8 [HAMART-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
 | 2Pét | 2 | 2Pét 2:4-5 [MENNY-001], 2Pét 3:6-7 [HAMART-001] |
-| Júd | 2 | Júd 1:6 [MENNY-001], Júd 1:14-15 [MENNY-001] |
+| Júd | 3 | Júd 1:6 [MENNY-001], Júd 1:14-15 [MENNY-001], Júd 1:19 [ANTROP-001] |
 | Jel | 10 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 11:18 [HAMART-001], Jel 17:8 [TEREMT-001], Jel 19:2 [HAMART-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001] |
 
 <!-- GENERÁLT-VÉGE: naplo#konyv_index -->

@@ -1,4 +1,4 @@
-# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@6c22749631,adat/elofordulasok.tsv@7c45d6f5ca,adat/jeloltek.tsv@bfc1e90bbe,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@e818d2872d,eszkozok/lekerdez.py@dfee2e6852,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-03T17:11Z
+# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@7064343b19,adat/elofordulasok.tsv@8e9d535fb0,adat/jeloltek.tsv@03786a636b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@e818d2872d,eszkozok/lekerdez.py@dfee2e6852,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-03T19:27Z
 
 # Prioritási térkép — hol sűrűsödnek a feldolgozatlan gerinc-találatok
 
@@ -27,9 +27,9 @@ Gépi, determinisztikus összesítő (`eszkozok/gerinc_terkep.py`, F124); a köv
 | 15 | Ézs 45 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 9 |
 | 16 | Jer 13 | 1 | KIRALY-001 | 1 | 1 | 0 | 10 |
 | 17 | Róm 8 | 1 | ANTROP-001 | 0 | 14 | 0 | 0 |
-| 18 | 1Kir 1 | 1 | KIRALY-001 | 0 | 11 | 0 | 37 |
+| 18 | 1Kir 1 | 1 | KIRALY-001 | 0 | 11 | 0 | 35 |
 | 19 | ApCsel 2 | 1 | ANTROP-001 | 0 | 9 | 0 | 0 |
-| 20 | 1Kor 12 | 1 | ANTROP-001 | 0 | 8 | 0 | 0 |
+| 20 | 1Kor 12 | 1 | ANTROP-001 | 0 | 9 | 0 | 0 |
 
 ## Motívumonként
 
@@ -37,7 +37,7 @@ A `szuretlen_tag` arány azt mutatja, a motívum új találatainak mekkora hány
 
 | Motívum | Szűrt találat | Szűretlen tag | `szuretlen_tag` arány | Nyitva |
 |---|---|---|---|---|
-| ANTROP-001 | 419 | 1033 | 71% | 15 |
+| ANTROP-001 | 432 | 1027 | 70% | 0 |
 | HAMART-001 | 7 | 1211 | 99% | 27 |
 | ISTENTISZT-001 | 11 | 0 | 0% | 0 |
 | KIRALY-001 | 225 | 643 | 74% | 0 |
