@@ -17,6 +17,13 @@ Definicios hely:
 Olyan helyorzo, amelynek nincs definicios sora (csak hivatkozas), NEM kap
 szamot, es a jelentesben "arva"-kent szerepel.
 
+PR-onkenti fajlok (dontes_nezet.py): a `dontesek/uj/*.md` es a `nyitott/uj/*.md`
+tartalmat a kiosztas ELOTT beolvasztja a `DONTESEK.md` / `NYITOTT_FELADATOK.md`
+megfelelo helyere (fajlnev szerinti sorrendben), es torli a kis fajlokat; igy
+az agon a PR sajat fajlba ir, a main-en pedig minden a megszokott helyre kerul.
+Idempotens: kis fajl nelkul nem valtoztat. `--proba` a beolvasztast is csak
+szimulalja.
+
 Kovetkezo szabad szam: a DONTESEK.md-ben elofordulo legnagyobb DT<n> + 1;
 a NYITOTT_FELADATOK.md-ben elofordulo legnagyobb N<n> (1-3 jegyu) + 1; a
 FELADATOK.md tablazatsorainak legnagyobb D<n> + 1. Kimaradt szamot nem
@@ -46,7 +53,13 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import dontes_nezet as DN  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# --proba: a beolvasztott fajlok szovege a lemez helyett ({normalizalt ut: szoveg})
+_FELULIR = {}
 
 FAJL = {'DT': 'DONTESEK.md', 'N': 'NYITOTT_FELADATOK.md', 'D': 'FELADATOK.md'}
 
@@ -88,10 +101,15 @@ KIZART = {
     'eszkozok/ellenorzes/tesztek/test_szabalyok.py',
     'eszkozok/ellenorzes/tesztek/test_szamkiosztas.py',
 }
-KIZART_MAPPA = ('konkordancia/', 'generalt_proba/', '.git/')
+KIZART_MAPPA = ('konkordancia/', 'generalt_proba/', '.git/',
+                DN.DONTES_MAPPA + '/', DN.NYITOTT_MAPPA + '/')
 
 
 def _olvas(ut):
+    if _FELULIR:
+        felul = _FELULIR.get(os.path.normcase(os.path.abspath(ut)))
+        if felul is not None:
+            return felul
     with open(ut, 'rb') as f:
         return f.read().decode('utf-8')
 
@@ -120,8 +138,35 @@ def _fajlok(gyoker):
             for nev in fajlok:
                 if nev.endswith(('.md', '.tsv')):
                     talalat.append(os.path.relpath(os.path.join(mappa, nev), gyoker).replace(os.sep, '/'))
+    if _FELULIR:
+        talalat = list(talalat) + [f for f in FAJL.values() if f not in talalat
+                                   and os.path.normcase(os.path.abspath(os.path.join(gyoker, f))) in _FELULIR]
     return sorted(f for f in talalat
                   if f not in KIZART and not f.startswith(KIZART_MAPPA))
+
+
+def beolvaszt(gyoker, ir):
+    """A dontesek/uj/ es nyitott/uj/ fajljait a fo fajlokba olvasztja (ir: lemezre, es a kis fajlokat torli;
+    egyebkent csak a _FELULIR-be). Visszaad: a felhasznalt kis fajlok listaja."""
+    fo = (('DONTESEK.md', DN.DONTES_MAPPA, DN.beolvaszt_dontesek),
+          ('NYITOTT_FELADATOK.md', DN.NYITOTT_MAPPA, DN.beolvaszt_nyitott))
+    felhasznalt = []
+    for fonev, mappa, fv in fo:
+        kicsik = DN.uj_fajlok(gyoker, mappa)
+        if not kicsik:
+            continue
+        ut = os.path.join(gyoker, fonev)
+        regi = _olvas(ut) if os.path.exists(ut) else ''
+        uj = fv(regi, [_olvas(os.path.join(gyoker, k)) for k in kicsik])
+        if ir:
+            with open(ut, 'wb') as fh:
+                fh.write(uj.encode('utf-8'))
+            for k in kicsik:
+                os.remove(os.path.join(gyoker, *k.split('/')))
+        else:
+            _FELULIR[os.path.normcase(os.path.abspath(ut))] = uj
+        felhasznalt.extend(kicsik)
+    return felhasznalt
 
 
 def _definiciok(gyoker, fajl_kulcs):
@@ -237,13 +282,19 @@ def main():
                     help='--ir modban ide irja a commit-uzenetet (UTF-8), ha tortent csere')
     a = ap.parse_args()
 
+    felhasznalt = beolvaszt(a.gyoker, ir=a.ir)
+    if felhasznalt:
+        print('%s: %s' % ('Beolvasztana' if a.proba else 'Beolvasztva', ', '.join(felhasznalt)))
     hozzarendeles, figy, arvak = terv(a.gyoker)
     for s in figy:
         print('FIGYELMEZTETES: ' + s)
     if arvak:
         print('Arva helyorzo (nincs definicios sor, nem kap szamot): ' + ', '.join(arvak))
     if not hozzarendeles:
-        print('Nincs kiosztando helyorzo, nincs valtoztatas.')
+        print('Nincs kiosztando helyorzo.')
+        if a.ir and a.uzenet_fajl and felhasznalt:
+            with open(a.uzenet_fajl, 'wb') as fh:
+                fh.write(('szamkiosztas: beolvasztas (%s)\n' % ', '.join(felhasznalt)).encode('utf-8'))
         return 0
     print('%s kiosztas (%d helyorzo):' % ('Proba:' if a.proba else 'Kiosztas', len(hozzarendeles)))
     for h, v in hozzarendeles.items():
@@ -253,7 +304,7 @@ def main():
           ('Erintene' if a.proba else 'Erintett', len(eredmeny), sum(eredmeny.values())))
     for f, db in sorted(eredmeny.items()):
         print('  %s (%d)' % (f, db))
-    if a.ir and a.uzenet_fajl and eredmeny:
+    if a.ir and a.uzenet_fajl and (eredmeny or felhasznalt):
         with open(a.uzenet_fajl, 'wb') as fh:
             fh.write((uzenet(hozzarendeles) + '\n').encode('utf-8'))
     return 0

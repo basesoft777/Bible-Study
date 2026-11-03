@@ -254,12 +254,19 @@ DONTES_SOR = re.compile(r'^\|\s*(D[A-Za-z0-9-]*)\s*\|')
 def _dontes_azonositok(gyoker):
     """A DONTESEK.md es a FELADATOK.md tablasoraibol a D-/DT-azonositok."""
     ids = set()
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import dontes_nezet as DN   # a dontesek/uj/*.md sorai is szamitanak (egyesitett nezet)
     for nev in ('DONTESEK.md', 'FELADATOK.md'):
         ut = os.path.join(gyoker, nev)
         if not os.path.exists(ut):
             continue
-        with open(ut, encoding='utf-8', newline='') as f:
-            for sor in f.read().replace('\r\n', '\n').split('\n'):
+        if nev == 'DONTESEK.md':
+            szoveg = DN.dontesek_szoveg(gyoker)
+        else:
+            with open(ut, encoding='utf-8', newline='') as f:
+                szoveg = f.read()
+        if True:
+            for sor in szoveg.replace('\r\n', '\n').split('\n'):
                 m = DONTES_SOR.match(sor)
                 if m:
                     ids.add(m.group(1))
@@ -608,7 +615,7 @@ def _kod_elotag(b):
 def _kozos(b, ut):
     """4.4: kozos koordinacios fajl vagy a feladat sajat fajlja."""
     ut = _norm(ut)
-    if ut in KOZOS_FAJLOK or ut == b.fajl:
+    if ut in KOZOS_FAJLOK or ut == b.fajl or fnmatch.fnmatch(ut, 'dontesek/uj/*') or fnmatch.fnmatch(ut, 'nyitott/uj/*'):
         return True
     if ut.startswith('naplok/'):
         nev = os.path.basename(ut).upper()

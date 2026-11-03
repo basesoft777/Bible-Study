@@ -4,6 +4,8 @@
 
 *Számozás (F30): az ágon új döntés csak helyőrzővel kerül be (`DT-F<nn>`, több esetén `a`, `b` betűvel); a végleges `DT<n>` számot a main-en a `szamkiosztas` Action adja merge után (`CLAUDE.md`, `eszkozok/szamkiosztas.py`, CI E26).*
 
+*PR-onkénti fájl (ütközésmentesség): az ágon az új döntés sora nem ide, hanem a `dontesek/uj/<ágnév>.md` fájlba kerül (ugyanez a sorformátum); a `szamkiosztas` Action a main-en ide olvasztja be a sort és számot ad (`CLAUDE.md`, `eszkozok/dontes_nezet.py`). Meglévő sor módosítása közvetlenül itt történik.*
+
 Állapot: 🟡 nyitott · 🟢 eldöntve, alkalmazásra vár · ✅ alkalmazva
 
 | # | Feladat | Kérdés | Opciók | Javaslat | Állapot | Döntés | Napló |

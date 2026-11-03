@@ -487,8 +487,14 @@ def kapu_felulir(args, eredm, dontesek_ut=None):
     if not dontes:
         raise SystemExit('--kapu-felulir csak --dontes <DT-azonosito>-val hasznalhato')
     ut = dontesek_ut or DONTESEK_UT
-    with open(ut, encoding='utf-8') as fh:
-        van = any(re.match(r'\|\s*' + re.escape(dontes) + r'\s*\|', sor) for sor in fh)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import dontes_nezet as DN   # egyesitett nezet: a dontesek/uj/*.md sorai is
+    if dontesek_ut:
+        with open(ut, encoding='utf-8') as fh:
+            szoveg = fh.read()
+    else:
+        szoveg = DN.dontesek_szoveg(os.path.dirname(ut))
+    van = any(re.match(r'\|\s*' + re.escape(dontes) + r'\s*\|', sor) for sor in szoveg.splitlines())
     if not van:
         raise SystemExit('a %s azonositoju sor nincs a DONTESEK.md-ben' % dontes)
     bukott = [n for n, e, _ in eredm if e == 'SERTES' and n in K.GATOLO + K.SZAKASZ_GATOLO]
