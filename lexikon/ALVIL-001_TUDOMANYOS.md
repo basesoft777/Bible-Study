@@ -1318,7 +1318,7 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 127. **Következtetés:** a helyek 61%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: ALVIL-001]` motívum 74 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 45 igehely ad legalább egy találatot (127 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható. 14 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Jób 14:13, Zsolt 6:6, Zsolt 49:15, Péld 15:24, Ézs 7:11, Ézs 14:15, Ézs 28:18, Ez 31:15, Ez 32:27, Jón 2:3, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31.*
+*Ez a blokk a `[ID: ALVIL-001]` motívum 74 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 45 igehely ad legalább egy találatot (127 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható. 14 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Jób 14:13, Zsolt 6:6, Zsolt 49:15, Péld 15:24, Ézs 7:11, Ézs 14:15, Ézs 28:18, Ez 31:15, Ez 32:27, Jón 2:3, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31.*
 
 #### 1Móz 37:35
 - Károli-KH: 1Móz 42:38

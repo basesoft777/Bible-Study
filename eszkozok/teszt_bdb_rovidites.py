@@ -63,6 +63,23 @@ class Jelol(unittest.TestCase):
         self.assertEqual(BR.jelol('לְשׁ׳ x', CIMSZO, 'ק'), 'לְשׁ׳ x')     # többbetűs: nem egybetűs rövidítés
 
 
+class Atiras(unittest.TestCase):
+    JAV = {'H0011': [('Sh®°ôl', 'Sheʾôl')]}
+
+    def test_csere_toldalekkal(self):
+        # DT-F164a: részszöveg szerint, a magyar toldalékkal is
+        self.assertEqual(BR.atiras_javit('in Sh®°ôl (Sh®°ôl).', 'H11', self.JAV), 'in Sheʾôl (Sheʾôl).')
+        # DT-F164a (felhasználó, 2026-11-03): a magyar szövegben „Seól”
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl-ról).', 'H11', self.JAV, magyar=True), 'a Seólban (Seól-ról).')
+        self.assertEqual(BR.atiras_javit('a sh®°ôlba', 'H1004', {'H1004': [('sh®°ôl', 'sheʾôl')]}, magyar=True), 'a seólba')
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban', 'H0001', self.JAV), 'a Sh®°ôlban')
+
+    def test_tabla(self):
+        t = BR.atiras_javitasok()
+        self.assertIn(('She®°ôl', 'Sheʾôl'), t.get('H7585', []))
+        self.assertNotIn('H7848', t)          # jelolt_marad: nincs csere
+
+
 class HeberSorrend(unittest.TestCase):
     JAV = {'H7121': [('׳ק י ׳בְּשֵׁם', 'ק׳ בְּשֵׁם י׳'), ('גְּדוֺל בְּקוֺל', 'בְּקוֺל גְּדוֺל')]}
 

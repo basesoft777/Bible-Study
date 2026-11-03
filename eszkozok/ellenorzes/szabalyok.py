@@ -2199,7 +2199,41 @@ def e28_generalt_nezet_egyezes(fajlok):
                  'a commitolt nézet eltér az újragenerálttól (PARDES_DATUM=%s). '
                  'commitolt: %s | generált: %s. Javítás: %s'
                  % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
+        _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba)
     return talalatok
+
+
+def _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba):
+    """B4: a helyben frissítő út (`--ir`: a meglévő lapot olvassa be és frissíti)
+    bájtra ugyanazt adja, mint a nulláról generálás. A bemenet a commitolt lap
+    CRLF-es példánya -- a core.autocrlf=true munkapéldánya ilyen --, a generátor
+    ugyanazzal a PARDES_DATUM-mal fut, a kimenet a repón kívül marad. Az eltérés
+    generátorhiba: a lapot kézzel igazítani tilos (TEREMT-002, 1A.11, SABLON.6)."""
+    import shutil
+    import tempfile
+    tmp = tempfile.mkdtemp(prefix='e28h_')
+    try:
+        ut = os.path.join(tmp, *relut.split('/'))
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'wb') as f:
+            f.write(_lf(commitolt).replace('\n', '\r\n').encode('utf-8'))
+        kod, hibakimenet = _e28_general_futtat(cel, azonosito, datum, tmp)
+        if kod != 0:
+            hiba(relut, 0, 'a helyben frissítő út nem futott le (kilépési kód %s): %s'
+                 % (kod, hibakimenet.strip()[-200:]))
+            return
+        with open(ut, 'rb') as f:
+            helyben = f.read().decode('utf-8')
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    el = _e28_elso_elteres(generalt, helyben)
+    if el:
+        i, sa, sb = el
+        hiba(relut, i + 1,
+             'a helyben frissítő út (--ir, CRLF-es munkapéldányon) eltér a nulláról generálttól '
+             '(PARDES_DATUM=%s). nulláról: %s | helyben: %s. Javítás: a generátorban '
+             '(eszkozok/lexikon_general.py run), nem a lapon'
+             % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb)))
 
 
 SZABALYOK_FUGGVENYEI['E28'] = e28_generalt_nezet_egyezes
