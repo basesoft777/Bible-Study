@@ -125,3 +125,8 @@ N-F123ga (a `hu_illeszt.py` elnyelése), N-F123gb (a 2.29 saját `bdb_id`-je), N
 N-F123gd (a main-en is bukó tesztek). A PR #608 rebase-ekor a `szotar_szakasz_cimke.tsv` új sorait a
 `naplok/F123_BDBGER_cimke_migracio.py` szerint kell átkulcsolni (a H5315 sora egy szócikkű, egyértelmű), és az
 ANTROP-001 lapot újragenerálni.
+
+## 8. Átnézés (DT569 mintája, DT-F123ga)
+
+- ALVIL-001: az átnézés érvényes marad, a változott lapra (lap-commit cfb10b07) új sor az `adat/lap_atnezesek.tsv`-ben, a `naplok/F123_atnezes_ALVIL-001.md` mondatával.
+- ISTENTISZT-001: az átnézés érvényes marad (csak a generált szótári gerinc változott: H8034 két szócikkfej, az arámi BDB9963 láthatóvá vált; próza és az olvasói kapu bájtra azonos); a lapnak az `adat/lap_atnezesek.tsv`-ben nincs sora, új kiadásszám nem kell.
