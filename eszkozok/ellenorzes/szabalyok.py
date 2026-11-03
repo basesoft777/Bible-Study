@@ -1409,6 +1409,21 @@ def _e26_git_fajl(ref, relut):
         return ''
 
 
+def _e26_uj_szoveg(ref, mappa):
+    """A ref-beli PR-onkenti fajlok (dontesek/uj/, nyitott/uj/) osszefuzott szovege: az E26 a fo fajl es
+    ezek egyesitett nezetet vizsgalja (a helyorzo-definiciok itt allnak)."""
+    try:
+        nevek = subprocess.check_output(
+            ['git', 'ls-tree', '-r', '--name-only', ref, '--', mappa],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace').split('\n')
+    except (subprocess.CalledProcessError, OSError):
+        return ''
+    return '\n'.join(_e26_git_fajl(ref, n.strip()) for n in sorted(nevek) if n.strip().endswith('.md'))
+
+
+_E26_UJ_MAPPA = {'DT': 'dontesek/uj', 'N': 'nyitott/uj'}
+
+
 def _e26_definiciok(szoveg, minta):
     ki = []
     for sor in szoveg.splitlines():
@@ -1432,6 +1447,9 @@ def e26_vegleges_szam_agon(base_ref, head_ref, commit_uzenet='', esemeny=''):
     for kulcs, relut in _E26_FAJL.items():
         base_sz = _e26_git_fajl(base_ref, relut)
         head_sz = _e26_git_fajl(head_ref, relut)
+        if kulcs in _E26_UJ_MAPPA:      # a PR-onkenti fajlok is a fo fajl reszei
+            base_sz += '\n' + _e26_uj_szoveg(base_ref, _E26_UJ_MAPPA[kulcs])
+            head_sz += '\n' + _e26_uj_szoveg(head_ref, _E26_UJ_MAPPA[kulcs])
         base_def = set(_e26_definiciok(base_sz, _E26_VEGLEGES_DEF[kulcs]))
         for az in _e26_definiciok(head_sz, _E26_VEGLEGES_DEF[kulcs]):
             if az not in base_def:
@@ -1805,7 +1823,9 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
     agak_lekerve = False
     terkep = None
 
-    for relut in E27_KOVETO_FAJLOK:
+    # a PR-onkenti nyitott-tetel-fajlok (nyitott/uj/*.md) is koveto fajlok
+    uj_nyitott = tuple(_szamkiosztas_modul().DN.uj_fajlok(ROOT, 'nyitott/uj'))
+    for relut in E27_KOVETO_FAJLOK + uj_nyitott:
         szoveg = _e27_olvas(relut)
         if szoveg is None:
             continue

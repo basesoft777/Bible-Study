@@ -795,6 +795,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N54 — a `teszt_bdb_adatblokk.py` `test_pelda_idezet_szo_szerinti` bukása (H2617, 1Móz 24:14).** *(ÚJ, F68, DT67 (a); a számot a main-Action osztja ki)* A teszt a #68 előtt is bukik (alapállapot: 35 teszt, 1 bukás, `8322fc5` és a main is). Javítani vagy indokolni kell; a #68 hatókörén kívül esik.
 - **N58 — a `tematikus_lezart/Tehom_tematikus.md` előfordulás-számainak frissítése a Jób 41:32 felvétele után.** *(ÚJ, F109, orkesztrátori döntés 2026-10-19 (A); a számot a main-Action osztja ki)* Az 51. sor „35-ször” → **36** szó-előfordulás, a 84. sor „egyedi versek száma emiatt 34” → **35** egyedi vers. Ok: a Jób 41:32 (H8415) felvétele (F109, `jeloltek.tsv` `beépítve`, `elofordulasok.tsv` +1 sor). Forrás: `python eszkozok/lekerdez.py scan H8415` → 35 igehely, 36 szó-előfordulás (`scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=35 | ts=2026-10-19T09:56Z`); az `elofordulasok.tsv` TEREMT-001 ÓSZ-sorai: 34 → 35. A tanulmány és a lexikon az F109-ben nem módosult. **Hova kerül:** vagy a TEREMT-001 2. lépcsős migrációjába (`F123_MIGRACIO2_BRIEF.md`), vagy külön `ertelmezo` tételbe (DT-F32b szerinti modell); a régi rétegben a DT247 csak formai javítást enged, a tanulmányszöveg értelmező kézbe tartozik (KONTEXTUS K1).
 
+<!-- NYITOTT-UJ-HELY -->
+
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

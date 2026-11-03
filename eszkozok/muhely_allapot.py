@@ -507,8 +507,9 @@ def feladat_fejlecek():
 def nyitott_dt():
     """DONTESEK.md tablasorai: azonosito, feladatszam, allapot (🟡 nyitott), kerdes eleje."""
     ki = []
-    with open(os.path.join(GYOKER, 'DONTESEK.md'), encoding='utf-8') as f:
-        for s in f:
+    import dontes_nezet as DN   # egyesitett nezet: a dontesek/uj/*.md sorai is
+    if True:
+        for s in DN.dontesek_szoveg(GYOKER).splitlines():
             if not s.startswith('| DT'):
                 continue
             m = [x.strip() for x in s.split('|')]

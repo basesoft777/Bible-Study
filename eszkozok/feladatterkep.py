@@ -46,7 +46,7 @@ JSON_NEV = 'feladatterkep.json'
 HTML_NEV = 'FELADATTERKEP.html'
 
 # a belyeg forrasai (git log -1 -- ...): a lap adatanak bemenetei
-BELYEG_FORRASOK = (':(glob)*_BRIEF.md', 'MUNKATERV.md', 'DONTESEK.md', KARTYAK_TSV)
+BELYEG_FORRASOK = (':(glob)*_BRIEF.md', 'MUNKATERV.md', 'DONTESEK.md', ':(glob)dontesek/uj/*.md', KARTYAK_TSV)
 
 NINCS_LEIRAS = 'nincs leírás'
 
@@ -237,8 +237,8 @@ def dontesek_olvas(gyoker):
     ut = os.path.join(gyoker, 'DONTESEK.md')
     if not os.path.exists(ut):
         return []
-    with open(ut, encoding='utf-8', newline='') as f:
-        sorok = f.read().replace('\r\n', '\n').split('\n')
+    import dontes_nezet as DN   # egyesitett nezet: a dontesek/uj/*.md sorai is
+    sorok = DN.dontesek_szoveg(gyoker).replace('\r\n', '\n').split('\n')
     fej = None
     ki = []
     for i, sor in enumerate(sorok):
