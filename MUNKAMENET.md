@@ -85,13 +85,12 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 
 **A lezárás menete motívumonként** (2026-11-02, DT546, DT547; az ISTENTISZT-001 arany lapjának 1. kiadása után kiderült, hogy a lezárás felé vitt lapokon olvasói hibák maradtak, amelyeket a szerkezeti kapuk átengedtek). A lezárás előtti lépések sorrendje kötött:
 
-1. **gépi kapuk** (C-g): C-x, C-y → C1 → C-z, C-w → 24. és 25. szabály, Feed 6, új cikknél a teljesség-mérés;
-2. **határ- és lektori kör** (C-h, Fable — **minden futás előtt a felhasználó jóváhagyásával**, kreditből) → **C-l** döntések a Kiadóban (felület) → átvezetés (C-w) és újragenerálás;
-3. **olvasói kapu** (C-o, Feed 9): 0 BUKÁS;
-4. **a felhasználó vizuális átnézése** (C-v ⛔) a renderelt lapon, rögzítve;
-5. **1. kiadás** (C5): Feed 9/9, `kiadasok.tsv`-sor, verzió-emelés, a lap újragenerálása.
+1. **gépi kapuk — feltétel** (C-g): C-x, C-y → C1 → C-z, C-w → 24. és 25. szabály, Feed 6, új cikknél a teljesség-mérés; **olvasói kapu** (C-o, Feed 9): 0 BUKÁS;
+2. **a felhasználó vizuális átnézése** (C-v ⛔) a renderelt lapon (lapnézet), rögzítve;
+3. **egy javítókör** az átnézés alapján (C-w), utána a gépi kapuk újra zöldek;
+4. **1. kiadás** (C5): Feed zöld, `kiadasok.tsv`-sor, verzió-emelés, a lap újragenerálása.
 
-Egy lépés csak az előző zöldje után indul; bukásnál vissza a próza gazdájához (C-w), és onnan újra az 1. lépéstől. A **C-k** (`/kiadas`) a lezárás után bármikor indítható, és a 2. kiadás bemenete. A hátralévő 8 motívumnál ez a #123 új cikk-menetének vége (`F123_MIGRACIO2_BRIEF.md` 3. szakasz, U4–U6), a #10 a lapok lezártságát méri (`F10_LEXIKON_LEZARAS_BRIEF.md`). Az ISTENTISZT-001 1. kiadása e sorrend előtt készült; hogy a 9. kapu és a C-v rá hogyan vonatkozik, azt a #10 zárómérése rögzíti, vagy ⛔ a felhasználó elé teszi.
+A lépésszám cikkenként rögzített (DT-F123j, a felhasználó jóváhagyásával, 2026-11-02: „mehet”): második átnézési vagy javítókör nincs. Ami az 1. kiadás után derül ki — a **határ- és lektori kör** (C-h, Fable, **minden futás előtt a felhasználó jóváhagyásával**, kreditből) az új prózán, a Kiadó (C-l) kérdései, későbbi észrevétel —, az a **2. kiadás bemenete**, nem az 1. kiadás feltétele („a lektori átnézés eredménye egy új kiadás”). A régi lektori kérdések (az elavult prózáról) nem ellenőrzési lépés: a Kiadón „az újraírás okafogyottá tette” jelöléssel zárandók. Egy lépés csak az előző zöldje után indul; gépi bukásnál vissza a próza gazdájához (C-w). A **C-k** (`/kiadas`) a lezárás után bármikor indítható, és a 2. kiadás bemenete. A hátralévő 8 motívumnál ez a #123 új cikk-menetének vége (`F123_MIGRACIO2_BRIEF.md` 3. szakasz, U4–U6), a #10 a lapok lezártságát méri (`F10_LEXIKON_LEZARAS_BRIEF.md`). Az ISTENTISZT-001 1. kiadása e sorrend előtt készült; hogy a 9. kapu és a C-v rá hogyan vonatkozik, azt a #10 zárómérése rögzíti, vagy ⛔ a felhasználó elé teszi.
 
 ## A4 és B5 — kötelező megállási pont
 

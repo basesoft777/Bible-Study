@@ -1,0 +1,336 @@
+## 1. gerinc-metszet
+# napló: hozzáfűzve -> auditok.tsv
+# gerinc-metszet — 2 szakasz
+#   Zsolt 16:10: 12 egyedi Strong
+#   ApCsel 2:27: 14 egyedi Strong
+# metszet (szűretlen): 0
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 0
+proveniencia: scope=range:Zsolt 16:10+ApCsel 2:27 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-02T19:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# gerinc-metszet — 2 szakasz
+#   Hós 13:14: 15 egyedi Strong
+#   1Kor 15:55: 6 egyedi Strong
+# metszet (szűretlen): 0
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 0
+proveniencia: scope=range:Hós 13:14+1Kor 15:55 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-02T19:46Z | csatorna=cli
+## 3. teljes scan
+# napló: hozzáfűzve -> auditok.tsv
+# scan H7585 — 64 igehely, 66 szó-előfordulás
+1Kir 2:6
+1Kir 2:9
+1Móz 37:35
+1Móz 42:38
+1Móz 44:29
+1Móz 44:31
+1Sám 2:6
+2Sám 22:6
+4Móz 16:30
+4Móz 16:33
+5Móz 32:22
+Ez 31:15
+Ez 31:16
+Ez 31:17
+Ez 32:21
+Ez 32:27
+Hab 2:5
+Hós 13:14
+Jób 7:9
+Jób 11:8
+Jób 14:13
+Jób 17:12
+Jób 17:15
+Jób 21:13
+Jób 24:19
+Jób 26:6
+Jón 2:3
+Préd 9:12
+Péld 1:12
+Péld 5:5
+Péld 7:27
+Péld 9:18
+Péld 15:11
+Péld 15:24
+Péld 23:14
+Péld 27:20
+Péld 30:16
+Zsolt 6:6
+Zsolt 9:18
+Zsolt 16:10
+Zsolt 18:6
+Zsolt 30:4
+Zsolt 31:18
+Zsolt 49:15
+Zsolt 49:16
+Zsolt 55:16
+Zsolt 86:13
+Zsolt 88:4
+Zsolt 89:49
+Zsolt 116:3
+Zsolt 139:8
+Zsolt 141:7
+Ámós 9:2
+Én 8:6
+Ézs 5:14
+Ézs 7:11
+Ézs 14:9
+Ézs 14:11
+Ézs 14:15
+Ézs 28:15
+Ézs 28:18
+Ézs 38:10
+Ézs 38:18
+Ézs 57:9
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-11-02T19:46Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# scan G0086 — 10 igehely, 10 szó-előfordulás
+ApCsel 2:27
+ApCsel 2:31
+Jel 1:18
+Jel 6:8
+Jel 20:13
+Jel 20:14
+Luk 10:15
+Luk 16:23
+Mt 11:23
+Mt 16:18
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli
+## 4. kollokáció
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H7585 + H4194 — 15 vers
+2Sám 22:6
+Hab 2:5
+Hós 13:14
+Péld 5:5
+Péld 7:27
+Zsolt 6:6
+Zsolt 18:6
+Zsolt 49:15
+Zsolt 55:16
+Zsolt 89:49
+Zsolt 116:3
+Én 8:6
+Ézs 28:15
+Ézs 28:18
+Ézs 38:18
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H4194 | n=15 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H7585 + H0011 — 2 vers
+Jób 26:6
+Péld 15:11
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0011 | n=2 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H7585 + H3381 — 26 vers
+1Kir 2:6
+1Kir 2:9
+1Móz 37:35
+1Móz 42:38
+1Móz 44:29
+1Móz 44:31
+1Sám 2:6
+4Móz 16:30
+4Móz 16:33
+Ez 31:15
+Ez 31:16
+Ez 31:17
+Ez 32:21
+Ez 32:27
+Jób 7:9
+Jób 17:15
+Péld 1:12
+Péld 5:5
+Péld 7:27
+Zsolt 30:4
+Zsolt 55:16
+Ámós 9:2
+Ézs 5:14
+Ézs 14:11
+Ézs 14:15
+Ézs 38:18
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H3381 | n=26 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció H7585 + H0953 — 5 vers
+Ez 31:16
+Péld 1:12
+Zsolt 30:4
+Ézs 14:15
+Ézs 38:18
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0953 | n=5 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# kollokáció G0086 + G2288 — 4 vers
+Jel 1:18
+Jel 6:8
+Jel 20:13
+Jel 20:14
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0086+G2288 | n=4 | ts=2026-11-02T19:47Z | csatorna=cli
+## 5. igealak
+# napló: hozzáfűzve -> auditok.tsv
+# igealak-ellenőrzés H7585 — 66 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+1Kir 2:6	שְׁאֹֽל	she.'Ol	Hell	Sheol
+1Kir 2:9	שְׁאֽוֹל	she.'ol	Hell	Sheol
+1Móz 37:35	שְׁאֹ֑לָ	she.'O.la	Hell	Sheol
+1Móz 42:38	שְׁאֽוֹלָ	she.'o.la	Hell	Sheol
+1Móz 44:29	שְׁאֹֽלָ	she.'O.la	Hell	Sheol
+1Móz 44:31	שְׁאֹֽלָ	she.'O.la	Hell	Sheol
+1Sám 2:6	שְׁא֖וֹל	she.'ol	Hell	Sheol
+2Sám 22:6	שְׁא֖וֹל	she.'ol	Hell	Sheol
+4Móz 16:30	שְׁאֹ֑לָ	she.'O.la	Hell	Sheol
+4Móz 16:33	שְׁאֹ֑לָ	she.'O.la	Hell	Sheol
+5Móz 32:22	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Ez 31:15	שְׁא֙וֹלָ	she.'o.la	Hell	Sheol
+Ez 31:16	שְׁא֖וֹלָ	she.'o.la	Hell	Sheol
+Ez 31:17	שְׁא֖וֹלָ	she.'o.la	Hell	Sheol
+Ez 32:21	שְׁא֖וֹל	she.'ol	Hell	Sheol
+Ez 32:27	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Hab 2:5	שְׁא֜וֹל	sh.'ol	Hell	Sheol
+Hós 13:14	שְׁאוֹל֙	she.'Ol	Hell	Sheol
+Hós 13:14	שְׁא֔וֹל	she.'ol	Hell	O Sheol
+Jób 7:9	שְׁ֝א֗וֹל	She.ol	Hell	Sheol
+Jób 11:8	שְּׁא֗וֹל	she.'ol	Hell	Sheol
+Jób 14:13	שְׁא֬וֹל	sh.'ol	Hell	Sheol
+Jób 17:12	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Jób 17:15	שְׁאֹ֣ל	she.'Ol	Hell	Sheol
+Jób 21:13	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Jób 24:19	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Jób 26:6	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Jón 2:3	שְׁא֛וֹל	she.'ol	Hell	Sheol
+Préd 9:12	שְׁא֕וֹל	sh.'ol	Hell	Sheol
+Péld 1:12	שְׁא֣וֹל	sh.'ol	Hell	Sheol
+Péld 5:5	שְׁ֝א֗וֹל	She.ol	Hell	Sheol
+Péld 7:27	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Péld 9:18	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Péld 15:11	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Péld 15:24	שְּׁא֥וֹל	she.'ol	Hell	Sheol
+Péld 23:14	שְּׁא֥וֹל	she.'ol	Hell	Sheol
+Péld 27:20	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Péld 30:16	שְׁאוֹל֮	she.'Ol	Hell	Sheol
+Zsolt 6:6	שְׁא֗וֹל	sh.'ol	Hell	Sheol
+Zsolt 9:18	שְׁא֑וֹלָ	sh.'o.la	Hell	Sheol
+Zsolt 16:10	שְׁא֑וֹל	sh.'ol	Hell	Sheol
+Zsolt 18:6	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 30:4	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 31:18	שְׁאֽוֹל	sh.'ol	Hell	Sheol
+Zsolt 49:15	שְׁא֣וֹל	sh.'ol	Hell	Sheol
+Zsolt 49:15	שְׁא֗וֹל	she.'ol	Hell	Sheol
+Zsolt 49:16	שְׁא֑וֹל	she.'ol	Hell	Sheol
+Zsolt 55:16	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 86:13	שְּׁא֥וֹל	she.'ol	Hell	Sheol
+Zsolt 88:4	שְׁא֥וֹל	sh.'ol	Hell	Sheol
+Zsolt 89:49	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 116:3	שְׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 139:8	שְּׁא֣וֹל	she.'ol	Hell	Sheol
+Zsolt 141:7	שְׁאֽוֹל	she.'ol	Hell	Sheol
+Ámós 9:2	שְׁא֔וֹל	sh.'ol	Hell	Sheol
+Én 8:6	שְׁא֖וֹל	sh.'ol	Hell	Sheol
+Ézs 5:14	שְּׁאוֹל֙	she.'Ol	Hell	Sheol
+Ézs 7:11	שְׁאָ֔לָה	she.'A.lah	Hell	[as] Sheol
+Ézs 14:9	שְׁא֗וֹל	she.'ol	Hell	Sheol
+Ézs 14:11	שְׁא֛וֹל	she.'ol	Hell	Sheol
+Ézs 14:15	שְׁא֛וֹל	she.'ol	Hell	Sheol
+Ézs 28:15	שְׁא֖וֹל	she.'ol	Hell	Sheol
+Ézs 28:18	שְׁא֖וֹל	she.'ol	Hell	Sheol
+Ézs 38:10	שְׁא֑וֹל	she.'ol	Hell	Sheol
+Ézs 38:18	שְׁא֛וֹל	she.'ol	Hell	Sheol
+Ézs 57:9	שְׁאֽוֹל	she.'ol	Hell	Sheol
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=66 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: már megvolt -> auditok.tsv
+# igealak-ellenőrzés G0086 — 10 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+ApCsel 2:27	ᾅδην,	hadēn	Hades	Hades,
+ApCsel 2:31	ᾅδην	hadēn	Hades	Hades
+Jel 1:18	ᾅδου.	hadou	Hades	of Hades.
+Jel 6:8	ᾅδης	hadēs	Hades	Hades
+Jel 20:13	ᾅδης	hadēs	Hades	Hades
+Jel 20:14	ᾅδης	hadēs	Hades	Hades
+Luk 10:15	ᾅδου	hadou	Hades	Hades
+Luk 16:23	ᾅδῃ	hadē	Hades	Hades
+Mt 11:23	ᾅδου	hadou	Hades	Hades
+Mt 16:18	ᾅδου	hadou	Hades	of hades
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli
+## 6. LXX-híd (kulcsversek; a teljes ÓSZ: naplok/F123_ALVIL2_lxx_hid.py)
+# napló: hozzáfűzve -> auditok.tsv
+# LXX-híd Zsolt 16:10 — 15 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 15:10 (karoli_ok=egyező)
+G3754	ὅτι	conjunction
+G3756	οὐκ	particle
+G1459	ἐγκαταλείψεις	verb fut ind act 2nd sg
+G3588	τὴν	article fem acc sg
+G5590	ψυχήν	noun fem acc sg
+G1473	μου	pronoun 1st gen sg
+G1519	εἰς	preposition
+G0086	ᾅδην	noun masc acc sg
+G3761	οὐδὲ	particle
+G1325	δώσεις	verb fut ind act 2nd sg
+G3588	τὸν	article masc acc sg
+G3741	ὅσιόν	adjective masc acc sg
+G4771	σου	pronoun 2nd gen sg
+G3708	ἰδεῖν	verb aor inf act
+G1312	διαφθοράν	noun fem acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0086: 10 ÚSZ-vers — ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8, Jel 20:13, Jel 20:14, Luk 10:15, Luk 16:23, Mt 11:23, Mt 16:18
+  G1312: 6 ÚSZ-vers — ApCsel 2:27, ApCsel 2:31, ApCsel 13:34, ApCsel 13:35, ApCsel 13:36, ApCsel 13:37
+  G1325: 379 ÚSZ-vers — 1Ján 3:1, 1Ján 3:23, 1Ján 3:24, 1Ján 4:13, 1Ján 5:11, 1Ján 5:16, 1Ján 5:20, 1Kor 1:4, 1Kor 3:5, 1Kor 3:10 ...
+  G1459: 10 ÚSZ-vers — 2Kor 4:9, 2Tim 4:10, 2Tim 4:16, ApCsel 2:27, ApCsel 2:31, Mk 15:34, Mt 27:46, Róm 9:29, Zsid 10:25, Zsid 13:5
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3708: 58 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 3:6, 1Ján 4:20, 1Kor 9:1, 1Pét 1:8, 1Thessz 5:15, 3Ján 1:11, ApCsel 7:44 ...
+  G3741: 8 ÚSZ-vers — 1Tim 2:8, ApCsel 2:27, ApCsel 13:34, ApCsel 13:35, Jel 15:4, Jel 16:5, Tit 1:8, Zsid 7:26
+  G3754: 1215 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:8, 1Ján 2:11, 1Ján 2:12 ...
+  G3756: 1413 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:8, 1Ján 1:10, 1Ján 2:2, 1Ján 2:4, 1Ján 2:7, 1Ján 2:10, 1Ján 2:11, 1Ján 2:15 ...
+  G3761: 131 ÚSZ-vers — 1Ján 2:23, 1Ján 3:6, 1Kor 2:6, 1Kor 3:2, 1Kor 4:3, 1Kor 5:1, 1Kor 11:14, 1Kor 11:16, 1Kor 14:21, 1Kor 15:13 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:Zsolt 16:10 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T19:47Z | csatorna=cli
+# napló: hozzáfűzve -> auditok.tsv
+# LXX-híd Hós 13:14 — 25 görög szó-előfordulás
+# LXX-vers: Hosea 13:14 (karoli_ok=kezi_eltolas_tabla)
+G1537	ἐκ	preposition
+G5495	χειρὸς	noun fem gen sg
+G0086	ᾅδου	noun masc gen sg
+G4506	ῥύσομαι	verb fut ind mid 1st sg
+G0846	αὐτοὺς	pronoun 3rd acc pl
+G2532	καὶ	conjunction
+G1537	ἐκ	preposition
+G2288	θανάτου	noun masc gen sg
+G3084	λυτρώσομαι	verb fut ind mid 1st sg
+G0846	αὐτούς	pronoun 3rd acc pl
+G4225	ποῦ	adverb
+G3588	ἡ	article fem nom sg
+G1349	δίκη	noun fem nom sg
+G4771	σου	pronoun 2nd gen sg
+G2288	θάνατε	noun masc voc sg
+G4225	ποῦ	adverb
+G3588	τὸ	article neut nom/voc/acc sg
+G2759	κέντρον	noun neut nom/voc/acc sg
+G4771	σου	pronoun 2nd gen sg
+G0086	ᾅδη	noun masc voc sg
+G3874	παράκλησις	noun fem nom sg
+G2928	κέκρυπται	verb perf ind mid/pass 3rd sg
+G0575	ἀπὸ	preposition
+G3788	ὀφθαλμῶν	noun masc gen pl
+G1473	μου	pronoun 1st gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0086: 10 ÚSZ-vers — ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8, Jel 20:13, Jel 20:14, Luk 10:15, Luk 16:23, Mt 11:23, Mt 16:18
+  G0575: 623 ÚSZ-vers — 1Ján 1:1, 1Ján 1:5, 1Ján 1:7, 1Ján 1:9, 1Ján 2:7, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20, 1Ján 2:24, 1Ján 2:27 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1349: 3 ÚSZ-vers — 2Thessz 1:9, ApCsel 28:4, Júd 1:7
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1537: 773 ÚSZ-vers — 1Ján 2:16, 1Ján 2:19, 1Ján 2:21, 1Ján 2:29, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:12, 1Ján 3:14, 1Ján 3:19 ...
+  G2288: 106 ÚSZ-vers — 1Ján 3:14, 1Ján 5:16, 1Ján 5:17, 1Kor 3:22, 1Kor 11:26, 1Kor 15:21, 1Kor 15:26, 1Kor 15:54, 1Kor 15:55, 1Kor 15:56 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2759: 5 ÚSZ-vers — 1Kor 15:55, 1Kor 15:56, ApCsel 9:5, ApCsel 26:14, Jel 9:10
+  G2928: 17 ÚSZ-vers — 1Tim 5:25, Jel 2:17, Jel 6:15, Jel 6:16, Ján 8:59, Ján 12:36, Ján 19:38, Kol 3:3, Luk 18:34, Luk 19:42 ...
+  G3084: 3 ÚSZ-vers — 1Pét 1:18, Luk 24:21, Tit 2:14
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3788: 86 ÚSZ-vers — 1Ján 1:1, 1Ján 2:11, 1Ján 2:16, 1Kor 2:9, 1Kor 12:16, 1Kor 12:17, 1Kor 12:21, 1Kor 15:52, 1Pét 3:12, 2Pét 2:14 ...
+  G3874: 28 ÚSZ-vers — 1Kor 14:3, 1Thessz 2:3, 1Tim 4:13, 2Kor 1:3, 2Kor 1:4, 2Kor 1:5, 2Kor 1:6, 2Kor 1:7, 2Kor 7:4, 2Kor 7:7 ...
+  G4225: 3 ÚSZ-vers — Róm 4:19, Zsid 2:6, Zsid 4:4
+  G4506: 16 ÚSZ-vers — 1Thessz 1:10, 2Kor 1:10, 2Pét 2:7, 2Pét 2:9, 2Thessz 3:2, 2Tim 3:11, 2Tim 4:17, 2Tim 4:18, Kol 1:13, Luk 1:74 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5495: 171 ÚSZ-vers — 1Ján 1:1, 1Kor 4:12, 1Kor 12:15, 1Kor 12:21, 1Kor 16:21, 1Pét 5:6, 1Thessz 4:11, 1Tim 2:8, 1Tim 4:14, 1Tim 5:22 ...
+proveniencia: scope=range:Hós 13:14 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-02T19:47Z | csatorna=cli
