@@ -56,4 +56,10 @@ Az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrát
 
 ## U4. Kapuk
 
-*Az U4 eredménye: `naplok/F123_ANTROP2_naplo.md` U4 (a független ellenőrzés után kerül ide).*
+- `ellenoriz.py`: SÉRTÉS 0; a 24. RENDBEN; a 25. listáján az ANTROP-001 nincs (`proza_1a.py`: 11/11 arany); 17–18. RENDBEN (a szótári gerinc aktív).
+- Olvasói kapu: **4 BUKÁS**, mind generált szótári szövegben (a próza nem éri el): BDB H2416 1.a kivonat „Josh”, „Hosea”; két összecsukott Thayer-kivonat csonkolt zárójele (G5590 2.c, G4152 2.) — N-F123f.
+- Feed: 1, 2, 3, 4, 7, 8 zöld; 5 piros (a Fil 1:27 határkártyája, a felhasználóé); 6 piros (UBS/TBESG „fordításra vár” glosszák és 1 generált héber kiejtés — nem Thayer/BDB, a hatókörön kívül); 9 piros (4 BUKÁS + az átnézés).
+- Helyi CI (`futtat.py`, PR-mód): 0 HIBA; `feladatok.py ellenoriz`: 0 hiba; `test_szabalyok` a main változatán; `teszt_teljesseg_meres` 11 OK.
+- C-z (`proza_lefedettseg.py`): megnevezetlen elem nincs.
+- A Thayer G4152, G5591 fordítása: `naplok/F123_ANTROP2_forditas.md` (DT-F123l).
+- Független ellenőrzés: `naplok/ELLENOR_F123_ANTROP-001.md`.
