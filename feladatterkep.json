@@ -4286,7 +4286,7 @@
     "sor": 602
    },
    {
-    "id": "DT-F163a",
+    "id": "DT571",
     "feladat": "ütközésmentes döntésrögzítés (2026-11-03)",
     "kerdes": "Hogyan rögzítsen egy PR új döntést és nyitott tételt úgy, hogy a többi nyitott PR ne ütközzön vele? (mért: 2026-11-02–03 kb. 15 „hozd be a main-t” kör; a DONTESEK.md/NYITOTT_FELADATOK.md végére minden PR ír, merge után pedig a `szamkiosztas` Action ugyanazokat a sorokat írja át)",
     "allapot": "alkalmazasra_var",
