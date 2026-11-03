@@ -1,2 +1,3 @@
 # Lexikonlap vizuális átnézései (SEMA 2.48): egy sor egy átnézés a lap egy változatáról; kulcs: id + lap_commit. Érvényes, ha a lap_commit a lap mai utolsó commitja, a ki = felhasználó, és az idezet a felhasználó szavai szó szerint (DT554). Csak a felhasználó jóváhagyása után írható.
 id	lap_commit	datum	ki	idezet	forras
+ALVIL-001	041a530edae9a4f49865ed0f37dab3088b5ace48	2026.11.03	felhasználó	kiadás	scope=manual | forras=naplok/F123_atnezes_ALVIL-001.md | ts=2026-11-03
