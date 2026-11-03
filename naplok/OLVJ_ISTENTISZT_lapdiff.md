@@ -1,4 +1,4 @@
-# Az ISTENTISZT-001 lapjának változása az olvasói kapu javító körében (OLVJ, N-F161a, 2026-11-02)
+# Az ISTENTISZT-001 lapjának változása az olvasói kapu javító körében (OLVJ, N85, 2026-11-02)
 
 Az 1. kiadás lapja a generátor javítása miatt változott — **a 2. kiadás függő változása** (a #593/#598 módján, a
 `KH_ELREJTES_lapdiff.md` mintájára). Adatváltozás nincs; a lap tartalmi állítása nem változott, csak a forma:
