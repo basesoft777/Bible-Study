@@ -99,17 +99,17 @@ A motívum 11 igehelyen fordul elő, 6 bibliai könyvben (1 ószövetségi, 10 �
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 2:7](#ige-1móz-2-7) | élő lélekké — לְנֶ֥פֶשׁ (lenefes); חַיָּֽה (chajjá) | H5315: Isten leheletétől élő lénnyé lett lélek · 2; H2416: *(nincs hozzárendelés)*[^1] | ószövetségi háttér | Remez/Sod | H5315+H2416 | H5315: living creature; living soul *(fordításra vár)* [ⓘ](/szo/H5315) · H2416: alive; living *(fordításra vár)* [ⓘ](/szo/H2416); life *(fordításra vár)* [ⓘ](/szo/H2416) | magas · szó-szintű-gépi[^1] |
+| [1Móz 2:7](#ige-1móz-2-7) | élő lélekké — לְנֶ֥פֶשׁ (lenefes); חַיָּֽה (chajjá) | H5315: Isten leheletétől élő lénnyé lett lélek · 2; H2416: *(nincs hozzárendelés)*[^1] | ószövetségi háttér | Remez/Sod | H5315+H2416 | H5315: élőlény; élő lélek [ⓘ](/szo/H5315) · H2416: élő; eleven [ⓘ](/szo/H2416); élet [ⓘ](/szo/H2416) | magas · szó-szintű-gépi[^1] |
 | [Luk 1:46](#ige-luk-1-46) | az én lelkem — ψυχή (pszükhé) | a lélek: az érzések és a vágyak székhelye, az üdvösségre rendelt, a testtől különböző belső valóság · Thayer 2[^2] | párhuzamos sor, első tag | Peshat | G5590 | belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) | magas · tartalom-alapú[^2] |
 | [Luk 1:47](#ige-luk-1-47) | az én lelkem — πνεῦμά (pneuma) | az ember szelleme: az élet és a gondolkodás elve · Thayer 2[^3] | párhuzamos sor, második tag | Peshat | G4151 | szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) | magas · tartalom-alapú[^3] |
-| [1Kor 2:14](#ige-1kor-2-14) | Érzéki; Isten Lelkének — πνεύματος (pneumatosz); ψυχικὸς (pszükhikosz) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^4] | két embertípus, első tag | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: natural; human *(fordításra vár)* [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)*; unspiritual; worldly; natural *(fordításra vár)* [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^4] |
-| [1Kor 2:15](#ige-1kor-2-15) | A lelki ember — πνευματικὸς (pneumatikosz) | Isten Lelkétől betöltött és vezetett ember · Thayer 3.b[^5] | két embertípus, második tag | Drash | G4152 | one who is spiritual; one who has received the Spirit *(fordításra vár)* [ⓘ](/szo/G4152) | közepes · tartalom-alapú[^5] |
-| [1Kor 15:44](#ige-1kor-15-44) | érzéki test; lelki test — πνευματικόν (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^6] | két test | Remez/Sod | G4152+G5591 | G4152: not physical; not material; spiritual *(fordításra vár)* [ⓘ](/szo/G4152) · G5591: physical; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^6] |
+| [1Kor 2:14](#ige-1kor-2-14) | Érzéki; Isten Lelkének — πνεύματος (pneumatosz); ψυχικὸς (pszükhikosz) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^4] | két embertípus, első tag | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: természetes; emberi [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)*; nem szellemi; világi; természetes [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^4] |
+| [1Kor 2:15](#ige-1kor-2-15) | A lelki ember — πνευματικὸς (pneumatikosz) | Isten Lelkétől betöltött és vezetett ember · Thayer 3.b[^5] | két embertípus, második tag | Drash | G4152 | szellemi ember; az, aki megkapta a Szellemet [ⓘ](/szo/G4152) | közepes · tartalom-alapú[^5] |
+| [1Kor 15:44](#ige-1kor-15-44) | érzéki test; lelki test — πνευματικόν (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^6] | két test | Remez/Sod | G4152+G5591 | G4152: nem testi; nem anyagi; szellemi [ⓘ](/szo/G4152) · G5591: testi; természetes [ⓘ](/szo/G5591) | magas · tartalom-alapú[^6] |
 | [1Kor 15:45](#ige-1kor-15-45) | élő lélekké; megelevenítő szellemmé — πνεῦμα (pneuma); ψυχὴν (pszükhén) | G4151: szellem általában; a feltámadt Krisztusról: megelevenítő szellem · Thayer 3.a; G5590: *(nincs hozzárendelés)*[^7] | csúcspont | Remez/Sod | G4151+G5590 | G4151: szellem [ⓘ](/szo/G4151) · G5590: személy; emberek [ⓘ](/szo/G5590) | magas · tartalom-alapú[^7] |
-| [1Kor 15:46](#ige-1kor-15-46) | a lelki; az érzéki — πνευματικόν.¶ (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^8] | sorrend | Remez/Sod | G4152+G5591 | G4152: not physical; not material; spiritual *(fordításra vár)* [ⓘ](/szo/G4152) · G5591: physical; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^8] |
+| [1Kor 15:46](#ige-1kor-15-46) | a lelki; az érzéki — πνευματικόν.¶ (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^8] | sorrend | Remez/Sod | G4152+G5591 | G4152: nem testi; nem anyagi; szellemi [ⓘ](/szo/G4152) · G5591: testi; természetes [ⓘ](/szo/G5591) | magas · tartalom-alapú[^8] |
 | [1Thessz 5:23](#ige-1thessz-5-23) | valótok; lelketek — πνεῦμα (pneuma); ψυχὴ (pszükhé) | G4151: az ember szelleme: az élet és a gondolkodás elve · Thayer 2; G5590: *(nincs hozzárendelés)*[^9] | hármas felsorolás | Peshat | G4151+G5590 | G4151: szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) · G5590: belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)*; élet [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^9] |
 | [Zsid 4:12](#ige-zsid-4-12) | szívnek; léleknek — πνεύματος (pneumatosz); ψυχῆς (pszükhész) | G4151: az ember szelleme: az élet és a gondolkodás elve · Thayer 2; G5590: *(nincs hozzárendelés)*[^10] | szétválasztás | Peshat/Sod | G4151+G5590 | G4151: szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) · G5590: belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)*; élet [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^10] |
-| [Júd 1:19](#ige-júd-1-19) | érzékiek; Szent Lélek — πνεῦμα (pneuma); ψυχικοί (pszükhikoi) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^11] | figyelmeztetés | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: unspiritual; worldly; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^11] |
+| [Júd 1:19](#ige-júd-1-19) | érzékiek; Szent Lélek — πνεῦμα (pneuma); ψυχικοί (pszükhikoi) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^11] | figyelmeztetés | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: nem szellemi; világi; természetes [ⓘ](/szo/G5591) | magas · tartalom-alapú[^11] |
 
 [^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H5315 — BDB-példa: a BDB a 2. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 47, 52); ez a kutatói hozzárendelés (2 → 2) alá esik, a címke a finomabb útvonalé · H2416 — a BDB a verset az 1., 1.d szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 196, 436), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre
 [^2]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`)
@@ -372,7 +372,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G4151](/szo/G4151) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 12.18 Szellem; Isten Szelleme; Szent Szellem · 12.33 szellem · 12.37 demon; evil spirit *(fordításra vár)* · 12.42 ghost *(fordításra vár)* · 26.9 szellem; szellemi; szellemi természet; belső lény · 30.6 disposition; attitude; way of thinking *(fordításra vár)* · 14.4 wind; blowing; to blow *(fordításra vár)* · 23.186 breath *(fordításra vár)* · 12.39 unclean spirit *(fordításra vár)* · 12.38 demon; evil spirit *(fordításra vár)* · 25.73 to show enthusiasm; to commit oneself completely to *(fordításra vár)* · 23.110 to die *(fordításra vár)* · 88.57 to be humble *(fordításra vár)* · 30.76 to make up one’s mind; to decide *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 12.18 Szellem; Isten Szelleme; Szent Szellem · 12.33 szellem · 12.37 démon; gonosz szellem · 12.42 kísértet · 26.9 szellem; szellemi; szellemi természet; belső lény · 30.6 beállítottság; magatartás; gondolkodásmód · 14.4 szél; fújás; fújni · 23.186 lehelet · 12.39 tisztátalan szellem · 12.38 démon; gonosz szellem · 25.73 lelkesedést mutatni; teljesen elkötelezni magát valami mellett · 23.110 meghalni · 88.57 alázatosnak lenni · 30.76 elhatározásra jutni; elhatározni
 
 ##### G4152 — πνευματικός (pneumatikosz) · Thayer
 
@@ -403,7 +403,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 12.20 one who is spiritual; one who has received the Spirit *(fordításra vár)* · 12.21 spiritual; from the Spirit (in reference to such matters as gifts, benefits, teachings, blessings, and religious songs) *(fordításra vár)* · 26.10 spiritual; of the spirit; on a spiritual basis; in a spiritual manner *(fordításra vár)* · 41.40 spiritual; of spiritual conduct; guided by the Spirit *(fordításra vár)* · 79.3 not physical; not material; spiritual *(fordításra vár)* · 79.6 spiritual; supernatural *(fordításra vár)* · 12.44 power; authority; lordship; ruler; wicked force *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 12.20 szellemi ember; az, aki megkapta a Szellemet · 12.21 szellemi; a Szellemtől származó (olyan dolgokra vonatkozóan, mint az ajándékok, előnyök, tanítások, áldások és vallásos énekek) · 26.10 szellemi; a szellemé; szellemi alapon; szellemi módon · 41.40 szellemi; szellemi életvitelű; a Szellem által vezetett · 79.3 nem testi; nem anyagi; szellemi · 79.6 szellemi; természetfeletti · 12.44 hatalom; tekintély; uraság; uralkodó; gonosz erő
 
 ##### G5590 — ψυχή (pszükhé) · Thayer
 
@@ -455,7 +455,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G5590](/szo/G5590) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 26.4 belső én; elme; gondolatok; érzések; szív; lény · 23.88 élet · 9.20 személy; emberek · 4.1 living creature *(fordításra vár)* · 25.280 to experience anguish; to be tormented in one’s heart *(fordításra vár)* · 88.200 to turn someone against; to cause to dislike *(fordításra vár)* · 25.291 to become discouraged; to become tired of *(fordításra vár)* · 21.20 to save oneself; to protect oneself *(fordításra vár)* · 21.7 to risk; to risk one’s life *(fordításra vár)* · 21.24 to save one’s life; to save oneself *(fordításra vár)* · 25.279 to feel pain and sorrow; to be sorrowful and distressed *(fordításra vár)* · 23.113 to die voluntarily; to die willingly *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 26.4 belső én; elme; gondolatok; érzések; szív; lény · 23.88 élet · 9.20 személy; emberek · 4.1 élőlény · 25.280 gyötrődést átélni; szívében gyötrődni · 88.200 valakit valaki ellen fordítani; ellenszenvet kelteni · 25.291 elkedvetlenedni; belefáradni valamibe · 21.20 megmenteni magát; megvédeni magát · 21.7 kockáztatni; saját életét kockáztatni · 21.24 megmenteni saját életét; megmenteni magát · 25.279 fájdalmat és szomorúságot érezni; szomorúnak és megkínzottnak lenni · 23.113 önként meghalni; készségesen meghalni
 
 ##### G5591 — ψυχικός (pszükhikosz) · Thayer
 
@@ -473,7 +473,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G5591](/szo/G5591) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 79.2 physical; natural *(fordításra vár)* · 79.5 natural; human *(fordításra vár)* · 41.41 unspiritual; worldly; natural *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 79.2 testi; természetes · 79.5 természetes; emberi · 41.41 nem szellemi; világi; természetes
 
 #### 3. Teológiai szócikk
 
@@ -748,33 +748,33 @@ A kétnyelvű szótár (SECE) a chaj szónak 13 megfelelőjét adja a másik bib
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| ἄνθρωπος | anthróposz | G0444 | a human *(fordításra vár)* |
-| βίος | biosz | G0979 | life *(fordításra vár)* |
-| ἑρπετόν | herpeton | G2062 | reptile *(fordításra vár)* |
-| ζωή | dzóé | G2222 | life *(fordításra vár)* |
-| ζωογονέω | dzóogoneó | G2225 | to give life *(fordításra vár)* |
-| ζῶον | dzóon | G2226 | living thing *(fordításra vár)* |
-| θηρίον | thérion | G2342 | wild animal *(fordításra vár)* |
-| θνητός | thnétosz | G2349 | mortal *(fordításra vár)* |
-| κτῆνος | kténosz | G2934 | animal *(fordításra vár)* |
-| τάγμα | tagma | G5001 | order *(fordításra vár)* |
-| τετράπους | tetrapúsz | G5074 | four-footed *(fordításra vár)* |
-| ὑγιής | hügiész | G5199 | healthy *(fordításra vár)* |
-| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | soul *(fordításra vár)* |
+| ἄνθρωπος | anthróposz | G0444 | ember |
+| βίος | biosz | G0979 | élet |
+| ἑρπετόν | herpeton | G2062 | csúszómászó |
+| ζωή | dzóé | G2222 | élet |
+| ζωογονέω | dzóogoneó | G2225 | életet adni |
+| ζῶον | dzóon | G2226 | élőlény |
+| θηρίον | thérion | G2342 | vadállat |
+| θνητός | thnétosz | G2349 | halandó |
+| κτῆνος | kténosz | G2934 | állat |
+| τάγμα | tagma | G5001 | rend |
+| τετράπους | tetrapúsz | G5074 | négylábú |
+| ὑγιής | hügiész | G5199 | egészséges |
+| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | lélek |
 
 **H5315 — נֶ֫פֶשׁ (nefes)** · SECE — görög megfelelők (9):
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| ἀνήρ | anér | G0435 | man *(fordításra vár)* |
-| ἐλεύθερος | eleutherosz | G1658 | free/freedom *(fordításra vár)* |
-| ἐλπίς | elpisz | G1680 | hope *(fordításra vár)* |
-| ἐνύπνιον | enüpnion | G1798 | dream *(fordításra vár)* |
-| καρδία | kardia | G2588 | heart *(fordításra vár)* |
-| κεφαλή | kefalé | G2776 | head *(fordításra vár)* |
-| πνοή | pnoé | G4157 | wind/breath *(fordításra vár)* |
-| σῶμα | szóma | G4983 | body *(fordításra vár)* |
-| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | soul *(fordításra vár)* |
+| ἀνήρ | anér | G0435 | férfi |
+| ἐλεύθερος | eleutherosz | G1658 | szabad/szabadság |
+| ἐλπίς | elpisz | G1680 | remény |
+| ἐνύπνιον | enüpnion | G1798 | álom |
+| καρδία | kardia | G2588 | szív |
+| κεφαλή | kefalé | G2776 | fej |
+| πνοή | pnoé | G4157 | szél/lehelet |
+| σῶμα | szóma | G4983 | test |
+| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | lélek |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
