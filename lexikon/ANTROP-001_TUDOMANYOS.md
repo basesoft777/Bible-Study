@@ -1179,7 +1179,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 **Hogyan hivatkozz:**
 - ID: `ANTROP-001`
 - Cím: Pneuma/pszükhé megkülönböztetés
-- Státusz: publikálható (`v3`, 2026.08.22)
+- Státusz: publikálható (`v4`, 2026.11.03)
 - Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
 
@@ -1225,7 +1225,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/kiadasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -1238,19 +1238,21 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Teljes cím | Pneuma/pszükhé megkülönböztetés |
 | Téma | Antropológia |
 | PaRDeS-szint | Pshat/Drash |
-| Státusz | publikálható (`v3`, 2026.08.22) |
+| Státusz | publikálható (`v4`, 2026.11.03) |
 | Azonosság típusa | lexikai |
 | Negatív kritérium | A versben (vagy a két versen átnyúló egy mondatban) a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) — vagy melléknévi alakjuk, a πνευματικός (pneumatikosz, lelki) és a ψυχικός (pszükhikosz, érzéki) — együtt áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja. Az újszövetségi helyeken a Károli alapszövege, a Textus Receptus a mérce; ahol a kritikai kiadások eltérnek, a lap jelöli. Nem tartozik ide a vers, amelyben csak az egyik szó áll, amelyben a két szó két külön mondatban áll, vagy amelyben a kettő egymás szinonimája, illetve nem az ember belső életéről szól. Kivétel az 1Móz 2:7: a héber נֶפֶשׁ חַיָּה (nefes chajjá, élő lélek) azért tartozik ide, mert az 1Kor 15:45 ezt idézi, és ennek ellenpárjaként mondja ki a megelevenítő szellemet. Név szerinti kivétel az 1Kor 2:14–15 ellentétpárja (ψυχικὸς ἄνθρωπος (pszükhikosz anthróposz) ↔ ὁ πνευματικός (ho pneumatikosz)), amely egy érvelés két versben: a 2:15-ben csak a πνευματικός áll, de a mondat a 2:14 kifejezett szembeállítását közvetlenül folytatja; a kivétel csak ezt a párt engedi, a többi, csak az egyik szót hordozó vers kint marad. |
 | Fölérendelt fogalom | az ember belső élete, lelke és szelleme általában, a két szó megkülönböztető együttállása nélkül |
 | Forrás-study | `motivumok/ANTROP-001.md` |
 | Kereszthivatkozás-napló | nincs rögzítve |
 | Sablon-megfelelőség | v14 |
-| Kiadás | nincs kiadva — feldolgozás alatt |
-| Próza modellje | nincs kiadva — feldolgozás alatt |
+| Kiadás | 1 |
+| Próza modellje | `claude-opus-5-5` |
 
 **Változásjegyzék**
 
-Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első kiadással indul.
+| Kiadás | Dátum | Mi változott |
+|---|---|---|
+| 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza és 1/a, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után csak a generált szótári rész változott (a BDB-szakaszok magyar fordítása, szócikkenkénti BDB-gerinc). |
 
 ---
 
