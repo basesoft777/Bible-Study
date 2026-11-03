@@ -7,6 +7,12 @@ kérés, `szaraz` → `keresek.jsonl`). Az első próba után a szöveg nem vál
 
 ## Verziónapló
 
+- v2 (2026-11-03, F161): a v1 szövege változatlan, egyetlen kiegészítő szabállyal („Kiegészítő szabály (v2) — UBS-definíció”).
+  Ok: a 9 lexikonlap hiányzó UBS-egységei között 101 definíció (`definicio_hu`: UBS DBH 90, UBS DNTG 11) van; ezek folyó
+  meghatározások a UBS saját jeleivel (`=`, `≈`, `◄`, `►`), `literally: …; hence:` szerkezettel és `{L:Név<SDBH:…>}`
+  hivatkozás-jelöléssel, amelyekre a v1 nem ad szabályt. A minta a gyorsítótár jóváhagyott UBS DBH definíciói („szó
+  szerint: …; innen: = …”, „= férfi; ◄ {L:Noah<SDBH:…>} fia”). A v1 csak a lánc próbáján futott (5 glossza); éles sor
+  v1-gyel nem készült. (Ez a bejegyzés a fejlécben áll, a PROMPT-KEZDET előtt: a kérés szövegét nem változtatja.)
 - v1 (2026-11-03, F161): az első változat. Forrása a v5.2 (`forditas/prompt_v5_2.md`) azon szabályai, amelyek egy
   rövid glosszára értelmezhetők: SEMA 2.5 hű fordítás, terminológia (v4.1: kötelező alakok betűhűen), tiltott
   fordulatok, a görög/héber szó és a ⟦n⟧ helyőrző érintetlen, a forrás idézőjelei (v5.2). Új: glosszaelemenként egy

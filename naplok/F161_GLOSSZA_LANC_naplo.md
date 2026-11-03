@@ -135,4 +135,4 @@ sincs teljes fordítás; a `forditasok.tsv`-ben 1 TBESH-sor van, más Strongra).
 
 Az F161.0–F161.4 tartományon (`fuggetlen-ellenor`): ELTÉRÉS 6 — mind javítva az F161.7-ben (tulajdonnév és „gerinc” hamis
 pozitív, TBESG `rovid`-szűrés, a 2. kör bájtra azonossága, a „jóváhagyott” címke, üres korábbi válasz). Az F161.5–F161.9
-második ellenőrzése: `naplok/ELLENOR_F161.md`.
+második ellenőrzése: ELTÉRÉS 6; javítva az F161.11-ben (4 kisbetűs tulajdonnév, a G1944 001900 definíciója a kezi sor szavával, egy helyesírási hiba — 6 sor kézzel, a megjegyzésben jelölve; a v2 verziónapló-bejegyzése), nyitott: N-F161d. Mindkét kör: `naplok/ELLENOR_F161.md`.
