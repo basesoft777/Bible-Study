@@ -5147,13 +5147,13 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(uj_szoveg)
         print('  %s: %s (%s, %d bájt)'
-              % (m['id'], os.path.relpath(cel_ut, ROOT), allapot, os.path.getsize(cel_ut)))
+              % (m['id'], G.kiirt_ut(cel_ut), allapot, os.path.getsize(cel_ut)))
         h = KIEJTES_JELOLT_HIANY.get(m['id']) or []
         if h:
             print('    kiejtés-szabály: %d hiány maradt — generált %d (jóváhagyott héber alak nélkül), kézi %d '
                   '(a forrásban javítandó); részletek: python naplok/KIEJTES_elso_elofordulas_meres.py %s'
                   % (len(h), sum(1 for x in h if x[2] == 'generált'), sum(1 for x in h if x[2] == 'kézi'),
-                     os.path.relpath(cel_ut, ROOT)))
+                     G.kiirt_ut(cel_ut)))
 
     print('  tisztázatlan licencű forrás érintett-e (motívumonként): %s'
           % ', '.join('%s=%s' % (k, 'igen' if v else 'nem') for k, v in osszesitett_tisztazatlan.items()))

@@ -1491,6 +1491,20 @@ class E28Teszt(unittest.TestCase):
             self.assertEqual([x.szabaly for x in t], ['E28'])
             self.assertIn('helyben frissítő út', t[0].reszlet)
 
+    def test_kimeneti_ut_kiirasa_mas_meghajton_nem_bukik(self):
+        # a munkakönyvtár D:-n, az E28 ideiglenes --kimenet-e a C:-n: a relpath ValueError-t dob
+        from unittest import mock
+        G = SZ._general_modul()
+        tmp = os.path.join(tempfile.gettempdir(), 'e28_x', 'lexikon', 'ZZTESZT-001_TUDOMANYOS.md')
+
+        def mas_meghajto(ut, start=None):
+            raise ValueError("path is on mount 'C:', start on mount 'D:'")
+
+        with mock.patch.object(G.os.path, 'relpath', mas_meghajto):
+            self.assertEqual(G.kiirt_ut(tmp), os.path.abspath(tmp))
+        self.assertEqual(G.kiirt_ut(os.path.join(G.ROOT, 'lexikon', 'x.md')),
+                         os.path.join('lexikon', 'x.md'))
+
     def test_negativ_crlf_blob_lf_generalt_kimenettel_piros(self):
         # CI-terv 1. szakasz 3. pont: a sorvegnek is egyeznie kell (nincs normalizalas)
         with _IdeiglenesGyoker() as gy:
