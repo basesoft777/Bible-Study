@@ -64,7 +64,7 @@ Létező tételek: 385 `| DT<n> |` sor a `DONTESEK.md`-ben, 49 `**N<n>` tétel a
 
 A lapszám: **8 TUDOMANYOS + 6 TORZSCIKK** (az ALVIL-001-nek és az ISTENTISZT-001-nek nincs törzscikke); a brief „7 törzscikk”-je 6.
 
-**A `DT-F123e` a main-en.** A `DONTESEK.md`-ben a main-en ma is helyőrzővel áll a `DT-F123b`…`DT-F123m` és a `DT-F131r`, összesen 82 `| DT-F…|` sor. A `szamkiosztas` Action a #513, #514 és #515 merge-e után mind `cancelled` (`gh run list --workflow szamkiosztas.yml`). Ráadásul a korábbi kiosztó commit (`c14bde29`: `DT433 → DT407` …) számai nincsenek a táblában: a legmagasabb `DT406`, a `DT433` ma is helyőrző. Ez a #141 (DT433) tárgya; e feladaton kívül esik, de a 21. (i) main-szintű SÉRTÉS-ét közvetlenül érinti.
+**A `DT-F123e` a main-en.** A `DONTESEK.md`-ben a main-en ma is helyőrzővel áll a `DT562`…`DT-F123m` és a `DT-F131r`, összesen 82 `| DT-F…|` sor. A `szamkiosztas` Action a #513, #514 és #515 merge-e után mind `cancelled` (`gh run list --workflow szamkiosztas.yml`). Ráadásul a korábbi kiosztó commit (`c14bde29`: `DT433 → DT407` …) számai nincsenek a táblában: a legmagasabb `DT406`, a `DT433` ma is helyőrző. Ez a #141 (DT433) tárgya; e feladaton kívül esik, de a 21. (i) main-szintű SÉRTÉS-ét közvetlenül érinti.
 
 **(iii) fordítatlan egység — a lista_keszit és a lap jelölései:**
 

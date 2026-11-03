@@ -870,11 +870,11 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 [^k29]: forrás: `F123 U1 teljesség-mérés, LXX-többlet háló (naplok/F123_teljesseg_ALVIL-001.md) | ‹K1›`
 [^k30]: forrás: `F123 U1 teljesség-mérés, LXX-többlet háló (naplok/F123_teljesseg_ALVIL-001.md) | ‹K1›`
 [^k31]: forrás: `F123 U1 teljesség-mérés, LXX-többlet háló (naplok/F123_teljesseg_ALVIL-001.md) | ‹K1›`
-[^k32]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT-F123o): 33 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=tehom), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
-[^k33]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT-F123o): 18 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=verem), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
-[^k34]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT-F123o): 68 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=temetkezes), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
-[^k35]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT-F123o): 130 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=siras), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
-[^k36]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT-F123o): 46 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=egyeb), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
+[^k32]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 33 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=tehom), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
+[^k33]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 18 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=verem), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
+[^k34]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 68 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=temetkezes), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
+[^k35]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 130 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=siras), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
+[^k36]: forrás: `F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 46 vers, az első itt; a lista: naplok/F123_teljesseg_ALVIL-001_blokkok.tsv (blokk=egyeb), naplok/F123_teljesseg_ALVIL-001.md | ‹K2›`
 
 *A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_ALVIL2_lxx_hid.py | ts=2026-11-02` (28 sor) · ‹K2› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_ALVIL2_u2b.py | ts=2026-11-02` (5 sor) · ‹K3› = `scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28` (3 sor)*
 
