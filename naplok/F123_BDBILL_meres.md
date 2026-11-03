@@ -107,3 +107,37 @@ A #608 merge-e után az ágat a main-re kell hozni, a táblát újra kell gener�
   `teszt_bont.py` HuIlleszt 13 OK. Két hiba a HEAD-en is fennáll, nem e tételéi: a `teszt_bont.py`
   `Determinizmus.test_ellenoriz` (`bont.py --ellenoriz`: a `bdb_szakaszok.tsv` ELTÉR), és a `teszt_szakasz_bemenet.py`
   `test_kezi_regi_sor_dt_f128f`. Mindkettő ellenőrizve egy tiszta HEAD-worktree-ben.
+
+## 7. A párhuzamos részmérés ellenőrzése (orkesztrátori bemenet, 2026-11-03)
+
+proveniencia: scope=bdb_szakasz_hu.tsv T0 (HEAD 8578a109) ↔ T2 | forras=saját szkript (eseti, a scratchpadben) + `naplok/F123_BDBILL_lap_hatas.py` | ts=2026-11-03
+
+| állítás (a leállított session részmérése) | saját mérés |
+|---|---|
+| a T0-ban 674 Strong; ebből 98 szakaszos forrású, mind elavult | 674; szakaszos 98, kategóriában vagy szövegben eltér 98 ✔ |
+| 7 `teljes` forrású csak kategóriában tér el (H1115, H2403, H3427, H3581, H3782, H3956, H9009) | ✔, mind egy-egy sor `illeszkedik` → `horgonnyal` (a horgony-kód 10-18 utáni változása); szövegben eltérő `teljes` Strong 0 |
+| 7 416 további szakaszos Strongnak van fordítása, de sora nincs; a `--strong` ezt nem pótolja | ✔ 7 416, mind szakaszos; a `reszleges_szoveg` valóban csak meglévő sorkulcsot cserél, ezért teljes generálás kellett (F123.BDBILL.2) |
+| H1875 6. sor: „2 kikeresik 1Krón 26:31.” az sz6 „2 keres, megkérdez, tanácsot kér:” helyett | ✔; T2: `szakasz`, „2 keres, megkérdez, tanácsot kér:” |
+| H8415 5. sor: „2. 5.” | ✔ (T0: a 2. sor „2. 5.”); T2: a 2. sor „2 (mély) tenger …”, az 5. „2. 5. örvény (si vera lectio) …” (a forrássor jele maga „2. 5.”) |
+| felső becslés: az ISTENTISZT-001 (H3068, H3605, H3947, H4672, H6213, H7122), ALVIL-001 és TEREMT-001 (H8415), MENNY-001 (H3947) érintett | **mért: a lapok bájtra azonosak** (5. pont). Ezek a Strongok a main-en nem állnak BDB-gerincblokkban: a lapon BDB-blokkot csak a H7585, H7121, H8034, H0922 és H8414 kap, mind `teljes` úton, változatlanul. A kiadott lapok miatti megállás ezért nem következett be. |
+
+## 8. Mit mutat most (main, régi tábla) egy táblából hiányzó vagy elavult Strong
+
+- **Lap** (`lexikon_general.bdb_gerinc_szakaszok`, `naplok/F123_BDBILL_lap_hatas.py`): a hiányzó Strong minden szakasza magyar szöveg nélkül marad, és a lapon az angol szöveg + „*(fordításra vár)*” jelenik meg. Az elavult Strong szakaszai idegen szöveget vagy töredéket mutatnak.
+  - H0509 (hiányzó): 2 útvonalból magyar szöveg nélkül régi 2 → új 0.
+  - H1875 (elavult): 18 útvonalból régi 11 → új 0. Ezen felül a `Qal/1/-`, `Qal/2/-`, `Qal/3/-` és a `Niph'al/…` a szomszéd szakasz szövegét hordozta (például a `Qal/2/-` alatt „2 kikeresik 1Krón 26:31.”, ami a Niph'al 2.).
+  - H8415 (elavult): 6-ból régi 1 → új 0; a `-/2/-` alatt „2. 5.”, a `-/3/-` és a `-/5/-` alatt töredék.
+- **Szónézet** (olvasó szerver, `lekerdezesek.bdb_magyar`): **nem érintett.** A `forditasok.tsv`-ből a közös összefűzővel a teljes magyar szócikket adja, a `bdb_szakasz_hu.tsv`-t nem olvassa. A `pardes.db` manifestje (`manifest_pardes_db.tsv`: `bdb_szakasz_hu 9664`) a következő adatbázis-építéskor frissül (36 621).
+
+## 9. Kapu (DT-F123z)
+
+`ellenoriz.py` 26. szabály (`hu_illeszt.kapu_elteresek`): a commitolt tábla törzse egyezik-e a mai generálással; a fejléc és a `proveniencia` `ts=` része nem számít. Fokozat: **SÉRTÉS (gátló), javasolt**, az indok a DT-F123z-ben.
+
+- A javított táblán: RENDBEN (~4 mp).
+- A régi (HEAD) táblán: SÉRTÉS 7 521 = 7 416 hiányzó + 105 eltérő (98 szakaszos + 7 kategória). Pontosan a fenti osztályok.
+- Tesztek (`teszt_hu_illeszt.py` `Kapu`, ideiglenes adatmásolaton): a naprakész és a más `ts`-ű tábla egyezik; a törölt Strong hiányként, a megváltozott `sz13` elavult sorként bukik; egy Thayer-sor hozzáadása nem bukik.
+
+## 10. Ami nem e PR-é
+
+- **A `lexikon_general.py` BDB-gerince csak útvonal szerint azonosít** (a #608-ban N-F123m). A javítás nem kicsi: az útvonal a kulcs a `szotar_szakasz_cimke.tsv`-ben (`szotar` + `strong` + `szakasz`), a `lexikon_hivatkozasok` → útvonal leképezésben (`gerinc_utvonal_vag`), a kiemelésben (`celok`, `hordozo`), és a 17./18. szabályban is. A `bdb_id` + útvonal kulcs ezért séma- és kapuváltozás, így külön tétel marad; a táblajavítás megy előre. A H2416 lapblokkja ettől még összevonhat azonos útvonalú szakaszokat (például a `-/1/-` a BDB2716-ból, a BDB2718-ból és a BDB2720-ból).
+- A H7585 „®” átírás-hibája és a TEREMT-002 üres-sor eltérése (orkesztrátor: külön tétel).
