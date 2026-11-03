@@ -3253,9 +3253,11 @@ BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 
 
 def bdb_rovidites_jelol(szoveg, strong):
-    """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a Biblia által igazolt héber sorrend-javítás, a futam utáni
-    szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
+    """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a torz átírás javítása (B3; a magyar bekezdésben a magyar
+    alak, a „fordításra vár” jelű angol bekezdésben a helyreállított átírás), a Biblia által igazolt héber sorrend-javítás,
+    a futam utáni szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
     lk = lemma_kiejtes(strong)
+    szoveg = BR.atiras_javit(szoveg, strong, magyar=FORDITASRA_VAR not in szoveg)
     szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong))
     return BR.jelol(szoveg, lemma_cim(lk) if lk else '', BR.alapbetu(lk[0]) if lk else '')
 
