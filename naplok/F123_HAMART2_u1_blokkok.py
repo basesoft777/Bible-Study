@@ -59,6 +59,13 @@ def main():
     for r in list(L.load_tahot()) + list(L.load_tagnt()):
         tok[r['Igehely']].append(r)
 
+    # N-F63e (DT-F123, a felhasználó: „kivesszük”): a listán kívüli Strongot egyedül hordozó 651 vers blokk-kizárás
+    nf = set()
+    for s in open(os.path.join(GY, 'naplok', 'F123_adat_HAMART-001_nf63e_fuggo.tsv'), encoding='utf-8'):
+        c = s.rstrip(chr(10)).split(chr(9))
+        if not s.startswith('#') and len(c) > 1 and c[0] != 'igehely':
+            nf.add(c[0])
+    LISTAN_KIVUL = ('H7451', 'H7043', 'H6975')
     blokk = OrderedDict()  # (halo, kulcs) -> [(vers, gerinc)]
     strong_net_versek = {d['igehely'] for d in rows if d['halo'] == 'strong'}
 
@@ -68,6 +75,10 @@ def main():
         v, g, rs = d['igehely'], d['gerinc_a_versben'], d['reszlet']
         if d['halo'] == 'strong':
             for s in [x.strip() for x in rs.split(',')]:
+                if s in LISTAN_KIVUL:
+                    if v in nf:
+                        blokk.setdefault(('nf63e', s), []).append((v, g))
+                    continue  # a listán belüli lexémát is hordozó vers a másik lexéma blokkjában áll
                 blokk.setdefault(('strong', s), []).append((v, g))
         elif d['halo'] == 'szotar':
             if g == 'igen':
@@ -116,6 +127,7 @@ def main():
         'strong': 'Strong-háló',
         'karoli': 'Károli-szó háló',
         'szotar': 'szótár-háló (BDB/Thayer)',
+        'nf63e': 'Strong-háló, N-F63e-függő',
     }
     sorok = []
     for (h, k), vs in blokk.items():
@@ -126,7 +138,11 @@ def main():
                   'naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=%s, blokk=%s), naplok/F123_teljesseg_HAMART-001.md | '
                   'scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=%s'
                   % (haloszoveg[h], n, h, k, TS))
-        if h == 'strong':
+        if h == 'nf63e':
+            ind = ('Összesítő sor %d versre (az első itt áll): %s szava áll bennük, de a negatív kritérium lexémalistáján álló '
+                   'lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (N-F63e, 2026-11-03: '
+                   '„kivesszük”) szerint blokk-kizárás.' % (n, SZEREP.get(k, k)))
+        elif h == 'strong':
             nf = ' A 651 listán kívüli Strongot hordozó vers (H7451, H7043, magányos H6975) az N-F63e-döntésre vár (DT-F123u).' \
                 if k in ('H7451', 'H7043', 'H6975') else ''
             ind = ('Összesítő sor %d versre (az első itt áll): %s szava áll bennük, de sem előfordulás-sor, sem '
@@ -151,7 +167,7 @@ def main():
                    'versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi '
                    'ellenőrzés az értelmező menetben.' % (n, k))
         szo = '' if h != 'karoli' else k.split('|')[0]
-        sorok.append([MID, elso, forras, 'nyitva', ind, szo, '', '', DATUM, 'elofordulas', '', '', ''])
+        sorok.append([MID, elso, forras, 'elutasítva' if h == 'nf63e' else 'nyitva', ind, szo, '', '', DATUM, 'elofordulas', '', '', ''])
     p = os.path.join(GY, 'naplok', 'F123_U1_%s_jelolt_sorok.tsv' % MID)
     with open(p, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: naplok/F123_HAMART2_u1_blokkok.py — jeloltek.tsv-séma, `nyitva`; az adat/jeloltek.tsv-be a #608 merge-e után kerül (rebase, majd beírás)\n')

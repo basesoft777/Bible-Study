@@ -2,7 +2,7 @@
 
 *#123 MIGRACIO2 · U1 (`munka: adat`) · takarékos menet · ág: `claude/hamart-u1-ff7c0c` · modell: claude-sonnet-5-5 · 2026-11-03*
 
-*Döntés nélküli mérés. Eszköz: `eszkozok/teljesseg_meres.py` (az ALVIL-001-nél készült, motívumfüggetlen). Soronkénti kimenet: `naplok/F123_teljesseg_HAMART-001.tsv` (2 889 sor, minden sor mellett a háló proveniencia-sora). Blokkok: `naplok/F123_teljesseg_HAMART-001_blokkok.tsv` (`naplok/F123_HAMART2_u1_blokkok.py`). Jelölt-sorok: `naplok/F123_U1_HAMART-001_jelolt_sorok.tsv` (83 `nyitva` blokk-sor, még nincs beírva az `adat/jeloltek.tsv`-be: a #608 merge-e után).*
+*Döntés nélküli mérés. Eszköz: `eszkozok/teljesseg_meres.py` (az ALVIL-001-nél készült, motívumfüggetlen). Soronkénti kimenet: `naplok/F123_teljesseg_HAMART-001.tsv` (2 889 sor, minden sor mellett a háló proveniencia-sora). Blokkok: `naplok/F123_teljesseg_HAMART-001_blokkok.tsv` (`naplok/F123_HAMART2_u1_blokkok.py`). Jelölt-sorok: `naplok/F123_U1_HAMART-001_jelolt_sorok.tsv` (83 blokk-sor: 80 `nyitva`, 3 `elutasítva` (N-F63e), még nincs beírva az `adat/jeloltek.tsv`-be: a #608 merge-e után).*
 
 ## 0. A mért állapot
 
@@ -33,11 +33,12 @@ Az eltérések lexémánként blokkba rendezve (DT-F123o minta: egy blokk-sor, a
 
 | Háló | Blokk-sor | Fedett vers (blokkonként többszörös számlálással) | Megjegyzés |
 |---|---|---|---|
-| Strong | 7 (H7451, H2403, H0127, H7843, H7043, H2555, H6975) | 1 269 (1 233 vers; a többlexémás versek mindegyik blokkban) | a H7451, H7043, H6975 blokk-sora jelöli az N-F63e-függést |
+| Strong (a kritérium listáján belüli lexémák) | 4 (H2403, H0127, H7843, H2555), `nyitva` | 582 vers (blokkonként többszörös számlálással 582) | szűretlen, kézi átnézésre (DT-F123u) |
+| Strong, N-F63e-függő | 3 (H7451 573, H7043 71, magányos H6975 7 vers), **`elutasítva`** | 651 | a felhasználó döntése (N-F63e, 2026-11-03: „kivesszük”), blokk-kizárás, indoklás: nem a negatív kritérium lexémája |
 | Károli (gerinc nélkül) | 68 (osztály × lexéma) | 257 (238 vers) | négy osztály: átok, romlás, erőszak, tövis; az osztályozás a TAHOT/TAGNT-glosszák mintaillesztése |
 | Szótár (gerinc nélkül) | 8 (H7451, H2555, H0127, H7043, H2403, H7843, G1944, G5356) | 42 | kulcseltolás-gyanús, kézi ellenőrzésre |
 
-Minden blokk-sor `nyitva`, `jelolt_tipus=elofordulas`, a háló nevével a `forras_kereses`-ben és az indoklásban (2. szabály). Döntés az U2-ben. A Károli-blokkok nagy részében a motívum Strongja nem áll a versben, tehát a negatív kritérium (lexikai) szerint a blokk kizárás-jelölt; ezt **az U2 mondja ki**, nem a mérés.
+Minden blokk-sor (a 3 N-F63e-sor kivételével, amely `elutasítva`) `nyitva`, `jelolt_tipus=elofordulas`, a háló nevével a `forras_kereses`-ben és az indoklásban (2. szabály). Döntés az U2-ben. A Károli-blokkok nagy részében a motívum Strongja nem áll a versben, tehát a negatív kritérium (lexikai) szerint a blokk kizárás-jelölt; ezt **az U2 mondja ki**, nem a mérés.
 
 ## 3. Proveniencia
 
