@@ -1159,7 +1159,7 @@ A motívum 16 ószövetségi helyéből 13 helyen a görög fordítás (Septuagi
 
 A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 21. **Következtetés:** a helyek 50%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 11 igehely ad legalább egy találatot (21 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 3 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Zsolt 116:13, ApCsel 2:21, ApCsel 9:14.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 11 igehely ad legalább egy találatot (21 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 3 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Zsolt 116:13, ApCsel 2:21, ApCsel 9:14.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12:8

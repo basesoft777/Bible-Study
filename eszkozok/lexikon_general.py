@@ -3864,7 +3864,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                % (m['id'], len(sorai_rendezve), len(bekezdesek), talalat_szam, len(nem_vizsgalhato)))
     if kh_kihagyva:
         hatokor += (' %d igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata '
-                    '(`eszkozok/karoli_kh_epseg.py`, N-F156a): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
+                    '(`eszkozok/karoli_kh_epseg.py`, DT557): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],
