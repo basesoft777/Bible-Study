@@ -28,8 +28,9 @@ fejléc a `--ts-atiras 2026-11-03` kapcsolóval és az új kód-hash-sel módosu
 
 ## 2. A torz alakot hordozó fordítások (`adat/forditasok.tsv`, BDB, `forditas_hu`)
 
-A megjelenítés (`bdb_rovidites.atiras_javit`) részszöveg szerint cserél, ezért a toldalékos magyar alak is javul
-(„Sh®°ôlban” → „Sheʾôlban”). A fordítássorokat nem írtam át.
+A megjelenítés (`bdb_rovidites.atiras_javit`) részszöveg szerint cserél, ezért a toldalékos magyar alak is javul. A
+magyar szövegben a tár alakja áll (DT-F164a 🟢, felhasználó, 2026-11-03: „Seól álljon”): „Sh®°ôlban” → „Seólban”;
+az angol szövegben a helyreállított átírás: „Sh®°ôl” → „Sheʾôl”. A fordítássorokat nem írtam át.
 
 | Strong | jelentes_szam | allapot | „®” előtte | utána | teendő |
 |---|---|---|---|---|---|
@@ -55,9 +56,8 @@ A megjelenítés (`bdb_rovidites.atiras_javit`) részszöveg szerint cserél, ez
 | **H7848** | sz2 | sonnet | 1 | 1 | forrásdöntés (N-F164c), utána esetleg új fordítás |
 | H1004, H5971, H7901 | teljes | elavult | 1, 2, 1 | 0 | nincs (elavult sor) |
 
-**Új fordítás a jelenlegi döntéssel (DT-F164a (a)) nem kell.** Ha a magyar szövegben a tár „Seól” alakja kell a
-BDB-átírás helyett (N-F164b), akkor a fenti 18 nem elavult, javított sor (17 Strong) új fordítást vagy terminológiai
-csereréteget kíván.
+**Új fordítás nem kell:** a „Seól” alakot is a megjelenítés adja (`ATIRAS_MAGYAR`), a fordítássorokhoz nem nyúl.
+A terminológia (`adat/terminologia.tsv`) viszont „Seol”-t ír; az eltérés: N-F164b.
 
 A H7585 `kezi` sorai (teljes, nyelvi_hatter) a fordítás szövegében már „Seól”-t hordoznak (4e2cfc27), a „She®°ôl”
 csak a megjegyzésükben áll; a csere ezekhez nem nyúl. A kézi foltot ez a PR nem vonja vissza: a sor jóváhagyott `kezi`
@@ -84,6 +84,12 @@ Egyetlen generált lap sem hordoz „®”-t (az alapvonalban sem): a 30 javíto
 renderel a torz szakaszból (a H7585 a `kezi` úton megy). A `TORZSCIKK` a lapból renderel, így az sem változik. A
 lapokat ezért nem commitoltam. A hatás az olvasó szónézetében (`/szo/<Strong>`, `olvaso_szerver/blokkok.py`) látszik,
 amely futásidőben renderel.
+
+**Második kör (DT-F164a 🟢, „Seól” a magyar szövegben, 2026-11-03):** ugyanez a módszer az új kóddal: mind a 9 lap
+alapvonal ↔ javított 0 sor, és az első kör javított lapjaihoz képest is 0 sor. A „Seól” a lapokon eddig is csak a
+kézi forrásból áll (ALVIL-001 2, HODIT-001 6 előfordulás), „Sheʾôl” és „®” egyik lapon sincs. Az olvasóban
+(`blokkok._rovidites`, a WSL venv-ben ellenőrizve): magyar blokk „a Sh®°ôlban” → „a Seólban”, angol blokk
+„in Sh®°ôl” → „in Sheʾôl”.
 
 ## 4. Kapuk
 

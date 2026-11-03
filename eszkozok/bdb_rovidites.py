@@ -150,14 +150,20 @@ def atiras_javitasok(ut=None):
     return _ATIRAS
 
 
-def atiras_javit(szoveg, strong, javitasok=None):
+# A javított átírás magyar szövegbeli alakja (DT-F164a, felhasználó, 2026-11-03: „Seól álljon”): az angol forrásszövegben a
+# helyreállított átírás marad, a magyar fordításban a tár alakja áll. Kulcs: a javítótábla `javitott_alak`-ja.
+ATIRAS_MAGYAR = {'Sheʾôl': 'Seól', 'sheʾôl': 'seól'}
+
+
+def atiras_javit(szoveg, strong, javitasok=None, magyar=False):
     """A Strong `javitva` átírásainak cseréje a szövegben, részszöveg szerint (a torz alak az angol szövegben és a magyar
-    fordításban is szó szerint áll, a fordításban toldalékkal: „Sh®°ôlban” → „Sheʾôlban”; B3)."""
+    fordításban is szó szerint áll, a fordításban toldalékkal). `magyar`: a szöveg a magyar fordítás, ott a javított alak
+    magyar alakja áll (`ATIRAS_MAGYAR`): „Sh®°ôlban” → „Seólban”; angolul „Sh®°ôl” → „Sheʾôl” (B3)."""
     parok = (javitasok if javitasok is not None else atiras_javitasok()).get(_strong_kulcs(strong))
     if not parok or not szoveg:
         return szoveg
     for regi, uj in parok:
-        szoveg = szoveg.replace(regi, uj)
+        szoveg = szoveg.replace(regi, ATIRAS_MAGYAR.get(uj, uj) if magyar else uj)
     return szoveg
 
 

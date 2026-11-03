@@ -68,7 +68,10 @@ class Atiras(unittest.TestCase):
 
     def test_csere_toldalekkal(self):
         # DT-F164a: részszöveg szerint, a magyar toldalékkal is
-        self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl).', 'H11', self.JAV), 'a Sheʾôlban (Sheʾôl).')
+        self.assertEqual(BR.atiras_javit('in Sh®°ôl (Sh®°ôl).', 'H11', self.JAV), 'in Sheʾôl (Sheʾôl).')
+        # DT-F164a (felhasználó, 2026-11-03): a magyar szövegben „Seól”
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl-ról).', 'H11', self.JAV, magyar=True), 'a Seólban (Seól-ról).')
+        self.assertEqual(BR.atiras_javit('a sh®°ôlba', 'H1004', {'H1004': [('sh®°ôl', 'sheʾôl')]}, magyar=True), 'a seólba')
         self.assertEqual(BR.atiras_javit('a Sh®°ôlban', 'H0001', self.JAV), 'a Sh®°ôlban')
 
     def test_tabla(self):
