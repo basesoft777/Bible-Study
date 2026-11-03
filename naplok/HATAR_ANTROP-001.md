@@ -57,4 +57,8 @@ Válaszok: (a) a Fil 1:27 bekerül, a Luk 1:46–47 mintájára (11 → 12 igehe
 Válaszok: (a) bent marad, a név szerinti kivétellel (javasolt; 11 igehely); (b) kizárva, az 1Kor 2:14 marad (11 → 10 igehely).
 
 (proveniencia: scope=adat/motivumok.tsv (ANTROP-001 negativ_kriterium), adat/jeloltek.tsv (ANTROP-001 1Kor 2:15, ApCsel 4:31-32, ApCsel 20:23-24, 2Kor 1:22-23, Luk 9:55-56, 1Kor 3:1 blokk), naplok/ELLENOR_F123_ANTROP-001.md 1. tétel | forras=split('\t') | ts=2026-11-03 · scope=range:1Kor 2:15 | forras=TAGNT_kivonat.tsv | strong=G4152 | n=1 | ts=2026-11-03T10:41Z; ugyanígy G4151, G5590, G5591: n=0)
+
+**Felhasználói besorolás** (2026-11-03, a Kiadón; szó szerint: „LEKTOR-VALASZ | hatar:ANTROP-001:mK1 | elfogadom | LEKTOR-VALASZ | hatar:ANTROP-001:mK2 | elfogadom |”, majd: „maradnak”; az orkesztrátor közvetítésével)
+- K1: Elfogadom (Javasolt) — a felhasználó döntése, 2026-11-03: a Fil 1:27 kint marad („elfogadom”, „maradnak”); a motívum 11 igehelyes, adat és lapszöveg nem változik. LEZÁRVA.
+- K2: Elfogadom (Javasolt) — a felhasználó döntése, 2026-11-03: az 1Kor 2:15 bent marad, a név szerinti kivétellel („elfogadom”, „maradnak”); a motívum 11 igehelyes, adat és lapszöveg nem változik. LEZÁRVA.
 <!-- MODELLES-VEGE -->
