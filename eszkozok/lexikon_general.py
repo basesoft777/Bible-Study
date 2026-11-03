@@ -139,10 +139,18 @@ def igehely_rendez(igehelyek, konyv_sorrend, hianyzo_konyvek):
     return sorted(igehelyek, key=lambda ige: G.igehely_rendezo_kulcs(ige, konyv_sorrend, hianyzo_konyvek))
 
 
+# A Károli-KH/TSK magyar megjelenítésének régi könyvrövidítései, amelyek nem a
+# `Konyv_normalizalo_tabla.tsv` alakjai (olvasói kapu KONYV).
+KH_KONYV_JAVIT = {'Eféz': 'Ef'}
+
+
 def karoli_colon(s):
     """'Péld 8,22' -> 'Péld 8:22'; '1Móz 2,4-5' -> '1Móz 2:4-5' (G8/K5:
     a TSK/Károli-KH magyar-megjelenítése vesszős, a generált oldal nem
-    lehet az)."""
+    lehet az); a régi könyvrövidítés a normalizáló tábla alakjára."""
+    for regi, uj in KH_KONYV_JAVIT.items():
+        if s.startswith(regi + ' '):
+            s = uj + s[len(regi):]
     return re.sub(r'(\d+),(\d+)', r'\1:\2', s, count=1)
 
 
