@@ -227,7 +227,7 @@ HU_TABLA = os.path.join(GYOKER, 'adat', 'bdb_szakasz_hu.tsv')
 
 def kesz_magyar_csoportositva(strong):
     """A kész magyar fordítás (`adat/bdb_szakasz_hu.tsv`, 2.32) szakaszai tokenes párként, a kapu próbájához (F128 M3, M4).
-    A csoport az `illeszkedik` sornál (és az 1. sornál) kezdődik; a többi sor (`horgonnyal`, `elakad`, `jelolo_nelkul`) a
+    A csoport az `illeszkedik` és a `szakasz` (igazolt `sz<n>` 1:1, F123.BDBILL) sornál (és az 1. sornál) kezdődik; a többi sor (`horgonnyal`, `elakad`, `jelolo_nelkul`) a
     megelőző csoportba olvad, mert a magyar szövegének határa nem biztos. -> (forrás tokenes, magyar tokenes, összeolvasztott
     sorok száma) vagy None, ha a Strongnak nincs illesztett magyar szövege vagy szakaszsora."""
     szak = szakaszok(strong)
@@ -246,7 +246,7 @@ def kesz_magyar_csoportositva(strong):
         r = hu.get(x['sorszam'])
         if r is None:
             return None
-        if not csop or r['kategoria'] == 'illeszkedik':
+        if not csop or r['kategoria'] in ('illeszkedik', 'szakasz'):
             csop.append([x['sorszam'], [], []])
         csop[-1][1].append(x['szoveg'])
         if r['szoveg_hu']:

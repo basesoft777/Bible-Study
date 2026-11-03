@@ -1590,6 +1590,28 @@ def osszesito(sorok):
     return darab
 
 
+def szabaly26_bdb_szakasz_hu(adat_dir):
+    """F123.BDBILL, DT-F123z (SERTES, gatol): a generalt `bdb_szakasz_hu.tsv` (SEMA 2.32) torzse egyezzen azzal, amit a
+    `hu_illeszt.py` a mai `bdb_szakaszok.tsv` + `forditasok.tsv` + `bdb_forras_javitas.tsv`-bol ad: minden BDB-forditasu
+    Strongnak legyen sora, a szakaszos forditas a sajat `sz<n>` sorabol (DT-F123y), elavult hash es fols sor nelkul. A
+    fejlec (a bemenetek hash-e) es a `proveniencia` `ts=` resze nem szamit. Javitas: `python eszkozok/bdb_jelolt/hu_illeszt.py
+    --ts <nap>` (determinisztikus, koltsegmentes). Az ok: a tabla 2026-10-18 utan 7 416 Strongnal hianyzott, 98-nal elavult
+    volt, es ez a lapon csendben angol szoveget / idegen szakaszt adott (naplok/F123_BDBILL_meres.md)."""
+    cim = '26. A BDB-szakaszfordítás táblája naprakész (bdb_szakasz_hu.tsv)'
+    if not all(os.path.exists(os.path.join(adat_dir, f)) for f in ('bdb_szakaszok.tsv', 'forditasok.tsv',
+                                                                     'bdb_forras_javitas.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='hiányzik a szakasztábla, a fordítások vagy a javítótábla')
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt', 'hu_illeszt.py')
+    spec = importlib.util.spec_from_file_location('hu_illeszt_e26', ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    hibak = m.kapu_elteresek(adat_dir)
+    if hibak:
+        return Sor(cim, 'SÉRTÉS', len(hibak), hibak, megjegyzes='javítás: python eszkozok/bdb_jelolt/hu_illeszt.py --ts <nap>')
+    return Sor(cim, 'RENDBEN')
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1652,6 +1674,7 @@ def main():
         tabla_sorok.append(szabaly23_proza_lefedettseg(args.adat))
         tabla_sorok.append(szabaly24_labjegyzet_definicio(args.adat))
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
+        tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
