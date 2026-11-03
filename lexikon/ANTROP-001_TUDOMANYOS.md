@@ -1,14 +1,22 @@
-<!-- GENERÁLT: general.py --cel lexikon | rések: tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md -->
+<!-- GENERÁLT: general.py --cel lexikon | rések: motivumok/ANTROP-001.md -->
 
 # 📖 ANTROP-001 — Pneuma/pszükhé megkülönböztetés
 
 ## Kivonat *(kézi)*
 
-A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") és ψυχή (*pszükhé*, "lélek") öt újszövetségi helyen jelenik meg egyértelmű grammatikai megkülönböztetésben — háromszor nominális alakban (1Thessz 5:23, 1Kor 15:45 az 1Móz 2:7 hátterével, Luk 1:46-47), kétszer melléknévi alakban (1Kor 2:14-15). A legerősebb lexikai bizonyíték a Luk 1:46-47 pár, ahol a két szó ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben áll, tudatosan megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Vitatott pont marad, hogy a megkülönböztetés valódi ontológiai trichotómiát (Watchman Nee) vagy funkcionális/retorikai különbségtételt (F.F. Bruce) jelent-e.
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
+
+A motívum azokat a bibliai helyeket gyűjti, ahol a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) egymás mellett áll, és a szöveg a kettőt megkülönbözteti. A két szó az Újszövetségben gyakori, a πνεῦμα 351, a ψυχή 96 versben áll, együtt azonban mindössze hat versben; ezek közül három tartozik ide. A legvilágosabb hely Pál áldása, amely az embert szellemre, lélekre és testre tagolja (1Thessz 5:23), és a Zsidókhoz írt levél mondata, amely szerint Isten beszéde a lélek és a szellem határáig hat (Zsid 4:12). A korinthusi levél kétszer is szembeállítja a két szó melléknévi alakját: az érzéki és a lelki embert (1Kor 2:14–15), majd a vetett érzéki és a feltámadó lelki testet (1Kor 15:44–46). Ide tartozik Mária éneke is, ahol egy mondatban a lélek magasztal és a szellem örvendez (Luk 1:46–47).
+
+A motívum csúcspontja az 1Kor 15:45: Pál az első ember teremtését idézi, aki „élő lélekké” lett (1Móz 2:7), és ellenpárjaként kimondja, hogy az utolsó Ádám, Krisztus, „megelevenítő szellemmé” lett. A lélek itt az az élet, amelyet az ember kapott, a szellem az az élet, amelyet Krisztus ad. A magyar olvasó ezt a különbséget a Károli-fordításban alig látja, mert a Károli a két szót többnyire egyformán lélekre fordítja.
+
+A határt a két szó együttállása húzza meg: ide az a vers tartozik, amelyben a πνεῦμα és a ψυχή, vagy melléknévi alakjuk, a πνευματικός (pneumatikosz, lelki) és a ψυχικός (pszükhikosz, érzéki), egy mondatban áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja. Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce; ahol a kritikai kiadások eltérnek, a lap jelöli. Nem tartozik ide a vers, amelyben csak az egyik szó áll, amelyben a két szó két külön mondatban áll, és az sem, amelyben a kettő egymás szinonimája (Fil 1:27: „egy lélekben, egy érzéssel”), vagy nem az ember belső életéről szól (Mt 12:18: Isten lelke és Lelke). A motívum tehát nem az ember lelkéről vagy szelleméről szóló bibliai tanítás általában, hanem az a néhány hely, ahol a Biblia a kettőt egymás mellett, egymástól megkülönböztetve nevezi meg. Egy hely kivételként tartozik ide: az 1Móz 2:7 héber szövegében nincs meg a görög szópár, de az 1Kor 15:45 ezt a mondatot idézi, és ennek ellenpárjaként mondja ki a szellemet.
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+
+A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -31,7 +39,9 @@ A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") �
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+
+A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -54,6 +64,26 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
 (Septuaginta), MT (Masoretic Text), KJV (King James Version).
 
+**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés, mindkét nyelven szabályos átírás. A
+héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
+jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
+
+**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
+mondat a lap készítőinek szól.
+
+**Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
+körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
+ellenőrzéshez való, olvasáskor átugorható.
+
+**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel
+áll, a teljes proveniencia-sor egyszer, a blokk alatt. Az előtag a blokkot jelöli: E az előfordulások, K a kizárt és
+vizsgált helyek, M a minősítés.
+
+**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
+kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a
+szócikk szövegéből derül ki.
+
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
 (pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).
 
@@ -61,176 +91,801 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditas_ubs.tsv | licenc: projekt-adat, közkincs, CC BY-SA 4.0 | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum 8 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
+A motívum 11 igehelyen fordul elő, 6 bibliai könyvben (1 ószövetségi, 10 újszövetségi hely); a legtöbb hely: 1Kor (5). 7 hely azonosítása magas megbízhatóságú, 4 alacsonyabb. **Következtetés:** a motívum néhány könyvben, mindkét szövetségben fordul elő, és sok a bizonytalan azonosítás.<!-- olvasói -->
 
-| Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
+*Ez a blokk a `[ID: ANTROP-001]` motívum 11 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
+
+| Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 2:7](#ige-1móz-2-7) | élő lélekké — נֶ֥פֶשׁ (Ne.fesh); חַיָּֽה (chai.Yah) | — | Remez/Sod | H5315+H2416 | — | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
-| [Luk 1:46](#ige-luk-1-46) | az én lelkem — ψυχή (psuchē) | — | Peshat | G4151+G5590 | — | G4151: *(nincs hozzárendelés)* · G5590: 26.4 — az élet lényege a gondolkodás, az akarás és az érzés tekintetében | magas · tartalom-alapú[^2] |
-| [Luk 1:47](#ige-luk-1-47) | az én lelkem — πνεῦμά (pneuma) | — | Peshat | G4151+G5590 | — | G4151: 26.9 — a nem anyagi, pszichológiai képesség, amely képes Isten iránt fogékony lenni és Istennek válaszolni (a πνεῦμα[e] ellentétben áll a σάρξ[f]-fel [Louw–Nida 26.7]: az isteni kifejeződése a pusztán emberivel szemben) · G5590: *(nincs hozzárendelés)* | magas · tartalom-alapú[^3] |
-| [1Kor 2:14](#ige-1kor-2-14) | Érzéki (pszükhikosz); Isten Lelkének (pneuma) — πνεύματος (pneumatos) | — | Drash | G4151+G5590 | — | G4151: 12.18 — a Szentháromság harmadik személyének címe, szó szerint: szellem · G5590: *(nincs hozzárendelés)* | közepes · tartalom-alapú[^4] |
-| [1Kor 2:15](#ige-1kor-2-15) | A lelki ember — — | — | Drash | G4151+G5590 | — | G4151: *(nincs hozzárendelés)* · G5590: *(nincs hozzárendelés)* | közepes · tartalom-alapú[^5] |
-| [1Kor 15:45](#ige-1kor-15-45) | élő lélekké (pszükhé); megelevenítő szellemmé (pneuma) — πνεῦμα (pneuma); ψυχὴν (psuchēn) | — | Remez/Sod | G4151+G5590 | — | G4151: 12.33 — természetfeletti, nem anyagi lény · G5590: 9.20 — (a ψυχή[a] 'belső én, elme' [Louw–Nida 26.4] jelentés átvitt kiterjesztése) személy mint élő lény | magas · tartalom-alapú[^6] |
-| [1Thessz 5:23](#ige-1thessz-5-23) | valótok (pneuma); lelketek (pszükhé) — πνεῦμα (pneuma); ψυχὴ (psuchē) | — | Peshat | G4151+G5590 | — | G4151: 26.9 — a nem anyagi, pszichológiai képesség, amely képes Isten iránt fogékony lenni és Istennek válaszolni (a πνεῦμα[e] ellentétben áll a σάρξ[f]-fel [Louw–Nida 26.7]: az isteni kifejeződése a pusztán emberivel szemben) · G5590: 26.4 — az élet lényege a gondolkodás, az akarás és az érzés tekintetében *(jelölt, nem egyértelmű)*; 23.88 — az ember vagy más élőlény létezése, amelyet a belélegezhető levegő és az ennivaló jelenléte tart fenn *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^7] |
-| [Zsid 4:12](#ige-zsid-4-12) | szívnek (pszükhé); léleknek (pneuma) — πνεύματος (pneumatos); ψυχῆς (psuchēs) | — | Peshat/Sod | G4151+G5590 | — | G4151: 26.9 — a nem anyagi, pszichológiai képesség, amely képes Isten iránt fogékony lenni és Istennek válaszolni (a πνεῦμα[e] ellentétben áll a σάρξ[f]-fel [Louw–Nida 26.7]: az isteni kifejeződése a pusztán emberivel szemben) · G5590: 26.4 — az élet lényege a gondolkodás, az akarás és az érzés tekintetében *(jelölt, nem egyértelmű)*; 23.88 — az ember vagy más élőlény létezése, amelyet a belélegezhető levegő és az ennivaló jelenléte tart fenn *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^8] |
+| [1Móz 2:7](#ige-1móz-2-7) | élő lélekké — לְנֶ֥פֶשׁ (lenefes); חַיָּֽה (chajjá) | H5315: Isten leheletétől élő lénnyé lett lélek · 2; H2416: *(nincs hozzárendelés)*[^1] | ószövetségi háttér | Remez/Sod | H5315+H2416 | H5315: living creature; living soul *(fordításra vár)* [ⓘ](/szo/H5315) · H2416: alive; living *(fordításra vár)* [ⓘ](/szo/H2416); life *(fordításra vár)* [ⓘ](/szo/H2416) | magas · szó-szintű-gépi[^1] |
+| [Luk 1:46](#ige-luk-1-46) | az én lelkem — ψυχή (pszükhé) | a lélek mint az érzelmek és a vágyak székhelye · Thayer 2[^2] | párhuzamos sor, első tag | Peshat | G5590 | belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) | magas · tartalom-alapú[^2] |
+| [Luk 1:47](#ige-luk-1-47) | az én lelkem — πνεῦμά (pneuma) | az ember szelleme: az élet és a gondolkodás elve · Thayer 2[^3] | párhuzamos sor, második tag | Peshat | G4151 | szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) | magas · tartalom-alapú[^3] |
+| [1Kor 2:14](#ige-1kor-2-14) | Érzéki; Isten Lelkének — πνεύματος (pneumatosz); ψυχικὸς (pszükhikosz) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^4] | két embertípus, első tag | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: natural; human *(fordításra vár)* [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)*; unspiritual; worldly; natural *(fordításra vár)* [ⓘ](/szo/G5591) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^4] |
+| [1Kor 2:15](#ige-1kor-2-15) | A lelki ember — πνευματικὸς (pneumatikosz) | Isten Lelkétől betöltött és vezetett ember · Thayer 3.b[^5] | két embertípus, második tag | Drash | G4152 | one who is spiritual; one who has received the Spirit *(fordításra vár)* [ⓘ](/szo/G4152) | közepes · tartalom-alapú[^5] |
+| [1Kor 15:44](#ige-1kor-15-44) | érzéki test; lelki test — πνευματικόν (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^6] | két test | Remez/Sod | G4152+G5591 | G4152: not physical; not material; spiritual *(fordításra vár)* [ⓘ](/szo/G4152) · G5591: physical; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^6] |
+| [1Kor 15:45](#ige-1kor-15-45) | élő lélekké; megelevenítő szellemmé — πνεῦμα (pneuma); ψυχὴν (pszükhén) | G4151: szellem általában; a feltámadt Krisztusról: megelevenítő szellem · Thayer 3.a; G5590: *(nincs hozzárendelés)*[^7] | csúcspont | Remez/Sod | G4151+G5590 | G4151: szellem [ⓘ](/szo/G4151) · G5590: személy; emberek [ⓘ](/szo/G5590) | magas · tartalom-alapú[^7] |
+| [1Kor 15:46](#ige-1kor-15-46) | a lelki; az érzéki — πνευματικόν.¶ (pneumatikon); ψυχικόν (pszükhikon) | G4152: az ember szellemére vonatkozó, a lélekkel szembeállítva · Thayer 1; G5591: *(nincs hozzárendelés)*[^8] | sorrend | Remez/Sod | G4152+G5591 | G4152: not physical; not material; spiritual *(fordításra vár)* [ⓘ](/szo/G4152) · G5591: physical; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^8] |
+| [1Thessz 5:23](#ige-1thessz-5-23) | valótok; lelketek — πνεῦμα (pneuma); ψυχὴ (pszükhé) | G4151: az ember szelleme: az élet és a gondolkodás elve · Thayer 2; G5590: *(nincs hozzárendelés)*[^9] | hármas felsorolás | Peshat | G4151+G5590 | G4151: szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) · G5590: belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)*; élet [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^9] |
+| [Zsid 4:12](#ige-zsid-4-12) | szívnek; léleknek — πνεύματος (pneumatosz); ψυχῆς (pszükhész) | G4151: az ember szelleme: az élet és a gondolkodás elve · Thayer 2; G5590: *(nincs hozzárendelés)*[^10] | szétválasztás | Peshat/Sod | G4151+G5590 | G4151: szellem; szellemi; szellemi természet; belső lény [ⓘ](/szo/G4151) · G5590: belső én; elme; gondolatok; érzések; szív; lény [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)*; élet [ⓘ](/szo/G5590) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^10] |
+| [Júd 1:19](#ige-júd-1-19) | érzékiek; Szent Lélek — πνεῦμα (pneuma); ψυχικοί (pszükhikoi) | G4151: *(nincs hozzárendelés)*; G5591: az érzéki természettől vezérelt · Thayer b[^11] | figyelmeztetés | Drash | G4151+G5591 | G4151: Szellem; Isten Szelleme; Szent Szellem [ⓘ](/szo/G4151) · G5591: unspiritual; worldly; natural *(fordításra vár)* [ⓘ](/szo/G5591) | magas · tartalom-alapú[^11] |
 
-[^1]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-igazolt
-[^2]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^3]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^4]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^5]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^6]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^7]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
-[^8]: proveniencia: scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22 | igazolas: TAHOT-hatokoron-kivul
+[^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: H5315 — BDB-példa: a BDB a 2. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 47, 52); ez a kutatói hozzárendelés (2 → 2) alá esik, a címke a finomabb útvonalé · H2416 — a BDB a verset az 1., 1.d szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 196, 436), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre
+[^2]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`)
+[^3]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`)
+[^4]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — a Thayer saját példahelye: Thayer 4.a (`adat/thayer_vers_jelentes.tsv` sorszam 217) · G5591 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „b” → Thayer b, `adat/szotar_szakasz_cimke.tsv`)
+[^5]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „3.b” → Thayer 3.b, `adat/szotar_szakasz_cimke.tsv`)
+[^6]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4152 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`) · G5591 — a Thayer saját példahelye: Thayer fej (`adat/thayer_vers_jelentes.tsv` sorszam 1)
+[^7]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „3.a” → Thayer 3.a, `adat/szotar_szakasz_cimke.tsv`) · G5590 — a Thayer saját példahelye: Thayer 1.c (`adat/thayer_vers_jelentes.tsv` sorszam 44)
+[^8]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4152 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`) · G5591 — a Thayer saját példahelye: Thayer fej (`adat/thayer_vers_jelentes.tsv` sorszam 2)
+[^9]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`) · G5590 — a Thayer saját példahelye: Thayer 1.a (`adat/thayer_vers_jelentes.tsv` sorszam 6)
+[^10]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → Thayer 2, `adat/szotar_szakasz_cimke.tsv`) · G5590 — a Thayer saját példahelye: Thayer 1.a (`adat/thayer_vers_jelentes.tsv` sorszam 7)
+[^11]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: G4151 — a Thayer a helyet nem idézi (`adat/thayer_vers_jelentes.tsv`) · G5591 — kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „b” → Thayer b, `adat/szotar_szakasz_cimke.tsv`)
 
-*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New Testament Dictionary az Újszövetséget fedi.*
+*A közös forrásmegjelölések: ‹E1› = `scope=manual | forras=Pneuma_pszukhe_megkulonboztetes_tematikus.md | ts=2026-08-22` (8 sor) · ‹E2› = `scope=manual | forras=F123 ANTROP-001 új cikk, U2 (az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-03); jeloltek.tsv beépítve | ts=2026-11-03` (3 sor)*
+
+*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése (`konkordancia/UBS_DBH_referenciak.tsv`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); tokenenként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes UBS-szócikk (definíció és glosszák) áll (DT393). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel. Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*
 
 #### 1/a. Az igehelyek szövege
+
+A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.<!-- olvasói -->
 
 
 <a id="ige-1móz-2-7"></a>
 **1Móz 2:7**
 *És formálta vala az Úr Isten az embert a földnek porából, és lehellett vala az ő orrába életnek lehelletét. Így lőn az ember élő lélekké.*
-az ember נֶפֶשׁ חַיָּה ("élő lélek") lesz Isten leheletétől; Pál ezt állítja szembe 1Kor 15:45-ben az utolsó Ádámmal — tematikus, ellentétező párhuzam, NEM lexikai folytonosság
+Az Úr Isten a föld porából formált ember orrába életnek lehelletét leheli, és „Így lőn az ember élő lélekké”. A héber szöveg itt nem a lélek és a szellem kettősségéről beszél: a נֶפֶשׁ חַיָּה (nefes chajjá, élő lélek) az egész, eleven ember, akit Isten lehelete tett élővé. A hely azért áll a motívumban, mert Pál az 1Kor 15:45-ben ezt a mondatot idézi, és ehhez méri az utolsó Ádámot.
+
+Funkció: az első ember élő lélekként kap életet Isten leheletétől; ehhez a mondathoz méri az Újszövetség a megelevenítő szellemet
 
 <a id="ige-luk-1-46"></a>
 **Luk 1:46**
 *Akkor monda Mária: Magasztalja az én lelkem az Urat,*
-Mária éneke: "magasztalja az én lelkem (ψυχή) az Urat" — negyedik, valódi lexikai előfordulás, párhuzamos szerkezetben Luk 1:47-tel
+Mária énekének első sorában a lélek, a ψυχή (pszükhé) az alany: „Magasztalja az én lelkem az Urat”. A mondat a következő versben folytatódik, és ott a szellem lesz az alany; a Károli a két görög szót egyformán „lelkem”-nek fordítja.
+
+Funkció: a lélek magasztalja az Urat; a mondat a következő versben a szellemmel folytatódik
 
 <a id="ige-luk-1-47"></a>
 **Luk 1:47**
 *És örvendez az én lelkem az én megtartó Istenemben.*
-Mária éneke: "és örvendez az én szellemem (πνεῦμα) az én megtartó Istenemben" — ugyanabban a grammatikai szerepben, mint 1:46
+Az ének második sorában a szellem, a πνεῦμα (pneuma) az alany: „És örvendez az én lelkem az én megtartó Istenemben.” A két sor egy mondat, és mindkét szónak saját igéje van: a lélek magasztal, a szellem örvendez. Hogy Mária két külön valóságot nevez-e meg, vagy a héber költészet módján ugyanazt mondja kétszer, azt az értelmezés szakasza tárgyalja.
+
+Funkció: a szellem örvendez Istenben; az előző verssel együtt egy mondat
 
 <a id="ige-1kor-2-14"></a>
 **1Kor 2:14**
 *Érzéki ember pedig nem foghatja meg az Isten Lelkének dolgait: mert bolondságok néki; meg sem értheti, mivelhogy lelkiképen ítéltetnek meg.*
-a "természet szerinti ember" (ψυχικὸς ἄνθρωπος) nem fogadja be Isten Szellemének dolgait — ötödik előfordulás, melléknévi alakban
+Pál az érzéki emberről, a görögben ψυχικὸς ἄνθρωπος (pszükhikosz anthróposz) emberről mondja, hogy „nem foghatja meg az Isten Lelkének dolgait”, mert azok neki bolondságok. A ψυχή szóból képzett melléknév itt nem az ember egyik részét, hanem egy embertípust nevez meg: azt, aki csak a természetes képességeire támaszkodik, és ezért Isten Lelkének, a πνεῦμα (pneuma) dolgait nem fogadja be.
+
+Funkció: az érzéki ember nem fogadja be Isten Lelkének dolgait; párja a következő vers
 
 <a id="ige-1kor-2-15"></a>
 **1Kor 2:15**
 *A lelki ember azonban mindent megítél, de ő senkitől sem ítéltetik meg.*
-a "szellemi ember" (πνευματικός) mindent megvizsgál — az 1Kor 2:14 párja
+Az ellentét második tagja a lelki ember, a görögben πνευματικός (pneumatikosz), aki „mindent megítél, de ő senkitől sem ítéltetik meg”. Ebben a versben csak a πνεῦμα melléknévi alakja áll; a hely az előző verssel együtt, az ellentét párjaként tartozik a motívumba.
+
+Funkció: a Lélektől vezetett ember mindent megítél; az előző vers érzéki emberének ellentétpárja
+
+<a id="ige-1kor-15-44"></a>
+**1Kor 15:44**
+*Elvettetik érzéki test, feltámasztatik lelki test. Van érzéki test, és van lelki test is.*
+Pál a feltámadásról szólva a vetett és a feltámadó testet állítja szembe: „Elvettetik érzéki test, feltámasztatik lelki test.” A görögben a ψυχικόν (pszükhikon) és a πνευματικόν (pneumatikon) áll, a két szó melléknévi alakja, és a szembeállítás a következő vers ádámi ellentétét készíti elő.
+
+Funkció: a vetett érzéki és a feltámadó lelki test szembeállítása; a következő vers ezt az első és az utolsó Ádámmal indokolja
 
 <a id="ige-1kor-15-45"></a>
 **1Kor 15:45**
 *Így is van megírva: Lőn az első ember, Ádám, élő lélekké; az utolsó Ádám megelevenítő szellemmé.*
-Pál: az utolsó Ádám "pneuma zóopoiun" ("megelevenítő szellemmé") lett — szemben az első Ádám "élő lelkével" (1Móz 2:7)
+Pál az 1Móz 2:7-et idézi, és ellenpárt állít mellé: „Lőn az első ember, Ádám, élő lélekké; az utolsó Ádám megelevenítő szellemmé.” Az első Ádám élő lélek, a görögben ψυχή (pszükhé) lett, aki életet kapott; az utolsó Ádám, a feltámadott Krisztus, szellem, πνεῦμα (pneuma), aki életet ad.
+
+Funkció: az első és az utolsó Ádám szembeállítása; itt fut össze az ószövetségi háttér és az újszövetségi megkülönböztetés
+
+<a id="ige-1kor-15-46"></a>
+**1Kor 15:46**
+*De nem a lelki az első, hanem az érzéki, azután a lelki.*
+Pál kimondja a két rend sorrendjét: „De nem a lelki az első, hanem az érzéki, azután a lelki.” Az érzéki, a görögben ψυχικόν (pszükhikon) a teremtés rendje, a lelki, πνευματικόν (pneumatikon) a feltámadásé, és az ember útja az elsőtől a második felé vezet.
+
+Funkció: előbb az érzéki, azután a lelki: a megkülönböztetés időbeli rendje a feltámadásban
 
 <a id="ige-1thessz-5-23"></a>
 **1Thessz 5:23**
 *Maga pedig a békességnek Istene szenteljen meg titeket mindenestől; és a ti egész valótok, mind lelketek, mind testetek feddhetetlenül őriztessék meg a mi Urunk Jézus Krisztus eljövetelére.*
-Pál imája: a pneuma, pszükhé és szóma három külön főnévként, egy-egy külön határozott névelővel sorolva fel
+Pál áldó imájában Isten az egész embert szenteli meg, és a görög szöveg az ember három részét egymás mellett, mindegyiket saját névelővel nevezi meg: a szellemet (πνεῦμα, pneuma), a lelket (ψυχή, pszükhé) és a testet (σῶμα, szóma). A Károli a szellemet „egész valótok”-nak fordítja, ezért a magyar szövegben a hármasság kevésbé látszik.
+
+Funkció: a szellem, a lélek és a test egymás mellett: a megkülönböztetés legvilágosabb helye
 
 <a id="ige-zsid-4-12"></a>
 **Zsid 4:12**
 *Mert az Istennek beszéde élő és ható, és élesebb minden kétélű fegyvernél, és elhat a szívnek és léleknek, az ízeknek és a velőknek megoszlásáig, és megítéli a gondolatokat és a szívnek indulatait.*
-Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) — a szerző explicit szétválasztásról beszél
+Isten beszéde élesebb minden kétélű fegyvernél, és „elhat a szívnek és léleknek, az ízeknek és a velőknek megoszlásáig”. A görögben a lélek (ψυχή, pszükhé) és a szellem (πνεῦμα, pneuma) áll, a Károli az előbbit szívnek, az utóbbit léleknek fordítja. A vers szerint a kettő között határ van, de ezt a határt csak Isten szava hatja át.
+
+Funkció: Isten beszéde a lélek és a szellem határáig hatol: a különbség létezik, de csak Isten szava teszi láthatóvá
+
+<a id="ige-júd-1-19"></a>
+**Júd 1:19**
+*Ezek azok, a kik különszakadnak, érzékiek, kikben nincsen Szent Lélek.*
+Júdás a gyülekezetbe befurakodott szakadárokról mondja: „Ezek azok, a kik különszakadnak, érzékiek, kikben nincsen Szent Lélek.” A görögben az érzékiek, ψυχικοί (pszükhikoi) mellett a Lélek, πνεῦμα (pneuma) hiánya áll; a görög szöveg csak Lelket mond, a Károli Szent Lélekként érti.
+
+Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböztetése a gyülekezet szakadárain
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#elofordulasok -->
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum 1 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
+22 helyet vizsgáltunk meg jelöltként; elutasítva: 22. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (11), utána „a két szó nem egy mondatban áll” (4). A jelöltek forrása: Egyéb 19, Gépi keresés 2, Kutatói felvetés 1. **Következtetés:** kétszer annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (22, illetve 11). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
 
-- **Fil 1:27** (nyitva, `döntési fájl 8. szakasz (migrálva F1.6-ban)`): bekerüljön-e ötödik, korporatív jellegű előfordulásként a pneuma/pszükhé tanulmányba; a study jelenlegi szövege NEM említi — ellenőrizve 2026.09.13
+*Ez a blokk a `[ID: ANTROP-001]` motívum 22 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a πνεῦμα (pneuma) és ψυχή (pszükhé) szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég
+**Az elutasítás okai:** csak az egyik szó vagy más szó áll a versben (összesítő sor) 11 · a két szó nem egy mondatban áll 4 · a két szó nem megkülönböztető szerepben 4 · a Septuaginta többlete, az eredetiben nincs a szópár 2 · a hely egy másik sorban áll 1
+
+**A jelölés forrása:** Gépi keresés 2 · Kutatói felvetés 1 · Egyéb 19
+
+**Gépi keresés** (2)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| 1Pét 1:22 | gépi szópár-keresés: G4151 + G5590[^k1] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a lelket (ψυχή (pszükhé)) a Lélek (πνεῦμα (pneuma)), Isten Lelke tisztítja meg, a két szó nem az ember két belső összetevője. A „Lélek által” szavak csak a Károli alapszövegében (Textus Receptus) állnak, a kritikai kiadásokban nincsenek. |
+| Mt 12:18 | gépi szópár-keresés: G4151 + G5590[^k2] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az Ézs 42:1 idézetében mindkét szó Istenről szól („az én lelkem kedvét lelé”, „lelkemet adom ő belé”), nem az ember belső életéről. |
+
+**Kutatói felvetés** (1)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Fil 1:27 | a tanulmány felvetése[^k3] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az „egy lélekben, egy érzéssel” két párhuzamos tagja a közösség egységét mondja ki, a görögben a πνεῦμα és a ψυχή itt egymás szinonimája (a Thayer szerint a ψυχή helyén a „szív” is állhatna). Határeset: a lap a módszertani részben megnevezi. |
+
+**Egyéb** (19)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Luk 9:55-56 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. A két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs. |
+| ApCsel 4:31-32 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k5] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a 31. versben a Szent Lélek tölti be a hívőket, a 32. versben a hívők sokaságának „szíve-lelke egy vala”; a két vers két külön mondat. |
+| ApCsel 20:23-24 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k6] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a Szent Lélek bizonyságtétele és Pál élete („az én életem sem drága nékem”) két külön mondatban áll. |
+| 2Kor 1:22-23 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k7] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „léleknek zálogát” és az „Istent hívom bizonyságul az én lelkemre” két külön mondat. |
+| 1Pét 3:19-20 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k8] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a „tömlöczben lévő lelkek” (πνεῦμα) és a bárkában megmenekült „nyolcz lélek” (ψυχή) két külön csoport, a mondat nem az ember belső életét tagolja. |
+| Júd 1:19-20 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k9] | **elutasítva** — a hely egy másik sorban áll: Ugyanaz a hely, mint a Júd 1:19 sora: a 20. vers csak a Szent Lelket nevezi meg, a ψυχή nem áll benne. |
+| Jób 12:10 | U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja[^k10] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordítás a ψυχή és a πνεῦμα szót hozza („minden élő állatnak élete, és minden egyes embernek a lelke”), a héber szövegben viszont a nefes és a rúah áll. A motívum az eredeti szövegre épül, ezért a hely nem előfordulás; a lap tényként említi. |
+| Jón 4:8 | U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja[^k11] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordításban a ψυχή és a πνεῦμα áll, de a πνεῦμα itt a keleti szél („tikkasztó keleti szelet”), nem az ember szelleme. Döntés: elutasítva. |
+| 1Kir 1:29 | egyéb jelölés[^k12] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 58 versre (az első itt áll): a héber nefes és chajjá („élő lélek”, „élet”) egy versben áll, a görög szópár nélkül; a motívum a görög szópár megkülönböztető együttállására épül, ezért a héber kifejezés önmagában nem tartozik ide (az 1Móz 2:7 kivétel, mert az 1Kor 15:45 idézi). A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jer 2:24 | egyéb jelölés[^k13] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 5 versre (az első itt áll): a héber rúah és nefes egy versben áll; a motívum a görög szópár megkülönböztető együttállására épül, a héber szópár a tágabb körbe tartozik. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:24 | egyéb jelölés[^k14] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 335 versre (az első itt áll): csak a πνεῦμα (pneuma) áll a versben, a ψυχή nem; legtöbbször a Szent Lélekről. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:16 | egyéb jelölés[^k15] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 81 versre (az első itt áll): csak a ψυχή (pszükhé) áll a versben, a πνεῦμα nem; legtöbbször az élet vagy a személy értelmében. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 3:1 | egyéb jelölés[^k16] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 16 versre (az első itt áll): csak a πνευματικός (pneumatikosz) áll a versben, a ψυχή és a ψυχικός (pszükhikosz) nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jak 3:15 | egyéb jelölés[^k17] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 1 versre (az első itt áll): csak a ψυχικός (pszükhikosz) áll a versben, a πνεῦμα és a πνευματικός nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 1:12 | egyéb jelölés[^k18] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 551 versre (az első itt áll): csak a héber nefes áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 18:12 | egyéb jelölés[^k19] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 200 versre (az első itt áll): csak a héber rúah áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 2:24 | egyéb jelölés[^k20] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 359 versre (az első itt áll): csak a héber chaj, chajjá (élő, élet) áll a versben; a szótár idézi. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 15:29 | egyéb jelölés[^k21] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 66 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más héber szót (például nesámá, lehelet; lév, szív) fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 2:6 | egyéb jelölés[^k22] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 41 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más görög szót fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+
+**Negatív kritérium:** A versben (vagy a két versen átnyúló egy mondatban) a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) — vagy melléknévi alakjuk, a πνευματικός (pneumatikosz, lelki) és a ψυχικός (pszükhikosz, érzéki) — együtt áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja. Az újszövetségi helyeken a Károli alapszövege, a Textus Receptus a mérce; ahol a kritikai kiadások eltérnek, a lap jelöli. Nem tartozik ide a vers, amelyben csak az egyik szó áll, amelyben a két szó két külön mondatban áll, vagy amelyben a kettő egymás szinonimája, illetve nem az ember belső életéről szól. Kivétel az 1Móz 2:7: a héber נֶפֶשׁ חַיָּה (nefes chajjá, élő lélek) azért tartozik ide, mert az 1Kor 15:45 ezt idézi, és ennek ellenpárjaként mondja ki a megelevenítő szellemet.
+
+[^k1]: forrás: `kollokacio G4151 G5590 | ‹K2›`
+[^k2]: forrás: `kollokacio G4151 G5590 | ‹K2›`
+[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)`
+[^k4]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k5]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k6]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k7]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k8]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k9]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k10]: forrás: `F123 U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja (DT503 külön sora; naplok/F123_teljesseg_ANTROP-001.md 4.) | ‹K3›`
+[^k11]: forrás: `F123 U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja (DT503 külön sora; naplok/F123_teljesseg_ANTROP-001.md 4.) | ‹K3›`
+[^k12]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 58 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=heber_par), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k13]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 5 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah_nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k14]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 335 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneuma), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k15]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 81 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhe), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k16]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 16 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneumatikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k17]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 1 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k18]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 551 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k19]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 200 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k20]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 359 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=chajja), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k21]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 66 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_heber), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k22]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 41 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_gorog), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+
+*A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_ANTROP2_osztaly.py | ts=2026-11-03` (11 sor) · ‹K2› = `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli` (2 sor) · ‹K3› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_adat_keszito.py lxx | ts=2026-11-03` (2 sor)*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kizart -->
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
+A motívumot hordozó szavak szótári háttere: héberül a chaj (H2416) és a nefes (H5315), görögül a pneuma (G4151), a pneumatikosz (G4152), a pszükhé (G5590) és a pszükhikosz (G5591). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
-### G4151 — πνεῦμα (pneuma)
+*Ez a blokk a `[ID: ANTROP-001]` motívum 6 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-**TWOT:** —
+### Görög szavak: G4151, G4152, G5590, G5591
 
-**Szemantikai domén:** 012001 Supernatural Beings, 014002 Wind, 023007 Live, Die, 023010 Breathe, Breath, 025006 Be Eager, Be Earnest, In a Devoted Manner, 026 Psychological Faculties, 030001 To Think, Thought, 030005 To Decide, To Conclude, 088007 Humility
+A motívumot hordozó görög szavak (görögül a pneuma (G4151), a pneumatikosz (G4152), a pszükhé (G5590) és a pszükhikosz (G5591)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
 
-#### Thayer G4151 — (teljes szócikk)
+#### 1. Alapjelentés
 
-> G4151 — πνεῦμα πνεύματος, τό (πνέω), Greek writings from Aeschylus and Herodotus down; Hebrew רוּחַ, Latinspiritus; i. e.: 1. a movement of air (gentle) blast; a. of the wind: ἀνέμων πνεύματα, Herodotus 7, 16, 1; Pausanias, 5, 25; hence, the wind itself, Joh 3:8; plural Heb 1:7 (1Ki 18:45; 1Ki 19:11; Job 1:19; Psa 103:4, etc.; often in Greek writings). b. breath of the nostrils or mouth, often in Greek writings from Aeschylus down: πνεῦμα τοῦ στόματος, 2Th 2:8 (Psa 32:6, cf. Isa 11:4); πνεῦμα ζωῆς, the breath of life, Rev 11:11 (Gen 6:17, cf. πνοή ζωῆς, ). (πνεῦμα and πνοή seem to have been in the main coincident terms; but πνοή became the more poetic. Both retain a suggestion of their evident etymology. Even in classical Greek πνεῦμα became as frequent and as wide in its application as ἄνεμος. (Schmidt, chapter 55, 7; Trench, § lxxiii.)) 2. the spirit, i. e. the vital principle by which the body is animated ((Aristotle, Polybius, Plutarch, others; see below)): Luk 8:55; Luk 23:46; Joh 19:30; Act 7:59; Rev 13:15 (here R. V. breath); ἀφιέναι τό πνεῦμα, to breathe out the spirit, to expire, Mat 27:50 cf. Sir. 38:23; Wis. 16:14 (Greek writings said ἀφιέναι τήν ψυχήν, as Gen 35:18, see ἀφίημι, 1 b. and Kypke, Observations, i, p. 140; but we also find ἀφιέναι πνεῦμα θανσίμω σφαγή, Euripides, Hec. 571); σῶμα χωρίς πνεύματος νεκρόν ἐστιν, Jam 2:26; τό πνεῦμα ἐστι τό ζοωποιουν, ἡ σάρξ οὐκ ὠφελεῖ οὐδέν, the spirit is that which animates and gives life, the body is of no profit (for the spirit imparts life to it, not the body in turn to the spirit; cf. Chr. Frid. Fritzsche, Nova opuscc., p. 239), Joh 6:63. the rational spirit, the power by which a human being feels, thinks, wills, decides; the soul: τό πνεῦμα τοῦ ἀνθρώπου τό ἐν αὐτῷ, 1Co 2:11; opposed to σάρξ (which see (especially 2 a.)), Mat 26:41; Mar 14:38; 1Co 5:5; 2Co 7:1; Col 2:5; opposed to τό σῶμα, Rom 8:10; 1Co 6:17, 1Co 6:20 Rec.; ; 1Pe 4:6. Although for the most part the words πνεῦμα and ψυχή are used indiscriminately and so σῶμα and ψυχή put in contrast (but never by Paul; see ψυχή, especially 2), there is also recognized a threefold distinction, τό πνεῦμα καί ἡ ψυχή καί τό σῶμα, 1Th 5:23, according to which τό πνεῦμα is the rational part of man, the power of perceiving and grasping divine and eternal things, and upon which the Spirit of God exerts its influence; (πνεῦμα, says Luther, "is the highest and noblest part of man, which qualifies him to lay bold of incomprehensible, invisible, eternal things; in short, it is the house where Faith and God's word are at home" (see references at end)): ἄχρι μερισμοῦ ψυχῆς καί πνεύματος (see μερισμός, 2), Heb 4:12; ἐν ἑνί πνεύματι, μία ψυχή, Phi 1:27 (where instead of μία ψυχή Paul according to his mode of speaking elsewhere would have said more appropriately μία καρδία). τό πνεῦμα τίνος, Mar 2:8; Mar 8:12; Lukei. 47; Act 17:16; Rom 1:9; Rom 8:16; 1Co 5:4; 1Co 16:18; 2Co 2:13; 2Co 7:13; Gal 6:18; (Phi 4:23 L T Tr WH); Phi 1:25; 2Ti 4:22; ὁ Θεός τῶν πνευμάτων (for which Rec. has ἁγίων) τῶν προφητῶν, who incites and directs the souls of the prophets, Rev 22:6, where cf. Düsterdieck. the dative τῷ πνεύματι is used to denote the seat (locality) where one does or suffers something, like our in spirit: ἐπιγινώσκειν, Mar 2:8; ἀναστενάζειν, Mar 8:12; ἐμβρίμασθαι, Joh 11:33; ταράσσεσθαι, Joh 13:21; ζηιν, Act 18:25; Rom 12:11; ἀγαλλίασθαι, Luk 10:21 (but L T Tr WH here add ἁγίῳ); the dative of respect: 1Co 5:3; Col 2:5; 1Pe 4:6; κραταιουσθαι, Luk 1:80; Luk 2:40 Rec.; ἅγιον εἶναι, 1Co 7:34; ζοωποιηθεις, 1Pe 3:18; ζῆν, 1Pe 4:6; πτωχοί, Mat 5:3; dative of instrument: δεδεμένος, Act 20:22; συνέχεσθαι, Rec.; Θεῷ λατρεύειν, Phi 3:3 R G; dative of advantage: ἄνεσιν τῷ πνεύματι μου, 2Co 2:13 (12); ἐν τῷ πνεύματι, is used of the instrument, 1Co 6:20 Rec. (it is surely better to take ἐν τῷ πνεύματι here locally, of the 'sphere' (Winer's Grammar, 386 (362), cf. 1Co 6:19)); also ἐν πνεύματι, nearly equivalent to πνευματικῶς (but see Winer's Grammar, § 51, 1 e. note), Joh 4:23; of the seat of an action, ἐν τῷ πνεύματι μου, Rom 1:9; τιθέναι ἐν τῷ πνεύματι, to propose to oneself, purpose in spirit, followed by the infinitive (πορεύεσθαι, Act 19:21. πνεύματα προφητῶν, according to the context the souls (spirits) of the prophets moved by the Spirit of God, 1Co 14:32; in a peculiar sense πνεῦμα is used of a soul thoroughly roused by the Holy Spirit and wholly intent on divine things, yet destitute of distinct self-consciousness and clear understanding; thus in the phrases τό πνεῦμα μου προσεύχεται, opposed to ὁ νοῦς μου, 1Co 14:14; πνεύματι λαλεῖν μυστήρια, 1Co 14:2; προσεύχεσθαι, ψάλλειν, εὐλογεῖν, τῷ πνεύματι, as opposed to τῷ νοι 3. "a spirit, i. e. a simple essence, devoid of all or at least all grosser matter, and possessed of the power of knowing, desiring, deciding, and acting"; a. generically: Luk 24:37; Act 23:8 (on which see μήτε, at the end); Act 23:9; πνεῦμα σάρκα καί ὀστέα οὐκ ἔχει, Luk 24:39; πνεῦμα ζοωποιουν (a life-giving spirit), spoken of Christ as raised from the dead, 1Co 15:45; πνεῦμα ὁ Θεός (God is spirit essentially), Joh 4:24; πατήρ τῶν πνευμάτων, of God, Heb 12:9, where the term comprises both the spirits of men and of angels. b. a human soul that has left the body ((Babrius 122, 8)): plural (Latinmanes), Heb 12:23; 1Pe 3:19. c. a spirit higher than man but lower than God, i. e. an angel: plural Heb 1:14; used of demons, or evil spirits, who were conceived of as inhabiting the bodies of men: (Mar 9:20); Luk 9:39; Act 16:18; plural, Mat 8:16; Mat 12:45; Luk 10:20; Luk 11:26; πνεῦμα Πύθωνος or πύθωνα, Act 16:16; πνεύματα δαιμονίων, Rev 16:14; πνεῦμα δαιμονίου ἀκαθάρτου, Luk 4:33 (see δαιμόνιον, 2); πνεῦμα ἀσθενείας, causing infirmity, Luk 13:11; πνεῦμα ἀκάθαρτον, Mat 10:1; Mat 12:43; Mar 1:23, Mar 1:26, Mar 1:27; Mar 3:11, Mar 3:30; Mar 5:2, Mar 5:8, Mar 5:13; Mar 6:7; Mar 7:25; Mar 9:25; Luk 4:36; Luk 6:18; Luk 8:29; Luk 9:42; Luk 11:24, Luk 11:26; Act 5:16; Act 8:7; Rev 16:13; Rev 18:2; ἄλαλον, κωφόν (for the Jews held that the same evils with which the men were afflicted affected the demons also that bad taken possession of them (cf. Wetstein, N. T. i. 279ff; Edersheim, Jesus the Messiah, Appendix xvi.; see δαιμονίζομαι etc. and references)), Mar 9:17, Mar 9:25; πονηρόν, Luk 7:21; Luk 8:2; Act 19:12, Act 19:13, Act 19:15, Act 19:16, (cf. Jdg 9:23; 1Sa 16:14; 1Sa 19:9, etc.). d. "the spiritual nature of Christ, higher than the highest angels, close to God and most intimately united to him" (in doctrinal phraseology the divine nature of Christ): 1Ti 3:16; with the addition of ἁγιωσύνης (on which see ἁγιωσύνη, 1 (yet cf. 4 a. below)), Rom 1:4 (but see Meyer at the passage, Ellicott on 1 Timothy, the passage cited); it is called πνεῦμα αἰώνιον, in tacit contrast with the perishable ψυχαί of sacrificial animals, in Heb 9:14, where cf. Delitzsch (and especially Kurtz). 4. The Scriptures also ascribe a πνεῦμα to God, i. e. God's power and agency — distinguishable in thought (or modalistice, as they say in technical speech) from God's essence in itself considered — "manifest in the course of affairs, and by its influence upon souls productive in the theocratic body (the church) of all the higher spiritual gifts and blessings"; (cf. the resemblances and differences in Philo's use of τό θεῖον πνεῦμα, e. g. de gigant. § 12 (cf. § 5f); quis rer. div. § 53; de mund. opif. § 46, etc.). a. This πνεῦμα is called in the O. T. אֱלֹהִים רוּחַ, יְהוָה רוּחַ; in the N. T. πνεῦμα ἅγιον, τό ἅγιον πνεῦμα, τό πνεῦμα τό ἅγιον (first so in Wis. 1:5 Wis. 9:17; for קֹדֶשׁ רוּחַ, in Psa 50:13, Isa 63:10, Isa 63:11, the Sept. renders by πνεῦμα ἁγιωσύνης), i. e. the Holy Spirit (august, full of majesty, adorable, utterly opposed to all impurity): Mat 1:18, Mat 1:20; Mat 3:11; Mat 12:32; Mat 28:19; Mar 1:8; Mar 3:29; Mar 12:36; Mar 13:11; Luk 1:15, Luk 1:35; Luk 2:25, Luk 2:26; Luk 3:16, Luk 3:22; Luk 4:1; Luk 11:13; Luk 12:10, Luk 12:12; Joh 1:33; Joh 7:39 (L T WH omit; Tr brackets ἅγιον); Joh 14:26; Joh 20:22; Act 1:2, Act 1:5, Act 1:8, Act 1:16; Act 2:33, Act 2:38; Act 4:25 L T Tr WH; Act 5:3,32; 8:18> (L T WH omit; Tr brackets τό ἅγιον), ; Act 9:31; Act 10:38,44,45,47; 11:15,16,24; 13:2,4,9,52; 15:8,28; 16:6; 19:6; 20:28>; Rom 9:1; Rom 14:17; Rom 15:13, Rom 15:16, Rom 15:19 (L Tr WH in brackets); 1Co 6:19; 1Co 12:3; 2Co 6:6; 2Co 13:13 (14); Eph 1:13; 1Th 1:5, 1Th 1:6; 2Ti 1:14; Tit 3:5; Heb 2:4; Heb 6:4; Heb 9:8; 1Jo 5:7 Rec.; Jude 1:20; other examples will be given below in the phrases; (on the use and the omission of the article, see Fritzsche, Ep. ad Romans, ii., p. 105 (in opposition to Harless (on Eph 2:22), et al.; cf. also Meyer on Gal 5:16; Ellicott on Gal 5:5; Winers Grammar, 122 (116); Buttmann, 89 (78))); τό πνεῦμα τό ἅγιον τοῦ Θεοῦ, Eph 4:30; 1Th 4:8; πνεῦμα Θεοῦ, Rom 8:9, Rom 8:14; τό τοῦ Θεοῦ πνεῦμα, 1Pe 4:14; (τό) πνεῦμα (τοῦ) Θεοῦ, Mat 3:16; Mat 12:18, Mat 12:28; 1Co 2:14; 1Co 3:16; Eph 3:16; 1Jo 4:2; τό πνεῦμα τοῦ Θεοῦ ἡμῶν, 1Co 6:11; τό πνεῦμα τοῦ πατρός, Mat 10:20; πνεῦμα Θεοῦ ζῶντος, 2Co 3:3; τό πνεῦμα τοῦ ἐγείραντος Ἰησοῦν, Rom 8:11; τό πνεῦμα τό ἐκ Θεοῦ (emanating from God and imparted unto men), 1Co 2:12; πνεῦμα and τό πνεῦμα τοῦ κυρίου, i. e. of God, Luk 4:18; Act 5:9 (cf. Act 5:4); ; κυρίου, i. e. of Christ, 2Co 3:17, 2Co 3:18 (cf. Buttmann, 343 (295)); τό πνεῦμα Ἰησοῦ, since the same Spirit in a peculiar manner dwelt in Jesus, Act 16:7 (where Rec. omits Ἰησοῦ); Χριστοῦ, Rom 8:9; Ἰησοῦ Χριστοῦ, Phi 1:19; τό ἐν τίνι (in one's soul (not WH marginal reading)) πνεῦμα Χριστοῦ, 1Pe 1:11; τό πνεῦμα τοῦ υἱοῦ (τοῦ Θεοῦ), Gal 4:6; simply τό πνεῦμα or πνεῦμα: Mat 4:1; Mat 12:31, Mat 12:32; Mat 22:43; Mar 1:10, Mar 1:12; Luk 2:1, Luk 2:14; Joh 1:32, Joh 1:33; Joh 3:6, Joh 3:8, Joh 3:34; Joh 7:39; Act 2:4; Act 8:29; Act 10:19; Act 11:12, Act 11:28; Act 21:4; Rom 8:6, Rom 8:16, Rom 8:23, Rom 8:26, Rom 8:27; Rom 15:30; 1Co 2:4, 1Co 2:10, 1Co 2:13 (where Rec. adds ἁγίου); 1Co 12:4,7,8>; 2Co 1:22; 2Co 3:6, 2Co 3:8; 2Co 5:5; Gal 3:3, Gal 3:5, Gal 3:14; Gal 4:29; Gal 5:5, Gal 5:17, Gal 5:22, Gal 5:25; Eph 4:3; Eph 5:9 Rec.; ; Phi 2:1; 2Th 2:13; 1Ti 4:1; Jam 4:5; 1Pe 1:22 Rec.; 1Jo 3:24; 1Jo 5:6, 1Jo 5:8; Rev 22:17. Among the beneficent and very varied operations and effects ascribed to this Spirit in the N. T., the following are prominent: by it the man Jesus was begotten in the womb of the virgin Mary (Mat 1:18, Mat 1:20; Luk 1:35), and at his baptism by John it is said to have descended upon Jesus (Mat 3:16; Mar 1:10; Luk 3:22), so that he was perpetually (μένον ἐπ' αὐτόν) filled with it (Joh 1:32, Joh 1:33, cf. 3:34; Mat 12:28; Act 10:38); hence, to its prompting and aid the acts and words of Christ are traced, Mat 4:1; Mat 12:28; Mar 1:12; Luk 4:1, Luk 4:14. After Christ's resurrection it was imparted also to the apostles, Joh 20:22; Acts 2. Subsequently other followers of Christ are related to have received it through faith (Gal 3:2), or by the instrumentality of baptism (Act 2:38; 1Co 12:13) and the laying on of hands (Act 19:5, Act 19:6), although its reception was in no wise connected with baptism by any magical bond, Act 8:12, Act 8:15; Act 10:44ff. To its agency are referred all the blessings of the Christian religion, such as regeneration wrought in baptism (Joh 3:5, Joh 3:6, Joh 3:8; Tit 3:5 (but see the commentators on the passages, and references under the word βάπτισμα, 3)); all sanctification (1Co 6:11; hence, ἁγιασμός πνεύματος, 2Th 2:13; 1Pe 1:2); the power of suppressing evil desires and practising holiness (Rom 8:2ff; Gal 5:16ff,22; 1Pe 1:22 (Rec.), etc.); fortitude to undergo with patience all persecutions, losses, trials, for Christ's sake (Mat 10:20; Luk 12:11, Luk 12:12; Rom 8:26); the knowledge of evangelical truth (Joh 14:17, Joh 14:26; Joh 15:26; Joh 16:12, Joh 16:13; 1Co 2:6-16; Eph 3:5) — hence, it is called πνεῦμα τῆς ἀληθείας (John the passages cited; 1Jo 4:6), πνεῦμα σοφίας καί ἀποκαλύψεως (Eph 1:17); the sure and joyful hope of a future resurrection, and of eternal blessedness (Rom 5:5; Rom 8:11; 2Co 1:22; 2Co 5:5; Eph 1:13f); for the Holy Spirit is the seal and pledge of citizenship in the kingdom of God, 2Co 1:22; Eph 1:13. He is present to teach, guide, prompt, restrain, those Christians whose agency God employs in carrying out his counsels: Act 8:29, Act 8:39; Act 10:19; Act 11:12; Act 13:2, Act 13:4; Act 15:28; Act 16:6, Act 16:7; Act 20:28. He is the author of charisms or special gifts (1Co 12:7ff; see χάρισμα), prominent among which is the power of prophesying: τά ἐρχόμενα ἀναγγελεῖ, Joh 16:13; hence, τό πνεῦμα τῆς προφητείας (Rev 19:10); and his efficiency in the prophets is called τό πνεῦμα simply (1Th 5:19), and their utterances are introduced with these formulas: τάδε λέγει τό πνεῦμα τό ἅγιον, Act 21:11; τό πνεῦμα λέγει, 1Ti 4:1; Rev 14:13; with ταῖς ἐκκλησίαις added, Rev 2:7, Rev 2:11, Rev 2:17, Rev 2:29; Rev 3:6, Rev 3:13, Rev 3:22. Since the Holy Spirit by his inspiration was the author also of the O. T. Scriptures (2Pe 1:21; 2Ti 3:16), his utterances are cited in the following terms: λέγει or μαρτυρεῖ τό πνεῦμα τό ἅγιον, Heb 3:7; Heb 10:15; τό πνεῦμα τό ἅγιον ἐλάλησε διά Ἠσαΐου, Act 28:25, cf. Act 1:16. From among the great number of other phrases referring to the Holy Spirit the following seem to be noteworthy here: God is said διδόναι τίνι τό πνεῦμα τό ἅγιον, Luk 11:13; Act 15:8; passive, Rom 5:5; more precisely, ἐκ τοῦ πνεύματος αὐτοῦ, i. e. a portion from his Spirit's fullness (Buttmann, § 132, 7; Winer's Grammar, 366 (343)), 1Jo 4:13; or έ᾿κχειν ἀπό τοῦ πνεύματος αὐτοῦ, Act 2:17, Act 2:18 (for its entire fullness Christ alone receives, Joh 3:34); men are said, λαμβάνειν πνεῦμα ἅγιον, Joh 20:22; Act 8:15, Act 8:17, Act 8:19; Act 19:2; or τό πνεῦμα ἅγιον, Act 10:47; or τό πνεῦμα τό ἐκ Θεοῦ, 1Co 2:12; or τό πνεῦμα, Gal 3:2, cf. Rom 8:15; πνεῦμα Θεοῦ ἔχειν, 1Co 7:40; πνεῦμα μή ἔχειν, Jude 1:19; πληροῦσθαι πνεύματος ἁγίου, Act 13:52; ἐν πνεύματι, Eph 5:18; πλησθῆναι, πλησθήσεσθαι, πνεύματος ἁγίου, Luk 1:15, Luk 1:41, Luk 1:67; Act 2:4; Act 4:8, Act 4:31; Act 9:17; Act 13:9; πνεύματος ἁγίου πλήρης, Act 6:5; Act 7:55; Act 11:24; πλήρεις πνεύματος (Rec. adds ἁγίου) καί σοφίας, Act 6:3; πνεύματι and πνεύματι Θεοῦ ἄγεσθαι, to be led by the Holy Spirit, Rom 8:14; Gal 5:18; φέρεσθαι ὑπό πνεύματος ἁγίου 2Pe 1:21; the Spirit is said to dwell in the minds of Christians, Rom 8:9, Rom 8:11; 1Co 3:16; 1Co 6:19; 2Ti 1:14; Jam 4:5 (other expressions may be found under βαπτίζω, II. b. bb.; γεννάω, 1 at the end and 2 d.; ἐκχέω b.; χρίω, a.); γίνεσθαι ἐν πνεύματι, to come to be in the Spirit, under the power of the Spirit, i. e. in a state of inspiration or ecstasy, Rev 1:10; Rev 4:2. Dative πνεύματι, by the power and aid of the Spirit, the Spirit prompting, Rom 8:13; Gal 5:5; τῷ πνεύματι τῷ ἁγίῳ, Luk 10:21 L Tr WH; πνεύματι ἁγίῳ, 1Pe 1:12 (where R G T have ἐν πνεύματι ἁγίῳ); πνεύματι Θεοῦ, Phi 3:3 L T Tr WH; also ἐν πνεύματι, Eph 2:22; Eph 3:5 (where ἐν πνεύματι must be joined to ἀπεκαλύφθη); ἐν πνεύματι, in the power of the Spirit, possessed and moved by the Spirit, Mat 22:43; Rev 17:3; Rev 21:10; also ἐν τῷ πνεύματι, Luk 2:27; Luk 4:1; ἐν τῷ πνεύματι ἁγίῳ, Luk 10:21 Tdf.; ἐν τῇ δυνάμει τοῦ πνευματου, Luk 4:14; ἐν τῷ πνεύματι τῷ ἁγίῳ εἰπεῖν, Mar 12:36; ἐν πνεύματι (ἁγίῳ) προσεύχεσθαι, Eph 6:18; Jude 1:20; ἐν πνεύματι Θεοῦ λαλεῖν, 1Co 12:3; ἀγάπη ἐν πνεύματι, love which the Spirit begets, Col 1:8; περιτομή ἐν πνεύματι, effected by the Holy Spirit, opposed to γράμματι, the prescription of the written law, Rom 2:29; τύπος γίνου τῶν πιστῶν ἐν πνεῦμα, in the way in which you are governed by the Spirit, 1Ti 4:12 Rec.; (ἐν ἑνί πνεύματι, Eph 2:18); ἡ ἑνότης τοῦ πνεύματος, effected by the Spirit, Eph 4:3; καινότης τοῦ πνευματου, Rom 7:6. τό πνεῦμα is opposed to ἡ σάρξ i. e. human nature left to itself and without the controlling influence of God's Spirit, subject to error and sin, Gal 5:17, Gal 5:19, Gal 5:22; (); Rom 8:6; so in the phrases περιπατεῖν κατά πνεῦμα (opposed to κατά σάρκα), Rom 8:1 Rec., 4; οἱ κατά πνεῦμα namely, ὄντες (opposed to οἱ κατά σάρκα ὄντες), those who bear the nature of the Spirit (i. e. οἱ πνευματικοί), Rom 8:5; ἐν πνεύματι εἶναι (opposed to ἐν σαρκί), to be under the power of the Spirit, to be guided by the Spirit, Rom 8:9; πνεύματι (dative of 'norm'; (cf. Buttmann, § 133, 22 b.; Winer's Grammar, 219 (205))) περιπατεῖν (opposed to ἐπιθυμίαν σαρκός τέλειν), Gal 5:16. The Holy Spirit is a δύναμις, and is expressly so called in Luk 24:49, and δύναμις ὑπιστου, Luk 1:35; but we find also πνεῦμα (or πνεῦμα ἅγιον) καί δύναμις, Act 10:38; 1Co 2:4; and ἡ δύναμις τοῦ πνεύματος, Luk 4:14, where πνεῦμα is regarded as the essence, and δύναμις its efficacy; but in 1Th 1:5 ἐν πνεύματι ἁγίῳ is epexegetical of ἐν δυνάμει. In some passages the Holy Spirit is rhetorically represented as a Person ((cf. references below)): Mat 28:19; Joh 14:16f, 26; Joh 15:26; Joh 16:13-15 (in which passages from John the personification was suggested by the fact that the Holy Spirit was about to assume with the apostles the place of a person, namely of Christ); τό πνεῦμα, καθώς βούλεται, 1Co 12:11; what anyone through the help of the Holy Spirit has come to understand or decide upon is said to have been spoken to him by the Holy Spirit: εἶπε τό πνεῦμα τίνι, Act 8:29; Act 10:19; Act 11:12; Act 13:4; τό πνεῦμα τό ἅγιον διαμαρτύρεταί μοι, Act 20:23. τό πνεῦμα τό ἅγιον ἔθετο ἐπισκόπους, i. e. not only rendered them fit to discharge the office of bishop, but also exercised such an influence in their election (Act 14:23) that none except fit persons were chosen to the office, Act 20:28; τό πνεῦμα ὑπερεντυγχάνει στεναγμοῖς ἀλαλήτοις in Rom 8:26 means, as the whole context shows, nothing other than this: 'although we have no very definite conception of what we desire (τί προσευξώμεθα), and cannot state it in fit language (καθό δεῖ) in our prayer but only disclose it by inarticulate groanings, yet God receives these groanings as acceptable prayers inasmuch as they come from a soul full of the Holy Spirit.' Those who strive against the sanctifying impulses of the Holy Spirit are said ἀντιπίπτειν τῷ πνεύματι τῷ ἁγίῳ, Act 7:51; ἐνυβρίζειν τό πνεῦμα τῆς χάριτος, Heb 10:29. πειράζειν τό πνεῦμα τοῦ κυρίου is applied to those who by falsehood would discover whether men full of the Holy Spirit can be deceived, Act 5:9; by anthropopathism those who disregard decency in their speech are said λύπειν τό πνεῦμα τό ἅγιον, since by that they are taught how they ought to talk, Eph 4:30 (παροξύνειν τό πνεῦμα, Isa 63:10; παραπικραίνειν, Psa 105:33). Cf. Grimm, Institutio theologiae dogmaticae, § 131; (Weiss, Biblical Theol. § 155 (and Index under the phrase, 'Geist Gottes,' 'Spirit of God') Kahnis, Lehre vom Heil. Geiste; Fritzsche, Nova opuscc. acad., p. 278ff; B. D. under the word Spirit the Holy; Swete in Dict. of Christ. Biog. under the phrase, Holy Ghost). b. τά ἑπτά πνεύματα τοῦ Θεοῦ, Rev. ( (where Rec.st omit ἁπτα)); Rev 4:5; Rev 5:6 (here L omits; WH brackets ἑπτά), which are said to be ἐνώπιον τοῦ θρόνου τοῦ Θεοῦ (Rev 1:4) are not seven angels, but one and the same divine Spirit manifesting itself in seven energies or operations (which are rhetorically personified, Zec 3:9; Zec 4:6, Zec 4:10); cf. Düsterdieck on Rev 1:4; (Trench, Epistles to the Seven Churches, edition 3, p. 7f). c. by metonymy, πενυμα is used of α. "one in whom a spirit (πνεῦμα) is manifest or embodied; hence, equivalent to actuated by a spirit, whether divine or demoniacal; one who either is truly moved by God's Spirit or falsely boasts that he is": 2Th 2:2; 1Jo 4:2, 1Jo 4:3; hence, διακρίσεις πνευμάτων, 1Co 12:10; μή παντί πνεύματι πιστεύετε, 1Jo 4:1; δοκιμάζετε τά πνεύματα, εἰ ἐκ τοῦ Θεοῦ ἐστιν, ibid.; πνεύματα πλανᾷ joined with διδασκαλιαι δαιμονίων, 1Ti 4:1. But in the truest and highest sense it is said κύριος τό πνεῦμα ἐστιν, he in whom the entire fullness of the Spirit dwells, and from whom that fullness is diffused through the body of Christian believers, 2Co 3:17. β. the plural πνεύματα denotes the various modes and gifts by which the Holy Spirit shows itself operative in those in whom it dwells (such as τό πνεῦμα τῆς προφητείας, τῆς σοφίας, etc.), 1Co 14:12. 5. universally, "the disposition or influence which fills and governs the soul of anyone; the efficient source of any power, affection, emotion, desire," etc.: τῷ αὐτῷ πνεύματι περιεπατήσαμεν, 2Co 12:18; ἐν πνεύματι ἡλίου, in the same spirit with which Elijah was filled of old, Luk 1:17; τά ῤήματα... πνεῦμα ἐστιν, exhale a spirit (and fill believers with it), Joh 6:63; οἵου πνεύματος ἐστε ὑμεῖς (what manner of spirit ye are of) viz. a divine spirit, that I have imparted unto you, Luk 9:55 (Rec.; (cf. B. § 132, 11 I.; Winer's Grammar, § 30, 5)); τῷ πνεύματι, ᾧ ἐλάλει, Act 6:10, where see Meyer; πραυ καί ἡσύχιον πνεῦμα, 1Pe 3:4; πνεῦμα πρᾳότητος, such as belongs to the meek, 1Co 4:21; Gal 6:1; τό πνεῦμα τῆς προφητείας, such as characterizes prophecy and by which the prophets are governed, Rev 19:10; τῆς ἀληθείας, σοφίας καί ἀποκαλύψεως, see above, p. 521b middle (Isa 11:2; Deu 34:9; Wis. 7:7); τῆς πίστεως, 2Co 4:13; τῆς υἱοθεσίας, such as belongs to sons, Rom 8:15; τῆς ζωῆς ἐν Χριστῷ, of the life which one gets in fellowship with Christ, ibid. 2; δυνάμεως καί ἀγάπης καί σωφρονισμοῦ, 2Ti 1:7; ἕν πνεῦμα εἶναι with Christ, equivalent to to be filled with the same spirit as Christ and by the bond of that spirit to be intimately united to Christ, 1Co 6:17; ἐν ἑνί πνεύματι, by the reception of one Spirit's efficency, 1Co 12:13; εἰς ἕν πνεῦμα, so as to be united into one body filled with one Spirit, ibid. R G; ἕν πνεῦμα ποτίζεσθαι (made to drink of i. e.) imbued with one Spirit, ibid. L T Tr WH (see ποτίζω); ἕν σῶμα καί ἐν πνεῦμα, one (social) body filled and animated by one spirit, Eph 4:4; — in all these passages although the language is general, yet it is clear from the context that the writer means a spirit begotten of the Holy Spirit or even identical with that Spirit ((cf. Clement of Rome, 1 Cor. 46, 6 [ET]; Hermas, sim. 9, 13, 18 [ET]; Ignatius ad Magn. 7 [ET])). In opposition to the divine Spirit stand, τό πνεῦμα τό ἐνεργουν ἐν τοῖς υἱοῖς τῆς ἀπειθείας (a spirit) that comes from the devil), Eph 2:2; also τό πνεῦμα τοῦ κόσμου, the spirit that actuates the unholy multitude, 1Co 2:12; δουλείας, such as characterizes and governs slaves, Rom 8:15; κατανύξεως, Rom 11:8; δειλίας, 2Ti 1:7; τῆς πλάνης, 1Jo 4:6 (πλανήσεως, Isa 19:14; πορνείας, Hos 4:12; Hos 5:4); τό τοῦ ἀντιχρίστου namely, πνεῦμα, 1Jo 4:3; ἕτερον πνεῦμα λαμβάνειν, i. e. different from the Holy Spirit, 2Co 11:4; τό πνεῦμα τοῦ νως, the governing spirit of the mind, Eph 4:23. Cf. Ackermann, Beiträge zur theol. Würdigung u. Abwägung der Begriffe πνεῦμα, νοῦς, u. Geist, in the Theol. Studien und Kritiken for 1839, p. 873ff; Büchsenschütz, La doctrine de l'Esprit de Dieu selon l'aneien et nouveau testament. Strasb. 1840; Chr. From Fritzsche, De Spiritu Sancto commentatio exegetica et dogmatica, 4 Pts. Hal. 1840f, included in his Nova opuscula academica (Turici, 1846), p. 233ff; Kahnis, Die Lehre v. hiel. Geist. Part i. (Halle, 1847); an anonymous publication (by Prince Ludwig Solms Lich, entitled) Die biblische Bedeutung des Wortes Geist. (Giessen, 1862); H. H. Wendt, Die Begriffe Fleisch u. Geist im Biblical Sprachgebrauch. (Gotha, 1878); (Cremer, in Herzog edition 2, under the phrase, Geist des Menschen; G. L. Hahn, Theol. d. N. Test. i. § 149ff; J. Laidlaw, The Bible Doctrine of Man. (Cunningham Lects., 7th Series, 1880); Dickson, St. Paul's use of the terms Flesh and Spirit. (Glasgow, 1883); and references in B. D. (especially Amos edition) and Dict. of Christ. Biog., as above, 4 a. at the end.)
+A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
-*Fordítás függőben.*
+<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
+*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
-*Forrás: konkordancia/Thayer_teljes.tsv*
+#### 2. Mélységi szócikk
 
-### G5590 — ψυχή (psuchē)
+A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
-**TWOT:** —
+##### G4151 — πνεῦμα (pneuma) · Thayer
 
-**Szemantikai domén:** 004 Animals, 009001 Human Beings, 021002 Expose Oneself to Danger, 021005 Cause To Be Safe, Free from Danger, 023007 Live, Die, 025023 Sorrow, Regret, 025024 Discouragement, 026 Psychological Faculties, 088026 Hate, Hateful
+*Szótári gerinc (DT272): a szó jelentéstartománya a Thayer tagolásában (`adat/thayer_szakaszok.tsv`), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (`adat/thayer_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-#### Thayer G5590 — (teljes szócikk)
+*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
-> G5590 — ψυχή ψυχῆς, ἡ (ψύχω, to breathe, blow), from Homer down, the Sept. times too many to count for נֶפֶשׁ, occasionally also for לֵב and לֵבָב; 1. breath (Latinanima), i. e. a. the breath of life; the vital force which animates the body and shows itself in breathing: Act 20:10; of animals, Rev 8:9 (Gen 9:4; Gen 35:18; ἐπιστραφήτω ψυχή τοῦ παιδαρίου, 1Ki 17:21); so also in those passages where, in accordance with the trichotomy or threefold division of human nature by the Greeks, ἡ ψυχή; is distinguished from τό πνεῦμα (see πνευαμ, 2, p. 520a (and references under the word πνεῦμα 5)), 1Th 5:23; Heb 4:12. b. life: μέριμναν τῇ ψυχή, Mat 6:25; Luk 12:22; τήν ψυχήν ἀγαπᾶν, Rev 12:11; (μισεῖν, Luk 14:26); τιθέναι, Joh 10:11, Joh 10:15, Joh 10:17; Joh 13:37; Joh 15:13; 1Jo 3:16; παραδιδόναι, Act 15:26; διδόναι (λύτρον, which see), Mat 20:28; Mar 10:45; ζητεῖν τήν ψυχήν τίνος (see ζητέω, 1 a.), Mat 2:20; Rom 11:3; add, Mat 6:25; Mar 3:4; Luk 6:9; Luk 12:20, Luk 12:23; Act 20:24; Act 27:10, Act 27:22; Rom 16:4; 2Co 1:23; Phi 2:30; 1Th 2:8; in the pointed aphorisms of Christ, intended to fix themselves in the minds of his hearers, the phrases εὑρίσκειν, σῴζειν, ἀπολλύναι τήν ψυχήν αὐτοῦ, etc., designate as ψυχή in one of the antithetic members the life which is lived on earth, in the other, the (blessed) life in the eternal kingdom of God: Mat 10:39; Mat 16:25; Mar 8:35-37; Luk 9:24, Luk 9:56 Rec.; ; Joh 12:25; the life destined to enjoy the Messianic salvation is meant also in the following phrases ((where R. V. soul)): περιποίησις ψυχῆς, Heb 10:39; κτᾶσθαι τάς ψυχάς, Luk 21:19; ὑπέρ τῶν ψυχῶν (here A. V. (not R. V.) for you; cf. c. below), 2Co 12:15. c. that in which there is life; a living being: ψυχή ζῶσα, a living soul, 1Co 15:45; (Rev 16:3 R Tr marginal reading) (Gen 2:7; plural ); πᾶσα ψυχή ζωῆς, Rev 16:3 (G L T Tr text WH) (Lev 11:10); πᾶσα ψυχή, every soul, i. e. everyone, Act 2:43; Act 3:23; Rom 13:1 (so כָּל־נֶפֶשׁ, Lev 7:17 (27); ); with ἀνθρώπου added, every soul of man (אָדָם נֶפֶשׁ, Num 31:40, Num 31:46 (cf. 1 Macc. 2:38)), Rom 2:9. ψυχαί, souls (like the Latincapita) i. e. persons (in enumerations; cf. German Seelenzahl): Act 2:41; Act 7:14; Act 27:37; 1Pe 3:20 (Gen 46:15, Gen 46:18, Gen 46:22, Gen 46:26, Gen 46:27; Exo 1:5; Exo 12:4; Lev 2:1; Num 19:11, Num 19:13, Num 19:18; (Deu 10:22); the examples from Greek authors (cf. Passow, under the word, 2, vol. ii, p. 2590b) are of a different sort (yet cf. Liddell and Scott, under the word, II. 2)); ψυχαί ἀνθρώπων of slaves (A. V. souls of men (R. V. with marginal reading 'Or lives')), Rev 18:13 (so (Num 31:35); Eze 27:13; see σῶμα, 1 c. (cf. Winer's Grammar, § 22, 7 N. 3)). 2. the soul (Latinanimus), a. the seat of the feelings, desires, affections, aversions (our soul, heart, etc. (R. V. almost uniformly soul); for examples from Greek writings see Passow, under the word, 2, vol. ii., p. 2589b; (Liddell and Scott, under the word, II. 3); Hebrew נֶפֶשׁ, cf. Gesenius, Thesaurus ii, p. 901 in 3): Luk 1:46; Luk 2:35; Joh 10:24 (cf. αἴρω, 1 b.); Act 14:2, Act 14:22; Act 15:24; Heb 6:19; 2Pe 2:8, 2Pe 2:14; ἡ ἐπιθυμία τῆς ψυχῆς, Rev 18:14; ἀνάπαυσιν ταῖς ψυχαῖς εὑρίσκειν, Mat 11:29; ψυχή,... ἀναπαύου, φάγε, πίε (WH brackets these three imperatives), εὐφραίνου (personification and direct address), Luk 12:19, cf. Luk 12:18 (ἡ ψυχή ἀναπαύσεται, Xenophon, Cyril 6, 2, 28; ἐυφραίνειν τήν ψυχήν, Aelian v. h. 1, 32); εὐδοκεῖ ἡ ψυχή μου (anthropopathically, of God), Mat 12:18; Heb 10:38; περίλυπος ἐστιν ἡ ψυχή μου, Mat 26:38; Mar 14:34; ἡ ψυχή μου τετάρακται, Joh 12:27; ταῖς ψυχαῖς ὑμῶν ἀκλυόμενοι (fainting in your souls (cf. ἐκλύω, 2 b.)), Heb 12:3; ἐν ὅλῃ τῇ ψυχή σου, with all thy soul, Mat 22:37; (Luk 10:27 L text T Tr WH); ἐξ ὅλης τῆς ψυχῆς σου (Latinex toto animo), with (literally, from (cf. ἐκ, II. 12 b.)) all thy soul, Mar 12:30, Mar 12:33 (here T WH omit; L Tr marginal reading brackets the phrase); Luk 10:27 (R G) (Deu 6:5; (Epictetus diss. 3, 22, 18 (cf. Xenophon, anab. 7, 7, 43)); Antoninus 3, 4; (especially 4, 31; 12, 29); ὅλῃ τῇ ψυχή φροντίζειν τίνος (rather, with κεχαρισθαι), Xenophon, mem. 3, 11, 10); μία ψυχή, with one soul (cf. πνεῦμα, 2, p. 520a bottom), Phi 1:27; τοῦ πλήθους... ἦν ἡ καρδία καί ἡ ψυχή μία, Act 4:32 (ἐρωτηθεις τί ἐστι φίλος, ἔφη. μία ψυχή δύο σώμασιν ἐνοικουσα, (Diogenes Laërtius 5, 20 (cf. Aristotle, eth. Nic. 9, 8, 2, p. 1168b, 7; on the elliptical ἀπό μιᾶς (namely, ψυχῆς?), see ἀπό, III.)); ἐκ ψυχῆς, from the heart, heartily (Eph 6:6 (Tr WH with Eph 6:7)); Col 3:23 (ἐκ τῆς ψυχῆς often in Xenophon; τό ἐκ ψυχῆς πένθος, Josephus, Antiquities 17, 6, 5). b. "the (human) soul in so far as it is so constituted that by the right use of the aids offered it by God it can attain its highest end and secure eternal blessedness, the soul regarded as a moral being designed for everlasting life": 3Jo 1:2; ἀγρύπνειν ὑπέρ τῶν ψυχῶν, Heb 13:17; ἐπιθυμίαι, αἵτινες στρατεύονται κατά τῆς ψυχῆς, 1Pe 2:11; ἐπίσκοπος τῶν ψυχῶν, 1Pe 2:25; σῴζειν τάς ψυχάς, Jam 1:21; ψυχήν ἐκ θανάτου, from eternal death, Jam 5:20; σωτηρία ψυχῶν, 1Pe 1:9; ἁγνίζειν τάς ψυχάς ἑαυτῶν, 1Pe 1:22; (τάς ψυχάς πιστῷ κτίστῃ παρατίθεσθαι, 1Pe 4:19). c. the soul as an essence which differs from the body and is not dissolved by death (distinguished from τό σῶμα, as the other part of human nature (so in Greek writings from Isocrates and Xenophon down; cf. examples in Passow, under the word, p. 2589{a} bottom; Liddell and Scott, under the word, II. 2)): Mat 10:28, cf. 4 Macc. 13:14 (it is called ἀθάνατος, Herodotus 2, 123; Plato Phaedr., p. 245 c., 246 a., others; ἄφθαρτος, Josephus, b. j. 2, 8, 14; διαλυθῆναι τήν ψυχήν ἀπό τοῦ σώματος, Epictetus diss. 3, 10, 14); the soul freed from the body, a disembodied soul, Act 2:27, Act 2:31 Rec.; Rev 6:9; Rev 20:4 (Wis. 3:1; (on the Homeric use of the word, see Ebeling, Lex. Homer, under the word, 3, and references at the end, also Proudfit in Bib. Sacr. for 1858, pp. 753-805)).
+**A szócikk feje (nyelvi háttér).** πνεύματος, τό (πνέω), a görög írásokban Aeschylustól és Hérodotosztól kezdve; héber רוּחַ, latin spiritus; azaz:
 
-*Fordítás függőben.*
+<details>
+<summary>1 – 1.b (3 szakasz)</summary>
 
-*Forrás: konkordancia/Thayer_teljes.tsv*
+- `1` — levegő mozgása, (enyhe) fuvallat
+- `1.a` — szélről
+- `1.b` — az orr vagy a száj lehelete, a görög írásokban gyakran Aeschylustól kezdve
 
-### H2416 — חַי (chay)
+</details>
 
-**TWOT:** 644a, 644b, 644c, 644d, 644f
+- **`2` — az ember szelleme: az élet és a gondolkodás elve**
 
-**Szemantikai domén:** 001002006 Animals, 001002007 People, 001002007012 Relatives, 002001001003 Alive, 002001001056 Stage, 002001001059 Strong, 002002003003 Happen, 002003002002 Associate, 002004001001 Feel
+  > a szellem, azaz az életelv, amely a testet megelevenítja ((Arisztotelész, Polübiosz, Plutarkhosz, mások; l. alább)): Luk 8:55; Luk 23:46; Ján 19:30; ApCsel 7:59; Jel 13:15 (itt R. V. breath); ἀφιέναι τό πνεῦμα, kilehelni a szellemet, kimúlni, Mt 27:50 vö. Sir 38:23; Bölcs 16:14 (a görög írásokban ἀφιέναι τήν ψυχήν-t mondtak, mint 1Móz 35:18, l. ἀφίημι, 1 b. és Kypke, Observations, i, o. 140; de találunk ἀφιέναι πνεῦμα θανσίμω σφαγή-t is, Euripides, Hec. 571); σῶμα χωρίς πνεύματος νεκρόν ἐστιν, Jak 2:26; τό πνεῦμα ἐστι τό ζοωποιουν, ἡ σάρξ οὐκ ὠφελεῖ οὐδέν, a szellem az, ami megelevenít és életet ad, a test semmit sem használ (mert a szellem ad neki életet, nem a test viszont a szellemnek; vö. Chr. Frid. Fritzsche, Nova opuscc., o. 239), Ján 6:63. Az értelmes szellem, az az erő, amellyel az ember érez, gondolkodik, akar, dönt; a lélek: τό πνεῦμα τοῦ ἀνθρώπου τό ἐν αὐτῷ, 1Kor 2:11; szemben a σάρξ szóval (l. ott (különösen 2 a.)), Mt 26:41; Mk 14:38; 1Kor 5:5; 2Kor 7:1; Kol 2:5; szemben a τό σῶμα szóval, Róm 8:10; 1Kor 6:17, 1Kor 6:20 Rec.; ; 1Pét 4:6. Bár a πνεῦμα és a ψυχή szavakat többnyire válogatás nélkül használják, és így a σῶμα és a ψυχή szembeállításba kerül (de Pálnál sosem; l. ψυχή, különösen 2), mégis elismerik a hármas megkülönböztetést is, τό πνεῦμα καί ἡ ψυχή καί τό σῶμα, **1Thessz 5:23**, amely szerint τό πνεῦμα az ember értelmes része, az isteni és örök dolgok felfogásának és megragadásának ereje, és amelyre Isten Szelleme kifejti hatását; (πνεῦμα, mondja Luther, „az ember legfelsőbb és legnemesebb része, amely alkalmassá teszi arra, hogy megragadja a felfoghatatlan, láthatatlan, örök dolgokat; röviden: ez az a ház, ahol a hit és Isten igéje otthon van” (l. az utalásokat a végén)): ἄχρι μερισμοῦ ψυχῆς καί πνεύματος (l. μερισμός, 2), **Zsid 4:12**; ἐν ἑνί πνεύματι, μία ψυχή, Fil 1:27 (ahol a μία ψυχή helyett Pál a máshol szokásos beszédmódja szerint helyesebben μία καρδία szót mondott volna). τό πνεῦμα τίνος, Mk 2:8; Mk 8:12; Lukei. 47; ApCsel 17:16; Róm 1:9; Róm 8:16; 1Kor 5:4; 1Kor 16:18; 2Kor 2:13; 2Kor 7:13; Gal 6:18; (Fil 4:23 L T Tr WH); Fil 1:25; 2Tim 4:22; ὁ Θεός τῶν πνευμάτων (amely helyett Rec.-ben ἁγίων áll) τῶν προφητῶν, aki a próféták lelkét ösztönzi és irányítja, Jel 22:6, ahol vö. Düsterdieck. A részes eset τῷ πνεύματι azt a helyet (helyszínt) jelöli, ahol valaki tesz vagy szenved valamit, mint a mi szellemben kifejezésünk: ἐπιγινώσκειν, Mk 2:8; ἀναστενάζειν, Mk 8:12; ἐμβρίμασθαι, Ján 11:33; ταράσσεσθαι, Ján 13:21; ζηιν, ApCsel 18:25; Róm 12:11; ἀγαλλίασθαι, Luk 10:21 (de L T Tr WH itt hozzáteszi: ἁγίῳ); a vonatkozást jelölő részes eset: 1Kor 5:3; Kol 2:5; 1Pét 4:6; κραταιουσθαι, Luk 1:80; Luk 2:40 Rec.; ἅγιον εἶναι, 1Kor 7:34; ζοωποιηθεις, 1Pét 3:18; ζῆν, 1Pét 4:6; πτωχοί, Mt 5:3; eszközhatározó részes eset: δεδεμένος, ApCsel 20:22; συνέχεσθαι, Rec.; Θεῷ λατρεύειν, Fil 3:3 R G; előnyt jelölő részes eset: ἄνεσιν τῷ πνεύματι μου, 2Kor 2:13 (12); ἐν τῷ πνεύματι, eszközként használatos, 1Kor 6:20 Rec. (bizonyára jobb a ἐν τῷ πνεύματι szót itt helyileg érteni, a 'szféra' értelmében (Winer's Grammar, 386 (362), vö. 1Kor 6:19)); továbbá ἐν πνεύματι, majdnem egyenértékű a πνευματικῶς kifejezéssel (de l. Winer's Grammar, § 51, 1 e. jegyzet), Ján 4:23; a cselekvés székhelyéről, ἐν τῷ πνεύματι μου, Róm 1:9; τιθέναι ἐν τῷ πνεύματι, magában elhatározni, szellemben szándékozni, főnévi igenévvel (πορεύεσθαι, ApCsel 19:21. πνεύματα προφητῶν, a szövegösszefüggés szerint a próféták lelkei (szellemei), amelyeket Isten Szelleme mozgat, 1Kor 14:32; sajátos értelemben πνεῦμα olyan lélekre vonatkozik, amelyet a Szent Szellem teljesen felindított és egészen isteni dolgokra irányul, ám amely híján van az éles öntudatnak és a világos értelemnek; így a τό πνεῦμα μου προσεύχεται kifejezésekben, szemben a ὁ νοῦς μου szóval, 1Kor 14:14; πνεύματι λαλεῖν μυστήρια, 1Kor 14:2; προσεύχεσθαι, ψάλλειν, εὐλογεῖν, τῷ πνεύματι, szemben a τῷ νοι szóval 1Kor 14:15, 1Kor 14:16.
 
-Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
+<details>
+<summary>3 (1 szakasz)</summary>
 
-### H5315 — נֶ֫פֶשׁ (ne.phesh)
+- `3` — szellem mint önálló, anyagtalan lény
 
-**TWOT:** 1395a
+</details>
 
-**Szemantikai domén:** 001002007 People, 001002010001 Air, 001002010014 Spices, 003001016 Self
+- **`3.a` — szellem általában; a feltámadt Krisztusról: megelevenítő szellem**
 
-Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
+  > általánosan: Luk 24:37; ApCsel 23:8 (erre l. μήτε, a végén); ApCsel 23:9; πνεῦμα σάρκα καί ὀστέα οὐκ ἔχει, Luk 24:39; πνεῦμα ζοωποιουν (életet adó szellem), Krisztusról mondva, mint a halottaiból feltámasztottról, **1Kor 15:45**; πνεῦμα ὁ Θεός (Isten lényegét tekintve szellem), Ján 4:24; πατήρ τῶν πνευμάτων, Istenről, Zsid 12:9, ahol a kifejezés magában foglalja az emberek és az angyalok szellemeit is.
+
+<details>
+<summary>3.b – 4 (4 szakasz)</summary>
+
+- `3.b` — testet elhagyott emberi lélek ((Babrius 122, 8))
+- `3.c` — az embernél magasabb, de Istennél alacsonyabb szellem, azaz angyal
+- `3.d` — „Krisztus szellemi természete, amely a legmagasabb angyaloknál is magasabb, közel áll Iste…
+- `4` — A Szentírás Istennek is tulajdonít πνεῦμα-t, azaz Isten erejét és működését — gondolatban…
+
+</details>
+
+- **`4.a`**
+
+  > Ezt a πνεῦμα-t az Ószövetségben אֱלֹהִים רוּחַ, יְהוָה רוּחַ néven nevezik; az Újszövetségben πνεῦμα ἅγιον, τό ἅγιον πνεῦμα, τό πνεῦμα τό ἅγιον (így először: Bölcs 1:5 Bölcs 9:17; a קֹדֶשׁ רוּחַ kifejezést Zsolt 50:13, Ézs 63:10, Ézs 63:11 helyén a Septuaginta πνεῦμα ἁγιωσύνης-vel adja vissza), azaz a Szent Szellem (fenséges, a felség teljességével teli, imádandó, minden tisztátalansággal teljesen ellentétes): Mt 1:18, Mt 1:20; Mt 3:11; Mt 12:32; Mt 28:19; Mk 1:8; Mk 3:29; Mk 12:36; Mk 13:11; Luk 1:15, Luk 1:35; Luk 2:25, Luk 2:26; Luk 3:16, Luk 3:22; Luk 4:1; Luk 11:13; Luk 12:10, Luk 12:12; Ján 1:33; Ján 7:39 (L T WH elhagyja; Tr zárójelbe teszi a ἅγιον szót); Ján 14:26; Ján 20:22; ApCsel 1:2, ApCsel 1:5, ApCsel 1:8, ApCsel 1:16; ApCsel 2:33, ApCsel 2:38; ApCsel 4:25 L T Tr WH; ApCsel 5:3,32; 8:18> (L T WH elhagyja; Tr zárójelbe teszi a τό ἅγιον szót), ; ApCsel 9:31; ApCsel 10:38,44,45,47; 11:15,16,24; 13:2,4,9,52; 15:8,28; 16:6; 19:6; 20:28>; Róm 9:1; Róm 14:17; Róm 15:13, Róm 15:16, Róm 15:19 (L Tr WH zárójelben); 1Kor 6:19; 1Kor 12:3; 2Kor 6:6; 2Kor 13:13 (14); Ef 1:13; 1Thessz 1:5, 1Thessz 1:6; 2Tim 1:14; Tit 3:5; Zsid 2:4; Zsid 6:4; Zsid 9:8; 1Ján 5:7 Rec.; Júd 1:20; további példák lejjebb adódnak a kifejezéseknél; (a névelő használatáról és elhagyásáról l. Fritzsche, Ep. ad Romans, ii., o. 105 (Harless ellenében (Ef 2:22-nél), et al.; vö. még Meyer Gal 5:16-nál; Ellicott Gal 5:5-nél; Winers Grammar, 122 (116); Buttmann, 89 (78))); τό πνεῦμα τό ἅγιον τοῦ Θεοῦ, Ef 4:30; 1Thessz 4:8; πνεῦμα Θεοῦ, Róm 8:9, Róm 8:14; τό τοῦ Θεοῦ πνεῦμα, 1Pét 4:14; (τό) πνεῦμα (τοῦ) Θεοῦ, Mt 3:16; Mt 12:18, Mt 12:28; **1Kor 2:14**; 1Kor 3:16; Ef 3:16; 1Ján 4:2; τό πνεῦμα τοῦ Θεοῦ ἡμῶν, 1Kor 6:11; τό πνεῦμα τοῦ πατρός, Mt 10:20; πνεῦμα Θεοῦ ζῶντος, 2Kor 3:3; τό πνεῦμα τοῦ ἐγείραντος Ἰησοῦν, Róm 8:11; τό πνεῦμα τό ἐκ Θεοῦ (Istentől kiáradó és az emberekkel közölt), 1Kor 2:12; πνεῦμα és τό πνεῦμα τοῦ κυρίου, azaz Istené, Luk 4:18; ApCsel 5:9 (vö. ApCsel 5:4); ; κυρίου, azaz Krisztusé, 2Kor 3:17, 2Kor 3:18 (vö. Buttmann, 343 (295)); τό πνεῦμα Ἰησοῦ, mivel ugyanaz a Szellem sajátos módon Jézusban lakott, ApCsel 16:7 (ahol Rec. elhagyja a Ἰησοῦ szót); Χριστοῦ, Róm 8:9; Ἰησοῦ Χριστοῦ, Fil 1:19; τό ἐν τίνι (az ember lelkében (nem WH széljegyzet)) πνεῦμα Χριστοῦ, 1Pét 1:11; τό πνεῦμα τοῦ υἱοῦ (τοῦ Θεοῦ), Gal 4:6; egyszerűen τό πνεῦμα vagy πνεῦμα: Mt 4:1; Mt 12:31, Mt 12:32; Mt 22:43; Mk 1:10, Mk 1:12; Luk 2:1, Luk 2:14; Ján 1:32, Ján 1:33; Ján 3:6, Ján 3:8, Ján 3:34; Ján 7:39; ApCsel 2:4; ApCsel 8:29; ApCsel 10:19; ApCsel 11:12, ApCsel 11:28; ApCsel 21:4; Róm 8:6, Róm 8:16, Róm 8:23, Róm 8:26, Róm 8:27; Róm 15:30; 1Kor 2:4, 1Kor 2:10, 1Kor 2:13 (ahol Rec. hozzáteszi: ἁγίου); 1Kor 12:4,7,8>; 2Kor 1:22; 2Kor 3:6, 2Kor 3:8; 2Kor 5:5; Gal 3:3, Gal 3:5, Gal 3:14; Gal 4:29; Gal 5:5, Gal 5:17, Gal 5:22, Gal 5:25; Ef 4:3; Ef 5:9 Rec.; ; Fil 2:1; 2Thessz 2:13; 1Tim 4:1; Jak 4:5; 1Pét 1:22 Rec.; 1Ján 3:24; 1Ján 5:6, 1Ján 5:8; Jel 22:17. Azok között a jótékony és igen sokféle működések és hatások között, amelyeket az Újszövetség ennek a Szellemnek tulajdonít, kiemelkedők a következők: általa fogant meg az ember Jézus Mária szűz méhében (Mt 1:18, Mt 1:20; Luk 1:35), és a Keresztelő János általi megkeresztelésekor leszállt Jézusra (Mt 3:16; Mk 1:10; Luk 3:22), úgyhogy állandóan (μένον ἐπ' αὐτόν) betöltötte (Ján 1:32, Ján 1:33, vö. 3:34; Mt 12:28; ApCsel 10:38); ezért Krisztus tetteit és szavait az ő ösztönzésére és segítségére vezetik vissza, Mt 4:1; Mt 12:28; Mk 1:12; Luk 4:1, Luk 4:14. Krisztus feltámadása után az apostolokkal is közölték, Ján 20:22; ApCsel 2. Később Krisztus más követői, mint elbeszélik, hit által kapták meg (Gal 3:2), vagy a keresztség közvetítésével (ApCsel 2:38; 1Kor 12:13) és a kéz rátételével (ApCsel 19:5, ApCsel 19:6), noha megkapása semmiféle mágikus kötelékkel nem volt a keresztséghez kötve, ApCsel 8:12, ApCsel 8:15; ApCsel 10:44 kk. Az ő működésére vezetik vissza a keresztény vallás minden áldását, mint a keresztségben végbevitt újjászületést (Ján 3:5, Ján 3:6, Ján 3:8; Tit 3:5 (de l. a magyarázókat a helyeknél, és az utalásokat a βάπτισμα címszónál, 3)); minden megszentelődést (1Kor 6:11; ezért ἁγιασμός πνεύματος, 2Thessz 2:13; 1Pét 1:2); a gonosz vágyak elfojtásának és a szentség gyakorlásának erejét (Róm 8:2 kk.; Gal 5:16 kk.,22; 1Pét 1:22 (Rec.), stb.); a lelki erőt, hogy Krisztusért türelemmel viseljen el minden üldözést, veszteséget, megpróbáltatást (Mt 10:20; Luk 12:11, Luk 12:12; Róm 8:26); az evangéliumi igazság ismeretét (Ján 14:17, Ján 14:26; Ján 15:26; Ján 16:12, Ján 16:13; 1Kor 2:6-16; Ef 3:5) — ezért nevezik πνεῦμα τῆς ἀληθείας (János az idézett helyeken; 1Ján 4:6), πνεῦμα σοφίας καί ἀποκαλύψεως (Ef 1:17); a jövendő feltámadás és az örök boldogság biztos és örömteli reményét (Róm 5:5; Róm 8:11; 2Kor 1:22; 2Kor 5:5; Ef 1:13 k.); mert a Szent Szellem Isten országában a polgárjog pecsétje és záloga, 2Kor 1:22; Ef 1:13. Jelen van, hogy tanítsa, vezesse, ösztönözze, visszatartsa azokat a keresztényeket, akiknek működését Isten felhasználja tanácsainak végrehajtásában: ApCsel 8:29, ApCsel 8:39; ApCsel 10:19; ApCsel 11:12; ApCsel 13:2, ApCsel 13:4; ApCsel 15:28; ApCsel 16:6, ApCsel 16:7; ApCsel 20:28. Ő a karizmák, vagyis a különleges adományok szerzője (1Kor 12:7 kk.; l. χάρισμα), amelyek között kiemelkedő a prófétálás ereje: τά ἐρχόμενα ἀναγγελεῖ, Ján 16:13; ezért τό πνεῦμα τῆς προφητείας (Jel 19:10); és hatékonyságát a prófétákban egyszerűen τό πνεῦμα néven nevezik (1Thessz 5:19), és szavaikat e formulákkal vezetik be: τάδε λέγει τό πνεῦμα τό ἅγιον, ApCsel 21:11; τό πνεῦμα λέγει, 1Tim 4:1; Jel 14:13; a ταῖς ἐκκλησίαις hozzátételével, Jel 2:7, Jel 2:11, Jel 2:17, Jel 2:29; Jel 3:6, Jel 3:13, Jel 3:22. Mivel a Szent Szellem ihletésével az Ószövetség Írásainak is szerzője volt (2Pét 1:21; 2Tim 3:16), megnyilatkozásait a következő kifejezésekkel idézik: λέγει vagy μαρτυρεῖ τό πνεῦμα τό ἅγιον, Zsid 3:7; Zsid 10:15; τό πνεῦμα τό ἅγιον ἐλάλησε διά Ἠσαΐου, ApCsel 28:25, vö. ApCsel 1:16. A Szent Szellemre vonatkozó nagyszámú más kifejezés közül itt a következők tűnnek figyelemre méltónak: Istenről azt mondják διδόναι τίνι τό πνεῦμα τό ἅγιον, Luk 11:13; ApCsel 15:8; szenvedő alakban, Róm 5:5; pontosabban ἐκ τοῦ πνεύματος αὐτοῦ, azaz részt az ő Szelleme teljességéből (Buttmann, § 132, 7; Winer's Grammar, 366 (343)), 1Ján 4:13; vagy έ᾿κχειν ἀπό τοῦ πνεύματος αὐτοῦ, ApCsel 2:17, ApCsel 2:18 (mert teljes bőségét egyedül Krisztus kapja, Ján 3:34); az emberekről azt mondják, λαμβάνειν πνεῦμα ἅγιον, Ján 20:22; ApCsel 8:15, ApCsel 8:17, ApCsel 8:19; ApCsel 19:2; vagy τό πνεῦμα ἅγιον, ApCsel 10:47; vagy τό πνεῦμα τό ἐκ Θεοῦ, 1Kor 2:12; vagy τό πνεῦμα, Gal 3:2, vö. Róm 8:15; πνεῦμα Θεοῦ ἔχειν, 1Kor 7:40; πνεῦμα μή ἔχειν, Júd 1:19; πληροῦσθαι πνεύματος ἁγίου, ApCsel 13:52; ἐν πνεύματι, Ef 5:18; πλησθῆναι, πλησθήσεσθαι, πνεύματος ἁγίου, Luk 1:15, Luk 1:41, Luk 1:67; ApCsel 2:4; ApCsel 4:8, ApCsel 4:31; ApCsel 9:17; ApCsel 13:9; πνεύματος ἁγίου πλήρης, ApCsel 6:5; ApCsel 7:55; ApCsel 11:24; πλήρεις πνεύματος (Rec. hozzáteszi: ἁγίου) καί σοφίας, ApCsel 6:3; πνεύματι és πνεύματι Θεοῦ ἄγεσθαι, a Szent Szellem által vezéreltetni, Róm 8:14; Gal 5:18; φέρεσθαι ὑπό πνεύματος ἁγίου 2Pét 1:21; a Szellemről azt mondják, hogy a keresztények elméjében lakik, Róm 8:9, Róm 8:11; 1Kor 3:16; 1Kor 6:19; 2Tim 1:14; Jak 4:5 (más kifejezések találhatók a βαπτίζω címszónál, II.
+
+<details>
+<summary>4.b – 5 (4 szakasz)</summary>
+
+- `4.b` — bb.
+- `4.b` — τά ἑπτά πνεύματα τοῦ Θεοῦ, Rev. ( (ahol Rec.st elhagyja a ἁπτα szót))
+- `4.c` — metonímiával πενυμα a α szóra vonatkozik. „Valaki, akiben szellem (πνεῦμα) nyilvánul meg v…
+- `5` — általánosan, „az érzület vagy befolyás, amely valakinek a lelkét betölti és irányítja
+
+</details>
+
+*ⓘ Kutatói megjegyzés: a szótár nem idézi: Luk 1:47, Júd 1:19.*
+
+*A teljes szócikk: [szónézet: /szo/G4151](/szo/G4151) · forrás: `konkordancia/Thayer_teljes.tsv`*
+
+**UBS-domének (Louw–Nida):** 12.18 Szellem; Isten Szelleme; Szent Szellem · 12.33 szellem · 12.37 demon; evil spirit *(fordításra vár)* · 12.42 ghost *(fordításra vár)* · 26.9 szellem; szellemi; szellemi természet; belső lény · 30.6 disposition; attitude; way of thinking *(fordításra vár)* · 14.4 wind; blowing; to blow *(fordításra vár)* · 23.186 breath *(fordításra vár)* · 12.39 unclean spirit *(fordításra vár)* · 12.38 demon; evil spirit *(fordításra vár)* · 25.73 to show enthusiasm; to commit oneself completely to *(fordításra vár)* · 23.110 to die *(fordításra vár)* · 88.57 to be humble *(fordításra vár)* · 30.76 to make up one’s mind; to decide *(fordításra vár)*
+
+##### G4152 — πνευματικός (pneumatikosz) · Thayer
+
+*Szótári gerinc (DT272): a szó jelentéstartománya a Thayer tagolásában (`adat/thayer_szakaszok.tsv`), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (`adat/thayer_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
+
+*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
+
+**A szócikk feje (nyelvi háttér).** > πνευματικῇ, πνευματικόν (πνεῦμα), spiritual (Vulg.spiritalis); in the N. T. *(fordításra vár)*
+
+- **`1` — az ember szellemére vonatkozó, a lélekkel szembeállítva**
+
+  > 1. relating to the human spirit, or rational soul, as the part of man which is akin to God and serves as his instrument or organ, opposed to ἡ ψυχή (see πνεῦμα, 2): hence, τό πνευματικόν, that which possesses the nature of the rational soul, opposed to τό ψυχικόν, 1Co 15:46 (cf. Winer's Grammar, 592 (551)); σῶμα πνευματικόν, the body which is animated and controlled only by the rational soul and by means of which the rational life, of life of the πενυμα, is lived; opposed to σῶμα ψυχικόν, verse 44.
+
+  *(fordításra vár)*
+
+<details>
+<summary>2 – 3.a (3 szakasz)</summary>
+
+- `2` — belonging to a spirit, or a being higher than man but inferior to God (see πνεῦμα, 3 c.)
+- `3` — az isteni Lélekhez tartozó
+- `3.a` — in reference to things
+
+</details>
+
+- **`3.b` — Isten Lelkétől betöltött és vezetett ember**
+
+  > b. in reference to persons; one who is filled with and governed by the Spirit of God: 1Co 2:15 (cf. 1Co 2:10-13,16>); (); ; Gal 6:1; οἶκος πνευματικός, of a body of Christians (see οἶκος, 1 b. at the end), 1Pe 2:5. (The word is not found in the O. T. (cf. Winers Grammar, § 34, 3). In secular writings from Aristotle, down it means pertaining to the wind or breath; windy, exposed to the wind; blowing; (but Sophocles' Lexicon, under the words, πνεῦμα οὐσία, Cleo. med. 1, 8, p. 46; τό πνεῦμα τό πάντων τούτων αἴτιον, Strabo 1, 3, 5, p. 78, 10 edition Kramer; and we find it opposed to σωματικον in Plutarch, mor., p. 129 c. (de sanitate praecepta 14); cf. Anthol. Pal. 8, 76. 175).)
+
+  *(fordításra vár)*
+
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 1 (1Kor 15:46, -/1/-); thayer_vers_jelentes.tsv sorszam 19 (1Kor 2:15, -/3/b) · a szótár nem idézi: 1Kor 15:44.*
+
+*A teljes szócikk: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/Thayer_teljes.tsv`*
+
+**UBS-domének (Louw–Nida):** 12.20 one who is spiritual; one who has received the Spirit *(fordításra vár)* · 12.21 spiritual; from the Spirit (in reference to such matters as gifts, benefits, teachings, blessings, and religious songs) *(fordításra vár)* · 26.10 spiritual; of the spirit; on a spiritual basis; in a spiritual manner *(fordításra vár)* · 41.40 spiritual; of spiritual conduct; guided by the Spirit *(fordításra vár)* · 79.3 not physical; not material; spiritual *(fordításra vár)* · 79.6 spiritual; supernatural *(fordításra vár)* · 12.44 power; authority; lordship; ruler; wicked force *(fordításra vár)*
+
+##### G5590 — ψυχή (pszükhé) · Thayer
+
+*Szótári gerinc (DT272): a szó jelentéstartománya a Thayer tagolásában (`adat/thayer_szakaszok.tsv`), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (`adat/thayer_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
+
+*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
+
+**A szócikk feje (nyelvi háttér).** ψυχῆς, ἡ (ψύχω, lélegzeni, fújni), Homérosztól kezdve, a Septuaginta megszámlálhatatlanul sokszor a נֶפֶשׁ szóra, olykor a לֵב és a לֵבָב szóra is;
+
+<details>
+<summary>1 (1 szakasz)</summary>
+
+- `1` — lehelet (latin anima), azaz
+
+</details>
+
+- **`1.a`**
+
+  > az élet lehelete; az éltető erő, amely a testet megelevenítja, és a lélegzésben mutatkozik meg: ApCsel 20:10; az állatokról, Jel 8:9 (1Móz 9:4; 1Móz 35:18; ἐπιστραφήτω ψυχή τοῦ παιδαρίου, 1Kir 17:21); így azokon a helyeken is, ahol az emberi természet görögök szerinti trichotómiája, azaz hármas felosztása szerint ἡ ψυχή; megkülönböztetendő a τό πνεῦμα szótól (l. πνευαμ, 2, o. 520a (és az utalások a πνεῦμα címszónál 5)), **1Thessz 5:23**; **Zsid 4:12**.
+
+<details>
+<summary>1.b (1 szakasz)</summary>
+
+- `1.b` — élet
+
+</details>
+
+- **`1.c`**
+
+  > alább), 2Kor 12:15.
+
+- **`1.c`**
+
+  > az, amiben élet van; élőlény: ψυχή ζῶσα, élő lélek, **1Kor 15:45**; (Jel 16:3 R Tr széljegyzet) (1Móz 2:7; többes szám ); πᾶσα ψυχή ζωῆς, Jel 16:3 (G L T Tr szöveg WH) (3Móz 11:10); πᾶσα ψυχή, minden lélek, azaz mindenki, ApCsel 2:43; ApCsel 3:23; Róm 13:1 (így כָּל־נֶפֶשׁ, 3Móz 7:17 (27); ); ἀνθρώπου hozzátételével, az ember minden lelke (אָדָם נֶפֶשׁ, 4Móz 31:40, 4Móz 31:46 (vö. 1Makk 2:38)), Róm 2:9. ψυχαί, lelkek (mint a latin capita), azaz személyek (összeszámlálásoknál; vö. német Seelenzahl): ApCsel 2:41; ApCsel 7:14; ApCsel 27:37; 1Pét 3:20 (1Móz 46:15, 1Móz 46:18, 1Móz 46:22, 1Móz 46:26, 1Móz 46:27; 2Móz 1:5; 2Móz 12:4; 3Móz 2:1; 4Móz 19:11, 4Móz 19:13, 4Móz 19:18; (5Móz 10:22); a görög szerzők példái (vö. Passow, a címszónál, 2, II. köt., o. 2590b) más jellegűek (de vö. Liddell and Scott, a címszónál, II. 2)); ψυχαί ἀνθρώπων rabszolgákról (A. V. souls of men (R. V. with marginal reading 'Or lives')), Jel 18:13 (így (4Móz 31:35); Ez 27:13; l. σῶμα, 1 c. (vö. Winer's Grammar, § 22, 7 N. 3)).
+
+- **`2` — a lélek mint az érzelmek és a vágyak székhelye**
+
+  > a lélek (latin animus), a. az érzések, vágyak, szeretetek, ellenszenvek székhelye (a mi lelkünk, szívünk stb. (R. V. szinte egyöntetűen soul)); a görög írásokból vett példákat l. Passow, a címszónál, 2, II. köt., o. 2589b; (Liddell and Scott, a címszónál, II. 3); héber נֶפֶשׁ, vö. Gesenius, Thesaurus II, o. 901 a 3-ban): **Luk 1:46**; Luk 2:35; Ján 10:24 (vö. αἴρω, 1 b.); ApCsel 14:2, ApCsel 14:22; ApCsel 15:24; Zsid 6:19; 2Pét 2:8, 2Pét 2:14; ἡ ἐπιθυμία τῆς ψυχῆς, Jel 18:14; ἀνάπαυσιν ταῖς ψυχαῖς εὑρίσκειν, Mt 11:29; ψυχή,... ἀναπαύου, φάγε, πίε (WH zárójelbe teszi ezt a három felszólítást), εὐφραίνου (megszemélyesítés és közvetlen megszólítás), Luk 12:19, vö. Luk 12:18 (ἡ ψυχή ἀναπαύσεται, Xenophón, Cyril 6, 2, 28; ἐυφραίνειν τήν ψυχήν, Aelian v. h. 1, 32); εὐδοκεῖ ἡ ψυχή μου (antropopatikusan, Istenről), Mt 12:18; Zsid 10:38; περίλυπος ἐστιν ἡ ψυχή μου, Mt 26:38; Mk 14:34; ἡ ψυχή μου τετάρακται, Ján 12:27; ταῖς ψυχαῖς ὑμῶν ἀκλυόμενοι (lelketekben ellankadva (vö. ἐκλύω, 2 b.)), Zsid 12:3; ἐν ὅλῃ τῇ ψυχή σου, teljes lelkeddel, Mt 22:37; (Luk 10:27 L szöveg T Tr WH); ἐξ ὅλης τῆς ψυχῆς σου (latin ex toto animo), egész lelkeddel (szó szerint: egész lelkedből (vö. ἐκ, II. 12 b.)), Mk 12:30, Mk 12:33 (itt T WH elhagyja; L Tr széljegyzet zárójelbe teszi a kifejezést); Luk 10:27 (R G) (5Móz 6:5; (Epiktétosz diss. 3, 22, 18 (vö. Xenophón, anab. 7, 7, 43)); Antoninus 3, 4; (különösen 4, 31; 12, 29); ὅλῃ τῇ ψυχή φροντίζειν τίνος (inkább κεχαρισθαι-val), Xenophón, mem. 3, 11, 10); μία ψυχή, egy lélekkel (vö. πνεῦμα, 2, o. 520a alul), Fil 1:27; τοῦ πλήθους... ἦν ἡ καρδία καί ἡ ψυχή μία, ApCsel 4:32 (ἐρωτηθεις τί ἐστι φίλος, ἔφη. μία ψυχή δύο σώμασιν ἐνοικουσα, (Diogenész Laertiosz 5, 20 (vö. Arisztotelész, eth. Nic. 9, 8, 2, o. 1168b, 7; az elliptikus ἀπό μιᾶς (tudniillik ψυχῆς?) kifejezésről l. ἀπό, III.)); ἐκ ψυχῆς, szívből, szívesen (Ef 6:6 (Tr WH az Ef 6:7-tel)); Kol 3:23 (ἐκ τῆς ψυχῆς gyakran Xenophónnál; τό ἐκ ψυχῆς πένθος, Josephus, Antiquities 17, 6, 5).
+
+<details>
+<summary>2.b – 2.c (2 szakasz)</summary>
+
+- `2.b` — „az (emberi) lélek, amennyiben úgy van alkotva, hogy az Isten által kínált eszközök helyes…
+- `2.c` — lélek mint a testtől különböző, a halállal fel nem oldódó lényeg (megkülönböztetve a τό σῶ…
+
+</details>
+
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 44 (1Kor 15:45, -/1/c).*
+
+*A teljes szócikk: [szónézet: /szo/G5590](/szo/G5590) · forrás: `konkordancia/Thayer_teljes.tsv`*
+
+**UBS-domének (Louw–Nida):** 26.4 belső én; elme; gondolatok; érzések; szív; lény · 23.88 élet · 9.20 személy; emberek · 4.1 living creature *(fordításra vár)* · 25.280 to experience anguish; to be tormented in one’s heart *(fordításra vár)* · 88.200 to turn someone against; to cause to dislike *(fordításra vár)* · 25.291 to become discouraged; to become tired of *(fordításra vár)* · 21.20 to save oneself; to protect oneself *(fordításra vár)* · 21.7 to risk; to risk one’s life *(fordításra vár)* · 21.24 to save one’s life; to save oneself *(fordításra vár)* · 25.279 to feel pain and sorrow; to be sorrowful and distressed *(fordításra vár)* · 23.113 to die voluntarily; to die willingly *(fordításra vár)*
+
+##### G5591 — ψυχικός (pszükhikosz) · Thayer
+
+*Szótári gerinc (DT272): a szó jelentéstartománya a Thayer tagolásában (`adat/thayer_szakaszok.tsv`), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (`adat/thayer_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
+
+*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
+
+**A szócikk feje (nyelvi háttér).** > ψυχική, ψυχικόν (ψυχή) (Vulg.animalis, Gem.sinnlich), „of or belonging to the ψυχή; *(fordításra vár)*
+
+- **`b` — az érzéki természettől vezérelt**
+
+  > b. "governed by the ψυχή i. e. the sensuous nature with its subjection to appetite and passion (as though made up of nothing but ψυχή): ἄνθρωπος (equivalent to σαρκικός (or σάρκινος, which see 3) in ), 1Co 2:14; ψυχικοί, πνεῦμα μή ἔχοντες, Jude 1:19 (A. V. sensual (R. V. with marginal reading 'Or natural, Or animal'); so in the following example); σοφία, a wisdom in harmony with the corrupt desires and affections, and springing from them (see σοφία, a., p. 581b bottom), Jam 3:15. (In various other senses in secular authors from Aristotle and Polybius down.)
+
+  *(fordításra vár)*
+
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: thayer_vers_jelentes.tsv sorszam 1 (1Kor 15:44, fej); thayer_vers_jelentes.tsv sorszam 2 (1Kor 15:46, fej); thayer_vers_jelentes.tsv sorszam 6 (1Kor 2:14, -/-/b) · a szótár nem idézi: Júd 1:19.*
+
+*A teljes szócikk: [szónézet: /szo/G5591](/szo/G5591) · forrás: `konkordancia/Thayer_teljes.tsv`*
+
+**UBS-domének (Louw–Nida):** 79.2 physical; natural *(fordításra vár)* · 79.5 natural; human *(fordításra vár)* · 41.41 unspiritual; worldly; natural *(fordításra vár)*
+
+#### 3. Teológiai szócikk
+
+Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
+
+**G4151** · tW: `kt/demon`, `kt/evil`, `kt/god`, `kt/holyspirit`, `kt/spirit` — a szócikkek szövege a szónézetben: [szónézet: /szo/G4151](/szo/G4151) · forrás: `konkordancia/tW_szocikkek.tsv`
+
+**G4152** · tW: `kt/demon`, `kt/spirit` — a szócikkek szövege a szónézetben: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/tW_szocikkek.tsv`
+
+**G5590** · tW: `kt/soul`, `other/mind` — a szócikkek szövege a szónézetben: [szónézet: /szo/G5590](/szo/G5590) · forrás: `konkordancia/tW_szocikkek.tsv`
+
+**G5591** · *a forrás nem tárgyalja* *(tW)*
+
+#### 4. Jelentésszerkezet, szemantikai mező
+
+A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
+
+**G4151** · **Szemantikai domén:** 012001 Supernatural Beings, 014002 Wind, 023007 Live, Die, 023010 Breathe, Breath, 025006 Be Eager, Be Earnest, In a Devoted Manner, 026 Psychological Faculties, 030001 To Think, Thought, 030005 To Decide, To Conclude, 088007 Humility
+
+**G4152** · **Szemantikai domén:** 012001 Supernatural Beings, 012002 Supernatural Powers, 026 Psychological Faculties, 041003 Particular Patterns of Behavior, 079001 Physical [Material], Spiritual, 079002 Natural [Human], Spiritual
+
+**G5590** · **Szemantikai domén:** 004 Animals, 009001 Human Beings, 021002 Expose Oneself to Danger, 021005 Cause To Be Safe, Free from Danger, 023007 Live, Die, 025023 Sorrow, Regret, 025024 Discouragement, 026 Psychological Faculties, 088026 Hate, Hateful
+
+**G5591** · **Szemantikai domén:** 041003 Particular Patterns of Behavior, 079001 Physical [Material], Spiritual, 079002 Natural [Human], Spiritual
+
+#### 5. Tömör jelentés, előfordulás
+
+A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
+
+**G4151** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G4151](/szo/G4151) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
+
+**G4152** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
+
+**G5590** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G5590](/szo/G5590) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
+
+**G5591** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G5591](/szo/G5591) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
+
+#### 6. LXX-híd
+
+A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
+
+**G4151, G4152, G5590, G5591** · az LXX a motívum 1 ószövetségi versében: egyező 1 *(egyező: a görög szövegben is G4151, G4152, G5590, G5591 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+
+#### 7. Megfelelők a másik nyelven
+
+A kétnyelvű szótár (SECE) a pneuma szónak 4 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a pszükhé felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a pszükhé szónak 6 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a chaj és a nefes. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
+
+**G4151 — πνεῦμα (pneuma)** · SECE — héber megfelelők (4):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| נְשָׁמָה | nesámá | H5397 | lehelet |
+| קָדִים | kádím | H6921 | kelet |
+| רוּחַ | rúach | H7306 vagy H7307 vagy H7308 *(a SECE csak a szóalakot adja)* | H7306: szagolni / H7307: szellem / H7308: szellem |
+| שָׁאַף | sáaf | H7602 | vágyódni, áhítani; lihegni, kapkodni |
+
+**G4152** · *a forrás nem tárgyalja* *(SECE: nincs héber megfelelő-lista)*
+
+**G5590 — ψυχή (pszükhé)** · SECE — héber megfelelők (6):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| אִישׁ | ís | H0376 vagy H0377 *(a SECE csak a szóalakot adja)* | H0376: férfi / H0377: férfiasnak lenni |
+| **חַי** *(a motívum szava)* | chaj | H2416 vagy H2417 *(a SECE csak a szóalakot adja)* | H2416: élő / H2417: élő |
+| לֵב | lév | H3820 vagy H3821 *(a SECE csak a szóalakot adja)* | H3820: szív / H3821: szív |
+| לֵבָב | léváv | H3824 | szív |
+| **נֶפֶשׁ** *(a motívum szava)* | nefes | H5315 | lélek |
+| רוּחַ | rúach | H7306 vagy H7307 vagy H7308 *(a SECE csak a szóalakot adja)* | H7306: szagolni / H7307: szellem / H7308: szellem |
+
+**G5591** · *a forrás nem tárgyalja* *(SECE: nincs héber megfelelő-lista)*
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
+
+#### 8. Nyelvi háttér
+
+A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).<!-- olvasói -->
+
+*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben, és a rokon szavaknál sincs: jelölt hiány.*
+
+#### 9. Versenkénti jelentés
+
+A motívum 6 újszövetségi helyéből 6 helyen a pneuma egyetlen jelentésben áll; a motívum 3 újszövetségi helyéből 3 helyen a pneumatikosz egyetlen jelentésben áll; a motívum 4 újszövetségi helyéből 2 helyen a pszükhé egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű; a motívum 4 újszövetségi helyéből 3 helyen a pszükhikosz egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szavak jelentése a motívum helyeinek többségén egyértelmű.<!-- olvasói -->
+
+**G4151 — πνεῦμα (pneuma)** · a motívum 6 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (6 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G4151](/szo/G4151) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+
+**G4152 — πνευματικός (pneumatikosz)** · a motívum 3 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (3 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G4152](/szo/G4152) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+
+**G5590 — ψυχή (pszükhé)** · a motívum 4 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés, 2 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G5590](/szo/G5590) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+
+**G5591 — ψυχικός (pszükhikosz)** · a motívum 4 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (3 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G5591](/szo/G5591) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+
+#### 10. Kiejtés (magyaros)
+
+A szó magyaros kiejtése.<!-- olvasói -->
+
+**G4151** · πνεῦμα (pneuma)
+
+**G4152** · πνευματικός (pneumatikosz)
+
+**G5590** · ψυχή (pszükhé)
+
+**G5591** · ψυχικός (pszükhikosz)
+
+### Héber szavak: H2416, H5315
+
+A motívumot hordozó héber szavak (héberül a chaj (H2416) és a nefes (H5315)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
+
+#### 1. Alapjelentés
+
+A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
+
+**H2416** · élő *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/TBESH.txt`
+
+**H5315** · lélek *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet: /szo/H5315](/szo/H5315) · forrás: `konkordancia/TBESH.txt`
+
+#### 2. Mélységi szócikk
+
+A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
+
+##### H2416 — חַי (chaj) · BDB
+
+*Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
+
+**A szócikk feje (nyelvi háttér).** H2416. chay I. חַי melléknév: élő, eleven; — <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr>‎ 1Móz 25:6 és máshol; חָ֑י‎ 3:20 és máshol, חֵי Ámós 8:14, összesen 15-ször (Ew § 329 status constructusként magyarázza, de Ges § 93, R 7 n és mások összevont status absolutusként); nőnemű חַיָּה‎ 1Móz 1:20 és máshol; többes szám חַיִּים Zsolt 116:9 és máshol; —
+
+<details>
+<summary>1.a – 1.c (3 szakasz)</summary>
+
+- `1.a` — of God, as the living one, the fountain of life חַי אֵל Josh 3:10 (J), Hosea 2:1
+- `1.b` — emberről *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
+- `1.c` — állatokról *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
+
+</details>
+
+- **`1.d`**
+
+  > állatok és ember, kifejezések bármelyikükre vagy mindkettőre: ח ׳כל‎ 1Móz 3:20; 8:21 (J) Jób 12:10; 28:21; 30:23; Zsolt 143:2; 145:16; כל החי‎ 1Móz 6:19 (P); נֶפֶשׁ חַיָּה‎ 1:20, 24, 30 (P) **2:7**, 19 (J); כל נֶפֶשׁ חַיָּה‎ 9:12, 15, 16 (P) Ez 47:9; כל נפשׁ החיה‎ 1Móz 1:21; 9:10; 3Móz 11:10, 46 (P).
+
+<details>
+<summary>1.e – 3 (3 szakasz)</summary>
+
+- `1.e` — (kétséges) növényzetről, mint a tövisekről
+- `2` — élet, csak késői költészetben, Zsolt 143:3 *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
+- `3` — reviving
+
+</details>
+
+- **`1`**
+
+  > 1 animal, as living, active being: 1 life: physical Gen 27:46; Exod 1:14 (P), Deut 28:66 (twice in verse); 2Sam 11:11; 15:21; Isa 38:12; Jeremiah 8:23; Lam 3:53, 58; Ezek 7:13; Job 3:20; 7:7; 9:21; 10:12; 24:22; Psa 7:6; 17:14; 21:5; 26:9; 31:11; 34:13; 63:4; 64:2; 66:9; 88:4; 103:4; Prov 18:21; Eccl 2:17; 6:12; 7:13; 9:9 (twice in verse); 10:19; Jonah 2:7; 4:3, 8; חַיֵּי שׂרה life of Sarah Gen 23:1(P) ח ׳שְׁנֵי years of the life of 2Sam 19:35; Gen 23:1; 25:7, 17; 47:8-9, (twice in verse); 47:28; Exod 6:16, 18, 20 (P); לח ׳שָׁנָה Gen 7:11 (P); שְׁנוֺת חַיִּים Prov 3:2; 4:10; 9:11; ח ׳יְמֵי days of the life of Eccl 2:3; 5:17; 5:19; 6:12; 8:15; 9:9; כֹּל יְמֵי <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Gen 3:14, 17 (J) Deut 4:9; 6:2; 16:3; 17:19; Josh 1:5; 4:14 (D) 1Sam 1:11; 7:15; 1Kin 5:1; 11:34; 15:5-6, 2Kin 25:29-30, = Jer 52:33-34, Isa 38:20 (poem of Hez.) Psa 23:6; 27:4; 128:5; Prov 31:12; ׳בּח in or during one's life Gen 27:46 (P) Lev 18:18 (H) Judg 16:30; 2Sam 1:23; 18:18; Psa 49:19; 63:5; 104:33; 146:2; Job 10:1; Eccl 3:12; 9:3; ח ׳רוּחַ Gen 6:17; 7:15 (P); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> רוּחִי Isa 38:16 (poem of Hez.); <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> בשׂרים Prov 14:30; נִשְׁמַת (רוּחַ) <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Gen 2:7; 7:22 (J). 1 of God: absolute <abbr class="rovidites" title="a címszó: חַי (chaj)">ח׳</abbr> Dan 4:31, emphatic חַיָא‎ 6:21. 27; men, plural emphatic חַיַיָא the lilving 2:30; 4:14.
+
+  *(fordításra vár)*
+
+<details>
+<summary>4 (1 szakasz)</summary>
+
+- `4` — revival, renewal
+
+</details>
+
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 340 (1Móz 2:7, fej); bdb_vers_jelentes.tsv sorszam 436 (1Móz 2:7, -/1).*
+
+*A teljes szócikk: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
+
+##### H5315 — נֶ֫פֶשׁ (nefes) · BDB
+
+*Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
+
+**A szócikk feje (nyelvi háttér).** H5315. nephesh נֶ֫פֶשׁ‎_756 nőnemű főnév 1Móz 49:6 (így még 2:19; 4Móz 31:28; 1Kir 19:2 is, l. Albr ZAW xvi (1896), 42 SS): lélek, élőlény, élet, maga, személy, vágy, étvágy, érzelem és szenvedély (Sir 3:18; 4:1 (a versben kétszer); Préd 4:2(a versben kétszer); Sir 13:12; Sir 14:11); — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr>‎ 1Móz 1:20 és máshol; נָ֑פֶשׁ‎ 37:21 és máshol; suffixummal נַפְשִׁי‎ 12:13 és máshol; többes szám נְפָשׁוֺת Ez 13:18, összesen 13-szor; נְפָשֹׁת‎ 2Móz 12:4; 3Móz 27:2; status constructus נַפְשׁוֺת‎ 1Móz 36:6, összesen 4-szer; נַפְשֹׁת‎ 3Móz 21:11; נְפָשִׁים Ez 13:20 (de olv. חָפְשִׁים, l. Co Berthol Toy); suffixummal נַפְשׁוֺתָם‎ 2Sám 23:17 és máshol; נַפְשֹׁתָם‎ 4Móz 17:3 és máshol: — 1 = ami lélegzik, a lélegző lényeg vagy lény = ψυχή, anima, a lélek, az ember belső lénye:
+
+<details>
+<summary>1 – 1.d (5 szakasz)</summary>
+
+- `1` — = that which breathes, the breathing substance or being = ψυχή, anima, the soul, the inner…
+- `1.a` — megkülönböztetve a בָּשָׂר וְעַד מִנֶּפֶשׁ ׃בָּשָׂר-tól Ézs 10:18
+- `1.b` — mind a belső נפשׁ, mind a külső בשׂר közös alapon nyugvónak van elgondolva
+- `1.c` — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> a halálkor eltávozik, és az élettel visszatér
+- `1.d` — gyakran kívánják, hogy a נפשׁ megszabaduljon
+
+</details>
+
+- **`2` — Isten leheletétől élő lénnyé lett lélek**
+
+  > A נפשׁ élőlénnyé lesz: azáltal, hogy Isten נשׁמת חיים-t lehel a בשׂר orrlyukaiba; az emberről **1Móz 2:7** (J); hallgatólagosan az állatokról is 2:19 (J); így Zsolt 104:29; 104:30; vö. 66:9; az ember נֶפֶשׁ חַיָּה, élő, lélegző lény **1Móz 2:7** (J); másutt a נפשׁ חיּה mindig állatokról 1:20, 24, 30; 9:12, 15, 16 (mind P), Ez 47:9; így נפשׁ החיּה‎ 1Móz 1:21; 9:10 (mindkettő P), 3Móz 11:10, 46 (H); נפשׁ השׁרצת‎ 11:46 (H); נפשׁ כל חי Jób 12:10. A נפשׁ gyakran áll a ׃חיה וחיתה נפשׁ igével 1Móz 12:13; 19:20 (mindkettő J), 1Kir 20:32 (E), Zsolt 119:175; Jer 38:17, 20; חֵי נַפְשְׁךָ‎ 1Sám 1:26; 17:55; 20:3; 25:26; 2Sám 11:11; 14:9; 2Kir 2:2, 4, 6; 4:30 (mind J E); vö. נ ׳יְחַיֶּה‎ 1Kir 20:31 (E), Ez 18:27; Zsolt 22:30; továbbá 1Móz 19:19; Ézs 55:3; Péld 3:22.
+
+<details>
+<summary>3 – 10.c (27 szakasz)</summary>
+
+- `3` — A נפשׁ (a חיה főnév vagy ige nélkül) közelebbről
+- `3.a` — élőlény, amelynek élete a vérben lakozik [így az arabban We Skizzen iii. 217 G. Jacob Arab…
+- `3.b` — az élet elleni súlyos támadás ennek a belső élőlénynek a megtámadása 2Sám 1:9
+- `3.c` — נפשׁ magára az életre használatos 171-szer, állatokéra Péld 12:10, és az emberére 1Móz 44:3…
+- `4` — A נפשׁ mint az ember lényege magát az embert jelenti
+- `4.a` — személyes névmás körülírása, különösen költészetben és emelkedett beszédben, 70-szer
+- `4.b` — = visszaható, maga, 53-szor
+- `4.c` — = az ember személye, egyén, 144-szer, először a D 2-ben
+- `5` — נפשׁ = az étvágy székhelye, minden korszakban (46-szor) —
+- `5.a` — éhség
+- `5.b` — szomjúság
+- `5.c` — étvágy általában
+- `6` — = <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr> seat of emotions and passions (151 t.) —
+- `6.a` — vágy
+- `6.b` — utálat, undor
+- `6.c` — bánat és szorongás
+- `6.d` — öröm
+- `6.e` — szeretet
+- `6.f` — elidegenedés, gyűlölet, bosszú
+- `6.g` — egyéb érzelmek és érzések
+- `7` — נפשׁ alkalmanként szellemi cselekvésekre is használatos + לבב (l. 10)
+- `8` — נפשׁ akarati cselekvésekre kétséges
+- `9` — נפשׁ = jellem még kétségesebb
+- `10` — <abbr class="rovidites" title="a címszó: נֶ֫פֶשׁ (nefes)">נ׳</abbr>a D-ben, ha a לבב-val együtt áll, hozzá hasonul, és osztozik vele a 7, 8, 9 jelentésekbe…
+- `a` — שׁמן וקטרת ישׂמח לב ומתק רעהו מעצת נפשׁ Péld 27:9. Ges (Döderlein nyomán) így fordítja
+- `10.b` — נַפְשׁוֺ גֶּחָלִים תְּלַהֵט Jób 41:13
+- `10.c` — בָּתֵּי הַנֶּפֶשׁ Ézs 3:20
+
+</details>
+
+*A teljes szócikk: [szónézet: /szo/H5315](/szo/H5315) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
+
+#### 3. Teológiai szócikk
+
+Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
+
+**H2416** · **TWOT:** 644a, 644b, 644c, 644d, 644f
+
+**H2416** · tW: `other/beast`, `other/bookoflife`, `other/creature` — a szócikkek szövege a szónézetben: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/tW_szocikkek.tsv`
+
+**H5315** · **TWOT:** 1395a
+
+**H5315** · tW: `kt/soul`, `other/creature`, `other/member` — a szócikkek szövege a szónézetben: [szónézet: /szo/H5315](/szo/H5315) · forrás: `konkordancia/tW_szocikkek.tsv`
+
+#### 4. Jelentésszerkezet, szemantikai mező
+
+A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
+
+**H2416** · **Szemantikai domén:** 001002006 Animals, 001002007 People, 001002007012 Relatives, 002001001003 Alive, 002001001056 Stage, 002001001059 Strong, 002002003003 Happen, 002003002002 Associate, 002004001001 Feel
+
+**H5315** · **Szemantikai domén:** 001002007 People, 001002010001 Air, 001002010014 Spices, 003001016 Self
+
+#### 5. Tömör jelentés, előfordulás
+
+A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
+
+**H2416** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
+
+**H5315** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H5315](/szo/H5315) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
+
+#### 6. LXX-híd
+
+A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
+
+*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
+
+**H2416 — חַי (chaj)** · a motívum 1 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (G4151, G4152, G5590, G5591) használja-e: egyező 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+
+**H5315 — נֶ֫פֶשׁ (nefes)** · a motívum 1 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (G4151, G4152, G5590, G5591) használja-e: egyező 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+
+*Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
+
+**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó, G2198): 197 vers; ζωή (dzóé, G2222): 138 vers; κύριος (küriosz, G2962): 131 vers; πᾶς (pasz, G3956): 130 vers; λέγω (legó, G3004): 124 vers; εἰμί (eimi, G1510): 93 vers; γῆ (gé, G1093): 91 vers; θεός (theosz, G2316): 68 vers; θηρίον (thérion, G2342): 68 vers; ψυχή (pszükhé, G5590): 62 vers
+
+**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé, G5590): 615 vers; κύριος (küriosz, G2962): 209 vers; πᾶς (pasz, G3956): 165 vers; λέγω (legó, G3004): 133 vers; εἰμί (eimi, G1510): 125 vers; θεός (theosz, G2316): 75 vers; ποιέω (poieó, G4160): 71 vers; υἱός (ühiosz, G5207): 60 vers; χείρ (kheir, G5495): 55 vers; ζάω (dzaó, G2198): 51 vers
+
+*Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
+
+#### 7. Megfelelők a másik nyelven
+
+A kétnyelvű szótár (SECE) a chaj szónak 13 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a pszükhé. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja. A kétnyelvű szótár (SECE) a nefes szónak 9 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a pszükhé. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
+
+**H2416 — חַי (chaj)** · SECE — görög megfelelők (13):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| ἄνθρωπος | anthróposz | G0444 | a human *(fordításra vár)* |
+| βίος | biosz | G0979 | life *(fordításra vár)* |
+| ἑρπετόν | herpeton | G2062 | reptile *(fordításra vár)* |
+| ζωή | dzóé | G2222 | life *(fordításra vár)* |
+| ζωογονέω | dzóogoneó | G2225 | to give life *(fordításra vár)* |
+| ζῶον | dzóon | G2226 | living thing *(fordításra vár)* |
+| θηρίον | thérion | G2342 | wild animal *(fordításra vár)* |
+| θνητός | thnétosz | G2349 | mortal *(fordításra vár)* |
+| κτῆνος | kténosz | G2934 | animal *(fordításra vár)* |
+| τάγμα | tagma | G5001 | order *(fordításra vár)* |
+| τετράπους | tetrapúsz | G5074 | four-footed *(fordításra vár)* |
+| ὑγιής | hügiész | G5199 | healthy *(fordításra vár)* |
+| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | soul *(fordításra vár)* |
+
+**H5315 — נֶ֫פֶשׁ (nefes)** · SECE — görög megfelelők (9):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| ἀνήρ | anér | G0435 | man *(fordításra vár)* |
+| ἐλεύθερος | eleutherosz | G1658 | free/freedom *(fordításra vár)* |
+| ἐλπίς | elpisz | G1680 | hope *(fordításra vár)* |
+| ἐνύπνιον | enüpnion | G1798 | dream *(fordításra vár)* |
+| καρδία | kardia | G2588 | heart *(fordításra vár)* |
+| κεφαλή | kefalé | G2776 | head *(fordításra vár)* |
+| πνοή | pnoé | G4157 | wind/breath *(fordításra vár)* |
+| σῶμα | szóma | G4983 | body *(fordításra vár)* |
+| **ψυχή** *(a motívum szava)* | pszükhé | G5590 | soul *(fordításra vár)* |
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
+
+#### 8. Nyelvi háttér
+
+A szó eredete és nyelvi háttere.<!-- olvasói -->
+
+**H2416 — חַי (chaj)** · alapjelentés: élő, eleven; — ׳ח 1Móz 25:6 és máshol; חָ֑י (cháj) 3:20 és máshol, חֵי (ché) Ámós 8:14, összesen 15-ször — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+
+**H5315 — נֶ֫פֶשׁ (nefes)** · alapjelentés: lélek *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+
+#### 9. Versenkénti jelentés
+
+A motívum 1 ószövetségi helyéből 0 helyen a chaj egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű; a motívum 1 ószövetségi helyéből 1 helyen a nefes egyetlen jelentésben áll. **Következtetés:** a szavak jelentése a helyek felén-kétharmadán egyértelmű; a többinél a versből kell eldönteni.<!-- olvasói -->
+
+**H2416 — חַי (chaj)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H2416](/szo/H2416) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
+
+**H5315 — נֶ֫פֶשׁ (nefes)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H5315](/szo/H5315) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
+
+#### 10. Kiejtés (magyaros)
+
+A szó magyaros kiejtése.<!-- olvasói -->
+
+**H2416** · חַי (chaj)
+
+**H5315** · נֶ֫פֶשׁ (nefes)
+
+### Nyelvfüggetlen szerepek
+
+A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
+
+#### 12. Tematikus index (témák és igehely-hivatkozások)
+
+Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).<!-- olvasói -->
+
+<!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
+*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+
+#### 13. Károli-megfelelők
+
+A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.<!-- olvasói -->
+
+<!-- ÜRES-BLOKK: Károli-megfelelők | javaslat -->
+*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+
+#### 14. Rejtett / hamis párhuzam
+
+Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a motívum szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a motívum szavai, így a magyar olvasó tévesen kapcsolná ide.<!-- olvasói -->
+
+<!-- ÜRES-BLOKK: Rejtett / hamis párhuzam | javaslat -->
+*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#szocikkek -->
 
-### 2/b. Kiegészítő szótári adatok *(kézi)*
+### 2/b. Kiegészítő szótári adatok *(generált)*
 
-Nincs kiegészítő szótári adat.
+A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.<!-- olvasói -->
+
+<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: adat/lexikon_hivatkozasok.tsv -->
+
+*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
+
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
-| Igehely | Szó | Kiejtés | Jelentés |
-|---|---|---|---|
-| 1Thessz 5:23 | πνεῦμα | *pneuma* | szellem |
-| 1Thessz 5:23 | ψυχή | *pszükhé* | lélek |
-| 1Thessz 5:23 | σῶμα | *szóma* | test |
-| Zsid 4:12 | μερισμός | *meriszmosz* | megoszlás, szétválasztás |
-| 1Móz 2:7 | נֶפֶשׁ חַיָּה | *nefes chajjá* | élő lélek |
-| 1Kor 15:45 | πνεῦμα ζωοποιοῦν | *pneuma zóopoiun* | megelevenítő szellem |
-| Luk 1:46 | ψυχή | *pszükhé* | lélek |
-| Luk 1:47 | πνεῦμα | *pneuma* | szellem |
-| 1Kor 2:14 | ψυχικός | *pszükhikosz* | "lelki, természet szerinti" (a *pszükhé* melléknévi alakja) |
-| 1Kor 2:14 | πνεῦμα (τοῦ θεοῦ) | *pneuma (tú theú)* | Isten Szelleme |
-| 1Kor 2:15 | πνευματικός | *pneumatikosz* | "szellemi" (a *pneuma* melléknévi alakja) |
+Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
 
-**Az összevetés eredménye:** a *pneuma* szó mindhárom, nominális (főnévi) alakban álló újszövetségi helyen (1Thessz 5:23, 1Kor 15:45, Luk 1:47) — és a *pszükhé* szó mindhárom nominális helyen (1Thessz 5:23, LXX 1Móz 2:7 mögött, Luk 1:46) — ugyanazt a görög szót jelöli. A Luk 1:46-47 pár különösen erős lexikai bizonyíték: a két szó **ugyanabban a grammatikai szerepben** (alany), **közvetlenül egymás után**, tudatos költői párhuzamban áll — Mária nem szinonimaként használja őket (ahogy egy héber parallelizmusban szokás), hanem megkülönbözteti a "lelket" (amely magasztal) és a "szellemet" (amely örvendez). Ez a negyedik hely tehát **valódi lexikai**, nem csak tematikus kapcsolat, és a klasszikus trichotomista prooftext-listákban (1Thessz 5:23, 1Kor 15:44-45, Luk 1:46-47, Zsid 4:12) rendszeresen együtt szerepel a projekt már meglévő három versével.
+#### G4151 — πνεῦμα (pneuma) és G5590 — ψυχή (pszükhé) · Thayer
 
-**1Kor 2:14-15 — módszertani pontosítás:** ez az ötödik előfordulás **grammatikailag eltér** az előző négytől — itt nem a *pszükhé*/*pneuma* főnevek állnak egymás mellett, hanem az azokból képzett **melléknevek** (ψυχικός, πνευματικός), és a *pneuma* szó ezen a helyen elsődlegesen **Isten Szellemére** utal ("τοῦ πνεύματος τοῦ θεοῦ"), nem az emberi szellem-alkotóelemre önmagában. A "*pszükhikosz ánthróposz*" ("természet szerinti/lelki ember") tehát nem pontosan azonos kategória a *pszükhé*-vel mint az ember egyik alkotórészével — itt egy **emberkategóriáról** (olyan ember, aki nem fogadja be a Szellem dolgait) van szó, nem az egyén belső hármas felosztásáról. A kapcsolat ezért **rokon, de nem azonos súlyú lexikai kapocs**, mint a Luk 1:46-47 pár: a szótő azonos, a grammatikai forma és a referencia-tartomány eltér. Ezt a különbséget a tanulmány nem hallgatja el.
+**Jelentősége:** a Thayer-szótár a két szót külön szócikkben tárgyalja, de mindkettőben kitér a viszonyukra. A πνεῦμα második jelentése az ember szelleme, az élet és a gondolkodás elve. A szótár itt megjegyzi, hogy a Biblia a két szót többnyire különbség nélkül használja, néhány helyen azonban hármas tagolás áll: szellem, lélek és test (1Thessz 5:23). Ugyanide sorolja a Zsid 4:12-t és Mária énekének második sorát (Luk 1:47). A ψυχή szócikkében a szótár ugyanezt a két verset (1Thessz 5:23; Zsid 4:12) nevezi meg mint azokat a helyeket, ahol a lélek a szellemtől megkülönböztetve áll; Mária énekének első sorát (Luk 1:46) pedig az érzelmek és a vágyak székhelyeként érti. A szótár tehát maga is azt mondja, amire a motívum épül: a megkülönböztetés nem a szavak állandó jelentése, hanem néhány hely sajátja.
 
-Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a héber *nefes chajjá* (LXX: *pszükhén zószan*) és a görög *pneuma zóopoiun* nem azonos szótő — Pál itt tudatosan **szembeállítja**, nem azonosítja a két kifejezést, hogy az első és az utolsó Ádám közti minőségi különbséget hangsúlyozza. Ez tehát **tematikus, ellentétező párhuzam**, nem lexikai folytonosság — a distinkció maga a mondanivaló lényege.
+#### G4152 — πνευματικός (pneumatikosz) és G5591 — ψυχικός (pszükhikosz) · Thayer
+
+**Jelentősége:** a két melléknévnél a szótár még határozottabb. A πνευματικός első jelentése: az ember szellemére vonatkozó, a lélekkel szembeállítva; példája a lelki és az érzéki test (1Kor 15:44, 46). A ψυχικός jelentése az ember természetes, érzéki valója; a szótár szerint Pál az 1Kor 15:44-ben azért választotta ezt a szót, mert a következő versben az 1Móz 2:7 „élő lélek”-ét idézi. Ugyanez a melléknév az 1Kor 2:14-ben és a Júd 1:19-ben az érzékiektől vezérelt embert jelenti, aki nem fogadja be Isten Lelkét. A két melléknév tehát nem az ember két részét, hanem két életmódot vagy két létállapotot nevez meg.
+
+#### H5315 — נֶפֶשׁ (nefes) · BDB
+
+**Jelentősége:** a BDB a nefes szócikkének második pontjában az 1Móz 2:7-et tárgyalja: a nefes Isten leheletétől lesz élő lénnyé. A héber nefes nem a szellemmel szembeállított rész, hanem maga az élő ember. A Septuaginta ezt a mondatot ψυχὴν ζῶσαν (pszükhén zószan, élő lélek) szavakkal fordítja, és Isten leheletét nem πνεῦμα, hanem πνοή (lehelet) szóval adja vissza. Pál az 1Kor 15:45-ben a Septuaginta mondatát idézi, de két szót betold: az „első” embert és Ádám nevét, és így lesz a mondatból az első és az utolsó Ádám ellentéte.
+
+*Proveniencia: scope=range:1Móz 2:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-03T08:47Z | csatorna=cli · scope=range:1Kor 15:45 | forras=TAGNT_kivonat.tsv | ts=2026-11-03*
+
+#### A Károli-fordítás szavai
+
+**Jelentősége:** a Károli a két görög szót nem választja szét. Mária énekében a ψυχή-t és a πνεῦμα-t is „lelkem”-nek fordítja (Luk 1:46–47); az 1Thessz 5:23-ban a πνεῦμα „egész valótok”, a ψυχή „lelketek”; a Zsid 4:12-ben a ψυχή „szív”, a πνεῦμα „lélek”. „Szellem” csak egy helyen áll, a megelevenítő szellemnél (1Kor 15:45). A melléknevek közül a ψυχικός többnyire „érzéki”, a Jak 3:15-ben „testi”, a πνευματικός „lelki”. A magyar olvasó ezért a Károliban a „lélek” szót ezer versben találja meg, és nem látja, hol áll mögötte az egyik, hol a másik görög szó; a megkülönböztetés csak az eredeti szövegben követhető.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ANTROP-001, n=11; karoli_szo) | forras=split('\t') | ts=2026-11-03 · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/teljesseg_meres.py) | szotari_alak=lelki+lélek+szellem+szellemi | n=1072 | ts=2026-11-03T08:50Z*
+
+#### A héber háttér
+
+**Jelentősége:** a héber Bibliában a nefes (lélek) és a rúah (szellem, lehelet, szél) néhány versben szintén együtt áll, például Jób panaszában: „szólok az én lelkemnek fájdalmában, és panaszkodom az én szívemnek keserűségében” (Jób 7:11). A Septuaginta egy ilyen versben a két görög szót is egymás mellé teszi: „A kinek kezében van minden élő állatnak élete, és minden egyes embernek a lelke” (Jób 12:10); a görög fordításban itt ψυχή és πνεῦμα áll. Ezek a helyek a fordítók szóhasználatát mutatják, és a motívum héber előzményéhez tartoznak, de nem előfordulások, mert a motívum a görög szópár megkülönböztető együttállására épül.
+
+*Proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7307+H5315 | n=8 | ts=2026-11-03T08:47Z | csatorna=cli · scope=range:Jób 12:10 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:47Z | csatorna=cli*
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
+
+A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 2:7 | 1Móz 2:7 | נֶ֥פֶשׁ (Ne.fesh) | ψυχὴν (ψυχή, psuchē G5590) | egyező | LXX_OS |
+| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé G5590) | egyező | Septuaginta |
 
 *Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
@@ -238,15 +893,17 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum 8 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 8 igehely ad legalább egy találatot (90 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 90. **Következtetés:** a helyek 82%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
+
+*Ez a blokk a `[ID: ANTROP-001]` motívum 11 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 9 igehely ad legalább egy találatot (90 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 2 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, N-F156a): Luk 1:46, Luk 1:47.*
 
 #### 1Móz 2:7
 - TSK: 1Kor 15:45 (Votes: 38)
 - TSK: Jób 33:4 (Votes: 38)
-- TSK: Préd 12:7 (Votes: 36)
-- TSK: Ézs 64:8 (Votes: 30)
+- TSK: Préd 12:9 (Votes: 36)
+- TSK: Ézs 64:7 (Votes: 30)
 - TSK: ApCsel 17:25 (Votes: 25)
 - TSK: 1Kor 15:47 (Votes: 20)
 - TSK: 1Móz 3:19 (Votes: 19)
@@ -257,13 +914,8 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 #### Luk 1:46
 - TSK: 1Sám 2:1 (Votes: 26)
 - TSK: 1Sám 2:10 (Votes: 26)
-- TSK: Zsolt 34:2 (Votes: 18)
 - TSK: Zsolt 34:3 (Votes: 18)
-- Károli-KH: Mát 18:15-17
-
-#### Luk 1:47
-- Károli-KH: Ján 6:14
-- Károli-KH: 5Móz 18:18
+- TSK: Zsolt 34:4 (Votes: 18)
 
 #### 1Kor 2:14
 - TSK: 1Kor 1:18 (Votes: 59)
@@ -285,10 +937,17 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 #### 1Kor 2:15
 - Károli-KH: Péld 28:5
 
+#### 1Kor 15:44
+- Károli-KH: 1Kor 6:13
+
 #### 1Kor 15:45
 - TSK: Ján 5:21 (Votes: 22)
 - TSK: 1Móz 2:7 (Votes: 17)
 - Károli-KH: 1Móz 2:7
+
+#### 1Kor 15:46
+- Károli-KH: 1Kor 12:17
+- Károli-KH: ApCsel 20:33
 
 #### 1Thessz 5:23
 - TSK: Júd 1:24 (Votes: 46)
@@ -302,7 +961,7 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 - TSK: Ef 5:27 (Votes: 18)
 - TSK: 1Pét 1:2 (Votes: 18)
 - TSK: Fil 1:6 (Votes: 17)
-- Károli-KH: 1Thess 3:13
+- Károli-KH: 1Thessz 3:13
 - Károli-KH: Róm 15:33
 - Károli-KH: Zsid 13:20
 - Károli-KH: 2Kor 5:10
@@ -335,7 +994,7 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 - TSK: ApCsel 4:31 (Votes: 26)
 - TSK: 1Kor 14:24 (Votes: 26)
 - TSK: 1Kor 14:25 (Votes: 26)
-- TSK: Zsolt 45:3 (Votes: 26)
+- TSK: Zsolt 45:4 (Votes: 26)
 - TSK: Zsid 13:7 (Votes: 25)
 - TSK: ApCsel 2:37 (Votes: 24)
 - TSK: Jel 2:23 (Votes: 23)
@@ -344,75 +1003,136 @@ Az 1Móz 2:7 és 1Kor 15:45 közötti kapcsolat továbbra is más jellegű: a h�
 - TSK: Péld 5:4 (Votes: 22)
 - TSK: 1Thessz 5:23 (Votes: 22)
 - TSK: Jak 1:18 (Votes: 18)
-- TSK: Préd 12:11 (Votes: 16)
+- TSK: Préd 12:13 (Votes: 16)
 - TSK: 2Kor 2:17 (Votes: 15)
 - Károli-KH: Jer 23:29
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kereszthivatkozasok -->
 
-### Minősítés *(kézi)*
+### Minősítés *(generált)*
 
-A kereszthivatkozás-minősítés ennél a motívumnál nem készült el.
+A 90 utalásból 7 a motívum két saját helyét köti össze, ez 7 helyet érint a 11-ból. **Következtetés:** a motívum helyeinek a 64%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.<!-- olvasói -->
+
+<!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
+
+*Generált: a független megerősítés a TSK (Votes ≥ 15) és a Károli-KH találatainak metszete a motívum előfordulás-igehelyeivel; a minősített jelöltek a `jeloltek.tsv`-ből (`forras_kereses`: TSK / Károli-KH).*
+
+**Független megerősítés** (7 pár):
+
+- 1Móz 2:7 → 1Kor 15:45 — TSK (Votes 38)
+- 1Kor 2:14 → Júd 1:19 — TSK (Votes 20)
+- 1Kor 2:14 → 1Kor 15:46 — TSK (Votes 24)
+- 1Kor 15:45 → 1Móz 2:7 — TSK (Votes 17)
+- 1Kor 15:45 → 1Móz 2:7 — Károli-KH
+- 1Thessz 5:23 → Zsid 4:12 — TSK (Votes 42)
+- Zsid 4:12 → 1Thessz 5:23 — TSK (Votes 22)
+
+**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
+
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+
+Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.*
 
-Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
+Ehhez a motívumhoz nincs rögzített kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolatok -->
 
-### Alátámasztás *(kézi)*
+### Alátámasztás *(generált)*
+
+Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
 A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+
+A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
-A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
+A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
 
 ## 6. Értelmezés *(kézi)*
 
-**Peshat** *(részletesen kifejtve)* — A Szentírás legalább négy helyen, egymástól függetlenül, egyértelmű grammatikai különállásban nevezi meg a *pneumát* és a *pszükhét* (nominális alakban): Pál 1Thessz 5:23-ban három külön, egyenként névelővel ellátott főnévként sorolja fel őket egy imában; a Zsidókhoz írt levél szerzője pedig kifejezetten azt állítja, hogy Isten Igéje képes ezeket "szétválasztani" — ami logikailag feltételezi, hogy a hallgató számára ez a kettő a hétköznapi tapasztalatban összemosódik, és csak Isten Igéje tudja élesen elkülöníteni őket; Mária éneke (Luk 1:46-47) pedig tudatos költői párhuzamban, ugyanabban a grammatikai szerepben állítja egymás mellé a kettőt — nem szinonimaként, hanem megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Egy ötödik helyen, 1Kor 2:14-15-ben Pál a *pszükhé*/*pneuma* szavak melléknévi alakjaiból épít fel egy embertípus-megkülönböztetést: a "természet szerinti ember" (ψυχικός) nem fogadja be Isten Szellemének dolgait, míg a "szellemi ember" (πνευματικός) mindent képes megítélni/megvizsgálni — ez a felosztás a korábbi rétegtől eltérően nem az egyén belső szerkezetéről, hanem az Isten Szelleme felé való nyitottság/befogadóképesség szerinti emberi kategorizálásról szól. 1Móz 2:7 ehhez képest más nyelvi regiszterben mozog: nem "szellemet" és "lelket" különít el egymástól, hanem azt írja le, hogy Isten lehelete (amely a későbbi *pneuma* fogalom ószövetségi előzménye) és a porból formált test találkozásából lesz az ember "élő lélekké" (*nefes chajjá*) — tehát itt a "lélek" az egész, eleven emberi személyt jelöli, nem egy harmadik, elkülönült alkotóelemet.
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
-**Remez** — A motívum íve a Genezistől az apostoli levelekig húzódik, és csúcspontja 1Kor 15:45-nél van: Pál itt tudatosan állítja szembe az első Ádámot (aki "élő lélekké", *nefes chajjá* lett) az utolsó Ádámmal, Krisztussal (aki "megelevenítő szellemmé", *pneuma zóopoiun* lett). Ez a szembeállítás nem véletlen szóhasználat — az egész emberi történelem antropológiai íve a "lélek" szintjéről a "szellem" szintjére mutat, a feltámadás által. Az 1Kor 2:14-15-ben ugyanez a páli szerző már a jelen idejű keresztény életre alkalmazza a megkülönböztetést: az, hogy valaki "lélek szerint" vagy "szellem szerint" él-e, gyakorlati, napi tapasztalati kérdéssé válik.
+### PaRDeS keretrendszer
 
-**Drash** *(részletesen kifejtve)* — A Szentírás nem ad egy mereven rendszerezett, filozófiai-metafizikai antropológiai rendszert (nem disszertáció, hanem pásztori/imádságos és apostoli tanító nyelvezet), mégis következetesen fenntartja, hogy az ember nem egynemű: van benne olyan dimenzió, amely közvetlenül Istennel léphet kapcsolatba (*pneuma*), és van, amely az értelmet, érzelmet, akaratot hordozza (*pszükhé*). A gyakorlati tanulság: a megkülönböztetés (discernment) képessége — annak felismerése, hogy egy belső indíttatás honnan ered — nem magától értetődő emberi képesség, hanem olyasmi, amit "Isten Igéje" végez el bennünk (Zsid 4:12), tehát imádságos, Ige-központú önvizsgálatot igényel. **1Kor 2:14-15 ezt a tanítást egy éles gyakorlati megkülönböztetéssé sűríti:** a "természet szerinti ember" számára Isten Szellemének dolgai egyenesen "bolondságok", mert azokat csak szellemi úton lehet megítélni — ez direkt Drash-szintű megerősítése annak, hogy a *pneuma*/*pszükhé* megkülönböztetés nem elméleti kérdés, hanem meghatározza, mit képes valaki egyáltalán befogadni Istentől.
+**Mit jelent ez a négy szint?** A PaRDeS a zsidó bibliaértelmezés négy rétegének kezdőbetűiből áll. A **Peshat** azt kérdezi, mit mond a szöveg szó szerint; a **Remez** azt, hová mutat, milyen más helyekkel cseng össze (itt még következtetés nélkül); a **Drash** azt, mit tanít és mire hív; a **Sod** a mélyebb réteget, de csak annyit, amennyi a szövegből levezethető.
 
-**Sod** *(tömör, fegyelmezett)* — A "megelevenítő szellem" (*pneuma zóopoiun*) kifejezés, amelyet Pál kifejezetten a feltámadott Krisztusra alkalmaz, összekapcsolja az emberi antropológiát a feltámadás misztériumával: az emberi szellem rendeltetése végső soron nem önmagában áll meg, hanem arra mutat, hogy befogadja a feltámadott Krisztus életét — a *pneuma/pszükhé* megkülönböztetés így nem elvont osztályozás, hanem az üdvtörténet iránya felé mutató jel.
+**Peshat — az ember tagolása.** Pál áldásában Isten az egész embert szenteli meg, és a mondat három tagot sorol fel: a szellemet, a lelket és a testet, mindegyiket saját névelővel (1Thessz 5:23). A Zsidókhoz írt levél szerint Isten beszéde „elhat a szívnek és léleknek … megoszlásáig” (Zsid 4:12); a görögben itt a lélek és a szellem áll, és a mondat azt állítja, hogy a kettő között határ van, amelyet csak Isten szava hat át. Egyik hely sem rendszerez: az egyik áldás, a másik Isten beszédének ereje, és a megkülönböztetés mindkettőben mellékesen, de világosan jelenik meg.
 
-⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus**
-- **Trichotomista hang:** Franz Delitzsch (19. századi luteránus ószövetség-kutató, *A System of Biblical Psychology*) és a modern karizmatikus vonalban **Watchman Nee** (*The Spiritual Man*) amellett érvelnek, hogy a *pneuma* és *pszükhé* valódi, ontológiailag is elkülönülő alkotóelemei az embernek, nem csupán funkcionális/retorikai megkülönböztetés.
-- **Dichotomista hang:** F.F. Bruce (evangéliumi újszövetség-kutató, *Hebrews*, NICNT-kommentár) a Zsid 4:12 "szétválasztás" kifejezését elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa — szerinte a szöveg az Ige átható erejét szemlélteti, nem az emberi alkotóelemek szétbogozását célozza. Az 1Kor 2:14-15 melléknévi (ψυχικός/πνευματικός) szóhasználata mindkét olvasat számára hivatkozási alap lehet — a trichotomisták az itt leírt "szellemi ember" meglétét önálló, aktiválható alkotóelemként értik, míg a dichotomisták/funkcionalisták inkább a Szellem jelenlétével/hiányával jellemzett két emberi állapotként.
+**Peshat — Mária éneke.** A Magnificat első két sora egy mondat: „Magasztalja az én lelkem az Urat, És örvendez az én lelkem az én megtartó Istenemben” (Luk 1:46–47). A görögben az első sorban a ψυχή (pszükhé), a másodikban a πνεῦμα (pneuma) az alany, és mindkettőnek saját igéje van. A két sor a héber költészet párhuzamos szerkezetét követi, amelyben a második sor gyakran ugyanazt mondja más szóval; ezért itt a megkülönböztetés gyengébb, mint az 1Thessz 5:23-ban. A hely azért tartozik a motívumhoz, mert a két szó egy mondatban, két külön cselekvés alanyaként áll.
+
+**Peshat — két embertípus.** Pál az érzéki embert és a lelki embert állítja szembe (1Kor 2:14–15). Az érzéki ember, a görögben ψυχικός (pszükhikosz), nem fogadja be Isten Lelkének dolgait, mert azok neki bolondságok; a lelki ember, πνευματικός (pneumatikosz), mindent megítél. Júdás ugyanezt a szót használja a gyülekezet szakadárairól: érzékiek, akikben nincs Lélek (Júd 1:19). Itt a két szó nem az ember két részét, hanem két embert nevez meg: azt, aki a természetes képességeiből él, és azt, akit Isten Lelke vezet.
+
+**Remez — az első és az utolsó Ádám.** A motívum íve a teremtéstől a feltámadásig ér. Az 1Móz 2:7 szerint Isten leheletétől lett az ember „élő lélekké”. Pál ezt a mondatot idézi az 1Kor 15:45-ben, és ellenpárt állít mellé: az utolsó Ádám „megelevenítő szellemmé” lett. A megelőző vers ugyanezt a két test képében mondja el: elvettetik érzéki test, feltámasztatik lelki test (1Kor 15:44), a következő pedig a sorrendet: előbb az érzéki, azután a lelki (1Kor 15:46). Az összecsengés kétirányú: az 1Kor 2:14–15 érzéki és lelki embere a jelen élet két útja, az 1Kor 15:44–46 érzéki és lelki teste a jelen élet és a feltámadás két rendje.
+
+*Proveniencia: scope=range:1Móz 2:7+1Kor 15:45 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-03T08:46Z | csatorna=cli (a héber és a görög Strong nem metszhető; a híd a Septuaginta: scope=range:1Móz 2:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-03T08:47Z)*
+
+**Drash — mit tanít.** A motívum azt tanítja, hogy az ember nem egynemű: van benne, ami a természetes életet hordozza, és van, ami Istennel kerülhet kapcsolatba. A Biblia ezt nem elméletként fejti ki, hanem imában, énekben, intésben és érvelésben mondja ki. Ebből két gyakorlati tanulság következik. Az egyik, hogy a belső indítások forrása nem magától értetődő: a lélek és a szellem határát Isten szava hatja át (Zsid 4:12), tehát a hívő önvizsgálata az Igére hagyatkozik, nem az érzéseire. A másik, hogy Isten dolgait nem a természetes képesség fogadja be, hanem a Lélektől vezetett ember (1Kor 2:14–15). Ez az értelmezés lépése: a szöveg egymás mellé állítja a két állítást, és az olvasó számára azt jelenti, hogy a lelki élet nem a lélek erőfeszítése, hanem Isten Lelkének munkája.
+
+**Sod — a megelevenítő szellem.** Az 1Kor 15:45 szerint az első ember életet kapott, az utolsó Ádám életet ad. A szellem és a lélek különbsége itt nem az ember két része közötti különbség, hanem az a különbség, amely a teremtett élet és a feltámadott Krisztus élete között van. A motívum legmélyebb rétege ezért nem az emberi lélektan, hanem az a remény, hogy az érzéki testet lelki test követi (1Kor 15:46): az ember útja az élő lélektől a megelevenítő szellem felé vezet.
+
+### ⚠️ Vitatott pont: két rész vagy három?
+
+A teológiában régi vita, hogy az ember két részből (test és lélek) vagy háromból (test, lélek és szellem) áll. A hármas felosztás az 1Thessz 5:23-ra és a Zsid 4:12-re hivatkozik, és a lelket és a szellemet az ember két külön összetevőjének tekinti. A kettős felosztás szerint a két szó ugyanazt a belső embert nevezi meg két oldaláról, és az 1Thessz 5:23 felsorolása az egész ember teljességét hangsúlyozza, nem a részeit; a Zsid 4:12 pedig Isten szavának átható erejét szemlélteti. A szótári adat mindkét olvasatnak teret ad: a Thayer szerint a két szót a Biblia többnyire különbség nélkül használja, néhány helyen azonban hármas tagolás áll. A lap a szövegek megkülönböztető szóhasználatát gyűjti, és nem dönti el, hogy ez ontológiai vagy szemléleti különbség.
 
 ## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
 
 ### Alkalmazás és tanítványság *(kézi)*
 
-Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
+
+**Az Ige mint mérce.** A Zsid 4:12 szerint a lélek és a szellem határát nem az ember húzza meg, hanem Isten szava. A hívő számára ez azt jelenti, hogy amikor egy belső indításról el kell döntenie, honnan ered, nem az érzés erőssége, hanem az Ige a mérce. Az önvizsgálat ezért imádságos Bibliaolvasással kezdődik.
+
+**A befogadás feltétele.** Az 1Kor 2:14 szerint az érzéki ember nem foghatja meg Isten Lelkének dolgait. Ez nem az értelem lebecsülése, hanem annak kimondása, hogy Isten dolgaihoz a természetes képesség nem elég. Aki a Szentírást olvassa, az olvasás előtt Isten Lelkét kéri, hogy megértse, amit olvas.
+
+**Az egész ember megszentelése.** Pál áldása nem egy részt, hanem a szellemet, a lelket és a testet együtt bízza Istenre (1Thessz 5:23). A lelki élet ezért nem a test megvetése és nem az érzelmek elfojtása, hanem az, hogy az egész ember Isten elé kerül.
+
+**A feltámadás reménye.** Az 1Kor 15:44–46 sorrendje szerint előbb az érzéki, azután a lelki. A hívő a jelen élet gyengeségeit ebben a sorrendben láthatja: ami most érzéki, romlandó test, az nem a végállomás, mert az utolsó Ádám megelevenítő szellem (1Kor 15:45).
+
+**Óvatosság a rendszerekkel.** A Biblia megkülönbözteti a lelket és a szellemet, de nem ad róluk részletes térképet. A tanítás és a lelkigondozás akkor marad hű a szöveghez, ha a megkülönböztetést használja, de nem épít rá olyan rendszert, amelyet a Szentírás nem fejt ki.
 
 ### Tanítói egyezés *(kézi)*
 
-A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
+
+Ehhez a motívumhoz nevesített tanítói egyezés még nem került a lapra; a hiány nincs kitöltve.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-✅ A `PaRDeS_motivumok.md` naplóban a "pneuma/pszükhé megkülönböztetés" motívum ezzel a tanulmánnyal **"lezárt/önállóan feldolgozott témaként"** van megjelölve, 5 előfordulással (1Thessz 5:23, Zsid 4:12, 1Móz 2:7⇒1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15) — az ⭐ Emlékeztető küszöb szakasz többé nem ajánlja fel önálló tanulmányra. A motívum jövőbeli, új igehelyeken való előfordulásai továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, csak a "még feldolgozandó" jelleg szűnik meg.
+Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
-**Korrekció:** a `Lezart_tematikus_tanulmanyok_index.md` fájlban 2026.08.21-én egy korábbi frissítés már megelőlegezte az 1Kor 2:14-15 felvételét (4. előfordulásként), de ez a tényleges tanulmányfájlba és a naplóba akkor nem került be — ez a v3-as frissítés pótolja a hiányzó tartalmat, és egyúttal hozzáadja az időközben (v2-ben) felvett Luk 1:46-47-et is, összesen 5 előfordulásra.
+**Hogyan készült a lista.** A helyeket három, egymástól független keresés ellenőrzi. Az első azokat a verseket kereste a görög és a héber szövegben, amelyekben a két szó, vagy melléknévi alakjuk, együtt áll: 71 verset talált. Ebből 11 a görög szópár verse, mind a lap táblázatában vagy a kizárt helyek között áll, 60 pedig a héber nefes és chajjá („élő lélek”) együttállása, amely a görög szópár nélkül nem tartozik ide. A második a Károli-fordítás szavait kereste (lélek, lelki, szellem, szellemi) a teljes magyar szövegben: 1 072 versben talált ilyen szót, de ezek közül egyben sem áll a görög szópár, amely a listából hiányozna. A harmadik a szótárak által a négy görög és a két héber szónál idézett helyeket vetette össze a listával, ugyanezzel az eredménnyel. Egyik keresés sem hozott olyan helyet, amelyben a két szó megkülönböztetve állna, és a listából hiányozna.
+
+*Proveniencia: scope=TAHOT-teljes+TAGNT-teljes: egy versben (G4151|G4152)+(G5590|G5591) | (H5315)+(H2416) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | n=71 | ts=2026-11-03T08:50Z · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=lelki+lélek+szellem+szellemi | n=1072 | ts=2026-11-03T08:50Z · scope=G4151+G4152+G5590+G5591+H2416+H5315 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=1357 | ts=2026-11-03T08:50Z*
+
+**Melyik görög szöveg a mérce.** Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. Ahol a kritikai szövegkiadások eltérnek tőle, a lap ezt jelöli. A motívum tíz újszövetségi helyén nincs ilyen eltérés: a két szó és melléknevük mindkét szövegben ugyanott áll. A vizsgált, de kizárt helyek közül háromban a szó csak a Károli alapszövegében áll: az 1Pét 1:22-ben a „Lélek által”, a Luk 9:55–56-ban a „minémű lélek van ti bennetek” és az „emberek lelkét”.
+
+*Proveniencia: scope=ANTROP-001 újszövetségi E- és J-helyei (21 vers, 37 szó) | forras=TAGNT_kivonat.tsv (Kritikai kiadás oszlop), naplok/F123_ANTROP2_osztaly.py | ts=2026-11-03T08:51Z*
+
+### Nyitott kérdések és séma-korlátok
+
+1. **Párhuzam vagy megkülönböztetés.** Mária énekében (Luk 1:46–47) a két szó a héber költészet párhuzamos sorában áll, ahol a második sor gyakran ugyanazt mondja más szóval. A lap a helyet a motívumban tartja, mert a két szónak saját igéje van; a Fil 1:27 „egy lélekben, egy érzéssel” párosát viszont kizárja, mert ott a két szó ugyanannak az egységnek két megnevezése. A két döntés határa értelmezési kérdés.
+2. **A héber előzmény.** A nefes és a rúah néhány ószövetségi versben együtt áll (Jób 7:11; Ézs 26:9), a Septuaginta egy ilyen helyen a két görög szót is egymás mellé teszi (Jób 12:10). Nyitott, hogy a héber szópár érdemel-e külön feldolgozást, amely a motívum ószövetségi hátterét kiterjesztené.
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+
+Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -420,35 +1140,54 @@ A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a 
 - ID: `ANTROP-001`
 - Cím: Pneuma/pszükhé megkülönböztetés
 - Státusz: publikálható (`v3`, 2026.08.22)
-- Generálva: 2026-09-26
+- Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
 - LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/genesis.tsv`, CC BY 4.0)
+- Mounce (Mounce Concise Greek-English Dictionary) (`konkordancia/MCGED_teljes.tsv`, © Mounce 1993)
 - OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
 - SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
 - SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- SECE (Strong's Exhaustive Concordance, Enhanced) (`konkordancia/SECE_G_teljes.tsv`, `konkordancia/SECE_H_teljes.tsv`, közkincs)
 - TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
 - TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
 - Thayer (Thayer's Greek-English Lexicon of the New Testament) (`konkordancia/Thayer_teljes.tsv`, közkincs)
 - UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, `konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (`konkordancia/UBS_DBH_jelentesek.tsv`, `konkordancia/UBS_DBH_referenciak.tsv`, CC BY-SA 4.0)
+- tW (Translation Words — unfoldingWord) (`konkordancia/tW_szocikkek.tsv`, CC BY-SA 4.0)
 
 **Adatforrások:**
-- `adat/elofordulasok.tsv` (projekt-adat)
-- `adat/forditas_ubs.tsv` (projekt-adat)
-- `adat/jeloltek.tsv` (projekt-adat)
-- `adat/kapcsolatok.tsv` (projekt-adat)
+- `adat/bdb_szakasz_hu.tsv` (közkincs)
+- `adat/bdb_szakaszok.tsv` (közkincs)
+- `adat/bdb_vers_jelentes.tsv` (közkincs)
+- `adat/elofordulasok.tsv` (minden jog fenntartva)
+- `adat/forditasok.tsv` (közkincs, minden jog fenntartva)
+- `adat/glosszak_heber_hu.tsv` (CC BY 4.0)
+- `adat/jeloltek.tsv` (minden jog fenntartva)
+- `adat/kapcsolatok.tsv` (minden jog fenntartva)
 - `adat/lexikon_hivatkozasok.tsv` (közkincs)
-- `adat/motivumok.tsv` (projekt-adat)
+- `adat/motivumok.tsv` (minden jog fenntartva)
+- `adat/szotar_szakasz_cimke.tsv` (minden jog fenntartva)
+- `adat/szotar_szerepek.tsv` (minden jog fenntartva)
+- `adat/thayer_szakaszok.tsv` (közkincs)
+- `adat/thayer_vers_jelentes.tsv` (közkincs)
+- `adat/tiltott_fordulatok.tsv` (minden jog fenntartva)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
+- `konkordancia/Karoli_versmegfeleltetes.tsv` (minden jog fenntartva)
+- `konkordancia/LXX_versszintu_parok.tsv` (minden jog fenntartva)
+- `konkordancia/TAHOT_kivonat.tsv` (CC BY 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+
+A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -461,33 +1200,72 @@ A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a 
 | PaRDeS-szint | Pshat/Drash |
 | Státusz | publikálható (`v3`, 2026.08.22) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a πνεῦμα (pneuma) és ψυχή (pszükhé) szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég |
-| Fölérendelt fogalom | emberi belső élet/antropológia általában, a pneuma/pszükhé megkülönböztető használatán kívül |
-| Forrás-study | `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` |
-| Kereszthivatkozás-napló | — |
+| Negatív kritérium | A versben (vagy a két versen átnyúló egy mondatban) a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) — vagy melléknévi alakjuk, a πνευματικός (pneumatikosz, lelki) és a ψυχικός (pszükhikosz, érzéki) — együtt áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja. Az újszövetségi helyeken a Károli alapszövege, a Textus Receptus a mérce; ahol a kritikai kiadások eltérnek, a lap jelöli. Nem tartozik ide a vers, amelyben csak az egyik szó áll, amelyben a két szó két külön mondatban áll, vagy amelyben a kettő egymás szinonimája, illetve nem az ember belső életéről szól. Kivétel az 1Móz 2:7: a héber נֶפֶשׁ חַיָּה (nefes chajjá, élő lélek) azért tartozik ide, mert az 1Kor 15:45 ezt idézi, és ennek ellenpárjaként mondja ki a megelevenítő szellemet. |
+| Fölérendelt fogalom | az ember belső élete, lelke és szelleme általában, a két szó megkülönböztető együttállása nélkül |
+| Forrás-study | `motivumok/ANTROP-001.md` |
+| Kereszthivatkozás-napló | nincs rögzítve |
 | Sablon-megfelelőség | v14 |
+| Kiadás | nincs kiadva — feldolgozás alatt |
+| Próza modellje | nincs kiadva — feldolgozás alatt |
+
+**Változásjegyzék**
+
+Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első kiadással indul.
 
 ---
 
 | Forrás | Fájl | Licenc | Blokk |
 |---|---|---|---|
-| `elofordulasok.tsv` | `adat/elofordulasok.tsv` | projekt-adat | elofordulasok |
-| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-| `jeloltek.tsv` | `adat/jeloltek.tsv` | projekt-adat | kizart |
-| `kapcsolatok.tsv` | `adat/kapcsolatok.tsv` | projekt-adat | kapcsolatok |
+| `bdb_szakasz_hu.tsv` | `adat/bdb_szakasz_hu.tsv` | közkincs | szocikkek |
+| `bdb_szakaszok.tsv` | `adat/bdb_szakaszok.tsv` | közkincs | szocikkek |
+| `bdb_vers_jelentes.tsv` | `adat/bdb_vers_jelentes.tsv` | közkincs | elofordulasok, szocikkek |
+| `elofordulasok.tsv` | `adat/elofordulasok.tsv` | minden jog fenntartva | elofordulasok |
+| `forditasok.tsv` | `adat/forditasok.tsv` | közkincs, minden jog fenntartva | elofordulasok, szocikkek |
+| `glosszak_heber_hu.tsv` | `adat/glosszak_heber_hu.tsv` | CC BY 4.0 | szocikkek |
+| `jeloltek.tsv` | `adat/jeloltek.tsv` | minden jog fenntartva | kizart |
+| `kapcsolatok.tsv` | `adat/kapcsolatok.tsv` | minden jog fenntartva | kapcsolatok |
 | `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | közkincs | szocikkek |
-| `motivumok.tsv` | `adat/motivumok.tsv` | projekt-adat | kizart |
+| `motivumok.tsv` | `adat/motivumok.tsv` | minden jog fenntartva | kizart |
+| `szotar_szakasz_cimke.tsv` | `adat/szotar_szakasz_cimke.tsv` | minden jog fenntartva | elofordulasok, szocikkek |
+| `szotar_szerepek.tsv` | `adat/szotar_szerepek.tsv` | minden jog fenntartva | szocikkek |
+| `thayer_szakaszok.tsv` | `adat/thayer_szakaszok.tsv` | közkincs | szocikkek |
+| `thayer_vers_jelentes.tsv` | `adat/thayer_vers_jelentes.tsv` | közkincs | elofordulasok, szocikkek |
+| `tiltott_fordulatok.tsv` | `adat/tiltott_fordulatok.tsv` | minden jog fenntartva | szocikkek |
+| `BDB_teljes_unabridged.tsv` | `konkordancia/BDB_teljes_unabridged.tsv` | közkincs | szocikkek |
 | `Karoli_1908.tsv` | `konkordancia/Karoli_1908.tsv` | közkincs | elofordulasok |
 | `Karoli_kereszthivatkozasok.tsv` | `konkordancia/Karoli_kereszthivatkozasok.tsv` | közkincs | kereszthivatkozasok |
+| `Karoli_versmegfeleltetes.tsv` | `konkordancia/Karoli_versmegfeleltetes.tsv` | minden jog fenntartva | elofordulasok |
 | `genesis.tsv` | `konkordancia/LXX_OS/genesis.tsv` | CC BY 4.0 | lxx |
+| `LXX_versszintu_parok.tsv` | `konkordancia/LXX_versszintu_parok.tsv` | minden jog fenntartva | szocikkek |
+| `MCGED_teljes.tsv` | `konkordancia/MCGED_teljes.tsv` | © Mounce 1993 | szocikkek |
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `SECE_G_teljes.tsv` | `konkordancia/SECE_G_teljes.tsv` | közkincs | szocikkek |
+| `SECE_H_teljes.tsv` | `konkordancia/SECE_H_teljes.tsv` | közkincs | szocikkek |
+| `TAHOT_kivonat.tsv` | `konkordancia/TAHOT_kivonat.tsv` | CC BY 4.0 | elofordulasok |
 | `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
 | `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `Thayer_teljes.tsv` | `konkordancia/Thayer_teljes.tsv` | közkincs | szocikkek |
-| `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
+| `UBS_DBH_jelentesek.tsv` | `konkordancia/UBS_DBH_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
+| `UBS_DBH_referenciak.tsv` | `konkordancia/UBS_DBH_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
+| `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok, szocikkek |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
+| `tW_szocikkek.tsv` | `konkordancia/tW_szocikkek.tsv` | CC BY-SA 4.0 | szocikkek |
+
+*Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*
+
+*lxx-morph, © Seth Kushniryk, CC BY 4.0, github.com/OpenScriptorium/lxx-morph.*
+
+*Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)*
+
+*TWOT: Theological Wordbook of the Old Testament — csak a szócikk száma áll hivatkozásként (az OSHL-indexből, Open Scriptures Hebrew Bible Project), a mű szövegét a lexikonoldal nem idézi.*
+
+*(UBS Dictionary of Biblical Hebrew © United Bible Societies, 2023.  Adapted from Semantic Dictionary of Biblical Hebrew © 2000-2023 United Bible Societies.)*
+
+*(UBS Dictionary of New Testament Greek, © United Bible Societies, 2023. Adapted from Semantic Dictionary of Biblical Greek: © United Bible Societies 2018-2023, which is adapted from Greek-English Lexicon of the New Testa­ment: Based on Semantic Domains, Eds. J P Louw, Eugene Albert Nida © United Bible Societies 1988, 1989.)*
+
+*Translation Words (tW), CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). The original work by unfoldingWord is available from unfoldingword.org/utw. Felhasználás: a lexikonoldal a szócikkek azonosítóit és a forrásfájlt nevezi meg a szónézet mutatójaként; a szócikkek szövegét nem közli.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kolofon -->

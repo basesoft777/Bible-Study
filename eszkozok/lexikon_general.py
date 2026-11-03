@@ -511,10 +511,11 @@ OLVASOI_SZEREP = {
     13: 'A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést '
         '(a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; '
         'utána a ragozott alakok és az igehelyek.',
-    14: 'Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar '
-        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, '
+    # F123.ANTROP2 (olvasói kapu, BELSO): a „gerinc” belső szó helyett olvasói megnevezés
+    14: 'Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcsszavai”) és a Károli magyar '
+        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a motívum szavai állnak, '
         'de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis '
-        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc '
+        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a motívum '
         'szavai, így a magyar olvasó tévesen kapcsolná ide.',
 }
 

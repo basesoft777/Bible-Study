@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md @ a972767c · F123 ANTROP-001 új cikk, U3 · 2026-11-03 · nem forrás, nem szerkesztendő -->
 # Pneuma/pszükhé megkülönböztetés — Tematikus PaRDeS tanulmány
 
 ## Kivonat
