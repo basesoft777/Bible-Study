@@ -2,7 +2,7 @@
 
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-【NAPLO: F123 ALVIL-001 új cikk, 2026-11-02 — a forrás nulláról, egy kézből készült (claude-opus-5-5; DT546, F123_MIGRACIO2_BRIEF.md U3), a mai adat és a meglévő döntések (DT-F123d, DT414–DT422, DT-F123b, DT-F123f, DT-F123o, DT-F123p) felhasználásával. A régi forrás archívumban: `archivum/ALVIL-001/ALVIL-001_forras_migralt_regi.md` (előtte: `archivum/ALVIL-001/Hadesz_Seol_tematikus.md`); a régi 1/a próza: `archivum/ALVIL-001/ALVIL-001_1a_proza_regi.tsv`. Mondat a régi szövegből nem költözött át. Sablon: 9_ v0.5. A teljesség-mérés: `naplok/F123_teljesseg_ALVIL-001.md`; a menet naplója: `naplok/F123_ALVIL2_naplo.md`.】
+【NAPLO: F123 ALVIL-001 új cikk, 2026-11-02 — a forrás nulláról, egy kézből készült (claude-opus-5-5; DT546, F123_MIGRACIO2_BRIEF.md U3), a mai adat és a meglévő döntések (DT-F123d, DT414–DT422, DT562, DT563, DT564, DT565) felhasználásával. A régi forrás archívumban: `archivum/ALVIL-001/ALVIL-001_forras_migralt_regi.md` (előtte: `archivum/ALVIL-001/Hadesz_Seol_tematikus.md`); a régi 1/a próza: `archivum/ALVIL-001/ALVIL-001_1a_proza_regi.tsv`. Mondat a régi szövegből nem költözött át. Sablon: 9_ v0.5. A teljesség-mérés: `naplok/F123_teljesseg_ALVIL-001.md`; a menet naplója: `naplok/F123_ALVIL2_naplo.md`.】
 
 ## Kivonat
 
@@ -153,4 +153,4 @@ A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a hébe
 
 ## Proveniencia-sorok
 
-【NAPLO: a Kivonat számai a ténylegesen lefutott lekérdezésekből (F123 ALVIL-001 új cikk, U1, 2026-11-02; `adat/auditok.tsv`): scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-11-02T19:46Z | csatorna=cli · scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli (a tíz vers kilenc sorban, a Jel 20:13 és 20:14 egy sor; plusz az 1Kor 15:55 a Károli alapszövegéből, DT-F123b, DT-F123f) · az LXX-arány: naplok/F123_ALVIL2_lxx_hid.tsv, ts=2026-11-02T19:46Z · a Károli-szavak: adat/elofordulasok.tsv karoli_szo, n=74.】
+【NAPLO: a Kivonat számai a ténylegesen lefutott lekérdezésekből (F123 ALVIL-001 új cikk, U1, 2026-11-02; `adat/auditok.tsv`): scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-11-02T19:46Z | csatorna=cli · scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli (a tíz vers kilenc sorban, a Jel 20:13 és 20:14 egy sor; plusz az 1Kor 15:55 a Károli alapszövegéből, DT562, DT563) · az LXX-arány: naplok/F123_ALVIL2_lxx_hid.tsv, ts=2026-11-02T19:46Z · a Károli-szavak: adat/elofordulasok.tsv karoli_szo, n=74.】

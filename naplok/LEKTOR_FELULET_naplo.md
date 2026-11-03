@@ -329,7 +329,7 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
   a „Ha így döntesz…” a Kivesszük (2 E-sor, 651 kizárás), a Maradnak (0 E-sor, 7 kizárás, 644 kézi átnézés) és a Részben (1 E-sor, 580 kizárás, 71 kézi átnézés) következményével.
   Az élő db `valaszok` gyűjteménye (3 dokumentum) változatlan. A kérdésre a menet nem válaszolt.
 
-## Válaszok eredete és törlés (a felhasználó: „a kiadói lapon már eleve vannak döntések, és nem tudok döntést töröllni pedig kértem” / „Én egyez sem adtam meg, az is kérdés hogy kerül oda”; 2026-11-02; DT-F162a)
+## Válaszok eredete és törlés (a felhasználó: „a kiadói lapon már eleve vannak döntések, és nem tudok döntést töröllni pedig kértem” / „Én egyez sem adtam meg, az is kérdés hogy kerül oda”; 2026-11-02; DT567)
 
 - **Mi írhat a `valaszok`-ba.** A kódban egyetlen út van: a `ment()` (gombnyomás: Elfogadom / Elvetem / Mentés). Betöltéskor a localStorage a régi változatban a memóriába került megválaszoltként, a db-be
   nem írt vissza. A 4 idegen válasz (`hatar:ALVIL-001:mK1`, `lektor:ISTENTISZT-001:10–12`) ezért gombnyomásból jött, a felhasználó saját Chrome-jából (a Claude in Chrome a felhasználó

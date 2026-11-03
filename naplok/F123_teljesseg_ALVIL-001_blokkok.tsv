@@ -1,4 +1,4 @@
-# F123 ALVIL-001 U2: a Károli-háló 295 más szavas eltérése lexémánként (naplok/F123_ALVIL2_u2b.py; DT-F123o) | scope=naplok/F123_teljesseg_ALVIL-001.tsv karoli ELTÉRÉS (a Jób 28:22, 31:12 és a 2Pét 2:4 nélkül) × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=split('\t') | ts=2026-11-02
+# F123 ALVIL-001 U2: a Károli-háló 295 más szavas eltérése lexémánként (naplok/F123_ALVIL2_u2b.py; DT564) | scope=naplok/F123_teljesseg_ALVIL-001.tsv karoli ELTÉRÉS (a Jób 28:22, 31:12 és a 2Pét 2:4 nélkül) × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=split('\t') | ts=2026-11-02
 blokk	igehely	karoli_szoalak
 tehom	1Móz 1:2	mélység
 tehom	1Móz 7:11	mélység
