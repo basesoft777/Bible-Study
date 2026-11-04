@@ -1589,9 +1589,9 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
                 'forras_kereses': 'scope=manual | forras=motivumok/%s.md#%s | ts=%s'
                                   % (motivum_id, szakasz, datum),
                 'dontes': 'nyitva',
-                # DT-F11d (d): a gerinc az elolepteteshez kell; F123.INDOKLAS
+                # DT202 (d): a gerinc az elolepteteshez kell; F123.INDOKLAS
                 # ota a gepi nyom mezojeben (`dontes_ref`, SEMA 2.4), az
-                # `indoklas` olvasoi szoveg marad (ellenoriz.py 31. szabaly).
+                # `indoklas` olvasoi szoveg marad (ellenoriz.py 29. szabaly).
                 'indoklas': indoklas,
                 'dontes_ref': 'gerinc: %s' % gerinc,
                 'karoli_szo': '',
@@ -1730,7 +1730,7 @@ def kinyeresi_jelentes(motivum_id, eredmeny, irt):
                 _md_cella(s['indoklas'])))
         sor.append('')
         sor.append('*A gerinc-elem a `jeloltek.tsv` `dontes_ref` mezőjében áll, `gerinc: X` alakban '
-                   '(SEMA 2.4; DT-F11d (d), F123.INDOKLAS); az `indoklas` olvasói szöveg.*')
+                   '(SEMA 2.4; DT202 (d), F123.INDOKLAS); az `indoklas` olvasói szöveg.*')
     else:
         sor.append('*(nincs)*')
     sor.append('')

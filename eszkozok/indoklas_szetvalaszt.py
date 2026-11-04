@@ -10,7 +10,7 @@ Az `indoklas` a munkafolyamat naplója is volt: döntés-azonosítót (DT/N/F), 
     indoklas    olvasható magyar szöveg: a döntés tartalma kimondva (pl. „csak ahol a név után JHVH áll”)
     dontes_ref  a gépi nyom: döntés-azonosító(k), hivatkozott fájl(ok), az indoklás proveniencia-sora(i), ` · `-tal
 
-A belső jelet az `olvasoi_kapu.BELSO` mintái mérik (ugyanez a mérce az `ellenoriz.py` 31. szabályában). Az átírás
+A belső jelet az `olvasoi_kapu.BELSO` mintái mérik (ugyanez a mérce az `ellenoriz.py` 29. szabályában). Az átírás
 szabályalapú (ATIRAS) és soronként rögzített (KEZI: a szabályokkal nem kezelhető sorok szövege); a futás minden
 érintett sorra igazolja, hogy
     1. az új `indoklas` nem hordoz belső jelet;
@@ -182,6 +182,15 @@ ATIRAS = [
      'Segitsegul_hivni_az_Urat_tematikus.md'),
     (r'; az F3\.1 betöltés a Jóel 2:32 sorba vonta össze', '; az első adatbetöltés a Jóel 2:32 sorába vonta össze',
      'F3.1'),
+    # HAMART-001 U1 teljesség-mérés (#609, 2026-11-04): N-F63e, F108, gerinc-Strong, a blokkok munkatáblája
+    (r'A felhasználó döntése \(N-F63e, (2026-11-03: „[^”]*”)\) szerint', r'A felhasználó döntése (\1) szerint',
+     'N-F63e'),
+    (r'a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be',
+     'a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is '
+     'látott, de nem írt be', 'F108'),
+    (r'a motívum szava \(gerinc-Strongja\) a versekben nem áll', 'a motívum saját szava a versekben nem áll', None),
+    (r', a lista a blokkok fájlban\.', ', a versek listája a teljesség-mérés blokk-táblájában áll.',
+     'naplok/F123_teljesseg_HAMART-001_blokkok.tsv'),
     # a „study” angol szó (az olvasói kapu ANGOL-szabálya), ahol a sort amúgy is átírjuk
     (r'\bstudy\b', 'tanulmány', None),
 ]
@@ -244,12 +253,13 @@ def main():
     sorok = beolvas()
     fej_i = next(i for i, s in enumerate(sorok) if s and not s.startswith('#'))
     fej = sorok[fej_i].rstrip('\r').split('\t')
-    if UJ_OSZLOP in fej:
-        print('a(z) %s oszlop már megvan: nincs teendő' % UJ_OSZLOP)
-        return 0
-    i_ind = fej.index('indoklas')
+    # első futás: az oszlop új; későbbi futás (pl. egy másik ág új sorai után): az oszlop megvan, a rövidebb sor üres
+    # nyommal bővül, a belső jelű indoklás ugyanúgy szétválik, a nyom a meglévőhöz fűződik
+    van_oszlop = UJ_OSZLOP in fej
+    fej_uj = fej if van_oszlop else fej + [UJ_OSZLOP]
+    i_ind, i_ref = fej.index('indoklas'), fej_uj.index(UJ_OSZLOP)
     uj_sorok = list(sorok)
-    uj_sorok[fej_i] = '\t'.join(fej + [UJ_OSZLOP]) + ('\r' if sorok[fej_i].endswith('\r') else '')
+    uj_sorok[fej_i] = '\t'.join(fej_uj) + ('\r' if sorok[fej_i].endswith('\r') else '')
     naplo, hibak = [], []
     for i in range(fej_i + 1, len(sorok)):
         s = sorok[i]
@@ -257,13 +267,14 @@ def main():
             continue
         cr = '\r' if s.endswith('\r') else ''
         m = s.rstrip('\r').split('\t')
-        m += [''] * (len(fej) - len(m))
-        d = dict(zip(fej, m))
+        m += [''] * (len(fej_uj) - len(m))
+        d = dict(zip(fej_uj, m))
         regi = m[i_ind]
         if not belso_jelek(regi):
-            uj_sorok[i] = '\t'.join(m + ['']) + cr
+            uj_sorok[i] = '\t'.join(m) + cr
             continue
         uj, ref = atir(regi)
+        ref = [x for x in m[i_ref].split(SEP) if x] + [x for x in ref if x not in m[i_ref].split(SEP)]
         if belso_jelek(uj):
             hibak.append('%d. sor (%s %s): belső jel maradt: %s' % (i + 1, d['id'], d['igehely'],
                                                                      '; '.join(belso_jelek(uj))))
@@ -277,29 +288,36 @@ def main():
         # a régi szöveg minden belső jele a nyomban van (a nyom nem vész el)
         for rx, _nev in K.BELSO:
             for x in rx.finditer(regi):
+                if re.fullmatch(r'(?:tanítói |forrás ?)?fájl\w*', x.group(0), re.I):
+                    continue   # köznévi említés („a blokkok fájlban”): a nyom a szabály megnevezett fájlja
                 if x.group(0).lower() not in SEP.join(ref).lower():
                     hibak.append('%d. sor (%s %s): a belső jel nem került a nyomba: %s'
                                  % (i + 1, d['id'], d['igehely'], x.group(0)))
         if '\t' in uj or '\t' in ''.join(ref):
             hibak.append('%d. sor: tab a szövegben' % (i + 1))
         m2 = list(m)
-        m2[i_ind] = uj
-        uj_sorok[i] = '\t'.join(m2 + [SEP.join(ref)]) + cr
+        m2[i_ind], m2[i_ref] = uj, SEP.join(ref)
+        uj_sorok[i] = '\t'.join(m2) + cr
         # 3. igazolás: minden más mező változatlan
         vissza = uj_sorok[i].rstrip('\r').split('\t')
-        if vissza[:i_ind] + vissza[i_ind + 1:len(fej)] != m[:i_ind] + m[i_ind + 1:]:
+        if [x for k, x in enumerate(vissza) if k not in (i_ind, i_ref)] != \
+                [x for k, x in enumerate(m) if k not in (i_ind, i_ref)]:
             hibak.append('%d. sor: más mező is változott' % (i + 1))
         naplo.append((i + 1, d, regi, uj, SEP.join(ref)))
-    # 4. igazolás: a nem érintett sorok csak az üres új oszloppal bővültek
+    # 4. igazolás: a nem érintett sorok legfeljebb üres mezőkkel bővültek
     erintett = {n - 1 for n, *_ in naplo}
     for i in range(fej_i + 1, len(sorok)):
         if i in erintett or not sorok[i].strip() or sorok[i].startswith('#'):
             if not (i in erintett) and uj_sorok[i] != sorok[i]:
                 hibak.append('%d. sor: megjegyzés/üres sor változott' % (i + 1))
             continue
-        if uj_sorok[i].rstrip('\r') != sorok[i].rstrip('\r') + '\t' * (len(fej) - len(sorok[i].rstrip('\r').split('\t')) + 1):
+        regi_s = sorok[i].rstrip('\r')
+        if uj_sorok[i].rstrip('\r') != regi_s + '\t' * (len(fej_uj) - len(regi_s.split('\t'))):
             hibak.append('%d. sor: nem érintett sor változott' % (i + 1))
-    print('érintett sor: %d; hiba: %d' % (len(naplo), len(hibak)))
+    print('érintett sor: %d; hiba: %d%s' % (len(naplo), len(hibak), '' if van_oszlop else ' (új oszlop)'))
+    if not naplo and van_oszlop and uj_sorok == sorok:
+        print('nincs teendő')
+        return 0
     for h in hibak:
         print('  HIBA: ' + h)
     if hibak:
@@ -316,6 +334,18 @@ def main():
 
 
 def naplo_ir(naplo):
+    """A napló: első futáskor új fájl; később (a meglévő oszloppal) új szakasz a fájl végén, a sorszám a futáskori."""
+    if os.path.exists(NAPLO):
+        with io.open(NAPLO, encoding='utf-8') as f:
+            meglevo = f.read().rstrip('\n')
+        ki = [meglevo, '', '---', '', '# Későbbi futás: %d sor (a meglévő `dontes_ref` oszlop mellett)' % len(naplo), '',
+              '*A sorszám ennek a futásnak a táblájára vonatkozik. Proveniencia: `scope=adat/jeloltek.tsv (%d sor) | '
+              'forras=manual (eszkozok/indoklas_szetvalaszt.py ATIRAS) | ts=2026-11-04`*' % len(naplo), '']
+        for n, d, regi, uj, ref in naplo:
+            ki += naplo_tetel(n, d, regi, uj, ref)
+        with io.open(NAPLO, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(ki))
+        return
     ki = ['# Az `indoklas` szétválasztása (F123.INDOKLAS)', '',
           '*Generálta: `eszkozok/indoklas_szetvalaszt.py --ir`. A `adat/jeloltek.tsv` `indoklas` mezőjéből a belső jel '
           '(az `olvasoi_kapu.BELSO` mintái szerint: döntés-azonosító, F-/N-tétel, fájlnév, `manual`, „gerinc”) az új '
@@ -325,12 +355,16 @@ def naplo_ir(naplo):
           '*Proveniencia: `scope=adat/jeloltek.tsv (%d sor) | forras=manual (átírási szabályok: '
           'eszkozok/indoklas_szetvalaszt.py ATIRAS; a döntések szövege: DONTESEK.md) | ts=2026-11-04`*' % len(naplo), '']
     for n, d, regi, uj, ref in naplo:
-        ki += ['## %d. sor — %s · %s · %s (%s)' % (n, d['id'], d['igehely'], d['jelolt_tipus'], d['dontes']), '',
-               '- **régi `indoklas`:** %s' % regi.replace('\n', ' '),
-               '- **új `indoklas`:** %s' % uj,
-               '- **`dontes_ref`:** %s' % (ref or '—'), '']
+        ki += naplo_tetel(n, d, regi, uj, ref)
     with io.open(NAPLO, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki))
+
+
+def naplo_tetel(n, d, regi, uj, ref):
+    return ['## %d. sor — %s · %s · %s (%s)' % (n, d['id'], d['igehely'], d['jelolt_tipus'], d['dontes']), '',
+            '- **régi `indoklas`:** %s' % regi.replace('\n', ' '),
+            '- **új `indoklas`:** %s' % uj,
+            '- **`dontes_ref`:** %s' % (ref or '—'), '']
 
 
 if __name__ == '__main__':

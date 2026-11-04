@@ -1713,11 +1713,11 @@ def indoklas_belso_hibak(adat_dir):
     return ki
 
 
-def szabaly31_indoklas_belso(adat_dir):
+def szabaly29_indoklas_belso(adat_dir):
     """F123.INDOKLAS (DT-F123ib): a `jeloltek.tsv` `indoklas` mezője olvasói szöveg, belső jel nélkül (SÉRTÉS, gátol).
     A lapon az indoklás olvasói szövegként jelenik meg; a döntés-azonosító, a fájlnév és a proveniencia a `dontes_ref`
     mezőbe való (a nyílt adat kutatója ott, kódkönyvön át éri el)."""
-    cim = '31. A jelölt indoklása belső jel nélkül (F123.INDOKLAS)'
+    cim = '29. A jelölt indoklása belső jel nélkül (F123.INDOKLAS)'
     hibak = indoklas_belso_hibak(adat_dir)
     if hibak is None:
         return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
@@ -1791,7 +1791,7 @@ def main():
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
-        tabla_sorok.append(szabaly31_indoklas_belso(args.adat))
+        tabla_sorok.append(szabaly29_indoklas_belso(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

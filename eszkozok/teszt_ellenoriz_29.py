@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/teszt_ellenoriz_31.py -- az ellenoriz.py 31. szabályának tesztjei (F123.INDOKLAS, DT-F123ib): a
+eszkozok/teszt_ellenoriz_29.py -- az ellenoriz.py 29. szabályának tesztjei (F123.INDOKLAS, DT-F123ib): a
 `jeloltek.tsv` `indoklas` mezője belső jel nélküli olvasói szöveg; a nyom a `dontes_ref`-ben áll.
 
 Ideiglenes (a repón kívüli) adat-könyvtárban fut; a valódi táblán a szabály RENDBEN.
 
-    python eszkozok/teszt_ellenoriz_31.py
+    python eszkozok/teszt_ellenoriz_29.py
 """
 import os
 import shutil
@@ -52,7 +52,7 @@ class Szabaly31(unittest.TestCase):
         self.ir([sor('A név nélküli görög sorok nem tartoznak a motívumba (a felhasználó döntése, 2026-11-01): a '
                      'versben ἐπικαλέομαι áll, de ὄνομα (G3686) nélkül',
                      'DT476 K2 · scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01')])
-        self.assertEqual(E.szabaly31_indoklas_belso(self.dir).verdict, 'RENDBEN')
+        self.assertEqual(E.szabaly29_indoklas_belso(self.dir).verdict, 'RENDBEN')
 
     def test_belso_jel_az_indoklasban_sertes(self):
         for ind in ('DT476 K2 (a felhasználó, 2026-11-01): ὄνομα nélkül',
@@ -61,16 +61,16 @@ class Szabaly31(unittest.TestCase):
                     'a jelen gerinchez nem tartozik',
                     'F123 X.A, elbírálatlan', 'elbírálás: N-F63a'):
             self.ir([sor(ind)])
-            s = E.szabaly31_indoklas_belso(self.dir)
+            s = E.szabaly29_indoklas_belso(self.dir)
             self.assertEqual(s.verdict, 'SÉRTÉS', ind)
             self.assertEqual(s.n, 1, ind)
 
     def test_a_nyom_a_dontes_ref_ben_nem_hiba(self):
         self.ir([sor('a motívum negatív kritériuma kizárja', 'motivumok.tsv negativ_kriterium · gerinc · N59')])
-        self.assertEqual(E.szabaly31_indoklas_belso(self.dir).verdict, 'RENDBEN')
+        self.assertEqual(E.szabaly29_indoklas_belso(self.dir).verdict, 'RENDBEN')
 
     def test_valodi_tabla(self):
-        s = E.szabaly31_indoklas_belso(os.path.join(GYOKER, 'adat'))
+        s = E.szabaly29_indoklas_belso(os.path.join(GYOKER, 'adat'))
         self.assertEqual(s.verdict, 'RENDBEN', s.peldak)
 
 
