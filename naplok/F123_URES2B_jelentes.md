@@ -93,3 +93,10 @@ jelzi kétszer: az a 31. szabály esete.
 | `python eszkozok/ellenorzes/futtat.py` (E2–E30) | kilépés 0 — E2–E33: 0 HIBA (JELENTÉS: E12 916, E13 205, E25 3, E27 42, mind a változástól független); PR-cím `[ELLENŐRZŐ]` előtaggal (E16), a törölt fejléc `TÖRLÉS-SZÁNDÉKOS:` jelöléssel (E5), az E28 a lapok saját dátumával egyezik |
 | `teszt_ellenoriz_31.py`, `teszt_ellenoriz_11.py`, `teszt_lexikon_adatres.py` | OK (9, 6, 27 teszt) |
 | `teszt_ellenoriz_vedokorlat`, `teszt_szerepmatrix`, `teszt_szotari_gerinc` | 1 + 3 + 5 bukás — **a main-en is megvan** (az eredeti generátorral ugyanez a 9 bukás; adatszám-eltérések, pl. 22 ≠ 33 igehely), nem e változás okozza |
+
+## 7. A main behozása után (#617, #620; 2026-11-04)
+
+- Ütközés csak az `eszkozok/ellenoriz.py`-ban volt (a szabályok definíciója és a `main()` hívássora): kézzel feloldva, **mindkét szabály megmaradt** — a #617 28. („Nincs „egyéb” az 1/b. blokkban”) és ez a 31.; a hívássorban a 28. a 31. előtt.
+- A generált lapok automatikusan beolvadtak; a 4 migrált lap a saját dátumával (`PARDES_DATUM=2026-11-03`) újragenerálva: mind a négy **változatlan** (fixpont), az E28 egyezik.
+- **A 2/b blokk a merge után is lekerült mind a 4 migrált lapról** (ISTENTISZT-001, ALVIL-001, ANTROP-001, TEREMT-002; a main-hez képest 4 × 10 törölt sor, más változás nincs). A „### 2/b” fejléc az 5 régi sablonú lapon áll (KIRALY-001, MENNY-001, HODIT-001, HAMART-001: G15 helyőrző, a 31. szabály ott JELENTÉS; TEREMT-001: valódi kézi 2/b) — DT507 (a), l. 4.
+- Kapuk a merge után: `ellenoriz.py` kilépés 0 (RENDBEN 21, SÉRTÉS 0, KÉZI 2, JELENTÉS 9; 11. RENDBEN, 28. RENDBEN, 31. JELENTÉS 4); `futtat.py` E2–E33 0 HIBA; olvasói kapu ISTENTISZT 24/7, ALVIL 0/13, ANTROP 0/9 (a #617 javította a FIGY-et), TEREMT-002 17/28; tesztek (31, 11, adatres, szerep_kizart) OK.
