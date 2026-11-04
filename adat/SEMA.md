@@ -1900,7 +1900,7 @@ Kulcs: `id` + `lap_commit`. Állapot (2026-11-02): 0 sor.
 
 ---
 
-### 2.49 `lap_javitasok.tsv` — a lexikonlap emberi lektorálásának naplója (F123.LAPJAVIT, DT-F123f, 2026-11-04)
+### 2.49 `lap_javitasok.tsv` — a lexikonlap emberi lektorálásának naplója (F123.LAPJAVIT, DT599, 2026-11-04)
 
 **Kézi** (`manual` proveniencia). Egy sor egy hely, amelyre a felhasználó vagy egy külső lektor a `/lap-javit <ID>` parancsban
 (`.claude/commands/lap-javit.md`) rámutatott, és amelynek javítását (vagy külön útra terelését) **ő maga jóváhagyta**. A tábla
@@ -1921,7 +1921,7 @@ tab és sortörés nem állhat (többsoros szövegrész egy sorba vonva).
 | `datum` | `ÉÉÉÉ.HH.NN` |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` (hol hangzott el a jóváhagyás: pl. `forras=chat:/lap-javit HODIT-001`) |
 
-**Kolofon (DT-F123f).** Ha a motívumnak van sora, a Kolofon metaadat-táblájában egy sor áll: „Emberi lektorálás | N hely
+**Kolofon (DT599).** Ha a motívumnak van sora, a Kolofon metaadat-táblájában egy sor áll: „Emberi lektorálás | N hely
 (dátumok); lektorálók: …”. Az N a nem `generátor` típusú sorok száma (a lapon ténylegesen javított helyek), a dátumok és a
 lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rendezve. Sor nélkül a Kolofon nem ír semmit, és a blokk
 forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.

@@ -1,4 +1,4 @@
-# `/lap-javit` próbafuttatás — HODIT-001 (F123.LAPJAVIT, DT-F123f)
+# `/lap-javit` próbafuttatás — HODIT-001 (F123.LAPJAVIT, DT599)
 
 *scope=HODIT-001 | forras=eszkozok/lap_javit_proba.py + eszkozok/ellenoriz.py `lap_javitas_hibak` + eszkozok/lexikon_general.py `kolofon_lektoralas`, repón kívüli ideiglenes könyvtárban | ts=2026-11-04*
 
