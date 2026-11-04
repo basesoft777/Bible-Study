@@ -1696,6 +1696,37 @@ def szabaly27_gerinc_szocikkenkent(adat_dir):
                megjegyzes='javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir)' if hibak else None)
 
 
+def indoklas_belso_hibak(adat_dir):
+    """[(id, igehely, jelolt_tipus, a belső jel)] a `jeloltek.tsv` azon soraira, amelyek `indoklas` mezője belső jelet
+    hordoz (az `olvasoi_kapu.BELSO` mintái: döntés-azonosító, F-/N-tétel, fájlnév, `manual`, „gerinc”, munkafolyamat-
+    szereplő). A belső nyom helye a `dontes_ref` (SEMA 2.4, F123.INDOKLAS)."""
+    import olvasoi_kapu as K
+    ut = os.path.join(adat_dir, 'jeloltek.tsv')
+    if not os.path.exists(ut):
+        return None
+    _fej, sorok = G.tsv_beolvas(ut)
+    ki = []
+    for r in sorok:
+        jelek = [nev + ': ' + m.group(0) for rx, nev in K.BELSO for m in [rx.search(r.get('indoklas') or '')] if m]
+        if jelek:
+            ki.append((r.get('id', ''), r.get('igehely', ''), r.get('jelolt_tipus', ''), '; '.join(jelek)))
+    return ki
+
+
+def szabaly31_indoklas_belso(adat_dir):
+    """F123.INDOKLAS (DT-F123ib): a `jeloltek.tsv` `indoklas` mezője olvasói szöveg, belső jel nélkül (SÉRTÉS, gátol).
+    A lapon az indoklás olvasói szövegként jelenik meg; a döntés-azonosító, a fájlnév és a proveniencia a `dontes_ref`
+    mezőbe való (a nyílt adat kutatója ott, kódkönyvön át éri el)."""
+    cim = '31. A jelölt indoklása belső jel nélkül (F123.INDOKLAS)'
+    hibak = indoklas_belso_hibak(adat_dir)
+    if hibak is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    peldak = ['%s / %s (%s): %s' % h for h in hibak]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: a belső jel a `dontes_ref`-be, az indoklás a döntés tartalmát mondja ki '
+                           '(minta: eszkozok/indoklas_szetvalaszt.py)') if peldak else None)
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1760,6 +1791,7 @@ def main():
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
+        tabla_sorok.append(szabaly31_indoklas_belso(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

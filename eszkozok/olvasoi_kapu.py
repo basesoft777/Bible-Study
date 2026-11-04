@@ -9,7 +9,8 @@ Csak olvas; lapot, prózát, adatot nem javít. A Feed 9. kapuja (`muhely_allapo
 
 Ellenőrzések (azonosító — súlyosság):
     BELSO        belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor,
-                 gerinc, .tsv, manual, belső fájl)                                         — BUKÁS
+                 gerinc, .tsv, manual, belső fájl; a Strong-szám, ahol mellette ott a héber/görög szó
+                 és a kiejtése — a táblázat „Strong” oszlopa kivétel, F123.INDOKLAS)        — BUKÁS
     MOTIVUM_ID   más motívum azonosítója link nélkül                                       — FIGYELMEZTETÉS
     PONT         „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS
     ANGOL        angol maradék és munkazsargon a szólistából                               — BUKÁS
@@ -308,6 +309,26 @@ def ell_belso(sorok):
             for m in MOTIVUM_ID.finditer(s.szoveg):
                 ki.append(talalat('MOTIVUM_ID', FIGY, s.n, kornyezet(s.szoveg, m),
                                   'motívum-azonosító link nélkül: ' + m.group(1), m.group(1)))
+    ki += ell_belso_strong(sorok)
+    return ki
+
+
+def ell_belso_strong(sorok):
+    """BELSO, Strong-szám (F123.INDOKLAS): a Strong-szám az olvasói prózában, ahol mellette ott a héber/görög szó és a
+    kiejtése. A mérce az utófeldolgozó `strong_valtozas`-a (amit itt megfog, azt a generátor eltávolítja); kivétel a
+    táblázat „Strong” oszlopa, a címsor, az egyedül vagy láncban álló Strong-szám."""
+    import olvasoi_utofeldolg as OU
+    olvasoi = {s.n for s in sorok if s.olvasoi and s.fajta != 'cim'}
+    ki = []
+    for n, regi, uj, generalt in OU.strong_valtozas('\n'.join(s.nyers for s in sorok)):
+        if n + 1 not in olvasoi:
+            continue
+        for m in re.finditer(OU._STRONG, regi):
+            if m.group(0) not in uj or regi.count(m.group(0)) > uj.count(m.group(0)):
+                ki.append(talalat('BELSO', BUKAS, n + 1, kornyezet(regi, m),
+                                  'Strong-szám a szó és a kiejtése mellett: ' + m.group(0)
+                                  + ('' if generalt else ' (kézi rész: a forrásban javítandó)'), 'strong'))
+                break
     return ki
 
 
