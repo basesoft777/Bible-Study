@@ -4427,7 +4427,7 @@
     "sor": 616
    },
    {
-    "id": "DT-F181a",
+    "id": "DT601",
     "feladat": "F123.GENKOR (a H7121 BDB-szócikkének C1–C3 jelhibája az ISTENTISZT-001 lapon; 2026-11-04)",
     "kerdes": "A lap 2. Szótári hátterében három BUKÁS: a szócikk fejében „(a '†or°¹n), a †or°a¹n” (a Korán átírása a DictBDB.json torz betűkészletével), a Niph`al 2.b „felolvastatni vö. Qal 4)” és a 2.c „megidéztetni (vö. Qal 5” (nyitó, ill. záró zárójel nélkül), valamint a H8034 5. pontjának vázlatsora „Ézs 55:13 (\\|\\| אוֺת”. A lánc: a hiba a nyers forrásban (DictBDB.json) és a BDB.lexicon-ban is ugyanígy áll (angolul is: „compare Qal 4 )”, „(compare Qal 5 : Isa 31:4”), a konverzió és a fordítás híven viszi tovább; a H8034-é generátorhiba: a vázlatsor a zárójelen belüli „;”-nél vágott. Mérve (`adat/bdb_szakaszok.tsv`, `naplok/GENKOR_kapu_meres.md`): a torz betűkészlet valamely jele (® ° ¹ µ £ ¥ ‰ ƒ ‡ ¢ †) 422 Strong (427 BDB-szócikk) angol szövegében áll; a kapu jeleivel 405 Strong, ebből a „®” 33 Strongja (a Seól-család) a DT581-gyel javított, a többi 372 Strong javítatlan; a lapokon a ® / °-on túl egy hely: ANTROP-001 „Leµi” (H2416), amelyet a kapu eddig nem látott. Nyitott zárójel 1 149 angol szakaszsorban (843 Strong) — ennek nagy része a szakaszhatáron átnyúló zárójel, nem forráshiba; a vázlatsor rövidítése viszont 3 212 magyar szakasz vázlatsorában (2 874 szócikk) hagyott volna nyitott zárójelet. Hol javuljon?",
     "allapot": "alkalmazasra_var",
@@ -4437,7 +4437,7 @@
     "sor": 637
    },
    {
-    "id": "DT-F181b",
+    "id": "DT602",
     "feladat": "F123.GENKOR (a Strong-szám megjelenítése az olvasói prózában; 2026-11-04)",
     "kerdes": "A DT-F123ib óta a generátor a szó és a kiejtése mellett álló Strong-számot eltávolította, de csak a generált részen; a kézi prózában a kapu BUKÁS-t adott (ISTENTISZT-001: „(מִזְבֵּחַ, mizbéah, H4196)”). Maradjon-e a Strong-szám, és milyen alakban?",
     "allapot": "alkalmazasra_var",
@@ -4447,7 +4447,7 @@
     "sor": 638
    },
    {
-    "id": "DT-F181c",
+    "id": "DT603",
     "feladat": "F123.GENKOR (a „(kézi)” / „(generált)” címsorjelölés kivezetése és a szerzőségi mondat; 2026-11-04)",
     "kerdes": "A lap címsorai „*(kézi)*” / „*(generált)*” jelölést hordoztak, a Tartalomjegyzék pedig azt mondta: „A „(kézi)” jelölésű szakaszokat a kutató írta”; a rések olvasói bevezetője: „A kutató írta.” Ez hamis: a prózát modell (Opus) írta, a felhasználó nézte át. Mi álljon helyette?",
     "allapot": "alkalmazasra_var",
