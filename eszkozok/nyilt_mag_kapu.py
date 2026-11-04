@@ -20,6 +20,8 @@ Ellenőrzések (azonosító — súlyosság):
     HIBAK        az „ismert hibák” szakasz hiányzik, vagy nem tartalmazza a Károli-KH mért számát           — BUKÁS
     HIVATKOZAS   döntés-azonosító (NYD) feloldás nélkül; ismeretlen motívum-azonosító                       — BUKÁS
     BAJTAZONOS   a lemezen lévő csomag nem egyezik az újragenerált kimenettel / az összeg-fájllal            — BUKÁS
+    TERMEKRETEG  termékréteg-mező (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
+                 rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
 
 Használat:
@@ -292,6 +294,39 @@ def ell_kh_nev(fajlok):
     return ki
 
 
+# a termékréteg mezői (DT-F162c): értelmező próza és fizetős fordítás; nem lehetnek a csomagban
+KI_MEZOK = {
+    'elofordulasok.tsv': {'kapcsolodas', 'jelentes_hu', 'felmerult_tanulmany', 'forras_tanulmany', 'fo_elofordulas'},
+    'kapcsolatok.tsv': {'funkcio', 'indoklas'},
+    'motivum_kapcsolatok.tsv': {'funkcio', 'indoklas'},
+}
+FUNKCIO_MAX = 60
+
+
+def ell_termekreteg(fajlok):
+    """TERMEKRETEG: a KI-mezők nincsenek a csomagban; a `funkcio` csak rövid címke (nincs „ — ”, emoji, mondatvég);
+    a kódkönyv mezőnként kimondja a nem exportált mezőket (réteg és ok)."""
+    ki = []
+    for rel, mezok in KI_MEZOK.items():
+        fej, sorok = tsv_sorok(fajlok.get(rel, ''))
+        for o in sorted(mezok & set(fej)):
+            ki.append(Talalat('TERMEKRETEG', BUKAS, rel, 2, o, 'termékréteg-mező a csomagban'))
+    fej, sorok = tsv_sorok(fajlok.get('elofordulasok.tsv', ''))
+    for n, d in sorok:
+        f = d.get('funkcio', '')
+        if ' — ' in f or len(f) > FUNKCIO_MAX or re.search(r'[.!?]\s*$|\. ', f) or re.match(r'^[^\w(]', f):
+            ki.append(Talalat('TERMEKRETEG', BUKAS, 'elofordulasok.tsv', n, f[:100],
+                              'a funkció nem rövid címke (magyarázó rész vagy emoji maradt)'))
+    _, kk = tsv_sorok(fajlok.get('kodkonyv.tsv', ''))
+    nem = {d['oszlop'] for _, d in kk if d['tabla'] == '(nem exportált mezők)'}
+    for rel, mezok in KI_MEZOK.items():
+        for o in sorted(mezok - {'felmerult_tanulmany', 'forras_tanulmany', 'fo_elofordulas'}):
+            if not any(x.startswith(rel + ' / ' + o) for x in nem):
+                ki.append(Talalat('TERMEKRETEG', BUKAS, 'kodkonyv.tsv', 1, rel + ' / ' + o,
+                                  'a nem exportált mezőt a kódkönyv nem mondja ki'))
+    return ki
+
+
 def ell_kanonikus(fajlok):
     """KANONIKUS: nincs GitHub-hivatkozás kanonikus forrásként; van helyőrző, kiadás-azonosító és a réteghatár."""
     ki = []
@@ -353,7 +388,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_kh_nev,
-              ell_osszeg, ell_kanonikus):
+              ell_osszeg, ell_kanonikus, ell_termekreteg):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

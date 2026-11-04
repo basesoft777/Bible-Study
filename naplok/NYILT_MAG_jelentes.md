@@ -51,3 +51,9 @@ Nem exportált: a **129 `nyitva` jelölt** (döntetlen). A csomag SHA-256 össze
 - A `dontesnaplo.tsv` szövegei gépi tisztítással (belső jelek cseréje/elhagyása) készültek; néhol nyelvtanilag nehézkesek („az adattábla negatív kritériuma”); a kérdés/döntés első mondatai nem a teljes döntést adják. Lektori átnézés javasolt a közzététel előtt.
 - A `DT-F123d` hivatkozás a `jeloltek.tsv`-ben van, de a `DONTESEK.md`-ben nincs sora (csak a briefben) — a csomagban nem szerepel (nincs feloldható nyilvános szöveg).
 - A CI-be kötés (a kapu mint E-szabály) nincs megtéve; a `Zenodo-feltöltés, DOI` a felhasználóé (nem része).
+
+## 7. Adat- és termékréteg (DT-F162c, 2026-11-04) és kanonikus forrás
+
+- **Ki:** `elofordulasok.tsv` `kapcsolodas`; a `funkcio` „ — ” utáni magyarázata; `kapcsolatok.tsv` és `motivum_kapcsolatok.tsv` `funkcio`/`indoklas`. **Bent:** a `funkcio` címke (emoji nélkül), a kizárások/beépítések indoklása, a `negativ_kriterium`, a típus/bizonyosság/PaRDeS-szint.
+- **Hosszú, „ — ” nélküli `funkcio`-próza (kiesett, 3 sor):** TEREMT-002 1Móz 1:2 (118 karakter), Jer 4:23 (88), Ézs 34:11 (65).
+- **Kapu:** új TERMEKRETEG ellenőrzés (a KI-mezők nincsenek a csomagban, a funkció rövid címke, a kódkönyv `(nem exportált mezők)` sorai kimondják mezőnként a réteget és az okot); új KANONIKUS ellenőrzés (nincs GitHub-hivatkozás; `<KANONIKUS_FORRAS_URL>` helyőrző; `KIADAS.txt`: adatállapot dátuma + tartalmi hash). 35 teszt zöld, 0 BUKÁS.

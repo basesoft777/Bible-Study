@@ -1,5 +1,13 @@
 # GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 tabla	oszlop	ertek	leiras_hu	leiras_en
+(nem exportált mezők)	elofordulasok.tsv / funkcio (magyarázó rész)	termékréteg	A funkció-címke utáni magyarázó mondat. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	The explanatory sentence after the function label. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	elofordulasok.tsv / jelentes_hu	termékréteg	A szótári jelentés magyar fordítása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	The Hungarian translation of the dictionary sense. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	elofordulasok.tsv / kapcsolodas	termékréteg	A vers kapcsolódásának szabad prózai magyarázata. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	Free-prose explanation of how the verse connects to the motif. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	kapcsolatok.tsv / funkcio	termékréteg	A kapcsolat szerepének prózai leírása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	Prose description of the link’s role. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	kapcsolatok.tsv / indoklas	termékréteg	A kapcsolat szerepének és bizonyosságának prózai indoklása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	Prose rationale of the link’s role and certainty. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	motivum_kapcsolatok.tsv / funkcio	termékréteg	A motívumközi kapcsolat szerepének prózai leírása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	Prose description of the motif-to-motif link’s role. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	motivum_kapcsolatok.tsv / indoklas	termékréteg	A motívumközi kapcsolat prózai indoklása a mért adatokkal. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik).	Prose rationale of the motif-to-motif link with measured data. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+(nem exportált mezők)	szabály		A csomagba csak az adatréteg kerül: azonosító, cím, kizáró jegy, igehely, szóbázis, besorolás-címke, kizárás és döntés indoklással, proveniencia. A kizárások és beépítések indoklása és a kizáró jegy adat (a döntés tartalmát mondja ki), ezért bent van.	Only the data layer is included: identifier, title, exclusion criterion, passage, lexical base, classification label, exclusions and decisions with rationale, provenance. The rationale of exclusions/incorporations and the exclusion criterion are data (they state the content of a decision) and are therefore included.
 beepitesi_dontesek.tsv	cel_igehely		Motívumközi jelöltnél a másik motívum oldali igehely(ek); egyébként üres.	For a link between motifs, the passage(s) on the other motif’s side; otherwise empty.
 beepitesi_dontesek.tsv	cel_motivum		Motívumközi jelöltnél a másik motívum azonosítója; egyébként üres.	For a link between motifs, the other motif’s identifier; otherwise empty.
 beepitesi_dontesek.tsv	datum		A döntés napja (ÉÉÉÉ.HH.NN).	The date of the decision (YYYY.MM.DD).
@@ -45,7 +53,7 @@ elofordulasok.tsv	forras_dataset		A forrásként használt, licenccel rendelkez�
 elofordulasok.tsv	forras_licenc		A forrás-adatkészlet licence.	The licence of the source dataset.
 elofordulasok.tsv	forras_licenc	CC BY 4.0	Creative Commons Nevezd meg! 4.0 (a forrást meg kell nevezni)	Creative Commons Attribution 4.0 (the source must be credited)
 elofordulasok.tsv	forras_megnevezes		A forrás olvasói neve: szerkesztői tanulmány, napló vagy adatkészlet.	The reader-facing name of the source: editorial essay, log or dataset.
-elofordulasok.tsv	funkcio		A vers szerepe a motívum ívében.	The verse’s role in the motif’s arc.
+elofordulasok.tsv	funkcio		A vers szerepének besorolása a motívumban: rövid címke (pl. „alap-előfordulás”, „ismétlődés”). **Adatréteg**, mert a hely motívumbeli szerepét osztályozza; a címkét követő magyarázó mondat értelmező próza, a termékréteg része, ezért kimaradt.	Classification of the verse’s role in the motif: a short label (e.g. “alap-előfordulás” = foundational occurrence). **Data layer**, because it classifies the place’s role in the motif; the explanatory sentence that follows the label is interpretive prose, belongs to the product layer and is omitted.
 elofordulasok.tsv	horgony		A horgony értéke: Strong-szám(ok), szópár vagy a hivatkozott hely.	The value of the anchor: Strong number(s), word pair or the referenced passage.
 elofordulasok.tsv	horgony_tipus		Mire támaszkodik a sor: a szóbázis típusa.	What the row rests on: the type of the lexical anchor.
 elofordulasok.tsv	horgony_tipus	formula-kapcsolat	rögzített formula, amely nem egyetlen szón áll	a fixed formula that does not rest on a single word
@@ -62,7 +70,6 @@ elofordulasok.tsv	igazolas	nincs	nem történt igazoló lekérdezés	no confirmi
 elofordulasok.tsv	igehely		Az igehely Károli-számozással (pl. 1Móz 3:16); a héber/görög szöveget a vers sora hordozza.	The passage in Károli numbering (e.g. 1Móz 3:16 = Gen 3:16); the Hebrew/Greek text is carried by the verse row.
 elofordulasok.tsv	jelentes_en		A szótári jelentés angolul, a szótár szövegéből.	The dictionary sense in English, from the dictionary text.
 elofordulasok.tsv	jelentes_szam		A szótári jelentés száma vagy tagolása (számozott jelentés, igetörzs-címke vagy „tagolatlan”).	The dictionary sense number or division (numbered sense, verb-stem label or “tagolatlan” = undivided).
-elofordulasok.tsv	kapcsolodas		Mi köti ide a verset: a szerkesztői indoklás.	What ties the verse to the motif: the editorial rationale.
 elofordulasok.tsv	karoli_szo		A szóalak a Károli-fordításban ezen a helyen.	The word form in the Károli translation at this place.
 elofordulasok.tsv	lekerdezes_tipusa		A sor forrásának lekérdezés-típusa; kézi döntésnél nincs lekérdezés.	The query type behind the row’s source; a decision made by hand involves no query.
 elofordulasok.tsv	lekerdezes_tipusa	kézi döntés, lekérdezés nélkül	a sor szerkesztői döntésből származik, nem lekérdezés eredménye (értelmezés, nem ténymegállapítás)	the row comes from an editorial decision, not a query result (interpretation, not a stated fact)
@@ -114,8 +121,6 @@ kapcsolatok.tsv	cel_igehely		A kapcsolat célja: a másik igehely.	The target pa
 kapcsolatok.tsv	datum		A rögzítés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.	The date of recording (YYYY-MM-DD); empty when not recorded.
 kapcsolatok.tsv	forras_igehely		A kapcsolat kiinduló igehelye.	The starting passage of the link.
 kapcsolatok.tsv	forras_megnevezes		A kapcsolat forrásának olvasói neve; üres, ha nincs rögzítve.	The reader-facing name of the link’s source; empty when not recorded.
-kapcsolatok.tsv	funkcio		A kapcsolat szerepe a motívumban.	The role of the link in the motif.
-kapcsolatok.tsv	indoklas		A kapcsolat szerepének és bizonyosságának indoklása; lehet üres.	The rationale for the link’s role and certainty; may be empty.
 kapcsolatok.tsv	lekerdezes_tipusa		A kapcsolat forrásának lekérdezés-típusa; üres, ha nincs rögzítve.	The query type behind the link’s source; empty when not recorded.
 kapcsolatok.tsv	lekerdezes_tipusa	kézi döntés, lekérdezés nélkül	a szerkesztői döntésből származó kapcsolat, nem lekérdezésből	a link from an editorial decision, not from a query
 kapcsolatok.tsv	motivum_azonosito		A motívum, amelyhez a kapcsolat tartozik.	The motif the link belongs to.
@@ -171,10 +176,8 @@ motivum_kapcsolatok.tsv	bizonyossag	közepes	valószínű, de nem biztos kapcsol
 motivum_kapcsolatok.tsv	datum		A rögzítés napja (ÉÉÉÉ-HH-NN).	The date of recording (YYYY-MM-DD).
 motivum_kapcsolatok.tsv	dontesek		A döntés nyilvános azonosítói (NYD-nnn), a dontesnaplo.tsv-ben oldhatók fel.	Public identifiers (NYD-nnn) of the decision, resolvable in dontesnaplo.tsv.
 motivum_kapcsolatok.tsv	forras_megnevezes		A forrás olvasói neve.	The reader-facing name of the source.
-motivum_kapcsolatok.tsv	funkcio		A kapcsolat szerepe.	The role of the link.
 motivum_kapcsolatok.tsv	igehely_a		Az A motívum oldali igehely.	The passage on the A motif’s side.
 motivum_kapcsolatok.tsv	igehely_b		A B motívum oldali igehely.	The passage on the B motif’s side.
-motivum_kapcsolatok.tsv	indoklas		A kapcsolat szerkesztői indoklása, a mért adatokkal.	The editorial rationale for the link, with the measured data.
 motivum_kapcsolatok.tsv	lekerdezes_tipusa		A kapcsolat forrásának lekérdezés-típusa.	The query type behind the link’s source.
 motivum_kapcsolatok.tsv	lekerdezes_tipusa	megadott igehely-tartomány	a megadott igehely-tartományon futtatott mérés	a measurement run over a given passage range
 motivum_kapcsolatok.tsv	motivum_a		A kapcsolat egyik motívuma.	One motif of the link.

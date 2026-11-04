@@ -130,7 +130,7 @@ class Egyseg(unittest.TestCase):
 
 class Negativ(Alap):
     def test_belso_dt(self):
-        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'Dávid halála', 'Dávid halála (DT476)')
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'a koporsóba', 'a koporsóba (DT476)')
         self.assertTrue(bukasok(f, 'BELSO'))
 
     def test_belso_gerinc_elem_es_scope(self):
@@ -144,7 +144,7 @@ class Negativ(Alap):
         self.assertTrue(bukasok(f, 'BELSO'))
 
     def test_angol_marado(self):
-        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'Dávid halála', 'Dávid study halála')
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'a koporsóba', 'a study koporsóba')
         self.assertTrue(bukasok(f, 'ANGOL'))
 
     def test_kodkonyv_hianyzo_oszlop(self):
@@ -171,13 +171,13 @@ class Negativ(Alap):
         self.assertTrue(bukasok(f, 'KODKONYV'))
 
     def test_kizart_licenc(self):
-        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'Dávid halála', 'Dávid halála (MCGED szerint)')
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'a koporsóba', 'a koporsóba (MCGED szerint)')
         self.assertTrue(bukasok(f, 'LICENC'))
-        g = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'Dávid halála', 'Dávid halála (Heber_ETCBC_modulok)')
+        g = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'a koporsóba', 'a koporsóba (Heber_ETCBC_modulok)')
         self.assertTrue(bukasok(g, 'LICENC'))
 
     def test_sdbh_a_reteg_kivul(self):
-        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'Dávid halála', 'Dávid halála (SDBH domén)')
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', 'a koporsóba', 'a koporsóba (SDBH domén)')
         self.assertTrue(bukasok(f, 'LICENC'))
 
     def test_reteg_attribucio_nelkul(self):
@@ -224,6 +224,24 @@ class Negativ(Alap):
         f = self.uj()
         f['OLVASSEL.md'] = f['OLVASSEL.md'].replace('<KANONIKUS_FORRAS_URL>', 'x')
         self.assertTrue(bukasok(f, 'KANONIKUS'))
+
+    def test_termekreteg_kapcsolodas_oszlop(self):
+        f = self.uj()
+        sz = f['elofordulasok.tsv'].split('\n')
+        sz[1] = sz[1].replace('funkcio', 'kapcsolodas\tfunkcio', 1)
+        f['elofordulasok.tsv'] = '\n'.join(sz)
+        self.assertTrue(bukasok(f, 'TERMEKRETEG'))
+
+    def test_termekreteg_funkcio_magyarazat(self):
+        f = self.uj()
+        f['elofordulasok.tsv'] = f['elofordulasok.tsv'].replace('\tismétlődés\t', '\tismétlődés — magyarázat\t', 1)
+        self.assertTrue(bukasok(f, 'TERMEKRETEG'))
+
+    def test_funkcio_cimke(self):
+        self.assertEqual(('alap-előfordulás', False), E.funkcio_cimke('🌱 alap-előfordulás — a motívum legelső megjelenése'))
+        self.assertEqual(('ismétlődés', False), E.funkcio_cimke('🔁 ismétlődés'))
+        self.assertEqual(('', True), E.funkcio_cimke('prototípus: ' + 'hosszú próza ' * 8))
+        self.assertEqual(('', False), E.funkcio_cimke(''))
 
     def test_hianyzo_fajl(self):
         f = self.uj()

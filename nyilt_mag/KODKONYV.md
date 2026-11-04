@@ -7,6 +7,23 @@ Minden oszlop, érték és kód leírása magyarul és angolul. / Description of
 **Adatréteg / data layer.** A csomag csak adatot tartalmaz (azonosító, cím, kizáró jegy, igehely, szóbázis, kizárás és döntés indoklással, proveniencia); az értelmező próza, a magyar szótári fordítás és a kötetanyag a termékréteg, nem része a csomagnak. / The package holds data only (identifier, title, exclusion criterion, passage, lexical base, exclusions and decisions with rationale, provenance); interpretive prose, Hungarian dictionary translations and volume material belong to the product layer and are not included.
 
 
+## (nem exportált mezők)
+
+- `elofordulasok.tsv / funkcio (magyarázó rész)` = `termékréteg`: A funkció-címke utáni magyarázó mondat. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / The explanatory sentence after the function label. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `elofordulasok.tsv / jelentes_hu` = `termékréteg`: A szótári jelentés magyar fordítása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / The Hungarian translation of the dictionary sense. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `elofordulasok.tsv / kapcsolodas` = `termékréteg`: A vers kapcsolódásának szabad prózai magyarázata. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Free-prose explanation of how the verse connects to the motif. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `kapcsolatok.tsv / funkcio` = `termékréteg`: A kapcsolat szerepének prózai leírása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose description of the link’s role. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `kapcsolatok.tsv / indoklas` = `termékréteg`: A kapcsolat szerepének és bizonyosságának prózai indoklása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose rationale of the link’s role and certainty. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `motivum_kapcsolatok.tsv / funkcio` = `termékréteg`: A motívumközi kapcsolat szerepének prózai leírása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose description of the motif-to-motif link’s role. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `motivum_kapcsolatok.tsv / indoklas` = `termékréteg`: A motívumközi kapcsolat prózai indoklása a mért adatokkal. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose rationale of the motif-to-motif link with measured data. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+
+### `szabály`
+
+A csomagba csak az adatréteg kerül: azonosító, cím, kizáró jegy, igehely, szóbázis, besorolás-címke, kizárás és döntés indoklással, proveniencia. A kizárások és beépítések indoklása és a kizáró jegy adat (a döntés tartalmát mondja ki), ezért bent van.
+
+*Only the data layer is included: identifier, title, exclusion criterion, passage, lexical base, classification label, exclusions and decisions with rationale, provenance. The rationale of exclusions/incorporations and the exclusion criterion are data (they state the content of a decision) and are therefore included.*
+
+
 ## beepitesi_dontesek.tsv
 
 
@@ -222,9 +239,9 @@ A forrás olvasói neve: szerkesztői tanulmány, napló vagy adatkészlet.
 
 ### `funkcio`
 
-A vers szerepe a motívum ívében.
+A vers szerepének besorolása a motívumban: rövid címke (pl. „alap-előfordulás”, „ismétlődés”). **Adatréteg**, mert a hely motívumbeli szerepét osztályozza; a címkét követő magyarázó mondat értelmező próza, a termékréteg része, ezért kimaradt.
 
-*The verse’s role in the motif’s arc.*
+*Classification of the verse’s role in the motif: a short label (e.g. “alap-előfordulás” = foundational occurrence). **Data layer**, because it classifies the place’s role in the motif; the explanatory sentence that follows the label is interpretive prose, belongs to the product layer and is omitted.*
 
 
 ### `horgony`
@@ -277,13 +294,6 @@ A szótári jelentés angolul, a szótár szövegéből.
 A szótári jelentés száma vagy tagolása (számozott jelentés, igetörzs-címke vagy „tagolatlan”).
 
 *The dictionary sense number or division (numbered sense, verb-stem label or “tagolatlan” = undivided).*
-
-
-### `kapcsolodas`
-
-Mi köti ide a verset: a szerkesztői indoklás.
-
-*What ties the verse to the motif: the editorial rationale.*
 
 
 ### `karoli_szo`
@@ -443,20 +453,6 @@ A kapcsolat kiinduló igehelye.
 A kapcsolat forrásának olvasói neve; üres, ha nincs rögzítve.
 
 *The reader-facing name of the link’s source; empty when not recorded.*
-
-
-### `funkcio`
-
-A kapcsolat szerepe a motívumban.
-
-*The role of the link in the motif.*
-
-
-### `indoklas`
-
-A kapcsolat szerepének és bizonyosságának indoklása; lehet üres.
-
-*The rationale for the link’s role and certainty; may be empty.*
 
 
 ### `lekerdezes_tipusa`
@@ -697,13 +693,6 @@ A forrás olvasói neve.
 *The reader-facing name of the source.*
 
 
-### `funkcio`
-
-A kapcsolat szerepe.
-
-*The role of the link.*
-
-
 ### `igehely_a`
 
 Az A motívum oldali igehely.
@@ -716,13 +705,6 @@ Az A motívum oldali igehely.
 A B motívum oldali igehely.
 
 *The passage on the B motif’s side.*
-
-
-### `indoklas`
-
-A kapcsolat szerkesztői indoklása, a mért adatokkal.
-
-*The editorial rationale for the link, with the measured data.*
 
 
 ### `lekerdezes_tipusa`

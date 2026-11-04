@@ -1968,10 +1968,10 @@ minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vag
 | Fájl | Forrástábla | Megjegyzés |
 |---|---|---|
 | `motivumok.tsv` | `motivumok.tsv` | `ui_cimke` → `rovid_cimke`; elhagyva: `statusz_verzio`, `sablon_verzio`, `forras_study` |
-| `elofordulasok.tsv` | `elofordulasok.tsv` | `gerinc_elem` → `horgony_tipus` + `horgony`; `proveniencia` → `lekerdezes_tipusa`, `forras_megnevezes`, `forras_dataset`, `forras_licenc`, `datum`; `lexikon_szotar`/`lexikon_entry_id` → `szotar`/`szotari_szocikk`; elhagyva: `jelentes_hu` (fizetős réteg), `fo_elofordulas`, `felmerult_tanulmany`, `forras_tanulmany` (belső fájlút) |
+| `elofordulasok.tsv` | `elofordulasok.tsv` | `gerinc_elem` → `horgony_tipus` + `horgony`; `proveniencia` → `lekerdezes_tipusa`, `forras_megnevezes`, `forras_dataset`, `forras_licenc`, `datum`; `lexikon_szotar`/`lexikon_entry_id` → `szotar`/`szotari_szocikk`; elhagyva (termékréteg, DT-F162c): `kapcsolodas` (az 1/a értelmező prózája), a `funkcio` „ — ” utáni magyarázata (a címke, emoji nélkül, bent marad); `jelentes_hu` (fizetős réteg), `fo_elofordulas`, `felmerult_tanulmany`, `forras_tanulmany` (belső fájlút) |
 | `kizarasok.tsv` | `jeloltek.tsv` (`dontes=elutasítva`) | az elutasítási ok szövege az `elutasitasi_okok.tsv` mintáiból; ` \| ` utáni rész → `korabbi_minosites`; `dontes_ref` → `dontesek` (NYD-azonosítók) |
 | `beepitesi_dontesek.tsv` | `jeloltek.tsv` (`dontes=beépítve`) | a beépítés indoklása az előfordulásokhoz kulcsolva |
-| `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | az indoklás utáni proveniencia külön oszlopokba |
+| `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | `funkcio` és `indoklas` elhagyva (termékréteg, DT-F162c); az indoklás utáni proveniencia külön oszlopokba; bent: típus, bizonyosság, PaRDeS-szint, igehelyek/motívum-azonosítók. A kapu (TERMEKRETEG) ellenőrzi, hogy a KI-mezők nincsenek a csomagban, és a kódkönyv `(nem exportált mezők)` sorai mezőnként kimondják a réteget és az okot |
 | `dontesnaplo.tsv` | `DONTESEK.md` | a hivatkozott döntések `NYD-nnn` azonosítóval (DT-szám szerint rendezve), a kérdés és a döntés egymondatos szövege, belső jelek nélkül |
 | `forrasok_es_licencek.tsv` | `licencek.tsv` | minden dataset szerepe (forrás / külön réteg / kizárva + ok) |
 | `cc_by_sa_reteg/` | `SDBH_domenek.tsv`, `SDGNT_domenek.tsv` | a csomag Strong-számaira; CC BY-SA 4.0, szó szerinti attribúció |

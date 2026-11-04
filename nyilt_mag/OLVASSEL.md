@@ -19,7 +19,7 @@
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
 | `kizarasok.tsv` | 413 |
-| `kodkonyv.tsv` | 203 |
+| `kodkonyv.tsv` | 206 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 

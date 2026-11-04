@@ -372,6 +372,25 @@ KERESES_SZABALY = [
 STRONG_RX = re.compile(r'^[HG]\d{4}(?:\s*\+\s*[HG]\d{4})*$')
 
 
+EMOJI_ELEJE = re.compile(r'^[^\w(]+')
+
+
+def funkcio_cimke(f):
+    """(címke, kiesett): a `funkcio` mező adatréteg-része (DT-F162c). A „ — ” előtti címke marad, emoji nélkül; a
+    „ — ” utáni magyarázat (termékréteg) kimarad. Ha nincs „ — ”, a rövid (≤ 60 karakteres, mondatvég nélküli)
+    címke marad, a hosszú próza kimarad (`kiesett`)."""
+    f = (f or '').strip()
+    if not f:
+        return '', False
+    if ' — ' in f:
+        c = f.split(' — ')[0]
+    else:
+        c = f
+        if len(c) > 60 or re.search(r'[.!?]\s*$|\. ', c):
+            return '', True
+    return EMOJI_ELEJE.sub('', c).strip(), False
+
+
 def horgony(gerinc):
     """(horgony_tipus, horgony) -- a belső `gerinc_elem` olvasható alakja."""
     g = (gerinc or '').strip()
@@ -491,17 +510,12 @@ def export(kimenet):
     for m in mot:
         dn.gyujt(m['negativ_kriterium'])
         dn.gyujt(m['folerendelt_fogalom'])
-    for e in elo:
-        dn.gyujt(e['kapcsolodas'])
-        dn.gyujt(e['funkcio'])
     for j in dontott:
         dn.gyujt(j['indoklas'])
         dn.gyujt(j['dontes_ref'])
     for k in mkap:
         dn.gyujt(k['indoklas'])
         dn.gyujt(k['dontes_ref'])
-    for k in kap:
-        dn.gyujt(k['indoklas'])
     dn.kioszt()
     feloldatlan_dt = sorted(d for d in dn.hivatkozott if d not in dn.azon)
 
@@ -521,11 +535,12 @@ def export(kimenet):
     stat['motivumok.tsv'] = len(sorok)
 
     # --- elofordulasok.tsv
-    fej = ['motivum_azonosito', 'igehely', 'kapcsolodas', 'funkcio', 'pardes_szint', 'horgony_tipus', 'horgony',
+    fej = ['motivum_azonosito', 'igehely', 'funkcio', 'pardes_szint', 'horgony_tipus', 'horgony',
            'strong', 'szotar', 'szotari_szocikk', 'jelentes_szam', 'jelentes_en', 'karoli_szo', 'azonositas_modja',
            'megbizhatosag', 'igazolas', 'lekerdezes_tipusa', 'forras_megnevezes', 'forras_dataset',
            'forras_licenc', 'datum']
     sorok = []
+    funkcio_kiesett = []
     strongok = set()
     for e in elo:
         p = prov_parse(e['proveniencia'])
@@ -533,10 +548,13 @@ def export(kimenet):
         for k in kiz:
             kizart_forrasok[k] = kizart_forrasok.get(k, 0) + 1
         ht, h = horgony(e['gerinc_elem'])
+        cimke, kiesett = funkcio_cimke(e['funkcio'])
+        if kiesett:
+            funkcio_kiesett.append((e['id'], e['igehely'], len(e['funkcio'])))
         strongok |= strong_szamok(e['strong'], e['gerinc_elem'])
         sorok.append({
             'motivum_azonosito': e['id'], 'igehely': e['igehely'],
-            'kapcsolodas': tisztit(e['kapcsolodas'], dn), 'funkcio': tisztit(e['funkcio'], dn),
+            'funkcio': cimke,
             'pardes_szint': e['pardes_szint'], 'horgony_tipus': ht, 'horgony': h, 'strong': e['strong'],
             'szotar': e['lexikon_szotar'], 'szotari_szocikk': e['lexikon_entry_id'],
             'jelentes_szam': e['jelentes_szam'], 'jelentes_en': e['jelentes_en'], 'karoli_szo': e['karoli_szo'],
@@ -597,8 +615,8 @@ def export(kimenet):
     stat['beepitesi_dontesek.tsv'] = len(sorok)
 
     # --- kapcsolatok.tsv (igehely-párok)
-    fej = ['motivum_azonosito', 'forras_igehely', 'cel_igehely', 'tipus', 'funkcio', 'bizonyossag', 'pardes_szint',
-           'indoklas', 'lekerdezes_tipusa', 'forras_megnevezes', 'datum']
+    fej = ['motivum_azonosito', 'forras_igehely', 'cel_igehely', 'tipus', 'bizonyossag', 'pardes_szint',
+           'lekerdezes_tipusa', 'forras_megnevezes', 'datum']
     sorok = []
     for k in kap:
         elso, _, utan = k['indoklas'].partition(' | ')
@@ -606,8 +624,7 @@ def export(kimenet):
         nev = forras_fordit(p.get('forras', ''), lic)[0] if p else ''
         sorok.append({'motivum_azonosito': k['id'], 'forras_igehely': k['forras_igehely'],
                       'cel_igehely': k['cel_igehely'], 'tipus': k['tipus'],
-                      'funkcio': tisztit(k['funkcio'], dn), 'bizonyossag': k['bizonyossag'],
-                      'pardes_szint': k['pardes_szint'], 'indoklas': tisztit(elso, dn),
+                      'bizonyossag': k['bizonyossag'], 'pardes_szint': k['pardes_szint'],
                       'lekerdezes_tipusa': scope_ford(p.get('scope')) if p else '',
                       'forras_megnevezes': nev, 'datum': (p.get('ts') or '')[:10]})
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['forras_igehely'], s['cel_igehely']))
@@ -615,8 +632,8 @@ def export(kimenet):
     stat['kapcsolatok.tsv'] = len(sorok)
 
     # --- motivum_kapcsolatok.tsv
-    fej = ['motivum_a', 'igehely_a', 'alpont_a', 'motivum_b', 'igehely_b', 'alpont_b', 'tipus', 'funkcio',
-           'bizonyossag', 'pardes_szint', 'indoklas', 'dontesek', 'lekerdezes_tipusa', 'forras_megnevezes', 'datum']
+    fej = ['motivum_a', 'igehely_a', 'alpont_a', 'motivum_b', 'igehely_b', 'alpont_b', 'tipus',
+           'bizonyossag', 'pardes_szint', 'dontesek', 'lekerdezes_tipusa', 'forras_megnevezes', 'datum']
     sorok = []
     for k in mkap:
         p = prov_parse(k['proveniencia'])
@@ -625,8 +642,7 @@ def export(kimenet):
                         if dn.feloldott(m.group(0))})
         sorok.append({'motivum_a': k['id_a'], 'igehely_a': k['igehely_a'], 'alpont_a': k['alpont_a'],
                       'motivum_b': k['id_b'], 'igehely_b': k['igehely_b'], 'alpont_b': k['alpont_b'],
-                      'tipus': k['tipus'], 'funkcio': tisztit(k['funkcio'], dn), 'bizonyossag': k['bizonyossag'],
-                      'pardes_szint': k['pardes_szint'], 'indoklas': tisztit(k['indoklas'], dn),
+                      'tipus': k['tipus'], 'bizonyossag': k['bizonyossag'], 'pardes_szint': k['pardes_szint'],
                       'dontesek': '; '.join(d_ids), 'lekerdezes_tipusa': scope_ford('range:' if p.get('scope') else ''),
                       'forras_megnevezes': nev, 'datum': (p.get('ts') or '')[:10]})
     sorok.sort(key=lambda s: (s['motivum_a'], s['igehely_a'], s['motivum_b'], s['igehely_b']))
@@ -791,7 +807,8 @@ def export(kimenet):
                             'kozzeteteli_hely: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
-                    'sd_db': len(sd), 'strong_db': len(strongok)}
+                    'sd_db': len(sd), 'strong_db': len(strongok),
+                    'funkcio_kiesett': funkcio_kiesett}
 
 
 def tsv_szoveg(szoveg):
