@@ -4,6 +4,18 @@
 
 *Állapot: 2026. november 4. A nyilatkozat a munka mai, tényleges gyakorlatát írja le, nem tervet.*
 
+## Két réteg, két idézési egység
+
+A munka két rétegből áll, és a mesterséges intelligencia a kettőt másképp érinti.
+
+| Réteg | Mi tartozik bele | Az MI szerepe | Idézés és licenc |
+|---|---|---|---|
+| **Nyílt adatmag** | motívumazonosító, meghatározás, kizáró feltétel, előfordulások, kizárt helyek, döntések indoklással | a lekérdezések determinisztikus programok; a besorolási döntéseket MI-segített munkamenet hozza; minden sor megnevezi az eredetét: a lekérdezést, amelyből származik, vagy azt, hogy kézi döntés | önálló adatkészlet, CC BY 4.0 (a nyílt kiadással lép életbe), saját azonosítóval: `<KANONIKUS_FORRAS_URL>` |
+| **Termék** | értelmező próza, a szótárak magyar fordítása, a Károli-párosítás, kötet, eszközök | az értelmező prózát és a szótár-fordítást nyelvi modell írta, a Károli-párosítás nagyrészt gépi | a szócikkek mint mű, minden jog fenntartva |
+
+A modell által írt próza tehát a termékréteg része; az adatmag nem tartalmaz modell-prózát, csak döntéseket és rövid indoklásokat, eredetjelöléssel.
+<!-- proveniencia: a rétegek határa: #86 megvalósítási terv 1.5 („Nyílt tudományos mag vs. fizetős termék”), a felhasználó kiegészítése az orkesztrátoron át („az adatréteg és a termékréteg szétválik a kutatás szerint”, „nem a GitHub marad a forrás”, 2026-11-04); a mai LICENSE még minden jog fenntartva, a CC BY a nyílt export (#162) kiadásával lép életbe | ts=2026-11-04 -->
+
 ## Mit írt mesterséges intelligencia
 
 **Az értelmező szakaszok.** A motívumlapok értelmező szakaszait (Kivonat; Miért fontos ez a lelet; Értelmezés; Alkalmazás és tanítványság; Tanítói egyezés, ahol van; Módszertan és nyitott kérdések) nagy nyelvi modell írta az adatok alapján. A modell neve minden kiadott lap kolofonjában, kiadásonként szerepel (ma mindegyik kiadott lapon: `claude-opus-5-5`, Anthropic). Egy lap értelmező prózáját egy modell írja, és aki módosítja, az egészet újraolvassa.
