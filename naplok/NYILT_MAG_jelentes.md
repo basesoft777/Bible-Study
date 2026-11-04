@@ -23,7 +23,7 @@ Nem exportált: a **129 `nyitva` jelölt** (döntetlen). A csomag SHA-256 össze
 
 - **Kizárva (25 dataset):** a nem kereskedelmi / feltételes: `MCGED` (© Mounce 1993), `KJV_teljes_szoveg` (kereskedelmi: feltételesen), `tW_szocikkek` (feltételesen); **tisztázatlan:** `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `LXX_kivonat`, `LXX_lexicon`, `Cremer_nyers`, `Girdlestone`, `lexikonok_nyers`, `simplemma_nyelvi_adat`; **a projekt zárt származtatott rétege („minden jog fenntartva”):** `BDB_forditas`, `Karoli_Strong_kivonat`, `Karoli_Strong_parok`, `Karoli_Strong_szavak`, `Karoli_versmegfeleltetes`, `LXX_versszintu_parok`, `karoli_modern`, `karoli_variancia`, `szoto_tablak`; **CC BY-SA, de a csomag nem használja:** `LSJ`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`.
 - **Külön réteg (CC BY-SA 4.0, attribúcióval):** `SDBH`, `SDGNT` → `cc_by_sa_reteg/` (szó szerinti UBS-forrásmegjelölés, ShareAlike-jelölés).
-- **A csomag saját adata:** `projekt_adat` (CC BY 4.0 — DT-F162a, helyőrzős döntés).
+- **A csomag saját adata:** `projekt_adat` (CC BY 4.0 — DT610, helyőrzős döntés).
 - A forrásmegjelölésben szereplő, engedett adatkészletek: `TAHOT`, `TAGNT`, `TSK`, `Karoli_1908`; 22 engedett, de a csomag értéket nem tartalmaz belőlük.
 - **Mért:** az `elofordulasok.tsv` egyetlen sorának provenienciája sem nevezett kizárt forrást (0 sor); a jelöltek keresési módjában kizárt forrás nincs. A `kizarasok.tsv` 7 sora és a `dontesnaplo.tsv` 1 sora a „KJV” szót hordozza (versszámozási megjegyzés) (a TSK angol számozásáról; nem adat) — a kapu ezt FIGYELMEZTETÉSként jelzi.
 
@@ -42,8 +42,8 @@ Nem exportált: a **129 `nyitva` jelölt** (döntetlen). A csomag SHA-256 össze
 
 ## 5. Döntések (helyőrzős, `dontesek/uj/quirky-nobel-e12091.md`)
 
-- **DT-F162a** 🟡 — a nyílt mag tartalma és licence: a brief leképezése + elhagyva a magyar szótári fordítás (`jelentes_hu`), a belső útvonalú oszlopok (`forras_tanulmany`, `felmerult_tanulmany`), a `fo_elofordulas`, a `nyitva` jelöltek; a csomag saját adata CC BY 4.0, noha a leltárban a `projekt_adat` „minden jog fenntartva”.
-- **DT-F162b** 🟡 — a döntések feloldása `NYD-nnn` azonosítóval és egymondatos szöveggel.
+- **DT610** 🟡 — a nyílt mag tartalma és licence: a brief leképezése + elhagyva a magyar szótári fordítás (`jelentes_hu`), a belső útvonalú oszlopok (`forras_tanulmany`, `felmerult_tanulmany`), a `fo_elofordulas`, a `nyitva` jelöltek; a csomag saját adata CC BY 4.0, noha a leltárban a `projekt_adat` „minden jog fenntartva”.
+- **DT611** 🟡 — a döntések feloldása `NYD-nnn` azonosítóval és egymondatos szöveggel.
 
 ## 6. Ismert korlátok / teendők
 
@@ -52,7 +52,7 @@ Nem exportált: a **129 `nyitva` jelölt** (döntetlen). A csomag SHA-256 össze
 - A `DT-F123d` hivatkozás a `jeloltek.tsv`-ben van, de a `DONTESEK.md`-ben nincs sora (csak a briefben) — a csomagban nem szerepel (nincs feloldható nyilvános szöveg).
 - A CI-be kötés (a kapu mint E-szabály) nincs megtéve; a `Zenodo-feltöltés, DOI` a felhasználóé (nem része).
 
-## 7. Adat- és termékréteg (DT-F162c, 2026-11-04) és kanonikus forrás
+## 7. Adat- és termékréteg (DT612, 2026-11-04) és kanonikus forrás
 
 - **Ki:** `elofordulasok.tsv` `kapcsolodas`; a `funkcio` „ — ” utáni magyarázata; `kapcsolatok.tsv` és `motivum_kapcsolatok.tsv` `funkcio`/`indoklas`. **Bent:** a `funkcio` címke (emoji nélkül), a kizárások/beépítések indoklása, a `negativ_kriterium`, a típus/bizonyosság/PaRDeS-szint.
 - **Hosszú, „ — ” nélküli `funkcio`-próza (kiesett, 3 sor):** TEREMT-002 1Móz 1:2 (118 karakter), Jer 4:23 (88), Ézs 34:11 (65).
