@@ -202,6 +202,18 @@ def olvasoi_indok(szoveg):
     return t
 
 
+# A `dontes_ref` (SEMA 2.4) elemei ` · `-tal; a helyőrző alakú azonosító (pl. a számozás előtti N-F63a) az adatban a
+# pontos nyom, a lapon viszont nem állhat (ellenoriz.py 21. szabály (i)), ezért a lábjegyzetből kimarad.
+NYOM_SEP = ' · '
+HELYORZO = re.compile(r'(?<![\w-])(?:DT|N|D)-F\d+[a-z]*\b')
+
+
+def nyom_lapra(dontes_ref):
+    """A `dontes_ref` lapra kerülő alakja: az elemek a helyőrző alakúak nélkül; üres, ha nem marad semmi."""
+    elemek = [e.strip() for e in (dontes_ref or '').split(NYOM_SEP)]
+    return NYOM_SEP.join(e for e in elemek if e and not HELYORZO.search(e))
+
+
 def indok_cella(indoklas, ures='—'):
     """Az indoklás táblacellába szánt olvasói alakja: a nyers szöveg proveniencia-farka (` | scope=…`) változatlan;
     ha a főszöveg tisztítás után sem olvasói, a cella `ures` (a nyers szöveg az adattáblában van)."""
@@ -293,6 +305,8 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
             dontes = '**elutasítva** — %s' % ok
         olv = olvasoi_indok(fo_ind)
         lj = 'forrás: `%s`%s' % (r.get('forras_kereses') or '—', (' · ' + farok) if farok else '')
+        if nyom_lapra(r.get('dontes_ref')):   # F123.INDOKLAS: a döntés gépi nyoma
+            lj += ' · a döntés nyoma: `%s`' % nyom_lapra(r.get('dontes_ref'))
         if olv != fo_ind:
             lj += ' · indoklás (nyers): %s' % _cella(fo_ind)
         if olv is None:
