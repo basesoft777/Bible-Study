@@ -567,6 +567,8 @@ SENSE_MINTA = re.compile(r'\bsense\b', re.IGNORECASE)
 # ARCHÍV fejlecu, bajtra valtozatlan peldanya -- nem forras, nem
 # szerkesztendo, tehat a szovegere szolo E9 nem fut ra.
 ARCHIV_KONYVTAR = 'archivum/'
+# F169.1: a kozlemeny/en/ szandekosan angol nyelvu; az E9 a magyar szovegre szol, erre nem fut.
+ANGOL_KONYVTAR = 'kozlemeny/en/'
 
 
 def e9_angol_sense(fajlok):
@@ -578,7 +580,7 @@ def e9_angol_sense(fajlok):
     for relut in fajlok:
         if not relut.endswith('.md'):
             continue
-        if relut.replace('\\', '/').startswith(ARCHIV_KONYVTAR):
+        if relut.replace('\\', '/').startswith((ARCHIV_KONYVTAR, ANGOL_KONYVTAR)):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
