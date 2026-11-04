@@ -125,31 +125,31 @@ Forrásnyelv: angol (a derekprince.com saját átiratai). Egyik találat sem ded
 
 A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál nincs igazolt forrás.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
 
-| Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
+| Tanító | Legjobb erősség | ✅ | ⚠️ | hiány |
 |---|---|---|---|---|
 | Derek Prince | ⚠️ | 0 | 6 | 1 (1Móz 4:26, Zsolt 116, Kármel, ApCsel 22:16, 1Kor 1:2) |
-| Kenneth Hagin | gap | 0 | 0 | 1 |
-| Andrew Wommack | gap | 0 | 0 | 2 |
-| Smith Wigglesworth | gap | 0 | 0 | 1 |
-| F. F. Bosworth | gap | 0 | 0 | 1 |
-| John G. Lake | gap | 0 | 0 | 1 |
-| Kenneth Copeland | gap | 0 | 0 | 2 (önálló és csoportos) |
-| Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
-| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
+| Kenneth Hagin | nincs | 0 | 0 | 1 |
+| Andrew Wommack | nincs | 0 | 0 | 2 |
+| Smith Wigglesworth | nincs | 0 | 0 | 1 |
+| F. F. Bosworth | nincs | 0 | 0 | 1 |
+| John G. Lake | nincs | 0 | 0 | 1 |
+| Kenneth Copeland | nincs | 0 | 0 | 2 (önálló és csoportos) |
+| Charles Capps, Oral Roberts | nincs | 0 | 0 | csoportos keresésből |
+| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | nincs | 0 | 0 | csoportos keresésből |
 
 Összesen: 0 ✅, 6 ⚠️ (mind Derek Prince); a többi tanítónál nincs igazolt forrás.
 
 **Mi igazolt Prince-nél:**
-- **Jóel 2:32 (a kiinduló kivonat 1. csomópontja):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
-- **Róm 10:12–13 (a kiinduló kivonat 2. csomópontja):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
-- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a kiinduló kivonat többi igehelye): nincs igazolt anyag (gap).
+- **Jóel 2:32:** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13:** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a motívum többi igehelye): nincs igazolt anyag.
 
 **Forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ forrást és Wommack *Receive Jesus* oldalát egy második, gépi (modell) ellenőrzés újra megnyitotta; Wommack tanulmányi füzetét (PDF) nem. Az erősségek nem változtak; a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés.
 
 **Figyelmeztetések a felhasználónak:**
 - A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
-- A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
-- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
+- A Hagin- és Wommack-hiány forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (hiány) mérlegelhető.
+- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a hiány nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
 
 <!-- RÉS-VÉGE: tanitoi -->
 

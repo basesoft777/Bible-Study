@@ -100,8 +100,8 @@ kibontva, mert a motívum funkcionális kettéválasztásának (emberi
 invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
 alapja. A **Qal 2.c** idézett helyei (1Móz 4:26; 12:8; 2Kir 5:11; Jer
 10:25 = Zsolt 79:6; 1Kir 18:24; Baállal: 1Kir 18:24–26) **önállóan, a mi
-kutatásunktól függetlenül** csaknem pontosan egyeznek a tanulmány saját
-audit-eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
+kutatásunktól függetlenül** csaknem pontosan egyeznek a korábbi feldolgozás saját
+ellenőrzésének eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
 szó jelentése); a motívum határa a *besém* utáni JHVH szó, ezért a pár nem a
 motívum helye (a *besém* után ott névmási rag áll: *bismchá*, „nevedet”).
 
@@ -393,7 +393,7 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 <!-- RÉS-KEZDET: alkalmazas -->
 
-**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a nevesített tanítói egyezés-keresés forrásával: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás)*:
+**Alkalmazási kérdések** *(a 6. Értelmezés Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a nevesített tanítói egyezés-keresés forrásával: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás)*:
 
 1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem cselekvés: a hívó kimondja az Úr nevét, és hozzá fordul (Jóel 2:32; Róm 10:13)【NAPLO: F152.17 — a korábbi hivatkozás, a Róm 10:14, a DT476 K2 óta nem a motívum helye】; a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
@@ -464,11 +464,11 @@ tagja.
 
 **Amit ez a felismerés NEM állít:**
 
-- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a study
+- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a motívum
   fókusza jogosan marad az A mintán) — csak azt, hogy a **lexikai
   szerkezet szintjén** van egy magasabb rendű, közös minta.
 - Nem old meg semmit a KAPCSOLATOK-réteg funkció-készletében — a
-  "be nem sorolható" címke a study-ban marad, amíg nincs döntés arról,
+  "be nem sorolható" címke marad, amíg nincs döntés arról,
   hogy a lexikonban legyen-e egy negyedik, formális funkció-kategória
   (pl. "TIPOLÓGIAI VÁLTOZAT" vagy hasonló) erre a jelenségre.
 

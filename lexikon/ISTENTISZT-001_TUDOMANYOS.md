@@ -1090,8 +1090,8 @@ kibontva, mert a motívum funkcionális kettéválasztásának (emberi
 invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
 alapja. A **Qal 2.c** idézett helyei (1Móz 4:26; 12:8; 2Kir 5:11; Jer
 10:25 = Zsolt 79:6; 1Kir 18:24; Baállal: 1Kir 18:24–26) **önállóan, a mi
-kutatásunktól függetlenül** csaknem pontosan egyeznek a tanulmány saját
-audit-eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
+kutatásunktól függetlenül** csaknem pontosan egyeznek a korábbi feldolgozás saját
+ellenőrzésének eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
 szó jelentése); a motívum határa a *besém* utáni JHVH szó, ezért a pár nem a
 motívum helye (a *besém* után ott névmási rag áll: *bismchá*, „nevedet”).
 
@@ -1702,7 +1702,7 @@ szakasz a lexikon-oldalon marad.
 
 Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
 
-**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a nevesített tanítói egyezés-keresés forrásával: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás)*:
+**Alkalmazási kérdések** *(a 6. Értelmezés Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a nevesített tanítói egyezés-keresés forrásával: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás)*:
 
 1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem cselekvés: a hívó kimondja az Úr nevét, és hozzá fordul (Jóel 2:32; Róm 10:13); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes „saját Beérsebát” (állandó imádati pontot/szokást) kialakítani.
@@ -1714,31 +1714,31 @@ Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegj
 
 A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál nincs igazolt forrás.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
 
-| Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
+| Tanító | Legjobb erősség | ✅ | ⚠️ | hiány |
 |---|---|---|---|---|
 | Derek Prince | ⚠️ | 0 | 6 | 1 (1Móz 4:26, Zsolt 116, Kármel, ApCsel 22:16, 1Kor 1:2) |
-| Kenneth Hagin | gap | 0 | 0 | 1 |
-| Andrew Wommack | gap | 0 | 0 | 2 |
-| Smith Wigglesworth | gap | 0 | 0 | 1 |
-| F. F. Bosworth | gap | 0 | 0 | 1 |
-| John G. Lake | gap | 0 | 0 | 1 |
-| Kenneth Copeland | gap | 0 | 0 | 2 (önálló és csoportos) |
-| Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
-| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
+| Kenneth Hagin | nincs | 0 | 0 | 1 |
+| Andrew Wommack | nincs | 0 | 0 | 2 |
+| Smith Wigglesworth | nincs | 0 | 0 | 1 |
+| F. F. Bosworth | nincs | 0 | 0 | 1 |
+| John G. Lake | nincs | 0 | 0 | 1 |
+| Kenneth Copeland | nincs | 0 | 0 | 2 (önálló és csoportos) |
+| Charles Capps, Oral Roberts | nincs | 0 | 0 | csoportos keresésből |
+| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | nincs | 0 | 0 | csoportos keresésből |
 
 Összesen: 0 ✅, 6 ⚠️ (mind Derek Prince); a többi tanítónál nincs igazolt forrás.
 
 **Mi igazolt Prince-nél:**
-- **Jóel 2:32 (a kiinduló kivonat 1. csomópontja):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
-- **Róm 10:12–13 (a kiinduló kivonat 2. csomópontja):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
-- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a kiinduló kivonat többi igehelye): nincs igazolt anyag (gap).
+- **Jóel 2:32:** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13:** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a motívum többi igehelye): nincs igazolt anyag.
 
 **Forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ forrást és Wommack *Receive Jesus* oldalát egy második, gépi (modell) ellenőrzés újra megnyitotta; Wommack tanulmányi füzetét (PDF) nem. Az erősségek nem változtak; a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés.
 
 **Figyelmeztetések a felhasználónak:**
 - A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
-- A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
-- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
+- A Hagin- és Wommack-hiány forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (hiány) mérlegelhető.
+- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a hiány nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
@@ -1779,11 +1779,11 @@ tagja.
 
 **Amit ez a felismerés NEM állít:**
 
-- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a study
+- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a motívum
   fókusza jogosan marad az A mintán) — csak azt, hogy a **lexikai
   szerkezet szintjén** van egy magasabb rendű, közös minta.
 - Nem old meg semmit a KAPCSOLATOK-réteg funkció-készletében — a
-  „be nem sorolható” címke a study-ban marad, amíg nincs döntés arról,
+  „be nem sorolható” címke marad, amíg nincs döntés arról,
   hogy a lexikonban legyen-e egy negyedik, formális funkció-kategória
   (pl. „TIPOLÓGIAI VÁLTOZAT” vagy hasonló) erre a jelenségre.
 
@@ -1905,7 +1905,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Sablon-megfelelőség | v12 |
 | Kiadás | 1 |
 | Próza modellje | `manual` |
-| Emberi lektorálás | 24 hely (2026.11.04); lektorálók: felhasználó |
+| Emberi lektorálás | 29 hely (2026.11.04); lektorálók: felhasználó |
 
 **Változásjegyzék**
 
