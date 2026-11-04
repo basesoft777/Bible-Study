@@ -1,0 +1,33 @@
+# GENERÁLT: naplok/F123_HAMART2_u1_nave_jeloltek.py | scope=HAMART-001 adat/elofordulasok.tsv (52 sor) × konkordancia/Nave_basokant.tsv, szabály: eszkozok/szerep_nave.py jeloltek() (min. 2 motívumvers, min. 1% arány, tiltott kizárva) | forras=split('	') | ts=2026-11-04 | döntés nincs: az U2-U4 dönti (kivalasztott / kizart / tiltott), adat/tematikus_temak.tsv
+tema_id	tema	motivumversek_szama	temavers_szama	arany	altetelek	motivumversek	meglevo_dontes
+NAVE-4587	SIN	12	851	0.014	FRUITS OF (10); NATIONAL, PUNISHMENT OF (2); PUNISHMENT OF (7); REPUGNANT TO GOD (1); UNCLASSIFIED SCRIPTURES RELATING TO, DEFINING AND ILLUSTRATING (1)	1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19, 1Móz 3:23, 1Móz 4:7, 1Móz 4:12, 1Móz 4:14, 1Móz 6:5, 1Móz 6:7, Mt 15:19	
+NAVE-1386	DEPRAVITY OF MAN	11	170	0.065	General scriptures concerning (11)	1Móz 6:5, 1Móz 6:7, 1Móz 6:11, 1Móz 6:12, 1Móz 6:13, 1Móz 8:21, Zsolt 14:1, Zsolt 53:2, Jer 6:7, Mt 15:19, Gal 3:10	
+NAVE-1298	CURSE	8	51	0.157	Against Adam and Eve (4); Against Cain (2); Against Canaan, Noah's son (1); Against the ground (2); Against the serpent (1)	1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19, 1Móz 4:12, 1Móz 4:14, 1Móz 9:25	
+NAVE-2879	JUDGMENTS	8	396	0.020	Adam (3); Cain (2); Eve (1); On the serpent (1); The Antediluvians (1)	1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19, 1Móz 4:12, 1Móz 4:14, 1Móz 6:7	
+NAVE-3594	NOAH	6	50	0.120	Builds an altar and offers sacrifices (1); Builds an ark (ship) and saves his family from the great flood (1); Intoxication of, and his curse upon Canaan (1); Receives the covenant from God that no flood would ever again visit the earth; the rainbow instituted as a token of the covenant (2); Son of Lamech (1)	1Móz 5:29, 1Móz 6:17, 1Móz 8:21, 1Móz 9:11, 1Móz 9:15, 1Móz 9:25	
+NAVE-1786	FALL OF MAN	5	34	0.147	General scriptures concerning (5)	1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19	
+NAVE-4863	TEMPTATION	5	447	0.011	Adam and Eve (5)	1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19	
+NAVE-2090	GROUND	4	9	0.444	Cursed (2); Man made from (2)	1Móz 3:17, 1Móz 3:19, 1Móz 3:23, 1Móz 5:29	
+NAVE-2255	HEART	4	266	0.015	Is full of iniquity (2); Loves evil (1); UNCLASSIFIED SCRIPTURES DESCRIPTIVE OF THE SEAT OF THE AFFECTIONS (1)	1Móz 6:5, 1Móz 8:21, Jer 17:5, Mt 15:19	
+NAVE-1254	COVENANT	4	316	0.013	Abraham (1); Everlasting (3); Noah (2)	1Móz 8:21, 1Móz 9:11, 1Móz 9:15, 1Móz 12:3	
+NAVE-1855	FLOOD	3	13	0.231	Foretold (2); The promise that it should not recur (1)	1Móz 6:13, 1Móz 6:17, 1Móz 8:21	
+NAVE-0937	CAIN	3	21	0.143	Jealousy and crime of (3)	1Móz 4:7, 1Móz 4:12, 1Móz 4:14	
+NAVE-0013	ABEL	3	22	0.136	Son of Adam. History of (3)	1Móz 4:7, 1Móz 4:12, 1Móz 4:14	
+NAVE-0312	ANTEDILUVIANS	3	38	0.079	Arts of (1); Wickedness of (2)	1Móz 6:5, 1Móz 6:7, 1Móz 6:17	
+NAVE-1861	FOOL	3	83	0.036	General scriptures concerning (3)	Zsolt 14:1, Zsolt 53:2, Zsolt 74:20	
+NAVE-1168	COMMUNION	3	202	0.015	Abraham (1); Noah (2)	1Móz 6:13, 1Móz 6:17, 1Móz 12:3	
+NAVE-0305	ANIMALS	3	260	0.012	Under the curse (3)	1Móz 3:14, 1Móz 6:7, 1Móz 6:17	
+NAVE-1182	CONDESCENSION OF GOD	3	263	0.011	Sets forth his reasons for sending the flood (3)	1Móz 6:11, 1Móz 6:12, 1Móz 6:13	
+NAVE-0586	BANISHMENT	2	7	0.286	Of Adam and Eve, from Eden (1); Of Cain, to be &#8220;a fugitive and vagabond,&#8221 (1)	1Móz 3:23, 1Móz 4:14	
+NAVE-2473	IMAGINATION	2	11	0.182	General scriptures concerning (2)	1Móz 6:5, 1Móz 8:21	
+NAVE-4608	SKEPTICISM	2	11	0.182	General scriptures concerning (2)	Zsolt 14:1, Zsolt 53:2	
+NAVE-4041	RAINBOW	2	12	0.167	A sign that the earth will no longer be destroyed by flood (2)	1Móz 9:11, 1Móz 9:15	
+NAVE-0481	ATHEISM	2	23	0.087	General scriptures concerning (2)	Zsolt 14:1, Zsolt 53:2	
+NAVE-3614	OBDURACY (HARDNESS)	2	30	0.067	The antediluvians (2)	1Móz 6:5, 1Móz 6:7	
+NAVE-0865	BOW	2	32	0.062	A TOKEN IN THE CLOUDS (2)	1Móz 9:11, 1Móz 9:15	
+NAVE-4512	SHIP	2	50	0.040	By Noah (2)	1Móz 6:13, 1Móz 6:17	
+NAVE-4040	RAIN	2	70	0.029	The earth will never again be destroyed by (2)	1Móz 9:11, 1Móz 9:15	
+NAVE-1502	EARTH	2	104	0.019	Cursed of God (2)	1Móz 3:17, 1Móz 3:18	
+NAVE-0140	AGRICULTURE	2	132	0.015	Divine institution of (2)	1Móz 3:19, 1Móz 3:23	
+NAVE-4123	REPROBACY	2	177	0.011	General scriptures concerning (2)	1Móz 6:5, 1Móz 6:7	
+NAVE-2500	INFIDELITY	2	188	0.011	General scriptures concerning (2)	Zsolt 14:1, Zsolt 53:2	
