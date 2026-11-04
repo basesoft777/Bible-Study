@@ -4614,7 +4614,7 @@ KOZEL_KELETI_TSV = os.path.join(ADAT, 'kozel_keleti_hatar.tsv')
 
 
 def kozel_keleti_sor(motivum_id, ut=None):
-    """A motívum sora az `adat/kozel_keleti_hatar.tsv`-ből (SEMA 2.50), vagy None (a motívum nem érintett, vagy a
+    """A motívum sora az `adat/kozel_keleti_hatar.tsv`-ből (SEMA 2.51), vagy None (a motívum nem érintett, vagy a
     tábla hiányzik)."""
     ut = ut or KOZEL_KELETI_TSV
     if not os.path.isfile(ut):

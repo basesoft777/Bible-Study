@@ -1937,7 +1937,54 @@ Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` 
 
 ---
 
-### 2.50 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT-F168a, 2026-11-04)
+### 2.50 `nyilt_kodkonyv.tsv` és a `nyilt_mag/` csomag — a nyílt mag kódkönyve és generált exportja (F162, FELADATOK #162, DT610, DT611, 2026-11-04)
+
+A **nyílt mag** (CC BY 4.0) nem a belső táblák másolata, hanem **generált nézet** (`eszkozok/nyilt_mag_export.py` →
+`nyilt_mag/`; kimenet-réteg, kézzel szerkeszteni tilos; fejléc: `# GENERÁLT: …`). A belső jelek (`gerinc_elem`,
+`scope=… | forras=… | ts=…`, DT/N/F-hivatkozás, `manual`, belső fájlnév) érthető oszlopokra képződnek le, a kutató
+a döntést a nyilvános döntésnaplóban, a kódokat a kódkönyvben oldja fel. A kapu: `eszkozok/nyilt_mag_kapu.py`
+(BELSO, ANGOL, KODKONYV, LICENC, RETEG, HIBAK, HIVATKOZAS, BAJTAZONOS; a BELSO/ANGOL mintákat az
+`olvasoi_kapu.py`-ból veszi át); tesztek: `eszkozok/teszt_nyilt_mag.py`. Az export determinisztikus (rendezett
+kimenet, `ELLENORZO_OSSZEG.sha256`); újrafuttatva bájtazonos.
+
+**`adat/nyilt_kodkonyv.tsv`** — **kézi** (`manual` proveniencia). Kulcs: `tabla` + `oszlop` + `ertek`. Olvasás `split('\t')`;
+a `#` kezdetű sorok megjegyzés.
+
+| Oszlop | Jelentés |
+|---|---|
+| `tabla` | a `nyilt_mag/` fájlja (pl. `elofordulasok.tsv`, `cc_by_sa_reteg/szemantikai_domenek.tsv`) |
+| `oszlop` | az oszlop neve a fájlban |
+| `ertek` | zárt értékkészletű oszlopnál az érték; üres, ha a sor az oszlopot magát írja le |
+| `leiras_hu` | a leírás magyarul |
+| `leiras_en` | a leírás angolul (nem lehet azonos a magyarral) |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` (a `nyilt_mag/kodkonyv.tsv` nem viszi tovább) |
+
+A kapu méri: minden exportált oszlopnak van `ertek`-nélküli sora, minden zárt oszlop (`ZART` a `nyilt_mag_kapu.py`-ban)
+minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vagy érték a kódkönyv sora nélkül nem exportálható
+(a kapu BUKÁS). A kódkönyv olvasható változata: `nyilt_mag/KODKONYV.md` (generált).
+
+**A `nyilt_mag/` fájljai és leképezésük.**
+
+| Fájl | Forrástábla | Megjegyzés |
+|---|---|---|
+| `motivumok.tsv` | `motivumok.tsv` | `ui_cimke` → `rovid_cimke`; elhagyva: `statusz_verzio`, `sablon_verzio`, `forras_study` |
+| `elofordulasok.tsv` | `elofordulasok.tsv` | `gerinc_elem` → `horgony_tipus` + `horgony`; `proveniencia` → `lekerdezes_tipusa`, `forras_megnevezes`, `forras_dataset`, `forras_licenc`, `datum`; `lexikon_szotar`/`lexikon_entry_id` → `szotar`/`szotari_szocikk`; elhagyva (termékréteg, DT612): `kapcsolodas` (az 1/a értelmező prózája), a `funkcio` „ — ” utáni magyarázata (a címke, emoji nélkül, bent marad); `jelentes_hu` (fizetős réteg), `fo_elofordulas`, `felmerult_tanulmany`, `forras_tanulmany` (belső fájlút) |
+| `kizarasok.tsv` | `jeloltek.tsv` (`dontes=elutasítva`) | az elutasítási ok szövege az `elutasitasi_okok.tsv` mintáiból; ` \| ` utáni rész → `korabbi_minosites`; `dontes_ref` → `dontesek` (NYD-azonosítók) |
+| `kizaras_csoportok.tsv` | `jeloltek.tsv` összesítő sorai + a sor `forras_kereses`-e által megnevezett gépi osztályozás (`naplok/F123_teljesseg_<ID>_blokkok.tsv`) | a `kizarasok.tsv` `csoport_versszam` (az „Összesítő sor N versre” szám) és a csoport tagjai; ha a lista darabszáma nem igazolja a számot vagy nincs lista, a tagok nem töltődnek ki (az eltérés az export kimenetén FIGYELEM), a versszám marad |
+| `beepitesi_dontesek.tsv` | `jeloltek.tsv` (`dontes=beépítve`) | a beépítés indoklása az előfordulásokhoz kulcsolva |
+| `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | `kapcsolatok.tsv`, `motivum_kapcsolatok.tsv` | `funkcio` és `indoklas` elhagyva (termékréteg, DT612); az indoklás utáni proveniencia külön oszlopokba; bent: típus, bizonyosság, PaRDeS-szint, igehelyek/motívum-azonosítók. A kapu (TERMEKRETEG) ellenőrzi, hogy a KI-mezők nincsenek a csomagban, és a kódkönyv `(nem exportált mezők)` sorai mezőnként kimondják a réteget és az okot |
+| `dontesnaplo.tsv` | `DONTESEK.md` | a hivatkozott döntések `NYD-nnn` azonosítóval (DT-szám szerint rendezve), a kérdés és a döntés egymondatos szövege, belső jelek nélkül |
+| `forrasok_es_licencek.tsv` | `licencek.tsv` | minden dataset szerepe (forrás / külön réteg / kizárva + ok) |
+| `cc_by_sa_reteg/` | `SDBH_domenek.tsv`, `SDGNT_domenek.tsv` | a csomag Strong-számaira; CC BY-SA 4.0, szó szerinti attribúció |
+| `ISMERT_HIBAK.md` | `NYITOTT_FELADATOK.md` (N-F156a), `naplok/KAROLI_KH_EPSEG_jelentes.md` | a mért számok a generált jelentésből, nem kézzel beírva |
+| `kodkonyv.tsv`, `KODKONYV.md`, `OLVASSEL.md`, `ELLENORZO_OSSZEG.sha256` | | |
+
+**Licencszűrés** (`licencek.tsv` alapján, `Licenc.allapot`): kizárva a `kereskedelmi ≠ igen`, a GPL-es, a `tisztazatlan`, a
+`minden jog fenntartva` (a projekt zárt származtatott rétege) és az olyan CC BY-SA forrás, amelyet a csomag nem használ;
+az SDBH/SDGNT külön réteg; a `projekt_adat` a csomag saját adata (DT610). A nem exportált: a `nyitva` jelöltek
+(döntetlen), az értelmező próza, a lexikonlapok. A kapu BUKÁS, ha kizárt dataset neve vagy értéke a csomagban marad.
+
+### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT-F168a, 2026-11-04)
 
 **Kézi** (a `kozlemeny/KOZEL_KELETI_HATAR.md` „Leginkább érintett motívumok” listájából; a próza-említés a lapok
 `grep`-keresésével igazolva). Egy sor egy motívum, amelynél a nemzetközi szakirodalom az ókori közel-keleti (főként
