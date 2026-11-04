@@ -37,10 +37,10 @@ A main behozása (#609, HAMART-001 U1: 77 új jelölt-sor, ebből 66 belső jel�
 ## A kiadott lapok (DT569)
 
 `python naplok/INDOKLAS_dt569_igazolas.py`: minden megváltozott sor a régi és az új oldalon is generált részben áll
-(a ts-sorokkal együtt).
+(a #617 merge-e utáni main-hez képest).
 
 | Lap | Megváltozott sor | Ebből kézi részben |
 |---|---|---|
-| ISTENTISZT-001 | 257 | 0 |
-| ALVIL-001 | 101 | 0 |
-| ANTROP-001 | 64 | 0 |
+| ISTENTISZT-001 | 239 | 0 |
+| ALVIL-001 | 60 | 0 |
+| ANTROP-001 | 4 | 0 |

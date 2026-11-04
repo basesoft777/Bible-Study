@@ -983,7 +983,7 @@ def blokk_kizart(m, n_motivum=0):
         # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
         # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
         tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
-        okok = sorted(((k, v) for k, v in ossz['ok'].items() if k not in (SZKZ.EGYEB_OK, 'nyitott döntés')),
+        okok = sorted(((k, v) for k, v in ossz['ok'].items() if k != 'nyitott döntés'),
                       key=lambda x: (-x[1], x[0]))
         kizart_olv = OK.kizart(len(sorok_ehhez), sum(1 for r in sorok_ehhez if r.get('dontes') == 'elutasítva'),
                                sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva'), okok,

@@ -96,7 +96,8 @@ class Minosites(unittest.TestCase):
 
     def test_megerosites_es_jeloltek(self):
         kh = {LG.L.to_step('ApCsel 2:21'): [{'Kapcsolódó igehely magyar megjelenítése': 'Jóel 2,32'}]}
-        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'nincs | ige'),
+        # F123.EGYEB óta a be nem sorolható elutasítási ok megállítja a generálást: a próba indoka besorolható
+        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'tartalmilag NEM releváns | ige'),
                jelolt('Zsolt 9:9', 'scan G1941', 'nyitva'),
                jelolt('Róm 10:12', 'Károli-KH ApCsel 2:21', 'beépítve'),
                jelolt('Mt 1:1', 'TSK x', 'elutasítva', mid='MAS-001')]
