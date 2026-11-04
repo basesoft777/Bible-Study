@@ -1829,6 +1829,8 @@ Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs
 (`eszkozok/lexikon_general.py` `blokk_kolofon`; a kolofont kézzel szerkeszteni tilos). Motívum sora nélkül a kolofon nem ír
 kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('	')`; a `#`-sor megjegyzés.
 
+**Olvasói kapu (DT-F123kvb).** A kiadott lap — amelynek motívumához itt sor áll — az `eszkozok/olvasoi_kapu.py` mérésén 0 BUKÁS-t ad: az `ellenoriz.py` 32. szabálya ezt gátlóan ellenőrzi (SÉRTÉS, ha a kiadott lapon BUKÁS van, vagy a kiadott motívumnak nincs lapja). A ki nem adott lapok BUKÁS-a csak JELENTÉS; a FIGYELMEZTETÉS nem számít. Teszt: `eszkozok/teszt_ellenoriz_32.py`.
+
 | Oszlop | Jelentés |
 |---|---|
 | `id` | motívum-id (2.1) |
@@ -1838,7 +1840,7 @@ kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('
 | `proza_modell` | a lap prózáját író tényleges modellnév a futó környezetből (CLAUDE.md modell-szabálya, DT473), vagy `manual`, ha nem megállapítható (DT443); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (`proza_modell=manual`); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT-F123nva).
+Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (2026.11.04: a 11-02-i első kiadás a 11-04-i lektori javítással véglegesítve, nem külön kiadás; DT-F123kva); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT-F123nva).
 
 ---
 
@@ -1896,7 +1898,7 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
-Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 7 sor — ALVIL-001 4, ANTROP-001 3.
+Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 8 sor — ALVIL-001 4, ANTROP-001 3, ISTENTISZT-001 1.
 
 ---
 

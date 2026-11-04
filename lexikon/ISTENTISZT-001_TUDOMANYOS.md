@@ -1889,7 +1889,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
-**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Tanítói egyezés, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált.
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Tanítói egyezés, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált.
 
 | Mező | Érték |
 |---|---|
@@ -1905,7 +1905,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |
-| Kiadás | 2 |
+| Kiadás | 1 |
 | Próza modellje | `claude-opus-5-5` |
 | Emberi lektorálás | 29 hely (2026.11.04); lektorálók: felhasználó |
 
@@ -1913,8 +1913,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
-| 1 | 2026.11.02 | Az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése. |
-| 2 | 2026.11.04 | Lektori javítás: az 1/a öt idézete a Károli-szövegre, a kézi próza belső és angol szavai olvasói szövegre (29 hely); a szótári rész három jelhibája javítva, és a Strong-szám a szó mellett hivatkozásként, felső indexben áll. |
+| 1 | 2026.11.04 | Az arany lap első kiadása, amely a 2026.11.04-i lektori javítással vált véglegessé: a K1–K5 átvezetve, az 1/a idézetei a Károli-szövegre igazítva, a kézi próza belső és angol szavai olvasói szövegre cserélve, a szótári rész jelhibái javítva, és az olvasói kapu 0 BUKÁS-sal zárult. |
 
 ---
 
