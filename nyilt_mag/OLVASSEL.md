@@ -18,7 +18,7 @@
 | `elofordulasok.tsv` | 255 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizaras_csoportok.tsv` | 1402 |
+| `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |
 | `kodkonyv.tsv` | 210 |
 | `motivum_kapcsolatok.tsv` | 3 |
