@@ -1,6 +1,6 @@
 # F123.GENKOR — az olvasói kapu mérése előtte és utána (2026-11-04)
 
-Mérő: `python eszkozok/olvasoi_kapu.py --osszes` (BUKÁS-szám laponként). „Előtte”: a main lapjai (`845b987b`), a régi
+Mérő: `python eszkozok/olvasoi_kapu.py --osszes` (BUKÁS-szám laponként). „Előtte”: a main lapjai (`845b987b`; az ALVIL-001 és az ANTROP-001 a #616 után is ugyanígy, `d88e6155`), a régi
 és az új kapuval; „utána”: az ág lapjai az új kapuval. Az új kapu két szabálya szigorúbb: a BDB_JEL a betűkészlet többi
 torz jelét (¹ µ £ ¥ ‰ ƒ ‡ ¢) is BUKÁS-nak veszi (DT-F181a), a BELSO a „(kézi)” / „(generált)” szerzőségi jelölést
 (DT-F181c); a csupasz Strong-szám továbbra is BUKÁS, a jelölt alak nem (DT-F181b).

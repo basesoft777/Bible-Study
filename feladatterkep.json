@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "f5be627f"
+   "commit": "e85c854e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5124,8 +5124,20 @@
     "sor": 627,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F123ia",
+    "feladat": "F123.INDOKLAS (a `jeloltek.tsv` `indoklas` mezőjének belső jelei; 2026-11-04)",
+    "kerdes": "Mért (2026-11-04): a 722 sorból 118 `indoklas`-a belső jelet hordoz az `olvasoi_kapu.BELSO` mintái szerint (döntés-azonosító, F-/N-tétel, fájlnév, `manual`, „gerinc”); motívumonként ISTENTISZT-001 55, HAMART-001 41, ANTROP-001 9, HODIT-001 5, ALVIL-001 3, a többi 1–2. A lap Minősítés-blokkja a `",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 634,
+    "oszlopszam": 9,
+    "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 227
+  "kesz_db": 229
  }
 }
