@@ -2917,3 +2917,63 @@ SZINT['E34'] = 'FIGYELMEZTETES'
 FAJLSZINTU_SZABALYOK.add('E34')
 HATOKOR_SZABALYOK.add('E34')
 SZABALYOK_FUGGVENYEI['E34'] = e34_karoli_idezet
+
+
+# ---------------------------------------------------------------------------
+# E35 -- a commitolt `nyilt_mag/` naprakesz (F169.3)
+# ---------------------------------------------------------------------------
+# Uj motivum, kiadas vagy adatvaltozas utan a nyilt mag exportja ujra kell generalodjon, es az ujragenerald
+# export a PR resze. Ha a PR modositja az `adat/*.tsv` tablait (koztuk a `kiadasok.tsv`-t) vagy az exportgeneratort,
+# a commitolt `nyilt_mag/` bajtazonos kell legyen azzal, amit a generator most eloallitana. HIBA, fajlszintu.
+# Ha a PR ezeket nem erinti, nem fut (egy mar elavult main nem a PR hibaja). A Zenodo uj valtozata nem a PR resze:
+# az a felhasznalo lepese.
+E35_KIVALTO = re.compile(r'^(?:adat/[^/]+\.tsv|eszkozok/nyilt_mag_export\.py)$')
+E35_CSOMAG = 'nyilt_mag'
+
+
+def e35_kivalto_fajlok(valtozott):
+    return [f.replace('\\', '/') for f in valtozott if E35_KIVALTO.match(f.replace('\\', '/'))]
+
+
+def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None):
+    """E35: ha a PR adat-tablat vagy az exportgeneratort modositja, a commitolt `nyilt_mag/` egyezik az
+    ujragenerált exporttal (a lemezen levo fajlok halmaza es tartalma). `export_fn(kimenet) -> {rel: szoveg}`
+    csak a tesztben cserelheto."""
+    if teljes:
+        return []
+    kivalto = e35_kivalto_fajlok(valtozott)
+    if not kivalto:
+        return []
+    root = root or ROOT
+    ut = os.path.join(root, E35_CSOMAG)
+    if not os.path.isdir(ut):
+        return []
+    if export_fn is None:
+        sys.path.insert(0, os.path.join(root, 'eszkozok'))
+        import nyilt_mag_export as _E
+        export_fn = lambda k: _E.export(k)[0]
+    uj = export_fn(E35_CSOMAG)
+    lemez = {}
+    for gyoker, _, nevek in os.walk(ut):
+        for n in nevek:
+            rel = os.path.relpath(os.path.join(gyoker, n), ut).replace('\\', '/')
+            with open(os.path.join(gyoker, n), encoding='utf-8', newline='') as f:
+                lemez[rel] = f.read()
+    ok = 'a PR modositja: %s' % ', '.join(sorted(kivalto)[:3])
+    talalatok = []
+    for rel in sorted(set(uj) | set(lemez)):
+        if rel not in lemez:
+            leir = 'az ujragenerált exportban van, a commitolt nyilt_mag/-ban nincs'
+        elif rel not in uj:
+            leir = 'a commitolt nyilt_mag/-ban van, az ujragenerált exportban nincs'
+        elif uj[rel] != lemez[rel]:
+            leir = 'a commitolt fajl nem egyezik az ujragenerálttal'
+        else:
+            continue
+        talalatok.append(Talalat('E35', SZINT['E35'], E35_CSOMAG + '/' + rel, 0,
+                                 '%s (%s); futtasd: python eszkozok/nyilt_mag_export.py, es commitold' % (leir, ok)))
+    return talalatok
+
+
+SZINT['E35'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E35')
