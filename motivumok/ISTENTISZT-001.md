@@ -334,7 +334,7 @@ a vitát nem hallgatja el)*
 
 ### Új felismerés — a D-minta görög folytatása *(kézi)*【NAPLO: 2026.09.22】
 
-A tematikus tanulmány a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
+A motívum korábbi feldolgozása a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
 a nevét hívják valakire", a birtoklás és a hovatartozás kifejezése)
 héber oldalon azonosította. A lexikon-oldal két, egymástól független
 görög szótára ennek a szerkezetnek **önálló újszövetségi folytatását**
@@ -373,8 +373,8 @@ nem állít semmit a Sod-szintről: a megfigyelés lexikai és Remez-szintű.
 
 **Nyitott kérdés a folytatáshoz.** Fel kell-e venni a D-minta görög
 folytatását külön vizsgált (nem beépített) jelölt-körként a
-jeloltek.tsv-be, negatív kritériummal együtt — és át kell-e vezetni a
-felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a
+vizsgált jelöltek közé, negatív kritériummal együtt — és át kell-e vezetni a
+felismerést a lap 1. és 1/b. szakaszába? A döntésig ez a
 szakasz a lexikon-oldalon marad.
 
 <!-- RÉS-VÉGE: ertelmezes -->
@@ -445,7 +445,7 @@ elkülönülő teológiai aktust fejez ki:
 
 | Minta | Alany | Tárgy | Igehelyek | Eddigi kezelés |
 |---|---|---|---|---|
-| **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a tematikus tanulmány fő tárgya |
+| **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a motívum fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
 | **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív"; a *besém* után nem JHVH áll |
 
@@ -454,7 +454,7 @@ elkülönülő teológiai aktust fejez ki:
 【NAPLO: F152.17, 2026-11-01 — az A-sor 31 → 20: a 22 ISTENTISZT-001 sorból 2 B-eset (2Móz 33:19, 34:5), a többi 20 emberi alany; a két Kármel-vers kontrasztként marad (DT476 K5). Kikerült: 1Pét 1:17, 2Tim 2:22, Róm 10:12, 14 (K1/K2) és a hét névmási ragos hely (DT478). Mérés: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=22) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (naplok/F152_proza_meres.py, split('\t')) | ts=2026-11-01T19:38Z】
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
-a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
+a korábbi feldolgozásban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
 "C" jelöltek pedig egyszerűen ki lettek zárva, mint a motívumhoz nem
 tartozó zaj. Együtt nézve viszont kiderül: **mindhárom minta ugyanannak
 a nyelvi szerkezetnek a szisztematikus variánsa**, nem esetleges
@@ -514,7 +514,7 @@ tévesen ne sorolja be a motívumba.】
 
 【NAPLO: F11 M3, 2026-10-18 — séma-korlát (a régi 7. pont 2. tétele): a kétpontos KAPCSOLATOK-séma nem ábrázolja az egy versen belüli kontrasztot (1Kir 18:24); N-tétel: N-F11c (a `NYITOTT_FELADATOK.md`-be a `/befogad` útján); az eredeti szöveg: `archivum/ISTENTISZT-001/`.】
 
-5. **UBS-besorolás**【NAPLO: 2026.09.22】 — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers a DT476 K1 óta nem a motívum helye). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
+5. **UBS-besorolás**【NAPLO: 2026.09.22】 — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers nem a motívum helye, l. a 6. Értelmezésben)【NAPLO: lap-javit, 2026-11-04 — a döntés: DT476 K1】. Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 <!-- RÉS-VÉGE: modszertan -->
 

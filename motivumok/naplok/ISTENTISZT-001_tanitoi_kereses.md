@@ -123,7 +123,7 @@ Forrásnyelv: angol (a derekprince.com saját átiratai). Egyik találat sem ded
 
 <!-- RÉS-KEZDET: tanitoi -->
 
-A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál gap.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
+A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál nincs igazolt forrás.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
 
 | Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
 |---|---|---|---|---|
