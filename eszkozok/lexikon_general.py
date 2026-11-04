@@ -4763,7 +4763,7 @@ SECE_SZOTARAK = ('SECE_G', 'SECE_H')
 # eredmény (pl. „üres blokk: javaslat” a szerepmátrixban, a Minősítés „nincs” mondatai) nem ilyen, az a lapon marad.
 OPCIONALIS_RESEK = ('2b',)
 # a rés hiánymondatai: a RENDER G15 helyőrzője a tanulmányokban (nem kutatási lelet, hanem a jelölőpár kitöltése), és
-# a 2026-11-04 előtti generátor hiánymondata (az ellenoriz.py 28. szabálya a régi lapon is felismeri)
+# a 2026-11-04 előtti generátor hiánymondata (az ellenoriz.py 31. szabálya a régi lapon is felismeri)
 SZERKEZETI_HELYORZOK = {'2b': ('Nincs kiegészítő szótári adat.',
                                '*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
                                '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')}
@@ -4781,7 +4781,7 @@ def res_ures_e(res, torzs):
 
 
 def lap_ures_szerkezeti_resek(fajl_szoveg, m):
-    """A lapon álló, adat nélküli opcionális rések (ellenoriz.py 28. szabály)."""
+    """A lapon álló, adat nélküli opcionális rések (ellenoriz.py 31. szabály)."""
     talalt = []
     for res in OPCIONALIS_RESEK:
         if (m['id'], res) not in res_forras_sorok():

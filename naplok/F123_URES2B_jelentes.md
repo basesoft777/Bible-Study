@@ -36,10 +36,10 @@ Dokumentáció: `adat/SEMA.md` 2.12 (`tanulmany` mező), `RENDER_BRIEF.md` G15, 
 
 ## 3. CI-szabály
 
-`eszkozok/ellenoriz.py` **28. szabály — „Adat nélküli szerkezeti blokk az olvasói lapon (DT-F174a)”**
-(`szabaly28_ures_szerkezeti_blokk`): SÉRTÉS, ha egy `lexikon/*_TUDOMANYOS.md` lapon opcionális rés adat nélkül áll.
+`eszkozok/ellenoriz.py` **31. szabály — „Adat nélküli szerkezeti blokk az olvasói lapon (DT-F174a)”**
+(`szabaly31_ures_szerkezeti_blokk`): SÉRTÉS, ha egy `lexikon/*_TUDOMANYOS.md` lapon opcionális rés adat nélkül áll.
 A szabály szövege kimondja: a kutatási üres eredmény (pl. „üres blokk: javaslat” a szerepmátrixban, a Minősítés
-„nincs” mondatai, az üres `domen`-eredmény) nem ilyen blokk, a lapon marad. Teszt: `eszkozok/teszt_ellenoriz_28.py`
+„nincs” mondatai, az üres `domen`-eredmény) nem ilyen blokk, a lapon marad. Teszt: `eszkozok/teszt_ellenoriz_31.py`
 (9 eset: a mai lap rendben; a repón a migrált lap gátol, a régi sablonú jelentés; a régi üres 2/b és a G15 helyőrző SÉRTÉS; adattal rendben; kutatási üres eredmény nem
 érintett; a generátor törlése, visszaállítása és fixpontja). A teszt a CI „Szabaly-tesztek” lépésében fut
 (`.github/workflows/ellenorzes.yml`).
@@ -62,7 +62,7 @@ kérdésként tartja. A mért különbség ezeken: a 2/b-n túl a teljes F78 sze
 MENNY-001 +1 608, HODIT-001 +775, TEREMT-001 +951, HAMART-001 +3 204 diff-sor; a törzscikkeken is 193–968). Ezért az 5
 régi sablonú lap (KIRALY-001, MENNY-001, HODIT-001, HAMART-001, TEREMT-001) és a törzscikkek nem változnak. Négyükön
 (a TEREMT-001 kivételével) a 2/b a G15 helyőrzőjét hordozza; a generátor ezt üresnek veszi, tehát a lap első
-újragenerálásakor (a #123 migrációja, a HAMART-001-nél a #609) magától lekerül. Addig a 28. szabály ott JELENTÉS.
+újragenerálásakor (a #123 migrációja, a HAMART-001-nél a #609) magától lekerül. Addig a 31. szabály ott JELENTÉS.
 
 Fixpont: `general.py --cel lexikon --id <ID> --ellenoriz` a 4 lapon „változatlan”.
 
@@ -82,14 +82,14 @@ ISTENTISZT-001 és az ALVIL-001 utolsó commitjára, `ef04ec94`, sem az ANTROP-0
 idézetével az orkesztrátor írja; ez az ág nem ír a táblába.
 
 A 11. szabály (rés-forrás egyezés) a régi sablonú lapon álló G15 helyőrzőt — ahol az elvárt rés már üres — nem
-jelzi kétszer: az a 28. szabály esete.
+jelzi kétszer: az a 31. szabály esete.
 
 ## 6. Kapuk
 
 | Kapu | Eredmény |
 |---|---|
-| `python eszkozok/ellenoriz.py` | kilépés 0 — RENDBEN 20, SÉRTÉS 0, KÉZI 2, JELENTÉS 9; a 11. (rés-forrás egyezés) RENDBEN; a 28. JELENTÉS (4: HAMART-001, HODIT-001, KIRALY-001, MENNY-001 — régi sablonú lapok, l. 4.) |
+| `python eszkozok/ellenoriz.py` | kilépés 0 — RENDBEN 20, SÉRTÉS 0, KÉZI 2, JELENTÉS 9; a 11. (rés-forrás egyezés) RENDBEN; a 31. JELENTÉS (4: HAMART-001, HODIT-001, KIRALY-001, MENNY-001 — régi sablonú lapok, l. 4.) |
 | `python eszkozok/olvasoi_kapu.py --osszes` | a 4 újragenerált lapon a main-nel azonos (a végleges lapokon újramérve) (ALVIL 0/13, ANTROP 0/15, ISTENTISZT 24/7, TEREMT-002 17/28); nincs új BUKÁS |
 | `python eszkozok/ellenorzes/futtat.py` (E2–E30) | kilépés 0 — E2–E33: 0 HIBA (JELENTÉS: E12 916, E13 205, E25 3, E27 42, mind a változástól független); PR-cím `[ELLENŐRZŐ]` előtaggal (E16), a törölt fejléc `TÖRLÉS-SZÁNDÉKOS:` jelöléssel (E5), az E28 a lapok saját dátumával egyezik |
-| `teszt_ellenoriz_28.py`, `teszt_ellenoriz_11.py`, `teszt_lexikon_adatres.py` | OK (9, 6, 27 teszt) |
+| `teszt_ellenoriz_31.py`, `teszt_ellenoriz_11.py`, `teszt_lexikon_adatres.py` | OK (9, 6, 27 teszt) |
 | `teszt_ellenoriz_vedokorlat`, `teszt_szerepmatrix`, `teszt_szotari_gerinc` | 1 + 3 + 5 bukás — **a main-en is megvan** (az eredeti generátorral ugyanez a 9 bukás; adatszám-eltérések, pl. 22 ≠ 33 igehely), nem e változás okozza |

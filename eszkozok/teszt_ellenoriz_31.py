@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/teszt_ellenoriz_28.py -- DT-F174a: az eszkozok/ellenoriz.py 28.
+eszkozok/teszt_ellenoriz_31.py -- DT-F174a: az eszkozok/ellenoriz.py 31.
 szabalya (adat nelkuli szerkezeti blokk nem allhat olvasoi lapon) es a
 generator opcionalis-res kezelese (lexikon_general.OPCIONALIS_RESEK).
 
 A repo elo adataval fut (lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/), a
 lapot csak memoriaban modositja.
 
-    python eszkozok/teszt_ellenoriz_28.py
+    python eszkozok/teszt_ellenoriz_31.py
 """
 
 import os
@@ -53,7 +53,7 @@ REGI_URES = ('A fenti szótári anyagon túli, kiegészítő szótári adatok. H
              '*Proveniencia: `scope=id:%s | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*' % MOTIVUM)
 
 
-class Szabaly28(unittest.TestCase):
+class Szabaly31(unittest.TestCase):
     def setUp(self):
         self.lap = _lap()
 
@@ -88,7 +88,7 @@ class Szabaly28(unittest.TestCase):
 class SzabalyARepon(unittest.TestCase):
     def test_migralt_lap_gatol_regi_lap_jelentes(self):
         # migrált lapon (E28-lista) adat nélküli 2/b nincs; a régi sablonú lap találata JELENTÉS (DT507 (a))
-        sor = E.szabaly28_ures_szerkezeti_blokk(E.ALAPERTELMEZETT_ADAT)
+        sor = E.szabaly31_ures_szerkezeti_blokk(E.ALAPERTELMEZETT_ADAT)
         self.assertIn(sor.verdict, ('RENDBEN', 'JELENTÉS'))
         self.assertTrue(all('nem migrált lap' in p for p in sor.peldak), sor.peldak)
         self.assertFalse(any(p.startswith(MOTIVUM) for p in sor.peldak))
