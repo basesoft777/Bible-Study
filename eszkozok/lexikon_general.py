@@ -4654,7 +4654,7 @@ def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
                '([Az ókori közel-keleti háttér határa](%s)).' % KOZLEMENY['kozel_keleti'])
     if kk_sor is not None:
         hatokor += (' Ennél a motívumnál a nemzetközi szakirodalom a közel-keleti, főként ugariti anyag bevonását is '
-                    'várja; ezt a lap nem végzi el, ezért az ilyen olvasó a fenti határral olvassa.')
+                    'várja; ez a lap ilyen összevetést nem végez.')
         emlites = (kk_sor.get('proza_emlites') or '').strip()
         if emlites:
             hatokor += (' Ahol az értelmező szöveg közel-keleti hátteret említ (%s), az értelmezés, másodlagos '

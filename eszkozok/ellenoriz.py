@@ -1964,7 +1964,7 @@ PROJEKT_GITHUB_RX = re.compile(r'github\.com/basesoft777/', re.I)
 KOZLEMENY_LINK_RX = re.compile(r'\]\((\.\./(?:kozlemeny/[^)\s]+|CITATION\.cff))\)')
 
 
-def _szakasz_szoveg(lap, cim):
+def _lap_szakasz(lap, cim):
     """A `## <cim>` szakasz szövege a következő `## ` címig (vagy a lap végéig); nincs ilyen szakasz: ''."""
     m = re.search(r'^## %s[^\n]*\n' % re.escape(cim), lap, re.M)
     if not m:
@@ -1976,7 +1976,7 @@ def _szakasz_szoveg(lap, cim):
 def kozlemeny_hibak(lap, lex_dir):
     """Egy lap 35. szabály szerinti hibái (üzenetek listája)."""
     hibak = []
-    kolofon, jelm = _szakasz_szoveg(lap, 'Kolofon'), _szakasz_szoveg(lap, 'Jelmagyarázat')
+    kolofon, jelm = _lap_szakasz(lap, 'Kolofon'), _lap_szakasz(lap, 'Jelmagyarázat')
     for minta, nev in KOZLEMENY_KOLOFON:
         if minta not in kolofon:
             hibak.append('a Kolofonban nincs: %s' % nev)
