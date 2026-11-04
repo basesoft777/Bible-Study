@@ -33,6 +33,11 @@ jobs:
           PUSH_SHA: ${{ github.sha }}
         run: |
           if [ "$EVENT_NEV" = "pull_request" ]; then
+            # CI.PRALAP.1: a kicsekkolt refs/pull/N/merge elso szuloje a main
+            # TENYLEGES csucsa; a base.sha elavulhat (a main kozben tovabblep, pl.
+            # bot-committal), es a main sajat commitja a PR-t terhelne. Ha a HEAD
+            # nem merge commit, marad a base.sha.
+            PR_ALAP_SHA=$(git rev-parse --verify -q HEAD^2 >/dev/null && git rev-parse HEAD^1 || echo "$PR_ALAP_SHA")
             # Az alap a ket ag kozos ose, nem a main aktualis csucsa: a base.sha
             # a main csucsa, es ahhoz kepest minden, ami a fork ota a main-re
             # kerult, az agon forditott valtozasnak (torolt cimsor: E5,
@@ -137,7 +142,19 @@ jobs:
           K1=$?
           python eszkozok/ellenorzes/tesztek/test_tanulmany.py
           K2=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # DT-F174a: az ellenoriz.py 31. szabalya (adat nelkuli szerkezeti blokk) es a generator opcionalis rese
+          python eszkozok/teszt_ellenoriz_31.py
+          K3=$?
+          # F123.KIADVEG: az ellenoriz.py 32. szabalya (olvasoi kapu a kiadott lapokon)
+          python eszkozok/teszt_ellenoriz_32.py
+          K4=$?
+          # F123.TUD1B: az ellenoriz.py 33. szabalya (az osszesito jeloltsor versszama) es az 1/b. versszam-mondat
+          python eszkozok/teszt_ellenoriz_33.py
+          K5=$?
+          # F168: az ellenoriz.py 35. szabalya (kozlemeny-hivatkozasok a lapon) es a kolofon kozlemeny-szovege
+          python eszkozok/teszt_ellenoriz_35.py
+          K6=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
@@ -184,6 +201,11 @@ jobs:
           PR_ALAP_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           if [ "$EVENT_NEV" = "pull_request" ]; then
+            # CI.PRALAP.1: a kicsekkolt refs/pull/N/merge elso szuloje a main
+            # TENYLEGES csucsa; a base.sha elavulhat (a main kozben tovabblep, pl.
+            # bot-committal), es a main sajat commitja a PR-t terhelne. Ha a HEAD
+            # nem merge commit, marad a base.sha.
+            PR_ALAP_SHA=$(git rev-parse --verify -q HEAD^2 >/dev/null && git rev-parse HEAD^1 || echo "$PR_ALAP_SHA")
             python eszkozok/feladatok.py ellenoriz --pr-alap "$PR_ALAP_SHA"
           else
             python eszkozok/feladatok.py ellenoriz

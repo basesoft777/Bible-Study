@@ -1,5 +1,7 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
+*v3.1 — 2026.11.02 (F123.3, DT546, DT547): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
+
 *v3 — 2026.09.22 (LEXV2_2): a TUDOMÁNYOS változat oldalszerkezete
 lexikon-oldal v2-re váltott (LEXV2_2_BRIEF.md G1). Az `LXX_OS` bekötve
 a régi `LXX_kivonat_*.tsv` helyett (3. szakasz), a Thayer-szótár
@@ -82,10 +84,15 @@ bemenete vagy kimenete (F6_BRIEF.md K17).
 
 A sorrend és a címek a generátor fájlváza szerint kötöttek
 (`eszkozok/lexikon_general.py` `VAZ_SABLON`, LEXV2_2_BRIEF.md G1).
-Minden szakaszcím **(generált)** vagy **(kézi)** jelöléssel: a
+Az alábbi **(generált)** / **(kézi)** jelölés ennek a sablonnak a
+munkajelölése, **a lapon nem áll** (F123.GENKOR, DT603): a
 **(generált)** szakasz tartalma a `general.py --cel lexikon` GENERÁLT-
 marker-blokkja, kézzel nem szerkeszthető (a szerkesztés a legközelebbi
-futtatáskor felülíródik); a **(kézi)** szakaszt a generátor nem érinti.
+futtatáskor felülíródik); a **(kézi)** szakasz törzse a motívum kézi
+forrásából jön, a lapon nem szerkeszthető. A lap címsorai jelölés
+nélküliek; a szerzőséget a Kolofon mondata adja (l. ott). Az olvasói
+kapu a „(kézi)” / „(generált)” jelölést a lapon belső jelnek veszi
+(BELSO, BUKÁS).
 
 ### `# 📖 ID — cím` + Kivonat (kézi)
 A motívum ID-je és teljes címe fejlécként, alatta egy rövid (3-5
@@ -119,16 +126,19 @@ igehely horgony-link az 1/a alszakaszra mutat. A `proveniencia` és az
 *Arany lap (ISTENTISZT-001, F131; a többi lapra a kiterjesztés külön
 feladat):* a „Szótári jelentés” helyén „Jelentés (a szó)” áll (a szótári
 szakasz címkéje és jele, `adat/szotar_szakasz_cimke.tsv`; a címke forrása
-a sor lábjegyzetében, ⓘ), mellette „Funkció (a motívumban)”; az
+a sor lábjegyzetében; a lábjegyzet-jel mellett külön ⓘ nem áll), mellette „Funkció (a motívumban)” (ikon/emoji nélkül, csak a címke szövege); az
 „UBS-jelentés” ÓSZ-sornál is kitöltött: az UBS DBH igehelyszintű
-jelentése tokenenként (`lexid — definíció`; magyarul, ahol van, különben
+jelentése tokenenként (csak a definíció szövege, a 15 jegyű kód nem látszik, az adatban marad; magyarul, ahol van, különben
 az angol `(fordításra vár)` jelöléssel; hivatkozás híján kimondott hiány).
 A „2. Szótári háttér” a szótári gerinccel kezdődik (SEMA 2.40).
 
 #### 1/a. Az igehelyek szövege (generált)
 Igehelyenként: horgony (`<a id="...">`), a Károli-vers szó szerinti
-szövege (`Karoli_1908.tsv`-ből; tartomány esetén minden vers külön), és
-alatta a `kapcsolodas` mező szövege.
+szövege (`Karoli_1908.tsv`-ből; tartomány esetén minden vers külön),
+alatta a `kapcsolodas` mező szövege (legalább egy kerek mondat), és
+`Funkció:` sor (mindig új bekezdésben, a renderelt nézetben is új sorban) a `funkcio` mező „ — ” utáni részéből (DT-F1Ab). A két
+mező kötelező formája és a minta (ISTENTISZT-001, 1Móz 4:26):
+`9_PaRDeS_motivum_forras_sablon.md` 4. pont; mérője a 25. szabály.
 
 ### 1/b. Kizárt és vizsgált helyek (generált)
 A `jeloltek.tsv` `elutasítva` és `nyitva` sorai indoklással, plusz a
@@ -289,8 +299,11 @@ Forrás-study | Kereszthivatkozás-napló | Sablon-megfelelőség — a
 `motivumok.tsv` sora szerint. Alatta tábla: Forrás | Fájl | Licenc |
 Blokk — a fájlban ténylegesen felhasznált forrásfájlok, fájlonkénti
 licenc-hozzárendeléssel. L. "Licenc és nyilvános repó" alább.
-A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott). **Forrása az `adat/kiadasok.tsv`** (SEMA 2.46, DT492): a kiadásszám a motívum legnagyobb `kiadas` értéke, a változásjegyzék a motívum sorai; motívum sora nélkül a kolofon nem ír kiadás-sort. A kolofont kézzel szerkeszteni tilos, a sor a táblába kerül. **Lezáráskor** (`MUNKAMENET.md` C5: a Feed 8 kapuja zöld) ide kerül az **1. kiadás** sora (`kiadas=1`), a `motivumok.tsv` verzió-emelésével együtt; utána a lap újragenerálódik. A második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), és annak 5. lépése írja a következő sort; a MUNKAMENET csak hivatkozik rá (C-k). A `/kiadas` kérdései a következő kiadás bemenetei, a lezárást nem akasztják (DT486).
+A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott). **Forrása az `adat/kiadasok.tsv`** (SEMA 2.46, DT492): a kiadásszám a motívum legnagyobb `kiadas` értéke, a változásjegyzék a motívum sorai; motívum sora nélkül a kolofon nem ír kiadás-sort. A kolofont kézzel szerkeszteni tilos, a sor a táblába kerül. **Lezáráskor** (`MUNKAMENET.md` C5: a Feed 8 kapuja zöld) ide kerül az **1. kiadás** sora (`kiadas=1`), a `motivumok.tsv` verzió-emelésével együtt; utána a lap újragenerálódik. A második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), és annak 5. lépése írja a következő sort; a MUNKAMENET csak hivatkozik rá (C-k). A `/kiadas` kérdései a következő kiadás bemenetei, a lezárást nem akasztják (DT486). A kisebb, helyi javítás (homályos, pontatlan, belső szakszó, az adatnak ellentmondó hely) útja a `/lap-javit <ID>` (`.claude/commands/lap-javit.md`, `MUNKAMENET.md` C-j): a felhasználó rámutat, a javítás jóváhagyás után készül, és minden hely az `adat/lap_javitasok.tsv`-be kerül (SEMA 2.49). Ebből generálódik a Kolofon **„Emberi lektorálás”** sora („N hely (dátumok); lektorálók: …”, a nem generátor típusú sorokból); sor nélkül a sor nem áll (DT599).
 A Kolofon rögzíti a **próza modelljét** is: a tényleges modellnevet (pl. `claude-opus-5-5`), a CLAUDE.md modell-szabálya szerint a futó környezetből, nem briefből másolva; ez teszi ellenőrizhetővé, hogy a `/kiadas` lektora (`.claude/agents/lektor.md`) a prózát író modelltől eltér (DT473).
+A Kolofon első sora a **szerzőségi mondat** (F123.GENKOR, DT603), adatból: az értelmező szakaszok neve (`adat/res_forras.tsv`, `tanulmany` forrású rések), a legutóbbi kiadás `proza_modell`-je és az átnézés (`adat/lap_atnezesek.tsv`), pl. „Az értelmező szakaszokat (Kivonat, …, Módszertan) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte és jóváhagyta. A többi szakasz az adattáblákból generált.” `manual` modellnél a mondat azt mondja, hogy a kiadás nem rögzít modellnevet; kiadás nélkül azt, hogy a szakaszok még nincsenek kiadva.
+
+**Strong-szám az olvasói prózában** (DT602): ahol a héber/görög szó mellett a kiejtés és a Strong-szám áll, a forrás „(מִזְבֵּחַ, mizbéah, H4196)” alakja a generátor bemenete; a lapon a kiejtés a szónézetre mutató hivatkozás, a Strong-szám kis, halvány felső index, egér alatt a szám és a rövid jelentés (`[mizbéah](/szo/H4196)<sup class="strong" title="H4196 · oltár">H4196</sup>`), nyomtatásban a halvány felső index. A csupasz, zárójeles szám a lapon hiba (olvasói kapu, BELSO).
 
 ---
 
@@ -462,6 +475,11 @@ lexikon-oldal saját kockázataira szabva:
       névtévesztéssel vagy figyelmetlenségből — ez a hiba már
       ténylegesen előfordult (2026.09.07, Zakariás 6:13/Melkizedek-
       lelet egy ISTENTISZT-001 mintaoldalon).
+- [ ] **L8. Gépi és olvasói kapuk** (v3.1) — az `ellenoriz.py` 24.
+      (lábjegyzet-definíció) és 25. (1/a próza) szabálya RENDBEN; az
+      olvasói kapu (Feed 9) 0 BUKÁS; a felhasználó a renderelt lapot
+      átnézte, és ez rögzítve (`MUNKAMENET.md` C-o, C-v). Ez a pont a
+      lezárás feltétele, nem csak a commité.
 - [ ] **L5. Nevesített tanítói szakasz átvéve** — ha a forrás-study
       5. pontja tartalmaz nevesített tanítói egyezés-keresést, az a
       lexikon-oldalon is szerepel (jelenleg nincs kötelező szakaszként
@@ -491,3 +509,5 @@ DT74 (5); a #10 mércéje ez + a DT2 két rés-szabálya.)*
 lezárt tematikus study, a négyforrásos módszertan lefutott-e minden
 igehelyre (nem csak mintavétellel), és a lexikai/tematikus
 kapcsolatok explicit el vannak-e választva egymástól.*
+
+*Olvasói bevezető (2026-11-03, a felhasználó észrevétele):* a „Mit mutat ez a rész?” címke nem látszik; az összefoglaló bekezdés marad, a generátor a bekezdés végén álló láthatatlan jellel (`<!-- olvasói -->`) azonosítja.

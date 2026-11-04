@@ -328,3 +328,24 @@ Darabszám: fejlesztoi 6, kiadoi 2, tartalmi 17, uzleti 3 (összesen 28).
   (a kód-formázás). Élő próba a felhasználó Chrome-jában (saját fülön): a Tartalmi fülön a HAMART-001 szűrő 1 kártyát ad; öt gomb; „A jelenlegi határ” a három igehely állapotával;
   a „Ha így döntesz…” a Kivesszük (2 E-sor, 651 kizárás), a Maradnak (0 E-sor, 7 kizárás, 644 kézi átnézés) és a Részben (1 E-sor, 580 kizárás, 71 kézi átnézés) következményével.
   Az élő db `valaszok` gyűjteménye (3 dokumentum) változatlan. A kérdésre a menet nem válaszolt.
+
+## Válaszok eredete és törlés (a felhasználó: „a kiadói lapon már eleve vannak döntések, és nem tudok döntést töröllni pedig kértem” / „Én egyez sem adtam meg, az is kérdés hogy kerül oda”; 2026-11-02; DT567)
+
+- **Mi írhat a `valaszok`-ba.** A kódban egyetlen út van: a `ment()` (gombnyomás: Elfogadom / Elvetem / Mentés). Betöltéskor a localStorage a régi változatban a memóriába került megválaszoltként, a db-be
+  nem írt vissza. A 4 idegen válasz (`hatar:ALVIL-001:mK1`, `lektor:ISTENTISZT-001:10–12`) ezért gombnyomásból jött, a felhasználó saját Chrome-jából (a Claude in Chrome a felhasználó
+  bejelentkezett böngészőjében fut, tehát a próbaválasz az ő nevében kerül a db-be). A szerző a dokumentumban nem volt rögzítve, így utólag nem igazolható, melyik session adta; a #584 napló
+  (301. sor) a próbaválaszt az `ALVIL-001:mK1`-en törölt és „a felhasználó 3 válaszát” érintetlennek mondja: a 3 dokumentumot senki nem ellenőrizte, hogy a felhasználóé-e. A `mK1` 19:33Z-s
+  dokumentuma olyan próbáé, amelyet nem töröltek.
+- **Miért nem törlődött (a felhasználónál).** A törlés-kód a db-ből és a localStorage-ból is töröl, de (1) a db-törlés eredményét nem olvasta vissza, a siker-üzenet a kérés elküldésére jött;
+  (2) egy régebbi pillanatkép a törlés közben visszaírhatta a választ; (3) az idegen válasz semmivel nem volt megjelölve, így a felhasználó nem tudta, mit töröl. A pontos kiváltó ok a
+  felhasználó böngészőjében nem reprodukálható (a saját Chrome-próbám: törlés működött); a javítás mindhárom pontot zárja.
+- **Javítás** (`sablon.html`, Kiadó 20. verzió): a) db-be csak a `ment()` ír; a localStorage csak a még el nem küldött választ tárolja (db: true nem kerül bele), betöltéskor a db-ben nem
+  szereplő böngészőbeli választról a lap rákérdez („Feltöltöd, vagy eldobod?”), magától nem ír; b) a törlés a db-t törli, visszaolvassa (ha a dokumentum megvan: hibaüzenet, a válasz marad),
+  majd a localStorage-t is; a törlés alatt a régi pillanatkép nem írja vissza; c) a dokumentum új `by` mezője a `user` capability azonosítója (`capabilities: db, user`), a kártyán sárga
+  jelzés, ha a válasz szerzője más, vagy nincs rögzítve; d) lásd a Chrome-próba szabályát.
+- **A Chrome-próba szabálya.** A Kiadóban Chrome-próbaválasz csak `proba:` előtagú kérdés-azonosítón adható (a gépi kérdéslistában ilyen kártya jelenleg nincs: ha próba kell, a próbát végző
+  menet előbb felvesz egyet); ennek hiányában a próbaválasz azonnal törlendő, és a törlést `ArtifactData list`-tel ellenőrizni kell (a `valaszok` gyűjtemény a próba után ugyanannyi
+  dokumentumot tartalmaz, mint előtte). A Chrome-próba a felhasználó nevében ír: a felhasználó válaszát nem érintheti, és semmit nem hagyhat a db-ben. A lap tetején a gombnyomás nélküli
+  írás tilos (a betöltő kódnak nincs db-írása).
+- **Élő próba** (a felhasználó Chrome-jában, saját fülön): a db a próba előtt 0 dokumentum; `dontes:F134` Elfogadom → a dokumentum `by` mezővel a db-ben; Válasz törlése → Igen → a kártya nyitott,
+  a db 0 dokumentum; újratöltés után 0 / 85 megválaszolva, a db 0 dokumentum. Nem próbáltam: másik néző válaszának jelzése (nincs második néző), a localStorage-rákérdezés (nem volt mentetlen válasz a böngészőben).

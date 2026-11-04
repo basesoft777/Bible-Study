@@ -562,7 +562,7 @@ class TestLapok(unittest.TestCase):
             latott += 1
             i = t.index('data-blokk="%s"' % b)
             blokk = t[i:t.index('</section>', i)]
-            self.assertIn('<abbr class="rovidites" title="יְהוָה (Jahve), az Úr" tabindex="0">י׳</abbr>', blokk, b)
+            self.assertIn('<abbr class="rovidites" title="יְהוָה (JHVH), az Úr" tabindex="0">י׳</abbr>', blokk, b)
             if b != 'szo.bdb_angol':
                 self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)" tabindex="0">ק׳</abbr>', blokk, b)
             szoveg = re.sub(r'<[^>]*>', ' ', blokk)
@@ -584,6 +584,17 @@ class TestLapok(unittest.TestCase):
         h = str(blokkok._rovidites(K(), blokkok.Markup('<a href="#x"><span>׳ק</span></a> ׳ק')))
         self.assertEqual(h.count('tabindex'), 1)
         self.assertTrue(h.startswith('<a href="#x"><span><abbr class="rovidites" title="a címszó: &lt;i&gt;&#34;x&#34;&lt;/i&gt;">ק׳</abbr>'))
+
+    def test_bdb_atiras_magyar_es_angol(self):
+        """B3, DT-F164a (felhasználó, 2026-11-03: „Seól álljon”): a torz átírás („Sh®°ôl”) a magyar blokkban „Seól”, az angolban a
+        helyreállított „Sheʾôl” (adat/bdb_forras_javitas.tsv `atiras` / `javitva`)."""
+        class K:
+            strong = 'H0011'
+
+            def memo(self, kulcs, f):
+                return '', ''
+        self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>a Sh®°ôlban</p>'), magyar=True)), '<p>a Seólban</p>')
+        self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>in Sh®°ôl</p>'))), '<p>in Sheʾôl</p>')
 
     def test_bdb_proba_es_mert_pontossag(self):
         """DT-F99l (c): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll (F99, seed-101)."""
@@ -709,7 +720,10 @@ class TestLapok(unittest.TestCase):
         h = self.get('/1Moz/1/4?reteg=il').get_data(as_text=True)
         self.assertIn('Párosítatlan eredeti szavak', h)       # pl. az אֶת (H0853)
         h = self.get('/Mt/1/1?reteg=il').get_data(as_text=True)
-        self.assertIn('nincs Károli–Strong párosítás', h)        # ÚSZ: nincs token_par: explicit üres, nem néma
+        # ÚSZ: az F22 óta (Mt: da0a8ea1) van token_par, tehát a párosított versen nincs „nincs párosítás” jelzés; a jelzés explicit üres, nem néma,
+        # ha egy versnek mégsincs párja (a sablon `not v.van_par` ága)
+        self.assertNotIn('nincs Károli–Strong párosítás', h)
+        self.assertIn('il-szo', h)
 
     def _rokon(self, strong):
         h = self.get('/r/szo/' + strong).get_data(as_text=True)
@@ -1041,6 +1055,26 @@ def _pilot_json(szakasz, azon):
         return json.load(f)
 
 
+def _forditasok_elavult(con):
+    """Üres szöveg, ha a `pardes.db` a mai `adat/forditasok.tsv`-ből épült; különben a kihagyás indoka. A D2 a pilot JSON-t a TSV-ből építi,
+    a szerver az adatbázisból olvas; a fordítás folyamatosan bővül (pl. a Thayer-sorok), ezért egy régebbi adatbázissal az összevetés
+    nem a szerver hibáját mérné. Az építési állapot a `meta` `hash:forditasok` sorából jön (`<sorszám>|<sha256>`): a sorszám a TSV adatsoraival
+    egyezik, ha az adatbázis friss (kihagyás, nem siker: az adatbázis elavult, építsd újra: `python eszkozok/sqlite_epit.py --mod teljes`)."""
+    try:
+        r = con.execute("SELECT ertek FROM meta WHERE kulcs='hash:forditasok'").fetchone()
+        ut = GY + 'adat/forditasok.tsv'
+        if not r or not os.path.isfile(ut):
+            return ''
+        db_sor = int(r[0].split('|')[0])
+        with open(ut, encoding='utf-8') as f:
+            tsv_sor = sum(1 for ln in f if ln.strip() and not ln.startswith('#')) - 1       # a fejléc nélkül
+    except Exception as ex:                                                                  # a őr nem lehet a hiba oka
+        return ''
+    if db_sor != tsv_sor:
+        return 'az adatbázis elavult — építsd újra: a forditasok táblában %d sor van, az adat/forditasok.tsv-ben %d' % (db_sor, tsv_sor)
+    return ''
+
+
 @unittest.skipUnless(VAN_DB and VAN_FLASK and os.path.exists(GY + 'konkordancia/Karoli_1908.tsv'), 'nincs pardes.db, Flask vagy konkordancia/ (a pilot TSV-ből épül)')
 class TestD2PilotEgyezes(unittest.TestCase):
     """A szerver saját lekérdezései (`lekerdezesek.py`, `blokkok.py`) a #60 D2 összehasonlítójával (db_meres.py):
@@ -1054,6 +1088,9 @@ class TestD2PilotEgyezes(unittest.TestCase):
         cls.dm = db_meres
         cls.db = adatbazis.Adatbazis(DB, 'belso')
         cls.con = cls.db.kapcsolat()
+        elavult = _forditasok_elavult(cls.con)
+        if elavult:
+            raise unittest.SkipTest(elavult)
         cls.kozos = oldalak.Kozos(cls.con)
 
     # a szerver lekérdezéseiből a db_meres.db_vers / db_szo / db_gorog alakú szótárak

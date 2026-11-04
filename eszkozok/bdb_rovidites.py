@@ -9,9 +9,10 @@ szó rövidités?”, majd: „ezt a felismerést rakljuk el az olvasó felület
 A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳י); a helyes alak a betű utáni
 (י׳). A `jelol` az önálló, egybetűs alakot jelöli (<abbr>, címmel), a forrás és a javított alakban is.
 
-A megjelenítés sorrendje (DT-F131z; a lexikon-generátor és az olvasó ugyanígy): `heber_sorrend_javit` (a több
-szavas kifejezések Biblia által igazolt sorrend-javítása, `adat/bdb_forras_javitas.tsv` `heber_sorrend` /
-`javitva`) → `izolal` (LRM a héber futam után, ha szám következik) → `jelol`.
+A megjelenítés sorrendje (DT-F131z; a lexikon-generátor és az olvasó ugyanígy): `atiras_javit` (a latin betűs
+átírások betűkészlet-hibája, `adat/bdb_forras_javitas.tsv` `atiras` / `javitva`, B3) → `heber_sorrend_javit` (a több
+szavas kifejezések Biblia által igazolt sorrend-javítása, `heber_sorrend` / `javitva`) → `izolal` (LRM a héber futam után,
+ha szám következik) → `jelol`.
 
 A cím: a י Jahve (ha a címszó is י-vel kezdődik, mindkét feloldás); a címszó kezdőbetűje a címszó;
 más betű általános jelölés (a feloldást nem találjuk ki).
@@ -31,7 +32,7 @@ HEB_BETU = 'א-ת\ufb1d-\ufb4f'  # a prezentációs alakok (pl. U+FB2A) is; esca
 HEB_JEL = 'ְ-ׇ'
 ROVIDITES_RE = re.compile(r'(?<![%s%s])׳([%s][%s]*)(?![%s%s])' % (HEB_BETU, HEB_JEL, HEB_BETU, HEB_JEL,
                                                                      HEB_BETU, HEB_JEL))
-JAHVE_CIM = 'יְהוָה (Jahve), az Úr'
+JAHVE_CIM = 'יְהוָה (JHVH), az Úr'
 ALTALANOS = 'a BDB rövidítése; a feloldás a szócikk szövegéből derül ki'
 
 
@@ -103,6 +104,7 @@ def jelol(szoveg, cimszo='', kezdo='', cim_esc=None, attr=''):
 # áll; újrafordítás nincs). A `valodi_sorrend` és a `jelolt_marad` sorokhoz a megjelenítés nem nyúl.
 JAVITAS_UT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'adat', 'bdb_forras_javitas.tsv')
 _SORREND = None
+_ATIRAS = None
 
 
 def _strong_kulcs(strong):
@@ -110,28 +112,82 @@ def _strong_kulcs(strong):
     return 'H%04d%s' % (int(m.group(1)), m.group(2)) if m else (strong or '')
 
 
+def _javitasok(hiba, ut=None):
+    """A `hiba` osztály `javitva` sorai: Strong → [(forrás alak, javított alak)], hosszabb elöl; egy alak, amelynek a
+    Strongon belül több javított alakja is van, kimarad (nem egyértelmű)."""
+    tab = {}
+    try:
+        with open(ut or JAVITAS_UT, encoding='utf-8') as f:
+            sorok = [s.rstrip('\n').split('\t') for s in f if not s.startswith('#')]
+    except OSError:            # a tábla nélkül: nincs csere
+        sorok = []
+    fej = sorok[0] if sorok else []
+    for s in sorok[1:]:
+        d = dict(zip(fej, s))
+        if d.get('hiba') == hiba and d.get('allapot') == 'javitva' and d.get('javitott_alak'):
+            tab.setdefault(d['strong'], {}).setdefault(d['forras_alak'], set()).add(d['javitott_alak'])
+    return {st: sorted(((a, next(iter(b))) for a, b in t.items() if len(b) == 1), key=lambda p: -len(p[0]))
+            for st, t in tab.items()}
+
+
 def sorrend_javitasok(ut=None):
-    """Strong → [(forrás alak, javított alak)], hosszabb elöl; egy alak, amelynek a Strongon belül több javított alakja is
-    van, kimarad (nem egyértelmű)."""
+    """A `heber_sorrend` / `javitva` sorok (l. `_javitasok`)."""
     global _SORREND
-    if _SORREND is None or ut:
-        tab = {}
-        try:
-            with open(ut or JAVITAS_UT, encoding='utf-8') as f:
-                sorok = [s.rstrip('\n').split('\t') for s in f if not s.startswith('#')]
-        except OSError:            # a tábla nélkül: nincs csere
-            sorok = []
-        fej = sorok[0] if sorok else []
-        for s in sorok[1:]:
-            d = dict(zip(fej, s))
-            if d.get('hiba') == 'heber_sorrend' and d.get('allapot') == 'javitva' and d.get('javitott_alak'):
-                tab.setdefault(d['strong'], {}).setdefault(d['forras_alak'], set()).add(d['javitott_alak'])
-        ki = {st: sorted(((a, next(iter(b))) for a, b in t.items() if len(b) == 1), key=lambda p: -len(p[0]))
-              for st, t in tab.items()}
-        if ut:
-            return ki
-        _SORREND = ki
+    if ut:
+        return _javitasok('heber_sorrend', ut)
+    if _SORREND is None:
+        _SORREND = _javitasok('heber_sorrend')
     return _SORREND
+
+
+def atiras_javitasok(ut=None):
+    """Az `atiras` / `javitva` sorok (l. `_javitasok`)."""
+    global _ATIRAS
+    if ut:
+        return _javitasok('atiras', ut)
+    if _ATIRAS is None:
+        _ATIRAS = _javitasok('atiras')
+    return _ATIRAS
+
+
+# A javított átírás magyar szövegbeli alakja (DT-F164a, felhasználó, 2026-11-03: „Seól álljon”): az angol forrásszövegben a
+# helyreállított átírás marad, a magyar fordításban a tár alakja áll. Kulcs: a javítótábla `javitott_alak`-ja.
+ATIRAS_MAGYAR = {'Sheʾôl': 'Seól', 'sheʾôl': 'seól', 'Qorʾân': 'Korán', 'Leḥi': 'Lehi'}
+_ZAROJEL = None
+
+
+def zarojel_javitasok(ut=None):
+    """A `zarojel` / `javitva` kézi sorok (F123.GENKOR, l. `_javitasok`): a digitalizálásban elveszett zárójel, az angol
+    forrásszöveg és a magyar fordítás alakja külön sorban."""
+    global _ZAROJEL
+    if ut:
+        return _javitasok('zarojel', ut)
+    if _ZAROJEL is None:
+        _ZAROJEL = _javitasok('zarojel')
+    return _ZAROJEL
+
+
+def zarojel_javit(szoveg, strong, javitasok=None):
+    """A Strong `zarojel` javításainak cseréje a szövegben, részszöveg szerint (az angol és a magyar alak külön sor, ezért a
+    nyelvet nem kell tudni). A szöveg rövidítése (a gerinc vázlatsora) ELŐTT fut, hogy a vágás a javított szövegen történjen."""
+    parok = (javitasok if javitasok is not None else zarojel_javitasok()).get(_strong_kulcs(strong))
+    if not parok or not szoveg:
+        return szoveg
+    for regi, uj in parok:
+        szoveg = szoveg.replace(regi, uj)
+    return szoveg
+
+
+def atiras_javit(szoveg, strong, javitasok=None, magyar=False):
+    """A Strong `javitva` átírásainak cseréje a szövegben, részszöveg szerint (a torz alak az angol szövegben és a magyar
+    fordításban is szó szerint áll, a fordításban toldalékkal). `magyar`: a szöveg a magyar fordítás, ott a javított alak
+    magyar alakja áll (`ATIRAS_MAGYAR`): „Sh®°ôlban” → „Seólban”; angolul „Sh®°ôl” → „Sheʾôl” (B3)."""
+    parok = (javitasok if javitasok is not None else atiras_javitasok()).get(_strong_kulcs(strong))
+    if not parok or not szoveg:
+        return szoveg
+    for regi, uj in parok:
+        szoveg = szoveg.replace(regi, ATIRAS_MAGYAR.get(uj, uj) if magyar else uj)
+    return szoveg
 
 
 def _heber_jel(c):

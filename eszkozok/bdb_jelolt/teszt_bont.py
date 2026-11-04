@@ -269,6 +269,42 @@ class Javitas(unittest.TestCase):
         self.assertFalse(HS.tiszta('ᵐ5 ׳ל'))
         self.assertFalse(HS.tiszta('דָּבָר, תּוֺרָה'))
 
+    def test_atiras_szabaly(self):
+        # DT-F164a: „e?®” → „e”, „°” → „ʾ”
+        self.assertEqual(self.fj.atiras_szabaly('Sh®°ôl'), 'Sheʾôl')
+        self.assertEqual(self.fj.atiras_szabaly('She®°ôl'), 'Sheʾôl')
+        self.assertEqual(self.fj.atiras_szabaly('sh®°ôl'), 'sheʾôl')
+        self.assertEqual([m.group(0) for m in self.fj.ATIRAS_ALAK.finditer('in Sh®°ôl). 30° fra-s®nhana')],
+                         ['Sh®°ôl', 's®nhana'])
+
+    def test_atiras_sorok(self):
+        # B3: a „®”-t hordozó minden alak egy sor; javitva csak a BDB.lexicon által igazolt (Seól-család)
+        # F123.GENKOR (DT-F181a): a kézi `atiras` sorok (`manual`) külön, l. test_kezi_szoveg_sorok
+        kezi = [s for s in self.sorok if s['hiba'] == 'atiras' and s['proveniencia'] == 'manual']
+        a = [s for s in self.sorok if s['hiba'] == 'atiras' and s['proveniencia'] != 'manual']
+        self.assertEqual(len(set(s['strong'] for s in a)), 33)
+        self.assertEqual(sorted(set(s['strong'] for s in kezi)), ['H2416', 'H7121'])
+        for s in a:
+            self.assertIn('®', s['forras_alak'])
+            self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
+            self.assertIn(s['allapot'], ('javitva', 'jelolt_marad'))
+            if s['allapot'] == 'javitva':
+                self.assertEqual(s['javitott_alak'], self.fj.atiras_szabaly(s['forras_alak']))
+                self.assertNotRegex(s['javitott_alak'], '[®°]')
+        self.assertEqual(sorted(s['strong'] for s in a if s['allapot'] == 'jelolt_marad'), ['H2609', 'H6573', 'H7848'])
+        self.assertIn(('H7585', 'She®°ôl', 'Sheʾôl'),
+                      [(s['strong'], s['forras_alak'], s['javitott_alak']) for s in a])
+
+    def test_kezi_szoveg_sorok(self):
+        # F123.GENKOR (DT-F181a): a kézi `atiras` és `zarojel` sorok: javitva, `manual`, javított alakkal
+        k = [s for s in self.sorok if s['hiba'] in ('atiras', 'zarojel') and s['proveniencia'] == 'manual']
+        self.assertEqual(len(k), 7)
+        for s in k:
+            self.assertEqual(s['allapot'], 'javitva')
+            self.assertTrue(s['javitott_alak'] and s['indok'])
+        self.assertIn(('H7121', 'be summoned (compare Qal 5:', 'be summoned (compare Qal 5):'),
+                      [(s['strong'], s['forras_alak'], s['javitott_alak']) for s in k])
+
     def test_minta_mishpat(self):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
                             and self.fj.norm(s['javitott_alak']) == self.fj.norm('מִשְׁפַּט')
@@ -355,7 +391,9 @@ class HuIlleszt(unittest.TestCase):
             f = self.hi.forditasok(ut)
         self.assertEqual(f['H0001']['forditas_hu'], ' '.join('m%d' % x['sorszam'] for x in szak))
         self.assertEqual(f['H0001']['forras_hash'], sb.sha1(sb.nezet(szak)))
-        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2'})
+        # F123.BDBILL (DT-F123y): az igazolt 1:1 sorszám szerint, a teljes sornál nincs szakaszos megfeleltetés
+        self.assertEqual(f['H0001']['szakaszonkent'], dict((x['sorszam'], 'm%d' % x['sorszam']) for x in szak))
+        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2', 'szakaszonkent': None, 'nem_igazolt': None})
 
     def test_forras_jelolok(self):
         self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
@@ -442,11 +480,14 @@ class HuIlleszt(unittest.TestCase):
         self.assertEqual(horgonyos, 'horgonnyal')
 
     def test_kategoriak_es_hash(self):
-        self.assertEqual(set(x['kategoria'] for x in self.sorok), {'illeszkedik', 'horgonnyal', 'elakad', 'jelolo_nelkul'})
+        # F123.BDBILL (DT-F123y): a szakaszonként fordított Strong sorai `szakasz` kategóriájúak; `elakad` a mai adaton nincs
+        kat = set(x['kategoria'] for x in self.sorok)
+        self.assertIn('szakasz', kat)
+        self.assertLessEqual(kat, {'szakasz', 'illeszkedik', 'horgonnyal', 'elakad', 'jelolo_nelkul'})
         for x in self.sorok:
             self.assertRegex(x['forditas_forras_hash'], r'^[0-9a-f]{40}$')
             self.assertEqual(bool(x['szoveg_hu']) or x['hu_kezdet'] == '' or x['hu_hossz'] == '0', True)
-        self.assertEqual(len(set(x['strong'] for x in self.sorok)), 674)
+        self.assertEqual(len(set(x['strong'] for x in self.sorok)), 8090)
 
     def test_h0040(self):
         h = {x['sorszam']: x for x in self.sorok if x['strong'] == 'H0040'}
@@ -498,8 +539,9 @@ class Determinizmus(unittest.TestCase):
             elso = f.readline()
         ts = elso.split('--ts ')[1].split(' ')[0]
         tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
+        tsa = elso.split('--ts-atiras ')[1].split(' ')[0] if '--ts-atiras ' in elso else ts
         r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
-                            '--ellenoriz'],
+                            '--ts-atiras', tsa, '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

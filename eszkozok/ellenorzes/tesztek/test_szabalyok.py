@@ -1320,8 +1320,10 @@ class E28Teszt(unittest.TestCase):
         forras = open(os.path.join(gy, 'motivumok', 'ZZTESZT-001.md'), encoding='utf-8').read()
         return (self.GEN_FEJ % datum) + '## 2. Adat\n' + adat + '## 3. Olvasoi\n' + forras
 
-    def _futtat(self, gy, fajlok=('__TELJES__',), marker_celok=()):
+    def _futtat(self, gy, fajlok=('__TELJES__',), marker_celok=(), generator=None):
         def hamis_generator(cel, azonosito, datum, kimenet):
+            if generator:
+                return generator(cel, azonosito, datum, kimenet)
             ut = os.path.join(kimenet, *_LAP.split('/'))
             os.makedirs(os.path.dirname(ut), exist_ok=True)
             with open(ut, 'w', encoding='utf-8', newline='') as f:
@@ -1440,6 +1442,68 @@ class E28Teszt(unittest.TestCase):
             t = self._futtat(gy)
             self.assertEqual(len(t), 1)
             self.assertIn('nincs GENERÁLT jelölő', t[0].reszlet)
+
+    # B4: a helyben frissítő út (--ir) == a nulláról generálás
+
+    def _futtat_helyben(self, gy, helyben_torzs):
+        """A hamis generátor új fájlnál a _render kimenetét írja; meglévő fájlnál
+        (a helyben frissítő út) a `helyben_torzs(meglevo_bajtok, render)` kimenetét."""
+        latott = []
+
+        def hamis_generator(cel, azonosito, datum, kimenet):
+            ut = os.path.join(kimenet, *_LAP.split('/'))
+            os.makedirs(os.path.dirname(ut), exist_ok=True)
+            uj = self._render(gy, datum)
+            if os.path.exists(ut):
+                with open(ut, 'rb') as f:
+                    meglevo = f.read()
+                latott.append(meglevo)
+                uj = helyben_torzs(meglevo, uj)
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write(uj)
+            return 0, ''
+
+        return self._futtat(gy, generator=hamis_generator), latott
+
+    def test_helyben_ag_crlf_bemenetet_kap_es_egyezo_kimenet_zold(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, latott = self._futtat_helyben(gy, lambda meglevo, uj: uj)
+            self.assertEqual(t, [])
+            self.assertEqual(len(latott), 1)
+            self.assertIn(b'\r\n', latott[0])
+            self.assertNotIn(b'\n', latott[0].replace(b'\r\n', b''))
+
+    def test_negativ_helyben_ket_ures_sorral_tobb_piros(self):
+        # a TEREMT-002 esete: a --ir két üres sort tett a res_labjegyzet blokk elé
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, _ = self._futtat_helyben(gy, lambda meglevo, uj: uj.replace('## 3.', '\n\n## 3.'))
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('helyben frissítő út', t[0].reszlet)
+            self.assertIn('nem a lapon', t[0].reszlet)
+            self.assertGreater(t[0].sor, 1)
+
+    def test_negativ_helyben_crlf_kimenet_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            t, _ = self._futtat_helyben(gy, lambda meglevo, uj: meglevo.decode('utf-8'))
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('helyben frissítő út', t[0].reszlet)
+
+    def test_kimeneti_ut_kiirasa_mas_meghajton_nem_bukik(self):
+        # a munkakönyvtár D:-n, az E28 ideiglenes --kimenet-e a C:-n: a relpath ValueError-t dob
+        from unittest import mock
+        G = SZ._general_modul()
+        tmp = os.path.join(tempfile.gettempdir(), 'e28_x', 'lexikon', 'ZZTESZT-001_TUDOMANYOS.md')
+
+        def mas_meghajto(ut, start=None):
+            raise ValueError("path is on mount 'C:', start on mount 'D:'")
+
+        with mock.patch.object(G.os.path, 'relpath', mas_meghajto):
+            self.assertEqual(G.kiirt_ut(tmp), os.path.abspath(tmp))
+        self.assertEqual(G.kiirt_ut(os.path.join(G.ROOT, 'lexikon', 'x.md')),
+                         os.path.join('lexikon', 'x.md'))
 
     def test_negativ_crlf_blob_lf_generalt_kimenettel_piros(self):
         # CI-terv 1. szakasz 3. pont: a sorvegnek is egyeznie kell (nincs normalizalas)
@@ -1712,15 +1776,16 @@ class E32Teszt(unittest.TestCase):
 
     KIOSZTOTT = {'DT-F127b': 'DT277'}
 
-    def _fut(self, forras, relut='eszkozok/proba_kimenet.py', kiosztott=None):
+    def _fut(self, forras, relut='eszkozok/proba_kimenet.py', kiosztott=None, varo=None):
         with _IdeiglenesGyoker() as gy:
             _ir(gy, relut, forras)
-            eredeti = SZ._e32_kiosztasok
+            eredeti, eredeti_varo = SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo
             SZ._e32_kiosztasok = lambda: dict(self.KIOSZTOTT if kiosztott is None else kiosztott)
+            SZ._e32_kiosztasra_varo = lambda: dict(varo or {})
             try:
                 return SZ.e32_kiosztott_helyorzo_literalban([relut])
             finally:
-                SZ._e32_kiosztasok = eredeti
+                SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo = eredeti, eredeti_varo
 
     def test_pozitiv_visszairt_kiosztott_helyorzo_a_literalban(self):
         t = self._fut('x = 1\nprint("lásd DT-F127b döntés")\n')
@@ -1772,6 +1837,45 @@ class E32Teszt(unittest.TestCase):
 
     def test_negativ_nem_kiosztott_helyorzo_nem_jelez(self):
         self.assertEqual(self._fut('print("DT-F999z")\n'), [])
+
+    def test_pozitiv_kiosztasra_varo_helyorzo_pr_modban(self):
+        # F123.LAPJAVIT.5: a merge-kor kiosztando helyorzo mar a PR-en bukik (a #621 esete)
+        t = self._fut('cim = "31. szabaly (DT-F174a)"\n', kiosztott={}, varo={'DT-F174a': 'DT597'})
+        self.assertEqual([(x.szabaly, x.szint, x.sor) for x in t], [('E32', 'HIBA', 1)])
+        self.assertIn('DT-F174a', t[0].reszlet)
+        self.assertIn('DT597', t[0].reszlet)
+        self.assertIn('számfüggetlen', t[0].reszlet)
+
+    def test_negativ_kiosztasra_varo_megjegyzesben_es_docstringben(self):
+        forras = '"""Modul DT-F174a."""\nx = 1  # DT-F174a\n'
+        self.assertEqual(self._fut(forras, kiosztott={}, varo={'DT-F174a': 'DT597'}), [])
+
+    def test_negativ_kiosztasra_varo_kihagy_jelolessel(self):
+        self.assertEqual(self._fut('print("DT-F174a")  # e32-kihagy\n', kiosztott={},
+                                   varo={'DT-F174a': 'DT597'}), [])
+
+    def test_teljes_mod_a_varo_helyorzot_nem_nezi(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'eszkozok/k.py', 'print("DT-F174a")\n')
+            eredeti, eredeti_varo = SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo
+            SZ._e32_kiosztasok = lambda: {}
+            SZ._e32_kiosztasra_varo = lambda: {'DT-F174a': 'DT597'}
+            try:
+                self.assertEqual(SZ.e32_kiosztott_helyorzo_literalban(['__TELJES__']), [])
+            finally:
+                SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo = eredeti, eredeti_varo
+
+    def test_kiosztasra_varo_az_ag_uj_fajljaibol(self):
+        # valodi (ideiglenes) gyoker: a dontesek/uj/ helyorzoje varo, az oroklott nem;
+        # a szimulacio lemezre nem ir (a kis fajl megmarad, a DONTESEK.md valtozatlan)
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'DONTESEK.md', '| DT5 | #5 | k |\n| DT-F42a | #42 | k |\n')
+            _ir(gy, 'eszkozok/szamkiosztas_oroklott.txt', 'DT-F42a\n')
+            _ir(gy, 'dontesek/uj/ag.md', '| DT-F174a | #174 | k |\n')
+            self.assertEqual(SZ._e32_kiosztasra_varo(), {'DT-F174a': 'DT6'})
+            self.assertTrue(os.path.exists(os.path.join(gy, 'dontesek', 'uj', 'ag.md')))
+            with open(os.path.join(gy, 'DONTESEK.md'), encoding='utf-8') as f:
+                self.assertNotIn('DT-F174a', f.read())
 
     def test_negativ_kiosztott_szam_nem_jelez(self):
         self.assertEqual(self._fut('print("DT277")\n'), [])
@@ -1877,6 +1981,105 @@ class E33Teszt(unittest.TestCase):
 
     def test_eles_repo_minden_tanulmany_bekerul(self):
         self.assertEqual(SZ.e33_tanulmany_regiszterbe_kerul(['__TELJES__']), [])
+
+
+# ---------------------------------------------------------------------------
+# E34 (#166, DT-F166a): Karoli-idezet az adatban
+# ---------------------------------------------------------------------------
+
+_E34_FEJ = '# fejlec\nid\tigehely\tkapcsolodas\n'
+_E34_KAROLI = ('Igehely\tKároli-szöveg (teljes vers)\n'
+               'Ézs 52:6\tAzért megismeri az én népem az én nevemet.\n'
+               'Ézs 52:7\tMely szépek a hegyeken az örömhírhozónak lábai!\n')
+
+
+class E34Teszt(unittest.TestCase):
+    """E34: a `kapcsolodas` idezojeles reszlete a Karoli-vers szovege, vagy „saját fordítás” jelolt."""
+
+    def _fut(self, kapcsolodas, id_='PROBA-001', kiadott=False, igehely='Ézs 52:6'):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'konkordancia/Karoli_1908.tsv', _E34_KAROLI)
+            _ir(gy, 'adat/elofordulasok.tsv', _E34_FEJ + '%s\t%s\t%s\n' % (id_, igehely, kapcsolodas))
+            if kiadott:
+                _ir(gy, 'adat/kiadasok.tsv', '# fejlec\nid\tkiadas\n%s\t1\n' % id_)
+            return SZ.e34_karoli_idezet(['__TELJES__'])
+
+    def test_pozitiv_egyezo_idezet_zold(self):
+        self.assertEqual(self._fut('„megismeri az én népem az én nevemet” — a név ismerete'), [])
+
+    def test_pozitiv_modernizalt_helyesiras_es_irasjel_zold(self):
+        self.assertEqual(self._fut('"Azért megismeri az en nepem az én nevemet!" — a név'), [])
+
+    def test_pozitiv_tartomany_es_kihagyas_zold(self):
+        self.assertEqual(self._fut('„megismeri az én népem... mely szépek a hegyeken” — két vers', igehely='Ézs 52:6-7'), [])
+
+    def test_negativ_eltero_szo_kihirdetem_tipus(self):
+        # az ISTENTISZT-001 A1-A5 tipusa: mas igealak a Karoli szava helyett
+        t = self._fut('„kihirdetem az én nevemet az én népemnek” — a névhirdetés', kiadott=True)
+        self.assertEqual([(x.szabaly, x.szint, x.sor) for x in t], [('E34', 'HIBA', 3)])
+        self.assertIn('PROBA-001 | Ézs 52:6', t[0].reszlet)
+
+    def test_negativ_ki_nem_adott_motivumon_figyelmeztetes(self):
+        t = self._fut('„kihirdetem az én nevemet az én népemnek” — a névhirdetés')
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    def test_pozitiv_sajat_forditas_jelolessel_zold(self):
+        self.assertEqual(self._fut('„kihirdetem az én nevemet az én népemnek” (saját fordítás) — a névhirdetés'), [])
+
+    def test_pozitiv_idezojel_nelkuli_szoveg_zold(self):
+        self.assertEqual(self._fut('kihirdetem az én nevemet az én népemnek — a névhirdetés'), [])
+
+    def test_pozitiv_rovid_idezet_es_glossza_zold(self):
+        self.assertEqual(self._fut('a kifejezés „kihirdet”, és a „nevet” szó'), [])
+        self.assertEqual(self._fut('héber szó („kihirdetem az én nevemet az én népemnek”) glosszája'), [])
+
+    def test_szint_fajlszintu_adatszabaly(self):
+        self.assertIn('E34', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E34', SZ.HATOKOR_SZABALYOK)
+        self.assertIn('E34', SZ.SZABALYOK_FUGGVENYEI)
+
+    def test_tabla_nelkul_nulla_talalat(self):
+        with _IdeiglenesGyoker():
+            self.assertEqual(SZ.e34_karoli_idezet(['__TELJES__']), [])
+
+    def test_eles_adat_kiadott_motivumon_zold(self):
+        t = SZ.e34_karoli_idezet(['__TELJES__'])
+        self.assertEqual([x for x in t if x.szint == 'HIBA'], [])
+
+
+# ---------------------------------------------------------------------------
+# E35 (F169.3): a commitolt nyilt_mag/ naprakesz, ha a PR adatot vagy az exportgeneratort modositja
+# ---------------------------------------------------------------------------
+
+class E35Teszt(unittest.TestCase):
+    """E35: adat-tabla vagy exportgenerator valtozasakor a commitolt nyilt_mag/ egyezik az ujragenerald exporttal."""
+
+    def _fut(self, valtozott, lemez, uj, teljes=False):
+        with _IdeiglenesGyoker() as gy:
+            for rel, sz in lemez.items():
+                _ir(gy, 'nyilt_mag/' + rel, sz)
+            return SZ.e35_nyilt_mag_naprakesz(valtozott, teljes, root=gy, export_fn=lambda k: uj)
+
+    def test_pozitiv_egyezo_export_zold(self):
+        self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'x\n'}, {'a.tsv': 'x\n'}), [])
+
+    def test_negativ_elavult_fajl_hiba(self):
+        t = self._fut(['adat/motivumok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
+        self.assertEqual([(x.szabaly, x.szint, x.fajl) for x in t], [('E35', 'HIBA', 'nyilt_mag/a.tsv')])
+
+    def test_negativ_uj_motivum_hianyzo_fajl_hiba(self):
+        t = self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'x\n'}, {'a.tsv': 'x\n', 'b.tsv': 'y\n'})
+        self.assertEqual([x.fajl for x in t], ['nyilt_mag/b.tsv'])
+
+    def test_negativ_generator_valtozasa_is_kivalto(self):
+        t = self._fut(['eszkozok/nyilt_mag_export.py'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
+        self.assertEqual(len(t), 1)
+
+    def test_pozitiv_nem_erintett_pr_nem_fut(self):
+        self.assertEqual(self._fut(['lexikon/X.md'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}), [])
+
+    def test_pozitiv_teljes_modban_nem_fut(self):
+        self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}, teljes=True), [])
 
 
 if __name__ == '__main__':

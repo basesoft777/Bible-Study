@@ -567,6 +567,8 @@ SENSE_MINTA = re.compile(r'\bsense\b', re.IGNORECASE)
 # ARCHÍV fejlecu, bajtra valtozatlan peldanya -- nem forras, nem
 # szerkesztendo, tehat a szovegere szolo E9 nem fut ra.
 ARCHIV_KONYVTAR = 'archivum/'
+# F169.1: a kozlemeny/en/ szandekosan angol nyelvu; az E9 a magyar szovegre szol, erre nem fut.
+ANGOL_KONYVTAR = 'kozlemeny/en/'
 
 
 def e9_angol_sense(fajlok):
@@ -578,7 +580,7 @@ def e9_angol_sense(fajlok):
     for relut in fajlok:
         if not relut.endswith('.md'):
             continue
-        if relut.replace('\\', '/').startswith(ARCHIV_KONYVTAR):
+        if relut.replace('\\', '/').startswith((ARCHIV_KONYVTAR, ANGOL_KONYVTAR)):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
@@ -1046,16 +1048,31 @@ def _e19_lekepezett_szakaszok(szotar, strong, jelentes_szam, cache):
     if 'cimke' not in cache:
         ut = os.path.join(ADAT, 'szotar_szakasz_cimke.tsv')
         cache['cimke'] = dict_sorok(ut) if os.path.exists(ut) else []
-    csucsok = [r.get('szakasz') for r in cache['cimke']
+    csucsok = [(r.get('bdb_id') or '', r.get('szakasz')) for r in cache['cimke']
                if r.get('szotar') == szotar and _e19_strong(r.get('strong')) == strong
                and (r.get('lexikon_jelentes_szam') or '').strip() == (jelentes_szam or '').strip()]
-    if len(csucsok) != 1 or not csucsok[0]:
+    if len(csucsok) != 1 or not csucsok[0][1]:
         return None
     szak = _e19_szakaszlista(szotar, strong, cache)
     if szak is None:
         return None
-    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucsok[0])}
+    # F123.BDBGER: a BDB-szakasz kulcsa szócikk + útvonal; a szócikk sorai a `bdb_szakaszok.tsv` szerint
+    bdb_id, csucs = csucsok[0]
+    sajat = _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache) if szotar == 'BDB' else None
+    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucs)
+               and (sajat is None or x['sorszam'] in sajat)}
     return keszlet or None
+
+
+def _e19_bdb_szocikk_sorszamok(strong, bdb_id, cache):
+    """A Strong `bdb_id` szócikkének sorszámai (int) a `bdb_szakaszok.tsv`-ből (F123.BDBGER)."""
+    if 'bdb_szocikk' not in cache:
+        ut = os.path.join(ADAT, 'bdb_szakaszok.tsv')
+        idx = {}
+        for r in (dict_sorok(ut) if os.path.exists(ut) else []):
+            idx.setdefault((r.get('strong'), r.get('bdb_id')), set()).add(int(r['sorszam']))
+        cache['bdb_szocikk'] = idx
+    return cache['bdb_szocikk'].get((strong, bdb_id), set())
 
 
 def _e19_szakaszlista(szotar, strong, cache):
@@ -1409,6 +1426,21 @@ def _e26_git_fajl(ref, relut):
         return ''
 
 
+def _e26_uj_szoveg(ref, mappa):
+    """A ref-beli PR-onkenti fajlok (dontesek/uj/, nyitott/uj/) osszefuzott szovege: az E26 a fo fajl es
+    ezek egyesitett nezetet vizsgalja (a helyorzo-definiciok itt allnak)."""
+    try:
+        nevek = subprocess.check_output(
+            ['git', 'ls-tree', '-r', '--name-only', ref, '--', mappa],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace').split('\n')
+    except (subprocess.CalledProcessError, OSError):
+        return ''
+    return '\n'.join(_e26_git_fajl(ref, n.strip()) for n in sorted(nevek) if n.strip().endswith('.md'))
+
+
+_E26_UJ_MAPPA = {'DT': 'dontesek/uj', 'N': 'nyitott/uj'}
+
+
 def _e26_definiciok(szoveg, minta):
     ki = []
     for sor in szoveg.splitlines():
@@ -1432,6 +1464,9 @@ def e26_vegleges_szam_agon(base_ref, head_ref, commit_uzenet='', esemeny=''):
     for kulcs, relut in _E26_FAJL.items():
         base_sz = _e26_git_fajl(base_ref, relut)
         head_sz = _e26_git_fajl(head_ref, relut)
+        if kulcs in _E26_UJ_MAPPA:      # a PR-onkenti fajlok is a fo fajl reszei
+            base_sz += '\n' + _e26_uj_szoveg(base_ref, _E26_UJ_MAPPA[kulcs])
+            head_sz += '\n' + _e26_uj_szoveg(head_ref, _E26_UJ_MAPPA[kulcs])
         base_def = set(_e26_definiciok(base_sz, _E26_VEGLEGES_DEF[kulcs]))
         for az in _e26_definiciok(head_sz, _E26_VEGLEGES_DEF[kulcs]):
             if az not in base_def:
@@ -1805,7 +1840,9 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
     agak_lekerve = False
     terkep = None
 
-    for relut in E27_KOVETO_FAJLOK:
+    # a PR-onkenti nyitott-tetel-fajlok (nyitott/uj/*.md) is koveto fajlok
+    uj_nyitott = tuple(_szamkiosztas_modul().DN.uj_fajlok(ROOT, 'nyitott/uj'))
+    for relut in E27_KOVETO_FAJLOK + uj_nyitott:
         szoveg = _e27_olvas(relut)
         if szoveg is None:
             continue
@@ -2164,7 +2201,41 @@ def e28_generalt_nezet_egyezes(fajlok):
                  'a commitolt nézet eltér az újragenerálttól (PARDES_DATUM=%s). '
                  'commitolt: %s | generált: %s. Javítás: %s'
                  % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
+        _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba)
     return talalatok
+
+
+def _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba):
+    """B4: a helyben frissítő út (`--ir`: a meglévő lapot olvassa be és frissíti)
+    bájtra ugyanazt adja, mint a nulláról generálás. A bemenet a commitolt lap
+    CRLF-es példánya -- a core.autocrlf=true munkapéldánya ilyen --, a generátor
+    ugyanazzal a PARDES_DATUM-mal fut, a kimenet a repón kívül marad. Az eltérés
+    generátorhiba: a lapot kézzel igazítani tilos (TEREMT-002, 1A.11, SABLON.6)."""
+    import shutil
+    import tempfile
+    tmp = tempfile.mkdtemp(prefix='e28h_')
+    try:
+        ut = os.path.join(tmp, *relut.split('/'))
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'wb') as f:
+            f.write(_lf(commitolt).replace('\n', '\r\n').encode('utf-8'))
+        kod, hibakimenet = _e28_general_futtat(cel, azonosito, datum, tmp)
+        if kod != 0:
+            hiba(relut, 0, 'a helyben frissítő út nem futott le (kilépési kód %s): %s'
+                 % (kod, hibakimenet.strip()[-200:]))
+            return
+        with open(ut, 'rb') as f:
+            helyben = f.read().decode('utf-8')
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    el = _e28_elso_elteres(generalt, helyben)
+    if el:
+        i, sa, sb = el
+        hiba(relut, i + 1,
+             'a helyben frissítő út (--ir, CRLF-es munkapéldányon) eltér a nulláról generálttól '
+             '(PARDES_DATUM=%s). nulláról: %s | helyben: %s. Javítás: a generátorban '
+             '(eszkozok/lexikon_general.py run), nem a lapon'
+             % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb)))
 
 
 SZABALYOK_FUGGVENYEI['E28'] = e28_generalt_nezet_egyezes
@@ -2459,6 +2530,11 @@ SZABALYOK_FUGGVENYEI['E31'] = e31_forras_tanulmany_letezik
 # mert a tesztfixture szandekosan hordoz mintahelyorzot; (2) minden sort, amely
 # az `e32-kihagy` (vagy a szamkiosztas `szamkiosztas-kihagy`) jelolest
 # tartalmazza -- szandekosan torteneti literal jelolese.
+# PR-modban (nem --teljes) a meg ki NEM osztott, de a merge-kor kiosztasra varo
+# helyorzot is jelzi (F123.LAPJAVIT.5): az ag dontesek/uj/ es nyitott/uj/ fajljait
+# a szamkiosztas sajat beolvasztasaval es tervevel szimulalja (lemezre nem ir).
+# Ok: a main-en a kiosztas utan a literal mar a regi helyorzot hordozza, es a
+# hiba csak a main-en bukna (dokumentalt eset: a #621 31. szabalyanak cime).
 
 E32_KIZART_FAJLOK = {
     'eszkozok/szamkiosztas.py',
@@ -2503,6 +2579,17 @@ def _e32_kiosztasok():
         for h in SK._definiciok(ROOT, kulcs)[0]:
             kiosztott.pop(h, None)
     return kiosztott
+
+
+def _e32_kiosztasra_varo():
+    """{helyorzo: varhato_szam}: amit a szamkiosztas a merge utan kiosztana
+    (az ag dontesek/uj/ es nyitott/uj/ fajljainak beolvasztasa utan, a
+    `szamkiosztas.terv` szerint; az oroklott helyorzo nem). Lemezre nem ir: a
+    modul minden hivasra frissen toltodik, a beolvasztas a sajat _FELULIR-jebe
+    megy."""
+    SK = _szamkiosztas_modul()
+    SK.beolvaszt(ROOT, ir=False)
+    return SK.terv(ROOT)[0]
 
 
 def _e32_py_fajlok(fajlok):
@@ -2595,7 +2682,8 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
     if not py_fajlok:
         return talalatok
     kiosztott = _e32_kiosztasok()
-    if not kiosztott:
+    varo = {} if fajlok and fajlok[0] == '__TELJES__' else _e32_kiosztasra_varo()
+    if not kiosztott and not varo:
         return talalatok
     minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]?(?![A-Za-z0-9-])')
     for relut in py_fajlok:
@@ -2620,17 +2708,23 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
                     continue
                 latott.add(hely)
                 uj = kiosztott.get(helyorzo)
-                if not uj:
+                vart = None if uj else varo.get(helyorzo)
+                if not uj and not vart:
                     continue
                 sor_szoveg = sorok[sor - 1] if 0 < sor <= len(sorok) else ''
                 if any(j in sor_szoveg for j in E32_KIHAGY_JELOLESEK):
                     continue
-                talalatok.append(Talalat(
-                    'E32', SZINT['E32'], relut, sor,
-                    '`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
-                    'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
-                    '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
-                    % (helyorzo, uj)))
+                if uj:
+                    reszlet = ('`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
+                               'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
+                               '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
+                               % (helyorzo, uj))
+                else:
+                    reszlet = ('`%s` helyőrző áll a string-literálban, és a merge-kor számot kap '
+                               '(várhatóan %s); a szamkiosztas .py-fájlban nem cserél, ezért a '
+                               'literál a régi alakot írná ki — tedd számfüggetlenné a szöveget '
+                               '(a megjegyzésben maradhat)' % (helyorzo, vart))
+                talalatok.append(Talalat('E32', SZINT['E32'], relut, sor, reszlet))
     return talalatok
 
 
@@ -2700,3 +2794,188 @@ def e33_tanulmany_regiszterbe_kerul(fajlok):
 SZINT['E33'] = 'FIGYELMEZTETES'
 FAJLSZINTU_SZABALYOK.add('E33')
 SZABALYOK_FUGGVENYEI['E33'] = e33_tanulmany_regiszterbe_kerul
+
+
+# ---------------------------------------------------------------------------
+# E34 -- Karoli-idezet az adatban (#166, DT-F166a)
+# ---------------------------------------------------------------------------
+# Az `adat/elofordulasok.tsv` `kapcsolodas` mezoje az 1/a-prozaban szo szerint megjeleno
+# szoveg forrasa (lexikon_general.py, 1/a-blokk). Az olvasoi kapu IDEZET-ellenorzese ezt
+# csak a kesz lapon fogja meg; az E34 az adatban: a mezo minden idezojeles (`„…”` vagy `"…"`),
+# legalabb harom szavas reszlete a sor igehelyenek Karoli-szovegevel egyezik (az
+# egyeztetes az olvasoi kapue: ekezet-, irasjel- es kisbetu-fuggetlen, szavankent
+# 0,75-os hasonlosagi turessel, `...` / `…` / `[...]` szerinti darabolassal), vagy a mezo
+# tartalmaz „saját fordítás” (illetve „szó szerint:” / „ford.:”) jelolest. A zarojel utani
+# glossza (`(„...”)`) nem versidezet. Az `igehely` tartomany minden versenek szoveget
+# egybevetve nezi.
+# Szint: HIBA a kiadott motivumokon (`adat/kiadasok.tsv` `id`-i), FIGYELMEZTETES (a
+# diff-minosites nelkul, JELENTES a futtatoban --teljes modban) a tobbin: a regi, ki nem
+# adott lapok helyei az uj cikk menetenek bemenete, nem teszik pirossa a main-t.
+# Fajlszintu es adattablan fut (mint az E31).
+
+E34_TABLA = 'adat/elofordulasok.tsv'
+E34_KIADASOK = 'adat/kiadasok.tsv'
+E34_KAROLI = 'konkordancia/Karoli_1908.tsv'
+E34_JELOLES = re.compile(r'saját fordítás|sajat forditas|szó szerint:|ford\.\s*:', re.I)
+E34_MIN_SZO = 3
+_E34_KAROLI_CACHE = {}
+
+
+def _e34_kapu():
+    """Az olvasoi kapu (idezet-regex, normalizalo, egyeztetes), a kod melletti utrol."""
+    _sys = sys
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in _sys.path:
+        _sys.path.insert(0, eszkozok)
+    import olvasoi_kapu as OK
+    return OK
+
+
+def _e34_lekerdez():
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import lekerdez as L
+    return L
+
+
+def _e34_karoli(L):
+    """{konyv: [(fejezet, vers, szoveg), ...]} a Karoli_1908.tsv-bol (split('\t'), nem csv)."""
+    ut = os.path.join(ROOT, *E34_KAROLI.split('/'))
+    kulcs = (ut, os.path.getmtime(ut))
+    if kulcs in _E34_KAROLI_CACHE:
+        return _E34_KAROLI_CACHE[kulcs]
+    konyvek = {}
+    with open(ut, 'r', encoding='utf-8') as f:
+        next(f, None)
+        for sor in f:
+            mezok = sor.rstrip('\n').split('\t')
+            if len(mezok) < 2:
+                continue
+            try:
+                konyv, fej, vers = L.parse_igehely(mezok[0])
+            except ValueError:
+                continue
+            konyvek.setdefault(konyv, []).append((fej, vers, mezok[1]))
+    _E34_KAROLI_CACHE.clear()
+    _E34_KAROLI_CACHE[kulcs] = konyvek
+    return konyvek
+
+
+def _e34_vers_szoveg(L, karoli, igehely):
+    """Az igehely (vers vagy tartomany) Karoli-versei egybefuzve; ures, ha nem oldhato fel."""
+    try:
+        rng = L.parse_range(igehely)
+    except ValueError:
+        return ''
+    konyv = rng[1]
+    return ' '.join(sz for fej, vers, sz in karoli.get(konyv, []) if L.in_range(rng, konyv, fej, vers))
+
+
+def _e34_kiadott():
+    ut = os.path.join(ROOT, *E34_KIADASOK.split('/'))
+    if not os.path.exists(ut):
+        return set()
+    return {d.get('id', '') for _, d in dict_sorok_sorszammal(ut)}
+
+
+def e34_karoli_idezet(fajlok=None):
+    """E34: a `kapcsolodas` idezojeles reszlete nem a Karoli-vers szovege, es nincs
+    „saját fordítás” jeloles. HIBA a kiadott motivumon, egyebkent FIGYELMEZTETES."""
+    talalatok = []
+    ut = os.path.join(ROOT, *E34_TABLA.split('/'))
+    if not os.path.exists(ut) or not os.path.exists(os.path.join(ROOT, *E34_KAROLI.split('/'))):
+        return talalatok
+    OK = _e34_kapu()
+    L = _e34_lekerdez()
+    karoli = _e34_karoli(L)
+    kiadott = _e34_kiadott()
+    for sorszam, d in dict_sorok_sorszammal(ut):
+        szoveg = d.get('kapcsolodas', '')
+        if '"' not in szoveg and '„' not in szoveg:
+            continue
+        if E34_JELOLES.search(szoveg):
+            continue
+        vers = OK.normal_szoveg(_e34_vers_szoveg(L, karoli, d.get('igehely', '')))
+        if not vers:
+            continue
+        szint = 'HIBA' if d.get('id', '') in kiadott else 'FIGYELMEZTETES'
+        for m in OK.IDEZET_RX.finditer(szoveg):
+            if m.group(1):  # zarojeles glossza egy heber szo utan: nem versidezet
+                continue
+            idez = m.group(2) or m.group(3)
+            if len(OK.normal_szoveg(idez).split()) < E34_MIN_SZO:
+                continue
+            if OK.karoli_egyezik(idez, vers):
+                continue
+            talalatok.append(Talalat(
+                'E34', szint, E34_TABLA, sorszam,
+                '%s | %s -- „%s” nem a Károli-vers szövege, és nincs „saját fordítás” jelölés'
+                % (d.get('id', ''), d.get('igehely', ''), idez)))
+    return talalatok
+
+
+SZINT['E34'] = 'FIGYELMEZTETES'
+FAJLSZINTU_SZABALYOK.add('E34')
+HATOKOR_SZABALYOK.add('E34')
+SZABALYOK_FUGGVENYEI['E34'] = e34_karoli_idezet
+
+
+# ---------------------------------------------------------------------------
+# E35 -- a commitolt `nyilt_mag/` naprakesz (F169.3)
+# ---------------------------------------------------------------------------
+# Uj motivum, kiadas vagy adatvaltozas utan a nyilt mag exportja ujra kell generalodjon, es az ujragenerald
+# export a PR resze. Ha a PR modositja az `adat/*.tsv` tablait (koztuk a `kiadasok.tsv`-t) vagy az exportgeneratort,
+# a commitolt `nyilt_mag/` bajtazonos kell legyen azzal, amit a generator most eloallitana. HIBA, fajlszintu.
+# Ha a PR ezeket nem erinti, nem fut (egy mar elavult main nem a PR hibaja). A Zenodo uj valtozata nem a PR resze:
+# az a felhasznalo lepese.
+E35_KIVALTO = re.compile(r'^(?:adat/[^/]+\.tsv|eszkozok/nyilt_mag_export\.py)$')
+E35_CSOMAG = 'nyilt_mag'
+
+
+def e35_kivalto_fajlok(valtozott):
+    return [f.replace('\\', '/') for f in valtozott if E35_KIVALTO.match(f.replace('\\', '/'))]
+
+
+def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None):
+    """E35: ha a PR adat-tablat vagy az exportgeneratort modositja, a commitolt `nyilt_mag/` egyezik az
+    ujragenerált exporttal (a lemezen levo fajlok halmaza es tartalma). `export_fn(kimenet) -> {rel: szoveg}`
+    csak a tesztben cserelheto."""
+    if teljes:
+        return []
+    kivalto = e35_kivalto_fajlok(valtozott)
+    if not kivalto:
+        return []
+    root = root or ROOT
+    ut = os.path.join(root, E35_CSOMAG)
+    if not os.path.isdir(ut):
+        return []
+    if export_fn is None:
+        sys.path.insert(0, os.path.join(root, 'eszkozok'))
+        import nyilt_mag_export as _E
+        export_fn = lambda k: _E.export(k)[0]
+    uj = export_fn(E35_CSOMAG)
+    lemez = {}
+    for gyoker, _, nevek in os.walk(ut):
+        for n in nevek:
+            rel = os.path.relpath(os.path.join(gyoker, n), ut).replace('\\', '/')
+            with open(os.path.join(gyoker, n), encoding='utf-8', newline='') as f:
+                lemez[rel] = f.read()
+    ok = 'a PR modositja: %s' % ', '.join(sorted(kivalto)[:3])
+    talalatok = []
+    for rel in sorted(set(uj) | set(lemez)):
+        if rel not in lemez:
+            leir = 'az ujragenerált exportban van, a commitolt nyilt_mag/-ban nincs'
+        elif rel not in uj:
+            leir = 'a commitolt nyilt_mag/-ban van, az ujragenerált exportban nincs'
+        elif uj[rel] != lemez[rel]:
+            leir = 'a commitolt fajl nem egyezik az ujragenerálttal'
+        else:
+            continue
+        talalatok.append(Talalat('E35', SZINT['E35'], E35_CSOMAG + '/' + rel, 0,
+                                 '%s (%s); futtasd: python eszkozok/nyilt_mag_export.py, es commitold' % (leir, ok)))
+    return talalatok
+
+
+SZINT['E35'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E35')

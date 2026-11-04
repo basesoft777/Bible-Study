@@ -81,11 +81,32 @@ class Kiegeszito2b(unittest.TestCase):
         ki = LG.adatres_2b(tok, [hiv('G2564', 'MCGED'), hiv('G0994', 'MCGED'), hiv('G1941', 'MCGED')])
         self.assertLess(ki.index('G1941'), ki.index('G0994'))
         self.assertLess(ki.index('G0994'), ki.index('G2564'))
-        self.assertTrue(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]).startswith('*Nincs a szerepmátrixon'))
+        self.assertEqual(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]), '')
 
     def test_ures(self):
-        ki = LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')])
-        self.assertTrue(ki.startswith('*Nincs a szerepmátrixon'))
+        # DT-F174a: adat nélkül üres -- a rés nem kerül a lapra (res_ures_e)
+        self.assertEqual(LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')]), '')
+
+    def test_ures_res_torzs(self):
+        eredeti = LG.ADAT_RES_RENDEREK['2b']
+        try:
+            LG.ADAT_RES_RENDEREK['2b'] = lambda mid, sorai: ''
+            ki = LG.res_torzs({'id': 'PROBA-001'}, '2b', {'forras': 'adat', 'tanulmany': ''}, [])
+        finally:
+            LG.ADAT_RES_RENDEREK['2b'] = eredeti
+        self.assertEqual(ki, '')
+
+    def test_res_ures_e(self):
+        self.assertTrue(LG.res_ures_e('2b', ''))
+        self.assertTrue(LG.res_ures_e('2b', 'Nincs kiegészítő szótári adat.'))
+        regi = ('<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: x -->\n\n'
+                + LG.SZERKEZETI_HELYORZOK['2b'][1]
+                + '\n\n*Proveniencia: `scope=id:X-001 | forras=x | ts=2026-11-03`*')
+        self.assertTrue(LG.res_ures_e('2b', regi))
+        self.assertFalse(LG.res_ures_e('2b', '**MCGED G1941 — (részlet)**\n\n> x'))
+        # nem opcionális rés kimondott üres eredménye nem szerkezeti blokk (CLAUDE.md 3. szabály)
+        self.assertFalse(LG.res_ures_e('alatamasztas', ''))
+        self.assertFalse(LG.res_ures_e('minosites', LG.SZERKEZETI_HELYORZOK['2b'][0]))
 
 
 class Minosites(unittest.TestCase):
@@ -96,7 +117,8 @@ class Minosites(unittest.TestCase):
 
     def test_megerosites_es_jeloltek(self):
         kh = {LG.L.to_step('ApCsel 2:21'): [{'Kapcsolódó igehely magyar megjelenítése': 'Jóel 2,32'}]}
-        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'nincs | ige'),
+        # F123.EGYEB óta a be nem sorolható elutasítási ok megállítja a generálást: a próba indoka besorolható
+        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'tartalmilag NEM releváns | ige'),
                jelolt('Zsolt 9:9', 'scan G1941', 'nyitva'),
                jelolt('Róm 10:12', 'Károli-KH ApCsel 2:21', 'beépítve'),
                jelolt('Mt 1:1', 'TSK x', 'elutasítva', mid='MAS-001')]
@@ -108,14 +130,29 @@ class Minosites(unittest.TestCase):
         self.assertNotIn('→ Róm 10:11 —', ki)      # cél nem előfordulás
         self.assertIn('(2 sor; beépítve 1, elutasítva 1)', ki)
         self.assertIn('<details>', ki)   # DT-F152a (b): csukva
-        self.assertIn('| Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19) | nincs \\| ige |', ki)
+        # F123.INDOKLAS: az 1/b. olvasói formája; a nyers forrás és az indoklás ` | ` utáni része lábjegyzetben
+        self.assertIn('| Igehely | Miért lett jelölt | Döntés és indok |', ki)
+        self.assertIn('| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^mj1] | '
+                      '**elutasítva** — ', ki)
+        self.assertIn('[^mj1]: forrás: `TSK Jóel 2:32 → Róm 10:11 (19)` · ige', ki)
+        self.assertIn('| Róm 10:12 | Károli-kereszthivatkozás[^mj2] | **beépítve**: ok |', ki)
         self.assertNotIn('scan G1941', ki)
         self.assertNotIn('Mt 1:1', ki)
+
+    def test_jelolt_tabla_dontes_ref_labjegyzetben(self):
+        """F123.INDOKLAS: a döntés gépi nyoma (`dontes_ref`) a lábjegyzetben, nem a táblacellában."""
+        j = dict(jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva',
+                        'a név nélküli forma nem tartozik ide'), dontes_ref='DT476 K2 · scope=manual | '
+                                                                            'forras=DONTESEK.md DT476 | ts=2026-11-01')
+        sorok, labj = LG.minosites_jelolt_sorok('PROBA-001', [j])
+        self.assertNotIn('DT476', sorok[0])
+        self.assertIn(': a név nélküli forma nem tartozik ide |', sorok[0])
+        self.assertIn('a döntés nyoma: `DT476 K2 · scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01`', labj[0])
 
     def test_ures(self):
         ki = LG.adatres_minosites('PROBA-001', ['Mt 1:1'], [], {}, {})
         self.assertIn('**Független megerősítés:** nincs', ki)
-        self.assertIn('**Kereszthivatkozásból minősített jelölt:** nincs', ki)
+        self.assertIn('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs', ki)
 
 
 class ResTorzsAdatAg(unittest.TestCase):
@@ -143,6 +180,56 @@ class ResTorzsAdatAg(unittest.TestCase):
         self.assertEqual((i, talalt), (2, '### Minősítés *(kézi)*'))
         with self.assertRaises(ValueError):
             LG._boundary_index(szoveg, '### Alátámasztás *(generált)*', 0, 'alatamasztas')
+
+    def test_hatarkereses_jeloles_nelkuli_fejlec(self):
+        """DT-F181c: a jelölés nélküli fejléc a régi, jelölt fejlécet is megtalálja, csak teljes sorként."""
+        szoveg = 'x\n#### Minősítés más\n### Minősítés *(generált)*\n\ny\n## 6. Értelmezés\n'
+        i, talalt = LG._boundary_index(szoveg, '### Minősítés', 0, 'minosites')
+        self.assertEqual(talalt, '### Minősítés *(generált)*')
+        self.assertEqual(i, szoveg.index('### Minősítés *(generált)*'))
+        self.assertEqual(LG._boundary_index(szoveg, '## 6. Értelmezés *(kézi)*', 0, 'ertelmezes')[1], '## 6. Értelmezés')
+
+    def test_cimjeloles_ki(self):
+        szoveg = '## Kivonat *(kézi)*\n\nA *(kézi)* szó a prózában marad.\n```\n## x *(kézi)*\n```\n### 2/b *(kézi, ha van)*\n'
+        self.assertEqual(LG.cimjeloles_ki(szoveg),
+                         '## Kivonat\n\nA *(kézi)* szó a prózában marad.\n```\n## x *(kézi)*\n```\n### 2/b\n')
+
+    def test_szerzoseg_mondat(self):
+        """DT-F181c: a Kolofon szerzőségi mondata adatból (modell, átnézés, `manual`, nincs kiadva)."""
+        res = {('X-001', 'kivonat'): {'fejlec': '## Kivonat', 'forras': 'tanulmany'},
+               ('X-001', 'ertelmezes'): {'fejlec': '## 6. Értelmezés *(kézi)*', 'forras': 'tanulmany'},
+               ('X-001', 'minosites'): {'fejlec': '### Minősítés', 'forras': 'adat'}}
+        nincs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nincs_ilyen.tsv')
+        m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'claude-opus-5-5'}], atnezes_ut=nincs, res_sorok=res)
+        self.assertEqual(m, 'Az értelmező szakaszokat (Kivonat, Értelmezés) mesterséges intelligencia (`claude-opus-5-5`) '
+                            'írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált.')
+        m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'manual'}], atnezes_ut=nincs, res_sorok=res)
+        self.assertIn('nem rögzíti modellnévvel (kézi rögzítés, `manual`)', m)
+        self.assertNotIn('mesterséges intelligencia', m)
+        m = LG.kolofon_szerzoseg('X-001', [], atnezes_ut=nincs, res_sorok=res)
+        self.assertIn('még nincsenek kiadva', m)
+
+    def test_szerzoseg_atnezes_idezet_nelkul(self):
+        """Az átnézésből csak a tény és a dátum kerül a lapra; az `idezet` (a felhasználó szavai) soha."""
+        import tempfile
+        res = {('X-001', 'kivonat'): {'fejlec': '## Kivonat', 'forras': 'tanulmany'}}
+        with tempfile.TemporaryDirectory() as d:
+            ut = os.path.join(d, 'lap_atnezesek.tsv')
+            with open(ut, 'w', encoding='utf-8') as f:
+                f.write('# fejléc\nid\tlap_commit\tdatum\tki\tidezet\tforras\n'
+                        'X-001\tabc\t2026.11.03\tfelhasználó\tha nincs bukás rendben van\tscope=manual\n'
+                        'X-001\tdef\t2026.11.04\tfelhasználó\tkiadás mehet\tscope=manual\n'
+                        'Y-001\tghi\t2026.11.05\tfelhasználó\tmás lap\tscope=manual\n')
+            m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'claude-opus-5-5'}], atnezes_ut=ut, res_sorok=res)
+        self.assertIn('a szerző átnézte (2026.11.04) és jóváhagyta', m)
+        for idezet in ('ha nincs bukás', 'kiadás mehet', 'más lap', 'rendben van'):
+            self.assertNotIn(idezet, m)
+
+    def test_elso_tagmondat_zarojelen_kivul(self):
+        """F123.GENKOR (C2/C3): a vázlatsor zárójelen belül nem vág, és nyitott zárójel nem marad."""
+        self.assertEqual(LG._elso_tagmondat('= emlékjel Ézs 55:13 (|| אוֺת; így Che), וגו 56:5; tovább'),
+                         '= emlékjel Ézs 55:13 (|| אוֺת; így Che), וגו 56:5')
+        self.assertEqual(LG._elso_tagmondat('megidéztetni (vö. Qal 5'), 'megidéztetni…')
 
     def test_renderelo_nelkuli_res_hiba(self):
         with self.assertRaises(ValueError):
@@ -220,8 +307,8 @@ class KolofonNaploCella(unittest.TestCase):
         self.assertNotIn('tematikus_lezart', ki)
 
     def test_nincs_sehol_es_nincs_terkep(self):
-        self.assertEqual(LG.kolofon_naplo_cella('HIANY-001'), LG.EM_DASH)
-        self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.EM_DASH)
+        self.assertEqual(LG.kolofon_naplo_cella('HIANY-001'), LG.NINCS_ROGZITVE)
+        self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.NINCS_ROGZITVE)
 
 
 class KolofonKiadas(unittest.TestCase):
@@ -256,7 +343,11 @@ class KolofonKiadas(unittest.TestCase):
         self.assertIn('| 2 | 2026.11.09 | A lektor kérdései nyomán javított prózák. |', jegyzek)
 
     def test_sor_nelkul_nincs_kiadas_sor(self):
-        self.assertEqual(LG.kolofon_kiadas_sorok([]), ([], []))
+        meta, jegyzek = LG.kolofon_kiadas_sorok([])
+        self.assertEqual(meta, ['| Kiadás | nincs kiadva — feldolgozás alatt |',
+                                '| Próza modellje | nincs kiadva — feldolgozás alatt |'])
+        self.assertEqual(jegyzek[0], '**Változásjegyzék**')
+        self.assertIn('Még nincs kiadás', jegyzek[-1])
 
     def test_hianyzo_fajl(self):
         self.assertEqual(LG.kolofon_kiadasok('ELO-001', os.path.join(self.tmp, 'nincs.tsv')), [])
@@ -265,6 +356,67 @@ class KolofonKiadas(unittest.TestCase):
         sorok = LG.kolofon_kiadasok('ISTENTISZT-001')
         self.assertEqual(sorok[0]['kiadas'], '1')
         self.assertEqual(sorok[0]['proza_modell'], 'manual')
+
+
+class KolofonLektoralas(unittest.TestCase):
+    """F123.LAPJAVIT (DT-F123f, SEMA 2.49): a Kolofon „Emberi lektorálás” sora az `adat/lap_javitasok.tsv`-ből;
+    sor nélkül nem áll semmi."""
+
+    FEJ = ['id', 'hely', 'tipus', 'gond', 'regi', 'uj', 'javasolta', 'jovahagyta', 'datum', 'proveniencia']
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix='teszt_lektoralas_')
+        self.ut = os.path.join(self.tmp, 'lap_javitasok.tsv')
+        T, N = chr(9), chr(10)
+
+        def sor(id_, tipus, jovahagyta, datum):
+            return T.join([id_, '1/a', tipus, 'homályos', 'régi', 'új', 'claude-opus-5-5', jovahagyta, datum,
+                           'scope=manual | forras=chat | ts=x'])
+        with open(self.ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(N.join(['# megjegyzés', T.join(self.FEJ),
+                            sor('HODIT-001', 'próza', 'felhasználó', '2026.11.05'),
+                            sor('HODIT-001', 'adat', 'Kiss Péter', '2026.11.04'),
+                            sor('HODIT-001', 'próza', 'felhasználó', '2026.11.04'),
+                            sor('HODIT-001', 'generátor', 'felhasználó', '2026.11.06'),
+                            sor('MAS-001', 'próza', 'felhasználó', '2026.11.01')]) + N)
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_sor_szamol_es_rendez(self):
+        self.assertEqual(LG.kolofon_lektoralas('HODIT-001', self.ut),
+                         '| Emberi lektorálás | 3 hely (2026.11.04, 2026.11.05); lektorálók: Kiss Péter, felhasználó |')
+
+    def test_csak_generator_sor_nem_ir(self):
+        with open(self.ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(chr(9).join(self.FEJ) + chr(10) + chr(9).join(
+                ['HODIT-001', 'x', 'generátor', 'pontatlan', 'a', 'b', 'c', 'felhasználó', '2026.11.04', 'm']) + chr(10))
+        self.assertIsNone(LG.kolofon_lektoralas('HODIT-001', self.ut))
+
+    def test_sor_nelkul_es_hianyzo_fajl(self):
+        self.assertIsNone(LG.kolofon_lektoralas('NINCS-001', self.ut))
+        self.assertIsNone(LG.kolofon_lektoralas('HODIT-001', os.path.join(self.tmp, 'nincs.tsv')))
+
+    def test_blokk_kolofon(self):
+        """A generált Kolofon-blokk a sort a metaadat-táblában hordozza, és a táblát a forráslistába veszi;
+        sor nélkül egyik sem áll."""
+        import general as G
+        _, motivumok = G.tsv_beolvas(os.path.join(LG.ADAT, 'motivumok.tsv'))
+        m = next(r for r in motivumok if r['id'] == 'HODIT-001')
+        regi = LG.LAP_JAVITASOK_TSV
+        try:
+            LG.LAP_JAVITASOK_TSV = self.ut
+            blokk = LG.blokk_kolofon(m, [])
+            self.assertIn('| Emberi lektorálás | 3 hely', blokk)
+            self.assertIn('adat/lap_javitasok.tsv', blokk)
+            LG.LAP_JAVITASOK_TSV = os.path.join(self.tmp, 'nincs.tsv')
+            blokk = LG.blokk_kolofon(m, [])
+            self.assertNotIn('Emberi lektorálás', blokk)
+            self.assertNotIn('lap_javitasok', blokk)
+        finally:
+            LG.LAP_JAVITASOK_TSV = regi
 
 
 class GeneraltFejlec(unittest.TestCase):

@@ -10,9 +10,10 @@ irja a harom JSON-t (kimenet reteg; kezzel szerkeszteni tilos):
 
     feed_belso.json       a muhely reszletesen (talalatok, hibaszovegek, nyitott DT-k, PR-ok)
     feed_nyilvanos.json   a belso FEHERLISTAS szurese (csak a nevesitett mezok mennek at)
-    stash.json            a kesz (8/8 zold) motivumok leirasa es statja
+    stash.json            a kesz (minden kapu zold) motivumok leirasa es statja
 
-A "kesz" a 8 pontos kriteriumbol szamolodik (F156 brief 3.2), NEM a motivumok.tsv `statusz` mezojebol.
+A "kesz" a 9 pontos kriteriumbol szamolodik (F156 brief 3.2; a 9. kapu, az olvasoi kapu: DT-F156k),
+NEM a motivumok.tsv `statusz` mezojebol.
 Hianyzo vagy hibaval leallo mero soha nem zold ("nincs_mero" / "hiba").
 
 Hasznalat:
@@ -46,9 +47,12 @@ KRITERIUMOK = [
     (4, 'nincs nyitott jelölt'),
     (5, 'határ: 0 nyitott kérdés'),
     (6, 'olvasói blokkok, kiejtés, fordítás, 1/a próza'),
-    (7, 'nincs nyitott lektori kérdés'),
+    (7, 'a lektori kör lefutott'),
     (8, 'nincs nyitott DT / ⛔ feladat'),
+    (9, 'olvasói kapu: 0 BUKÁS + a felhasználó vizuális átnézése'),
 ]
+SZAMSZO = {8: 'nyolc', 9: 'kilenc', 10: 'tíz'}
+KAPU_SZO = SZAMSZO[len(KRITERIUMOK)]
 
 # a nyilvanos reteg feherlistaja: csak ezek a mezok mennek at
 FEHERLISTA_MOTIVUM = ['id', 'cim', 'tema', 'pardes_szint', 'allasfokozat', 'lanc', 'teljesult_lepesek', 'zold_db',
@@ -59,7 +63,7 @@ FEHERLISTA_KRITERIUM = ['sorszam', 'olvasoi_nev', 'olvasoi_szoveg']
 FEHERLISTA_ESEMENY = ['datum', 'motivum', 'olvasoi_esemeny']
 FEHERLISTA_STASH = ['cim', 'tema', 'pardes_szint', 'negativ_kriterium', 'folerendelt_fogalom', 'terjedelem_szo', 'kotet', 'elofordulas_osz', 'elofordulas_usz',
                     'kapcsolatok_db', 'forditasi_lefedettseg', 'utolso_generalas_commit',
-                    'verzio', 'kotet_olvasoi']
+                    'verzio', 'kotet_olvasoi', 'kiadas_allapot']
 FEHERLISTA_TOP = ['_generalt', 'generalva', 'commit', 'rendszer', 'motivumok', 'merok_osszesen', 'heti_tortenes',
                   'elvetett_jeloltek_osszesen']
 
@@ -116,7 +120,7 @@ def uj(allapot, ertek, mero, motivum, reszlet=None, szam=None):
 # --- olvasói megfogalmazás (DT-F156f, jóváhagyva: "Igen, így"); a nyilvános réteg csak ezeket mutatja ---
 OLV_NEV = {1: 'Az adatok összhangja', 2: 'A szövegek ellenőrzése', 3: 'Egy szerkesztett forrásból épül',
            4: 'Eldöntendő igehelyek', 5: 'A motívum határa', 6: 'Olvasható lap', 7: 'Lektori átolvasás',
-           8: 'Függő munka'}
+           8: 'Függő munka', 9: 'Olvasói átnézés'}
 OLV_ALLAPOT = {ZOLD: 'rendben', PIROS: 'munka van hátra', NINCS: 'még nem vizsgáltuk',
                HIBA: 'az ellenőrzés nem futott le, újra próbáljuk'}
 OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek.',
@@ -126,11 +130,13 @@ OLV_ZOLD = {1: 'Az adattáblák egymásnak megfelelnek.',
             5: 'A motívum határa tisztázott.',
             6: 'A lap minden része magyarázattal, kiejtéssel és fordítással áll, minden igehely alatt magyarázattal.',
             7: 'A lektori átolvasás lezárult.',
-            8: 'A motívum körül minden kérdés rendezett.'}
+            8: 'A motívum körül minden kérdés rendezett.',
+            9: 'A lapot gépi és emberi szemmel is átolvastuk.'}
 OLV_NINCS = {1: 'Az adatellenőrzés még nem futott.', 2: 'Az ellenőrzés még nem futott.',
              3: 'A lap még nincs egy forrásba rendezve.', 4: 'Az igehelyek vizsgálata még nem indult el.',
              5: 'A határ vizsgálata még nem készült el.', 6: 'A lap még nem készült el.',
-             7: 'A lektori átolvasás még nem indult el.', 8: 'A függő munka még nem vizsgált.'}
+             7: 'A lektori átolvasás még nem indult el.', 8: 'A függő munka még nem vizsgált.',
+             9: 'A lap olvasói átnézése még nem indult el.'}
 OLV_ALLAS = {'jelölt': 'Felmerült', 'feldolgozás': 'Feldolgozás alatt',
              'ellenőrzés': 'Ellenőrzés alatt',
              'lezárt (stash)': 'Kész', 'kötetben': 'Megjelent a kötetben'}
@@ -172,16 +178,21 @@ def olvasoi_kapu(k):
     if sz == 7:
         s = '%d lektori kérdés vár válaszra.' % n.get('n', 0)
         return s + ' 2. kiadáshoz: %d kérdés.' % n['kiadas2'] if n.get('kiadas2') else s
+    if sz == 9:
+        reszek = ['%d olvasói hiba van a lapon' % n['n']] if n.get('n') else []
+        if not n.get('atnezes'):
+            reszek.append('a lap emberi átnézése még hátravan')
+        return (', '.join(reszek) + '.').capitalize() if reszek else 'A lap még javításra vár.'
     return '%d kapcsolódó munka vagy kérdés vár megoldásra.' % n.get('n', 0)
 
 
 def olvasoi_mondat(feldolgozva, vizsgalat, kizarva, teljesul):
-    """`N igehely feldolgozva, M vizsgálat alatt, K kizárva; a nyolc ellenőrzési lépésből Z teljesül.`"""
+    """`N igehely feldolgozva, M vizsgálat alatt, K kizárva; a kilenc ellenőrzési lépésből Z teljesül.`"""
     reszek = ['%d igehely feldolgozva' % feldolgozva,
               '%d vizsgálat alatt' % vizsgalat if vizsgalat else 'nincs vizsgálat alatt álló igehely']
     if kizarva:
         reszek.append('%d kizárva' % kizarva)
-    return ', '.join(reszek) + '; a nyolc ellenőrzési lépésből %d teljesül.' % teljesul
+    return ', '.join(reszek) + '; a %s ellenőrzési lépésből %d teljesül.' % (KAPU_SZO, teljesul)
 
 
 LANC = ['Felmerült', 'Feldolgozás', 'Ellenőrzés', 'Kész', 'Kötetben']
@@ -189,11 +200,11 @@ LANC_FOK = {'jelölt': 0, 'feldolgozás': 1, 'ellenőrzés': 2, 'lezárt (stash)
 
 
 def olvasoi_mondat_nyilvanos(feldolgozva, kizarva, teljesul):
-    """Csak előrehaladás: `N igehely feldolgozva, K kizárva; a nyolc ellenőrzési lépésből Z teljesül.`"""
+    """Csak előrehaladás: `N igehely feldolgozva, K kizárva; a kilenc ellenőrzési lépésből Z teljesül.`"""
     reszek = ['%d igehely feldolgozva' % feldolgozva]
     if kizarva:
         reszek.append('%d kizárva' % kizarva)
-    return ', '.join(reszek) + '; a nyolc ellenőrzési lépésből %d teljesül.' % teljesul
+    return ', '.join(reszek) + '; a %s ellenőrzési lépésből %d teljesül.' % (KAPU_SZO, teljesul)
 
 
 def lanc(fok):
@@ -406,12 +417,67 @@ def kriterium_7(motivum):
     if sorok is None:
         return uj(NINCS, 'nincs naplok/LEKTOR_%s.tsv (a lektori kérdések még nincsenek generálva)' % motivum, mero,
                   motivum)
-    nyitott = [s for s in sorok if not lektor_zart(s) and not masodik_kiadas(s)]
-    kiadas2 = [s for s in sorok if not lektor_zart(s) and masodik_kiadas(s)]
-    return uj(PIROS if nyitott else ZOLD, '%d nyitott, %d megválaszolt lektori kérdés, 2. kiadáshoz %d' % (
-              len(nyitott), len(sorok) - len(nyitott) - len(kiadas2), len(kiadas2)), mero, motivum,
-              [s.get('kerdes_id', '') for s in nyitott] + ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in kiadas2],
-              {'n': len(nyitott), 'kiadas2': len(kiadas2)})
+    # DT-F123j (a lépésszám-szabály): a kapu azt mondja ki, hogy a lektori kör lefutott; a megválaszolatlan lektori
+    # kérdés a 2. kiadás bemenete, nem gátol
+    nyitott = [s for s in sorok if not lektor_zart(s)]
+    kiadas2 = [s for s in nyitott if masodik_kiadas(s)]
+    return uj(ZOLD, 'a lektori kör lefutott: %d megválaszolt, a 2. kiadás bemenete %d' % (
+              len(sorok) - len(nyitott), len(nyitott)), mero, motivum,
+              ['2. kiadáshoz: ' + s.get('kerdes_id', '') for s in nyitott],
+              {'n': 0, 'kiadas2': len(nyitott)})
+
+
+ATNEZES_TABLA = 'adat/lap_atnezesek.tsv'
+
+
+def lap_commit(motivum):
+    """A lap utolsó változásának commitja (teljes hash); None, ha nincs a git-történetben."""
+    rc, o, _ = futtat(['git', 'log', '-1', '--format=%H', '--', 'lexikon/%s_TUDOMANYOS.md' % motivum])
+    return o.strip() or None if rc == 0 else None
+
+
+def atnezes_ervenyes(sor, motivum, commit):
+    """SEMA 2.48, DT-F156l: a sor a lap mai commitjáról szól (legalább 7 jegyű előtag), a `ki` a felhasználó, és az
+    `idezet` a felhasználó szavai (nem üres). Session vagy modell nem írhat érvényes sort a felhasználó idézete nélkül."""
+    lc = (sor.get('lap_commit') or '').strip()
+    return (sor.get('id') == motivum and len(lc) >= 7 and commit.startswith(lc)
+            and (sor.get('ki') or '').strip() == 'felhasználó' and bool((sor.get('idezet') or '').strip()))
+
+
+def vizualis_atnezes(motivum):
+    """A felhasználó vizuális átnézése a lap MAI változatáról: a tábla érvényes sora, vagy None.
+    Az átnézés a lap commitjához kötött: ha a lap azóta újragenerálódott, a régi átnézés nem érvényes."""
+    if not os.path.exists(os.path.join(GYOKER, ATNEZES_TABLA)):
+        return None
+    commit = lap_commit(motivum)
+    if not commit:
+        return None
+    for s in tsv(ATNEZES_TABLA):
+        if atnezes_ervenyes(s, motivum, commit):
+            return s
+    return None
+
+
+def kriterium_9(motivum):
+    """DT-F156k: az olvasói kapu. Zöld, ha a lapon 0 BUKÁS (`olvasoi_kapu.py`) ÉS a lap mai változatáról
+    rögzített a felhasználó vizuális átnézése. A FIGYELMEZTETÉS nem blokkol."""
+    mero = 'olvasoi_kapu.py + vizuális átnézés (%s)' % ATNEZES_TABLA
+    if not os.path.exists(os.path.join(GYOKER, 'lexikon', motivum + '_TUDOMANYOS.md')):
+        return uj(NINCS, 'nincs lexikon-lap', mero, motivum)
+    try:
+        import olvasoi_kapu as OK
+        tal, megj = OK.motivum_meres(motivum)
+        kapunkent, buk, figy = OK.osszesit(tal)
+        atnez = vizualis_atnezes(motivum)
+    except Exception as ex:  # noqa: BLE001 -- a mero hibaja "hiba", nem nulla
+        return uj(HIBA, 'a mérő hibával állt le', mero, motivum, [repr(ex)[:300]])
+    reszlet = ['%s: BUKÁS %d, FIGYELMEZTETÉS %d' % (k, v[OK.BUKAS], v[OK.FIGY]) for k, v in sorted(kapunkent.items())]
+    reszlet += megj
+    reszlet.append('vizuális átnézés: %s' % ('%s, %s' % (atnez.get('datum', ''), atnez.get('ki', '')) if atnez
+                                             else 'nincs a lap mai változatáról'))
+    e = uj(ZOLD if buk == 0 and atnez else PIROS, '%d BUKÁS, %d FIGYELMEZTETÉS, átnézés: %s' % (
+        buk, figy, 'van' if atnez else 'nincs'), mero, motivum, reszlet, {'n': buk, 'figy': figy, 'atnezes': int(bool(atnez))})
+    return e
 
 
 # ----------------------------------------------------------------------------- feladatok, DT-k
@@ -441,8 +507,9 @@ def feladat_fejlecek():
 def nyitott_dt():
     """DONTESEK.md tablasorai: azonosito, feladatszam, allapot (🟡 nyitott), kerdes eleje."""
     ki = []
-    with open(os.path.join(GYOKER, 'DONTESEK.md'), encoding='utf-8') as f:
-        for s in f:
+    import dontes_nezet as DN   # egyesitett nezet: a dontesek/uj/*.md sorai is
+    if True:
+        for s in DN.dontesek_szoveg(GYOKER).splitlines():
             if not s.startswith('| DT'):
                 continue
             m = [x.strip() for x in s.split('|')]
@@ -545,6 +612,29 @@ def usz_konyvek():
     return set()
 
 
+def kiadas_szam(motivum):
+    """A motívum legnagyobb kiadásszáma az `adat/kiadasok.tsv`-ből (SEMA 2.46); 0, ha nincs kiadása."""
+    try:
+        return max((int(s['kiadas']) for s in tsv('adat/kiadasok.tsv') if s.get('id') == motivum), default=0)
+    except (OSError, ValueError):
+        return 0
+
+
+def kiadas_allapot(kiadas, minden_zold):
+    """DT-F156m: a kiadott lap a Stash-ben marad; ha egy kapu (pl. a 9.) azóta piros, ezt kimondja."""
+    if not kiadas:
+        return None
+    elso = '%s %d. kiadás érvényes' % (nevelo(kiadas).capitalize(), kiadas)
+    if minden_zold:
+        return elso + '.'
+    return '%s; %s %d. kiadás javítandói nyitottak.' % (elso, nevelo(kiadas + 1), kiadas + 1)
+
+
+def nevelo(n):
+    """A számnév előtti névelő: az 1., 5., 50. … előtt „az” (egy, öt, ötven), egyébként „a”."""
+    return 'az' if str(n)[0] in '15' else 'a'
+
+
 def stash_adat(m, kriteriumok, elofordulasok, kapcsolatok, usz, commit_lapon):
     sajat = [e for e in elofordulasok if e['id'] == m['id']]
     osz = sum(1 for e in sajat if e['igehely'].split(' ')[0] not in usz)
@@ -590,8 +680,8 @@ def heti_tortenes(jeloltek, motivumok, nap=7):
     return sorted(ki, key=lambda x: x['datum'], reverse=True)
 
 
-def allasfokozat(m, zold_db, ossz_db, kriteriumok):
-    if zold_db == ossz_db:
+def allasfokozat(m, zold_db, ossz_db, kriteriumok, kiadas=0):
+    if zold_db == ossz_db or kiadas:  # DT-F156m: a kiadott lap kész marad, a következő kiadás javítandóival
         return 'lezárt (stash)'
     if m['statusz'] == 'feldolgozás alatt':
         return 'feldolgozás'
@@ -652,7 +742,7 @@ def main():
         krit = {
             '1': kriterium_1(mid, blokkok, rc1, hiba1), '2': kriterium_2(mid), '3': kriterium_3(mid),
             '4': kriterium_4(mid, jeloltek), '5': kriterium_5(mid), '6': kriterium_6(mid),
-            '7': kriterium_7(mid), '8': kriterium_8(mid, fejlecek, dt_lista),
+            '7': kriterium_7(mid), '8': kriterium_8(mid, fejlecek, dt_lista), '9': kriterium_9(mid),
         }
         lista = []
         for sz, nev in KRITERIUMOK:
@@ -669,20 +759,23 @@ def main():
         rc, o, _ = futtat(['git', 'log', '-1', '--format=%h', '--', 'lexikon/%s_TUDOMANYOS.md' % mid])
         lapon = o.strip() if rc == 0 and o.strip() else None
         st = stash_adat(m, krit, elofordulasok, kapcsolatok, usz, lapon)
+        kiadas = kiadas_szam(mid)
+        st['kiadas_allapot'] = kiadas_allapot(kiadas, zold_db == len(lista))
+        stashben = zold_db == len(lista) or bool(kiadas)
         e = {
             'id': mid, 'cim': m['ui_cimke'] or m['cim'], 'tema': m['tema'], 'pardes_szint': m['pardes_szint'],
-            'allasfokozat': allasfokozat(m, zold_db, len(lista), krit),
-            'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit)],
+            'allasfokozat': allasfokozat(m, zold_db, len(lista), krit, kiadas),
+            'allasfokozat_olvasoi': OLV_ALLAS[allasfokozat(m, zold_db, len(lista), krit, kiadas)],
             'olvasoi_mondat_nyilvanos': olvasoi_mondat_nyilvanos(st['elofordulas_osz'] + st['elofordulas_usz'], len(elv), zold_db),
             'olvasoi_mondat': olvasoi_mondat(st['elofordulas_osz'] + st['elofordulas_usz'],
                                              sum(1 for j in sajat_j if blokkolo_jelolt(j)), len(elv), zold_db),
-            'tsv_statusz': m['statusz'], 'tsv_statusz_eltérés': (m['statusz'] == 'publikálható') != (zold_db == 8),
+            'tsv_statusz': m['statusz'], 'tsv_statusz_eltérés': (m['statusz'] == 'publikálható') != (zold_db == len(KRITERIUMOK)),
             'kriteriumok': lista, 'zold_db': zold_db, 'ossz_db': len(lista),
             'nyitott_jelolt_db': sum(1 for j in sajat_j if blokkolo_jelolt(j)),
             'nyitott_motivumkozi_db': sum(1 for j in sajat_j if j['dontes'] == 'nyitva' and not blokkolo_jelolt(j)),
             'elvetett_jelolt_db': len(elv),
             'beepitett_jelolt_db': sum(1 for j in sajat_j if j['dontes'].startswith('beépít')),
-            'stash': st if zold_db == len(lista) else None,
+            'stash': st if stashben else None,
             # --- csak belso ---
             'stash_jelolt': st,
             'elvetett_jeloltek': [j['igehely'] for j in elv],
@@ -710,10 +803,11 @@ def main():
     stash = {
         '_generalt': '%s — GENERÁLT, kézzel szerkeszteni tilos; stash.json' % SCRIPT,
         'generalva': belso['generalva'], 'commit': commit,
-        'kritérium': 'mind a 8 pont zöld (F156 3.2); a kötet-hozzárendelés nincs adatban (DT-F156d)',
-        'tetelek': [dict(feherlista(x['stash_jelolt'], FEHERLISTA_STASH), id=x['id']) for x in ki
-                    if x['zold_db'] == x['ossz_db']],
-        'kesz_db': belso['merok_osszesen']['kesz_db'],
+        'kritérium': 'mind a %d pont zöld (F156 3.2; a 9.: DT-F156k), vagy a lapnak van kiadása (DT-F156m: a '
+                     '`kiadas_allapot` mondja ki a következő kiadás nyitott javítandóit); a kötet-hozzárendelés nincs '
+                     'adatban (DT-F156d)' % len(KRITERIUMOK),
+        'tetelek': [dict(feherlista(x['stash'], FEHERLISTA_STASH), id=x['id']) for x in ki if x['stash']],
+        'kesz_db': sum(1 for x in ki if x['stash']),
     }
 
     os.makedirs(a.kimenet, exist_ok=True)
@@ -721,7 +815,8 @@ def main():
         with open(os.path.join(a.kimenet, nev), 'w', encoding='utf-8', newline='\n') as f:
             json.dump(tartalom, f, ensure_ascii=False, indent=1, sort_keys=False)
             f.write('\n')
-    print('kész: %d motívum, %d kész (8/8); kimenet: %s' % (len(ki), stash['kesz_db'], a.kimenet))
+    print('kész: %d motívum, %d a Stash-ben (%d/%d vagy kiadott); kimenet: %s' % (len(ki), stash['kesz_db'], len(KRITERIUMOK),
+                                                               len(KRITERIUMOK), a.kimenet))
 
 
 if __name__ == '__main__':

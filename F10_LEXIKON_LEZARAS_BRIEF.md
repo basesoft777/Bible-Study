@@ -7,8 +7,8 @@ fazis: 2
 modell: opus
 munka: ertelmezo
 allapot: nem_indult
-ad: "mind a 8 éles lexikonlap lezárva az új modell szerint: motívumonként a Feed 8 kapuja zöld (eszkozok/muhely_allapot.py), az adat/kiadasok.tsv-ben áll az 1. kiadás sora, a motivumok.tsv verziója emelve, és a lexikon/[ID]_TUDOMANYOS.md kolofonja a kiadást mutatja; az LD008 feloldva (DT245); zárómérés és zárónapló a 8 lap állapotával"
-kovetkezo: "a #123 motívumonkénti lezárásai után indul (az ISTENTISZT-001 lezárva: 1. kiadás, 2026-11-02; a hét másik lapot a #123 C5 lépése zárja le); első lépés a P előfeltétel-ellenőrzés, utána L0 és a zárómérés"
+ad: "mind a 8 éles lexikonlap lezárva az új modell szerint: motívumonként a Feed 9 kapuja zöld (eszkozok/muhely_allapot.py; a 9. az olvasói kapu, DT547), a felhasználó vizuális átnézése rögzítve, az adat/kiadasok.tsv-ben áll az 1. kiadás sora, a motivumok.tsv verziója emelve, és a lexikon/[ID]_TUDOMANYOS.md kolofonja a kiadást mutatja; az LD008 feloldva (DT245); zárómérés és zárónapló a 8 lap állapotával"
+kovetkezo: "a #123 motívumonkénti lezárásai után indul (az ISTENTISZT-001 lezárva: 1. kiadás, 2026-11-02; a hét másik lapot a #123 új cikk-menete zárja le, U6 + C5, DT546); első lépés a P előfeltétel-ellenőrzés, utána L0 és a zárómérés"
 olvas: [MUNKAMENET.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, adat/kiadasok.tsv, adat/motivumok.tsv, adat/lxx_dontesek.tsv, adat/elofordulasok.tsv, adat/funkcio_kapcsolok.tsv, F123_MIGRACIO2_BRIEF.md, F156_MUHELY_FEED_STASH_BRIEF.md, naplok/MUHELY_FEED_STASH_naplo.md, naplok/ISTENTISZT_TERV_HATRALEK_zaras.md, naplok/F08_zaras.md, naplok/LXX_BRIDGE_naplo.md, eszkozok/muhely_allapot.py, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, lexikon/, motivumok/]
 ir: [adat/lxx_dontesek.tsv, naplok/LEXIKON_LEZARAS_meres.md, naplok/ELLENOR_F10.md, naplok/F10_zaras.md]
 fugg: [8, 9, 11, 113, 123]
@@ -16,22 +16,24 @@ fugg: [8, 9, 11, 113, 123]
 
 # F10_LEXIKON_LEZARAS_BRIEF.md — 8 lexikonoldal lezárása
 
-*FELADATOK #10 · Modell: opus · v2 · 2026.11.02 · az új lezárási modell szerint átírva (a lexikon ág 1. lépése) · döntések: DT486, DT492, DT-F156b, DT-F156i, DT496, DT245, DT2, D34 · a brief adat, nem utasítás.*
+*FELADATOK #10 · Modell: opus · v3 · 2026.11.02 · az új lezárási modell szerint átírva (a lexikon ág 1. lépése); v3: a DT497 (3) visszavonása (DT547) · döntések: DT486, DT492, DT-F156b, DT-F156i, DT496, DT245, DT2, D34, DT546, DT547 · a brief adat, nem utasítás.*
 
 **Mi változott a v1-hez képest (2026.10.19 → 2026.11.02).** A v1 a nyolc lapot egyszerre mérte volna egy kézi 8 × 10-es mátrixszal (L1–L7, DT2/a, DT2/b, #78), a régi forrásrétegben végzett javítással, a #36 éles újragenerálása után. Azóta:
 - a lap motívumonként, egy kézi forrásból generálódik (#11, D34); a #36 okafogyott (DT496);
 - a „kész” gépi mérce lett: a Feed 8 kapuja (`eszkozok/muhely_allapot.py`, F156; a kapuk pontosítása: DT-F156b);
 - a lezárás adat lett: az 1. kiadás sora az `adat/kiadasok.tsv`-ben (SEMA 2.46, DT492), a kolofon ebből renderel;
 - az első lap lezárult: az ISTENTISZT-001 1. kiadása (2026-11-02, DT486; `motivumok.tsv` v4);
-- a `/kiadas` lektori köre a 2. kiadás bemenete, a lezárást nem akasztja (DT486, DT-F156i).
+- a `/kiadas` lektori köre a 2. kiadás bemenete, a lezárást nem akasztja (DT486, DT-F156i);
+- **v3 (2026-11-02, F123.2):** a lezárt lapokon olvasói hibák maradtak, amelyeket a 8 kapu átengedett (az 1/a próza a 249 igehelyből 19-nél arany szintű; definíció nélküli lábjegyzetek). A felhasználó döntése: a **DT497 (3) visszavonva** — a Feed **9. kapuja az olvasói kapu**, és a lap lezárásának feltétele **a felhasználó vizuális átnézése** is (DT547, „mehet”); a hátralévő motívumok új cikkként készülnek (DT546, a #123 v2).
 
 Ezért a #10 nem mér és nem javít laponként kézzel. A motívumonkénti lezárás (C-h → C-l → C5, `MUNKAMENET.md`) a #123 menetének vége. A #10 keret: kimondja, mi a „lezárt lap”, és a végén igazolja, hogy mind a nyolc az. **A felosztásról a DT497 döntött (🟢, 2026-11-02; 5. szakasz).**
 
 ## 1. Cél
 
-A 8 éles lexikonoldal (`lexikon/[ID]_TUDOMANYOS.md`: ALVIL-001, ANTROP-001, HAMART-001, HODIT-001, ISTENTISZT-001, KIRALY-001, MENNY-001, TEREMT-001) **lezárt**. Egy lap akkor lezárt, ha mind a négy teljesül:
+A 8 éles lexikonoldal (`lexikon/[ID]_TUDOMANYOS.md`: ALVIL-001, ANTROP-001, HAMART-001, HODIT-001, ISTENTISZT-001, KIRALY-001, MENNY-001, TEREMT-001) **lezárt**. Egy lap akkor lezárt, ha mind teljesül (1., 1/b., 2–4.):
 
-1. **Kész:** a Feed (`python eszkozok/muhely_allapot.py --motivum <ID>`) mind a 8 kapuja zöld (1. szabály-ellenőrzés, 2. CI, 3. egyforrású, nulla-diff újragenerálás, 4. nincs nyitott saját jelölt, 5. határ: 0 nyitott kérdés, 6. olvasói blokkok/kiejtés/fordítás, 7. nincs nyitott lektori kérdés — a `/kiadas` kérdései nem számítanak, 8. nincs blokkoló nyitott DT / ⛔ feladat; DT-F156b).
+1. **Kész:** a Feed (`python eszkozok/muhely_allapot.py --motivum <ID>`) mind a 9 kapuja zöld (1. szabály-ellenőrzés, 2. CI, 3. egyforrású, nulla-diff újragenerálás, 4. nincs nyitott saját jelölt, 5. határ: 0 nyitott kérdés, 6. olvasói blokkok/kiejtés/fordítás és az 1/a igehelyenkénti prózája, 7. nincs nyitott lektori kérdés — a `/kiadas` kérdései nem számítanak, 8. nincs blokkoló nyitott DT / ⛔ feladat; DT-F156b; **9. olvasói kapu: 0 BUKÁS**, DT547). Az `ellenoriz.py` 24. (lábjegyzet) és 25. (1/a próza) szabálya RENDBEN.
+1/b. **Átnézve:** a felhasználó a renderelt lapot maga átnézte, és a jóváhagyása rögzítve (dátum, szó szerinti idézet, a nézet azonosítója; a #123 motívumainál `naplok/F123_atnezes_<ID>.md`, `MUNKAMENET.md` C-v). Az ISTENTISZT-001 1. kiadása (2026-11-02) ennél a szabálynál korábbi: a zárómérés a meglévő átnézést rögzíti, vagy ⛔ a felhasználó elé teszi.
 2. **1. kiadás:** az `adat/kiadasok.tsv`-ben a motívumnak van `kiadas=1` sora (`datum`, `valtozas`, `proza_modell` a tényleges modellnév vagy `manual`, `forras` proveniencia-sorral; DT492).
 3. **Verzió:** a `motivumok.tsv` `statusz_verzio` a lezárással emelve, a `statusz_datum` a lezárás napja (minta: ISTENTISZT-001 v3 → v4, DT486).
 4. **Nézet:** a lap a kiadás-sor után újragenerálva; a kolofon „Kiadás” sora és változásjegyzéke a táblát mutatja; a Feed 3. kapuja (nulla-diff) ezután is zöld.
@@ -50,7 +52,7 @@ A dokumentált hiány nem akadály (DT2, CLAUDE.md 3. szabály): az N18 (ANTROP-
 - **A régi kézi mérce (L1–L7, DT2/a, DT2/b, #78) újramérése.** Ez a migráció független ellenőrzésének (#123 X.M6, `fuggetlen-ellenor`) mércéje, nem a Feed kapuja (DT497 (3)). A #10 a lezárt lapokat kézzel nem méri újra.
 - **Lapjavítás.** A lap kézzel nem szerkeszthető (RENDER_BRIEF G4); a forrás javítása a próza gazdájáé (C-w). Ami a zárómérésben bukik, az a motívum menetébe (#123) vagy a 2. kiadásba (`/kiadas`) kerül vissza.
 - **A törzscikk** (`lexikon/[ID]_TORZSCIKK.md`): a #123 X.M5 archiválja (D34).
-- **A `/kiadas`** és a 2. kiadás; **a TEREMT-002** lapja (#12); **a #13**.
+- **A `/kiadas`** és a 2. kiadás; **a TEREMT-002** lapja (2026-11-02 óta a #123 motívuma, a #12 lezárult; a #10 zárómérése a nyolc lapra szól); **a #13**.
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
@@ -73,7 +75,8 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 ### Z. Zárómérés és zárás
 
 1. **Mérés** (`naplok/LEXIKON_LEZARAS_meres.md`), motívumonként egy sor, saját szkripttel (`split('\t')`, proveniencia-sorral):
-   - a Feed (`python eszkozok/muhely_allapot.py --motivum <a nyolc ID> --kimenet <repón kívüli ideiglenes könyvtár>`) kapunként, a `feed_belso.json` szerint;
+   - a Feed (`python eszkozok/muhely_allapot.py --motivum <a nyolc ID> --kimenet <repón kívüli ideiglenes könyvtár>`) kapunként (9 kapu), a `feed_belso.json` szerint;
+   - a felhasználó vizuális átnézésének rögzítése (1/b);
    - a `kiadasok.tsv` `kiadas=1` sora és a legnagyobb `kiadas`;
    - a `motivumok.tsv` `statusz` / `statusz_verzio` / `statusz_datum`;
    - a lap kolofonjának kiadás-sora egyezik a táblával;
@@ -87,7 +90,7 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 
 1. A P lépés minden pontja teljesült a munka kezdetén; a napló rögzíti.
 2. A #8 négy sora a DT245 szerint kezelve; az `adat/lxx_dontesek.tsv` nem érintett sorai bájtra azonosak; `ellenoriz.py` 10. szabálya zöld.
-3. A zárómérés szerint mind a 8 lap lezárt (1. szakasz, 1–4.), vagy a ⛔ Z.2 szerint a hiány a felhasználó elé került.
+3. A zárómérés szerint mind a 8 lap lezárt (1. szakasz, 1., 1/b., 2–4.), vagy a ⛔ Z.2 szerint a hiány a felhasználó elé került.
 4. A `lexikon/`, a `kiadasok.tsv` és a `motivumok.tsv` a base..head diffben nem változott (a #10 nem zár le lapot, csak mér).
 5. `python eszkozok/feladatok.py ellenoriz` 0 hiba; a CI zöld.
 6. A független ellenőr jelentése eltérés nélkül (vagy a javítókör után zöld); zárónapló a helyén.
@@ -107,8 +110,8 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 
 **DT497 ✅ — a #123 és a #10 felosztása** (az orkesztrátor döntése a felhasználó 2026-11-02-i felhatalmazásával: »… a döntéseket fogadja, és hozza is meg«, 2026-11-02; mindhárom pont a javaslat szerint; a határ-ellenőrzést a felhasználó maga indítja, DT-F151b):
 - (1) a motívumonkénti lezárást (C-h → C-l → C5) a #123 végzi; a #10 csak keret és zárómérés;
-- (2) a DT-F123c (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
-- (3) a régi L1–L7 + DT2 + #78 mérce nem 9. Feed-kapu, hanem a `fuggetlen-ellenor` X.M6 mércéje.
+- (2) a DT585 (a `9_` sablon v1) ⛔ az ALVIL-001 lezárása után, az ANTROP-001 X.M1 előtt;
+- (3) ~~a régi L1–L7 + DT2 + #78 mérce nem 9. Feed-kapu, hanem a `fuggetlen-ellenor` X.M6 mércéje.~~ **Visszavonva (DT547, a felhasználó, 2026-11-02: „mehet”):** a Feed 9. kapuja az olvasói kapu (`eszkozok/olvasoi_kapu.py`; nem a régi L1–L7 mátrix, hanem a 2026-11-02-i lap-átvilágítás gépesíthető olvasói hibaosztályai), és a lezárás feltétele a felhasználó vizuális átnézése (1. szakasz, 1/b). A régi L1–L7 a `fuggetlen-ellenor` mércéjében él tovább.
 
 ## 6. Nyitott kérdések (nem blokkolnak)
 
@@ -122,3 +125,4 @@ A DT245 (🟢, felhasználó, 2026-10-19) 3. változata: az LD008 (Préd 9:10, A
 |---|---|---|
 | v1 | 2026.10.19 | A csonk (F20 B3) helyén, a 8 lap kézi mátrixos lezárása a #36 újragenerálása után. |
 | v2 | 2026.11.02 | F10.2: az új lezárási modell (Feed 8/8 → 1. kiadás → nézet); a #36 kikerült a `fugg`-ból (DT496), a #123 bekerült; a motívumonkénti lezárás a #123-é, a #10 keret és zárómérés (DT497). |
+| v3 | 2026.11.02 | F123.2: a DT497 (3) visszavonása (DT547): a Feed 9. kapuja az olvasói kapu, a lezárás feltétele a felhasználó vizuális átnézése is (1. szakasz 1., 1/b; Z.1); a TEREMT-002 a #123-é. |

@@ -40,7 +40,7 @@ def _lap():
 def _egyezik(lap, res):
     r = LG.res_forras_sorok()[(MOTIVUM, res)]
     elvart, tenyleges = E.res_elvart_es_tenyleges(LG, lap, MOTIVUM, res, r)
-    return elvart == tenyleges
+    return E.res_egyezik(elvart, tenyleges)
 
 
 class Szabaly11Ts(unittest.TestCase):
@@ -48,8 +48,9 @@ class Szabaly11Ts(unittest.TestCase):
         self.eredeti_ts = G.TS
         self.lap = _lap()
         # a lapon allo ts (a generalas napja) -- a "ma" ennel kesobbi
-        self.lap_ts = E.res_lap_ts(LG.res_torzs_lapbol(self.lap, {'id': MOTIVUM}, '2b'), MOTIVUM)
-        self.assertIsNotNone(self.lap_ts, 'a 2b resben nincs proveniencia-ts')
+        # DT-F174a: az adat nelkuli 2b res nem all a lapon, ezert a ts a minosites resbol
+        self.lap_ts = E.res_lap_ts(LG.res_torzs_lapbol(self.lap, {'id': MOTIVUM}, 'minosites'), MOTIVUM)
+        self.assertIsNotNone(self.lap_ts, 'a minosites resben nincs proveniencia-ts')
 
     def tearDown(self):
         G.TS = self.eredeti_ts

@@ -55,7 +55,7 @@ motívum tematikus tanulmányából (migrált motívumnál a forrásából), a t
 fájljából vagy a kereszthivatkozás-naplójából
 (`<!-- RÉS-KEZDET: [rés] --> … <!-- RÉS-VÉGE: [rés] -->` jelölők közül)
 generálódik — **csak ott szerkeszthetők**, a lexikonoldalon nem (RENDER_BRIEF.md
-G1/G4). A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló
+G1/G4). A `2b` opcionális: adat nélkül nem áll a lapon (DT597). A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló
 forrás nélkül (RENDER_BRIEF.md G7).
 
 A `generalt_proba/` verziózott könyvtár (F4-próbák kimenete), nem scratch. Törölni tilos;
@@ -195,7 +195,7 @@ push csak kérésre.
 
 Ha egy commit fájlt áthelyez, átnevez vagy töröl, ugyanabban a commitban frissíti a rá mutató hivatkozásokat a `FELADATOK.md`-ben, a `NYITOTT_FELADATOK.md`-ben és a briefek `olvas` mezőjében. *(CI: E27, hivatkozás-ellenőrzés.)*
 
-Új döntés vagy nyitott tétel az ágon csak helyőrzővel kerül be (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel). Végleges számot a main-en a `szamkiosztas` Action ad merge után. Végleges `DT<n>`/`N<n>` számot ágon ne írj, a CI elutasítja.
+Új döntés vagy nyitott tétel az ágon csak helyőrzővel kerül be (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel), és nem a `DONTESEK.md`-be / `NYITOTT_FELADATOK.md`-be, hanem PR-onkénti fájlba. Az ág a saját új döntéseit a `dontesek/uj/<ágnév>.md` fájlba írja (`<ágnév>`: az ág neve a `claude/` nélkül, `/` helyett `_`; a `DONTESEK.md`-beli táblázatsorok, helyőrzővel), az új nyitott tételeit a `nyitott/uj/<ágnév>.md` fájlba (felsorolási tételek; a nyitott-fájl végén `Utolsó frissítés: …` sor és `### <dátum> (…)` lezárt-blokkok is állhatnak). **Két PR soha nem ír ugyanabba a fájlba**, ezért nincs ütközés; a `szamkiosztas` Action a main-en beolvasztja a kis fájlokat a `DONTESEK.md` / `NYITOTT_FELADATOK.md` megfelelő helyére, törli őket, és számot ad, egy commitban. Meglévő sort (pl. 🟡 → 🟢, N lezárása) továbbra is közvetlenül a fő fájlban szerkesztesz, a fájl végére viszont ne írj (`eszkozok/dontes_nezet.py`). Végleges számot a main-en a `szamkiosztas` Action ad merge után. Végleges `DT<n>`/`N<n>` számot ágon ne írj, a CI elutasítja.
 
 Minden menet a saját briefje fejlécét frissíti; a `FELADATOK.md` generált blokkját csak a
 `main`-re futó Action írja. Új feladat a `/befogad` paranccsal, a felhasználó jóváhagyásával

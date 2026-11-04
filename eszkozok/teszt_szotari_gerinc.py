@@ -32,8 +32,8 @@ import ellenoriz as E  # noqa: E402
 import general as G  # noqa: E402
 
 
-def cimke_sor(szotar, strong, szakasz, ljsz='', cimke=''):
-    return {'szotar': szotar, 'strong': strong, 'szakasz': szakasz, 'lexikon_jelentes_szam': ljsz,
+def cimke_sor(szotar, strong, szakasz, ljsz='', cimke='', bdb_id=''):
+    return {'szotar': szotar, 'strong': strong, 'bdb_id': bdb_id, 'szakasz': szakasz, 'lexikon_jelentes_szam': ljsz,
             'cimke_hu': cimke, 'hu_kezdet': '', 'hu_hossz': '', 'forditas_hash': '', 'proveniencia': 'scope=manual',
             'megjegyzes': ''}
 
@@ -46,7 +46,7 @@ def adat(cimkek=(), vj=(), bdb_sz=None, bdb_hu=None):
     a = {'cimke': {}, 'bdb_sz': bdb_sz or {}, 'bdb_hu': bdb_hu or {}, 'bdb_vj': {}, 'th_sz': {}, 'th_vj': {},
          'glossza': {}}
     for c in cimkek:
-        a['cimke'][(c['szotar'], c['strong'], c['szakasz'])] = c
+        a['cimke'][LG.cimke_kulcs(c)] = c
     for r in vj:
         a['bdb_vj'].setdefault((r['strong'], r['karoli_vers']), []).append(r)
     return a
@@ -298,7 +298,8 @@ class Ellenoriz17(unittest.TestCase):
             with open(os.path.join(self.d, nev), 'w', encoding='utf-8') as f:
                 f.write('\t'.join(fej) + '\n' + ''.join('\t'.join(s) + '\n' for s in sorok))
         self.ir = ir
-        ir('bdb_szakaszok.tsv', ['strong', 'utvonal'], [['H7121', 'Qal/2/c'], ['H8034', '-/3/-']])
+        ir('bdb_szakaszok.tsv', ['strong', 'bdb_id', 'utvonal'], [['H7121', 'BDB7550', 'Qal/2/c'], ['H8034', 'BDB8776', '-/3/-'],
+                                                               ['H8034', 'BDB9963', 'fej']])
         ir('thayer_szakaszok.tsv', ['strong', 'utvonal'], [['G9999', 'cim'], ['G9999', '-/1/-'], ['G9999', '-/2/-']])
         ir('lexikon_hivatkozasok.tsv', ['szotar', 'strong', 'jelentes_szam'], [['BDB', 'H7121', '2.c'],
                                                                                ['TBESG', 'G9999', '2']])
@@ -309,22 +310,32 @@ class Ellenoriz17(unittest.TestCase):
         shutil.rmtree(self.d)
 
     def cimke(self, sorok):
-        self.ir('szotar_szakasz_cimke.tsv', ['szotar', 'strong', 'szakasz', 'lexikon_jelentes_szam', 'cimke_hu',
+        self.ir('szotar_szakasz_cimke.tsv', ['szotar', 'strong', 'bdb_id', 'szakasz', 'lexikon_jelentes_szam', 'cimke_hu',
                                              'proveniencia', 'megjegyzes'], sorok)
         return E.szakasz_cimke_hibak(self.d)
 
     def test_rendben(self):
-        h = self.cimke([['BDB', 'H7121', 'Qal/2/c', '2.c', 'segítségül hívni', 'p', ''],
-                        ['BDB', 'H8034', '-/3', '', 'név', 'p', ''],
-                        ['TBESG', 'G9999', '2', '2', 'x', 'p', ''],
-                        ['Thayer', 'G9999', '-/1/-', '', 'elnevezni', 'p', '']])
+        h = self.cimke([['BDB', 'H7121', 'BDB7550', 'Qal/2/c', '2.c', 'segítségül hívni', 'p', ''],
+                        ['BDB', 'H8034', 'BDB8776', '-/3', '', 'név', 'p', ''],
+                        ['TBESG', 'G9999', '', '2', '2', 'x', 'p', ''],
+                        ['Thayer', 'G9999', '', '-/1/-', '', 'elnevezni', 'p', '']])
         self.assertEqual(h, [])
 
+    def test_szocikk_kulcs(self):
+        # F123.BDBGER: a BDB-sor kulcsa szócikk + szakasz; üres vagy más szócikk bdb_id-je hiba, nem BDB-sorban tilos
+        h = self.cimke([['BDB', 'H7121', '', 'Qal/2/c', '', 'x', 'p', ''],
+                        ['BDB', 'H8034', 'BDB9963', '-/3', '', 'név', 'p', ''],
+                        ['Thayer', 'G9999', 'BDB1', '-/1/-', '', 'elnevezni', 'p', '']])
+        szov = '\n'.join(h)
+        self.assertIn('üres bdb_id', szov)
+        self.assertIn('nincs a bdb_szakaszok.tsv-ben (ebben a szócikkben)', szov)
+        self.assertIn('a bdb_id csak BDB-sorban állhat', szov)
+
     def test_hibak(self):
-        h = self.cimke([['BDB', 'H7121', 'Qal/9/z', '', '', 'p', ''],
-                        ['BDB', 'H7121', 'Qal/2/c', '3', 'nem invokáció', 'p', ''],
-                        ['TBESG', 'G9999', '7', '', '', '', ''],
-                        ['Thayer', 'G9999', '-/9/-', '', 'nevet tenni valakire', 'p', '']])
+        h = self.cimke([['BDB', 'H7121', 'BDB7550', 'Qal/9/z', '', '', 'p', ''],
+                        ['BDB', 'H7121', 'BDB7550', 'Qal/2/c', '3', 'nem invokáció', 'p', ''],
+                        ['TBESG', 'G9999', '', '7', '', '', '', ''],
+                        ['Thayer', 'G9999', '', '-/9/-', '', 'nevet tenni valakire', 'p', '']])
         szov = '\n'.join(h)
         self.assertIn('nincs a bdb_szakaszok.tsv-ben', szov)
         self.assertIn('nincs a thayer_szakaszok.tsv-ben', szov)
@@ -374,7 +385,8 @@ class DbhOszlop(unittest.TestCase):
         self.assertNotIn('= action by which', c)
         self.assertIn(' · H8034: ', c)
         h7121 = c.split(' · H8034: ')[0]
-        self.assertEqual(h7121.count('`0065620'), 2)
+        self.assertEqual(h7121.count('`0065620'), 0)                       # 2026-11-03: a 15 jegyű kód nem látszik
+        self.assertEqual(h7121.count('[ⓘ](/szo/H7121)'), 2)               # a két DBH-egység külön glosszával
         if 'fordításra vár' not in c:
             self.assertNotIn('= action by which', c)
 
@@ -496,7 +508,7 @@ class ValodiAdat(unittest.TestCase):
         sorai = [r for r in elo_sorok if r['id'] == 'ISTENTISZT-001']
         a = LG.gerinc_adat()
         szak = {s[0]: s for s in LG.bdb_gerinc_szakaszok(a, 'H8034')}
-        self.assertEqual(szak['-/5/-'][4], 'horgonnyal')
+        self.assertEqual(szak[('BDB8776', '-/5/-')][4], 'horgonnyal')
         bek, _napl = LG.gerinc_blokk(a, 'BDB', 'H8034', sorai)
         osszecsukott = [b for b in bek if b.startswith('<details>') and '- `5` —' in b]
         self.assertEqual(len(osszecsukott), 1)
@@ -600,7 +612,8 @@ class Kulcsszavak(unittest.TestCase):
         self.assertIn(' (kárá) + ', szov)
         self.assertIn(' (sém) | ', szov)
         self.assertIn('„segítségül”', szov)
-        self.assertIn('**Mit mutat ez a rész?**', szov)
+        self.assertIn(LG.OLVASOI_CIMKE, szov)
+        self.assertNotIn('Mit mutat ez a rész', szov)
 
     def test_kapcsolo_nelkul_ures(self):
         self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
@@ -701,6 +714,122 @@ class KaroliHelyette(unittest.TestCase):
         m = LG.olvasoi_14(sorai)
         self.assertIn('helyett jellemzően ezt írja: „kiált” (2 hely)', m)
         self.assertIn('hacsak nem keres ezekre is: „kiált”', m)
+
+
+def _szocikk_adat():
+    """Szintetikus kétszócikkű Strong (F123.BDBGER): mindkét szócikknek `-/1/-` szakasza van; a második szócikk feje
+    jelölő nélküli, magyar szöveg nélküli sor, a szövege a 2.32 szerint az első szócikk `1`-ében áll."""
+    def sor(n, b, ut, szoveg):
+        return {'strong': 'H9999', 'sorszam': str(n), 'bdb_id': b, 'utvonal': ut, 'jel': '', 'szoveg': szoveg}
+    bdb_sz = {'H9999': [sor(1, 'BDB1', 'cim', 'H9999. ab'),
+                        sor(2, 'BDB1', 'fej', 'I. אָב noun father, the first head'),
+                        sor(3, 'BDB1', '-/1/-', 'first meaning of the word Gen 1:1'),
+                        sor(4, 'BDB2', 'fej', 'II. אָב noun the second head word'),
+                        sor(5, 'BDB2', '-/1/-', 'second meaning of the word Gen 2:2')]}
+    bdb_hu = {('H9999', '2'): {'szoveg_hu': 'I. אָב főnév apa', 'kategoria': 'jelolo_nelkul'},
+              ('H9999', '3'): {'szoveg_hu': '1 első jelentés 1Móz 1:1', 'kategoria': 'illeszkedik'},
+              ('H9999', '4'): {'szoveg_hu': '', 'kategoria': 'jelolo_nelkul'},
+              ('H9999', '5'): {'szoveg_hu': '1 második jelentés 1Móz 2:2', 'kategoria': 'illeszkedik'}}
+    en = ('H9999. ab I. אָב noun father, the first head 1 first meaning of the word Gen 1:1 '
+          'II. אָב noun the second head word 1 second meaning of the word Gen 2:2')
+    a = adat(bdb_sz=bdb_sz, bdb_hu=bdb_hu)
+    a['bdb_en'] = {'H9999': en}
+    r = dict(vj_sor('H9999', 2, '1Móz 2:2', '-/1'), poz=str(LG._lapit(en).index('Gen 2:2')), okkod='', nyers='Gen 2:2')
+    a['bdb_vj'][('H9999', '1Móz 2:2')] = [r]
+    return a, r
+
+
+class SzocikkKulcs(unittest.TestCase):
+    """F123.BDBGER (DT-F123ga): a szakasz kulcsa (bdb_id, útvonal); különböző szócikkek szakaszai nem vonódnak össze."""
+
+    def test_szocikkenkent(self):
+        a, _r = _szocikk_adat()
+        szocikkek, elnyelt = LG.bdb_gerinc_szocikkek(a, 'H9999')
+        self.assertEqual([s['bdb_id'] for s in szocikkek], ['BDB1', 'BDB2'])
+        self.assertEqual([s[0] for s in szocikkek[0]['szakaszok']], [('BDB1', '-/1/-')])
+        self.assertEqual([s[0] for s in szocikkek[1]['szakaszok']], [('BDB2', '-/1/-')])
+        self.assertEqual(szocikkek[1]['szakaszok'][0][2], '1 második jelentés 1Móz 2:2')
+        self.assertEqual(elnyelt, {('BDB2', 'fej'): ('BDB1', '-/1/-')})
+
+    def test_peldahely_szocikke_a_helybol(self):
+        # az útvonal (`-/1`) mindkét szócikkben áll: a hely (`poz`) dönt
+        a, r = _szocikk_adat()
+        self.assertEqual(LG.bdb_vers_szocikk(a, 'H9999', r), ('BDB2', ''))
+        self.assertEqual(LG.szakasz_kulcs_jel(a, 'BDB', 'H9999', ('BDB2', '-/1/-')), 'BDB2 1')
+        # hely nélkül nem választ
+        b, ok = LG.bdb_vers_szocikk(dict(a, bdb_en={}, _bdb_kezdet={}, _bdb_poz_ok={}), 'H9999', r)
+        self.assertIsNone(b)
+        self.assertIn('BDB1, BDB2', ok)
+
+    def test_gerinc_blokk(self):
+        a, _r = _szocikk_adat()
+        bek, napl = LG.gerinc_blokk(a, 'BDB', 'H9999', [elo('1Móz 2:2', '', strong='H9999', entry='')])
+        szov = '\n'.join(bek)
+        self.assertIn('**BDB1 · I. אָב**', szov)
+        self.assertIn('**BDB2 · II. אָב**', szov)
+        self.assertLess(szov.index('**BDB1'), szov.index('**BDB2'))
+        kibontva = [b for b in bek if b.startswith('- **`')]
+        self.assertEqual(len(kibontva), 1)
+        self.assertIn('második jelentés', kibontva[0])
+        self.assertNotIn('első jelentés', kibontva[0])
+        self.assertIn('**1Móz 2:2**', kibontva[0])
+        self.assertEqual(napl['nem_talalt'], [])
+        # az elnyelt fej: a lap kimondja, hol áll a szövege; az elnyelő szakasz jelölve
+        self.assertIn('A magyar szöveg a BDB1 szócikk 1. szakaszának fordításában áll', szov)
+        self.assertIn('BDB2 fej → BDB1 -/1/-', szov)
+        self.assertIn('a BDB2 szócikk fejét is tartalmazza', szov)
+
+    def test_h2416_valodi(self):
+        a = LG.gerinc_adat()
+        szocikkek, _e = LG.bdb_gerinc_szocikkek(a, 'H2416')
+        self.assertEqual([s['bdb_id'] for s in szocikkek],
+                         ['BDB2716', 'BDB2717', 'BDB2718', 'BDB2719', 'BDB2721', 'BDB9522', 'BDB9523'])
+        egyes = sorted(k for s in szocikkek for k, *_x in s['szakaszok'] if k[1] == '-/1/-')
+        self.assertEqual(egyes, [('BDB2718', '-/1/-'), ('BDB2721', '-/1/-'), ('BDB9522', '-/1/-')])
+        # az 1Móz 2:7 a חַיִּים (BDB2721) `1`-ében: a 2.29 `-/1` útvonala három szócikkben áll, a hely dönt
+        r = next(x for x in a['bdb_vj'][('H2416', '1Móz 2:7')] if x['utvonal'] == '-/1')
+        self.assertEqual(LG.bdb_vers_szocikk(a, 'H2416', r)[0], 'BDB2721')
+
+
+class Szabaly27(unittest.TestCase):
+    """F123.BDBGER (DT-F123gb): a 27. szabály bukik, ha a lap BDB-gerince több szócikkű Strongnál nem szócikkenként áll."""
+
+    def setUp(self):
+        self.gy = tempfile.mkdtemp(prefix='F123_bdbger_')
+        os.makedirs(os.path.join(self.gy, 'adat'))
+        os.makedirs(os.path.join(self.gy, 'lexikon'))
+
+        def ir(nev, fej, sorok):
+            with open(os.path.join(self.gy, 'adat', nev), 'w', encoding='utf-8') as f:
+                f.write('\t'.join(fej) + '\n' + ''.join('\t'.join(s) + '\n' for s in sorok))
+        ir('bdb_szakaszok.tsv', ['strong', 'bdb_id', 'sorszam', 'utvonal'],
+           [['H9999', 'BDB1', '1', 'cim'], ['H9999', 'BDB1', '2', 'fej'], ['H9999', 'BDB1', '3', '-/1/-'],
+            ['H9999', 'BDB2', '4', 'fej'], ['H9999', 'BDB2', '5', '-/1/-'], ['H0001', 'BDB9', '1', 'fej']])
+        ir('bdb_szakasz_hu.tsv', ['strong', 'sorszam', 'kategoria', 'szoveg_hu'],
+           [['H9999', '2', 'jelolo_nelkul', 'fej'], ['H9999', '3', 'illeszkedik', '1 első'],
+            ['H9999', '4', 'jelolo_nelkul', ''], ['H9999', '5', 'illeszkedik', '1 második']])
+
+    def tearDown(self):
+        shutil.rmtree(self.gy)
+
+    def lap(self, torzs):
+        with open(os.path.join(self.gy, 'lexikon', 'X-001_TUDOMANYOS.md'), 'w', encoding='utf-8') as f:
+            f.write('# X\n\n##### H9999 — אָב (av) · BDB\n\n%s\n\n##### H0001 — x · BDB\n\n- `1` — y\n\n## 3. Vége\n' % torzs)
+        return E.gerinc_szocikk_hibak(os.path.join(self.gy, 'adat'))
+
+    def test_osszevont_lap_bukik(self):
+        hibak, jelentes = self.lap('**A szócikk feje (nyelvi háttér).** fej\n\n- **`1`**\n\n  > első második')
+        self.assertEqual(len(hibak), 1)
+        self.assertIn('H9999', hibak[0])
+        self.assertIn('nem szócikkenként', hibak[0])
+        self.assertEqual(len(jelentes), 1)
+        self.assertIn('BDB2 fej sor magyar szövege a BDB1 -/1/- sorában áll', jelentes[0])
+
+    def test_szocikkenkenti_lap_rendben(self):
+        hibak, _j = self.lap('**BDB1 · I. אָב** *(1/2)*\n\n- **`1`**\n\n  > első\n\n**BDB2 · II. אָב** *(2/2)*\n\n- `1` — második')
+        self.assertEqual(hibak, [])
+        hibak, _j = self.lap('**BDB2 · II. אָב**\n\n**BDB1 · I. אָב**')
+        self.assertEqual(len(hibak), 1)  # a sorrend is számít
 
 
 if __name__ == '__main__':

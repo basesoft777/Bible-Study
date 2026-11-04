@@ -1,0 +1,65 @@
+## (1) bdb_szakaszok.tsv
+Strong a táblában: 8090
+több BDB-szócikk (bdb_id): 1583
+régi összevonás (útvonal, a fejet is beleértve, több szócikkből): 1583 Strong
+  ebből a fejen kívüli útvonal is: 133 Strong
+szócikken belül nem szomszédos ismétlődő útvonal (nem e tétel tárgya): 231 Strong
+
+## (2) bdb_vers_jelentes.tsv sorai a több szócikkű Strongokban (szurt≠1, Károli-verssel)
+sor: 58476
+utvonalbol: 42018
+helybol: 14375
+nem_azonosithato: 2083
+ellenorzo_halmaz: 41050
+hely_egyezik: 40462
+hely_ellentmond: 588
+hely_ellentmond_egyertelmuen: 579
+Strong, amelyben a hely nem dönt (a 2.29 és a 2.30 szócikkhatára eltér): 102
+  H0251 1Móz 24:29 sorszam 1: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 299) szerint: BDB276, BDB285
+  H0251 Ez 18:10 sorszam 2: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 312) szerint: BDB276, BDB285
+  H0251 1Móz 10:21 sorszam 3: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 447) szerint: BDB276, BDB285
+  H0251 1Móz 4:9 sorszam 4: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 473) szerint: BDB276, BDB285
+  H0251 1Móz 4:9 sorszam 5: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 488) szerint: BDB276, BDB285
+  H0251 1Móz 4:2 sorszam 6: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 502) szerint: BDB276, BDB285
+  H0251 Jer 34:9 sorszam 7: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 518) szerint: BDB276, BDB285
+  H0251 1Móz 13:8 sorszam 8: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 551) szerint: BDB276, BDB285
+  H0251 Hós 13:15 sorszam 9: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 571) szerint: BDB276, BDB285
+  H0251 4Móz 27:10 sorszam 10: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 642) szerint: BDB276, BDB285
+  H0251 1Móz 19:7 sorszam 11: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 668) szerint: BDB276, BDB285
+  H0251 1Sám 20:29 sorszam 12: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 687) szerint: BDB276, BDB285
+  H0251 1Sám 30:23 sorszam 13: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 705) szerint: BDB276, BDB285
+  H0251 1Móz 37:13 sorszam 14: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 749) szerint: BDB276, BDB285
+  H0251 1Móz 44:14 sorszam 15: a fej útvonal a H0251 szócikkében áll (BDB276, BDB285, BDB9286), a hivatkozás helye (`poz` 769) szerint: BDB276, BDB285
+  H0255 Ézs 13:21 sorszam 1: a tagolatlan útvonal a H0255 szócikkében áll (BDB324, BDB325), a hivatkozás helye (`poz` 76) szerint: BDB324, BDB325
+  H0349 1Móz 26:9 sorszam 1: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 2Sám 1:5 sorszam 2: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 2Sám 1:14 sorszam 3: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 1Kir 12:6 sorszam 4: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 Ézs 20:6 sorszam 5: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 1Móz 39:9 sorszam 6: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 1Móz 44:8 sorszam 7: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 1Móz 44:34 sorszam 8: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+  H0349 Józs 9:7 sorszam 9: a -/1 útvonal a H0349 szócikkei közül egyikben sem áll; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a 2.30 szócikkhatára a Strongban máshol eltér
+
+## (3) szócikkhatáron át elnyelt (jelölő nélküli, magyar szöveg nélküli) szakasz: 192 Strong, 264 szakasz
+
+## (4) a kilenc lap
+ALVIL-001 | gerinc aktív: igen | H-token: 1 | több szócikkű: H7585 (2 szócikk; régi összevonás: fej; elnyelt: BDB8375 fej → BDB8371 fej)
+    H7585: 2.29-sor 96, nem azonosítható 0, a hely megbízható: igen
+ANTROP-001 | gerinc aktív: nem | H-token: 2 | több szócikkű: H2416 (7 szócikk; régi összevonás: -/1/-, -/1/a, -/1/b, -/1/c, -/2/-, -/3/-, fej; elnyelt: —)
+    H2416: 2.29-sor 506, nem azonosítható 25, a hely megbízható: igen
+HAMART-001 | gerinc aktív: nem | H-token: 9 | több szócikkű: H2403 (2 szócikk; régi összevonás: fej; elnyelt: BDB9520 fej → BDB2699 -/5/-); H7451 (3 szócikk; régi összevonás: -/1/-, -/2/-, -/3/-, fej; elnyelt: BDB8033 fej → BDB8032 -/10/d, BDB8034 fej → BDB8033 -/3/-)
+    H2403: 2.29-sor 343, nem azonosítható 0, a hely megbízható: igen
+    H7451: 2.29-sor 389, nem azonosítható 22, a hely megbízható: igen
+HODIT-001 | gerinc aktív: nem | H-token: 3 | több szócikkű: H7496 (2 szócikk; régi összevonás: fej; elnyelt: BDB8060 fej → BDB8044 fej)
+    H7496: 2.29-sor 9, nem azonosítható 0, a hely megbízható: igen
+ISTENTISZT-001 | gerinc aktív: igen | H-token: 2 | több szócikkű: H8034 (2 szócikk; régi összevonás: fej; elnyelt: BDB9963 fej → BDB8776 -/5/-)
+    H8034: 2.29-sor 224, nem azonosítható 0, a hely megbízható: igen
+KIRALY-001 | gerinc aktív: nem | H-token: 4 | több szócikkű: H3548 (2 szócikk; régi összevonás: fej; elnyelt: BDB9607 fej → BDB3931 -/8/-); H3678 (2 szócikk; régi összevonás: fej; elnyelt: BDB9617 fej → BDB4107 -/3/b); H4467 (2 szócikk; régi összevonás: fej; elnyelt: BDB4680 fej → BDB4679 -/3/-)
+    H3548: 2.29-sor 428, nem azonosítható 0, a hely megbízható: igen
+    H3678: 2.29-sor 127, nem azonosítható 0, a hely megbízható: igen
+    H4467: 2.29-sor 119, nem azonosítható 0, a hely megbízható: igen
+MENNY-001 | gerinc aktív: nem | H-token: 3 | több szócikkű: H1121 (2 szócikk; régi összevonás: fej; elnyelt: BDB1169 fej → BDB1160 -/9/b)
+    H1121: 2.29-sor 618, nem azonosítható 29, a hely megbízható: nem
+TEREMT-001 | gerinc aktív: nem | H-token: 1 | több szócikkű: —
+TEREMT-002 | gerinc aktív: igen | H-token: 2 | több szócikkű: —

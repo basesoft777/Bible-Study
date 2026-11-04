@@ -52,7 +52,7 @@ A `munka` mező szabályai (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés�
 - A régi fejlécű (mező nélküli) brief `munka: adat`-nak számít. Kivétel, ha az `ir` listája motívumfájlt tartalmaz: ilyenkor a mező hiányzónak számít: az `ellenoriz` és a `fuggesek` E18 fejléchibát ad (`MUNKA_HIANY`), a feladat nem csomagolható és nem ajánlható futtathatónak, amíg ki nincs töltve (az F35 előzmény-brief kivétel, DT-F32c: lezárt; az F36 a DT28 után, az F09 az S2.6 leválasztása után `munka: adat`) (`python eszkozok/feladatok.py csomag <id> …`).
 - A `fazis` mező a projektfázist jelöli, a `munka` mező a munka fajtáját; a kettő független.
 
-Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, `adat/szotar_szerepek.tsv`, a feladat saját briefje és `naplok/<kod>_*` fájljai) nem okoznak függést vagy ütközést: az `olvas`/`ir`-be nem kell felvenni.
+Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, `dontesek/uj/*.md`, `nyitott/uj/*.md`, `adat/szotar_szerepek.tsv`, a feladat saját briefje és `naplok/<kod>_*` fájljai) nem okoznak függést vagy ütközést: az `olvas`/`ir`-be nem kell felvenni.
 
 *Motívumot érintő feladat `ir` listájában a motívum fájljai egyenként szerepelnek (`motivumok/<ID>.md`, `lexikon/<ID>_*`), nem csak a könyvtár; így egy motívumon egyszerre egy feladat fut (D39).*
 
@@ -70,7 +70,7 @@ Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATO
 ## 5. Döntésnapló
 ```
 
-A döntés- és nyitott-tétel szakaszban az új tételek helyőrzővel állnak (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel), végleges `DT<n>`/`N<n>` számmal nem; a számot a merge után a `szamkiosztas` Action osztja ki (F30, CI E26).
+Az új döntés- és nyitott-tételek PR-onkénti fájlba kerülnek (`dontesek/uj/<ágnév>.md`, `nyitott/uj/<ágnév>.md`), nem a `DONTESEK.md` / `NYITOTT_FELADATOK.md` végére: ezek közvetlen végi írása minden más nyitott PR-t ütköztet (`CLAUDE.md`, `eszkozok/dontes_nezet.py`). A kis fájlokat a `szamkiosztas` Action olvasztja be a main-en. Az új tételek helyőrzővel állnak (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel), végleges `DT<n>`/`N<n>` számmal nem; a számot a merge után a `szamkiosztas` Action osztja ki (F30, CI E26).
 
 ## Nyitó prompt (csak ha a brief közvetlenül, parancs nélkül is futtatható)
 

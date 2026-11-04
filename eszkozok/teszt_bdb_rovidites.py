@@ -63,6 +63,33 @@ class Jelol(unittest.TestCase):
         self.assertEqual(BR.jelol('לְשׁ׳ x', CIMSZO, 'ק'), 'לְשׁ׳ x')     # többbetűs: nem egybetűs rövidítés
 
 
+class Atiras(unittest.TestCase):
+    JAV = {'H0011': [('Sh®°ôl', 'Sheʾôl')]}
+
+    def test_csere_toldalekkal(self):
+        # DT-F164a: részszöveg szerint, a magyar toldalékkal is
+        self.assertEqual(BR.atiras_javit('in Sh®°ôl (Sh®°ôl).', 'H11', self.JAV), 'in Sheʾôl (Sheʾôl).')
+        # DT-F164a (felhasználó, 2026-11-03): a magyar szövegben „Seól”
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban (Sh®°ôl-ról).', 'H11', self.JAV, magyar=True), 'a Seólban (Seól-ról).')
+        self.assertEqual(BR.atiras_javit('a sh®°ôlba', 'H1004', {'H1004': [('sh®°ôl', 'sheʾôl')]}, magyar=True), 'a seólba')
+        self.assertEqual(BR.atiras_javit('a Sh®°ôlban', 'H0001', self.JAV), 'a Sh®°ôlban')
+
+    def test_kezi_sorok_h7121_h2416(self):
+        """F123.GENKOR (DT-F181a): a betűkészlet többi torz jele kézi `atiras` sorral; magyarul a tár alakja."""
+        t = BR.atiras_javitasok()
+        self.assertIn(("'†or°¹n", 'Qorʾân'), t.get('H7121', []))
+        self.assertIn(('†or°a¹n', 'Qorʾân'), t.get('H7121', []))
+        self.assertEqual(BR.atiras_javit("recitálni (a '†or°¹n), a †or°a¹n;", 'H7121', magyar=True),
+                         'recitálni (a Korán), a Korán;')
+        self.assertEqual(BR.atiras_javit("recite (the '†or°¹n)", 'H7121'), 'recite (the Qorʾân)')
+        self.assertEqual(BR.atiras_javit('Leµi felé', 'H2416', magyar=True), 'Lehi felé')
+
+    def test_tabla(self):
+        t = BR.atiras_javitasok()
+        self.assertIn(('She®°ôl', 'Sheʾôl'), t.get('H7585', []))
+        self.assertNotIn('H7848', t)          # jelolt_marad: nincs csere
+
+
 class HeberSorrend(unittest.TestCase):
     JAV = {'H7121': [('׳ק י ׳בְּשֵׁם', 'ק׳ בְּשֵׁם י׳'), ('גְּדוֺל בְּקוֺל', 'בְּקוֺל גְּדוֺל')]}
 
@@ -99,6 +126,21 @@ class Izolal(unittest.TestCase):
     def test_idempotens(self):
         egyszer = BR.izolal('יִקְרָא 1Móz 2:19')
         self.assertEqual(BR.izolal(egyszer), egyszer)
+
+
+class Zarojel(unittest.TestCase):
+    """F123.GENKOR (DT-F181a): a digitalizálásban elveszett zárójel kézi `zarojel` sora, angolul és magyarul."""
+
+    def test_h7121(self):
+        self.assertEqual(BR.zarojel_javit('b. felolvastatni vö. Qal 4): személytelenül', 'H7121'),
+                         'b. felolvastatni (vö. Qal 4): személytelenül')
+        self.assertEqual(BR.zarojel_javit('c. megidéztetni (vö. Qal 5: Ézs 31:4', 'H7121'),
+                         'c. megidéztetni (vö. Qal 5): Ézs 31:4')
+        self.assertEqual(BR.zarojel_javit('c. be summoned (compare Qal 5: Isa 31:4', 'H7121'),
+                         'c. be summoned (compare Qal 5): Isa 31:4')
+        kesz = 'c. megidéztetni (vö. Qal 5): Ézs 31:4'
+        self.assertEqual(BR.zarojel_javit(kesz, 'H7121'), kesz)               # idempotens
+        self.assertEqual(BR.zarojel_javit('felolvastatni vö. Qal 4)', 'H0001'), 'felolvastatni vö. Qal 4)')
 
 
 if __name__ == '__main__':

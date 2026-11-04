@@ -165,6 +165,7 @@ class E26Teszt(unittest.TestCase):
         K.ROOT = SZ.ROOT = gy
         try:
             for nev, szoveg in modosit.items():
+                os.makedirs(os.path.dirname(os.path.join(gy, nev)), exist_ok=True)
                 with open(os.path.join(gy, nev), 'ab') as f:
                     f.write(szoveg.encode('utf-8'))
             _git(gy, 'add', '-A')
@@ -202,6 +203,21 @@ class E26Teszt(unittest.TestCase):
         gy = self._repo()
         t = self._futtat(gy, {'DONTESEK.md': '| DT6 | #50 |\n'}, esemeny='push')
         self.assertEqual(t, [])
+
+    def test_pr_fajl_helyorzo_rendben(self):
+        gy = self._repo()
+        t = self._futtat(gy, {'dontesek/uj/pr-a.md': '| DT-F50a | #50 |\n', 'nyitott/uj/pr-a.md': '* **N-F50a -- t.**\n'})
+        self.assertEqual(t, [])
+
+    def test_pr_fajl_vegleges_szam_hiba(self):
+        gy = self._repo()
+        t = self._futtat(gy, {'dontesek/uj/pr-a.md': '| DT6 | #50 |\n'})
+        self.assertTrue(any('új végleges azonosító: DT6' in x.reszlet for x in t))
+
+    def test_pr_fajl_ketszer_definialt_helyorzo(self):
+        gy = self._repo()
+        t = self._futtat(gy, {'dontesek/uj/pr-a.md': '| DT-F50a | egy |\n', 'dontesek/uj/pr-b.md': '| DT-F50a | ketto |\n'})
+        self.assertTrue(any('kétszer' in x.reszlet for x in t))
 
 
 if __name__ == '__main__':

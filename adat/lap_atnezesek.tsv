@@ -1,0 +1,10 @@
+# Lexikonlap vizuális átnézései (SEMA 2.48): egy sor egy átnézés a lap egy változatáról; kulcs: id + lap_commit. Érvényes, ha a lap_commit a lap mai utolsó commitja, a ki = felhasználó, és az idezet a felhasználó szavai szó szerint (DT554). Csak a felhasználó jóváhagyása után írható.
+id	lap_commit	datum	ki	idezet	forras
+ALVIL-001	041a530edae9a4f49865ed0f37dab3088b5ace48	2026.11.03	felhasználó	kiadás	scope=manual | forras=naplok/F123_atnezes_ALVIL-001.md | ts=2026-11-03
+ALVIL-001	5720de2b4673ef3e8ac7ccf675a6afde0b1683b2	2026.11.03	felhasználó	kiadás	scope=manual | forras=naplok/F123_atnezes_ALVIL-001.md | ts=2026-11-03
+ALVIL-001	cfb10b07147f7b9d15990096c170c69a44ce78e8	2026.11.03	felhasználó	kiadás	scope=manual | forras=naplok/F123_atnezes_ALVIL-001.md | ts=2026-11-03
+ANTROP-001	68c0996888d63776f2d88cfe6445522fb9d80044	2026.11.03	felhasználó	mehet	scope=manual | forras=naplok/F123_atnezes_ANTROP-001.md | ts=2026-11-03
+ANTROP-001	9aa1dde125b4f8b253d93bfe131a1d009b7e7f02	2026.11.03	felhasználó	mehet	scope=manual | forras=naplok/F123_atnezes_ANTROP-001.md | ts=2026-11-03
+ALVIL-001	05c057433f2cbfc484db925a0856406cbd54397c	2026.11.04	felhasználó	ha nincs bukás rendben van	scope=manual | forras=a felhasználó a chatben, az orkesztrátoron át | ts=2026-11-04
+ANTROP-001	05c057433f2cbfc484db925a0856406cbd54397c	2026.11.04	felhasználó	ha nincs bukás rendben van	scope=manual | forras=a felhasználó a chatben, az orkesztrátoron át | ts=2026-11-04
+ISTENTISZT-001	ee33a8608b7136f7c4e7cfc5444ead0798445187	2026.11.04	felhasználó	Átnézve: 1 kiadás	scope=manual | forras=a felhasználó a chatben, az orkesztrátoron át | ts=2026-11-04

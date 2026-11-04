@@ -84,6 +84,8 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
     nyers['E27'] = SZ.e27_hivatkozas(diff_alap, diff_fej, esemeny)
     # E30 (F112): ekezet nelkuli magyar szo a PR commit-uzeneteiben; --teljes modban nincs base..head
     nyers['E30'] = [] if teljes else SZ.e30_ascii_commit(diff_alap, diff_fej, commit_uzenet, esemeny)
+    # E35 (F169.3): a commitolt nyilt_mag/ naprakesz, ha a PR adat-tablat vagy az exportgeneratort modositja
+    nyers['E35'] = SZ.e35_nyilt_mag_naprakesz(valtozott_fajlok, teljes)
     # E16: push-esemenynel nincs PR-cim, ezert nem ertelmezett (a PR-en fut)
     if esemeny == 'push':
         nyers['E16'] = []

@@ -18,3 +18,7 @@
 # A nyers forrás-JSON-ok (pl. konkordancia/lexikonok_nyers/DictBDB.json) bájtra a hash-elt alakban maradnak a munkafában is:
 # a bont.py a munkafa bájtjait hash-eli (F107, DT-F107i javítókör, ELLENOR_F107 2. ELTÉRÉS). Nem szöveg: nincs sorvég-konverzió.
 konkordancia/lexikonok_nyers/*.json -text
+
+# A nyílt mag (nyilt_mag/) letétbe kerülő csomag: az ELLENORZO_OSSZEG.sha256 és a KIADAS.txt tartalmi hash-e az LF-es
+# bájtokra szól, ezért Windows-checkouton sem lehet CRLF (a .md és a .sha256 is; a *.tsv a fenti szabály szerint).
+nyilt_mag/** text eol=lf

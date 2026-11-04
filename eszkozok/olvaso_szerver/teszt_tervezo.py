@@ -870,8 +870,13 @@ LAPOK = (
     '/1Moz/1/1?szo=H0430&ful=szo', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh', '/1Moz/1/2?ful=temak', '/1Moz/1/2?ful=motivum',
     '/Jan/1/1?szo=G3056&ful=szo', '/Jan/1/1?reteg=il', '/Zsolt/22/2?szo=H0410&ful=szo&reteg=il',
     '/szo/H0430', '/szo/G3056', '/szo/H7307', '/szo/H6440',
-    '/szo/H1254',                       # ige: törzscímek (.torzs h5, .vz-torzs), magyar fordítás nélkül (.allapot.folyamat)
+    '/szo/H1254',                       # ige: törzscímek (.torzs h5, .vz-torzs)
 )
+# Az F128/F38 fordítások óta a pardes.db mind a 8099 BDB-szócikkének van magyar fordítása, ezért két adat-állapotú elem ma nem jelenhet meg
+# egy valódi lapon sem: a „nem teljes” BDB-címke (.cimke.arany: a lap héber szavai közül nem mind fordított) és a „Magyar fordítás nincs”
+# jelzés (.allapot.folyamat). Kódjuk és regiszter-bejegyzésük megmarad (a regiszter-őr az osztályokat külön ellenőrzi); az illesztő önteszt
+# (TestIlleszto) a szelektort mesterséges fán igazolja. Ha a fordítás egy szócikknél újra hiányzik, az elem ismét megjelenik.
+ADATALLAPOT_MIATT_NEM_ELERHETO = ('szamlalo-arany', 'allapot-folyamat')
 TOREDEKEK = ('/r/szo/G3056?ig=Jan/1/1', '/r/szo/H0430?ig=1Moz/1/1', '/r/vers/1Moz/1/1', '/r/vers/Jan/1/1')
 
 
@@ -889,8 +894,11 @@ class TestSzelektorokAValodiLapokon(unittest.TestCase):
             r = c.get(ut)
             self.assertIn(r.status_code, (200, 404), ut)
             csomopontok += Fa(r.get_data(as_text=True)).mind
-        hiany = [e['id'] + ' ' + e['szelektor'] for e in reg.elemek if not any(illik(n, e['szelektor']) for n in csomopontok)]
+        hiany = [e['id'] + ' ' + e['szelektor'] for e in reg.elemek
+                 if e['id'] not in ADATALLAPOT_MIATT_NEM_ELERHETO and not any(illik(n, e['szelektor']) for n in csomopontok)]
         self.assertEqual(hiany, [])
+        # a kivétel-lista nem avulhat el: csak létező regiszter-elem szerepelhet benne
+        self.assertEqual(sorted(set(ADATALLAPOT_MIATT_NEM_ELERHETO) - {e['id'] for e in reg.elemek}), [])
 
 
 if __name__ == '__main__':

@@ -243,3 +243,38 @@ ALVIL-001	B4	scope=range:Hós 13:14 | forras=Karoli_1908.tsv+Karoli_kereszthivat
 TEREMT-002	B4	scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-02T11:33Z	2026.11.02
 TEREMT-002	B4	scope=range:Jer 4:23 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-02T11:33Z	2026.11.02
 TEREMT-002	B4	scope=range:Ézs 34:11 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-11-02T11:33Z	2026.11.02
+ALVIL-001	B4	scope=range:Zsolt 16:10+ApCsel 2:27 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-02T19:46Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=range:Hós 13:14+1Kor 15:55 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-02T19:46Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-11-02T19:46Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H4194 | n=15 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0011 | n=2 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H3381 | n=26 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0953 | n=5 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0086+G2288 | n=4 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=66 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=range:Hós 13:14 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-02T19:47Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H8415 | n=1 | ts=2026-11-02T20:00Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0086+G0012 | n=0 | ts=2026-11-02T20:01Z | csatorna=cli	2026.11.02
+ALVIL-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H0011 | n=2 | ts=2026-11-02T20:01Z | csatorna=cli	2026.11.02
+ANTROP-001	B4	scope=range:1Thessz 5:23+Zsid 4:12 | forras=TAGNT_kivonat.tsv | n=3 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=range:Luk 1:46-47+1Kor 15:45 | forras=TAGNT_kivonat.tsv | n=2 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=range:1Móz 2:7+1Kor 15:45 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4151 | n=351 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5590 | n=96 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4152 | n=21 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5591 | n=5 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H5315 | n=683 | ts=2026-11-03T08:46Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2416 | n=449 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5591 | n=2 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4152+G5590 | n=0 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4152+G5591 | n=2 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7307+H5315 | n=8 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5591 | n=6 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G4152 | n=26 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=range:1Móz 2:7 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=range:Jób 12:10 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03
+ANTROP-001	B4	scope=range:Jón 4:8 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-03T08:47Z | csatorna=cli	2026.11.03

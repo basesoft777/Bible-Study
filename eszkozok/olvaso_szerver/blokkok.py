@@ -692,7 +692,9 @@ def _r_karoli_alakok(d, K):
     ki = Markup('<p>%d Károli-előfordulás, ebből %d magas bizonyosságú.</p>') % (ossz, magas)
     ki += _tabla(['Károli-alak', 'Darab'], [[a, str(n)] for a, n in top])
     kv = K.kozos.karoli_strong_konyvek
-    return ki + Markup('<p class="megj">A %d feldolgozott könyv (%s) szó szintű párjai alapján; a többi könyv még hiányzik.</p>') % (len(kv), ', '.join(kv))
+    # DT-F149a: a „a többi könyv még hiányzik” tagmondat csak akkor igaz, ha van párosítás nélküli könyv (az F22 óta mind a 66 párosított)
+    hianyzik = Markup('; a többi könyv még hiányzik') if len(kv) < len(K.kozos.konyvek) else Markup('')
+    return ki + Markup('<p class="megj">A %d feldolgozott könyv (%s) szó szintű párjai alapján%s.</p>') % (len(kv), ', '.join(kv), hianyzik)
 
 
 def _bdb_adat(K):
@@ -727,18 +729,22 @@ def _bdb_cimszo(K):
 _CIMKE_RE = re.compile(r'(<[^>]*>)')
 
 
-def _rovidites(K, html):
+def _rovidites(K, html, magyar=False):
     """A BDB egybetűs rövidítései (׳י → י׳) <abbr class="rovidites">-ként a kész, escape-elt blokk-HTML szövegrészeiben (N-F131x; a jelölő
     közös a lexikon-generátorral: `eszkozok/bdb_rovidites.py`). A címkék (és attribútumaik) érintetlenek; a jelölő csak héber betűt és
     geres jelet fog meg, a cím escape-elve kerül be, így injekció nem lehet. `tabindex`: érintésre, fókuszra is megjelenik a feloldás;
-    hivatkozáson (a vázlat <a>-ján) belül nincs, ott a koppintás a hivatkozásé, a feloldás a `title`."""
+    hivatkozáson (a vázlat <a>-ján) belül nincs, ott a koppintás a hivatkozásé, a feloldás a `title`. `magyar`: a blokk a magyar
+    fordítást mutatja (a torz átírás magyar alakja, B3)."""
     cimszo, kezdo = _bdb_cimszo(K)
     d = _bdb_adat(K)
     alias = d.get('alias') if isinstance(d, dict) else None
     strong = alias['tabla_strong'] if alias else getattr(K, 'strong', '')
-    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
+    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM);
+    # előtte a digitalizálásban elveszett zárójel és a torz átírás (F123.GENKOR, B3)
     reszek = _CIMKE_RE.split(str(html))
-    html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(r, strong)
+    html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(
+                                            bdb_rovidites.atiras_javit(bdb_rovidites.zarojel_javit(r, strong), strong,
+                                                                       magyar=magyar), strong)
                                         for i, r in enumerate(reszek)))
     ki, linkben = [], False
     for i, r in enumerate(_CIMKE_RE.split(html)):
@@ -1077,7 +1083,7 @@ def _r_bdb_apparatus(d, K):
         ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (
             Markup('').join(Markup('<span class="jel-cimke" title="BDB irodalmi hivatkozás (szerző^mű)">%s</span>') % x for x in a.get('irodalom') or []),
             Markup('').join(Markup('<span class="jel-cimke krit" title="a BDB jele">%s</span>') % x for x in a.get('krit') or [])))
-    return _rovidites(K, ki)
+    return _rovidites(K, ki, magyar=bool(hu))
 
 
 def _f_lxx_tobblet(K):
@@ -1104,7 +1110,7 @@ def _f_bdb_magyar(K):
 
 
 def _r_bdb_magyar(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['hu']))
+    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['hu']), magyar=True)
 
 
 def _f_lxx_bridge(K):

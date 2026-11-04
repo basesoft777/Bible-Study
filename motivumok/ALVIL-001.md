@@ -2,15 +2,17 @@
 
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-【NAPLO: F123 M3, 2026-10-29 — a forrás a régi tematikus tanulmány (`archivum/ALVIL-001/Hadesz_Seol_tematikus.md`), a kereszthivatkozás-napló és a régi forrásréteg szétválasztásával készült, a `naplok/F123_szetvalasztas_ALVIL-001.tsv` jóváhagyott leképezési táblája szerint (DT416 (a)); sablon: 9_ v0.3 (tervezet, az első 2. lépcsős motívum mint sablon-próba, DT-F123a).】
-
-【NAPLO: Seol-egységesítés — orkesztrátori döntés, 2026-10-29 (DT26: `adat/terminologia.tsv` She'ôl → Seol), F123.ALVIL.J7. A kézi forrásban minden „Seól” „Seol”-ra változott, ragozott és összetett alakban is (17 hely). Az érintett mondatok bájtra-egyezése az archívummal (`archivum/ALVIL-001/Hadesz_Seol_tematikus.md`) ezen a ponton szándékosan megszűnt. A kisbetűs *seól* átírás (a héber szó transzliterációja, nem a magyar szakszó) nem változott. A J7 más fájlt nem érintett. **Kiegészítés (DT420, F123.ALVIL.J17 és J24, ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-2):** a csere kiterjed az `adat/motivumok.tsv` ALVIL-001 `cim` és `ui_cimke` mezőjére („Hádész (Seol)”, „Hádész/Seol”) és az `adat/szotar_szakasz_cimke.tsv` négy H7585-címkéjére (a G0086-címkékben „Seól” nem állt); a DT-F123d NAPLO-jában a felhasználói döntés idézete („kiáltás a Seól szorításából”) idézetként az eredeti „Seól” alakot hordozza. **Kiegészítés (DT422, F123.ALVIL.J32, ELLENOR_F123_ALVIL-001_3 A):** a csere kiterjed az ALVIL-001 lapján megjelenő adatmezőkre is (`elofordulasok.tsv` `kapcsolodas`, a #123 saját 3 jelöltsora a `jeloltek.tsv`-ben), kivéve a szó szerinti idézetet; a `motivum_kapcsolatok.tsv` két, az ISTENTISZT-001 lapján is megjelenő sora kihagyva (lista és indok: `naplok/F123_ALVIL_seol_adat.tsv`).】
+【NAPLO: F123 ALVIL-001 új cikk, 2026-11-02 — a forrás nulláról, egy kézből készült (claude-opus-5-5; DT546, F123_MIGRACIO2_BRIEF.md U3), a mai adat és a meglévő döntések (DT-F123d, DT414–DT422, DT562, DT563, DT564, DT565) felhasználásával. A régi forrás archívumban: `archivum/ALVIL-001/ALVIL-001_forras_migralt_regi.md` (előtte: `archivum/ALVIL-001/Hadesz_Seol_tematikus.md`); a régi 1/a próza: `archivum/ALVIL-001/ALVIL-001_1a_proza_regi.tsv`. Mondat a régi szövegből nem költözött át. Sablon: 9_ v0.5. A teljesség-mérés: `naplok/F123_teljesseg_ALVIL-001.md`; a menet naplója: `naplok/F123_ALVIL2_naplo.md`.】
 
 ## Kivonat
 
 <!-- RÉS-KEZDET: kivonat -->
 
-A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם (*tehóm*)/ἄβυσσος (*abüsszosz*) kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
+A motívum a halottak birodalmát követi a Bibliában, két szó nyomán: az ószövetségi שְׁאוֹל (seól) és az újszövetségi ᾍδης (hadész) minden előfordulását. A seól 64 ószövetségi helyen áll; a Károli-fordítás hol Seolnak, hol sírnak, koporsónak, pokolnak, alvilágnak vagy mélységnek fordítja. A hádész tíz újszövetségi helyen áll, a Károliban többnyire pokol. Az Ószövetségben a Seol minden ember közös végállomása (1Móz 37:35), ahonnan nincs visszatérés (Jób 7:9), és ahol elnémul Isten dicsérete (Zsolt 6:6). Mégsem esik kívül Isten hatalmán: előtte nyitva áll (Péld 15:11), ott is jelen van (Zsolt 139:8), és ő az, aki levisz oda és felhoz onnan (1Sám 2:6; Zsolt 30:4).
+
+A motívum íve két ószövetségi ígéretből indul. Az egyik szerint Isten szentje nem marad a Seolban (Zsolt 16:10), a másikban Isten maga szólítja meg a Seolt, és győzelmét kérdezi számon (Hós 13:14). A Septuaginta a seólt 64 helyből 57-ben ᾍδης szóval adja vissza, így lesz az ószövetségi szó az Újszövetség szava. Péter az első ígéretet Krisztus feltámadására idézi (ApCsel 2:27, 31), Pál a másodikat a feltámadás diadalénekébe emeli (1Kor 15:55). A Jelenések könyvében a halottak birodalmának kulcsai a feltámadott Krisztusnál vannak (Jel 1:18), a végén pedig maga is a tűz tavába vettetik (Jel 20:14).
+
+A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a héber szövegben a seól, az Újszövetségben a Károli alapszövege (Textus Receptus) szerint a hádész áll. Ahol a Károli sírt, koporsót, poklot vagy mélységet ír, de az eredetiben más szó áll (a temetkezési sír, a verem, a pusztulás helye, a görög tartarosz), az nem tartozik ide. A תְּהוֹם (tehóm) és az ἄβυσσος (abüsszosz), a kozmikus mélység sem: a seól és a tehóm egyetlen versben áll együtt (Ez 31:15), és ott is két külön dolgot jelöl. A motívum tehát nem a halál és a túlvilág általában, hanem az a hely, amelyet a Biblia a halottak birodalmaként nevén nevez. Ha egy vers a halálveszélyről beszél, de ezt a helyet nem nevezi meg, a tágabb körbe tartozik (például Zsolt 107:18). Két helycsoport más szerepben tartozik ide: a Kapernaum fölötti ítélet (Luk 10:15; Mt 11:23) a gőg megaláztatását mondja ki, az Mt 16:18 pedig a halál hatalmát, amely az egyházon nem győz. Ahol a kritikai szövegkiadások ettől eltérnek, a lap jelöli: az 1Kor 15:55-ben a Károli alapszövege a hádészt szólítja meg, a kritikai kiadások ugyanott a halált.
 
 <!-- RÉS-VÉGE: kivonat -->
 
@@ -20,17 +22,15 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 
 <!-- ADAT-NÉZET: 1. pont, 7 oszlopos előfordulás-tábla | forrás: adat/elofordulasok.tsv | cél: general.py --cel study | SZINT: apparatus -->
 
-A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* még **63 egyedi igehelyen** fordul elő az Ószövetségben (a teljes H7585-mező 64 egyedi verset ad; a Hós 13:14-ben és a Zsolt 49:15-ben a szó kétszer szerepel egy versen belül, ez a nyers 66-os számlálást magyarázza: 64 + 2).
+**A helyek rendje.** A 74 hely (64 ószövetségi, 10 újszövetségi) a szerepe szerint néhány nagy csoportba rendeződik. A legtöbb a Seolt a halottak közös helyeként mutatja (10 hely, főként Jób könyvében, a Zsoltárokban és Ezékiás énekében), vagy Isten hatalmát mondja ki fölötte (8 hely). Hét hely prófétai gúnydal a bukott nagyhatalmakról (Ézs 14; Ez 31–32), hat a gonoszok sorsáról szól, öt a Példabeszédek intése a Seolba vezető útról. Négy hely a Seolból való szabadulásért ad hálát, négy pedig a Seol szorításából elhangzó kiáltás (2Sám 22:6 = Zsolt 18:6; Zsolt 116:3; Jón 2:3). Az Újszövetség tíz helyéből négy Krisztus feltámadásához és hatalmához kötődik (ApCsel 2:27, 31; Jel 1:18; 1Kor 15:55), kettő a végső ítélethez (Jel 6:8; 20:13–14).
 
-【NAPLO: örökölt mondat javítva (ELLENOR_F123_ALVIL-001 E2), F123.ALVIL.J5, 2026-10-29 — a régi mondat csak a Hós 13:14-et nevezte meg (64 + 1 = 65). Lekérdezés: `lekerdez.py scan H7585` → 64 igehely, 66 szó-előfordulás: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-29T12:58Z · `--szakasz "Hós 13:14"` → 1 igehely, 2 szó-előfordulás: scope=range:Hós 13:14 | forras=TAHOT_kivonat.tsv | strong=H7585 | n=1 | ts=2026-10-29T12:58Z · `--szakasz "Zsolt 49:15"` → 1 igehely, 2 szó-előfordulás: scope=range:Zsolt 49:15 | forras=TAHOT_kivonat.tsv | strong=H7585 | n=1 | ts=2026-10-29T12:58Z】
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, n=74; a funkcio-mező címkéje szerinti csoportok) | forras=a próza szerzőjének számlálása, split('\t') | ts=2026-11-02*
 
-**Összegzés:** a 63 új igehely túlnyomó többsége személyes gyász, lament/könyörgés, bölcsességi figyelmeztetés vagy prófétai ítélet-gúnydal regiszterébe rendeződik — egyik sem mond ellent a study fő ívének (Krisztus legyőzi a Seolt/hádészt), sőt a Hós 13:14 lelet **közvetlenül megerősíti és kibővíti** azt egy második, páli idézettel.
-
-<!-- INAKTÍV: Logikai kötőszó szerinti bontás — nincs adat: az egyetlen igehely-tartományú sor (Jel 20:13-14) bontását a régi tanulmány nem tárgyalta; a hiány nincs kitöltve -->
+**A Jel 20:13–14 két verse.** A tartomány két verse két lépést mond el, és a kötőszó választja el őket: a 13. versben a halál és a pokol „kiadá a halottakat”, a 14. versben „A pokol pedig és a halál vettetének a tűznek tavába”. Az első a halottak birodalmának utolsó szolgálata (a halottak az ítéletre állnak), a második a megszűnése.
 
 ### Friss, teljes körű keresés (P1–P7)
 
-【NAPLO: F123 M2, 2026-10-29 — a P-lépések nyoma az `adat/auditok.tsv` ALVIL-001-sorai (9 B4-lekérdezés, `naplok/F123_audit_ALVIL-001.py`); a régi tanulmány 2026.09.10-i scanjének leírása az archív példány Q2-jében.】
+【NAPLO: F123 ALVIL-001 új cikk, U1, 2026-11-02 — a hét lépés determinisztikus része a mai adaton (scan H7585: 64 vers, G0086: 10 vers; kollokáció, igealak, LXX-híd), naplózva az `adat/auditok.tsv`-be; a teljesség-mérés három hálóval: `naplok/F123_teljesseg_ALVIL-001.md` (Strong-háló: 0 eltérés; Károli-háló: 298, szótár-háló: 18 eltérés, egyikben sem áll a motívum szava; 8 LXX-többlet). A 28 új jelölt a `jeloltek.tsv`-ben, döntéssel (U2).】
 
 ## 2. Eredeti nyelvi összevetés
 
@@ -39,55 +39,84 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 <!-- ADAT-NÉZET: 2/b Kiegészítő szótári adatok | forrás: adat/lexikon_hivatkozasok.tsv | cél: general.py --cel lexikon (2b rés, res_forras forras=adat) | SZINT: apparatus -->
 
 <!-- RÉS-KEZDET: miert_fontos -->
-**שְׁאוֹל** (*seól*, héber) és **ᾍδης** (*hádész*, görög, eredetileg az alvilág görög istenének neve, majd a LXX-ban a *seól* rendszeres fordítása). **Fontos megkülönböztetés a tehóm/abüsszosz-komplexumtól:** a seól/hádész **NEM azonos** a tehóm/abüsszosszal. A seól/hádész az **egyéni halottak** birodalma — minden halandó sorsa —, míg a tehóm/abüsszosz **kozmikus-mitológiai** fogalom, a teremtés előtti káosz. A két szócsalád eredetileg élesen elkülönül a héber gondolkodásban, és a Szentírás sosem azonosítja őket egymással.
+
+#### H7585 — שְׁאוֹל (seól) · BDB
+
+**Jelentősége:** a BDB a seól szócikkét négy részre tagolja, és ez a tagolás a motívum helyeinek szerepét is elrendezi. Az 1. rész az alvilág, ahová az emberek halálukkor alászállnak; ide tartozik a helyek többsége. A 2. rész az igazak és a gonoszok állapotát különíti el: a gonoszok a Seolba jutnak (Zsolt 9:18), az igaz retteg tőle, mert ott nincs dicséret (Zsolt 6:6; Ézs 38:18), a belőle való szabadulás pedig áldás (Zsolt 30:4; 86:13). Az igazat Isten nem hagyja a Seolban (Zsolt 16:10), és kiváltja onnan (Zsolt 49:16). A 3. rész a Seol mélységeit és a pusztulás helyét, az abaddónt (Péld 15:11), a 4. az átvitt értelmet: a bűnben való végső lealacsonyodást (Ézs 57:9) és a száműzetést. A szótár a Hós 13:14-et ide sorolja, Izrael száműzetésének helyeként; Pál ugyanezt a verset a halál fölötti győzelemként olvassa (1Kor 15:55). A két olvasat egymás mellett áll: a szótár a szóról beszél, a motívum a vers szerepéről.
+
+#### G0086 — ᾍδης (hadész) · Thayer
+
+**Jelentősége:** a görög szó eredetileg az alvilág istenének neve volt, majd magát az alvilágot jelentette. A Thayer az újszövetségi helyeket ez utóbbi jelentés alá sorolja, és megjegyzi, hogy a Septuaginta ezzel a szóval fordítja a seólt. A mérés szerint a seól 64 versének görög megfelelőjében 57 helyen áll ᾍδης, 5 helyen más szó, 2 versnek nincs görög megfelelője. Nyolc versben fordítva van: a Septuaginta ᾍδης szót hoz, a héber szövegben viszont nem a seól áll (például Jób 33:22; Zsolt 115:17). Ezek a helyek a fordítók értelmezését mutatják, a motívumba nem tartoznak, mert a Károli alapszövegében a szó nem áll ott.
+
+*Proveniencia: scope=TAHOT-teljes H7585 × LXX_OS kanonikus könyvek (38 fájl) | forras=TAHOT_kivonat.tsv+LXX_OS/*.tsv (naplok/F123_ALVIL2_lxx_hid.py) | ts=2026-11-02T19:46Z*
+
+#### A Károli-fordítás szavai
+
+**Jelentősége:** a Károli a két szót hétféleképpen adja vissza: sír (29 hely), Seol (19), pokol (17), koporsó (5), alvilág (2), mélység (1) és holtak országa (1). Aki a magyar Bibliában a Seolra keres, csak a helyek negyedét találja meg ezen a néven. A sír és a pokol szó viszont sok olyan versben is áll, amely nem a halottak birodalmáról szól: a sír legtöbbször a temetkezési helyet vagy a sírást jelenti, a pokol a pusztulás helyét (Jób 28:22) vagy a tartaroszt (2Pét 2:4). A 2Pét 2:4 a vétkes angyalok fogságáról szól, ezért az Isten fiairól, a nefilimekről és a gibborimokról szóló motívumhoz áll közel (vö. Júd 1:6), nem ide. A motívum helyét ezért nem a magyar szó, hanem az eredeti szöveg szava dönti el.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, n=74; karoli_szo) | forras=split('\t') | ts=2026-11-02 · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/teljesseg_meres.py) | n=372 | ts=2026-11-02T19:45Z*
+
+#### A seól és a tehóm
+
+**Jelentősége:** a seól és a תְּהוֹם (tehóm) két külön fogalom. A seól az egyes ember halála utáni helye, minden halandó sorsa; a tehóm a teremtés előtti, kozmikus mélység, a világ vizeinek ősforrása. A két szó a teljes Ószövetségben egyetlen versben áll együtt (Ez 31:15): ott a fáraó a Seolba száll, a mélység vizei pedig gyászba borulnak miatta, tehát a szöveg a kettőt egymás mellé állítja, nem azonosítja. Az Újszövetségben a ᾍδης és az ἄβυσσος (abüsszosz) egy versben sem áll együtt.
+
+*Proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7585+H8415 | n=1 | ts=2026-11-02T20:00Z | csatorna=cli · scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0086+G0012 | n=0 | ts=2026-11-02T20:01Z | csatorna=cli*
+
 <!-- RÉS-VÉGE: miert_fontos -->
 
 ## 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva
 
 <!-- RÉS-KEZDET: ertelmezes -->
-**Peshat.** A hádész-vonal az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A gazdag ember és Lázár példázatában (Luk 16:23) a hádész a halál utáni, tudatos szenvedés helyeként jelenik meg. A Jelenések könyvében a Halál és a Hádész személyesített párosként lép fel (6:8), amely a végső ítéletben magával a hádésszel együtt semmisül meg (20:13-14).
 
-**Remez.** A minta íve: a halál birodalma, amelybe minden halandó alászáll, de amelyben Krisztus nem maradt (ApCsel 2:31) — ez a győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történelem végén maga a hádész is megsemmisüljön (Jel 20:14) — egyfajta *"végső bezárás"*, amely tartalmilag rokon azzal, ahogyan a tehóm-motívumban a mélység forrásai bezárultak (1Móz 8:2) — de ez **csak tartalmi, nem lexikai** párhuzam a két motívum között.
+### PaRDeS keretrendszer
 
-【NAPLO: DT419, 2026-10-29 (orkesztrátor, a felhasználó felhatalmazásával; ELLENOR_F123_ALVIL-001 E11) — a Remez és a következő („Második hádész-használati mintázat”) bekezdés bájtra az örökölt szöveg, és két jelöletlen következtetést tartalmaz. (1) A Remezben: „ez a győzelem adja az alapot ahhoz, hogy …” — Krisztus hádész fölötti győzelméből (ApCsel 2:31) vezeti le a kulcsok birtoklását (Jel 1:18) és a hádész megsemmisülését (Jel 20:14); az igehelyek egymás mellé állítása adat, a köztük lévő ok-okozati viszony értelmezés. (2) A következő bekezdésben: „tehát nem a jelen tanulmány fő ívéhez … kapcsolódik” — az idióma szerkezeti egyezéséből (Lk 10:15 / Mt 11:23 ~ Ézs 14:9-15) vont besorolás, szintén értelmezés. A szöveg nem változott.】
+**Mit jelent ez a négy szint?** A PaRDeS a zsidó bibliaértelmezés négy rétegének kezdőbetűiből áll. A **Peshat** azt kérdezi, mit mond a szöveg szó szerint; a **Remez** azt, hová mutat, milyen más helyekkel cseng össze (itt még következtetés nélkül); a **Drash** azt, mit tanít és mire hív; a **Sod** a mélyebb réteget, de csak annyit, amennyi a szövegből levezethető.
 
-**Második hádész-használati mintázat — hübrisz és megaláztatás**. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót — ᾍδης (*hádész*) — használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seol/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
+**Peshat — a halottak közös helye.** Az Ószövetségben a Seol minden ember végállomása. Jákób gyászában jelenik meg először: a fia után oda megy le (1Móz 37:35), és a mondat a József-történetben háromszor visszatér (1Móz 42:38; 44:29, 31). Jób szerint aki leszáll oda, nem jön fel többé (Jób 7:9); a Prédikátor szerint ott nincs cselekedet és bölcsesség (Préd 9:12); a zsoltárok és Ezékiás éneke szerint ott elnémul Isten dicsérete (Zsolt 6:6; Ézs 38:18). Senki sem mentheti ki magát onnan (Zsolt 89:49). A Seol telhetetlen: tátott torka elnyel népeket és vezetőket (Ézs 5:14; Hab 2:5), és a soha meg nem elégedő dolgok között az első (Péld 27:20; 30:16).
 
-**Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
+**Peshat — Isten hatalma a Seol fölött.** A Seol mégsem önálló hatalom. Isten haragja a Seol fenekéig ér (5Móz 32:22), előtte a Seol mezítelen (Jób 26:6), ott is jelen van (Zsolt 139:8), aki oda ásná be magát, onnan is kiragadja (Ámós 9:2). Ő öl és elevenít, Seolba visz és visszahoz (1Sám 2:6). A gonoszok és a gőgösök számára a Seol ítélet: Kóré lázadói élve szállnak alá (4Móz 16:30, 33), a babiloni király és a fáraó bukását a Seol lakói fogadják (Ézs 14:9–15; Ez 31:15–17; 32:21, 27). Az igaz pedig hálát ad, mert Isten felhozta onnan (Zsolt 30:4; 86:13), és benne bízik, hogy kiváltja a Seol kezéből (Zsolt 49:16).
 
-**Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, "a halál és a pokol/hádész pedig vettetének a tüzes tóba") azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, n=74; funkcio: a halottak helye 10, Isten hatalma 8, prófétai gúnydal 7, a gonoszok sorsa 6, bölcsességi intés 5, szabadulás 4, kiáltás 4) | forras=split('\t') | ts=2026-11-02 · scope=Karoli_1908.tsv (a fenti igehelyek) | forras=Karoli_1908.tsv | ts=2026-11-02*
 
-### Új felismerés — Hós 13:14 → 1Kor 15:55
+**Peshat — az Újszövetség.** Az Újszövetség tíz helyén a hádész ugyanaz a halottak birodalma, de új vonásokkal. Lukács példázatában a gazdag ember a halál után, tudatosan szenved ott (Luk 16:23). A Jelenések könyvében a hádész a halál kísérője, megszemélyesített hatalom (Jel 6:8), az utolsó ítéletkor kiadja a halottait, majd a halállal együtt a tűz tavába vettetik (Jel 20:13–14). Jézus szavaiban kétszer más szerepben áll: Kapernaum ítéletében a gőg zuhanásának mélypontja (Luk 10:15; Mt 11:23), Péter vallomása után pedig a halál hatalmának jelképe, amelynek kapui az egyházon nem vesznek diadalt (Mt 16:18).
 
-"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?!”)* — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
+**Remez — két ígéret és a beteljesedésük.** A motívum ívét két ószövetségi vers és újszövetségi idézésük rajzolja ki. A Zsolt 16:10-ben Dávid azt mondja, Isten nem hagyja a lelkét a Seolban, és szentjét nem engedi rothadást látni; Péter pünkösdkor ezt a verset Krisztus feltámadására idézi, és kimondja, hogy Dávid róla szólt (ApCsel 2:27, 31). A Hós 13:14-ben Isten megváltást ígér a Seol hatalmából, és megkérdezi a Seoltól, hol a romlása; Pál ezt a felkiáltást a feltámadás diadalénekébe emeli (1Kor 15:55). A Hóseás-vers a saját helyén ítélet közepén áll, és a szótár a száműzetés képének olvassa; Pál a vers győzelmi kérdését veszi át. A harmadik összecsengés Ézsaiástól Jézusig vezet: az égig törő babiloni király a Seol mélyére zuhan (Ézs 14:15), és ugyanígy zuhan az égig felmagasztalt Kapernaum (Luk 10:15; Mt 11:23).
 
-【NAPLO: ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-4, F123.ALVIL.J21, 2026-10-29 — örökölt mondat jelölve: a Hós 13:14 idézőjeles alakja két tagmondat összevonása (a „veszedelmed” a Károliban a halálhoz, a Seolhoz a „romlásod” szól), nem Károli-szöveg; a J7 a Seol írásmódra hozta, ezért jelölés nélkül Károli-idézetnek látszott. A Károli-alak mellette. Lekérdezés: `lekerdez.py karoli "Hós 13:14"` — scope=range:Hós 13:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T13:26Z】
+*Proveniencia: scope=range:Zsolt 16:10 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-02T19:47Z | csatorna=cli · scope=range:Hós 13:14 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-11-02T19:47Z | csatorna=cli*
+
+**Drash — mit tanít.** A motívum azt tanítja, hogy a halál birodalma valóságos, de nem végső hatalom. Az Ószövetség nem szépíti: a Seol mindenkit elér, elnémítja a dicséretet, és a gazdagság sem vált ki belőle. Ugyanez az Ószövetség azonban már azt is kimondja, hogy egyedül Isten hoz fel onnan és vált ki onnan (1Sám 2:6; Zsolt 49:16). Az Újszövetség ezt az isteni hatalmat Krisztus kezében mutatja meg: ő maga volt halott, és nála vannak a kulcsok (Jel 1:18). Ez az értelmezés lépése: a szöveg egymás mellé állítja a két állítást, és az olvasó számára azt jelenti, hogy aki Krisztusé, annak a halála sem ismeretlen hatalomnak való kiszolgáltatás.
+
+**Sod — a halottak birodalmának vége.** A Jelenések könyve szerint a halottak birodalma nem örök. Kiadja a halottait, majd maga is megsemmisül (Jel 20:13–14). Ami az Ószövetségben minden ember elkerülhetetlen végállomása volt, a Biblia végén ideiglenes valóságként áll: Isten programjában a halál birodalma maga is megszűnik.
 
 ### ↳ Alpont: kiáltás a Seol szorításából
 
-【NAPLO: DT-F123d (2), felhasználó, 2026-10-19 (határdöntés, A4): a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja, nem új ID; a Seol nélküli scan küszöbe a DT414 szerint nem teljesült (1 minősített hely < 3, `naplok/F123_adat_ALVIL-001.md` 5c).】
+【NAPLO: DT-F123d (2), felhasználó, 2026-10-19 (határdöntés): a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja, nem új ID; a Seol nélküli keresés küszöbe a DT414 szerint nem teljesült (1 minősített hely < 3).】
 
-**A motívum határa a halál szorításában kiáltónál.** A Seol nemcsak a halottak helye, hanem a még élőt is szorongató hatalom: „a Seol kötelei körülvettek” (2Sám 22:6 = Zsolt 18:6), „a Seol szorongatásai megragadtak” (Zsolt 116:3), „a Seol gyomrából kiáltottam” (Jón 2:3) — saját, szó szerinti fordítások, a héber *šᵉʾôl* megőrzésével; a Károli 1908 alakja: „A pokol kötelei vettek körül” (2Sám 22:6), „A Seol kötelei vettek körül” (Zsolt 18:6), „a pokol szorongattatásai támadtak meg engem” (Zsolt 116:3), „a Seol torkából sikolték” (Jón 2:3). Ezeken a helyeken a hívó a Seol fenyegetéséből az Úrhoz kiált, és meghallgatást nyer.
+**Négy helyen a Seol nem a halottak helye, hanem az élőt szorongató hatalom.** Dávid énekében „A pokol kötelei” (2Sám 22:6), a zsoltárban „A Seol kötelei” vették körül (Zsolt 18:6), a Zsolt 116:3-ban „a pokol szorongattatásai” támadtak rá, Jónás pedig „a Seol torkából” kiáltott (Jón 2:3). Mind a négy helyen ugyanaz történik: a Seol fenyegetésében lévő ember az Úrhoz kiált, és Isten meghallgatja. Az alpontba az a hely tartozik, ahol mindkettő megvan: a Seol szorongatja az imádkozót, és ő az Úrhoz kiált.
 
-【NAPLO: ELLENOR_F123_ALVIL-001 E9, F123.ALVIL.J6, 2026-10-29 — az idézőjeles alakok az `elofordulasok.tsv` `kapcsolodas` mezőjéből jönnek, nem Károli-szövegek; saját fordításként jelölve, a Károli-alak mellettük. Lekérdezés: `lekerdez.py karoli`, a saját proveniencia-sorai szó szerint (újrafuttatva, F123.ALVIL.J20, ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-3) — scope=range:2Sám 22:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-29T13:26Z · scope=range:Zsolt 18:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-29T13:26Z · scope=range:Zsolt 116:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T13:26Z · scope=range:Jón 2:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T13:26Z】
+- **Mi marad ki az alpontból:** a Zsolt 55:16 és a Zsolt 31:18. Mindkettő a motívum helye, de ott a Seol nem az imádkozót szorongatja: ő az ellenségeinek kívánja.
+- **A tágabb kör:** ha valaki halálveszélyből kiált az Úrhoz, de a vers nem nevezi meg a Seolt, az a bajban mondott imádsághoz tartozik, nem ide. A legközelebbi ilyen hely a Zsolt 107:18–19: a halál kapujához közeledők az Úrhoz kiáltanak, és ő kiszabadítja őket.
+- **Kapcsolat az Úr nevének segítségül hívásával:** a két motívum a Zsolt 116:3–4-ben ér össze, ahol a Seol szorongatását az Úr nevének segítségül hívása követi; a pünkösdi beszédben pedig a Jóel-idézet (ApCsel 2:21) és a Zsolt 16:10 idézése (ApCsel 2:27, 31) egymás mellett áll. Név nélküli kiáltás nem tartozik a nevet hívó motívumhoz.
 
-- **Minimális jegy:** a Seol a hívót szorongatja, és ő az Úrhoz kiált (meghallgatás). Mindkét elem nélkül a hely nem tartozik ide.
-- **Kizárva:** a Seol mint az ellenségek sorsa (Zsolt 55:16; Zsolt 31:18) — ott nem a hívót szorongatja, hanem a hívó kéri, hogy az ellenség jusson oda.
-- **A hígulás iránya:** az „ima bajban”. A halálveszélyből Istenhez kiáltó, de a Seolt nem nevező hely (például Zsolt 107:18–19: „a halál kapujához közelgetének … az Úrhoz kiáltának”) ezen a fölérendelt fogalmon keresztül tartozna ide, ezért az alpontból kimarad.
-- **Viszony a név segítségül hívásához (ISTENTISZT-001):** a két motívum egyetlen közös helye a Zsolt 116:3–4 (a Seol szorongatása, majd „az Úr nevét hívtam segítségül”); a név nélküli kiáltás nem ISTENTISZT-001-előfordulás.
 <!-- RÉS-VÉGE: ertelmezes -->
 
 ## 4. Kapcsolódás a kutatási sablonhoz
 
-<!-- INAKTÍV: 4. Kapcsolódás a kutatási sablonhoz — nincs adat: dedikált, kifejezetten erre a lexikai komplexumra (seól/hádész) vonatkozó pünkösdi/karizmatikus szakirodalmi feldolgozás nem áll rendelkezésre elegendő mennyiségben ahhoz, hogy nevesített szerzőkkel idézhető legyen -->
+<!-- INAKTÍV: 4. Kapcsolódás a kutatási sablonhoz — nincs adat: erre a motívumra szakirodalmi keresés nem futott; a hiány nincs kitöltve -->
 
 ## 5. Alkalmazás és tanítványság
 
-<!-- INAKTÍV: 5.T Nevesített tanítói egyezés — a 7. lépés (B9) az ALVIL-001-re nem futott; a jóváhagyott listáról dedikáltan erre a témára szánt, ellenőrizhető forrás nem állt rendelkezésre; a hiány nincs kitöltve -->
+<!-- INAKTÍV: 5.T Nevesített tanítói egyezés — a 7. lépés (B9) az ALVIL-001-re nem futott; a hiány nincs kitöltve -->
 
 <!-- RÉS-KEZDET: alkalmazas -->
 
-A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lelki félelem nem végső hatalom a hívő élete fölött — Krisztus, aki "a halál és a hádész kulcsait" tartja, garantálja, hogy a halál sem jelenben (szorongás, gyász), sem véglegesen (a feltámadás reménye) nem az utolsó szó.
+**A gyász komolyan vétele.** A Biblia nem szégyelli a halál fájdalmát: Jákób nem fogad vigasztalást, Jób a sírt már a házának nevezi, a zsoltáros az életéért alkudozik. A motívum első tanulsága, hogy a hívő gyásza és halálfélelme nem hitetlenség; a Szentírás szavakat ad hozzá, és ezek a szavak Isten elé viszik.
+
+**A kiáltás iránya.** Négy helyen az ember a Seol szorításából az Úrhoz kiált, és meghallgatást nyer (2Sám 22:6; Zsolt 18:6; 116:3; Jón 2:3). A hívő számára ez gyakorlati útmutatás: a halálos fenyegetésben — betegségben, veszélyben, kilátástalanságban — a kiáltás címzettje az, aki a Seol fölött is úr.
+
+**Az intés komolysága.** A Példabeszédek szerint vannak utak, amelyek a Seolba vezetnek: a bűntársak hívása, az idegen asszony háza, a balgaság lakomája. Az intés a döntések idejét a jelenbe helyezi: amit tenni kell, most kell tenni (Préd 9:12), és a fegyelmezés is életmentés lehet (Péld 23:14).
+
+**A remény alapja.** A motívum íve azt mutatja, hogy a halottak birodalma fölött Krisztusnak van hatalma (Jel 1:18), és hogy ez a birodalom maga is véget ér (Jel 20:14). A hívő ezért a feltámadás bizonyosságában nézhet szembe a halállal, és Pállal együtt kérdezheti: hol a diadala (1Kor 15:55)? A remény nem a halál tagadása, hanem annak megvallása, hogy a halál nem az utolsó szó.
 
 <!-- RÉS-VÉGE: alkalmazas -->
 
@@ -105,11 +134,18 @@ A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lel
 
 <!-- ADAT-NÉZET: 7.M Módszertan — ellenőrzési rétegek | forrás: adat/auditok.tsv | cél: general.py --cel lexikon | SZINT: belso -->
 
-A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi TAHOT/TAGNT-kivonatból, hanem általános szövegkritikai ismeretből származik, 2026.09.10.
+**Hogyan készült a lista.** A helyeket három, egymástól független keresés ellenőrzi. Az első a két szó minden előfordulását kereste a héber és a görög szövegben: 64 ószövetségi és 10 újszövetségi verset talált, és mind a lap táblázatában áll. A második a Károli-fordítás szavait kereste (sír, koporsó, pokol, Seol, alvilág, mélység) a teljes magyar szövegben: 372 versben talált ilyen szót, ebből 298 versben az eredeti szövegben nem a motívum szava áll, hanem más (legtöbbször a sírás igéje, a temetkezési sír, a verem vagy a kozmikus mélység). A harmadik a szótárak által a két szónál idézett helyeket vetette össze a listával: 18 olyan helyet idéznek, amelyben a szó nem áll (összevető helyek, például a halottak nyugalmáról vagy a halálon túli reményről). Egyik keresés sem hozott olyan helyet, amelyben a szó állna, és a listából hiányzna.
+
+*Proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0086+H7585 | n=74 | ts=2026-11-02T19:45Z · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=Seol+alvilág+koporsó+mélység+pokol+sír | n=372 | ts=2026-11-02T19:45Z · scope=G0086+H7585 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=91 | ts=2026-11-02T19:45Z*
+
+**Melyik görög szöveg a mérce.** Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. Ahol a kritikai szövegkiadások eltérnek tőle, a lap ezt jelöli. Ennél a motívumnál egy ilyen hely van: az 1Kor 15:55, ahol a Károli alapszövegében a második felkiáltás a hádészt szólítja meg, a kritikai kiadásokban mindkét felkiáltás a halált.
+
+*Proveniencia: scope=range:1Kor 15:55 | forras=TAGNT_kivonat.tsv (Kritikai kiadás oszlop) + Karoli_1908.tsv | ts=2026-11-02*
 
 ### Nyitott kérdések és séma-korlátok
 
-1. **Mt 16:18** — ᾍδης (*hádész*), „a pokol kapui”, ekkleziológiai kontextus: külön motívumként kezelendő, ha valaha sorra kerül.
+1. **A Septuaginta-többlet.** Nyolc ószövetségi versben a görög fordítás ᾍδης (hadész) szót hoz ott, ahol a héber szövegben nem a seól áll (Jób 33:22; 38:17; Péld 2:18; 14:12; 16:25; Zsolt 94:17; 115:17; Ézs 14:19). Ezek a fordítók értelmezését mutatják; a motívum a héber szövegre épül, ezért nem tartoznak ide. Nyitott, hogy a fordítói többlet érdemel-e külön feldolgozást a Septuaginta szóhasználatáról.
+2. **A Hós 13:14 két olvasata.** A vers a saját helyén ítélet közepén áll, a szótár a száműzetés képének olvassa, Pál a halál fölötti győzelemként idézi. A lap mindkettőt közli; a két olvasat viszonyának kifejtése értelmezési kérdés.
 
 <!-- RÉS-VÉGE: modszertan -->
 
@@ -117,4 +153,4 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 
 ## Proveniencia-sorok
 
-【NAPLO: a Kivonat és az 1. szakasz számai (64 ÓSZ-vers, 66 szóelőfordulás, tíz ᾍδης-előfordulás) a ténylegesen lefutott lekérdezésekből, `adat/auditok.tsv` (F123.ALVIL.M2): scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-29T10:48Z | csatorna=cli · scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=66 (igealak) | ts=2026-10-29T10:48Z | csatorna=cli · scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-10-29T10:48Z | csatorna=cli】
+【NAPLO: a Kivonat számai a ténylegesen lefutott lekérdezésekből (F123 ALVIL-001 új cikk, U1, 2026-11-02; `adat/auditok.tsv`): scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-11-02T19:46Z | csatorna=cli · scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-11-02T19:47Z | csatorna=cli (a tíz vers kilenc sorban, a Jel 20:13 és 20:14 egy sor; plusz az 1Kor 15:55 a Károli alapszövegéből, DT562, DT563) · az LXX-arány: naplok/F123_ALVIL2_lxx_hid.tsv, ts=2026-11-02T19:46Z · a Károli-szavak: adat/elofordulasok.tsv karoli_szo, n=74.】

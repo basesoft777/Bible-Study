@@ -43,6 +43,7 @@ import szerep_nave as SZN
 import szerep_kizart as SZKZ
 import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
 import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
+import olvasoi_utofeldolg as OU  # az olvasói szöveg egységesítése a kész lapon (olvasói kapu, 2026-11-02)
 import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
 
 ROOT = G.ROOT
@@ -138,10 +139,18 @@ def igehely_rendez(igehelyek, konyv_sorrend, hianyzo_konyvek):
     return sorted(igehelyek, key=lambda ige: G.igehely_rendezo_kulcs(ige, konyv_sorrend, hianyzo_konyvek))
 
 
+# A Károli-KH/TSK magyar megjelenítésének régi könyvrövidítései, amelyek nem a
+# `Konyv_normalizalo_tabla.tsv` alakjai (olvasói kapu KONYV).
+KH_KONYV_JAVIT = {'Eféz': 'Ef'}
+
+
 def karoli_colon(s):
     """'Péld 8,22' -> 'Péld 8:22'; '1Móz 2,4-5' -> '1Móz 2:4-5' (G8/K5:
     a TSK/Károli-KH magyar-megjelenítése vesszős, a generált oldal nem
-    lehet az)."""
+    lehet az); a régi könyvrövidítés a normalizáló tábla alakjára."""
+    for regi, uj in KH_KONYV_JAVIT.items():
+        if s.startswith(regi + ' '):
+            s = uj + s[len(regi):]
     return re.sub(r'(\d+),(\d+)', r'\1:\2', s, count=1)
 
 
@@ -420,10 +429,10 @@ def _lexikon_blokk(motivum_id, blokk_nev, forras_lista, licenc_lista, hatokor_so
 # Minden generált szakasz és minden szerep-blokk a cím alatt 1–3 mondatos olvasói bevezetőt kap. A mondatok sablonok,
 # az adatból töltve (szám, szó, kiejtés); motívumra szabott kézi értelmezés nincs bennük, fájlnév és szerepkód sem.
 
-OLVASOI_CIMKE = '**Mit mutat ez a rész?**'
+# a címke 2026-11-03-tól nem látszik (a felhasználó észrevétele); a bekezdést a végén álló láthatatlan jel azonosítja
+OLVASOI_CIMKE = '<!-- olvasói -->'
 OLVASOI_SABLON = {
-    'tartalom': 'A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő '
-                'az adattáblákból.',
+    'tartalom': 'A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.',
     'jelmagyarazat': 'A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, '
                      'itt keresd.',
     'elofordulasok': 'A motívum %(n)d igehelye a bibliai könyvek sorrendjében (%(reszek)s), mindegyik a Károli-fordítás '
@@ -462,16 +471,16 @@ OLVASOI_SABLON = {
 # A rések (kézi vagy adatból generált) olvasói bevezetője: a generátor írja a rés címe alá (ISTENTISZT-001 arany lap, 2026-10-29); a rés törzse
 # (a kézi próza) változatlan.
 OLVASOI_RES = {
-    'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.',
-    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.',
-    'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.',
+    'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.',
+    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok.',  # DT-F174a: adat nélkül a rés nem áll a lapon
+    'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából.',
     'minosites': 'Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a '
                  'Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze '
                  'egymással. Minél több hely kap ilyen kapcsolatot, annál erősebb a motívum külső megerősítése.',
     'alatamasztas': 'Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.',
     'ertelmezes': 'A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. '
-                  'A kutató írta; az állítások alatt a mért adat forrása áll.',
-    'alkalmazas': 'Mit jelent a motívum a hívő életében ma. A kutató írta.',
+                  'Az állítások alatt a mért adat forrása áll.',
+    'alkalmazas': 'Mit jelent a motívum a hívő életében ma.',
     'tanitoi': 'Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.',
     'modszertan': 'Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.',
 }
@@ -501,10 +510,11 @@ OLVASOI_SZEREP = {
     13: 'A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést '
         '(a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; '
         'utána a ragozott alakok és az igehelyek.',
-    14: 'Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar '
-        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, '
+    # F123.ANTROP2 (olvasói kapu, BELSO): a „gerinc” belső szó helyett olvasói megnevezés
+    14: 'Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcsszavai”) és a Károli magyar '
+        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a motívum szavai állnak, '
         'de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis '
-        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc '
+        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a motívum '
         'szavai, így a magyar olvasó tévesen kapcsolná ide.',
 }
 
@@ -521,8 +531,13 @@ def motivum_mezo(ctx, mezo):
     return ((_motivumok_cache.get(sorai[0].get('id')) or {}).get(mezo) or '').strip() if sorai else ''
 
 
+def ikon_nelkul(szoveg):
+    """A szöveg elejéről leszedi az ikont/emojit (nem betű, nem számjegy, nem idézőjel/zárójel)."""
+    return re.sub(r'^[^\w"„(]+', '', szoveg or '')
+
+
 def olvasoi_bekezdes(szoveg):
-    return '%s %s' % (OLVASOI_CIMKE, szoveg)
+    return '%s%s' % (szoveg, OLVASOI_CIMKE)   # a jel a sor végén áll: a sor elején álló <!-- … --> HTML-blokk lenne, és a szöveg nyersen jelenne meg
 
 
 def olvasoi(kulcs, **adat):
@@ -592,11 +607,33 @@ def blokk_tartalom(m):
 # Jelmagyarázat és rövidítések (közös szöveg minden oldalon, G10)
 # ---------------------------------------------------------------------------
 
+# A módszertani közlemények (`kozlemeny/`, F163) a lapról relatív hivatkozással érhetők el: a lap a `lexikon/` alatt áll,
+# ezért a `../kozlemeny/…` út a repóban és bármely, a könyvtárszerkezetet megtartó közzétételben is a fájlra mutat. GitHub-URL
+# nem kerül a lapra (a GitHub nem kanonikus forrás, 2026-11-04); a kanonikus közzétételi hely és a DOI helyőrző, amíg nincs meg.
+KOZLEMENY = {
+    'mi': '../kozlemeny/MI_NYILATKOZAT.md',
+    'hays': '../kozlemeny/HAYS_LEKEPEZES.md',
+    'recepcios': '../kozlemeny/PARDES_RECEPCIOS_KERET.md',
+    'kozel_keleti': '../kozlemeny/KOZEL_KELETI_HATAR.md',
+    'citation': '../CITATION.cff',
+}
+KANONIKUS_FORRAS_HELYORZO = '<KANONIKUS_FORRAS_URL>'
+DOI_HELYORZO = '<DOI>'
+TERMEKNEV_HELYORZO = '[HELYŐRZŐ: TERMÉKNÉV]'
+SZERZO_HELYORZO = '[HELYŐRZŐ: SZERZŐ NEVE]'
+
 JELMAGYARAZAT_TORZS = """**PaRDeS-szintek** (`sablonok/PaRDeS_gyorsreferencia.md`):
 - **Peshat** — a szöveg szerinti, szó szerinti értelem.
 - **Remez** — csak felismerés/azonosítás, következtetés nélkül.
 - **Drash** — normatív, következtető, alkalmazó.
 - **Sod** — fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül.
+
+A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagyarázat négyes sémájának kategóriáival mondja
+meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem
+kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A
+besorolást e munka adja, saját szabályai szerint; hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,
+azt a Tanítói egyezés dokumentálja, ahol van. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
+a szint (részletesen: [A PaRDeS-szint mint recepciós címke](%(recepcios)s)).
 
 **Funkció:** a vers szerepe a motívum ívében — az `adat/SEMA.md` szerint
 szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum
@@ -615,7 +652,7 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
 jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
-**Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
+**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
 **Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
@@ -627,12 +664,12 @@ ellenőrzéshez való, olvasáskor átugorható.
 vizsgált helyek, M a minősítés.
 
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
-betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
 szócikk szövegéből derül ki.
 
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
-(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«)."""
+(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).""" % KOZLEMENY
 
 
 def blokk_jelmagyarazat(m):
@@ -717,7 +754,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
         # F121 (DT393): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
         szoveg = ubs_glossza_cella('UBS_DNTG', strong, lexid, entry_kod, glosszak)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
-        tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
+        tokenenkent.setdefault(strong, []).append('%s%s' % (szoveg, jelolt))   # a 15 jegyű kód nem látszik (2026-11-03)
 
     if len(strong_tokens) == 1:
         cellak = tokenenkent.get(strong_tokens[0])
@@ -811,7 +848,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             labjegyzet_jel = '[^%d]' % len(labjegyzetek)
 
         if gerinc:
-            szotari_jelentes = '%s ⓘ%s' % (jelentes_szo, labjegyzet_jel)
+            szotari_jelentes = '%s%s' % (jelentes_szo, labjegyzet_jel)
         else:
             szotari_jelentes = lexikon_jelentes_cella(s)
         ubs_cella = ubs_jelentes_cella(s['id'], s['igehely'], s.get('strong') or '')
@@ -828,7 +865,9 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             # az 1/a „Funkció:” sorába; a táblázat cellája változatlanul a teljes érték
             _c, sep2, utana = funkcio_teljes.partition(': ')
             funkcio_magyarazat = utana if sep2 else re.sub(r'^[^\w"„(]+', '', funkcio_teljes)
-        funkcio_cella = funkcio_cimke if funkcio_teljes else EM_DASH
+        # 2026-11-03: a cellában és az 1/a „Funkció:” sorában nincs vezető ikon/emoji, a szöveg marad
+        funkcio_cella = ikon_nelkul(funkcio_cimke) if funkcio_teljes else EM_DASH
+        funkcio_magyarazat = ikon_nelkul(funkcio_magyarazat)
 
         if gerinc:
             sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
@@ -873,9 +912,9 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             else:
                 reszek.append('*(%s: nincs Károli-szöveg)*' % vers)
         if s.get('kapcsolodas'):
-            reszek.append(s['kapcsolodas'])
+            reszek.append(SZKZ.olvasoi_indok(s['kapcsolodas']) or s['kapcsolodas'])
         if funkcio_magyarazat:
-            reszek.append('Funkció: %s' % funkcio_magyarazat)
+            reszek.append('\nFunkció: %s' % funkcio_magyarazat)   # új bekezdés: a renderelt nézetben is új sor
         torzs += '\n\n' + '\n'.join(reszek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d igehely-sorát fedi az `elofordulasok.tsv`-ből, '
@@ -893,7 +932,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     ]
     if gerinc:
         hatokor += (' A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja '
-                    '(`%s`, `%s`, `%s`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” '
+                    '(`%s`, `%s`, `%s`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” '
                     'a hely motívumbeli funkcióját (F131, DT272 (d)).'
                     % (SZAKASZ_CIMKE_FAJL, BDB_VERS_JELENTES_FAJL, THAYER_VERS_JELENTES_FAJL))
         for fajl, kulcs in ((SZAKASZ_CIMKE_FAJL, 'projekt_adat'), (BDB_VERS_JELENTES_FAJL, 'BDB'),
@@ -964,20 +1003,21 @@ def blokk_kizart(m, n_motivum=0):
     if sorok_ehhez:
         # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
         # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
-        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
-        okok = sorted(((k, v) for k, v in ossz['ok'].items() if k not in (SZKZ.EGYEB_OK, 'nyitott döntés')),
+        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'], strong_cim=strong_cim)
+        okok = sorted(((k, v) for k, v in ossz['ok'].items() if k != 'nyitott döntés'),
                       key=lambda x: (-x[1], x[0]))
-        kizart_olv = OK.kizart(len(sorok_ehhez), sum(1 for r in sorok_ehhez if r.get('dontes') == 'elutasítva'),
-                               sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva'), okok,
+        # F123.TUD1B: verseket számol; az összesítő sor versszáma a `forras_kereses`-ből (szerep_kizart.csoport_versszam)
+        v = SZKZ.vizsgalt_versek(sorok_ehhez)
+        kizart_olv = OK.kizart(v['egyenkent'], v['csoport_vers'], v['csoport_sor'], v['elutasitva'], v['nyitva'], okok,
                                [(c, ossz['forras'][c]) for c in SZKZ.CSOPORTOK if ossz['forras'].get(c)], n_motivum)
         reszek.append(SZKZ.osszesito_sor(ossz))
         reszek.extend(tablak)
     else:
-        reszek.append('Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.')
+        reszek.append('Ehhez a motívumhoz nincs kizárt vagy nyitva maradt jelölt.')
 
     negativ = (m.get('negativ_kriterium') or '').strip()
     if negativ:
-        reszek.append('**Negatív kritérium** (`motivumok.tsv`): %s' % negativ)
+        reszek.append('**Negatív kritérium:** %s' % (SZKZ.olvasoi_indok(negativ) or negativ))
     if labj:
         labj, kozos = SZKZ.kozos_proveniencia(labj, 'K')   # F152 B.2
         reszek.append('\n'.join('[^k%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
@@ -1133,7 +1173,7 @@ def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_lice
         for _, bek in r['forras_blokkok']:
             alszakasz.extend(bek)
     else:
-        alszakasz.append('Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.')
+        alszakasz.append('Ehhez a szóhoz nincs rögzített szótári jelentés-hivatkozás.')
     return '\n\n'.join(alszakasz), r['van_hivatkozas'], r['tisztazatlan_erintve']
 
 
@@ -1676,6 +1716,13 @@ def glosszak_heber_hu():
     return _glosszak_heber_cache
 
 
+def strong_cim(strong):
+    """A prózában jelölt Strong-szám `title`-je (DT-F181b): a szám és — ha van — a rövid magyar jelentés („H4196 · oltár”);
+    magyar jelentés híján csak a szám (a „fordításra vár” jelzés nem kerül az egérfeliratba)."""
+    szoveg, van_magyar = rovid_jelentes(strong)
+    return '%s · %s' % (strong, szoveg) if van_magyar and szoveg != EM_DASH else strong
+
+
 def rovid_jelentes(strong):
     """(szöveg, van_magyar): a rövid magyar jelentés — héberül a `glosszak_heber_hu.tsv`; görögül magyar rövid
     a `forditasok.tsv` `TBESG | <Strong> | <Strong> | rovid | glosszak_hu` sora (F121, DT-F121o); ahol nincs, a TBESG
@@ -1971,7 +2018,7 @@ def _tartalom_heber_lxx_parok(nyelv, n, tokenek_ny, reszek, ctx):
             lk = lemma_kiejtes(g)
             reszek_g.append('%s (%s%s): %d vers' % (lk[0], lk[1] + ', ' if lk[1] else '', g, db) if lk
                             else '%s: %d vers' % (g, db))
-        out.append('**%s** · %d vers az LXX_OS-ben (ebből %d vers görög tartalmi szóval); leggyakoribb görög '
+        out.append('**%s** · %d vers a Septuagintában (ebből %d vers görög tartalmi szóval); leggyakoribb görög '
                    'társak: %s' % (t, len(versek), len(parral), '; '.join(reszek_g) if reszek_g else EM_DASH))
     if tokenek_ny:
         prov = next((parok[t]['proveniencia'] for t in tokenek_ny if t in parok), EM_DASH)
@@ -2635,7 +2682,7 @@ def gerinc_adat():
 
     cimke = {}
     for r in be(SZAKASZ_CIMKE_FAJL):
-        cimke[(r['szotar'], r['strong'], r['szakasz'])] = r
+        cimke[cimke_kulcs(r)] = r
     bdb_sz = {}
     for r in be(BDB_SZAKASZOK_FAJL):
         bdb_sz.setdefault(r['strong'], []).append(r)
@@ -2665,9 +2712,11 @@ def gerinc_adat():
     for r in L.load_tahot():
         k = (r['Igehely'], r['Strong-szám'])
         token_szam[k] = token_szam.get(k, 0) + 1
+    # F123.BDBGER: a teljes angol szócikk (a 2.29 `poz`-ának szövege), a példahely szócikkének azonosításához
+    bdb_en = {r['Strong_padded']: r['Teljes_szocikk'] for r in be(BDB_TELJES_FAJL)}
     _gerinc_adat_cache = {'cimke': cimke, 'bdb_sz': bdb_sz, 'bdb_hu': bdb_hu, 'bdb_vj': bdb_vj,
                           'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza, 'tiltott': tiltott,
-                          'token_szam': token_szam}
+                          'token_szam': token_szam, 'bdb_en': bdb_en}
     return _gerinc_adat_cache
 
 
@@ -2676,10 +2725,173 @@ def _bdb_strong_kulcs(strong):
     return strong
 
 
+# --- a szakasz kulcsa: szócikk + útvonal (F123.BDBGER) ----------------------------------------------------------
+# Egy Strongnak több BDB-szócikke lehet (`bdb_id`: I., II., arámi); az útvonal (`-/1/-`) csak a szócikken belül egyedi.
+# A szakasz kulcsa ezért (bdb_id, utvonal); a Thayer és a TBESG kulcsa ('', utvonal), mert ott a Strong egy szócikk.
+
+# A BDB arámi szócikkei a BDB9264-től (konkordancia/BDB_aram_potlas_README.md: „a BDB9264-től induló arámi szócikkek”)
+BDB_ARAMI_ELSO = 9264
+_ROMAI_LEMMA_RE = re.compile(r'\s*(?:(IV|V|VI{0,3}|I{1,3})\.\s+)?\[?([^\s\[\]]*[֐-׿][^\s\[\],;]*)')
+_bdb_szelet = None
+
+
+def _lapit(szoveg):
+    """A szeletelő `lapit`-ja (`olvaso_szerver/bdb_szelet.py`): a 2.29 `poz`-a erre a szövegalakra vonatkozik."""
+    global _bdb_szelet
+    if _bdb_szelet is None:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'bdb_szelet_lg', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver', 'bdb_szelet.py'))
+        _bdb_szelet = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_bdb_szelet)
+    return _bdb_szelet.lapit(szoveg)
+
+
+def cimke_kulcs(r):
+    """A `szotar_szakasz_cimke.tsv` (SEMA 2.40) sorának kulcsa: (szotar, strong, bdb_id, szakasz); a `bdb_id` csak a
+    BDB-sorban nem üres."""
+    return (r['szotar'], r['strong'], r.get('bdb_id') or '', r['szakasz'])
+
+
+def kulcs_ala_esik(finom, durva):
+    """Igaz, ha a `finom` szakasz a `durva` alá esik: azonos szócikkben, és az útvonala alá (vagy azonos vele)."""
+    return finom[0] == durva[0] and gerinc_ala_esik(finom[1], durva[1])
+
+
+def bdb_szocikkek(adat, strong):
+    """A Strong BDB-szócikkei (`bdb_id`) a 2.30 sorrendjében, ami a BDB saját rendje (I., II., …, arámi)."""
+    out = []
+    for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam'])):
+        if r.get('bdb_id', '') not in out:
+            out.append(r.get('bdb_id', ''))
+    return out
+
+
+def _utvonal_szocikkei(adat, strong, utvonal):
+    vag = gerinc_utvonal_vag(utvonal)
+    return {r.get('bdb_id', '') for r in adat['bdb_sz'].get(strong, []) if gerinc_utvonal_vag(r['utvonal']) == vag}
+
+
+def szakasz_kulcs_jel(adat, szotar, strong, k):
+    """A szakasz jele (`1.a`); ha az útvonal a Strong több BDB-szócikkében is áll, a szócikk azonosítójával (`BDB2718 1.a`)."""
+    jel = szakasz_jel(k[1])
+    if szotar == 'BDB' and k[0] and len(_utvonal_szocikkei(adat, strong, k[1])) > 1:
+        return '%s %s' % (k[0], jel)
+    return jel
+
+
+def bdb_szocikk_fejcim(adat, strong, bdb_id):
+    """A szócikk fejcíme a lapon: `BDB2718 · I. חַיָּה`, az arámi szócikknél `· arámi` (a fej angol szövegének római száma
+    és első héber szava; ha nincs, csak az azonosító)."""
+    fej = next((r for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam']))
+                if r.get('bdb_id', '') == bdb_id and r['utvonal'] == 'fej'), None)
+    reszek = [bdb_id]
+    m = _ROMAI_LEMMA_RE.match((fej or {}).get('szoveg') or '')
+    if m:
+        reszek.append(('%s. %s' % (m.group(1), m.group(2))) if m.group(1) else m.group(2))
+    szam = re.match(r'BDB(\d+)$', bdb_id or '')
+    if szam and int(szam.group(1)) >= BDB_ARAMI_ELSO:
+        reszek.append('arámi')
+    return ' · '.join(reszek)
+
+
+def _bdb_sor_kezdetek(adat, strong):
+    """[(bdb_id, kezdet vagy None)] a 2.30 sorrendjében: a sor szövegének kezdete a teljes angol szócikk `lapit`-alakjában
+    (a 2.29 `poz`-ának koordinátái), sorban előre keresve; None, ha a szöveg nem található vagy rövid (15 karakter alatt)."""
+    cache = adat.setdefault('_bdb_kezdet', {})
+    if strong not in cache:
+        s = _lapit((adat.get('bdb_en') or {}).get(strong, ''))
+        ki, kurzor = [], 0
+        for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam'])):
+            t = _lapit(r.get('szoveg') or '')[:40]
+            i = s.find(t, kurzor) if s and len(t) >= 15 else -1
+            ki.append((r.get('bdb_id', ''), i if i >= 0 else None))
+            if i >= 0:
+                kurzor = i + 1
+        cache[strong] = ki
+    return cache[strong]
+
+
+def _bdb_poz_szocikkei(adat, strong, poz):
+    """A szócikkek, amelyekben a `poz` állhat: az előtte kezdődő utolsó megtalált sor szócikke és a következő megtalált
+    sorig a nem megtalált sorok szócikkei (szöveg nélkül: mind)."""
+    sorok = _bdb_sor_kezdetek(adat, strong)
+    elotte = [k for k, (_b, i) in enumerate(sorok) if i is not None and i <= poz]
+    utana = [k for k, (_b, i) in enumerate(sorok) if i is not None and i > poz]
+    tol = elotte[-1] if elotte else 0
+    ig = utana[0] if utana else len(sorok)
+    return {sorok[k][0] for k in range(tol, ig)}
+
+
+def _vers_ut_szocikkei(adat, strong, ut):
+    """Az útvonal szerint szóba jövő szócikkek: `fej` — amelynek van feje; `tagolatlan` — amelynek csak feje van."""
+    sorok = adat['bdb_sz'].get(strong, [])
+    if ut == 'fej':
+        return {x.get('bdb_id', '') for x in sorok if x['utvonal'] == 'fej'}
+    if ut == 'tagolatlan':
+        return {b for b in bdb_szocikkek(adat, strong)
+                if all(x['utvonal'] in ('cim', 'fej') for x in sorok if x.get('bdb_id', '') == b)}
+    return _utvonal_szocikkei(adat, strong, ut)
+
+
+def _bdb_poz_megbizhato(adat, strong):
+    """A hely (`poz`) szerinti szócikk-sávok megbízhatók-e a Strongban: az útvonalból egyértelmű minden 2.29-sorban a
+    hely szerinti jelöltek között ott van az útvonal szócikke (a két forrás szócikkhatára egyezik). Ha valahol nem,
+    a hely a Strongban nem dönt (mérés: naplok/F123_BDBGER_meres.md)."""
+    cache = adat.setdefault('_bdb_poz_ok', {})
+    if '_bdb_vj_strong' not in adat:
+        idx = {}
+        for (st, _v), sorok in adat['bdb_vj'].items():
+            idx.setdefault(st, []).append(sorok)
+        adat['_bdb_vj_strong'] = idx
+    if strong not in cache:
+        ok = True
+        for sorok in adat['_bdb_vj_strong'].get(strong, []):
+            for r in sorok:
+                if r['utvonal'] in ('fej', 'tagolatlan'):
+                    continue
+                ut_j = _utvonal_szocikkei(adat, strong, r['utvonal'])
+                try:
+                    if len(ut_j) == 1 and not ut_j <= _bdb_poz_szocikkei(adat, strong, int(r.get('poz'))):
+                        ok = False
+                except (TypeError, ValueError):
+                    pass
+        cache[strong] = ok
+    return cache[strong]
+
+
+def bdb_vers_szocikk(adat, strong, r):
+    """A 2.29 sorának szócikke: (bdb_id vagy None, ok). A 2.29 nem a 2.30 szócikk-azonosítóját hordozza; a szócikk az
+    útvonalból jön, ha az a Strongnak csak egy szócikkében áll, különben a hivatkozás helyéből (`poz`) is, ha az a
+    Strongban megbízható: az a szócikk, amely mindkettőnek megfelel (ha az útvonal a 2.30-ban nincs meg, csak a helyé).
+    Ha nem egyértelmű, None: a példa nem rendelhető szakaszhoz (választás nélkül)."""
+    ids = bdb_szocikkek(adat, strong)
+    if len(ids) <= 1:
+        return (ids[0] if ids else None), ''
+    ut = r['utvonal']
+    ut_j = _vers_ut_szocikkei(adat, strong, ut)
+    if len(ut_j) == 1:
+        return next(iter(ut_j)), ''
+    if not _bdb_poz_megbizhato(adat, strong):
+        return None, ('a %s útvonal a %s szócikkei közül %s; a hivatkozás helye (`poz`) itt nem dönt, mert a 2.29 és a '
+                      '2.30 szócikkhatára a Strongban máshol eltér'
+                      % (ut, strong, ('ezekben áll: ' + ', '.join(b for b in ids if b in ut_j)) if ut_j else 'egyikben sem áll'))
+    try:
+        p_j = _bdb_poz_szocikkei(adat, strong, int(r.get('poz')))
+    except (TypeError, ValueError):
+        p_j = set(ids)
+    j = (ut_j & p_j) if ut_j else p_j
+    if len(j) == 1:
+        return next(iter(j)), ''
+    return None, ('a %s útvonal a %s szócikkében áll (%s), a hivatkozás helye (`poz` %s) szerint: %s'
+                  % (ut, strong, ', '.join(b for b in ids if b in ut_j) or EM_DASH, r.get('poz'),
+                     ', '.join(b for b in ids if b in p_j) or EM_DASH))
+
+
 def kutatoi_szakasz(adat, szotar, strong, kulcs):
     """A kutatói jelentésszám leképezése a szótár szakaszára (DT372 2.): az a sor, amelynek
-    `lexikon_jelentes_szam`-a a kulcs; None, ha nincs leképezve."""
-    talalat = [k[2] for k, r in adat['cimke'].items()
+    `lexikon_jelentes_szam`-a a kulcs, (bdb_id, szakasz) alakban; None, ha nincs leképezve."""
+    talalat = [(k[2], k[3]) for k, r in adat['cimke'].items()
                if k[0] == szotar and k[1] == strong and r['lexikon_jelentes_szam'] == kulcs]
     if len(talalat) > 1:
         raise GerincHiba('a(z) %s %s %s kutatói kulcs több szakaszra mutat: %s' % (szotar, strong, kulcs, talalat))
@@ -2711,11 +2923,15 @@ def bdb_tartomanyban(adat, strong, vers):
             continue
         for r in sorok:
             if r.get('vers_feloldas') == 'azonos' and r['utvonal'] not in ('fej', 'cim'):
-                csoport.setdefault((gerinc_utvonal_vag(r['utvonal']), r['nyers']), []).append(r)
+                # F123.BDBGER: a tartomány szövege a példahely saját szócikkéé; nem azonosítható szócikknél nincs állítás
+                b, _ok = bdb_vers_szocikk(adat, strong, r)
+                if b is not None:
+                    csoport.setdefault((b, gerinc_utvonal_vag(r['utvonal']), r['nyers']), []).append(r)
     ki = []
-    for (vag, nyers), sorok in sorted(csoport.items()):
+    for (b, vag, nyers), sorok in sorted(csoport.items()):
         szoveg = ' '.join(' '.join(x for x in (sz.get('jel'), sz.get('szoveg')) if x)
-                          for sz in adat['bdb_sz'].get(strong, []) if gerinc_utvonal_vag(sz['utvonal']) == vag)
+                          for sz in adat['bdb_sz'].get(strong, [])
+                          if sz.get('bdb_id', '') == b and gerinc_utvonal_vag(sz['utvonal']) == vag)
         elofordulas = list(re.finditer(r'(?<![\w:])' + re.escape(nyers) + r'(?![\d])', szoveg))
         sorok = sorted(sorok, key=lambda r: int(r['sorszam']))
         if len(elofordulas) != len(sorok):
@@ -2730,17 +2946,24 @@ def bdb_tartomanyban(adat, strong, vers):
                 ki.append('a BDB a helyet nem önállóan idézi, hanem %s szakaszban %s %s–%d verstartomány '
                           'belsejében (a BDB-ben: „%s%s”; `%s` sorszam %s); a tartomány nincs kibontva (DT382 (A)), '
                           'ezért a hely nem BDB-példa'
-                          % (szakasz_szoveg(szakasz_jel(r['utvonal'])), _nevelo(r['karoli_vers']), r['karoli_vers'], veg, nyers,
+                          % (szakasz_szoveg(szakasz_kulcs_jel(adat, 'BDB', strong, (b, r['utvonal']))),
+                             _nevelo(r['karoli_vers']), r['karoli_vers'], veg, nyers,
                              t.group(0).strip(), BDB_VERS_JELENTES_FAJL, r['sorszam']))
     return ki
 
 
-def _bdb_sor_utvonal(adat, strong, vag_ut):
-    """A 2.30 teljes útvonala a levágott alakhoz (`-/3` → `-/3/-`)."""
+def _bdb_sor_utvonal(adat, strong, bdb_id, vag_ut):
+    """A 2.30 teljes útvonala a levágott alakhoz (`-/3` → `-/3/-`), a szócikken belül."""
     for r in adat['bdb_sz'].get(strong, []):
-        if gerinc_utvonal_vag(r['utvonal']) == vag_ut:
+        if r.get('bdb_id', '') == bdb_id and gerinc_utvonal_vag(r['utvonal']) == vag_ut:
             return r['utvonal']
     return None
+
+
+def _pelda_kulcs(adat, strong, b, r):
+    """A példahely szakaszkulcsa: (bdb_id, a 2.30 teljes útvonala)."""
+    vag = gerinc_utvonal_vag(r['utvonal'])
+    return (b, _bdb_sor_utvonal(adat, strong, b, vag) or r['utvonal'])
 
 
 def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_token):
@@ -2748,11 +2971,23 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
     Elsőbbség (DT374): ha a szótár maga idézi a helyet, és útja a kutatói út alá esik, a finomabb
     útvonal címkéje; ha egyik sem esik a másik alá: GerincHiba. A címke a szóról szól."""
     kulcs, minosito = kutatoi_kulcs(jelentes_szam) if kutatoi_token else ('', '')
-    kut_ut = kutatoi_szakasz(adat, szotar, strong, kulcs) if kulcs else None
-    if kutatoi_token and kulcs and kut_ut is None:
+    kut_k = kutatoi_szakasz(adat, szotar, strong, kulcs) if kulcs else None
+    if kutatoi_token and kulcs and kut_k is None:
         return None, '', ('a kutatói jelentésszám („%s”) nincs leképezve a %s tagolására (`%s`)'
                           % (kulcs, szotar, SZAKASZ_CIMKE_FAJL))
-    peldak = bdb_peldak(adat, strong, vers) if szotar == 'BDB' else []
+
+    def kjel(k):
+        return szakasz_kulcs_jel(adat, szotar, strong, k)
+
+    # F123.BDBGER: a példahely szakaszkulcsa (bdb_id, útvonal); ha a szócikk nem azonosítható, a példa nem kerül a tokenre
+    peldak, nem_azon = [], []
+    for r in (bdb_peldak(adat, strong, vers) if szotar == 'BDB' else []):
+        b, ok = bdb_vers_szocikk(adat, strong, r)
+        if b is None:
+            nem_azon.append('a BDB a helyet idézi (`%s` sorszam %s), de nem azonosítható, melyik szócikkében (%s); a '
+                            'BDB-példa ezért nem kerül erre a tokenre' % (BDB_VERS_JELENTES_FAJL, r['sorszam'], ok))
+        else:
+            peldak.append((_pelda_kulcs(adat, strong, b, r), r))
     tobb_token = []
     n_token = (adat.get('token_szam') or {}).get((vers, strong), 0)
     if peldak and n_token >= 2:
@@ -2760,59 +2995,55 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         # Strongnak több tokenje van, a példa nem rendelhető a sor tokenjéhez — a címke nem a BDB-példából jön
         tobb_token.append('a BDB a verset %s szakaszban idézi (`%s` sorszam %s), de a versben a szó %s áll '
                           '(`%s`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a '
-                          'tokenre' % (szakasz_szoveg(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong,
-                                                                                       gerinc_utvonal_vag(r['utvonal']))
-                                                                      or r['utvonal']) for r in peldak})),
-                                       BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for r in peldak),
+                          'tokenre' % (szakasz_szoveg(sorted({kjel(k) for k, _r in peldak})),
+                                       BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for _k, r in peldak),
                                        _HANYSZOR.get(n_token, '%d alkalommal' % n_token), TAHOT_KIVONAT_FAJL))
         peldak = []
-    pelda_utak = sorted({gerinc_utvonal_vag(r['utvonal']) for r in peldak})
+    pelda_k = sorted({k for k, _r in peldak})
     ip = []
-    if len(pelda_utak) > 1:
+    if len(pelda_k) > 1:
         # F123 (DT-F123h): a több útvonalú BDB-példát a kutatói hozzárendelés dönti el, ha pontosan egy útvonal esik alá;
         # a többi útvonal ⓘ-ben marad (a szótár ott is idézi). Kutatói kulcs nélkül, vagy ha ez nem egyértelmű: kézi kérdés.
-        kut_vag = gerinc_utvonal_vag(kut_ut) if kut_ut else None
-        ala = [u for u in pelda_utak if kut_vag and gerinc_ala_esik(u, kut_vag)]
+        ala = [k for k in pelda_k if kut_k and kulcs_ala_esik(k, kut_k)]
         if len(ala) != 1:
-            raise GerincHiba('%s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés' % (strong, vers, pelda_utak))
-        mas = [r for r in peldak if gerinc_utvonal_vag(r['utvonal']) != ala[0]]
+            raise GerincHiba('%s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés' % (strong, vers, pelda_k))
+        mas = [(k, r) for k, r in peldak if k != ala[0]]
         ip.append('a BDB a helyet %s is idézi (`%s` sorszam %s); a kutatói hozzárendelés (%s → %s, `%s`) dönt'
-                  % (szakasz_szoveg(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong, gerinc_utvonal_vag(r['utvonal']))
-                                                         or r['utvonal']) for r in mas})),
-                     BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for r in mas), kulcs, szakasz_jel(kut_ut), SZAKASZ_CIMKE_FAJL))
-        peldak = [r for r in peldak if gerinc_utvonal_vag(r['utvonal']) == ala[0]]
-        pelda_utak = ala
+                  % (szakasz_szoveg(sorted({kjel(k) for k, _r in mas})),
+                     BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for _k, r in mas), kulcs, kjel(kut_k), SZAKASZ_CIMKE_FAJL))
+        peldak = [(k, r) for k, r in peldak if k == ala[0]]
+        pelda_k = ala
     if peldak:
-        p_ut = _bdb_sor_utvonal(adat, strong, pelda_utak[0]) or pelda_utak[0]
-        sorszamok = ', '.join(r['sorszam'] for r in peldak)
+        p_k = pelda_k[0]
+        sorszamok = ', '.join(r['sorszam'] for _k, r in peldak)
         # DT381 (a): a forrás hibás versét a 2.31 kézi sora javította; az ⓘ a javítás forrását nevezi meg
-        for r in peldak:
+        for _k, r in peldak:
             if 'forras_javitas' in (r.get('okkod') or '').split(','):
                 ip.append('a BDB forrásszövege itt a „%s” helyet idézi (sajtóhiba); javítva: %s — a javítás forrása: `%s`, '
                           'kézi sor (`hivatkozas_kezi`, `manual`; indok: a TAHOT és a szövegkörnyezet; DT381 (a))'
                           % (r['nyers'], r['karoli_vers'], BDB_FORRAS_JAVITAS_FAJL))
-        if kut_ut is None:
-            valasztott = p_ut
+        if kut_k is None:
+            valasztott = p_k
             ip.append('BDB-példa: a BDB %s szakaszban maga idézi a helyet (`%s` sorszam %s)'
-                      % (szakasz_szoveg(szakasz_jel(p_ut)), BDB_VERS_JELENTES_FAJL, sorszamok))
-        elif gerinc_ala_esik(p_ut, kut_ut):
-            valasztott = p_ut
+                      % (szakasz_szoveg(kjel(p_k)), BDB_VERS_JELENTES_FAJL, sorszamok))
+        elif kulcs_ala_esik(p_k, kut_k):
+            valasztott = p_k
             ip.append('BDB-példa: a BDB %s szakaszban maga idézi a helyet (`%s` sorszam %s); ez a kutatói '
                       'hozzárendelés (%s → %s) alá esik, a címke a finomabb útvonalé'
-                      % (szakasz_szoveg(szakasz_jel(p_ut)), BDB_VERS_JELENTES_FAJL, sorszamok, kulcs, szakasz_jel(kut_ut)))
-        elif gerinc_ala_esik(kut_ut, p_ut):
-            valasztott = kut_ut
+                      % (szakasz_szoveg(kjel(p_k)), BDB_VERS_JELENTES_FAJL, sorszamok, kulcs, kjel(kut_k)))
+        elif kulcs_ala_esik(kut_k, p_k):
+            valasztott = kut_k
             ip.append('kutatói hozzárendelés a BDB tagolása szerint (%s → %s, `%s`); a BDB a helyet a tágabb '
                       '%s szakaszban idézi (`%s` sorszam %s)'
-                      % (kulcs, szakasz_jel(kut_ut), SZAKASZ_CIMKE_FAJL, szakasz_szoveg(szakasz_jel(p_ut), nevelo=False), BDB_VERS_JELENTES_FAJL,
+                      % (kulcs, kjel(kut_k), SZAKASZ_CIMKE_FAJL, szakasz_szoveg(kjel(p_k), nevelo=False), BDB_VERS_JELENTES_FAJL,
                          sorszamok))
         else:
             raise GerincHiba('%s %s: a BDB-példa (%s) és a kutatói hozzárendelés (%s → %s) egyike sem esik a '
-                             'másik alá: kézi kérdés, választás nélkül' % (strong, vers, p_ut, kulcs, kut_ut))
-    elif kut_ut is not None:
-        valasztott = kut_ut
+                             'másik alá: kézi kérdés, választás nélkül' % (strong, vers, p_k, kulcs, kut_k))
+    elif kut_k is not None:
+        valasztott = kut_k
         ip.append('kutatói hozzárendelés a %s tagolása szerint (`elofordulasok.tsv` jelentes_szam „%s” → %s, `%s`)'
-                  % (szotar, kulcs, ('' if szotar == 'BDB' else szotar + ' ') + szakasz_jel(kut_ut),
+                  % (szotar, kulcs, ('' if szotar == 'BDB' else szotar + ' ') + kjel(kut_k),
                      SZAKASZ_CIMKE_FAJL))
         ip.extend(tobb_token)
         # a vers közvetlenül idézett (csak a token bizonytalan): a „nem önállóan idézi” tartomány-mondat nem igaz rá
@@ -2820,14 +3051,15 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
             ip.extend(bdb_tartomanyban(adat, strong, vers))
     else:
         tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' and not tobb_token else []
-        return None, '', '; '.join(tobb_token + tart)
+        return None, '', '; '.join(tobb_token + nem_azon + tart)
+    ip.extend(nem_azon)
     if minosito:
         ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül '
                   '(a minősítő nem része a SEMA 2.2.2 értékkészletének)'
                   % minosito)
-    sor = adat['cimke'].get((szotar, strong, valasztott))
+    sor = adat['cimke'].get((szotar, strong) + valasztott)
     cimke = (sor or {}).get('cimke_hu') or None
-    jel = szakasz_jel(valasztott)
+    jel = kjel(valasztott)
     if szotar != 'BDB':
         jel = '%s %s' % (szotar, jel)
     return cimke, jel, '; '.join(ip)
@@ -2904,10 +3136,10 @@ def dbh_jelentes_cella(igehely, strong_field):
             for lx in sorted(set(hivatkozasok.get((t, mt), []))):
                 r = jelentesek.get(t, {}).get(lx)
                 if r is None:
-                    cellak.append('`%s` — *(a jelentés nincs a DBH-táblában)*' % lx)
+                    cellak.append('*(a jelentés nincs a DBH-táblában)*')
                     continue
                 szov = ubs_glossza_cella('UBS_DBH', t, lx, EM_DASH, r['glosszak'])
-                cellak.append('`%s` — %s%s' % (lx, szov, '' if mt == vers else ' *(MT: %s)*' % mt))
+                cellak.append('%s%s' % (szov, '' if mt == vers else ' *(MT: %s)*' % mt))
         if cellak:
             van = True
             reszek.append((t, '; '.join(cellak)))
@@ -2981,11 +3213,20 @@ def kiemel(szoveg, celok):
 
 def _elso_tagmondat(szoveg, hatar=90):
     s = re.sub(r'^\s*(?:(?:\d+|[a-z]|T:\S+)\.?\s+){1,2}', '', szoveg or '').strip()
-    m = re.search(r'(?<!\d):|:(?!\d)|;', s)
+    # a tagmondat-határ csak zárójelen kívül (F123.GENKOR: „(|| אוֺת; így …)” belsejében nem vág; olvasói kapu ZAROJEL)
+    m = next((m for m in re.finditer(r'(?<!\d):|:(?!\d)|;', s)
+              if s[:m.start()].count('(') <= s[:m.start()].count(')')), None)
     if m and m.start() <= hatar:
         s = s[:m.start()]
     elif len(s) > hatar:
-        s = s[:hatar].rstrip() + '…'
+        s = s[:hatar].rstrip()
+        # nyitva maradó zárójel elé vágunk (olvasói kapu ZAROJEL, N-F123f)
+        if s.count('(') > s.count(')'):
+            s = s[:s.rfind('(')].rstrip(' ,;')
+        s = s + '…'
+    # a forrásban nyitva maradt zárójel a vázlatsorban sem marad nyitva (F123.GENKOR)
+    while s.count('(') > s.count(')') and s.rfind('(') > 0:
+        s = s[:s.rfind('(')].rstrip(' ,;') + '…'
     return s.strip() or EM_DASH
 
 
@@ -3006,8 +3247,7 @@ def _vazlat_sor(jel, cimke, szoveg):
     return '- `%s` — %s' % (jel, cimke if cimke else _elso_tagmondat(szoveg))
 
 
-HORGONNYAL_JELOLES = (' *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `%s` kategoria '
-                      '= horgonnyal)*' % BDB_SZAKASZ_HU_FAJL)
+HORGONNYAL_JELOLES = ' *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*'
 
 
 def _osszecsukva(sorok, elso, utolso):
@@ -3016,10 +3256,33 @@ def _osszecsukva(sorok, elso, utolso):
             % (cim, len(sorok), '\n'.join(sorok)))
 
 
-def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong):
-    """A tagolás vázlata: [(utvonal, jel, szöveg_hu vagy None, angol, kategória)] sorrendben.
+def _kulcs_hely(k, rag):
+    """A szakaszkulcs prózában, raggal: `('BDB8371', 'fej'), 'nak'` → „a BDB8371 szócikk fejének”."""
+    if k[1] == 'fej':
+        return 'a %s szócikk fej%s' % (k[0], 'ének' if rag == 'nak' else 'ét')
+    return 'a %s szócikk %s szakasz%s' % (k[0], szakasz_szoveg(szakasz_jel(k[1]), nevelo=False), 'ának' if rag == 'nak' else 'át')
+
+
+def elnyelt_mondat(hova):
+    """F123.BDBGER: a szakasz magyar szövege (a 2.32 jelölő nélküli sora szerint) egy másik szócikk szakaszában áll;
+    a forrás (a 2.32) a gerinc ⓘ-jében áll, az olvasói szövegben nem."""
+    return '*A magyar szöveg %s fordításában áll (a fordítás nem választja külön).*' % _kulcs_hely(hova, 'nak')
+
+
+def elnyelo_mondat(kulcsok):
+    """F123.BDBGER: a szakasz magyar szövege egy másik szócikk szövegét is tartalmazza (a 2.32 szerint)."""
+    return '*(a magyar szöveg %s is tartalmazza)*' % _es_lista([_kulcs_hely(k, 't') for k in kulcsok])
+
+
+def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, elnyelt=None):
+    """A tagolás vázlata: [(kulcs, jel, szöveg_hu vagy None, angol, kategória)] sorrendben, a kulcs (bdb_id, utvonal).
     A hordozó szakaszok kibontva (címke + teljes magyar szöveg, kiemeléssel), a többi összecsukott
-    futamokban. Visszaad: (bekezdések, kiemelt azonosítók, meg nem talált azonosítók)."""
+    futamokban. `elnyelt`: {kulcs: a szövegét hordozó kulcs} (F123.BDBGER). Visszaad: (bekezdések, kiemelt
+    azonosítók, meg nem talált azonosítók)."""
+    elnyelt = elnyelt or {}
+    elnyelo = {}
+    for k, hova in elnyelt.items():
+        elnyelo.setdefault(hova, []).append(k)
     out, futam, talalt_ossz, hiany_ossz = [], [], [], []
 
     def lezar():
@@ -3027,26 +3290,34 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong):
             out.append(_osszecsukva([f[2] for f in futam], futam[0][0], futam[-1][0]))
             del futam[:]
 
-    for ut, jel, hu, angol, kat in szakaszok:
-        cimke = (adat_cimke.get((szotar, strong, ut)) or {}).get('cimke_hu') or ''
-        if ut not in hordozo:
+    for k, jel, hu, angol, kat in szakaszok:
+        cimke = (adat_cimke.get((szotar, strong) + k) or {}).get('cimke_hu') or ''
+        if k not in hordozo:
             vazlat = _vazlat_sor(jel, cimke, hu or angol)
             if kat == 'horgonnyal':
                 # ELLENOR_SZOTARI_GERINC 4. (7.2a): a határjelölés az összecsukott szakaszon is látszik
                 vazlat += HORGONNYAL_JELOLES
-            futam.append((jel, ut, vazlat))
+            if k in elnyelo:
+                vazlat += ' ' + elnyelo_mondat(elnyelo[k])
+            futam.append((jel, k, vazlat))
             continue
         lezar()
         fej = '- **`%s` — %s**' % (jel, cimke) if cimke else '- **`%s`**' % jel
         if hu:
-            szoveg, talalt, hiany = kiemel(jelolo_levag(hu, jel), celok.get(ut, []))
+            szoveg, talalt, hiany = kiemel(jelolo_levag(hu, jel), celok.get(k, []))
             talalt_ossz += talalt
             hiany_ossz += hiany
             bek = [fej, '', '  > %s' % szoveg]
             if kat == 'horgonnyal':
                 bek.append('  >' + HORGONNYAL_JELOLES)
+            if k in elnyelo:
+                bek.append('  >')
+                bek.append('  > ' + elnyelo_mondat(elnyelo[k]))
+        elif k in elnyelt:
+            hiany_ossz += [a for _v, a in celok.get(k, [])]
+            bek = [fej, '', '  %s' % elnyelt_mondat(elnyelt[k])]
         else:
-            hiany_ossz += [a for _v, a in celok.get(ut, [])]
+            hiany_ossz += [a for _v, a in celok.get(k, [])]
             bek = [fej, '', '  > %s' % angol, '', '  %s' % FORDITASRA_VAR]
         out.append('\n'.join(bek))
     lezar()
@@ -3057,32 +3328,57 @@ def _szonezet_mutato(strong, forras):
     return '[szónézet: %s](%s) · forrás: `%s`' % (SZONEZET_UT % strong, SZONEZET_UT % strong, forras)
 
 
-def bdb_gerinc_szakaszok(adat, strong):
-    """[(utvonal, jel, szöveg_hu, angol, kategória)] a 2.30 sorrendjében, útvonalanként összevonva
-    (a `jelolo_nelkul` sor szövege az előző szakaszé), `cim` nélkül; a `fej` külön kerül vissza."""
-    sorrend, adatok = [], {}
+def bdb_gerinc_szocikkek(adat, strong):
+    """A Strong BDB-szócikkei a 2.30 (a BDB) sorrendjében: ([{'bdb_id', 'fej', 'szakaszok'}], elnyelt).
+    A szakasz (kulcs, jel, szöveg_hu, angol, kategória), a kulcs (bdb_id, utvonal): szócikken belül útvonalanként
+    összevonva (a `jelolo_nelkul` sor szövege az előző szakaszé), `cim` nélkül; a `fej` külön. Különböző szócikkek
+    azonos útvonalú szakaszai nem vonódnak össze (F123.BDBGER). `elnyelt`: {kulcs: kulcs} — a jelölő nélküli, magyar
+    szöveg nélküli szakasz, amelynek szövege a 2.32 szerint az előző sorban, egy másik szócikk szakaszában áll."""
+    sorrend, adatok, elnyelt = [], {}, {}
+    utolso_hu = None
     for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam'])):
         ut = r['utvonal']
         if ut == 'cim':
             continue
+        k = (r.get('bdb_id', ''), ut)
         hu = adat['bdb_hu'].get((strong, r['sorszam'])) or {}
-        if ut not in adatok:
-            sorrend.append(ut)
-            adatok[ut] = {'hu': [], 'en': [], 'kat': ''}
-        e = adatok[ut]
+        if k not in adatok:
+            sorrend.append(k)
+            adatok[k] = {'hu': [], 'en': [], 'kat': '', 'elnyelo': None, 'ures': True}
+        e = adatok[k]
         if hu.get('szoveg_hu'):
             e['hu'].append(hu['szoveg_hu'])
+            utolso_hu = k
+        elif hu.get('kategoria') == 'jelolo_nelkul' and utolso_hu and utolso_hu[0] != k[0] and e['elnyelo'] is None:
+            e['elnyelo'] = utolso_hu
         if (r.get('szoveg') or '').strip():
             e['en'].append(('%s %s' % (r.get('jel') or '', r['szoveg'])).strip())
         if hu.get('kategoria') in ('horgonnyal', 'elakad') or not e['kat']:
             e['kat'] = hu.get('kategoria') or e['kat']
-    out = []
-    for ut in sorrend:
-        e = adatok[ut]
+    szocikkek = []
+    for k in sorrend:
+        e = adatok[k]
         hu = ' '.join(e['hu']) if e['hu'] else None
         if e['kat'] == 'elakad':
             hu = None
-        out.append((ut, szakasz_jel(ut), hu, ' '.join(e['en']), e['kat']))
+        if hu is None and e['elnyelo'] and e['kat'] == 'jelolo_nelkul':
+            elnyelt[k] = e['elnyelo']
+        # F123.GENKOR: a digitalizálásban elveszett zárójel (`bdb_forras_javitas.tsv` `zarojel`) a rövidítés előtt javul
+        sz = (k, szakasz_jel(k[1]), BR.zarojel_javit(hu, strong), BR.zarojel_javit(' '.join(e['en']), strong), e['kat'])
+        if not szocikkek or szocikkek[-1]['bdb_id'] != k[0]:
+            szocikkek.append({'bdb_id': k[0], 'fej': None, 'szakaszok': []})
+        if k[1] == 'fej':
+            szocikkek[-1]['fej'] = sz
+        else:
+            szocikkek[-1]['szakaszok'].append(sz)
+    return szocikkek, elnyelt
+
+
+def bdb_gerinc_szakaszok(adat, strong):
+    """[(kulcs, jel, szöveg_hu, angol, kategória)] a 2.30 sorrendjében, szócikkenként (a fej a szócikk elején)."""
+    out = []
+    for sz in bdb_gerinc_szocikkek(adat, strong)[0]:
+        out.extend(([sz['fej']] if sz['fej'] else []) + sz['szakaszok'])
     return out
 
 
@@ -3131,18 +3427,19 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     cim = '##### %s%s · %s' % (strong, ' — %s' % lemma_cim(lk) if lk else '', szotar)
     napl = {'strong': strong, 'szotar': szotar, 'kiemelt': [], 'nem_talalt': [], 'nem_idezett': []}
     if szotar == 'BDB':
-        szakaszok = bdb_gerinc_szakaszok(adat, strong)
+        # F123.BDBGER: szócikkenként (bdb_id), a BDB saját rendjében; a szakasz kulcsa (bdb_id, utvonal)
+        szocikkek, elnyelt = bdb_gerinc_szocikkek(adat, strong)
         vj = adat['bdb_vj']
-        fej = next((s for s in szakaszok if s[0] == 'fej'), None)
-        szakaszok = [s for s in szakaszok if s[0] != 'fej']
     else:
-        szakaszok = thayer_gerinc_szakaszok(adat, strong)
+        szakaszok = [(('', s[0]),) + tuple(s[1:]) for s in thayer_gerinc_szakaszok(adat, strong)]
+        szocikkek = [{'bdb_id': '', 'fej': next((s for s in szakaszok if s[0][1] == 'fej'), None),
+                      'szakaszok': [s for s in szakaszok if s[0][1] != 'fej']}]
+        elnyelt = {}
         vj = adat['th_vj']
-        fej = next((s for s in szakaszok if s[0] == 'fej'), None)
-        szakaszok = [s for s in szakaszok if s[0] != 'fej']
-    teljes_ut = {gerinc_utvonal_vag(s[0]): s[0] for s in szakaszok}
+    tobb_szocikk = len(szocikkek) > 1
+    teljes_ut = {(k[0], gerinc_utvonal_vag(k[1])): k for sz in szocikkek for k, _j, _h, _a, _f in sz['szakaszok']}
     celok, hordozo = {}, set()
-    fej_celok = []
+    fej_celok = {}
     napl['tartomanyban'] = []
     for vers in sorted(set(versek), key=versek.index):
         sorok = vj.get((strong, vers), [])
@@ -3158,48 +3455,83 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             azon = '%s sorszam %s (%s, %s)' % (os.path.basename(BDB_VERS_JELENTES_FAJL if szotar == 'BDB'
                                                                 else THAYER_VERS_JELENTES_FAJL),
                                                r['sorszam'], vers, r['utvonal'])
-            if r['utvonal'] == 'fej':
-                fej_celok.append((vers, azon))
+            b, ok = bdb_vers_szocikk(adat, strong, r) if szotar == 'BDB' else ('', '')
+            if b is None:
+                napl['nem_talalt'].append(azon + ': nem azonosítható, melyik szócikkében (%s)' % ok)
                 continue
-            ut = teljes_ut.get(gerinc_utvonal_vag(r['utvonal']))
-            if ut is None:
+            if r['utvonal'] == 'fej':
+                hova = elnyelt.get((b, 'fej'), (b, 'fej'))
+                if hova[1] == 'fej':
+                    fej_celok.setdefault(hova[0], []).append((vers, azon))
+                else:
+                    celok.setdefault(hova, []).append((vers, azon))
+                    hordozo.add(hova)
+                continue
+            k = teljes_ut.get((b, gerinc_utvonal_vag(r['utvonal'])))
+            if k is None:
                 napl['nem_talalt'].append(azon + ': az útvonal nincs a szakasztáblában')
                 continue
             # DT381 (a): a forrásjavított sornál a magyar szöveg a forrás alakját hordozza („26:35”): azt emeli ki
             keres = vers
             if 'forras_javitas' in (r.get('okkod') or '').split(',') and re.fullmatch(r'\d+:\d+', r['nyers']):
                 keres = '%s %s' % (vers.rsplit(' ', 1)[0], r['nyers'])
-            celok.setdefault(ut, []).append((keres, azon))
-            hordozo.add(ut)
-    for k in kut_kulcsok:
-        ut = kutatoi_szakasz(adat, szotar, strong, k)
-        if ut:
-            hordozo.add(ut)
+            # F123.BDBGER: az elnyelt szakasz szövege a hordozó szakaszban áll: ott emeli ki
+            hova = elnyelt.get(k, k)
+            if hova[1] == 'fej':
+                fej_celok.setdefault(hova[0], []).append((keres, azon))
+            else:
+                celok.setdefault(hova, []).append((keres, azon))
+                hordozo.add(hova)
+            hordozo.add(k)
+    for kk in kut_kulcsok:
+        k = kutatoi_szakasz(adat, szotar, strong, kk)
+        if k:
+            hordozo.add(k)
     bek = [cim, GERINC_BEVEZETO['Thayer' if szotar == 'Thayer' else 'BDB']]
     if szotar == 'Thayer':
         bek.append('*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; '
                    'DT373).*')
     napl['tiltott'] = []
-    for ut, jel, hu, _a, forras in ([fej] if fej else []) + szakaszok:
-        for alak in tiltott_talalatok(adat.get('tiltott', []), hu):
-            napl['tiltott'].append('%s %s (%s): „%s”' % (szotar, jel, forras, alak))
-    if fej:
-        if fej[2]:
-            szov, t, h = kiemel(fej[2], fej_celok)
+    for sz in szocikkek:
+        for k, _jel, hu, _a, forras in ([sz['fej']] if sz['fej'] else []) + sz['szakaszok']:
+            for alak in tiltott_talalatok(adat.get('tiltott', []), hu):
+                napl['tiltott'].append('%s %s (%s): „%s”' % (szotar, szakasz_kulcs_jel(adat, szotar, strong, k), forras, alak))
+    elnyelo = {}
+    for k, hova in elnyelt.items():
+        elnyelo.setdefault(hova, []).append(k)
+    for i, sz in enumerate(szocikkek, 1):
+        if tobb_szocikk:
+            bek.append('**%s** *(a %s %d. BDB-szócikke a %d-ből)*'
+                       % (bdb_szocikk_fejcim(adat, strong, sz['bdb_id']), strong, i, len(szocikkek)))
+        fej = sz['fej']
+        fc = fej_celok.get(sz['bdb_id'], [])
+        if fej and fej[2]:
+            szov, t, h = kiemel(fej[2], fc)
             napl['kiemelt'] += t
             napl['nem_talalt'] += h
+            if fej[0] in elnyelo:
+                szov += ' ' + elnyelo_mondat(elnyelo[fej[0]])
             bek.append('**A szócikk feje (nyelvi háttér).** %s' % szov)
-        else:
-            napl['nem_talalt'] += [a for _, a in fej_celok]
+        elif fej and fej[0] in elnyelt:
+            napl['nem_talalt'] += [a for _, a in fc]
+            bek.append('**A szócikk feje (nyelvi háttér).** %s' % elnyelt_mondat(elnyelt[fej[0]]))
+        elif fej:
+            napl['nem_talalt'] += [a for _, a in fc]
             bek.append('**A szócikk feje (nyelvi háttér).** > %s %s' % (fej[3], FORDITASRA_VAR))
-    lista, talalt, hiany = gerinc_szakasz_lista(szakaszok, hordozo, celok, adat['cimke'], szotar, strong)
-    napl['kiemelt'] += talalt
-    napl['nem_talalt'] += hiany
-    bek.extend(lista)
+        lista, talalt, hiany = gerinc_szakasz_lista(sz['szakaszok'], hordozo, celok, adat['cimke'], szotar, strong,
+                                                    elnyelt)
+        napl['kiemelt'] += talalt
+        napl['nem_talalt'] += hiany
+        bek.extend(lista)
     if szotar == 'BDB':
         bek[2:] = [bdb_rovidites_jelol(b, strong) for b in bek[2:]]
-    if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban']:
+    napl['elnyelt'] = ['%s → %s' % (' '.join(k), ' '.join(v)) for k, v in sorted(elnyelt.items())]
+    if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban'] or napl['elnyelt']:
         reszek = []
+        if napl['elnyelt']:
+            # F123.BDBGER (N-F123ga): a 2.32 jelölő nélküli sora szócikkhatáron át az előző sor szövegében áll
+            reszek.append('a magyar szöveg szócikkhatáron át az előző sorban áll (`%s`, jelölő nélküli sor): %s'
+                          % (BDB_SZAKASZ_HU_FAJL, '; '.join(napl['elnyelt'])))
         if napl['tiltott']:
             reszek.append('ismert hiány: a magyar szöveg tiltott fordulatot tartalmaz (`%s`): %s; a javítás a '
                           'fordítás újrafuttatása (#142, DT379), a lap a szöveget nem írja át'
@@ -3237,9 +3569,11 @@ BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 
 
 def bdb_rovidites_jelol(szoveg, strong):
-    """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a Biblia által igazolt héber sorrend-javítás, a futam utáni
-    szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
+    """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a torz átírás javítása (B3; a magyar bekezdésben a magyar
+    alak, a „fordításra vár” jelű angol bekezdésben a helyreállított átírás), a Biblia által igazolt héber sorrend-javítás,
+    a futam utáni szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
     lk = lemma_kiejtes(strong)
+    szoveg = BR.atiras_javit(szoveg, strong, magyar=FORDITASRA_VAR not in szoveg)
     szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong))
     return BR.jelol(szoveg, lemma_cim(lk) if lk else '', BR.alapbetu(lk[0]) if lk else '')
 
@@ -3291,6 +3625,8 @@ def bdb_fej_rovid(hu):
     utolsó „: ” utáni rész, a gyök a „√” utáni megjegyzés, a rokon nyelvek a megnevezések sorrendjében."""
     eleje = hu.split('(')[0]
     alap = eleje.split(': ')[-1].strip(' ;,—') if ': ' in eleje else ''
+    # a „; —” utáni alakjegyzék (pl. „— ׳ח 1Móz 25:6 és máshol”) nem az alapjelentés része (N-F123l)
+    alap = alap.split('; —')[0].strip(' ;,—')
     gy = re.search(r'√\s*([^;,)]+)', hu)
     nyelvek = []
     for m in re.finditer(r'(?<![\wáéíóöőúüű])(%s)(?![\wáéíóöőúüű])' % '|'.join(BDB_ROKON_NYELVEK), hu):
@@ -3309,14 +3645,16 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
     adat = gerinc_adat()
     out = []
     for t in tokenek_ny:
-        fej = next((s for s in bdb_gerinc_szakaszok(adat, t) if s[0] == 'fej'), None)
+        # F123.BDBGER: a Strong első BDB-szócikkének feje (több szócikknél a többi a 2. szerepben, szócikkenként)
+        szocikkek = bdb_gerinc_szocikkek(adat, t)[0]
+        fej = szocikkek[0]['fej'] if szocikkek else None
         if not fej or not fej[2]:
             out.append('**%s** · a BDB-szócikk feje magyarul nem áll rendelkezésre; a forrásszöveg a 2. szerepben.' % t)
             continue
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
         reszek_t = []
         if alap:
-            reszek_t.append('alapjelentés: %s' % alap)
+            reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t))
         else:
             # a BDB-fej nem mondja ki az alapjelentést (pl. H7585): a TBESH rövid magyar jelentése, jelölve
             rj, van = rovid_jelentes(t)
@@ -3392,8 +3730,8 @@ def _gerinc_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
     out = []
     for t in tokenek_ny:
         g = adat['glossza'].get(t)
-        rovid = ('%s *(a TBESH rövid jelentése magyarul, `%s`)*' % (g['glossza_hu'], GLOSSZAK_HEBER_HU_FAJL)
-                 if g else '*(nincs magyar rövid jelentés a `%s`-ben)*' % GLOSSZAK_HEBER_HU_FAJL)
+        rovid = ('%s *(a TBESH rövid jelentése magyarul)*' % g['glossza_hu']
+                 if g else '*(nincs magyar rövid jelentés)*')
         out.append('**%s** · %s · a teljes TBESH-szócikk: %s' % (t, rovid, _szonezet_mutato(t, TBESH_TXT_FAJL)))
     ctx['fl'].setdefault(GLOSSZAK_HEBER_HU_FAJL, set()).add('TBESH')
     return out
@@ -3672,14 +4010,14 @@ def lxx_osszevetes(sorai, tokenek):
 
             if slug is None:
                 tabla_sorok.append('| %s | %s | %s | %s | %s | %s |' % (
-                    vers, EM_DASH, heber_kulcsszo, EM_DASH, 'nincs LXX_OS-könyv', EM_DASH))
+                    vers, EM_DASH, heber_kulcsszo, EM_DASH, 'nincs Septuaginta-könyv', EM_DASH))
                 continue
             forras_fajlok.add('konkordancia/LXX_OS/%s.tsv' % slug)
 
             sorai_ehhez_vershez = lxx_os_karoli_index(slug).get(vers, [])
             if not sorai_ehhez_vershez:
                 szamol('szamozas_elteres')
-                tabla_sorok.append('| %s | %s | %s | %s | %s | LXX_OS |' % (
+                tabla_sorok.append('| %s | %s | %s | %s | %s | Septuaginta |' % (
                     vers, EM_DASH, heber_kulcsszo, EM_DASH, 'szamozas_elteres'))
                 continue
 
@@ -3690,7 +4028,7 @@ def lxx_osszevetes(sorai, tokenek):
             if egyezo:
                 szamol('egyező')
                 gm = gorog_megfelelo_szoveg(egyezo[0])
-                tabla_sorok.append('| %s | %s | %s | %s | egyező | LXX_OS |' % (
+                tabla_sorok.append('| %s | %s | %s | %s | egyező | Septuaginta |' % (
                     vers, lxx_igehely, heber_kulcsszo, gm))
                 continue
 
@@ -3721,7 +4059,7 @@ def lxx_osszevetes(sorai, tokenek):
                 continue
 
             szamol('kutatói azonosítás függőben')
-            tabla_sorok.append('| %s | %s | %s | %s | kutatói azonosítás függőben | LXX_OS |' % (
+            tabla_sorok.append('| %s | %s | %s | %s | kutatói azonosítás függőben | Septuaginta |' % (
                 vers, lxx_igehely, heber_kulcsszo, EM_DASH))
     return tabla_sorok, szamlalo, forras_fajlok, heber_szamlalo
 
@@ -3774,11 +4112,22 @@ def tsk_index():
     return _tsk_by_igehely
 
 
+_kh_kihagyott = set()
+
+
 def kh_index():
+    """A Károli-KH listák forrásversenként. A másolat-gyanús forrásversek listája nem kerül a lapra (DT-F156n, N-F156a:
+    a lista egy másik vers listájának másolata, `karoli_kh_epseg.gyanus_forrasok`); ezek a `_kh_kihagyott` halmazba
+    kerülnek, és a blokk hatókör-sora megnevezi a számukat."""
     global _kh_by_step
     if _kh_by_step is None:
+        import karoli_kh_epseg as KHE
+        gyanus = KHE.gyanus_forrasok()
         idx = {}
         for r in L.load_karoli_kh():
+            if r['Igehely'] in gyanus:
+                _kh_kihagyott.add(r['Igehely'])
+                continue
             idx.setdefault(r['Igehely'], []).append(r)
         _kh_by_step = idx
     return _kh_by_step
@@ -3795,6 +4144,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
     bekezdesek = []
     nem_vizsgalhato = []
+    kh_kihagyva = []
     talalat_szam = 0
 
     for s in sorai_rendezve:
@@ -3805,6 +4155,9 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             nem_vizsgalhato.append(igehely)
             continue
 
+        kh_index()
+        if step in _kh_kihagyott:
+            kh_kihagyva.append(igehely)
         tsk_talalatok = sorted(
             [r for r in tsk_index().get(igehely, []) if int(r['Votes']) >= 15],
             key=lambda r: -int(r['Votes'])
@@ -3831,6 +4184,9 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                'Károli-KH táblával; %d igehely ad legalább egy találatot (%d találat összesen), '
                '%d igehely versenkénti kereséssel nem vizsgálható.'
                % (m['id'], len(sorai_rendezve), len(bekezdesek), talalat_szam, len(nem_vizsgalhato)))
+    if kh_kihagyva:
+        hatokor += (' %d igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata '
+                    '(`eszkozok/karoli_kh_epseg.py`, DT557): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],
@@ -3872,7 +4228,7 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
     sorok_ehhez = [r for r in kapcsolatok_sorok() if r['id'] == m['id']]
 
     if not sorok_ehhez:
-        torzs = 'Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.'
+        torzs = 'Ehhez a motívumhoz nincs rögzített kapcsolat.'
         hatokor = 'Ez a blokk a `[ID: %s]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.' % m['id']
         return _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], [LC('projekt_adat')], hatokor, torzs,
                               olvasoi('kapcsolatok_ures')), \
@@ -3949,9 +4305,9 @@ def kapcsolodo_torzs(motivum_id, mk_sorok, mk_jeloltek):
         for masik, itt, ott, r in sorted(sajat, key=lambda x: (x[0], x[1], x[2])):
             out.append('| [%s](%s_TUDOMANYOS.md) | %s | %s | %s | %s | %s | %s | %s |' % (
                 masik, masik, itt, ott, r['tipus'], _cella(r['funkcio'] or EM_DASH), r['bizonyossag'],
-                r['pardes_szint'] or EM_DASH, _cella(r['indoklas'] or EM_DASH)))
+                r['pardes_szint'] or EM_DASH, SZKZ.indok_cella(r['indoklas'] or EM_DASH)))
     else:
-        out.append('A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.')
+        out.append('A motívumhoz nincs rögzített motívumközi kapcsolat.')
     nyitott = {}
     for j in mk_jeloltek:
         if j.get('dontes') != 'nyitva':
@@ -4059,15 +4415,16 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
     for fajl, licenc, _blokk_nev in fajl_licenc_blokk_lista:
         per_fajl.setdefault(fajl, set()).add(licenc)
 
-    github_url = ('https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/%s_TUDOMANYOS.md'
-                  % m['id'])
+    # a lap helye a kanonikus közzétételi hely (helyőrző, amíg nincs meg); GitHub-URL nem kerül a lapra, mert a GitHub
+    # nem kanonikus forrás (F168, 2026-11-04). A teljes idézési forma a Kolofon „Hogyan idézd” bekezdése.
     hogyan = [
         '**Hogyan hivatkozz:**',
         '- ID: `%s`' % m['id'],
         '- Cím: %s' % m.get('cim', EM_DASH),
         '- Státusz: %s (`%s`, %s)' % (m.get('statusz', EM_DASH), m.get('statusz_verzio', ''), m.get('statusz_datum', '')),
         '- Generálva: %s' % G.TS,
-        '- Fájl: `%s`' % github_url,
+        '- Hely: `%s`' % KANONIKUS_FORRAS_HELYORZO,
+        '- Idézési forma: a Kolofon „Hogyan idézd” bekezdése',
     ]
 
     szotar_fajlok = {}
@@ -4156,6 +4513,9 @@ def megjeloles_reszek(szoveg):
     return [r.strip() for r in re.split(r'(?<=\.);\s+', szoveg) if r.strip()]
 
 
+NINCS_ROGZITVE = 'nincs rögzítve'
+
+
 def kolofon_naplo_cella(motivum_id):
     """A Kolofon „Kereszthivatkozás-napló” cellája. A nem migrált motívumnál
     a `tematikus_lezart/naplok/` alatti napló; a migrált motívumnál (F11 M3,
@@ -4163,16 +4523,17 @@ def kolofon_naplo_cella(motivum_id):
     `jeloltek.tsv`-ből generált -- a cella ezt mondja ki, nem a megszűnt utat."""
     naplo_fajlnev = G.ID_NAPLO_TERKEP.get(motivum_id)
     if not naplo_fajlnev:
-        return EM_DASH
+        return NINCS_ROGZITVE
     if os.path.exists(os.path.join(ROOT, 'tematikus_lezart', 'naplok', naplo_fajlnev)):
         return '`tematikus_lezart/naplok/%s`' % naplo_fajlnev
     archiv = 'archivum/%s/%s' % (motivum_id, naplo_fajlnev)
     if os.path.exists(os.path.join(ROOT, *archiv.split('/'))):
         return ('generált (`adat/jeloltek.tsv`); a régi napló archívum: `%s`' % archiv)
-    return EM_DASH
+    return NINCS_ROGZITVE
 
 
 KIADASOK_TSV = os.path.join(ADAT, 'kiadasok.tsv')
+NINCS_KIADVA = 'nincs kiadva — feldolgozás alatt'
 
 
 def kolofon_kiadasok(motivum_id, ut=None):
@@ -4187,9 +4548,12 @@ def kolofon_kiadasok(motivum_id, ut=None):
 
 def kolofon_kiadas_sorok(kiadasok):
     """A Kolofon metaadat-táblájának „Kiadás” és „Próza modellje” sora (a legutóbbi kiadásé), és a
-    „Változásjegyzék” tábla; sor nélkül: két üres lista (a lap kolofonja változatlan)."""
+    „Változásjegyzék” tábla. Kiadás-sor nélkül (a lap még nincs kiadva) a három hely kitöltött, de nem állít kiadást:
+    „nincs kiadva — feldolgozás alatt” (olvasói kapu, KOLOFON, 2026-11-02)."""
     if not kiadasok:
-        return [], []
+        return (['| Kiadás | %s |' % NINCS_KIADVA, '| Próza modellje | %s |' % NINCS_KIADVA],
+                ['**Változásjegyzék**', '', 'Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első '
+                 'kiadással indul.'])
     utolso = kiadasok[-1]
     meta = ['| Kiadás | %s |' % utolso['kiadas'].strip(),
             '| Próza modellje | `%s` |' % ((utolso.get('proza_modell') or '').strip() or 'manual')]
@@ -4197,6 +4561,125 @@ def kolofon_kiadas_sorok(kiadasok):
     for r in kiadasok:
         jegyzek.append('| %s | %s | %s |' % (r['kiadas'].strip(), r.get('datum', '').strip(), r.get('valtozas', '').strip()))
     return meta, jegyzek
+
+
+LAP_ATNEZESEK_TSV = os.path.join(ADAT, 'lap_atnezesek.tsv')
+# a szerzőségi mondatban felsorolt értelmező rések (a `res_forras.tsv` `tanulmany` forrású rései), a lapon álló sorrendben
+SZERZOSEG_RESEK = ('kivonat', 'miert_fontos', 'minosites', 'alatamasztas', 'ertelmezes', 'alkalmazas', 'tanitoi',
+                   'modszertan')
+
+
+def _cim_szoveg(fejlec):
+    """A rés fejléce címként: a `#` jelek, a sorszám és a régi „(kézi)” jelölés nélkül („## 6. Értelmezés” → „Értelmezés”)."""
+    s = CIMJELOLES_RE.sub('', fejlec or '').lstrip('#').strip()
+    return re.sub(r'^\d+(?:/[a-z])?\.\s*', '', s)
+
+
+def kolofon_szerzoseg(motivum_id, kiadasok, atnezes_ut=None, res_sorok=None):
+    """A Kolofon szerzőségi mondata (F123.GENKOR, DT-F181c) adatból: az értelmező rések (`res_forras.tsv`
+    `tanulmany` forrás) neve, a legutóbbi kiadás `proza_modell`-je (`adat/kiadasok.tsv`), és hogy a felhasználó
+    átnézte-e (`adat/lap_atnezesek.tsv`) — a „(kézi)” címsorjelölés helyett, amely a prózát hamisan a kutatónak
+    tulajdonította. `manual` modellnél a mondat azt mondja, amit az adat: a készítő modellje nincs rögzítve."""
+    res_sorok = res_forras_sorok() if res_sorok is None else res_sorok
+    nevek = [_cim_szoveg(res_sorok[(motivum_id, r)]['fejlec']) for r in SZERZOSEG_RESEK
+             if (res_sorok.get((motivum_id, r)) or {}).get('forras') == 'tanulmany']
+    if not nevek:
+        return 'A lap minden szakasza az adattáblákból generált.'
+    reszek = '(%s)' % ', '.join(nevek)
+    ut = atnezes_ut or LAP_ATNEZESEK_TSV
+    # az átnézésből csak a tény és a dátum kerül a lapra; az `idezet` (a felhasználó szavai) belső nyilvántartás, soha
+    # nem olvasói szöveg
+    datumok = sorted((r.get('datum') or '').strip() for r in (L.read_tsv_skip_comments(ut) if os.path.isfile(ut) else [])
+                     if (r.get('id') or '').strip() == motivum_id and (r.get('ki') or '').strip() == 'felhasználó')
+    atnezve = datumok[-1] if datumok else ''
+    if not kiadasok:
+        return ('Az értelmező szakaszok %s még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az '
+                'adattáblákból generált.' % reszek)
+    modell = (kiadasok[-1].get('proza_modell') or '').strip()
+    if atnezve:
+        jovahagyas = 'a szerző átnézte (%s) és jóváhagyta' % atnezve if atnezve.strip() else \
+            'a szerző átnézte és jóváhagyta'
+    else:
+        jovahagyas = 'a szerző jóváhagyta'
+    if modell and modell != 'manual':
+        kezdet = ('Az értelmező szakaszokat %s mesterséges intelligencia (`%s`) írta az adatok alapján'
+                  % (reszek, modell))
+    else:
+        kezdet = ('Az értelmező szakaszok %s készítőjét a kiadás nem rögzíti modellnévvel (kézi rögzítés, `manual`)'
+                  % reszek)
+    return '%s; %s. A többi szakasz az adattáblákból generált.' % (kezdet, jovahagyas)
+
+
+KOZEL_KELETI_TSV = os.path.join(ADAT, 'kozel_keleti_hatar.tsv')
+
+
+def kozel_keleti_sor(motivum_id, ut=None):
+    """A motívum sora az `adat/kozel_keleti_hatar.tsv`-ből (SEMA 2.51), vagy None (a motívum nem érintett, vagy a
+    tábla hiányzik)."""
+    ut = ut or KOZEL_KELETI_TSV
+    if not os.path.isfile(ut):
+        return None
+    for r in L.read_tsv_skip_comments(ut):
+        if (r.get('id') or '').strip() == motivum_id:
+            return r
+    return None
+
+
+def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
+    """A Kolofon közleményekre kötött szövege (F168): az MI-nyilatkozatra mutató mondat (a szerzőségi mondat után áll),
+    és három bekezdés: a „Hogyan idézd” (a szócikkek mint mű és a nyílt adatmag külön, a `CITATION.cff` két egysége
+    szerint), a módszertani elvek (Hays-leképezés) és a hatókör (az ókori közel-keleti határ). A hatókör-mondat minden
+    lapon áll; az érintett motívumnál (`kozel_keleti_hatar.tsv`) egy további mondat, és ha a próza közel-keleti
+    hátteret említ, egy harmadik. A szöveg sablon és adat, kézi próza nem kerül bele. A DOI, a kanonikus hely, a
+    terméknév és a szerző neve helyőrző, amíg nincs meg."""
+    mi = ('A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a '
+          '[Nyilatkozat a mesterséges intelligencia használatáról](%s) írja le.' % KOZLEMENY['mi'])
+    if kiadasok:
+        kiadas = '%s. kiadás (%s)' % (kiadasok[-1]['kiadas'].strip(), (kiadasok[-1].get('datum') or '').strip())
+    else:
+        kiadas = 'kiadás előtti változat, még nem idézhető'
+    idezes = ('**Hogyan idézd.** A lap szövegét a szócikkek mint mű részeként: %(szerzo)s: *%(termek)s — szócikkek*, '
+              '„%(cim)s” (`%(id)s`), %(kiadas)s, `%(url)s`; minden jog fenntartva. Az adatokat (motívum, előfordulások, '
+              'kizárt helyek, döntések) a nyílt adatmagként: %(szerzo)s: *%(termek)s — nyílt adatmag*, adatkészlet, '
+              'CC BY 4.0 (a nyílt kiadással), DOI: `%(doi)s`. A két idézési egységet a [`CITATION.cff`](%(cff)s) '
+              'írja le.' % {'szerzo': SZERZO_HELYORZO, 'termek': TERMEKNEV_HELYORZO, 'cim': m.get('cim') or m['id'],
+                             'id': m['id'], 'kiadas': kiadas, 'url': KANONIKUS_FORRAS_HELYORZO,
+                             'doi': DOI_HELYORZO, 'cff': KOZLEMENY['citation']})
+    modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
+               'Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti '
+               'hihetőséget nem), [A módszer Hays hét kritériumának tükrében](%s) mutatja be.' % KOZLEMENY['hays'])
+    hatokor = ('**Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) '
+               'vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, '
+               'ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet '
+               '([Az ókori közel-keleti háttér határa](%s)).' % KOZLEMENY['kozel_keleti'])
+    if kk_sor is not None:
+        hatokor += (' Ennél a motívumnál a nemzetközi szakirodalom a közel-keleti, főként ugariti anyag bevonását is '
+                    'várja; ez a lap ilyen összevetést nem végez.')
+        emlites = (kk_sor.get('proza_emlites') or '').strip()
+        if emlites:
+            hatokor += (' Ahol az értelmező szöveg közel-keleti hátteret említ (%s), az értelmezés, másodlagos '
+                        'irodalom nyomán: nem a lekérdezések eredménye, és az eredeti közel-keleti szövegen nem '
+                        'ellenőriztük.' % emlites)
+    return mi, [idezes, modszer, hatokor]
+
+
+LAP_JAVITASOK_TSV = os.path.join(ADAT, 'lap_javitasok.tsv')
+
+
+def kolofon_lektoralas(motivum_id, ut=None):
+    """A Kolofon „Emberi lektorálás” sora az `adat/lap_javitasok.tsv`-ből (SEMA 2.49, DT-F123f): a lapon
+    ténylegesen javított helyek (a nem `generátor` típusú sorok) száma, a dátumok és a jóváhagyók, ismétlés nélkül,
+    rendezve. Sor nélkül, vagy ha a fájl hiányzik: None (a Kolofon nem ír semmit)."""
+    ut = ut or LAP_JAVITASOK_TSV
+    if not os.path.isfile(ut):
+        return None
+    sorok = [r for r in L.read_tsv_skip_comments(ut)
+             if (r.get('id') or '').strip() == motivum_id and (r.get('tipus') or '').strip() != 'generátor']
+    if not sorok:
+        return None
+    datumok = sorted({(r.get('datum') or '').strip() for r in sorok if (r.get('datum') or '').strip()})
+    lektorok = sorted({(r.get('jovahagyta') or '').strip() for r in sorok if (r.get('jovahagyta') or '').strip()})
+    return '| Emberi lektorálás | %d hely (%s); lektorálók: %s |' % (len(sorok), ', '.join(datumok), ', '.join(lektorok))
 
 
 def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
@@ -4220,11 +4703,14 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
         '| Fölérendelt fogalom | %s |' % m.get('folerendelt_fogalom', EM_DASH),
         '| Forrás-study | %s |' % forras_study_cella,
         '| Kereszthivatkozás-napló | %s |' % naplo_cella,
-        '| Sablon-megfelelőség | %s |' % m.get('sablon_verzio', EM_DASH),
+        '| Sablon-megfelelőség | %s |' % (m.get('sablon_verzio') or NINCS_ROGZITVE),
     ]
     kiadasok = kolofon_kiadasok(m['id'])
     kiadas_meta, kiadas_jegyzek = kolofon_kiadas_sorok(kiadasok)
     metaadat_sorok += kiadas_meta
+    lektoralas = kolofon_lektoralas(m['id'])
+    if lektoralas:
+        metaadat_sorok.append(lektoralas)
 
     per_fajl = {}
     for fajl, licenc, blokk_nev in fajl_licenc_blokk_lista:
@@ -4255,7 +4741,10 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
             if szoveg not in megjelolesek:
                 megjelolesek.append(szoveg)
 
-    torzs = '\n'.join(metaadat_sorok)
+    kk_sor = kozel_keleti_sor(m['id'])
+    mi_mondat, kozlemeny_bekezdesek = kolofon_kozlemenyek(m, kiadasok, kk_sor)
+    torzs = ('**Szerzőség.** %s %s\n\n' % (kolofon_szerzoseg(m['id'], kiadasok), mi_mondat)
+             + ''.join(b + '\n\n' for b in kozlemeny_bekezdesek) + '\n'.join(metaadat_sorok))
     if kiadas_jegyzek:
         torzs += '\n\n' + '\n'.join(kiadas_jegyzek)
     torzs += '\n\n---\n\n' + '\n'.join(forras_sorok)
@@ -4264,7 +4753,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
-    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'} | ({'adat/kiadasok.tsv'} if kiadasok else set())),
+    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv', 'adat/res_forras.tsv'} | ({'adat/kiadasok.tsv', 'adat/lap_atnezesek.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set()) | ({'adat/kozel_keleti_hatar.tsv'} if kk_sor else set())),
                            sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs, olvasoi('kolofon'))
 
 
@@ -4282,7 +4771,22 @@ RES_SORREND = ('kivonat', '2b', 'miert_fontos', 'minosites', 'alatamasztas',
 # 6. Értelmezés után. A régi lapokon a szakasz még nincs meg; a
 # res_blokkok_alkalmaz() ilyenkor a 7. szakasz (a `modszertan` rés fejléce)
 # elé szúrja, a törzset utána a res_forras.tsv szerint tölti.
-SZAKASZ_6B = '## 6/b. Alkalmazás és tanítói egyezés *(kézi)*'
+SZAKASZ_6B = '## 6/b. Alkalmazás és tanítói egyezés'
+# F123.GENKOR (DT-F181c): a címsor régi „*(kézi)*” / „*(generált)*” jelölése (a prózát hamisan a kutatónak tulajdonította);
+# a generátor a kész lap minden címsorából leveszi (`cimjeloles_ki`), a határkeresés a régi alakot is elfogadja
+CIMJELOLES_RE = re.compile(r' ?\*\((?:kézi|generált)(?:, ha van)?\)\*')
+
+
+def cimjeloles_ki(szoveg):
+    """A kész lap címsoraiból a „*(kézi)*” / „*(generált)*” jelölés nélkül (a kódblokk érintetlen)."""
+    ki, kod = [], False
+    for sor in szoveg.split('\n'):
+        if sor.strip().startswith('```'):
+            kod = not kod
+        elif not kod and re.match(r'^#{1,6}\s', sor):
+            sor = CIMJELOLES_RE.sub('', sor).rstrip()
+        ki.append(sor)
+    return '\n'.join(ki)
 UJ_RESEK_6B = ('alkalmazas', 'tanitoi')
 
 # A dokumentum-sorrend a VAZ_SABLON szerint (allandó): egy rés vagy egy
@@ -4396,7 +4900,8 @@ def res_torzs(m, res, sor, sorai=None):
     A `sorai` a motívum előfordulás-sorai; None esetén az elofordulasok.tsv-ből."""
     forras = sor['forras']
     if forras == 'tanulmany':
-        return res_tanulmany_torzs(sor['tanulmany'], res)
+        torzs = res_tanulmany_torzs(sor['tanulmany'], res)
+        return '' if res_ures_e(res, torzs) else torzs
     if forras == 'adat':
         mondat = sor.get('tanulmany')
         if mondat:
@@ -4405,10 +4910,13 @@ def res_torzs(m, res, sor, sorai=None):
             raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
         if sorai is None:
             sorai = _elofordulas_sorai(m['id'])
+        torzs = ADAT_RES_RENDEREK[res](m['id'], sorai)
+        if res_ures_e(res, torzs):
+            return ''
         # a kiejtés-szabály már itt (a rés saját `###` szakasz): így a lap rése és a táblából elvárt rés azonos
         # (ellenoriz.py 11. szabály); a lap utófeldolgozása (kiejtes_potol) itt már nem talál pótolnivalót
         import kiejtes_szoveg as KSZ
-        return KSZ.potol(adatres_keret(m['id'], res, ADAT_RES_RENDEREK[res](m['id'], sorai)))[0]
+        return KSZ.potol(adatres_keret(m['id'], res, torzs))[0]
     raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
 
 
@@ -4423,6 +4931,42 @@ def res_torzs(m, res, sor, sorai=None):
 # szerepmátrix (2.S) ezeket nem rendereli, a 2b rés igen (sablon 9 5. pont).
 KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
 SECE_SZOTARAK = ('SECE_G', 'SECE_H')
+
+# DT-F174a (2026-11-04): az adat nélküli szerkezeti blokk nem áll az olvasói lapon. Az opcionális rés csak akkor
+# jelenik meg (fejléc, olvasói bevezető, törzs, proveniencia-sor), ha van tartalma: adatból generált résnél a
+# renderelő sort talált, tanulmányból vett résnél a törzs nem a RENDER G15 mechanikus helyőrzője. A rés a sémában és a
+# `res_forras.tsv`-ben megmarad: ha egyszer lesz MCGED-sor vagy kézi 2/b, magától megjelenik. A kutatási üres
+# eredmény (pl. „üres blokk: javaslat” a szerepmátrixban, a Minősítés „nincs” mondatai) nem ilyen, az a lapon marad.
+OPCIONALIS_RESEK = ('2b',)
+# a rés hiánymondatai: a RENDER G15 helyőrzője a tanulmányokban (nem kutatási lelet, hanem a jelölőpár kitöltése), és
+# a 2026-11-04 előtti generátor hiánymondata (az ellenoriz.py 31. szabálya a régi lapon is felismeri)
+SZERKEZETI_HELYORZOK = {'2b': ('Nincs kiegészítő szótári adat.',
+                               '*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
+                               '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')}
+_GENERALT_RES_JELOLO_RE = re.compile(r'^<!-- GENERÁLT-RÉS: [^\n]*-->$', re.M)
+_RES_PROV_SOR_RE = re.compile(r'^\*Proveniencia: `scope=[^`]*`\*$', re.M)
+
+
+def res_ures_e(res, torzs):
+    """Igaz, ha az opcionális rés törzse adat nélküli szerkezeti blokk: üres, vagy -- a GENERÁLT-RÉS jelölő és a
+    proveniencia-sor nélkül -- csak a hiánymondata (SZERKEZETI_HELYORZOK)."""
+    if res not in OPCIONALIS_RESEK:
+        return False
+    t = _RES_PROV_SOR_RE.sub('', _GENERALT_RES_JELOLO_RE.sub('', torzs or '')).strip()
+    return not t or t in SZERKEZETI_HELYORZOK.get(res, ())
+
+
+def lap_ures_szerkezeti_resek(fajl_szoveg, m):
+    """A lapon álló, adat nélküli opcionális rések (ellenoriz.py 31. szabály)."""
+    talalt = []
+    for res in OPCIONALIS_RESEK:
+        if (m['id'], res) not in res_forras_sorok():
+            continue
+        if _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
+            continue
+        if res_ures_e(res, res_torzs_lapbol(fajl_szoveg, m, res)):
+            talalt.append(res)
+    return talalt
 
 ALATAMASZTAS_NINCS_KAPCSOLAT = 'A motívumhoz nincs rögzített kapcsolat.'
 JELOLT_KERESZTHIV_ELOTAGOK = ('TSK', 'Károli-KH')
@@ -4462,10 +5006,9 @@ def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
     if csoportok:
         sorok += ['| Kapcsolat | Alátámasztás |', '|---|---|']
         for indoklas, parok in csoportok:
-            sorok.append('| %s | %s |' % (_cella('; '.join(parok)), _cella(indoklas)))
+            sorok.append('| %s | %s |' % (_cella('; '.join(parok)), SZKZ.indok_cella(indoklas)))
     else:
-        sorok.append('A motívum %d kapcsolat-sorának egyikéhez sincs rögzített indoklás a '
-                     '`kapcsolatok.tsv`-ben.' % len(sajat))
+        sorok.append('A motívum %d kapcsolat-sorának egyikéhez sincs rögzített indoklás.' % len(sajat))
     if nelkul and csoportok:
         sorok += ['', '*Rögzített indoklás nélküli kapcsolat-sor (%d): %s.*' % (len(nelkul), '; '.join(nelkul))]
     return '\n'.join(sorok)
@@ -4485,9 +5028,8 @@ def adatres_2b(tokenek, hiv_sorok):
                  and r['szotar'] not in SECE_SZOTARAK]
         sorok_ehhez += sorted(sajat, key=lambda r: (r['szotar'], r['jelentes_szam']))
     if not sorok_ehhez:
-        return ('*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
-                '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')
-    out = ['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon (res_ures_e, OPCIONALIS_RESEK)
+    out =['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
            '(%s).*' % ', '.join(x for x in KIEGESZITO_SZOTARAK if x not in SECE_SZOTARAK)]
     for r in sorok_ehhez:
         bek = ['**%s %s — %s**' % (r['szotar'], r['strong'], _jsz_cimke(r['jelentes_szam'])),
@@ -4543,21 +5085,50 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
         for j in jeloltek:
             szam[j['dontes']] = szam.get(j['dontes'], 0) + 1
         osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
-        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll; a tartalma változatlan
+        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll. F123.INDOKLAS: az 1/b. olvasói formája —
+        # miért lett jelölt (szöveggel), döntés és ok; a nyers forrás, a proveniencia és a döntés nyoma (`dontes_ref`)
+        # lábjegyzetben.
         tabla = ['<details>',
                  '<summary>Kereszthivatkozásból minősített jelöltek (%d sor; %s)</summary>' % (len(jeloltek), osszeg),
-                 '', '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
-        forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek], 'M')   # F152 B.2
-        for j, fk in zip(jeloltek, forrasok):
-            tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], fk,
-                                                     _cella(j.get('indoklas') or EM_DASH)))
-        if kozos:
-            tabla += ['', kozos]
+                 '', '| Igehely | Miért lett jelölt | Döntés és indok |', '|---|---|---|']
+        sorok_md, labj = minosites_jelolt_sorok(motivum_id, jeloltek)
+        tabla += sorok_md
         tabla += ['', '</details>']
         out.append('\n'.join(tabla))
+        labj, kozos = SZKZ.kozos_proveniencia(labj, 'M')   # F152 B.2
+        out.append('\n'.join('[^mj%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
+        if kozos:
+            out.append(kozos)
     else:
-        out.append('**Kereszthivatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz.')
+        out.append('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.')
     return '\n\n'.join(out)
+
+
+def minosites_jelolt_sorok(motivum_id, jeloltek):
+    """(táblasorok, lábjegyzetek) a Minősítés rés jelölt-táblájához, az 1/b. mintájára (`szerep_kizart`): a miért lett
+    jelölt a `forras_kereses`-ből, a döntés és az elutasítás oka a mintaszótárból, az indoklás olvasói alakja; a
+    lábjegyzetben a nyers forrás, az indoklás ` | ` utáni része és a `dontes_ref` (F123.INDOKLAS)."""
+    minta = SZKZ.okok(motivum_id)
+    sorok, labj = [], []
+    for j in jeloltek:
+        _csop, miert = SZKZ.jeloles_oka(j.get('forras_kereses'))
+        fo, _sep, farok = (j.get('indoklas') or '').partition(' | ')
+        if j['dontes'] == 'elutasítva':
+            dontes = '**elutasítva** — %s' % SZKZ.elutasitas_oka(fo, minta)
+        elif j['dontes'] == 'nyitva':
+            dontes = '**nyitott döntés**'
+        else:
+            dontes = '**%s**' % j['dontes']
+        olv = SZKZ.olvasoi_indok(fo)
+        lj = 'forrás: `%s`%s' % (j.get('forras_kereses') or EM_DASH, (' · ' + _cella(farok)) if farok else '')
+        if SZKZ.nyom_lapra(j.get('dontes_ref')):
+            lj += ' · a döntés nyoma: `%s`' % SZKZ.nyom_lapra(j.get('dontes_ref'))
+        if olv != fo:
+            lj += ' · indoklás (nyers): %s' % _cella(fo)
+        labj.append(lj)
+        cella = dontes if not olv else '%s: %s' % (dontes, SZKZ.indok_strong(_cella(olv), strong_cim))   # F123.TUD1B
+        sorok.append('| %s | %s[^mj%d] | %s |' % (j['igehely'], _cella(miert), len(labj), cella))
+    return sorok, labj
 
 
 def _adatres_alatamasztas(motivum_id, sorai):
@@ -4619,18 +5190,17 @@ _LEGACY_FEJLEC = {'2b': '### 2/b *(kézi, ha van)*'}
 def _boundary_index(fajl_szoveg, needle, search_from, res):
     """(index, ténylegesen megtalált szöveg) -- a hívó a második elem
     hosszával lépteti tovább a keresés kezdőpontját."""
+    # F123.GENKOR (DT-F181c): a fejléc sor eleji, teljes sor; a meglévő lap a régi „*(kézi)*” / „*(generált)*”
+    # jelölést is hordozhatja (a jelölés nélküli fejléc mindkét alakot megtalálja; F11 M3: a kettő egymásnak is megfelel)
+    alap = CIMJELOLES_RE.sub('', needle)
+    m = re.compile(r'(?m)^' + re.escape(alap) + r'(?:' + CIMJELOLES_RE.pattern + r')?[ \t]*$').search(fajl_szoveg,
+                                                                                                    search_from)
+    if m:
+        return m.start(), m.group(0)
     try:
         return fajl_szoveg.index(needle, search_from), needle
     except ValueError:
         pass
-    # F11 M3 javítókör: a generált rés fejléce `*(generált)*`; a meglévő lap
-    # és a VAZ_SABLON még a `*(kézi)*` alakot hordozza.
-    kezi = needle.replace('*(generált)*', '*(kézi)*')
-    if kezi != needle:
-        try:
-            return fajl_szoveg.index(kezi, search_from), kezi
-        except ValueError:
-            pass
     legacy = _LEGACY_FEJLEC.get(res)
     if legacy is not None and legacy != needle:
         return fajl_szoveg.index(legacy, search_from), legacy
@@ -4663,6 +5233,8 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
     HIBAKÓD, ha egy sor hiányzik a táblából (R1.3)."""
     sorok = res_forras_sorok()
     fajl_szoveg = szakasz_6b_beszur(fajl_szoveg, m)
+    fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
+    uresek = []
     for res in RES_SORREND:
         sor = sorok.get((m['id'], res))
         if sor is None:
@@ -4688,12 +5260,59 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
         span_start = offsets[slot_idx]
         span_end = offsets[slot_idx + 1]
         torzs = res_torzs(m, res, sor)
+        if res in OPCIONALIS_RESEK and not torzs:
+            # DT-F174a: a fejléc a többi rés határkereséséig marad, utána kikerül (opcionalis_resek_torol)
+            uresek.append(res)
+            fajl_szoveg = fajl_szoveg[:span_start] + fejlec + '\n\n' + fajl_szoveg[span_end:]
+            continue
         # ISTENTISZT-001 arany lap, 2026-10-29: a rés olvasói bevezetője a generátorból (a kézi próza változatlan; res_torzs_lapbol leválasztja)
         olv = OLVASOI_RES.get(res)
         if res == 'minosites' and m['id'] in MINOSITES_STAT:
             olv = OK.minosites(*MINOSITES_STAT[m['id']], osszes=KERESZT_OSSZES.get(m['id'])) or olv
         uj_span = fejlec + '\n\n' + (olvasoi_bekezdes(olv) + '\n\n' if olv else '') + torzs + '\n\n'
         fajl_szoveg = fajl_szoveg[:span_start] + uj_span + fajl_szoveg[span_end:]
+    return opcionalis_resek_torol(fajl_szoveg, m, uresek)
+
+
+def _opcionalis_res_helye(fajl_szoveg, m, res):
+    """(a rés fejlécének indexe vagy None, a következő határ indexe) -- az előző határ után keresve."""
+    sorok = res_forras_sorok()
+    slot_idx = _BOUNDARY_SLOTS.index(('res', res))
+
+    def keres(slot, honnan):
+        kind, ertek = slot
+        if kind == 'lit':
+            return _boundary_index(fajl_szoveg, ertek, honnan, None)
+        return _boundary_index(fajl_szoveg, sorok[(m['id'], ertek)]['fejlec'], honnan, ertek)
+
+    e_i, e_talalt = keres(_BOUNDARY_SLOTS[slot_idx - 1], 0)
+    k_i, _ = keres(_BOUNDARY_SLOTS[slot_idx + 1], e_i + len(e_talalt))
+    try:
+        r_i, _ = keres(('res', res), e_i + len(e_talalt))
+    except ValueError:
+        return None, k_i
+    return (r_i if r_i < k_i else None), k_i
+
+
+def opcionalis_res_visszaallit(fajl_szoveg, m):
+    """DT-F174a: az adat nélkül kihagyott opcionális rés (OPCIONALIS_RESEK) fejlécét a határkereséshez
+    visszateszi a helyére (a következő határ elé); ha a rés a lapon áll, a szöveg változatlan."""
+    for res in OPCIONALIS_RESEK:
+        sor = res_forras_sorok().get((m['id'], res))
+        if sor is None:
+            continue
+        r_i, k_i = _opcionalis_res_helye(fajl_szoveg, m, res)
+        if r_i is None:
+            fajl_szoveg = fajl_szoveg[:k_i] + sor['fejlec'] + '\n\n' + fajl_szoveg[k_i:]
+    return fajl_szoveg
+
+
+def opcionalis_resek_torol(fajl_szoveg, m, uresek):
+    """DT-F174a: az üres opcionális rések fejléc+törzs span-je kikerül a lapról."""
+    for res in uresek:
+        r_i, k_i = _opcionalis_res_helye(fajl_szoveg, m, res)
+        if r_i is not None:
+            fajl_szoveg = fajl_szoveg[:r_i] + fajl_szoveg[k_i:]
     return fajl_szoveg
 
 
@@ -4764,7 +5383,10 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     l. res_torzs()); a törzscikk-generátor (R1.7) ezzel olvassa vissza,
     amit a res_blokkok_alkalmaz() a lexikonoldalon változatlanul hagyott."""
     sorok = res_forras_sorok()
-    offsets = []
+    if res in OPCIONALIS_RESEK and _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon
+    fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
+    offsets, talaltak = [], []
     search_from = 0
     for kind, ertek in _BOUNDARY_SLOTS:
         if kind == 'lit':
@@ -4774,15 +5396,16 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
             if sor is None:
                 raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
             needle = sor['fejlec']
-        i = fajl_szoveg.index(needle, search_from)
+        # F123.GENKOR (DT-F181c): a régi lap a fejlécet még „*(kézi)*” jelöléssel hordozhatja
+        i, talalt = _boundary_index(fajl_szoveg, needle, search_from, ertek if kind == 'res' else None)
         offsets.append(i)
-        search_from = i + len(needle)
+        talaltak.append(talalt)
+        search_from = i + len(talalt)
     slot_idx = _BOUNDARY_SLOTS.index(('res', res))
-    fejlec = sorok[(m['id'], res)]['fejlec']
-    body_start = offsets[slot_idx] + len(fejlec)
+    body_start = offsets[slot_idx] + len(talaltak[slot_idx])
     body_end = offsets[slot_idx + 1]
     torzs = fajl_szoveg[body_start:body_end].strip('\r\n')
-    if torzs.startswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
+    if torzs.split('\n', 1)[0].endswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
         torzs = torzs.split('\n', 1)[1].strip('\r\n') if '\n' in torzs else ''
     return torzs
 
@@ -4840,7 +5463,7 @@ def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
 
 VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
-## Kivonat *(kézi)*
+## Kivonat
 
 *Kézzel írandó — 3-5 mondatos prózai kivonat: mi a motívum, milyen azonosság-típusú, hány igehelyen, mi a legfontosabb lexikai lelet.*
 
@@ -4868,7 +5491,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 *Kézzel írandó, ha van.*
 
-### Miért fontos ez a lelet *(kézi)*
+### Miért fontos ez a lelet
 
 *Kézzel írandó.*
 
@@ -4880,7 +5503,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kereszthivatkozasok)s
 
-### Minősítés *(kézi)*
+### Minősítés
 
 *Kézzel írandó: független megerősítés / új találat / nem releváns.*
 
@@ -4888,7 +5511,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kapcsolatok)s
 
-### Alátámasztás *(kézi)*
+### Alátámasztás
 
 *Kézzel írandó.*
 
@@ -4896,21 +5519,21 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kapcsolodo)s
 
-## 6. Értelmezés *(kézi)*
+## 6. Értelmezés
 
 *Kézzel írandó — a forrás-study PaRDeS keretrendszere, bővítve a lexikai leletekkel.*
 
-## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+## 6/b. Alkalmazás és tanítói egyezés
 
-### Alkalmazás és tanítványság *(kézi)*
-
-*Kézzel írandó.*
-
-### Tanítói egyezés *(kézi)*
+### Alkalmazás és tanítványság
 
 *Kézzel írandó.*
 
-## 7. Módszertan és nyitott kérdések *(kézi)*
+### Tanítói egyezés
+
+*Kézzel írandó.*
+
+## 7. Módszertan és nyitott kérdések
 
 *Kézzel írandó.*
 
@@ -5077,13 +5700,18 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         cel_ut = os.path.join(kimenet_gyoker, '%s_TUDOMANYOS.md' % m['id'])
 
         if os.path.exists(cel_ut):
-            with io.open(cel_ut, encoding='utf-8', newline='') as f:
-                meglevo = f.read()
+            # B4: LF-re normalizálva (mint a general.eles_fajl_beolvas). A
+            # core.autocrlf=true munkapéldánya CRLF-es; nyersen a '\n\n'-re
+            # illesztő lépések (pl. res_labjegyzetek_alkalmaz) nem találtak,
+            # és a helyben frissített lap két üres sorral tért el az új
+            # fájlként generálttól (TEREMT-002, 1A.11, SABLON.6).
+            meglevo, _sorveg, _crlf, _lf = G.eles_fajl_beolvas(cel_ut)
             uj_szoveg = frissit_meglevo_fajlt(meglevo, m, blokkok)
             uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
+            uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
             allapot = 'változatlan' if uj_szoveg == meglevo else 'frissítve'
         else:
             uj_szoveg = epit_uj_fajl(m, blokkok)
@@ -5091,6 +5719,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
+            uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
             allapot = 'új fájl'
 
         if args.ellenoriz:
@@ -5101,13 +5730,13 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(uj_szoveg)
         print('  %s: %s (%s, %d bájt)'
-              % (m['id'], os.path.relpath(cel_ut, ROOT), allapot, os.path.getsize(cel_ut)))
+              % (m['id'], G.kiirt_ut(cel_ut), allapot, os.path.getsize(cel_ut)))
         h = KIEJTES_JELOLT_HIANY.get(m['id']) or []
         if h:
             print('    kiejtés-szabály: %d hiány maradt — generált %d (jóváhagyott héber alak nélkül), kézi %d '
                   '(a forrásban javítandó); részletek: python naplok/KIEJTES_elso_elofordulas_meres.py %s'
                   % (len(h), sum(1 for x in h if x[2] == 'generált'), sum(1 for x in h if x[2] == 'kézi'),
-                     os.path.relpath(cel_ut, ROOT)))
+                     G.kiirt_ut(cel_ut)))
 
     print('  tisztázatlan licencű forrás érintett-e (motívumonként): %s'
           % ', '.join('%s=%s' % (k, 'igen' if v else 'nem') for k, v in osszesitett_tisztazatlan.items()))

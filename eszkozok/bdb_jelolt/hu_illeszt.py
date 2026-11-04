@@ -16,6 +16,12 @@ Illesztés Strongonként:
   4. a magyar szakasz a sor horgonyától a következő horgonyig tart; a jelölő nélküli sor (fej utáni bekezdés, cím, fej, alcímszó)
      `jelolo_nelkul`: a szövege az előző szakaszban van (`szoveg_hu` üres), a cím és a fej a magyar szöveg elejét kapja.
 
+Szakaszonként fordított Strong (F123.BDBILL, DT-F123y): az 1–4. lépés nem fut, ha a `sz<n>` sorok a szakasztábla soraival
+igazoltan 1:1-ben megfeleltethetők (`szakasz_egyezes`: a felhasznált `sz<n>` sorszámok halmaza = a Strong szakaszainak sorszámai,
+és minden `sz<n>` `forras_hash`-e = a szakasz javított szövegének SHA-1-e, `szakasz_bemenet.szakaszok`; a hash a `jel`-et is
+fedi). Ilyenkor a sor magyar szövege a saját `sz<n>` sora, a kategória `szakasz`, a horgony `sz<n>`. Ha a megfeleltetés nem
+igazolható, a horgonyos illesztés marad, és a `proveniencia` megnevezi az okot (`1:1 nem igazolt: …`).
+
 A Strong-szintű mérés a kiinduló számhoz (355 / 89 / 230, 2026-10-16, `manual`) a kapu szigorú illesztőjével (`_illeszt`, az első nem
 talált kötelező jelölőnél megáll) a tábla jelölősorozatán: `illeszkedik` / `tagolatlan` (nincs jelölő) / `elakad`; és a horgonnyal
 kiegészítve: `illeszkedik` / `horgonnyal` (minden jelölős sor illeszkedik vagy horgonnyal) / `elakad` / `tagolatlan`.
@@ -153,7 +159,7 @@ def torzs_index(en_elotte, j):
     return sum(1 for m in TORZS_HU.finditer(en_elotte) if 'T:' + torzs_kulcs(m.group(1)) == j)
 
 
-def forditasok(ut=None):
+def forditasok(ut=None, tabla=None, jav=None):
     """{Strong: {'forditas_hu', 'forras_hash'}} a BDB-sorokból, a közös összefűzőn át (F128, DT-F128a (a), DT-F128g (a):
     `szakasz_bemenet.strong_magyar_sorok`): a szakaszonként fordított Strong szövege a `sz<sorszam>` sorok összefűzése, a
     `forras_hash` ilyenkor a token nélküli forrásnézet (`szakasz_bemenet.nezet`) SHA-1-e; különben a `teljes` sor és a saját
@@ -172,13 +178,35 @@ def forditasok(ut=None):
         szoveg, tipus, hasznalt = sb.strong_magyar_sorok(ds)
         if not szoveg:
             continue
+        sz11, ok = None, None
         if tipus == 'szakasz':
-            szak = sb.szakaszok(st)
+            szak = sb.szakaszok(st, tabla, jav)
             h = sb.sha1(sb.nezet(szak)) if szak else ''
+            sz11, ok = szakasz_egyezes(hasznalt, szak)
         else:
             h = hasznalt[0].get('forras_hash', '')
-        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h}
+        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h, 'szakaszonkent': sz11, 'nem_igazolt': ok}
     return ki
+
+
+def szakasz_egyezes(hasznalt, szak):
+    """A `sz<n>` sorok 1:1-es megfeleltetése a szakasztábla soraival (F123.BDBILL, DT-F123y). hasznalt: a közös összefűző
+    `sz<n>` sorai (sorszám szerint); szak: `szakasz_bemenet.szakaszok(strong)`. -> ({sorszam: forditas_hu}, None), ha minden
+    szakasznak pontosan egy `sz<n>` sora van, és mindegyik `forras_hash`-e a szakasz javított szövegének SHA-1-e (a hash a
+    `jel`-et és az útvonal szövegét is fedi); különben (None, az ok)."""
+    import szakasz_bemenet as sb
+    if not szak:
+        return None, 'nincs a szakasztáblában'
+    sorszamok = [sb.sorszam_jelentesbol(r.get('jelentes_szam')) for r in hasznalt]
+    if len(set(sorszamok)) != len(sorszamok):
+        return None, 'ismétlődő sz<n>'
+    forras = dict((x['sorszam'], x) for x in szak)
+    if set(sorszamok) != set(forras):
+        return None, 'szakaszszám: %d sz<n> / %d szakasz' % (len(sorszamok), len(forras))
+    elteres = [n for n, r in zip(sorszamok, hasznalt) if r.get('forras_hash') != forras[n]['hash']]
+    if elteres:
+        return None, 'forras_hash eltér: %s' % ', '.join('sz%d' % n for n in sorted(elteres)[:5])
+    return dict(zip(sorszamok, (r['forditas_hu'] for r in hasznalt))), None
 
 
 def strong_illeszt(sorok, hu):
@@ -275,18 +303,33 @@ def strong_illeszt(sorok, hu):
     return eredmeny, szigoru, horgonyos
 
 
-def general(ts, csak=None):
+def szakasz_sorok(sorok, sz11):
+    """Az igazolt 1:1-es Strong sorai: [(kategória, horgony, hu_kezdet, szoveg_hu)]; a `hu_kezdet` a közös összefűző szövegében
+    (a `sz<n>` sorok egy szóközzel) áll."""
+    ki, p = [], 0
+    for x in sorok:
+        n = int(x['sorszam'])
+        hu = sz11[n]
+        sz = hu.strip()
+        ki.append(('szakasz', 'sz%d' % n, p + (len(hu) - len(hu.lstrip())), sz))
+        p += len(hu) + 1
+    return ki
+
+
+def general(ts, csak=None, egy_az_egyhez=True, tabla=None, ford_ut=None, jav=None):
     """A tábla sorai a mai bemenetből; `csak` (Strong-halmaz) megadásakor csak ezeké — ugyanaz a kód, ugyanaz a kimenet,
-    mint a teljes generálás e Strongokra eső sorai (a Strongonkénti illesztés független)."""
+    mint a teljes generálás e Strongokra eső sorai (a Strongonkénti illesztés független). `egy_az_egyhez=False`: a
+    DT-F123y előtti viselkedés (csak a mérésnek, F123.BDBILL). `tabla`, `ford_ut`, `jav`: más bemeneti útvonal (az
+    `ellenoriz.py` 26. szabálya a saját `adat_dir`-jéből hívja)."""
     tab = collections.OrderedDict()
-    with open(TABLA, encoding='utf-8', newline='') as f:
+    with open(tabla or TABLA, encoding='utf-8', newline='') as f:
         s = f.read().split('\n')
     fej = s[2].split('\t')
     for x in s[3:]:
         if x:
             d = dict(zip(fej, x.split('\t')))
             tab.setdefault(d['strong'], []).append(d)
-    ford = forditasok()
+    ford = forditasok(ford_ut, tabla, jav)
     ki, stat, sor_stat = [], collections.Counter(), collections.Counter()
     nincs = []
     for st in sorted(ford):
@@ -296,6 +339,19 @@ def general(ts, csak=None):
             nincs.append(st)
             continue
         sorok, hu = tab[st], ford[st]['forditas_hu']
+        sz11 = ford[st]['szakaszonkent'] if egy_az_egyhez else None
+        if sz11 is not None:
+            stat[('szigoru', 'szakasz')] += 1
+            stat[('horgonyos', 'szakasz')] += 1
+            for x, (kat, horgony, p, szoveg_hu) in zip(sorok, szakasz_sorok(sorok, sz11)):
+                sor_stat[kat] += 1
+                ki.append([st, x['sorszam'], x['bdb_id'], x.get('szakasz', ''), x['resz'], x['utvonal'], x['jel'], kat, horgony,
+                           str(p), str(len(szoveg_hu)), szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
+                           'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc; %s 1:1) | ts=%s' % (st, horgony, ts)])
+            continue
+        jeloles = ''
+        if egy_az_egyhez and ford[st]['nem_igazolt']:
+            jeloles = '; szakaszos fordítás, 1:1 nem igazolt: %s' % ford[st]['nem_igazolt']
         eredmeny, szigoru, horgonyos = strong_illeszt(sorok, hu)
         stat[('szigoru', szigoru)] += 1
         stat[('horgonyos', horgonyos)] += 1
@@ -317,7 +373,7 @@ def general(ts, csak=None):
             ki.append([st, x['sorszam'], x['bdb_id'], x.get('szakasz', ''), x['resz'], x['utvonal'], x['jel'], kat, horgony,
                        '' if p is None else str(p), '' if p is None else str(len(szoveg_hu)),
                        szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
-                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc) | ts=%s' % (st, ts)])
+                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc%s) | ts=%s' % (st, jeloles, ts)])
     return ki, stat, sor_stat, nincs, len(ford)
 
 
@@ -328,6 +384,44 @@ def fajl_szoveg(sorok, ts):
               sha256_fajl(os.path.join(GYOKER, 'eszkozok', 'forditas_kapuk.py'))[:12], kod_hash()[:12]),
            '\t'.join(FEJLEC)]
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
+
+
+PROV_TS = re.compile(r' \| ts=[^|]*$')
+
+
+def kapu_elteresek(adat_dir):
+    """Az `ellenoriz.py` 26. szabálya (F123.BDBILL, DT-F123z): a commitolt `bdb_szakasz_hu.tsv` törzse egyezik-e azzal, amit
+    a mai `bdb_szakaszok.tsv` + `forditasok.tsv` + `bdb_forras_javitas.tsv` ad. A fejléc (a bemenetek hash-e) és a
+    `proveniencia` `ts=` része nem számít, így a BDB-sort nem érintő `forditasok.tsv`-változás nem bukik. -> az eltérések
+    Strongonként (lista; üres = egyezik): a fordítás megvan, de a táblában nincs sora; a tábla sora elavult (kategória, szöveg,
+    `forditas_forras_hash` vagy a proveniencia jelölése más); fölös sor."""
+    ki_ut = os.path.join(adat_dir, 'bdb_szakasz_hu.tsv')
+    if not os.path.exists(ki_ut):
+        return ['nincs adat/bdb_szakasz_hu.tsv']
+    uj = general('kapu', tabla=os.path.join(adat_dir, 'bdb_szakaszok.tsv'), ford_ut=os.path.join(adat_dir, 'forditasok.tsv'),
+                 jav=os.path.join(adat_dir, 'bdb_forras_javitas.tsv'))[0]
+
+    def kulcsolt(sorok):
+        d = collections.OrderedDict()
+        for x in sorok:
+            d.setdefault(x[0], collections.OrderedDict())[x[1]] = tuple(x[:-1]) + (PROV_TS.sub('', x[-1]),)
+        return d
+
+    with open(ki_ut, encoding='utf-8', newline='') as f:
+        regi = kulcsolt([x.rstrip('\r').split('\t') for x in f.read().split('\n')[3:] if x.strip()])
+    uj = kulcsolt(uj)
+    hibak = []
+    for st, sorok in uj.items():
+        if st not in regi:
+            hibak.append('%s: van BDB-fordítása, de a bdb_szakasz_hu.tsv-ben nincs sora' % st)
+            continue
+        elt = [n for n in sorok if regi[st].get(n) != sorok[n]] + [n for n in regi[st] if n not in sorok]
+        if elt:
+            hibak.append('%s: %d sor elavult vagy eltér (pl. %s)' % (st, len(elt), ', '.join(elt[:5])))
+    for st in regi:
+        if st not in uj:
+            hibak.append('%s: fölös Strong a bdb_szakasz_hu.tsv-ben (nincs BDB-fordítása vagy szakasza)' % st)
+    return hibak
 
 
 RESZLEGES = ' Részleges frissítés:'

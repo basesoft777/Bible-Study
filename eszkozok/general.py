@@ -921,6 +921,17 @@ def render_study_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
 # Kimenet-írás
 # ---------------------------------------------------------------------------
 
+def kiirt_ut(ut):
+    """Az út a futásnaplóba: a repón belül ROOT-relatív, máshol abszolút. A
+    `--kimenet` (pl. az E28 ideiglenes könyvtára) más meghajtón is lehet,
+    mint a repó (Windows: a munkakönyvtár D:-n, a TEMP C:-n), és ott az
+    os.path.relpath ValueError-t dob."""
+    try:
+        return os.path.relpath(ut, ROOT)
+    except ValueError:
+        return os.path.abspath(ut)
+
+
 def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     domináns, crlf, lf = sorveg_elemez(forras_ut_a_sorveghez)
     print('  sorvég a célfájlban (%s): CRLF=%d, LF=%d -> domináns=%r'
@@ -935,7 +946,7 @@ def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     sorok = tartalom.split('\n')
     with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
         f.write(domináns.join(sorok))
-    print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
+    print('  megírva: %s (%d bájt)' % (kiirt_ut(cel_ut), os.path.getsize(cel_ut)))
     return cel_ut
 
 
@@ -955,7 +966,7 @@ def hianylista_ir(args, sorok, jeloltek):
     os.makedirs(os.path.dirname(cel_ut), exist_ok=True)
     with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
         f.write(tartalom)
-    print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
+    print('  megírva: %s (%d bájt)' % (kiirt_ut(cel_ut), os.path.getsize(cel_ut)))
     return cel_ut
 
 
@@ -1336,7 +1347,7 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
 #   - `<!-- JELÖLT: [igehely] | gerinc: [gerinc_elem] | [indoklas] -->`
 #     (sajat sorban): egy jelolt-sor; kulcs id + igehely; ha a kulcs mar
 #     letezik, NEM ir, a jelentes jelzi a meglevo dontest; az `indoklas`
-#     `gerinc: [gerinc_elem] — [indoklas]` alaku, a `forras_kereses`
+#     a jelolo indoklasa, a `dontes_ref` `gerinc: [gerinc_elem]`, a `forras_kereses`
 #     szakasz-mutatoja a `##` cimsor szovege (DT-F11d (d));
 #   - `ADAT-HIV: [tabla] | mezo=ertek; ...` (DT-F11d (b)): ellenorzo, semmit
 #     nem ir; a tabla SEMA-kulcsanak (SEMA_KULCSOK) minden mezoje kell, mas
@@ -1578,9 +1589,11 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
                 'forras_kereses': 'scope=manual | forras=motivumok/%s.md#%s | ts=%s'
                                   % (motivum_id, szakasz, datum),
                 'dontes': 'nyitva',
-                # DT-F11d (d): a gerinc az indoklas elejen (a jeloltek.tsv-ben
-                # nincs gerinc-mezo, SEMA 2.4; az elolepteteshez kell).
-                'indoklas': 'gerinc: %s — %s' % (gerinc, indoklas),
+                # DT202 (d): a gerinc az elolepteteshez kell; F123.INDOKLAS
+                # ota a gepi nyom mezojeben (`dontes_ref`, SEMA 2.4), az
+                # `indoklas` olvasoi szoveg marad (ellenoriz.py 29. szabaly).
+                'indoklas': indoklas,
+                'dontes_ref': 'gerinc: %s' % gerinc,
                 'karoli_szo': '',
                 'azonositas_modja': '',
                 'megbizhatosag': '',
@@ -1716,8 +1729,8 @@ def kinyeresi_jelentes(motivum_id, eredmeny, irt):
                 s['_sor'], s['igehely'], _md_cella(s['_gerinc']), s['forras_kereses'],
                 _md_cella(s['indoklas'])))
         sor.append('')
-        sor.append('*A gerinc-elem a `jeloltek.tsv` sémájában nem mező (SEMA 2.4): az `indoklas` '
-                   'elején áll, `gerinc: X — …` alakban (DT-F11d (d)).*')
+        sor.append('*A gerinc-elem a `jeloltek.tsv` `dontes_ref` mezőjében áll, `gerinc: X` alakban '
+                   '(SEMA 2.4; DT202 (d), F123.INDOKLAS); az `indoklas` olvasói szöveg.*')
     else:
         sor.append('*(nincs)*')
     sor.append('')

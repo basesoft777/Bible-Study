@@ -1,0 +1,300 @@
+# F123 ALVIL-001 U1: a Károli-háló eltéréseinek gépi lexéma-osztályozása (naplok/F123_ALVIL2_karoli_osztaly.py); scope=naplok/F123_teljesseg_ALVIL-001.tsv karoli ELTÉRÉS × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (glossza) | forras=split('	') | ts=2026-11-02
+igehely	karoli_szoalak	osztaly	jelolt_strongok
+1Kir 13:31	sírba	halál + sír/koporsó (főnév)	H4194 מָ֫וֶת; H6912 קָבַר; H6913 קֶ֫בֶר
+1Kir 14:13	sírba	sír (ige: sírni) + sír/koporsó (főnév)	H5594 סָפַד; H6912 קָבַר; H6913 קֶ֫בֶר
+1Kor 2:10	mélységeit	mélység/verem	G0899 βάθος
+1Kor 7:30	sírnak; sírnának	sír (ige: sírni)	G2799 κλαίω
+1Móz 1:2	mélység	mélység/verem	H8415 תְּהוֹם
+1Móz 7:11	mélység	mélység/verem	H8415 תְּהוֹם
+1Móz 8:2	mélység	mélység/verem	H8415 תְּהוֹם
+1Móz 21:16	síra	halál + sír (ige: sírni)	H1058 בָּכָה; H4194 מָ֫וֶת
+1Móz 27:38	sír	sír (ige: sírni)	H1058 בָּכָה
+1Móz 29:11	síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 33:4	sírának	sír (ige: sírni)	H1058 בָּכָה
+1Móz 35:20	sírja	sír/koporsó (főnév)	H6900 קְבֻרָה
+1Móz 42:24	síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 43:30	sírás; síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 45:14	síra; síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 45:15	síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 46:29	síra	sír (ige: sírni)	H1058 בָּכָה
+1Móz 49:25	mélység	mélység/verem	H8415 תְּהוֹם
+1Móz 50:5	síromba	halál + sír/koporsó (főnév)	H4191 מוּת; H6912 קָבַר; H6913 קֶ֫בֶר
+1Móz 50:10	sírással; sírának	sír (ige: sírni)	H0060 אֵ֫בֶל; H4553 מִסְפֵּד; H5594 סָפַד
+1Móz 50:17	sír	sír (ige: sírni)	H1058 בָּכָה
+1Móz 50:26	koporsóba	halál + sír/koporsó (főnév)	H0727 אֲרוֹן; H4191 מוּת
+1Sám 1:7	sír	sír (ige: sírni)	H1058 בָּכָה
+1Sám 1:8	sírsz	sír (ige: sírni)	H1058 בָּכָה
+1Sám 1:10	sír	sír (ige: sírni)	H1058 בָּכָה
+1Sám 10:2	sírja	sír/koporsó (főnév)	H6900 קְבֻרָה
+1Sám 11:4	sírának	sír (ige: sírni)	H1058 בָּכָה
+1Sám 11:5	sírnak	sír (ige: sírni)	H1058 בָּכָה
+1Sám 20:41	sírtak	sír (ige: sírni)	H1058 בָּכָה
+1Sám 24:17	síra	sír (ige: sírni)	H1058 בָּכָה
+1Sám 30:4	sírának	sír (ige: sírni)	H1058 בָּכָה
+2Kir 8:11	sírni	sír (ige: sírni)	H1058 בָּכָה
+2Kir 8:12	sír	sír (ige: sírni)	H1058 בָּכָה
+2Kir 13:14	sírt	halál + sír (ige: sírni)	H1058 בָּכָה; H4191 מוּת
+2Kir 20:3	sírt; sírással	sír (ige: sírni)	H1058 בָּכָה; H1065 בְּכִי
+2Kir 22:19	sírtál	sír (ige: sírni)	H1058 בָּכָה; H7167 קָרַע
+2Kir 22:20	sírodba	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+2Kir 23:16	sírokat; sírokból	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+2Kir 23:17	síremlék; sírja	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+2Kor 11:25	mélységben	mélység/verem	G1037 βυθός
+2Krón 34:27	sírtál	sír (ige: sírni)	H1058 בָּכָה; H7167 קָרַע
+2Krón 34:28	sírodba	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+2Móz 2:6	síró	sír (ige: sírni)	H1058 בָּכָה
+2Móz 14:11	sírok	halál + sír/koporsó (főnév)	H4191 מוּת; H6913 קֶ֫בֶר
+2Móz 15:5	mélységbe	mélység/verem	H4688 מְצוֹלָה; H8415 תְּהוֹם
+2Móz 15:8	mélységes	mélység/verem	H8415 תְּהוֹם
+2Pét 2:4	mélységbe	osztálytalan	
+2Sám 1:12	sírának	sír (ige: sírni)	H1058 בָּכָה; H5594 סָפַד
+2Sám 1:17	síra; sírással	sír (ige: sírni)	H6969 קִינֵן; H7015 קִינָה
+2Sám 3:16	sírva	sír (ige: sírni)	H1058 בָּכָה
+2Sám 3:31	sírjatok; koporsó	sír (ige: sírni)	H5594 סָפַד; H7167 קָרַע
+2Sám 3:32	síra; koporsója; síra	sír (ige: sírni) + sír/koporsó (főnév)	H1058 בָּכָה; H6912 קָבַר; H6913 קֶ֫בֶר
+2Sám 12:21	sírtál	halál + sír (ige: sírni)	H1058 בָּכָה; H4191 מוּת
+2Sám 12:22	sírtam	sír (ige: sírni)	H1058 בָּכָה
+2Sám 13:36	sírának; sírának	sír (ige: sírni)	H1058 בָּכָה; H1065 בְּכִי
+2Sám 15:23	sír	sír (ige: sírni)	H1058 בָּכָה
+2Sám 15:30	sírva; sírának	sír (ige: sírni)	H1058 בָּכָה
+2Sám 18:33	síra	halál + sír (ige: sírni)	H1058 בָּכָה; H4191 מוּת
+2Sám 22:17	mélységes	osztálytalan	
+4Móz 11:4	síránkozni	sír (ige: sírni)	H1058 בָּכָה
+4Móz 11:10	sír	sír (ige: sírni)	H1058 בָּכָה
+4Móz 11:13	sírnak	sír (ige: sírni)	H1058 בָּכָה
+4Móz 14:1	síra	sír (ige: sírni)	H1058 בָּכָה
+4Móz 19:16	sírt	halál + sír/koporsó (főnév)	H4191 מוּת; H6913 קֶ֫בֶר
+4Móz 19:18	koporsót	halál + sír/koporsó (főnév)	H4191 מוּת; H6913 קֶ֫בֶר
+4Móz 25:6	sírnak	sír (ige: sírni)	H1058 בָּכָה
+5Móz 1:45	sírátok	sír (ige: sírni)	H1058 בָּכָה
+5Móz 33:13	mélységes	mélység/verem	H8415 תְּהוֹם
+ApCsel 2:29	sírja	halál + sír/koporsó (főnév)	G2290 θάπτω; G3418 μνῆμα; G5053 τελευτάω
+ApCsel 7:16	sírba	sír/koporsó (főnév)	G3418 μνῆμα
+ApCsel 9:39	sírva	sír (ige: sírni)	G2799 κλαίω
+ApCsel 13:29	sírba	sír/koporsó (főnév)	G3419 μνημεῖον
+ApCsel 21:13	sírván	halál + sír (ige: sírni)	G0599 ἀποθνήσκω; G2799 κλαίω
+Bír 2:4	síra	sír (ige: sírni)	H1058 בָּכָה
+Bír 11:37	sírjak	sír (ige: sírni)	H1058 בָּכָה
+Bír 14:16	sírt	sír (ige: sírni)	H1058 בָּכָה
+Bír 14:17	sírdogált	sír (ige: sírni)	H1058 בָּכָה
+Bír 20:23	sírtak	sír (ige: sírni)	H1058 בָּכָה
+Bír 20:26	sírtak	sír (ige: sírni)	H1058 בָּכָה
+Bír 21:2	sírással; sírt	sír (ige: sírni)	H1058 בָּכָה; H1065 בְּכִי
+Ef 3:18	mélysége	mélység/verem	G0899 βάθος
+Eszt 8:3	sírt	sír (ige: sírni)	H1058 בָּכָה
+Ez 6:3	mélységeknek	osztálytalan	
+Ez 24:16	sírj	sír (ige: sírni)	H1058 בָּכָה; H1832 דִּמְעָה; H5594 סָפַד
+Ez 24:23	sírtok	sír (ige: sírni)	H1058 בָּכָה; H5594 סָפַד
+Ez 26:19	mélység	mélység/verem	H8415 תְּהוֹם
+Ez 26:20	mélységek	mélység/verem	H0953 בּוֹר
+Ez 27:31	sírnak; sírással	sír (ige: sírni)	H1058 בָּכָה; H4553 מִסְפֵּד
+Ez 27:34	mélységébe	mélység/verem	H4615 מַעֲמַקִּים
+Ez 31:4	mélység	mélység/verem	H8415 תְּהוֹם
+Ez 31:12	mélységében	osztálytalan	
+Ez 31:14	mélység	halál + mélység/verem	H0953 בּוֹר; H4194 מָ֫וֶת
+Ez 31:18	mélység	osztálytalan	
+Ez 32:6	mélységek	osztálytalan	
+Ez 32:16	sírva; sírva; sírva	sír (ige: sírni)	H7015 קִינָה
+Ez 32:18	sírj; mélységek	mélység/verem + sír (ige: sírni)	H0953 בּוֹר; H5091 נָהָה
+Ez 32:23	sírgödör; sírja	mélység/verem + sír/koporsó (főnév)	H0953 בּוֹר; H6900 קְבֻרָה; H6913 קֶ֫בֶר
+Ez 32:24	sírja; mélységek	mélység/verem + sír/koporsó (főnév)	H0953 בּוֹר; H6900 קְבֻרָה
+Ez 34:13	mélységekben	osztálytalan	
+Ez 35:8	mélységed	osztálytalan	
+Ez 36:4	mélységeknek	osztálytalan	
+Ez 36:6	mélységeknek	osztálytalan	
+Ezsd 3:12	sírnak	sír (ige: sírni)	H1058 בָּכָה
+Ezsd 10:1	sírva; síra	sír (ige: sírni)	H1058 בָּכָה; H1059 בֶּ֫כֶה
+Fil 3:18	sírva	sír (ige: sírni)	G2799 κλαίω
+Hós 12:4	sírt	sír (ige: sírni)	H1058 בָּכָה
+Jak 4:9	sírjatok	sír (ige: sírni)	G2799 κλαίω; G3996 πενθέω; G3997 πένθος
+Jak 5:1	sírjatok	sír (ige: sírni)	G2799 κλαίω; G3649 ὀλολύζω
+Jel 2:24	mélységeit	mélység/verem	G0901 βαθύς
+Jel 5:4	sírok	sír (ige: sírni)	G2799 κλαίω
+Jel 5:5	sírj	sír (ige: sírni)	G2799 κλαίω
+Jel 9:1	mélység	mélység/verem	G0012 ἄβυσσος; G5421 φρέαρ
+Jel 9:2	mélységnek	mélység/verem	G0012 ἄβυσσος; G5421 φρέαρ
+Jel 9:11	mélység	mélység/verem	G0012 ἄβυσσος
+Jel 11:7	mélységből	mélység/verem	G0012 ἄβυσσος
+Jel 11:9	sírba	sír/koporsó (főnév)	G3418 μνῆμα
+Jel 17:8	mélységből	mélység/verem	G0012 ἄβυσσος
+Jel 18:15	sírván	sír (ige: sírni)	G2799 κλαίω; G3996 πενθέω
+Jel 18:19	sírván	sír (ige: sírni)	G2799 κλαίω; G2896 κράζω; G3996 πενθέω
+Jel 20:1	mélységnek	mélység/verem	G0012 ἄβυσσος
+Jel 20:3	mélységbe	mélység/verem	G0012 ἄβυσσος
+Jer 4:8	sírjatok	sír (ige: sírni)	H3213 יָלַל; H5594 סָפַד
+Jer 5:16	sír	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jer 6:26	sírj	sír (ige: sírni)	H0060 אֵ֫בֶל; H4553 מִסְפֵּד
+Jer 8:1	sírjaikból	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jer 12:11	sír	sír (ige: sírni)	H0056 אָבַל
+Jer 13:17	sírni	sír (ige: sírni)	H1058 בָּכָה; H1830 דָּמַע; H1832 דִּמְעָה
+Jer 16:5	sírni	sír (ige: sírni)	H4798 מַרְזֵחַ; H5594 סָפַד
+Jer 20:17	koporsóm	halál + sír/koporsó (főnév)	H4191 מוּת; H6913 קֶ֫בֶר
+Jer 31:15	sírás	sír (ige: sírni)	H1058 בָּכָה; H1065 בְּכִי; H5092 נְהִי
+Jer 41:6	sírván	sír (ige: sírni)	H1058 בָּכָה
+Jer 49:3	sírjatok	sír (ige: sírni)	H3213 יָלַל; H5594 סָפַד; H6817 צָעַק
+Jer 50:4	sírva	sír (ige: sírni)	H1058 בָּכָה
+Ján 5:28	koporsókban	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 11:17	sírban	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 11:31	sírhoz; sírjon	sír (ige: sírni) + sír/koporsó (főnév)	G2799 κλαίω; G3419 μνημεῖον
+Ján 11:33	sír; sírnak	mélység/verem + sír (ige: sírni)	G1690 ἐμβριμάομαι; G2799 κλαίω
+Ján 11:38	sírhoz	mélység/verem + sír/koporsó (főnév)	G1690 ἐμβριμάομαι; G3419 μνημεῖον
+Ján 12:17	koporsóból	halál + sír/koporsó (főnév)	G3419 μνημεῖον; G3498 νεκρός
+Ján 16:20	sírtok	sír (ige: sírni)	G2354 θρηνέω; G2799 κλαίω
+Ján 19:41	sír	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 19:42	sír	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:1	sírhoz; sírról	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:2	sírból	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:3	sírhoz	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:4	sírhoz	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:6	sírba	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:8	sírhoz	sír/koporsó (főnév)	G3419 μνημεῖον
+Ján 20:11	sírnál; sírva; sírba	sír (ige: sírni) + sír/koporsó (főnév)	G2799 κλαίω; G3419 μνημεῖον
+Ján 20:13	sírsz	sír (ige: sírni)	G2799 κλαίω
+Ján 20:15	sírsz	sír (ige: sírni)	G2799 κλαίω
+Jób 3:22	koporsót	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jób 5:26	koporsóba	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jób 6:27	sírt	osztálytalan	
+Jób 10:19	sírba	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jób 11:7	mélységét	osztálytalan	
+Jób 12:22	mélységes	mélység/verem	H6013 עָמֹק; H6757 צַלְמָ֫וֶת
+Jób 16:20	sír	sír (ige: sírni)	H1811 דָּלַף
+Jób 16:22	sír	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Jób 17:13	sírnak	mélység/verem	H7845 שַׁ֫חַת
+Jób 21:32	sírba; sírdomb	sír/koporsó (főnév)	H1430 גָּדִישׁ; H6913 קֶ֫בֶר
+Jób 21:33	sírnak	osztálytalan	
+Jób 28:14	mélység	mélység/verem	H8415 תְּהוֹם
+Jób 28:22	pokol	halál	H4194 מָ֫וֶת
+Jób 30:25	sírtam	sír (ige: sírni)	H1058 בָּכָה
+Jób 31:12	pokolig	osztálytalan	
+Jób 33:22	sírhoz	halál + mélység/verem	H4191 מוּת; H7845 שַׁ֫חַת
+Jób 33:24	sírba	mélység/verem	H7845 שַׁ֫חַת
+Jób 33:28	sírba	mélység/verem	H7845 שַׁ֫חַת
+Jób 33:30	sírtól	mélység/verem	H7845 שַׁ֫חַת
+Jób 38:16	mélységnek	mélység/verem	H2714 חֵ֫קֶר; H8415 תְּהוֹם
+Jób 40:8	mélységes	osztálytalan	
+Jóel 1:5	sírjatok	sír (ige: sírni)	H1058 בָּכָה; H3213 יָלַל
+Jóel 1:13	sírjatok	sír (ige: sírni)	H3213 יָלַל; H5594 סָפַד
+Jóel 2:12	sírással	sír (ige: sírni)	H1065 בְּכִי; H4553 מִסְפֵּד
+Jóel 2:17	sírjanak	mélység/verem + sír (ige: sírni)	H1058 בָּכָה; H2347 חוּס
+Jón 2:4	mélységbe	mélység/verem	H4688 מְצוֹלָה
+Luk 6:21	sírtok	sír (ige: sírni)	G2799 κλαίω
+Luk 6:25	sírni	sír (ige: sírni)	G2799 κλαίω; G3996 πενθέω
+Luk 7:13	sírj	mélység/verem + sír (ige: sírni)	G2799 κλαίω; G4697 σπλαγχνίζω
+Luk 7:14	koporsót	osztálytalan	
+Luk 7:38	sírva	sír (ige: sírni)	G1144 δάκρυ, δάκρυον; G2799 κλαίω
+Luk 8:31	mélységbe	mélység/verem	G0012 ἄβυσσος
+Luk 8:52	Sírának; sírjatok	halál + sír (ige: sírni)	G0599 ἀποθνήσκω; G2799 κλαίω; G2875 κόπτω
+Luk 11:44	sírok	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 11:48	sírjaikat	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 13:28	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Luk 19:41	síra	sír (ige: sírni)	G2799 κλαίω
+Luk 22:62	síra	sír (ige: sírni)	G2799 κλαίω
+Luk 23:28	sírjatok; sírjatok	sír (ige: sírni)	G2799 κλαίω
+Luk 23:55	sírt	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 24:1	sírhoz	mélység/verem + sír/koporsó (főnév)	G0901 βαθύς; G3418 μνῆμα
+Luk 24:2	sírról	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 24:9	sírtól	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 24:12	sírhoz	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 24:22	sírnál	sír/koporsó (főnév)	G3419 μνημεῖον
+Luk 24:24	sírhoz	sír/koporsó (főnév)	G3419 μνημεῖον
+Mal 2:13	sírással	sír (ige: sírni)	H1065 בְּכִי; H1832 דִּמְעָה
+Mik 1:10	sírván; sírjatok	sír (ige: sírni)	H1058 בָּכָה
+Mik 2:4	sírnak	sír (ige: sírni)	H5091 נָהָה; H5092 נְהִי
+Mik 7:19	mélységébe	mélység/verem	H4688 מְצוֹלָה
+Mk 5:38	síránkozót	sír (ige: sírni)	G0214 ἀλαλάζω; G2799 κλαίω
+Mk 5:39	sírtok	halál + sír (ige: sírni)	G0599 ἀποθνήσκω; G2799 κλαίω
+Mk 6:29	sírba	sír/koporsó (főnév)	G3419 μνημεῖον
+Mk 7:26	síro	osztálytalan	
+Mk 14:72	sírva	sír (ige: sírni)	G2799 κλαίω
+Mk 15:46	sírbolt	sír/koporsó (főnév)	G3419 μνημεῖον
+Mk 16:3	sírbolt	sír/koporsó (főnév)	G3419 μνημεῖον
+Mk 16:10	sírnak	sír (ige: sírni)	G2799 κλαίω; G3996 πενθέω
+Mt 2:18	Sírás	sír (ige: sírni)	G2355 θρῆνος; G2799 κλαίω; G2805 κλαυθμός; G3602 ὀδυρμός
+Mt 5:4	sírnak	sír (ige: sírni)	G3996 πενθέω
+Mt 8:12	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 13:42	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 13:50	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 18:6	mélységébe	mélység/verem	G3989 πέλαγος
+Mt 22:13	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 23:27	sírokhoz	halál + sír/koporsó (főnév)	G3498 νεκρός; G5028 τάφος
+Mt 23:29	síremlékeit	sír/koporsó (főnév)	G3419 μνημεῖον; G5028 τάφος
+Mt 24:30	sír	sír (ige: sírni)	G2875 κόπτω
+Mt 24:51	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 25:30	sírás	sír (ige: sírni)	G2805 κλαυθμός
+Mt 26:75	síra	sír (ige: sírni)	G2799 κλαίω
+Mt 27:52	sírok	sír/koporsó (főnév)	G3419 μνημεῖον
+Mt 27:53	sírokból	sír/koporsó (főnév)	G3419 μνημεῖον
+Mt 27:60	sír	sír/koporsó (főnév)	G3419 μνημεῖον
+Mt 27:61	sír	sír/koporsó (főnév)	G5028 τάφος
+Mt 27:64	sírt	halál + sír/koporsó (főnév)	G3498 νεκρός; G5028 τάφος
+Mt 27:66	sírt	sír/koporsó (főnév)	G5028 τάφος
+Mt 28:1	sírt	sír/koporsó (főnév)	G5028 τάφος
+Mt 28:2	sír	osztálytalan	
+Mt 28:8	sírtól	sír/koporsó (főnév)	G3419 μνημεῖον
+Neh 1:4	sírtam	sír (ige: sírni)	H0056 אָבַל; H1058 בָּכָה
+Neh 8:9	sírjatok; sír	sír (ige: sírni)	H0056 אָבַל; H1058 בָּכָה
+Neh 9:11	mélységbe	mélység/verem	H4688 מְצוֹלָה
+Náh 1:14	sírodat	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Préd 7:24	mélységes	mélység/verem	H6013 עָמֹק
+Préd 12:7	sírók	sír (ige: sírni)	H5594 סָפַד
+Péld 3:20	mélységből	mélység/verem	H8415 תְּהוֹם
+Péld 8:24	mélységek	mélység/verem	H8415 תְּהוֹם
+Péld 8:27	mélységek	mélység/verem	H8415 תְּהוֹם
+Péld 8:28	mélységeknek	mélység/verem	H8415 תְּהוֹם
+Péld 25:3	mélységre	mélység/verem	H6011 עֹ֫מֶק
+Péld 28:17	sírig	mélység/verem	H0953 בּוֹר
+Ruth 1:9	sírának	sír (ige: sírni)	H1058 בָּכָה
+Ruth 1:14	sírának	sír (ige: sírni)	H1058 בָּכָה
+Róm 3:13	sír	sír/koporsó (főnév)	G5028 τάφος
+Róm 8:38	mélység	halál	G2288 θάνατος
+Róm 10:7	mélységbe	halál + mélység/verem	G0012 ἄβυσσος; G3498 νεκρός
+Róm 11:33	mélysége	mélység/verem	G0899 βάθος
+Róm 12:15	sírjatok; sírókkal	sír (ige: sírni)	G2799 κλαίω
+Sir 1:2	Sírván; sír	sír (ige: sírni)	H1058 בָּכָה; H1832 דִּמְעָה
+Sir 1:16	sírok	sír (ige: sírni)	H1058 בָּכָה
+Sir 2:18	síró	sír (ige: sírni)	H1832 דִּמְעָה; H6817 צָעַק
+Zak 7:3	Sírjak	sír (ige: sírni)	H1058 בָּכָה
+Zak 12:12	sír	sír (ige: sírni)	H5594 סָפַד
+Zsolt 5:10	sír	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Zsolt 28:1	sírba	mélység/verem	H0953 בּוֹר
+Zsolt 30:10	sírba	mélység/verem	H7845 שַׁ֫חַת
+Zsolt 36:7	mélységek	mélység/verem	H8415 תְּהוֹם
+Zsolt 63:10	mélységeibe	osztálytalan	
+Zsolt 68:23	mélységéből	mélység/verem	H4688 מְצוֹלָה
+Zsolt 69:11	sírok	sír (ige: sírni)	H1058 בָּכָה
+Zsolt 71:20	mélységéből	mélység/verem	H8415 תְּהוֹם
+Zsolt 77:17	mélységek	mélység/verem	H8415 תְּהוֹם
+Zsolt 78:15	mélységes	mélység/verem	H8415 תְּהוֹם
+Zsolt 88:5	sírba	mélység/verem	H0953 בּוֹר
+Zsolt 88:7	sírba	mélység/verem	H0953 בּוֹר; H4688 מְצוֹלָה
+Zsolt 95:4	mélységei	mélység/verem	H4278 מֶחְקָר
+Zsolt 103:4	koporsótól	mélység/verem	H7845 שַׁ֫חַת
+Zsolt 106:9	mélységeken	mélység/verem	H8415 תְּהוֹם
+Zsolt 107:24	mélységben	mélység/verem	H4688 מְצוֹלָה
+Zsolt 119:28	Sír	sír (ige: sírni)	H1811 דָּלַף
+Zsolt 126:6	sírva	sír (ige: sírni)	H1058 בָּכָה; H7440 רִנָּה
+Zsolt 130:1	mélységből	mélység/verem	H4615 מַעֲמַקִּים
+Zsolt 135:6	mélységben	mélység/verem	H8415 תְּהוֹם
+Zsolt 137:1	sírtunk	sír (ige: sírni)	H1058 בָּכָה
+Zsolt 143:7	sírba	mélység/verem	H0953 בּוֹר
+Ámós 5:1	síródalként	sír (ige: sírni)	H7015 קִינָה
+Ámós 5:16	sírni	sír (ige: sírni)	H0060 אֵ֫בֶל; H4553 מִסְפֵּד; H5092 נְהִי
+Ámós 7:4	mélységet	mélység/verem	H8415 תְּהוֹם
+Ézs 3:27	sírnak	sír (ige: sírni)	H0056 אָבַל; H0578 אָנָה
+Ézs 14:19	sírodtól	mélység/verem + sír/koporsó (főnév)	H0953 בּוֹר; H6913 קֶ֫בֶר
+Ézs 14:20	sírban	sír/koporsó (főnév)	H6900 קְבֻרָה
+Ézs 15:2	sírni	sír (ige: sírni)	H1065 בְּכִי; H3213 יָלַל
+Ézs 15:5	sírással	sír (ige: sírni)	H1065 בְּכִי; H2199 זָעַק; H2201 זְעָקָה
+Ézs 16:11	sír	osztálytalan	
+Ézs 22:4	sírással	sír (ige: sírni)	H1065 בְּכִי
+Ézs 22:16	sírt	sír/koporsó (főnév)	H6913 קֶ֫בֶר
+Ézs 30:19	sírni	sír (ige: sírni)	H1058 בָּכָה; H2199 זָעַק
+Ézs 33:7	sírnak	sír (ige: sírni)	H1058 בָּכָה; H6817 צָעַק
+Ézs 33:9	Sírt	sír (ige: sírni)	H0056 אָבַל
+Ézs 38:3	sírt	sír (ige: sírni)	H1058 בָּכָה; H1065 בְּכִי
+Ézs 44:23	mélységei	sír (ige: sírni)	H7440 רִנָּה
+Ézs 44:27	mélységnek	mélység/verem	H6683 צוּלָה
+Ézs 51:10	mélység	mélység/verem	H4615 מַעֲמַקִּים; H8415 תְּהוֹם
+Ézs 53:9	sírt	halál + sír/koporsó (főnév)	H4194 מָ֫וֶת; H6913 קֶ֫בֶר
+Ézs 63:13	mélységekben	mélység/verem	H8415 תְּהוֹם
+Ézs 65:4	sírokhoz	sír/koporsó (főnév)	H6913 קֶ֫בֶר

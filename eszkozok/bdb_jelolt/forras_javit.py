@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """A BDB forráshibáinak javítótáblája (F107, 5. lépés; DT-F107f (a), felhasználó, 2026-10-18).
 
-Egyetlen hibaosztály (ma): `pe_mem` — a DictBDB.json a dagesses pét dagesses memként írja (0 dagesses pe a JSON-ban,
+Az első hibaosztály: `pe_mem` — a DictBDB.json a dagesses pét dagesses memként írja (0 dagesses pe a JSON-ban,
 `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.2). A tábla az `adat/bdb_szakaszok.tsv` `szoveg` mezőjének MINDEN dagesses
 memjére egy sort ad (a szó és azon belül a dagesses mem sorszámával), és eldönti:
 
@@ -107,7 +107,7 @@ def tabla_sorok():
     return [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
 
 
-def general(ts, ts_heber=None):
+def general(ts, ts_heber=None, ts_atiras=None):
     lex = lexikon_szavak()
     ki, stat = [], collections.Counter()
     prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=%s'
@@ -138,6 +138,8 @@ def general(ts, ts_heber=None):
     ki.extend(hivatkozas_sorok(stat, ts))
     ki.extend(kezi_hivatkozas_sorok(stat))
     ki.extend(heber_sorrend_sorok(stat, ts_heber or ts))
+    ki.extend(atiras_sorok(stat, ts_atiras or ts))
+    ki.extend(kezi_szoveg_sorok(stat))
     return ki, stat
 
 
@@ -226,6 +228,55 @@ def heber_sorrend_sorok(stat, ts):
                          % ('mindkét alak áll' if v_js and v_uj else 'egyik alak sem áll, vagy kevés az anyag', uj))
             stat['heber_sorrend_' + allapot] += 1
             ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'heber_sorrend', '', str(k), js, jav, allapot, indok,
+                       prov % (r['strong'], ts)])
+    return ki
+
+
+# ---------------------------------------------------------------- atiras (B3, DT-F164a)
+# A DictBDB.json latin betűs átírásainak betűkészlet-hibája: a „®” a redukált magánhangzó (ᵉ), a „°” az álef (ʾ) rossz kódja
+# (pl. „Sh®°ôl” = Sheʾôl, H0011 és 32 további Strong). Egy sor = egy „®”-t tartalmazó szóalak egy előfordulása a szakasztábla
+# sorában (`elofordulas`: a `forras_alak` hányadik részszöveg-előfordulása a sor `szoveg`-ében). A javított alak a SZABÁLYBÓL jön
+# („e?®” → „e”, „°” → „ʾ”); a BDB.lexicon csak igazol: `javitva`, ha a javított alak (ʾ → ') a lexikon bármely szócikkében tiszta
+# szóként áll (DT225 (i)); különben `jelolt_marad`, javítás nélkül. A csak „°”-t hordozó alakok (fokjel, akkád/egyiptomi átírás)
+# kívül esnek (N-F164a). A megjelenítés (bdb_rovidites.atiras_javit) részszöveg szerint cserél, az angol szövegben és a magyar
+# fordításban is (a torz alak a fordításban szó szerint áll, toldalékkal); a fordító bemenete és az `sz<n>` hash nem változik.
+ATIRAS_ALAK = re.compile(r'(?:[^\W\d_]|[®°])*®(?:[^\W\d_]|[®°])*')
+LEX_SZO = re.compile(r"(?:[^\W\d_]|['ʾ])+")
+
+
+def atiras_szabaly(alak):
+    return re.sub('e?®', 'e', alak).replace('°', 'ʾ')
+
+
+def lexikon_latin_szavak():
+    """A BDB.lexicon latin betűs szóalakjai (kisbetűsítve), az igazoláshoz; a torz jelet hordozók nélkül."""
+    import html as html_mod
+    con = sqlite3.connect('file:' + LEX_UT.replace('\\', '/') + '?mode=ro', uri=True)
+    ki = set()
+    for (d,) in con.execute("select Definition from Lexicon where Topic like 'BDB%'"):
+        ki.update(w.casefold() for w in LEX_SZO.findall(html_mod.unescape(re.sub(r'<[^>]+>', ' ', d))))
+    con.close()
+    return ki
+
+
+def atiras_sorok(stat, ts):
+    lex = lexikon_latin_szavak()
+    prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): atiras-szabály + BDB.lexicon-igazolás | ts=%s'
+    ki = []
+    for r in tabla_sorok():
+        kurzor = collections.Counter()
+        for m in ATIRAS_ALAK.finditer(r['szoveg']):
+            alak = m.group(0)
+            kurzor[alak] += 1
+            jav = atiras_szabaly(alak)
+            if jav.replace('ʾ', "'").casefold() in lex:
+                allapot, indok = 'javitva', ('a szabály szerinti alak (%s) tiszta szóként áll a BDB.lexiconban: a „®” a redukált '
+                                             'magánhangzó, a „°” az álef torz kódja' % jav.replace('ʾ', "'"))
+            else:
+                allapot, jav, indok = 'jelolt_marad', '', ('a szabály szerinti alak (%s) a BDB.lexiconban nem áll: gépi javítás '
+                                                           'nincs' % atiras_szabaly(alak))
+            stat['atiras_' + allapot] += 1
+            ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'atiras', '', str(kurzor[alak]), alak, jav, allapot, indok,
                        prov % (r['strong'], ts)])
     return ki
 
@@ -444,6 +495,48 @@ def kezi_hivatkozas_sorok(stat):
     return ki
 
 
+# F123.GENKOR (DT-F181a): kézi szöveghelyesbítés a lapon álló, a szabályos osztályokon kívül eső forráshibákra. Mindkét nyers
+# forrás (DictBDB.json és BDB.lexicon) ugyanígy hibás, ezért gépi igazolás nincs; a sor a betűkészlet torz átírását (`atiras`, a
+# DT581 osztálya; a teljes betűkészlet-tábla visszafejtése N89) vagy a digitalizálásban elveszett zárójelet (`zarojel`) javítja.
+# `allapot=javitva`, proveniencia `manual`; a megjelenítés (bdb_rovidites.atiras_javit, ill. zarojel_javit) részszöveg szerint
+# cserél. Egy sor = egy alak: az angol forrásszövegé, vagy — a zárójelnél, ahol a fordítás más szöveg — a magyar fordításé (az
+# `indok` megnevezi); a `sorszam` a horgonyt (az angol részszöveget) hordozó táblasor. (strong, horgony, hiba, forras_alak,
+# javitott_alak, indok)
+KEZI_SZOVEG = [
+    ('H7121', "'†or°¹n", 'atiras', "'†or°¹n", 'Qorʾân',
+     'a „read aloud, recite (the \'†or°¹n)” a Korán átírása a betűkészlet torz kódjával (a „†” a Q/Ḳ, a „°” az álef, a „¹” a '
+     'hosszú â); a BDB.lexicon ugyanígy torz, de másutt a „Qoran” alakot hordozza (4×), és a forrás a Korán-helyeket „Qor”-ral '
+     'idézi (pl. BDB55 „Qor 2:82”); a magyar fordításban „Korán” (bdb_rovidites.ATIRAS_MAGYAR)'),
+    ('H7121', '†or°a¹n', 'atiras', '†or°a¹n', 'Qorʾân',
+     'ugyanannak a szónak („the †or°a¹n”, a kiesett arab főnév fordítása) második torz alakja; l. az előző sort'),
+    ('H2416', 'Leµi', 'atiras', 'Leµi', 'Leḥi',
+     'a „rightly read לֶ֫חְיָה to Leµi, compare Judg 15:9” a Lehi helynév átírása a torz „µ” (ḥ) kóddal; a BDB.lexicon a helynevet '
+     'másutt „Lehi” alakban hordozza (3×), és a Bír 15:9 Lehit nevezi meg; a magyar fordításban „Lehi”'),
+    ('H7121', 'be read aloud compare Qal 4)', 'zarojel', 'be read aloud compare Qal 4)', 'be read aloud (compare Qal 4)',
+     'angol forrásszöveg: a „(compare Qal 4)” nyitó zárójele a digitalizálásban elveszett (a DictBDB.json-ban és a BDB.lexicon-ban '
+     'is „compare Qal 4 ):”); a párhuzamos a. és c. pont „(compare Qal 3)”, „(compare Qal 5” alakja'),
+    ('H7121', 'be read aloud compare Qal 4)', 'zarojel', 'felolvastatni vö. Qal 4)', 'felolvastatni (vö. Qal 4)',
+     'a magyar fordítás ugyanezen helye (l. az előző sort)'),
+    ('H7121', 'be summoned (compare Qal 5:', 'zarojel', 'be summoned (compare Qal 5:', 'be summoned (compare Qal 5):',
+     'angol forrásszöveg: a „(compare Qal 5)” záró zárójele a digitalizálásban elveszett (a DictBDB.json-ban és a BDB.lexicon-ban '
+     'is „(compare Qal 5 : Isa 31:4”); a párhuzamos a., b. és d. pont a hivatkozást zárójelben zárja'),
+    ('H7121', 'be summoned (compare Qal 5:', 'zarojel', 'megidéztetni (vö. Qal 5:', 'megidéztetni (vö. Qal 5):',
+     'a magyar fordítás ugyanezen helye (l. az előző sort)'),
+]
+
+
+def kezi_szoveg_sorok(stat):
+    sorok = tabla_sorok()
+    ki = []
+    for st, horgony, hiba, forras_alak, javitott, indok in KEZI_SZOVEG:
+        r = next((x for x in sorok if x['strong'] == st and horgony in x['szoveg']), None)
+        if r is None:
+            raise SystemExit('HIBA: a kézi szövegsor horgonya nem található: %s %r' % (st, horgony))
+        stat['%s_kezi' % hiba] += 1
+        ki.append([st, r['sorszam'], r['bdb_id'], hiba, '', '', forras_alak, javitott, 'javitva', indok, 'manual'])
+    return ki
+
+
 def kezi_sorok(stat):
     sorok = tabla_sorok()
     ki = []
@@ -456,9 +549,9 @@ def kezi_sorok(stat):
     return ki
 
 
-def fajl_szoveg(sorok, ts, ts_heber=None):
+def fajl_szoveg(sorok, ts, ts_heber=None, ts_atiras=None):
     fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s%s — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben (a heber_sorrend sorok a forrás alakjában).'
-           % (ts, ' --ts-heber-sorrend %s' % ts_heber if ts_heber else ''),
+           % (ts, (' --ts-heber-sorrend %s' % ts_heber if ts_heber else '') + (' --ts-atiras %s' % ts_atiras if ts_atiras else '')),
            '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás és darabhatár) + '
            'konkordancia/lexikonok_nyers/DictBDB.json@%s + konkordancia/TAHOT_kivonat.tsv@%s (heber_sorrend) + kód@%s'
            % (sha256_fajl(TABLA)[:12], sha256_fajl(LEX_UT)[:12], sha256_fajl(JSON_UT)[:12], sha256_fajl(TAHOT_UT)[:12],
@@ -471,15 +564,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     ap.add_argument('--ts-heber-sorrend', help='a heber_sorrend sorok proveniencia-ts-e (alap: --ts)')
+    ap.add_argument('--ts-atiras', help='az atiras sorok proveniencia-ts-e (alap: --ts)')
     ap.add_argument('--meres', action='store_true')
     ap.add_argument('--ellenoriz', action='store_true')
     a = ap.parse_args()
-    sorok, stat = general(a.ts, a.ts_heber_sorrend)
+    sorok, stat = general(a.ts, a.ts_heber_sorrend, a.ts_atiras)
     print('sor: %d (pe_mem + kezi); %s; érintett Strong (javitva): %d' % (
         len(sorok), dict(stat), len(set(s[0] for s in sorok if s[8] == 'javitva'))))
     if a.meres:
         return 0
-    szoveg = fajl_szoveg(sorok, a.ts, a.ts_heber_sorrend)
+    szoveg = fajl_szoveg(sorok, a.ts, a.ts_heber_sorrend, a.ts_atiras)
     if a.ellenoriz:
         with open(KI_UT, encoding='utf-8', newline='') as f:
             if f.read() != szoveg:

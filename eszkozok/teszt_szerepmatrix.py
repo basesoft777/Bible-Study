@@ -176,7 +176,7 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('(9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés)', b9)
         self.assertIn('[szónézet: /szo/G1941](/szo/G1941)', b9)
         for n in (6, 9):
-            self.assertIn('**Mit mutat ez a rész?**', self._blokk_szerep('gorog', n))
+            self.assertIn(LG.OLVASOI_CIMKE, self._blokk_szerep('gorog', n))
         b5 = self._blokk_szerep('gorog', 5)
         self.assertIn('**G1941** · UBS DNTG: 4 jelentés', b5)
         self.assertIn('*Mounce (GK 2126):*', b5)
@@ -628,7 +628,7 @@ class TestTeologiaiF09(unittest.TestCase):
         b = self._szerep('ISTENTISZT-001', 'heber', 6)
         self.assertIn('*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*', b)
         self.assertIn('Versszintű együtt-előfordulás, nem szóillesztés', b)
-        self.assertIn('**H8034** · 764 vers az LXX_OS-ben', b)
+        self.assertIn('**H8034** · 764 vers a Septuagintában', b)
         self.assertIn('Proveniencia (a tábla soraiból): scope=LXX_OS-versszint', b)
         # a görög oldalon nincs ilyen sor (a tábla héber-kulcsú)
         self.assertNotIn('versszint', self._szerep('ISTENTISZT-001', 'gorog', 6))
@@ -656,7 +656,7 @@ class TestUbsDbhF09(unittest.TestCase):
 
     def test_versenkenti_jelentes_es_mt_szamozas(self):
         b = self._szerep('ISTENTISZT-001', 9)
-        self.assertIn('| Zsolt 79:6 | H7121 | `006562001011000` — to acknowledge (a deity) | — |', b)
+        self.assertIn('| Zsolt 79:6 | H7121 | to acknowledge (a deity) | — |', b)
         # Zsolt 116:13 -- a Károli-szám eltér az MT-től? a megfeleltetés a táblából, nem találgatás
         self.assertNotIn('Róm 10:13', b)  # ÚSZ-sor nem kerül ide
         ures = self._szerep('ALVIL-001', 9)

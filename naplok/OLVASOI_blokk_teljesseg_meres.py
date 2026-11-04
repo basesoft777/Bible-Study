@@ -1,8 +1,7 @@
 """Az olvasói bevezetők („Mit mutat ez a rész?”) teljességi mérése egy lexikonlapon (DT-F131t; ISTENTISZT-001 arany
 lap, 2026-10-29). Csak olvas.
 
-A lap minden blokkját és alblokkját (`##`–`#####` cím) listázza: van-e olvasói bevezető (a cím utáni első tartalmi sor
-`**Mit mutat ez a rész?**`), és ha nincs, miért nem kell:
+A lap minden blokkját és alblokkját (`##`–`#####` cím) listázza: van-e olvasói bevezető (a cím utáni első tartalmi bekezdés a sor végi `<!-- olvasói -->` jellel zárul; a régi `**Mit mutat ez a rész?**` címke is elfogadott), és ha nincs, miért nem kell:
 - igehely-alcím (a 4. Kereszthivatkozások listája): a szakasz bevezetője fedi;
 - szótári alcím (`#####`, a Rokon szavak szava): a fölérendelt blokk bevezetője fedi;
 - a kézi próza alcíme: eleve olvasói szöveg, a rés bevezetője fedi;
@@ -25,6 +24,26 @@ import kiejtes_szoveg as KSZ  # noqa: E402
 IGEHELY = re.compile(r'^#### [1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][A-Za-záéíóöőúüű]{0,7} \d+:\d+')
 
 
+OLVASOI_JEL = '<!-- olvasói -->'
+
+
+def van_olvasoi(sorok, i):
+    """A címsor (`sorok[i]`) alatti első tartalmi bekezdés olvasói összefoglaló-e. A #605 (SABLON) óta a „Mit mutat ez
+    a rész?” címke nincs a lapon; az összefoglaló bekezdést a sor végi `<!-- olvasói -->` jel azonosítja (a jel a
+    bekezdés végén áll, ezért a bekezdés bármely sorában keressük). A régi címkés alak továbbra is elfogadott."""
+    kov = next((j for j in range(i + 1, min(i + 10, len(sorok))) if sorok[j].strip() and not sorok[j].startswith('<!--')), None)
+    if kov is None:
+        return False
+    if sorok[kov].startswith('**Mit mutat ez a rész?**'):
+        return True
+    j = kov
+    while j < len(sorok) and sorok[j].strip() and not sorok[j].startswith('#'):
+        if OLVASOI_JEL in sorok[j]:
+            return True
+        j += 1
+    return False
+
+
 def meres(ut):
     with open(ut, encoding='utf-8') as f:
         sorok = f.read().split('\n')
@@ -33,8 +52,7 @@ def meres(ut):
     for i, s in enumerate(sorok):
         if not re.match(r'#{2,5} ', s) or s.startswith('# '):
             continue
-        kov = next((x for x in sorok[i + 1:i + 10] if x.strip() and not x.startswith('<!--')), '')
-        if kov.startswith('**Mit mutat ez a rész?**'):
+        if van_olvasoi(sorok, i):
             ki.append((i + 1, s, 'van', ''))
             continue
         gen = reszek[i][0] or (i + 2 < len(sorok) and 'GENERÁLT' in ''.join(sorok[i + 1:i + 3]))

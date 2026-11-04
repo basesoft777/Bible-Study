@@ -1,0 +1,297 @@
+# F123 ALVIL-001 U2: a Károli-háló 295 más szavas eltérése lexémánként (naplok/F123_ALVIL2_u2b.py; DT564) | scope=naplok/F123_teljesseg_ALVIL-001.tsv karoli ELTÉRÉS (a Jób 28:22, 31:12 és a 2Pét 2:4 nélkül) × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=split('\t') | ts=2026-11-02
+blokk	igehely	karoli_szoalak
+tehom	1Móz 1:2	mélység
+tehom	1Móz 7:11	mélység
+tehom	1Móz 8:2	mélység
+tehom	1Móz 49:25	mélység
+tehom	2Móz 15:5	mélységbe
+tehom	2Móz 15:8	mélységes
+tehom	5Móz 33:13	mélységes
+tehom	Ez 26:19	mélység
+tehom	Ez 31:4	mélység
+tehom	Jel 9:1	mélység
+tehom	Jel 9:2	mélységnek
+tehom	Jel 9:11	mélység
+tehom	Jel 11:7	mélységből
+tehom	Jel 17:8	mélységből
+tehom	Jel 20:1	mélységnek
+tehom	Jel 20:3	mélységbe
+tehom	Jób 28:14	mélység
+tehom	Jób 38:16	mélységnek
+tehom	Luk 8:31	mélységbe
+tehom	Péld 3:20	mélységből
+tehom	Péld 8:24	mélységek
+tehom	Péld 8:27	mélységek
+tehom	Péld 8:28	mélységeknek
+tehom	Róm 10:7	mélységbe
+tehom	Zsolt 36:7	mélységek
+tehom	Zsolt 71:20	mélységéből
+tehom	Zsolt 77:17	mélységek
+tehom	Zsolt 78:15	mélységes
+tehom	Zsolt 106:9	mélységeken
+tehom	Zsolt 135:6	mélységben
+tehom	Ámós 7:4	mélységet
+tehom	Ézs 51:10	mélység
+tehom	Ézs 63:13	mélységekben
+verem	Ez 26:20	mélységek
+verem	Ez 31:14	mélység
+verem	Ez 32:18	sírj; mélységek
+verem	Ez 32:23	sírgödör; sírja
+verem	Ez 32:24	sírja; mélységek
+verem	Jób 17:13	sírnak
+verem	Jób 33:22	sírhoz
+verem	Jób 33:24	sírba
+verem	Jób 33:28	sírba
+verem	Jób 33:30	sírtól
+verem	Péld 28:17	sírig
+verem	Zsolt 28:1	sírba
+verem	Zsolt 30:10	sírba
+verem	Zsolt 88:5	sírba
+verem	Zsolt 88:7	sírba
+verem	Zsolt 103:4	koporsótól
+verem	Zsolt 143:7	sírba
+verem	Ézs 14:19	sírodtól
+temetkezes	1Kir 13:31	sírba
+temetkezes	1Kir 14:13	sírba
+temetkezes	1Móz 35:20	sírja
+temetkezes	1Móz 50:5	síromba
+temetkezes	1Sám 10:2	sírja
+temetkezes	2Kir 22:20	sírodba
+temetkezes	2Kir 23:16	sírokat; sírokból
+temetkezes	2Kir 23:17	síremlék; sírja
+temetkezes	2Krón 34:28	sírodba
+temetkezes	2Móz 14:11	sírok
+temetkezes	2Sám 3:32	síra; koporsója; síra
+temetkezes	4Móz 19:16	sírt
+temetkezes	4Móz 19:18	koporsót
+temetkezes	ApCsel 2:29	sírja
+temetkezes	ApCsel 7:16	sírba
+temetkezes	ApCsel 13:29	sírba
+temetkezes	Jel 11:9	sírba
+temetkezes	Jer 5:16	sír
+temetkezes	Jer 8:1	sírjaikból
+temetkezes	Jer 20:17	koporsóm
+temetkezes	Ján 5:28	koporsókban
+temetkezes	Ján 11:17	sírban
+temetkezes	Ján 11:31	sírhoz; sírjon
+temetkezes	Ján 11:38	sírhoz
+temetkezes	Ján 12:17	koporsóból
+temetkezes	Ján 19:41	sír
+temetkezes	Ján 19:42	sír
+temetkezes	Ján 20:1	sírhoz; sírról
+temetkezes	Ján 20:2	sírból
+temetkezes	Ján 20:3	sírhoz
+temetkezes	Ján 20:4	sírhoz
+temetkezes	Ján 20:6	sírba
+temetkezes	Ján 20:8	sírhoz
+temetkezes	Ján 20:11	sírnál; sírva; sírba
+temetkezes	Jób 3:22	koporsót
+temetkezes	Jób 5:26	koporsóba
+temetkezes	Jób 10:19	sírba
+temetkezes	Jób 16:22	sír
+temetkezes	Jób 21:32	sírba; sírdomb
+temetkezes	Luk 11:44	sírok
+temetkezes	Luk 11:48	sírjaikat
+temetkezes	Luk 23:55	sírt
+temetkezes	Luk 24:1	sírhoz
+temetkezes	Luk 24:2	sírról
+temetkezes	Luk 24:9	sírtól
+temetkezes	Luk 24:12	sírhoz
+temetkezes	Luk 24:22	sírnál
+temetkezes	Luk 24:24	sírhoz
+temetkezes	Mk 6:29	sírba
+temetkezes	Mk 15:46	sírbolt
+temetkezes	Mk 16:3	sírbolt
+temetkezes	Mt 23:27	sírokhoz
+temetkezes	Mt 23:29	síremlékeit
+temetkezes	Mt 27:52	sírok
+temetkezes	Mt 27:53	sírokból
+temetkezes	Mt 27:60	sír
+temetkezes	Mt 27:61	sír
+temetkezes	Mt 27:64	sírt
+temetkezes	Mt 27:66	sírt
+temetkezes	Mt 28:1	sírt
+temetkezes	Mt 28:8	sírtól
+temetkezes	Náh 1:14	sírodat
+temetkezes	Róm 3:13	sír
+temetkezes	Zsolt 5:10	sír
+temetkezes	Ézs 14:20	sírban
+temetkezes	Ézs 22:16	sírt
+temetkezes	Ézs 53:9	sírt
+temetkezes	Ézs 65:4	sírokhoz
+siras	1Kor 7:30	sírnak; sírnának
+siras	1Móz 21:16	síra
+siras	1Móz 27:38	sír
+siras	1Móz 29:11	síra
+siras	1Móz 33:4	sírának
+siras	1Móz 42:24	síra
+siras	1Móz 43:30	sírás; síra
+siras	1Móz 45:14	síra; síra
+siras	1Móz 45:15	síra
+siras	1Móz 46:29	síra
+siras	1Móz 50:10	sírással; sírának
+siras	1Móz 50:17	sír
+siras	1Sám 1:7	sír
+siras	1Sám 1:8	sírsz
+siras	1Sám 1:10	sír
+siras	1Sám 11:4	sírának
+siras	1Sám 11:5	sírnak
+siras	1Sám 20:41	sírtak
+siras	1Sám 24:17	síra
+siras	1Sám 30:4	sírának
+siras	2Kir 8:11	sírni
+siras	2Kir 8:12	sír
+siras	2Kir 13:14	sírt
+siras	2Kir 20:3	sírt; sírással
+siras	2Kir 22:19	sírtál
+siras	2Krón 34:27	sírtál
+siras	2Móz 2:6	síró
+siras	2Sám 1:12	sírának
+siras	2Sám 3:16	sírva
+siras	2Sám 3:31	sírjatok; koporsó
+siras	2Sám 12:21	sírtál
+siras	2Sám 12:22	sírtam
+siras	2Sám 13:36	sírának; sírának
+siras	2Sám 15:23	sír
+siras	2Sám 15:30	sírva; sírának
+siras	2Sám 18:33	síra
+siras	4Móz 11:4	síránkozni
+siras	4Móz 11:10	sír
+siras	4Móz 11:13	sírnak
+siras	4Móz 14:1	síra
+siras	4Móz 25:6	sírnak
+siras	5Móz 1:45	sírátok
+siras	ApCsel 9:39	sírva
+siras	ApCsel 21:13	sírván
+siras	Bír 2:4	síra
+siras	Bír 11:37	sírjak
+siras	Bír 14:16	sírt
+siras	Bír 14:17	sírdogált
+siras	Bír 20:23	sírtak
+siras	Bír 20:26	sírtak
+siras	Bír 21:2	sírással; sírt
+siras	Eszt 8:3	sírt
+siras	Ez 24:16	sírj
+siras	Ez 24:23	sírtok
+siras	Ez 27:31	sírnak; sírással
+siras	Ezsd 3:12	sírnak
+siras	Ezsd 10:1	sírva; síra
+siras	Fil 3:18	sírva
+siras	Hós 12:4	sírt
+siras	Jak 4:9	sírjatok
+siras	Jak 5:1	sírjatok
+siras	Jel 5:4	sírok
+siras	Jel 5:5	sírj
+siras	Jel 18:15	sírván
+siras	Jel 18:19	sírván
+siras	Jer 4:8	sírjatok
+siras	Jer 6:26	sírj
+siras	Jer 12:11	sír
+siras	Jer 13:17	sírni
+siras	Jer 16:5	sírni
+siras	Jer 31:15	sírás
+siras	Jer 41:6	sírván
+siras	Jer 49:3	sírjatok
+siras	Jer 50:4	sírva
+siras	Ján 11:33	sír; sírnak
+siras	Ján 16:20	sírtok
+siras	Ján 20:13	sírsz
+siras	Ján 20:15	sírsz
+siras	Jób 30:25	sírtam
+siras	Jóel 1:5	sírjatok
+siras	Jóel 1:13	sírjatok
+siras	Jóel 2:12	sírással
+siras	Jóel 2:17	sírjanak
+siras	Luk 6:21	sírtok
+siras	Luk 6:25	sírni
+siras	Luk 7:13	sírj
+siras	Luk 7:38	sírva
+siras	Luk 8:52	Sírának; sírjatok
+siras	Luk 13:28	sírás
+siras	Luk 19:41	síra
+siras	Luk 22:62	síra
+siras	Luk 23:28	sírjatok; sírjatok
+siras	Mal 2:13	sírással
+siras	Mik 1:10	sírván; sírjatok
+siras	Mk 5:38	síránkozót
+siras	Mk 5:39	sírtok
+siras	Mk 14:72	sírva
+siras	Mk 16:10	sírnak
+siras	Mt 2:18	Sírás
+siras	Mt 5:4	sírnak
+siras	Mt 8:12	sírás
+siras	Mt 13:42	sírás
+siras	Mt 13:50	sírás
+siras	Mt 22:13	sírás
+siras	Mt 24:51	sírás
+siras	Mt 25:30	sírás
+siras	Mt 26:75	síra
+siras	Neh 1:4	sírtam
+siras	Neh 8:9	sírjatok; sír
+siras	Préd 12:7	sírók
+siras	Ruth 1:9	sírának
+siras	Ruth 1:14	sírának
+siras	Róm 12:15	sírjatok; sírókkal
+siras	Sir 1:2	Sírván; sír
+siras	Sir 1:16	sírok
+siras	Sir 2:18	síró
+siras	Zak 7:3	Sírjak
+siras	Zak 12:12	sír
+siras	Zsolt 69:11	sírok
+siras	Zsolt 126:6	sírva
+siras	Zsolt 137:1	sírtunk
+siras	Ámós 5:16	sírni
+siras	Ézs 3:27	sírnak
+siras	Ézs 15:2	sírni
+siras	Ézs 15:5	sírással
+siras	Ézs 22:4	sírással
+siras	Ézs 30:19	sírni
+siras	Ézs 33:7	sírnak
+siras	Ézs 33:9	Sírt
+siras	Ézs 38:3	sírt
+egyeb	1Kor 2:10	mélységeit
+egyeb	1Móz 50:26	koporsóba
+egyeb	2Kor 11:25	mélységben
+egyeb	2Sám 1:17	síra; sírással
+egyeb	2Sám 22:17	mélységes
+egyeb	Ef 3:18	mélysége
+egyeb	Ez 6:3	mélységeknek
+egyeb	Ez 27:34	mélységébe
+egyeb	Ez 31:12	mélységében
+egyeb	Ez 31:18	mélység
+egyeb	Ez 32:6	mélységek
+egyeb	Ez 32:16	sírva; sírva; sírva
+egyeb	Ez 34:13	mélységekben
+egyeb	Ez 35:8	mélységed
+egyeb	Ez 36:4	mélységeknek
+egyeb	Ez 36:6	mélységeknek
+egyeb	Jel 2:24	mélységeit
+egyeb	Jób 6:27	sírt
+egyeb	Jób 11:7	mélységét
+egyeb	Jób 12:22	mélységes
+egyeb	Jób 16:20	sír
+egyeb	Jób 21:33	sírnak
+egyeb	Jób 40:8	mélységes
+egyeb	Jón 2:4	mélységbe
+egyeb	Luk 7:14	koporsót
+egyeb	Mik 2:4	sírnak
+egyeb	Mik 7:19	mélységébe
+egyeb	Mk 7:26	síro
+egyeb	Mt 18:6	mélységébe
+egyeb	Mt 24:30	sír
+egyeb	Mt 28:2	sír
+egyeb	Neh 9:11	mélységbe
+egyeb	Préd 7:24	mélységes
+egyeb	Péld 25:3	mélységre
+egyeb	Róm 8:38	mélység
+egyeb	Róm 11:33	mélysége
+egyeb	Zsolt 63:10	mélységeibe
+egyeb	Zsolt 68:23	mélységéből
+egyeb	Zsolt 95:4	mélységei
+egyeb	Zsolt 107:24	mélységben
+egyeb	Zsolt 119:28	Sír
+egyeb	Zsolt 130:1	mélységből
+egyeb	Ámós 5:1	síródalként
+egyeb	Ézs 16:11	sír
+egyeb	Ézs 44:23	mélységei
+egyeb	Ézs 44:27	mélységnek

@@ -54,9 +54,11 @@ def main():
     a = ap.parse_args()
     R = a.repo
     FEL = feladatok_sorok(olvas(os.path.join(R, 'FELADATOK.md')))
-    DT = tabla_sorok(olvas(os.path.join(R, 'DONTESEK.md')), r'DT-?[A-Z]?\d+[a-z]?|D\d+')
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import dontes_nezet as DN   # egyesitett nezet: dontesek/uj, nyitott/uj
+    DT = tabla_sorok(DN.dontesek_szoveg(R) or '', r'DT-?[A-Z]?\d+[a-z]?|D\d+')
     DFEL = tabla_sorok(olvas(os.path.join(R, 'FELADATOK.md')), r'D\d+')   # D34–D41 a FELADATOK-ban
-    NY = nyitott_tetelek(olvas(os.path.join(R, 'NYITOTT_FELADATOK.md')))
+    NY = nyitott_tetelek(DN.nyitott_szoveg(R) or '')
     SEMA = sema_szakaszok(olvas(os.path.join(R, 'adat', 'SEMA.md')))
     briefek = {f.split('_', 1)[0]: f for f in os.listdir(R) if re.match(r'F\d{2,}_.*BRIEF\.md$', f)}
     terv = olvas(a.terv)

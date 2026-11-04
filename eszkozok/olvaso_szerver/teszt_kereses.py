@@ -357,11 +357,24 @@ class TestKeresesLap(unittest.TestCase):
         self.assertFalse(set(talalat_igehelyek(h)) & set(talalat_igehelyek(h2)))
 
     def test_szotoken_nelkuli_konyvek_jelzese(self):
+        # A „Nem keresett könyvek” jelzés a Károli–Strong párosítás nélküli könyveket nevezi meg. Az F22 óta (Mt, Mk, Luk, Ján, ApCsel, Róm,
+        # 1Kor, Jel … egyesítve) mind a 66 könyv párosított, ezért a jelzés ma nem jelenhet meg; ha egy könyv újra párosítás nélkül maradna,
+        # a régi elvárás él: a névsor a lapon áll, és a Strong-keresés kiemelés nélkül is talál.
+        con = sqlite3.connect('file:%s?mode=ro' % DB.replace('\\', '/'), uri=True)
+        try:
+            konyvek = {slug for _, slug, _, _ in q.konyvek(con)}
+            parositott = set(q.karoli_strong_konyvek(con))
+        finally:
+            con.close()
+        nelkuli = sorted(konyvek - parositott)
         h = self.get('/kereses?szo=ige').get_data(as_text=True)
-        self.assertIn('Nem keresett könyvek', h)
-        for kk in ('Mt', 'Ján', 'Jel'):
-            self.assertIn(kk, h)
         g = self.get('/kereses?strong=G3056').get_data(as_text=True)
+        if not nelkuli:
+            self.assertNotIn('Nem keresett könyvek', h)
+            self.assertNotIn('szótoken nélkül: kiemelés nincs', g)
+            self.assertIn('Mt 5:37', talalat_igehelyek(g))                            # a Strong-keresés az ÚSZ-ben ma párosítással talál
+            return
+        self.assertIn('Nem keresett könyvek', h)
         self.assertIn('Mt 5:37', talalat_igehelyek(g))                                # a Strong-keresés a párosítatlan könyvekben is talál,
         self.assertIn('szótoken nélkül: kiemelés nincs', g)                            # de kiemelés nélkül, és ezt kiírja
 
