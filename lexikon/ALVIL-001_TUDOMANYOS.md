@@ -51,6 +51,13 @@ A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap eg
 - **Drash** — normatív, következtető, alkalmazó.
 - **Sod** — fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül.
 
+A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagyarázat négyes sémájának kategóriáival mondja
+meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem
+kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A
+besorolást e munka adja, saját szabályai szerint; hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,
+azt a Tanítói egyezés dokumentálja, ahol van. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
+a szint (részletesen: [A PaRDeS-szint mint recepciós címke](../kozlemeny/PARDES_RECEPCIOS_KERET.md)).
+
 **Funkció:** a vers szerepe a motívum ívében — az `adat/SEMA.md` szerint
 szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum
 saját study-jából átvett megnevezéssel szerepel.
@@ -1707,7 +1714,8 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - Cím: Hádész (Seol) — a halottak birodalma
 - Státusz: publikálható (`v3`, 2026.11.03)
 - Generálva: 2026-11-04
-- Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
+- Hely: `<KANONIKUS_FORRAS_URL>`
+- Idézési forma: a Kolofon „Hogyan idézd” bekezdése
 
 **Felhasznált szótárak:**
 - BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
@@ -1758,13 +1766,19 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/kozel_keleti_hatar.tsv, adat/lap_atnezesek.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
-**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált.
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
+
+**Hogyan idézd.** A lap szövegét a szócikkek mint mű részeként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: TERMÉKNÉV] — szócikkek*, „Hádész (Seol) — a halottak birodalma” (`ALVIL-001`), 2. kiadás (2026.11.04), `<KANONIKUS_FORRAS_URL>`; minden jog fenntartva. Az adatokat (motívum, előfordulások, kizárt helyek, döntések) a nyílt adatmagként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: TERMÉKNÉV] — nyílt adatmag*, adatkészlet, CC BY 4.0 (a nyílt kiadással), DOI: `<DOI>`. A két idézési egységet a [`CITATION.cff`](../CITATION.cff) írja le.
+
+**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti hihetőséget nem), [A módszer Hays hét kritériumának tükrében](../kozlemeny/HAYS_LEKEPEZES.md) mutatja be.
+
+**Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet ([Az ókori közel-keleti háttér határa](../kozlemeny/KOZEL_KELETI_HATAR.md)). Ennél a motívumnál a nemzetközi szakirodalom a közel-keleti, főként ugariti anyag bevonását is várja; ez a lap ilyen összevetést nem végez.
 
 | Mező | Érték |
 |---|---|
@@ -1788,7 +1802,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után három gépi forrásadat-javítás a szótári részben (Seól átírás, De (5:14), Ef). |
-| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. Az 1/b. blokk összesítője verseket számol, nem táblasort (326 vers, ebből 295 öt összesítő sorban). |
+| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. Az 1/b. blokk összesítője verseket számol, nem táblasort (326 vers, ebből 295 öt összesítő sorban). 2026.11.04: generált kiegészítés, a próza nem változott: a Kolofonba az MI-nyilatkozatra mutató hivatkozás, a „Hogyan idézd” bekezdés, a módszertani elvek (Hays-leképezés) és a hatókör (ókori közel-keleti határ), a Jelmagyarázatba a PaRDeS-szint recepciós keretezése került; a 8. blokkból kimaradt a GitHub-cím. |
 
 ---
 
