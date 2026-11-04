@@ -1896,7 +1896,7 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
-Kulcs: `id` + `lap_commit`. Állapot (2026-11-02): 0 sor.
+Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 7 sor — ALVIL-001 4, ANTROP-001 3.
 
 ---
 
