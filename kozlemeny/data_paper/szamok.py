@@ -86,6 +86,18 @@ def main():
     for k, v in sorted(Counter(e['pardes_szint'] or '(üres)' for e in elo).items()):
         ki('P2.pardes_szint', f'{k}={v}', 'nyilt_mag/elofordulasok.tsv, pardes_szint')
 
+    for k, v in sorted(Counter(e['megbizhatosag'] or '(üres)' for e in elo).items()):
+        ki('P2.megbizhatosag', f'{k}={v}', 'nyilt_mag/elofordulasok.tsv, megbizhatosag')
+    ki('P2.karoli_szo_kitoltve', sum(1 for e in elo if e['karoli_szo'].strip()),
+       'nyilt_mag/elofordulasok.tsv, karoli_szo nem üres')
+
+    # P9 — a magyar olvasói réteg: a seól/hádész Károli-fordításai (ALVIL-001)
+    alvil = [e for e in elo if e['motivum_azonosito'] == 'ALVIL-001']
+    for tő in ('sír', 'koporsó', 'pokol', 'seol', 'mélység', 'alvilág'):
+        n = sum(1 for e in alvil if tő in e['karoli_szo'].lower())
+        ki('P9.alvil_karoli', f'{tő}={n}',
+           'nyilt_mag/elofordulasok.tsv, ALVIL-001, karoli_szo kisbetűs részszöveg-egyezés')
+
     # P3 — kizárások
     kiz = tabla(os.path.join(MAG, 'kizarasok.tsv'))
     csop = tabla(os.path.join(MAG, 'kizaras_csoportok.tsv'))

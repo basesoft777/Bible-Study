@@ -151,6 +151,12 @@ A *Journal of Data Mining and Digital Humanities* (az összevetés első helye) 
 4. **Ami kimarad vagy rövidül.** A CRediT-sor, az APC-ügy és a *Repository location* külön szakasza; az MI-nyilatkozat és az összeférhetetlenség a folyóirat saját formájában marad.
 5. **Ami nem változik.** A számok és a „Number provenance” melléklet; a két rögzített elv (nincs GitHub-URL; csak a nyílt adatmag, a termékréteg legfeljebb egy mondat); a korlátok kimondása.
 
+## Jegyzet: kettős közlés
+
+Készül egy magyar kézirat is (`kezirat_hu.md`, Digitális Bölcsészet, „Labor” rovat). Ugyanaz a mű nem lehet egyszerre két folyóiratnál elbírálás alatt (a JDMDH és az RDJ beküldési feltétele ki is mondja). A két kézirat ezért csak eltérő hangsúllyal és kölcsönös hivatkozással két külön mű: az angol az adatkészletet írja le, a magyar a módszer kizárási eszközeit és a magyar olvasói réteget (a Károli-szót). A számok egy része szükségszerűen közös. Ha a szerkesztőség átfedésnek tekinti, a második közlés csak másodközlésként, mindkét folyóirat tudtával, az elsőre hivatkozva lehetséges.
+
+**Javasolt sorrend** (a döntés a felhasználóé): (1) a nyílt mag letétele (DOI); (2) az angol data paper beküldése a fő csatornára; (3) a magyar kézirat beküldése az angol elfogadása után, a kísérőlevélben a két közlés viszonyát kimondva. Párhuzamos beküldés csak mindkét szerkesztőség előzetes hozzájárulásával. Ha a magyar jelenik meg előbb, az angol Context szakasza egy mondattal hivatkozik rá (`<MAGYAR_KOZLEMENY_HIVATKOZAS>`).
+
 ## Kitöltendő helyőrzők (a szerző)
 
 | Helyőrző | Mi kell |
@@ -167,6 +173,7 @@ A *Journal of Data Mining and Digital Humanities* (az összevetés első helye) 
 | `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>` | a fizetős termék és a nyílt adat viszonyának végleges megfogalmazása |
 | `<TAMOGATO>` | finanszírozó és támogatási szám, vagy „This research received no external funding.” |
 | `<KOSZONET>` | köszönetnyilvánítás, vagy a szakasz törlése |
+| `<MAGYAR_KOZLEMENY_HIVATKOZAS>` | csak ha a magyar közlemény jelenik meg előbb (l. a kettős közlés jegyzetét) |
 
 ## Nyitott kérdések
 

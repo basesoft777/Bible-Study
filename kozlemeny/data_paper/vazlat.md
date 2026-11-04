@@ -1,6 +1,6 @@
 # Data paper — váz (F167.1)
 
-*Állapot: váz és minta-mondatok. 2026-11-04. A követelmények forrása: `folyoirat_kovetelmenyek.md`. A kézirat angolul elkészült (F167.2): `kezirat_en.md`, a számai a `szamok.py` kimenetéből; a lenti „Hiányzik” sorok közül az F162 és az F163 azóta a main-en van, a kitöltendő helyőrzők és a nyitott kérdések listája a kézirat végén áll.*
+*Állapot: váz és minta-mondatok. 2026-11-04. A követelmények forrása: `folyoirat_kovetelmenyek.md`. A kézirat angolul (`kezirat_en.md`) és magyarul, eltérő hangsúllyal (`kezirat_hu.md`, Digitális Bölcsészet „Labor”) elkészült (F167.2, F167.3), a számai a `szamok.py` kimenetéből; a lenti „Hiányzik” sorok közül az F162 és az F163 azóta a main-en van, a kitöltendő helyőrzők és a nyitott kérdések listája a kézirat végén áll.*
 
 ## 0. Választott folyóirat és indok
 
