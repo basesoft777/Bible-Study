@@ -473,7 +473,7 @@ OLVASOI_SABLON = {
 # (a kézi próza) változatlan.
 OLVASOI_RES = {
     'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.',
-    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.',
+    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok.',  # DT-F174a: adat nélkül a rés nem áll a lapon
     'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.',
     'minosites': 'Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a '
                  'Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze '
@@ -4724,7 +4724,8 @@ def res_torzs(m, res, sor, sorai=None):
     A `sorai` a motívum előfordulás-sorai; None esetén az elofordulasok.tsv-ből."""
     forras = sor['forras']
     if forras == 'tanulmany':
-        return res_tanulmany_torzs(sor['tanulmany'], res)
+        torzs = res_tanulmany_torzs(sor['tanulmany'], res)
+        return '' if res_ures_e(res, torzs) else torzs
     if forras == 'adat':
         mondat = sor.get('tanulmany')
         if mondat:
@@ -4733,10 +4734,13 @@ def res_torzs(m, res, sor, sorai=None):
             raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
         if sorai is None:
             sorai = _elofordulas_sorai(m['id'])
+        torzs = ADAT_RES_RENDEREK[res](m['id'], sorai)
+        if res_ures_e(res, torzs):
+            return ''
         # a kiejtés-szabály már itt (a rés saját `###` szakasz): így a lap rése és a táblából elvárt rés azonos
         # (ellenoriz.py 11. szabály); a lap utófeldolgozása (kiejtes_potol) itt már nem talál pótolnivalót
         import kiejtes_szoveg as KSZ
-        return KSZ.potol(adatres_keret(m['id'], res, ADAT_RES_RENDEREK[res](m['id'], sorai)))[0]
+        return KSZ.potol(adatres_keret(m['id'], res, torzs))[0]
     raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
 
 
@@ -4751,6 +4755,42 @@ def res_torzs(m, res, sor, sorai=None):
 # szerepmátrix (2.S) ezeket nem rendereli, a 2b rés igen (sablon 9 5. pont).
 KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
 SECE_SZOTARAK = ('SECE_G', 'SECE_H')
+
+# DT-F174a (2026-11-04): az adat nélküli szerkezeti blokk nem áll az olvasói lapon. Az opcionális rés csak akkor
+# jelenik meg (fejléc, olvasói bevezető, törzs, proveniencia-sor), ha van tartalma: adatból generált résnél a
+# renderelő sort talált, tanulmányból vett résnél a törzs nem a RENDER G15 mechanikus helyőrzője. A rés a sémában és a
+# `res_forras.tsv`-ben megmarad: ha egyszer lesz MCGED-sor vagy kézi 2/b, magától megjelenik. A kutatási üres
+# eredmény (pl. „üres blokk: javaslat” a szerepmátrixban, a Minősítés „nincs” mondatai) nem ilyen, az a lapon marad.
+OPCIONALIS_RESEK = ('2b',)
+# a rés hiánymondatai: a RENDER G15 helyőrzője a tanulmányokban (nem kutatási lelet, hanem a jelölőpár kitöltése), és
+# a 2026-11-04 előtti generátor hiánymondata (az ellenoriz.py 31. szabálya a régi lapon is felismeri)
+SZERKEZETI_HELYORZOK = {'2b': ('Nincs kiegészítő szótári adat.',
+                               '*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
+                               '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')}
+_GENERALT_RES_JELOLO_RE = re.compile(r'^<!-- GENERÁLT-RÉS: [^\n]*-->$', re.M)
+_RES_PROV_SOR_RE = re.compile(r'^\*Proveniencia: `scope=[^`]*`\*$', re.M)
+
+
+def res_ures_e(res, torzs):
+    """Igaz, ha az opcionális rés törzse adat nélküli szerkezeti blokk: üres, vagy -- a GENERÁLT-RÉS jelölő és a
+    proveniencia-sor nélkül -- csak a hiánymondata (SZERKEZETI_HELYORZOK)."""
+    if res not in OPCIONALIS_RESEK:
+        return False
+    t = _RES_PROV_SOR_RE.sub('', _GENERALT_RES_JELOLO_RE.sub('', torzs or '')).strip()
+    return not t or t in SZERKEZETI_HELYORZOK.get(res, ())
+
+
+def lap_ures_szerkezeti_resek(fajl_szoveg, m):
+    """A lapon álló, adat nélküli opcionális rések (ellenoriz.py 31. szabály)."""
+    talalt = []
+    for res in OPCIONALIS_RESEK:
+        if (m['id'], res) not in res_forras_sorok():
+            continue
+        if _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
+            continue
+        if res_ures_e(res, res_torzs_lapbol(fajl_szoveg, m, res)):
+            talalt.append(res)
+    return talalt
 
 ALATAMASZTAS_NINCS_KAPCSOLAT = 'A motívumhoz nincs rögzített kapcsolat.'
 JELOLT_KERESZTHIV_ELOTAGOK = ('TSK', 'Károli-KH')
@@ -4812,9 +4852,8 @@ def adatres_2b(tokenek, hiv_sorok):
                  and r['szotar'] not in SECE_SZOTARAK]
         sorok_ehhez += sorted(sajat, key=lambda r: (r['szotar'], r['jelentes_szam']))
     if not sorok_ehhez:
-        return ('*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
-                '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')
-    out = ['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon (res_ures_e, OPCIONALIS_RESEK)
+    out =['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
            '(%s).*' % ', '.join(x for x in KIEGESZITO_SZOTARAK if x not in SECE_SZOTARAK)]
     for r in sorok_ehhez:
         bek = ['**%s %s — %s**' % (r['szotar'], r['strong'], _jsz_cimke(r['jelentes_szam'])),
@@ -4990,6 +5029,8 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
     HIBAKÓD, ha egy sor hiányzik a táblából (R1.3)."""
     sorok = res_forras_sorok()
     fajl_szoveg = szakasz_6b_beszur(fajl_szoveg, m)
+    fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
+    uresek = []
     for res in RES_SORREND:
         sor = sorok.get((m['id'], res))
         if sor is None:
@@ -5015,12 +5056,59 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
         span_start = offsets[slot_idx]
         span_end = offsets[slot_idx + 1]
         torzs = res_torzs(m, res, sor)
+        if res in OPCIONALIS_RESEK and not torzs:
+            # DT-F174a: a fejléc a többi rés határkereséséig marad, utána kikerül (opcionalis_resek_torol)
+            uresek.append(res)
+            fajl_szoveg = fajl_szoveg[:span_start] + fejlec + '\n\n' + fajl_szoveg[span_end:]
+            continue
         # ISTENTISZT-001 arany lap, 2026-10-29: a rés olvasói bevezetője a generátorból (a kézi próza változatlan; res_torzs_lapbol leválasztja)
         olv = OLVASOI_RES.get(res)
         if res == 'minosites' and m['id'] in MINOSITES_STAT:
             olv = OK.minosites(*MINOSITES_STAT[m['id']], osszes=KERESZT_OSSZES.get(m['id'])) or olv
         uj_span = fejlec + '\n\n' + (olvasoi_bekezdes(olv) + '\n\n' if olv else '') + torzs + '\n\n'
         fajl_szoveg = fajl_szoveg[:span_start] + uj_span + fajl_szoveg[span_end:]
+    return opcionalis_resek_torol(fajl_szoveg, m, uresek)
+
+
+def _opcionalis_res_helye(fajl_szoveg, m, res):
+    """(a rés fejlécének indexe vagy None, a következő határ indexe) -- az előző határ után keresve."""
+    sorok = res_forras_sorok()
+    slot_idx = _BOUNDARY_SLOTS.index(('res', res))
+
+    def keres(slot, honnan):
+        kind, ertek = slot
+        if kind == 'lit':
+            return _boundary_index(fajl_szoveg, ertek, honnan, None)
+        return _boundary_index(fajl_szoveg, sorok[(m['id'], ertek)]['fejlec'], honnan, ertek)
+
+    e_i, e_talalt = keres(_BOUNDARY_SLOTS[slot_idx - 1], 0)
+    k_i, _ = keres(_BOUNDARY_SLOTS[slot_idx + 1], e_i + len(e_talalt))
+    try:
+        r_i, _ = keres(('res', res), e_i + len(e_talalt))
+    except ValueError:
+        return None, k_i
+    return (r_i if r_i < k_i else None), k_i
+
+
+def opcionalis_res_visszaallit(fajl_szoveg, m):
+    """DT-F174a: az adat nélkül kihagyott opcionális rés (OPCIONALIS_RESEK) fejlécét a határkereséshez
+    visszateszi a helyére (a következő határ elé); ha a rés a lapon áll, a szöveg változatlan."""
+    for res in OPCIONALIS_RESEK:
+        sor = res_forras_sorok().get((m['id'], res))
+        if sor is None:
+            continue
+        r_i, k_i = _opcionalis_res_helye(fajl_szoveg, m, res)
+        if r_i is None:
+            fajl_szoveg = fajl_szoveg[:k_i] + sor['fejlec'] + '\n\n' + fajl_szoveg[k_i:]
+    return fajl_szoveg
+
+
+def opcionalis_resek_torol(fajl_szoveg, m, uresek):
+    """DT-F174a: az üres opcionális rések fejléc+törzs span-je kikerül a lapról."""
+    for res in uresek:
+        r_i, k_i = _opcionalis_res_helye(fajl_szoveg, m, res)
+        if r_i is not None:
+            fajl_szoveg = fajl_szoveg[:r_i] + fajl_szoveg[k_i:]
     return fajl_szoveg
 
 
@@ -5091,6 +5179,9 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     l. res_torzs()); a törzscikk-generátor (R1.7) ezzel olvassa vissza,
     amit a res_blokkok_alkalmaz() a lexikonoldalon változatlanul hagyott."""
     sorok = res_forras_sorok()
+    if res in OPCIONALIS_RESEK and _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon
+    fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
     offsets = []
     search_from = 0
     for kind, ertek in _BOUNDARY_SLOTS:

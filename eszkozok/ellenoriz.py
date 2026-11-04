@@ -740,6 +740,10 @@ def szabaly11_res_forras_egyezes(adat_dir):
             hibas.append('%s / %s -- hiba: %s' % (motivum_id, res, exc))
             continue
         if not res_egyezik(elvart, tenyleges):
+            if not elvart and LG.res_ures_e(res, tenyleges):
+                # DT-F174a: az adat nélküli opcionális rés még a lapon áll -- a 31. szabály esete (a migrált
+                # lapon SÉRTÉS, a régi sablonún JELENTÉS), itt nem kétszer
+                continue
             hibas.append('%s / %s -- eltér a tábla + tanulmány szerint elvárttól' % (motivum_id, res))
     if hibas:
         return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
@@ -1748,6 +1752,52 @@ def szabaly28_kizart_egyeb(adat_dir):
                            'majd újragenerálás' if hibak else None))
 
 
+# 31. szabaly (DT-F174a, 2026-11-04): adat nelkuli szerkezeti blokk nem allhat olvasoi lapon. A 2/b. „Kiegeszito
+# szotari adatok” res 9 lapbol 8-on csak hianymondatot hordozott (a SECE a 2. szakaszban all, MCGED-sor nincs): ez
+# nem kutatasi hiany, hanem adat nelkuli szerkezeti blokk. A generator (`lexikon_general.OPCIONALIS_RESEK`) ilyenkor a
+# rest kihagyja; a szabaly azt orzi, hogy ilyen blokk ne maradjon a lapon. Gatol a migralt lapon (E28-lista: a lapot
+# a mai generator tartja karban); a regi sablonu, nem migralt lapon JELENTES, mert azt a DT507 (a) szerint nem
+# generaljuk ujra a regi forrasretegbol -- a #123 migracioja utan a generator a blokkot magatol elhagyja.
+
+
+def szabaly31_ures_szerkezeti_blokk(adat_dir):
+    """SERTES, ha egy generalt lexikonlapon (`*_TUDOMANYOS.md`) opcionalis res (`lexikon_general.OPCIONALIS_RESEK`)
+    adat nelkul all: a torzse a GENERALT-RES jelolon es a proveniencia-soron kivul csak a hianymondata. A kutatasi
+    ures eredmeny NEM ilyen, es a szabaly nem erinti: a szerepmatrix „üres blokk: javaslat” cellaja, a Minosites
+    „nincs” mondatai, az ures `domen`-eredmeny es a tobbi lekerdezes kimondott ures kimenete a lapon marad (CLAUDE.md
+    3. szabaly: az ures eredmeny elfogadhato es explicit jelolendo). A nem migralt (regi sablonu) lapon a talalat
+    JELENTES (DT507 (a): ezek a lapok a #123 migraciojaig nem generalodnak ujra)."""
+    cim = '31. Adat nélküli szerkezeti blokk az olvasói lapon (DT-F174a)'
+    lex_dir = os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    import lexikon_general as LG
+    import torzscikk_general as TG
+    migralt = TG.migralt_idk(os.path.dirname(os.path.abspath(adat_dir)))
+    hibak, jelentes = [], []
+    for nev in sorted(os.listdir(lex_dir)):
+        if not nev.endswith('_TUDOMANYOS.md'):
+            continue
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            szoveg = f.read().replace('\r\n', '\n')
+        motivum_id = nev[:-len('_TUDOMANYOS.md')]
+        cel = hibak if motivum_id in migralt else jelentes
+        try:
+            uresek = LG.lap_ures_szerkezeti_resek(szoveg, {'id': motivum_id})
+        except (KeyError, ValueError) as exc:
+            cel.append('%s: a rés-határ nem olvasható (%s)' % (nev, exc))
+            continue
+        for res in uresek:
+            cel.append('%s: a(z) %s rés csak hiánymondatot hordoz%s'
+                       % (nev, res, '' if cel is hibak else ' (nem migrált lap, DT507: a #123 migrációja javítja)'))
+    megj = ('a kutatási üres eredmény (pl. „üres blokk: javaslat” a szerepmátrixban) nem ilyen blokk, '
+            'a lapon marad')
+    if hibak:
+        megj = 'javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir); ' + megj
+    return Sor(cim, _verdikt(hibak, jelentes), (len(hibak) or len(jelentes)) or None, hibak or jelentes,
+               megjegyzes=megj)
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1813,6 +1863,7 @@ def main():
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
         tabla_sorok.append(szabaly28_kizart_egyeb(args.adat))
+        tabla_sorok.append(szabaly31_ures_szerkezeti_blokk(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
