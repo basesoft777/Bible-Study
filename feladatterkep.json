@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "e51d3cdc"
+   "commit": "f8d40e83"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 14
+   "db": 18
   }
  ],
  "sor": [],
@@ -931,8 +931,8 @@
    "cim": "Tudományos megfelelőség — olcsó lépések (MI-nyilatkozat, Hays-leképezés, PaRDeS-keretezés, közel-keleti határ, CITATION.cff)",
    "fazis": "folyamat",
    "allapot": "stop",
-   "brief_allapot": "nem_indult",
-   "most": "Te: /kovetkezo (Opus-session; az értelmező szövegeknél modell-ellenőrzés kötelező)",
+   "brief_allapot": "dontesre_var",
+   "most": "Te: ⛔ DT605 (szerzői felelősségvállalás, szerző neve) és DT606 (terméknév) — a helyőrzők kitöltése; a négy kozlemeny/ szöveg és a CITATION.cff kész (F163.1–F163.5, 2026-11-04); DT607–d az orkesztrátor jóváhagyására",
    "fugg": "#74*, #123*, #125*",
    "tervezett": false,
    "reszletes": "",
@@ -1251,6 +1251,46 @@
      "🟡"
     ],
     "sor": 466
+   },
+   {
+    "id": "DT605",
+    "feladat": "F163.1, F163.5 (a szerzői felelősségvállalás és a szerző neve a nyilvános szövegben; 2026-11-04)",
+    "kerdes": "Az MI-nyilatkozat „Szerzőség és felelősség” szakasza és a `CITATION.cff` `authors` mezője a szerző nevében állít: ki a szerző és kiadó, és hogy a modell írta szövegért ő felel. Ezt session nem írhatja a felhasználó helyett.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 645
+   },
+   {
+    "id": "DT606",
+    "feladat": "F163.1, F163.5 (a termék neve: „lexikon” vagy „motívum-adatbázis szócikkekkel”; 2026-11-04)",
+    "kerdes": "A 2026-10-27-i kutatás szerint nevesített külső szerkesztőbizottság nélkül a „lexikon” referenciamű-igényt jelez, amelyet a munka ma nem teljesít; a nyilvános szövegek és a `CITATION.cff` címe nevet kíván.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 646
+   },
+   {
+    "id": "DT607",
+    "feladat": "F163.3 (a PaRDeS-szint keretezésének pontosítása; 2026-11-04)",
+    "kerdes": "A brief „így olvasta a hagyomány” keretezést kért. A szintet azonban a munka saját szabályai szerint adja; egy konkrét helyre nem dokumentálja, hogy a hagyomány ténylegesen így olvasta. A szó szerinti „így olvasta a hagyomány” így a helyek többségén alátámasztatlan állítás volna (CLAUDE.md 3. szabály).",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 647
+   },
+   {
+    "id": "DT608",
+    "feladat": "F163.5, F163.7 (a `CITATION.cff` szerkezete és kimaradó mezői; 2026-11-04)",
+    "kerdes": "A felhasználó kiegészítése (az orkesztrátoron át, 2026-11-04): „nem a GitHub marad a forrás”, és „az adatréteg és a termékréteg szétválik a kutatás szerint” (#86 terv 1.5). A `doi`, `version`, `date-released`, `url` ma nem tölthető ki ellenőrizhetően; a `url` helyőrzője a CFF-sémában nem érvényes URI.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 648
    }
   ],
   "alkalmazasra_var": [
