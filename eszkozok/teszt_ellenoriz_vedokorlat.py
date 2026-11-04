@@ -268,6 +268,47 @@ class Szabaly24(Alap):
         self.assertIn('[^koll]: proveniencia:', szoveg)
 
 
+class Szabaly28(Alap):
+    """A 28. szabály: az 1/b. blokkban nincs „egyéb” (F123.EGYEB, a felhasználó, 2026-11-04: „sehol”)."""
+    JEL_FEJ = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas', 'jelolt_tipus']
+    BLOKK = ('<!-- GENERÁLT-KEZDET: general.py --cel lexikon#GERINC-001#kizart | forrás: x -->\n%s\n'
+             '<!-- GENERÁLT-VÉGE: lexikon#GERINC-001#kizart -->\n')
+
+    def jeloltek(self, *sorok):
+        shutil.copy(os.path.join(E.ROOT, 'adat', 'elutasitasi_okok.tsv'), self.adat)
+        ir(os.path.join(self.adat, 'jeloltek.tsv'), self.JEL_FEJ, list(sorok))
+
+    def test_rendben(self):
+        self.jeloltek({'id': 'GERINC-001', 'igehely': 'Zsolt 1:1', 'forras_kereses': 'scan H7121', 'dontes': 'elutasítva',
+                       'indoklas': 'tartalmilag NEM releváns', 'jelolt_tipus': 'elofordulas'})
+        self.lap('GERINC-001_TUDOMANYOS.md', self.BLOKK % '**Gépi keresés** (1)\n| Zsolt 1:1 | x | **elutasítva** — '
+                 'tartalmilag nem kapcsolódik |')
+        self.assertEqual(E.szabaly28_kizart_egyeb(self.adat).verdict, 'RENDBEN')
+
+    def test_be_nem_sorolhato_adat_sertes(self):
+        self.jeloltek({'id': 'GERINC-001', 'igehely': 'Zsolt 1:1', 'forras_kereses': 'valami más', 'dontes': 'elutasítva',
+                       'indoklas': 'semmi ilyen', 'jelolt_tipus': 'elofordulas'})
+        self.lap('GERINC-001_TUDOMANYOS.md', 'lap\n')
+        s = E.szabaly28_kizart_egyeb(self.adat)
+        self.assertEqual(s.verdict, 'SÉRTÉS')
+        self.assertIn('Zsolt 1:1: jelölési forrás', s.peldak[0])
+        self.assertIn('Zsolt 1:1: elutasítási ok', s.peldak[0])
+
+    def test_egyeb_a_lapon_sertes(self):
+        self.jeloltek()
+        self.lap('GERINC-001_TUDOMANYOS.md', self.BLOKK % ('**A jelölés forrása:** Gépi keresés 3 · Egyéb 2\n\n'
+                                                         '**Egyéb** (2)\n| Zsolt 1:1 | x | **elutasítva** — egyéb |'))
+        s = E.szabaly28_kizart_egyeb(self.adat)
+        self.assertEqual(s.verdict, 'SÉRTÉS')
+        self.assertEqual(len(E.kizart_egyeb_lapon(open(os.path.join(self.lex, 'GERINC-001_TUDOMANYOS.md'),
+                                                       encoding='utf-8').read())), 3)
+
+    def test_blokkon_kivul_nem_szamit(self):
+        self.jeloltek()
+        self.lap('GERINC-001_TUDOMANYOS.md', 'Egyéb (2) és egyéb szöveg a prózában.\n')
+        self.assertEqual(E.szabaly28_kizart_egyeb(self.adat).verdict, 'RENDBEN')
+
+
 class ValodiAdat(unittest.TestCase):
     def test_20_21_a_repon(self):
         # a repó mai adatán a 18–21. szabály tiszta (F148: az ALVIL-001 59 sora gépileg kitöltve, ⛔ A feloldva)
