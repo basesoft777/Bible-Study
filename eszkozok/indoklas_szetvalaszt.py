@@ -205,6 +205,26 @@ JAVITVA = {'igehely és karoli_szo': 'az igehely és a Károli-szóalak', 'karol
            'igehely': 'az igehely'}
 
 
+# A `forras_kereses` a keresés nyoma, gépi marad; a lapon a lábjegyzetben áll, ezért helyőrző alakú azonosító nem lehet
+# benne (ellenoriz.py 21. (i)). A kiosztott helyőrző a végleges számára cserélődik (a számkiosztás commitja szerint); a
+# szám nélküli régi azonosító (N-F63x) a `dontes_ref`-be kerül.
+KIOSZTOTT = {'DT-F123o': 'DT564'}   # szamkiosztas 2026-11-03: „DT-F123o → DT564”
+FORRAS_REGI_AZON = [(r'N-F63e-függő, ', 'N-F63e')]
+
+
+def forras_helyorzo(fk):
+    """(új forras_kereses, a nyomba kerülő elemek)."""
+    ref = []
+    for regi, uj in KIOSZTOTT.items():
+        if regi in fk:
+            fk = fk.replace(regi, uj)
+    for minta, nyom in FORRAS_REGI_AZON:
+        if re.search(minta, fk):
+            fk = re.sub(minta, '', fk)
+            ref.append(nyom)
+    return fk, ref
+
+
 def atir(indoklas):
     """(új indoklás, dontes_ref) a szabályok szerint."""
     ref = []
@@ -257,7 +277,7 @@ def main():
     # nyommal bővül, a belső jelű indoklás ugyanúgy szétválik, a nyom a meglévőhöz fűződik
     van_oszlop = UJ_OSZLOP in fej
     fej_uj = fej if van_oszlop else fej + [UJ_OSZLOP]
-    i_ind, i_ref = fej.index('indoklas'), fej_uj.index(UJ_OSZLOP)
+    i_ind, i_ref, i_fk = fej.index('indoklas'), fej_uj.index(UJ_OSZLOP), fej.index('forras_kereses')
     uj_sorok = list(sorok)
     uj_sorok[fej_i] = '\t'.join(fej_uj) + ('\r' if sorok[fej_i].endswith('\r') else '')
     naplo, hibak = [], []
@@ -270,11 +290,17 @@ def main():
         m += [''] * (len(fej_uj) - len(m))
         d = dict(zip(fej_uj, m))
         regi = m[i_ind]
-        if not belso_jelek(regi):
+        fk_uj, fk_ref = forras_helyorzo(m[i_fk])
+        if not belso_jelek(regi) and fk_uj == m[i_fk]:
             uj_sorok[i] = '\t'.join(m) + cr
             continue
-        uj, ref = atir(regi)
+        uj, ref = atir(regi) if belso_jelek(regi) else (regi, [])
+        ref = fk_ref + [x for x in ref if x not in fk_ref]
         ref = [x for x in m[i_ref].split(SEP) if x] + [x for x in ref if x not in m[i_ref].split(SEP)]
+        for x in K.BELSO[:3]:   # a forras_kereses-ből kivett helyőrző a nyomban van
+            for t in x[0].finditer(m[i_fk]):
+                if t.group(0) not in fk_uj and t.group(0) not in KIOSZTOTT and t.group(0) not in SEP.join(ref):
+                    hibak.append('%d. sor: a forras_kereses helyőrzője elveszne: %s' % (i + 1, t.group(0)))
         if belso_jelek(uj):
             hibak.append('%d. sor (%s %s): belső jel maradt: %s' % (i + 1, d['id'], d['igehely'],
                                                                      '; '.join(belso_jelek(uj))))
@@ -296,13 +322,15 @@ def main():
         if '\t' in uj or '\t' in ''.join(ref):
             hibak.append('%d. sor: tab a szövegben' % (i + 1))
         m2 = list(m)
-        m2[i_ind], m2[i_ref] = uj, SEP.join(ref)
+        m2[i_ind], m2[i_ref], m2[i_fk] = uj, SEP.join(ref), fk_uj
         uj_sorok[i] = '\t'.join(m2) + cr
         # 3. igazolás: minden más mező változatlan
         vissza = uj_sorok[i].rstrip('\r').split('\t')
-        if [x for k, x in enumerate(vissza) if k not in (i_ind, i_ref)] != \
-                [x for k, x in enumerate(m) if k not in (i_ind, i_ref)]:
+        if [x for k, x in enumerate(vissza) if k not in (i_ind, i_ref, i_fk)] != \
+                [x for k, x in enumerate(m) if k not in (i_ind, i_ref, i_fk)]:
             hibak.append('%d. sor: más mező is változott' % (i + 1))
+        if fk_uj != m[i_fk]:
+            regi = '%s (forras_kereses: %s → %s)' % (regi if uj != regi else '(változatlan)', m[i_fk], fk_uj)
         naplo.append((i + 1, d, regi, uj, SEP.join(ref)))
     # 4. igazolás: a nem érintett sorok legfeljebb üres mezőkkel bővültek
     erintett = {n - 1 for n, *_ in naplo}

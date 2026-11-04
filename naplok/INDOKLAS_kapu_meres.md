@@ -19,6 +19,10 @@
 | TEREMT-002 | 10 | 6 | 4 | 0 | 0 | 0 |
 | **Összesen** | **313** | **117** | **166** | **13** | **33** | **4** |
 
+A main behozása (#609, HAMART-001 U1: 77 új jelölt-sor, ebből 66 belső jelű indoklással, szétválasztva) után újramérve:
+a számok nem változtak (a main HAMART-001 lapja a #609 után nem volt újragenerálva, az „előtte” oszlop ezért a régi
+lapé).
+
 ## A maradék
 
 - **Strong (13):** mind kézi részben (HAMART-001 8, KIRALY-001 3, ISTENTISZT-001 2: a „Két oltár” és a „Mindaz, a ki”

@@ -711,3 +711,873 @@
 - **régi `indoklas`:** N59, kézi olvasás: Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (adat/motivumok.tsv: קָרָא + בְּ aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a בְּ (H9003) az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban אֶל (H0413) + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: DT283 (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik). Mérés 2026-10-29: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-29T08:32Z | csatorna=cli · scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T08:31Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z | Károli-proveniencia (lekerdez.py karoli): scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-25T16:58Z
 - **új `indoklas`:** Kézi olvasás (a lefedetlen helyek vizsgálata): Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (a felhasználó, 2026-10-29, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (a motívum negatív kritériuma: קָרָא + בְּ aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a בְּ (H9003) az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban אֶל (H0413) + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: a szűrő-szabály döntése (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik).
 - **`dontes_ref`:** Mérés 2026-10-29: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-29T08:32Z | csatorna=cli · scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T08:31Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z · Károli-proveniencia (lekerdez.py karoli): scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-25T16:58Z · orkesztrátor-chat 2026-10-29 · N59 · motivumok.tsv negativ_kriterium · DT283
+
+---
+
+# Későbbi futás: 66 sor (a meglévő `dontes_ref` oszlop mellett)
+
+*A sorszám ennek a futásnak a táblájára vonatkozik. Proveniencia: `scope=adat/jeloltek.tsv (66 sor) | forras=manual (eszkozok/indoklas_szetvalaszt.py ATIRAS) | ts=2026-11-04`*
+
+## 725. sor — HAMART-001 · 1Kir 1:52 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** Összesítő sor 573 versre (a sor igehelye a blokk egy verse áll): a רַע (ra‘, gonoszság, rossz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (N-F63e, 2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **új `indoklas`:** Összesítő sor 573 versre (a sor igehelye a blokk egy verse áll): a רַע (ra‘, gonoszság, rossz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 726. sor — HAMART-001 · 1Kir 2:8 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** Összesítő sor 71 versre (a sor igehelye a blokk egy verse áll): a קָלַל (qalal, megátkoz, könnyűvé tesz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (N-F63e, 2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **új `indoklas`:** Összesítő sor 71 versre (a sor igehelye a blokk egy verse áll): a קָלַל (qalal, megátkoz, könnyűvé tesz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 727. sor — HAMART-001 · 1Kir 7:46 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 178 versre (a sor igehelye a blokk egy verse áll): az אֲדָמָה (adamá, föld, talaj) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 178 versre (a sor igehelye a blokk egy verse áll): az אֲדָמָה (adamá, föld, talaj) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 728. sor — HAMART-001 · 1Kir 8:36 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 255 versre (a sor igehelye a blokk egy verse áll): a חַטָּאת (chattát, bűn, bűnáldozat) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 255 versre (a sor igehelye a blokk egy verse áll): a חַטָּאת (chattát, bűn, bűnáldozat) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 729. sor — HAMART-001 · 1Krón 12:17 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 36 versre (a sor igehelye a blokk egy verse áll): a חָמָס (chámász, erőszak) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 36 versre (a sor igehelye a blokk egy verse áll): a חָמָס (chámász, erőszak) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 730. sor — HAMART-001 · 1Krón 20:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 113 versre (a sor igehelye a blokk egy verse áll): a שָׁחַת (sáchat, megront, elpusztít) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 113 versre (a sor igehelye a blokk egy verse áll): a שָׁחַת (sáchat, megront, elpusztít) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 731. sor — HAMART-001 · 2Móz 22:6 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** Összesítő sor 7 versre (a sor igehelye a blokk egy verse áll): a קוֹץ (kóc, tövis) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (N-F63e, 2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **új `indoklas`:** Összesítő sor 7 versre (a sor igehelye a blokk egy verse áll): a קוֹץ (kóc, tövis) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 733. sor — HAMART-001 · 1Kor 12:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0331 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0331 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 734. sor — HAMART-001 · 1Kor 15:52 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G0862 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G0862 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 736. sor — HAMART-001 · 1Tim 6:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G3639 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G3639 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 737. sor — HAMART-001 · 2Kir 22:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 13 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7045 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 13 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7045 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 738. sor — HAMART-001 · 2Kor 12:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G4647 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G4647 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 739. sor — HAMART-001 · 2Krón 22:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8395 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8395 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 740. sor — HAMART-001 · 2Krón 25:18 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2336 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2336 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 741. sor — HAMART-001 · 2Móz 10:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H0006 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H0006 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 742. sor — HAMART-001 · 2Tim 2:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2692 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2692 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 743. sor — HAMART-001 · 3Móz 22:25 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4893 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4893 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 744. sor — HAMART-001 · 4Móz 5:21 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 8 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H0423 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 8 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H0423 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 745. sor — HAMART-001 · 4Móz 22:11 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 11 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H6895 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 11 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H6895 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 746. sor — HAMART-001 · 4Móz 33:55 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H6796 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H7899): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H6796 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H7899): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 747. sor — HAMART-001 · 5Móz 7:23 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8045 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8045 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 749. sor — HAMART-001 · ApCsel 6:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2647 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2647 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 751. sor — HAMART-001 · Bír 4:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3905 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3905 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 752. sor — HAMART-001 · Dán 2:44 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2255 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2255 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 753. sor — HAMART-001 · Dán 11:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6530 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6530 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 754. sor — HAMART-001 · Ez 2:6 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5544 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H5621): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5544 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H5621): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 755. sor — HAMART-001 · Ez 22:26 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H2554 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H2554 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 756. sor — HAMART-001 · Hós 2:5 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5518 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5518 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 757. sor — HAMART-001 · Hós 9:6 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7057 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7057 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 758. sor — HAMART-001 · Jel 22:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2652 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2652 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 759. sor — HAMART-001 · Jer 19:8 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8047 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8047 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 760. sor — HAMART-001 · Jer 22:17 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H4835 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|H6233): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H4835 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|H6233): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 761. sor — HAMART-001 · Jer 46:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3238 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3238 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 762. sor — HAMART-001 · Jer 47:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7703 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7703 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 763. sor — HAMART-001 · Jer 48:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7701 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7701 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 764. sor — HAMART-001 · Ján 7:49 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G6035 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a szótár-háló (BDB/Thayer) blokkban is áll (halo=szotar, blokk=G1944): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G6035 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a szótár-háló (BDB/Thayer) blokkban is áll (halo=szotar, blokk=G1944): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 765. sor — HAMART-001 · Ján 19:2 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 9 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0173 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 9 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0173 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 766. sor — HAMART-001 · Ján 19:5 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0174 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0174 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 767. sor — HAMART-001 · Jób 35:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6217 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6217 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 768. sor — HAMART-001 · Luk 6:44 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0942 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0942 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 769. sor — HAMART-001 · Luk 6:49 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4485 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4485 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 770. sor — HAMART-001 · Mal 1:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2723 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2723 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 771. sor — HAMART-001 · Mik 7:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2312 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H4534): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2312 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H4534): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 772. sor — HAMART-001 · Mk 14:71 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0332 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0332 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 773. sor — HAMART-001 · Mt 7:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G5146 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G5146 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 774. sor — HAMART-001 · Mt 11:12 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a G0971 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|G0973): 1 vers, a lista a blokkok fájlban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a G0971 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|G0973): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 775. sor — HAMART-001 · Mt 26:74 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2653 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2653 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 776. sor — HAMART-001 · Náh 3:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6563 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6563 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 777. sor — HAMART-001 · Préd 4:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6231 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6231 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 778. sor — HAMART-001 · Péld 10:15 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 4 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4288 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 4 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4288 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 779. sor — HAMART-001 · Péld 13:13 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2254 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2254 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 780. sor — HAMART-001 · Péld 17:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7667 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7667 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 781. sor — HAMART-001 · Péld 26:28 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4072 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4072 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 782. sor — HAMART-001 · Róm 3:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0685 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0685 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 783. sor — HAMART-001 · Róm 3:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4938 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4938 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 784. sor — HAMART-001 · Sir 3:47 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7612 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7612 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 785. sor — HAMART-001 · Sof 2:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2738 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2738 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 786. sor — HAMART-001 · Zsolt 35:8 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7722 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7722 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 787. sor — HAMART-001 · Zsolt 58:10 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H0329 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H0329 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 788. sor — HAMART-001 · Ézs 3:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4384 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4384 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 789. sor — HAMART-001 · Ézs 7:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5285 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5285 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 790. sor — HAMART-001 · Ézs 7:24 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7898 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7898 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 791. sor — HAMART-001 · Ézs 7:25 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H8068 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H8068 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 792. sor — HAMART-001 · Ézs 38:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6234 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6234 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 793. sor — HAMART-001 · Ézs 55:13 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5636 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5636 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 794. sor — HAMART-001 · Ézs 65:15 · elofordulas (nyitva)
+
+- **régi `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7621 szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7621 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+---
+
+# Későbbi futás: 77 sor (a meglévő `dontes_ref` oszlop mellett)
+
+*A sorszám ennek a futásnak a táblájára vonatkozik. Proveniencia: `scope=adat/jeloltek.tsv (77 sor) | forras=manual (eszkozok/indoklas_szetvalaszt.py ATIRAS) | ts=2026-11-04`*
+
+## 725. sor — HAMART-001 · 1Kir 1:52 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, N-F63e-függő, blokk-sor (DT-F123o minta): 573 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H7451), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 573 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H7451), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 573 versre (a sor igehelye a blokk egy verse áll): a רַע (ra‘, gonoszság, rossz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 726. sor — HAMART-001 · 1Kir 2:8 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, N-F63e-függő, blokk-sor (DT-F123o minta): 71 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H7043), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 71 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H7043), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 71 versre (a sor igehelye a blokk egy verse áll): a קָלַל (qalal, megátkoz, könnyűvé tesz) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 727. sor — HAMART-001 · 1Kir 7:46 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT-F123o minta): 178 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H0127), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 178 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H0127), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 178 versre (a sor igehelye a blokk egy verse áll): az אֲדָמָה (adamá, föld, talaj) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 728. sor — HAMART-001 · 1Kir 8:36 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT-F123o minta): 255 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H2403), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 255 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H2403), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 255 versre (a sor igehelye a blokk egy verse áll): a חַטָּאת (chattát, bűn, bűnáldozat) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 729. sor — HAMART-001 · 1Krón 12:17 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT-F123o minta): 36 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H2555), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 36 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H2555), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 36 versre (a sor igehelye a blokk egy verse áll): a חָמָס (chámász, erőszak) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 730. sor — HAMART-001 · 1Krón 20:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT-F123o minta): 113 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H7843), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 113 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=strong, blokk=H7843), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 113 versre (a sor igehelye a blokk egy verse áll): a שָׁחַת (sáchat, megront, elpusztít) szava áll bennük, de sem előfordulás-sor, sem jelölt-sor nincs rájuk; a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is látott, de nem írt be. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** F108
+
+## 731. sor — HAMART-001 · 2Móz 22:6 · elofordulas (elutasítva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Strong-háló, N-F63e-függő, blokk-sor (DT-F123o minta): 7 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H6975), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 7 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=nf63e, blokk=H6975), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 7 versre (a sor igehelye a blokk egy verse áll): a קוֹץ (kóc, tövis) szava áll bennük, de a negatív kritérium lexémalistáján álló lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (2026-11-03: „kivesszük”) szerint blokk-kizárás.
+- **`dontes_ref`:** N-F63e
+
+## 732. sor — HAMART-001 · 1Kir 11:27 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 86 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 86 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 86 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava áll bennük, de a gépi glossza-illesztés nem talált a Károli-szó jelentéskörébe eső héber/görög szót; kézi olvasásra marad. A versekben a motívum egyik szava sem áll.
+- **`dontes_ref`:** —
+
+## 733. sor — HAMART-001 · 1Kor 12:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0331), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0331), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0331 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 734. sor — HAMART-001 · 1Kor 15:52 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G0862), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G0862), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G0862 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 735. sor — HAMART-001 · 1Móz 34:2 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 11 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 11 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 11 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava áll bennük, de a gépi glossza-illesztés nem talált a Károli-szó jelentéskörébe eső héber/görög szót; kézi olvasásra marad. A versekben a motívum egyik szava sem áll.
+- **`dontes_ref`:** —
+
+## 736. sor — HAMART-001 · 1Tim 6:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G3639), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G3639), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G3639 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 737. sor — HAMART-001 · 2Kir 22:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 13 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H7045), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 13 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H7045), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 13 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7045 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 738. sor — HAMART-001 · 2Kor 12:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G4647), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G4647), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G4647 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 739. sor — HAMART-001 · 2Krón 22:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8395), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8395), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8395 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 740. sor — HAMART-001 · 2Krón 25:18 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2336), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2336), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2336 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 741. sor — HAMART-001 · 2Móz 10:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H0006), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H0006), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H0006 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 742. sor — HAMART-001 · 2Tim 2:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G2692), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G2692), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2692 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 743. sor — HAMART-001 · 3Móz 22:25 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4893), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4893), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4893 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 744. sor — HAMART-001 · 4Móz 5:21 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 8 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H0423), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 8 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H0423), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 8 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H0423 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 745. sor — HAMART-001 · 4Móz 22:11 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 11 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H6895), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 11 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H6895), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 11 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H6895 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 746. sor — HAMART-001 · 4Móz 33:55 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H6796), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H6796), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H6796 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H7899): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 747. sor — HAMART-001 · 5Móz 7:23 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8045), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8045), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8045 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 748. sor — HAMART-001 · 5Móz 7:26 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 15 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 15 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 15 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava áll bennük, de a gépi glossza-illesztés nem talált a Károli-szó jelentéskörébe eső héber/görög szót; kézi olvasásra marad. A versekben a motívum egyik szava sem áll.
+- **`dontes_ref`:** —
+
+## 749. sor — HAMART-001 · ApCsel 6:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G2647), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G2647), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G2647 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 750. sor — HAMART-001 · Bír 2:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|osztálytalan), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava áll bennük, de a gépi glossza-illesztés nem talált a Károli-szó jelentéskörébe eső héber/görög szót; kézi olvasásra marad. A versekben a motívum egyik szava sem áll.
+- **`dontes_ref`:** —
+
+## 751. sor — HAMART-001 · Bír 4:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H3905), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H3905), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3905 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 752. sor — HAMART-001 · Dán 2:44 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2255), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2255), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2255 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 753. sor — HAMART-001 · Dán 11:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6530), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6530), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6530 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 754. sor — HAMART-001 · Ez 2:6 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5544), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5544), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5544 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H5621): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 755. sor — HAMART-001 · Ez 22:26 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H2554), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H2554), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H2554 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 756. sor — HAMART-001 · Hós 2:5 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5518), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5518), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5518 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 757. sor — HAMART-001 · Hós 9:6 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H7057), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H7057), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7057 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 758. sor — HAMART-001 · Jel 22:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G2652), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G2652), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2652 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 759. sor — HAMART-001 · Jer 19:8 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8047), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H8047), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H8047 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 760. sor — HAMART-001 · Jer 22:17 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H4835), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H4835), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H4835 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|H6233): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 761. sor — HAMART-001 · Jer 46:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H3238), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H3238), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H3238 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 762. sor — HAMART-001 · Jer 47:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7703), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7703), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7703 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 763. sor — HAMART-001 · Jer 48:3 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7701), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 3 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7701), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 3 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7701 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 764. sor — HAMART-001 · Ján 7:49 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G6035), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G6035), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G6035 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a szótár-háló (BDB/Thayer) blokkban is áll (halo=szotar, blokk=G1944): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 765. sor — HAMART-001 · Ján 19:2 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 9 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0173), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 9 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0173), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 9 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0173 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 766. sor — HAMART-001 · Ján 19:5 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0174), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0174), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0174 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 767. sor — HAMART-001 · Jób 35:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6217), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6217), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6217 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 768. sor — HAMART-001 · Luk 6:44 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0942), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G0942), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G0942 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 769. sor — HAMART-001 · Luk 6:49 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G4485), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G4485), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4485 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 770. sor — HAMART-001 · Mal 1:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2723), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2723), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2723 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 771. sor — HAMART-001 · Mik 7:4 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2312), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2312), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2312 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=tövis|H4534): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 772. sor — HAMART-001 · Mk 14:71 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0332), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0332), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0332 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 773. sor — HAMART-001 · Mt 7:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G5146), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|G5146), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a G5146 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 774. sor — HAMART-001 · Mt 11:12 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|G0971), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|G0971), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a G0971 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban. Ugyanez a vers a Károli-szó háló blokkban is áll (halo=karoli, blokk=erőszak|G0973): 1 vers, a versek listája a teljesség-mérés blokk-táblájában áll.
+- **`dontes_ref`:** naplok/F123_teljesseg_HAMART-001_blokkok.tsv · gerinc
+
+## 775. sor — HAMART-001 · Mt 26:74 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G2653), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G2653), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G2653 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 776. sor — HAMART-001 · Náh 3:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6563), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6563), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6563 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 777. sor — HAMART-001 · Préd 4:1 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6231), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6231), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6231 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 778. sor — HAMART-001 · Péld 10:15 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 4 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4288), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 4 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4288), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 4 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4288 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 779. sor — HAMART-001 · Péld 13:13 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2254), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H2254), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H2254 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 780. sor — HAMART-001 · Péld 17:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7667), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7667), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7667 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 781. sor — HAMART-001 · Péld 26:28 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4072), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4072), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4072 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 782. sor — HAMART-001 · Róm 3:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0685), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|G0685), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a G0685 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 783. sor — HAMART-001 · Róm 3:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G4938), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|G4938), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a G4938 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 784. sor — HAMART-001 · Sir 3:47 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7612), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7612), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7612 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 785. sor — HAMART-001 · Sof 2:9 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2738), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H2738), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H2738 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 786. sor — HAMART-001 · Zsolt 35:8 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7722), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H7722), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H7722 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 787. sor — HAMART-001 · Zsolt 58:10 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H0329), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H0329), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H0329 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 788. sor — HAMART-001 · Ézs 3:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4384), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=romlás|H4384), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „romlás”-csoport szava (romlás) ezekben a versekben a H4384 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 789. sor — HAMART-001 · Ézs 7:19 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5285), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5285), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5285 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 790. sor — HAMART-001 · Ézs 7:24 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H7898), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H7898), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H7898 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 791. sor — HAMART-001 · Ézs 7:25 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H8068), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H8068), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H8068 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 792. sor — HAMART-001 · Ézs 38:14 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6234), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=erőszak|H6234), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „erőszak”-csoport szava (erőszak) ezekben a versekben a H6234 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 793. sor — HAMART-001 · Ézs 55:13 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5636), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=tövis|H5636), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „tövis”-csoport szava (tövis) ezekben a versekben a H5636 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 794. sor — HAMART-001 · Ézs 65:15 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H7621), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, Károli-szó háló, blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=karoli, blokk=átok|H7621), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a Károli „átok”-csoport szava (átok) ezekben a versekben a H7621 szót fordítja; a motívum saját szava a versekben nem áll. Elbírálás az értelmező menetben, blokkban.
+- **`dontes_ref`:** gerinc
+
+## 795. sor — HAMART-001 · 1Krón 2:8 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 6 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7451), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 6 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7451), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 6 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H7451 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 796. sor — HAMART-001 · 1Krón 12:16 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H2555), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H2555), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H2555 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 797. sor — HAMART-001 · 1Móz 18:18 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H0127), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 5 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H0127), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 5 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H0127 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 798. sor — HAMART-001 · 2Móz 21:27 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7043), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 1 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7043), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 1 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H7043 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 799. sor — HAMART-001 · 3Móz 4:2 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 21 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H2403), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 21 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H2403), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 21 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H2403 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 800. sor — HAMART-001 · 5Móz 4:28 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 4 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7843), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 4 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=H7843), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 4 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a H7843 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
+
+## 801. sor — HAMART-001 · Jón 2:7 · elofordulas (nyitva)
+
+- **régi `indoklas`:** (változatlan) (forras_kereses: F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT-F123o minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=G5356), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03 → F123 U1 teljesség-mérés, szótár-háló (BDB/Thayer), blokk-sor (DT564 minta): 2 vers, a sor igehelye a blokk egy verse; a lista: naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=szotar, blokk=G5356), naplok/F123_teljesseg_HAMART-001.md | scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03)
+- **új `indoklas`:** Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a G5356 Strongnál idézi a verset, de a versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi ellenőrzés az értelmező menetben.
+- **`dontes_ref`:** —
