@@ -2,9 +2,9 @@
 
 # 📖 ALVIL-001 — Hádész (Seol) — a halottak birodalma
 
-## Kivonat *(kézi)*
+## Kivonat
 
-A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.<!-- olvasói -->
 
 A motívum a halottak birodalmát követi a Bibliában, két szó nyomán: az ószövetségi שְׁאוֹל (seól) és az újszövetségi ᾍδης (hadész) minden előfordulását. A seól 64 ószövetségi helyen áll; a Károli-fordítás hol Seolnak, hol sírnak, koporsónak, pokolnak, alvilágnak vagy mélységnek fordítja. A hádész tíz újszövetségi helyen áll, a Károliban többnyire pokol. Az Ószövetségben a Seol minden ember közös végállomása (1Móz 37:35), ahonnan nincs visszatérés (Jób 7:9), és ahol elnémul Isten dicsérete (Zsolt 6:6). Mégsem esik kívül Isten hatalmán: előtte nyitva áll (Péld 15:11), ott is jelen van (Zsolt 139:8), és ő az, aki levisz oda és felhoz onnan (1Sám 2:6; Zsolt 30:4).
 
@@ -14,9 +14,9 @@ A motívum határát a szó húzza meg: ide az a vers tartozik, amelyben a hébe
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
+A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -39,7 +39,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -91,7 +91,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívum 74 igehelyen fordul elő, 22 bibliai könyvben (64 ószövetségi, 10 újszövetségi hely); a legtöbb hely: Zsolt (15). 71 hely azonosítása magas megbízhatóságú, 3 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
@@ -781,7 +781,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 36 helyet vizsgáltunk meg jelöltként; elutasítva: 36. A leggyakoribb ok: „szótári összevető hely, a szó nem áll benne” (18), utána „a Septuaginta többlete, a héberben nincs seól” (7). A jelöltek forrása: Gépi keresés 36. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (36, illetve 74). A határt leginkább ez az ok húzza meg: „szótári összevető hely, a szó nem áll benne”.<!-- olvasói -->
 
@@ -877,7 +877,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a seól (H7585), görögül a Hadész (G0086). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -1096,7 +1096,7 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H7585** · 62 vers a Septuagintában (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης (Hadész): 57 vers; καταβαίνω (katabainó): 16 vers; θάνατος (thanatosz): 15 vers; γῆ (gé): 11 vers; εἰμί (eimi): 11 vers; κατάγω (katagó): 10 vers; ψυχή (pszükhé): 9 vers; κύριος (küriosz): 8 vers; λέγω (legó): 8 vers; πᾶς (pasz): 8 vers
+**H7585** · 62 vers a Septuagintában (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης ([Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>): 57 vers; καταβαίνω ([katabainó](/szo/G2597)<sup class="strong" title="G2597">G2597</sup>): 16 vers; θάνατος ([thanatosz](/szo/G2288)<sup class="strong" title="G2288 · halál">G2288</sup>): 15 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 11 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 11 vers; κατάγω ([katagó](/szo/G2609)<sup class="strong" title="G2609">G2609</sup>): 10 vers; ψυχή ([pszükhé](/szo/G5590)<sup class="strong" title="G5590 · lélek">G5590</sup>): 9 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 8 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 8 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 8 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -1137,10 +1137,29 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
 
-Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).<!-- olvasói -->
+Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 4 téma (például: pokol). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását; a tágabb, általános témák (a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül) szándékosan kimaradtak.<!-- olvasói -->
 
-<!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (3 tiltott téma); a 34 jelöltből a motívumhoz kiválasztott 4 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
+
+- **pokol (*HELL*)** — 63 motívumvers / 145 témavers (43,4%): 1Móz 37:35, 1Móz 42:38, 1Móz 44:29, 1Móz 44:31, 5Móz 32:22, 1Sám 2:6, 2Sám 22:6, 1Kir 2:6, Jób 7:9, Jób 11:8, Jób 14:13, Jób 17:12, Jób 21:13, Jób 24:19, Jób 26:6, Zsolt 6:6, Zsolt 9:18, Zsolt 16:10, Zsolt 18:6, Zsolt 30:4, Zsolt 31:18, Zsolt 49:15, Zsolt 49:16, Zsolt 55:16, Zsolt 86:13, Zsolt 88:4, Zsolt 89:49, Zsolt 116:3, Zsolt 139:8, Zsolt 141:7, Péld 1:12, Péld 5:5, Péld 7:27, Péld 9:18, Péld 15:11, Péld 15:24, Péld 23:14, Péld 27:20, Péld 30:16, Préd 9:12, Én 8:6, Ézs 5:14, Ézs 14:9, Ézs 14:15, Ézs 28:15, Ézs 28:18, Ézs 57:9, Ez 31:16, Ez 31:17, Ez 32:21, Ez 32:27, Hós 13:14, Ámós 9:2, Jón 2:3, Hab 2:5, Mt 11:23, Mt 16:18, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8
+  - a „Seol” az A. V.-ben (King James) „sír” (*&#8220;Sheol&#8221; is translated &#8220;grave&#8221; in A. V. in*): 1Móz 37:35, 1Móz 42:38, 1Móz 44:29, 1Móz 44:31, 1Sám 2:6, 1Kir 2:6, Jób 7:9, Jób 14:13, Jób 17:12, Jób 21:13, Jób 24:19, Zsolt 6:6, Zsolt 30:4, Zsolt 31:18, Zsolt 49:15, Zsolt 49:16, Zsolt 88:4, Zsolt 89:49, Zsolt 141:7, Péld 1:12, Péld 30:16, Préd 9:12, Én 8:6, Hós 13:14
+  - és „verem” (*And it is translated &#8220;pit&#8221; in*): Zsolt 55:16
+  - az Ószövetség R. V.-jében (Revised Version) csak itt áll (*In the R. V. of O. T. it appears only in*): Ézs 5:14, Ézs 14:9, Ézs 14:15, Ézs 28:15, Ézs 28:18, Ézs 57:9, Ez 31:16, Ez 31:17, Ez 32:21, Ez 32:27, Ámós 9:2, Jón 2:3, Hab 2:5
+  - az R. V.-ben maga a „Seol” szó a következő igehelyeken fordul elő (*In the R. V. the word &#8220;Sheol&#8221; itself occurs in the following scriptures*): 2Sám 22:6, Jób 11:8, Jób 26:6, Zsolt 9:18, Zsolt 16:10, Zsolt 18:6, Zsolt 116:3, Zsolt 139:8, Péld 5:5, Péld 7:27, Péld 9:18, Péld 15:11, Péld 15:24, Péld 23:14, Péld 27:20
+  - az R. V.-ben a „seol” „legmélyebb verem” (*In the R. V., &#8220;sheol&#8221; is translated &#8220;lowest pit&#8221*): 5Móz 32:22, Zsolt 86:13
+  - a gonoszok jövendő lakóhelye (*THE FUTURE HOME OF THE WICKED*): Zsolt 9:18, Péld 5:5, Péld 9:18, Péld 15:24, Péld 23:14, Mt 16:18, Luk 16:23
+  - az R. V. a görög szövegben található „Hádész” szót vezette be, amely a láthatatlan világot jelenti, a következő igehelyeken (*The R. V. has introduced &#8220;Hades,&#8221; the word found in the Greek text, which signifies the unseen world, in the following scriptures*): Mt 11:23, Mt 16:18, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8
+- **Hádész (*HADES*)** — 17 motívumvers / 35 témavers (48,6%): 2Sám 22:6, Zsolt 6:6, Zsolt 49:16, Zsolt 86:13, Zsolt 116:3, Péld 15:24, Péld 27:20, Ézs 5:14, Jón 2:3, Mt 11:23, Mt 16:18, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8
+  - a halottak birodalma (állapota) (*The realm (state) of the dead*): 2Sám 22:6, Zsolt 6:6, Zsolt 49:16, Zsolt 86:13, Zsolt 116:3, Péld 15:24, Péld 27:20, Ézs 5:14, Jón 2:3
+  - a láthatatlan világ, az A. V.-ben (King James) „pokol”-nak fordítva, az R. V.-ben (Revised Version) viszont a „Hádész” szó megmarad (*The unseen world, translated &#8220;hell&#8221; in A. V., but in the R. V. the word &#8220;Hades&#8221; is retained*): Mt 11:23, Mt 16:18, Luk 10:15, Luk 16:23, ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8
+- **feltámadás (*RESURRECTION*)** — 8 motívumvers / 197 témavers (4,1%): Jób 14:13, Zsolt 16:10, Zsolt 49:16, Hós 13:14, ApCsel 2:27, ApCsel 2:31, 1Kor 15:55, Jel 1:18
+  - általános igehelyek (*General scriptures concerning*): Jób 14:13, Zsolt 16:10, Zsolt 49:16, Hós 13:14, ApCsel 2:27, ApCsel 2:31, 1Kor 15:55, Jel 1:18
+- **kapuk (*GATES*)** — 2 motívumvers / 62 témavers (3,2%): Ézs 38:10, Mt 16:18
+  - a halál kapui (*Of death*): Ézs 38:10
+  - a sír kapui (*Of the grave*): Ézs 38:10
+  - a pokol (Hádész) hatalmainak kapui (*Of the powers of hell (Hades)*): Mt 16:18
+
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=4 | ts=2026-11-04)*
 
 #### 13. Károli-megfelelők
 
@@ -1170,7 +1189,7 @@ A motívum 74 igehelyén a Károli 21 különböző magyar szót használ. A leg
 - **út** (1) — út: Péld 7:27
 - **üregébe** (1) — üregébe: Jób 17:15
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=74 | ts=2026-11-03)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ALVIL-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=74 | ts=2026-11-04)*
 
 #### 14. Rejtett / hamis párhuzam
 
@@ -1188,13 +1207,13 @@ A motívum 74 helye közül 2 helyen a héber vagy görög szövegben megvan a m
 - Jób 28:22 — A pokol és halál azt mondják: Csak hírét hallottuk füleinkkel! · *a motívum szavaiból a versben: nincs* · *jelölt: elutasítva*
 - Jób 31:12 — Mert tűz volna ez, a mely pokolig emésztene, és minden jövedelmemet tövestől kiirtaná. · *a motívum szavaiból a versben: nincs* · *jelölt: elutasítva*
 
-*(proveniencia: scope=Károli teljes (G0086: „pokol”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=4 | ts=2026-11-03)*
+*(proveniencia: scope=Károli teljes (G0086: „pokol”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=4 | ts=2026-11-04)*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#szocikkek -->
 
-### Miért fontos ez a lelet *(kézi)*
+### Miért fontos ez a lelet
 
-Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
+Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasói -->
 
 #### H7585 — שְׁאוֹל (seól) · BDB
 
@@ -1220,7 +1239,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató m
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -1228,70 +1247,70 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól) | θάνατος (thanatosz) | eltérő | adat/lxx_dontesek.tsv |
-| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól) | θάνατος ([thanatosz](/szo/G2288)<sup class="strong" title="G2288 · halál">G2288</sup>) | eltérő | adat/lxx_dontesek.tsv |
+| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
 | Jób 17:12 | — | שְׁא֣וֹל (seól) | — | szamozas_elteres | Septuaginta |
 | Jób 17:15 | — | שְׁאֹ֣ל (seól) | — | szamozas_elteres | Septuaginta |
-| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
 | Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (seól) | — | kutatói azonosítás függőben | Septuaginta |
-| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól) | θάνατος (thanatosz) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
-| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól) | θάνατος ([thanatosz](/szo/G2288)<sup class="strong" title="G2288 · halál">G2288</sup>) | eltérő | adat/lxx_dontesek.tsv |
+| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
 | Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (seálá) | — | kutatói azonosítás függőben | Septuaginta |
-| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
 | Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól) | βόθρος (bothrosz) | eltérő | adat/lxx_dontesek.tsv |
-| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
-| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
-| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
+| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, [Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>) | egyező | Septuaginta |
 
 *Összesítés: egyező=57, eltérő=3, LXX-minusz=0, kutatói azonosítás függőben=2, szamozas_elteres=2.*
 
@@ -1299,7 +1318,7 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
 
 A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 127. **Következtetés:** a helyek 61%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -1526,7 +1545,7 @@ A motívum 74 helyéből 45 helyről mutat utalás más bibliai helyre a hagyom�
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kereszthivatkozasok -->
 
-### Minősítés *(generált)*
+### Minősítés
 
 A 127 utalásból 24 a motívum két saját helyét köti össze, ez 21 helyet érint a 74-ból. **Következtetés:** a motívum helyeinek a 28%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
@@ -1563,11 +1582,11 @@ A 127 utalásból 24 a motívum két saját helyét köti össze, ez 21 helyet �
 
 **Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.<!-- olvasói -->
 
@@ -1577,7 +1596,7 @@ Ehhez a motívumhoz nincs rögzített kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolatok -->
 
-### Alátámasztás *(generált)*
+### Alátámasztás
 
 Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
@@ -1585,11 +1604,11 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 A motívumhoz nincs rögzített kapcsolat.
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-04`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.<!-- olvasói -->
 
@@ -1602,13 +1621,13 @@ A motívumhoz nincs rögzített kapcsolat.
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
 
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolodo -->
 
-## 6. Értelmezés *(kézi)*
+## 6. Értelmezés
 
-A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
 ### PaRDeS keretrendszer
 
@@ -1638,11 +1657,11 @@ A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utal�
 - **A tágabb kör:** ha valaki halálveszélyből kiált az Úrhoz, de a vers nem nevezi meg a Seolt, az a bajban mondott imádsághoz tartozik, nem ide. A legközelebbi ilyen hely a Zsolt 107:18–19: a halál kapujához közeledők az Úrhoz kiáltanak, és ő kiszabadítja őket.
 - **Kapcsolat az Úr nevének segítségül hívásával:** a két motívum a Zsolt 116:3–4-ben ér össze, ahol a Seol szorongatását az Úr nevének segítségül hívása követi; a pünkösdi beszédben pedig a Jóel-idézet (ApCsel 2:21) és a Zsolt 16:10 idézése (ApCsel 2:27, 31) egymás mellett áll. Név nélküli kiáltás nem tartozik a nevet hívó motívumhoz.
 
-## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+## 6/b. Alkalmazás és tanítói egyezés
 
-### Alkalmazás és tanítványság *(kézi)*
+### Alkalmazás és tanítványság
 
-Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
+Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
 
 **A gyász komolyan vétele.** A Biblia nem szégyelli a halál fájdalmát: Jákób nem fogad vigasztalást, Jób a sírt már a házának nevezi, a zsoltáros az életéért alkudozik. A motívum első tanulsága, hogy a hívő gyásza és halálfélelme nem hitetlenség; a Szentírás szavakat ad hozzá, és ezek a szavak Isten elé viszik.
 
@@ -1652,13 +1671,13 @@ Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
 
 **A remény alapja.** A motívum íve azt mutatja, hogy a halottak birodalma fölött Krisztusnak van hatalma (Jel 1:18), és hogy ez a birodalom maga is véget ér (Jel 20:14). A hívő ezért a feltámadás bizonyosságában nézhet szembe a halállal, és Pállal együtt kérdezheti: hol a diadala (1Kor 15:55)? A remény nem a halál tagadása, hanem annak megvallása, hogy a halál nem az utolsó szó.
 
-### Tanítói egyezés *(kézi)*
+### Tanítói egyezés
 
 Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
 Ehhez a motívumhoz nevesített tanítói egyezést még nem kerestünk; a hiány nincs kitöltve.
 
-## 7. Módszertan és nyitott kérdések *(kézi)*
+## 7. Módszertan és nyitott kérdések
 
 Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
@@ -1677,7 +1696,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1687,7 +1706,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `ALVIL-001`
 - Cím: Hádész (Seol) — a halottak birodalma
 - Státusz: publikálható (`v3`, 2026.11.03)
-- Generálva: 2026-11-03
+- Generálva: 2026-11-04
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
@@ -1719,9 +1738,11 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - `adat/lexikon_hivatkozasok.tsv` (CC BY 4.0, közkincs)
 - `adat/lxx_dontesek.tsv` (minden jog fenntartva)
 - `adat/motivumok.tsv` (minden jog fenntartva)
+- `adat/nave_tema_hu.tsv` (minden jog fenntartva)
 - `adat/szotar_szakasz_cimke.tsv` (minden jog fenntartva)
 - `adat/szotar_szerepek.tsv` (minden jog fenntartva)
 - `adat/szoto/karoli_szotari_alak.tsv` (minden jog fenntartva)
+- `adat/tematikus_temak.tsv` (minden jog fenntartva)
 - `adat/thayer_szakaszok.tsv` (közkincs)
 - `adat/thayer_vers_jelentes.tsv` (közkincs)
 - `adat/tiltott_fordulatok.tsv` (minden jog fenntartva)
@@ -1730,17 +1751,20 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - `konkordancia/Karoli_versmegfeleltetes.tsv` (minden jog fenntartva)
 - `konkordancia/LXX_versszintu_parok.tsv` (minden jog fenntartva)
 - `konkordancia/TAHOT_kivonat.tsv` (CC BY 4.0)
+- `konkordancia/Nave_basokant.tsv` (közkincs)
 - `konkordancia/TAGNT_kivonat.tsv` (CC BY 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
+
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált.
 
 | Mező | Érték |
 |---|---|
@@ -1756,7 +1780,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Forrás-study | `motivumok/ALVIL-001.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ALVIL-001/Hadesz_Seol_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |
-| Kiadás | 1 |
+| Kiadás | 2 |
 | Próza modellje | `claude-opus-5-5` |
 
 **Változásjegyzék**
@@ -1764,6 +1788,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után három gépi forrásadat-javítás a szótári részben (Seól átírás, De (5:14), Ef). |
+| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. |
 
 ---
 
@@ -1781,9 +1806,11 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | CC BY 4.0, közkincs | szocikkek |
 | `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | minden jog fenntartva | lxx |
 | `motivumok.tsv` | `adat/motivumok.tsv` | minden jog fenntartva | kizart |
+| `nave_tema_hu.tsv` | `adat/nave_tema_hu.tsv` | minden jog fenntartva | szocikkek |
 | `szotar_szakasz_cimke.tsv` | `adat/szotar_szakasz_cimke.tsv` | minden jog fenntartva | elofordulasok, szocikkek |
 | `szotar_szerepek.tsv` | `adat/szotar_szerepek.tsv` | minden jog fenntartva | szocikkek |
 | `karoli_szotari_alak.tsv` | `adat/szoto/karoli_szotari_alak.tsv` | minden jog fenntartva | szocikkek |
+| `tematikus_temak.tsv` | `adat/tematikus_temak.tsv` | minden jog fenntartva | szocikkek |
 | `thayer_szakaszok.tsv` | `adat/thayer_szakaszok.tsv` | közkincs | szocikkek |
 | `thayer_vers_jelentes.tsv` | `adat/thayer_vers_jelentes.tsv` | közkincs | elofordulasok, szocikkek |
 | `tiltott_fordulatok.tsv` | `adat/tiltott_fordulatok.tsv` | minden jog fenntartva | szocikkek |
@@ -1810,6 +1837,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | `song-of-solomon.tsv` | `konkordancia/LXX_OS/song-of-solomon.tsv` | CC BY 4.0 | lxx |
 | `LXX_versszintu_parok.tsv` | `konkordancia/LXX_versszintu_parok.tsv` | minden jog fenntartva | szocikkek |
 | `MCGED_teljes.tsv` | `konkordancia/MCGED_teljes.tsv` | © Mounce 1993 | szocikkek |
+| `Nave_basokant.tsv` | `konkordancia/Nave_basokant.tsv` | közkincs | szocikkek |
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |

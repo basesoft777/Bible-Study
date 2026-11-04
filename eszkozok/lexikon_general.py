@@ -432,8 +432,7 @@ def _lexikon_blokk(motivum_id, blokk_nev, forras_lista, licenc_lista, hatokor_so
 # a címke 2026-11-03-tól nem látszik (a felhasználó észrevétele); a bekezdést a végén álló láthatatlan jel azonosítja
 OLVASOI_CIMKE = '<!-- olvasói -->'
 OLVASOI_SABLON = {
-    'tartalom': 'A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő '
-                'az adattáblákból.',
+    'tartalom': 'A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.',
     'jelmagyarazat': 'A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, '
                      'itt keresd.',
     'elofordulasok': 'A motívum %(n)d igehelye a bibliai könyvek sorrendjében (%(reszek)s), mindegyik a Károli-fordítás '
@@ -472,16 +471,16 @@ OLVASOI_SABLON = {
 # A rések (kézi vagy adatból generált) olvasói bevezetője: a generátor írja a rés címe alá (ISTENTISZT-001 arany lap, 2026-10-29); a rés törzse
 # (a kézi próza) változatlan.
 OLVASOI_RES = {
-    'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.',
+    'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.',
     '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok.',  # DT-F174a: adat nélkül a rés nem áll a lapon
-    'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.',
+    'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából.',
     'minosites': 'Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a '
                  'Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze '
                  'egymással. Minél több hely kap ilyen kapcsolatot, annál erősebb a motívum külső megerősítése.',
     'alatamasztas': 'Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.',
     'ertelmezes': 'A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. '
-                  'A kutató írta; az állítások alatt a mért adat forrása áll.',
-    'alkalmazas': 'Mit jelent a motívum a hívő életében ma. A kutató írta.',
+                  'Az állítások alatt a mért adat forrása áll.',
+    'alkalmazas': 'Mit jelent a motívum a hívő életében ma.',
     'tanitoi': 'Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.',
     'modszertan': 'Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.',
 }
@@ -1692,6 +1691,13 @@ def glosszak_heber_hu():
         _glosszak_heber_cache = {r['strong']: r for r in L.read_tsv_skip_comments(os.path.join(ROOT, GLOSSZAK_HEBER_HU_FAJL))
                                  if r.get('fo') == 'igen'}
     return _glosszak_heber_cache
+
+
+def strong_cim(strong):
+    """A prózában jelölt Strong-szám `title`-je (DT-F181b): a szám és — ha van — a rövid magyar jelentés („H4196 · oltár”);
+    magyar jelentés híján csak a szám (a „fordításra vár” jelzés nem kerül az egérfeliratba)."""
+    szoveg, van_magyar = rovid_jelentes(strong)
+    return '%s · %s' % (strong, szoveg) if van_magyar and szoveg != EM_DASH else strong
 
 
 def rovid_jelentes(strong):
@@ -3184,7 +3190,9 @@ def kiemel(szoveg, celok):
 
 def _elso_tagmondat(szoveg, hatar=90):
     s = re.sub(r'^\s*(?:(?:\d+|[a-z]|T:\S+)\.?\s+){1,2}', '', szoveg or '').strip()
-    m = re.search(r'(?<!\d):|:(?!\d)|;', s)
+    # a tagmondat-határ csak zárójelen kívül (F123.GENKOR: „(|| אוֺת; így …)” belsejében nem vág; olvasói kapu ZAROJEL)
+    m = next((m for m in re.finditer(r'(?<!\d):|:(?!\d)|;', s)
+              if s[:m.start()].count('(') <= s[:m.start()].count(')')), None)
     if m and m.start() <= hatar:
         s = s[:m.start()]
     elif len(s) > hatar:
@@ -3193,6 +3201,9 @@ def _elso_tagmondat(szoveg, hatar=90):
         if s.count('(') > s.count(')'):
             s = s[:s.rfind('(')].rstrip(' ,;')
         s = s + '…'
+    # a forrásban nyitva maradt zárójel a vázlatsorban sem marad nyitva (F123.GENKOR)
+    while s.count('(') > s.count(')') and s.rfind('(') > 0:
+        s = s[:s.rfind('(')].rstrip(' ,;') + '…'
     return s.strip() or EM_DASH
 
 
@@ -3329,7 +3340,8 @@ def bdb_gerinc_szocikkek(adat, strong):
             hu = None
         if hu is None and e['elnyelo'] and e['kat'] == 'jelolo_nelkul':
             elnyelt[k] = e['elnyelo']
-        sz = (k, szakasz_jel(k[1]), hu, ' '.join(e['en']), e['kat'])
+        # F123.GENKOR: a digitalizálásban elveszett zárójel (`bdb_forras_javitas.tsv` `zarojel`) a rövidítés előtt javul
+        sz = (k, szakasz_jel(k[1]), BR.zarojel_javit(hu, strong), BR.zarojel_javit(' '.join(e['en']), strong), e['kat'])
         if not szocikkek or szocikkek[-1]['bdb_id'] != k[0]:
             szocikkek.append({'bdb_id': k[0], 'fej': None, 'szakaszok': []})
         if k[1] == 'fej':
@@ -4527,6 +4539,53 @@ def kolofon_kiadas_sorok(kiadasok):
     return meta, jegyzek
 
 
+LAP_ATNEZESEK_TSV = os.path.join(ADAT, 'lap_atnezesek.tsv')
+# a szerzőségi mondatban felsorolt értelmező rések (a `res_forras.tsv` `tanulmany` forrású rései), a lapon álló sorrendben
+SZERZOSEG_RESEK = ('kivonat', 'miert_fontos', 'minosites', 'alatamasztas', 'ertelmezes', 'alkalmazas', 'tanitoi',
+                   'modszertan')
+
+
+def _cim_szoveg(fejlec):
+    """A rés fejléce címként: a `#` jelek, a sorszám és a régi „(kézi)” jelölés nélkül („## 6. Értelmezés” → „Értelmezés”)."""
+    s = CIMJELOLES_RE.sub('', fejlec or '').lstrip('#').strip()
+    return re.sub(r'^\d+(?:/[a-z])?\.\s*', '', s)
+
+
+def kolofon_szerzoseg(motivum_id, kiadasok, atnezes_ut=None, res_sorok=None):
+    """A Kolofon szerzőségi mondata (F123.GENKOR, DT-F181c) adatból: az értelmező rések (`res_forras.tsv`
+    `tanulmany` forrás) neve, a legutóbbi kiadás `proza_modell`-je (`adat/kiadasok.tsv`), és hogy a felhasználó
+    átnézte-e (`adat/lap_atnezesek.tsv`) — a „(kézi)” címsorjelölés helyett, amely a prózát hamisan a kutatónak
+    tulajdonította. `manual` modellnél a mondat azt mondja, amit az adat: a készítő modellje nincs rögzítve."""
+    res_sorok = res_forras_sorok() if res_sorok is None else res_sorok
+    nevek = [_cim_szoveg(res_sorok[(motivum_id, r)]['fejlec']) for r in SZERZOSEG_RESEK
+             if (res_sorok.get((motivum_id, r)) or {}).get('forras') == 'tanulmany']
+    if not nevek:
+        return 'A lap minden szakasza az adattáblákból generált.'
+    reszek = '(%s)' % ', '.join(nevek)
+    ut = atnezes_ut or LAP_ATNEZESEK_TSV
+    # az átnézésből csak a tény és a dátum kerül a lapra; az `idezet` (a felhasználó szavai) belső nyilvántartás, soha
+    # nem olvasói szöveg
+    datumok = sorted((r.get('datum') or '').strip() for r in (L.read_tsv_skip_comments(ut) if os.path.isfile(ut) else [])
+                     if (r.get('id') or '').strip() == motivum_id and (r.get('ki') or '').strip() == 'felhasználó')
+    atnezve = datumok[-1] if datumok else ''
+    if not kiadasok:
+        return ('Az értelmező szakaszok %s még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az '
+                'adattáblákból generált.' % reszek)
+    modell = (kiadasok[-1].get('proza_modell') or '').strip()
+    if atnezve:
+        jovahagyas = 'a szerző átnézte (%s) és jóváhagyta' % atnezve if atnezve.strip() else \
+            'a szerző átnézte és jóváhagyta'
+    else:
+        jovahagyas = 'a szerző jóváhagyta'
+    if modell and modell != 'manual':
+        kezdet = ('Az értelmező szakaszokat %s mesterséges intelligencia (`%s`) írta az adatok alapján'
+                  % (reszek, modell))
+    else:
+        kezdet = ('Az értelmező szakaszok %s készítőjét a kiadás nem rögzíti modellnévvel (kézi rögzítés, `manual`)'
+                  % reszek)
+    return '%s; %s. A többi szakasz az adattáblákból generált.' % (kezdet, jovahagyas)
+
+
 LAP_JAVITASOK_TSV = os.path.join(ADAT, 'lap_javitasok.tsv')
 
 
@@ -4605,7 +4664,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
             if szoveg not in megjelolesek:
                 megjelolesek.append(szoveg)
 
-    torzs = '\n'.join(metaadat_sorok)
+    torzs = '**Szerzőség.** %s\n\n' % kolofon_szerzoseg(m['id'], kiadasok) + '\n'.join(metaadat_sorok)
     if kiadas_jegyzek:
         torzs += '\n\n' + '\n'.join(kiadas_jegyzek)
     torzs += '\n\n---\n\n' + '\n'.join(forras_sorok)
@@ -4614,7 +4673,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
-    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'} | ({'adat/kiadasok.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set())),
+    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv', 'adat/res_forras.tsv'} | ({'adat/kiadasok.tsv', 'adat/lap_atnezesek.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set())),
                            sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs, olvasoi('kolofon'))
 
 
@@ -4632,7 +4691,22 @@ RES_SORREND = ('kivonat', '2b', 'miert_fontos', 'minosites', 'alatamasztas',
 # 6. Értelmezés után. A régi lapokon a szakasz még nincs meg; a
 # res_blokkok_alkalmaz() ilyenkor a 7. szakasz (a `modszertan` rés fejléce)
 # elé szúrja, a törzset utána a res_forras.tsv szerint tölti.
-SZAKASZ_6B = '## 6/b. Alkalmazás és tanítói egyezés *(kézi)*'
+SZAKASZ_6B = '## 6/b. Alkalmazás és tanítói egyezés'
+# F123.GENKOR (DT-F181c): a címsor régi „*(kézi)*” / „*(generált)*” jelölése (a prózát hamisan a kutatónak tulajdonította);
+# a generátor a kész lap minden címsorából leveszi (`cimjeloles_ki`), a határkeresés a régi alakot is elfogadja
+CIMJELOLES_RE = re.compile(r' ?\*\((?:kézi|generált)(?:, ha van)?\)\*')
+
+
+def cimjeloles_ki(szoveg):
+    """A kész lap címsoraiból a „*(kézi)*” / „*(generált)*” jelölés nélkül (a kódblokk érintetlen)."""
+    ki, kod = [], False
+    for sor in szoveg.split('\n'):
+        if sor.strip().startswith('```'):
+            kod = not kod
+        elif not kod and re.match(r'^#{1,6}\s', sor):
+            sor = CIMJELOLES_RE.sub('', sor).rstrip()
+        ki.append(sor)
+    return '\n'.join(ki)
 UJ_RESEK_6B = ('alkalmazas', 'tanitoi')
 
 # A dokumentum-sorrend a VAZ_SABLON szerint (allandó): egy rés vagy egy
@@ -5036,18 +5110,17 @@ _LEGACY_FEJLEC = {'2b': '### 2/b *(kézi, ha van)*'}
 def _boundary_index(fajl_szoveg, needle, search_from, res):
     """(index, ténylegesen megtalált szöveg) -- a hívó a második elem
     hosszával lépteti tovább a keresés kezdőpontját."""
+    # F123.GENKOR (DT-F181c): a fejléc sor eleji, teljes sor; a meglévő lap a régi „*(kézi)*” / „*(generált)*”
+    # jelölést is hordozhatja (a jelölés nélküli fejléc mindkét alakot megtalálja; F11 M3: a kettő egymásnak is megfelel)
+    alap = CIMJELOLES_RE.sub('', needle)
+    m = re.compile(r'(?m)^' + re.escape(alap) + r'(?:' + CIMJELOLES_RE.pattern + r')?[ \t]*$').search(fajl_szoveg,
+                                                                                                    search_from)
+    if m:
+        return m.start(), m.group(0)
     try:
         return fajl_szoveg.index(needle, search_from), needle
     except ValueError:
         pass
-    # F11 M3 javítókör: a generált rés fejléce `*(generált)*`; a meglévő lap
-    # és a VAZ_SABLON még a `*(kézi)*` alakot hordozza.
-    kezi = needle.replace('*(generált)*', '*(kézi)*')
-    if kezi != needle:
-        try:
-            return fajl_szoveg.index(kezi, search_from), kezi
-        except ValueError:
-            pass
     legacy = _LEGACY_FEJLEC.get(res)
     if legacy is not None and legacy != needle:
         return fajl_szoveg.index(legacy, search_from), legacy
@@ -5233,7 +5306,7 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     if res in OPCIONALIS_RESEK and _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
         return ''  # DT-F174a: adat nélkül a rés nem áll a lapon
     fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
-    offsets = []
+    offsets, talaltak = [], []
     search_from = 0
     for kind, ertek in _BOUNDARY_SLOTS:
         if kind == 'lit':
@@ -5243,12 +5316,13 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
             if sor is None:
                 raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
             needle = sor['fejlec']
-        i = fajl_szoveg.index(needle, search_from)
+        # F123.GENKOR (DT-F181c): a régi lap a fejlécet még „*(kézi)*” jelöléssel hordozhatja
+        i, talalt = _boundary_index(fajl_szoveg, needle, search_from, ertek if kind == 'res' else None)
         offsets.append(i)
-        search_from = i + len(needle)
+        talaltak.append(talalt)
+        search_from = i + len(talalt)
     slot_idx = _BOUNDARY_SLOTS.index(('res', res))
-    fejlec = sorok[(m['id'], res)]['fejlec']
-    body_start = offsets[slot_idx] + len(fejlec)
+    body_start = offsets[slot_idx] + len(talaltak[slot_idx])
     body_end = offsets[slot_idx + 1]
     torzs = fajl_szoveg[body_start:body_end].strip('\r\n')
     if torzs.split('\n', 1)[0].endswith(OLVASOI_CIMKE):  # a generált olvasói bevezető nem a rés törzse (ISTENTISZT-001 arany lap, 2026-10-29)
@@ -5309,7 +5383,7 @@ def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
 
 VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
-## Kivonat *(kézi)*
+## Kivonat
 
 *Kézzel írandó — 3-5 mondatos prózai kivonat: mi a motívum, milyen azonosság-típusú, hány igehelyen, mi a legfontosabb lexikai lelet.*
 
@@ -5337,7 +5411,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 *Kézzel írandó, ha van.*
 
-### Miért fontos ez a lelet *(kézi)*
+### Miért fontos ez a lelet
 
 *Kézzel írandó.*
 
@@ -5349,7 +5423,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kereszthivatkozasok)s
 
-### Minősítés *(kézi)*
+### Minősítés
 
 *Kézzel írandó: független megerősítés / új találat / nem releváns.*
 
@@ -5357,7 +5431,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kapcsolatok)s
 
-### Alátámasztás *(kézi)*
+### Alátámasztás
 
 *Kézzel írandó.*
 
@@ -5365,21 +5439,21 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 %(kapcsolodo)s
 
-## 6. Értelmezés *(kézi)*
+## 6. Értelmezés
 
 *Kézzel írandó — a forrás-study PaRDeS keretrendszere, bővítve a lexikai leletekkel.*
 
-## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+## 6/b. Alkalmazás és tanítói egyezés
 
-### Alkalmazás és tanítványság *(kézi)*
-
-*Kézzel írandó.*
-
-### Tanítói egyezés *(kézi)*
+### Alkalmazás és tanítványság
 
 *Kézzel írandó.*
 
-## 7. Módszertan és nyitott kérdések *(kézi)*
+### Tanítói egyezés
+
+*Kézzel írandó.*
+
+## 7. Módszertan és nyitott kérdések
 
 *Kézzel írandó.*
 
@@ -5557,7 +5631,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
-            uj_szoveg = OU.alkalmaz(uj_szoveg)
+            uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
             allapot = 'változatlan' if uj_szoveg == meglevo else 'frissítve'
         else:
             uj_szoveg = epit_uj_fajl(m, blokkok)
@@ -5565,7 +5639,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = res_labjegyzetek_alkalmaz(uj_szoveg, m)
             uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
-            uj_szoveg = OU.alkalmaz(uj_szoveg)
+            uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
             allapot = 'új fájl'
 
         if args.ellenoriz:

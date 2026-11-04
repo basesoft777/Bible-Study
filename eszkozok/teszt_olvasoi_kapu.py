@@ -47,7 +47,7 @@ TABLA_FEJ = """## 1. Előfordulások
 def lap(kivonat='', tabla_sorok=None, egy_a='', tobbi='', kolofon=KOLOFON_JO):
     sorok = tabla_sorok if tabla_sorok is not None else [
         '| [1Móz 4:26](#ige) | segítségül hívni | hívni | 🌱 alap-előfordulás | Drash |']
-    return '\n'.join(['# 📖 X-001 — Próba', '', '## Kivonat *(kézi)*', '', kivonat, '', TABLA_FEJ + '\n'.join(sorok),
+    return '\n'.join(['# 📖 X-001 — Próba', '', '## Kivonat', '', kivonat, '', TABLA_FEJ + '\n'.join(sorok),
                       '', '#### 1/a. Az igehelyek szövege', '', egy_a, '', tobbi, '', kolofon])
 
 
@@ -194,8 +194,33 @@ class Negativ(unittest.TestCase):
         self.jelez(lap(tobbi='## 3. LXX-fordítói döntések\n\n| Igehely | Görög megfelelő |\n|---|---|\n'
                              '| 1Móz 4:26 | ἐπικαλεῖσθαι (epikaleiszthai) (ἐπικαλέω, epikaleó G1941) |\n'), 'BELSO')
 
+    def test_GENKOR_bdb_atirasi_betukeszlet(self):
+        """F123.GENKOR: a BDB átírási betűkészletének többi torz jele (N89) is gátló: „Leµi”, „Kor¹n”."""
+        nevek = {t['uzenet'] for t in self.jelez(lap(tobbi='## 2. Szótári háttér\n\nhelyesen olvassa Leµi felé\n'),
+                                                   'BDB_JEL')}
+        self.assertTrue(any('betűkészlete' in n for n in nevek), nevek)
+        self.jelez(lap(tobbi='## 2. Szótári háttér\n\nrecitálni (a Kor¹n)\n'), 'BDB_JEL')
+
+    def test_GENKOR_nyitott_zarojel_vazlatsor(self):
+        """F123.GENKOR (C2/C3): a gerinc vázlatsora a tagmondat-határon vágott, nyitva maradt zárójellel."""
+        self.jelez(lap(tobbi="## 2. Szótári háttér\n\n- `Niph'al 2.c` — megidéztetni (vö. Qal 5\n"), 'ZAROJEL')
+
+    def test_GENKOR_csupasz_strong_a_kezi_prozaban(self):
+        """DT-F181b: a csupasz zárójeles Strong-szám a szó és a kiejtés mellett hiba (a generátor jelölt alakra írja)."""
+        t = self.jelez(lap(tobbi='## 6. Értelmezés\n\nAz „oltár” (מִזְבֵּחַ, mizbéah, H4196) négy helyen áll.\n'),
+                       'BELSO')
+        self.assertTrue(any(x['uzenet'].startswith('Strong-szám') for x in t))
+
+    def test_GENKOR_szerzosegi_jeloles(self):
+        """DT-F181c: a „(kézi)” / „(generált)” jelölés címsorban és a Tartalomjegyzék magyarázatában is hiba."""
+        t = self.jelez(lap(tobbi='## 6. Értelmezés *(kézi)*\n\nSzöveg.\n\n### Minősítés *(generált)*\n\nx\n'),
+                       'BELSO')
+        self.assertEqual(sum(x['db'] for x in t if x['uzenet'].startswith('szerzőségi')), 2)
+        self.jelez(lap(tobbi='## Tartalomjegyzék\n\nA lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta.\n'),
+                   'BELSO')
+
     def test_G5_munkafolyamat_kerdes(self):
-        self.jelez(lap(tobbi='## 6. Értelmezés *(kézi)*\n\nFel kell-e venni a jeloltek.tsv-be, és át kell-e vezetni '
+        self.jelez(lap(tobbi='## 6. Értelmezés\n\nFel kell-e venni a jeloltek.tsv-be, és át kell-e vezetni '
                              'a tematikus study 2. és 3. pontjába?\n'), 'BELSO')
 
 
@@ -205,6 +230,22 @@ class Pozitiv(unittest.TestCase):
     def nincs(self, szoveg, *azon):
         tal = [t for t in meres(szoveg) if t['azonosito'] in azon]
         self.assertEqual(tal, [], tal)
+
+    def test_GENKOR_jelolt_strong_nem_hiba(self):
+        """DT-F181b: a jelölt alak (kiejtés-hivatkozás + halvány felső index) nem belső jel, és a kiejtés-pár látszik."""
+        tobbi = ('## 6. Értelmezés\n\nAz „oltár” (מִזְבֵּחַ, [mizbéah](/szo/H4196)<sup class="strong" title="H4196 · oltár">'
+                 'H4196</sup>) négy helyen áll.\n')
+        self.nincs(lap(tobbi=tobbi), 'BELSO', 'IDEZOJEL', 'ZAROJEL')
+        tobbi = ('## 6. Értelmezés\n\nA תְּהוֹם ([tehóm](/szo/H8415)<sup class="strong" title="H8415 · mélység">H8415</sup>) '
+                 'lexéma.\n')
+        self.nincs(lap(tobbi=tobbi), 'BELSO')
+        self.assertTrue(any(k == 'tehóm' for _h, k, _n, _i in K.kiejtes_parok(K.tagol(lap(tobbi=tobbi)))))
+
+    def test_GENKOR_szerzoseg_a_kolofonban_nem_hiba(self):
+        kolofon = KOLOFON_JO.replace('| Mező | Érték |', '**Szerzőség.** Az értelmező szakaszok (Kivonat) készítőjét a '
+                                     'kiadás nem rögzíti modellnévvel (kézi rögzítés, `manual`); a szerző jóváhagyta.\n\n'
+                                     '| Mező | Érték |')
+        self.nincs(lap(kolofon=kolofon), 'BELSO')
 
     def test_strong_oszlop_es_onallo_strong(self):
         """A táblázat „Strong” oszlopa, a címsor és a szó nélkül álló Strong-szám nem belső jel."""
@@ -264,7 +305,7 @@ class Pozitiv(unittest.TestCase):
         self.nincs(lap(tobbi=tobbi), 'ANGOL')
 
     def test_sortordelt_bekezdes_zarojele(self):
-        tobbi = ('## 6. Értelmezés *(kézi)*\n\nA formula konkrét, helyhez kötött kultikus jelhez kapcsolva (oltárépítés '
+        tobbi = ('## 6. Értelmezés\n\nA formula konkrét, helyhez kötött kultikus jelhez kapcsolva (oltárépítés '
                  '12:8,\n13:4; 26:25) jelenik meg.\n')
         self.nincs(lap(tobbi=tobbi), 'ZAROJEL')
 

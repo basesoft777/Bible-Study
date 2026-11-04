@@ -79,20 +79,40 @@ class TestBdb(unittest.TestCase):
 
 
 class TestStrong(unittest.TestCase):
-    """F123.INDOKLAS: a szó és a kiejtése mellett álló Strong-szám kikerül az olvasói szövegből."""
+    """F123.GENKOR (DT-F181b): a szó és a kiejtése mellett álló Strong-szám jelölt alakra íródik: a kiejtés (ennek híján
+    a szó) hivatkozás a szónézetre, a szám halvány felső index. A korábbi szabály (F123.INDOKLAS) eltávolította."""
+
+    @staticmethod
+    def jel(strong, cim=None):
+        return '<sup class="strong" title="%s">%s</sup>' % (cim or strong, strong)
 
     def test_zarojel_a_szo_utan(self):
         self.assertEqual(OU.strong_ki('a versben ἐπικαλέομαι áll, de ὄνομα (G3686) nélkül'),
-                         'a versben ἐπικαλέομαι áll, de ὄνομα nélkül')
+                         'a versben ἐπικαλέομαι áll, de [ὄνομα](/szo/G3686)%s nélkül' % self.jel('G3686'))
+        self.assertEqual(OU.strong_ki('de *ὄνομα* (G3686) nélkül'), 'de *[ὄνομα](/szo/G3686)*%s nélkül' % self.jel('G3686'))
 
     def test_zarojelben_a_kiejtes_mellett(self):
         self.assertEqual(OU.strong_ki('ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó G1941)'),
-                         'ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó)')
-        self.assertEqual(OU.strong_ki('A תְּהוֹם (tehóm, H8415) lexéma'), 'A תְּהוֹם (tehóm) lexéma')
-        self.assertEqual(OU.strong_ki('a מָלֵא (*málé*, H4390, "megtelni") ige'), 'a מָלֵא (*málé*, "megtelni") ige')
+                         'ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, [epikaleó](/szo/G1941)%s)' % self.jel('G1941'))
+        self.assertEqual(OU.strong_ki('A תְּהוֹם (tehóm, H8415) lexéma'),
+                         'A תְּהוֹם ([tehóm](/szo/H8415)%s) lexéma' % self.jel('H8415'))
+        self.assertEqual(OU.strong_ki('a מָלֵא (*málé*, H4390, "megtelni") ige'),
+                         'a מָלֵא ([*málé*](/szo/H4390)%s, "megtelni") ige' % self.jel('H4390'))
+        self.assertEqual(OU.strong_ki('Az „oltár” (מִזְבֵּחַ, mizbéah, H4196) négy helyen'),
+                         'Az „oltár” (מִזְבֵּחַ, [mizbéah](/szo/H4196)%s) négy helyen' % self.jel('H4196'))
 
     def test_a_szo_elott(self):
-        self.assertEqual(OU.strong_ki('a rokon H6089 עֶצֶב szót'), 'a rokon עֶצֶב szót')
+        self.assertEqual(OU.strong_ki('a rokon H6089 עֶצֶב szót'), 'a rokon [עֶצֶב](/szo/H6089)%s szót' % self.jel('H6089'))
+
+    def test_szo_nelkuli_zarojel_eleje_kiesik(self):
+        self.assertEqual(OU.strong_ki('segítségül hívás (H7121, שֵׁם nélkül): rokon'), 'segítségül hívás (שֵׁם nélkül): rokon')
+
+    def test_cim_es_idempotencia(self):
+        cim = {'H4196': 'H4196 · oltár "x"'}.get
+        u = OU.strong_ki('(מִזְבֵּחַ, mizbéah, H4196)', cim)
+        self.assertEqual(u, '(מִזְבֵּחַ, [mizbéah](/szo/H4196)<sup class="strong" title="H4196 · oltár &quot;x&quot;">H4196</sup>)')
+        self.assertEqual(OU.strong_ki(u, cim), u)
+        self.assertEqual(OU.strong_valtozas(u), [])
 
     def test_szo_nelkul_es_lancban_marad(self):
         for s in ('a H7496/H7497 Strong-szám szerinti megoszlás', 'a kárá (H7121) és a sém (H8034)',
@@ -107,17 +127,18 @@ class TestStrong(unittest.TestCase):
                   '|---|---|---|---|\n| שֵׁם | sém | H8034 | a שֵׁם (sém, H8034) szó |\n\n'
                   '### H5303 — נְפִלִים (ne.phil)\n<!-- GENERÁLT-VÉGE: x -->\n')
         ki = OU.alkalmaz(szoveg)
-        self.assertIn('| שֵׁם | sém | H8034 | a שֵׁם (sém) szó |', ki)
+        self.assertIn('| שֵׁם | sém | H8034 | a שֵׁם ([sém](/szo/H8034)%s) szó |' % self.jel('H8034'), ki)
         self.assertIn('### H5303 — נְפִלִים (ne.phil)', ki)
         self.assertEqual(OU.strong_valtozas(ki), [])
 
-    def test_kezi_resz_erintetlen_de_jelzett(self):
-        """DT569: a kézi részt a generátor nem írja; a kapu mérője jelzi (generált-e = False)."""
-        szoveg = '## 6. Értelmezés *(kézi)*\n\nAz „oltár” (מִזְבֵּחַ, mizbéah, H4196) négy helyen áll.\n'
-        self.assertEqual(OU.alkalmaz(szoveg), szoveg)
-        v = OU.strong_valtozas(szoveg)
-        self.assertEqual(len(v), 1)
-        self.assertFalse(v[0][3])
+    def test_kezi_resz_is_jelolt(self):
+        """DT-F181b: a kézi forrás „(szó, kiejtés, H4196)” alakja a generátor bemenete; a szöveg nem változik, csak a
+        jelölés. A csupasz alakot a kapu mérője jelzi; a jelöltet nem."""
+        szoveg = '## 6. Értelmezés\n\nAz „oltár” (מִזְבֵּחַ, mizbéah, H4196) négy helyen áll.\n'
+        self.assertEqual(len(OU.strong_valtozas(szoveg)), 1)
+        ki = OU.alkalmaz(szoveg)
+        self.assertIn('[mizbéah](/szo/H4196)%s' % self.jel('H4196'), ki)
+        self.assertEqual(OU.strong_valtozas(ki), [])
 
     def test_kod_es_proveniencia_erintetlen(self):
         s = '`ὄνομα (G3686)` | scope=manual | forras=x (ὄνομα, G3686) | ts=2026-11-04'

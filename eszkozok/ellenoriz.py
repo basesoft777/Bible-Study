@@ -685,7 +685,11 @@ def res_egyezik(elvart, tenyleges):
     """A rés egyezik-e: a lap olvasói szövegét a generátor a kész lapon egységesíti (olvasoi_utofeldolg, 2026-11-02);
     az egységesítés előtt generált (még nem újragenerált) lap a nyers elvárttal egyezik."""
     import olvasoi_utofeldolg as OU
-    return tenyleges in (elvart, OU.alkalmaz(elvart))
+    import lexikon_general as LG
+    # F123.GENKOR: a jelölt Strong-szám felirata (szám · rövid jelentés, DT-F181b) és a címsor szerzőségi jelölés
+    # nélkül (DT-F181c) a generátoréval azonos
+    return tenyleges in (elvart, OU.alkalmaz(elvart),
+                         OU.alkalmaz(LG.cimjeloles_ki(elvart), strong_cim=LG.strong_cim))
 
 
 def szabaly11_res_forras_egyezes(adat_dir):

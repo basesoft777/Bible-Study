@@ -2,9 +2,9 @@
 
 # 📖 TEREMT-002 — Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor
 
-## Kivonat *(kézi)*
+## Kivonat
 
-A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.<!-- olvasói -->
 
 A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhú vávóhú) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
 
@@ -18,7 +18,7 @@ A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος κ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
+A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -361,7 +361,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>2 (1 szakasz)</summary>
 
-- `2` — átvitt értelemben arról, ami üres, valótlan, mint a bálványok 1Sám 12:21 (gyűjtőnévként
+- `2` — átvitt értelemben arról, ami üres, valótlan, mint a bálványok 1Sám 12:21…
 
 </details>
 
@@ -407,9 +407,9 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H0922** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé): 2 vers; εἰμί (eimi): 2 vers; ἄβυσσος (abüsszosz): 1 vers; ἀόρατος (aoratosz): 1 vers; ἐπάνω (epanó): 1 vers; ἐπιβάλλω (epiballó): 1 vers; ἐπιβλέπω (epiblepó): 1 vers; ἐπιφέρω (epiferó): 1 vers; ἔρημος (erémosz): 1 vers; θεός (theosz): 1 vers
+**H0922** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 2 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 2 vers; ἄβυσσος ([abüsszosz](/szo/G0012)<sup class="strong" title="G0012 · mélység">G0012</sup>): 1 vers; ἀόρατος ([aoratosz](/szo/G0517)<sup class="strong" title="G0517 · láthatatlan">G0517</sup>): 1 vers; ἐπάνω ([epanó](/szo/G1883)<sup class="strong" title="G1883">G1883</sup>): 1 vers; ἐπιβάλλω ([epiballó](/szo/G1911)<sup class="strong" title="G1911">G1911</sup>): 1 vers; ἐπιβλέπω ([epiblepó](/szo/G1914)<sup class="strong" title="G1914">G1914</sup>): 1 vers; ἐπιφέρω ([epiferó](/szo/G2018)<sup class="strong" title="G2018">G2018</sup>): 1 vers; ἔρημος ([erémosz](/szo/G2048)<sup class="strong" title="G2048 · puszta">G2048</sup>): 1 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 1 vers
 
-**H8414** · 19 vers a Septuagintában (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé): 8 vers; εἰμί (eimi): 8 vers; οὐδείς (údeisz): 7 vers; πᾶς (pasz): 5 vers; ποιέω (poieó): 5 vers; μάταιος (mataiosz): 4 vers; ἄρχων (arkhón): 3 vers; θεός (theosz): 3 vers; κύριος (küriosz): 3 vers; λέγω (legó): 3 vers
+**H8414** · 19 vers a Septuagintában (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 8 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 8 vers; οὐδείς ([údeisz](/szo/G3762)<sup class="strong" title="G3762">G3762</sup>): 7 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 5 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 5 vers; μάταιος ([mataiosz](/szo/G3152)<sup class="strong" title="G3152 · hiábavaló">G3152</sup>): 4 vers; ἄρχων ([arkhón](/szo/G0758)<sup class="strong" title="G0758">G0758</sup>): 3 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 3 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 3 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 3 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -516,9 +516,9 @@ A motívum 3 helye közül 1 helyen a héber vagy görög szövegben megvan a mo
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#szocikkek -->
 
-### Miért fontos ez a lelet *(kézi)*
+### Miért fontos ez a lelet
 
-Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
+Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasói -->
 
 #### H0922 — בֹּהוּ (bóhú) · BDB
 
@@ -538,9 +538,9 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 1:2 | 1Móz 1:2 | תֹ֙הוּ֙ (tóhú) | ἀόρατος (aoratosz) | eltérő | adat/lxx_dontesek.tsv |
+| 1Móz 1:2 | 1Móz 1:2 | תֹ֙הוּ֙ (tóhú) | ἀόρατος ([aoratosz](/szo/G0517)<sup class="strong" title="G0517 · láthatatlan">G0517</sup>) | eltérő | adat/lxx_dontesek.tsv |
 | Jer 4:23 | Jer 4:23 | תֹ֖הוּ (tóhú) | — | kutatói azonosítás függőben | Septuaginta |
-| Ézs 34:11 | Ézs 34:11 | תֹ֖הוּ (tóhú) | ἔρημος (erémosz) | eltérő | adat/lxx_dontesek.tsv |
+| Ézs 34:11 | Ézs 34:11 | תֹ֖הוּ (tóhú) | ἔρημος ([erémosz](/szo/G2048)<sup class="strong" title="G2048 · puszta">G2048</sup>) | eltérő | adat/lxx_dontesek.tsv |
 
 *Összesítés: egyező=0, eltérő=2, LXX-minusz=0, kutatói azonosítás függőben=1, szamozas_elteres=0.*
 
@@ -586,7 +586,7 @@ A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyomán
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kereszthivatkozasok -->
 
-### Minősítés *(generált)*
+### Minősítés
 
 A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet érint a 3-ból. **Következtetés:** a motívum helyeinek a 67%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.<!-- olvasói -->
 
@@ -741,7 +741,7 @@ graph LR
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kapcsolatok -->
 
-### Alátámasztás *(generált)*
+### Alátámasztás
 
 Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
@@ -767,9 +767,9 @@ A motívumhoz nincs rögzített motívumközi kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kapcsolodo -->
 
-## 6. Értelmezés *(kézi)*
+## 6. Értelmezés
 
-A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
 **Peshat.** A három szöveg szó szerint ugyanazt az állapotot mondja ki a földről, három különböző helyzetben. Az 1Móz 1:2 a föld állapotát írja le a teremtő szavak előtt: kietlen és puszta. A kiinduló-állapot olvasat szerint a vers nem mond el semmilyen eseményt, amely ezt az állapotot előidézte, csak állapotot rögzít (a restitúciós olvasat ezt másként látja; l. ⚠️ Vitatott pontok). Ez az állapot az, amelyből a következő versek rendezése kiindul — az első teremtő szó a világosság: „Legyen világosság: és lőn világosság.”[^k-gen3]
 
@@ -812,11 +812,11 @@ A szövegből mindkét irányban tehetők megfigyelések.
 
 Hogy az Ézs 45:18 a *tohu*-t mint célt vagy mint kiinduló állapotot tagadja-e, és hogy a הָיְתָה „vala” vagy „lett”, maga is az értelmezés tárgya. A szöveg-adat a vitát nem dönti el; a próza többi részében az egyik olvasatra épülő mondatok feltételes jelölést kapnak.
 
-## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+## 6/b. Alkalmazás és tanítói egyezés
 
-### Alkalmazás és tanítványság *(kézi)*
+### Alkalmazás és tanítványság
 
-Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
+Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
 
 A 3. pont megállapításaiból három alkalmazás következik.
 
@@ -826,7 +826,7 @@ A második az ítélet olvasása (Peshat, Drash). A próféták az ítéletet a 
 
 A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért az ítéletben nem Isten utolsó szava. Hogy a kezdetben a *tohu* a teremtés első állapota volt-e, vagy már egy ítélet nyoma, azt a két olvasat eltérően látja (3. pont, ⚠️); az 1Móz 1:2 után azonban mindkettőben az 1:3 rendező szava következik. A tanítvány reménye a lakható rend helyreállítására irányul, nem a pusztulás szemléletére.
 
-### Tanítói egyezés *(kézi)*
+### Tanítói egyezés
 
 Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
@@ -857,7 +857,7 @@ A vizsgált **18 tanítóból 1 tanítónál (Derek Prince) van URL-lel igazolt,
 - A Hagin-gap hozzáférési korlát (403), nem tartalmi negatív lelet; kézi, böngészős ellenőrzéssel pótolható.
 - A keresőmotor általános, nem könyvtár- vagy átirat-specifikus; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy nem volt igazolható forrás. A csoportos keresésekre ez fokozottan áll.
 
-## 7. Módszertan és nyitott kérdések *(kézi)*
+## 7. Módszertan és nyitott kérdések
 
 Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
@@ -963,11 +963,13 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
+
+**Szerzőség.** Az értelmező szakaszok (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Tanítói egyezés, Módszertan és nyitott kérdések) még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az adattáblákból generált.
 
 | Mező | Érték |
 |---|---|

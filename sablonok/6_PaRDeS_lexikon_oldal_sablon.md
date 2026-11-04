@@ -84,10 +84,15 @@ bemenete vagy kimenete (F6_BRIEF.md K17).
 
 A sorrend és a címek a generátor fájlváza szerint kötöttek
 (`eszkozok/lexikon_general.py` `VAZ_SABLON`, LEXV2_2_BRIEF.md G1).
-Minden szakaszcím **(generált)** vagy **(kézi)** jelöléssel: a
+Az alábbi **(generált)** / **(kézi)** jelölés ennek a sablonnak a
+munkajelölése, **a lapon nem áll** (F123.GENKOR, DT-F181c): a
 **(generált)** szakasz tartalma a `general.py --cel lexikon` GENERÁLT-
 marker-blokkja, kézzel nem szerkeszthető (a szerkesztés a legközelebbi
-futtatáskor felülíródik); a **(kézi)** szakaszt a generátor nem érinti.
+futtatáskor felülíródik); a **(kézi)** szakasz törzse a motívum kézi
+forrásából jön, a lapon nem szerkeszthető. A lap címsorai jelölés
+nélküliek; a szerzőséget a Kolofon mondata adja (l. ott). Az olvasói
+kapu a „(kézi)” / „(generált)” jelölést a lapon belső jelnek veszi
+(BELSO, BUKÁS).
 
 ### `# 📖 ID — cím` + Kivonat (kézi)
 A motívum ID-je és teljes címe fejlécként, alatta egy rövid (3-5
@@ -296,6 +301,9 @@ Blokk — a fájlban ténylegesen felhasznált forrásfájlok, fájlonkénti
 licenc-hozzárendeléssel. L. "Licenc és nyilvános repó" alább.
 A Kolofon a **kiadás** sorát is viseli: kiadásszám (1 = a generált első lap) és változásjegyzék (kiadás | dátum | mi változott). **Forrása az `adat/kiadasok.tsv`** (SEMA 2.46, DT492): a kiadásszám a motívum legnagyobb `kiadas` értéke, a változásjegyzék a motívum sorai; motívum sora nélkül a kolofon nem ír kiadás-sort. A kolofont kézzel szerkeszteni tilos, a sor a táblába kerül. **Lezáráskor** (`MUNKAMENET.md` C5: a Feed 8 kapuja zöld) ide kerül az **1. kiadás** sora (`kiadas=1`), a `motivumok.tsv` verzió-emelésével együtt; utána a lap újragenerálódik. A második és későbbi kiadást a felhasználó indítja a `/kiadas <ID>` paranccsal (`.claude/commands/kiadas.md`), és annak 5. lépése írja a következő sort; a MUNKAMENET csak hivatkozik rá (C-k). A `/kiadas` kérdései a következő kiadás bemenetei, a lezárást nem akasztják (DT486). A kisebb, helyi javítás (homályos, pontatlan, belső szakszó, az adatnak ellentmondó hely) útja a `/lap-javit <ID>` (`.claude/commands/lap-javit.md`, `MUNKAMENET.md` C-j): a felhasználó rámutat, a javítás jóváhagyás után készül, és minden hely az `adat/lap_javitasok.tsv`-be kerül (SEMA 2.49). Ebből generálódik a Kolofon **„Emberi lektorálás”** sora („N hely (dátumok); lektorálók: …”, a nem generátor típusú sorokból); sor nélkül a sor nem áll (DT599).
 A Kolofon rögzíti a **próza modelljét** is: a tényleges modellnevet (pl. `claude-opus-5-5`), a CLAUDE.md modell-szabálya szerint a futó környezetből, nem briefből másolva; ez teszi ellenőrizhetővé, hogy a `/kiadas` lektora (`.claude/agents/lektor.md`) a prózát író modelltől eltér (DT473).
+A Kolofon első sora a **szerzőségi mondat** (F123.GENKOR, DT-F181c), adatból: az értelmező szakaszok neve (`adat/res_forras.tsv`, `tanulmany` forrású rések), a legutóbbi kiadás `proza_modell`-je és az átnézés (`adat/lap_atnezesek.tsv`), pl. „Az értelmező szakaszokat (Kivonat, …, Módszertan) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte és jóváhagyta. A többi szakasz az adattáblákból generált.” `manual` modellnél a mondat azt mondja, hogy a kiadás nem rögzít modellnevet; kiadás nélkül azt, hogy a szakaszok még nincsenek kiadva.
+
+**Strong-szám az olvasói prózában** (DT-F181b): ahol a héber/görög szó mellett a kiejtés és a Strong-szám áll, a forrás „(מִזְבֵּחַ, mizbéah, H4196)” alakja a generátor bemenete; a lapon a kiejtés a szónézetre mutató hivatkozás, a Strong-szám kis, halvány felső index, egér alatt a szám és a rövid jelentés (`[mizbéah](/szo/H4196)<sup class="strong" title="H4196 · oltár">H4196</sup>`), nyomtatásban a halvány felső index. A csupasz, zárójeles szám a lapon hiba (olvasói kapu, BELSO).
 
 ---
 
