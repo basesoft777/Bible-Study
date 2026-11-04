@@ -4,7 +4,7 @@
 
 *Döntés nélküli munkafájl: jelentéstartományt nem választ, prózát nem ír, motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`) és adattáblát (`adat/*.tsv`) nem ír (2b). A teljes sorok a mellékelt TSV-kben állnak, minden sor mellett a lekérdezés proveniencia-sorával; ez a fájl összegzés. A lekérdezések naplója: `naplok/F123_lekerdezesek.tsv` (`lekerdez.py --naplo F123`). Munkaszkript: `naplok/F123_adat_keszito.py` (az ALVIL-001-é; alparancsok: `f108`, `szotar`, `proza`, `rokon`), felmérő eszköz: `eszkozok/motivum_felmeres.py`. Futtatás: `PARDES_DATUM=2026-11-02`, a `c813fd34` (main) commiton.*
 
-*Hatókör (DT497 (2)): csak az X.A. Az X.M1–X.M5 (leképezési tábla, szétválasztás, mérés, törzscikk) és minden prózát író lépés a DT-F123c (a `9_` sablon v1) ⛔ után jön. Az ANTROP-001-nek nincs külön kereszthivatkozás-naplója (N18, N-F63b; 2a. 3.); ezt az X.M1 tábla mondja ki.*
+*Hatókör (DT497 (2)): csak az X.A. Az X.M1–X.M5 (leképezési tábla, szétválasztás, mérés, törzscikk) és minden prózát író lépés a DT585 (a `9_` sablon v1) ⛔ után jön. Az ANTROP-001-nek nincs külön kereszthivatkozás-naplója (N18, N-F63b; 2a. 3.); ezt az X.M1 tábla mondja ki.*
 
 ## 0. A motívum az adatrétegben
 

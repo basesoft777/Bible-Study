@@ -1,6 +1,6 @@
 # F123 U1 — az ANTROP-001 teljesség-mérése három hálóval (DT548)
 
-*#123 MIGRACIO2 v2 · U1 (`munka: adat`) · ág: `claude/confident-brahmagupta-93518c` · modell: claude-opus-5-5 · 2026-11-03 · sablon: `9_` v1 (DT-F123c)*
+*#123 MIGRACIO2 v2 · U1 (`munka: adat`) · ág: `claude/confident-brahmagupta-93518c` · modell: claude-opus-5-5 · 2026-11-03 · sablon: `9_` v1 (DT585)*
 
 *Döntés nélküli mérés. Eszköz: `eszkozok/teljesseg_meres.py`, ennél a motívumnál bővítve a **szópár-móddal** (`--kollokacio --rokon G4151=G4152,G5590=G5591`; teszt: `eszkozok/teszt_teljesseg_meres.py`, 11 OK), mert a motívum azonossága nem egy szó, hanem két szó együttállása: az 1. háló így a pár (vagy a tagok melléknévi alakjának) közös versei, nem a négy Strong egyenkénti ~1 600 verse. Soronkénti kimenet: `naplok/F123_teljesseg_ANTROP-001.tsv` (2 500 sor, minden sor mellett a háló proveniencia-sora). Az eltérések gépi lexéma-osztálya: `naplok/F123_teljesseg_ANTROP-001_blokkok.tsv` (`naplok/F123_ANTROP2_osztaly.py`); a TR/kritikai szövegállás: `naplok/F123_ANTROP2_tr_kritikai.tsv`. A hét lépés determinisztikus részének mai futása: `naplok/F123_ANTROP2_u1_kimenet.txt` (`naplok/F123_ANTROP2_u1_futtat.sh`, 20 sor az `adat/auditok.tsv`-ben, B4).*
 

@@ -139,5 +139,5 @@ proveniencia: scope=bdb_szakasz_hu.tsv T0 (HEAD 8578a109) ↔ T2 | forras=saját
 
 ## 10. Ami nem e PR-é
 
-- **A `lexikon_general.py` BDB-gerince csak útvonal szerint azonosít** (a #608-ban N-F123m). A javítás nem kicsi: az útvonal a kulcs a `szotar_szakasz_cimke.tsv`-ben (`szotar` + `strong` + `szakasz`), a `lexikon_hivatkozasok` → útvonal leképezésben (`gerinc_utvonal_vag`), a kiemelésben (`celok`, `hordozo`), és a 17./18. szabályban is. A `bdb_id` + útvonal kulcs ezért séma- és kapuváltozás, így külön tétel marad; a táblajavítás megy előre. A H2416 lapblokkja ettől még összevonhat azonos útvonalú szakaszokat (például a `-/1/-` a BDB2716-ból, a BDB2718-ból és a BDB2720-ból).
+- **A `lexikon_general.py` BDB-gerince csak útvonal szerint azonosít** (a #608-ban N98). A javítás nem kicsi: az útvonal a kulcs a `szotar_szakasz_cimke.tsv`-ben (`szotar` + `strong` + `szakasz`), a `lexikon_hivatkozasok` → útvonal leképezésben (`gerinc_utvonal_vag`), a kiemelésben (`celok`, `hordozo`), és a 17./18. szabályban is. A `bdb_id` + útvonal kulcs ezért séma- és kapuváltozás, így külön tétel marad; a táblajavítás megy előre. A H2416 lapblokkja ettől még összevonhat azonos útvonalú szakaszokat (például a `-/1/-` a BDB2716-ból, a BDB2718-ból és a BDB2720-ból).
 - A H7585 „®” átírás-hibája és a TEREMT-002 üres-sor eltérése (orkesztrátor: külön tétel).

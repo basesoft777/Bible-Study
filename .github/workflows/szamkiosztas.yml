@@ -19,12 +19,16 @@ name: szamkiosztas
 on:
   push:
     branches: [main]
+  workflow_dispatch:   # kézi számkiosztás, ha egy futás elveszett (CI.PRALAP.2)
 
 permissions:
   contents: read
 
 concurrency:
-  group: feladatok-frissites
+  # CI.PRALAP.2: a bot-commit futasa a job `if`-je miatt kimarad, de a csoportban
+  # kiszoritana a varakozo (emberi) futast (csak egy varakozo lehet). A bot-futas
+  # ezert sajat, egyedi csoportba kerul.
+  group: ${{ endsWith(github.actor, '[bot]') && format('bot-{0}', github.run_id) || 'feladatok-frissites' }}
   cancel-in-progress: false
 
 jobs:

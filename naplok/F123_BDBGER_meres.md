@@ -1,4 +1,4 @@
-# F123.BDBGER — a BDB-gerinc szócikk-összevonása (az N-F123m második fele)
+# F123.BDBGER — a BDB-gerinc szócikk-összevonása (az N98 második fele)
 
 *scope=adat/bdb_szakaszok.tsv (2.30) + adat/bdb_vers_jelentes.tsv (2.29) + adat/bdb_szakasz_hu.tsv (2.32) + konkordancia/BDB_teljes_unabridged.tsv + adat/elofordulasok.tsv + lexikon/*_TUDOMANYOS.md (9 lap; az ANTROP-001 a PR #608 ágán, ab54fbf5) | forras=naplok/F123_BDBGER_meres.py (kimenet: naplok/F123_BDBGER_meres_kimenet.txt) + eszkozok/general.py --cel lexikon --id <ID> --kimenet <repón kívül> előtte/utána + diff | ts=2026-11-03*
 
@@ -15,7 +15,7 @@ előtt): a H2416 kibontott `1` szakasza a BDB2718 („állat, mint élő, tevék
 és a BDB9522 (arámi) szövegét fűzte egybe; a rövid fejsor „rokon nyelvi adat: arab”-ja a BDB2717 (rokonság)
 fejéből szivárgott át.
 
-A DT-F123s (1) (a) próbája csak az összevonást kulcsolta át, ezért bukott (a hordozó-halmaz és a kiemelés
+A DT589 (1) (a) próbája csak az összevonást kulcsolta át, ezért bukott (a hordozó-halmaz és a kiemelés
 útvonal-kulcsú maradt: mindhárom `1` kibontva, az arámi szöveg kétszer). Ebből a tanulság: a kulcsot **mindenütt**
 cserélni kell, és a 2.29 példahelyének is szócikket kell kapnia — a 2.29 `bdb_id` oszlopa ugyanis nem a 2.30
 azonosítója (az OSHL-azonosítók listája, pl. `h.cd.ab,…`).

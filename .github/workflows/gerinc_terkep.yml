@@ -44,7 +44,10 @@ permissions:
   contents: read
 
 concurrency:
-  group: gerinc-terkep
+  # CI.PRALAP.2: a bot-commit futasa a job `if`-je miatt kimarad, de a csoportban
+  # kiszoritana a varakozo (emberi) futast (csak egy varakozo lehet). A bot-futas
+  # ezert sajat, egyedi csoportba kerul.
+  group: ${{ endsWith(github.actor, '[bot]') && format('bot-{0}', github.run_id) || 'gerinc-terkep' }}
   cancel-in-progress: false
 
 jobs:

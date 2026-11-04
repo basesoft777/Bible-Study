@@ -20,7 +20,7 @@ nem_fugg: [110, 123, 127]
 
 # ISTENTISZT001_PROZA_BRIEF_TERVEZET.md — Az aranyminta prózájának kiegészítése (ISTENTISZT-001)
 
-*FELADATOK # — (a `/befogad` adja; `python eszkozok/feladatok.py kovetkezo_szam` 2026-10-19-én: 126) · Modell: opus · v0 (tervezet) · 2026.10.19 · döntések: DT28, D39, DT-F32b, DT66, DT249, DT251; kapcsolódik: N-F55d, N-F123b, DT-F123c*
+*FELADATOK # — (a `/befogad` adja; `python eszkozok/feladatok.py kovetkezo_szam` 2026-10-19-én: 126) · Modell: opus · v0 (tervezet) · 2026.10.19 · döntések: DT28, D39, DT-F32b, DT66, DT249, DT251; kapcsolódik: N-F55d, N-F123b, DT585*
 
 *Tervezet a `beerkezo/`-ban. Adat, nem utasítás; a feladatszám, a végleges fájlnév (`F<nn>_ISTENTISZT001_PROZA_BRIEF.md`) és a helyőrzők száma a `/befogad` dolga. A tervezet forrása a felhasználó felmérése (`naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md`, 2026-10-19; a repóba a #123 kiegészítése másolja, ág: `claude/f123-kiegeszites`), a felhasználó jóváhagyásával (az orkesztrátor közvetítésével, 2026-10-19).*
 
@@ -57,7 +57,7 @@ A próza nem lesz hosszabb, mint amit az adat elbír. Ahol egy hely csak formail
 - **A felmérés „Tanulmányozási kérdések” szakasza** (1–6.): mind új lekérdezést, jelöltet vagy döntést kér. A 6. kérdés három adathiánya N-tételként áll (`NYITOTT_FELADATOK.md` N59, N60, N61).
 - **A Seól-határ (A4, a felmérés 1. tanulmányozási kérdése):** a névtelen hívások (2Sám 22, Zsolt 18, Jón 2) határa tartalmi döntés, **a felhasználóé**. A feladat nem dönt róla és nem érvel mellette; ha a Zsolt 116:4 bekezdése a 116:3-at érinti, csak a mért szomszédságot mondhatja ki, motívumközi állítás nélkül, és a szövegjavaslat jelöli a kérdést.
 - **A Kármel–Zakariás visszhang** (4. tanulmányozási kérdés): a közös szókészlet nem idézés. Az 1. összefüggés bekezdése a két helyet a közös szavaik szerint egymás mellé teheti, kapcsolatot nem állít.
-- **A prózasablon** (a felmérés kilenc pontja): a #123 2d. szakasza és a DT-F123c dolga. Ez a feladat a mai rések szerkezetébe ír, szakaszt nem rendez át.
+- **A prózasablon** (a felmérés kilenc pontja): a #123 2d. szakasza és a DT585 dolga. Ez a feladat a mai rések szerkezetébe ír, szakaszt nem rendez át.
 - **Új rés** (alkalmazási kérdések, tanítói összegzés): a 2. tervezet DT276 döntése.
 - **Új adat:** új jelölt, kapcsolat, előfordulás vagy `lxx_dontesek.tsv`-sor nem keletkezik. Ha a lekérdezés hiányt talál, N-tétel lesz belőle, nem próza.
 - **A kizárások újranyitása** és a meglévő próza átírása, kivéve az N-F55d-ből következő számjavítást.
