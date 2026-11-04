@@ -1,0 +1,48 @@
+# Idézési metaadat (Citation File Format 1.2.0). F163.5, F163.7; 2026-11-04.
+# Két idézési egység (a #86 terv 1.5: az adatréteg és a termékréteg szétválik):
+#   - fő egység (ez a fájl teteje): a nyílt adatmag, adatkészlet, CC BY 4.0;
+#   - kapcsolódó egység (references): a szócikkek mint mű, minden jog fenntartva.
+# A [HELYŐRZŐ: …] és <…> értékeket a szerző tölti ki; amíg helyőrző áll benne, a fájl nem nyilvános.
+# A GitHub nem kanonikus forrás és nem idézési cím: repository-code nincs, és az url mező
+# csak a kanonikus közzétételi hely (DOI vagy közzétételi oldal) ismeretében kerül be:
+#   url: <KANONIKUS_FORRAS_URL>
+# (a mező nem áll itt helyőrzővel, mert a CFF-séma URI-t vár; a kitöltendők listáján szerepel).
+# Szándékosan kimarad, mert ma nincs meg (nem találjuk ki):
+#   - doi / identifiers: a concept DOI a nyílt adatmag közzététele (Zenodo) után kerül be;
+#   - orcid: a szerző adja meg, ha van;
+#   - version, date-released: a nyílt adatmag első kiadásakor;
+#   - license a kapcsolódó egységen: „minden jog fenntartva”, ennek nincs SPDX-azonosítója.
+# A fő egység CC BY 4.0 licence a nyílt adatmag kiadásával lép életbe; a repó mai LICENSE-e
+# még minden jog fenntartva.
+cff-version: 1.2.0
+message: "Ha az adatokat használja, kérjük, az alábbi adatkészletet idézze; ha a szócikkek szövegét, a kapcsolódó művet (references), a motívumlap kiadásszámával (a lap kolofonjában)."
+type: dataset
+title: "[HELYŐRZŐ: TERMÉKNÉV] — nyílt adatmag: bibliai motívumok, előfordulások és döntések"
+authors:
+  - name: "[HELYŐRZŐ: SZERZŐ NEVE]"
+license: CC-BY-4.0
+abstract: >-
+  Bibliai motívumok nyílt adatkészlete. Minden motívumhoz rögzített
+  meghatározás, kizáró feltétel és a tágabb fogalom, amely felé hígulna;
+  minden előfordulás a héber vagy görög szöveg közös szaván áll; a vizsgált,
+  de elutasított helyek indoklással szerepelnek; minden lekérdezésből
+  származó sor megnevezi a forrását, a többi kézi döntésként jelölt. A
+  besorolási döntéseket mesterséges intelligenciával segített munkamenet
+  hozza; a részleteket a mellékelt MI-nyilatkozat írja le.
+keywords:
+  - bibliai motívumok
+  - intertextualitás
+  - Septuaginta
+  - héber Biblia
+  - Újszövetség
+  - PaRDeS
+references:
+  - type: generic
+    title: "[HELYŐRZŐ: TERMÉKNÉV] — szócikkek"
+    authors:
+      - name: "[HELYŐRZŐ: SZERZŐ NEVE]"
+    abstract: >-
+      A motívumok szócikkei: értelmező próza, a szótárak magyar fordítása és
+      a Károli-fordítás szavainak párosítása a héber és görög szöveggel. Az
+      értelmező szakaszokat mesterséges intelligencia írta az adatok alapján,
+      a szerző átnézte és jóváhagyta. Minden jog fenntartva.
