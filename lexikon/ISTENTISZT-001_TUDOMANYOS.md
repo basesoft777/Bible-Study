@@ -1903,8 +1903,8 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |
-| Kiadás | 1 |
-| Próza modellje | `manual` |
+| Kiadás | 2 |
+| Próza modellje | `claude-opus-5-5` |
 | Emberi lektorálás | 29 hely (2026.11.04); lektorálók: felhasználó |
 
 **Változásjegyzék**
@@ -1912,6 +1912,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.02 | Az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése. |
+| 2 | 2026.11.04 | Lektori javítás: az 1/a öt idézete a Károli-szövegre, a kézi próza belső és angol szavai olvasói szövegre (29 hely); a szótári rész három jelhibája a generátor javítására vár. |
 
 ---
 
