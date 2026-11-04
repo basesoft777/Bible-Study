@@ -18,8 +18,9 @@
 | `elofordulasok.tsv` | 255 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizarasok.tsv` | 413 |
-| `kodkonyv.tsv` | 206 |
+| `kizaras_csoportok.tsv` | 1402 |
+| `kizarasok.tsv` | 418 |
+| `kodkonyv.tsv` | 210 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -30,6 +31,14 @@ A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a
 ## Közzétételi hely
 
 A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit.
+
+## Idézés és a mesterséges intelligencia használata
+
+A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a szócikkeket mint kapcsolódó művet (minden jog fenntartva).
+
+## Csoportos kizárás
+
+A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.
 
 ## Mi van benne, mi nincs (adatréteg és termékréteg)
 

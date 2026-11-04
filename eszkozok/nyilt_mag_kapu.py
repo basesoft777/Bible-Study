@@ -47,7 +47,7 @@ import nyilt_mag_export as E  # noqa: E402
 
 BUKAS, FIGY = K.BUKAS, K.FIGY
 
-KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kapcsolatok.tsv',
+KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kizaras_csoportok.tsv', 'kapcsolatok.tsv',
             'motivum_kapcsolatok.tsv', 'dontesnaplo.tsv', 'forrasok_es_licencek.tsv', 'kodkonyv.tsv', 'KODKONYV.md',
             'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256', 'KIADAS.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
@@ -69,7 +69,7 @@ ANGOL_OSZLOP = {'jelentes_en', 'glossza', 'lemma', 'leiras_en'}
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
 SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
-CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|beepitesi_dontesek|kapcsolatok|'
+CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
                           r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek)\.tsv'
                           r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK)\.md|ELLENORZO_OSSZEG\.sha256')
 
@@ -270,7 +270,7 @@ def ell_hivatkozas(fajlok):
     nyd = {d['dontes_azonosito'] for _, d in dn}
     _, mot = tsv_sorok(fajlok['motivumok.tsv'])
     mids = {d['motivum_azonosito'] for _, d in mot}
-    for rel in ('elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kapcsolatok.tsv',
+    for rel in ('elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kizaras_csoportok.tsv', 'kapcsolatok.tsv',
                 'motivum_kapcsolatok.tsv'):
         fej, sorok = tsv_sorok(fajlok[rel])
         for n, d in sorok:

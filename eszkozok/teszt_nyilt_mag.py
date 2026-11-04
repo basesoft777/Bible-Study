@@ -66,6 +66,21 @@ class Pozitiv(Alap):
         self.assertIn('Károli', h)
         self.assertIn(str(E.kh_meres()['gyanus']), h)
 
+    def test_csoportos_kizaras_versszam_egyezik_a_tagokkal(self):
+        _, kiz = G.tsv_sorok(self.fajlok['kizarasok.tsv'])
+        _, tagok = G.tsv_sorok(self.fajlok['kizaras_csoportok.tsv'])
+        db = {}
+        for _, d in tagok:
+            k = (d['motivum_azonosito'], d['csoport_sor_igehely'])
+            db[k] = db.get(k, 0) + 1
+        csoportos = [(d['motivum_azonosito'], d['igehely'], int(d['csoport_versszam'])) for _, d in kiz
+                     if d['csoport_versszam']]
+        self.assertTrue(csoportos)
+        self.assertIn('ISTENTISZT-001', {c[0] for c in csoportos})
+        for mid, ig, n in csoportos:
+            if (mid, ig) in db:
+                self.assertEqual(n, db[(mid, ig)], (mid, ig))
+
     def test_kizart_forras_listaja_kimondva(self):
         for ds in ('MCGED', 'KJV_Strongs_teljes', 'Heber_ETCBC_modulok'):
             self.assertIn(ds, self.info['kizartak'])

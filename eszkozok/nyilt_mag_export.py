@@ -426,6 +426,30 @@ def oszlop_tsv(fej, sorok):
     return '\n'.join(ki) + '\n'
 
 
+CSOPORT_RX = re.compile(r'Összesítő sor (\d+) versre')
+BLOKK_RX = re.compile(r'blokk=(\w+)')
+CSOPORT_ELTERES = []
+
+
+def csoport_tagjai(j):
+    """Összesítő sor (F123 teljességi felmérés): (versszám, a csoport verseinek listája). A tagok a jelölt
+    `forras_kereses` mezője által megnevezett gépi osztályozásból (a motívum `…_blokkok.tsv` munkalistájából) jönnek;
+    a lista darabszáma egyezzen az indoklás versszámával, különben az export megáll (nincs kitöltés)."""
+    n = int(CSOPORT_RX.match(j['indoklas']).group(1))
+    mb = BLOKK_RX.search(j['forras_kereses'])
+    if not mb:      # nincs gépi tag-lista: a versszám marad, a tagok nincsenek kitöltve (CLAUDE.md 3. szabály)
+        return str(n), []
+    rel = 'naplok/F123_teljesseg_%s_blokkok.tsv' % j['id']
+    _, sorok = tsv(rel)
+    mh = re.search(r'halo=(\w+)', j['forras_kereses'])
+    tagok = sorted({s['igehely'] for s in sorok if s['blokk'] == mb.group(1)
+                    and (not mh or s.get('halo', mh.group(1)) == mh.group(1))})
+    if len(tagok) != n:      # a lista nem igazolja a számot: a tagok nem töltődnek ki, az eltérés jelentésbe kerül
+        CSOPORT_ELTERES.append((j['id'], j['igehely'], n, len(tagok)))
+        return str(n), []
+    return str(n), tagok
+
+
 def elutasitas_ok(indoklas, mid, okok):
     elso = (indoklas or '').split(' | ')[0]
     for o in okok:
@@ -490,6 +514,7 @@ def ismert_hibak(sz):
 
 
 def export(kimenet):
+    CSOPORT_ELTERES.clear()
     lic = Licenc()
     okok_fej, okok = tsv('adat/elutasitasi_okok.tsv')
     okok.sort(key=lambda o: int(o['sorrend']))
@@ -567,13 +592,21 @@ def export(kimenet):
 
     # --- kizarasok.tsv (az elutasított jelöltek)
     fej = ['motivum_azonosito', 'igehely', 'jelolt_tipus', 'cel_motivum', 'cel_igehely', 'kizaras_oka', 'indoklas',
-           'korabbi_minosites', 'keresesi_mod', 'karoli_szo', 'azonositas_modja', 'megbizhatosag', 'dontesek',
-           'datum']
+           'korabbi_minosites', 'csoport_versszam', 'keresesi_mod', 'karoli_szo', 'azonositas_modja',
+           'megbizhatosag', 'dontesek', 'datum']
     sorok = []
+    csoport_tagok = []
     for j in dontott:
         if j['dontes'] != 'elutasítva':
             continue
         elso, _, utan = j['indoklas'].partition(' | ')
+        csv_db = ''
+        mc = CSOPORT_RX.match(elso)
+        if mc:
+            csv_db, tagok = csoport_tagjai(j)
+            for ig in tagok:
+                csoport_tagok.append({'motivum_azonosito': j['id'], 'csoport_sor_igehely': j['igehely'],
+                                      'igehely': ig})
         d_ids = []
         for m in DT_RX.finditer(j['dontes_ref'] + ' ' + j['indoklas']):
             a = dn.feloldott(m.group(0))
@@ -584,12 +617,17 @@ def export(kimenet):
             'cel_motivum': j['cel_id'], 'cel_igehely': j['cel_igehely'],
             'kizaras_oka': elutasitas_ok(j['indoklas'], j['id'], okok),
             'indoklas': tisztit(elso, dn), 'korabbi_minosites': tisztit(utan, dn),
+            'csoport_versszam': csv_db,
             'keresesi_mod': kereses_modja(j['forras_kereses']), 'karoli_szo': j['karoli_szo'],
             'azonositas_modja': j['azonositas_modja'], 'megbizhatosag': j['megbizhatosag'],
             'dontesek': '; '.join(sorted(d_ids)), 'datum': j['datum']})
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], s['cel_motivum'], s['cel_igehely']))
     fajlok['kizarasok.tsv'] = oszlop_tsv(fej, sorok)
     stat['kizarasok.tsv'] = len(sorok)
+    csoport_tagok.sort(key=lambda s: (s['motivum_azonosito'], s['csoport_sor_igehely'], s['igehely']))
+    fajlok['kizaras_csoportok.tsv'] = oszlop_tsv(['motivum_azonosito', 'csoport_sor_igehely', 'igehely'],
+                                                  csoport_tagok)
+    stat['kizaras_csoportok.tsv'] = len(csoport_tagok)
 
     # --- beepitesi_dontesek.tsv (a beépített jelöltek indoklása és döntései, az előfordulásokhoz kulcsolva)
     fej = ['motivum_azonosito', 'igehely', 'jelolt_tipus', 'cel_motivum', 'cel_igehely', 'indoklas',
@@ -774,6 +812,15 @@ def export(kimenet):
           'A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). '
           'A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), '
           'nem egy fejlesztői tár vagy commit.', '',
+          '## Idézés és a mesterséges intelligencia használata', '',
+          'A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról '
+          'szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig '
+          'helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a '
+          'szócikkeket mint kapcsolódó művet (minden jog fenntartva).', '',
+          '## Csoportos kizárás', '',
+          'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
+          'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
+          'versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.', '',
           '## Mi van benne, mi nincs (adatréteg és termékréteg)', '',
           '**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, '
           'szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a '
@@ -808,7 +855,7 @@ def export(kimenet):
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
                     'sd_db': len(sd), 'strong_db': len(strongok),
-                    'funkcio_kiesett': funkcio_kiesett}
+                    'funkcio_kiesett': funkcio_kiesett, 'csoport_elteres': list(CSOPORT_ELTERES)}
 
 
 def tsv_szoveg(szoveg):
@@ -848,6 +895,8 @@ def main():
         info['dontes_db'], ', '.join(info['feloldatlan_dt']) or 'nincs'))
     print('  kizárt források: %s' % ', '.join(info['kizartak']))
     print('  nyitva (nem exportált): %d' % info['nyitva'])
+    for x in info['csoport_elteres']:
+        print('  FIGYELEM: összesítő sor versszáma nem egyezik a listával (tagok nincsenek kitöltve): %s %s: %d <> %d' % x)
     return 0
 
 

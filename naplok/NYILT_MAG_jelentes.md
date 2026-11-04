@@ -57,3 +57,8 @@ Nem exportált: a **129 `nyitva` jelölt** (döntetlen). A csomag SHA-256 össze
 - **Ki:** `elofordulasok.tsv` `kapcsolodas`; a `funkcio` „ — ” utáni magyarázata; `kapcsolatok.tsv` és `motivum_kapcsolatok.tsv` `funkcio`/`indoklas`. **Bent:** a `funkcio` címke (emoji nélkül), a kizárások/beépítések indoklása, a `negativ_kriterium`, a típus/bizonyosság/PaRDeS-szint.
 - **Hosszú, „ — ” nélküli `funkcio`-próza (kiesett, 3 sor):** TEREMT-002 1Móz 1:2 (118 karakter), Jer 4:23 (88), Ézs 34:11 (65).
 - **Kapu:** új TERMEKRETEG ellenőrzés (a KI-mezők nincsenek a csomagban, a funkció rövid címke, a kódkönyv `(nem exportált mezők)` sorai kimondják mezőnként a réteget és az okot); új KANONIKUS ellenőrzés (nincs GitHub-hivatkozás; `<KANONIKUS_FORRAS_URL>` helyőrző; `KIADAS.txt`: adatállapot dátuma + tartalmi hash). 35 teszt zöld, 0 BUKÁS.
+
+## 8. Újragenerálás a #630 után (2026-11-04)
+
+- `kizarasok.tsv`: 418 sor (+5 ISTENTISZT-001 összesítő sor); új `csoport_versszam` oszlop (az „Összesítő sor N versre” szám), és új `kizaras_csoportok.tsv` (1402 tag: ALVIL-001 295, HAMART-001 651, ISTENTISZT-001 456), a darabszámok egyeznek a sorok versszámával. A kódkönyv és az `OLVASSEL.md` („Csoportos kizárás”) nevezi meg a csoportos kizárást; az `OLVASSEL.md` hivatkozik a mellé kerülő idézési metaadatra és az MI-nyilatkozatra (GitHub-URL nélkül).
+- Ahol a gépi lista nem igazolja a számot vagy nincs lista, a tagok nem töltődnek ki (jelenleg ilyen sor nincs).

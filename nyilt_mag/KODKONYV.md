@@ -492,6 +492,30 @@ A kapcsolat típusa.
 - `tipus` = `Párhuzam`: a két hely párhuzamos / the two passages are parallel
 - `tipus` = `Variáns`: a két hely ugyanannak a szövegnek változata / the two passages are variants of the same text
 
+## kizaras_csoportok.tsv
+
+
+### `csoport_sor_igehely`
+
+Az összesítő sor igehelye a kizarasok.tsv-ben: a csoport egy (jelölő) verse; a csoport kulcsa.
+
+*The passage of the summary row in kizarasok.tsv: one (marker) verse of the group; the key of the group.*
+
+
+### `igehely`
+
+A csoport egy tagja: egy kizárt vers, Károli-számozással; a csoport tagjainak száma a csoport_versszam.
+
+*A member of the group: one excluded verse in Károli numbering; the number of members is csoport_versszam.*
+
+
+### `motivum_azonosito`
+
+A motívum, amelyből a csoportot kizártuk (l. motivumok.tsv).
+
+*The motif from which the group was excluded (see motivumok.tsv).*
+
+
 ## kizarasok.tsv
 
 
@@ -515,6 +539,13 @@ Motívumközi jelöltnél a másik motívum oldali igehely(ek); egyébként üre
 Motívumközi jelöltnél a másik motívum azonosítója; egyébként üres.
 
 *For a link between motifs, the other motif’s identifier; otherwise empty.*
+
+
+### `csoport_versszam`
+
+Csoportos kizárásnál (összesítő sor) a csoport verseinek száma; a sor a csoport egy versét nevezi meg, a csoport összes verse a kizaras_csoportok.tsv-ben áll, az indoklás a csoportra érvényes. Egyedi kizárásnál üres.
+
+*For a group exclusion (summary row) the number of verses in the group; the row names one (marker) verse of the group, all verses of the group are listed in kizaras_csoportok.tsv, and the rationale applies to the group. Empty for an individual exclusion.*
 
 
 ### `datum`
