@@ -2,9 +2,9 @@
 
 # 📖 ANTROP-001 — Pneuma/pszükhé megkülönböztetés
 
-## Kivonat *(kézi)*
+## Kivonat
 
-A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.<!-- olvasói -->
+A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.<!-- olvasói -->
 
 A motívum azokat a bibliai helyeket gyűjti, ahol a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) egymás mellett áll, és a szöveg a kettőt megkülönbözteti. A két szó az Újszövetségben gyakori, a πνεῦμα 351, a ψυχή 96 versben áll, együtt azonban mindössze hat versben; ezek közül három tartozik ide. A legvilágosabb hely Pál áldása, amely az embert szellemre, lélekre és testre tagolja (1Thessz 5:23), és a Zsidókhoz írt levél mondata, amely szerint Isten beszéde a lélek és a szellem határáig hat (Zsid 4:12). A korinthusi levél kétszer is szembeállítja a két szó melléknévi alakját: az érzéki és a lelki embert (1Kor 2:14–15), majd a vetett érzéki és a feltámadó lelki testet (1Kor 15:44–46). Ide tartozik Mária éneke is, ahol egy mondatban a lélek magasztal és a szellem örvendez (Luk 1:46–47).
 
@@ -16,7 +16,7 @@ A határt a két szó együttállása húzza meg: ide az a vers tartozik, amelyb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.<!-- olvasói -->
+A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -641,7 +641,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **BDB2719 · II. חַיָּה** *(a H2416 4. BDB-szócikke a 7-ből)*
 
-**A szócikk feje (nyelvi háttér).** II. חַיָּה nőnemű főnév (si vera lectio) közösség ( = a II. חַי nőneműje Nö ZMG, 1886, 176 szerint) — וְחַיַּת מְּלִשְׁתִּים חֹנָה és a filiszteusok egy közössége (azaz szövetséges családok csoportja, amely együtt portyázott) táborozott 2Sám 23:13 ( = מַחֲנֵה‎ 1Krón 11:15); talán Zsolt 68:11 is (vö. alább) Megjegyzés. — Több más hely kétséges: וַיֵּאָסְפוּ פְלִשְׁתִּים לַחַיָּה‎ 2Sám 23:11 csapatba gyűltek, vagy csapatonként (RV, de egyik fordítás sem indokolt: Bö Ew We Klo Dr helyesen olvassa לֶ֫חְיָה Leµi felé, vö. Bír 15:9, a szó véletlenül kimaradt a || 1Krón 11:13-ban Dr); חַיָּתְךָ יָָֽשְׁבוּבָהּ Zsolt 68:11 csapatod lakott benne (Thes SS RVm Hi Ri Che, de ᵑ6 ᵐ5 Jeromos Pe: (élő) teremtményeid, a népről; Hup ua., a fürjekre vonatkoztatva; valószínűtlen); אַלתִּתֵּן לְחַיַּת נֶפֶשׁ תּוֺרֶךָ חַיַּת עֲנִיֶּיךָ אַלתִּשְׁכַּח לָנֶ֫צַח‎ 74:19 ne add gerlicéd lelkét a vadállatoknak, nyomorultjaid életéről ne feledkezz meg mindörökre: RV Hi Pe Bae Sch így fordítják, a חית szónak a két tagmondatban különböző jelentést adva, az előbbi archaikus nőnemű status absolutus Ges § 80, 2. R. 2; a szöveg kétségtelenül romlott, olvasandó talán למות Schr Ri, לחית helyett, vagy לשׁחת Kroch; Gr e kettő bármelyikét; Che bármelyiket, vagy még inkább לחרב.
+**A szócikk feje (nyelvi háttér).** II. חַיָּה nőnemű főnév (si vera lectio) közösség ( = a II. חַי nőneműje Nö ZMG, 1886, 176 szerint) — וְחַיַּת מְּלִשְׁתִּים חֹנָה és a filiszteusok egy közössége (azaz szövetséges családok csoportja, amely együtt portyázott) táborozott 2Sám 23:13 ( = מַחֲנֵה‎ 1Krón 11:15); talán Zsolt 68:11 is (vö. alább) Megjegyzés. — Több más hely kétséges: וַיֵּאָסְפוּ פְלִשְׁתִּים לַחַיָּה‎ 2Sám 23:11 csapatba gyűltek, vagy csapatonként (RV, de egyik fordítás sem indokolt: Bö Ew We Klo Dr helyesen olvassa לֶ֫חְיָה Lehi felé, vö. Bír 15:9, a szó véletlenül kimaradt a || 1Krón 11:13-ban Dr); חַיָּתְךָ יָָֽשְׁבוּבָהּ Zsolt 68:11 csapatod lakott benne (Thes SS RVm Hi Ri Che, de ᵑ6 ᵐ5 Jeromos Pe: (élő) teremtményeid, a népről; Hup ua., a fürjekre vonatkoztatva; valószínűtlen); אַלתִּתֵּן לְחַיַּת נֶפֶשׁ תּוֺרֶךָ חַיַּת עֲנִיֶּיךָ אַלתִּשְׁכַּח לָנֶ֫צַח‎ 74:19 ne add gerlicéd lelkét a vadállatoknak, nyomorultjaid életéről ne feledkezz meg mindörökre: RV Hi Pe Bae Sch így fordítják, a חית szónak a két tagmondatban különböző jelentést adva, az előbbi archaikus nőnemű status absolutus Ges § 80, 2. R. 2; a szöveg kétségtelenül romlott, olvasandó talán למות Schr Ri, לחית helyett, vagy לשׁחת Kroch; Gr e kettő bármelyikét; Che bármelyiket, vagy még inkább לחרב.
 
 **BDB2721 · חַיִּים (chajjím)** *(a H2416 5. BDB-szócikke a 7-ből)*
 
@@ -773,9 +773,9 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó): 197 vers; ζωή (dzóé): 138 vers; κύριος (küriosz): 131 vers; πᾶς (pasz): 130 vers; λέγω (legó): 124 vers; εἰμί (eimi): 93 vers; γῆ (gé): 91 vers; θεός (theosz): 68 vers; θηρίον (thérion): 68 vers; ψυχή (pszükhé): 62 vers
+**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω ([dzaó](/szo/G2198)<sup class="strong" title="G2198">G2198</sup>): 197 vers; ζωή ([dzóé](/szo/G2222)<sup class="strong" title="G2222 · élet">G2222</sup>): 138 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 131 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 130 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 124 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 93 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 91 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 68 vers; θηρίον ([thérion](/szo/G2342)<sup class="strong" title="G2342 · vadállat">G2342</sup>): 68 vers; ψυχή ([pszükhé](/szo/G5590)<sup class="strong" title="G5590 · lélek">G5590</sup>): 62 vers
 
-**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé): 615 vers; κύριος (küriosz): 209 vers; πᾶς (pasz): 165 vers; λέγω (legó): 133 vers; εἰμί (eimi): 125 vers; θεός (theosz): 75 vers; ποιέω (poieó): 71 vers; υἱός (ühiosz): 60 vers; χείρ (kheir): 55 vers; ζάω (dzaó): 51 vers
+**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή ([pszükhé](/szo/G5590)<sup class="strong" title="G5590 · lélek">G5590</sup>): 615 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 209 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 165 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 133 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 125 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 75 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 71 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 60 vers; χείρ ([kheir](/szo/G5495)<sup class="strong" title="G5495">G5495</sup>): 55 vers; ζάω ([dzaó](/szo/G2198)<sup class="strong" title="G2198">G2198</sup>): 51 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -868,9 +868,9 @@ Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcs
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#szocikkek -->
 
-### Miért fontos ez a lelet *(kézi)*
+### Miért fontos ez a lelet
 
-Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->
+Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasói -->
 
 #### G4151 — πνεῦμα (pneuma) és G5590 — ψυχή (pszükhé) · Thayer
 
@@ -908,7 +908,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé) | egyező | Septuaginta |
+| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, [pszükhé](/szo/G5590)<sup class="strong" title="G5590 · lélek">G5590</sup>) | egyező | Septuaginta |
 
 *Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
@@ -1032,7 +1032,7 @@ A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyomá
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kereszthivatkozasok -->
 
-### Minősítés *(generált)*
+### Minősítés
 
 A 90 utalásból 7 a motívum két saját helyét köti össze, ez 7 helyet érint a 11-ból. **Következtetés:** a motívum helyeinek a 64%-a két független gyűjteményben is összetartozik, ez közepes külső megerősítés.<!-- olvasói -->
 
@@ -1066,7 +1066,7 @@ Ehhez a motívumhoz nincs rögzített kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolatok -->
 
-### Alátámasztás *(generált)*
+### Alátámasztás
 
 Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
 
@@ -1086,9 +1086,9 @@ A motívumhoz nincs rögzített motívumközi kapcsolat.
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
 
-## 6. Értelmezés *(kézi)*
+## 6. Értelmezés
 
-A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. A kutató írta; az állítások alatt a mért adat forrása áll.<!-- olvasói -->
+A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
 ### PaRDeS keretrendszer
 
@@ -1114,11 +1114,11 @@ Két olvasat felel arra a kérdésre, hogy az ember két részből (test és lé
 
 *Proveniencia: scope=manual | forras=archivum/ANTROP-001/Pneuma_pszukhe_megkulonboztetes_tematikus.md (a régi tanulmány „Vitatott pont” szakasza; ellenőrzött lekérdezés nélkül) | ts=2026-11-03*
 
-## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+## 6/b. Alkalmazás és tanítói egyezés
 
-### Alkalmazás és tanítványság *(kézi)*
+### Alkalmazás és tanítványság
 
-Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
+Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
 
 **Az Ige mint mérce.** A Zsid 4:12 szerint a lélek és a szellem határát nem az ember húzza meg, hanem Isten szava. A hívő számára ez azt jelenti, hogy amikor egy belső indításról el kell döntenie, honnan ered, nem az érzés erőssége, hanem az Ige a mérce. Az önvizsgálat ezért imádságos Bibliaolvasással kezdődik.
 
@@ -1130,13 +1130,13 @@ Mit jelent a motívum a hívő életében ma. A kutató írta.<!-- olvasói -->
 
 **Óvatosság a rendszerekkel.** A Biblia megkülönbözteti a lelket és a szellemet, de nem ad róluk részletes térképet. A tanítás és a lelkigondozás akkor marad hű a szöveghez, ha a megkülönböztetést használja, de nem épít rá olyan rendszert, amelyet a Szentírás nem fejt ki.
 
-### Tanítói egyezés *(kézi)*
+### Tanítói egyezés
 
 Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
 Ehhez a motívumhoz nevesített tanítói egyezés még nem került a lapra; a hiány nincs kitöltve.
 
-## 7. Módszertan és nyitott kérdések *(kézi)*
+## 7. Módszertan és nyitott kérdések
 
 Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
@@ -1210,11 +1210,13 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/kiadasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
+
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte és jóváhagyta. A többi szakasz az adattáblákból generált.
 
 | Mező | Érték |
 |---|---|
