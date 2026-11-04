@@ -100,10 +100,10 @@ ATIRAS = [
      'nyitva: az alponthoz kötött jelölt nyitva marad, amíg az ALVIL-001 alpontjának nincs adatbeli azonosítója (a '
      'motívumközi kapcsolat célja csak létező alpont-azonosító lehet; az azonosítót az ALVIL-001 feldolgozása vezeti '
      'be).', 'DT277 (C)' + SEP + '#123'),
-    (r'↳ alpontja \(a #123 Seól-határ-döntése, DT-F123d\); az alpontnak még nincs adatbeli azonosítója, ezért a jelölt '
+    (r'↳ alpontja \(a #123 Seól-határ-döntése, DT-F123d\); az alpontnak még nincs adatbeli azonosítója, ezért a jelölt '   # e32-kihagy: a régi adatszöveg mintája
      r'a DT277 \(C\) szerint nyitva marad\.',
      '↳ alpontja (a Seól-határ döntése szerint); az alpontnak még nincs adatbeli azonosítója, ezért a jelölt nyitva '
-     'marad.', 'DT-F123d (#123)' + SEP + 'DT277 (C)'),
+     'marad.', 'DT-F123d (#123)' + SEP + 'DT277 (C)'),   # e32-kihagy: a régi adatszöveg mintája
     (r' \(felmérés: (naplok/PROZA_FELMERES_ISTENTISZT-001_20261019\.md \d\.)\)', '', None),
     (r'a célversek az ALVIL-001 tanulmányának 1\. táblájában a motívum gerincén állnak',
      'a célversek az ALVIL-001 tanulmányának 1. táblájában a motívum lexikai magján állnak', None),
@@ -162,7 +162,7 @@ ATIRAS = [
     (r'de az elofordulasok\.tsv-ben nincs sor;', 'de az előfordulások között nincs;', 'elofordulasok.tsv'),
     (r'de a jeloltek\.tsv-ben és az elofordulasok\.tsv-ben nincs sor;', 'de sem a jelöltek, sem az előfordulások '
      'között nincs;', 'jeloltek.tsv' + SEP + 'elofordulasok.tsv'),
-    (r'; elbírálás: N-F63a$', '; az elbírálása nyitott kérdés', 'N-F63a'),
+    (r'; elbírálás: N-F63a$', '; az elbírálása nyitott kérdés', 'N-F63a'),   # e32-kihagy: a régi adatszöveg mintája
     # gerinc
     (r'a jelen gerinchez nem tartozik', 'a motívum jelenlegi lexikai magjához nem tartozik', None),
     # fájlnevek a szövegben
@@ -183,8 +183,8 @@ ATIRAS = [
     (r'; az F3\.1 betöltés a Jóel 2:32 sorba vonta össze', '; az első adatbetöltés a Jóel 2:32 sorába vonta össze',
      'F3.1'),
     # HAMART-001 U1 teljesség-mérés (#609, 2026-11-04): N-F63e, F108, gerinc-Strong, a blokkok munkatáblája
-    (r'A felhasználó döntése \(N-F63e, (2026-11-03: „[^”]*”)\) szerint', r'A felhasználó döntése (\1) szerint',
-     'N-F63e'),
+    (r'A felhasználó döntése \(N-F63e, (2026-11-03: „[^”]*”)\) szerint', r'A felhasználó döntése (\1) szerint',   # e32-kihagy: a régi adatszöveg mintája
+     'N-F63e'),   # e32-kihagy: a régi adatszöveg mintája
     (r'a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, de nem írt be',
      'a mai héber és görög szöveg (TAHOT/TAGNT) keresésének találata, amelyet a motívum korábbi újrakeresése is '
      'látott, de nem írt be', 'F108'),
@@ -209,7 +209,7 @@ JAVITVA = {'igehely és karoli_szo': 'az igehely és a Károli-szóalak', 'karol
 # benne (ellenoriz.py 21. (i)). A kiosztott helyőrző a végleges számára cserélődik (a számkiosztás commitja szerint); a
 # szám nélküli régi azonosító (N-F63x) a `dontes_ref`-be kerül.
 KIOSZTOTT = {'DT-F123o': 'DT564'}   # szamkiosztas 2026-11-03: „DT-F123o → DT564” (e32-kihagy: a régi alak a kulcs)
-FORRAS_REGI_AZON = [(r'N-F63e-függő, ', 'N-F63e')]
+FORRAS_REGI_AZON = [(r'N-F63e-függő, ', 'N-F63e')]   # e32-kihagy: a régi adatszöveg mintája
 
 
 def forras_helyorzo(fk):

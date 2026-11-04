@@ -1764,7 +1764,7 @@ def indoklas_belso_hibak(adat_dir):
 
 
 def szabaly29_indoklas_belso(adat_dir):
-    """F123.INDOKLAS (DT-F123ib): a `jeloltek.tsv` `indoklas` mezője olvasói szöveg, belső jel nélkül (SÉRTÉS, gátol).
+    """F123.INDOKLAS: a `jeloltek.tsv` `indoklas` mezője olvasói szöveg, belső jel nélkül (SÉRTÉS, gátol).
     A lapon az indoklás olvasói szövegként jelenik meg; a döntés-azonosító, a fájlnév és a proveniencia a `dontes_ref`
     mezőbe való (a nyílt adat kutatója ott, kódkönyvön át éri el)."""
     cim = '29. A jelölt indoklása belső jel nélkül (F123.INDOKLAS)'

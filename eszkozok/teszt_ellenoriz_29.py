@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/teszt_ellenoriz_29.py -- az ellenoriz.py 29. szabályának tesztjei (F123.INDOKLAS, DT-F123ib): a
+eszkozok/teszt_ellenoriz_29.py -- az ellenoriz.py 29. szabályának tesztjei (F123.INDOKLAS): a
 `jeloltek.tsv` `indoklas` mezője belső jel nélküli olvasói szöveg; a nyom a `dontes_ref`-ben áll.
 
 Ideiglenes (a repón kívüli) adat-könyvtárban fut; a valódi táblán a szabály RENDBEN.
@@ -59,7 +59,7 @@ class Szabaly31(unittest.TestCase):
                     'a név nélküli forma | scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01',
                     'a negatív kritérium (motivumok.tsv) kizárja',
                     'a jelen gerinchez nem tartozik',
-                    'F123 X.A, elbírálatlan', 'elbírálás: N-F63a'):
+                    'F123 X.A, elbírálatlan', 'elbírálás: N-F63a'):   # e32-kihagy: a régi adatszöveg mintája
             self.ir([sor(ind)])
             s = E.szabaly29_indoklas_belso(self.dir)
             self.assertEqual(s.verdict, 'SÉRTÉS', ind)
