@@ -217,8 +217,7 @@ class Negativ(Alap):
 
     def test_github_url(self):
         f = self.uj()
-        f['OLVASSEL.md'] += 'forrás: https://github.com/valaki/repo
-'
+        f['OLVASSEL.md'] += 'forrás: https://github.com/valaki/repo\n'
         self.assertTrue(bukasok(f, 'KANONIKUS'))
 
     def test_hianyzo_helyorzo(self):
