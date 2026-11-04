@@ -1720,7 +1720,7 @@ Olvasás `split('\t')`.
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
 Kulcs: `id` + `forras` + `tema_id`. A `kivalasztott` és a `kizart` sor a mai jelöltek közé tartozik (különben a döntés elavult;
-teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-10-29): ISTENTISZT-001, 22 sor (4 tiltott, 8 kivalasztott, 10 kizart).
+teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-11-04): 71 sor — ISTENTISZT-001 22 (4 tiltott, 8 kivalasztott, 10 kizart); ALVIL-001 37 (3 tiltott, 4 kivalasztott, 30 kizart); ANTROP-001 12 (0 tiltott, 4 kivalasztott, 8 kizart) (DT-F123nva).
 
 ### 2.42 `nave_tema_hu.tsv` — a Nave-témák és -altételek magyar neve (ISTENTISZT-001 arany lap, 2026-10-29)
 
