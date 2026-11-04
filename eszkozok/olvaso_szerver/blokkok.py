@@ -739,10 +739,12 @@ def _rovidites(K, html, magyar=False):
     d = _bdb_adat(K)
     alias = d.get('alias') if isinstance(d, dict) else None
     strong = alias['tabla_strong'] if alias else getattr(K, 'strong', '')
-    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM)
+    # DT-F131z: a Biblia által igazolt héber sorrend-javítás (szövegrészenként), majd a futam utáni szám izolálása (LRM);
+    # előtte a digitalizálásban elveszett zárójel és a torz átírás (F123.GENKOR, B3)
     reszek = _CIMKE_RE.split(str(html))
     html = bdb_rovidites.izolal(''.join(r if i % 2 else bdb_rovidites.heber_sorrend_javit(
-                                            bdb_rovidites.atiras_javit(r, strong, magyar=magyar), strong)
+                                            bdb_rovidites.atiras_javit(bdb_rovidites.zarojel_javit(r, strong), strong,
+                                                                       magyar=magyar), strong)
                                         for i, r in enumerate(reszek)))
     ki, linkben = [], False
     for i, r in enumerate(_CIMKE_RE.split(html)):

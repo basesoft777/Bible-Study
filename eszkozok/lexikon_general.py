@@ -3184,7 +3184,9 @@ def kiemel(szoveg, celok):
 
 def _elso_tagmondat(szoveg, hatar=90):
     s = re.sub(r'^\s*(?:(?:\d+|[a-z]|T:\S+)\.?\s+){1,2}', '', szoveg or '').strip()
-    m = re.search(r'(?<!\d):|:(?!\d)|;', s)
+    # a tagmondat-határ csak zárójelen kívül (F123.GENKOR: „(|| אוֺת; így …)” belsejében nem vág; olvasói kapu ZAROJEL)
+    m = next((m for m in re.finditer(r'(?<!\d):|:(?!\d)|;', s)
+              if s[:m.start()].count('(') <= s[:m.start()].count(')')), None)
     if m and m.start() <= hatar:
         s = s[:m.start()]
     elif len(s) > hatar:
@@ -3193,6 +3195,9 @@ def _elso_tagmondat(szoveg, hatar=90):
         if s.count('(') > s.count(')'):
             s = s[:s.rfind('(')].rstrip(' ,;')
         s = s + '…'
+    # a forrásban nyitva maradt zárójel a vázlatsorban sem marad nyitva (F123.GENKOR)
+    while s.count('(') > s.count(')') and s.rfind('(') > 0:
+        s = s[:s.rfind('(')].rstrip(' ,;') + '…'
     return s.strip() or EM_DASH
 
 
@@ -3329,7 +3334,8 @@ def bdb_gerinc_szocikkek(adat, strong):
             hu = None
         if hu is None and e['elnyelo'] and e['kat'] == 'jelolo_nelkul':
             elnyelt[k] = e['elnyelo']
-        sz = (k, szakasz_jel(k[1]), hu, ' '.join(e['en']), e['kat'])
+        # F123.GENKOR: a digitalizálásban elveszett zárójel (`bdb_forras_javitas.tsv` `zarojel`) a rövidítés előtt javul
+        sz = (k, szakasz_jel(k[1]), BR.zarojel_javit(hu, strong), BR.zarojel_javit(' '.join(e['en']), strong), e['kat'])
         if not szocikkek or szocikkek[-1]['bdb_id'] != k[0]:
             szocikkek.append({'bdb_id': k[0], 'fej': None, 'szakaszok': []})
         if k[1] == 'fej':

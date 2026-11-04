@@ -152,7 +152,30 @@ def atiras_javitasok(ut=None):
 
 # A javított átírás magyar szövegbeli alakja (DT-F164a, felhasználó, 2026-11-03: „Seól álljon”): az angol forrásszövegben a
 # helyreállított átírás marad, a magyar fordításban a tár alakja áll. Kulcs: a javítótábla `javitott_alak`-ja.
-ATIRAS_MAGYAR = {'Sheʾôl': 'Seól', 'sheʾôl': 'seól'}
+ATIRAS_MAGYAR = {'Sheʾôl': 'Seól', 'sheʾôl': 'seól', 'Qorʾân': 'Korán', 'Leḥi': 'Lehi'}
+_ZAROJEL = None
+
+
+def zarojel_javitasok(ut=None):
+    """A `zarojel` / `javitva` kézi sorok (F123.GENKOR, l. `_javitasok`): a digitalizálásban elveszett zárójel, az angol
+    forrásszöveg és a magyar fordítás alakja külön sorban."""
+    global _ZAROJEL
+    if ut:
+        return _javitasok('zarojel', ut)
+    if _ZAROJEL is None:
+        _ZAROJEL = _javitasok('zarojel')
+    return _ZAROJEL
+
+
+def zarojel_javit(szoveg, strong, javitasok=None):
+    """A Strong `zarojel` javításainak cseréje a szövegben, részszöveg szerint (az angol és a magyar alak külön sor, ezért a
+    nyelvet nem kell tudni). A szöveg rövidítése (a gerinc vázlatsora) ELŐTT fut, hogy a vágás a javított szövegen történjen."""
+    parok = (javitasok if javitasok is not None else zarojel_javitasok()).get(_strong_kulcs(strong))
+    if not parok or not szoveg:
+        return szoveg
+    for regi, uj in parok:
+        szoveg = szoveg.replace(regi, uj)
+    return szoveg
 
 
 def atiras_javit(szoveg, strong, javitasok=None, magyar=False):

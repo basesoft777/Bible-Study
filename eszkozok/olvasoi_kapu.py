@@ -19,7 +19,8 @@ Ellenőrzések (azonosító — súlyosság):
     ATIRAS       ugyanaz a héber/görög szó két kiejtéssel                                  — BUKÁS
     ATIRAS_VALT  a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen        — FIGYELMEZTETÉS
     KONYV        könyvrövidítés nem a `Konyv_normalizalo_tabla.tsv` alakjával              — BUKÁS
-    BDB_JEL      torzult jel a szövegben (^, ®, °, rafe, latin betű héber szóhoz tapadva, ,,) — BUKÁS
+    BDB_JEL      torzult jel a szövegben (^, ®, °, a BDB átírási betűkészletének ¹ µ £ ¥ ‰ ƒ ‡ ¢ jele, rafe,
+                 latin betű héber szóhoz tapadva, ,,)                                         — BUKÁS
     ZAROJEL      nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS)
     FUNKCIO_URES az 1. tábla „Funkció” oszlopában üres cella                               — BUKÁS
     IDEZET       az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés — BUKÁS
@@ -92,6 +93,8 @@ ANGOL_SOR_MIN = 3
 BDB_JEL = [
     (re.compile(r'(?<!\[)\^'), 'nyers ^ elválasztó'),
     (re.compile(r'[®°]'), 'torzult jel (® / °)'),
+    # F123.GENKOR: a DictBDB.json átírási betűkészletének többi torz jele (N89); a † (Abbott-Smith) és a ± (±1) jogos jel
+    (re.compile(r'[¹µ£¥‰ƒ‡¢]'), 'torzult jel (a BDB átírási betűkészlete: ¹ µ £ ¥ ‰ ƒ ‡ ¢)'),
     (re.compile('ֿ'), 'rafe (ֿ) pontjel a héber szóban'),
     (re.compile(r'[א-ת][֑-ׇ]*[A-Za-z]|[A-Za-z][א-ת]'), 'latin betű héber szóhoz tapadva'),
     (re.compile(r'[^\s,],,'), 'dupla vessző'),
