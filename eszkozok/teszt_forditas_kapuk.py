@@ -881,6 +881,55 @@ class TagolasUtalas(unittest.TestCase):
         for szoveg in ('see above, 1 a. at the beginning;', 'cf. 2 a. at the end below)', 'see γεννάω 2 d.;'):
             self.assertEqual(K.tagolas_sorozat(K.utalas_maszk(szoveg, True)), [], szoveg)
 
+    # --- F07 A3 (DT-F07m): lexikon-belső utalások alpont-jelölői (az A2/A3 9 hamis bukásából 7) ---
+
+    def test_a3_mert_esetek_atmennek(self):
+        esetek = [
+            ('G2596', 'e. x (see ἐκκλησία, 4 b. aa.); hence it forms', 'e. x (l. ἐκκλησία, 4 b. aa.); innen körülírás'),
+            ('G4102', 'b. x (on this see more at length in πιστεύω, 1 b. γ.); α. y', 'b. x (erről részletesebben l. πιστεύω, 1 b. γ.); α. y'),
+            ('G1577', 'b. x (on this passage see in ἀπογράφω, b. and πρωτότοκος, at the end). (In general)',
+             'b. x (erről a helyről l. ἀπογράφω, b. és πρωτότοκος, a végén). (Általában)'),
+            ('G1849', 'a. x (appointed, see τίθημι, 1 a. sub at the end) according to', 'a. x (kijelölt, l. τίθημι, 1 a. a végén (sub)) saját'),
+            ('G4190', 'b. x (see συνείδησις, b. sub at the end), Heb 10:22', 'b. x (l. συνείδησις, b. sub, a végén), Zsid 10:22'),
+            ('G3686', '1. x (see ἐπί, B. 2 a. εε., p. 233b); (see κατά, II. 3 a. γ., p. 328a); 2. y',
+             '1. x (l. ἐπί, B. 2 a. εε., o. 233b); (l. κατά, II. 3 a. γ., o. 328a); 2. y'),
+        ]
+        for strong, f, h in esetek:
+            self.assertEqual(self._e(f, h), 'RENDBEN', strong)
+
+    def test_a3_utalas_melletti_valodi_jelolo_elhagyasa_sertes(self):
+        # a valódi `b.` az utalás előtt/után hiányzik a fordításból
+        self.assertEqual(self._e('a. x (see ἐκκλησία, 4 b. aa.); b. y', 'a. x (l. ἐκκλησία, 4 b. aa.); y'), 'SERTES')
+        self.assertEqual(self._e('b. x (see more at length in πιστεύω, 1 b. γ.); e. y', 'b. x (l. πιστεύω, 1 b. γ.); y'), 'SERTES')
+
+    def test_a3_utalas_melletti_valodi_jelolok_felcserelese_sertes(self):
+        f = 'a. x (see τίθημι, 1 a. sub at the end); b. y; e. z'
+        self.assertEqual(self._e(f, 'a. x (l. τίθημι, 1 a. a végén (sub)); e. z; b. y'), 'SERTES')
+
+    def test_a3_bevezeto_nelkuli_b_elhagyasa_sertes(self):
+        # bevezető (`see`/`l.`) nélkül a kettős alpont és a `sub` nem maszkolódik: a `b.` jelölő marad
+        self.assertEqual(self._e('x. ἐκκλησία, 4 b. aa. y; b. z', 'x. ἐκκλησία, 4 aa. y; b. z'), 'SERTES')
+        self.assertEqual(self._e('a. x; b. sub at the end; c. y', 'a. x; sub a végén; c. y'), 'SERTES')
+
+    def test_a3_tul_sokat_nyelo_maszk_nem_viszi_el_az_utana_allo_jelolot(self):
+        # az utalás utáni valódi szakaszjelölő (`b.`) hiányzik a fordításból: a maszk nem nyelheti el
+        f = 'a. x (see ἐκκlησία, 4 b. aa.) b. y; c. z'.replace('ἐκκlησία', 'ἐκκλησία')
+        self.assertEqual(self._e(f, 'a. x (l. ἐκκλησία, 4 b. aa.) y; c. z'), 'SERTES')
+        self.assertEqual(self._e('a. x (see τίθημι, 1 a. sub at the end); b. y', 'a. x (l. τίθημι, 1 a. a végén (sub)); y'), 'SERTES')
+        # a forrás-oldali maszk sem nyel el szabad szöveg utáni jelölőt
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see ἐκκλησία, 4 b. aa.); b. y', True)), ['b'])
+
+    def test_a3_negy_kitolto_szonal_tobb_nem_maszkol(self):
+        # a bevezető és a szócikk-szó között legfeljebb négy kitöltő szó: öt után nincs maszk, a `b.` jelölő marad
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see more at length in also πιστεύω, 1 b. γ.)', True)), ['b'])
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('x (see more at length in πιστεύω, 1 b. γ.)', True)), [])
+
+    def test_a3_kotet_es_kiadasszam_marad_kezi_iteletre(self):
+        # a 2. lépés nincs jóváhagyva: `vol. ii.` -> `II. köt.` és `Tdf. 7` nem maszkolt (G4183, G2983)
+        # a `vol. ii.` -> `II. köt.` a fordításban új római jelölő, a forrásban nincs; a kötetszám nem jelölő a forrás-oldalon
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('b. vol. ii., p. 1013a; x', True)), ['b'])
+        self.assertEqual(K.tagolas_sorozat(K.utalas_maszk('(in Tdf. 7 after B*)', True)), ['7'])
+
     def test_maszk_pozicio_nem_csuszik(self):
         szoveg = 'x (see b. below) y'
         self.assertEqual(len(K.utalas_maszk(szoveg, True)), len(szoveg))
