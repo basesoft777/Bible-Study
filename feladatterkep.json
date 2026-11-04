@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-11-03",
-   "commit": "0d035dd7"
+   "datum": "2026-11-04",
+   "commit": "7b8dec47"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5092,6 +5092,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 221
+  "kesz_db": 224
  }
 }
