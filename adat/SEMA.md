@@ -1995,7 +1995,7 @@ minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vag
 az SDBH/SDGNT külön réteg; a `projekt_adat` a csomag saját adata (DT610). A nem exportált: a `nyitva` jelöltek
 (döntetlen), az értelmező próza, a lexikonlapok. A kapu BUKÁS, ha kizárt dataset neve vagy értéke a csomagban marad.
 
-### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT-F168a, 2026-11-04)
+### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT616, 2026-11-04)
 
 **Kézi** (a `kozlemeny/KOZEL_KELETI_HATAR.md` „Leginkább érintett motívumok” listájából; a próza-említés a lapok
 `grep`-keresésével igazolva). Egy sor egy motívum, amelynél a nemzetközi szakirodalom az ókori közel-keleti (főként
