@@ -397,7 +397,8 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
             motivum_id, len(hiany), '; '.join('%s (%s)' % x for x in hiany[:10])))
     for r in sorok:
         c, miert = jeloles_oka(r.get('forras_kereses'))
-        suly = csoport_versszam(r.get('forras_kereses')) or 1   # F123.TUD1B: az összesítő sor verseket számol
+        # F123.TUD1B: a súly a sor verseinek száma (összesítő sor: a blokk, tartomány: a kibontott versek)
+        suly = csoport_versszam(r.get('forras_kereses')) or len(versek(r.get('igehely')))
         forras_szaml[c] += suly
         ind = r.get('indoklas') or ''
         fo_ind, _sep, farok = ind.partition(' | ')

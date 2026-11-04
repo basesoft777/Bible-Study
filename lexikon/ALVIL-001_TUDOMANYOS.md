@@ -783,7 +783,7 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-326 verset vizsgáltunk meg: 31 verset egyenként, 295 verset csoportosan (5 összesítő sorban); elutasítva: 326. A leggyakoribb ok: „más szó a Károli-fordításban (összesítő sor)” (295 vers), utána „szótári összevető hely, a szó nem áll benne” (18 vers). A jelöltek forrása (vers): Gépi keresés 326. **Következtetés:** több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, illetve 74). A határt leginkább ez az ok húzza meg: „más szó a Károli-fordításban (összesítő sor)”.<!-- olvasói -->
+326 verset vizsgáltunk meg: 31 verset egyenként, 295 verset csoportosan (5 összesítő sorban); elutasítva: 326. Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes Ó- és Újszövetségben kereste. A leggyakoribb ok: „más szó a Károli-fordításban (összesítő sor)” (295 vers), utána „szótári összevető hely, a szó nem áll benne” (18 vers). A jelöltek forrása (vers): Gépi keresés 326. **Következtetés:** több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, illetve 74). A határt leginkább ez az ok húzza meg: „más szó a Károli-fordításban (összesítő sor)”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 36 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 

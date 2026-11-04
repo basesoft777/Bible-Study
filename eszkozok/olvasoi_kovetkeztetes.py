@@ -99,6 +99,9 @@ def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forr
     else:
         lelet = '%d verset vizsgáltunk meg egyenként, jelöltként; elutasítva: %d' % (n_vizsgalt, elutasitva)
     lelet += ', döntésre vár: %d.' % nyitott if nyitott else '.'
+    if csoport_vers:   # az összesítő sor a gépi teljesség-mérés blokkja (szerep_kizart.CSOPORT_VERSSZAM)
+        lelet += (' Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes '
+                  'Ó- és Újszövetségben kereste.')
     if okok:
         lelet += ' A leggyakoribb ok: „%s” (%d vers)' % okok[0]
         lelet += ', utána „%s” (%d vers).' % okok[1] if len(okok) > 1 else '.'

@@ -71,6 +71,8 @@ class Szovegek(unittest.TestCase):
                       'sorban); elutasítva: 1724.', sz)
         self.assertIn('átlagosan 157 vizsgált vers jut (1724 vizsgált vers, 11 motívumhely)', sz)
         self.assertNotIn('kétszer', sz)
+        self.assertIn('a teljes Ó- és Újszövetségben kereste', sz)   # az összesítő sor: a teljesség-mérés blokkja
+        self.assertNotIn('teljesség-mérés', OK.kizart(104, 0, 0, 104, 0, [], [], 22))
         sz = OK.kizart(31, 295, 5, 326, 0, [], [], 74)
         self.assertIn('több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, '
                       'illetve 74)', sz)
