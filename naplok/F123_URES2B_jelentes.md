@@ -1,6 +1,6 @@
 # F123.URES2B — az adat nélküli 2/b blokk lekerül a lexikonlapról (jelentés)
 
-*Modell: `claude-opus-5-5`. Dátum: 2026-11-04. Döntés: DT-F174a (az F123 helyőrző-betűi elfogytak, ezért friss szám) (`dontesek/uj/dreamy-varahamihira-09a975.md`).*
+*Modell: `claude-opus-5-5`. Dátum: 2026-11-04. Döntés: DT597 (az F123 helyőrző-betűi elfogytak, ezért friss szám) (`dontesek/uj/dreamy-varahamihira-09a975.md`).*
 
 ## 1. Mi volt a hiba
 
@@ -36,7 +36,7 @@ Dokumentáció: `adat/SEMA.md` 2.12 (`tanulmany` mező), `RENDER_BRIEF.md` G15, 
 
 ## 3. CI-szabály
 
-`eszkozok/ellenoriz.py` **31. szabály — „Adat nélküli szerkezeti blokk az olvasói lapon (DT-F174a)”**
+`eszkozok/ellenoriz.py` **31. szabály — „Adat nélküli szerkezeti blokk az olvasói lapon (DT597)”**
 (`szabaly31_ures_szerkezeti_blokk`): SÉRTÉS, ha egy `lexikon/*_TUDOMANYOS.md` lapon opcionális rés adat nélkül áll.
 A szabály szövege kimondja: a kutatási üres eredmény (pl. „üres blokk: javaslat” a szerepmátrixban, a Minősítés
 „nincs” mondatai, az üres `domen`-eredmény) nem ilyen blokk, a lapon marad. Teszt: `eszkozok/teszt_ellenoriz_31.py`
