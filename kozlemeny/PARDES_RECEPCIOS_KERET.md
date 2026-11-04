@@ -1,5 +1,7 @@
 # A PaRDeS-szint mint recepciós címke
 
+*English version: [en/PARDES_RECEPTION_FRAME.md](en/PARDES_RECEPTION_FRAME.md)*
+
 <!-- Forrásréteg, kézi szöveg (F163.3). Értelmezés: claude-opus-5-5. -->
 
 *Állapot: 2026. november 4.*
