@@ -30,9 +30,35 @@ class TestJelolesOka(unittest.TestCase):
         c, t = SZKZ.jeloles_oka('scan H7121')
         self.assertEqual((c, t), ('Gépi keresés', 'gépi Strong-keresés: H7121'))
 
-    def test_be_nem_sorolhato_egyeb(self):
-        c, t = SZKZ.jeloles_oka('valami más')
-        self.assertEqual((c, t), ('Egyéb', 'valami más'))
+    def test_be_nem_sorolhato_megall(self):
+        # F123.EGYEB: „egyéb” csoport nincs; a be nem sorolható forrás megállítja a generálást
+        with self.assertRaises(SZKZ.BeNemSorolhato):
+            SZKZ.jeloles_oka('valami más')
+        self.assertNotIn('Egyéb', SZKZ.CSOPORTOK)
+
+    def test_teljesseg_meres_gepi(self):
+        c, t = SZKZ.jeloles_oka('F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 58 vers, '
+                                'az első itt; a lista: naplok/x.tsv | scope=manual | forras=y | ts=2026-11-03')
+        self.assertEqual((c, t), ('Gépi keresés', 'gépi teljesség-mérés; csoportos kizárás: 58 vers, az első itt'))
+        c, t = SZKZ.jeloles_oka('F123 U1 teljesség-mérés, szótár (BDB H7585 sorszam 58; Thayer G0086 sorszam 2) és '
+                                'LXX-többlet háló (naplok/x.md) | scope=manual')
+        self.assertEqual(t, 'gépi teljesség-mérés (szótári háló, Septuaginta-többlet háló)')
+
+    def test_szopar_csalad_lanc_frazis(self):
+        self.assertEqual(SZKZ.jeloles_oka('rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAGNT-teljes'),
+                         ('Gépi keresés', 'gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)'))
+        self.assertEqual(SZKZ.jeloles_oka('csalad G1312 | scope=TAGNT-teljes')[1],
+                         'gépi Strong-keresés a szócsaládban: G1312')
+        self.assertEqual(SZKZ.jeloles_oka('lanc ±1 | scope=TAHOT-teljes')[0], 'Gépi keresés')
+        self.assertEqual(SZKZ.jeloles_oka('pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 '
+                                          'betöltés')[0], 'Gépi keresés')
+
+    def test_lekerdezes_provenienciaja_altalanos_szabaly(self):
+        # ismeretlen alakú, de lekérdezés-proveniencia (nem `manual` scope): gépi keresés
+        self.assertEqual(SZKZ.jeloles_oka('uj_kereses X | scope=TAHOT-teljes | forras=y | ts=z'),
+                         ('Gépi keresés', 'gépi keresés'))
+        with self.assertRaises(SZKZ.BeNemSorolhato):
+            SZKZ.jeloles_oka('ismeretlen | scope=manual | forras=y | ts=z')
 
 
 class TestElutasitasOka(unittest.TestCase):
@@ -41,7 +67,11 @@ class TestElutasitasOka(unittest.TestCase):
         self.assertTrue(minta)
         self.assertEqual(SZKZ.elutasitas_oka('passzív szerkezet, K1_passziv', minta),
                          'passzív szerkezet vagy megnevezés (negatív kritérium)')
-        self.assertEqual(SZKZ.elutasitas_oka('semmi ilyen', minta), SZKZ.EGYEB_OK)
+        with self.assertRaises(SZKZ.BeNemSorolhato):
+            SZKZ.elutasitas_oka('semmi ilyen', minta)
+        # F123.EGYEB: a DT478 JHVH-elhatárolás saját kategóriát kap
+        self.assertEqual(SZKZ.elutasitas_oka('DT478 (a felhasználó): a besém után nem a JHVH (H3068) szó áll', minta),
+                         'nem JHVH áll a név után')
         # ELLENOR_ISTENTISZT_OLVASOI 1.: a jogi fellebbezés a negatív kritérium „passzív/megnevezés jellegű vagy jogi
         # használat” szövege előtt illeszkedik
         self.assertEqual(SZKZ.elutasitas_oka('K3_jogi: fellebbez; negatív kritérium: passzív/megnevezés jellegű vagy '
@@ -54,19 +84,28 @@ class TestElutasitasOka(unittest.TestCase):
 
 
 class TestBlokkTorzs(unittest.TestCase):
+    def test_be_nem_sorolhato_sor_megallitja_a_blokkot(self):
+        sorok = [{'igehely': 'Zsolt 99:6', 'forras_kereses': 'TSK/Károli-KH Zsolt 99:6', 'dontes': 'elutasítva',
+                  'indoklas': 'semmi ilyen | scope=manual'},
+                 {'igehely': 'Zsolt 1:1', 'forras_kereses': 'valami más', 'dontes': 'nyitva', 'indoklas': 'kérdés'}]
+        self.assertEqual(SZKZ.hianyok(sorok, 'ISTENTISZT-001'),
+                         [('Zsolt 99:6', 'elutasítási ok'), ('Zsolt 1:1', 'jelölési forrás')])
+        with self.assertRaises(SZKZ.BeNemSorolhato):
+            SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
+
     def test_csoport_labjegyzet_osszesito(self):
         sorok = [
             {'igehely': 'Zsolt 99:6', 'forras_kereses': 'TSK/Károli-KH Zsolt 99:6', 'dontes': 'elutasítva',
-             'indoklas': 'semmi ilyen | scope=manual'},
+             'indoklas': 'tartalmilag NEM releváns | scope=manual'},
             {'igehely': '1Móz 4:26', 'forras_kereses': 'scan H7121', 'dontes': 'nyitva', 'indoklas': 'kérdés'},
         ]
         tablak, labj, ossz = SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
         self.assertEqual(len(labj), 2)
         self.assertIn('[^k1]', ''.join(tablak))
-        self.assertEqual(ossz['egyeb'], ['Zsolt 99:6'])
-        self.assertEqual(ossz['ok'], collections.Counter({SZKZ.EGYEB_OK: 1, 'nyitott döntés': 1}))
+        self.assertEqual(ossz['ok'], collections.Counter({'tartalmilag nem kapcsolódik': 1, 'nyitott döntés': 1}))
         sor = SZKZ.osszesito_sor(ossz)
-        self.assertIn('egyéb 1 (Zsolt 99:6)', sor)
+        self.assertIn('tartalmilag nem kapcsolódik 1', sor)
+        self.assertNotIn('egyéb', sor)
         self.assertIn('**Nyitott döntés:** 1', sor)
         self.assertIn('scope=manual', labj[0])
 
@@ -161,7 +200,7 @@ class TestOlvasoiIndok(unittest.TestCase):
 
     def test_blokk_torzs_nyers_indoklas_labjegyzetben(self):
         sorok = [{'igehely': 'Zak 13:9', 'dontes': 'elutasítva', 'forras_kereses': 'scan H7121',
-                  'indoklas': 'DT478 (a felhasználó): névmási rag áll | scope=manual | forras=x | ts=2026-11-01'}]
+                  'indoklas': 'DT478 (a felhasználó): nem a JHVH (H3068) szó áll, névmási rag áll | scope=manual | forras=x | ts=2026-11-01'}]
         ki, labj, _ossz = SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
         tabla = chr(10).join(ki)
         self.assertNotIn('DT478', tabla)

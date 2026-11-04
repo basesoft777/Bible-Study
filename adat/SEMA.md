@@ -1746,7 +1746,9 @@ Kulcs: `tema_id` + `cimke_en`. Állapot (2026-10-29): 18 sor (az ISTENTISZT-001 
 
 **Kézi** (`manual` proveniencia; jóváhagyás: DT425). Az 1/b. blokk („Kizárt és vizsgált helyek”) összesítője a `jeloltek.tsv`
 elutasított sorainak `indoklas` mezőjét ezekre a mintákra illeszti (kis-nagybetű nélkül, `sorrend` szerint, az első egyező
-dönt); a be nem sorolható indoklás „egyéb”, és az összesítő felsorolja (`eszkozok/szerep_kizart.py`). A `jeloltek.tsv` nem
+dönt; `eszkozok/szerep_kizart.py`). „Egyéb” kategória nincs (F123.EGYEB, a felhasználó, 2026-11-04: „ne legyen olyan
+indok, hogy egyéb”, „sehol”): a be nem sorolható indoklásnál — és a `jeloles_oka` által be nem sorolható jelölési forrásnál —
+a generálás megáll, a kapu az `ellenoriz.py` 28. szabálya; a javítás új minta ebben a táblában. A `jeloltek.tsv` nem
 változik. Olvasás `split('\t')`.
 
 | Oszlop | Jelentés |
@@ -1758,9 +1760,11 @@ változik. Olvasás `split('\t')`.
 | `megjegyzes` | a minta tartalma röviden |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor; a „jogi fellebbezés” (25) a „passzív szerkezet vagy megnevezés” (30) előtt áll, mert a jogi indoklás a negatív kritérium „passzív/megnevezés jellegű vagy jogi használat” szövegét is idézi (ELLENOR_ISTENTISZT_OLVASOI 1.). Mért lefedés (az elutasított sorok „egyéb” száma): ISTENTISZT-001 1,
-ALVIL-001 4, ANTROP-001 0, HAMART-001 163, HODIT-001 4, KIRALY-001 13, MENNY-001 1, TEREMT-001 2, TEREMT-002 45 — a motívumonkénti
-bővítés nyitott (N-F131u).
+Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor; a „jogi fellebbezés” (25) a „passzív szerkezet vagy megnevezés” (30) előtt áll, mert a jogi indoklás a negatív kritérium „passzív/megnevezés jellegű vagy jogi használat” szövegét is idézi (ELLENOR_ISTENTISZT_OLVASOI 1.). Állapot (2026-11-04, F123.EGYEB): 15 `*` sor (91–96: másik motívum tárgya,
+csak tematikus párhuzam, más jelentés, a fejezet más témája, a tartomány másik verse, hibás forrásadat); motívumsorok:
+ALVIL-001 5, ANTROP-001 5, ISTENTISZT-001 3, TEREMT-002 1, HAMART-001 20 (az új motívumsorok sorrendje 101-től, hogy a
+korábbi besorolás ne változzon). Mért lefedés: minden lapos motívum minden elutasított sora besorolva, 0 be nem sorolható
+(előtte „egyéb”: ISTENTISZT-001 13, HAMART-001 163, HODIT-001 4, KIRALY-001 13, MENNY-001 1, TEREMT-001 2, TEREMT-002 45).
 
 ### 2.44 `funkcio_kapcsolok.tsv` — funkció-kapcsolók a renderhez (ISTENTISZT-001 arany lap, 2026-10-29)
 
