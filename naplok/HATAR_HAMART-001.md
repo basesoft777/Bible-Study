@@ -49,4 +49,9 @@ A magányos H6975 (7 vers) mindhárom esetben kizárandó: a gerinc-elem a pár 
 *(A számok mértek: E-sor a `adat/elofordulasok.tsv`-ből; vers a `naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv`-ből; fordítási kulcs a `naplok/F123_adat_HAMART-001_forditas_hiany.tsv`-ből (H7451 51, H7043 51). A „Maradnak” sor 1 249-es összege a 605 + 644.)*
 
 (proveniencia: scope=adat/motivumok.tsv (HAMART-001 negativ_kriterium), adat/elofordulasok.tsv (52 sor), naplok/F123_adat_HAMART-001_nf63e_fuggo.tsv (651 sor) | forras=split('\t') | ts=2026-11-02T13:26Z; előzmény: N-F63e, DT97 (C), naplok/JELOLTEK_RETRO_lelet_meres.md)
+**Felhasználói besorolás** *(nem a modell írta; 2026-11-03, DT-F123)*
+
+- K1: „kivesszük” — a H7451 és a H7043 nem gerinc-elem, a negatív kritérium szövege nem változik; a 651 N-F63e-függő vers blokk-kizárást kap.
+
+*(proveniencia: scope=naplok/HATAR_HAMART-001.md K1 | forras=manual: a felhasználó döntése az orkesztrátor chatjében, szó szerint: „kivesszük” | ts=2026-11-03)*
 <!-- MODELLES-VEGE -->

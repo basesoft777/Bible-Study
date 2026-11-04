@@ -55,7 +55,7 @@ motívum tematikus tanulmányából (migrált motívumnál a forrásából), a t
 fájljából vagy a kereszthivatkozás-naplójából
 (`<!-- RÉS-KEZDET: [rés] --> … <!-- RÉS-VÉGE: [rés] -->` jelölők közül)
 generálódik — **csak ott szerkeszthetők**, a lexikonoldalon nem (RENDER_BRIEF.md
-G1/G4). A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló
+G1/G4). A `2b` opcionális: adat nélkül nem áll a lapon (DT-F174a). A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló
 forrás nélkül (RENDER_BRIEF.md G7).
 
 A `generalt_proba/` verziózott könyvtár (F4-próbák kimenete), nem scratch. Törölni tilos;

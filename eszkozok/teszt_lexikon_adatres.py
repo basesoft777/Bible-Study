@@ -81,11 +81,32 @@ class Kiegeszito2b(unittest.TestCase):
         ki = LG.adatres_2b(tok, [hiv('G2564', 'MCGED'), hiv('G0994', 'MCGED'), hiv('G1941', 'MCGED')])
         self.assertLess(ki.index('G1941'), ki.index('G0994'))
         self.assertLess(ki.index('G0994'), ki.index('G2564'))
-        self.assertTrue(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]).startswith('*Nincs a szerepmátrixon'))
+        self.assertEqual(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]), '')
 
     def test_ures(self):
-        ki = LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')])
-        self.assertTrue(ki.startswith('*Nincs a szerepmátrixon'))
+        # DT-F174a: adat nélkül üres -- a rés nem kerül a lapra (res_ures_e)
+        self.assertEqual(LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')]), '')
+
+    def test_ures_res_torzs(self):
+        eredeti = LG.ADAT_RES_RENDEREK['2b']
+        try:
+            LG.ADAT_RES_RENDEREK['2b'] = lambda mid, sorai: ''
+            ki = LG.res_torzs({'id': 'PROBA-001'}, '2b', {'forras': 'adat', 'tanulmany': ''}, [])
+        finally:
+            LG.ADAT_RES_RENDEREK['2b'] = eredeti
+        self.assertEqual(ki, '')
+
+    def test_res_ures_e(self):
+        self.assertTrue(LG.res_ures_e('2b', ''))
+        self.assertTrue(LG.res_ures_e('2b', 'Nincs kiegészítő szótári adat.'))
+        regi = ('<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: x -->\n\n'
+                + LG.SZERKEZETI_HELYORZOK['2b'][1]
+                + '\n\n*Proveniencia: `scope=id:X-001 | forras=x | ts=2026-11-03`*')
+        self.assertTrue(LG.res_ures_e('2b', regi))
+        self.assertFalse(LG.res_ures_e('2b', '**MCGED G1941 — (részlet)**\n\n> x'))
+        # nem opcionális rés kimondott üres eredménye nem szerkezeti blokk (CLAUDE.md 3. szabály)
+        self.assertFalse(LG.res_ures_e('alatamasztas', ''))
+        self.assertFalse(LG.res_ures_e('minosites', LG.SZERKEZETI_HELYORZOK['2b'][0]))
 
 
 class Minosites(unittest.TestCase):
