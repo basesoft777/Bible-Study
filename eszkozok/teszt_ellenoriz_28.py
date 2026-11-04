@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/teszt_ellenoriz_28.py -- DT-F123v: az eszkozok/ellenoriz.py 28.
+eszkozok/teszt_ellenoriz_28.py -- DT-F174a: az eszkozok/ellenoriz.py 28.
 szabalya (adat nelkuli szerkezeti blokk nem allhat olvasoi lapon) es a
 generator opcionalis-res kezelese (lexikon_general.OPCIONALIS_RESEK).
 

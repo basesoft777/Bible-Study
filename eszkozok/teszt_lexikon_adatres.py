@@ -84,7 +84,7 @@ class Kiegeszito2b(unittest.TestCase):
         self.assertEqual(LG.adatres_2b(tok, [hiv('G1941', 'SECE_G')]), '')
 
     def test_ures(self):
-        # DT-F123v: adat nélkül üres -- a rés nem kerül a lapra (res_ures_e)
+        # DT-F174a: adat nélkül üres -- a rés nem kerül a lapra (res_ures_e)
         self.assertEqual(LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')]), '')
 
     def test_ures_res_torzs(self):

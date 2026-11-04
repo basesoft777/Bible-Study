@@ -48,7 +48,7 @@ class Szabaly11Ts(unittest.TestCase):
         self.eredeti_ts = G.TS
         self.lap = _lap()
         # a lapon allo ts (a generalas napja) -- a "ma" ennel kesobbi
-        # DT-F123v: az adat nelkuli 2b res nem all a lapon, ezert a ts a minosites resbol
+        # DT-F174a: az adat nelkuli 2b res nem all a lapon, ezert a ts a minosites resbol
         self.lap_ts = E.res_lap_ts(LG.res_torzs_lapbol(self.lap, {'id': MOTIVUM}, 'minosites'), MOTIVUM)
         self.assertIsNotNone(self.lap_ts, 'a minosites resben nincs proveniencia-ts')
 

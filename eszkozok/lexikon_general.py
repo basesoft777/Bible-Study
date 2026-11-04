@@ -473,7 +473,7 @@ OLVASOI_SABLON = {
 # (a kézi próza) változatlan.
 OLVASOI_RES = {
     'kivonat': 'A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában. A kutató írta.',
-    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok.',  # DT-F123v: adat nélkül a rés nem áll a lapon
+    '2b': 'A fenti szótári anyagon túli, kiegészítő szótári adatok.',  # DT-F174a: adat nélkül a rés nem áll a lapon
     'miert_fontos': 'Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.',
     'minosites': 'Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a '
                  'Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze '
@@ -4756,7 +4756,7 @@ def res_torzs(m, res, sor, sorai=None):
 KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
 SECE_SZOTARAK = ('SECE_G', 'SECE_H')
 
-# DT-F123v (2026-11-04): az adat nélküli szerkezeti blokk nem áll az olvasói lapon. Az opcionális rés csak akkor
+# DT-F174a (2026-11-04): az adat nélküli szerkezeti blokk nem áll az olvasói lapon. Az opcionális rés csak akkor
 # jelenik meg (fejléc, olvasói bevezető, törzs, proveniencia-sor), ha van tartalma: adatból generált résnél a
 # renderelő sort talált, tanulmányból vett résnél a törzs nem a RENDER G15 mechanikus helyőrzője. A rés a sémában és a
 # `res_forras.tsv`-ben megmarad: ha egyszer lesz MCGED-sor vagy kézi 2/b, magától megjelenik. A kutatási üres
@@ -4852,7 +4852,7 @@ def adatres_2b(tokenek, hiv_sorok):
                  and r['szotar'] not in SECE_SZOTARAK]
         sorok_ehhez += sorted(sajat, key=lambda r: (r['szotar'], r['jelentes_szam']))
     if not sorok_ehhez:
-        return ''  # DT-F123v: adat nélkül a rés nem áll a lapon (res_ures_e, OPCIONALIS_RESEK)
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon (res_ures_e, OPCIONALIS_RESEK)
     out =['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
            '(%s).*' % ', '.join(x for x in KIEGESZITO_SZOTARAK if x not in SECE_SZOTARAK)]
     for r in sorok_ehhez:
@@ -5057,7 +5057,7 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
         span_end = offsets[slot_idx + 1]
         torzs = res_torzs(m, res, sor)
         if res in OPCIONALIS_RESEK and not torzs:
-            # DT-F123v: a fejléc a többi rés határkereséséig marad, utána kikerül (opcionalis_resek_torol)
+            # DT-F174a: a fejléc a többi rés határkereséséig marad, utána kikerül (opcionalis_resek_torol)
             uresek.append(res)
             fajl_szoveg = fajl_szoveg[:span_start] + fejlec + '\n\n' + fajl_szoveg[span_end:]
             continue
@@ -5091,7 +5091,7 @@ def _opcionalis_res_helye(fajl_szoveg, m, res):
 
 
 def opcionalis_res_visszaallit(fajl_szoveg, m):
-    """DT-F123v: az adat nélkül kihagyott opcionális rés (OPCIONALIS_RESEK) fejlécét a határkereséshez
+    """DT-F174a: az adat nélkül kihagyott opcionális rés (OPCIONALIS_RESEK) fejlécét a határkereséshez
     visszateszi a helyére (a következő határ elé); ha a rés a lapon áll, a szöveg változatlan."""
     for res in OPCIONALIS_RESEK:
         sor = res_forras_sorok().get((m['id'], res))
@@ -5104,7 +5104,7 @@ def opcionalis_res_visszaallit(fajl_szoveg, m):
 
 
 def opcionalis_resek_torol(fajl_szoveg, m, uresek):
-    """DT-F123v: az üres opcionális rések fejléc+törzs span-je kikerül a lapról."""
+    """DT-F174a: az üres opcionális rések fejléc+törzs span-je kikerül a lapról."""
     for res in uresek:
         r_i, k_i = _opcionalis_res_helye(fajl_szoveg, m, res)
         if r_i is not None:
@@ -5180,7 +5180,7 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
     amit a res_blokkok_alkalmaz() a lexikonoldalon változatlanul hagyott."""
     sorok = res_forras_sorok()
     if res in OPCIONALIS_RESEK and _opcionalis_res_helye(fajl_szoveg, m, res)[0] is None:
-        return ''  # DT-F123v: adat nélkül a rés nem áll a lapon
+        return ''  # DT-F174a: adat nélkül a rés nem áll a lapon
     fajl_szoveg = opcionalis_res_visszaallit(fajl_szoveg, m)
     offsets = []
     search_from = 0

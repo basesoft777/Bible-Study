@@ -740,6 +740,10 @@ def szabaly11_res_forras_egyezes(adat_dir):
             hibas.append('%s / %s -- hiba: %s' % (motivum_id, res, exc))
             continue
         if not res_egyezik(elvart, tenyleges):
+            if not elvart and LG.res_ures_e(res, tenyleges):
+                # DT-F174a: az adat nélküli opcionális rés még a lapon áll -- a 28. szabály esete (a migrált
+                # lapon SÉRTÉS, a régi sablonún JELENTÉS), itt nem kétszer
+                continue
             hibas.append('%s / %s -- eltér a tábla + tanulmány szerint elvárttól' % (motivum_id, res))
     if hibas:
         return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
@@ -1696,7 +1700,7 @@ def szabaly27_gerinc_szocikkenkent(adat_dir):
                megjegyzes='javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir)' if hibak else None)
 
 
-# 28. szabaly (DT-F123v, 2026-11-04): adat nelkuli szerkezeti blokk nem allhat olvasoi lapon. A 2/b. „Kiegeszito
+# 28. szabaly (DT-F174a, 2026-11-04): adat nelkuli szerkezeti blokk nem allhat olvasoi lapon. A 2/b. „Kiegeszito
 # szotari adatok” res 9 lapbol 8-on csak hianymondatot hordozott (a SECE a 2. szakaszban all, MCGED-sor nincs): ez
 # nem kutatasi hiany, hanem adat nelkuli szerkezeti blokk. A generator (`lexikon_general.OPCIONALIS_RESEK`) ilyenkor a
 # rest kihagyja; a szabaly azt orzi, hogy ilyen blokk ne maradjon a lapon. Gatol a migralt lapon (E28-lista: a lapot
@@ -1711,7 +1715,7 @@ def szabaly28_ures_szerkezeti_blokk(adat_dir):
     „nincs” mondatai, az ures `domen`-eredmeny es a tobbi lekerdezes kimondott ures kimenete a lapon marad (CLAUDE.md
     3. szabaly: az ures eredmeny elfogadhato es explicit jelolendo). A nem migralt (regi sablonu) lapon a talalat
     JELENTES (DT507 (a): ezek a lapok a #123 migraciojaig nem generalodnak ujra)."""
-    cim = '28. Adat nélküli szerkezeti blokk az olvasói lapon (DT-F123v)'
+    cim = '28. Adat nélküli szerkezeti blokk az olvasói lapon (DT-F174a)'
     lex_dir = os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
     if not os.path.isdir(lex_dir):
         return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
