@@ -1,5 +1,7 @@
 # A módszer Hays hét kritériumának tükrében
 
+*English version: [en/HAYS_MAPPING.md](en/HAYS_MAPPING.md)*
+
 <!-- Forrásréteg, kézi szöveg (F163.2). A leképezés értelmezés (claude-opus-5-5); a Hays-kritériumok megnevezését és sorrendjét webes forrásellenőrzés igazolta (claude-sonnet-5-5 subagent, 2026-11-04), l. a Források alatt. -->
 
 *Állapot: 2026. november 4.*

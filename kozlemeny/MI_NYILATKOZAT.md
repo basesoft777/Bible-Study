@@ -1,5 +1,7 @@
 # Nyilatkozat a mesterséges intelligencia használatáról és a szerzőségről
 
+*English version: [en/AI_DECLARATION.md](en/AI_DECLARATION.md)*
+
 <!-- Forrásréteg, kézi szöveg (F163.1). A lapra kötése (kolofon, Módszertan) külön tétel. A [HELYŐRZŐ: …] részeket a szerző tölti ki vagy hagyja jóvá; amíg helyőrző áll benne, a szöveg nem nyilvános. -->
 
 *Állapot: 2026. november 4. A nyilatkozat a munka mai, tényleges gyakorlatát írja le, nem tervet.*

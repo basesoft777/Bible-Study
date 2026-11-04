@@ -1,5 +1,7 @@
 # Az ókori közel-keleti háttér határa
 
+*English version: [en/ANE_BOUNDARY.md](en/ANE_BOUNDARY.md)*
+
 <!-- Forrásréteg, kézi szöveg (F163.4). Értelmezés: claude-opus-5-5. -->
 
 *Állapot: 2026. november 4.*

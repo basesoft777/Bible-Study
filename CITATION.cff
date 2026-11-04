@@ -29,6 +29,13 @@ abstract: >-
   származó sor megnevezi a forrását, a többi kézi döntésként jelölt. A
   besorolási döntéseket mesterséges intelligenciával segített munkamenet
   hozza; a részleteket a mellékelt MI-nyilatkozat írja le.
+  (English) An open dataset of biblical motifs. Every motif has a fixed definition,
+  an exclusion criterion and the superordinate concept toward which it would
+  dilute; every occurrence rests on a shared Hebrew or Greek word; passages
+  examined but rejected are listed with a rationale; every row derived from a
+  query names its source, and the rest are marked as manual decisions.
+  Classification decisions are made in AI-assisted working sessions; the
+  accompanying AI statement describes the details.
 keywords:
   - bibliai motívumok
   - intertextualitás
@@ -46,3 +53,8 @@ references:
       a Károli-fordítás szavainak párosítása a héber és görög szöveggel. Az
       értelmező szakaszokat mesterséges intelligencia írta az adatok alapján,
       a szerző átnézte és jóváhagyta. Minden jog fenntartva.
+      (English) The entries of the motifs: interpretive prose, the Hungarian
+      translation of the lexica and the alignment of Károli-translation words
+      with the Hebrew and Greek text. The interpretive sections were written by
+      artificial intelligence on the basis of the data, and reviewed and
+      approved by the author. All rights reserved.

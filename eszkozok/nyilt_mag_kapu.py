@@ -52,6 +52,7 @@ BUKAS, FIGY = K.BUKAS, K.FIGY
 KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kizaras_csoportok.tsv', 'kapcsolatok.tsv',
             'motivum_kapcsolatok.tsv', 'dontesnaplo.tsv', 'forrasok_es_licencek.tsv', 'kodkonyv.tsv', 'KODKONYV.md',
             'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256', 'KIADAS.txt',
+            'README.md', 'KNOWN_ISSUES.md', 'RELEASE.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
 
 # a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
@@ -73,7 +74,7 @@ SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
                           r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek)\.tsv'
-                          r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK)\.md|ELLENORZO_OSSZEG\.sha256')
+                          r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK|README|KNOWN_ISSUES)\.md|ELLENORZO_OSSZEG\.sha256')
 
 EXTRA_BELSO = [
     (re.compile(r'gerinc_elem'), 'belső oszlopnév (gerinc_elem)'),
@@ -88,9 +89,9 @@ SNAKE = EXTRA_BELSO[-1][0]
 
 # a kizárt dataset-nevek, amelyek nem állhatnak a csomagban (a forrásleltár-tábla és a leíró md kivétel)
 KIZART_NEV_KIVETEL = ('forrasok_es_licencek.tsv', 'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256',
-                      'KODKONYV.md')
+                      'KODKONYV.md', 'README.md', 'KNOWN_ISSUES.md')
 # kétnyelvű vagy angol attribúciós fájlok: az ANGOL-ellenőrzés kivétele (a kódkönyv angol leírása szándékos)
-ANGOL_FAJL_KIVETEL = ('KODKONYV.md', 'kodkonyv.tsv', 'cc_by_sa_reteg/OLVASSEL.md',
+ANGOL_FAJL_KIVETEL = ('KODKONYV.md', 'kodkonyv.tsv', 'README.md', 'KNOWN_ISSUES.md', 'cc_by_sa_reteg/OLVASSEL.md',
                       'cc_by_sa_reteg/szemantikai_domenek.tsv')
 
 
@@ -376,6 +377,44 @@ def ell_kanonikus(fajlok):
     return ki
 
 
+def ell_ketnyelv(fajlok):
+    """KETNYELV: az olvasói fájlok mindkét nyelven megvannak (OLVASSEL/README, ISMERT_HIBAK/KNOWN_ISSUES,
+    KIADAS/RELEASE), és az angol ugyanazt a tartalmat hordozza: ugyanazok a fájlsor-számok, mért számok, kizárt
+    források, helyőrző és kiadás-azonosító; a GitHub-tilalom (ell_kanonikus) minden fájlra, így az angolra is áll."""
+    ki = []
+    hu, en = fajlok.get('OLVASSEL.md', ''), fajlok.get('README.md', '')
+    for rel, sz in sorted(fajlok.items()):
+        if rel.endswith('.tsv') and rel != 'kodkonyv.tsv' and not rel.startswith('cc_by_sa_reteg/'):
+            sor = '| `%s` | %d |' % (rel, len([x for x in sz.split(chr(10)) if x.strip() and not x.startswith('#')]) - 1)
+            for nev, t in (('OLVASSEL.md', hu), ('README.md', en)):
+                if sor not in t:
+                    ki.append(Talalat('KETNYELV', BUKAS, nev, 1, sor, 'a fájl sorszáma nem egyezik / hiányzik'))
+    kizart = sorted(ds for ds in E.Licenc().sor if E.Licenc().allapot(ds)[0] == 'kizart')
+    for ds in kizart:
+        if ds not in en:
+            ki.append(Talalat('KETNYELV', BUKAS, 'README.md', 1, ds, 'a kizárt dataset listája nem mondja ki'))
+    for kell in ('<KANONIKUS_FORRAS_URL>', '## What is in it and what is not', 'RELEASE.txt', 'KNOWN_ISSUES.md',
+                 'OLVASSEL.md'):
+        if kell not in en:
+            ki.append(Talalat('KETNYELV', BUKAS, 'README.md', 1, kell, 'hiányzik'))
+    if 'README.md' not in hu or 'KNOWN_ISSUES.md' not in hu:
+        ki.append(Talalat('KETNYELV', BUKAS, 'OLVASSEL.md', 1, '', 'a magyar leírás nem hivatkozik az angol változatra'))
+    h = fajlok.get('KNOWN_ISSUES.md', '')
+    kh = E.kh_meres()
+    for k in ('gyanus', 'forrasvers', 'kh_sor', 'azonos', 'gyanus_sor'):
+        if kh[k] is not None and str(kh[k]) not in h:
+            ki.append(Talalat('KETNYELV', BUKAS, 'KNOWN_ISSUES.md', 1, str(kh[k]), 'a mért szám nem szerepel (%s)' % k))
+    if 'Károli' not in h:
+        ki.append(Talalat('KETNYELV', BUKAS, 'KNOWN_ISSUES.md', 1, '', 'a Károli-KH hiba hiányzik'))
+    r, k_ = fajlok.get('RELEASE.txt', ''), fajlok.get('KIADAS.txt', '')
+    hash_ = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
+    if 'release_id:' not in r or hash_ not in r or '<KANONIKUS_FORRAS_URL>' not in r:
+        ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
+    elif r.split(chr(10))[0].split(': ')[1] != k_.split(chr(10))[0].split(': ')[1]:
+        ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító nem egyezik a KIADAS.txt-vel'))
+    return ki
+
+
 def ell_osszeg(fajlok):
     ki = []
     sorok = [s for s in fajlok.get('ELLENORZO_OSSZEG.sha256', '').split('\n') if s.strip()]
@@ -384,7 +423,7 @@ def ell_osszeg(fajlok):
         h, _, rel = s.partition('  ')
         elvart[rel] = h
     for rel, sz in fajlok.items():
-        if rel in ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt'):
+        if rel in ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt'):
             continue
         h = hashlib.sha256(sz.encode('utf-8')).hexdigest()
         if elvart.get(rel) != h:
@@ -416,7 +455,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osszeg, ell_kanonikus, ell_termekreteg):
+              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
