@@ -1,4 +1,4 @@
-<!-- Forrásréteg, kézi szöveg (F167.2, helyőrző tételszám). A data paper angol kézirata a JOHD Data Paper szerkezetében. Szöveg: claude-opus-5-5, 2026-11-04. Minden szám a `kozlemeny/data_paper/szamok.py` kimenetéből (l. „Number provenance”); a beküldött változatból a „BEKÜLDÉSI SZÖVEG VÉGE” jelölő utáni rész kivehető. A <…> helyőrzőket a szerző tölti ki; amíg helyőrző áll benne, a szöveg nem nyilvános. -->
+<!-- Forrásréteg, kézi szöveg (F167.2, helyőrző tételszám; átnézés: F167.3). A data paper angol kézirata a JOHD Data Paper szerkezetében. Szöveg: claude-opus-5-5, 2026-11-04. Minden szám a `kozlemeny/data_paper/szamok.py` kimenetéből (l. „Number provenance”); a beküldött változatból a „BEKÜLDÉSI SZÖVEG VÉGE” jelölő utáni rész kivehető. A <…> helyőrzőket a szerző tölti ki; amíg helyőrző áll benne, a szöveg nem nyilvános. -->
 
 # A motif-indexed dataset of biblical passages with documented inclusion and exclusion decisions
 
@@ -6,7 +6,7 @@
 
 ## Abstract
 
-We describe an open dataset of nine biblical motifs, each defined by a lexical, formulaic or structural feature of the Hebrew or Greek text. It contains 255 occurrence rows and 3,509 verse-level exclusion decisions. Every occurrence names the original-language word or word pair it rests on; every examined but rejected candidate is kept with a categorised reason. Rows carry their source dataset, licence, query type and date. Candidate decisions were made in an AI-assisted workflow and are recorded as editorial decisions. The data support research on biblical intertextuality, evaluation sets for passage classification with explicit negative examples, and transfer of the method to other corpora.
+We describe an open dataset of nine biblical motifs, each defined by a lexical, formulaic or structural feature of the Hebrew or Greek text. It contains 255 occurrence rows and 3,509 verse-level exclusion decisions. Every occurrence names the original-language word or word pair it rests on; every examined but rejected candidate is kept with a categorised reason. Rows carry their source dataset, licence, query type and date; decisions were made in an AI-assisted workflow. Three motifs are fully checked, closed releases; six come from an earlier workflow and will be updated in later versions. The data support research on biblical intertextuality, evaluation sets for passage classification with explicit negative examples, and transfer of the method to other corpora.
 
 **Keywords:** biblical motifs; intertextuality; Hebrew Bible; New Testament; Septuagint; negative evidence
 
@@ -20,11 +20,13 @@ We describe an open dataset of nine biblical motifs, each defined by a lexical, 
 
 ### Context
 
-The dataset is the open data layer of a long-term, Hungarian-language motif lexicon. A motif is a recurring biblical theme whose identity is tied to a verifiable feature of the original-language text: a word (six motifs, e.g. Sheol/Hades), a fixed phrase (two, e.g. "calling on the name of the LORD", Hebrew *qārāʾ bĕšēm YHWH*) or a recurring pattern of several words (one). Evidence for an occurrence is always the Hebrew or Greek text; the Hungarian Károli translation is recorded as display data.
+The dataset is the open data layer of a long-term, Hungarian-language motif lexicon. A motif is a recurring biblical theme whose identity is tied to a verifiable feature of the original-language text: a word (six motifs, e.g. Sheol/Hades), a fixed phrase (two, e.g. "calling on the name of the LORD", Hebrew *qārāʾ bĕšēm YHWH*) or a recurring pattern of several words (one). Evidence is always the Hebrew or Greek text; the word of the Hungarian Károli translation is display data.
 
-Entries may carry a PaRDeS level (Peshat, Remez, Drash, Sod). These are reception labels: they classify how a passage connects to the motif in the terms of the medieval Jewish fourfold reading scheme, not what the biblical author intended. The scope is the biblical corpus (Hebrew Bible, Greek New Testament, Septuagint correspondences); there is no ancient Near Eastern comparative layer, and the absence of such a parallel is not a finding.
+The motifs are at two stages. Three (Sheol/Hades, the pneuma/psychē distinction, "calling on the name") have passed the lexicon's full release procedure: their pages are released, pass the reader gate without error and were reviewed by the author. The other six come from an earlier workflow: their data pass the same package gate but await full review and will be updated. The field `feldolgozasi_allapot` records each motif's stage, so users can select the closed material.
 
-Interpretive essays, Hungarian dictionary translations and the printed volume built on these data form a separate product layer and are not part of the dataset.
+Entries may carry a PaRDeS level (Peshat, Remez, Drash, Sod). This is a reception label: it classifies how a passage connects to the motif in terms of the medieval Jewish fourfold reading scheme, not what the biblical author intended. The scope is the biblical corpus (Hebrew Bible, Greek New Testament, Septuagint correspondences); with no ancient Near Eastern layer, the absence of such a parallel is not a finding.
+
+Interpretive essays and the printed volume built on these data are a separate product, not part of the dataset.
 
 ## (2) Method
 
@@ -32,23 +34,23 @@ Interpretive essays, Hungarian dictionary translations and the printed volume bu
 
 Each motif is derived in seven steps: (1) the Strong numbers shared by its core passages, with grammatical words filtered out; (2) a semantic-field hypothesis, the only generative step, logged; (3) a full Old and New Testament scan over the STEPBible tagged texts (TAHOT, TAGNT); (4) collocation (two words in one verse); (5) verb-form check; (6) the Septuagint bridge; (7) agreement with named commentators (product layer only). Steps 1 and 3–6 are deterministic scripts.
 
-No search hit enters the dataset directly. Every candidate passes through a candidate table where it is accepted or rejected with a stated reason; empty results are recorded as such and never filled with associative material.
+No search hit enters the dataset directly. Every candidate passes through a candidate table, where it is accepted or rejected with a stated reason. An empty result is recorded as empty, never filled with associative material.
 
 ### Sampling strategy
 
-Before a motif receives an identifier, four questions are answered: what carries its identity; the minimal feature without which a passage does not belong (the negative criterion); whether a passage shared with another motif has a different function there; and whether the motif is a subset of another. Each motif also names the broader concept towards which it would dilute (e.g. "sin" for the motif of the spreading consequences of sin); a passage linked only through that concept is excluded, a safeguard against "parallelomania" (Sandmel, 1962). All nine motifs have both fields filled. The motifs follow the research programme and are not a representative sample of the Bible.
+Before a motif receives an identifier, four questions are answered: what carries its identity; the minimal feature without which a passage does not belong (the negative criterion); whether a passage shared with another motif has a different function there; and whether the motif is a subset of another. Each motif also names the broader concept towards which it would dilute ("sin" for the spreading consequences of sin); a passage linked only through that concept is excluded, a safeguard against "parallelomania" (Sandmel, 1962). All nine motifs have both fields filled. The motifs follow the research programme; they are not a representative sample.
 
 ### Quality control
 
-*Completeness.* For four motifs the occurrence list was compared with three nets over the whole canon: Strong numbers (TAHOT, TAGNT), the Károli word, and the verses cited under the motif's words in the Brown–Driver–Briggs and Thayer lexicons. For Sheol/Hades and "calling on the name", no net returned a verse with the defining feature that was missing from the data; for the pneuma/psychē distinction, every verse containing the Greek word pair is in the data as an occurrence or a decided candidate. For the spreading-consequences motif the Strong net returned 1,233 verses outside the data: 651 were rejected as a block (a word outside the negative criterion) and 582 await manual review; 12 occurrence verses are found by no net (thematic links, or the word stands in another verse of a range). That motif is therefore not shown to be complete, and the nets measure recall against lexical features only.
+*Completeness.* For four motifs we compared the occurrence list with three independent nets over the whole canon: Strong numbers (TAHOT, TAGNT), the Károli word, and the verses cited in the Brown–Driver–Briggs and Thayer lexicons. For Sheol/Hades and "calling on the name", no net found a verse that has the defining feature but is missing from the data. For the pneuma/psychē distinction, every verse with the Greek word pair is in the data, as an occurrence or as a decided candidate. For the spreading-consequences motif, the Strong net returned 1,233 verses outside the data: 651 were rejected as a block (a word outside the negative criterion) and 582 await manual review; 12 occurrence verses are found by no net (thematic links, or the word stands elsewhere in a range). That motif is not shown to be complete, and in general the nets measure recall against lexical features, not completeness.
 
-*Exclusions.* There are 418 exclusion rows: 394 single verses and 24 aggregate rows standing for 3,115 verses rejected for one shared reason, in 54 reason categories. The largest by verses are: only one of the two words present (1,713), another lexeme (651), and another Hebrew or Greek word behind the same Károli word (295).
+*Exclusions.* There are 418 exclusion rows: 394 single verses and 24 aggregate rows, which stand for 3,115 verses rejected for a shared reason. Together they record 3,509 decisions in 54 reason categories. By number of verses, the largest are: only one of the two words is present (1,713), another lexeme stands in the verse (651), and the same Károli word renders another Hebrew or Greek word (295).
 
-*Verification chain.* (a) A package gate checks internal notation, codebook coverage, licence filtering, reference resolution and byte-identical regeneration (this release: 0 failures, 9 warnings); a reader gate requires zero reader-facing errors on every released lexicon page. (b) A fresh-context AI checker re-verifies each change with its own queries; a second model checks motif boundaries. (c) Three motifs have passed the formal release procedure, with eight recorded visual reviews and 29 corrections approved by the author.
+*Verification chain.* (a) A package gate checks internal notation, codebook coverage, licence filtering, reference resolution and byte-identical regeneration (this release: 0 failures, 9 warnings); a reader gate requires zero reader-facing errors on every released lexicon page. (b) A fresh-context AI checker re-verifies each change with its own queries; a second model checks motif boundaries. (c) The three closed motifs have also passed the formal release procedure, with eight recorded visual reviews and 29 corrections approved by the author.
 
-*Limitations.* All checkers except the author are scripts or language models; there has been no independent expert review and no inter-annotator measurement. 251 of 255 occurrence rows are recorded as editorial decisions rather than outputs of a single query; 183 Strong assignments were confirmed against TAHOT, 36 fall outside its scope and 36 were not confirmed. The Károli cross-reference table contains copied lists (5,078 suspect source verses); the dataset holds none of its data, but 28 exclusion rows were found through it.
+*Limitations.* The six motifs from the earlier workflow have not had the release review and may change. All checkers except the author are scripts or language models; there has been no independent expert review and no inter-annotator measurement. 251 of 255 occurrence rows are editorial decisions, not outputs of a single query; 183 Strong assignments were confirmed against TAHOT, 36 fall outside its scope and 36 were not confirmed. The Károli cross-reference table contains copied lists (5,078 suspect source verses); none of its data is included, but 28 exclusion rows were found through it.
 
-*Third-party content.* Rows draw on TAHOT and TAGNT (CC BY 4.0; STEPBible, n.d.), the OpenBible.info cross references based on the Treasury of Scripture Knowledge (CC BY; OpenBible.info, n.d.) and the Károli text of 1908 (public domain by age). Twenty-five sources are excluded: nine closed layers derived by the project, nine with unclear licences, three with restricted commercial use and four unused CC BY-SA sources. Semantic domains (United Bible Societies, 2023) form a separate CC BY-SA 4.0 layer of 237 rows.
+*Third-party content.* Rows draw on TAHOT and TAGNT (CC BY 4.0; STEPBible, n.d.), OpenBible.info cross references (CC BY; OpenBible.info, n.d.) and the Károli text of 1908 (public domain by age). Twenty-five sources are excluded (closed project layers, unclear or non-commercial licences, unused CC BY-SA sources). Semantic domains (United Bible Societies, 2023) form a separate CC BY-SA 4.0 layer of 237 rows.
 
 ## (3) Dataset description
 
@@ -56,7 +58,7 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 **Object name:** PaRDeS open core, release 2026-11-04-8029b0fc0ab84836
 
-**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 17 files, 490,952 bytes. Tables: motifs (9), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (210 entries, Hungarian and English).
+**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 17 files, 490,952 bytes. Tables: motifs (9, with processing stage), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (210 entries, Hungarian and English).
 
 **Creation dates:** 2026-08-22 to 2026-11-04
 
@@ -70,11 +72,11 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 ## (4) Reuse potential
 
-The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with categorised reasons can serve as an evaluation set for retrieval or passage classification: for example, whether a system separates invocation of the divine name from naming. The Károli word recorded for each occurrence, with its identification method and confidence, supports Hungarian reception history. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should note the small sample, the Hungarian field language, the AI-assisted decisions and the absence of external validation.
+The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with reasons can serve as an evaluation set for retrieval or classification, e.g. whether a system separates invoking the divine name from naming. The Károli word recorded for each occurrence, with its identification method and confidence, supports Hungarian reception history. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should note the small sample, the six motifs still under revision, the Hungarian field language, the AI-assisted decisions and the absence of external validation.
 
 ## AI declaration
 
-The queries are deterministic programs. Inclusion and exclusion decisions were made in sessions assisted by Anthropic Claude language models (models recorded per session in the project logs), each with a stated reason; the dataset contains decisions and short reasons, not model-written interpretive prose. Part of the Károli word alignment is machine output and is marked as such. The AI checks described above are model runs. This manuscript was drafted by claude-opus-5-5 from the repository data. No AI tool is an author; `<SZERZO>` reviewed the data and the text and is responsible for both. `<SZERZOI_NYILATKOZAT>`
+The queries are deterministic programs. Inclusion and exclusion decisions were made in sessions assisted by Anthropic Claude language models (models logged per session), each with a stated reason; the dataset contains decisions and short reasons, not model-written interpretive prose. Part of the Károli word alignment is machine output, marked as such. The AI checks described above are model runs. This manuscript was drafted by claude-opus-5-5 from the repository data. No AI tool is an author; `<SZERZO>` reviewed the data and the text and is responsible for both. `<SZERZOI_NYILATKOZAT>`
 
 ## Competing interests
 
@@ -111,6 +113,7 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | Number in text | Key | Source (file, field) |
 |---|---|---|
 | 9 motifs; 6 lexical, 2 formulaic, 1 structural | P1.motivum, P1.azonossag | `nyilt_mag/motivumok.tsv`, `azonossag_tipusa` |
+| three closed releases, six from the earlier workflow | P1.feldolgozasi_allapot | `nyilt_mag/motivumok.tsv`, `feldolgozasi_allapot` (derived from `adat/kiadasok.tsv` and the reader gate `eszkozok/olvasoi_kapu.py` on the released page) |
 | both fields filled for all nine | P1.ures_negativ_kriterium = 0, P1.ures_folerendelt = 0 | `nyilt_mag/motivumok.tsv`, `negativ_kriterium`, `folerendelt_fogalom` |
 | 255 occurrence rows | P2.elofordulas_sor | `nyilt_mag/elofordulasok.tsv` |
 | 251 of 255 editorial decisions | P2.kezi_dontes = 251, P2.lekerdezesbol = 4 | `nyilt_mag/elofordulasok.tsv`, `lekerdezes_tipusa` |
@@ -124,7 +127,7 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | 257 inclusion decisions | P4.beepitesi_dontes | `nyilt_mag/beepitesi_dontesek.tsv` |
 | 32 / 3 / 8 / 210 rows | P4.kapcsolatok, P4.motivum_kapcsolatok, P4.dontesnaplo, P4.kodkonyv | the files of the same name |
 | 237 semantic-domain rows | P4.domen_sor | `nyilt_mag/cc_by_sa_reteg/szemantikai_domenek.tsv` |
-| 54 sources; 25 excluded (9 / 9 / 3 / 4); 4 sources used in rows | P5.forras_sor, P5.szerep, P5.kizart_ok, P5.hasznalt_forras | `nyilt_mag/forrasok_es_licencek.tsv`, `szerepe_a_csomagban`, `ok` |
+| 54 sources; 25 excluded (9 closed project layers / 9 unclear / 3 non-commercial / 4 unused CC BY-SA); 4 sources used in rows | P5.forras_sor, P5.szerep, P5.kizart_ok, P5.hasznalt_forras | `nyilt_mag/forrasok_es_licencek.tsv`, `szerepe_a_csomagban`, `ok` |
 | 12 occurrence verses found by no net | P8.HAMART-001 (reverse direction) | `naplok/F123_teljesseg_HAMART-001.md`, 1. Összegzés (thematic rows and range effects) |
 | 17 files, 490,952 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
 | 2026-08-22 to 2026-11-04 | P6.datum_tartomany | `datum` and `statusz_datum` fields of the package tables |
