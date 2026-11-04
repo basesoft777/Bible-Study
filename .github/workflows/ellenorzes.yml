@@ -145,7 +145,10 @@ jobs:
           # DT-F174a: az ellenoriz.py 31. szabalya (adat nelkuli szerkezeti blokk) es a generator opcionalis rese
           python eszkozok/teszt_ellenoriz_31.py
           K3=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F123.KIADVEG: az ellenoriz.py 32. szabalya (olvasoi kapu a kiadott lapokon)
+          python eszkozok/teszt_ellenoriz_32.py
+          K4=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 

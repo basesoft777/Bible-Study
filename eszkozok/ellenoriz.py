@@ -1885,6 +1885,50 @@ def szabaly30_lap_javitasok(adat_dir, motivum_id_halmaz):
     return Sor(cim, 'RENDBEN', len(sorok) or None)
 
 
+# ---------------------------------------------------------------------------
+# 32. F123.KIADVEG (DT-F123kvb, SEMA 2.46): olvasói kapu a kiadott lapokon
+# ---------------------------------------------------------------------------
+
+def kiadott_idk(adat_dir):
+    """A kiadott motívumok: akiknek van soruk a `kiadasok.tsv`-ben (SEMA 2.46). Hiányzó tábla: üres halmaz."""
+    ut = os.path.join(adat_dir, 'kiadasok.tsv')
+    if not os.path.exists(ut):
+        return set()
+    _, sorok = G.tsv_beolvas(ut)
+    return {(r.get('id') or '').strip() for r in sorok if (r.get('id') or '').strip()}
+
+
+def szabaly32_olvasoi_kapu_kiadott(adat_dir, lex_dir=None):
+    """SÉRTÉS, ha egy kiadott lapon (a motívumnak van sora a `kiadasok.tsv`-ben) az `olvasoi_kapu.py` BUKÁS-t ad,
+    vagy a kiadott motívumnak nincs lapja. A ki nem adott lapok BUKÁS-a JELENTÉS (a #123 migrációja javítja). A
+    FIGYELMEZTETÉS nem számít. Ok: a CI zöldje eddig nem mondott semmit az olvasói kapuról, a kiadott lap
+    BUKÁS-sal is átment."""
+    cim = '32. Olvasói kapu a kiadott lapokon (SEMA 2.46)'
+    lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    import olvasoi_kapu as OK
+    kiadott = kiadott_idk(adat_dir)
+    hibak, jelentes = [], []
+    lapok = sorted(n[:-len('_TUDOMANYOS.md')] for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md'))
+    for mid in sorted(kiadott - set(lapok)):
+        hibak.append('%s: kiadott (kiadasok.tsv), de nincs lexikon/%s_TUDOMANYOS.md' % (mid, mid))
+    for mid in lapok:
+        with open(os.path.join(lex_dir, mid + '_TUDOMANYOS.md'), encoding='utf-8') as f:
+            tal, _ = OK.lap_meres(f.read())
+        kapunkent, buk, _ = OK.osszesit(tal)
+        if not buk:
+            continue
+        reszlet = ', '.join('%s %d' % (k, v[OK.BUKAS]) for k, v in sorted(kapunkent.items()) if v[OK.BUKAS])
+        if mid in kiadott:
+            hibak.append('%s (kiadott): %d BUKÁS (%s)' % (mid, buk, reszlet))
+        else:
+            jelentes.append('%s (nincs kiadva): %d BUKÁS (%s)' % (mid, buk, reszlet))
+    megj = 'kiadott lap: %d; részletek: python eszkozok/olvasoi_kapu.py <ID> --reszletes' % len(kiadott)
+    return Sor(cim, _verdikt(hibak, jelentes), (len(hibak) or len(jelentes)) or None, hibak or jelentes,
+               megjegyzes=megj)
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1953,6 +1997,7 @@ def main():
         tabla_sorok.append(szabaly29_indoklas_belso(args.adat))
         tabla_sorok.append(szabaly30_lap_javitasok(args.adat, motivum_id_halmaz))
         tabla_sorok.append(szabaly31_ures_szerkezeti_blokk(args.adat))
+        tabla_sorok.append(szabaly32_olvasoi_kapu_kiadott(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

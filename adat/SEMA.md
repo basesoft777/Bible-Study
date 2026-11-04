@@ -1829,6 +1829,8 @@ Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs
 (`eszkozok/lexikon_general.py` `blokk_kolofon`; a kolofont kézzel szerkeszteni tilos). Motívum sora nélkül a kolofon nem ír
 kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('	')`; a `#`-sor megjegyzés.
 
+**Olvasói kapu (DT-F123kvb).** A kiadott lap — amelynek motívumához itt sor áll — az `eszkozok/olvasoi_kapu.py` mérésén 0 BUKÁS-t ad: az `ellenoriz.py` 32. szabálya ezt gátlóan ellenőrzi (SÉRTÉS, ha a kiadott lapon BUKÁS van, vagy a kiadott motívumnak nincs lapja). A ki nem adott lapok BUKÁS-a csak JELENTÉS; a FIGYELMEZTETÉS nem számít. Teszt: `eszkozok/teszt_ellenoriz_32.py`.
+
 | Oszlop | Jelentés |
 |---|---|
 | `id` | motívum-id (2.1) |
