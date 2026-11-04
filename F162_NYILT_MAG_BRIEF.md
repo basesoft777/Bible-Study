@@ -5,9 +5,9 @@ kod: NYILT_MAG
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: a nyílt tudományos mag (CC BY 4.0) olvasónak érthető, generált exportja kódkönyvvel (hu/en), saját kapuval, „ismert hibák” szakasszal és licencszűréssel, amely a Zenodo-rekord alapja lehet
-kovetkezo: Te: az indoklás-szétválasztás PR-ját (a `jeloltek.tsv` indoklásainak forrásszintű tisztítása) mergeld; utána /kovetkezo
+kovetkezo: Te: a draft PR átnézése és mergelése (a kapu 0 BUKÁS; a DT-F162a/b helyőrzős döntések jóváhagyása); a Zenodo-feltöltés és a DOI-kérés a felhasználóé
 munka: folyamat
 olvas: [adat/SEMA.md, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/elutasitasi_okok.tsv, adat/licencek.tsv, adat/datasetek.tsv, adat/kiadasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, eszkozok/olvasoi_kapu.py, eszkozok/karoli_kh_epseg.py]
 ir: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, adat/nyilt_kodkonyv.tsv, adat/SEMA.md, nyilt_mag/]
@@ -75,4 +75,5 @@ A terv 1.5 táblája szerint a nyílt mag (motívumazonosító, cím, meghatáro
 
 ## 5. Döntésnapló
 
-*(üres; új döntés helyőrzővel a `dontesek/uj/` alá)*
+- **DT-F162a** 🟡 — a nyílt mag tartalma és licence (a magyar szótári fordítás, a belső útvonalú oszlopok és a döntetlen jelöltek kimaradnak; a csomag saját adata CC BY 4.0). `dontesek/uj/quirky-nobel-e12091.md`.
+- **DT-F162b** 🟡 — a DT-hivatkozás feloldása nyilvános `NYD-nnn` azonosítóval és egymondatos szöveggel. Ugyanott.
