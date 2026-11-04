@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "b4ef5dad"
+   "commit": "b95f0918"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4455,6 +4455,26 @@
      "🟢"
     ],
     "sor": 639
+   },
+   {
+    "id": "DT-F123kva",
+    "feladat": "F123.KIADVEG (az ISTENTISZT-001 11-04-i lektori javítása: külön kiadás vagy az 1. kiadás véglegesítése; 2026-11-04)",
+    "kerdes": "Az `adat/kiadasok.tsv`-ben az ISTENTISZT-001-nek két sora volt: az 1. kiadás (2026.11.02, a #152 és a #151 K1–K5 átvezetése) még az olvasói kapu bevezetése előtt készült, a 2. kiadás (2026.11.04) a `/lap-javit` lektori javítása (#623), amely után a lap először zárult 0 BUKÁS-sal. Külön kiadás-e a javítás?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 640
+   },
+   {
+    "id": "DT-F123kvb",
+    "feladat": "F123.KIADVEG (az olvasói kapu a CI-ban; 2026-11-04)",
+    "kerdes": "Az olvasói kapu (`eszkozok/olvasoi_kapu.py`) eddig csak a Feed 9. kapujában és kézi futtatásban mért; a CI zöldje és a Feed 8/9-e megtévesztő volt: kiadott lap BUKÁS-sal is átment. Legyen-e gátló CI-szabály, és mely lapokra?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 641
    }
   ],
   "javasolt": [],
