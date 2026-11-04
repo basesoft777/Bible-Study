@@ -4527,6 +4527,25 @@ def kolofon_kiadas_sorok(kiadasok):
     return meta, jegyzek
 
 
+LAP_JAVITASOK_TSV = os.path.join(ADAT, 'lap_javitasok.tsv')
+
+
+def kolofon_lektoralas(motivum_id, ut=None):
+    """A Kolofon „Emberi lektorálás” sora az `adat/lap_javitasok.tsv`-ből (SEMA 2.49, DT-F123f): a lapon
+    ténylegesen javított helyek (a nem `generátor` típusú sorok) száma, a dátumok és a jóváhagyók, ismétlés nélkül,
+    rendezve. Sor nélkül, vagy ha a fájl hiányzik: None (a Kolofon nem ír semmit)."""
+    ut = ut or LAP_JAVITASOK_TSV
+    if not os.path.isfile(ut):
+        return None
+    sorok = [r for r in L.read_tsv_skip_comments(ut)
+             if (r.get('id') or '').strip() == motivum_id and (r.get('tipus') or '').strip() != 'generátor']
+    if not sorok:
+        return None
+    datumok = sorted({(r.get('datum') or '').strip() for r in sorok if (r.get('datum') or '').strip()})
+    lektorok = sorted({(r.get('jovahagyta') or '').strip() for r in sorok if (r.get('jovahagyta') or '').strip()})
+    return '| Emberi lektorálás | %d hely (%s); lektorálók: %s |' % (len(sorok), ', '.join(datumok), ', '.join(lektorok))
+
+
 def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
@@ -4553,6 +4572,9 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     kiadasok = kolofon_kiadasok(m['id'])
     kiadas_meta, kiadas_jegyzek = kolofon_kiadas_sorok(kiadasok)
     metaadat_sorok += kiadas_meta
+    lektoralas = kolofon_lektoralas(m['id'])
+    if lektoralas:
+        metaadat_sorok.append(lektoralas)
 
     per_fajl = {}
     for fajl, licenc, blokk_nev in fajl_licenc_blokk_lista:
@@ -4592,7 +4614,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
-    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'} | ({'adat/kiadasok.tsv'} if kiadasok else set())),
+    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'} | ({'adat/kiadasok.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set())),
                            sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs, olvasoi('kolofon'))
 
 

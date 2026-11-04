@@ -271,6 +271,67 @@ class KolofonKiadas(unittest.TestCase):
         self.assertEqual(sorok[0]['proza_modell'], 'manual')
 
 
+class KolofonLektoralas(unittest.TestCase):
+    """F123.LAPJAVIT (DT-F123f, SEMA 2.49): a Kolofon „Emberi lektorálás” sora az `adat/lap_javitasok.tsv`-ből;
+    sor nélkül nem áll semmi."""
+
+    FEJ = ['id', 'hely', 'tipus', 'gond', 'regi', 'uj', 'javasolta', 'jovahagyta', 'datum', 'proveniencia']
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix='teszt_lektoralas_')
+        self.ut = os.path.join(self.tmp, 'lap_javitasok.tsv')
+        T, N = chr(9), chr(10)
+
+        def sor(id_, tipus, jovahagyta, datum):
+            return T.join([id_, '1/a', tipus, 'homályos', 'régi', 'új', 'claude-opus-5-5', jovahagyta, datum,
+                           'scope=manual | forras=chat | ts=x'])
+        with open(self.ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(N.join(['# megjegyzés', T.join(self.FEJ),
+                            sor('HODIT-001', 'próza', 'felhasználó', '2026.11.05'),
+                            sor('HODIT-001', 'adat', 'Kiss Péter', '2026.11.04'),
+                            sor('HODIT-001', 'próza', 'felhasználó', '2026.11.04'),
+                            sor('HODIT-001', 'generátor', 'felhasználó', '2026.11.06'),
+                            sor('MAS-001', 'próza', 'felhasználó', '2026.11.01')]) + N)
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_sor_szamol_es_rendez(self):
+        self.assertEqual(LG.kolofon_lektoralas('HODIT-001', self.ut),
+                         '| Emberi lektorálás | 3 hely (2026.11.04, 2026.11.05); lektorálók: Kiss Péter, felhasználó |')
+
+    def test_csak_generator_sor_nem_ir(self):
+        with open(self.ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(chr(9).join(self.FEJ) + chr(10) + chr(9).join(
+                ['HODIT-001', 'x', 'generátor', 'pontatlan', 'a', 'b', 'c', 'felhasználó', '2026.11.04', 'm']) + chr(10))
+        self.assertIsNone(LG.kolofon_lektoralas('HODIT-001', self.ut))
+
+    def test_sor_nelkul_es_hianyzo_fajl(self):
+        self.assertIsNone(LG.kolofon_lektoralas('NINCS-001', self.ut))
+        self.assertIsNone(LG.kolofon_lektoralas('HODIT-001', os.path.join(self.tmp, 'nincs.tsv')))
+
+    def test_blokk_kolofon(self):
+        """A generált Kolofon-blokk a sort a metaadat-táblában hordozza, és a táblát a forráslistába veszi;
+        sor nélkül egyik sem áll."""
+        import general as G
+        _, motivumok = G.tsv_beolvas(os.path.join(LG.ADAT, 'motivumok.tsv'))
+        m = next(r for r in motivumok if r['id'] == 'HODIT-001')
+        regi = LG.LAP_JAVITASOK_TSV
+        try:
+            LG.LAP_JAVITASOK_TSV = self.ut
+            blokk = LG.blokk_kolofon(m, [])
+            self.assertIn('| Emberi lektorálás | 3 hely', blokk)
+            self.assertIn('adat/lap_javitasok.tsv', blokk)
+            LG.LAP_JAVITASOK_TSV = os.path.join(self.tmp, 'nincs.tsv')
+            blokk = LG.blokk_kolofon(m, [])
+            self.assertNotIn('Emberi lektorálás', blokk)
+            self.assertNotIn('lap_javitasok', blokk)
+        finally:
+            LG.LAP_JAVITASOK_TSV = regi
+
+
 class GeneraltFejlec(unittest.TestCase):
     """F11 M4 (DT-F11h Á7): a helyben frissített lap fejléce után CRLF-es
     munkapéldányon is pontosan egy üres sor áll, mint az új fájlnál."""
