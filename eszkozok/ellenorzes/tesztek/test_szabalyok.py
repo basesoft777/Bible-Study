@@ -1983,5 +1983,69 @@ class E33Teszt(unittest.TestCase):
         self.assertEqual(SZ.e33_tanulmany_regiszterbe_kerul(['__TELJES__']), [])
 
 
+# ---------------------------------------------------------------------------
+# E34 (#166, DT-F166a): Karoli-idezet az adatban
+# ---------------------------------------------------------------------------
+
+_E34_FEJ = '# fejlec\nid\tigehely\tkapcsolodas\n'
+_E34_KAROLI = ('Igehely\tKároli-szöveg (teljes vers)\n'
+               'Ézs 52:6\tAzért megismeri az én népem az én nevemet.\n'
+               'Ézs 52:7\tMely szépek a hegyeken az örömhírhozónak lábai!\n')
+
+
+class E34Teszt(unittest.TestCase):
+    """E34: a `kapcsolodas` idezojeles reszlete a Karoli-vers szovege, vagy „saját fordítás” jelolt."""
+
+    def _fut(self, kapcsolodas, id_='PROBA-001', kiadott=False, igehely='Ézs 52:6'):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'konkordancia/Karoli_1908.tsv', _E34_KAROLI)
+            _ir(gy, 'adat/elofordulasok.tsv', _E34_FEJ + '%s\t%s\t%s\n' % (id_, igehely, kapcsolodas))
+            if kiadott:
+                _ir(gy, 'adat/kiadasok.tsv', '# fejlec\nid\tkiadas\n%s\t1\n' % id_)
+            return SZ.e34_karoli_idezet(['__TELJES__'])
+
+    def test_pozitiv_egyezo_idezet_zold(self):
+        self.assertEqual(self._fut('„megismeri az én népem az én nevemet” — a név ismerete'), [])
+
+    def test_pozitiv_modernizalt_helyesiras_es_irasjel_zold(self):
+        self.assertEqual(self._fut('"Azért megismeri az en nepem az én nevemet!" — a név'), [])
+
+    def test_pozitiv_tartomany_es_kihagyas_zold(self):
+        self.assertEqual(self._fut('„megismeri az én népem... mely szépek a hegyeken” — két vers', igehely='Ézs 52:6-7'), [])
+
+    def test_negativ_eltero_szo_kihirdetem_tipus(self):
+        # az ISTENTISZT-001 A1-A5 tipusa: mas igealak a Karoli szava helyett
+        t = self._fut('„kihirdetem az én nevemet az én népemnek” — a névhirdetés', kiadott=True)
+        self.assertEqual([(x.szabaly, x.szint, x.sor) for x in t], [('E34', 'HIBA', 3)])
+        self.assertIn('PROBA-001 | Ézs 52:6', t[0].reszlet)
+
+    def test_negativ_ki_nem_adott_motivumon_figyelmeztetes(self):
+        t = self._fut('„kihirdetem az én nevemet az én népemnek” — a névhirdetés')
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    def test_pozitiv_sajat_forditas_jelolessel_zold(self):
+        self.assertEqual(self._fut('„kihirdetem az én nevemet az én népemnek” (saját fordítás) — a névhirdetés'), [])
+
+    def test_pozitiv_idezojel_nelkuli_szoveg_zold(self):
+        self.assertEqual(self._fut('kihirdetem az én nevemet az én népemnek — a névhirdetés'), [])
+
+    def test_pozitiv_rovid_idezet_es_glossza_zold(self):
+        self.assertEqual(self._fut('a kifejezés „kihirdet”, és a „nevet” szó'), [])
+        self.assertEqual(self._fut('héber szó („kihirdetem az én nevemet az én népemnek”) glosszája'), [])
+
+    def test_szint_fajlszintu_adatszabaly(self):
+        self.assertIn('E34', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E34', SZ.HATOKOR_SZABALYOK)
+        self.assertIn('E34', SZ.SZABALYOK_FUGGVENYEI)
+
+    def test_tabla_nelkul_nulla_talalat(self):
+        with _IdeiglenesGyoker():
+            self.assertEqual(SZ.e34_karoli_idezet(['__TELJES__']), [])
+
+    def test_eles_adat_kiadott_motivumon_zold(self):
+        t = SZ.e34_karoli_idezet(['__TELJES__'])
+        self.assertEqual([x for x in t if x.szint == 'HIBA'], [])
+
+
 if __name__ == '__main__':
     unittest.main()
