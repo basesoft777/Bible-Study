@@ -56,9 +56,9 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 **Repository name:** `<REPOZITORIUM>`
 
-**Object name:** PaRDeS open core, release 2026-11-04-8029b0fc0ab84836
+**Object name:** PaRDeS open core, release 2026-11-04-290f358b75124363
 
-**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 17 files, 490,952 bytes. Tables: motifs (9, with processing stage), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (210 entries, Hungarian and English).
+**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 20 files, 506,186 bytes. Tables: motifs (9, with processing stage), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (213 entries, Hungarian and English).
 
 **Creation dates:** 2026-08-22 to 2026-11-04
 
@@ -108,7 +108,7 @@ United Bible Societies. (2023). *UBS Dictionary of Biblical Hebrew* (v0.9.2) and
 
 ## Number provenance
 
-Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-8029b0fc0ab84836`; the SHA-256 manifest checked on LF-normalised bytes: 15 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
+Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-290f358b75124363`; the SHA-256 manifest checked on LF-normalised bytes: 17 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
 
 | Number in text | Key | Source (file, field) |
 |---|---|---|
@@ -125,11 +125,11 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | 28 exclusion rows via the Károli cross-reference table | P3.keresesi_mod | `nyilt_mag/kizarasok.tsv`, `keresesi_mod` = Károli-kereszthivatkozás |
 | 3,115 group members; every aggregate row enumerated | P3.csoport_tabla_sor = 3,115 = P3.csoport_vers; P3.osszesito_tag_nelkul = 0 | `nyilt_mag/kizaras_csoportok.tsv` (after PR #635) |
 | 257 inclusion decisions | P4.beepitesi_dontes | `nyilt_mag/beepitesi_dontesek.tsv` |
-| 32 / 3 / 8 / 210 rows | P4.kapcsolatok, P4.motivum_kapcsolatok, P4.dontesnaplo, P4.kodkonyv | the files of the same name |
+| 32 / 3 / 8 / 213 rows | P4.kapcsolatok, P4.motivum_kapcsolatok, P4.dontesnaplo, P4.kodkonyv | the files of the same name |
 | 237 semantic-domain rows | P4.domen_sor | `nyilt_mag/cc_by_sa_reteg/szemantikai_domenek.tsv` |
 | 54 sources; 25 excluded (9 closed project layers / 9 unclear / 3 non-commercial / 4 unused CC BY-SA); 4 sources used in rows | P5.forras_sor, P5.szerep, P5.kizart_ok, P5.hasznalt_forras | `nyilt_mag/forrasok_es_licencek.tsv`, `szerepe_a_csomagban`, `ok` |
 | 12 occurrence verses found by no net | P8.HAMART-001 (reverse direction) | `naplok/F123_teljesseg_HAMART-001.md`, 1. Összegzés (thematic rows and range effects) |
-| 17 files, 490,952 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
+| 20 files, 506,186 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
 | 2026-08-22 to 2026-11-04 | P6.datum_tartomany | `datum` and `statusz_datum` fields of the package tables |
 | release identifier | P0.kiadas | `nyilt_mag/KIADAS.txt` |
 | 0 failures, 9 warnings | — | `python eszkozok/nyilt_mag_kapu.py`, run 2026-11-04 in this session; same result in `naplok/NYILT_MAG_jelentes.md` |
