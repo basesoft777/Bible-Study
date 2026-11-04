@@ -59,8 +59,8 @@ MOTIVUMOK = ['ALVIL-001', 'ANTROP-001', 'HAMART-001', 'HODIT-001',
 # munkalap sorai hozzáfűzéskor `elofordulas` típust kapnak, üres cel_* mezőkkel.
 JELOLTEK_FEJLEC = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas',
                    'karoli_szo', 'azonositas_modja', 'megbizhatosag', 'datum']
-JELOLTEK_TABLA_FEJLEC = JELOLTEK_FEJLEC + ['jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont']
-ELOFORDULAS_TOLDALEK = ['elofordulas', '', '', '']
+JELOLTEK_TABLA_FEJLEC = JELOLTEK_FEJLEC + ['jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont', 'dontes_ref']
+ELOFORDULAS_TOLDALEK = ['elofordulas', '', '', '', '']
 DONTES_ERTEKEK = {'beépítve', 'elutasítva', 'nyitva'}
 
 # --- kezi kiegeszitesek (DT-F63a (2) szerint a kodba irva, megjegyzessel es naplo-hivatkozassal) ---

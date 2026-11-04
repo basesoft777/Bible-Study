@@ -4931,21 +4931,50 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
         for j in jeloltek:
             szam[j['dontes']] = szam.get(j['dontes'], 0) + 1
         osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
-        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll; a tartalma változatlan
+        # DT-F152a (b): a tábla az 1/b. adatát ismétli, ezért csukva áll. F123.INDOKLAS: az 1/b. olvasói formája —
+        # miért lett jelölt (szöveggel), döntés és ok; a nyers forrás, a proveniencia és a döntés nyoma (`dontes_ref`)
+        # lábjegyzetben.
         tabla = ['<details>',
                  '<summary>Kereszthivatkozásból minősített jelöltek (%d sor; %s)</summary>' % (len(jeloltek), osszeg),
-                 '', '| Igehely | Döntés | Forrás | Indoklás |', '|---|---|---|---|']
-        forrasok, kozos = SZKZ.kozos_proveniencia([_cella(j['forras_kereses']) for j in jeloltek], 'M')   # F152 B.2
-        for j, fk in zip(jeloltek, forrasok):
-            tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], fk,
-                                                     SZKZ.indok_cella(j.get('indoklas') or EM_DASH)))
-        if kozos:
-            tabla += ['', kozos]
+                 '', '| Igehely | Miért lett jelölt | Döntés és indok |', '|---|---|---|']
+        sorok_md, labj = minosites_jelolt_sorok(motivum_id, jeloltek)
+        tabla += sorok_md
         tabla += ['', '</details>']
         out.append('\n'.join(tabla))
+        labj, kozos = SZKZ.kozos_proveniencia(labj, 'M')   # F152 B.2
+        out.append('\n'.join('[^mj%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
+        if kozos:
+            out.append(kozos)
     else:
         out.append('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.')
     return '\n\n'.join(out)
+
+
+def minosites_jelolt_sorok(motivum_id, jeloltek):
+    """(táblasorok, lábjegyzetek) a Minősítés rés jelölt-táblájához, az 1/b. mintájára (`szerep_kizart`): a miért lett
+    jelölt a `forras_kereses`-ből, a döntés és az elutasítás oka a mintaszótárból, az indoklás olvasói alakja; a
+    lábjegyzetben a nyers forrás, az indoklás ` | ` utáni része és a `dontes_ref` (F123.INDOKLAS)."""
+    minta = SZKZ.okok(motivum_id)
+    sorok, labj = [], []
+    for j in jeloltek:
+        _csop, miert = SZKZ.jeloles_oka(j.get('forras_kereses'))
+        fo, _sep, farok = (j.get('indoklas') or '').partition(' | ')
+        if j['dontes'] == 'elutasítva':
+            dontes = '**elutasítva** — %s' % SZKZ.elutasitas_oka(fo, minta)
+        elif j['dontes'] == 'nyitva':
+            dontes = '**nyitott döntés**'
+        else:
+            dontes = '**%s**' % j['dontes']
+        olv = SZKZ.olvasoi_indok(fo)
+        lj = 'forrás: `%s`%s' % (j.get('forras_kereses') or EM_DASH, (' · ' + _cella(farok)) if farok else '')
+        if SZKZ.nyom_lapra(j.get('dontes_ref')):
+            lj += ' · a döntés nyoma: `%s`' % SZKZ.nyom_lapra(j.get('dontes_ref'))
+        if olv != fo:
+            lj += ' · indoklás (nyers): %s' % _cella(fo)
+        labj.append(lj)
+        cella = dontes if not olv else '%s: %s' % (dontes, _cella(olv))
+        sorok.append('| %s | %s[^mj%d] | %s |' % (j['igehely'], _cella(miert), len(labj), cella))
+    return sorok, labj
 
 
 def _adatres_alatamasztas(motivum_id, sorai):

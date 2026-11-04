@@ -278,7 +278,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 [^k19]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 359 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=chajja), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
 [^k20]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 66 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_heber), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
 [^k21]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 41 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_gorog), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k22]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · indoklás (nyers): A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja (adat/thayer_szakaszok.tsv, G4151 -/2/-, G5590 -/2/-). Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak.
+[^k22]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · a döntés nyoma: `adat/thayer_szakaszok.tsv G4151 -/2/-, G5590 -/2/-`
 
 *A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_ANTROP2_osztaly.py | ts=2026-11-03` (11 sor) · ‹K2› = `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli` (2 sor) · ‹K3› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_adat_keszito.py lxx | ts=2026-11-03` (2 sor)*
 
@@ -773,9 +773,9 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó, G2198): 197 vers; ζωή (dzóé, G2222): 138 vers; κύριος (küriosz, G2962): 131 vers; πᾶς (pasz, G3956): 130 vers; λέγω (legó, G3004): 124 vers; εἰμί (eimi, G1510): 93 vers; γῆ (gé, G1093): 91 vers; θεός (theosz, G2316): 68 vers; θηρίον (thérion, G2342): 68 vers; ψυχή (pszükhé, G5590): 62 vers
+**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó): 197 vers; ζωή (dzóé): 138 vers; κύριος (küriosz): 131 vers; πᾶς (pasz): 130 vers; λέγω (legó): 124 vers; εἰμί (eimi): 93 vers; γῆ (gé): 91 vers; θεός (theosz): 68 vers; θηρίον (thérion): 68 vers; ψυχή (pszükhé): 62 vers
 
-**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé, G5590): 615 vers; κύριος (küriosz, G2962): 209 vers; πᾶς (pasz, G3956): 165 vers; λέγω (legó, G3004): 133 vers; εἰμί (eimi, G1510): 125 vers; θεός (theosz, G2316): 75 vers; ποιέω (poieó, G4160): 71 vers; υἱός (ühiosz, G5207): 60 vers; χείρ (kheir, G5495): 55 vers; ζάω (dzaó, G2198): 51 vers
+**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé): 615 vers; κύριος (küriosz): 209 vers; πᾶς (pasz): 165 vers; λέγω (legó): 133 vers; εἰμί (eimi): 125 vers; θεός (theosz): 75 vers; ποιέω (poieó): 71 vers; υἱός (ühiosz): 60 vers; χείρ (kheir): 55 vers; ζάω (dzaó): 51 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -921,7 +921,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé G5590) | egyező | Septuaginta |
+| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé) | egyező | Septuaginta |
 
 *Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 

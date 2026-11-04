@@ -187,6 +187,13 @@ class Negativ(unittest.TestCase):
     def test_T14_motivum_id_link_nelkul(self):
         self.jelez(lap(kivonat='Precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9.'), 'MOTIVUM_ID', K.FIGY)
 
+    def test_strong_a_szo_es_kiejtese_mellett(self):
+        """F123.INDOKLAS: ISTENTISZT-001, a Minősítés jelölt-táblája (Róm 10:12) és az LXX-tábla alakja."""
+        t = self.jelez(lap(kivonat='A versben ἐπικαλέομαι áll, de ὄνομα (G3686) nélkül.'), 'BELSO')
+        self.assertTrue(any(x['uzenet'].startswith('Strong-szám') for x in t))
+        self.jelez(lap(tobbi='## 3. LXX-fordítói döntések\n\n| Igehely | Görög megfelelő |\n|---|---|\n'
+                             '| 1Móz 4:26 | ἐπικαλεῖσθαι (epikaleiszthai) (ἐπικαλέω, epikaleó G1941) |\n'), 'BELSO')
+
     def test_G5_munkafolyamat_kerdes(self):
         self.jelez(lap(tobbi='## 6. Értelmezés *(kézi)*\n\nFel kell-e venni a jeloltek.tsv-be, és át kell-e vezetni '
                              'a tematikus study 2. és 3. pontjába?\n'), 'BELSO')
@@ -197,6 +204,13 @@ class Pozitiv(unittest.TestCase):
 
     def nincs(self, szoveg, *azon):
         tal = [t for t in meres(szoveg) if t['azonosito'] in azon]
+        self.assertEqual(tal, [], tal)
+
+    def test_strong_oszlop_es_onallo_strong(self):
+        """A táblázat „Strong” oszlopa, a címsor és a szó nélkül álló Strong-szám nem belső jel."""
+        tobbi = ('## 2. Szótári háttér\n\n### H5303 — נְפִלִים (ne.phil)\n\n| Szó | Kiejtés | Strong |\n|---|---|---|\n'
+                 '| שֵׁם | sém | H8034 |\n\nA H7496/H7497 Strong-szám szerinti megoszlás; a kárá (H7121) ige.\n')
+        tal = [t for t in meres(lap(tobbi=tobbi)) if t['uzenet'].startswith('Strong-szám')]
         self.assertEqual(tal, [], tal)
 
     def test_arany_1a_blokk(self):

@@ -407,9 +407,9 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H0922** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 2 vers; εἰμί (eimi, G1510): 2 vers; ἄβυσσος (abüsszosz, G0012): 1 vers; ἀόρατος (aoratosz, G0517): 1 vers; ἐπάνω (epanó, G1883): 1 vers; ἐπιβάλλω (epiballó, G1911): 1 vers; ἐπιβλέπω (epiblepó, G1914): 1 vers; ἐπιφέρω (epiferó, G2018): 1 vers; ἔρημος (erémosz, G2048): 1 vers; θεός (theosz, G2316): 1 vers
+**H0922** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé): 2 vers; εἰμί (eimi): 2 vers; ἄβυσσος (abüsszosz): 1 vers; ἀόρατος (aoratosz): 1 vers; ἐπάνω (epanó): 1 vers; ἐπιβάλλω (epiballó): 1 vers; ἐπιβλέπω (epiblepó): 1 vers; ἐπιφέρω (epiferó): 1 vers; ἔρημος (erémosz): 1 vers; θεός (theosz): 1 vers
 
-**H8414** · 19 vers a Septuagintában (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé, G1093): 8 vers; εἰμί (eimi, G1510): 8 vers; οὐδείς (údeisz, G3762): 7 vers; πᾶς (pasz, G3956): 5 vers; ποιέω (poieó, G4160): 5 vers; μάταιος (mataiosz, G3152): 4 vers; ἄρχων (arkhón, G0758): 3 vers; θεός (theosz, G2316): 3 vers; κύριος (küriosz, G2962): 3 vers; λέγω (legó, G3004): 3 vers
+**H8414** · 19 vers a Septuagintában (ebből 19 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ (gé): 8 vers; εἰμί (eimi): 8 vers; οὐδείς (údeisz): 7 vers; πᾶς (pasz): 5 vers; ποιέω (poieó): 5 vers; μάταιος (mataiosz): 4 vers; ἄρχων (arkhón): 3 vers; θεός (theosz): 3 vers; κύριος (küriosz): 3 vers; λέγω (legó): 3 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -538,9 +538,9 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 1:2 | 1Móz 1:2 | תֹ֙הוּ֙ (tóhú) | ἀόρατος (aoratosz G0517) | eltérő | adat/lxx_dontesek.tsv |
+| 1Móz 1:2 | 1Móz 1:2 | תֹ֙הוּ֙ (tóhú) | ἀόρατος (aoratosz) | eltérő | adat/lxx_dontesek.tsv |
 | Jer 4:23 | Jer 4:23 | תֹ֖הוּ (tóhú) | — | kutatói azonosítás függőben | Septuaginta |
-| Ézs 34:11 | Ézs 34:11 | תֹ֖הוּ (tóhú) | ἔρημος (erémosz G2048) | eltérő | adat/lxx_dontesek.tsv |
+| Ézs 34:11 | Ézs 34:11 | תֹ֖הוּ (tóhú) | ἔρημος (erémosz) | eltérő | adat/lxx_dontesek.tsv |
 
 *Összesítés: egyező=0, eltérő=2, LXX-minusz=0, kutatói azonosítás függőben=1, szamozas_elteres=0.*
 
@@ -602,57 +602,105 @@ A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet éri
 <details>
 <summary>Kereszthivatkozásból minősített jelöltek (47 sor; elutasítva 47)</summary>
 
-| Igehely | Döntés | Forrás | Indoklás |
-|---|---|---|---|
-| Zsolt 104:30 | elutasítva | TSK 1Móz 1:2 (Votes=61) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Zsolt 33:6 | elutasítva | TSK 1Móz 1:2 (Votes=40) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 40:12 | elutasítva | TSK 1Móz 1:2 (Votes=28) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 40:14 | elutasítva | TSK 1Móz 1:2 (Votes=28) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Jób 26:14 | elutasítva | TSK 1Móz 1:2 (Votes=7) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Náh 2:10 | elutasítva | TSK 1Móz 1:2 (Votes=-14) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Mt 24:29 | elutasítva | TSK Jer 4:23 (Votes=35) | negatív kritérium: nincs H8414+H0922 pár. Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom felé húz. TSK 35. |
-| Mk 13:24 | elutasítva | TSK Jer 4:23 (Votes=29) | negatív kritérium: nincs H8414+H0922 pár. Az Mt 24:29 szinoptikus párhuzama: elsötétülés, tohu/bohu nélkül. TSK 29. |
-| Mk 13:25 | elutasítva | TSK Jer 4:23 (Votes=29) | negatív kritérium: nincs H8414+H0922 pár. Csillaghullás, az egek megrendülése — pár nélkül. TSK 29. |
-| Ézs 13:10 | elutasítva | TSK Jer 4:23 (Votes=26) | negatív kritérium: nincs H8414+H0922 pár. Babilon-ítélet égi elsötétüléssel — a pusztulás-kép, pár nélkül. TSK 26. |
-| Jóel 3:15 | elutasítva | TSK Jer 4:23 (Votes=26) | negatív kritérium: nincs H8414+H0922 pár. Nap és hold elsötétülése — pár nélkül. TSK 26. |
-| Jóel 3:16 | elutasítva | TSK Jer 4:23 (Votes=26) | negatív kritérium: nincs H8414+H0922 pár. Az egek és a föld megrendülése — pár nélkül; a vers ráadásul oltalom-ígérettel zárul. TSK 26. |
-| Luk 21:25 | elutasítva | TSK Jer 4:23 (Votes=21) | negatív kritérium: nincs H8414+H0922 pár. Jelek a napban, holdban, csillagokban — pár nélkül. TSK 21. |
-| Luk 21:26 | elutasítva | TSK Jer 4:23 (Votes=21) | negatív kritérium: nincs H8414+H0922 pár. Az egek erősségeinek megrendülése — pár nélkül. TSK 21. |
-| Ez 32:7 | elutasítva | TSK Jer 4:23 (Votes=20) | negatív kritérium: nincs H8414+H0922 pár. A fáraó-sirató égi elsötétülése — pár nélkül. TSK 20. |
-| Ez 32:8 | elutasítva | TSK Jer 4:23 (Votes=20) | negatív kritérium: nincs H8414+H0922 pár. „Sötétséget bocsátok földedre” — a Jer 4:23 fény-hiányához legközelebb álló kép, de pár nélkül. TSK 20. |
-| Ámós 8:9 | elutasítva | TSK Jer 4:23 (Votes=18) | negatív kritérium: nincs H8414+H0922 pár. Délben lenyugvó nap — pár nélkül. TSK 18. |
-| Jóel 2:10 | elutasítva | TSK Jer 4:23 (Votes=18) | negatív kritérium: nincs H8414+H0922 pár. Föld- és ég-rengés, elsötétülés — pár nélkül. TSK 18. |
-| Jóel 2:30 | elutasítva | TSK Jer 4:23 (Votes=17) | negatív kritérium: nincs H8414+H0922 pár. Jelek az égen és a földön (vér, tűz, füst) — pár nélkül, elsötétülés sincs benne. TSK 17. |
-| Jóel 2:31 | elutasítva | TSK Jer 4:23 (Votes=17) | negatív kritérium: nincs H8414+H0922 pár. A nap sötétséggé, a hold vérré válik — pár nélkül. TSK 17. |
-| ApCsel 2:19 | elutasítva | TSK Jer 4:23 (Votes=17) | negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:30 idézete — pár nélkül. TSK 17. |
-| ApCsel 2:20 | elutasítva | TSK Jer 4:23 (Votes=17) | negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:31 idézete — pár nélkül; a LXX-híd sem köti a tohu-hoz (a Jer 4:23 LXX-e οὐθέν). TSK 17. |
-| Ézs 5:30 | elutasítva | TSK Jer 4:23 (Votes=16) | negatív kritérium: nincs H8414+H0922 pár. „A földre néz, de ímé sűrű sötétség” — a Jer 4:23 szerkezetének legközelebbi párja (néz → föld → sötétség), de pár nélkül. TSK 16. |
-| Mt 24:35 | elutasítva | TSK Jer 4:23 (Votes=15) | negatív kritérium: nincs H8414+H0922 pár. „Az ég és a föld elmúlnak” — elmúlás, nem visszarendeződés; pár nélkül. TSK 15. |
-| Ézs 24:19 | elutasítva | TSK Jer 4:23 (Votes=12) | negatív kritérium: nincs H8414+H0922 pár. A föld összetörése az Ézs 24 keretében (l. Ézs 24:10) — pár nélkül. TSK 12. |
-| Ézs 24:23 | elutasítva | TSK Jer 4:23 (Votes=12) | negatív kritérium: nincs H8414+H0922 pár. A hold és a nap megszégyenülése a Sion-királyság előtt — pár nélkül. TSK 12. |
-| Jel 20:11 | elutasítva | TSK Jer 4:23 (Votes=12) | negatív kritérium: nincs H8414+H0922 pár. A föld és az ég eltűnése a trón elől — megszűnés, nem a teremtés előtti állapot; pár nélkül. TSK 12. |
-| Jer 9:10 | elutasítva | TSK Jer 4:23 (Votes=8) | negatív kritérium: nincs H8414+H0922 pár. A Jer 4:25 visszhangja („az ég madaraitól fogva a barmokig minden elköltözik”), tehát a Jer 4:23–26 egység motívum-rokona — de tohu/bohu nélkül. TSK 8. |
-| Jer 9:15 | elutasítva | Károli-KH (forrás-vers: Jer 4:23) | negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
-| Zsolt 80:6-7 | elutasítva | Károli-KH (forrás-vers: Jer 4:23) | negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
-| 2Kir 21:13 | elutasítva | TSK Ézs 34:11 (Votes=6) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| JSir 2:8 | elutasítva | TSK Ézs 34:11 (Votes=6) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Sof 2:14 | elutasítva | TSK Ézs 34:11 (Votes=5) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Jel 18:2 | elutasítva | TSK Ézs 34:11 (Votes=4) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 14:23 | elutasítva | TSK Ézs 34:11 (Votes=3) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| 2Sám 8:2 | elutasítva | TSK Ézs 34:11 (Votes=3) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Mal 1:3 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Mal 1:4 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Jel 18:21 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Jel 18:23 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 13:20 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 13:22 | elutasítva | TSK Ézs 34:11 (Votes=2) | negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Ézs 66:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
-| Ez 34:12-16 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
-| Ján 10:11 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
-| 1Móz 33:13 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
-| 4Móz 11:12 | elutasítva | Károli-KH (forrás-vers: Ézs 34:11) | — |
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Zsolt 104:30 | TSK-ajánlás az 1Móz 1:2 helyről, 61 szavazat[^mj1] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Zsolt 33:6 | TSK-ajánlás az 1Móz 1:2 helyről, 40 szavazat[^mj2] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 40:12 | TSK-ajánlás az 1Móz 1:2 helyről, 28 szavazat[^mj3] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 40:14 | TSK-ajánlás az 1Móz 1:2 helyről, 28 szavazat[^mj4] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Jób 26:14 | TSK-ajánlás az 1Móz 1:2 helyről, 7 szavazat[^mj5] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Náh 2:10 | TSK-ajánlás az 1Móz 1:2 helyről, -14 szavazat[^mj6] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Mt 24:29 | TSK-ajánlás a Jer 4:23 helyről, 35 szavazat[^mj7] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom felé húz. TSK 35. |
+| Mk 13:24 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^mj8] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az Mt 24:29 szinoptikus párhuzama: elsötétülés, tohu/bohu nélkül. TSK 29. |
+| Mk 13:25 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^mj9] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Csillaghullás, az egek megrendülése — pár nélkül. TSK 29. |
+| Ézs 13:10 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^mj10] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Babilon-ítélet égi elsötétüléssel — a pusztulás-kép, pár nélkül. TSK 26. |
+| Jóel 3:15 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^mj11] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Nap és hold elsötétülése — pár nélkül. TSK 26. |
+| Jóel 3:16 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^mj12] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az egek és a föld megrendülése — pár nélkül; a vers ráadásul oltalom-ígérettel zárul. TSK 26. |
+| Luk 21:25 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^mj13] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Jelek a napban, holdban, csillagokban — pár nélkül. TSK 21. |
+| Luk 21:26 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^mj14] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az egek erősségeinek megrendülése — pár nélkül. TSK 21. |
+| Ez 32:7 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^mj15] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A fáraó-sirató égi elsötétülése — pár nélkül. TSK 20. |
+| Ez 32:8 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^mj16] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „Sötétséget bocsátok földedre” — a Jer 4:23 fény-hiányához legközelebb álló kép, de pár nélkül. TSK 20. |
+| Ámós 8:9 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^mj17] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Délben lenyugvó nap — pár nélkül. TSK 18. |
+| Jóel 2:10 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^mj18] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Föld- és ég-rengés, elsötétülés — pár nélkül. TSK 18. |
+| Jóel 2:30 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^mj19] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Jelek az égen és a földön (vér, tűz, füst) — pár nélkül, elsötétülés sincs benne. TSK 17. |
+| Jóel 2:31 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^mj20] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A nap sötétséggé, a hold vérré válik — pár nélkül. TSK 17. |
+| ApCsel 2:19 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^mj21] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:30 idézete — pár nélkül. TSK 17. |
+| ApCsel 2:20 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^mj22] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:31 idézete — pár nélkül; a LXX-híd sem köti a tohu-hoz (a Jer 4:23 LXX-e οὐθέν). TSK 17. |
+| Ézs 5:30 | TSK-ajánlás a Jer 4:23 helyről, 16 szavazat[^mj23] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „A földre néz, de ímé sűrű sötétség” — a Jer 4:23 szerkezetének legközelebbi párja (néz → föld → sötétség), de pár nélkül. TSK 16. |
+| Mt 24:35 | TSK-ajánlás a Jer 4:23 helyről, 15 szavazat[^mj24] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „Az ég és a föld elmúlnak” — elmúlás, nem visszarendeződés; pár nélkül. TSK 15. |
+| Ézs 24:19 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^mj25] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A föld összetörése az Ézs 24 keretében (l. Ézs 24:10) — pár nélkül. TSK 12. |
+| Ézs 24:23 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^mj26] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A hold és a nap megszégyenülése a Sion-királyság előtt — pár nélkül. TSK 12. |
+| Jel 20:11 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^mj27] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A föld és az ég eltűnése a trón elől — megszűnés, nem a teremtés előtti állapot; pár nélkül. TSK 12. |
+| Jer 9:10 | TSK-ajánlás a Jer 4:23 helyről, 8 szavazat[^mj28] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jer 4:25 visszhangja („az ég madaraitól fogva a barmokig minden elköltözik”), tehát a Jer 4:23–26 egység motívum-rokona — de tohu/bohu nélkül. TSK 8. |
+| Jer 9:15 | Károli-kereszthivatkozás a Jer 4:23 helyről[^mj29] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
+| Zsolt 80:6-7 | Károli-kereszthivatkozás a Jer 4:23 helyről[^mj30] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
+| 2Kir 21:13 | TSK-ajánlás az Ézs 34:11 helyről, 6 szavazat[^mj31] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| JSir 2:8 | TSK-ajánlás az Ézs 34:11 helyről, 6 szavazat[^mj32] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Sof 2:14 | TSK-ajánlás az Ézs 34:11 helyről, 5 szavazat[^mj33] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Jel 18:2 | TSK-ajánlás az Ézs 34:11 helyről, 4 szavazat[^mj34] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 14:23 | TSK-ajánlás az Ézs 34:11 helyről, 3 szavazat[^mj35] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| 2Sám 8:2 | TSK-ajánlás az Ézs 34:11 helyről, 3 szavazat[^mj36] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Mal 1:3 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj37] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Mal 1:4 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj38] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Jel 18:21 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj39] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Jel 18:23 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj40] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 13:20 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj41] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 13:22 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^mj42] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
+| Ézs 66:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^mj43] | **elutasítva** — a jelölés forrásadata hibás |
+| Ez 34:12-16 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^mj44] | **elutasítva** — a jelölés forrásadata hibás |
+| Ján 10:11 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^mj45] | **elutasítva** — a jelölés forrásadata hibás |
+| 1Móz 33:13 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^mj46] | **elutasítva** — a jelölés forrásadata hibás |
+| 4Móz 11:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^mj47] | **elutasítva** — a jelölés forrásadata hibás |
 
 </details>
+
+[^mj1]: forrás: `TSK 1Móz 1:2 (Votes=61)`
+[^mj2]: forrás: `TSK 1Móz 1:2 (Votes=40)`
+[^mj3]: forrás: `TSK 1Móz 1:2 (Votes=28)`
+[^mj4]: forrás: `TSK 1Móz 1:2 (Votes=28)`
+[^mj5]: forrás: `TSK 1Móz 1:2 (Votes=7)`
+[^mj6]: forrás: `TSK 1Móz 1:2 (Votes=-14)`
+[^mj7]: forrás: `TSK Jer 4:23 (Votes=35)`
+[^mj8]: forrás: `TSK Jer 4:23 (Votes=29)`
+[^mj9]: forrás: `TSK Jer 4:23 (Votes=29)`
+[^mj10]: forrás: `TSK Jer 4:23 (Votes=26)`
+[^mj11]: forrás: `TSK Jer 4:23 (Votes=26)`
+[^mj12]: forrás: `TSK Jer 4:23 (Votes=26)`
+[^mj13]: forrás: `TSK Jer 4:23 (Votes=21)`
+[^mj14]: forrás: `TSK Jer 4:23 (Votes=21)`
+[^mj15]: forrás: `TSK Jer 4:23 (Votes=20)`
+[^mj16]: forrás: `TSK Jer 4:23 (Votes=20)`
+[^mj17]: forrás: `TSK Jer 4:23 (Votes=18)`
+[^mj18]: forrás: `TSK Jer 4:23 (Votes=18)`
+[^mj19]: forrás: `TSK Jer 4:23 (Votes=17)`
+[^mj20]: forrás: `TSK Jer 4:23 (Votes=17)`
+[^mj21]: forrás: `TSK Jer 4:23 (Votes=17)`
+[^mj22]: forrás: `TSK Jer 4:23 (Votes=17)`
+[^mj23]: forrás: `TSK Jer 4:23 (Votes=16)`
+[^mj24]: forrás: `TSK Jer 4:23 (Votes=15)`
+[^mj25]: forrás: `TSK Jer 4:23 (Votes=12)`
+[^mj26]: forrás: `TSK Jer 4:23 (Votes=12)`
+[^mj27]: forrás: `TSK Jer 4:23 (Votes=12)`
+[^mj28]: forrás: `TSK Jer 4:23 (Votes=8)`
+[^mj29]: forrás: `Károli-KH (forrás-vers: Jer 4:23)`
+[^mj30]: forrás: `Károli-KH (forrás-vers: Jer 4:23)`
+[^mj31]: forrás: `TSK Ézs 34:11 (Votes=6)`
+[^mj32]: forrás: `TSK Ézs 34:11 (Votes=6)`
+[^mj33]: forrás: `TSK Ézs 34:11 (Votes=5)`
+[^mj34]: forrás: `TSK Ézs 34:11 (Votes=4)`
+[^mj35]: forrás: `TSK Ézs 34:11 (Votes=3)`
+[^mj36]: forrás: `TSK Ézs 34:11 (Votes=3)`
+[^mj37]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj38]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj39]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj40]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj41]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj42]: forrás: `TSK Ézs 34:11 (Votes=2)`
+[^mj43]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^mj44]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^mj45]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^mj46]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
+[^mj47]: forrás: `Károli-KH (forrás-vers: Ézs 34:11)` · indoklás (nyers): adathiba: az Isa.34.11 lista az Isa.40.11 másolata
 
 *Proveniencia: `scope=id:TEREMT-002 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
 

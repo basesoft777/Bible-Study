@@ -166,7 +166,7 @@ def jeloltek_ir(adat_dir, szakasz_spec, sorok):
             'cel_alpont': '',
         }
         # a tábla tényleges fejléce szerint (a régi, 9 oszlopos tábla is)
-        uj_sorok.append('\t'.join(mezok[m] for m in fejlec))
+        uj_sorok.append('\t'.join(mezok.get(m, '') for m in fejlec))   # az új oszlop (dontes_ref) üres
 
     if not uj_sorok:
         return []
