@@ -1,83 +1,111 @@
-<!-- Forrásréteg, kézi szöveg (F167.2, helyőrző tételszám). A data paper magyar kézirata a Digitális Bölcsészet (ELTE) „Labor” rovatára igazítva; nem az angol kézirat fordítása, hanem eltérő hangsúlyú adatközlés (a módszerre és a magyar olvasói rétegre). Szöveg: claude-opus-5-5, 2026-11-04. Minden szám a `kozlemeny/data_paper/szamok.py` kimenetéből (l. „A számok forrása”); a beküldött változatból a „BEKÜLDÉSI SZÖVEG VÉGE” jelölő utáni rész kivehető. A <…> helyőrzőket a szerző tölti ki; amíg helyőrző áll benne, a szöveg nem nyilvános. A rovat követelményeinek forrása: `folyoirat_lehetosegek.md` (PR #632), 2. szakasz és a rangsor 4. pontja; ami ott nem ellenőrzött, itt is ❓-lel jelölve. -->
+<!-- Forrásréteg, kézi szöveg (F167.2, helyőrző tételszám; átírás: F167.3). A data paper magyar kézirata a Digitális Bölcsészet (ELTE) „Labor” rovatára igazítva; nem az angol kézirat fordítása, hanem eltérő hangsúlyú adatközlés (a módszerre és a magyar olvasói rétegre). Szöveg: claude-opus-5-5, 2026-11-04. Minden szám a `kozlemeny/data_paper/szamok.py` kimenetéből (l. „A számok forrása”); a beküldött változatból a „BEKÜLDÉSI SZÖVEG VÉGE” jelölő utáni rész kivehető. A <…> helyőrzőket a szerző tölti ki; amíg helyőrző áll benne, a szöveg nem nyilvános. A rovat követelményeinek forrása: `folyoirat_lehetosegek.md` (PR #632), 2. szakasz és a rangsor 4. pontja; ami ott nem ellenőrzött, itt is ❓-lel jelölve. -->
 
 # Kizárási döntések bibliai motívumkutatásban: motívum-indexelt nyílt adatkészlet a héber és görög szövegről, a Károli-fordítás szavaival
 
 **Szerző:** `<SZERZO>` (`<INTEZMENY>`; ORCID `<ORCID>`) — *kettős vak bírálatra a beküldött példányból törlendő, l. a végi jegyzetet*
 
-## Rövid leírás
+## Kivonat
 
-Kilenc bibliai motívum nyílt adatkészletét mutatjuk be. Minden motívumot a héber vagy a görög szöveg egy ellenőrizhető jegye határoz meg: egy szó, egy állandó szókapcsolat vagy több szó visszatérő együttállása. Az adatkészlet 255 előfordulást és 3 509 versszintű kizárási döntést tartalmaz. Minden előfordulás megnevezi azt az eredeti nyelvű szót vagy szópárt, amelyen áll; minden megvizsgált, de elutasított hely okkal együtt megmarad. Az előfordulások mellett ott áll a Károli-fordítás megfelelő szava is, a párosítás módjával és bizonyosságával. A közlemény a módszer kizárási eszközeit és a magyar olvasói réteg szerepét írja le.
+Ez a közlemény egy nyílt adatkészletet mutat be, amely kilenc bibliai motívum előfordulásait gyűjti a héber és a görög szövegben. Minden motívumot egy ellenőrizhető szöveges jegy határoz meg: egy szó, egy állandó szókapcsolat vagy szavak visszatérő együttállása. Az adatkészlet 255 előfordulást rögzít. Mindegyiknél megnevezi az eredeti nyelvű szót vagy szópárt, és mellé teszi a Károli-fordítás megfelelő szavát, a párosítás módjával és bizonyosságával. Legalább ilyen fontos az, ami kimaradt: 3 509 verset megvizsgáltunk és elutasítottunk, mindegyiket a döntés okával együtt. A kilenc motívumból három teljesen ellenőrzött, lezárt kiadás; hat régebbi feldolgozás, amely a későbbi változatokban frissül. A közlemény bemutatja, hogyan rajzolják meg a kizárások a motívumok határát, és mit ad hozzá a magyar fordítás rétege.
 
 ## Abstract (angol)
 
-We present an open dataset of nine biblical motifs, each defined by a verifiable feature of the Hebrew or Greek text, with 255 occurrences and 3,509 verse-level exclusion decisions, every rejected candidate kept with its reason. Each occurrence also records the corresponding word of the Hungarian Károli translation, with the method and confidence of the alignment. This paper focuses on the exclusion devices of the method (negative criterion, broader concept, three-net completeness test) and on the Hungarian reader layer. A companion English data paper describes the dataset itself (`<ANGOL_KOZLEMENY_HIVATKOZAS>`).
+We present an open dataset of nine biblical motifs, each defined by a verifiable feature of the Hebrew or Greek text. It records 255 occurrences and 3,509 verse-level exclusion decisions, each rejected candidate with its reason. Every occurrence also gives the corresponding word of the Hungarian Károli translation, with the method and confidence of the alignment. Three of the nine motifs are fully checked, closed releases; six come from an earlier stage of the work and will be updated in later versions. This paper focuses on how the method excludes (negative criterion, broader concept, three-net completeness test) and on the Hungarian reader layer. A companion English data paper describes the dataset itself (`<ANGOL_KOZLEMENY_HIVATKOZAS>`).
 
 **Kulcsszavak:** bibliai motívumok; intertextualitás; Károli-fordítás; Septuaginta; negatív lelet; nyílt adat
 
-## 1. Az adatkészlet és a kérdés
+## 1. A kérdés
 
-Az adatkészlet egy hosszú távú, magyar nyelvű motívumlexikon nyílt adatrétege. A motívum itt olyan visszatérő bibliai téma, amelynek azonosságát az eredeti nyelvű szöveg ellenőrizhető jegye hordozza: egy szó (hat motívum, például a Seol/Hádész), egy állandó szókapcsolat (kettő, például „segítségül hívni az Úr nevét”, héberül *qārāʾ bĕšēm YHWH*) vagy több szó visszatérő mintázata (egy).
+A motívumkutatás jellemző hibája nem az, hogy átsiklik egy hely fölött, hanem az, hogy túl sokat vesz fel. A hasonlóság felnagyítódik, és a motívum határa szétfolyik a tágabb téma felé. Samuel Sandmel ezt „parallelomániának” nevezte (Sandmel, 1962). Ez a közlemény azt mutatja be, hogyan lehet a kizárást ugyanolyan dokumentált adattá tenni, mint a felvételt.
 
-A motívumkutatás jellemző hibája nem az, hogy egy helyet nem vesz észre, hanem az, hogy túl sokat vesz fel: a hasonlóságot felnagyítja, és a motívum határa a tágabb téma felé szétfolyik. Samuel Sandmel ezt „parallelomániának” nevezte (Sandmel, 1962). Ez a közlemény arra a kérdésre felel, hogyan lehet a kizárást ugyanolyan dokumentált adattá tenni, mint a felvételt. Az elutasított helyek ezért itt nem munkaközi szemét, hanem az adatkészlet része: a motívum határát a kizárások rajzolják meg, nem a meghatározás.
+Az adatkészlet egy hosszú távú, magyar nyelvű motívumlexikon nyílt adatrétege. Motívumnak itt olyan visszatérő bibliai témát nevezünk, amelynek azonosságát az eredeti szöveg ellenőrizhető jegye hordozza. Hat motívumnál ez egyetlen szó, például a seól és a hádész. Kettőnél állandó szókapcsolat, például „segítségül hívni az Úr nevét” (héberül *qārāʾ bĕšēm YHWH*). Egynél több szó visszatérő együttállása.
 
-Az értelmező szócikkek, a szótárak magyar fordítása és a kötet külön termékréteget alkotnak; ez a közlemény nem foglalkozik velük.
+Az elutasított helyek ezért nem a munka hulladékai, hanem az adatkészlet részei. A motívum határát nem a meghatározás rajzolja meg, hanem a kizárások. Az értelmező szócikkek, a szótárak magyar fordítása és a nyomtatott kötet külön termékréteget alkotnak; ez a közlemény csak az adatréteggel foglalkozik.
 
-## 2. Módszer: a felvétel és a kizárás eszközei
+## 2. A felvétel és a kizárás eszközei
 
-**A hét lépés.** Minden motívum hét lépésben készül: (1) a törzshelyek közös Strong-számai, a nyelvtani szavak kiszűrésével; (2) a szemantikai mező feltevése, az egyetlen generatív lépés, naplózva; (3) a teljes ó- és újszövetségi szöveg átvizsgálása a STEPBible címkézett szövegén (TAHOT, TAGNT); (4) szópár egy versen belül; (5) az igealak ellenőrzése; (6) a Septuaginta-megfelelés; (7) a nevesített magyarázók egyezése (ez a termékréteg része). Az 1. és a 3–6. lépés determinisztikus program.
+**Hét lépés.** Minden motívum ugyanabban a sorrendben készül:
 
-**Nincs közvetlen út.** Keresési találat nem kerülhet közvetlenül az adatkészletbe. Minden jelölt egy jelölttáblán megy át, ahol döntés és indoklás születik róla; az üres eredményt üresként rögzítjük, és nem töltjük ki asszociatív anyaggal.
+1. a törzshelyek közös Strong-számai, a nyelvtani szavak kiszűrésével;
+2. a szemantikai mező feltevése (ez az egyetlen generatív lépés, ezért naplózzuk);
+3. a teljes ó- és újszövetségi szöveg átvizsgálása a STEPBible címkézett szövegén (TAHOT, TAGNT);
+4. szópárok keresése egy versen belül;
+5. az igealak ellenőrzése;
+6. a Septuaginta-megfelelés;
+7. a nevesített magyarázókkal való egyezés (ez már a termékréteghez tartozik).
 
-**Négy kérdés az azonosító előtt.** Mielőtt egy motívum azonosítót kap, négy kérdésre kell felelni: mi hordozza az azonosságát; mi az a legkisebb jegy, amely nélkül egy hely nem tartozik ide (a negatív kritérium); ha egy hely két motívumhoz is tartozik, különbözik-e a funkciója; és nem részhalmaza-e egy másik motívumnak.
+Az 1. és a 3–6. lépést program végzi, tehát mindig lefut, és ugyanarra a bemenetre ugyanazt adja.
 
-**A fölérendelt fogalom.** Minden motívum megnevezi azt a tágabb fogalmat, amely felé hígulna. A bűn következményeinek továbbgyűrűzése motívumnál ez maga a „bűn”: ha egy hely csak a bűn általános leírásán át kapcsolódik, kimarad. Mind a kilenc motívumnál ki van töltve a negatív kritérium és a fölérendelt fogalom. A motívumok a kutatási programot követik, nem reprezentatív mintái a Bibliának.
+**Nincs közvetlen út.** Keresési találat nem kerülhet egyenesen az adatkészletbe. Minden jelölt egy jelölttáblán megy át, ahol döntés és indoklás születik róla. Ha a keresés üres, az eredményt üresként rögzítjük, és nem töltjük ki asszociatív anyaggal.
 
-**A kizárási okok.** A kizárás 418 sorban áll: 394 egyedi vers és 24 összesítő sor, amely 3 115, azonos okból elutasított verset képvisel; összesen 3 509 döntés, 54 okkategóriában. Versszám szerint a leggyakoribb okok: a két szóból csak az egyik áll a versben (1 713), más lexéma (651), és az, hogy a Károli ugyanazzal a szóval más héber vagy görög szót fordít (295). Soronként a leggyakoribb: „a formula nincs a versben” (58), „a tohu és bohu szópár nincs a versben” (40), „átok-kimondás, a következmény továbbterjedése nélkül” (29). Az utóbbi két példa jól mutatja a negatív kritérium munkáját: a szó önmagában nem elég, a motívum szerkezete hiányzik.
+**Négy kérdés.** Mielőtt egy motívum azonosítót kap, négy kérdésre kell felelni. Mi hordozza az azonosságát? Mi az a legkisebb jegy, amely nélkül egy hely nem tartozik ide? (Ez a negatív kritérium.) Ha egy hely két motívumhoz is tartozik, más-e a szerepe a kettőben? És nem részhalmaza-e egy másik motívumnak?
 
-**Teljesség-mérés három hálóval.** Négy motívum előfordulás-listáját három, egymástól független hálóval vetettük össze a teljes kánonon: a Strong-számokkal (TAHOT, TAGNT), a Károli-szóval és a Brown–Driver–Briggs-, illetve a Thayer-szótárban a motívum szavainál idézett versekkel. A Seol/Hádész és a „segítségül hívás” motívumnál egyik háló sem hozott olyan verset, amelyben a motívum jegye áll, és az adatból hiányzik. A pneuma/pszükhé megkülönböztetésnél a görög szópár minden verse benne van az adatban, előfordulásként vagy eldöntött jelöltként. A bűn továbbgyűrűzésénél a Strong-háló 1 233 verset hozott az adaton kívül: 651-et blokkban elutasítottunk (a negatív kritérium listáján kívüli szó), 582 kézi átnézésre vár, és 12 előfordulás-verset egyik háló sem talál meg (tematikus kapcsolat, vagy a szó a verstartomány másik versében áll). Ez a motívum tehát nem bizonyítottan teljes, és a hálók általában is csak a lexikai jegyekhez mért visszahívást mérik, nem a teljességet.
+**A fölérendelt fogalom.** Minden motívum megnevezi azt a tágabb fogalmat, amely felé hígulna. A bűn következményeinek továbbgyűrűzéséről szóló motívumnál ez maga a „bűn”. Ha egy hely csak a bűn általános leírásán át kapcsolódik, kimarad. A negatív kritérium és a fölérendelt fogalom mind a kilenc motívumnál ki van töltve. A motívumokat a kutatási program választotta ki; nem reprezentatív mintái a Bibliának.
+
+**A kizárási okok.** A kizárások 418 sorban állnak. 394 sor egy-egy verset ír le; 24 összesítő sor 3 115 olyan verset képvisel, amelyet ugyanabból az okból utasítottunk el. Ez összesen 3 509 döntés, 54 okkategóriában. Versszám szerint három ok a leggyakoribb: a szópárból csak az egyik szó áll a versben (1 713 vers); a versben más lexéma áll (651); a Károli ugyanazzal a magyar szóval más héber vagy görög szót fordít (295). Soronként „a formula nincs a versben” (58), „a tohu és bohu szópár nincs a versben” (40) és „átok-kimondás, a következmény továbbterjedése nélkül” (29) a leggyakoribb. Az utóbbi két példán jól látszik, hogyan dolgozik a negatív kritérium: a szó önmagában nem elég, ha a motívum szerkezete hiányzik.
+
+**Teljesség-mérés három hálóval.** Négy motívum előfordulás-listáját három, egymástól független kereséssel vetettük össze a teljes kánonon. Az első a Strong-számok (TAHOT, TAGNT), a második a Károli-szó, a harmadik a Brown–Driver–Briggs- és a Thayer-szótár által a motívum szavainál idézett versek. A seól/hádész és a „segítségül hívás” motívumnál egyik háló sem hozott olyan verset, amelyben a motívum jegye áll, és az adatból mégis hiányzik. A pneuma/pszükhé megkülönböztetésnél a görög szópár minden verse benne van az adatban, előfordulásként vagy eldöntött jelöltként. A bűn továbbgyűrűzésénél más a helyzet. A Strong-háló 1 233 verset hozott az adaton kívül: ebből 651-et egy tömbben elutasítottunk (a szó kívül esik a negatív kritériumon), 582 kézi átnézésre vár. Ráadásul 12 előfordulás-verset egyik háló sem talál meg, mert tematikus a kapcsolat, vagy a szó a verstartomány egy másik versében áll. Ez a motívum tehát nem bizonyítottan teljes. A hálók általában is csak azt mérik, mennyit fog meg a lista a lexikai jegyek alapján; a teljességet nem bizonyítják.
 
 ## 3. A magyar olvasói réteg: a Károli-szó
 
-Az előfordulás bizonyítéka mindig a héber vagy a görög szöveg. Az előfordulásoknál azonban ott áll a Károli-fordítás megfelelő szava is (255 sorból 203-ban), a párosítás módjával: a szerkesztő a Károli-szöveget olvasva rendelte a szót a Strong-számhoz (176 sor), gépi szópárosítás (25), következtetés (2); a bizonyosság magas (192) vagy közepes (11). A Károli-szó tehát megjelenítési adat: az az ablak, amelyen át a magyar olvasó a helyet látja. Nemzetközi exegetikai érvelésben nem érv; a magyar fordítástörténetnek viszont önálló adat.
+Az előfordulás bizonyítéka mindig a héber vagy a görög szöveg. Mellette azonban a 255 előfordulásból 203-nál ott áll a Károli-fordítás megfelelő szava is. A párosítást 176 esetben a szerkesztő végezte a Károli-szöveg olvasásával, 25 esetben gépi szópárosítás, 2 esetben következtetés. A bizonyosság 192 esetben magas, 11 esetben közepes.
 
-Három példa mutatja, mit lát és mit nem lát a magyar olvasó:
+A Károli-szó megjelenítési adat: ezen az ablakon át látja a magyar olvasó a helyet. Nemzetközi exegetikai érvelésben nem bizonyíték, a magyar fordítástörténetnek viszont önálló adata. Három példa mutatja, mit lát és mit nem lát a magyar olvasó.
 
-- **A seól szava.** A Károli a seólt és a hádészt nem egy szóval adja vissza: a 74 előfordulás-sorban „sír” (29), „Seol” (19), „pokol” (17), „koporsó” (5), „mélység” (2) és „alvilág” (2) alak áll (egy sorban több is lehet). A magyar olvasó ezért a motívumot nem ismeri fel a szóról; a Károli-háló 298 olyan verset is hozott, amelyben ezek a magyar szavak más héber vagy görög szót fordítanak (köztük a sírás igéjét).
-- **Lélek és szellem.** A Károli a πνεῦμα (pneuma) és a ψυχή (pszükhé) szót nem választja szét: a Lukács 1:46–47-ben mindkettő „az én lelkem”, az 1Thessz 5:23-ban a pneuma „valótok”, a Zsid 4:12-ben a pszükhé „szívnek” áll, „szellem” csak az 1Kor 15:45-ben („megelevenítő szellemmé”). A megkülönböztetés, amely a motívum lényege, a magyar szövegben nem látszik, csak az eredetiben.
-- **A formula.** A „segítségül hívni az Úr nevét” a Károliban állandó fordulat („segítségűl hívá az Úrnak nevét”), ezért a Károli-háló itt szűkebb, mint a Strong-háló (96 és 204 vers). A „hív” és a „kiált” szó viszont a Károlinál elnevezést és meghívást is fordít, ezért a háló csak a „név” társaságában számol velük.
+**A seól szava.** A Károli a seólt és a hádészt nem egy szóval fordítja. A 74 előfordulásban „sír” (29), „Seol” (19), „pokol” (17), „koporsó” (5), „mélység” (2) és „alvilág” (2) áll; egy helyen több alak is lehet. A magyar olvasó ezért a szóról nem ismeri fel a motívumot. A Károli-szóra épülő háló 298 olyan verset is hozott, amelyben ugyanezek a magyar szavak más héber vagy görög szót fordítanak, köztük a sírás igéjét.
 
-A kizárási döntések egy része éppen a Károli-szóból fakad: a seól-motívumnál 295, a „segítségül hívás” motívumnál 51 vers azért esik ki, mert a magyar szó mögött más héber vagy görög szó áll.
+**Lélek és szellem.** A Károli a πνεῦμα (pneuma) és a ψυχή (pszükhé) szót nem választja szét. A Lukács 1:46–47-ben mindkettő „az én lelkem”; az 1Thessz 5:23-ban a pneuma „valótok”, a Zsid 4:12-ben a pszükhé „szívnek”. „Szellem” csak az 1Kor 15:45-ben áll („megelevenítő szellemmé”). A megkülönböztetés, amely a motívum lényege, a magyar szövegben nem látszik, csak az eredetiben.
+
+**A formula.** A „segítségül hívni az Úr nevét” a Károliban állandó fordulat („segítségűl hívá az Úrnak nevét”). Itt ezért a Károli-háló szűkebb, mint a Strong-háló: 96 verset hoz, a Strong-háló 204-et. A „hív” és a „kiált” ige viszont a Károliban elnevezést és meghívást is fordít, így a háló csak a „név” mellett számol velük.
+
+A kizárási döntések egy része éppen a Károli-szóból fakad. A seól-motívumnál 295, a „segítségül hívás” motívumnál 51 vers azért esik ki, mert a magyar szó mögött más héber vagy görög szó áll.
 
 ## 4. Az adatkészlet
+
+A kilenc motívum nem egyforma érettségű. Három (seól/hádész, pneuma/pszükhé, „segítségül hívni az Úr nevét”) végigment a lexikon teljes kiadási eljárásán: lexikonlapja kiadott, az olvasói kapu nem talált rajta hibát, és a szerző átnézte. Ezek lezárt kiadások. A másik hat a projekt korábbi szakaszában, régebbi eljárással készült; adataik a mai sémában állnak és ugyanazon a kapun mentek át, de a teljes ellenőrzés még hátravan, és a későbbi változatokban frissülnek. Az állapotot a csomag minden motívumnál adatként rögzíti (`motivumok.tsv`, `feldolgozasi_allapot`).
+
+| Motívum (rövid címke) | Az azonosság hordozója | Előfordulás | Feldolgozási állapot |
+|---|---|---:|---|
+| ALVIL-001 — Hádész/Seol | szó | 74 | lezárt kiadás |
+| ANTROP-001 — Pneuma/pszükhé | szó | 11 | lezárt kiadás |
+| ISTENTISZT-001 — Névbe vetett segítségülhívás | szókapcsolat | 22 | lezárt kiadás |
+| HAMART-001 — Bűn gyűrűzése | szavak együttállása | 52 | régi feldolgozás, frissítés alatt |
+| HODIT-001 — Refáim/óriás-népek | szó | 33 | régi feldolgozás, frissítés alatt |
+| KIRALY-001 — Melkizedek-rend | szó | 9 | régi feldolgozás, frissítés alatt |
+| MENNY-001 — Isten fiai/Nefilim | szó | 9 | régi feldolgozás, frissítés alatt |
+| TEREMT-001 — Tehóm/Abüsszosz | szó | 42 | régi feldolgozás, frissítés alatt |
+| TEREMT-002 — Tohu va-vohu | szókapcsolat | 3 | régi feldolgozás, frissítés alatt |
+
+A 255 előfordulásból 107 a lezárt, 148 a régi feldolgozású motívumokhoz tartozik.
 
 | | |
 |---|---|
 | Név és kiadás | PaRDeS nyílt mag, kiadás 2026-11-04-8029b0fc0ab84836 |
 | Hely | `<DOI>` (kanonikus közzétételi hely: `<KANONIKUS_FORRAS_URL>`) |
 | Formátum | UTF-8 TSV (tabulátorral tagolt, idézőjelezés nélkül), Markdown, SHA-256 ellenőrzőösszeg; 17 fájl, 490 952 bájt |
-| Táblák | motívumok (9), előfordulások (255), felvételi döntések (257), kizárások (418) és a csoportok tagjai (3 115), igehely-kapcsolatok (32), motívumok közötti kapcsolatok (3), döntésnapló (8), források és licencek (54), kódkönyv (210 bejegyzés, magyarul és angolul) |
+| Táblák | motívumok (9), előfordulások (255), felvételi döntések (257), kizárások (418) és az összesítő sorok tagjai (3 115), igehely-kapcsolatok (32), motívumok közötti kapcsolatok (3), döntésnapló (8), források és licencek (54), kódkönyv (210 bejegyzés, magyarul és angolul) |
 | Létrehozás | 2026-08-22 – 2026-11-04 |
 | Nyelv | magyar oszlopnevek és értékek, héber és görög szavakkal; a kódkönyv kétnyelvű |
 | Licenc | CC BY 4.0; a szemantikai domének külön rétege (UBS SDBH/SDGNT, 237 sor) CC BY-SA 4.0 |
 | Készítő | `<SZERZO>` |
 
-A sorok a TAHOT és a TAGNT (CC BY 4.0; STEPBible, é. n.), az OpenBible.info Treasury of Scripture Knowledge alapú kereszthivatkozásai (CC BY; OpenBible.info, é. n.) és az 1908-as Károli-szöveg (a mű kora miatt közkincs) adataira épülnek. 25 forrás kimaradt: kilenc a projekt zárt, származtatott rétege, kilencnek tisztázatlan a licence, háromnál korlátozott a kereskedelmi használat, négy CC BY-SA forrást a csomag nem használ.
+A sorok négy forrásra épülnek: a TAHOT és a TAGNT címkézett szövegére (CC BY 4.0; STEPBible, é. n.), az OpenBible.info kereszthivatkozásaira, amelyek a Treasury of Scripture Knowledge-ből származnak (CC BY; OpenBible.info, é. n.), és az 1908-as Károli-szövegre, amely kora miatt közkincs. 25 forrást kihagytunk: kilenc a projekt zárt, származtatott rétege, kilencnek tisztázatlan a licence, háromnál korlátozott a kereskedelmi felhasználás, négy CC BY-SA forrásra pedig a csomagnak nincs szüksége.
 
-A PaRDeS-szint (Peshat, Remez, Drash, Sod) recepciós címke: azt osztályozza, hogyan kapcsolódik egy hely a motívumhoz a középkori zsidó négyes olvasási séma nyelvén, nem azt, mit szándékolt a bibliai szerző. Az adatkészlet a bibliai korpuszon belül marad; ókori közel-keleti összevető réteg nincs benne, és egy párhuzam hiánya nem lelet.
+A PaRDeS-szint (Peshat, Remez, Drash, Sod) recepciós címke. Azt mondja meg, hogyan kapcsolódik egy hely a motívumhoz a középkori zsidó négyes olvasási séma nyelvén; azt nem, hogy mit szándékolt a bibliai szerző. Az adatkészlet a bibliai korpuszon belül marad. Ókori közel-keleti összevető réteg nincs benne, így egy ilyen párhuzam hiánya nem lelet.
 
-## 5. Minőségellenőrzés és korlátok
+## 5. Ellenőrzés és korlátok
 
-**Az ellenőrzési lánc.** (a) A csomag kapuja a belső jelölést, a kódkönyv lefedését, a licencszűrést, a hivatkozások feloldását és a bájtazonos újragenerálást ellenőrzi (ebben a kiadásban 0 bukás, 9 figyelmeztetés); az olvasói kapu minden kiadott lexikonlapon nulla olvasói hibát követel. (b) Friss kontextusú MI-ellenőr minden változást saját lekérdezéssel újraellenőriz; egy második modell a motívum határát vizsgálja. (c) Három motívum ment át a hivatalos kiadási eljáráson; ezekről nyolc rögzített vizuális átnézés és 29, a szerző által jóváhagyott javítás van.
+**Az ellenőrzés lánca.** Három szinten ellenőriztünk. Először a csomag kapuja: ez a belső jelölést, a kódkönyv lefedését, a licencszűrést, a hivatkozások feloldását és a bájtazonos újragenerálást vizsgálja (ebben a kiadásban 0 hibával és 9 figyelmeztetéssel). Az olvasói kapu ezen felül minden kiadott lexikonlapon nulla olvasói hibát követel. Másodszor egy friss kontextusú MI-ellenőr minden változást saját lekérdezéssel újra megvizsgál, egy második modell pedig a motívum határát nézi át. Harmadszor a lezárt három motívum a hivatalos kiadási eljáráson is átment: ezekről nyolc rögzített vizuális átnézés és 29, a szerző által jóváhagyott javítás tanúskodik.
 
-**Korlátok.** A szerzőn kívül minden ellenőr program vagy nyelvi modell; független szakmai lektorálás és annotátorok közötti egyezésmérés nem volt. A 255 előfordulás-sorból 251 szerkesztői döntésként van rögzítve, nem egyetlen lekérdezés kimeneteként; a Strong-hozzárendelésből 183-at igazoltunk a TAHOT héber szövegén, 36 kívül esik a hatókörén, 36 nincs igazolva. A Károli-kiadás kereszthivatkozás-táblájában más versek listájának másolatai állnak (5 078 gyanús forrásvers); az adatkészlet ebből adatot nem tartalmaz, de 28 kizárás-sort ezen át találtunk. A minta kicsi (kilenc motívum, ebből három kiadott).
+**Korlátok.** A legfontosabb korlát az, hogy a kilenc motívumból csak három lezárt kiadás. A másik hat régebbi eljárással készült: a kiadási eljárás átnézései és javításai rájuk még nem vonatkoznak, és adataik a későbbi változatokban módosulhatnak. Aki csak a lezárt anyaggal akar dolgozni, a `feldolgozasi_allapot` mező szerint szűrhet. A szerzőn kívül minden ellenőr program vagy nyelvi modell; független szakmai lektorálás és annotátorok közötti egyezésmérés nem volt. A 255 előfordulásból 251-et szerkesztői döntésként rögzítettünk, nem egyetlen lekérdezés kimeneteként. A Strong-hozzárendelésből 183-at igazoltuk a TAHOT héber szövegén, 36 kívül esik a TAHOT hatókörén, 36 nincs igazolva. A Károli-kiadás kereszthivatkozás-táblájában más versek listájának másolatai állnak (5 078 gyanús forrásvers). Ebből a táblából az adatkészlet adatot nem vesz át, de 28 kizárás-sort ezen keresztül találtunk. Végül a minta kicsi: kilenc motívum.
 
 ## 6. Újrahasznosítás
 
-Az előfordulás- és kapcsolattáblák közös héber és görög szavak mentén összekötött igehely-hálózatot adnak, kifejezett negatív lelettel; ez a Hays-féle kritériumokra épülő intertextualitás-vizsgálatok (Hays, 1989) mellé dokumentált döntési nyomot ad. Az indokolt felvételek és kizárások visszakeresési vagy osztályozási próbakészletként használhatók: például az, hogy egy rendszer szétválasztja-e az Úr nevének segítségül hívását az elnevezéstől. A Károli-szó a párosítás módjával és bizonyosságával a magyar fordítástörténet és a magyar nyelvű bibliai korpuszok adata. A negatív kritérium, a fölérendelt fogalom és a háromhálós teljesség-mérés más korpuszra is átvihető.
+Az előfordulás- és a kapcsolattáblák igehely-hálózatot adnak, amelyben a helyeket közös héber és görög szavak kötik össze, és a negatív lelet is ki van mondva. A Hays-féle kritériumokra épülő intertextualitás-vizsgálatok (Hays, 1989) mellé így dokumentált döntési nyom kerül. Az indokolt felvételek és kizárások próbakészletként szolgálhatnak visszakeresési vagy osztályozási feladatokhoz. Kérdés lehet például, hogy egy rendszer szétválasztja-e az Úr nevének segítségül hívását az elnevezéstől. A Károli-szó a párosítás módjával és bizonyosságával a magyar fordítástörténet és a magyar nyelvű bibliai korpuszok adata. A negatív kritérium, a fölérendelt fogalom és a háromhálós teljesség-mérés más korpuszra is átvihető.
 
 ## Nyilatkozat a mesterséges intelligencia használatáról
 
-A lekérdezések determinisztikus programok. A felvételi és kizárási döntések az Anthropic Claude nyelvi modelljeivel segített munkamenetekben születtek (a modellnevek munkamenetenként a projekt naplóiban), mindegyik indoklással; az adatkészlet döntéseket és rövid indoklásokat tartalmaz, modell írta értelmező prózát nem. A Károli-szó párosításának egy része gépi, és így van jelölve. A fent leírt MI-ellenőrzések modellfutások. A kézirat szövegét claude-opus-5-5 fogalmazta a repó adataiból. MI-eszköz nem szerző; az adatokért és a szövegért `<SZERZO>` felel. `<SZERZOI_NYILATKOZAT>`
+A lekérdezéseket determinisztikus programok végzik. A felvételi és kizárási döntések az Anthropic Claude nyelvi modelljeivel segített munkamenetekben születtek (a modellek nevét munkamenetenként a projekt naplói rögzítik), mindegyik indoklással. Az adatkészlet döntéseket és rövid indoklásokat tartalmaz, modell írta értelmező prózát nem. A Károli-szó párosításának egy része gépi, és így is van jelölve. A fent leírt MI-ellenőrzések modellfutások. A kézirat szövegét a claude-opus-5-5 modell fogalmazta a repó adataiból. MI-eszköz nem szerző; az adatokért és a szövegért `<SZERZO>` felel. `<SZERZOI_NYILATKOZAT>`
 
 ## Összeférhetetlenség
 
@@ -109,7 +137,9 @@ Minden szám a `python kozlemeny/data_paper/szamok.py` egy futásából jön, a 
 
 | Szám a szövegben | Kulcs | Forrás |
 |---|---|---|
-| 9 motívum; 6 lexikai, 2 formulaikus, 1 strukturális; mindkét mező kitöltve | P1.motivum, P1.azonossag, P1.ures_negativ_kriterium, P1.ures_folerendelt | `nyilt_mag/motivumok.tsv` |
+| 9 motívum; 6 szó, 2 szókapcsolat, 1 szavak együttállása (lexikai / formulaikus / strukturális); mindkét mező kitöltve | P1.motivum, P1.azonossag, P1.ures_negativ_kriterium, P1.ures_folerendelt | `nyilt_mag/motivumok.tsv` |
+| 3 lezárt kiadás, 6 régi feldolgozás; motívumonként a táblázatban | P1.feldolgozasi_allapot | `nyilt_mag/motivumok.tsv`, `feldolgozasi_allapot` (forrása: `adat/kiadasok.tsv` és az `olvasoi_kapu.py` a kiadott lapon) |
+| 107 és 148 előfordulás állapot szerint; motívumonként 74 / 11 / 22 / 52 / 33 / 9 / 9 / 42 / 3 | P2.allapot_szerint, P2.motivumonkent | `nyilt_mag/elofordulasok.tsv` × `nyilt_mag/motivumok.tsv` |
 | 255 előfordulás; 251 kézi döntés; 183 / 36 / 36 | P2.elofordulas_sor, P2.kezi_dontes, P2.igazolas | `nyilt_mag/elofordulasok.tsv` |
 | 203 kitöltött Károli-szó; 176 / 25 / 2; 192 / 11 | P2.karoli_szo_kitoltve, P2.azonositas_modja, P2.megbizhatosag | `nyilt_mag/elofordulasok.tsv`, `karoli_szo`, `azonositas_modja`, `megbizhatosag` |
 | 74 seól-sor; sír 29, Seol 19, pokol 17, koporsó 5, mélység 2, alvilág 2 | P2.motivumonkent, P9.alvil_karoli | `nyilt_mag/elofordulasok.tsv`, ALVIL-001, `karoli_szo` (kisbetűs részszöveg-egyezés; egy sor több alakot is tartalmazhat) |
@@ -124,7 +154,7 @@ Minden szám a `python kozlemeny/data_paper/szamok.py` egy futásából jön, a 
 | 257 / 32 / 3 / 8 / 210 / 237 sor | P4.* | a csomag azonos nevű fájljai |
 | 54 forrás; 25 kizárt (9 / 9 / 3 / 4) | P5.forras_sor, P5.kizart_ok | `nyilt_mag/forrasok_es_licencek.tsv` |
 | 17 fájl, 490 952 bájt; dátumtartomány; kiadás-azonosító | P6.fajl, P6.meret_bajt, P6.datum_tartomany, P0.kiadas | `nyilt_mag/` |
-| 0 bukás, 9 figyelmeztetés | — | `python eszkozok/nyilt_mag_kapu.py`, 2026-11-04 |
+| 0 hiba, 9 figyelmeztetés | — | `python eszkozok/nyilt_mag_kapu.py`, 2026-11-04 |
 | 3 kiadott motívum, 8 átnézés, 29 javítás | P7.* | `adat/kiadasok.tsv`, `adat/lap_atnezesek.tsv`, `adat/lap_javitasok.tsv` |
 | teljesség-mérés (1 233 / 651 / 582 / 12 stb.) | P8.* | `naplok/F123_teljesseg_<ID>.md`, 1. Összegzés (az 582 a HAMART-001 napló „Eredmény” 1. pontjából) |
 | 5 078 gyanús forrásvers | — | `nyilt_mag/ISMERT_HIBAK.md`, 1. szakasz |
@@ -134,7 +164,7 @@ Minden szám a `python kozlemeny/data_paper/szamok.py` egy futásából jön, a 
 Ugyanaz a mű nem lehet egyszerre két folyóiratnál elbírálás alatt; a JDMDH és az RDJ beküldési feltétele ezt ki is mondja, és a Digitális Bölcsészet is korábban nem közölt művet vár (❓, a „Labor” rovatra nem ellenőrzött). A magyar és az angol kézirat ezért **két külön mű** csak akkor, ha a hangsúlyuk valóban eltér, és egymásra kölcsönösen hivatkoznak:
 
 - **az angol** (`kezirat_en.md`) az adatkészletet írja le (data paper: szerkezet, formátum, újrahasznosítás);
-- **a magyar** (ez a kézirat) a módszer kizárási eszközeire és a magyar olvasói rétegre (a Károli-szó) helyezi a hangsúlyt; az adatkészlet leírása itt csak egy táblázat.
+- **a magyar** (ez a kézirat) a módszer kizárási eszközeire és a magyar olvasói rétegre (a Károli-szó) helyezi a hangsúlyt; az adatkészlet leírása itt csak két táblázat.
 
 A számok és a mondatok egy része szükségszerűen közös (ugyanaz az adat). Ha a szerkesztőség ezt átfedésnek tekinti, a másodközlés csak a két folyóirat tudtával, a második közlésben az elsőre való hivatkozással lehetséges.
 
@@ -144,7 +174,7 @@ A számok és a mondatok egy része szükségszerűen közös (ugyanaz az adat).
 
 Forrás: `folyoirat_lehetosegek.md` (PR #632), ✅ = a folyóirat oldaláról lekérve, ❓ = nem ellenőrzött.
 
-- A rovat kódot, adatkészletet és vizualizációt közöl, **rövid magyar és angol leírással és dokumentációval** ✅. A kézirat ezért magyar rövid leírással, angol absztrakttal és dokumentáló szakaszokkal készült. A rovat szerkezeti és terjedelmi előírását nem találtuk ❓; a „Műhely” rovat határa 5 000 szó ✅, ez a kézirat ennél jóval rövidebb.
+- A rovat kódot, adatkészletet és vizualizációt közöl, **rövid magyar és angol leírással és dokumentációval** ✅. A kézirat ezért magyar kivonattal, angol absztrakttal és dokumentáló szakaszokkal készült. A rovat szerkezeti és terjedelmi előírását nem találtuk ❓; a „Műhely” rovat határa 5 000 szó ✅, ez a kézirat ennél jóval rövidebb.
 - **Kettős vak bírálat** ✅: a beküldött példányból a szerző neve, az ORCID és az intézmény törlendő. Mivel az adatkészlet nyilvános, a szerzőt nevesítő DOI-val létezik, az anonimizálás csak részleges lehet: a `<DOI>` helyén a bírálati példányban `<ANONIMIZALT_DOI>` álljon, és az angol közleményre való hivatkozás is anonimizálandó. A rovat anonimizálási szabályát nem találtuk ❓: a szerkesztőségtől meg kell kérdezni.
 - **A cikk licence CC BY-NC-SA 4.0** (a lap láblécében 2.5 HU: ellentmondás) 🔶. Ez a cikkre vonatkozik, nem az adatkészletre (CC BY 4.0); a kettő nem ütközik, de a kísérőlevélben érdemes kimondani.
 - Díj nincs ✅; MI-szabály nincs kimondva ✅ — a nyilatkozat ennek ellenére benne marad.
@@ -167,3 +197,4 @@ Forrás: `folyoirat_lehetosegek.md` (PR #632), ✅ = a folyóirat oldaláról le
 1. A kettős közlés sorrendje és a két folyóirat tájékoztatása (fent).
 2. A „Labor” rovat szerkezete, terjedelme, anonimizálási szabálya és hivatkozási stílusa: a szerkesztőségtől kérdezendő.
 3. A HAMART-001 582 nyitott verse, a Károli 1908 licence, a hivatkozások ellenőrzése: mint az angol kéziratnál.
+4. A hat régi feldolgozású motívum frissítése: ha a letét előtt valamelyik lezárt kiadás lesz, a 4. szakasz táblázata, a kivonat „három / hat” mondata és a 107 / 148 frissül (`szamok.py` újrafuttatásával).
