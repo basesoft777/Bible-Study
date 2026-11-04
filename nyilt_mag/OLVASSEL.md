@@ -2,11 +2,13 @@
 
 # GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
+*English version: `README.md`.*
+
 **Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.
 
 **Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).
 
-**Ismert hibák:** l. `ISMERT_HIBAK.md`.
+**Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).
 
 ## Fájlok és sorszámuk
 
