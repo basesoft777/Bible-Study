@@ -33,8 +33,8 @@ ELES_JELOLTEK = os.path.join(REPO, 'adat', 'jeloltek.tsv')
 
 JELOLTEK_FEJ = ('# próba-jelölttábla (teszt_general_kinyeres.py)\n'
                 'id\tigehely\tforras_kereses\tdontes\tindoklas\tkaroli_szo\tazonositas_modja'
-                '\tmegbizhatosag\tdatum\n'
-                'ISTENTISZT-001\t1Móz 4:26\tTSK 1Móz 4:26\tbeépítve\tpróba-sor\t\t\t\t2026.10.01\n')
+                '\tmegbizhatosag\tdatum\tdontes_ref\n'
+                'ISTENTISZT-001\t1Móz 4:26\tTSK 1Móz 4:26\tbeépítve\tpróba-sor\t\t\t\t2026.10.01\t\n')
 
 TISZTA = """# Próba — forrásréteg `[ID: ISTENTISZT-001]`
 
@@ -123,10 +123,11 @@ class Kinyeres(unittest.TestCase):
         self.assertEqual(len(uj), 2)
         self.assertEqual(uj[0], 'ISTENTISZT-001\tZsolt 999:4\tscope=manual | forras=motivumok/'
                                 'ISTENTISZT-001.md#1. Előfordulások összegyűjtése | ts=2026.10.18'
-                                '\tnyitva\tgerinc: H7121 — próba: új jelölt\t\t\t\t2026.10.18')
-        self.assertEqual(uj[1].split('\t')[4],
-                         'gerinc: G1941 — próba: tartomány, | jellel az indoklásban')
-        self.assertTrue(all(len(u.split('\t')) == 9 for u in uj))
+                                '\tnyitva\tpróba: új jelölt\t\t\t\t2026.10.18\tgerinc: H7121')
+        # F123.INDOKLAS: a gerinc-elem a gépi nyom mezőjében (`dontes_ref`), az indoklás olvasói szöveg
+        self.assertEqual(uj[1].split('\t')[4], 'próba: tartomány, | jellel az indoklásban')
+        self.assertEqual(uj[1].split('\t')[9], 'gerinc: G1941')
+        self.assertTrue(all(len(u.split('\t')) == 10 for u in uj))
 
     def test_3_ujrafuttatas_idempotens(self):
         self.futtat(self.f_tiszta, 'ki3a', True)
