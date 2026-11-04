@@ -2,8 +2,8 @@
 
 Mérő: `python eszkozok/olvasoi_kapu.py --osszes` (BUKÁS-szám laponként). „Előtte”: a main lapjai (`845b987b`; az ALVIL-001 és az ANTROP-001 a #616 után is ugyanígy, `d88e6155`), a régi
 és az új kapuval; „utána”: az ág lapjai az új kapuval. Az új kapu két szabálya szigorúbb: a BDB_JEL a betűkészlet többi
-torz jelét (¹ µ £ ¥ ‰ ƒ ‡ ¢) is BUKÁS-nak veszi (DT-F181a), a BELSO a „(kézi)” / „(generált)” szerzőségi jelölést
-(DT-F181c); a csupasz Strong-szám továbbra is BUKÁS, a jelölt alak nem (DT-F181b).
+torz jelét (¹ µ £ ¥ ‰ ƒ ‡ ¢) is BUKÁS-nak veszi (DT601), a BELSO a „(kézi)” / „(generált)” szerzőségi jelölést
+(DT603); a csupasz Strong-szám továbbra is BUKÁS, a jelölt alak nem (DT602).
 
 | Lap | előtte (régi kapu) | előtte (új kapu) | utána | ebből BELSO / BDB_JEL / ZAROJEL utána |
 |---|---|---|---|---|
