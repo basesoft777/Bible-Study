@@ -29,6 +29,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `karoli_strong/nem_tr_parositott.tsv` | `vers` + `er_sorszam` | **generált** — `eszkozok/karoli_strong/nem_tr_lista.py` (2.20, F22 D45) |
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
+| `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
 
 ---
 
@@ -1891,6 +1892,41 @@ a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
 Kulcs: `id` + `lap_commit`. Állapot (2026-11-02): 0 sor.
+
+---
+
+### 2.49 `lap_javitasok.tsv` — a lexikonlap emberi lektorálásának naplója (F123.LAPJAVIT, DT-F123f, 2026-11-04)
+
+**Kézi** (`manual` proveniencia). Egy sor egy hely, amelyre a felhasználó vagy egy külső lektor a `/lap-javit <ID>` parancsban
+(`.claude/commands/lap-javit.md`) rámutatott, és amelynek javítását (vagy külön útra terelését) **ő maga jóváhagyta**. A tábla
+az emberi ellenőrzés és lektorálás útjának adata: a kolofon „Emberi lektorálás” sora ebből generálódik
+(`eszkozok/lexikon_general.py` `kolofon_lektoralas`). Olvasás `split('\t')`, írás `'\t'.join()`; a `#`-sor megjegyzés. A mezőkben
+tab és sortörés nem állhat (többsoros szövegrész egy sorba vonva).
+
+| Oszlop | Jelentés |
+|---|---|
+| `id` | motívum-id (2.1) |
+| `hely` | a javított hely: blokk (pl. `1/a`, `2/b`, `értelmezés`) és, ha van, igehely (`1/a, Zsolt 96:9`); nem üres |
+| `tipus` | zárt: `próza` (a kézi forrás, `motivumok/[ID].md`) · `adat` (adatsor, a `jeloltek.tsv`-n át, CLAUDE.md 2. szabály) · `forrás` (BDB/Thayer-konverzió, a meglévő javítótáblán át, pl. `adat/bdb_forras_javitas.tsv`) · `generátor` (minden lapon azonos hiba; nem a chatben javul, hanem `N-F…` tétel lesz belőle) |
+| `gond` | zárt: `homályos` · `pontatlan` · `szakszó` · `ellentmond az adatnak`. **„Egyéb” nincs**: ami egyikbe sem illik, az nem lektori javítás, hanem tartalmi döntés (`DONTESEK.md`) |
+| `regi` | a hely szövege vagy értéke a javítás előtt, szó szerint; nem üres |
+| `uj` | a jóváhagyott új szöveg vagy érték; `generátor`-sornál a nyitott tétel helyőrzője és helye (pl. `N-F123x, nyitott/uj/<ágnév>.md`), `adat`-sornál a jelölt-sor kulcsa és döntése; nem üres |
+| `javasolta` | aki a szöveget javasolta: a modell tényleges neve a futó környezetből (CLAUDE.md modell-szabálya), vagy `felhasználó`, vagy a külső lektor neve |
+| `jovahagyta` | aki a javítást jóváhagyta: `felhasználó` vagy a külső lektor neve. **Modellnév nem érvényes** (`claude-…`, `opus`, `sonnet`, `haiku`, `fable`): a parancs nem hagyhat jóvá a felhasználó nevében |
+| `datum` | `ÉÉÉÉ.HH.NN` |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` (hol hangzott el a jóváhagyás: pl. `forras=chat:/lap-javit HODIT-001`) |
+
+**Kolofon (DT-F123f).** Ha a motívumnak van sora, a Kolofon metaadat-táblájában egy sor áll: „Emberi lektorálás | N hely
+(dátumok); lektorálók: …”. Az N a nem `generátor` típusú sorok száma (a lapon ténylegesen javított helyek), a dátumok és a
+lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rendezve. Sor nélkül a Kolofon nem ír semmit, és a blokk
+forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.
+
+**Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
+átnézi (`lap_atnezesek.tsv`, 2.48, DT569); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
+
+Integritás: az `ellenoriz.py` 28. szabálya (fejléc pontosan a fenti; `tipus` és `gond` a zárt készletből; `id` létező motívum;
+`datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
+`datum`. Állapot (2026-11-04): 0 sor.
 
 ---
 

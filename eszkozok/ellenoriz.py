@@ -1696,6 +1696,60 @@ def szabaly27_gerinc_szocikkenkent(adat_dir):
                megjegyzes='javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir)' if hibak else None)
 
 
+# ---------------------------------------------------------------------------
+# 28. F123.LAPJAVIT (DT-F123f, SEMA 2.49): lap_javitasok.tsv
+# ---------------------------------------------------------------------------
+
+LAP_JAVITASOK_FEJLEC = ['id', 'hely', 'tipus', 'gond', 'regi', 'uj', 'javasolta', 'jovahagyta', 'datum',
+                        'proveniencia']
+LAP_JAVITAS_TIPUS = {'próza', 'adat', 'forrás', 'generátor'}
+LAP_JAVITAS_GOND = {'homályos', 'pontatlan', 'szakszó', 'ellentmond az adatnak'}
+LAP_JAVITAS_MODELLNEV = re.compile(r'(?i)(claude|opus|sonnet|haiku|fable|modell)')
+DATUM_PONTOS = re.compile(r'^\d{4}\.\d{2}\.\d{2}$')
+
+
+def lap_javitas_hibak(fejlec, sorok, motivum_id_halmaz):
+    """A `lap_javitasok.tsv` hibalistája (SEMA 2.49): a fejléc pontosan a séma; minden mező kitöltött; a `tipus` és a
+    `gond` a zárt készletből („egyéb” nincs); létező motívum; `ÉÉÉÉ.HH.NN` dátum; a `jovahagyta` nem modellnév
+    (a parancs nem hagyhat jóvá a felhasználó nevében); érvényes proveniencia."""
+    if fejlec != LAP_JAVITASOK_FEJLEC:
+        return ['fejléc eltérő: %r (várt: %r)' % (fejlec, LAP_JAVITASOK_FEJLEC)]
+    hibak = []
+    for i, r in enumerate(sorok, 1):
+        jel = '%d. sor (%s, %s)' % (i, r.get('id', ''), r.get('hely', ''))
+        ures = [k for k in LAP_JAVITASOK_FEJLEC if not (r.get(k) or '').strip()]
+        if ures:
+            hibak.append('%s: üres mező: %s' % (jel, ', '.join(ures)))
+        if r['id'].strip() and r['id'].strip() not in motivum_id_halmaz:
+            hibak.append('%s: ismeretlen motívum-id' % jel)
+        if r['tipus'].strip() and r['tipus'].strip() not in LAP_JAVITAS_TIPUS:
+            hibak.append('%s: tipus=%r nem a zárt készletből (%s)' % (jel, r['tipus'], ' | '.join(sorted(LAP_JAVITAS_TIPUS))))
+        if r['gond'].strip() and r['gond'].strip() not in LAP_JAVITAS_GOND:
+            hibak.append('%s: gond=%r nem a zárt készletből (%s; „egyéb” nincs)'
+                         % (jel, r['gond'], ' | '.join(sorted(LAP_JAVITAS_GOND))))
+        if r['datum'].strip() and not DATUM_PONTOS.match(r['datum'].strip()):
+            hibak.append('%s: datum=%r nem ÉÉÉÉ.HH.NN' % (jel, r['datum']))
+        if LAP_JAVITAS_MODELLNEV.search(r['jovahagyta']):
+            hibak.append('%s: jovahagyta=%r modellnév — jóváhagyni csak ember tud' % (jel, r['jovahagyta']))
+        if r['proveniencia'].strip() and not proveniencia_ervenyes(r['proveniencia']):
+            hibak.append('%s: érvénytelen proveniencia: %r' % (jel, r['proveniencia']))
+    return hibak
+
+
+def szabaly28_lap_javitasok(adat_dir, motivum_id_halmaz):
+    """F123.LAPJAVIT (DT-F123f, SEMA 2.49): a `/lap-javit` naplója (SÉRTÉS, gátol). Hiányzó tábla: RENDBEN
+    (a tábla opcionális; sor nélkül a kolofon sem ír semmit)."""
+    cim = '28. lap_javitasok.tsv (SEMA 2.49)'
+    ut = os.path.join(adat_dir, 'lap_javitasok.tsv')
+    if not os.path.exists(ut):
+        return Sor(cim, 'RENDBEN', megjegyzes='nincs tábla')
+    fejlec, sorok = G.tsv_beolvas(ut)
+    hibak = lap_javitas_hibak(fejlec, sorok, motivum_id_halmaz)
+    if hibak:
+        return Sor(cim, 'SÉRTÉS', len(hibak), hibak)
+    return Sor(cim, 'RENDBEN', len(sorok) or None)
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1760,6 +1814,7 @@ def main():
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
+        tabla_sorok.append(szabaly28_lap_javitasok(args.adat, motivum_id_halmaz))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
