@@ -190,21 +190,21 @@ Funkció: a gyakorlat generációk között, tudatos folytonossággal adódik á
 <a id="ige-2móz-33-19"></a>
 **2Móz 33:19**
 *És monda az Úr: Megteszem, hogy az én dicsőségem a te orczád előtt menjen el, és kiáltom előtted az Úr nevét: És könyörülök, a kin könyörülök, kegyelmezek, a kinek kegyelmezek.*
-Isten maga jelenti ki Mózesnek: „kihirdetem előtted az Úr nevét” — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját.
+Isten maga jelenti ki Mózesnek: „kiáltom előtted az Úr nevét” — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját.
 
 Funkció: a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset)
 
 <a id="ige-2móz-34-5"></a>
 **2Móz 34:5**
 *Az Úr pedig leszálla felhőben, és ott álla ő vele, és nevén kiáltá az Urat:*
-Ugyanaz a jelenet folytatása: „az Úr nevében kiáltott” — Isten végrehajtja az előző fejezetben megígért önkihirdetést.
+Ugyanaz a jelenet folytatása: „nevén kiáltá az Urat” — Isten végrehajtja az előző fejezetben megígért önkihirdetést.
 
 Funkció: a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset)
 
 <a id="ige-1kir-18-24"></a>
 **1Kir 18:24**
 *Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten. És felelvén az egész sokaság, monda: Jó lesz!*
-Illés a Kármelen: „ti a ti isteneitek nevét hívjátok, és én segítségül hívom az Úr nevét” — nyilvános, versengő kontextus, a kontraszt magán a versen belül.
+Illés a Kármelen: „hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét” — nyilvános, versengő kontextus, a kontraszt magán a versen belül.
 
 Funkció: a formula először jelenik meg nyilvános, két isten közötti próbatételi kontextusban
 
@@ -232,7 +232,7 @@ Funkció: ismétlődés, kívülálló szemszögéből
 <a id="ige-zsolt-116-4"></a>
 **Zsolt 116:4**
 *És az Úrnak nevét segítségül hívám: Kérlek Uram, szabadítsd meg az én lelkemet!*
-A zsoltáros saját, személyes hála-könyörgésének első megfogalmazása: „segítségül hívom az Úr nevét”.
+A zsoltáros saját, személyes hála-könyörgésének első megfogalmazása: „az Úrnak nevét segítségül hívám”.
 
 Funkció: ismétlődés, személyes könyörgésben
 
@@ -253,7 +253,7 @@ Funkció: ismétlődés, személyes könyörgésben
 <a id="ige-jóel-2-32"></a>
 **Jóel 2:32**
 *De mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül; mert a Sion hegyén és Jeruzsálemben lészen a szabadulás, a mint megigérte az Úr, és a megszabadultak közt lesznek azok, a kiket elhí az Úr!*
-Az ószövetségi megfogalmazás csúcspontja: „mindaz, aki segítségül hívja az Úr nevét, megmenekül” — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5.
+Az ószövetségi megfogalmazás csúcspontja: „mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül” — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5.
 
 Funkció: az ÓSZ-i ígéret, amit az ÚSZ tételesen, szó szerint idéz
 
@@ -1090,8 +1090,8 @@ kibontva, mert a motívum funkcionális kettéválasztásának (emberi
 invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
 alapja. A **Qal 2.c** idézett helyei (1Móz 4:26; 12:8; 2Kir 5:11; Jer
 10:25 = Zsolt 79:6; 1Kir 18:24; Baállal: 1Kir 18:24–26) **önállóan, a mi
-kutatásunktól függetlenül** csaknem pontosan egyeznek a tanulmány saját
-audit-eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
+kutatásunktól függetlenül** csaknem pontosan egyeznek a korábbi feldolgozás saját
+ellenőrzésének eredményével. A 2.c a Jer 10:25 = Zsolt 79:6 párt is idézi (ez a
 szó jelentése); a motívum határa a *besém* utáni JHVH szó, ezért a pár nem a
 motívum helye (a *besém* után ott névmási rag áll: *bismchá*, „nevedet”).
 
@@ -1653,7 +1653,7 @@ a vitát nem hallgatja el)*
 
 ### Új felismerés — a D-minta görög folytatása
 
-A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
+A motívum korábbi feldolgozása a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
 a nevét hívják valakire”, a birtoklás és a hovatartozás kifejezése)
 héber oldalon azonosította. A lexikon-oldal két, egymástól független
 görög szótára ennek a szerkezetnek **önálló újszövetségi folytatását**
@@ -1668,7 +1668,9 @@ lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták”), és
 **az ApCsel 9:14-et is ide sorolja**, nem a „segítségül hívni”
 jelentéshez; a szócikk megjegyzése ezt a verset a hagyományos
 értelmezéstől eltérőként nevezi meg. Az 1Pét 1:17 hozzárendelése a
-forrásban kettős marad; a vers a DT476 K1 óta nem a motívum helye.
+forrásban kettős marad; a vers nem a motívum helye: az „Atyának hívjátok”
+megszólítás, nem az Úr nevének segítségül hívása, és a versben a „név”
+szó nem áll.
 
 Ez azt jelenti, hogy a formula két iránya az Újszövetségben is
 megmarad. Az egyik irányban az ember hívja segítségül a nevet
@@ -1684,14 +1686,14 @@ fordítása hibás volna, sem azt, hogy a „segítségül hívni” olvasat
 elvetendő — csak azt, hogy az UBS besorolása egy második olvasati
 lehetőséget dokumentál. Nem állítja, hogy az Ámós 9:12, az ApCsel 15:17
 és a Jak 2:7 a motívum előfordulása volna: ezek a helyek a
-jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktív
+vizsgált jelöltek között nem szerepelnek, és a negatív kritérium (aktív
 קָרָא בְּ, kárá be szerkezet) szerint nem is felelnének meg neki. És
 nem állít semmit a Sod-szintről: a megfigyelés lexikai és Remez-szintű.
 
 **Nyitott kérdés a folytatáshoz.** Fel kell-e venni a D-minta görög
 folytatását külön vizsgált (nem beépített) jelölt-körként a
-jeloltek.tsv-be, negatív kritériummal együtt — és át kell-e vezetni a
-felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a
+vizsgált jelöltek közé, negatív kritériummal együtt — és át kell-e vezetni a
+felismerést a lap 1. és 1/b. szakaszába? A döntésig ez a
 szakasz a lexikon-oldalon marad.
 
 ## 6/b. Alkalmazás és tanítói egyezés
@@ -1700,51 +1702,51 @@ szakasz a lexikon-oldalon marad.
 
 Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
 
-**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás (gap))*:
+**Alkalmazási kérdések** *(a 6. Értelmezés Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a nevesített tanítói egyezés-keresés forrásával: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás)*:
 
 1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem cselekvés: a hívó kimondja az Úr nevét, és hozzá fordul (Jóel 2:32; Róm 10:13); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes „saját Beérsebát” (állandó imádati pontot/szokást) kialakítani.
-3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
+3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (l. lent: Tanítói egyezés) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
 
 ### Tanítói egyezés
 
 Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
 
-A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál gap.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
+A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál nincs igazolt forrás.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
 
-| Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
+| Tanító | Legjobb erősség | ✅ | ⚠️ | hiány |
 |---|---|---|---|---|
 | Derek Prince | ⚠️ | 0 | 6 | 1 (1Móz 4:26, Zsolt 116, Kármel, ApCsel 22:16, 1Kor 1:2) |
-| Kenneth Hagin | gap | 0 | 0 | 1 |
-| Andrew Wommack | gap | 0 | 0 | 2 |
-| Smith Wigglesworth | gap | 0 | 0 | 1 |
-| F. F. Bosworth | gap | 0 | 0 | 1 |
-| John G. Lake | gap | 0 | 0 | 1 |
-| Kenneth Copeland | gap | 0 | 0 | 2 (önálló és csoportos) |
-| Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
-| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
+| Kenneth Hagin | nincs | 0 | 0 | 1 |
+| Andrew Wommack | nincs | 0 | 0 | 2 |
+| Smith Wigglesworth | nincs | 0 | 0 | 1 |
+| F. F. Bosworth | nincs | 0 | 0 | 1 |
+| John G. Lake | nincs | 0 | 0 | 1 |
+| Kenneth Copeland | nincs | 0 | 0 | 2 (önálló és csoportos) |
+| Charles Capps, Oral Roberts | nincs | 0 | 0 | csoportos keresésből |
+| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | nincs | 0 | 0 | csoportos keresésből |
 
-Összes sor: 0 ✅, 6 ⚠️ (mind Derek Prince), a táblázat gap-sorai a tanítói keresési napló tanítónkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`).
+Összesen: 0 ✅, 6 ⚠️ (mind Derek Prince); a többi tanítónál nincs igazolt forrás.
 
 **Mi igazolt Prince-nél:**
-- **Jóel 2:32 (a kiinduló kivonat 1. csomópontja):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
-- **Róm 10:12–13 (a kiinduló kivonat 2. csomópontja):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
-- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a kiinduló kivonat többi igehelye): nincs igazolt anyag (gap).
+- **Jóel 2:32:** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13:** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a motívum többi igehelye): nincs igazolt anyag.
 
-**M4 forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ és a Wommack *Receive Jesus* sor (a napló Wommack-táblájának 1. sora) forrását friss Sonnet subagent nyitotta meg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 nem nyitotta meg, az ítéletet a session hozta (`claude-opus-5-5`); az erősségek nem változtak (a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`.
+**Forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ forrást és Wommack *Receive Jesus* oldalát egy második, gépi (modell) ellenőrzés újra megnyitotta; Wommack tanulmányi füzetét (PDF) nem. Az erősségek nem változtak; a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés.
 
 **Figyelmeztetések a felhasználónak:**
 - A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
-- A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
-- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
+- A Hagin- és Wommack-hiány forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (hiány) mérlegelhető.
+- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a hiány nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
 
 ## 7. Módszertan és nyitott kérdések
 
 Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
-A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name” („valakinek a nevét/nevén hívni”) gyermeknévadási formulát zajként hozta felszínre: a puszta gyökpár-egyezés nem elég a besoroláshoz, a versen belüli és szomszédos versre kiterjedő, pozíció-alapú keresés ezért szükséges feltétele a lelet megbízhatóságának.
+A H7121+H8034 együttes előfordulásainak teljes ószövetségi átvizsgálása a „call [X’s] name” („valakinek a nevét/nevén hívni”) gyermeknévadási formulát zajként hozta felszínre: a puszta gyökpár-egyezés nem elég a besoroláshoz, a versen belüli és szomszédos versre kiterjedő, pozíció-alapú keresés ezért szükséges feltétele a lelet megbízhatóságának.
 
-A BDB H7121 2.c citációs listájának egyezése a motívum saját audit-eredményével a Jer 10:25 = Zsolt 79:6 párnál nem független megerősítés volt: ezt a párt a kutatás a BDB-idézet alapján találta meg, nem önálló kereséssel. A pár a DT478 óta nem a motívum helye (a *besém* után névmási rag áll).
+A BDB H7121 2.c citációs listájának egyezése a motívum saját audit-eredményével a Jer 10:25 = Zsolt 79:6 párnál nem független megerősítés volt: ezt a párt a kutatás a BDB-idézet alapján találta meg, nem önálló kereséssel. A pár nem a motívum helye: a *besém* után névmási rag áll, nem JHVH.
 
 **Négy forrás egybeesése a határeseteken.** A 2Móz 33:19-ben és a 34:5-ben — ahol nem az ember hívja segítségül Isten nevét, hanem Isten kiáltja ki a sajátját — négy forrás jelöli ugyanazt az eltérést a motívum többi helyétől: a BDB a 3. jelentéshez sorolja („kihirdetni”; a többi hely 2.c), a görög fordítás a καλέω (kaleó) igét adja (a 16 ószövetségi hely közül 13-ban ἐπικαλέομαι (epikaleomai) áll), a BSB „proclaim”-et ír (a többi helyen a „call” valamely alakját), a Károli „kiált”-ot (csak e két helyen). A B-eset határa tehát nem egyetlen szótári besoroláson áll: négy fordítói és szótári forrás ugyanazt a két verset különíti el. Korlát: a négy forrás egybeesése mért, a függetlenségük nem (a BSB fordítóinak szótárhasználatát a repó adata nem mutatja), ezért ez egybeesés, nem független megerősítés. A βοάω (boaó) a motívum helyei közül az 1Kir 18:24-ben áll: a Baál-hívók felszólítását ez adja, Illés saját hívását ott az ἐπικαλέομαι (epikaleomai), ezért a vers az egyező helyek között van.
 
@@ -1762,12 +1764,12 @@ elkülönülő teológiai aktust fejez ki:
 
 | Minta | Alany | Tárgy | Igehelyek | Eddigi kezelés |
 |---|---|---|---|---|
-| **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a study fő tárgya |
+| **A — fő motívum** | ember | Isten neve | 20 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26, kontrasztként, a negatív kritérium kivétele) | ✅ a motívum fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | „be nem sorolható” — l. 1. pont |
-| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, „hamis pozitív”; a *besém* után nem JHVH áll (DT476 K4) |
+| **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, „hamis pozitív”; a *besém* után nem JHVH áll |
 
 **Miért fontos ez:** a „B” eset eddig elszigetelt anomáliaként szerepelt
-a study-ban („nem sorolható be a meglévő funkciók egyikébe sem”). A
+a korábbi feldolgozásban („nem sorolható be a meglévő funkciók egyikébe sem”). A
 „C” jelöltek pedig egyszerűen ki lettek zárva, mint a motívumhoz nem
 tartozó zaj. Együtt nézve viszont kiderül: **mindhárom minta ugyanannak
 a nyelvi szerkezetnek a szisztematikus variánsa**, nem esetleges
@@ -1777,19 +1779,18 @@ tagja.
 
 **Amit ez a felismerés NEM állít:**
 
-- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a study
+- Nem állítja, hogy A/B/C motívum-szinten összetartozna (a motívum
   fókusza jogosan marad az A mintán) — csak azt, hogy a **lexikai
   szerkezet szintjén** van egy magasabb rendű, közös minta.
 - Nem old meg semmit a KAPCSOLATOK-réteg funkció-készletében — a
-  „be nem sorolható” címke a study-ban marad, amíg nincs döntés arról,
+  „be nem sorolható” címke marad, amíg nincs döntés arról,
   hogy a lexikonban legyen-e egy negyedik, formális funkció-kategória
   (pl. „TIPOLÓGIAI VÁLTOZAT” vagy hasonló) erre a jelenségre.
 
 ##### D — negyedik minta: נִקְרָא...עַל (nikrá … al; birtoklás/hovatartozás), kizárva
 
-A H7121+H8034 kombinált teljes-előfordulás scan
-(`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`,
-v2-bővítés) egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
+A H7121+H8034 együttes előfordulásainak teljes átvizsgálása
+egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
 felszínre hozott: **נִקְרָא...עַל** (*nikrá...al*, „[egy név] hivatik ...
 felette/rajta”) — passzív nifal ige + עַל (al) elöljárószó, szemben a fő
 motívum aktív קָרָא (kárá) + בְּ (be) szerkezetével. Ez nem invokációt fejez ki, hanem
@@ -1815,7 +1816,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ### Nyitott kérdések és séma-korlátok
 
-5. **UBS-besorolás** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni” jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni”, szó szerint: „akire valakinek a nevét hívják”), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers a DT476 K1 óta nem a motívum helye). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
+5. **UBS-besorolás** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni” jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni”, szó szerint: „akire valakinek a nevét hívják”), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176; a vers nem a motívum helye, l. a 6. Értelmezésben). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 ## 8. Irodalom és idézés
 
@@ -1882,13 +1883,13 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
-**Szerzőség.** Az értelmező szakaszok (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Tanítói egyezés, Módszertan és nyitott kérdések) készítőjét a kiadás nem rögzíti modellnévvel (kézi rögzítés, `manual`); a szerző jóváhagyta. A többi szakasz az adattáblákból generált.
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Tanítói egyezés, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált.
 
 | Mező | Érték |
 |---|---|
@@ -1904,14 +1905,16 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |
-| Kiadás | 1 |
-| Próza modellje | `manual` |
+| Kiadás | 2 |
+| Próza modellje | `claude-opus-5-5` |
+| Emberi lektorálás | 29 hely (2026.11.04); lektorálók: felhasználó |
 
 **Változásjegyzék**
 
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.02 | Az arany lap első kiadása: a #152 és a #151 K1–K5 átvezetése. |
+| 2 | 2026.11.04 | Lektori javítás: az 1/a öt idézete a Károli-szövegre, a kézi próza belső és angol szavai olvasói szövegre (29 hely); a szótári rész három jelhibája javítva, és a Strong-szám a szó mellett hivatkozásként, felső indexben áll. |
 
 ---
 
