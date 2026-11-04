@@ -1838,7 +1838,7 @@ kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('
 | `proza_modell` | a lap prózáját író tényleges modellnév a futó környezetből (CLAUDE.md modell-szabálya, DT473), vagy `manual`, ha nem megállapítható (DT443); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (`proza_modell=manual`); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT-F123nva).
+Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (2026.11.04: a 11-02-i első kiadás a 11-04-i lektori javítással véglegesítve, nem külön kiadás; DT-F123kva); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT-F123nva).
 
 ---
 
