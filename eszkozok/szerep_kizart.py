@@ -94,13 +94,80 @@ def _tsk_reszlet(fo):
     return ''
 
 
+# F123.TUD1B: az összesítő (csoportos) jelöltsor versszámának egyetlen gépi forrása a `forras_kereses` „blokk-kizárás
+# (…): N vers” / „blokk-sor (…): N vers” része; a próza (`indoklas`) szövegéből nem olvassuk ki. Kapu: `ellenoriz.py` 33.
+CSOPORT_VERSSZAM = re.compile(r'blokk-(?:kizárás|sor)[^:|]*:\s*(\d+) vers')
+
+
+def csoport_versszam(forras_kereses):
+    """Az összesítő jelöltsor versszáma (int) a `forras_kereses` mezőből; None, ha a sor nem összesítő sor."""
+    b = CSOPORT_VERSSZAM.search((forras_kereses or '').split(' | ')[0])
+    return int(b.group(1)) if b else None
+
+
+def osszesito_sor_e(r):
+    """A jelöltsor összesítő (több verset fedő) sor-e: a forrás blokk-sort jelez, vagy az indoklás így kezdődik."""
+    return ('blokk-' in (r.get('forras_kereses') or '')
+            or (r.get('indoklas') or '').startswith('Összesítő sor'))
+
+
+def versek(igehely):
+    """Az igehely versei: a tartomány („Luk 9:55-56”) kibontva, különben maga a hely."""
+    m = re.fullmatch(r'(.+ \d+):(\d+)[-–](\d+)', (igehely or '').strip())
+    if m and int(m.group(2)) <= int(m.group(3)):
+        return ['%s:%d' % (m.group(1), v) for v in range(int(m.group(2)), int(m.group(3)) + 1)]
+    return [(igehely or '').strip()]
+
+
+def versszam_hibak(sorok):
+    """[(id, igehely, hiba)]: az összesítő sor, amelynek versszáma nem olvasható géppel, vagy eltér az indoklásban
+    kimondott számtól (a próza itt csak az egyezés ellenőrzése, nem forrás)."""
+    ki = []
+    for r in sorok:
+        if not osszesito_sor_e(r):
+            continue
+        n = csoport_versszam(r.get('forras_kereses'))
+        if n is None:
+            ki.append((r.get('id', ''), r.get('igehely', ''),
+                       'a `forras_kereses` nem hordoz versszámot („blokk-kizárás (…): N vers”)'))
+            continue
+        p = re.match(r'Összesítő sor (\d+) versre', r.get('indoklas') or '')
+        if p and int(p.group(1)) != n:
+            ki.append((r.get('id', ''), r.get('igehely', ''),
+                       'a versszám a forrásban %d, az indoklásban %s' % (n, p.group(1))))
+    return ki
+
+
+def vizsgalt_versek(sorok):
+    """A vizsgált versek száma az 1/b. összesítőhöz: {'egyenkent', 'csoport_vers', 'csoport_sor', 'osszes',
+    'elutasitva', 'nyitva'}. Az egyenként vizsgált versek különbözők (a tartomány kibontva, az ismétlődő vers egyszer;
+    ha bármely sora nyitva, a vers nyitott); az összesítő sor a `csoport_versszam` szerinti verset fedi (a blokk versei
+    a mérés szerint a jelöltsorok közt nem állnak)."""
+    egyen = collections.OrderedDict()
+    cs_vers = cs_sor = 0
+    dontes_vers = collections.Counter()
+    for r in sorok:
+        n = csoport_versszam(r.get('forras_kereses'))
+        if n is not None:
+            cs_vers += n
+            cs_sor += 1
+            dontes_vers['nyitva' if r.get('dontes') == 'nyitva' else 'elutasítva'] += n
+            continue
+        for v in versek(r.get('igehely')):
+            egyen.setdefault(v, set()).add(r.get('dontes'))
+    for d in egyen.values():
+        dontes_vers['nyitva' if 'nyitva' in d else 'elutasítva'] += 1
+    return {'egyenkent': len(egyen), 'csoport_vers': cs_vers, 'csoport_sor': cs_sor, 'osszes': len(egyen) + cs_vers,
+            'elutasitva': dontes_vers['elutasítva'], 'nyitva': dontes_vers['nyitva']}
+
+
 def _teljesseg(fo):
     """A teljesség-mérés olvasói leírása: a háló(k) és a csoportos kizárás versszáma."""
     halo = [nev for kulcs, nev in TELJESSEG_HALOK if kulcs in fo]
     szoveg = 'gépi teljesség-mérés' + (' (%s)' % ', '.join(halo) if halo else '')
-    b = re.search(r'blokk-(?:kizárás|sor)[^:]*:\s*(\d+) vers', fo)
-    if b:
-        szoveg += '; csoportos kizárás: %s vers, az első itt' % b.group(1)
+    n = csoport_versszam(fo)
+    if n is not None:
+        szoveg += '; csoportos kizárás: %d vers, az első itt' % n
     return szoveg
 
 
@@ -249,6 +316,21 @@ def nyom_lapra(dontes_ref):
     return NYOM_SEP.join(e for e in elemek if e and not HELYORZO.search(e))
 
 
+# F123.TUD1B (3): az indoklás adatszövegében a latin betűs szó (kiejtés, átírás) utáni zárójeles Strong-szám („nem a
+# JHVH (H3068) szó”) a lapon a #624 szerinti jelölt alakot kapja (DT-F181b): a szó a szónézet hivatkozása, a szám halvány
+# felső index. Az `olvasoi_utofeldolg.strong_ki` ezt az alakot szándékosan érintetlenül hagyja (a próza „a kárá (H7121)”
+# alakja adat); az 1/b. indoklásaiban viszont a szám a szó azonosítója, ezért itt jelöljük. Az adat nem változik.
+# csak latin betűs szó: a héber/görög szó melletti számot az `olvasoi_utofeldolg.strong_ki` jelöli (a kiejtéssel együtt)
+INDOK_STRONG = re.compile(r'(?<![\w\[\]/\-֑-ׇ])(?P<szo>[A-Za-zÀ-ɏ]+)(?P<jel>[*_]*) \(\s*(?P<strong>[HG]\d{4}[a-z]?)\s*\)')
+
+
+def indok_strong(szoveg, cim=None):
+    import olvasoi_utofeldolg as OU
+    return INDOK_STRONG.sub(lambda m: '[%s](%s)%s%s' % (m.group('szo'), OU.SZONEZET % m.group('strong'),
+                                                        m.group('jel'), OU.strong_jel(m.group('strong'), cim)),
+                            szoveg)
+
+
 def indok_cella(indoklas, ures='—'):
     """Az indoklás táblacellába szánt olvasói alakja: a nyers szöveg proveniencia-farka (` | scope=…`) változatlan;
     ha a főszöveg tisztítás után sem olvasói, a cella `ures` (a nyers szöveg az adattáblában van)."""
@@ -318,8 +400,9 @@ def osszevon(sorok_c):
     return eredmeny
 
 
-def blokk_torzs(sorok, motivum_id, okok_ut=None):
-    """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz."""
+def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
+    """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz. `strong_cim`: a jelölt Strong-szám
+    `title`-je (`lexikon_general.strong_cim`; alapból a szám)."""
     minta = okok(motivum_id, okok_ut)
     csop = collections.OrderedDict((c, []) for c in CSOPORTOK)
     ok_szaml, forras_szaml = collections.Counter(), collections.Counter()
@@ -330,15 +413,17 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
             motivum_id, len(hiany), '; '.join('%s (%s)' % x for x in hiany[:10])))
     for r in sorok:
         c, miert = jeloles_oka(r.get('forras_kereses'))
-        forras_szaml[c] += 1
+        # F123.TUD1B: a súly a sor verseinek száma (összesítő sor: a blokk, tartomány: a kibontott versek)
+        suly = csoport_versszam(r.get('forras_kereses')) or len(versek(r.get('igehely')))
+        forras_szaml[c] += suly
         ind = r.get('indoklas') or ''
         fo_ind, _sep, farok = ind.partition(' | ')
         if r.get('dontes') == 'nyitva':
             dontes = '**nyitott döntés**'
-            ok_szaml['nyitott döntés'] += 1
+            ok_szaml['nyitott döntés'] += suly
         else:
             ok = elutasitas_oka(fo_ind, minta)
-            ok_szaml[ok] += 1
+            ok_szaml[ok] += suly
             dontes = '**elutasítva** — %s' % ok
         olv = olvasoi_indok(fo_ind)
         lj = 'forrás: `%s`%s' % (r.get('forras_kereses') or '—', (' · ' + farok) if farok else '')
@@ -349,7 +434,7 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
         if olv is None:
             csop[c].append((r['igehely'], _cella(miert), dontes, lj))
         else:
-            csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, _cella(olv) or '—'), lj))
+            csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, indok_strong(_cella(olv), strong_cim) or '—'), lj))
     ki = []
     for c, sorok_c in csop.items():
         if not sorok_c:
@@ -358,7 +443,11 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
         for hely, miert, dont, lj in osszevon(sorok_c):
             labj.append(lj)
             sor_md.append('| %s | %s[^k%d] | %s |' % (hely, miert, len(labj), dont))
-        ki.append('**%s** (%d)' % (c, len(sorok_c)))   # a darabszám a jelölteké, nem az összevont soroké
+        # a darabszám a jelölteké, nem az összevont soroké; összesítő sornál a versszám is (F123.TUD1B)
+        if forras_szaml[c] != len(sorok_c):
+            ki.append('**%s** (%d sor, %d vers)' % (c, len(sorok_c), forras_szaml[c]))
+        else:
+            ki.append('**%s** (%d)' % (c, len(sorok_c)))
         ki.append('| Igehely | Miért lett jelölt | Döntés és indok |\n|---|---|---|\n' + '\n'.join(sor_md))
     ossz = {'ok': ok_szaml, 'forras': forras_szaml}
     return ki, labj, ossz
