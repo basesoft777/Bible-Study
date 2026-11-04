@@ -1786,7 +1786,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után három gépi forrásadat-javítás a szótári részben (Seól átírás, De (5:14), Ef). |
-| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált; az üres 2/b. blokk kimaradt. |
+| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. |
 
 ---
 
