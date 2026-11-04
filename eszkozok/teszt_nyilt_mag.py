@@ -215,6 +215,17 @@ class Negativ(Alap):
         t = G.ell_ujragenerals(f, 'nyilt_mag')
         self.assertTrue(any(x.fajl == 'OLVASSEL.md' for x in t))
 
+    def test_github_url(self):
+        f = self.uj()
+        f['OLVASSEL.md'] += 'forrás: https://github.com/valaki/repo
+'
+        self.assertTrue(bukasok(f, 'KANONIKUS'))
+
+    def test_hianyzo_helyorzo(self):
+        f = self.uj()
+        f['OLVASSEL.md'] = f['OLVASSEL.md'].replace('<KANONIKUS_FORRAS_URL>', 'x')
+        self.assertTrue(bukasok(f, 'KANONIKUS'))
+
     def test_hianyzo_fajl(self):
         f = self.uj()
         del f['dontesnaplo.tsv']

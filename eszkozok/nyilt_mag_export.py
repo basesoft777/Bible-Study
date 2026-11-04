@@ -720,7 +720,13 @@ def export(kimenet):
     stat['kodkonyv.tsv'] = len(kk)
     md = ['# Kódkönyv / Codebook', '', KOD_FEJLEC, '',
           'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
-          'in Hungarian and English.', '']
+          'in Hungarian and English.', '',
+          '**Adatréteg / data layer.** A csomag csak adatot tartalmaz (azonosító, cím, kizáró jegy, igehely, '
+          'szóbázis, kizárás és döntés indoklással, proveniencia); az értelmező próza, a magyar szótári '
+          'fordítás és a kötetanyag a termékréteg, nem része a csomagnak. / The package holds data only '
+          '(identifier, title, exclusion criterion, passage, lexical base, exclusions and decisions with '
+          'rationale, provenance); interpretive prose, Hungarian dictionary translations and volume material '
+          'belong to the product layer and are not included.', '']
     akt = None
     for s in kk:
         if (s['tabla']) != akt:
@@ -748,6 +754,17 @@ def export(kimenet):
           'belőlük): ' + ', '.join('`%s`' % k for k in kizartak) + '. Okuk soronként a `forrasok_es_licencek.tsv` '
           '`ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt '
           'származtatott rétege). Ez a leltár, nem jogi vélemény.', '',
+          '## Közzétételi hely', '',
+          'A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). '
+          'A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), '
+          'nem egy fejlesztői tár vagy commit.', '',
+          '## Mi van benne, mi nincs (adatréteg és termékréteg)', '',
+          '**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, '
+          'szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a '
+          'kapcsolatok; a proveniencia (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a '
+          'döntésnapló.', '',
+          '**Nincs benne (termékréteg):** az értelmező próza (kivonat, értelmezés, igehelyenkénti '
+          'kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.', '',
           '## Ami nincs a csomagban', '',
           '- A `nyitva` állapotú (még el nem döntött) jelöltek: %d db.' % nyitva_db,
           '- Az értelmező próza, a fizetős réteg (magyar szótári fordítások, Strong-számos Károli-szöveg), a '
@@ -764,9 +781,24 @@ def export(kimenet):
     for rel in sorted(fajlok):
         sor.append('%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel))
     fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
+    datumok = []
+    for rel in ('elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv'):
+        _, ds = tsv_szoveg(fajlok[rel])
+        datumok += [d['datum'].replace('.', '-') for d in ds if re.match(r'\d{4}[-.]\d{2}[-.]\d{2}', d['datum'])]
+    hash_ = hashlib.sha256(fajlok['ELLENORZO_OSSZEG.sha256'].encode('utf-8')).hexdigest()
+    datum = max(datumok) if datumok else 'nincs rögzítve'
+    fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
+                            'kozzeteteli_hely: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
                     'sd_db': len(sd), 'strong_db': len(strongok)}
+
+
+def tsv_szoveg(szoveg):
+    """Generált TSV-szöveg (`#` fejléces) -> (fejléc, [dict])."""
+    sorok = [s for s in szoveg.split('\n') if s.strip() and not s.startswith('#')]
+    fej = sorok[0].split('\t')
+    return fej, [dict(zip(fej, s.split('\t') + [''] * (len(fej) - len(s.split('\t'))))) for s in sorok[1:]]
 
 
 def kiir(fajlok, kimenet):

@@ -4,6 +4,8 @@
 
 Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, in Hungarian and English.
 
+**Adatréteg / data layer.** A csomag csak adatot tartalmaz (azonosító, cím, kizáró jegy, igehely, szóbázis, kizárás és döntés indoklással, proveniencia); az értelmező próza, a magyar szótári fordítás és a kötetanyag a termékréteg, nem része a csomagnak. / The package holds data only (identifier, title, exclusion criterion, passage, lexical base, exclusions and decisions with rationale, provenance); interpretive prose, Hungarian dictionary translations and volume material belong to the product layer and are not included.
+
 
 ## beepitesi_dontesek.tsv
 

@@ -47,7 +47,7 @@ BUKAS, FIGY = K.BUKAS, K.FIGY
 
 KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kapcsolatok.tsv',
             'motivum_kapcsolatok.tsv', 'dontesnaplo.tsv', 'forrasok_es_licencek.tsv', 'kodkonyv.tsv', 'KODKONYV.md',
-            'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256',
+            'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256', 'KIADAS.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
 
 # a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
@@ -292,6 +292,27 @@ def ell_kh_nev(fajlok):
     return ki
 
 
+def ell_kanonikus(fajlok):
+    """KANONIKUS: nincs GitHub-hivatkozás kanonikus forrásként; van helyőrző, kiadás-azonosító és a réteghatár."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        for i, sor in enumerate(sz.split('\n'), 1):
+            m = re.search(r'github\.com|githubusercontent|\bgit@|/commit/[0-9a-f]{7,}|/pull/\d+', sor, re.I)
+            if m:
+                ki.append(Talalat('KANONIKUS', BUKAS, rel, i, kor(sor, m), 'GitHub-hivatkozás a csomagban'))
+    o = fajlok.get('OLVASSEL.md', '')
+    for kell in ('<KANONIKUS_FORRAS_URL>', '## Mi van benne, mi nincs', 'KIADAS.txt'):
+        if kell not in o:
+            ki.append(Talalat('KANONIKUS', BUKAS, 'OLVASSEL.md', 1, kell, 'hiányzik'))
+    k = fajlok.get('KIADAS.txt', '')
+    h = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
+    if 'kiadas_azonosito:' not in k or h not in k or '<KANONIKUS_FORRAS_URL>' not in k:
+        ki.append(Talalat('KANONIKUS', BUKAS, 'KIADAS.txt', 1, k[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
+    if 'termékréteg' not in fajlok.get('KODKONYV.md', ''):
+        ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki az adat- és termékréteg határát'))
+    return ki
+
+
 def ell_osszeg(fajlok):
     ki = []
     sorok = [s for s in fajlok.get('ELLENORZO_OSSZEG.sha256', '').split('\n') if s.strip()]
@@ -300,7 +321,7 @@ def ell_osszeg(fajlok):
         h, _, rel = s.partition('  ')
         elvart[rel] = h
     for rel, sz in fajlok.items():
-        if rel == 'ELLENORZO_OSSZEG.sha256':
+        if rel in ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt'):
             continue
         h = hashlib.sha256(sz.encode('utf-8')).hexdigest()
         if elvart.get(rel) != h:
@@ -332,7 +353,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_kh_nev,
-              ell_osszeg):
+              ell_osszeg, ell_kanonikus):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
