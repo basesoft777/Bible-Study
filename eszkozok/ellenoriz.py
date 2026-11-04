@@ -1700,6 +1700,58 @@ def szabaly27_gerinc_szocikkenkent(adat_dir):
                megjegyzes='javítás: a lap újragenerálása (general.py --cel lexikon --id <ID> --ir)' if hibak else None)
 
 
+# 28. szabaly (F123.EGYEB, a felhasznalo, 2026-11-04: „ne legyen olyan indok, hogy egyéb”, „sehol”): az 1/b. blokkban
+# nincs „egyéb” elutasitasi ok es „Egyéb” jelolesi csoport. Ket meres: (a) az adat — minden lapos motivum elutasitott /
+# nyitva jeloltje besorolhato (`szerep_kizart.hianyok`, ugyanaz, amit a generator hiv, es amelyen a generalas megall);
+# (b) a lap — a generalt 1/b. blokkban nem all regi alaku „egyéb” (kezi atiras vagy elavult lap).
+KIZART_BLOKK_RE = re.compile(r'<!-- GENERÁLT-KEZDET: [^>]*#kizart \|.*?<!-- GENERÁLT-VÉGE: [^>]*#kizart -->', re.S)
+KIZART_EGYEB_RE = (
+    ('elutasítási ok', re.compile(r'\*\*elutasítva\*\* — egyéb\b|\*\*Az elutasítás okai:\*\*.*?\begyéb \d+')),
+    ('jelölési csoport', re.compile(r'^\*\*Egyéb\*\* \(\d+\)|\*\*A jelölés forrása:\*\*.*?\bEgyéb \d+|egyéb jelölés',
+                                    re.M)),
+)
+
+
+def kizart_egyeb_lapon(szoveg):
+    """[(fajta, talalat)] a lap generalt 1/b. blokkjaban allo „egyéb” kategoriak."""
+    ki = []
+    for blokk in KIZART_BLOKK_RE.findall(szoveg):
+        for fajta, rx in KIZART_EGYEB_RE:
+            ki.extend((fajta, m.group(0)[:60]) for m in rx.finditer(blokk))
+    return ki
+
+
+def szabaly28_kizart_egyeb(adat_dir):
+    """F123.EGYEB (SERTES, gatol): az olvasoi lap 1/b. blokkjaban nem allhat „egyéb” elutasitasi ok vagy „Egyéb”
+    jelolesi csoport. Javitas: uj minta az `adat/elutasitasi_okok.tsv`-ben, ill. uj szabaly a
+    `szerep_kizart.jeloles_oka`-ban, majd a lap ujrageneralasa — a lapon kezzel nem."""
+    cim = '28. Nincs „egyéb” az 1/b. blokkban (F123.EGYEB)'
+    import szerep_kizart as SZKZ
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    lex_dir = os.path.join(gyoker, 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    lapok = sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md'))
+    _, jeloltek = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    jeloltek = [r for r in G.elofordulas_jeloltek(jeloltek) if r.get('dontes') in ('elutasítva', 'nyitva')]
+    okok_ut = os.path.join(adat_dir, 'elutasitasi_okok.tsv')
+    hibak = []
+    for nev in lapok:
+        mid = nev[:-len('_TUDOMANYOS.md')]
+        hiany = SZKZ.hianyok([r for r in jeloltek if r['id'] == mid], mid, SZKZ.okok(mid, okok_ut))
+        if hiany:
+            hibak.append('%s: %d be nem sorolható jelölt (%s)' % (
+                mid, len(hiany), ', '.join('%s: %s' % x for x in hiany[:8])))
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lapon = kizart_egyeb_lapon(f.read())
+        if lapon:
+            hibak.append('%s: a lap 1/b. blokkjában %d „egyéb” (%s)' % (
+                nev, len(lapon), ', '.join('%s: %s' % x for x in lapon[:4])))
+    return Sor(cim, 'SÉRTÉS' if hibak else 'RENDBEN', len(hibak) or None, hibak,
+               megjegyzes=('javítás: minta az adat/elutasitasi_okok.tsv-ben vagy szabály a szerep_kizart.jeloles_oka-ban, '
+                           'majd újragenerálás' if hibak else None))
+
+
 # 31. szabaly (DT-F174a, 2026-11-04): adat nelkuli szerkezeti blokk nem allhat olvasoi lapon. A 2/b. „Kiegeszito
 # szotari adatok” res 9 lapbol 8-on csak hianymondatot hordozott (a SECE a 2. szakaszban all, MCGED-sor nincs): ez
 # nem kutatasi hiany, hanem adat nelkuli szerkezeti blokk. A generator (`lexikon_general.OPCIONALIS_RESEK`) ilyenkor a
@@ -1810,6 +1862,7 @@ def main():
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
+        tabla_sorok.append(szabaly28_kizart_egyeb(args.adat))
         tabla_sorok.append(szabaly31_ures_szerkezeti_blokk(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
