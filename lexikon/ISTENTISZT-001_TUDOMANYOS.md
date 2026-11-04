@@ -312,7 +312,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-104 helyet vizsgáltunk meg jelöltként; elutasítva: 104. A leggyakoribb ok: „a formula nincs a versben” (40), utána „passzív szerkezet vagy megnevezés (negatív kritérium)” (20). A jelöltek forrása: Károli-kereszthivatkozás 42, Gépi keresés 33, TSK-ajánlás 19, Kutatói felvetés 10. **Következtetés:** majdnem ötször annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (104, illetve 22). A határt több ok együtt húzza meg.<!-- olvasói -->
+104 verset vizsgáltunk meg egyenként, jelöltként; elutasítva: 104. A leggyakoribb ok: „a formula nincs a versben” (40 vers), utána „passzív szerkezet vagy megnevezés (negatív kritérium)” (20 vers). A jelöltek forrása (vers): Károli-kereszthivatkozás 42, Gépi keresés 33, TSK-ajánlás 19, Kutatói felvetés 10. **Következtetés:** majdnem ötször annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (104, illetve 22). A határt több ok együtt húzza meg.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 104 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 

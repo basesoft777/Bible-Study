@@ -86,21 +86,33 @@ def _szorzo(x):
     return ('majdnem %s annyi' % nev) if r > x else ('több mint %s annyi' % nev)
 
 
-def kizart(n_vizsgalt, elutasitva, nyitott, okok, forrasok, n_motivum):
-    """`okok`: [(ok, szám)] csökkenő sorrendben (az „egyéb” nélkül); `forrasok`: [(forrás, szám)]."""
+def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forrasok, n_motivum):
+    """Versszámok (F123.TUD1B: a vers, nem a táblasor): `egyenkent` az egyenként vizsgált versek, `csoport_vers` az
+    összesítő sorok (`csoport_sor` darab) által csoportosan vizsgált versek; `elutasitva`, `nyitott` versben. `okok`:
+    [(ok, versszám)] csökkenő sorrendben (az „egyéb” nélkül); `forrasok`: [(forrás, versszám)]."""
+    n_vizsgalt = egyenkent + csoport_vers
     if not n_vizsgalt:
         return None
-    lelet = '%d helyet vizsgáltunk meg jelöltként; elutasítva: %d' % (n_vizsgalt, elutasitva)
+    if csoport_vers:
+        lelet = ('%d verset vizsgáltunk meg: %d verset egyenként, %d verset csoportosan (%d összesítő sorban); '
+                 'elutasítva: %d' % (n_vizsgalt, egyenkent, csoport_vers, csoport_sor, elutasitva))
+    else:
+        lelet = '%d verset vizsgáltunk meg egyenként, jelöltként; elutasítva: %d' % (n_vizsgalt, elutasitva)
     lelet += ', döntésre vár: %d.' % nyitott if nyitott else '.'
     if okok:
-        lelet += ' A leggyakoribb ok: „%s” (%d)' % okok[0]
-        lelet += ', utána „%s” (%d).' % okok[1] if len(okok) > 1 else '.'
+        lelet += ' A leggyakoribb ok: „%s” (%d vers)' % okok[0]
+        lelet += ', utána „%s” (%d vers).' % okok[1] if len(okok) > 1 else '.'
     if forrasok:
-        lelet += ' A jelöltek forrása: %s.' % _szamlista(sorted(forrasok, key=lambda x: -x[1]))
+        lelet += ' A jelöltek forrása (vers): %s.' % _szamlista(sorted(forrasok, key=lambda x: -x[1]))
     kov = []
     if n_motivum:
-        kov.append('%s helyet vizsgáltunk, mint ahány a motívumhoz tartozik (%d, illetve %d)'
-                   % (_szorzo(n_vizsgalt / n_motivum), n_vizsgalt, n_motivum))
+        x = n_vizsgalt / n_motivum
+        if round(x) > 10:   # a „…-szor annyi” toldaléka a szám kiejtésétől függ: nagy aránynál az átlag mondja ki
+            kov.append('a motívum minden helyére átlagosan %d vizsgált vers jut (%d vizsgált vers, %d motívumhely)'
+                       % (round(x), n_vizsgalt, n_motivum))
+        else:
+            kov.append('%s verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (%d, illetve %d)'
+                       % (_szorzo(x), n_vizsgalt, n_motivum))
     if okok and elutasitva:
         if okok[0][1] / elutasitva >= HATAR_KUSZOB:
             kov.append('a határt leginkább ez az ok húzza meg: „%s”' % okok[0][0])

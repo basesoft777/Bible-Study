@@ -113,6 +113,50 @@ class TestBlokkTorzs(unittest.TestCase):
         self.assertIn('scope=manual', labj[0])
 
 
+class TestVersszam(unittest.TestCase):
+    """F123.TUD1B: az összesítő sor versszáma a `forras_kereses`-ből, a mondat verseket számol."""
+    CSOP = ('F123 U1 teljesség-mérés, Károli-szó háló, blokk-kizárás (DT564): 33 vers, az első itt; a lista: '
+            'naplok/x.tsv | scope=manual | forras=y | ts=2026-11-02')
+
+    def test_csoport_versszam(self):
+        self.assertEqual(SZKZ.csoport_versszam(self.CSOP), 33)
+        self.assertEqual(SZKZ.csoport_versszam('F123 U1 teljesség-mérés, Strong-háló, blokk-sor (DT564 minta): 573 '
+                                               'vers, a sor igehelye a blokk egy verse | scope=manual'), 573)
+        self.assertIsNone(SZKZ.csoport_versszam('scan H7121 | scope=x'))
+        self.assertIsNone(SZKZ.csoport_versszam('scan | scope=x: 5 vers'))   # a proveniencia-farok nem számít
+
+    def test_vizsgalt_versek(self):
+        sorok = [
+            {'igehely': '1Móz 1:2', 'forras_kereses': self.CSOP, 'dontes': 'elutasítva'},
+            {'igehely': 'Luk 9:55-56', 'forras_kereses': 'scan', 'dontes': 'elutasítva'},
+            {'igehely': 'Luk 9:55', 'forras_kereses': 'scan', 'dontes': 'elutasítva'},
+            {'igehely': 'Zsolt 1:1', 'forras_kereses': 'scan', 'dontes': 'nyitva'},
+        ]
+        self.assertEqual(SZKZ.vizsgalt_versek(sorok), {'egyenkent': 3, 'csoport_vers': 33, 'csoport_sor': 1,
+                                                       'osszes': 36, 'elutasitva': 35, 'nyitva': 1})
+
+    def test_osszesito_sulyozott(self):
+        sorok = [{'igehely': '1Móz 1:2', 'forras_kereses': self.CSOP, 'dontes': 'elutasítva',
+                  'indoklas': 'Összesítő sor 33 versre (az első itt áll): tartalmilag NEM releváns'},
+                 {'igehely': 'Zsolt 99:6', 'forras_kereses': 'scan H7121', 'dontes': 'elutasítva',
+                  'indoklas': 'tartalmilag NEM releváns'}]
+        tablak, _labj, ossz = SZKZ.blokk_torzs(sorok, 'ISTENTISZT-001')
+        self.assertEqual(ossz['ok']['tartalmilag nem kapcsolódik'], 34)
+        self.assertIn('**Gépi keresés** (2 sor, 34 vers)', tablak)
+
+    def test_versszam_hibak(self):
+        jo = {'id': 'X', 'igehely': '1Móz 1:2', 'forras_kereses': self.CSOP,
+              'indoklas': 'Összesítő sor 33 versre (az első itt áll): …'}
+        self.assertEqual(SZKZ.versszam_hibak([jo, {'id': 'X', 'igehely': 'Zsolt 1:1', 'forras_kereses': 'scan',
+                                                   'indoklas': 'más'}]), [])
+        nincs = dict(jo, forras_kereses='F123 U1 teljesség-mérés | scope=manual')
+        elter = dict(jo, indoklas='Összesítő sor 34 versre: …')
+        h = SZKZ.versszam_hibak([nincs, elter])
+        self.assertEqual(len(h), 2)
+        self.assertIn('nem hordoz versszámot', h[0][2])
+        self.assertIn('a forrásban 33, az indoklásban 34', h[1][2])
+
+
 class TestKozosProveniencia(unittest.TestCase):
     """F152 B.2: a blokkban ismétlődő proveniencia-sor egyszer áll, jellel; nem vész el."""
     P = 'scope=manual | forras=napló.md | ts=2026-10-11'

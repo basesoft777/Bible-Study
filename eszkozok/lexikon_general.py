@@ -984,8 +984,9 @@ def blokk_kizart(m, n_motivum=0):
         tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
         okok = sorted(((k, v) for k, v in ossz['ok'].items() if k != 'nyitott döntés'),
                       key=lambda x: (-x[1], x[0]))
-        kizart_olv = OK.kizart(len(sorok_ehhez), sum(1 for r in sorok_ehhez if r.get('dontes') == 'elutasítva'),
-                               sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva'), okok,
+        # F123.TUD1B: verseket számol; az összesítő sor versszáma a `forras_kereses`-ből (szerep_kizart.csoport_versszam)
+        v = SZKZ.vizsgalt_versek(sorok_ehhez)
+        kizart_olv = OK.kizart(v['egyenkent'], v['csoport_vers'], v['csoport_sor'], v['elutasitva'], v['nyitva'], okok,
                                [(c, ossz['forras'][c]) for c in SZKZ.CSOPORTOK if ossz['forras'].get(c)], n_motivum)
         reszek.append(SZKZ.osszesito_sor(ossz))
         reszek.extend(tablak)

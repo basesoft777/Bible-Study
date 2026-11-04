@@ -215,15 +215,15 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-22 helyet vizsgáltunk meg jelöltként; elutasítva: 22. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (11), utána „a két szó nem egy mondatban áll” (4). A jelöltek forrása: Gépi keresés 21, Kutatói felvetés 1. **Következtetés:** kétszer annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (22, illetve 11). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
+1730 verset vizsgáltunk meg: 17 verset egyenként, 1713 verset csoportosan (11 összesítő sorban); elutasítva: 1730. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (1713 vers), utána „a két szó nem egy mondatban áll” (4 vers). A jelöltek forrása (vers): Gépi keresés 1723, Kutatói felvetés 1. **Következtetés:** a motívum minden helyére átlagosan 157 vizsgált vers jut (1730 vizsgált vers, 11 motívumhely). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 22 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** csak az egyik szó vagy más szó áll a versben (összesítő sor) 11 · a két szó nem egy mondatban áll 4 · a két szó nem megkülönböztető szerepben 4 · a Septuaginta többlete, az eredetiben nincs a szópár 2 · a hely egy másik sorban áll 1
+**Az elutasítás okai:** csak az egyik szó vagy más szó áll a versben (összesítő sor) 1713 · a két szó nem egy mondatban áll 4 · a két szó nem megkülönböztető szerepben 4 · a Septuaginta többlete, az eredetiben nincs a szópár 2 · a hely egy másik sorban áll 1
 
-**A jelölés forrása:** Gépi keresés 21 · Kutatói felvetés 1
+**A jelölés forrása:** Gépi keresés 1723 · Kutatói felvetés 1
 
-**Gépi keresés** (21)
+**Gépi keresés** (21 sor, 1723 vers)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|

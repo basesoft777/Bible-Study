@@ -36,7 +36,7 @@ class Szovegek(unittest.TestCase):
     def test_lelet_elol_kovetkeztetes_vegul(self):
         szovegek = [
             OK.elofordulasok(33, 23, 10, 16, [('1Móz', 5), ('Zsolt', 5)], 32),
-            OK.kizart(93, 92, 1, [('a formula nincs a versben', 40), ('névadás', 9)], [('TSK-ajánlás', 18)], 33),
+            OK.kizart(93, 0, 0, 92, 1, [('a formula nincs a versben', 40), ('névadás', 9)], [('TSK-ajánlás', 18)], 33),
             OK.kulcsszavak([('héber', ['a kárá', 'a sém'], 23), ('görög', ['az epikaleó'], 10)]),
             OK.lxx(23, 19, 3, 1, 0, 'az epikaleó'),
             OK.kereszthivatkozasok(33, 24, 107),
@@ -61,8 +61,20 @@ class Szovegek(unittest.TestCase):
 
     def test_kizart_hatar(self):
         self.assertIn('ez az ok húzza meg: „a formula nincs a versben”',
-                      OK.kizart(93, 92, 1, [('a formula nincs a versben', 40)], [], 33))
-        self.assertIn('több ok együtt', OK.kizart(10, 10, 0, [('a', 3), ('b', 3)], [], 5))
+                      OK.kizart(93, 0, 0, 92, 1, [('a formula nincs a versben', 40)], [], 33))
+        self.assertIn('több ok együtt', OK.kizart(10, 0, 0, 10, 0, [('a', 3), ('b', 3)], [], 5))
+
+    def test_kizart_versszam(self):
+        # F123.TUD1B: a mondat verseket számol, nem táblasort; az összesítő sorok versei csoportosan
+        sz = OK.kizart(11, 1713, 11, 1724, 0, [('csak az egyik szó', 1713)], [('Gépi keresés', 1723)], 11)
+        self.assertIn('1724 verset vizsgáltunk meg: 11 verset egyenként, 1713 verset csoportosan (11 összesítő '
+                      'sorban); elutasítva: 1724.', sz)
+        self.assertIn('átlagosan 157 vizsgált vers jut (1724 vizsgált vers, 11 motívumhely)', sz)
+        self.assertNotIn('kétszer', sz)
+        sz = OK.kizart(31, 295, 5, 326, 0, [], [], 74)
+        self.assertIn('több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, '
+                      'illetve 74)', sz)
+        self.assertIn('104 verset vizsgáltunk meg egyenként', OK.kizart(104, 0, 0, 104, 0, [], [], 22))
 
     def test_kulcsszavak(self):
         self.assertIn('az Ószövetségben két szó együttes jelenléte kell a motívumhoz, az Újszövetségben egy szó elég',
