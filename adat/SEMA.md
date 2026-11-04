@@ -1935,6 +1935,17 @@ Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` 
 `datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
 `datum`. Állapot (2026-11-04): 0 sor.
 
+### 2.50 A `kapcsolodas` Károli-idézete — az `ellenoriz.py` 34. szabálya (F166, DT614, 2026-11-04)
+
+Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **tartalmi kötése**. A mező az 1/a-próza szó szerinti szövegének forrása (`eszkozok/lexikon_general.py`, 1/a-blokk), ezért a Károli-idézetet az adatban kell megfogni, nem csak a kész lapon (olvasói kapu, IDEZET).
+
+- **Szabály.** A `kapcsolodas` minden idézőjeles (`„…”` vagy `"…"`), legalább három szavas részlete egyezzen a sor `igehely` mezőjének Károli-szövegével (`konkordancia/Karoli_1908.tsv`; tartomány esetén minden verse egybefűzve), **vagy** a mező tartalmazza a „saját fordítás” jelölést.
+- **Normalizálás és egyeztetés** (az olvasói kapuval azonos, `olvasoi_kapu.karoli_egyezik`): kisbetű, ékezet- és írásjel-független; szavanként 0,75-ös hasonlósági tűrés (a Károli régies helyesírása); a `...`, `…` és `[…]` szerint darabolt részletek mindegyike sorrendben követi a vers szavait, a szószámmal arányos kihagyással. Más igealak vagy más szó (kihirdetem ↔ kiáltom) eltérés.
+- **Nem versidézet:** a zárójel utáni glossza (`(„…”)`) és a három szónál rövidebb részlet.
+- **Jelölés alakja (DT614):** a „saját fordítás” szöveg (kis-nagybetű nélkül; elfogadott még „szó szerint:” és „ford.:”) a `kapcsolodas` mezőben, ugyanabban a mezőben, mint az idézet. Új jelölő nincs; az olvasói kapu ugyanezt ismeri.
+- **Szint.** HIBA azon a motívumon, amelynek az `adat/kiadasok.tsv`-ben (2.46) sora van; a többin FIGYELMEZTETÉS (JELENTES a futtatóban). A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
+- **Hatókör.** Fájlszintű, adattáblán futó szabály (mint az E31): a `fajlok` paramétertől független. A szabály nem javít; a találat javítása a lap saját menete (nem a `csv` modullal: `split('\t')`).
+
 ---
 
 ### 2.50 `nyilt_kodkonyv.tsv` és a `nyilt_mag/` csomag — a nyílt mag kódkönyve és generált exportja (F162, FELADATOK #162, DT610, DT611, 2026-11-04)

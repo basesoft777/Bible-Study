@@ -427,14 +427,18 @@ def oszlop_tsv(fej, sorok):
 
 
 CSOPORT_RX = re.compile(r'Összesítő sor (\d+) versre')
-BLOKK_RX = re.compile(r'blokk=(\w+)')
+BLOKK_RX = re.compile(r'\b(blokk|osztaly)=(\w+)')
 CSOPORT_ELTERES = []
 
 
-def csoport_tagjai(j):
+def csoport_tagjai(j, kulon_sorok=frozenset()):
     """Összesítő sor (F123 teljességi felmérés): (versszám, a csoport verseinek listája). A tagok a jelölt
     `forras_kereses` mezője által megnevezett gépi osztályozásból (a motívum `…_blokkok.tsv` munkalistájából) jönnek;
-    a lista darabszáma egyezzen az indoklás versszámával, különben az export megáll (nincs kitöltés)."""
+    a lista darabszáma egyezzen az indoklás versszámával, különben az export megáll (nincs kitöltés).
+
+    A jelölés `(blokk=…)` vagy `(osztaly=…)`; a kulcs egyben a blokkfájl oszlopa (az ANTROP-001 osztályozója
+    `osztaly` oszlopot ír). A blokk azon verse, amelyet a motívum „külön sor”-ként emelt ki a blokkból (a jelöltsor
+    `forras_kereses`-e mondja ki, pl. DT503 külön sora), saját kizárás-sor, nem csoport-tag (`kulon_sorok`)."""
     n = int(CSOPORT_RX.match(j['indoklas']).group(1))
     mb = BLOKK_RX.search(j['forras_kereses'])
     if not mb:      # nincs gépi tag-lista: a versszám marad, a tagok nincsenek kitöltve (CLAUDE.md 3. szabály)
@@ -442,8 +446,10 @@ def csoport_tagjai(j):
     rel = 'naplok/F123_teljesseg_%s_blokkok.tsv' % j['id']
     _, sorok = tsv(rel)
     mh = re.search(r'halo=(\w+)', j['forras_kereses'])
-    tagok = sorted({s['igehely'] for s in sorok if s['blokk'] == mb.group(1)
-                    and (not mh or s.get('halo', mh.group(1)) == mh.group(1))})
+    oszlop, blokk = mb.groups()
+    tagok = sorted({s['igehely'] for s in sorok if s[oszlop] == blokk
+                    and (not mh or s.get('halo', mh.group(1)) == mh.group(1))
+                    and (j['id'], s['igehely']) not in kulon_sorok})
     if len(tagok) != n:      # a lista nem igazolja a számot: a tagok nem töltődnek ki, az eltérés jelentésbe kerül
         CSOPORT_ELTERES.append((j['id'], j['igehely'], n, len(tagok)))
         return str(n), []
@@ -596,6 +602,8 @@ def export(kimenet):
            'megbizhatosag', 'dontesek', 'datum']
     sorok = []
     csoport_tagok = []
+    kulon_sorok = {(j['id'], j['igehely']) for j in dontott
+                   if 'külön sor' in j['forras_kereses'] and not CSOPORT_RX.match(j['indoklas'])}
     for j in dontott:
         if j['dontes'] != 'elutasítva':
             continue
@@ -603,7 +611,7 @@ def export(kimenet):
         csv_db = ''
         mc = CSOPORT_RX.match(elso)
         if mc:
-            csv_db, tagok = csoport_tagjai(j)
+            csv_db, tagok = csoport_tagjai(j, kulon_sorok)
             for ig in tagok:
                 csoport_tagok.append({'motivum_azonosito': j['id'], 'csoport_sor_igehely': j['igehely'],
                                       'igehely': ig})

@@ -78,8 +78,19 @@ class Pozitiv(Alap):
         self.assertTrue(csoportos)
         self.assertIn('ISTENTISZT-001', {c[0] for c in csoportos})
         for mid, ig, n in csoportos:
-            if (mid, ig) in db:
-                self.assertEqual(n, db[(mid, ig)], (mid, ig))
+            self.assertEqual(n, db.get((mid, ig), 0), (mid, ig))
+
+    def test_antrop_osztaly_jeloles_es_kulon_sor(self):
+        # az ANTROP-001 `(osztaly=…)` jelölése is tag-listát ad; a héber pár 60 verséből a két „külön sor”
+        # (Jób 12:10, Jón 4:8) saját kizárás-sor, nem csoport-tag: 58
+        _, tagok = G.tsv_sorok(self.fajlok['kizaras_csoportok.tsv'])
+        heber_par = {d['igehely'] for _, d in tagok
+                     if (d['motivum_azonosito'], d['csoport_sor_igehely']) == ('ANTROP-001', '1Kir 1:29')}
+        self.assertEqual(58, len(heber_par))
+        self.assertIn('1Kir 1:29', heber_par)
+        self.assertNotIn('Jób 12:10', heber_par)
+        self.assertNotIn('Jón 4:8', heber_par)
+        self.assertEqual([], E.CSOPORT_ELTERES)
 
     def test_kizart_forras_listaja_kimondva(self):
         for ds in ('MCGED', 'KJV_Strongs_teljes', 'Heber_ETCBC_modulok'):
@@ -219,6 +230,23 @@ class Negativ(Alap):
     def test_ismeretlen_motivum(self):
         f = self.sor_csere(self.uj(), 'kapcsolatok.tsv', 'KIRALY-001', 'ISMERETLEN-001')
         self.assertTrue(bukasok(f, 'HIVATKOZAS'))
+
+    def test_csoport_tag_nelkul(self):
+        f = self.uj()
+        f['kizaras_csoportok.tsv'] = '\n'.join(s for s in f['kizaras_csoportok.tsv'].split('\n')
+                                                if not s.startswith('ANTROP-001\t1Kir 1:29\t'))
+        t = bukasok(f, 'CSOPORT')
+        self.assertTrue(any('ANTROP-001 1Kir 1:29' in x.idezet for x in t))
+
+    def test_csoport_tagszam_elter(self):
+        f = self.uj()
+        f['kizaras_csoportok.tsv'] += 'ANTROP-001\t1Kir 1:29\t1Móz 1:1\n'
+        self.assertTrue(bukasok(f, 'CSOPORT'))
+
+    def test_csoport_tag_arva(self):
+        f = self.uj()
+        f['kizaras_csoportok.tsv'] += 'ANTROP-001\t1Móz 1:1\t1Móz 1:1\n'
+        self.assertTrue(any('nem létező' in x.uzenet for x in bukasok(f, 'CSOPORT')))
 
     def test_ellenorzo_osszeg(self):
         f = self.sor_csere(self.uj(), 'motivumok.tsv', 'Hádész (Seol)', 'Hádész (Seol)!')
