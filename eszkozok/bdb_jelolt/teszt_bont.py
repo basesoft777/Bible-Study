@@ -279,8 +279,11 @@ class Javitas(unittest.TestCase):
 
     def test_atiras_sorok(self):
         # B3: a „®”-t hordozó minden alak egy sor; javitva csak a BDB.lexicon által igazolt (Seól-család)
-        a = [s for s in self.sorok if s['hiba'] == 'atiras']
+        # F123.GENKOR (DT-F181a): a kézi `atiras` sorok (`manual`) külön, l. test_kezi_szoveg_sorok
+        kezi = [s for s in self.sorok if s['hiba'] == 'atiras' and s['proveniencia'] == 'manual']
+        a = [s for s in self.sorok if s['hiba'] == 'atiras' and s['proveniencia'] != 'manual']
         self.assertEqual(len(set(s['strong'] for s in a)), 33)
+        self.assertEqual(sorted(set(s['strong'] for s in kezi)), ['H2416', 'H7121'])
         for s in a:
             self.assertIn('®', s['forras_alak'])
             self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
@@ -291,6 +294,16 @@ class Javitas(unittest.TestCase):
         self.assertEqual(sorted(s['strong'] for s in a if s['allapot'] == 'jelolt_marad'), ['H2609', 'H6573', 'H7848'])
         self.assertIn(('H7585', 'She®°ôl', 'Sheʾôl'),
                       [(s['strong'], s['forras_alak'], s['javitott_alak']) for s in a])
+
+    def test_kezi_szoveg_sorok(self):
+        # F123.GENKOR (DT-F181a): a kézi `atiras` és `zarojel` sorok: javitva, `manual`, javított alakkal
+        k = [s for s in self.sorok if s['hiba'] in ('atiras', 'zarojel') and s['proveniencia'] == 'manual']
+        self.assertEqual(len(k), 7)
+        for s in k:
+            self.assertEqual(s['allapot'], 'javitva')
+            self.assertTrue(s['javitott_alak'] and s['indok'])
+        self.assertIn(('H7121', 'be summoned (compare Qal 5:', 'be summoned (compare Qal 5):'),
+                      [(s['strong'], s['forras_alak'], s['javitott_alak']) for s in k])
 
     def test_minta_mishpat(self):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
