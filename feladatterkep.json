@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "efb9eed7"
+   "commit": "1b96447f"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 20
+   "db": 23
   }
  ],
  "sor": [],
@@ -1311,6 +1311,36 @@
      "🟡"
     ],
     "sor": 650
+   },
+   {
+    "id": "DT-F168a",
+    "feladat": "F168.1, F168.2 (hol mondja ki a lap az ókori közel-keleti határt; 2026-11-04)",
+    "kerdes": "A `kozlemeny/KOZEL_KELETI_HATAR.md` szerint a lap állításainak hatóköre a bibliai korpusz, és három motívumnál (Tehóm, Hádész, Rafeusok) a szakirodalom közel-keleti összevetést vár. A 7. Módszertan kézi rés (a tanulmányból), a régi formátumú lapokon a generátor csak a meglévő generált blokkokat frissíti, új blokkot nem szúr be.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 653
+   },
+   {
+    "id": "DT-F168b",
+    "feladat": "F168.1 (a PaRDeS-szint recepciós keretezése a közös Jelmagyarázatban; 2026-11-04)",
+    "kerdes": "A feladat „így olvasta a hagyomány” keretezést kért; a DT607 (b) ugyanerre a szó szerinti alakot alátámasztatlannak ítélte (a szintet a munka adja, nem a hagyomány tényleges olvasata).",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 654
+   },
+   {
+    "id": "DT-F168c",
+    "feladat": "F168.1, F168.4 (a kiadott lapok generált változása: GitHub-cím és változásjegyzék; 2026-11-04)",
+    "kerdes": "A 8. Irodalom és idézés blokk „Fájl:” sora GitHub-URL-t adott; a GitHub nem kanonikus forrás (2026-11-04). A kiadott lapokon (ALVIL-001, ANTROP-001, ISTENTISZT-001) csak generált rész változik.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 655
    }
   ],
   "alkalmazasra_var": [
