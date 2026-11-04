@@ -1762,7 +1762,7 @@ változik. Olvasás `split('\t')`.
 
 Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor; a „jogi fellebbezés” (25) a „passzív szerkezet vagy megnevezés” (30) előtt áll, mert a jogi indoklás a negatív kritérium „passzív/megnevezés jellegű vagy jogi használat” szövegét is idézi (ELLENOR_ISTENTISZT_OLVASOI 1.). Állapot (2026-11-04, F123.EGYEB): 15 `*` sor (91–96: másik motívum tárgya,
 csak tematikus párhuzam, más jelentés, a fejezet más témája, a tartomány másik verse, hibás forrásadat); motívumsorok:
-ALVIL-001 5, ANTROP-001 5, ISTENTISZT-001 3, TEREMT-002 1, HAMART-001 20 (az új motívumsorok sorrendje 101-től, hogy a
+ALVIL-001 5, ANTROP-001 5, ISTENTISZT-001 3, TEREMT-002 1, HAMART-001 21 (az új motívumsorok sorrendje 101-től, hogy a
 korábbi besorolás ne változzon). Mért lefedés: minden lapos motívum minden elutasított sora besorolva, 0 be nem sorolható
 (előtte „egyéb”: ISTENTISZT-001 13, HAMART-001 163, HODIT-001 4, KIRALY-001 13, MENNY-001 1, TEREMT-001 2, TEREMT-002 45).
 

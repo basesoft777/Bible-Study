@@ -43,6 +43,9 @@ class TestJelolesOka(unittest.TestCase):
         c, t = SZKZ.jeloles_oka('F123 U1 teljesség-mérés, szótár (BDB H7585 sorszam 58; Thayer G0086 sorszam 2) és '
                                 'LXX-többlet háló (naplok/x.md) | scope=manual')
         self.assertEqual(t, 'gépi teljesség-mérés (szótári háló, Septuaginta-többlet háló)')
+        c, t = SZKZ.jeloles_oka('F123 U1 teljesség-mérés, Strong-háló, N-F63e-függő, blokk-sor (DT-F123o minta): 7 vers, '
+                                'a sor igehelye a blokk egy verse | scope=manual')
+        self.assertEqual(t, 'gépi teljesség-mérés (Strong-háló); csoportos kizárás: 7 vers, az első itt')
 
     def test_szopar_csalad_lanc_frazis(self):
         self.assertEqual(SZKZ.jeloles_oka('rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAGNT-teljes'),

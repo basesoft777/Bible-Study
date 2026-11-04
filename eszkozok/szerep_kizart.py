@@ -32,8 +32,9 @@ OKOK = os.path.join(GYOKER, 'adat', 'elutasitasi_okok.tsv')
 
 CSOPORTOK = ('TSK-ajánlás', 'Károli-kereszthivatkozás', 'Gépi keresés', 'Kutatói felvetés')
 # a teljesség-mérés hálói (`forras_kereses`-beli kulcs → olvasói név), a kiírás sorrendjében
-TELJESSEG_HALOK = (('szópár-háló', 'szópár-háló'), ('szótár (', 'szótári háló'), ('Károli-szó', 'Károli-szó háló'),
-                   ('LXX-többlet', 'Septuaginta-többlet háló'), ('Septuaginta-híd', 'Septuaginta-híd'))
+TELJESSEG_HALOK = (('szópár-háló', 'szópár-háló'), ('Strong-háló', 'Strong-háló'), ('szótár (', 'szótári háló'),
+                   ('Károli-szó', 'Károli-szó háló'), ('LXX-többlet', 'Septuaginta-többlet háló'),
+                   ('Septuaginta-híd', 'Septuaginta-híd'))
 HELY = re.compile(r'\b[1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{1,6} \d+:\d+(?:-\d+)?')
 STRONG = re.compile(r'\b[HG]\d{4}\b')
 
@@ -97,7 +98,7 @@ def _teljesseg(fo):
     """A teljesség-mérés olvasói leírása: a háló(k) és a csoportos kizárás versszáma."""
     halo = [nev for kulcs, nev in TELJESSEG_HALOK if kulcs in fo]
     szoveg = 'gépi teljesség-mérés' + (' (%s)' % ', '.join(halo) if halo else '')
-    b = re.search(r'blokk-kizárás[^:]*:\s*(\d+) vers', fo)
+    b = re.search(r'blokk-(?:kizárás|sor)[^:]*:\s*(\d+) vers', fo)
     if b:
         szoveg += '; csoportos kizárás: %s vers, az első itt' % b.group(1)
     return szoveg
