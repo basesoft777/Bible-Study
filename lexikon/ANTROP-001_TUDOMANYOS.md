@@ -39,7 +39,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -213,77 +213,72 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-22 helyet vizsgáltunk meg jelöltként; elutasítva: 22. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (11), utána „a két szó nem egy mondatban áll” (4). A jelöltek forrása: Egyéb 19, Gépi keresés 2, Kutatói felvetés 1. **Következtetés:** kétszer annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (22, illetve 11). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
+22 helyet vizsgáltunk meg jelöltként; elutasítva: 22. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (11), utána „a két szó nem egy mondatban áll” (4). A jelöltek forrása: Gépi keresés 21, Kutatói felvetés 1. **Következtetés:** kétszer annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (22, illetve 11). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 22 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
 **Az elutasítás okai:** csak az egyik szó vagy más szó áll a versben (összesítő sor) 11 · a két szó nem egy mondatban áll 4 · a két szó nem megkülönböztető szerepben 4 · a Septuaginta többlete, az eredetiben nincs a szópár 2 · a hely egy másik sorban áll 1
 
-**A jelölés forrása:** Gépi keresés 2 · Kutatói felvetés 1 · Egyéb 19
+**A jelölés forrása:** Gépi keresés 21 · Kutatói felvetés 1
 
-**Gépi keresés** (2)
+**Gépi keresés** (21)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
 | 1Pét 1:22 | gépi szópár-keresés: G4151 + G5590[^k1] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem eszközként említi egymás mellett; a lelket Isten Lelke tisztítja meg, a görögben a ψυχή (pszükhé) a megtisztított lélek, a πνεῦμα (pneuma) a tisztító Lélek. A „Lélek által” szavak csak a Károli alapszövegében (Textus Receptus) állnak, a kritikai kiadásokban nincsenek. |
 | Mt 12:18 | gépi szópár-keresés: G4151 + G5590[^k2] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az Ézs 42:1 idézetében mindkét szó Istenről szól („az én lelkem kedvét lelé”, „lelkemet adom ő belé”), nem az ember belső életéről. |
+| Luk 9:55-56 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k3] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. Megjegyzés: a két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs; a Textus Receptus mércéje szerint ez önmagában nem kizáró ok. |
+| ApCsel 4:31-32 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a 31. versben a Szent Lélek tölti be a hívőket, a 32. versben a hívők sokaságának „szíve-lelke egy vala”; a két vers két külön mondat. |
+| ApCsel 20:23-24 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k5] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a Szent Lélek bizonyságtétele és Pál élete („az én életem sem drága nékem”) két külön mondatban áll. |
+| 2Kor 1:22-23 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k6] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „léleknek zálogát” és az „Istent hívom bizonyságul az én lelkemre” két külön mondat. |
+| 1Pét 3:19-20 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k7] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja őket, hanem két külön csoportot nevez meg, a „tömlöczben lévő lelkeket” (πνεῦμα) és a bárkában megmenekült „nyolcz lelket” (ψυχή). |
+| Júd 1:19-20 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k8] | **elutasítva** — a hely egy másik sorban áll: Ugyanaz a hely, mint a Júd 1:19 sora: a 20. vers csak a Szent Lelket nevezi meg, a ψυχή nem áll benne. |
+| Jób 12:10 | gépi teljesség-mérés (szópár-háló, Septuaginta-híd)[^k9] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordítás a ψυχή és a πνεῦμα szót hozza („minden élő állatnak élete, és minden egyes embernek a lelke”), a héber szövegben viszont a nefes és a rúah áll. A motívum az eredeti szövegre épül, ezért a hely nem előfordulás; a lap tényként említi. |
+| Jón 4:8 | gépi teljesség-mérés (szópár-háló, Septuaginta-híd)[^k10] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordításban a ψυχή és a πνεῦμα áll, de a πνεῦμα itt a keleti szél („tikkasztó keleti szelet”), nem az ember szelleme. Döntés: elutasítva. |
+| 1Kir 1:29 | gépi teljesség-mérés; csoportos kizárás: 58 vers, az első itt[^k11] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 58 versre (az első itt áll): a héber nefes és chajjá („élő lélek”, „élet”) egy versben áll, a görög szópár nélkül; a motívum a görög szópár megkülönböztető együttállására épül, ezért a héber kifejezés önmagában nem tartozik ide (az 1Móz 2:7 kivétel, mert az 1Kor 15:45 idézi). A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jer 2:24 | gépi teljesség-mérés; csoportos kizárás: 5 vers, az első itt[^k12] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 5 versre (az első itt áll): a héber rúah és nefes egy versben áll; a motívum a görög szópár megkülönböztető együttállására épül, a héber szópár a tágabb körbe tartozik. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:24 | gépi teljesség-mérés; csoportos kizárás: 335 vers, az első itt[^k13] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 335 versre (az első itt áll): csak a πνεῦμα (pneuma) áll a versben, a ψυχή nem; legtöbbször a Szent Lélekről. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:16 | gépi teljesség-mérés; csoportos kizárás: 81 vers, az első itt[^k14] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 81 versre (az első itt áll): csak a ψυχή (pszükhé) áll a versben, a πνεῦμα nem; legtöbbször az élet vagy a személy értelmében. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 3:1 | gépi teljesség-mérés; csoportos kizárás: 16 vers, az első itt[^k15] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 16 versre (az első itt áll): csak a πνευματικός (pneumatikosz) áll a versben, a ψυχή és a ψυχικός (pszükhikosz) nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jak 3:15 | gépi teljesség-mérés; csoportos kizárás: 1 vers, az első itt[^k16] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 1 versre (az első itt áll): csak a ψυχικός (pszükhikosz) áll a versben, a πνεῦμα és a πνευματικός nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 1:12 | gépi teljesség-mérés; csoportos kizárás: 551 vers, az első itt[^k17] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 551 versre (az első itt áll): csak a héber nefes áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 18:12 | gépi teljesség-mérés; csoportos kizárás: 200 vers, az első itt[^k18] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 200 versre (az első itt áll): csak a héber rúah áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 2:24 | gépi teljesség-mérés; csoportos kizárás: 359 vers, az első itt[^k19] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 359 versre (az első itt áll): csak a héber chaj, chajjá (élő, élet) áll a versben; a szótár idézi. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 15:29 | gépi teljesség-mérés; csoportos kizárás: 66 vers, az első itt[^k20] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 66 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más héber szót (például nesámá, lehelet; lév, szív) fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 2:6 | gépi teljesség-mérés; csoportos kizárás: 41 vers, az első itt[^k21] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 41 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más görög szót fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
 
 **Kutatói felvetés** (1)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Fil 1:27 | a tanulmány felvetése[^k3] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja. Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak. |
-
-**Egyéb** (19)
-
-| Igehely | Miért lett jelölt | Döntés és indok |
-|---|---|---|
-| Luk 9:55-56 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. Megjegyzés: a két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs; a Textus Receptus mércéje szerint ez önmagában nem kizáró ok. |
-| ApCsel 4:31-32 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k5] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a 31. versben a Szent Lélek tölti be a hívőket, a 32. versben a hívők sokaságának „szíve-lelke egy vala”; a két vers két külön mondat. |
-| ApCsel 20:23-24 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k6] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a Szent Lélek bizonyságtétele és Pál élete („az én életem sem drága nékem”) két külön mondatban áll. |
-| 2Kor 1:22-23 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k7] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „léleknek zálogát” és az „Istent hívom bizonyságul az én lelkemre” két külön mondat. |
-| 1Pét 3:19-20 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k8] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja őket, hanem két külön csoportot nevez meg, a „tömlöczben lévő lelkeket” (πνεῦμα) és a bárkában megmenekült „nyolcz lelket” (ψυχή). |
-| Júd 1:19-20 | rokon (G4151\|G4152) × (G5590\|G5591) ±1 vers[^k9] | **elutasítva** — a hely egy másik sorban áll: Ugyanaz a hely, mint a Júd 1:19 sora: a 20. vers csak a Szent Lelket nevezi meg, a ψυχή nem áll benne. |
-| Jób 12:10 | U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja[^k10] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordítás a ψυχή és a πνεῦμα szót hozza („minden élő állatnak élete, és minden egyes embernek a lelke”), a héber szövegben viszont a nefes és a rúah áll. A motívum az eredeti szövegre épül, ezért a hely nem előfordulás; a lap tényként említi. |
-| Jón 4:8 | U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja[^k11] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordításban a ψυχή és a πνεῦμα áll, de a πνεῦμα itt a keleti szél („tikkasztó keleti szelet”), nem az ember szelleme. Döntés: elutasítva. |
-| 1Kir 1:29 | egyéb jelölés[^k12] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 58 versre (az első itt áll): a héber nefes és chajjá („élő lélek”, „élet”) egy versben áll, a görög szópár nélkül; a motívum a görög szópár megkülönböztető együttállására épül, ezért a héber kifejezés önmagában nem tartozik ide (az 1Móz 2:7 kivétel, mert az 1Kor 15:45 idézi). A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| Jer 2:24 | egyéb jelölés[^k13] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 5 versre (az első itt áll): a héber rúah és nefes egy versben áll; a motívum a görög szópár megkülönböztető együttállására épül, a héber szópár a tágabb körbe tartozik. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Ján 3:24 | egyéb jelölés[^k14] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 335 versre (az első itt áll): csak a πνεῦμα (pneuma) áll a versben, a ψυχή nem; legtöbbször a Szent Lélekről. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Ján 3:16 | egyéb jelölés[^k15] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 81 versre (az első itt áll): csak a ψυχή (pszükhé) áll a versben, a πνεῦμα nem; legtöbbször az élet vagy a személy értelmében. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kor 3:1 | egyéb jelölés[^k16] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 16 versre (az első itt áll): csak a πνευματικός (pneumatikosz) áll a versben, a ψυχή és a ψυχικός (pszükhikosz) nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| Jak 3:15 | egyéb jelölés[^k17] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 1 versre (az első itt áll): csak a ψυχικός (pszükhikosz) áll a versben, a πνεῦμα és a πνευματικός nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 1:12 | egyéb jelölés[^k18] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 551 versre (az első itt áll): csak a héber nefes áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 18:12 | egyéb jelölés[^k19] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 200 versre (az első itt áll): csak a héber rúah áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 2:24 | egyéb jelölés[^k20] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 359 versre (az első itt áll): csak a héber chaj, chajjá (élő, élet) áll a versben; a szótár idézi. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 15:29 | egyéb jelölés[^k21] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 66 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más héber szót (például nesámá, lehelet; lév, szív) fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kor 2:6 | egyéb jelölés[^k22] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 41 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más görög szót fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Fil 1:27 | a tanulmány felvetése[^k22] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja. Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak. |
 
 **Negatív kritérium:** A versben (vagy a két versen átnyúló egy mondatban) a görög πνεῦμα (pneuma, szellem) és ψυχή (pszükhé, lélek) — vagy melléknévi alakjuk, a πνευματικός (pneumatikosz, lelki) és a ψυχικός (pszükhikosz, érzéki) — együtt áll, és a mondat a kettőt megkülönbözteti vagy szembeállítja. Az újszövetségi helyeken a Károli alapszövege, a Textus Receptus a mérce; ahol a kritikai kiadások eltérnek, a lap jelöli. Nem tartozik ide a vers, amelyben csak az egyik szó áll, amelyben a két szó két külön mondatban áll, vagy amelyben a kettő egymás szinonimája, illetve nem az ember belső életéről szól. Kivétel az 1Móz 2:7: a héber נֶפֶשׁ חַיָּה (nefes chajjá, élő lélek) azért tartozik ide, mert az 1Kor 15:45 ezt idézi, és ennek ellenpárjaként mondja ki a megelevenítő szellemet. Név szerinti kivétel az 1Kor 2:14–15 ellentétpárja (ψυχικὸς ἄνθρωπος (pszükhikosz anthróposz) ↔ ὁ πνευματικός (ho pneumatikosz)), amely egy érvelés két versben: a 2:15-ben csak a πνευματικός áll, de a mondat a 2:14 kifejezett szembeállítását közvetlenül folytatja; a kivétel csak ezt a párt engedi, a többi, csak az egyik szót hordozó vers kint marad.
 
 [^k1]: forrás: `kollokacio G4151 G5590 | ‹K2›`
 [^k2]: forrás: `kollokacio G4151 G5590 | ‹K2›`
-[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · indoklás (nyers): A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja (adat/thayer_szakaszok.tsv, G4151 -/2/-, G5590 -/2/-). Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak.
+[^k3]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k4]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k5]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k6]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k7]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k8]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
-[^k9]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
+[^k9]: forrás: `F123 U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja (DT503 külön sora; naplok/F123_teljesseg_ANTROP-001.md 4.) | ‹K3›`
 [^k10]: forrás: `F123 U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja (DT503 külön sora; naplok/F123_teljesseg_ANTROP-001.md 4.) | ‹K3›`
-[^k11]: forrás: `F123 U1 teljesség-mérés, szópár-háló, a héber pár Septuaginta-hídja (DT503 külön sora; naplok/F123_teljesseg_ANTROP-001.md 4.) | ‹K3›`
-[^k12]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 58 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=heber_par), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k13]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 5 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah_nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k14]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 335 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneuma), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k15]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 81 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhe), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k16]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 16 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneumatikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k17]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 1 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k18]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 551 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k19]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 200 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k20]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 359 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=chajja), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k21]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 66 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_heber), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
-[^k22]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 41 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_gorog), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k11]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 58 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=heber_par), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k12]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 5 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah_nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k13]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 335 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneuma), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k14]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 81 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhe), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k15]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 16 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pneumatikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k16]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 1 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=csak_pszukhikosz), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k17]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 551 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=nefes), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k18]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 200 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=ruah), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k19]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 359 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=chajja), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k20]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 66 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_heber), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k21]: forrás: `F123 U1 teljesség-mérés, blokk-kizárás (9_ v1, 2. szabály; DT503 mintája): 41 vers, az első itt; a lista: naplok/F123_teljesseg_ANTROP-001_blokkok.tsv (osztaly=mas_gorog), naplok/F123_teljesseg_ANTROP-001.md | ‹K1›`
+[^k22]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · indoklás (nyers): A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja (adat/thayer_szakaszok.tsv, G4151 -/2/-, G5590 -/2/-). Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak.
 
 *A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_ANTROP2_osztaly.py | ts=2026-11-03` (11 sor) · ‹K2› = `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli` (2 sor) · ‹K3› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_adat_keszito.py lxx | ts=2026-11-03` (2 sor)*
 
@@ -291,7 +286,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a chaj (H2416) és a nefes (H5315), görögül a pneuma (G4151), a pneumatikosz (G4152), a pszükhé (G5590) és a pszükhikosz (G5591). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -881,7 +876,7 @@ A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen 
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-04`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -915,7 +910,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató m
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -931,7 +926,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
 
 A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 90. **Következtetés:** a helyek 82%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -1067,7 +1062,7 @@ A 90 utalásból 7 a motívum két saját helyét köti össze, ez 7 helyet éri
 
 **Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
 
 ## 5. Kapcsolatok
 
@@ -1089,7 +1084,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
@@ -1097,7 +1092,7 @@ A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
 
@@ -1170,7 +1165,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1180,7 +1175,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `ANTROP-001`
 - Cím: Pneuma/pszükhé megkülönböztetés
 - Státusz: publikálható (`v4`, 2026.11.03)
-- Generálva: 2026-11-03
+- Generálva: 2026-11-04
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

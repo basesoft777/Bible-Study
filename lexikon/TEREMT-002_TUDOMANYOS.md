@@ -41,7 +41,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -93,7 +93,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv | licenc: CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv | licenc: CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívum 3 igehelyen fordul elő, 3 bibliai könyvben (3 ószövetségi hely). 3 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum néhány könyvben, csak az Ószövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
@@ -143,13 +143,13 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-63 helyet vizsgáltunk meg jelöltként; elutasítva: 63. A leggyakoribb ok: „a formula nincs a versben” (18). A jelöltek forrása: TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 7. **Következtetés:** 21-szor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (63, illetve 3). A határt több ok együtt húzza meg.<!-- olvasói -->
+63 helyet vizsgáltunk meg jelöltként; elutasítva: 63. A leggyakoribb ok: „a tohu és bohu szópár nincs a versben” (40), utána „a formula nincs a versben” (18). A jelöltek forrása: TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 7. **Következtetés:** 21-szor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (63, illetve 3). A határt leginkább ez az ok húzza meg: „a tohu és bohu szópár nincs a versben”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 63 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** a formula nincs a versben 18 · egyéb 45 (a mintaszótár nem sorolja be; l. a táblázatokban)
+**Az elutasítás okai:** a tohu és bohu szópár nincs a versben 40 · a formula nincs a versben 18 · a jelölés forrásadata hibás 5
 
 **A jelölés forrása:** TSK-ajánlás 40 · Károli-kereszthivatkozás 7 · Gépi keresés 16
 
@@ -163,28 +163,28 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 | Ézs 40:14 | TSK-ajánlás az 1Móz 1:2 helyről, 28 szavazat[^k4] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Jób 26:14 | TSK-ajánlás az 1Móz 1:2 helyről, 7 szavazat[^k5] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Náh 2:10 | TSK-ajánlás az 1Móz 1:2 helyről, -14 szavazat[^k6] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
-| Mt 24:29 | TSK-ajánlás a Jer 4:23 helyről, 35 szavazat[^k7] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom felé húz. TSK 35. |
-| Mk 13:24 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^k8] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Az Mt 24:29 szinoptikus párhuzama: elsötétülés, tohu/bohu nélkül. TSK 29. |
-| Mk 13:25 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^k9] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Csillaghullás, az egek megrendülése — pár nélkül. TSK 29. |
-| Ézs 13:10 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k10] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Babilon-ítélet égi elsötétüléssel — a pusztulás-kép, pár nélkül. TSK 26. |
-| Jóel 3:15 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k11] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Nap és hold elsötétülése — pár nélkül. TSK 26. |
-| Jóel 3:16 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k12] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Az egek és a föld megrendülése — pár nélkül; a vers ráadásul oltalom-ígérettel zárul. TSK 26. |
-| Luk 21:25 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^k13] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Jelek a napban, holdban, csillagokban — pár nélkül. TSK 21. |
-| Luk 21:26 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^k14] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Az egek erősségeinek megrendülése — pár nélkül. TSK 21. |
-| Ez 32:7 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^k15] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A fáraó-sirató égi elsötétülése — pár nélkül. TSK 20. |
-| Ez 32:8 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^k16] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. „Sötétséget bocsátok földedre” — a Jer 4:23 fény-hiányához legközelebb álló kép, de pár nélkül. TSK 20. |
-| Ámós 8:9 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^k17] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Délben lenyugvó nap — pár nélkül. TSK 18. |
-| Jóel 2:10 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^k18] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Föld- és ég-rengés, elsötétülés — pár nélkül. TSK 18. |
-| Jóel 2:30 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k19] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Jelek az égen és a földön (vér, tűz, füst) — pár nélkül, elsötétülés sincs benne. TSK 17. |
-| Jóel 2:31 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k20] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A nap sötétséggé, a hold vérré válik — pár nélkül. TSK 17. |
-| ApCsel 2:19 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k21] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:30 idézete — pár nélkül. TSK 17. |
-| ApCsel 2:20 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k22] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:31 idézete — pár nélkül; a LXX-híd sem köti a tohu-hoz (a Jer 4:23 LXX-e οὐθέν (úthen)). TSK 17. |
-| Ézs 5:30 | TSK-ajánlás a Jer 4:23 helyről, 16 szavazat[^k23] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. „A földre néz, de ímé sűrű sötétség” — a Jer 4:23 szerkezetének legközelebbi párja (néz → föld → sötétség), de pár nélkül. TSK 16. |
-| Mt 24:35 | TSK-ajánlás a Jer 4:23 helyről, 15 szavazat[^k24] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. „Az ég és a föld elmúlnak” — elmúlás, nem visszarendeződés; pár nélkül. TSK 15. |
-| Ézs 24:19 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k25] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A föld összetörése az Ézs 24 keretében (l. Ézs 24:10) — pár nélkül. TSK 12. |
-| Ézs 24:23 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k26] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A hold és a nap megszégyenülése a Sion-királyság előtt — pár nélkül. TSK 12. |
-| Jel 20:11 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k27] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A föld és az ég eltűnése a trón elől — megszűnés, nem a teremtés előtti állapot; pár nélkül. TSK 12. |
-| Jer 9:10 | TSK-ajánlás a Jer 4:23 helyről, 8 szavazat[^k28] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. A Jer 4:25 visszhangja („az ég madaraitól fogva a barmokig minden elköltözik”), tehát a Jer 4:23–26 egység motívum-rokona — de tohu/bohu nélkül. TSK 8. |
+| Mt 24:29 | TSK-ajánlás a Jer 4:23 helyről, 35 szavazat[^k7] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom felé húz. TSK 35. |
+| Mk 13:24 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^k8] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az Mt 24:29 szinoptikus párhuzama: elsötétülés, tohu/bohu nélkül. TSK 29. |
+| Mk 13:25 | TSK-ajánlás a Jer 4:23 helyről, 29 szavazat[^k9] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Csillaghullás, az egek megrendülése — pár nélkül. TSK 29. |
+| Ézs 13:10 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k10] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Babilon-ítélet égi elsötétüléssel — a pusztulás-kép, pár nélkül. TSK 26. |
+| Jóel 3:15 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k11] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Nap és hold elsötétülése — pár nélkül. TSK 26. |
+| Jóel 3:16 | TSK-ajánlás a Jer 4:23 helyről, 26 szavazat[^k12] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az egek és a föld megrendülése — pár nélkül; a vers ráadásul oltalom-ígérettel zárul. TSK 26. |
+| Luk 21:25 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^k13] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Jelek a napban, holdban, csillagokban — pár nélkül. TSK 21. |
+| Luk 21:26 | TSK-ajánlás a Jer 4:23 helyről, 21 szavazat[^k14] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Az egek erősségeinek megrendülése — pár nélkül. TSK 21. |
+| Ez 32:7 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^k15] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A fáraó-sirató égi elsötétülése — pár nélkül. TSK 20. |
+| Ez 32:8 | TSK-ajánlás a Jer 4:23 helyről, 20 szavazat[^k16] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „Sötétséget bocsátok földedre” — a Jer 4:23 fény-hiányához legközelebb álló kép, de pár nélkül. TSK 20. |
+| Ámós 8:9 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^k17] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Délben lenyugvó nap — pár nélkül. TSK 18. |
+| Jóel 2:10 | TSK-ajánlás a Jer 4:23 helyről, 18 szavazat[^k18] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Föld- és ég-rengés, elsötétülés — pár nélkül. TSK 18. |
+| Jóel 2:30 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k19] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Jelek az égen és a földön (vér, tűz, füst) — pár nélkül, elsötétülés sincs benne. TSK 17. |
+| Jóel 2:31 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k20] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A nap sötétséggé, a hold vérré válik — pár nélkül. TSK 17. |
+| ApCsel 2:19 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k21] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:30 idézete — pár nélkül. TSK 17. |
+| ApCsel 2:20 | TSK-ajánlás a Jer 4:23 helyről, 17 szavazat[^k22] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:31 idézete — pár nélkül; a LXX-híd sem köti a tohu-hoz (a Jer 4:23 LXX-e οὐθέν (úthen)). TSK 17. |
+| Ézs 5:30 | TSK-ajánlás a Jer 4:23 helyről, 16 szavazat[^k23] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „A földre néz, de ímé sűrű sötétség” — a Jer 4:23 szerkezetének legközelebbi párja (néz → föld → sötétség), de pár nélkül. TSK 16. |
+| Mt 24:35 | TSK-ajánlás a Jer 4:23 helyről, 15 szavazat[^k24] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. „Az ég és a föld elmúlnak” — elmúlás, nem visszarendeződés; pár nélkül. TSK 15. |
+| Ézs 24:19 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k25] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A föld összetörése az Ézs 24 keretében (l. Ézs 24:10) — pár nélkül. TSK 12. |
+| Ézs 24:23 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k26] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A hold és a nap megszégyenülése a Sion-királyság előtt — pár nélkül. TSK 12. |
+| Jel 20:11 | TSK-ajánlás a Jer 4:23 helyről, 12 szavazat[^k27] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A föld és az ég eltűnése a trón elől — megszűnés, nem a teremtés előtti állapot; pár nélkül. TSK 12. |
+| Jer 9:10 | TSK-ajánlás a Jer 4:23 helyről, 8 szavazat[^k28] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. A Jer 4:25 visszhangja („az ég madaraitól fogva a barmokig minden elköltözik”), tehát a Jer 4:23–26 egység motívum-rokona — de tohu/bohu nélkül. TSK 8. |
 | 2Kir 21:13 | TSK-ajánlás az Ézs 34:11 helyről, 6 szavazat[^k29] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | JSir 2:8 | TSK-ajánlás az Ézs 34:11 helyről, 6 szavazat[^k30] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Sof 2:14 | TSK-ajánlás az Ézs 34:11 helyről, 5 szavazat[^k31] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
@@ -201,34 +201,34 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| Jer 9:15 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k40] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
-| Zsolt 80:6-7 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k41] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
-| Ézs 66:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k42] | **elutasítva** — egyéb |
-| Ez 34:12-16 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k43] | **elutasítva** — egyéb |
-| Ján 10:11 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k44] | **elutasítva** — egyéb |
-| 1Móz 33:13 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k45] | **elutasítva** — egyéb |
-| 4Móz 11:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k46] | **elutasítva** — egyéb |
+| Jer 9:15 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k40] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
+| Zsolt 80:6-7 | Károli-kereszthivatkozás a Jer 4:23 helyről[^k41] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.) |
+| Ézs 66:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k42] | **elutasítva** — a jelölés forrásadata hibás |
+| Ez 34:12-16 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k43] | **elutasítva** — a jelölés forrásadata hibás |
+| Ján 10:11 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k44] | **elutasítva** — a jelölés forrásadata hibás |
+| 1Móz 33:13 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k45] | **elutasítva** — a jelölés forrásadata hibás |
+| 4Móz 11:12 | Károli-kereszthivatkozás az Ézs 34:11 helyről[^k46] | **elutasítva** — a jelölés forrásadata hibás |
 
 **Gépi keresés** (16)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| 1Sám 12:21 | gépi Strong-keresés: H8414[^k47] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| 5Móz 32:10 | gépi Strong-keresés: H8414[^k48] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Jób 6:18 | gépi Strong-keresés: H8414[^k49] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Jób 12:24 | gépi Strong-keresés: H8414[^k50] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Jób 26:7 | gépi Strong-keresés: H8414, TSK-ajánlással[^k51] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Zsolt 107:40 | gépi Strong-keresés: H8414[^k52] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 24:10 | gépi Strong-keresés: H8414, TSK-ajánlással[^k53] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár; ítélet-kontextusú önálló tohu (rommá lőn; Ézs 24:1,3 bákak) — kapcsolatként felvéve |
-| Ézs 29:21 | gépi Strong-keresés: H8414[^k54] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 40:17 | gépi Strong-keresés: H8414[^k55] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 40:23 | gépi Strong-keresés: H8414[^k56] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 41:29 | gépi Strong-keresés: H8414[^k57] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 44:9 | gépi Strong-keresés: H8414[^k58] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 45:18 | gépi Strong-keresés: H8414, TSK-ajánlással[^k59] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár. Önálló tohu, bohu nélkül — a negatív kritérium kizárja. Tartalmilag a legerősebb nem-pár vers: az Úr „nem tohu-nak teremtette” a földet, az 1Móz 1:2 állapotának kifejezett ellenpontja (Károli: „nem hiába”). Kapcsolatként felvéve (1Móz 1:2 → Ézs 45:18, Kontraszt). |
-| Ézs 45:19 | gépi Strong-keresés: H8414[^k60] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 49:4 | gépi Strong-keresés: H8414[^k61] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
-| Ézs 59:4 | gépi Strong-keresés: H8414[^k62] | **elutasítva** — egyéb: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| 1Sám 12:21 | gépi Strong-keresés: H8414[^k47] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| 5Móz 32:10 | gépi Strong-keresés: H8414[^k48] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Jób 6:18 | gépi Strong-keresés: H8414[^k49] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Jób 12:24 | gépi Strong-keresés: H8414[^k50] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Jób 26:7 | gépi Strong-keresés: H8414, TSK-ajánlással[^k51] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Zsolt 107:40 | gépi Strong-keresés: H8414[^k52] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 24:10 | gépi Strong-keresés: H8414, TSK-ajánlással[^k53] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár; ítélet-kontextusú önálló tohu (rommá lőn; Ézs 24:1,3 bákak) — kapcsolatként felvéve |
+| Ézs 29:21 | gépi Strong-keresés: H8414[^k54] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 40:17 | gépi Strong-keresés: H8414[^k55] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 40:23 | gépi Strong-keresés: H8414[^k56] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 41:29 | gépi Strong-keresés: H8414[^k57] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 44:9 | gépi Strong-keresés: H8414[^k58] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 45:18 | gépi Strong-keresés: H8414, TSK-ajánlással[^k59] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár. Önálló tohu, bohu nélkül — a negatív kritérium kizárja. Tartalmilag a legerősebb nem-pár vers: az Úr „nem tohu-nak teremtette” a földet, az 1Móz 1:2 állapotának kifejezett ellenpontja (Károli: „nem hiába”). Kapcsolatként felvéve (1Móz 1:2 → Ézs 45:18, Kontraszt). |
+| Ézs 45:19 | gépi Strong-keresés: H8414[^k60] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 49:4 | gépi Strong-keresés: H8414[^k61] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
+| Ézs 59:4 | gépi Strong-keresés: H8414[^k62] | **elutasítva** — a tohu és bohu szópár nincs a versben: negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben). |
 
 **Negatív kritérium:** az igehelynek a תֹהוּ וָבֹהוּ (tohu va-vohu) szópárt kell tartalmaznia (H8414 + H0922 egy versben) — a תֹּהוּ (tóhú) önmagában nem elég, sem a „semmiség/hiábavalóság” jelentésben (Ézs 40:17, 44:9), sem a „puszta, úttalan vidék” jelentésben (5Móz 32:10, Zsolt 107:40); és a lexikai pár nélküli kozmikus elsötétülés- vagy pusztulás-kép sem (Jóel 2:10, Mt 24:29)
 
@@ -299,7 +299,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESH.txt, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a bóhú (H0922) és a tóhú (H8414). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -477,7 +477,7 @@ A motívum 3 igehelyén a Károli 3 különböző magyar szót használ. A leggy
 - **kietlen** (2) — kietlen: 1Móz 1:2, Jer 4:23
 - **semmiség** (1) — semmiségnek: Ézs 34:11
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=TEREMT-002, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=3 | ts=2026-11-03)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=TEREMT-002, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=3 | ts=2026-11-04)*
 
 #### 14. Rejtett / hamis párhuzam
 
@@ -512,7 +512,7 @@ A motívum 3 helye közül 1 helyen a héber vagy görög szövegben megvan a mo
 
 </details>
 
-*(proveniencia: scope=Károli teljes (H0922+H8414: „puszta”, „kietlen”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=16 | ts=2026-11-03)*
+*(proveniencia: scope=Károli teljes (H0922+H8414: „puszta”, „kietlen”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=16 | ts=2026-11-04)*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#szocikkek -->
 
@@ -524,7 +524,7 @@ A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen 
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-04`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -664,7 +664,7 @@ A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet éri
 
 </details>
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
 
 ## 5. Kapcsolatok
 
@@ -713,11 +713,11 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 A motívum 5 kapcsolat-sorának egyikéhez sincs rögzített indoklás.
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/kapcsolatok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/kapcsolatok.tsv | ts=2026-11-04`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
@@ -725,7 +725,7 @@ A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:TEREMT-002 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:TEREMT-002 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#kapcsolodo -->
 
@@ -836,7 +836,7 @@ A P3 teljes scanje a héber szöveg egészére fut; a 2026-11-02-i újrafuttatá
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -846,7 +846,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `TEREMT-002`
 - Cím: Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor
 - Státusz: feldolgozás alatt (`v1`, 2026.09.25)
-- Generálva: 2026-11-03
+- Generálva: 2026-11-04
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-002_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
