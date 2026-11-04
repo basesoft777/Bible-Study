@@ -11,7 +11,8 @@ kézi forrás nem változik (DT28), a javítás a kimenet rétegben él, ezért 
     konyv      a könyvrövidítés a `konkordancia/Konyv_normalizalo_tabla.tsv` magyar alakjára; a szó szerint idézett,
                angol nyelvű sor (a szótár eredetije) nem változik
     bdb        a BDB-átalakítás maradék jelei: a felső index ^ jele, a dupla vessző, a héber rafe (lásd BDB_CSERE)
-    strong     a Strong-szám ott, ahol mellette a héber/görög szó (és a kiejtése) áll (F123.INDOKLAS; lásd strong_ki);
+    strong     a Strong-szám ott, ahol mellette a héber/görög szó (és a kiejtése) áll, jelölt alakra: a kiejtés hivatkozás a
+               szónézetre, a szám halvány felső index (F123.INDOKLAS → F123.GENKOR, DT-F181b; lásd strong_ki);
                a táblázat „Strong” oszlopa, a címsor és az egyedül vagy láncban álló Strong-szám érintetlen; csak a
                generált részen (a kézi részt, mint a kiejtés-szabály, a forrásban kell javítani; DT569)
 
@@ -36,7 +37,7 @@ NORMALIZALO = os.path.join(GYOKER, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'
 KIZART_SZAKASZ = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
 
 # a sorban védett szakaszok: ezeket a cserék nem látják
-VEDETT = re.compile(r'<!--.*?-->|<[^>]+>|`[^`]*`|\]\([^)]*\)|https?://\S+|(?:\\?\|\s*)?scope=.*?ts=[\dT:Z.-]+')
+VEDETT = re.compile(r'<!--.*?-->|<sup class="strong"[^>]*>[^<]*</sup>|<[^>]+>|`[^`]*`|\]\([^)]*\)|https?://\S+|(?:\\?\|\s*)?scope=.*?ts=[\dT:Z.-]+')
 
 # --- könyvrövidítés ---------------------------------------------------------------------------------------------------
 # A normalizáló tábla STEPBible- és forrás-alakjain túl a lapokon mért változatok. A kulcs szóköz nélküli.
@@ -148,44 +149,102 @@ def bdb_sor(sor):
     return _vissza(v, tarolo)
 
 
-# --- Strong-szám a szó és a kiejtése mellett (F123.INDOKLAS) -----------------------------------------------------------
-# A lap olvasói szövegében a Strong-szám belső azonosító; ahol mellette ott a héber/görög szó (és a kiejtése), ismétlés,
-# és kikerül: „ὄνομα (G3686) nélkül” -> „ὄνομα nélkül”, „(ἐπικαλέω, epikaleó G1941)” -> „(ἐπικαλέω, epikaleó)”, „H6089 עֶצֶב” -> „עֶצֶב”. Ahol a Strong-szám egyedül áll (a szó nincs mellette, pl. „a H7496/H7497 Strong-szám
-# szerinti megoszlás”), vagy lánc tagja („H7121+H8034”, „H0369 + H7121”), az adat része, nem változik. A táblázat
-# „Strong” fejlécű oszlopa és a címsor érintetlen. Az olvasói kapu BELSO-ellenőrzése ugyanezt a függvényt hívja
-# (`strong_valtozas`): amit a kapu megfog, azt a generátor eltávolítja.
+# --- Strong-szám a szó és a kiejtése mellett (F123.INDOKLAS → F123.GENKOR, DT-F181b) -------------------------------
+# A lap olvasói szövegében a csupasz Strong-szám belső azonosító; ahol mellette ott a héber/görög szó (és a kiejtése), a
+# generátor jelölt alakra írja: a kiejtés (ennek híján a szó) a szónézetre mutató hivatkozás, a Strong-szám kis, halvány
+# felső index, egér alatt a szám és a rövid jelentés (`STRONG_JEL`): „(מִזְבֵּחַ, mizbéah, H4196)” →
+# „(מִזְבֵּחַ, [mizbéah](/szo/H4196)<sup class="strong" title="H4196 · oltár">H4196</sup>)”; „(ἐπικαλέω, epikaleó G1941)” →
+# „(ἐπικαλέω, [epikaleó](/szo/G1941)<sup …>G1941</sup>)”; „ὄνομα (G3686)” és „H6089 עֶצֶב” → a szó a hivatkozás. A forrásban a
+# „(szó, kiejtés, H4196)” alak a generátor bemenete (a kézi résen is: csak a jelölés változik, a szöveg nem). Ahol a Strong-szám
+# egyedül áll (a szó nincs mellette, pl. „a H7496/H7497 Strong-szám szerinti megoszlás”, „a kárá (H7121)”), vagy lánc tagja
+# („H7121+H8034”, „H0369 + H7121”), az adat része, nem változik. A táblázat „Strong” fejlécű oszlopa és a címsor érintetlen.
+# A jelölt alak védett (VEDETT), ezért a művelet idempotens. Az olvasói kapu BELSO-ellenőrzése ugyanezt a függvényt hívja
+# (`strong_valtozas`): amit a kapu megfog (a csupasz alak), azt a generátor jelöltre írja; a jelölt alak nem hiba.
 SCRIPT = '[֐-׿Ͱ-Ͽἀ-῿]'
 _STRONG = r'[HG]\d{4}[a-z]?'
 STRONG_TAG = re.compile(r'(?<![\w+/])(?<![+/]\s)' + _STRONG + r'(?![\w+/])(?!\s[+/])')
 STRONG_ELEM = re.compile(r'\s*' + _STRONG + r'\s*')
-STRONG_UTAN = re.compile(r'^(?P<szo>[^\d,;()]*\S)\s+' + _STRONG + r'\s*$')   # „epikaleó G1941”
-STRONG_ELOL = re.compile(r'(?<![\w+/])(?<![+/]\s)' + _STRONG + r'\s+(?=' + SCRIPT + ')')
+STRONG_UTAN = re.compile(r'^(?P<szo>[^\d,;()]*\S)\s+(?P<strong>' + _STRONG + r')\s*$')   # „epikaleó G1941”
+SZKRIPT_SZO = '(?:' + SCRIPT + r'|[֑-ׇ̀-ͯ־]|\w)*' + SCRIPT + r'(?:' + SCRIPT + r'|[֑-ׇ̀-ͯ־]|\w)*'
+STRONG_ELOL = re.compile(r'(?<![\w+/])(?<![+/]\s)(?P<strong>' + _STRONG + r')\s+(?P<szo>' + SZKRIPT_SZO + ')')
+SZO_ZAROJEL = re.compile(r'(?P<szo>' + SZKRIPT_SZO + r')(?P<jel>[*_]*)\s?\(\s*(?P<strong>' + _STRONG + r')\s*\)')
 ZAROJEL = re.compile(r'(\s?)\(([^()]*)\)')
 SZKRIPT_VEG = re.compile(SCRIPT + r'[֑-ׇ̀-ͯ]*[\w֑-ׇ̀-ͯ]*[*_]*$')
+STRONG_JEL_RX = r'<sup class="strong"[^>]*>[^<]*</sup>'
+SZONEZET = '/szo/%s'
 
 
-def _zarojel_strong_ki(tartalom):
-    """A zárójel tartalma a Strong-tag nélkül: a vesszővel/pontosvesszővel elválasztott elemek közül az, amely csak a
-    Strong-szám, kiesik; a „szó Strong” alakú elemből a Strong-szám esik ki. Más elem nem változik."""
+def csupasz_strongok(szoveg):
+    """A szövegben jelöletlenül (csupaszon) álló Strong-számok: a jelölt alak (hivatkozás + felső index) nélkül."""
+    s = re.sub(r'\[[^\]]*\]\(/szo/[^)]*\)', ' ', re.sub(STRONG_JEL_RX, ' ', szoveg))
+    return re.findall(_STRONG, s)
+
+
+def _alap_cim(strong):
+    return strong
+
+
+def strong_jel(strong, cim=None):
+    """A Strong-szám jelölt alakja: halvány felső index, a `title` a szám és a rövid jelentés (`cim(strong)`)."""
+    t = (cim or _alap_cim)(strong) or strong
+    return '<sup class="strong" title="%s">%s</sup>' % (t.replace('&', '&amp;').replace('"', '&quot;'), strong)
+
+
+def strong_link(szoveg, strong, cim=None):
+    """A szó vagy kiejtés hivatkozásként a szónézetre, utána a jelölt Strong-szám. A dőlt jel (`*málé*`) a hivatkozáson belül
+    marad."""
+    return '[%s](%s)%s' % (szoveg, SZONEZET % strong, strong_jel(strong, cim))
+
+
+def _kiejtes_elem(elem):
+    """Kiejtés-e a zárójel eleme: latin betűs, legfeljebb három szó, szám, idézőjel és héber/görög betű nélkül."""
+    e = elem.strip()
+    return bool(e) and not re.search(SCRIPT + r'|\d|[„”"\[\]<>]', e) and len(e.split()) <= 3
+
+
+def _zarojel_strong_jelol(tartalom, cim):
+    """A zárójel tartalma jelölt Strong-számmal: a csak Strong-számból álló elem kiesik, a Strong-szám az előtte álló kiejtés
+    (ennek híján a héber/görög szó) jelölt alakjába kerül; a „kiejtés Strong” alakú elem jelölt alakra íródik; a zárójel
+    elején álló, szó nélküli Strong-szám kiesik. Más elem nem változik."""
     reszek = re.split(r'([,;]\s*)', tartalom)
-    elemek = [(reszek[i], reszek[i + 1] if i + 1 < len(reszek) else '') for i in range(0, len(reszek), 2)]
+    elemek = [[reszek[i], reszek[i + 1] if i + 1 < len(reszek) else ''] for i in range(0, len(reszek), 2)]
     ki = []
     for elem, sep in elemek:
         if STRONG_ELEM.fullmatch(elem) and STRONG_TAG.search(elem):
+            strong = elem.strip()
+            if not ki:
+                # „(H7121, שֵׁם nélkül)”: előtte nincs szó, amelyhez kötődne — kiesik, mint az F123.INDOKLAS óta
+                continue
+            elozo = ki[-1][0]
+            kozep = elozo.strip()
+            elotte = elozo[:len(elozo) - len(elozo.lstrip())]
+            ki[-1][0] = elotte + strong_link(kozep, strong, cim)
             continue
         m = STRONG_UTAN.match(elem)
         if m and STRONG_TAG.search(elem) and len(m.group('szo').split()) <= 3:
-            elem = m.group('szo')
-        ki.append((elem, sep))
+            szo = m.group('szo')
+            eleje = szo[:len(szo) - len(szo.lstrip())]
+            elem = eleje + strong_link(szo.strip(), m.group('strong'), cim)
+        ki.append([elem, sep])
     szoveg = ''.join(e + s for e, s in ki)
     return re.sub(r'[,;]\s*$', '', szoveg).strip()
 
 
-def strong_ki(szoveg):
-    """Egy olvasói szövegrész (sor vagy cella) a szó mellett álló Strong-szám nélkül (a védett szakasz érintetlen)."""
+def strong_ki(szoveg, cim=None):
+    """Egy olvasói szövegrész (sor vagy cella) a szó mellett álló Strong-szám jelölt alakjával (a védett szakasz, köztük a
+    már jelölt alak, érintetlen). A név a korábbi (eltávolító) szabályé; a művelet ma jelölés (DT-F181b)."""
     v, tarolo = _vedett(szoveg)
     if not STRONG_TAG.search(v):
         return szoveg
+
+    def vedd(s):
+        tarolo.append(s)
+        return '\x00%d\x00' % (len(tarolo) - 1)
+
+    # „ὄνομα (G3686)”: a zárójelben csak a Strong-szám, előtte a szó → a szó a hivatkozás
+    # (a szó utáni dőlt-zárójel — „*ὄνομα* (G3686)” — a hivatkozás után marad, a felső index elé)
+    v = SZO_ZAROJEL.sub(lambda m: vedd('[%s](%s)%s%s' % (m.group('szo'), SZONEZET % m.group('strong'), m.group('jel'),
+                                                         strong_jel(m.group('strong'), cim))), v)
 
     def zarojel(m):
         tartalom = m.group(2)
@@ -194,12 +253,12 @@ def strong_ki(szoveg):
         elotte = v[:m.start()].rstrip() if not m.group(1) else v[:m.start()]
         if not (re.search(SCRIPT, tartalom) or SZKRIPT_VEG.search(elotte.rstrip())):
             return m.group(0)
-        uj = _zarojel_strong_ki(tartalom)
+        uj = _zarojel_strong_jelol(tartalom, cim)
         if uj == tartalom:
             return m.group(0)
-        return '' if not uj else '%s(%s)' % (m.group(1), uj)
+        return '' if not uj else '%s(%s)' % (m.group(1), vedd(uj))
     v = ZAROJEL.sub(zarojel, v)
-    v = STRONG_ELOL.sub('', v)
+    v = STRONG_ELOL.sub(lambda m: vedd(strong_link(m.group('szo'), m.group('strong'), cim)), v)
     return _vissza(v, tarolo)
 
 
@@ -207,8 +266,8 @@ def _cellak(sor):
     return re.split(r'(?<!\\)\|', sor)
 
 
-def strong_sor(sor, tabla_fej=None):
-    """A sor a szó mellett álló Strong-szám nélkül. Táblasorban cellánként; a „Strong” fejlécű oszlop érintetlen."""
+def strong_sor(sor, tabla_fej=None, cim=None):
+    """A sor a szó mellett álló Strong-szám jelölt alakjával. Táblasorban cellánként; a „Strong” fejlécű oszlop érintetlen."""
     s = sor.strip()
     if re.match(r'^#{1,6}\s', s):
         return sor
@@ -216,8 +275,8 @@ def strong_sor(sor, tabla_fej=None):
         cellak = _cellak(sor)
         if tabla_fej is None or len(cellak) != len(tabla_fej) or re.fullmatch(r'[\s|:-]+', s):
             return sor
-        return '|'.join(c if 'Strong' in tabla_fej[i] else strong_ki(c) for i, c in enumerate(cellak))
-    return strong_ki(sor)
+        return '|'.join(c if 'Strong' in tabla_fej[i] else strong_ki(c, cim) for i, c in enumerate(cellak))
+    return strong_ki(sor, cim)
 
 
 def generalt_sorok(szoveg):
@@ -230,7 +289,8 @@ def generalt_sorok(szoveg):
 
 def strong_valtozas(szoveg):
     """[(sorszám (0-tól), régi sor, új sor, generált-e)] az olvasói szöveg azon soraira, amelyekben a `strong_sor`
-    változtatna. A generátor csak a generált sort írja át; a kapu a kézi sort is jelzi (a forrásban javítandó)."""
+    változtatna, azaz csupasz (jelöletlen) Strong-szám áll a szó mellett. A generátor a kézi sort is jelöltre írja
+    (DT-F181b); a kapu így csak a generátoron kívül írt vagy elavult lapot jelzi."""
     ki = []
     gen = generalt_sorok(szoveg)
     for n, sor, idezet, fej in _sorok_tablafejjel(szoveg):
@@ -291,13 +351,14 @@ def olvasoi_sorok(szoveg):
         yield n, sor, s.startswith('>')
 
 
-def alkalmaz(szoveg, idezojel=True, konyv=True, bdb=True, strong=True):
+def alkalmaz(szoveg, idezojel=True, konyv=True, bdb=True, strong=True, strong_cim=None):
+    """`strong_cim(strong)`: a jelölt Strong-szám `title`-je (a szám és a rövid jelentés; alapból a szám). A Strong-jelölés
+    a kézi résen is fut (DT-F181b): a forrás „(szó, kiejtés, H4196)” alakja a generátor bemenete, a szöveg nem változik."""
     sorok = szoveg.split('\n')
-    gen = generalt_sorok(szoveg) if strong else None
     for n, sor, idezet, fej in _sorok_tablafejjel(szoveg):
         uj = sor
-        if strong and not idezet and gen[n]:
-            uj = strong_sor(uj, fej)
+        if strong and not idezet:
+            uj = strong_sor(uj, fej, strong_cim)
         if bdb:
             uj = bdb_sor(uj)
         if konyv and not idezet:

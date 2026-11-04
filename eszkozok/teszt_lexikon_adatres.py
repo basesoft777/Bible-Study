@@ -181,6 +181,40 @@ class ResTorzsAdatAg(unittest.TestCase):
         with self.assertRaises(ValueError):
             LG._boundary_index(szoveg, '### Alátámasztás *(generált)*', 0, 'alatamasztas')
 
+    def test_hatarkereses_jeloles_nelkuli_fejlec(self):
+        """DT-F181c: a jelölés nélküli fejléc a régi, jelölt fejlécet is megtalálja, csak teljes sorként."""
+        szoveg = 'x\n#### Minősítés más\n### Minősítés *(generált)*\n\ny\n## 6. Értelmezés\n'
+        i, talalt = LG._boundary_index(szoveg, '### Minősítés', 0, 'minosites')
+        self.assertEqual(talalt, '### Minősítés *(generált)*')
+        self.assertEqual(i, szoveg.index('### Minősítés *(generált)*'))
+        self.assertEqual(LG._boundary_index(szoveg, '## 6. Értelmezés *(kézi)*', 0, 'ertelmezes')[1], '## 6. Értelmezés')
+
+    def test_cimjeloles_ki(self):
+        szoveg = '## Kivonat *(kézi)*\n\nA *(kézi)* szó a prózában marad.\n```\n## x *(kézi)*\n```\n### 2/b *(kézi, ha van)*\n'
+        self.assertEqual(LG.cimjeloles_ki(szoveg),
+                         '## Kivonat\n\nA *(kézi)* szó a prózában marad.\n```\n## x *(kézi)*\n```\n### 2/b\n')
+
+    def test_szerzoseg_mondat(self):
+        """DT-F181c: a Kolofon szerzőségi mondata adatból (modell, átnézés, `manual`, nincs kiadva)."""
+        res = {('X-001', 'kivonat'): {'fejlec': '## Kivonat', 'forras': 'tanulmany'},
+               ('X-001', 'ertelmezes'): {'fejlec': '## 6. Értelmezés *(kézi)*', 'forras': 'tanulmany'},
+               ('X-001', 'minosites'): {'fejlec': '### Minősítés', 'forras': 'adat'}}
+        nincs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nincs_ilyen.tsv')
+        m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'claude-opus-5-5'}], atnezes_ut=nincs, res_sorok=res)
+        self.assertEqual(m, 'Az értelmező szakaszokat (Kivonat, Értelmezés) mesterséges intelligencia (`claude-opus-5-5`) '
+                            'írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált.')
+        m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'manual'}], atnezes_ut=nincs, res_sorok=res)
+        self.assertIn('nem rögzíti modellnévvel (kézi rögzítés, `manual`)', m)
+        self.assertNotIn('mesterséges intelligencia', m)
+        m = LG.kolofon_szerzoseg('X-001', [], atnezes_ut=nincs, res_sorok=res)
+        self.assertIn('még nincsenek kiadva', m)
+
+    def test_elso_tagmondat_zarojelen_kivul(self):
+        """F123.GENKOR (C2/C3): a vázlatsor zárójelen belül nem vág, és nyitott zárójel nem marad."""
+        self.assertEqual(LG._elso_tagmondat('= emlékjel Ézs 55:13 (|| אוֺת; így Che), וגו 56:5; tovább'),
+                         '= emlékjel Ézs 55:13 (|| אוֺת; így Che), וגו 56:5')
+        self.assertEqual(LG._elso_tagmondat('megidéztetni (vö. Qal 5'), 'megidéztetni…')
+
     def test_renderelo_nelkuli_res_hiba(self):
         with self.assertRaises(ValueError):
             LG.res_torzs({'id': 'PROBA-001'}, 'kivonat', {'forras': 'adat', 'tanulmany': ''}, [])
