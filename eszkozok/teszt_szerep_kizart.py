@@ -144,6 +144,17 @@ class TestVersszam(unittest.TestCase):
         self.assertEqual(ossz['ok']['tartalmilag nem kapcsolódik'], 34)
         self.assertIn('**Gépi keresés** (2 sor, 34 vers)', tablak)
 
+    def test_indok_strong(self):
+        # F123.TUD1B (3): a latin betűs szó utáni zárójeles Strong-szám a #624 szerinti jelölt alakot kapja
+        t = SZKZ.indok_strong('a besém után nem JHVH (H3068) áll', lambda s: s + ' · Úr')
+        self.assertEqual(t, 'a besém után nem [JHVH](/szo/H3068)<sup class="strong" title="H3068 · Úr">H3068</sup> áll')
+        self.assertEqual(SZKZ.indok_strong(t), t)                       # idempotens
+        for valtozatlan in ('a Strong-szám (H7121)', 'láncban (H7121+H8034)', 'TAHOT: H9020 i',
+                            'de ὄνομα (G3686) nélkül', 'אֶל (H0413) + יְהוָה'):   # a héber/görög szó a strong_ki-é
+            self.assertEqual(SZKZ.indok_strong(valtozatlan), valtozatlan)
+        import olvasoi_utofeldolg as OU
+        self.assertEqual(OU.csupasz_strongok(t), [])
+
     def test_versszam_hibak(self):
         jo = {'id': 'X', 'igehely': '1Móz 1:2', 'forras_kereses': self.CSOP,
               'indoklas': 'Összesítő sor 33 versre (az első itt áll): …'}

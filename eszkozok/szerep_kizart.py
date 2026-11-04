@@ -316,6 +316,21 @@ def nyom_lapra(dontes_ref):
     return NYOM_SEP.join(e for e in elemek if e and not HELYORZO.search(e))
 
 
+# F123.TUD1B (3): az indoklás adatszövegében a latin betűs szó (kiejtés, átírás) utáni zárójeles Strong-szám („nem a
+# JHVH (H3068) szó”) a lapon a #624 szerinti jelölt alakot kapja (DT-F181b): a szó a szónézet hivatkozása, a szám halvány
+# felső index. Az `olvasoi_utofeldolg.strong_ki` ezt az alakot szándékosan érintetlenül hagyja (a próza „a kárá (H7121)”
+# alakja adat); az 1/b. indoklásaiban viszont a szám a szó azonosítója, ezért itt jelöljük. Az adat nem változik.
+# csak latin betűs szó: a héber/görög szó melletti számot az `olvasoi_utofeldolg.strong_ki` jelöli (a kiejtéssel együtt)
+INDOK_STRONG = re.compile(r'(?<![\w\[\]/\-֑-ׇ])(?P<szo>[A-Za-zÀ-ɏ]+)(?P<jel>[*_]*) \(\s*(?P<strong>[HG]\d{4}[a-z]?)\s*\)')
+
+
+def indok_strong(szoveg, cim=None):
+    import olvasoi_utofeldolg as OU
+    return INDOK_STRONG.sub(lambda m: '[%s](%s)%s%s' % (m.group('szo'), OU.SZONEZET % m.group('strong'),
+                                                        m.group('jel'), OU.strong_jel(m.group('strong'), cim)),
+                            szoveg)
+
+
 def indok_cella(indoklas, ures='—'):
     """Az indoklás táblacellába szánt olvasói alakja: a nyers szöveg proveniencia-farka (` | scope=…`) változatlan;
     ha a főszöveg tisztítás után sem olvasói, a cella `ures` (a nyers szöveg az adattáblában van)."""
@@ -385,8 +400,9 @@ def osszevon(sorok_c):
     return eredmeny
 
 
-def blokk_torzs(sorok, motivum_id, okok_ut=None):
-    """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz."""
+def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
+    """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz. `strong_cim`: a jelölt Strong-szám
+    `title`-je (`lexikon_general.strong_cim`; alapból a szám)."""
     minta = okok(motivum_id, okok_ut)
     csop = collections.OrderedDict((c, []) for c in CSOPORTOK)
     ok_szaml, forras_szaml = collections.Counter(), collections.Counter()
@@ -418,7 +434,7 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None):
         if olv is None:
             csop[c].append((r['igehely'], _cella(miert), dontes, lj))
         else:
-            csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, _cella(olv) or '—'), lj))
+            csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, indok_strong(_cella(olv), strong_cim) or '—'), lj))
     ki = []
     for c, sorok_c in csop.items():
         if not sorok_c:
