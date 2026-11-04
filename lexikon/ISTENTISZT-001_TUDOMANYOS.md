@@ -1923,7 +1923,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
-| 1 | 2026.11.04 | Az arany lap első kiadása, amely a 2026.11.04-i lektori javítással vált véglegessé: a K1–K5 átvezetve, az 1/a idézetei a Károli-szövegre igazítva, a kézi próza belső és angol szavai olvasói szövegre cserélve, a szótári rész jelhibái javítva, és az olvasói kapu 0 BUKÁS-sal zárult. |
+| 1 | 2026.11.04 | Az arany lap első kiadása, amely a 2026.11.04-i lektori javítással vált véglegessé: a K1–K5 átvezetve, az 1/a idézetei a Károli-szövegre igazítva, a kézi próza belső és angol szavai olvasói szövegre cserélve, a szótári rész jelhibái javítva, és az olvasói kapu 0 BUKÁS-sal zárult. Az 1/b. blokk összesítője verseket számol, nem táblasort (560 vers, ebből 456 a teljesség-mérés öt összesítő sorában), és az indoklások Strong-száma jelölt alakban áll. |
 
 ---
 

@@ -145,13 +145,13 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
-63 helyet vizsgáltunk meg jelöltként; elutasítva: 63. A leggyakoribb ok: „a tohu és bohu szópár nincs a versben” (40), utána „a formula nincs a versben” (18). A jelöltek forrása: TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 7. **Következtetés:** 21-szor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (63, illetve 3). A határt leginkább ez az ok húzza meg: „a tohu és bohu szópár nincs a versben”.<!-- olvasói -->
+68 verset vizsgáltunk meg egyenként, jelöltként; elutasítva: 68. A leggyakoribb ok: „a tohu és bohu szópár nincs a versben” (41 vers), utána „a formula nincs a versben” (18 vers). A jelöltek forrása (vers): TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 12. **Következtetés:** a motívum minden helyére átlagosan 23 vizsgált vers jut (68 vizsgált vers, 3 motívumhely). A határt leginkább ez az ok húzza meg: „a tohu és bohu szópár nincs a versben”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 63 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** a tohu és bohu szópár nincs a versben 40 · a formula nincs a versben 18 · a jelölés forrásadata hibás 5
+**Az elutasítás okai:** a tohu és bohu szópár nincs a versben 41 · a formula nincs a versben 18 · a jelölés forrásadata hibás 9
 
-**A jelölés forrása:** TSK-ajánlás 40 · Károli-kereszthivatkozás 7 · Gépi keresés 16
+**A jelölés forrása:** TSK-ajánlás 40 · Károli-kereszthivatkozás 12 · Gépi keresés 16
 
 **TSK-ajánlás** (40)
 
@@ -197,7 +197,7 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 | Ézs 13:20 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^k38] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 | Ézs 13:22 | TSK-ajánlás az Ézs 34:11 helyről, 2 szavazat[^k39] | **elutasítva** — a formula nincs a versben: negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu. |
 
-**Károli-kereszthivatkozás** (7)
+**Károli-kereszthivatkozás** (7 sor, 12 vers)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
