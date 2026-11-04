@@ -8,7 +8,32 @@
 
 **What this is.** The open core of a study of biblical motifs (the PaRDeS method): the defining features of the motifs, the list of occurrences, the excluded passages with reasons, the relations between passages and the decision log. The files are reader-facing views generated from the data; working marks are resolved. The columns and codes are described in `kodkonyv.tsv` / `KODKONYV.md` (Hungarian and English).
 
+**Processing stage.** Of the motifs, 3 are closed releases (their lexicon page is released and passed the reader check without error) and 6 come from an earlier stage and will be updated in later versions; the `feldolgozasi_allapot` column of `motivumok.tsv` gives the stage of each motif.
+
 **Known errors:** see `KNOWN_ISSUES.md`.
+
+## How to read
+
+Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release; the column values are Hungarian and are explained in `KODKONYV.md`.
+
+### 1. Which verses belong to ISTENTISZT-001, and on which word?
+
+1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `ISTENTISZT-001`.
+2. The result is 22 rows: each row is one verse (`igehely`).
+3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: `H7121 + H8034` (16 rows), `G1941` (6 rows). The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Kir 18:24: "segítségül hívom az Úrnak nevét").
+4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: "lezárt kiadás".
+
+### 2. Why is Róm 10:12 not included?
+
+1. Open `kizarasok.tsv` and filter on `motivum_azonosito` = `ISTENTISZT-001` and `igehely` = `Róm 10:12` (`jelolt_tipus` = `elofordulas`).
+2. The `kizaras_oka` column: "név nélküli forma". The `indoklas` column states the reason in full.
+3. The `dontesek` column (`NYD-005`) is the public identifier of the decision; its text is in `dontesnaplo.tsv`.
+
+### 3. Was every place where the word pair occurs examined?
+
+1. Among the `ISTENTISZT-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 5. Each stands for a group of verses excluded for one reason: "a hívás igéje a név nélkül" (246 verses, first verse: 1Móz 1:5); "elnevezés, nem a név segítségül hívása" (126 verses, first verse: 1Móz 2:19); "a Károli-szó más szót fordít" (51 verses, first verse: 2Móz 18:4); "a hívás és a név nem egy szerkezetben" (21 verses, first verse: 1Móz 41:52); "nem JHVH áll a név után" (12 verses, first verse: 2Móz 31:2).
+2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `ISTENTISZT-001`): 456 verses.
+3. Together: 22 occurrences, 104 verses excluded one by one and 456 verses excluded in groups, 582 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is not in the package".
 
 ## Files and their row counts
 
@@ -22,7 +47,7 @@
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |
-| `kodkonyv.tsv` | 210 |
+| `kodkonyv.tsv` | 213 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 

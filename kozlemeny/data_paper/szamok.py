@@ -63,6 +63,10 @@ def main():
     ures_fol = sum(1 for m in mot if not m['folerendelt_fogalom'].strip())
     ki('P1.ures_negativ_kriterium', ures_neg, 'nyilt_mag/motivumok.tsv, negativ_kriterium üres')
     ki('P1.ures_folerendelt', ures_fol, 'nyilt_mag/motivumok.tsv, folerendelt_fogalom üres')
+    allapot = {m['motivum_azonosito']: m['feldolgozasi_allapot'] for m in mot}
+    for k, v in sorted(Counter(allapot.values()).items()):
+        tagok = ', '.join(sorted(i for i, a in allapot.items() if a == k))
+        ki('P1.feldolgozasi_allapot', f'{k}={v} ({tagok})', 'nyilt_mag/motivumok.tsv, feldolgozasi_allapot')
 
     # P2 — előfordulások
     elo = tabla(os.path.join(MAG, 'elofordulasok.tsv'))
@@ -72,6 +76,8 @@ def main():
     ki('P2.usz_sor', usz, 'nyilt_mag/elofordulasok.tsv, igehely könyve ÚSZ')
     for k, v in sorted(Counter(e['motivum_azonosito'] for e in elo).items()):
         ki('P2.motivumonkent', f'{k}={v}', 'nyilt_mag/elofordulasok.tsv, motivum_azonosito')
+    for k, v in sorted(Counter(allapot[e['motivum_azonosito']] for e in elo).items()):
+        ki('P2.allapot_szerint', f'{k}={v}', 'nyilt_mag/elofordulasok.tsv × motivumok.tsv, feldolgozasi_allapot')
     kezi = sum(1 for e in elo if e['lekerdezes_tipusa'].startswith('kézi döntés'))
     ki('P2.kezi_dontes', kezi, 'nyilt_mag/elofordulasok.tsv, lekerdezes_tipusa = „kézi döntés, lekérdezés nélkül”')
     ki('P2.lekerdezesbol', len(elo) - kezi, 'nyilt_mag/elofordulasok.tsv, lekerdezes_tipusa egyéb')

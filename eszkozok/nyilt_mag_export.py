@@ -560,6 +560,146 @@ def known_issues_en(sz):
     return '\n'.join(ki)
 
 
+# --- a motívum feldolgozási állapota (F167.3)
+ALLAPOT_LEZART = 'lezárt kiadás'
+ALLAPOT_REGI = 'régi feldolgozás, frissítés alatt'
+
+
+def feldolgozasi_allapot():
+    """{motívum: állapot} a lezárt motívumokra. Lezárt kiadás az a motívum, amelynek van sora az
+    `adat/kiadasok.tsv`-ben, és a kiadott lexikonlapján az olvasói kapu 0 BUKÁS-t ad (az `ellenoriz.py`
+    32. szabályának mércéje); minden más motívum régi feldolgozás, frissítés alatt."""
+    eszk = os.path.dirname(os.path.abspath(__file__))
+    if eszk not in sys.path:
+        sys.path.insert(0, eszk)
+    import olvasoi_kapu as OK
+    _, kiad = tsv('adat/kiadasok.tsv')
+    ki = {}
+    for mid in sorted({k['id'].strip() for k in kiad if k['id'].strip()}):
+        ut = os.path.join(GYOKER, 'lexikon', mid + '_TUDOMANYOS.md')
+        if not os.path.exists(ut):
+            continue
+        with open(ut, encoding='utf-8') as f:
+            tal, _ = OK.lap_meres(f.read())
+        if not OK.osszesit(tal)[1]:
+            ki[mid] = ALLAPOT_LEZART
+    return ki
+
+
+# --- „Hogyan olvasd”: három kidolgozott példa, a generált táblákból számolva (F167.3)
+PELDA_MOTIVUM = 'ISTENTISZT-001'
+PELDA_KIZART = 'Róm 10:12'
+
+
+def olvasasi_peldak(fajlok):
+    """A „Hogyan olvasd / How to read” szakasz számai a generált csomagfájlokból. A kapu ugyanezzel a
+    függvénnyel ellenőrzi, hogy a szakasz a mai adatot mondja. Ha a példa eltűnik az adatból, hibát dob."""
+    _, elo = tsv_szoveg(fajlok['elofordulasok.tsv'])
+    _, kiz = tsv_szoveg(fajlok['kizarasok.tsv'])
+    _, csop = tsv_szoveg(fajlok['kizaras_csoportok.tsv'])
+    _, mot = tsv_szoveg(fajlok['motivumok.tsv'])
+    m = [x for x in mot if x['motivum_azonosito'] == PELDA_MOTIVUM]
+    e = [x for x in elo if x['motivum_azonosito'] == PELDA_MOTIVUM]
+    k = [x for x in kiz if x['motivum_azonosito'] == PELDA_MOTIVUM and x['igehely'] == PELDA_KIZART
+         and x['jelolt_tipus'] == 'elofordulas']
+    if not m or not e or len(k) != 1:
+        raise SystemExit('olvasasi_peldak: a példa (%s, %s) nincs meg az adatban; a példát frissíteni kell'
+                         % (PELDA_MOTIVUM, PELDA_KIZART))
+    horgony = {}
+    for x in e:
+        horgony[x['horgony']] = horgony.get(x['horgony'], 0) + 1
+    egyedi = [x for x in kiz if x['motivum_azonosito'] == PELDA_MOTIVUM and x['jelolt_tipus'] == 'elofordulas'
+              and not x['csoport_versszam']]
+    csoportok = [x for x in kiz if x['motivum_azonosito'] == PELDA_MOTIVUM and x['csoport_versszam']]
+    tagok = [x for x in csop if x['motivum_azonosito'] == PELDA_MOTIVUM]
+    ok = lambda x: x['kizaras_oka'].replace(' (összesítő sor)', '')
+    return {
+        'motivum': PELDA_MOTIVUM, 'cim': m[0]['cim'], 'allapot': m[0]['feldolgozasi_allapot'],
+        'elo_db': len(e), 'horgony': sorted(horgony.items(), key=lambda h: (-h[1], h[0])),
+        'elso': sorted(e, key=lambda x: x['igehely'])[0],
+        'kizart': PELDA_KIZART, 'kizart_ok': k[0]['kizaras_oka'], 'kizart_dontes': k[0]['dontesek'],
+        'egyedi_db': len(egyedi),
+        'csoport_db': len(csoportok),
+        'csoportok': [(x['igehely'], ok(x), int(x['csoport_versszam'])) for x in
+                      sorted(csoportok, key=lambda x: (-int(x['csoport_versszam']), x['igehely']))],
+        'tag_db': len(tagok),
+        'osszes': len(e) + len(egyedi) + len(tagok),
+    }
+
+
+def nevelo(szo):
+    """A határozott névelő a szó előtt: magánhangzós kezdetnél „az”."""
+    return 'az' if szo[:1].lower() in 'aáeéiíoóöőuúüű' else 'a'
+
+
+def hogyan_olvasd_hu(p):
+    h = ', '.join('`%s` (%d sor)' % hd for hd in p['horgony'])
+    cs_ = '; '.join('„%s” (%d vers, első verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'])
+    dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'itt üres'
+    return ['## Hogyan olvasd', '',
+            'Három kérdés lépésről lépésre, %s `%s` motívumon (%s). A válaszok számai ebből a kiadásból '
+            'generálódnak.' % (nevelo(p['motivum']), p['motivum'], p['cim']), '',
+            '### 1. Mely versek tartoznak %s %s-hez, és melyik szón?' % (nevelo(p['motivum']), p['motivum']), '',
+            '1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot %s `%s` értékre.'
+            % (nevelo(p['motivum']), p['motivum']),
+            '2. Az eredmény %d sor: minden sor egy vers (`igehely`).' % p['elo_db'],
+            '3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: %s. '
+            'A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például %s: „%s”).'
+            % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
+            '4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „%s”.'
+            % p['allapot'], '',
+            '### 2. Miért nincs benne a %s?' % p['kizart'], '',
+            '1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `%s` és az `igehely` = `%s` '
+            'értékre (`jelolt_tipus` = `elofordulas`).' % (p['motivum'], p['kizart']),
+            '2. A `kizaras_oka` oszlop: „%s”. Az `indoklas` oszlop teljes mondatban mondja el, miért.'
+            % p['kizart_ok'],
+            '3. A `dontesek` oszlop (%s) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.'
+            % dontes, '',
+            '### 3. Átnézték-e minden helyet, ahol a szópár előfordul?', '',
+            '1. A `kizarasok.tsv`-ben %s `%s` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` '
+            'oszlopa ki van töltve: %d ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját '
+            'képviseli: %s.' % (nevelo(p['motivum']), p['motivum'], p['csoport_db'], cs_),
+            '2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = '
+            '`%s`): %d vers.' % (p['motivum'], p['tag_db']),
+            '3. Együtt: %d előfordulás, %d egyenként kizárt vers és %d csoportban kizárt vers, összesen %d vers, '
+            'amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat az „Ami nincs a '
+            'csomagban” szakasz adja.'
+            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
+
+
+def hogyan_olvasd_en(p):
+    h = ', '.join('`%s` (%d rows)' % hd for hd in p['horgony'])
+    cs_ = '; '.join('"%s" (%d verses, first verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'])
+    dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'empty here'
+    return ['## How to read', '',
+            'Three questions, step by step, on the motif `%s`. The numbers in the answers are generated from '
+            'this release; the column values are Hungarian and are explained in `KODKONYV.md`.' % p['motivum'], '',
+            '### 1. Which verses belong to %s, and on which word?' % p['motivum'], '',
+            '1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `%s`.' % p['motivum'],
+            '2. The result is %d rows: each row is one verse (`igehely`).' % p['elo_db'],
+            "3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: %s. "
+            'The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. %s: "%s").'
+            % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
+            '4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: '
+            '"%s".' % p['allapot'], '',
+            '### 2. Why is %s not included?' % p['kizart'], '',
+            '1. Open `kizarasok.tsv` and filter on `motivum_azonosito` = `%s` and `igehely` = `%s` '
+            '(`jelolt_tipus` = `elofordulas`).' % (p['motivum'], p['kizart']),
+            '2. The `kizaras_oka` column: "%s". The `indoklas` column states the reason in full.' % p['kizart_ok'],
+            '3. The `dontesek` column (%s) is the public identifier of the decision; its text is in '
+            '`dontesnaplo.tsv`.' % dontes, '',
+            '### 3. Was every place where the word pair occurs examined?', '',
+            '1. Among the `%s` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary '
+            'rows: there are %d. Each stands for a group of verses excluded for one reason: %s.'
+            % (p['motivum'], p['csoport_db'], cs_),
+            '2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `%s`): '
+            '%d verses.' % (p['motivum'], p['tag_db']),
+            '3. Together: %d occurrences, %d verses excluded one by one and %d verses excluded in groups, %d verses '
+            'with a decision in all. Candidates not yet decided are not in the package; their number is given under '
+            '"What is not in the package".'
+            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
+
+
 def export(kimenet):
     CSOPORT_ELTERES.clear()
     lic = Licenc()
@@ -596,10 +736,12 @@ def export(kimenet):
     kizart_forrasok = {}
 
     # --- motivumok.tsv
+    lezart = feldolgozasi_allapot()
     fej = ['motivum_azonosito', 'cim', 'rovid_cimke', 'tema', 'pardes_szint', 'statusz', 'statusz_datum',
-           'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom']
+           'feldolgozasi_allapot', 'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom']
     sorok = [{'motivum_azonosito': m['id'], 'cim': m['cim'], 'rovid_cimke': m['ui_cimke'], 'tema': m['tema'],
               'pardes_szint': m['pardes_szint'], 'statusz': m['statusz'], 'statusz_datum': m['statusz_datum'],
+              'feldolgozasi_allapot': lezart.get(m['id'], ALLAPOT_REGI),
               'azonossag_tipusa': m['azonossag_tipusa'],
               'negativ_kriterium': tisztit(m['negativ_kriterium'], dn),
               'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn)} for m in mot]
@@ -843,6 +985,7 @@ def export(kimenet):
     fajlok['KODKONYV.md'] = '\n'.join(md) + '\n'
 
     # --- OLVASSEL.md
+    peldak = olvasasi_peldak(fajlok)
     sorszamok = ''.join('| `%s` | %d |\n' % (k, v) for k, v in sorted(stat.items()))
     ol = ['# PaRDeS nyílt mag — olvass el', '', FEJLEC, '', '*English version: `README.md`.*', '',
           '**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma '
@@ -851,7 +994,11 @@ def export(kimenet):
           'az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az '
           'adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok '
           'és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).', '',
+          '**Feldolgozási állapot.** A motívumok közül %d lezárt kiadás (a lexikonlapja kiadott, és az olvasói '
+          'kapun hiba nélkül átment), %d régi feldolgozás, amely a későbbi változatokban frissül; motívumonként a '
+          '`motivumok.tsv` `feldolgozasi_allapot` oszlopa mondja meg.' % (len(lezart), len(mot) - len(lezart)), '',
           '**Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).', '',
+          ] + hogyan_olvasd_hu(peldak) + [
           '## Fájlok és sorszámuk', '', '| Fájl | Sor |', '|---|---|', sorszamok.rstrip('\n'), '',
           '## Licencszűrés', '',
           'A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz '
@@ -899,7 +1046,12 @@ def export(kimenet):
            'between passages and the decision log. The files are reader-facing views generated from the data; '
            'working marks are resolved. The columns and codes are described in `kodkonyv.tsv` / `KODKONYV.md` '
            '(Hungarian and English).', '',
+           '**Processing stage.** Of the motifs, %d are closed releases (their lexicon page is released and passed '
+           'the reader check without error) and %d come from an earlier stage and will be updated in later '
+           'versions; the `feldolgozasi_allapot` column of `motivumok.tsv` gives the stage of each motif.'
+           % (len(lezart), len(mot) - len(lezart)), '',
            '**Known errors:** see `KNOWN_ISSUES.md`.', '',
+           ] + hogyan_olvasd_en(peldak) + [
            '## Files and their row counts', '', '| File | Rows |', '|---|---|', sorszamok.rstrip('\n'), '',
            '## Licence filtering', '',
            "The filtering follows the project's licence inventory. **Excluded sources** (the package contains no "

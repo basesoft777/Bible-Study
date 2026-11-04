@@ -2075,6 +2075,11 @@ class E35Teszt(unittest.TestCase):
         t = self._fut(['eszkozok/nyilt_mag_export.py'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
         self.assertEqual(len(t), 1)
 
+    def test_negativ_lexikonlap_is_kivalto(self):
+        # F167.3: a feldolgozasi_allapot a kiadott lap olvasoi kapujabol szamol
+        t = self._fut(['lexikon/X-001_TUDOMANYOS.md'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
+        self.assertEqual(len(t), 1)
+
     def test_pozitiv_nem_erintett_pr_nem_fut(self):
         self.assertEqual(self._fut(['lexikon/X.md'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}), [])
 

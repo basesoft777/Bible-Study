@@ -796,6 +796,15 @@ A motívum teljes neve.
 *The full name of the motif.*
 
 
+### `feldolgozasi_allapot`
+
+A motívum feldolgozási állapota, az adatból számolva: lezárt kiadás, ha a motívumnak van kiadása, és a kiadott lexikonlapján az olvasói kapu nem talál hibát; minden más motívum régi feldolgozás.
+
+*The processing stage of the motif, computed from the data: a closed release if the motif has a release and the reader check finds no error on its released lexicon page; every other motif comes from the earlier stage.*
+
+- `feldolgozasi_allapot` = `lezárt kiadás`: A motívum végigment a teljes kiadási eljáráson: lexikonlapja kiadott, az olvasói kapun hiba nélkül átment, és a szerző átnézte. / The motif has passed the full release procedure: its lexicon page is released, passed the reader check without error and was reviewed by the author.
+- `feldolgozasi_allapot` = `régi feldolgozás, frissítés alatt`: A motívum a projekt korábbi szakaszában, régebbi eljárással készült; adatai a mai sémában állnak, de a teljes ellenőrzés még hátravan, és a későbbi változatokban módosulhatnak. / The motif was built at an earlier stage of the project with an older procedure; its data follow the current schema, but the full review is still pending and they may change in later versions.
+
 ### `folerendelt_fogalom`
 
 A tágabb fogalom, amely felé a motívum hígulhat; ami csak ezen keresztül tartozna ide, kizárandó.

@@ -57,7 +57,7 @@ KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_do
 
 # a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
 ZART = {
-    'motivumok.tsv': ['pardes_szint', 'statusz', 'azonossag_tipusa'],
+    'motivumok.tsv': ['pardes_szint', 'statusz', 'feldolgozasi_allapot', 'azonossag_tipusa'],
     'elofordulasok.tsv': ['pardes_szint', 'horgony_tipus', 'szotar', 'azonositas_modja', 'megbizhatosag',
                           'igazolas', 'lekerdezes_tipusa', 'forras_licenc'],
     'kizarasok.tsv': ['jelolt_tipus', 'azonositas_modja', 'megbizhatosag', 'keresesi_mod'],
@@ -415,6 +415,28 @@ def ell_ketnyelv(fajlok):
     return ki
 
 
+def ell_olvasas(fajlok):
+    """OLVASAS (F167.3): az OLVASSEL.md „Hogyan olvasd” és a README.md „How to read” szakasza megvan, a három
+    példával, és a példák a csomag mai adatát mondják (az export ugyanazzal a függvénnyel számol, mint itt)."""
+    ki = []
+    try:
+        p = E.olvasasi_peldak(fajlok)
+    except SystemExit as h:
+        return [Talalat('OLVASAS', BUKAS, 'OLVASSEL.md', 1, '', str(h))]
+    hu = E.hogyan_olvasd_hu(p)
+    en = E.hogyan_olvasd_en(p)
+    for nev, cim, elvart in (('OLVASSEL.md', '## Hogyan olvasd', hu), ('README.md', '## How to read', en)):
+        t = fajlok.get(nev, '')
+        if cim not in t:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'a szakasz hiányzik'))
+            continue
+        if sum(1 for n in ('### 1.', '### 2.', '### 3.') if n in t) != 3:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'nincs meg mindhárom példa'))
+        if '\n'.join(elvart) not in t:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'a példák nem a csomag mai adatát mondják'))
+    return ki
+
+
 def ell_osszeg(fajlok):
     ki = []
     sorok = [s for s in fajlok.get('ELLENORZO_OSSZEG.sha256', '').split('\n') if s.strip()]
@@ -455,7 +477,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv):
+              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
