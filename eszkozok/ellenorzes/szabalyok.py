@@ -2528,6 +2528,11 @@ SZABALYOK_FUGGVENYEI['E31'] = e31_forras_tanulmany_letezik
 # mert a tesztfixture szandekosan hordoz mintahelyorzot; (2) minden sort, amely
 # az `e32-kihagy` (vagy a szamkiosztas `szamkiosztas-kihagy`) jelolest
 # tartalmazza -- szandekosan torteneti literal jelolese.
+# PR-modban (nem --teljes) a meg ki NEM osztott, de a merge-kor kiosztasra varo
+# helyorzot is jelzi (F123.LAPJAVIT.5): az ag dontesek/uj/ es nyitott/uj/ fajljait
+# a szamkiosztas sajat beolvasztasaval es tervevel szimulalja (lemezre nem ir).
+# Ok: a main-en a kiosztas utan a literal mar a regi helyorzot hordozza, es a
+# hiba csak a main-en bukna (dokumentalt eset: a #621 31. szabalyanak cime).
 
 E32_KIZART_FAJLOK = {
     'eszkozok/szamkiosztas.py',
@@ -2572,6 +2577,17 @@ def _e32_kiosztasok():
         for h in SK._definiciok(ROOT, kulcs)[0]:
             kiosztott.pop(h, None)
     return kiosztott
+
+
+def _e32_kiosztasra_varo():
+    """{helyorzo: varhato_szam}: amit a szamkiosztas a merge utan kiosztana
+    (az ag dontesek/uj/ es nyitott/uj/ fajljainak beolvasztasa utan, a
+    `szamkiosztas.terv` szerint; az oroklott helyorzo nem). Lemezre nem ir: a
+    modul minden hivasra frissen toltodik, a beolvasztas a sajat _FELULIR-jebe
+    megy."""
+    SK = _szamkiosztas_modul()
+    SK.beolvaszt(ROOT, ir=False)
+    return SK.terv(ROOT)[0]
 
 
 def _e32_py_fajlok(fajlok):
@@ -2664,7 +2680,8 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
     if not py_fajlok:
         return talalatok
     kiosztott = _e32_kiosztasok()
-    if not kiosztott:
+    varo = {} if fajlok and fajlok[0] == '__TELJES__' else _e32_kiosztasra_varo()
+    if not kiosztott and not varo:
         return talalatok
     minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]?(?![A-Za-z0-9-])')
     for relut in py_fajlok:
@@ -2689,17 +2706,23 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
                     continue
                 latott.add(hely)
                 uj = kiosztott.get(helyorzo)
-                if not uj:
+                vart = None if uj else varo.get(helyorzo)
+                if not uj and not vart:
                     continue
                 sor_szoveg = sorok[sor - 1] if 0 < sor <= len(sorok) else ''
                 if any(j in sor_szoveg for j in E32_KIHAGY_JELOLESEK):
                     continue
-                talalatok.append(Talalat(
-                    'E32', SZINT['E32'], relut, sor,
-                    '`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
-                    'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
-                    '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
-                    % (helyorzo, uj)))
+                if uj:
+                    reszlet = ('`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
+                               'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
+                               '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
+                               % (helyorzo, uj))
+                else:
+                    reszlet = ('`%s` helyőrző áll a string-literálban, és a merge-kor számot kap '
+                               '(várhatóan %s); a szamkiosztas .py-fájlban nem cserél, ezért a '
+                               'literál a régi alakot írná ki — tedd számfüggetlenné a szöveget '
+                               '(a megjegyzésben maradhat)' % (helyorzo, vart))
+                talalatok.append(Talalat('E32', SZINT['E32'], relut, sor, reszlet))
     return talalatok
 
 

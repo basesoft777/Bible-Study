@@ -1064,16 +1064,6 @@ Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelv
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#szocikkek -->
 
-### 2/b. Kiegészítő szótári adatok *(generált)*
-
-A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.<!-- olvasói -->
-
-<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: adat/lexikon_hivatkozasok.tsv -->
-
-*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
-
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
-
 ### Miért fontos ez a lelet *(kézi)*
 
 Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->

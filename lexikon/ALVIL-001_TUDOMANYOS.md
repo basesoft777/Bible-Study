@@ -1192,16 +1192,6 @@ A motívum 74 helye közül 2 helyen a héber vagy görög szövegben megvan a m
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#szocikkek -->
 
-### 2/b. Kiegészítő szótári adatok *(generált)*
-
-A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen adat, ezt egy sor jelzi.<!-- olvasói -->
-
-<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: adat/lexikon_hivatkozasok.tsv -->
-
-*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
-
-*Proveniencia: `scope=id:ALVIL-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
-
 ### Miért fontos ez a lelet *(kézi)*
 
 Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató magyarázata.<!-- olvasói -->

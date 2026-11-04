@@ -142,7 +142,10 @@ jobs:
           K1=$?
           python eszkozok/ellenorzes/tesztek/test_tanulmany.py
           K2=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # DT-F174a: az ellenoriz.py 31. szabalya (adat nelkuli szerkezeti blokk) es a generator opcionalis rese
+          python eszkozok/teszt_ellenoriz_31.py
+          K3=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
