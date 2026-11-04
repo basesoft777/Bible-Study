@@ -783,15 +783,15 @@ Funkció: a halottak birodalma kiadja halottait, majd maga is megsemmisül
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-36 helyet vizsgáltunk meg jelöltként; elutasítva: 36. A leggyakoribb ok: „szótári összevető hely, a szó nem áll benne” (18), utána „a Septuaginta többlete, a héberben nincs seól” (7). A jelöltek forrása: Gépi keresés 36. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (36, illetve 74). A határt leginkább ez az ok húzza meg: „szótári összevető hely, a szó nem áll benne”.<!-- olvasói -->
+326 verset vizsgáltunk meg: 31 verset egyenként, 295 verset csoportosan (5 összesítő sorban); elutasítva: 326. Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes Ó- és Újszövetségben kereste. A leggyakoribb ok: „más szó a Károli-fordításban (összesítő sor)” (295 vers), utána „szótári összevető hely, a szó nem áll benne” (18 vers). A jelöltek forrása (vers): Gépi keresés 326. **Következtetés:** több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, illetve 74). A határt leginkább ez az ok húzza meg: „más szó a Károli-fordításban (összesítő sor)”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 36 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** szótári összevető hely, a szó nem áll benne 18 · a Septuaginta többlete, a héberben nincs seól 7 · más szó a Károli-fordításban (összesítő sor) 5 · a Károli-szó itt más szót fordít 3 · halálveszélyben elmondott ima, a seól szava nélkül 3
+**Az elutasítás okai:** más szó a Károli-fordításban (összesítő sor) 295 · szótári összevető hely, a szó nem áll benne 18 · a Septuaginta többlete, a héberben nincs seól 7 · a Károli-szó itt más szót fordít 3 · halálveszélyben elmondott ima, a seól szava nélkül 3
 
-**A jelölés forrása:** Gépi keresés 36
+**A jelölés forrása:** Gépi keresés 326
 
-**Gépi keresés** (36)
+**Gépi keresés** (36 sor, 326 vers)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
@@ -1788,7 +1788,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után három gépi forrásadat-javítás a szótári részben (Seól átírás, De (5:14), Ef). |
-| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. |
+| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. Az 1/b. blokk összesítője verseket számol, nem táblasort (326 vers, ebből 295 öt összesítő sorban). |
 
 ---
 

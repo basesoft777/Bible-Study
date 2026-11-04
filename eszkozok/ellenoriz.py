@@ -1929,6 +1929,29 @@ def szabaly32_olvasoi_kapu_kiadott(adat_dir, lex_dir=None):
                megjegyzes=megj)
 
 
+# 33. szabaly (F123.TUD1B, 2026-11-04): az 1/b. blokk osszesito mondata verseket szamol, nem tablasort ("36 helyet
+# vizsgaltunk meg" 326 vers helyett). Az osszesito (csoportos) jeloltsor versszama ezert adat: a `forras_kereses`
+# „blokk-kizárás (…): N vers” resze (`szerep_kizart.csoport_versszam`), a prozabol nem olvassuk ki. A szabaly minden
+# osszesito sorra megkoveteli a geppel olvashato versszamot, es az indoklas „Összesítő sor N versre” szamaval valo
+# egyezest (a proza itt csak ellenorzott, nem forras).
+
+
+def szabaly33_osszesito_versszam(adat_dir):
+    """SÉRTÉS, ha a `jeloltek.tsv` egy összesítő sorának (`szerep_kizart.osszesito_sor_e`) nincs gépi versszáma a
+    `forras_kereses`-ben, vagy az eltér az indoklásban kimondott számtól."""
+    cim = '33. Az összesítő jelöltsor versszáma géppel olvasható (F123.TUD1B)'
+    ut = os.path.join(adat_dir, 'jeloltek.tsv')
+    if not os.path.exists(ut):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    import szerep_kizart as SZKZ
+    _, sorok = G.tsv_beolvas(ut)
+    osszesito = [r for r in sorok if SZKZ.osszesito_sor_e(r)]
+    peldak = ['%s / %s: %s' % h for h in SZKZ.versszam_hibak(sorok)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: a `forras_kereses`-be „blokk-kizárás (…): N vers”, a napló szerinti számmal'
+                           if peldak else 'összesítő sor: %d' % len(osszesito)))
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -1998,6 +2021,7 @@ def main():
         tabla_sorok.append(szabaly30_lap_javitasok(args.adat, motivum_id_halmaz))
         tabla_sorok.append(szabaly31_ures_szerkezeti_blokk(args.adat))
         tabla_sorok.append(szabaly32_olvasoi_kapu_kiadott(args.adat))
+        tabla_sorok.append(szabaly33_osszesito_versszam(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

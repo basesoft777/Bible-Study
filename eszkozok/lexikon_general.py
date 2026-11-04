@@ -981,11 +981,12 @@ def blokk_kizart(m, n_motivum=0):
     if sorok_ehhez:
         # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
         # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
-        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
+        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'], strong_cim=strong_cim)
         okok = sorted(((k, v) for k, v in ossz['ok'].items() if k != 'nyitott döntés'),
                       key=lambda x: (-x[1], x[0]))
-        kizart_olv = OK.kizart(len(sorok_ehhez), sum(1 for r in sorok_ehhez if r.get('dontes') == 'elutasítva'),
-                               sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva'), okok,
+        # F123.TUD1B: verseket számol; az összesítő sor versszáma a `forras_kereses`-ből (szerep_kizart.csoport_versszam)
+        v = SZKZ.vizsgalt_versek(sorok_ehhez)
+        kizart_olv = OK.kizart(v['egyenkent'], v['csoport_vers'], v['csoport_sor'], v['elutasitva'], v['nyitva'], okok,
                                [(c, ossz['forras'][c]) for c in SZKZ.CSOPORTOK if ossz['forras'].get(c)], n_motivum)
         reszek.append(SZKZ.osszesito_sor(ossz))
         reszek.extend(tablak)
@@ -5046,7 +5047,7 @@ def minosites_jelolt_sorok(motivum_id, jeloltek):
         if olv != fo:
             lj += ' · indoklás (nyers): %s' % _cella(fo)
         labj.append(lj)
-        cella = dontes if not olv else '%s: %s' % (dontes, _cella(olv))
+        cella = dontes if not olv else '%s: %s' % (dontes, SZKZ.indok_strong(_cella(olv), strong_cim))   # F123.TUD1B
         sorok.append('| %s | %s[^mj%d] | %s |' % (j['igehely'], _cella(miert), len(labj), cella))
     return sorok, labj
 

@@ -870,7 +870,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 
 <!-- GENERÁLT-KEZDET: general.py --cel nyitott | forrás: adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a `jeloltek.tsv` 126 nyitott (`dontes=nyitva`) sorát fedi 4 motívum-ID-ről, és a `motivumok.tsv` 9 státusz-sorát. A 255 beépítve és 411 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
+*Ez a blokk a `jeloltek.tsv` 126 nyitott (`dontes=nyitva`) sorát fedi 4 motívum-ID-ről, és a `motivumok.tsv` 9 státusz-sorát. A 255 beépítve és 416 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
 
 ### Nyitott jelöltek (`adat/jeloltek.tsv`, `dontes=nyitva`)
 
