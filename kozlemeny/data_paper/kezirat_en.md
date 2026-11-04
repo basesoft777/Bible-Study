@@ -54,9 +54,9 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 **Repository name:** `<REPOZITORIUM>`
 
-**Object name:** PaRDeS open core, release 2026-11-04-c737a4cc40428d86
+**Object name:** PaRDeS open core, release 2026-11-04-8029b0fc0ab84836
 
-**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 17 files, 436,294 bytes. Tables: motifs (9), occurrences (255), inclusion decisions (257), exclusions (418) with group members (1,402), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (210 entries, Hungarian and English). The member lists of 11 aggregate rows (1,713 verses) are not yet enumerated.
+**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 17 files, 490,952 bytes. Tables: motifs (9), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (210 entries, Hungarian and English).
 
 **Creation dates:** 2026-08-22 to 2026-11-04
 
@@ -106,7 +106,7 @@ United Bible Societies. (2023). *UBS Dictionary of Biblical Hebrew* (v0.9.2) and
 
 ## Number provenance
 
-Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-c737a4cc40428d86`; the SHA-256 manifest checked on LF-normalised bytes: 15 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
+Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-8029b0fc0ab84836`; the SHA-256 manifest checked on LF-normalised bytes: 15 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
 
 | Number in text | Key | Source (file, field) |
 |---|---|---|
@@ -120,14 +120,13 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | 54 reason categories | count of P3.ok lines | `nyilt_mag/kizarasok.tsv`, `kizaras_oka` (with the "(összesítő sor)" suffix removed) |
 | 1,713 / 651 / 295 verses by reason | P3.ok | "csak az egyik szó vagy más szó áll a versben" (11 rows), "más szó áll a versben, nem a motívum lexémája" (3 rows), "más szó a Károli-fordításban" (5 rows) |
 | 28 exclusion rows via the Károli cross-reference table | P3.keresesi_mod | `nyilt_mag/kizarasok.tsv`, `keresesi_mod` = Károli-kereszthivatkozás |
-| 11 aggregate rows (1,713 verses) without member lists | P3.osszesito_tag_nelkul | aggregate rows of `kizarasok.tsv` with no member in `kizaras_csoportok.tsv` (all ANTROP-001) |
-| 1,402 group members | P3.csoport_tabla_sor | `nyilt_mag/kizaras_csoportok.tsv` |
+| 3,115 group members; every aggregate row enumerated | P3.csoport_tabla_sor = 3,115 = P3.csoport_vers; P3.osszesito_tag_nelkul = 0 | `nyilt_mag/kizaras_csoportok.tsv` (after PR #635) |
 | 257 inclusion decisions | P4.beepitesi_dontes | `nyilt_mag/beepitesi_dontesek.tsv` |
 | 32 / 3 / 8 / 210 rows | P4.kapcsolatok, P4.motivum_kapcsolatok, P4.dontesnaplo, P4.kodkonyv | the files of the same name |
 | 237 semantic-domain rows | P4.domen_sor | `nyilt_mag/cc_by_sa_reteg/szemantikai_domenek.tsv` |
 | 54 sources; 25 excluded (9 / 9 / 3 / 4); 4 sources used in rows | P5.forras_sor, P5.szerep, P5.kizart_ok, P5.hasznalt_forras | `nyilt_mag/forrasok_es_licencek.tsv`, `szerepe_a_csomagban`, `ok` |
 | 12 occurrence verses found by no net | P8.HAMART-001 (reverse direction) | `naplok/F123_teljesseg_HAMART-001.md`, 1. Összegzés (thematic rows and range effects) |
-| 17 files, 436,294 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
+| 17 files, 490,952 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
 | 2026-08-22 to 2026-11-04 | P6.datum_tartomany | `datum` and `statusz_datum` fields of the package tables |
 | release identifier | P0.kiadas | `nyilt_mag/KIADAS.txt` |
 | 0 failures, 9 warnings | — | `python eszkozok/nyilt_mag_kapu.py`, run 2026-11-04 in this session; same result in `naplok/NYILT_MAG_jelentes.md` |
@@ -177,11 +176,10 @@ Készül egy magyar kézirat is (`kezirat_hu.md`, Digitális Bölcsészet, „La
 
 ## Nyitott kérdések
 
-1. **Hiányzó csoport-taglisták.** A `kizarasok.tsv` 11 ANTROP-001 összesítő sorának (1 713 vers) nincs tagja a `kizaras_csoportok.tsv`-ben, pedig a csomag `OLVASSEL.md`-je azt állítja, hogy a csoport minden versét felsorolja. A letét előtt pótolni kell (generátor-szinten: `eszkozok/nyilt_mag_export.py`), és akkor a Dataset description utolsó mondata törlendő, a „group members (1,402)” szám frissítendő.
-2. **Sorvég a letétben.** A `nyilt_mag/*.md` és az `ELLENORZO_OSSZEG.sha256` Windows-checkouton CRLF-fel jön ki (a `.gitattributes` csak a `*.tsv`-t rögzíti LF-re), ezért a hash-ellenőrzés nyers bájtokon ott négy fájlra hibát ad. A letétbe az LF-es (a repóban tárolt) bájtok menjenek.
-3. **A Károli-szöveg licence.** A csomag közkincsnek veszi (a mű kora), a felső források nyilatkozatai eltérnek (`adat/licencek.tsv`: a HunKar „Public Domain”, a scrollmapper-tár MIT). A JOHD a harmadik fél tartalmához engedélyt és licencet kér: jogi ellenőrzés.
-4. **Az 582 kézi átnézésre váró vers** (HAMART-001) a kézirat szerint nyitott; ha a letét előtt eldől, a Quality control mondata és a szám frissül (a `naplok/F123_teljesseg_HAMART-001.md`-ből, nem a szkriptből jön).
-5. **Hivatkozások.** A Hays-kötet oldalszáma és pontos adatai csak másodlagos forrásból ellenőrzöttek (`kozlemeny/HAYS_LEKEPEZES.md`); a STEPBible, OpenBible.info és UBS tételek dátum nélküliek vagy a letöltés napjához kötendők. A BDB és a Thayer a szövegben név szerint áll, de az irodalomjegyzékben nincs (a szólimit miatt); a JOHD-szabály szerint minden hivatkozásnak léteznie kell, ezért beküldés előtt egy forrásellenőrző menet kell.
-6. **Folyóirat.** A kézirat a JOHD szerkezetét követi; a választás (az összevetés rangsorában a JDMDH az első) és a beküldés a felhasználóé. JOHD esetén az APC (£1 070) mentességi kérelme a kísérőlevélbe kerül.
-7. **Külső lektor.** Nevesített külső lektor ma nincs; ha lesz, a Quality control „Limitations” bekezdése bővül.
-8. **Nyelv.** A JOHD nem végez nyelvi lektorálást; angol anyanyelvi átolvasás javasolt. A mezőnevek magyarok: a kódkönyv angol leírása ezt fedi, de egy lektor angol oszlopnév-aliast kérhet.
+1. **Csoport-taglisták és sorvég:** megoldva a #635-tel (a 3 115 tag a csomagban; `nyilt_mag/** text eol=lf`). A számok a #635 utáni exportból valók.
+2. **A Károli-szöveg licence.** A csomag közkincsnek veszi (a mű kora), a felső források nyilatkozatai eltérnek (`adat/licencek.tsv`: a HunKar „Public Domain”, a scrollmapper-tár MIT). A JOHD a harmadik fél tartalmához engedélyt és licencet kér: jogi ellenőrzés.
+3. **Az 582 kézi átnézésre váró vers** (HAMART-001) a kézirat szerint nyitott; ha a letét előtt eldől, a Quality control mondata és a szám frissül (a `naplok/F123_teljesseg_HAMART-001.md`-ből, nem a szkriptből jön).
+4. **Hivatkozások.** A Hays-kötet oldalszáma és pontos adatai csak másodlagos forrásból ellenőrzöttek (`kozlemeny/HAYS_LEKEPEZES.md`); a STEPBible, OpenBible.info és UBS tételek dátum nélküliek vagy a letöltés napjához kötendők. A BDB és a Thayer a szövegben név szerint áll, de az irodalomjegyzékben nincs (a szólimit miatt); a JOHD-szabály szerint minden hivatkozásnak léteznie kell, ezért beküldés előtt egy forrásellenőrző menet kell.
+5. **Folyóirat.** A kézirat a JOHD szerkezetét követi; a választás (az összevetés rangsorában a JDMDH az első) és a beküldés a felhasználóé. JOHD esetén az APC (£1 070) mentességi kérelme a kísérőlevélbe kerül.
+6. **Külső lektor.** Nevesített külső lektor ma nincs; ha lesz, a Quality control „Limitations” bekezdése bővül.
+7. **Nyelv.** A JOHD nem végez nyelvi lektorálást; angol anyanyelvi átolvasás javasolt. A mezőnevek magyarok: a kódkönyv angol leírása ezt fedi, de egy lektor angol oszlopnév-aliast kérhet.

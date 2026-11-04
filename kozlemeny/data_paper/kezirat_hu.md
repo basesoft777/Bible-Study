@@ -52,16 +52,14 @@ A kizárási döntések egy része éppen a Károli-szóból fakad: a seól-mot�
 
 | | |
 |---|---|
-| Név és kiadás | PaRDeS nyílt mag, kiadás 2026-11-04-c737a4cc40428d86 |
+| Név és kiadás | PaRDeS nyílt mag, kiadás 2026-11-04-8029b0fc0ab84836 |
 | Hely | `<DOI>` (kanonikus közzétételi hely: `<KANONIKUS_FORRAS_URL>`) |
-| Formátum | UTF-8 TSV (tabulátorral tagolt, idézőjelezés nélkül), Markdown, SHA-256 ellenőrzőösszeg; 17 fájl, 436 294 bájt |
-| Táblák | motívumok (9), előfordulások (255), felvételi döntések (257), kizárások (418) és a csoportok tagjai (1 402), igehely-kapcsolatok (32), motívumok közötti kapcsolatok (3), döntésnapló (8), források és licencek (54), kódkönyv (210 bejegyzés, magyarul és angolul) |
+| Formátum | UTF-8 TSV (tabulátorral tagolt, idézőjelezés nélkül), Markdown, SHA-256 ellenőrzőösszeg; 17 fájl, 490 952 bájt |
+| Táblák | motívumok (9), előfordulások (255), felvételi döntések (257), kizárások (418) és a csoportok tagjai (3 115), igehely-kapcsolatok (32), motívumok közötti kapcsolatok (3), döntésnapló (8), források és licencek (54), kódkönyv (210 bejegyzés, magyarul és angolul) |
 | Létrehozás | 2026-08-22 – 2026-11-04 |
 | Nyelv | magyar oszlopnevek és értékek, héber és görög szavakkal; a kódkönyv kétnyelvű |
 | Licenc | CC BY 4.0; a szemantikai domének külön rétege (UBS SDBH/SDGNT, 237 sor) CC BY-SA 4.0 |
 | Készítő | `<SZERZO>` |
-
-A 11 összesítő sor (1 713 vers) tagjainak listája még nincs a csomagban.
 
 A sorok a TAHOT és a TAGNT (CC BY 4.0; STEPBible, é. n.), az OpenBible.info Treasury of Scripture Knowledge alapú kereszthivatkozásai (CC BY; OpenBible.info, é. n.) és az 1908-as Károli-szöveg (a mű kora miatt közkincs) adataira épülnek. 25 forrás kimaradt: kilenc a projekt zárt, származtatott rétege, kilencnek tisztázatlan a licence, háromnál korlátozott a kereskedelmi használat, négy CC BY-SA forrást a csomag nem használ.
 
@@ -122,10 +120,10 @@ Minden szám a `python kozlemeny/data_paper/szamok.py` egy futásából jön, a 
 | 418 / 394 / 24 / 3 115 / 3 509; 54 okkategória; 1 713 / 651 / 295; 58 / 40 / 29 | P3.* | `nyilt_mag/kizarasok.tsv` |
 | 295 (seól) és 51 („segítségül hívás”) vers: a Károli-szó más szót fordít | P3.ok | `nyilt_mag/kizarasok.tsv`, „más szó a Károli-fordításban” (ALVIL-001, 5 sor), „a Károli-szó más szót fordít” (ISTENTISZT-001, 1 sor) |
 | 28 kizárás-sor a Károli-kereszthivatkozásból | P3.keresesi_mod | `nyilt_mag/kizarasok.tsv`, `keresesi_mod` |
-| 11 összesítő sor tag nélkül (1 713 vers); 1 402 tag | P3.osszesito_tag_nelkul, P3.csoport_tabla_sor | `nyilt_mag/kizarasok.tsv`, `nyilt_mag/kizaras_csoportok.tsv` |
+| 3 115 tag, minden összesítő sor felsorolva | P3.csoport_tabla_sor = P3.csoport_vers; P3.osszesito_tag_nelkul = 0 | `nyilt_mag/kizarasok.tsv`, `nyilt_mag/kizaras_csoportok.tsv` |
 | 257 / 32 / 3 / 8 / 210 / 237 sor | P4.* | a csomag azonos nevű fájljai |
 | 54 forrás; 25 kizárt (9 / 9 / 3 / 4) | P5.forras_sor, P5.kizart_ok | `nyilt_mag/forrasok_es_licencek.tsv` |
-| 17 fájl, 436 294 bájt; dátumtartomány; kiadás-azonosító | P6.fajl, P6.meret_bajt, P6.datum_tartomany, P0.kiadas | `nyilt_mag/` |
+| 17 fájl, 490 952 bájt; dátumtartomány; kiadás-azonosító | P6.fajl, P6.meret_bajt, P6.datum_tartomany, P0.kiadas | `nyilt_mag/` |
 | 0 bukás, 9 figyelmeztetés | — | `python eszkozok/nyilt_mag_kapu.py`, 2026-11-04 |
 | 3 kiadott motívum, 8 átnézés, 29 javítás | P7.* | `adat/kiadasok.tsv`, `adat/lap_atnezesek.tsv`, `adat/lap_javitasok.tsv` |
 | teljesség-mérés (1 233 / 651 / 582 / 12 stb.) | P8.* | `naplok/F123_teljesseg_<ID>.md`, 1. Összegzés (az 582 a HAMART-001 napló „Eredmény” 1. pontjából) |
@@ -168,5 +166,4 @@ Forrás: `folyoirat_lehetosegek.md` (PR #632), ✅ = a folyóirat oldaláról le
 
 1. A kettős közlés sorrendje és a két folyóirat tájékoztatása (fent).
 2. A „Labor” rovat szerkezete, terjedelme, anonimizálási szabálya és hivatkozási stílusa: a szerkesztőségtől kérdezendő.
-3. A 11 tag nélküli összesítő sor: a #635 merge-e után a mondat törlendő, a szám frissítendő.
-4. A HAMART-001 582 nyitott verse, a Károli 1908 licence, a hivatkozások ellenőrzése: mint az angol kéziratnál.
+3. A HAMART-001 582 nyitott verse, a Károli 1908 licence, a hivatkozások ellenőrzése: mint az angol kéziratnál.
