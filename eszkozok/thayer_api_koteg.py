@@ -91,13 +91,15 @@ B_BE_ALLANDO = 0.684               # bemeneti token / állandó karakter a szűk
 B_BE_KAR = 3.178                   # bemeneti token / forráskarakter a B-kérésben (4 pont, átl. |hiba| 7,5%)
 B_KI_KAR = {'high': 1.959, 'medium': 1.5207}     # kimeneti (gondolkodással) token / forráskarakter a B-kérésben, effortonként (4-4 pont)
 A_KI_EFFORT = {'high': 1.0, 'medium': 0.51}  # az egy Strongos kimenet effort-szorzója (F07 M0 (e): medium/high kimenet 33 660 / 66 300 token az 5 nagy kérésen)
-JAVITO_ARANY = {'A': 0.73, 'B': 0.15}           # javító kör költsége / 1. kör költsége. A = nagy: pooled A1-ig 10,11 / 11,37 USD = 0,890 (A2-vel 0,73, l. lent) azokban a futásokban, ahol a javító kör az összes bukott
+JAVITO_ARANY = {'A': 0.65, 'B': 0.21}           # javító kör költsége / 1. kör költsége. A = nagy: pooled A1-ig 10,11 / 11,37 USD = 0,890 (A2-vel 0,73, l. lent) azokban a futásokban, ahol a javító kör az összes bukott
 #                                                  Strongra lefutott (adag1 0,867, adag99 0,883, adag7902 0,84, adag7903 0,95, adag701 0,899 [6,5247 / 7,2575]); az adag7901 részleges javító köre kimarad.
 #                                                  B = kicsi/közepes B-javító: az adag701 mért J001 kérése 0,0174 USD / a B-kérés 0,0471 USD = 0,37 (3 Strong, mind kapun bukott az 1. körben:
 #                                                  8_idezojel, 16_sigla; az M0 J001: 0,0233 USD, 2 Strong); kis minta, manual — a B-rész az adag költségének ~0,6%-a (F07 A1)
 #                                                  F07 A2 újraillesztés (adag702, 85 Strong, első körös bukás 47/85): nagy 4,722 / 8,970 = 0,526; B-javító 0,0877 / 0,6333 = 0,138.
 #                                                  Pooled (A1 + A2 + a korábbi futások): A (10,11 + 4,722) / (11,37 + 8,970) = 0,729; B (0,0174 + 0,0877) / (0,0471 + 0,6333) = 0,154. Az arány a bukási aránytól függ
 #                                                  (A1 89%, A2 55%); a kapujavítások után a későbbi adagokban kevesebb a bukás, a becslés így konzervatív (manual).
+#                                                  F07 A3 újraillesztés (adag703, 145 Strong, első körös bukás 56/145 = 39%): nagy 2,5507 / 6,3344 = 0,403; B-javító 0,4824 / 2,0633 = 0,234 (68 Strong, 9 B-kérés).
+#                                                  Pooled (A1 + A2 + A3 + a korábbi futások): A (10,11 + 4,722 + 2,5507) / (11,37 + 8,970 + 6,3344) = 0,652; B (0,0174 + 0,0877 + 0,4824) / (0,0471 + 0,6333 + 2,0633) = 0,214 (manual).
 # B-út (csoportos): a kicsi (< KICSI_HATAR) és a közepes (< NAGY_HATAR) Strongok n Strongonként egy kérésben, a nagyok egyenként
 KICSI_HATAR, NAGY_HATAR = 500, 3000
 B_DB = 20                          # Strong / B-kérés (15–25; a mérés tárgya, --b-db)

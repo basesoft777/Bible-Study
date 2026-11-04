@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "1b96447f"
+   "commit": "ce34d453"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -196,7 +196,7 @@
    "fazis": "1",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "A3 (új session, az A2 PR mergelése után): adag703 = naplok/THAYER_ELES_sorrend.tsv adag=3 (145 Strong, 502 242 forráskarakter), --effort high, prompt v5.2; becslés 13,31 USD (első kör 8,33 + javító 4,98), adagplafon 17,30, --plafon 49,85 és --elozo-kiadas 32.5468 (kumulatív: az eddigi mért 32,5468 + 17,30); naplok/THAYER_ELES_naplo.md A2 7.; a `beir --megjegyzes` rögzítse: `prompt v5.2`.",
+   "most": "A4 (új session, az A3 PR mergelése után): adag704 = naplok/THAYER_ELES_sorrend.tsv adag=4 (265 Strong, 68 kicsi/közepes B-kérésre és nagyokra bontva a `bszaraz` szerint), --effort high, prompt v5.2; becslés 10,12 USD (első kör 7,61 + javító 2,51), adagplafon 13,16, --plafon 57,14 és --elozo-kiadas 43.9775 (kumulatív: az eddigi mért 43,9775 + 13,16); naplok/THAYER_ELES_naplo.md A3 8.; a `beir --megjegyzes` rögzítse: `prompt v5.2`, az adag- és batch-azonosítót.",
    "fugg": "#3 (kész), #5 (kész), #14 (kész), #154*, #159 (kész), #161*",
    "tervezett": false,
    "reszletes": "",
@@ -5346,6 +5346,18 @@
     ],
     "sor": 634,
     "oszlopszam": 9,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT620",
+    "feladat": "#7 THAYER_ELES (A3: a `9_tagolas` kapu lexikon-belső utalásai)",
+    "kerdes": "Az A2 5 és az A3 4 `9_tagolas`-bukása (9 Strong) mind hamis: a tartalom teljes, a jelölősor csak egy `see/l. <szó>, <alpont>` utalás alpont-jelölője miatt tér el (7 eset); 2 eset kötet- és kiadásszám (`vol. ii.`, `Tdf. 7`). Mit javítson a kapu?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 656,
+    "oszlopszam": 11,
     "fejlec_oszlopszam": 8
    }
   ],
