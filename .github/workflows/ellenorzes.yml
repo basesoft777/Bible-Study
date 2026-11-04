@@ -148,7 +148,10 @@ jobs:
           # F123.KIADVEG: az ellenoriz.py 32. szabalya (olvasoi kapu a kiadott lapokon)
           python eszkozok/teszt_ellenoriz_32.py
           K4=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F123.TUD1B: az ellenoriz.py 33. szabalya (az osszesito jeloltsor versszama) es az 1/b. versszam-mondat
+          python eszkozok/teszt_ellenoriz_33.py
+          K5=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
