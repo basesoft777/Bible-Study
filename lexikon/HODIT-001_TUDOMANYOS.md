@@ -35,7 +35,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -87,7 +87,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-11-03 -->
 
 A motívum 33 igehelyen fordul elő, 10 bibliai könyvben (33 ószövetségi hely); a legtöbb hely: 2Sám (7). 33 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum a Biblia sok könyvében, csak az Ószövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
@@ -341,7 +341,7 @@ ua.
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 18 helyet vizsgáltunk meg jelöltként; elutasítva: 4, döntésre vár: 14. A jelöltek forrása: TSK-ajánlás 13, Gépi keresés 3, Kutatói felvetés 2. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (18, illetve 33).<!-- olvasói -->
 
@@ -411,7 +411,7 @@ ua.
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-03 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a nefilím (H5303), a refáím (H7496) és a ráfá (H7497). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB) szócikke.<!-- olvasói -->
 
@@ -694,7 +694,7 @@ A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: 
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua-vaticanus-b.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua-vaticanus-b.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
 
 A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 33 ószövetségi helyéből 18 helyen saját görög szóval adja vissza, 15 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).<!-- olvasói -->
 
@@ -742,7 +742,7 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
 
 A motívum 33 helyéből 16 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 28. **Következtetés:** a helyek 48%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -851,7 +851,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
@@ -859,7 +859,7 @@ A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:HODIT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:HODIT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kapcsolodo -->
 
@@ -940,7 +940,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -950,7 +950,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `HODIT-001`
 - Cím: Rafeusok/óriás-népek
 - Státusz: publikálható (`v3`, 2026.09.10)
-- Generálva: 2026-11-04
+- Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/HODIT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

@@ -35,7 +35,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -87,7 +87,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-11-03 -->
 
 A motívum 42 igehelyen fordul elő, 14 bibliai könyvben (35 ószövetségi, 7 újszövetségi hely); a legtöbb hely: Zsolt (11). 37 hely azonosítása magas megbízhatóságú, 5 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek többsége biztosan azonosított.<!-- olvasói -->
 
@@ -407,7 +407,7 @@ Mózes áldása Józsefen — „a mélység áldásaival alant” (csaknem szó
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 2 helyet vizsgáltunk meg jelöltként; elutasítva: 2. A jelöltek forrása: Kutatói felvetés 2. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (2, illetve 42).<!-- olvasói -->
 
@@ -435,7 +435,7 @@ Mózes áldása Józsefen — „a mélység áldásaival alant” (csaknem szó
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a tehóm (H8415), görögül az abüsszosz (G0012). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke.<!-- olvasói -->
 
@@ -828,7 +828,7 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
 
 A motívum 35 ószövetségi helyéből 30 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (abüsszosz), mint az Újszövetség; 4 helyen mást, 1 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (86%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -992,7 +992,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal; 1 döntésre vár.<!-- olvasói -->
 
@@ -1002,7 +1002,7 @@ A motívumhoz nincs rögzített motívumközi kapcsolat.
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
 
-*Proveniencia: `scope=id:TEREMT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:TEREMT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#kapcsolodo -->
 
@@ -1084,7 +1084,7 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1094,7 +1094,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `TEREMT-001`
 - Cím: Tehóm (תְּהוֹם (tehóm)) — Abüsszosz (ἄβυσσος (abüsszosz)): a mélység motívuma
 - Státusz: publikálható (`v4`, 2026.09.10)
-- Generálva: 2026-11-04
+- Generálva: 2026-11-03
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
@@ -1131,7 +1131,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 

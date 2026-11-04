@@ -208,7 +208,7 @@ JAVITVA = {'igehely és karoli_szo': 'az igehely és a Károli-szóalak', 'karol
 # A `forras_kereses` a keresés nyoma, gépi marad; a lapon a lábjegyzetben áll, ezért helyőrző alakú azonosító nem lehet
 # benne (ellenoriz.py 21. (i)). A kiosztott helyőrző a végleges számára cserélődik (a számkiosztás commitja szerint); a
 # szám nélküli régi azonosító (N-F63x) a `dontes_ref`-be kerül.
-KIOSZTOTT = {'DT-F123o': 'DT564'}   # szamkiosztas 2026-11-03: „DT-F123o → DT564”
+KIOSZTOTT = {'DT-F123o': 'DT564'}   # szamkiosztas 2026-11-03: „DT-F123o → DT564” (e32-kihagy: a régi alak a kulcs)
 FORRAS_REGI_AZON = [(r'N-F63e-függő, ', 'N-F63e')]
 
 
