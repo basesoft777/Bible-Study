@@ -16,7 +16,7 @@ A Septuaginta a párt mindhárom helyen másként fordítja: ἀόρατος κ�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
@@ -555,7 +555,7 @@ A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyez
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
 
 A motívum 3 helyéből 2 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 26. **Következtetés:** a helyek 67%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -713,7 +713,7 @@ A 26 utalásból 2 a motívum két saját helyét köti össze, ez 2 helyet éri
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 5 kapcsolat 5 helyet köt össze: 3 kontraszt, 2 párhuzam; 2 magas, 3 alacsonyabb bizonyosságú. **Következtetés:** a motívum helyei között többféle kapcsolat van, egyik sem uralkodó, és a kapcsolatok többsége bizonytalan.<!-- olvasói -->
 
@@ -934,7 +934,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-002#idezes -->
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#res_labjegyzet | forrás: motivumok/TEREMT-002.md | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 *A kézi rések (Kivonat, Miért fontos, Értelmezés, Módszertan) forrásjegyzetei, a kézi forrás „Proveniencia-sorok” szakaszából.*
 

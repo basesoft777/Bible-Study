@@ -12,7 +12,7 @@ A motívum határát a szerkezet húzza meg: csak az aktív, invokáló קָרָ
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 

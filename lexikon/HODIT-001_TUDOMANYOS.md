@@ -2,17 +2,13 @@
 
 # 📖 HODIT-001 — Rafeusok/óriás-népek
 
-## Kivonat
-
-A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.<!-- olvasói -->
+## Kivonat *(kézi)*
 
 A motívum lexikai azonosságú: a רְפָאִים (*refáim*) szótő és rokon népnevei (זוּזִים, אֵימִים, זַמְזֻמִּים) 33 igehelyen jelölik ugyanazt a kettős jelentésmezőt — prózai kontextusban egy nagytermetű, félig-mitikus népcsoportot (1Móz 14:5-től Dávid koráig), költői kontextusban pedig a Seól erőtlen árnyait (H7496, nyolc hely). A legfontosabb lelet a szó jelentésíve a félelmetes élő népcsoporttól a Seól erőtlen árnyaiig; a tanulmány ezt úgy értelmezi, hogy ami a világ szemében legyőzhetetlennek tűnik, Isten előtt átmeneti és véges. A motívum lexikailag szándékosan elkülönül az 1Móz 6:4-es נְפִילִים/גִּבֹּרִים komplexumtól (`[ID: MENNY-001]`), bár a kettő tudományos vitában (Michael Heiser vs. Gordon Wenham) tematikusan összekapcsolható.
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
-
-A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -94,95 +90,89 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-11-04 -->
-
-A motívum 33 igehelyen fordul elő, 10 bibliai könyvben (33 ószövetségi hely); a legtöbb hely: 2Sám (7). 33 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum a Biblia sok könyvében, csak az Ószövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditas_ubs.tsv | licenc: projekt-adat, közkincs, CC BY-SA 4.0 | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum 33 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 14:5](#ige-1móz-14-5) | a Refeusokat — רְפָאִים֙ (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · szó-szintű-gépi[^1] |
-| [1Móz 15:20](#ige-1móz-15-20) | a Refeusokat — הָרְפָאִֽים (hárfáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · szó-szintű-gépi[^2] |
-| [4Móz 13:34](#ige-4móz-13-34) | óriásokat — הַנְּפִלִ֑ים (hannefilím) | — | — | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
-| [5Móz 2:11](#ige-5móz-2-11) | Óriásoknak — רְפָאִ֛ים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
-| [5Móz 2:20](#ige-5móz-2-20) | Óriások földének — רְפָאִ֤ים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
-| [5Móz 3:11](#ige-5móz-3-11) | az óriások maradéka — הָרְפָאִים֒ (hárfáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^6] |
-| [5Móz 3:13](#ige-5móz-3-13) | óriások földének — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^7] |
-| [Józs 12:4](#ige-józs-12-4) | Refaim maradékai — הָרְפָאִ֑ים (hárfáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^8] |
-| [Józs 13:12](#ige-józs-13-12) | a Refaim maradékai — הָרְפָאִ֔ים (hárfáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^9] |
-| [Józs 15:8](#ige-józs-15-8) | a Refaim völgyének — רְפָאִ֖ים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^10] |
-| [Józs 17:15](#ige-józs-17-15) | Refaimnak földén — וְהָֽרְפָאִ֑ים (vehárefáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^11] |
-| [Józs 18:16](#ige-józs-18-16) | a Refaim völgyében — רְפָאִ֖ים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^12] |
-| [2Sám 5:18](#ige-2sám-5-18) | a Réfaim völgyében — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^13] |
-| [2Sám 5:22](#ige-2sám-5-22) | a Réfaim völgyében — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^14] |
-| [2Sám 21:16](#ige-2sám-21-16) | az óriások maradékából — הָרָפָ֗ה (háráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^15] |
-| [2Sám 21:18](#ige-2sám-21-18) | az óriások maradékai — הָרָפָֽה (háráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^16] |
-| [2Sám 21:20](#ige-2sám-21-20) | óriástól — לְהָרָפָֽה (leháráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^17] |
-| [2Sám 21:22](#ige-2sám-21-22) | az óriástól — לְהָרָפָ֖ה (leháráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^18] |
-| [2Sám 23:13](#ige-2sám-23-13) | a Réfaim völgyében — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^19] |
-| [1Krón 11:15](#ige-1krón-11-15) | a Réfaim völgyben — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^20] |
-| [1Krón 14:9](#ige-1krón-14-9) | a Réfaim völgyében — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^21] |
-| [1Krón 20:4](#ige-1krón-20-4) | az óriások nemzetségéből — הָרְפָאִ֖ים (hárfáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^22] |
-| [1Krón 20:6](#ige-1krón-20-6) | óriás fia — לְהָרָפָֽא (leháráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^23] |
-| [1Krón 20:8](#ige-1krón-20-8) | óriásnak — לְהָרָפָ֖א (leháráfá) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^24] |
-| [Jób 26:5](#ige-jób-26-5) | A halottak — הָרְפָאִ֥ים (hárfáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^25] |
-| [Zsolt 88:11](#ige-zsolt-88-11) | az árnyak — רְ֝פָאִ֗ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^26] |
-| [Péld 2:18](#ige-péld-2-18) | az élet nélkül valókhoz — רְ֝פָאִ֗ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^27] |
-| [Péld 9:18](#ige-péld-9-18) | élet nélkül valók — רְפָאִ֣ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^28] |
-| [Péld 21:16](#ige-péld-21-16) | az élet nélkül valók — רְפָאִ֣ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^29] |
-| [Ézs 14:9](#ige-ézs-14-9) | árnyait — רְפָאִים֙ (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^30] |
-| [Ézs 17:5](#ige-ézs-17-5) | a Refáim völgyében — רְפָאִֽים (refáím) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^31] |
-| [Ézs 26:14](#ige-ézs-26-14) | az árnyak — רְפָאִ֖ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^32] |
-| [Ézs 26:19](#ige-ézs-26-19) | az árnyakat — רְפָאִ֥ים (refáím) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^33] |
+| [1Móz 14:5](#ige-1móz-14-5) | a Refeusokat — רְפָאִים֙ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
+| [1Móz 15:20](#ige-1móz-15-20) | a Refeusokat — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^2] |
+| [4Móz 13:34](#ige-4móz-13-34) | óriásokat — נְּפִלִ֑ים (ne.fi.Lim) | — | — | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
+| [5Móz 2:11](#ige-5móz-2-11) | Óriásoknak — רְפָאִ֛ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
+| [5Móz 2:20](#ige-5móz-2-20) | Óriások földének — רְפָאִ֤ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
+| [5Móz 3:11](#ige-5móz-3-11) | az óriások maradéka — רְפָאִים֒ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^6] |
+| [5Móz 3:13](#ige-5móz-3-13) | óriások földének — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^7] |
+| [Józs 12:4](#ige-józs-12-4) | Refaim maradékai — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^8] |
+| [Józs 13:12](#ige-józs-13-12) | a Refaim maradékai — רְפָאִ֔ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^9] |
+| [Józs 15:8](#ige-józs-15-8) | a Refaim völgyének — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^10] |
+| [Józs 17:15](#ige-józs-17-15) | Refaimnak földén — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^11] |
+| [Józs 18:16](#ige-józs-18-16) | a Refaim völgyében — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^12] |
+| [2Sám 5:18](#ige-2sám-5-18) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^13] |
+| [2Sám 5:22](#ige-2sám-5-22) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^14] |
+| [2Sám 21:16](#ige-2sám-21-16) | az óriások maradékából — רָפָ֗ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^15] |
+| [2Sám 21:18](#ige-2sám-21-18) | az óriások maradékai — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^16] |
+| [2Sám 21:20](#ige-2sám-21-20) | óriástól — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^17] |
+| [2Sám 21:22](#ige-2sám-21-22) | az óriástól — רָפָ֖ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^18] |
+| [2Sám 23:13](#ige-2sám-23-13) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^19] |
+| [1Krón 11:15](#ige-1krón-11-15) | a Réfaim völgyben — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^20] |
+| [1Krón 14:9](#ige-1krón-14-9) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^21] |
+| [1Krón 20:4](#ige-1krón-20-4) | az óriások nemzetségéből — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^22] |
+| [1Krón 20:6](#ige-1krón-20-6) | óriás fia — רָפָֽא (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^23] |
+| [1Krón 20:8](#ige-1krón-20-8) | óriásnak — רָפָ֖א (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^24] |
+| [Jób 26:5](#ige-jób-26-5) | A halottak — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^25] |
+| [Zsolt 88:11](#ige-zsolt-88-11) | az árnyak — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^26] |
+| [Péld 2:18](#ige-péld-2-18) | az élet nélkül valókhoz — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^27] |
+| [Péld 9:18](#ige-péld-9-18) | élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^28] |
+| [Péld 21:16](#ige-péld-21-16) | az élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^29] |
+| [Ézs 14:9](#ige-ézs-14-9) | árnyait — רְפָאִים֙ (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^30] |
+| [Ézs 17:5](#ige-ézs-17-5) | a Refáim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^31] |
+| [Ézs 26:14](#ige-ézs-26-14) | az árnyak — רְפָאִ֖ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^32] |
+| [Ézs 26:19](#ige-ézs-26-19) | az árnyakat — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^33] |
 
-[^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^2]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^3]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^4]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^5]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^6]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^7]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^8]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^9]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^10]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^11]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^12]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^13]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^14]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^15]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^16]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^17]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^18]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^19]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^20]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^21]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^22]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^23]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^24]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^25]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^26]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^27]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^28]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^29]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^30]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^31]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^32]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-[^33]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt
-
-*Minden sor forrásmegjelölése (‹E1›): `scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10`*
+[^1]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^2]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^3]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^4]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^5]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^6]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^7]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^8]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^9]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^10]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^11]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^12]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^13]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^14]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^15]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^16]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^17]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^18]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^19]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^20]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^21]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^22]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^23]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^24]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^25]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^26]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^27]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^28]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^29]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^30]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^31]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^32]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
+[^33]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
 
 *Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New Testament Dictionary az Újszövetséget fedi.*
 
 #### 1/a. Az igehelyek szövege
 
-A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.<!-- olvasói -->
-
 
 <a id="ige-1móz-14-5"></a>
 **1Móz 14:5**
 *A tizennegyedik esztendőben pedig eljöve Khédorlaomer, és a királyok, a kik ő vele valának, és megverék a Refeusokat Asztheroth Kárnajimban, és a Zuzeusokat Hámban, és az Emeusokat Sávé-Kirjáthajimban.*
-רְפָאִים, זוּזִים (zúzím), אֵימִים (refáím, zúzím, émím) — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné
+רְפָאִים, זוּזִים, אֵימִים (refáím, zúzím, émím) — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné
 
 <a id="ige-1móz-15-20"></a>
 **1Móz 15:20**
@@ -192,7 +182,7 @@ A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motí
 <a id="ige-4móz-13-34"></a>
 **4Móz 13:34**
 *És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk.*
-נְפִלִים (nefilím) ⇒ עֲנָקִים (nefilím ⇒ anákím) — a kémek szerint az Anákok „a Nefilimtől” származnak (a kémek saját kijelentése, nem a narrátoré)
+נְפִלִים ⇒ עֲנָקִים (nefilím ⇒ anákím) — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a narrátoré)
 
 <a id="ige-5móz-2-11"></a>
 **5Móz 2:11**
@@ -202,22 +192,22 @@ ua. — folytatás
 <a id="ige-5móz-2-20"></a>
 **5Móz 2:20**
 *(Óriások földének tartották azt is; óriások laktak azon régenten, a kiket az Ammoniták Zanzummoknak hívtak.*
-זַמְזֻמִּים (zamzummím)... רְפָאִים (zamzummím … refáím) — az Ammoniták Zamzummimnak nevezik ugyanazt a népet
+זַמְזֻמִּים... רְפָאִים (zamzummím … refáím) — az Ammoniták Zamzummimnak nevezik ugyanazt a népet
 
 <a id="ige-5móz-3-11"></a>
 **5Móz 3:11**
 *Mert egyedül Óg, Básánnak királya maradt meg az óriások maradéka közül. Ímé az ő ágya vas-ágy, nemde Rabbátban az Ammon fiainál van-é? Kilencz sing a hosszasága és négy sing a szélessége, férfi könyök szerint.*
-עוֹג (óg)... מִיֶּתֶר הָרְפָאִים (óg … mijjeter hárefáím) — Óg, Básán királya „a Refáim maradékából” — vaságya 9×4 könyök
+עוֹג... מִיֶּתֶר הָרְפָאִים (óg … mijjeter hárefáím) — Óg, Básán királya "a Refáim maradékából" — vaságya 9×4 könyök
 
 <a id="ige-5móz-3-13"></a>
 **5Móz 3:13**
 *A Gileád többi részét pedig, és az egész Básánt, az Óg országát odaadtam a Manassé fél törzsének, Argóbnak egész vidékét. Ezt az egész Básánt óriások földének hívták.*
-ua. — Básán mint „a Refáim földje”
+ua. — Básán mint "a Refáim földje"
 
 <a id="ige-józs-12-4"></a>
 **Józs 12:4**
 *És Ógnak, a Básán királyának tartománya, a ki Refaim maradékai közül való, a ki Astarotban és Edreiben lakozik vala.*
-אֶרֶץ רְפָאִים (erec refáím) — Óg földje „a Refáim földje”
+אֶרֶץ רְפָאִים (erec refáím) — Óg földje "a Refáim földje"
 
 <a id="ige-józs-13-12"></a>
 **Józs 13:12**
@@ -232,7 +222,7 @@ ua.
 <a id="ige-józs-17-15"></a>
 **Józs 17:15**
 *Józsué pedig monda nékik: Ha sok nép vagy te, menj fel az erdőre, és írts ott magadnak a Perizzeusoknak és Refaimnak földén, ha szoros néked az Efraim hegye.*
-אֶרֶץ הָרְפָאִים (erec hárefáím) — „a Perizzita és a Refáim földje” — Józsué válasza Efraim/Manassé birtok-panaszára
+אֶרֶץ הָרְפָאִים (erec hárefáím) — "a Perizzita és a Refáim földje" — Józsué válasza Efraim/Manassé birtok-panaszára
 
 <a id="ige-józs-18-16"></a>
 **Józs 18:16**
@@ -302,17 +292,17 @@ ua. — folytatás
 <a id="ige-jób-26-5"></a>
 **Jób 26:5**
 *A halottak is megremegnek tőle; a vizek alatt levők és azok lakói is.*
-רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם (refáím jehólálú mittahat lammájim) — „a Refáim reszketnek a vizek alatt” — költői kontextus, halottak birodalma
+רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם (refáím jehólálú mittahat lammájim) — "a Refáim reszketnek a vizek alatt" — költői kontextus, halottak birodalma
 
 <a id="ige-zsolt-88-11"></a>
 **Zsolt 88:11**
 *Avagy a holtakkal teszel-é csodát? Felkelnek-é vajjon az árnyak, hogy dicsérjenek téged? Szela.*
-הֲרְפָאִים יָקוּמוּ יוֹדוּךָ (harefáím jákúmú jódúkhá) — „vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?”
+הֲרְפָאִים יָקוּמוּ יוֹדוּךָ (harefáím jákúmú jódúkhá) — "vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?"
 
 <a id="ige-péld-2-18"></a>
 **Péld 2:18**
 *Mert a halálra hanyatlik az ő háza, és az ő ösvényei az élet nélkül valókhoz.*
-רְפָאִים (refáím) — bölcsességi kontextus: aki eltéved, a „Refáim gyülekezetébe” jut
+רְפָאִים (refáím) — bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut
 
 <a id="ige-péld-9-18"></a>
 **Péld 9:18**
@@ -327,7 +317,7 @@ ua.
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
 *Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
-רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ (refáím … kol-attúdé árec) — Babilon királyát gúnyosan fogadja a Seól, „fölkelti ellene a Refáimot”
+רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ (refáím … kol-attúdé árec) — Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot"
 
 <a id="ige-ézs-17-5"></a>
 **Ézs 17:5**
@@ -348,346 +338,77 @@ ua.
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
 
-18 verset vizsgáltunk meg egyenként, jelöltként; elutasítva: 4, döntésre vár: 14. A leggyakoribb ok: „a szó nem ebben a versben áll, hanem a tartomány másikában” (3 vers), utána „egy másik motívum tárgya” (1 vers). A jelöltek forrása (vers): TSK-ajánlás 13, Gépi keresés 3, Kutatói felvetés 2. **Következtetés:** kevesebb verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (18, illetve 33). A határt leginkább ez az ok húzza meg: „a szó nem ebben a versben áll, hanem a tartomány másikában”.<!-- olvasói -->
+*Ez a blokk a `[ID: HODIT-001]` motívum 17 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-*Ez a blokk a `[ID: HODIT-001]` motívum 18 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
+- **5Móz 1:4** (nyitva, `TSK, alacsony szavazat`): Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **5Móz 2:23** (nyitva, `TSK, alacsony szavazat`): Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **5Móz 3:20** (nyitva, `TSK, alacsony szavazat`): Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **5Móz 3:22** (nyitva, `TSK, alacsony szavazat`): Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Józs 13:19** (nyitva, `TSK, alacsony szavazat`): Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Józs 13:31** (nyitva, `TSK, alacsony szavazat`): Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Jer 48:1** (nyitva, `TSK, alacsony szavazat`): Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Jer 48:23** (nyitva, `TSK, alacsony szavazat`): Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Zsolt 78:51** (nyitva, `TSK, alacsony szavazat`): 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Zsolt 105:23** (nyitva, `TSK, alacsony szavazat`): 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Zsolt 105:27** (nyitva, `TSK, alacsony szavazat`): 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **Zsolt 106:22** (nyitva, `TSK, alacsony szavazat`): 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **1Krón 4:40** (nyitva, `TSK, alacsony szavazat`): tematikus szomszédság, nem lexikai egyezés — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg
+- **1Móz 14:6** (nyitva, `study 1. pont táblázata (kontextuális sor)`): חֹרִים (Hórim) nem a רְפָאִים szócsaládból való — nincs közös gyök H2752 és H7497/H7496 között; a study saját táblázatában szerepel mint "ugyanabban a hadjáratban legyőzött negyedik népcsoport", de a motívum negatív kritériuma (l. adat/motivumok.tsv HODIT-001 sora) kizárja: a rokon népnév önmagában nem elég, lexikai átfedés kell
+- **5Móz 2:10** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (אֵימִים... הֵם רְפָאִים — a Móábiak Émim…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
+- **5Móz 2:21** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (ua. — folytatás…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
+- **2Sám 21:15** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (הָרָפָה / יְלִידֵי הָרָפָה — Góliát és r…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
 
-**Az elutasítás okai:** a szó nem ebben a versben áll, hanem a tartomány másikában 3 · egy másik motívum tárgya 1
-
-**Nyitott döntés:** 14
-
-**A jelölés forrása:** TSK-ajánlás 13 · Gépi keresés 3 · Kutatói felvetés 2
-
-**TSK-ajánlás** (13)
-
-| Igehely | Miért lett jelölt | Döntés és indok |
-|---|---|---|
-| 5Móz 1:4 | TSK-ajánlás, alacsony szavazattal[^k1] | **nyitott döntés**: Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| 5Móz 2:23 | TSK-ajánlás, alacsony szavazattal[^k2] | **nyitott döntés**: Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| 5Móz 3:20 | TSK-ajánlás, alacsony szavazattal[^k3] | **nyitott döntés**: Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| 5Móz 3:22 | TSK-ajánlás, alacsony szavazattal[^k4] | **nyitott döntés**: Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Józs 13:19 | TSK-ajánlás, alacsony szavazattal[^k5] | **nyitott döntés**: Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Józs 13:31 | TSK-ajánlás, alacsony szavazattal[^k6] | **nyitott döntés**: Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Jer 48:1 | TSK-ajánlás, alacsony szavazattal[^k7] | **nyitott döntés**: Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Jer 48:23 | TSK-ajánlás, alacsony szavazattal[^k8] | **nyitott döntés**: Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Zsolt 78:51 | TSK-ajánlás, alacsony szavazattal[^k9] | **nyitott döntés**: 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Zsolt 105:23 | TSK-ajánlás, alacsony szavazattal[^k10] | **nyitott döntés**: 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Zsolt 105:27 | TSK-ajánlás, alacsony szavazattal[^k11] | **nyitott döntés**: 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| Zsolt 106:22 | TSK-ajánlás, alacsony szavazattal[^k12] | **nyitott döntés**: 'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-| 1Krón 4:40 | TSK-ajánlás, alacsony szavazattal[^k13] | **nyitott döntés**: tematikus szomszédság, nem lexikai egyezés — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg |
-
-**Gépi keresés** (3)
-
-| Igehely | Miért lett jelölt | Döntés és indok |
-|---|---|---|
-| 5Móz 2:10 | gépi visszakeresés a héber szövegben[^k14] | **elutasítva** — a szó nem ebben a versben áll, hanem a tartomány másikában: a tanulmány egy több-verses tartományt (אֵימִים (émím)... הֵם רְפָאִים — a Móábiak Émim…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a héber szöveg (TAHOT) szerint (talált: —) — a lexéma a tartomány másik versében van, az külön előfordulásként bekerült |
-| 5Móz 2:21 | gépi visszakeresés a héber szövegben[^k15] | **elutasítva** — a szó nem ebben a versben áll, hanem a tartomány másikában: a tanulmány egy több-verses tartományt (ua. — folytatás…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a héber szöveg (TAHOT) szerint (talált: —) — a lexéma a tartomány másik versében van, az külön előfordulásként bekerült |
-| 2Sám 21:15 | gépi visszakeresés a héber szövegben[^k16] | **elutasítva** — a szó nem ebben a versben áll, hanem a tartomány másikában: a tanulmány egy több-verses tartományt (הָרָפָה (haráfá) / יְלִידֵי הָרָפָה — Góliát és r…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a héber szöveg (TAHOT) szerint (talált: —) — a lexéma a tartomány másik versében van, az külön előfordulásként bekerült |
-
-**Kutatói felvetés** (2)
-
-| Igehely | Miért lett jelölt | Döntés és indok |
-|---|---|---|
-| 1Móz 14:6 | a tanulmány felvetése[^k17] | **nyitott döntés**: חֹרִים (Hórim) nem a רְפָאִים szócsaládból való — nincs közös gyök H2752 és H7497/H7496 között; a tanulmány saját táblázatában szerepel mint „ugyanabban a hadjáratban legyőzött negyedik népcsoport”, de a motívum negatív kritériuma kizárja: a rokon népnév önmagában nem elég, lexikai átfedés kell |
-| 1Móz 6:4 | a kereszthivatkozás-napló kutatói minősítése[^k18] | **elutasítva** — egy másik motívum tárgya: a רְפָאִים szótő ott nem fordul elő; a kapcsolat kizárólag tematikus — önálló motívum, [ID: MENNY-001] |
-
-**Negatív kritérium:** az igehelynek a רְפָאִים (refáím) gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים – zúzím, אֵימִים – émím, זַמְזֻמִּים – zamzummím) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
-
-[^k1]: forrás: `TSK, alacsony szavazat`
-[^k2]: forrás: `TSK, alacsony szavazat`
-[^k3]: forrás: `TSK, alacsony szavazat`
-[^k4]: forrás: `TSK, alacsony szavazat`
-[^k5]: forrás: `TSK, alacsony szavazat`
-[^k6]: forrás: `TSK, alacsony szavazat`
-[^k7]: forrás: `TSK, alacsony szavazat`
-[^k8]: forrás: `TSK, alacsony szavazat`
-[^k9]: forrás: `TSK, alacsony szavazat`
-[^k10]: forrás: `TSK, alacsony szavazat`
-[^k11]: forrás: `TSK, alacsony szavazat`
-[^k12]: forrás: `TSK, alacsony szavazat`
-[^k13]: forrás: `TSK, alacsony szavazat`
-[^k14]: forrás: `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés` · a döntés nyoma: `TAHOT_kivonat.tsv`
-[^k15]: forrás: `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés` · a döntés nyoma: `TAHOT_kivonat.tsv`
-[^k16]: forrás: `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés` · a döntés nyoma: `TAHOT_kivonat.tsv`
-[^k17]: forrás: `study 1. pont táblázata (kontextuális sor)` · a döntés nyoma: `motivumok.tsv HODIT-001`
-[^k18]: forrás: `napló: Rafaim_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Rafaim_kereszthivatkozas_naplo.md | ts=2026-10-11` · a döntés nyoma: `Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md`
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a רְפָאִים (refáím) gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים – zúzím, אֵימִים – émím, זַמְזֻמִּים – zamzummím) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kizart -->
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0 | ts=2026-09-22 -->
 
-A motívumot hordozó szavak szótári háttere: héberül a nefilím (H5303), a refáím (H7496) és a ráfá (H7497). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB) szócikke.<!-- olvasói -->
+*Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-*Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
+### H5303 — נְפִלִים (ne.phil)
 
-### Görög szavak
+**TWOT:** 1393a
 
-<!-- ÜRES-NYELV: gorog | nincs Strong-token -->
-A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.<!-- olvasói -->
+**Szemantikai domén:** 003001006 Names of Groups
 
-*A motívumnak nincs görög Strong-tokenje; a görög szerepek nem alkalmazhatók.*
+Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### Héber szavak: H5303, H7496, H7497
+### H7496 — רְפָאִים (ra.pah)
 
-A motívumot hordozó héber szavak (héberül a nefilím (H5303), a refáím (H7496) és a ráfá (H7497)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
+**TWOT:** 2198c
 
-#### 1. Alapjelentés
+**Szemantikai domén:** 003001006 Names of Groups
 
-A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
+Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-##### TBESH H5303 — (konszolidált szócikk)
+### H7497 — רָפָה (ra.pah)
 
-**Röviden:** Nephilim
+**TWOT:** 2198d
 
-> People descended from Nephil(?), first mentioned at Gen.6.4 giants, the Nephilim
+**Szemantikai domén:** 003001006 Names of Groups, 003001007 Names of People
 
-*(fordításra vár)*
-
-*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
-
-##### TBESH H7496 — (konszolidált szócikk)
-
-**Röviden:** shade
-
-> ghosts of the dead, shades, spirits
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
-
-**H7497** · *csak tulajdonnév-alszócikk: H7497a, H7497b* *(TBESH)*
-
-#### 2. Mélységi szócikk
-
-A szó fő szótári szócikke (BDB).<!-- olvasói -->
-
-<!-- ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve -->
-*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
-
-#### 3. Teológiai szócikk
-
-Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
-
-**H5303** · **TWOT:** 1393a
-
-**H5303** · tW: `other/giant`
-
-**H7496** · **TWOT:** 2198c
-
-**H7496** · *a forrás nem tárgyalja* *(tW)*
-
-**H7497** · **TWOT:** 2198d
-
-**H7497** · tW: `other/giant`
-
-*A tW-szócikkek szövege (angolul; a magyar fordítás a gyorsítótárból, ahol van, különben fordításra vár). A Strong-kötés a tW saját listáján alapul, nem a projekt azonosítása.*
-
-<details>
-<summary>other/giant — giant (tW; a motívum tokenje: H5303, H7497)</summary>
-
-> # giant
->
-> ## Definition:
->
-> The word “giant” usually refers to a person who is extremely tall and strong.
->
-> * Goliath, a Philistine soldier who fought David, was called a giant because he was a very tall, large, and strong man.
-> * The Israelite spies who explored the land of Canaan said that the people living there were like giants.
->
-> (See also: [Canaan](../names/canaan.md), [Goliath](../names/goliath.md), [Philistines](../names/philistines.md))
->
-> ## Bible References:
->
-> * [Genesis 6:4](rc://en/tn/help/gen/06/4)
-> * [Numbers 13:32-33](rc://en/tn/help/num/13/32)
->
-> ## Word Data:
->
-> * Strong’s: H1368, H5303, H7497
->
-
-*(fordításra vár)*
-
-</details>
-
-#### 4. Jelentésszerkezet, szemantikai mező
-
-A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.<!-- olvasói -->
-
-**H5303** · **Szemantikai domén:** 003001006 Names of Groups
-
-**H7496** · **Szemantikai domén:** 003001006 Names of Groups
-
-**H7497** · **Szemantikai domén:** 003001006 Names of Groups, 003001007 Names of People
-
-#### 5. Tömör jelentés, előfordulás
-
-A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
-
-**H5303** · UBS DBH: 1 jelentés, 3 hivatkozott hely
-
-| Jelentés (lexid) | Glossza | Definíció (rövid) | Hivatkozott helyek |
-|---|---|---|---|
-| `004869001001000` | nefilek | szó szerint: „az elesettek”; pontos jelentése bizonytalan; esetleg: = óriások faja, amelyet isteni lények és emberek leszármazottainak tekintenek | 3 |
-
-**H7496** · UBS DBH: 2 jelentés, 27 hivatkozott hely
-
-| Jelentés (lexid) | Glossza | Definíció (rövid) | Hivatkozott helyek |
-|---|---|---|---|
-| `006892001001000` | a halottak szellemei; árnyak | = a meghaltak szellemei, akik most a {L:abode of the dead<SDBH:שְׁאֹול (seól)>} lakói | 8 |
-| `006892002001000` | refaiták | = nép, más néven {L:Zamzummites<SDBH:זַמְזֻמִּים (zamzummím)>}; ◄ {L:Raphah<SDBH:רָפָה (ráfá)>} leszármazottai; óriások törzse | 19 |
-
-**H7497** · UBS DBH: 4 jelentés, 32 hivatkozott hely
-
-| Jelentés (lexid) | Glossza | Definíció (rövid) | Hivatkozott helyek |
-|---|---|---|---|
-| `006892001001000` | a halottak szellemei; árnyak | = a meghaltak szellemei, akik most a {L:abode of the dead<SDBH:שְׁאֹול>} lakói | 8 |
-| `006892002001000` | refaiták | = nép, más néven {L:Zamzummites<SDBH:זַמְזֻמִּים>}; ◄ {L:Raphah<SDBH:רָפָה>} leszármazottai; óriások törzse | 19 |
-| `006897001001000` | Ráfa | = ember; ► óriások egy törzsének őse | 4 |
-| `006897001002000` | Ráfa | = ember, más néven {L:Rephaiah<SDBH:רְפָיָה (refájá)>}; ◄ {L:Binea<SDBH:בִּנְעָא (bineá)>} fia; {L:Benjamin<SDBH:בִּנְיָמִן (binjámin)>} törzse | 1 |
-
-#### 6. LXX-híd
-
-A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 33 ószövetségi helyéből 18 helyen saját görög szóval adja vissza, 15 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).<!-- olvasói -->
-
-*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
-
-**H5303 — נְפִלִים (nefilím)** · a motívum 1 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: azonosításra vár 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
-
-**H7496 — רְפָאִים (refáím)** · a motívum 8 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: eltérő 6 · azonosításra vár 2 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
-
-**H7497 — רָפָה (ráfá)** · a motívum 24 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát (—) használja-e: eltérő 12 · azonosításra vár 12 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
-
-*Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
-
-**H5303** · 2 vers a Septuagintában (ebből 2 vers görög tartalmi szóval); leggyakoribb görög társak: εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 2 vers; αἰών ([aión](/szo/G0165)<sup class="strong" title="G0165">G0165</sup>): 1 vers; ἀκρίς ([akrisz](/szo/G0200)<sup class="strong" title="G0200">G0200</sup>): 1 vers; ἄν ([an](/szo/G0302)<sup class="strong" title="G0302">G0302</sup>): 1 vers; ἄνθρωπος ([anthróposz](/szo/G0444)<sup class="strong" title="G0444 · ember">G0444</sup>): 1 vers; γεννάω ([gennaó](/szo/G1080)<sup class="strong" title="G1080">G1080</sup>): 1 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 1 vers; ἑαυτοῦ ([heautú](/szo/G1438)<sup class="strong" title="G1438">G1438</sup>): 1 vers; εἰσπορεύω ([eiszporeuó](/szo/G1531)<sup class="strong" title="G1531">G1531</sup>): 1 vers; ἐκεῖ ([ekei](/szo/G1563)<sup class="strong" title="G1563">G1563</sup>): 1 vers
-
-**H7496** · 8 vers a Septuagintában (ebből 8 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης ([Hadész](/szo/G0086)<sup class="strong" title="G0086 · pokol: Hádész">G0086</sup>): 3 vers; ἀνίστημι ([anisztémi](/szo/G0450)<sup class="strong" title="G0450">G0450</sup>): 3 vers; νεκρός ([nekrosz](/szo/G3498)<sup class="strong" title="G3498">G3498</sup>): 3 vers; παρά ([para](/szo/G3844)<sup class="strong" title="G3844">G3844</sup>): 3 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 2 vers; ἐγείρω ([egeiró](/szo/G1453)<sup class="strong" title="G1453">G1453</sup>): 2 vers; ἰατρός ([iatrosz](/szo/G2395)<sup class="strong" title="G2395 · orvos">G2395</sup>): 2 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 2 vers; συναντάω ([szünantaó](/szo/G4876)<sup class="strong" title="G4876 · találkozni">G4876</sup>): 2 vers; αἴρω ([airó](/szo/G0142)<sup class="strong" title="G0142 · felvinni">G0142</sup>): 1 vers
-
-**H7497** · 24 vers a Septuagintában (ebből 23 vers görög tartalmi szóval); leggyakoribb görög társak: εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 8 vers; ἀλλόφυλος ([allofülosz](/szo/G0246)<sup class="strong" title="G0246 · idegen">G0246</sup>): 7 vers; γίνομαι ([ginomai](/szo/G1096)<sup class="strong" title="G1096">G1096</sup>): 5 vers; ἔτι ([eti](/szo/G2089)<sup class="strong" title="G2089">G2089</sup>): 5 vers; τέσσαρες ([tesszaresz](/szo/G5064)<sup class="strong" title="G5064">G5064</sup>): 5 vers; πατάσσω ([patasszó](/szo/G3960)<sup class="strong" title="G3960">G3960</sup>): 4 vers; πόλεμος ([polemosz](/szo/G4171)<sup class="strong" title="G4171">G4171</sup>): 4 vers; ἀναβαίνω ([anabainó](/szo/G0305)<sup class="strong" title="G0305">G0305</sup>): 3 vers; ἀνήρ ([anér](/szo/G0435)<sup class="strong" title="G0435 · férfi">G0435</sup>): 3 vers; βασιλεύς ([baszileusz](/szo/G0935)<sup class="strong" title="G0935">G0935</sup>): 3 vers
-
-*Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
-
-#### 7. Megfelelők a másik nyelven
-
-A kétnyelvű szótár (SECE) a ráfá szónak 1 megfelelőjét adja a másik bibliai nyelven; a motívumnak a másik nyelven nincs saját szava, de a megfelelők között van az iatrosz, amellyel a Septuaginta a motívum helyein fordít. **Következtetés:** a szótár ismeri azt a szót, amellyel a fordítás a szót visszaadja; a motívumnak a másik nyelven nincs párja.<!-- olvasói -->
-
-**H5303** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*
-
-**H7496** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*
-
-**H7497 — רָפָה (ráfá)** · SECE — görög megfelelők (1):
-
-| Szó | Kiejtés | Strong | Rövid jelentés |
-|---|---|---|---|
-| ἰατρός | iatrosz | G2395 | orvos |
-
-*A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
-
-#### 8. Nyelvi háttér
-
-A szó eredete és nyelvi háttere.<!-- olvasói -->
-
-**H5303** · *a forrás nem tárgyalja* *(BDB: a szócikk feje nem ad nyelvi hátteret)*
-
-**H7496** · *a forrás nem tárgyalja* *(BDB: a szócikk feje nem ad nyelvi hátteret)*
-
-**H7497** · *a forrás nem tárgyalja* *(BDB: a szócikk feje nem ad nyelvi hátteret)*
-
-#### 9. Versenkénti jelentés
-
-A motívum 1 ószövetségi helyéből 0 helyen a nefilím egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű; a motívum 8 ószövetségi helyéből 8 helyen a refáím egyetlen jelentésben áll; a motívum 24 ószövetségi helyéből 22 helyen a ráfá egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
-
-*A héber szó jelentése az ÓSZ-i igehelyeken (UBS DBH, MT-számozás szerint párosítva; a glosszák angolul állnak, magyar fordításuk a `forditasok.tsv`-be kerül, ahol van, onnan jön; a többi fordításra vár).*
-
-| Igehely (Károli) | Strong | UBS DBH-jelentés (lexid — glossza) | Megjegyzés |
-|---|---|---|---|
-| 1Móz 14:5 | H7497 | `006892002001000` — Rephaim | — |
-| 1Móz 15:20 | H7497 | `006892002001000` — Rephaim | — |
-| 4Móz 13:34 | H5303 | — | versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva |
-| 5Móz 2:11 | H7497 | `006892002001000` — Rephaim | — |
-| 5Móz 2:20 | H7497 | `006892002001000` — Rephaim | — |
-| 5Móz 3:11 | H7497 | `006892002001000` — Rephaim | — |
-| 5Móz 3:13 | H7497 | `006892002001000` — Rephaim | — |
-| Józs 12:4 | H7497 | `006892002001000` — Rephaim | — |
-| Józs 13:12 | H7497 | `006892002001000` — Rephaim | — |
-| Józs 15:8 | H7497 | `006892002001000` — Rephaim | — |
-| Józs 17:15 | H7497 | `006892002001000` — Rephaim | — |
-| Józs 18:16 | H7497 | `006892002001000` — Rephaim | — |
-| 2Sám 5:18 | H7497 | `006892002001000` — Rephaim | — |
-| 2Sám 5:22 | H7497 | `006892002001000` — Rephaim | — |
-| 2Sám 21:16 | H7497 | `006897001001000` — Raphah | — |
-| 2Sám 21:18 | H7497 | `006897001001000` — Raphah | — |
-| 2Sám 21:20 | H7497 | `006897001001000` — Raphah | — |
-| 2Sám 21:22 | H7497 | `006897001001000` — Raphah | — |
-| 2Sám 23:13 | H7497 | `006892002001000` — Rephaim | — |
-| 1Krón 11:15 | H7497 | `006892002001000` — Rephaim | — |
-| 1Krón 14:9 | H7497 | `006892002001000` — Rephaim | — |
-| 1Krón 20:4 | H7497 | `006892002001000` — Rephaim | — |
-| 1Krón 20:6 | H7497 | — | nincs UBS DBH-hivatkozás erre a Strongra ebben a versben |
-| 1Krón 20:8 | H7497 | — | nincs UBS DBH-hivatkozás erre a Strongra ebben a versben |
-| Jób 26:5 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Zsolt 88:11 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Péld 2:18 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Péld 9:18 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Péld 21:16 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Ézs 14:9 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Ézs 17:5 | H7497 | `006892002001000` — Rephaim | — |
-| Ézs 26:14 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-| Ézs 26:19 | H7496 | `006892001001000` — spirits of the dead; shades | — |
-
-#### 10. Kiejtés (magyaros)
-
-A szó magyaros kiejtése.<!-- olvasói -->
-
-**H5303** · נְפִלִים (nefilím)
-
-**H7496** · רְפָאִים (refáím)
-
-**H7497** · רָפָה (ráfá)
-
-### Nyelvfüggetlen szerepek
-
-A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
-
-#### 12. Tematikus index (témák és igehely-hivatkozások)
-
-Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).<!-- olvasói -->
-
-<!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
-
-#### 13. Károli-megfelelők
-
-A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.<!-- olvasói -->
-
-<!-- ÜRES-BLOKK: Károli-megfelelők | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
-
-#### 14. Rejtett / hamis párhuzam
-
-Két ellenőrzés a motívum héber és görög szavaira (l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a motívum szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a motívum szavai, így a magyar olvasó tévesen kapcsolná ide.<!-- olvasói -->
-
-<!-- ÜRES-BLOKK: Rejtett / hamis párhuzam | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#szocikkek -->
 
-### Miért fontos ez a lelet
+### 2/b. Kiegészítő szótári adatok *(kézi)*
 
-Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasói -->
+Nincs kiegészítő szótári adat.
+
+### Miért fontos ez a lelet *(kézi)*
 
 **A központi probléma: két, homonim gyök, vagy egyetlen, teológiailag kettéágazó szó?**
 
 A רְפָאִים (*refáim*) szó a héber Bibliában **két, látszólag ellentétes jelentésmezőben** fordul elő:
-1. **Prózai/elbeszélő kontextusban** (1Móz 14, 15; 4Móz; 5Móz; Józs; 2Sám): élő, nagy termetű, félelmetes népcsoport — „óriások”.
-2. **Költői/bölcsességi kontextusban** (Jób, Zsoltárok, Példabeszédek, Ézsaiás): a halottak árnyai, a Seól lakói — erőtlen, halott „árnyak”.
+1. **Prózai/elbeszélő kontextusban** (1Móz 14, 15; 4Móz; 5Móz; Józs; 2Sám): élő, nagy termetű, félelmetes népcsoport — "óriások".
+2. **Költői/bölcsességi kontextusban** (Jób, Zsoltárok, Példabeszédek, Ézsaiás): a halottak árnyai, a Seól lakói — erőtlen, halott "árnyak".
 
-A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: (a) רפא I, „gyógyítani” (innen a „healers/orvosok” régi magyarázat — talán mert a halottak „gyógyíthatatlanok”, vagy mert kultikus gyógyító-hősök voltak); (b) egy különálló, „erőtlen/petyhüdt” jelentésű gyök. Az újabb sémi filológia (ugaritológia) azonban egyre inkább **egységes eredetet** feltételez: az ugariti **rāpi'ūma** (rpʾum) szövegek (Ras Shamra, kb. Kr. e. 14. sz.) olyan félig-isteni, harci-szekéren érkező, lakomázó hősi ősöket/királyokat írnak le, akiket haláluk után is tisztelnek, segítségül hívnak — ez magyarázza, miért ugyanaz a szó jelöli a történelem „óriásait” (élő, félelmetes hatalmasságok) és a halál utáni állapotukat (tisztelt, majd a bibliai polemikus újraértelmezésben megalázott, erőtlen árnyak).
+A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: (a) רפא I, "gyógyítani" (innen a "healers/orvosok" régi magyarázat — talán mert a halottak "gyógyíthatatlanok", vagy mert kultikus gyógyító-hősök voltak); (b) egy különálló, "erőtlen/petyhüdt" jelentésű gyök. Az újabb sémi filológia (ugaritológia) azonban egyre inkább **egységes eredetet** feltételez: az ugariti **rāpi'ūma** (rpʾum) szövegek (Ras Shamra, kb. Kr. e. 14. sz.) olyan félig-isteni, harci-szekéren érkező, lakomázó hősi ősöket/királyokat írnak le, akiket haláluk után is tisztelnek, segítségül hívnak — ez magyarázza, miért ugyanaz a szó jelöli a történelem "óriásait" (élő, félelmetes hatalmasságok) és a halál utáni állapotukat (tisztelt, majd a bibliai polemikus újraértelmezésben megalázott, erőtlen árnyak).
 
 **Strong-szám szerinti megoszlás:** a két jelentésmező a konkordanciákban is elkülönül — a prózai/óriás-értelem **H7497** alatt fut (25 előfordulás), a költői/halott-árnyak-értelem pedig önálló, külön **H7496** kód alatt (8 előfordulás: Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19) — tehát nem csupán tartalmi, hanem indexelési szinten is két külön tétel. 【NAPLO: a Strong-szám szerinti szétválás 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (awk, Strong-szám szerinti szűrés) azonosítva — korábban a study csak tartalmilag különböztette meg a két jelentésmezőt, Strong-szám szinten nem.】
 
@@ -695,59 +416,55 @@ A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: 
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua-vaticanus-b.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
-
-A motívumnak nincs görög szava, ezért az újszövetségi szóval való egyezés nem mérhető; a görög fordítás (Septuaginta) a motívum 33 ószövetségi helyéből 18 helyen saját görög szóval adja vissza, 15 helyen az azonosítás függőben. **Következtetés:** a motívum a görög Ószövetségen át nyelvileg nem kapcsolódik az Újszövetséghez; a görög szöveg azt mutatja, hogyan adta vissza a fordító a héber szavakat (3. LXX-fordítói döntések).<!-- olvasói -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 14:5 | 1Móz 14:5 | רְפָאִים֙ (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| 1Móz 15:20 | 1Móz 15:20 | הָרְפָאִֽים (hárfáím) | Ραφαϊν (rafain) | eltérő | adat/lxx_dontesek.tsv |
-| 4Móz 13:34 | 4Móz(LXX) 13:33 | הַנְּפִלִ֑ים (hannefilím) | — | kutatói azonosítás függőben | Septuaginta |
-| 5Móz 2:11 | 5Móz 2:11 | רְפָאִ֛ים (refáím) | Ραφαϊν (rafain) | eltérő | adat/lxx_dontesek.tsv |
-| 5Móz 2:20 | 5Móz 2:20 | רְפָאִ֤ים (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| 5Móz 3:11 | 5Móz 3:11 | הָרְפָאִים֒ (hárfáím) | Ραφαϊν (rafain) | eltérő | adat/lxx_dontesek.tsv |
-| 5Móz 3:13 | 5Móz 3:13 | רְפָאִֽים (refáím) | Ραφαϊν (rafain) | eltérő | adat/lxx_dontesek.tsv |
-| Józs 12:4 | Józs 12:4 | הָרְפָאִ֑ים (hárfáím) | — | kutatói azonosítás függőben | Septuaginta |
-| Józs 13:12 | Józs 13:12 | הָרְפָאִ֔ים (hárfáím) | — | kutatói azonosítás függőben | Septuaginta |
-| 2Sám 21:16 | 2Sám 21:16 | הָרָפָ֗ה (háráfá) | — | kutatói azonosítás függőben | Septuaginta |
-| 2Sám 21:18 | 2Sám 21:18 | הָרָפָֽה (háráfá) | Ραφα (rafa) | eltérő | adat/lxx_dontesek.tsv |
-| 2Sám 21:20 | 2Sám 21:20 | לְהָרָפָֽה (leháráfá) | — | kutatói azonosítás függőben | Septuaginta |
-| 2Sám 21:22 | 2Sám 21:22 | לְהָרָפָ֖ה (leháráfá) | — | kutatói azonosítás függőben | Septuaginta |
-| 1Krón 20:4 | 1Krón 20:4 | הָרְפָאִ֖ים (hárfáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| 1Krón 20:6 | 1Krón 20:6 | לְהָרָפָֽא (leháráfá) | — | kutatói azonosítás függőben | Septuaginta |
-| 1Krón 20:8 | 1Krón 20:8 | לְהָרָפָ֖א (leháráfá) | — | kutatói azonosítás függőben | Septuaginta |
-| Jób 26:5 | Jób 26:5 | הָרְפָאִ֥ים (hárfáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| Zsolt 88:11 | Zsolt(LXX) 87:11 | רְ֝פָאִ֗ים (refáím) | ἰατρός ([iatrosz](/szo/G2395)<sup class="strong" title="G2395 · orvos">G2395</sup>) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 2:18 | Péld 2:18 | רְ֝פָאִ֗ים (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| Péld 9:18 | Péld 9:18 | רְפָאִ֣ים (refáím) | γηγενής (gégenész) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 21:16 | Péld 21:16 | רְפָאִ֣ים (refáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| Ézs 14:9 | Ézs 14:9 | רְפָאִים֙ (refáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| Ézs 26:14 | Ézs 26:14 | רְפָאִ֖ים (refáím) | ἰατρός ([iatrosz](/szo/G2395)<sup class="strong" title="G2395 · orvos">G2395</sup>) | eltérő | adat/lxx_dontesek.tsv |
-| Ézs 26:19 | Ézs 26:19 | רְפָאִ֥ים (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| 2Sám 5:18 | 2Sám 5:18 | רְפָאִֽים (refáím) | τιτάν (titan) | eltérő | adat/lxx_dontesek.tsv |
-| 2Sám 5:22 | 2Sám 5:22 | רְפָאִֽים (refáím) | τιτάν (titan) | eltérő | adat/lxx_dontesek.tsv |
-| 2Sám 23:13 | 2Sám 23:13 | רְפָאִֽים (refáím) | Ραφαϊμ (rafaim) | eltérő | adat/lxx_dontesek.tsv |
-| 1Krón 11:15 | 1Krón 11:15 | רְפָאִֽים (refáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| 1Krón 14:9 | 1Krón 14:9 | רְפָאִֽים (refáím) | γίγας (gigasz) | eltérő | adat/lxx_dontesek.tsv |
-| Ézs 17:5 | Ézs 17:5 | רְפָאִֽים (refáím) | στερεός ([sztereosz](/szo/G4731)<sup class="strong" title="G4731">G4731</sup>) | eltérő | adat/lxx_dontesek.tsv |
-| Józs 15:8 | Józs 15:8 | רְפָאִ֖ים (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| Józs 18:16 | Józs 18:16 | רְפָאִ֖ים (refáím) | — | kutatói azonosítás függőben | Septuaginta |
-| Józs 17:15 | Józs 17:15 | וְהָֽרְפָאִ֑ים (vehárefáím) | — | kutatói azonosítás függőben | Septuaginta |
+| 1Móz 14:5 | 1Móz 14:5 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 15:20 | 1Móz 15:20 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 4Móz 13:34 | 4Móz(LXX) 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 2:11 | 5Móz 2:11 | רְפָאִ֛ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 2:20 | 5Móz 2:20 | רְפָאִ֤ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 3:11 | 5Móz 3:11 | רְפָאִים֒ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 3:13 | 5Móz 3:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Józs 12:4 | — | רְפָאִ֑ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
+| Józs 13:12 | — | רְפָאִ֔ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
+| 2Sám 21:16 | 2Sám 21:16 | רָפָ֗ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:18 | 2Sám 21:18 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:20 | 2Sám 21:20 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:22 | 2Sám 21:22 | רָפָ֖ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:4 | 1Krón 20:4 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:6 | 1Krón 20:6 | רָפָֽא (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:8 | 1Krón 20:8 | רָפָ֖א (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
+| Jób 26:5 | Jób 26:5 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Zsolt 88:11 | Zsolt(LXX) 87:11 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 2:18 | Péld 2:18 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 9:18 | Péld 9:18 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 21:16 | Péld 21:16 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 14:9 | Ézs 14:9 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 26:14 | Ézs 26:14 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 26:19 | Ézs 26:19 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 5:18 | 2Sám 5:18 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 5:22 | 2Sám 5:22 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 23:13 | 2Sám 23:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 11:15 | 1Krón 11:15 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 14:9 | 1Krón 14:9 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 17:5 | Ézs 17:5 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Józs 15:8 | — | רְפָאִ֖ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
+| Józs 18:16 | — | רְפָאִ֖ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
+| Józs 17:15 | — | רְפָאִ֑ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 
-*Összesítés: egyező=0, eltérő=18, LXX-minusz=0, kutatói azonosítás függőben=15, szamozas_elteres=0.*
+*Összesítés: egyező=0, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=28, szamozas_elteres=5.*
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#lxx -->
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-22 -->
 
-A motívum 33 helyéből 16 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 28. **Következtetés:** a helyek 48%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
-
-*Ez a blokk a `[ID: HODIT-001]` motívum 33 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 16 igehely ad legalább egy találatot (28 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 1 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Zsolt 88:11.*
+*Ez a blokk a `[ID: HODIT-001]` motívum 33 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 17 igehely ad legalább egy találatot (29 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
 #### 1Móz 14:5
 - Károli-KH: 5Móz 2:10-11
@@ -788,6 +505,9 @@ A motívum 33 helyéből 16 helyről mutat utalás más bibliai helyre a hagyom�
 #### 1Krón 20:8
 - Károli-KH: 2Sám 21:20-22
 
+#### Zsolt 88:11
+- Károli-KH: Zsolt 50:14-23
+
 #### Péld 9:18
 - Károli-KH: 1Tim 4:8
 
@@ -803,141 +523,125 @@ A motívum 33 helyéből 16 helyről mutat utalás más bibliai helyre a hagyom�
 - TSK: Ez 37:14 (Votes: 21)
 - TSK: Mt 27:52 (Votes: 16)
 - TSK: Ef 5:14 (Votes: 16)
-- Károli-KH: Ézs 25:8
-- Károli-KH: 1Thessz 4:16
+- Károli-KH: Ésa 25:8
+- Károli-KH: 1Thess 4:16
 - Károli-KH: Jel 20:4-5
 - Károli-KH: Luk 14:14
 - Károli-KH: Dán 12:2
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kereszthivatkozasok -->
 
-### Minősítés
-
-Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze egymással. Minél több hely kap ilyen kapcsolatot, annál erősebb a motívum külső megerősítése.<!-- olvasói -->
+### Minősítés *(kézi)*
 
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
-| Józs 15:8 | ✅ beépítve | H7497 teljes scan, „עֵמֶק רְפָאִים” — azonos mintázat, mint 2Sám 5:18/22 |
-| Józs 17:15 | ✅ beépítve | H7497 teljes scan, „אֶרֶץ הָרְפָאִים” — néptörzs-említés, mint Józs 12:4/13:12 |
-| Józs 18:16 | ✅ beépítve | H7497 teljes scan, „עֵמֶק רְפָאִים” — Benjámin törzsi határleírás |
+| Józs 15:8 | ✅ beépítve | H7497 teljes scan, "עֵמֶק רְפָאִים" — azonos mintázat, mint 2Sám 5:18/22 |
+| Józs 17:15 | ✅ beépítve | H7497 teljes scan, "אֶרֶץ הָרְפָאִים" — néptörzs-említés, mint Józs 12:4/13:12 |
+| Józs 18:16 | ✅ beépítve | H7497 teljes scan, "עֵמֶק רְפָאִים" — Benjámin törzsi határleírás |
 | H7496 nyolc előfordulása (Jób 26:5 stb.) | ✅ már a táblázatban, Strong-szám szinten megerősítve | a költői/halott-árnyak-értelem önálló kódja — nem új sor, hanem a meglévő sorok lexikai alátámasztása |
 | 4Móz 13:33 (téves hivatkozás) | ❌ javítva 13:34-re | a נְפִלִים szó a 34. versben áll, nem a 33.-ban — igehely-azonosítási hiba, nem tartalmi kérdés |
 | 1Móz 6:4 (נְפִילִים/גִּבֹּרִים) | ❌ elutasítva, indokolt (elhatárolás) | a רְפָאִים szótő ott nem fordul elő; a kapcsolat kizárólag tematikus — önálló motívum, `[ID: MENNY-001]`, l. `Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` |
 | 5Móz 1:4, 3:20, 3:22, 2:23 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | Óg/Básán tematikus szomszédság, nem H7497-előfordulás; egyedi minősítést igényelnének, ebben a körben nem történt meg |
 | Józs 13:19, 13:31 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | ua. — Básán-terület egyéb említései, tematikus szomszédság |
-| Jer 48:1, 48:23 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | Móáb-próféciák, „Refáim” szó nélkül |
-| Zsolt 105:23, 105:27, 106:22, 78:51 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | „Khám földje” tematikus szomszédság |
+| Jer 48:1, 48:23 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | Móáb-próféciák, "Refáim" szó nélkül |
+| Zsolt 105:23, 105:27, 106:22, 78:51 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | "Khám földje" tematikus szomszédság |
 | 1Krón 4:40 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | tematikus szomszédság, nem lexikai egyezés |
-| Named teacher (Hagin, Copeland, Roberts, Osborn, Capps, Prince, Wommack stb.) | ❌ gap, indokolt | nincs megbízható, elsődleges forrás a jóváhagyott listáról, amely kifejezetten az 1Móz 14:5 Refáim/Zuzim/Émim szakaszra vagy a Refáim-motívumra hivatkozna; a „giants in the land” téma áttételes, nem dedikált |
+| Named teacher (Hagin, Copeland, Roberts, Osborn, Capps, Prince, Wommack stb.) | ❌ gap, indokolt | nincs megbízható, elsődleges forrás a jóváhagyott listáról, amely kifejezetten az 1Móz 14:5 Refáim/Zuzim/Émim szakaszra vagy a Refáim-motívumra hivatkozna; a "giants in the land" téma áttételes, nem dedikált |
 
 A három ✅ igehely (Józs 15:8, 17:15, 18:16) beépítve a study 1. pontjának táblázatába. A H7496/H7497 Strong-szám szerinti megoszlás a 2. pontban rögzítve. A 4Móz 13:33→13:34 hiba minden előfordulási helyen javítva. Az 1Móz 6:4 explicit, kölcsönös elhatárolással kimaradt (l. a testvér-naplót). A 12 alacsony szavazatú TSK-jelölt **nyitva marad** — egyedi minősítést igényelnének, ami ebben a munkamenetben nem történt meg; a `NYITOTT_FELADATOK.md`-be vagy egy jövőbeli célzott körbe valók. A named teacher gap explicit, indokolt.
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
-
-Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.<!-- olvasói -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.*
 
-Ehhez a motívumhoz nincs rögzített kapcsolat.
+Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kapcsolatok -->
 
-### Alátámasztás
-
-Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.<!-- olvasói -->
+### Alátámasztás *(kézi)*
 
 A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
-
-A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
-A motívumhoz nincs rögzített motívumközi kapcsolat.
+A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
 
-*Proveniencia: `scope=id:HODIT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:HODIT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kapcsolodo -->
 
-## 6. Értelmezés
-
-A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.<!-- olvasói -->
+## 6. Értelmezés *(kézi)*
 
 ### Peshat
 
 A Szentírás együttesen egy különös kettősséget rajzol ki. Egyfelől a Refáim (és rokon nevű népek: Zuzim, Émim, Zamzummim, részben az Anákim is) történelmi, prózai szinten valóságos, nagy termetű népcsoportként jelennek meg, akik Kánaán és a szomszédos területek (Básán, Moáb, Ammón) korai lakói voltak — 1Móz 14-ben már Ábrám idejében is létező, majd a honfoglalás korára jórészt kihalt/felszívódott nép, akiknek utolsó ismert királya Óg volt. Másfelől ugyanez a szó a bölcsességi és prófétai irodalomban a halottak birodalmának, a Seólnak lakóit jelöli — erőtlen árnyakat, akik nem dicsérik Istent, és akikhez a gonosz sorsa vezet.
 
-**Peshat-kiegészítés — Refáim mint helynév** *(felvéve 2026.08.25)*: a Refáim-völgy (Jeruzsálem közelében) a nép után kapott, továbbélő helynév — ez egy **harmadik nyoma** annak a mintázatnak, hogy az egykor félelmetes nép mára csak névemlékként, földrajzi jelölőként létezik, akárcsak Básán „Refáim földje” elnevezése (Józs 12:4/13:12). A völgy a filiszteusok és Dávid csatáinak (2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9), ill. Ézsaiásnál egy aratási hasonlatnak (17:5) a színtere — a nép fizikailag egyik esetben sincs jelen, csak a névben.
+**Peshat-kiegészítés — Refáim mint helynév** *(felvéve 2026.08.25)*: a Refáim-völgy (Jeruzsálem közelében) a nép után kapott, továbbélő helynév — ez egy **harmadik nyoma** annak a mintázatnak, hogy az egykor félelmetes nép mára csak névemlékként, földrajzi jelölőként létezik, akárcsak Básán "Refáim földje" elnevezése (Józs 12:4/13:12). A völgy a filiszteusok és Dávid csatáinak (2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9), ill. Ézsaiásnál egy aratási hasonlatnak (17:5) a színtere — a nép fizikailag egyik esetben sincs jelen, csak a névben.
 
 ### Remez
 
-A mintázat, amely a szövegek elhelyezkedéséből kirajzolódik: a „Refáim” szó **útja a félelmetes élő hatalmasságtól a tehetetlen halottig** tükrözi magát a bibliai narratíva ívét. 1Móz 14:5-ben a Refáim még ellenség, akit egy pogány királyi koalíció ver le — Ábrám még nincs is jelen ekkor. 5Móz 3:11-re már csak egyetlen „maradék” (Óg) van belőlük, és annak vaságya emlékmű-kuriózumként említve. 2Sám 21-re már csak „a Rafá szülöttei” (négy egyén) maradnak, akiket Dávid vitézei (immár a valódi גִּבֹּרִים) egyenként győznek le. A költői szövegekben pedig a Refáim már csak emlék — halott árnyak, akik „nem kelnek fel” dicsérni Istent (Zsolt 88:11). **Isten népe előtt a valaha rettegett óriások fokozatosan eltűnnek, majd a halál birodalmába száműzve teljesen erőtlenné válnak.**
+A mintázat, amely a szövegek elhelyezkedéséből kirajzolódik: a "Refáim" szó **útja a félelmetes élő hatalmasságtól a tehetetlen halottig** tükrözi magát a bibliai narratíva ívét. 1Móz 14:5-ben a Refáim még ellenség, akit egy pogány királyi koalíció ver le — Ábrám még nincs is jelen ekkor. 5Móz 3:11-re már csak egyetlen "maradék" (Óg) van belőlük, és annak vaságya emlékmű-kuriózumként említve. 2Sám 21-re már csak "a Rafá szülöttei" (négy egyén) maradnak, akiket Dávid vitézei (immár a valódi גִּבֹּרִים) egyenként győznek le. A költői szövegekben pedig a Refáim már csak emlék — halott árnyak, akik "nem kelnek fel" dicsérni Istent (Zsolt 88:11). **Isten népe előtt a valaha rettegett óriások fokozatosan eltűnnek, majd a halál birodalmába száműzve teljesen erőtlenné válnak.**
 
 ### Drash
 
-A tanítás kettős. Egyfelől ez a motívum-komplexum azt mutatja be, hogy **a világ szemében legyőzhetetlennek tűnő hatalom Isten előtt átmeneti és véges** — legyen szó Kedor-Laomer hadjáratáról (aki maga is csak eszköz Isten tervében), Izrael honfoglalásáról (Óg és Szihón legyőzése, 5Móz 3), vagy Dávid győzelmeiről a Refáim-leszármazottak fölött. Másfelől — és ez a mélyebb, Ézs 14:9 által kimondott tanítás — **minden emberi nagyság, bármilyen „óriási”, végül ugyanoda kerül**: a Seólba, ahol már nincs különbség hatalmas és jelentéktelen között. A büszkeség és a testi/katonai erő nem menti meg az embert a halandóság sorsától.
+A tanítás kettős. Egyfelől ez a motívum-komplexum azt mutatja be, hogy **a világ szemében legyőzhetetlennek tűnő hatalom Isten előtt átmeneti és véges** — legyen szó Kedor-Laomer hadjáratáról (aki maga is csak eszköz Isten tervében), Izrael honfoglalásáról (Óg és Szihón legyőzése, 5Móz 3), vagy Dávid győzelmeiről a Refáim-leszármazottak fölött. Másfelől — és ez a mélyebb, Ézs 14:9 által kimondott tanítás — **minden emberi nagyság, bármilyen "óriási", végül ugyanoda kerül**: a Seólba, ahol már nincs különbség hatalmas és jelentéktelen között. A büszkeség és a testi/katonai erő nem menti meg az embert a halandóság sorsától.
 
 ### Sod
 
-Fegyelmezetten, csak a fentiekből levezetve: ha a „Refáim” szó egyetlen íve az élő félelmetességtől a halott erőtlenségig vezet, ez a szó maga válik jellé arra, amit a Szentírás egésze tanít a testi erőről — hogy az, ami e világban óriásinak tűnik, Isten szemszögéből mulandó árnyék. Ez rokon azzal a mintázattal, amit a már lezárt „hádész (seól) — a halottak birodalma” tematikus tanulmány rögzített: a halál birodalma kiegyenlítő erő, amely előtt a földi nagyság elenyészik.
+Fegyelmezetten, csak a fentiekből levezetve: ha a "Refáim" szó egyetlen íve az élő félelmetességtől a halott erőtlenségig vezet, ez a szó maga válik jellé arra, amit a Szentírás egésze tanít a testi erőről — hogy az, ami e világban óriásinak tűnik, Isten szemszögéből mulandó árnyék. Ez rokon azzal a mintázattal, amit a már lezárt "hádész (seól) — a halottak birodalma" tematikus tanulmány rögzített: a halál birodalma kiegyenlítő erő, amely előtt a földi nagyság elenyészik.
 
 ### ⚠️ Vitatott pontok
 
-**(a) Refáim = a nefilim/gibborim vérvonal folytatása, vagy önálló, „csupán” nagytermetű nép?**
-Egyes kortárs kutatók (**Michael S. Heiser**, *The Unseen Realm*, *Reversing Hermon* — az „isteni tanács” / divine council iskola képviselője) a Refáim-Anákim-Emim-Zamzummim csoportot tudatosan a 1Móz 6:4-i nefilim/gibborim vonal folytatásaként olvassák — arra hivatkozva, hogy 4Móz 13:34 kifejezetten „a Nefilimtől” származtatja az Anákimot, és hogy az ugariti rāpiʾūma-hagyomány félig-isteni jelleget hordoz. Ezzel szemben óvatosabb, filológiailag konzervatívabb kommentátorok (**Gordon Wenham**, **Kenneth Mathews**, **Richard Hess**) rámutatnak, hogy a 4Móz 13:34-i kijelentés **a rettegő kémek szubjektív túlzása**, nem a narrátor tárgyilagos állítása — a szöveg nem mondja ki tényként, hogy a vízözön után is léteztek volna hibrid lények, csupán azt rögzíti, mit gondoltak/mondtak a kémek. E két tábor között a projekt korábban már dokumentálta a rokon vitát (lásd „gibborim/nefilim — a hibrid utódok azonosítása” ⚠️ bejegyzés); a Refáim-kapcsolat ugyanezt a vitát örökli tovább, anélkül hogy eldöntené. 【NAPLO: 2026.09.10-én javítva 13:33-ról 13:34-re, valódi TAHOT-lekérdezés alapján — ez a két előfordulás kimaradt az eredeti javítási körből.】
+**(a) Refáim = a nefilim/gibborim vérvonal folytatása, vagy önálló, "csupán" nagytermetű nép?**
+Egyes kortárs kutatók (**Michael S. Heiser**, *The Unseen Realm*, *Reversing Hermon* — az "isteni tanács" / divine council iskola képviselője) a Refáim-Anákim-Emim-Zamzummim csoportot tudatosan a Gen 6:4-i nefilim/gibborim vonal folytatásaként olvassák — arra hivatkozva, hogy 4Móz 13:34 kifejezetten "a Nefilimtől" származtatja az Anákimot, és hogy az ugariti rāpiʾūma-hagyomány félig-isteni jelleget hordoz. Ezzel szemben óvatosabb, filológiailag konzervatívabb kommentátorok (**Gordon Wenham**, **Kenneth Mathews**, **Richard Hess**) rámutatnak, hogy a 4Móz 13:34-i kijelentés **a rettegő kémek szubjektív túlzása**, nem a narrátor tárgyilagos állítása — a szöveg nem mondja ki tényként, hogy a vízözön után is léteztek volna hibrid lények, csupán azt rögzíti, mit gondoltak/mondtak a kémek. E két tábor között a projekt korábban már dokumentálta a rokon vitát (lásd "gibborim/nefilim — a hibrid utódok azonosítása" ⚠️ bejegyzés); a Refáim-kapcsolat ugyanezt a vitát örökli tovább, anélkül hogy eldöntené. 【NAPLO: 2026.09.10-én javítva 13:33-ról 13:34-re, valódi TAHOT-lekérdezés alapján — ez a két előfordulás kimaradt az eredeti javítási körből.】
 
 **(b) Egyetlen szó két jelentéssel, vagy két homonim gyök?**
-A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb levantei/ugaritológiai kutatás (**Theodore J. Lewis**, *Cults of the Dead in Ancient Israel and Ugarit*; **Baruch Levine és Jean-Michel de Tarragon**, *Dead Kings and Rephaim*) egységes kulturális-vallási hátteret mutat ki: a Refáim/rāpiʾūma egy közös nyugat-sémi hagyomány, amely az ősi hősi-királyi ősök kultikus tiszteletét kötötte össze az alvilággal — a Biblia ezt a hagyományt polemikusan „üresíti ki” (a tisztelt ősi hősökből erőtlen árnyak lesznek). Ez a kérdés nyitott tudományos vita, nem eldöntött konszenzus.
+A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb levantei/ugaritológiai kutatás (**Theodore J. Lewis**, *Cults of the Dead in Ancient Israel and Ugarit*; **Baruch Levine és Jean-Michel de Tarragon**, *Dead Kings and Rephaim*) egységes kulturális-vallási hátteret mutat ki: a Refáim/rāpiʾūma egy közös nyugat-sémi hagyomány, amely az ősi hősi-királyi ősök kultikus tiszteletét kötötte össze az alvilággal — a Biblia ezt a hagyományt polemikusan "üresíti ki" (a tisztelt ősi hősökből erőtlen árnyak lesznek). Ez a kérdés nyitott tudományos vita, nem eldöntött konszenzus.
 
-## 6/b. Alkalmazás és tanítói egyezés
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
 
-### Alkalmazás és tanítványság
-
-Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
+### Alkalmazás és tanítványság *(kézi)*
 
 Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
-### Tanítói egyezés
-
-Nevesített bibliatanítók, akik a motívumról ugyanerre jutottak, forrásmegjelöléssel.<!-- olvasói -->
+### Tanítói egyezés *(kézi)*
 
 A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
-## 7. Módszertan és nyitott kérdések
-
-Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
+## 7. Módszertan és nyitott kérdések *(kézi)*
 
 *A sablon 0. pontja e study elkészültekor (v1, 2026.08.16) még nem létezett — ez a retroaktív pótlás.*
 
 1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v35, 2026.08.16, kiegészítve v43/v47-tel) ellenőrizve — a teljes lexikai ív már a study saját szövegében szerepel (1Móz 14:5, 15:20; 5Móz 2:10-11,20-21, 3:11,13; Józs 12:4/13:12; 2Sám 21:15-22/1Krón 20:4-8; Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19; a 2026.08.25-i Refáim-völgy kiegészítéssel: 2Sám 5:18,22, 23:13/1Krón 11:15, 14:9/Ézs 17:5).
 2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_14_bovitett.md` (a motívum a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
-3. **„Nyitva maradó szál” jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-ban.
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-ban.
 4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés (ezek az eszközök a study elkészülténél még nem léteztek).
 5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
 
-**Külön elhatárolási forrás:** a `PaRDeS_motivumok.md` naplóban e motívum (`[ID: HODIT-001]`) és az „Isten fiai — Nefilim — Gibborim” motívum (`[ID: MENNY-001]`) elhatárolása több körben (v21, v34, v35, v43) is dokumentálva — l. az 1. pont utáni jegyzetet is.
+**Külön elhatárolási forrás:** a `PaRDeS_motivumok.md` naplóban e motívum (`[ID: HODIT-001]`) és az "Isten fiai — Nefilim — Gibborim" motívum (`[ID: MENNY-001]`) elhatárolása több körben (v21, v34, v35, v43) is dokumentálva — l. az 1. pont utáni jegyzetet is.
 
 - [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van (1. Előfordulások, 2. Eredeti nyelvi összevetés, 3. PaRDeS keretrendszer, 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás, 6. Napló-frissítés).
-- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (H7497 teljes ÓSZ-scan, 25 előfordulás) és a `Karoli_kereszthivatkozasok.tsv` átnézésével. **Három, eddig dokumentálatlan igehely került elő** (Józs 15:8; 17:15; 18:16), felvéve az 1. pont táblázatába; a H7496/H7497 Strong-szám szerinti megoszlás tisztázva (l. 2. pont); egy igehely-hivatkozási hiba javítva (4Móz 13:33→13:34). 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott „STEPBible-ellenőrizve” állítás szerepelt — ez a sor annak korrekciója és a valódi kutatás eredménye.】
-- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a nefilim/gibborim (1Móz 6:4) kapcsolat explicit „tematikus, NEM lexikai”-ként jelölve (2. pont és az 1. pont utáni jegyzet).
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (H7497 teljes ÓSZ-scan, 25 előfordulás) és a `Karoli_kereszthivatkozasok.tsv` átnézésével. **Három, eddig dokumentálatlan igehely került elő** (Józs 15:8; 17:15; 18:16), felvéve az 1. pont táblázatába; a H7496/H7497 Strong-szám szerinti megoszlás tisztázva (l. 2. pont); egy igehely-hivatkozási hiba javítva (4Móz 13:33→13:34). 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt — ez a sor annak korrekciója és a valódi kutatás eredménye.】
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a nefilim/gibborim (1Móz 6:4) kapcsolat explicit "tematikus, NEM lexikai"-ként jelölve (2. pont és az 1. pont utáni jegyzet).
 - [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (HODIT-001) motívumára vonatkozó leleteket tartalmazza; a nefilim/gibborim anyag most explicit kereszthivatkozásként, nem beolvasztva szerepel.
 - [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel (nincs dedikált forrás a jóváhagyott listáról).
-- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs „Forrás:” bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
 
-✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v35, 2026.08.16) — a napló rögzíti, hogy ez a motívum „lezárt/önállóan feldolgozott témaként” szerepel, felhasználói explicit kérésre, a rendes ⭐ küszöb elérése előtt. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
+✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v35, 2026.08.16) — a napló rögzíti, hogy ez a motívum "lezárt/önállóan feldolgozott témaként" szerepel, felhasználói explicit kérésre, a rendes ⭐ küszöb elérése előtt. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
 
-**2026.09.10-i retroaktív v14-compliance frissítés:** „0. Forrás-összegyűjtés” szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be.
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be.
 
 **2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** három új igehely (Józs 15:8; 17:15; 18:16), H7496/H7497 Strong-szám tisztázás, igehely-hivatkozási javítás (4Móz 13:33→13:34, l. is `Isten_fiai_Nefilim_Gibborim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
 
 **Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`.
 
-„Szent Szellem”, kiejtések mindenütt, igehely-rövidítések szóköz nélkül, Károli teljes idézetekhez.
+„Szent Szellem", kiejtések mindenütt, igehely-rövidítések szóköz nélkül, Károli teljes idézetekhez.
 
 ## 8. Irodalom és idézés
 
