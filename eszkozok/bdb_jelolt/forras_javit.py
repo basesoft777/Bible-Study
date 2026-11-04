@@ -139,6 +139,7 @@ def general(ts, ts_heber=None, ts_atiras=None):
     ki.extend(kezi_hivatkozas_sorok(stat))
     ki.extend(heber_sorrend_sorok(stat, ts_heber or ts))
     ki.extend(atiras_sorok(stat, ts_atiras or ts))
+    ki.extend(kezi_szoveg_sorok(stat))
     return ki, stat
 
 
@@ -491,6 +492,48 @@ def kezi_hivatkozas_sorok(stat):
         stat['hivatkozas_kezi'] += 1
         ki.append([st, h[2]['sorszam'], h[2]['bdb_id'], 'hivatkozas_kezi', '', str(k), forras_alak, javitott, 'kezi', indok,
                    'manual'])
+    return ki
+
+
+# F123.GENKOR (DT-F181a): kézi szöveghelyesbítés a lapon álló, a szabályos osztályokon kívül eső forráshibákra. Mindkét nyers
+# forrás (DictBDB.json és BDB.lexicon) ugyanígy hibás, ezért gépi igazolás nincs; a sor a betűkészlet torz átírását (`atiras`, a
+# DT581 osztálya; a teljes betűkészlet-tábla visszafejtése N89) vagy a digitalizálásban elveszett zárójelet (`zarojel`) javítja.
+# `allapot=javitva`, proveniencia `manual`; a megjelenítés (bdb_rovidites.atiras_javit, ill. zarojel_javit) részszöveg szerint
+# cserél. Egy sor = egy alak: az angol forrásszövegé, vagy — a zárójelnél, ahol a fordítás más szöveg — a magyar fordításé (az
+# `indok` megnevezi); a `sorszam` a horgonyt (az angol részszöveget) hordozó táblasor. (strong, horgony, hiba, forras_alak,
+# javitott_alak, indok)
+KEZI_SZOVEG = [
+    ('H7121', "'†or°¹n", 'atiras', "'†or°¹n", 'Qorʾân',
+     'a „read aloud, recite (the \'†or°¹n)” a Korán átírása a betűkészlet torz kódjával (a „†” a Q/Ḳ, a „°” az álef, a „¹” a '
+     'hosszú â); a BDB.lexicon ugyanígy torz, de másutt a „Qoran” alakot hordozza (4×), és a forrás a Korán-helyeket „Qor”-ral '
+     'idézi (pl. BDB55 „Qor 2:82”); a magyar fordításban „Korán” (bdb_rovidites.ATIRAS_MAGYAR)'),
+    ('H7121', '†or°a¹n', 'atiras', '†or°a¹n', 'Qorʾân',
+     'ugyanannak a szónak („the †or°a¹n”, a kiesett arab főnév fordítása) második torz alakja; l. az előző sort'),
+    ('H2416', 'Leµi', 'atiras', 'Leµi', 'Leḥi',
+     'a „rightly read לֶ֫חְיָה to Leµi, compare Judg 15:9” a Lehi helynév átírása a torz „µ” (ḥ) kóddal; a BDB.lexicon a helynevet '
+     'másutt „Lehi” alakban hordozza (3×), és a Bír 15:9 Lehit nevezi meg; a magyar fordításban „Lehi”'),
+    ('H7121', 'be read aloud compare Qal 4)', 'zarojel', 'be read aloud compare Qal 4)', 'be read aloud (compare Qal 4)',
+     'angol forrásszöveg: a „(compare Qal 4)” nyitó zárójele a digitalizálásban elveszett (a DictBDB.json-ban és a BDB.lexicon-ban '
+     'is „compare Qal 4 ):”); a párhuzamos a. és c. pont „(compare Qal 3)”, „(compare Qal 5” alakja'),
+    ('H7121', 'be read aloud compare Qal 4)', 'zarojel', 'felolvastatni vö. Qal 4)', 'felolvastatni (vö. Qal 4)',
+     'a magyar fordítás ugyanezen helye (l. az előző sort)'),
+    ('H7121', 'be summoned (compare Qal 5:', 'zarojel', 'be summoned (compare Qal 5:', 'be summoned (compare Qal 5):',
+     'angol forrásszöveg: a „(compare Qal 5)” záró zárójele a digitalizálásban elveszett (a DictBDB.json-ban és a BDB.lexicon-ban '
+     'is „(compare Qal 5 : Isa 31:4”); a párhuzamos a., b. és d. pont a hivatkozást zárójelben zárja'),
+    ('H7121', 'be summoned (compare Qal 5:', 'zarojel', 'megidéztetni (vö. Qal 5:', 'megidéztetni (vö. Qal 5):',
+     'a magyar fordítás ugyanezen helye (l. az előző sort)'),
+]
+
+
+def kezi_szoveg_sorok(stat):
+    sorok = tabla_sorok()
+    ki = []
+    for st, horgony, hiba, forras_alak, javitott, indok in KEZI_SZOVEG:
+        r = next((x for x in sorok if x['strong'] == st and horgony in x['szoveg']), None)
+        if r is None:
+            raise SystemExit('HIBA: a kézi szövegsor horgonya nem található: %s %r' % (st, horgony))
+        stat['%s_kezi' % hiba] += 1
+        ki.append([st, r['sorszam'], r['bdb_id'], hiba, '', '', forras_alak, javitott, 'javitva', indok, 'manual'])
     return ki
 
 

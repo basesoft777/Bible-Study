@@ -9,8 +9,10 @@ Csak olvas; lapot, prózát, adatot nem javít. A Feed 9. kapuja (`muhely_allapo
 
 Ellenőrzések (azonosító — súlyosság):
     BELSO        belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor,
-                 gerinc, .tsv, manual, belső fájl; a Strong-szám, ahol mellette ott a héber/görög szó
-                 és a kiejtése — a táblázat „Strong” oszlopa kivétel, F123.INDOKLAS)        — BUKÁS
+                 gerinc, .tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög
+                 szó és a kiejtése — a jelölt alak (hivatkozás + felső index, DT-F181b) és a táblázat
+                 „Strong” oszlopa nem hiba; a „(kézi)” / „(generált)” szerzőségi jelölés a lap bármely
+                 látható sorában, a Tartalomjegyzékben is, DT-F181c)                      — BUKÁS
     MOTIVUM_ID   más motívum azonosítója link nélkül                                       — FIGYELMEZTETÉS
     PONT         „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS
     ANGOL        angol maradék és munkazsargon a szólistából                               — BUKÁS
@@ -19,7 +21,8 @@ Ellenőrzések (azonosító — súlyosság):
     ATIRAS       ugyanaz a héber/görög szó két kiejtéssel                                  — BUKÁS
     ATIRAS_VALT  a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen        — FIGYELMEZTETÉS
     KONYV        könyvrövidítés nem a `Konyv_normalizalo_tabla.tsv` alakjával              — BUKÁS
-    BDB_JEL      torzult jel a szövegben (^, ®, °, rafe, latin betű héber szóhoz tapadva, ,,) — BUKÁS
+    BDB_JEL      torzult jel a szövegben (^, ®, °, a BDB átírási betűkészletének ¹ µ £ ¥ ‰ ƒ ‡ ¢ jele, rafe,
+                 latin betű héber szóhoz tapadva, ,,)                                         — BUKÁS
     ZAROJEL      nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS)
     FUNKCIO_URES az 1. tábla „Funkció” oszlopában üres cella                               — BUKÁS
     IDEZET       az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés — BUKÁS
@@ -92,6 +95,8 @@ ANGOL_SOR_MIN = 3
 BDB_JEL = [
     (re.compile(r'(?<!\[)\^'), 'nyers ^ elválasztó'),
     (re.compile(r'[®°]'), 'torzult jel (® / °)'),
+    # F123.GENKOR: a DictBDB.json átírási betűkészletének többi torz jele (N89); a † (Abbott-Smith) és a ± (±1) jogos jel
+    (re.compile(r'[¹µ£¥‰ƒ‡¢]'), 'torzult jel (a BDB átírási betűkészlete: ¹ µ £ ¥ ‰ ƒ ‡ ¢)'),
     (re.compile('ֿ'), 'rafe (ֿ) pontjel a héber szóban'),
     (re.compile(r'[א-ת][֑-ׇ]*[A-Za-z]|[A-Za-z][א-ת]'), 'latin betű héber szóhoz tapadva'),
     (re.compile(r'[^\s,],,'), 'dupla vessző'),
@@ -145,6 +150,9 @@ def lathato(s):
     """A sor látható szövege: megjegyzés, horgony, link-cél és lábjegyzet-hivatkozás nélkül."""
     s = re.sub(r'<!--.*?-->', '', s)
     s = re.sub(r'<a id="[^"]*"></a>', '', s)
+    # a jelölt Strong-szám (DT-F181b): „[mizbéah](/szo/H4196)<sup class="strong" …>H4196</sup>” → „mizbéah H4196”
+    s = re.sub(r'\[([^\]]*)\]\((/szo/[^)]*)\)(?=<sup class="strong")', r'\1', s)
+    s = re.sub(r'<sup class="strong"[^>]*>([^<]*)</sup>', r' \1', s)
     s = re.sub(r'\]\([^)]*\)', ']', s)
     s = re.sub(r'\[\^[^\]]+\]', '', s)
     # a cellába vagy sorba ágyazott proveniencia (`scope=… | forras=… | ts=…`, „forrás: `fájl`”) nem olvasói próza
@@ -310,24 +318,44 @@ def ell_belso(sorok):
                 ki.append(talalat('MOTIVUM_ID', FIGY, s.n, kornyezet(s.szoveg, m),
                                   'motívum-azonosító link nélkül: ' + m.group(1), m.group(1)))
     ki += ell_belso_strong(sorok)
+    ki += ell_belso_szerzoseg(sorok)
+    return ki
+
+
+# F123.GENKOR (DT-F181c): a régi „(kézi)” / „(generált)” jelölés a prózát hamisan a kutatónak tulajdonította; a szerzőséget a
+# Kolofon mondata adja. A jelölés a lap bármely látható sorában hiba, a Tartalomjegyzékben is (ott állt a hamis magyarázat).
+SZERZOSEG_JEL = re.compile(r'\((?:kézi|generált)(?:, ha van)?\)')
+
+
+def ell_belso_szerzoseg(sorok):
+    ki = []
+    for s in sorok:
+        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.szakasz.startswith('Kolofon'):
+            continue
+        m = SZERZOSEG_JEL.search(kod_nelkul(s.szoveg))
+        if m:
+            ki.append(talalat('BELSO', BUKAS, s.n, kornyezet(s.szoveg, m), 'szerzőségi jelölés: ' + m.group(0),
+                              'szerzoseg'))
     return ki
 
 
 def ell_belso_strong(sorok):
     """BELSO, Strong-szám (F123.INDOKLAS): a Strong-szám az olvasói prózában, ahol mellette ott a héber/görög szó és a
-    kiejtése. A mérce az utófeldolgozó `strong_valtozas`-a (amit itt megfog, azt a generátor eltávolítja); kivétel a
-    táblázat „Strong” oszlopa, a címsor, az egyedül vagy láncban álló Strong-szám."""
+    kiejtése, jelöletlenül (csupaszon). A mérce az utófeldolgozó `strong_valtozas`-a (amit itt megfog, azt a generátor
+    jelölt alakra írja, DT-F181b; a jelölt alak védett, nem hiba); kivétel a táblázat „Strong” oszlopa, a címsor, az
+    egyedül vagy láncban álló Strong-szám."""
     import olvasoi_utofeldolg as OU
     olvasoi = {s.n for s in sorok if s.olvasoi and s.fajta != 'cim'}
     ki = []
     for n, regi, uj, generalt in OU.strong_valtozas('\n'.join(s.nyers for s in sorok)):
         if n + 1 not in olvasoi:
             continue
+        csupasz_uj = OU.csupasz_strongok(uj)
         for m in re.finditer(OU._STRONG, regi):
-            if m.group(0) not in uj or regi.count(m.group(0)) > uj.count(m.group(0)):
+            if OU.csupasz_strongok(regi).count(m.group(0)) > csupasz_uj.count(m.group(0)):
                 ki.append(talalat('BELSO', BUKAS, n + 1, kornyezet(regi, m),
-                                  'Strong-szám a szó és a kiejtése mellett: ' + m.group(0)
-                                  + ('' if generalt else ' (kézi rész: a forrásban javítandó)'), 'strong'))
+                                  'Strong-szám a szó és a kiejtése mellett, jelöletlenül: ' + m.group(0)
+                                  + ' (a generátor jelölt alakra írja: a lap elavult)', 'strong'))
                 break
     return ki
 
