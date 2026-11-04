@@ -2,7 +2,7 @@
 
 *#123 MIGRACIO2 · U1 (`munka: adat`) · takarékos menet · ág: `claude/hamart-u1-ff7c0c` · modell: claude-sonnet-5-5 · 2026-11-03*
 
-*Döntés nélküli mérés. Eszköz: `eszkozok/teljesseg_meres.py` (az ALVIL-001-nél készült, motívumfüggetlen). Soronkénti kimenet: `naplok/F123_teljesseg_HAMART-001.tsv` (2 889 sor, minden sor mellett a háló proveniencia-sora). Blokkok: `naplok/F123_teljesseg_HAMART-001_blokkok.tsv` (`naplok/F123_HAMART2_u1_blokkok.py`). Jelölt-sorok: `naplok/F123_U1_HAMART-001_jelolt_sorok.tsv` (83 blokk-sor: 80 `nyitva`, 3 `elutasítva` (N-F63e), még nincs beírva az `adat/jeloltek.tsv`-be: a #608 merge-e után).*
+*Döntés nélküli mérés. Eszköz: `eszkozok/teljesseg_meres.py` (az ALVIL-001-nél készült, motívumfüggetlen). Soronkénti kimenet: `naplok/F123_teljesseg_HAMART-001.tsv` (2 889 sor, minden sor mellett a háló proveniencia-sora). Blokkok: `naplok/F123_teljesseg_HAMART-001_blokkok.tsv` (`naplok/F123_HAMART2_u1_blokkok.py`). Jelölt-sorok: `naplok/F123_U1_HAMART-001_jelolt_sorok.tsv` (77 blokk-sor (83 blokk, a közös első versűek egy sorban): 74 `nyitva`, 3 `elutasítva` (N-F63e), még nincs beírva az `adat/jeloltek.tsv`-be: a #608 merge-e után).*
 
 ## 0. A mért állapot
 
