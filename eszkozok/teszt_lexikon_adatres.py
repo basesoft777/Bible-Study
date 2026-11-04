@@ -209,6 +209,22 @@ class ResTorzsAdatAg(unittest.TestCase):
         m = LG.kolofon_szerzoseg('X-001', [], atnezes_ut=nincs, res_sorok=res)
         self.assertIn('még nincsenek kiadva', m)
 
+    def test_szerzoseg_atnezes_idezet_nelkul(self):
+        """Az átnézésből csak a tény és a dátum kerül a lapra; az `idezet` (a felhasználó szavai) soha."""
+        import tempfile
+        res = {('X-001', 'kivonat'): {'fejlec': '## Kivonat', 'forras': 'tanulmany'}}
+        with tempfile.TemporaryDirectory() as d:
+            ut = os.path.join(d, 'lap_atnezesek.tsv')
+            with open(ut, 'w', encoding='utf-8') as f:
+                f.write('# fejléc\nid\tlap_commit\tdatum\tki\tidezet\tforras\n'
+                        'X-001\tabc\t2026.11.03\tfelhasználó\tha nincs bukás rendben van\tscope=manual\n'
+                        'X-001\tdef\t2026.11.04\tfelhasználó\tkiadás mehet\tscope=manual\n'
+                        'Y-001\tghi\t2026.11.05\tfelhasználó\tmás lap\tscope=manual\n')
+            m = LG.kolofon_szerzoseg('X-001', [{'proza_modell': 'claude-opus-5-5'}], atnezes_ut=ut, res_sorok=res)
+        self.assertIn('a szerző átnézte (2026.11.04) és jóváhagyta', m)
+        for idezet in ('ha nincs bukás', 'kiadás mehet', 'más lap', 'rendben van'):
+            self.assertNotIn(idezet, m)
+
     def test_elso_tagmondat_zarojelen_kivul(self):
         """F123.GENKOR (C2/C3): a vázlatsor zárójelen belül nem vág, és nyitott zárójel nem marad."""
         self.assertEqual(LG._elso_tagmondat('= emlékjel Ézs 55:13 (|| אוֺת; így Che), וגו 56:5; tovább'),

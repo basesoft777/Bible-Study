@@ -4563,15 +4563,18 @@ def kolofon_szerzoseg(motivum_id, kiadasok, atnezes_ut=None, res_sorok=None):
         return 'A lap minden szakasza az adattáblákból generált.'
     reszek = '(%s)' % ', '.join(nevek)
     ut = atnezes_ut or LAP_ATNEZESEK_TSV
-    atnezve = os.path.isfile(ut) and any((r.get('id') or '').strip() == motivum_id
-                                         and (r.get('ki') or '').strip() == 'felhasználó'
-                                         for r in L.read_tsv_skip_comments(ut))
+    # az átnézésből csak a tény és a dátum kerül a lapra; az `idezet` (a felhasználó szavai) belső nyilvántartás, soha
+    # nem olvasói szöveg
+    datumok = sorted((r.get('datum') or '').strip() for r in (L.read_tsv_skip_comments(ut) if os.path.isfile(ut) else [])
+                     if (r.get('id') or '').strip() == motivum_id and (r.get('ki') or '').strip() == 'felhasználó')
+    atnezve = datumok[-1] if datumok else ''
     if not kiadasok:
         return ('Az értelmező szakaszok %s még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az '
                 'adattáblákból generált.' % reszek)
     modell = (kiadasok[-1].get('proza_modell') or '').strip()
     if atnezve:
-        jovahagyas = 'a szerző átnézte és jóváhagyta'
+        jovahagyas = 'a szerző átnézte (%s) és jóváhagyta' % atnezve if atnezve.strip() else \
+            'a szerző átnézte és jóváhagyta'
     else:
         jovahagyas = 'a szerző jóváhagyta'
     if modell and modell != 'manual':
