@@ -1924,7 +1924,7 @@ forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely ember
 **Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
 átnézi (`lap_atnezesek.tsv`, 2.48, DT569); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
 
-Integritás: az `ellenoriz.py` 28. szabálya (fejléc pontosan a fenti; `tipus` és `gond` a zárt készletből; `id` létező motívum;
+Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` és `gond` a zárt készletből; `id` létező motívum;
 `datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
 `datum`. Állapot (2026-11-04): 0 sor.
 

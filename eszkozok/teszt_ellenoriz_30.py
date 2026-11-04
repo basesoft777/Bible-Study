@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/teszt_ellenoriz_28.py -- F123.LAPJAVIT (DT-F123f, SEMA 2.49): az
-eszkozok/ellenoriz.py 28. szabályának (`lap_javitasok.tsv`: séma, zárt értékkészlet,
+eszkozok/teszt_ellenoriz_30.py -- F123.LAPJAVIT (DT-F123f, SEMA 2.49): az
+eszkozok/ellenoriz.py 30. szabályának (`lap_javitasok.tsv`: séma, zárt értékkészlet,
 emberi jóváhagyó) tesztjei.
 
 Ideiglenes (a repón kívüli) adat/ könyvtárban fut; a negatív esetekben a szabálynak
 SÉRTÉS-t kell adnia.
 
-    python eszkozok/teszt_ellenoriz_28.py
+    python eszkozok/teszt_ellenoriz_30.py
 """
 
 import os
@@ -37,7 +37,7 @@ JO = {'id': 'HODIT-001', 'hely': '1/a, Zsolt 96:9', 'tipus': 'próza', 'gond': '
 class Szabaly28(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = tempfile.mkdtemp(prefix='teszt_ellenoriz_28_')
+        self.tmp = tempfile.mkdtemp(prefix='teszt_ellenoriz_30_')
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
@@ -50,7 +50,7 @@ class Szabaly28(unittest.TestCase):
                 f.write(T.join(r.get(k, '') for k in fejlec) + N)
 
     def futtat(self):
-        return E.szabaly28_lap_javitasok(self.tmp, MOTIVUMOK)
+        return E.szabaly30_lap_javitasok(self.tmp, MOTIVUMOK)
 
     def valtozat(self, **kw):
         r = dict(JO)
@@ -111,7 +111,7 @@ class Szabaly28(unittest.TestCase):
         """A repó táblája a valódi motívumlistával átmegy."""
         import general as G
         _, motivumok = G.tsv_beolvas(os.path.join(E.ALAPERTELMEZETT_ADAT, 'motivumok.tsv'))
-        s = E.szabaly28_lap_javitasok(E.ALAPERTELMEZETT_ADAT, {m['id'] for m in motivumok})
+        s = E.szabaly30_lap_javitasok(E.ALAPERTELMEZETT_ADAT, {m['id'] for m in motivumok})
         self.assertEqual(s.verdict, 'RENDBEN', s.peldak)
 
 

@@ -38,7 +38,7 @@ A tábla ideiglenes másolatához fűzött sor (a meglévő sorok változatlans�
 |---|---|---|---|---|---|---|
 | HODIT-001 | kivonat (1. mondat) | próza | szakszó | claude-opus-5-5 | PRÓBA (nincs jóváhagyás) | 2026.11.04 |
 
-- `ellenoriz.py` 28. szabály (`lap_javitas_hibak`): 0 hiba.
+- `ellenoriz.py` 30. szabály (`lap_javitas_hibak`): 0 hiba.
 - Ugyanez a sor `jovahagyta=claude-opus-5-5`-tel: SÉRTÉS („modellnév — jóváhagyni csak ember tud”).
 - Kolofon (`kolofon_lektoralas`): `| Emberi lektorálás | 1 hely (2026.11.04); lektorálók: PRÓBA (nincs jóváhagyás) |`
 

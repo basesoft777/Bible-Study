@@ -1697,7 +1697,7 @@ def szabaly27_gerinc_szocikkenkent(adat_dir):
 
 
 # ---------------------------------------------------------------------------
-# 28. F123.LAPJAVIT (DT-F123f, SEMA 2.49): lap_javitasok.tsv
+# 30. F123.LAPJAVIT (DT-F123f, SEMA 2.49): lap_javitasok.tsv
 # ---------------------------------------------------------------------------
 
 LAP_JAVITASOK_FEJLEC = ['id', 'hely', 'tipus', 'gond', 'regi', 'uj', 'javasolta', 'jovahagyta', 'datum',
@@ -1736,10 +1736,10 @@ def lap_javitas_hibak(fejlec, sorok, motivum_id_halmaz):
     return hibak
 
 
-def szabaly28_lap_javitasok(adat_dir, motivum_id_halmaz):
+def szabaly30_lap_javitasok(adat_dir, motivum_id_halmaz):
     """F123.LAPJAVIT (DT-F123f, SEMA 2.49): a `/lap-javit` naplója (SÉRTÉS, gátol). Hiányzó tábla: RENDBEN
     (a tábla opcionális; sor nélkül a kolofon sem ír semmit)."""
-    cim = '28. lap_javitasok.tsv (SEMA 2.49)'
+    cim = '30. lap_javitasok.tsv (SEMA 2.49)'
     ut = os.path.join(adat_dir, 'lap_javitasok.tsv')
     if not os.path.exists(ut):
         return Sor(cim, 'RENDBEN', megjegyzes='nincs tábla')
@@ -1814,7 +1814,7 @@ def main():
         tabla_sorok.append(szabaly25_proza_1a(args.adat))
         tabla_sorok.append(szabaly26_bdb_szakasz_hu(args.adat))
         tabla_sorok.append(szabaly27_gerinc_szocikkenkent(args.adat))
-        tabla_sorok.append(szabaly28_lap_javitasok(args.adat, motivum_id_halmaz))
+        tabla_sorok.append(szabaly30_lap_javitasok(args.adat, motivum_id_halmaz))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
