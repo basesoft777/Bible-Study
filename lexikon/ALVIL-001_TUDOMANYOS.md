@@ -1096,7 +1096,7 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H7585** · 62 vers a Septuagintában (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης (Hadész, G0086): 57 vers; καταβαίνω (katabainó, G2597): 16 vers; θάνατος (thanatosz, G2288): 15 vers; γῆ (gé, G1093): 11 vers; εἰμί (eimi, G1510): 11 vers; κατάγω (katagó, G2609): 10 vers; ψυχή (pszükhé, G5590): 9 vers; κύριος (küriosz, G2962): 8 vers; λέγω (legó, G3004): 8 vers; πᾶς (pasz, G3956): 8 vers
+**H7585** · 62 vers a Septuagintában (ebből 62 vers görög tartalmi szóval); leggyakoribb görög társak: ᾍδης (Hadész): 57 vers; καταβαίνω (katabainó): 16 vers; θάνατος (thanatosz): 15 vers; γῆ (gé): 11 vers; εἰμί (eimi): 11 vers; κατάγω (katagó): 10 vers; ψυχή (pszükhé): 9 vers; κύριος (küriosz): 8 vers; λέγω (legó): 8 vers; πᾶς (pasz): 8 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -1228,70 +1228,70 @@ A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuagi
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól) | ᾅδην (hadén) (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá) | ᾅδου (hadú) (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól) | θάνατος (thanatosz) | eltérő | adat/lxx_dontesek.tsv |
+| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól) | ᾅδῃ (hadé) (ᾅδης, Hadész) | egyező | Septuaginta |
 | Jób 17:12 | — | שְׁא֣וֹל (seól) | — | szamozas_elteres | Septuaginta |
 | Jób 17:15 | — | שְׁאֹ֣ל (seól) | — | szamozas_elteres | Septuaginta |
-| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
 | Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (seól) | — | kutatói azonosítás függőben | Septuaginta |
-| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól) | θάνατος (thanatosz) | eltérő | adat/lxx_dontesek.tsv |
+| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól) | ᾅδῃ (ᾅδης, Hadész) | egyező | Septuaginta |
+| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
 | Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (seálá) | — | kutatói azonosítás függőben | Septuaginta |
-| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól) | ᾅδην (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
 | Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól) | βόθρος (bothrosz) | eltérő | adat/lxx_dontesek.tsv |
-| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | Septuaginta |
-| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | Septuaginta |
+| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
+| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól) | ᾅδης (ᾅδης, Hadész) | egyező | Septuaginta |
+| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól) | ᾅδου (ᾅδης, Hadész) | egyező | Septuaginta |
 
 *Összesítés: egyező=57, eltérő=3, LXX-minusz=0, kutatói azonosítás függőben=2, szamozas_elteres=2.*
 

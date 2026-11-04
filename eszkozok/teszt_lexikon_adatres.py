@@ -117,7 +117,8 @@ class Minosites(unittest.TestCase):
 
     def test_megerosites_es_jeloltek(self):
         kh = {LG.L.to_step('ApCsel 2:21'): [{'Kapcsolódó igehely magyar megjelenítése': 'Jóel 2,32'}]}
-        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'nincs | ige'),
+        # F123.EGYEB óta a be nem sorolható elutasítási ok megállítja a generálást: a próba indoka besorolható
+        jel = [jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva', 'tartalmilag NEM releváns | ige'),
                jelolt('Zsolt 9:9', 'scan G1941', 'nyitva'),
                jelolt('Róm 10:12', 'Károli-KH ApCsel 2:21', 'beépítve'),
                jelolt('Mt 1:1', 'TSK x', 'elutasítva', mid='MAS-001')]
@@ -129,9 +130,24 @@ class Minosites(unittest.TestCase):
         self.assertNotIn('→ Róm 10:11 —', ki)      # cél nem előfordulás
         self.assertIn('(2 sor; beépítve 1, elutasítva 1)', ki)
         self.assertIn('<details>', ki)   # DT-F152a (b): csukva
-        self.assertIn('| Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19) | nincs \\| ige |', ki)
+        # F123.INDOKLAS: az 1/b. olvasói formája; a nyers forrás és az indoklás ` | ` utáni része lábjegyzetben
+        self.assertIn('| Igehely | Miért lett jelölt | Döntés és indok |', ki)
+        self.assertIn('| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^mj1] | '
+                      '**elutasítva** — ', ki)
+        self.assertIn('[^mj1]: forrás: `TSK Jóel 2:32 → Róm 10:11 (19)` · ige', ki)
+        self.assertIn('| Róm 10:12 | Károli-kereszthivatkozás[^mj2] | **beépítve**: ok |', ki)
         self.assertNotIn('scan G1941', ki)
         self.assertNotIn('Mt 1:1', ki)
+
+    def test_jelolt_tabla_dontes_ref_labjegyzetben(self):
+        """F123.INDOKLAS: a döntés gépi nyoma (`dontes_ref`) a lábjegyzetben, nem a táblacellában."""
+        j = dict(jelolt('Róm 10:11', 'TSK Jóel 2:32 → Róm 10:11 (19)', 'elutasítva',
+                        'a név nélküli forma nem tartozik ide'), dontes_ref='DT476 K2 · scope=manual | '
+                                                                            'forras=DONTESEK.md DT476 | ts=2026-11-01')
+        sorok, labj = LG.minosites_jelolt_sorok('PROBA-001', [j])
+        self.assertNotIn('DT476', sorok[0])
+        self.assertIn(': a név nélküli forma nem tartozik ide |', sorok[0])
+        self.assertIn('a döntés nyoma: `DT476 K2 · scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01`', labj[0])
 
     def test_ures(self):
         ki = LG.adatres_minosites('PROBA-001', ['Mt 1:1'], [], {}, {})

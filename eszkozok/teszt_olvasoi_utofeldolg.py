@@ -78,6 +78,52 @@ class TestBdb(unittest.TestCase):
         self.assertEqual(OU.bdb_sor('She®°ôl'), 'She®°ôl')
 
 
+class TestStrong(unittest.TestCase):
+    """F123.INDOKLAS: a szó és a kiejtése mellett álló Strong-szám kikerül az olvasói szövegből."""
+
+    def test_zarojel_a_szo_utan(self):
+        self.assertEqual(OU.strong_ki('a versben ἐπικαλέομαι áll, de ὄνομα (G3686) nélkül'),
+                         'a versben ἐπικαλέομαι áll, de ὄνομα nélkül')
+
+    def test_zarojelben_a_kiejtes_mellett(self):
+        self.assertEqual(OU.strong_ki('ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó G1941)'),
+                         'ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó)')
+        self.assertEqual(OU.strong_ki('A תְּהוֹם (tehóm, H8415) lexéma'), 'A תְּהוֹם (tehóm) lexéma')
+        self.assertEqual(OU.strong_ki('a מָלֵא (*málé*, H4390, "megtelni") ige'), 'a מָלֵא (*málé*, "megtelni") ige')
+
+    def test_a_szo_elott(self):
+        self.assertEqual(OU.strong_ki('a rokon H6089 עֶצֶב szót'), 'a rokon עֶצֶב szót')
+
+    def test_szo_nelkul_es_lancban_marad(self):
+        for s in ('a H7496/H7497 Strong-szám szerinti megoszlás', 'a kárá (H7121) és a sém (H8034)',
+                  'nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát',
+                  'TAHOT וְאֵין קוֹרֵא בְשִׁמְךָ (H0369 + H7121 + H9003 + H8034, 2. sz. birtokos rag)',
+                  '(TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is)',
+                  'nem JHVH (H3068) áll'):
+            self.assertEqual(OU.strong_ki(s), s, s)
+
+    def test_tabla_strong_oszlop_es_cim_marad(self):
+        szoveg = ('## 1. Előfordulások\n\n<!-- GENERÁLT-KEZDET: x -->\n| Szó | Kiejtés | Strong | Indoklás |\n'
+                  '|---|---|---|---|\n| שֵׁם | sém | H8034 | a שֵׁם (sém, H8034) szó |\n\n'
+                  '### H5303 — נְפִלִים (ne.phil)\n<!-- GENERÁLT-VÉGE: x -->\n')
+        ki = OU.alkalmaz(szoveg)
+        self.assertIn('| שֵׁם | sém | H8034 | a שֵׁם (sém) szó |', ki)
+        self.assertIn('### H5303 — נְפִלִים (ne.phil)', ki)
+        self.assertEqual(OU.strong_valtozas(ki), [])
+
+    def test_kezi_resz_erintetlen_de_jelzett(self):
+        """DT569: a kézi részt a generátor nem írja; a kapu mérője jelzi (generált-e = False)."""
+        szoveg = '## 6. Értelmezés *(kézi)*\n\nAz „oltár” (מִזְבֵּחַ, mizbéah, H4196) négy helyen áll.\n'
+        self.assertEqual(OU.alkalmaz(szoveg), szoveg)
+        v = OU.strong_valtozas(szoveg)
+        self.assertEqual(len(v), 1)
+        self.assertFalse(v[0][3])
+
+    def test_kod_es_proveniencia_erintetlen(self):
+        s = '`ὄνομα (G3686)` | scope=manual | forras=x (ὄνομα, G3686) | ts=2026-11-04'
+        self.assertEqual(OU.strong_ki(s), s)
+
+
 class TestAlkalmaz(unittest.TestCase):
     def test_hatarok(self):
         szoveg = '\n'.join([
