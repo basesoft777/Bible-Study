@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "5ea0bc81"
+   "commit": "e51d3cdc"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5239,6 +5239,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 229
+  "kesz_db": 232
  }
 }
