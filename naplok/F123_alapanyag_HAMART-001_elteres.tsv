@@ -1,0 +1,306 @@
+# GENERÁLT: naplok/F123_HAMART2_u1_alapanyag_osszevetes.py | scope=HAMART-001 (304 vers-említés) × adat/elofordulasok.tsv + adat/jeloltek.tsv (HAMART-001) | forras=split('\t'), tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md | ts=2026-11-03
+igehely	allapot_az_adatban	osztaly	kontextus	forras_sor
+1Ján 5:17	NINCS	egyéb említés	napló (egyéb említés)	N:70
+1Kor 15:33	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+1Kor 15:42	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+1Kor 15:50	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+1Kor 3:17	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+1Móz 10:15	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 10:16	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 10:17	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 10:18	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 10:19	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 10:9	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:195
+1Móz 12:3	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:83; N:37; N:55; N:154; N:266
+1Móz 13:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:195
+1Móz 16:5	J:elutasítva	napló-elutasítás/nyitva	napló 4/c (elutasított gerinc-scan)	N:209
+1Móz 18:21	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+1Móz 27:29	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+1Móz 3:1	NINCS	egyéb említés	napló (egyéb említés)	N:13
+1Móz 3:10	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:11	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:12	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:13	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:14	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:22; S:64; S:283; N:55; N:76; N:146; N:244; N:270
+1Móz 3:15	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:16	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:22; S:28; S:65; S:147; N:56; N:146
+1Móz 3:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); tanulmány-próza	S:7; S:22; S:28; S:66; S:107; S:114; S:115; S:116 …
+1Móz 3:18	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); tanulmány-próza	S:22; S:67; S:117; S:185; S:283; S:314; N:78; N:94 …
+1Móz 3:19	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:22; S:68; N:146
+1Móz 3:23	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:68; N:146
+1Móz 3:4	NINCS	egyéb említés	tanulmány-próza	S:7; S:13; S:39
+1Móz 3:7	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:8	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 3:9	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 49:5	J:elutasítva	napló-elutasítás/nyitva	napló 4/c (elutasított gerinc-scan)	N:209
+1Móz 49:7	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+1Móz 4:1	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:10	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:22; S:71; N:147; N:232
+1Móz 4:11	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 4/b (NYITVA HAGYVA); tanulmány-próza	S:22; S:71; S:283; N:55; N:79; N:94; N:147; N:164 …
+1Móz 4:12	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); tanulmány-próza	S:22; S:72; N:94; N:118; N:147; N:191; N:193
+1Móz 4:13	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:14	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:22; S:72; N:147
+1Móz 4:15	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:16	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:2	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:22; S:69; N:147
+1Móz 4:3	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:22; S:69; N:147
+1Móz 4:4	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:5	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:6	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:7	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/c (elutasított gerinc-scan); tanulmány-próza	S:22; S:70; N:60; N:147; N:214; N:233
+1Móz 4:8	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 4:9	NINCS	egyéb említés	tanulmány-próza	S:22
+1Móz 5:29	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:7; S:73; S:147; S:213; N:55; N:56; N:90; N:110 …
+1Móz 6:1	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan); tanulmány-próza	S:7; S:13; S:22; S:39; S:326; N:13; N:213
+1Móz 6:10	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:11	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 4/b (vegyes); napló 4/c (elutasított gerinc-scan); tanulmány-próza	S:7; S:13; S:22; S:39; S:76; S:95; S:96; S:105 …
+1Móz 6:12	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 4/c (elutasított gerinc-scan); tanulmány-próza	S:7; S:13; S:22; S:39; S:77; S:94; S:114; S:118 …
+1Móz 6:13	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 4/c (elutasított gerinc-scan); napló 6 (összegzés); tanulmány-próza	S:7; S:13; S:22; S:39; S:78; S:95; S:96; S:105 …
+1Móz 6:14	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:153; N:13
+1Móz 6:15	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:153; N:13
+1Móz 6:16	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:153; N:13
+1Móz 6:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:79; S:118; S:153; N:13 …
+1Móz 6:18	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:19	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:2	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:326; N:13
+1Móz 6:20	J:elutasítva	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:21	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:22	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:3	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:326; N:13
+1Móz 6:4	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:326; N:13
+1Móz 6:5	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); tanulmány-próza	S:7; S:13; S:22; S:39; S:74; S:120; N:13; N:94 …
+1Móz 6:6	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:28; S:39; S:290; N:13; N:229
+1Móz 6:7	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; S:75; N:13; N:149
+1Móz 6:8	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 6:9	NINCS	egyéb említés	napló (egyéb említés); tanulmány-próza	S:7; S:13; S:22; S:39; N:13
+1Móz 8:21	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 4/b (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:80; S:215; S:245; S:316; N:37; N:106; N:119; N:151 …
+1Móz 9:11	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:81; N:152
+1Móz 9:15	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:81; N:152
+1Móz 9:22	NINCS	egyéb említés	tanulmány-próza	S:22; S:290
+1Móz 9:23	NINCS	egyéb említés	tanulmány-próza	S:22; S:290
+1Móz 9:24	NINCS	egyéb említés	tanulmány-próza	S:22; S:290
+1Móz 9:25	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:22; S:82; S:290; N:55; N:84; N:153; N:230
+1Móz 9:26	NINCS	egyéb említés	tanulmány-próza	S:22; S:290
+1Móz 9:27	NINCS	egyéb említés	tanulmány-próza	S:22; S:290
+1Pét 3:19	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:198
+1Pét 3:20	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:198
+1Pét 4:7	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:201
+1Sám 14:24	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+1Sám 14:28	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+1Sám 15:23	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+1Sám 15:24	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+1Sám 26:19	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+1Tim 6:5	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:67; N:219
+2Kir 9:34	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+2Kor 11:3	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+2Kor 4:16	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:67; N:219
+2Kor 7:2	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+2Krón 34:11	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+2Krón 34:27	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:196
+2Móz 22:28	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+2Pét 1:4	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+2Pét 2:12	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:69; N:217; N:218
+2Pét 2:14	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:65; N:216
+2Pét 2:19	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+2Pét 2:5	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:198
+2Pét 3:10	J:nyitva	beépítettnek mondott	napló 4/b (BEÉPÍTVE)	N:179
+2Pét 3:12	J:nyitva	beépítettnek mondott	napló 4/b (BEÉPÍTVE)	N:179
+2Pét 3:6	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); tanulmány-próza	S:121; S:289; N:179
+2Pét 3:7	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); tanulmány-próza	S:121; S:289; N:179
+3Móz 26:20	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+3Móz 26:36	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+4Móz 22:12	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 22:6	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 23:7	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 24:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 5:18	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 5:19	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 5:22	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 5:24	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+4Móz 5:27	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+5Móz 21:23	NINCS	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:116; S:187; S:227; S:283; N:86; N:165; N:271
+5Móz 27:15	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:16	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:18	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:19	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:20	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:21	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:22	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:23	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:24	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:25	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:91; N:55; N:155
+5Móz 27:26	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:91; S:115; S:187; S:283; N:55; N:85; N:155; N:164 …
+5Móz 28:15	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 28:16	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:92; N:156
+5Móz 28:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:92; N:156
+5Móz 28:18	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:92; N:156
+5Móz 28:19	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE)	S:92; N:156
+5Móz 28:20	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 28:23	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 28:24	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 28:65	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 28:66	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 29:19	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 29:21	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:191
+5Móz 4:25	J:nyitva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan); napló 6 (összegzés)	N:58; N:211; N:250
+Bír 21:18	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Bír 2:19	J:nyitva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan); napló 6 (összegzés)	N:58; N:211; N:250
+Bír 5:23	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Dán 8:24	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+Ef 2:1	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:102; N:184
+Ef 2:3	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:102; N:184
+Ef 4:22	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+Ez 28:16	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (vegyes); tanulmány-próza	S:95; S:97; S:97; S:173; S:173; N:57; N:159; N:194
+Ez 7:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA); napló 6 (összegzés)	N:199; N:201; N:252
+Ez 7:23	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:95; S:97; S:173; N:57; N:159
+Ez 7:6	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA); napló 6 (összegzés)	N:199; N:252
+Ez 8:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:96; S:173; S:173; N:57; N:113; N:159
+Gal 3:10	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:115; N:64; N:65; N:155; N:164
+Gal 3:13	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:7; S:116; S:187; S:227; S:229; S:264; S:268; S:272 …
+Gal 3:14	NINCS	egyéb említés	tanulmány-próza	S:229; S:268
+Gal 6:8	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+Hab 1:2	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (vegyes); tanulmány-próza	S:106; S:175; N:57; N:160; N:194
+Hab 2:17	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:101; S:101; S:223; N:161
+Hab 2:8	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); tanulmány-próza	S:101; S:223; N:161
+Hós 4:1	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló 6 (összegzés); tanulmány-próza	S:108; S:289; N:177; N:245
+Hós 4:2	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló 6 (összegzés); tanulmány-próza	S:108; S:289; N:177; N:245
+Hós 4:3	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló 6 (összegzés); tanulmány-próza	S:108; S:289; N:177; N:245
+Hós 9:17	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:193
+Jak 3:10	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:65; N:216
+Jak 3:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Jel 11:18	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:118; S:119; S:181; S:186; S:225; S:315; N:67; N:167 …
+Jel 12:16	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:192
+Jel 19:2	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:119; S:186; N:68; N:168; N:246; N:268
+Jel 8:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:67; N:219
+Jer 11:3	J:elutasítva	beépítettnek mondott	tanulmány-tábla (beépített); napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	S:93; N:55; N:208
+Jer 12:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Jer 17:5	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés)	S:93; S:93; S:93; S:93; N:55; N:157
+Jer 17:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:103; N:120; N:180; N:181; N:231
+Jer 20:14	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Jer 20:15	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Jer 20:3	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:193
+Jer 20:4	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:193
+Jer 36:29	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+Jer 48:10	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Jer 49:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+Jer 4:14	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:101; N:181; N:231
+Jer 4:23	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:200; N:234
+Jer 4:28	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:200
+Jer 4:3	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Jer 51:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:199
+Jer 51:20	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+Jer 51:46	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:105; S:175; N:57; N:132; N:160
+Jer 6:7	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (vegyes); tanulmány-próza	S:104; S:175; N:57; N:160; N:194
+Jer 7:23	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Jer 7:24	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Jób 14:1	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Jób 16:18	J:nyitva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 4/b (NYITVA HAGYVA); napló 6 (összegzés)	N:190; N:192; N:232; N:250
+Jób 1:21	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Jób 21:17	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Jób 22:15	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Jób 22:17	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Jób 31:38	J:nyitva	napló-elutasítás/nyitva	napló 4/b (NYITVA HAGYVA)	N:190
+Jób 31:40	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Jób 33:27	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Jób 3:8	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Jób 5:5	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Jób 5:6	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Jób 5:7	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Jón 3:8	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló 6 (összegzés); tanulmány-próza	S:102; S:177; S:227; S:264; N:162; N:245
+Józs 23:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Józs 6:26	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Józs 9:23	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Júd 1:10	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:68; N:217
+Kol 2:22	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:69; N:218
+Luk 12:33	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:67; N:219
+Luk 13:27	NINCS	egyéb említés	napló (egyéb említés)	N:70
+Luk 19:22	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Luk 1:6	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:196
+Luk 3:6	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Luk 6:28	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Mal 1:14	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Mal 2:2	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Mal 3:9	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Mik 6:12	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:99; S:173; N:57; N:159
+Mk 11:21	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Mk 7:21	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:120; S:289; N:100; N:178
+Mk 7:22	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); tanulmány-próza	S:120; S:289; N:178
+Mk 7:23	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:120; S:289; N:100; N:178
+Mt 13:7	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Mt 15:19	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:120; S:289; N:98; N:121; N:178
+Mt 22:12	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Mt 25:26	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Mt 25:27	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Mt 25:41	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Mt 25:45	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187
+Mt 5:44	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Préd 1:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 1:14	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 1:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 1:3	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 2:11	NINCS	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 2:17	NINCS	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 2:22	NINCS	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 2:23	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 5:17	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Préd 7:29	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:105; N:182
+Préd 9:3	NINCS	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:104; N:182
+Péld 15:3	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Péld 22:5	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Péld 24:31	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Róm 12:14	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:66; N:215
+Róm 14:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Róm 1:28	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:99; N:183
+Róm 1:31	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:99; N:183
+Róm 2:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:196
+Róm 3:19	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:187; N:196
+Róm 5:12	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:13	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:14	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:15	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:16	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:17	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:18	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:19	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:20	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 5:21	NINCS	egyéb említés	tanulmány-próza	S:243
+Róm 8:20	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:114; S:128; S:215; N:109; N:166; N:268
+Róm 8:21	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/c (elutasított gerinc-scan); tanulmány-próza	S:114; S:128; S:181; S:215; N:69; N:166; N:218; N:268
+Róm 8:22	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:114; S:128; S:215; N:109; N:166; N:268
+Sof 1:9	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:100; S:173; N:57; N:159
+Sof 3:7	J:nyitva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan); napló 6 (összegzés)	N:58; N:211; N:250
+Tit 3:3	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/b (ELUTASÍTVA)	N:108; N:185
+Zsid 11:7	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:198
+Zsid 6:7	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:117; S:127; S:217; N:163; N:246; N:268
+Zsid 6:8	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (ELUTASÍTVA); napló 6 (összegzés); tanulmány-próza	S:117; S:127; S:185; S:217; S:314; N:65; N:163; N:189 …
+Zsolt 104:14	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Zsolt 104:15	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Zsolt 104:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Zsolt 109:10	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:193
+Zsolt 119:21	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:55; N:208
+Zsolt 11:5	J:elutasítva	egyéb említés	napló 4/b (vegyes)	N:194
+Zsolt 127:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Zsolt 140:11	NINCS	egyéb említés	napló 4/b (vegyes)	N:194; N:194
+Zsolt 14:1	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/c (elutasított gerinc-scan); napló 6 (összegzés); tanulmány-próza	S:94; S:278; S:283; N:58; N:87; N:158; N:211; N:245 …
+Zsolt 14:2	NINCS	beépítettnek mondott	napló 4/a (BEÉPÍTVE); napló (egyéb említés)	N:122; N:158
+Zsolt 14:3	NINCS	beépítettnek mondott	napló 4/a (BEÉPÍTVE); napló (egyéb említés)	N:122; N:158
+Zsolt 33:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Zsolt 33:14	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:197
+Zsolt 53:1	NINCS	egyéb említés	napló (egyéb említés)	N:88
+Zsolt 53:2	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:94; S:278; S:283; N:58; N:88; N:107; N:111; N:158 …
+Zsolt 53:3	NINCS	beépítettnek mondott	napló 4/a (BEÉPÍTVE); napló (egyéb említés)	N:111; N:158
+Zsolt 55:9	NINCS	egyéb említés	napló 4/b (vegyes)	N:194; N:194
+Zsolt 74:20	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); tanulmány-próza	S:98; S:173; N:57; N:159
+Zsolt 90:3	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:188
+Zsolt 90:7	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Zsolt 90:9	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:186
+Ámós 8:2	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA); napló 6 (összegzés)	N:199; N:252
+Ézs 24:5	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:107; S:289; N:112; N:176; N:245; N:266
+Ézs 24:6	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/b (BEÉPÍTVE); napló (egyéb említés); napló 6 (összegzés); tanulmány-próza	S:107; S:289; N:112; N:176; N:245; N:266
+Ézs 26:21	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:192
+Ézs 32:13	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Ézs 37:12	J:elutasítva	napló-elutasítás/nyitva	napló (egyéb említés); napló 4/c (elutasított gerinc-scan)	N:58; N:212
+Ézs 5:6	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
+Ézs 60:18	E	beépítettnek mondott	tanulmány-tábla (beépített); napló 4/a (BEÉPÍTVE); napló (egyéb említés); napló 4/b (vegyes); tanulmány-próza	S:103; S:175; N:57; N:160; N:194
+Ézs 7:23	J:elutasítva	napló-elutasítás/nyitva	napló 4/b (ELUTASÍTVA)	N:189
