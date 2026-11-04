@@ -1776,15 +1776,16 @@ class E32Teszt(unittest.TestCase):
 
     KIOSZTOTT = {'DT-F127b': 'DT277'}
 
-    def _fut(self, forras, relut='eszkozok/proba_kimenet.py', kiosztott=None):
+    def _fut(self, forras, relut='eszkozok/proba_kimenet.py', kiosztott=None, varo=None):
         with _IdeiglenesGyoker() as gy:
             _ir(gy, relut, forras)
-            eredeti = SZ._e32_kiosztasok
+            eredeti, eredeti_varo = SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo
             SZ._e32_kiosztasok = lambda: dict(self.KIOSZTOTT if kiosztott is None else kiosztott)
+            SZ._e32_kiosztasra_varo = lambda: dict(varo or {})
             try:
                 return SZ.e32_kiosztott_helyorzo_literalban([relut])
             finally:
-                SZ._e32_kiosztasok = eredeti
+                SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo = eredeti, eredeti_varo
 
     def test_pozitiv_visszairt_kiosztott_helyorzo_a_literalban(self):
         t = self._fut('x = 1\nprint("lásd DT-F127b döntés")\n')
@@ -1836,6 +1837,45 @@ class E32Teszt(unittest.TestCase):
 
     def test_negativ_nem_kiosztott_helyorzo_nem_jelez(self):
         self.assertEqual(self._fut('print("DT-F999z")\n'), [])
+
+    def test_pozitiv_kiosztasra_varo_helyorzo_pr_modban(self):
+        # F123.LAPJAVIT.5: a merge-kor kiosztando helyorzo mar a PR-en bukik (a #621 esete)
+        t = self._fut('cim = "31. szabaly (DT-F174a)"\n', kiosztott={}, varo={'DT-F174a': 'DT597'})
+        self.assertEqual([(x.szabaly, x.szint, x.sor) for x in t], [('E32', 'HIBA', 1)])
+        self.assertIn('DT-F174a', t[0].reszlet)
+        self.assertIn('DT597', t[0].reszlet)
+        self.assertIn('számfüggetlen', t[0].reszlet)
+
+    def test_negativ_kiosztasra_varo_megjegyzesben_es_docstringben(self):
+        forras = '"""Modul DT-F174a."""\nx = 1  # DT-F174a\n'
+        self.assertEqual(self._fut(forras, kiosztott={}, varo={'DT-F174a': 'DT597'}), [])
+
+    def test_negativ_kiosztasra_varo_kihagy_jelolessel(self):
+        self.assertEqual(self._fut('print("DT-F174a")  # e32-kihagy\n', kiosztott={},
+                                   varo={'DT-F174a': 'DT597'}), [])
+
+    def test_teljes_mod_a_varo_helyorzot_nem_nezi(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'eszkozok/k.py', 'print("DT-F174a")\n')
+            eredeti, eredeti_varo = SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo
+            SZ._e32_kiosztasok = lambda: {}
+            SZ._e32_kiosztasra_varo = lambda: {'DT-F174a': 'DT597'}
+            try:
+                self.assertEqual(SZ.e32_kiosztott_helyorzo_literalban(['__TELJES__']), [])
+            finally:
+                SZ._e32_kiosztasok, SZ._e32_kiosztasra_varo = eredeti, eredeti_varo
+
+    def test_kiosztasra_varo_az_ag_uj_fajljaibol(self):
+        # valodi (ideiglenes) gyoker: a dontesek/uj/ helyorzoje varo, az oroklott nem;
+        # a szimulacio lemezre nem ir (a kis fajl megmarad, a DONTESEK.md valtozatlan)
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'DONTESEK.md', '| DT5 | #5 | k |\n| DT-F42a | #42 | k |\n')
+            _ir(gy, 'eszkozok/szamkiosztas_oroklott.txt', 'DT-F42a\n')
+            _ir(gy, 'dontesek/uj/ag.md', '| DT-F174a | #174 | k |\n')
+            self.assertEqual(SZ._e32_kiosztasra_varo(), {'DT-F174a': 'DT6'})
+            self.assertTrue(os.path.exists(os.path.join(gy, 'dontesek', 'uj', 'ag.md')))
+            with open(os.path.join(gy, 'DONTESEK.md'), encoding='utf-8') as f:
+                self.assertNotIn('DT-F174a', f.read())
 
     def test_negativ_kiosztott_szam_nem_jelez(self):
         self.assertEqual(self._fut('print("DT277")\n'), [])
