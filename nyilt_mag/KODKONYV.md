@@ -10,7 +10,7 @@ Minden oszlop, érték és kód leírása magyarul és angolul. / Description of
 ## (nem exportált mezők)
 
 - `elofordulasok.tsv / funkcio (magyarázó rész)` = `termékréteg`: A funkció-címke utáni magyarázó mondat. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / The explanatory sentence after the function label. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
-- `elofordulasok.tsv / jelentes_hu` = `termékréteg`: A szótári jelentés magyar fordítása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / The Hungarian translation of the dictionary sense. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
+- `elofordulasok.tsv / jelentes_hu` = `termékréteg`: A szótári jelentés magyar fordítása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / The Hungarian translation of the dictionary meaning. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
 - `elofordulasok.tsv / kapcsolodas` = `termékréteg`: A vers kapcsolódásának szabad prózai magyarázata. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Free-prose explanation of how the verse connects to the motif. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
 - `kapcsolatok.tsv / funkcio` = `termékréteg`: A kapcsolat szerepének prózai leírása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose description of the link’s role. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
 - `kapcsolatok.tsv / indoklas` = `termékréteg`: A kapcsolat szerepének és bizonyosságának prózai indoklása. Értelmező próza vagy fizetős fordítás: a termékréteg része, nem része a csomagnak (adatréteg és termékréteg szétválik). / Prose rationale of the link’s role and certainty. Interpretive prose or paid translation: part of the product layer, not included (data layer and product layer are separate).
@@ -131,14 +131,14 @@ A szemantikai domén neve angolul, a forrásszótár szerint.
 
 A jelentés rövid angol glosszája a forrásszótárból.
 
-*The short English gloss of the sense from the source dictionary.*
+*The short English gloss of the meaning from the source dictionary.*
 
 
 ### `jelentes_azonosito`
 
 A jelentés azonosítója a forrásszótárban.
 
-*The identifier of the sense in the source dictionary.*
+*The identifier of the meaning in the source dictionary.*
 
 
 ### `lemma`
@@ -286,14 +286,14 @@ Az igehely Károli-számozással (pl. 1Móz 3:16); a héber/görög szöveget a 
 
 A szótári jelentés angolul, a szótár szövegéből.
 
-*The dictionary sense in English, from the dictionary text.*
+*The dictionary meaning in English, from the dictionary text.*
 
 
 ### `jelentes_szam`
 
 A szótári jelentés száma vagy tagolása (számozott jelentés, igetörzs-címke vagy „tagolatlan”).
 
-*The dictionary sense number or division (numbered sense, verb-stem label or “tagolatlan” = undivided).*
+*The dictionary meaning number or division (numbered meaning, verb-stem label or “tagolatlan” = undivided).*
 
 
 ### `karoli_szo`
@@ -337,11 +337,11 @@ A vers PaRDeS-szintje.
 
 - `pardes_szint` = `Drash`: a kifejtés szintje: a hely szerepe a motívum ívében / the level of exposition: the passage’s role in the motif’s arc
 - `pardes_szint` = `Drash/Sod`: több szint együtt: a kifejtés szintje: a hely szerepe a motívum ívében; a rejtett, titokzatos jelentés szintje / several levels together: the level of exposition: the passage’s role in the motif’s arc; the level of the hidden, mystical meaning
-- `pardes_szint` = `Peshat`: a szó szerinti, történeti-nyelvtani jelentés szintje / the literal, historical-grammatical sense
-- `pardes_szint` = `Peshat/Drash`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a kifejtés szintje: a hely szerepe a motívum ívében / several levels together: the literal, historical-grammatical sense; the level of exposition: the passage’s role in the motif’s arc
-- `pardes_szint` = `Peshat/Drash/Sod`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a kifejtés szintje: a hely szerepe a motívum ívében; a rejtett, titokzatos jelentés szintje / several levels together: the literal, historical-grammatical sense; the level of exposition: the passage’s role in the motif’s arc; the level of the hidden, mystical meaning
-- `pardes_szint` = `Peshat/Remez`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; az utalás szintje: kereszthivatkozás, párhuzam / several levels together: the literal, historical-grammatical sense; the level of allusion: cross-reference, parallel
-- `pardes_szint` = `Peshat/Sod`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a rejtett, titokzatos jelentés szintje / several levels together: the literal, historical-grammatical sense; the level of the hidden, mystical meaning
+- `pardes_szint` = `Peshat`: a szó szerinti, történeti-nyelvtani jelentés szintje / the literal, historical-grammatical meaning
+- `pardes_szint` = `Peshat/Drash`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a kifejtés szintje: a hely szerepe a motívum ívében / several levels together: the literal, historical-grammatical meaning; the level of exposition: the passage’s role in the motif’s arc
+- `pardes_szint` = `Peshat/Drash/Sod`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a kifejtés szintje: a hely szerepe a motívum ívében; a rejtett, titokzatos jelentés szintje / several levels together: the literal, historical-grammatical meaning; the level of exposition: the passage’s role in the motif’s arc; the level of the hidden, mystical meaning
+- `pardes_szint` = `Peshat/Remez`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; az utalás szintje: kereszthivatkozás, párhuzam / several levels together: the literal, historical-grammatical meaning; the level of allusion: cross-reference, parallel
+- `pardes_szint` = `Peshat/Sod`: több szint együtt: a szó szerinti, történeti-nyelvtani jelentés szintje; a rejtett, titokzatos jelentés szintje / several levels together: the literal, historical-grammatical meaning; the level of the hidden, mystical meaning
 - `pardes_szint` = `Remez`: az utalás szintje: kereszthivatkozás, párhuzam / the level of allusion: cross-reference, parallel
 - `pardes_szint` = `Remez/Drash`: több szint együtt: az utalás szintje: kereszthivatkozás, párhuzam; a kifejtés szintje: a hely szerepe a motívum ívében / several levels together: the level of allusion: cross-reference, parallel; the level of exposition: the passage’s role in the motif’s arc
 - `pardes_szint` = `Remez/Sod`: több szint együtt: az utalás szintje: kereszthivatkozás, párhuzam; a rejtett, titokzatos jelentés szintje / several levels together: the level of allusion: cross-reference, parallel; the level of the hidden, mystical meaning
@@ -358,7 +358,7 @@ A sor Strong-száma (H = héber, G = görög); üres, ha a sor nem lexikai horgo
 
 Melyik szótár jelentésére hivatkozik a sor.
 
-*Which dictionary’s sense the row refers to.*
+*Which dictionary’s meaning the row refers to.*
 
 - `szotar` = `BDB`: Brown–Driver–Briggs héber szótár (1906, közkincs) / Brown–Driver–Briggs Hebrew lexicon (1906, public domain)
 - `szotar` = `TBESG`: a Tyndale bővített Strong-számos görög rövid szótára (CC BY 4.0) / Tyndale Brief Lexicon of Extended Strongs for Greek (CC BY 4.0)
