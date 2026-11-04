@@ -39,7 +39,7 @@ A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a töb
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -213,7 +213,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 22 helyet vizsgáltunk meg jelöltként; elutasítva: 22. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (11), utána „a két szó nem egy mondatban áll” (4). A jelöltek forrása: Egyéb 19, Gépi keresés 2, Kutatói felvetés 1. **Következtetés:** kétszer annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (22, illetve 11). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
 
@@ -264,7 +264,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 [^k1]: forrás: `kollokacio G4151 G5590 | ‹K2›`
 [^k2]: forrás: `kollokacio G4151 G5590 | ‹K2›`
-[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · indoklás (nyers): A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem párhuzamos tagként említi egymás mellett; az „egy lélekben, egy érzéssel” két tagja együtt a közösség egységét mondja ki. A Thayer-szótár a πνεῦμα második jelentésénél megjegyzi, hogy itt a ψυχή helyén „szív” is állhatna, a ψυχή-t pedig az érzelmek székhelye jelentés alá, az ApCsel 4:32 mellé sorolja (adat/thayer_szakaszok.tsv, G4151 -/2/-, G5590 -/2/-). Határeset: a Mária-ének (Luk 1:46–47) mellérendelt tagjai bent vannak.
+[^k3]: forrás: `döntési fájl 8. szakasz (migrálva F1.6-ban)` · a döntés nyoma: `adat/thayer_szakaszok.tsv G4151 -/2/-, G5590 -/2/-`
 [^k4]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k5]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
 [^k6]: forrás: `rokon (G4151|G4152) × (G5590|G5591) ±1 vers | scope=TAHOT-teljes+TAGNT-teljes: (G4151 | G4152) × (G5590 | G5591) egy versben vagy ±1 versen belül, azonos fejezet | forras=konkordancia/TAGNT_kivonat.tsv, TAHOT_kivonat.tsv (lekerdez.load_tagnt/load_tahot), split('\t') | állapot: adat/elofordulasok.tsv, adat/jeloltek.tsv (ANTROP-001) | ts=2026-11-02T10:48Z`
@@ -291,7 +291,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a chaj (H2416) és a nefes (H5315), görögül a pneuma (G4151), a pneumatikosz (G4152), a pszükhé (G5590) és a pszükhikosz (G5591). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -778,9 +778,9 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó, G2198): 197 vers; ζωή (dzóé, G2222): 138 vers; κύριος (küriosz, G2962): 131 vers; πᾶς (pasz, G3956): 130 vers; λέγω (legó, G3004): 124 vers; εἰμί (eimi, G1510): 93 vers; γῆ (gé, G1093): 91 vers; θεός (theosz, G2316): 68 vers; θηρίον (thérion, G2342): 68 vers; ψυχή (pszükhé, G5590): 62 vers
+**H2416** · 440 vers a Septuagintában (ebből 440 vers görög tartalmi szóval); leggyakoribb görög társak: ζάω (dzaó): 197 vers; ζωή (dzóé): 138 vers; κύριος (küriosz): 131 vers; πᾶς (pasz): 130 vers; λέγω (legó): 124 vers; εἰμί (eimi): 93 vers; γῆ (gé): 91 vers; θεός (theosz): 68 vers; θηρίον (thérion): 68 vers; ψυχή (pszükhé): 62 vers
 
-**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé, G5590): 615 vers; κύριος (küriosz, G2962): 209 vers; πᾶς (pasz, G3956): 165 vers; λέγω (legó, G3004): 133 vers; εἰμί (eimi, G1510): 125 vers; θεός (theosz, G2316): 75 vers; ποιέω (poieó, G4160): 71 vers; υἱός (ühiosz, G5207): 60 vers; χείρ (kheir, G5495): 55 vers; ζάω (dzaó, G2198): 51 vers
+**H5315** · 672 vers a Septuagintában (ebből 672 vers görög tartalmi szóval); leggyakoribb görög társak: ψυχή (pszükhé): 615 vers; κύριος (küriosz): 209 vers; πᾶς (pasz): 165 vers; λέγω (legó): 133 vers; εἰμί (eimi): 125 vers; θεός (theosz): 75 vers; ποιέω (poieó): 71 vers; υἱός (ühiosz): 60 vers; χείρ (kheir): 55 vers; ζάω (dzaó): 51 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -881,7 +881,7 @@ A fenti szótári anyagon túli, kiegészítő szótári adatok. Ha nincs ilyen 
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-11-04`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -915,7 +915,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából: a kutató m
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
 
 A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -923,7 +923,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé G5590) | egyező | Septuaginta |
+| 1Móz 2:7 | 1Móz 2:7 | לְנֶ֥פֶשׁ (lenefes) | ψυχὴν (pszükhén) (ψυχή, pszükhé) | egyező | Septuaginta |
 
 *Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
@@ -931,7 +931,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
 
 A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 90. **Következtetés:** a helyek 82%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -1067,7 +1067,7 @@ A 90 utalásból 7 a motívum két saját helyét köti össze, ez 7 helyet éri
 
 **Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
 
 ## 5. Kapcsolatok
 
@@ -1089,7 +1089,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
@@ -1097,7 +1097,7 @@ A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-03`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
 
@@ -1170,7 +1170,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-03 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1180,7 +1180,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `ANTROP-001`
 - Cím: Pneuma/pszükhé megkülönböztetés
 - Státusz: publikálható (`v4`, 2026.11.03)
-- Generálva: 2026-11-03
+- Generálva: 2026-11-04
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
