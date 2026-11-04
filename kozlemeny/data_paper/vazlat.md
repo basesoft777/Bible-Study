@@ -1,6 +1,6 @@
 # Data paper — váz (F167.1)
 
-*Állapot: váz és minta-mondatok, a szöveg még nincs megírva. 2026-11-04. A követelmények forrása: `folyoirat_kovetelmenyek.md`.*
+*Állapot: váz és minta-mondatok. 2026-11-04. A követelmények forrása: `folyoirat_kovetelmenyek.md`. A kézirat angolul (`kezirat_en.md`) és magyarul, eltérő hangsúllyal (`kezirat_hu.md`, Digitális Bölcsészet „Labor”) elkészült (F167.2, F167.3), a számai a `szamok.py` kimenetéből; a lenti „Hiányzik” sorok közül az F162 és az F163 azóta a main-en van, a kitöltendő helyőrzők és a nyitott kérdések listája a kézirat végén áll.*
 
 ## 0. Választott folyóirat és indok
 
@@ -13,7 +13,7 @@
 
 **Alapszabály:** a cikk csak a nyílt adatmagot írja le. Az értelmező próza, a magyar BDB/Thayer és a kötet nem része (termékréteg). GitHub-URL sehol sem kanonikus: `<KANONIKUS_FORRAS_URL>`, `<DOI>`. Szerzői név, ORCID, intézmény, támogató csak helyőrző: `<SZERZO>`, `<ORCID>`, `<INTEZMENY>`, `<TAMOGATO>`.
 
-**Számok:** a szövegbe szám csak a mérés kimenetéből kerül; a váz minden számhelye `{{N: …}}` jelölt, mellette a lekérdezés. A mérésekhez egy tervezett eszköz kell (`kozlemeny/data_paper/szamok.py`, még nincs), amely az F162 export zárt, hash-elt csomagján fut, nem az élő táblákon, hogy a szám a DOI-val letétbe tett csomaghoz tartozzon.
+**Számok:** a szövegbe szám csak a mérés kimenetéből kerül; a váz minden számhelye `{{N: …}}` jelölt, mellette a lekérdezés. A mérésekhez az eszköz `kozlemeny/data_paper/szamok.py` (F167.2), amely az F162 export zárt, hash-elt csomagján fut, nem az élő táblákon, hogy a szám a DOI-val letétbe tett csomaghoz tartozzon.
 
 ## 1. Szakaszok (JOHD Data Paper sablon szerint, ≈ 1000–1500 szó összesen)
 
