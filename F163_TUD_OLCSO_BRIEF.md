@@ -5,9 +5,9 @@ kod: TUD_OLCSO
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: dontesre_var
 ad: öt rövid, nyilvános szöveg és egy CITATION.cff, amelyek a #86 terv 1.7 hiánytáblájának olcsó pontjait zárják (MI-nyilatkozat és szerzőségi szabály, Hays hét kritériuma a módszertanra leképezve, a PaRDeS-szint recepciós keretezése, az ókori közel-keleti határ kimondása)
-kovetkezo: Te: /kovetkezo (Opus-session; az értelmező szövegeknél modell-ellenőrzés kötelező)
+kovetkezo: "Te: ⛔ DT-F163a (szerzői felelősségvállalás, szerző neve) és DT-F163b (terméknév) — a helyőrzők kitöltése; a négy kozlemeny/ szöveg és a CITATION.cff kész (F163.1–F163.5, 2026-11-04); DT-F163c–d az orkesztrátor jóváhagyására"
 munka: ertelmezo
 olvas: [adat/SEMA.md, adat/kiadasok.tsv, MUNKAMENET.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, DONTESEK.md, LICENSE, "naplok/KIADAS_*_lektor.md"]
 ir: [kozlemeny/MI_NYILATKOZAT.md, kozlemeny/HAYS_LEKEPEZES.md, kozlemeny/PARDES_RECEPCIOS_KERET.md, kozlemeny/KOZEL_KELETI_HATAR.md, CITATION.cff]
@@ -59,4 +59,4 @@ A terv 1.7 szerint a tudományos megfelelőség öt olcsó pontja ma sehol sincs
 
 ## 5. Döntésnapló
 
-*(üres; új döntés helyőrzővel a `dontesek/uj/` alá)*
+- 2026-11-04: DT-F163a–d és N-F163a–c a `dontesek/uj/frosty-nash-80b433.md`, ill. `nyitott/uj/frosty-nash-80b433.md` fájlban; ⛔ a DT-F163a és a DT-F163b a felhasználóé.
