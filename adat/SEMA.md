@@ -1995,6 +1995,27 @@ minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vag
 az SDBH/SDGNT külön réteg; a `projekt_adat` a csomag saját adata (DT610). A nem exportált: a `nyitva` jelöltek
 (döntetlen), az értelmező próza, a lexikonlapok. A kapu BUKÁS, ha kizárt dataset neve vagy értéke a csomagban marad.
 
+### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT616, 2026-11-04)
+
+**Kézi** (a `kozlemeny/KOZEL_KELETI_HATAR.md` „Leginkább érintett motívumok” listájából; a próza-említés a lapok
+`grep`-keresésével igazolva). Egy sor egy motívum, amelynél a nemzetközi szakirodalom az ókori közel-keleti (főként
+ugariti) anyag bevonását várja. A lexikonlap Kolofonjának „Hatókör” bekezdése (`eszkozok/lexikon_general.py`
+`kolofon_kozlemenyek`) minden lapon kimondja, hogy a lap állításai a bibliai korpuszra vonatkoznak és közel-keleti
+összehasonlító réteg nincs; a soron álló motívumnál egy további mondat jelzi a szakirodalmi elvárást, és ha a
+`proza_emlites` nem üres, egy harmadik azt, hogy a próza közel-keleti említése értelmezés, nem lekérdezés eredménye.
+A mondatok sablonszövegek; kézi próza nem változik. Olvasás `split('\t')`; a `#`-sor megjegyzés.
+
+| Oszlop | Jelentés |
+|---|---|
+| `id` | motívum-id (2.1) |
+| `proza_emlites` | ha a lap értelmező prózája közel-keleti hátteret említ: az említés olvasói megnevezése (a Kolofon mondatába kerül, zárójelben); üres = a próza nem említ ilyet |
+| `forras` | `scope=… \| forras=… \| ts=…` |
+
+Kulcs: `id`. Új sor, ha egy motívum prózája közel-keleti hátteret kezd említeni, vagy a közlemény listája bővül.
+Állapot (2026-11-04): 3 sor — TEREMT-001 (Tiámat-vita), ALVIL-001 (említés nélkül), HODIT-001 (ugariti *rāpiʾūma*).
+
+---
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

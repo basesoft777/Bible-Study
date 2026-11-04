@@ -1952,6 +1952,65 @@ def szabaly33_osszesito_versszam(adat_dir):
                            if peldak else 'összesítő sor: %d' % len(osszesito)))
 
 
+# 35. szabaly (F168, 2026-11-04): a modszertani kozlemenyek (kozlemeny/, F163) a lapra kotve. Minden lap Kolofonjaban
+# ott all az MI-nyilatkozatra mutato hivatkozas es a „Hogyan idézd” bekezdes (a CITATION.cff-re mutatva), a kozos
+# Jelmagyarazatban a recepcios keretre mutato hivatkozas; a hivatkozott fajl letezik; GitHub-URL a projektre nem all
+# a lapon (a GitHub nem kanonikus forras). A szoveget a generator (lexikon_general.py, KOZLEMENY) adja, kezzel nem irjuk.
+KOZLEMENY_KOLOFON = (('](../kozlemeny/MI_NYILATKOZAT.md)', 'MI-nyilatkozat hivatkozása'),
+                     ('**Hogyan idézd.**', '„Hogyan idézd” bekezdés'),
+                     ('](../CITATION.cff)', 'CITATION.cff hivatkozása'))
+KOZLEMENY_JELMAGYARAZAT = (('](../kozlemeny/PARDES_RECEPCIOS_KERET.md)', 'recepciós keret hivatkozása'),)
+PROJEKT_GITHUB_RX = re.compile(r'github\.com/basesoft777/', re.I)
+KOZLEMENY_LINK_RX = re.compile(r'\]\((\.\./(?:kozlemeny/[^)\s]+|CITATION\.cff))\)')
+
+
+def _lap_szakasz(lap, cim):
+    """A `## <cim>` szakasz szövege a következő `## ` címig (vagy a lap végéig); nincs ilyen szakasz: ''."""
+    m = re.search(r'^## %s[^\n]*\n' % re.escape(cim), lap, re.M)
+    if not m:
+        return ''
+    k = re.search(r'^## ', lap[m.end():], re.M)
+    return lap[m.end():m.end() + k.start()] if k else lap[m.end():]
+
+
+def kozlemeny_hibak(lap, lex_dir):
+    """Egy lap 35. szabály szerinti hibái (üzenetek listája)."""
+    hibak = []
+    kolofon, jelm = _lap_szakasz(lap, 'Kolofon'), _lap_szakasz(lap, 'Jelmagyarázat')
+    for minta, nev in KOZLEMENY_KOLOFON:
+        if minta not in kolofon:
+            hibak.append('a Kolofonban nincs: %s' % nev)
+    for minta, nev in KOZLEMENY_JELMAGYARAZAT:
+        if minta not in jelm:
+            hibak.append('a Jelmagyarázatban nincs: %s' % nev)
+    for cel in sorted(set(KOZLEMENY_LINK_RX.findall(lap))):
+        if not os.path.isfile(os.path.normpath(os.path.join(lex_dir, cel))):
+            hibak.append('a hivatkozott fájl nem létezik: %s' % cel)
+    m = PROJEKT_GITHUB_RX.search(lap)
+    if m:
+        hibak.append('GitHub-URL a lapon: %s' % lap[m.start():m.start() + 60].split()[0])
+    return hibak
+
+
+def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
+    """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
+    (Kolofon: MI-nyilatkozat, „Hogyan idézd”, CITATION.cff; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
+    létezik, vagy a lapon GitHub-URL áll a projektre."""
+    cim = '35. Közlemény-hivatkozások a lapon (F168)'
+    lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    lapok = sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md'))
+    peldak = []
+    for nev in lapok:
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lap = f.read().replace('\r\n', '\n')
+        peldak += ['%s: %s' % (nev[:-len('_TUDOMANYOS.md')], h) for h in kozlemeny_hibak(lap, lex_dir)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: generátor + újragenerálás (python eszkozok/general.py --cel lexikon --id <ID> --ir)'
+                           if peldak else 'lap: %d' % len(lapok)))
+
+
 def main():
     parser = argparse.ArgumentParser(description='F8.5 -- SEMA §3 + Q-kapu gépi része')
     parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
@@ -2022,6 +2081,7 @@ def main():
         tabla_sorok.append(szabaly31_ures_szerkezeti_blokk(args.adat))
         tabla_sorok.append(szabaly32_olvasoi_kapu_kiadott(args.adat))
         tabla_sorok.append(szabaly33_osszesito_versszam(args.adat))
+        tabla_sorok.append(szabaly35_kozlemeny_hivatkozas(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

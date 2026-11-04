@@ -2047,5 +2047,40 @@ class E34Teszt(unittest.TestCase):
         self.assertEqual([x for x in t if x.szint == 'HIBA'], [])
 
 
+# ---------------------------------------------------------------------------
+# E35 (F169.3): a commitolt nyilt_mag/ naprakesz, ha a PR adatot vagy az exportgeneratort modositja
+# ---------------------------------------------------------------------------
+
+class E35Teszt(unittest.TestCase):
+    """E35: adat-tabla vagy exportgenerator valtozasakor a commitolt nyilt_mag/ egyezik az ujragenerald exporttal."""
+
+    def _fut(self, valtozott, lemez, uj, teljes=False):
+        with _IdeiglenesGyoker() as gy:
+            for rel, sz in lemez.items():
+                _ir(gy, 'nyilt_mag/' + rel, sz)
+            return SZ.e35_nyilt_mag_naprakesz(valtozott, teljes, root=gy, export_fn=lambda k: uj)
+
+    def test_pozitiv_egyezo_export_zold(self):
+        self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'x\n'}, {'a.tsv': 'x\n'}), [])
+
+    def test_negativ_elavult_fajl_hiba(self):
+        t = self._fut(['adat/motivumok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
+        self.assertEqual([(x.szabaly, x.szint, x.fajl) for x in t], [('E35', 'HIBA', 'nyilt_mag/a.tsv')])
+
+    def test_negativ_uj_motivum_hianyzo_fajl_hiba(self):
+        t = self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'x\n'}, {'a.tsv': 'x\n', 'b.tsv': 'y\n'})
+        self.assertEqual([x.fajl for x in t], ['nyilt_mag/b.tsv'])
+
+    def test_negativ_generator_valtozasa_is_kivalto(self):
+        t = self._fut(['eszkozok/nyilt_mag_export.py'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'})
+        self.assertEqual(len(t), 1)
+
+    def test_pozitiv_nem_erintett_pr_nem_fut(self):
+        self.assertEqual(self._fut(['lexikon/X.md'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}), [])
+
+    def test_pozitiv_teljes_modban_nem_fut(self):
+        self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}, teljes=True), [])
+
+
 if __name__ == '__main__':
     unittest.main()

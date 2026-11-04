@@ -51,6 +51,13 @@ A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap eg
 - **Drash** — normatív, következtető, alkalmazó.
 - **Sod** — fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül.
 
+A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagyarázat négyes sémájának kategóriáival mondja
+meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem
+kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A
+besorolást e munka adja, saját szabályai szerint; hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,
+azt a Tanítói egyezés dokumentálja, ahol van. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
+a szint (részletesen: [A PaRDeS-szint mint recepciós címke](../kozlemeny/PARDES_RECEPCIOS_KERET.md)).
+
 **Funkció:** a vers szerepe a motívum ívében — az `adat/SEMA.md` szerint
 szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum
 saját study-jából átvett megnevezéssel szerepel.
@@ -1179,7 +1186,8 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - Cím: Pneuma/pszükhé megkülönböztetés
 - Státusz: publikálható (`v4`, 2026.11.03)
 - Generálva: 2026-11-04
-- Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
+- Hely: `<KANONIKUS_FORRAS_URL>`
+- Idézési forma: a Kolofon „Hogyan idézd” bekezdése
 
 **Felhasznált szótárak:**
 - BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
@@ -1232,7 +1240,13 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
-**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált.
+**Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Alkalmazás és tanítványság, Módszertan és nyitott kérdések) mesterséges intelligencia (`claude-opus-5-5`) írta az adatok alapján; a szerző átnézte (2026.11.04) és jóváhagyta. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
+
+**Hogyan idézd.** A lap szövegét a szócikkek mint mű részeként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: TERMÉKNÉV] — szócikkek*, „Pneuma/pszükhé megkülönböztetés” (`ANTROP-001`), 2. kiadás (2026.11.04), `<KANONIKUS_FORRAS_URL>`; minden jog fenntartva. Az adatokat (motívum, előfordulások, kizárt helyek, döntések) a nyílt adatmagként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: TERMÉKNÉV] — nyílt adatmag*, adatkészlet, CC BY 4.0 (a nyílt kiadással), DOI: `<DOI>`. A két idézési egységet a [`CITATION.cff`](../CITATION.cff) írja le.
+
+**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti hihetőséget nem), [A módszer Hays hét kritériumának tükrében](../kozlemeny/HAYS_LEKEPEZES.md) mutatja be.
+
+**Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet ([Az ókori közel-keleti háttér határa](../kozlemeny/KOZEL_KELETI_HATAR.md)).
 
 | Mező | Érték |
 |---|---|
@@ -1256,7 +1270,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.03 | Az új cikk első kiadása: nulláról írt próza és 1/a, az olvasói kapu 0 BUKÁS-sal; a felhasználó átnézése után csak a generált szótári rész változott (a BDB-szakaszok magyar fordítása, szócikkenkénti BDB-gerinc). |
-| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. Az 1/b. blokk összesítője verseket számol, nem táblasort (1730 vers, ebből 1713 tizenegy összesítő sorban). |
+| 2 | 2026.11.04 | Tematikus index (Nave) kitöltve; az 1/b. blokkban megszűnt az „egyéb” jelölésforrás, és az elutasítás olvasói indoklása különvált a döntés nyomától; az üres 2/b. blokk kimaradt; a 3. blokk olvasói szövegéből kimaradtak a Strong-számok. Az 1/b. blokk összesítője verseket számol, nem táblasort (1730 vers, ebből 1713 tizenegy összesítő sorban). 2026.11.04: generált kiegészítés, a próza nem változott: a Kolofonba az MI-nyilatkozatra mutató hivatkozás, a „Hogyan idézd” bekezdés, a módszertani elvek (Hays-leképezés) és a hatókör (ókori közel-keleti határ), a Jelmagyarázatba a PaRDeS-szint recepciós keretezése került; a 8. blokkból kimaradt a GitHub-cím. |
 
 ---
 

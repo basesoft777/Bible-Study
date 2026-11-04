@@ -607,11 +607,33 @@ def blokk_tartalom(m):
 # Jelmagyarázat és rövidítések (közös szöveg minden oldalon, G10)
 # ---------------------------------------------------------------------------
 
+# A módszertani közlemények (`kozlemeny/`, F163) a lapról relatív hivatkozással érhetők el: a lap a `lexikon/` alatt áll,
+# ezért a `../kozlemeny/…` út a repóban és bármely, a könyvtárszerkezetet megtartó közzétételben is a fájlra mutat. GitHub-URL
+# nem kerül a lapra (a GitHub nem kanonikus forrás, 2026-11-04); a kanonikus közzétételi hely és a DOI helyőrző, amíg nincs meg.
+KOZLEMENY = {
+    'mi': '../kozlemeny/MI_NYILATKOZAT.md',
+    'hays': '../kozlemeny/HAYS_LEKEPEZES.md',
+    'recepcios': '../kozlemeny/PARDES_RECEPCIOS_KERET.md',
+    'kozel_keleti': '../kozlemeny/KOZEL_KELETI_HATAR.md',
+    'citation': '../CITATION.cff',
+}
+KANONIKUS_FORRAS_HELYORZO = '<KANONIKUS_FORRAS_URL>'
+DOI_HELYORZO = '<DOI>'
+TERMEKNEV_HELYORZO = '[HELYŐRZŐ: TERMÉKNÉV]'
+SZERZO_HELYORZO = '[HELYŐRZŐ: SZERZŐ NEVE]'
+
 JELMAGYARAZAT_TORZS = """**PaRDeS-szintek** (`sablonok/PaRDeS_gyorsreferencia.md`):
 - **Peshat** — a szöveg szerinti, szó szerinti értelem.
 - **Remez** — csak felismerés/azonosítás, következtetés nélkül.
 - **Drash** — normatív, következtető, alkalmazó.
 - **Sod** — fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül.
+
+A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagyarázat négyes sémájának kategóriáival mondja
+meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem
+kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A
+besorolást e munka adja, saját szabályai szerint; hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,
+azt a Tanítói egyezés dokumentálja, ahol van. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
+a szint (részletesen: [A PaRDeS-szint mint recepciós címke](%(recepcios)s)).
 
 **Funkció:** a vers szerepe a motívum ívében — az `adat/SEMA.md` szerint
 szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum
@@ -647,7 +669,7 @@ kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם sz
 szócikk szövegéből derül ki.
 
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
-(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«)."""
+(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).""" % KOZLEMENY
 
 
 def blokk_jelmagyarazat(m):
@@ -4393,15 +4415,16 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
     for fajl, licenc, _blokk_nev in fajl_licenc_blokk_lista:
         per_fajl.setdefault(fajl, set()).add(licenc)
 
-    github_url = ('https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/%s_TUDOMANYOS.md'
-                  % m['id'])
+    # a lap helye a kanonikus közzétételi hely (helyőrző, amíg nincs meg); GitHub-URL nem kerül a lapra, mert a GitHub
+    # nem kanonikus forrás (F168, 2026-11-04). A teljes idézési forma a Kolofon „Hogyan idézd” bekezdése.
     hogyan = [
         '**Hogyan hivatkozz:**',
         '- ID: `%s`' % m['id'],
         '- Cím: %s' % m.get('cim', EM_DASH),
         '- Státusz: %s (`%s`, %s)' % (m.get('statusz', EM_DASH), m.get('statusz_verzio', ''), m.get('statusz_datum', '')),
         '- Generálva: %s' % G.TS,
-        '- Fájl: `%s`' % github_url,
+        '- Hely: `%s`' % KANONIKUS_FORRAS_HELYORZO,
+        '- Idézési forma: a Kolofon „Hogyan idézd” bekezdése',
     ]
 
     szotar_fajlok = {}
@@ -4587,6 +4610,59 @@ def kolofon_szerzoseg(motivum_id, kiadasok, atnezes_ut=None, res_sorok=None):
     return '%s; %s. A többi szakasz az adattáblákból generált.' % (kezdet, jovahagyas)
 
 
+KOZEL_KELETI_TSV = os.path.join(ADAT, 'kozel_keleti_hatar.tsv')
+
+
+def kozel_keleti_sor(motivum_id, ut=None):
+    """A motívum sora az `adat/kozel_keleti_hatar.tsv`-ből (SEMA 2.51), vagy None (a motívum nem érintett, vagy a
+    tábla hiányzik)."""
+    ut = ut or KOZEL_KELETI_TSV
+    if not os.path.isfile(ut):
+        return None
+    for r in L.read_tsv_skip_comments(ut):
+        if (r.get('id') or '').strip() == motivum_id:
+            return r
+    return None
+
+
+def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
+    """A Kolofon közleményekre kötött szövege (F168): az MI-nyilatkozatra mutató mondat (a szerzőségi mondat után áll),
+    és három bekezdés: a „Hogyan idézd” (a szócikkek mint mű és a nyílt adatmag külön, a `CITATION.cff` két egysége
+    szerint), a módszertani elvek (Hays-leképezés) és a hatókör (az ókori közel-keleti határ). A hatókör-mondat minden
+    lapon áll; az érintett motívumnál (`kozel_keleti_hatar.tsv`) egy további mondat, és ha a próza közel-keleti
+    hátteret említ, egy harmadik. A szöveg sablon és adat, kézi próza nem kerül bele. A DOI, a kanonikus hely, a
+    terméknév és a szerző neve helyőrző, amíg nincs meg."""
+    mi = ('A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a '
+          '[Nyilatkozat a mesterséges intelligencia használatáról](%s) írja le.' % KOZLEMENY['mi'])
+    if kiadasok:
+        kiadas = '%s. kiadás (%s)' % (kiadasok[-1]['kiadas'].strip(), (kiadasok[-1].get('datum') or '').strip())
+    else:
+        kiadas = 'kiadás előtti változat, még nem idézhető'
+    idezes = ('**Hogyan idézd.** A lap szövegét a szócikkek mint mű részeként: %(szerzo)s: *%(termek)s — szócikkek*, '
+              '„%(cim)s” (`%(id)s`), %(kiadas)s, `%(url)s`; minden jog fenntartva. Az adatokat (motívum, előfordulások, '
+              'kizárt helyek, döntések) a nyílt adatmagként: %(szerzo)s: *%(termek)s — nyílt adatmag*, adatkészlet, '
+              'CC BY 4.0 (a nyílt kiadással), DOI: `%(doi)s`. A két idézési egységet a [`CITATION.cff`](%(cff)s) '
+              'írja le.' % {'szerzo': SZERZO_HELYORZO, 'termek': TERMEKNEV_HELYORZO, 'cim': m.get('cim') or m['id'],
+                             'id': m['id'], 'kiadas': kiadas, 'url': KANONIKUS_FORRAS_HELYORZO,
+                             'doi': DOI_HELYORZO, 'cff': KOZLEMENY['citation']})
+    modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
+               'Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti '
+               'hihetőséget nem), [A módszer Hays hét kritériumának tükrében](%s) mutatja be.' % KOZLEMENY['hays'])
+    hatokor = ('**Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) '
+               'vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, '
+               'ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet '
+               '([Az ókori közel-keleti háttér határa](%s)).' % KOZLEMENY['kozel_keleti'])
+    if kk_sor is not None:
+        hatokor += (' Ennél a motívumnál a nemzetközi szakirodalom a közel-keleti, főként ugariti anyag bevonását is '
+                    'várja; ez a lap ilyen összevetést nem végez.')
+        emlites = (kk_sor.get('proza_emlites') or '').strip()
+        if emlites:
+            hatokor += (' Ahol az értelmező szöveg közel-keleti hátteret említ (%s), az értelmezés, másodlagos '
+                        'irodalom nyomán: nem a lekérdezések eredménye, és az eredeti közel-keleti szövegen nem '
+                        'ellenőriztük.' % emlites)
+    return mi, [idezes, modszer, hatokor]
+
+
 LAP_JAVITASOK_TSV = os.path.join(ADAT, 'lap_javitasok.tsv')
 
 
@@ -4665,7 +4741,10 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
             if szoveg not in megjelolesek:
                 megjelolesek.append(szoveg)
 
-    torzs = '**Szerzőség.** %s\n\n' % kolofon_szerzoseg(m['id'], kiadasok) + '\n'.join(metaadat_sorok)
+    kk_sor = kozel_keleti_sor(m['id'])
+    mi_mondat, kozlemeny_bekezdesek = kolofon_kozlemenyek(m, kiadasok, kk_sor)
+    torzs = ('**Szerzőség.** %s %s\n\n' % (kolofon_szerzoseg(m['id'], kiadasok), mi_mondat)
+             + ''.join(b + '\n\n' for b in kozlemeny_bekezdesek) + '\n'.join(metaadat_sorok))
     if kiadas_jegyzek:
         torzs += '\n\n' + '\n'.join(kiadas_jegyzek)
     torzs += '\n\n---\n\n' + '\n'.join(forras_sorok)
@@ -4674,7 +4753,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
-    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv', 'adat/res_forras.tsv'} | ({'adat/kiadasok.tsv', 'adat/lap_atnezesek.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set())),
+    return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv', 'adat/res_forras.tsv'} | ({'adat/kiadasok.tsv', 'adat/lap_atnezesek.tsv'} if kiadasok else set()) | ({'adat/lap_javitasok.tsv'} if lektoralas else set()) | ({'adat/kozel_keleti_hatar.tsv'} if kk_sor else set())),
                            sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs, olvasoi('kolofon'))
 
 

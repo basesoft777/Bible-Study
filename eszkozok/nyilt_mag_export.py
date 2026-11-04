@@ -40,6 +40,8 @@ GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FEJLEC = ('# GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
           'szerkesztendő; a „#” kezdetű sor megjegyzés.')
 KOD_FEJLEC = FEJLEC
+FEJLEC_EN = ('# GENERATED: export of the PaRDeS open core (CC BY 4.0), generated from the project data — do not '
+             'edit by hand; a line starting with "#" is a comment.')
 
 # --- a licencszűrés
 ENGEDETT_CIMKE = {'közkincs', 'CC0 1.0', 'CC BY 4.0'}
@@ -519,6 +521,45 @@ def ismert_hibak(sz):
     return '\n'.join(ki)
 
 
+def known_issues_en(sz):
+    """KNOWN_ISSUES.md: az `ISMERT_HIBAK.md` angol megfelelője (ugyanazok a mért számok, ugyanaz a tartalom)."""
+    kh = kh_meres()
+    szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'not measured'
+    ki = ['# Known Errors in the Source Data', '', FEJLEC_EN, '',
+          'The makers of the open core state here the source errors that their own measurements revealed, and how '
+          'the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result '
+          'is not a negative finding.', '',
+          "## 1. Károli cross-references: a copy of another verse's list", '',
+          'Part of the cross-reference table of the Károli Bible (the cross-references of the Károli edition, KH) '
+          'carries not the list of its own verse but that of another verse (for example, the rows of Acts 2:27 are '
+          'identical to those of Acts 7:14; Isa 34:11 = Isa 40:11; Ps 116:13 = Ps 140:4).', '',
+          '| Measure | Value |', '|---|---|',
+          '| source verses in the KH table (with a cross-reference list) | %s |' % szam('forrasvers'),
+          '| KH rows in total | %s |' % szam('kh_sor'),
+          '| list identical word for word to that of another source verse | %s |' % szam('azonos'),
+          '| of these, suspect (copied) source verses | %s |' % szam('gyanus'),
+          '| KH rows of the suspect lists | %s |' % szam('gyanus_sor'), '',
+          'A source verse is **suspect** if its list is identical word for word to that of another source verse, '
+          'no element of its own list is supported (neither the TSK context of ±3 verses nor the back-reference of '
+          'the target confirms it), while the list of the verse with the identical list is supported.', '',
+          '**Handling.** The open core does not contain the KH table data, and none of its rows builds on it: '
+          'candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and hand-made '
+          'assessment, marked with the search mode "Károli cross-reference". The limit: the measurement '
+          'catches the copy-type error, not an individual faulty list that is not duplicated. Correcting the faulty '
+          'lists is an open task of the project; after the correction the measures will change.', '',
+          '## 2. Semantic domains: incomplete coverage', '',
+          "The separate layer (`cc_by_sa_reteg/`) contains the UBS SDBH/SDGNT semantic domains for the lexical "
+          "bases (Strong's numbers) of the package. The domain data cover about 90% of the Old Testament "
+          'vocabulary: a missing entry is **not a negative finding**, and the domain is a support, not a substitute '
+          'for the definition of the motif.', '',
+          '## 3. Machine alignment of the Károli word', '',
+          "The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: "
+          "the alignment of the Károli word with the Strong's number was done by machine, and only a "
+          'high-confidence pair may justify a row. The mode states how the word was identified, not that a human '
+          'verified the alignment.', '']
+    return '\n'.join(ki)
+
+
 def export(kimenet):
     CSOPORT_ELTERES.clear()
     lic = Licenc()
@@ -773,6 +814,7 @@ def export(kimenet):
 
     # --- ismert hibák
     fajlok['ISMERT_HIBAK.md'] = ismert_hibak(stat)
+    fajlok['KNOWN_ISSUES.md'] = known_issues_en(stat)
 
     # --- kódkönyv (az adat/nyilt_kodkonyv.tsv-ből: a TSV és az olvasható változat)
     kk_fej, kk = tsv('adat/nyilt_kodkonyv.tsv')
@@ -802,14 +844,14 @@ def export(kimenet):
 
     # --- OLVASSEL.md
     sorszamok = ''.join('| `%s` | %d |\n' % (k, v) for k, v in sorted(stat.items()))
-    ol = ['# PaRDeS nyílt mag — olvass el', '', FEJLEC, '',
+    ol = ['# PaRDeS nyílt mag — olvass el', '', FEJLEC, '', '*English version: `README.md`.*', '',
           '**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma '
           'külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.', '',
           '**Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, '
           'az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az '
           'adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok '
           'és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).', '',
-          '**Ismert hibák:** l. `ISMERT_HIBAK.md`.', '',
+          '**Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).', '',
           '## Fájlok és sorszámuk', '', '| Fájl | Sor |', '|---|---|', sorszamok.rstrip('\n'), '',
           '## Licencszűrés', '',
           'A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz '
@@ -847,6 +889,55 @@ def export(kimenet):
           'bájtazonos.', '']
     fajlok['OLVASSEL.md'] = '\n'.join(ol)
 
+    # --- README.md (az OLVASSEL.md angol megfelelője: ugyanaz a tartalom)
+    re_ = ['# PaRDeS Open Core — Read Me', '', FEJLEC_EN, '',
+           '*Magyar változat: `OLVASSEL.md`.*', '',
+           "**Licence:** CC BY 4.0 (the open core's own data and text). The contents of the `cc_by_sa_reteg/` "
+           'directory are under a separate licence, CC BY-SA 4.0; see the `OLVASSEL.md` there.', '',
+           '**What this is.** The open core of a study of biblical motifs (the PaRDeS method): the defining '
+           'features of the motifs, the list of occurrences, the excluded passages with reasons, the relations '
+           'between passages and the decision log. The files are reader-facing views generated from the data; '
+           'working marks are resolved. The columns and codes are described in `kodkonyv.tsv` / `KODKONYV.md` '
+           '(Hungarian and English).', '',
+           '**Known errors:** see `KNOWN_ISSUES.md`.', '',
+           '## Files and their row counts', '', '| File | Rows |', '|---|---|', sorszamok.rstrip('\n'), '',
+           '## Licence filtering', '',
+           "The filtering follows the project's licence inventory. **Excluded sources** (the package contains no "
+           'value from them): ' + ', '.join('`%s`' % k for k in kizartak) + '. The reason for each is given in '
+           'the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the '
+           "project's closed derived layer). This is an inventory, not a legal opinion.", '',
+           '## Place of publication', '',
+           'The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a placeholder, filled in '
+           'at publication). A version is identified by the release identifier (`RELEASE.txt`: the date of the '
+           'data state and the content hash), not by a development repository or a commit.', '',
+           '## Citation and the use of artificial intelligence', '',
+           'With the release, citation metadata (Citation File Format) and a statement on the use of artificial '
+           'intelligence are provided at the place of publication; their fields to be completed by the author are '
+           'placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this '
+           'package) and the entries as a related work (all rights reserved).', '',
+           '## Group exclusion', '',
+           'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
+           'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '
+           'and `kizaras_csoportok.tsv` lists all verses of the group. The rationale of a summary row applies to '
+           'the whole group.', '',
+           '## What is in it and what is not (data layer and product layer)', '',
+           '**Included (data layer):** the motif identifier, title and exclusion criterion; the occurrences '
+           '(passage, lexical base, dictionary meaning, Károli word); the exclusions and inclusion decisions with '
+           'rationale; the relations; provenance (the naming of the source, its licence, the type of query, the '
+           'date); the decision log.', '',
+           '**Not included (product layer):** the interpretive prose (summary, interpretation, passage-by-passage '
+           'exposition), the Hungarian dictionary translations, the volume material and the lexicon pages.', '',
+           '## What is not in the package', '',
+           '- Candidates in the `nyitva` (open, not yet decided) state: %d.' % nyitva_db,
+           "- The interpretive prose, the paid layer (Hungarian dictionary translations, Károli text with "
+           "Strong's numbers), the studies and the lexicon pages.",
+           '- Internal working marks: identifiers, working files, query traces. Where a decision is referred to, '
+           'the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.', '',
+           '## Verification', '',
+           'The file `ELLENORZO_OSSZEG.sha256` contains the SHA-256 sum of every file; rerunning the export is '
+           'byte-identical.', '']
+    fajlok['README.md'] = '\n'.join(re_)
+
     # --- ellenőrző összeg
     sor = []
     for rel in sorted(fajlok):
@@ -860,6 +951,8 @@ def export(kimenet):
     datum = max(datumok) if datumok else 'nincs rögzítve'
     fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
                             'kozzeteteli_hely: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
+    fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
+                             'publication_place: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
                     'sd_db': len(sd), 'strong_db': len(strongok),
