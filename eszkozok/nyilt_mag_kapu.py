@@ -19,6 +19,8 @@ Ellenőrzések (azonosító — súlyosság):
     RETEG        a CC BY-SA réteg attribúció/licenc-jelölés nélkül                                          — BUKÁS
     HIBAK        az „ismert hibák” szakasz hiányzik, vagy nem tartalmazza a Károli-KH mért számát           — BUKÁS
     HIVATKOZAS   döntés-azonosító (NYD) feloldás nélkül; ismeretlen motívum-azonosító                       — BUKÁS
+    CSOPORT      összesítő kizárás-sor, amelynek a `kizaras_csoportok.tsv`-beli tagszáma nem egyezik a
+                 `csoport_versszam`-mal (tag nélküli sor is), vagy csoport-tag nem létező összesítő sorhoz   — BUKÁS
     BAJTAZONOS   a lemezen lévő csomag nem egyezik az újragenerált kimenettel / az összeg-fájllal            — BUKÁS
     TERMEKRETEG  termékréteg-mező (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
@@ -283,6 +285,32 @@ def ell_hivatkozas(fajlok):
     return ki
 
 
+def ell_csoport(fajlok):
+    """Minden összesítő kizárás-sor (`csoport_versszam` nem üres) tagjainak száma a `kizaras_csoportok.tsv`-ben
+    egyezik a versszámmal; minden csoport-tag létező összesítő sorhoz tartozik, és egy csoporton belül nem ismétlődik."""
+    ki = []
+    _, kiz = tsv_sorok(fajlok['kizarasok.tsv'])
+    _, tagok = tsv_sorok(fajlok['kizaras_csoportok.tsv'])
+    osszesito = {(d['motivum_azonosito'], d['igehely']): (n, d['csoport_versszam']) for n, d in kiz
+                 if d.get('csoport_versszam')}
+    db, latott = {}, set()
+    for n, d in tagok:
+        k = (d['motivum_azonosito'], d['csoport_sor_igehely'])
+        if k not in osszesito:
+            ki.append(Talalat('CSOPORT', BUKAS, 'kizaras_csoportok.tsv', n, '%s %s' % k,
+                              'a csoport-tag nem létező összesítő sorhoz tartozik'))
+        if k + (d['igehely'],) in latott:
+            ki.append(Talalat('CSOPORT', BUKAS, 'kizaras_csoportok.tsv', n, '%s %s / %s' % (k + (d['igehely'],)),
+                              'ismétlődő csoport-tag'))
+        latott.add(k + (d['igehely'],))
+        db[k] = db.get(k, 0) + 1
+    for k, (n, versszam) in sorted(osszesito.items()):
+        if not versszam.isdigit() or int(versszam) != db.get(k, 0):
+            ki.append(Talalat('CSOPORT', BUKAS, 'kizarasok.tsv', n, '%s %s' % k,
+                              'a csoport versszáma %s, a felsorolt tagoké %d' % (versszam, db.get(k, 0))))
+    return ki
+
+
 def ell_kh_nev(fajlok):
     ki = []
     for rel, n, o, ertek in szoveg_cellak(fajlok):
@@ -387,7 +415,7 @@ def mer(fajlok, kimenet=None, ujra=True):
             ki.append(Talalat('BAJTAZONOS', BUKAS, rel, 1, '', 'a csomag kötelező fájlja hiányzik'))
     if ki:
         return ki
-    for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_kh_nev,
+    for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osszeg, ell_kanonikus, ell_termekreteg):
         ki += f(fajlok)
     if ujra:

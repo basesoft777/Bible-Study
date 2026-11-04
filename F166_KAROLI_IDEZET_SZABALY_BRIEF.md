@@ -33,7 +33,7 @@ Az új cikkek menete (#123) ezt automatikusan teljesíti.
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
-1. A normalizálás meghatározása (írásjel, szóköz, kis/nagybetű) és a „saját fordítás” jelölés alakja; ⛔ a jelölés alakja tartalmi döntés, helyőrzős `DT-F166a` a `dontesek/uj/` alatt.
+1. A normalizálás meghatározása (írásjel, szóköz, kis/nagybetű) és a „saját fordítás” jelölés alakja; ⛔ a jelölés alakja tartalmi döntés, helyőrzős `DT614` a `dontesek/uj/` alatt.
 2. A szabály és a tesztek (egyező, eltérő, saját fordítás, idézőjel nélküli).
 3. Futtatás az adaton; a találatok jelentése (várt: 46 hely a régi lapokon), a szabály gátló, a ki nem adott lapok kezelése jelezve.
 

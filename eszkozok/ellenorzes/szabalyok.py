@@ -2792,3 +2792,128 @@ def e33_tanulmany_regiszterbe_kerul(fajlok):
 SZINT['E33'] = 'FIGYELMEZTETES'
 FAJLSZINTU_SZABALYOK.add('E33')
 SZABALYOK_FUGGVENYEI['E33'] = e33_tanulmany_regiszterbe_kerul
+
+
+# ---------------------------------------------------------------------------
+# E34 -- Karoli-idezet az adatban (#166, DT-F166a)
+# ---------------------------------------------------------------------------
+# Az `adat/elofordulasok.tsv` `kapcsolodas` mezoje az 1/a-prozaban szo szerint megjeleno
+# szoveg forrasa (lexikon_general.py, 1/a-blokk). Az olvasoi kapu IDEZET-ellenorzese ezt
+# csak a kesz lapon fogja meg; az E34 az adatban: a mezo minden idezojeles (`„…”` vagy `"…"`),
+# legalabb harom szavas reszlete a sor igehelyenek Karoli-szovegevel egyezik (az
+# egyeztetes az olvasoi kapue: ekezet-, irasjel- es kisbetu-fuggetlen, szavankent
+# 0,75-os hasonlosagi turessel, `...` / `…` / `[...]` szerinti darabolassal), vagy a mezo
+# tartalmaz „saját fordítás” (illetve „szó szerint:” / „ford.:”) jelolest. A zarojel utani
+# glossza (`(„...”)`) nem versidezet. Az `igehely` tartomany minden versenek szoveget
+# egybevetve nezi.
+# Szint: HIBA a kiadott motivumokon (`adat/kiadasok.tsv` `id`-i), FIGYELMEZTETES (a
+# diff-minosites nelkul, JELENTES a futtatoban --teljes modban) a tobbin: a regi, ki nem
+# adott lapok helyei az uj cikk menetenek bemenete, nem teszik pirossa a main-t.
+# Fajlszintu es adattablan fut (mint az E31).
+
+E34_TABLA = 'adat/elofordulasok.tsv'
+E34_KIADASOK = 'adat/kiadasok.tsv'
+E34_KAROLI = 'konkordancia/Karoli_1908.tsv'
+E34_JELOLES = re.compile(r'saját fordítás|sajat forditas|szó szerint:|ford\.\s*:', re.I)
+E34_MIN_SZO = 3
+_E34_KAROLI_CACHE = {}
+
+
+def _e34_kapu():
+    """Az olvasoi kapu (idezet-regex, normalizalo, egyeztetes), a kod melletti utrol."""
+    _sys = sys
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in _sys.path:
+        _sys.path.insert(0, eszkozok)
+    import olvasoi_kapu as OK
+    return OK
+
+
+def _e34_lekerdez():
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import lekerdez as L
+    return L
+
+
+def _e34_karoli(L):
+    """{konyv: [(fejezet, vers, szoveg), ...]} a Karoli_1908.tsv-bol (split('\t'), nem csv)."""
+    ut = os.path.join(ROOT, *E34_KAROLI.split('/'))
+    kulcs = (ut, os.path.getmtime(ut))
+    if kulcs in _E34_KAROLI_CACHE:
+        return _E34_KAROLI_CACHE[kulcs]
+    konyvek = {}
+    with open(ut, 'r', encoding='utf-8') as f:
+        next(f, None)
+        for sor in f:
+            mezok = sor.rstrip('\n').split('\t')
+            if len(mezok) < 2:
+                continue
+            try:
+                konyv, fej, vers = L.parse_igehely(mezok[0])
+            except ValueError:
+                continue
+            konyvek.setdefault(konyv, []).append((fej, vers, mezok[1]))
+    _E34_KAROLI_CACHE.clear()
+    _E34_KAROLI_CACHE[kulcs] = konyvek
+    return konyvek
+
+
+def _e34_vers_szoveg(L, karoli, igehely):
+    """Az igehely (vers vagy tartomany) Karoli-versei egybefuzve; ures, ha nem oldhato fel."""
+    try:
+        rng = L.parse_range(igehely)
+    except ValueError:
+        return ''
+    konyv = rng[1]
+    return ' '.join(sz for fej, vers, sz in karoli.get(konyv, []) if L.in_range(rng, konyv, fej, vers))
+
+
+def _e34_kiadott():
+    ut = os.path.join(ROOT, *E34_KIADASOK.split('/'))
+    if not os.path.exists(ut):
+        return set()
+    return {d.get('id', '') for _, d in dict_sorok_sorszammal(ut)}
+
+
+def e34_karoli_idezet(fajlok=None):
+    """E34: a `kapcsolodas` idezojeles reszlete nem a Karoli-vers szovege, es nincs
+    „saját fordítás” jeloles. HIBA a kiadott motivumon, egyebkent FIGYELMEZTETES."""
+    talalatok = []
+    ut = os.path.join(ROOT, *E34_TABLA.split('/'))
+    if not os.path.exists(ut) or not os.path.exists(os.path.join(ROOT, *E34_KAROLI.split('/'))):
+        return talalatok
+    OK = _e34_kapu()
+    L = _e34_lekerdez()
+    karoli = _e34_karoli(L)
+    kiadott = _e34_kiadott()
+    for sorszam, d in dict_sorok_sorszammal(ut):
+        szoveg = d.get('kapcsolodas', '')
+        if '"' not in szoveg and '„' not in szoveg:
+            continue
+        if E34_JELOLES.search(szoveg):
+            continue
+        vers = OK.normal_szoveg(_e34_vers_szoveg(L, karoli, d.get('igehely', '')))
+        if not vers:
+            continue
+        szint = 'HIBA' if d.get('id', '') in kiadott else 'FIGYELMEZTETES'
+        for m in OK.IDEZET_RX.finditer(szoveg):
+            if m.group(1):  # zarojeles glossza egy heber szo utan: nem versidezet
+                continue
+            idez = m.group(2) or m.group(3)
+            if len(OK.normal_szoveg(idez).split()) < E34_MIN_SZO:
+                continue
+            if OK.karoli_egyezik(idez, vers):
+                continue
+            talalatok.append(Talalat(
+                'E34', szint, E34_TABLA, sorszam,
+                '%s | %s -- „%s” nem a Károli-vers szövege, és nincs „saját fordítás” jelölés'
+                % (d.get('id', ''), d.get('igehely', ''), idez)))
+    return talalatok
+
+
+SZINT['E34'] = 'FIGYELMEZTETES'
+FAJLSZINTU_SZABALYOK.add('E34')
+HATOKOR_SZABALYOK.add('E34')
+SZABALYOK_FUGGVENYEI['E34'] = e34_karoli_idezet

@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-04",
-   "commit": "87820d0c"
+   "commit": "efb9eed7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4596,6 +4596,16 @@
      "🟢"
     ],
     "sor": 651
+   },
+   {
+    "id": "DT614",
+    "feladat": "F166.1 (a Károli-idézet szabály jelölése és hatóköre az adatban; 2026-11-04)",
+    "kerdes": "Az ISTENTISZT-001 A1–A5 típusú hiba (más szó a Károli szava helyett) csak a kész lapon fogódott meg; az adatban nincs kötés. Az olvasói kapu IDEZET-szabálya már ismeri a „saját fordítás” jelölést.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 652
    }
   ],
   "javasolt": [],
