@@ -130,40 +130,50 @@ def main():
         'nf63e': 'Strong-háló, N-F63e-függő',
     }
     sorok = []
+    hasznalt = set()
     for (h, k), vs in blokk.items():
         n = len(vs)
-        elso = vs[0][0]
+        szabad = next((v for v, _g in vs if v not in hasznalt), None)
+        if szabad is None:  # minden verse már másik blokk-sor igehelye: a sor indoklásába kerül egy kiegészítő mondat
+            for s in sorok:
+                if s[1] in {v for v, _g in vs}:
+                    s[4] += (' Ugyanez a vers a %s blokkban is áll (halo=%s, blokk=%s): %d vers, a lista a blokkok fájlban.'
+                             % (haloszoveg[h], h, k, n))
+                    break
+            continue
+        elso = szabad
+        hasznalt.add(elso)
         kulcs = k.replace('|', '=')
-        forras = ('F123 U1 teljesség-mérés, %s, blokk-sor (DT-F123o minta): %d vers, az első itt; a lista: '
+        forras = ('F123 U1 teljesség-mérés, %s, blokk-sor (DT-F123o minta): %d vers, a sor igehelye a blokk egy verse; a lista: '
                   'naplok/F123_teljesseg_HAMART-001_blokkok.tsv (halo=%s, blokk=%s), naplok/F123_teljesseg_HAMART-001.md | '
                   'scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=%s'
                   % (haloszoveg[h], n, h, k, TS))
         if h == 'nf63e':
-            ind = ('Összesítő sor %d versre (az első itt áll): %s szava áll bennük, de a negatív kritérium lexémalistáján álló '
+            ind = ('Összesítő sor %d versre (a sor igehelye a blokk egy verse áll): %s szava áll bennük, de a negatív kritérium lexémalistáján álló '
                    'lexéma egyik versben sincs; nem a negatív kritérium lexémája. A felhasználó döntése (N-F63e, 2026-11-03: '
                    '„kivesszük”) szerint blokk-kizárás.' % (n, SZEREP.get(k, k)))
         elif h == 'strong':
             nf = ' A 651 listán kívüli Strongot hordozó vers (H7451, H7043, magányos H6975) az N-F63e-döntésre vár (DT-F123u).' \
                 if k in ('H7451', 'H7043', 'H6975') else ''
-            ind = ('Összesítő sor %d versre (az első itt áll): %s szava áll bennük, de sem előfordulás-sor, sem '
+            ind = ('Összesítő sor %d versre (a sor igehelye a blokk egy verse áll): %s szava áll bennük, de sem előfordulás-sor, sem '
                    'jelölt-sor nincs rájuk; a mai TAHOT/TAGNT-scan találata, amelyet az F108 újrascan is látott, '
                    'de nem írt be. Elbírálás az értelmező menetben, blokkban.%s'
                    % (n, SZEREP.get(k, k), nf))
         elif h == 'karoli':
             nev, _, s = k.partition('|')
             if s in ('osztálytalan', ''):
-                ind = ('Összesítő sor %d versre (az első itt áll): a Károli „%s”-csoport szava áll bennük, de a gépi '
+                ind = ('Összesítő sor %d versre (a sor igehelye a blokk egy verse áll): a Károli „%s”-csoport szava áll bennük, de a gépi '
                        'glossza-illesztés nem talált a Károli-szó jelentéskörébe eső héber/görög szót; kézi olvasásra '
                        'marad. A versekben a motívum egyik szava sem áll.' % (n, nev))
             elif k == 'osztálytalan-szó':
                 ind = ('Összesítő sor %d versre: a Károli-szó nem tartozik a négy osztályba; kézi olvasásra marad.' % n)
             else:
-                ind = ('Összesítő sor %d versre (az első itt áll): a Károli „%s”-csoport szava (%s) ezekben a '
+                ind = ('Összesítő sor %d versre (a sor igehelye a blokk egy verse áll): a Károli „%s”-csoport szava (%s) ezekben a '
                        'versekben a %s szót fordítja; a motívum szava (gerinc-Strongja) a versekben nem áll. '
                        'Elbírálás az értelmező menetben, blokkban.'
                        % (n, nev, nev, SZEREP.get(s, s)))
         else:
-            ind = ('Összesítő sor %d versre (az első itt áll): a BDB/Thayer a %s Strongnál idézi a verset, de a '
+            ind = ('Összesítő sor %d versre (a sor igehelye a blokk egy verse áll): a BDB/Thayer a %s Strongnál idézi a verset, de a '
                    'versben a motívum Strongjai nem állnak (versszámozás-eltolás vagy más lexéma); kézi '
                    'ellenőrzés az értelmező menetben.' % (n, k))
         szo = '' if h != 'karoli' else k.split('|')[0]
