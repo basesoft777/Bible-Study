@@ -39,7 +39,7 @@ Kikötés (végrehajtva): az Ez 12:19 és a Sof 1:2-3 indoklása kimondja a kül
 
 ## U3b. A 12. szótári blokk (Nave) — DT595
 
-A jelöltlista a mai 60 soron újraszámolva (34 téma; az U1 listája 52 soron 31-et adott). **Javaslat, az orkesztrátor jóváhagyására:** 7 `kivalasztott` (CURSE, FALL OF MAN, GROUND, FLOOD, ANTEDILUVIANS, THISTLE, BANISHMENT), 2 `tiltott` (SIN, DEPRAVITY OF MAN: a bűn általában felé hígítana), 25 `kizart` (személy, könyv, mellékes vagy túl tág téma), indokkal (`naplok/F123_HAMART3_nave.py`). A 23 magyar név Sonnet-tervezet (claude-sonnet-5-5), a `glossza_lexikon_forditas.py nave` kapui után; három a lap szóhasználatára simítva (`naplok/F123_HAMART3_nave_hu.py`). A lap 12. blokkja: 7 téma, magyarul.
+A jelöltlista a mai 60 soron újraszámolva (34 téma; az U1 listája 52 soron 31-et adott). **Döntés (DT-F123hb, az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-05: „U3b Nave: mehet, ahogy javasoltad.”):** 7 `kivalasztott` (CURSE, FALL OF MAN, GROUND, FLOOD, ANTEDILUVIANS, THISTLE, BANISHMENT), 2 `tiltott` (SIN, DEPRAVITY OF MAN: a bűn általában felé hígítana), 25 `kizart` (személy, könyv, mellékes vagy túl tág téma), indokkal (`naplok/F123_HAMART3_nave.py`). A 23 magyar név Sonnet-tervezet (claude-sonnet-5-5), a `glossza_lexikon_forditas.py nave` kapui után; három a lap szóhasználatára simítva (`naplok/F123_HAMART3_nave_hu.py`). A lap 12. blokkja: 7 téma, magyarul.
 
 ## Fordítás (a cikk menetében, Sonnettel; DT587 mintája)
 
@@ -59,6 +59,6 @@ A lap Thayer/BDB-szövegéből fordítatlan volt: **Thayer G1261** (διαλογ
 
 ## Ami a felhasználóra és az orkesztrátorra vár
 
-- A Nave-döntés jóváhagyása (U3b), az orkesztrátoré.
+- ~~A Nave-döntés jóváhagyása (U3b)~~ — megvan: DT-F123hb.
 - A lap vizuális átnézése (U6), a felhasználóé; utána egy javítókör, 1. kiadás.
 - A független ellenőrzés (`fuggetlen-ellenor`) a PR diffjén.
