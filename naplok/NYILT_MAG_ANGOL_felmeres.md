@@ -25,7 +25,8 @@ szám, dátum, eredeti nyelvű vagy forrásszöveg (nem fordítandó).
 | `forrasok_es_licencek.ok` | zárt (a generátor rögzített mondatai) | 8 | 460 | ma nem `ZART` |
 | `elofordulasok/kapcsolatok/motivum_kapcsolatok.forras_megnevezes` | zárt, `; `-vel összetett (a generátor `FORRAS_OSZTALY`-a + dataset-név) | 8 | 318 | ma nem `ZART` |
 | `kapcsolatok.lekerdezes_tipusa` | zárt | 1 | 30 | a másik két táblában `ZART`, itt nem |
-| a többi `ZART` oszlop (16 oszlop, 8 tábla) | zárt | 102 | — | mind van kódkönyv-sora magyar + angol leírással (`leiras_en`) |
+| a mai `ZART` oszlopok (28 oszlop-előfordulás, 8 tábla) | zárt | 98 (tábla, oszlop, érték); 75 különböző szöveg | — | mind van kódkönyv-sora magyar + angol leírással (`leiras_en`) |
+| **zárt összesen** (a mai `ZART` + a fenti négy oszlop) | | **145 különböző címke-szöveg** | | a fenti négy oszlop: 73 (tábla, oszlop, érték), 71 különböző szöveg |
 | `karoli_szo` (két tábla) | adat | 200 | 3 115 | a Károli-fordítás szava: a forrásszöveg maga, **nem fordítandó** |
 | `horgony` | adat | 38 | 318 | Strong-szám, átírt szópár, igehely, görög formula |
 | `jelentes_en` | adat (angol) | 42 | 1 838 | l. 3. pont |
@@ -54,7 +55,7 @@ Igehelyet hordozó oszlop: `igehely`, `cel_igehely`, `forras_igehely`, `igehely_
   könyvkódja szabványos, **a fejezet- és versszám a Károli-számozás** — a kódkönyv ezt kimondja. A KJV-/NRSV-
   versszámozásra átkulcsolt kulcs a `konkordancia/Karoli_versmegfeleltetes.tsv`-re épülne, amelynek licenc-címkéje
   részben „minden jog fenntartva” (a saját eltolási réteg); a nyílt magba így nem kerülhet a licencszűrés megváltoztatása
-  nélkül. Ez nem e feladat része; nyitott tételnek javasolt (N-F170b).
+  nélkül. Ez nem e feladat része; nyitott tételnek javasolt (N-F170c).
 - **Leképezési lánc:** magyar rövidítés → STEPBible-rövidítés (`konkordancia/Konyv_normalizalo_tabla.tsv`, 66 sor) →
   OSIS-könyvkód (a 66 kanonikus könyv OSIS 2.1.1 kódja, rögzített táblában a generátorban; a STEPBible-rövidítés nem
   OSIS: `Exo`/`Exod`, `1Ki`/`1Kgs`, `Ezk`/`Ezek`, …).
@@ -79,4 +80,4 @@ Strong-számos (`H7121 + H8034`) sornál a glosszák ` + `-szal fűződnek.
 - A `kizaras_oka`, a `forrasok_es_licencek.ok`, a `forras_megnevezes` és a `kapcsolatok.lekerdezes_tipusa` ma nem
   áll a `ZART` listában, tehát értékeinek nincs kódkönyv-sora — a kapu (b) ezekre is kiterjesztendő.
 - A `datum` oszlop vegyes alakú (`2026.09.05` és `2026-09-05`); ez nem e feladat tárgya, de a nemzetközi olvasónak
-  zavaró: nyitott tételnek javasolt (N-F170c).
+  zavaró: nyitott tételnek javasolt (N-F170d).
