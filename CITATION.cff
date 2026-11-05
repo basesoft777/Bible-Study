@@ -1,7 +1,7 @@
 # Idézési metaadat (Citation File Format 1.2.0). F163.5, F163.7; 2026-11-04.
-# Két idézési egység (a #86 terv 1.5: az adatréteg és a termékréteg szétválik):
+# Két idézési egység (a #86 terv 1.5: a nyílt adatmag és a lexikon szétválik):
 #   - fő egység (ez a fájl teteje): a nyílt adatmag, adatkészlet, CC BY 4.0;
-#   - kapcsolódó egység (references): a szócikkek mint mű, minden jog fenntartva.
+#   - kapcsolódó egység (references): a lexikon (mű), minden jog fenntartva.
 # A [HELYŐRZŐ: …] és <…> értékeket a szerző tölti ki; amíg helyőrző áll benne, a fájl nem nyilvános.
 # A GitHub nem kanonikus forrás és nem idézési cím: repository-code nincs, és az url mező
 # csak a kanonikus közzétételi hely (DOI vagy közzétételi oldal) ismeretében kerül be:
@@ -15,9 +15,9 @@
 # A fő egység CC BY 4.0 licence a nyílt adatmag kiadásával lép életbe; a repó mai LICENSE-e
 # még minden jog fenntartva.
 cff-version: 1.2.0
-message: "Ha az adatokat használja, kérjük, az alábbi adatkészletet idézze; ha a szócikkek szövegét, a kapcsolódó művet (references), a motívumlap kiadásszámával (a lap kolofonjában)."
+message: "Ha az adatokat használja, kérjük, az alábbi adatkészletet idézze; ha a lexikon szövegét, a kapcsolódó művet (references), a motívumlap kiadásszámával (a lap kolofonjában)."
 type: dataset
-title: "[HELYŐRZŐ: TERMÉKNÉV] — nyílt adatmag: bibliai motívumok, előfordulások és döntések"
+title: "[HELYŐRZŐ: A LEXIKON CÍME] — nyílt adatmag: bibliai motívumok, előfordulások és döntések"
 authors:
   - name: "[HELYŐRZŐ: SZERZŐ NEVE]"
 license: CC-BY-4.0
@@ -28,14 +28,20 @@ abstract: >-
   de elutasított helyek indoklással szerepelnek; minden lekérdezésből
   származó sor megnevezi a forrását, a többi kézi döntésként jelölt. A
   besorolási döntéseket mesterséges intelligenciával segített munkamenet
-  hozza; a részleteket a mellékelt MI-nyilatkozat írja le.
+  hozza; a részleteket a mellékelt MI-nyilatkozat írja le. A nyílt adatmag
+  a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon
+  (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű,
+  minden jog fenntartva.
   (English) An open dataset of biblical motifs. Every motif has a fixed definition,
   an exclusion criterion and the superordinate concept toward which it would
   dilute; every occurrence rests on a shared Hebrew or Greek word; passages
   examined but rejected are listed with a rationale; every row derived from a
   query names its source, and the rest are marked as manual decisions.
   Classification decisions are made in AI-assisted working sessions; the
-  accompanying AI statement describes the details.
+  accompanying AI statement describes the details. The open data core is the
+  data layer of the lexicon; the lexicon itself (its interpretive text, the
+  Hungarian translation of the dictionaries, and the printed volume) is a
+  separate work, all rights reserved.
 keywords:
   - bibliai motívumok
   - intertextualitás
@@ -45,15 +51,15 @@ keywords:
   - PaRDeS
 references:
   - type: generic
-    title: "[HELYŐRZŐ: TERMÉKNÉV] — szócikkek"
+    title: "[HELYŐRZŐ: A LEXIKON CÍME]"
     authors:
       - name: "[HELYŐRZŐ: SZERZŐ NEVE]"
     abstract: >-
-      A motívumok szócikkei: értelmező próza, a szótárak magyar fordítása és
+      A lexikon, önálló mű: értelmező szövege, a szótárak magyar fordítása és
       a Károli-fordítás szavainak párosítása a héber és görög szöveggel. Az
       értelmező szakaszokat mesterséges intelligencia írta az adatok alapján,
       a szerző átnézte és jóváhagyta. Minden jog fenntartva.
-      (English) The entries of the motifs: interpretive prose, the Hungarian
+      (English) The lexicon, a separate work: its interpretive text, the Hungarian
       translation of the lexica and the alignment of Károli-translation words
       with the Hebrew and Greek text. The interpretive sections were written by
       artificial intelligence on the basis of the data, and reviewed and

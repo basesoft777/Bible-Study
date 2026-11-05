@@ -13,10 +13,10 @@ The work consists of two layers, and artificial intelligence (AI) bears on them 
 | Layer | Contents | Role of AI | Citation and licence |
 |---|---|---|---|
 | **Open data core** | motif identifier, definition, exclusion criterion, occurrences, excluded passages, decisions with rationale | queries are deterministic programs; classification decisions are made in AI-assisted working sessions; every row names its origin: the query it derives from, or "manual" (a hand decision) | a stand-alone dataset, CC BY 4.0 (in force from the open release), with its own identifier: `<KANONIKUS_FORRAS_URL>` |
-| **Product** | interpretive prose, the Hungarian translation of the lexica, the Károli alignment, the volume, tools | the interpretive prose and the lexicon translation were written by a language model; the Károli alignment is largely machine-generated | the entries as a work, all rights reserved |
+| **The lexicon (work)** | interpretive text, the Hungarian translation of the lexica, the Károli alignment, the volume, tools | the interpretive prose and the lexicon translation were written by a language model; the Károli alignment is largely machine-generated | a separate work, all rights reserved |
 
-Model-written prose is therefore part of the product layer. The data core contains no model prose, only decisions and short rationales, each with a provenance mark.
-<!-- provenance: the boundary between the layers: #86 implementation plan 1.5 ("Open scholarly core vs. paid product"), the user's addition relayed through the orchestrator ("the data layer and the product layer are separated, according to the research", "GitHub does not remain the source", 2026-11-04); the current LICENSE is still all rights reserved, and CC BY takes effect with the open export (#162) | ts=2026-11-04 -->
+The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved. Model-written prose is therefore part of the lexicon. The data core contains no model prose, only decisions and short rationales, each with a provenance mark.
+<!-- provenance: the boundary between the layers: #86 implementation plan 1.5 (the separation of the open data core and the lexicon), the user's additions relayed through the orchestrator (the data layer is kept apart, according to the research; "GitHub does not remain the source", 2026-11-04; the open data core / lexicon scheme: "this scheme is good", 2026-11-04); the current LICENSE is still all rights reserved, and CC BY takes effect with the open export (#162) | ts=2026-11-04 -->
 
 ## What AI wrote
 
@@ -53,9 +53,9 @@ The parts generated from the data tables (occurrence tables, dictionary blocks, 
 
 ## Authorship and responsibility
 
-[PLACEHOLDER: AUTHOR'S STATEMENT OF RESPONSIBILITY — the author's own sentence. Suggestion: "The author and publisher of [PLACEHOLDER: PRODUCT NAME] is [PLACEHOLDER: AUTHOR'S NAME]. I have reviewed and approved the AI-assisted texts in the manner described above; I am responsible for the content."]
+[PLACEHOLDER: AUTHOR'S STATEMENT OF RESPONSIBILITY — the author's own sentence. Suggestion: "The author and publisher of [PLACEHOLDER: TITLE OF THE LEXICON] is [PLACEHOLDER: AUTHOR'S NAME]. I have reviewed and approved the AI-assisted texts in the manner described above; I am responsible for the content."]
 
-According to the practice of scholarly publishers, an AI tool cannot be an author, its use must be named and described, and responsibility rests with the human author (Cambridge University Press, 2023; De Gruyter Brill does not accept an article or chapter written primarily by AI). In its present form this work is therefore **an AI-assisted collection of a database and entries**, not a peer-reviewed scholarly publication. Argumentative text intended for a journal is written by the author, who names the above in a separate declaration there. We have not found a relevant rule of the Society of Biblical Literature.
+According to the practice of scholarly publishers, an AI tool cannot be an author, its use must be named and described, and responsibility rests with the human author (Cambridge University Press, 2023; De Gruyter Brill does not accept an article or chapter written primarily by AI). In its present form this work is therefore **an AI-assisted database and lexicon**, not a peer-reviewed scholarly publication. Argumentative text intended for a journal is written by the author, who names the above in a separate declaration there. We have not found a relevant rule of the Society of Biblical Literature.
 
 ## Sources
 

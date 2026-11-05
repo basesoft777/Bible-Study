@@ -22,7 +22,7 @@ Ellenőrzések (azonosító — súlyosság):
     CSOPORT      összesítő kizárás-sor, amelynek a `kizaras_csoportok.tsv`-beli tagszáma nem egyezik a
                  `csoport_versszam`-mal (tag nélküli sor is), vagy csoport-tag nem létező összesítő sorhoz   — BUKÁS
     BAJTAZONOS   a lemezen lévő csomag nem egyezik az újragenerált kimenettel / az összeg-fájllal            — BUKÁS
-    TERMEKRETEG  termékréteg-mező (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
+    TERMEKRETEG  a lexikon szövegének mezője (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
 
@@ -57,7 +57,7 @@ KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_do
 
 # a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
 ZART = {
-    'motivumok.tsv': ['pardes_szint', 'statusz', 'azonossag_tipusa'],
+    'motivumok.tsv': ['pardes_szint', 'statusz', 'feldolgozasi_allapot', 'azonossag_tipusa'],
     'elofordulasok.tsv': ['pardes_szint', 'horgony_tipus', 'szotar', 'azonositas_modja', 'megbizhatosag',
                           'igazolas', 'lekerdezes_tipusa', 'forras_licenc'],
     'kizarasok.tsv': ['jelolt_tipus', 'azonositas_modja', 'megbizhatosag', 'keresesi_mod'],
@@ -323,7 +323,7 @@ def ell_kh_nev(fajlok):
     return ki
 
 
-# a termékréteg mezői (DT-F162c): értelmező próza és fizetős fordítás; nem lehetnek a csomagban
+# a lexikon szövegének mezői (DT-F162c): értelmező próza és szótár-fordítás; nem lehetnek a csomagban
 KI_MEZOK = {
     'elofordulasok.tsv': {'kapcsolodas', 'jelentes_hu', 'felmerult_tanulmany', 'forras_tanulmany', 'fo_elofordulas'},
     'kapcsolatok.tsv': {'funkcio', 'indoklas'},
@@ -339,7 +339,7 @@ def ell_termekreteg(fajlok):
     for rel, mezok in KI_MEZOK.items():
         fej, sorok = tsv_sorok(fajlok.get(rel, ''))
         for o in sorted(mezok & set(fej)):
-            ki.append(Talalat('TERMEKRETEG', BUKAS, rel, 2, o, 'termékréteg-mező a csomagban'))
+            ki.append(Talalat('TERMEKRETEG', BUKAS, rel, 2, o, 'a lexikon szövegének mezője a csomagban'))
     fej, sorok = tsv_sorok(fajlok.get('elofordulasok.tsv', ''))
     for n, d in sorok:
         f = d.get('funkcio', '')
@@ -372,8 +372,8 @@ def ell_kanonikus(fajlok):
     h = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
     if 'kiadas_azonosito:' not in k or h not in k or '<KANONIKUS_FORRAS_URL>' not in k:
         ki.append(Talalat('KANONIKUS', BUKAS, 'KIADAS.txt', 1, k[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
-    if 'termékréteg' not in fajlok.get('KODKONYV.md', ''):
-        ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki az adat- és termékréteg határát'))
+    if E.ADATMAG_LEXIKON_HU not in fajlok.get('KODKONYV.md', '') or E.ADATMAG_LEXIKON_EN not in fajlok.get('KODKONYV.md', ''):
+        ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki a nyílt adatmag és a lexikon határát'))
     return ki
 
 
@@ -412,6 +412,28 @@ def ell_ketnyelv(fajlok):
         ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
     elif r.split(chr(10))[0].split(': ')[1] != k_.split(chr(10))[0].split(': ')[1]:
         ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító nem egyezik a KIADAS.txt-vel'))
+    return ki
+
+
+def ell_olvasas(fajlok):
+    """OLVASAS (F167.3): az OLVASSEL.md „Hogyan olvasd” és a README.md „How to read” szakasza megvan, a három
+    példával, és a példák a csomag mai adatát mondják (az export ugyanazzal a függvénnyel számol, mint itt)."""
+    ki = []
+    try:
+        p = E.olvasasi_peldak(fajlok)
+    except SystemExit as h:
+        return [Talalat('OLVASAS', BUKAS, 'OLVASSEL.md', 1, '', str(h))]
+    hu = E.hogyan_olvasd_hu(p)
+    en = E.hogyan_olvasd_en(p)
+    for nev, cim, elvart in (('OLVASSEL.md', '## Hogyan olvasd', hu), ('README.md', '## How to read', en)):
+        t = fajlok.get(nev, '')
+        if cim not in t:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'a szakasz hiányzik'))
+            continue
+        if sum(1 for n in ('### 1.', '### 2.', '### 3.') if n in t) != 3:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'nincs meg mindhárom példa'))
+        if '\n'.join(elvart) not in t:
+            ki.append(Talalat('OLVASAS', BUKAS, nev, 1, cim, 'a példák nem a csomag mai adatát mondják'))
     return ki
 
 
@@ -455,7 +477,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv):
+              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

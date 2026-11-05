@@ -2927,9 +2927,11 @@ SZABALYOK_FUGGVENYEI['E34'] = e34_karoli_idezet
 # Uj motivum, kiadas vagy adatvaltozas utan a nyilt mag exportja ujra kell generalodjon, es az ujragenerald
 # export a PR resze. Ha a PR modositja az `adat/*.tsv` tablait (koztuk a `kiadasok.tsv`-t) vagy az exportgeneratort,
 # a commitolt `nyilt_mag/` bajtazonos kell legyen azzal, amit a generator most eloallitana. HIBA, fajlszintu.
+# A kiadott lexikonlap is kivalto (F167.3): a `motivumok.tsv` `feldolgozasi_allapot` mezoje az olvasoi kapu
+# eredmenyebol szamol.
 # Ha a PR ezeket nem erinti, nem fut (egy mar elavult main nem a PR hibaja). A Zenodo uj valtozata nem a PR resze:
 # az a felhasznalo lepese.
-E35_KIVALTO = re.compile(r'^(?:adat/[^/]+\.tsv|eszkozok/nyilt_mag_export\.py)$')
+E35_KIVALTO = re.compile(r'^(?:adat/[^/]+\.tsv|eszkozok/nyilt_mag_export\.py|lexikon/[^/]+_TUDOMANYOS\.md)$')
 E35_CSOMAG = 'nyilt_mag'
 
 

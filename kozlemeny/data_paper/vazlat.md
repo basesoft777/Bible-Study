@@ -11,7 +11,7 @@
 3. A lektori kritériumok (a módszer elég részletes az újraalkotáshoz; kódkönyv; archivált szkriptek) pontosan az F162 kimenetét kérik.
 4. Hátrány: **APC £1 070** (kedvezmény/mentesség kérhető a kísérőlevélben), angol nyelv, egyszeres vak lektorálás, a külső bírálat szervezése a szerzőre vár. A HIPHIL Novum (APC nincs, kettős vak, CC BY-SA) a **második csatorna**: egy későbbi módszertani short paper, amely a data paperre hivatkozik.
 
-**Alapszabály:** a cikk csak a nyílt adatmagot írja le. Az értelmező próza, a magyar BDB/Thayer és a kötet nem része (termékréteg). GitHub-URL sehol sem kanonikus: `<KANONIKUS_FORRAS_URL>`, `<DOI>`. Szerzői név, ORCID, intézmény, támogató csak helyőrző: `<SZERZO>`, `<ORCID>`, `<INTEZMENY>`, `<TAMOGATO>`.
+**Alapszabály:** a cikk csak a nyílt adatmagot írja le. Az értelmező próza, a magyar BDB/Thayer és a kötet nem része (a lexikon mint önálló mű). GitHub-URL sehol sem kanonikus: `<KANONIKUS_FORRAS_URL>`, `<DOI>`. Szerzői név, ORCID, intézmény, támogató csak helyőrző: `<SZERZO>`, `<ORCID>`, `<INTEZMENY>`, `<TAMOGATO>`.
 
 **Számok:** a szövegbe szám csak a mérés kimenetéből kerül; a váz minden számhelye `{{N: …}}` jelölt, mellette a lekérdezés. A mérésekhez az eszköz `kozlemeny/data_paper/szamok.py` (F167.2), amely az F162 export zárt, hash-elt csomagján fut, nem az élő táblákon, hogy a szám a DOI-val letétbe tett csomaghoz tartozzon.
 
@@ -40,7 +40,7 @@
 
 | | |
 |---|---|
-| Tartalom | Honnan jön az adat: a PaRDeS-kutatás (motívumkutatás héber/görög gerincen), célja; a motívum-lexikon mint hosszú távú termék, és hogy a nyílt mag ennek adatrétege; a PaRDeS-szint recepciós címke, nem szerzői állítás; az ókori közel-keleti összehasonlító réteg hiánya kimondva. |
+| Tartalom | Honnan jön az adat: a PaRDeS-kutatás (motívumkutatás héber/görög gerincen), célja; a motívumlexikon mint hosszú távú mű, és hogy a nyílt mag ennek adatrétege; a PaRDeS-szint recepciós címke, nem szerzői állítás; az ókori közel-keleti összehasonlító réteg hiánya kimondva. |
 | Forrás | F163: `PARDES_RECEPCIOS_KERET.md`, `KOZEL_KELETI_HATAR.md`; `CLAUDE.md` (egyirányúság, három szabály); `adat/SEMA.md`. |
 | Hiányzik | F163 szövegei még nem léteznek (párhuzamos feladat); a lexikon tárgyának rövid, külső olvasónak szóló bemutatása; hivatkozások (Hays, a szakirodalom) ellenőrzése, MI-költés elleni forrásellenőrzéssel. |
 | Minta | *“The PaRDeS levels are recorded as reception labels (‘how the tradition read it’), not as claims about what the text means.”* |
@@ -81,7 +81,7 @@
 |---|---|
 | **Acknowledgements** | Külső közreműködők, ha vannak: `<KOSZONET>`. Hiányzik: név. |
 | **Funding statement** | `<TAMOGATO>`, támogatási szám; ha nincs, ezt kell kimondani. Hiányzik: a tény. |
-| **Competing interests** | A fizetős termékréteg (kötet, előfizetés, #86) és a nyílt adat kapcsolata: **ki kell mondani** mint potenciális érdekeltséget. Forrás: #86 terv. Hiányzik: a szerző/kiadó döntése a megfogalmazásról. |
+| **Competing interests** | A lexikon kereskedelmi kiadása (kötet, előfizetés, #86) és a nyílt adat kapcsolata: **ki kell mondani** mint potenciális érdekeltséget. Forrás: #86 terv. Hiányzik: a szerző/kiadó döntése a megfogalmazásról. |
 | **AI Declaration** | Forrás: F163: `kozlemeny/MI_NYILATKOZAT.md`; `adat/kiadasok.tsv` `proza_modell` oszlop (tényleges modellnevek). A JOHD a jelentős MI-hozzájárulás nyilatkozását kéri, a HIPHIL a teljes eszköznevet és verziót is. Itt: az értelmező prózát, a jelölteket és az ellenőrzések nagy részét MI végzi; ennek ki kell derülnie. Hiányzik: az F163 szöveg; a cikk saját szövegére vonatkozó nyilatkozat (ki írta a data papert). |
 | **Bibliography** | APA; csak ellenőrzött hivatkozás (a JOHD a költött hivatkozást elutasítással bünteti). Hiányzik: az egész lista, DOI-kkal. |
 | **Supplementary files** | Kódkönyv-kivonat, kapu-jelentés, teljesség-mérés (ALVIL/ANTROP/HAMART/ISTENTISZT). Hiányzik: kiválasztás. |
@@ -92,7 +92,7 @@
 
 1. Ki(k) a szerző(k); intézményi kötődés; ORCID; CRediT-szerepek. A JOHD ICMJE-alapú irányelve és a HIPHIL szabálya szerint **MI nem lehet szerző** (a HIPHIL kimondja; a JOHD oldala nem tárgyalja, a kiadói irányelv ellenőrizendő); a prózát író és az ellenőrző modellek ezért az AI Declaration-ben szerepelnek, nem a szerzői listában.
 2. Az emberi felelősséget a lap-átnézés (`lap_atnezesek.tsv`) és a jóváhagyás hordozza; ezt a szerzőnek vállalnia kell.
-3. Összeférhetetlenség (fizetős termék) és finanszírozás.
+3. Összeférhetetlenség (a lexikon kereskedelmi kiadása) és finanszírozás.
 
 **Külső bírálat**
 
