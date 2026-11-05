@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: dontesre_var
 ad: a lapnézet-artifactban bekezdésenként „Kérdezz / javasolj” gomb (`sample` capability); a jóváhagyott javaslat a lap `db`-jébe kerül (hely, régi, új, ok); a session `ArtifactData`-val kiolvassa, a `/lap-javit` szabályai szerint beírja a forrásba, és újrapublikálja a nézetet; a `lap_javitasok.tsv` naplózása marad
-kovetkezo: "Te: indítás a /kovetkezo-val, a #123 /lap-javit részének (#618) merge-e után"
+kovetkezo: "Te: ⛔ az éles próba (4. lépés) a lapnézettel, az orkesztrátorral egyeztetve; utána a PR átnézése és merge"
 olvas: [.claude/commands/lap-javit.md, eszkozok/lektor_felulet/, adat/lap_javitasok.tsv, adat/SEMA.md]
-ir: [.claude/commands/lap-javit.md, eszkozok/lektor_felulet/epit.py, eszkozok/lektor_felulet/sablon.html, eszkozok/teszt_lektor_felulet.py]
+ir: [.claude/commands/lap-javit.md, eszkozok/lektor_felulet/lapnezet.py, eszkozok/lektor_felulet/lapnezet_sablon.html, eszkozok/lektor_felulet/javaslatok.py, eszkozok/lektor_felulet/lapnezetek.tsv, eszkozok/teszt_lektor_felulet.py]
 fugg: [123]
 ---
 
@@ -49,4 +49,9 @@ A lapnézet-artifactban **bekezdésenként „Kérdezz / javasolj” gomb**, a `
 
 ## 5. Döntésnapló
 
-*(a menet tölti ki)*
+- **2026-11-05 — D1: a lapnézet-építő a repóba kerül, külön fájlban.** A brief `ir` mezője az `epit.py`-t és a `sablon.html`-t nevezte meg, de azok a Kiadó (kérdéskártyák) oldalát építik; a lapnézetet eddig a repón kívüli `C:\Users\bases\pardes_eszkozok\epit_nezet.py` építette. A gomb a lapnézetbe kell, ezért a lapnézet-építő a repóba került: `eszkozok/lektor_felulet/lapnezet.py` + `lapnezet_sablon.html` (a régi nézet megjelenésével); az `epit.py`/`sablon.html` változatlan. Az `ir` mező ennek megfelelően javítva.
+- **D2 — a modell csak javasol, technikailag is.** A nézet képességei: `sample`, `user`, `db` (`javaslatok`: `read: view`, `write: owner`). Az `artifact` (önpublikálás) képesség nincs: a lap önmagát nem írhatja át. A `write: owner` miatt javaslatot csak a lap tulajdonosa menthet, így a `lap_javitasok.tsv` `jovahagyta` mezője a felhasználó.
+- **D3 — a nézetbeli jóváhagyás hatóköre.** Próza-javításnál a nézetbeli jóváhagyás elég a forrás Edit-jéhez, ha a 3.a ellenőrzése (adat, lap, kapu) rendben van; minden más esetben (adat, forrás, generátor, ellenőrzési lelet) a chatben kell a felhasználó szava (`lap-javit.md` 6.4).
+- **D4 — a `sample` modellje.** A nézet `modelTier: complex`, `model: claude-opus-5-5` hívással kérdez (értelmező ítélet Opusra); a válaszoló modell neve (`modelApplied`) a dokumentum `javasolta` mezőjébe kerül.
+- **D5 — CI.** A `teszt_lektor_felulet.py` önállóan fut (11 teszt); a CI-be kötése ellenőrző-módosítás volna, ezért ebben a PR-ban nincs benne.
+- **⛔ 4. lépés (nyitva).** Az éles próba a felhasználóval: az orkesztrátor egyeztetése után (a HAMART-001 lapját a HAMART-session is javíthatja).
