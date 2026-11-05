@@ -37,6 +37,8 @@ Kikötés (végrehajtva): az Ez 12:19 és a Sof 1:2-3 indoklása kimondja a kül
 - A 4. (szakirodalom) és az 5.T (tanítói egyezés) szakasz `INAKTÍV` (ellenőrzött lekérdezés nem futott; a régi Derek Prince-hivatkozás archívumban).
 - Kiejtés: a jóváhagyott alak (`adat/kiejtes_kivetelek.tsv`): árar, adámá (`naplok/F123_HAMART3_kiejtes.py`; a `jeloltek.tsv` régi indoklásai az elutasítási minták miatt változatlanok).
 
+**A szótári gerinc táblái (bontás):** `adat/szotar_szakasz_cimke.tsv` +21 = BDB 13 (H0127 -/1/-, -/3/-, -/4/-; H0779 Qal; H6975 -/1/-; H2403 -/1/-; H7843 Niph'al, Pi'el/1, Hiph'il/1, Hiph'il/2; H7451 BDB8032 -/10/c; H0423 -/3/-; H0056 Qal) + Thayer 8 (G5356 -/1/-; G1944, G2671, G5351, G2652, G2626 fej; G1311 -/1/-; G1261 -/1/-); `adat/lexikon_hivatkozasok.tsv` +21: ugyanezek kulcssorai (a szakasz angol szövegével). A Jer 51:25 `Hif'íl 1` besorolása a menet saját ítélete: a BDB a verset nem idézi.
+
 ## U3b. A 12. szótári blokk (Nave) — DT595
 
 A jelöltlista a mai 60 soron újraszámolva (34 téma; az U1 listája 52 soron 31-et adott). **Döntés (DT-F123hb, az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-05: „U3b Nave: mehet, ahogy javasoltad.”):** 7 `kivalasztott` (CURSE, FALL OF MAN, GROUND, FLOOD, ANTEDILUVIANS, THISTLE, BANISHMENT), 2 `tiltott` (SIN, DEPRAVITY OF MAN: a bűn általában felé hígítana), 25 `kizart` (személy, könyv, mellékes vagy túl tág téma), indokkal (`naplok/F123_HAMART3_nave.py`). A 23 magyar név Sonnet-tervezet (claude-sonnet-5-5), a `glossza_lexikon_forditas.py nave` kapui után; három a lap szóhasználatára simítva (`naplok/F123_HAMART3_nave_hu.py`). A lap 12. blokkja: 7 téma, magyarul.
@@ -62,3 +64,7 @@ A lap Thayer/BDB-szövegéből fordítatlan volt: **Thayer G1261** (διαλογ
 - ~~A Nave-döntés jóváhagyása (U3b)~~ — megvan: DT-F123hb.
 - A lap vizuális átnézése (U6), a felhasználóé; utána egy javítókör, 1. kiadás.
 - A független ellenőrzés (`fuggetlen-ellenor`) a PR diffjén.
+
+## U4 javítókör (F123.HAMART3.13)
+
+A független ellenőr 12 ELTÉRÉS-e és a javítás tételenként: `naplok/ELLENOR_F123_HAMART-001.md` („A javítókör”). Eszköz: `naplok/F123_HAMART3_javitokor.py`. Az E19 hét hibájából hat kulcsolási hiba volt (a szócikk-azonosító nullázása), egy valódi fordításhiány (Thayer G2652, Sonnettel lefordítva). A CI E2/E4/E19 javítása: `eszkozok/ellenorzes/szabalyok.py`.
