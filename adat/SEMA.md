@@ -1968,6 +1968,7 @@ a `#` kezdetű sorok megjegyzés.
 | `ertek` | zárt értékkészletű oszlopnál az érték; üres, ha a sor az oszlopot magát írja le |
 | `leiras_hu` | a leírás magyarul |
 | `leiras_en` | a leírás angolul (nem lehet azonos a magyarral) |
+| `cimke_en` | értéksornál az érték **rövid angol címkéje** (szerkesztett szöveg, nem gépi fordítás; lehet azonos a magyarral, pl. `Drash`, `CC BY 4.0`); oszlopsornál üres. Az export ebből tölti a `<oszlop>_en` oszlopot (F170.2, DT-F170a) |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` (a `nyilt_mag/kodkonyv.tsv` nem viszi tovább) |
 
 A kapu méri: minden exportált oszlopnak van `ertek`-nélküli sora, minden zárt oszlop (`ZART` a `nyilt_mag_kapu.py`-ban)
@@ -1994,6 +1995,43 @@ minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vag
 `minden jog fenntartva` (a projekt zárt származtatott rétege) és az olyan CC BY-SA forrás, amelyet a csomag nem használ;
 az SDBH/SDGNT külön réteg; a `projekt_adat` a csomag saját adata (DT610). A nem exportált: a `nyitva` jelöltek
 (döntetlen), az értelmező próza, a lexikonlapok. A kapu BUKÁS, ha kizárt dataset neve vagy értéke a csomagban marad.
+
+**Az angol réteg (F170, FELADATOK #170).** *OSIS-kulcs (F170.1):* minden igehely-oszlop (`igehely`, `cel_igehely`,
+`forras_igehely`, `igehely_a`, `igehely_b`, `csoport_sor_igehely`) után a párja, `<oszlop>_osis` (pl. `1Kgs.13.31`;
+tartomány `Gen.4.10-Gen.4.11`; több igehely szóközzel). Lánc: magyar rövidítés → STEPBible-rövidítés
+(`konkordancia/Konyv_normalizalo_tabla.tsv`) → OSIS 2.1.1 könyvkód (`nyilt_mag_export.STEP_OSIS`, rögzített 66 sor). A
+fejezet- és versszám a **Károli-számozás** (átkulcsolás nélkül). A forrásbeli `Sir` (a TAHOT és a belőle képzett F123
+blokk-listák alakja) a csomagban `JSir` (`KONYV_ALIAS`); minden más ismeretlen könyvnévre vagy alakra az export megáll.
+A kapu `OSIS` ellenőrzése: pár nélküli igehely-oszlop, hiányzó, szabálytalan, ismeretlen könyvkódú vagy a leképezéssel
+nem egyező kulcs — BUKÁS. *Zárt címkék (F170.2, DT-F170a):* a zárt oszlopok listája egy helyen áll
+(`nyilt_mag_export.ZART`; a kapu innen veszi), és minden zárt oszlop után az export `<oszlop>_en` oszlopot ad a
+kódkönyv `cimke_en` mezőjéből (a `;`-vel összetett érték részenként). Hiányzó címkénél az export megáll. A kapu
+`CIMKE` ellenőrzése: zárt oszlop `_en` pár nélkül, címke nélküli zárt érték, a kódkönyvétől eltérő `_en` cella — BUKÁS.
+*Szabad szöveg (F170.3–4):* a `nyilt_mag_export.SZABAD` oszlopai (a motívum címe, rövid címkéje, témája, kizáró
+jegye és fölérendelt fogalma; a funkció-címke; a kizárás és a beépítés indoklása és korábbi minősítése; a döntésnapló
+kérdése és döntése) mellett `<oszlop>_en` párhuzamos mező, a sor végén `forditas_modja` (`gépi fordítás (<modell>)`,
+`…; részben hiányzik`, `nincs fordítás`, vagy üres, ha a sorban nincs szabad szöveg). A fordítás **gépi** (Sonnet), a
+tára a `adat/nyilt_angol.tsv` (lent); az export csak egyező forrás-hash-sel veszi be. *Szófogódzó:* az
+`elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám(ok) STEPBible-glosszája (TBESH/TBESG Gloss oszlopa, CC BY
+4.0; a fő bejegyzések, a „Meaning of / Spelling of / Part of” sorok nélkül; több fő bejegyzés ` / `-rel, több
+Strong-szám ` + `-szal); a `jelentes_en` ettől külön, a `szotar` szerinti szótári kivonat. A kapu `FORDITAS`
+ellenőrzése: pár vagy `forditas_modja` nélküli tábla, jelölés nélküli angol cella, elavult (a magyar forrás változott)
+vagy a tárolttól eltérő fordítás — BUKÁS; kimondott hiány — FIGYELMEZTETÉS. A `GLOSSZA`: a `strong_glossza_en` nem az
+újraszámolt STEPBible-glossza (pl. KJV-Strong eredetű érték) — BUKÁS.
+
+**`adat/nyilt_angol.tsv`** — a nyílt mag szabad szövegének gépi angol fordítása (forrásréteg; **gépi**, nem kézi). Írja:
+`eszkozok/nyilt_mag_angol.py betolt` (a fordítást a Sonnet-subagent végzi a `kigyujt` kötegein). Kulcs: `tabla` +
+`oszlop` + `sorkulcs`. Olvasás `split('\t')`, írás `'\t'.join()`; a `#`-sor megjegyzés.
+
+| Oszlop | Jelentés |
+|---|---|
+| `tabla`, `oszlop` | a `nyilt_mag/` fájlja és szabad szöveges oszlopa |
+| `sorkulcs` | a sor természetes kulcsa ` \| `-vel (`nyilt_mag_export.SORKULCS`: motívum; motívum + igehely + horgony; motívum + igehely + cél-motívum + cél-igehely; döntés-azonosító) |
+| `forras_hash` | a lefordított magyar cellaszöveg SHA-256-jának első 16 jegye; ha a mai cella hash-e más, a fordítás elavult |
+| `forras_hu` | a lefordított magyar szöveg (olvasásra; a hash ebből számolható) |
+| `angol` | a gépi fordítás |
+| `modell` | a fordító ténylegesen futott modellje (a subagent saját kiírt neve) |
+| `datum` | a betöltés dátuma |
 
 ### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT616, 2026-11-04)
 

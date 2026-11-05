@@ -5,9 +5,9 @@ kod: NYILT_MAG_ANGOL
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: fut
 ad: a nyílt adatmag minden sora OSIS-igehelykulccsal, a zárt értékkészletek angol címkével, a szabad szöveges indoklás és funkció-címke jelölt gépi angol párhuzamos mezővel, a motívumok angol meghatározásával; kódkönyv (hu/en) és kapu bővítve, E35 zöld — a data paper beküldésének előfeltétele
-kovetkezo: Indítható (a /kovetkezo); a fordítási lépés Sonnet-subagentben fut
+kovetkezo: F170.1–F170.5 kész (jelentés: naplok/NYILT_MAG_ANGOL_jelentes.md); független ellenőr, draft PR, merge a felhasználóé
 munka: folyamat
 olvas: [konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/TBESH.txt, konkordancia/TBESG.txt, konkordancia/TBESH_TBESG_README.md, adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/elutasitasi_okok.tsv, adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md]
 ir: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, eszkozok/nyilt_mag_angol.py, adat/nyilt_kodkonyv.tsv, adat/nyilt_angol.tsv, adat/SEMA.md, nyilt_mag/, kozlemeny/MI_NYILATKOZAT.md, kozlemeny/en/]
@@ -68,4 +68,4 @@ A nyílt adatmag (`nyilt_mag/`, CC BY 4.0) ma magyar oszlopértékekkel és magy
 
 - `nem_fugg: [38, 123, 163]` (befogadás, 2026-11-05): a #38 és a #123 csak olvasott táblát (normalizáló tábla, `motivumok.tsv`) ír; az export mindig a mai állapotból generál, és az E35 minden adatváltozásnál újragenerálást kér. A #163 (`dontesre_var`) az MI-nyilatkozat DT605/DT606 helyőrzőin vár; ez a feladat csak egy mondatot ad hozzá, a helyőrzőket nem érinti (a kettő a `kizar` miatt nem fut egyszerre).
 - Ütközés a #171-gyel (`eszkozok/nyilt_mag_export.py`, `nyilt_mag/`): a két feladat nem fut egyszerre; a sorrend szám szerint #170 → #171, vagy a #171 kézirat-része előre (a generátor-rész a #170 merge-e után).
-- N-F170a (nyitott, `nyitott/uj/befogadas-20261105.md`): a `kezirat_en.md` „Hungarian column names and values” korlát-mondata a #170 után frissítendő.
+- N-F170a (nyitott, `NYITOTT_FELADATOK.md`): a `kezirat_en.md` „Hungarian column names and values” korlát-mondata a #170 után frissítendő.

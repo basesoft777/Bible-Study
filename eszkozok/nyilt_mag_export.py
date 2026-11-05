@@ -54,6 +54,195 @@ KIZARAS_OKA = [
 
 KH_JELENTES = 'naplok/KAROLI_KH_EPSEG_jelentes.md'
 
+# a zárt értékkészletű oszlopok (egyetlen helyen; a kapu innen veszi): minden értéküknek van kódkönyv-sora, és az
+# export mellettük `<oszlop>_en` oszlopot ad a kódkönyv `cimke_en` mezőjéből (F170.2, DT-F170a). A `;`-vel összetett
+# érték részenként címkéződik.
+ZART = {
+    'motivumok.tsv': ['pardes_szint', 'statusz', 'feldolgozasi_allapot', 'azonossag_tipusa'],
+    'elofordulasok.tsv': ['pardes_szint', 'horgony_tipus', 'szotar', 'azonositas_modja', 'megbizhatosag',
+                          'igazolas', 'lekerdezes_tipusa', 'forras_megnevezes', 'forras_licenc'],
+    'kizarasok.tsv': ['jelolt_tipus', 'kizaras_oka', 'keresesi_mod', 'azonositas_modja', 'megbizhatosag'],
+    'beepitesi_dontesek.tsv': ['jelolt_tipus', 'keresesi_mod'],
+    'kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa', 'forras_megnevezes'],
+    'motivum_kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa', 'forras_megnevezes'],
+    'forrasok_es_licencek.tsv': ['licenc', 'szerepe_a_csomagban', 'ok'],
+    'cc_by_sa_reteg/szemantikai_domenek.tsv': ['szotar'],
+}
+
+
+def ertek_reszek(ertek):
+    return [x.strip() for x in (ertek or '').split(';') if x.strip()]
+
+
+_CIMKE = None
+
+
+def cimkek():
+    """{(tábla, oszlop, érték): cimke_en} a kódkönyvből (`adat/nyilt_kodkonyv.tsv`)."""
+    global _CIMKE
+    if _CIMKE is None:
+        _, kk = tsv('adat/nyilt_kodkonyv.tsv')
+        _CIMKE = {(s['tabla'], s['oszlop'], s['ertek']): s.get('cimke_en', '').strip() for s in kk if s['ertek']}
+    return _CIMKE
+
+
+CIMKE_HIANY = []
+
+
+def cimke_bovit(tabla, fej, sorok):
+    """Minden zárt oszlop után a párja (`<oszlop>_en`): a kódkönyv rövid angol címkéje. Hiányzó címke: a hiány a
+    `CIMKE_HIANY`-ba kerül (az export a végén megáll), nem üres érték és nem találgatás."""
+    zart = ZART.get(tabla, [])
+    uj = []
+    for o in fej:
+        uj.append(o)
+        if o in zart:
+            uj.append(o + '_en')
+    for s in sorok:
+        for o in zart:
+            if o not in fej:
+                continue
+            en = []
+            for r in ertek_reszek(s.get(o, '')):
+                c = cimkek().get((tabla, o, r), '')
+                if not c:
+                    CIMKE_HIANY.append((tabla, o, r))
+                en.append(c)
+            s[o + '_en'] = '; '.join(en)
+    return uj, sorok
+
+
+# --- szabad szöveg angol párja (F170.3–4): a gépi fordítás tárolva az `adat/nyilt_angol.tsv`-ben (forrásréteg), az
+# export csak kiolvassa. Kulcs: tábla + oszlop + sorkulcs; a fordítás csak akkor kerül a csomagba, ha a tárolt
+# forrás-hash a mai magyar cella hash-e (különben a magyar forrás újabb: a fordítás elavult, a kapu bukik).
+SZABAD = {
+    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom'],
+    'elofordulasok.tsv': ['funkcio'],
+    'kizarasok.tsv': ['indoklas', 'korabbi_minosites'],
+    'beepitesi_dontesek.tsv': ['indoklas', 'korabbi_minosites'],
+    'dontesnaplo.tsv': ['kerdes', 'dontes'],
+}
+SORKULCS = {
+    'motivumok.tsv': ['motivum_azonosito'],
+    'elofordulasok.tsv': ['motivum_azonosito', 'igehely', 'horgony'],
+    'kizarasok.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
+    'beepitesi_dontesek.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
+    'dontesnaplo.tsv': ['dontes_azonosito'],
+}
+ANGOL_TABLA = 'adat/nyilt_angol.tsv'
+ANGOL_FEJ = ['tabla', 'oszlop', 'sorkulcs', 'forras_hash', 'forras_hu', 'angol', 'modell', 'datum']
+FORDITAS_NINCS = 'nincs fordítás'
+
+
+def szoveg_hash(t):
+    return hashlib.sha256((t or '').encode('utf-8')).hexdigest()[:16]
+
+
+def sorkulcs(tabla, s):
+    return ' | '.join(s.get(k, '') for k in SORKULCS[tabla])
+
+
+_ANGOL = None
+
+
+def angol_tar():
+    """{(tábla, oszlop, sorkulcs): sor} az `adat/nyilt_angol.tsv`-ből (üres, ha a tábla még nincs)."""
+    global _ANGOL
+    if _ANGOL is None:
+        _ANGOL = {}
+        if os.path.exists(os.path.join(GYOKER, ANGOL_TABLA)):
+            _, sorok = tsv(ANGOL_TABLA)
+            for s in sorok:
+                _ANGOL[(s['tabla'], s['oszlop'], s['sorkulcs'])] = s
+    return _ANGOL
+
+
+def angol_bovit(tabla, fej, sorok):
+    """Minden szabad szöveges oszlop után a párja (`<oszlop>_en`), a sor végén a `forditas_modja`. A fordítás csak
+    egyező forrás-hash-sel kerül be; hiányzó vagy elavult fordításnál a cella üres, és a `forditas_modja` kimondja."""
+    mezok = [o for o in SZABAD.get(tabla, []) if o in fej]
+    uj = []
+    for o in fej:
+        uj.append(o)
+        if o in mezok:
+            uj.append(o + '_en')
+    uj.append('forditas_modja')
+    latott = set()
+    for s in sorok:
+        k = sorkulcs(tabla, s)
+        if k in latott:
+            raise SystemExit('angol réteg: a sorkulcs nem egyedi: %s %s' % (tabla, k))
+        latott.add(k)
+        modellek, hiany, van = set(), 0, 0
+        for o in mezok:
+            hu = s.get(o, '')
+            s[o + '_en'] = ''
+            if not hu:
+                continue
+            van += 1
+            t = angol_tar().get((tabla, o, k))
+            if t and t['forras_hash'] == szoveg_hash(hu) and t['angol']:
+                s[o + '_en'] = t['angol']
+                modellek.add(t['modell'])
+            else:
+                hiany += 1
+        if not van:
+            s['forditas_modja'] = ''
+        elif not modellek:
+            s['forditas_modja'] = FORDITAS_NINCS
+        else:
+            s['forditas_modja'] = ('gépi fordítás (%s)' % ', '.join(sorted(modellek)) +
+                                   ('; részben hiányzik' if hiany else ''))
+    return uj, sorok
+
+
+def szabad_cellak(fajlok):
+    """[(tábla, oszlop, sorkulcs, magyar szöveg, angol cella)] a generált csomag nem üres szabad szöveges celláiból."""
+    ki = []
+    for tabla, mezok in sorted(SZABAD.items()):
+        _, ds = tsv_szoveg(fajlok[tabla])
+        for d in ds:
+            for o in mezok:
+                if d.get(o):
+                    ki.append((tabla, o, sorkulcs(tabla, d), d[o], d.get(o + '_en', '')))
+    return ki
+
+
+# --- angol szófogódzó (F170, a brief 5. pontja): a Strong-szám STEPBible-glosszája (TBESH/TBESG, CC BY 4.0)
+GLOSSZA_FORRAS = ('TBESH', 'TBESG')
+_GLOSSZA = None
+
+
+def strong_glossza():
+    """{Strong-szám: glossza} a TBESH/TBESG-ből. A Strong-szám (és betűs alváltozatai, pl. H1121a/H1121b) fő
+    bejegyzéseinek glosszája (a `H1121A =` és a `H0430G = a Name of` alakú sorok; a „= a Meaning of / Spelling of / Part of” sorok
+    kimaradnak), fájlsorrendben, ismétlés nélkül, ` / `-rel fűzve. A csomag Strong-száma betű nélküli, ezért a
+    glossza a szám egészére szól, nem jelentés-specifikus (pl. H7497: `Rapha / Rephaim`)."""
+    global _GLOSSZA
+    if _GLOSSZA is None:
+        gy = {}
+        for fn in ('konkordancia/TBESH.txt', 'konkordancia/TBESG.txt'):
+            with open(os.path.join(GYOKER, fn), encoding='utf-8') as f:
+                for s in f:
+                    m = s.rstrip('\n').split('\t')
+                    if len(m) < 7 or not re.match(r'^[HG]\d{4}[a-z]?$', m[0]):
+                        continue
+                    if not re.match(r'^[HG]\d{4}[A-Z]? =(?: a Name of)?$', m[1].strip()) or not m[6].strip():
+                        continue
+                    lista = gy.setdefault(m[0][:5], [])
+                    if m[6].strip() not in lista:
+                        lista.append(m[6].strip())
+        _GLOSSZA = {k: ' / '.join(v) for k, v in gy.items()}
+    return _GLOSSZA
+
+
+def glossza_en(strong):
+    """`H7121+H8034` -> `to call: call to + name`; ismeretlen Strong-számnál a rész üres marad (nincs kitöltés)."""
+    szamok = [x.strip() for x in (strong or '').split('+') if x.strip()]
+    if not szamok:
+        return ''
+    return ' + '.join(strong_glossza().get(x, '') for x in szamok)
+
 # a nyílt adatmag és a lexikon viszonya (F167.3.8; a felhasználó jóváhagyott sémája, 2026-11-04)
 ADATMAG_LEXIKON_HU = ('A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező'
                       ' szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva.')
@@ -182,6 +371,87 @@ def step_hu():
 
 
 STEP_REF = re.compile(r'\b([1-3]?[A-Z][a-z]{1,3})\.(\d+)\.(\d+)\b')
+
+# --- OSIS-igehelykulcs (F170.1): magyar rövidítés -> STEPBible-rövidítés (a normalizáló tábla) -> OSIS-könyvkód.
+# A STEPBible-rövidítés nem OSIS (Exo/Exod, 1Ki/1Kgs, Ezk/Ezek …), ezért a 66 kanonikus könyv OSIS 2.1.1 kódja
+# rögzített tábla. A fejezet- és versszám a Károli-számozás (a magyar `igehely` számai, átkulcsolás nélkül).
+STEP_OSIS = {
+    'Gen': 'Gen', 'Exo': 'Exod', 'Lev': 'Lev', 'Num': 'Num', 'Deu': 'Deut', 'Jos': 'Josh', 'Jdg': 'Judg',
+    'Rut': 'Ruth', '1Sa': '1Sam', '2Sa': '2Sam', '1Ki': '1Kgs', '2Ki': '2Kgs', '1Ch': '1Chr', '2Ch': '2Chr',
+    'Ezr': 'Ezra', 'Neh': 'Neh', 'Est': 'Esth', 'Job': 'Job', 'Psa': 'Ps', 'Pro': 'Prov', 'Ecc': 'Eccl',
+    'Sng': 'Song', 'Isa': 'Isa', 'Jer': 'Jer', 'Lam': 'Lam', 'Ezk': 'Ezek', 'Dan': 'Dan', 'Hos': 'Hos',
+    'Jol': 'Joel', 'Amo': 'Amos', 'Oba': 'Obad', 'Jon': 'Jonah', 'Mic': 'Mic', 'Nam': 'Nah', 'Hab': 'Hab',
+    'Zep': 'Zeph', 'Hag': 'Hag', 'Zec': 'Zech', 'Mal': 'Mal',
+    'Mat': 'Matt', 'Mrk': 'Mark', 'Luk': 'Luke', 'Jhn': 'John', 'Act': 'Acts', 'Rom': 'Rom', '1Co': '1Cor',
+    '2Co': '2Cor', 'Gal': 'Gal', 'Eph': 'Eph', 'Php': 'Phil', 'Col': 'Col', '1Th': '1Thess', '2Th': '2Thess',
+    '1Ti': '1Tim', '2Ti': '2Tim', 'Tit': 'Titus', 'Phm': 'Phlm', 'Heb': 'Heb', 'Jas': 'Jas', '1Pe': '1Pet',
+    '2Pe': '2Pet', '1Jn': '1John', '2Jn': '2John', '3Jn': '3John', 'Jud': 'Jude', 'Rev': 'Rev'}
+OSIS_KONYVEK = frozenset(STEP_OSIS.values())
+# a magyar könyvnév forrásbeli változata -> a normalizáló tábla rövidítése. A TAHOT (és a belőle képzett F123
+# blokk-listák) a Jeremiás siralmait `Sir`-nek írja; ugyanez az alias: bdb_konyv_javit.TAHOT_KONYV.
+KONYV_ALIAS = {'Sir': 'JSir'}
+IGEHELY_OSZLOPOK = ('igehely', 'cel_igehely', 'forras_igehely', 'igehely_a', 'igehely_b', 'csoport_sor_igehely')
+IGEHELY_RX = re.compile(r'^(\S+) (\d+):(\d+)(?:[-–](\d+))?$')
+OSIS_RX = re.compile(r'^[1-3]?[A-Z][A-Za-z]+\.\d+\.\d+(?:-[1-3]?[A-Z][A-Za-z]+\.\d+\.\d+)?$')
+
+_HU_OSIS = None
+
+
+def hu_osis():
+    global _HU_OSIS
+    if _HU_OSIS is None:
+        _, sorok = tsv('konkordancia/Konyv_normalizalo_tabla.tsv')
+        _HU_OSIS = {}
+        for s in sorok:
+            step = s['STEPBible-rövidítés']
+            if step not in STEP_OSIS:
+                raise SystemExit('OSIS: a normalizáló tábla %r rövidítésének nincs OSIS-kódja' % step)
+            _HU_OSIS[s['Magyar rövidítés']] = STEP_OSIS[step]
+    return _HU_OSIS
+
+
+def igehely_normal(ig):
+    """A forrásbeli könyvnév-változat (`Sir`) a csomag egységes magyar rövidítésére (`JSir`)."""
+    m = re.match(r'^(\S+)( .*)$', ig or '')
+    if m and m.group(1) in KONYV_ALIAS:
+        return KONYV_ALIAS[m.group(1)] + m.group(2)
+    return ig
+
+
+def osis(ig):
+    """Magyar igehely (`1Kir 13:31`, `1Móz 4:10-11`, `ApCsel 2:27; ApCsel 2:31`) -> OSIS (`1Kgs.13.31`,
+    `Gen.4.10-Gen.4.11`, `Acts.2.27 Acts.2.31`). Üres -> üres. Leképezhetetlen könyvnév vagy alak -> megáll
+    (nem üres érték, nem találgatás)."""
+    if not ig:
+        return ''
+    ki = []
+    for resz in [x.strip() for x in ig.split(';')]:
+        m = IGEHELY_RX.match(igehely_normal(resz))
+        if not m:
+            raise SystemExit('OSIS: nem leképezhető igehely-alak: %r' % ig)
+        kod = hu_osis().get(m.group(1))
+        if kod is None:
+            raise SystemExit('OSIS: leképezhetetlen könyvnév: %r (%r)' % (m.group(1), ig))
+        k = '%s.%s.%s' % (kod, m.group(2), m.group(3))
+        if m.group(4):
+            k += '-%s.%s.%s' % (kod, m.group(2), m.group(4))
+        ki.append(k)
+    return ' '.join(ki)
+
+
+def osis_bovit(fej, sorok):
+    """Minden igehely-oszlop után a párja (`<oszlop>_osis`); a magyar igehely könyvnevét egységesíti."""
+    uj = []
+    for o in fej:
+        uj.append(o)
+        if o in IGEHELY_OSZLOPOK:
+            uj.append(o + '_osis')
+    for s in sorok:
+        for o in fej:
+            if o in IGEHELY_OSZLOPOK:
+                s[o] = '; '.join(igehely_normal(x.strip()) for x in s.get(o, '').split(';')) if s.get(o) else ''
+                s[o + '_osis'] = osis(s[o])
+    return uj, sorok
 
 
 def step_atiras(t):
@@ -427,7 +697,13 @@ def strong_szamok(*szovegek):
 
 # ----------------------------------------------------------------------------- az export
 
-def oszlop_tsv(fej, sorok):
+def oszlop_tsv(fej, sorok, tabla=None):
+    if any(o in IGEHELY_OSZLOPOK for o in fej):     # előbb: a sorkulcs már az egységesített igehelyből képződik
+        fej, sorok = osis_bovit(fej, sorok)
+    if tabla in ZART:
+        fej, sorok = cimke_bovit(tabla, fej, sorok)
+    if tabla in SZABAD:
+        fej, sorok = angol_bovit(tabla, fej, sorok)
     ki = [FEJLEC, '\t'.join(fej)]
     for s in sorok:
         ki.append('\t'.join(str(s.get(f, '')).replace('\t', ' ').replace('\n', ' ') for f in fej))
@@ -455,7 +731,7 @@ def csoport_tagjai(j, kulon_sorok=frozenset()):
     _, sorok = tsv(rel)
     mh = re.search(r'halo=(\w+)', j['forras_kereses'])
     oszlop, blokk = mb.groups()
-    tagok = sorted({s['igehely'] for s in sorok if s[oszlop] == blokk
+    tagok = sorted({igehely_normal(s['igehely']) for s in sorok if s[oszlop] == blokk
                     and (not mh or s.get('halo', mh.group(1)) == mh.group(1))
                     and (j['id'], s['igehely']) not in kulon_sorok})
     if len(tagok) != n:      # a lista nem igazolja a számot: a tagok nem töltődnek ki, az eltérés jelentésbe kerül
@@ -679,7 +955,9 @@ def hogyan_olvasd_en(p):
     dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'empty here'
     return ['## How to read', '',
             'Three questions, step by step, on the motif `%s`. The numbers in the answers are generated from '
-            'this release; the column values are Hungarian and are explained in `KODKONYV.md`.' % p['motivum'], '',
+            'this release. The column names and values are Hungarian: next to each closed-vocabulary column the `_en` '
+            'column gives the English label, next to each passage column the `_osis` column gives the OSIS reference, '
+            'and every column is explained in `KODKONYV.md`.' % p['motivum'], '',
             '### 1. Which verses belong to %s, and on which word?' % p['motivum'], '',
             '1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `%s`.' % p['motivum'],
             '2. The result is %d rows: each row is one verse (`igehely`).' % p['elo_db'],
@@ -707,7 +985,10 @@ def hogyan_olvasd_en(p):
 
 
 def export(kimenet):
+    global _ANGOL
+    _ANGOL = None
     CSOPORT_ELTERES.clear()
+    CIMKE_HIANY.clear()
     lic = Licenc()
     okok_fej, okok = tsv('adat/elutasitasi_okok.tsv')
     okok.sort(key=lambda o: int(o['sorrend']))
@@ -751,12 +1032,13 @@ def export(kimenet):
               'azonossag_tipusa': m['azonossag_tipusa'],
               'negativ_kriterium': tisztit(m['negativ_kriterium'], dn),
               'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn)} for m in mot]
-    fajlok['motivumok.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['motivumok.tsv'] = oszlop_tsv(fej, sorok, 'motivumok.tsv')
     stat['motivumok.tsv'] = len(sorok)
 
     # --- elofordulasok.tsv
     fej = ['motivum_azonosito', 'igehely', 'funkcio', 'pardes_szint', 'horgony_tipus', 'horgony',
-           'strong', 'szotar', 'szotari_szocikk', 'jelentes_szam', 'jelentes_en', 'karoli_szo', 'azonositas_modja',
+           'strong', 'szotar', 'szotari_szocikk', 'jelentes_szam', 'jelentes_en', 'strong_glossza_en', 'karoli_szo',
+           'azonositas_modja',
            'megbizhatosag', 'igazolas', 'lekerdezes_tipusa', 'forras_megnevezes', 'forras_dataset',
            'forras_licenc', 'datum']
     sorok = []
@@ -777,12 +1059,13 @@ def export(kimenet):
             'funkcio': cimke,
             'pardes_szint': e['pardes_szint'], 'horgony_tipus': ht, 'horgony': h, 'strong': e['strong'],
             'szotar': e['lexikon_szotar'], 'szotari_szocikk': e['lexikon_entry_id'],
-            'jelentes_szam': e['jelentes_szam'], 'jelentes_en': e['jelentes_en'], 'karoli_szo': e['karoli_szo'],
+            'jelentes_szam': e['jelentes_szam'], 'jelentes_en': e['jelentes_en'],
+            'strong_glossza_en': glossza_en(e['strong']), 'karoli_szo': e['karoli_szo'],
             'azonositas_modja': e['azonositas_modja'], 'megbizhatosag': e['megbizhatosag'],
             'igazolas': e['igazolas'], 'lekerdezes_tipusa': scope_ford(p.get('scope')),
             'forras_megnevezes': nev, 'forras_dataset': '; '.join(dsek),
             'forras_licenc': '; '.join(sorted({lic.cimke(d) for d in dsek})), 'datum': p.get('ts', '')})
-    fajlok['elofordulasok.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['elofordulasok.tsv'] = oszlop_tsv(fej, sorok, 'elofordulasok.tsv')
     stat['elofordulasok.tsv'] = len(sorok)
 
     # --- kizarasok.tsv (az elutasított jelöltek)
@@ -819,7 +1102,7 @@ def export(kimenet):
             'azonositas_modja': j['azonositas_modja'], 'megbizhatosag': j['megbizhatosag'],
             'dontesek': '; '.join(sorted(d_ids)), 'datum': j['datum']})
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], s['cel_motivum'], s['cel_igehely']))
-    fajlok['kizarasok.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['kizarasok.tsv'] = oszlop_tsv(fej, sorok, 'kizarasok.tsv')
     stat['kizarasok.tsv'] = len(sorok)
     csoport_tagok.sort(key=lambda s: (s['motivum_azonosito'], s['csoport_sor_igehely'], s['igehely']))
     fajlok['kizaras_csoportok.tsv'] = oszlop_tsv(['motivum_azonosito', 'csoport_sor_igehely', 'igehely'],
@@ -846,7 +1129,7 @@ def export(kimenet):
             'keresesi_mod': kereses_modja(j['forras_kereses']), 'dontesek': '; '.join(sorted(d_ids)),
             'datum': j['datum']})
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], s['cel_motivum'], s['cel_igehely']))
-    fajlok['beepitesi_dontesek.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['beepitesi_dontesek.tsv'] = oszlop_tsv(fej, sorok, 'beepitesi_dontesek.tsv')
     stat['beepitesi_dontesek.tsv'] = len(sorok)
 
     # --- kapcsolatok.tsv (igehely-párok)
@@ -863,7 +1146,7 @@ def export(kimenet):
                       'lekerdezes_tipusa': scope_ford(p.get('scope')) if p else '',
                       'forras_megnevezes': nev, 'datum': (p.get('ts') or '')[:10]})
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['forras_igehely'], s['cel_igehely']))
-    fajlok['kapcsolatok.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['kapcsolatok.tsv'] = oszlop_tsv(fej, sorok, 'kapcsolatok.tsv')
     stat['kapcsolatok.tsv'] = len(sorok)
 
     # --- motivum_kapcsolatok.tsv
@@ -881,7 +1164,7 @@ def export(kimenet):
                       'dontesek': '; '.join(d_ids), 'lekerdezes_tipusa': scope_ford('range:' if p.get('scope') else ''),
                       'forras_megnevezes': nev, 'datum': (p.get('ts') or '')[:10]})
     sorok.sort(key=lambda s: (s['motivum_a'], s['igehely_a'], s['motivum_b'], s['igehely_b']))
-    fajlok['motivum_kapcsolatok.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['motivum_kapcsolatok.tsv'] = oszlop_tsv(fej, sorok, 'motivum_kapcsolatok.tsv')
     stat['motivum_kapcsolatok.tsv'] = len(sorok)
 
     # --- dontesnaplo.tsv
@@ -894,7 +1177,7 @@ def export(kimenet):
                       'kerdes': egy_mondat(tisztit(d['kerdes'], dn), 300),
                       'dontes': egy_mondat(tisztit(d['dontes'], dn), 380),
                       'datum': datum.group(0) if datum else 'nincs rögzítve'})
-    fajlok['dontesnaplo.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['dontesnaplo.tsv'] = oszlop_tsv(fej, sorok, 'dontesnaplo.tsv')
     stat['dontesnaplo.tsv'] = len(sorok)
 
     # --- forrasok_es_licencek.tsv
@@ -909,6 +1192,11 @@ def export(kimenet):
         if re.search(r'^TSK', j['forras_kereses']) or 'TSK' in j['forras_kereses']:
             hasznalt.add('TSK')
     hasznalt.add(SAJAT_SOR)
+    # az angol szófogódzó forrása (strong_glossza_en): a TBESH a héber, a TBESG a görög Strong-számokra
+    if any(e['strong'].startswith('H') or '+H' in e['strong'] for e in elo):
+        hasznalt.add('TBESH')
+    if any(e['strong'].startswith('G') or '+G' in e['strong'] for e in elo):
+        hasznalt.add('TBESG')
     fej = ['dataset', 'licenc', 'szerepe_a_csomagban', 'ok']
     sorok = []
     for ds in sorted(lic.sor):
@@ -919,12 +1207,14 @@ def export(kimenet):
             szerep = 'külön réteg (cc_by_sa_reteg/)'
         elif st == 'sajat':
             szerep = 'a csomag saját adata'
+        elif ds in GLOSSZA_FORRAS and ds in hasznalt:
+            szerep = 'forrás (az angol szófogódzó oszlopé)'
         elif ds in hasznalt:
             szerep = 'forrás (a sorok forrásmegjelölésében szerepel)'
         else:
             szerep = 'engedett, de a csomag nem használja'
         sorok.append({'dataset': ds, 'licenc': lic.cimke(ds), 'szerepe_a_csomagban': szerep, 'ok': ok})
-    fajlok['forrasok_es_licencek.tsv'] = oszlop_tsv(fej, sorok)
+    fajlok['forrasok_es_licencek.tsv'] = oszlop_tsv(fej, sorok, 'forrasok_es_licencek.tsv')
     stat['forrasok_es_licencek.tsv'] = len(sorok)
     kizartak = sorted(s['dataset'] for s in sorok if s['szerepe_a_csomagban'] == 'kizárva')
 
@@ -939,6 +1229,7 @@ def export(kimenet):
                            'jelentes_azonosito': s['lexid'], 'domen_kod': s['domen_kod'],
                            'domen_neve': s['domen'], 'glossza': s['glossza']})
     sd.sort(key=lambda s: (s['strong'], s['szotar'], s['jelentes_azonosito']))
+    sd_fej, sd = cimke_bovit('cc_by_sa_reteg/szemantikai_domenek.tsv', sd_fej, sd)
     sa_fejlec = ('# GENERÁLT: a PaRDeS nyílt mag külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
                  'kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.')
     fajlok['cc_by_sa_reteg/szemantikai_domenek.tsv'] = (
@@ -967,7 +1258,7 @@ def export(kimenet):
     # --- kódkönyv (az adat/nyilt_kodkonyv.tsv-ből: a TSV és az olvasható változat)
     kk_fej, kk = tsv('adat/nyilt_kodkonyv.tsv')
     kk.sort(key=lambda s: (s['tabla'], s['oszlop'], s['ertek']))
-    kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en']
+    kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en', 'cimke_en']
     fajlok['kodkonyv.tsv'] = oszlop_tsv(kf, kk)
     stat['kodkonyv.tsv'] = len(kk)
     md = ['# Kódkönyv / Codebook', '', KOD_FEJLEC, '',
@@ -980,7 +1271,8 @@ def export(kimenet):
             akt = s['tabla']
             md += ['', '## ' + akt, '']
         if s['ertek']:
-            md.append('- `%s` = `%s`: %s / %s' % (s['oszlop'], s['ertek'], s['leiras_hu'], s['leiras_en']))
+            md.append('- `%s` = `%s` (en: `%s`): %s / %s' % (s['oszlop'], s['ertek'], s.get('cimke_en', ''), s['leiras_hu'],
+                                                           s['leiras_en']))
         else:
             md += ['', '### `%s`' % s['oszlop'], '', s['leiras_hu'], '', '*' + s['leiras_en'] + '*', '']
     fajlok['KODKONYV.md'] = '\n'.join(md) + '\n'
@@ -1015,6 +1307,16 @@ def export(kimenet):
           'szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig '
           'helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a '
           'lexikont mint önálló művet (minden jog fenntartva).', '',
+          '## Angol réteg', '',
+          'A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden '
+          'igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és '
+          'versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a '
+          'Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv '
+          'szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a '
+          'döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a '
+          'modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a '
+          'Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House '
+          'Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.', '',
           '## Csoportos kizárás', '',
           'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
           'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
@@ -1069,6 +1371,17 @@ def export(kimenet):
            'intelligence are provided at the place of publication; their fields to be completed by the author are '
            'placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this '
            'package) and the lexicon as a separate work (all rights reserved).', '',
+           '## English layer', '',
+           'The column names and values of the package are Hungarian; English parallel columns stand next to them. '
+           '**Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book '
+           'code is standard, chapter and verse follow the versification of the Károli translation — where it '
+           'differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next '
+           'to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free '
+           'text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, '
+           'a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. '
+           '**Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the '
+           'Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); '
+           '`jelentes_en` is separate, a dictionary excerpt.', '',
            '## Group exclusion', '',
            'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
            'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '
@@ -1092,6 +1405,10 @@ def export(kimenet):
            'The file `ELLENORZO_OSSZEG.sha256` contains the SHA-256 sum of every file; rerunning the export is '
            'byte-identical.', '']
     fajlok['README.md'] = '\n'.join(re_)
+
+    if CIMKE_HIANY:
+        raise SystemExit('a zárt érték angol címkéje (cimke_en) hiányzik a kódkönyvből: %s' % '; '.join(
+            '%s/%s = %s' % x for x in sorted(set(CIMKE_HIANY))))
 
     # --- ellenőrző összeg
     sor = []
