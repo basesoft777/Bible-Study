@@ -20,7 +20,7 @@ A motívumkutatás jellemző hibája nem az, hogy átsiklik egy hely fölött, h
 
 Az adatkészlet egy hosszú távú, magyar nyelvű motívumlexikon nyílt adatrétege. Egy motívumot itt mindig az eredeti szöveg valamely ellenőrizhető eleme azonosít. Hat motívumnál ez egyetlen szó, például a seól és a hádész. Kettőnél állandó szókapcsolat, például „segítségül hívni az Úr nevét” (héberül *qārāʾ bĕšēm YHWH*). Egynél több szó visszatérő együttállása. Motívumnak tehát olyan visszatérő bibliai témát nevezünk, amelynek jelenléte egy versben a héber vagy a görög szövegen ellenőrizhető.
 
-Az elutasított helyek ezért nem a munka hulladékai, hanem az adatkészlet részei. A motívum határát nem a meghatározás rajzolja meg, hanem a kizárások. Az értelmező szócikkek, a szótárak magyar fordítása és a nyomtatott kötet külön termékréteget alkotnak; ez a közlemény csak az adatréteggel foglalkozik.
+Az elutasított helyek ezért nem a munka hulladékai, hanem az adatkészlet részei. A motívum határát nem a meghatározás rajzolja meg, hanem a kizárások. A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva. Ez a közlemény csak az adatmaggal foglalkozik.
 
 ## 2. A felvétel és a kizárás eszközei
 
@@ -32,7 +32,7 @@ Az elutasított helyek ezért nem a munka hulladékai, hanem az adatkészlet ré
 4. szópárok keresése egy versen belül;
 5. az igealak ellenőrzése;
 6. a Septuaginta-megfelelés;
-7. a nevesített magyarázókkal való egyezés (ez már a termékréteghez tartozik).
+7. a nevesített magyarázókkal való egyezés (ez már a lexikon értelmező szövegéhez tartozik, nem az adatmaghoz).
 
 Az 1. és a 3–6. lépést program végzi, tehát mindig lefut, és ugyanarra a bemenetre ugyanazt adja.
 
@@ -80,9 +80,9 @@ A 255 előfordulásból 107 a lezárt, 148 a régi feldolgozású motívumokhoz 
 
 | | |
 |---|---|
-| Név és kiadás | PaRDeS nyílt mag, kiadás 2026-11-04-290f358b75124363 |
+| Név és kiadás | PaRDeS nyílt mag, kiadás 2026-11-04-8f3a2c1a00769da7 |
 | Hely | `<DOI>` (kanonikus közzétételi hely: `<KANONIKUS_FORRAS_URL>`) |
-| Formátum | UTF-8 TSV (tabulátorral tagolt, idézőjelezés nélkül), Markdown, SHA-256 ellenőrzőösszeg; 20 fájl, 506 186 bájt |
+| Formátum | UTF-8 TSV (tabulátorral tagolt, idézőjelezés nélkül), Markdown, SHA-256 ellenőrzőösszeg; 20 fájl, 507 141 bájt |
 | Táblák | motívumok (9), előfordulások (255), felvételi döntések (257), kizárások (418) és az összesítő sorok tagjai (3 115), igehely-kapcsolatok (32), motívumok közötti kapcsolatok (3), döntésnapló (8), források és licencek (54), kódkönyv (213 bejegyzés, magyarul és angolul) |
 | Létrehozás | 2026-08-22 – 2026-11-04 |
 | Nyelv | magyar oszlopnevek és értékek, héber és görög szavakkal; a kódkönyv kétnyelvű |
@@ -109,7 +109,7 @@ A lekérdezéseket determinisztikus programok végzik. A felvételi és kizárá
 
 ## Összeférhetetlenség
 
-A szerző az adatokra épülő fizetős terméket (értelmező szócikkeket és kötetet) is kiad. `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>`
+A szerző a nyílt adatra épülő lexikont kereskedelmi kiadásban is megjelenteti. `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>`
 
 ## Támogatás
 
@@ -153,7 +153,7 @@ Minden szám a `python kozlemeny/data_paper/szamok.py` egy futásából jön, a 
 | 3 115 tag, minden összesítő sor felsorolva | P3.csoport_tabla_sor = P3.csoport_vers; P3.osszesito_tag_nelkul = 0 | `nyilt_mag/kizarasok.tsv`, `nyilt_mag/kizaras_csoportok.tsv` |
 | 257 / 32 / 3 / 8 / 213 / 237 sor | P4.* | a csomag azonos nevű fájljai |
 | 54 forrás; 25 kizárt (9 / 9 / 3 / 4) | P5.forras_sor, P5.kizart_ok | `nyilt_mag/forrasok_es_licencek.tsv` |
-| 20 fájl, 506 186 bájt; dátumtartomány; kiadás-azonosító | P6.fajl, P6.meret_bajt, P6.datum_tartomany, P0.kiadas | `nyilt_mag/` |
+| 20 fájl, 507 141 bájt; dátumtartomány; kiadás-azonosító | P6.fajl, P6.meret_bajt, P6.datum_tartomany, P0.kiadas | `nyilt_mag/` |
 | 0 hiba, 9 figyelmeztetés | — | `python eszkozok/nyilt_mag_kapu.py`, 2026-11-04 |
 | 3 kiadott motívum, 8 átnézés, 29 javítás | P7.* | `adat/kiadasok.tsv`, `adat/lap_atnezesek.tsv`, `adat/lap_javitasok.tsv` |
 | teljesség-mérés (1 233 / 651 / 582 / 12 stb.) | P8.* | `naplok/F123_teljesseg_<ID>.md`, 1. Összegzés (az 582 a HAMART-001 napló „Eredmény” 1. pontjából) |
@@ -189,7 +189,7 @@ Forrás: `folyoirat_lehetosegek.md` (PR #632), ✅ = a folyóirat oldaláról le
 | `<ANONIMIZALT_DOI>` | a bírálati példányban a DOI helyén |
 | `<ANGOL_KOZLEMENY_HIVATKOZAS>` | az angol data paper hivatkozása (ha már megjelent vagy elbírálás alatt áll) |
 | `<SZERZOI_NYILATKOZAT>` | a szerző felelősségvállaló mondata, vagy törlendő |
-| `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>` | a fizetős termék és a nyílt adat viszonyának végleges megfogalmazása |
+| `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>` | a lexikon kereskedelmi kiadásának viszonya a nyílt adathoz (a megfogalmazás a szerzőé) |
 | `<TAMOGATO>` | finanszírozó, vagy „A kutatás külső támogatás nélkül készült.” |
 
 ## Nyitott kérdések

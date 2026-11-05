@@ -61,22 +61,24 @@ The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a p
 
 ## Citation and the use of artificial intelligence
 
-With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the entries as a related work (all rights reserved).
+With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
 
 ## Group exclusion
 
 Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, and `kizaras_csoportok.tsv` lists all verses of the group. The rationale of a summary row applies to the whole group.
 
-## What is in it and what is not (data layer and product layer)
+## What is in it and what is not (the data core and the lexicon)
+
+The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved.
 
 **Included (data layer):** the motif identifier, title and exclusion criterion; the occurrences (passage, lexical base, dictionary meaning, Károli word); the exclusions and inclusion decisions with rationale; the relations; provenance (the naming of the source, its licence, the type of query, the date); the decision log.
 
-**Not included (product layer):** the interpretive prose (summary, interpretation, passage-by-passage exposition), the Hungarian dictionary translations, the volume material and the lexicon pages.
+**Not included (the lexicon):** the interpretive prose (summary, interpretation, passage-by-passage exposition), the Hungarian dictionary translations, the volume material and the lexicon pages.
 
 ## What is not in the package
 
 - Candidates in the `nyitva` (open, not yet decided) state: 129.
-- The interpretive prose, the paid layer (Hungarian dictionary translations, Károli text with Strong's numbers), the studies and the lexicon pages.
+- The text of the lexicon (interpretive prose, Hungarian dictionary translations, Károli text with Strong's numbers), the studies and the lexicon pages.
 - Internal working marks: identifiers, working files, query traces. Where a decision is referred to, the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.
 
 ## Verification

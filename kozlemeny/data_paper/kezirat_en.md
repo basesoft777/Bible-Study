@@ -26,13 +26,13 @@ The motifs are at two stages. Three (Sheol/Hades, the pneuma/psychē distinction
 
 Entries may carry a PaRDeS level (Peshat, Remez, Drash, Sod). This is a reception label: it classifies how a passage connects to the motif in terms of the medieval Jewish fourfold reading scheme, not what the biblical author intended. The scope is the biblical corpus (Hebrew Bible, Greek New Testament, Septuagint correspondences); there is no ancient Near Eastern layer, so a missing parallel says nothing about its existence.
 
-Interpretive essays and the printed volume built on these data are a separate product, not part of the dataset.
+The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved.
 
 ## (2) Method
 
 ### Steps
 
-Each motif is derived in seven steps: (1) the Strong numbers shared by its core passages, with grammatical words filtered out; (2) a semantic-field hypothesis, the only generative step, logged; (3) a full Old and New Testament scan over the STEPBible tagged texts (TAHOT, TAGNT); (4) collocation (two words in one verse); (5) verb-form check; (6) the Septuagint correspondence; (7) agreement with named commentators (product layer only). Steps 1 and 3–6 are deterministic scripts.
+Each motif is derived in seven steps: (1) the Strong numbers shared by its core passages, with grammatical words filtered out; (2) a semantic-field hypothesis, the only generative step, logged; (3) a full Old and New Testament scan over the STEPBible tagged texts (TAHOT, TAGNT); (4) collocation (two words in one verse); (5) verb-form check; (6) the Septuagint correspondence; (7) agreement with named commentators (lexicon only). Steps 1 and 3–6 are deterministic scripts.
 
 No search hit enters the dataset directly. Every candidate passes through a candidate table, where it is accepted or rejected with a stated reason. An empty result is recorded as empty, never filled with associative material.
 
@@ -56,9 +56,9 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 **Repository name:** `<REPOZITORIUM>`
 
-**Object name:** PaRDeS open core, release 2026-11-04-290f358b75124363
+**Object name:** PaRDeS open core, release 2026-11-04-8f3a2c1a00769da7
 
-**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 20 files, 506,186 bytes. Tables: motifs (9, with processing stage), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (213 entries, Hungarian and English).
+**Format names and versions:** UTF-8 TSV (tab-separated, no quoting), Markdown, SHA-256 manifest; 20 files, 507,141 bytes. Tables: motifs (9, with processing stage), occurrences (255), inclusion decisions (257), exclusions (418) with group members (3,115), passage links (32), motif links (3), decision log (8), sources and licences (54), codebook (213 entries, Hungarian and English).
 
 **Creation dates:** 2026-08-22 to 2026-11-04
 
@@ -72,15 +72,15 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 ## (4) Reuse potential
 
-The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with reasons can serve as an evaluation set for retrieval or classification, e.g. whether a system separates invoking the divine name from naming. The Károli word recorded for each occurrence, with its identification method and confidence, supports Hungarian reception history. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should note the small sample and the Hungarian column names and values, besides the limitations above.
+The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with reasons can serve as an evaluation set for retrieval or classification, e.g. whether a system separates invoking the divine name from naming. The Károli word recorded for each occurrence, with its identification method and confidence, supports Hungarian reception history. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should also note the small sample and the Hungarian column names and values.
 
 ## AI declaration
 
-The queries are deterministic programs. Inclusion and exclusion decisions were made in sessions assisted by Anthropic Claude language models (models logged per session), each with a stated reason; the dataset contains decisions and short reasons, not model-written interpretive prose. Part of the Károli word alignment is machine output, marked as such. The AI checks described above are model runs. This manuscript was drafted by claude-opus-5-5 from the repository data. No AI tool is an author; `<SZERZO>` reviewed the data and the text and is responsible for both. `<SZERZOI_NYILATKOZAT>`
+The queries are deterministic programs. Inclusion and exclusion decisions were made in sessions assisted by Anthropic Claude language models (models logged per session), each with a stated reason; the dataset contains decisions and short reasons, not model-written interpretive prose. Part of the Károli word alignment is machine output, marked as such. This manuscript was drafted by claude-opus-5-5 from the repository data. No AI tool is an author; `<SZERZO>` reviewed the data and the text and is responsible for both. `<SZERZOI_NYILATKOZAT>`
 
 ## Competing interests
 
-The author also publishes a paid product (interpretive entries and a printed volume) built on these data. `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>`
+The author also publishes the lexicon built on these data commercially. `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>`
 
 ## Funding statement
 
@@ -108,7 +108,7 @@ United Bible Societies. (2023). *UBS Dictionary of Biblical Hebrew* (v0.9.2) and
 
 ## Number provenance
 
-Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-290f358b75124363`; the SHA-256 manifest checked on LF-normalised bytes: 17 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
+Every number in the text above comes from one run of `python kozlemeny/data_paper/szamok.py` (2026-11-04), on the closed package `nyilt_mag/` (release `2026-11-04-8f3a2c1a00769da7`; the SHA-256 manifest checked on LF-normalised bytes: 17 files, 0 mismatches), except where the source is named otherwise. The key in the first column is the key printed by the script.
 
 | Number in text | Key | Source (file, field) |
 |---|---|---|
@@ -129,7 +129,7 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | 237 semantic-domain rows | P4.domen_sor | `nyilt_mag/cc_by_sa_reteg/szemantikai_domenek.tsv` |
 | 54 sources; 25 excluded (9 closed project layers / 9 unclear / 3 non-commercial / 4 unused CC BY-SA); 4 sources used in rows | P5.forras_sor, P5.szerep, P5.kizart_ok, P5.hasznalt_forras | `nyilt_mag/forrasok_es_licencek.tsv`, `szerepe_a_csomagban`, `ok` |
 | 12 occurrence verses found by no net | P8.HAMART-001 (reverse direction) | `naplok/F123_teljesseg_HAMART-001.md`, 1. Összegzés (thematic rows and range effects) |
-| 20 files, 506,186 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
+| 20 files, 507,141 bytes | P6.fajl, P6.meret_bajt | `nyilt_mag/` (bytes LF-normalised) |
 | 2026-08-22 to 2026-11-04 | P6.datum_tartomany | `datum` and `statusz_datum` fields of the package tables |
 | release identifier | P0.kiadas | `nyilt_mag/KIADAS.txt` |
 | 0 failures, 9 warnings | — | `python eszkozok/nyilt_mag_kapu.py`, run 2026-11-04 in this session; same result in `naplok/NYILT_MAG_jelentes.md` |
@@ -151,7 +151,7 @@ A *Journal of Data Mining and Digital Humanities* (az összevetés első helye) 
 2. **Hangsúly.** A JOHD az újrahasznosíthatóságot kéri; a JDMDH-ban a módszer a tárgy: a negatív kritérium és a fölérendelt fogalom mint kizárási eszköz, a három háló mint visszahívás-mérés. A „Quality control” anyaga így a cikk magja lesz, egy táblázattal a négy motívum háló-eredményeiről (a P8 kulcsok).
 3. **Terjedelem.** A JOHD 1000–1500 szavas határa helyett a JDMDH rövid cikkének kerete (a pontos szólimitet a beküldés előtt az élő oldalon ellenőrizni kell, a mai összevetés nem rögzítette); a felszabaduló helyre a kizárási okok teljes táblázata és egy kidolgozott példa (a „calling on the name” motívum: elnevezés kontra segítségül hívás) fér.
 4. **Ami kimarad vagy rövidül.** A CRediT-sor, az APC-ügy és a *Repository location* külön szakasza; az MI-nyilatkozat és az összeférhetetlenség a folyóirat saját formájában marad.
-5. **Ami nem változik.** A számok és a „Number provenance” melléklet; a két rögzített elv (nincs GitHub-URL; csak a nyílt adatmag, a termékréteg legfeljebb egy mondat); a korlátok kimondása.
+5. **Ami nem változik.** A számok és a „Number provenance” melléklet; a két rögzített elv (nincs GitHub-URL; csak a nyílt adatmag, a lexikon mint önálló mű legfeljebb egy mondat); a korlátok kimondása.
 
 ## Jegyzet: kettős közlés
 
@@ -172,7 +172,7 @@ Készül egy magyar kézirat is (`kezirat_hu.md`, Digitális Bölcsészet, „La
 | `<REPOZITORIUM>` | a letéti repozitórium neve |
 | `<KOZZETETEL_DATUMA>` | a letét közzétételének napja (ÉÉÉÉ-HH-NN) |
 | `<SZERZOI_NYILATKOZAT>` | a szerző saját mondata a felelősségvállalásról (az MI-nyilatkozat mintájára), vagy törlendő |
-| `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>` | a fizetős termék és a nyílt adat viszonyának végleges megfogalmazása |
+| `<OSSZEFERHETETLENSEG_MEGFOGALMAZAS>` | a lexikon kereskedelmi kiadásának viszonya a nyílt adathoz (a megfogalmazás a szerzőé) |
 | `<TAMOGATO>` | finanszírozó és támogatási szám, vagy „This research received no external funding.” |
 | `<KOSZONET>` | köszönetnyilvánítás, vagy a szakasz törlése |
 | `<MAGYAR_KOZLEMENY_HIVATKOZAS>` | csak ha a magyar közlemény jelenik meg előbb (l. a kettős közlés jegyzetét) |

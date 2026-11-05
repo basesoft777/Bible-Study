@@ -22,7 +22,7 @@ Ellenőrzések (azonosító — súlyosság):
     CSOPORT      összesítő kizárás-sor, amelynek a `kizaras_csoportok.tsv`-beli tagszáma nem egyezik a
                  `csoport_versszam`-mal (tag nélküli sor is), vagy csoport-tag nem létező összesítő sorhoz   — BUKÁS
     BAJTAZONOS   a lemezen lévő csomag nem egyezik az újragenerált kimenettel / az összeg-fájllal            — BUKÁS
-    TERMEKRETEG  termékréteg-mező (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
+    TERMEKRETEG  a lexikon szövegének mezője (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
 
@@ -323,7 +323,7 @@ def ell_kh_nev(fajlok):
     return ki
 
 
-# a termékréteg mezői (DT-F162c): értelmező próza és fizetős fordítás; nem lehetnek a csomagban
+# a lexikon szövegének mezői (DT-F162c): értelmező próza és szótár-fordítás; nem lehetnek a csomagban
 KI_MEZOK = {
     'elofordulasok.tsv': {'kapcsolodas', 'jelentes_hu', 'felmerult_tanulmany', 'forras_tanulmany', 'fo_elofordulas'},
     'kapcsolatok.tsv': {'funkcio', 'indoklas'},
@@ -339,7 +339,7 @@ def ell_termekreteg(fajlok):
     for rel, mezok in KI_MEZOK.items():
         fej, sorok = tsv_sorok(fajlok.get(rel, ''))
         for o in sorted(mezok & set(fej)):
-            ki.append(Talalat('TERMEKRETEG', BUKAS, rel, 2, o, 'termékréteg-mező a csomagban'))
+            ki.append(Talalat('TERMEKRETEG', BUKAS, rel, 2, o, 'a lexikon szövegének mezője a csomagban'))
     fej, sorok = tsv_sorok(fajlok.get('elofordulasok.tsv', ''))
     for n, d in sorok:
         f = d.get('funkcio', '')
@@ -372,8 +372,8 @@ def ell_kanonikus(fajlok):
     h = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
     if 'kiadas_azonosito:' not in k or h not in k or '<KANONIKUS_FORRAS_URL>' not in k:
         ki.append(Talalat('KANONIKUS', BUKAS, 'KIADAS.txt', 1, k[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
-    if 'termékréteg' not in fajlok.get('KODKONYV.md', ''):
-        ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki az adat- és termékréteg határát'))
+    if E.ADATMAG_LEXIKON_HU not in fajlok.get('KODKONYV.md', '') or E.ADATMAG_LEXIKON_EN not in fajlok.get('KODKONYV.md', ''):
+        ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki a nyílt adatmag és a lexikon határát'))
     return ki
 
 

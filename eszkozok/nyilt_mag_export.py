@@ -54,6 +54,12 @@ KIZARAS_OKA = [
 
 KH_JELENTES = 'naplok/KAROLI_KH_EPSEG_jelentes.md'
 
+# a nyílt adatmag és a lexikon viszonya (F167.3.8; a felhasználó jóváhagyott sémája, 2026-11-04)
+ADATMAG_LEXIKON_HU = ('A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező'
+                      ' szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva.')
+ADATMAG_LEXIKON_EN = ('The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the '
+                      'Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved.')
+
 
 # ----------------------------------------------------------------------------- olvasás
 
@@ -379,7 +385,7 @@ EMOJI_ELEJE = re.compile(r'^[^\w(]+')
 
 def funkcio_cimke(f):
     """(címke, kiesett): a `funkcio` mező adatréteg-része (DT-F162c). A „ — ” előtti címke marad, emoji nélkül; a
-    „ — ” utáni magyarázat (termékréteg) kimarad. Ha nincs „ — ”, a rövid (≤ 60 karakteres, mondatvég nélküli)
+    „ — ” utáni magyarázat (a lexikon szövege) kimarad. Ha nincs „ — ”, a rövid (≤ 60 karakteres, mondatvég nélküli)
     címke marad, a hosszú próza kimarad (`kiesett`)."""
     f = (f or '').strip()
     if not f:
@@ -967,12 +973,7 @@ def export(kimenet):
     md = ['# Kódkönyv / Codebook', '', KOD_FEJLEC, '',
           'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
           'in Hungarian and English.', '',
-          '**Adatréteg / data layer.** A csomag csak adatot tartalmaz (azonosító, cím, kizáró jegy, igehely, '
-          'szóbázis, kizárás és döntés indoklással, proveniencia); az értelmező próza, a magyar szótári '
-          'fordítás és a kötetanyag a termékréteg, nem része a csomagnak. / The package holds data only '
-          '(identifier, title, exclusion criterion, passage, lexical base, exclusions and decisions with '
-          'rationale, provenance); interpretive prose, Hungarian dictionary translations and volume material '
-          'belong to the product layer and are not included.', '']
+          '**Adatréteg / data layer.** %s / %s' % (ADATMAG_LEXIKON_HU, ADATMAG_LEXIKON_EN), '']
     akt = None
     for s in kk:
         if (s['tabla']) != akt:
@@ -1013,21 +1014,22 @@ def export(kimenet):
           'A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról '
           'szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig '
           'helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a '
-          'szócikkeket mint kapcsolódó művet (minden jog fenntartva).', '',
+          'lexikont mint önálló művet (minden jog fenntartva).', '',
           '## Csoportos kizárás', '',
           'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
           'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
           'versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.', '',
-          '## Mi van benne, mi nincs (adatréteg és termékréteg)', '',
+          '## Mi van benne, mi nincs (az adatmag és a lexikon)', '',
+          ADATMAG_LEXIKON_HU, '',
           '**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, '
           'szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a '
           'kapcsolatok; a proveniencia (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a '
           'döntésnapló.', '',
-          '**Nincs benne (termékréteg):** az értelmező próza (kivonat, értelmezés, igehelyenkénti '
+          '**Nincs benne (a lexikon):** az értelmező próza (kivonat, értelmezés, igehelyenkénti '
           'kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.', '',
           '## Ami nincs a csomagban', '',
           '- A `nyitva` állapotú (még el nem döntött) jelöltek: %d db.' % nyitva_db,
-          '- Az értelmező próza, a fizetős réteg (magyar szótári fordítások, Strong-számos Károli-szöveg), a '
+          '- A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a '
           'tanulmányok és a lexikonlapok.',
           '- A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a '
           'nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.', '',
@@ -1066,22 +1068,23 @@ def export(kimenet):
            'With the release, citation metadata (Citation File Format) and a statement on the use of artificial '
            'intelligence are provided at the place of publication; their fields to be completed by the author are '
            'placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this '
-           'package) and the entries as a related work (all rights reserved).', '',
+           'package) and the lexicon as a separate work (all rights reserved).', '',
            '## Group exclusion', '',
            'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
            'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '
            'and `kizaras_csoportok.tsv` lists all verses of the group. The rationale of a summary row applies to '
            'the whole group.', '',
-           '## What is in it and what is not (data layer and product layer)', '',
+           '## What is in it and what is not (the data core and the lexicon)', '',
+           ADATMAG_LEXIKON_EN, '',
            '**Included (data layer):** the motif identifier, title and exclusion criterion; the occurrences '
            '(passage, lexical base, dictionary meaning, Károli word); the exclusions and inclusion decisions with '
            'rationale; the relations; provenance (the naming of the source, its licence, the type of query, the '
            'date); the decision log.', '',
-           '**Not included (product layer):** the interpretive prose (summary, interpretation, passage-by-passage '
+           '**Not included (the lexicon):** the interpretive prose (summary, interpretation, passage-by-passage '
            'exposition), the Hungarian dictionary translations, the volume material and the lexicon pages.', '',
            '## What is not in the package', '',
            '- Candidates in the `nyitva` (open, not yet decided) state: %d.' % nyitva_db,
-           "- The interpretive prose, the paid layer (Hungarian dictionary translations, Károli text with "
+           "- The text of the lexicon (interpretive prose, Hungarian dictionary translations, Károli text with "
            "Strong's numbers), the studies and the lexicon pages.",
            '- Internal working marks: identifiers, working files, query traces. Where a decision is referred to, '
            'the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.', '',

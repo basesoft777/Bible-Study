@@ -61,22 +61,24 @@ A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a
 
 ## Idézés és a mesterséges intelligencia használata
 
-A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a szócikkeket mint kapcsolódó művet (minden jog fenntartva).
+A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
 
 ## Csoportos kizárás
 
 A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.
 
-## Mi van benne, mi nincs (adatréteg és termékréteg)
+## Mi van benne, mi nincs (az adatmag és a lexikon)
+
+A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva.
 
 **Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a kapcsolatok; a proveniencia (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a döntésnapló.
 
-**Nincs benne (termékréteg):** az értelmező próza (kivonat, értelmezés, igehelyenkénti kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.
+**Nincs benne (a lexikon):** az értelmező próza (kivonat, értelmezés, igehelyenkénti kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.
 
 ## Ami nincs a csomagban
 
 - A `nyitva` állapotú (még el nem döntött) jelöltek: 129 db.
-- Az értelmező próza, a fizetős réteg (magyar szótári fordítások, Strong-számos Károli-szöveg), a tanulmányok és a lexikonlapok.
+- A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a tanulmányok és a lexikonlapok.
 - A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.
 
 ## Ellenőrzés

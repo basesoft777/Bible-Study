@@ -13,10 +13,10 @@ A munka két rétegből áll, és a mesterséges intelligencia a kettőt máské
 | Réteg | Mi tartozik bele | Az MI szerepe | Idézés és licenc |
 |---|---|---|---|
 | **Nyílt adatmag** | motívumazonosító, meghatározás, kizáró feltétel, előfordulások, kizárt helyek, döntések indoklással | a lekérdezések determinisztikus programok; a besorolási döntéseket MI-segített munkamenet hozza; minden sor megnevezi az eredetét: a lekérdezést, amelyből származik, vagy azt, hogy kézi döntés | önálló adatkészlet, CC BY 4.0 (a nyílt kiadással lép életbe), saját azonosítóval: `<KANONIKUS_FORRAS_URL>` |
-| **Termék** | értelmező próza, a szótárak magyar fordítása, a Károli-párosítás, kötet, eszközök | az értelmező prózát és a szótár-fordítást nyelvi modell írta, a Károli-párosítás nagyrészt gépi | a szócikkek mint mű, minden jog fenntartva |
+| **A lexikon (mű)** | értelmező szöveg, a szótárak magyar fordítása, a Károli-párosítás, kötet, eszközök | az értelmező prózát és a szótár-fordítást nyelvi modell írta, a Károli-párosítás nagyrészt gépi | önálló mű, minden jog fenntartva |
 
-A modell által írt próza tehát a termékréteg része; az adatmag nem tartalmaz modell-prózát, csak döntéseket és rövid indoklásokat, eredetjelöléssel.
-<!-- proveniencia: a rétegek határa: #86 megvalósítási terv 1.5 („Nyílt tudományos mag vs. fizetős termék”), a felhasználó kiegészítése az orkesztrátoron át („az adatréteg és a termékréteg szétválik a kutatás szerint”, „nem a GitHub marad a forrás”, 2026-11-04); a mai LICENSE még minden jog fenntartva, a CC BY a nyílt export (#162) kiadásával lép életbe | ts=2026-11-04 -->
+A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva. A modell által írt próza tehát a lexikon része; az adatmag nem tartalmaz modell-prózát, csak döntéseket és rövid indoklásokat, eredetjelöléssel.
+<!-- proveniencia: a rétegek határa: #86 megvalósítási terv 1.5 (a nyílt adatmag és a lexikon szétválasztása), a felhasználó kiegészítései az orkesztrátoron át (az adatréteg a kutatás szerint különválik; „nem a GitHub marad a forrás”, 2026-11-04; a nyílt adatmag ↔ lexikon séma: „ez a séma jó”, 2026-11-04); a mai LICENSE még minden jog fenntartva, a CC BY a nyílt export (#162) kiadásával lép életbe | ts=2026-11-04 -->
 
 ## Mit írt mesterséges intelligencia
 
@@ -53,9 +53,9 @@ Az adattáblákból generált részeket (előfordulás-táblák, szótári blokk
 
 ## Szerzőség és felelősség
 
-[HELYŐRZŐ: SZERZŐI FELELŐSSÉGVÁLLALÁS — a szerző saját mondata. Javaslat: „A [HELYŐRZŐ: TERMÉKNÉV] szerzője és kiadója [HELYŐRZŐ: SZERZŐ NEVE]. A mesterséges intelligenciával készült szövegeket a fent leírt módon átnéztem és jóváhagytam; a tartalomért én felelek.”]
+[HELYŐRZŐ: SZERZŐI FELELŐSSÉGVÁLLALÁS — a szerző saját mondata. Javaslat: „A [HELYŐRZŐ: A LEXIKON CÍME] szerzője és kiadója [HELYŐRZŐ: SZERZŐ NEVE]. A mesterséges intelligenciával készült szövegeket a fent leírt módon átnéztem és jóváhagytam; a tartalomért én felelek.”]
 
-A tudományos kiadók gyakorlata szerint az MI-eszköz nem lehet szerző, használatát meg kell nevezni és le kell írni, a felelősség az emberi szerzőé (Cambridge University Press, 2023; De Gruyter Brill: elsődlegesen MI által írt cikket vagy fejezetet nem fogad el). Ezért ez a munka mai formájában **adatbázis és szócikkek MI-segített gyűjteménye**, nem lektorált tudományos közlemény. Folyóiratba szánt érvelő szöveget a szerző ír, és ott a fentieket külön nyilatkozatban megnevezi. A Society of Biblical Literature erre vonatkozó szabályát nem találtuk.
+A tudományos kiadók gyakorlata szerint az MI-eszköz nem lehet szerző, használatát meg kell nevezni és le kell írni, a felelősség az emberi szerzőé (Cambridge University Press, 2023; De Gruyter Brill: elsődlegesen MI által írt cikket vagy fejezetet nem fogad el). Ezért ez a munka mai formájában **MI-segítséggel készült adatbázis és lexikon**, nem lektorált tudományos közlemény. Folyóiratba szánt érvelő szöveget a szerző ír, és ott a fentieket külön nyilatkozatban megnevezi. A Society of Biblical Literature erre vonatkozó szabályát nem találtuk.
 
 ## Források
 
