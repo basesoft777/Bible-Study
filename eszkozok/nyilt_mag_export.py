@@ -209,6 +209,7 @@ def szabad_cellak(fajlok):
 
 
 # --- angol szófogódzó (F170, a brief 5. pontja): a Strong-szám STEPBible-glosszája (TBESH/TBESG, CC BY 4.0)
+GLOSSZA_FORRAS = ('TBESH', 'TBESG')
 _GLOSSZA = None
 
 
@@ -697,12 +698,12 @@ def strong_szamok(*szovegek):
 # ----------------------------------------------------------------------------- az export
 
 def oszlop_tsv(fej, sorok, tabla=None):
+    if any(o in IGEHELY_OSZLOPOK for o in fej):     # előbb: a sorkulcs már az egységesített igehelyből képződik
+        fej, sorok = osis_bovit(fej, sorok)
     if tabla in ZART:
         fej, sorok = cimke_bovit(tabla, fej, sorok)
     if tabla in SZABAD:
         fej, sorok = angol_bovit(tabla, fej, sorok)
-    if any(o in IGEHELY_OSZLOPOK for o in fej):
-        fej, sorok = osis_bovit(fej, sorok)
     ki = [FEJLEC, '\t'.join(fej)]
     for s in sorok:
         ki.append('\t'.join(str(s.get(f, '')).replace('\t', ' ').replace('\n', ' ') for f in fej))
@@ -1206,6 +1207,8 @@ def export(kimenet):
             szerep = 'külön réteg (cc_by_sa_reteg/)'
         elif st == 'sajat':
             szerep = 'a csomag saját adata'
+        elif ds in GLOSSZA_FORRAS and ds in hasznalt:
+            szerep = 'forrás (az angol szófogódzó oszlopé)'
         elif ds in hasznalt:
             szerep = 'forrás (a sorok forrásmegjelölésében szerepel)'
         else:

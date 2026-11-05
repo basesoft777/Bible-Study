@@ -39,9 +39,11 @@ token, plusz a kötegenkénti utasítás. Sonnettel API-n ez **1 USD alatt** mar
 ## 2. Igehely-oszlopok és könyvnevek
 
 Igehelyet hordozó oszlop: `igehely`, `cel_igehely`, `forras_igehely`, `igehely_a`, `igehely_b`, `csoport_sor_igehely`
-(6 tábla). **7 233 igehely-cella, 65 különböző könyvnév.**
+(6 tábla). **7 233 igehely-cella, 65 különböző könyvnév.** *(Utólag, F170.6: az OSIS-kulcsos csomagban 7 234 kitöltött
+`_osis` cella — a felmérés szabályos-alak mintája a többhelyes `ApCsel 2:27; ApCsel 2:31` cellát nem számolta.)*
 
-- **Leképezhetetlen könyvnév: 1 (`Sir`, 24 cella, mind a `kizaras_csoportok.tsv` `igehely` oszlopában).** Eredete: az
+- **Leképezhetetlen könyvnév: 1 (`Sir`, 23 cella, mind a `kizaras_csoportok.tsv` `igehely` oszlopában;** a felmérés
+  szkriptjének 24-es listájában a 24. tétel a többhelyes `ApCsel` cella volt, nem `Sir`.**)** Eredete: az
   F123 teljességi blokk-listák (`naplok/F123_teljesseg_*_blokkok.tsv`) a TAHOT könyvnevét viszik tovább, a TAHOT pedig
   a Jeremiás siralmait `Sir`-nek írja. A projekt ezt az aliast már kezeli (`eszkozok/bdb_konyv_javit.py`
   `TAHOT_KONYV = {'Sir': 'JSir'}`, `eszkozok/bdb_adatblokk.py` `PAROK_KONYV_ALIAS`). A versszámok a JSir-rel

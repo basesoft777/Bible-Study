@@ -15,7 +15,8 @@ Alparancsok:
     betolt --be FÁJL --modell NÉV   a fordított köteg ([{"id": hash, "en": szöveg}]) betöltése minden olyan cellára,
                                     amelynek a magyar szövege ez; a `modell` a fordító saját, kiírt modellneve
 
-TSV-olvasás `split('\\t')`, írás `'\\t'.join()` (CLAUDE.md); írás előtt a meglévő sorok változatlanságát ellenőrzi.
+TSV-olvasás `split('\\t')`, írás `'\\t'.join()` (CLAUDE.md); írás előtt ellenőrzi, hogy a meglévő kulcsok egyike sem
+vész el (a tartalmat a `betolt` csak az új vagy elavult kulcson, ill. `--felulir`-ral cseréli).
 """
 import argparse
 import datetime

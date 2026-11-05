@@ -625,14 +625,16 @@ def _e10_hatokorben_e(relut):
     `terminologia.tsv`/`forditasok.tsv`) es lexikon/ (a render). A gyoker
     brief-/tervfajlok (pl. `F05_SZOTAR_BRIEF.md`, `F02_CI_ELLENORZES_BRIEF.md`), ahol
     a szabaly sajat magat dokumentalja peldakent, nem tartoznak ide."""
-    if relut == E10_KIVETEL:
-        return False
     return relut.startswith('adat/') or relut.startswith('lexikon/')
 
 
-# F170: a nyílt mag gépi angol fordítása (magyar -> angol): a Károli-idézet („lelki test”) mögött álló szó szerinti
-# angol fordítás (["spiritual body"]) helyes, és nem a tiltott szótári spirit -> lélek fordítás; az E10 erre nem fut.
-E10_KIVETEL = 'adat/nyilt_angol.tsv'
+# F170: a nyílt mag gépi angol fordításának tárában (magyar -> angol) a sor a magyar forrásszöveget is hordozza, és
+# az angol mezőben a Károli-idézet magyarul marad, mögötte szó szerinti angol fordítással („lelki test” ["spiritual
+# body"]) -- ez nem a tiltott szótári spirit -> lélek fordítás. Ezért itt az E10 csak az `angol` mezőt nézi, a magyar
+# idézetek („…”, "…") nélkül: ha az angol szövegben magyar lélek/lelki szó maradt idézeten kívül a spirit mellett, az
+# továbbra is találat.
+E10_FORDITAS_TAR = 'adat/nyilt_angol.tsv'
+E10_FORDITAS_OSZLOP = 5     # tabla, oszlop, sorkulcs, forras_hash, forras_hu, angol, …
 
 
 def e10_spirit_lelek(fajlok):
@@ -651,6 +653,10 @@ def e10_spirit_lelek(fajlok):
             # (#7) pedig blockquote-ban renderel, tehat pont a celpontot
             # rejtettek volna el.
             tisztitott = re.sub(r'`[^`]*`', '', sor)
+            if relut == E10_FORDITAS_TAR:
+                mezok = sor.split('\t')
+                tisztitott = mezok[E10_FORDITAS_OSZLOP] if len(mezok) > E10_FORDITAS_OSZLOP else ''
+                tisztitott = re.sub(r'„[^”]*”|"[^"]*"', '', tisztitott)
             if SPIRIT_LELEK_MINTA.search(tisztitott):
                 talalatok.append(Talalat(
                     'E10', SZINT['E10'], relut, i + 1, sor.strip()[:150]
