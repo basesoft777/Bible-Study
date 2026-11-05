@@ -82,6 +82,9 @@ def e2_ellenorizve_proveniencia(fajlok):
     for relut in fajlok:
         if not relut.endswith('.md'):
             continue
+        # az archivum/ alatti fájl a régi fájl ARCHÍV fejlécű példánya: nem szerkesztjük (mint az E9-ben)
+        if relut.replace('\\', '/').startswith('archivum/'):
+            continue
         try:
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
@@ -189,7 +192,9 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
 
     naplo_szovegek = {}
     for gyoker, konyvtarak, fnevek in os.walk(ROOT):
-        if os.path.basename(gyoker) != 'naplok':
+        # az archivált motívum régi naplója (archivum/<ID>/, F123 új cikk) a teljes scan naplója marad
+        relgy = os.path.relpath(gyoker, ROOT).replace(os.sep, '/')
+        if os.path.basename(gyoker) != 'naplok' and not relgy.startswith('archivum/'):
             continue
         for fnev in fnevek:
             if fnev.endswith('kereszthivatkozas_naplo.md'):
@@ -1114,7 +1119,7 @@ def e19_szotari_forditas_hiany(fajlok):
     if os.path.exists(ford_ut):
         for d in dict_sorok(ford_ut):
             if d.get('allapot') in E19_ALLAPOTOK and d.get('mezo') == 'forditas_hu':
-                alap = (d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
+                alap = (d.get('szotar'), _e19_strong(d.get('strong')), _e19_strong(d.get('entry_id')))  # H127 ≡ H0127 (F123.HAMART3)
                 van.add(alap + (d.get('jelentes_szam'),))
                 m = _E19_SZ.match(d.get('jelentes_szam') or '')
                 if m:
@@ -1124,7 +1129,7 @@ def e19_szotari_forditas_hiany(fajlok):
         szotar = d.get('szotar')
         if szotar not in E19_SZOTARAK:
             continue
-        alap = (szotar, _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
+        alap = (szotar, _e19_strong(d.get('strong')), _e19_strong(d.get('entry_id')))
         if alap + (d.get('jelentes_szam'),) in van or alap + ('teljes',) in van:
             continue
         # F145 (2b): a `teljes` hivatkozast a Strong osszes szotari szakaszat lefedo, nem `elavult` `sz<n>` sorok is fedik
