@@ -7,17 +7,23 @@ A forrás zárt licencű: a bemásolt szövege csak a repón kívül, mérésre 
 (DT32-elv, DT-F172a). Ez a szkript csak az adagok VERSLISTÁJÁT írja (igehely,
 a forrás valószínű számozása), a forrás szövegét nem.
 
---adag 1 : formátum-, kiadás- és számozás-próba: rétegenként 1 vers a rétegzett
-           minta verseiből, csak olyan, amelynek Károli- és KJV-számozása azonos
-           (Karoli_versmegfeleltetes.tsv igehely_kjv), 8–30 Károli-szóval;
-           rögzített mag -> f172/kulso/adag_01.tsv
+A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként egy
+(DT-F172a (4″), a felhasználó: „max egy teljes rész tudok másolni”, „8 fejezet”).
 
-Használat: python eszkozok/karoli_strong/pontossag_kulso.py --adag 1
+--fejezetek : rétegenként az a fejezet, amelyben a legtöbb célpár van (a
+              rétegzett minta párjai: előbb az Opus-eltérések, utána az összes
+              célpár száma; döntetlennél a fejezet neve). Feltétel: a fejezet
+              minden versének Károli- és KJV-száma azonos, és más Károli-vers nem
+              esik a KJV-fejezetbe (ÚSZ: a tábla nem fedi, azonosnak vesszük);
+              15–40 vers; nincs `kezi` (fuggoben) tokenje; a fejezetek
+              különbözők. -> f172/kulso/fejezetek.tsv (a párok száma: összes és
+              tartalmi, azaz nem morféma)
+
+Használat: python eszkozok/karoli_strong/pontossag_kulso.py --fejezetek
 """
 
 import argparse
 import os
-import random
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -31,7 +37,6 @@ import pontossag_minta as pm  # noqa: E402
 import tokenek  # noqa: E402
 
 KULSO = os.path.join(pm.GYOKER, 'f172', 'kulso')
-MAG = 20261105
 
 
 def kjv_szam():
@@ -59,102 +64,92 @@ def azonos_szamozas(v, kjv, usz=False):
     return kjv[v] == v.rsplit(' ', 1)[1]
 
 
-def adag1():
+def fejezet_of(v):
+    konyv, hely = v.rsplit(' ', 1)
+    return '%s %s' % (konyv, hely.split(':')[0])
+
+
+def fejezetek():
     karoli, _ = bemenet._adatok()
     kjv = kjv_szam()
+    _, itelet = pm._tabla(os.path.join(pm.KIMENET, 'itelet_par.tsv'))
+    # Károli-versek fejezetenként
+    fej_versek = {}
+    for v in karoli:
+        fej_versek.setdefault(fejezet_of(v), []).append(v)
+    # KJV-fejezetbe eső Károli-versek (ÓSZ)
+    kjv_be = {}
+    for v, k in kjv.items():
+        if k and ':' in k:
+            kjv_be.setdefault('%s %s' % (v.rsplit(' ', 1)[0], k.split(':')[0]), set()).add(v)
+    # párok és kezi fejezetenként
+    par, tart, kezi = {}, {}, set()
+    for k in pm.konyvek():
+        _, sorok = pm._tabla(os.path.join(pm.ADAT, 'parok_%s.tsv' % k))
+        for r in sorok:
+            f = fejezet_of(r['vers'])
+            par[f] = par.get(f, 0) + 1
+            s = r['strong']
+            if not (s.startswith('H90') and len(s) == 5):
+                tart[f] = tart.get(f, 0) + 1
+        _, sz = pm._tabla(os.path.join(pm.ADAT, 'szavak_%s.tsv' % k))
+        for r in sz:
+            if r['allapot'] == 'fuggoben':
+                kezi.add(fejezet_of(r['vers']))
     h2s = tokenek.konyv_hu_to_step()
-    _, minta = pm._tabla(os.path.join(pm.KIMENET, 'minta.tsv'))
-    reteg_vers = {}
-    for r in minta:
-        reteg_vers.setdefault(r['reteg'], set()).add(r['vers'])
-    rnd = random.Random('%d:adag1' % MAG)
-    sorok = []
+
+    def alkalmas(f, usz):
+        vv = fej_versek.get(f, [])
+        if not (15 <= len(vv) <= 40) or f in kezi:
+            return False
+        if usz:
+            return True
+        if any(not azonos_szamozas(v, kjv) for v in vv):
+            return False
+        return kjv_be.get(f, set()) <= set(vv)
+
+    valasztott, sorok = set(), []
     for rt in pm.RETEGEK:
-        jelolt = sorted(v for v in reteg_vers[rt]
-                        if azonos_szamozas(v, kjv, rt.startswith('USZ')) and 8 <= len(tokenek.tokenizal(karoli[v])) <= 30)
-        v = rnd.choice(jelolt)
-        konyv, hely = v.rsplit(' ', 1)
-        fe, ve = hely.split(':')
-        sorok.append([rt, v, '%s %s' % (konyv, hely), '%s.%s.%s' % (h2s[konyv], fe, ve),
-                      str(len(tokenek.tokenizal(karoli[v])))])
+        usz = rt.startswith('USZ')
+        cel = {}
+        for r in itelet:
+            if r['reteg'] != rt:
+                continue
+            f = fejezet_of(r['vers'])
+            d = cel.setdefault(f, [0, 0, 0])
+            d[0] += r['helyes'] == '0' and r['morfema'] == '0'
+            d[1] += r['helyes'] == '0'
+            d[2] += 1
+        jel = [f for f in cel if f not in valasztott and alkalmas(f, usz)]
+        if not jel:
+            raise SystemExit('nincs alkalmas fejezet: %s' % rt)
+        f = sorted(jel, key=lambda f: (-cel[f][0], -cel[f][1], -cel[f][2], f))[0]
+        valasztott.add(f)
+        konyv, fe = f.rsplit(' ', 1)
+        sorok.append([rt, f, '%s.%s' % (h2s[konyv], fe), str(len(fej_versek[f])), str(cel[f][2]), str(cel[f][1]),
+                      str(cel[f][0]), str(par.get(f, 0)), str(tart.get(f, 0))])
     os.makedirs(KULSO, exist_ok=True)
-    with open(os.path.join(KULSO, 'adag_01.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# MANUAL: scope=F172 külső összevetés, 1. adag (formátum-, kiadás- és számozás-próba) | '
-                'forras=f172/minta.tsv, konkordancia/Karoli_versmegfeleltetes.tsv @ git:%s | ts=git:%s | '
-                'manual (determinisztikus, mag=%d); a forrás szövege nem kerül ide\n' % (pm.git_head(), pm.git_head(), MAG))
-        f.write('reteg\tvers_karoli\tforras_valoszinu\tstep\tkaroli_szo\n')
+    head = pm.git_head()
+    with open(os.path.join(KULSO, 'fejezetek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 külső összevetés fejezetei (Bible-Discovery, Strong-os Károli, régies) | '
+                'forras=f172/itelet_par.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, adat/karoli_strong/ @ git:%s | '
+                'ts=git:%s | manual (determinisztikus kiválasztás); a forrás szövege nem kerül ide\n' % (head, head))
+        f.write('\t'.join(['reteg', 'fejezet', 'step', 'versek', 'celpar', 'celpar_elteres', 'celpar_elteres_tartalmi',
+                           'par_osszes', 'par_tartalmi']) + '\n')
         for s in sorok:
             f.write('\t'.join(s) + '\n')
     for s in sorok:
         print('\t'.join(s))
-
-
-ELTERES_MAX = 60
-EGYEZES_DB = 60
-ADAG_VERS = 8
-
-
-def adagok():
-    """A 2. adagtól: a célpárok (DT-F172a (4)) versei.
-
-    Célpár csak tartalmi (nem morféma) pár lehet: a forrás a H9001–H9049
-    morféma-kódokat nem hordozza. Eltérés: a vak Opus-ellenőr halmazán kívüli
-    gépi pár (legfeljebb 60, rögzített maggal); egyezés: 60 pár rétegenként
-    egyenlő arányban (a maradék a nagyobb súlyú rétegekhez). A versek
-    rétegsorrendben, 8-as adagokban; az 1. adag versei kimaradnak."""
-    _, itelet = pm._tabla(os.path.join(pm.KIMENET, 'itelet_par.tsv'))
-    tart = [r for r in itelet if r['morfema'] == '0']
-    rnd = random.Random('%d:adagok' % MAG)
-    elt = [r for r in tart if r['helyes'] == '0']
-    if len(elt) > ELTERES_MAX:
-        elt = sorted(rnd.sample(elt, ELTERES_MAX), key=lambda r: r['minta_id'])
-    egy = []
-    alap, maradek = divmod(EGYEZES_DB, len(pm.RETEGEK))
-    for i, rt in enumerate(pm.RETEGEK):
-        k = alap + (1 if i < maradek else 0)
-        jel = [r for r in tart if r['helyes'] == '1' and r['reteg'] == rt]
-        egy += sorted(rnd.sample(jel, min(k, len(jel))), key=lambda r: r['minta_id'])
-    _, a1 = pm._tabla(os.path.join(KULSO, 'adag_01.tsv'))
-    mar = {r['vers_karoli'] for r in a1}
-    vers_cel = {}
-    for tipus, rr in [('elteres', elt), ('egyezes', egy)]:
-        for r in rr:
-            vers_cel.setdefault(r['vers'], {'reteg': r['reteg'], 'celok': []})['celok'].append(
-                '%s:%s' % (tipus, r['minta_id']))
-    kjv = kjv_szam()
-    h2s = tokenek.konyv_hu_to_step()
-    sorrend = sorted((v for v in vers_cel if v not in mar),
-                     key=lambda v: (pm.RETEGEK.index(vers_cel[v]['reteg']), v))
-    kimaradt = sorted(v for v in vers_cel if v in mar)
-    os.makedirs(KULSO, exist_ok=True)
-    with open(os.path.join(KULSO, 'adagok.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# MANUAL: scope=F172 külső összevetés, 2.+ adag (célpárok versei) | forras=f172/itelet_par.tsv @ git:%s | '
-                'ts=git:%s | manual (determinisztikus, mag=%d; eltérés ≤%d, egyezés %d, tartalmi párok); '
-                'az 1. adagban már szereplő vers: %s\n' % (pm.git_head(), pm.git_head(), MAG, ELTERES_MAX, EGYEZES_DB,
-                                                          ', '.join(kimaradt) or '-'))
-        f.write('adag\treteg\tvers_karoli\tforras_valoszinu\tstep\tcelok\n')
-        for i, v in enumerate(sorrend):
-            konyv, hely = v.rsplit(' ', 1)
-            fe = kjv.get(v, hely) if v in kjv or not vers_cel[v]['reteg'].startswith('OSZ') else ''
-            fv = ('%s %s' % (konyv, fe)) if fe else '(nincs KJV-megfelelő)'
-            st = '%s.%s' % (h2s[konyv], fe.replace(':', '.')) if fe else ''
-            f.write('\t'.join([str(2 + i // ADAG_VERS), vers_cel[v]['reteg'], v, fv, st,
-                               ','.join(vers_cel[v]['celok'])]) + '\n')
-    print('eltérés-cél %d, egyezés-cél %d, vers %d (+%d az 1. adagban), adag %d' % (
-        len(elt), len(egy), len(sorrend), len(kimaradt), (len(sorrend) + ADAG_VERS - 1) // ADAG_VERS))
+    print('összes pár: %d, tartalmi: %d' % (sum(int(s[7]) for s in sorok), sum(int(s[8]) for s in sorok)))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--adag', type=int)
-    ap.add_argument('--adagok', action='store_true', help='a 2.+ adag versei (az Opus-futás után)')
+    ap.add_argument('--fejezetek', action='store_true')
     a = ap.parse_args()
-    if a.adag == 1:
-        adag1()
-    elif a.adagok:
-        adagok()
-    else:
-        ap.error('--adag 1 vagy --adagok')
+    if not a.fejezetek:
+        ap.error('--fejezetek')
+    fejezetek()
 
 
 if __name__ == '__main__':
