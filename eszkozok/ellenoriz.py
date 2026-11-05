@@ -1953,12 +1953,14 @@ def szabaly33_osszesito_versszam(adat_dir):
 
 
 # 35. szabaly (F168, 2026-11-04): a modszertani kozlemenyek (kozlemeny/, F163) a lapra kotve. Minden lap Kolofonjaban
-# ott all az MI-nyilatkozatra mutato hivatkozas es a „Hogyan idézd” bekezdes (a CITATION.cff-re mutatva), a kozos
+# ott all az MI-nyilatkozatra mutato hivatkozas es a „Hogyan idézd” bekezdes (a nyilt adatkeszletre mutato mondattal;
+# a CITATION.cff a nyilt mag dokumentaciojaba tartozik, nem a lapra: F167.4), a kozos
 # Jelmagyarazatban a recepcios keretre mutato hivatkozas; a hivatkozott fajl letezik; GitHub-URL a projektre nem all
 # a lapon (a GitHub nem kanonikus forras). A szoveget a generator (lexikon_general.py, KOZLEMENY) adja, kezzel nem irjuk.
 KOZLEMENY_KOLOFON = (('](../kozlemeny/MI_NYILATKOZAT.md)', 'MI-nyilatkozat hivatkozása'),
                      ('**Hogyan idézd.**', '„Hogyan idézd” bekezdés'),
-                     ('](../CITATION.cff)', 'CITATION.cff hivatkozása'))
+                     ('A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők',
+                      'a nyílt adatkészletre mutató mondat'))
 KOZLEMENY_JELMAGYARAZAT = (('](../kozlemeny/PARDES_RECEPCIOS_KERET.md)', 'recepciós keret hivatkozása'),)
 PROJEKT_GITHUB_RX = re.compile(r'github\.com/basesoft777/', re.I)
 KOZLEMENY_LINK_RX = re.compile(r'\]\((\.\./(?:kozlemeny/[^)\s]+|CITATION\.cff))\)')
@@ -1994,7 +1996,7 @@ def kozlemeny_hibak(lap, lex_dir):
 
 def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
     """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
-    (Kolofon: MI-nyilatkozat, „Hogyan idézd”, CITATION.cff; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
+    (Kolofon: MI-nyilatkozat, „Hogyan idézd”, a nyílt adatkészletre mutató mondat; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
     létezik, vagy a lapon GitHub-URL áll a projektre."""
     cim = '35. Közlemény-hivatkozások a lapon (F168)'
     lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')

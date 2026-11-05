@@ -696,7 +696,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 **Szerzőség.** Az értelmező szakaszok (Kivonat, Miért fontos ez a lelet, Minősítés, Értelmezés, Módszertan és nyitott kérdések) még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
 
-**Hogyan idézd.** A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva. A lap szövegét a lexikon (mű) részeként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: A LEXIKON CÍME]*, „Rafeusok/óriás-népek” (`HODIT-001`), kiadás előtti változat, még nem idézhető, `<KANONIKUS_FORRAS_URL>`. Az adatokat (motívum, előfordulások, kizárt helyek, döntések) a nyílt adatmagként: [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: A LEXIKON CÍME] — nyílt adatmag*, adatkészlet, CC BY 4.0 (a nyílt kiadással), DOI: `<DOI>`. A két idézési egységet a [`CITATION.cff`](../CITATION.cff) írja le.
+**Hogyan idézd.** [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: A LEXIKON CÍME]*, „Rafeusok/óriás-népek” (`HODIT-001`), kiadás előtti változat, még nem idézhető, `<KANONIKUS_FORRAS_URL>`. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: DOI: `<DOI>`.
 
 **Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti hihetőséget nem), [A módszer Hays hét kritériumának tükrében](../kozlemeny/HAYS_LEKEPEZES.md) mutatja be.
 
