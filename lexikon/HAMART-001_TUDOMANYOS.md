@@ -138,7 +138,7 @@ A motívum 60 igehelyen fordul elő, 19 bibliai könyvben (53 ószövetségi, 7 
 | [Zsolt 14:1](#ige-zsolt-14-1) | Megromlottak — הִֽשְׁחִ֗יתוּ (hischítú) | erkölcsileg megront, romlottan cselekszik · Hiph'il 2[^28] | egyetemes romlás | Remez | H7843 | romlottan cselekedni [ⓘ](/szo/H7843) | magas · tartalom-alapú[^28] |
 | [Zsolt 53:2](#ige-zsolt-53-2) | Megromlottak — הִֽ֝שְׁחִ֗יתוּ (hischítú) | erkölcsileg megront, romlottan cselekszik · Hiph'il 2[^29] | egyetemes romlás | Remez | H7843 | romlottan cselekedni [ⓘ](/szo/H7843) | magas · tartalom-alapú[^29] |
 | [Zsolt 74:20](#ige-zsolt-74-20) | zsaroló — חָמָֽס (chámász) | *(nincs hozzárendelés)*[^30] | panasz | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^30] |
-| [Ézs 24:5-6](#ige-ézs-24-5-6) | átok — אָלָה֙ (álá) | átok, Istentől · 3[^31] | tematikus, nem lexikai | Drash | H0423 | oath; curse *(fordításra vár)* [ⓘ](/szo/H0423) | közepes · tartalom-alapú[^31] |
+| [Ézs 24:5-6](#ige-ézs-24-5-6) | átok — אָלָה֙ (álá) | átok, Istentől · 3[^31] | tematikus, nem lexikai | Drash | H0423 | eskü; átok [ⓘ](/szo/H0423) | közepes · tartalom-alapú[^31] |
 | [Ézs 60:18](#ige-ézs-60-18) | erőszaktétel — חָמָס֙ (chámász) | *(nincs hozzárendelés)*[^32] | megfordítás | Sod | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^32] |
 | [Jer 6:7](#ige-jer-6-7) | erőszakosság — חָמָ֣ס (chámász) | *(nincs hozzárendelés)*[^33] | visszhang | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^33] |
 | [Jer 17:5](#ige-jer-17-5) | Átkozott — אָר֤וּר (árúr) | átkoz, átkozott · Qal[^34] | formula egyénre | Drash | H0779 | megátkozni; átkot kimondani [ⓘ](/szo/H0779) | magas · tartalom-alapú[^34] |
@@ -148,7 +148,7 @@ A motívum 60 igehelyen fordul elő, 19 bibliai könyvben (53 ószövetségi, 7 
 | [Ez 8:17](#ige-ez-8-17) | erőszakossággal — חָמָ֗ס (chámász) | *(nincs hozzárendelés)*[^38] | visszhang | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^38] |
 | [Ez 12:19](#ige-ez-12-19) | álnoksága — מֵחֲמַ֖ס (méchamasz) | *(nincs hozzárendelés)*[^39] | visszhang | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^39] |
 | [Ez 28:16](#ige-ez-28-16) | erőszakossággal — חָמָ֖ס (chámász) | *(nincs hozzárendelés)*[^40] | visszhang | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^40] |
-| [Hós 4:1-3](#ige-hós-4-1-3) | búsul — תֶּאֱבַ֣ל (teeval) | gyászol, búsul · Qal[^41] | tematikus, nem lexikai | Drash | H0056 | to mourn; to wither; to languish *(fordításra vár)* [ⓘ](/szo/H0056) | közepes · tartalom-alapú[^41] |
+| [Hós 4:1-3](#ige-hós-4-1-3) | búsul — תֶּאֱבַ֣ל (teeval) | gyászol, búsul · Qal[^41] | tematikus, nem lexikai | Drash | H0056 | gyászolni; elszáradni; elsenyvedni [ⓘ](/szo/H0056) | közepes · tartalom-alapú[^41] |
 | [Hós 10:8](#ige-hós-10-8) | Tövis — ק֣וֹץ (kóc) | tövisbokor, a bogánccsal együtt · 1[^42] | visszatérő szópár | Remez | H6975 | tövis; tüskebokor; tövisbokor [ⓘ](/szo/H6975) | magas · tartalom-alapú[^42] |
 | [Jón 3:8](#ige-jón-3-8) | erőszakosságból — הֶחָמָ֖ס (hechámász) | *(nincs hozzárendelés)*[^43] | megtérés | Drash | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^43] |
 | [Mik 6:12](#ige-mik-6-12) | ragadománynyal — חָמָ֔ס (chámász) | *(nincs hozzárendelés)*[^44] | visszhang | Remez | H2555 | erőszak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^44] |
@@ -158,13 +158,13 @@ A motívum 60 igehelyen fordul elő, 19 bibliai könyvben (53 ószövetségi, 7 
 | [Sof 1:2-3](#ige-sof-1-2-3) | föld színéről — הָאֲדָמָ֖ה (háadámá) | a föld látható felszíne, a föld színe · 4[^48] | egyetemes ítélet | Remez | H0127 | talaj; föld; terület; agyag [ⓘ](/szo/H0127); talaj; föld; terület; agyag [ⓘ](/szo/H0127) | magas · tartalom-alapú[^48] |
 | [Sof 1:9](#ige-sof-1-9) | erőszakkal — חָמָ֥ס (chámász) | *(nincs hozzárendelés)*[^49] | visszhang | Remez | H2555 | agresszióval szerzett javak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^49] |
 | [Mal 3:11](#ige-mal-3-11) | veszti el — יַשְׁחִ֥ת (jaschit) | elront, tönkretesz (termést, földet) · Hiph'il 1[^50] | megfordítás | Remez | H7843 | elpusztítani; pusztává tenni; lemészárolni; letarolni [ⓘ](/szo/H7843) | magas · tartalom-alapú[^50] |
-| [Mt 15:19](#ige-mt-15-19) | gonosz gondolatok — διαλογισμοὶ (dialogiszmoi) | gondolat, belső okoskodás · Thayer 1[^51] | tematikus, nem lexikai | Drash | G1261 | to think out carefully; to reason thoroughly; to consider carefully; to reason; reasoning *(fordításra vár)* [ⓘ](/szo/G1261) | közepes · tartalom-alapú[^51] |
-| [Mk 7:21-23](#ige-mk-7-21-23) | gonosz gondolatok — διαλογισμοὶ (dialogiszmoi) | gondolat, belső okoskodás · Thayer 1[^52] | tematikus, nem lexikai | Drash | G1261 | to think out carefully; to reason thoroughly; to consider carefully; to reason; reasoning *(fordításra vár)* [ⓘ](/szo/G1261) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^52] |
+| [Mt 15:19](#ige-mt-15-19) | gonosz gondolatok — διαλογισμοὶ (dialogiszmoi) | gondolat, belső okoskodás · Thayer 1[^51] | tematikus, nem lexikai | Drash | G1261 | alaposan végiggondolni; alaposan okoskodni; gondosan megfontolni; okoskodni; okoskodás [ⓘ](/szo/G1261) | közepes · tartalom-alapú[^51] |
+| [Mk 7:21-23](#ige-mk-7-21-23) | gonosz gondolatok — διαλογισμοὶ (dialogiszmoi) | gondolat, belső okoskodás · Thayer 1[^52] | tematikus, nem lexikai | Drash | G1261 | alaposan végiggondolni; alaposan okoskodni; gondosan megfontolni; okoskodni; okoskodás [ⓘ](/szo/G1261) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^52] |
 | [Róm 8:20-22](#ige-róm-8-20-22) | rothadandóság — φθορᾶς (fthorasz) | romlás, enyészet, pusztulás · Thayer 1[^53] | állapot | Drash/Sod | G5356 | rothadni; bomlani; bomlás [ⓘ](/szo/G5356) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^53] |
 | [Gal 3:10](#ige-gal-3-10) | Átkozott — ἐπικατάρατος (epikataratosz) | átkozott, Isten átka alatt álló · Thayer fej[^54] | törvényi formula | Drash | G1944 | átkozott; elátkozott [ⓘ](/szo/G1944) | magas · tartalom-alapú[^54] |
 | [Gal 3:13](#ige-gal-3-13) | Átkozott — ἐπικατάρατος (epikataratosz) | átkozott, Isten átka alatt álló · Thayer fej[^55] | megváltás | Drash/Sod | G1944 | átkozott; elátkozott [ⓘ](/szo/G1944) | magas · tartalom-alapú[^55] |
 | [Zsid 6:7-8](#ige-zsid-6-7-8) | átokhoz — κατάρας (katarasz) | átok, átkozódás · Thayer fej[^56] | példázat | Remez/Drash | G2671 | átkozott; elátkozott [ⓘ](/szo/G2671) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^56] |
-| [2Pét 3:6-7](#ige-2pét-3-6-7) | elboríttatván — κατακλυσθεὶς (kataklüsztheisz) | elönt, vízzel elborít · Thayer fej[^57] | tematikus, nem lexikai | Drash | G2626 | flood; deluge *(fordításra vár)* [ⓘ](/szo/G2626) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^57] |
+| [2Pét 3:6-7](#ige-2pét-3-6-7) | elboríttatván — κατακλυσθεὶς (kataklüsztheisz) | elönt, vízzel elborít · Thayer fej[^57] | tematikus, nem lexikai | Drash | G2626 | ár; özönvíz [ⓘ](/szo/G2626) *(jelölt, nem egyértelmű)* | közepes · tartalom-alapú[^57] |
 | [Jel 11:18](#ige-jel-11-18) | pusztítják — διαφθείροντας (diaftheirontasz) | megront, rosszabbá tesz · Thayer 1[^58] | tükörítélet | Sod | G1311 | teljesen elpusztítani [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)*; megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^58] |
 | [Jel 19:2](#ige-jel-19-2) | megrontotta — ἔφθειρεν (eftheiren) | megront, elpusztít · Thayer fej[^59] | ítélet | Remez/Sod | G5351 | megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G5351) | magas · tartalom-alapú[^59] |
 | [Jel 22:3](#ige-jel-22-3) | elátkozott — — | *(nincs hozzárendelés)*[^60] | tematikus, nem lexikai | Sod | — | — *(nincs G-token)* | közepes · tartalom-alapú[^60] |
@@ -1268,7 +1268,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G1261](/szo/G1261) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 30.10 to think out carefully; to reason thoroughly; to consider carefully; to reason; reasoning *(fordításra vár)* · 30.16 what is reasoned; reasoning *(fordításra vár)* · 33.446 to argue; to dispute; argument *(fordításra vár)* · 31.37 to doubt; to be uncertain about; doubt *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 30.10 alaposan végiggondolni; alaposan okoskodni; gondosan megfontolni; okoskodni; okoskodás · 30.16 megfontolt dolog; gondolatmenet · 33.446 vitatkozni; vitázni; érvelés · 31.37 kételkedni; bizonytalannak lenni valamiben; kétely
 
 ##### G1311 — διαφθείρω (diaftheiró) · Thayer
 
@@ -1322,7 +1322,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A teljes szócikk: [szónézet: /szo/G2626](/szo/G2626) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
-**UBS-domének (Louw–Nida):** 14.34 flood; deluge *(fordításra vár)*
+**UBS-domének (Louw–Nida):** 14.34 ár; özönvíz
 
 ##### G2671 — κατάρα (katara) · Thayer
 
@@ -2038,11 +2038,11 @@ A kétnyelvű szótár (SECE) az ával szónak 5 megfelelőjét adja a másik bi
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| θρηνέω | thréneó | G2354 | to lament *(fordításra vár)* |
-| ἰδού | idú | G2400 | look! *(fordításra vár)* |
-| πενθέω | pentheó | G3996 | to mourn *(fordításra vár)* |
-| πλήν | plén | G4133 | but/however *(fordításra vár)* |
-| στενάζω | sztenadzó | G4727 | to groan *(fordításra vár)* |
+| θρηνέω | thréneó | G2354 | gyászolni |
+| ἰδού | idú | G2400 | íme! |
+| πενθέω | pentheó | G3996 | gyászolni |
+| πλήν | plén | G4133 | de/azonban |
+| στενάζω | sztenadzó | G4727 | nyögni |
 
 **H0127 — אֲדָמָה (adámá)** · SECE — görög megfelelők (2):
 
