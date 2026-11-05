@@ -73,6 +73,11 @@ class Szabaly35(unittest.TestCase):
         self.assertEqual(sor.verdict, 'SÉRTÉS')
         self.assertTrue(any('Hogyan idézd' in p for p in sor.peldak), sor.peldak)
 
+    def test_hianyzo_nyilt_adat_mutato(self):
+        sor = self._fut(_lap().replace(LG.NYILT_ADAT_MUTATO, 'A lap adatai'))
+        self.assertEqual(sor.verdict, 'SÉRTÉS')
+        self.assertTrue(any('nyílt adatkészletre' in p for p in sor.peldak), sor.peldak)
+
     def test_hianyzo_recepcios_keret(self):
         sor = self._fut(_lap().replace('](../kozlemeny/PARDES_RECEPCIOS_KERET.md)', ']'))
         self.assertEqual(sor.verdict, 'SÉRTÉS')
@@ -98,6 +103,9 @@ class KolofonKozlemenyek(unittest.TestCase):
         self.assertIn('még nem idézhető', bek[0])
         self.assertIn(LG.KANONIKUS_FORRAS_HELYORZO, bek[0])
         self.assertIn(LG.DOI_HELYORZO, bek[0])
+        self.assertIn(LG.NYILT_ADAT_MUTATO, bek[0])
+        self.assertNotIn('CITATION.cff', bek[0])
+        self.assertNotIn('minden jog fenntartva', bek[0])
         self.assertNotIn('github', ''.join(bek).lower())
         self.assertNotIn('Ennél a motívumnál', bek[2])
 
