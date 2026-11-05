@@ -72,7 +72,9 @@ Before a motif receives an identifier, four questions are answered: what carries
 
 ## (4) Reuse potential
 
-The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with reasons can serve as an evaluation set for retrieval or classification, e.g. whether a system separates invoking the divine name from naming. The Károli word recorded for each occurrence, with its identification method and confidence, supports Hungarian reception history. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should also note the small sample and the Hungarian column names and values.
+The occurrence and link tables form a graph of passages joined by shared Hebrew or Greek words, with explicit negative evidence, useful for studies of inner-biblical allusion alongside criteria-based approaches (Hays, 1989). Accepted and rejected candidates with reasons can serve as an evaluation set for retrieval or classification, e.g. whether a system separates invoking the divine name from naming. The negative criterion, the broader concept and the three-net completeness test can be transferred to other corpora. Users should also note the small sample and the Hungarian column names and values.
+
+The Károli layer is also an object of study in its own right. The Károli Bible, the Hungarian Protestant vernacular translation of 1590, used here in its 1908 revision, was for centuries the Bible of Hungarian Protestants [HIVATKOZÁS: a Károli-fordítás története és recepciója]. Each of the 203 rows with a Károli word gives the Hungarian word form that renders the motif word, with the method and confidence of the match, so all renderings of one Hebrew or Greek word can be gathered with a single filter. Of the 35 rows for *tĕhôm* ('deep', H8415), 28 use a form of *mély* ('deep') and seven another word, such as 'waves', 'flood' or 'sea'. The name Rephaim (H7497) is transliterated in 13 verses, in four spellings, and translated as 'giants' (*óriás*) in 11; eight of the transliterations are in the place name 'Valley of Rephaim'. Such data bear on translator consistency, the choice between transliteration and translation, terminological standardisation and reception; the 176 editor-made pairs can also serve as test material for Hungarian word alignment. The data describe the translation; they do not grade it. Only the motif word is aligned; the alignment of the rest of the verse is not part of this dataset, and we plan to release the full word alignment as a separate open dataset once its accuracy has been measured, depending on the result. Of the motif-word alignments, 27 are machine output or inferred, as flagged in `azonositas_modja`. The structural motif, which rests on no single word, has no Károli word.
 
 ## AI declaration
 
@@ -140,6 +142,10 @@ Every number in the text above comes from one run of `python kozlemeny/data_pape
 | no missing verse (Sheol/Hades, "calling on the name") | P8.ALVIL-001, P8.ISTENTISZT-001 | `naplok/F123_teljesseg_ALVIL-001.md`, `…ISTENTISZT-001.md`, 1. Összegzés (motif feature in the deviating verses: 0; reverse direction: 0) |
 | Greek pair verses all in data | P8.ANTROP-001 | `naplok/F123_teljesseg_ANTROP-001.md`, 1. Összegzés and Eredmény |
 | 5,078 suspect source verses | — | `nyilt_mag/ISMERT_HIBAK.md`, section 1 |
+| (4) Károli paragraph: 203 rows with a Károli word; none in the structural motif (HAMART-001, 0 of 52); 176 editor-made pairs | P2.karoli_szo_kitoltve, P10.karoli_motivumonkent, P2.azonositas_modja | `nyilt_mag/elofordulasok.tsv`, `karoli_szo`, `azonositas_modja` = tartalom-alapú |
+| *tĕhôm* (H8415): 35 rows, 28 with *mély*, 7 other | P10.alak_strongonkent, P10.H8415 | `nyilt_mag/elofordulasok.tsv`, `strong` = H8415, `karoli_szo` (substring "mély") |
+| Rephaim (H7497): 13 transliterated in four spellings, 8 of them in the valley name; 11 *óriás* | P10.H7497, P10.H7497_irasmod | `nyilt_mag/elofordulasok.tsv`, `strong` = H7497, `karoli_szo` (Réfaim / Refaim / Refáim / Refeus vs substring "óriás") |
+| 27 machine-made or inferred alignments | P10.gepi_vagy_kovetkeztetett | `nyilt_mag/elofordulasok.tsv`, `azonositas_modja` = szó-szintű-gépi (25) or kikövetkeztetett (2) |
 
 Numbers deliberately not used in the text: the candidate-table status counts (`adat/jeloltek.tsv`, occurrence candidates of the nine motifs: 255 accepted, 416 rejected, 126 open; key P7.jelolt_dontes) — they agree with the package (255 occurrence rows, 416 occurrence-type exclusion rows), and the 129 open candidates of all types are excluded from the package (key P7.nyitva_minden_tipus; `nyilt_mag/OLVASSEL.md`).
 
@@ -176,6 +182,7 @@ Készül egy magyar kézirat is (`kezirat_hu.md`, Digitális Bölcsészet, „La
 | `<TAMOGATO>` | finanszírozó és támogatási szám, vagy „This research received no external funding.” |
 | `<KOSZONET>` | köszönetnyilvánítás, vagy a szakasz törlése |
 | `<MAGYAR_KOZLEMENY_HIVATKOZAS>` | csak ha a magyar közlemény jelenik meg előbb (l. a kettős közlés jegyzetét) |
+| `[HIVATKOZÁS: a Károli-fordítás története és recepciója]` | (4) Reuse potential, Károli-bekezdés (F171): egy ellenőrzött irodalmi tétel (lehetőleg angol nyelvű vagy angol összefoglalós) arra, hogy a Károli-fordítás (1590, revízió 1908) évszázadokon át a magyar protestánsok bibliája volt; a választás a szerzőé |
 
 ## Nyitott kérdések
 

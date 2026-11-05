@@ -5,9 +5,9 @@ kod: KAROLI_HANGSULY
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: megallt
 ad: a data paper két kéziratának újrahasznosítás-szakaszában és a nyílt mag olvasói fájljaiban (generátorsablonból) egy-egy bekezdés a népnyelvi protestáns fordításról mint vizsgálati tárgyról, a nyílt mag soronkénti Károli-adatára hivatkozva
-kovetkezo: Indítható (a /kovetkezo), effort high; a nyílt mag generátor-része nem futhat a #170-nel egyszerre
+kovetkezo: A kézirat-rész kész (F171.1 mérés, F171.2 kéziratok; draft PR, a felhasználó átolvasására vár). A 4. lépés (generátorsablon, nyilt_mag OLVASSEL/README) a #170 merge-e után, frissített ágon; a független ellenőr a teljes tétel végén
 munka: folyamat
 olvas: [nyilt_mag/, adat/elofordulasok.tsv, kozlemeny/data_paper/vazlat.md, kozlemeny/data_paper/folyoirat_kovetelmenyek.md, kozlemeny/data_paper/szamok.py]
 ir: [kozlemeny/data_paper/kezirat_hu.md, kozlemeny/data_paper/kezirat_en.md, eszkozok/nyilt_mag_export.py, nyilt_mag/OLVASSEL.md, nyilt_mag/README.md, nyilt_mag/ELLENORZO_OSSZEG.sha256]
