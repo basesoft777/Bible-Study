@@ -1,7 +1,7 @@
 # A nyílt mag angol rétege — jelentés (F170, FELADATOK #170)
 
 *2026-11-05 · session: claude-opus-5-5 (a brief `modell: opus`, egyezik) · fordítás: két előfizetéses Sonnet-alügynök,
-saját kiírt modellnevük `claude-sonnet-5-5` · ág: `claude/gifted-bardeen-54a98d` · döntések: DT-F170a (a); a glossza-oszlop
+saját kiírt modellnevük `claude-sonnet-5-5` · ág: `claude/gifted-bardeen-54a98d` · döntések: DT626 (a); a glossza-oszlop
 és a fordítás „mehet”-je az orkesztrátortól, a felhasználó felhatalmazásával (2026-11-05)*
 
 A számok a futások kimenetéből: `python eszkozok/nyilt_mag_export.py`, `python eszkozok/nyilt_mag_kapu.py`,
@@ -23,7 +23,7 @@ A fejezet- és versszám a Károli-számozás; a kódkönyv minden `_osis` sora 
 vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. A forrásbeli `Sir` (TAHOT-alak, 23 csoport-tag) a
 csomagban `JSir`; minden más ismeretlen könyvnévre az export megáll.
 
-**Zárt címkék (DT-F170a (a)).** A zárt oszlopok listája egy helyen áll (`nyilt_mag_export.ZART`); új zárt oszlop: a
+**Zárt címkék (DT626 (a)).** A zárt oszlopok listája egy helyen áll (`nyilt_mag_export.ZART`); új zárt oszlop: a
 `kizaras_oka`, a `forrasok_es_licencek.ok`, a `forras_megnevezes` (3 tábla) és a `kapcsolatok.lekerdezes_tipusa`. A
 145 különböző címkét a szerkesztő írta (`naplok/F170_cimkek.tsv`), nem gépi soronkénti fordítás.
 
@@ -60,7 +60,7 @@ E35: a commitolt `nyilt_mag/` az újragenerált exporttal bájtazonos (a kapu `B
 **CI-szabályok (helyben, `eszkozok/ellenorzes/futtat.py` a diffre):** 0 HIBA. Két szabályhoz kellett illeszteni: az
 **E9** a „sense” szót jelezte a kétnyelvű `KODKONYV.md`-ben (a kódkönyv angol szövegében „meaning” lett); az **E10** a
 fordítás-tár 3 sorát (a Károli-idézet „lelki test” mögött a szó szerinti ["spiritual body"]). Az E10 a tárban most
-csak az `angol` mezőt nézi, a magyar idézetek nélkül (DT-F170c, 🟡; teszt). Mivel a PR a nyílt mag kapuját és a
+csak az `angol` mezőt nézi, a magyar idézetek nélkül (DT628, 🟡; teszt). Mivel a PR a nyílt mag kapuját és a
 `szabalyok.py`-t is módosítja, a címe „[ELLENŐRZŐ]” előtagú (E16). A független ellenőr jelentése és a kezelés:
 `naplok/ELLENOR_F170.md`.
 
@@ -117,5 +117,5 @@ fordítása). Ingadozás (nem hiba): „Surplus of the Septuagint” a címke �
 | a forrás-hash egyezik; a kapu bukik, ha a magyar forrás változott | teljesül (elavult 0; teszt: `test_elavult_forditas`) |
 | 0 KJV-Strong-eredetű érték; a szójelentés-fogódzó STEPBible-glossza, attribúcióval | teljesül (kapu `GLOSSZA`, `LICENC` 0) |
 | `nyilt_mag_kapu.py` 0 BUKÁS, `teszt_nyilt_mag.py` zöld, E35 zöld | teljesül helyben; a CI a PR-en |
-| kódkönyv: minden új oszlop és érték hu/en; az MI-nyilatkozat mondata | kódkönyv teljesül; a mondat a 4. pontban (DT-F170b: az orkesztrátor döntése, nem a nyilatkozatban) |
+| kódkönyv: minden új oszlop és érték hu/en; az MI-nyilatkozat mondata | kódkönyv teljesül; a mondat a 4. pontban (DT627: az orkesztrátor döntése, nem a nyilatkozatban) |
 | a szúrópróba eredménye a jelentésben | teljesül (3. pont: 30-ból 28 jó, 2 javítva; + 1 javítás az ellenőr mintájából) |

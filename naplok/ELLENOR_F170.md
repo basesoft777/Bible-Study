@@ -21,7 +21,7 @@ bájtazonosságot a `futtat.py` igazolta (0 találat).
 - G5: 247/247 glossza, a TBESH/TBESG Gloss oszlopával egyezik; a KJV-adathalmazok kizárva. Megjegyzés: H1121 →
   `son: child / Beno` (a tulajdonnév is benne; dokumentált, de félrevezető).
 - TSV `'\t'.join`, `csv` 0; a régi kódkönyv-sorokhoz csak a `cimke_en` jött (és a `jelentes_en` leírása változott).
-- D1–D3, ⛔ 3. lépés (DT-F170a 🟡 → 🟢 a döntés után), A1, A2, A6: OK.
+- D1–D3, ⛔ 3. lépés (DT626 🟡 → 🟢 a döntés után), A1, A2, A6: OK.
 
 ## ELTÉRÉS (súlyossági sorrendben)
 
@@ -45,8 +45,8 @@ repóban nincs nyoma), a Sonnet-modellnév (az alügynök saját bevallása).
 1. A PR címe „[ELLENŐRZŐ]” előtagú (a brief kérése szerint, mert a nyílt mag kapuja és az E10 is változott). Az E10
    kivétele **szűkítve**: az `adat/nyilt_angol.tsv`-ben a szabály csak az `angol` mezőt nézi, a magyar idézetek
    („…”, "…") nélkül; az idézeten kívül maradt `lélek`/`lelki` a `spirit` mellett továbbra is találat (teszt). Döntési
-   tétel: DT-F170c (🟡, a felhasználó a merge-dzsel dönt).
-2. DT-F170b: az MI-nyilatkozat mondata a jelentésben (az orkesztrátor döntése, 2026-11-05) — tételként rögzítve.
+   tétel: DT628 (🟡, a felhasználó a merge-dzsel dönt).
+2. DT627: az MI-nyilatkozat mondata a jelentésben (az orkesztrátor döntése, 2026-11-05) — tételként rögzítve.
 3. A 78. sor javítva: `"élő lelkével" ["with living soul"]` (csak a fordításon; jelölés `… javítás: claude-opus-5-5`).
    Az átírás-ingadozás a jelentésben megjegyzésként áll (nem hiba: a forrás magyar átírását a fordító megtartotta).
 4. A jelentésbe került a `nyilt_angol.tsv` tábla–oszlop szerinti bontása.

@@ -1968,7 +1968,7 @@ a `#` kezdetű sorok megjegyzés.
 | `ertek` | zárt értékkészletű oszlopnál az érték; üres, ha a sor az oszlopot magát írja le |
 | `leiras_hu` | a leírás magyarul |
 | `leiras_en` | a leírás angolul (nem lehet azonos a magyarral) |
-| `cimke_en` | értéksornál az érték **rövid angol címkéje** (szerkesztett szöveg, nem gépi fordítás; lehet azonos a magyarral, pl. `Drash`, `CC BY 4.0`); oszlopsornál üres. Az export ebből tölti a `<oszlop>_en` oszlopot (F170.2, DT-F170a) |
+| `cimke_en` | értéksornál az érték **rövid angol címkéje** (szerkesztett szöveg, nem gépi fordítás; lehet azonos a magyarral, pl. `Drash`, `CC BY 4.0`); oszlopsornál üres. Az export ebből tölti a `<oszlop>_en` oszlopot (F170.2, DT626) |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` (a `nyilt_mag/kodkonyv.tsv` nem viszi tovább) |
 
 A kapu méri: minden exportált oszlopnak van `ertek`-nélküli sora, minden zárt oszlop (`ZART` a `nyilt_mag_kapu.py`-ban)
@@ -2003,7 +2003,7 @@ tartomány `Gen.4.10-Gen.4.11`; több igehely szóközzel). Lánc: magyar rövid
 fejezet- és versszám a **Károli-számozás** (átkulcsolás nélkül). A forrásbeli `Sir` (a TAHOT és a belőle képzett F123
 blokk-listák alakja) a csomagban `JSir` (`KONYV_ALIAS`); minden más ismeretlen könyvnévre vagy alakra az export megáll.
 A kapu `OSIS` ellenőrzése: pár nélküli igehely-oszlop, hiányzó, szabálytalan, ismeretlen könyvkódú vagy a leképezéssel
-nem egyező kulcs — BUKÁS. *Zárt címkék (F170.2, DT-F170a):* a zárt oszlopok listája egy helyen áll
+nem egyező kulcs — BUKÁS. *Zárt címkék (F170.2, DT626):* a zárt oszlopok listája egy helyen áll
 (`nyilt_mag_export.ZART`; a kapu innen veszi), és minden zárt oszlop után az export `<oszlop>_en` oszlopot ad a
 kódkönyv `cimke_en` mezőjéből (a `;`-vel összetett érték részenként). Hiányzó címkénél az export megáll. A kapu
 `CIMKE` ellenőrzése: zárt oszlop `_en` pár nélkül, címke nélküli zárt érték, a kódkönyvétől eltérő `_en` cella — BUKÁS.

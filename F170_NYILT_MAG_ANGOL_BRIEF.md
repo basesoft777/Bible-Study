@@ -46,7 +46,7 @@ A nyílt adatmag (`nyilt_mag/`, CC BY 4.0) ma magyar oszlopértékekkel és magy
 0. Modell-ellenőrzés (CLAUDE.md): a session `opus`; a fordítási subagent `sonnet` (a saját modellnevét a kimenetbe írja). Olvasd: `F162_NYILT_MAG_BRIEF.md`, `adat/SEMA.md` nyílt mag szakasza, `nyilt_mag/KODKONYV.md`, `kozlemeny/MI_NYILATKOZAT.md`.
 1. **Felmérés** (`naplok/NYILT_MAG_ANGOL_felmeres.md`): oszloponként a zárt/szabad besorolás, a fordítandó egyedi szövegek száma és karakterszáma (költségbecslés), a leképezendő könyvnevek száma és a leképezhetetlenek listája, a `jelentes_en` mai forrása.
 2. OSIS-kulcs a generátorban, kapu (a) + teszt. Commit (`F170.1`).
-3. ⛔ **Zárt címkék helye**: párhuzamos `_en` oszlop vagy csak kódkönyv-hivatkozás — javaslat az 1. lépés számaival, tétel `dontesek/uj/<ágnév>.md`-be (helyőrző `DT-F170a`), megállás.
+3. ⛔ **Zárt címkék helye**: párhuzamos `_en` oszlop vagy csak kódkönyv-hivatkozás — javaslat az 1. lépés számaival, tétel `dontesek/uj/<ágnév>.md`-be (helyőrző `DT626`), megállás.
 4. Zárt címkék a választás szerint, kódkönyv, kapu (b). Commit (`F170.2`).
 5. ⛔ **Fordítás indítása**: a becsült költség (subscription-subagent vagy API-keret, `forditas_api_keretbol` gyakorlat) és a fordítási prompt (terminológia: a projekt angol olvasói fájljainak szóhasználata, a „lexicon” / „open data core” pár, „termék / product” szó nincs) bemutatva; a felhasználó „mehet”-je nélkül nem indul.
 6. Fordítás Sonnettel (`eszkozok/nyilt_mag_angol.py`: kötegelés, hash, tárolás `adat/nyilt_angol.tsv`-be — **TSV-írás `'\t'.join()`**, CLAUDE.md), majd az export beköti; kapu (c)–(e). Szúrópróba: 30 véletlen sor (rögzített mag) angol–magyar összevetése az Opus-sessionben, eltérés a naplóba. Commit (`F170.3`).
