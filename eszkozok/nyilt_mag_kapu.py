@@ -25,6 +25,8 @@ Ellenőrzések (azonosító — súlyosság):
     TERMEKRETEG  a lexikon szövegének mezője (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
+    OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
+                 nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
 
 Használat:
     python eszkozok/nyilt_mag_kapu.py [--csomag nyilt_mag] [--gyors]   (--gyors: újragenerálás nélkül)
@@ -69,6 +71,11 @@ ZART = {
 }
 # angol szöveget joggal hordozó oszlopok (az ANGOL-ellenőrzés kivétele)
 ANGOL_OSZLOP = {'jelentes_en', 'glossza', 'lemma', 'leiras_en'}
+
+
+def angol_oszlop(o):
+    """Angol (vagy nyelvfüggetlen kódú) oszlop: a felsoroltak, az `…_en` és az `…_osis` oszlopok (F170)."""
+    return o in ANGOL_OSZLOP or o.endswith('_en') or o.endswith('_osis')
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
 SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
@@ -164,7 +171,7 @@ def ell_belso(fajlok):
 def ell_angol(fajlok):
     ki = []
     for rel, n, o, ertek in szoveg_cellak(fajlok):
-        if o in ANGOL_OSZLOP or rel in ANGOL_FAJL_KIVETEL or (rel == 'forrasok_es_licencek.tsv' and o == 'dataset'):
+        if angol_oszlop(o) or rel in ANGOL_FAJL_KIVETEL or (rel == 'forrasok_es_licencek.tsv' and o == 'dataset'):
             continue
         t = CSOMAG_NEVEK.sub('', ertek)
         m = K.ANGOL_SZO.search(t)
@@ -309,6 +316,45 @@ def ell_csoport(fajlok):
         if not versszam.isdigit() or int(versszam) != db.get(k, 0):
             ki.append(Talalat('CSOPORT', BUKAS, 'kizarasok.tsv', n, '%s %s' % k,
                               'a csoport versszáma %s, a felsorolt tagoké %d' % (versszam, db.get(k, 0))))
+    return ki
+
+
+def ell_osis(fajlok):
+    """OSIS (F170, kapu (a)): minden igehely-oszlop mellett ott a `<oszlop>_osis` pár; minden kitöltött igehelynek
+    van érvényes OSIS-kulcsa (szabályos alak, OSIS-könyvkód), és a kulcs a magyar igehely leképezése."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        if not rel.endswith('.tsv'):
+            continue
+        fej, sorok = tsv_sorok(sz)
+        for o in fej:
+            if o not in E.IGEHELY_OSZLOPOK:
+                continue
+            if o + '_osis' not in fej:
+                ki.append(Talalat('OSIS', BUKAS, rel, 2, o, 'az igehely-oszlopnak nincs OSIS-párja'))
+                continue
+            for n, d in sorok:
+                hu, k = d[o], d[o + '_osis']
+                if not hu:
+                    if k:
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, k, 'OSIS-kulcs üres igehely mellett'))
+                    continue
+                if not k:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, hu, 'hiányzó OSIS-kulcs'))
+                    continue
+                for resz in k.split(' '):
+                    if not E.OSIS_RX.match(resz):
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, resz, 'szabálytalan OSIS-kulcs'))
+                    elif any(x.split('.')[0] not in E.OSIS_KONYVEK for x in resz.split('-')):
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, resz, 'ismeretlen OSIS-könyvkód'))
+                try:
+                    vart = E.osis(hu)
+                except SystemExit as h:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, hu, str(h)))
+                    continue
+                if vart != k:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, '%s / %s' % (hu, k),
+                                      'az OSIS-kulcs nem a magyar igehely leképezése (%s)' % vart))
     return ki
 
 
@@ -477,7 +523,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
+              ell_osis, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

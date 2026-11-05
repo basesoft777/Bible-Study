@@ -1,5 +1,5 @@
 # GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
-motivum_a	igehely_a	alpont_a	motivum_b	igehely_b	alpont_b	tipus	bizonyossag	pardes_szint	dontesek	lekerdezes_tipusa	forras_megnevezes	datum
-ALVIL-001	ApCsel 2:27		ISTENTISZT-001	ApCsel 2:21		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20
-ALVIL-001	ApCsel 2:31		ISTENTISZT-001	ApCsel 2:21		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20
-HAMART-001	1Móz 12:3		ISTENTISZT-001	1Móz 12:8		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20
+motivum_a	igehely_a	igehely_a_osis	alpont_a	motivum_b	igehely_b	igehely_b_osis	alpont_b	tipus	bizonyossag	pardes_szint	dontesek	lekerdezes_tipusa	forras_megnevezes	datum
+ALVIL-001	ApCsel 2:27	Acts.2.27		ISTENTISZT-001	ApCsel 2:21	Acts.2.21		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20
+ALVIL-001	ApCsel 2:31	Acts.2.31		ISTENTISZT-001	ApCsel 2:21	Acts.2.21		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20
+HAMART-001	1Móz 12:3	Gen.12.3		ISTENTISZT-001	1Móz 12:8	Gen.12.8		szomszédos	közepes	Remez	NYD-003	megadott igehely-tartomány	a projekt saját mérése és naplója; Karoli_1908 (közkincs)	2026-10-20

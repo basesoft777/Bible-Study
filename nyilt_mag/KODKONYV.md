@@ -34,6 +34,13 @@ Motívumközi jelöltnél a másik motívum oldali igehely(ek); egyébként üre
 *For a link between motifs, the passage(s) on the other motif’s side; otherwise empty.*
 
 
+### `cel_igehely_osis`
+
+Az előző oszlop (cel_igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (cel_igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
+
+
 ### `cel_motivum`
 
 Motívumközi jelöltnél a másik motívum azonosítója; egyébként üres.
@@ -60,6 +67,13 @@ A döntés nyilvános azonosítói (NYD-nnn), a dontesnaplo.tsv-ben oldhatók fe
 A beépített igehely, Károli-számozással; az elofordulasok.tsv sorának kulcsa.
 
 *The incorporated passage, in Károli numbering; the key of the row in elofordulasok.tsv.*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `indoklas`
@@ -282,6 +296,13 @@ Az igehely Károli-számozással (pl. 1Móz 3:16); a héber/görög szöveget a 
 *The passage in Károli numbering (e.g. 1Móz 3:16 = Gen 3:16); the Hebrew/Greek text is carried by the verse row.*
 
 
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
+
+
 ### `jelentes_en`
 
 A szótári jelentés angolul, a szótár szövegéből.
@@ -434,6 +455,13 @@ A kapcsolat célja: a másik igehely.
 *The target passage of the link.*
 
 
+### `cel_igehely_osis`
+
+Az előző oszlop (cel_igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (cel_igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
+
+
 ### `datum`
 
 A rögzítés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.
@@ -446,6 +474,13 @@ A rögzítés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.
 A kapcsolat kiinduló igehelye.
 
 *The starting passage of the link.*
+
+
+### `forras_igehely_osis`
+
+Az előző oszlop (forras_igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (forras_igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `forras_megnevezes`
@@ -502,11 +537,25 @@ Az összesítő sor igehelye a kizarasok.tsv-ben: a csoport egy (jelölő) verse
 *The passage of the summary row in kizarasok.tsv: one (marker) verse of the group; the key of the group.*
 
 
+### `csoport_sor_igehely_osis`
+
+Az előző oszlop (csoport_sor_igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (csoport_sor_igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
+
+
 ### `igehely`
 
 A csoport egy tagja: egy kizárt vers, Károli-számozással; a csoport tagjainak száma a csoport_versszam.
 
 *A member of the group: one excluded verse in Károli numbering; the number of members is csoport_versszam.*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `motivum_azonosito`
@@ -532,6 +581,13 @@ A Károli-szó azonosításának módja (l. elofordulasok.tsv).
 Motívumközi jelöltnél a másik motívum oldali igehely(ek); egyébként üres.
 
 *For a link between motifs, the passage(s) on the other motif’s side; otherwise empty.*
+
+
+### `cel_igehely_osis`
+
+Az előző oszlop (cel_igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (cel_igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `cel_motivum`
@@ -567,6 +623,13 @@ A kizárást megalapozó döntések nyilvános azonosítói (NYD-nnn), a dontesn
 A kizárt igehely, Károli-számozással.
 
 *The excluded passage, in Károli numbering.*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `indoklas`
@@ -731,11 +794,25 @@ Az A motívum oldali igehely.
 *The passage on the A motif’s side.*
 
 
+### `igehely_a_osis`
+
+Az előző oszlop (igehely_a) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely_a) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
+
+
 ### `igehely_b`
 
 A B motívum oldali igehely.
 
 *The passage on the B motif’s side.*
+
+
+### `igehely_b_osis`
+
+Az előző oszlop (igehely_b) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11; több igehely szóközzel). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-számozás (nem a KJV-é); más korpuszokkal ott kapcsolható össze közvetlenül, ahol a két számozás egyezik.
+
+*The passage of the preceding column (igehely_b) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11; several passages separated by a space). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the Károli versification (not the KJV one), so the key links directly to other corpora where the two versifications agree.*
 
 
 ### `lekerdezes_tipusa`

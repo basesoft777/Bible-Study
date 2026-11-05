@@ -1995,6 +1995,15 @@ minden értékének van sora, a két nyelv mindenhol kitöltött. Új oszlop vag
 az SDBH/SDGNT külön réteg; a `projekt_adat` a csomag saját adata (DT610). A nem exportált: a `nyitva` jelöltek
 (döntetlen), az értelmező próza, a lexikonlapok. A kapu BUKÁS, ha kizárt dataset neve vagy értéke a csomagban marad.
 
+**Az angol réteg (F170, FELADATOK #170).** *OSIS-kulcs (F170.1):* minden igehely-oszlop (`igehely`, `cel_igehely`,
+`forras_igehely`, `igehely_a`, `igehely_b`, `csoport_sor_igehely`) után a párja, `<oszlop>_osis` (pl. `1Kgs.13.31`;
+tartomány `Gen.4.10-Gen.4.11`; több igehely szóközzel). Lánc: magyar rövidítés → STEPBible-rövidítés
+(`konkordancia/Konyv_normalizalo_tabla.tsv`) → OSIS 2.1.1 könyvkód (`nyilt_mag_export.STEP_OSIS`, rögzített 66 sor). A
+fejezet- és versszám a **Károli-számozás** (átkulcsolás nélkül). A forrásbeli `Sir` (a TAHOT és a belőle képzett F123
+blokk-listák alakja) a csomagban `JSir` (`KONYV_ALIAS`); minden más ismeretlen könyvnévre vagy alakra az export megáll.
+A kapu `OSIS` ellenőrzése: pár nélküli igehely-oszlop, hiányzó, szabálytalan, ismeretlen könyvkódú vagy a leképezéssel
+nem egyező kulcs — BUKÁS.
+
 ### 2.51 `kozel_keleti_hatar.tsv` — az ókori közel-keleti határ érintett motívumai (F168, DT616, 2026-11-04)
 
 **Kézi** (a `kozlemeny/KOZEL_KELETI_HATAR.md` „Leginkább érintett motívumok” listájából; a próza-említés a lapok

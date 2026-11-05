@@ -183,6 +183,87 @@ def step_hu():
 
 STEP_REF = re.compile(r'\b([1-3]?[A-Z][a-z]{1,3})\.(\d+)\.(\d+)\b')
 
+# --- OSIS-igehelykulcs (F170.1): magyar rövidítés -> STEPBible-rövidítés (a normalizáló tábla) -> OSIS-könyvkód.
+# A STEPBible-rövidítés nem OSIS (Exo/Exod, 1Ki/1Kgs, Ezk/Ezek …), ezért a 66 kanonikus könyv OSIS 2.1.1 kódja
+# rögzített tábla. A fejezet- és versszám a Károli-számozás (a magyar `igehely` számai, átkulcsolás nélkül).
+STEP_OSIS = {
+    'Gen': 'Gen', 'Exo': 'Exod', 'Lev': 'Lev', 'Num': 'Num', 'Deu': 'Deut', 'Jos': 'Josh', 'Jdg': 'Judg',
+    'Rut': 'Ruth', '1Sa': '1Sam', '2Sa': '2Sam', '1Ki': '1Kgs', '2Ki': '2Kgs', '1Ch': '1Chr', '2Ch': '2Chr',
+    'Ezr': 'Ezra', 'Neh': 'Neh', 'Est': 'Esth', 'Job': 'Job', 'Psa': 'Ps', 'Pro': 'Prov', 'Ecc': 'Eccl',
+    'Sng': 'Song', 'Isa': 'Isa', 'Jer': 'Jer', 'Lam': 'Lam', 'Ezk': 'Ezek', 'Dan': 'Dan', 'Hos': 'Hos',
+    'Jol': 'Joel', 'Amo': 'Amos', 'Oba': 'Obad', 'Jon': 'Jonah', 'Mic': 'Mic', 'Nam': 'Nah', 'Hab': 'Hab',
+    'Zep': 'Zeph', 'Hag': 'Hag', 'Zec': 'Zech', 'Mal': 'Mal',
+    'Mat': 'Matt', 'Mrk': 'Mark', 'Luk': 'Luke', 'Jhn': 'John', 'Act': 'Acts', 'Rom': 'Rom', '1Co': '1Cor',
+    '2Co': '2Cor', 'Gal': 'Gal', 'Eph': 'Eph', 'Php': 'Phil', 'Col': 'Col', '1Th': '1Thess', '2Th': '2Thess',
+    '1Ti': '1Tim', '2Ti': '2Tim', 'Tit': 'Titus', 'Phm': 'Phlm', 'Heb': 'Heb', 'Jas': 'Jas', '1Pe': '1Pet',
+    '2Pe': '2Pet', '1Jn': '1John', '2Jn': '2John', '3Jn': '3John', 'Jud': 'Jude', 'Rev': 'Rev'}
+OSIS_KONYVEK = frozenset(STEP_OSIS.values())
+# a magyar könyvnév forrásbeli változata -> a normalizáló tábla rövidítése. A TAHOT (és a belőle képzett F123
+# blokk-listák) a Jeremiás siralmait `Sir`-nek írja; ugyanez az alias: bdb_konyv_javit.TAHOT_KONYV.
+KONYV_ALIAS = {'Sir': 'JSir'}
+IGEHELY_OSZLOPOK = ('igehely', 'cel_igehely', 'forras_igehely', 'igehely_a', 'igehely_b', 'csoport_sor_igehely')
+IGEHELY_RX = re.compile(r'^(\S+) (\d+):(\d+)(?:[-–](\d+))?$')
+OSIS_RX = re.compile(r'^[1-3]?[A-Z][A-Za-z]+\.\d+\.\d+(?:-[1-3]?[A-Z][A-Za-z]+\.\d+\.\d+)?$')
+
+_HU_OSIS = None
+
+
+def hu_osis():
+    global _HU_OSIS
+    if _HU_OSIS is None:
+        _, sorok = tsv('konkordancia/Konyv_normalizalo_tabla.tsv')
+        _HU_OSIS = {}
+        for s in sorok:
+            step = s['STEPBible-rövidítés']
+            if step not in STEP_OSIS:
+                raise SystemExit('OSIS: a normalizáló tábla %r rövidítésének nincs OSIS-kódja' % step)
+            _HU_OSIS[s['Magyar rövidítés']] = STEP_OSIS[step]
+    return _HU_OSIS
+
+
+def igehely_normal(ig):
+    """A forrásbeli könyvnév-változat (`Sir`) a csomag egységes magyar rövidítésére (`JSir`)."""
+    m = re.match(r'^(\S+)( .*)$', ig or '')
+    if m and m.group(1) in KONYV_ALIAS:
+        return KONYV_ALIAS[m.group(1)] + m.group(2)
+    return ig
+
+
+def osis(ig):
+    """Magyar igehely (`1Kir 13:31`, `1Móz 4:10-11`, `ApCsel 2:27; ApCsel 2:31`) -> OSIS (`1Kgs.13.31`,
+    `Gen.4.10-Gen.4.11`, `Acts.2.27 Acts.2.31`). Üres -> üres. Leképezhetetlen könyvnév vagy alak -> megáll
+    (nem üres érték, nem találgatás)."""
+    if not ig:
+        return ''
+    ki = []
+    for resz in [x.strip() for x in ig.split(';')]:
+        m = IGEHELY_RX.match(igehely_normal(resz))
+        if not m:
+            raise SystemExit('OSIS: nem leképezhető igehely-alak: %r' % ig)
+        kod = hu_osis().get(m.group(1))
+        if kod is None:
+            raise SystemExit('OSIS: leképezhetetlen könyvnév: %r (%r)' % (m.group(1), ig))
+        k = '%s.%s.%s' % (kod, m.group(2), m.group(3))
+        if m.group(4):
+            k += '-%s.%s.%s' % (kod, m.group(2), m.group(4))
+        ki.append(k)
+    return ' '.join(ki)
+
+
+def osis_bovit(fej, sorok):
+    """Minden igehely-oszlop után a párja (`<oszlop>_osis`); a magyar igehely könyvnevét egységesíti."""
+    uj = []
+    for o in fej:
+        uj.append(o)
+        if o in IGEHELY_OSZLOPOK:
+            uj.append(o + '_osis')
+    for s in sorok:
+        for o in fej:
+            if o in IGEHELY_OSZLOPOK:
+                s[o] = '; '.join(igehely_normal(x.strip()) for x in s.get(o, '').split(';')) if s.get(o) else ''
+                s[o + '_osis'] = osis(s[o])
+    return uj, sorok
+
 
 def step_atiras(t):
     def f(m):
@@ -428,6 +509,8 @@ def strong_szamok(*szovegek):
 # ----------------------------------------------------------------------------- az export
 
 def oszlop_tsv(fej, sorok):
+    if any(o in IGEHELY_OSZLOPOK for o in fej):
+        fej, sorok = osis_bovit(fej, sorok)
     ki = [FEJLEC, '\t'.join(fej)]
     for s in sorok:
         ki.append('\t'.join(str(s.get(f, '')).replace('\t', ' ').replace('\n', ' ') for f in fej))
@@ -455,7 +538,7 @@ def csoport_tagjai(j, kulon_sorok=frozenset()):
     _, sorok = tsv(rel)
     mh = re.search(r'halo=(\w+)', j['forras_kereses'])
     oszlop, blokk = mb.groups()
-    tagok = sorted({s['igehely'] for s in sorok if s[oszlop] == blokk
+    tagok = sorted({igehely_normal(s['igehely']) for s in sorok if s[oszlop] == blokk
                     and (not mh or s.get('halo', mh.group(1)) == mh.group(1))
                     and (j['id'], s['igehely']) not in kulon_sorok})
     if len(tagok) != n:      # a lista nem igazolja a számot: a tagok nem töltődnek ki, az eltérés jelentésbe kerül

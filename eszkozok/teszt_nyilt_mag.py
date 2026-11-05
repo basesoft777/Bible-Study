@@ -291,6 +291,44 @@ class Negativ(Alap):
         del f['dontesnaplo.tsv']
         self.assertTrue(bukasok(f, 'BAJTAZONOS'))
 
+    # --- F170.1: OSIS-kulcs (kapu (a))
+    def test_osis_hibas_kulcs(self):
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', '\t1Kgs.18.24\t', '\t1Kgs.18.25\t')
+        self.assertTrue(bukasok(f, 'OSIS'))
+
+    def test_osis_hianyzo_kulcs(self):
+        f = self.sor_csere(self.uj(), 'kizarasok.tsv', '\t1Kgs.13.31\t', '\t\t')
+        self.assertTrue(bukasok(f, 'OSIS'))
+
+    def test_osis_ismeretlen_konyvkod(self):
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', '\t1Kgs.18.24\t', '\t1Ki.18.24\t')
+        self.assertTrue(bukasok(f, 'OSIS'))
+
+    def test_osis_hianyzo_oszlop(self):
+        f = self.uj()
+        f['kapcsolatok.tsv'] = f['kapcsolatok.tsv'].replace('\tcel_igehely_osis', '\tcel_osis', 1)
+        self.assertTrue(bukasok(f, 'OSIS'))
+
+
+class Osis(unittest.TestCase):
+    def test_lekepezes(self):
+        self.assertEqual('1Kgs.13.31', E.osis('1Kir 13:31'))
+        self.assertEqual('Gen.4.10-Gen.4.11', E.osis('1Móz 4:10-11'))
+        self.assertEqual('Acts.2.27 Acts.2.31', E.osis('ApCsel 2:27; ApCsel 2:31'))
+        self.assertEqual('Lam.3.58', E.osis('Sir 3:58'))
+        self.assertEqual('Ps.16.10', E.osis('Zsolt 16:10'))
+        self.assertEqual('', E.osis(''))
+
+    def test_lekepezhetetlen_megall(self):
+        with self.assertRaises(SystemExit):
+            E.osis('1Énokh 1:9')
+        with self.assertRaises(SystemExit):
+            E.osis('1Móz 3')
+
+    def test_66_konyv(self):
+        self.assertEqual(66, len(E.hu_osis()))
+        self.assertEqual(66, len(set(E.hu_osis().values())))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
