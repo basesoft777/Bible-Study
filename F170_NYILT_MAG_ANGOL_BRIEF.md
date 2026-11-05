@@ -68,4 +68,4 @@ A nyílt adatmag (`nyilt_mag/`, CC BY 4.0) ma magyar oszlopértékekkel és magy
 
 - `nem_fugg: [38, 123, 163]` (befogadás, 2026-11-05): a #38 és a #123 csak olvasott táblát (normalizáló tábla, `motivumok.tsv`) ír; az export mindig a mai állapotból generál, és az E35 minden adatváltozásnál újragenerálást kér. A #163 (`dontesre_var`) az MI-nyilatkozat DT605/DT606 helyőrzőin vár; ez a feladat csak egy mondatot ad hozzá, a helyőrzőket nem érinti (a kettő a `kizar` miatt nem fut egyszerre).
 - Ütközés a #171-gyel (`eszkozok/nyilt_mag_export.py`, `nyilt_mag/`): a két feladat nem fut egyszerre; a sorrend szám szerint #170 → #171, vagy a #171 kézirat-része előre (a generátor-rész a #170 merge-e után).
-- N-F170a (nyitott, `nyitott/uj/befogadas-20261105.md`): a `kezirat_en.md` „Hungarian column names and values” korlát-mondata a #170 után frissítendő.
+- N-F170a (nyitott, `NYITOTT_FELADATOK.md`): a `kezirat_en.md` „Hungarian column names and values” korlát-mondata a #170 után frissítendő.
