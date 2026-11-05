@@ -14,6 +14,14 @@ Ellenőrzések (azonosító — súlyosság):
     ANGOL_SOR    ≥3 angol funkciószó egy magyar cellában                                                    — FIGYELMEZTETÉS
     KODKONYV     oszlop vagy zárt értékkészlet-érték kódkönyv-leírás nélkül, vagy a leírás egyik nyelven
                  hiányzik / a két nyelv azonos                                                              — BUKÁS
+    FORDITAS     szabad szöveges oszlop `_en` pár vagy `forditas_modja` nélkül; angol cella gépi-fordítás jelölés
+                 nélkül; a tárolt fordítás forrás-hash-e nem a mai magyar cellaé (elavult); az angol cella nem a
+                 tárolt fordítás (F170, kapu (c)–(e))                                                       — BUKÁS
+                 kimondott hiány (`nincs fordítás` / `részben hiányzik`)                                    — FIGYELMEZTETÉS
+    GLOSSZA      a `strong_glossza_en` nem a STEPBible TBESH/TBESG-glossza (más, pl. KJV-Strong eredetű érték;
+                 F170, kapu (f))                                                                            — BUKÁS
+    CIMKE        zárt oszlop `_en` pár nélkül; zárt érték angol címke (`cimke_en`) nélkül; az `_en` cella nem a
+                 kódkönyv címkéje (F170, kapu (b))                                                          — BUKÁS
     LICENC       kizárt (NC, GPL, tisztázatlan, zárt) forrás neve vagy értéke a csomagban; az SDBH/SDGNT-adat a
                  külön rétegen kívül                                                                        — BUKÁS
     RETEG        a CC BY-SA réteg attribúció/licenc-jelölés nélkül                                          — BUKÁS
@@ -25,6 +33,8 @@ Ellenőrzések (azonosító — súlyosság):
     TERMEKRETEG  a lexikon szövegének mezője (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
+    OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
+                 nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
 
 Használat:
     python eszkozok/nyilt_mag_kapu.py [--csomag nyilt_mag] [--gyors]   (--gyors: újragenerálás nélkül)
@@ -55,22 +65,18 @@ KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_do
             'README.md', 'KNOWN_ISSUES.md', 'RELEASE.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
 
-# a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
-ZART = {
-    'motivumok.tsv': ['pardes_szint', 'statusz', 'feldolgozasi_allapot', 'azonossag_tipusa'],
-    'elofordulasok.tsv': ['pardes_szint', 'horgony_tipus', 'szotar', 'azonositas_modja', 'megbizhatosag',
-                          'igazolas', 'lekerdezes_tipusa', 'forras_licenc'],
-    'kizarasok.tsv': ['jelolt_tipus', 'azonositas_modja', 'megbizhatosag', 'keresesi_mod'],
-    'beepitesi_dontesek.tsv': ['jelolt_tipus', 'keresesi_mod'],
-    'kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint'],
-    'motivum_kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa'],
-    'forrasok_es_licencek.tsv': ['licenc', 'szerepe_a_csomagban'],
-    'cc_by_sa_reteg/szemantikai_domenek.tsv': ['szotar'],
-}
+# a zárt értékkészletű oszlopok (egy helyen: az exportban; F170.2), amelyeknek minden értékét a kódkönyv leírja,
+# és amelyek mellett az export `<oszlop>_en` címke-oszlopot ad
+ZART = E.ZART
 # angol szöveget joggal hordozó oszlopok (az ANGOL-ellenőrzés kivétele)
 ANGOL_OSZLOP = {'jelentes_en', 'glossza', 'lemma', 'leiras_en'}
+
+
+def angol_oszlop(o):
+    """Angol (vagy nyelvfüggetlen kódú) oszlop: a felsoroltak, az `…_en` és az `…_osis` oszlopok (F170)."""
+    return o in ANGOL_OSZLOP or o.endswith('_en') or o.endswith('_osis')
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
-SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban'}
+SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban', 'szerepe_a_csomagban_en'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
                           r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek)\.tsv'
@@ -150,6 +156,8 @@ def ell_belso(fajlok):
         for rx, nev in K.BELSO + EXTRA_BELSO[:-1]:
             if rel == 'ELLENORZO_OSSZEG.sha256':
                 continue
+            if angol_oszlop(o) and nev.startswith('proveniencia-érték (manual)'):
+                continue    # az angol szövegben a „manual” közszó (pl. „manual reading”), nem a belső jel (F170)
             m = rx.search(t)
             if m:
                 ki.append(Talalat('BELSO', BUKAS, rel, n, kor(t, m), '%s [%s]: %s' % (nev, o or 'szöveg', m.group(0))))
@@ -164,7 +172,7 @@ def ell_belso(fajlok):
 def ell_angol(fajlok):
     ki = []
     for rel, n, o, ertek in szoveg_cellak(fajlok):
-        if o in ANGOL_OSZLOP or rel in ANGOL_FAJL_KIVETEL or (rel == 'forrasok_es_licencek.tsv' and o == 'dataset'):
+        if angol_oszlop(o) or rel in ANGOL_FAJL_KIVETEL or (rel == 'forrasok_es_licencek.tsv' and o == 'dataset'):
             continue
         t = CSOMAG_NEVEK.sub('', ertek)
         m = K.ANGOL_SZO.search(t)
@@ -200,6 +208,94 @@ def ell_kodkonyv(fajlok):
                     if resz and (rel, o, resz) not in kulcs:
                         ki.append(Talalat('KODKONYV', BUKAS, rel, 2, '%s = %s' % (o, resz),
                                           'a zárt értékkészlet értékének nincs kódkönyv-leírása'))
+    return ki
+
+
+def ell_cimke(fajlok):
+    """CIMKE (F170.2, kapu (b)): minden zárt oszlop mellett ott a `<oszlop>_en` pár; minden zárt érték(rész)nek van
+    `cimke_en`-je a kódkönyvben; az `_en` cella pontosan a részek címkéje, `; `-vel fűzve."""
+    ki = []
+    _, kk = tsv_sorok(fajlok['kodkonyv.tsv'])
+    cimke = {(d['tabla'], d['oszlop'], d['ertek']): d.get('cimke_en', '').strip() for _, d in kk if d['ertek']}
+    for (t, o, e), c in sorted(cimke.items()):
+        if not c:
+            ki.append(Talalat('CIMKE', BUKAS, 'kodkonyv.tsv', 1, '%s / %s / %s' % (t, o, e), 'a zárt értéknek nincs angol címkéje'))
+    for rel, oszlopok in sorted(ZART.items()):
+        fej, sorok = tsv_sorok(fajlok.get(rel, ''))
+        for o in oszlopok:
+            if o not in fej:
+                continue
+            if o + '_en' not in fej:
+                ki.append(Talalat('CIMKE', BUKAS, rel, 2, o, 'a zárt oszlopnak nincs angol címke-párja'))
+                continue
+            for n, d in sorok:
+                reszek = E.ertek_reszek(d[o])
+                vart = '; '.join(cimke.get((rel, o, r), '') for r in reszek)
+                if any(not cimke.get((rel, o, r)) for r in reszek):
+                    ki.append(Talalat('CIMKE', BUKAS, rel, n, '%s = %s' % (o, d[o]), 'a zárt értéknek nincs angol címkéje'))
+                elif d[o + '_en'] != vart:
+                    ki.append(Talalat('CIMKE', BUKAS, rel, n, '%s / %s' % (d[o], d[o + '_en']),
+                                      'az angol címke nem a kódkönyvé (%s)' % vart))
+    return ki
+
+
+def ell_forditas(fajlok):
+    """FORDITAS (F170, kapu (c)–(e))."""
+    ki = []
+    E._ANGOL = None
+    tar = E.angol_tar()
+    for tabla, mezok in sorted(E.SZABAD.items()):
+        fej, sorok = tsv_sorok(fajlok.get(tabla, ''))
+        hianyzo_par = [o for o in mezok if o in fej and o + '_en' not in fej]
+        for o in hianyzo_par:
+            ki.append(Talalat('FORDITAS', BUKAS, tabla, 2, o, 'a szabad szöveges oszlopnak nincs angol párja'))
+        if 'forditas_modja' not in fej:
+            ki.append(Talalat('FORDITAS', BUKAS, tabla, 2, tabla, 'nincs forditas_modja oszlop'))
+            continue
+        for n, d in sorok:
+            k = E.sorkulcs(tabla, d)
+            fm = d['forditas_modja']
+            for o in mezok:
+                if o not in fej or o in hianyzo_par:
+                    continue
+                hu, en = d[o], d[o + '_en']
+                t = tar.get((tabla, o, k))
+                if not hu:
+                    if en:
+                        ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'angol cella üres magyar mező mellett'))
+                    continue
+                if t and t['forras_hash'] != E.szoveg_hash(hu):
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, '%s / %s' % (o, k),
+                                      'a fordítás elavult: a magyar forrás változott (újrafordítandó)'))
+                    continue
+                if not en:
+                    if E.FORDITAS_NINCS not in fm and 'részben hiányzik' not in fm:
+                        ki.append(Talalat('FORDITAS', BUKAS, tabla, n, '%s / %s' % (o, k),
+                                          'hiányzó fordítás kimondott hiány-jelölés nélkül'))
+                    else:
+                        ki.append(Talalat('FORDITAS', FIGY, tabla, n, '%s / %s' % (o, k), 'a fordítás hiányzik (jelölve)'))
+                    continue
+                if not fm.startswith('gépi fordítás ('):
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'angol cella gépi-fordítás jelölés nélkül'))
+                if not t or t['angol'] != en:
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'az angol cella nem a tárolt fordítás'))
+                elif t['modell'] not in fm:
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'a jelölés nem a fordító modellt nevezi meg'))
+    return ki
+
+
+def ell_glossza(fajlok):
+    """GLOSSZA (F170, kapu (f)): a `strong_glossza_en` pontosan a TBESH/TBESG-glossza (újraszámolva), tehát nem
+    KJV-Strong (GPL) vagy más forrás értéke."""
+    ki = []
+    fej, sorok = tsv_sorok(fajlok.get('elofordulasok.tsv', ''))
+    if 'strong_glossza_en' not in fej:
+        return [Talalat('GLOSSZA', BUKAS, 'elofordulasok.tsv', 2, '', 'nincs strong_glossza_en oszlop')]
+    for n, d in sorok:
+        vart = E.glossza_en(d['strong'])
+        if d['strong_glossza_en'] != vart:
+            ki.append(Talalat('GLOSSZA', BUKAS, 'elofordulasok.tsv', n, d['strong_glossza_en'][:60],
+                              'nem a STEPBible-glossza (%s)' % vart))
     return ki
 
 
@@ -309,6 +405,45 @@ def ell_csoport(fajlok):
         if not versszam.isdigit() or int(versszam) != db.get(k, 0):
             ki.append(Talalat('CSOPORT', BUKAS, 'kizarasok.tsv', n, '%s %s' % k,
                               'a csoport versszáma %s, a felsorolt tagoké %d' % (versszam, db.get(k, 0))))
+    return ki
+
+
+def ell_osis(fajlok):
+    """OSIS (F170, kapu (a)): minden igehely-oszlop mellett ott a `<oszlop>_osis` pár; minden kitöltött igehelynek
+    van érvényes OSIS-kulcsa (szabályos alak, OSIS-könyvkód), és a kulcs a magyar igehely leképezése."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        if not rel.endswith('.tsv'):
+            continue
+        fej, sorok = tsv_sorok(sz)
+        for o in fej:
+            if o not in E.IGEHELY_OSZLOPOK:
+                continue
+            if o + '_osis' not in fej:
+                ki.append(Talalat('OSIS', BUKAS, rel, 2, o, 'az igehely-oszlopnak nincs OSIS-párja'))
+                continue
+            for n, d in sorok:
+                hu, k = d[o], d[o + '_osis']
+                if not hu:
+                    if k:
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, k, 'OSIS-kulcs üres igehely mellett'))
+                    continue
+                if not k:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, hu, 'hiányzó OSIS-kulcs'))
+                    continue
+                for resz in k.split(' '):
+                    if not E.OSIS_RX.match(resz):
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, resz, 'szabálytalan OSIS-kulcs'))
+                    elif any(x.split('.')[0] not in E.OSIS_KONYVEK for x in resz.split('-')):
+                        ki.append(Talalat('OSIS', BUKAS, rel, n, resz, 'ismeretlen OSIS-könyvkód'))
+                try:
+                    vart = E.osis(hu)
+                except SystemExit as h:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, hu, str(h)))
+                    continue
+                if vart != k:
+                    ki.append(Talalat('OSIS', BUKAS, rel, n, '%s / %s' % (hu, k),
+                                      'az OSIS-kulcs nem a magyar igehely leképezése (%s)' % vart))
     return ki
 
 
@@ -477,7 +612,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
+              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

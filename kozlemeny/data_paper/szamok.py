@@ -104,6 +104,43 @@ def main():
         ki('P9.alvil_karoli', f'{tő}={n}',
            'nyilt_mag/elofordulasok.tsv, ALVIL-001, karoli_szo kisbetűs részszöveg-egyezés')
 
+    # P10 — a Károli-réteg mint vizsgálati tárgy (F171): kitöltöttség, alakváltozatok, fordítói eljárás
+    for k in sorted({e['motivum_azonosito'] for e in elo}):
+        sorok = [e for e in elo if e['motivum_azonosito'] == k]
+        ki('P10.karoli_motivumonkent', f'{k}={sum(1 for e in sorok if e["karoli_szo"].strip())}/{len(sorok)}',
+           'nyilt_mag/elofordulasok.tsv, karoli_szo nem üres / sor')
+    egy_strong = Counter(e['strong'] for e in elo
+                         if e['karoli_szo'].strip() and e['strong'].strip() and '+' not in e['strong'])
+    for s, n in egy_strong.most_common():
+        if n < 5:
+            continue
+        alakok = {e['karoli_szo'].strip().lower() for e in elo
+                  if e['strong'] == s and e['karoli_szo'].strip()}
+        ki('P10.alak_strongonkent', f'{s}={n} sor / {len(alakok)} különböző alak',
+           'nyilt_mag/elofordulasok.tsv, egyetlen Strong-szám, karoli_szo kisbetűsítve (szóalak a versből, nem szótő)')
+
+    def resz(strong, minta):
+        return sum(1 for e in elo if e['strong'] == strong and minta(e['karoli_szo'].lower()))
+
+    atiras = lambda s: any(t in s for t in ('réfaim', 'refaim', 'refáim', 'refeus'))
+    ki('P10.H7497', f'átírás={resz("H7497", atiras)}; ebből völgy={resz("H7497", lambda s: atiras(s) and "völgy" in s)}; '
+       f'óriás={resz("H7497", lambda s: "óriás" in s)}',
+       'nyilt_mag/elofordulasok.tsv, H7497, karoli_szo: Réfaim/Refaim/Refáim/Refeus vs óriás')
+    ki('P10.H7497_irasmod', ', '.join(sorted({t for e in elo if e['strong'] == 'H7497'
+                                              for t in ('Réfaim', 'Refaim', 'Refáim', 'Refeus')
+                                              if t in e['karoli_szo']})),
+       'nyilt_mag/elofordulasok.tsv, H7497, karoli_szo: az átírás írásmódjai')
+    ki('P10.H7496', f'árny={resz("H7496", lambda s: "árny" in s)}; élet nélkül={resz("H7496", lambda s: "élet nélkül" in s)}; '
+       f'halott={resz("H7496", lambda s: "halott" in s)}',
+       'nyilt_mag/elofordulasok.tsv, H7496, karoli_szo részszöveg')
+    ki('P10.H8415', f'mély-={resz("H8415", lambda s: "mély" in s)}; más={resz("H8415", lambda s: "mély" not in s)}',
+       'nyilt_mag/elofordulasok.tsv, H8415, karoli_szo: „mély” részszöveg vs egyéb')
+    ki('P10.G0086', f'pokol={resz("G0086", lambda s: "pokol" in s)}; sír={resz("G0086", lambda s: "sír" in s)}',
+       'nyilt_mag/elofordulasok.tsv, G0086, karoli_szo részszöveg')
+    gep = [e for e in elo if e['azonositas_modja'] in ('szó-szintű-gépi', 'kikövetkeztetett')]
+    ki('P10.gepi_vagy_kovetkeztetett', f'{len(gep)} sor ({len({e["motivum_azonosito"] for e in gep})} motívum)',
+       'nyilt_mag/elofordulasok.tsv, azonositas_modja = szó-szintű-gépi vagy kikövetkeztetett')
+
     # P3 — kizárások
     kiz = tabla(os.path.join(MAG, 'kizarasok.tsv'))
     csop = tabla(os.path.join(MAG, 'kizaras_csoportok.tsv'))

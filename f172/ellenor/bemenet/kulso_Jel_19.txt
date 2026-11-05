@@ -1,0 +1,21 @@
+KÖTEG: kulso_Jel_19
+
+VERS: Jel 19:1
+KÁROLI (számozott szavak): 1 És | 2 ezek | 3 után | 4 hallám | 5 mintegy | 6 nagy | 7 sokaságnak | 8 nagy | 9 szavát | 10 az | 11 égben | 12 a | 13 mely | 14 ezt | 15 mondja | 16 vala | 17 Aleluja | 18 az | 19 idvesség | 20 és | 21 a | 22 dicsőség | 23 és | 24 a | 25 tisztesség | 26 és | 27 a | 28 hatalom | 29 az | 30 Úré | 31 a | 32 mi | 33 Istenünké
+EREDETI (számozott szavak): 1 Καὶ G2532 [and] | 2 μετὰ G3326 [After] | 3 ταῦτα G3778 [these things] | 4 ἤκουσα G0191 [I heard] | 5 ὡς G5613 [[something] like] [nem TR] | 6 φωνὴν G5456 [a voice] | 7 μεγάλην G3173 [loud] | 8 ὄχλου G3793 [of a multitude] | 9 πολλοῦ G4183 [great] | 10 ἐν G1722 [in] | 11 τῷ G3588 [<the>] | 12 οὐρανῷ G3772 [heaven] | 13 λεγόντων· G3004 [crying out:] [nem TR] | 14 ἁλληλουϊά· G0239 [Hallelujah!] | 15 ἡ G3588 [The] | 16 σωτηρία G4991 [salvation] | 17 καὶ G2532 [and] | 18 ἡ G3588 [the] | 19 δόξα G1391 [glory] | 20 καὶ G2532 [and] | 21 ἡ G3588 [the] | 22 τιμὴ G5092 [honor] | 23 καὶ G2532 [and] | 24 ἡ G3588 [the] | 25 δύναμις G1411 [power] | 26 κυρίῳ G2962 [to Lord] | 27 τοῦ G3588 [<the>] [nem TR] | 28 θεοῦ G2316 [God] [nem TR] | 29 ἡμῶν, G3165 [of us!]
+CÉL (Károli-sorszámok): 33
+
+VERS: Jel 19:5
+KÁROLI (számozott szavak): 1 És | 2 a | 3 királyiszéktől | 4 szózat | 5 jöve | 6 ki | 7 a | 8 mely | 9 ezt | 10 mondja | 11 vala | 12 Dícsérjétek | 13 a | 14 mi | 15 Istenünket | 16 mindnyájan | 17 ő | 18 szolgái | 19 a | 20 kik | 21 félitek | 22 őt | 23 kicsinyek | 24 és | 25 nagyok
+EREDETI (számozott szavak): 1 Καὶ G2532 [And] | 2 φωνὴ G5456 [a voice] | 3 ἀπὸ G0575 [from] [nem TR] | 4 τοῦ G3588 [the] | 5 θρόνου G2362 [throne] | 6 ἐξῆλθεν G1831 [came forth] | 7 λέγουσα· G3004 [saying:] | 8 αἰνεῖτε G0134 [do praise] | 9 τῷ G3588 [to the] [nem TR] | 10 θεῷ G2316 [God] [nem TR] | 11 ἡμῶν G3165 [of us] | 12 πάντες G3956 [all] | 13 οἱ G3588 [you who [are]] | 14 δοῦλοι G1401 [servants] | 15 αὐτοῦ G0846 [of Him] | 16 καὶ G2532 [and] | 17 οἱ G3588 [you who [are]] | 18 φοβούμενοι G5399 [fearing] | 19 αὐτόν, G0846 [Him,] | 20 καὶ G2532 [and] | 21 οἱ G3588 [you] | 22 μικροὶ G3398 [small] | 23 καὶ G2532 [and] | 24 οἱ G3588 [you] | 25 μεγάλοι. G3173 [great!]
+CÉL (Károli-sorszámok): 6, 15, 19, 20
+
+VERS: Jel 19:8
+KÁROLI (számozott szavak): 1 És | 2 adatott | 3 annak | 4 hogy | 5 felöltözzék | 6 tiszta | 7 és | 8 ragyogó | 9 fehér | 10 gyolcsba | 11 mert | 12 a | 13 fehér | 14 gyolcs | 15 a | 16 szenteknek | 17 igazságos | 18 cselekedetei
+EREDETI (számozott szavak): 1 καὶ G2532 [And] | 2 ἐδόθη G1325 [it was given] | 3 αὐτῇ G0846 [to her] | 4 ἵνα G2443 [that] | 5 περιβάληται G4016 [she may be clothed in] | 6 βύσσινον G1039 [fine linen] | 7 λαμπρὸν G2986 [bright] | 8 καὶ G2532 [and] | 9 καθαρόν· G2513 [pure;] | 10 τὸ G3588 [<the>] | 11 γὰρ G1063 [For] | 12 βύσσινον G1039 [the fine linen] | 13 τὰ G3588 [the] | 14 δικαιώματα G1345 [righteous acts] | 15 τῶν G3588 [of the] | 16 ἁγίων G0040 [saints] | 17 ἐστίν. G1510 [is.]
+CÉL (Károli-sorszámok): 9
+
+VERS: Jel 19:16
+KÁROLI (számozott szavak): 1 És | 2 az | 3 ő | 4 ruháján | 5 és | 6 tomporán | 7 oda | 8 vala | 9 írva | 10 az | 11 ő | 12 neve | 13 királyoknak | 14 Királya | 15 és | 16 uraknak | 17 Ura
+EREDETI (számozott szavak): 1 καὶ G2532 [And] | 2 ἔχει G2192 [He has] | 3 ἐπὶ G1909 [upon] | 4 τὸ G3588 [the] | 5 ἱμάτιον G2440 [robe] | 6 καὶ G2532 [and] | 7 ἐπὶ G1909 [upon] | 8 τὸν G3588 [the] | 9 μηρὸν G3382 [thigh] | 10 αὐτοῦ G0846 [of Him] | 11 τὸ G3588 [<the>] | 12 ὄνομα G3686 [a name] | 13 γεγραμμένον· G1125 [written:] | 14 βασιλεὺς G0935 [King] | 15 βασιλέων G0935 [of kings] | 16 καὶ G2532 [and] | 17 κύριος G2962 [Lord] | 18 κυρίων.¶ G2962 [of Lords.]
+CÉL (Károli-sorszámok): 8
