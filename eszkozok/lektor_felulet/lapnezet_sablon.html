@@ -1,0 +1,449 @@
+<title>__CIM__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!--
+  F165 (LAPJAVIT_ARTIFACT): a lexikonlap olvasható nézete, bekezdésenként „Kérdezz / javasolj” gombbal.
+  Építő: eszkozok/lektor_felulet/lapnezet.py. A modell (sample) a lapon CSAK JAVASOL: a lap saját magát nem írja át
+  (nincs `artifact` capability); a néző által jóváhagyott javaslat a `db` `javaslatok` gyűjteményébe kerül
+  (hely, régi, új, ok, állapot), onnan a session olvassa ki (`ArtifactData`), és a `/lap-javit` szabályai szerint
+  a forrásba írja. Capabilities: {sample:{}, user:{}, db:{rules:[{path:"javaslatok", read:"view", write:"owner"}]}}.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Hebrew:wght@400;600&display=swap">
+<style>
+/* Elrendezés: bal oldalt ragadós tartalomjegyzék (széles képernyőn), jobb oldalt a lap olvasóhasábja; a javaslat-panel a bekezdés alatt nyílik. */
+:root {
+  --papir: #f6f7f9;
+  --lap: #ffffff;
+  --tinta: #1d2330;
+  --halvany: #5b6475;
+  --vonal: #d9dde5;
+  --kiemel: #2c4f86;
+  --kiemel-halvany: #e6ecf6;
+  --kod-hatter: #eef1f5;
+  --rov-hatter: #fbefc9;
+  --regi: #9b2c2c;
+  --regi-hatter: #fbeaea;
+  --uj: #22663a;
+  --uj-hatter: #e7f4ec;
+  --display: "Alegreya", "Georgia", serif;
+  --szoveg: "Source Serif 4", "Georgia", "Times New Roman", serif;
+  --adat: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
+  --heber: "Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220;
+  --regi: #f0a3a3; --regi-hatter: #3a2224; --uj: #9fd8b0; --uj-hatter: #1e3326; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220;
+  --regi: #f0a3a3; --regi-hatter: #3a2224; --uj: #9fd8b0; --uj-hatter: #1e3326; color-scheme: dark; }
+
+html { scroll-padding-top: 16px; }
+body { background: var(--papir); color: var(--tinta); font: 17px/1.6 var(--szoveg); }
+.keret { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 1240px; margin: 0 auto;
+  padding-block: 24px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 1000px) { .keret { grid-template-columns: 240px minmax(0, 1fr); } }
+.fej { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+  border-bottom: 1px solid var(--vonal); padding-bottom: 12px; }
+.fej .jel { font: 500 12px/1.4 var(--adat); letter-spacing: .08em; text-transform: uppercase; color: var(--kiemel); }
+.fej .meta { font: 13px/1.4 var(--adat); color: var(--halvany); }
+nav.tj { display: none; }
+@media (min-width: 1000px) { nav.tj { display: block; position: sticky; top: env(safe-area-inset-top, 0px); align-self: start;
+  max-height: 100vh; overflow-y: auto; padding-top: 8px; font-size: 14px; line-height: 1.4; } }
+nav.tj ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.tj a { display: block; padding: 5px 10px; border-radius: 4px; color: var(--halvany); text-decoration: none; }
+nav.tj a:hover, nav.tj a:focus-visible { background: var(--kiemel-halvany); color: var(--tinta); outline: none; }
+nav.tj a.aktiv { color: var(--kiemel); background: var(--kiemel-halvany); font-weight: 600; }
+article { min-width: 0; background: var(--lap); border: 1px solid var(--vonal); border-radius: 6px;
+  padding: clamp(18px, 4vw, 48px); }
+article > * { max-width: 72ch; }
+article > div.tabla, article > pre, article > .mermaid { max-width: none; }
+h1, h2, h3, h4, h5 { font-family: var(--display); line-height: 1.2; text-wrap: balance; color: var(--tinta); }
+h1 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; }
+h2 { font-size: 27px; margin: 56px 0 12px; padding-top: 16px; border-top: 2px solid var(--kiemel); }
+h3 { font-size: 21px; margin: 32px 0 8px; }
+h4 { font-size: 18px; margin: 24px 0 6px; }
+h5 { font-size: 16px; margin: 20px 0 6px; }
+[hidden] { display: none !important; }
+p, li { hyphens: auto; overflow-wrap: break-word; }
+article p, article li { overflow-wrap: anywhere; }
+a { color: var(--kiemel); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--kiemel); outline-offset: 2px; }
+code { font: .86em/1.4 var(--adat); background: var(--kod-hatter); padding: .08em .3em; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: var(--kod-hatter); padding: 12px 14px; border-radius: 4px; overflow-x: auto; font: 13px/1.5 var(--adat); }
+pre code { background: none; padding: 0; }
+abbr.rovidites { background: var(--rov-hatter); border-radius: 3px; padding: 0 2px; text-decoration: underline dotted; cursor: help; }
+blockquote { margin: 16px 0; padding: 4px 16px; border-left: 3px solid var(--vonal); color: var(--halvany); }
+hr { border: 0; border-top: 1px solid var(--vonal); margin: 32px 0; }
+div.tabla { overflow-x: auto; margin: 16px 0; border: 1px solid var(--vonal); border-radius: 4px; }
+table { border-collapse: collapse; font-size: 14px; line-height: 1.45; min-width: 100%; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--vonal); text-align: left; vertical-align: top; }
+th { font: 600 12px/1.3 var(--adat); letter-spacing: .04em; text-transform: uppercase; color: var(--halvany);
+  background: var(--kod-hatter); position: sticky; top: 0; }
+td { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+:lang(he), .heb { font-family: var(--heber); font-size: 1.08em; }
+sup.lj a { font: 600 11px/1 var(--adat); text-decoration: none; padding: 0 1px; }
+sup.strong { font: 500 .62em/1 var(--adat); color: var(--halvany); opacity: .75; margin-left: 1px; cursor: help; }
+li.lj { font-size: 14px; color: var(--halvany); }
+li.lj:target { background: var(--kiemel-halvany); }
+.lj-szam { font: 600 12px var(--adat); color: var(--kiemel); margin-right: 6px; }
+.mermaid { background: var(--lap); overflow-x: auto; }
+.lab { grid-column: 1 / -1; font: 13px/1.5 var(--adat); color: var(--halvany); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* --- F165: bekezdés-gomb és javaslat-panel --- */
+.bek { position: relative; }
+.bek-gomb { font: 500 11px/1 var(--adat); letter-spacing: .03em; color: var(--halvany); background: none;
+  border: 1px solid transparent; border-radius: 3px; padding: 3px 6px; margin-left: 6px; cursor: pointer; opacity: .55; vertical-align: 1px; }
+.bek:hover .bek-gomb, .bek-gomb:focus-visible, .bek-gomb[aria-expanded="true"] { opacity: 1; border-color: var(--vonal); color: var(--kiemel); }
+@media (hover: none) { .bek-gomb { opacity: .85; } }
+.bek-gomb .pont { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--uj); margin-right: 5px; vertical-align: 0; }
+.bek.van-javaslat { box-shadow: inset 3px 0 0 var(--uj); padding-left: 10px; margin-left: -13px; }
+.panel { max-width: 72ch; margin: 8px 0 20px; border: 1px solid var(--vonal); border-radius: 6px; background: var(--papir);
+  padding: 14px 16px; display: grid; gap: 12px; font-size: 15px; line-height: 1.5; }
+.panel .cimke { font: 500 11px/1.3 var(--adat); letter-spacing: .06em; text-transform: uppercase; color: var(--halvany); }
+.panel .hely { font: 12px/1.4 var(--adat); color: var(--halvany); overflow-wrap: anywhere; }
+.panel .res { display: inline-block; font: 500 11px/1.3 var(--adat); border-radius: 3px; padding: 2px 6px; background: var(--kiemel-halvany); color: var(--kiemel); }
+.panel textarea { width: 100%; box-sizing: border-box; font: 15px/1.5 var(--szoveg); color: var(--tinta); background: var(--lap);
+  border: 1px solid var(--vonal); border-radius: 4px; padding: 8px 10px; resize: vertical; }
+.panel .sor { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.panel button.fo, .panel button.mas { font: 600 13px/1 var(--adat); border-radius: 4px; padding: 9px 12px; cursor: pointer; }
+.panel button.fo { background: var(--kiemel); color: var(--lap); border: 1px solid var(--kiemel); }
+.panel button.mas { background: var(--lap); color: var(--tinta); border: 1px solid var(--vonal); }
+.panel button:disabled { opacity: .5; cursor: default; }
+.beszelg { display: grid; gap: 8px; }
+.uzenet { padding: 8px 10px; border-radius: 4px; background: var(--lap); border: 1px solid var(--vonal); white-space: pre-wrap; overflow-wrap: anywhere; }
+.uzenet.en { background: var(--kiemel-halvany); border-color: transparent; }
+.uzenet .ki { display: block; font: 500 11px/1.3 var(--adat); color: var(--halvany); margin-bottom: 2px; }
+.javaslat { display: grid; gap: 6px; }
+.javaslat .regi { background: var(--regi-hatter); color: var(--regi); border-radius: 4px; padding: 6px 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.javaslat label { font: 500 11px/1.3 var(--adat); color: var(--halvany); }
+.javaslat select { font: 14px var(--szoveg); color: var(--tinta); background: var(--lap); border: 1px solid var(--vonal); border-radius: 4px; padding: 5px 6px; }
+.uzi { font: 12px/1.4 var(--adat); color: var(--halvany); }
+.uzi.hiba { color: var(--regi); }
+.lista { grid-column: 1 / -1; max-width: 900px; }
+.lista h2 { margin-top: 24px; }
+.lista ol { padding-left: 20px; display: grid; gap: 10px; }
+.lista li { font-size: 15px; }
+.allapot { display: inline-block; font: 600 11px/1.3 var(--adat); border-radius: 3px; padding: 2px 6px; margin-right: 6px; }
+.allapot.jovahagyva { background: var(--rov-hatter); color: var(--tinta); }
+.allapot.beirva { background: var(--uj-hatter); color: var(--uj); }
+.allapot.kulon { background: var(--kiemel-halvany); color: var(--kiemel); }
+.allapot.elutasitva { background: var(--regi-hatter); color: var(--regi); }
+</style>
+
+<div class="keret">
+  <header class="fej">
+    <span class="jel">PaRDeS motívumlexikon · lapnézet</span>
+    <span class="meta">generált nézet · __FORRAS_JEL__ · <span id="jstat">javaslatok: betöltés…</span></span>
+  </header>
+  <nav class="tj" aria-label="Tartalom"><ol id="tj"></ol></nav>
+  <article id="lap"><p>A lap betöltése…</p></article>
+  <section class="lista" id="javaslatlista" hidden>
+    <h2>Javaslatok ezen a lapon</h2>
+    <ol id="jlista"></ol>
+  </section>
+  <p class="lab">Ez a nézet a repó generált lexikonlapjából készült. Kézzel nem szerkeszthető: a „Kérdezz / javasolj” gombbal kérdezhetsz egy bekezdésről, a jóváhagyott javaslatot a session írja be a forrásba (kézi rés, adatsor vagy generátor), utána a nézet újra elkészül.</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+const MD = __ADAT__;
+const META = __META__;   // {id, commit, lap, kezi: [{fejlec, res, forras}]}
+const GOND = ['homályos', 'pontatlan', 'szakszó', 'ellentmond az adatnak'];
+const ALLAPOT_CIMKE = { 'jóváhagyva': ['jovahagyva', 'a sessionre vár'], 'beírva': ['beirva', 'beírva a forrásba'],
+  'külön út': ['kulon', 'külön úton (adat / generátor)'], 'elutasítva': ['elutasitva', 'nem került be'] };
+
+function slug(s) {
+  return s.toLowerCase().trim().replace(/<[^>]+>/g, '').replace(/[^\p{L}\p{N}\s_-]/gu, '').replace(/\s/g, '-');
+}
+function el(tag, attrs, ...gyerek) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) { if (k === 'class') e.className = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); }
+  for (const g of gyerek) if (g !== null && g !== undefined) e.append(g);
+  return e;
+}
+
+// --- lábjegyzetek: definíció → lista-elem horgonnyal, hivatkozás → felső index (a nyers md-t a javaslathoz visszaállítjuk) ---
+let forras = MD.replace(/^\[\^([^\]]+)\]:[ \t]?(.*)$/gm, (m, n, t) =>
+  '- <span class="lj-szam" id="lj-' + n + '">[' + n + ']</span>' + t + ' {{LJ}}');
+forras = forras.replace(/\[\^([^\]]+)\](?!:)/g, (m, n) => '<sup class="lj"><a href="#lj-' + n + '">' + n + '</a></sup>');
+function nyers(raw) {   // a renderelt token nyers szövegéből a forrás-md alak (a lábjegyzet-csere visszafordítva)
+  return raw.replace(/<sup class="lj"><a href="#lj-([^"]+)">[^<]*<\/a><\/sup>/g, '[^$1]')
+    .replace(/^- <span class="lj-szam" id="lj-([^"]+)">\[[^\]]*\]<\/span>(.*?) \{\{LJ\}\}$/gm, '[^$1]: $2').trim();
+}
+
+const lattSlug = {};
+const renderer = new marked.Renderer();
+renderer.heading = function (text, level, raw) {
+  let s = slug(raw);
+  if (lattSlug[s] !== undefined) { lattSlug[s]++; s = s + '-' + lattSlug[s]; } else { lattSlug[s] = 0; }
+  return '<h' + level + ' id="' + s + '">' + text + '</h' + level + '>\n';
+};
+renderer.table = function (header, body) {
+  return '<div class="tabla"><table><thead>' + header + '</thead><tbody>' + body + '</tbody></table></div>\n';
+};
+renderer.code = function (code, lang) {
+  if (lang === 'mermaid') return '<pre class="mermaid">' + code.replace(/</g, '&lt;') + '</pre>';
+  return '<pre><code>' + code.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</code></pre>';
+};
+renderer.listitem = function (text) {
+  if (text.indexOf('{{LJ}}') !== -1) return '<li class="lj">' + text.replace(/ ?\{\{LJ\}\}/g, '') + '</li>\n';
+  return '<li>' + text + '</li>\n';
+};
+marked.use({ renderer: renderer, gfm: true });
+
+// --- a lap tokenenként: bekezdés és listaelem kap gombot; a címsorokból a hely és a kézi rés ---
+const BEK = [];          // {i, raw, hely, res, forras_tipp, elem}
+const kezi = {};
+for (const k of META.kezi || []) kezi[k.fejlec.trim()] = k;
+const lap = document.getElementById('lap');
+lap.innerHTML = '';
+let utvonal = [];        // [{szint, szoveg}]
+let aktivRes = null;     // {res, forras, szint}
+function helyNev() { return utvonal.map(u => u.szoveg).join(' › ') || '(a lap eleje)'; }
+function bekezdes(elem, raw) {
+  const i = BEK.length;
+  const b = { i, raw: nyers(raw), hely: helyNev(), res: aktivRes ? aktivRes.res : '', forras_tipp: aktivRes ? aktivRes.forras : 'generált rész', elem };
+  BEK.push(b);
+  elem.classList.add('bek'); elem.id = 'bek-' + i;
+  const gomb = el('button', { class: 'bek-gomb', type: 'button', 'aria-expanded': 'false', title: 'Kérdezz erről a bekezdésről, vagy javasolj javítást' }, 'Kérdezz / javasolj');
+  gomb.addEventListener('click', () => panelNyit(b, gomb));
+  elem.append(gomb);
+  b.gomb = gomb;
+}
+for (const tok of marked.lexer(forras)) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = marked.parser([tok]);
+  if (tok.type === 'heading') {
+    const szoveg = tok.text.replace(/\*\(kézi\)\*|\(kézi\)/g, '').trim();
+    utvonal = utvonal.filter(u => u.szint < tok.depth); if (tok.depth > 1) utvonal.push({ szint: tok.depth, szoveg: szoveg.replace(/[*_`]/g, '') });
+    if (aktivRes && tok.depth <= aktivRes.szint) aktivRes = null;
+    const kulcs = '#'.repeat(tok.depth) + ' ' + szoveg;
+    if (kezi[kulcs]) aktivRes = { res: kezi[kulcs].res, forras: kezi[kulcs].forras, szint: tok.depth };
+  }
+  const elemek = [...tmp.children];
+  if (tok.type === 'paragraph' && elemek.length === 1) bekezdes(elemek[0], tok.raw);
+  if (tok.type === 'list' && elemek.length === 1) {
+    const lik = [...elemek[0].children].filter(x => x.tagName === 'LI');
+    lik.forEach((li, k) => { if (tok.items[k]) bekezdes(li, tok.items[k].raw.replace(/^\s*(?:[-*+]|\d+[.)])\s+/, '')); });
+  }
+  if (tok.type === 'blockquote' && elemek.length === 1) bekezdes(elemek[0], tok.raw);
+  lap.append(...elemek);
+}
+
+// héber betűs szakaszok jelölése a betűkészlethez
+const fa = document.createTreeWalker(lap, NodeFilter.SHOW_TEXT);
+const csomok = [];
+while (fa.nextNode()) { if (/[֐-׿]/.test(fa.currentNode.nodeValue) && !fa.currentNode.parentElement.closest('code,pre,button')) csomok.push(fa.currentNode); }
+for (const c of csomok) {
+  const t = c.nodeValue, frag = document.createDocumentFragment(); let utolso = 0;
+  t.replace(/[֐-׿][֐-׿֑-ׇ\s־]*/g, (m, i) => { frag.append(t.slice(utolso, i)); const s = document.createElement('span'); s.lang = 'he'; s.dir = 'rtl'; s.textContent = m; frag.append(s); utolso = i + m.length; return m; });
+  frag.append(t.slice(utolso)); c.replaceWith(frag);
+}
+// tartalomjegyzék a h2-kből
+const tj = document.getElementById('tj');
+const h2k = [...lap.querySelectorAll('h2')];
+for (const h of h2k) tj.append(el('li', {}, el('a', { href: '#' + h.id }, h.textContent.trim())));
+const linkek = [...tj.querySelectorAll('a')];
+if ('IntersectionObserver' in window) {
+  const fig = new IntersectionObserver(ek => { for (const e of ek) if (e.isIntersecting) {
+    linkek.forEach(a => a.classList.toggle('aktiv', a.getAttribute('href') === '#' + e.target.id)); } }, { rootMargin: '0px 0px -70% 0px' });
+  h2k.forEach(h => fig.observe(h));
+}
+if (location.hash) { const cel = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (cel) cel.scrollIntoView(); }
+
+// --- képességek: sample (kérdés), db (jóváhagyott javaslat), user (ki hagyta jóvá) ---
+let SAMPLE = null, DB = null, USER = null, ENYEM = '', TULAJ = false;
+const JAVASLATOK = new Map();   // doc id → adat
+const jstat = document.getElementById('jstat');
+
+const SZABALY = [
+  'Te a PaRDeS motívumlexikon lektor-segédje vagy. Egy lexikonlap egyetlen bekezdéséről kérdez az olvasó (a lap szerkesztője).',
+  'A lapot NEM írod át: csak válaszolsz, és ha kell, a lehető legkisebb javítást JAVASOLOD. A jóváhagyásról az olvasó dönt, a beírásról egy külön munkamenet.',
+  'Szabályok:',
+  '- A javítás a legkisebb, ami a gondot megoldja; a próza hangja és szóhasználata marad. Teljes mondat marad teljes mondat.',
+  '- Adatot (igehelyet, számot, Strong-számot, jelentésszámot, idézett bibliaszöveget) NEM találsz ki és nem írsz át emlékezetből. Ha a gond adat-jellegű, mondd ki, a javaslat legyen null, a tipus_tipp "adat".',
+  '- Ha a hiba a BDB/Thayer-szótár szövegének torzulása (furcsa jel, elcsúszott hivatkozás, szóvesztés), tipus_tipp "forrás"; ha a bekezdés szerkezete minden lapon ugyanígy hibás lenne (sablonszöveg), "generátor"; ha a kérdés tartalmi döntés (mi tartozik a motívumhoz), "tartalmi".',
+  '- Belső munkaszó (pl. „gerinc”, „szerep”, „rés”, „jelölt”) nem kerülhet az új szövegbe. Héber/görög szó magyaros kiejtése marad, ahogy a lapon áll.',
+  '- A "regi" a bekezdés nyers szövegének PONTOS, betű szerinti részlete legyen (a markdown-jelöléssel együtt, ahogy a BEKEZDÉS alatt áll), és pontosan egyszer forduljon elő benne. Elég a javított mondat vagy tagmondat.',
+  '- Magyarul válaszolj, röviden (legfeljebb 5 mondat a "valasz" mezőben).',
+  'Kimenet: CSAK egy JSON-objektum, más szöveg nélkül:',
+  '{"valasz": "<válasz az olvasónak>", "gond": "homályos|pontatlan|szakszó|ellentmond az adatnak|null", "tipus_tipp": "próza|adat|forrás|generátor|tartalmi", "javaslat": {"regi": "<pontos részlet>", "uj": "<javított részlet>", "ok": "<egy mondat: miért>"} vagy null}',
+].join('\n');
+
+function kontextus(b) {
+  const elozo = BEK[b.i - 1], kov = BEK[b.i + 1];
+  return [
+    'MOTÍVUM: ' + META.id + ' (' + META.cim + ')',
+    'HELY A LAPON: ' + b.hely,
+    'A RÉSZ FAJTÁJA: ' + (b.res ? 'kézi próza (rés: ' + b.res + ', forrás: ' + b.forras_tipp + ')' : 'generált rész (adatból vagy szótárból áll elő)'),
+    elozo ? 'ELŐZŐ BEKEZDÉS (csak kontextus):\n' + elozo.raw.slice(0, 1500) : '',
+    'BEKEZDÉS (erről szól a kérdés):\n' + b.raw.slice(0, 6000),
+    kov ? 'KÖVETKEZŐ BEKEZDÉS (csak kontextus):\n' + kov.raw.slice(0, 1500) : '',
+  ].filter(Boolean).join('\n\n');
+}
+function jsonKiolvas(szoveg) {
+  let t = szoveg.trim();
+  const kerites = t.match(/```(?:json)?\s*([\s\S]*?)```/); if (kerites) t = kerites[1];
+  const a = t.indexOf('{'), z = t.lastIndexOf('}');
+  if (a < 0 || z < a) throw new Error('nincs JSON');
+  return JSON.parse(t.slice(a, z + 1));
+}
+function hibaSzoveg(e) {
+  const k = e && e.code;
+  if (k === 'not_granted' || k === 'sampling_disabled' || k === 'not_declared' || k === 'capability_disabled') return 'A Claude-kérdezés ezen a lapon nincs engedélyezve; a javaslatot kézzel is megírhatod lent.';
+  if (k === 'rate_limited') return 'Túl sok kérés egyszerre vagy elérted a használati keretet. Próbáld később.';
+  if (k === 'session_expired') return 'Jelentkezz be újra.';
+  if (k === 'cancelled') return 'Leállítva.';
+  if (k === 'refused') return 'Erre a kérdésre nem jött válasz; fogalmazd át.';
+  return 'A válasz nem érkezett meg (' + (k || 'hiba') + '). Kérdezd újra.';
+}
+function elofordul(szoveg, resz) { if (!resz) return 0; let n = 0, i = -1; while ((i = szoveg.indexOf(resz, i + 1)) !== -1) n++; return n; }
+
+let nyitott = null;
+function panelNyit(b, gomb) {
+  if (nyitott && nyitott.b === b) { nyitott.panel.remove(); gomb.setAttribute('aria-expanded', 'false'); nyitott = null; return; }
+  if (nyitott) { nyitott.panel.remove(); nyitott.gomb.setAttribute('aria-expanded', 'false'); }
+  gomb.setAttribute('aria-expanded', 'true');
+  const allapot = { fordulok: [], valasz: null, modell: '', ctl: null };
+  const beszelg = el('div', { class: 'beszelg' });
+  const kerdes = el('textarea', { id: 'kerdes-' + b.i, rows: '2', placeholder: 'Mi a gond ezzel a bekezdéssel? (pl. „homályos, mit jelent a második mondat?”)' });
+  const kuld = el('button', { class: 'fo', type: 'button' }, 'Kérdezem');
+  const allj = el('button', { class: 'mas', type: 'button', hidden: '' }, 'Leállítás');
+  const uzi = el('span', { class: 'uzi' });
+  const regiDoboz = el('textarea', { id: 'regi-' + b.i, rows: '2' });
+  const ujDoboz = el('textarea', { id: 'uj-' + b.i, rows: '3' });
+  const okDoboz = el('textarea', { id: 'ok-' + b.i, rows: '2' });
+  const gondValaszto = el('select', { id: 'gond-' + b.i }, el('option', { value: '' }, '— válassz —'), ...GOND.map(g => el('option', { value: g }, g)));
+  const jovahagy = el('button', { class: 'fo', type: 'button' }, 'Jóváhagyom, mehet a sessionnek');
+  const juzi = el('span', { class: 'uzi' });
+  const javaslat = el('div', { class: 'javaslat', hidden: '' },
+    el('span', { class: 'cimke' }, 'Javaslat (szerkesztheted, mielőtt jóváhagyod)'),
+    el('label', { for: 'regi-' + b.i }, 'régi — pontos részlet a bekezdésből'), regiDoboz,
+    el('label', { for: 'uj-' + b.i }, 'új'), ujDoboz,
+    el('label', { for: 'ok-' + b.i }, 'ok'), okDoboz,
+    el('div', { class: 'sor' }, el('label', { for: 'gond-' + b.i }, 'gond'), gondValaszto),
+    el('div', { class: 'sor' }, jovahagy, juzi));
+  const sajat = el('button', { class: 'mas', type: 'button' }, 'Saját javaslatot írok');
+  sajat.addEventListener('click', () => { javaslat.hidden = false; if (!regiDoboz.value) regiDoboz.focus(); });
+  const panel = el('div', { class: 'panel', role: 'region', 'aria-label': 'Kérdés és javaslat ehhez a bekezdéshez' },
+    el('div', {}, el('span', { class: 'cimke' }, 'Kérdezz / javasolj · '), el('span', { class: 'res' }, b.res ? 'kézi próza · ' + b.forras_tipp : 'generált rész')),
+    el('div', { class: 'hely' }, b.hely),
+    beszelg, kerdes,
+    el('div', { class: 'sor' }, kuld, allj, sajat, uzi),
+    javaslat);
+  b.elem.after(panel);
+  nyitott = { b, panel, gomb };
+  kerdes.focus();
+  if (!SAMPLE) { kuld.disabled = true; uzi.textContent = 'A Claude-kérdezés itt nem érhető el; a javaslatot kézzel is megírhatod.'; }
+  if (!DB) { jovahagy.disabled = true; juzi.textContent = 'A javaslat-tár nem érhető el (bejelentkezve, a lap tulajdonosaként működik).'; }
+  else if (USER && !TULAJ) { jovahagy.disabled = true; juzi.textContent = 'Jóváhagyni csak a lap tulajdonosa tud.'; }
+
+  function uzenet(ki, szoveg, en) { const u = el('div', { class: 'uzenet' + (en ? ' en' : '') }, el('span', { class: 'ki' }, ki), szoveg); beszelg.append(u); return u; }
+
+  kuld.addEventListener('click', async () => {
+    const q = kerdes.value.trim(); if (!q || !SAMPLE) return;
+    uzenet('Te', q, true); kerdes.value = '';
+    allapot.fordulok.push({ role: 'user', content: allapot.fordulok.length ? q : SZABALY + '\n\n' + kontextus(b) + '\n\nAZ OLVASÓ KÉRDÉSE:\n' + q });
+    const valaszU = uzenet('Claude', 'Gondolkodik…', false);
+    kuld.disabled = true; allj.hidden = false; uzi.textContent = ''; uzi.classList.remove('hiba');
+    allapot.ctl = new AbortController();
+    allj.onclick = () => allapot.ctl && allapot.ctl.abort();
+    try {
+      const r = await SAMPLE(allapot.fordulok, { modelTier: 'complex', model: 'claude-opus-5-5', cache: false, signal: allapot.ctl.signal });
+      allapot.modell = r.modelApplied || ('tier=' + r.modelTierApplied);
+      let v;
+      try { v = jsonKiolvas(r.text); } catch (e) { v = { valasz: r.text, javaslat: null }; }
+      allapot.fordulok.push({ role: 'assistant', content: r.text });
+      valaszU.lastChild.textContent = String(v.valasz || '');
+      if (v.tipus_tipp && v.tipus_tipp !== 'próza') valaszU.append(el('div', { class: 'uzi' }, 'Típus-tipp: ' + v.tipus_tipp + ' — ezt a session nem a prózában javítja, hanem a saját útján (adatsor / javítótábla / generátor / döntés).'));
+      if (v.javaslat && v.javaslat.regi) {
+        regiDoboz.value = v.javaslat.regi; ujDoboz.value = v.javaslat.uj || ''; okDoboz.value = v.javaslat.ok || '';
+        allapot.valasz = { regi: v.javaslat.regi, uj: v.javaslat.uj || '', tipus_tipp: v.tipus_tipp || '' };
+        if (GOND.includes(v.gond)) gondValaszto.value = v.gond;
+        javaslat.hidden = false;
+      } else if (v.tipus_tipp) { allapot.valasz = { regi: '', uj: '', tipus_tipp: v.tipus_tipp }; }
+    } catch (e) {
+      allapot.fordulok.pop();
+      valaszU.lastChild.textContent = (e && e.text) || '';
+      if (!(e && e.text)) valaszU.remove();
+      uzi.textContent = hibaSzoveg(e); uzi.classList.add('hiba');
+      if (e && ['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled'].includes(e.code)) SAMPLE = null;
+    } finally { kuld.disabled = !SAMPLE; allj.hidden = true; allapot.ctl = null; }
+  });
+
+  jovahagy.addEventListener('click', async () => {
+    juzi.classList.remove('hiba');
+    const regi = regiDoboz.value, uj = ujDoboz.value.trim(), ok = okDoboz.value.trim(), gond = gondValaszto.value;
+    const n = elofordul(b.raw, regi);
+    if (!regi.trim() || !uj || !ok) { juzi.textContent = 'A régi, az új és az ok is kell.'; juzi.classList.add('hiba'); return; }
+    if (n !== 1) { juzi.textContent = n === 0 ? 'A „régi” szöveg nem áll betű szerint a bekezdésben; másold ki pontosan.' : 'A „régi” szöveg ' + n + '-szor áll a bekezdésben; bővítsd, hogy egyértelmű legyen.'; juzi.classList.add('hiba'); return; }
+    if (!gond) { juzi.textContent = 'Válaszd ki, mi a gond (zárt lista: ' + GOND.join(', ') + ').'; juzi.classList.add('hiba'); return; }
+    if (regi.trim() === uj) { juzi.textContent = 'Az új szöveg ugyanaz, mint a régi.'; juzi.classList.add('hiba'); return; }
+    const javasolt = allapot.valasz;
+    const szerkesztve = !javasolt || javasolt.regi !== regi || javasolt.uj !== uj;
+    const doc = {
+      motivum: META.id, lap: META.lap, lap_commit: META.commit, bek: b.i, hely: b.hely, res: b.res, forras_tipp: b.forras_tipp,
+      bekezdes: b.raw.slice(0, 8000), regi, uj, ok, gond, tipus_tipp: (javasolt && javasolt.tipus_tipp) || '',
+      javasolta: szerkesztve ? 'felhasználó' : allapot.modell, modell_javaslat: javasolt ? { regi: javasolt.regi, uj: javasolt.uj } : null,
+      beszelgetes: allapot.fordulok.map((f, k) => ({ role: f.role, content: k === 0 ? f.content.split('AZ OLVASÓ KÉRDÉSE:\n').pop() : f.content })).slice(0, 12),
+      allapot: 'jóváhagyva', by: ENYEM, ts: new Date().toISOString(),
+    };
+    jovahagy.disabled = true; juzi.textContent = 'Mentés…';
+    try {
+      const id = 'j' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+      await DB.collection('javaslatok').doc(id).set(doc);
+      juzi.textContent = 'Elküldve a sessionnek (' + id + '). A lap addig nem változik, amíg a session be nem írja és újra nem építi.';
+    } catch (e) {
+      jovahagy.disabled = false; juzi.classList.add('hiba');
+      juzi.textContent = e && e.code === 'invalid_argument' ? 'Nincs jogod javaslatot menteni ezen a lapon.' : 'A mentés nem sikerült (' + ((e && e.code) || 'hiba') + '). Próbáld újra.';
+    }
+  });
+}
+
+function listaRajzol() {
+  const ol = document.getElementById('jlista'); ol.innerHTML = '';
+  const sajat = [...JAVASLATOK.entries()].filter(([, d]) => d.motivum === META.id).sort((a, b) => String(a[1].ts).localeCompare(String(b[1].ts)));
+  document.getElementById('javaslatlista').hidden = sajat.length === 0;
+  const db = { 'jóváhagyva': 0 }; for (const [, d] of sajat) db[d.allapot] = (db[d.allapot] || 0) + 1;
+  jstat.textContent = sajat.length ? 'javaslatok: ' + sajat.length + ' (' + (db['jóváhagyva'] || 0) + ' a sessionre vár)' : 'javaslatok: még nincs';
+  BEK.forEach(b => { b.elem.classList.remove('van-javaslat'); const p = b.gomb.querySelector('.pont'); if (p) p.remove(); });
+  for (const [id, d] of sajat) {
+    const b = BEK[d.bek];
+    const azonos = b && b.raw.slice(0, 8000) === d.bekezdes;
+    if (azonos && d.allapot === 'jóváhagyva') { b.elem.classList.add('van-javaslat'); if (!b.gomb.querySelector('.pont')) b.gomb.prepend(el('span', { class: 'pont', 'aria-hidden': 'true' })); }
+    const [osztaly, cimke] = ALLAPOT_CIMKE[d.allapot] || ['jovahagyva', String(d.allapot || '')];
+    const li = el('li', {},
+      el('span', { class: 'allapot ' + osztaly }, cimke),
+      azonos ? el('a', { href: '#bek-' + d.bek }, String(d.hely || '')) : el('span', {}, String(d.hely || '') + ' (a bekezdés azóta változott)'),
+      el('div', { class: 'javaslat' },
+        el('div', { class: 'regi' }, String(d.regi || '')),
+        el('div', { class: 'regi', style: 'background: var(--uj-hatter); color: var(--uj)' }, String(d.uj || '')),
+        el('span', { class: 'uzi' }, 'gond: ' + (d.gond || '–') + ' · ok: ' + (d.ok || '–') + (d.session_megjegyzes ? ' · session: ' + d.session_megjegyzes : ''))));
+    if (d.allapot === 'jóváhagyva' && TULAJ) {
+      const vissza = el('button', { class: 'bek-gomb', type: 'button', style: 'opacity:1' }, 'Visszavonom');
+      vissza.addEventListener('click', async () => { vissza.disabled = true; try { await DB.collection('javaslatok').doc(id).delete(); } catch (e) { vissza.disabled = false; } });
+      li.append(vissza);
+    }
+    ol.append(li);
+  }
+}
+
+(async () => {
+  try { SAMPLE = (window.claude && claude.use) ? await claude.use('sample') : null; } catch (e) { SAMPLE = null; }
+  try { USER = (window.claude && claude.use) ? await claude.use('user') : null; } catch (e) { USER = null; }
+  try { ENYEM = USER ? ((await USER.id()) || '') : ''; } catch (e) { ENYEM = ''; }
+  try { TULAJ = USER ? !!(await USER.isOwner()) : false; } catch (e) { TULAJ = false; }
+  try { DB = (window.claude && claude.use) ? await claude.use('db') : null; } catch (e) { DB = null; }
+  if (!DB) { jstat.textContent = 'javaslatok: a tár itt nem érhető el'; return; }
+  const idozito = setTimeout(() => { jstat.textContent = 'javaslatok: a tár még nem válaszolt'; }, 10000);
+  DB.collection('javaslatok').onSnapshot(snap => {
+    if (!snap.metadata.fromCache) clearTimeout(idozito);
+    JAVASLATOK.clear(); for (const d of snap.docs) JAVASLATOK.set(d.id, d.data());
+    listaRajzol();
+  }, () => { clearTimeout(idozito); jstat.textContent = 'javaslatok: a tár nem érhető el'; });
+})();
+</script>
