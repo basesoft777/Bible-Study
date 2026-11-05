@@ -512,7 +512,7 @@ SZOTAR_ALAK = re.compile(r'(?:BDB|Thayer|szótár)-?(?:ben|ban)?:\s*„$')  # a 
 
 
 # a normalizáló tábla csak a 66 könyvet tartja; a deuterokanonikus és pszeudepigráf könyvek rövidítése nem hiba
-DEUTERO = {'Tób', 'Jud', 'Bölcs', 'Sir', 'Bár', '1Makk', '2Makk', 'Énokh', '1Énokh', 'Jub'}
+DEUTERO = {'Tób', 'Jud', 'Bölcs', 'Sir', 'Bár', '1Makk', '2Makk', '3Makk', '4Makk', 'Énokh', '1Énokh', 'Jub'}
 NEM_KONYV = {'Az', 'A', 'Lásd', 'Vö'}  # mondatkezdő névelő/utalószó egy könyv nélküli fejezet:vers előtt
 
 
@@ -613,8 +613,10 @@ def blokkok_1a(sorok):
             if akt:
                 ki.append(akt)
             akt = [m.group(1).strip(), s.n, '', []]
-        elif akt is not None and s.fajta == 'karoli' and not akt[2]:
-            akt[2] = s.szoveg.strip().strip('*')
+        elif akt is not None and s.fajta in ('karoli', 'dolt') and not akt[3]:
+            # a tartomány-sor (pl. 1Móz 4:2-3) minden verse külön dőlt Károli-sor (a második már 'dolt' fajtájú):
+            # az idézet bármelyikből jöhet
+            akt[2] = (akt[2] + ' ' + s.szoveg.strip().strip('*')).strip()
         elif akt is not None and s.fajta == 'proza':
             akt[3].append(s)
     if akt:

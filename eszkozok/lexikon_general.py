@@ -141,7 +141,7 @@ def igehely_rendez(igehelyek, konyv_sorrend, hianyzo_konyvek):
 
 # A Károli-KH/TSK magyar megjelenítésének régi könyvrövidítései, amelyek nem a
 # `Konyv_normalizalo_tabla.tsv` alakjai (olvasói kapu KONYV).
-KH_KONYV_JAVIT = {'Eféz': 'Ef'}
+KH_KONYV_JAVIT = {'Eféz': 'Ef', 'Siral': 'JSir'}
 
 
 def karoli_colon(s):
@@ -3629,7 +3629,7 @@ def bdb_fej_rovid(hu):
     alap = eleje.split(': ')[-1].strip(' ;,—') if ': ' in eleje else ''
     # a „; —” utáni alakjegyzék (pl. „— ׳ח 1Móz 25:6 és máshol”) nem az alapjelentés része (N-F123l)
     alap = alap.split('; —')[0].strip(' ;,—')
-    gy = re.search(r'√\s*([^;,)]+)', hu)
+    gy = re.search(r'√\s*([^;,()]+)', hu)  # a nyitó zárójelnél is megáll (nyitva maradt zárójel: HAMART-001, H0127)
     nyelvek = []
     for m in re.finditer(r'(?<![\wáéíóöőúüű])(%s)(?![\wáéíóöőúüű])' % '|'.join(BDB_ROKON_NYELVEK), hu):
         cimke = m.group(1)
