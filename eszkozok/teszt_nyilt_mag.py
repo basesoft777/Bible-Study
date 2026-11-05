@@ -340,6 +340,55 @@ class Cimke(Alap):
         self.assertEqual(len(E.ertek_reszek(d['ok'])), len(E.ertek_reszek(d['ok_en'])))
 
 
+class Forditas(Alap):
+    """F170.3–4, kapu (c)–(f): a szabad szöveg gépi angol párja és a STEPBible-glossza."""
+
+    def forditott_sor(self, rel='kizarasok.tsv', o='indoklas'):
+        fej, sorok = G.tsv_sorok(self.fajlok[rel])
+        for n, d in sorok:
+            if d[o] and d[o + '_en'] and d['forditas_modja'].startswith('gépi fordítás ('):
+                return d
+        self.skipTest('nincs fordított sor')
+
+    def test_minden_szabad_oszlopnak_van_en_parja_es_jelolese(self):
+        for rel, mezok in E.SZABAD.items():
+            fej, _ = G.tsv_sorok(self.fajlok[rel])
+            self.assertIn('forditas_modja', fej, rel)
+            for o in mezok:
+                self.assertIn(o + '_en', fej, '%s/%s' % (rel, o))
+
+    def test_jeloles_nelkuli_forditas(self):
+        d = self.forditott_sor()
+        f = self.sor_csere(self.uj(), 'kizarasok.tsv', '\t' + d['forditas_modja'] + '\n', '\tkézi\n')
+        self.assertTrue(bukasok(f, 'FORDITAS'))
+
+    def test_elavult_forditas(self):
+        d = self.forditott_sor()
+        f = self.sor_csere(self.uj(), 'kizarasok.tsv', '\t' + d['indoklas'] + '\t', '\t' + d['indoklas'] + ' (módosítva)\t')
+        self.assertTrue([x for x in bukasok(f, 'FORDITAS') if 'elavult' in x.uzenet])
+
+    def test_mas_angol_szoveg(self):
+        d = self.forditott_sor()
+        f = self.sor_csere(self.uj(), 'kizarasok.tsv', '\t' + d['indoklas_en'] + '\t', '\tsomething else\t')
+        self.assertTrue(bukasok(f, 'FORDITAS'))
+
+    def test_glossza_nem_stepbible(self):
+        f = self.sor_csere(self.uj(), 'elofordulasok.tsv', '\thell: Sheol\t', '\tthe grave\t')
+        self.assertTrue(bukasok(f, 'GLOSSZA'))
+
+    def test_glossza_lekepezes(self):
+        self.assertEqual('hell: Sheol', E.glossza_en('H7585'))
+        self.assertEqual('to call: call to + name', E.glossza_en('H7121+H8034'))
+        self.assertIn('Rephaim', E.glossza_en('H7497'))
+        self.assertEqual('', E.glossza_en(''))
+
+    def test_tbesh_tbesg_forraskent_a_leltarban(self):
+        _, sorok = G.tsv_sorok(self.fajlok['forrasok_es_licencek.tsv'])
+        szerep = {d['dataset']: d['szerepe_a_csomagban'] for _, d in sorok}
+        self.assertTrue(szerep['TBESH'].startswith('forrás'))
+        self.assertTrue(szerep['TBESG'].startswith('forrás'))
+
+
 class Osis(unittest.TestCase):
     def test_lekepezes(self):
         self.assertEqual('1Kgs.13.31', E.osis('1Kir 13:31'))

@@ -47,7 +47,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |
-| `kodkonyv.tsv` | 332 |
+| `kodkonyv.tsv` | 350 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -62,6 +62,10 @@ The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a p
 ## Citation and the use of artificial intelligence
 
 With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
+
+## English layer
+
+The column names and values of the package are Hungarian; English parallel columns stand next to them. **Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book code is standard, chapter and verse follow the versification of the Károli translation — where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. **Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); `jelentes_en` is separate, a dictionary excerpt.
 
 ## Group exclusion
 

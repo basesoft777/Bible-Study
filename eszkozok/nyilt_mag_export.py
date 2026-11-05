@@ -111,6 +111,137 @@ def cimke_bovit(tabla, fej, sorok):
             s[o + '_en'] = '; '.join(en)
     return uj, sorok
 
+
+# --- szabad szöveg angol párja (F170.3–4): a gépi fordítás tárolva az `adat/nyilt_angol.tsv`-ben (forrásréteg), az
+# export csak kiolvassa. Kulcs: tábla + oszlop + sorkulcs; a fordítás csak akkor kerül a csomagba, ha a tárolt
+# forrás-hash a mai magyar cella hash-e (különben a magyar forrás újabb: a fordítás elavult, a kapu bukik).
+SZABAD = {
+    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom'],
+    'elofordulasok.tsv': ['funkcio'],
+    'kizarasok.tsv': ['indoklas', 'korabbi_minosites'],
+    'beepitesi_dontesek.tsv': ['indoklas', 'korabbi_minosites'],
+    'dontesnaplo.tsv': ['kerdes', 'dontes'],
+}
+SORKULCS = {
+    'motivumok.tsv': ['motivum_azonosito'],
+    'elofordulasok.tsv': ['motivum_azonosito', 'igehely', 'horgony'],
+    'kizarasok.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
+    'beepitesi_dontesek.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
+    'dontesnaplo.tsv': ['dontes_azonosito'],
+}
+ANGOL_TABLA = 'adat/nyilt_angol.tsv'
+ANGOL_FEJ = ['tabla', 'oszlop', 'sorkulcs', 'forras_hash', 'forras_hu', 'angol', 'modell', 'datum']
+FORDITAS_NINCS = 'nincs fordítás'
+
+
+def szoveg_hash(t):
+    return hashlib.sha256((t or '').encode('utf-8')).hexdigest()[:16]
+
+
+def sorkulcs(tabla, s):
+    return ' | '.join(s.get(k, '') for k in SORKULCS[tabla])
+
+
+_ANGOL = None
+
+
+def angol_tar():
+    """{(tábla, oszlop, sorkulcs): sor} az `adat/nyilt_angol.tsv`-ből (üres, ha a tábla még nincs)."""
+    global _ANGOL
+    if _ANGOL is None:
+        _ANGOL = {}
+        if os.path.exists(os.path.join(GYOKER, ANGOL_TABLA)):
+            _, sorok = tsv(ANGOL_TABLA)
+            for s in sorok:
+                _ANGOL[(s['tabla'], s['oszlop'], s['sorkulcs'])] = s
+    return _ANGOL
+
+
+def angol_bovit(tabla, fej, sorok):
+    """Minden szabad szöveges oszlop után a párja (`<oszlop>_en`), a sor végén a `forditas_modja`. A fordítás csak
+    egyező forrás-hash-sel kerül be; hiányzó vagy elavult fordításnál a cella üres, és a `forditas_modja` kimondja."""
+    mezok = [o for o in SZABAD.get(tabla, []) if o in fej]
+    uj = []
+    for o in fej:
+        uj.append(o)
+        if o in mezok:
+            uj.append(o + '_en')
+    uj.append('forditas_modja')
+    latott = set()
+    for s in sorok:
+        k = sorkulcs(tabla, s)
+        if k in latott:
+            raise SystemExit('angol réteg: a sorkulcs nem egyedi: %s %s' % (tabla, k))
+        latott.add(k)
+        modellek, hiany, van = set(), 0, 0
+        for o in mezok:
+            hu = s.get(o, '')
+            s[o + '_en'] = ''
+            if not hu:
+                continue
+            van += 1
+            t = angol_tar().get((tabla, o, k))
+            if t and t['forras_hash'] == szoveg_hash(hu) and t['angol']:
+                s[o + '_en'] = t['angol']
+                modellek.add(t['modell'])
+            else:
+                hiany += 1
+        if not van:
+            s['forditas_modja'] = ''
+        elif not modellek:
+            s['forditas_modja'] = FORDITAS_NINCS
+        else:
+            s['forditas_modja'] = ('gépi fordítás (%s)' % ', '.join(sorted(modellek)) +
+                                   ('; részben hiányzik' if hiany else ''))
+    return uj, sorok
+
+
+def szabad_cellak(fajlok):
+    """[(tábla, oszlop, sorkulcs, magyar szöveg, angol cella)] a generált csomag nem üres szabad szöveges celláiból."""
+    ki = []
+    for tabla, mezok in sorted(SZABAD.items()):
+        _, ds = tsv_szoveg(fajlok[tabla])
+        for d in ds:
+            for o in mezok:
+                if d.get(o):
+                    ki.append((tabla, o, sorkulcs(tabla, d), d[o], d.get(o + '_en', '')))
+    return ki
+
+
+# --- angol szófogódzó (F170, a brief 5. pontja): a Strong-szám STEPBible-glosszája (TBESH/TBESG, CC BY 4.0)
+_GLOSSZA = None
+
+
+def strong_glossza():
+    """{Strong-szám: glossza} a TBESH/TBESG-ből. A Strong-szám (és betűs alváltozatai, pl. H1121a/H1121b) fő
+    bejegyzéseinek glosszája (a `H1121A =` és a `H0430G = a Name of` alakú sorok; a „= a Meaning of / Spelling of / Part of” sorok
+    kimaradnak), fájlsorrendben, ismétlés nélkül, ` / `-rel fűzve. A csomag Strong-száma betű nélküli, ezért a
+    glossza a szám egészére szól, nem jelentés-specifikus (pl. H7497: `Rapha / Rephaim`)."""
+    global _GLOSSZA
+    if _GLOSSZA is None:
+        gy = {}
+        for fn in ('konkordancia/TBESH.txt', 'konkordancia/TBESG.txt'):
+            with open(os.path.join(GYOKER, fn), encoding='utf-8') as f:
+                for s in f:
+                    m = s.rstrip('\n').split('\t')
+                    if len(m) < 7 or not re.match(r'^[HG]\d{4}[a-z]?$', m[0]):
+                        continue
+                    if not re.match(r'^[HG]\d{4}[A-Z]? =(?: a Name of)?$', m[1].strip()) or not m[6].strip():
+                        continue
+                    lista = gy.setdefault(m[0][:5], [])
+                    if m[6].strip() not in lista:
+                        lista.append(m[6].strip())
+        _GLOSSZA = {k: ' / '.join(v) for k, v in gy.items()}
+    return _GLOSSZA
+
+
+def glossza_en(strong):
+    """`H7121+H8034` -> `to call: call to + name`; ismeretlen Strong-számnál a rész üres marad (nincs kitöltés)."""
+    szamok = [x.strip() for x in (strong or '').split('+') if x.strip()]
+    if not szamok:
+        return ''
+    return ' + '.join(strong_glossza().get(x, '') for x in szamok)
+
 # a nyílt adatmag és a lexikon viszonya (F167.3.8; a felhasználó jóváhagyott sémája, 2026-11-04)
 ADATMAG_LEXIKON_HU = ('A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező'
                       ' szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva.')
@@ -568,6 +699,8 @@ def strong_szamok(*szovegek):
 def oszlop_tsv(fej, sorok, tabla=None):
     if tabla in ZART:
         fej, sorok = cimke_bovit(tabla, fej, sorok)
+    if tabla in SZABAD:
+        fej, sorok = angol_bovit(tabla, fej, sorok)
     if any(o in IGEHELY_OSZLOPOK for o in fej):
         fej, sorok = osis_bovit(fej, sorok)
     ki = [FEJLEC, '\t'.join(fej)]
@@ -851,6 +984,8 @@ def hogyan_olvasd_en(p):
 
 
 def export(kimenet):
+    global _ANGOL
+    _ANGOL = None
     CSOPORT_ELTERES.clear()
     CIMKE_HIANY.clear()
     lic = Licenc()
@@ -901,7 +1036,8 @@ def export(kimenet):
 
     # --- elofordulasok.tsv
     fej = ['motivum_azonosito', 'igehely', 'funkcio', 'pardes_szint', 'horgony_tipus', 'horgony',
-           'strong', 'szotar', 'szotari_szocikk', 'jelentes_szam', 'jelentes_en', 'karoli_szo', 'azonositas_modja',
+           'strong', 'szotar', 'szotari_szocikk', 'jelentes_szam', 'jelentes_en', 'strong_glossza_en', 'karoli_szo',
+           'azonositas_modja',
            'megbizhatosag', 'igazolas', 'lekerdezes_tipusa', 'forras_megnevezes', 'forras_dataset',
            'forras_licenc', 'datum']
     sorok = []
@@ -922,7 +1058,8 @@ def export(kimenet):
             'funkcio': cimke,
             'pardes_szint': e['pardes_szint'], 'horgony_tipus': ht, 'horgony': h, 'strong': e['strong'],
             'szotar': e['lexikon_szotar'], 'szotari_szocikk': e['lexikon_entry_id'],
-            'jelentes_szam': e['jelentes_szam'], 'jelentes_en': e['jelentes_en'], 'karoli_szo': e['karoli_szo'],
+            'jelentes_szam': e['jelentes_szam'], 'jelentes_en': e['jelentes_en'],
+            'strong_glossza_en': glossza_en(e['strong']), 'karoli_szo': e['karoli_szo'],
             'azonositas_modja': e['azonositas_modja'], 'megbizhatosag': e['megbizhatosag'],
             'igazolas': e['igazolas'], 'lekerdezes_tipusa': scope_ford(p.get('scope')),
             'forras_megnevezes': nev, 'forras_dataset': '; '.join(dsek),
@@ -1054,6 +1191,11 @@ def export(kimenet):
         if re.search(r'^TSK', j['forras_kereses']) or 'TSK' in j['forras_kereses']:
             hasznalt.add('TSK')
     hasznalt.add(SAJAT_SOR)
+    # az angol szófogódzó forrása (strong_glossza_en): a TBESH a héber, a TBESG a görög Strong-számokra
+    if any(e['strong'].startswith('H') or '+H' in e['strong'] for e in elo):
+        hasznalt.add('TBESH')
+    if any(e['strong'].startswith('G') or '+G' in e['strong'] for e in elo):
+        hasznalt.add('TBESG')
     fej = ['dataset', 'licenc', 'szerepe_a_csomagban', 'ok']
     sorok = []
     for ds in sorted(lic.sor):
@@ -1162,6 +1304,16 @@ def export(kimenet):
           'szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig '
           'helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a '
           'lexikont mint önálló művet (minden jog fenntartva).', '',
+          '## Angol réteg', '',
+          'A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden '
+          'igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és '
+          'versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a '
+          'Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv '
+          'szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a '
+          'döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a '
+          'modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a '
+          'Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House '
+          'Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.', '',
           '## Csoportos kizárás', '',
           'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
           'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
@@ -1216,6 +1368,17 @@ def export(kimenet):
            'intelligence are provided at the place of publication; their fields to be completed by the author are '
            'placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this '
            'package) and the lexicon as a separate work (all rights reserved).', '',
+           '## English layer', '',
+           'The column names and values of the package are Hungarian; English parallel columns stand next to them. '
+           '**Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book '
+           'code is standard, chapter and verse follow the versification of the Károli translation — where it '
+           'differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next '
+           'to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free '
+           'text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, '
+           'a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. '
+           '**Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the '
+           'Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); '
+           '`jelentes_en` is separate, a dictionary excerpt.', '',
            '## Group exclusion', '',
            'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
            'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '

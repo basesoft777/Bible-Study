@@ -62,6 +62,13 @@ A döntés nyilvános azonosítói (NYD-nnn), a dontesnaplo.tsv-ben oldhatók fe
 *Public identifiers (NYD-nnn) of the decisions, resolvable in dontesnaplo.tsv; separated by `;`.*
 
 
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
 ### `igehely`
 
 A beépített igehely, Károli-számozással; az elofordulasok.tsv sorának kulcsa.
@@ -81,6 +88,13 @@ Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: 
 A beépítés szerkesztői indoklása.
 
 *The editorial rationale for incorporation.*
+
+
+### `indoklas_en`
+
+Az előző oszlop (indoklas) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (indoklas): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `jelolt_tipus`
@@ -129,6 +143,13 @@ Az előző oszlop (keresesi_mod) értékének rövid angol címkéje a kódköny
 A jelölt korábbi minősítése és annak indoklása, ha volt; egyébként üres.
 
 *The candidate’s earlier assessment and its rationale, if any; otherwise empty.*
+
+
+### `korabbi_minosites_en`
+
+Az előző oszlop (korabbi_minosites) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (korabbi_minosites): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `motivum_azonosito`
@@ -223,11 +244,32 @@ A döntés nyilvános azonosítója (NYD-nnn); a többi fájl ezzel hivatkozik a
 *The public decision identifier (NYD-nnn); the other files refer to the decision by it.*
 
 
+### `dontes_en`
+
+Az előző oszlop (dontes) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (dontes): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
 ### `kerdes`
 
 A döntés tárgya: a feltett kérdés egy-két mondatban.
 
 *The subject of the decision: the question asked, in a sentence or two.*
+
+
+### `kerdes_en`
+
+Az előző oszlop (kerdes) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (kerdes): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ## elofordulasok.tsv
@@ -255,6 +297,13 @@ Az előző oszlop (azonositas_modja) értékének rövid angol címkéje a kódk
 A lekérdezés vagy a döntés napja (ÉÉÉÉ-HH-NN).
 
 *The date of the query or decision (YYYY-MM-DD).*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
 
 
 ### `forras_dataset`
@@ -304,6 +353,13 @@ Az előző oszlop (forras_megnevezes) értékének rövid angol címkéje a kód
 A vers szerepének besorolása a motívumban: rövid címke (pl. „alap-előfordulás”, „ismétlődés”). **Adatréteg**, mert a hely motívumbeli szerepét osztályozza; a címkét követő magyarázó mondat értelmező próza, a lexikon része, ezért kimaradt.
 
 *Classification of the verse’s role in the motif: a short label (e.g. “alap-előfordulás” = foundational occurrence). **Data layer**, because it classifies the place’s role in the motif; the explanatory sentence that follows the label is interpretive prose, belongs to the lexicon and is omitted.*
+
+
+### `funkcio_en`
+
+Az előző oszlop (funkcio) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (funkcio): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `horgony`
@@ -367,9 +423,9 @@ Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: 
 
 ### `jelentes_en`
 
-A szótári jelentés angolul, a szótár szövegéből.
+A szótári jelentés angolul: kivonat a sor `szotar` oszlopában megnevezett szótár (BDB, Thayer: közkincs; TBESG: CC BY 4.0) szócikkének szövegéből, a jelentés számával (`jelentes_szam`). Szótári kivonat, nem a STEPBible rövid glosszája; az angol szófogódzót a `strong_glossza_en` adja.
 
-*The dictionary meaning in English, from the dictionary text.*
+*The dictionary meaning in English: an excerpt from the text of the entry in the dictionary named in the row’s `szotar` column (BDB, Thayer: public domain; TBESG: CC BY 4.0), for the sense numbered in `jelentes_szam`. A dictionary excerpt, not the short STEPBible gloss; the short English word cue is `strong_glossza_en`.*
 
 
 ### `jelentes_szam`
@@ -456,6 +512,13 @@ Az előző oszlop (pardes_szint) értékének rövid angol címkéje a kódköny
 A sor Strong-száma (H = héber, G = görög); üres, ha a sor nem lexikai horgonyon áll.
 
 *The row’s Strong number (H = Hebrew, G = Greek); empty when the row does not rest on a lexical anchor.*
+
+
+### `strong_glossza_en`
+
+Rövid angol szófogódzó: a sor Strong-számának glosszája a STEPBible TBESH (héber) és TBESG (görög) lexikonjából (a Gloss oszlop; a Meaning oszlop nem). Több Strong-számnál ` + `-szal fűzve, a sorrendjük szerint; ha a Strong-számnak több fő bejegyzése van (pl. név és köznév), ` / `-rel. A glossza a Strong-szám egészére szól, nem az adott vers jelentésére (arra a `jelentes_en`). Forrás: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).
+
+*Short English word cue: the gloss of the row’s Strong number from the STEPBible TBESH (Hebrew) and TBESG (Greek) lexicons (the Gloss column, not the Meaning column). With several Strong numbers joined by ` + ` in their order; where a Strong number has several main entries (e.g. a name and a common noun), by ` / `. The gloss belongs to the Strong number as a whole, not to the sense in the verse (for that, see `jelentes_en`). Source: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).*
 
 
 ### `szotar`
@@ -782,6 +845,13 @@ A kizárást megalapozó döntések nyilvános azonosítói (NYD-nnn), a dontesn
 *Public identifiers (NYD-nnn) of the decisions behind the exclusion, resolvable in dontesnaplo.tsv; separated by `;`.*
 
 
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
 ### `igehely`
 
 A kizárt igehely, Károli-számozással.
@@ -801,6 +871,13 @@ Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: 
 A kizárás szerkesztői indoklása.
 
 *The editorial rationale for the exclusion.*
+
+
+### `indoklas_en`
+
+Az előző oszlop (indoklas) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (indoklas): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `jelolt_tipus`
@@ -925,6 +1002,13 @@ Az előző oszlop (kizaras_oka) értékének rövid angol címkéje a kódkönyv
 A jelölt korábbi minősítése és annak indoklása, ha volt; egyébként üres.
 
 *The candidate’s earlier assessment and its rationale, if any; otherwise empty.*
+
+
+### `korabbi_minosites_en`
+
+Az előző oszlop (korabbi_minosites) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (korabbi_minosites): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `megbizhatosag`
@@ -1164,6 +1248,13 @@ A motívum teljes neve.
 *The full name of the motif.*
 
 
+### `cim_en`
+
+Az előző oszlop (cim) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (cim): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
+
+
 ### `feldolgozasi_allapot`
 
 A motívum feldolgozási állapota, az adatból számolva: lezárt kiadás, ha a motívumnak van kiadása, és a kiadott lexikonlapján az olvasói kapu nem talál hibát; minden más motívum régi feldolgozás.
@@ -1187,6 +1278,20 @@ A tágabb fogalom, amely felé a motívum hígulhat; ami csak ezen keresztül ta
 *The broader concept toward which the motif may dilute; whatever would belong only through it is excluded.*
 
 
+### `folerendelt_fogalom_en`
+
+Az előző oszlop (folerendelt_fogalom) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (folerendelt_fogalom): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
 ### `motivum_azonosito`
 
 A motívum azonosítója: TÉMAKÓD-sorszám (pl. ALVIL-001); a többi fájl ezzel hivatkozik a motívumra.
@@ -1199,6 +1304,13 @@ A motívum azonosítója: TÉMAKÓD-sorszám (pl. ALVIL-001); a többi fájl ezz
 A kizáró jegy: az a minimális jegy, amely nélkül egy igehely nem tartozik a motívumhoz. A határt a kizárások húzzák meg.
 
 *The exclusion criterion: the minimal feature without which a passage does not belong to the motif. The boundary is drawn by the exclusions.*
+
+
+### `negativ_kriterium_en`
+
+Az előző oszlop (negativ_kriterium) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (negativ_kriterium): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `pardes_szint`
@@ -1225,6 +1337,13 @@ Az előző oszlop (pardes_szint) értékének rövid angol címkéje a kódköny
 A motívum rövid megjelenítési címkéje.
 
 *A short display label for the motif.*
+
+
+### `rovid_cimke_en`
+
+Az előző oszlop (rovid_cimke) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (rovid_cimke): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `statusz`
@@ -1255,4 +1374,11 @@ Az előző oszlop (statusz) értékének rövid angol címkéje a kódkönyvből
 Szisztematikus témabesorolás (többértékű lehet); nem része az azonosítónak.
 
 *Systematic subject classification (may be multi-valued); not part of the identifier.*
+
+
+### `tema_en`
+
+Az előző oszlop (tema) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (tema): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 

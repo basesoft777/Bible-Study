@@ -14,6 +14,12 @@ Ellenőrzések (azonosító — súlyosság):
     ANGOL_SOR    ≥3 angol funkciószó egy magyar cellában                                                    — FIGYELMEZTETÉS
     KODKONYV     oszlop vagy zárt értékkészlet-érték kódkönyv-leírás nélkül, vagy a leírás egyik nyelven
                  hiányzik / a két nyelv azonos                                                              — BUKÁS
+    FORDITAS     szabad szöveges oszlop `_en` pár vagy `forditas_modja` nélkül; angol cella gépi-fordítás jelölés
+                 nélkül; a tárolt fordítás forrás-hash-e nem a mai magyar cellaé (elavult); az angol cella nem a
+                 tárolt fordítás (F170, kapu (c)–(e))                                                       — BUKÁS
+                 kimondott hiány (`nincs fordítás` / `részben hiányzik`)                                    — FIGYELMEZTETÉS
+    GLOSSZA      a `strong_glossza_en` nem a STEPBible TBESH/TBESG-glossza (más, pl. KJV-Strong eredetű érték;
+                 F170, kapu (f))                                                                            — BUKÁS
     CIMKE        zárt oszlop `_en` pár nélkül; zárt érték angol címke (`cimke_en`) nélkül; az `_en` cella nem a
                  kódkönyv címkéje (F170, kapu (b))                                                          — BUKÁS
     LICENC       kizárt (NC, GPL, tisztázatlan, zárt) forrás neve vagy értéke a csomagban; az SDBH/SDGNT-adat a
@@ -150,6 +156,8 @@ def ell_belso(fajlok):
         for rx, nev in K.BELSO + EXTRA_BELSO[:-1]:
             if rel == 'ELLENORZO_OSSZEG.sha256':
                 continue
+            if angol_oszlop(o) and nev.startswith('proveniencia-érték (manual)'):
+                continue    # az angol szövegben a „manual” közszó (pl. „manual reading”), nem a belső jel (F170)
             m = rx.search(t)
             if m:
                 ki.append(Talalat('BELSO', BUKAS, rel, n, kor(t, m), '%s [%s]: %s' % (nev, o or 'szöveg', m.group(0))))
@@ -228,6 +236,66 @@ def ell_cimke(fajlok):
                 elif d[o + '_en'] != vart:
                     ki.append(Talalat('CIMKE', BUKAS, rel, n, '%s / %s' % (d[o], d[o + '_en']),
                                       'az angol címke nem a kódkönyvé (%s)' % vart))
+    return ki
+
+
+def ell_forditas(fajlok):
+    """FORDITAS (F170, kapu (c)–(e))."""
+    ki = []
+    E._ANGOL = None
+    tar = E.angol_tar()
+    for tabla, mezok in sorted(E.SZABAD.items()):
+        fej, sorok = tsv_sorok(fajlok.get(tabla, ''))
+        hianyzo_par = [o for o in mezok if o in fej and o + '_en' not in fej]
+        for o in hianyzo_par:
+            ki.append(Talalat('FORDITAS', BUKAS, tabla, 2, o, 'a szabad szöveges oszlopnak nincs angol párja'))
+        if 'forditas_modja' not in fej:
+            ki.append(Talalat('FORDITAS', BUKAS, tabla, 2, tabla, 'nincs forditas_modja oszlop'))
+            continue
+        for n, d in sorok:
+            k = E.sorkulcs(tabla, d)
+            fm = d['forditas_modja']
+            for o in mezok:
+                if o not in fej or o in hianyzo_par:
+                    continue
+                hu, en = d[o], d[o + '_en']
+                t = tar.get((tabla, o, k))
+                if not hu:
+                    if en:
+                        ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'angol cella üres magyar mező mellett'))
+                    continue
+                if t and t['forras_hash'] != E.szoveg_hash(hu):
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, '%s / %s' % (o, k),
+                                      'a fordítás elavult: a magyar forrás változott (újrafordítandó)'))
+                    continue
+                if not en:
+                    if E.FORDITAS_NINCS not in fm and 'részben hiányzik' not in fm:
+                        ki.append(Talalat('FORDITAS', BUKAS, tabla, n, '%s / %s' % (o, k),
+                                          'hiányzó fordítás kimondott hiány-jelölés nélkül'))
+                    else:
+                        ki.append(Talalat('FORDITAS', FIGY, tabla, n, '%s / %s' % (o, k), 'a fordítás hiányzik (jelölve)'))
+                    continue
+                if not fm.startswith('gépi fordítás ('):
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'angol cella gépi-fordítás jelölés nélkül'))
+                if not t or t['angol'] != en:
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'az angol cella nem a tárolt fordítás'))
+                elif t['modell'] not in fm:
+                    ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'a jelölés nem a fordító modellt nevezi meg'))
+    return ki
+
+
+def ell_glossza(fajlok):
+    """GLOSSZA (F170, kapu (f)): a `strong_glossza_en` pontosan a TBESH/TBESG-glossza (újraszámolva), tehát nem
+    KJV-Strong (GPL) vagy más forrás értéke."""
+    ki = []
+    fej, sorok = tsv_sorok(fajlok.get('elofordulasok.tsv', ''))
+    if 'strong_glossza_en' not in fej:
+        return [Talalat('GLOSSZA', BUKAS, 'elofordulasok.tsv', 2, '', 'nincs strong_glossza_en oszlop')]
+    for n, d in sorok:
+        vart = E.glossza_en(d['strong'])
+        if d['strong_glossza_en'] != vart:
+            ki.append(Talalat('GLOSSZA', BUKAS, 'elofordulasok.tsv', n, d['strong_glossza_en'][:60],
+                              'nem a STEPBible-glossza (%s)' % vart))
     return ki
 
 
@@ -544,7 +612,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osis, ell_cimke, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
+              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
