@@ -73,6 +73,12 @@ class Negativ(unittest.TestCase):
         t = self.jelez(lap(tabla_sorok=sorok), 'FUNKCIO_URES')
         self.assertEqual(t[0]['db'], 2)
 
+    def test_cella_ismetles_tartomany_sor(self):
+        # F123.HAMART3: a tartomány-sor versenként ugyanazt a jelentést írta a cellába
+        elem = 'megátkozni; átkot kimondani [ⓘ](/szo/H0779)'
+        sorok = ['| [5Móz 27:15-26](#ige) | Átkozott | átkoz · Qal | formula | Remez | H0779 | %s; %s |' % (elem, elem)]
+        self.jelez(lap(tabla_sorok=sorok), 'CELLA_ISMETLES')
+
     def test_A4_belso_jelolesek_az_1b_indokban(self):
         szoveg = lap(tobbi='## 1/b. Kizárt és vizsgált helyek\n\n| Igehely | Miért lett jelölt | Döntés és indok |\n'
                      '|---|---|---|\n| 2Móz 12:29 | gépi keresés | **elutasítva** — Minősítési mérce (a #123 2e. 4. '
@@ -230,6 +236,11 @@ class Pozitiv(unittest.TestCase):
     def nincs(self, szoveg, *azon):
         tal = [t for t in meres(szoveg) if t['azonosito'] in azon]
         self.assertEqual(tal, [], tal)
+
+    def test_cella_ket_kulonbozo_elem_nem_hiba(self):
+        sorok = ['| [Mk 7:21-23](#ige) | gondolatok | gondolat · 1 | tematikus | Drash | G1261 | '
+                 'okoskodás [ⓘ](/szo/G1261); kétely [ⓘ](/szo/G1261) |']
+        self.nincs(lap(tabla_sorok=sorok), 'CELLA_ISMETLES')
 
     def test_GENKOR_jelolt_strong_nem_hiba(self):
         """DT-F181b: a jelölt alak (kiejtés-hivatkozás + halvány felső index) nem belső jel, és a kiejtés-pár látszik."""

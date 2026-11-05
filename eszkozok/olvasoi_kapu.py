@@ -33,6 +33,7 @@ Ellenőrzések (azonosító — súlyosság):
     KH_MASOLT    a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a) — FIGYELMEZTETÉS
     LABJEGYZET   definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) — BUKÁS
     PROZA_1A     az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)   — BUKÁS
+    CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
 
 Az olvasói szöveg: minden látható sor, kivéve a HTML-megjegyzést, a kódblokkot, a technikai dőlt sort (egész
 sor `*…*`), a proveniencia-lábjegyzetet (`[^x]: proveniencia:` / `forrás:` / `scope=`), valamint a Tartalomjegyzék,
@@ -512,7 +513,7 @@ SZOTAR_ALAK = re.compile(r'(?:BDB|Thayer|szótár)-?(?:ben|ban)?:\s*„$')  # a 
 
 
 # a normalizáló tábla csak a 66 könyvet tartja; a deuterokanonikus és pszeudepigráf könyvek rövidítése nem hiba
-DEUTERO = {'Tób', 'Jud', 'Bölcs', 'Sir', 'Bár', '1Makk', '2Makk', 'Énokh', '1Énokh', 'Jub'}
+DEUTERO = {'Tób', 'Jud', 'Bölcs', 'Sir', 'Bár', '1Makk', '2Makk', '3Makk', '4Makk', 'Énokh', '1Énokh', 'Jub'}
 NEM_KONYV = {'Az', 'A', 'Lásd', 'Vö'}  # mondatkezdő névelő/utalószó egy könyv nélküli fejezet:vers előtt
 
 
@@ -613,8 +614,10 @@ def blokkok_1a(sorok):
             if akt:
                 ki.append(akt)
             akt = [m.group(1).strip(), s.n, '', []]
-        elif akt is not None and s.fajta == 'karoli' and not akt[2]:
-            akt[2] = s.szoveg.strip().strip('*')
+        elif akt is not None and s.fajta in ('karoli', 'dolt') and not akt[3]:
+            # a tartomány-sor (pl. 1Móz 4:2-3) minden verse külön dőlt Károli-sor (a második már 'dolt' fajtájú):
+            # az idézet bármelyikből jöhet
+            akt[2] = (akt[2] + ' ' + s.szoveg.strip().strip('*')).strip()
         elif akt is not None and s.fajta == 'proza':
             akt[3].append(s)
     if akt:
@@ -885,8 +888,31 @@ def ell_atvett(szoveg):
     return ki, megj
 
 
+# CELLA_ISMETLES (F123.HAMART3, 2026-11-05): a tartomány-sor versenként ugyanazt a jelentést írta a cellába
+# (5Móz 27:15-26: tizenkétszer). Elem: a cellában egy „… [ⓘ](…)” link a szövegével, az előző link (vagy a cella
+# eleje) után; ugyanaz az elem kétszer egy cellában hiba.
+CELLA_ELEM_RX = re.compile(r'([^|;]*?(?:;[^|;]*?)*?\[ⓘ\](?:\([^)]*\))?)')  # a tagolt sorban a link célja már levágva
+
+
+def ell_cella_ismetles(sorok):
+    ki = []
+    for s in sorok:
+        if s.fajta != 'tabla':
+            continue
+        for cella in s.szoveg.split('|'):
+            elemek = [e.strip(' ;') for e in CELLA_ELEM_RX.findall(cella)]
+            latott = set()
+            for e in elemek:
+                if e in latott:
+                    ki.append(talalat('CELLA_ISMETLES', BUKAS, s.n, e[:80],
+                                      'a táblacellában ugyanaz az elem többször áll (tartomány-sor ismétlése?)'))
+                    break
+                latott.add(e)
+    return ki
+
+
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
-                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh]
+                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles]
 
 
 def arany_szoszam():

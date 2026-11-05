@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md @ b6807740 · F123 HAMART-001 új cikk, U3 · 2026-11-05 · nem forrás, nem szerkesztendő -->
 # Kereszthivatkozás-napló — "A bűn következményeinek gyűrűzése"
 
 *Létrehozva: 2026.09.11, a `4_PaRDeS_tematikus_sablon.md` v14 "Kötelező napló" előírása szerint, a study elkészítésével egy munkamenetben. Kapcsolódó tanulmány: `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`.*

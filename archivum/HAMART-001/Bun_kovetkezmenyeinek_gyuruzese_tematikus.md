@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md @ b6807740 · F123 HAMART-001 új cikk, U3 · 2026-11-05 · nem forrás, nem szerkesztendő -->
 # A bűn következményeinek gyűrűzése — átok, föld és romlás
 
 ## Kivonat

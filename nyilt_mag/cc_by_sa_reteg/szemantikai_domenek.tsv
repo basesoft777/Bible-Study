@@ -6,6 +6,10 @@ G0086	SDGNT	ᾅδης	000086001002000	023007	Live, Die	death; power of death
 G0086	SDGNT	ᾅδης	000086001003000	012002	Supernatural Powers	death
 G0282	SDGNT	ἀμήτωρ	000280001001000	010002	Kinship Relations Involving Successive Generations	without mother
 G0540	SDGNT	ἀπάτωρ	000540001001000	010002	Kinship Relations Involving Successive Generations	without father
+G1261	SDGNT	διαλογισμός	001276001001000	030001	To Think, Thought	to think out carefully; to reason thoroughly; to consider carefully; to reason; reasoning
+G1261	SDGNT	διαλογισμός	001276001002000	030001	To Think, Thought	what is reasoned; reasoning
+G1261	SDGNT	διαλογισμός	001276001003000	033051	Argue, Quarrel	to argue; to dispute; argument
+G1261	SDGNT	διαλογισμός	001276001004000	031006	Believe To Be True	to doubt; to be uncertain about; doubt
 G1311	SDGNT	διαφθείρω	001325001001000	020003	Destroy	to destroy utterly
 G1311	SDGNT	διαφθείρω	001325001002000	088035	Licentiousness, Perversion	to deprave; to pervert; to ruin; to cause the moral ruin of
 G1311	SDGNT	διαφθείρω	001325001003000	023009	Sickness, Disease, Weakness	to lose one’s strength; to waste away
@@ -15,6 +19,7 @@ G1941	SDGNT	ἐπικαλέω	001957001003000	056004	Judicial Hearing, Inquiry	
 G1941	SDGNT	ἐπικαλέω	001957001004000	011002	Socio-Religious	to be one of (God’s) people; to be the people of
 G1944	SDGNT	ἐπάρατος	001900001001000	033055	Bless, Curse	cursed; accursed
 G1944	SDGNT	ἐπικατάρατος	001960001001000	033055	Bless, Curse	cursed; accursed
+G2626	SDGNT	κατακλύζω	002637001001000	014005	Events Involving Liquids and Dry Masses	flood; deluge
 G2671	SDGNT	κατάρα	002680001001000	033055	Bless, Curse	to curse; curse
 G2671	SDGNT	κατάρα	002680001002000	033055	Bless, Curse	curse
 G2671	SDGNT	κατάρα	002680001003000	033055	Bless, Curse	cursed; accursed
@@ -63,8 +68,14 @@ G5590	SDGNT	ψυχή	005475001012000	023007	Live, Die	to die voluntarily; to di
 G5591	SDGNT	ψυχικός	005476001001000	079001	Physical [Material], Spiritual	physical; natural
 G5591	SDGNT	ψυχικός	005476001002000	079002	Natural [Human], Spiritual	natural; human
 G5591	SDGNT	ψυχικός	005476001003000	041003	Particular Patterns of Behavior	unspiritual; worldly; natural
+H0056	SDBH	אבל	000055001001000	002001002013	Grieve	to mourn
+H0056	SDBH	אבל	000055001002000	002001001022	Dry	to mourn; to wither; to languish
+H0056	SDBH	אבל	000055001003000	002001002013	Grieve	to cause to mourn
 H0127	SDBH	אֲדָמָה	000128001001000	001002001	Land	ground; earth; land; clay
 H0127	SDBH	אֲדָמָה	000128002001000	003001010	Names of Locations	Adamah
+H0423	SDBH	אָלָה	000395001001000	002004001009013	Vow	oath; curse
+H0423	SDBH	אָלָה	000395001002000	002003002008	Curse	curse
+H0423	SDBH	אָלָה	000395001003000	002003002008	Curse	curse
 H0430	SDBH	אֱלֹהִים	000396001001000	001001001	Deities	heavenly beings
 H0430	SDBH	אֱלֹהִים	000396001002000	001001001	Deities	god (of someone); God (of someone)
 H0430	SDBH	אֱלֹהִים	000396001003000	003001004	Names of Deities	God
@@ -161,18 +172,6 @@ H5315	SDBH	נֶפֶשׁ	004880002001000	001002010014	Spices	perfume (?)
 H6093	SDBH	עִצָּבֹון	005603001001000	002001001055	Spasm	labor; toil; hard work
 H6975	SDBH	קֹוץ	006425001001000	001002004001	Plants	thorn; brier; thornbush
 H6975	SDBH	קֹוץ	006425002001000	003001007	Names of People	Koz
-H7043	SDBH	קלל	006488001001000	002001001002	Agile	light; fast; swift; restless
-H7043	SDBH	קלל	006488001002000	002001002015	Insignificant	to be worthless; to be insignificant; to be of no account
-H7043	SDBH	קלל	006488001003000	002001003017	Trivial	to be a trivial matter; to be of no consequence; to come easy
-H7043	SDBH	קלל	006488001004000	002001003013	Lax	to lighten; to reduce (one's load)
-H7043	SDBH	קלל	006488001005000	002001001042	Quantity	to abate; to subside
-H7043	SDBH	קלל	006488001006000	002003002008	Curse	to curse; to blaspheme; to revile
-H7043	SDBH	קלל	006488001007000	002001001063	Unsteady	to shake; to tremble; to shudder
-H7043	SDBH	קלל	006488001008000	002001001063	Unsteady	to shake
-H7043	SDBH	קלל	006488001009000	002001001048	Shape	to sharpen
-H7043	SDBH	קלל	006488001010000	002001002005	Despise	to despise; to bring dishonor; to treat with contempt
-H7043	SDBH	קלל	006488001010000	002001002025	Shame	to despise; to bring dishonor; to treat with contempt
-H7043	SDBH	קלל	006488001011000	002003003023	Urge	to be quickly; to be swift
 H7121	SDBH	קרא	006562001001000	002004001009005	Shout	to cry out
 H7121	SDBH	קרא	006562001002000	002004001009005	Shout	to read; to recite
 H7121	SDBH	קרא	006562001003000	002001002012	Great	to be renowned

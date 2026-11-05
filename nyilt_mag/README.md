@@ -39,14 +39,14 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 
 | File | Rows |
 |---|---|
-| `beepitesi_dontesek.tsv` | 257 |
-| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 237 |
+| `beepitesi_dontesek.tsv` | 265 |
+| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 236 |
 | `dontesnaplo.tsv` | 8 |
-| `elofordulasok.tsv` | 255 |
+| `elofordulasok.tsv` | 263 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizaras_csoportok.tsv` | 3115 |
-| `kizarasok.tsv` | 418 |
+| `kizaras_csoportok.tsv` | 3989 |
+| `kizarasok.tsv` | 523 |
 | `kodkonyv.tsv` | 213 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
@@ -77,7 +77,7 @@ The open data core is the data layer of the lexicon; the lexicon itself (its int
 
 ## What is not in the package
 
-- Candidates in the `nyitva` (open, not yet decided) state: 129.
+- Candidates in the `nyitva` (open, not yet decided) state: 20.
 - The text of the lexicon (interpretive prose, Hungarian dictionary translations, Károli text with Strong's numbers), the studies and the lexicon pages.
 - Internal working marks: identifiers, working files, query traces. Where a decision is referred to, the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.
 

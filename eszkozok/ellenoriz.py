@@ -1994,6 +1994,51 @@ def kozlemeny_hibak(lap, lex_dir):
     return hibak
 
 
+# 36. szabaly (F123.HAMART3, 2026-11-05): egy vers ugyanannal a motivumnal nem lehet egyszerre elofordulas es egy
+# csoportos kizaras (osszesito jeloltsor) tagja. A tagok a jeloltsor `forras_kereses`-e altal megnevezett
+# `naplok/F123_teljesseg_<ID>_blokkok.tsv` sorai (halo=, blokk= / osztaly=), mint a nyilt mag exportjaban.
+CSOPORT_BLOKK_RX = re.compile(r'(?:halo=(\w+), )?\b(blokk|osztaly)=([^),\s]+)')
+
+
+def csoport_elofordulas_utkozes(adat_dir, naplo_dir=None):
+    """[(id, igehely, csoport)]: az elutasitott osszesito sor tagjai kozul azok, amelyek a motivum elofordulas-versei."""
+    import szerep_kizart as SZKZ
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    e_vers = {}
+    for r in elo:
+        for v in SZKZ.versek(r.get('igehely')):
+            e_vers.setdefault(r['id'], set()).add(v)
+    _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    blokkok = {}
+    ki = []
+    for r in jel:
+        if r.get('dontes') != 'elutasítva' or not SZKZ.csoport_versszam(r.get('forras_kereses')):
+            continue
+        m = CSOPORT_BLOKK_RX.search(r.get('forras_kereses') or '')
+        if not m:
+            continue
+        mid = r['id']
+        if mid not in blokkok:
+            ut = os.path.join(naplo_dir, 'F123_teljesseg_%s_blokkok.tsv' % mid)
+            blokkok[mid] = G.tsv_beolvas(ut)[1] if os.path.exists(ut) else []
+        halo, oszlop, kulcs = m.groups()
+        for b in blokkok[mid]:
+            if b.get(oszlop) == kulcs and (not halo or b.get('halo', halo) == halo) and b.get('igehely') in e_vers.get(mid, set()):
+                ki.append((mid, b['igehely'], '%s/%s' % (halo or '-', kulcs)))
+    return ki
+
+
+def szabaly36_csoport_elofordulas(adat_dir, naplo_dir=None):
+    cim = '36. Egy vers nem előfordulás és csoportos kizárás egyszerre (F123.HAMART3)'
+    if not os.path.exists(os.path.join(adat_dir, 'jeloltek.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    peldak = ['%s %s (csoport: %s)' % x for x in csoport_elofordulas_utkozes(adat_dir, naplo_dir)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: a vers kikerül a csoport taglistájából, a csoport versszáma csökken'
+                           if peldak else None))
+
+
 def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
     """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
     (Kolofon: MI-nyilatkozat, „Hogyan idézd”, a nyílt adatkészletre mutató mondat; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
@@ -2084,6 +2129,7 @@ def main():
         tabla_sorok.append(szabaly32_olvasoi_kapu_kiadott(args.adat))
         tabla_sorok.append(szabaly33_osszesito_versszam(args.adat))
         tabla_sorok.append(szabaly35_kozlemeny_hivatkozas(args.adat))
+        tabla_sorok.append(szabaly36_csoport_elofordulas(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

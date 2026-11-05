@@ -63,15 +63,15 @@ HODIT-001	ertelmezes	## 6. Értelmezés	tanulmany	tematikus_lezart/Rafaim_temati
 HODIT-001	alkalmazas	### Alkalmazás és tanítványság	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HODIT-001	tanitoi	### Tanítói egyezés	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HODIT-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	tematikus_lezart/Rafaim_tematikus.md
-HAMART-001	kivonat	## Kivonat	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
-HAMART-001	2b	### 2/b. Kiegészítő szótári adatok	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
-HAMART-001	miert_fontos	### Miért fontos ez a lelet	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
-HAMART-001	minosites	### Minősítés	tanulmany	tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md
+HAMART-001	kivonat	## Kivonat	tanulmany	motivumok/HAMART-001.md
+HAMART-001	2b	### 2/b. Kiegészítő szótári adatok	adat	
+HAMART-001	miert_fontos	### Miért fontos ez a lelet	tanulmany	motivumok/HAMART-001.md
+HAMART-001	minosites	### Minősítés	adat	
 HAMART-001	alatamasztas	### Alátámasztás	adat	A motívumhoz nincs rögzített kapcsolat.
-HAMART-001	ertelmezes	## 6. Értelmezés	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
-HAMART-001	alkalmazas	### Alkalmazás és tanítványság	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-HAMART-001	tanitoi	### Tanítói egyezés	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
+HAMART-001	ertelmezes	## 6. Értelmezés	tanulmany	motivumok/HAMART-001.md
+HAMART-001	alkalmazas	### Alkalmazás és tanítványság	tanulmany	motivumok/HAMART-001.md
+HAMART-001	tanitoi	### Tanítói egyezés	adat	Ehhez a motívumhoz nevesített tanítói egyezés még nem került a lapra; a hiány nincs kitöltve.
+HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	motivumok/HAMART-001.md
 TEREMT-002	kivonat	## Kivonat	tanulmany	motivumok/TEREMT-002.md
 TEREMT-002	2b	### 2/b. Kiegészítő szótári adatok	adat	
 TEREMT-002	miert_fontos	### Miért fontos ez a lelet	tanulmany	motivumok/TEREMT-002.md

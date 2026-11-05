@@ -1,0 +1,65 @@
+# GENERÁLT: naplok/F123_HAMART3_gerinc_kinalat.py | scope=HAMART-001 E-sorok + új jelöltek × adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv | forras=split('\t') | ts=2026-11-05
+tipus	igehely	strong	szotar_szakasz
+E	1Móz 3:14	H0779	14→a.fy.aa Qal/-; 14→a.fy.aa Qal/-
+E	1Móz 3:16	H6093	16→p.ei.af tagolatlan
+E	1Móz 3:17	H0127	17→a.bc.ac -/1
+E	1Móz 3:18	H6975	18→s.ay.ab fej; 18→s.ay.ab -/1
+E	1Móz 3:19	H0127	19→a.bc.ac -/3
+E	1Móz 3:23	H0127	23→a.bc.ac -/1; 23→a.bc.ac -/3
+E	1Móz 4:2-3	H0127	2→a.bc.ac -/1
+E	1Móz 4:7	H2403	7→h.bu.ad,h.bu.af fej; 7→h.bu.ad,h.bu.af fej; 7→h.bu.ad,h.bu.af -/1/b
+E	1Móz 4:10-11	H0779	11→a.fy.aa Qal/-
+E	1Móz 4:12	H0127	12→a.bc.ac -/1
+E	1Móz 4:14	H0127	14→a.bc.ac -/4
+E	1Móz 5:29	H6093	29→p.ei.af tagolatlan
+E	1Móz 6:5	H7451	5→t.dq.ac,t.dq.ad,t.dq.ae fej; 5→t.dq.ac,t.dq.ad,t.dq.ae -/10/c; 5→t.dq.ac,t.dq.ad,t.dq.ae fej
+E	1Móz 6:7	H0127	7→a.bc.ac -/4
+E	1Móz 6:11	H7843	11→v.cq.aa Niph'al/-
+E	1Móz 6:12	H7843	12→v.cq.aa Niph'al/-; 12→v.cq.aa Hiph'il/-; 12→v.cq.aa Hiph'il/2
+E	1Móz 6:13	H2555	13→h.dj.ab tagolatlan
+E	1Móz 6:17	H7843	17→v.cq.aa Pi'el/1
+E	1Móz 8:21	H7043	21→s.br.aa Pi'el/-; 21→s.br.aa Pi'el/3
+E	1Móz 9:11	H7843	11→v.cq.aa Pi'el/1
+E	1Móz 9:15	H7843	15→v.cq.aa Pi'el/1
+E	1Móz 9:25	H0779	25→a.fy.aa Qal/-
+E	1Móz 12:3	H0779	3→a.fy.aa Qal/-; 3→a.fy.aa Qal/-
+E	5Móz 27:15-26	H0779	15→a.fy.aa Qal/-
+E	5Móz 28:16-19	H0779	-
+E	Jer 17:5	H0779	5→a.fy.aa Qal/-
+E	Zsolt 14:1	H7843	1→v.cq.aa Hiph'il/2
+E	Zsolt 53:2	H7843	2→v.cq.aa Hiph'il/2
+E	Ez 7:23	H2555	23→h.dj.ab tagolatlan
+E	Ez 8:17	H2555	17→h.dj.ab tagolatlan
+E	Ez 28:16	H2555	16→h.dj.ab tagolatlan
+E	Zsolt 74:20	H2555	20→h.dj.ab tagolatlan
+E	Mik 6:12	H2555	12→h.dj.ab tagolatlan
+E	Sof 1:9	H2555	9→h.dj.ab tagolatlan
+E	Hab 2:8	H2555	8→h.dj.ab tagolatlan
+E	Hab 2:17	H2555	17→h.dj.ab tagolatlan
+E	Jón 3:8	H2555	8→h.dj.ab tagolatlan
+E	Ézs 60:18	H2555	18→h.dj.ab tagolatlan
+E	Jer 6:7	H2555	7→h.dj.ab tagolatlan
+E	Jer 51:46	H2555	46→h.dj.ab tagolatlan
+E	Hab 1:2	H2555	2→h.dj.ab tagolatlan
+E	Ézs 24:5-6	tematikus:1Móz 3:17	-
+E	Hós 4:1-3	tematikus:1Móz 3:17	-
+E	Róm 8:20-22	G5356	21→Thayer -/1/-
+E	Gal 3:10	G1944	10→Thayer fej
+E	Gal 3:13	G1944	13→Thayer fej
+E	Zsid 6:7-8	G2671	8→Thayer fej
+E	Jel 11:18	G1311	18→Thayer -/1/-; 18→Thayer -/2/b
+E	Jel 19:2	G5351	2→Thayer fej
+E	Mt 15:19	tematikus:1Móz 6:5	-
+E	Mk 7:21-23	tematikus:1Móz 6:5	-
+E	2Pét 3:6-7	tematikus:1Móz 6:13	-
+UJ	1Móz 7:4	H0127	4→a.bc.ac -/4
+UJ	1Móz 7:23	H0127	23→a.bc.ac -/4
+UJ	Sof 1:3	H0127	-
+UJ	Sof 1:2	H0127	2→a.bc.ac -/4
+UJ	Jer 51:25	H7843	-
+UJ	Hós 10:8	H6975	8→s.ay.ab -/1
+UJ	Ez 12:19	H2555	19→h.dj.ab tagolatlan
+UJ	Mal 3:11	H7843	11→v.cq.aa Hiph'il/-; 11→v.cq.aa Hiph'il/1
+UJ	Mal 3:11	H0127	11→a.bc.ac -/1
+UJ	1Móz 8:21	H0127	21→a.bc.ac -/1
+UJ	Jób 31:38	H0127	38→a.bc.ac fej; 38→a.bc.ac -/1

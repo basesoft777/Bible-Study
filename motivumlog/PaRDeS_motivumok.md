@@ -24,7 +24,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
-- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 52 igehely-sor — publikálható (v1, 2026.09.11)
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 60 igehely-sor — publikálható (v1, 2026.09.11)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -491,11 +491,11 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 255 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 263 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
-| 1Móz | 43 | 1Móz 1:2 [TEREMT-001], 1Móz 1:2 [TEREMT-002], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 9:25 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
+| 1Móz | 45 | 1Móz 1:2 [TEREMT-001], 1Móz 1:2 [TEREMT-002], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:4 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 7:23 [HAMART-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 9:25 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
 | 2Móz | 5 | 2Móz 15:5 [TEREMT-001], 2Móz 15:8 [TEREMT-001], 2Móz 19:6 [KIRALY-001], 2Móz 33:19 [ISTENTISZT-001], 2Móz 34:5 [ISTENTISZT-001] |
 | 4Móz | 4 | 4Móz 13:34 [MENNY-001], 4Móz 13:34 [HODIT-001], 4Móz 16:30 [ALVIL-001], 4Móz 16:33 [ALVIL-001] |
 | 5Móz | 9 | 5Móz 2:11 [HODIT-001], 5Móz 2:20 [HODIT-001], 5Móz 3:11 [HODIT-001], 5Móz 3:13 [HODIT-001], 5Móz 8:7 [TEREMT-001], 5Móz 27:15-26 [HAMART-001], 5Móz 28:16-19 [HAMART-001], 5Móz 32:22 [ALVIL-001], 5Móz 33:13 [TEREMT-001] |
@@ -511,16 +511,17 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Préd | 1 | Préd 9:12 [ALVIL-001] |
 | Én | 1 | Én 8:6 [ALVIL-001] |
 | Ézs | 19 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 34:11 [TEREMT-002], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
-| Jer | 4 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 17:5 [HAMART-001], Jer 51:46 [HAMART-001] |
-| Ez | 11 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
-| Hós | 2 | Hós 4:1-3 [HAMART-001], Hós 13:14 [ALVIL-001] |
+| Jer | 5 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 17:5 [HAMART-001], Jer 51:25 [HAMART-001], Jer 51:46 [HAMART-001] |
+| Ez | 12 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 12:19 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
+| Hós | 3 | Hós 4:1-3 [HAMART-001], Hós 10:8 [HAMART-001], Hós 13:14 [ALVIL-001] |
 | Jóel | 1 | Jóel 2:32 [ISTENTISZT-001] |
 | Ámós | 2 | Ámós 7:4 [TEREMT-001], Ámós 9:2 [ALVIL-001] |
 | Jón | 3 | Jón 2:3 [ALVIL-001], Jón 2:6 [TEREMT-001], Jón 3:8 [HAMART-001] |
 | Mik | 1 | Mik 6:12 [HAMART-001] |
 | Hab | 5 | Hab 1:2 [HAMART-001], Hab 2:5 [ALVIL-001], Hab 2:8 [HAMART-001], Hab 2:17 [HAMART-001], Hab 3:10 [TEREMT-001] |
-| Sof | 2 | Sof 1:9 [HAMART-001], Sof 3:9 [ISTENTISZT-001] |
+| Sof | 3 | Sof 1:2-3 [HAMART-001], Sof 1:9 [HAMART-001], Sof 3:9 [ISTENTISZT-001] |
 | Zak | 1 | Zak 6:13 [KIRALY-001] |
+| Mal | 1 | Mal 3:11 [HAMART-001] |
 | Mt | 3 | Mt 11:23 [ALVIL-001], Mt 15:19 [HAMART-001], Mt 16:18 [ALVIL-001] |
 | Mk | 1 | Mk 7:21-23 [HAMART-001] |
 | Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
@@ -532,7 +533,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Zsid | 6 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:7-8 [HAMART-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
 | 2Pét | 2 | 2Pét 2:4-5 [MENNY-001], 2Pét 3:6-7 [HAMART-001] |
 | Júd | 3 | Júd 1:6 [MENNY-001], Júd 1:14-15 [MENNY-001], Júd 1:19 [ANTROP-001] |
-| Jel | 10 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 11:18 [HAMART-001], Jel 17:8 [TEREMT-001], Jel 19:2 [HAMART-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001] |
+| Jel | 11 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 11:18 [HAMART-001], Jel 17:8 [TEREMT-001], Jel 19:2 [HAMART-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001], Jel 22:3 [HAMART-001] |
 
 <!-- GENERÁLT-VÉGE: naplo#konyv_index -->
 
