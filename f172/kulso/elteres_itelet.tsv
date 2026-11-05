@@ -1,0 +1,36 @@
+# MANUAL: scope=F172 a külső eltérések háromutas ítélete (javaslat; a vitatható esetek a felhasználóé) | forras=f172/kulso/osszevetes.tsv, f172/ellenor/valasz/kulso_*.json, a repón kívüli Bible-Discovery-bemásolás (a forrás Strong-száma nem kerül ide) | ts=git:8ff550e5 | manual (determinisztikus szabály)
+fejezet	vers	hu_sorszam	hu_szo	er_sorszam	strong	opus_gepi	opus_forras	itelet
+1Móz 7	1Móz 7:20	3	nevekedének	8	H1396	1	0	forras_hibaja
+1Móz 7	1Móz 7:20	6	feljebb	6	H4605	1	0	forras_hibaja
+1Móz 7	1Móz 7:21	14	nyüzsgő	24	H8317	1	0	forras_hibaja
+1Móz 7	1Móz 7:21	17	mászó	22	H8318	1	0	forras_hibaja
+2Kir 10	2Kir 10:2	4	hozzátok	9	H0413	1	0	forras_hibaja
+2Kir 10	2Kir 10:5	10	fejedelmei	3	H0834	1	0	forras_hibaja
+2Kir 10	2Kir 10:5	10	fejedelmei	8	H0834	1	0	forras_hibaja
+2Kir 10	2Kir 10:7	5	hozzájok	7	H0413	1	0	forras_hibaja
+2Kir 10	2Kir 10:15	23	é	22	H3426	0	0	mi_hibank
+2Kir 10	2Kir 10:24	24	közül	23	H4480	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:4	11	szakasznak	9	G5069	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:5	14	ő	21	G0846	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:5	15	érette	21	G0846	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:8	20	rád	19	G4016	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:17	11	ki	13	G1806	1	0	forras_hibaja
+ApCsel 12	ApCsel 12:18	13	hát	12	G0686	1	0	forras_hibaja
+Ez 43	Ez 43:13	12	közsinget	11	H2948	0	1	mi_hibank
+Ez 43	Ez 43:26	7	meg	8	H2891	1	0	forras_hibaja
+Jel 19	Jel 19:1	33	Istenünké	29	G3165	1	0	forras_hibaja
+Jel 19	Jel 19:5	6	ki	6	G1831	1	0	forras_hibaja
+Jel 19	Jel 19:5	15	Istenünket	11	G3165	1	0	forras_hibaja
+Jel 19	Jel 19:5	19	a	17	G3588	1	0	forras_hibaja
+Jel 19	Jel 19:5	20	kik	17	G3588	1	0	forras_hibaja
+Jel 19	Jel 19:8	9	fehér	6	G1039	1	0	forras_hibaja
+Jel 19	Jel 19:16	8	vala	13	G1125	1	0	forras_hibaja
+Péld 3	Péld 3:14	7	megszerzésénél	6	H5504	1	0	forras_hibaja
+Péld 3	Péld 3:18	1	Életnek	1	H6086	0	1	mi_hibank
+Péld 3	Péld 3:18	2	fája	2	H2416	0	1	mi_hibank
+Róm 1	Róm 1:8	1	Először	1	G4413	1	0	forras_hibaja
+Róm 1	Róm 1:10	4	vajha	7	G1487	1	0	forras_hibaja
+Róm 1	Róm 1:10	4	vajha	8	G4458	1	0	forras_hibaja
+Róm 1	Róm 1:12	1	Azaz	2	G1161	0	0	mi_hibank
+Róm 1	Róm 1:16	15	először	19	G4413	1	0	forras_hibaja
+Róm 1	Róm 1:24	10	hogy	15	G3588	1	0	forras_hibaja

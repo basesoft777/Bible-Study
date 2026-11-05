@@ -1,0 +1,11 @@
+KÖTEG: kulso_1Móz_7
+
+VERS: 1Móz 7:20
+KÁROLI (számozott szavak): 1 Tizenöt | 2 singgel | 3 nevekedének | 4 a | 5 vizek | 6 feljebb | 7 minekutánna | 8 a | 9 hegyek | 10 elboríttattak | 11 vala
+EREDETI (számozott szavak): 1 חֲמֵ֨שׁ H2568 [fif-] | 2 עֶשְׂרֵ֤ה H6240 [teen] | 3 אַמָּה֙ H0520 [cubit[s]] | 4 מִ H9006 [from] | 5 לְ H9005 [to] | 6 מַ֔עְלָ H4605 [above] | 7 ה H9011 [<towards>] | 8 גָּבְר֖וּ H1396 [they increased] | 9 הַ H9009 [the] | 10 מָּ֑יִם H4325 [waters] | 11 וַ H9001 [and] | 12 יְכֻסּ֖וּ H3680 [they were covered] | 13 הֶ H9009 [the] | 14 הָרִֽים H2022 [mountains]
+CÉL (Károli-sorszámok): 3, 6
+
+VERS: 1Móz 7:21
+KÁROLI (számozott szavak): 1 És | 2 oda | 3 vesze | 4 minden | 5 földön | 6 járó | 7 test | 8 madár | 9 barom | 10 vad | 11 és | 12 a | 13 földön | 14 nyüzsgő | 15 minden | 16 csúszó | 17 mászó | 18 állat | 19 és | 20 minden | 21 ember
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 יִּגְוַ֞ע H1478 [it died] | 3 כָּל H3605 [all] | 4 בָּשָׂ֣ר H1320 [flesh] | 5 הָ H9009 [which] | 6 רֹמֵ֣שׂ H7430 [crept] | 7 עַל H5921 [on] | 8 הָ H9009 [the] | 9 אָ֗רֶץ H0776 [earth] | 10 בָּ H9003 [among the] | 11 ע֤וֹף H5775 [bird[s]] | 12 וּ H9002 [and] | 13 בַ H9003 [among the] | 14 בְּהֵמָה֙ H0929 [livestock] | 15 וּ H9002 [and] | 16 בַ֣ H9003 [among the] | 17 חַיָּ֔ה H2416 [animal[s]] | 18 וּ H9002 [and] | 19 בְ H9003 [among] | 20 כָל H3605 [every] | 21 הַ H9009 [<the>] | 22 שֶּׁ֖רֶץ H8318 [swarming thing] | 23 הַ H9009 [which] | 24 שֹּׁרֵ֣ץ H8317 [swarms] | 25 עַל H5921 [on] | 26 הָ H9009 [the] | 27 אָ֑רֶץ H0776 [earth] | 28 וְ H9002 [and] | 29 כֹ֖ל H3605 [every] | 30 הָ H9009 [<the>] | 31 אָדָֽם H0120 [human]
+CÉL (Károli-sorszámok): 14, 17
