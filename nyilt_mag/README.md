@@ -14,7 +14,7 @@
 
 ## How to read
 
-Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release; the column values are Hungarian and are explained in `KODKONYV.md`.
+Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release. The column names and values are Hungarian: next to each closed-vocabulary column the `_en` column gives the English label, next to each passage column the `_osis` column gives the OSIS reference, and every column is explained in `KODKONYV.md`.
 
 ### 1. Which verses belong to ISTENTISZT-001, and on which word?
 
@@ -47,7 +47,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |
-| `kodkonyv.tsv` | 224 |
+| `kodkonyv.tsv` | 332 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 

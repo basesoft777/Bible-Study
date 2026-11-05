@@ -310,6 +310,36 @@ class Negativ(Alap):
         self.assertTrue(bukasok(f, 'OSIS'))
 
 
+class Cimke(Alap):
+    """F170.2, kapu (b): a zárt értékek angol címkéje."""
+
+    def test_minden_zart_oszlopnak_van_en_parja(self):
+        for rel, oszlopok in E.ZART.items():
+            fej, _ = G.tsv_sorok(self.fajlok[rel])
+            for o in oszlopok:
+                if o in fej:
+                    self.assertIn(o + '_en', fej, '%s/%s' % (rel, o))
+
+    def test_hibas_cimke(self):
+        f = self.sor_csere(self.uj(), 'kizarasok.tsv', '\toccurrence\t', '\tcandidate\t')
+        self.assertTrue(bukasok(f, 'CIMKE'))
+
+    def test_hianyzo_cimke_a_kodkonyvben(self):
+        f = self.uj()
+        f['kodkonyv.tsv'] = f['kodkonyv.tsv'].replace('\toccurrence\n', '\t\n', 1)
+        self.assertTrue(bukasok(f, 'CIMKE'))
+
+    def test_hianyzo_en_oszlop(self):
+        f = self.uj()
+        f['kapcsolatok.tsv'] = f['kapcsolatok.tsv'].replace('\ttipus_en\t', '\ttipus_angol\t', 1)
+        self.assertTrue(bukasok(f, 'CIMKE'))
+
+    def test_osszetett_ertek_reszenkent(self):
+        _, sorok = G.tsv_sorok(self.fajlok['forrasok_es_licencek.tsv'])
+        d = [d for _, d in sorok if d['dataset'] == 'projekt_adat'][0]
+        self.assertEqual(len(E.ertek_reszek(d['ok'])), len(E.ertek_reszek(d['ok_en'])))
+
+
 class Osis(unittest.TestCase):
     def test_lekepezes(self):
         self.assertEqual('1Kgs.13.31', E.osis('1Kir 13:31'))

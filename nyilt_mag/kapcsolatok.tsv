@@ -1,34 +1,34 @@
 # GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
-motivum_azonosito	forras_igehely	forras_igehely_osis	cel_igehely	cel_igehely_osis	tipus	bizonyossag	pardes_szint	lekerdezes_tipusa	forras_megnevezes	datum
-ISTENTISZT-001	1Kir 18:24	1Kgs.18.24	1Kir 18:25	1Kgs.18.25	Párhuzam	magas	Remez			
-ISTENTISZT-001	1Kir 18:25	1Kgs.18.25	1Kir 18:26	1Kgs.18.26	Párhuzam	magas	Remez			
-ISTENTISZT-001	1Móz 12:8	Gen.12.8	1Móz 13:4	Gen.13.4	Párhuzam	magas	Drash			
-ISTENTISZT-001	1Móz 13:4	Gen.13.4	1Móz 26:25	Gen.26.25	Párhuzam	magas	Drash			
-ISTENTISZT-001	1Móz 21:33	Gen.21.33	1Móz 26:25	Gen.26.25	Párhuzam	magas	Drash			
-ISTENTISZT-001	1Móz 4:26	Gen.4.26	2Kir 5:11	2Kgs.5.11	Párhuzam	közepes	Remez			
-ISTENTISZT-001	1Móz 4:26	Gen.4.26	2Móz 33:19	Exod.33.19	Variáns	magas	Remez			
-ISTENTISZT-001	1Móz 4:26	Gen.4.26	Jóel 2:32	Joel.2.32	Párhuzam	magas	Remez			
-ISTENTISZT-001	1Móz 4:26	Gen.4.26	Sof 3:9	Zeph.3.9	Párhuzam	magas	Remez			
-ISTENTISZT-001	2Móz 33:19	Exod.33.19	2Móz 34:5	Exod.34.5	Párhuzam	magas	Remez			
-ISTENTISZT-001	ApCsel 9:14	Acts.9.14	ApCsel 9:21	Acts.9.21	Párhuzam	magas	Remez			
-ISTENTISZT-001	Jóel 2:32	Joel.2.32	ApCsel 2:21	Acts.2.21	Beteljesedés	magas	Remez			
-ISTENTISZT-001	Jóel 2:32	Joel.2.32	Róm 10:13	Rom.10.13	Beteljesedés	magas	Remez			
-ISTENTISZT-001	Róm 10:13	Rom.10.13	1Kor 1:2	1Cor.1.2	Párhuzam	közepes	Remez	kézi döntés, lekérdezés nélkül	szerkesztői döntés	2026-11-01
-ISTENTISZT-001	Róm 10:13	Rom.10.13	ApCsel 22:16	Acts.22.16	Párhuzam	közepes	Remez	kézi döntés, lekérdezés nélkül	szerkesztői döntés	2026-11-01
-ISTENTISZT-001	Róm 10:13	Rom.10.13	ApCsel 9:14	Acts.9.14	Párhuzam	közepes	Remez	kézi döntés, lekérdezés nélkül	szerkesztői döntés	2026-11-01
-ISTENTISZT-001	Zsolt 116:13	Ps.116.13	Zsolt 116:17	Ps.116.17	Párhuzam	magas	Remez			
-ISTENTISZT-001	Zsolt 116:4	Ps.116.4	Zsolt 116:13	Ps.116.13	Párhuzam	magas	Remez			
-KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	2Móz 19:6	Exod.19.6	Párhuzam	magas	Remez			
-KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	Zak 6:13	Zech.6.13	Párhuzam	közepes	Remez			
-KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	Zsolt 110:4	Ps.110.4	Előkép	magas	Remez			
-KIRALY-001	2Móz 19:6	Exod.19.6	1Pét 2:9	1Pet.2.9	Beteljesedés	magas	Drash			
-KIRALY-001	Zsolt 110:4	Ps.110.4	Zak 6:13	Zech.6.13	Párhuzam	magas	Remez			
-KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 5:10	Heb.5.10	Beteljesedés	magas	Drash			
-KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 5:6	Heb.5.6	Beteljesedés	magas	Drash			
-KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 6:20	Heb.6.20	Beteljesedés	magas	Drash			
-KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 7:1-28	Heb.7.1-Heb.7.28	Beteljesedés	magas	Drash/Sod			
-TEREMT-002	1Móz 1:2	Gen.1.2	Jer 4:23	Jer.4.23	Kontraszt	magas	Remez			
-TEREMT-002	1Móz 1:2	Gen.1.2	Ézs 34:11	Isa.34.11	Kontraszt	magas	Remez			
-TEREMT-002	1Móz 1:2	Gen.1.2	Ézs 45:18	Isa.45.18	Kontraszt	közepes	Remez			
-TEREMT-002	Jer 4:23	Jer.4.23	Ézs 34:11	Isa.34.11	Párhuzam	közepes	Remez			
-TEREMT-002	Ézs 24:10	Isa.24.10	Ézs 34:11	Isa.34.11	Párhuzam	alacsony	Remez			
+motivum_azonosito	forras_igehely	forras_igehely_osis	cel_igehely	cel_igehely_osis	tipus	tipus_en	bizonyossag	bizonyossag_en	pardes_szint	pardes_szint_en	lekerdezes_tipusa	lekerdezes_tipusa_en	forras_megnevezes	forras_megnevezes_en	datum
+ISTENTISZT-001	1Kir 18:24	1Kgs.18.24	1Kir 18:25	1Kgs.18.25	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	1Kir 18:25	1Kgs.18.25	1Kir 18:26	1Kgs.18.26	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	1Móz 12:8	Gen.12.8	1Móz 13:4	Gen.13.4	Párhuzam	parallel	magas	high	Drash	Drash					
+ISTENTISZT-001	1Móz 13:4	Gen.13.4	1Móz 26:25	Gen.26.25	Párhuzam	parallel	magas	high	Drash	Drash					
+ISTENTISZT-001	1Móz 21:33	Gen.21.33	1Móz 26:25	Gen.26.25	Párhuzam	parallel	magas	high	Drash	Drash					
+ISTENTISZT-001	1Móz 4:26	Gen.4.26	2Kir 5:11	2Kgs.5.11	Párhuzam	parallel	közepes	medium	Remez	Remez					
+ISTENTISZT-001	1Móz 4:26	Gen.4.26	2Móz 33:19	Exod.33.19	Variáns	variant	magas	high	Remez	Remez					
+ISTENTISZT-001	1Móz 4:26	Gen.4.26	Jóel 2:32	Joel.2.32	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	1Móz 4:26	Gen.4.26	Sof 3:9	Zeph.3.9	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	2Móz 33:19	Exod.33.19	2Móz 34:5	Exod.34.5	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	ApCsel 9:14	Acts.9.14	ApCsel 9:21	Acts.9.21	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	Jóel 2:32	Joel.2.32	ApCsel 2:21	Acts.2.21	Beteljesedés	fulfilment	magas	high	Remez	Remez					
+ISTENTISZT-001	Jóel 2:32	Joel.2.32	Róm 10:13	Rom.10.13	Beteljesedés	fulfilment	magas	high	Remez	Remez					
+ISTENTISZT-001	Róm 10:13	Rom.10.13	1Kor 1:2	1Cor.1.2	Párhuzam	parallel	közepes	medium	Remez	Remez	kézi döntés, lekérdezés nélkül	editorial decision, without a query	szerkesztői döntés	editorial decision	2026-11-01
+ISTENTISZT-001	Róm 10:13	Rom.10.13	ApCsel 22:16	Acts.22.16	Párhuzam	parallel	közepes	medium	Remez	Remez	kézi döntés, lekérdezés nélkül	editorial decision, without a query	szerkesztői döntés	editorial decision	2026-11-01
+ISTENTISZT-001	Róm 10:13	Rom.10.13	ApCsel 9:14	Acts.9.14	Párhuzam	parallel	közepes	medium	Remez	Remez	kézi döntés, lekérdezés nélkül	editorial decision, without a query	szerkesztői döntés	editorial decision	2026-11-01
+ISTENTISZT-001	Zsolt 116:13	Ps.116.13	Zsolt 116:17	Ps.116.17	Párhuzam	parallel	magas	high	Remez	Remez					
+ISTENTISZT-001	Zsolt 116:4	Ps.116.4	Zsolt 116:13	Ps.116.13	Párhuzam	parallel	magas	high	Remez	Remez					
+KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	2Móz 19:6	Exod.19.6	Párhuzam	parallel	magas	high	Remez	Remez					
+KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	Zak 6:13	Zech.6.13	Párhuzam	parallel	közepes	medium	Remez	Remez					
+KIRALY-001	1Móz 14:18-20	Gen.14.18-Gen.14.20	Zsolt 110:4	Ps.110.4	Előkép	prefiguration	magas	high	Remez	Remez					
+KIRALY-001	2Móz 19:6	Exod.19.6	1Pét 2:9	1Pet.2.9	Beteljesedés	fulfilment	magas	high	Drash	Drash					
+KIRALY-001	Zsolt 110:4	Ps.110.4	Zak 6:13	Zech.6.13	Párhuzam	parallel	magas	high	Remez	Remez					
+KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 5:10	Heb.5.10	Beteljesedés	fulfilment	magas	high	Drash	Drash					
+KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 5:6	Heb.5.6	Beteljesedés	fulfilment	magas	high	Drash	Drash					
+KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 6:20	Heb.6.20	Beteljesedés	fulfilment	magas	high	Drash	Drash					
+KIRALY-001	Zsolt 110:4	Ps.110.4	Zsid 7:1-28	Heb.7.1-Heb.7.28	Beteljesedés	fulfilment	magas	high	Drash/Sod	Drash/Sod					
+TEREMT-002	1Móz 1:2	Gen.1.2	Jer 4:23	Jer.4.23	Kontraszt	contrast	magas	high	Remez	Remez					
+TEREMT-002	1Móz 1:2	Gen.1.2	Ézs 34:11	Isa.34.11	Kontraszt	contrast	magas	high	Remez	Remez					
+TEREMT-002	1Móz 1:2	Gen.1.2	Ézs 45:18	Isa.45.18	Kontraszt	contrast	közepes	medium	Remez	Remez					
+TEREMT-002	Jer 4:23	Jer.4.23	Ézs 34:11	Isa.34.11	Párhuzam	parallel	közepes	medium	Remez	Remez					
+TEREMT-002	Ézs 24:10	Isa.24.10	Ézs 34:11	Isa.34.11	Párhuzam	parallel	alacsony	low	Remez	Remez					

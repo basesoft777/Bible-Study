@@ -14,6 +14,8 @@ Ellenőrzések (azonosító — súlyosság):
     ANGOL_SOR    ≥3 angol funkciószó egy magyar cellában                                                    — FIGYELMEZTETÉS
     KODKONYV     oszlop vagy zárt értékkészlet-érték kódkönyv-leírás nélkül, vagy a leírás egyik nyelven
                  hiányzik / a két nyelv azonos                                                              — BUKÁS
+    CIMKE        zárt oszlop `_en` pár nélkül; zárt érték angol címke (`cimke_en`) nélkül; az `_en` cella nem a
+                 kódkönyv címkéje (F170, kapu (b))                                                          — BUKÁS
     LICENC       kizárt (NC, GPL, tisztázatlan, zárt) forrás neve vagy értéke a csomagban; az SDBH/SDGNT-adat a
                  külön rétegen kívül                                                                        — BUKÁS
     RETEG        a CC BY-SA réteg attribúció/licenc-jelölés nélkül                                          — BUKÁS
@@ -57,18 +59,9 @@ KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_do
             'README.md', 'KNOWN_ISSUES.md', 'RELEASE.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
 
-# a zárt értékkészletű oszlopok, amelyeknek minden értékét a kódkönyv leírja
-ZART = {
-    'motivumok.tsv': ['pardes_szint', 'statusz', 'feldolgozasi_allapot', 'azonossag_tipusa'],
-    'elofordulasok.tsv': ['pardes_szint', 'horgony_tipus', 'szotar', 'azonositas_modja', 'megbizhatosag',
-                          'igazolas', 'lekerdezes_tipusa', 'forras_licenc'],
-    'kizarasok.tsv': ['jelolt_tipus', 'azonositas_modja', 'megbizhatosag', 'keresesi_mod'],
-    'beepitesi_dontesek.tsv': ['jelolt_tipus', 'keresesi_mod'],
-    'kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint'],
-    'motivum_kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa'],
-    'forrasok_es_licencek.tsv': ['licenc', 'szerepe_a_csomagban'],
-    'cc_by_sa_reteg/szemantikai_domenek.tsv': ['szotar'],
-}
+# a zárt értékkészletű oszlopok (egy helyen: az exportban; F170.2), amelyeknek minden értékét a kódkönyv leírja,
+# és amelyek mellett az export `<oszlop>_en` címke-oszlopot ad
+ZART = E.ZART
 # angol szöveget joggal hordozó oszlopok (az ANGOL-ellenőrzés kivétele)
 ANGOL_OSZLOP = {'jelentes_en', 'glossza', 'lemma', 'leiras_en'}
 
@@ -77,7 +70,7 @@ def angol_oszlop(o):
     """Angol (vagy nyelvfüggetlen kódú) oszlop: a felsoroltak, az `…_en` és az `…_osis` oszlopok (F170)."""
     return o in ANGOL_OSZLOP or o.endswith('_en') or o.endswith('_osis')
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
-SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban'}
+SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban', 'szerepe_a_csomagban_en'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
                           r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek)\.tsv'
@@ -207,6 +200,34 @@ def ell_kodkonyv(fajlok):
                     if resz and (rel, o, resz) not in kulcs:
                         ki.append(Talalat('KODKONYV', BUKAS, rel, 2, '%s = %s' % (o, resz),
                                           'a zárt értékkészlet értékének nincs kódkönyv-leírása'))
+    return ki
+
+
+def ell_cimke(fajlok):
+    """CIMKE (F170.2, kapu (b)): minden zárt oszlop mellett ott a `<oszlop>_en` pár; minden zárt érték(rész)nek van
+    `cimke_en`-je a kódkönyvben; az `_en` cella pontosan a részek címkéje, `; `-vel fűzve."""
+    ki = []
+    _, kk = tsv_sorok(fajlok['kodkonyv.tsv'])
+    cimke = {(d['tabla'], d['oszlop'], d['ertek']): d.get('cimke_en', '').strip() for _, d in kk if d['ertek']}
+    for (t, o, e), c in sorted(cimke.items()):
+        if not c:
+            ki.append(Talalat('CIMKE', BUKAS, 'kodkonyv.tsv', 1, '%s / %s / %s' % (t, o, e), 'a zárt értéknek nincs angol címkéje'))
+    for rel, oszlopok in sorted(ZART.items()):
+        fej, sorok = tsv_sorok(fajlok.get(rel, ''))
+        for o in oszlopok:
+            if o not in fej:
+                continue
+            if o + '_en' not in fej:
+                ki.append(Talalat('CIMKE', BUKAS, rel, 2, o, 'a zárt oszlopnak nincs angol címke-párja'))
+                continue
+            for n, d in sorok:
+                reszek = E.ertek_reszek(d[o])
+                vart = '; '.join(cimke.get((rel, o, r), '') for r in reszek)
+                if any(not cimke.get((rel, o, r)) for r in reszek):
+                    ki.append(Talalat('CIMKE', BUKAS, rel, n, '%s = %s' % (o, d[o]), 'a zárt értéknek nincs angol címkéje'))
+                elif d[o + '_en'] != vart:
+                    ki.append(Talalat('CIMKE', BUKAS, rel, n, '%s / %s' % (d[o], d[o + '_en']),
+                                      'az angol címke nem a kódkönyvé (%s)' % vart))
     return ki
 
 
@@ -523,7 +544,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osis, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
+              ell_osis, ell_cimke, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
