@@ -65,5 +65,50 @@ class Mintavetel(unittest.TestCase):
                          [r['minta_id'] + r['vers'] + r['hu_sorszam'] + r['er_sorszam'] for r in uj])
 
 
+import pontossag_meres as pme  # noqa: E402
+
+
+class Meres(unittest.TestCase):
+    def test_wilson_ismert_ertek(self):
+        lo, hi = pme.wilson(95, 100)
+        self.assertAlmostEqual(lo, 0.8883, places=3)
+        self.assertAlmostEqual(hi, 0.9785, places=3)
+
+    def test_wilson_szelsok(self):
+        lo, hi = pme.wilson(100, 100)
+        self.assertEqual(hi, 1.0)
+        self.assertLess(lo, 1.0)
+        lo, hi = pme.wilson(0, 50)
+        self.assertAlmostEqual(lo, 0.0, places=12)
+
+    def test_retegzett_egy_reteg(self):
+        p, lo, hi, n = pme.retegzett({'A': (90, 100)}, {'A': 1000})
+        self.assertAlmostEqual(p, 0.9)
+        self.assertEqual(n, 100)
+        self.assertLess(lo, 0.9)
+        self.assertGreater(hi, 0.9)
+
+    def test_retegzett_sulyok(self):
+        # A: 100% (súly 3), B: 50% (súly 1) -> 0,875, a mintaméret nem számít bele
+        p, _, _, _ = pme.retegzett({'A': (10, 10), 'B': (50, 100)}, {'A': 300, 'B': 100})
+        self.assertAlmostEqual(p, 0.875)
+
+    def test_retegzett_ures_reteg_kimarad(self):
+        p, _, _, n = pme.retegzett({'A': (9, 10), 'B': (0, 0)}, {'A': 1, 'B': 1000})
+        self.assertAlmostEqual(p, 0.9)
+        self.assertEqual(n, 10)
+
+    def test_hibatipus(self):
+        strong = {1: 'H9001', 2: 'H1254', 3: 'H0430', 5: 'H0430'}.get
+        self.assertEqual(pme.hibatipus(2, 'H1254', set(), strong), 'fölös pár')
+        self.assertEqual(pme.hibatipus(5, 'H0430', {3}, strong), 'azonos lexéma, más előfordulás')
+        self.assertEqual(pme.hibatipus(1, 'H9001', {2}, strong), 'egység határa')
+        self.assertEqual(pme.hibatipus(5, 'H0430', {2}, strong), 'rossz szó a versben')
+
+    def test_strong_norm(self):
+        self.assertEqual(pme._strong_norm('H0430'), pme._strong_norm('H430'))
+        self.assertEqual(pme._strong_norm('G0086'), 'G86')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
