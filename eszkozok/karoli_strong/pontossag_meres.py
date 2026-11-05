@@ -12,8 +12,9 @@ A pár HELYES, ha a gépi pár eredeti tokenje benne van az ellenőr által az a
 Károli-szóhoz jelölt halmazban. Hibatípus (csak a nem helyes párra, ebben a
 sorrendben): `fölös pár` (az ellenőr szerint a Károli-szó betoldás) ·
 `azonos lexéma, más előfordulás` (az ellenőr halmazában van ugyanilyen
-Strong-számú más token) · `egység határa` (az ellenőr halmazának szomszédos
-tokenje: többszavas egység / morféma-fürt hibás bontása) · `rossz szó a versben`.
+Strong-számú más token) · `szomszédos token` (az ellenőr halmazának szomszédos
+tokenje; csak helyzeti címke: többszavas egység vagy morféma-fürt hibás bontását
+jelezheti, de valódi felcserélést is takarhat) · `rossz szó a versben`.
 A `hiányzó pár` leíró szám: az ellenőr-jelölt token, amely a gépi partnerhalmazban
 nincs (a lefedettség nem cél, F172 2.).
 
@@ -48,7 +49,7 @@ GYOKER = pm.GYOKER
 F172 = os.path.join(GYOKER, 'f172')
 VALASZ = os.path.join(F172, 'ellenor', 'valasz')
 Z95 = 1.959963984540054
-HIBATIPUSOK = ['fölös pár', 'azonos lexéma, más előfordulás', 'egység határa', 'rossz szó a versben']
+HIBATIPUSOK = ['fölös pár', 'azonos lexéma, más előfordulás', 'szomszédos token', 'rossz szó a versben']
 OSZ = [r for r in pm.RETEGEK if r.startswith('OSZ')]
 USZ = [r for r in pm.RETEGEK if r.startswith('USZ')]
 
@@ -213,6 +214,11 @@ def main():
         for ht in HIBATIPUSOK:
             k = sum(r['hibatipus'] == ht for r in rr)
             sorok.append(['hibatipus', '%s · %s' % (rt, ht), str(len(rr)), str(k), '', '', '', 'a nem helyes párok közül'])
+    for mf, cimke in [('0', 'tartalmi'), ('1', 'morféma')]:
+        rr = [r for r in itelet if r['helyes'] == '0' and r['morfema'] == mf]
+        for ht in HIBATIPUSOK:
+            sorok.append(['hibatipus', 'OSSZES · %s · %s' % (cimke, ht), str(len(rr)),
+                          str(sum(r['hibatipus'] == ht for r in rr)), '', '', '', 'a nem helyes párok közül'])
     hp = sum(1 for r in itelet if r['hianyzo'])
     sorok.append(['leiro', 'cél Károli-szó, amelyhez az ellenőr a gépinél több eredeti tokent jelölt', str(len(itelet)),
                   str(hp), '', '', '', 'hiányzó pár (lefedettség), nem a pontosság része'])

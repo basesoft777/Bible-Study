@@ -51,11 +51,16 @@ A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként eg
               f172/kulso/elteres_itelet.tsv (a forrás Strong-száma nélkül).
 
 --osszesit : a külső összevetés összesítése fejezetenként és nyelvenként
-              (f172/kulso/kulso_eredmeny.tsv): a forrás által Strong-számmal
-              jelölt szavakon álló tartalmi párok közül a mi hibánk (az
-              --itel szerint) aránya; pontosság alsó (a vitatható is hiba) és
-              felső (a vitatható nem hiba) becslése, Wilson 95%; a forrás Strong
-              nélküli és a szövegforma párok külön, nem ellenőrzöttként.
+              (f172/kulso/kulso_eredmeny.tsv). A fő-szó párok (n_fo = egyezik +
+              konvencio + elter; a forrás egy Strongot ad a szóra, és az a pár
+              számát érinti) két mérőszáma: `forras_szerint` = (egyezik +
+              konvencio) / n_fo — tisztán a forrás szerint, a forrás hibáit is
+              a mi hibánknak számolva; `haromutas` = (n_fo − mi_hibank −
+              vitathato) / n_fo — a gépi pár, a forrás és a vak Opus ítélete
+              szerint (--itel, DT-F172c). Wilson 95%. A másodlagos, a forrás
+              Strong nélküli és a szövegforma párok nem ellenőrzöttek. A
+              második blokk a minta Opus-eltéréseinek és -egyezéseinek sorsa a
+              8 fejezetben (f172/itelet_par.tsv × osszevetes.tsv).
 
 Használat: python eszkozok/karoli_strong/pontossag_kulso.py --fejezetek
            python eszkozok/karoli_strong/pontossag_kulso.py --osszevet <fájl> --fejezet "3Móz 3"
@@ -443,6 +448,14 @@ def _ekezet_nelkul(x):
     return ''.join(c for c in unicodedata.normalize('NFD', x) if unicodedata.category(c) != 'Mn')
 
 
+# A vitatható esetek döntése (DT-F172c, 2026-11-05, az orkesztrátor a felhasználó
+# felhatalmazásával): (vers, hu_sorszam, er_sorszam) -> ítélet.
+KEZI_ITELET = {
+    ('2Kir 10:15', '23', '22'): 'mi_hibank',   # a kérdő „-é” a הֲ (H9008), nem a יֵשׁ (H3426)
+    ('Róm 1:12', '1', '2'): 'mi_hibank',       # „Azaz” = τοῦτ' ἔστιν; a δέ (G1161) fordítatlan
+}
+
+
 def itel(mappa):
     karoli, ered = bemenet._adatok()
     _, rr = pm._tabla(os.path.join(KULSO, 'osszevetes.tsv'))
@@ -477,6 +490,7 @@ def itel(mappa):
             f_ = bool(bds & op_strong)
             o = 'vitathato' if g == f_ else ('forras_hibaja' if g else 'mi_hibank')
             g, f_ = str(int(g)), str(int(f_))
+        o = KEZI_ITELET.get((v, r['hu_sorszam'], r['er_sorszam']), o)
         ki.append([fej, v, r['hu_sorszam'], r['hu_szo'], r['er_sorszam'], r['strong'], g, f_, o])
     head = pm.git_head()
     with open(os.path.join(KULSO, 'elteres_itelet.tsv'), 'w', encoding='utf-8', newline='\n') as f:
@@ -499,37 +513,58 @@ def osszesit():
     csop = {}
     for r in osz:
         nyelv = 'USZ' if r['fejezet'].rsplit(' ', 1)[0] in USZ_KONYVEK else 'OSZ'
+        o = r['osztaly']
+        if o == 'elter':
+            o = 'elter_' + itel_k.get((r['vers'], r['hu_sorszam'], r['er_sorszam']), 'nincs_itelet')
         for k in (r['fejezet'], nyelv, 'OSSZES'):
             d = csop.setdefault(k, {})
-            o = r['osztaly']
-            if o == 'elter':
-                o = 'elter_' + itel_k.get((r['vers'], r['hu_sorszam'], r['er_sorszam']), 'nincs_itelet')
             d[o] = d.get(o, 0) + 1
-    oszt = ['egyezik', 'masodlagos', 'konvencio', 'elter_forras_hibaja', 'elter_vitathato', 'elter_mi_hibank',
-            'elter_nincs_itelet', 'forrasban_nincs', 'szovegforma']
+    oszt = ['egyezik', 'konvencio', 'elter_forras_hibaja', 'elter_vitathato', 'elter_mi_hibank',
+            'elter_nincs_itelet', 'masodlagos', 'forrasban_nincs', 'szovegforma']
     head = pm.git_head()
     sorok = []
     for k in sorted(csop, key=lambda k: (k in ('OSZ', 'USZ', 'OSSZES'), k)):
         d = csop[k]
-        n = sum(d.get(o, 0) for o in oszt[:7])
-        hiba_also = d.get('elter_mi_hibank', 0) + d.get('elter_vitathato', 0) + d.get('elter_nincs_itelet', 0)
-        hiba_felso = d.get('elter_mi_hibank', 0)
-        pa, pf = (n - hiba_also) / n, (n - hiba_felso) / n
-        la, _ = pme.wilson(n - hiba_also, n)
-        _, hf = pme.wilson(n - hiba_felso, n)
-        sorok.append([k] + [str(d.get(o, 0)) for o in oszt] + [str(n), '%.4f' % pa, '%.4f' % pf, '%.4f' % la, '%.4f' % hf])
+        n = sum(d.get(o, 0) for o in oszt[:6])
+        fs = d.get('egyezik', 0) + d.get('konvencio', 0)
+        hu = n - d.get('elter_mi_hibank', 0) - d.get('elter_vitathato', 0) - d.get('elter_nincs_itelet', 0)
+        fl, fh = pme.wilson(fs, n)
+        hl, hh = pme.wilson(hu, n)
+        sorok.append([k] + [str(d.get(o, 0)) for o in oszt] +
+                     [str(n), '%.4f' % (fs / n), '%.4f' % fl, '%.4f' % fh, '%.4f' % (hu / n), '%.4f' % hl, '%.4f' % hh])
+    # a minta-párok sorsa a fejezetekben
+    _, itp = pm._tabla(os.path.join(pm.KIMENET, 'itelet_par.tsv'))
+    oo = {(r['vers'], r['hu_sorszam'], r['er_sorszam']): r['osztaly'] for r in osz}
+    fejek = {r['fejezet'] for r in osz}
+    lef = {}
+    for r in itp:
+        if r['vers'].rsplit(':', 1)[0] not in fejek:
+            continue
+        kk = (r['vers'], r['hu_sorszam'], r['er_sorszam'])
+        cl = 'morfema' if r['morfema'] == '1' else oo.get(kk, '?')
+        if cl == 'elter':
+            cl = 'elter_' + itel_k.get(kk, 'nincs_itelet')
+        t = ('opus_elter' if r['helyes'] == '0' else 'opus_egyezik', cl)
+        lef[t] = lef.get(t, 0) + 1
     with open(os.path.join(KULSO, 'kulso_eredmeny.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write('# MANUAL: scope=F172 külső összevetés összesítése (Bible-Discovery, Strong-számos Károli HUN, régies; '
-                'zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv | ts=git:%s | '
-                'manual (determinisztikus; n = a forrás által Strong-számmal jelölt szavakon álló tartalmi párok; '
-                'pontossag_also: a vitatható is hiba; Wilson 95%%; a fejezet klaszter, nem véletlen mintaelem)\n' % head)
-        f.write('\t'.join(['csoport'] + oszt + ['n_ellenorzott', 'pontossag_also', 'pontossag_felso', 'also95', 'felso95'])
-                + '\n')
+                'zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv, '
+                'f172/itelet_par.tsv | ts=git:%s | manual (determinisztikus; n_fo = egyezik + konvencio + elter; '
+                'forras_szerint: a forrás ítélete; haromutas: gépi pár + forrás + vak Opus, DT-F172c; Wilson 95%%; '
+                'a fejezet klaszter, nem véletlen mintaelem)\n' % head)
+        f.write('\t'.join(['csoport'] + oszt + ['n_fo', 'forras_szerint', 'fs_also95', 'fs_felso95',
+                                                'haromutas', 'h3_also95', 'h3_felso95']) + '\n')
         for x in sorok:
             f.write('\t'.join(x) + '\n')
+        f.write('\n# a minta-párok sorsa a 8 fejezetben (vak Opus × külső osztály)\n')
+        f.write('opus\tkulso_osztaly\tdb\n')
+        for (a1, a2), v in sorted(lef.items()):
+            f.write('%s\t%s\t%d\n' % (a1, a2, v))
     for x in sorok:
-        print('%-10s n=%-5s also=%s felso=%s [%s, %s]  mi_hibank=%s vitathato=%s forras_hibaja=%s'
-              % (x[0], x[10], x[11], x[12], x[13], x[14], x[6], x[5], x[4]))
+        print('%-10s n_fo=%-5s forrás szerint=%s [%s, %s]  háromutas=%s [%s, %s]  mi_hibank=%s vitathato=%s forras_hibaja=%s'
+              % (x[0], x[10], x[11], x[12], x[13], x[14], x[15], x[16], x[5], x[4], x[3]))
+    for kk, v in sorted(lef.items()):
+        print(kk, v)
 
 
 def main():

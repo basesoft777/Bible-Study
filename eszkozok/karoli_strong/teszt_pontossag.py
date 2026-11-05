@@ -102,7 +102,7 @@ class Meres(unittest.TestCase):
         strong = {1: 'H9001', 2: 'H1254', 3: 'H0430', 5: 'H0430'}.get
         self.assertEqual(pme.hibatipus(2, 'H1254', set(), strong), 'fölös pár')
         self.assertEqual(pme.hibatipus(5, 'H0430', {3}, strong), 'azonos lexéma, más előfordulás')
-        self.assertEqual(pme.hibatipus(1, 'H9001', {2}, strong), 'egység határa')
+        self.assertEqual(pme.hibatipus(1, 'H9001', {2}, strong), 'szomszédos token')
         self.assertEqual(pme.hibatipus(5, 'H0430', {2}, strong), 'rossz szó a versben')
 
     def test_strong_norm(self):

@@ -1,4 +1,4 @@
-# MANUAL: scope=F172 páronkénti ítélet (a gépi pár vs a vak Opus-ellenőr) | forras=f172/minta.tsv, f172/ellenor/valasz/koteg_*.json (claude-opus-5-5) | ts=git:50e7ad18 | manual (determinisztikus összevetés; az ellenőr modell-kimenet, nem arany)
+# MANUAL: scope=F172 páronkénti ítélet (a gépi pár vs a vak Opus-ellenőr) | forras=f172/minta.tsv, f172/ellenor/valasz/koteg_*.json (claude-opus-5-5) | ts=git:8ff550e5 | manual (determinisztikus összevetés; az ellenőr modell-kimenet, nem arany)
 minta_id	reteg	vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	morfema	nem_tr	opus	helyes	hibatipus	hianyzo
 OSZ_mozes_magas-001	OSZ_mozes_magas	1Móz 1:25	19	állatokat	21	רֶ֥מֶשׂ	H7431	0	0	21	1		
 OSZ_mozes_magas-002	OSZ_mozes_magas	1Móz 3:16	12	és	16	וְ	H9002	1	0	16	1		
@@ -9,7 +9,7 @@ OSZ_mozes_magas-006	OSZ_mozes_magas	1Móz 6:16	9	azt	9	נָּה	H9034	1	0	9	1
 OSZ_mozes_magas-007	OSZ_mozes_magas	1Móz 6:21	18	legyen	16	הָיָ֥ה	H1961	0	0	16	1		
 OSZ_mozes_magas-008	OSZ_mozes_magas	1Móz 7:5	10	Úr	9	יְהוָֽה	H3068	0	0	9	1		
 OSZ_mozes_magas-009	OSZ_mozes_magas	1Móz 7:6	4	esztendős	3	בֶּן	H1121	0	0	3,6	1		
-OSZ_mozes_magas-010	OSZ_mozes_magas	1Móz 7:15	3	méne	1	וַ	H9001	1	0	2	0	egység határa	
+OSZ_mozes_magas-010	OSZ_mozes_magas	1Móz 7:15	3	méne	1	וַ	H9001	1	0	2	0	szomszédos token	
 OSZ_mozes_magas-011	OSZ_mozes_magas	1Móz 7:16	10	minden	8	כָּל	H3605	0	0	8	1		
 OSZ_mozes_magas-012	OSZ_mozes_magas	1Móz 8:16	9	feleséged	8	ךָ֛	H9021	1	0	7,8	1		
 OSZ_mozes_magas-013	OSZ_mozes_magas	1Móz 9:2	11	égnek	18	שָּׁמָ֑יִם	H8064	0	0	18	1		
@@ -108,7 +108,7 @@ OSZ_mozes_magas-105	OSZ_mozes_magas	1Móz 48:14	10	fejére	10	רֹ֤אשׁ	H7218
 OSZ_mozes_magas-106	OSZ_mozes_magas	1Móz 48:14	29	Manasse	28	מְנַשֶּׁ֖ה	H4519	0	0	28	1		
 OSZ_mozes_magas-107	OSZ_mozes_magas	1Móz 48:22	8	te	10	ךָ	H9021	1	0	10	1		
 OSZ_mozes_magas-108	OSZ_mozes_magas	1Móz 49:13	4	partjáig	3	ח֥וֹף	H2348	0	0	2,3	1		
-OSZ_mozes_magas-109	OSZ_mozes_magas	1Móz 49:25	5	segéljen	7	ךָּ	H9031	1	0	6	0	egység határa	
+OSZ_mozes_magas-109	OSZ_mozes_magas	1Móz 49:25	5	segéljen	7	ךָּ	H9031	1	0	6	0	szomszédos token	
 OSZ_mozes_magas-110	OSZ_mozes_magas	1Móz 50:13	1	Elvivék	2	יִּשְׂא֨וּ	H5375	0	0	2	1		
 OSZ_mozes_magas-111	OSZ_mozes_magas	1Móz 50:17	18	ellened	17	ךָ	H9031	1	0	17	1		
 OSZ_mozes_magas-112	OSZ_mozes_magas	1Móz 50:22	14	József	13	יוֹסֵ֔ף	H3130	0	0	13	1		
@@ -200,14 +200,14 @@ OSZ_mozes_magas-197	OSZ_mozes_magas	2Móz 38:25	12	hétszáz	11	שְׁבַ֨ע	H
 OSZ_mozes_magas-198	OSZ_mozes_magas	2Móz 39:20	15	annak	20	ו	H9023	1	0	20	1		
 OSZ_mozes_magas-199	OSZ_mozes_magas	2Móz 40:9	5	olaját	4	שֶׁ֣מֶן	H8081	0	0	4	1		
 OSZ_mozes_magas-200	OSZ_mozes_magas	2Móz 40:20	22	fedelet	23	כַּפֹּ֛רֶת	H3727	0	0	23	1		
-OSZ_mozes-001	OSZ_mozes	1Móz 11:6	19	kezdete	16	ם	H9048	1	0	15	0	egység határa	
+OSZ_mozes-001	OSZ_mozes	1Móz 11:6	19	kezdete	16	ם	H9048	1	0	15	0	szomszédos token	
 OSZ_mozes-002	OSZ_mozes	1Móz 23:17	15	levő	17	אֲשֶׁר	H0834	0	0	17	1		
 OSZ_mozes-003	OSZ_mozes	1Móz 33:18	1	Annakutána	1	וַ	H9001	1	0	-	0	fölös pár	
 OSZ_mozes-004	OSZ_mozes	1Móz 41:40	18	engem	17	אֶגְדַּ֥ל	H1431	0	0	-	0	fölös pár	
-OSZ_mozes-005	OSZ_mozes	1Móz 41:43	5	ő	9	אֲשֶׁר	H0834	0	0	10,11	0	egység határa	
-OSZ_mozes-006	OSZ_mozes	1Móz 44:1	17	elvihetnek	19	ן	H9013	1	0	18,20	0	egység határa	
-OSZ_mozes-007	OSZ_mozes	1Móz 50:17	21	bocsásd	21	נָ֔א	H4994	0	0	20	0	egység határa	
-OSZ_mozes-008	OSZ_mozes	2Móz 9:2	9	tartóztatod	9	ךָ֖	H9041	1	0	10	0	egység határa	
+OSZ_mozes-005	OSZ_mozes	1Móz 41:43	5	ő	9	אֲשֶׁר	H0834	0	0	10,11	0	szomszédos token	
+OSZ_mozes-006	OSZ_mozes	1Móz 44:1	17	elvihetnek	19	ן	H9013	1	0	18,20	0	szomszédos token	
+OSZ_mozes-007	OSZ_mozes	1Móz 50:17	21	bocsásd	21	נָ֔א	H4994	0	0	20	0	szomszédos token	
+OSZ_mozes-008	OSZ_mozes	2Móz 9:2	9	tartóztatod	9	ךָ֖	H9041	1	0	10	0	szomszédos token	
 OSZ_mozes-009	OSZ_mozes	2Móz 17:1	17	rendje	11	מַסְעֵי	H4550	0	0	11	1		
 OSZ_mozes-010	OSZ_mozes	2Móz 29:27	22	fiainak	26	מֵ	H9006	1	0	28,29,30	0	rossz szó a versben	
 OSZ_mozes-011	OSZ_mozes	2Móz 33:17	7	ezt	9	דָּבָ֥ר	H1697	0	0	11	0	rossz szó a versben	
@@ -306,13 +306,13 @@ OSZ_mozes-103	OSZ_mozes	4Móz 23:13	7	velem	10	י	H9030	1	0	9,10	1
 OSZ_mozes-104	OSZ_mozes	4Móz 25:12	13	néki	8	וֹ	H9033	1	0	7,8	1		
 OSZ_mozes-105	OSZ_mozes	4Móz 26:27	3	Zebuloniták	4	זְּבוּלֹנִ֖י	H2075	0	0	4	1		
 OSZ_mozes-106	OSZ_mozes	4Móz 26:30	11	nemzetsége	10	מִשְׁפַּ֖חַת	H4940	0	0	10	1		
-OSZ_mozes-107	OSZ_mozes	4Móz 26:43	9	hatvannégy	9	וְ	H9002	1	0	8,10	0	egység határa	
+OSZ_mozes-107	OSZ_mozes	4Móz 26:43	9	hatvannégy	9	וְ	H9002	1	0	8,10	0	szomszédos token	
 OSZ_mozes-108	OSZ_mozes	4Móz 26:59	8	leánya	6	בַּת	H1323	0	0	6	1		
 OSZ_mozes-109	OSZ_mozes	4Móz 28:13	7	egy	3	עִשָּׂר֗וֹן	H6241	0	0	3	1		
 OSZ_mozes-110	OSZ_mozes	4Móz 28:31	10	készítsétek	10	תַּעֲשׂ֑וּ	H6213	0	0	10	1		
 OSZ_mozes-111	OSZ_mozes	4Móz 29:8	4	Úrnak	5	יהוָה֙	H3068	0	0	4,5	1		
 OSZ_mozes-112	OSZ_mozes	4Móz 29:11	21	italáldozatjokon	20	הֶֽם	H9028	1	0	19,20	1		
-OSZ_mozes-113	OSZ_mozes	4Móz 29:17	4	fiatal	8	בָקָ֛ר	H1241	0	0	7	0	egység határa	
+OSZ_mozes-113	OSZ_mozes	4Móz 29:17	4	fiatal	8	בָקָ֛ר	H1241	0	0	7	0	szomszédos token	
 OSZ_mozes-114	OSZ_mozes	4Móz 29:33	10	kosok	10	אֵילִ֧ם	H0352	0	0	10	1		
 OSZ_mozes-115	OSZ_mozes	4Móz 30:2	13	magát	14	נַפְשׁ֔	H5315	0	0	14,15	1		
 OSZ_mozes-116	OSZ_mozes	4Móz 30:12	18	semmi	13	כָּל	H3605	0	0	13	1		
@@ -380,7 +380,7 @@ OSZ_mozes-177	OSZ_mozes	5Móz 22:26	4	ne	4	לֹא	H3808	0	0	4	1
 OSZ_mozes-178	OSZ_mozes	5Móz 24:19	13	ne	13	לֹ֤א	H3808	0	0	13	1		
 OSZ_mozes-179	OSZ_mozes	5Móz 25:9	21	és	24	וְ	H9001	1	0	24	1		
 OSZ_mozes-180	OSZ_mozes	5Móz 26:7	7	atyáink	7	נוּ	H9025	1	0	6,7	1		
-OSZ_mozes-181	OSZ_mozes	5Móz 26:15	5	szentségednek	6	ךָ֜	H9021	1	0	5	0	egység határa	
+OSZ_mozes-181	OSZ_mozes	5Móz 26:15	5	szentségednek	6	ךָ֜	H9021	1	0	5	0	szomszédos token	
 OSZ_mozes-182	OSZ_mozes	5Móz 27:3	39	atyáidnak	38	אֲבֹתֶ֖י	H0001	0	0	38,39	1		
 OSZ_mozes-183	OSZ_mozes	5Móz 27:9	9	papok	6	כֹּהֲנִ֣ים	H3548	0	0	6	1		
 OSZ_mozes-184	OSZ_mozes	5Móz 28:29	27	lesz	29	אֵ֥ין	H0369	0	0	29	1		
@@ -422,7 +422,7 @@ OSZ_tortenet-019	OSZ_tortenet	1Kir 18:22	15	míg	15	וּ	H9002	1	0	15	1
 OSZ_tortenet-020	OSZ_tortenet	1Kir 19:12	11	Úr	9	יְהוָ֑ה	H3068	0	0	9	1		
 OSZ_tortenet-021	OSZ_tortenet	1Kir 19:21	29	és	30	וַ	H9001	1	0	30	1		
 OSZ_tortenet-022	OSZ_tortenet	1Kir 20:5	21	és	24	וְ	H9002	1	0	24	1		
-OSZ_tortenet-023	OSZ_tortenet	1Kir 20:18	11	akár	10	וְ	H9002	1	0	11	0	egység határa	
+OSZ_tortenet-023	OSZ_tortenet	1Kir 20:18	11	akár	10	וְ	H9002	1	0	11	0	szomszédos token	
 OSZ_tortenet-024	OSZ_tortenet	1Kir 21:3	8	néked	19	ךְ	H9032	1	0	18,19	1		
 OSZ_tortenet-025	OSZ_tortenet	1Kir 21:7	18	kenyeret	16	לֶ֙חֶם֙	H3899	0	0	16	1		
 OSZ_tortenet-026	OSZ_tortenet	1Kir 21:10	3	vele	8	וֹ֒	H9033	1	0	8	1		
@@ -453,13 +453,13 @@ OSZ_tortenet-050	OSZ_tortenet	1Sám 6:19	34	sújtotta	26	הִכָּ֧ה	H5221	0	
 OSZ_tortenet-051	OSZ_tortenet	1Sám 9:11	12	vizet	14	מָ֑יִם	H4325	0	0	14	1		
 OSZ_tortenet-052	OSZ_tortenet	1Sám 12:18	19	nép	20	עָ֥ם	H5971	0	0	20	1		
 OSZ_tortenet-053	OSZ_tortenet	1Sám 15:12	3	felkele	2	יַּשְׁכֵּ֧ם	H7925	0	0	2	1		
-OSZ_tortenet-054	OSZ_tortenet	1Sám 16:7	26	ember	23	הָ	H9009	1	0	24	0	egység határa	
+OSZ_tortenet-054	OSZ_tortenet	1Sám 16:7	26	ember	23	הָ	H9009	1	0	24	0	szomszédos token	
 OSZ_tortenet-055	OSZ_tortenet	1Sám 16:11	33	hozasd	29	קָחֶ֔	H3947	0	0	29	1		
 OSZ_tortenet-056	OSZ_tortenet	1Sám 17:28	14	megharaguvék	16	אַף֩	H0639	0	0	15,16	1		
 OSZ_tortenet-057	OSZ_tortenet	1Sám 17:49	23	mélyede	26	תִּטְבַּ֤ע	H2883	0	0	26	1		
 OSZ_tortenet-058	OSZ_tortenet	1Sám 18:5	2	elméne	2	יֵּצֵ֨א	H3318	0	0	2	1		
 OSZ_tortenet-059	OSZ_tortenet	1Sám 18:27	29	lehessen	28	הִתְחַתֵּ֖ן	H2859	0	0	28	1		
-OSZ_tortenet-060	OSZ_tortenet	1Sám 20:9	8	Ha	7	כִּ֣י	H3588	0	0	8	0	egység határa	
+OSZ_tortenet-060	OSZ_tortenet	1Sám 20:9	8	Ha	7	כִּ֣י	H3588	0	0	8	0	szomszédos token	
 OSZ_tortenet-061	OSZ_tortenet	1Sám 23:17	33	atyám	30	אָבִ֖	H0001	0	0	30,31	1		
 OSZ_tortenet-062	OSZ_tortenet	1Sám 25:8	32	Dávidnak	38	דָוִֽד	H1732	0	0	37,38	1		
 OSZ_tortenet-063	OSZ_tortenet	1Sám 25:36	34	sem	36	וְ	H9002	1	0	36	1		
@@ -565,13 +565,13 @@ OSZ_tortenet-162	OSZ_tortenet	Bír 18:20	2	örvendett	2	יִּיטַב֙	H3190	0
 OSZ_tortenet-163	OSZ_tortenet	Bír 20:6	10	Izráel	16	יִשְׂרָאֵ֑ל	H3478	0	0	16	1		
 OSZ_tortenet-164	OSZ_tortenet	Bír 20:10	26	cselekedjék	25	עֲשׂ֗וֹת	H6213	0	0	24,25	1		24
 OSZ_tortenet-165	OSZ_tortenet	Bír 20:19	4	Izráel	4	יִשְׂרָאֵ֖ל	H3478	0	0	4	1		
-OSZ_tortenet-166	OSZ_tortenet	Bír 20:22	19	nap	17	בַּ	H9003	1	0	18	0	egység határa	
+OSZ_tortenet-166	OSZ_tortenet	Bír 20:22	19	nap	17	בַּ	H9003	1	0	18	0	szomszédos token	
 OSZ_tortenet-167	OSZ_tortenet	Bír 21:2	5	Béthelbe	6	אֵ֔ל	H1008	0	0	5,6	1		
 OSZ_tortenet-168	OSZ_tortenet	Eszt 1:20	6	rendeletét	3	פִּתְגָ֨ם	H6599	0	0	3	1		
 OSZ_tortenet-169	OSZ_tortenet	Ezsd 2:2	12	Rehummal	13	רְח֣וּם	H7348	0	0	13	1		
 OSZ_tortenet-170	OSZ_tortenet	Ezsd 2:3	3	kétezerszázhetvenkettő	6	וּ	H9002	1	0	3,4,5,6,7	1		
 OSZ_tortenet-171	OSZ_tortenet	Ezsd 4:2	30	fogva	29	מִ	H9006	1	0	29	1		
-OSZ_tortenet-172	OSZ_tortenet	Ezsd 5:14	25	babilóniai	30	דִּ֣י	H1768	0	0	31	0	egység határa	
+OSZ_tortenet-172	OSZ_tortenet	Ezsd 5:14	25	babilóniai	30	דִּ֣י	H1768	0	0	31	0	szomszédos token	
 OSZ_tortenet-173	OSZ_tortenet	Ezsd 6:21	24	hozzájok	20	הֶ֑ם	H9038	1	0	19,20	1		
 OSZ_tortenet-174	OSZ_tortenet	Ezsd 7:6	4	feljöve	3	עָלָ֣ה	H5927	0	0	3	1		
 OSZ_tortenet-175	OSZ_tortenet	Ezsd 10:30	6	Kelál	8	כְלָ֑ל	H3636	0	0	8	1		
@@ -616,7 +616,7 @@ OSZ_koltoi-013	OSZ_koltoi	Jób 3:21	15	elrejtett	12	מַּטְמוֹנִֽים	H
 OSZ_koltoi-014	OSZ_koltoi	Jób 4:10	6	üvöltése	4	ק֣וֹל	H6963	0	0	4	1		
 OSZ_koltoi-015	OSZ_koltoi	Jób 6:23	2	ki	2	מַלְּט֥וּ	H4422	0	0	2	1		
 OSZ_koltoi-016	OSZ_koltoi	Jób 6:27	3	árvának	3	יָת֥וֹם	H3490	0	0	3	1		
-OSZ_koltoi-017	OSZ_koltoi	Jób 9:24	14	Nem	10	אִם	H0518	0	0	11	0	egység határa	
+OSZ_koltoi-017	OSZ_koltoi	Jób 9:24	14	Nem	10	אִם	H0518	0	0	11	0	szomszédos token	
 OSZ_koltoi-018	OSZ_koltoi	Jób 10:2	4	Istennek	2	אֶל	H0413	0	0	2,3	1		
 OSZ_koltoi-019	OSZ_koltoi	Jób 10:5	10	avagy	7	אִם	H0518	0	0	7	1		
 OSZ_koltoi-020	OSZ_koltoi	Jób 11:13	2	te	2	אַ֭תָּ֗ה	H0859	0	0	2	1		
@@ -655,7 +655,7 @@ OSZ_koltoi-052	OSZ_koltoi	Péld 1:8	11	anyádnak	12	ךָ	H9021	1	0	11,12	1
 OSZ_koltoi-053	OSZ_koltoi	Péld 1:23	10	lelkemet	10	י	H9020	1	0	9,10	1		
 OSZ_koltoi-054	OSZ_koltoi	Péld 2:19	8	meg	9	יַ֝שִּׂ֗יגוּ	H5381	0	0	9	1		
 OSZ_koltoi-055	OSZ_koltoi	Péld 3:2	13	bőven	9	יוֹסִ֥יפוּ	H3254	0	0	9	1		
-OSZ_koltoi-056	OSZ_koltoi	Péld 3:18	1	Életnek	1	עֵץ	H6086	0	0	2	0	egység határa	2
+OSZ_koltoi-056	OSZ_koltoi	Péld 3:18	1	Életnek	1	עֵץ	H6086	0	0	2	0	szomszédos token	2
 OSZ_koltoi-057	OSZ_koltoi	Péld 3:30	7	nélkül	5	חִנָּ֑ם	H2600	0	0	5	1		
 OSZ_koltoi-058	OSZ_koltoi	Péld 4:6	1	Ne	1	אַל	H0408	0	0	1	1		
 OSZ_koltoi-059	OSZ_koltoi	Péld 6:1	11	kötelezted	8	תָּקַ֖עְתָּ	H8628	0	0	8	1		
@@ -682,7 +682,7 @@ OSZ_koltoi-079	OSZ_koltoi	Péld 30:14	18	földről	13	אֶ֑רֶץ	H0776	0	0	12,
 OSZ_koltoi-080	OSZ_koltoi	Péld 30:15	3	két	3	שְׁתֵּ֥י	H8147	0	0	3	1		
 OSZ_koltoi-081	OSZ_koltoi	Péld 30:21	11	szenvedhet	10	שְׂאֵֽת	H5375	0	0	9,10	1		
 OSZ_koltoi-082	OSZ_koltoi	Préd 2:1	15	gyötrelmet	11	מַכְאֽוֹב	H4341	0	0	11	1		
-OSZ_koltoi-083	OSZ_koltoi	Préd 2:2	1	Mondék	2	אֲנִי֙	H0589	0	0	1	0	egység határa	
+OSZ_koltoi-083	OSZ_koltoi	Préd 2:2	1	Mondék	2	אֲנִי֙	H0589	0	0	1	0	szomszédos token	
 OSZ_koltoi-084	OSZ_koltoi	Préd 2:9	17	éneklő	19	שָׁר֗וֹת	H7891	0	0	19	1		
 OSZ_koltoi-085	OSZ_koltoi	Préd 2:21	16	alatt	15	תַּ֥חַת	H8478	0	0	15	1		
 OSZ_koltoi-086	OSZ_koltoi	Préd 2:24	3	napja	3	יָמָ֣י	H3117	0	0	3,4	1		
@@ -713,7 +713,7 @@ OSZ_koltoi-110	OSZ_koltoi	Zsolt 18:51	6	királyának	4	וֹ	H9023	1	0	3,4	1
 OSZ_koltoi-111	OSZ_koltoi	Zsolt 19:14	15	tiszta	14	נִקֵּ֗יתִי	H5352	0	0	14	1		
 OSZ_koltoi-112	OSZ_koltoi	Zsolt 22:8	12	fejöket	11	רֹֽאשׁ	H7218	0	0	11	1		
 OSZ_koltoi-113	OSZ_koltoi	Zsolt 22:28	3	megtérnek	3	יָשֻׁ֣בוּ	H7725	0	0	3	1		
-OSZ_koltoi-114	OSZ_koltoi	Zsolt 24:1	15	lakosai	11	בָֽ	H9003	1	0	10	0	egység határa	
+OSZ_koltoi-114	OSZ_koltoi	Zsolt 24:1	15	lakosai	11	בָֽ	H9003	1	0	10	0	szomszédos token	
 OSZ_koltoi-115	OSZ_koltoi	Zsolt 25:9	1	Igazságban	4	מִּשְׁפָּ֑ט	H4941	0	0	3,4	1		
 OSZ_koltoi-116	OSZ_koltoi	Zsolt 25:18	9	bűnömet	11	חַטֹּאותָֽ	H2403	0	0	11,12	1		
 OSZ_koltoi-117	OSZ_koltoi	Zsolt 27:6	3	felül	3	יָר֪וּם	H7311	0	0	3	1		
@@ -721,7 +721,7 @@ OSZ_koltoi-118	OSZ_koltoi	Zsolt 27:6	15	sátorában	15	וֹ	H9023	1	0	13,14,15	1
 OSZ_koltoi-119	OSZ_koltoi	Zsolt 34:16	9	ő	7	ו	H9023	1	0	7	1		
 OSZ_koltoi-120	OSZ_koltoi	Zsolt 36:13	8	állhatnak	8	יָ֥כְלוּ	H3201	0	0	8,9	1		9
 OSZ_koltoi-121	OSZ_koltoi	Zsolt 37:22	5	megáld	2	מְ֭בֹרָכָי	H1288	0	0	2	1		
-OSZ_koltoi-122	OSZ_koltoi	Zsolt 37:26	10	áldott	10	לִ	H9005	1	0	11	0	egység határa	
+OSZ_koltoi-122	OSZ_koltoi	Zsolt 37:26	10	áldott	10	לִ	H9005	1	0	11	0	szomszédos token	
 OSZ_koltoi-123	OSZ_koltoi	Zsolt 37:38	1	De	1	וּֽ֭	H9002	1	0	1	1		
 OSZ_koltoi-124	OSZ_koltoi	Zsolt 38:1	1	Dávid	2	לְ	H9005	1	0	2,3	1		
 OSZ_koltoi-125	OSZ_koltoi	Zsolt 38:3	1	Mert	1	כִּֽי	H3588	0	0	1	1		
@@ -745,7 +745,7 @@ OSZ_koltoi-142	OSZ_koltoi	Zsolt 63:2	3	Istenem	2	אֵלִ֥	H0410	0	0	2,3	1
 OSZ_koltoi-143	OSZ_koltoi	Zsolt 65:7	3	hegyeket	2	הָרִ֣ים	H2022	0	0	2	1		
 OSZ_koltoi-144	OSZ_koltoi	Zsolt 69:1	2	éneklőmesternek	1	לַ	H9005	1	0	1,2	1		
 OSZ_koltoi-145	OSZ_koltoi	Zsolt 69:9	2	előtt	3	לְ	H9005	1	0	3	1		
-OSZ_koltoi-146	OSZ_koltoi	Zsolt 69:15	17	vizekből	14	מַּֽעֲמַקֵּי	H4615	0	0	13,15	0	egység határa	
+OSZ_koltoi-146	OSZ_koltoi	Zsolt 69:15	17	vizekből	14	מַּֽעֲמַקֵּי	H4615	0	0	13,15	0	szomszédos token	
 OSZ_koltoi-147	OSZ_koltoi	Zsolt 69:20	5	gyalázatomat	4	י	H9020	1	0	3,4	1		
 OSZ_koltoi-148	OSZ_koltoi	Zsolt 69:25	6	reájok	3	הֶ֥ם	H9038	1	0	2,3	1		
 OSZ_koltoi-149	OSZ_koltoi	Zsolt 69:26	4	palotájok	3	ם	H9028	1	0	2,3	1		
@@ -848,7 +848,7 @@ OSZ_profeta-045	OSZ_profeta	Ez 23:25	10	orrodat	13	אַפֵּ֤	H0639	0	0	13,14	
 OSZ_profeta-046	OSZ_profeta	Ez 26:12	13	házaidat	14	בָתֵּ֥י	H1004	0	0	14,16	1		
 OSZ_profeta-047	OSZ_profeta	Ez 27:3	28	tökéletes	24	כְּלִ֥ילַת	H3632	0	0	24	1		
 OSZ_profeta-048	OSZ_profeta	Ez 28:2	34	olylyá	35	כְּ	H9004	1	0	35	1		
-OSZ_profeta-049	OSZ_profeta	Ez 29:8	8	hozok	8	נִ֛י	H9040	1	0	9	0	egység határa	
+OSZ_profeta-049	OSZ_profeta	Ez 29:8	8	hozok	8	נִ֛י	H9040	1	0	9	0	szomszédos token	
 OSZ_profeta-050	OSZ_profeta	Ez 29:18	13	fő	15	רֹ֣אשׁ	H7218	0	0	15	1		
 OSZ_profeta-051	OSZ_profeta	Ez 31:11	6	urának	6	אֵ֣יל	H0352	0	0	6	1		
 OSZ_profeta-052	OSZ_profeta	Ez 31:12	29	föld	37	אָ֖רֶץ	H0776	0	0	37	1		
@@ -885,7 +885,7 @@ OSZ_profeta-082	OSZ_profeta	Ez 48:21	28	és	31	וְ	H9002	1	0	31	1
 OSZ_profeta-083	OSZ_profeta	Ézs 1:10	10	Istenünk	9	נוּ	H9025	1	0	8,9	1		
 OSZ_profeta-084	OSZ_profeta	Ézs 2:10	2	be	1	בּ֣וֹא	H0935	0	0	1	1		
 OSZ_profeta-085	OSZ_profeta	Ézs 7:3	2	mondá	2	יֹּ֣אמֶר	H0559	0	0	2	1		
-OSZ_profeta-086	OSZ_profeta	Ézs 8:6	7	folyó	12	הַ	H9009	1	0	13	0	egység határa	
+OSZ_profeta-086	OSZ_profeta	Ézs 8:6	7	folyó	12	הַ	H9009	1	0	13	0	szomszédos token	
 OSZ_profeta-087	OSZ_profeta	Ézs 8:18	7	kiket	6	אֲשֶׁ֣ר	H0834	0	0	6	1		
 OSZ_profeta-088	OSZ_profeta	Ézs 9:5	11	megég	15	שְׂרֵפָ֖ה	H8316	0	0	15	1		
 OSZ_profeta-089	OSZ_profeta	Ézs 9:17	20	száj	27	פֶּ֖ה	H6310	0	0	27	1		
@@ -904,12 +904,12 @@ OSZ_profeta-101	OSZ_profeta	Ézs 28:1	17	fején	13	עַל	H5921	0	0	13,14	1
 OSZ_profeta-102	OSZ_profeta	Ézs 34:16	11	hijjok	12	נֶעְדָּ֔רָה	H5737	0	0	12	1		
 OSZ_profeta-103	OSZ_profeta	Ézs 36:16	5	azt	6	כֹ֨ה	H3541	0	0	6	1		
 OSZ_profeta-104	OSZ_profeta	Ézs 37:18	6	minden	7	כָּל	H3605	0	0	7	1		
-OSZ_profeta-105	OSZ_profeta	Ézs 38:16	14	meggyógyítasz	15	נִי	H9030	1	0	14	0	egység határa	
+OSZ_profeta-105	OSZ_profeta	Ézs 38:16	14	meggyógyítasz	15	נִי	H9030	1	0	14	0	szomszédos token	
 OSZ_profeta-106	OSZ_profeta	Ézs 41:3	10	nem	9	לֹ֥א	H3808	0	0	9	1		
 OSZ_profeta-107	OSZ_profeta	Ézs 42:6	16	pogányoknak	23	גּוֹיִֽם	H1471	0	0	23	1		
 OSZ_profeta-108	OSZ_profeta	Ézs 43:6	11	meg	10	הָבִ֤יאִי	H0935	0	0	10	1		
 OSZ_profeta-109	OSZ_profeta	Ézs 43:17	18	gyertyabél	15	פִּשְׁתָּ֥ה	H6594	0	0	15	1		
-OSZ_profeta-110	OSZ_profeta	Ézs 44:17	14	Szabadíts	22	נִי	H9030	1	0	21	0	egység határa	
+OSZ_profeta-110	OSZ_profeta	Ézs 44:17	14	Szabadíts	22	נִי	H9030	1	0	21	0	szomszédos token	
 OSZ_profeta-111	OSZ_profeta	Ézs 48:8	22	méhétől	20	מִ	H9006	1	0	20,21	1		
 OSZ_profeta-112	OSZ_profeta	Ézs 48:16	7	eleitől	7	מֵ	H9006	1	0	7,8	1		
 OSZ_profeta-113	OSZ_profeta	Ézs 51:15	15	zúgnak	10	יֶּהֱמ֖וּ	H1993	0	0	10	1		
@@ -986,7 +986,7 @@ OSZ_profeta-183	OSZ_profeta	Jer 52:7	19	két	21	חֹמֹתַ֙יִם֙	H2346	0	0
 OSZ_profeta-184	OSZ_profeta	Jer 52:12	7	tizedikén	7	עָשׂ֣וֹר	H6218	0	0	6,7	1		
 OSZ_profeta-185	OSZ_profeta	Jóel 3:4	22	rajtam	24	עָלַ֔	H5921	0	0	24,25	1		
 OSZ_profeta-186	OSZ_profeta	Jón 4:6	25	nagy	32	גְדוֹלָֽה	H1419	0	0	32	1		
-OSZ_profeta-187	OSZ_profeta	Mal 1:8	29	avagy	28	הֲ	H9008	1	0	27	0	egység határa	
+OSZ_profeta-187	OSZ_profeta	Mal 1:8	29	avagy	28	הֲ	H9008	1	0	27	0	szomszédos token	
 OSZ_profeta-188	OSZ_profeta	Mal 2:11	7	Izráelben	6	בְ	H9003	1	0	6,7	1		
 OSZ_profeta-189	OSZ_profeta	Mik 3:3	17	akár	22	אֲשֶׁ֣ר	H0834	0	0	21,22	1		
 OSZ_profeta-190	OSZ_profeta	Mik 6:2	2	meg	1	שִׁמְע֤וּ	H8085	0	0	1	1		
@@ -1024,7 +1024,7 @@ USZ_evangelium-021	USZ_evangelium	ApCsel 11:11	4	három	4	τρεῖς	G5140	0	0	
 USZ_evangelium-022	USZ_evangelium	ApCsel 11:14	6	ígéket	3	ῥήματα	G4487	0	0	3	1		
 USZ_evangelium-023	USZ_evangelium	ApCsel 12:9	2	kimenvén	2	ἐξελθὼν	G1831	0	0	2	1		
 USZ_evangelium-024	USZ_evangelium	ApCsel 12:17	11	ki	13	ἐξήγαγεν	G1806	0	0	13	1		
-USZ_evangelium-025	USZ_evangelium	ApCsel 12:17	25	atyafiaknak	22	τοῖς	G3588	0	0	23	0	egység határa	
+USZ_evangelium-025	USZ_evangelium	ApCsel 12:17	25	atyafiaknak	22	τοῖς	G3588	0	0	23	0	szomszédos token	
 USZ_evangelium-026	USZ_evangelium	ApCsel 13:13	6	kisérői	7	περὶ	G4012	0	0	6,7	1		
 USZ_evangelium-027	USZ_evangelium	ApCsel 13:17	19	és	21	καὶ	G2532	0	0	21	1		
 USZ_evangelium-028	USZ_evangelium	ApCsel 13:41	19	dolgot	16	ἔργον	G2041	0	0	16	1		
@@ -1200,7 +1200,7 @@ USZ_evangelium-197	USZ_evangelium	Mt 26:66	1	Mit	1	τί	G5101	0	0	1	1
 USZ_evangelium-198	USZ_evangelium	Mt 27:6	18	vérnek	17	αἵματός	G0129	0	0	17	1		
 USZ_evangelium-199	USZ_evangelium	Mt 27:13	2	monda	2	λέγει	G3004	0	0	2	1		
 USZ_evangelium-200	USZ_evangelium	Mt 28:1	13	és	13	καὶ	G2532	0	0	13	1		
-USZ_level-001	USZ_level	1Ján 2:14	10	fogva	8	ἀρχῆς.	G0746	0	0	7	0	egység határa	
+USZ_level-001	USZ_level	1Ján 2:14	10	fogva	8	ἀρχῆς.	G0746	0	0	7	0	szomszédos token	
 USZ_level-002	USZ_level	1Ján 2:14	17	vagytok	14	ἐστε	G1510	0	0	14	1		
 USZ_level-003	USZ_level	1Ján 2:18	8	mint	6	καθὼς	G2531	0	0	6	1		
 USZ_level-004	USZ_level	1Ján 3:12	18	azt	17	αὐτόν;	G0846	0	0	17	1		
@@ -1313,7 +1313,7 @@ USZ_level-110	USZ_level	Fil 1:2	9	és	9	καὶ	G2532	0	0	9	1
 USZ_level-111	USZ_level	Fil 1:7	31	mindnyájan	35	πάντας	G3956	0	0	35	1		
 USZ_level-112	USZ_level	Fil 2:6	3	mikor	5	ὑπάρχων	G5225	0	0	-	0	fölös pár	
 USZ_level-113	USZ_level	Fil 4:15	2	pedig	2	δὲ	G1161	0	0	2	1		
-USZ_level-114	USZ_level	Filem 1:6	10	Krisztus	18	Ἰησοῦν.	G2424	0	0	17	0	egység határa	
+USZ_level-114	USZ_level	Filem 1:6	10	Krisztus	18	Ἰησοῦν.	G2424	0	0	17	0	szomszédos token	
 USZ_level-115	USZ_level	Filem 1:9	5	ilyen	6	τοιοῦτος	G5108	0	0	6	1		
 USZ_level-116	USZ_level	Filem 1:17	2	ha	1	εἰ	G1487	0	0	1	1		
 USZ_level-117	USZ_level	Filem 1:21	14	többet	10	ὑπὲρ	G5228	0	0	10	1		
@@ -1346,7 +1346,7 @@ USZ_level-143	USZ_level	Kol 2:4	2	pedig	2	δὲ	G1161	0	0	2	1
 USZ_level-144	USZ_level	Kol 3:23	2	valamit	3	ὃ	G3739	0	0	2,3,4,5	1		
 USZ_level-145	USZ_level	Kol 3:25	9	és	7	καὶ	G2532	0	0	7	1		
 USZ_level-146	USZ_level	Róm 1:11	4	látni	3	ἰδεῖν	G1492	0	0	3	1		
-USZ_level-147	USZ_level	Róm 1:12	7	egymás	9	ἐν	G1722	0	0	10	0	egység határa	
+USZ_level-147	USZ_level	Róm 1:12	7	egymás	9	ἐν	G1722	0	0	10	0	szomszédos token	
 USZ_level-148	USZ_level	Róm 1:17	15	igaz	15	δίκαιος	G1342	0	0	15	1		
 USZ_level-149	USZ_level	Róm 1:19	12	mert	12	γὰρ	G1063	0	0	12	1		
 USZ_level-150	USZ_level	Róm 1:25	23	áldott	21	εὐλογητὸς	G2128	0	0	21	1		
@@ -1361,7 +1361,7 @@ USZ_level-158	USZ_level	Róm 7:3	21	törvénytől	21	νόμου	G3551	0	0	19,21
 USZ_level-159	USZ_level	Róm 8:38	12	sem	10	οὔτε	G3777	0	0	10	1		
 USZ_level-160	USZ_level	Róm 9:8	9	hanem	12	ἀλλὰ	G0235	0	0	12	1		
 USZ_level-161	USZ_level	Róm 9:8	14	magul	19	σπέρμα.	G4690	0	0	18,19	1		
-USZ_level-162	USZ_level	Róm 9:15	8	kin	7	ἂν	G0302	0	0	6	0	egység határa	
+USZ_level-162	USZ_level	Róm 9:15	8	kin	7	ἂν	G0302	0	0	6	0	szomszédos token	
 USZ_level-163	USZ_level	Róm 10:6	17	mennybe	16	εἰς	G1519	0	0	16,18	1		
 USZ_level-164	USZ_level	Róm 11:9	4	mondja	3	λέγει·	G3004	0	0	3	1		
 USZ_level-165	USZ_level	Róm 11:15	5	elvettetésök	4	ἀποβολὴ	G0580	0	0	4,5	1		
@@ -1369,7 +1369,7 @@ USZ_level-166	USZ_level	Róm 11:18	16	gyökér	15	ῥίζα	G4491	0	0	15	1
 USZ_level-167	USZ_level	Róm 11:21	2	ha	1	εἰ	G1487	0	0	1	1		
 USZ_level-168	USZ_level	Róm 11:26	13	Sionból	10	Σιὼν	G4622	0	0	9,10	1		
 USZ_level-169	USZ_level	Róm 12:9	9	gonosztól	6	πονηρόν,	G4190	0	0	6	1		
-USZ_level-170	USZ_level	Róm 14:2	1	Némely	2	μὲν	G3303	0	0	1	0	egység határa	
+USZ_level-170	USZ_level	Róm 14:2	1	Némely	2	μὲν	G3303	0	0	1	0	szomszédos token	
 USZ_level-171	USZ_level	Róm 14:3	19	azt	13	τὸν	G3588	0	0	13	1		
 USZ_level-172	USZ_level	Róm 14:7	10	hal	9	ἀποθνῄσκει.	G0599	0	0	9	1		
 USZ_level-173	USZ_level	Róm 14:14	1	Tudom	1	Οἶδα	G6063	0	0	1	1		
@@ -1385,7 +1385,7 @@ USZ_level-182	USZ_level	Tit 3:1	11	jó	11	ἀγαθὸν	G0018	0	0	11	1
 USZ_level-183	USZ_level	Tit 3:3	5	esztelenek	6	ἀνόητοι,	G0453	0	0	6	1		
 USZ_level-184	USZ_level	Tit 3:15	15	mindnyájatokkal	15	μετὰ	G3326	0	0	15,16,17	1		
 USZ_level-185	USZ_level	Zsid 1:5	9	Fiam	8	μου	G3165	0	0	7,8	1		
-USZ_level-186	USZ_level	Zsid 1:5	21	Atyja	20	εἰς	G1519	0	0	21	0	egység határa	
+USZ_level-186	USZ_level	Zsid 1:5	21	Atyja	20	εἰς	G1519	0	0	21	0	szomszédos token	
 USZ_level-187	USZ_level	Zsid 3:2	15	házában	13	αὐτοῦ.	G0846	0	0	9,12,13	1		
 USZ_level-188	USZ_level	Zsid 4:9	7	népének	5	λαῷ	G2992	0	0	5	1		
 USZ_level-189	USZ_level	Zsid 4:15	18	hasonlóan	16	ὁμοιότητα	G3665	0	0	15,16	1		15
@@ -1396,7 +1396,7 @@ USZ_level-193	USZ_level	Zsid 9:28	8	eltörlése	10	ἀνενεγκεῖν	G0399	
 USZ_level-194	USZ_level	Zsid 10:18	9	többé	5	οὐκέτι	G2089+G3756	0	0	5	1		
 USZ_level-195	USZ_level	Zsid 11:1	6	dolgoknak	4	ἐλπιζομένων	G1679	0	0	4	1		
 USZ_level-196	USZ_level	Zsid 11:29	12	mit	10	ἧς	G3739	0	0	10	1		
-USZ_level-197	USZ_level	Zsid 12:10	11	javunkra	15	τὸ	G3588	0	0	14,16	0	egység határa	
+USZ_level-197	USZ_level	Zsid 12:10	11	javunkra	15	τὸ	G3588	0	0	14,16	0	szomszédos token	
 USZ_level-198	USZ_level	Zsid 12:11	21	gyakoroltatnak	21	γεγυμνασμένοις	G1128	0	0	21	1		
 USZ_level-199	USZ_level	Zsid 12:25	2	meg	1	Βλέπετε	G0991	0	0	1	1		
 USZ_level-200	USZ_level	Zsid 12:25	11	azok	8	ἐκεῖνοι	G1565	0	0	8	1		
@@ -1441,7 +1441,7 @@ USZ_jelenesek-038	USZ_jelenesek	Jel 4:11	20	és	31	καὶ	G2532	0	0	31	1
 USZ_jelenesek-039	USZ_jelenesek	Jel 5:6	2	láték	2	εἶδον	G1492	0	0	2	1		
 USZ_jelenesek-040	USZ_jelenesek	Jel 5:6	38	földre	37	εἰς	G1519	0	0	37,40	1		
 USZ_jelenesek-041	USZ_jelenesek	Jel 5:9	20	minket	22	ἡμᾶς	G3165	0	0	22	1		
-USZ_jelenesek-042	USZ_jelenesek	Jel 5:13	36	Báránynak	36	τῷ	G3588	0	0	37	0	egység határa	
+USZ_jelenesek-042	USZ_jelenesek	Jel 5:13	36	Báránynak	36	τῷ	G3588	0	0	37	0	szomszédos token	
 USZ_jelenesek-043	USZ_jelenesek	Jel 5:13	45	örökké	53	αἰώνων	G0165	0	0	53	1		
 USZ_jelenesek-044	USZ_jelenesek	Jel 6:5	6	pecsétet	5	σφραγῖδα	G4973	0	0	5	1		
 USZ_jelenesek-045	USZ_jelenesek	Jel 6:5	33	kezében	29	ἐν	G1722	0	0	29,31	1		
@@ -1559,8 +1559,8 @@ USZ_jelenesek-156	USZ_jelenesek	Jel 18:24	3	prófétáknak	5	προφητῶν	G
 USZ_jelenesek-157	USZ_jelenesek	Jel 18:24	9	mindeneknek	10	πάντων	G3956	0	0	10	1		
 USZ_jelenesek-158	USZ_jelenesek	Jel 19:2	2	igazak	2	ἀληθιναὶ	G0228	0	0	2	1		
 USZ_jelenesek-159	USZ_jelenesek	Jel 19:2	4	igazságosak	4	δίκαιαι	G1342	0	0	4	1		
-USZ_jelenesek-160	USZ_jelenesek	Jel 19:2	26	szolgáinak	28	αὐτοῦ	G0846	0	0	27	0	egység határa	
-USZ_jelenesek-161	USZ_jelenesek	Jel 19:3	11	örökké	13	τῶν	G3588	0	0	14	0	egység határa	
+USZ_jelenesek-160	USZ_jelenesek	Jel 19:2	26	szolgáinak	28	αὐτοῦ	G0846	0	0	27	0	szomszédos token	
+USZ_jelenesek-161	USZ_jelenesek	Jel 19:3	11	örökké	13	τῶν	G3588	0	0	14	0	szomszédos token	
 USZ_jelenesek-162	USZ_jelenesek	Jel 19:4	4	huszonnégy	6	εἴκοσι	G1501	0	0	6,8	1		
 USZ_jelenesek-163	USZ_jelenesek	Jel 19:4	18	királyiszékben	19	ἐπὶ	G1909	0	0	19	1		
 USZ_jelenesek-164	USZ_jelenesek	Jel 19:8	8	ragyogó	7	λαμπρὸν	G2986	0	0	7	1		
