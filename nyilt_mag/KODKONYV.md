@@ -425,7 +425,7 @@ Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: 
 
 A szótári jelentés angolul: kivonat a sor `szotar` oszlopában megnevezett szótár (BDB, Thayer: közkincs; TBESG: CC BY 4.0) szócikkének szövegéből, a jelentés számával (`jelentes_szam`). Szótári kivonat, nem a STEPBible rövid glosszája; az angol szófogódzót a `strong_glossza_en` adja.
 
-*The dictionary meaning in English: an excerpt from the text of the entry in the dictionary named in the row’s `szotar` column (BDB, Thayer: public domain; TBESG: CC BY 4.0), for the sense numbered in `jelentes_szam`. A dictionary excerpt, not the short STEPBible gloss; the short English word cue is `strong_glossza_en`.*
+*The dictionary meaning in English: an excerpt from the text of the entry in the dictionary named in the row’s `szotar` column (BDB, Thayer: public domain; TBESG: CC BY 4.0), for the meaning numbered in `jelentes_szam`. A dictionary excerpt, not the short STEPBible gloss; the short English word cue is `strong_glossza_en`.*
 
 
 ### `jelentes_szam`
@@ -518,7 +518,7 @@ A sor Strong-száma (H = héber, G = görög); üres, ha a sor nem lexikai horgo
 
 Rövid angol szófogódzó: a sor Strong-számának glosszája a STEPBible TBESH (héber) és TBESG (görög) lexikonjából (a Gloss oszlop; a Meaning oszlop nem). Több Strong-számnál ` + `-szal fűzve, a sorrendjük szerint; ha a Strong-számnak több fő bejegyzése van (pl. név és köznév), ` / `-rel. A glossza a Strong-szám egészére szól, nem az adott vers jelentésére (arra a `jelentes_en`). Forrás: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).
 
-*Short English word cue: the gloss of the row’s Strong number from the STEPBible TBESH (Hebrew) and TBESG (Greek) lexicons (the Gloss column, not the Meaning column). With several Strong numbers joined by ` + ` in their order; where a Strong number has several main entries (e.g. a name and a common noun), by ` / `. The gloss belongs to the Strong number as a whole, not to the sense in the verse (for that, see `jelentes_en`). Source: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).*
+*Short English word cue: the gloss of the row’s Strong number from the STEPBible TBESH (Hebrew) and TBESG (Greek) lexicons (the Gloss column, not the Meaning column). With several Strong numbers joined by ` + ` in their order; where a Strong number has several main entries (e.g. a name and a common noun), by ` / `. The gloss belongs to the Strong number as a whole, not to the meaning in the verse (for that, see `jelentes_en`). Source: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).*
 
 
 ### `szotar`
@@ -949,7 +949,7 @@ A kizárás oka szöveges besorolásban.
 - `kizaras_oka` = `a két szó nem egy mondatban áll` (en: `the two words are not in one sentence`): Kizárási ok: a két szó nem egy mondatban áll. / Reason for exclusion: the two words are not in one sentence.
 - `kizaras_oka` = `a két szó nem megkülönböztető szerepben` (en: `the two words are not in a distinguishing role`): Kizárási ok: a két szó nem megkülönböztető szerepben. / Reason for exclusion: the two words are not in a distinguishing role.
 - `kizaras_oka` = `a mező füve mint táplálék, nem a tövis-átok` (en: `grass of the field as food, not the curse of thorns`): Kizárási ok: a mező füve mint táplálék, nem a tövis-átok. / Reason for exclusion: grass of the field as food, not the curse of thorns.
-- `kizaras_oka` = `a szó más jelentésben áll` (en: `the word stands in another sense`): Kizárási ok: a szó más jelentésben áll. / Reason for exclusion: the word stands in another sense.
+- `kizaras_oka` = `a szó más jelentésben áll` (en: `the word is used with another meaning`): Kizárási ok: a szó más jelentésben áll. / Reason for exclusion: the word is used with another meaning.
 - `kizaras_oka` = `a szó nem ebben a versben áll, hanem a tartomány másikában` (en: `the word is not in this verse but in another verse of the range`): Kizárási ok: a szó nem ebben a versben áll, hanem a tartomány másikában. / Reason for exclusion: the word is not in this verse but in another verse of the range.
 - `kizaras_oka` = `a szócsalád más használata, nem a romlás szerkezete` (en: `other use of the word family, not the structure of corruption`): Kizárási ok: a szócsalád más használata, nem a romlás szerkezete. / Reason for exclusion: other use of the word family, not the structure of corruption.
 - `kizaras_oka` = `a tohu és bohu szópár nincs a versben` (en: `the word pair tohu and bohu is not in the verse`): Kizárási ok: a tohu és bohu szópár nincs a versben. / Reason for exclusion: the word pair tohu and bohu is not in the verse.
@@ -979,7 +979,7 @@ A kizárás oka szöveges besorolásban.
 - `kizaras_oka` = `név nélküli forma` (en: `form without the name`): Kizárási ok: név nélküli forma. / Reason for exclusion: form without the name.
 - `kizaras_oka` = `névadás` (en: `name-giving`): Kizárási ok: névadás. / Reason for exclusion: name-giving.
 - `kizaras_oka` = `passzív szerkezet vagy megnevezés (negatív kritérium)` (en: `passive construction or designation (exclusion criterion)`): Kizárási ok: passzív szerkezet vagy megnevezés (negatív kritérium). / Reason for exclusion: passive construction or designation (exclusion criterion).
-- `kizaras_oka` = `romlás más értelemben, nem a genezisi szerkezet` (en: `corruption in another sense, not the Genesis structure`): Kizárási ok: romlás más értelemben, nem a genezisi szerkezet. / Reason for exclusion: corruption in another sense, not the Genesis structure.
+- `kizaras_oka` = `romlás más értelemben, nem a genezisi szerkezet` (en: `corruption with another meaning, not the Genesis structure`): Kizárási ok: romlás más értelemben, nem a genezisi szerkezet. / Reason for exclusion: corruption with another meaning, not the Genesis structure.
 - `kizaras_oka` = `semleges, elbeszélő használat, nem az átok-szerkezet` (en: `neutral, narrative use, not the curse structure`): Kizárási ok: semleges, elbeszélő használat, nem az átok-szerkezet. / Reason for exclusion: neutral, narrative use, not the curse structure.
 - `kizaras_oka` = `száműzetés-büntetés, a föld kulcsszava nélkül` (en: `punishment of banishment, without the key word for the ground`): Kizárási ok: száműzetés-büntetés, a föld kulcsszava nélkül. / Reason for exclusion: punishment of banishment, without the key word for the ground.
 - `kizaras_oka` = `szótári összevető hely, a szó nem áll benne` (en: `dictionary comparison passage; the word is not in it`): Kizárási ok: szótári összevető hely, a szó nem áll benne. / Reason for exclusion: dictionary comparison passage; the word is not in it.

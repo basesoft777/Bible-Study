@@ -24,7 +24,7 @@ JEL_HU = ('A szótári jelentés angolul: kivonat a sor `szotar` oszlopában meg
           'TBESG: CC BY 4.0) szócikkének szövegéből, a jelentés számával (`jelentes_szam`). Szótári kivonat, nem a '
           'STEPBible rövid glosszája; az angol szófogódzót a `strong_glossza_en` adja.')
 JEL_EN = ('The dictionary meaning in English: an excerpt from the text of the entry in the dictionary named in the '
-          'row’s `szotar` column (BDB, Thayer: public domain; TBESG: CC BY 4.0), for the sense numbered in '
+          'row’s `szotar` column (BDB, Thayer: public domain; TBESG: CC BY 4.0), for the meaning numbered in '
           '`jelentes_szam`. A dictionary excerpt, not the short STEPBible gloss; the short English word cue is '
           '`strong_glossza_en`.')
 GLO_HU = ('Rövid angol szófogódzó: a sor Strong-számának glosszája a STEPBible TBESH (héber) és TBESG (görög) '
@@ -35,7 +35,7 @@ GLO_HU = ('Rövid angol szófogódzó: a sor Strong-számának glosszája a STEP
 GLO_EN = ('Short English word cue: the gloss of the row’s Strong number from the STEPBible TBESH (Hebrew) and TBESG '
           '(Greek) lexicons (the Gloss column, not the Meaning column). With several Strong numbers joined by ` + ` in '
           'their order; where a Strong number has several main entries (e.g. a name and a common noun), by ` / `. The '
-          'gloss belongs to the Strong number as a whole, not to the sense in the verse (for that, see `jelentes_en`). '
+          'gloss belongs to the Strong number as a whole, not to the meaning in the verse (for that, see `jelentes_en`). '
           'Source: Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0).')
 EN_HU = ('Az előző oszlop (%s) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg '
          'a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg '

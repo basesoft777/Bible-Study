@@ -320,6 +320,15 @@ class E10Teszt(unittest.TestCase):
             talalatok = SZ.e10_spirit_lelek([rel])
             self.assertEqual(talalatok, [])
 
+    def test_negativ_nyilt_mag_angol_forditas_f170(self):
+        """F170: a nyílt mag magyar -> angol gépi fordításában a Károli-idézet szó szerinti angol fordítása
+        („lelki test” ["spiritual body"]) nem a tiltott szótári fordítás; a tábla kívül esik az E10-en."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'adat/nyilt_angol.tsv', 'a „lelki test”\tthe „lelki test” ["spiritual body"]\n')
+            self.assertEqual(SZ.e10_spirit_lelek([rel]), [])
+            masik = _ir(gy, 'adat/terminologia.tsv', 'a „lelki test”\tthe „lelki test” ["spiritual body"]\n')
+            self.assertEqual(len(SZ.e10_spirit_lelek([masik])), 1)
+
 
 class E11Teszt(unittest.TestCase):
     def test_pozitiv_cremer_lexikonban(self):

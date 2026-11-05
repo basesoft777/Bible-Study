@@ -625,7 +625,14 @@ def _e10_hatokorben_e(relut):
     `terminologia.tsv`/`forditasok.tsv`) es lexikon/ (a render). A gyoker
     brief-/tervfajlok (pl. `F05_SZOTAR_BRIEF.md`, `F02_CI_ELLENORZES_BRIEF.md`), ahol
     a szabaly sajat magat dokumentalja peldakent, nem tartoznak ide."""
+    if relut == E10_KIVETEL:
+        return False
     return relut.startswith('adat/') or relut.startswith('lexikon/')
+
+
+# F170: a nyílt mag gépi angol fordítása (magyar -> angol): a Károli-idézet („lelki test”) mögött álló szó szerinti
+# angol fordítás (["spiritual body"]) helyes, és nem a tiltott szótári spirit -> lélek fordítás; az E10 erre nem fut.
+E10_KIVETEL = 'adat/nyilt_angol.tsv'
 
 
 def e10_spirit_lelek(fajlok):
