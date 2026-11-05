@@ -17,7 +17,7 @@ A mért állapot: `adat/karoli_strong/` @ git `aa61de89` (a keret és a minta), 
 
 A számok nem ugyanazt mérik. A külső forrás szavanként **egy fő Strong-számot** jelöl, a ragban, elöljáróban, névelőben álló mellékszót nem; a külső szám ezért csak a fő-szó párokra érvényes. Tisztán a forrás szerint (a forrás minden eltérését a mi hibánknak számolva) a fő-szó egyezés 98,72%; a 34 eltérés háromutas ítélete után 5 marad a mi hibánk (DT-F172c), a fő-szó pontosság így 99,81%. A teljes párkészletre (mellékszavak, morfémák) csak a vak Opus-egyezés áll rendelkezésre: 95,06%. Ez a pontosság alsó becslése, **ha** a közös (gépi = Opus) hiba elhanyagolható; ezt a külső összevetés csak a fő-szó párokon méri (5. pont: a 8 fejezetbe eső 29 tartalmi Opus-egyezés között a forrás közös hibát nem jelzett).
 
-**Nyitás (DT-F172b)**: a 7. pont küszöbjavaslata szerint mehet; a küszöböket a mért eredmények ismeretében javasoltam (l. 7.), a döntés a felhasználóé (az orkesztrátor a felhasználó felhatalmazásával 2026-11-05-én megerősítette).
+**Nyitás (DT-F172b)**: a párosítás nyílt adatként közölhető, mert a pontossága **mérve és dokumentálva van** — kapcsolattípusonként és rétegenként, konfidencia-intervallummal; a „javaslat” állapot és a `bizonyossag` megmarad, az ismert hibák nyitott tételként állnak (7. pont). A nyitás nem küszöb teljesülésén alapul; a küszöbök a 2. kiadás előre rögzített minőségi céljai.
 
 ## 2. Keret és minta
 
@@ -91,14 +91,16 @@ Az orkesztrátor a felhasználó felhatalmazásával (2026-11-05):
 2. **Róm 1:12 „Azaz”**: a magyar szó a τοῦτ' ἔστιν kifejezés; a δέ (G1161) fordítatlan, nem része a párnak; a G3778 és a G1510 igen.
 3. **Péld 3:18 és Ez 43:13**: a hiba megerősítve. A Péld 3:18-ban az „Életnek” és a „fája” párja felcserélt (a TAHOT-glossza szerint is); az Ez 43:13 „közsinget” párja az Opus-ítélet szerint más szóra tartozik. A javítás az N-F172a, nem e feladat része.
 
-## 7. Végső becslés és nyitási küszöb (DT-F172b)
+## 7. Végső becslés, a nyitás indoka (DT-F172b) és a 2. kiadás minőségi célja
 
 **Becslés**:
 - fő-szó kapcsolat (lexikai pár): **98,72%** [98,22–99,08] tisztán a forrás szerint; **99,81%** [99,56–99,92] a háromutas ítélettel (8 fejezet, n = 2 663; klaszter-minta, a valós bizonytalanság nagyobb);
 - a teljes párkészlet, a mellékszavakkal és a morfémákkal: **95,06%** [93,81–96,32] (vak Opus-egyezés; alsó becslés, ha a közös hiba elhanyagolható);
 - morféma-párok: 90,74% [87,18–94,29] (csak Opus; a külső forrás nem ellenőrzi).
 
-**Küszöbjavaslat a nyitáshoz** (a mért eredmények ismeretében javasolva, ezért a felhasználó döntése; a független ellenőr ezt jelezte): a párosítás nyílt adatként közölhető (CC BY 4.0, TAHOT/TAGNT-attribúció), ha (1) a külső fő-szó pontosság tisztán a forrás szerinti 95%-os alsó széle ≥ 98% — **teljesül** (98,22%, szűken); (2) a vak ellenőrrel mért súlyozott egyezés alsó széle ≥ 93%, és egyetlen réteg pontbecslése sem 90% alatti — **teljesül** (93,81%, szűken; a legkisebb réteg 92,0%); (3) a közlés a pontosságot kapcsolattípusonként (fő-szó / mellékszó / morféma) és rétegenként közli, a `bizonyossag` és a „javaslat” állapot megmarad, és a talált hibák (N-F172a–c) nyitott tételként állnak — **a közlés feltétele**. **A mért pontosság alapján a nyitás mehet**; mindkét számszerű feltétel közel van a küszöbhöz, ezt a közlésnek ki kell mondania.
+**A nyitás indoka (DT-F172b; az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-05)**: a párosítás nyílt adatként közölhető (CC BY 4.0, TAHOT/TAGNT-attribúció), mert a pontossága mérve és dokumentálva van — kapcsolattípusonként (fő-szó / mellékszó / morféma) és rétegenként, konfidencia-intervallummal (ez a jelentés); a „javaslat” állapot és a `bizonyossag` mező megmarad, az ismert hibák nyitott tételként állnak (N-F172a–c). A nyitás **nem** egy küszöb teljesülésén alapul: a mérés előtt nem volt rögzített kritérium, és utólag felállított küszöb utólagos kritériumnak látszana.
+
+**Minőségi cél a 2. kiadásra** (előre rögzített kritérium a következő kiadás méréséhez; **az 1. kiadás eredményeinek ismeretében fogalmaztuk meg**, ezért az 1. kiadásra nem alkalmazzuk): (1) a külső fő-szó egyezés tisztán a forrás szerinti 95%-os alsó széle ≥ 98% (az 1. kiadásban 98,22%); (2) a vak ellenőrrel mért súlyozott egyezés alsó széle ≥ 93%, és egyetlen réteg pontbecslése sem 90% alatti (az 1. kiadásban 93,81%, a legkisebb réteg 92,0%); (3) a mérés ugyanezzel a protokollal fut (rétegzett minta, vak ellenőr, független külső forrás), és a közlés kapcsolattípusonként és rétegenként adja meg a pontosságot. A célt az N-F172a–b javítása után új mérés igazolja.
 
 ## 8. Korlátok
 
@@ -121,7 +123,7 @@ Az orkesztrátor a felhasználó felhatalmazásával (2026-11-05):
 2. (4b) Az „egység határa” címke „szomszédos token” lett (helyzeti címke); a 97,45%-os „konvenciónak véve” érték törölve; az N-F172b szövege átnézést ír elő.
 3. (4c) A `magas`/`alacsony` Mózes-réteg ok-okozati állítása törölve (könyv-hatás).
 4. A morféma-arány: az ÓSZ-párok 33,7%-a (az összes 26,3%-a), a DT-F172a-ban és az N-F172c-ben is javítva.
-5. (4.5) A kétes esetek eldöntve (DT-F172c), a pontosság átszámolva; a küszöbök utólagos javaslat volta kimondva.
+5. (4.5) A kétes esetek eldöntve (DT-F172c), a pontosság átszámolva; a nyitás indoka a mért és dokumentált pontosság, nem utólagos küszöb; a küszöbjavaslat a 2. kiadás előre rögzített minőségi céljává vált (7.).
 6. (4d) Az Opus-szám alsó becslés volta feltételhez kötve.
 7. DT-F172a: egyedi forrás-Strong érték nem áll a jelentésben és az N-F172a-ban.
 8. Proveniencia: a hibatípusok tartalmi/morféma bontása a `f172/meres_eredmeny.tsv`-ben, a minta-párok sorsa a `f172/kulso/kulso_eredmeny.tsv`-ben.
