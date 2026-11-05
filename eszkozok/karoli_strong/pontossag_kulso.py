@@ -50,6 +50,13 @@ A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként eg
               BD_<könyv ékezet nélkül>_<fejezet két jeggyel>.txt. Kimenet:
               f172/kulso/elteres_itelet.tsv (a forrás Strong-száma nélkül).
 
+--osszesit : a külső összevetés összesítése fejezetenként és nyelvenként
+              (f172/kulso/kulso_eredmeny.tsv): a forrás által Strong-számmal
+              jelölt szavakon álló tartalmi párok közül a mi hibánk (az
+              --itel szerint) aránya; pontosság alsó (a vitatható is hiba) és
+              felső (a vitatható nem hiba) becslése, Wilson 95%; a forrás Strong
+              nélküli és a szövegforma párok külön, nem ellenőrzöttként.
+
 Használat: python eszkozok/karoli_strong/pontossag_kulso.py --fejezetek
            python eszkozok/karoli_strong/pontossag_kulso.py --osszevet <fájl> --fejezet "3Móz 3"
 """
@@ -185,10 +192,21 @@ _BD_REF = re.compile(r'^\s*(\d?\s?[^\W\d_]+)\.?\s+(\d+):(\d+)\s*$')
 _DUPLA = [('nyny', 'nny'), ('lyly', 'lly'), ('gygy', 'ggy'), ('tyty', 'tty'), ('szsz', 'ssz'),
           ('zszs', 'zzs'), ('cscs', 'ccs'), ('dzdz', 'ddz'), ('cz', 'c')]
 OSZTALYOK = ['egyezik', 'masodlagos', 'konvencio', 'elter', 'forrasban_nincs', 'szovegforma']
-# Strong-konvenció: ugyanaz a lexéma a két számozásban más számon (a KJV-Strong a
-# הלך egyes alakjait H3212 alá, a לקראת-t H7125 alá veszi, a TAHOT H1980 / H7122).
-# Ezek nem párosítási eltérések; a lista a talált esetekkel bővül, és a jelentésben áll.
-KONVENCIO = {frozenset({1980, 3212}), frozenset({7122, 7125})}
+# Strong-konvenció: ugyanaz a lexéma a két számozásban más számon. Héber: a KJV-Strong
+# a הלך egyes alakjait H3212 alá, a לקראת-t H7125 alá veszi (TAHOT: H1980 / H7122).
+# Görög: a KJV-Strong a névmás- és létige-alakokat saját számon jelöli (pl. ἡμῶν 2257,
+# μοι 3427, ὑμῖν 5213, ἐστί 2076, ταῦτα 5023), a TAGNT a lexéma számán (ἐγώ: G1473 /
+# G3165, σύ: G4771, εἰμί: G1510, οὗτος: G3778); οἶδα: KJV 1492, TAGNT G6063 (εἴδω).
+# Ezek nem párosítási eltérések; a csoportok a jelentésben állnak.
+_KONV_CSOPORT = {
+    'H': [{1980, 3212}, {7122, 7125}],
+    'G': [{1473, 3165, 1691, 1698, 1700, 2248, 2249, 2254, 2257, 3427, 3450},
+          {4771, 4571, 4671, 4675, 5209, 5210, 5213, 5216},
+          {1510, 1488, 1511, 1526, 2070, 2071, 2075, 2076, 2258, 2277, 5600, 5607},
+          {3778, 5023, 5025, 5026, 5124, 5127, 5128, 5129, 5130},
+          {1492, 6063}],
+}
+KONVENCIO = {frozenset({a, b}) for csop in _KONV_CSOPORT.values() for c in csop for a in c for b in c if a != b}
 USZ_KONYVEK = ('Mt', 'Mk', 'Luk', 'Ján', 'ApCsel', 'Róm', '1Kor', '2Kor', 'Gal', 'Ef', 'Fil', 'Kol',
                '1Thessz', '2Thessz', '1Tim', '2Tim', 'Tit', 'Filem', 'Zsid', 'Jak', '1Pét', '2Pét',
                '1Ján', '2Ján', '3Ján', 'Júd', 'Jel')
@@ -217,7 +235,7 @@ def bd_elemez(ut, usz):
             if akt is None or not sor.strip():
                 continue
             megj += len(_BD_MEGJ.findall(sor))
-            sor = _BD_MEGJ.sub(' ', sor)
+            sor = _BD_MEGJ.sub(' ', sor).replace('[', '').replace(']', '')
             for t in _BD_TOK.findall(sor):
                 if t[0].isdigit():
                     if versek[akt]:
@@ -277,6 +295,15 @@ def alak_elteres(sajat, bd):
     return d
 
 
+def atkulcsol(bd, konyv):
+    """A forrás könyvneve eltérhet (pl. „Apcs”); egy fájl egy fejezet, ezért ha
+    minden fejléc ugyanazt a könyvnevet viseli, a Károli-rövidítésre cseréljük."""
+    nevek = {v.rsplit(' ', 1)[0] for v in bd}
+    if len(nevek) != 1:
+        return bd
+    return {'%s %s' % (konyv, v.rsplit(' ', 1)[1]): x for v, x in bd.items()}
+
+
 def _strong_int(s):
     return int(s[1:]) if len(s) > 1 and s[1:].isdigit() else None
 
@@ -302,6 +329,7 @@ def osszevet(ut, fejezet, valtozat):
     karoli, _ = bemenet._adatok()
     konyv, fsz = fejezet.rsplit(' ', 1)
     bd, megj = bd_elemez(ut, konyv in USZ_KONYVEK)
+    bd = atkulcsol(bd, konyv)
     versek = sorted((v for v in karoli if v.rsplit(':', 1)[0] == fejezet), key=lambda v: int(v.rsplit(':', 1)[1]))
     hiany = [v for v in versek if v not in bd]
     tobblet = [v for v in bd if v not in set(versek)]
@@ -425,7 +453,7 @@ def itel(mappa):
         konyv, fsz = fej.rsplit(' ', 1)
         if fej not in bd_cache:
             ut = os.path.join(mappa, 'BD_%s_%02d.txt' % (_ekezet_nelkul(konyv), int(fsz)))
-            bd_cache[fej] = bd_elemez(ut, konyv in USZ_KONYVEK)[0]
+            bd_cache[fej] = atkulcsol(bd_elemez(ut, konyv in USZ_KONYVEK)[0], konyv)
             ou = os.path.join(pm.GYOKER, 'f172', 'ellenor', 'valasz', 'kulso_%s_%s.json' % (konyv, fsz))
             d = {}
             if os.path.exists(ou):
@@ -463,18 +491,62 @@ def itel(mappa):
     print(Counter(x[-1] for x in ki))
 
 
+def osszesit():
+    import pontossag_meres as pme
+    _, osz = pm._tabla(os.path.join(KULSO, 'osszevetes.tsv'))
+    _, it = pm._tabla(os.path.join(KULSO, 'elteres_itelet.tsv'))
+    itel_k = {(r['vers'], r['hu_sorszam'], r['er_sorszam']): r['itelet'] for r in it}
+    csop = {}
+    for r in osz:
+        nyelv = 'USZ' if r['fejezet'].rsplit(' ', 1)[0] in USZ_KONYVEK else 'OSZ'
+        for k in (r['fejezet'], nyelv, 'OSSZES'):
+            d = csop.setdefault(k, {})
+            o = r['osztaly']
+            if o == 'elter':
+                o = 'elter_' + itel_k.get((r['vers'], r['hu_sorszam'], r['er_sorszam']), 'nincs_itelet')
+            d[o] = d.get(o, 0) + 1
+    oszt = ['egyezik', 'masodlagos', 'konvencio', 'elter_forras_hibaja', 'elter_vitathato', 'elter_mi_hibank',
+            'elter_nincs_itelet', 'forrasban_nincs', 'szovegforma']
+    head = pm.git_head()
+    sorok = []
+    for k in sorted(csop, key=lambda k: (k in ('OSZ', 'USZ', 'OSSZES'), k)):
+        d = csop[k]
+        n = sum(d.get(o, 0) for o in oszt[:7])
+        hiba_also = d.get('elter_mi_hibank', 0) + d.get('elter_vitathato', 0) + d.get('elter_nincs_itelet', 0)
+        hiba_felso = d.get('elter_mi_hibank', 0)
+        pa, pf = (n - hiba_also) / n, (n - hiba_felso) / n
+        la, _ = pme.wilson(n - hiba_also, n)
+        _, hf = pme.wilson(n - hiba_felso, n)
+        sorok.append([k] + [str(d.get(o, 0)) for o in oszt] + [str(n), '%.4f' % pa, '%.4f' % pf, '%.4f' % la, '%.4f' % hf])
+    with open(os.path.join(KULSO, 'kulso_eredmeny.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 külső összevetés összesítése (Bible-Discovery, Strong-számos Károli HUN, régies; '
+                'zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv | ts=git:%s | '
+                'manual (determinisztikus; n = a forrás által Strong-számmal jelölt szavakon álló tartalmi párok; '
+                'pontossag_also: a vitatható is hiba; Wilson 95%%; a fejezet klaszter, nem véletlen mintaelem)\n' % head)
+        f.write('\t'.join(['csoport'] + oszt + ['n_ellenorzott', 'pontossag_also', 'pontossag_felso', 'also95', 'felso95'])
+                + '\n')
+        for x in sorok:
+            f.write('\t'.join(x) + '\n')
+    for x in sorok:
+        print('%-10s n=%-5s also=%s felso=%s [%s, %s]  mi_hibank=%s vitathato=%s forras_hibaja=%s'
+              % (x[0], x[10], x[11], x[12], x[13], x[14], x[6], x[5], x[4]))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--fejezetek', action='store_true')
     ap.add_argument('--osszevet')
     ap.add_argument('--fejezet')
     ap.add_argument('--itel', action='store_true')
+    ap.add_argument('--osszesit', action='store_true')
     ap.add_argument('--bd-mappa')
     ap.add_argument('--valtozat', default='ismeretlen',
                     help='a forrás változata, ahogy a felhasználó megadta (pl. "régies (a program szerint)")')
     a = ap.parse_args()
     if a.fejezetek:
         fejezetek()
+    elif a.osszesit:
+        osszesit()
     elif a.itel and a.bd_mappa:
         itel(a.bd_mappa)
     elif a.osszevet and a.fejezet:

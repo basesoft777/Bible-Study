@@ -1,0 +1,13 @@
+# MANUAL: scope=F172 külső összevetés összesítése (Bible-Discovery, Strong-számos Károli HUN, régies; zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv | ts=git:330b0675 | manual (determinisztikus; n = a forrás által Strong-számmal jelölt szavakon álló tartalmi párok; pontossag_also: a vitatható is hiba; Wilson 95%; a fejezet klaszter, nem véletlen mintaelem)
+csoport	egyezik	masodlagos	konvencio	elter_forras_hibaja	elter_vitathato	elter_mi_hibank	elter_nincs_itelet	forrasban_nincs	szovegforma	n_ellenorzott	pontossag_also	pontossag_felso	also95	felso95
+1Móz 7	244	30	1	4	0	0	0	75	0	279	1.0000	1.0000	0.9864	1.0000
+2Kir 10	446	31	6	5	1	0	0	150	1	489	0.9980	1.0000	0.9885	1.0000
+3Móz 3	167	19	0	0	0	0	0	54	0	186	1.0000	1.0000	0.9798	1.0000
+ApCsel 12	384	25	11	6	0	0	0	29	0	426	1.0000	1.0000	0.9911	1.0000
+Ez 43	323	19	1	1	0	1	0	67	0	345	0.9971	0.9971	0.9838	0.9995
+Jel 19	399	25	9	7	0	0	0	28	2	440	1.0000	1.0000	0.9913	1.0000
+Péld 3	192	8	2	1	0	2	0	75	0	205	0.9902	0.9902	0.9651	0.9973
+Róm 1	425	40	19	5	1	0	0	44	3	490	0.9980	1.0000	0.9885	1.0000
+OSSZES	2580	197	49	29	2	3	0	522	6	2860	0.9983	0.9990	0.9959	0.9996
+OSZ	1372	107	10	11	1	3	0	421	1	1504	0.9973	0.9980	0.9932	0.9993
+USZ	1208	90	39	18	1	0	0	101	5	1356	0.9993	1.0000	0.9958	1.0000
