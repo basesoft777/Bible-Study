@@ -3142,6 +3142,8 @@ def dbh_jelentes_cella(igehely, strong_field):
                     continue
                 szov = ubs_glossza_cella('UBS_DBH', t, lx, EM_DASH, r['glosszak'])
                 cellak.append('%s%s' % (szov, '' if mt == vers else ' *(MT: %s)*' % mt))
+        # tartomány-sornál (pl. 5Móz 27:15-26) a versek ugyanazt a jelentést adják: sorrendtartó ismétlésszűrés
+        cellak = list(dict.fromkeys(cellak))
         if cellak:
             van = True
             reszek.append((t, '; '.join(cellak)))
