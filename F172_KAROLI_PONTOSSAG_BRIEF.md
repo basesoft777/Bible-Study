@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: dontesre_var
 ad: a ~599 000 gépi Károli–Strong pár mért pontossága rétegenként (könyvcsoport, héber/görög, bizonyosság), 95%-os konfidencia-intervallummal és hibatípusokkal, egy független második modell vak ellenőrzéséből és a felhasználó szúrópróbájából — a párosítás mint önálló adatkészlet (második adatközlemény) előfeltétele
-kovetkezo: "Te: a jelentés 6. pontjának kétes esetei (2 vitatható + 3 a mi hibánk megerősítése) és a draft PR átnézése; a nyitás (DT-F172b) a jelentés szerint mehet"
+kovetkezo: "Te: a jelentés 6. pontjának kétes esetei (2 vitatható + 3 a mi hibánk megerősítése) és a draft PR átnézése; a nyitás (DT623) a jelentés szerint mehet"
 munka: folyamat
 olvas: [adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, f22/versmegfeleltetes.tsv, f22/versosszevonas.tsv, f21p/regi_arany_hibas.tsv, "naplok/F22_*_jelentes.md", naplok/F21P_jelentes.md, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/szuroproba.py, eszkozok/karoli_strong/meres.py, eszkozok/karoli_strong/arany_ellenoriz.py, adat/SEMA.md]
 ir: [dontesek/uj/goofy-turing-b0eb00.md, nyitott/uj/goofy-turing-b0eb00.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_strong/pontossag_minta.py, eszkozok/karoli_strong/pontossag_meres.py, eszkozok/karoli_strong/teszt_pontossag.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/pontossag_ellenor.py, eszkozok/karoli_strong/pontossag_kulso.py, f172/]
@@ -49,7 +49,7 @@ Az `adat/karoli_strong/parok_<könyv>.tsv` (133 fájl a könyvtárban; a befogad
 0. Modell-ellenőrzés (CLAUDE.md): `opus`. Olvasd: `adat/SEMA.md` 2.20, a `F22_*_jelentes.md` összesítő számai (csak kivonat), `naplok/F21P_jelentes.md`.
 1. Keret és rétegek: a pársorok rétegenkénti száma a fájlokból (TSV `split('\t')`, CLAUDE.md), a `kezi`/párosítatlan kizárások; `f172/keret.tsv`.
 2. Mintavétel (`pontossag_minta.py`), `f172/minta.tsv`; teszt a determinizmusra (ugyanaz a mag → ugyanaz a minta). Commit (`F172.1`).
-3. ⛔ **A felhasználó dönt**: a rétegek és a mintaméret (javaslat: 8 réteg × 200), a szúrópróba mérete (javaslat: 120) és formája (TSV vagy lektor-felület), az ellenőrzés költsége és útja (Opus-subagentek az előfizetésből, kötegelve, vagy API-keret). Tétel `dontesek/uj/<ágnév>.md`-be (`DT-F172a`), megállás.
+3. ⛔ **A felhasználó dönt**: a rétegek és a mintaméret (javaslat: 8 réteg × 200), a szúrópróba mérete (javaslat: 120) és formája (TSV vagy lektor-felület), az ellenőrzés költsége és útja (Opus-subagentek az előfizetésből, kötegelve, vagy API-keret). Tétel `dontesek/uj/<ágnév>.md`-be (`DT622`), megállás.
 4. Vak ellenőrzés kötegekben (Opus), a válaszok `f172/ellenor/`-be, a futtató modell nevével. Kalibráció az aranyon. Commit kötegenként (`F172.2.<n>`).
 5. Összevetés és mérés (`pontossag_meres.py` + `teszt_pontossag.py`); a szúrópróba-tábla előállítása. Commit (`F172.3`).
 6. ⛔ **A felhasználó szúrópróbája**: a `f172/szuroproba_felhasznalo.tsv` kitöltése; amíg nincs kész, a feladat `dontesre_var` („Te: szúrópróba”).
@@ -68,4 +68,4 @@ Az `adat/karoli_strong/parok_<könyv>.tsv` (133 fájl a könyvtárban; a befogad
 
 - `nem_fugg: [22, 38, 138]` (befogadás, 2026-11-05): a #38 csak olvasott táblát (normalizáló tábla) ír; a mérés a #22 **mai** állapotát méri (a befogadáskor 598 715 pár); a #22 hátralévő része (N-F22e, a 20 `kezi` vers) a keretből kimarad, és a jelentés a mért commitot rögzíti. A #138 a `TAHOT_kivonat.tsv`-t írhatja; a mérés a futáskori commit TAHOT-állapotán fut, ezt a jelentés rögzíti.
 - A második modell választása (Opus) a befogadáskor rögzítve, a felhasználó döntése (2026-11-05) szerint; a javaslat az orkesztrátortól.
-- A szúrópróba módja megváltozott (a felhasználó, 2026-11-05, az orkesztrátoron át): a kézi jelölő tábla helyett összevetés egy független, Strong-címkés forrással (Bible-Discovery, Strong-os Károli HUN modul, zárt licenc), amelyből a felhasználó versadagokat másol be. Ezért a `zart_osszevet.py` kibővítése a hatókörbe kerül (a 2. „Nincs benne” e pontja érvénytelen); a forrás szövege csak mérésre, a repóba nyersen nem kerül (DT32-elv). A méret és a forma: DT-F172a.
+- A szúrópróba módja megváltozott (a felhasználó, 2026-11-05, az orkesztrátoron át): a kézi jelölő tábla helyett összevetés egy független, Strong-címkés forrással (Bible-Discovery, Strong-os Károli HUN modul, zárt licenc), amelyből a felhasználó versadagokat másol be. Ezért a `zart_osszevet.py` kibővítése a hatókörbe kerül (a 2. „Nincs benne” e pontja érvénytelen); a forrás szövege csak mérésre, a repóba nyersen nem kerül (DT32-elv). A méret és a forma: DT622.
