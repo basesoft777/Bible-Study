@@ -5,12 +5,12 @@ kod: KAROLI_PONTOSSAG
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: dontesre_var
 ad: a ~599 000 gépi Károli–Strong pár mért pontossága rétegenként (könyvcsoport, héber/görög, bizonyosság), 95%-os konfidencia-intervallummal és hibatípusokkal, egy független második modell vak ellenőrzéséből és a felhasználó szúrópróbájából — a párosítás mint önálló adatkészlet (második adatközlemény) előfeltétele
-kovetkezo: Indítható (a /kovetkezo); a mintaméret és a költség ⛔-nél a felhasználó dönt, a szúrópróba a felhasználóé
+kovetkezo: "Te: a jelentés 6. pontjának kétes esetei (2 vitatható + 3 a mi hibánk megerősítése) és a draft PR átnézése; a nyitás (DT-F172b) a jelentés szerint mehet"
 munka: folyamat
 olvas: [adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, f22/versmegfeleltetes.tsv, f22/versosszevonas.tsv, f21p/regi_arany_hibas.tsv, "naplok/F22_*_jelentes.md", naplok/F21P_jelentes.md, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/szuroproba.py, eszkozok/karoli_strong/meres.py, eszkozok/karoli_strong/arany_ellenoriz.py, adat/SEMA.md]
-ir: [eszkozok/karoli_strong/pontossag_minta.py, eszkozok/karoli_strong/pontossag_meres.py, eszkozok/karoli_strong/teszt_pontossag.py, f172/]
+ir: [dontesek/uj/goofy-turing-b0eb00.md, nyitott/uj/goofy-turing-b0eb00.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_strong/pontossag_minta.py, eszkozok/karoli_strong/pontossag_meres.py, eszkozok/karoli_strong/teszt_pontossag.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/pontossag_ellenor.py, eszkozok/karoli_strong/pontossag_kulso.py, f172/]
 fugg: []
 nem_fugg: [22, 38, 138]
 ---
@@ -68,3 +68,4 @@ Az `adat/karoli_strong/parok_<könyv>.tsv` (133 fájl a könyvtárban; a befogad
 
 - `nem_fugg: [22, 38, 138]` (befogadás, 2026-11-05): a #38 csak olvasott táblát (normalizáló tábla) ír; a mérés a #22 **mai** állapotát méri (a befogadáskor 598 715 pár); a #22 hátralévő része (N-F22e, a 20 `kezi` vers) a keretből kimarad, és a jelentés a mért commitot rögzíti. A #138 a `TAHOT_kivonat.tsv`-t írhatja; a mérés a futáskori commit TAHOT-állapotán fut, ezt a jelentés rögzíti.
 - A második modell választása (Opus) a befogadáskor rögzítve, a felhasználó döntése (2026-11-05) szerint; a javaslat az orkesztrátortól.
+- A szúrópróba módja megváltozott (a felhasználó, 2026-11-05, az orkesztrátoron át): a kézi jelölő tábla helyett összevetés egy független, Strong-címkés forrással (Bible-Discovery, Strong-os Károli HUN modul, zárt licenc), amelyből a felhasználó versadagokat másol be. Ezért a `zart_osszevet.py` kibővítése a hatókörbe kerül (a 2. „Nincs benne” e pontja érvénytelen); a forrás szövege csak mérésre, a repóba nyersen nem kerül (DT32-elv). A méret és a forma: DT-F172a.

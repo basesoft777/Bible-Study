@@ -1,0 +1,11 @@
+KÖTEG: kulso_Péld_3
+
+VERS: Péld 3:14
+KÁROLI (számozott szavak): 1 Mert | 2 jobb | 3 ennek | 4 megszerzése | 5 az | 6 ezüstnek | 7 megszerzésénél | 8 és | 9 a | 10 kiásott | 11 aranynál | 12 ennek | 13 jövedelme
+EREDETI (számozott szavak): 1 כִּ֤י H3588 [for] | 2 ט֣וֹב H2896 [[is] good] | 3 סַ֭חְרָ H5504 [profit] | 4 הּ H9024 [her] | 5 מִ H9006 [more than] | 6 סְּחַר H5504 [[the] profit of] | 7 כָּ֑סֶף H3701 [silver] | 8 וּ֝ H9002 [and] | 9 מֵ H9006 [more than] | 10 חָר֗וּץ H2742 [gold] | 11 תְּבוּאָתָֽ H8393 [gain] | 12 הּ H9024 [her]
+CÉL (Károli-sorszámok): 7
+
+VERS: Péld 3:18
+KÁROLI (számozott szavak): 1 Életnek | 2 fája | 3 ez | 4 azoknak | 5 a | 6 kik | 7 megragadják | 8 és | 9 a | 10 kik | 11 megtartják | 12 boldogok
+EREDETI (számozott szavak): 1 עֵץ H6086 [[is] a tree of] | 2 חַיִּ֣ים H2416 [life] | 3 הִ֭יא H1931 [she] | 4 לַ H9005 [to <the>] | 5 מַּחֲזִיקִ֣ים H2388 [[those who] take hold] | 6 בָּ֑ H9003 [on] | 7 הּ H9034 [her] | 8 וְֽ H9002 [and] | 9 תֹמְכֶ֥י H8551 [[those who] hold fast to] | 10 הָ H9034 [her] | 11 מְאֻשָּֽׁר H0833 [[are] called blessed]
+CÉL (Károli-sorszámok): 1, 2

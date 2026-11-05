@@ -1,0 +1,11 @@
+# MANUAL: scope=F172 mintavételi keret (adat/karoli_strong/parok_*.tsv pársorai) | forras=adat/karoli_strong/parok_*.tsv, szavak_*.tsv, nem_tr_parositott.tsv @ aa61de89 | ts=git:aa61de89 | manual (determinisztikus számlálás; a párok modell-kimenet, javaslat) | a kezi/betoldas/forditatlan/fuggoben oszlopok könyvcsoport-szintűek, leíró számok
+reteg	parsor	suly	versek	morfema_par	nem_tr_par	csoport_hu_token	csoport_er_token	csoport_betoldas	csoport_forditatlan	csoport_fuggoben	csoport_kezi_vers
+OSZ_mozes_magas	52844	0.088262	2740	17163	0						
+OSZ_mozes	69690	0.116399	4591	25112	0	118302	124123	21044	12931	27	1
+OSZ_tortenet	160447	0.267986	7018	53344	0	157698	166417	29618	17719	156	2
+OSZ_koltoi	65358	0.109164	5001	22202	0	66169	60692	13693	2209	78	4
+OSZ_profeta	118446	0.197834	5332	39342	0	114710	118068	19863	7954	140	4
+USZ_evangelium	79223	0.132322	4765	0	296	85510	85970	15123	13556	734	20
+USZ_level	44018	0.073521	2753	0	90	47234	45941	8394	6392	453	14
+USZ_jelenesek	8689	0.014513	405	0	50	9744	10185	2179	2256	0	0
+OSSZES	598715	1.000000	31125	157163	436						
