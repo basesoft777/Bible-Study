@@ -1,0 +1,12 @@
+# MANUAL: scope=F172 a külső eltérések háromutas ítélete (javaslat; a vitatható esetek a felhasználóé) | forras=f172/kulso/osszevetes.tsv, f172/ellenor/valasz/kulso_*.json, a repón kívüli Bible-Discovery-bemásolás (a forrás Strong-száma nem kerül ide) | ts=git:cfb796ae | manual (determinisztikus szabály)
+fejezet	vers	hu_sorszam	hu_szo	er_sorszam	strong	opus_gepi	opus_forras	itelet
+1Móz 7	1Móz 7:20	3	nevekedének	8	H1396	1	0	forras_hibaja
+1Móz 7	1Móz 7:20	6	feljebb	6	H4605	1	0	forras_hibaja
+1Móz 7	1Móz 7:21	14	nyüzsgő	24	H8317	1	0	forras_hibaja
+1Móz 7	1Móz 7:21	17	mászó	22	H8318	1	0	forras_hibaja
+2Kir 10	2Kir 10:2	4	hozzátok	9	H0413	1	0	forras_hibaja
+2Kir 10	2Kir 10:5	10	fejedelmei	3	H0834	1	0	forras_hibaja
+2Kir 10	2Kir 10:5	10	fejedelmei	8	H0834	1	0	forras_hibaja
+2Kir 10	2Kir 10:7	5	hozzájok	7	H0413	1	0	forras_hibaja
+2Kir 10	2Kir 10:15	23	é	22	H3426	0	0	vitathato
+2Kir 10	2Kir 10:24	24	közül	23	H4480	1	0	forras_hibaja

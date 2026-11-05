@@ -27,7 +27,8 @@ A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként eg
               igazítási támasz (difflib a helyesírásilag normalizált szavakon; az
               „a mely” ↔ „amely” típusú összevonás összefűzéssel). A gépi pár
               tartalmi (nem morféma) párjaira: `egyezik` (a pár Strongja a
-              forrás szavának Strongjai közt) · `masodlagos` (nincs köztük, de
+              forrás szavának Strongjai közt) · `konvencio` (a két Strong ugyanannak a
+              lexémának két számozása, KONVENCIO) · `masodlagos` (nincs köztük, de
               ugyanannak a Károli-szónak egy másik gépi párja egyezik: a forrás
               szavanként a fő Strongot jelöli, a ragban/elöljáróban álló
               mellékszót nem; vitatható, nem hiba) · `elter` (a Károli-szó
@@ -40,11 +41,22 @@ A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként eg
               eltérések vak Opus-ítéletének bemenete:
               f172/ellenor/bemenet/kulso_<könyv>_<fejezet>.txt.
 
+--itel --bd-mappa <mappa> : az `elter` párok háromutas ítélete (javaslat): a
+              gépi pár, a forrás és a vak Opus-ellenőr
+              (f172/ellenor/valasz/kulso_<könyv>_<fejezet>.json) szerint:
+              `mi_hibank` (az Opus a forrás Strongját jelöli, a gépit nem) ·
+              `forras_hibaja` (az Opus a gépi tokent jelöli, a forrásét nem) ·
+              `vitathato` (mindkettőt vagy egyiket sem). A forrásfájl neve:
+              BD_<könyv ékezet nélkül>_<fejezet két jeggyel>.txt. Kimenet:
+              f172/kulso/elteres_itelet.tsv (a forrás Strong-száma nélkül).
+
 Használat: python eszkozok/karoli_strong/pontossag_kulso.py --fejezetek
            python eszkozok/karoli_strong/pontossag_kulso.py --osszevet <fájl> --fejezet "3Móz 3"
 """
 
 import argparse
+import json
+import unicodedata
 import difflib
 import os
 import re
@@ -172,7 +184,11 @@ _BD_MEGJ = re.compile(r'\*\([^)]*\)')
 _BD_REF = re.compile(r'^\s*(\d?\s?[^\W\d_]+)\.?\s+(\d+):(\d+)\s*$')
 _DUPLA = [('nyny', 'nny'), ('lyly', 'lly'), ('gygy', 'ggy'), ('tyty', 'tty'), ('szsz', 'ssz'),
           ('zszs', 'zzs'), ('cscs', 'ccs'), ('dzdz', 'ddz'), ('cz', 'c')]
-OSZTALYOK = ['egyezik', 'masodlagos', 'elter', 'forrasban_nincs', 'szovegforma']
+OSZTALYOK = ['egyezik', 'masodlagos', 'konvencio', 'elter', 'forrasban_nincs', 'szovegforma']
+# Strong-konvenció: ugyanaz a lexéma a két számozásban más számon (a KJV-Strong a
+# הלך egyes alakjait H3212 alá, a לקראת-t H7125 alá veszi, a TAHOT H1980 / H7122).
+# Ezek nem párosítási eltérések; a lista a talált esetekkel bővül, és a jelentésben áll.
+KONVENCIO = {frozenset({1980, 3212}), frozenset({7122, 7125})}
 USZ_KONYVEK = ('Mt', 'Mk', 'Luk', 'Ján', 'ApCsel', 'Róm', '1Kor', '2Kor', 'Gal', 'Ef', 'Fil', 'Kol',
                '1Thessz', '2Thessz', '1Tim', '2Tim', 'Tit', 'Filem', 'Zsid', 'Jak', '1Pét', '2Pét',
                '1Ján', '2Ján', '3Ján', 'Júd', 'Jel')
@@ -237,6 +253,30 @@ def igazit(sajat, bd):
     return ki
 
 
+def alak_elteres(sajat, bd):
+    """A Károli-szavak szóalak-összevetése a forrás szövegével (leíró, a
+    kiadások közötti különbség): {azonos, helyesiras, osszevonas, mas_alak,
+    nem_igazithato} Károli-szavanként."""
+    a = [norm(t) for t in sajat]
+    b = [norm(w) for w, _ in bd]
+    d = {'azonos': 0, 'helyesiras': 0, 'osszevonas': 0, 'mas_alak': 0, 'nem_igazithato': 0}
+    sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        if op == 'equal':
+            for k in range(i2 - i1):
+                if sajat[i1 + k].casefold() == bd[j1 + k][0].casefold():
+                    d['azonos'] += 1
+                else:
+                    d['helyesiras'] += 1
+        elif op == 'replace' and ''.join(a[i1:i2]) == ''.join(b[j1:j2]):
+            d['osszevonas'] += i2 - i1
+        elif op == 'replace' and i2 - i1 == j2 - j1:
+            d['mas_alak'] += i2 - i1
+        elif op in ('replace', 'delete'):
+            d['nem_igazithato'] += i2 - i1
+    return d
+
+
 def _strong_int(s):
     return int(s[1:]) if len(s) > 1 and s[1:].isdigit() else None
 
@@ -250,7 +290,7 @@ def _fejezet_parok(fejezet):
     raise SystemExit('nincs pártábla: %s' % konyv)
 
 
-def osszevet(ut, fejezet):
+def osszevet(ut, fejezet, valtozat):
     ut = os.path.abspath(ut)
     gy = os.path.abspath(pm.GYOKER)
     try:
@@ -271,9 +311,12 @@ def osszevet(ut, fejezet):
     tartalmi_hu = {}
     igazitatlan_szo = nalunk_nincs = 0
     szo = {'reszhalmaz': 0, 'reszben': 0, 'diszjunkt': 0}
+    alak = {'azonos': 0, 'helyesiras': 0, 'osszevonas': 0, 'mas_alak': 0, 'nem_igazithato': 0}
     for v in versek:
         tl = tokenek.tokenizal(karoli[v])
         m = igazit(tl, bd[v]) if v in bd else {}
+        for kk, x in (alak_elteres(tl, bd[v]) if v in bd else {'nem_igazithato': len(tl)}).items():
+            alak[kk] += x
         igazitatlan_szo += sum(1 for i in range(1, len(tl) + 1) if i not in m)
         vp = [r for r in parok if r['vers'] == v and not (r['strong'].startswith('H90') and len(r['strong']) == 5)]
         gepi = {}
@@ -291,6 +334,8 @@ def osszevet(ut, fejezet):
                 o = 'egyezik'
             elif gepi[h] & m[h]:
                 o = 'masodlagos'
+            elif any(frozenset({_strong_int(s), x}) in KONVENCIO for x in m[h]):
+                o = 'konvencio'
             else:
                 o = 'elter'
                 elteres.setdefault(v, set()).add(h)
@@ -298,6 +343,7 @@ def osszevet(ut, fejezet):
             sorok_ki.append([fejezet, v, r['hu_sorszam'], r['hu_szo'], r['er_sorszam'], s, r['bizonyossag'], o])
         for h, g in gepi.items():
             if m.get(h):
+                g = g | {x for x in m[h] if any(frozenset({x, y}) in KONVENCIO for y in g)}
                 if m[h] <= g:
                     szo['reszhalmaz'] += 1
                 elif m[h] & g:
@@ -322,6 +368,26 @@ def osszevet(ut, fejezet):
         for x in sorted(regi + sorok_ki, key=lambda x: (x[0], x[1].rsplit(':', 1)[0], int(x[1].rsplit(':', 1)[1]),
                                                        int(x[2]), int(x[4]))):
             f.write('\t'.join(x) + '\n')
+    # fejezetenkénti összesítés (csak számok)
+    out = os.path.join(KULSO, 'fejezet_osszesites.tsv')
+    ofej = (['fejezet', 'valtozat', 'versek', 'versek_forrasban'] + ['par_' + o for o in OSZTALYOK] +
+            ['szo_resze', 'szo_reszben', 'szo_diszjunkt', 'forrasban_strongos_nalunk_nincs'] +
+            ['alak_' + k for k in alak])
+    osor = ([fejezet, valtozat, str(len(versek)), str(len(bd))] + [str(szam[o]) for o in OSZTALYOK] +
+            [str(szo['reszhalmaz']), str(szo['reszben']), str(szo['diszjunkt']), str(nalunk_nincs)] +
+            [str(alak[k]) for k in alak])
+    oregi = []
+    if os.path.exists(out):
+        _, rr = pm._tabla(out)
+        oregi = [[r.get(k, '') for k in ofej] for r in rr if r['fejezet'] != fejezet]
+    with open(out, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 külső összevetés, fejezetenkénti összesítés (csak számok) | forras=Bible-Discovery, '
+                'Strong-számos Károli (HUN) modul (zárt licenc, csak mérésre), adat/karoli_strong/ | ts=git:%s | manual '
+                '(determinisztikus; az alak_* oszlop a Károli-szavak szóalak-összevetése a forrás szövegével: a két kiadás '
+                'közti különbség, leíró, nem párosítási hiba)\n' % head)
+        f.write('\t'.join(ofej) + '\n')
+        for x in sorted(oregi + [osor]):
+            f.write('\t'.join(x) + '\n')
     nev = 'kulso_%s_%s' % (konyv, fsz)
     if elteres:
         blokk = [bemenet.versblokk(v, kjv=False) + '\nCÉL (Károli-sorszámok): ' + ', '.join(map(str, sorted(elteres[v])))
@@ -333,15 +399,68 @@ def osszevet(ut, fejezet):
     print('%s: %d vers (a forrásban: %d; hiányzik: %s; többlet: %s); sorvégi megjegyzés: %d; nem igazított Károli-szó: %d'
           % (fejezet, len(versek), len(bd), hiany or '-', tobblet or '-', megj, igazitatlan_szo))
     print('tartalmi pár %d: ' % n + ', '.join('%s %d' % (o, szam[o]) for o in OSZTALYOK))
-    ossz = szam['egyezik'] + szam['masodlagos'] + szam['elter']
+    ossz = szam['egyezik'] + szam['masodlagos'] + szam['konvencio'] + szam['elter']
     if ossz:
-        print('pár: egyezik vagy másodlagos %.2f%% (%d/%d), elter %d; a forrásban Strongos, nálunk tartalmi pár nélküli Károli-szó: %d'
+        print('pár: egyezik, másodlagos vagy konvenció %.2f%% (%d/%d), elter %d; a forrásban Strongos, nálunk tartalmi pár nélküli Károli-szó: %d'
               % (100.0 * (ossz - szam['elter']) / ossz, ossz - szam['elter'], ossz, szam['elter'], nalunk_nincs))
     sz = sum(szo.values())
     if sz:
         print('szó (a forrás Strong-halmaza vs a gépi partnerhalmaz): része %d, részben %d, diszjunkt %d; része: %.2f%% (%d/%d)'
               % (szo['reszhalmaz'], szo['reszben'], szo['diszjunkt'], 100.0 * szo['reszhalmaz'] / sz, szo['reszhalmaz'], sz))
+    print('szóalak (Károli-szavak, %s): ' % valtozat + ', '.join('%s %d' % kv for kv in alak.items()))
     print('eltérés: %d vers, %d Károli-szó -> f172/ellenor/bemenet/%s.txt' % (len(elteres), sum(len(x) for x in elteres.values()), nev))
+
+
+def _ekezet_nelkul(x):
+    return ''.join(c for c in unicodedata.normalize('NFD', x) if unicodedata.category(c) != 'Mn')
+
+
+def itel(mappa):
+    karoli, ered = bemenet._adatok()
+    _, rr = pm._tabla(os.path.join(KULSO, 'osszevetes.tsv'))
+    elt = [r for r in rr if r['osztaly'] == 'elter']
+    bd_cache, opus_cache, ki = {}, {}, []
+    for r in elt:
+        fej = r['fejezet']
+        konyv, fsz = fej.rsplit(' ', 1)
+        if fej not in bd_cache:
+            ut = os.path.join(mappa, 'BD_%s_%02d.txt' % (_ekezet_nelkul(konyv), int(fsz)))
+            bd_cache[fej] = bd_elemez(ut, konyv in USZ_KONYVEK)[0]
+            ou = os.path.join(pm.GYOKER, 'f172', 'ellenor', 'valasz', 'kulso_%s_%s.json' % (konyv, fsz))
+            d = {}
+            if os.path.exists(ou):
+                with open(ou, encoding='utf-8') as f:
+                    j = json.load(f)
+                if 'opus' not in j['modell'].lower():
+                    raise SystemExit('nem Opus: %s' % ou)
+                for x in j['versek']:
+                    for h, es in x['jeloles']:
+                        d[(x['vers'], h)] = set(es)
+            opus_cache[fej] = d
+        v, h = r['vers'], int(r['hu_sorszam'])
+        m = igazit(tokenek.tokenizal(karoli[v]), bd_cache[fej][v])
+        bds = m.get(h, set())
+        op = opus_cache[fej].get((v, h))
+        if op is None:
+            o, g, f_ = 'nincs_opus', '', ''
+        else:
+            op_strong = {_strong_int(ered[v][e - 1]['strong']) for e in op}
+            g = int(r['er_sorszam']) in op
+            f_ = bool(bds & op_strong)
+            o = 'vitathato' if g == f_ else ('forras_hibaja' if g else 'mi_hibank')
+            g, f_ = str(int(g)), str(int(f_))
+        ki.append([fej, v, r['hu_sorszam'], r['hu_szo'], r['er_sorszam'], r['strong'], g, f_, o])
+    head = pm.git_head()
+    with open(os.path.join(KULSO, 'elteres_itelet.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 a külső eltérések háromutas ítélete (javaslat; a vitatható esetek a felhasználóé) | '
+                'forras=f172/kulso/osszevetes.tsv, f172/ellenor/valasz/kulso_*.json, a repón kívüli Bible-Discovery-bemásolás '
+                '(a forrás Strong-száma nem kerül ide) | ts=git:%s | manual (determinisztikus szabály)\n' % head)
+        f.write('\t'.join(['fejezet', 'vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'strong', 'opus_gepi', 'opus_forras',
+                           'itelet']) + '\n')
+        for x in ki:
+            f.write('\t'.join(x) + '\n')
+    from collections import Counter
+    print(Counter(x[-1] for x in ki))
 
 
 def main():
@@ -349,11 +468,17 @@ def main():
     ap.add_argument('--fejezetek', action='store_true')
     ap.add_argument('--osszevet')
     ap.add_argument('--fejezet')
+    ap.add_argument('--itel', action='store_true')
+    ap.add_argument('--bd-mappa')
+    ap.add_argument('--valtozat', default='ismeretlen',
+                    help='a forrás változata, ahogy a felhasználó megadta (pl. "régies (a program szerint)")')
     a = ap.parse_args()
     if a.fejezetek:
         fejezetek()
+    elif a.itel and a.bd_mappa:
+        itel(a.bd_mappa)
     elif a.osszevet and a.fejezet:
-        osszevet(a.osszevet, a.fejezet)
+        osszevet(a.osszevet, a.fejezet, a.valtozat)
     else:
         ap.error('--fejezetek, vagy --osszevet <fájl> --fejezet "<könyv> <fejezet>"')
 

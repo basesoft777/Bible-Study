@@ -1,0 +1,5 @@
+# MANUAL: scope=F172 külső összevetés, fejezetenkénti összesítés (csak számok) | forras=Bible-Discovery, Strong-számos Károli (HUN) modul (zárt licenc, csak mérésre), adat/karoli_strong/ | ts=git:cfb796ae | manual (determinisztikus; az alak_* oszlop a Károli-szavak szóalak-összevetése a forrás szövegével: a két kiadás közti különbség, leíró, nem párosítási hiba)
+fejezet	valtozat	versek	versek_forrasban	par_egyezik	par_masodlagos	par_konvencio	par_elter	par_forrasban_nincs	par_szovegforma	szo_resze	szo_reszben	szo_diszjunkt	forrasban_strongos_nalunk_nincs	alak_azonos	alak_helyesiras	alak_osszevonas	alak_mas_alak	alak_nem_igazithato
+1Móz 7	régies (a program szerint)	24	24	244	30	1	4	75	0	232	2	4	0	440	0	18	12	0
+2Kir 10	régies (a program szerint)	36	36	446	31	6	6	150	1	439	5	5	9	846	5	34	33	6
+3Móz 3	régies (a program szerint)	17	17	167	19	0	0	54	0	163	0	0	0	330	1	20	2	0
