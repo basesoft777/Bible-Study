@@ -20,7 +20,7 @@ CSERE = [
     ('„kiirtok mindent a földnek színéről … embert és barmot, az ég madarait”.',
      '„mindent elvesztek e föld színéről”, „Elvesztek embert és barmot; elvesztem az ég madarait”.'),
     ('„semmi átok nem lesz többé” (κατανάθεμα, a kritérium szava nélkül).',
-     '„semmi elátkozott nem lesz többé” (a görögben κατανάθεμα, átok; a kritérium szava nélkül).'),
+     '„semmi elátkozott nem lesz többé” (a görögben κατάθεμα, átok; a kritérium szava nélkül).'),
 ]
 
 
