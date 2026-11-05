@@ -110,5 +110,45 @@ class Meres(unittest.TestCase):
         self.assertEqual(pme._strong_norm('G0086'), 'G86')
 
 
+import tempfile  # noqa: E402
+
+import pontossag_kulso as pk  # noqa: E402
+
+
+class Kulso(unittest.TestCase):
+    """Szintetikus, saját bemenet (a zárt forrás szövege nem kerül a tesztbe)."""
+
+    def _fajl(self, szoveg):
+        fd, ut = tempfile.mkstemp(suffix='.txt')
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(szoveg)
+        self.addCleanup(os.remove, ut)
+        return ut
+
+    def test_elemzes_szo_utani_szam(self):
+        ut = self._fajl('9Kv 1:1\nAlfa 1234 béta, 2077, 8002 gamma.6440 delta 5493, 0, 8686, 0 el.5493, 8686  *(7126, 8686)\n')
+        v, megj = pk.bd_elemez(ut, usz=False)
+        self.assertEqual(megj, 1)
+        self.assertEqual(v['9Kv 1:1'], [('Alfa', {1234}), ('béta', {2077, 8002}), ('gamma', {6440}),
+                                        ('delta', {5493}), ('el', {5493})])
+
+    def test_elemzes_gorog_igealak_kod(self):
+        ut = self._fajl('9Kv 2:3\nszó 3056, 5656 más 5624\n')
+        v, _ = pk.bd_elemez(ut, usz=True)
+        self.assertEqual(v['9Kv 2:3'], [('szó', {3056}), ('más', {5624})])
+
+    def test_igazitas_osszevonas_es_helyesiras(self):
+        sajat = ['a', 'mely', 'nősténynyel', 'jő']
+        bd = [('amely', {834}), ('nősténnyel', {5347}), ('jő', set())]
+        m = pk.igazit(sajat, bd)
+        self.assertEqual(m, {1: {834}, 2: {834}, 3: {5347}, 4: set()})
+
+    def test_igazitas_nem_igazithato(self):
+        m = pk.igazit(['egy', 'kettő', 'három'], [('egy', {1}), ('négy', {4}), ('öt', {5}), ('három', {3})])
+        self.assertNotIn(2, m)
+        self.assertEqual(m[1], {1})
+        self.assertEqual(m[3], {3})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
