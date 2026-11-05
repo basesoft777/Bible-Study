@@ -550,7 +550,7 @@ def osszesit():
         f.write('# MANUAL: scope=F172 külső összevetés összesítése (Bible-Discovery, Strong-számos Károli HUN, régies; '
                 'zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv, '
                 'f172/itelet_par.tsv | ts=git:%s | manual (determinisztikus; n_fo = egyezik + konvencio + elter; '
-                'forras_szerint: a forrás ítélete; haromutas: gépi pár + forrás + vak Opus, DT-F172c; Wilson 95%%; '
+                'forras_szerint: a forrás ítélete; haromutas: gépi pár + forrás + vak Opus, a kétes esetek döntésével (KEZI_ITELET); Wilson 95%%; '
                 'a fejezet klaszter, nem véletlen mintaelem)\n' % head)
         f.write('\t'.join(['csoport'] + oszt + ['n_fo', 'forras_szerint', 'fs_also95', 'fs_felso95',
                                                 'haromutas', 'h3_also95', 'h3_felso95']) + '\n')
