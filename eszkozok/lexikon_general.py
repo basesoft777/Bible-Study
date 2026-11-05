@@ -619,7 +619,7 @@ KOZLEMENY = {
 }
 KANONIKUS_FORRAS_HELYORZO = '<KANONIKUS_FORRAS_URL>'
 DOI_HELYORZO = '<DOI>'
-TERMEKNEV_HELYORZO = '[HELYŐRZŐ: TERMÉKNÉV]'
+LEXIKON_CIM_HELYORZO = '[HELYŐRZŐ: A LEXIKON CÍME]'
 SZERZO_HELYORZO = '[HELYŐRZŐ: SZERZŐ NEVE]'
 
 JELMAGYARAZAT_TORZS = """**PaRDeS-szintek** (`sablonok/PaRDeS_gyorsreferencia.md`):
@@ -4627,22 +4627,25 @@ def kozel_keleti_sor(motivum_id, ut=None):
 
 def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
     """A Kolofon közleményekre kötött szövege (F168): az MI-nyilatkozatra mutató mondat (a szerzőségi mondat után áll),
-    és három bekezdés: a „Hogyan idézd” (a szócikkek mint mű és a nyílt adatmag külön, a `CITATION.cff` két egysége
+    és három bekezdés: a „Hogyan idézd” (a lexikon mint mű és a nyílt adatmag külön, a `CITATION.cff` két egysége
     szerint), a módszertani elvek (Hays-leképezés) és a hatókör (az ókori közel-keleti határ). A hatókör-mondat minden
     lapon áll; az érintett motívumnál (`kozel_keleti_hatar.tsv`) egy további mondat, és ha a próza közel-keleti
     hátteret említ, egy harmadik. A szöveg sablon és adat, kézi próza nem kerül bele. A DOI, a kanonikus hely, a
-    terméknév és a szerző neve helyőrző, amíg nincs meg."""
+    lexikon címe és a szerző neve helyőrző, amíg nincs meg. Az adatmag és a lexikon viszonyát a felhasználó által
+    jóváhagyott mondat mondja ki (F167.3.9, „ez a séma jó”, 2026-11-04)."""
     mi = ('A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a '
           '[Nyilatkozat a mesterséges intelligencia használatáról](%s) írja le.' % KOZLEMENY['mi'])
     if kiadasok:
         kiadas = '%s. kiadás (%s)' % (kiadasok[-1]['kiadas'].strip(), (kiadasok[-1].get('datum') or '').strip())
     else:
         kiadas = 'kiadás előtti változat, még nem idézhető'
-    idezes = ('**Hogyan idézd.** A lap szövegét a szócikkek mint mű részeként: %(szerzo)s: *%(termek)s — szócikkek*, '
-              '„%(cim)s” (`%(id)s`), %(kiadas)s, `%(url)s`; minden jog fenntartva. Az adatokat (motívum, előfordulások, '
-              'kizárt helyek, döntések) a nyílt adatmagként: %(szerzo)s: *%(termek)s — nyílt adatmag*, adatkészlet, '
-              'CC BY 4.0 (a nyílt kiadással), DOI: `%(doi)s`. A két idézési egységet a [`CITATION.cff`](%(cff)s) '
-              'írja le.' % {'szerzo': SZERZO_HELYORZO, 'termek': TERMEKNEV_HELYORZO, 'cim': m.get('cim') or m['id'],
+    idezes = ('**Hogyan idézd.** A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a '
+              'lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva. '
+              'A lap szövegét a lexikon (mű) részeként: %(szerzo)s: *%(lexikon)s*, „%(cim)s” (`%(id)s`), %(kiadas)s, '
+              '`%(url)s`. Az adatokat (motívum, előfordulások, kizárt helyek, döntések) a nyílt adatmagként: '
+              '%(szerzo)s: *%(lexikon)s — nyílt adatmag*, adatkészlet, CC BY 4.0 (a nyílt kiadással), DOI: `%(doi)s`. '
+              'A két idézési egységet a [`CITATION.cff`](%(cff)s) írja le.'
+              % {'szerzo': SZERZO_HELYORZO, 'lexikon': LEXIKON_CIM_HELYORZO, 'cim': m.get('cim') or m['id'],
                              'id': m['id'], 'kiadas': kiadas, 'url': KANONIKUS_FORRAS_HELYORZO,
                              'doi': DOI_HELYORZO, 'cff': KOZLEMENY['citation']})
     modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
