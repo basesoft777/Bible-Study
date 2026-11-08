@@ -38,6 +38,7 @@ KEREK_MIN_SZO = 7      # az arany lap legrövidebb kerek prózája (ApCsel 22:16
 FUNKCIO_MIN_SZO = 3    # az arany lap legrövidebb funkció-magyarázata („a próbatétel kudarca”) 3 szó
 
 CIM_1A = '#### 1/a. Az igehelyek szövege'
+CIM_1A_UJ = '#### 2.1. Az igehelyek szövege'   # F178.4: az új lapszerkezetben (2. Előfordulások, 2.1)
 HORGONY = re.compile(r'^<a id="ige-[^"]*"></a>\s*$')
 IDEZET = re.compile(r'"[^"]*"|„[^”"]*[”"]|»[^«]*«|“[^”]*”')
 ZAROJEL = re.compile(r'\([^()]*\)')
@@ -73,9 +74,8 @@ def funkcio_osztaly(funkcio):
 def blokkok(szoveg):
     """[(igehely, próza, funkció)] az 1/a részből; üres lista, ha a lapon nincs 1/a."""
     sorok = szoveg.replace('\r', '').split('\n')
-    try:
-        kezdet = sorok.index(CIM_1A)
-    except ValueError:
+    kezdet = next((i for i, s in enumerate(sorok) if s in (CIM_1A, CIM_1A_UJ)), None)
+    if kezdet is None:
         return []
     ki, akt = [], None
     for sor in sorok[kezdet + 1:]:
