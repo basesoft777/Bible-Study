@@ -128,3 +128,28 @@ A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla
 - A bdb ellenőrzött 30 → 21: a meglévő sorok `ellenorzes`-e az új szabállyal íródott újra (ELLENOR_F178 4.: a kézi átnézés csak az átnézés-bemenetből, `naplok/F178_visszhang_atnezes.tsv`). Nincs átnézve: a kálal (H7043) 8 modell-sora — nem lánc-szó, nem renderel — és a H6087 targumi arámi sora (az ellenőr korábbi pontosítása; nem rokon nyelv, nem renderel).
 - Bemenetek (mind commitolva): `naplok/F178_kinyert_uj.tsv` (a Sonnet-kinyerés, változatlanul), `naplok/F178_kinyert_ujraolvas.tsv` (a beolvasás bemenete), `naplok/F178_visszhang_atnezes.tsv` (85 átnézett sor), `naplok/F178_lemma_megerosites.tsv` (9 megerősítés, `claude-sonnet-5-5`).
 - A lapon nem renderel (127-ből): ellenőrizetlen 15 (lxx 5, bdb 10); a lánc-szón kívüli kálal (H7043) Targum-, Vulgata- és LXX-sora 3; a nem rokon nyelvi bdb sor (újhéber, targumi arámi, Sirák) és a tartalom nélküli sor a háttér-szabály szerint.
+
+## Javítókör 1/2 (`naplok/ELLENOR_F178.md`, 2026-11-08)
+
+*Végrehajtó: claude-opus-5-5 (kért: opus). A Targum/Vulgata-kinyerő és a lemma-megerősítő: claude-sonnet-5-5. Alap: 383bfe38.*
+
+| ELLENOR | Tétel | Állapot |
+|---|---|---|
+| 1. E35 / nyílt mag (DT-F178f) | F178.11, F178.12 | kész: a diff csak szóhasználat + ellenőrzőösszeg (20 fájl, 73/73 sor); E35 0 |
+| 2. a lánc a motívumadatból (DT-F178g) | F178.11, .15, .16, .22, .23 | kész: lánc-szó a kulcsszó (gerinc-elem), láncvers mindig a genezisi mag (1Móz 3–9) verse, ahol áll; 30 új Targum/Vulgata-sor két kézzel, 15 LXX gépi (4 nem egyértelmű, ellenőrizetlen) |
+| 3. lemma-egységesítés második kézzel | F178.16 | kész: 9/9 megerősítve (claude-sonnet-5-5) |
+| 4. `ellenorzes` mező, üres alak | F178.13, .16 | kész: kód + 15 teszt; a meglévő sorok újra átnézve (85 átnézett sor) |
+| 5. alapvonal-mondat | F178.17 | kész: „a láncon kívüli N versből x versben (y%)”; sablon, V7 |
+| 6. bontási napló | F178.18 | kész („Bontási napló”) |
+| 7. λύπαις ki a 3:16-ból | F178.14 (+ .15) | kész: héber szórend szerinti kiosztás |
+| 8. `ir` mező | F178.19 | kész |
+| 9. sablon v4, `ad` | F178.20 | kész |
+| 10. V1–V7 | F178.21 | kész |
+
+**A javítókör saját lelete (generátor-szinten javítva, F178.15):** a görög szócsalád-tő az előtagos alak elejét („κατ”) is tőnek vette, így minden κατα-szó egy családba esett (a 6:17 és a 9:11 LXX-sorába a κατακλυσμός is bekerült); csak a 4.11 használja.
+
+**Nyitott (a következő körre):** a LXX négy nem egyértelmű sora (H0127 1Móz 3:23, 4:2, 4:12; H7843 9:15) modell-kinyerésre vár (a `megfelelo_kinyer.py lxx` a modell-LXX-sort ma nem őrzi meg, ehhez kódváltozás kell); a chattát (H2403) rokon nyelvi háttere nincs kinyerve; az 1Móz 3:19 LXX-sorában a második γῆ a עָפָר megfelelője (a szórend-szabály a rövid jelentés eltérése miatt nem bontja).
+
+**E5 (törölt címsor):** a HAMART-001 régi „1/b”, „5/b”, „6/b” címsorai az F178.4 átszámozásával (a felhasználó: „Számozzuk is át / ne legyen b/ alszekció”) szándékosan szűntek meg; a jelölés a javítókör záró commitjában áll.
+
+**Kapuk (a javítókör végén):** olvasói kapu `## HAMART-001: 0 BUKÁS, 25 FIGYELMEZTETÉS`; `teszt_futtat.py --gyors`: minden fájl ZÖLD, kivéve a korábban is bukó `teszt_bdb_vers_jelentes.py`-t (bemeneti hash); `feladatok.py ellenoriz`: `197 brief, 0 hiba, 0 figyelmeztetés`; CI: E28 0, E35 0, E16 HIBA 1 (a PR-cím nem ismert).
