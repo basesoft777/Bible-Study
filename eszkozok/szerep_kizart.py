@@ -236,6 +236,8 @@ def jeloles_oka(forras_kereses):
         return CSOPORTOK[3], 'szótári felvetés (BDB)'
     if fo.startswith('study') or fo.startswith('döntési fájl'):
         return CSOPORTOK[3], 'a tanulmány felvetése'
+    if fo.startswith('négyforrásos audit'):   # F123.HAMART3 határkör: a régi tanulmány beépített helyei, most elutasítva
+        return CSOPORTOK[3], 'a motívum korábbi tanulmányának négyforrásos ellenőrzése'
     if 'teljesség-mérés' in fo:
         return CSOPORTOK[2], _teljesseg(fo)
     if fo.startswith('pozíció-alapú frázis-keresés'):

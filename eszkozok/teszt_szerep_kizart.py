@@ -30,6 +30,11 @@ class TestJelolesOka(unittest.TestCase):
         c, t = SZKZ.jeloles_oka('scan H7121')
         self.assertEqual((c, t), ('Gépi keresés', 'gépi Strong-keresés: H7121'))
 
+    def test_negyforrasos_audit(self):
+        # F123.HAMART3 határkör: a régi tanulmány négyforrásos auditjából jött, most elutasított sor kutatói felvetés
+        c, t = SZKZ.jeloles_oka('négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés')
+        self.assertEqual((c, t), ('Kutatói felvetés', 'a motívum korábbi tanulmányának négyforrásos ellenőrzése'))
+
     def test_be_nem_sorolhato_megall(self):
         # F123.EGYEB: „egyéb” csoport nincs; a be nem sorolható forrás megállítja a generálást
         with self.assertRaises(SZKZ.BeNemSorolhato):
