@@ -1,0 +1,10 @@
+motivum	strong	igehely	forras	lemma_a_tablaban	itelet	javasolt_lemma	modell	indok
+HAMART-001	H0779	1Móz 3:17	targum	לוּט	megerosit		claude-sonnet-5-5	A לִיטָא a לוּט (átkozni) ige ragozott/névszói (ליט) alakja, a gyök לוט.
+HAMART-001	H0779	1Móz 4:11	targum	לוּט	megerosit		claude-sonnet-5-5	A לִיט a לוּט ige szenvedő melléknévi alakja, a lemma helyes.
+HAMART-001	H0779	1Móz 5:29	targum	לוּט	megerosit		claude-sonnet-5-5	A לַטְטַהּ a לוּט ige 3. személyű múlt alakja tárgyi toldalékkal; a gyök helyes, a pontozás nem ellenőrizhető.
+HAMART-001	H2555	1Móz 6:11	targum	חֲטוֹף	megerosit		claude-sonnet-5-5	A חֲטּוֹפִין gyöke חטף (elragadni, rabolni), a חֲטוֹף megfelelő szótári alak; a szótári forma pontos alakja (pl. חֲטוֹפָא) nem ellenőrizhető.
+HAMART-001	H2555	1Móz 6:13	targum	חֲטוֹף	megerosit		claude-sonnet-5-5	A חֲטוֹפִין ugyanaz a szó, mint 6:11-ben (dagesh nélküli írásmód), gyöke חטף; ugyanaz a bizonytalanság a szótári alakban.
+HAMART-001	H7043	1Móz 8:21	targum	לוּט	megerosit		claude-sonnet-5-5	A לְמֵילַט a לוּט ige főnévi igeneve (ל + מֵילַט), a lemma helyes.
+HAMART-001	H7843	1Móz 6:11	targum	חֲבַל	megerosit		claude-sonnet-5-5	Az אִתְחַבָּלַת a חבל gyök Ithpa'al alakja, szótári alakja חֲבַל.
+HAMART-001	H7843	1Móz 6:12	targum	חֲבַל	megerosit		claude-sonnet-5-5	Mindkét alak (אִתְחַבָּלַת, חַבִּילוּ) a חבל gyök igealakja (Ithpa'al, illetve Pa'el), egy lemma alá tartoznak.
+HAMART-001	H7843	1Móz 6:13	targum	חֲבַל	megerosit		claude-sonnet-5-5	A מְחַבֶּלְהוֹן a חבל gyök Pa'el melléknévi igeneve tárgyi toldalékkal, a lemma helyes.

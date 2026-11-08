@@ -1,0 +1,87 @@
+# F178 javítókör 1/2 (ELLENOR_F178 4.): az ellenőr kézi átnézése soronként; atnezo = a tényleges modellnév. Csak az itt jóváhagyott sor kap `ellenorzes`-t (megfelelo_kinyer.py beolvas --atnezes).
+motivum	strong	igehely	forras	alak	atnezo	itelet	megjegyzes
+HAMART-001	H0127	1Móz 3:17	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:11	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 5:29	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 8:21	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 3:17	targum	לִיטָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 4:11	targum	לִיט	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 5:29	targum	לַטְטַהּ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2403	1Móz 8:21	targum	חוֹבֵי	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2555	1Móz 6:11	targum	חֲטּוֹפִין	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2555	1Móz 6:13	targum	חֲטוֹפִין	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 3:16	targum	צַעֲרַיְכִי	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 3:17	targum	בַּעֲמַל	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 5:29	targum	וּמִלֵּאוּת	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7043	1Móz 8:21	targum	לְמֵילַט	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:11	targum	אִתְחַבָּלַת	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:12	targum	אִתְחַבָּלַת · חַבִּילוּ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:13	targum	מְחַבֶּלְהוֹן	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 3:17	vulgata	terra	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:11	vulgata	terram	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 5:29	vulgata	terra	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 8:21	vulgata	terræ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 3:17	vulgata	maledicta	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 4:11	vulgata	maledictus	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 5:29	vulgata	maledixit	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2403	1Móz 8:21	vulgata		claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2555	1Móz 6:11	vulgata	iniquitate	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2555	1Móz 6:13	vulgata	iniquitate	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 3:16	vulgata	ærumnas	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 3:17	vulgata	laboribus	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H6093	1Móz 5:29	vulgata	laboribus	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7043	1Móz 8:21	vulgata	maledicam	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:11	vulgata	Corrupta	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:12	vulgata	corruptam · corruperat	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:13	vulgata	disperdam	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127		bdb	أَدَمَة	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H0127		bdb	دَمَّ	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H0779		bdb	arâru	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H2554		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H2554		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H2554		bdb	חֲמַס	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H2555		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H6087		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H6087		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H6087		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H6087		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H6093		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb		claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	šaḫâtu	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	šêtu	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	שְׁחַת	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	שחיתה	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	שחת	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	سَحَتَ	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	ܫܰܚܶܛ	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H7843		bdb	ሰሐጠ	claude-opus-5-5	jo	a BDB-szócikk etimológiai zárójele és a rokon írások gyorsítótára összevetve: a nyelv, az alak és a jelentés helyes
+HAMART-001	H0779	1Móz 3:14	targum	לִיט	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0779	1Móz 3:14	vulgata	maledictus	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 3:19	targum	לְאַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 3:19	vulgata	terram	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 3:23	targum	אַדְמְתָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 3:23	vulgata	terram	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:2	targum	בְּאַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:2	vulgata		claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:3	targum	דְאַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:3	vulgata	terræ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:10	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:10	vulgata	terra	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:12	targum	בְאַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:12	vulgata	eam	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:14	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 4:14	vulgata	terræ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 6:7	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 6:7	vulgata	terræ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 7:4	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 7:4	vulgata	terræ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 7:23	targum	אַרְעָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H0127	1Móz 7:23	vulgata	terram	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2403	1Móz 4:7	targum	חֶטְאָךְ	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H2403	1Móz 4:7	vulgata	peccatum	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:17	targum	לְחַבָּלָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 6:17	vulgata	interficiam	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 9:11	targum	לְחַבָּלָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 9:11	vulgata	dissipans	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 9:15	targum	לְחַבָּלָא	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
+HAMART-001	H7843	1Móz 9:15	vulgata	delendum	claude-opus-5-5	jo	a versszöveg (Onkelos / Clementina) és a héber vers összevetve: a megfelelés helyes
