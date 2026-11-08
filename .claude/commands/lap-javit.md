@@ -1,5 +1,5 @@
 ---
-description: Egy lexikonlap kisebb homályos vagy pontatlan helyeinek interaktív javítása: a felhasználó idézettel rámutat, a parancs osztályoz (próza / adat / forrás / generátor), a prózát jóváhagyás után helyben javítja, minden helyet az adat/lap_javitasok.tsv-be naplóz; a végén újragenerálás, kapuk, régi/új lista
+description: Egy lexikonlap kisebb homályos vagy pontatlan helyeinek interaktív javítása: a felhasználó idézettel vagy a lapnézet blokkjelével (F165) rámutat a chatben, a parancs osztályoz (próza / adat / forrás / generátor), a prózát jóváhagyás után helyben javítja, minden helyet az adat/lap_javitasok.tsv-be naplóz; a végén újragenerálás, kapuk, régi/új lista
 model: opus
 argument-hint: "<motívum-ID>"
 ---
@@ -87,6 +87,17 @@ Amikor a felhasználó jelzi, hogy nincs több hely:
    - a **kiadási sor** (`adat/kiadasok.tsv`, SEMA 2.46): `kiadas` = az előző + 1, `valtozas` egy mondatban, `proza_modell` = a tényleges modellneved; csak ha a felhasználó a kiadást kéri;
    - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48, DT569): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Ha az átnézés után csak gépi forrásadat változott, és csak a szótári részt érinti, a régi átnézés érvényes marad (DT569); próza- vagy szerkezeti változásnál új átnézés kell.
 5. A parancs **nem commitol és nem pushol.** A commit a felhasználó kérésére történik, a CLAUDE.md szabályai szerint (tétel-azonosítóval, UTF-8 fájlból).
+
+## 6. A lapnézet és a blokkjel (F165, DT-F165a)
+
+A felhasználó a lapot a **lapnézet-artifactban** olvassa. A nézet csak a generált lapot mutatja: nincs benne gomb, panel, Claude-hívás vagy javaslat-tár. Minden blokk (bekezdés, lista, táblázat, idézet, kódblokk) jobb felső sarkában rövid **jel** áll, pl. `1/a·12` (a `## ` szakasz sorszáma, vagy számozatlan szakasznál a címe, és a blokk sorszáma a szakaszon belül). A jelre kattintva a `<ID> <jel>` szöveg a vágólapra kerül. A javítás kontextusa és menete a sessionben van, a fenti 1–5. pont szerint.
+
+1. **A nézet építése és publikálása.** `python eszkozok/lektor_felulet/lapnezet.py <ID> <scratch>/<ID>_lapnezet.html [--ref <ág>]` (a kimenet a repón kívülre megy). Publikálás az Artifact-eszközzel, képességek nélkül. Ha a motívumnak már van nézete (`eszkozok/lektor_felulet/lapnezetek.tsv`), ugyanarra az URL-re publikálsz; új nézet URL-je a `lapnezetek.tsv`-be kerül.
+2. **Rámutatás jellel.** Ha a felhasználó jelet ad meg (pl. „ISTENTISZT-001 1/a·12: homályos”), a blokk szövegét és helyét a nézettel azonos bontásból kéred le: `python eszkozok/lektor_felulet/lapnezet.py <ID> --jel "1/a·12" [--ref <ág>]`. Rámutatni a nézetben hagyott **megjegyzéssel** is lehet: a blokkra tett és Claude-nak küldött megjegyzés a blokk horgonyával (`#b-<jel>`, pl. `#b-kivonat-2` = `Kivonat·2`) érkezik a sessionbe; a választ a megjegyzés szálában adod (`ArtifactComments` `reply`), a szálat a felhasználó zárja le. A jel a nézet commitjához tartozik (a nézet fejlécében áll). Ha a lap azóta újragenerálódott, a jel máshova mutathat: ilyenkor a kiírt szöveget megmutatod, és rákérdezel, erről van-e szó. A blokkon belül a pontos helyet idézettel tisztázod; utána a 2–3. pont következik (osztályozás, javaslat, előnézet, jóváhagyás a chatben).
+3. **Naplózás.** A jóváhagyott helyek sorait (SEMA 2.49; a `hely` mezőbe a blokk és a jel is bekerülhet, pl. `Kivonat·2`) repón kívüli TSV-be írod, és `python eszkozok/lektor_felulet/lap_javitas_naplo.py <tmp>/naplo_uj.tsv`-vel fűzöd a naplóhoz: a szkript a meglévő sorok változatlanságát, a 30. szabályt és a kulcs-ütközést ellenőrzi, és hibánál írás nélkül megáll.
+4. **Kiadott lap** (van sora az `adat/kiadasok.tsv`-ben), ha a felhasználó nem kért új kiadást: a forrásba **nem** írsz. A lezárt kiadás utáni lelet a következő kiadásé (lezárási szabály). A jóváhagyott javítás `N-F…` helyőrzős nyitott tételként kerül a `nyitott/uj/<ágnév>.md`-be („<ID> <n+1>. kiadás javítandója”: jel, hely, régi, új, gond, osztály). A `lap_javitasok.tsv`-be ilyenkor nem kerül sor, mert a kolofon onnan a lapon ténylegesen javított helyeket számolja; a sor a következő kiadás menetében, a tényleges javítással együtt íródik.
+5. **A próza gazdája.** Ha a lap prózáján épp egy másik session dolgozik (pl. az új cikk saját ága), a próza egy kézben marad (K1): a próza-osztályú javítást nem írod be, hanem `SendMessage`-dzsel átadod a próza gazdájának (jel, hely, régi, új, gond, a felhasználó jóváhagyó szava); a beírás és a `lap_javitasok.tsv`-sor az ő menetében történik. Adat-, forrás- és generátorhibánál a 3.b–3.d útja a tiéd (saját ágon, saját PR-ban), de a hatásról a próza gazdáját is értesíted.
+6. **Zárás.** Az 5. pont után a nézetet a javított lapból újraépíted, és ugyanarra az URL-re publikálod; a jelek az új commit szerint frissülnek.
 
 ## Kimenet
 

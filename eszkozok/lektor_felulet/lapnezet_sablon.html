@@ -1,0 +1,193 @@
+<title>__CIM__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!--
+  F165 (LAPJAVIT_ARTIFACT, DT-F165a): a lexikonlap olvasható nézete, látható blokkjelekkel. Építő:
+  eszkozok/lektor_felulet/lapnezet.py (a blokkokra bontás ott történik; ez az oldal csak rendereli a listát).
+  A nézet CSAK a generált lapot mutatja: nincs gomb, panel, Claude-hívás és javaslat-tár. A felhasználó a chatben
+  a blokk jelére (pl. 1/a·12) vagy idézettel mutat rá; a javítás a sessionben folyik (/lap-javit), és a jóváhagyás
+  után a session vezeti át, majd újra kiteszi a nézetet. Capabilities: nincs.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Hebrew:wght@400;600&display=swap">
+<style>
+/* Elrendezés: bal oldalt ragadós tartalomjegyzék (széles képernyőn), jobb oldalt a lap olvasóhasábja; minden blokk jobb felső sarkában a jele. */
+:root {
+  --papir: #f6f7f9;
+  --lap: #ffffff;
+  --tinta: #1d2330;
+  --halvany: #5b6475;
+  --vonal: #d9dde5;
+  --kiemel: #2c4f86;
+  --kiemel-halvany: #e6ecf6;
+  --kod-hatter: #eef1f5;
+  --rov-hatter: #fbefc9;
+  --display: "Alegreya", "Georgia", serif;
+  --szoveg: "Source Serif 4", "Georgia", "Times New Roman", serif;
+  --adat: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
+  --heber: "Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; color-scheme: dark; }
+
+html { scroll-padding-top: 16px; }
+body { background: var(--papir); color: var(--tinta); font: 17px/1.6 var(--szoveg); }
+.keret { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 1240px; margin: 0 auto;
+  padding-block: 24px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 1000px) { .keret { grid-template-columns: 240px minmax(0, 1fr); } }
+.fej { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+  border-bottom: 1px solid var(--vonal); padding-bottom: 12px; }
+.fej .jel { font: 500 12px/1.4 var(--adat); letter-spacing: .08em; text-transform: uppercase; color: var(--kiemel); }
+.fej .meta { font: 13px/1.4 var(--adat); color: var(--halvany); }
+nav.tj { display: none; }
+@media (min-width: 1000px) { nav.tj { display: block; position: sticky; top: env(safe-area-inset-top, 0px); align-self: start;
+  max-height: 100vh; overflow-y: auto; padding-top: 8px; font-size: 14px; line-height: 1.4; } }
+nav.tj ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.tj a { display: block; padding: 5px 10px; border-radius: 4px; color: var(--halvany); text-decoration: none; }
+nav.tj a:hover, nav.tj a:focus-visible { background: var(--kiemel-halvany); color: var(--tinta); outline: none; }
+nav.tj a.aktiv { color: var(--kiemel); background: var(--kiemel-halvany); font-weight: 600; }
+article { min-width: 0; background: var(--lap); border: 1px solid var(--vonal); border-radius: 6px;
+  padding: clamp(18px, 4vw, 48px); }
+article > * { max-width: 72ch; }
+article > div.tabla, article > pre, article > .mermaid { max-width: none; }
+h1, h2, h3, h4, h5 { font-family: var(--display); line-height: 1.2; text-wrap: balance; color: var(--tinta); }
+h1 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; }
+h2 { font-size: 27px; margin: 56px 0 12px; padding-top: 16px; border-top: 2px solid var(--kiemel); }
+h3 { font-size: 21px; margin: 32px 0 8px; }
+h4 { font-size: 18px; margin: 24px 0 6px; }
+h5 { font-size: 16px; margin: 20px 0 6px; }
+[hidden] { display: none !important; }
+p, li { hyphens: auto; overflow-wrap: break-word; }
+article p, article li { overflow-wrap: anywhere; }
+a { color: var(--kiemel); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, { outline: 2px solid var(--kiemel); outline-offset: 2px; }
+code { font: .86em/1.4 var(--adat); background: var(--kod-hatter); padding: .08em .3em; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: var(--kod-hatter); padding: 12px 14px; border-radius: 4px; overflow-x: auto; font: 13px/1.5 var(--adat); }
+pre code { background: none; padding: 0; }
+abbr.rovidites { background: var(--rov-hatter); border-radius: 3px; padding: 0 2px; text-decoration: underline dotted; cursor: help; }
+blockquote { margin: 16px 0; padding: 4px 16px; border-left: 3px solid var(--vonal); color: var(--halvany); }
+hr { border: 0; border-top: 1px solid var(--vonal); margin: 32px 0; }
+div.tabla { overflow-x: auto; margin: 16px 0; border: 1px solid var(--vonal); border-radius: 4px; }
+table { border-collapse: collapse; font-size: 14px; line-height: 1.45; min-width: 100%; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--vonal); text-align: left; vertical-align: top; }
+th { font: 600 12px/1.3 var(--adat); letter-spacing: .04em; text-transform: uppercase; color: var(--halvany);
+  background: var(--kod-hatter); position: sticky; top: 0; }
+td { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+:lang(he), .heb { font-family: var(--heber); font-size: 1.08em; }
+sup.lj a { font: 600 11px/1 var(--adat); text-decoration: none; padding: 0 1px; }
+sup.strong { font: 500 .62em/1 var(--adat); color: var(--halvany); opacity: .75; margin-left: 1px; cursor: help; }
+li.lj { font-size: 14px; color: var(--halvany); }
+li.lj:target { background: var(--kiemel-halvany); }
+.lj-szam { font: 600 12px var(--adat); color: var(--kiemel); margin-right: 6px; }
+.mermaid { background: var(--lap); overflow-x: auto; }
+.lab { grid-column: 1 / -1; font: 13px/1.5 var(--adat); color: var(--halvany); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* --- F165: blokkjelek. A jel a blokk jobb felső sarkában áll; rámutatáshoz (chat), kattintásra a linkje a vágólapra kerül. --- */
+.blokk { position: relative; }
+.blokk > :first-child { margin-top: 0; }
+.blokk > :last-child { margin-bottom: 0; }
+article > .blokk { margin: 0 0 16px; }
+article > .blokk:has(> div.tabla), article > .blokk:has(> pre) { max-width: none; }
+.jel { float: right; margin: 2px 0 4px 12px; font: 500 11px/1.4 var(--adat); letter-spacing: .02em; color: var(--halvany);
+  background: var(--kod-hatter); border: 1px solid transparent; border-radius: 3px; padding: 1px 6px; cursor: pointer;
+  font-variant-numeric: tabular-nums; user-select: all; }
+.jel:hover, .jel:focus-visible { color: var(--kiemel); border-color: var(--vonal); outline: none; }
+.blokk:target { background: var(--rov-hatter); box-shadow: 0 0 0 6px var(--rov-hatter); border-radius: 2px; }
+.jel.masolva::after { content: " · másolva"; color: var(--kiemel); }
+@media print { .jel { display: none; } }
+</style>
+
+<div class="keret">
+  <header class="fej">
+    <span class="jel">PaRDeS motívumlexikon · lapnézet</span>
+    <span class="meta">generált nézet · __FORRAS_JEL__</span>
+  </header>
+  <nav class="tj" aria-label="Tartalom"><ol id="tj"></ol></nav>
+  <article id="lap"><p>A lap betöltése…</p></article>
+  <p class="lab">Ez a nézet a repó generált lexikonlapjából készült, olvasáshoz. Javítani a chatben lehet: mutass rá a blokk jelére (pl. 1/a·12) vagy idézz a szövegből; a session a forrásban javít (kézi rés, adatsor vagy generátor), a jóváhagyásod után, és a nézetet újra elkészíti.</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+const BLOKKOK = __BLOKKOK__;   // [{jel, md, cimsor}] -- lapnezet.py bontása
+const META = __META__;         // {id, cim, lap, commit, ref}
+
+function slug(s) {
+  return s.toLowerCase().trim().replace(/<[^>]+>/g, '').replace(/[^\p{L}\p{N}\s_-]/gu, '').replace(/\s/g, '-');
+}
+function jelId(jel) {   // ASCII horgony a jelből: "1/a·12" -> "b-1a-12", "Kivonat·2" -> "b-kivonat-2"
+  return 'b-' + jel.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/·/g, '-').replace(/[^a-z0-9-]+/g, '');
+}
+const lattSlug = {};
+const renderer = new marked.Renderer();
+renderer.heading = function (text, level, raw) {
+  let s = slug(raw);
+  if (lattSlug[s] !== undefined) { lattSlug[s]++; s = s + '-' + lattSlug[s]; } else { lattSlug[s] = 0; }
+  return '<h' + level + ' id="' + s + '">' + text + '</h' + level + '>\n';
+};
+renderer.table = function (header, body) {
+  return '<div class="tabla"><table><thead>' + header + '</thead><tbody>' + body + '</tbody></table></div>\n';
+};
+renderer.code = function (code, lang) {
+  if (lang === 'mermaid') return '<pre class="mermaid">' + code.replace(/</g, '&lt;') + '</pre>';
+  return '<pre><code>' + code.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</code></pre>';
+};
+renderer.listitem = function (text) {
+  if (text.indexOf('{{LJ}}') !== -1) return '<li class="lj">' + text.replace(/ ?\{\{LJ\}\}/g, '') + '</li>\n';
+  return '<li>' + text + '</li>\n';
+};
+marked.use({ renderer: renderer, gfm: true });
+
+// lábjegyzetek: definíció -> lista-elem horgonnyal, hivatkozás -> felső index
+function labjegyzet(md) {
+  return md.replace(/^\[\^([^\]]+)\]:[ \t]?(.*)$/gm, (m, n, t) => '- <span class="lj-szam" id="lj-' + n + '">[' + n + ']</span>' + t + ' {{LJ}}')
+    .replace(/\[\^([^\]]+)\](?!:)/g, (m, n) => '<sup class="lj"><a href="#lj-' + n + '">' + n + '</a></sup>');
+}
+
+const lap = document.getElementById('lap');
+lap.innerHTML = '';
+for (const b of BLOKKOK) {
+  const html = marked.parse(labjegyzet(b.md));
+  if (b.cimsor) { lap.insertAdjacentHTML('beforeend', html); continue; }
+  const d = document.createElement('div');
+  d.className = 'blokk'; d.id = jelId(b.jel);
+  const jel = document.createElement('button');
+  jel.type = 'button'; jel.className = 'jel'; jel.textContent = b.jel;
+  jel.title = 'A blokk jele: erre mutass rá a chatben. Kattintásra a jel a vágólapra kerül.';
+  jel.addEventListener('click', async () => {
+    try { history.replaceState(null, '', '#' + d.id); } catch (e) {}
+    try { await navigator.clipboard.writeText(META.id + ' ' + b.jel); jel.classList.add('masolva'); setTimeout(() => jel.classList.remove('masolva'), 1500); }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(jel); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+  d.append(jel);
+  d.insertAdjacentHTML('beforeend', html);
+  lap.append(d);
+}
+
+// héber betűs szakaszok jelölése a betűkészlethez
+const fa = document.createTreeWalker(lap, NodeFilter.SHOW_TEXT);
+const csomok = [];
+while (fa.nextNode()) { if (/[\u0590-\u05FF]/.test(fa.currentNode.nodeValue) && !fa.currentNode.parentElement.closest('code,pre,button')) csomok.push(fa.currentNode); }
+for (const c of csomok) {
+  const t = c.nodeValue, frag = document.createDocumentFragment(); let utolso = 0;
+  t.replace(/[\u0590-\u05FF][\u0590-\u05FF\u0591-\u05C7\s\u05BE]*/g, (m, i) => { frag.append(t.slice(utolso, i)); const s = document.createElement('span'); s.lang = 'he'; s.dir = 'rtl'; s.textContent = m; frag.append(s); utolso = i + m.length; return m; });
+  frag.append(t.slice(utolso)); c.replaceWith(frag);
+}
+// tartalomjegyzék a h2-kből
+const tj = document.getElementById('tj');
+const h2k = [...lap.querySelectorAll('h2')];
+for (const h of h2k) { const li = document.createElement('li'); const a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent.replace(/\(kézi\)/g, '').trim(); li.append(a); tj.append(li); }
+const linkek = [...tj.querySelectorAll('a')];
+if ('IntersectionObserver' in window) {
+  const fig = new IntersectionObserver(ek => { for (const e of ek) if (e.isIntersecting) {
+    linkek.forEach(a => a.classList.toggle('aktiv', a.getAttribute('href') === '#' + e.target.id)); } }, { rootMargin: '0px 0px -70% 0px' });
+  h2k.forEach(h => fig.observe(h));
+}
+function ugras() { if (location.hash) { const cel = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (cel) cel.scrollIntoView(); } }
+ugras(); addEventListener('hashchange', ugras);
+</script>
