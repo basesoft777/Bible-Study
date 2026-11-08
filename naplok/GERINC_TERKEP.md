@@ -1,4 +1,4 @@
-# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@7064343b19,adat/elofordulasok.tsv@eeb30e1a2f,adat/jeloltek.tsv@2774b5b7dc,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@da14f8309f,eszkozok/lekerdez.py@dfee2e6852,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-08T12:34Z
+# GENERÁLT: gerinc_terkep.py | scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | bemenet=adat/motivumok.tsv@e1d84722b1,adat/elofordulasok.tsv@dfb0de82a1,adat/jeloltek.tsv@7f99cfb168,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Konyv_normalizalo_tabla.tsv@ca2a6132cd,eszkozok/gerinc_terkep.py@56240fb67a,eszkozok/gerinc_kartya.py@a36f96b341,eszkozok/gerinc_szuro.py@24690476cb,eszkozok/general.py@da14f8309f,eszkozok/lekerdez.py@dfee2e6852,eszkozok/strong_util.py@46bc09c70a,tanulmanynevek@7214858e10 | ts=2026-11-08T15:08Z
 
 # Prioritási térkép — hol sűrűsödnek a feldolgozatlan gerinc-találatok
 
@@ -11,25 +11,25 @@ Gépi, determinisztikus összesítő (`eszkozok/gerinc_terkep.py`, F124); a köv
 | # | Fejezet | Különböző motívum | Motívumok | Kollokációs találat | Összes találat | Nyitva | Szűretlen tag |
 |---|---|---|---|---|---|---|---|
 | 1 | 4Móz 32 | 2 | ISTENTISZT-001,KIRALY-001 | 2 | 3 | 0 | 25 |
-| 2 | 5Móz 17 | 1 | KIRALY-001 | 1 | 2 | 0 | 18 |
-| 3 | Jer 28 | 1 | KIRALY-001 | 1 | 2 | 0 | 9 |
-| 4 | Jer 33 | 1 | KIRALY-001 | 1 | 2 | 0 | 5 |
-| 5 | 2Móz 35 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 9 |
-| 6 | Józs 21 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 22 |
-| 7 | Bír 18 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 21 |
-| 8 | 1Sám 1 | 1 | KIRALY-001 | 1 | 1 | 0 | 13 |
-| 9 | 1Krón 6 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 51 |
-| 10 | 2Krón 29 | 1 | KIRALY-001 | 1 | 1 | 0 | 23 |
-| 11 | Zsolt 49 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 9 |
-| 12 | Zsolt 80 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 7 |
-| 13 | Ézs 40 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 8 |
-| 14 | Ézs 45 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 9 |
-| 15 | Jer 13 | 1 | KIRALY-001 | 1 | 1 | 0 | 10 |
-| 16 | Róm 8 | 1 | ANTROP-001 | 0 | 14 | 0 | 0 |
-| 17 | 1Kir 1 | 1 | KIRALY-001 | 0 | 11 | 0 | 34 |
-| 18 | ApCsel 2 | 1 | ANTROP-001 | 0 | 9 | 0 | 0 |
-| 19 | 1Kor 12 | 1 | ANTROP-001 | 0 | 9 | 0 | 0 |
-| 20 | 1Kor 14 | 1 | ANTROP-001 | 0 | 8 | 0 | 0 |
+| 2 | Ez 17 | 2 | HAMART-001,KIRALY-001 | 0 | 5 | 0 | 4 |
+| 3 | 1Kir 8 | 2 | HAMART-001,KIRALY-001 | 0 | 3 | 0 | 26 |
+| 4 | 2Krón 6 | 2 | HAMART-001,KIRALY-001 | 0 | 3 | 0 | 19 |
+| 5 | Jer 29 | 2 | HAMART-001,KIRALY-001 | 0 | 3 | 0 | 11 |
+| 6 | 2Sám 14 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 16 |
+| 7 | Péld 29 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 5 |
+| 8 | Ézs 19 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 3 |
+| 9 | Ézs 66 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 6 |
+| 10 | Jer 14 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 7 |
+| 11 | Sir 2 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 7 |
+| 12 | Ámós 9 | 2 | HAMART-001,KIRALY-001 | 0 | 2 | 0 | 6 |
+| 13 | 5Móz 17 | 1 | KIRALY-001 | 1 | 2 | 0 | 18 |
+| 14 | Jer 28 | 1 | KIRALY-001 | 1 | 2 | 0 | 9 |
+| 15 | Jer 33 | 1 | KIRALY-001 | 1 | 2 | 0 | 5 |
+| 16 | 2Móz 35 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 9 |
+| 17 | Józs 21 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 22 |
+| 18 | Bír 18 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 21 |
+| 19 | 1Sám 1 | 1 | KIRALY-001 | 1 | 1 | 0 | 13 |
+| 20 | 1Krón 6 | 1 | ISTENTISZT-001 | 1 | 1 | 0 | 51 |
 
 ## Motívumonként
 
@@ -38,7 +38,7 @@ A `szuretlen_tag` arány azt mutatja, a motívum új találatainak mekkora hány
 | Motívum | Szűrt találat | Szűretlen tag | `szuretlen_tag` arány | Nyitva |
 |---|---|---|---|---|
 | ANTROP-001 | 432 | 1027 | 70% | 0 |
-| HAMART-001 | 6 | 1205 | 100% | 31 |
+| HAMART-001 | 68 | 1134 | 94% | 0 |
 | ISTENTISZT-001 | 10 | 0 | 0% | 0 |
 | KIRALY-001 | 225 | 643 | 74% | 0 |
 | MENNY-001 | 0 | 5496 | 100% | 0 |
