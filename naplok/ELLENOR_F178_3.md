@@ -43,3 +43,11 @@ ELTÉRÉS-ek súlyossági sorrendben:
 3. Az `atnezes_ellenoriz` 20%-os küszöbe 85 sornál 17 ismétlést enged, így a „sablonmondatos bemenet elutasítva” csak részben teljesül.
 4. A DT-F178g 🟢 sor tartalma módosult, a döntés-oszlopban ennek nincs nyoma.
 5. A MUNKAMENET C-vh rövidebben adja a gerinc-szabályt, mint a SEMA 2.53, a 6-os sablon és a DT-F178g.
+
+## Kiegészítés (az ellenőr utólagos sora, szó szerint)
+
+A második CI-futás is befejeződött, a CI-sor helyesen:
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| CI | OK | — | `python eszkozok/ellenorzes/futtat.py --valtozott <13 fájl> --diff-alap e6b303a9 --diff-fej 0d80cf66`, mindkét futás exit 0. **E2–E11 0, E28 0 („5 migrált nézet”), E35 0.** Szintén 0: E14, E15, E16, E19, E20, E26, E29–E33. JELENTES-szintű: E12 423, E13 80, E25 3, E27 42, E34 41. Az E1 és az E17 ezen a fájlkörön nem futott, a kimenetben nincs soruk; az E17-et az L4 sor kézzel méri. A kör tartományán az E5 0. A teljes ágon az E5 és az E16 ismert, ahogy a megbízás jelezte. |
