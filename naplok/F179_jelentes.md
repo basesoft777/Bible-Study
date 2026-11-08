@@ -7,7 +7,7 @@
 | Hely | Kézi ÚSZ-lista | Teendő |
 |---|---|---|
 | `eszkozok/general.py` `UJSZOVETSEGI_TOKENEK` | 12 könyv (1Kor, 1Pét, 1Thessz, 2Pét, 2Tim, ApCsel, Jel, Júd, Luk, Mt, Róm, Zsid); **15 hiányzik**: Mk, Ján, Gal, 2Kor, Ef, Fil, Kol, 2Thessz, 1Tim, Tit, Filem, Jak, 1Ján, 2Ján, 3Ján | cserélve (F179.1) |
-| `eszkozok/n14_hamart_betoltes.py` 389. sor | 14 könyv (a fentiek + Gal, Mk); **13 hiányzik** (köztük a Ján: az `elofordulasok.tsv`-ben 3 Ján-sor van) | **nem javítva**, l. 4. pont |
+| `eszkozok/n14_hamart_betoltes.py` 389. sor | 14 könyv (a fentiek + Gal, Mk); **13 hiányzik** (köztük a Ján; a HAMART-001-ben Ján-sor nincs) | **nem javítva**, l. 4. pont |
 | `eszkozok/karoli_strong/pontossag_kulso.py` `USZ_KONYVEK` | teljes 27 (rövidítés-alakok) | nem érintett |
 | `eszkozok/karoli_strong/egyesit.py` | a TAGNT-ból számolt | nem érintett |
 | `eszkozok/olvaso_mockup/sablon.html` `NT` | mockup, a `Lk`/`Jn` alakokkal | nem érintett (nem a generátor) |
@@ -37,7 +37,7 @@ A módszer: ugyanazon a repón kétszer generáltam a `general.py --cel lexikon`
 
 Egyetlen lap érintett: a HAMART-001. Mellékhatás ugyanott: a szócikk-blokk UBS-összegzése (G1944 ἐπικατάρατος: „nincs újszövetségi helye” → 2 újszövetségi hely, a Gal 3:10 és 3:13).
 
-**Eltérés a briefhez:** a brief 42/6-ot ír (48 sor, a #639 állapota). A main-beli `adat/elofordulasok.tsv`-ben a HAMART-001-nek 52 sora van (43 ÓSZ + 9 ÚSZ: Mk 1, Gal 2, Ján 3, Mt 3, stb.), tehát a main-en a helyes szám 43/9. A 42/6 a #639 ágán fog megjelenni, ha az a javított `general.py`-val generál.
+**Eltérés a briefhez:** a brief 42/6-ot ír (48 sor, a #639 állapota). A main-beli `adat/elofordulasok.tsv`-ben a HAMART-001-nek 52 sora van, 43 ÓSZ és 9 ÚSZ. A 9 ÚSZ-sor könyvenként: Róm 1, Gal 2, Zsid 1, Jel 2, Mt 1, Mk 1, 2Pét 1; Ján-sor nincs (*proveniencia: scope=adat/elofordulasok.tsv HAMART-001 | forras=split('	') | ts=2026-11-08T12:54Z*). A main-en tehát a helyes szám 43/9. A 42/6 a #639 ágán fog megjelenni, ha az a javított `general.py`-val generál. *(Javítva az F179 ellenőrzése nyomán, ELLENOR_F179 3.: a korábbi „Mk 1, Gal 2, Ján 3, Mt 3” téves volt.)*
 
 ## 4. Nyitott pontok
 
@@ -45,7 +45,7 @@ Egyetlen lap érintett: a HAMART-001. Mellékhatás ugyanott: a szócikk-blokk U
    - (A) javaslat: **nem nyúlunk a main-beli HAMART-laphoz;** a javított `general.py` a #639 újragenerálásával hozza a helyes számot (42/6 ott, 43/9 a main-adaton), és a #639 ellenőre ezt méri. A F179 „kész” feltételéből a HAMART-lap 42/6-a ekkor a #639-re tolódik.
    - (B) gépi blokkcsere (F168.5 mintára) a HAMART `lxx` és `elofordulasok` blokkjára, a többi eltérés (kiejtés, olvasói mondat) beemelésével; ütközhet a #639-cel.
    - (C) teljes újragenerálás: nem ajánlott (F168.5 indoklása).
-2. **`eszkozok/n14_hamart_betoltes.py`** (389. sor) saját kézi listája 13 újszövetségi könyvet még mindig nem tartalmaz (köztük a Ján-t). Az `ir`-en kívül van, és egyszeri betöltő; nem módosítottam. Hatása: a Ján-helyeket `oszovetsegi()`-ként kezelné (TAHOT-igazolás-hívás). Javaslat: külön tétel, ha a betöltő még fut.
+2. **`eszkozok/n14_hamart_betoltes.py`** (389. sor) saját kézi listája 13 újszövetségi könyvet még mindig nem tartalmaz (köztük a Ján-t). Az `ir`-en kívül van, és egyszeri betöltő; nem módosítottam. Hatás a HAMART-001 lapján: nincs, mert a lap mind a 9 ÚSZ-sora (Róm, Gal, Zsid, Jel, Mt, Mk, 2Pét) a betöltő listájában szereplő könyvben áll (*proveniencia: scope=adat/elofordulasok.tsv HAMART-001 | forras=split('	') | ts=2026-11-08T12:54Z*); más motívumra a hatás nem mért. Javaslat: külön tétel (N-F179a), ha a betöltő még fut.
 3. A brief 105. sor/2221–2222. sor hivatkozásai elavultak (a mai lapon az előfordulás-táblázat a 91. sor után van, az LXX-blokk a 719. sor körül).
 
 ## 5. Ellenőrzések
