@@ -2065,10 +2065,10 @@ szerkeszthetők; a fejlécük `#`-kezdetű sorai a proveniencia (forrás, commit
 
 **Közös szabály — a versszámozás a forrásé.** Az `igehely` a magyar könyvrövidítés
 (`Konyv_normalizalo_tabla.tsv`) és a **forrás** fejezet:verse; a Károli-átszámozás (MT/Vulgata/NRSV ↔ Károli) nincs
-elvégezve (tartalmi döntés, DT-F176a). `forras_vers` / `forras_ref`: a forrás hivatkozása szó szerint.
+elvégezve (tartalmi döntés, DT630). `forras_vers` / `forras_ref`: a forrás hivatkozása szó szerint.
 `forras_kulcs` (`igen` | `nem`): az `igehely`-kulcs (a forrás fejezet:verse) ugyanezzel a számmal **létezik-e** a
 `Karoli_1908.tsv`-ben; versegyezést nem állít. Az `igehely` a forrás saját számozása magyar könyvnévvel, **nem
-Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT-F176a).
+Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT630).
 
 | Tábla | Oszlopok |
 |---|---|
@@ -2076,7 +2076,7 @@ Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT
 | `Vulgata_Clementina.tsv` | `igehely`, `forras_vers` (USFM-kód + fejezet:vers), `forras_kulcs`, `szoveg` (Glossa-lábjegyzet nélkül) |
 | `SBLGNT_apparatus.tsv` | `igehely`, `forras_vers`, `sorszam`, `forras_kulcs`, `jegyzet` (szó szerint; az alapszöveg nincs benne) |
 | `TAGNT_valtozatok.tsv` | `igehely`, `forras_ref`, `szamozas` (`nrsv` \| `kjv` \| `egyeb` \| `na`), `szo_sorszam`, `tipus`, `strong`, `gorog`, `kiadasok`, `hianyzik_ebbol`, `mozgatas`, `jelentesvaltozat`, `forras_kulcs`; a THGNT (`Tyn`) szövege nincs benne, csak a jelölés |
-| `BDB_rokon_irasok.tsv` | `strong`, `sefaria_ref`, `nyelv` (`arab` \| `etióp` \| `szír`), `szoalak`, `kontextus` (≤ 120 karakter; a token körüli szövegrész a BDB-szócikkből, nem a szócikk feje, mert az mutatja a rokon szót: DT-F176e), `proveniencia` (soronként: `scope=… \| forras=… \| ts=…`) |
+| `BDB_rokon_irasok.tsv` | `strong`, `sefaria_ref`, `nyelv` (`arab` \| `etióp` \| `szír`), `szoalak`, `kontextus` (≤ 120 karakter; a token körüli szövegrész a BDB-szócikkből, nem a szócikk feje, mert az mutatja a rokon szót: DT634), `proveniencia` (soronként: `scope=… \| forras=… \| ts=…`) |
 
 **A `BDB_rokon_irasok.tsv` gyorsítótár.** A lekérdezés tényét a fejléc `# lekérdezve: <Strong> | próbált_alakok=… |
 bdb_szócikk=<n> | rokon_írás_sor=<n> | ts=…` sora rögzíti; a **„nincs rokon írás” nem sor**. `bdb_szócikk=0` azt

@@ -71,7 +71,7 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `opus`). A `fugg` feladatok: a 
 
 ### F178.5 — Visszhang-blokk
 - A lapon a #176 adatrétegéből: ókori fordítás, ÚSZ szövegváltozat, BDB rokon írások.
-- A Károli-vers a nézetoldali versmegfeleltetéssel (DT-F176a).
+- A Károli-vers a nézetoldali versmegfeleltetéssel (DT630).
 - A tanúréteg nélkül.
 
 ### F178.6 — „Szerkesztői döntés”
