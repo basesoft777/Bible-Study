@@ -11,7 +11,7 @@ a fejléc `allapot` értékét a végrehajtó nem állítja `lezarva`-ra.
 |---|---|
 | Mérce | „kimenetbe tehető” (NC kizáró; közkincs, CC0, CC BY mehet). Az elsődleges helyeken minden licencet újraellenőriztem; **egyik sem NC vagy BY-SA, egyik sem tért el a várttól — ⛔ nem történt.** |
 | Táblák | Targum_PD 15 142 sor · Vulgata_Clementina 31 434 sor · SBLGNT_apparatus 6 934 sor · TAGNT_valtozatok 11 777 sor · BDB_rokon_irasok 6 sor (HAMART-001 első futás) |
-| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla `kereskedelmi=feltetelesen` (a nyílt magból kizárva, DT-F176b); (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
+| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla előbb `kereskedelmi=feltetelesen` volt; a DT-F176b döntéssel (a felhasználó, 2026-11-08) `igen`; (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
 | Kapu | `nyilt_mag_kapu.py`: 0 BUKÁS; a mai nyílt magra az ARANY ellenőrzés egyetlen forrást jelez 1% felett: BDB 131 / 8 099 = 1,62% (FIGYELMEZTETÉS) |
 
 ## 1. Licencellenőrzés (F176.1)
@@ -40,7 +40,9 @@ Sefaria-Exportból (nem az API-ból) jöttek, 26 fájl + a `books.json`, ≥ 1 s
 `license` mező ellenőrzésére), a BDB-gyorsítótár építő futása 10 `words` hívás, a hibakeresés további kb. 15 kézi `words` hívás érte, ≥ 1 s közökkel. Ez nem bejárás és nem terheli a szolgáltatást,
 tehát az ÁSZF **nem tiltja** — ⛔ nem lépett életbe. A **kereskedelmi használatra** vonatkozó mondat („unless expressly stated
 otherwise”) értelmezése nyitott: a verziónkénti `Public Domain` jelölés kifejezett nyilatkozatnak tekinthető, de jogi
-véleményt nem adok. Ezért a `Targum_PD` és a `BDB_rokon_irasok` `kereskedelmi=feltetelesen` (DT-F176b), és az export a nyílt magból kizárja őket.
+véleményt nem adok. Ezért a végrehajtó a `Targum_PD`-t és a `BDB_rokon_irasok`-at először `kereskedelmi=feltetelesen` értékkel vette fel (DT-F176b).
+
+**Döntés (DT-F176b, 2026-11-08, a felhasználó):** „szerintem ez az irányadó” (arra, hogy „a tartalom közkincs, és a szerzői jog szerint senki nem korlátozhatja”); a javaslatra: „mehet”. A két tábla `kereskedelmi=igen` (engedett), a nyílt mag szempontjából is engedett. Indok: a tartalom közkincs, a Sefaria nem szerzője, és nem licencelheti; a Targum-verziók „Public Domain” licencmezője az ÁSZF kereskedelmi tiltásának „unless expressly stated otherwise” kivételeként olvasandó; a BDB-nél, ahol nincs licencmező, a közkincs-állítás az 1906-os kiadáson alapul; a letöltés útja (Sefaria-Export / API) az ÁSZF szerint megengedett. A döntés a Sefaria kapcsolattáblára (tanúréteg, a Sefaria saját munkája) NEM vonatkozik. Átvezetve: F176.6 (licencek.tsv, README), F176.6b (`nyilt_mag/` újragenerálás).
 
 ### 1.2 Targum (Sefaria-Export) — `Targum_PD.tsv`
 
@@ -224,7 +226,7 @@ Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyi
 ## 7. Nyitott kérdések (helyőrzők: `dontesek/uj/f176-visszhang-adat-c1579f.md`, `nyitott/uj/f176-visszhang-adat-c1579f.md`)
 
 - **DT-F176a — versszámozás-feloldás.** A Targum/MT, Vulgata és NRSV ↔ Károli átszámozás tartalmi döntés (nézet-oldali feloldás / külön `karoli_vers` oszlop / kézi). Mért hézag: l. 2.
-- **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** Az ÁSZF-mondat és a lexikon-adat licencmező-hiánya: a `Targum_PD` és a `BDB_rokon_irasok` ma `feltetelesen`, ezért kizárt a nyílt magból. Döntés kell: `igen` (a verziónkénti `Public Domain` kifejezett nyilatkozat), vagy Sefaria-megkeresés / jogi átnézés.
+- **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** 🟢 Eldöntve (a felhasználó, 2026-11-08): `kereskedelmi=igen`, l. 1.1.
 - **N-F176a — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria — 12 968 lábjegyzet, nincs átvéve — külön recepciós forrás lehet).
 - **N-F176b — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; addig a „nincs rokon írás” ezekre nem állítható.
 - **N-F176c — a `teszt_visszhang.py` nincs a CI teszt-listájában** (a workflow nem az `ir` mezőben van).

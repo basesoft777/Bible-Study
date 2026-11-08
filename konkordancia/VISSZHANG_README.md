@@ -39,7 +39,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
 - **Licenc (elsődleges hely):** a Sefaria-Export `LICENSE.md`: „Each text is licensed separately, so there is no
   overall license for this repository.” és „You can find the license for each text in their JSON versions under the
   `license` field.” A 26 JSON mindegyikében: `"license": "Public Domain"`. A `merged` fájl nem használt; a jemeni
-  (Taj) Onkelos-verzió CC BY-SA, a Metsudah NC — **kimaradtak**.
+  (Taj) Onkelos-verzió CC BY-SA, a Metsudah NC — **kimaradtak**. **Kereskedelmi: engedett** (DT-F176b, a felhasználó döntése, 2026-11-08): a verziónkénti „Public Domain” licencmező a Sefaria ÁSZF kereskedelmi tiltásának „unless expressly stated otherwise” kivétele; a tartalom közkincs, a Sefaria nem licencelheti.
 - **Oszlopok:** `igehely`, `forras_vers` (Sefaria-hivatkozás), `targum` (`Onkelos` | `Jonatan`), `forras_mu`,
   `verzio`, `karoli_kulcs`, `szoveg` (arám, magánhangzó-jelekkel, a forrás szerint).
 - **Nem benne:** az Írások Targumja, a Targum Jeruzsálemi / Pszeudo-Jonatán, a Targum Neofiti, az angol fordítások.
@@ -103,7 +103,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
 - **Licenc:** a Sefaria lexikon-modelljében **nincs licencmező** (`sefaria/model/lexicon.py`; a `parent_lexicon_details`
   kulcsai: name, language, to_language, text_categories, source, attribution, index_title, version_title, version_lang).
   A BDB (Brown–Driver–Briggs, Oxford 1906) közkincs-státusza a mű korán alapul (a repó DT-F33g döntése, `licencek.tsv`
-  BDB sor); a Sefaria megnevezése: „F. Brown, S. Driver & C. Briggs”. Nyitott: DT-F176b.
+  BDB sor); a Sefaria megnevezése: „F. Brown, S. Driver & C. Briggs”. **Kereskedelmi: engedett** (DT-F176b, a felhasználó döntése, 2026-11-08): a tartalom közkincs, a közkincs-állítás az 1906-os kiadáson alapul.
 - **Oszlopok:** `strong`, `sefaria_ref`, `nyelv` (`arab` | `etióp` | `szír`, Unicode-blokk szerint), `szoalak`,
   `kontextus` (≤ 120 karakter a szócikk szövegéből), `proveniencia`. A görög és a latin írású token nem rokon írás,
   nem kerül be.
