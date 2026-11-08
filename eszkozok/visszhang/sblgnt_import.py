@@ -61,7 +61,7 @@ def fut(be, commit, lic, ki):
         'GENERÁLT: eszkozok/visszhang/sblgnt_import.py (F176.2); kézzel nem szerkeszthető.',
         'forras=github.com/LogosBible/SBLGNT @ %s, data/sblgntapp/text/*.txt (%d fájl) | licenc: CC BY 4.0 (a repó LICENSE-fájlja és README-je; LICENSE sha256=%s) | ts=%s' % (commit, fajlok, K.sha256_fajl(lic), K.ts()),
         'kötelező megjelölés: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com)',
-        'egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (versegyezést nem állít; a Károli-feloldás nézetoldali: DT-F176a).',
+        'egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (versegyezést nem állít; a Károli-feloldás nézetoldali; l. VISSZHANG_README.md 1.).',
         'nem verssor-fejléccel kezdődő blokk (kihagyva): %d' % len(nemfej),
     ]
     K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'sorszam', 'forras_kulcs', 'jegyzet'], sorok)

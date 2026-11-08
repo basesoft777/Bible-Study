@@ -16,9 +16,9 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 
 | dataset | fajl | tetel | sha256 | licenc |
 |---|---|---|---|---|
-| Targum_PD | konkordancia/Targum_PD.tsv | 15142 | 745656cdd22424fc445e3bb12a7577f16f09c3cb10c5b1fb23013cd9e1dbc605 | közkincs (Sefaria `license`: Public Domain, verziónként) |
-| Vulgata_Clementina | konkordancia/Vulgata_Clementina.tsv | 31434 | f19e90be193ad94201bbedc893246ca304d661597a770abc084d53b89d02986e | közkincs (eBible: Public Domain) |
-| SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | caad1eff83341840838ebcfd8883762322a7f3da8149da0945c1d56ff86ea048 | CC BY 4.0 |
+| Targum_PD | konkordancia/Targum_PD.tsv | 15142 | ef320a5fc30d02a59ae0cdd5f00142eaec7d272501c95872278206afa7f396c8 | közkincs (Sefaria `license`: Public Domain, verziónként) |
+| Vulgata_Clementina | konkordancia/Vulgata_Clementina.tsv | 31434 | 83ec4780d8a188375698773ea2206864033ba6b159c0c65c2c1b913552300915 | közkincs (eBible: Public Domain) |
+| SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | 63f3af16a91bdf3ef5a0911185459273045cada9aead13a33a16c509fdbf7daf | CC BY 4.0 |
 | TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | c7261e19591f6432f1b1c229a9ffaa726dec5316b970513a76ca3fd70d40ebd7 | CC BY 4.0 |
 | BDB_rokon_irasok | konkordancia/BDB_rokon_irasok.tsv | sor | gyorsítótár, nő | közkincs (BDB, 1906; DT-F33g) |
 

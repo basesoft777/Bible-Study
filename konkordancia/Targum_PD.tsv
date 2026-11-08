@@ -2,7 +2,7 @@
 # forras=Sefaria-Export (storage.googleapis.com/sefaria-export/json/Tanakh/Targum/...), 26 verzió-fájl; csak a license=Public Domain verziók
 # Onkelos: "Onkelos <Könyv>" (versionTitle "Onkelos <Könyv>", versionSource http://toratemetfreeware.com/); Jonatan: "Targum Jonathan on <Könyv>" (versionTitle "Mikraot Gedolot")
 # books.json sha256=e5784fcf2ece785e2137ad4411c101839ada49a6ed1930b1af7b3d4510d20361 | ts=2026-11-08
-# igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali: DT-F176a).
+# igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali; l. VISSZHANG_README.md 1.).
 # ures vers (kihagyva): 0; HTML-jelolest tartalmazo vers (tisztitva): 0
 igehely	forras_vers	targum	forras_mu	verzio	forras_kulcs	szoveg
 1Móz 1:1	Genesis 1:1	Onkelos	Onkelos Genesis	Onkelos Genesis	igen	בְּקַדְמִין בְּרָא יְיָ יָת שְׁמַיָּא וְיָת אַרְעָא

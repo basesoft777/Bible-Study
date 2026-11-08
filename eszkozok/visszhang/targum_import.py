@@ -75,7 +75,7 @@ def fut(be, books, ki):
         'forras=Sefaria-Export (storage.googleapis.com/sefaria-export/json/Tanakh/Targum/...), %d verzió-fájl; csak a license=Public Domain verziók' % len(forrasok),
         'Onkelos: "Onkelos <Könyv>" (versionTitle "Onkelos <Könyv>", versionSource http://toratemetfreeware.com/); Jonatan: "Targum Jonathan on <Könyv>" (versionTitle "Mikraot Gedolot")',
         'books.json sha256=%s | ts=%s' % (K.sha256_fajl(books), K.ts()),
-        'igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali: DT-F176a).',
+        'igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali; l. VISSZHANG_README.md 1.).',
         'ures vers (kihagyva): %d; HTML-jelolest tartalmazo vers (tisztitva): %d' % (ures, cimkes),
     ]
     oszlopok = ['igehely', 'forras_vers', 'targum', 'forras_mu', 'verzio', 'forras_kulcs', 'szoveg']

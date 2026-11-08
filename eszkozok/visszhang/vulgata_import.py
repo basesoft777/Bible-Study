@@ -85,7 +85,7 @@ def fut(zippath, ki):
         'GENERÁLT: eszkozok/visszhang/vulgata_import.py (F176.2); kézzel nem szerkeszthető.',
         'forras=https://ebible.org/Scriptures/latVUC_usfm.zip (Bibbia Vulgata Clementina na 1598; "Clementine Vulgate of 1598 with Glossa Ordinaria Migne edition 1880 in Latin"), sha256=%s | ts=%s' % (K.sha256_fajl(zippath), K.ts()),
         'kiadás (az eBible saját megjelölése szerint): Clementina 1598; a Glossa Ordinaria lábjegyzeteit (%d db) NEM vettük át; kimaradt deuterokanonikus könyvek: %s' % (labj, ' '.join(kimaradt)),
-        'igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse; NEM Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér). forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali: DT-F176a).',
+        'igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse; NEM Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér). forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali; l. VISSZHANG_README.md 1.).',
         'üres vers (kihagyva): %d; versszám-tartomány (\\v a-b, a kulcs az első szám): %d' % (ures, tartomany),
     ]
     K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'forras_kulcs', 'szoveg'], sorok)
