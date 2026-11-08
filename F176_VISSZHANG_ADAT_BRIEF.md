@@ -15,7 +15,7 @@ ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordanc
 fugg: [162, 170]
 nem_fugg: [38, 48, 123, 146, 178]
 pr: https://github.com/basesoft777/Bible-Study/pull/649
-lezarva_osszegzes: négy licencelt visszhang-tábla (Targum_PD 15 142, Vulgata_Clementina 31 434, SBLGNT_apparatus 6 934, TAGNT_valtozatok 11 777), BDB_rokon_irasok gyorsítótár a HAMART-001 láncszavaira, forrásonkénti arány-kapu (1% / 5%); DT-F176a (forrásszámozás, forras_kulcs), DT-F176b (kereskedelmi=igen); három javítókör (ELLENOR_F176, _2, _3); a lexikonlap érintetlen
+lezarva_osszegzes: négy licencelt visszhang-tábla (Targum_PD 15 142, Vulgata_Clementina 31 434, SBLGNT_apparatus 6 934, TAGNT_valtozatok 11 777), BDB_rokon_irasok gyorsítótár a HAMART-001 láncszavaira, forrásonkénti arány-kapu (1% / 5%); DT630 (forrásszámozás, forras_kulcs), DT631 (kereskedelmi=igen); három javítókör (ELLENOR_F176, _2, _3); a lexikonlap érintetlen
 ---
 
 # F176_VISSZHANG_ADAT_BRIEF.md — A visszhang-réteg adatrétege

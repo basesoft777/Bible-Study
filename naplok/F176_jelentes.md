@@ -11,7 +11,7 @@ a fejléc `allapot` értékét a végrehajtó nem állítja `lezarva`-ra.
 |---|---|
 | Mérce | „kimenetbe tehető” (NC kizáró; közkincs, CC0, CC BY mehet). Az elsődleges helyeken minden licencet újraellenőriztem; **egyik sem NC vagy BY-SA, egyik sem tért el a várttól — ⛔ nem történt.** |
 | Táblák | Targum_PD 15 142 sor · Vulgata_Clementina 31 434 sor · SBLGNT_apparatus 6 934 sor · TAGNT_valtozatok 11 777 sor · BDB_rokon_irasok 5 sor (HAMART-001 első futás; az egybetűs szír token kiszűrve, F176.8) |
-| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla előbb `kereskedelmi=feltetelesen` volt; a DT-F176b döntéssel (a felhasználó, 2026-11-08) `igen`; (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
+| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla előbb `kereskedelmi=feltetelesen` volt; a DT631 döntéssel (a felhasználó, 2026-11-08) `igen`; (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT630); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
 | Kapu | `nyilt_mag_kapu.py`: 0 BUKÁS; a mai nyílt magra az ARANY ellenőrzés egyetlen forrást jelez 1% felett: BDB 131 / 8 099 = 1,62% (FIGYELMEZTETÉS) |
 
 ## 1. Licencellenőrzés (F176.1)
@@ -40,9 +40,9 @@ Sefaria-Exportból (nem az API-ból) jöttek, 26 fájl + a `books.json`, ≥ 1 s
 `license` mező ellenőrzésére), a BDB-gyorsítótár építő futása 10 `words` hívás, a hibakeresés további kb. 15 kézi `words` hívás érte, ≥ 1 s közökkel. Ez nem bejárás és nem terheli a szolgáltatást,
 tehát az ÁSZF **nem tiltja** — ⛔ nem lépett életbe. A **kereskedelmi használatra** vonatkozó mondat („unless expressly stated
 otherwise”) értelmezése nyitott: a verziónkénti `Public Domain` jelölés kifejezett nyilatkozatnak tekinthető, de jogi
-véleményt nem adok. Ezért a végrehajtó a `Targum_PD`-t és a `BDB_rokon_irasok`-at először `kereskedelmi=feltetelesen` értékkel vette fel (DT-F176b).
+véleményt nem adok. Ezért a végrehajtó a `Targum_PD`-t és a `BDB_rokon_irasok`-at először `kereskedelmi=feltetelesen` értékkel vette fel (DT631).
 
-**Döntés (DT-F176b, 2026-11-08, a felhasználó):** „szerintem ez az irányadó” (arra, hogy „a tartalom közkincs, és a szerzői jog szerint senki nem korlátozhatja”); a javaslatra: „mehet”. A két tábla `kereskedelmi=igen` (engedett), a nyílt mag szempontjából is engedett. Indok: a tartalom közkincs, a Sefaria nem szerzője, és nem licencelheti; a Targum-verziók „Public Domain” licencmezője az ÁSZF kereskedelmi tiltásának „unless expressly stated otherwise” kivételeként olvasandó; a BDB-nél, ahol nincs licencmező, a közkincs-állítás az 1906-os kiadáson alapul; a letöltés útja (Sefaria-Export / API) az ÁSZF szerint megengedett. A döntés a Sefaria kapcsolattáblára (tanúréteg, a Sefaria saját munkája) NEM vonatkozik. Átvezetve: F176.6 (licencek.tsv, README), F176.6b (`nyilt_mag/` újragenerálás).
+**Döntés (DT631, 2026-11-08, a felhasználó):** „szerintem ez az irányadó” (arra, hogy „a tartalom közkincs, és a szerzői jog szerint senki nem korlátozhatja”); a javaslatra: „mehet”. A két tábla `kereskedelmi=igen` (engedett), a nyílt mag szempontjából is engedett. Indok: a tartalom közkincs, a Sefaria nem szerzője, és nem licencelheti; a Targum-verziók „Public Domain” licencmezője az ÁSZF kereskedelmi tiltásának „unless expressly stated otherwise” kivételeként olvasandó; a BDB-nél, ahol nincs licencmező, a közkincs-állítás az 1906-os kiadáson alapul; a letöltés útja (Sefaria-Export / API) az ÁSZF szerint megengedett. A döntés a Sefaria kapcsolattáblára (tanúréteg, a Sefaria saját munkája) NEM vonatkozik. Átvezetve: F176.6 (licencek.tsv, README), F176.6b (`nyilt_mag/` újragenerálás).
 
 ### 1.2 Targum (Sefaria-Export) — `Targum_PD.tsv`
 
@@ -156,7 +156,7 @@ SHA-256 és sorszám: `konkordancia/VISSZHANG_README.md` 1. szakasza (gépi olva
 - **Vulgata:** 66 kanonikus könyv, 31 434 vers; kimaradt: TOB, JDT, WIS, SIR, BAR, 1MA, 2MA.
 - **SBLGNT:** 27 fájl, 6 934 jegyzet; a 27 könyvcím-blokk kimarad.
 - **TAGNT:** 142 095 szóból 11 777 (11 773, ahol a kiadás-jelölő nem teljes + 4 NKO-tól eltérő típusú, de teljes halmazú); 4 csak-Tyn szó: a `gorog` mező üres.
-- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `forras_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (DT-F176a).
+- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `forras_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (DT630).
 
 ## 3. BDB rokon írások — HAMART-001 első futás (F176.3)
 
@@ -189,7 +189,7 @@ Megjegyzés a kontextusról: az `kontextus` oszlop a szócikk szövegéből vett
 
 ## 5. A `nyilt_mag/` csomag újragenerálása (hatókör-megjegyzés)
 
-A `licencek.tsv` új sorai a generált nyílt mag `forrasok_es_licencek.tsv`-jét változtatják (az export minden licenc-sort kiírja), ezért a `nyilt_mag_kapu.py` BAJTAZONOS-ellenőrzése a régi csomagon BUKÁST adott (10 db). A `nyilt_mag/` **nem szerepel a brief `ir` mezőjében**; a kész-kritériumhoz (`nyilt_mag_kapu.py` zöld) mégis újra kellett generálni (`python eszkozok/nyilt_mag_export.py`; változás: 5 új sor a `forrasok_es_licencek.tsv`-ben, az ELLENORZO_OSSZEG/KIADAS/RELEASE/OLVASSEL/README hash- és kizárt-lista sora). Külön commitban (`F176.4b`), így az orkesztrátor külön visszavonhatja; a mechanikus következmény a licenc-sor, nem tartalmi döntés. Mind az öt új forrás (`Targum_PD`, `BDB_rokon_irasok`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`) „engedett, de a csomag nem használja” (a `Targum_PD` és a `BDB_rokon_irasok` a DT-F176b döntés után, `kereskedelmi=igen`), a `nyilt_mag/forrasok_es_licencek.tsv` szerint.
+A `licencek.tsv` új sorai a generált nyílt mag `forrasok_es_licencek.tsv`-jét változtatják (az export minden licenc-sort kiírja), ezért a `nyilt_mag_kapu.py` BAJTAZONOS-ellenőrzése a régi csomagon BUKÁST adott (10 db). A `nyilt_mag/` **nem szerepel a brief `ir` mezőjében**; a kész-kritériumhoz (`nyilt_mag_kapu.py` zöld) mégis újra kellett generálni (`python eszkozok/nyilt_mag_export.py`; változás: 5 új sor a `forrasok_es_licencek.tsv`-ben, az ELLENORZO_OSSZEG/KIADAS/RELEASE/OLVASSEL/README hash- és kizárt-lista sora). Külön commitban (`F176.4b`), így az orkesztrátor külön visszavonhatja; a mechanikus következmény a licenc-sor, nem tartalmi döntés. Mind az öt új forrás (`Targum_PD`, `BDB_rokon_irasok`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`) „engedett, de a csomag nem használja” (a `Targum_PD` és a `BDB_rokon_irasok` a DT631 döntés után, `kereskedelmi=igen`), a `nyilt_mag/forrasok_es_licencek.tsv` szerint.
 
 ## 6. Ellenőrzések kimenete
 
@@ -225,9 +225,9 @@ Ran 59 tests in 172.518s
 OK                                                         (kilépési kód 0)
 
 $ python eszkozok/ellenorzes/futtat.py --valtozott <a main-hez képesti diff fájljai> --diff-alap origin/main --diff-fej HEAD
-E32: 0 találat (a három DT-F176a hiba megszűnt)
+E32: 0 találat (a három DT630 hiba megszűnt)
 E26: 0 HIBA a 3. javítókör commitja után -- a naplok/ELLENOR_F176_2.md:21 egy végleges DT-számot idéz példaként (a független ellenőr jelentése, nem szerkeszthető); a CI saját kivétele kezeli: az F176.23 commit-üzenetében a `SZÁMKIOSZTÁS-SZÁNDÉKOS:` sor (szabalyok.py E26). A jelentés maga végleges számot nem idéz (ELLENOR_F176_3 1.)
-E30: 5 FIGYELMEZTETÉS (köztük 301456c7 „vesz” = DT-F176f, és ennek a körnek két commit-üzenete: 097a932b, 6a2413e8; a kimenet csak hármat sorol fel)
+E30: 5 FIGYELMEZTETÉS (köztük 301456c7 „vesz” = DT635, és ennek a körnek két commit-üzenete: 097a932b, 6a2413e8; a kimenet csak hármat sorol fel)
 E25: 3, E27: 42, E34: 45 (mind régi, a main-en is meglévő jelentés-szintű találat); a többi ellenőrzés 0
 kilépési kód: l. a 3. javítókör friss futását alább
 ```
@@ -236,12 +236,12 @@ Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyi
 
 ## 7. Nyitott kérdések (helyőrzők: `dontesek/uj/f176-visszhang-adat-c1579f.md`, `nyitott/uj/f176-visszhang-adat-c1579f.md`)
 
-- **DT-F176a — versszámozás-feloldás.** 🟢 Eldöntve (az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08)): (a) — a források saját számozása marad, a Károli-feloldás nézetoldali (versmegfeleltetés, lapszerkezeti generátor-kör); a `karoli_kulcs` oszlop `forras_kulcs` néven csak a szám létezését jelzi (F176.12). Hamis egyezések (ELLENOR_F176 2.): Vulgata Zsolt 22:1 = Károli Zsolt 23:1; Targum Jóel 3:1 = Károli Jóel 2:28; Vulgata Dán 3:24 Azariás-kiegészítés.
-- **DT-F176c — a Sefaria-feltételeknél elmaradt megállás (ELLENOR_F176 1.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva, utólag a DT-F176b rendezte.
-- **DT-F176d — a licenc-commit az adatcommit után (ELLENOR_F176 3.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva (egyik licenc sem lett NC/BY-SA, a kizárás a kódban volt), történet-átírás nincs.
-- **DT-F176e — a `kontextus` a token körüli szövegrész (ELLENOR_F176 7.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): a token körüli szövegrész marad, mert az mutatja a rokon szót; az indok a `SEMA.md`-ben és a `VISSZHANG_README.md`-ben.
-- **DT-F176f — a `301456c7` commit üzenetében ékezet nélküli „vesz” (ELLENOR_F176_2 5.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („176 mehet a döntésed szerint”, 2026-11-08): elfogadva, történet-átírás nincs.
-- **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** 🟢 Eldöntve (a felhasználó, 2026-11-08): `kereskedelmi=igen`, l. 1.1.
+- **DT630 — versszámozás-feloldás.** 🟢 Eldöntve (az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08)): (a) — a források saját számozása marad, a Károli-feloldás nézetoldali (versmegfeleltetés, lapszerkezeti generátor-kör); a `karoli_kulcs` oszlop `forras_kulcs` néven csak a szám létezését jelzi (F176.12). Hamis egyezések (ELLENOR_F176 2.): Vulgata Zsolt 22:1 = Károli Zsolt 23:1; Targum Jóel 3:1 = Károli Jóel 2:28; Vulgata Dán 3:24 Azariás-kiegészítés.
+- **DT632 — a Sefaria-feltételeknél elmaradt megállás (ELLENOR_F176 1.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva, utólag a DT631 rendezte.
+- **DT633 — a licenc-commit az adatcommit után (ELLENOR_F176 3.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva (egyik licenc sem lett NC/BY-SA, a kizárás a kódban volt), történet-átírás nincs.
+- **DT634 — a `kontextus` a token körüli szövegrész (ELLENOR_F176 7.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): a token körüli szövegrész marad, mert az mutatja a rokon szót; az indok a `SEMA.md`-ben és a `VISSZHANG_README.md`-ben.
+- **DT635 — a `301456c7` commit üzenetében ékezet nélküli „vesz” (ELLENOR_F176_2 5.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („176 mehet a döntésed szerint”, 2026-11-08): elfogadva, történet-átírás nincs.
+- **DT631 — a Sefaria-eredetű források kereskedelmi használata.** 🟢 Eldöntve (a felhasználó, 2026-11-08): `kereskedelmi=igen`, l. 1.1.
 - **N-F176a — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria — 12 968 lábjegyzet, nincs átvéve — külön recepciós forrás lehet).
 - **N-F176b — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; addig a „nincs rokon írás” ezekre nem állítható.
 - **N-F176c — a `teszt_visszhang.py` nincs a CI teszt-listájában** (a workflow nem az `ir` mezőben van).
