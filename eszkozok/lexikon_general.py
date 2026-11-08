@@ -6225,6 +6225,32 @@ VISSZHANG_FORRASOK = (('targum', 'Targum'), ('vulgata', 'Vulgata'), ('lxx', 'LXX
 VISSZHANG_NEV = {'targum': 'a Targum', 'vulgata': 'a Vulgata', 'lxx': 'a LXX'}
 
 
+_bdb_rokon_szocikk_cache = None
+
+
+def bdb_rokon_szocikk(strong):
+    """A rokon írások gyorsítótárának (`BDB_rokon_irasok.tsv`) `# lekérdezve:` sora szerint hány BDB-szócikket
+    azonosított a lekérdezés a Strongra; None, ha a Strongot nem kérdezték le."""
+    global _bdb_rokon_szocikk_cache
+    if _bdb_rokon_szocikk_cache is None:
+        _bdb_rokon_szocikk_cache = {}
+        ut = os.path.join(KONKORDANCIA, 'BDB_rokon_irasok.tsv')
+        if os.path.exists(ut):
+            with io.open(ut, encoding='utf-8') as f:
+                for sor in f:
+                    m = re.match(r'# lekérdezve: (H\d+) \|.*bdb_szócikk=(\d+)', sor)
+                    if m:
+                        _bdb_rokon_szocikk_cache[m.group(1)] = int(m.group(2))
+    return _bdb_rokon_szocikk_cache.get(strong)
+
+
+def bdb_helyi_szocikk(strong):
+    """A helyi BDB-szöveg (`BDB_teljes_unabridged.tsv`) tartalmaz-e szócikket a Strongra."""
+    ut = os.path.join(KONKORDANCIA, 'BDB_teljes_unabridged.tsv')
+    with io.open(ut, encoding='utf-8') as f:
+        return any(sor.startswith(strong + '\t') for sor in f)
+
+
 def visszhang_sorok(motivum_id):
     if not os.path.exists(VISSZHANG_TSV):
         return []
@@ -6387,7 +6413,16 @@ def blokk_visszhang(m, sorai):
             hs = [r for r in hatter if r['strong'] == s]
             ures = [r for r in hs if not r['alak'] and not r['lemma']]
             if ures:
-                ht.append('| %s | %s | — | — |' % (_lanc_szo_cim(s), _cella(ures[0]['megjegyzes'])))
+                # F178.5 (a brief: „nem azonosítható”, nem „nincs” — a kettő nem vonható össze): ha a rokon írások
+                # lekérdezése a szócikket nem azonosította (bdb_szócikk=0), ez áll elöl; a helyi BDB-szöveg lelete
+                # (a szócikk megvan, rokon alak nélkül) mellette, külön mondatban
+                if bdb_rokon_szocikk(s) == 0:
+                    szov = ('a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben '
+                            'rokon nyelvi alak nem áll' if bdb_helyi_szocikk(s) else
+                            'nem azonosítható: a BDB-szócikk nem található')
+                else:
+                    szov = ures[0]['megjegyzes'] or 'a BDB-szócikkben nincs rokon nyelvi adat'
+                ht.append('| %s | %s | — | — |' % (_lanc_szo_cim(s), _cella(szov)))
                 continue
             for r in hs:
                 if not r['ellenorzes']:

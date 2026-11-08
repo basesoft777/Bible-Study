@@ -2244,7 +2244,7 @@ A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (asszír, a
 | אֲדָמָה (adámá) — föld: talaj | arab دَمَّ (damma) | kenni, bekenni (felületen szétteríteni) | BDB: a √ דם gyökkel összevetve (cf.) |
 | אָרַר (árar) — megátkozni | asszír arâru (aráru) | átkozni (a BDB a „köt” és „átkoz” jelentés összefüggésére utal) | BDB: Assyrian arâru (Zimmern, BP 68) |
 | חָמָס (chámász) — erőszak | a BDB-szócikkben nincs rokon nyelvi adat | — | — |
-| עִצָּבוֹן (iccávón) — fáradság | a BDB-szócikkben nincs rokon nyelvi adat | — | — |
+| עִצָּבוֹן (iccávón) — fáradság | a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll | — | — |
 | קָלַל (kálal) — könnyűnek lenni | Tell el-Amarna (írás nélkül) | megvet, meggyaláz (a BDB: „so”, azaz az asszírral egyező) | a BDB nem ad alakot |
 | קָלַל (kálal) — könnyűnek lenni | arab (írás nélkül) | kicsinek, csekélynek lenni | az írás a szótár szövegében nem áll |
 | קָלַל (kálal) — könnyűnek lenni | etióp (írás nélkül) | könnyűnek, kicsinek lenni; II. megvet | az etióp írású alak a BDB-szövegben hiányzik |
