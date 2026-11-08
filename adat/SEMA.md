@@ -2100,7 +2100,7 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 | Oszlop | Tartalom |
 |---|---|
 | `motivum` | a motívum azonosítója |
-| `strong` | a lánc-szó (Strong; szópárnál `+`-szal, pl. `H0779+H7043`: az árar és a 8:21 kálal igéje egy lánc-szóként) |
+| `strong` | a lánc-szó (Strong); a lánc-szót nem ez a tábla jelöli ki, hanem a motívumadat (l. „A lánc honnan jön”); a betoldás-sornál a betoldott szó Strongja |
 | `igehely` | a láncvers (Károli-alak); a `bdb` sornál üres |
 | `forras` | `targum` \| `vulgata` \| `lxx` \| `bdb` (a BDB rokon nyelvi háttere; a brief három értékét ez az egy bővíti) |
 | `alak` | a versben álló szó, szó szerint (két előfordulás ` · `-tal); hiánynál üres, és a `megjegyzes` kimondja |
@@ -2115,6 +2115,18 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 | `proveniencia` | `scope=… \| forras=… \| ts=…` |
 
 **Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
+
+**A lánc honnan jön (DT-F178g, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
+vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
+`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó); láncvers a
+motívum minden verse (a tartomány versenként), amelyben a szó a héber szövegben (TAHOT) áll; ha a motívum negatív
+kritériuma (2.1) a lánc magját megnevezi („az 1Móz 3–9 láncára”), csak a mag versei, mert a teljes levezetés egy
+szónál túl sok verset adna (HAMART-001: adámá 19, chámász 13 vers), és a mag utáni helyek a lánc bibliai visszhangjai
+(a lap 2. szakaszában). E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
+kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
+láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a
+Targum `N`-jébe nem számít. A háttér-táblában csak a lánc-szavak és tövük állnak; lánc-szó `bdb` sor nélkül: „a
+rokon nyelvi adat kinyerése még nem történt meg”.
 
 **Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
 `beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével

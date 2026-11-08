@@ -232,10 +232,11 @@ def szocsalad(lemma):
     tovek, sor = set(), [t]
     while sor:
         x = sor.pop()
-        tovek.add(x[:3])
-        for e in ELOTAGOK:
-            if x.startswith(e) and len(x) > len(e) + 2:
-                sor.append(x[len(e):])
+        gyerek = [x[len(e):] for e in ELOTAGOK if x.startswith(e) and len(x) > len(e) + 2]
+        if gyerek:
+            sor.extend(gyerek)   # az előtagos alak eleje („κατ”) nem tő: csak az előtag nélküli alaké (F178 javítókör)
+        else:
+            tovek.add(x[:3])
     return tovek
 
 
@@ -244,25 +245,14 @@ def szocsalad_g(g, vers_tok):
     return szocsalad(l) if l else set()
 
 
-def gyok_vaz(szoto):
-    """A szótő mássalhangzó-váza a szokásos névszóképző végződés (-ón, -ut, -t, -á) nélkül, az első három betű
-    (עִצָּבוֹן → עצב, עֶצֶב → עצב): két héber szó egy tőről, ha a váz azonos."""
-    v = ''.join(c for c in (szoto or '') if 'א' <= c <= 'ת').translate(str.maketrans('ךםןףץ', 'כמנפצ'))
-    for veg in ('ונ', 'ות', 'ת', 'ה'):
-        if v.endswith(veg) and len(v) - len(veg) >= 3:
-            v = v[:-len(veg)]
-            break
-    return v[:3]
-
-
 def tahot_versek(versek):
-    """{Károli-vers: [(héber Strong, a szótő váza) a szórendben]} a TAHOT-ból (a H9xxx partikulák nélkül)."""
+    """{Károli-vers: [(héber Strong, a TAHOT rövid jelentése) a szórendben]} a TAHOT-ból (a H9xxx partikulák nélkül)."""
     d = {}
     with open(os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv'), encoding='utf-8') as f:
         for s in f:
             c = s.rstrip('\r\n').split('\t')
-            if len(c) > 4 and c[0] in versek and c[1].startswith('H') and not c[1].startswith('H9'):
-                d.setdefault(c[0], []).append((c[1], gyok_vaz(c[4])))
+            if len(c) > 5 and c[0] in versek and c[1].startswith('H') and not c[1].startswith('H9'):
+                d.setdefault(c[0], []).append((c[1], c[5].strip().lower()))
     return d
 
 
@@ -279,26 +269,27 @@ def legjobb_csalad(dice, vers_tok):
 def szorend_szerint(tok, strong, heber, csalad_fn):
     """ELLENOR_F178 7.: ha a választott szócsalád a versben többször áll, mint a lánc-szó a héberben, és a többletet egy
     másik héber szó magyarázza — a versben ugyanerre a szócsaládra a legerősebb a társulása, vagy (társulási adat
-    híján) a lánc-szóval egy tőről való (1Móz 3:16: עִצָּבוֹן és עֶצֶב, mindkettő λύπη) —, a görög előfordulásokat a
-    héber szórend szerint osztja ki: a lánc-szó n-edik előfordulásáé a szócsalád n-edik előfordulása. `heber`:
-    [(Strong, tőváz)]. Visszaad: (tokenek, a rivális héber Strongok); ha a darabszám nem egyezik, a tokenek változatlanok."""
+    híján) a TAHOT szerint ugyanaz a rövid jelentése (1Móz 3:16: עִצָּבוֹן és עֶצֶב, mindkettő „toil”, mindkettő λύπη;
+    1Móz 7:23: אֲדָמָה és אֶרֶץ, mindkettő „land”, mindkettő γῆ) —, a görög előfordulásokat a héber szórend szerint osztja
+    ki: a lánc-szó n-edik előfordulásáé a szócsalád n-edik előfordulása. `heber`: [(Strong, rövid jelentés)].
+    Visszaad: (tokenek, a rivális héber Strongok); ha a darabszám nem egyezik, a tokenek változatlanok."""
     sajat = set(strong.split('+'))
     k = sum(1 for h, _ in heber if h in sajat)
     if not tok or not k or len(tok) <= k:
         return tok, []
     csal = szocsalad(tok[0]['lemma'])
-    sajat_vaz = {v for h, v in heber if h in sajat and v}
+    sajat_jel = {j for h, j in heber if h in sajat and j}
     rivalis = []
-    for h, v in dict.fromkeys(heber):
-        if h in sajat:
+    for h, j in dict.fromkeys(heber):
+        if h in sajat or h in rivalis:
             continue
-        c = csalad_fn(h)   # None: a héber szónak nincs társulási adata (csak ekkor dönt a tő)
-        if (c is not None and c & csal) or (c is None and v in sajat_vaz):
+        c = csalad_fn(h)   # None: a héber szónak nincs társulási adata (csak ekkor dönt a rövid jelentés)
+        if (c is not None and c & csal) or (c is None and j in sajat_jel):
             rivalis.append(h)
     sor = [h for h, _ in heber if h in sajat or h in rivalis]
     if len(sor) != len(tok):
         return tok, []
-    return [t for t, h in zip(tok, sor) if h in sajat], list(dict.fromkeys(rivalis))
+    return [t for t, h in zip(tok, sor) if h in sajat], rivalis
 
 
 def lxx(a):
