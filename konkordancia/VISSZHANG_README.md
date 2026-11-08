@@ -16,18 +16,21 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 
 | dataset | fajl | tetel | sha256 | licenc |
 |---|---|---|---|---|
-| Targum_PD | konkordancia/Targum_PD.tsv | 15142 | 9b29e229198550eb8ea87df1c190a90c0c7e0622a400f65f040746fac59a3646 | közkincs (Sefaria `license`: Public Domain, verziónként) |
-| Vulgata_Clementina | konkordancia/Vulgata_Clementina.tsv | 31434 | 738c41858989110dd7a8ce58d54be46a23f7ca8a649d2790e699c4acf7c5eeab | közkincs (eBible: Public Domain) |
-| SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | 127281714c02e8e23a9dc5d65dcee882de05904a6290a302ec8a5576f59f2e5d | CC BY 4.0 |
-| TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | a1eec149b07d82928b19f9ac13f463209605f227da03bce5a99c52cfa4dcb2cc | CC BY 4.0 |
+| Targum_PD | konkordancia/Targum_PD.tsv | 15142 | 745656cdd22424fc445e3bb12a7577f16f09c3cb10c5b1fb23013cd9e1dbc605 | közkincs (Sefaria `license`: Public Domain, verziónként) |
+| Vulgata_Clementina | konkordancia/Vulgata_Clementina.tsv | 31434 | f19e90be193ad94201bbedc893246ca304d661597a770abc084d53b89d02986e | közkincs (eBible: Public Domain) |
+| SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | caad1eff83341840838ebcfd8883762322a7f3da8149da0945c1d56ff86ea048 | CC BY 4.0 |
+| TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | df1c7de3f03c92bba54e035d1f4ef82b99f0143a5f7488a4b65907ff7cb94848 | CC BY 4.0 |
 | BDB_rokon_irasok | konkordancia/BDB_rokon_irasok.tsv | sor | gyorsítótár, nő | közkincs (BDB, 1906; DT-F33g) |
 
 Közös szabály mind az öt táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
 könyvrövidítés (a `Konyv_normalizalo_tabla.tsv` szerint) és a forrás fejezet:verse; **Károli-átszámozás nincs**
 (MT ↔ Károli, Vulgata ↔ Károli, NRSV ↔ Károli feloldása tartalmi döntés, DT-F176a). A `forras_vers` / `forras_ref`
-oszlop a forrás hivatkozását változatlanul őrzi, a `karoli_kulcs` oszlop pedig csak azt jelzi, **létezik-e** az
-`igehely`-kulcs a `Karoli_1908.tsv`-ben (a létezés nem jelent azonos verset: pl. Jóel 3 az MT-ben és a Károliban
-mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nélkül néma nem-találat lenne (CLAUDE.md).
+oszlop a forrás hivatkozását változatlanul őrzi. **Az `igehely` a forrás saját számozása (magyar könyvnévvel), nem
+Károli-vers.** A `forras_kulcs` (`igen` | `nem`) oszlop csak azt jelzi, hogy ugyanez a fejezet:vers szám **létezik-e** a
+`Karoli_1908.tsv`-ben; versegyezést nem állít (hamis egyezés: Vulgata Zsolt 22:1 = Károli Zsolt 23:1; Targum Jóel 3:1 =
+Károli Jóel 2:28; Vulgata Dán 3:24 = az Azariás-kiegészítés). **A Károli-feloldás nézetoldali** (DT-F176a): a
+versmegfeleltetéssel (`Karoli_versmegfeleltetes.tsv` / TVTMS) a lapszerkezeti generátor-körben történik, nem ebben az
+adatban. A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nélkül néma nem-találat lenne (CLAUDE.md).
 
 ## 2. Targum — `Targum_PD.tsv`
 
@@ -41,7 +44,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
   `license` field.” A 26 JSON mindegyikében: `"license": "Public Domain"`. A `merged` fájl nem használt; a jemeni
   (Taj) Onkelos-verzió CC BY-SA, a Metsudah NC — **kimaradtak**. **Kereskedelmi: engedett** (DT-F176b, a felhasználó döntése, 2026-11-08): a verziónkénti „Public Domain” licencmező a Sefaria ÁSZF kereskedelmi tiltásának „unless expressly stated otherwise” kivétele; a tartalom közkincs, a Sefaria nem licencelheti.
 - **Oszlopok:** `igehely`, `forras_vers` (Sefaria-hivatkozás), `targum` (`Onkelos` | `Jonatan`), `forras_mu`,
-  `verzio`, `karoli_kulcs`, `szoveg` (arám, magánhangzó-jelekkel, a forrás szerint).
+  `verzio`, `forras_kulcs`, `szoveg` (arám, magánhangzó-jelekkel, a forrás szerint).
 - **Nem benne:** az Írások Targumja, a Targum Jeruzsálemi / Pszeudo-Jonatán, a Targum Neofiti, az angol fordítások.
 - **Újragenerálás:** `python -I eszkozok/visszhang/targum_import.py --be <letöltött json könyvtár> --books <books.json>`.
 
@@ -54,7 +57,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
   eBible által megnevezett kiadást hordozza; a szöveg a Clementina, a Glossa Ordinaria (Migne, 1880) lábjegyzetei
   nem kerültek át (12 968 lábjegyzet).
 - **Licenc (elsődleges hely):** `ebible.org/latVUC/copr.htm` és `copyright.htm`: „Public Domain”.
-- **Oszlopok:** `igehely`, `forras_vers` (USFM-könyvkód + forrás fejezet:verse), `karoli_kulcs`, `szoveg`.
+- **Oszlopok:** `igehely`, `forras_vers` (USFM-könyvkód + forrás fejezet:verse), `forras_kulcs`, `szoveg`.
   66 kanonikus könyv; a deuterokanonikus könyvek (TOB, JDT, WIS, SIR, BAR, 1MA, 2MA) kimaradtak. A zsoltárok
   Vulgata-számozásúak; az Eszter- és Dániel-kiegészítések a forrás fejezetszámán állnak.
 - **Újragenerálás:** `python -I eszkozok/visszhang/vulgata_import.py --zip <latVUC_usfm.zip>`.
@@ -71,7 +74,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
   már nem hatályos; szövege és hash-e a `naplok/F176_jelentes.md`-ben archiválva.
 - **Kötelező megjelölés:** „SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible
   Software, CC BY 4.0 (https://sblgnt.com)”.
-- **Oszlopok:** `igehely`, `forras_vers`, `sorszam` (a jegyzet sorszáma a vers alatt), `karoli_kulcs`, `jegyzet` (szó
+- **Oszlopok:** `igehely`, `forras_vers`, `sorszam` (a jegyzet sorszáma a vers alatt), `forras_kulcs`, `jegyzet` (szó
   szerint). Az SBLGNT alapszövege nincs a táblában.
 - **Újragenerálás:** `python -I eszkozok/visszhang/sblgnt_import.py --be <app könyvtár> --commit <sha> --license <LICENSE>`.
 
@@ -89,7 +92,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
   is hordoz) kimaradt, helyette `jelentesvaltozat` (igen/nem). A 4 csak-Tyn szónál a `gorog` mező üres.
 - **Oszlopok:** `igehely`, `forras_ref` (pl. `Mat.15.6{15.5}`), `szamozas` (`nrsv` | `kjv` | `egyeb` | `na`: a forrás
   zárójel-jelölése), `szo_sorszam`, `tipus`, `strong`, `gorog`, `kiadasok`, `hianyzik_ebbol`, `mozgatas` (`»n`/`«n`),
-  `jelentesvaltozat`, `karoli_kulcs`. A zárójeles kettős hivatkozások Károli-feloldása (F90) itt **nincs** átvéve.
+  `jelentesvaltozat`, `forras_kulcs`. A zárójeles kettős hivatkozások Károli-feloldása (F90) itt **nincs** átvéve.
 - **Újragenerálás:** `python -I eszkozok/visszhang/tagnt_valtozatok.py --be <tagnt könyvtár> --commit <sha>`.
 
 ## 6. BDB rokon írások — `BDB_rokon_irasok.tsv` (gyorsítótár)
@@ -105,8 +108,9 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
   A BDB (Brown–Driver–Briggs, Oxford 1906) közkincs-státusza a mű korán alapul (a repó DT-F33g döntése, `licencek.tsv`
   BDB sor); a Sefaria megnevezése: „F. Brown, S. Driver & C. Briggs”. **Kereskedelmi: engedett** (DT-F176b, a felhasználó döntése, 2026-11-08): a tartalom közkincs, a közkincs-állítás az 1906-os kiadáson alapul.
 - **Oszlopok:** `strong`, `sefaria_ref`, `nyelv` (`arab` | `etióp` | `szír`, Unicode-blokk szerint), `szoalak`,
-  `kontextus` (≤ 120 karakter a szócikk szövegéből), `proveniencia`. A görög és a latin írású token nem rokon írás,
-  nem kerül be.
+  `kontextus` (≤ 120 karakter), `proveniencia`. A `kontextus` a token körüli szövegrész a BDB-szócikkből (nem a
+  szócikk feje): az mutatja, melyik rokon szóhoz tartozik a token (DT-F176e). A görög és a latin írású, valamint az
+  egybetűs token nem rokon szóalak, nem kerül be.
 - **A „nincs rokon írás” nem sor:** a lekérdezés tényét és eredményét a fájl fejlécének `# lekérdezve: <Strong> | …`
   sora rögzíti (a próbált alakok, a talált BDB-szócikkek és a rokon-írás-sorok száma). Ezért a gyorsítótár második
   futása nem kér le újra.

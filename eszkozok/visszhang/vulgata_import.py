@@ -14,7 +14,7 @@ Szabalyok:
     a Glossa Migne 1880-as kiadasabol van; ez kulon, recepcios forras, nem ebben a tablaban).
   * a versszamozas a forras (Vulgata-) sajat szamozasa: az `igehely` a magyar konyvrovidites + a forras fejezet:verse,
     nem Karoli-atszamozas (a zsoltarok Vulgata-szamozasa elter); a `forras_vers` USFM-kod + forras fejezet:verse;
-    a `karoli_kulcs` csak azt jelzi, letezik-e az igehely-kulcs a Karoli_1908.tsv-ben.
+    a `forras_kulcs` csak azt jelzi, letezik-e az igehely-kulcs a Karoli_1908.tsv-ben.
 Futtatas:  python -I eszkozok/visszhang/vulgata_import.py --zip <latVUC_usfm.zip>
 """
 import argparse
@@ -85,11 +85,11 @@ def fut(zippath, ki):
         'GENERÁLT: eszkozok/visszhang/vulgata_import.py (F176.2); kézzel nem szerkeszthető.',
         'forras=https://ebible.org/Scriptures/latVUC_usfm.zip (Bibbia Vulgata Clementina na 1598; "Clementine Vulgate of 1598 with Glossa Ordinaria Migne edition 1880 in Latin"), sha256=%s | ts=%s' % (K.sha256_fajl(zippath), K.ts()),
         'kiadás (az eBible saját megjelölése szerint): Clementina 1598; a Glossa Ordinaria lábjegyzeteit (%d db) NEM vettük át; kimaradt deuterokanonikus könyvek: %s' % (labj, ' '.join(kimaradt)),
-        'igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse; NEM Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér). karoli_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás).',
+        'igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse; NEM Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér). forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali: DT-F176a).',
         'üres vers (kihagyva): %d; versszám-tartomány (\\v a-b, a kulcs az első szám): %d' % (ures, tartomany),
     ]
-    K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'karoli_kulcs', 'szoveg'], sorok)
-    print('sorok: %d; labjegyzet (nem atvett): %d; kimaradt konyv: %s; ures: %d; tartomany: %d; karoli_kulcs=nem: %d' % (
+    K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'forras_kulcs', 'szoveg'], sorok)
+    print('sorok: %d; labjegyzet (nem atvett): %d; kimaradt konyv: %s; ures: %d; tartomany: %d; forras_kulcs=nem: %d' % (
         len(sorok), labj, ' '.join(kimaradt), ures, tartomany, sum(1 for s in sorok if s[2] == 'nem')))
 
 

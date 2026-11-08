@@ -4,7 +4,7 @@
 # egy sor = egy TAGNT-szó, amelynél a kiadás-jelölő nem a teljes NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz halmaz, vagy a tipus nem NKO. A THGNT (Tyn) szövege nem került át, csak a jelölés; a Meaning/Spelling variants oszlop nincs benne.
 # összes TAGNT-szó: 142095; a kimenetben: 11777; csak-Tyn szó (görög mező üres): 4
 # igehely = magyar könyvrövidítés + a FORRÁS (NRSV) elsődleges fejezet:verse; szamozas: nrsv | kjv ([..]) | egyeb ({..}) | na ((..)) a forrás zárójel-jelölése szerint; forras_ref szó szerint. NEM Károli-átszámozás.
-igehely	forras_ref	szamozas	szo_sorszam	tipus	strong	gorog	kiadasok	hianyzik_ebbol	mozgatas	jelentesvaltozat	karoli_kulcs
+igehely	forras_ref	szamozas	szo_sorszam	tipus	strong	gorog	kiadasok	hianyzik_ebbol	mozgatas	jelentesvaltozat	forras_kulcs
 Mt 1:6	Mat.1.6	nrsv	#10	k	G3588	ὁ	TR+Byz	NA28 NA27 Tyn SBL WH Treg		nem	igen
 Mt 1:6	Mat.1.6	nrsv	#11	k	G0935	βασιλεὺς	TR+Byz	NA28 NA27 Tyn SBL WH Treg		nem	igen
 Mt 1:10	Mat.1.10	nrsv	#10	N(k)O	G0301	Ἀμώς·	NA28+NA27+Tyn+SBL+WH+Treg	TR Byz		igen	igen

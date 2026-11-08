@@ -144,19 +144,19 @@ Minden licenc egyezik a várttal (közkincs, közkincs, CC BY 4.0, CC BY 4.0, k�
 
 SHA-256 és sorszám: `konkordancia/VISSZHANG_README.md` 1. szakasza (gépi olvasású tábla; a `teszt_visszhang.py` a sorszámot ellenőrzi).
 
-| Tábla | Sorok | SHA-256 | `karoli_kulcs=nem` |
+| Tábla | Sorok | SHA-256 | `forras_kulcs=nem` |
 |---|---|---|---|
-| Targum_PD.tsv | 15 142 | `9b29e229198550eb8ea87df1c190a90c0c7e0622a400f65f040746fac59a3646` | 96 |
-| Vulgata_Clementina.tsv | 31 434 | `738c41858989110dd7a8ce58d54be46a23f7ca8a649d2790e699c4acf7c5eeab` | 1 269 |
-| SBLGNT_apparatus.tsv | 6 934 | `127281714c02e8e23a9dc5d65dcee882de05904a6290a302ec8a5576f59f2e5d` | 1 |
-| TAGNT_valtozatok.tsv | 11 777 | `a1eec149b07d82928b19f9ac13f463209605f227da03bce5a99c52cfa4dcb2cc` | 0 |
+| Targum_PD.tsv | 15 142 | `745656cdd22424fc445e3bb12a7577f16f09c3cb10c5b1fb23013cd9e1dbc605` | 96 |
+| Vulgata_Clementina.tsv | 31 434 | `f19e90be193ad94201bbedc893246ca304d661597a770abc084d53b89d02986e` | 1 269 |
+| SBLGNT_apparatus.tsv | 6 934 | `caad1eff83341840838ebcfd8883762322a7f3da8149da0945c1d56ff86ea048` | 1 |
+| TAGNT_valtozatok.tsv | 11 777 | `df1c7de3f03c92bba54e035d1f4ef82b99f0143a5f7488a4b65907ff7cb94848` | 0 |
 | BDB_rokon_irasok.tsv | 5 | l. 3. (gyorsítótár, nő) | — |
 
 - **Targum:** 15 142 vers = Onkelos 5 846 vers (5 könyv) + Jonatán 9 296 vers (21 könyv); saját mérés a `targum` oszlopból (az ellenőr mérése ugyanezt adta); üres vers 0; HTML-jelölés 0.
 - **Vulgata:** 66 kanonikus könyv, 31 434 vers; kimaradt: TOB, JDT, WIS, SIR, BAR, 1MA, 2MA.
 - **SBLGNT:** 27 fájl, 6 934 jegyzet; a 27 könyvcím-blokk kimarad.
 - **TAGNT:** 142 095 szóból 11 777 (11 773, ahol a kiadás-jelölő nem teljes + 4 NKO-tól eltérő típusú, de teljes halmazú); 4 csak-Tyn szó: a `gorog` mező üres.
-- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `karoli_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (DT-F176a).
+- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `forras_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (DT-F176a).
 
 ## 3. BDB rokon írások — HAMART-001 első futás (F176.3)
 

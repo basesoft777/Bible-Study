@@ -12,7 +12,7 @@ Kimenet: konkordancia/SBLGNT_apparatus.tsv
 Egy sor = egy apparatus-jegyzet (a vers alatti `•`-os vagy szamozott sor), szo szerint a forrasbol, a vezeto `•` nelkul.
 Az SBLGNT alapszovege NEM kerul at (arra a TAGNT_kivonat.tsv `SBL` jelzese es a Macula_gorog.tsv hivatkozik);
 csak a kritikai apparatus. A versszamozas a forras sajat szamozasa (nem Karoli-atszamozas): az `igehely` a magyar
-konyvrovidites + a forras fejezet:verse, a `forras_vers` a forras fejlecsora; a `karoli_kulcs` csak letezest jelez.
+konyvrovidites + a forras fejezet:verse, a `forras_vers` a forras fejlecsora; a `forras_kulcs` csak letezest jelez.
 Futtatas:  python -I eszkozok/visszhang/sblgnt_import.py --be <letoltes/app> --commit <sha> --license <LICENSE>
 """
 import argparse
@@ -61,11 +61,11 @@ def fut(be, commit, lic, ki):
         'GENERÁLT: eszkozok/visszhang/sblgnt_import.py (F176.2); kézzel nem szerkeszthető.',
         'forras=github.com/LogosBible/SBLGNT @ %s, data/sblgntapp/text/*.txt (%d fájl) | licenc: CC BY 4.0 (a repó LICENSE-fájlja és README-je; LICENSE sha256=%s) | ts=%s' % (commit, fajlok, K.sha256_fajl(lic), K.ts()),
         'kötelező megjelölés: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com)',
-        'egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); karoli_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben.',
+        'egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (versegyezést nem állít; a Károli-feloldás nézetoldali: DT-F176a).',
         'nem verssor-fejléccel kezdődő blokk (kihagyva): %d' % len(nemfej),
     ]
-    K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'sorszam', 'karoli_kulcs', 'jegyzet'], sorok)
-    print('sorok: %d; fajlok: %d; nem-fejleces blokk: %d %s; karoli_kulcs=nem: %d' % (
+    K.ir_tsv(ki, fejlec, ['igehely', 'forras_vers', 'sorszam', 'forras_kulcs', 'jegyzet'], sorok)
+    print('sorok: %d; fajlok: %d; nem-fejleces blokk: %d %s; forras_kulcs=nem: %d' % (
         len(sorok), fajlok, len(nemfej), nemfej[:5], sum(1 for s in sorok if s[3] == 'nem')))
 
 

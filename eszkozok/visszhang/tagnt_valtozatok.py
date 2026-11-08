@@ -15,7 +15,7 @@ at: csak az, hogy a szo mely kiadasokban all (`kiadasok`); a `Meaning variants` 
 Tyn-ben all, a `gorog` mezo ures (a szoveg THGNT-eredetu lenne).
 A versszamozas a forras (NRSV-) szamozasa: az `igehely` a magyar konyvrovidites + a forras elsodleges fejezet:verse,
 a `forras_ref` valtozatlanul tartalmazza a forras hivatkozasat (zarojeles alternativaval egyutt); a Karoli-kulcs
-eldontese (F22/F90) tartalmi dontes, itt NEM tortenik; a `karoli_kulcs` csak letezest jelez.
+eldontese (F22/F90) tartalmi dontes, itt NEM tortenik; a `forras_kulcs` csak letezest jelez.
 Futtatas:  python -I eszkozok/visszhang/tagnt_valtozatok.py --be <letoltes/tagnt> --commit <sha>
 """
 import argparse
@@ -83,9 +83,9 @@ def fut(be, commit, ki):
         'igehely = magyar könyvrövidítés + a FORRÁS (NRSV) elsődleges fejezet:verse; szamozas: nrsv | kjv ([..]) | egyeb ({..}) | na ((..)) a forrás zárójel-jelölése szerint; forras_ref szó szerint. NEM Károli-átszámozás.',
     ]
     ok = ['igehely', 'forras_ref', 'szamozas', 'szo_sorszam', 'tipus', 'strong', 'gorog', 'kiadasok', 'hianyzik_ebbol',
-          'mozgatas', 'jelentesvaltozat', 'karoli_kulcs']
+          'mozgatas', 'jelentesvaltozat', 'forras_kulcs']
     K.ir_tsv(ki, fejlec, ok, sorok)
-    print('osszes szo: %d; kimeneti sor: %d; csak-Tyn: %d; karoli_kulcs=nem: %d' % (
+    print('osszes szo: %d; kimeneti sor: %d; csak-Tyn: %d; forras_kulcs=nem: %d' % (
         osszes, len(sorok), tyn_csak, sum(1 for s in sorok if s[-1] == 'nem')))
 
 

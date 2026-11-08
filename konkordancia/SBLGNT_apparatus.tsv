@@ -1,9 +1,9 @@
 # GENERÁLT: eszkozok/visszhang/sblgnt_import.py (F176.2); kézzel nem szerkeszthető.
 # forras=github.com/LogosBible/SBLGNT @ d7f35adca9ec410e1d1499c63b4dd989d76c8d4d, data/sblgntapp/text/*.txt (27 fájl) | licenc: CC BY 4.0 (a repó LICENSE-fájlja és README-je; LICENSE sha256=7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661) | ts=2026-11-08
 # kötelező megjelölés: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com)
-# egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); karoli_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben.
+# egy sor = egy apparátus-jegyzet, szó szerint; az SBLGNT alapszövege nincs a táblában. igehely = magyar könyvrövidítés + a FORRÁS fejezet:verse (NEM Károli-átszámozás); forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (versegyezést nem állít; a Károli-feloldás nézetoldali: DT-F176a).
 # nem verssor-fejléccel kezdődő blokk (kihagyva): 27
-igehely	forras_vers	sorszam	karoli_kulcs	jegyzet
+igehely	forras_vers	sorszam	forras_kulcs	jegyzet
 Mt 1:5	Matthew 1:5	1	igen	1:5 Βόες … Βόες WH NA28 ] Βοὸς … Βοὸς Treg; Βοὸζ … Βοὸζ RP
 Mt 1:5	Matthew 1:5	2	igen	Ἰωβὴδ … Ἰωβὴδ WH Treg NA28 ] Ὠβὴδ … Ὠβὴδ RP
 Mt 1:6	Matthew 1:6	1	igen	6 δὲ WH Treg NA28 ] + ὁ βασιλεὺς RP

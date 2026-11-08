@@ -11,7 +11,7 @@ Kimenet: konkordancia/Targum_PD.tsv
 Szabalyok:
   * csak a `license` mezoben `Public Domain` verzio megy at (verziónként ellenőrizve); ami mas, SystemExit.
   * a versszamozas a forras sajat (MT-) szamozasa: az `igehely` a magyar konyvrovidites + a forras fejezet:verse,
-    NEM Karoli-atszamozas; a `forras_vers` a Sefaria-hivatkozas valtozatlanul; a `karoli_kulcs` oszlop csak
+    NEM Karoli-atszamozas; a `forras_vers` a Sefaria-hivatkozas valtozatlanul; a `forras_kulcs` oszlop csak
     jelzi, hogy az igehely-kulcs letezik-e a Karoli_1908.tsv-ben (igen/nem) -- a feloldas tartalmi dontes.
   * a HTML-jelolest (ha van) eltavolitja; az ures versek nem kerulnek sorba (szamuk a stderr-en).
 Futtatas:  python -I eszkozok/visszhang/targum_import.py --be <letoltes/json> --books <books.json>
@@ -75,14 +75,14 @@ def fut(be, books, ki):
         'forras=Sefaria-Export (storage.googleapis.com/sefaria-export/json/Tanakh/Targum/...), %d verzió-fájl; csak a license=Public Domain verziók' % len(forrasok),
         'Onkelos: "Onkelos <Könyv>" (versionTitle "Onkelos <Könyv>", versionSource http://toratemetfreeware.com/); Jonatan: "Targum Jonathan on <Könyv>" (versionTitle "Mikraot Gedolot")',
         'books.json sha256=%s | ts=%s' % (K.sha256_fajl(books), K.ts()),
-        'igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. karoli_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás).',
+        'igehely = magyar könyvrövidítés + a FORRÁS (MT-) fejezet:verse; NEM Károli-átszámozás. forras_kulcs: az igehely-kulcs létezik-e a Karoli_1908.tsv-ben (jelzés, nem feloldás; versegyezést nem állít, a Károli-feloldás nézetoldali: DT-F176a).',
         'ures vers (kihagyva): %d; HTML-jelolest tartalmazo vers (tisztitva): %d' % (ures, cimkes),
     ]
-    oszlopok = ['igehely', 'forras_vers', 'targum', 'forras_mu', 'verzio', 'karoli_kulcs', 'szoveg']
+    oszlopok = ['igehely', 'forras_vers', 'targum', 'forras_mu', 'verzio', 'forras_kulcs', 'szoveg']
     K.ir_tsv(ki, fejlec, oszlopok, sorok)
     print('sorok: %d; forras-fajlok: %d; ures vers: %d; cimkes vers: %d' % (len(sorok), len(forrasok), ures, cimkes))
     nem = sum(1 for s in sorok if s[5] == 'nem')
-    print('karoli_kulcs=nem: %d sor' % nem)
+    print('forras_kulcs=nem: %d sor' % nem)
     return forrasok, sorok
 
 

@@ -196,11 +196,11 @@ class Tablak(unittest.TestCase):
         for nev in ('Targum_PD.tsv', 'Vulgata_Clementina.tsv', 'SBLGNT_apparatus.tsv', 'TAGNT_valtozatok.tsv'):
             fej, sorok = self.sorok(nev)
             self.assertIn('igehely', fej)
-            self.assertIn('karoli_kulcs', fej)
+            self.assertIn('forras_kulcs', fej)
             self.assertNotIn('', fej)
             for d in sorok:
                 self.assertRegex(d['igehely'], self.IGEHELY, '%s: %r' % (nev, d['igehely']))
-                self.assertIn(d['karoli_kulcs'], ('igen', 'nem'))
+                self.assertIn(d['forras_kulcs'], ('igen', 'nem'))
 
     def test_targum_csak_pd_es_ket_targum(self):
         fej, sorok = self.sorok('Targum_PD.tsv')
@@ -223,7 +223,7 @@ class Tablak(unittest.TestCase):
 
     def test_sblgnt_csak_apparatus(self):
         fej, sorok = self.sorok('SBLGNT_apparatus.tsv')
-        self.assertEqual(fej, ['igehely', 'forras_vers', 'sorszam', 'karoli_kulcs', 'jegyzet'])
+        self.assertEqual(fej, ['igehely', 'forras_vers', 'sorszam', 'forras_kulcs', 'jegyzet'])
         self.assertTrue(all(d['jegyzet'] for d in sorok))
         self.assertTrue(any('WH' in d['jegyzet'] for d in sorok))
         self.assertEqual(len({d['forras_vers'].rsplit(' ', 1)[0] for d in sorok}), 27)
