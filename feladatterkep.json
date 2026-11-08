@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-08",
-   "commit": "cd677c82"
+   "commit": "22922aba"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -1091,8 +1091,8 @@
    "cim": "SÜRGŐS — a generátor ÚSZ-könyvlistájából hiányzik a Gal és az Mk (a lap ÓSZ/ÚSZ-számát rontja)",
    "fazis": "folyamat",
    "allapot": "stop",
-   "brief_allapot": "nem_indult",
-   "most": "Te: F179.0 — modell-ellenőrzés; a `general.py` UJSZOVETSEGI_TOKENEK-listájának felmérése (és az `n14_hamart_betoltes.py` saját listájáé)",
+   "brief_allapot": "megallt",
+   "most": "Te: [elteres_kor 2/2] ELLENOR_F179_3 1. mechanikus (a 3. teendő DT-F179a-ra utalása)",
    "fugg": "#38*",
    "tervezett": false,
    "reszletes": "",
@@ -5637,6 +5637,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 232
+  "kesz_db": 233
  }
 }
