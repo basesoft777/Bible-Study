@@ -24,7 +24,7 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 
 Közös szabály mind az öt táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
 könyvrövidítés (a `Konyv_normalizalo_tabla.tsv` szerint) és a forrás fejezet:verse; **Károli-átszámozás nincs**
-(MT ↔ Károli, Vulgata ↔ Károli, NRSV ↔ Károli feloldása tartalmi döntés, N-F176a). A `forras_vers` / `forras_ref`
+(MT ↔ Károli, Vulgata ↔ Károli, NRSV ↔ Károli feloldása tartalmi döntés, DT-F176a). A `forras_vers` / `forras_ref`
 oszlop a forrás hivatkozását változatlanul őrzi, a `karoli_kulcs` oszlop pedig csak azt jelzi, **létezik-e** az
 `igehely`-kulcs a `Karoli_1908.tsv`-ben (a létezés nem jelent azonos verset: pl. Jóel 3 az MT-ben és a Károliban
 mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nélkül néma nem-találat lenne (CLAUDE.md).
@@ -103,7 +103,7 @@ mást jelent). A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nél
 - **Licenc:** a Sefaria lexikon-modelljében **nincs licencmező** (`sefaria/model/lexicon.py`; a `parent_lexicon_details`
   kulcsai: name, language, to_language, text_categories, source, attribution, index_title, version_title, version_lang).
   A BDB (Brown–Driver–Briggs, Oxford 1906) közkincs-státusza a mű korán alapul (a repó DT-F33g döntése, `licencek.tsv`
-  BDB sor); a Sefaria megnevezése: „F. Brown, S. Driver & C. Briggs”. Nyitott: N-F176b.
+  BDB sor); a Sefaria megnevezése: „F. Brown, S. Driver & C. Briggs”. Nyitott: DT-F176b.
 - **Oszlopok:** `strong`, `sefaria_ref`, `nyelv` (`arab` | `etióp` | `szír`, Unicode-blokk szerint), `szoalak`,
   `kontextus` (≤ 120 karakter a szócikk szövegéből), `proveniencia`. A görög és a latin írású token nem rokon írás,
   nem kerül be.

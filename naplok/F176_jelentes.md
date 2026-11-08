@@ -11,7 +11,7 @@ a fejléc `allapot` értékét a végrehajtó nem állítja `lezarva`-ra.
 |---|---|
 | Mérce | „kimenetbe tehető” (NC kizáró; közkincs, CC0, CC BY mehet). Az elsődleges helyeken minden licencet újraellenőriztem; **egyik sem NC vagy BY-SA, egyik sem tért el a várttól — ⛔ nem történt.** |
 | Táblák | Targum_PD 15 142 sor · Vulgata_Clementina 31 434 sor · SBLGNT_apparatus 6 934 sor · TAGNT_valtozatok 11 777 sor · BDB_rokon_irasok 6 sor (HAMART-001 első futás) |
-| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla `kereskedelmi=feltetelesen` (a nyílt magból kizárva, N-F176b); (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (N-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
+| Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla `kereskedelmi=feltetelesen` (a nyílt magból kizárva, DT-F176b); (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
 | Kapu | `nyilt_mag_kapu.py`: 0 BUKÁS; a mai nyílt magra az ARANY ellenőrzés egyetlen forrást jelez 1% felett: BDB 131 / 8 099 = 1,62% (FIGYELMEZTETÉS) |
 
 ## 1. Licencellenőrzés (F176.1)
@@ -40,7 +40,7 @@ Sefaria-Exportból (nem az API-ból) jöttek, 26 fájl + a `books.json`, ≥ 1 s
 `license` mező ellenőrzésére), a BDB-gyorsítótár építő futása 10 `words` hívás, a hibakeresés további kb. 15 kézi `words` hívás érte, ≥ 1 s közökkel. Ez nem bejárás és nem terheli a szolgáltatást,
 tehát az ÁSZF **nem tiltja** — ⛔ nem lépett életbe. A **kereskedelmi használatra** vonatkozó mondat („unless expressly stated
 otherwise”) értelmezése nyitott: a verziónkénti `Public Domain` jelölés kifejezett nyilatkozatnak tekinthető, de jogi
-véleményt nem adok. Ezért a `Targum_PD` és a `BDB_rokon_irasok` `kereskedelmi=feltetelesen` (N-F176b), és az export a nyílt magból kizárja őket.
+véleményt nem adok. Ezért a `Targum_PD` és a `BDB_rokon_irasok` `kereskedelmi=feltetelesen` (DT-F176b), és az export a nyílt magból kizárja őket.
 
 ### 1.2 Targum (Sefaria-Export) — `Targum_PD.tsv`
 
@@ -81,7 +81,7 @@ véleményt nem adok. Ezért a `Targum_PD` és a `BDB_rokon_irasok` `kereskedelm
 ### 1.3 Vulgata (eBible `latVUC`) — `Vulgata_Clementina.tsv`
 
 - **Elsődleges hely:** https://ebible.org/latVUC/copr.htm és `copyright.htm`; a zip saját `copr.htm`-je azonos: „Bibbia Vulgata Clementina na 1598”; „Clementine Vulgate of 1598 with Glossa Ordinaria Migne edition 1880 in Latin”; „Public Domain”.
-- **Kiadás-azonosítás:** a csomag az eBible megnevezése szerint „Clementine Vulgate of 1598”, a Glossa Ordinaria (Migne, 1880) lábjegyzeteivel; a lábjegyzetek (12 968) nem kerültek át. A kiadásról (1592/1598/1880) **nem döntöttem**, a tábla az eBible megjelölését hordozza (tartalmi kérdés, ha lap-szintű kiadás-hivatkozás kell: N-F176c).
+- **Kiadás-azonosítás:** a csomag az eBible megnevezése szerint „Clementine Vulgate of 1598”, a Glossa Ordinaria (Migne, 1880) lábjegyzeteivel; a lábjegyzetek (12 968) nem kerültek át. A kiadásról (1592/1598/1880) **nem döntöttem**, a tábla az eBible megjelölését hordozza (tartalmi kérdés, ha lap-szintű kiadás-hivatkozás kell: N-F176a).
 - **Fájl:** `latVUC_usfm.zip`, SHA-256 `5d73ce3473e40b70cfcc976b967e0f259cbb031d6c0cd4f9798fbabf9f5b4e6c`, 3 554 568 bájt, bejegyzések 2026-10-29.
 
 ### 1.4 SBLGNT apparátus — `SBLGNT_apparatus.tsv`
@@ -132,7 +132,7 @@ Diglots containing the SBLGNT and a language other than English may be produced 
 
 ### 1.6 BDB rokon írások (Sefaria „BDB Dictionary”, „BDB Aramaic Dictionary”)
 
-- **Licencmező nincs:** a Sefaria lexikon-modelljében (`sefaria/model/lexicon.py`) nincs licenc-attribútum; az API `parent_lexicon_details`: `name, language, to_language, text_categories, source, attribution, index_title, version_title, version_lang`. `attribution`: „F. Brown, S. Driver & C. Briggs”; `version_title`: „A Hebrew and English lexicon of the Old Testament, by Francis Brown. With the co-operation of S. R. Driver and Charles A. Briggs. Oxford, 1906”. A brief „közkincs (licencmező)” várakozása tehát **nem igazolható licencmezőből**; a közkincs-státusz a mű korán (1906) alapul, ahogy a repó BDB-sora (DT-F33g). Ez nem NC és nem BY-SA, ezért nem állítottam meg (⛔ 3. a „NC / BY-SA / eltér” esetre szól; itt a hiányzó mező kérdése N-F176b-be került).
+- **Licencmező nincs:** a Sefaria lexikon-modelljében (`sefaria/model/lexicon.py`) nincs licenc-attribútum; az API `parent_lexicon_details`: `name, language, to_language, text_categories, source, attribution, index_title, version_title, version_lang`. `attribution`: „F. Brown, S. Driver & C. Briggs”; `version_title`: „A Hebrew and English lexicon of the Old Testament, by Francis Brown. With the co-operation of S. R. Driver and Charles A. Briggs. Oxford, 1906”. A brief „közkincs (licencmező)” várakozása tehát **nem igazolható licencmezőből**; a közkincs-státusz a mű korán (1906) alapul, ahogy a repó BDB-sora (DT-F33g). Ez nem NC és nem BY-SA, ezért nem állítottam meg (⛔ 3. a „NC / BY-SA / eltér” esetre szól; itt a hiányzó mező kérdése DT-F176b-be került).
 
 ### 1.7 Eredmény
 
@@ -154,7 +154,7 @@ SHA-256 és sorszám: `konkordancia/VISSZHANG_README.md` 1. szakasza (gépi olva
 - **Vulgata:** 66 kanonikus könyv, 31 434 vers; kimaradt: TOB, JDT, WIS, SIR, BAR, 1MA, 2MA.
 - **SBLGNT:** 27 fájl, 6 934 jegyzet; a 27 könyvcím-blokk kimarad.
 - **TAGNT:** 142 095 szóból 11 777 (11 773, ahol a kiadás-jelölő nem teljes + 4 NKO-tól eltérő típusú, de teljes halmazú); 4 csak-Tyn szó: a `gorog` mező üres.
-- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `karoli_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (N-F176a).
+- **Versszámozás (nincs némán javítva).** Az `igehely` a forrás fejezet:versét hordozza, a `forras_vers`/`forras_ref` változatlanul; a `karoli_kulcs` csak a kulcs **létezését** jelzi a `Karoli_1908.tsv`-ben. Mért hézag: Targum `nem` 96 sor (pl. Jóel 4: 21, 4Móz 17: 15, 1Kir 5: 14, 2Móz 7: 4, Mal 3: 6, Hós 2: 3, Zak 2: 4); Vulgata `nem` 1 269 sor (Zsolt 786, Dán 174, JSir 154, Eszter 108, Jób 15, Préd 10, …); SBLGNT 1. **A „létezik” nem „azonos vers”:** pl. Jóel 3 a Targumban az MT 3 (= Károli Jóel 2:28–32), a Vulgata zsoltárai egyaránt a Vulgata-számozással szerepelnek. A feloldás tartalmi döntés (DT-F176a).
 
 ## 3. BDB rokon írások — HAMART-001 első futás (F176.3)
 
@@ -191,12 +191,40 @@ A `licencek.tsv` új sorai a generált nyílt mag `forrasok_es_licencek.tsv`-jé
 
 ## 6. Ellenőrzések kimenete
 
-(a végső futás kimenete a záró commitban.)
+A végső futás (az utolsó adat-commit után; a jelentés commitja előtt):
 
-## 7. Nyitott kérdések (helyőrzők: `nyitott/uj/f176-visszhang-adat-c1579f.md`)
+```
+$ python eszkozok/ellenoriz.py
+## Összesítő
+RENDBEN: 25 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 10          (kilépési kód 0; az alapállapot a main-en azonos: 25 / 0 / 2 / 10)
 
-- **N-F176a — versszámozás-feloldás.** A Targum/MT, Vulgata és NRSV ↔ Károli átszámozás tartalmi döntés (tábla- vagy szabálybázisú? melyik: `Karoli_versmegfeleltetes.tsv`, `Versifikacios_tablak`, a TAHOT F85-kulcsa?). Mért hézag: l. 2.
-- **N-F176b — a Sefaria-eredetű források kereskedelmi használata.** Az ÁSZF-mondat és a lexikon-adat licencmező hiánya: a `Targum_PD` és a `BDB_rokon_irasok` ma `feltetelesen`, ezért kizárt a nyílt magból. Döntés kell: elfogadjuk-e a verziónkénti `Public Domain` jelölést kifejezett nyilatkozatnak (→ `igen`), vagy Sefaria-megkeresés / jogi átnézés kell.
-- **N-F176c — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria külön recepciós forrás lehet, 12 968 lábjegyzet nincs átvéve).
-- **N-F176d — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; kell-e egyéb út (pl. a Sefaria `rid`-alapú elérés, vagy a BDB egyéb digitalizálása)? Addig a „nincs rokon írás” ezekre nem állítható.
-- **Megjegyzés (nem tétel):** a `.github/workflows/ellenorzes.yml` teszt-listájába a `teszt_visszhang.py` nem került be (a workflow nem az `ir` mezőben van).
+$ python eszkozok/teszt_visszhang.py
+Ran 17 tests in 0.747s
+OK                                                         (kilépési kód 0)
+
+$ python eszkozok/nyilt_mag_kapu.py                        (teljes futás, újragenerálással)
+ARANY  BDB: 131 / 8099 = 1.62%
+ARANY  BDB_rokon_irasok: 0 / 6 = 0.00%
+ARANY  SBLGNT_apparatus: 0 / 6934 = 0.00%
+ARANY  TAGNT: 3 / 142096 = 0.00%
+ARANY  TAGNT_valtozatok: 0 / 11777 = 0.00%
+ARANY  TAHOT: 4 / 469300 = 0.00%
+ARANY  TBESG: 6 / ? (a forrás tételszáma nem állapítható meg)
+ARANY  Targum_PD: 0 / 15142 = 0.00%
+ARANY  Thayer: 20 / 5426 = 0.37%
+ARANY  Vulgata_Clementina: 0 / 31434 = 0.00%
+nyílt mag kapu: 0 BUKÁS, 18 FIGYELMEZTETÉS                 (kilépési kód 0; 17 meglévő KJV/angol-funkciószó figyelmeztetés + 1 új: BDB 1,62% > 1%)
+
+$ python eszkozok/feladatok.py ellenoriz
+190 brief, 0 hiba, 0 figyelmeztetés                        (kilépési kód 0)
+```
+
+Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyilt_mag.py` 59 teszt OK; `teszt_ellenoriz_30/31/32/33/35.py` OK.
+
+## 7. Nyitott kérdések (helyőrzők: `dontesek/uj/f176-visszhang-adat-c1579f.md`, `nyitott/uj/f176-visszhang-adat-c1579f.md`)
+
+- **DT-F176a — versszámozás-feloldás.** A Targum/MT, Vulgata és NRSV ↔ Károli átszámozás tartalmi döntés (nézet-oldali feloldás / külön `karoli_vers` oszlop / kézi). Mért hézag: l. 2.
+- **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** Az ÁSZF-mondat és a lexikon-adat licencmező-hiánya: a `Targum_PD` és a `BDB_rokon_irasok` ma `feltetelesen`, ezért kizárt a nyílt magból. Döntés kell: `igen` (a verziónkénti `Public Domain` kifejezett nyilatkozat), vagy Sefaria-megkeresés / jogi átnézés.
+- **N-F176a — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria — 12 968 lábjegyzet, nincs átvéve — külön recepciós forrás lehet).
+- **N-F176b — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; addig a „nincs rokon írás” ezekre nem állítható.
+- **N-F176c — a `teszt_visszhang.py` nincs a CI teszt-listájában** (a workflow nem az `ir` mezőben van).

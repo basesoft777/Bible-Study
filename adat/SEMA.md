@@ -2065,7 +2065,7 @@ szerkeszthetők; a fejlécük `#`-kezdetű sorai a proveniencia (forrás, commit
 
 **Közös szabály — a versszámozás a forrásé.** Az `igehely` a magyar könyvrövidítés
 (`Konyv_normalizalo_tabla.tsv`) és a **forrás** fejezet:verse; a Károli-átszámozás (MT/Vulgata/NRSV ↔ Károli) nincs
-elvégezve (tartalmi döntés, N-F176a). `forras_vers` / `forras_ref`: a forrás hivatkozása szó szerint.
+elvégezve (tartalmi döntés, DT-F176a). `forras_vers` / `forras_ref`: a forrás hivatkozása szó szerint.
 `karoli_kulcs` (`igen` | `nem`): az `igehely`-kulcs **létezik-e** a `Karoli_1908.tsv`-ben; a létezés nem jelent
 azonos verset.
 
