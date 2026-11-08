@@ -5974,7 +5974,7 @@ OLVASOI_FORRASNEV = (
     (r'[\w-]+\.json', 'a lap adatforrása'),
     (r'[\w-]+\.md', 'a lap munkaanyaga'),
 )
-_FORRASNEV_RX = [(re.compile(r'(?:[\w.-]+/)*' + rx), nev) for rx, nev in OLVASOI_FORRASNEV]
+_FORRASNEV_RX = [(re.compile(r'(?:[\w.-]+/)*(?:' + rx + ')'), nev) for rx, nev in OLVASOI_FORRASNEV]
 
 
 def olvasoi_forrasnev(fajl):
@@ -6076,6 +6076,8 @@ def _olvasoi_resz(t):
     t = re.sub(r'Szótári gerinc\b', 'Szótári tagolás', t)
     t = re.sub(r'\bgerinc-?elem\w*', 'a motívum szava', t)
     t = re.sub(r'\bgerinc\w*', 'szótári tagolás', t)
+    # takarítás: a fájlnevekből lett azonos forrásnév egyszer („a Septuaginta szövege, a Septuaginta szövege”)
+    t = re.sub(r'((?:az?|a) [^,()]{3,60}?)(?:, \1)+(?=[,)])', r'\1', t)
     # takarítás: üres zárójel, kettőzött elválasztó
     for _ in range(3):
         t = re.sub(r'\(\s*[;,·]?\s*\)', '', t)
@@ -6265,7 +6267,8 @@ VISSZHANG_FORRASOK = (('targum', 'Targum'), ('vulgata', 'Vulgata'), ('lxx', 'LXX
 VISSZHANG_NEV = {'targum': 'a Targum', 'vulgata': 'a Vulgata', 'lxx': 'a LXX'}
 ALAPVONAL_SZOKASOS = 0.80   # a láncon kívüli versek legalább ennyi részében ugyanaz a szócsalád: szokásos fordítás
 ALAPVONAL_RITKA = 0.40      # ennél ritkábban a láncon kívül: a láncban választott szó (kiemelt visszhang, (b))
-ROKON_NYELVEK = ('asszír', 'akkád', 'arab', 'etióp', 'szír', 'óarámi', 'ugariti', 'Tell el-Amarna', 'sabeus')
+ROKON_NYELVEK = ('asszír', 'akkád', 'arab', 'etióp', 'szír', 'arámi', 'óarámi', 'ugariti', 'Tell el-Amarna',
+                 'sabeus')   # az arámi: a BDB „Aramaic” alakja; a targumi (ᵑ7) sor nem rokon nyelvi háttér
 SZAMSZO_VH = {2: 'két', 3: 'három', 4: 'négy', 5: 'öt'}
 
 _bdb_rokon_szocikk_cache = None
@@ -6359,14 +6362,48 @@ def _lxx_lemma():
     return _lxx_lemma_cache
 
 
+_tahot_glossza_cache = {}
+_GLOSSZA_STOP = {'they', 'were', 'will', 'shall', 'have', 'that', 'with', 'from', 'your', 'them', 'their', 'this',
+                 'there', 'which', 'been', 'what', 'when', 'also', 'into', 'upon', 'unto'}
+
+
+def tahot_glosszak(strong):
+    """{Károli-vers: [angol tükörfordítás]} a TAHOT-ból egy Strongra (a láncbeli jelentés és az alapvonal szűrője)."""
+    if strong not in _tahot_glossza_cache:
+        d = {}
+        with io.open(os.path.join(KONKORDANCIA, 'TAHOT_kivonat.tsv'), encoding='utf-8') as f:
+            fej = None
+            for sor in f:
+                if sor.startswith('#') or not sor.strip():
+                    continue
+                c = sor.rstrip('\r\n').split('\t')
+                if fej is None:
+                    fej = c
+                    i_h, i_s, i_g = fej.index('Igehely'), fej.index('Strong-szám'), fej.index('Angol tükörfordítás')
+                    continue
+                if len(c) > i_g and c[i_s] == strong:
+                    d.setdefault(c[i_h], []).append(c[i_g])
+        _tahot_glossza_cache[strong] = d
+    return _tahot_glossza_cache[strong]
+
+
+def _glossza_tovek(glosszak):
+    return {w[:4] for g in glosszak for w in re.findall(r'[a-z]+', g.lower()) if len(w) >= 4 and w not in _GLOSSZA_STOP}
+
+
 def lxx_alapvonal(heber, csalad, lanc_versek):
-    """(arány, láncon kívüli versek száma): a héber szó láncon kívüli ószövetségi verseinek hány részében áll a görög
-    versben a szócsalád valamely lemmája (versszintű együtt-előfordulás, `LXX_versszintu_parok.tsv`)."""
+    """(arány, versszám): a héber szó láncon kívüli ószövetségi verseinek hány részében áll a görög versben a
+    szócsalád valamely lemmája (versszintű együtt-előfordulás, `LXX_versszintu_parok.tsv`). Csak a láncbeli jelentés
+    előfordulásai számítanak: a vers TAHOT-tükörfordítása a láncversekével közös szótövet hordoz (a kálal 8:21-es
+    ’átkoz’ Piélje így nem keveredik a ’könnyűnek lenni’ Qaljával)."""
     e = lxx_versszintu_parok().get(heber)
     if not e:
         return None, 0
     lemma = _lxx_lemma()
-    kivul = [gs for v, gs in e['versek'].items() if v not in lanc_versek]
+    tg = tahot_glosszak(heber)
+    lanc_tovek = _glossza_tovek(g for v in lanc_versek for g in tg.get(v, []))
+    kivul = [gs for v, gs in e['versek'].items() if v not in lanc_versek
+             and (not lanc_tovek or _glossza_tovek(tg.get(v, [])) & lanc_tovek)]
     if not kivul:
         return None, 0
     van = sum(1 for gs in kivul if any(_gorog_tovek(lemma.get(g, '')) & csalad for g in (gs or []) if lemma.get(g)))
@@ -6407,43 +6444,103 @@ def visszhang_cella(forras, sorok_f, versek):
         n, N, fo, lemmak, tobbi, len(csal)
 
 
-def _lanc_szo_cim(strong):
+TORZS_MAGYAR = {"Pi'el": 'Piél', "Niph'al": 'Nifál', "Hiph'il": 'Hifíl', "Hithpa'el": 'Hitpaél', "Pu'al": 'Puál',
+                "Hoph'al": 'Hofál', 'Qal': 'Qal'}
+_bdb_vers_torzs_cache = None
+
+
+def bdb_vers_torzs(strong, vers):
+    """A BDB törzse (Qal, Pi'el …) a versben a `bdb_vers_jelentes.tsv` szerint; None, ha nincs vagy több."""
+    global _bdb_vers_torzs_cache
+    if _bdb_vers_torzs_cache is None:
+        _bdb_vers_torzs_cache = {}
+        _, sorok = G.tsv_beolvas(os.path.join(ADAT, 'bdb_vers_jelentes.tsv'))
+        for r in sorok:
+            t = (r.get('utvonal') or '').split('/')[0]
+            if t:
+                _bdb_vers_torzs_cache.setdefault((r['strong'], r['karoli_vers']), set()).add(t)
+    t = _bdb_vers_torzs_cache.get((strong, vers)) or set()
+    return next(iter(t)) if len(t) == 1 else None
+
+
+def lanc_szo_jelentes(strong, versek):
+    """A lánc-szó jelentése a láncban: a rövid jelentés, kivéve, ha a láncversekben a BDB más törzset ad (nem Qal) —
+    akkor a TAHOT-tükörfordítás igéjének magyar glosszája a projekt glosszáriumából (`glosszak_heber_hu.tsv`, „to X”),
+    a törzs nevével („megátkozni (Piél)”: a kálal 8:21). Adat híján a rövid jelentés."""
+    alap = rovid_jelentes(strong)
+    torzsek = {bdb_vers_torzs(strong, v) for v in versek}
+    if len(torzsek) != 1 or not (torzsek <= set(TORZS_MAGYAR) - {'Qal'}):
+        return alap[0] if alap[1] else ''
+    torzs = torzsek.pop()
+    angol = [g for v in versek for g in tahot_glosszak(strong).get(v, [])]
+    szavak = [w for g in angol for w in re.findall(r'[a-z]+', g.lower()) if w not in _GLOSSZA_STOP and len(w) >= 4]
+    _, gl = G.tsv_beolvas(os.path.join(ADAT, 'glosszak_heber_hu.tsv'))
+    for w in szavak:
+        hu = collections.Counter(r['glossza_hu'] for r in gl if r.get('glossza_hu')
+                                 and (r.get('glossza_en') or '').strip() == 'to ' + w)
+        if hu:
+            return '%s (%s)' % (hu.most_common(1)[0][0], TORZS_MAGYAR.get(torzs, torzs))
+    return alap[0] if alap[1] else ''
+
+
+def _lanc_szo_cim(strong, versek=None):
     reszek = []
     for s in strong.split('+'):
         lk = lemma_kiejtes(s)
         reszek.append(lemma_cim(lk) if lk else s)
-    jel = rovid_jelentes(strong.split('+')[0])
-    return ' · '.join(reszek) + ((' — %s' % jel[0]) if jel[1] else '')
+    jel = lanc_szo_jelentes(strong.split('+')[0], versek or [])
+    return ' · '.join(reszek) + ((' — %s' % jel) if jel else '')
 
 
-def _visszhang_mondat(f, eredm, kozos):
-    """Egy fordítás mondata a „Mit mutat” cellában (DT-F178d)."""
-    nev = VISSZHANG_NEV[f]
-    n, N, lemmak, kulonbozo, alap = eredm['n'], eredm['N'], eredm['lemmak'], eredm['kulonbozo'], eredm['alap']
-    Nev = nev[:1].upper() + nev[1:]
+def _alapvonal_mondat(alap):
+    """Az alapvonal sávja szerinti mondatrész (DT-F178d): ≥ 80% szokásos, 40–80% gyakori, < 40% választott."""
+    pct = int(round(alap[0] * 100))
+    if alap[0] >= ALAPVONAL_SZOKASOS:
+        return 'szokas', 'a láncon kívül is a versek %d%%-ában (%d vers) ez áll: a szó szokásos fordítása, a lánc ' \
+                         'egysége megmarad, de ez önmagában nem lelet' % (pct, alap[1])
+    if alap[0] >= ALAPVONAL_RITKA:
+        return 'gyakori', 'a láncon kívül a versek %d%%-ában (%d vers) ez áll: a szó gyakori, de nem kizárólagos ' \
+                          'fordítása' % (pct, alap[1])
+    return 'ritka', 'a láncon kívül csak a versek %d%%-ában (%d vers) ez áll: a láncban más szót választ, mint ' \
+                    'máshol' % (pct, alap[1])
+
+
+def _visszhang_mondat_lxx(eredm):
+    n, N, lemmak, alap = eredm['n'], eredm['N'], eredm['lemmak'], eredm['alap']
     if not n:
-        return '%s: %s.' % (Nev, eredm['cella'])
-    if kulonbozo > 1 and n == 1:
-        return '%s %s különböző szót használ.' % (Nev, SZAMSZO_VH.get(kulonbozo, str(kulonbozo)))
-    egyseg = 'ugyanaz a szócsalád' if len(lemmak) > 1 else 'ugyanaz a szó'
+        return 'A LXX: %s.' % eredm['cella']
+    # a lelet (n/N, a szó vagy a szócsalád) a cellában áll; a mondat csak az alapvonalat mondja (ismétlés nélkül)
     if n < N:
-        return '%s: %s %d/%d láncversben, %s.' % (Nev, egyseg, n, N,
-                                                  'egy versben más szó' if N - n == 1 else '%d versben más szó' % (N - n))
-    mondat = '%s: %s mind a %d láncversben' % (Nev, egyseg, N) if N > 1 else '%s: %s' % (Nev, egyseg)
-    if kozos:
-        return '**%s; %s.**' % (mondat, kozos)
-    if f == 'lxx' and alap[0] is not None:
-        pct = int(round(alap[0] * 100))
-        if alap[0] >= ALAPVONAL_SZOKASOS:
-            return '%s; a láncon kívül is a versek %d%%-ában ez áll (%d vers): a szó szokásos fordítása, a lánc egysége ' \
-                   'megmarad, de ez önmagában nem lelet.' % (mondat, pct, alap[1])
-        if alap[0] < ALAPVONAL_RITKA:
-            return '**%s, a láncon kívül viszont csak a versek %d%%-ában (%d vers): a láncban más szót választ, mint ' \
-                   'máshol.**' % (mondat, pct, alap[1])
-        return '%s; a láncon kívül a versek %d%%-ában (%d vers).' % (mondat, pct, alap[1])
-    if f == 'lxx':
-        return '%s; a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető.' % mondat
-    return '%s; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető.' % mondat
+        return 'LXX: %s.' % ('egy versben más szó' if N - n == 1 else '%d versben más szó' % (N - n))
+    if alap[0] is None:
+        return 'LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető.'
+    sav, resz = _alapvonal_mondat(alap)
+    if len(lemmak) > 1:
+        resz = resz.replace(': a szó ', ': a szócsalád ')
+    return ('**LXX: %s.**' if sav == 'ritka' else 'LXX: %s.') % resz
+
+
+def _egyesites_mondat(f, s1, s2, e1, e2):
+    """A két héber lánc-szó egy szóval / szócsaláddal (DT-F178d, pontosítva): kiemelt csak alapvonallal."""
+    nevek = '%s és %s' % (_szo_nev(s1.split('+')[0]).split(' ', 1)[1], _szo_nev(s2.split('+')[0]).split(' ', 1)[1])
+    Nev = VISSZHANG_NEV[f][:1].upper() + VISSZHANG_NEV[f][1:]
+    csal = len(set(e1['lemmak'] + e2['lemmak'])) > 1
+    if f != 'lxx':
+        return '%s a láncban mindkét héber szót (%s) ugyanazzal a szóval adja vissza; hogy máshol is így fordítja-e, ' \
+               'ebből a forrásból nem mérhető.' % (Nev, nevek)
+    alap = [x['alap'] for x in (e1, e2)]
+    if any(a[0] is None for a in alap):
+        return '%s mindkét héber szót (%s) ugyanazzal a %s adja vissza; a láncon kívül nem mérhető.' % (
+            Nev, nevek, 'szócsaláddal' if csal else 'szóval')
+    pct = ', '.join('%s %d%%' % (n, int(round(a[0] * 100))) for n, a in zip(nevek.split(' és '), alap))
+    if all(a[0] >= ALAPVONAL_SZOKASOS for a in alap):
+        return '%s mindkét héber szót (%s) ugyanazzal a %s adja vissza; ez a láncon kívül is így van (%s).' % (
+            Nev, nevek, 'szócsaláddal' if csal else 'szóval', pct)
+    if any(a[0] < ALAPVONAL_RITKA for a in alap):
+        return '**%s mindkét héber szót (%s) ugyanazzal a %s adja vissza, a láncon kívül viszont nem így (%s): a ' \
+               'láncban választott egység.**' % (Nev, nevek, 'szócsaláddal' if csal else 'szóval', pct)
+    return '%s mindkét héber szót (%s) ugyanazzal a %s adja vissza; a láncon kívül gyakran, de nem kizárólag (%s).' % (
+        Nev, nevek, 'szócsaláddal' if csal else 'szóval', pct)
 
 
 def blokk_visszhang(m, sorai):
@@ -6453,8 +6550,7 @@ def blokk_visszhang(m, sorai):
         return ''
     betoldas_kulcs = {(r['strong'], r['igehely']) for r in lanc if r['betoldas'] == 'igen'}
     szavak = list(dict.fromkeys(r['strong'] for r in lanc if (r['strong'], r['igehely']) not in betoldas_kulcs))
-    lanc_versek = {}
-    eredmeny = {}
+    lanc_versek, eredmeny = {}, {}
     for s in szavak:
         ss = [r for r in lanc if r['strong'] == s and (s, r['igehely']) not in betoldas_kulcs]
         versek = sorted({r['igehely'] for r in ss}, key=lambda h: [int(x) for x in re.findall(r'\d+', h.split(' ', 1)[1])])
@@ -6465,19 +6561,16 @@ def blokk_visszhang(m, sorai):
             if f == 'lxx' and fo is not None and n == N:
                 alap = lxx_alapvonal(s.split('+')[0], fo, set(versek))
             eredmeny[(s, f)] = {'cella': c, 'n': n, 'N': N, 'fo': fo, 'lemmak': lemmak, 'kulonbozo': kul, 'alap': alap}
-    # (a) két különböző héber lánc-szó egy szóval / szócsaláddal a fordításban
-    kozos = {}
+    # két különböző héber lánc-szó egy szóval / szócsaláddal: a mondat az első szó sorában, a másodikban utalás
+    egyesites, utal = {}, {}
     for f, _nev in VISSZHANG_FORRASOK:
         for i, s1 in enumerate(szavak):
             for s2 in szavak[i + 1:]:
                 e1, e2 = eredmeny[(s1, f)], eredmeny[(s2, f)]
                 if e1['fo'] is not None and e2['fo'] is not None and e1['n'] == e1['N'] and e2['n'] == e2['N'] \
-                        and e1['fo'] & e2['fo']:
-                    szoveg = 'a két héber szót (%s és %s) %s ugyanazzal a %s adja vissza' % (
-                        _szo_nev(s1.split('+')[0]).split(' ', 1)[1], _szo_nev(s2.split('+')[0]).split(' ', 1)[1],
-                        VISSZHANG_NEV[f], 'szócsaláddal' if len(set(e1['lemmak'] + e2['lemmak'])) > 1 else 'szóval')
-                    kozos.setdefault((s1, f), szoveg)
-                    kozos.setdefault((s2, f), szoveg)
+                        and e1['fo'] & e2['fo'] and (s1, f) not in egyesites and (s2, f) not in utal:
+                    egyesites[(s1, f)] = _egyesites_mondat(f, s1, s2, e1, e2)
+                    utal[(s2, f)] = s1
     tabla = ['| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |', '|---|---|---|---|---|']
     teljes = collections.Counter()
     for s in szavak:
@@ -6485,10 +6578,23 @@ def blokk_visszhang(m, sorai):
         for f, _nev in VISSZHANG_FORRASOK:
             e = eredmeny[(s, f)]
             cellak.append(e['cella'])
-            mondatok.append(_visszhang_mondat(f, e, kozos.get((s, f))))
             if e['N'] and e['n'] == e['N']:
                 teljes[f] += 1
-        tabla.append('| %s<br>%s | %s | %s |' % (_lanc_szo_cim(s), ', '.join(_rovid_hely(h) for h in lanc_versek[s]),
+            if (s, f) in egyesites:
+                mondatok.append(egyesites[(s, f)])
+            elif (s, f) in utal:
+                cel = 'l. %s sorát' % _szo_nev(utal[(s, f)].split('+')[0])
+                if cel not in mondatok:
+                    mondatok.append(cel[:1].upper() + cel[1:] + '.')
+            elif f == 'lxx':
+                mondatok.append(_visszhang_mondat_lxx(e))
+        mondatok = list(dict.fromkeys(mondatok))
+        # a Targum és a Vulgata egyező egyesítés-mondata egy mondatban (ismétlés nélkül)
+        tv = [x for x in mondatok if x.startswith(('A Targum a láncban', 'A Vulgata a láncban'))]
+        if len(tv) == 2 and tv[0].split(' ', 2)[2] == tv[1].split(' ', 2)[2]:
+            mondatok = ['A Targum és a Vulgata ' + tv[0].split(' ', 2)[2]] + [x for x in mondatok if x not in tv]
+        tabla.append('| %s<br>%s | %s | %s |' % (_lanc_szo_cim(s, lanc_versek[s]),
+                                               ', '.join(_rovid_hely(h) for h in lanc_versek[s]),
                                                ' | '.join(cellak), ' '.join(mondatok)))
     for s, h in sorted(betoldas_kulcs):
         cellak, betoldo = [], []
@@ -6512,18 +6618,20 @@ def blokk_visszhang(m, sorai):
     bevezeto = ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber '
                 'szót minden láncversben. A motívum %d lánc-szavából a Targum %d, a Vulgata %d, a LXX %d szót ad vissza '
                 'minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a '
-                'LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál ez a '
-                'forrásból nem mérhető.' % (len(szavak), teljes['targum'], teljes['vulgata'], teljes['lxx']))
+                'LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella '
+                'csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.'
+                % (len(szavak), teljes['targum'], teljes['vulgata'], teljes['lxx']))
     reszek = ['#### 4.11. Visszhang: ókori fordítások és rokon nyelvek', olvasoi_bekezdes(bevezeto), '\n'.join(tabla),
-              '*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). Félkövér a következtetés '
-              'ott, ahol a fordító két különböző héber lánc-szót egy szóval ad vissza, vagy a láncban más szót választ, '
-              'mint máshol. A LXX alapvonala: a héber szó láncon kívüli ószövetségi verseiben a görög versben ugyanaz a '
-              'szócsalád (versszintű együtt-előfordulás, nem szóillesztés); %d%% felett szokásos fordítás, %d%% alatt '
-              'a láncban választott szó. Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta '
-              'szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a '
-              'Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*'
-              % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100))]
-    hatter = blokk_visszhang_hatter([r for r in sorok if r['forras'] == 'bdb'])
+              '*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX '
+              'alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli '
+              'jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); '
+              '%d%% felett szokásos fordítás, %d–%d%% gyakori, de nem kizárólagos, %d%% alatt a láncban választott szó '
+              '(félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege '
+              '(CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét '
+              'modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*'
+              % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100), int(ALAPVONAL_SZOKASOS * 100),
+                 int(ALAPVONAL_RITKA * 100))]
+    hatter = blokk_visszhang_hatter([r for r in sorok if r['forras'] == 'bdb'], lanc_versek)
     if hatter:
         reszek += hatter
     return '\n\n'.join(reszek)
@@ -6536,54 +6644,135 @@ def _magyar_jelentes(t):
     return t.strip(' ;')
 
 
-def blokk_visszhang_hatter(hatter):
-    """A rokon nyelvi háttér (DT-F178d, szűkítés): csak valódi rokon nyelv (ROKON_NYELVEK), nyelvenként egy sor; az
-    újhéber, a targumi arámi és a Sirák sora nem rokon nyelvi háttér; a tartalom nélküli sor nem áll."""
+def massalhangzos_atiras(szo):
+    """Pontozatlan héber betűs alak mássalhangzós átírása a kiejtési szabály betűi szerint (קללם → k-l-l-m)."""
+    ki = []
+    for c in szo:
+        if 'א' <= c <= 'ת':
+            ki.append(HK.ALAP_MSH.get(c, '') or "'")
+    return '-'.join(ki)
+
+
+_bdb_fejek_cache = None
+
+
+def _bdb_fejek():
+    """[(strong, mássalhangzók, szófaj-ige-e)] a helyi BDB-szöveg szócikk-fejéből."""
+    global _bdb_fejek_cache
+    if _bdb_fejek_cache is None:
+        _bdb_fejek_cache = []
+        with io.open(os.path.join(KONKORDANCIA, 'BDB_teljes_unabridged.tsv'), encoding='utf-8') as f:
+            for sor in f:
+                c = sor.split('\t')
+                if len(c) < 3 or not re.match(r'^H\d{4}', c[0]):
+                    continue
+                fej = c[2][:160]
+                heb = re.search(r'[א-ת][א-ת֑-ׇ]*', fej)
+                if not heb:
+                    continue
+                mh = ''.join(ch for ch in heb.group(0) if 'א' <= ch <= 'ת')
+                _bdb_fejek_cache.append((c[1].strip() or c[0].strip(), mh, bool(re.search(r'\]?\s*verb\b', fej))))
+    return _bdb_fejek_cache
+
+
+def bdb_to_strong(strong):
+    """A főnévi lánc-szó igei töve a helyi BDB-ben: az az ige, amelynek mássalhangzói a főnév mássalhangzói, vagy a
+    főnévéi a szokásos képzők (-ón, -t, -á, m-, t-) nélkül (חָמָס → חָמַס; עִצָּבוֹן → עָצַב); None, ha nincs."""
+    fejek = _bdb_fejek()
+    sajat = next((f for f in fejek if f[0] == strong), None)
+    if not sajat or sajat[2]:
+        return None
+    mh = sajat[1].replace('ך', 'כ').replace('ם', 'מ').replace('ן', 'נ') \
+        .replace('ף', 'פ').replace('ץ', 'צ')
+    jeloltek = [mh]
+    for veg in ('ונ', 'ת', 'ה', 'ות'):
+        if mh.endswith(veg) and len(mh) - len(veg) >= 2:
+            jeloltek.append(mh[:-len(veg)])
+    for kezd in ('מ', 'ת'):
+        jeloltek += [j[1:] for j in list(jeloltek) if j.startswith(kezd) and len(j) > 3]
+    vegso = str.maketrans('ךםןףץ', 'כמנפצ')
+    for j in jeloltek:
+        for s, m2, ige in fejek:
+            if ige and s != strong and m2.translate(vegso) == j:
+                return s
+    return None
+
+
+def _hatter_sorok(hs, nyelv_nev_elotag=''):
+    """[(nyelv, szavak, jelentések, megjegyzés)] nyelvenként, csak valódi rokon nyelvvel (DT-F178d)."""
+    nyelvek = collections.OrderedDict()
+    for r in hs:
+        if not r['ellenorzes']:
+            continue
+        nyelv = r['lemma'].split(' (')[0].strip()
+        if nyelv not in ROKON_NYELVEK or 'Targum' in (r['megjegyzes'] or '') or 'ᵑ7' in (r['megjegyzes'] or ''):
+            continue
+        jel = _magyar_jelentes(r['jelentes'])
+        if not r['alak'] and (not jel or 'azonos a bibliai héberrel' in jel):
+            continue
+        nyelvek.setdefault(r['lemma'], []).append((r, jel))
+    ki = []
+    for nyelv, lista in nyelvek.items():
+        szavak, jelek, megj = [], [], set()
+        for r, jel in lista:
+            for a in [x.strip() for x in r['alak'].split('·') if x.strip()]:
+                if re.search('[֐-׿]', a):
+                    k = HK.kiejt(a) or massalhangzos_atiras(a)
+                else:
+                    k = re.sub(r'\s*\(.*?\)', '', r['kiejtes'] or '').split('·')[0].strip()
+                szavak.append('%s (%s)' % (a, k) if k else a)
+            if not r['alak']:
+                megj.add('a BDB az alakot írás nélkül adja')
+            if re.search(r'\?|possibly|bizonytalan|valószínűleg|kétséges|dubious|ritka', (r['megjegyzes'] or '') + jel):
+                megj.add('a BDB szerint bizonytalan vagy ritka')
+            if jel and jel not in jelek:
+                jelek.append(jel)
+        ki.append((nyelv, szavak, jelek, '; '.join(sorted(megj)) or '—'))
+    return ki
+
+
+def blokk_visszhang_hatter(hatter, lanc_versek=None):
+    """A rokon nyelvi háttér (DT-F178d): csak valódi rokon nyelv (ROKON_NYELVEK), nyelvenként egy sor; az újhéber, a
+    targumi arámi és a Sirák sora nem rokon nyelvi háttér; a tartalom nélküli sor nem áll. Főnévnél, amelynek
+    szócikkében nincs rokon alak, az igei tő szócikke (`bdb_to_strong`) — „a főnév szócikkében nincs; a tő szerint”."""
     if not hatter:
         return []
+    lanc_versek = lanc_versek or {}
+    tohoz = {r['strong'] for r in hatter}
     ht = ['| Lánc-szó | Rokon nyelv · szó (kiejtés) | Jelentés | Megjegyzés |', '|---|---|---|---|']
+    tovek = {bdb_to_strong(s) for s in tohoz
+             if any(not r['alak'] and not r['lemma'] for r in hatter if r['strong'] == s)} - {None}
     for s in dict.fromkeys(r['strong'] for r in hatter):
-        hs = [r for r in hatter if r['strong'] == s]
-        if any(not r['alak'] and not r['lemma'] for r in hs):
-            if bdb_rokon_szocikk(s) == 0:
-                szov = ('a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon '
-                        'nyelvi alak nem áll' if bdb_helyi_szocikk(s) else 'nem azonosítható: a BDB-szócikk nem található')
-            else:
-                szov = 'a BDB-szócikkben nincs rokon nyelvi adat'
-            ht.append('| %s | %s | — | — |' % (_lanc_szo_cim(s), szov))
+        if s in tovek:
             continue
-        nyelvek = collections.OrderedDict()
-        for r in hs:
-            if not r['ellenorzes']:
-                continue
-            nyelv = r['lemma'].split(' (')[0].strip()
-            if nyelv not in ROKON_NYELVEK:
-                continue
-            jel = _magyar_jelentes(r['jelentes'])
-            if not r['alak'] and (not jel or 'azonos a bibliai héberrel' in jel):
-                continue
-            nyelvek.setdefault(r['lemma'], []).append((r, jel))
-        for nyelv, lista in nyelvek.items():
-            szavak, jelek, megj = [], [], set()
-            for r, jel in lista:
-                for a in [x.strip() for x in r['alak'].split('·') if x.strip()]:
-                    if re.search('[֐-׿]', a):
-                        k = HK.kiejt(a) or 'pontozatlan'
-                    else:
-                        k = re.sub(r'\s*\(.*?\)', '', r['kiejtes'] or '').split('·')[0].strip()
-                    szavak.append('%s (%s)' % (a, k) if k else a)
-                if not r['alak']:
-                    megj.add('a BDB az alakot írás nélkül adja')
-                if re.search(r'\?|possibly|bizonytalan|valószínűleg', (r['megjegyzes'] or '') + jel):
-                    megj.add('a BDB szerint bizonytalan')
-                if jel and jel not in jelek:
-                    jelek.append(jel)
-            ht.append('| %s | %s%s | %s | %s |' % (_lanc_szo_cim(s), nyelv, (' ' + ' · '.join(szavak)) if szavak else '',
-                                                  _cella('; '.join(jelek) or '—'), '; '.join(sorted(megj)) or '—'))
+        hs = [r for r in hatter if r['strong'] == s]
+        cim = _lanc_szo_cim(s, lanc_versek.get(s))
+        if any(not r['alak'] and not r['lemma'] for r in hs):
+            to = bdb_to_strong(s)
+            if bdb_rokon_szocikk(s) == 0:
+                elo = ('a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon '
+                       'nyelvi alak nem áll' if bdb_helyi_szocikk(s) else 'nem azonosítható: a BDB-szócikk nem található')
+            else:
+                elo = 'a BDB-szócikkben nincs rokon nyelvi adat'
+            to_sorok = _hatter_sorok([r for r in hatter if r['strong'] == to]) if to and to in tohoz else []
+            if to_sorok:
+                lk = lemma_kiejtes(to)
+                tonev = lemma_cim(lk) if lk else to
+                ht.append('| %s | %s; a tő, a %s ige szócikke szerint: | — | — |' % (
+                    cim, elo.replace('a BDB-szócikkben nincs', 'a főnév szócikkében nincs'), tonev))
+                for nyelv, szavak, jelek, megj in to_sorok:
+                    ht.append('| ↳ tő: %s | %s%s | %s | %s |' % (tonev, nyelv, (' ' + ' · '.join(szavak)) if szavak else '',
+                                                               _cella('; '.join(jelek) or '—'), megj))
+            else:
+                ht.append('| %s | %s | — | — |' % (cim, elo))
+            continue
+        for nyelv, szavak, jelek, megj in _hatter_sorok(hs):
+            ht.append('| %s | %s%s | %s | %s |' % (cim, nyelv, (' ' + ' · '.join(szavak)) if szavak else '',
+                                                  _cella('; '.join(jelek) or '—'), megj))
     return ['##### Háttér: rokon nyelvek (BDB)',
             olvasoi_bekezdes('A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, '
-                             'etióp, szír, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A rokon '
-                             'nyelv a szó eredetéről szól, nem a motívum funkciójáról.'),
+                             'etióp, szír, arámi, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A '
+                             'rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.'),
             '\n'.join(ht)]
 
 

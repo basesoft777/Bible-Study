@@ -1309,7 +1309,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 ##### G1311 — διαφθείρω (diaftheiró) · Thayer
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a lap adattáblája), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a Thayer-szótár), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
@@ -1331,13 +1331,13 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
   > elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. **Jel 11:18**.
 
-*A teljes szócikk: [szónézet: /szo/G1311](/szo/G1311) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/G1311](/szo/G1311) · forrás: a Thayer-szótár*
 
 **UBS-domének (Louw–Nida):** 20.40 teljesen elpusztítani · 88.266 megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni · 23.146 elveszíteni saját erejét; elsorvadni
 
 ##### G1944 — ἐπικατάρατος (epikataratosz) · Thayer
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a lap adattáblája), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a Thayer-szótár), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
@@ -1345,13 +1345,13 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Gal 3:14.*
 
-*A teljes szócikk: [szónézet: /szo/G1944](/szo/G1944) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/G1944](/szo/G1944) · forrás: a Thayer-szótár*
 
 **UBS-domének (Louw–Nida):** 33.475 átkozott; elátkozott · 33.475 átkozott; elátkozott
 
 ##### G2671 — κατάρα (katara) · Thayer
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a lap adattáblája), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a Thayer-szótár), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
@@ -1366,25 +1366,25 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Zsid 6:7.*
 
-*A teljes szócikk: [szónézet: /szo/G2671](/szo/G2671) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/G2671](/szo/G2671) · forrás: a Thayer-szótár*
 
 **UBS-domének (Louw–Nida):** 33.471 megátkozni; átok · 33.473 átok · 33.474 átkozott; elátkozott
 
 ##### G5351 — φθείρω (ftheiró) · Thayer
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a lap adattáblája), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a Thayer-szótár), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
 **A szócikk feje (nyelvi háttér).** jövő idő φθερῶ; 1. aorisztosz ἐφθειρα; szenvedő alak, jelen idő φθείρομαι; 2. aorisztosz ἐφθάρην; 2. jövő idő φθαρήσομαι; (rokon a német verderben szóval); a Septuaginta a שִׁחֵת szóra; (Homérosztól kezdve); megrontani, elpusztítani: tulajdonképpen τόν ναόν τοῦ Θεοῦ (a zsidók véleménye szerint a templom megrontatott, vagy 'elpusztult', ha valaki bármit beszennyezett vagy a legkisebb mértékben megrongált benne, vagy ha őrei elhanyagolták kötelességeiket; vö. Deyling, Observations, sacrae, II. köt., o. 505 kk.), a képet elhagyva: egy keresztény gyülekezetet elvezetni attól az ismereti és szentségi állapottól, amelyben maradnia kellene, 1Kor 3:17a; τινα, halállal büntetni, 1Kor 3:17{b}; = szükségbe vagy koldusságra juttatni (vö. a mi 'tönkretenni' szavunkat (A. V. corrupt)), 2Kor 7:2; szenvedő alakban: elpusztulni, elveszni: ἐν τίνι, valamitől, Júd 1:10; ἐν részes esettel, amely az állapotot jelöli, ἐν τῇ φθορά αὐτῶν, 2Pét 2:12 L T Tr WH. Erkölcsi értelemben megrontani, megvesztegetni: φθείρουσιν ἔθη χρηστά ὁμιλίαι κακαί (Menander mondása (l. ἦθος, 2), amely úgy látszik, közmondássá vált (l. Wetstein a helynél; Gataker, Advers. misc. l. i. c. 1, o. 174 kk.)), 1Kor 15:33; a föld lakóinak jelleme, **Jel 19:2**; szenvedő alakban φθείρομαι ἀπό τίνος, annyira megromlani, hogy valamitől elpártol (l. ἀπό, I. 3 d.), 2Kor 11:3; φθειρόμενον κατά τάς ἐπιθυμίας (R. V. waxeth corrupt stb.), Ef 4:22. (Hasonlítsd össze: διαφθείρω, καταφθείρω.)
 
-*A teljes szócikk: [szónézet: /szo/G5351](/szo/G5351) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/G5351](/szo/G5351) · forrás: a Thayer-szótár*
 
 **UBS-domének (Louw–Nida):** 20.39 elpusztítani · 20.23 kárt okozni; tönkretenni · 88.266 megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni
 
 ##### G5356 — φθορά (fthora) · Thayer
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a lap adattáblája), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a Thayer tagolásában (a Thayer-szótár), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (a Thayer-szótár). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
@@ -1394,7 +1394,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
   > megromlás, pusztulás, elmúlás (szemben a γένεσις szóval, eredet, gyakran Platón, Arisztotelész, Plutarkhosz; szemben a σωτηρία szóval, Platón, Phileb., o. 35 e.; a שַׁחַת szóra, Zsolt 102:4; Jón 2:7): **Róm 8:21** (ehhez l. δουλεία); 2Pét 2:12a (egyesek (vö. R. V. széljegyzet) a φθορά szót itt cselekvő értelemben veszik: εἰς φθοράν, elpusztítani); ἐν φθορά, a megromlás vagy bomlás állapotában (a testről a temetéskor), 1Kor 15:42; metonímiával: ami a romlásnak van kitéve, ami mulandó, szemben a ἀφθαρσία szóval, 1Kor 15:50; keresztény értelemben az üdvösség elvesztése, örök nyomorúság (amelyet másutt ἀπώλεια néven neveznek), Kol 2:22 (l. ἀπόχρησις); szemben a ζωή αἰώνιος kifejezéssel, Gal 6:8, vö. Schott a helynél. 2. az Újszövetségben erkölcsi értelemben romlottság, azaz erkölcsi hanyatlás: 2Pét 1:4; 2Pét 2:12{b} (egyesek itt a szót cselekvő értelemben veszik (R. V. szöveg: in their destroying), mások az 1. ponthoz kötik), 2Pét 2:19; a τῆς ζωῆς hozzátételével, Bölcs 14:12.
 
-*A teljes szócikk: [szónézet: /szo/G5356](/szo/G5356) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/G5356](/szo/G5356) · forrás: a Thayer-szótár*
 
 **UBS-domének (Louw–Nida):** 20.38 romlás; pusztulás · 23.205 rothadni; bomlani; bomlás · 88.267 erkölcsi romlás; elvetemültség
 
@@ -1564,7 +1564,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 ##### H0056 — אָבַל (ával) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** I. אָבַל ige gyászolni (asszír [abâlu] l. Dl w) —
 
@@ -1582,11 +1582,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Hós 4:1, Hós 4:2.*
 
-*A teljes szócikk: [szónézet: /szo/H0056](/szo/H0056) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H0056](/szo/H0056) · forrás: a BDB-szótár*
 
 ##### H0127 — אֲדָמָה (adámá) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H127. adamah אֲדָמָה‎_224 nőnemű főnév: föld, termőföld (mint megművelt, német bebaut ? Dl Pr 105, de Fleisch. (Merx Archiv 1, 236 k.) vö. arab, bőr, mint ami simán befed & szorosan illeszkedik; √ דם vö. arab bekenni (felületen szétteríteni); vö. még Nö ZMG 1886, 737) — <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr>‎ 1Móz 1:25 és máshol; status constructus אַדְמַת‎ 47:20 és máshol; suffixummal אַדְמָתִי Jób 31:38, összesen 2-szer stb.; többes szám אֲדָמוֺת Zsolt 49:12 —
 
@@ -1620,11 +1620,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: 1Móz 4:3: a BDB a helyet nem önállóan idézi, hanem az 1. szakaszban az 1Móz 4:2–3 verstartomány belsejében (a BDB-ben: „4:2-3”; a BDB-szótár versenkénti jelentései sorszám 9); a tartomány nincs kibontva (szerkesztői döntés, 2026-10-28 (A)), ezért a hely nem BDB-példa · Sof 1:3: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban a Sof 1:2–3 verstartomány belsejében (a BDB-ben: „Zeph 1:2-3”; a BDB-szótár versenkénti jelentései sorszám 84); a tartomány nincs kibontva (szerkesztői döntés, 2026-10-28 (A)), ezért a hely nem BDB-példa.*
 
-*A teljes szócikk: [szónézet: /szo/H0127](/szo/H0127) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H0127](/szo/H0127) · forrás: a BDB-szótár*
 
 ##### H0423 — אָלָה (álá) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** אָלָה főnév nőnemű eskü 1Móz 26:28 +; suffixummal אָלָתוֺ אָלָתִי‎, 24:11 + (4-szer); többes szám אָלוֺת‎ 5Móz 29:20 + (4-szer).
 
@@ -1649,11 +1649,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Ézs 24:5.*
 
-*A teljes szócikk: [szónézet: /szo/H0423](/szo/H0423) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H0423](/szo/H0423) · forrás: a BDB-szótár*
 
 ##### H0779 — אָרַר (árar) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H779. arar [אָרַר] ige: átkozni (asszír arâru Zim BP 68; a kötni & átkozni jelentés viszonyáról az asszírban l. Dl Pr 101) —
 
@@ -1672,11 +1672,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: 1Móz 4:10, 5Móz 28:18.*
 
-*A teljes szócikk: [szónézet: /szo/H0779](/szo/H0779) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H0779](/szo/H0779) · forrás: a BDB-szótár*
 
 ##### H2403 — חַטָּאָה (chattáá) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **BDB2699** *(a H2403 1. BDB-szócikke a 2-ből)*
 
@@ -1718,31 +1718,31 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: a magyar szöveg szócikkhatáron át az előző sorban áll (a BDB-szótár, jelölő nélküli sor): BDB9520 fej → BDB2699 -/5/-.*
 
-*A teljes szócikk: [szónézet: /szo/H2403](/szo/H2403) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H2403](/szo/H2403) · forrás: a BDB-szótár*
 
 ##### H2555 — חָמָס (chámász) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H2555. chamas חָמָס hímnemű főnév Zsolt 7:17: erőszak, jogtalanság — status absolutus <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 1Móz 6:11 és máshol, összesen 44-szer; status constructus חֲמַס Bír 9:24, összesen 7-szer; suffixummal חֲמָסִי‎ 1Móz 16:5; Jer 51:35 (mindkettőben = a nekem okozott jogtalanság); חֲמָסוֺ Zsolt 7:17; többes szám חֲמָסִים‎ 2Sám 22:49, összesen 3-szor; — erőszak, kifejezetten fizikai erőszak Bír 9:24; 2Sám 22:3 (nem || Zsolt 18:3), Abd 10; Hab 1:9; Jer 51:35 (a káldeusokról), Hab 2:8, 17 (a versben kétszer); Jóel 4:19; Zsolt 72:14; de jogtalanság is, beleértve a sértő beszédet, a durva bánásmódot stb. 1Móz 16:5 (J, a Hágár által Sárának okozott jogtalanságról), Jób 19:7; Mal 2:16; általában az emberek nyers gonoszságáról, lármás, vad kíméletlenségükről Mik 6:12; Hab 1:2; Sof 1:9; Péld 10:6, 11; 13:2; 26:6 + Ez 7:11 (si vera lectio, l. Co), || שֹׁד Ámós 3:10; Hab 1:3; Jer 6:7; 20:8; Ez 45:9; Ézs 60:18, || רִיב Zsolt 55:10, || עָמָל‎ 7:17, || גַּאֲוָה‎ 73:6, אֹהֵב <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 11:5 (|| רָשָׁע), tagadva, a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> szolgájáról Ézs 53:9, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בארץ Jer 51:46, vö. 1Móz 6:11, 13 (P), Ez 8:17; 12:19; ח נְאוֺת ׳מַחֲשַׁכֵּיאֶרֶץ מָֽלְאוּ Zsolt 74:20, הָעִיר מָֽלְאָה <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Ez 7:23; 28:16, ח ׳שֶׁבֶת Ámós 6:3: (valószínűleg) az erőszak trónra emelése; ח ׳כְּלֵי‎ 1Móz 49:5 (költemény): az erőszak eszközei, fegyverei; — további kifejezések: <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּיָדַיִם Jón 3:8; 1Krón 12:17, vö. Jób 16:17, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> יְדֵיכֶם Zsolt 58:3 és מֹּעַל <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּכַמֵּיהֶם Ézs 59:6; ח ׳עֵד, azaz erőszakot és jogtalanságot előmozdító tanú 2Móz 23:1 (JE), 5Móz 19:16, עֵדֵי <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Zsolt 35:11; חָמָס וִיפֵהַ שֶׁקֶר עֵדֵי‎ 27:12; ח ׳שׂנאת‎ 25:19 +? erőszak; אִישׁ חָמָס = erőszakos ember 18:49 (a 2Sám 22:49 a későbbi <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> חמסים alakot adja, vö. alább) Zsolt 140:12; Péld 3:31; 16:29; אישׁ חמסים (későbbi) Zsolt 140:2; 140:5; 2Sám 22:49; יֵין חֲמָסִים Péld 4:17, azaz erőszakkal szerzett bor (|| לֶחֶם רֶשַׁע).
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: a BDB-szótár versenkénti jelentései sorszám 42 (1Móz 6:13, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 45 (Zsolt 74:20, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 34 (Ézs 60:18, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 31 (Jer 6:7, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 40 (Jer 51:46, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 46 (Ez 7:23, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 43 (Ez 8:17, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 44 (Ez 12:19, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 47 (Ez 28:16, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 21 (Mik 6:12, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 22 (Hab 1:2, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 23 (Sof 1:9, tagolatlan): az útvonal nincs a szakasztáblában.*
 
-*A teljes szócikk: [szónézet: /szo/H2555](/szo/H2555) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H2555](/szo/H2555) · forrás: a BDB-szótár*
 
 ##### H6093 — עִצָּבוֹן (iccávón) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H6093. itstsabon עִצָּבוֺן főnév [hímnemű]: fájdalom, fáradság; — <abbr class="rovidites" title="a címszó: עִצָּבוֹן (iccávón)">ע׳</abbr> status absolutus 1Móz 3:17 fáradság; status constructus עִצְּבוֺן יָדֵינוּ‎ 5:29 (mindkettő a földművelésről); suffixummal עִצְּבוֺנֵךְ‎ 3:16 (a szülés fájdalmáról; mind J).
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: a BDB-szótár versenkénti jelentései sorszám 3 (1Móz 3:16, tagolatlan): az útvonal nincs a szakasztáblában; a BDB-szótár versenkénti jelentései sorszám 2 (1Móz 5:29, tagolatlan): az útvonal nincs a szakasztáblában.*
 
-*A teljes szócikk: [szónézet: /szo/H6093](/szo/H6093) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H6093](/szo/H6093) · forrás: a BDB-szótár*
 
 ##### H6975 — קוֹץ (kóc) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H6975. qots I. קוֺץ hímnemű főnév Ez 28:24: tövisbokor, tövis; — status absolutus <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr>‎ **1Móz 3:18** és máshol; többes szám קֹצִים‎ 2Móz 22:5 és máshol, קוֺצִים Ézs 33:12 és máshol; status constructus קוֺצֵי Bír 8:7, 16; —
 
@@ -1757,11 +1757,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 </details>
 
-*A teljes szócikk: [szónézet: /szo/H6975](/szo/H6975) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H6975](/szo/H6975) · forrás: a BDB-szótár*
 
 ##### H7451 — רַע (ra) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **BDB8032** *(a H7451 1. BDB-szócikke a 3-ből)*
 
@@ -1824,11 +1824,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *ⓘ Kutatói megjegyzés: a magyar szöveg szócikkhatáron át az előző sorban áll (a BDB-szótár, jelölő nélküli sor): BDB8033 fej → BDB8032 -/10/d; BDB8034 fej → BDB8033 -/3/- · a szótári példahely a magyar szövegben nem található, kiemelés nincs: a BDB-szótár versenkénti jelentései sorszám 267 (1Móz 6:5, fej): nem azonosítható, melyik szócikkében (a fej útvonal a H7451 szócikkében áll (BDB8032, BDB8033, BDB8034), a hivatkozás helye (poz 6238) szerint: BDB8033, BDB8034).*
 
-*A teljes szócikk: [szónézet: /szo/H7451](/szo/H7451) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H7451](/szo/H7451) · forrás: a BDB-szótár*
 
 ##### H7843 — שָׁחַת (sáchat) · BDB
 
-*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a lap adattáblája), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
+*Szótári tagolás (szerkesztői döntés, 2026-10-19): a szó jelentéstartománya a BDB tagolásában (a BDB-szótár), magyarul (a BDB-szótár). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (a BDB-szótár versenkénti jelentései). A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.*
 
 **A szócikk feje (nyelvi háttér).** H7843. shachath [שָׁחַת‎]_151 ige: tönkremenni (?), csak származékos igetörzsekben (késői héber Hiphil = bibliai héber, Ecclus. שחיתה Sir 30:11: romlottan cselekedni; arab kiirtani; etióp megsérteni, megszegni; Tel Amarna ša—âtu: elesni (különösen városról), leterítve lenni (? földről), talán kánaánizmus (l. Wkl TelAm. Vocab.), asszír talán šêtu, menekülni, megszökni (vö. אבד); óarámi (Zendzsirli) שחת elpusztítani Lzb 374, arámi שְׁחַת, ( asszimilációja), megcsonkítani; — igen valószínűtlen Gerber 179: denominativum a שַׁחַת-ből); —
 
@@ -1876,7 +1876,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 </details>
 
-*A teljes szócikk: [szónézet: /szo/H7843](/szo/H7843) · forrás: a lap adattáblája*
+*A teljes szócikk: [szónézet: /szo/H7843](/szo/H7843) · forrás: a BDB-szótár*
 
 #### 4.3. Teológiai szócikk
 
@@ -2221,37 +2221,42 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 #### 4.11. Visszhang: ókori fordítások és rokon nyelvek
 
-A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A motívum 6 lánc-szavából a Targum 5, a Vulgata 4, a LXX 6 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál ez a forrásból nem mérhető.<!-- olvasói -->
+A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A motívum 6 lánc-szavából a Targum 5, a Vulgata 4, a LXX 6 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.<!-- olvasói -->
 
 | Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
 |---|---|---|---|---|
-| אֲדָמָה (adámá) — föld: talaj<br>3:17, 4:11, 5:29, 8:21 | אַרְעָא (ar'á) · 4/4 | *terra* · 4/4 | γῆ (gé) · 4/4 | A Targum: ugyanaz a szó mind a 4 láncversben; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető. A Vulgata: ugyanaz a szó mind a 4 láncversben; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető. A LXX: ugyanaz a szó mind a 4 láncversben; a láncon kívül is a versek 96%-ában ez áll (205 vers): a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
-| אָרַר (árar) — megátkozni<br>3:17, 4:11, 5:29 | לוּט (lút) · 3/3 | *maledico* · 3/3 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 3/3 | **A Targum: ugyanaz a szó mind a 3 láncversben; a két héber szót (árar és kálal) a Targum ugyanazzal a szóval adja vissza.** **A Vulgata: ugyanaz a szó mind a 3 láncversben; a két héber szót (árar és kálal) a Vulgata ugyanazzal a szóval adja vissza.** **A LXX: ugyanaz a szócsalád mind a 3 láncversben; a két héber szót (árar és kálal) a LXX ugyanazzal a szócsaláddal adja vissza.** |
-| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | A Targum: ugyanaz a szó mind a 2 láncversben; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető. A Vulgata: ugyanaz a szó mind a 2 láncversben; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető. A LXX: ugyanaz a szó mind a 2 láncversben; a láncon kívül a versek 46%-ában (56 vers). |
-| עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | három különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; egy versben más szó: 3:16 *ærumna* | λύπη (lüpé) · 3/3 | A Targum három különböző szót használ. A Vulgata: ugyanaz a szó 2/3 láncversben, egy versben más szó. A LXX: ugyanaz a szó mind a 3 láncversben; a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető. |
-| קָלַל (kálal) — könnyűnek lenni<br>8:21 | לוּט (lút) · 1/1 | *maledico* · 1/1 | καταράομαι (kataraomai) · 1/1 | **A Targum: ugyanaz a szó; a két héber szót (árar és kálal) a Targum ugyanazzal a szóval adja vissza.** **A Vulgata: ugyanaz a szó; a két héber szót (árar és kálal) a Vulgata ugyanazzal a szóval adja vissza.** **A LXX: ugyanaz a szó; a két héber szót (árar és kálal) a LXX ugyanazzal a szócsaláddal adja vissza.** |
-| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13 | חֲבַל (chaval) · 3/3 | *corrumpo* · 2/3; egy versben más szó: 6:13 *disperdo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 3/3 | A Targum: ugyanaz a szó mind a 3 láncversben; hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető. A Vulgata: ugyanaz a szó 2/3 láncversben, egy versben más szó. A LXX: ugyanaz a szócsalád mind a 3 láncversben; a láncon kívül a versek 46%-ában (132 vers). |
+| אֲדָמָה (adámá) — föld: talaj<br>3:17, 4:11, 5:29, 8:21 | אַרְעָא (ar'á) · 4/4 | *terra* · 4/4 | γῆ (gé) · 4/4 | LXX: a láncon kívül is a versek 98%-ában (97 vers) ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
+| אָרַר (árar) — megátkozni<br>3:17, 4:11, 5:29 | לוּט (lút) · 3/3 | *maledico* · 3/3 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 3/3 | A Targum és a Vulgata a láncban mindkét héber szót (árar és kálal) ugyanazzal a szóval adja vissza; hogy máshol is így fordítja-e, ebből a forrásból nem mérhető. A LXX mindkét héber szót (árar és kálal) ugyanazzal a szócsaláddal adja vissza; a láncon kívül gyakran, de nem kizárólag (árar 83%, kálal 78%). |
+| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | LXX: a láncon kívül a versek 42%-ában (52 vers) ez áll: a szó gyakori, de nem kizárólagos fordítása. |
+| עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | három különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; egy versben más szó: 3:16 *ærumna* | λύπη (lüpé) · 3/3 | LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető. |
+| קָלַל (kálal) — megátkozni (Piél)<br>8:21 | לוּט (lút) · 1/1 | *maledico* · 1/1 | καταράομαι (kataraomai) · 1/1 | L. az árar sorát. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13 | חֲבַל (chaval) · 3/3 | *corrumpo* · 2/3; egy versben más szó: 6:13 *disperdo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 3/3 | LXX: a láncon kívül a versek 45%-ában (111 vers) ez áll: a szócsalád gyakori, de nem kizárólagos fordítása. |
 | nincs héber szó<br>8:21: bűn betoldás | חוֹבֵי (chóvé) — bűnei, vétkei · betoldás | nincs betoldás | nincs ellenőrzött adat | Betoldás: a Targum a lánc szavát (bűn) olyan láncversbe teszi, ahol a héberben nincs. |
 
-*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). Félkövér a következtetés ott, ahol a fordító két különböző héber lánc-szót egy szóval ad vissza, vagy a láncban más szót választ, mint máshol. A LXX alapvonala: a héber szó láncon kívüli ószövetségi verseiben a görög versben ugyanaz a szócsalád (versszintű együtt-előfordulás, nem szóillesztés); 80% felett szokásos fordítás, 40% alatt a láncban választott szó. Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
+*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
 
 ##### Háttér: rokon nyelvek (BDB)
 
-A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, etióp, szír, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.<!-- olvasói -->
+A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, etióp, szír, arámi, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.<!-- olvasói -->
 
 | Lánc-szó | Rokon nyelv · szó (kiejtés) | Jelentés | Megjegyzés |
 |---|---|---|---|
 | אֲדָמָה (adámá) — föld: talaj | arab أَدَمَة (adama) · دَمَّ (damma) | bőr (simán befedő, szorosan simuló); kenni, bekenni (felületen szétteríteni) | — |
 | אָרַר (árar) — megátkozni | asszír arâru (aráru) | átkozni | — |
-| חָמָס (chámász) — erőszak | a BDB-szócikkben nincs rokon nyelvi adat | — | — |
-| עִצָּבוֹן (iccávón) — fáradság | a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll | — | — |
-| קָלַל (kálal) — könnyűnek lenni | Tell el-Amarna | megvet, meggyaláz | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — könnyűnek lenni | arab | kicsinek, csekélynek lenni; rázni, rezegni, forogni (kardról) | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — könnyűnek lenni | etióp | könnyűnek, kicsinek lenni; II. megvet | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — könnyűnek lenni | sabeus קללם (pontozatlan) | csekély, szűkös | — |
-| שָׁחַת (sáchat) — elpusztítani, megrontani | Tell el-Amarna šaḫâtu (sachátu) | elesni (különösen városról), földre borulni (?földről) | a BDB szerint bizonytalan |
-| שָׁחַת (sáchat) — elpusztítani, megrontani | asszír šêtu (sétu) | menekülni, megmenekülni | a BDB szerint bizonytalan |
-| שָׁחַת (sáchat) — elpusztítani, megrontani | óarámi (Zindzsirli) שחת (pontozatlan) | elpusztít | — |
+| חָמָס (chámász) — erőszak | a főnév szócikkében nincs rokon nyelvi adat; a tő, a חָמַס (chámasz) ige szócikke szerint: | — | — |
+| ↳ tő: חָמַס (chámasz) | arab | kemény, szigorú, könyörtelen | a BDB az alakot írás nélkül adja |
+| ↳ tő: חָמַס (chámasz) | arámi חֲמַס (chamasz) | erőszakosan megragad | a BDB szerint bizonytalan vagy ritka |
+| עִצָּבוֹן (iccávón) — fáradság | a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll; a tő, a עָצַב (ácav) ige szócikke szerint: | — | — |
+| ↳ tő: עָצַב (ácav) | etióp | kemény, nehéz | a BDB az alakot írás nélkül adja |
+| ↳ tő: עָצַב (ácav) | arab | haragos, mérges | a BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka |
+| קָלַל (kálal) — megátkozni (Piél) | Tell el-Amarna | megvet, meggyaláz | a BDB az alakot írás nélkül adja |
+| קָלַל (kálal) — megátkozni (Piél) | arab | kicsinek, csekélynek lenni; rázni, rezegni, forogni (kardról) | a BDB az alakot írás nélkül adja |
+| קָלַל (kálal) — megátkozni (Piél) | etióp | könnyűnek, kicsinek lenni; II. megvet | a BDB az alakot írás nélkül adja |
+| קָלַל (kálal) — megátkozni (Piél) | sabeus קללם (k-l-l-m) | csekély, szűkös | — |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | Tell el-Amarna šaḫâtu (sachátu) | elesni (különösen városról), földre borulni (?földről) | a BDB szerint bizonytalan vagy ritka |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | asszír šêtu (sétu) | menekülni, megmenekülni | a BDB szerint bizonytalan vagy ritka |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | arámi שְׁחַת (sechat) | megcsonkítani | — |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | óarámi (Zindzsirli) שחת (s-ch-t) | elpusztít | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | arab سَحَتَ (szaháta) | kiirtani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | szír ܫܰܚܶܛ (sachet) | megcsonkítani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | etióp ሰሐጠ (szeháta) | megsérteni, erőszakot tenni | — |
@@ -2926,24 +2931,24 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - Idézési forma: a Kolofon „Hogyan idézd” bekezdése
 
 **Felhasznált szótárak:**
-- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (a lap adattáblája, közkincs)
-- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, a Septuaginta szövege, CC BY 4.0)
+- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (a BDB-szótár, közkincs)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (a Septuaginta szövege, CC BY 4.0)
 - Mounce (Mounce Concise Greek-English Dictionary) (az MCGED görög szótár, © Mounce 1993)
 - OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (az Open Scriptures héber lexikona, CC BY 4.0)
 - SDBH (Semantic Dictionary of Biblical Hebrew) (az SDBH szemantikai szótár, CC BY-SA 4.0)
 - SDGNT (Semantic Dictionary of Biblical Greek) (az SDGNT szemantikai szótár, CC BY-SA 4.0)
-- SECE (Strong's Exhaustive Concordance, Enhanced) (a SECE szólista, a SECE szólista, közkincs)
+- SECE (Strong's Exhaustive Concordance, Enhanced) (a SECE szólista, közkincs)
 - TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (a STEPBible görög rövid szótára (TBESG), CC BY 4.0)
 - TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (a STEPBible héber rövid szótára (TBESH), CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (a Treasury of Scripture Knowledge, CC BY 4.0)
-- Thayer (Thayer's Greek-English Lexicon of the New Testament) (a lap adattáblája, közkincs)
-- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (az UBS Dictionary of New Testament Greek, az UBS Dictionary of New Testament Greek, CC BY-SA 4.0)
-- UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (az UBS Dictionary of Biblical Hebrew, az UBS Dictionary of Biblical Hebrew, CC BY-SA 4.0)
+- Thayer (Thayer's Greek-English Lexicon of the New Testament) (a Thayer-szótár, közkincs)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (az UBS Dictionary of New Testament Greek, CC BY-SA 4.0)
+- UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (az UBS Dictionary of Biblical Hebrew, CC BY-SA 4.0)
 - tW (Translation Words — unfoldingWord) (a translationWords szócikkei, CC BY-SA 4.0)
 
 **Adatforrások:**
 - a BDB-szótár (közkincs)
-- a lap adattáblája (közkincs)
+- a BDB-szótár (közkincs)
 - a BDB-szótár versenkénti jelentései (közkincs)
 - a motívum előfordulás-táblája (minden jog fenntartva)
 - a lap fordítástáblája (közkincs, minden jog fenntartva)
@@ -2957,7 +2962,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - a szótári szakaszok címketáblája (minden jog fenntartva)
 - a szótári pontok rendje (minden jog fenntartva)
 - a tematikus index döntései (minden jog fenntartva)
-- a lap adattáblája (közkincs)
+- a Thayer-szótár (közkincs)
 - a Thayer-szótár (közkincs)
 - a tiltott fordulatok listája (minden jog fenntartva)
 - a Károli-fordítás (1908) (közkincs)
@@ -3011,7 +3016,7 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | Forrás | Fájl | Licenc | Blokk |
 |---|---|---|---|
 | a BDB-szótár | a BDB-szótár | közkincs | szocikkek |
-| a BDB-szótár | a lap adattáblája | közkincs | szocikkek |
+| a BDB-szótár | a BDB-szótár | közkincs | szocikkek |
 | a BDB-szótár versenkénti jelentései | a BDB-szótár versenkénti jelentései | közkincs | elofordulasok, szocikkek |
 | a motívum előfordulás-táblája | a motívum előfordulás-táblája | minden jog fenntartva | elofordulasok, szocikkek |
 | a lap fordítástáblája | a lap fordítástáblája | közkincs, minden jog fenntartva | elofordulasok, szocikkek |
@@ -3025,10 +3030,10 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a szótári szakaszok címketáblája | a szótári szakaszok címketáblája | minden jog fenntartva | elofordulasok, szocikkek |
 | a szótári pontok rendje | a szótári pontok rendje | minden jog fenntartva | szocikkek |
 | a tematikus index döntései | a tematikus index döntései | minden jog fenntartva | szocikkek |
-| a Thayer-szótár | a lap adattáblája | közkincs | szocikkek |
+| a Thayer-szótár | a Thayer-szótár | közkincs | szocikkek |
 | a Thayer-szótár | a Thayer-szótár | közkincs | elofordulasok, szocikkek |
 | a tiltott fordulatok listája | a tiltott fordulatok listája | minden jog fenntartva | szocikkek |
-| a BDB-szótár | a lap adattáblája | közkincs | szocikkek |
+| a BDB-szótár | a BDB-szótár | közkincs | szocikkek |
 | a Károli-fordítás (1908) | a Károli-fordítás (1908) | közkincs | elofordulasok |
 | a Károli-kereszthivatkozások | a Károli-kereszthivatkozások | közkincs | kereszthivatkozasok |
 | a Károli-versmegfeleltetés | a Károli-versmegfeleltetés | minden jog fenntartva | elofordulasok |
@@ -3054,7 +3059,7 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a STEPBible görög rövid szótára (TBESG) | a STEPBible görög rövid szótára (TBESG) | CC BY 4.0 | szocikkek |
 | a STEPBible héber rövid szótára (TBESH) | a STEPBible héber rövid szótára (TBESH) | CC BY 4.0 | szocikkek |
 | a Treasury of Scripture Knowledge | a Treasury of Scripture Knowledge | CC BY 4.0 | kereszthivatkozasok |
-| a Thayer-szótár | a lap adattáblája | közkincs | szocikkek |
+| a Thayer-szótár | a Thayer-szótár | közkincs | szocikkek |
 | az UBS Dictionary of Biblical Hebrew | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 | elofordulasok |
 | az UBS Dictionary of Biblical Hebrew | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 | elofordulasok |
 | az UBS Dictionary of New Testament Greek | az UBS Dictionary of New Testament Greek | CC BY-SA 4.0 | elofordulasok, szocikkek |

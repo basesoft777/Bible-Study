@@ -36,7 +36,8 @@ Ellenőrzések (azonosító — súlyosság):
     CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
     VISSZHANG    a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): V1 angol maradék, V2 nem rokon
                  nyelvi sor a BDB-háttérben, V3 „nincs” a „nem azonosítható” helyén, V4 „ugyanaz a szó” két
-                 lemmánál, V5 kiemelt következtetés alapvonal nélkül, V6 sablonmondat ≥3 sorban   — BUKÁS
+                 lemmánál, V5 kiemelt következtetés alapvonal nélkül, V6 ugyanaz a tagmondat ≥3-szor a táblán,
+                 V7 az alapvonal-mondat nem a sávja (80% / 40%) szerinti                          — BUKÁS
     NAVE_ANGOL   a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers
                  HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)                       — BUKÁS
 
@@ -977,7 +978,7 @@ def ell_nave_angol(sorok):
 VH_ANGOL_RX = re.compile(r"\b(?:see|so|cf|Assyrian|Arabic|Syriac|Ethiopic|Aramaic|Late Hebrew|Hiph'?il|Ecclus|"
                          r"cursed|curse|grief|corruption)\b|fordításra vár")
 VH_NEM_ROKON_RX = re.compile(r'^\s*(?:újhéber|targumi|Sirák|késői héber)', re.I)
-VH_KIEMELT_JO_RX = re.compile(r'két héber szót|más szót választ')
+VH_KIEMELT_JO_RX = re.compile(r'láncon kívül.*\d+%')   # kiemelt csak alapvonallal (DT-F178d, pontosítva)
 VH_FORDITASOK = ((1, 'Targum'), (2, 'Vulgata'), (3, 'LXX'))
 _VH_NEM_AZONOSITOTT = None
 
@@ -1040,9 +1041,26 @@ def ell_visszhang(sorok):
             for b in re.findall(r'\*\*(.+?)\*\*', mit):
                 if not VH_KIEMELT_JO_RX.search(b):
                     ki.append(talalat('VISSZHANG', BUKAS, s.n, b[:120], 'V5 kiemelt következtetés alapvonal nélkül'))
+            # V6: tagmondatonként (pont és pontosvessző), a számok és a fordítók neve nélkül, a teljes táblán és a
+            # cellán belül is számolva
+            for mondat in re.split(r'(?<=[.;])\s+', mit.replace('**', '')):
+                kulcs = re.sub(r'\d+', '#', re.sub(r'\b(?:A|a) (?:Targum|Vulgata|LXX)\b:?', '', mondat)).strip(' .;')
+                if len(kulcs) > 25:
+                    mondatok.setdefault(kulcs, []).append(s.n)
+            # V7: a LXX alapvonal-mondata a sávja szerinti: ≥ 80% „szokásos”, 40–80% „gyakori, de nem kizárólagos”,
+            # < 40% kiemelt „más szót választ”
             for mondat in re.split(r'(?<=\.)\s+', mit.replace('**', '')):
-                if len(mondat) > 30:
-                    mondatok.setdefault(mondat, []).append(s.n)
+                pcts = [int(x) for x in re.findall(r'(\d+)%', mondat)] if 'láncon kívül' in mondat else []
+                if not pcts:
+                    continue
+                pct, kor = min(pcts), mondat
+                egyesit = 'mindkét héber szót' in mondat
+                kell = (('így van' if egyesit else 'szokásos fordítása') if pct >= 80 else
+                        ('gyakran, de nem kizárólag' if egyesit else 'gyakori, de nem kizárólag') if pct >= 40 else
+                        ('nem így' if egyesit else 'más szót választ'))
+                if kell not in kor:
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 az alapvonal (%d%%) mondata nem a sávja '
+                                                                          'szerinti („%s”)' % (pct, kell)))
     for mondat, ns in mondatok.items():
         if len(ns) >= 3:
             ki.append(talalat('VISSZHANG', BUKAS, ns[0], mondat[:120], 'V6 sablonmondat-ismétlés: %d sorban' % len(ns)))

@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 eszkozok/olvaso_szerver/teszt_visszhang_kapu.py -- F178.5 (DT-F178d, DT-F178e): a 4.11 visszhang-blokk regressziós
-kapuja (`olvasoi_kapu.ell_visszhang`, V1–V6). Arany minta: a HAMART-001 lapjának 4.11 blokkja — a kapu ott 0 BUKÁS-t ad;
-egy-egy szándékosan rontott másolaton szabályonként jelez. A `teszt_futtat.py --gyors` része.
+kapuja (`olvasoi_kapu.ell_visszhang`, V1–V7) és a blokk gépi szabályai (`lexikon_general`: a főnév igei töve, a
+mássalhangzós átírás, a láncbeli jelentés). Arany minta: a HAMART-001 lapjának 4.11 blokkja — a kapu ott 0 BUKÁS-t ad;
+szándékosan rontott másolaton szabályonként jelez. A `teszt_futtat.py --gyors` része.
 
     python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu
 """
@@ -21,6 +22,7 @@ sys.path.insert(0, ESZKOZOK)
 import olvasoi_kapu as K  # noqa: E402
 
 LAP = os.path.join(os.path.dirname(ESZKOZOK), 'lexikon', 'HAMART-001_TUDOMANYOS.md')
+OVATOS = 'hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető.'
 
 
 def arany_blokk():
@@ -38,6 +40,15 @@ def visszhang(szoveg):
 
 def szabalyok(szoveg):
     return {x['uzenet'].split(' ', 1)[0] for x in visszhang(szoveg)}
+
+
+def sor(mit, lxx='γῆ (gé) · 4/4'):
+    return '| X<br>1:1, 2:1 | a (a) · 2/2 | *b* · 2/2 | %s | %s |' % (lxx, mit)
+
+
+def tabla(*sorok):
+    return '## 4. Szótári háttér\n\n#### 4.11. Visszhang\n\n| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |\n' \
+           '|---|---|---|---|---|\n' + '\n'.join(sorok) + '\n'
 
 
 class Arany(unittest.TestCase):
@@ -60,8 +71,7 @@ class Rontott(unittest.TestCase):
         self.assertIn('V1', szabalyok(r))
 
     def test_v2_ujheber_sor(self):
-        sor = '| קָלַל (kálal) — könnyűnek lenni | újhéber קָלַל (kálal) | azonos a bibliai héberrel | — |'
-        r = self.b.rstrip('\n') + '\n' + sor + '\n'
+        r = self.b.rstrip('\n') + '\n| קָלַל (kálal) | újhéber קָלַל (kálal) | azonos a bibliai héberrel | — |\n'
         self.assertIn('V2', szabalyok(r))
 
     def test_v3_nincs_a_nem_azonositott_helyen(self):
@@ -74,23 +84,48 @@ class Rontott(unittest.TestCase):
         self.assertNotIn('V3', szabalyok(self.b))   # chámász: azonosított szócikk, rokon alak nélkül
 
     def test_v4_ugyanaz_a_szo_ket_lemmanal(self):
-        r = self.b.replace('A LXX: ugyanaz a szócsalád mind a 3 láncversben; a láncon kívül',
-                           'A LXX: ugyanaz a szó mind a 3 láncversben; a láncon kívül', 1)
-        self.assertNotEqual(r, self.b)
+        r = tabla(sor('A LXX: ugyanaz a szó mind a 2 láncversben.', 'φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 2/2'))
         self.assertIn('V4', szabalyok(r))
+        self.assertNotIn('V4', szabalyok(tabla(sor('A LXX: ugyanaz a szócsalád mind a 2 láncversben.',
+                                                   'φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 2/2'))))
 
     def test_v5_kiemelt_alapvonal_nelkul(self):
-        r = self.b.replace('A Targum: ugyanaz a szó mind a 4 láncversben; hogy ez a szó szokásos fordítása-e, ebből a '
-                           'forrásból nem mérhető.', '**A Targum: ugyanaz a szó mind a 4 láncversben.**', 1)
-        self.assertNotEqual(r, self.b)
-        self.assertIn('V5', szabalyok(r))
+        self.assertIn('V5', szabalyok(tabla(sor('**A Targum a láncban mindkét héber szót egy szóval adja vissza.**'))))
+        self.assertNotIn('V5', szabalyok(tabla(sor('**LXX: a láncon kívül csak a versek 20%-ában (10 vers) ez áll: a '
+                                                   'láncban más szót választ, mint máshol.**'))))
 
-    def test_v6_sablonmondat_ismetles(self):
-        sor = ('| X<br>1:1 | a · 1/1 | b · 1/1 | c · 1/1 | Ugyanaz a fordítás minden láncversben, a lánc egységként '
-               'hallatszik. |')
-        r = self.b.replace('| nincs héber szó', '\n'.join([sor] * 3) + '\n| nincs héber szó', 1)
-        self.assertNotEqual(r, self.b)
-        self.assertIn('V6', szabalyok(r))
+    def test_v6_ovatos_mondat_ismetlese_a_cellakban(self):
+        """A b7494f2a hibája: az óvatos mondat soronként kétszer, négy sorban — a kapunak meg kell fognia."""
+        mit = 'A Targum: ugyanaz a szó mind a 2 láncversben; %s A Vulgata: ugyanaz a szó mind a 2 láncversben; %s' % (
+            OVATOS, OVATOS)
+        self.assertIn('V6', szabalyok(tabla(sor(mit), sor(mit))))
+        self.assertNotIn('V6', szabalyok(tabla(sor('LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal '
+                                                   'nem mérhető.'))))
+
+    def test_v7_alapvonal_sav(self):
+        rossz = tabla(sor('LXX: a láncon kívül a versek 46%-ában (50 vers) ez áll.'))
+        jo = tabla(sor('LXX: a láncon kívül a versek 46%-ában (50 vers) ez áll: a szó gyakori, de nem kizárólagos '
+                       'fordítása.'))
+        self.assertIn('V7', szabalyok(rossz))
+        self.assertNotIn('V7', szabalyok(jo))
+
+
+class GepiSzabalyok(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import lexikon_general as LG
+        cls.LG = LG
+
+    def test_fonev_igei_tove(self):
+        self.assertEqual('H2554', self.LG.bdb_to_strong('H2555'))   # חָמָס → חָמַס
+        self.assertEqual('H6087', self.LG.bdb_to_strong('H6093'))   # עִצָּבוֹן → עָצַב
+        self.assertIsNone(self.LG.bdb_to_strong('H2554'))           # ige: nincs töve
+
+    def test_massalhangzos_atiras(self):
+        self.assertEqual('k-l-l-m', self.LG.massalhangzos_atiras('קללם'))
+
+    def test_lancbeli_jelentes_pielben(self):
+        self.assertEqual('megátkozni (Piél)', self.LG.lanc_szo_jelentes('H7043', ['1Móz 8:21']))
 
 
 if __name__ == '__main__':
