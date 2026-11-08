@@ -13,7 +13,7 @@ kovetkezo: "Te: draft PR; a merge a felhasználóé; utána az ANTROP-001 lapja 
 olvas: [F121_GLOSSZA_FORDITAS_BRIEF.md, eszkozok/glossza_lexikon_forditas.py, naplok/F121_GLOSSZA_FORDITAS_manko.tsv, eszkozok/thayer_api_koteg.py, eszkozok/thayer_jelolt/forditas.py, eszkozok/bdb_api_koteg.py, eszkozok/forditas_kapuk.py, eszkozok/olvasoi_kapu.py, eszkozok/emeles.py, forditas/prompt_v5_2.md, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, adat/SEMA.md]
 ir: [F161_GLOSSZA_LANC_BRIEF.md, eszkozok/glossza_api_koteg.py, eszkozok/teszt_glossza_api_koteg.py, forditas/prompt_glossza_v1.md, forditas/prompt_glossza_v2.md, adat/forditasok.tsv, eszkozok/glossza_lexikon_forditas.py, naplok/F161_GLOSSZA_LANC_naplo.md, dontesek/uj/glossza-lanc-1a9f9f.md, nyitott/uj/glossza-lanc-1a9f9f.md]
 fugg: []
-nem_fugg: [7, 38, 121, 153, 154, 158]
+nem_fugg: [7, 38, 121, 153, 154, 158, 178]
 ---
 
 # F161_GLOSSZA_LANC_BRIEF.md — fordítási lánc a rövid szótári glosszákhoz
