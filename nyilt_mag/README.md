@@ -1,6 +1,6 @@
-# PaRDeS Open Core — Read Me
+# [A LEXIKON CÍME] — Open Core — Read Me
 
-# GENERATED: export of the PaRDeS open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+# GENERATED: export of the [A LEXIKON CÍME] open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 
 *Magyar változat: `OLVASSEL.md`.*
 

@@ -1,6 +1,6 @@
 # Ismert hibák a forrásadatokban
 
-# GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 A nyílt mag készítői itt mondják ki azokat a forráshibákat, amelyeket a saját méréseik kimutattak, és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív lelet.
 

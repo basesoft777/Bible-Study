@@ -1,6 +1,6 @@
 # Known Errors in the Source Data
 
-# GENERATED: export of the PaRDeS open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+# GENERATED: export of the [A LEXIKON CÍME] open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 
 The makers of the open core state here the source errors that their own measurements revealed, and how the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding.
 
