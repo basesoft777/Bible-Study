@@ -8,7 +8,7 @@ A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliáb
 
 A motívum azt követi végig, hogyan terjed a bűn következménye az elkövetőn túl, és hogyan tér vissza ugyanez a szerkezet a kánon későbbi könyveiben. Az 1Mózes 3–9. fejezetében hat héber szó alkot láncot: az átok (árar), a föld (adámá), a fájdalom és fáradság (itzávón), a bűn (chattát), az erőszak (chámász) és a romlás igéje (sáchat). Az átok először a kígyóra szól (1Móz 3:14), majd az ember miatt a földre száll (1Móz 3:17), Kainnál a föld felől a személyt éri (1Móz 4:11), Lámek pedig vigasztalásra váró teherként nevezi meg (1Móz 5:29). Az özönvíz előtt „megtelék a föld erőszakoskodással” (1Móz 6:11), és Isten ugyanazzal az igével ítél, amely a föld romlását megnevezte (1Móz 6:12-13). A fordulópont az özönvíz utáni mondat: „Nem átkozom meg többé a földet az emberért, mert az ember szívének gondolatja gonosz az ő ifjúságától fogva” (1Móz 8:21). Új átok a földre ezután nem hangzik el, az ember szíve viszont ugyanaz marad, ezért a lánc nem ér véget, hanem irányt vált (hogy a korábbi átok mint állapot megmarad-e, azt a vitatott pontok tárgyalják): Ábrám elhívásában a föld szava már az áldás mondatában áll, „megáldatnak te benned a föld minden nemzetségei” (1Móz 12:3).
 
-A lap 49 helyet sorol fel 56 versben: 24-et a Genezisből, 18-at az Ószövetség többi könyvéből és 7-et az Újszövetségből. A későbbi helyek a lánc egy-egy szavát vagy szókapcsolatát hozzák vissza: a törvény átkai között azt az egyet, amely a föld termésére szól (5Móz 28:18), a próféták mondatait arról, hogy a föld megtelt erőszakkal (Ez 7:23, 8:17), a föld színéről való eltörlés fordulatát (Sof 1:2-3), és az Újszövetségben a teremtett világ romlását (Róm 8:21), Krisztust, aki „átokká levén érettünk” (Gal 3:13), és a föld megrontóinak ítéletét (Jel 11:18, 19:2).
+A lap 48 helyet sorol fel 56 versben: 24-et a Genezisből, 18-at az Ószövetség többi könyvéből és 6-ot az Újszövetségből. A későbbi helyek a lánc egy-egy szavát vagy szókapcsolatát hozzák vissza: a törvény átkai között azt az egyet, amely a föld termésére szól (5Móz 28:18), a próféták mondatait arról, hogy a föld megtelt erőszakkal (Ez 7:23, 8:17), a föld színéről való eltörlés fordulatát (Sof 1:2-3), és az Újszövetségben a teremtett világ romlását (Róm 8:21), határesetként a Galata-levél átok- és áldás-mondatát (Gal 3:13-14), és a föld megrontóinak ítéletét (Jel 11:18, 19:2).
 
 A motívum azonossága nem egyetlen szón, hanem egy szerkezeten nyugszik, ezért a lista keresési módszer eredménye, nem kimerítő felsorolás: a hat héber és a görög szó minden előfordulását átnéztük, és csak azokat a helyeket vettük fel, amelyek a láncra visszautalnak. Ide az a hely tartozik, amelyben a lánc egyik szava áll — héberül az átok, a föld, a fáradság, a bűn, az erőszak vagy a romlás igéje, görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Mózes 3–9. fejezetének láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll: a bűnáldozat törvényei, a föld mint ország vagy talaj, a katonai és fizikai pusztítás, a rituális vagy emberi átkozódás, az erőszak szava a „megtelt” és a „hallatszik” szókapcsolata nélkül, és a romlandó test. Az sem tartozik ide, amely az átkot vagy a föld elvesztését csak a szövetség rendjében mondja ki, a föld szava nélkül: ilyenek a törvény átok-kimondásai (5Móz 27:15-26) és Izrael fogságba vitele a föld színéről (1Kir 13:34, 2Kir 17:23). A különbséget az Ez 12:19 és a Sof 1:2-3 mutatja: az elsőben a föld a lakói erőszaka miatt üresedik ki teljességéből, a másodikban az özönvíz előtti egyetemes felsorolás (ember, barom, madár) áll.
 
@@ -102,9 +102,9 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-08 -->
 
-A motívum 49 igehelyen fordul elő, 14 bibliai könyvben (44 ószövetségi, 5 újszövetségi hely); a legtöbb hely: 1Móz (24). 45 hely azonosítása magas megbízhatóságú, 4 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
+A motívum 48 igehelyen fordul elő, 14 bibliai könyvben (43 ószövetségi, 5 újszövetségi hely); a legtöbb hely: 1Móz (24). 44 hely azonosítása magas megbízhatóságú, 4 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
-*Ez a blokk a `[ID: HAMART-001]` motívum 49 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
+*Ez a blokk a `[ID: HAMART-001]` motívum 48 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
@@ -151,12 +151,11 @@ A motívum 49 igehelyen fordul elő, 14 bibliai könyvben (44 ószövetségi, 5 
 | [Sof 1:2-3](#ige-sof-1-2-3) | föld színéről — הָאֲדָמָ֖ה (háadámá) | a föld látható felszíne, a föld színe · 4[^41] | egyetemes ítélet | Remez | H0127 | talaj; föld; terület; agyag [ⓘ](/szo/H0127) | magas · tartalom-alapú[^41] |
 | [Sof 1:9](#ige-sof-1-9) | erőszakkal — חָמָ֥ס (chámász) | *(nincs hozzárendelés)*[^42] | visszhang | Remez | H2555 | agresszióval szerzett javak [ⓘ](/szo/H2555) | magas · tartalom-alapú[^42] |
 | [Róm 8:21](#ige-róm-8-21) | rothadandóság — φθορᾶς (fthorasz) | romlás, enyészet, pusztulás · Thayer 1[^43] | állapot | Drash/Sod | G5356 | rothadni; bomlani; bomlás [ⓘ](/szo/G5356) | magas · tartalom-alapú[^43] |
-| [Gal 3:10](#ige-gal-3-10) | Átkozott — ἐπικατάρατος (epikataratosz) | átkozott, Isten átka alatt álló · Thayer fej[^44] | törvényi formula | Drash | G1944 | átkozott; elátkozott [ⓘ](/szo/G1944) | magas · tartalom-alapú[^44] |
-| [Gal 3:13](#ige-gal-3-13) | Átkozott — ἐπικατάρατος (epikataratosz) | átkozott, Isten átka alatt álló · Thayer fej[^45] | megváltás | Drash/Sod | G1944 | átkozott; elátkozott [ⓘ](/szo/G1944) | magas · tartalom-alapú[^45] |
-| [Zsid 6:7-8](#ige-zsid-6-7-8) | átokhoz — κατάρας (katarasz) | átok, átkozódás · Thayer fej[^46] | példázat | Remez/Drash | G2671 | átkozott; elátkozott [ⓘ](/szo/G2671) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^46] |
-| [Jel 11:18](#ige-jel-11-18) | pusztítják — διαφθείροντας (diaftheirontasz) | megront, rosszabbá tesz · Thayer 1[^47] | tükörítélet | Sod | G1311 | teljesen elpusztítani [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)*; megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^47] |
-| [Jel 19:2](#ige-jel-19-2) | megrontotta — ἔφθειρεν (eftheiren) | megront, elpusztít · Thayer fej[^48] | ítélet | Remez/Sod | G5351 | megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G5351) | magas · tartalom-alapú[^48] |
-| [Jel 22:3](#ige-jel-22-3) | elátkozott — — | *(nincs hozzárendelés)*[^49] | tematikus, nem lexikai | Sod | — | — *(nincs G-token)* | közepes · tartalom-alapú[^49] |
+| [Gal 3:13-14](#ige-gal-3-13-14) | Átkozott — ἐπικατάρατος (epikataratosz) | átkozott, Isten átka alatt álló · Thayer fej[^44] | átok és áldás | Drash/Sod | G1944 | átkozott; elátkozott [ⓘ](/szo/G1944) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^44] |
+| [Zsid 6:7-8](#ige-zsid-6-7-8) | átokhoz — κατάρας (katarasz) | átok, átkozódás · Thayer fej[^45] | példázat | Remez/Drash | G2671 | átkozott; elátkozott [ⓘ](/szo/G2671) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^45] |
+| [Jel 11:18](#ige-jel-11-18) | pusztítják — διαφθείροντας (diaftheirontasz) | megront, rosszabbá tesz · Thayer 1[^46] | tükörítélet | Sod | G1311 | teljesen elpusztítani [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)*; megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^46] |
+| [Jel 19:2](#ige-jel-19-2) | megrontotta — ἔφθειρεν (eftheiren) | megront, elpusztít · Thayer fej[^47] | ítélet | Remez/Sod | G5351 | megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G5351) | magas · tartalom-alapú[^47] |
+| [Jel 22:3](#ige-jel-22-3) | elátkozott — — | *(nincs hozzárendelés)*[^48] | tematikus, nem lexikai | Sod | — | — *(nincs G-token)* | közepes · tartalom-alapú[^48] |
 
 [^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: BDB-példa: a BDB a Qal szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 12, 23); ez a kutatói hozzárendelés (Qal → Qal) alá esik, a címke a finomabb útvonalé
 [^2]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: a kutatói jelentésszám („tagolatlan”) nincs leképezve a BDB tagolására (`adat/szotar_szakasz_cimke.tsv`)
@@ -201,14 +200,13 @@ A motívum 49 igehelyen fordul elő, 14 bibliai könyvben (44 ószövetségi, 5 
 [^41]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: BDB-példa: a BDB a 4. szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 84); ez a kutatói hozzárendelés (4 → 4) alá esik, a címke a finomabb útvonalé
 [^42]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: a kutatói jelentésszám („tagolatlan”) nincs leképezve a BDB tagolására (`adat/szotar_szakasz_cimke.tsv`)
 [^43]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`)
-[^44]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
+[^44]: proveniencia: scope=manual | forras=F123 HAMART-001, N-F123hc döntése (claude-opus-5-5; a felhasználó szövege, DT-F123hd) | ts=2026-11-08 | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
 [^45]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
-[^46]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
-[^47]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`)
-[^48]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
-[^49]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: a sornak nincs Strong-tokenje
+[^46]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`)
+[^47]: proveniencia: ‹E2› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`)
+[^48]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: a sornak nincs Strong-tokenje
 
-*A közös forrásmegjelölések: ‹E1› = `scope=manual | forras=F123 HAMART-001 új cikk, U3 (claude-opus-5-5; a jeloltek.tsv beépített sora, DT-F123ha) | ts=2026-11-05` (46 sor) · ‹E2› = `scope=manual | forras=F123 HAMART-001 határkör (claude-opus-5-5; naplok/HATAR_HAMART-001.md K1–K10, DT-F123hc) | ts=2026-11-08` (3 sor)*
+*A közös forrásmegjelölések: ‹E1› = `scope=manual | forras=F123 HAMART-001 új cikk, U3 (claude-opus-5-5; a jeloltek.tsv beépített sora, DT-F123ha) | ts=2026-11-05` (44 sor) · ‹E2› = `scope=manual | forras=F123 HAMART-001 határkör (claude-opus-5-5; naplok/HATAR_HAMART-001.md K1–K10, DT-F123hc) | ts=2026-11-08` (3 sor)*
 
 *Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése (`konkordancia/UBS_DBH_referenciak.tsv`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); tokenenként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes UBS-szócikk (definíció és glosszák) áll (DT393). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel. Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*
 
@@ -524,19 +522,13 @@ Pál szerint a teremtett világ „azzal a reménységgel” él, „hogy maga a
 
 Funkció: a teremtett világ még a romlás rabságában, de szabadulásra vár
 
-<a id="ige-gal-3-10"></a>
-**Gal 3:10**
-*Mert a kik törvény cselekedeteiből vannak, átok alatt vannak; minthogy meg van írva: Átkozott minden, a ki meg nem marad mindazokban, a mik megirattak a törvény könyvében, hogy azokat cselekedje.*
-Pál az 5Móz 27:26-ot idézi: „Átkozott minden, a ki meg nem marad mindazokban, a mik megirattak a törvény könyvében”. A görög szó (ἐπικατάρατος, epikataratosz) ugyanaz, amellyel a görög Ószövetség az 1Móz 3:17 átkát fordítja; a törvény átka így a genezisi átok nyelvén szól.
-
-Funkció: az 5Móz 27:26 átka a Genezis görög szavával
-
-<a id="ige-gal-3-13"></a>
-**Gal 3:13**
+<a id="ige-gal-3-13-14"></a>
+**Gal 3:13-14**
 *Krisztus váltott meg minket a törvény átkától, átokká levén érettünk; mert meg van írva: Átkozott minden, a ki fán függ:*
-Pál kimondja: „Krisztus váltott meg minket a törvény átkától, átokká levén érettünk”. Az 5Móz 21:23 idézetében a görög Ószövetség szavát a Genezis átok-szavára (ἐπικατάρατος) cseréli: „Átkozott minden, a ki fán függ”, így Krisztus ugyanazt az átkot veszi magára, amely a 3:17 óta a földön és az emberen van.
+*Hogy az Ábrahám áldása Krisztus Jézusban legyen a pogányokon, hogy a Lélek ígéretét elnyerjük hit által.*
+A Gal 3:13 az 5Móz 21:23 átok-mondatát idézi („Átkozott minden, a ki fán függ”). Az idézett versben az átok és a föld együtt áll, és Pál a lánc görög átok-szavát használja. A Genezisre közvetlenül nem utal vissza; a kapcsolatot a 3:14 áldás-mondata adja, amely az 1Móz 12:3 ígéretét veszi fel.
 
-Funkció: Krisztus magára veszi az átkot; az idézet a Genezis szavára hangolva
+Funkció: határeset: a kapcsolat az áldás-mondaton át
 
 <a id="ige-zsid-6-7-8"></a>
 **Zsid 6:7-8**
@@ -573,9 +565,9 @@ Funkció: a kánon zárása: az átok megszűnik
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
-A motívum 49 helyén túl további 1 753 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük. Egyik sem tartozik a motívumhoz: 233 versről egyenként döntöttünk, 1 520 versről közös ok alapján, csoportosan. A leggyakoribb ok: „más szó áll a versben, nem a motívum lexémája” (901 vers), utána „a szó áll, de általános használatban, a lánc nélkül” (577 vers). A jelöltek forrása (vers): Gépi keresés 1626, TSK-ajánlás 99, Kutatói felvetés 28. **Következtetés:** a motívum minden helyére átlagosan 36 vizsgált vers jut (1753 vizsgált vers, 49 motívumhely). A határt leginkább ez az ok húzza meg: „más szó áll a versben, nem a motívum lexémája”.<!-- olvasói -->
+A motívum 48 helyén túl további 1 754 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük. Egyik sem tartozik a motívumhoz: 234 versről egyenként döntöttünk, 1 520 versről közös ok alapján, csoportosan. A leggyakoribb ok: „más szó áll a versben, nem a motívum lexémája” (901 vers), utána „a szó áll, de általános használatban, a lánc nélkül” (577 vers). A jelöltek forrása (vers): Gépi keresés 1626, TSK-ajánlás 99, Kutatói felvetés 29. **Következtetés:** a motívum minden helyére átlagosan 37 vizsgált vers jut (1754 vizsgált vers, 48 motívumhely). A határt leginkább ez az ok húzza meg: „más szó áll a versben, nem a motívum lexémája”.<!-- olvasói -->
 
-*Ez a blokk a `[ID: HAMART-001]` motívum 286 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
+*Ez a blokk a `[ID: HAMART-001]` motívum 287 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
 **Az elutasítás okai:**
 
@@ -587,14 +579,14 @@ A motívum 49 helyén túl további 1 753 verset vizsgáltunk meg: a motívum s
 | átok-kimondás, a következmény továbbterjedése nélkül | 30 | rituális, jogi vagy indulati átok; a hely nem mondja, hogy egy tett következménye továbbterjed | Jer 17:5, 1Móz 27:29 |
 | romlás más értelemben, nem a genezisi szerkezet | 22 | a test enyészete vagy romlandósága, nem a föld romlása | 1Kor 15:42, 1Kor 15:50 |
 | a fáradság bölcsességirodalmi toposza, a genezisi szó nélkül | 16 | a fáradság a bölcsességirodalom témája, a Genezis fáradság-szava nélkül | Jób 14:1, Jób 21:17 |
-| szövetségi átok-formula, a föld szava nélkül | 15 | a szövetség átkait mondja ki az átok igéjével, de a föld (adámá) szava nélkül; a negatív kritérium szerint a szövetségi rend nem a lánc folytatása | 5Móz 27:15-26, 5Móz 28:16-17 |
+| szövetségi átok-formula, a föld szava nélkül | 16 | a szövetség átkait mondja ki az átok igéjével, de a föld (adámá) szava nélkül; a negatív kritérium szerint a szövetségi rend nem a lánc folytatása | 5Móz 27:15-26, Gal 3:10 |
 | egy másik motívum tárgya | 14 | a hely egy másik motívumhoz tartozik (kereszt-motívum elhatárolás) | Mt 15:19, Mk 7:21-23 |
 | tövis-kép, a genezisi szókapcsolat nélkül | 11 | tövis vagy bogáncs képként áll, a Genezis tövis és bogáncs szópárja nélkül | Jer 12:13, Jer 4:3 |
 | a föld elvesztése vagy terméketlensége a szövetségi rendben, nem a lánc | 10 | a föld elvesztése vagy terméketlensége a szövetség rendjében, a Genezisre való visszautalás nélkül | 1Kir 8:34-35, 1Kir 13:34 |
 
 További 18 ok, összesen 116 vers: emberi átkozódás, nem a genezisi lánc folytatása (10); szövetségi átok-szakasz, az átok-ige nélkül (10); általános engedetlenség-téma, a föld-átok szerkezete nélkül (10); a szócsalád más használata, nem a romlás szerkezete (8); az erőszak szava más használatban, nem a föld megtelése (8); az özönvíz-elbeszélés felidézése, az átok terjedése nélkül (8); más szókapcsolat (Isten letekint, minden test), nem a romlás szerkezete (8); fizikai pusztítás, nem erkölcsi megromlás (7); a mező füve mint táplálék, nem a tövis-átok (6); a romlás igéje a szövetséges nép hűtlenségére, az egyetemes szerkezet nélkül (6); jogi, bűnbánati vagy panasz-használat, a lánc nélkül (6); semleges, elbeszélő használat, nem az átok-szerkezet (6); a „vég” formulája, más kulcsszóval (5); általános bűn-leírás, a terjedés szerkezete nélkül (5); egy bent lévő hely folytatása, a szerkezet ott áll (4); száműzetés-büntetés, a föld kulcsszava nélkül (4); az „Isten előtt” kifejezés, nem a motívum (3); az öröklött bűnösség kérdése, amelyet a tanulmány nem dönt el (2).
 
-**A jelölés forrása:** TSK-ajánlás 99 · Gépi keresés 1626 · Kutatói felvetés 28
+**A jelölés forrása:** TSK-ajánlás 99 · Gépi keresés 1626 · Kutatói felvetés 29
 
 **TSK-ajánlás** (99)
 
@@ -861,7 +853,7 @@ További 18 ok, összesen 116 vers: emberi átkozódás, nem a genezisi lánc fo
 | Jón 2:7 | gépi teljesség-mérés; csoportos kizárás: 2 vers, az első itt[^k254] | **elutasítva** — a szótár idézi, de a Károli-versben a szó nem áll: Összesítő sor 2 versre (a sor igehelye a blokk egy verse áll): a szótár ezeket a verseket a szó szócikkében idézi, de a Károli-versben a szó nem áll: a szótár a héber vagy a görög versszámozás szerint idéz, vagy rokon alakot ért. Ahol a szó ténylegesen áll, ott a szövegkeresés találja meg. |
 | Jer 51:25 | gépi teljesség-mérés (Strong-háló)[^k255] | **elutasítva** — fizikai pusztítás, nem erkölcsi megromlás: Fizikai pusztítás: a romlás igéje (sáchat) itt a BDB 1. jelentésében (elront, elpusztít) áll, mint a kizárt Jer 51:20-ban ugyanarra a Babilonra. Az „egész föld” tárgy ettől nem lesz erkölcsi megromlás. |
 
-**Kutatói felvetés** (13 sor, 28 vers)
+**Kutatói felvetés** (14 sor, 29 vers)
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
@@ -871,13 +863,14 @@ További 18 ok, összesen 116 vers: emberi átkozódás, nem a genezisi lánc fo
 | Hab 2:8 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k259] | **elutasítva** — az erőszak szava más használatban, nem a föld megtelése: A chámász szava itt a megtorlás elveként áll, a „megtelt erőszakkal” és a „hallatszik az erőszak” szókapcsolata nélkül, mint a csoportosan kizárt chámász-versekben. |
 | Hab 2:17 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k260] | **elutasítva** — az erőszak szava más használatban, nem a föld megtelése: A chámász szava itt a megtorlás elveként áll, a „megtelt erőszakkal” és a „hallatszik az erőszak” szókapcsolata nélkül, mint a csoportosan kizárt chámász-versekben. |
 | Jón 3:8 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k261] | **elutasítva** — az erőszak szava más használatban, nem a föld megtelése: A chámász szava itt a megtérés tárgyaként áll, a „megtelt erőszakkal” és a „hallatszik az erőszak” szókapcsolata nélkül, mint a csoportosan kizárt chámász-versekben. |
-| Mt 15:19 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k262] | **elutasítva** — egy másik motívum tárgya: Ugyanaz a másik motívum, mint a Jer 17:9-nél: a szív romlott hajlama. A lánc egyetlen szava sem áll a versben, és az 1Móz 6:5, amelyre utal, maga is tematikus sor. |
-| Mk 7:21-23 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k263] | **elutasítva** — egy másik motívum tárgya: Ugyanaz a másik motívum, mint a Jer 17:9-nél: a szív romlott hajlama. A lánc egyetlen szava sem áll a versben, és az 1Móz 6:5, amelyre utal, maga is tematikus sor. |
-| 2Pét 3:6-7 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k264] | **elutasítva** — az özönvíz-elbeszélés felidézése, az átok terjedése nélkül: Noé alakja és az özönvíz ítélete újszövetségi felidézésként, mint a kizárt 2Pét 2:5-ben; a lánc szavai nélkül. |
-| 5Móz 28:16-17 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k265] | **elutasítva** — szövetségi átok-formula, a föld szava nélkül: Szövetségi átok-formula: a városra, a mezőre, a kosárra és a teknőre szóló átok, a föld (adámá) szava nélkül; a 28:18 a föld szavával külön sorban áll. |
-| 5Móz 28:19 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k266] | **elutasítva** — szövetségi átok-formula, a föld szava nélkül: Szövetségi átok-formula: a ki- és bejövetelre szóló átok, a föld (adámá) szava nélkül; a 28:18 a föld szavával külön sorban áll. |
-| Róm 8:20 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k267] | **elutasítva** — egy bent lévő hely folytatása, a szerkezet ott áll: A hely a Róm 8:21 sorának folytatása: a teremtett világ „hiábavalóság alá vettetett”; a romlás szava (φθορά (fthora)) a 8:21-ben áll, és az a motívumban van. |
-| Róm 8:22 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k268] | **elutasítva** — egy bent lévő hely folytatása, a szerkezet ott áll: A hely a Róm 8:21 sorának folytatása: a teremtett világ „egyetemben fohászkodik és nyög”; a romlás szava (φθορά) a 8:21-ben áll, és az a motívumban van. |
+| Gal 3:10 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k262] | **elutasítva** — szövetségi átok-formula, a föld szava nélkül: Pál az 5Móz 27:26 átok-mondatát idézi; az átok a tóra megszegőjére szól, a szövetség rendjében, a föld szava nélkül, mint az 5Móz 27:15-26 — a motívum határán kívül. |
+| Mt 15:19 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k263] | **elutasítva** — egy másik motívum tárgya: Ugyanaz a másik motívum, mint a Jer 17:9-nél: a szív romlott hajlama. A lánc egyetlen szava sem áll a versben, és az 1Móz 6:5, amelyre utal, maga is tematikus sor. |
+| Mk 7:21-23 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k264] | **elutasítva** — egy másik motívum tárgya: Ugyanaz a másik motívum, mint a Jer 17:9-nél: a szív romlott hajlama. A lánc egyetlen szava sem áll a versben, és az 1Móz 6:5, amelyre utal, maga is tematikus sor. |
+| 2Pét 3:6-7 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k265] | **elutasítva** — az özönvíz-elbeszélés felidézése, az átok terjedése nélkül: Noé alakja és az özönvíz ítélete újszövetségi felidézésként, mint a kizárt 2Pét 2:5-ben; a lánc szavai nélkül. |
+| 5Móz 28:16-17 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k266] | **elutasítva** — szövetségi átok-formula, a föld szava nélkül: Szövetségi átok-formula: a városra, a mezőre, a kosárra és a teknőre szóló átok, a föld (adámá) szava nélkül; a 28:18 a föld szavával külön sorban áll. |
+| 5Móz 28:19 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k267] | **elutasítva** — szövetségi átok-formula, a föld szava nélkül: Szövetségi átok-formula: a ki- és bejövetelre szóló átok, a föld (adámá) szava nélkül; a 28:18 a föld szavával külön sorban áll. |
+| Róm 8:20 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k268] | **elutasítva** — egy bent lévő hely folytatása, a szerkezet ott áll: A hely a Róm 8:21 sorának folytatása: a teremtett világ „hiábavalóság alá vettetett”; a romlás szava (φθορά (fthora)) a 8:21-ben áll, és az a motívumban van. |
+| Róm 8:22 | a motívum korábbi tanulmányának négyforrásos ellenőrzése[^k269] | **elutasítva** — egy bent lévő hely folytatása, a szerkezet ott áll: A hely a Róm 8:21 sorának folytatása: a teremtett világ „egyetemben fohászkodik és nyög”; a romlás szava (φθορά) a 8:21-ben áll, és az a motívumban van. |
 
 **Negatív kritérium:** A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (itzávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, romlandó test), és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki. A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide. Az újszövetségi helyeknél a Textus Receptus a mérce.
 
@@ -1149,6 +1142,7 @@ További 18 ok, összesen 116 vers: emberi átkozódás, nem a genezisi lánc fo
 [^k266]: forrás: `négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés`
 [^k267]: forrás: `négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés`
 [^k268]: forrás: `négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés`
+[^k269]: forrás: `négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés`
 
 *A közös forrásmegjelölések: ‹K1› = `scope=manual | forras=Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md | ts=2026-10-11` (156 sor) · ‹K2› = `scope=manual | forras=eszkozok/teljesseg_meres.py, naplok/F123_HAMART2_u1_blokkok.py | ts=2026-11-03` (76 sor) · ‹K3› = `scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5349 | n=6 | ts=2026-11-02T13:17Z | csatorna=cli` (5 sor) · ‹K4› = `scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1312 | n=6 | ts=2026-11-02T13:17Z | csatorna=cli` (3 sor)*
 
@@ -1211,7 +1205,9 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
-**A szócikk feje (nyelvi háttér).** ἐπικατάρατον (ἐπικαταράομαι átkot mondani valakire), csak bibliai és egyházi használatban: átkozott, utálatos, isteni bosszúnak kitett, Isten átka alatt álló: Ján 7:49 R G; **Gal 3:10** (5Móz 27:26); **Gal 3:13** (5Móz 21:23); (Bölcs 3:12 ( Bölcs 3:13 ); Bölcs 14:8>; 4Makk 2:19; a Septuaginta gyakran használja a אָרוּר szóra).
+**A szócikk feje (nyelvi háttér).** ἐπικατάρατον (ἐπικαταράομαι átkot mondani valakire), csak bibliai és egyházi használatban: átkozott, utálatos, isteni bosszúnak kitett, Isten átka alatt álló: Ján 7:49 R G; Gal 3:10 (5Móz 27:26); **Gal 3:13** (5Móz 21:23); (Bölcs 3:12 ( Bölcs 3:13 ); Bölcs 14:8>; 4Makk 2:19; a Septuaginta gyakran használja a אָרוּר szóra).
+
+*ⓘ Kutatói megjegyzés: a szótár nem idézi: Gal 3:14.*
 
 *A teljes szócikk: [szónézet: /szo/G1944](/szo/G1944) · forrás: `konkordancia/Thayer_teljes.tsv`*
 
@@ -2156,13 +2152,13 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 #### A görög szavak — ἐπικατάρατος, κατάρα, φθείρω · Thayer
 
-**Jelentősége:** a görög Ószövetség a Genezis átok-kimondásait az ἐπικατάρατος (epikataratosz) szóval fordítja, és a Thayer szerint ez a szó csak a bibliai és egyházi nyelvben él, jelentése: Isten átka alatt álló. Pál ezt a szót használja a Gal 3:10-ben és a Gal 3:13-ban is; a második helyen az 5Móz 21:23 idézetében a görög Ószövetség más szava helyett is ezt írja, így a törvény átka a Genezis szavával szól. A romlás szócsaládjából a διαφθείρω (diaftheiró) első jelentése a Thayer szerint: rosszabbá tenni, megrontani, és a szótár itt a Jel 11:18 „földjét” úgy érti, mint a földön lakó embereket. A φθορά (fthora) a romlás, enyészet szava, a Róm 8:21-ben a teremtett világ állapota.
+**Jelentősége:** a görög Ószövetség a Genezis átok-kimondásait az ἐπικατάρατος (epikataratosz) szóval fordítja, és a Thayer szerint ez a szó csak a bibliai és egyházi nyelvben él, jelentése: Isten átka alatt álló. Pál a Gal 3:13-ban az 5Móz 21:23 idézetében a görög Ószövetség ott álló szava helyett ezt a szót írja. A romlás szócsaládjából a διαφθείρω (diaftheiró) első jelentése a Thayer szerint: rosszabbá tenni, megrontani, és a szótár itt a Jel 11:18 „földjét” úgy érti, mint a földön lakó embereket. A φθορά (fthora) a romlás, enyészet szava, a Róm 8:21-ben a teremtett világ állapota.
 
 #### A Károli-fordítás szavai
 
 **Jelentősége:** a Károli a lánc szavait nem mindig ugyanazzal a magyar szóval adja vissza, ezért a magyar olvasó a láncot csak részben látja. Az átok igéje többnyire „átkozott” és „megátkoz”, de az 1Móz 8:21-ben, ahol a héberben más ige áll, szintén „átkozom”. A romlás igéje az 1Móz 6:11-12-ben „romlott”, „megrontotta”, az 1Móz 6:13 és 6:17 ítéletében viszont „elvesztem” és „elveszessek”, így a magyar szövegben elvész, hogy a bűn és az ítélet ugyanaz az ige. Az erőszak szava „erőszakoskodás”, „erőszakosság”, „ragadomány” (Mik 6:12), „zsaroló” (Zsolt 74:20) és „álnokság” (Ez 12:19). A fáradság szava „fájdalom” (1Móz 3:16), „fáradságos munka” (1Móz 3:17) és „terhes fáradozás” (1Móz 5:29).
 
-*Proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, n=49; karoli_szo) | forras=split('\t') | ts=2026-11-08 · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/teljesseg_meres.py) | szotari_alak=elront+elátkoz+erőszak+megromol+megront+megátkoz+romlás+romol+tövis+átkoz+átkozott+átok | n=412 | ts=2026-11-03T11:43Z*
+*Proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, n=48; karoli_szo) | forras=split('\t') | ts=2026-11-08 · scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/teljesseg_meres.py) | szotari_alak=elront+elátkoz+erőszak+megromol+megront+megátkoz+romlás+romol+tövis+átkoz+átkozott+átok | n=412 | ts=2026-11-03T11:43Z*
 
 ## 3. LXX-fordítói döntések
 
@@ -2222,8 +2218,8 @@ A motívum 48 ószövetségi helyéből 7 helyen a görög fordítás (Septuagin
 | Hós 4:1 | Hós 4:1 | — | — | kutatói azonosítás függőben | Septuaginta |
 | Hós 4:2 | Hós 4:2 | — | — | kutatói azonosítás függőben | Septuaginta |
 | Hós 4:3 | Hós 4:3 | תֶּאֱבַ֣ל (teeval) | — | kutatói azonosítás függőben | Septuaginta |
-| Gal 3:10 | — | — | — | nincs Septuaginta-könyv | — |
 | Gal 3:13 | — | — | — | nincs Septuaginta-könyv | — |
+| Gal 3:14 | — | — | — | nincs Septuaginta-könyv | — |
 
 *Összesítés: egyező=7, eltérő=25, LXX-minusz=0, kutatói azonosítás függőben=15, szamozas_elteres=1.*
 
@@ -2233,9 +2229,9 @@ A motívum 48 ószövetségi helyéből 7 helyen a görög fordítás (Septuagin
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-08 -->
 
-A motívum 49 helyéből 29 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 141. **Következtetés:** a helyek 59%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
+A motívum 48 helyéből 27 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 115. **Következtetés:** a helyek 56%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: HAMART-001]` motívum 49 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 29 igehely ad legalább egy találatot (141 találat összesen), 6 igehely versenkénti kereséssel nem vizsgálható. 1 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Jer 6:7.*
+*Ez a blokk a `[ID: HAMART-001]` motívum 48 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 27 igehely ad legalább egy találatot (115 találat összesen), 7 igehely versenkénti kereséssel nem vizsgálható. 1 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Jer 6:7.*
 
 #### 1Móz 3:14
 - TSK: Mik 7:17 (Votes: 17)
@@ -2376,36 +2372,6 @@ A motívum 49 helyéből 29 helyről mutat utalás más bibliai helyre a hagyom�
 #### Róm 8:21
 - Károli-KH: Luk 21:28
 
-#### Gal 3:10
-- TSK: 5Móz 27:26 (Votes: 70)
-- TSK: Róm 8:7 (Votes: 21)
-- TSK: Róm 3:19 (Votes: 19)
-- TSK: Róm 3:20 (Votes: 19)
-- TSK: Jak 2:9 (Votes: 16)
-- TSK: Jak 2:11 (Votes: 16)
-- TSK: Jer 11:3 (Votes: 16)
-- TSK: 5Móz 11:26 (Votes: 15)
-- TSK: 5Móz 11:28 (Votes: 15)
-- Károli-KH: 5Móz 27:26
-
-#### Gal 3:13
-- TSK: 1Pét 2:24 (Votes: 66)
-- TSK: 5Móz 21:23 (Votes: 58)
-- TSK: Zsid 9:12 (Votes: 40)
-- TSK: Zsid 9:15 (Votes: 38)
-- TSK: 1Pét 1:18 (Votes: 33)
-- TSK: 1Pét 1:21 (Votes: 33)
-- TSK: Jel 5:9 (Votes: 29)
-- TSK: Zsid 10:4 (Votes: 28)
-- TSK: Zsid 10:10 (Votes: 28)
-- TSK: Mt 26:28 (Votes: 26)
-- TSK: Gal 4:5 (Votes: 23)
-- TSK: Róm 3:24 (Votes: 22)
-- TSK: Róm 3:26 (Votes: 22)
-- TSK: Jel 1:5 (Votes: 17)
-- TSK: 1Ján 4:10 (Votes: 15)
-- Károli-KH: 2Kor 5:21
-
 #### Jel 11:18
 - Károli-KH: Jel 6:15-17
 
@@ -2436,13 +2402,13 @@ A motívum 49 helyéből 29 helyről mutat utalás más bibliai helyre a hagyom�
 - TSK: 5Móz 27:26 (Votes: 18)
 - TSK: Ez 48:35 (Votes: 17)
 
-*Versenkénti kereséssel nem vizsgálható: 1Móz 4:2-3, 1Móz 4:10-11, Ézs 24:5-6, Hós 4:1-3, Sof 1:2-3, Zsid 6:7-8.*
+*Versenkénti kereséssel nem vizsgálható: 1Móz 4:2-3, 1Móz 4:10-11, Ézs 24:5-6, Hós 4:1-3, Sof 1:2-3, Gal 3:13-14, Zsid 6:7-8.*
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kereszthivatkozasok -->
 
 ### Minősítés
 
-A 141 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 49-ból. **Következtetés:** a motívum helyeinek a 12%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
+A 115 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 48-ból. **Következtetés:** a motívum helyeinek a 12%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -2721,9 +2687,9 @@ A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utal�
 
 **Remez — az Újszövetség.** Pál szerint a teremtett világ „hiábavalóság alá vettetett”, és a romlás rabságától vár szabadulást (Róm 8:20-21): Pál a teremtett világot a romlás állapotában látja; hogy ez az 1Móz 3:17 átkának folytatása-e, azt a vitatott pontok szakasza tárgyalja. A Zsidókhoz írt levél példázata a Genezis görög szövegének szavait veszi át: a föld, amely „töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz” (Zsid 6:8). A Jelenések könyve kétszer is a romlás igéjével és a földdel ítél (Jel 11:18, 19:2), és az utolsó fejezetben kimondja, hogy „semmi elátkozott nem lesz többé” (Jel 22:3).
 
-**Drash — mit tanít.** A lap olvasata három tételben foglalható össze. Az első: a következmény nem áll meg az elkövetőnél. Az ember bűne miatt a föld átkozott (1Móz 3:17), Kain tette a földet teszi vádlóvá (1Móz 4:10-11), és a föld, amely megtelt erőszakkal, maga is az ítélet tárgya lesz (1Móz 6:13). A második: a következmény gyakran ugyanabban a formában tér vissza, amelyben a bűn megtörtént; aki a földet megrontja, azt Isten ugyanazzal az igével ítéli meg (1Móz 6:12-13, Jel 11:18). A harmadik: a lánc irányt válthat, de nem emberi erőfeszítésből. Isten kimondja, hogy a földet többé nem átkozza meg, pedig az ember szíve nem változott meg (1Móz 8:21); Ábrámban a föld nemzetségei áldást kapnak (1Móz 12:3); Pál szerint pedig Krisztus „átokká levén érettünk” vált meg a törvény átkától (Gal 3:13). Ez az értelmezés lépése: a szöveg nem állítja, hogy minden szenvedés egy konkrét bűn következménye, de azt igen, hogy a bűnnek mindig vannak az elkövetőn túli hatásai.
+**Drash — mit tanít.** A lap olvasata három tételben foglalható össze. Az első: a következmény nem áll meg az elkövetőnél. Az ember bűne miatt a föld átkozott (1Móz 3:17), Kain tette a földet teszi vádlóvá (1Móz 4:10-11), és a föld, amely megtelt erőszakkal, maga is az ítélet tárgya lesz (1Móz 6:13). A második: a következmény gyakran ugyanabban a formában tér vissza, amelyben a bűn megtörtént; aki a földet megrontja, azt Isten ugyanazzal az igével ítéli meg (1Móz 6:12-13, Jel 11:18). A harmadik: a lánc irányt válthat, de nem emberi erőfeszítésből. Isten kimondja, hogy a földet többé nem átkozza meg, pedig az ember szíve nem változott meg (1Móz 8:21); Ábrámban a föld nemzetségei áldást kapnak (1Móz 12:3), és a Galata-levél ezt az ígéretet veszi fel (Gal 3:14). Ez az értelmezés lépése: a szöveg nem állítja, hogy minden szenvedés egy konkrét bűn következménye, de azt igen, hogy a bűnnek mindig vannak az elkövetőn túli hatásai.
 
-**Sod — a szó, amely magára veszi az átkot.** A láncban az átok kimondott szó, nem személytelen erő: Isten mondja ki (1Móz 3:14, 3:17), Lámek a föld átkaként nevezi meg (1Móz 5:29), és a törvény a föld termésére is kimondja (5Móz 28:18). Ezért a lánc vége sem egy erő megszűnése, hanem egy másik szó: az ígéret, hogy Ábrámban áldást kapnak a föld nemzetségei (1Móz 12:3), és Pál mondata, hogy Krisztus magára vette azt az átkot, amely a törvény szerint a fán függőn van (Gal 3:13). A motívum legmélyebb rétege ezért az a remény, amelyet a kánon utolsó képe kimond: a föld és a teremtett világ nem marad az átok alatt (Róm 8:21, Jel 22:3).
+**Sod — az átok mint kimondott szó.** A láncban az átok kimondott szó, nem személytelen erő: Isten mondja ki (1Móz 3:14, 3:17), Lámek a föld átkaként nevezi meg (1Móz 5:29), és a törvény a föld termésére is kimondja (5Móz 28:18). Ezért a lánc vége sem egy erő megszűnése, hanem egy másik szó: az ígéret, hogy Ábrámban áldást kapnak a föld nemzetségei (1Móz 12:3). A motívum legmélyebb rétege ezért az a remény, amelyet a kánon utolsó képe kimond: a föld és a teremtett világ nem marad az átok alatt (Róm 8:21, Jel 22:3).
 
 ### ⚠️ Vitatott pontok
 
@@ -2747,7 +2713,7 @@ Mit jelent a motívum a hívő életében ma.<!-- olvasói -->
 
 **A megfordítás ígérete.** A lánc nem végzet: a próféták ígérete szerint eljön a nap, amikor az erőszak többé nem hallatszik a földön (Ézs 60:18), és a kánon utolsó képe szerint semmi elátkozott nem lesz többé (Jel 22:3).
 
-**Az átok vége Krisztusban.** Pál szerint Krisztus „átokká levén érettünk” (Gal 3:13). A hívő ezért nem az átok félelmében él, hanem abban a reménységben, hogy a teremtett világ is megszabadul a romlás rabságától (Róm 8:21). Ez a reménység felelősséget is ad a teremtett világ iránt, amely a bűn miatt nyög.
+**A szabadulás reménysége.** Pál szerint a teremtett világ arra vár, hogy megszabaduljon a romlás rabságától (Róm 8:21). Ez a reménység felelősséget is ad a teremtett világ iránt, amely a bűn miatt nyög.
 
 **Óvatosság az ítéletekkel.** A motívum nem ad jogot arra, hogy egy ember szenvedését vagy egy föld pusztulását egy konkrét bűnre vezessük vissza. A Biblia a lánc szerkezetét mutatja meg, de az egyes esetek megítélését Istenre hagyja.
 
@@ -2769,15 +2735,16 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 **Két szó, amely kikerült.** A gonoszság (ra') és egy másik átok-ige (qalal) korábban a lánc szavai között állt. A lap mostani kiadása ezeket nem tekinti a lánc szavainak, mert a motívum határát megadó hat héber szó között nem szerepelnek; az a 573, illetve 71 vers, amelyben csak ezek állnak, csoportosan kizárva szerepel. Az 1Móz 6:5 ezért tematikus helyként áll a listán, az 1Móz 8:21 pedig a föld szaván (adámá) át, amely ugyanabban a versben áll.
 
-**Melyik görög szöveg a mérce.** Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. A motívum hét újszövetségi helyén a motívum szava a Textus Receptusban és a kritikai kiadásokban ugyanott áll. Egy alakváltozat van: a Jel 22:3 szava a kritikai kiadásokban κατάθεμα (katathema), a Textus Receptus egyes kiadásaiban κατανάθεμα (katanathema); a jelentés mindkettőben: elátkozott dolog. A vizsgált, de kizárt helyek közül a Ján 7:49-ben a Textus Receptus az átkozott szavát (ἐπικατάρατος) hozza, a kritikai kiadás rokon alakot (ἐπάρατος); a hely a farizeusok átkozódása, ezért nem tartozik ide.
+**Melyik görög szöveg a mérce.** Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. A motívum hat újszövetségi helyén a motívum szava a Textus Receptusban és a kritikai kiadásokban ugyanott áll. Egy alakváltozat van: a Jel 22:3 szava a kritikai kiadásokban κατάθεμα (katathema), a Textus Receptus egyes kiadásaiban κατανάθεμα (katanathema); a jelentés mindkettőben: elátkozott dolog. A vizsgált, de kizárt helyek közül a Ján 7:49-ben a Textus Receptus az átkozott szavát (ἐπικατάρατος) hozza, a kritikai kiadás rokon alakot (ἐπάρατος); a hely a farizeusok átkozódása, ezért nem tartozik ide.
 
-*Proveniencia: scope=HAMART-001 ÚSZ E-helyek (10 sor, 11 szó; a mérés a határkör előtti állapoton futott, a mai 7 újszövetségi hely ennek része) | forras=TAGNT_kivonat.tsv (Kritikai kiadás oszlop), naplok/F123_HAMART3_tr_kritikai.py | ts=2026-11-05*
+*Proveniencia: scope=HAMART-001 ÚSZ E-helyek (10 sor, 11 szó; a mérés a határkör előtti állapoton futott, a mai 6 újszövetségi hely ennek része) | forras=TAGNT_kivonat.tsv (Kritikai kiadás oszlop), naplok/F123_HAMART3_tr_kritikai.py | ts=2026-11-05*
 
 ### Nyitott kérdések és séma-korlátok
 
 1. **A föld elvesztése.** A „föld színéről” fordulat a szövetségi földvesztés helyein is áll (1Kir 13:34, 14:15, 2Kir 17:23, Ámós 9:8). A lap ezeket most nem veszi fel, mert a fordulat közös, de a hely a láncra nem utal vissza. Nyitott kérdés, hogy a föld elvesztése mint az 1Móz 3:23 és 4:14 kiűzetésének ismétlése, Ádám és Izrael párhuzama, a motívum része-e, vagy egy szomszédos motívumé.
 2. **A kiáltó vér.** A Jób 16:18 és 31:38 a földet tanúként szólaltatja meg a kiontott vér mellett, az 1Móz 4:10 képével. A lap ezeket egy önálló, még fel nem dolgozott motívumhoz, a kiáltó vér motívumához sorolja.
 3. **A „vég” formulája.** Az 1Móz 6:13 „Minden testnek vége elérkezett” mondata Ezékielnél és Ámósnál is visszatér (Ez 7:2, 7:6, Ámós 8:2), de más kulcsszóval. Nyitott, hogy ez önálló motívum-e.
+4. **A törvény átka és a pogányok.** A Galata-levél címzettjei nem zsidók. A levél három olvasatot enged: az átok feltételes (aki körülmetélkedik, „köteles az egész törvényt megtartani”, Gal 5:3); a „minket” elsősorban Izraelt jelenti, és az áldás ezen át jut a pogányokhoz (Gal 3:13-14); a törvény alatti és a bálványok alatti élet ugyanannak a szolgaságnak két alakja („a világ elemei alá voltunk vettetve”, Gal 4:3). A lap nem dönt közöttük.
 
 ## 8. Irodalom és idézés
 

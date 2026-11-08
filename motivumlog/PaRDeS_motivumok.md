@@ -24,7 +24,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
-- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 49 igehely-sor — publikálható (v1, 2026.09.11)
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 48 igehely-sor — publikálható (v1, 2026.09.11)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -491,7 +491,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 252 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 251 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -526,7 +526,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | ApCsel | 6 | ApCsel 2:21 [ISTENTISZT-001], ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
 | Róm | 3 | Róm 8:21 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:13 [ISTENTISZT-001] |
 | 1Kor | 7 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:44 [ANTROP-001], 1Kor 15:45 [ANTROP-001], 1Kor 15:46 [ANTROP-001], 1Kor 15:55 [ALVIL-001] |
-| Gal | 2 | Gal 3:10 [HAMART-001], Gal 3:13 [HAMART-001] |
+| Gal | 1 | Gal 3:13-14 [HAMART-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
 | Zsid | 6 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:7-8 [HAMART-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
 | 2Pét | 1 | 2Pét 2:4-5 [MENNY-001] |
