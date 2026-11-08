@@ -197,6 +197,7 @@ A végső futás (a javítókör 2/2 minden adat- és kódjavítása után, a je
 
 ```
 $ python eszkozok/ellenoriz.py
+## Összesítő
 RENDBEN: 25 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 10          (kilépési kód 0; az alapállapot a main-en azonos)
 
 $ python eszkozok/teszt_visszhang.py
@@ -225,10 +226,10 @@ OK                                                         (kilépési kód 0)
 
 $ python eszkozok/ellenorzes/futtat.py --valtozott <a main-hez képesti diff fájljai> --diff-alap origin/main --diff-fej HEAD
 E32: 0 találat (a három DT-F176a hiba megszűnt)
-E26: HIBA 1 -- naplok/ELLENOR_F176_2.md:21 (a független ellenőr jelentése említi a „DT630” számot; a jelentés változatlan marad, nem szerkeszthető)
+E26: 0 HIBA a 3. javítókör commitja után -- a naplok/ELLENOR_F176_2.md:21 egy végleges DT-számot idéz példaként (a független ellenőr jelentése, nem szerkeszthető); a CI saját kivétele kezeli: az F176.23 commit-üzenetében a `SZÁMKIOSZTÁS-SZÁNDÉKOS:` sor (szabalyok.py E26). A jelentés maga végleges számot nem idéz (ELLENOR_F176_3 1.)
 E30: 5 FIGYELMEZTETÉS (köztük 301456c7 „vesz” = DT-F176f, és ennek a körnek két commit-üzenete: 097a932b, 6a2413e8; a kimenet csak hármat sorol fel)
 E25: 3, E27: 42, E34: 45 (mind régi, a main-en is meglévő jelentés-szintű találat); a többi ellenőrzés 0
-kilépési kód 1                                             (az E26 HIBA miatt)
+kilépési kód: l. a 3. javítókör friss futását alább
 ```
 
 Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyilt_mag.py` 59 teszt OK; `teszt_ellenoriz_30/31/32/33/35.py` OK.
