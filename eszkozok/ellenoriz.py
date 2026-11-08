@@ -732,6 +732,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         motivum_resek.setdefault(r['id'], set()).add(r['res'])
     for motivum_id, resek in motivum_resek.items():
         for res in LG.RES_SORREND:
+            if res == 'tanitoi' and res not in resek:
+                continue   # DT-F178b: a tanítói rés lépcsős kivezetése (motívumonként, a teljes folyamattal)
             if res not in resek:
                 hibas.append('%s / %s -- hiányzó res_forras.tsv sor' % (motivum_id, res))
         for res in sorted(resek - set(LG.RES_SORREND)):

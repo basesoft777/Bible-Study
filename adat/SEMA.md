@@ -739,7 +739,8 @@ A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
 
 ### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
 
-Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` kivezetés alatt, DT-F178b: a
+motívum sora a motívum teljes folyamatának lapgenerálásával kerül ki; sor nélkül a rés nem renderel)
 (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
 `alkalmazas`, `tanitoi`, `modszertan`) motívumonkénti és résenkénti forrása — a
 render-elv szerint a rés törzse nem a lexikonoldalon él, hanem a tanulmányban

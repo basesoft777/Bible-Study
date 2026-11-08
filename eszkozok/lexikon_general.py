@@ -4769,6 +4769,16 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
 # tabla-sor HIBAKOD, nem helyorzo (R1.3).
 # ---------------------------------------------------------------------------
 
+# DT-F178b (a felhasználó: „Kivezetjük”; lépcsős kivezetés, orkesztrátori döntés, 2026-11-08): a `tanitoi` rés
+# sora motívumonként, a motívum teljes folyamatának lapgenerálásával kerül ki a `res_forras.tsv`-ből (MUNKAMENET C5).
+# Sor nélkül a rés kivezetett: a régi címhatár a váz literál fejlécével olvasható, a rés nem renderel.
+TANITOI_KIVEZETVE_FEJLEC = '### Tanítói egyezés'
+
+
+def res_kivezetett(motivum_id, res):
+    return res == 'tanitoi' and (motivum_id, res) not in res_forras_sorok()
+
+
 RES_SORREND = ('kivonat', '2b', 'miert_fontos', 'minosites', 'alatamasztas',
                'ertelmezes', 'alkalmazas', 'tanitoi', 'modszertan')
 
@@ -5243,6 +5253,8 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
     uresek = []
     for res in RES_SORREND:
         sor = sorok.get((m['id'], res))
+        if sor is None and res_kivezetett(m['id'], res):
+            continue   # DT-F178b: a kivezetett tanítói rés nem renderel
         if sor is None:
             raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
         if sor['forras'] == 'lap':
@@ -5255,6 +5267,8 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
                 i, talalt = _boundary_index(fajl_szoveg, ertek, search_from, None)
             else:
                 masik_sor = sorok.get((m['id'], ertek))
+                if masik_sor is None and res_kivezetett(m['id'], ertek):
+                    masik_sor = {'fejlec': TANITOI_KIVEZETVE_FEJLEC}
                 if masik_sor is None:
                     raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
                 i, talalt = _boundary_index(fajl_szoveg, masik_sor['fejlec'], search_from, ertek)
@@ -5400,6 +5414,8 @@ def res_torzs_lapbol(fajl_szoveg, m, res):
             needle = ertek
         else:
             sor = sorok.get((m['id'], ertek))
+            if sor is None and res_kivezetett(m['id'], ertek):
+                sor = {'fejlec': TANITOI_KIVEZETVE_FEJLEC}
             if sor is None:
                 raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
             needle = sor['fejlec']
@@ -5444,6 +5460,8 @@ def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
     resek = {}
     for res in RES_SORREND:
         sor = sorok.get((m['id'], res))
+        if sor is None and res_kivezetett(m['id'], res):
+            continue   # DT-F178b
         if sor is None:
             raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
         if sor['forras'] == 'lap':

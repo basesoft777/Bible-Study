@@ -5,10 +5,10 @@ kod: LEXIKON_AG_LEZARAS
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/lexikon-ag-lezaras
 ad: egy generátor-körben minden lexikonlap az új lapszerkezettel (Döntési út, olvasható döntések, folyamatos számozás 1–12, áttekintő szótári tábla a 4. szakasz elején, visszhang-blokk lánc-szavanként az azonosság szerint, kinyerő adattáblából, kiejtéssel és BDB rokon nyelvi háttérrel, szerkesztői döntés, tanítói rész nélkül), a nyílt mag olvasói átírással és [A LEXIKON CÍME] helyőrzővel; a HAMART-001 szabályai a 6-os és 9-es sablonban, új U3-prompt sablon, MUNKAMENET C-h/C-w; HIBA-szintű kapuk (határ-frissesség, HAMART-regresszió, szerkesztői szóhasználat, Nave); a felhasználó egyszeri vizuális átnézése a kör után
-kovetkezo: "Te: DT-F178b végrehajtásának módja (⛔: a teljes kivezetés a régi lapokat és az E28-at érintené; javaslat: lépcsős kivezetés); utána a HAMART-001 orkesztrátori átnézése a javítókör után"
+kovetkezo: "független ellenőrzés (orkesztrátor)"
 munka: folyamat
 olvas: [MUNKAMENET.md, CLAUDE.md, adat/SEMA.md, adat/elofordulasok.tsv, adat/res_forras.tsv, naplok/HATAR_HAMART-001.md, lexikon/HAMART-001_TUDOMANYOS.md, motivumok/HAMART-001.md, konkordancia/BDB_rokon_irasok.tsv, konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/VISSZHANG_README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_OS/genesis.tsv, F176_VISSZHANG_ADAT_BRIEF.md, F123_MIGRACIO2_BRIEF.md]
 ir: [eszkozok/lexikon_general.py, eszkozok/szerep_nave.py, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/muhely_allapot.py, eszkozok/teszt_olvasoi_kapu.py, eszkozok/teszt_szerep_nave.py, eszkozok/teszt_nyilt_mag.py, eszkozok/teszt_muhely_allapot.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, "lexikon/*.md", "nyilt_mag/*", naplok/F178_jelentes.md, adat/visszhang_megfelelok.tsv, adat/SEMA.md, eszkozok/visszhang/megfelelo_kinyer.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes.py]
