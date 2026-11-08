@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-08",
-   "commit": "22922aba"
+   "commit": "de5470d7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -580,7 +580,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: ⛔ az ANTROP-001 1. kiadása kész (F123.ANTROP2.27, PR #608, a merge a felhasználóé). Következő: HAMART-001 — az U1 a hamart-u1 sessionben lefutott (PR #609); az U2-től új Opus-session, a #608 merge-e után (egyszerre egy nyitott PR). A Fable-kör a 2. kiadás bemenete, csak jóváhagyással.",
+   "most": "Te: [elteres_kor 2/2] HAMART-001 (#639): az ELLENOR_F123_HAMART3_javitokor3 mindkét tétele rendezve (2. mechanikus: F123.HAMART3.43; 1. tartalmi: DT-F123he a felhasználó szavával); új kör nincs (korlát). Következik: a renderelt lap átnézése (orkesztrátor, majd a felhasználó), merge a felhasználótól.",
    "fugg": "#11 (kész), #12 (kész), #102*, #103*, #125*, #126 (kész), #127 (kész), #151*, #156*, #157*, #179*",
    "tervezett": false,
    "reszletes": "",
@@ -5637,6 +5637,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 233
+  "kesz_db": 238
  }
 }
