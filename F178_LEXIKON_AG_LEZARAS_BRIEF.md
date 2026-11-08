@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/lexikon-ag-lezaras
+pr: https://github.com/basesoft777/Bible-Study/pull/655
 ad: a HAMART-001 lapja az új lapszerkezettel (Döntési út, olvasható döntések, folyamatos számozás 1–12, áttekintő szótári tábla a 4. szakasz elején, visszhang-blokk lánc-szavanként az azonosság szerint, a lánc a motívumadatból, kinyerő adattáblából, kiejtéssel és BDB rokon nyelvi háttérrel, szerkesztői döntés, tanítói rész nélkül), a generátor, a sablonok és a kapuk minden új vagy lezárandó lapra készen; a nyílt mag olvasói átírással és [A LEXIKON CÍME] helyőrzővel; a HAMART-001 szabályai a 6-os és 9-es sablonban, új U3-prompt sablon, MUNKAMENET C-h/C-w/C-vh; HIBA-szintű kapuk (határ-frissesség, HAMART-regresszió, szerkesztői szóhasználat, Nave, VISSZHANG); a többi lap motívumonként, a teljes folyamaton át, külön feladatokban (egyeztetett eltérés 4)
 kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F178_3 1. mechanikus, 2. mechanikus, 3. mechanikus, 4. mechanikus, 5. mechanikus — a korlát elérve; a maradék N-F178a, a nyitott adatpontok N-F178b (a következő HAMART-menet); draft PR, a merge a felhasználóé"
 munka: folyamat
