@@ -91,7 +91,7 @@ class Rontott(unittest.TestCase):
 
     def test_v5_kiemelt_alapvonal_nelkul(self):
         self.assertIn('V5', szabalyok(tabla(sor('**A Targum a láncban mindkét héber szót egy szóval adja vissza.**'))))
-        self.assertNotIn('V5', szabalyok(tabla(sor('**LXX: a láncon kívül csak a versek 20%-ában (10 vers) ez áll: a '
+        self.assertNotIn('V5', szabalyok(tabla(sor('**LXX: a láncon kívüli 50 versből csak 10 versben (20%) áll ez: a '
                                                    'láncban más szót választ, mint máshol.**'))))
 
     def test_v6_ovatos_mondat_ismetlese_a_cellakban(self):
@@ -103,11 +103,20 @@ class Rontott(unittest.TestCase):
                                                    'nem mérhető.'))))
 
     def test_v7_alapvonal_sav(self):
-        rossz = tabla(sor('LXX: a láncon kívül a versek 46%-ában (50 vers) ez áll.'))
-        jo = tabla(sor('LXX: a láncon kívül a versek 46%-ában (50 vers) ez áll: a szó gyakori, de nem kizárólagos '
+        rossz = tabla(sor('LXX: a láncon kívüli 50 versből 23 versben (46%) áll ez.'))
+        jo = tabla(sor('LXX: a láncon kívüli 50 versből 23 versben (46%) áll ez: a szó gyakori, de nem kizárólagos '
                        'fordítása.'))
         self.assertIn('V7', szabalyok(rossz))
         self.assertNotIn('V7', szabalyok(jo))
+
+    def test_v7_nevezo_nem_talalat(self):
+        """ELLENOR_F178 5.: a „(97 vers)” a nevező volt, az olvasó találatnak értette."""
+        regi = tabla(sor('LXX: a láncon kívül a versek 46%-ában (50 vers) ez áll: a szó gyakori, de nem kizárólagos '
+                         'fordítása.'))
+        self.assertIn('V7', szabalyok(regi))
+        rossz_szam = tabla(sor('LXX: a láncon kívüli 50 versből 30 versben (46%) áll ez: a szó gyakori, de nem '
+                               'kizárólagos fordítása.'))
+        self.assertIn('V7', szabalyok(rossz_szam))
 
 
 class GepiSzabalyok(unittest.TestCase):

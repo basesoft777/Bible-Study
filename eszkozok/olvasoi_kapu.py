@@ -1061,6 +1061,17 @@ def ell_visszhang(sorok):
                 if kell not in kor:
                     ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 az alapvonal (%d%%) mondata nem a sávja '
                                                                           'szerinti („%s”)' % (pct, kell)))
+                # ELLENOR_F178 5.: a nevező nem állhat találatszámként („a versek 98%-ában (97 vers)”); a helyes alak
+                # „a láncon kívüli N versből x versben (y%)”, és a három szám egymással egyezik
+                if re.search(r'%-[aá]ban \(\d+ vers\)', kor):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 a zárójeles versszám a nevező, az olvasó '
+                                                                          'találatnak érti: helyesen „a láncon kívüli N '
+                                                                          'versből x versben (y%)”'))
+                for nn, xx, yy in re.findall(r'kívüli (\d+) versből (?:csak )?(\d+) versben \((\d+)%\)', kor):
+                    nn, xx, yy = int(nn), int(xx), int(yy)
+                    if not nn or xx > nn or int(round(100.0 * xx / nn)) != yy:
+                        ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 az alapvonal számai nem egyeznek: '
+                                                                              '%d versből %d (%d%%)' % (nn, xx, yy)))
     for mondat, ns in mondatok.items():
         if len(ns) >= 3:
             ki.append(talalat('VISSZHANG', BUKAS, ns[0], mondat[:120], 'V6 sablonmondat-ismétlés: %d sorban' % len(ns)))

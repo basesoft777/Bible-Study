@@ -6524,16 +6524,20 @@ def _lanc_szo_cim(strong, versek=None):
 
 
 def _alapvonal_mondat(alap):
-    """Az alapvonal sávja szerinti mondatrész (DT-F178d): ≥ 80% szokásos, 40–80% gyakori, < 40% választott."""
+    """Az alapvonal sávja szerinti mondatrész (DT-F178d): ≥ 80% szokásos, 40–80% gyakori, < 40% választott. A mondat a
+    nevezőt és a találatot külön mondja (ELLENOR_F178 5.): „a láncon kívüli N versből x versben (y%)” — a régi
+    „a versek y%-ában (N vers)” alak a nevezőt találatszámnak mutatta."""
     pct = int(round(alap[0] * 100))
+    N = alap[1]
+    x = int(round(alap[0] * N))
     if alap[0] >= ALAPVONAL_SZOKASOS:
-        return 'szokas', 'a láncon kívül is a versek %d%%-ában (%d vers) ez áll: a szó szokásos fordítása, a lánc ' \
-                         'egysége megmarad, de ez önmagában nem lelet' % (pct, alap[1])
+        return 'szokas', 'a láncon kívüli %d versből %d versben (%d%%) is ez áll: a szó szokásos fordítása, a lánc ' \
+                         'egysége megmarad, de ez önmagában nem lelet' % (N, x, pct)
     if alap[0] >= ALAPVONAL_RITKA:
-        return 'gyakori', 'a láncon kívül a versek %d%%-ában (%d vers) ez áll: a szó gyakori, de nem kizárólagos ' \
-                          'fordítása' % (pct, alap[1])
-    return 'ritka', 'a láncon kívül csak a versek %d%%-ában (%d vers) ez áll: a láncban más szót választ, mint ' \
-                    'máshol' % (pct, alap[1])
+        return 'gyakori', 'a láncon kívüli %d versből %d versben (%d%%) áll ez: a szó gyakori, de nem kizárólagos ' \
+                          'fordítása' % (N, x, pct)
+    return 'ritka', 'a láncon kívüli %d versből csak %d versben (%d%%) áll ez: a láncban más szót választ, mint ' \
+                    'máshol' % (N, x, pct)
 
 
 def _visszhang_mondat_lxx(eredm):
