@@ -228,6 +228,24 @@ class Tablak(unittest.TestCase):
         self.assertTrue(any('WH' in d['jegyzet'] for d in sorok))
         self.assertEqual(len({d['forras_vers'].rsplit(' ', 1)[0] for d in sorok}), 27)
 
+    def test_tagnt_pontos_utotag(self):
+        # a fejezet.vers alaku utotag (Byz«x14.24) is levagodik a nevbol: a kiadas nem hianyzik, hanem mozgatott
+        import re as _re
+        fej, sorok = self.sorok('TAGNT_valtozatok.tsv')
+        n = 0
+        for d in sorok:
+            for e in d['kiadasok'].split('+'):
+                m = _re.match(r'^(.*?)((?:[»«]\d+(?:\.\d+)?)+)$', e)
+                if not m:
+                    continue
+                n += 1
+                self.assertNotIn(m.group(1), d['hianyzik_ebbol'].split(), d['igehely'])
+                self.assertIn(e, d['mozgatas'].split(), d['igehely'])
+        self.assertGreaterEqual(n, 53)
+        r = [d for d in sorok if '«14.24' in d['kiadasok']]
+        self.assertEqual(len(r), 20)
+        self.assertTrue(all(d['hianyzik_ebbol'] == 'SBL' and d['mozgatas'] == 'Byz«14.24' for d in r))
+
     def test_tagnt_nincs_thgnt_szoveg(self):
         fej, sorok = self.sorok('TAGNT_valtozatok.tsv')
         self.assertNotIn('Spelling variants', ' '.join(fej))

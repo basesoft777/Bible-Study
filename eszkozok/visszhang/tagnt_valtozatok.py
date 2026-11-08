@@ -50,7 +50,7 @@ def fut(be, commit, ki):
             szerk = c[5].strip()
             tip = m.group(8)
             lista = [e for e in szerk.split('+') if e]
-            nevek = [re.sub(r'(?:[»«]\d+)+$', '', e) for e in lista]   # többszörös utótag (Tyn»4»4) teljes levágása
+            nevek = [re.sub(r'(?:[»«]\d+(?:\.\d+)?)+$', '', e) for e in lista]   # többszörös és fejezet.vers utótag (Tyn»4»4, Byz«14.24) teljes levágása
             if tip == 'NKO' and szerk == '+'.join(TELJES):
                 continue            # teljes halmaz, NKO: nincs valtozat-vonatkozas
             step = m.group(1)
@@ -67,7 +67,7 @@ def fut(be, commit, ki):
                 gorog = ''
                 tyn_csak += 1
             hianyzik = [e for e in TELJES if e not in nevek]
-            mozg = ' '.join(e for e in lista if re.search(r'[»«]\d+$', e))
+            mozg = ' '.join(e for e in lista if re.search(r'[»«]\d+(?:\.\d+)?$', e))
             strong = re.sub(r'_[A-Za-z]$', '', c[11].strip())
             sorok.append([(sorrend.index(step), fej, v, int(m.group(7)), len(sorok)), kulcs, ref, szamozas, '#' + m.group(7), tip,
                           strong, gorog, szerk, ' '.join(hianyzik), mozg,
