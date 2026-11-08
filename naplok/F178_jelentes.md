@@ -153,3 +153,26 @@ A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla
 **E5 (törölt címsor):** a HAMART-001 régi „1/b”, „5/b”, „6/b” címsorai az F178.4 átszámozásával (a felhasználó: „Számozzuk is át / ne legyen b/ alszekció”) szándékosan szűntek meg; a jelölés a javítókör záró commitjában áll.
 
 **Kapuk (a javítókör végén):** olvasói kapu `## HAMART-001: 0 BUKÁS, 25 FIGYELMEZTETÉS`; `teszt_futtat.py --gyors`: minden fájl ZÖLD, kivéve a korábban is bukó `teszt_bdb_vers_jelentes.py`-t (bemeneti hash); `feladatok.py ellenoriz`: `197 brief, 0 hiba, 0 figyelmeztetés`; CI: E28 0, E35 0, E16 HIBA 1 (a PR-cím nem ismert).
+
+## Javítókör 2/2 (`naplok/ELLENOR_F178_2.md`, 2026-11-08)
+
+*Végrehajtó és átnéző: claude-opus-5-5 (kért: opus). Alap: e6b303a9 (az ELLENOR_F178_2 rögzítése). A felhasználó jóváhagyása: „Mehet” (2026-11-08).*
+
+| ELLENOR_F178_2 | Tétel | Állapot |
+|---|---|---|
+| 1. a láncvers meghatározása; a gerinc az adatból | F178.26 | kész: a láncvers a motívum Pesat-gerincének azon verse, ahol a kulcsszó a héberben áll (a motívum saját verse). A gerinc (`lanc_mag`): a negatív kritérium megnevezése, különben a Pesat-sorok (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében, Pesat-sor nélkül nincs lánc; a „teljes 1Mózes” tartalék megszűnt. A HAMART-001 4.11 táblája nem változott; a bevezető „a lánc 6 kulcsszava … (az 1.2 teljes szólistája ennél bővebb)”, „Peshat-magjának (1Móz 3–9)”. Teszt: Ez 7–12 gerincű szintetikus motívum. SEMA 2.53, MUNKAMENET C-vh, 6-os sablon 0. pont, DT-F178g |
+| 2. az átnézés soronkénti ítélete | F178.27 | kész: 85 sor érdemi indokkal, 82 `jo`, 3 `elvet` (Vulgata 4:12 eam; H6087 újhéber II. szócikk; H7843 Tell el-Amarna jelentés). A bdb-sor átnézési kulcsa a nyelvvel és a jelentéssel (eddig a H6087 4 és a H2554 2 alak nélküli sora egy kulcson állt). Kapu: `atnezes_ellenoriz` (indok nélküli sor, kettőzött kulcs, sablonmondat), teszttel. „Második kéz (nem az ellenőr; lehet a kinyerő)” a MUNKAMENET C-vh-ban, a SEMA 2.53-ban és a kódban |
+| 3. H2403 lemmaalak | F178.28 | kész a 4.11-ben és a BDB-háttérben: `strong_valtozat_versben` (TAHOT-szótő ↔ TBESH-változat), 1Móz 4:7 → H2403b חַטָּאת (chattát), teszttel; 6-os sablon 1. pont |
+
+**Eltérés az utasítástól (1. tétel, jelezve):** a Pesat-sorok fejezet-tartománya a HAMART-001-en 1Móz 3–7 lenne (a 8:21, 9:11, 9:15 és az 5:29 sora `Remez`), vagyis önmagában megváltoztatná a 4.11-et (sáchat 6 → 4 láncvers, a 8:21 kiesne). Az adatban nincs olyan mező, amely a 3–9 gerincet közvetlenül jelölné. Ezért a sorrend: a negatív kritérium megnevezése (motívumadat, `motivumok.tsv`) előbb, a Pesat-sorok tartománya csak megnevezés híján. A lapon a „gerinc” szó nem állhat (olvasói kapu, BELSO), ezért a lap „Peshat-mag”-ot és „a lánc 6 kulcsszava”-t mond; a „gerinc-elem” és a „Pesat-gerinc” csak a belső dokumentumokban áll.
+
+**A tábla változása (E17/DT3):** `adat/visszhang_megfelelok.tsv` 127 sor, Δ 0; 3 sor `ellenorzes`-e kiürült (vulgata 1: H0127 1Móz 4:12; bdb 2: H6087 újhéber „formába nyújt”, H7843 Tell el-Amarna). A bontási napló számai ennyivel módosulnak: vulgata ellenőrzött −1, bdb ellenőrzött 21 → 19. A HAMART-001 lapja: a 4.11 adámá-sorában „4:12 nincs ellenőrzött adat” (eddig „*is*”), a háttér-táblából a Tell el-Amarna sor kikerült, a chattát címe „חַטָּאת (chattát)”.
+
+**Nyitott (a következő körre):**
+- Vulgata 1Móz 4:12: a helyes rögzítés alak nélküli sor („nincs megfelelő szó”, mint a 4:2), ez új kinyerés és új átnézés.
+- H7843 Tell el-Amarna: a jelentés javítása („leborul, elterül (? országról)”), utána újra átnézendő.
+- Targum 8:21 betoldás: a sor igaz, de a betoldott szó a חוֹבָא, nem a 4:7 חֶטְאָא-ja; a lap „a lánc szavát (bűn)” mondata a jelentésbeli, nem a szó szerinti egyezést mondja ki — a mondat pontosítása generátor-kérdés.
+- H2403 lemmaalak a lap többi blokkjában (1.2 szólista, 4. szótári háttér fejléce és áttekintő táblája, SECE, UBS, 5.): az általános `lemma_kiejtes` az alapváltozatot (H2403a חַטָּאָה) adja; a javítás a régi lapokat is érintené (E28), ezért a hatókörön kívül maradt.
+- A korábbi kör nyitott pontjai (a LXX négy nem egyértelmű sora, a chattát rokon nyelvi háttere, a 3:19 γῆ) változatlanul nyitottak.
+
+**Kapuk (a javítókör 2/2 végén):** olvasói kapu `## HAMART-001: 0 BUKÁS, 25 FIGYELMEZTETÉS`; `teszt_futtat.py --gyors`: minden fájl zöld, kivéve a korábban is bukó `teszt_bdb_vers_jelentes.py`-t (`test_bajtra_azonos`, bemeneti hash: `adat/bdb_forras_javitas.tsv`, e kör nem érintette); `feladatok.py ellenoriz`: `197 brief, 0 hiba, 0 figyelmeztetés`; `ellenoriz.py`: `RENDBEN: 27 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 14`; `megfelelo_kinyer.py ellenoriz`: `127 sor, 0 hiba`; CI (`--diff-alap 9af7cecf --diff-fej HEAD`, commit-üzenet nélkül): E28 0 („5 migrált nézet”), E35 0, E5 HIBA 5 (a törölt „1/b”, „5/b”, „6/b” címsorok; a `TÖRLÉS-SZÁNDÉKOS:` jelölés a 7aaafed4 üzenetében áll, a PR-Action átadja), E16 HIBA 1 (üres PR-cím).
