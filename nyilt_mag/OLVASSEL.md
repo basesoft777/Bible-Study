@@ -39,15 +39,15 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 
 | Fájl | Sor |
 |---|---|
-| `beepitesi_dontesek.tsv` | 257 |
-| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 237 |
+| `beepitesi_dontesek.tsv` | 254 |
+| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 8 |
-| `elofordulasok.tsv` | 255 |
+| `elofordulasok.tsv` | 252 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizaras_csoportok.tsv` | 3115 |
-| `kizarasok.tsv` | 418 |
-| `kodkonyv.tsv` | 351 |
+| `kizaras_csoportok.tsv` | 3984 |
+| `kizarasok.tsv` | 538 |
+| `kodkonyv.tsv` | 358 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -81,7 +81,7 @@ A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások
 
 ## Ami nincs a csomagban
 
-- A `nyitva` állapotú (még el nem döntött) jelöltek: 129 db.
+- A `nyitva` állapotú (még el nem döntött) jelöltek: 20 db.
 - A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a tanulmányok és a lexikonlapok.
 - A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.
 
