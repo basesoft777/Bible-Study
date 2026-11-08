@@ -19,7 +19,7 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 | Targum_PD | konkordancia/Targum_PD.tsv | 15142 | 9b29e229198550eb8ea87df1c190a90c0c7e0622a400f65f040746fac59a3646 | közkincs (Sefaria `license`: Public Domain, verziónként) |
 | Vulgata_Clementina | konkordancia/Vulgata_Clementina.tsv | 31434 | 738c41858989110dd7a8ce58d54be46a23f7ca8a649d2790e699c4acf7c5eeab | közkincs (eBible: Public Domain) |
 | SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | 127281714c02e8e23a9dc5d65dcee882de05904a6290a302ec8a5576f59f2e5d | CC BY 4.0 |
-| TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | 62ed6404b6b87cb74ea02258c29cdec38cf018697bca4e2476182a3d717adf73 | CC BY 4.0 |
+| TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | a1eec149b07d82928b19f9ac13f463209605f227da03bce5a99c52cfa4dcb2cc | CC BY 4.0 |
 | BDB_rokon_irasok | konkordancia/BDB_rokon_irasok.tsv | sor | gyorsítótár, nő | közkincs (BDB, 1906; DT-F33g) |
 
 Közös szabály mind az öt táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar

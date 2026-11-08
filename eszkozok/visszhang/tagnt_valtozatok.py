@@ -50,7 +50,7 @@ def fut(be, commit, ki):
             szerk = c[5].strip()
             tip = m.group(8)
             lista = [e for e in szerk.split('+') if e]
-            nevek = [re.sub(r'[»«]\d+$', '', e) for e in lista]
+            nevek = [re.sub(r'(?:[»«]\d+)+$', '', e) for e in lista]   # többszörös utótag (Tyn»4»4) teljes levágása
             if tip == 'NKO' and szerk == '+'.join(TELJES):
                 continue            # teljes halmaz, NKO: nincs valtozat-vonatkozas
             step = m.group(1)
