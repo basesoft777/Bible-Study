@@ -17,7 +17,7 @@ nem_fugg: [125, 151]
 
 # F178_LEXIKON_AG_LEZARAS_BRIEF.md — A lexikon ág lezárása
 
-*FELADATOK #178 · Modell: opus · v2 · 2026.11.08 (v2: F178.5 visszhang-blokk formája, kinyerő tábla, kiejtés, BDB-háttér; DT-F178a)*
+*FELADATOK #178 · Modell: opus · v2 · 2026.11.08 (v2: F178.5 visszhang-blokk formája, kinyerő tábla, kiejtés, BDB-háttér; DT639)*
 
 *Befogadva a felhasználó jóváhagyásával (2026-11-08). Minden tétel jóváhagyott; a felhasználó szavai a tételeknél idézve. Előzmény: a HAMART-001 (#123, PR #639) határ- és prózajavítása, a lapmakett (artifact `BWNbfmsofYpnfT9v87of1G`), a #176 visszhang-adatréteg. A sorrend elve: a lapszerkezet **egy** generátor-körben változik, minden lapon, és a felhasználó **egyszer** nézi át, a kör után — a kétszeri szerkezetváltás kétszeres újragenerálás és kétszeres átnézés volna.*
 
@@ -74,7 +74,7 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `opus`). A `fugg` feladatok: a 
 - A Károli-vers a nézetoldali versmegfeleltetéssel (DT630).
 - A tanúréteg nélkül.
 
-**A blokk formája (DT-F178a; a felhasználó jóváhagyásával, 2026-11-08, „Igen, mehet”; minta: artifact `CrmxRwdWFrqgG5aBJvkGWo`, 3. változat).** A felhasználó az adatból összerakott vers-szöveglistát elutasította („ez a makett nem jó semmire … csak igéket sorol”), és kimondta: „az azonosság a visszhang, nem az eltérés”. Ezért:
+**A blokk formája (DT639; a felhasználó jóváhagyásával, 2026-11-08, „Igen, mehet”; minta: artifact `CrmxRwdWFrqgG5aBJvkGWo`, 3. változat).** A felhasználó az adatból összerakott vers-szöveglistát elutasította („ez a makett nem jó semmire … csak igéket sorol”), és kimondta: „az azonosság a visszhang, nem az eltérés”. Ezért:
 - **A visszhang az azonosság:** a kérdés, hogy az ókori fordító ugyanazt a láncot hallja-e. A blokk **lánc-szavanként egy sor**, nem versenként; oszlopok: lánc-szó (a láncversekkel) | Targum | Vulgata | LXX | Mit mutat. A cella a fordítás szava, kiejtése és az `n/N` arány (hány láncversben ugyanaz a szó). `n = N`: kiemelt cella (visszhang); `n < N`: egy rövid sor mondja meg, hol szakad meg. A teljes versszöveg nem kerül a blokkba.
 - **Betoldás-sor:** ha egy fordítás a lánc szavát olyan láncversbe teszi, ahol a héberben nincs (HAMART: a Targum 1Móz 8:21 „az ember bűnei miatt”), külön sort kap.
 - **„Mit mutat”:** a lelettel kezd (`n/N`, a szavak kiejtéssel), és szabály szerinti következtetéssel zár (sablon 6, „Kiejtés és olvasói szöveg”); a kinyerő tábla `megjegyzes` mezője legfeljebb egy mondattal egészíti ki.
