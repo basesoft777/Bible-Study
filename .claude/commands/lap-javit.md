@@ -88,7 +88,7 @@ Amikor a felhasználó jelzi, hogy nincs több hely:
    - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48, DT569): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Ha az átnézés után csak gépi forrásadat változott, és csak a szótári részt érinti, a régi átnézés érvényes marad (DT569); próza- vagy szerkezeti változásnál új átnézés kell.
 5. A parancs **nem commitol és nem pushol.** A commit a felhasználó kérésére történik, a CLAUDE.md szabályai szerint (tétel-azonosítóval, UTF-8 fájlból).
 
-## 6. A lapnézet és a blokkjel (F165, DT-F165a)
+## 6. A lapnézet és a blokkjel (F165, DT637)
 
 A felhasználó a lapot a **lapnézet-artifactban** olvassa. A nézet csak a generált lapot mutatja: nincs benne gomb, panel, Claude-hívás vagy javaslat-tár. Minden blokk (bekezdés, lista, táblázat, idézet, kódblokk) jobb felső sarkában rövid **jel** áll, pl. `1/a·12` (a `## ` szakasz sorszáma, vagy számozatlan szakasznál a címe, és a blokk sorszáma a szakaszon belül). A jelre kattintva a `<ID> <jel>` szöveg a vágólapra kerül. A javítás kontextusa és menete a sessionben van, a fenti 1–5. pont szerint.
 
