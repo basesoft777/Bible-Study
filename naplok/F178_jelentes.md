@@ -77,3 +77,28 @@ A **C-vh** (MUNKAMENET): a Targum- és a Vulgata-megfelelőt modell emeli ki, eg
 ### DT-F178b — a felhasználóhoz (röviden)
 
 A `tanitoi` rés sorsa: (a) kivezetés az adatrétegből (a `res_forras.tsv` sorai, nyolc rés, a CLAUDE.md mondata, a tanítói fájlok archívumba); (b) a rés az adatrétegben marad, a lapon nem áll; (c) a visszhang tanúrétegévé alakul (2. fázis). **Ajánlás: (b) most** (visszafordítható, adatot nem érint, a régi lapok nem törnek el), **(a) akkor, amikor az utolsó lap is átment a teljes folyamaton**; a (c) a 2. fázis saját döntése.
+
+## Javítókör az orkesztrátori átnézés után (bb3020eb)
+
+A 4.11 hat pontja generátor-szinten javítva (l. a commit üzenetét); a HAMART-001 újragenerálva: olvasói kapu `0 BUKÁS, 25 FIGYELMEZTETÉS`; `ellenoriz.py` kilépési kód 0; `teszt_visszhang_kapu.py` 13/13. Új kapuszabály: VISSZHANG V7 (az alapvonal-mondat sávja); V6 tagmondat-szintű, cellán belül is. A javítókör közben a saját átnézés egy további hibát talált és javított: a forrásnév-átírás regexe a könyvtár-előtagot csak az első alternatívára tette (az Irodalomban „a lap adattáblája” állt „a BDB-szótár” helyett), és az ismétlődő forrásnév most egyszer áll.
+
+### Az olvasói kapu 25 FIGYELMEZTETÉS-e (egyik sem akadályozza a kiadást)
+
+| Azonosító | Db | Mi |
+|---|---|---|
+| KIVONAT_SZAM | 2 | a Kivonat „56 vers” és „négy hely” száma nem a tábla helyszáma (versszám, illetve a tematikus kivételek száma — helyes, a mérő a táblával veti össze) |
+| HIANYJEL | 3 | „(nincs hozzárendelés)” az iccávón (2.) és „(nincs címke: 1.b)” a chattát jelentés-cellájában; „nincs a szakasztáblában” a 4.2 egy BDB-útvonalánál — adathiány, a 2. kiadás tétele |
+| ANGOL_SOR | 7 | szótár- és licencnevek (UBS DNTG/DBH, BDB teljes címe, tW-licencmondat) és egy Nave-alcím `title`-je — tulajdonnevek és licencszöveg |
+| MOTIVUM_ID | 5 | TEREMT-002 (kétszer, a jelöltindoklásban), ISTENTISZT-001 (kapcsolat-összegzés), HAMART-001 (a Kolofon „ID” és „Hogyan idézd” sora) — link nélküli azonosító |
+| ATIRAS_VALT | 4 | „adamá”, „arar” a jelöltindoklásokban (adat), „chamasz” a 4.2-ben, „adama” az arab rokon alak kiejtése — a héber adámától eltérő szó vagy régi indoklás |
+| SZINT_ALATT | 4 | üres szótári pontok (4.1 görög, 4.13, 4.14: „javaslat”), a 7. Kapcsolatok „még nincs ilyen” mondata |
+
+## DT-F178b végrehajtása — ⛔ megállva
+
+A felhasználó döntése („Kivezetjük”) a `dontesek/uj/lexikon-ag-lezaras.md`-ben 🟢. **A végrehajtás nem történt meg**, mert a régi lapokat érintené:
+
+- a `res_forras.tsv` `tanitoi` sorainak törlése után a régi szerkezetű generálás a rés-határt nem találja (`_BOUNDARY_SLOTS` → `ValueError: hiányzó res_forras.tsv sor`), a szakasz kiesése után pedig a 8 régi lap kimenete változik: ALVIL-001 −6 sor, ANTROP-001 −6, ISTENTISZT-001 −32, TEREMT-002 −31, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 −4–4 sor (a „### Tanítói egyezés” szakasz);
+- az E28 a négy migrált lapon (ISTENTISZT-001, ALVIL-001, TEREMT-002, ANTROP-001) bukna;
+- a két tanítói forrásfájl (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`, `motivumok/naplok/TEREMT-002_tanitoi_kereses.md`) a régi lapok résforrása; archiválásuk ugyanígy a régi lapokat változtatná; rájuk mutat a `NYITOTT_FELADATOK.md` és kilenc brief `olvas` mezője.
+
+**Javaslat (a döntés az orkesztrátoré):** lépcsős kivezetés. Most csak a HAMART-001 `tanitoi` sora törlődik (az egyetlen új szerkezetű lap; kimenete nem változik), a generátor a rést csak a sorral rendelkező motívumnál keresi. A többi motívum sora és tanítói fájlja (`archivum/<ID>/`, ARCHÍV fejléccel, a hivatkozásokkal együtt) a motívum teljes folyamatának lapgenerálásával egy commitban kerül ki; a CLAUDE.md és a SEMA „kilenc rés” mondata addig „kilenc rés, a `tanitoi` kivezetés alatt (DT-F178b)”, az utolsó lappal „nyolc rés”. A `CLAUDE.md` és az `archivum/` érintése az `ir` mezőn kívüli: egyeztetett eltérésként jelzem, amikor megtörténik.
