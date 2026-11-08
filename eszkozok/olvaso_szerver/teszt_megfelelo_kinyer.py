@@ -131,5 +131,34 @@ class EllenorzesMezo(unittest.TestCase):
         self.assertEqual(mezo, '')
 
 
+class LxxSzorend(unittest.TestCase):
+    """ELLENOR_F178 7.: az 1Móz 3:16 „λύπας · λύπαις” sorából a második a בְּעֶצֶב (H6089) megfelelője."""
+    TOK = [{'szoalak': 'λύπας', 'lemma': 'λύπη', 'strong': '3077'},
+           {'szoalak': 'λύπαις', 'lemma': 'λύπη', 'strong': '3077'}]
+
+    def test_gyok_vaz(self):
+        self.assertEqual(MK.gyok_vaz('עִצָּבוֹן'), 'עצב')
+        self.assertEqual(MK.gyok_vaz('עֶצֶב'), 'עצב')
+
+    def test_rivalis_to_szerint(self):
+        heber = [('H7235', 'רבה'), ('H6093', 'עצב'), ('H2032', 'הרנ'), ('H6089', 'עצב'), ('H3205', 'ילד')]
+        tok, riv = MK.szorend_szerint(self.TOK, 'H6093', heber, lambda h: None)
+        self.assertEqual([t['szoalak'] for t in tok], ['λύπας'])
+        self.assertEqual(riv, ['H6089'])
+
+    def test_tarsulasi_adattal_a_to_nem_dont(self):
+        # ha a rivális héber szónak van társulási adata, és az más szócsalád, a tő azonossága nem elég
+        heber = [('H6093', 'עצב'), ('H6089', 'עצב')]
+        tok, riv = MK.szorend_szerint(self.TOK, 'H6093', heber, lambda h: {'xyz'})
+        self.assertEqual(len(tok), 2)
+        self.assertEqual(riv, [])
+
+    def test_ket_heber_elofordulas_ket_gorog(self):
+        heber = [('H7843', 'שחת'), ('H7843', 'שחת')]
+        tok, riv = MK.szorend_szerint(self.TOK, 'H7843', heber, lambda h: None)
+        self.assertEqual(len(tok), 2)
+        self.assertEqual(riv, [])
+
+
 if __name__ == '__main__':
     unittest.main()

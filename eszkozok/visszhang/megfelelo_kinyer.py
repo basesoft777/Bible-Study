@@ -244,6 +244,63 @@ def szocsalad_g(g, vers_tok):
     return szocsalad(l) if l else set()
 
 
+def gyok_vaz(szoto):
+    """A szótő mássalhangzó-váza a szokásos névszóképző végződés (-ón, -ut, -t, -á) nélkül, az első három betű
+    (עִצָּבוֹן → עצב, עֶצֶב → עצב): két héber szó egy tőről, ha a váz azonos."""
+    v = ''.join(c for c in (szoto or '') if 'א' <= c <= 'ת').translate(str.maketrans('ךםןףץ', 'כמנפצ'))
+    for veg in ('ונ', 'ות', 'ת', 'ה'):
+        if v.endswith(veg) and len(v) - len(veg) >= 3:
+            v = v[:-len(veg)]
+            break
+    return v[:3]
+
+
+def tahot_versek(versek):
+    """{Károli-vers: [(héber Strong, a szótő váza) a szórendben]} a TAHOT-ból (a H9xxx partikulák nélkül)."""
+    d = {}
+    with open(os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv'), encoding='utf-8') as f:
+        for s in f:
+            c = s.rstrip('\r\n').split('\t')
+            if len(c) > 4 and c[0] in versek and c[1].startswith('H') and not c[1].startswith('H9'):
+                d.setdefault(c[0], []).append((c[1], gyok_vaz(c[4])))
+    return d
+
+
+def legjobb_csalad(dice, vers_tok):
+    """A héber szóval a versben legerősebben társuló görög lemma szócsaládja (üres, ha a Dice a határ alatt; None, ha
+    a héber szónak nincs versszintű párja)."""
+    if not dice:
+        return None
+    pont = sorted(((('G%04d' % int(t['strong'])), dice.get('G%04d' % int(t['strong']), 0)) for t in vers_tok),
+                  key=lambda x: -x[1])
+    return szocsalad_g(pont[0][0], vers_tok) if pont and pont[0][1] >= DICE_MIN else set()
+
+
+def szorend_szerint(tok, strong, heber, csalad_fn):
+    """ELLENOR_F178 7.: ha a választott szócsalád a versben többször áll, mint a lánc-szó a héberben, és a többletet egy
+    másik héber szó magyarázza — a versben ugyanerre a szócsaládra a legerősebb a társulása, vagy (társulási adat
+    híján) a lánc-szóval egy tőről való (1Móz 3:16: עִצָּבוֹן és עֶצֶב, mindkettő λύπη) —, a görög előfordulásokat a
+    héber szórend szerint osztja ki: a lánc-szó n-edik előfordulásáé a szócsalád n-edik előfordulása. `heber`:
+    [(Strong, tőváz)]. Visszaad: (tokenek, a rivális héber Strongok); ha a darabszám nem egyezik, a tokenek változatlanok."""
+    sajat = set(strong.split('+'))
+    k = sum(1 for h, _ in heber if h in sajat)
+    if not tok or not k or len(tok) <= k:
+        return tok, []
+    csal = szocsalad(tok[0]['lemma'])
+    sajat_vaz = {v for h, v in heber if h in sajat and v}
+    rivalis = []
+    for h, v in dict.fromkeys(heber):
+        if h in sajat:
+            continue
+        c = csalad_fn(h)   # None: a héber szónak nincs társulási adata (csak ekkor dönt a tő)
+        if (c is not None and c & csal) or (c is None and v in sajat_vaz):
+            rivalis.append(h)
+    sor = [h for h, _ in heber if h in sajat or h in rivalis]
+    if len(sor) != len(tok):
+        return tok, []
+    return [t for t, h in zip(tok, sor) if h in sajat], list(dict.fromkeys(rivalis))
+
+
 def lxx(a):
     import lexikon_general as LG
     tabla = tsv_olvas(TABLA)
@@ -266,7 +323,9 @@ def lxx(a):
         for g in {t.get('strong') for t in toks if (t.get('strong') or '').isdigit()}:
             g_versek['G%04d' % int(g)] = g_versek.get('G%04d' % int(g), 0) + 1
     uj = [r for r in tabla if not (r['motivum'] == a.motivum and r['forras'] == 'lxx' and r['kinyeres'] != 'kezi')]
-    for strong, hely in parok_szuksegesek:
+    heber_versek = tahot_versek({h for _, h in parok_szuksegesek})
+
+    def dice_heber(strong):
         # a héber szó és a vers görög lemmáinak társulása (Dice: 2·közös / (héber versei + görög versei)); a
         # leggyakoribb szavak (γῆ, λέγω, κύριος) így nem nyernek a puszta együtt-előfordulással
         dice = {}
@@ -281,6 +340,10 @@ def lxx(a):
                     kozos[g] = kozos.get(g, 0) + 1
             for g, k in kozos.items():
                 dice[g] = max(dice.get(g, 0), 2.0 * k / (n_h + g_versek.get(g, k)))
+        return dice
+
+    for strong, hely in parok_szuksegesek:
+        dice = dice_heber(strong)
         vers_tok = [t for t in lxx_os.get(hely, []) if (t.get('strong') or '').isdigit()]
         pont = sorted({('G%04d' % int(t['strong'])): dice.get('G%04d' % int(t['strong']), 0) for t in vers_tok}.items(),
                       key=lambda x: -x[1])
@@ -291,6 +354,8 @@ def lxx(a):
             if masodik and pont[0][1] < DICE_ARANY * masodik:
                 valasztott = []
         tok = [t for t in vers_tok if ('G%04d' % int(t['strong'])) in valasztott]
+        tok, rivalis = szorend_szerint(tok, strong, heber_versek.get(hely, []),
+                                       lambda h: legjobb_csalad(dice_heber(h), vers_tok))
         lemmak = list(dict.fromkeys(t['lemma'] for t in tok))
         csaladok = [szocsalad(l) for l in lemmak]
         egy = bool(lemmak) and all(csaladok[0] & c for c in csaladok[1:])
@@ -307,6 +372,9 @@ def lxx(a):
                                          for l in lemmak),
                      ellenorzes='gépi: a versben egyetlen lemma (vagy szócsalád) társul egyértelműen a héber '
                                 'szóval, %s' % ma())
+            if rivalis:
+                r['megjegyzes'] = ('a szócsalád a versben egy másik héber szó (%s) megfelelőjeként is áll; a héber '
+                                   'szórend szerint csak a lánc-szóé' % ', '.join(rivalis))
         else:
             r.update(alak='', lemma='', kiejtes='', ellenorzes='',
                      megjegyzes=('a gépi kinyerés nem egyértelmű: %s' % ', '.join(
