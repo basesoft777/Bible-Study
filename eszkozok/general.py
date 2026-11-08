@@ -169,15 +169,6 @@ def forrasreteg_beolvaszthato_szakaszok(motivum_id):
 # egyebkent azonos generalast is elterotte tenne. Mas viselkedest nem erint.
 TS = os.environ.get('PARDES_DATUM') or datetime.date.today().isoformat()
 
-# A ma az elofordulasok.tsv-ben ELOFORDULO ujszovetsegi konyv-tokenek -- nem az
-# osszes bibliai konyv (l. a konyv_teszamentum() dokumentaciojat lent). A K15
-# utan kizarolag a normalizalo tabla roevid alakjai allnak itt: a hosszu
-# variansok (`Jelenések`, `Lukács`, `Máté`, `Róma`) kikerultek a tablabol.
-UJSZOVETSEGI_TOKENEK = {
-    '1Kor', '1Pét', '1Thessz', '2Pét', '2Tim', 'ApCsel', 'Jel', 'Júd',
-    'Luk', 'Mt', 'Róm', 'Zsid',
-}
-
 KONYV_NORMALIZALO_TSV = os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 
 # SZANDEKOSAN URES (K15/D14). Korabban ez a szotar javitotta a renderelo
@@ -262,6 +253,24 @@ def tsv_beolvas(path):
     return fejlec, sorok
 
 
+# F179 (N-F09f): az ujszovetsegi konyv-tokenek a normalizalo tablabol olvasva,
+# NEM kezi listabol. A tabla sorrendje kanonikus (K13): a Mat (Mt) sortol a
+# vegeig (Rev = Jel) az Ujszovetseg, 27 konyv. Korabban kezi lista volt, amelybol
+# hianyzott a Gal, az Mk es mas konyvek (Jan, Ef, Fil, Kol, ...); a hianyzo
+# konyvet a konyv_teszamentum() csendben OSZ-nek vette.
+def ujszovetsegi_tokenek_betolt():
+    """{magyar rövidítés} a normalizáló tábla Mat..Rev soraiból (27 könyv)."""
+    _, sorok = tsv_beolvas(KONYV_NORMALIZALO_TSV)
+    stepbible = [sor['STEPBible-rövidítés'] for sor in sorok]
+    tol = stepbible.index('Mat')
+    if stepbible[-1] != 'Rev' or len(sorok) - tol != 27:
+        raise ValueError('Konyv_normalizalo_tabla.tsv: az Újszövetség nem a Mat..Rev záró 27 sor')
+    return frozenset(sor['Magyar rövidítés'] for sor in sorok[tol:])
+
+
+UJSZOVETSEGI_TOKENEK = ujszovetsegi_tokenek_betolt()
+
+
 # DT-F127b (i), DT-F127d (1): a `jeloltek.tsv` `jelolt_tipus` mezője
 # (`elofordulas` | `motivumkozi`, SEMA 2.4). Az előfordulás-jelöltet olvasó
 # eszközök csak az `elofordulas` sorokat látják; a mező HIÁNYA (régi, 9 oszlopos
@@ -301,10 +310,9 @@ def konyv_token(igehely):
 
 
 def konyv_teszamentum(token):
-    """'ÓSZ' vagy 'ÚSZ' -- kizárólag a ma az elofordulasok.tsv-ben ténylegesen
-    előforduló könyv-tokenek alapján (UJSZOVETSEGI_TOKENEK), nem a teljes
-    bibliai kánon alapján. Ha egy jövőbeli betöltés új könyvet hoz be, ezt a
-    halmazt bővíteni kell -- a szkript ezt nem találja ki magától."""
+    """'ÓSZ' vagy 'ÚSZ' a Konyv_normalizalo_tabla.tsv alapján (UJSZOVETSEGI_TOKENEK:
+    Mt–Jel, teljes Újszövetség; F179). Ismeretlen token ÓSZ-nek számít, ezért az új
+    könyvnév a táblába kerül, nem ide."""
     return 'ÚSZ' if token in UJSZOVETSEGI_TOKENEK else 'ÓSZ'
 
 
