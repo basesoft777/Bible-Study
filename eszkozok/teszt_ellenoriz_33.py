@@ -26,6 +26,7 @@ import ellenoriz as E  # noqa: E402
 from teszt_szerep_kizart import TestVersszam  # noqa: E402,F401  (a CI-ben is fusson)
 from teszt_olvasoi_kovetkeztetes import Szovegek  # noqa: E402,F401
 from teszt_ellenoriz_36 import Szabaly36  # noqa: E402,F401  (F123.HAMART3: a 36. szabály is fusson a CI-ben)
+from teszt_ellenoriz_37_38 import Szabaly37, Szabaly38  # noqa: E402,F401  (F123.HAMART3 javítókör: 37., 38.)
 
 FEJ = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas', 'karoli_szo', 'azonositas_modja', 'megbizhatosag',
        'datum', 'jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont', 'dontes_ref']
