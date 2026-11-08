@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-08",
-   "commit": "0ec9bcdc"
+   "commit": "adce728e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4868,6 +4868,16 @@
      "🟢"
     ],
     "sor": 669
+   },
+   {
+    "id": "DT-F178a",
+    "feladat": "F178.5 (a visszhang-blokk formája; 2026-11-08)",
+    "kerdes": "Mit mutasson a lexikonlap visszhang-blokkja: a fordítások versszövegét, az eltéréseket, vagy azt, hogy a fordító ugyanazt a láncot hallja-e?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 670
    }
   ],
   "javasolt": [],
