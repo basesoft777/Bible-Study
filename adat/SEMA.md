@@ -2132,11 +2132,15 @@ rokon nyelvi adat kinyerése még nem történt meg”.
 **Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
 `beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével
 (NFD, a mellékjelek kódpont-sorrendben; üres alak nem gépi egyezés), a kézi átnézést pedig nem a kód állítja, hanem
-az ellenőr soronkénti ítélete az átnézés-bemenetben (`motivum`, `strong`, `igehely`, `forras`, `alak`, `atnezo`,
-`itelet` = `jo` \| `elvet`, `megjegyzes`; ELLENOR_F178 4.). Az `ellenorzes` csak akkor nem üres, ha a sor gépileg
+az ellenőr soronkénti ítélete az átnézés-bemenetben (`motivum`, `strong`, `igehely`, `forras`, `alak`, `lemma`,
+`jelentes`, `atnezo`, `itelet` = `jo` \| `elvet`, `megjegyzes`; ELLENOR_F178 4.). A kulcs a tábla kulcsa: a `bdb` sornál
+a nyelv (`lemma`) és a `jelentes` is, mert egy szócikk több alak nélküli sora csak így különböztethető meg. A
+`megjegyzes` az ítélet soronkénti, érdemi indoka (mit vetett össze, mi igaz a sorra); a beolvasó elutasítja a
+bemenetet, ha egy sorból hiányzik az ítélet, az átnéző vagy az indok, ha egy kulcs kétszer áll, vagy ha ugyanaz a
+megjegyzés a sorok ötödénél (de legalább 3 sornál) többször áll (`megfelelo_kinyer.atnezes_ellenoriz`; ELLENOR_F178_2 2.). Az `ellenorzes` csak akkor nem üres, ha a sor gépileg
 egyezik (vagy alak nélküli) **és** az ellenőr jóváhagyta; ha a kinyerő és az ellenőr ugyanaz (`modell` =
 `--ellenor`), üres marad. Az ellenőr lemma-javítása (`--lemma-javitas`, `[ellenőri lemma-egységesítés …]`) az ellenőr
-saját változtatása, ezért a sor csak egy harmadik kéz (a kinyerő vagy más, nem az ellenőr) megerősítésével
+saját változtatása, ezért a sor csak egy második kéz (nem az ellenőr; lehet a kinyerő) megerősítésével
 (`--lemma-megerosites`) ellenőrzött (ELLENOR_F178 3.). A LXX-oszlop gépi, ahol egyértelmű: a vers görög lemmái közül az, amely a héber szóval a
 versszintű párokban (`LXX_versszintu_parok.tsv`) a legerősebben társul (Dice-arány ≥ 0,05, legalább kétszeres
 különbséggel a következő, más szócsaládú lemmához); a szócsalád az előtag nélküli tő (φθείρω ~ καταφθείρω). Ahol nem

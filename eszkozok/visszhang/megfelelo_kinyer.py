@@ -15,7 +15,7 @@ adja-e vissza a lánc szavát minden láncversben (DT639). Szóillesztés nincs,
              bemenetben. A kód a kézi átnézést nem állítja, csak a bemenet sorát írja át (ELLENOR_F178 4.); átnézés
              nélkül, elvetett vagy gépileg nem egyező sorral az `ellenorzes` üres (ellenőrizetlen sor nem renderel). A
              `--lemma-javitas` (motivum, strong, igehely, forras, lemma, indok) az ellenőr lemma-egységesítése (pl. a
-             gyök egy alakra), a `megjegyzes` mezőben jelölve; az ilyen sor csak egy harmadik kéz (nem az ellenőr)
+             gyök egy alakra), a `megjegyzes` mezőben jelölve; az ilyen sor csak egy második kéz (nem az ellenőr; lehet a kinyerő)
              megerősítésével (`--lemma-megerosites`) ellenőrzött (ELLENOR_F178 3.). Az arámi kiejtés gépi
              (`heber_kiejtes.kiejt(aram=True)`).
     lxx      --motivum ID
@@ -130,14 +130,45 @@ LEMMA_JEL = '[ellenőri lemma-egységesítés'
 
 
 def atnezes_kulcs(r):
-    return (r['motivum'], r['strong'], r['igehely'], r['forras'], r.get('alak', '').strip())
+    """Az átnézés-bemenet sorának kulcsa: a tábla kulcsa (SEMA 2.53). A `bdb` sornál a nyelv (`lemma`) és a `jelentes`
+    is benne van, mert egy szócikk több alak nélküli rokon nyelvi sora (pl. a H6087 négy sora) csak így különböztethető
+    meg; nélkülük egy ítélet több sorra hullana (ELLENOR_F178_2 2.)."""
+    k = (r['motivum'], r['strong'], r['igehely'], r['forras'], (r.get('alak') or '').strip())
+    if r['forras'] == 'bdb':
+        k += ((r.get('lemma') or '').strip(), (r.get('jelentes') or '').strip())
+    return k
+
+
+ATNEZES_ISMETLES_MAX = 0.2   # egy megjegyzés legfeljebb a sorok ötödében (de 3 sorban mindig) állhat
+
+
+def atnezes_ellenoriz(sorok):
+    """Az átnézés-bemenet érdemi-e (ELLENOR_F178_2 2.): minden sornak van ítélete (`jo` | `elvet`), átnézője és
+    megjegyzése, egy kulcs egyszer áll, és a bemenet nem állhat sablonmondatokból — egy megjegyzés legfeljebb a sorok
+    ötödében (de 3 sorban mindig) ismétlődhet. Visszaad: a hibák listája (üres: rendben)."""
+    import collections
+    hibak, latott = [], collections.Counter()
+    for i, r in enumerate(sorok, 1):
+        if r.get('itelet') not in ('jo', 'elvet'):
+            hibak.append('%d. sor: az ítélet nem jo/elvet (%s)' % (i, r.get('itelet')))
+        if not (r.get('atnezo') or '').strip():
+            hibak.append('%d. sor: nincs átnéző' % i)
+        if not (r.get('megjegyzes') or '').strip():
+            hibak.append('%d. sor: nincs megjegyzés (az ítélet indoka)' % i)
+        latott[atnezes_kulcs(r)] += 1
+    hibak += ['a kulcs többször áll: %s' % ' | '.join(k) for k, n in latott.items() if n > 1]
+    megj = collections.Counter((r.get('megjegyzes') or '').strip() for r in sorok if (r.get('megjegyzes') or '').strip())
+    hatar = max(3, int(len(sorok) * ATNEZES_ISMETLES_MAX))
+    hibak += ['sablonmondat: ugyanaz a megjegyzés %d sorban (megengedett: %d): %s' % (n, hatar, m[:80])
+              for m, n in megj.items() if n > hatar]
+    return hibak
 
 
 def ellenorzes_mezo(r, jo, atnezes, megerosites, ellenor, datum):
     """(az `ellenorzes` mező, az ellenőrizetlenség oka vagy None) — ELLENOR_F178 4.: a kód csak azt írja be, ami
     megtörtént. A gépi összevetés csak nem üres alakon egyezés (üres alak nem egyezik semmivel); a kézi átnézést nem a
     kód állítja, hanem az átnézés-bemenet sora (`--atnezes`: az ellenőr soronkénti ítélete); az ellenőr lemma-
-    egységesítése csak egy harmadik kéz (nem az ellenőr) megerősítésével (`--lemma-megerosites`) renderelhető
+    egységesítése csak egy második kéz (nem az ellenőr; lehet a kinyerő) megerősítésével (`--lemma-megerosites`) renderelhető
     (ELLENOR_F178 3.). Ellenőrizetlen sor: üres mező (a lapon nem renderel)."""
     if r['modell'] == ellenor:
         return '', 'a kinyerő és az ellenőr ugyanaz: %s' % ellenor   # aki kinyer (vagy kézzel javít), nem ellenőriz
@@ -152,7 +183,7 @@ def ellenorzes_mezo(r, jo, atnezes, megerosites, ellenor, datum):
         m = megerosites.get((r['motivum'], r['strong'], r['igehely'], r['forras']))
         if not m or m.get('itelet') != 'megerosit' or m.get('lemma_a_tablaban') != r['lemma'] \
                 or m.get('modell') in ('', ellenor):
-            return '', 'az ellenőri lemma-egységesítést harmadik kéz nem erősítette meg'
+            return '', 'az ellenőri lemma-egységesítést második kéz (nem az ellenőr) nem erősítette meg'
     reszek = ['%s, %s: kézi átnézés (az átnézés-bemenet szerint)' % (ellenor, datum)]
     reszek.append('az alak a forrásban szó szerint áll (gépi összevetés)' if r['alak']
                   else 'alak nélküli sor: a gépi összevetés nem alkalmazható')
@@ -164,7 +195,11 @@ def beolvas(a):
     kinyert = tsv_olvas(a.kinyert)
     jav = {(r['motivum'], r['strong'], r['igehely'], r['forras']): r for r in tsv_olvas(a.lemma_javitas)} \
         if a.lemma_javitas else {}
-    atnezes = {atnezes_kulcs(r): r for r in tsv_olvas(a.atnezes)} if a.atnezes else {}
+    atn_sorok = tsv_olvas(a.atnezes) if a.atnezes else []
+    hibak = atnezes_ellenoriz(atn_sorok)
+    if hibak:
+        raise SystemExit('HIBA: az átnézés-bemenet nem érdemi:\n  ' + '\n  '.join(hibak))
+    atnezes = {atnezes_kulcs(r): r for r in atn_sorok}
     megerosites = {(r['motivum'], r['strong'], r['igehely'], r['forras']): r
                    for r in tsv_olvas(a.lemma_megerosites)} if a.lemma_megerosites else {}
     szov = {f: versszoveg(f) for f in ('targum', 'vulgata')}
@@ -408,9 +443,10 @@ def main():
     b.add_argument('kinyert')
     b.add_argument('--lemma-javitas', default=None)
     b.add_argument('--atnezes', default=None, help='az ellenőr soronkénti kézi ítélete (motivum, strong, igehely, forras, '
-                   'alak, atnezo, itelet=jo|elvet, megjegyzes); csak az itt jóváhagyott sor ellenőrzött')
-    b.add_argument('--lemma-megerosites', default=None, help='az ellenőri lemma-egységesítés megerősítése egy harmadik '
-                   'kéztől (motivum, strong, igehely, forras, lemma_a_tablaban, itelet, javasolt_lemma, modell, indok)')
+                   'alak, lemma, jelentes — a két utóbbi a bdb sor kulcsa —, atnezo, itelet=jo|elvet, megjegyzes: az '
+                   'ítélet soronkénti indoka, sablonmondat nem); csak az itt jóváhagyott sor ellenőrzött')
+    b.add_argument('--lemma-megerosites', default=None, help='az ellenőri lemma-egységesítés megerősítése egy második '
+                   'kéztől (nem az ellenőr; lehet a kinyerő; motivum, strong, igehely, forras, lemma_a_tablaban, itelet, javasolt_lemma, modell, indok)')
     b.add_argument('--ellenor', required=True, help='az ellenőrző tényleges modellneve (nem a kinyerőé)')
     x = al.add_parser('lxx')
     x.add_argument('--motivum', required=True)

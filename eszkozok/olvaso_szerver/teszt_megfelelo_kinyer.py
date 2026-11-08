@@ -3,7 +3,7 @@
 """
 eszkozok/olvaso_szerver/teszt_megfelelo_kinyer.py -- F178 javítókör (ELLENOR_F178 3., 4.): a visszhang kinyerő táblájának
 `ellenorzes` mezője csak azt mondja, ami megtörtént. A kód nem állít kézi átnézést (az az átnézés-bemenet sorából jön),
-az üres alak nem gépi egyezés, a kinyerő nem ellenőrizheti magát, és az ellenőri lemma-egységesítés harmadik kéz
+az üres alak nem gépi egyezés, a kinyerő nem ellenőrizheti magát, és az ellenőri lemma-egységesítés második kéz (nem az ellenőr)
 megerősítése nélkül ellenőrizetlen. Fájlt nem ír. A `teszt_futtat.py --gyors` része.
 
     python eszkozok/teszt_futtat.py --fajl teszt_megfelelo_kinyer
@@ -106,7 +106,7 @@ class EllenorzesMezo(unittest.TestCase):
         r = sor(megjegyzes='%s: egy gyök]' % MK.LEMMA_JEL)
         mezo, ok = self.ell(r, True, atnezes(r))
         self.assertEqual(mezo, '')
-        self.assertIn('harmadik kéz', ok)
+        self.assertIn('második kéz', ok)
 
     def test_lemma_egysegesites_az_ellenor_nem_erositheti_meg(self):
         r = sor(megjegyzes='%s: egy gyök]' % MK.LEMMA_JEL)
@@ -129,6 +129,41 @@ class EllenorzesMezo(unittest.TestCase):
                                                            'modell': KINYERO}}
         mezo, _ = self.ell(r, True, atnezes(r), meg)
         self.assertEqual(mezo, '')
+
+
+class AtnezesBemenet(unittest.TestCase):
+    """ELLENOR_F178_2 2.: az átnézés-bemenet soronkénti, érdemi ítélet — sablonmondat, indok nélküli sor és kettőzött
+    kulcs nem fogadható el; a `bdb` sornál a nyelv és a jelentés is kulcs."""
+    def at(self, i, megj, **k):
+        r = sor(igehely='1Móz 1:%d' % i, **k)
+        r.update(atnezo=ELLENOR, itelet='jo', megjegyzes=megj)
+        return r
+
+    def test_erdemi_bemenet_rendben(self):
+        self.assertEqual([], MK.atnezes_ellenoriz([self.at(i, 'a %d. vers terra szava a héber szó helyén' % i)
+                                                   for i in range(1, 11)]))
+
+    def test_csupa_azonos_megjegyzes_hiba(self):
+        hibak = MK.atnezes_ellenoriz([self.at(i, 'a megfelelés helyes') for i in range(1, 11)])
+        self.assertTrue(any(h.startswith('sablonmondat') for h in hibak))
+
+    def test_kevés_ismetles_megengedett(self):
+        sorok = [self.at(i, 'egyedi indok %d' % i) for i in range(1, 8)] +                 [self.at(i, 'közös indok') for i in range(8, 11)]
+        self.assertEqual([], MK.atnezes_ellenoriz(sorok))
+
+    def test_indok_nelkul_hiba(self):
+        self.assertTrue(MK.atnezes_ellenoriz([self.at(1, '')]))
+
+    def test_bdb_kulcs_a_nyelvvel_es_jelentessel(self):
+        a = sor(forras='bdb', igehely='', alak='', lemma='újhéber', jelentes='fájdalmat érez')
+        b = sor(forras='bdb', igehely='', alak='', lemma='újhéber', jelentes='formába nyújt')
+        c = sor(forras='bdb', igehely='', alak='', lemma='etióp', jelentes='fájdalmat érez')
+        self.assertEqual(3, len({MK.atnezes_kulcs(x) for x in (a, b, c)}))
+        # a nem bdb sor kulcsa változatlan
+        self.assertEqual(('M-001', 'H0001', '1Móz 1:1', 'vulgata', 'terra'), MK.atnezes_kulcs(sor()))
+
+    def test_kettozott_kulcs_hiba(self):
+        self.assertTrue(any('többször' in h for h in MK.atnezes_ellenoriz([self.at(1, 'x'), self.at(1, 'y')])))
 
 
 class LxxSzorend(unittest.TestCase):
