@@ -2221,16 +2221,16 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 #### 4.11. Visszhang: ókori fordítások és rokon nyelvek
 
-A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A motívum 6 lánc-szavából a Targum 5, a Vulgata 4, a LXX 6 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.<!-- olvasói -->
+A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A lánc szavai és versei a motívum adatából jönnek: lánc-szó az a héber szó, amelyhez a motívum egy-egy helye kötődik, láncvers a motívum minden olyan verse, amelyben a szó a héber szövegben áll, a lánc magján belül (1Móz 3–9), ahogy a motívum meghatározása (1.1) mondja; a későbbi helyek a lánc bibliai visszhangjai, a 2. szakaszban állnak. A motívum 6 lánc-szavából a Targum 4, a Vulgata 3, a LXX 4 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.<!-- olvasói -->
 
 | Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
 |---|---|---|---|---|
-| אֲדָמָה (adámá) — föld: talaj<br>3:17, 4:11, 5:29, 8:21 | אַרְעָא (ar'á) · 4/4 | *terra* · 4/4 | γῆ (gé) · 4/4 | LXX: a láncon kívül is a versek 98%-ában (97 vers) ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
-| אָרַר (árar) — megátkozni<br>3:17, 4:11, 5:29 | לוּט (lút) · 3/3 | *maledico* · 3/3 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 3/3 | A Targum és a Vulgata a láncban mindkét héber szót (árar és kálal) ugyanazzal a szóval adja vissza; hogy máshol is így fordítja-e, ebből a forrásból nem mérhető. A LXX mindkét héber szót (árar és kálal) ugyanazzal a szócsaláddal adja vissza; a láncon kívül gyakran, de nem kizárólag (árar 83%, kálal 78%). |
-| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | LXX: a láncon kívül a versek 42%-ában (52 vers) ez áll: a szó gyakori, de nem kizárólagos fordítása. |
+| אָרַר (árar) — megátkozni<br>3:14, 3:17, 4:11, 5:29 | לוּט (lút) · 4/4 | *maledico* · 4/4 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 4/4 | LXX: a láncon kívüli 47 versből 39 versben (83%) is ez áll: a szócsalád szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
 | עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | három különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; egy versben más szó: 3:16 *ærumna* | λύπη (lüpé) · 3/3 | LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető. |
-| קָלַל (kálal) — megátkozni (Piél)<br>8:21 | לוּט (lút) · 1/1 | *maledico* · 1/1 | καταράομαι (kataraomai) · 1/1 | L. az árar sorát. |
-| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13 | חֲבַל (chaval) · 3/3 | *corrumpo* · 2/3; egy versben más szó: 6:13 *disperdo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 3/3 | LXX: a láncon kívül a versek 45%-ában (111 vers) ez áll: a szócsalád gyakori, de nem kizárólagos fordítása. |
+| אֲדָמָה (adámá) — föld: talaj<br>3:17, 3:19, 3:23, 4:2, 4:3, 4:10, 4:11, 4:12, 4:14, 5:29, 6:7, 7:4, 7:23, 8:21 | אַרְעָא (ar'á) · 13/14; egy versben más szó: 3:23 אַדְמְתָא (admetá) | *terra* · 12/14; két versben: 4:2 nincs megfelelő szó; 4:12 *is* | γῆ (gé) · 11/14; három versben: 3:23 nincs ellenőrzött adat; 4:2 nincs ellenőrzött adat; 4:12 nincs ellenőrzött adat | LXX: 3 versben nincs ellenőrzött adat. |
+| חַטָּאָה (chattáá) — bűn<br>4:7 | חֶטְאָא (chet'á) · 1/1 | *peccatum* · 1/1 | ἁμαρτάνω (hamartanó) · 1/1 | LXX: a láncon kívüli 266 versből 252 versben (95%) is ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13, 6:17, 9:11, 9:15 | חֲבַל (chaval) · 6/6 | *corrumpo* · 2/6; más szó: 6:13 *disperdo*; 6:17 *interficio*; 9:11 *dissipo*; 9:15 *deleo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 5/6; egy versben: 9:15 nincs ellenőrzött adat | LXX: egy versben nincs ellenőrzött adat. |
+| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | LXX: a láncon kívüli 52 versből 22 versben (42%) áll ez: a szó gyakori, de nem kizárólagos fordítása. |
 | nincs héber szó<br>8:21: bűn betoldás | חוֹבֵי (chóvé) — bűnei, vétkei · betoldás | nincs betoldás | nincs ellenőrzött adat | Betoldás: a Targum a lánc szavát (bűn) olyan láncversbe teszi, ahol a héberben nincs. |
 
 *A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
@@ -2241,18 +2241,12 @@ A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/ass
 
 | Lánc-szó | Rokon nyelv · szó (kiejtés) | Jelentés | Megjegyzés |
 |---|---|---|---|
-| אֲדָמָה (adámá) — föld: talaj | arab أَدَمَة (adama) · دَمَّ (damma) | bőr (simán befedő, szorosan simuló); kenni, bekenni (felületen szétteríteni) | — |
 | אָרַר (árar) — megátkozni | asszír arâru (aráru) | átkozni | — |
-| חָמָס (chámász) — erőszak | a főnév szócikkében nincs rokon nyelvi adat; a tő, a חָמַס (chámasz) ige szócikke szerint: | — | — |
-| ↳ tő: חָמַס (chámasz) | arab | kemény, szigorú, könyörtelen | a BDB az alakot írás nélkül adja |
-| ↳ tő: חָמַס (chámasz) | arámi חֲמַס (chamasz) | erőszakosan megragad | a BDB szerint bizonytalan vagy ritka |
 | עִצָּבוֹן (iccávón) — fáradság | a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll; a tő, a עָצַב (ácav) ige szócikke szerint: | — | — |
 | ↳ tő: עָצַב (ácav) | etióp | kemény, nehéz | a BDB az alakot írás nélkül adja |
 | ↳ tő: עָצַב (ácav) | arab | haragos, mérges | a BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka |
-| קָלַל (kálal) — megátkozni (Piél) | Tell el-Amarna | megvet, meggyaláz | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — megátkozni (Piél) | arab | kicsinek, csekélynek lenni; rázni, rezegni, forogni (kardról) | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — megátkozni (Piél) | etióp | könnyűnek, kicsinek lenni; II. megvet | a BDB az alakot írás nélkül adja |
-| קָלַל (kálal) — megátkozni (Piél) | sabeus קללם (k-l-l-m) | csekély, szűkös | — |
+| אֲדָמָה (adámá) — föld: talaj | arab أَدَمَة (adama) · دَمَّ (damma) | bőr (simán befedő, szorosan simuló); kenni, bekenni (felületen szétteríteni) | — |
+| חַטָּאָה (chattáá) — bűn | a rokon nyelvi adat kinyerése még nem történt meg | — | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | Tell el-Amarna šaḫâtu (sachátu) | elesni (különösen városról), földre borulni (?földről) | a BDB szerint bizonytalan vagy ritka |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | asszír šêtu (sétu) | menekülni, megmenekülni | a BDB szerint bizonytalan vagy ritka |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | arámi שְׁחַת (sechat) | megcsonkítani | — |
@@ -2260,6 +2254,9 @@ A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/ass
 | שָׁחַת (sáchat) — elpusztítani, megrontani | arab سَحَتَ (szaháta) | kiirtani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | szír ܫܰܚܶܛ (sachet) | megcsonkítani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | etióp ሰሐጠ (szeháta) | megsérteni, erőszakot tenni | — |
+| חָמָס (chámász) — erőszak | a főnév szócikkében nincs rokon nyelvi adat; a tő, a חָמַס (chámasz) ige szócikke szerint: | — | — |
+| ↳ tő: חָמַס (chámasz) | arab | kemény, szigorú, könyörtelen | a BDB az alakot írás nélkül adja |
+| ↳ tő: חָמַס (chámasz) | arámi חֲמַס (chamasz) | erőszakosan megragad | a BDB szerint bizonytalan vagy ritka |
 
 #### 4.12. Tematikus index (témák és igehely-hivatkozások)
 
