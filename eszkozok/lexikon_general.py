@@ -6145,30 +6145,63 @@ def uj_szerkezet_alkalmaz(szoveg, m, sorai):
 ATTEKINTO_CIM = '### Áttekintés: a motívum szavai'
 
 
+_lxx_g_versek_cache = None
+
+
+def _lxx_g_versek():
+    """{G-Strong: versszám} a teljes LXX_OS-ben (a Dice-társítás nevezője)."""
+    global _lxx_g_versek_cache
+    if _lxx_g_versek_cache is None:
+        versek = {}
+        for fn in sorted(os.listdir(LXX_OS_DIR)):
+            if not fn.endswith('.tsv'):
+                continue
+            with io.open(os.path.join(LXX_OS_DIR, fn), encoding='utf-8') as f:
+                fej = None
+                for sor in f:
+                    if sor.startswith('#') or not sor.strip():
+                        continue
+                    c = sor.rstrip('\r\n').split('\t')
+                    if fej is None:
+                        fej = c
+                        continue
+                    d = dict(zip(fej, c))
+                    s = d.get('strong') or ''
+                    if s.isdigit():
+                        versek.setdefault('G%04d' % int(s), set()).add(d.get('igehely_lxx') or d.get('igehely_karoli'))
+        _lxx_g_versek_cache = {g: len(v) for g, v in versek.items()}
+    return _lxx_g_versek_cache
+
+
+def _dice(h, g):
+    e = lxx_versszintu_parok().get(h)
+    if not e:
+        return 0.0, 0
+    k = sum(1 for gs in e['versek'].values() if g in (gs or []))
+    return (2.0 * k / (len(e['versek']) + _lxx_g_versek().get(g, k))) if k else 0.0, k
+
+
 def _lxx_tars(strong, motivum_hebr):
+    """A LXX-megfelelő a versszintű párokból, Dice-társulással (a leggyakoribb szavak — γῆ, λέγω, κύριος — így nem
+    nyernek a puszta együtt-előfordulással; ugyanaz a mérce, mint a visszhang kinyerő tábla LXX-oszlopa)."""
     parok = lxx_versszintu_parok()
     if strong.startswith('H'):
         e = parok.get(strong)
         if not e:
             return EM_DASH
-        sz = collections.Counter(g for gs in e['versek'].values() for g in set(gs or []))
-        if not sz:
+        jeloltek = {g for gs in e['versek'].values() for g in set(gs or [])}
+        pont = sorted(((_dice(strong, g), g) for g in jeloltek), key=lambda x: -x[0][0])
+        if not pont or pont[0][0][0] < 0.05:
             return EM_DASH
-        g, n = sorted(sz.items(), key=lambda x: (-x[1], x[0]))[0]
+        (d, k), g = pont[0]
         lk = lemma_kiejtes(g)
-        return '%s · %d vers' % (lemma_cim(lk) if lk else g, n)
-    legjobb = None
-    for h in motivum_hebr:
-        e = parok.get(h)
-        if not e:
-            continue
-        n = sum(1 for gs in e['versek'].values() if strong in (gs or []))
-        if n and (legjobb is None or n > legjobb[1]):
-            legjobb = (h, n)
-    if not legjobb:
+        return '%s · %d vers' % (lemma_cim(lk) if lk else g, k)
+    pont = sorted(((_dice(h, strong), h) for h in motivum_hebr), key=lambda x: -x[0][0])
+    if not pont or pont[0][0][0] < 0.05:
         return EM_DASH
-    lk = lemma_kiejtes(legjobb[0])
-    return 'héberül: %s · %d vers' % (lemma_cim(lk) if lk else legjobb[0], legjobb[1])
+    (d, k), h = pont[0]
+    lk = lemma_kiejtes(h)
+    return 'héberül: %s · %d vers' % (lemma_cim(lk) if lk else h, k)
 
 
 def attekinto_tabla(sorai):
@@ -6178,7 +6211,9 @@ def attekinto_tabla(sorai):
     for t in sorted(tokenek, key=lambda s: (s[0] != 'H', s)):
         lk = lemma_kiejtes(t)
         n = sum(1 for s in sorai if t in (s.get('strong') or '').split('+'))
-        sorok.append('| %s | %s | %s | %d |' % (lemma_cim(lk) if lk else t, rovid_jelentes(t)[0], _lxx_tars(t, hebr), n))
+        jel = rovid_jelentes(t)
+        sorok.append('| %s | %s | %s | %d |' % (lemma_cim(lk) if lk else t, jel[0] if jel[1] else EM_DASH,
+                                               _lxx_tars(t, hebr), n))
     return '\n'.join(sorok), len(tokenek)
 
 
@@ -6198,7 +6233,8 @@ def attekinto_beszur(szoveg, m, sorai):
                          '(Septuaginta) leggyakoribb szava ugyanazokban a versekben, és hogy hány helyen áll a szó a '
                          'motívumban. A részletek szavanként a 4.1–4.10 pontban.' % n),
         tabla,
-        '*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai), nem szóillesztés.*', ''])
+        '*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem '
+        'szóillesztés; a „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.*', ''])
     return szoveg[:j.start()] + betet + '\n' + szoveg[j.start():]
 
 

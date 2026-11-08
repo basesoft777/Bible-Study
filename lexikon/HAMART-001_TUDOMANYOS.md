@@ -1278,18 +1278,18 @@ A motívum 15 szava egy táblában: a kiejtés, a rövid alapjelentés, a görö
 | אָלָה (álá) | eskü | — | 1 |
 | אָרַר (árar) | megátkozni | ἐπικατάρατος (epikataratosz) · 36 vers | 4 |
 | חַטָּאָה (chattáá) | bűn | ἁμαρτία (hamartia) · 243 vers | 1 |
-| חָמָס (chámász) | erőszak | ἀδικία (adikia) · 15 vers | 12 |
-| עִצָּבוֹן (iccávón) | fáradság | λέγω (legó) · 3 vers | 2 |
+| חָמָס (chámász) | erőszak | ἀσέβεια (aszebeia) · 12 vers | 12 |
+| עִצָּבוֹן (iccávón) | fáradság | λύπη (lüpé) · 3 vers | 2 |
 | קוֹץ (kóc) | tövis | ἄκανθα (akantha) · 12 vers | 2 |
 | רַע (ra) | nyomorúság: kár | πονηρός (ponérosz) · 235 vers | 1 |
-| שָׁחַת (sáchat) | elpusztítani, megrontani | κύριος (küriosz) · 58 vers | 7 |
+| שָׁחַת (sáchat) | elpusztítani, megrontani | διαφθείρω (diaftheiró) · 48 vers | 7 |
 | διαφθείρω (diaftheiró) | elpusztítani | héberül: שָׁחַת (sáchat) · 48 vers | 1 |
-| ἐπικατάρατος (epikataratosz) | cursed *(fordításra vár)* | héberül: אָרַר (árar) · 36 vers | 1 |
-| κατάρα (katara) | curse *(fordításra vár)* | héberül: רַע (ra) · 2 vers | 1 |
+| ἐπικατάρατος (epikataratosz) | — | héberül: אָרַר (árar) · 36 vers | 1 |
+| κατάρα (katara) | — | — | 1 |
 | φθείρω (ftheiró) | elpusztítani | héberül: שָׁחַת (sáchat) · 9 vers | 1 |
-| φθορά (fthora) | corruption *(fordításra vár)* | — | 1 |
+| φθορά (fthora) | — | — | 1 |
 
-*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai), nem szóillesztés.*
+*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem szóillesztés; a „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.*
 
 
 ### Görög szavak: G1311, G1944, G2671, G5351, G5356
