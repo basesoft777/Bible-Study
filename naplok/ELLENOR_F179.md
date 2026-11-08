@@ -13,7 +13,7 @@ ELTÉRÉS: 4 tétel
 
 ## Eltérések
 1. A brief `allapot: lezarva`, de a „Kész” feltétel nem teljesült: a main-beli HAMART-001 TUDOMANYOS (789–793. sor) és TORZSCIKK (955–959. sor) lapon a Gal és az Mk továbbra is a LXX-táblában áll; az `ad` mező „újragenerálva”-t állít.
-2. A döntésigény (HAMART-lap újragenerálása A/B/C) és az `n14_hamart_betoltes.py:389` nyitott listája nincs `dontesek/uj/` (DT-F179a) és `nyitott/uj/` (N-F179a) helyőrzőben rögzítve.
+2. A döntésigény (HAMART-lap újragenerálása A/B/C) és az `n14_hamart_betoltes.py:389` nyitott listája nincs `dontesek/uj/` (DT641) és `nyitott/uj/` (N-F179a) helyőrzőben rögzítve.
 3. Kitalált adat a `naplok/F179_jelentes.md` 34. és 43. sorában: „Ján 3, Mt 3” és „3 Ján-sor”; valójában 0 Ján-sor van, a HAMART-001-ben Mt = 1. A 43/9 végösszeg helyes. A kapcsolódó n14-hatásindoklás téves.
 4. A `naplok/F179_zaras.md` nincs a brief `ir` mezőjében (kicsi).
 
