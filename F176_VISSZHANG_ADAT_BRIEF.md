@@ -12,7 +12,7 @@ munka: folyamat
 olvas: [adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md, konkordancia/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/elofordulasok.tsv, eszkozok/nyilt_mag_kapu.py]
 ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/BDB_rokon_irasok.tsv, konkordancia/VISSZHANG_README.md, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/visszhang/, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_visszhang.py, naplok/F176_jelentes.md]
 fugg: [162, 170]
-nem_fugg: [38, 48, 123, 146]
+nem_fugg: [38, 48, 123, 146, 178]
 ---
 
 # F176_VISSZHANG_ADAT_BRIEF.md — A visszhang-réteg adatrétege
