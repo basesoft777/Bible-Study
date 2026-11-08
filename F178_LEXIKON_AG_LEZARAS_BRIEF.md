@@ -6,18 +6,18 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: nem_indult
-ad: egy generátor-körben minden lexikonlap az új lapszerkezettel (Döntési út, olvasható döntések, folyamatos számozás 1–12, áttekintő szótári tábla a 4. szakasz elején, visszhang-blokk, szerkesztői döntés, tanítói rész nélkül), a nyílt mag olvasói átírással és [A LEXIKON CÍME] helyőrzővel; a HAMART-001 szabályai a 6-os és 9-es sablonban, új U3-prompt sablon, MUNKAMENET C-h/C-w; HIBA-szintű kapuk (határ-frissesség, HAMART-regresszió, szerkesztői szóhasználat, Nave); a felhasználó egyszeri vizuális átnézése a kör után
+ad: egy generátor-körben minden lexikonlap az új lapszerkezettel (Döntési út, olvasható döntések, folyamatos számozás 1–12, áttekintő szótári tábla a 4. szakasz elején, visszhang-blokk lánc-szavanként az azonosság szerint, kinyerő adattáblából, kiejtéssel és BDB rokon nyelvi háttérrel, szerkesztői döntés, tanítói rész nélkül), a nyílt mag olvasói átírással és [A LEXIKON CÍME] helyőrzővel; a HAMART-001 szabályai a 6-os és 9-es sablonban, új U3-prompt sablon, MUNKAMENET C-h/C-w; HIBA-szintű kapuk (határ-frissesség, HAMART-regresszió, szerkesztői szóhasználat, Nave); a felhasználó egyszeri vizuális átnézése a kör után
 kovetkezo: "Te: F178.0 — modell-ellenőrzés; a #123 HAMART-001 lezárása (PR #639) és a #176 a main-ben?"
 munka: folyamat
-olvas: [MUNKAMENET.md, CLAUDE.md, adat/SEMA.md, adat/elofordulasok.tsv, adat/res_forras.tsv, naplok/HATAR_HAMART-001.md, lexikon/HAMART-001_TUDOMANYOS.md, motivumok/HAMART-001.md, konkordancia/BDB_rokon_irasok.tsv, konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/VISSZHANG_README.md, F176_VISSZHANG_ADAT_BRIEF.md, F123_MIGRACIO2_BRIEF.md]
-ir: [eszkozok/lexikon_general.py, eszkozok/szerep_nave.py, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/muhely_allapot.py, eszkozok/teszt_olvasoi_kapu.py, eszkozok/teszt_szerep_nave.py, eszkozok/teszt_nyilt_mag.py, eszkozok/teszt_muhely_allapot.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, "lexikon/*.md", "nyilt_mag/*", naplok/F178_jelentes.md]
+olvas: [MUNKAMENET.md, CLAUDE.md, adat/SEMA.md, adat/elofordulasok.tsv, adat/res_forras.tsv, naplok/HATAR_HAMART-001.md, lexikon/HAMART-001_TUDOMANYOS.md, motivumok/HAMART-001.md, konkordancia/BDB_rokon_irasok.tsv, konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/VISSZHANG_README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_OS/genesis.tsv, F176_VISSZHANG_ADAT_BRIEF.md, F123_MIGRACIO2_BRIEF.md]
+ir: [eszkozok/lexikon_general.py, eszkozok/szerep_nave.py, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/muhely_allapot.py, eszkozok/teszt_olvasoi_kapu.py, eszkozok/teszt_szerep_nave.py, eszkozok/teszt_nyilt_mag.py, eszkozok/teszt_muhely_allapot.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, "lexikon/*.md", "nyilt_mag/*", naplok/F178_jelentes.md, adat/visszhang_megfelelok.tsv, adat/SEMA.md, eszkozok/visszhang/megfelelo_kinyer.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes.py]
 fugg: [123, 176]
 nem_fugg: [125, 151]
 ---
 
 # F178_LEXIKON_AG_LEZARAS_BRIEF.md — A lexikon ág lezárása
 
-*FELADATOK #178 · Modell: opus · v1 · 2026.11.08*
+*FELADATOK #178 · Modell: opus · v2 · 2026.11.08 (v2: F178.5 visszhang-blokk formája, kinyerő tábla, kiejtés, BDB-háttér; DT639)*
 
 *Befogadva a felhasználó jóváhagyásával (2026-11-08). Minden tétel jóváhagyott; a felhasználó szavai a tételeknél idézve. Előzmény: a HAMART-001 (#123, PR #639) határ- és prózajavítása, a lapmakett (artifact `BWNbfmsofYpnfT9v87of1G`), a #176 visszhang-adatréteg. A sorrend elve: a lapszerkezet **egy** generátor-körben változik, minden lapon, és a felhasználó **egyszer** nézi át, a kör után — a kétszeri szerkezetváltás kétszeres újragenerálás és kétszeres átnézés volna.*
 
@@ -73,6 +73,24 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `opus`). A `fugg` feladatok: a 
 - A lapon a #176 adatrétegéből: ókori fordítás, ÚSZ szövegváltozat, BDB rokon írások.
 - A Károli-vers a nézetoldali versmegfeleltetéssel (DT630).
 - A tanúréteg nélkül.
+
+**A blokk formája (DT639; a felhasználó jóváhagyásával, 2026-11-08, „Igen, mehet”; minta: artifact `CrmxRwdWFrqgG5aBJvkGWo`, 3. változat).** A felhasználó az adatból összerakott vers-szöveglistát elutasította („ez a makett nem jó semmire … csak igéket sorol”), és kimondta: „az azonosság a visszhang, nem az eltérés”. Ezért:
+- **A visszhang az azonosság:** a kérdés, hogy az ókori fordító ugyanazt a láncot hallja-e. A blokk **lánc-szavanként egy sor**, nem versenként; oszlopok: lánc-szó (a láncversekkel) | Targum | Vulgata | LXX | Mit mutat. A cella a fordítás szava, kiejtése és az `n/N` arány (hány láncversben ugyanaz a szó). `n = N`: kiemelt cella (visszhang); `n < N`: egy rövid sor mondja meg, hol szakad meg. A teljes versszöveg nem kerül a blokkba.
+- **Betoldás-sor:** ha egy fordítás a lánc szavát olyan láncversbe teszi, ahol a héberben nincs (HAMART: a Targum 1Móz 8:21 „az ember bűnei miatt”), külön sort kap.
+- **„Mit mutat”:** a lelettel kezd (`n/N`, a szavak kiejtéssel), és szabály szerinti következtetéssel zár (sablon 6, „Kiejtés és olvasói szöveg”); a kinyerő tábla `megjegyzes` mezője legfeljebb egy mondattal egészíti ki.
+
+**Kinyerő adattábla (új; szóillesztés nincs, ezért nélküle a generátor nem tudja kiemelni a lánc szavának fordítását).** `adat/visszhang_megfelelok.tsv`, sémája az `adat/SEMA.md`-be (új 2.x szakasz):
+- oszlopok: `motivum`, `strong` (a lánc-szó), `igehely`, `forras` (`targum` \| `vulgata` \| `lxx`), `alak` (a versben álló szó), `lemma`, `kiejtes`, `jelentes` (magyarul), `betoldas` (`igen` \| `nem`), `megjegyzes`, `kinyeres` (`gepi` \| `modell` \| `kezi`), `modell` (a tényleges modellnév, l. CLAUDE.md), `ellenorzes`, `proveniencia` (`scope=… | forras=… | ts=…`);
+- a LXX-oszlop gépileg, ahol a `LXX_OS` lemmája és a meglévő LXX-híd egyértelmű; a Targum és a Vulgata megfelelőjét modell emeli ki a versből, a kiemelést egy **másik kéz** ellenőrzi (a #178 U2/U3 elvével azonosan: aki kinyer, nem az ellenőriz); ellenőrizetlen sor nem renderel;
+- hiány nem tölthető ki: ha a fordításban a szónak nincs megfelelője, a sor `alak` mezője üres és a `megjegyzes` kimondja (CLAUDE.md 3. szabály);
+- a generátor csak ebből a táblából renderel; a #176 tábláit nem írja át.
+
+**Kiejtés minden nem latin betűs szónál** (a felhasználó: „legyen a héber görögnél mindig kiejtés”): héber, arámi, görög, és a BDB-háttérben az arab, etióp, szír, asszír alak is. Mért hiányok a makettből:
+- `eszkozok/heber_kiejtes.py` arámira nincs kalibrálva (`אַרְעָא` → *areá*, helyesen *ar'á*): arámi szabály a kódban, teszttel (a `adat/kiejtes_kivetelek.tsv` nem a #178 írása: függési kört nyitna a #7-tel);
+- `eszkozok/kiejtes.py` latin betűs átírásból dolgozik, görög betűs alakból nem: a LXX-alakhoz görög betűs bemenet vagy a meglévő átírás-mező kell;
+- az arab, etióp, szír alak kiejtése a kinyerő tábla `kiejtes` mezőjében, `kinyeres` jelöléssel.
+
+**BDB-háttér: rokon nyelvek, mindkét forrásból.** A `BDB_rokon_irasok.tsv` (#176) csak az arab, etióp és szír **írású** tokeneket gyűjtötte; a BDB etimológiai zárójelében latin betűs átírásban álló rokon alakok (asszír, óarámi, Tell el-Amarna, sabeus; HAMART: az `אָרַר` asszír *arâru*, a `קָלַל` asszír *qalâlu*, a `שָׁחַת` óarámi és amarnai alakja) kimaradtak, pedig a `konkordancia/BDB_teljes_unabridged.tsv`-ben megvannak. A blokk háttér-táblája: lánc-szó | rokon nyelv · szó (kiejtéssel) | jelentés (magyarul) | Mit mutat; a forrás mindkét tábla. Ha a szócikkben nincs rokon nyelvi adat, a sor ezt mondja ki („a BDB-szócikkben nincs rokon nyelvi adat”); ha a szócikk nem található (`bdb_szócikk=0`, HAMART: H6093, H1863), az „nem azonosítható”, nem „nincs” — a kettő nem vonható össze. A jelentés magyarítása a cikk-fordítás menetében (Sonnet, batch-prompt).
 
 ### F178.6 — „Szerkesztői döntés”
 **A felhasználó:** „vegyük fel / mehet”.

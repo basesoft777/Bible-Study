@@ -1,6 +1,6 @@
 # A lektor-felület „lapnézet” linkjei motívumonként: a kártya a saját motívumának lapnézetére mutat. Kézzel szerkeszthető.
 # Ami nincs itt (más motívum, döntés-kártya), annak a kártyáján nincs link: egy kártya sem mutat másik motívum lapjára.
-# url: a lexikonlap olvasható nézete (privát artifact, `C:\Users\bases\pardes_eszkozok\epit_nezet.py`); megjegyzes: a nézet állapota.
+# url: a lexikonlap olvasható nézete (privát artifact; régi építő: `C:\Users\bases\pardes_eszkozok\epit_nezet.py`, F165-től `eszkozok/lektor_felulet/lapnezet.py`, „Kérdezz / javasolj” gombbal); megjegyzes: a nézet állapota.
 motivum	url	megjegyzes
 ISTENTISZT-001	https://claude.ai/artifact/1d9WcUQDkSLgEwopYXtFKq	az arany lap nézete
 ALVIL-001	https://claude.ai/artifact/5uvFB23odm6QAbJTk7orva	lexikon/ALVIL-001_TUDOMANYOS.md, új cikk (PR #604), sablon-javítókör után (2026-11-03)
