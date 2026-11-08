@@ -6589,12 +6589,27 @@ NINCS_TARGUM = 'nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)'
 _LANC_MAG_RE = re.compile(r'\baz? (\S+) (\d+)[–-](\d+)\.? láncára\b')
 
 
-def lanc_mag(m):
-    """(könyv, első fejezet, utolsó fejezet): a lánc genezisi magja (DT-F178g, orkesztrátori pontosítás): ha a
-    motívum negatív kritériuma megnevezi („az 1Móz 3–9 láncára utal vissza”), az; különben a teljes 1Mózes
-    (`('1Móz', 1, 50)`). A láncversek mindig a mag versei — nem a teljes ószövetségi előfordulás."""
+def _pesat_sor(s):
+    """A motívum Pesat-sora: a `pardes_szint` mezőben a Peshat szint áll (önmagában vagy összetételben)."""
+    return 'peshat' in (s.get('pardes_szint') or '').lower()
+
+
+def lanc_mag(m, sorai=()):
+    """(könyv, első fejezet, utolsó fejezet): a motívum Pesat-gerince, az adatból (DT-F178g; ELLENOR_F178_2 1.):
+    1. ha a motívum negatív kritériuma megnevezi a láncot („az 1Móz 3–9 láncára utal vissza”), az;
+    2. különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében;
+    3. Pesat-sor nélkül None (nincs lánc, a 4.11 nem renderel — üres eredmény, nem kitöltés).
+    Rögzített szakasz (a régi „genezisi mag”, a teljes 1Mózes) nincs. A láncversek a gerinc versei közül csak a
+    motívum saját versei (`lanc_szavak`) — nem a szó teljes előfordulása a gerincben."""
     k = _LANC_MAG_RE.search(m.get('negativ_kriterium') or '')
-    return (k.group(1), int(k.group(2)), int(k.group(3))) if k else ('1Móz', 1, 50)
+    if k:
+        return (k.group(1), int(k.group(2)), int(k.group(3)))
+    pesat = [v for s in sorai if _pesat_sor(s) for v in igehely_lista(s.get('igehely') or '')]
+    if not pesat:
+        return None
+    konyv = pesat[0].split(' ')[0]
+    fej = [int(v.split(' ', 1)[1].split(':')[0]) for v in pesat if v.split(' ')[0] == konyv]
+    return (konyv, min(fej), max(fej))
 
 
 def _magban(vers, mag):
@@ -6603,18 +6618,21 @@ def _magban(vers, mag):
 
 
 def lanc_szavak(m, sorai):
-    """DT-F178g (ELLENOR_F178 2.): a 4.11 lánca a motívumadatból, nem a kinyerő tábla soraiból. Lánc-szó: a motívum
-    beépített sorainak `gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem
-    lánc-szó). Láncvers: a motívum verse (a beépített sorok versei, a tartomány versenként), amelyben a szó a héber
-    szövegben (TAHOT) áll, mindig a lánc genezisi magján belül (`lanc_mag`); a mag utáni helyek a lánc bibliai
+    """DT-F178g (ELLENOR_F178 2., ELLENOR_F178_2 1.): a 4.11 lánca a motívumadatból, nem a kinyerő tábla soraiból.
+    Lánc-szó (a lánc kulcsszava): a motívum beépített sorainak `gerinc_elem`-értéke, ha egyetlen héber Strong (a
+    szópár, a `tematikus:` és a görög elem nem lánc-szó) — ez nem az 1.2 teljes szólistája. Láncvers: a motívum
+    Pesat-gerincének (`lanc_mag`) azon verse, amely a motívum saját verse (a beépített sorok versei, a tartomány
+    versenként), és amelyben a kulcsszó a héber szövegben (TAHOT) áll; a gerincen kívüli helyek a lánc bibliai
     visszhangjai, nem láncversek.
-    Visszaad: ([(strong, [láncversek])], mag)."""
+    Visszaad: ([(strong, [láncversek])], mag); gerinc nélkül ([], None)."""
     szavak = []
     for s in sorai:
         g = (s.get('gerinc_elem') or '').strip()
         if re.fullmatch(r'H\d{4}', g) and g not in szavak:
             szavak.append(g)
-    mag = lanc_mag(m)
+    mag = lanc_mag(m, sorai)
+    if mag is None:
+        return [], None
     versek = []
     for s in sorai:
         for v in igehely_lista(s['igehely']):
@@ -6715,9 +6733,10 @@ def blokk_visszhang(m, sorai):
             _rovid_hely(h), szo, ' | '.join(cellak),
             ('Betoldás: %s a lánc szavát (%s) olyan láncversbe teszi, ahol a héberben nincs.'
              % (' és '.join(betoldo), szo)) if betoldo else '—'))
-    honnan = ('A lánc szavai a motívum kulcsszavai (l. 1.2), soronként egy; láncvers a motívum genezisi magjának '
-              '(%s %d–%d) minden olyan verse, amelyben a kulcsszó a héber szövegben áll; a későbbi helyek a lánc bibliai '
-              'visszhangjai, a 2. szakaszban állnak.' % mag)
+    honnan = ('A lánc %d kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy (az 1.2 teljes '
+              'szólistája ennél bővebb: szópárokat és görög szavakat is felsorol); láncvers a motívum Peshat-magjának '
+              '(%s %d–%d) azon verse, amelyben a kulcsszó a héber szövegben áll; a magon kívüli helyek a lánc bibliai '
+              'visszhangjai, a 2. szakaszban állnak.' % ((len(szavak),) + tuple(mag)))
     bevezeto = ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber '
                 'szót minden láncversben. %s A motívum %d lánc-szavából a Targum %d, a Vulgata %d, a LXX %d szót ad '
                 'vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a '
@@ -6729,8 +6748,8 @@ def blokk_visszhang(m, sorai):
               'alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli '
               'jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); '
               '%d%% felett szokásos fordítás, %d–%d%% gyakori, de nem kizárólagos, %d%% alatt a láncban választott szó '
-              '(félkövér). A láncversek mindig a motívum genezisi magjának versei, ahol a kulcsszó áll (nem a szó teljes '
-              'ószövetségi előfordulása). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege '
+              '(félkövér). A láncversek a motívum Peshat-magjának azon versei, ahol a kulcsszó áll: a motívum saját helyei, '
+              'nem a szó teljes előfordulása (a magon belül sem). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege '
               '(CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét '
               'modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*'
               % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100), int(ALAPVONAL_SZOKASOS * 100),

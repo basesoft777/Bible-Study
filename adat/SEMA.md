@@ -2118,10 +2118,11 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 
 **A lánc honnan jön (DT-F178g, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
 vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
-`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó); láncvers a
-motívum genezisi magjának (Pesat-gerinc) minden verse (a tartomány versenként), amelyben a kulcsszó a héber
-szövegben (TAHOT) áll — **mindig** a magé, nem a szó teljes előfordulása; a magot a negatív kritérium (2.1) nevezi
-meg („az 1Móz 3–9 láncára”), megnevezés nélkül a teljes 1Mózes. A mag utáni helyek a lánc bibliai visszhangjai (a lap
+`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó) — a lánc
+kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers
+a motívum Pesat-gerincének azon verse, amelyben a kulcsszó a héber szövegben (TAHOT) áll — **a motívum saját
+verse** (a beépített sorok versei, a tartomány versenként), nem a szó teljes előfordulása, a gerincen belül sem
+(ELLENOR_F178_2 1.). A gerinc: ha a negatív kritérium (2.1) megnevezi a láncot („az 1Móz 3–9 láncára”), az; különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében; Pesat-sor nélkül nincs lánc (rögzített szakasz nincs; `lexikon_general.lanc_mag`). A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap
 2. szakaszában), nem láncversek; a kinyerés így kis, rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
 kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
 láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a

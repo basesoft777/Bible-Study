@@ -153,9 +153,9 @@ class LancAMotivumadatbol(unittest.TestCase):
         cls.sorai = [r for r in elo if r['id'] == 'HAMART-001']
 
     def test_mag_a_negativ_kriteriumbol(self):
-        self.assertEqual(('1Móz', 3, 9), self.LG.lanc_mag(self.m))
-        # megnevezés nélkül is mindig a genezisi mag: a teljes 1Mózes (orkesztrátori pontosítás, DT-F178g)
-        self.assertEqual(('1Móz', 1, 50), self.LG.lanc_mag({'negativ_kriterium': 'a szó általános használatban'}))
+        self.assertEqual(('1Móz', 3, 9), self.LG.lanc_mag(self.m, self.sorai))
+        # megnevezés és Pesat-sor nélkül nincs gerinc: rögzített szakasz (a régi „teljes 1Mózes”) nincs
+        self.assertIsNone(self.LG.lanc_mag({'negativ_kriterium': 'a szó általános használatban'}))
 
     def test_hamart_hat_lanc_szava(self):
         szavak, _ = self.LG.lanc_szavak(self.m, self.sorai)
@@ -170,15 +170,37 @@ class LancAMotivumadatbol(unittest.TestCase):
         self.assertEqual(['1Móz 6:11', '1Móz 6:13'], d['H2555'])   # a próféták helyei nem láncversek
         self.assertTrue(all(v.startswith('1Móz ') for vv in d.values() for v in vv))   # a mag: 1Móz 3–9
 
-    def test_mag_nelkul_is_csak_genezis(self):
+    def test_gerinc_nelkul_nincs_lanc(self):
+        # se megnevezett lánc, se Pesat-sor: üres eredmény, nem kitöltés (CLAUDE.md 3. szabály)
         m = {'id': 'TESZT-001', 'negativ_kriterium': ''}
-        sorai = [{'igehely': '1Móz 6:11', 'gerinc_elem': 'H2555'}, {'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555'}]
-        szavak, _ = self.LG.lanc_szavak(m, sorai)
-        self.assertEqual([('H2555', ['1Móz 6:11'])], szavak)
+        sorai = [{'igehely': '1Móz 6:11', 'gerinc_elem': 'H2555', 'pardes_szint': 'Remez'},
+                 {'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555', 'pardes_szint': 'Remez'}]
+        self.assertEqual(([], None), self.LG.lanc_szavak(m, sorai))
+
+    def test_nem_genezisi_gerinc_a_pesat_sorokbol(self):
+        # ELLENOR_F178_2 1.: megnevezés nélkül a gerinc a motívum Pesat-sorainak fejezet-tartománya (itt Ez 7–12);
+        # a Genezis-hely (Remez) és a gerincen kívüli Jer 6:7 nem láncvers, a gerinc versei közül is csak a motívumé
+        m = {'id': 'TESZT-002', 'negativ_kriterium': 'a szó általános használatban'}
+        sorai = [{'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555', 'pardes_szint': 'Peshat'},
+                 {'igehely': 'Ez 8:17', 'gerinc_elem': 'H2555', 'pardes_szint': 'Remez'},
+                 {'igehely': 'Ez 12:19', 'gerinc_elem': 'H2555', 'pardes_szint': 'Peshat/Drash'},
+                 {'igehely': '1Móz 6:11', 'gerinc_elem': 'H2555', 'pardes_szint': 'Remez'},
+                 {'igehely': 'Jer 6:7', 'gerinc_elem': 'H2555', 'pardes_szint': 'Remez'}]
+        self.assertEqual(('Ez', 7, 12), self.LG.lanc_mag(m, sorai))
+        szavak, mag = self.LG.lanc_szavak(m, sorai)
+        self.assertEqual(('Ez', 7, 12), mag)
+        self.assertEqual([('H2555', ['Ez 7:23', 'Ez 8:17', 'Ez 12:19'])], szavak)
+
+    def test_bevezeto_a_peshat_magot_es_a_kulcsszavak_szamat_mondja(self):
+        blokk = self.LG.blokk_visszhang(self.m, self.sorai)
+        self.assertIn('A lánc 6 kulcsszava', blokk)
+        self.assertIn('Peshat-magjának (1Móz 3–9) azon verse', blokk)
+        self.assertNotIn('genezisi mag', blokk)
+        self.assertNotIn('l. 1.2)', blokk)
 
     def test_toran_kivul_nincs_targum(self):
         # a kód ága megmarad arra a motívumra, amelynek a negatív kritériuma Tórán kívüli magot nevez meg
-        m = {'id': 'TESZT-001', 'negativ_kriterium': 'a hely az Ez 7–8 láncára utal vissza'}
+        m = {'id': 'TESZT-001', 'negativ_kriterium': 'a hely az Ez 7–8 láncára utal vissza'}  # Tórán kívüli gerinc
         sorai = [{'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555'}, {'igehely': 'Ez 8:17', 'gerinc_elem': 'H2555'}]
         ell = 'teszt, 2026-11-08: kézi átnézés'
 
