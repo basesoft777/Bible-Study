@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f176-visszhang-adat-c1579f
 ad: új licencelt adatkészletek (Sefaria PD Targum, Clementina, SBLGNT-apparátus, TAGNT-változatjelölés) a konkordancia/ alatt, datasetek.tsv és licencek.tsv soraival; BDB rokon írások gyorsítótára és lekérő szkript, első futás a HAMART-001 láncszavaira; forrásonkénti arány-kapu a nyílt mag kapujában (1% / 5%)
-kovetkezo: Te: [elteres_kor 1/2] /elteres F176 — újraellenőrzés függ: naplok/ELLENOR_F176_2.md
+kovetkezo: Te: [elteres_kor 1/2] /elteres F176 — az ELLENOR_F176_2 ELTÉRÉS (5 tétel), a 2. kör besorolása egyeztetésre vár
 munka: folyamat
 olvas: [adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md, konkordancia/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/elofordulasok.tsv, eszkozok/nyilt_mag_kapu.py]
 ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/BDB_rokon_irasok.tsv, konkordancia/VISSZHANG_README.md, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/visszhang/, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_visszhang.py, naplok/F176_jelentes.md, nyilt_mag/]
