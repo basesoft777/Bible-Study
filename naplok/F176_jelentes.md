@@ -184,7 +184,7 @@ Megjegyzés a kontextusról: az `kontextus` oszlop a szócikk szövegéből vett
 - A **forrás tételszáma nincs kódba írva**: a `konkordancia/VISSZHANG_README.md` gépi olvasású tábláján vagy az `adat/datasetek.tsv` `fajl` oszlopán át a fájl adatsorainak száma.
 - A nyílt mag tétele: az `elofordulasok.tsv` sora, amelynek `forras_dataset` (`;`-vel tagolt) vagy `szotar` oszlopa a forrást nevezi (sor, nem egyedi forrástétel: felső becslés).
 - **A küszöbök indoka:** óvatos mérnöki értékek, **jogi alapjuk nincs** (a #86 terv 6. szakasz 13. pontja).
-- Mai kimenet (jelzés-szint): BDB 131 / 8 099 = 1,62% (**FIGYELMEZTETÉS** — a meglévő nyílt mag BDB-hivatkozásai; nem az új források); TAGNT 3 / 142 096; TAHOT 4 / 469 300; Thayer 20 / 5 426 = 0,37%; TBESG 6 / ? (a tételszám nem állapítható meg: nincs a `datasetek.tsv`-ben); a visszhang-források (Targum_PD, Vulgata_Clementina, SBLGNT_apparatus, TAGNT_valtozatok, BDB_rokon_irasok) 0%.
+- Mai kimenet (jelzés-szint): BDB 131 / 8 099 = 1,62% (**FIGYELMEZTETÉS** — a meglévő nyílt mag BDB-hivatkozásai; nem az új források); TAGNT 3 / 142 096; TAHOT 4 / 469 300; Thayer 20 / 5 426 = 0,37%; TBESG 6 / ? (a tételszám nem állapítható meg: nincs a `datasetek.tsv`-ben; **FIGYELMEZTETÉS** az F176.9 óta); a visszhang-források (Targum_PD, Vulgata_Clementina, SBLGNT_apparatus, TAGNT_valtozatok, BDB_rokon_irasok) 0%.
 - Teszt: `eszkozok/teszt_visszhang.py` (0,5% → rendben; 2% → FIGYELMEZTETÉS; 6% → BUKÁS; 1,0% és 5,0% nem lép át; a gyorsítótár második futása nem kér le újra).
 
 ## 5. A `nyilt_mag/` csomag újragenerálása (hatókör-megjegyzés)
@@ -193,18 +193,17 @@ A `licencek.tsv` új sorai a generált nyílt mag `forrasok_es_licencek.tsv`-jé
 
 ## 6. Ellenőrzések kimenete
 
-A végső futás (az utolsó adat-commit után; a jelentés commitja előtt):
+A végső futás (a javítókör 2/2 minden adat- és kódjavítása után, a jelentés commitja előtt; friss kimenet, 2026-11-08):
 
 ```
 $ python eszkozok/ellenoriz.py
-## Összesítő
-RENDBEN: 25 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 10          (kilépési kód 0; az alapállapot a main-en azonos: 25 / 0 / 2 / 10)
+RENDBEN: 25 | SÉRTÉS: 0 | KÉZI: 2 | JELENTÉS: 10          (kilépési kód 0; az alapállapot a main-en azonos)
 
 $ python eszkozok/teszt_visszhang.py
-Ran 17 tests in 0.747s
+Ran 20 tests in 5.374s
 OK                                                         (kilépési kód 0)
 
-$ python eszkozok/nyilt_mag_kapu.py                        (teljes futás, újragenerálással)
+$ python eszkozok/nyilt_mag_kapu.py                        (újragenerálás nélkül; bajtazonos ellenőrzés zöld)
 ARANY  BDB: 131 / 8099 = 1.62%
 ARANY  BDB_rokon_irasok: 0 / 5 = 0.00%
 ARANY  SBLGNT_apparatus: 0 / 6934 = 0.00%
@@ -215,10 +214,21 @@ ARANY  TBESG: 6 / ? (a forrás tételszáma nem állapítható meg)
 ARANY  Targum_PD: 0 / 15142 = 0.00%
 ARANY  Thayer: 20 / 5426 = 0.37%
 ARANY  Vulgata_Clementina: 0 / 31434 = 0.00%
-nyílt mag kapu: 0 BUKÁS, 18 FIGYELMEZTETÉS                 (kilépési kód 0; 17 meglévő KJV/angol-funkciószó figyelmeztetés + 1 új: BDB 1,62% > 1%)
+nyílt mag kapu: 0 BUKÁS, 19 FIGYELMEZTETÉS                 (kilépési kód 0; 17 meglévő KJV/angol-funkciószó figyelmeztetés + BDB 1,62% > 1% + TBESG tételszám ismeretlen)
 
 $ python eszkozok/feladatok.py ellenoriz
 190 brief, 0 hiba, 0 figyelmeztetés                        (kilépési kód 0)
+
+$ python eszkozok/teszt_nyilt_mag.py
+Ran 59 tests in 172.518s
+OK                                                         (kilépési kód 0)
+
+$ python eszkozok/ellenorzes/futtat.py --valtozott <a main-hez képesti diff fájljai> --diff-alap origin/main --diff-fej HEAD
+E32: 0 találat (a három DT-F176a hiba megszűnt)
+E26: HIBA 1 -- naplok/ELLENOR_F176_2.md:21 (a független ellenőr jelentése említi a „DT630” számot; a jelentés változatlan marad, nem szerkeszthető)
+E30: 5 FIGYELMEZTETÉS (köztük 301456c7 „vesz” = DT-F176f, és ennek a körnek két commit-üzenete: 097a932b, 6a2413e8; a kimenet csak hármat sorol fel)
+E25: 3, E27: 42, E34: 45 (mind régi, a main-en is meglévő jelentés-szintű találat); a többi ellenőrzés 0
+kilépési kód 1                                             (az E26 HIBA miatt)
 ```
 
 Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyilt_mag.py` 59 teszt OK; `teszt_ellenoriz_30/31/32/33/35.py` OK.
