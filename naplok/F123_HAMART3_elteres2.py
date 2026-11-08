@@ -25,7 +25,7 @@ def t2(irj):
     ut = 'adat/jeloltek.tsv'
     s = olvas(ut)
     a = 'ugyanaz az ige+tárgy szerkezet, mint a LXX 1Móz 6:11-ben (ἐφθάρη … ἡ γῆ)'
-    b = 'ugyanaz az ige, ugyanarra a földre, mint a LXX 1Móz 6:11-ben, ahol a föld az alany (ἐφθάρη … ἡ γῆ)'
+    b = 'a föld megromlásának szerkezete: ugyanaz az ige, ugyanarra a földre, mint a LXX 1Móz 6:11-ben, ahol a föld az alany (ἐφθάρη … ἡ γῆ)'
     n = [i for i, l in enumerate(s) if l.startswith('HAMART-001\tJel 19:2\t') and a in l]
     assert len(n) == 1
     s[n[0]] = s[n[0]].replace(a, b)
