@@ -43,7 +43,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 8 |
 | `elofordulasok.tsv` | 251 |
-| `forrasok_es_licencek.tsv` | 54 |
+| `forrasok_es_licencek.tsv` | 59 |
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 539 |

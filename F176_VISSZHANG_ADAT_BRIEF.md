@@ -5,14 +5,17 @@ kod: VISSZHANG_ADAT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f176-visszhang-adat-c1579f
 ad: új licencelt adatkészletek (Sefaria PD Targum, Clementina, SBLGNT-apparátus, TAGNT-változatjelölés) a konkordancia/ alatt, datasetek.tsv és licencek.tsv soraival; BDB rokon írások gyorsítótára és lekérő szkript, első futás a HAMART-001 láncszavaira; forrásonkénti arány-kapu a nyílt mag kapujában (1% / 5%)
-kovetkezo: a lapra írás (lexikon_general.py) a HAMART-minta elfogadása után, a lapszerkezeti átalakítással egy körben; tanúréteg (sermonindex, Sefaria links) a következő fázis
+kovetkezo: a lapra írás (lexikon_general.py) a HAMART-minta elfogadása után, a lapszerkezeti átalakítással egy körben; tanúréteg (sermonindex, Sefaria links) a következő fázis; nyitva: N-F176a, N-F176b, N-F176c
 munka: folyamat
 olvas: [adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md, konkordancia/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/elofordulasok.tsv, eszkozok/nyilt_mag_kapu.py]
-ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/BDB_rokon_irasok.tsv, konkordancia/VISSZHANG_README.md, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/visszhang/, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_visszhang.py, naplok/F176_jelentes.md]
+ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/BDB_rokon_irasok.tsv, konkordancia/VISSZHANG_README.md, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/visszhang/, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_visszhang.py, naplok/F176_jelentes.md, nyilt_mag/]
 fugg: [162, 170]
-nem_fugg: [38, 48, 123, 146]
+nem_fugg: [38, 48, 123, 146, 178]
+pr: https://github.com/basesoft777/Bible-Study/pull/649
+lezarva_osszegzes: négy licencelt visszhang-tábla (Targum_PD 15 142, Vulgata_Clementina 31 434, SBLGNT_apparatus 6 934, TAGNT_valtozatok 11 777), BDB_rokon_irasok gyorsítótár a HAMART-001 láncszavaira, forrásonkénti arány-kapu (1% / 5%); DT630 (forrásszámozás, forras_kulcs), DT631 (kereskedelmi=igen); három javítókör (ELLENOR_F176, _2, _3); a lexikonlap érintetlen
 ---
 
 # F176_VISSZHANG_ADAT_BRIEF.md — A visszhang-réteg adatrétege
