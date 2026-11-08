@@ -33,6 +33,7 @@ Ellenőrzések (azonosító — súlyosság):
     TERMEKRETEG  a lexikon szövegének mezője (kapcsolodas, kapcsolatok funkcio/indoklas, jelentes_hu) a csomagban; a funkció nem
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
+    SZERKESZTO   „felhasználó” / „orkesztrátor” / „the user's decision” a csomagban (F178.6)              — BUKÁS
     OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
     ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
@@ -270,7 +271,11 @@ def ell_forditas(fajlok):
                     if en:
                         ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'angol cella üres magyar mező mellett'))
                     continue
-                if t and t['forras_hash'] != E.szoveg_hash(hu):
+                # F178.6: a tárolt fordítás a szerkesztői csere előtti magyar szövegre készült; friss, ha a forrása a
+                # csere után a mai cella
+                if t and t['forras_hash'] != E.szoveg_hash(hu) and not (
+                        t['forras_hash'] == E.szoveg_hash(t.get('forras_hu', ''))
+                        and E.szerkesztoi_egyezik(t.get('forras_hu', ''), hu)):
                     ki.append(Talalat('FORDITAS', BUKAS, tabla, n, '%s / %s' % (o, k),
                                       'a fordítás elavult: a magyar forrás változott (újrafordítandó)'))
                     continue
@@ -283,7 +288,7 @@ def ell_forditas(fajlok):
                     continue
                 if not fm.startswith('gépi fordítás ('):
                     ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'angol cella gépi-fordítás jelölés nélkül'))
-                if not t or t['angol'] != en:
+                if not t or (t['angol'] != en and E.szerkesztoi(t['angol']) != en):   # F178.6: a csere után
                     ki.append(Talalat('FORDITAS', BUKAS, tabla, n, en[:60], 'az angol cella nem a tárolt fordítás'))
                 elif t['modell'] not in fm:
                     ki.append(Talalat('FORDITAS', BUKAS, tabla, n, fm, 'a jelölés nem a fordító modellt nevezi meg'))
@@ -450,6 +455,23 @@ def ell_osis(fajlok):
                 if vart != k:
                     ki.append(Talalat('OSIS', BUKAS, rel, n, '%s / %s' % (hu, k),
                                       'az OSIS-kulcs nem a magyar igehely leképezése (%s)' % vart))
+    return ki
+
+
+# F178.6: a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a csomagban; a döntés olvasói neve
+# „szerkesztői döntés” / „editorial decision” (a felhasználó jóváhagyásával, 2026-11-08: „vegyük fel / mehet”).
+SZERKESZTO_RX = re.compile(r"\b(?:[Ff]elhasználó\w*|[Oo]rkesztrátor\w*|[Oo]rchestrator\w*|user's decision|"
+                           r"[Tt]he user\b|\(the user,|\bUser, \d{4})")
+
+
+def ell_szerkeszto(fajlok):
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        for n, sor in enumerate(sz.split('\n'), 1):
+            m = SZERKESZTO_RX.search(sor)
+            if m:
+                ki.append(Talalat('SZERKESZTO', BUKAS, rel, n, kor(sor, m),
+                                  'munkafolyamat-szereplő a csomagban (olvasói név: szerkesztői döntés)'))
     return ki
 
 
@@ -718,7 +740,8 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany):
+              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
+              ell_szerkeszto):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
