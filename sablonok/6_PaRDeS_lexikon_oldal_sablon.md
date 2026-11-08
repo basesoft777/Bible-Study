@@ -1,5 +1,7 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
+*v4 — 2026.11.08 (F178): az új lapszerkezet és a HAMART-001 regressziós kapui — a fájl végén, „Az új lapszerkezet és a HAMART-001 regressziós kapui”.*
+
 *v3.1 — 2026.11.02 (F123.3, DT546, DT547): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
 
 *v3 — 2026.09.22 (LEXV2_2): a TUDOMÁNYOS változat oldalszerkezete
@@ -511,3 +513,17 @@ igehelyre (nem csak mintavétellel), és a lexikai/tematikus
 kapcsolatok explicit el vannak-e választva egymástól.*
 
 *Olvasói bevezető (2026-11-03, a felhasználó észrevétele):* a „Mit mutat ez a rész?” címke nem látszik; az összefoglaló bekezdés marad, a generátor a bekezdés végén álló láthatatlan jellel (`<!-- olvasói -->`) azonosítja.
+
+## Az új lapszerkezet és a HAMART-001 regressziós kapui (v4, F178)
+
+*v4 — 2026.11.08 (F178.3–F178.5, a felhasználó jóváhagyásával: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”; „Számozzuk is át / ne legyen b/ alszekció. Folyamatos számozás”). Egyeztetett eltérés: az új szerkezet első lépésben csak a HAMART-001 lapján áll (`lexikon_general.UJ_LAPSZERKEZET`); a többi lap a felhasználó egyszeri átnézése után egy körben követi. Ahol ez a szakasz és a fenti A) rész eltér, az új szerkezetű lapon ez az irányadó.*
+
+**Szakaszrend (folyamatos számozás, „/b” alszakasz nincs):** Kivonat · Tartalomjegyzék · Jelmagyarázat · **1. Döntési út** (1.1 Mit keresünk · 1.2 Hol kerestünk · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések; makett: artifact `BWNbfmsofYpnfT9v87of1G`) · **2. Előfordulások** (2.1 Az igehelyek szövege) · **3. Kizárt és vizsgált helyek** · **4. Szótári háttér** (elején az áttekintő tábla: szavanként kiejtés, alapjelentés, LXX-megfelelő, helyek száma; a szótári pontok 4.1–4.14; 4.11 a visszhang-blokk) · **5. LXX-fordítói döntések** · **6. Kereszthivatkozások** · **7. Kapcsolatok** · **8. Kapcsolódó motívumok** · **9. Értelmezés** · **10. Alkalmazás** · **11. Módszertan és nyitott kérdések** · **12. Irodalom és idézés** · Kolofon. A nevesített tanítói rész nem áll a lapon (a `tanitoi` rés sorsa: DT-F178b).
+
+**A Döntési út szabályai:** minden vers egyszer számít; az összeadás-sor kiírva (a motívumhoz tartozik + csoportosan kizárva + egyenként elutasítva [+ döntésre vár] = megvizsgált vers); a döntés nélküli vers száma kimondva; a csoportos és az egyenkénti okok lenyitható részletekben; az 1.4 a beépített sorok szavai szerint csoportosít, tételenként a `funkcio` magyarázatával.
+
+**Olvasható döntések, belső jel olvasói formában:** fájlnév, döntés- és feladatazonosító, a blokk technikai kódja, a nyers proveniencia-sor helyett olvasói forrásnév és dátum; a nyers proveniencia-sor a lap forrásában HTML-megjegyzésben megmarad (CLAUDE.md 1. szabály). A döntés olvasói neve „szerkesztői döntés”.
+
+**Visszhang-blokk (4.11; DT639, DT-F178d):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat), a cella a fordítás szava kiejtéssel és az `n/N`; „ugyanaz a szócsalád”, ha két lemma áll; betoldás-sor; a következtetés az alapvonal szerint (LXX: a láncon kívül ≥ 80% szokásos fordítás, nem lelet; < 40% kiemelt; Targum, Vulgata: nem mérhető); kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza; rokon nyelvi háttér csak valódi rokon nyelvvel, nyelvenként egy sor; minden héber, arámi, görög, arab, etióp, szír szónál kiejtés. Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
+
+**A HAMART-001 regressziós kapui (HIBA; `ellenoriz.py` 40. szabály, az új szerkezetű lapon SÉRTÉS, a régin a 2. kiadás tétele):** minden igehelyen kerek próza + „Funkció:” sor; olvasói kapu 0 BUKÁS **kivétel nélkül** (a Tartalomjegyzék, a Jelmagyarázat, a Kolofon, az Irodalom, a technikai dőlt sor és a lábjegyzet is: Károli-idézet, belső jel, „felhasználó” / „orkesztrátor”); a Döntési út számai összeadódnak; döntés nélküli vers 0; a Nave-blokk nem üres. Mellettük: határ-frissesség (39. szabály, Feed 5. kritérium), a beépített sor nem esik a csoportos kizárási okba (37.), nem „csak e szó miatt” (38.), Nave angol maradék nélkül (olvasói kapu NAVE_ANGOL).
