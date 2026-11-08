@@ -225,7 +225,10 @@ Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyi
 
 ## 7. Nyitott kérdések (helyőrzők: `dontesek/uj/f176-visszhang-adat-c1579f.md`, `nyitott/uj/f176-visszhang-adat-c1579f.md`)
 
-- **DT-F176a — versszámozás-feloldás.** A Targum/MT, Vulgata és NRSV ↔ Károli átszámozás tartalmi döntés (nézet-oldali feloldás / külön `karoli_vers` oszlop / kézi). Mért hézag: l. 2.
+- **DT-F176a — versszámozás-feloldás.** 🟢 Eldöntve (az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08)): (a) — a források saját számozása marad, a Károli-feloldás nézetoldali (versmegfeleltetés, lapszerkezeti generátor-kör); a `karoli_kulcs` oszlop `forras_kulcs` néven csak a szám létezését jelzi (F176.12). Hamis egyezések (ELLENOR_F176 2.): Vulgata Zsolt 22:1 = Károli Zsolt 23:1; Targum Jóel 3:1 = Károli Jóel 2:28; Vulgata Dán 3:24 Azariás-kiegészítés.
+- **DT-F176c — a Sefaria-feltételeknél elmaradt megállás (ELLENOR_F176 1.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva, utólag a DT-F176b rendezte.
+- **DT-F176d — a licenc-commit az adatcommit után (ELLENOR_F176 3.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva (egyik licenc sem lett NC/BY-SA, a kizárás a kódban volt), történet-átírás nincs.
+- **DT-F176e — a `kontextus` a token körüli szövegrész (ELLENOR_F176 7.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): a token körüli szövegrész marad, mert az mutatja a rokon szót; az indok a `SEMA.md`-ben és a `VISSZHANG_README.md`-ben.
 - **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** 🟢 Eldöntve (a felhasználó, 2026-11-08): `kereskedelmi=igen`, l. 1.1.
 - **N-F176a — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria — 12 968 lábjegyzet, nincs átvéve — külön recepciós forrás lehet).
 - **N-F176b — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; addig a „nincs rokon írás” ezekre nem állítható.
