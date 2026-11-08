@@ -13,7 +13,7 @@ munka: folyamat
 olvas: [adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md, konkordancia/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/elofordulasok.tsv, eszkozok/nyilt_mag_kapu.py]
 ir: [konkordancia/Targum_PD.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/BDB_rokon_irasok.tsv, konkordancia/VISSZHANG_README.md, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/visszhang/, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_visszhang.py, naplok/F176_jelentes.md, nyilt_mag/]
 fugg: [162, 170]
-nem_fugg: [38, 48, 123, 146]
+nem_fugg: [38, 48, 123, 146, 178]
 pr: https://github.com/basesoft777/Bible-Study/pull/649
 lezarva_osszegzes: négy licencelt visszhang-tábla (Targum_PD 15 142, Vulgata_Clementina 31 434, SBLGNT_apparatus 6 934, TAGNT_valtozatok 11 777), BDB_rokon_irasok gyorsítótár a HAMART-001 láncszavaira, forrásonkénti arány-kapu (1% / 5%); DT-F176a (forrásszámozás, forras_kulcs), DT-F176b (kereskedelmi=igen); három javítókör (ELLENOR_F176, _2, _3); a lexikonlap érintetlen
 ---

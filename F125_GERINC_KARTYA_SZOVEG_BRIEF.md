@@ -14,7 +14,7 @@ kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F125_3 1–4. a korlát fölött, enge
 olvas: [F124_GERINC_KARTYA_BRIEF.md, naplok/GERINC_KARTYA_naplo.md, F152_ISTENTISZT_TERV_HATRALEK_BRIEF.md, F151_MOTIVUM_HATAR_BRIEF.md, DONTESEK.md, MUNKAMENET.md, CLAUDE.md, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, eszkozok/ellenoriz.py, eszkozok/kiejtes_szoveg.py, eszkozok/heber_kiejtes.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/lexikon_general.py, adat/SEMA.md, adat/kiejtes_kivetelek.tsv]
 ir: [MUNKAMENET.md, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, eszkozok/proza_lefedettseg.py, eszkozok/teszt_proza_lefedettseg.py, eszkozok/ellenoriz.py, eszkozok/kiejtes_szoveg.py, .claude/commands/kiadas.md, .claude/agents/lektor.md, naplok/GERINC_KARTYA_SZOVEG_naplo.md, naplok/F125_SZOVEGJAVASLAT.md]
 fugg: [124]
-nem_fugg: [12, 74, 121, 123, 131, 148, 152]
+nem_fugg: [12, 74, 121, 123, 131, 148, 152, 178]
 ---
 
 # F125_GERINC_KARTYA_SZOVEG_BRIEF.md — a munkamenet és a sablonok frissítése
