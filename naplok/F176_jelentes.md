@@ -10,7 +10,7 @@ a fejléc `allapot` értékét a végrehajtó nem állítja `lezarva`-ra.
 | | |
 |---|---|
 | Mérce | „kimenetbe tehető” (NC kizáró; közkincs, CC0, CC BY mehet). Az elsődleges helyeken minden licencet újraellenőriztem; **egyik sem NC vagy BY-SA, egyik sem tért el a várttól — ⛔ nem történt.** |
-| Táblák | Targum_PD 15 142 sor · Vulgata_Clementina 31 434 sor · SBLGNT_apparatus 6 934 sor · TAGNT_valtozatok 11 777 sor · BDB_rokon_irasok 6 sor (HAMART-001 első futás) |
+| Táblák | Targum_PD 15 142 sor · Vulgata_Clementina 31 434 sor · SBLGNT_apparatus 6 934 sor · TAGNT_valtozatok 11 777 sor · BDB_rokon_irasok 5 sor (HAMART-001 első futás; az egybetűs szír token kiszűrve, F176.8) |
 | Eltérés / figyelmeztetés | (1) A Sefaria ÁSZF kereskedelmi-használati mondata miatt a két Sefaria-eredetű tábla előbb `kereskedelmi=feltetelesen` volt; a DT-F176b döntéssel (a felhasználó, 2026-11-08) `igen`; (2) a Sefaria lexikon-adatán nincs licencmező (BDB); (3) a versszámozás-feloldás nincs elvégezve (DT-F176a); (4) a `nyilt_mag/` csomagot újra kellett generálni (l. 5.) |
 | Kapu | `nyilt_mag_kapu.py`: 0 BUKÁS; a mai nyílt magra az ARANY ellenőrzés egyetlen forrást jelez 1% felett: BDB 131 / 8 099 = 1,62% (FIGYELMEZTETÉS) |
 
@@ -150,7 +150,7 @@ SHA-256 és sorszám: `konkordancia/VISSZHANG_README.md` 1. szakasza (gépi olva
 | Vulgata_Clementina.tsv | 31 434 | `738c41858989110dd7a8ce58d54be46a23f7ca8a649d2790e699c4acf7c5eeab` | 1 269 |
 | SBLGNT_apparatus.tsv | 6 934 | `127281714c02e8e23a9dc5d65dcee882de05904a6290a302ec8a5576f59f2e5d` | 1 |
 | TAGNT_valtozatok.tsv | 11 777 | `a1eec149b07d82928b19f9ac13f463209605f227da03bce5a99c52cfa4dcb2cc` | 0 |
-| BDB_rokon_irasok.tsv | 6 | l. 3. (gyorsítótár, nő) | — |
+| BDB_rokon_irasok.tsv | 5 | l. 3. (gyorsítótár, nő) | — |
 
 - **Targum:** 15 142 vers = Onkelos (5 könyv) + Jonatán (21 könyv); üres vers 0; HTML-jelölés 0.
 - **Vulgata:** 66 kanonikus könyv, 31 434 vers; kimaradt: TOB, JDT, WIS, SIR, BAR, 1MA, 2MA.
@@ -172,7 +172,7 @@ A Sefaria `/api/words` a **szóalak-indexben** keres (nem fejszóban): az `אר�
 | H2555 | חמס | 1 | 0 | elvárt: nincs rokon szó — egyezik |
 | H6093 | עצבון, עצבונ | **0** | 0 | elvárt: nincs rokon szó — az eredmény egyezik, de oka az, hogy a Sefaria **nem adott szócikket** (nem az, hogy a szócikk üres) |
 | H6975 | קוץ | 2 | 0 | elvárt: nincs rokon szó — egyezik |
-| H7843 | שחת | 1 | 4 (arab سَحَتَ; etióp ሰሐጠ; szír ܫܰܚܶܛ, ܬ) | **elvárt: arab, etióp és szír — egyezik** |
+| H7843 | שחת | 1 | 3 (arab سَحَتَ; etióp ሰሐጠ; szír ܫܰܚܶܛ; az egybetűs „ܬ” kiszűrve, F176.8) | **elvárt: arab, etióp és szír — egyezik** |
 
 Ellenpróba a briefhez képest: a H7843 mindhárom írással megvan; a H2555 és H6975 szócikke megvan, rokon írás nélkül; a H6093 és a H1863 esetében a Sefaria szóalak-keresése **nem talál szócikket**, ezért ott a „nincs” hiányt jelent, nem negatív leletet (CLAUDE.md 3. szabály: a hiányt nem töltöm ki). A `# lekérdezve:` fejlécsorok `bdb_szócikk=0` értéke ezt jelöli.
 
@@ -206,7 +206,7 @@ OK                                                         (kilépési kód 0)
 
 $ python eszkozok/nyilt_mag_kapu.py                        (teljes futás, újragenerálással)
 ARANY  BDB: 131 / 8099 = 1.62%
-ARANY  BDB_rokon_irasok: 0 / 6 = 0.00%
+ARANY  BDB_rokon_irasok: 0 / 5 = 0.00%
 ARANY  SBLGNT_apparatus: 0 / 6934 = 0.00%
 ARANY  TAGNT: 3 / 142096 = 0.00%
 ARANY  TAGNT_valtozatok: 0 / 11777 = 0.00%

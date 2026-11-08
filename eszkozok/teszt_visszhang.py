@@ -155,6 +155,12 @@ class BdbGyorsitotar(unittest.TestCase):
         self.assertEqual(keres, 1)
         self.assertEqual(len(self.hivas) - n0, 1)
 
+    def test_egybetus_token_kiszurve(self):
+        adat = [{'parent_lexicon': 'BDB Dictionary', 'headword': 'x', 'strong_numbers': ['7843'],
+                 'content': {'senses': [{'definition': 'Aramaic שחת , ܫܚܛ (assim. of ܬ ) mutilate'}]}}]
+        sorok = B.feldolgoz('H7843', adat, '2026-11-08')
+        self.assertEqual([s[3] for s in sorok], ['ܫܚܛ'])           # az egybetus "ܬ" nem rokon szoalak
+
     def test_kontextus_max_120(self):
         jel, keres, sorok = B.fut(['H7843'], self.ki, self.lekero)
         for s in sorok:

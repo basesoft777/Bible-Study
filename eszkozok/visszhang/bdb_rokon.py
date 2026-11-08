@@ -213,6 +213,8 @@ def feldolgoz(strong, adat, ts):
         for ny, tok, k in tokenek(szoveg):
             if (ny, tok) in lattuk:
                 continue
+            if sum(1 for ch in tok if unicodedata.category(ch) not in ('Mn', 'Me')) < 2:
+                continue            # egybetűs token (pl. "assim. of ܬ"): nem rokon szóalak
             lattuk.add((ny, tok))
             prov = 'scope=Sefaria /api/words (%s; strong_numbers∋%s) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=%s' % (
                 e['parent_lexicon'], szam, ts)
