@@ -6514,10 +6514,33 @@ def lanc_szo_jelentes(strong, versek):
     return alap[0] if alap[1] else ''
 
 
+def _heber_kulcs(szo):
+    """A héber szó összevetési alakja: NFC, a kantillációs jelek (U+0591–U+05AF) és a meteg nélkül."""
+    szo = unicodedata.normalize('NFD', szo or '')
+    return unicodedata.normalize('NFC', ''.join(c for c in szo if not ('\u0591' <= c <= '\u05af' or c == '\u05bd')))
+
+
+def strong_valtozat_versben(strong, versek):
+    """A Strong-szám betűs változata (TBESH `H2403a` / `H2403b`), amely a versekben ténylegesen áll (ELLENOR_F178_2 3.):
+    a TAHOT szótöve (`Szótő`) a versben, összevetve a változatok TBESH-lemmájával. Egy változat vagy azonosítás híján
+    maga a Strong-szám (a `lemma_kiejtes` alapváltozatra esik vissza)."""
+    pontos, _ = tbesg_tbesh_index()
+    valtozatok = [k for k in pontos if len(k) == len(strong) + 1 and k.startswith(strong) and k[-1].isalpha()]
+    if len(valtozatok) < 2 or not versek:
+        return strong
+    idx = tahot_vers_index()
+    tovek = {_heber_kulcs(r.get('Szótő')) for v in versek for r in idx.get(v, []) if r['Strong-szám'] == strong}
+    talalt = [k for k in sorted(valtozatok)
+              if any(_heber_kulcs(x.strip()) in tovek for x in pontos[k][0].split(','))]
+    return talalt[0] if len(talalt) == 1 else strong
+
+
 def _lanc_szo_cim(strong, versek=None):
+    """A lánc-szó címe a 4.11-ben és a BDB-háttérben: a lemma a láncversek saját Strong-változatából (ELLENOR_F178_2
+    3.: 1Móz 4:7 → H2403b חַטָּאת, nem az alapváltozat חַטָּאָה-ja), kiejtéssel és a láncbeli jelentéssel."""
     reszek = []
     for s in strong.split('+'):
-        lk = lemma_kiejtes(s)
+        lk = lemma_kiejtes(strong_valtozat_versben(s, versek or []))
         reszek.append(lemma_cim(lk) if lk else s)
     jel = lanc_szo_jelentes(strong.split('+')[0], versek or [])
     return ' · '.join(reszek) + ((' — %s' % jel) if jel else '')

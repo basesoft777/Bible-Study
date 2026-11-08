@@ -198,6 +198,18 @@ class LancAMotivumadatbol(unittest.TestCase):
         self.assertNotIn('genezisi mag', blokk)
         self.assertNotIn('l. 1.2)', blokk)
 
+    def test_lemmaalak_a_vers_strong_valtozatabol(self):
+        # ELLENOR_F178_2 3.: az 1Móz 4:7 szava a TBESH H2403b (חַטָּאת, chattát), nem az alapváltozat H2403a (חַטָּאָה)
+        self.assertEqual('H2403b', self.LG.strong_valtozat_versben('H2403', ['1Móz 4:7']))
+        cim = self.LG._lanc_szo_cim('H2403', ['1Móz 4:7'])
+        # a pontozás kódpont-sorrendje forrásonként eltér: összevetés a normalizált alakon
+        self.assertEqual(self.LG._heber_kulcs('חַטָּאת'), self.LG._heber_kulcs(cim.split(' (')[0]), cim)
+        self.assertIn('(chattát)', cim)
+        self.assertNotIn('chattáá', cim)
+        # változat nélküli szó és vers nélküli hívás: maga a Strong-szám
+        self.assertEqual('H0779', self.LG.strong_valtozat_versben('H0779', ['1Móz 3:14']))
+        self.assertEqual('H2403', self.LG.strong_valtozat_versben('H2403', []))
+
     def test_toran_kivul_nincs_targum(self):
         # a kód ága megmarad arra a motívumra, amelynek a negatív kritériuma Tórán kívüli magot nevez meg
         m = {'id': 'TESZT-001', 'negativ_kriterium': 'a hely az Ez 7–8 láncára utal vissza'}  # Tórán kívüli gerinc
