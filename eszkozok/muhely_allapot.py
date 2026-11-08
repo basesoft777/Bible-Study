@@ -365,6 +365,13 @@ def kriterium_5(motivum):
     megvalaszolt = [c for c in cimek if c in zart]
     n -= len(megvalaszolt)
     cimek = [c for c in cimek if c not in zart]
+    # F178.1: a határ-frissesség kapuja (HIBA) — a modelles rész a mai beépített sorokon készült-e
+    # (`ellenoriz.hatar_frissesseg`, SORÁLLAPOT-jel). Nem friss modelles résszel a lap nem adható ki.
+    import ellenoriz as ELL
+    friss, friss_szoveg = ELL.hatar_frissesseg(os.path.join(GYOKER, 'adat'), motivum)
+    if friss != 'friss':
+        return uj(PIROS, 'a határ-ellenőrzés nem a mai adaton készült (%s)' % friss_szoveg, mero, motivum, cimek,
+                  {'n': n, 'frissesseg': friss})
     return uj(PIROS if n else ZOLD, '%d nyitott kérdés' % n, mero, motivum, cimek, {'n': n})
 
 

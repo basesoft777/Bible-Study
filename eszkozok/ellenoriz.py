@@ -2122,6 +2122,77 @@ def szabaly38_csak_szo(adat_dir):
                            'vagy a sor elutasítva' if peldak else None))
 
 
+# 39. szabály (F178.1, határ-frissesség): a határ-ellenőrzés modelles része a motívum beépített sorainak egy adott
+# állapotára készül. A HAMART-001 határ-ellenőrzése 52 soron futott, a lezárás 60 soron, és 11 határhiba csúszott át.
+# A mérés módja: a modelles rész gépi sorállapot-jele (`<!-- SORÁLLAPOT: n=<sorok> ujj=<sha256[:12]> -->`), amelyet a
+# modelles rész írója a futás elején a `python eszkozok/ellenoriz.py --hatar-ujjlenyomat <ID>` kimenetéből másol be.
+# Az ujjlenyomat a motívum `elofordulasok.tsv`-sorainak rendezett, sorvég-független SHA-256-ja: minden sor-változás
+# (új, törölt vagy módosított sor) megváltoztatja, a sorrend és a CRLF nem. A git-időbélyeg helyett ez azért, mert a
+# munkaágon, rebase és cherry-pick után a commit ideje nem a tartalom ideje, és a sorállapot a fájlból ellenőrizhető.
+# Régi (jel nélküli) modelles résznél a bevezető „N beépített sor” száma a tartalék mérce (csak a darabszám).
+SORALLAPOT_RX = re.compile(r'<!--\s*SORÁLLAPOT:\s*n=(\d+)\s+ujj=([0-9a-f]{12})\s*-->')
+MODELLES_SORSZAM_RX = re.compile(r'(\d+)\s+beépített sor')
+
+
+def hatar_ujjlenyomat(adat_dir, mid):
+    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül)."""
+    with open(os.path.join(adat_dir, 'elofordulasok.tsv'), encoding='utf-8') as f:
+        sorok = [s.rstrip('\r\n') for s in f]
+    sajat = sorted(s for s in sorok if s.split('\t', 1)[0] == mid)
+    return len(sajat), hashlib.sha256('\n'.join(sajat).encode('utf-8')).hexdigest()[:12]
+
+
+def hatar_frissesseg(adat_dir, mid, naplo_dir=None):
+    """(állapot, szöveg): `friss` | `elavult` | `nincs_jel` | `nincs_naplo` | `nincs_modelles`."""
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    ut = os.path.join(naplo_dir, 'HATAR_%s.md' % mid)
+    if not os.path.exists(ut):
+        return 'nincs_naplo', 'nincs naplok/HATAR_%s.md' % mid
+    with open(ut, encoding='utf-8') as f:
+        t = f.read()
+    m = re.search(r'<!-- MODELLES-KEZDET -->(.*?)<!-- MODELLES-V[EÉ]GE -->', t, re.S)
+    modelles = (m.group(1) if m else '').strip()
+    if not modelles or modelles.startswith('*(üres') or len(modelles) < 40:
+        return 'nincs_modelles', 'a HATAR_%s.md modelles része üres' % mid
+    n, ujj = hatar_ujjlenyomat(adat_dir, mid)
+    jel = SORALLAPOT_RX.search(modelles)
+    if jel:
+        if (int(jel.group(1)), jel.group(2)) == (n, ujj):
+            return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
+        return 'elavult', ('a modelles rész n=%s ujj=%s állapotra készült, a mai: n=%d ujj=%s'
+                           % (jel.group(1), jel.group(2), n, ujj))
+    regi = MODELLES_SORSZAM_RX.search(modelles)
+    if regi and int(regi.group(1)) != n:
+        return 'elavult', 'a modelles rész %s beépített sorra készült, a mai %d sor' % (regi.group(1), n)
+    return 'nincs_jel', ('a modelles részben nincs SORÁLLAPOT-jel (a mai: n=%d ujj=%s); a frissesség nem '
+                         'igazolható' % (n, ujj))
+
+
+def szabaly39_hatar_frissesseg(adat_dir, naplo_dir=None):
+    """JELENTÉS minden motívumra, amelynek határ-ellenőrzési modelles része elavult vagy nem igazolhatóan friss. A
+    kiadás kapuja (HIBA) a Feed 5. kritériuma (`muhely_allapot.kriterium_5`): ott a nem friss modelles rész piros, a
+    lap nem adható ki. A CI-ben jelentés, mert a már kiadott lap elavult határa a lap 2. kiadásának tétele (F178.3:
+    a meglévő lap bukása a jelentésbe kerül, nem kivétel és nem kézi folt), és a javítás (a modelles rész
+    újrafuttatása) a felhasználó jóváhagyásához kötött (C-h)."""
+    cim = '39. Határ-frissesség: a modelles rész a mai beépített sorokon készült (F178.1)'
+    if not os.path.exists(os.path.join(adat_dir, 'elofordulasok.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/elofordulasok.tsv')
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    kiadott = kiadott_idk(adat_dir)
+    hibak, jelentes = [], []
+    idk = sorted(n[len('HATAR_'):-len('.md')] for n in os.listdir(naplo_dir)
+                 if n.startswith('HATAR_') and n.endswith('.md')) if os.path.isdir(naplo_dir) else []
+    for mid in sorted(set(idk) | kiadott):
+        allapot, szoveg = hatar_frissesseg(adat_dir, mid, naplo_dir)
+        if allapot == 'friss':
+            continue
+        jelentes.append(
+            '%s%s: %s' % (mid, ' (kiadott)' if mid in kiadott else '', szoveg))
+    return Sor(cim, _verdikt(hibak, jelentes), (len(hibak) or len(jelentes)) or None, hibak or jelentes,
+               megjegyzes=('javítás: a modelles rész újrafuttatása a mai adaton (MUNKAMENET C-h), a jel: '
+                           'python eszkozok/ellenoriz.py --hatar-ujjlenyomat <ID>' if hibak or jelentes else None))
+
+
 def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
     """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
     (Kolofon: MI-nyilatkozat, „Hogyan idézd”, a nyílt adatkészletre mutató mondat; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
@@ -2148,9 +2219,16 @@ def main():
     parser.add_argument('--study', action='append', default=[],
                          help='study-fájl Q1/Q7 ellenőrzéséhez (ismételhető)')
     parser.add_argument('--md', default=None, help='a jelentés Markdown fájlba is')
+    parser.add_argument('--hatar-ujjlenyomat', metavar='ID', default=None,
+                        help='a motívum SORÁLLAPOT-jele a határ-ellenőrzés modelles részéhez (F178.1), majd kilép')
     parser.add_argument('--ag-allapot', choices=['main', 'ag'], default=None,
                         help='a 21. szabály súlyossága (DT440); alapból CI-ben a push a main-re, helyben a kivett ág')
     args = parser.parse_args()
+
+    if args.hatar_ujjlenyomat:
+        n, ujj = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat)
+        print('<!-- SORÁLLAPOT: n=%d ujj=%s -->' % (n, ujj))
+        sys.exit(0)
 
     try:
         _, motivumok = G.tsv_beolvas(os.path.join(args.adat, 'motivumok.tsv'))
@@ -2215,6 +2293,7 @@ def main():
         tabla_sorok.append(szabaly36_csoport_elofordulas(args.adat))
         tabla_sorok.append(szabaly37_beepitett_csoportos_ok(args.adat))
         tabla_sorok.append(szabaly38_csak_szo(args.adat))
+        tabla_sorok.append(szabaly39_hatar_frissesseg(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
