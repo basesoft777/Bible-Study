@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 allapot: nem_indult
-ad: MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
+ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
 kovetkezo: a lapok újragenerálása a lapszerkezeti generátor-körben
 munka: folyamat
 olvas: [konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok_README.md, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/karoli_kh_epseg.py, eszkozok/karoli_kh_szuro.py, naplok/KAROLI_KH_EPSEG_jelentes.md, adat/SEMA.md]
-ir: [konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_KH_MEK_README.md, konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, eszkozok/karoli_kh_szuro.py, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, naplok/F177_jelentes.md]
+ir: [konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, eszkozok/karoli_kh_gyanus_general.py, konkordancia/Karoli_KH_MEK_README.md, konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, eszkozok/karoli_kh_szuro.py, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, naplok/F177_jelentes.md]
 fugg: [176]
 nem_fugg: [38]
 ---
@@ -67,6 +67,7 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `sonnet`). A #176 (`fugg`) a `l
 
 ### F177.4 — Lezárás és jelentés
 - N-F156a és N-F156c lezárása a `NYITOTT_FELADATOK.md`-ben (meglévő sor szerkesztése, a mért számokkal); a DT558 karanténja a `kiesik` szinttel váltódik ki — az ehhez szükséges döntés helyőrzővel a `dontesek/uj/<ágnév>.md`-be (DT-F177a).
+- **A karantén feloldása (a felhasználó, 2026-11-08: „utána a karantént fel kell oldani”):** a javított tábla elkészülte után a karantén (`Karoli_kereszthivatkozasok_gyanus.tsv` és a `karoli_kh_szuro.py` mai kizárása) megszűnik: a `megerositett` sorok — a korábban gyanúsak közül a MEK által megerősítettek is — visszakerülnek a KH-indexbe, a `kiesik` sorok végleg kimaradnak. A `Karoli_kereszthivatkozasok_gyanus.tsv` archiválva marad (ARCHÍV fejléc, nem törlés), a generátora (`karoli_kh_gyanus_general.py`) a javított táblára mutató megjegyzést kap. A lapokon a változás a lapszerkezeti generátor-körben jelenik meg.
 - `naplok/F177_jelentes.md`: a mérések, a MEK-elírások listája, a kiadás-azonosítás eredménye, a licenc-állapot.
 - `python eszkozok/ellenoriz.py`, a meglévő tesztek, `teszt_karoli_kh_mek.py` zöld; független ellenőr; draft PR. Merge a felhasználóé.
 
