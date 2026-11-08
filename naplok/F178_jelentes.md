@@ -66,8 +66,8 @@ Van: az **E28** (`eszkozok/ellenorzes/szabalyok.py` `e28_generalt_nezet_egyezes`
 | Határ-frissesség | 9-es v2, MUNKAMENET C-h | 39. szabály, Feed 5. kritérium | `teszt_muhely_allapot.py` TesztHatarFrissesseg (5) |
 | U2/U3 szétválasztás, U3 nulláról | 9-es v2 1. és 7. szabály, 10-es prompt, MUNKAMENET C-w | — (menetszabály) | — |
 | Szerkesztői döntés | 6-os v4 | olvasói kapu BELSO; nyílt mag SZERKESZTO; 41. szabály (közlemény) | `teszt_nyilt_mag.py` TesztSzerkesztoi (3) |
-| Visszhang 4.11, 1–8. | 6-os sablon „A 4.11 visszhang-blokk szabályai”; 10-es prompt; MUNKAMENET C-vh | olvasói kapu VISSZHANG V1–V6 | `olvaso_szerver/teszt_visszhang_kapu.py` (9; arany minta + 6 rontott másolat) |
-| Kinyerő tábla, két kéz | SEMA 2.53; MUNKAMENET C-vh | `megfelelo_kinyer.py ellenoriz` | — |
+| Visszhang 4.11, 1–8. | 6-os sablon „A 4.11 visszhang-blokk szabályai”; 10-es prompt; MUNKAMENET C-vh | olvasói kapu VISSZHANG V1–V7 (V7: az alapvonal-mondat sávja és számai) | `olvaso_szerver/teszt_visszhang_kapu.py` (18; arany minta 2, rontott másolat és szintetikus tábla V1–V7 9, gépi szabály 3, a lánc a motívumadatból 4) |
+| Kinyerő tábla, két kéz | SEMA 2.53; MUNKAMENET C-vh | `megfelelo_kinyer.py ellenoriz` | `olvaso_szerver/teszt_megfelelo_kinyer.py` (21; az `ellenorzes` mező, a szórend szerinti LXX-kiosztás, a szócsalád) |
 | Arámi kiejtés | — | — | `teszt_heber_kiejtes.py` test_a1 |
 
 ### Egy új motívumnál melyik lépés gondoskodik a visszhangról

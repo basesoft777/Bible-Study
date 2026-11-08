@@ -526,7 +526,7 @@ kapcsolatok explicit el vannak-e választva egymástól.*
 
 **Visszhang-blokk (4.11; DT639, DT-F178d):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat), a cella a fordítás szava kiejtéssel és az `n/N`; „ugyanaz a szócsalád”, ha két lemma áll; betoldás-sor; a következtetés az alapvonal szerint (LXX: a láncon kívül ≥ 80% szokásos fordítás, nem lelet; < 40% kiemelt; Targum, Vulgata: nem mérhető); kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza; rokon nyelvi háttér csak valódi rokon nyelvvel, nyelvenként egy sor; minden héber, arámi, görög, arab, etióp, szír szónál kiejtés. Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
 
-**A 4.11 visszhang-blokk szabályai, tételesen** (DT639, DT-F178d, DT-F178e; kapu: `olvasoi_kapu.py` VISSZHANG, V1–V6;
+**A 4.11 visszhang-blokk szabályai, tételesen** (DT639, DT-F178d, DT-F178e; kapu: `olvasoi_kapu.py` VISSZHANG, V1–V7;
 teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-001 4.11 blokkja):
 
 0. A lánc a motívumadatból (DT-F178g, SEMA 2.53): lánc-szó a beépített sorok egyetlen héber Strongból álló `gerinc_elem`-je (a szópár, a tematikus és a görög elem nem), láncvers a motívum verse, amelyben a szó a héberben áll; ha a negatív kritérium a lánc magját megnevezi („az 1Móz 3–9 láncára”), csak a mag versei. A szabályt a blokk bevezetője kimondja. A kinyerő tábla csak a cellákat adja; lánc-szó a tábla soraiból nem lesz. Tórán kívüli láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)”, és a Targum `N`-jébe nem számít.
