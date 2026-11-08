@@ -66,8 +66,17 @@ sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
 BUKAS, FIGY = 'BUKÁS', 'FIGYELMEZTETÉS'
 ARANY = 'ISTENTISZT-001'
 
-KIZART_SZAKASZ = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
+KIZART_SZAKASZ_REGI = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
+KIZART_SZAKASZ = KIZART_SZAKASZ_REGI
 IRODALOM = '8. Irodalom'
+# F178.4: az új szerkezetű lapon (1. Döntési út … 12. Irodalom) az olvasói kapu kivétel nélkül mér: a Tartalomjegyzék,
+# a Jelmagyarázat, a Kolofon és az Irodalom is olvasói szöveg, a technikai dőlt sor és a lábjegyzet is (a nyers
+# proveniencia-sor a lap forrásában HTML-megjegyzésben áll). A régi szerkezetű lapon a régi mérce, amíg a lap az új
+# körben újra nem generálódik (a felhasználó: „Előbb csak a hamart”, 2026-11-08).
+UJ_SZERKEZET_RX = re.compile(r'(?m)^## 1\. Döntési út[ \t]*$')
+KIVETEL_NELKUL = False
+ELOFORDULAS_SZAKASZ = ('1. Előfordulások', '2. Előfordulások')
+SZOTARI_SZAKASZ = ('2. Szótári', '4. Szótári')
 
 # --- BELSO: belső jelölések (az átvilágítás A4, A21, T3, T14, G4, G5, G7)
 BELSO = [
@@ -178,6 +187,8 @@ class Sor:
     @property
     def olvasoi(self):
         """Olvasói próza-e (az ellenőrzések nagy része csak ezeken fut)."""
+        if KIVETEL_NELKUL:
+            return self.fajta in ('proza', 'tabla', 'cim', 'labjegyzet', 'dolt', 'proveniencia')
         if self.fajta not in ('proza', 'tabla', 'cim', 'labjegyzet'):
             return False
         return not self.szakasz.startswith(KIZART_SZAKASZ)
@@ -226,7 +237,7 @@ def tagol(szoveg):
             def_szoveg = nyers.split(':', 1)[1].strip()
             fajta = 'proveniencia' if re.match(r'(proveniencia|forrás)\s*:', def_szoveg) or 'scope=' in def_szoveg \
                 else 'labjegyzet'
-            lat = def_szoveg
+            lat = re.sub(r'<!--.*?-->', '', def_szoveg)   # F178.4: a nyers proveniencia megjegyzésben áll
         elif t.startswith('|'):
             fajta = 'tabla'
             cellak = re.split(r'(?<!\\)\|', t.strip('|'))
@@ -304,13 +315,24 @@ def kornyezet(s, m, szel=50):
 
 # ----------------------------------------------------------------------------- ellenőrzések
 
+# F178.6: a „felhasználó” mint munkafolyamat-szereplő az új szerkezetű lapon BUKÁS (olvasói név: szerkesztői
+# döntés); a régi szerkezetű lapon a következő körben javul, a belső adat (`jeloltek.tsv` indoklása) nem változik —
+# ezért a minta nem a BELSO listában áll (azt az `ellenoriz.py` 29. szabálya és a `szerep_kizart` is használja)
+FELHASZNALO_RX = re.compile(r'(?<!\w)[Ff]elhasználó\w*')
+
+
 def ell_belso(sorok):
     ki = []
     for s in sorok:
         if not s.olvasoi:
             continue
+        if KIVETEL_NELKUL:
+            m = FELHASZNALO_RX.search(s.szoveg)
+            if m:
+                ki.append(talalat('BELSO', BUKAS, s.n, kornyezet(s.szoveg, m), 'munkafolyamat-szereplő: ' + m.group(0),
+                                  'felhasznalo'))
         for rx, nev in BELSO:
-            if nev == 'belső fájl' and s.szakasz.startswith(IRODALOM):
+            if nev == 'belső fájl' and s.szakasz.startswith(IRODALOM) and not KIVETEL_NELKUL:
                 continue  # az Irodalom a lapot és a forrásfájlt idézhetőként nevezi meg
             m = rx.search(s.szoveg)
             if m:
@@ -562,7 +584,7 @@ def zarojel_nyitva(r):
 
 def zarojel_talalat(s, r):
     i = r.rfind('(')
-    szotar = s.szakasz.startswith('2. Szótári')
+    szotar = s.szakasz.startswith(SZOTARI_SZAKASZ)
     return talalat('ZAROJEL', BUKAS if szotar else FIGY, s.n, r[max(0, i - 60):i + 60], 'nyitva maradt zárójel')
 
 
@@ -586,7 +608,7 @@ def elso_tabla(sorok, szakasz_kezd):
 
 
 def ell_funkcio(sorok):
-    fej, tabla = elso_tabla(sorok, '1. Előfordulások')
+    fej, tabla = elso_tabla(sorok, ELOFORDULAS_SZAKASZ)
     if not fej:
         return []
     oszl = next((i for i, c in enumerate(fej) if c.startswith('Funkció')), None)
@@ -689,7 +711,7 @@ def ell_idezet(sorok):
 
 def elofordulas_szamok(sorok):
     """Az 1. tábla sorai: (összes, ÓSZ, ÚSZ)."""
-    _, tabla = elso_tabla(sorok, '1. Előfordulások')
+    _, tabla = elso_tabla(sorok, ELOFORDULAS_SZAKASZ)
     _, _, usz = konyvek()
     ossz = len(tabla)
     u = 0
@@ -803,7 +825,8 @@ SZINT_ALATT_RX = re.compile(r'ennél a motívumnál még nincs|nem futott|üres 
 SZINT_ARANY = 0.25      # a szakasz szószáma az arany lap azonos szakaszáénak ennyi része alatt: figyelmeztetés
 SZINT_MIN_ARANY = 150   # csak az arany lapon legalább ennyi szavas szakaszokat mérjük
 # csak az értelmező (kézi) és a kapcsolati szakaszokat: az 1., 1/b., 2–4. hossza az előfordulások számával arányos
-SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan')
+SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan',
+                 '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan')
 
 
 def szakasz_szoszam(sorok):
@@ -955,7 +978,10 @@ def arany_szoszam():
 
 
 def lap_meres(szoveg, kh=True, atvett=True, arany=True):
-    """Egy lap szövegének mérése: (találatok, megjegyzések)."""
+    """Egy lap szövegének mérése: (találatok, megjegyzések). Az új szerkezetű lapon kivétel nélkül (F178.4)."""
+    global KIVETEL_NELKUL, KIZART_SZAKASZ
+    KIVETEL_NELKUL = bool(UJ_SZERKEZET_RX.search(szoveg))
+    KIZART_SZAKASZ = () if KIVETEL_NELKUL else KIZART_SZAKASZ_REGI
     sorok = tagol(szoveg)
     ki = []
     for f in ELLENORZESEK:

@@ -345,6 +345,29 @@ class Pozitiv(unittest.TestCase):
         self.nincs(lap(egy_a=egy_a), 'ATIRAS_VALT')
 
 
+class UjSzerkezet(unittest.TestCase):
+    """F178.4: az új szerkezetű lapon (1. Döntési út) a kapu kivétel nélkül mér; a régi lapon a régi mérce."""
+
+    TECH = '*Ez a blokk a `[ID: X-001]` motívum sorait fedi az `adat/elofordulasok.tsv`-ből (G3, DT272).*'
+
+    def test_technikai_sor_az_uj_lapon_bukas(self):
+        uj = lap(tobbi='## 1. Döntési út\n\n' + self.TECH)
+        self.assertIn('BELSO', azonositok(uj, K.BUKAS))
+
+    def test_technikai_sor_a_regi_lapon_nem(self):
+        regi = lap(tobbi='## 3. Valami\n\n' + self.TECH)
+        self.assertNotIn('BELSO', azonositok(regi, K.BUKAS))
+
+    def test_felhasznalo_csak_az_uj_lapon(self):
+        szoveg = 'A sor a felhasználó döntése szerint maradt.'
+        self.assertIn('BELSO', azonositok(lap(tobbi='## 1. Döntési út\n\n' + szoveg), K.BUKAS))
+        self.assertNotIn('BELSO', azonositok(lap(tobbi='## 3. Valami\n\n' + szoveg), K.BUKAS))
+
+    def test_kolofon_is_merve_az_uj_lapon(self):
+        uj = lap(tobbi='## 1. Döntési út\n\nSemmi.', kolofon=KOLOFON_JO + '\n| Forrás | `motivumok/X-001.md` |')
+        self.assertIn('BELSO', azonositok(uj, K.BUKAS))
+
+
 class Arany(unittest.TestCase):
     """Az arany lap ismert hibái (G-sorok): a javítatlanok megjelennek a valódi lapon, a javítottak nem."""
 

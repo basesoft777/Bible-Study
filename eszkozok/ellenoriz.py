@@ -688,8 +688,20 @@ def res_egyezik(elvart, tenyleges):
     import lexikon_general as LG
     # F123.GENKOR: a jelölt Strong-szám felirata (szám · rövid jelentés, DT-F181b) és a címsor szerzőségi jelölés
     # nélkül (DT-F181c) a generátoréval azonos
-    return tenyleges in (elvart, OU.alkalmaz(elvart),
-                         OU.alkalmaz(LG.cimjeloles_ki(elvart), strong_cim=LG.strong_cim))
+    if tenyleges in (elvart, OU.alkalmaz(elvart), OU.alkalmaz(LG.cimjeloles_ki(elvart), strong_cim=LG.strong_cim)):
+        return True
+    # F178.4: az új szerkezetű lapon a rés is olvasói átíráson megy át, és a lapszintű kiejtés-pótlás (az első
+    # előfordulás kiejtése) a rés héber/görög szavát is érintheti: a kiejtés-zárójel nélkül összevetve
+    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.olvasoi_atiras(elvart)), strong_cim=LG.strong_cim)
+    return tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj)
+
+
+_KIEJTES_ZAROJEL_RX = re.compile(r'([֐-׿Ͱ-Ͽἀ-῿]+(?:\]\([^)]*\))?'
+                                 r'(?:<sup[^>]*>[^<]*</sup>)?)\s\([^()\n]{1,40}\)')
+
+
+def _kiejtes_nelkul(szoveg):
+    return _KIEJTES_ZAROJEL_RX.sub(r'\1', szoveg or '')
 
 
 def szabaly11_res_forras_egyezes(adat_dir):
@@ -738,6 +750,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         if lex_szoveg is None:
             hibas.append('%s / %s -- nincs lexikonoldal' % (motivum_id, res))
             continue
+        if res == 'tanitoi' and LG.UJ_SZERKEZET_RX.search(lex_szoveg):
+            continue  # F178.4: a nevesített tanítói rész az új szerkezetű lapon nem áll (a rés sorsa: DT-F178b)
         try:
             elvart, tenyleges = res_elvart_es_tenyleges(LG, lex_szoveg, motivum_id, res, r)
         except Exception as exc:
