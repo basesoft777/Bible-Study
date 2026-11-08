@@ -84,6 +84,12 @@ class Szabaly38(Alap):
         self.ir([sor(igehely='Jer 2:2', dontes='beépítve', indoklas='Ugyanaz az ige áll, mint a Genezisben.')])
         self.assertEqual(E.szabaly38_csak_szo(self.adat).verdict, 'SÉRTÉS')
 
+    def test_az_idezet_nem_szerkezeti_jegy(self):
+        # az „idéz” 2026-11-08 óta nem szerkezeti jegy: az idézet önmagában szóegyezés (N-F123hc döntése)
+        self.ir([sor(igehely='Gal 3:10', dontes='beépítve',
+                     indoklas='az 5Móz 27:26 idézete; a görög Ószövetség ott ugyanazt a szót használja')])
+        self.assertEqual(E.szabaly38_csak_szo(self.adat).verdict, 'SÉRTÉS')
+
     def test_kifejezett_csak_e_szo_miatt(self):
         self.ir([sor(igehely='Jer 1:1', dontes='beépítve', indoklas='csak e szó miatt áll itt, a lánc visszhangja')])
         self.assertEqual(E.szabaly38_csak_szo(self.adat).verdict, 'SÉRTÉS')

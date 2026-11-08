@@ -2083,7 +2083,9 @@ def szabaly37_beepitett_csoportos_ok(adat_dir):
 # 38. szabály: strukturális vagy fogalmi hordozón a beépítés indoka nem lehet puszta szóegyezés
 SZOEGYEZES_RX = re.compile(r'csak (?:e|ez a|a) szó (?:miatt|alapján)|puszta szóegyezés|ugyanaz(?:t|zal)? a (?:szó|szót|szóval'
                            r'|ige|igét|igével|főnév)|ugyanabból a \S*\s?szócsaládból|ugyanaz az ige', re.IGNORECASE)
-# Az „idéz” nem szerkezeti jegy: az idézet önmagában szóegyezés (a független ellenőr, 2026-11-08; N-F123hc döntése után)
+# Az „idéz” nem szerkezeti jegy: az idézet önmagában szóegyezés (a független ellenőr, 2026-11-08; N-F123hc döntése után).
+# Ismert korlát: a jegyek szóelőfordulások; a „lánc” vagy az „együtt” puszta említése is átenged. A mérő a szöveges
+# hiányt fogja (szóegyezés szerkezeti szó nélkül), nem azt, hogy a megnevezett szerkezet valóban fennáll-e.
 SZERKEZET_RX = re.compile(r'szerkezet|lánc|megfordít|visszautal|kollokáci|szókapcsolat|szópár|együtt|tükör|folytat',
                           re.IGNORECASE)
 CSAK_SZO_RX = re.compile(r'csak (?:e|ez a|a) szó (?:miatt|alapján)|puszta szóegyezés')
