@@ -43,7 +43,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 237 |
 | `dontesnaplo.tsv` | 8 |
 | `elofordulasok.tsv` | 255 |
-| `forrasok_es_licencek.tsv` | 54 |
+| `forrasok_es_licencek.tsv` | 59 |
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |

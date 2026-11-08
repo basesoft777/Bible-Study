@@ -12,7 +12,7 @@ kovetkezo: "/kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ DT-F<n
 olvas: [eszkozok/feladatok.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py, eszkozok/jelolt_eloszures.py, eszkozok/motivum_hatar.py, naplok/OLVASOI_blokk_teljesseg_meres.py, eszkozok/kiejtes_szoveg.py, eszkozok/gerinc_terkep.py, eszkozok/lexikon_general.py, .claude/commands/konzisztencia.md, adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivum_kapcsolatok.tsv, adat/forditasok.tsv, adat/SEMA.md, "motivumok/*.md", "lexikon/*_TUDOMANYOS.md", "naplok/HATAR_*.md", F86_ELOFIZETES_FEED_BRIEF.md, F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/muhely_allapot.py, eszkozok/teszt_muhely_allapot.py, eszkozok/muhely_felulet/, generalt/muhely/, naplok/MUHELY_FEED_STASH_naplo.md]
 fugg: []
-nem_fugg: [7, 10, 12, 27, 36, 38, 70, 86, 121, 123, 125, 131, 146, 148, 151, 152, 153, 154, 155]
+nem_fugg: [7, 10, 12, 27, 36, 38, 70, 86, 121, 123, 125, 131, 146, 148, 151, 152, 153, 154, 155, 178]
 ---
 
 # Fnn_MUHELY_FEED_STASH_BRIEF.md — a műhely állapota: Feed és Stash
