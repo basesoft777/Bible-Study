@@ -2117,9 +2117,14 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 **Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
 
 **Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
-`beolvas --ellenor <modellnév>` gépileg összeveti az alakot a forrás versszövegével (NFD, a mellékjelek kódpont-
-sorrendben), és a megfelelést az ellenőr kézzel átnézi; ha a kinyerő és az ellenőr ugyanaz (`modell` = `--ellenor`),
-az `ellenorzes` üres marad. A LXX-oszlop gépi, ahol egyértelmű: a vers görög lemmái közül az, amely a héber szóval a
+`beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével
+(NFD, a mellékjelek kódpont-sorrendben; üres alak nem gépi egyezés), a kézi átnézést pedig nem a kód állítja, hanem
+az ellenőr soronkénti ítélete az átnézés-bemenetben (`motivum`, `strong`, `igehely`, `forras`, `alak`, `atnezo`,
+`itelet` = `jo` \| `elvet`, `megjegyzes`; ELLENOR_F178 4.). Az `ellenorzes` csak akkor nem üres, ha a sor gépileg
+egyezik (vagy alak nélküli) **és** az ellenőr jóváhagyta; ha a kinyerő és az ellenőr ugyanaz (`modell` =
+`--ellenor`), üres marad. Az ellenőr lemma-javítása (`--lemma-javitas`, `[ellenőri lemma-egységesítés …]`) az ellenőr
+saját változtatása, ezért a sor csak egy harmadik kéz (a kinyerő vagy más, nem az ellenőr) megerősítésével
+(`--lemma-megerosites`) ellenőrzött (ELLENOR_F178 3.). A LXX-oszlop gépi, ahol egyértelmű: a vers görög lemmái közül az, amely a héber szóval a
 versszintű párokban (`LXX_versszintu_parok.tsv`) a legerősebben társul (Dice-arány ≥ 0,05, legalább kétszeres
 különbséggel a következő, más szócsaládú lemmához); a szócsalád az előtag nélküli tő (φθείρω ~ καταφθείρω). Ahol nem
 egyértelmű, a sor alak nélkül, ellenőrizetlenül áll (modell-kinyerésre vár). A hiány nem tölthető ki (CLAUDE.md 3.).

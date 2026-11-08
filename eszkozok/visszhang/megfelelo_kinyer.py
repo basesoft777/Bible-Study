@@ -7,13 +7,17 @@ A lap visszhang-blokkja lánc-szavanként azt mutatja, hogy az ókori fordító 
 adja-e vissza a lánc szavát minden láncversben (DT639). Szóillesztés nincs, ezért a fordítás szavát egy tábla hordozza
 (SEMA 2.53). Három út:
 
-    beolvas  KINYERT.tsv [--lemma-javitas JAV.tsv] --ellenor MODELL
+    beolvas  KINYERT.tsv --ellenor MODELL --atnezes ATN.tsv [--lemma-javitas JAV.tsv] [--lemma-megerosites MEG.tsv]
              a modell-kinyerés (Targum, Vulgata, BDB rokon nyelv; `kinyeres`=modell) sorai a táblába. A másik kéz
-             (`--ellenor`: a tényleges modellnév, nem a kinyerőé) ellenőrzése gépi és kézi rész: a sor `alak`-ja
+             (`--ellenor`: a tényleges modellnév, nem a kinyerőé) ellenőrzése két rész: gépi — a nem üres `alak`
              szó szerint a forrás versszövegében (Targum, Vulgata) vagy a BDB-szócikkben / a rokon írások
-             gyorsítótárában áll-e; ha nem, a sor `ellenorzes` mezője üres marad (ellenőrizetlen sor nem renderel). A
+             gyorsítótárában áll-e (üres alak nem egyezés); kézi — az ellenőr soronkénti ítélete az `--atnezes`
+             bemenetben. A kód a kézi átnézést nem állítja, csak a bemenet sorát írja át (ELLENOR_F178 4.); átnézés
+             nélkül, elvetett vagy gépileg nem egyező sorral az `ellenorzes` üres (ellenőrizetlen sor nem renderel). A
              `--lemma-javitas` (motivum, strong, igehely, forras, lemma, indok) az ellenőr lemma-egységesítése (pl. a
-             gyök egy alakra), a `megjegyzes` mezőben jelölve. Az arámi kiejtés gépi (`heber_kiejtes.kiejt(aram=True)`).
+             gyök egy alakra), a `megjegyzes` mezőben jelölve; az ilyen sor csak egy harmadik kéz (nem az ellenőr)
+             megerősítésével (`--lemma-megerosites`) ellenőrzött (ELLENOR_F178 3.). Az arámi kiejtés gépi
+             (`heber_kiejtes.kiejt(aram=True)`).
     lxx      --motivum ID
              a LXX-oszlop gépileg: a tábla nem LXX láncsoraiban álló (strong, igehely) párokra a `LXX_OS` versének
              azon lemmái, amelyek a héber szó versszintű LXX-párjai között (`LXX_versszintu_parok.tsv`) a leggyakoribb
@@ -122,11 +126,47 @@ def bdb_szoveg(strong):
     return t
 
 
+LEMMA_JEL = '[ellenőri lemma-egységesítés'
+
+
+def atnezes_kulcs(r):
+    return (r['motivum'], r['strong'], r['igehely'], r['forras'], r.get('alak', '').strip())
+
+
+def ellenorzes_mezo(r, jo, atnezes, megerosites, ellenor, datum):
+    """(az `ellenorzes` mező, az ellenőrizetlenség oka vagy None) — ELLENOR_F178 4.: a kód csak azt írja be, ami
+    megtörtént. A gépi összevetés csak nem üres alakon egyezés (üres alak nem egyezik semmivel); a kézi átnézést nem a
+    kód állítja, hanem az átnézés-bemenet sora (`--atnezes`: az ellenőr soronkénti ítélete); az ellenőr lemma-
+    egységesítése csak egy harmadik kéz (nem az ellenőr) megerősítésével (`--lemma-megerosites`) renderelhető
+    (ELLENOR_F178 3.). Ellenőrizetlen sor: üres mező (a lapon nem renderel)."""
+    if r['modell'] == ellenor:
+        return '', 'a kinyerő és az ellenőr ugyanaz: %s' % ellenor   # aki kinyer (vagy kézzel javít), nem ellenőriz
+    if r['alak'] and not jo:
+        return '', 'az alak nem áll a forrásban'
+    at = atnezes.get(atnezes_kulcs(r))
+    if not at or at.get('itelet') != 'jo':
+        return '', 'nincs kézi átnézés' if not at else 'az átnézés elvetette (%s)' % at.get('megjegyzes', '')
+    if at.get('atnezo') != ellenor or at.get('atnezo') == r['modell']:
+        return '', 'az átnéző (%s) nem az ellenőr, vagy azonos a kinyerővel' % at.get('atnezo')
+    if LEMMA_JEL in r['megjegyzes']:
+        m = megerosites.get((r['motivum'], r['strong'], r['igehely'], r['forras']))
+        if not m or m.get('itelet') != 'megerosit' or m.get('lemma_a_tablaban') != r['lemma'] \
+                or m.get('modell') in ('', ellenor):
+            return '', 'az ellenőri lemma-egységesítést harmadik kéz nem erősítette meg'
+    reszek = ['%s, %s: kézi átnézés (az átnézés-bemenet szerint)' % (ellenor, datum)]
+    reszek.append('az alak a forrásban szó szerint áll (gépi összevetés)' if r['alak']
+                  else 'alak nélküli sor: a gépi összevetés nem alkalmazható')
+    return '; '.join(reszek), None
+
+
 def beolvas(a):
     import heber_kiejtes as HK
     kinyert = tsv_olvas(a.kinyert)
     jav = {(r['motivum'], r['strong'], r['igehely'], r['forras']): r for r in tsv_olvas(a.lemma_javitas)} \
         if a.lemma_javitas else {}
+    atnezes = {atnezes_kulcs(r): r for r in tsv_olvas(a.atnezes)} if a.atnezes else {}
+    megerosites = {(r['motivum'], r['strong'], r['igehely'], r['forras']): r
+                   for r in tsv_olvas(a.lemma_megerosites)} if a.lemma_megerosites else {}
     szov = {f: versszoveg(f) for f in ('targum', 'vulgata')}
     bdb = {}
     meglevo = {kulcs(r): r for r in tsv_olvas(TABLA)}
@@ -139,7 +179,11 @@ def beolvas(a):
         if j:
             r['lemma'] = j['lemma']
             r['megjegyzes'] = (r['megjegyzes'] + ' ' if r['megjegyzes'] else '') + \
-                '[ellenőri lemma-egységesítés: %s]' % j['indok']
+                '%s: %s]' % (LEMMA_JEL, j['indok'])
+        m = megerosites.get((r['motivum'], r['strong'], r['igehely'], r['forras']))
+        if m and LEMMA_JEL in r['megjegyzes'] and m.get('itelet') == 'megerosit' \
+                and m.get('lemma_a_tablaban') == r['lemma'] and '[lemma megerősítve' not in r['megjegyzes']:
+            r['megjegyzes'] += ' [lemma megerősítve: %s, %s]' % (m['modell'], ma())
         if r['forras'] == 'targum' and r['alak']:
             r['kiejtes'] = ' · '.join(HK.kiejt(x.strip(), aram=True) for x in r['alak'].split('·'))
         if r['forras'] == 'lxx':
@@ -151,33 +195,33 @@ def beolvas(a):
                             h = t.get('igehely_karoli', '')
                             szov['lxx'][h] = szov['lxx'].get(h, '') + ' ' + t.get('szoalak', '')
             vers = kanon(szov['lxx'].get(r['igehely'], ''))
-            jo = all(x.strip() and kanon(x.strip()) in vers for x in r['alak'].split('·')) if r['alak'] else bool(vers)
+            jo = gepi_egyezik(r['alak'], vers, kanon)
         elif r['forras'] in ('targum', 'vulgata'):
             vers = kanon(szov[r['forras']].get(r['igehely'], ''))
-            jo = all(x.strip() and kanon(x.strip()) in vers for x in r['alak'].split('·')) if r['alak'] else bool(vers)
+            jo = gepi_egyezik(r['alak'], vers, kanon)
         else:
             if r['strong'] not in bdb:
                 bdb[r['strong']] = bdb_szoveg(r['strong'].split('+')[0])
-            jo = (not r['alak']) or r['alak'].replace('ḳ', '‡').replace('q', '‡') in bdb[r['strong']] \
-                or r['alak'] in bdb[r['strong']] or all(x.strip() in bdb[r['strong']] for x in r['alak'].split('·'))
-        if r['modell'] == a.ellenor:
-            r['ellenorzes'] = ''   # aki kinyer (vagy kézzel javít), nem az ellenőriz (F178.5)
-            hibas.append('%s %s %s: %s (a kinyerő és az ellenőr ugyanaz: %s)' % (r['strong'], r['igehely'],
-                                                                                  r['forras'], r['alak'], a.ellenor))
-        elif jo:
-            r['ellenorzes'] ='%s, %s: az alak a forrásban szó szerint áll (gépi összevetés); a megfelelés kézzel ' \
-                'átnézve' % (a.ellenor, ma())
-        else:
-            r['ellenorzes'] = ''
-            hibas.append('%s %s %s: %s' % (r['strong'], r['igehely'], r['forras'], r['alak']))
+            jo = bool(r['alak']) and (r['alak'].replace('ḳ', '‡').replace('q', '‡') in bdb[r['strong']]
+                                      or gepi_egyezik(r['alak'], bdb[r['strong']], lambda x: x))
+        r['ellenorzes'], ok = ellenorzes_mezo(r, jo, atnezes, megerosites, a.ellenor, ma())
+        if ok:
+            hibas.append('%s %s %s: %s (%s)' % (r['strong'], r['igehely'], r['forras'], r['alak'] or '—', ok))
         ki.append(r)
     for k, r in meglevo.items():
         if k not in {kulcs(x) for x in ki}:
             ki.append(r)
     tabla_ir(ki)
     for h in hibas:
-        print('  ELLENŐRIZETLEN (az alak nem áll a forrásban): %s' % h)
+        print('  ELLENŐRIZETLEN: %s' % h)
     return 0
+
+
+def gepi_egyezik(alak, szoveg, norm):
+    """A gépi összevetés: minden ` · `-tal elválasztott alak szó szerint áll a szövegben. Üres alak nem egyezés
+    (ELLENOR_F178 4.): az alak nélküli sor hiányát gép nem igazolja, csak a kézi átnézés."""
+    reszek = [x.strip() for x in (alak or '').split('·')]
+    return bool(alak and alak.strip()) and all(x and norm(x) in szoveg for x in reszek)
 
 
 def szocsalad(lemma):
@@ -304,6 +348,10 @@ def main():
     b = al.add_parser('beolvas')
     b.add_argument('kinyert')
     b.add_argument('--lemma-javitas', default=None)
+    b.add_argument('--atnezes', default=None, help='az ellenőr soronkénti kézi ítélete (motivum, strong, igehely, forras, '
+                   'alak, atnezo, itelet=jo|elvet, megjegyzes); csak az itt jóváhagyott sor ellenőrzött')
+    b.add_argument('--lemma-megerosites', default=None, help='az ellenőri lemma-egységesítés megerősítése egy harmadik '
+                   'kéztől (motivum, strong, igehely, forras, lemma_a_tablaban, itelet, javasolt_lemma, modell, indok)')
     b.add_argument('--ellenor', required=True, help='az ellenőrző tényleges modellneve (nem a kinyerőé)')
     x = al.add_parser('lxx')
     x.add_argument('--motivum', required=True)
