@@ -47,7 +47,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3115 |
 | `kizarasok.tsv` | 418 |
-| `kodkonyv.tsv` | 213 |
+| `kodkonyv.tsv` | 351 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -62,6 +62,10 @@ A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a
 ## Idézés és a mesterséges intelligencia használata
 
 A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
+
+## Angol réteg
+
+A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.
 
 ## Csoportos kizárás
 

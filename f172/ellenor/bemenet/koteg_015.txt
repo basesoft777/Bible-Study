@@ -1,0 +1,126 @@
+KÖTEG: 15
+
+VERS: 2Móz 35:23
+KÁROLI (számozott szavak): 1 És | 2 minden | 3 ember | 4 kinek | 5 a | 6 mije | 7 vala | 8 hozott | 9 kék | 10 bíborpiros | 11 és | 12 karmazsinszínű | 13 és | 14 lenfonalat | 15 kecskeszőrt | 16 veresre | 17 festett | 18 kosbőröket | 19 és | 20 borzbőröket
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 כָל H3605 [every] | 3 אִ֞ישׁ H0376 [person] | 4 אֲשֶׁר H0834 [whom] | 5 נִמְצָ֣א H4672 [it was found] | 6 אִתּ֗ H0854 [with] | 7 וֹ H9033 [him] | 8 תְּכֵ֧לֶת H8504 [violet stuff] | 9 וְ H9002 [and] | 10 אַרְגָּמָ֛ן H0713 [purple] | 11 וְ H9002 [and] | 12 תוֹלַ֥עַת H8438 [scarlet stuff of] | 13 שָׁנִ֖י H8144 [scarlet] | 14 וְ H9002 [and] | 15 שֵׁ֣שׁ H8336 [fine linen] | 16 וְ H9002 [and] | 17 עִזִּ֑ים H5795 [goat hair<s>] | 18 וְ H9002 [and] | 19 עֹרֹ֨ת H5785 [hides of] | 20 אֵילִ֧ם H0352 [rams] | 21 מְאָדָּמִ֛ים H0119 [dyed red] | 22 וְ H9002 [and] | 23 עֹרֹ֥ת H5785 [hides of] | 24 תְּחָשִׁ֖ים H8476 [dolphins] | 25 הֵבִֽיאוּ H0935 [they brought [them]]
+CÉL (Károli-sorszámok): 18
+
+VERS: 2Krón 9:15
+KÁROLI (számozott szavak): 1 És | 2 csináltata | 3 Salamon | 4 király | 5 kétszáz | 6 paizst | 7 vert | 8 aranyból | 9 mindenik | 10 paizsra | 11 hatszáz | 12 vert | 13 arany | 14 siklus | 15 ment | 16 fel
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 יַּ֨עַשׂ H6213 [he made] | 3 הַ H9009 [the] | 4 מֶּ֧לֶךְ H4428 [king] | 5 שְׁלֹמֹ֛ה H8010 [Solomon] | 6 מָאתַ֥יִם H3967 [two hundred] | 7 צִנָּ֖ה H6793 [body shield[s]] | 8 זָהָ֣ב H2091 [gold] | 9 שָׁח֑וּט H7820 [beaten] | 10 שֵׁ֤שׁ H8337 [six] | 11 מֵאוֹת֙ H3967 [hundred<s>] | 12 זָהָ֣ב H2091 [gold] | 13 שָׁח֔וּט H7820 [beaten] | 14 יַעֲלֶ֖ה H5927 [he put up] | 15 עַל H5921 [on] | 16 הַ H9009 [the] | 17 צִּנָּ֥ה H6793 [body shield] | 18 הָ H9009 [<the>] | 19 אֶחָֽת H0259 [one]
+CÉL (Károli-sorszámok): 7
+
+VERS: 4Móz 2:18
+KÁROLI (számozott szavak): 1 Efraim | 2 táborának | 3 zászlója | 4 az | 5 ő | 6 seregeivel | 7 nyugot | 8 felé | 9 legyen | 10 és | 11 Efraim | 12 fiainak | 13 fejedelme | 14 Elisáma | 15 Ammihud | 16 fia
+EREDETI (számozott szavak): 1 דֶּ֣גֶל H1714 [[the] standard of] | 2 מַחֲנֵ֥ה H4264 [[the] camp of] | 3 אֶפְרַ֛יִם H0669 [Ephraim] | 4 לְ H9005 [to] | 5 צִבְאֹתָ֖ H6635 [military groups] | 6 ם H9028 [their] | 7 יָ֑מָּ H3220 [[will be] west] | 8 ה H9011 [-ward] | 9 וְ H9002 [and] | 10 נָשִׂיא֙ H5387 [[the] leader] | 11 לִ H9005 [of] | 12 בְנֵ֣י H1121 [[the] descendants of] | 13 אֶפְרַ֔יִם H0669 [Ephraim] | 14 אֱלִישָׁמָ֖ע H0476 [[was] Elishama] | 15 בֶּן H1121 [[the] son of] | 16 עַמִּיהֽוּד H5989 [Ammihud]
+CÉL (Károli-sorszámok): 10
+
+VERS: ApCsel 8:26
+KÁROLI (számozott szavak): 1 Az | 2 Úrnak | 3 angyala | 4 pedig | 5 szóla | 6 Filepnek | 7 mondván | 8 Kelj | 9 fel | 10 és | 11 menj | 12 el | 13 dél | 14 felé | 15 arra | 16 az | 17 útra | 18 mely | 19 Jeruzsálemből | 20 Gázába | 21 megy | 22 alá | 23 Járatlan | 24 ez
+EREDETI (számozott szavak): 1 Ἄγγελος G0032 [An angel] | 2 δὲ G1161 [now] | 3 κυρίου G2962 [of [the] Lord] | 4 ἐλάλησεν G2980 [spoke] | 5 πρὸς G4314 [to] | 6 Φίλιππον G5376 [Philip] | 7 λέγων· G3004 [saying;] | 8 ἀνάστηθι G0450 [do rise up] | 9 καὶ G2532 [and] | 10 πορεύου G4198 [do go] | 11 κατὰ G2596 [toward] | 12 μεσημβρίαν G3314 [[the] south] | 13 ἐπὶ G1909 [to] | 14 τὴν G3588 [the] | 15 ὁδὸν G3598 [road] | 16 τὴν G3588 [which] | 17 καταβαίνουσαν G2597 [is going down] | 18 ἀπὸ G0575 [from] | 19 Ἰερουσαλὴμ G2419 [Jerusalem] | 20 εἰς G1519 [to] | 21 Γάζαν· G1048 [Gaza;] | 22 αὕτη G3778 [This] | 23 ἐστὶν G1510 [is] | 24 ἔρημος. G2048 [[the] desert [road].]
+CÉL (Károli-sorszámok): 19
+
+VERS: Ézs 57:9
+KÁROLI (számozott szavak): 1 És | 2 menél | 3 a | 4 királyhoz | 5 olajjal | 6 és | 7 megsokasítád | 8 keneteidet | 9 és | 10 elküldéd | 11 követeidet | 12 messze | 13 földre | 14 és | 15 megaláztad | 16 magadat | 17 a | 18 sírig
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 תָּשֻׁ֤רִי H7788 [you journeyed] | 3 לַ H9005 [to the] | 4 מֶּ֙לֶךְ֙ H4428 [king] | 5 בַּ H9003 [with <the>] | 6 שֶּׁ֔מֶן H8081 [oil] | 7 וַ H9001 [and] | 8 תַּרְבִּ֖י H7235 [you increased] | 9 רִקֻּחָ֑יִ H7547 [perfumes] | 10 ךְ H9022 [your] | 11 וַ H9001 [and] | 12 תְּשַׁלְּחִ֤י H7971 [you sent] | 13 צִרַ֙י H6735 [envoys] | 14 ךְ֙ H9022 [your] | 15 עַד H5704 [to] | 16 מֵ֣ H9006 [from] | 17 רָחֹ֔ק H7350 [a distance] | 18 וַ H9001 [and] | 19 תַּשְׁפִּ֖ילִי H8213 [you showed abasement] | 20 עַד H5704 [to] | 21 שְׁאֽוֹל H7585 [Sheol]
+CÉL (Károli-sorszámok): 17, 18
+
+VERS: Mk 12:15
+KÁROLI (számozott szavak): 1 Ő | 2 pedig | 3 ismervén | 4 az | 5 ő | 6 képmutatásukat | 7 monda | 8 nékik | 9 Mit | 10 kísértetek | 11 engem | 12 Hozzatok | 13 nekem | 14 egy | 15 pénzt | 16 hogy | 17 lássam
+EREDETI (számozott szavak): 1 Ὁ G3588 [(15) <the>] | 2 δὲ G1161 [And] | 3 εἰδὼς G6063 [knowing] | 4 αὐτῶν G0846 [of them] | 5 τὴν G3588 [the] | 6 ὑπόκρισιν G5272 [hypocrisy] | 7 εἶπεν G2036 [He said] | 8 αὐτοῖς· G0846 [to them;] | 9 τί G5101 [Why] | 10 με G3165 [Me] | 11 πειράζετε; G3985 [do you test?] | 12 φέρετέ G5342 [do bring] | 13 μοι G3165 [Me] | 14 δηνάριον G1220 [a denarius] | 15 ἵνα G2443 [that] | 16 ἴδω. G1492 [I may see [it].]
+CÉL (Károli-sorszámok): 16
+
+VERS: Péld 22:3
+KÁROLI (számozott szavak): 1 Az | 2 eszes | 3 meglátja | 4 a | 5 bajt | 6 és | 7 elrejti | 8 magát | 9 a | 10 bolondok | 11 pedig | 12 neki | 13 mennek | 14 és | 15 kárát | 16 vallják
+EREDETI (számozott szavak): 1 עָר֤וּם H6175 [a sensible [person]] | 2 רָאָ֣ה H7200 [he sees] | 3 רָעָ֣ה H7451 [trouble] | 4 וְ H9001 [and] | 5 נִסְתָּ֑ר H5641 [he hides himself] | 6 וּ֝ H9002 [and] | 7 פְתָיִ֗ים H6612 [naive people] | 8 עָבְר֥וּ H5674 [they pass on] | 9 וְֽ H9001 [and] | 10 נֶעֱנָֽשׁוּ H6064 [they are punished]
+CÉL (Károli-sorszámok): 15
+
+VERS: 2Krón 32:16
+KÁROLI (számozott szavak): 1 Sőt | 2 ezenkivül | 3 az | 4 ő | 5 szolgái | 6 még | 7 sokat | 8 szólának | 9 az | 10 Úr | 11 Isten | 12 ellen | 13 és | 14 az | 15 ő | 16 szolgája | 17 Ezékiás | 18 ellen
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 עוֹד֙ H5750 [again] | 3 דִּבְּר֣וּ H1696 [they spoke] | 4 עֲבָדָ֔י H5650 [servants] | 5 ו H9023 [his] | 6 עַל H5921 [on] | 7 יְהוָ֖ה H3068 [Yahweh] | 8 הָ H9009 [<the>] | 9 אֱלֹהִ֑ים H0430 [God] | 10 וְ H9002 [and] | 11 עַ֖ל H5921 [on] | 12 יְחִזְקִיָּ֥הוּ H2396 [Hezekiah] | 13 עַבְדּֽ H5650 [servant] | 14 וֹ H9023 [his]
+CÉL (Károli-sorszámok): 11
+
+VERS: Jel 17:1
+KÁROLI (számozott szavak): 1 És | 2 jöve | 3 egy | 4 a | 5 hét | 6 angyal | 7 közül | 8 a | 9 kinél | 10 a | 11 hét | 12 pohár | 13 vala | 14 és | 15 szóla | 16 velem | 17 mondván | 18 nékem | 19 Jövel | 20 és | 21 megmutatom | 22 néked | 23 a | 24 nagy | 25 paráznának | 26 kárhoztatását | 27 a | 28 ki | 29 a | 30 sok | 31 vizen | 32 ül
+EREDETI (számozott szavak): 1 Καὶ G2532 [And] | 2 ἦλθεν G2064 [came] | 3 εἷς G1520 [one] | 4 ἐκ G1537 [of] | 5 τῶν G3588 [the] | 6 ἑπτὰ G2033 [seven] | 7 ἀγγέλων G0032 [angels] | 8 τῶν G3588 [those] | 9 ἐχόντων G2192 [having] | 10 τὰς G3588 [the] | 11 ἑπτὰ G2033 [seven] | 12 φιάλας G5357 [bowls] | 13 καὶ G2532 [and] | 14 ἐλάλησεν G2980 [spoke] | 15 μετ᾽ G3326 [with] | 16 ἐμοῦ G1473 [me] | 17 λέγων G3004 [saying] | 18 μοι· G3165 [to me:] | 19 δεῦρο, G1204 [Come here,] | 20 δείξω G1166 [I will show] | 21 σοι G4771 [you] | 22 τὸ G3588 [the] | 23 κρίμα G2917 [punishment] | 24 τῆς G3588 [of the] | 25 πόρνης G4204 [prostitute] | 26 τῆς G3588 [<the>] | 27 μεγάλης G3173 [great] | 28 τῆς G3588 [who] | 29 καθημένης G2521 [is sitting] | 30 ἐπὶ G1909 [upon] | 31 τῶν G3588 [<the>] | 32 ὑδάτων G5204 [waters] | 33 τῶν G3588 [<the>] | 34 πολλῶν, G4183 [many,]
+CÉL (Károli-sorszámok): 28
+
+VERS: 2Móz 32:16
+KÁROLI (számozott szavak): 1 A | 2 táblák | 3 pedig | 4 Isten | 5 kezének | 6 csinálmányai | 7 valának | 8 az | 9 írás | 10 is | 11 Isten | 12 írása | 13 vala | 14 kimetszve | 15 a | 16 táblákra
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 הַ֨ H9009 [the] | 3 לֻּחֹ֔ת H3871 [tablets] | 4 מַעֲשֵׂ֥ה H4639 [[were] [the] work of] | 5 אֱלֹהִ֖ים H0430 [God] | 6 הֵ֑מָּה H1992 [they] | 7 וְ H9002 [and] | 8 הַ H9009 [the] | 9 מִּכְתָּ֗ב H4385 [writing] | 10 מִכְתַּ֤ב H4385 [[was] [the] writing of] | 11 אֱלֹהִים֙ H0430 [God] | 12 ה֔וּא H1931 [it] | 13 חָר֖וּת H2801 [engraved] | 14 עַל H5921 [on] | 15 הַ H9009 [the] | 16 לֻּחֹֽת H3871 [tablets]
+CÉL (Károli-sorszámok): 14
+
+VERS: 1Móz 9:16
+KÁROLI (számozott szavak): 1 Azért | 2 legyen | 3 tehát | 4 az | 5 ív | 6 a | 7 felhőben | 8 hogy | 9 lássam | 10 azt | 11 és | 12 megemlékezzem | 13 az | 14 örökkévaló | 15 szövetségről | 16 Isten | 17 között | 18 és | 19 minden | 20 testből | 21 való | 22 élő | 23 állat | 24 között | 25 mely | 26 a | 27 földön | 28 van
+EREDETI (számozott szavak): 1 וְ H9001 [and] | 2 הָיְתָ֥ה H1961 [it will be] | 3 הַ H9009 [the] | 4 קֶּ֖שֶׁת H7198 [bow] | 5 בֶּֽ H9003 [in the] | 6 עָנָ֑ן H6051 [cloud[s]] | 7 וּ H9001 [and] | 8 רְאִיתִ֗י H7200 [I will see] | 9 הָ H9034 [it] | 10 לִ H9005 [to] | 11 זְכֹּר֙ H2142 [remember] | 12 בְּרִ֣ית H1285 [[the] covenant of] | 13 עוֹלָ֔ם H5769 [perpetuity] | 14 בֵּ֣ין H0996 [between] | 15 אֱלֹהִ֔ים H0430 [God] | 16 וּ H9002 [and] | 17 בֵין֙ H0996 [between] | 18 כָּל H3605 [every] | 19 נֶ֣פֶשׁ H5315 [creature] | 20 חַיָּ֔ה H2416 [living] | 21 בְּ H9003 [among] | 22 כָל H3605 [all] | 23 בָּשָׂ֖ר H1320 [flesh] | 24 אֲשֶׁ֥ר H0834 [which] | 25 עַל H5921 [[is] on] | 26 הָ H9009 [the] | 27 אָֽרֶץ H0776 [earth]
+CÉL (Károli-sorszámok): 14
+
+VERS: Neh 6:6
+KÁROLI (számozott szavak): 1 Melyben | 2 ez | 3 vala | 4 írva | 5 A | 6 szomszéd | 7 népek | 8 közt | 9 ez | 10 a | 11 hír | 12 és | 13 Gasmu | 14 is | 15 mondja | 16 hogy | 17 te | 18 és | 19 a | 20 zsidók | 21 pártot | 22 akartok | 23 ütni | 24 annakokáért | 25 építed | 26 te | 27 a | 28 kőfalat | 29 és | 30 hogy | 31 te | 32 leszel | 33 az | 34 ő | 35 királyok | 36 e | 37 beszédek | 38 szerint
+EREDETI (számozott szavak): 1 כָּת֣וּב H3789 [[was] written] | 2 בָּ֗ H9003 [in] | 3 הּ H9034 [it] | 4 בַּ H9003 [among the] | 5 גּוֹיִ֤ם H1471 [nations] | 6 נִשְׁמָע֙ H8085 [it has been heard] | 7 וְ H9002 [and] | 8 גַשְׁמ֣וּ H1654 [Gashmu] | 9 אֹמֵ֔ר H0559 [[is] saying] | 10 אַתָּ֤ה H0859 [you] | 11 וְ H9002 [and] | 12 הַ H9009 [the] | 13 יְּהוּדִים֙ H3064 [Jews] | 14 חֹשְׁבִ֣ים H2803 [[are] planning] | 15 לִ H9005 [to] | 16 מְר֔וֹד H4775 [rebel] | 17 עַל H5921 [there-] | 18 כֵּ֛ן H3651 [-fore] | 19 אַתָּ֥ה H0859 [you] | 20 בוֹנֶ֖ה H1129 [[are] rebuilding] | 21 הַ H9009 [the] | 22 חוֹמָ֑ה H2346 [wall] | 23 וְ H9002 [and] | 24 אַתָּ֗ה H0859 [you] | 25 הֹוֶ֤ה H1933 [[are] about to become] | 26 לָ H9005 [of] | 27 הֶם֙ H9038 [them] | 28 לְ H9005 [<into>] | 29 מֶ֔לֶךְ H4428 [king] | 30 כַּ H9004 [according to the] | 31 דְּבָרִ֖ים H1697 [words] | 32 הָ H9009 [<the>] | 33 אֵֽלֶּה H0428 [these]
+CÉL (Károli-sorszámok): 37
+
+VERS: ApCsel 13:41
+KÁROLI (számozott szavak): 1 Lássátok | 2 meg | 3 ti | 4 megvetők | 5 és | 6 csodálkozzatok | 7 és | 8 semmisüljetek | 9 meg | 10 mert | 11 én | 12 oly | 13 dolgot | 14 cselekszem | 15 a | 16 ti | 17 időtökben | 18 oly | 19 dolgot | 20 melyet | 21 nem | 22 hinnétek | 23 ha | 24 valaki | 25 elmondaná | 26 néktek
+EREDETI (számozott szavak): 1 ἴδετε, G1492 [Behold!] | 2 οἱ G3588 [you] | 3 καταφρονηταί, G2707 [scoffers,] | 4 καὶ G2532 [and] | 5 θαυμάσατε G2296 [do wonder] | 6 καὶ G2532 [and] | 7 ἀφανίσθητε, G0853 [do perish] | 8 ὅτι G3754 [for] | 9 ἔργον G2041 [a work] | 10 ἐργάζομαι G2038 [am working] | 11 ἐγὼ G1473 [I myself] | 12 ἐν G1722 [in] | 13 ταῖς G3588 [the] | 14 ἡμέραις G2250 [days] | 15 ὑμῶν, G4771 [of you,] | 16 ἔργον G2041 [a work] | 17 ὃ G3739 [that] [nem TR] | 18 οὐ G3756 [certainly] | 19 μὴ G3361 [not] | 20 πιστεύσητε G4100 [you may believe] | 21 ἐάν G1437 [even if] | 22 τις G5100 [one] | 23 ἐκδιηγῆται G1555 [shall declare it] | 24 ὑμῖν.¶ G4771 [to you.’]
+CÉL (Károli-sorszámok): 19
+
+VERS: 1Ján 5:18
+KÁROLI (számozott szavak): 1 Tudjuk | 2 hogy | 3 valaki | 4 Istentől | 5 született | 6 nem | 7 vétkezik | 8 hanem | 9 a | 10 ki | 11 Istentől | 12 született | 13 megőrzi | 14 magát | 15 és | 16 a | 17 gonosz | 18 nem | 19 illeti | 20 őt
+EREDETI (számozott szavak): 1 οἴδαμεν G6063 [We know] | 2 ὅτι G3754 [that] | 3 πᾶς G3956 [everyone] | 4 ὁ G3588 [who] | 5 γεγεννημένος G1080 [born] | 6 ἐκ G1537 [of] | 7 τοῦ G3588 [<the>] | 8 θεοῦ, G2316 [God] | 9 οὐχ G3756 [not] | 10 ἁμαρτάνει· G0264 [continues to sin;] | 11 ἀλλ᾽ G0235 [but] | 12 ὁ G3588 [the [One]] | 13 γεννηθεὶς G1080 [having been begotten] | 14 ἐκ G1537 [of] | 15 τοῦ G3588 [<the>] | 16 θεοῦ G2316 [God] | 17 τηρεῖ G5083 [protects] | 18 ἑαυτόν, G1438 [himself,] | 19 καὶ G2532 [and] | 20 ὁ G3588 [the] | 21 πονηρὸς G4190 [evil [one]] | 22 οὐχ G3756 [not] | 23 ἅπτεται G0681 [does touch] | 24 αὐτοῦ. G0846 [him.]
+CÉL (Károli-sorszámok): 18
+
+VERS: Ez 31:15
+KÁROLI (számozott szavak): 1 Így | 2 szól | 3 az | 4 Úr | 5 Isten | 6 Azon | 7 a | 8 napon | 9 a | 10 melyen | 11 sírba | 12 aláméne | 13 gyászba | 14 öltöztetém | 15 miatta | 16 a | 17 mélység | 18 vizeit | 19 és | 20 megtartóztatám | 21 folyóikat | 22 úgy | 23 hogy | 24 a | 25 sok | 26 víz | 27 elzáraték | 28 s | 29 meggyászoltatám | 30 őt | 31 a | 32 Libánonnal | 33 és | 34 a | 35 mező | 36 minden | 37 fája | 38 elepede | 39 miatta
+EREDETI (számozott szavak): 1 כֹּֽה H3541 [thus] | 2 אָמַ֞ר H0559 [he says] | 3 אֲדֹנָ֣י H0136 [[the] Lord] | 4 יְהוִ֗ה H3069 [Yahweh] | 5 בְּ H9003 [on] | 6 י֨וֹם H3117 [[the] day] | 7 רִדְתּ֤ H3381 [went down] | 8 וֹ H9043 [it] | 9 שְׁא֙וֹלָ H7585 [Sheol] | 10 ה֙ H9011 [towards] | 11 הֶאֱבַ֜לְתִּי H0056 [I caused mourning] | 12 כִּסֵּ֤תִי H3680 [I covered] | 13 עָלָי H5921 [over] | 14 ו֙ H9033 [it] | 15 אֶת H0853 [<obj.>] | 16 תְּה֔וֹם H8415 [[the] deep] | 17 וָֽ H9001 [and] | 18 אֶמְנַע֙ H4513 [I withheld] | 19 נַהֲרוֹתֶ֔י H5104 [rivers] | 20 הָ H9024 [its] | 21 וַ H9001 [and] | 22 יִּכָּלְא֖וּ H3607 [they were restrained] | 23 מַ֣יִם H4325 [waters] | 24 רַבִּ֑ים H7227 [many] | 25 וָ H9001 [and] | 26 אַקְדִּ֤ר H6937 [I made mourn] | 27 עָלָי H5921 [on] | 28 ו֙ H9033 [it] | 29 לְבָנ֔וֹן H3844 [Lebanon] | 30 וְ H9002 [and] | 31 כָל H3605 [all] | 32 עֲצֵ֥י H6086 [[the] trees of] | 33 הַ H9009 [the] | 34 שָּׂדֶ֖ה H7704 [field] | 35 עָלָ֥י H5921 [on] | 36 ו H9033 [it] | 37 עֻלְפֶּֽה H5969 [[were] wilted]
+CÉL (Károli-sorszámok): 11, 17
+
+VERS: 1Móz 12:10
+KÁROLI (számozott szavak): 1 Azonban | 2 éhség | 3 lőn | 4 az | 5 országban | 6 és | 7 Ábrám | 8 aláméne | 9 Égyiptomba | 10 hogy | 11 ott | 12 tartózkodjék | 13 mert | 14 nagy | 15 vala | 16 az | 17 éhség | 18 az | 19 országban
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 יְהִ֥י H1961 [it was] | 3 רָעָ֖ב H7458 [a famine] | 4 בָּ H9003 [in the] | 5 אָ֑רֶץ H0776 [land] | 6 וַ H9001 [and] | 7 יֵּ֨רֶד H3381 [he went down] | 8 אַבְרָ֤ם H0087 [Abram] | 9 מִצְרַ֙יְמָ H4714 [Egypt] | 10 ה֙ H9011 [towards] | 11 לָ H9005 [to] | 12 ג֣וּר H1481 [sojourn] | 13 שָׁ֔ם H8033 [there] | 14 כִּֽי H3588 [for] | 15 כָבֵ֥ד H3515 [[was] heavy] | 16 הָ H9009 [the] | 17 רָעָ֖ב H7458 [famine] | 18 בָּ H9003 [in the] | 19 אָֽרֶץ H0776 [land]
+CÉL (Károli-sorszámok): 2, 17
+
+VERS: 2Kir 6:22
+KÁROLI (számozott szavak): 1 És | 2 monda | 3 Ne | 4 vágasd | 5 Le | 6 szoktad | 7 é | 8 vágatni | 9 azokat | 10 a | 11 kiket | 12 karddal | 13 vagy | 14 kézívvel | 15 fogsz | 16 el | 17 Adj | 18 nékik | 19 kenyeret | 20 és | 21 vizet | 22 hogy | 23 egyenek | 24 és | 25 igyanak | 26 és | 27 elmenjenek | 28 az | 29 ő | 30 urokhoz
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 יֹּ֙אמֶר֙ H0559 [he said] | 3 לֹ֣א H3808 [not] | 4 תַכֶּ֔ה H5221 [you must strike [them] down] | 5 הַ H9008 [¿] | 6 אֲשֶׁ֥ר H0834 [[those] whom] | 7 שָׁבִ֛יתָ H7617 [you have taken captive] | 8 בְּ H9003 [by] | 9 חַרְבְּ H2719 [sword] | 10 ךָ֥ H9021 [your] | 11 וּֽ H9002 [and] | 12 בְ H9003 [by] | 13 קַשְׁתְּ H7198 [bow] | 14 ךָ֖ H9021 [your] | 15 אַתָּ֣ה H0859 [[are] you] | 16 מַכֶּ֑ה H5221 [about to strike down] | 17 שִׂים֩ H7760 [put] | 18 לֶ֨חֶם H3899 [food] | 19 וָ H9002 [and] | 20 מַ֜יִם H4325 [water] | 21 לִ H9005 [<to>] | 22 פְנֵי H6440 [before] | 23 הֶ֗ם H9028 [them] | 24 וְ H9002 [so] | 25 יֹֽאכְלוּ֙ H0398 [they may eat] | 26 וְ H9002 [and] | 27 יִשְׁתּ֔וּ H8354 [they may drink] | 28 וְ H9002 [and] | 29 יֵלְכ֖וּ H1980 [they may go] | 30 אֶל H0413 [to] | 31 אֲדֹנֵי H0113 [master<s>] | 32 הֶֽם H9028 [their]
+CÉL (Károli-sorszámok): 10
+
+VERS: Jer 4:6
+KÁROLI (számozott szavak): 1 Emeljetek | 2 zászlót | 3 a | 4 Sion | 5 felé | 6 fussatok | 7 meg | 8 ne | 9 álljatok | 10 mert | 11 veszedelmet | 12 hozok | 13 észak | 14 felől | 15 és | 16 nagy | 17 romlást
+EREDETI (számozott szavak): 1 שְׂאוּ H5375 [lift up] | 2 נֵ֣ס H5251 [a standard] | 3 צִיּ֔וֹנָ H6726 [Zion] | 4 ה H9011 [towards] | 5 הָעִ֖יזוּ H5756 [take refuge] | 6 אַֽל H0408 [may not] | 7 תַּעֲמֹ֑דוּ H5975 [you stand still] | 8 כִּ֣י H3588 [for] | 9 רָעָ֗ה H7451 [calamity] | 10 אָנֹכִ֛י H0595 [I] | 11 מֵבִ֥יא H0935 [[am] about to bring] | 12 מִ H9006 [from] | 13 צָּפ֖וֹן H6828 [[the] north] | 14 וְ H9002 [and] | 15 שֶׁ֥בֶר H7667 [destruction] | 16 גָּדֽוֹל H1419 [great]
+CÉL (Károli-sorszámok): 1
+
+VERS: Sir 1:10
+KÁROLI (számozott szavak): 1 Szorongató | 2 nyújtja | 3 kezét | 4 minden | 5 kincse | 6 után | 7 sőt | 8 látta | 9 hogy | 10 pogányok | 11 mentek | 12 be | 13 az | 14 ő | 15 szent | 16 helyébe | 17 a | 18 kikről | 19 azt | 20 parancsoltad | 21 hogy | 22 be | 23 ne | 24 menjenek | 25 a | 26 te | 27 községedbe
+EREDETI (számozott szavak): 1 יָד H3027 [hand] | 2 וֹ֙ H9023 [his] | 3 פָּ֣רַשׂ H6566 [he has spread out] | 4 צָ֔ר H6862 [[the] opponent] | 5 עַ֖ל H5921 [over] | 6 כָּל H3605 [all] | 7 מַחֲמַדֶּ֑י H4261 [precious things] | 8 הָ H9024 [her] | 9 כִּֽי H3588 [for] | 10 רָאֲתָ֤ה H7200 [it saw] | 11 גוֹיִם֙ H1471 [nations] | 12 בָּ֣אוּ H0935 [[which] they went] | 13 מִקְדָּשָׁ֔ H4720 [sanctuary] | 14 הּ H9024 [its] | 15 אֲשֶׁ֣ר H0834 [which] | 16 צִוִּ֔יתָה H6680 [you had commanded] | 17 לֹא H3808 [not] | 18 יָבֹ֥אוּ H0935 [they will come] | 19 בַ H9003 [in the] | 20 קָּהָ֖ל H6951 [assembly] | 21 לָֽ H9005 [of] | 22 ךְ H9032 [you]
+CÉL (Károli-sorszámok): 15
+
+VERS: Jer 42:6
+KÁROLI (számozott szavak): 1 Ha | 2 jó | 3 ha | 4 rossz | 5 hallgatni | 6 fogunk | 7 az | 8 Úrnak | 9 a | 10 mi | 11 Istenünknek | 12 szavára | 13 a | 14 melyért | 15 mi | 16 téged | 17 ő | 18 hozzá | 19 küldünk | 20 hogy | 21 jó | 22 dolgunk | 23 legyen | 24 mert | 25 mi | 26 hallgatunk | 27 az | 28 Úrnak | 29 a | 30 mi | 31 Istenünknek | 32 szavára
+EREDETI (számozott szavak): 1 אִם H0518 [whether] | 2 ט֣וֹב H2896 [good] | 3 וְ H9002 [and] | 4 אִם H0518 [or] | 5 רָ֔ע H7451 [bad] | 6 בְּ H9003 [to] | 7 ק֣וֹל H6963 [[the] voice of] | 8 יְהוָ֣ה H3068 [Yahweh] | 9 אֱלֹהֵ֗י H0430 [God] | 10 נוּ H9025 [our] | 11 אֲשֶׁ֨ר H0834 [whom] | 12 אֲנַ֜חְנוּ H0587 [we] | 13 שֹׁלְחִ֥ים H7971 [[are] sending] | 14 אֹתְ H0853 [<obj.>] | 15 ךָ֛ H9031 [you] | 16 אֵלָ֖י H0413 [to] | 17 ו H9033 [him] | 18 נִשְׁמָ֑ע H8085 [we will listen] | 19 לְמַ֙עַן֙ H4616 [so that] | 20 אֲשֶׁ֣ר H0834 [this] | 21 יִֽיטַב H3190 [it may go well] | 22 לָ֔ H9005 [for <the>] | 23 נוּ H9035 [us] | 24 כִּ֣י H3588 [for] | 25 נִשְׁמַ֔ע H8085 [we will listen] | 26 בְּ H9003 [to] | 27 ק֖וֹל H6963 [[the] voice of] | 28 יְהוָ֥ה H3068 [Yahweh] | 29 אֱלֹהֵֽי H0430 [God] | 30 נוּ H9025 [our]
+CÉL (Károli-sorszámok): 20
+
+VERS: 4Móz 28:13
+KÁROLI (számozott szavak): 1 És | 2 egy | 3 egy | 4 bárány | 5 mellé | 6 egy | 7 egy | 8 tized | 9 efa | 10 lisztlángot | 11 olajjal | 12 elegyítve | 13 ételáldozatul | 14 égőáldozat | 15 ez | 16 kedves | 17 illatú | 18 tűzáldozat | 19 ez | 20 az | 21 Úrnak
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 עִשָּׂרֹ֣ן H6241 [a tenth [of an ephah]] | 3 עִשָּׂר֗וֹן H6241 [a tenth [of an ephah]] | 4 סֹ֤לֶת H5560 [fine flour] | 5 מִנְחָה֙ H4503 [a grain offering] | 6 בְּלוּלָ֣ה H1101 [mixed] | 7 בַ H9003 [with <the>] | 8 שֶּׁ֔מֶן H8081 [oil] | 9 לַ H9005 [for the] | 10 כֶּ֖בֶשׂ H3532 [lamb] | 11 הָ H9009 [<the>] | 12 אֶחָ֑ד H0259 [one] | 13 עֹלָה֙ H5930 [a burnt offering] | 14 רֵ֣יחַ H7381 [an odor of] | 15 נִיחֹ֔חַ H5207 [soothing] | 16 אִשֶּׁ֖ה H0801 [a fire offering] | 17 לַ H9005 [to] | 18 יהוָֽה H3068 [Yahweh]
+CÉL (Károli-sorszámok): 7
+
+VERS: 2Móz 36:8
+KÁROLI (számozott szavak): 1 Egy | 2 egy | 3 kárpit | 4 hossza | 5 huszonnyolcz | 6 sing | 7 szélessége | 8 egy | 9 egy | 10 kárpitnak | 11 négy | 12 sing | 13 vala | 14 egy | 15 mértéke | 16 vala | 17 minden | 18 kárpitnak
+EREDETI (számozott szavak): 1 אֹ֜רֶךְ H0753 [[the] length of] | 2 הַ H9009 [the] | 3 יְרִיעָ֣ה H3407 [curtain] | 4 הָֽ H9009 [<the>] | 5 אַחַ֗ת H0259 [one] | 6 שְׁמֹנֶ֤ה H8083 [[was] eight] | 7 וְ H9002 [and] | 8 עֶשְׂרִים֙ H6242 [twenty] | 9 בָּֽ H9003 [by the] | 10 אַמָּ֔ה H0520 [cubit] | 11 וְ H9002 [and] | 12 רֹ֙חַב֙ H7341 [[the] breadth] | 13 אַרְבַּ֣ע H0702 [[was] four] | 14 בָּֽ H9003 [by the] | 15 אַמָּ֔ה H0520 [cubit] | 16 הַ H9009 [the] | 17 יְרִיעָ֖ה H3407 [curtain] | 18 הָ H9009 [<the>] | 19 אֶחָ֑ת H0259 [one] | 20 מִדָּ֥ה H4060 [size] | 21 אַחַ֖ת H0259 [one] | 22 לְ H9005 [[belonged] to] | 23 כָל H3605 [all] | 24 הַ H9009 [the] | 25 יְרִיעֹֽת H3407 [curtains]
+CÉL (Károli-sorszámok): 2, 5
+
+VERS: 1Móz 14:14
+KÁROLI (számozott szavak): 1 A | 2 mint | 3 meghallá | 4 Ábrám | 5 hogy | 6 az | 7 ő | 8 atyjafia | 9 fogságba | 10 esett | 11 felfegyverzé | 12 házában | 13 nevekedett | 14 háromszáz | 15 tizennyolcz | 16 próbált | 17 legényét | 18 és | 19 üldözve | 20 nyomula | 21 Dánig
+EREDETI (számozott szavak): 1 וַ H9001 [and] | 2 יִּשְׁמַ֣ע H8085 [he heard] | 3 אַבְרָ֔ם H0087 [Abram] | 4 כִּ֥י H3588 [that] | 5 נִשְׁבָּ֖ה H7617 [he had been taken captive] | 6 אָחִ֑י H0251 [relative] | 7 ו H9023 [his] | 8 וַ H9001 [and] | 9 יָּ֨רֶק H7324 [he drew out] | 10 אֶת H0853 [<obj.>] | 11 חֲנִיכָ֜י H2593 [trained men] | 12 ו H9023 [his] | 13 יְלִידֵ֣י H3211 [those born of] | 14 בֵית֗ H1004 [household] | 15 וֹ H9023 [his] | 16 שְׁמֹנָ֤ה H8083 [eight-] | 17 עָשָׂר֙ H6240 [teen] | 18 וּ H9002 [and] | 19 שְׁלֹ֣שׁ H7969 [three] | 20 מֵא֔וֹת H3967 [hundred<s>] | 21 וַ H9001 [and] | 22 יִּרְדֹּ֖ף H7291 [he pursued] | 23 עַד H5704 [to] | 24 דָּֽן H1835 [Dan]
+CÉL (Károli-sorszámok): 16
+
+VERS: Jer 33:18
+KÁROLI (számozott szavak): 1 És | 2 a | 3 lévita | 4 papok | 5 férfi | 6 sarjadéka | 7 sem | 8 vész | 9 ki | 10 előlem | 11 a | 12 ki | 13 égőáldozatot | 14 áldozzon | 15 és | 16 ételáldozatot | 17 égessen | 18 és | 19 véres | 20 áldozatot | 21 készítsen | 22 mindenkor
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 לַ H9005 [to the] | 3 כֹּהֲנִים֙ H3548 [priests] | 4 הַ H9009 [the] | 5 לְוִיִּ֔ם H3881 [Levites] | 6 לֹֽא H3808 [not] | 7 יִכָּרֵ֥ת H3772 [it will be cut off] | 8 אִ֖ישׁ H0376 [a man] | 9 מִ H9006 [from] | 10 לְּ H9005 [to] | 11 פָנָ֑ H6440 [before] | 12 י H9020 [me] | 13 מַעֲלֶ֨ה H5927 [[who] offers up] | 14 עוֹלָ֜ה H5930 [a burnt offering] | 15 וּ H9002 [and] | 16 מַקְטִ֥יר H6999 [[who] makes smoke] | 17 מִנְחָ֛ה H4503 [a grain offering] | 18 וְ H9002 [and] | 19 עֹ֥שֶׂה H6213 [[who] makes] | 20 זֶּ֖בַח H2077 [a sacrifice] | 21 כָּל H3605 [all] | 22 הַ H9009 [the] | 23 יָּמִֽים H3117 [days]
+CÉL (Károli-sorszámok): 1
+
+VERS: 4Móz 26:27
+KÁROLI (számozott szavak): 1 Ezek | 2 a | 3 Zebuloniták | 4 nemzetségei | 5 az | 6 ő | 7 számok | 8 szerint | 9 hatvan | 10 ezer | 11 ötszáz
+EREDETI (számozott szavak): 1 אֵ֛לֶּה H0428 [these] | 2 מִשְׁפְּחֹ֥ת H4940 [[were] [the] clans of] | 3 הַ H9009 [the] | 4 זְּבוּלֹנִ֖י H2075 [Zebulunite[s]] | 5 לִ H9005 [to] | 6 פְקֻדֵי H6485 [enrolled [men]] | 7 הֶ֑ם H9028 [their] | 8 שִׁשִּׁ֥ים H8346 [sixty] | 9 אֶ֖לֶף H0505 [thousand] | 10 וַ H9002 [and] | 11 חֲמֵ֥שׁ H2568 [five] | 12 מֵאֽוֹת H3967 [hundred<s>]
+CÉL (Károli-sorszámok): 3
