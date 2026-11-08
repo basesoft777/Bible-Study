@@ -6590,15 +6590,14 @@ _LANC_MAG_RE = re.compile(r'\baz? (\S+) (\d+)[–-](\d+)\.? láncára\b')
 
 
 def lanc_mag(m):
-    """(könyv, első fejezet, utolsó fejezet): a lánc magja, ha a motívum negatív kritériuma megnevezi („az 1Móz 3–9
-    láncára utal vissza”); különben None (DT-F178g)."""
+    """(könyv, első fejezet, utolsó fejezet): a lánc genezisi magja (DT-F178g, orkesztrátori pontosítás): ha a
+    motívum negatív kritériuma megnevezi („az 1Móz 3–9 láncára utal vissza”), az; különben a teljes 1Mózes
+    (`('1Móz', 1, 50)`). A láncversek mindig a mag versei — nem a teljes ószövetségi előfordulás."""
     k = _LANC_MAG_RE.search(m.get('negativ_kriterium') or '')
-    return (k.group(1), int(k.group(2)), int(k.group(3))) if k else None
+    return (k.group(1), int(k.group(2)), int(k.group(3))) if k else ('1Móz', 1, 50)
 
 
 def _magban(vers, mag):
-    if not mag:
-        return True
     konyv, _, hely = vers.partition(' ')
     return konyv == mag[0] and mag[1] <= int(hely.split(':')[0]) <= mag[2]
 
@@ -6607,7 +6606,8 @@ def lanc_szavak(m, sorai):
     """DT-F178g (ELLENOR_F178 2.): a 4.11 lánca a motívumadatból, nem a kinyerő tábla soraiból. Lánc-szó: a motívum
     beépített sorainak `gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem
     lánc-szó). Láncvers: a motívum verse (a beépített sorok versei, a tartomány versenként), amelyben a szó a héber
-    szövegben (TAHOT) áll; ha a negatív kritérium a lánc magját megnevezi, csak a mag versei (`lanc_mag`).
+    szövegben (TAHOT) áll, mindig a lánc genezisi magján belül (`lanc_mag`); a mag utáni helyek a lánc bibliai
+    visszhangjai, nem láncversek.
     Visszaad: ([(strong, [láncversek])], mag)."""
     szavak = []
     for s in sorai:
@@ -6715,13 +6715,9 @@ def blokk_visszhang(m, sorai):
             _rovid_hely(h), szo, ' | '.join(cellak),
             ('Betoldás: %s a lánc szavát (%s) olyan láncversbe teszi, ahol a héberben nincs.'
              % (' és '.join(betoldo), szo)) if betoldo else '—'))
-    honnan = ('A lánc szavai és versei a motívum adatából jönnek: lánc-szó az a héber szó, amelyhez a motívum egy-egy '
-              'helye kötődik, láncvers a motívum minden olyan verse, amelyben a szó a héber szövegben áll')
-    if mag:
-        honnan += (', a lánc magján belül (%s %d–%d), ahogy a motívum meghatározása (1.1) mondja; a későbbi helyek a '
-                   'lánc bibliai visszhangjai, a 2. szakaszban állnak.' % mag)
-    else:
-        honnan += '.'
+    honnan = ('A lánc szavai a motívum kulcsszavai (l. 1.2), soronként egy; láncvers a motívum genezisi magjának '
+              '(%s %d–%d) minden olyan verse, amelyben a kulcsszó a héber szövegben áll; a későbbi helyek a lánc bibliai '
+              'visszhangjai, a 2. szakaszban állnak.' % mag)
     bevezeto = ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber '
                 'szót minden láncversben. %s A motívum %d lánc-szavából a Targum %d, a Vulgata %d, a LXX %d szót ad '
                 'vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a '
@@ -6733,7 +6729,8 @@ def blokk_visszhang(m, sorai):
               'alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli '
               'jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); '
               '%d%% felett szokásos fordítás, %d–%d%% gyakori, de nem kizárólagos, %d%% alatt a láncban választott szó '
-              '(félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege '
+              '(félkövér). A láncversek mindig a motívum genezisi magjának versei, ahol a kulcsszó áll (nem a szó teljes '
+              'ószövetségi előfordulása). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege '
               '(CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét '
               'modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*'
               % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100), int(ALAPVONAL_SZOKASOS * 100),

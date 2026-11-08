@@ -2119,10 +2119,10 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 **A lánc honnan jön (DT-F178g, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
 vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
 `gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó); láncvers a
-motívum minden verse (a tartomány versenként), amelyben a szó a héber szövegben (TAHOT) áll; ha a motívum negatív
-kritériuma (2.1) a lánc magját megnevezi („az 1Móz 3–9 láncára”), csak a mag versei, mert a teljes levezetés egy
-szónál túl sok verset adna (HAMART-001: adámá 19, chámász 13 vers), és a mag utáni helyek a lánc bibliai visszhangjai
-(a lap 2. szakaszában). E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
+motívum genezisi magjának (Pesat-gerinc) minden verse (a tartomány versenként), amelyben a kulcsszó a héber
+szövegben (TAHOT) áll — **mindig** a magé, nem a szó teljes előfordulása; a magot a negatív kritérium (2.1) nevezi
+meg („az 1Móz 3–9 láncára”), megnevezés nélkül a teljes 1Mózes. A mag utáni helyek a lánc bibliai visszhangjai (a lap
+2. szakaszában), nem láncversek; a kinyerés így kis, rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
 kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
 láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a
 Targum `N`-jébe nem számít. A háttér-táblában csak a lánc-szavak és tövük állnak; lánc-szó `bdb` sor nélkül: „a

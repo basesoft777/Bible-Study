@@ -154,7 +154,8 @@ class LancAMotivumadatbol(unittest.TestCase):
 
     def test_mag_a_negativ_kriteriumbol(self):
         self.assertEqual(('1Móz', 3, 9), self.LG.lanc_mag(self.m))
-        self.assertIsNone(self.LG.lanc_mag({'negativ_kriterium': 'a szó általános használatban'}))
+        # megnevezés nélkül is mindig a genezisi mag: a teljes 1Mózes (orkesztrátori pontosítás, DT-F178g)
+        self.assertEqual(('1Móz', 1, 50), self.LG.lanc_mag({'negativ_kriterium': 'a szó általános használatban'}))
 
     def test_hamart_hat_lanc_szava(self):
         szavak, _ = self.LG.lanc_szavak(self.m, self.sorai)
@@ -166,28 +167,33 @@ class LancAMotivumadatbol(unittest.TestCase):
         d = dict(szavak)
         self.assertEqual(['1Móz 3:14', '1Móz 3:17', '1Móz 4:11', '1Móz 5:29'], d['H0779'])
         self.assertEqual(['1Móz 4:7'], d['H2403'])
+        self.assertEqual(['1Móz 6:11', '1Móz 6:13'], d['H2555'])   # a próféták helyei nem láncversek
         self.assertTrue(all(v.startswith('1Móz ') for vv in d.values() for v in vv))   # a mag: 1Móz 3–9
 
-    def test_toran_kivul_nincs_targum(self):
+    def test_mag_nelkul_is_csak_genezis(self):
         m = {'id': 'TESZT-001', 'negativ_kriterium': ''}
         sorai = [{'igehely': '1Móz 6:11', 'gerinc_elem': 'H2555'}, {'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555'}]
+        szavak, _ = self.LG.lanc_szavak(m, sorai)
+        self.assertEqual([('H2555', ['1Móz 6:11'])], szavak)
+
+    def test_toran_kivul_nincs_targum(self):
+        # a kód ága megmarad arra a motívumra, amelynek a negatív kritériuma Tórán kívüli magot nevez meg
+        m = {'id': 'TESZT-001', 'negativ_kriterium': 'a hely az Ez 7–8 láncára utal vissza'}
+        sorai = [{'igehely': 'Ez 7:23', 'gerinc_elem': 'H2555'}, {'igehely': 'Ez 8:17', 'gerinc_elem': 'H2555'}]
         ell = 'teszt, 2026-11-08: kézi átnézés'
 
         def r(h, f, alak, lemma):
             return {'motivum': 'TESZT-001', 'strong': 'H2555', 'igehely': h, 'forras': f, 'alak': alak, 'lemma': lemma,
                     'kiejtes': '', 'jelentes': '', 'betoldas': 'nem', 'megjegyzes': '', 'kinyeres': 'modell',
                     'modell': 'm', 'ellenorzes': ell, 'proveniencia': 'scope=x | forras=y | ts=z'}
-        sorok = [r('1Móz 6:11', 'targum', 'חֲטוֹפִין', 'חֲטוֹף'), r('1Móz 6:11', 'vulgata', 'iniquitate', 'iniquitas'),
-                 r('Ez 7:23', 'vulgata', 'iniquitate', 'iniquitas')]
+        sorok = [r('Ez 7:23', 'vulgata', 'iniquitate', 'iniquitas'), r('Ez 8:17', 'vulgata', 'iniquitate', 'iniquitas')]
         eredeti = self.LG.visszhang_sorok
         try:
             self.LG.visszhang_sorok = lambda _id: sorok
             blokk = self.LG.blokk_visszhang(m, sorai)
         finally:
             self.LG.visszhang_sorok = eredeti
-        self.assertIn('7:23', blokk)
-        self.assertIn('Ez 7:23: nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)', blokk)
-        self.assertIn('· 1/1', blokk)   # a Targum N-je csak a Tóra versei
+        self.assertIn('| nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi) |', blokk)
         self.assertIn('*iniquitas* · 2/2', blokk)
 
 
