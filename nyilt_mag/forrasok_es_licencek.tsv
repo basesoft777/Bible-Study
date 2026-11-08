@@ -1,56 +1,56 @@
 # GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
-dataset	licenc	szerepe_a_csomagban	ok
-BDB	közkincs	engedett, de a csomag nem használja	
-BDB_forditas	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-BSB_Strongs	CC0 1.0	engedett, de a csomag nem használja	
-Cremer_nyers	tisztázatlan	kizárva	tisztázatlan licenc
-Girdlestone	tisztázatlan	kizárva	tisztázatlan licenc
-Heber_ETCBC_modulok	tisztázatlan	kizárva	tisztázatlan licenc
-KJV_ASV_Strongs	tisztázatlan	kizárva	tisztázatlan licenc
-KJV_Strongs_teljes	tisztázatlan	kizárva	tisztázatlan licenc
-KJV_teljes_szoveg	közkincs	kizárva	a kereskedelmi használat nem szabad (feltetelesen: közkincs)
-Karoli_1908	közkincs	forrás (a sorok forrásmegjelölésében szerepel)	
-Karoli_KH	közkincs	engedett, de a csomag nem használja	
-Karoli_Strong_kivonat	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-Karoli_Strong_parok	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-Karoli_Strong_szavak	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-Karoli_versmegfeleltetes	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-Konyv_nevtablak	CC BY 4.0	engedett, de a csomag nem használja	
-LSJ	CC BY-SA 4.0	kizárva	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)
-LXX_OS	CC BY 4.0	engedett, de a csomag nem használja	
-LXX_kivonat	tisztázatlan	kizárva	tisztázatlan licenc
-LXX_lexicon	tisztázatlan	kizárva	tisztázatlan licenc
-LXX_versszintu_parok	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-MCGED	© Mounce 1993	kizárva	a kereskedelmi használat nem szabad (nem: © Mounce 1993)
-MGLNT_lexicon	közkincs	engedett, de a csomag nem használja	
-Macula_gorog	CC BY 4.0	engedett, de a csomag nem használja	
-Macula_heber	CC BY 4.0	engedett, de a csomag nem használja	
-Nave_basokant	közkincs	engedett, de a csomag nem használja	
-OSHL	CC BY 4.0	engedett, de a csomag nem használja	
-OSHL_BDB	CC BY 4.0	engedett, de a csomag nem használja	
-SDBH	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható
-SDBH_SDGNT_segedtablak	CC BY-SA 4.0	kizárva	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)
-SDGNT	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható
-SECE_G	közkincs	engedett, de a csomag nem használja	
-SECE_H	közkincs	engedett, de a csomag nem használja	
-Strong_szotar	CC BY 4.0	engedett, de a csomag nem használja	
-TAGNT	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	
-TAHOT	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	
-TBESG	CC BY 4.0	engedett, de a csomag nem használja	
-TBESH	CC BY 4.0	engedett, de a csomag nem használja	
-TIPNR	CC BY 4.0	engedett, de a csomag nem használja	
-TSK	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	
-Thayer	közkincs	engedett, de a csomag nem használja	
-UBS_DBH	CC BY-SA 4.0	kizárva	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)
-UBS_DNTG	CC BY-SA 4.0	kizárva	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)
-Versifikacios_tablak	CC BY 4.0	engedett, de a csomag nem használja	
-karoli_modern	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-karoli_variancia	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-lexikonok_nyers	tisztázatlan	kizárva	tisztázatlan licenc
-lxx_bridge	CC BY 4.0	engedett, de a csomag nem használja	
-morf_kulcs_heber	CC BY 4.0	engedett, de a csomag nem használja	
-morf_nyelv_aramai	CC BY 4.0	engedett, de a csomag nem használja	
-projekt_adat	minden jog fenntartva	a csomag saját adata	a projekt saját adata; a nyílt mag licence CC BY 4.0 (a jogtulajdonos döntése)
-simplemma_nyelvi_adat	tisztázatlan	kizárva	tisztázatlan licenc
-szoto_tablak	minden jog fenntartva	kizárva	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak
-tW_szocikkek	CC BY-SA 4.0	kizárva	a kereskedelmi használat nem szabad (feltetelesen: CC BY-SA 4.0)
+dataset	licenc	licenc_en	szerepe_a_csomagban	szerepe_a_csomagban_en	ok	ok_en
+BDB	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+BDB_forditas	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+BSB_Strongs	CC0 1.0	CC0 1.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+Cremer_nyers	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+Girdlestone	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+Heber_ETCBC_modulok	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+KJV_ASV_Strongs	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+KJV_Strongs_teljes	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+KJV_teljes_szoveg	közkincs	public domain	kizárva	excluded	a kereskedelmi használat nem szabad (feltetelesen: közkincs)	commercial use not free (conditional: public domain)
+Karoli_1908	közkincs	public domain	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+Karoli_KH	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+Karoli_Strong_kivonat	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+Karoli_Strong_parok	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+Karoli_Strong_szavak	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+Karoli_versmegfeleltetes	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+Konyv_nevtablak	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+LSJ	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
+LXX_OS	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+LXX_kivonat	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+LXX_lexicon	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+LXX_versszintu_parok	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+MCGED	© Mounce 1993	© Mounce 1993	kizárva	excluded	a kereskedelmi használat nem szabad (nem: © Mounce 1993)	commercial use not free (no: © Mounce 1993)
+MGLNT_lexicon	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+Macula_gorog	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+Macula_heber	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+Nave_basokant	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+OSHL	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+OSHL_BDB	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+SDBH	CC BY-SA 4.0	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	separate layer (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható	CC BY-SA 4.0: in a separate layer, with attribution, cannot be closed
+SDBH_SDGNT_segedtablak	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
+SDGNT	CC BY-SA 4.0	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	separate layer (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható	CC BY-SA 4.0: in a separate layer, with attribution, cannot be closed
+SECE_G	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+SECE_H	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+Strong_szotar	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+TAGNT	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+TAHOT	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+TBESG	CC BY 4.0	CC BY 4.0	forrás (az angol szófogódzó oszlopé)	source (of the English word-cue column)		
+TBESH	CC BY 4.0	CC BY 4.0	forrás (az angol szófogódzó oszlopé)	source (of the English word-cue column)		
+TIPNR	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+TSK	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+Thayer	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
+UBS_DBH	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
+UBS_DNTG	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
+Versifikacios_tablak	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+karoli_modern	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+karoli_variancia	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+lexikonok_nyers	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+lxx_bridge	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+morf_kulcs_heber	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+morf_nyelv_aramai	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+projekt_adat	minden jog fenntartva	all rights reserved	a csomag saját adata	the package's own data	a projekt saját adata; a nyílt mag licence CC BY 4.0 (a jogtulajdonos döntése)	the project's own data; the licence of the open core is CC BY 4.0 (decision of the rights holder)
+simplemma_nyelvi_adat	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
+szoto_tablak	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+tW_szocikkek	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	a kereskedelmi használat nem szabad (feltetelesen: CC BY-SA 4.0)	commercial use not free (conditional: CC BY-SA 4.0)

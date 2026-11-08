@@ -1,0 +1,26 @@
+# MANUAL: scope=F172 külső összevetés összesítése (Bible-Discovery, Strong-számos Károli HUN, régies; zárt licenc, csak mérésre) | forras=f172/kulso/osszevetes.tsv, f172/kulso/elteres_itelet.tsv, f172/itelet_par.tsv | ts=git:71704747 | manual (determinisztikus; n_fo = egyezik + konvencio + elter; forras_szerint: a forrás ítélete; haromutas: gépi pár + forrás + vak Opus, a kétes esetek döntésével (KEZI_ITELET); Wilson 95%; a fejezet klaszter, nem véletlen mintaelem)
+csoport	egyezik	konvencio	elter_forras_hibaja	elter_vitathato	elter_mi_hibank	elter_nincs_itelet	masodlagos	forrasban_nincs	szovegforma	n_fo	forras_szerint	fs_also95	fs_felso95	haromutas	h3_also95	h3_felso95
+1Móz 7	244	1	4	0	0	0	30	75	0	249	0.9839	0.9594	0.9937	1.0000	0.9848	1.0000
+2Kir 10	446	6	5	0	1	0	31	150	1	458	0.9869	0.9717	0.9940	0.9978	0.9877	0.9996
+3Móz 3	167	0	0	0	0	0	19	54	0	167	1.0000	0.9775	1.0000	1.0000	0.9775	1.0000
+ApCsel 12	384	11	6	0	0	0	25	29	0	401	0.9850	0.9677	0.9931	1.0000	0.9905	1.0000
+Ez 43	323	1	1	0	1	0	19	67	0	326	0.9939	0.9779	0.9983	0.9969	0.9828	0.9995
+Jel 19	399	9	7	0	0	0	25	28	2	415	0.9831	0.9656	0.9918	1.0000	0.9908	1.0000
+Péld 3	192	2	1	0	2	0	8	75	0	197	0.9848	0.9562	0.9948	0.9898	0.9637	0.9972
+Róm 1	425	19	5	0	1	0	40	44	3	450	0.9867	0.9712	0.9939	0.9978	0.9875	0.9996
+OSSZES	2580	49	29	0	5	0	197	522	6	2663	0.9872	0.9822	0.9908	0.9981	0.9956	0.9992
+OSZ	1372	10	11	0	4	0	107	421	1	1397	0.9893	0.9824	0.9935	0.9971	0.9927	0.9989
+USZ	1208	39	18	0	1	0	90	101	5	1266	0.9850	0.9767	0.9904	0.9992	0.9955	0.9999
+
+# a minta-párok sorsa a 8 fejezetben (vak Opus × külső osztály)
+opus	kulso_osztaly	db
+opus_egyezik	egyezik	22
+opus_egyezik	elter_forras_hibaja	1
+opus_egyezik	forrasban_nincs	5
+opus_egyezik	morfema	2
+opus_egyezik	szovegforma	1
+opus_elter	egyezik	1
+opus_elter	elter_mi_hibank	1
+opus_elter	forrasban_nincs	1
+opus_elter	masodlagos	5
+opus_elter	morfema	1

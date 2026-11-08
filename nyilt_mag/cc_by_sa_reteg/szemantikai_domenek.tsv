@@ -1,238 +1,239 @@
 # GENERÁLT: a PaRDeS nyílt mag külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
-strong	szotar	lemma	jelentes_azonosito	domen_kod	domen_neve	glossza
-G0012	SDGNT	ἄβυσσος	000012001001000	001003	Regions Below the Surface of the Earth	abyss; abode of evil spirits; very deep place
-G0086	SDGNT	ᾅδης	000086001001000	001003	Regions Below the Surface of the Earth	the world of the dead; Hades
-G0086	SDGNT	ᾅδης	000086001002000	023007	Live, Die	death; power of death
-G0086	SDGNT	ᾅδης	000086001003000	012002	Supernatural Powers	death
-G0282	SDGNT	ἀμήτωρ	000280001001000	010002	Kinship Relations Involving Successive Generations	without mother
-G0540	SDGNT	ἀπάτωρ	000540001001000	010002	Kinship Relations Involving Successive Generations	without father
-G1261	SDGNT	διαλογισμός	001276001001000	030001	To Think, Thought	to think out carefully; to reason thoroughly; to consider carefully; to reason; reasoning
-G1261	SDGNT	διαλογισμός	001276001002000	030001	To Think, Thought	what is reasoned; reasoning
-G1261	SDGNT	διαλογισμός	001276001003000	033051	Argue, Quarrel	to argue; to dispute; argument
-G1261	SDGNT	διαλογισμός	001276001004000	031006	Believe To Be True	to doubt; to be uncertain about; doubt
-G1311	SDGNT	διαφθείρω	001325001001000	020003	Destroy	to destroy utterly
-G1311	SDGNT	διαφθείρω	001325001002000	088035	Licentiousness, Perversion	to deprave; to pervert; to ruin; to cause the moral ruin of
-G1311	SDGNT	διαφθείρω	001325001003000	023009	Sickness, Disease, Weakness	to lose one’s strength; to waste away
-G1941	SDGNT	ἐπικαλέω	001957001001000	033009	Name	to call; to name
-G1941	SDGNT	ἐπικαλέω	001957001002000	033012	Ask For, Request	to call upon; to appeal to; to ask for help
-G1941	SDGNT	ἐπικαλέω	001957001003000	056004	Judicial Hearing, Inquiry	to appeal one’s case; to appeal to a higher court
-G1941	SDGNT	ἐπικαλέω	001957001004000	011002	Socio-Religious	to be one of (God’s) people; to be the people of
-G1944	SDGNT	ἐπάρατος	001900001001000	033055	Bless, Curse	cursed; accursed
-G1944	SDGNT	ἐπικατάρατος	001960001001000	033055	Bless, Curse	cursed; accursed
-G2626	SDGNT	κατακλύζω	002637001001000	014005	Events Involving Liquids and Dry Masses	flood; deluge
-G2671	SDGNT	κατάρα	002680001001000	033055	Bless, Curse	to curse; curse
-G2671	SDGNT	κατάρα	002680001002000	033055	Bless, Curse	curse
-G2671	SDGNT	κατάρα	002680001003000	033055	Bless, Curse	cursed; accursed
-G4151	SDGNT	πνεῦμα	004054001001000	012001	Supernatural Beings	Spirit; Spirit of God; Holy Spirit
-G4151	SDGNT	πνεῦμα	004054001002000	012001	Supernatural Beings	spirit
-G4151	SDGNT	πνεῦμα	004054001003000	012001	Supernatural Beings	demon; evil spirit
-G4151	SDGNT	πνεῦμα	004054001004000	012001	Supernatural Beings	ghost
-G4151	SDGNT	πνεῦμα	004054001005000	026	Psychological Faculties	spirit; spiritual; spiritual nature; inner being
-G4151	SDGNT	πνεῦμα	004054001006000	030001	To Think, Thought	disposition; attitude; way of thinking
-G4151	SDGNT	πνεῦμα	004054001007000	014002	Wind	wind; blowing; to blow
-G4151	SDGNT	πνεῦμα	004054001008000	023010	Breathe, Breath	breath
-G4151	SDGNT	πνεῦμα	004054001009000	012001	Supernatural Beings	unclean spirit
-G4151	SDGNT	πνεῦμα	004054001010000	012001	Supernatural Beings	demon; evil spirit
-G4151	SDGNT	πνεῦμα	004054001011000	025006	Be Eager, Be Earnest, In a Devoted Manner	to show enthusiasm; to commit oneself completely to
-G4151	SDGNT	πνεῦμα	004054001012000	023007	Live, Die	to die
-G4151	SDGNT	πνεῦμα	004054001013000	088007	Humility	to be humble
-G4151	SDGNT	πνεῦμα	004054001014000	030005	To Decide, To Conclude	to make up one’s mind; to decide
-G4152	SDGNT	πνευματικός	004055001001000	012001	Supernatural Beings	one who is spiritual; one who has received the Spirit
-G4152	SDGNT	πνευματικός	004055002001000	012001	Supernatural Beings	spiritual; from the Spirit (in reference to such matters as gifts, benefits, teachings, blessings, and religious songs)
-G4152	SDGNT	πνευματικός	004055002002000	026	Psychological Faculties	spiritual; of the spirit; on a spiritual basis; in a spiritual manner
-G4152	SDGNT	πνευματικός	004055002003000	041003	Particular Patterns of Behavior	spiritual; of spiritual conduct; guided by the Spirit
-G4152	SDGNT	πνευματικός	004055002004000	079001	Physical [Material], Spiritual	not physical; not material; spiritual
-G4152	SDGNT	πνευματικός	004055002005000	079002	Natural [Human], Spiritual	spiritual; supernatural
-G4152	SDGNT	πνευματικός	004055002006000	012002	Supernatural Powers	power; authority; lordship; ruler; wicked force
-G5010	SDGNT	τάξις	004915001001000	061	Sequence	in order; in a sequence
-G5010	SDGNT	τάξις	004915001002000	062002	Organize [of events and states]	right order; good order; in order; in an orderly manner
-G5010	SDGNT	τάξις	004915001003000	058004	Class, Kind	kind; type
-G5351	SDGNT	φθείρω	005241001001000	020003	Destroy	to destroy
-G5351	SDGNT	φθείρω	005241001002000	020002	Harm, Wound	to cause harm; to ruin
-G5351	SDGNT	φθείρω	005241001003000	088035	Licentiousness, Perversion	to deprave; to pervert; to ruin; to cause the moral ruin of
-G5356	SDGNT	φθορά	005246001001000	020003	Destroy	ruin; destruction
-G5356	SDGNT	φθορά	005246001002000	023013	Rot, Decay	to rot; to decay; decay
-G5356	SDGNT	φθορά	005246001003000	088035	Licentiousness, Perversion	moral corruption; depravity
-G5590	SDGNT	ψυχή	005475001001000	026	Psychological Faculties	inner self; mind; thoughts; feelings; heart; being
-G5590	SDGNT	ψυχή	005475001002000	023007	Live, Die	life
-G5590	SDGNT	ψυχή	005475001003000	009001	Human Beings	person; people
-G5590	SDGNT	ψυχή	005475001004000	004	Animals	living creature
-G5590	SDGNT	ψυχή	005475001005000	025023	Sorrow, Regret	to experience anguish; to be tormented in one’s heart
-G5590	SDGNT	ψυχή	005475001006000	088026	Hate, Hateful	to turn someone against; to cause to dislike
-G5590	SDGNT	ψυχή	005475001007000	025024	Discouragement	to become discouraged; to become tired of
-G5590	SDGNT	ψυχή	005475001008000	021005	Cause To Be Safe, Free from Danger	to save oneself; to protect oneself
-G5590	SDGNT	ψυχή	005475001009000	021002	Expose Oneself to Danger	to risk; to risk one’s life
-G5590	SDGNT	ψυχή	005475001010000	021005	Cause To Be Safe, Free from Danger	to save one’s life; to save oneself
-G5590	SDGNT	ψυχή	005475001011000	025023	Sorrow, Regret	to feel pain and sorrow; to be sorrowful and distressed
-G5590	SDGNT	ψυχή	005475001012000	023007	Live, Die	to die voluntarily; to die willingly
-G5591	SDGNT	ψυχικός	005476001001000	079001	Physical [Material], Spiritual	physical; natural
-G5591	SDGNT	ψυχικός	005476001002000	079002	Natural [Human], Spiritual	natural; human
-G5591	SDGNT	ψυχικός	005476001003000	041003	Particular Patterns of Behavior	unspiritual; worldly; natural
-H0056	SDBH	אבל	000055001001000	002001002013	Grieve	to mourn
-H0056	SDBH	אבל	000055001002000	002001001022	Dry	to mourn; to wither; to languish
-H0056	SDBH	אבל	000055001003000	002001002013	Grieve	to cause to mourn
-H0127	SDBH	אֲדָמָה	000128001001000	001002001	Land	ground; earth; land; clay
-H0127	SDBH	אֲדָמָה	000128002001000	003001010	Names of Locations	Adamah
-H0423	SDBH	אָלָה	000395001001000	002004001009013	Vow	oath; curse
-H0423	SDBH	אָלָה	000395001002000	002003002008	Curse	curse
-H0423	SDBH	אָלָה	000395001003000	002003002008	Curse	curse
-H0430	SDBH	אֱלֹהִים	000396001001000	001001001	Deities	heavenly beings
-H0430	SDBH	אֱלֹהִים	000396001002000	001001001	Deities	god (of someone); God (of someone)
-H0430	SDBH	אֱלֹהִים	000396001003000	003001004	Names of Deities	God
-H0430	SDBH	אֱלֹהִים	000396001004000	001002007010	Prophets	man of God
-H0430	SDBH	אֱלֹהִים	000396001005000	001002007009	Professions	judges
-H0430	SDBH	אֱלֹהִים	000396001006000	002001001034	Large	mighty; large; great (in size)
-H0430	SDBH	אֱלֹהִים	000396001007000	002001001042	Quantity	mighty (in number)
-H0430	SDBH	אֱלֹהִים	000396001008000	002001002012	Great	mighty (in status)
-H0430	SDBH	אֱלֹהִים	000396001009000	002001003012	Intense	mighty; exceedingly; great (in intensity)
-H0430	SDBH	אֱלֹהִים	000396001010000	002001002016	Just	godly; holy
-H0779	SDBH	ארר	000717001001000	002003002008	Curse	to curse; to place a curse
-H0779	SDBH	ארר	000717001002000	002001001024	Impact	to bring on a curse
-H0922	SDBH	בֹּהוּ	000856001001000	002002002006	Non-Exist	emptiness; wasteland
-H1121	SDBH	בֵּן	001040001001000	001002007012	Relatives	son; child; descendant
-H1121	SDBH	בֵּן	001040001001000	001002007012	Relatives	son; child; descendant
-H1121	SDBH	בֵּן	001040001002000	001002007012	Relatives	young; colt; calf; foal; cub
-H1121	SDBH	בֵּן	001040001002000	001002007012	Relatives	young; colt; calf; foal; cub
-H1121	SDBH	בֵּן	001040001003000	001002007	People	youth; young person
-H1121	SDBH	בֵּן	001040001003000	001002007	People	youth; young person
-H1121	SDBH	בֵּן	001040001004000	—	—	child > part
-H1121	SDBH	בֵּן	001040001004000	—	—	child > part
-H1121	SDBH	בֵּן	001040001005000	001002007004	Groups	inhabitants of; originating from
-H1121	SDBH	בֵּן	001040001005000	001002007004	Groups	inhabitants of; originating from
-H1121	SDBH	בֵּן	001040001006000	002001001056	Stage	at the age of ...
-H1121	SDBH	בֵּן	001040001006000	002001001056	Stage	at the age of ...
-H1121	SDBH	בֵּן	001040001007000	002002002010	Time	one that is ...
-H1121	SDBH	בֵּן	001040001007000	002002002010	Time	one that is ...
-H1121	SDBH	בֵּן	001040001008000	002003003011	Engage	one who is ...; one that is ...
-H1121	SDBH	בֵּן	001040001008000	002003003011	Engage	one who is ...; one that is ...
-H1121	SDBH	בֵּן	001040001009000	003001017	Titles	(your) son > (your) subordinate
-H1121	SDBH	בֵּן	001040001009000	003001017	Titles	(your) son > (your) subordinate
-H1121	SDBH	בֵּן	001040001010000	003001017	Titles	my son; my children
-H1121	SDBH	בֵּן	001040001010000	003001017	Titles	my son; my children
-H1121	SDBH	בֵּן	001040001012000	—	—	Benjaminite
-H1121	SDBH	בֵּן	001040001012000	—	—	Benjaminite
-H1121	SDBH	בֵּן	001040001013000	—	—	Valley of the Son of Hinnom
-H1121	SDBH	בֵּן	001040001013000	—	—	Valley of the Son of Hinnom
-H1121	SDBH	בֵּן	001040002001000	003001007	Names of People	Ben
-H1121	SDBH	בֵּן	001040002001000	003001007	Names of People	Ben
-H1121	SDBH	בֵּן	001040003001000	003001003	Names of Constructions	the People's Gate
-H1121	SDBH	בֵּן	001040003001000	003001003	Names of Constructions	the People's Gate
-H1121	SDBH	בֶּן הִנֹּם	001045001001000	003001008	Names of Landforms	Valley of (the son of) Hinnom
-H1863	SDBH	דַּרְדַּר	001714001001000	001002004001	Plants	thorn; thistle; brier
-H2403	SDBH	חַטָּאָה	002220001001000	002003003018	Sin	sin
-H2403	SDBH	חַטָּאָה	002220001002000	002003002020	Sacrifice	sin-offering
-H2403	SDBH	חַטָּאת	002221001001000	002003003018	Sin	sin
-H2403	SDBH	חַטָּאת	002221001002000	002003003018	Sin	sinful object; object that leads to sin
-H2403	SDBH	חַטָּאת	002221001003000	002003002005	Chastise	punishment
-H2403	SDBH	חַטָּאת	002221001004000	002001001012	Clean	cleansing; purification
-H2403	SDBH	חַטָּאת	002221001005000	002003002020	Sacrifice	sin-offering
-H2416	SDBH	חַי	002232001001000	002001001003	Alive	alive; living
-H2416	SDBH	חַי	002232001001000	002001001003	Alive	alive; living
-H2416	SDBH	חַי	002232001002000	002001001056	Stage	raw; fresh; green
-H2416	SDBH	חַי	002232001002000	002001001056	Stage	raw; fresh; green
-H2416	SDBH	חַי	002232001003000	002001001059	Strong	to be healthy; to be strong; to be vigorous
-H2416	SDBH	חַי	002232001003000	002001001059	Strong	to be healthy; to be strong; to be vigorous
-H2416	SDBH	חַי	002232001004000	002002003003	Happen	next; renewal
-H2416	SDBH	חַי	002232001004000	002002003003	Happen	next; renewal
-H2416	SDBH	חַיָּה	002236001001000	002001001003	Alive	alive
-H2416	SDBH	חַיָּה	002236001001000	002001001003	Alive	alive
-H2416	SDBH	חַיָּה	002236001002000	001002006	Animals	living creature; wild land animal; beast
-H2416	SDBH	חַיָּה	002236001002000	001002006	Animals	living creature; wild land animal; beast
-H2416	SDBH	חַיָּה	002236001003000	001002007	People	life > self
-H2416	SDBH	חַיָּה	002236001003000	001002007	People	life > self
-H2416	SDBH	חַיָּה	002236001004000	002003002002	Associate	group; band; people
-H2416	SDBH	חַיָּה	002236001004000	002003002002	Associate	group; band; people
-H2416	SDBH	חַיָּה	002236001005000	002002003003	Happen	next; renewal
-H2416	SDBH	חַיָּה	002236001005000	002002003003	Happen	next; renewal
-H2416	SDBH	חַיָּה	002236001006000	002004001001	Feel	appetite; hunger
-H2416	SDBH	חַיָּה	002236001006000	002004001001	Feel	appetite; hunger
-H2416	SDBH	חַיִּים	002240001001000	001002007012	Relatives	kinsfolk
-H2416	SDBH	חַיִּים	002240001002000	002001001003	Alive	life
-H2555	SDBH	חָמָס	002361001001000	002001002009	Ferocious	violence
-H2555	SDBH	חָמָס	002361001001000	002001003020	Wrong	violence
-H2555	SDBH	חָמָס	002361001001000	002003003022	Unsafe	violence
-H2555	SDBH	חָמָס	002361001002000	001	Objects	goods obtained by aggression
-H2555	SDBH	חָמָס	002361001003000	002001001024	Impact	destruction
-H3548	SDBH	כֹּהֵן	003257001001000	001002007008	Priests	priest
-H3678	SDBH	כִּסֵּא	003368001001000	001002008001008	Furnishings	chair; seat; throne
-H3678	SDBH	כִּסֵּא	003368001002000	002001002012	Great	seat
-H3678	SDBH	כִּסֵּא	003368001003000	002003002007	Control	rule; reign; authority
-H4467	SDBH	מַמְלָכָה	004089001001000	002003002007	Control	kingship; kingdom
-H4467	SDBH	מַמְלָכָה	004089001002000	001002001	Land	kingdom; realm
-H4467	SDBH	מַמְלָכָה	004089001002000	001002007004	Groups	kingdom; realm
-H4467	SDBH	מַמְלָכָה	004089001003000	002001001	Attribute	royalty; royal
-H5303	SDBH	נְפִילִים	004869001001000	003001006	Names of Groups	Nephilim
-H5315	SDBH	נֶפֶשׁ	004880001001000	—	—	throat; neck; gullet
-H5315	SDBH	נֶפֶשׁ	004880001002000	001002010001	Air	breath
-H5315	SDBH	נֶפֶשׁ	004880001003000	003001016	Self	life; life principle; soul; self; greed; craving
-H5315	SDBH	נֶפֶשׁ	004880001004000	—	—	living creature; living soul
-H5315	SDBH	נֶפֶשׁ	004880001005000	001002007	People	"a soul"; a person; someone
-H5315	SDBH	נֶפֶשׁ	004880001006000	001002007	People	dead body
-H5315	SDBH	נֶפֶשׁ	004880002001000	001002010014	Spices	perfume (?)
-H6093	SDBH	עִצָּבֹון	005603001001000	002001001055	Spasm	labor; toil; hard work
-H6975	SDBH	קֹוץ	006425001001000	001002004001	Plants	thorn; brier; thornbush
-H6975	SDBH	קֹוץ	006425002001000	003001007	Names of People	Koz
-H7121	SDBH	קרא	006562001001000	002004001009005	Shout	to cry out
-H7121	SDBH	קרא	006562001002000	002004001009005	Shout	to read; to recite
-H7121	SDBH	קרא	006562001003000	002001002012	Great	to be renowned
-H7121	SDBH	קרא	006562001004000	002004002007	Know	to be named; to be known
-H7121	SDBH	קרא	006562001005000	002004002007	Know	to proclaim; to make a proclamation
-H7121	SDBH	קרא	006562001006000	002002001012	Move	to call; to summon; to invite
-H7121	SDBH	קרא	006562001007000	002002003003	Happen	to summon; to call for (an event)
-H7121	SDBH	קרא	006562001008000	002004002010	Name	to name
-H7121	SDBH	קרא	006562001009000	002004002010	Name	to name
-H7121	SDBH	קרא	006562001010000	002003002002	Associate	to be called (by someone's name)
-H7121	SDBH	קרא	006562001011000	002003002022	Serve	to acknowledge (a deity)
-H7121	SDBH	קרא	006562001012000	002003002009	Dissociate	to choose; to elect
-H7121	SDBH	קרא	006562002001000	002003002015	Meet	to meet
-H7121	SDBH	קרא	006562002002000	002003003011	Engage	to happen (to someone)
-H7121	SDBH	קרא	006562002003000	002003003011	Engage	to make happen (to someone)
-H7121	SDBH	קרא	006562002004000	002002003003	Happen	to happen
-H7121	SDBH	קרא	006562002005000	002002001017	Space	to happen to be (somewhere)
-H7121	SDBH	קרא	006562002006000	002002001016	Search	to look for
-H7121	SDBH	קרא	006562002007000	002002001017	Space	opposite
-H7451	SDBH	רַע	006852001001000	002001001007	Bad	bad
-H7451	SDBH	רַע	006852001001000	002001001007	Bad	bad
-H7451	SDBH	רַע	006852001002000	002001002007	Evil	evil; wicked
-H7451	SDBH	רַע	006852001002000	002001002007	Evil	evil; wicked
-H7451	SDBH	רַע	006852001003000	002001002009	Ferocious	fierce; wild; cruel
-H7451	SDBH	רַע	006852001003000	002001002009	Ferocious	fierce; wild; cruel
-H7451	SDBH	רַע	006852001004000	002001002013	Grieve	sad; downcast
-H7451	SDBH	רַע	006852001004000	002001002013	Grieve	sad; downcast
-H7451	SDBH	רַע	006852001005000	002003003022	Unsafe	harm; misery; trouble; disaster; evil
-H7451	SDBH	רַע	006852001005000	002003003022	Unsafe	harm; misery; trouble; disaster; evil
-H7451	SDBH	רַע	006852001006000	002001003020	Wrong	evil (actions)
-H7451	SDBH	רַע	006852001006000	002001003020	Wrong	evil (actions)
-H7451	SDBH	רָעָה	006864001001000	002001003020	Wrong	evil; wickedness; wrong
-H7451	SDBH	רָעָה	006864001002000	002001002002	Angry	displeasure
-H7451	SDBH	רָעָה	006864001003000	002003003022	Unsafe	trouble; disaster; harm; misfortune
-H7496	SDBH	רְפָאִים	006892001001000	—	—	spirits of the dead; shades
-H7496	SDBH	רְפָאִים	006892002001000	003001006	Names of Groups	Rephaim
-H7497	SDBH	רְפָאִים	006892001001000	—	—	spirits of the dead; shades
-H7497	SDBH	רְפָאִים	006892002001000	003001006	Names of Groups	Rephaim
-H7497	SDBH	רָפָה	006897001001000	003001007	Names of People	Raphah
-H7497	SDBH	רָפָה	006897001002000	003001007	Names of People	Raphah
-H7585	SDBH	שְׁאֹול	007131001001000	001003	Regions Under the Earth	world of the dead
-H7843	SDBH	שׁחת	007312001001000	002001001024	Impact	to be ruined; to be spoiled; to be blemished
-H7843	SDBH	שׁחת	007312001002000	002001001024	Impact	to destroy; to lay waste; to massacre; to ravage
-H7843	SDBH	שׁחת	007312001003000	002003003010	End	to destroy; to violate
-H7843	SDBH	שׁחת	007312001004000	002001002007	Evil	to be corrupted
-H7843	SDBH	שׁחת	007312001005000	002001002007	Evil	to act corruptly
-H7843	SDBH	שׁחת	007312001006000	002001003020	Wrong	to be corrupted
-H7843	SDBH	שׁחת	007312001007000	002001003020	Wrong	to corrupt
-H8004	SDBH	שָׁלֵם	007418001001000	002003001020	Whole	whole; complete; intact; full
-H8004	SDBH	שָׁלֵם	007418001002000	002001003003	Complete	complete; finished; full
-H8004	SDBH	שָׁלֵם	007418001003000	002001002008	Faithful	wholehearted; sincere
-H8004	SDBH	שָׁלֵם	007418001004000	002003003019	Safe	safe
-H8004	SDBH	שָׁלֵם	007418001005000	001002007003	Friends	friend; ally
-H8004	SDBH	שָׁלֵם	007418002001000	003001010	Names of Locations	Salem
-H8034	SDBH	שֵׁם	007442001001000	002004002010	Name	name
-H8034	SDBH	שֵׁם	007442001002000	002003002007	Control	name; authority
-H8034	SDBH	שֵׁם	007442001003000	002004002007	Know	name; renown; reputation
-H8034	SDBH	שֵׁם	007442001004000	003001016	Self	name; self
-H8034	SDBH	שֵׁם	007442002001000	003001007	Names of People	Shem
-H8414	SDBH	תֹּהוּ	007726001001000	002002002006	Non-Exist	waste; desolation; chaos
-H8414	SDBH	תֹּהוּ	007726001002000	002001002030	Worthless	nothing; useless; worthless; in vain; emptiness
-H8415	SDBH	תְּהֹום	007727001001000	001002005	Waterbodies	ocean; great deep
-H8415	SDBH	תְּהֹום	007727001001000	001003	Regions Under the Earth	ocean; great deep
-H8415	SDBH	תְּהֹום	007727001002000	001002005	Waterbodies	spring
+strong	szotar	szotar_en	lemma	jelentes_azonosito	domen_kod	domen_neve	glossza
+G0012	SDGNT	SDGNT	ἄβυσσος	000012001001000	001003	Regions Below the Surface of the Earth	abyss; abode of evil spirits; very deep place
+G0086	SDGNT	SDGNT	ᾅδης	000086001001000	001003	Regions Below the Surface of the Earth	the world of the dead; Hades
+G0086	SDGNT	SDGNT	ᾅδης	000086001002000	023007	Live, Die	death; power of death
+G0086	SDGNT	SDGNT	ᾅδης	000086001003000	012002	Supernatural Powers	death
+G0282	SDGNT	SDGNT	ἀμήτωρ	000280001001000	010002	Kinship Relations Involving Successive Generations	without mother
+G0540	SDGNT	SDGNT	ἀπάτωρ	000540001001000	010002	Kinship Relations Involving Successive Generations	without father
+G1311	SDGNT	SDGNT	διαφθείρω	001325001001000	020003	Destroy	to destroy utterly
+G1311	SDGNT	SDGNT	διαφθείρω	001325001002000	088035	Licentiousness, Perversion	to deprave; to pervert; to ruin; to cause the moral ruin of
+G1311	SDGNT	SDGNT	διαφθείρω	001325001003000	023009	Sickness, Disease, Weakness	to lose one’s strength; to waste away
+G1941	SDGNT	SDGNT	ἐπικαλέω	001957001001000	033009	Name	to call; to name
+G1941	SDGNT	SDGNT	ἐπικαλέω	001957001002000	033012	Ask For, Request	to call upon; to appeal to; to ask for help
+G1941	SDGNT	SDGNT	ἐπικαλέω	001957001003000	056004	Judicial Hearing, Inquiry	to appeal one’s case; to appeal to a higher court
+G1941	SDGNT	SDGNT	ἐπικαλέω	001957001004000	011002	Socio-Religious	to be one of (God’s) people; to be the people of
+G1944	SDGNT	SDGNT	ἐπάρατος	001900001001000	033055	Bless, Curse	cursed; accursed
+G1944	SDGNT	SDGNT	ἐπικατάρατος	001960001001000	033055	Bless, Curse	cursed; accursed
+G2671	SDGNT	SDGNT	κατάρα	002680001001000	033055	Bless, Curse	to curse; curse
+G2671	SDGNT	SDGNT	κατάρα	002680001002000	033055	Bless, Curse	curse
+G2671	SDGNT	SDGNT	κατάρα	002680001003000	033055	Bless, Curse	cursed; accursed
+G4151	SDGNT	SDGNT	πνεῦμα	004054001001000	012001	Supernatural Beings	Spirit; Spirit of God; Holy Spirit
+G4151	SDGNT	SDGNT	πνεῦμα	004054001002000	012001	Supernatural Beings	spirit
+G4151	SDGNT	SDGNT	πνεῦμα	004054001003000	012001	Supernatural Beings	demon; evil spirit
+G4151	SDGNT	SDGNT	πνεῦμα	004054001004000	012001	Supernatural Beings	ghost
+G4151	SDGNT	SDGNT	πνεῦμα	004054001005000	026	Psychological Faculties	spirit; spiritual; spiritual nature; inner being
+G4151	SDGNT	SDGNT	πνεῦμα	004054001006000	030001	To Think, Thought	disposition; attitude; way of thinking
+G4151	SDGNT	SDGNT	πνεῦμα	004054001007000	014002	Wind	wind; blowing; to blow
+G4151	SDGNT	SDGNT	πνεῦμα	004054001008000	023010	Breathe, Breath	breath
+G4151	SDGNT	SDGNT	πνεῦμα	004054001009000	012001	Supernatural Beings	unclean spirit
+G4151	SDGNT	SDGNT	πνεῦμα	004054001010000	012001	Supernatural Beings	demon; evil spirit
+G4151	SDGNT	SDGNT	πνεῦμα	004054001011000	025006	Be Eager, Be Earnest, In a Devoted Manner	to show enthusiasm; to commit oneself completely to
+G4151	SDGNT	SDGNT	πνεῦμα	004054001012000	023007	Live, Die	to die
+G4151	SDGNT	SDGNT	πνεῦμα	004054001013000	088007	Humility	to be humble
+G4151	SDGNT	SDGNT	πνεῦμα	004054001014000	030005	To Decide, To Conclude	to make up one’s mind; to decide
+G4152	SDGNT	SDGNT	πνευματικός	004055001001000	012001	Supernatural Beings	one who is spiritual; one who has received the Spirit
+G4152	SDGNT	SDGNT	πνευματικός	004055002001000	012001	Supernatural Beings	spiritual; from the Spirit (in reference to such matters as gifts, benefits, teachings, blessings, and religious songs)
+G4152	SDGNT	SDGNT	πνευματικός	004055002002000	026	Psychological Faculties	spiritual; of the spirit; on a spiritual basis; in a spiritual manner
+G4152	SDGNT	SDGNT	πνευματικός	004055002003000	041003	Particular Patterns of Behavior	spiritual; of spiritual conduct; guided by the Spirit
+G4152	SDGNT	SDGNT	πνευματικός	004055002004000	079001	Physical [Material], Spiritual	not physical; not material; spiritual
+G4152	SDGNT	SDGNT	πνευματικός	004055002005000	079002	Natural [Human], Spiritual	spiritual; supernatural
+G4152	SDGNT	SDGNT	πνευματικός	004055002006000	012002	Supernatural Powers	power; authority; lordship; ruler; wicked force
+G5010	SDGNT	SDGNT	τάξις	004915001001000	061	Sequence	in order; in a sequence
+G5010	SDGNT	SDGNT	τάξις	004915001002000	062002	Organize [of events and states]	right order; good order; in order; in an orderly manner
+G5010	SDGNT	SDGNT	τάξις	004915001003000	058004	Class, Kind	kind; type
+G5351	SDGNT	SDGNT	φθείρω	005241001001000	020003	Destroy	to destroy
+G5351	SDGNT	SDGNT	φθείρω	005241001002000	020002	Harm, Wound	to cause harm; to ruin
+G5351	SDGNT	SDGNT	φθείρω	005241001003000	088035	Licentiousness, Perversion	to deprave; to pervert; to ruin; to cause the moral ruin of
+G5356	SDGNT	SDGNT	φθορά	005246001001000	020003	Destroy	ruin; destruction
+G5356	SDGNT	SDGNT	φθορά	005246001002000	023013	Rot, Decay	to rot; to decay; decay
+G5356	SDGNT	SDGNT	φθορά	005246001003000	088035	Licentiousness, Perversion	moral corruption; depravity
+G5590	SDGNT	SDGNT	ψυχή	005475001001000	026	Psychological Faculties	inner self; mind; thoughts; feelings; heart; being
+G5590	SDGNT	SDGNT	ψυχή	005475001002000	023007	Live, Die	life
+G5590	SDGNT	SDGNT	ψυχή	005475001003000	009001	Human Beings	person; people
+G5590	SDGNT	SDGNT	ψυχή	005475001004000	004	Animals	living creature
+G5590	SDGNT	SDGNT	ψυχή	005475001005000	025023	Sorrow, Regret	to experience anguish; to be tormented in one’s heart
+G5590	SDGNT	SDGNT	ψυχή	005475001006000	088026	Hate, Hateful	to turn someone against; to cause to dislike
+G5590	SDGNT	SDGNT	ψυχή	005475001007000	025024	Discouragement	to become discouraged; to become tired of
+G5590	SDGNT	SDGNT	ψυχή	005475001008000	021005	Cause To Be Safe, Free from Danger	to save oneself; to protect oneself
+G5590	SDGNT	SDGNT	ψυχή	005475001009000	021002	Expose Oneself to Danger	to risk; to risk one’s life
+G5590	SDGNT	SDGNT	ψυχή	005475001010000	021005	Cause To Be Safe, Free from Danger	to save one’s life; to save oneself
+G5590	SDGNT	SDGNT	ψυχή	005475001011000	025023	Sorrow, Regret	to feel pain and sorrow; to be sorrowful and distressed
+G5590	SDGNT	SDGNT	ψυχή	005475001012000	023007	Live, Die	to die voluntarily; to die willingly
+G5591	SDGNT	SDGNT	ψυχικός	005476001001000	079001	Physical [Material], Spiritual	physical; natural
+G5591	SDGNT	SDGNT	ψυχικός	005476001002000	079002	Natural [Human], Spiritual	natural; human
+G5591	SDGNT	SDGNT	ψυχικός	005476001003000	041003	Particular Patterns of Behavior	unspiritual; worldly; natural
+H0127	SDBH	SDBH	אֲדָמָה	000128001001000	001002001	Land	ground; earth; land; clay
+H0127	SDBH	SDBH	אֲדָמָה	000128002001000	003001010	Names of Locations	Adamah
+H0430	SDBH	SDBH	אֱלֹהִים	000396001001000	001001001	Deities	heavenly beings
+H0430	SDBH	SDBH	אֱלֹהִים	000396001002000	001001001	Deities	god (of someone); God (of someone)
+H0430	SDBH	SDBH	אֱלֹהִים	000396001003000	003001004	Names of Deities	God
+H0430	SDBH	SDBH	אֱלֹהִים	000396001004000	001002007010	Prophets	man of God
+H0430	SDBH	SDBH	אֱלֹהִים	000396001005000	001002007009	Professions	judges
+H0430	SDBH	SDBH	אֱלֹהִים	000396001006000	002001001034	Large	mighty; large; great (in size)
+H0430	SDBH	SDBH	אֱלֹהִים	000396001007000	002001001042	Quantity	mighty (in number)
+H0430	SDBH	SDBH	אֱלֹהִים	000396001008000	002001002012	Great	mighty (in status)
+H0430	SDBH	SDBH	אֱלֹהִים	000396001009000	002001003012	Intense	mighty; exceedingly; great (in intensity)
+H0430	SDBH	SDBH	אֱלֹהִים	000396001010000	002001002016	Just	godly; holy
+H0779	SDBH	SDBH	ארר	000717001001000	002003002008	Curse	to curse; to place a curse
+H0779	SDBH	SDBH	ארר	000717001002000	002001001024	Impact	to bring on a curse
+H0922	SDBH	SDBH	בֹּהוּ	000856001001000	002002002006	Non-Exist	emptiness; wasteland
+H1121	SDBH	SDBH	בֵּן	001040001001000	001002007012	Relatives	son; child; descendant
+H1121	SDBH	SDBH	בֵּן	001040001001000	001002007012	Relatives	son; child; descendant
+H1121	SDBH	SDBH	בֵּן	001040001002000	001002007012	Relatives	young; colt; calf; foal; cub
+H1121	SDBH	SDBH	בֵּן	001040001002000	001002007012	Relatives	young; colt; calf; foal; cub
+H1121	SDBH	SDBH	בֵּן	001040001003000	001002007	People	youth; young person
+H1121	SDBH	SDBH	בֵּן	001040001003000	001002007	People	youth; young person
+H1121	SDBH	SDBH	בֵּן	001040001004000	—	—	child > part
+H1121	SDBH	SDBH	בֵּן	001040001004000	—	—	child > part
+H1121	SDBH	SDBH	בֵּן	001040001005000	001002007004	Groups	inhabitants of; originating from
+H1121	SDBH	SDBH	בֵּן	001040001005000	001002007004	Groups	inhabitants of; originating from
+H1121	SDBH	SDBH	בֵּן	001040001006000	002001001056	Stage	at the age of ...
+H1121	SDBH	SDBH	בֵּן	001040001006000	002001001056	Stage	at the age of ...
+H1121	SDBH	SDBH	בֵּן	001040001007000	002002002010	Time	one that is ...
+H1121	SDBH	SDBH	בֵּן	001040001007000	002002002010	Time	one that is ...
+H1121	SDBH	SDBH	בֵּן	001040001008000	002003003011	Engage	one who is ...; one that is ...
+H1121	SDBH	SDBH	בֵּן	001040001008000	002003003011	Engage	one who is ...; one that is ...
+H1121	SDBH	SDBH	בֵּן	001040001009000	003001017	Titles	(your) son > (your) subordinate
+H1121	SDBH	SDBH	בֵּן	001040001009000	003001017	Titles	(your) son > (your) subordinate
+H1121	SDBH	SDBH	בֵּן	001040001010000	003001017	Titles	my son; my children
+H1121	SDBH	SDBH	בֵּן	001040001010000	003001017	Titles	my son; my children
+H1121	SDBH	SDBH	בֵּן	001040001012000	—	—	Benjaminite
+H1121	SDBH	SDBH	בֵּן	001040001012000	—	—	Benjaminite
+H1121	SDBH	SDBH	בֵּן	001040001013000	—	—	Valley of the Son of Hinnom
+H1121	SDBH	SDBH	בֵּן	001040001013000	—	—	Valley of the Son of Hinnom
+H1121	SDBH	SDBH	בֵּן	001040002001000	003001007	Names of People	Ben
+H1121	SDBH	SDBH	בֵּן	001040002001000	003001007	Names of People	Ben
+H1121	SDBH	SDBH	בֵּן	001040003001000	003001003	Names of Constructions	the People's Gate
+H1121	SDBH	SDBH	בֵּן	001040003001000	003001003	Names of Constructions	the People's Gate
+H1121	SDBH	SDBH	בֶּן הִנֹּם	001045001001000	003001008	Names of Landforms	Valley of (the son of) Hinnom
+H1863	SDBH	SDBH	דַּרְדַּר	001714001001000	001002004001	Plants	thorn; thistle; brier
+H2403	SDBH	SDBH	חַטָּאָה	002220001001000	002003003018	Sin	sin
+H2403	SDBH	SDBH	חַטָּאָה	002220001002000	002003002020	Sacrifice	sin-offering
+H2403	SDBH	SDBH	חַטָּאת	002221001001000	002003003018	Sin	sin
+H2403	SDBH	SDBH	חַטָּאת	002221001002000	002003003018	Sin	sinful object; object that leads to sin
+H2403	SDBH	SDBH	חַטָּאת	002221001003000	002003002005	Chastise	punishment
+H2403	SDBH	SDBH	חַטָּאת	002221001004000	002001001012	Clean	cleansing; purification
+H2403	SDBH	SDBH	חַטָּאת	002221001005000	002003002020	Sacrifice	sin-offering
+H2416	SDBH	SDBH	חַי	002232001001000	002001001003	Alive	alive; living
+H2416	SDBH	SDBH	חַי	002232001001000	002001001003	Alive	alive; living
+H2416	SDBH	SDBH	חַי	002232001002000	002001001056	Stage	raw; fresh; green
+H2416	SDBH	SDBH	חַי	002232001002000	002001001056	Stage	raw; fresh; green
+H2416	SDBH	SDBH	חַי	002232001003000	002001001059	Strong	to be healthy; to be strong; to be vigorous
+H2416	SDBH	SDBH	חַי	002232001003000	002001001059	Strong	to be healthy; to be strong; to be vigorous
+H2416	SDBH	SDBH	חַי	002232001004000	002002003003	Happen	next; renewal
+H2416	SDBH	SDBH	חַי	002232001004000	002002003003	Happen	next; renewal
+H2416	SDBH	SDBH	חַיָּה	002236001001000	002001001003	Alive	alive
+H2416	SDBH	SDBH	חַיָּה	002236001001000	002001001003	Alive	alive
+H2416	SDBH	SDBH	חַיָּה	002236001002000	001002006	Animals	living creature; wild land animal; beast
+H2416	SDBH	SDBH	חַיָּה	002236001002000	001002006	Animals	living creature; wild land animal; beast
+H2416	SDBH	SDBH	חַיָּה	002236001003000	001002007	People	life > self
+H2416	SDBH	SDBH	חַיָּה	002236001003000	001002007	People	life > self
+H2416	SDBH	SDBH	חַיָּה	002236001004000	002003002002	Associate	group; band; people
+H2416	SDBH	SDBH	חַיָּה	002236001004000	002003002002	Associate	group; band; people
+H2416	SDBH	SDBH	חַיָּה	002236001005000	002002003003	Happen	next; renewal
+H2416	SDBH	SDBH	חַיָּה	002236001005000	002002003003	Happen	next; renewal
+H2416	SDBH	SDBH	חַיָּה	002236001006000	002004001001	Feel	appetite; hunger
+H2416	SDBH	SDBH	חַיָּה	002236001006000	002004001001	Feel	appetite; hunger
+H2416	SDBH	SDBH	חַיִּים	002240001001000	001002007012	Relatives	kinsfolk
+H2416	SDBH	SDBH	חַיִּים	002240001002000	002001001003	Alive	life
+H2555	SDBH	SDBH	חָמָס	002361001001000	002001002009	Ferocious	violence
+H2555	SDBH	SDBH	חָמָס	002361001001000	002001003020	Wrong	violence
+H2555	SDBH	SDBH	חָמָס	002361001001000	002003003022	Unsafe	violence
+H2555	SDBH	SDBH	חָמָס	002361001002000	001	Objects	goods obtained by aggression
+H2555	SDBH	SDBH	חָמָס	002361001003000	002001001024	Impact	destruction
+H3548	SDBH	SDBH	כֹּהֵן	003257001001000	001002007008	Priests	priest
+H3678	SDBH	SDBH	כִּסֵּא	003368001001000	001002008001008	Furnishings	chair; seat; throne
+H3678	SDBH	SDBH	כִּסֵּא	003368001002000	002001002012	Great	seat
+H3678	SDBH	SDBH	כִּסֵּא	003368001003000	002003002007	Control	rule; reign; authority
+H4467	SDBH	SDBH	מַמְלָכָה	004089001001000	002003002007	Control	kingship; kingdom
+H4467	SDBH	SDBH	מַמְלָכָה	004089001002000	001002001	Land	kingdom; realm
+H4467	SDBH	SDBH	מַמְלָכָה	004089001002000	001002007004	Groups	kingdom; realm
+H4467	SDBH	SDBH	מַמְלָכָה	004089001003000	002001001	Attribute	royalty; royal
+H5303	SDBH	SDBH	נְפִילִים	004869001001000	003001006	Names of Groups	Nephilim
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001001000	—	—	throat; neck; gullet
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001002000	001002010001	Air	breath
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001003000	003001016	Self	life; life principle; soul; self; greed; craving
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001004000	—	—	living creature; living soul
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001005000	001002007	People	"a soul"; a person; someone
+H5315	SDBH	SDBH	נֶפֶשׁ	004880001006000	001002007	People	dead body
+H5315	SDBH	SDBH	נֶפֶשׁ	004880002001000	001002010014	Spices	perfume (?)
+H6093	SDBH	SDBH	עִצָּבֹון	005603001001000	002001001055	Spasm	labor; toil; hard work
+H6975	SDBH	SDBH	קֹוץ	006425001001000	001002004001	Plants	thorn; brier; thornbush
+H6975	SDBH	SDBH	קֹוץ	006425002001000	003001007	Names of People	Koz
+H7043	SDBH	SDBH	קלל	006488001001000	002001001002	Agile	light; fast; swift; restless
+H7043	SDBH	SDBH	קלל	006488001002000	002001002015	Insignificant	to be worthless; to be insignificant; to be of no account
+H7043	SDBH	SDBH	קלל	006488001003000	002001003017	Trivial	to be a trivial matter; to be of no consequence; to come easy
+H7043	SDBH	SDBH	קלל	006488001004000	002001003013	Lax	to lighten; to reduce (one's load)
+H7043	SDBH	SDBH	קלל	006488001005000	002001001042	Quantity	to abate; to subside
+H7043	SDBH	SDBH	קלל	006488001006000	002003002008	Curse	to curse; to blaspheme; to revile
+H7043	SDBH	SDBH	קלל	006488001007000	002001001063	Unsteady	to shake; to tremble; to shudder
+H7043	SDBH	SDBH	קלל	006488001008000	002001001063	Unsteady	to shake
+H7043	SDBH	SDBH	קלל	006488001009000	002001001048	Shape	to sharpen
+H7043	SDBH	SDBH	קלל	006488001010000	002001002005	Despise	to despise; to bring dishonor; to treat with contempt
+H7043	SDBH	SDBH	קלל	006488001010000	002001002025	Shame	to despise; to bring dishonor; to treat with contempt
+H7043	SDBH	SDBH	קלל	006488001011000	002003003023	Urge	to be quickly; to be swift
+H7121	SDBH	SDBH	קרא	006562001001000	002004001009005	Shout	to cry out
+H7121	SDBH	SDBH	קרא	006562001002000	002004001009005	Shout	to read; to recite
+H7121	SDBH	SDBH	קרא	006562001003000	002001002012	Great	to be renowned
+H7121	SDBH	SDBH	קרא	006562001004000	002004002007	Know	to be named; to be known
+H7121	SDBH	SDBH	קרא	006562001005000	002004002007	Know	to proclaim; to make a proclamation
+H7121	SDBH	SDBH	קרא	006562001006000	002002001012	Move	to call; to summon; to invite
+H7121	SDBH	SDBH	קרא	006562001007000	002002003003	Happen	to summon; to call for (an event)
+H7121	SDBH	SDBH	קרא	006562001008000	002004002010	Name	to name
+H7121	SDBH	SDBH	קרא	006562001009000	002004002010	Name	to name
+H7121	SDBH	SDBH	קרא	006562001010000	002003002002	Associate	to be called (by someone's name)
+H7121	SDBH	SDBH	קרא	006562001011000	002003002022	Serve	to acknowledge (a deity)
+H7121	SDBH	SDBH	קרא	006562001012000	002003002009	Dissociate	to choose; to elect
+H7121	SDBH	SDBH	קרא	006562002001000	002003002015	Meet	to meet
+H7121	SDBH	SDBH	קרא	006562002002000	002003003011	Engage	to happen (to someone)
+H7121	SDBH	SDBH	קרא	006562002003000	002003003011	Engage	to make happen (to someone)
+H7121	SDBH	SDBH	קרא	006562002004000	002002003003	Happen	to happen
+H7121	SDBH	SDBH	קרא	006562002005000	002002001017	Space	to happen to be (somewhere)
+H7121	SDBH	SDBH	קרא	006562002006000	002002001016	Search	to look for
+H7121	SDBH	SDBH	קרא	006562002007000	002002001017	Space	opposite
+H7451	SDBH	SDBH	רַע	006852001001000	002001001007	Bad	bad
+H7451	SDBH	SDBH	רַע	006852001001000	002001001007	Bad	bad
+H7451	SDBH	SDBH	רַע	006852001002000	002001002007	Evil	evil; wicked
+H7451	SDBH	SDBH	רַע	006852001002000	002001002007	Evil	evil; wicked
+H7451	SDBH	SDBH	רַע	006852001003000	002001002009	Ferocious	fierce; wild; cruel
+H7451	SDBH	SDBH	רַע	006852001003000	002001002009	Ferocious	fierce; wild; cruel
+H7451	SDBH	SDBH	רַע	006852001004000	002001002013	Grieve	sad; downcast
+H7451	SDBH	SDBH	רַע	006852001004000	002001002013	Grieve	sad; downcast
+H7451	SDBH	SDBH	רַע	006852001005000	002003003022	Unsafe	harm; misery; trouble; disaster; evil
+H7451	SDBH	SDBH	רַע	006852001005000	002003003022	Unsafe	harm; misery; trouble; disaster; evil
+H7451	SDBH	SDBH	רַע	006852001006000	002001003020	Wrong	evil (actions)
+H7451	SDBH	SDBH	רַע	006852001006000	002001003020	Wrong	evil (actions)
+H7451	SDBH	SDBH	רָעָה	006864001001000	002001003020	Wrong	evil; wickedness; wrong
+H7451	SDBH	SDBH	רָעָה	006864001002000	002001002002	Angry	displeasure
+H7451	SDBH	SDBH	רָעָה	006864001003000	002003003022	Unsafe	trouble; disaster; harm; misfortune
+H7496	SDBH	SDBH	רְפָאִים	006892001001000	—	—	spirits of the dead; shades
+H7496	SDBH	SDBH	רְפָאִים	006892002001000	003001006	Names of Groups	Rephaim
+H7497	SDBH	SDBH	רְפָאִים	006892001001000	—	—	spirits of the dead; shades
+H7497	SDBH	SDBH	רְפָאִים	006892002001000	003001006	Names of Groups	Rephaim
+H7497	SDBH	SDBH	רָפָה	006897001001000	003001007	Names of People	Raphah
+H7497	SDBH	SDBH	רָפָה	006897001002000	003001007	Names of People	Raphah
+H7585	SDBH	SDBH	שְׁאֹול	007131001001000	001003	Regions Under the Earth	world of the dead
+H7843	SDBH	SDBH	שׁחת	007312001001000	002001001024	Impact	to be ruined; to be spoiled; to be blemished
+H7843	SDBH	SDBH	שׁחת	007312001002000	002001001024	Impact	to destroy; to lay waste; to massacre; to ravage
+H7843	SDBH	SDBH	שׁחת	007312001003000	002003003010	End	to destroy; to violate
+H7843	SDBH	SDBH	שׁחת	007312001004000	002001002007	Evil	to be corrupted
+H7843	SDBH	SDBH	שׁחת	007312001005000	002001002007	Evil	to act corruptly
+H7843	SDBH	SDBH	שׁחת	007312001006000	002001003020	Wrong	to be corrupted
+H7843	SDBH	SDBH	שׁחת	007312001007000	002001003020	Wrong	to corrupt
+H8004	SDBH	SDBH	שָׁלֵם	007418001001000	002003001020	Whole	whole; complete; intact; full
+H8004	SDBH	SDBH	שָׁלֵם	007418001002000	002001003003	Complete	complete; finished; full
+H8004	SDBH	SDBH	שָׁלֵם	007418001003000	002001002008	Faithful	wholehearted; sincere
+H8004	SDBH	SDBH	שָׁלֵם	007418001004000	002003003019	Safe	safe
+H8004	SDBH	SDBH	שָׁלֵם	007418001005000	001002007003	Friends	friend; ally
+H8004	SDBH	SDBH	שָׁלֵם	007418002001000	003001010	Names of Locations	Salem
+H8034	SDBH	SDBH	שֵׁם	007442001001000	002004002010	Name	name
+H8034	SDBH	SDBH	שֵׁם	007442001002000	002003002007	Control	name; authority
+H8034	SDBH	SDBH	שֵׁם	007442001003000	002004002007	Know	name; renown; reputation
+H8034	SDBH	SDBH	שֵׁם	007442001004000	003001016	Self	name; self
+H8034	SDBH	SDBH	שֵׁם	007442002001000	003001007	Names of People	Shem
+H8414	SDBH	SDBH	תֹּהוּ	007726001001000	002002002006	Non-Exist	waste; desolation; chaos
+H8414	SDBH	SDBH	תֹּהוּ	007726001002000	002001002030	Worthless	nothing; useless; worthless; in vain; emptiness
+H8415	SDBH	SDBH	תְּהֹום	007727001001000	001002005	Waterbodies	ocean; great deep
+H8415	SDBH	SDBH	תְּהֹום	007727001001000	001003	Regions Under the Earth	ocean; great deep
+H8415	SDBH	SDBH	תְּהֹום	007727001002000	001002005	Waterbodies	spring

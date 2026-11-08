@@ -14,7 +14,7 @@
 
 ## How to read
 
-Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release; the column values are Hungarian and are explained in `KODKONYV.md`.
+Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release. The column names and values are Hungarian: next to each closed-vocabulary column the `_en` column gives the English label, next to each passage column the `_osis` column gives the OSIS reference, and every column is explained in `KODKONYV.md`.
 
 ### 1. Which verses belong to ISTENTISZT-001, and on which word?
 
@@ -39,15 +39,15 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 
 | File | Rows |
 |---|---|
-| `beepitesi_dontesek.tsv` | 265 |
-| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 236 |
+| `beepitesi_dontesek.tsv` | 257 |
+| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 237 |
 | `dontesnaplo.tsv` | 8 |
-| `elofordulasok.tsv` | 263 |
+| `elofordulasok.tsv` | 255 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizaras_csoportok.tsv` | 3989 |
-| `kizarasok.tsv` | 523 |
-| `kodkonyv.tsv` | 213 |
+| `kizaras_csoportok.tsv` | 3115 |
+| `kizarasok.tsv` | 418 |
+| `kodkonyv.tsv` | 351 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -63,6 +63,10 @@ The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a p
 
 With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
 
+## English layer
+
+The column names and values of the package are Hungarian; English parallel columns stand next to them. **Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book code is standard, chapter and verse follow the versification of the Károli translation — where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. **Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); `jelentes_en` is separate, a dictionary excerpt.
+
 ## Group exclusion
 
 Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, and `kizaras_csoportok.tsv` lists all verses of the group. The rationale of a summary row applies to the whole group.
@@ -77,7 +81,7 @@ The open data core is the data layer of the lexicon; the lexicon itself (its int
 
 ## What is not in the package
 
-- Candidates in the `nyitva` (open, not yet decided) state: 20.
+- Candidates in the `nyitva` (open, not yet decided) state: 129.
 - The text of the lexicon (interpretive prose, Hungarian dictionary translations, Károli text with Strong's numbers), the studies and the lexicon pages.
 - Internal working marks: identifiers, working files, query traces. Where a decision is referred to, the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.
 

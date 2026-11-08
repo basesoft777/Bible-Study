@@ -1,0 +1,26 @@
+KÖTEG: kulso_Róm_1
+
+VERS: Róm 1:8
+KÁROLI (számozott szavak): 1 Először | 2 hálát | 3 adok | 4 az | 5 én | 6 Istenemnek | 7 a | 8 Jézus | 9 Krisztus | 10 által | 11 mindnyájatokért | 12 hogy | 13 a | 14 ti | 15 hiteteknek | 16 az | 17 egész | 18 világon | 19 híre | 20 van
+EREDETI (számozott szavak): 1 Πρῶτον G4413 [First] | 2 μὲν G3303 [indeed] | 3 εὐχαριστῶ G2168 [I thank] | 4 τῷ G3588 [the] | 5 θεῷ G2316 [God] | 6 μου G3165 [of mine] | 7 διὰ G1223 [through] | 8 Ἰησοῦ G2424 [Jesus] | 9 Χριστοῦ G5547 [Christ] | 10 περὶ G4012 [for] [nem TR] | 11 πάντων G3956 [all] | 12 ὑμῶν G4771 [of you] | 13 ὅτι G3754 [because] | 14 ἡ G3588 [the] | 15 πίστις G4102 [faith] | 16 ὑμῶν G4771 [of you] | 17 καταγγέλλεται G2605 [is being proclaimed] | 18 ἐν G1722 [in] | 19 ὅλῳ G3650 [all] | 20 τῷ G3588 [the] | 21 κόσμῳ· G2889 [world;]
+CÉL (Károli-sorszámok): 1
+
+VERS: Róm 1:10
+KÁROLI (számozott szavak): 1 Imádkozásaimban | 2 mindenkor | 3 könyörögvén | 4 vajha | 5 egyszer | 6 már | 7 jó | 8 szerencsés | 9 út | 10 adódnék | 11 nékem | 12 Istennek | 13 akaratából | 14 hogy | 15 hozzátok | 16 mehessek
+EREDETI (számozott szavak): 1 πάντοτε G3842 [always] | 2 ἐπὶ G1909 [upon] | 3 τῶν G3588 [the] | 4 προσευχῶν G4335 [prayers] | 5 μου G3165 [of mine] | 6 δεόμενος, G1189 [[10] imploring,] | 7 εἴ G1487 [if] | 8 πως G4458 [somehow] | 9 ἤδη G2235 [now] | 10 ποτὲ G4218 [at last] | 11 εὐοδωθήσομαι G2137 [I will succeed] | 12 ἐν G1722 [by] | 13 τῷ G3588 [the] | 14 θελήματι G2307 [will] | 15 τοῦ G3588 [<the>] | 16 θεοῦ G2316 [of God] | 17 ἐλθεῖν G2064 [to come] | 18 πρὸς G4314 [to] | 19 ὑμᾶς· G4771 [you;]
+CÉL (Károli-sorszámok): 4
+
+VERS: Róm 1:12
+KÁROLI (számozott szavak): 1 Azaz | 2 hogy | 3 együtt | 4 felbuzduljunk | 5 ti | 6 nálatok | 7 egymás | 8 hite | 9 által | 10 a | 11 tiétek | 12 meg | 13 az | 14 enyém | 15 által
+EREDETI (számozott szavak): 1 τοῦτο G3778 [that] | 2 δέ G1161 [now] | 3 ἐστιν G1510 [is] | 4 συμπαρακληθῆναι G4837 [to be encouraged together] | 5 ἐν G1722 [among] | 6 ὑμῖν G4771 [you] | 7 διὰ G1223 [through] | 8 τῆς G3588 [the] | 9 ἐν G1722 [among] | 10 ἀλλήλοις G0240 [one another] | 11 πίστεως, G4102 [faith] | 12 ὑμῶν G4771 [of you] | 13 τε G5037 [both] | 14 καὶ G2532 [and] | 15 ἐμοῦ.¶ G1473 [of me.]
+CÉL (Károli-sorszámok): 1
+
+VERS: Róm 1:16
+KÁROLI (számozott szavak): 1 Mert | 2 nem | 3 szégyenlem | 4 a | 5 Krisztus | 6 evangyéliomát | 7 mert | 8 Istennek | 9 hatalma | 10 az | 11 minden | 12 hívőnek | 13 idvességére | 14 zsidónak | 15 először | 16 meg | 17 görögnek
+EREDETI (számozott szavak): 1 οὐ G3756 [Not] | 2 γὰρ G1063 [for] | 3 ἐπαισχύνομαι G1870 [I am ashamed of] | 4 τὸ G3588 [the] | 5 εὐαγγέλιον G2098 [gospel] | 6 τοῦ G3588 [of the] | 7 χριστοῦ· G5547 [Christ;] | 8 δύναμις G1411 [[the] power] | 9 γὰρ G1063 [for] | 10 θεοῦ G2316 [of God] | 11 ἐστιν G1510 [it is] | 12 εἰς G1519 [unto] | 13 σωτηρίαν G4991 [salvation] | 14 παντὶ G3956 [to everyone] | 15 τῷ G3588 [who] | 16 πιστεύοντι, G4100 [is believing —] | 17 Ἰουδαίῳ G2453 [to Jew] | 18 τε G5037 [both] | 19 πρῶτον G4413 [first] | 20 καὶ G2532 [and] | 21 Ἕλληνι. G1672 [to Greek.]
+CÉL (Károli-sorszámok): 15
+
+VERS: Róm 1:24
+KÁROLI (számozott szavak): 1 Annakokáért | 2 adta | 3 is | 4 őket | 5 az | 6 Isten | 7 szívök | 8 kivánságaiban | 9 tisztátalanságra | 10 hogy | 11 egymás | 12 testét | 13 megszeplősítsék
+EREDETI (számozott szavak): 1 Διὸ G1352 [Therefore] | 2 καὶ G2532 [and] | 3 παρέδωκεν G3860 [gave up] | 4 αὐτοὺς G0846 [them] | 5 ὁ G3588 [<the>] | 6 θεὸς G2316 [God] | 7 ἐν G1722 [in] | 8 ταῖς G3588 [the] | 9 ἐπιθυμίαις G1939 [desires] | 10 τῶν G3588 [of the] | 11 καρδιῶν G2588 [hearts] | 12 αὐτῶν G0846 [of them] | 13 εἰς G1519 [to] | 14 ἀκαθαρσίαν G0167 [impurity] | 15 τοῦ G3588 [<the>] | 16 ἀτιμάζεσθαι G0818 [to dishonor] | 17 τὰ G3588 [the] | 18 σώματα G4983 [bodies] | 19 αὐτῶν G0846 [of them] | 20 ἐν G1722 [between] | 21 αὐτοῖς, G0846 [themselves,] [nem TR]
+CÉL (Károli-sorszámok): 10

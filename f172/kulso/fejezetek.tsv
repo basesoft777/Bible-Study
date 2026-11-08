@@ -1,0 +1,10 @@
+# MANUAL: scope=F172 külső összevetés fejezetei (Bible-Discovery, Strong-os Károli, régies) | forras=f172/itelet_par.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, adat/karoli_strong/ @ git:391380d3 | ts=git:391380d3 | manual (determinisztikus kiválasztás); a forrás szövege nem kerül ide
+reteg	fejezet	step	versek	celpar	celpar_elteres	celpar_elteres_tartalmi	par_osszes	par_tartalmi
+OSZ_mozes_magas	1Móz 7	Gen.7	24	4	1	0	517	354
+OSZ_mozes	3Móz 3	Lev.3	17	3	1	1	351	240
+OSZ_tortenet	2Kir 10	2Ki.10	36	3	1	1	940	640
+OSZ_koltoi	Péld 3	Pro.3	35	3	1	1	447	280
+OSZ_profeta	Ez 43	Ezk.43	27	3	1	1	626	412
+USZ_evangelium	ApCsel 12	Act.12	25	3	1	1	455	455
+USZ_level	Róm 1	Rom.1	32	5	1	1	537	537
+USZ_jelenesek	Jel 19	Rev.19	21	16	2	2	470	470

@@ -1,0 +1,11 @@
+KÖTEG: kulso_Ez_43
+
+VERS: Ez 43:13
+KÁROLI (számozott szavak): 1 És | 2 ezek | 3 az | 4 oltár | 5 mértékei | 6 singek | 7 szerint | 8 egy | 9 sing | 10 tesz | 11 egy | 12 közsinget | 13 és | 14 egy | 15 tenyért | 16 talpa | 17 vala | 18 egy | 19 sing | 20 magas | 21 és | 22 egy | 23 sing | 24 széles | 25 korlátja | 26 pedig | 27 a | 28 szélén | 29 köröskörül | 30 egy | 31 arasznyi | 32 És | 33 ez | 34 az | 35 oltár | 36 magassága
+EREDETI (számozott szavak): 1 וְ H9002 [and] | 2 אֵ֨לֶּה H0428 [these] | 3 מִדּ֤וֹת H4060 [[are] [the] measurements of] | 4 הַ H9009 [the] | 5 מִּזְבֵּ֙חַ֙ H4196 [altar] | 6 בָּֽ H9003 [by <the>] | 7 אַמּ֔וֹת H0520 [cubits] | 8 אַמָּ֥ה H0520 [a cubit] | 9 אַמָּ֖ה H0520 [[is] a cubit] | 10 וָ H9002 [and] | 11 טֹ֑פַח H2948 [a hand breadth] | 12 וְ H9002 [and] | 13 חֵ֨יק H2436 [a gutter] | 14 הָ H9009 [[is] the] | 15 אַמָּ֜ה H0520 [cubit] | 16 וְ H9002 [and] | 17 אַמָּה H0520 [[is] a cubit] | 18 רֹ֗חַב H7341 [[the] breadth] | 19 וּ H9002 [and] | 20 גְבוּלָ֨ H1366 [border] | 21 הּ H9024 [its] | 22 אֶל H0413 [to] | 23 שְׂפָתָ֤ H8193 [edge] | 24 הּ H9024 [its] | 25 סָבִיב֙ H5439 [around] | 26 זֶ֣רֶת H2239 [a span] | 27 הָ H9009 [<the>] | 28 אֶחָ֔ד H0259 [one] | 29 וְ H9002 [and] | 30 זֶ֖ה H2088 [this] | 31 גַּ֥ב H1354 [[is] [the] mound of] | 32 הַ H9009 [the] | 33 מִּזְבֵּֽחַ H4196 [altar]
+CÉL (Károli-sorszámok): 12
+
+VERS: Ez 43:26
+KÁROLI (számozott szavak): 1 Hét | 2 napon | 3 át | 4 szenteljék | 5 és | 6 tisztítsák | 7 meg | 8 az | 9 oltárt | 10 és | 11 töltsék | 12 meg | 13 kezét
+EREDETI (számozott szavak): 1 שִׁבְעַ֣ת H7651 [seven] | 2 יָמִ֗ים H3117 [days] | 3 יְכַפְּרוּ֙ H3722 [they will make atonement for] | 4 אֶת H0853 [<obj.>] | 5 הַ H9009 [the] | 6 מִּזְבֵּ֔חַ H4196 [altar] | 7 וְ H9001 [and] | 8 טִֽהֲר֖וּ H2891 [they will purify] | 9 אֹת֑ H0853 [<obj.>] | 10 וֹ H9033 [it] | 11 וּ H9001 [and] | 12 מִלְא֖וּ H4390 [they will fill] | 13 יָדָֽי H3027 [hands] | 14 ו H9023 [its]
+CÉL (Károli-sorszámok): 7

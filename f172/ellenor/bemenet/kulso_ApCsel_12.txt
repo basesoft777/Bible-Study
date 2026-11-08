@@ -1,0 +1,26 @@
+KÖTEG: kulso_ApCsel_12
+
+VERS: ApCsel 12:4
+KÁROLI (számozott szavak): 1 Kit | 2 el | 3 is | 4 fogatván | 5 tömlöczbe | 6 veté | 7 átadván | 8 négy | 9 négyes | 10 katonai | 11 szakasznak | 12 hogy | 13 őrizzék | 14 őt | 15 husvét | 16 után | 17 akarván | 18 őt | 19 a | 20 nép | 21 elé | 22 vezettetni
+EREDETI (számozott szavak): 1 ὃν G3739 [whom] | 2 καὶ G2532 [also] | 3 πιάσας G4084 [having seized] | 4 ἔθετο G5087 [he put] | 5 εἰς G1519 [in] | 6 φυλακὴν G5438 [prison] | 7 παραδοὺς G3860 [having delivered [him]] | 8 τέσσαρσιν G5064 [to four] | 9 τετραδίοις G5069 [sets of four] | 10 στρατιωτῶν G4757 [soldiers] | 11 φυλάσσειν G5442 [to guard] | 12 αὐτόν, G0846 [him,] | 13 βουλόμενος G1014 [intending] | 14 μετὰ G3326 [after] | 15 τὸ G3588 [the] | 16 πάσχα G3957 [Passover] | 17 ἀναγαγεῖν G0321 [to bring out] | 18 αὐτὸν G0846 [him] | 19 τῷ G3588 [to the] | 20 λαῷ.¶ G2992 [people.]
+CÉL (Károli-sorszámok): 11
+
+VERS: ApCsel 12:5
+KÁROLI (számozott szavak): 1 Péter | 2 azért | 3 őrizteték | 4 a | 5 fogságban | 6 a | 7 gyülekezet | 8 pedig | 9 szüntelen | 10 könyörög | 11 vala | 12 az | 13 Istennek | 14 ő | 15 érette
+EREDETI (számozott szavak): 1 Ὁ G3588 [<the>] | 2 μὲν G3303 [Indeed] | 3 οὖν G3767 [therefore] | 4 Πέτρος G4074 [Peter] | 5 ἐτηρεῖτο G5083 [was kept] | 6 ἐν G1722 [in] | 7 τῇ G3588 [the] | 8 φυλακῇ· G5438 [prison;] | 9 προσευχὴ G4335 [prayer] | 10 δὲ G1161 [however] | 11 ἦν G1510 [was] | 12 ἐκτενῶς G1619 [fervently] [nem TR] | 13 γινομένη G1096 [being made] | 14 ὑπὸ G5259 [by] | 15 τῆς G3588 [the] | 16 ἐκκλησίας G1577 [church] | 17 πρὸς G4314 [to] | 18 τὸν G3588 [<the>] | 19 θεὸν G2316 [God] | 20 περὶ G4012 [concerning] [nem TR] | 21 αὐτοῦ. G0846 [him.]
+CÉL (Károli-sorszámok): 14, 15
+
+VERS: ApCsel 12:8
+KÁROLI (számozott szavak): 1 És | 2 monda | 3 néki | 4 az | 5 angyal | 6 Övezd | 7 fel | 8 magadat | 9 és | 10 kösd | 11 fel | 12 saruidat | 13 És | 14 úgy | 15 cselekedék | 16 És | 17 monda | 18 néki | 19 Vedd | 20 rád | 21 felsőruhádat | 22 és | 23 kövess | 24 engem
+EREDETI (számozott szavak): 1 εἶπεν G2036 [Said] | 2 δὲ G1161 [then] [nem TR] | 3 ὁ G3588 [the] | 4 ἄγγελος G0032 [angel] | 5 πρὸς G4314 [to] | 6 αὐτόν· G0846 [him;] | 7 ζῶσαι G2224 [do dress yourself] [nem TR] | 8 καὶ G2532 [and] | 9 ὑπόδησαι G5265 [do yourself put on] | 10 τὰ G3588 [the] | 11 σανδάλιά G4547 [sandals] | 12 σου. G4771 [of you.] | 13 ἐποίησεν G4160 [He did] | 14 δὲ G1161 [and] | 15 οὕτως. G3779 [so.] | 16 καὶ G2532 [And] | 17 λέγει G3004 [he says] | 18 αὐτῷ· G0846 [to him;] | 19 περιβαλοῦ G4016 [do yourself wrap around] | 20 τὸ G3588 [the] | 21 ἱμάτιόν G2440 [cloak] | 22 σου G4771 [of you] | 23 καὶ G2532 [and] | 24 ἀκολούθει G0190 [do follow] | 25 μοι. G3165 [me.]
+CÉL (Károli-sorszámok): 20
+
+VERS: ApCsel 12:17
+KÁROLI (számozott szavak): 1 Miután | 2 pedig | 3 kezével | 4 hallgatást | 5 intett | 6 nékik | 7 elbeszélé | 8 nékik | 9 mimódon | 10 hozta | 11 ki | 12 őt | 13 az | 14 Úr | 15 a | 16 tömlöczből | 17 És | 18 monda | 19 Adjátok | 20 tudtára | 21 ezeket | 22 Jakabnak | 23 és | 24 az | 25 atyafiaknak | 26 És | 27 kimenvén | 28 elméne | 29 más | 30 helyre
+EREDETI (számozott szavak): 1 κατασείσας G2678 [Having made a sign] | 2 δὲ G1161 [then] | 3 αὐτοῖς G0846 [to them] | 4 τῇ G3588 [with the] | 5 χειρὶ G5495 [hand] | 6 σιγᾶν, G4601 [to be silent,] | 7 διηγήσατο G1334 [he related] | 8 αὐτοῖς G0846 [to them] | 9 πῶς G4459 [how] | 10 ὁ G3588 [the] | 11 κύριος G2962 [Lord] | 12 αὐτὸν G0846 [him] | 13 ἐξήγαγεν G1806 [had brought] | 14 ἐκ G1537 [out of] | 15 τῆς G3588 [the] | 16 φυλακῆς· G5438 [prison;] | 17 εἶπέν G2036 [He said] | 18 τε· G5037 [then;] [nem TR] | 19 ἀπαγγείλατε G0518 [do report] | 20 Ἰακώβῳ G2385 [to James] | 21 καὶ G2532 [and] | 22 τοῖς G3588 [to the] | 23 ἀδελφοῖς G0080 [brothers] | 24 ταῦτα. G3778 [these things.] | 25 καὶ G2532 [And] | 26 ἐξελθὼν G1831 [having gone out] | 27 ἐπορεύθη G4198 [he went] | 28 εἰς G1519 [to] | 29 ἕτερον G2087 [another] | 30 τόπον.¶ G5117 [place.]
+CÉL (Károli-sorszámok): 11
+
+VERS: ApCsel 12:18
+KÁROLI (számozott szavak): 1 Mikor | 2 pedig | 3 megvirradt | 4 nem | 5 csekély | 6 háborúság | 7 támada | 8 a | 9 vitézek | 10 között | 11 mi | 12 történt | 13 hát | 14 Péterrel
+EREDETI (számozott szavak): 1 Γενομένης G1096 [When was coming] | 2 δὲ G1161 [now] | 3 ἡμέρας G2250 [day] | 4 ἦν G1510 [there was] | 5 τάραχος G5017 [disturbance] | 6 οὐκ G3756 [no] | 7 ὀλίγος G3641 [small] | 8 ἐν G1722 [among] | 9 τοῖς G3588 [the] | 10 στρατιώταις G4757 [soldiers] | 11 τί G5101 [what] | 12 ἄρα G0686 [then [of]] | 13 ὁ G3588 [<the>] | 14 Πέτρος G4074 [Peter] | 15 ἐγένετο. G1096 [has become.]
+CÉL (Károli-sorszámok): 13

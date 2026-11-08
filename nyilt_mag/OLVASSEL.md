@@ -39,15 +39,15 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 
 | Fájl | Sor |
 |---|---|
-| `beepitesi_dontesek.tsv` | 265 |
-| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 236 |
+| `beepitesi_dontesek.tsv` | 257 |
+| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 237 |
 | `dontesnaplo.tsv` | 8 |
-| `elofordulasok.tsv` | 263 |
+| `elofordulasok.tsv` | 255 |
 | `forrasok_es_licencek.tsv` | 54 |
 | `kapcsolatok.tsv` | 32 |
-| `kizaras_csoportok.tsv` | 3989 |
-| `kizarasok.tsv` | 523 |
-| `kodkonyv.tsv` | 213 |
+| `kizaras_csoportok.tsv` | 3115 |
+| `kizarasok.tsv` | 418 |
+| `kodkonyv.tsv` | 351 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 
@@ -63,6 +63,10 @@ A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a
 
 A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
 
+## Angol réteg
+
+A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.
+
 ## Csoportos kizárás
 
 A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.
@@ -77,7 +81,7 @@ A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások
 
 ## Ami nincs a csomagban
 
-- A `nyitva` állapotú (még el nem döntött) jelöltek: 20 db.
+- A `nyitva` állapotú (még el nem döntött) jelöltek: 129 db.
 - A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a tanulmányok és a lexikonlapok.
 - A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.
 
