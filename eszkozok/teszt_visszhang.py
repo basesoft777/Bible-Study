@@ -86,6 +86,12 @@ class AranyKapu(unittest.TestCase):
         self.assertEqual(KAPU.arany_szint(60, 1000)[1], 'hiba')
         self.assertEqual(KAPU.arany_szint(1, 0)[1], 'ismeretlen')
 
+    def test_ismeretlen_tetelszam_figyelmeztet(self):
+        ki = KAPU.ell_arany(self.csomag({'NincsTetelszam': 3}))
+        szint = {t.idezet: t.suly for t in ki}
+        self.assertEqual(szint['NincsTetelszam'], KAPU.FIGY)      # nem ellenorizheto arany: FIGYELMEZTETES, nem csend
+        self.assertTrue(any(s.startswith('NincsTetelszam: 3 / ?') for s in KAPU.ARANY_INFO))
+
     def test_tobbforrasu_sor(self):
         cs = {'elofordulasok.tsv': 'motivum_azonosito\tforras_dataset\tszotar\nX-001\tTesztA; TesztB\tTesztA\n'}
         KAPU.ell_arany(cs)

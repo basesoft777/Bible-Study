@@ -697,6 +697,8 @@ def ell_arany(fajlok):
         a, szint = arany_szint(szaml[n], t)
         if szint == 'ismeretlen':
             ARANY_INFO.append('%s: %d / ? (a forrás tételszáma nem állapítható meg)' % (n, szaml[n]))
+            if szaml[n] > 0:
+                ki.append(Talalat('ARANY', FIGY, 'elofordulasok.tsv', 1, n, 'a forrás tételszáma nem állapítható meg, az arány nem ellenőrizhető (%s: %d / ?): vegyük fel a VISSZHANG_README.md tételszám-táblájába vagy a datasetek.tsv sorába' % (n, szaml[n])))
             continue
         ARANY_INFO.append('%s: %d / %d = %.2f%%' % (n, szaml[n], t, a))
         if szint == 'hiba':
