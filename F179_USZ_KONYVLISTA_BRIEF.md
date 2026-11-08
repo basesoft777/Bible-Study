@@ -5,12 +5,12 @@ kod: USZ_KONYVLISTA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: lezarva
+allapot: megallt
 ag: claude/usz-konyvlista
 pr: https://github.com/basesoft777/Bible-Study/pull/654
 lezarva_osszegzes: a `general.py` ÚSZ-könyvlistája a normalizáló táblából (Mt–Jel, 27 könyv; a kézi lista 15-öt nem ismert), teszt 5/5; a mérés szerint csak a HAMART-001 érintett (46/6 → 43/9; LXX 67 → 62 sor, Gal 3:10/3:13 és Mk 7:21–23 kikerül); N-F09f lezárva; NYITOTT: a main-beli HAMART-lap újragenerálása döntésre vár (a #639-cel ütközne), az n14_hamart_betoltes.py saját listája nem javítva (`naplok/F179_jelentes.md`)
 ad: a `general.py` ÚSZ-könyvlistája a normalizáló táblából olvasva teljes (Mt–Jel), teszttel; az érintett lexikonlapok újragenerálva, előtte–utána mérve (ÓSZ/ÚSZ-szám, LXX-tábla); a HAMART-001 lapján 42/6, a Gal 3:13-14 nincs a LXX-táblában; az N-F09f lezárva
-kovetkezo: "Te: F179.0 — modell-ellenőrzés; a `general.py` UJSZOVETSEGI_TOKENEK-listájának felmérése (és az `n14_hamart_betoltes.py` saját listájáé)"
+kovetkezo: "Te: /elteres 179"
 munka: folyamat
 olvas: [eszkozok/general.py, eszkozok/lexikon_general.py, konkordancia/Konyv_normalizalo_tabla.tsv, adat/elofordulasok.tsv, naplok/ELLENOR_F123_HAMART3_javitokor2.md]
 ir: [eszkozok/general.py, eszkozok/teszt_general_konyvlista.py, "lexikon/*_TUDOMANYOS.md", naplok/F179_jelentes.md]
