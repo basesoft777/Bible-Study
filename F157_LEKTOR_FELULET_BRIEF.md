@@ -12,7 +12,7 @@ kovetkezo: "/kovetkezo, 0. ellenőrzés (db capability), M0"
 olvas: [naplok/HATAR_ISTENTISZT-001.md, naplok/HATAR_HAMART-001.md, eszkozok/motivum_hatar.py, eszkozok/kiejtes_szoveg.py, adat/jeloltek.tsv, adat/motivumok.tsv, adat/SEMA.md, DONTESEK.md, "lexikon/*_TUDOMANYOS.md", F151_MOTIVUM_HATAR_BRIEF.md, F125_GERINC_KARTYA_SZOVEG_BRIEF.md, F86_ELOFIZETES_FEED_BRIEF.md, CLAUDE.md]
 ir: [eszkozok/lektor_kerdesek.py, eszkozok/teszt_lektor_kerdesek.py, eszkozok/lektor_felulet/, "naplok/LEKTOR_*.tsv", naplok/LEKTOR_FELULET_naplo.md]
 fugg: []
-nem_fugg: [10, 12, 36, 86, 121, 123, 125, 131, 146, 148, 151, 152]
+nem_fugg: [10, 12, 36, 86, 121, 123, 125, 131, 146, 148, 151, 152, 178]
 ---
 
 # Fnn_LEKTOR_FELULET_BRIEF.md — lektor-felület
