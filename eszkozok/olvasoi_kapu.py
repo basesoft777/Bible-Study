@@ -34,6 +34,9 @@ Ellenőrzések (azonosító — súlyosság):
     LABJEGYZET   definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) — BUKÁS
     PROZA_1A     az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)   — BUKÁS
     CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
+    VISSZHANG    a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): V1 angol maradék, V2 nem rokon
+                 nyelvi sor a BDB-háttérben, V3 „nincs” a „nem azonosítható” helyén, V4 „ugyanaz a szó” két
+                 lemmánál, V5 kiemelt következtetés alapvonal nélkül, V6 sablonmondat ≥3 sorban   — BUKÁS
     NAVE_ANGOL   a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers
                  HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)                       — BUKÁS
 
@@ -961,8 +964,94 @@ def ell_nave_angol(sorok):
     return ki
 
 
+# VISSZHANG (F178.5, DT639, DT-F178d; a felhasználó: „Legyen biztosítva, hogy ezt át tudjuk vinni, ne legyen
+# visszaesés”, 2026-11-08): a 4.11 visszhang-blokk szabályai minden lapon, ahol a blokk áll — BUKÁS. Hat szabály:
+#   V1 angol maradék a blokkban (BDB-fordulat, angol glossza, „fordításra vár”);
+#   V2 nem rokon nyelvi sor a BDB-háttérben (újhéber, targumi arámi, Sirák);
+#   V3 „nincs rokon nyelvi adat”, holott a rokon írások lekérdezése a szócikket nem azonosította (bdb_szócikk=0):
+#      a kettő nem vonható össze („nem azonosítható” ≠ „nincs”);
+#   V4 „ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”);
+#   V5 kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a két héber szó egyesítése és a láncban
+#      választott (szokatlan) szó;
+#   V6 sablonmondat-ismétlés: ugyanaz a következtetés-mondat legalább három sorban.
+VH_ANGOL_RX = re.compile(r"\b(?:see|so|cf|Assyrian|Arabic|Syriac|Ethiopic|Aramaic|Late Hebrew|Hiph'?il|Ecclus|"
+                         r"cursed|curse|grief|corruption)\b|fordításra vár")
+VH_NEM_ROKON_RX = re.compile(r'^\s*(?:újhéber|targumi|Sirák|késői héber)', re.I)
+VH_KIEMELT_JO_RX = re.compile(r'két héber szót|más szót választ')
+VH_FORDITASOK = ((1, 'Targum'), (2, 'Vulgata'), (3, 'LXX'))
+_VH_NEM_AZONOSITOTT = None
+
+
+def _niqqud_nelkul(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if not ('֑' <= c <= 'ׇ'))
+
+
+def vh_nem_azonositott():
+    """A rokon írások gyorsítótárában bdb_szócikk=0 Strongok próbált alakjai (pontozatlan héber)."""
+    global _VH_NEM_AZONOSITOTT
+    if _VH_NEM_AZONOSITOTT is None:
+        _VH_NEM_AZONOSITOTT = set()
+        ut = os.path.join(GYOKER, 'konkordancia', 'BDB_rokon_irasok.tsv')
+        if os.path.exists(ut):
+            with open(ut, encoding='utf-8') as f:
+                for sor in f:
+                    m = re.match(r'# lekérdezve: H\d+ \| próbált_alakok=([^|]+)\|.*bdb_szócikk=0\b', sor)
+                    if m:
+                        _VH_NEM_AZONOSITOTT.update(x.strip() for x in m.group(1).split(','))
+    return _VH_NEM_AZONOSITOTT
+
+
+def _vh_cellak(t):
+    return [c.strip() for c in t.strip().strip('|').split('|')]
+
+
+def ell_visszhang(sorok):
+    ki = []
+    mondatok = {}
+    for s in sorok:
+        if s.fajta not in ('tabla', 'proza') or not (s.alszakasz.startswith('4.11.') or
+                                                    s.alszakasz.startswith('Háttér: rokon nyelvek')):
+            continue
+        t = s.szoveg
+        m = VH_ANGOL_RX.search(t)
+        if m:
+            ki.append(talalat('VISSZHANG', BUKAS, s.n, kornyezet(t, m), 'V1 angol maradék a visszhang-blokkban: ' +
+                              m.group(0), 'V1' + m.group(0)))
+        if s.fajta != 'tabla':
+            continue
+        c = _vh_cellak(t)
+        if s.alszakasz.startswith('Háttér') and len(c) == 4 and not set(c[0]) <= set('-: '):
+            if VH_NEM_ROKON_RX.search(c[1]):
+                ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V2 nem rokon nyelvi sor a BDB-háttérben: ' + c[1][:40]))
+            if 'nincs rokon nyelvi adat' in c[1]:
+                szo = re.findall('[֐-׿]+', c[0])
+                if szo and _niqqud_nelkul(szo[0]) in vh_nem_azonositott():
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V3 „nincs rokon nyelvi adat”, holott a BDB-szócikk '
+                                                                  'nem azonosított (nem azonosítható ≠ nincs)'))
+        elif s.alszakasz.startswith('4.11.') and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
+                and not set(c[0]) <= set('-: '):
+            mit = c[4]
+            for i, nev in VH_FORDITASOK:
+                cella = c[i].replace('**', '')
+                mm = re.match(r'^(.*?) · (\d+)/(\d+)\b', cella)
+                if mm and len(mm.group(1).split(' · ')) >= 2 and re.search(r'\b%s: ugyanaz a szó\b' % nev, mit):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, mit[:120], 'V4 „ugyanaz a szó” két lemmánál (%s): '
+                                                                         'helyesen „ugyanaz a szócsalád”' % nev))
+            for b in re.findall(r'\*\*(.+?)\*\*', mit):
+                if not VH_KIEMELT_JO_RX.search(b):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, b[:120], 'V5 kiemelt következtetés alapvonal nélkül'))
+            for mondat in re.split(r'(?<=\.)\s+', mit.replace('**', '')):
+                if len(mondat) > 30:
+                    mondatok.setdefault(mondat, []).append(s.n)
+    for mondat, ns in mondatok.items():
+        if len(ns) >= 3:
+            ki.append(talalat('VISSZHANG', BUKAS, ns[0], mondat[:120], 'V6 sablonmondat-ismétlés: %d sorban' % len(ns)))
+    return ki
+
+
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
-                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol]
+                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
+                ell_visszhang]
 
 
 def arany_szoszam():

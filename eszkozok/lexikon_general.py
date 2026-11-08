@@ -6386,7 +6386,10 @@ def visszhang_cella(forras, sorok_f, versek):
         kulcs = next((k for k in csal if k & c), c)
         csal.setdefault(kulcs, []).append(h)
     if not csal:
-        return '—', 0, N, None, [], versek, 0
+        # a hiány kimondva, nem kitöltve: kinyerés nélkül „még nem történt meg”, ellenőrizetlen sorral „nincs
+        # ellenőrzött adat” (a Targum és a Vulgata kinyerése a motívum lezárásának lépése, MUNKAMENET C-vh)
+        return ('nincs ellenőrzött adat' if sorok_f else 'a megfelelő kinyerése még nem történt meg'), \
+            0, N, None, [], versek, 0
     fo, helyek = max(csal.items(), key=lambda x: len(x[1]))
     n = len(helyek)
     lemmak = list(dict.fromkeys(jo[h]['lemma'].split(' · ')[0] for h in helyek))
@@ -6419,7 +6422,7 @@ def _visszhang_mondat(f, eredm, kozos):
     n, N, lemmak, kulonbozo, alap = eredm['n'], eredm['N'], eredm['lemmak'], eredm['kulonbozo'], eredm['alap']
     Nev = nev[:1].upper() + nev[1:]
     if not n:
-        return '%s: nincs ellenőrzött adat.' % Nev
+        return '%s: %s.' % (Nev, eredm['cella'])
     if kulonbozo > 1 and n == 1:
         return '%s %s különböző szót használ.' % (Nev, SZAMSZO_VH.get(kulonbozo, str(kulonbozo)))
     egyseg = 'ugyanaz a szócsalád' if len(lemmak) > 1 else 'ugyanaz a szó'

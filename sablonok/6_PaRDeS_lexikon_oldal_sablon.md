@@ -526,4 +526,16 @@ kapcsolatok explicit el vannak-e választva egymástól.*
 
 **Visszhang-blokk (4.11; DT639, DT-F178d):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat), a cella a fordítás szava kiejtéssel és az `n/N`; „ugyanaz a szócsalád”, ha két lemma áll; betoldás-sor; a következtetés az alapvonal szerint (LXX: a láncon kívül ≥ 80% szokásos fordítás, nem lelet; < 40% kiemelt; Targum, Vulgata: nem mérhető); kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza; rokon nyelvi háttér csak valódi rokon nyelvvel, nyelvenként egy sor; minden héber, arámi, görög, arab, etióp, szír szónál kiejtés. Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
 
+**A 4.11 visszhang-blokk szabályai, tételesen** (DT639, DT-F178d, DT-F178e; kapu: `olvasoi_kapu.py` VISSZHANG, V1–V6;
+teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-001 4.11 blokkja):
+
+1. Lánc-szavanként egy sor; a cella a fordítás szava kiejtéssel és az `n/N`. Két különböző héber lánc-szó (pl. árar és kálal) két sor.
+2. Alapvonal: a LXX-nél gépi (a héber szó láncon kívüli ószövetségi verseiben ugyanaz a szócsalád, `lexikon_general.lxx_alapvonal`); ≥ 80%: „a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet”; < 40%: kiemelt; ha a szó a láncon kívül nem fordul elő: „az alapvonal nem mérhető”. A Targumnál és a Vulgatánál óvatos mondat: „hogy ez a szó szokásos fordítása-e, ebből a forrásból nem mérhető”.
+3. Kiemelt (félkövér) következtetés csak két esetben: a fordító két különböző héber lánc-szót egy szóval / szócsaláddal ad vissza, vagy a láncban más szót választ, mint máshol (V5).
+4. Két lemma: „ugyanaz a szócsalád”, nem „ugyanaz a szó” (V4); egy eltérő vers: „egy versben más szó (…)”; csupa különböző szónál „három különböző szó”, szám nélkül.
+5. Betoldás-sor: a betoldó fordítás cellája „… · betoldás”, a többi „nincs betoldás”; a következtetés csak a lelet (a fordító a lánc szavát olyan láncversbe teszi, ahol a héberben nincs).
+6. BDB-háttér: csak valódi rokon nyelv (akkád/asszír, arab, etióp, szír, óarámi, ugariti, Tell el-Amarna, sabeus); újhéber, targumi arámi, Sirák nem (V2); nyelvenként egy sor; tartalom nélküli sor nem áll; angol maradék nem állhat (V1); „nem azonosítható” (a BDB-szócikk a lekérdezésben nem azonosított) ≠ „nincs rokon nyelvi adat” (V3).
+7. Ugyanaz a következtetés-mondat legfeljebb két sorban (V6).
+8. Hiány kimondva, nem kitöltve: kinyerés nélkül „a megfelelő kinyerése még nem történt meg”, ellenőrizetlen sorral „nincs ellenőrzött adat”.
+
 **A HAMART-001 regressziós kapui (HIBA; `ellenoriz.py` 40. szabály, az új szerkezetű lapon SÉRTÉS, a régin a 2. kiadás tétele):** minden igehelyen kerek próza + „Funkció:” sor; olvasói kapu 0 BUKÁS **kivétel nélkül** (a Tartalomjegyzék, a Jelmagyarázat, a Kolofon, az Irodalom, a technikai dőlt sor és a lábjegyzet is: Károli-idézet, belső jel, „felhasználó” / „orkesztrátor”); a Döntési út számai összeadódnak; döntés nélküli vers 0; a Nave-blokk nem üres. Mellettük: határ-frissesség (39. szabály, Feed 5. kritérium), a beépített sor nem esik a csoportos kizárási okba (37.), nem „csak e szó miatt” (38.), Nave angol maradék nélkül (olvasói kapu NAVE_ANGOL).
