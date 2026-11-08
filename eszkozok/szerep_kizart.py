@@ -59,6 +59,23 @@ def okok(motivum_id, ut=None):
     return [(re.compile(r['minta'], re.IGNORECASE), r['cimke']) for r in sorted(sorok, key=lambda r: int(r['sorrend']))]
 
 
+OSSZESITO_TOLDALEK = re.compile(r'\s*\(összesítő sor\)\s*$')
+
+
+def olvasoi_ok(cimke):
+    """A címke olvasói alakja: a belső „(összesítő sor)” toldalék nélkül (F123.HAMART3, a felhasználó átnézése)."""
+    return OSSZESITO_TOLDALEK.sub('', cimke or '')
+
+
+def ok_megjegyzesek(motivum_id, ut=None):
+    """{olvasói címke: megjegyzés} a mintaszótárból (a motívum saját sorai és a `*` sorok, `sorrend` szerint, az első
+    nyer): az 1/b. döntési tábla „Mit jelent” oszlopa."""
+    ki = {}
+    for r in sorted((r for r in _sorok(ut or OKOK) if r['id'] in ('*', motivum_id)), key=lambda r: int(r['sorrend'])):
+        ki.setdefault(olvasoi_ok(r['cimke']), (r.get('megjegyzes') or '').strip())
+    return ki
+
+
 def elutasitas_oka(indoklas, minta):
     for m, cimke in minta:
         if m.search(indoklas or ''):
@@ -404,6 +421,8 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
     """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz. `strong_cim`: a jelölt Strong-szám
     `title`-je (`lexikon_general.strong_cim`; alapból a szám)."""
     minta = okok(motivum_id, okok_ut)
+    megj = ok_megjegyzesek(motivum_id, okok_ut)
+    pelda = collections.OrderedDict()
     csop = collections.OrderedDict((c, []) for c in CSOPORTOK)
     ok_szaml, forras_szaml = collections.Counter(), collections.Counter()
     labj = []
@@ -422,8 +441,10 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
             dontes = '**nyitott döntés**'
             ok_szaml['nyitott döntés'] += suly
         else:
-            ok = elutasitas_oka(fo_ind, minta)
+            ok = olvasoi_ok(elutasitas_oka(fo_ind, minta))
             ok_szaml[ok] += suly
+            if r['igehely'] not in pelda.setdefault(ok, []) and len(pelda[ok]) < 2:
+                pelda[ok].append(r['igehely'])
             dontes = '**elutasítva** — %s' % ok
         olv = olvasoi_indok(fo_ind)
         lj = 'forrás: `%s`%s' % (r.get('forras_kereses') or '—', (' · ' + farok) if farok else '')
@@ -449,7 +470,8 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
         else:
             ki.append('**%s** (%d)' % (c, len(sorok_c)))
         ki.append('| Igehely | Miért lett jelölt | Döntés és indok |\n|---|---|---|\n' + '\n'.join(sor_md))
-    ossz = {'ok': ok_szaml, 'forras': forras_szaml}
+    ossz = {'ok': ok_szaml, 'forras': forras_szaml, 'pelda': pelda,
+            'megj': {k: megj.get(k, '') for k in ok_szaml}}
     return ki, labj, ossz
 
 
@@ -472,12 +494,27 @@ def hianyok(sorok, motivum_id, minta=None):
     return ki
 
 
+TABLA_OK_MAX = 10
+
+
 def osszesito_sor(ossz):
     """Az összesítő bekezdés: az elutasítás okai (gyakoriság szerint, a nyitott a végén), a jelölés forrásai."""
     ok = ossz['ok']
     rend = sorted((k for k in ok if k != 'nyitott döntés'), key=lambda k: (-ok[k], k))
-    reszek = ['%s %d' % (k, ok[k]) for k in rend]
-    sor = ['**Az elutasítás okai:** ' + (' · '.join(reszek) if reszek else '—')]
+    # F123.HAMART3 (a felhasználó átnézése): okonként összevont döntési tábla, csökkenő versszám szerint; a tíz
+    # legnagyobb ok a táblában, a többi alatta egy mondatban, versszámmal („egyéb” sor nincs)
+    if rend:
+        tabla = ['| Ok | Vers | Mit jelent | Példa |', '|---|---|---|---|']
+        for k in rend[:TABLA_OK_MAX]:
+            tabla.append('| %s | %d | %s | %s |' % (_cella(k), ok[k], _cella((ossz.get('megj') or {}).get(k) or '—'),
+                                                  ', '.join((ossz.get('pelda') or {}).get(k) or []) or '—'))
+        sor = ['**Az elutasítás okai:**\n\n' + '\n'.join(tabla)]
+        if len(rend) > TABLA_OK_MAX:
+            tobbi = rend[TABLA_OK_MAX:]
+            sor.append('További %d ok, összesen %d vers: %s.' % (len(tobbi), sum(ok[k] for k in tobbi),
+                                                                '; '.join('%s (%d)' % (k, ok[k]) for k in tobbi)))
+    else:
+        sor = ['**Az elutasítás okai:** —']
     if ok.get('nyitott döntés'):
         sor.append('**Nyitott döntés:** %d' % ok['nyitott döntés'])
     sor.append('**A jelölés forrása:** ' + ' · '.join('%s %d' % (c, ossz['forras'][c]) for c in CSOPORTOK

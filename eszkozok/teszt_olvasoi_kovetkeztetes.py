@@ -67,16 +67,19 @@ class Szovegek(unittest.TestCase):
     def test_kizart_versszam(self):
         # F123.TUD1B: a mondat verseket számol, nem táblasort; az összesítő sorok versei csoportosan
         sz = OK.kizart(11, 1713, 11, 1724, 0, [('csak az egyik szó', 1713)], [('Gépi keresés', 1723)], 11)
-        self.assertIn('1724 verset vizsgáltunk meg: 11 verset egyenként, 1713 verset csoportosan (11 összesítő '
-                      'sorban); elutasítva: 1724.', sz)
+        self.assertIn('A motívum 11 helyén túl további 1\u00a0724 verset vizsgáltunk meg', sz)
+        self.assertIn('Egyik sem tartozik a motívumhoz: 11 versről egyenként döntöttünk, 1\u00a0713 versről közös ok alapján, '
+                      'csoportosan.', sz)
+        self.assertNotIn('elutasítva: 1724', sz)   # F123.HAMART3: a tautologikus mondat megszűnt
         self.assertIn('átlagosan 157 vizsgált vers jut (1724 vizsgált vers, 11 motívumhely)', sz)
         self.assertNotIn('kétszer', sz)
-        self.assertIn('a teljes Ó- és Újszövetségben kereste', sz)   # az összesítő sor: a teljesség-mérés blokkja
+        self.assertIn('a teljes Ó- és Újszövetségben kerestük', sz)   # az összesítő sor: a teljesség-mérés blokkja
         self.assertNotIn('teljesség-mérés', OK.kizart(104, 0, 0, 104, 0, [], [], 22))
         sz = OK.kizart(31, 295, 5, 326, 0, [], [], 74)
         self.assertIn('több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, '
                       'illetve 74)', sz)
-        self.assertIn('104 verset vizsgáltunk meg egyenként', OK.kizart(104, 0, 0, 104, 0, [], [], 22))
+        self.assertIn('A motívum 22 helyén túl további 104 verset vizsgáltunk meg, jelöltként. Egyik sem tartozik',
+                      OK.kizart(104, 0, 0, 104, 0, [], [], 22))
 
     def test_kulcsszavak(self):
         self.assertIn('az Ószövetségben két szó együttes jelenléte kell a motívumhoz, az Újszövetségben egy szó elég',
