@@ -1,36 +1,72 @@
 ---
 feladat: 174
-cim: A modernizált Károli Strong-vetítése
+cim: A modernizált Károli Strong-vetítése — harmadik nyílt mag (nyilt_karoli_modern/), módszertani leírással
 kod: KAROLI_MODERN_STRONG
 tipus: feladat
 fazis: folyamat
 modell: opus
-munka: adat
+munka: folyamat
 allapot: nem_indult
-ad: a Károli–Strong párok determinisztikus, modell nélküli átvetítése a régies szövegről a modernizáltra, a helyesírás-token és a páros-fájl közös kulcsán; egyetlen régi pár sem vész el, új nem keletkezik
-kovetkezo: "Csonk, indítás előtt kidolgozandó: a /befogad után a brief kidolgozása, majd /kovetkezo; a brief rögzíti a #137-hez való viszonyt és a DT305-tel való összhangot"
-olvas: [adat/karoli_modern/, adat/karoli_strong/, adat/SEMA.md, F137_KAROLI_MODERN_DB_BRIEF.md]
-ir: [adat/karoli_modern/, eszkozok/karoli_modern/, naplok/KAROLI_MODERN_STRONG_meres.md]
-fugg: [172, 96]
+ad: a modernizált Károli (#96) és a hozzá vetített Strong-párok CC BY 4.0 alatt közölhető nyílt magja (nyilt_karoli_modern/), MODSZER.md-vel, saját kapuval, és a modernizálás módszerének közlemény-szövege (hu/en)
+kovetkezo: "Te: a PR #644 jóváhagyása és mergelése; utána /kovetkezo. Sorrend: (1) vetítés és kapu, (2) MODSZER.md, (3) közlemény-szöveg; a #175 erre épül"
+olvas: [adat/karoli_modern/, adat/karoli_strong/, naplok/KAROLI_MODERN_zaras.md, naplok/KAROLI_MODERN_meres.md, naplok/ELLENOR_F96.md, naplok/ELLENOR_F96_2.md, naplok/ELLENOR_F96_3.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_modern/, adat/SEMA.md, adat/licencek.tsv, F96_KAROLI_MODERN_BRIEF.md, F137_KAROLI_MODERN_DB_BRIEF.md, F162_NYILT_MAG_BRIEF.md, DONTESEK.md, NYITOTT_FELADATOK.md]
+ir: [nyilt_karoli_modern/, eszkozok/karoli_modern_export.py, eszkozok/karoli_modern_kapu.py, eszkozok/teszt_karoli_modern_export.py]
+fugg: [96, 172]
 ---
 
-# F174_KAROLI_MODERN_STRONG_BRIEF — csonk
+# F174_KAROLI_MODERN_STRONG_BRIEF.md — A modernizált Károli Strong-vetítése, harmadik nyílt mag
 
-*FELADATOK #174 · csonk-brief · Modell: opus · v1 · 2026.11.05 · **csonk, indítás előtt kidolgozandó**; a felhasználó jóváhagyása (2026-11-05): „a modernizált károli strongozását vegyük fel jövőbeni feladatnak / most csak brief csonk”.*
+*FELADATOK #174 · Modell: opus (a szövegnél effort: high) · v2 (a csonk teljes briefre váltva) · 2026.11.08*
+
+*Felhasználói jóváhagyás (2026-11-05): „a modernizált károli strongozását vegyük fel jövőbeni feladatnak”; (2026-11-08): „igen mehet / a közleményeknél szépen fogalmazzuk le, hogyan történt a strongozás vagy a modernizálás … a modernizált Károli a projekt munkája”.*
 
 ## 1. Cél
 
-A Strong-párok átvetítése a régies szövegről a modernizáltra az `adat/karoli_modern/helyesiras_tokenek.tsv` (igehely, sorszám, alak_1908, alak_modern, kieso) és az `adat/karoli_strong/parok_*.tsv` (igehely, hu_sorszam) közös kulcsán, determinisztikusan, modell nélkül. Kezelendő: egy-egy; összevonás (két régi szó → egy modern: mindkét Strong); kieső szó (jelölve, nem vész el); igealak-modernizálás (egy-egy). Licenc: a párosítás nyílt adat (DT-F172b), a megjelenítés fizetős lehet.
+A #96 a Károli 1908 szövegét modernizálta (helyesírás és igealak; 599 367 token, 31 158 vers). A #22 a Károli-szavakat a héber/görög szavakhoz és Strong-számokhoz párosította (javaslat-állapot). A feladat a kettő **kulcs szerinti összekapcsolása**, és az eredmény kiadása önálló, harmadik nyílt magként (`nyilt_karoli_modern/`, CC BY 4.0). A modernizált szöveg a projekt saját munkája; a Strong-párok a #172-ben mért pontosságú gépi párosítás; a TAHOT/TAGNT-attribúció kötelező.
 
-## 2. Nyitott kérdések (a kidolgozás dönti)
+Az összekapcsolás nem származtat új Strong-állítást: a vetítés determinisztikus, modell nélküli kulcs-illesztés (DT305: a modern réteg nem tárol Strongot, a join éri el; ez az export származtatott nézet).
 
-- **A #137-hez (KAROLI_MODERN_DB) való viszony [javaslat]:** a #174 külön tétel, és a #137 keresési Strong-kötésének előfeltétele; a brief rögzíti, hogy a #137 DT314 (kieső token → gazdaszó Strongja) ebből vagy közvetlenül a #22-ből táplálkozik-e.
-- **Összhang a DT305-tel:** a DT305 szerint a modernizált réteg nem tárol Strongot, join-nal éri el. A vetítés eredménye ezért külön származtatott tábla vagy nézet legyen, nem a modern réteg oszlopa; a döntés új helyőrzős tétel a kidolgozáskor.
-- Függés: a #172 (a párosítás pontossága) és a #96 (lezárva).
+## 2. Hatókör
 
-## 3. Mi a kész
+**Benne van:**
+- A vetítés: az `adat/karoli_strong/parok_*.tsv` és az `adat/karoli_modern/karoli_modern.tsv` az (igehely, sorszám) kulcson. A kieső tokenek (`kieso`, `kieso_gazda`) a gazdaszóhoz kötődnek (DT314), jelölve, nem vesznek el; összevonásnál mindkét régi pár Strongja megmarad.
+- Az export: `nyilt_karoli_modern/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere: könyvenkénti TSV (OSIS-kulcs, 1908-as alak, modern alak, Strong, bizonyosság, kapcsolattípus, „javaslat” állapot, kieső-jelölés), kétnyelvű kódkönyv, `ISMERT_HIBAK` (köztük az N-F96h), `MODSZER.md`, attribúció, `KIADAS.txt`, ellenőrző összeg, saját `CITATION.cff`, `OLVASSEL`/`README`.
+- Saját kapu.
+- `MODSZER.md` (3. lépés) és a modernizálás közlemény-szövege (3. lépés).
 
-- [ ] Minden régi pár átvetítve; egy sem vész el, új nem keletkezik (kapu: darabszám- és kulcs-összevetés).
-- [ ] Az összevonás, a kieső szó és az igealak-modernizálás esete tesztelve.
-- [ ] A kimenet származtatott, proveniencia-jelölt, a `bizonyossag` öröklődik.
-- [ ] A #137-hez való viszony és a DT305-összhang a briefben rögzítve.
+**Nincs benne:**
+- Az N-F96h javítása: dokumentálva megy ki (felhasználói jóváhagyás, 2026-11-08), nem javítva.
+- A betöltés a `pardes.db`-be és a keresés (#137); a brief rögzíti: a #174 a #137 előfeltétele a Strong-kötéshez (DT314), a #137 nem része ennek.
+- Az export-kód a nyilvános mappába: csak a `MODSZER.md` kerül.
+- Harmadik fél adata: a Bible-Discovery, a `f172/kulso/`, a TAHOT/TAGNT nyers szövege nem kerül az exportba.
+- A hibák javítása a párosításban (#173).
+
+## 3. Lépések (⛔ a kötelező megállások)
+
+1. **Vetítés és export** (`eszkozok/karoli_modern_export.py`, generált, kézzel szerkeszteni tilos). Mintája a `nyilt_mag_export.py` (kódkönyv-forrás, ellenőrző összeg, KIADAS.txt). Kimenet a `nyilt_karoli_modern/` könyvtárba.
+2. **Kapu** (`eszkozok/karoli_modern_kapu.py`, teszt: `teszt_karoli_modern_export.py`):
+   - (a) **teljesség:** minden régi pár átvetítve, egy sem vész el, új nem keletkezik; mind a 418 633 Strongos token kulcsa megvan (`naplok/KAROLI_MODERN_zaras.md`);
+   - (b) licenc: csak CC BY 4.0-kompatibilis; a TAHOT/TAGNT-attribúció jelen van;
+   - (c) harmadik fél adata és export-kód nincs a mappában;
+   - (d) bájtazonos újrafuttatás;
+   - (e) nyilvános szövegben nincs belső jelölés, „orkesztrátor”, „felhasználói döntés”, „termék”; a „PaRDeS” nem központi keretezés.
+   ⛔ a kapu bukása esetén megállás.
+3. **Szövegek** (a próza egy kézben, egy modellel, effort: high; a számok generáltak, kézzel nem kerülnek a szövegbe):
+   - **`MODSZER.md`** (hu/en) — a #96 **tényleges** eljárását írja le, nem a brief tervét (forrás: `naplok/KAROLI_MODERN_zaras.md`, `_meres.md`, `ELLENOR_F96*.md`): szabályok és a #94 szótár-tábla (a Hunspell csak mérce, DT301); öt LLM-kör (Sonnet kb. 1,4 M, Opus kb. 1,5 M token, Claude Code előfizetésből); kézi kivételek; a menet közbeni határdöntések (DT304, DT306, DT308–DT310, DT315, DT320); tokenösszevonás és -kiesés; négy ellenőri kör és két javítókör. Mért eredmény: a cserék 0 hibásak a mintákon; az igealak-lefedettség 94,8% (92 csere, 5 kihagyás); az N-F96h ismert hibaként.
+   - **Közlemény-szöveg** (`nyilt_karoli_modern/kozlemeny/`, hu/en): „szépen megfogalmazva”, magas szinten, hogyan történt a modernizálás és a Strong-vetítés. Szerepel benne a „szerkesztői döntés” (nem „felhasználói”); az „orkesztrátor” szó és a belső jelölések nem; a „PaRDeS” nem központi keretezés. A `kozlemeny/` almappát a release a megjelenésig kihagyja (a kapu ellenőrzi).
+4. ⛔ A szövegek átnézése a felhasználóval; a Zenodo-feltöltés és a DOI-kérés a felhasználó lépése; a rekordok kölcsönösen hivatkoznak egymásra, közös gyűjtemény.
+5. A `feladatok.py ellenoriz` 0 hiba; döntés és nyitott tétel csak helyőrzővel.
+
+## 4. Elfogadási feltételek
+
+- [ ] A kapu 0 BUKÁS; az újrafuttatás bájtazonos; a teljességi ellenőrzés a 418 633 Strongos tokenre teljesül.
+- [ ] `nyilt_karoli_modern/` generált, kézzel nem szerkesztett; a mappa a nyilvános repó gyökere (nincs benne export-kód, nincs harmadik fél adata).
+- [ ] A `MODSZER.md` a tényleges eljárást írja le a fenti pontokkal, a számok forrásfájlra vezethetők vissza.
+- [ ] Az N-F96h az `ISMERT_HIBAK`-ban dokumentált; a #137 viszonya (előfeltétel) rögzítve.
+- [ ] A közlemény-szöveg hu/en, nyilvános szövegszabályokkal (2. lépés (e)).
+- [ ] A `nyilt_mag/` és a gyökérbeli `CITATION.cff` változatlan.
+
+## 5. Döntésnapló
+
+- 2026-11-08 (felhasználó): az N-F96h dokumentálva megy ki, nem javítva; a modernizált Károli a projekt munkája; a nyílt magok saját gyökérszintű mappát kapnak, harmadik fél adata nem megy be, elég egy `MODSZER.md`.
+- DT305/DT314 (a #96-ból): a Strong a #22 párosításból jön, a modern réteg nem tárolja; a kieső token a gazdaszón át érhető el.
