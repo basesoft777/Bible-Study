@@ -5,9 +5,9 @@ kod: NYILT_MAG_ANGOL
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: lezarva
 ad: a nyílt adatmag minden sora OSIS-igehelykulccsal, a zárt értékkészletek angol címkével, a szabad szöveges indoklás és funkció-címke jelölt gépi angol párhuzamos mezővel, a motívumok angol meghatározásával; kódkönyv (hu/en) és kapu bővítve, E35 zöld — a data paper beküldésének előfeltétele
-kovetkezo: F170.1–F170.5 kész (jelentés: naplok/NYILT_MAG_ANGOL_jelentes.md); független ellenőr, draft PR, merge a felhasználóé
+kovetkezo: lezárva (PR #645, 2026-11-05; döntések: DT626–DT628)
 munka: folyamat
 olvas: [konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/TBESH.txt, konkordancia/TBESG.txt, konkordancia/TBESH_TBESG_README.md, adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/elutasitasi_okok.tsv, adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md]
 ir: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, eszkozok/nyilt_mag_angol.py, adat/nyilt_kodkonyv.tsv, adat/nyilt_angol.tsv, adat/SEMA.md, nyilt_mag/, kozlemeny/MI_NYILATKOZAT.md, kozlemeny/en/]
