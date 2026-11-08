@@ -16,7 +16,7 @@
 |---|---|---|---|
 | 1 | Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` | motivumok/ALVIL-001.md | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 10:15/Mát 11:23 → Luk 16:23 → Jel 1:18 → Jel 6:8 → Jel 20:13-14 (6 fő előfordulás / 74 igehely-sor) |
 | 2 | Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` | motivumok/ANTROP-001.md | 1Móz 2:7 ⇒ 1Kor 15:45 → Luk 1:46-47 → 1Kor 2:14-15 → 1Kor 15:44-46 → 1Thessz 5:23 → Zsid 4:12 → Júd 1:19 (7 fő előfordulás / 11 igehely-sor) |
-| 3 | A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md | 1Móz 3:7-19 → 1Móz 4:1-24 → 1Móz 6:1-8 → 1Móz 6:9-22 (4 fő előfordulás / 52 igehely-sor) |
+| 3 | A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | motivumok/HAMART-001.md | 1Móz 3:7-19 → 1Móz 4:1-24 → 1Móz 6:1-8 → 1Móz 6:9-22 (4 fő előfordulás / 48 igehely-sor) |
 | 4 | Rafeusok/óriás-népek `[ID: HODIT-001]` | tematikus_lezart/Rafaim_tematikus.md | 1Móz 14:5 (1 fő előfordulás / 33 igehely-sor) |
 | 5 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md | 1Móz 4:26 → 1Móz 12:8 → 1Móz 13:4 → 1Móz 21:33 → 1Móz 26:25 (5 fő előfordulás / 22 igehely-sor) |
 | 6 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | tematikus_lezart/Melkizedek_tematikus.md | 1Móz 14:18-20 (1 fő előfordulás / 9 igehely-sor) |

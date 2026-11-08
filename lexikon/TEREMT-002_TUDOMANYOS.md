@@ -152,11 +152,17 @@ Funkció: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-002#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-68 verset vizsgáltunk meg egyenként, jelöltként; elutasítva: 68. A leggyakoribb ok: „a tohu és bohu szópár nincs a versben” (41 vers), utána „a formula nincs a versben” (18 vers). A jelöltek forrása (vers): TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 12. **Következtetés:** a motívum minden helyére átlagosan 23 vizsgált vers jut (68 vizsgált vers, 3 motívumhely). A határt leginkább ez az ok húzza meg: „a tohu és bohu szópár nincs a versben”.<!-- olvasói -->
+A motívum 3 helyén túl további 68 verset vizsgáltunk meg, jelöltként. Egyik sem tartozik a motívumhoz. A leggyakoribb ok: „a tohu és bohu szópár nincs a versben” (41 vers), utána „a formula nincs a versben” (18 vers). A jelöltek forrása (vers): TSK-ajánlás 40, Gépi keresés 16, Károli-kereszthivatkozás 12. **Következtetés:** a motívum minden helyére átlagosan 23 vizsgált vers jut (68 vizsgált vers, 3 motívumhely). A határt leginkább ez az ok húzza meg: „a tohu és bohu szópár nincs a versben”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: TEREMT-002]` motívum 63 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** a tohu és bohu szópár nincs a versben 41 · a formula nincs a versben 18 · a jelölés forrásadata hibás 9
+**Az elutasítás okai:**
+
+| Ok | Vers | Mit jelent | Példa |
+|---|---|---|---|
+| a tohu és bohu szópár nincs a versben | 41 | önálló tohu vagy rokon kép, a szópár nélkül (negatív kritérium) | 1Sám 12:21, 5Móz 32:10 |
+| a formula nincs a versben | 18 | az indoklás szerint a versben nincs meg a motívum formulája | Zsolt 104:30, Zsolt 33:6 |
+| a jelölés forrásadata hibás | 9 | a kereszthivatkozás-lista hibás (más hely listájának másolata) | Ézs 66:12, Ez 34:12-16 |
 
 **A jelölés forrása:** TSK-ajánlás 40 · Károli-kereszthivatkozás 12 · Gépi keresés 16
 

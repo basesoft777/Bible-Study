@@ -711,7 +711,7 @@ def oszlop_tsv(fej, sorok, tabla=None):
 
 
 CSOPORT_RX = re.compile(r'Összesítő sor (\d+) versre')
-BLOKK_RX = re.compile(r'\b(blokk|osztaly)=(\w+)')
+BLOKK_RX = re.compile(r'\b(blokk|osztaly)=([^),\s]+)')  # a kulcs „|”-t is tartalmazhat (HAMART-001: tövis|H0329)
 CSOPORT_ELTERES = []
 
 

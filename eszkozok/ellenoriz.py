@@ -1994,6 +1994,134 @@ def kozlemeny_hibak(lap, lex_dir):
     return hibak
 
 
+# 36. szabaly (F123.HAMART3, 2026-11-05): egy vers ugyanannal a motivumnal nem lehet egyszerre elofordulas es egy
+# csoportos kizaras (osszesito jeloltsor) tagja. A tagok a jeloltsor `forras_kereses`-e altal megnevezett
+# `naplok/F123_teljesseg_<ID>_blokkok.tsv` sorai (halo=, blokk= / osztaly=), mint a nyilt mag exportjaban.
+CSOPORT_BLOKK_RX = re.compile(r'(?:halo=(\w+), )?\b(blokk|osztaly)=([^),\s]+)')
+
+
+def csoport_elofordulas_utkozes(adat_dir, naplo_dir=None):
+    """[(id, igehely, csoport)]: az elutasitott osszesito sor tagjai kozul azok, amelyek a motivum elofordulas-versei."""
+    import szerep_kizart as SZKZ
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    e_vers = {}
+    for r in elo:
+        for v in SZKZ.versek(r.get('igehely')):
+            e_vers.setdefault(r['id'], set()).add(v)
+    _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    blokkok = {}
+    ki = []
+    for r in jel:
+        if r.get('dontes') != 'elutasítva' or not SZKZ.csoport_versszam(r.get('forras_kereses')):
+            continue
+        m = CSOPORT_BLOKK_RX.search(r.get('forras_kereses') or '')
+        if not m:
+            continue
+        mid = r['id']
+        if mid not in blokkok:
+            ut = os.path.join(naplo_dir, 'F123_teljesseg_%s_blokkok.tsv' % mid)
+            blokkok[mid] = G.tsv_beolvas(ut)[1] if os.path.exists(ut) else []
+        halo, oszlop, kulcs = m.groups()
+        for b in blokkok[mid]:
+            if b.get(oszlop) == kulcs and (not halo or b.get('halo', halo) == halo) and b.get('igehely') in e_vers.get(mid, set()):
+                ki.append((mid, b['igehely'], '%s/%s' % (halo or '-', kulcs)))
+    return ki
+
+
+def szabaly36_csoport_elofordulas(adat_dir, naplo_dir=None):
+    cim = '36. Egy vers nem előfordulás és csoportos kizárás egyszerre (F123.HAMART3)'
+    if not os.path.exists(os.path.join(adat_dir, 'jeloltek.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    peldak = ['%s %s (csoport: %s)' % x for x in csoport_elofordulas_utkozes(adat_dir, naplo_dir)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: a vers kikerül a csoport taglistájából, a csoport versszáma csökken'
+                           if peldak else None))
+
+
+def beepitett_csoportos_okban(adat_dir):
+    """[(id, igehely, ok)]: a beépített jelölt-sor indoklása a motívum saját csoportos kizárási okának mintájára illik
+    (F123.HAMART3 javítókör, a független határ-ellenőrzés K1/K6 tanulsága). Csoportos ok: amelyet a motívum legalább
+    egy összesítő (csoportos) elutasított sora visel; a minták az `elutasitasi_okok.tsv` sorai ezzel a címkével (a
+    motívum saját és a `*` sorai), az `^összesítő sor` horgonyú minták nélkül (ezek beépített sorra nem illhetnek)."""
+    import szerep_kizart as SZKZ
+    _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    ok_ut = os.path.join(adat_dir, 'elutasitasi_okok.tsv')
+    _, okok = G.tsv_beolvas(ok_ut) if os.path.exists(ok_ut) else ([], [])
+    ki = []
+    for mid in sorted({r['id'] for r in jel}):
+        minta = SZKZ.okok(mid, ok_ut)
+        csop = set()
+        for r in jel:
+            if r['id'] == mid and r.get('dontes') == 'elutasítva' and SZKZ.csoport_versszam(r.get('forras_kereses')):
+                csop.add(SZKZ.olvasoi_ok(SZKZ.elutasitas_oka((r.get('indoklas') or '').partition(' | ')[0], minta)))
+        if not csop:
+            continue
+        rx = [(re.compile(o['minta'], re.IGNORECASE), SZKZ.olvasoi_ok(o['cimke'])) for o in okok
+              if o.get('id') in ('*', mid) and SZKZ.olvasoi_ok(o.get('cimke')) in csop
+              and not (o.get('minta') or '').startswith('^összesítő')]
+        for r in jel:
+            if r['id'] != mid or r.get('dontes') != 'beépítve':
+                continue
+            for m, c in rx:
+                if m.search(r.get('indoklas') or ''):
+                    ki.append((mid, r['igehely'], c))
+                    break
+    return ki
+
+
+def szabaly37_beepitett_csoportos_ok(adat_dir):
+    cim = '37. Beépített sor nem esik a lap saját csoportos kizárási okába (F123.HAMART3)'
+    if not os.path.exists(os.path.join(adat_dir, 'jeloltek.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    peldak = ['%s %s (csoportos ok: %s)' % x for x in beepitett_csoportos_okban(adat_dir)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: a sor elutasítva (a csoportos okkal), vagy az indoklás megnevezi, miben más'
+                           if peldak else None))
+
+
+# 38. szabály: strukturális vagy fogalmi hordozón a beépítés indoka nem lehet puszta szóegyezés
+SZOEGYEZES_RX = re.compile(r'csak (?:e|ez a|a) szó (?:miatt|alapján)|puszta szóegyezés|ugyanaz(?:t|zal)? a (?:szó|szót|szóval'
+                           r'|ige|igét|igével|főnév)|ugyanabból a \S*\s?szócsaládból|ugyanaz az ige', re.IGNORECASE)
+# Az „idéz” nem szerkezeti jegy: az idézet önmagában szóegyezés (a független ellenőr, 2026-11-08; N-F123hc döntése után).
+# Ismert korlát: a jegyek szóelőfordulások; a „lánc” vagy az „együtt” puszta említése is átenged. A mérő a szöveges
+# hiányt fogja (szóegyezés szerkezeti szó nélkül), nem azt, hogy a megnevezett szerkezet valóban fennáll-e.
+SZERKEZET_RX = re.compile(r'szerkezet|lánc|megfordít|visszautal|kollokáci|szókapcsolat|szópár|együtt|tükör|folytat',
+                          re.IGNORECASE)
+CSAK_SZO_RX = re.compile(r'csak (?:e|ez a|a) szó (?:miatt|alapján)|puszta szóegyezés')
+
+
+def csak_szo_indoklas(adat_dir):
+    """[(id, igehely)]: strukturális vagy fogalmi hordozójú motívum beépített, nem tematikus sora, amelynek indoklása
+    csak a szó egyezésére hivatkozik (szóegyezés-fordulat, szerkezeti jegy megnevezése nélkül; vagy kifejezetten
+    „csak e szó miatt”)."""
+    _, mot = G.tsv_beolvas(os.path.join(adat_dir, 'motivumok.tsv'))
+    tipus = {r['id']: (r.get('azonossag_tipusa') or '').strip() for r in mot}
+    _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    tematikus = {(r['id'], r['igehely']) for r in elo if (r.get('gerinc_elem') or '').startswith('tematikus')}
+    _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    ki = []
+    for r in jel:
+        if r.get('dontes') != 'beépítve' or tipus.get(r['id']) not in ('strukturális', 'fogalmi'):
+            continue
+        if (r['id'], r['igehely']) in tematikus:
+            continue
+        ind = r.get('indoklas') or ''
+        if CSAK_SZO_RX.search(ind) or (SZOEGYEZES_RX.search(ind) and not SZERKEZET_RX.search(ind)):
+            ki.append((r['id'], r['igehely']))
+    return ki
+
+
+def szabaly38_csak_szo(adat_dir):
+    cim = '38. Strukturális vagy fogalmi motívumnál a beépítés nem „csak e szó miatt” (F123.HAMART3)'
+    if not os.path.exists(os.path.join(adat_dir, 'jeloltek.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/jeloltek.tsv')
+    peldak = ['%s %s' % x for x in csak_szo_indoklas(adat_dir)]
+    return Sor(cim, _verdikt(peldak, []), len(peldak) or None, peldak,
+               megjegyzes=('javítás: az indoklás megnevezi a szerkezeti jegyet (lánc, visszautalás, szókapcsolat), '
+                           'vagy a sor elutasítva' if peldak else None))
+
+
 def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
     """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
     (Kolofon: MI-nyilatkozat, „Hogyan idézd”, a nyílt adatkészletre mutató mondat; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
@@ -2084,6 +2212,9 @@ def main():
         tabla_sorok.append(szabaly32_olvasoi_kapu_kiadott(args.adat))
         tabla_sorok.append(szabaly33_osszesito_versszam(args.adat))
         tabla_sorok.append(szabaly35_kozlemeny_hivatkozas(args.adat))
+        tabla_sorok.append(szabaly36_csoport_elofordulas(args.adat))
+        tabla_sorok.append(szabaly37_beepitett_csoportos_ok(args.adat))
+        tabla_sorok.append(szabaly38_csak_szo(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

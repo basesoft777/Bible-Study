@@ -1,3 +1,4 @@
+<!-- ARCHÍV: lexikon/HAMART-001_TORZSCIKK.md @ b6807740 · F123 HAMART-001 új cikk, U3 · 2026-11-05 · nem forrás, nem szerkesztendő -->
 # HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás
 
 *Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](HAMART-001_TUDOMANYOS.md).*

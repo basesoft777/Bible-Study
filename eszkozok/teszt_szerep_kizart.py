@@ -30,6 +30,11 @@ class TestJelolesOka(unittest.TestCase):
         c, t = SZKZ.jeloles_oka('scan H7121')
         self.assertEqual((c, t), ('Gépi keresés', 'gépi Strong-keresés: H7121'))
 
+    def test_negyforrasos_audit(self):
+        # F123.HAMART3 határkör: a régi tanulmány négyforrásos auditjából jött, most elutasított sor kutatói felvetés
+        c, t = SZKZ.jeloles_oka('négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés')
+        self.assertEqual((c, t), ('Kutatói felvetés', 'a motívum korábbi tanulmányának négyforrásos ellenőrzése'))
+
     def test_be_nem_sorolhato_megall(self):
         # F123.EGYEB: „egyéb” csoport nincs; a be nem sorolható forrás megállítja a generálást
         with self.assertRaises(SZKZ.BeNemSorolhato):
@@ -107,7 +112,8 @@ class TestBlokkTorzs(unittest.TestCase):
         self.assertIn('[^k1]', ''.join(tablak))
         self.assertEqual(ossz['ok'], collections.Counter({'tartalmilag nem kapcsolódik': 1, 'nyitott döntés': 1}))
         sor = SZKZ.osszesito_sor(ossz)
-        self.assertIn('tartalmilag nem kapcsolódik 1', sor)
+        self.assertIn('| tartalmilag nem kapcsolódik | 1 | a vers témája más | Zsolt 99:6 |', sor)
+        self.assertEqual(SZKZ.olvasoi_ok('más szó áll a versben (összesítő sor)'), 'más szó áll a versben')
         self.assertNotIn('egyéb', sor)
         self.assertIn('**Nyitott döntés:** 1', sor)
         self.assertIn('scope=manual', labj[0])

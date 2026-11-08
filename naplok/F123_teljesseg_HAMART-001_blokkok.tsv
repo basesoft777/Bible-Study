@@ -1,4 +1,5 @@
 # GENERÁLT: naplok/F123_HAMART2_u1_blokkok.py | scope=naplok/F123_teljesseg_HAMART-001.tsv ELTÉRÉS-sorai × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (glossza) | forras=split('\t') | ts=2026-11-03
+# F123.HAMART3.19 (2026-11-05): kivéve az egyenként beépített 5 vers (1Móz 7:4, 7:23, Sof 1:2, 1:3 a H0127, Jer 51:25 a H7843 blokkból); a vers nem lehet egyszerre előfordulás és csoport-tag (ellenoriz.py 36.)
 halo	blokk	igehely	gerinc_a_versben
 nf63e	H7451	1Kir 1:52	igen
 nf63e	H7451	1Kir 2:44	igen
@@ -656,9 +657,7 @@ strong	H0127	1Móz 2:6	igen
 strong	H0127	1Móz 2:7	igen
 strong	H0127	1Móz 2:9	igen
 strong	H0127	1Móz 2:19	igen
-strong	H0127	1Móz 7:4	igen
 strong	H0127	1Móz 7:8	igen
-strong	H0127	1Móz 7:23	igen
 strong	H0127	1Móz 19:25	igen
 strong	H0127	1Móz 28:14	igen
 strong	H0127	1Móz 28:15	igen
@@ -791,8 +790,6 @@ strong	H0127	Neh 10:35	igen
 strong	H0127	Neh 10:37	igen
 strong	H0127	Péld 12:10	igen
 strong	H0127	Péld 28:19	igen
-strong	H0127	Sof 1:2	igen
-strong	H0127	Sof 1:3	igen
 strong	H0127	Zak 2:12	igen
 strong	H0127	Zak 9:16	igen
 strong	H0127	Zak 13:5	igen
@@ -1201,7 +1198,6 @@ strong	H7843	Jer 22:7	igen
 strong	H7843	Jer 48:18	igen
 strong	H7843	Jer 51:1	igen
 strong	H7843	Jer 51:11	igen
-strong	H7843	Jer 51:25	igen
 strong	H7843	Józs 22:33	igen
 strong	H7843	Mal 2:8	igen
 strong	H7843	Náh 2:2	igen

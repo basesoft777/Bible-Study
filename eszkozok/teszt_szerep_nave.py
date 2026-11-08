@@ -55,7 +55,10 @@ class Szintetikus(unittest.TestCase):
 
     def test_magyar_nev_hash(self):
         nevek = {('T1', ''): ('egy', SN.sha1('EGY')), ('T5', ''): ('öt', SN.sha1('MÁS'))}
-        self.assertEqual(SN._hu(nevek, 'T1', '', 'EGY'), 'egy (*EGY*)')
+        self.assertEqual(SN._hu(nevek, 'T1', '', 'EGY'), '<span title="EGY">egy</span>')
+        # F123.HAMART3: a forrás pontosvessző nélküli karakterkódja javul, az angol csak title-ben áll
+        self.assertEqual(SN.angol_cim('Of Cain, to be &#8220;a fugitive,&#8221'), 'Of Cain, to be “a fugitive,”')
+        self.assertEqual(SN.angol_cim('say "x"'), 'say &quot;x&quot;')
         self.assertIn(SN.FORDITASRA_VAR, SN._hu(nevek, 'T5', '', 'OT'))   # elavult hash: fordításra vár
 
 

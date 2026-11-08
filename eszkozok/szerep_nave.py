@@ -19,6 +19,7 @@ TSV: split('\\t'), a '\\r' levágva; csv modul nélkül.
 import collections
 import glob
 import hashlib
+import html
 import os
 import re
 import sys
@@ -160,11 +161,22 @@ def magyar_nevek(ut=None):
             if r.get('allapot') != 'elavult'}
 
 
+HTML_KOD = re.compile(r'&#(\d+)(?![\d;])')   # a forrás hibás karakterkódja: pontosvessző nélkül (`&#8221`)
+
+
+def angol_cim(angol):
+    """A Nave angol témaneve `title`-attribútumnak: a pontosvessző nélküli karakterkód javítva, feloldva, majd
+    attribútumra escape-elve (F123.HAMART3: az angol eredeti nem áll az olvasói szövegben)."""
+    return html.escape(html.unescape(HTML_KOD.sub(r'&#\1;', angol or '')), quote=True)
+
+
 def _hu(nevek, tid, cimke, angol):
+    """A téma vagy altétel magyar neve; az angol eredeti csak `title`-ként (egérrel rámutatva) látszik. Fordítás
+    nélkül az angol név áll a „fordításra vár” jelöléssel."""
     m = nevek.get((tid, cimke))
     if m and m[1] == sha1(angol):
-        return '%s (*%s*)' % (m[0], angol)
-    return '%s %s' % (angol, FORDITASRA_VAR)
+        return '<span title="%s">%s</span>' % (angol_cim(angol), m[0])
+    return '%s %s' % (html.unescape(HTML_KOD.sub(r'&#\1;', angol)), FORDITASRA_VAR)
 
 
 def olvasoi_12(sorai, folerendelt=''):
@@ -197,7 +209,8 @@ def blokk_12(sorai, ts):
     out = ['*Nave tematikus indexe (Nave\'s Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább %d motívumverset '
            'érint, a motívumversek aránya a téma összes verséhez legalább %d%%, és nem a fölérendelt fogalom felé mutat (%d '
            'tiltott téma); a %d jelöltből a motívumhoz kiválasztott %d téma áll itt — a döntés és a kimaradt jelöltek indoka: '
-           '`adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*'
+           '`adat/tematikus_temak.tsv`. Csak megjelenítés: ezekből a témákból jelölt csak döntéssel lesz, a jelölt- és '
+           'döntéstáblán át (`adat/jeloltek.tsv`).*'
            % (MIN_VERS, round(MIN_ARANY * 100), n_tilt, n_jelolt, len(temak))]
     sorok = []
     for t in temak:

@@ -86,6 +86,11 @@ def _szorzo(x):
     return ('majdnem %s annyi' % nev) if r > x else ('több mint %s annyi' % nev)
 
 
+def _ezres(n):
+    """Ezres tagolás nem törő szóközzel (1 728)."""
+    return '{:,}'.format(n).replace(',', '\u00a0')
+
+
 def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forrasok, n_motivum):
     """Versszámok (F123.TUD1B: a vers, nem a táblasor): `egyenkent` az egyenként vizsgált versek, `csoport_vers` az
     összesítő sorok (`csoport_sor` darab) által csoportosan vizsgált versek; `elutasitva`, `nyitott` versben. `okok`:
@@ -93,15 +98,27 @@ def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forr
     n_vizsgalt = egyenkent + csoport_vers
     if not n_vizsgalt:
         return None
+    # F123.HAMART3 (a felhasználó átnézése): a mondat nem tautologikus („vizsgáltunk N … elutasítva N”), és megmondja,
+    # hogy a vizsgált versek a motívum helyein túl vannak
+    elej = ('A motívum %s helyén túl további %s verset vizsgáltunk meg' % (_ezres(n_motivum), _ezres(n_vizsgalt))
+            if n_motivum else '%s verset vizsgáltunk meg' % _ezres(n_vizsgalt))
     if csoport_vers:
-        lelet = ('%d verset vizsgáltunk meg: %d verset egyenként, %d verset csoportosan (%d összesítő sorban); '
-                 'elutasítva: %d' % (n_vizsgalt, egyenkent, csoport_vers, csoport_sor, elutasitva))
+        # F123.HAMART3 javítókör: a kereszthivatkozásokról csak akkor szól, ha a jelöltek között van ilyen forrás
+        ajanlas = any(('TSK' in f or 'Károli-kereszthivatkozás' in f) and n for f, n in (forrasok or []))
+        elej += (': a motívum szavait a teljes Ó- és Újszövetségben kerestük%s.'
+                 % (', és a kereszthivatkozások ajánlásait is megnéztük' if ajanlas else ''))
     else:
-        lelet = '%d verset vizsgáltunk meg egyenként, jelöltként; elutasítva: %d' % (n_vizsgalt, elutasitva)
-    lelet += ', döntésre vár: %d.' % nyitott if nyitott else '.'
-    if csoport_vers:   # az összesítő sor a gépi teljesség-mérés blokkja (szerep_kizart.CSOPORT_VERSSZAM)
-        lelet += (' Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes '
-                  'Ó- és Újszövetségben kereste.')
+        elej += ', jelöltként.'
+    if nyitott:
+        dont = ' Ezek közül %s nem tartozik a motívumhoz, %s döntésre vár.' % (_ezres(elutasitva), _ezres(nyitott))
+    else:
+        dont = ' Egyik sem tartozik a motívumhoz'
+    if csoport_vers:
+        dont += ('%s %s versről egyenként döntöttünk, %s versről közös ok alapján, csoportosan.'
+                 % (':' if not nyitott else ' Közülük', _ezres(egyenkent), _ezres(csoport_vers)))
+    elif not nyitott:
+        dont += '.'
+    lelet = elej + dont
     if okok:
         lelet += ' A leggyakoribb ok: „%s” (%d vers)' % okok[0]
         lelet += ', utána „%s” (%d vers).' % okok[1] if len(okok) > 1 else '.'
