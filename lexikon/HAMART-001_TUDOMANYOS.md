@@ -2219,6 +2219,50 @@ A szó magyaros kiejtése.<!-- olvasói -->
 
 A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
 
+#### 4.11. Visszhang: ókori fordítások és rokon nyelvek
+
+Hallotta-e az ókori fordító a láncot? Ha egy héber szót minden láncversben ugyanazzal a szóval ad vissza, nála is összefügg a lánc. A motívum 5 lánc-szavából a Targum 4, a Vulgata 3, a LXX 5 szót ad vissza minden láncversben ugyanazzal a szóval. **Következtetés:** a lánc szavainak többségét mindhárom fordítás minden láncversben ugyanazzal a szóval adja vissza; ahol megszakad, a táblázat megmutatja.<!-- olvasói -->
+
+| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
+|---|---|---|---|---|
+| אֲדָמָה (adámá) — föld: talaj<br>3:17, 4:11, 5:29, 8:21 | **אַרְעָא (ar'á)** · **4/4** | ***terra*** · **4/4** | **γῆ (gé)** · **4/4** | Ugyanaz a szó: a Targum 4/4; a Vulgata 4/4; a LXX 4/4. **Következtetés:** mindhárom fordítás egy szóval köti össze a láncverseket: a fordítók a láncot egységként adták vissza. |
+| אָרַר (árar) · קָלַל (kálal) — megátkozni<br>3:17, 4:11, 5:29, 8:21 | **לוּט (lút)** · **4/4** | ***maledico*** · **4/4** | **ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai)** · **4/4** | Ugyanaz a szó: a Targum 4/4; a Vulgata 4/4; a LXX 4/4. **Következtetés:** mindhárom fordítás egy szóval köti össze a láncverseket: a fordítók a láncot egységként adták vissza. |
+| חָמָס (chámász) — erőszak<br>6:11, 6:13 | **חֲטוֹף (chatóf)** · **2/2** | ***iniquitas*** · **2/2** | **ἀδικία (adikia)** · **2/2** | Ugyanaz a szó: a Targum 2/2; a Vulgata 2/2; a LXX 2/2. **Következtetés:** mindhárom fordítás egy szóval köti össze a láncverseket: a fordítók a láncot egységként adták vissza. |
+| עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | 3 különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; eltér: 3:16 *ærumna* | **λύπη (lüpé)** · **3/3** | Ugyanaz a szó: a Targum 1/3; a Vulgata 2/3; a LXX 3/3. **Következtetés:** a lánc összefüggése a LXX fordításában megmarad, a Targum és a Vulgata fordításában megszakad. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13 | **חֲבַל (chaval)** · **3/3** | *corrumpo* · 2/3; eltér: 6:13 *disperdo* | **φθείρω (ftheiró) · καταφθείρω (kataftheiró)** · **3/3** | Ugyanaz a szó: a Targum 3/3; a Vulgata 2/3; a LXX 3/3. **Következtetés:** a lánc összefüggése a Targum és a LXX fordításában megmarad, a Vulgata fordításában megszakad. |
+| nincs héber szó<br>8:21: bűn betoldás | **חוֹבֵי (chóvé)** — bűnei, vétkei · betoldás | propter homines — az emberek miatt | — | Betoldás: a Targum a lánc szavát (bűn) olyan láncversbe teszi, ahol a héberben nincs. **Következtetés:** a fordító kimondja, amit a héber szöveg csak sejtet. |
+
+*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N); félkövér: minden láncversben ugyanaz a szó. Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
+
+##### Háttér: rokon nyelvek (BDB)
+
+A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (asszír, arab, etióp, szír, óarámi, Tell el-Amarna), kiejtéssel és magyar jelentéssel. A rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.<!-- olvasói -->
+
+| Lánc-szó | Rokon nyelv · szó (kiejtés) | Jelentés | A BDB megjegyzése |
+|---|---|---|---|
+| אֲדָמָה (adámá) — föld: talaj | arab أَدَمَة (adama) | bőr (simán befedő, szorosan simuló) | BDB: Fleischer (Merx, Archiv 1, 236 f.) szerint, ellentétben Delitzsch „bebaut” (művelt) magyarázatával, amely mellett kérdőjel áll |
+| אֲדָמָה (adámá) — föld: talaj | arab دَمَّ (damma) | kenni, bekenni (felületen szétteríteni) | BDB: a √ דם gyökkel összevetve (cf.) |
+| אָרַר (árar) — megátkozni | asszír arâru (aráru) | átkozni (a BDB a „köt” és „átkoz” jelentés összefüggésére utal) | BDB: Assyrian arâru (Zimmern, BP 68) |
+| חָמָס (chámász) — erőszak | a BDB-szócikkben nincs rokon nyelvi adat | — | — |
+| עִצָּבוֹן (iccávón) — fáradság | a BDB-szócikkben nincs rokon nyelvi adat | — | — |
+| קָלַל (kálal) — könnyűnek lenni | Tell el-Amarna (írás nélkül) | megvet, meggyaláz (a BDB: „so”, azaz az asszírral egyező) | a BDB nem ad alakot |
+| קָלַל (kálal) — könnyűnek lenni | arab (írás nélkül) | kicsinek, csekélynek lenni | az írás a szótár szövegében nem áll |
+| קָלַל (kálal) — könnyűnek lenni | etióp (írás nélkül) | könnyűnek, kicsinek lenni; II. megvet | az etióp írású alak a BDB-szövegben hiányzik |
+| קָלַל (kálal) — könnyűnek lenni | szír (írás nélkül) | azonos a bibliai héberrel | a szír írású alak a BDB-szövegben hiányzik |
+| קָלַל (kálal) — könnyűnek lenni | arab (írás nélkül) | rázni, rezegni, forogni (kardról); a BDB: see be shaken | az arab alak hiányzik a szövegből |
+| קָלַל (kálal) — könnyűnek lenni | targumi arámi קְלַל (kelal) | azonos a bibliai héberrel | BDB: Targum קְלַל |
+| קָלַל (kálal) — könnyűnek lenni | újhéber קָלַל (kálal) · קִלֵּל (killél) · קַל (kal) | azonos a bibliai héberrel | BDB: Late Hebrew, = Biblical Hebrew |
+| קָלַל (kálal) — könnyűnek lenni | sabeus קללם (k-l-l-m) | csekély, szűkös | BDB: Hal 143.8f. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | újhéber (írás nélkül) | Hifil = bibliai héber | BDB: Late Hebrew Hiphil = Biblical Hebrew |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | Tell el-Amarna šaḫâtu (sachátu) | elesni (különösen városról), földre borulni (?földről) | BDB: valószínűleg kánaánizmus (Winckler, Tell el-Amarna szójegyzék) |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | asszír šêtu (sétu) | menekülni, megmenekülni | BDB: „possibly”, azaz bizonytalan |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | arámi שְׁחַת (sechat) | megcsonkítani | BDB: Aramaic, „(assimilation of ת)” |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | Sirák fia (újhéber) שחיתה (schechíta) | romlott tett | BDB: Ecclus. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | óarámi (Zindzsirli) שחת (sachát) | elpusztít | BDB: Old Aramaic (Zinjirli) |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | arab سَحَتَ (szaháta) | kiirtani | — |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | szír ܫܰܚܶܛ (sachet) | megcsonkítani | a BDB az arámi alakkal együtt adja |
+| שָׁחַת (sáchat) — elpusztítani, megrontani | etióp ሰሐጠ (szeháta) | megsérteni, erőszakot tenni | — |
+
 #### 4.12. Tematikus index (témák és igehely-hivatkozások)
 
 Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 7 téma (például: átok). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását; a tágabb, általános témák (a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül) szándékosan kimaradtak.<!-- olvasói -->
