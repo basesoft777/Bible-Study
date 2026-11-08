@@ -222,7 +222,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
 
-A motívum 11 helyén túl további 1 730 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük. Egyik sem tartozik a motívumhoz: 17 versről egyenként döntöttünk, 1 713 versről közös ok alapján, csoportosan. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben” (1713 vers), utána „a két szó nem egy mondatban áll” (8 vers). A jelöltek forrása (vers): Gépi keresés 1729, Kutatói felvetés 1. **Következtetés:** a motívum minden helyére átlagosan 157 vizsgált vers jut (1730 vizsgált vers, 11 motívumhely). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben”.<!-- olvasói -->
+A motívum 11 helyén túl további 1 730 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük. Egyik sem tartozik a motívumhoz: 17 versről egyenként döntöttünk, 1 713 versről közös ok alapján, csoportosan. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben” (1713 vers), utána „a két szó nem egy mondatban áll” (8 vers). A jelöltek forrása (vers): Gépi keresés 1729, Kutatói felvetés 1. **Következtetés:** a motívum minden helyére átlagosan 157 vizsgált vers jut (1730 vizsgált vers, 11 motívumhely). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 22 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 

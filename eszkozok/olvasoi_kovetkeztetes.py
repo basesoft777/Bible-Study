@@ -103,7 +103,10 @@ def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forr
     elej = ('A motívum %s helyén túl további %s verset vizsgáltunk meg' % (_ezres(n_motivum), _ezres(n_vizsgalt))
             if n_motivum else '%s verset vizsgáltunk meg' % _ezres(n_vizsgalt))
     if csoport_vers:
-        elej += ': a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük.'
+        # F123.HAMART3 javítókör: a kereszthivatkozásokról csak akkor szól, ha a jelöltek között van ilyen forrás
+        ajanlas = any(('TSK' in f or 'Károli-kereszthivatkozás' in f) and n for f, n in (forrasok or []))
+        elej += (': a motívum szavait a teljes Ó- és Újszövetségben kerestük%s.'
+                 % (', és a kereszthivatkozások ajánlásait is megnéztük' if ajanlas else ''))
     else:
         elej += ', jelöltként.'
     if nyitott:

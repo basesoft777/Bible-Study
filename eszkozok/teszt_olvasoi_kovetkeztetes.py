@@ -74,6 +74,10 @@ class Szovegek(unittest.TestCase):
         self.assertIn('átlagosan 157 vizsgált vers jut (1724 vizsgált vers, 11 motívumhely)', sz)
         self.assertNotIn('kétszer', sz)
         self.assertIn('a teljes Ó- és Újszövetségben kerestük', sz)   # az összesítő sor: a teljesség-mérés blokkja
+        # F123.HAMART3 javítókör: TSK-forrás nélkül a mondat nem állítja, hogy a kereszthivatkozásokat is megnéztük
+        self.assertNotIn('kereszthivatkozások ajánlásait', sz)
+        self.assertIn('kereszthivatkozások ajánlásait is megnéztük',
+                      OK.kizart(11, 1713, 11, 1724, 0, [], [('Gépi keresés', 1700), ('TSK-ajánlás', 24)], 11))
         self.assertNotIn('teljesség-mérés', OK.kizart(104, 0, 0, 104, 0, [], [], 22))
         sz = OK.kizart(31, 295, 5, 326, 0, [], [], 74)
         self.assertIn('több mint négyszer annyi verset vizsgáltunk, mint ahány hely a motívumhoz tartozik (326, '
