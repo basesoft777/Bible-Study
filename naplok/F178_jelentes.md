@@ -17,7 +17,7 @@
 | F178.2 | kész | U2/U3 szétválasztás: 9-es sablon v2 (hét szabály), MUNKAMENET C-w |
 | F178.3 | kész | 10-es U3-prompt sablon; 9-es sablon v2; 6-os sablon v4; `ellenoriz.py` 40. szabály (regressziós HIBA-kapuk), 41. szabály (közlemény, JELENTÉS) |
 | F178.4 | kész a HAMART-001-en; ⛔ DT-F178b nyitva | Döntési út, folyamatos számozás 1–12 (4.1–4.14), tanítói rész nélkül, áttekintő tábla, belső jel olvasói formára (a nyers proveniencia HTML-megjegyzésben), olvasói kapu kivétel nélkül az új szerkezetű lapon; B9 kivezetve, 7-es sablon ARCHÍV |
-| F178.5 | kész a HAMART-001-en | `adat/visszhang_megfelelok.tsv` (SEMA 2.53, 74 sor), `megfelelo_kinyer.py`, arámi kiejtés (A1), a 4.11 blokk alapvonallal (DT-F178d), BDB-háttér szűkítve |
+| F178.5 | kész a HAMART-001-en | `adat/visszhang_megfelelok.tsv` (SEMA 2.53; f46b10b7: 74 sor, bb3020eb: 82 sor — a „74” a végállapotra elavult volt, ELLENOR_F178 6.; a javítókör után 127 sor, l. „Bontási napló”), `megfelelo_kinyer.py`, arámi kiejtés (A1), a 4.11 blokk alapvonallal (DT-F178d), BDB-háttér szűkítve |
 | F178.6 | kész (a lapon és az exportban; a `nyilt_mag/` nincs újragenerálva) | SZERKESZTOI_CSERE (magyar, angol), SZERKESZTO-kapu; a lapon „felhasználó” BUKÁS az új szerkezetben |
 | F178.7 | kész az exportban | [A LEXIKON CÍME] a nyílt mag címében és fejlécében |
 | F178.8 | kész (a #639 elvégezte) | a HAMART-001-en NAVE_ANGOL 0 |
@@ -28,14 +28,14 @@
 - `olvasoi_kapu.py HAMART-001`: `## HAMART-001: 0 BUKÁS, 26 FIGYELMEZTETÉS` (kivétel nélküli mérés)
 - `ellenoriz.py`: kilépési kód 0, SÉRTÉS 0; 40. szabály: a HAMART-001 átmegy, a 8 régi szerkezetű lap JELENTÉS (2. kiadás tétele)
 - `proza_1a.py HAMART-001`: 48/48 arany szint
-- `megfelelo_kinyer.py ellenoriz`: 74 sor, 0 hiba
+- `megfelelo_kinyer.py ellenoriz`: 82 sor, 0 hiba (az első menet végén; a javítókör után: l. „Bontási napló”)
 
 ## A 2. kiadásra / a következő körre átadott tételek
 
 - **Határ-frissesség (39.):** ALVIL-001 (72 → 74 sor), HAMART-001 (60 → 48 sor) elavult; ANTROP-001, ISTENTISZT-001, TEREMT-002 jel nélküli. A modelles rész újrafuttatása a felhasználó jóváhagyásával (C-h); a `hatar-ellenor` ügynök utasítása a SORÁLLAPOT-jelre nem a #178 írása.
 - **Regressziós kapuk (40.):** a régi szerkezetű lapokon a Döntési út hiányzik; HODIT, KIRALY, MENNY, TEREMT-001, TEREMT-002: olvasói kapu BUKÁS, nem kerek próza, üres Nave-blokk.
 - **Közlemény (41.):** `kozlemeny/MI_NYILATKOZAT.md` 2 előfordulás.
-- **Visszhang:** két kézi sor ellenőrizetlen (kinyerő = ellenőr): LXX 1Móz 8:21 ἔργα, asszír qalâlu; a görög rövid jelentések (G1944, G2671, G5356) fordításra várnak.
+- **Visszhang:** két kézi sor ellenőrizetlen (kinyerő = ellenőr): LXX 1Móz 8:21 ἔργα, asszír qalâlu; a görög rövid jelentések közül fordításra vár (mérve: `lexikon_general.rovid_jelentes`, a motívum görög szavai és a kinyerő tábla LXX-lemmái): G1944 ἐπικατάρατος, G2041 ἔργον, G2671 κατάρα, G3077 λύπη, G5356 φθορά — az első listából a G3077 és a G2041 kimaradt (ELLENOR_F178 6.).
 - **Adatlelet:** a H6093 és a H1863 helyi BDB-szócikke megvan (a Sefaria-lekérdezés bdb_szócikk=0).
 - **Előzőleg is bukó tesztek (nem e menet okozta):** `teszt_olvasoi_kapu.py` Arany.test_G7 (DT476), `teszt_nyilt_mag.py` (feloldatlan DT-F123h), `olvaso_szerver/teszt_bdb_vers_jelentes.py` (bemeneti hash).
 
@@ -106,3 +106,25 @@ A felhasználó döntése („Kivezetjük”) a `dontesek/uj/lexikon-ag-lezaras.
 ## DT-F178b végrehajtva — lépcsős kivezetés (2026-11-08)
 
 Orkesztrátori döntés a „Kivezetjük” módjáról: a HAMART-001 `tanitoi` sora törölve az `adat/res_forras.tsv`-ből (a lap kimenete nem változott: „változatlan, 546606 bájt”); a generátor sor nélkül a rést kivezetettnek veszi (`res_kivezetett`, a régi címhatár a váz literál fejlécével); az `ellenoriz.py` 11. szabálya a hiányzó `tanitoi` sort nem kéri. A CLAUDE.md és a SEMA 2.12 mondata: „kilenc rés, a `tanitoi` kivezetés alatt (DT-F178b)”. A többi motívum sora és tanítói fájlja a saját teljes folyamatának lapgenerálásával egy commitban kerül ki (MUNKAMENET C5). Egyeztetett eltérés: a `CLAUDE.md` és az `adat/res_forras.tsv` az `ir` mezőn kívül.
+
+## Bontási napló: `adat/visszhang_megfelelok.tsv` (ELLENOR_F178 6.)
+
+A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla szerint (`python eszkozok/visszhang/megfelelo_kinyer.py ellenoriz`; bontás: forrás × kinyerés × az `ellenorzes` mező):
+
+| forrás | kinyerés | állapot | 46c234c7 (első menet vége) | javítókör 1/2 után |
+|---|---|---|---|---|
+| targum | modell | ellenőrzött | 17 | 32 |
+| vulgata | modell | ellenőrzött | 17 | 32 |
+| lxx | gepi | ellenőrzött | 16 | 27 |
+| lxx | gepi | ellenőrizetlen | 0 | 4 |
+| lxx | kezi | ellenőrizetlen | 1 | 1 |
+| bdb | modell | ellenőrzött | 30 | 21 |
+| bdb | modell | ellenőrizetlen | 0 | 9 |
+| bdb | kezi | ellenőrizetlen | 1 | 1 |
+| **összesen** | | | **82** | **127** |
+
+- Forrásonként: targum 17 → 32, vulgata 17 → 32, lxx 17 → 32, bdb 31 → 31. A Targum és a Vulgata 17 sorából 16 a lánc-szavak sora, 1 a 8:21 betoldás-sora (H2403).
+- A változás (+45): a motívumadatból levezetett lánc (DT-F178g) 15 hiányzó (lánc-szó, láncvers) párja — Targum +15, Vulgata +15 (kinyerő `claude-sonnet-5-5`, ellenőr `claude-opus-5-5`), LXX +15 gépi (11 egyértelmű; 4 nem egyértelmű, ellenőrizetlen: H0127 1Móz 3:23, 4:2, 4:12; H7843 9:15).
+- A bdb ellenőrzött 30 → 21: a meglévő sorok `ellenorzes`-e az új szabállyal íródott újra (ELLENOR_F178 4.: a kézi átnézés csak az átnézés-bemenetből, `naplok/F178_visszhang_atnezes.tsv`). Nincs átnézve: a kálal (H7043) 8 modell-sora — nem lánc-szó, nem renderel — és a H6087 targumi arámi sora (az ellenőr korábbi pontosítása; nem rokon nyelv, nem renderel).
+- Bemenetek (mind commitolva): `naplok/F178_kinyert_uj.tsv` (a Sonnet-kinyerés, változatlanul), `naplok/F178_kinyert_ujraolvas.tsv` (a beolvasás bemenete), `naplok/F178_visszhang_atnezes.tsv` (85 átnézett sor), `naplok/F178_lemma_megerosites.tsv` (9 megerősítés, `claude-sonnet-5-5`).
+- A lapon nem renderel (127-ből): ellenőrizetlen 15 (lxx 5, bdb 10); a lánc-szón kívüli kálal (H7043) Targum-, Vulgata- és LXX-sora 3; a nem rokon nyelvi bdb sor (újhéber, targumi arámi, Sirák) és a tartalom nélküli sor a háttér-szabály szerint.
