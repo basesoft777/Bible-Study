@@ -2091,30 +2091,30 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 7 téma (például: átok). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását; a tágabb, általános témák (a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül) szándékosan kimaradtak.<!-- olvasói -->
 
-*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (2 tiltott téma); a 31 jelöltből a motívumhoz kiválasztott 7 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
+*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (2 tiltott téma); a 31 jelöltből a motívumhoz kiválasztott 7 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: ezekből a témákból jelölt csak döntéssel lesz, a jelölt- és döntéstáblán át (`adat/jeloltek.tsv`).*
 
-- **átok (*CURSE*)** — 7 motívumvers / 51 témavers (13,7%): 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19, 1Móz 4:12, 1Móz 4:14
-  - Ádámra és Évára (*Against Adam and Eve*): 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
-  - Kainra (*Against Cain*): 1Móz 4:12, 1Móz 4:14
-  - a földre (*Against the ground*): 1Móz 3:17, 1Móz 3:18
-  - a kígyóra (*Against the serpent*): 1Móz 3:14
-- **a bűneset (*FALL OF MAN*)** — 5 motívumvers / 34 témavers (14,7%): 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
-  - általános igehelyek (*General scriptures concerning*): 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
-- **a föld (*GROUND*)** — 4 motívumvers / 9 témavers (44,4%): 1Móz 3:17, 1Móz 3:19, 1Móz 3:23, 1Móz 5:29
-  - megátkozott (*Cursed*): 1Móz 3:17, 1Móz 5:29
-  - az ember belőle teremtetett (*Man made from*): 1Móz 3:19, 1Móz 3:23
-- **az özönvíz előtti nemzedék (*ANTEDILUVIANS*)** — 4 motívumvers / 38 témavers (10,5%): 1Móz 6:5, 1Móz 6:7, 1Móz 6:17, 1Móz 7:23
-  - mesterségeik (*Arts of*): 1Móz 6:17
-  - pusztulásuk (*Destruction of*): 1Móz 7:23
-  - gonoszságuk (*Wickedness of*): 1Móz 6:5, 1Móz 6:7
-- **az özönvíz (*FLOOD*)** — 3 motívumvers / 13 témavers (23,1%): 1Móz 6:13, 1Móz 6:17, 1Móz 8:21
-  - előre megjövendölve (*Foretold*): 1Móz 6:13, 1Móz 6:17
-  - az ígéret, hogy nem ismétlődik meg (*The promise that it should not recur*): 1Móz 8:21
-- **bogáncs (*THISTLE*)** — 2 motívumvers / 6 témavers (33,3%): 1Móz 3:18, Hós 10:8
-  - káros növény (*A noxious plant*): 1Móz 3:18, Hós 10:8
-- **kiűzetés (*BANISHMENT*)** — 2 motívumvers / 7 témavers (28,6%): 1Móz 3:23, 1Móz 4:14
-  - Ádámé és Éváé Édenből (*Of Adam and Eve, from Eden*): 1Móz 3:23
-  - Kainé, hogy „bujdosó és vándorló” legyen (*Of Cain, to be &#8220;a fugitive and vagabond,&#8221*): 1Móz 4:14
+- **<span title="CURSE">átok</span>** — 7 motívumvers / 51 témavers (13,7%): 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19, 1Móz 4:12, 1Móz 4:14
+  - <span title="Against Adam and Eve">Ádámra és Évára</span>: 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
+  - <span title="Against Cain">Kainra</span>: 1Móz 4:12, 1Móz 4:14
+  - <span title="Against the ground">a földre</span>: 1Móz 3:17, 1Móz 3:18
+  - <span title="Against the serpent">a kígyóra</span>: 1Móz 3:14
+- **<span title="FALL OF MAN">a bűneset</span>** — 5 motívumvers / 34 témavers (14,7%): 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
+  - <span title="General scriptures concerning">általános igehelyek</span>: 1Móz 3:14, 1Móz 3:16, 1Móz 3:17, 1Móz 3:18, 1Móz 3:19
+- **<span title="GROUND">a föld</span>** — 4 motívumvers / 9 témavers (44,4%): 1Móz 3:17, 1Móz 3:19, 1Móz 3:23, 1Móz 5:29
+  - <span title="Cursed">megátkozott</span>: 1Móz 3:17, 1Móz 5:29
+  - <span title="Man made from">az ember belőle teremtetett</span>: 1Móz 3:19, 1Móz 3:23
+- **<span title="ANTEDILUVIANS">az özönvíz előtti nemzedék</span>** — 4 motívumvers / 38 témavers (10,5%): 1Móz 6:5, 1Móz 6:7, 1Móz 6:17, 1Móz 7:23
+  - <span title="Arts of">mesterségeik</span>: 1Móz 6:17
+  - <span title="Destruction of">pusztulásuk</span>: 1Móz 7:23
+  - <span title="Wickedness of">gonoszságuk</span>: 1Móz 6:5, 1Móz 6:7
+- **<span title="FLOOD">az özönvíz</span>** — 3 motívumvers / 13 témavers (23,1%): 1Móz 6:13, 1Móz 6:17, 1Móz 8:21
+  - <span title="Foretold">előre megjövendölve</span>: 1Móz 6:13, 1Móz 6:17
+  - <span title="The promise that it should not recur">az ígéret, hogy nem ismétlődik meg</span>: 1Móz 8:21
+- **<span title="THISTLE">bogáncs</span>** — 2 motívumvers / 6 témavers (33,3%): 1Móz 3:18, Hós 10:8
+  - <span title="A noxious plant">káros növény</span>: 1Móz 3:18, Hós 10:8
+- **<span title="BANISHMENT">kiűzetés</span>** — 2 motívumvers / 7 témavers (28,6%): 1Móz 3:23, 1Móz 4:14
+  - <span title="Of Adam and Eve, from Eden">Ádámé és Éváé Édenből</span>: 1Móz 3:23
+  - <span title="Of Cain, to be “a fugitive and vagabond,”">Kainé, hogy „bujdosó és vándorló” legyen</span>: 1Móz 4:14
 
 *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-08)*
 

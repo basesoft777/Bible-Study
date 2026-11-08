@@ -79,6 +79,15 @@ class Negativ(unittest.TestCase):
         sorok = ['| [5Móz 27:15-26](#ige) | Átkozott | átkoz · Qal | formula | Remez | H0779 | %s; %s |' % (elem, elem)]
         self.jelez(lap(tabla_sorok=sorok), 'CELLA_ISMETLES')
 
+    def test_nave_angol_es_nyers_kod(self):
+        # F123.HAMART3 javítókör: a Nave-blokk angol témaneve és a nyers karakterkód BUKÁS; a title-ben álló angol nem
+        blokk = '## 2. Szótári háttér\n\n#### 12. Tematikus index (témák és igehely-hivatkozások)\n\n'
+        self.jelez(lap(tobbi=blokk + '- **átok (*CURSE*)** — 7 motívumvers / 51 témavers (13,7%): 1Móz 3:14'), 'NAVE_ANGOL')
+        self.jelez(lap(tobbi=blokk + '  - Kainé, hogy „bujdosó” legyen (&#8220;a fugitive,&#8221): 1Móz 4:14'),
+                   'NAVE_ANGOL')
+        jo = lap(tobbi=blokk + '- **<span title="CURSE">átok</span>** — 7 motívumvers / 51 témavers (13,7%): 1Móz 3:14')
+        self.assertNotIn('NAVE_ANGOL', azonositok(jo))
+
     def test_A4_belso_jelolesek_az_1b_indokban(self):
         szoveg = lap(tobbi='## 1/b. Kizárt és vizsgált helyek\n\n| Igehely | Miért lett jelölt | Döntés és indok |\n'
                      '|---|---|---|\n| 2Móz 12:29 | gépi keresés | **elutasítva** — Minősítési mérce (a #123 2e. 4. '

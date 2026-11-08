@@ -39,7 +39,7 @@ A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata m
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -220,13 +220,21 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
-1730 verset vizsgáltunk meg: 17 verset egyenként, 1713 verset csoportosan (11 összesítő sorban); elutasítva: 1730. Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes Ó- és Újszövetségben kereste. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben (összesítő sor)” (1713 vers), utána „a két szó nem egy mondatban áll” (8 vers). A jelöltek forrása (vers): Gépi keresés 1729, Kutatói felvetés 1. **Következtetés:** a motívum minden helyére átlagosan 157 vizsgált vers jut (1730 vizsgált vers, 11 motívumhely). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben (összesítő sor)”.<!-- olvasói -->
+A motívum 11 helyén túl további 1 730 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük. Egyik sem tartozik a motívumhoz: 17 versről egyenként döntöttünk, 1 713 versről közös ok alapján, csoportosan. A leggyakoribb ok: „csak az egyik szó vagy más szó áll a versben” (1713 vers), utána „a két szó nem egy mondatban áll” (8 vers). A jelöltek forrása (vers): Gépi keresés 1729, Kutatói felvetés 1. **Következtetés:** a motívum minden helyére átlagosan 157 vizsgált vers jut (1730 vizsgált vers, 11 motívumhely). A határt leginkább ez az ok húzza meg: „csak az egyik szó vagy más szó áll a versben”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 22 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** csak az egyik szó vagy más szó áll a versben (összesítő sor) 1713 · a két szó nem egy mondatban áll 8 · a két szó nem megkülönböztető szerepben 5 · a Septuaginta többlete, az eredetiben nincs a szópár 2 · a hely egy másik sorban áll 2
+**Az elutasítás okai:**
+
+| Ok | Vers | Mit jelent | Példa |
+|---|---|---|---|
+| csak az egyik szó vagy más szó áll a versben | 1713 | lexémánként egy blokk-sor a teljesség-mérés eltéréseire | 1Kir 1:29, Jer 2:24 |
+| a két szó nem egy mondatban áll | 8 | a ψυχή (pszükhé) és a πνεῦμα (pneuma) két külön mondatban áll | Luk 9:55-56, ApCsel 4:31-32 |
+| a két szó nem megkülönböztető szerepben | 5 | a két szó egy mondatban áll, de a mondat nem szembeállítja és nem különbözteti meg őket | Fil 1:27, 1Pét 1:22 |
+| a Septuaginta többlete, az eredetiben nincs a szópár | 2 | a görög fordítás hozza a szópárt, az eredeti szövegben nem áll | Jób 12:10, Jón 4:8 |
+| a hely egy másik sorban áll | 2 | a versablak tartomány-sora; a hely a saját sorában szerepel | Júd 1:19-20 |
 
 **A jelölés forrása:** Gépi keresés 1729 · Kutatói felvetés 1
 
@@ -234,7 +242,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| 1Pét 1:22 | gépi szópár-keresés: G4151 + G5590[^k1] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem eszközként említi egymás mellett; a lelket Isten Lelke tisztítja meg, a görögben a ψυχή (pszükhé) a megtisztított lélek, a πνεῦμα (pneuma) a tisztító Lélek. A „Lélek által” szavak csak a Károli alapszövegében (Textus Receptus) állnak, a kritikai kiadásokban nincsenek. |
+| 1Pét 1:22 | gépi szópár-keresés: G4151 + G5590[^k1] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: a mondat nem szembeállítja, hanem eszközként említi egymás mellett; a lelket Isten Lelke tisztítja meg, a görögben a ψυχή a megtisztított lélek, a πνεῦμα a tisztító Lélek. A „Lélek által” szavak csak a Károli alapszövegében (Textus Receptus) állnak, a kritikai kiadásokban nincsenek. |
 | Mt 12:18 | gépi szópár-keresés: G4151 + G5590[^k2] | **elutasítva** — a két szó nem megkülönböztető szerepben: A két szó nem megkülönböztető szerepben áll: az Ézs 42:1 idézetében mindkét szó Istenről szól („az én lelkem kedvét lelé”, „lelkemet adom ő belé”), nem az ember belső életéről. |
 | Luk 9:55-56 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k3] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a „minémű lélek van ti bennetek” és az „emberek lelkét” két külön mondat, és a lélek az egyikben indulat, a másikban élet. Megjegyzés: a két szó csak a Károli alapszövegében (Textus Receptus) áll, a kritikai kiadásokban nincs; a Textus Receptus mércéje szerint ez önmagában nem kizáró ok. |
 | ApCsel 4:31-32 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k4] | **elutasítva** — a két szó nem egy mondatban áll: A két szó nem egy mondatban áll: a 31. versben a Szent Lélek tölti be a hívőket, a 32. versben a hívők sokaságának „szíve-lelke egy vala”; a két vers két külön mondat. |
@@ -244,17 +252,17 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 | Júd 1:19-20 | gépi szópár-keresés: G4151/G4152 + G5590/G5591 (±1 vers)[^k8] | **elutasítva** — a hely egy másik sorban áll: Ugyanaz a hely, mint a Júd 1:19 sora: a 20. vers csak a Szent Lelket nevezi meg, a ψυχή nem áll benne. |
 | Jób 12:10 | gépi teljesség-mérés (szópár-háló, Septuaginta-híd)[^k9] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordítás a ψυχή és a πνεῦμα szót hozza („minden élő állatnak élete, és minden egyes embernek a lelke”), a héber szövegben viszont a nefes és a rúah áll. A motívum az eredeti szövegre épül, ezért a hely nem előfordulás; a lap tényként említi. |
 | Jón 4:8 | gépi teljesség-mérés (szópár-háló, Septuaginta-híd)[^k10] | **elutasítva** — a Septuaginta többlete, az eredetiben nincs a szópár: A Septuaginta többlete: a görög fordításban a ψυχή és a πνεῦμα áll, de a πνεῦμα itt a keleti szél („tikkasztó keleti szelet”), nem az ember szelleme. Döntés: elutasítva. |
-| 1Kir 1:29 | gépi teljesség-mérés; csoportos kizárás: 58 vers, az első itt[^k11] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 58 versre (az első itt áll): a héber nefes és chajjá („élő lélek”, „élet”) egy versben áll, a görög szópár nélkül; a motívum a görög szópár megkülönböztető együttállására épül, ezért a héber kifejezés önmagában nem tartozik ide (az 1Móz 2:7 kivétel, mert az 1Kor 15:45 idézi). A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| Jer 2:24 | gépi teljesség-mérés; csoportos kizárás: 5 vers, az első itt[^k12] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 5 versre (az első itt áll): a héber rúah és nefes egy versben áll; a motívum a görög szópár megkülönböztető együttállására épül, a héber szópár a tágabb körbe tartozik. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Ján 3:24 | gépi teljesség-mérés; csoportos kizárás: 335 vers, az első itt[^k13] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 335 versre (az első itt áll): csak a πνεῦμα (pneuma) áll a versben, a ψυχή nem; legtöbbször a Szent Lélekről. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Ján 3:16 | gépi teljesség-mérés; csoportos kizárás: 81 vers, az első itt[^k14] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 81 versre (az első itt áll): csak a ψυχή (pszükhé) áll a versben, a πνεῦμα nem; legtöbbször az élet vagy a személy értelmében. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kor 3:1 | gépi teljesség-mérés; csoportos kizárás: 16 vers, az első itt[^k15] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 16 versre (az első itt áll): csak a πνευματικός (pneumatikosz) áll a versben, a ψυχή és a ψυχικός (pszükhikosz) nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| Jak 3:15 | gépi teljesség-mérés; csoportos kizárás: 1 vers, az első itt[^k16] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 1 versre (az első itt áll): csak a ψυχικός (pszükhikosz) áll a versben, a πνεῦμα és a πνευματικός nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 1:12 | gépi teljesség-mérés; csoportos kizárás: 551 vers, az első itt[^k17] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 551 versre (az első itt áll): csak a héber nefes áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 18:12 | gépi teljesség-mérés; csoportos kizárás: 200 vers, az első itt[^k18] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 200 versre (az első itt áll): csak a héber rúah áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 2:24 | gépi teljesség-mérés; csoportos kizárás: 359 vers, az első itt[^k19] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 359 versre (az első itt áll): csak a héber chaj, chajjá (élő, élet) áll a versben; a szótár idézi. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kir 15:29 | gépi teljesség-mérés; csoportos kizárás: 66 vers, az első itt[^k20] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 66 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más héber szót (például nesámá, lehelet; lév, szív) fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Kor 2:6 | gépi teljesség-mérés; csoportos kizárás: 41 vers, az első itt[^k21] | **elutasítva** — csak az egyik szó vagy más szó áll a versben (összesítő sor): Összesítő sor 41 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más görög szót fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 1:29 | gépi teljesség-mérés; csoportos kizárás: 58 vers, az első itt[^k11] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 58 versre (az első itt áll): a héber nefes és chajjá („élő lélek”, „élet”) egy versben áll, a görög szópár nélkül; a motívum a görög szópár megkülönböztető együttállására épül, ezért a héber kifejezés önmagában nem tartozik ide (az 1Móz 2:7 kivétel, mert az 1Kor 15:45 idézi). A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jer 2:24 | gépi teljesség-mérés; csoportos kizárás: 5 vers, az első itt[^k12] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 5 versre (az első itt áll): a héber rúah és nefes egy versben áll; a motívum a görög szópár megkülönböztető együttállására épül, a héber szópár a tágabb körbe tartozik. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:24 | gépi teljesség-mérés; csoportos kizárás: 335 vers, az első itt[^k13] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 335 versre (az első itt áll): csak a πνεῦμα (pneuma) áll a versben, a ψυχή nem; legtöbbször a Szent Lélekről. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Ján 3:16 | gépi teljesség-mérés; csoportos kizárás: 81 vers, az első itt[^k14] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 81 versre (az első itt áll): csak a ψυχή (pszükhé) áll a versben, a πνεῦμα nem; legtöbbször az élet vagy a személy értelmében. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 3:1 | gépi teljesség-mérés; csoportos kizárás: 16 vers, az első itt[^k15] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 16 versre (az első itt áll): csak a πνευματικός (pneumatikosz) áll a versben, a ψυχή és a ψυχικός (pszükhikosz) nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| Jak 3:15 | gépi teljesség-mérés; csoportos kizárás: 1 vers, az első itt[^k16] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 1 versre (az első itt áll): csak a ψυχικός (pszükhikosz) áll a versben, a πνεῦμα és a πνευματικός nem. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 1:12 | gépi teljesség-mérés; csoportos kizárás: 551 vers, az első itt[^k17] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 551 versre (az első itt áll): csak a héber nefes áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 18:12 | gépi teljesség-mérés; csoportos kizárás: 200 vers, az első itt[^k18] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 200 versre (az első itt áll): csak a héber rúah áll a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 2:24 | gépi teljesség-mérés; csoportos kizárás: 359 vers, az első itt[^k19] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 359 versre (az első itt áll): csak a héber chaj, chajjá (élő, élet) áll a versben; a szótár idézi. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kir 15:29 | gépi teljesség-mérés; csoportos kizárás: 66 vers, az első itt[^k20] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 66 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más héber szót (például nesámá, lehelet; lév, szív) fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Kor 2:6 | gépi teljesség-mérés; csoportos kizárás: 41 vers, az első itt[^k21] | **elutasítva** — csak az egyik szó vagy más szó áll a versben: Összesítő sor 41 versre (az első itt áll): a Károli „lélek” szava vagy a szótár idézete más görög szót fordít, a motívum szava nincs a versben. A motívumhoz az a vers tartozik, amelyben a két szó (vagy melléknévi alakjuk) egy mondatban, egymástól megkülönböztetve áll, ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
 
 **Kutatói felvetés** (1)
 
@@ -293,7 +301,7 @@ Funkció: az érzékiek, akikben nincs Lélek: a két embertípus megkülönböz
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-08 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a chaj (H2416) és a nefes (H5315), görögül a pneuma (G4151), a pneumatikosz (G4152), a pszükhé (G5590) és a pszükhikosz (G5591). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -856,21 +864,21 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 4 téma (például: test). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását.<!-- olvasói -->
 
-*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (0 tiltott téma); a 12 jelöltből a motívumhoz kiválasztott 4 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
+*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (0 tiltott téma); a 12 jelöltből a motívumhoz kiválasztott 4 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: ezekből a témákból jelölt csak döntéssel lesz, a jelölt- és döntéstáblán át (`adat/jeloltek.tsv`).*
 
-- **test (*BODY*)** — 3 motívumvers / 43 témavers (7,0%): 1Kor 15:44, 1Kor 15:45, 1Kor 15:46
-  - feltámadása (*Resurrection of*): 1Kor 15:44, 1Kor 15:45, 1Kor 15:46
-- **ember (*MAN*)** — 3 motívumvers / 155 témavers (1,9%): 1Móz 2:7, 1Thessz 5:23, Zsid 4:12
-  - teremtése (*CREATED*): 1Móz 2:7
-  - szellem (*SPIRIT*): 1Thessz 5:23, Zsid 4:12
-- **Magnificat (*MAGNIFICAT*)** — 2 motívumvers / 10 témavers (20,0%): Luk 1:46, Luk 1:47
-  - Máriáé (*Of Mary*): Luk 1:46, Luk 1:47
-- **Ádám (*ADAM*)** — 2 motívumvers / 48 témavers (4,2%): 1Móz 2:7, 1Kor 15:45
-  - Krisztus egyik neve (*A name of Christ*): 1Kor 15:45
-  - bűnt hozott a világba (*Brought sin into the world*): 1Kor 15:45
-  - az első ember, teremtése (*The first man. Creation of*): 1Móz 2:7, 1Kor 15:45
+- **<span title="BODY">test</span>** — 3 motívumvers / 43 témavers (7,0%): 1Kor 15:44, 1Kor 15:45, 1Kor 15:46
+  - <span title="Resurrection of">feltámadása</span>: 1Kor 15:44, 1Kor 15:45, 1Kor 15:46
+- **<span title="MAN">ember</span>** — 3 motívumvers / 155 témavers (1,9%): 1Móz 2:7, 1Thessz 5:23, Zsid 4:12
+  - <span title="CREATED">teremtése</span>: 1Móz 2:7
+  - <span title="SPIRIT">szellem</span>: 1Thessz 5:23, Zsid 4:12
+- **<span title="MAGNIFICAT">Magnificat</span>** — 2 motívumvers / 10 témavers (20,0%): Luk 1:46, Luk 1:47
+  - <span title="Of Mary">Máriáé</span>: Luk 1:46, Luk 1:47
+- **<span title="ADAM">Ádám</span>** — 2 motívumvers / 48 témavers (4,2%): 1Móz 2:7, 1Kor 15:45
+  - <span title="A name of Christ">Krisztus egyik neve</span>: 1Kor 15:45
+  - <span title="Brought sin into the world">bűnt hozott a világba</span>: 1Kor 15:45
+  - <span title="The first man. Creation of">az első ember, teremtése</span>: 1Móz 2:7, 1Kor 15:45
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ANTROP-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=4 | ts=2026-11-04)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ANTROP-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=4 | ts=2026-11-08)*
 
 #### 13. Károli-megfelelők
 
@@ -920,7 +928,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-08 -->
 
 A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség. **Következtetés:** a görög Ószövetség szinte mindenütt (100%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -936,7 +944,7 @@ A motívum 1 ószövetségi helyéből 1 helyen a görög fordítás (Septuagint
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-08 -->
 
 A motívum 11 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 90. **Következtetés:** a helyek 82%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -1072,7 +1080,7 @@ A 90 utalásból 7 a motívum két saját helyét köti össze, ez 7 helyet éri
 
 **Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-08`*
 
 ## 5. Kapcsolatok
 
@@ -1094,7 +1102,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -->
 
@@ -1102,7 +1110,7 @@ A motívumnak még nincs rögzített kapcsolata más motívummal.<!-- olvasói -
 
 A motívumhoz nincs rögzített motívumközi kapcsolat.
 
-*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-08`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
 
@@ -1175,7 +1183,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1185,7 +1193,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `ANTROP-001`
 - Cím: Pneuma/pszükhé megkülönböztetés
 - Státusz: publikálható (`v4`, 2026.11.03)
-- Generálva: 2026-11-04
+- Generálva: 2026-11-08
 - Hely: `<KANONIKUS_FORRAS_URL>`
 - Idézési forma: a Kolofon „Hogyan idézd” bekezdése
 

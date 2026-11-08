@@ -34,6 +34,8 @@ Ellenőrzések (azonosító — súlyosság):
     LABJEGYZET   definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) — BUKÁS
     PROZA_1A     az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)   — BUKÁS
     CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
+    NAVE_ANGOL   a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers
+                 HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)                       — BUKÁS
 
 Az olvasói szöveg: minden látható sor, kivéve a HTML-megjegyzést, a kódblokkot, a technikai dőlt sort (egész
 sor `*…*`), a proveniencia-lábjegyzetet (`[^x]: proveniencia:` / `forrás:` / `scope=`), valamint a Tartalomjegyzék,
@@ -911,8 +913,33 @@ def ell_cella_ismetles(sorok):
     return ki
 
 
+# NAVE_ANGOL (F123.HAMART3 javítókör, 2026-11-08): a Nave-blokk angol témaneve nem áll az olvasói szövegben (csak a
+# `title` attribútumban), és nyers HTML-karakterkód (`&#8221`, pontosvessző nélkül is) sehol sem áll benne.
+NYERS_KOD_RX = re.compile(r'&#x?[0-9A-Fa-f]+;?')
+TITLE_RX = re.compile(r'\stitle="[^"]*"')
+NAVE_ANGOL_RX = re.compile(r'\(\*[A-Z][^*]*\*\)|\*\(fordításra vár\)\*')
+
+
+def ell_nave_angol(sorok):
+    ki = []
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        t = TITLE_RX.sub('', s.szoveg)
+        m = NYERS_KOD_RX.search(t)
+        if m:
+            ki.append(talalat('NAVE_ANGOL', BUKAS, s.n, kornyezet(t, m), 'nyers HTML-karakterkód: ' + m.group(0),
+                              m.group(0)))
+        if s.alszakasz.startswith('12. Tematikus index') or 'Tematikus index' in s.alszakasz:
+            m = NAVE_ANGOL_RX.search(t)
+            if m:
+                ki.append(talalat('NAVE_ANGOL', BUKAS, s.n, kornyezet(t, m),
+                                  'angol témanév az olvasói szövegben: ' + m.group(0), m.group(0)))
+    return ki
+
+
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
-                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles]
+                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol]
 
 
 def arany_szoszam():

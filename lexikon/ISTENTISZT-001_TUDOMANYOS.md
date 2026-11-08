@@ -37,7 +37,7 @@ A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata m
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -96,7 +96,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-08 -->
 
 A motívum 22 igehelyen fordul elő, 10 bibliai könyvben (16 ószövetségi, 6 újszövetségi hely); a legtöbb hely: 1Móz (5). 22 hely azonosítása magas megbízhatóságú. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.<!-- olvasói -->
 
@@ -317,13 +317,28 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
-560 verset vizsgáltunk meg: 104 verset egyenként, 456 verset csoportosan (5 összesítő sorban); elutasítva: 560. Az összesítő sorok a gépi teljesség-mérés verseit fogják össze, amely a motívum szavait a teljes Ó- és Újszövetségben kereste. A leggyakoribb ok: „a hívás igéje a név nélkül (összesítő sor)” (246 vers), utána „elnevezés, nem a név segítségül hívása (összesítő sor)” (126 vers). A jelöltek forrása (vers): Gépi keresés 489, Károli-kereszthivatkozás 42, TSK-ajánlás 19, Kutatói felvetés 10. **Következtetés:** a motívum minden helyére átlagosan 25 vizsgált vers jut (560 vizsgált vers, 22 motívumhely). A határt leginkább ez az ok húzza meg: „a hívás igéje a név nélkül (összesítő sor)”.<!-- olvasói -->
+A motívum 22 helyén túl további 560 verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások ajánlásait is megnéztük. Egyik sem tartozik a motívumhoz: 104 versről egyenként döntöttünk, 456 versről közös ok alapján, csoportosan. A leggyakoribb ok: „a hívás igéje a név nélkül” (246 vers), utána „elnevezés, nem a név segítségül hívása” (126 vers). A jelöltek forrása (vers): Gépi keresés 489, Károli-kereszthivatkozás 42, TSK-ajánlás 19, Kutatói felvetés 10. **Következtetés:** a motívum minden helyére átlagosan 25 vizsgált vers jut (560 vizsgált vers, 22 motívumhely). A határt leginkább ez az ok húzza meg: „a hívás igéje a név nélkül”.<!-- olvasói -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 109 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-**Az elutasítás okai:** a hívás igéje a név nélkül (összesítő sor) 246 · elnevezés, nem a név segítségül hívása (összesítő sor) 126 · a Károli-szó más szót fordít (összesítő sor) 51 · a formula nincs a versben 40 · a hívás és a név nem egy szerkezetben (összesítő sor) 21 · passzív szerkezet vagy megnevezés (negatív kritérium) 20 · nem JHVH áll a név után (összesítő sor) 12 · nem JHVH áll a név után 11 · név nélküli forma 9 · erkölcsi intelem, nem a formula 7 · jogi fellebbezés 6 · névadás 6 · eskü vagy tanúhívás 1 · invokáció a formulán kívül 1 · megszólítás, nem a név segítségül hívása 1 · nincs meg a hívás + név szerkezete 1 · tartalmilag nem kapcsolódik 1
+**Az elutasítás okai:**
+
+| Ok | Vers | Mit jelent | Példa |
+|---|---|---|---|
+| a hívás igéje a név nélkül | 246 | a kárá áll a versben, a sém nélkül: hívás, kiáltás, meghívás | 1Móz 1:5 |
+| elnevezés, nem a név segítségül hívása | 126 | a kárá és a sém elnevezésként áll együtt | 1Móz 2:19 |
+| a Károli-szó más szót fordít | 51 | a hív/kiált/segítségül szó más lexémát fordít | 2Móz 18:4 |
+| a formula nincs a versben | 40 | az indoklás szerint a versben nincs meg a motívum formulája | Róm 10:11, Róm 3:13 |
+| nem JHVH áll a név után | 23 | a besém után névmási rag, más név vagy elóhím | Zak 13:9, Zsolt 105:1 |
+| a hívás és a név nem egy szerkezetben | 21 | a kárá és a sém egy versben, de külön szerkezetben | 1Móz 41:52 |
+| passzív szerkezet vagy megnevezés (negatív kritérium) | 20 | a negatív kritérium a passzív / megnevező használatot zárja ki | ApCsel 1:23, ApCsel 4:36 |
+| név nélküli forma | 9 | a formula része (pl. a hívás) megvan, a név nincs | Róm 10:14, 2Tim 2:22 |
+| erkölcsi intelem, nem a formula | 7 | a kereszthivatkozás az erkölcsi intelmet köti össze | 1Pét 2:11, 1Pét 3:11 |
+| jogi fellebbezés | 6 | a görög ige jogi értelme (fellebbezni) | ApCsel 25:11, ApCsel 25:12 |
+
+További 6 ok, összesen 11 vers: névadás (6); eskü vagy tanúhívás (1); invokáció a formulán kívül (1); megszólítás, nem a név segítségül hívása (1); nincs meg a hívás + név szerkezete (1); tartalmilag nem kapcsolódik (1).
 
 **A jelölés forrása:** TSK-ajánlás 19 · Károli-kereszthivatkozás 42 · Gépi keresés 489 · Kutatói felvetés 10
 
@@ -417,11 +432,11 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 | Ézs 41:25 | gépi szópár-keresés: H7121 + H8034[^k74] | **elutasítva** — nem JHVH áll a név után: A motívumba csak az a hely tartozik, ahol a besém után az Úr neve, a JHVH áll (a felhasználó döntése, 2026-11-01: „Csak ahol JHVH áll”; az alkalmazását 2026-11-02-én jóváhagyta: „Igen, mind”): a besém után nem a [JHVH](/szo/H3068)<sup class="strong" title="H3068 · az ÚR">H3068</sup> szó áll, hanem névmási rag (bismí, „nevemet”; TAHOT: H9020 i) |
 | Ézs 64:6 | gépi szópár-keresés: H7121 + H8034[^k75] | **elutasítva** — nem JHVH áll a név után: A motívumba csak az a hely tartozik, ahol a besém után az Úr neve, a JHVH áll (a felhasználó döntése, 2026-11-01: „Csak ahol JHVH áll”): a besém után nem a [JHVH](/szo/H3068)<sup class="strong" title="H3068 · az ÚR">H3068</sup> szó áll, hanem névmási rag (bismchá, „nevedet”) |
 | Zsolt 99:6 | gépi szópár-keresés: H7121 + H8034[^k76] | **elutasítva** — nincs meg a hívás + név szerkezete: Kézi olvasás (a lefedetlen helyek vizsgálata): Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא (kárá) + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (a felhasználó, 2026-10-29, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (a motívum negatív kritériuma: קָרָא + בְּ (be) aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a [בְּ](/szo/H9003)<sup class="strong" title="H9003 · -ban/-ben; -val/-vel">H9003</sup> az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban [אֶל](/szo/H0413)<sup class="strong" title="H0413 · -hoz/-hez; felé">H0413</sup> + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: a szűrő-szabály döntése (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik). |
-| 1Móz 1:5 | gépi teljesség-mérés (szótári háló, Károli-szó háló); csoportos kizárás: 246 vers, az első itt[^k77] | **elutasítva** — a hívás igéje a név nélkül (összesítő sor): Összesítő sor 246 versre (az első itt áll): a קָרָא (kárá, hív, kiált) igéje a név, a שֵׁם (sém) nélkül áll a versben: hívás, kiáltás vagy meghívás, a név segítségül hívása nélkül. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Móz 2:19 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 126 vers, az első itt[^k78] | **elutasítva** — elnevezés, nem a név segítségül hívása (összesítő sor): Összesítő sor 126 versre (az első itt áll): a kárá és a sém egy versben áll, de elnevezésként („nevét X-nek nevezte”), nem a név segítségül hívásaként. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 2Móz 18:4 | gépi teljesség-mérés (szótári háló, Károli-szó háló); csoportos kizárás: 51 vers, az első itt[^k79] | **elutasítva** — a Károli-szó más szót fordít (összesítő sor): Összesítő sor 51 versre (az első itt áll): a Károli hív, kiált vagy segítségül szava ezekben a versekben más héber vagy görög szót fordít; a motívum szavai nem állnak a versben. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 1Móz 41:52 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 21 vers, az első itt[^k80] | **elutasítva** — a hívás és a név nem egy szerkezetben (összesítő sor): Összesítő sor 21 versre (az első itt áll): a kárá és a sém egy versben áll, de nem egy szerkezetben: a hívás nem a névre irányul. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
-| 2Móz 31:2 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 12 vers, az első itt[^k81] | **elutasítva** — nem JHVH áll a név után (összesítő sor): Összesítő sor 12 versre (az első itt áll): a kárá és a besém egy szerkezetben áll, de a név után nem az Úr neve, a JHVH áll, hanem névmási rag, más név vagy az elóhím. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Móz 1:5 | gépi teljesség-mérés (szótári háló, Károli-szó háló); csoportos kizárás: 246 vers, az első itt[^k77] | **elutasítva** — a hívás igéje a név nélkül: Összesítő sor 246 versre (az első itt áll): a קָרָא (kárá, hív, kiált) igéje a név, a שֵׁם (sém) nélkül áll a versben: hívás, kiáltás vagy meghívás, a név segítségül hívása nélkül. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Móz 2:19 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 126 vers, az első itt[^k78] | **elutasítva** — elnevezés, nem a név segítségül hívása: Összesítő sor 126 versre (az első itt áll): a kárá és a sém egy versben áll, de elnevezésként („nevét X-nek nevezte”), nem a név segítségül hívásaként. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 2Móz 18:4 | gépi teljesség-mérés (szótári háló, Károli-szó háló); csoportos kizárás: 51 vers, az első itt[^k79] | **elutasítva** — a Károli-szó más szót fordít: Összesítő sor 51 versre (az első itt áll): a Károli hív, kiált vagy segítségül szava ezekben a versekben más héber vagy görög szót fordít; a motívum szavai nem állnak a versben. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 1Móz 41:52 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 21 vers, az első itt[^k80] | **elutasítva** — a hívás és a név nem egy szerkezetben: Összesítő sor 21 versre (az első itt áll): a kárá és a sém egy versben áll, de nem egy szerkezetben: a hívás nem a névre irányul. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
+| 2Móz 31:2 | gépi teljesség-mérés (Strong-háló, szótári háló, Károli-szó háló); csoportos kizárás: 12 vers, az első itt[^k81] | **elutasítva** — nem JHVH áll a név után: Összesítő sor 12 versre (az első itt áll): a kárá és a besém egy szerkezetben áll, de a név után nem az Úr neve, a JHVH áll, hanem névmási rag, más név vagy az elóhím. A motívumhoz az a vers tartozik, amelyben a hívás az Úr nevére irányul (a héberben a kárá után a besém és az Úr neve, a JHVH, a görögben az epikaleó és az ónoma), ezért egyik sem tartozik ide; a teljes lista a lap készítőinek módszertani naplójában. |
 
 **Kutatói felvetés** (10)
 
@@ -536,7 +551,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-08 -->
 
 A motívumot hordozó szavak szótári háttere: héberül a kárá (H7121) és a sém (H8034), görögül az epikaleó (G1941). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -957,21 +972,21 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 5 téma (például: ébredések). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását; a tágabb, általános témák (istentisztelet/imádság általában) szándékosan kimaradtak.<!-- olvasói -->
 
-*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (4 tiltott téma); a 13 jelöltből a motívumhoz kiválasztott 5 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
+*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (4 tiltott téma); a 13 jelöltből a motívumhoz kiválasztott 5 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: ezekből a témákból jelölt csak döntéssel lesz, a jelölt- és döntéstáblán át (`adat/jeloltek.tsv`).*
 
-- **ébredések (*REVIVALS*)** — 4 motívumvers / 145 témavers (2,8%): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, ApCsel 2:21
-  - pünkösdkor és a pünkösd utáni időkben (*At Pentecost, and times after Pentecost*): ApCsel 2:21
-  - Illés (*Elijah*): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26
-- **kötelezettség (*OBLIGATION*)** — 2 motívumvers / 19 témavers (10,5%): Zsolt 116:13, Zsolt 116:17
-  - elismerése (*Acknowledgment of*): Zsolt 116:13, Zsolt 116:17
-- **bálvány (*IDOL*)** — 2 motívumvers / 46 témavers (4,3%): 1Kir 18:25, 1Kir 18:26
-  - a hozzá szóló imádság meghallgatatlan (*Prayer to, unanswered*): 1Kir 18:25, 1Kir 18:26
-- **dicsőség (*GLORY*)** — 2 motívumvers / 80 témavers (2,5%): 2Móz 33:19, 2Móz 34:5
-  - Mózesnek megmutatva (*Exhibited to Moses*): 2Móz 33:19, 2Móz 34:5
-- **keresők (*SEEKERS*)** — 2 motívumvers / 173 témavers (1,2%): ApCsel 2:21, Róm 10:13
-  - általános igehelyek (*General scriptures concerning*): ApCsel 2:21, Róm 10:13
+- **<span title="REVIVALS">ébredések</span>** — 4 motívumvers / 145 témavers (2,8%): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, ApCsel 2:21
+  - <span title="At Pentecost, and times after Pentecost">pünkösdkor és a pünkösd utáni időkben</span>: ApCsel 2:21
+  - <span title="Elijah">Illés</span>: 1Kir 18:24, 1Kir 18:25, 1Kir 18:26
+- **<span title="OBLIGATION">kötelezettség</span>** — 2 motívumvers / 19 témavers (10,5%): Zsolt 116:13, Zsolt 116:17
+  - <span title="Acknowledgment of">elismerése</span>: Zsolt 116:13, Zsolt 116:17
+- **<span title="IDOL">bálvány</span>** — 2 motívumvers / 46 témavers (4,3%): 1Kir 18:25, 1Kir 18:26
+  - <span title="Prayer to, unanswered">a hozzá szóló imádság meghallgatatlan</span>: 1Kir 18:25, 1Kir 18:26
+- **<span title="GLORY">dicsőség</span>** — 2 motívumvers / 80 témavers (2,5%): 2Móz 33:19, 2Móz 34:5
+  - <span title="Exhibited to Moses">Mózesnek megmutatva</span>: 2Móz 33:19, 2Móz 34:5
+- **<span title="SEEKERS">keresők</span>** — 2 motívumvers / 173 témavers (1,2%): ApCsel 2:21, Róm 10:13
+  - <span title="General scriptures concerning">általános igehelyek</span>: ApCsel 2:21, Róm 10:13
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=5 | ts=2026-11-04)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=5 | ts=2026-11-08)*
 
 #### 13. Károli-megfelelők
 
@@ -993,7 +1008,7 @@ A motívum 22 igehelyén a Károli 13 különböző magyar szót használ. A leg
 - **örökkévaló** (1) — örökkévaló: 1Móz 21:33
 - **ő** (1) — ő: 2Kir 5:11
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=22 | ts=2026-11-04)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=22 | ts=2026-11-08)*
 
 #### 14. Rejtett / hamis párhuzam
 
@@ -1031,7 +1046,7 @@ A motívum 22 helye közül 2 helyen a héber vagy görög szövegben megvan a m
 
 </details>
 
-*(proveniencia: scope=Károli teljes (G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=19 | ts=2026-11-04)*
+*(proveniencia: scope=Károli teljes (G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=19 | ts=2026-11-08)*
 
 ### Rokon szavak
 
@@ -1132,7 +1147,7 @@ választott, nem véletlenül tért el a „szabvány” ἐπικαλέομαι
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-08 -->
 
 A motívum 16 ószövetségi helyéből 13 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (epikaleó), mint az Újszövetség; 2 helyen mást, 1 helyen a görögből hiányzik. **Következtetés:** a görög Ószövetség a legtöbb helyen (81%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.<!-- olvasói -->
 
@@ -1163,7 +1178,7 @@ A motívum 16 ószövetségi helyéből 13 helyen a görög fordítás (Septuagi
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-08 -->
 
 A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 21. **Következtetés:** a helyek 50%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -1366,11 +1381,11 @@ A 21 utalásból 8 a motívum két saját helyét köti össze, ez 7 helyet éri
 
 *A közös forrásmegjelölések: ‹M1› = `scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11` (60 sor)*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-08`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 18 kapcsolat 22 helyet köt össze: 15 párhuzam, 2 beteljesedés, 1 variáns; 14 magas, 4 alacsonyabb bizonyosságú. **Következtetés:** a motívum helyei túlnyomórészt párhuzamos előfordulások, nem egymásra épülő lánc, és a kapcsolatok többsége biztos.<!-- olvasói -->
 
@@ -1474,11 +1489,11 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Rögzített indoklás nélküli kapcsolat-sor (1): 2Móz 33:19 → 2Móz 34:5.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-08`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 3 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.<!-- olvasói -->
 
@@ -1492,7 +1507,7 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 3 — ALVIL-001: 1, HAMART-001: 1, TEREMT-001: 1.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-04`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-08`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kapcsolodo -->
 
@@ -1837,7 +1852,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-08 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -1847,7 +1862,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
 - Státusz: publikálható (`v4`, 2026.11.02)
-- Generálva: 2026-11-04
+- Generálva: 2026-11-08
 - Hely: `<KANONIKUS_FORRAS_URL>`
 - Idézési forma: a Kolofon „Hogyan idézd” bekezdése
 
@@ -1901,7 +1916,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-04 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-08 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
