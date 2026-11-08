@@ -50,7 +50,7 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `sonnet`). A #176 (`fugg`) a `l
 
 ### F177.1 — MEK-kivonat
 - `eszkozok/karoli_kh_mek.py kivonat <rtf>`: RTF-dekódolás (a `\'xx` cp1250, `\uN`), a könyvpárosítás a MEK saját tartalomjegyzéke szerint (66 cím, kánoni sorrend, a `Konyv_normalizalo_tabla.tsv` STEPBible-kódjaira), fejezet: `N.` sor, vers: `N. szöveg` sor (ha a vers 1-re ugrik fejezetsor nélkül, új fejezet), a KH-sor a vers után.
-- A MEK a tartományt **két végponttal** sorolja („1 Móz. 2,4. , 1 Móz. 2,5.” = 1Móz 2,4-5) — ezt a kivonat megőrzi, és az összevetés így kezeli.
+- A MEK a tartományt **két végponttal** sorolja (a két végpont két külön hivatkozásként áll, pl. 1Móz 2:4 és 1Móz 2:5, ami az 1Móz 2:4-5 tartomány; a MEK szó szerinti alakja a kivonat `mek_alak` oszlopába kerül) — ezt a kivonat megőrzi, és az összevetés így kezeli.
 - Könyv-aliasok a két forrás között (próbamérésből: Máté/Mát, Hag/Agge, Sir/Siral, Énekek/Én, Nehem/Neh) — a táblában rögzítve, nem kódba szórva.
 - Kimenet: `konkordancia/Karoli_KH_MEK.tsv` (oszlopok: `igehely` STEPBible-alakban, `kapcsolodo` STEPBible-alakban, `mek_alak` szó szerint, `proveniencia`). TSV `split('\t')` / `'\t'.join()`, `csv` nem.
 
