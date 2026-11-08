@@ -136,28 +136,44 @@ class LxxSzorend(unittest.TestCase):
     TOK = [{'szoalak': 'λύπας', 'lemma': 'λύπη', 'strong': '3077'},
            {'szoalak': 'λύπαις', 'lemma': 'λύπη', 'strong': '3077'}]
 
-    def test_gyok_vaz(self):
-        self.assertEqual(MK.gyok_vaz('עִצָּבוֹן'), 'עצב')
-        self.assertEqual(MK.gyok_vaz('עֶצֶב'), 'עצב')
-
-    def test_rivalis_to_szerint(self):
-        heber = [('H7235', 'רבה'), ('H6093', 'עצב'), ('H2032', 'הרנ'), ('H6089', 'עצב'), ('H3205', 'ילד')]
+    def test_rivalis_rovid_jelentes_szerint(self):
+        # 1Móz 3:16 (TAHOT): עִצָּבוֹן „toil”, עֶצֶב „toil” — társulási adat nélkül a rövid jelentés dönt
+        heber = [('H7235', 'multiply'), ('H6093', 'toil'), ('H2032', 'conception'), ('H6089', 'toil'), ('H3205', 'beget')]
         tok, riv = MK.szorend_szerint(self.TOK, 'H6093', heber, lambda h: None)
         self.assertEqual([t['szoalak'] for t in tok], ['λύπας'])
         self.assertEqual(riv, ['H6089'])
 
-    def test_tarsulasi_adattal_a_to_nem_dont(self):
-        # ha a rivális héber szónak van társulási adata, és az más szócsalád, a tő azonossága nem elég
-        heber = [('H6093', 'עצב'), ('H6089', 'עצב')]
+    def test_mas_jelentes_nem_rivalis(self):
+        # 1Móz 7:23: אָדָם „man” nem rivális az אֲדָמָה „land” mellett, az אֶרֶץ „land” igen
+        tok3 = self.TOK
+        heber = [('H0127', 'land'), ('H0120', 'man'), ('H0776', 'land')]
+        tok, riv = MK.szorend_szerint(tok3, 'H0127', heber, lambda h: None)
+        self.assertEqual(riv, ['H0776'])
+        self.assertEqual([t['szoalak'] for t in tok], ['λύπας'])
+
+    def test_tarsulasi_adattal_a_jelentes_nem_dont(self):
+        # ha a rivális héber szónak van társulási adata, és az más szócsalád, az azonos rövid jelentés nem elég
+        heber = [('H6093', 'toil'), ('H6089', 'toil')]
         tok, riv = MK.szorend_szerint(self.TOK, 'H6093', heber, lambda h: {'xyz'})
         self.assertEqual(len(tok), 2)
         self.assertEqual(riv, [])
 
     def test_ket_heber_elofordulas_ket_gorog(self):
-        heber = [('H7843', 'שחת'), ('H7843', 'שחת')]
+        heber = [('H7843', 'destroy'), ('H7843', 'destroy')]
         tok, riv = MK.szorend_szerint(self.TOK, 'H7843', heber, lambda h: None)
         self.assertEqual(len(tok), 2)
         self.assertEqual(riv, [])
+
+
+class Szocsalad(unittest.TestCase):
+    """A javítókör lelete: az előtagos alak eleje („κατ”) nem tő, különben minden κατα-szó egy család."""
+    def test_kata_elotag_nem_kozos_to(self):
+        self.assertFalse(MK.szocsalad('κατακλυσμός') & MK.szocsalad('καταφθείρω'))
+
+    def test_valodi_csalad_megmarad(self):
+        self.assertTrue(MK.szocsalad('φθείρω') & MK.szocsalad('καταφθείρω'))
+        self.assertTrue(MK.szocsalad('ἐπικατάρατος') & MK.szocsalad('καταράομαι'))
+        self.assertTrue(MK.szocsalad('λύπη') & MK.szocsalad('λύπη'))
 
 
 if __name__ == '__main__':
