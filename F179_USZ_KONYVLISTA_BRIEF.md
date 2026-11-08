@@ -5,7 +5,8 @@ kod: USZ_KONYVLISTA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/usz-konyvlista
 ad: a `general.py` ÚSZ-könyvlistája a normalizáló táblából olvasva teljes (Mt–Jel), teszttel; az érintett lexikonlapok újragenerálva, előtte–utána mérve (ÓSZ/ÚSZ-szám, LXX-tábla); a HAMART-001 lapján 42/6, a Gal 3:13-14 nincs a LXX-táblában; az N-F09f lezárva
 kovetkezo: "Te: F179.0 — modell-ellenőrzés; a `general.py` UJSZOVETSEGI_TOKENEK-listájának felmérése (és az `n14_hamart_betoltes.py` saját listájáé)"
 munka: folyamat
