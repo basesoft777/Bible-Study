@@ -2054,6 +2054,40 @@ Kulcs: `id`. Új sor, ha egy motívum prózája közel-keleti hátteret kezd eml
 
 ---
 
+### 2.52 A visszhang-réteg adatkészletei — `Targum_PD`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`, `BDB_rokon_irasok` (F176, FELADATOK #176, 2026-11-08)
+
+Öt `konkordancia/` tábla a lexikonlap „visszhang” rétegéhez (ókori fordítások, az ÚSZ kritikai apparátusa és
+szövegváltozat-jelölése, a BDB rokon nyelvi írásai). **Generált nézetek** (`eszkozok/visszhang/*.py`): kézzel nem
+szerkeszthetők; a fejlécük `#`-kezdetű sorai a proveniencia (forrás, commit/hash, licenc, `ts=`), olvasásuk
+`split('\t')`, a `#` sorok kihagyásával. A leírás, a licenc-igazolás és a tételszámok (gépi olvasású tábla):
+`konkordancia/VISSZHANG_README.md`. Licenc-sor mindegyikhez a `licencek.tsv`-ben (2.19), dataset-sor a
+`datasetek.tsv`-ben (`lexikon_oldal`, `ajanlott`).
+
+**Közös szabály — a versszámozás a forrásé.** Az `igehely` a magyar könyvrövidítés
+(`Konyv_normalizalo_tabla.tsv`) és a **forrás** fejezet:verse; a Károli-átszámozás (MT/Vulgata/NRSV ↔ Károli) nincs
+elvégezve (tartalmi döntés, DT-F176a). `forras_vers` / `forras_ref`: a forrás hivatkozása szó szerint.
+`forras_kulcs` (`igen` | `nem`): az `igehely`-kulcs (a forrás fejezet:verse) ugyanezzel a számmal **létezik-e** a
+`Karoli_1908.tsv`-ben; versegyezést nem állít. Az `igehely` a forrás saját számozása magyar könyvnévvel, **nem
+Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT-F176a).
+
+| Tábla | Oszlopok |
+|---|---|
+| `Targum_PD.tsv` | `igehely`, `forras_vers`, `targum` (`Onkelos` \| `Jonatan`), `forras_mu`, `verzio`, `forras_kulcs`, `szoveg` |
+| `Vulgata_Clementina.tsv` | `igehely`, `forras_vers` (USFM-kód + fejezet:vers), `forras_kulcs`, `szoveg` (Glossa-lábjegyzet nélkül) |
+| `SBLGNT_apparatus.tsv` | `igehely`, `forras_vers`, `sorszam`, `forras_kulcs`, `jegyzet` (szó szerint; az alapszöveg nincs benne) |
+| `TAGNT_valtozatok.tsv` | `igehely`, `forras_ref`, `szamozas` (`nrsv` \| `kjv` \| `egyeb` \| `na`), `szo_sorszam`, `tipus`, `strong`, `gorog`, `kiadasok`, `hianyzik_ebbol`, `mozgatas`, `jelentesvaltozat`, `forras_kulcs`; a THGNT (`Tyn`) szövege nincs benne, csak a jelölés |
+| `BDB_rokon_irasok.tsv` | `strong`, `sefaria_ref`, `nyelv` (`arab` \| `etióp` \| `szír`), `szoalak`, `kontextus` (≤ 120 karakter; a token körüli szövegrész a BDB-szócikkből, nem a szócikk feje, mert az mutatja a rokon szót: DT-F176e), `proveniencia` (soronként: `scope=… \| forras=… \| ts=…`) |
+
+**A `BDB_rokon_irasok.tsv` gyorsítótár.** A lekérdezés tényét a fejléc `# lekérdezve: <Strong> | próbált_alakok=… |
+bdb_szócikk=<n> | rokon_írás_sor=<n> | ts=…` sora rögzíti; a **„nincs rokon írás” nem sor**. `bdb_szócikk=0` azt
+jelenti, hogy a Sefaria szóalak-indexe nem adott BDB-szócikket — ez **nem azonos** azzal, hogy a szócikkben nincs
+rokon írás (`bdb_szócikk≥1`, `rokon_írás_sor=0`).
+
+**Arány-kapu.** A `nyilt_mag_kapu.py` `ARANY` ellenőrzése: forrásonként `<nyílt mag sorai> / <forrás tételszáma> = <arány>%`
+(a nyílt mag `elofordulasok.tsv` sorai, amelyeknek `forras_dataset` vagy `szotar` oszlopa a forrást nevezi; sor, nem
+egyedi forrástétel — felső becslés); 1% felett FIGYELMEZTETÉS, 5% felett BUKÁS; a küszöbök óvatos mérnöki értékek,
+jogi alapjuk nincs.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

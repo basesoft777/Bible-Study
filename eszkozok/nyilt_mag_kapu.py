@@ -35,6 +35,12 @@ Ellenőrzések (azonosító — súlyosság):
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
     OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
+    ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
+                 FIGYELMEZTETÉS (átnézés a következő kiadás előtt), 5% felett BUKÁS (a további átvétel a felhasználó
+                 döntésével vagy ügyvédi vélemény után); a küszöbök óvatos mérnöki értékek, jogi alapjuk nincs
+                 (a #86 terv 6. szakasz 13. pontja). A forrás tételszáma a `konkordancia/VISSZHANG_README.md`
+                 táblájából / az `adat/datasetek.tsv` `fajl` oszlopából jön, nem kódba írva.
+                 A soronkénti arány `ARANY  <forrás>: <tétel> / <tételszám> = <arány>%` alakban kerül kiírásra.
 
 Használat:
     python eszkozok/nyilt_mag_kapu.py [--csomag nyilt_mag] [--gyors]   (--gyors: újragenerálás nélkül)
@@ -604,6 +610,106 @@ def ell_ujragenerals(fajlok, kimenet):
     return ki
 
 
+# --- ARANY: forrásonkénti arány-kapu (F176.4) ---------------------------------------------------------------
+# Óvatos mérnöki küszöbök, jogi alapjuk nincs (a #86 terv 6. szakasz 13. pontja): egy külső adatkészletből a nyílt
+# magba átvett tételek aránya 1% felett FIGYELMEZTETÉS (átnézés a következő kiadás előtt), 5% felett HIBA (a kapu
+# megáll; további átvétel a felhasználó döntésével vagy ügyvédi vélemény után).
+ARANY_FIGY = 1.0
+ARANY_HIBA = 5.0
+VISSZHANG_README = os.path.join(GYOKER, 'konkordancia', 'VISSZHANG_README.md')
+ARANY_INFO = []     # a legutóbbi futás soronkénti kimenete (a jelent() kiírja)
+
+
+def arany_szint(darab, tetelszam):
+    """-> (arány %-ban, 'rendben' | 'figy' | 'hiba'). A határérték maga (pl. 1,0%) még nem lépi át a küszöböt."""
+    if tetelszam <= 0:
+        return None, 'ismeretlen'
+    a = 100.0 * darab / tetelszam
+    if a > ARANY_HIBA:
+        return a, 'hiba'
+    if a > ARANY_FIGY:
+        return a, 'figy'
+    return a, 'rendben'
+
+
+def visszhang_tetelszamok(readme_szoveg):
+    """A VISSZHANG_README.md gépi olvasású tábláját olvassa: `| dataset | fajl | tetel | ...` sorok.
+    -> {dataset: (fajl, tetel_int vagy 'sor')}"""
+    ki = {}
+    for s in readme_szoveg.split('\n'):
+        if not s.startswith('| '):
+            continue
+        c = [x.strip().strip('`') for x in s.strip().strip('|').split('|')]
+        if len(c) >= 3 and c[0] and c[0] != 'dataset' and not c[0].startswith('-'):
+            if re.fullmatch(r'[0-9]+', c[2]):
+                ki[c[0]] = (c[1], int(c[2]))
+            elif c[2] == 'sor':
+                ki[c[0]] = (c[1], 'sor')
+    return ki
+
+
+def sorszam_fajl(ut):
+    """A fájl adatsorainak száma (a `#` sorok és az oszlopfejléc nélkül); glob is lehet."""
+    import glob
+    n = 0
+    for f in sorted(glob.glob(ut)):
+        with open(f, encoding='utf-8') as fh:
+            sorok = [s for s in fh.read().split('\n') if s.strip() and not s.startswith('#')]
+        n += max(0, len(sorok) - 1)
+    return n
+
+
+def forras_tetelszam(dataset, vissz):
+    """A forrás tételszáma NEM kódba írva: a VISSZHANG_README.md táblájából, különben az adat/datasetek.tsv `fajl` oszlopából."""
+    if dataset in vissz:
+        fajl, t = vissz[dataset]
+        return sorszam_fajl(os.path.join(GYOKER, fajl)) if t == 'sor' else t
+    with open(os.path.join(GYOKER, 'adat', 'datasetek.tsv'), encoding='utf-8') as f:
+        for s in f.read().split('\n'):
+            m = s.split('\t')
+            if len(m) > 2 and m[1] == dataset and m[2].strip():
+                return sorszam_fajl(os.path.join(GYOKER, m[2].strip()))
+    return 0
+
+
+def ell_arany(fajlok):
+    """Forrásonként: <forrás>: <nyílt mag tételei> / <forrás tételszáma> = <arány>% (1% felett FIGY, 5% felett BUKÁS).
+    A nyílt mag tétele: az `elofordulasok.tsv` sora, amelynek `forras_dataset` (`;`-vel tagolt) vagy `szotar` oszlopa a forrást
+    nevezi. A visszhang-források mindig szerepelnek a kiíratásban (akkor is, ha még 0 tétel hivatkozik rájuk)."""
+    ki = []
+    del ARANY_INFO[:]
+    try:
+        vissz = visszhang_tetelszamok(open(VISSZHANG_README, encoding='utf-8').read())
+    except OSError:
+        vissz = {}
+    fej, sorok = tsv_sorok(fajlok['elofordulasok.tsv'])
+    szaml = {}
+    for _, d in sorok:
+        nevek = {x.strip() for x in d.get('forras_dataset', '').split(';') if x.strip()}
+        if d.get('szotar', '').strip():
+            nevek.add(d['szotar'].strip())
+        for n in nevek:
+            szaml[n] = szaml.get(n, 0) + 1
+    for n in vissz:
+        szaml.setdefault(n, 0)
+    for n in sorted(szaml):
+        t = forras_tetelszam(n, vissz)
+        a, szint = arany_szint(szaml[n], t)
+        if szint == 'ismeretlen':
+            ARANY_INFO.append('%s: %d / ? (a forrás tételszáma nem állapítható meg)' % (n, szaml[n]))
+            if szaml[n] > 0:
+                ki.append(Talalat('ARANY', FIGY, 'elofordulasok.tsv', 1, n, 'a forrás tételszáma nem állapítható meg, az arány nem ellenőrizhető (%s: %d / ?): vegyük fel a VISSZHANG_README.md tételszám-táblájába vagy a datasetek.tsv sorába' % (n, szaml[n])))
+            continue
+        ARANY_INFO.append('%s: %d / %d = %.2f%%' % (n, szaml[n], t, a))
+        if szint == 'hiba':
+            ki.append(Talalat('ARANY', BUKAS, 'elofordulasok.tsv', 1, n, 'a nyílt mag tételeinek aránya %.2f%% > %.0f%% (%s: %d / %d)' % (
+                a, ARANY_HIBA, n, szaml[n], t)))
+        elif szint == 'figy':
+            ki.append(Talalat('ARANY', FIGY, 'elofordulasok.tsv', 1, n, 'a nyílt mag tételeinek aránya %.2f%% > %.0f%%: átnézés a következő kiadás előtt (%s: %d / %d)' % (
+                a, ARANY_FIGY, n, szaml[n], t)))
+    return ki
+
+
 def mer(fajlok, kimenet=None, ujra=True):
     ki = []
     for rel in KOTELEZO:
@@ -612,7 +718,7 @@ def mer(fajlok, kimenet=None, ujra=True):
     if ki:
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
-              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas):
+              ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
@@ -626,6 +732,8 @@ def jelent(talalatok, max_sor=60):
         print('%s  %s:%s  %s — „%s”' % (t.suly, t.fajl, t.sor, t.uzenet, t.idezet))
     if len(bukas) + len(figy) > max_sor:
         print('… további %d tétel' % (len(bukas) + len(figy) - max_sor))
+    for s in ARANY_INFO:
+        print('ARANY  %s' % s)
     print('nyílt mag kapu: %d BUKÁS, %d FIGYELMEZTETÉS' % (len(bukas), len(figy)))
     return len(bukas)
 

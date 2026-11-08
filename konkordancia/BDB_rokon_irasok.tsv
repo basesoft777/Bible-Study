@@ -1,0 +1,16 @@
+# GENERÁLT/GYORSÍTÓTÁR: eszkozok/visszhang/bdb_rokon.py (F176.3); a BDB_teljes_unabridged.tsv nem változik.
+# forras=Sefaria API /api/words (BDB Dictionary, BDB Aramaic Dictionary; Brown–Driver–Briggs, Oxford 1906; a szócikk-illesztés a strong_numbers mező szerint); csak arab/etióp/szír írású tokenek (Unicode-blokk szerint).
+# lekérdezve: H0127 | próbált_alakok=אדמה | bdb_szócikk=1 | rokon_írás_sor=2 | ts=2026-11-08
+# lekérdezve: H0779 | próbált_alakok=ארר,ארור | bdb_szócikk=1 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H1863 | próbált_alakok=דרדר | bdb_szócikk=0 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H2403 | próbált_alakok=חטאת | bdb_szócikk=2 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H2555 | próbált_alakok=חמס | bdb_szócikk=1 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H6093 | próbált_alakok=עצבון,עצבונ | bdb_szócikk=0 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H6975 | próbált_alakok=קוץ | bdb_szócikk=2 | rokon_írás_sor=0 | ts=2026-11-08
+# lekérdezve: H7843 | próbált_alakok=שחת | bdb_szócikk=1 | rokon_írás_sor=3 | ts=2026-11-08
+strong	sefaria_ref	nyelv	szoalak	kontextus	proveniencia
+H0127	BDB Dictionary, אֲדָמָה [BDB00131]	arab	أَدَمَة	, but Fleisch. (Merx Archiv I, 236 f ) comp. Ar. أَدَمَة skin , as smoothly covering & close-fitting; √ דם cf. Ar.	scope=Sefaria /api/words (BDB Dictionary; strong_numbers∋127) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=2026-11-08
+H0127	BDB Dictionary, אֲדָמָה [BDB00131]	arab	دَمَّ	smoothly covering & close-fitting; √ דם cf. Ar. دَمَّ smear (spread over surface); cf. also Nö ZMG 1886, 737 ) — א׳ Gn	scope=Sefaria /api/words (BDB Dictionary; strong_numbers∋127) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=2026-11-08
+H7843	BDB Dictionary, שָׁחַת [BDB10134]	arab	سَحَتَ	= BH, Ecclus. שחיתה 30:11 corrupt act; Arabic سَحَتَ extirpate; Ethiopic ሰሐጠ: injure, violate; TelAm. šaḫâtu is fall	scope=Sefaria /api/words (BDB Dictionary; strong_numbers∋7843) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=2026-11-08
+H7843	BDB Dictionary, שָׁחַת [BDB10134]	etióp	ሰሐጠ	corrupt act; Arabic سَحَتَ extirpate; Ethiopic ሰሐጠ: injure, violate; TelAm. šaḫâtu is fall (especially of city), be	scope=Sefaria /api/words (BDB Dictionary; strong_numbers∋7843) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=2026-11-08
+H7843	BDB Dictionary, שָׁחַת [BDB10134]	szír	ܫܰܚܶܛ	(Zinj.) שחת destroy Lzb 374 , Aramaic שְׁחַת , ܫܰܚܶܛ (assim. of ܬ ), mutilate; —very improb. Gerber 179 denom. from	scope=Sefaria /api/words (BDB Dictionary; strong_numbers∋7843) | forras=sefaria.org BDB (Brown–Driver–Briggs, Oxford 1906) | ts=2026-11-08
