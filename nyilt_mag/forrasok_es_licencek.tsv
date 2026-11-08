@@ -2,6 +2,7 @@
 dataset	licenc	licenc_en	szerepe_a_csomagban	szerepe_a_csomagban_en	ok	ok_en
 BDB	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 BDB_forditas	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
+BDB_rokon_irasok	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 BSB_Strongs	CC0 1.0	CC0 1.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 Cremer_nyers	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
 Girdlestone	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
@@ -28,6 +29,7 @@ Macula_heber	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted,
 Nave_basokant	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 OSHL	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 OSHL_BDB	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+SBLGNT_apparatus	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 SDBH	CC BY-SA 4.0	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	separate layer (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható	CC BY-SA 4.0: in a separate layer, with attribution, cannot be closed
 SDBH_SDGNT_segedtablak	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
 SDGNT	CC BY-SA 4.0	CC BY-SA 4.0	külön réteg (cc_by_sa_reteg/)	separate layer (cc_by_sa_reteg/)	CC BY-SA 4.0: külön rétegben, attribúcióval, nem zárható	CC BY-SA 4.0: in a separate layer, with attribution, cannot be closed
@@ -35,15 +37,18 @@ SECE_G	közkincs	public domain	engedett, de a csomag nem használja	permitted, b
 SECE_H	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 Strong_szotar	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 TAGNT	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+TAGNT_valtozatok	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 TAHOT	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
 TBESG	CC BY 4.0	CC BY 4.0	forrás (az angol szófogódzó oszlopé)	source (of the English word-cue column)		
 TBESH	CC BY 4.0	CC BY 4.0	forrás (az angol szófogódzó oszlopé)	source (of the English word-cue column)		
 TIPNR	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
 TSK	CC BY 4.0	CC BY 4.0	forrás (a sorok forrásmegjelölésében szerepel)	source (named in the source credits of rows)		
+Targum_PD	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 Thayer	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 UBS_DBH	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
 UBS_DNTG	CC BY-SA 4.0	CC BY-SA 4.0	kizárva	excluded	CC BY-SA 4.0, de a csomag nem használja (nem kerül bele)	CC BY-SA 4.0, but not used by the package (not included)
 Versifikacios_tablak	CC BY 4.0	CC BY 4.0	engedett, de a csomag nem használja	permitted, but not used by the package		
+Vulgata_Clementina	közkincs	public domain	engedett, de a csomag nem használja	permitted, but not used by the package		
 karoli_modern	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
 karoli_variancia	minden jog fenntartva	all rights reserved	kizárva	excluded	a projekt zárt (fizetős) származtatott rétege; nem része a nyílt magnak	the project's closed (paid) derived layer; not part of the open core
 lexikonok_nyers	tisztázatlan	unclear	kizárva	excluded	tisztázatlan licenc	unclear licence
