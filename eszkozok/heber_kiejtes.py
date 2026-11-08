@@ -96,7 +96,7 @@ def _betu_kezdet(szo, k):
     return poz[k] if k < len(poz) else len(szo)
 
 
-def _szo(szo, elotag_hossz=0, makkef_utan=False):
+def _szo(szo, elotag_hossz=0, makkef_utan=False, aram=False):
     ls = _betuk(szo)
     if not ls:
         return ''
@@ -193,6 +193,10 @@ def _szo(szo, elotag_hossz=0, makkef_utan=False):
                 hangzo_seva = True
             elif i == n - 1:
                 hangzo_seva = False
+            elif (aram and ls[i + 1]['b'] in (ALEF, AJIN) and not ls[i + 1]['mater'] and elozo is not None
+                  and elozo['vok'] is not None):
+                hangzo_seva = False                                              # A1: arámi zárt szótag
+                ls[i + 1]['aposztrof'] = True                                    # a torokhang jele: ar'á
             elif ls[i + 1]['b'] in (ALEF, HE, AJIN) and not ls[i + 1]['mater']:
                 hangzo_seva = True                                               # R3
             elif forte or (elozo is not None and elozo.get('kotoszo')):
@@ -208,6 +212,8 @@ def _szo(szo, elotag_hossz=0, makkef_utan=False):
             ki.append(('a', None))                                               # furtív patah
             ki.append((msh, None))
             continue
+        if b.get('aposztrof') and not msh:
+            msh = "'"                                                            # A1: arámi álef/ajin zárt szótag után
         ki.append((msh, b))
         if vok is not None:
             ki.append((vok, b))
@@ -225,8 +231,10 @@ def _szo(szo, elotag_hossz=0, makkef_utan=False):
     return ''.join(szoveg)
 
 
-def kiejt(alak, elotag_hossz=0, makkef=False):
+def kiejt(alak, elotag_hossz=0, makkef=False, aram=False):
     """Egy pontozott szó vagy szókapcsolat gépi magyaros kiejtése (DT-F131y); '' pontozatlan alakra.
+    `aram`: arámi szöveg (Targum; F178.5): az A1 szabály szerint a rövid magánhangzó utáni sevá az álef és az ajin
+    előtt néma (zárt szótag), és a torokhangot aposztróf jelzi (אַרְעָא → ar'á, nem areá); a héber R3 itt nem áll.
     `elotag_hossz`: az első szó előtagjának betűszáma (a TAHOT H9001-H9009 sorai; R5, R5b); `makkef`: a szó
     után makkef áll (a TAHOT STEP-átírásának „-” végződése; a kiejtésen nem látszik)."""
     if not pontozott(alak):
@@ -234,7 +242,7 @@ def kiejt(alak, elotag_hossz=0, makkef=False):
     szavak = []
     for si, szo in enumerate(tisztit(alak).split()):
         reszek = [r for r in szo.split(MAKKEF) if r]
-        szavak.append('-'.join(_szo(r, elotag_hossz if si == 0 and k == 0 else 0, k < len(reszek) - 1)
+        szavak.append('-'.join(_szo(r, elotag_hossz if si == 0 and k == 0 else 0, k < len(reszek) - 1, aram)
                                for k, r in enumerate(reszek)))
     return ' '.join(s for s in szavak if s)
 
