@@ -152,7 +152,7 @@ SHA-256 és sorszám: `konkordancia/VISSZHANG_README.md` 1. szakasza (gépi olva
 | TAGNT_valtozatok.tsv | 11 777 | `a1eec149b07d82928b19f9ac13f463209605f227da03bce5a99c52cfa4dcb2cc` | 0 |
 | BDB_rokon_irasok.tsv | 5 | l. 3. (gyorsítótár, nő) | — |
 
-- **Targum:** 15 142 vers = Onkelos (5 könyv) + Jonatán (21 könyv); üres vers 0; HTML-jelölés 0.
+- **Targum:** 15 142 vers = Onkelos 5 846 vers (5 könyv) + Jonatán 9 296 vers (21 könyv); saját mérés a `targum` oszlopból (az ellenőr mérése ugyanezt adta); üres vers 0; HTML-jelölés 0.
 - **Vulgata:** 66 kanonikus könyv, 31 434 vers; kimaradt: TOB, JDT, WIS, SIR, BAR, 1MA, 2MA.
 - **SBLGNT:** 27 fájl, 6 934 jegyzet; a 27 könyvcím-blokk kimarad.
 - **TAGNT:** 142 095 szóból 11 777 (11 773, ahol a kiadás-jelölő nem teljes + 4 NKO-tól eltérő típusú, de teljes halmazú); 4 csak-Tyn szó: a `gorog` mező üres.
