@@ -229,6 +229,7 @@ Egyéb meglévő tesztek, amelyek a változtatott fájlokat érintik: `teszt_nyi
 - **DT-F176c — a Sefaria-feltételeknél elmaradt megállás (ELLENOR_F176 1.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva, utólag a DT-F176b rendezte.
 - **DT-F176d — a licenc-commit az adatcommit után (ELLENOR_F176 3.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): elfogadva (egyik licenc sem lett NC/BY-SA, a kizárás a kódban volt), történet-átírás nincs.
 - **DT-F176e — a `kontextus` a token körüli szövegrész (ELLENOR_F176 7.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („a 176 döntését hozd meg”, 2026-11-08): a token körüli szövegrész marad, mert az mutatja a rokon szót; az indok a `SEMA.md`-ben és a `VISSZHANG_README.md`-ben.
+- **DT-F176f — a `301456c7` commit üzenetében ékezet nélküli „vesz” (ELLENOR_F176_2 5.).** 🟢 az orkesztrátor döntése a felhasználó felhatalmazásával („176 mehet a döntésed szerint”, 2026-11-08): elfogadva, történet-átírás nincs.
 - **DT-F176b — a Sefaria-eredetű források kereskedelmi használata.** 🟢 Eldöntve (a felhasználó, 2026-11-08): `kereskedelmi=igen`, l. 1.1.
 - **N-F176a — a Vulgata-kiadás megjelölése a lapon** (Clementina 1598 az eBible megnevezése szerint; a Glossa Ordinaria — 12 968 lábjegyzet, nincs átvéve — külön recepciós forrás lehet).
 - **N-F176b — a BDB-keresés hézagai.** A Sefaria szóalak-indexe a H1863 és a H6093 szócikkét nem adja; addig a „nincs rokon írás” ezekre nem állítható.
