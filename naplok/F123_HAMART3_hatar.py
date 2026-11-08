@@ -57,8 +57,8 @@ UJ_ELUTASITOTT = [
 UJ_INDOKLAS = {
     '1Móz 12:3': 'Beépítve: „és megáldatnak te benned a föld minden nemzetségei”. A határ az átok igéje (árar) és a föld (adámá) együttállása, ugyanaz a két szó, mint az 1Móz 3:17-ben, most az áldás keretében. Az 1Móz 27:29 és a 4Móz 24:9 formulája a föld szava nélkül áll, ezért kint.',
 }
-JEL192 = ('A mennyei sokaság Isten ítéletét dicséri a nagy parázna felett, „a mely a földet megrontotta az ő paráznaságával”. A romlás igéje (φθείρω, ftheiró) a földdel együtt az Újszövetségben csak itt és a Jel 11:18-ban áll: ugyanaz az ige és tárgy, mint a görög Ószövetség 1Móz 6:11 mondatában, „megromlott a föld”.',
-          '⚖️ ítélet — a föld megrontójának elítélése; az 1Móz 6:11 „megromlott a föld” alakja')
+JEL192 = ('A mennyei sokaság Isten ítéletét dicséri a nagy parázna felett, „a mely a földet megrontotta az ő paráznaságával”. A romlás igéje (φθείρω, ftheiró) a földdel együtt az Újszövetségben csak itt és a Jel 11:18-ban áll: ugyanaz az ige és tárgy, mint a görög Ószövetségben az 1Móz 6:11 mondata, amely szerint a föld romlott vala.',
+          '⚖️ ítélet — a föld megrontójának elítélése; az 1Móz 6:11 romlás-mondatának igéjével')
 UJ_OK = ('126', ID, 'szövetségi átok-formula', 'szövetségi átok-formula, a föld szava nélkül',
          'a szövetség átkait mondja ki az átok igéjével, de a föld (adámá) szava nélkül; a negatív kritérium szerint a szövetségi rend nem a lánc folytatása',
          'scope=manual | forras=F123 HAMART-001 határkör (naplok/HATAR_HAMART-001.md K7, DT-F123hc) | ts=2026-11-08')
