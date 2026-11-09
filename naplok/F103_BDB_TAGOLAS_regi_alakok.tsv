@@ -1,4 +1,4 @@
-# F103 (N-F103a): a DT167 (2) kötelező magyar alakjától eltérő (régi) bevezető-alakok a magyar BDB-szócikkekben, szócikkenként. scope=magyar BDB (8099 szócikk, a szerver bdb_magyar-szabálya) | forras=forditasok.tsv@0be309b96bc3 + naplok/F103_BDB_TAGOLAS_meres.py | ts=2026-11-09T19:15
+# F103 (N107): a DT167 (2) kötelező magyar alakjától eltérő (régi) bevezető-alakok a magyar BDB-szócikkekben, szócikkenként. scope=magyar BDB (8099 szócikk, a szerver bdb_magyar-szabálya) | forras=forditasok.tsv@0be309b96bc3 + naplok/F103_BDB_TAGOLAS_meres.py | ts=2026-11-09T19:15
 # A régi alak nem hiba a kész szövegben (DT167 (5) (a): csak mérés és lista, csere nincs); a mondatkezdő oszlop a csoportot nyitó helyzet (; . : — után).
 strong	angol_bevezeto	kotelezo_alak	regi_alak	elofordulas	mondatkezdo
 H0001	followed by	utána	ragos héber (-val/-vel)	1	0

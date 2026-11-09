@@ -32,12 +32,12 @@ kimenete változatlan (teszt: `test_szeletel_kimenete_valtozatlan`), ezért a le
 a kódolt részletek: zárójelen belüli bevezető nem nyit (a szeletelő 400 karakteres `_zarojelben` szabálya, a lezáratlan OCR-zárójel nem némít);
 a törzs számozott jelentései előtti alaklista nem kap csoportot; a zárójeles harmadik szint sorozat (1-től / a-tól, legalább két tag; `(I)`,
 `-2`, görög betű is), a prózai felsorolás („by (1) … and (2) …”, kötő- vagy viszonyszó után, a csomópont fején túl) nem; a bevezető közvetlenül
-a zárójeles jelölő előtt egy csoport („especially (3)”). Magyarul: DT-F103b.
+a zárójeles jelölő előtt egy csoport („especially (3)”). Magyarul: DT669.
 
 | mérés | előtte | utána |
 |---|---|---|
 | aranyminta, angol: egyező csoport / 184 | 0 | **164** |
-| hiányzó csoport | 184 | 20 — mind szerkezeti okú (a szülő-csomópont hiányzik a szeletelőben; N-F103c) |
+| hiányzó csoport | 184 | 20 — mind szerkezeti okú (a szülő-csomópont hiányzik a szeletelőben; N109) |
 | hamis határ (angol) | 0 | 18 — mind szerkezeti okú (rossz szülő); **csoportszinten 0** |
 | aranyminta-sorrend eltérés (a horgony a szülő másik csoportjánál; H7121 Qal 4/a, a minta E11-es sora +2-ként került a szövegben előbb álló csoport mögé) | — | 2 |
 | magyar: bontott szülő / ebből a minta szerint várt | 0 | 41 / 39 |
@@ -55,15 +55,15 @@ in phrase 14, Inf. abs. as adverb 2. Az utolsó kicsi szám valós: a mondatkezd
 A 2.29 tábla újragenerálva (`bdb_vers_jelentes.py --ts 2026-11-09`, kilépési kód 0; mtime 18:52:44 → 19:14:24; `--ellenoriz`: bájtra azonos,
 kód 0): csak a `# forras:` fejléc kód-hash-e változott (`bdb_szelet.py` d1c18ba93efe → 0620e7ae9686), a 162 053 sor azonos.
 
-Terminológia (a 4. lépés mérése, N-F103a): `naplok/F103_BDB_TAGOLAS_regi_alakok.tsv` (2327 sor, szócikkenként), összesítés a nyitott tételben.
+Terminológia (a 4. lépés mérése, N107): `naplok/F103_BDB_TAGOLAS_regi_alakok.tsv` (2327 sor, szócikkenként), összesítés a nyitott tételben.
 
-## 3. ⛔ Megállás: a tábla csoportszintje `ir`-en kívüli fájlt kíván (DT-F103a)
+## 3. ⛔ Megállás: a tábla csoportszintje `ir`-en kívüli fájlt kíván (DT668)
 
 A brief 2. pontja a 2.29 csoport-szintű útvonalát kéri, de a csoport a táblába csak a `bdb_vers_jelentes.py` (új oszlop) vagy az `utvonal`
 `/+n` bővítése útján kerülhet; az utóbbi a `lexikon_general.py` 2.29 ↔ 2.30 útvonal-illesztését töri. Mindkettő `ir`-en kívüli fájl, ezért
-a hatókör 4. pontja szerint itt megállok; a SEMA 2.29 bővítése a döntés után (a választott alak szerint) készül. Opciók és javaslat: DT-F103a.
+a hatókör 4. pontja szerint itt megállok; a SEMA 2.29 bővítése a döntés után (a választott alak szerint) készül. Opciók és javaslat: DT668.
 
-## 4. A döntés után: a 2.29 csoport-oszlopai (F103.7; DT-F103a (A), DT-F103b (a), orkesztrátori döntés, 2026-11-09)
+## 4. A döntés után: a 2.29 csoport-oszlopai (F103.7; DT668 (A), DT669 (a), orkesztrátori döntés, 2026-11-09)
 
 *proveniencia: scope=adat/bdb_vers_jelentes.tsv (162 053 sor) | forras=bdb_vers_jelentes.py --ts 2026-11-09 + naplok/F103_oszlop_hash.py +
 m2_minta_osszevet.py --mai-tabla (seed-102) | ts=2026-11-09*
@@ -88,4 +88,4 @@ háttérbe tette, a kimenet szó szerint): `együtt 304.5 mp (a lassú fájlok n
 `kilépési kód: 1` — 11 fájl zöld (`teszt_bdb_vers_jelentes.py` 52 teszt), `teszt_szintek.py: HIBA (1)`
 (`test_heber_szavak_alacsony_es_magas_szinten`: „H0120: a magyar darab magas szinten sincs a lapon: 'H120. adam אָדָם_560 hímnemű f'”).
 A hiba **előzetesen fennáll**: az ág kiindulópontján (94c4c2ac, ideiglenes worktree, utána eltávolítva) ugyanez a teszt ugyanígy bukik
-(`Ran 13 tests … FAILED (failures=1)`); N-F103d. `python eszkozok/feladatok.py ellenoriz`: „201 brief, 0 hiba, 0 figyelmeztetés”.
+(`Ran 13 tests … FAILED (failures=1)`); N110. `python eszkozok/feladatok.py ellenoriz`: „201 brief, 0 hiba, 0 figyelmeztetés”.
