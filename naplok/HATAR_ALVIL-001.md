@@ -2,9 +2,9 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum ALVIL-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ALVIL-001 | ts=2026-11-02T08:28Z | bemenet=adat/elofordulasok.tsv@6f5dc48902,adat/motivumok.tsv@2fb0f62314,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ALVIL-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** ALVIL-001 — Hádész (Seol) — a halottak birodalma · hordozó: `lexikai` · fölérendelt fogalom: a halál/túlvilág fogalma általában, a שְׁאוֹל (seól) / ᾍδης (hadész) lexémán kívül · beépített sor: 72 (73 vers)
+**Motívum:** ALVIL-001 — Hádész (Seol) — a halottak birodalma · hordozó: `lexikai` · fölérendelt fogalom: a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül · beépített sor: 74 (75 vers)
 
 ## Gépi rész
 
@@ -12,20 +12,20 @@
 
 Módszer: a beépített igehelyek (`elofordulasok.tsv`) versekre bontva (tartomány = minden vers), ALVIL-001 összes beépített versét minden más motívuméval összevetve, mindkét irányban. Kérdés: A ⊆ B, vagy |A ∩ B| / |A| ≥ 80% (A = az ellenőrzött oldal, B = a másik oldal; a fordított irányt külön vizsgálja).
 
-**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (73 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
+**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (75 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
 
 Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is látszanak):
 
 | másik motívum | ALVIL-001 versei | másik versei | közös | közös/ALVIL-001 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
-| ANTROP-001 | 73 | 8 | 0 | 0% | 0% | nincs |
-| HAMART-001 | 73 | 77 | 0 | 0% | 0% | nincs |
-| HODIT-001 | 73 | 33 | 2 | 3% | 6% | nincs |
-| ISTENTISZT-001 | 73 | 22 | 0 | 0% | 0% | 3, 4 |
-| KIRALY-001 | 73 | 38 | 0 | 0% | 0% | nincs |
-| MENNY-001 | 73 | 11 | 0 | 0% | 0% | nincs |
-| TEREMT-001 | 73 | 45 | 1 | 1% | 2% | nincs |
-| TEREMT-002 | 73 | 3 | 0 | 0% | 0% | nincs |
+| ANTROP-001 | 75 | 11 | 0 | 0% | 0% | nincs |
+| HAMART-001 | 75 | 56 | 0 | 0% | 0% | nincs |
+| HODIT-001 | 75 | 33 | 2 | 3% | 6% | nincs |
+| ISTENTISZT-001 | 75 | 22 | 0 | 0% | 0% | 3, 4 |
+| KIRALY-001 | 75 | 38 | 0 | 0% | 0% | nincs |
+| MENNY-001 | 75 | 11 | 0 | 0% | 0% | nincs |
+| TEREMT-001 | 75 | 45 | 1 | 1% | 2% | nincs |
+| TEREMT-002 | 75 | 3 | 0 | 0% | 0% | nincs |
 
 ### 2. Negatív kritérium a beépített sorokon
 
@@ -34,6 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 *Független második vélemény (hatar-ellenor), bemenet: csak az azonosító. A gépi rész eredményét (részhalmaz, gerinc-kombináció) nem ismétli. Minden pont kérdés a felhasználóhoz, nem javítás.*
 
 **2 kérdés.** Mind kérdés a felhasználóhoz, nem javítás; egyik sem új igehely-javaslat. A hígulás-vizsgálat üres (lent, *Nem kérdés*).

@@ -2,7 +2,7 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum TEREMT-002`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=TEREMT-002 | ts=2026-11-02T12:49Z | bemenet=adat/elofordulasok.tsv@cadcb0987a,adat/motivumok.tsv@13dad030ab,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=TEREMT-002 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
 **Motívum:** TEREMT-002 — Tohu va-vohu (תֹהוּ וָבֹהוּ, tóhú vávóhú) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor · hordozó: `formulaikus` · fölérendelt fogalom: az isteni ítélet mint pusztulás / kozmikus felbomlás általában (prófétai pusztulás-, elsötétülés- és romhalmaz-képek), a תֹהוּ וָבֹהוּ (tohu va-vohu) páron kív… · beépített sor: 3 (3 vers)
 
@@ -18,9 +18,9 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 
 | másik motívum | TEREMT-002 versei | másik versei | közös | közös/TEREMT-002 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
-| ALVIL-001 | 3 | 73 | 0 | 0% | 0% | nincs |
-| ANTROP-001 | 3 | 8 | 0 | 0% | 0% | nincs |
-| HAMART-001 | 3 | 77 | 0 | 0% | 0% | nincs |
+| ALVIL-001 | 3 | 75 | 0 | 0% | 0% | nincs |
+| ANTROP-001 | 3 | 11 | 0 | 0% | 0% | nincs |
+| HAMART-001 | 3 | 56 | 0 | 0% | 0% | nincs |
 | HODIT-001 | 3 | 33 | 0 | 0% | 0% | nincs |
 | ISTENTISZT-001 | 3 | 22 | 0 | 0% | 0% | nincs |
 | KIRALY-001 | 3 | 38 | 0 | 0% | 0% | nincs |
@@ -38,6 +38,7 @@ Módszer: a #150 `jelolt_eloszures.vizsgal` próbája a **beépített** sorokra:
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 *Független második vélemény (hatar-ellenor), bemenet: csak az azonosító. A gépi rész eredményét (részhalmaz, gerinc-kombináció) nem ismétli. Minden pont kérdés a felhasználóhoz, nem javítás.*
 
 *A futás (`claude-fable-5-1`) a felhasználó kifejezett jóváhagyásával, kreditből (usage credits) történt: „Igen, mehet” (2026-11-02, az orkesztrátornak; DT-F151b: „Igen, indítsd”).*

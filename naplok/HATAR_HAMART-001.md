@@ -2,9 +2,9 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum HAMART-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=HAMART-001 | ts=2026-11-05T08:50Z | bemenet=adat/elofordulasok.tsv@1d1ccd0a3b,adat/motivumok.tsv@fab2ec03bf,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=HAMART-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül · beépített sor: 60 (86 vers)
+**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül · beépített sor: 48 (56 vers)
 
 ## Gépi rész
 
@@ -12,20 +12,20 @@
 
 Módszer: a beépített igehelyek (`elofordulasok.tsv`) versekre bontva (tartomány = minden vers), HAMART-001 összes beépített versét minden más motívuméval összevetve, mindkét irányban. Kérdés: A ⊆ B, vagy |A ∩ B| / |A| ≥ 80% (A = az ellenőrzött oldal, B = a másik oldal; a fordított irányt külön vizsgálja).
 
-**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (86 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
+**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (56 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
 
 Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is látszanak):
 
 | másik motívum | HAMART-001 versei | másik versei | közös | közös/HAMART-001 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
-| ALVIL-001 | 86 | 75 | 0 | 0% | 0% | nincs |
-| ANTROP-001 | 86 | 11 | 0 | 0% | 0% | nincs |
-| HODIT-001 | 86 | 33 | 0 | 0% | 0% | nincs |
-| ISTENTISZT-001 | 86 | 22 | 0 | 0% | 0% | 5 |
-| KIRALY-001 | 86 | 38 | 0 | 0% | 0% | nincs |
-| MENNY-001 | 86 | 11 | 0 | 0% | 0% | nincs |
-| TEREMT-001 | 86 | 45 | 0 | 0% | 0% | nincs |
-| TEREMT-002 | 86 | 3 | 0 | 0% | 0% | nincs |
+| ALVIL-001 | 56 | 75 | 0 | 0% | 0% | nincs |
+| ANTROP-001 | 56 | 11 | 0 | 0% | 0% | nincs |
+| HODIT-001 | 56 | 33 | 0 | 0% | 0% | nincs |
+| ISTENTISZT-001 | 56 | 22 | 0 | 0% | 0% | 5 |
+| KIRALY-001 | 56 | 38 | 0 | 0% | 0% | nincs |
+| MENNY-001 | 56 | 11 | 0 | 0% | 0% | nincs |
+| TEREMT-001 | 56 | 45 | 0 | 0% | 0% | nincs |
+| TEREMT-002 | 56 | 3 | 0 | 0% | 0% | nincs |
 
 ### 2. Negatív kritérium a beépített sorokon
 
@@ -34,6 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 
 *Második vélemény a mai adaton (60 beépített sor, 86 vers; a 2026-11-02/03-i, 52 soros állapotra írt K1 és a felhasználói besorolása ezzel felülírva; az akkori döntés nyoma a fájl git-történetében: f4061848). Bemenet: csak a motívum azonosítója; a készítő session összefoglalóját nem vettem figyelembe. A gépi rész két eredményét (részhalmaz: 0 kérdés; negatív kritérium: strukturális hordozón nem fut) nem ismétlem. Minden pont kérdés a felhasználóhoz, nem javítás; új igehelyet nem javaslok, nem döntök.*
 
