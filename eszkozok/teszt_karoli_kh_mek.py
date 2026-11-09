@@ -234,6 +234,43 @@ class JeloltSzabaly(unittest.TestCase):
         self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_KIESIK)
         self.assertEqual(b[('Gen.4.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_MARAD)
 
+    def test_e1_nem_letezo_mek_par_nem_iteli_el_a_hunkar_sort(self):
+        """DT-F181g (ELLENOR_F181 E1): a helyes HunKar-sort a nem létező célú MEK-pár nem ítéli el, akkor sem, ha a
+        versen más MEK-sor beemelődik (Neh 1:5 -> 9:32, MEK 4,32; Ján 8:12 -> 12:46, MEK 9,46)."""
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.3.1', 'Psa.99.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Psa.99.6'),
+               ('Gen.3.1', 'Mat.5.32', 'jelolt', 'MEK', 'csak_mek;mek_alak=y;tsk=nem')]
+        b = self.bontas(jav)
+        self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_E1)
+        self.assertEqual(b[('Gen.3.1', 'Psa.99.6', 'MEK')]['dontes'], K.D_NEMLETEZO)
+        self.assertEqual(b[('Gen.3.1', 'Mat.5.32', 'MEK')]['dontes'], K.D_BEEMEL)
+        uj = K.beemel([m + ('p',) for m in jav], K.jelolt_bontas(
+            jav, self.LETEZO, lambda f, c: False, lambda f, c: False, set(), set()), '2026-11-09')
+        self.assertEqual(uj[0][2], 'megerositett')
+        self.assertEqual(uj[0][3], 'HunKar')
+        self.assertIn('mek_par_nem_letezik=x', uj[0][4])
+        self.assertEqual(uj[1][2], 'jelolt')
+
+    def test_e1_a_kimenet_nem_fugg_a_fuggetlen_sorok_beemelesetol(self):
+        """A Lev 23:17 -> Lev 2:12 eset: ugyanaz a döntés, akár van a versen beemelődő MEK-sor, akár nincs."""
+        par = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.3.1', 'Psa.99.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Psa.99.6')]
+        mas = par + [('Gen.3.1', 'Mat.5.32', 'jelolt', 'MEK', 'csak_mek;mek_alak=y;tsk=nem')]
+        self.assertEqual(self.bontas(par)[('Gen.3.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_E1)
+        self.assertEqual(self.bontas(mas)[('Gen.3.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_E1)
+
+    def test_e1_nem_vonatkozik_a_letezo_elirasgyanus_parra_es_a_hibas_hunkar_celra(self):
+        # a pár létező (elírás-gyanús): a HunKar-sor jelolt marad; a HunKar-cél nem létezik: nincs E1
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.3.1', 'Psa.89.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        letezo = set(self.LETEZO) | {'Psa.89.6'}
+        b = {(r['cel'], r['oldal']): r for r in K.jelolt_bontas(
+            jav, letezo, lambda f, c: False, lambda f, c: False, set(), set())}
+        self.assertEqual(b[('Psa.33.6', 'HunKar')]['dontes'], K.D_HK_MARAD)
+        jav2 = [('Gen.3.1', 'Psa.99.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem;hibas_hivatkozas=Psa.99.6'),
+                ('Gen.3.1', 'Psa.99.9', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Psa.99.9')]
+        self.assertNotEqual(self.bontas(jav2)[('Gen.3.1', 'Psa.99.6', 'HunKar')]['dontes'], K.D_HK_E1)
+
     def test_beemel_alkalmazasa(self):
         jav = [('Gen.1.1', 'Psa.33.6', 'megerositett', 'HunKar+MEK', 'egyezik', 'p'),
                ('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem', 'p'),
@@ -274,12 +311,13 @@ class RepoTablak(unittest.TestCase):
 
     def test_megerositett_ketforrasu_kiesik_hunkar(self):
         """A #177 szintjei, az F181 beemelésével: a megerősített sor vagy két forrású, vagy a szabály által
-        beemelt MEK-sor (`szabaly=F181`); a kiesik sor HunKar-sor; a MEK-sor csak a szabállyal lehet nem jelölt."""
+        beemelt MEK-sor (`szabaly=F181`), vagy a HunKar-sor, amelynek a MEK-párja nem ellentmond (`szabaly=F181`); a
+        kiesik sor HunKar-sor; a MEK-sor csak a szabállyal lehet nem jelölt."""
         for m in self.jav:
             if m[2] == 'megerositett':
-                self.assertIn(m[3], ('HunKar+MEK', 'MEK'))
+                self.assertIn(m[3], ('HunKar+MEK', 'MEK', 'HunKar'))
                 self.assertNotIn('hibas_hivatkozas', m[4])
-                if m[3] == 'MEK':
+                if m[3] in ('MEK', 'HunKar'):
                     self.assertIn('szabaly=F181', m[4])
             if m[2] == 'kiesik':
                 self.assertEqual(m[3], 'HunKar')
@@ -324,6 +362,16 @@ class RepoTablak(unittest.TestCase):
         self.assertEqual(e[2], 'jelolt')
         self.assertIn('hibas_hivatkozas=Exo.26.59', e[4])
         self.assertIn('hibas_hivatkozas=Gen.15.26', d[('Deu.7.15', 'Gen.15.26')][4])
+
+    def test_e1_esetek_a_tablan(self):
+        """DT-F181g: a három helyes HunKar-KH (és a Lev 23:17 -> Lev 2:12) megerősített, nem kiesik."""
+        d = {(m[0], m[1]): m for m in self.jav}
+        for f, c in (('Neh.1.5', 'Neh.9.32'), ('Jhn.8.12', 'Jhn.12.46'), ('Act.14.22', 'Act.13.43'),
+                     ('Lev.23.17', 'Lev.2.12')):
+            self.assertEqual(d[(f, c)][2], 'megerositett', (f, c))
+            self.assertEqual(d[(f, c)][3], 'HunKar')
+            self.assertIn('mek_par_nem_letezik=', d[(f, c)][4])
+            self.assertTrue(SZ.elfogad(f, c))
 
     def test_szuro(self):
         self.assertTrue(SZ.elfogad('Gen.1.1', 'Psa.33.6'))

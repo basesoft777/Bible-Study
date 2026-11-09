@@ -94,7 +94,7 @@ a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`). Mindhárom
 **Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
 (N-F177b) nem része a menetnek.
 
-## 7. A jelölt szint feldolgozása — a beemelési szabály (F181; DT-F181d, DT-F181e, DT-F181f)
+## 7. A jelölt szint feldolgozása — a beemelési szabály (F181; DT-F181d, DT-F181e, DT-F181f, DT-F181g)
 
 **A szabály egy helyen (ez a szakasz); a megvalósítás: `eszkozok/karoli_kh_mek.py` (`jelolt_bontas`, `beemel`); tesztek: `eszkozok/teszt_karoli_kh_mek.py` (`JeloltSzabaly`, `RepoTablak`).**
 Az alap a felhasználó szava (2026-11-09, szó szerint): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a MEK-et, ha ott nem volt gyanús ismétlődő.” Módosításai: DT-F181e (orkesztrátori döntés, nem felhasználói: az elírás-gyanús osztály jelölt marad) és DT-F181f (a felhasználó: „beemeljük”: a HunKar-oldali gyanús-jelölés nem zár ki).
@@ -105,7 +105,10 @@ Az alap a felhasználó szava (2026-11-09, szó szerint): „TSK külön rendsze
 * a MEK-cél **egyetlen összetevőben** (könyv, fejezet vagy versszám) tér el a forrásvers egy jelölt HunKar-sorának céljától (**elírás-gyanús osztály**, DT-F181e: a végrehajtói olvasat szerint 15 sorból 4 valószínű MEK-elírás) → `jelolt` marad.
 A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;szabaly=F181`.
 
-**2. A HunKar-oldali `jelolt` sor** (`eltero_lista`: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen): `kiesik`, ha a forrásvers MEK-listájából legalább egy sor beemelődik (a MEK-lista a versen irányadó, és a sor abban nincs), **kivéve** ha egy elírás-gyanús MEK-sor párja (a pár eldöntetlen: a HunKar-cél lehet a helyes); különben `jelolt` marad. A `kiesik` itt nem állítja, hogy a HunKar-sor hibás: a MEK-lista elfogadásának következménye.
+**2. A HunKar-oldali `jelolt` sor** (`eltero_lista`: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen). A sorrend:
+* **a MEK-pár nem ellentmond neki → `megerositett`** (F181 javítókör 1; DT-F181g, ELLENOR_F181 E1): ha a HunKar-sor célverse létezik, és a MEK-oldali párja (a MEK-sor, amely egyetlen összetevőben tér el tőle: könyv/fejezet/versszám) **nem létező** célra mutat, a MEK-hiba nem ítélheti el a helyes HunKar-sort. A sor `forras=HunKar`, `megerositett`, az indoka `eltero_lista;tsk=…;mek_par_nem_letezik=<a MEK szó szerinti alakja>;szabaly=F181`. A döntés a sor saját párjától függ, nem attól, hogy a versen más, független MEK-sor beemelődik-e. Példák: Neh 1:5 → 9:32 (MEK `4,32`), Ján 8:12 → 12:46 (MEK `9,46`), ApCsel 14:22 → 13:43 (MEK `11,43`), Lev 23:17 → Lev 2:12 (MEK `2,17`);
+* ha a sor egy elírás-gyanús MEK-sor párja → `jelolt` marad (a pár eldöntetlen: a HunKar-cél lehet a helyes);
+* egyébként `kiesik`, ha a forrásvers MEK-listájából legalább egy sor beemelődik (a MEK-lista a versen irányadó, és a sor abban nincs); különben `jelolt` marad. A `kiesik` itt nem állítja, hogy a HunKar-sor hibás: a MEK-lista elfogadásának következménye.
 
 **3. Az `egyezik`, de nem létező hivatkozású sor (`HunKar+MEK`) `jelolt` marad.**
 
