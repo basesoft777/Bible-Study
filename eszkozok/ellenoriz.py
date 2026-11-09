@@ -800,7 +800,7 @@ def _forditasok_forras_szoveg_idx(adat_dir):
         idx[kulcs] = r.get('szoveg_en', '')
 
     konkordancia_dir = os.path.join(os.path.dirname(adat_dir), 'konkordancia')
-    ubs_path = os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv')
+    ubs_path = os.path.join(konkordancia_dir, _UBS_DNTG_FAJL)
     if os.path.exists(ubs_path):
         _, ubs_sorok = G.tsv_beolvas(ubs_path)
         for r in ubs_sorok:
@@ -809,7 +809,7 @@ def _forditasok_forras_szoveg_idx(adat_dir):
             idx[alap + ('glosszak_hu',)] = r.get('glosszak', '')
 
     # F121 (DT-F121b): UBS_DBH -- entry_id = lexid, jelentes_szam = '—'; egy feloldo (glossza_lexikon_forditas)
-    if os.path.exists(os.path.join(konkordancia_dir, 'UBS_DBH_jelentesek.tsv')):
+    if os.path.exists(os.path.join(konkordancia_dir, _UBS_DBH_FAJL)):
         import glossza_lexikon_forditas as GLF
         for (strong, lexid, mezo), szoveg in GLF.dbh_forras_idx(konkordancia_dir).items():
             idx[('UBS_DBH', strong, lexid, GLF.EM_DASH, mezo)] = szoveg
@@ -823,6 +823,18 @@ _TELJES_SZOCIKK_FAJL = {
     'Thayer': 'Thayer_teljes.tsv',
     'BDB': 'BDB_teljes_unabridged.tsv',
 }
+
+_UBS_DNTG_FAJL = 'UBS_DNTG_jelentesek.tsv'
+_UBS_DBH_FAJL = 'UBS_DBH_jelentesek.tsv'
+
+
+def szabaly13_konkordancia_forrasok():
+    """A 13. szabaly altal olvasott konkordancia-fajlok neve (egy szabaly, egy hely:
+    a tesztek ideiglenes masolata ebbol epit, N-F181-teszt). A UBS-jelentesek, a
+    Thayer/BDB teljes szocikk es a `tovabbi_forras` feloldo (GLF.TOVABBI_FAJL) fajljai."""
+    import glossza_lexikon_forditas as GLF
+    return sorted(set(_TELJES_SZOCIKK_FAJL.values()) | {_UBS_DNTG_FAJL, _UBS_DBH_FAJL}
+                  | set(GLF.TOVABBI_FAJL.values()))
 
 
 def _strong_padded(s):
