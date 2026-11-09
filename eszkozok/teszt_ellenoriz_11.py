@@ -94,5 +94,30 @@ class Szabaly11Ts(unittest.TestCase):
         self.assertEqual(E.szabaly11_res_forras_egyezes(os.path.join(E.ROOT, 'adat')).verdict, 'RENDBEN')
 
 
+class Szabaly11TsUjSzerkezet(unittest.TestCase):
+    """F178 utóhatás: az új szerkezetű lapon (HAMART-001) a nyers proveniencia-sor az olvasói sor végén,
+    HTML-megjegyzésben áll; a ts-t onnan is ki kell olvasni, különben a generálás utáni naptól SÉRTÉS."""
+    UJ = 'HAMART-001'
+
+    def setUp(self):
+        self.eredeti_ts = G.TS
+        with open(os.path.join(E.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % self.UJ), encoding='utf-8') as fh:
+            self.lap = fh.read()
+
+    def tearDown(self):
+        G.TS = self.eredeti_ts
+
+    def test_ts_a_megjegyzesbol(self):
+        torzs = LG.res_torzs_lapbol(self.lap, {'id': self.UJ}, 'minosites')
+        self.assertIn('<!-- eredeti: *Proveniencia: `scope=id:%s' % self.UJ, torzs)
+        self.assertIsNotNone(E.res_lap_ts(torzs, self.UJ))
+
+    def test_kesobbi_napon_rendben(self):
+        G.TS = '2099-12-31'
+        r = LG.res_forras_sorok()[(self.UJ, 'minosites')]
+        elvart, tenyleges = E.res_elvart_es_tenyleges(LG, self.lap, self.UJ, 'minosites', r)
+        self.assertTrue(E.res_egyezik(elvart, tenyleges))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
