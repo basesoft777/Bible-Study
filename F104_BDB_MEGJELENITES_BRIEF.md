@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f104-bdb-megjelenites
 ad: a szó-lap BDB-blokkjában a teljes szócikk mindig látszik, két jelölési szinttel (erős: „a BDB itt idézi”; gyenge: „vonatkozhat”), kattintható igehelyekkel és pontos hivatkozásszámmal, a „próba” felirat és a mért pontosság a kiemelés mellett
 kovetkezo: Indítható a fugg szerint (a #102 és a #103 után; a #76 nem függés, DT297)
 olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
