@@ -574,7 +574,9 @@ prov = {
     'parok': 'scope=%s | forras=adat/karoli_strong/%s | ts=%s' % (SZAKASZ, PAROK_F, TS),
     'lxx': 'scope=%s | forras=%s | ts=%s' % (SZAKASZ, LXX_F, TS),
     'tsk': 'scope=%s | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
-    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
+    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv (HunKar) + konkordancia/Karoli_KH_MEK.tsv '
+          '(MEK 00161, Országos Széchényi Könyvtár, közkincs) + konkordancia/Karoli_KH_javitott.tsv (szűrő: a megerősített szint) '
+          '| ts=%s' % (SZAKASZ, TS),
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
     'bdb_alias': 'scope=strong | forras=konkordancia/BDB_strong_alias.tsv (alias-párosítás, csak ha a Strong-számnak nincs saját BDB-szócikke) | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),

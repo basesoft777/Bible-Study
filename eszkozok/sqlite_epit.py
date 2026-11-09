@@ -108,7 +108,9 @@ SZARMAZTATOTT_LICENC = {
     'vers': ['Karoli_1908'],
     'vers_szamozas': ['Karoli_versmegfeleltetes', 'BSB_Strongs'],
     'konyv': ['Konyv_nevtablak'],
-    'tsk': ['TSK'], 'kh': ['Karoli_KH'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
+    # F181 E7: a `kh` sorai a HunKar-táblából (Karoli_KH) és a MEK 00161-ből (Karoli_KH_MEK, közkincs, DT651) állnak; a
+    # szűrő, a Karoli_KH_javitott.tsv szintje a táblába nem kerül (csak a megerősített sor), ezért a térképben nem szerepel
+    'tsk': ['TSK'], 'kh': ['Karoli_KH', 'Karoli_KH_MEK'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
     'kjv': ['KJV_Strongs_teljes'], 'karoli_strong_kivonat': ['Karoli_Strong_kivonat'],
     'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
