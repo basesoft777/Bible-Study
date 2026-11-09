@@ -161,7 +161,7 @@ class Osszevetes(unittest.TestCase):
 
 
 class JeloltSzabaly(unittest.TestCase):
-    """F181 (DT-F181a): a jelolt szint bontása és a beemelési szabály mesterséges adaton."""
+    """F181: a jelolt szint bontása és a beemelési szabály mesterséges adaton."""
     LETEZO = {'Gen.1.1', 'Gen.2.4', 'Gen.2.5', 'Gen.3.1', 'Gen.4.1', 'Gen.5.1', 'Gen.6.1', 'Psa.33.6', 'Psa.89.12',
               'Mat.5.32', 'Exo.6.20', 'Num.26.59'}
 
@@ -257,7 +257,7 @@ class RepoTablak(unittest.TestCase):
         self.assertEqual(hk, jav)
 
     def test_megerositett_ketforrasu_kiesik_hunkar(self):
-        """A #177 szintjei, az F181 (DT-F181a) beemelésével: a megerősített sor vagy két forrású, vagy a szabály által
+        """A #177 szintjei, az F181 beemelésével: a megerősített sor vagy két forrású, vagy a szabály által
         beemelt MEK-sor (`szabaly=F181`); a kiesik sor HunKar-sor; a MEK-sor csak a szabállyal lehet nem jelölt."""
         for m in self.jav:
             if m[2] == 'megerositett':
@@ -317,7 +317,7 @@ class RepoTablak(unittest.TestCase):
         self.assertEqual(SZ.szint(kiesik[0], kiesik[1]), 'kiesik')
 
     def test_f181_szabaly_a_tablan(self):
-        """DT-F181a: a beemelt MEK-sor célja és forrásverse létezik, a forrásvers nem gyanús ismétlődő; a MEK-oldali
+        """F181: a beemelt MEK-sor célja és forrásverse létezik, a forrásvers nem gyanús ismétlődő; a MEK-oldali
         jelölt maradék indoka nem létező célvers vagy gyanús ismétlődés; a beemelés idempotens; a sorszám állandó."""
         gy_hk = K.gyanus_versek()
         gy_mek = K.mek_ismetlodo(K.mek_sorok_betolt())

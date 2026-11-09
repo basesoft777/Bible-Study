@@ -94,7 +94,7 @@ a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`). Mindhárom
 **Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
 (N-F177b) nem része a menetnek.
 
-## 7. A jelölt szint feldolgozása — a beemelési szabály (F181, DT-F181a)
+## 7. A jelölt szint feldolgozása — a beemelési szabály (F181, DT-F181d)
 
 **A szabály egy helyen (ez a szakasz); a megvalósítás: `eszkozok/karoli_kh_mek.py` (`jelolt_bontas`, `beemel`); tesztek: `eszkozok/teszt_karoli_kh_mek.py` (`JeloltSzabaly`, `RepoTablak`).**
 A döntés alapja a felhasználó szava (2026-11-09, szó szerint): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a MEK-et, ha ott nem volt gyanús ismétlődő.”
@@ -124,6 +124,6 @@ A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;sza
 | összesen | 35 204 | 35 204 | 0 |
 
 **Figyelmeztetések (részletek: a jelentés 4. és 7. szakasza).**
-* A `karoli_kh_szuro.elfogad(forras, cel)` és a fogyasztói a **HunKar-tábla** sorait szűrik; a csak a MEK-ben álló, most `megerositett` sorok ott nincsenek, ezért a lapra/indexbe csak a fogyasztók bővítésével jutnak (N-F181b, N-F177a). A lapokat ez a menet nem generálta újra.
+* A `karoli_kh_szuro.elfogad(forras, cel)` és a fogyasztói a **HunKar-tábla** sorait szűrik; a csak a MEK-ben álló, most `megerositett` sorok ott nincsenek, ezért a lapra/indexbe csak a fogyasztók bővítésével jutnak (N-F181e, N-F177a). A lapokat ez a menet nem generálta újra.
 * A beemelt sorok között 15 elírás-gyanús van (a MEK-cél egyetlen összetevőben tér el a HunKar-céltól); ezek közül a végrehajtói olvasat szerint 4 a MEK hibás (mind létező célvers). A szabály ezeket a felhasználó előírása szerint beemelte; a jelentés 7. szakasza tételesen mutatja.
 * A gyanús ismétlődés kizárása 80 sorban HunKar-oldali jelölésen áll (a HunKar-lista másolt, a MEK-lista nem); a szúrópróba szerint ezek nem hibásak. Ha a kizárás csak a MEK-oldali ismétlődésre vonatkozna, a 80 sor beemelődne (felhasználói döntés).

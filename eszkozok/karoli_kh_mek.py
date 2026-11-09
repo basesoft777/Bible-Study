@@ -23,7 +23,7 @@ Négy alparancs (a harmadik és negyedik: F181):
       a jelölt szint súlya; a TSK csak tájékoztatás). Csak olvas, a táblát nem módosítja.
 
   beemel [--be konkordancia/Karoli_KH_javitott.tsv] [--ki <fájl>] [--ts <dátum>]
-      a beemelési szabály (DT-F181a) alkalmazása: a MEK-oldali jelölt sor megerositett lesz, kivéve a nem létező
+      a beemelési szabály alkalmazása: a MEK-oldali jelölt sor megerositett lesz, kivéve a nem létező
       célvers és a gyanús ismétlődés; a MEK-listával ütköző HunKar-oldali jelölt sor kiesik. A sorok száma nem változik.
 
 TSV-olvasás/írás: `split('\\t')` / `'\\t'.join()`, a `csv` modul nem használható (CLAUDE.md).
@@ -483,7 +483,7 @@ def osszevet_main(a):
           'kiesik / jelolt (a jelolt sorokról nincs döntés, CLAUDE.md 2. szabály)'
     sorok6 = [[v, c, sz, fo, ind, prov] for v, c, sz, fo, ind in sorok]
     if not a.nyers:
-        # F181 (DT-F181a): az osszevet kimenete a beemelési szabállyal együtt áll elő, hogy az újragenerálás ne
+        # F181 (DT-F181d): az osszevet kimenete a beemelési szabállyal együtt áll elő, hogy az újragenerálás ne
         # veszítse el a J4 állapotát; a #177 háromszintű nyers állapota a --nyers kapcsolóval.
         bontas, _, _ = _bontas_sorokra(sorok6)
         sorok6 = beemel(sorok6, bontas, ts)
@@ -505,13 +505,13 @@ def osszegzes(sorok, hk, mek):
 
 # ----------------------------------------------------------------------------------------------------------------
 # F181: a `jelolt` szint mérése (jelolt-bontas, J1), a beemelési szabály (J2) és alkalmazása (beemel, J4).
-# DT-F181a (a felhasználó szava, 2026-11-09): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a
+# DT-F181d (a felhasználó szava, 2026-11-09): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a
 # MEK-et, ha ott nem volt gyanús ismétlődő.” A TSK tehát NEM tanú és nem feltétel: a bontásban csak tájékoztató.
 # ----------------------------------------------------------------------------------------------------------------
 
 GYANUS_TSV = KONK + '/Karoli_kereszthivatkozasok_gyanus.tsv'
 SZABALY_JEL = 'szabaly=F181'
-FEJ_BEEMELT = ('# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet + beemel (DT-F181a) — kézzel szerkeszteni tilos; a szintek: '
+FEJ_BEEMELT = ('# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet + beemel — kézzel szerkeszteni tilos; a szintek: '
                'megerositett / kiesik / jelolt (a jelolt sorokról a döntés nélküli maradék: Karoli_KH_MEK_README.md 7.)')
 ALTIPUSOK = ('tartomány/vershatár', 'könyv-elírás', 'fejezet-elírás', 'versszám-elírás', 'eltér (nem sorolható)',
              'csak MEK', 'egyéb (egyező, de nem létező hivatkozás)')
@@ -593,10 +593,10 @@ def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyan
     """A `jelolt` sorok bontása és a J2 szabály döntése soronként.
 
     javitott: [(igehely, kapcsolodo, szint, forras, indok)] (a teljes tábla). A TSK-támogatás (tamogat_teljes: mai
-    `tsk=` szabály; tamogat_tsk: tiszta TSK ±3) csak tájékoztató, a szabály nem használja (DT-F181a).
+    `tsk=` szabály; tamogat_tsk: tiszta TSK ±3) csak tájékoztató, a szabály nem használja (l. Karoli_KH_MEK_README.md 7.).
     gyanus_hk / gyanus_mek: a gyanús ismétlődő forrásversek két halmaza (HunKar-oldali jelölés / MEK-oldali ismétlődés).
 
-    A szabály (DT-F181a): a MEK-oldali jelölt sor `megerositett`, kivéve ha (1) a hivatkozott vers vagy a forrásvers
+    A szabály (README 7.): a MEK-oldali jelölt sor `megerositett`, kivéve ha (1) a hivatkozott vers vagy a forrásvers
     nem létezik (`Karoli_1908` ∪ MEK-versszerkezet), vagy (2) a forrásvers gyanús ismétlődő (a két halmaz uniója).
     A HunKar-oldali jelölt sor (a MEK a versen mást listáz) `kiesik`, ha a forrásverse MEK-listájából legalább egy sor
     beemelődik (a MEK-lista a versen irányadó, és a sor abban nincs); különben jelölt marad. Az `egyező, de nem létező
@@ -705,7 +705,7 @@ def beemel(javitott, bontas, ts):
     dont = {(r['forras_vers'], r['cel'], r['oldal']): r['dontes'] for r in bontas}
     prov = ('scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK_versszerkezet.tsv + '
             'konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv | forras=eszkozok/karoli_kh_mek.py beemel '
-            '(DT-F181a) | ts=%s' % ts)
+            '| ts=%s' % ts)
     ki = []
     for s in javitott:
         if s[2] != 'jelolt':
@@ -756,7 +756,7 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     hibas = _db(bontas, lambda r: not r['cel_letezik'] or not r['forras_letezik'])
     w('Nem létező cél vagy forrásvers (`Karoli_1908` ∪ MEK-versszerkezet szerint): **%d** sor.\n' % hibas)
 
-    w('## 2. A szabály (J2) kimenete, soronként (DT-F181a)\n')
+    w('## 2. A szabály (J2) kimenete, soronként\n')
     w('A szabály: a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, '
       '(2) a forrásvers gyanús ismétlődő. A HunKar-oldali jelölt sor `kiesik`, ha a forrásverse MEK-listájából legalább '
       'egy sor beemelődik; különben jelölt marad. A TSK nem szerepel a szabályban.\n')
@@ -837,7 +837,7 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     elir = [r for r in bontas if r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['altipus'] in ELIRAS]
     w('* **Elírás-gyanús beemelés:** %d beemelt MEK-sor áll olyan HunKar-sorral párban, amelytől egyetlen összetevőben '
       '(könyv/fejezet/versszám) tér el, és a MEK-cél létezik. Ezekben a MEK-elírás is lehet (pl. 5Móz 21:23 → Gal 2:13 '
-      'a Gal 3:13 helyett); a szabály a MEK-et fogadja el (DT-F181a), a HunKar-párja `kiesik` lesz. Bontás: %s. Ez a '
+      'a Gal 3:13 helyett); a szabály a MEK-et fogadja el (a felhasználó előírása), a HunKar-párja `kiesik` lesz. Bontás: %s. Ez a '
       'szabály tudott ára; a J3 szúrópróba ezt méri.' % (
           len(elir), ', '.join('%s %d' % (a, _db(elir, lambda r: r['altipus'] == a)) for a in ELIRAS)))
     tart = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['altipus'] == 'tartomány/vershatár')
@@ -866,7 +866,7 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
           100 * s['beemel_uj_versek'] / max(1, s['versek_megerositettel'])))
 
     w('## 6. Példák (kategóriánként legfeljebb 8, egyenletes minta a tábla sorrendjéből)\n')
-    w('Jelölés: `forrásvers → cél` [MEK-alak]; partner: a másik oldal párosított sora; TSK: a saját cél '
+    w('Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TSK: a saját cél '
       '(mai szabály / tiszta; csak tájékoztatás); L: a cél létezik; gy: gyanús (H: HunKar-oldali, M: MEK-oldali).\n')
     for d in DONTESEK:
         rs = [r for r in bontas if r['dontes'] == d]
@@ -874,8 +874,8 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
             continue
         w('### %s (%d sor)\n' % (d, len(rs)))
         for r in mintak(rs, 8):
-            w('* %s → %s %s%s| %s | altípus: %s | TSK %s/%s | L: %s%s%s' % (
-                r['forras_vers'], r['cel'], '[%s] ' % r['mek_alak'] if r['mek_alak'] else '',
+            w('* %s → %s %s| %s | altípus: %s | TSK %s/%s | L: %s%s%s' % (
+                r['forras_vers'], r['cel'],
                 '| partner: %s ' % r['partner'] if r['partner'] else '', r['oldal'], r['altipus'],
                 'igen' if r['sajat_tsk'] else 'nem', 'igen' if r['sajat_tsk_tiszta'] else 'nem',
                 'igen' if r['cel_letezik'] else 'nem', '' if r['forras_letezik'] else ' | forrásvers nem létezik',
@@ -1032,7 +1032,7 @@ def main():
     j.add_argument('--jelentes')
     j.add_argument('--modell', default='?')
     j.add_argument('--ts')
-    b = sp.add_parser('beemel', help='a beemelési szabály alkalmazása a táblán (F181, J4, DT-F181a)')
+    b = sp.add_parser('beemel', help='a beemelési szabály alkalmazása a táblán (F181, J4)')
     b.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
     b.add_argument('--ki')
     b.add_argument('--ts')
