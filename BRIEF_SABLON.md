@@ -70,6 +70,8 @@ Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATO
 ## 5. Döntésnapló
 ```
 
+**Jelentés (F184 D4).** A feladat menet- és zárójelentése egy fájl: `naplok/F<nn>_jelentes.md`. A menet szakaszai tételenként követik egymást (proveniencia-sorral), a végén **„Zárás”** szakasz (≤20 sor: mi készült, a cserék vagy mérések száma, a tesztek eredménye, a nyitott pontok, a PR); félbemaradt futásnál a „Folytatási pont” is ide kerül. Külön `naplok/<feladat>_zaras.md` nem készül; a régi `_zaras.md` fájlok változatlanok. A független ellenőr jelentése külön fájl marad (`naplok/ELLENOR_<tétel>.md`), a szövegéhez nem nyúlsz.
+
 Az új döntés- és nyitott-tételek helye (`dontesek/uj/<ágnév>.md`, `nyitott/uj/<ágnév>.md`), a helyőrzők és a számkiosztás szabálya: `CLAUDE.md`, „Git” (F30, CI E26).
 
 ## Nyitó prompt (csak ha a brief közvetlenül, parancs nélkül is futtatható)
