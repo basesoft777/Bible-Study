@@ -12,5 +12,6 @@
 3. Az `ir` bővült: `eszkozok/olvaso_szerver/bdb_vers_jelentes.py` (DT-F103a (A), egyetlen fájlra szóló kivétel a „nincs bővítés” alól).
 4. A „674 kész szócikk” mérése a mai teljes magyar BDB-n (8099 szócikk) futott.
 5. A per-ág fájlok neve a `CLAUDE.md` szabálya szerint `f103-bdb-tagolas.md` (nem `claude_f103-…`).
+6. A 4. pont első elfogadási feltétele („az aranymintán a csoportok egyeznek, hamis határ 0”) **részben teljesült** (DT-F103c, orkesztrátori döntés, 2026-11-09; `naplok/ELLENOR_F103.md` 1. tétel): csoportszinten 0 hiány és 0 hamis határ, de 164 / 184 egyezik; a 20 hiány és a 18 hamis határ a szeletelő szerkezeti hibája, ezeket az N-F103c viszi (a „BDB-hozzárendelés 97%” új feladat része lesz).
 
 **Nyitott:** **N-F103a** — a DT167 (2) hét kötelező alakja a #38 következő adagja előtt, kapuval a `terminologia.tsv`-be (mért régi alakok és szócikkenkénti lista: `naplok/F103_BDB_TAGOLAS_regi_alakok.tsv`). **N-F103b** — HAMART H7451/H6975: a csukott szakaszcím glossza nélkül („2 (1 szakasz)”), `eszkozok/lexikon_general.py:3261`, a #182-é. N-F103c — a szeletelő szerkezeti hibái (H0559, H2490 III, H3176, H0834 שֶׁ). N-F103d — `teszt_szintek.py` H0120 (LRM-jel) piros a main-en is (előzetes hiba).
