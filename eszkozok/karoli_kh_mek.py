@@ -937,9 +937,13 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     w('Nem létező cél vagy forrásvers (`Karoli_1908` ∪ MEK-versszerkezet szerint): **%d** sor.\n' % hibas)
 
     w('## 2. A szabály (J2) kimenete, soronként\n')
-    w('A szabály: a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, '
-      '(2) a forrásvers MEK-listája gyanús ismétlődő (a HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `kiesik`, ha a forrásverse MEK-listájából legalább '
-      'egy sor beemelődik; különben jelölt marad. A TSK nem szerepel a szabályban.\n')
+    w('A szabály (a szövege egy helyen: `konkordancia/Karoli_KH_MEK_README.md` 7.): a MEK-oldali jelölt sor `megerositett`, '
+      '**kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a '
+      'HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke (DT-F181h), (4) a MEK-cél '
+      'egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `megerositett`, ha a MEK-párja '
+      'nem ellentmond neki (E1: a pár célja nem létezik, DT-F181g; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik '
+      'végpontját adja, DT-F181i); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az '
+      'elírás-gyanús sor párját); egyébként jelölt marad. A TSK nem szerepel a szabályban.\n')
     w('| döntés | sor |')
     w('|---|---|')
     dk = collections.Counter(r['dontes'] for r in bontas)
@@ -947,12 +951,13 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
         w('| %s | %d |' % (d, dk[d]))
     w('| **összesen** | **%d** |\n' % n)
     mek_db = _db(bontas, lambda r: r['oldal'] == 'MEK')
-    w('**A három szám (MEK-oldali jelölt sorok: %d):** bekerül **%d**; gyanús ismétlődésként marad **%d**; a nem létező '
+    w('**A számok (MEK-oldali jelölt sorok: %d):** bekerül **%d**; gyanús ismétlődésként marad **%d**; a nem létező '
       'célvers miatt marad **%d** (+ %d egyező-de-nem-létező sor, összesen %d nem létező célvers); elírás-gyanús '
-      'osztályként marad **%d**.\n' % (
+      'osztályként marad **%d**; az E2-hibaminta létező töredékeként marad **%d**; a megerősített HunKar-tartományba olvad '
+      '(kiesik) **%d**.\n' % (
           mek_db, dk[D_BEEMEL], dk[D_GYANUS],
           _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_NEMLETEZO),
-          _db(bontas, lambda r: r['oldal'] == 'egyező'), dk[D_NEMLETEZO], dk[D_ELIRAS]))
+          _db(bontas, lambda r: r['oldal'] == 'egyező'), dk[D_NEMLETEZO], dk[D_ELIRAS], dk[D_E2], dk[D_MEK_VEGPONT]))
     hk_be = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['gyanus_hk'])
     w('A gyanús ismétlődés kizárása csak a **MEK-oldali** ismétlődésre vonatkozik (a MEK-lista szó szerint azonos egy '
       'másik vers MEK-listájával, ≥2 elem, %d forrásvers): %d sor marad jelölt. A **HunKar-oldali** gyanús-jelölés (a #177 '
@@ -964,15 +969,16 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
       'célvers az elsőbbségű.\n' % _db(bontas, lambda r: r['oldal'] == 'MEK' and
                                                  (not r['cel_letezik'] or not r['forras_letezik']) and
                                                  r['gyanus_mek']))
-    w('**A HunKar-oldali jelölt sor sorsa (mit választottam és miért).** A #177 `eltero_lista` sora: a HunKar-sor, '
-      'amelyet a MEK a versen nem listáz, de más hivatkozást igen. Ha a MEK-lista a versen irányadó (a MEK-sor '
-      'beemelődik), akkor a HunKar-sor a MEK-lista szerint nincs ott: ugyanaz a helyzet, mint a `kiesik` szinten (a '
-      'MEK a versen nem listázza), ezért `kiesik` lesz (indok: `eltero_lista;tsk=…;szabaly=F181`). Ha a verse egyik '
-      'MEK-sora sem emelődik be (nem létező cél, gyanús), a HunKar-sor jelölt marad: a verse MEK-listája nincs elfogadva, '
-      'tehát a HunKar-sor sorsáról sincs mi alapján dönteni (hiányt nem töltünk ki, CLAUDE.md 3. szabály). A `kiesik` '
-      'itt **nem** jelent hibás HunKar-sort: a sor a MEK-lista elfogadásának következménye (l. 4. az elírás-gyanús '
-      'párokat). HunKar-oldali jelölt sor: %d; ebből `kiesik`: %d, jelölt marad: %d.\n' % (
-          _db(bontas, lambda r: r['oldal'] == 'HunKar'), dk[D_HK_KIESIK], dk[D_HK_MARAD]))
+    hk_db = _db(bontas, lambda r: r['oldal'] == 'HunKar')
+    w('**A HunKar-oldali jelölt sor sorsa.** A #177 `eltero_lista` sora: a HunKar-sor, amelyet a MEK a versen nem listáz, de '
+      'más hivatkozást igen. A javítókör (ELLENOR_F181 E1–E3) után a sorrend: (1) az E2-hibaminta megfelelője → `megerositett` '
+      '(%d); (2) a MEK a tartomány egyik végpontját adja → a tartomány `megerositett`, `forras=HunKar+MEK` (%d), a MEK-végpontsor '
+      'és az értelmezhetetlen társa `kiesik` (%d sor); (3) a MEK-pár nem létező célra mutat → `megerositett` (%d); (4) a sor '
+      'egy elírás-gyanús MEK-sor párja → jelölt marad; (5) egyébként `kiesik`, ha a verse MEK-listájából legalább egy sor '
+      'beemelődik (%d), különben jelölt marad. A `kiesik` itt **nem** állítja, hogy a HunKar-sor hibás: a MEK-lista '
+      'elfogadásának következménye. HunKar-oldali jelölt sor: %d; ebből `megerositett`: %d, `kiesik`: %d, jelölt marad: %d.\n' % (
+          dk[D_HK_E2], dk[D_HK_VEGPONT], dk[D_MEK_VEGPONT], dk[D_HK_E1], dk[D_HK_KIESIK], hk_db,
+          dk[D_HK_E1] + dk[D_HK_E2] + dk[D_HK_VEGPONT], dk[D_HK_KIESIK], dk[D_HK_MARAD]))
 
     w('## 3. Keresztábla és könyvenkénti eloszlás\n')
     w('**Altípus × döntés:**\n')
@@ -1000,18 +1006,21 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     w('A sor saját céljára mutató TSK-támogatás: mai szabály szerint %d sor, ebből tiszta TSK ±3-mal %d, csak '
       'visszautalással %d.\n' % (teljes, tisz, teljes - tisz))
     w('**Könyvenként (a forrásvers könyve szerint):**\n')
-    w('| könyv | jelölt | beemel | gyanús | nem létező | HunKar→kiesik | HunKar marad |')
-    w('|---|---|---|---|---|---|---|')
+    w('| könyv | jelölt | beemel | gyanús | nem létező | elírás-gyanús | E2-töredék | HunKar→megerősített | HunKar→kiesik | HunKar marad | MEK-végpont→kiesik |')
+    w('|---|---|---|---|---|---|---|---|---|---|---|')
     konyv = collections.OrderedDict()
     for r in bontas:
         konyv.setdefault(r['forras_vers'].split('.')[0], []).append(r)
     for k in step_konyvek():
         rs = konyv.get(k)
         if rs:
-            w('| %s | %d | %d | %d | %d | %d | %d |' % (
+            w('| %s | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d |' % (
                 k, len(rs), _db(rs, lambda r: r['dontes'] == D_BEEMEL), _db(rs, lambda r: r['dontes'] == D_GYANUS),
-                _db(rs, lambda r: r['dontes'] == D_NEMLETEZO), _db(rs, lambda r: r['dontes'] == D_HK_KIESIK),
-                _db(rs, lambda r: r['dontes'] == D_HK_MARAD)))
+                _db(rs, lambda r: r['dontes'] == D_NEMLETEZO), _db(rs, lambda r: r['dontes'] == D_ELIRAS),
+                _db(rs, lambda r: r['dontes'] == D_E2),
+                _db(rs, lambda r: r['dontes'] in (D_HK_E1, D_HK_E2, D_HK_VEGPONT)),
+                _db(rs, lambda r: r['dontes'] == D_HK_KIESIK), _db(rs, lambda r: r['dontes'] == D_HK_MARAD),
+                _db(rs, lambda r: r['dontes'] == D_MEK_VEGPONT)))
     w('')
 
     w('## 4. Mire kell figyelni a szabály alkalmazásakor\n')
@@ -1021,9 +1030,15 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
       'szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: %s.' % (
           len(elir), ', '.join('%s %d' % (a, _db(elir, lambda r: r['altipus'] == a)) for a in ELIRAS)))
     tart = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['altipus'] == 'tartomány/vershatár')
-    w('* **Tartomány-végpontok:** %d beemelt MEK-sor a HunKar-tartomány végpontja vagy annak szomszédja; a HunKar a '
-      'tartományt egy sorban adja, a MEK két végponttal, ezért a beemelt végpontsor és a `kiesik` tartománysor együtt '
-      'azonos tartalmat hordozhat (a lap/index oldalán összevonandó).' % tart)
+    w('* **Tartomány-végpontok (E3, DT-F181i):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a '
+      'tartomány egyik végpontját adja (a másik hiányzik vagy értelmezhetetlen), a HunKar-tartomány `megerositett` (%d sor, ebből %d értelmezhetetlen, de a tartomány végének versszámával egyező MEK-véggel), a MEK-végpontsor és az '
+      'értelmezhetetlen társa `kiesik` (%d sor): a lap/index a tartományt egyszer kapja, a tartomány vége nem vész el. A '
+      'beemelt MEK-sorok közül még %d a HunKar-tartomány szomszédja (nem végpontja), ezek nem olvadnak be.' % (
+          dk[D_HK_VEGPONT], _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_MEK_VEGPONT and not r['cel']),
+          dk[D_MEK_VEGPONT], tart))
+    w('* **Az E2-hibaminta (DT-F181h):** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező '
+      'töredék nem emelődik be (%d sor `jelolt`), a HunKar-megfelelő `megerositett` (%d sor); a teljes mérés: '
+      '`python eszkozok/karoli_kh_mek.py e2-meres` (10. szakasz).' % (dk[D_E2], dk[D_HK_E2]))
     w('* **A fogyasztók** (`karoli_kh_szuro.mek_sorok()` a `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, '
       '`nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (N-F181e, lezárva: 9. szakasz).')
 
