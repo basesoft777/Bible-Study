@@ -1024,8 +1024,10 @@ def _torzsek_html(tl, elotag='bdb', talalt=None):
 
 # DT-F99l (c) (felhasználó, 2026-10-15): a BDB-szeletelő „próba” jelöléssel élesedik; a lapon a NYERS mért pontosság áll (a seed-101 vak
 # minta, 200 véletlen igehely, jelentéspont: 184/200; Clopper–Pearson 95%), az ítélet utáni érték csak a naplóban (naplok/BDB_SZELETELO_M0.md 9.11)
-BDB_MERT_PONTOSSAG = ('Mért pontosság (jelentéspont, 200 véletlen igehely vak ellenőrzéssel, 2026-10-15): 92,0% '
-                      '(95%-os konfidencia-intervallum: 87,3–95,4%).')
+# F102 (DT-F102c (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-09): a seed-102 nyers száma (a szeletelő: 183/200);
+# a „próba” jelölés marad (a 97%-os mérce nem teljesült); az ítélet utáni szám csak a naplóban (naplok/BDB_SZELETELO_M2_seed102_iteletek.md)
+BDB_MERT_PONTOSSAG = ('Mért pontosság (jelentéspont, 200 véletlen igehely vak ellenőrzéssel, 2026-11-09): 91,5% '
+                      '(95%-os konfidencia-intervallum: 86,7–95,0%).')
 SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)',
                'tagolas': 'rész (a címszó fő tagolása)'}
 

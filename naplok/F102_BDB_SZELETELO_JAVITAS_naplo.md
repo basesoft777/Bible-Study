@@ -437,3 +437,33 @@ lenne —, M060 kulcs-ellentmondás).
 - **M214** H3707: a „Dr^Intr 191; Deut 4:25” Deut 4:25-je bibliai visszautalás (az ítélet) vagy Driver kommentár-helye.
 - **M039, M127, M196**: a közbeékelt könyv utáni, abban nem létező fejezetű hely a korábbi könyvet folytatja-e — a mai szabály (bizonytalan) szándékosan óvatos.
 - **M060** H6920: a könyvnév nélküli „13:10” (LXX-alak helye) — a forrás nem nevezi meg a könyvet.
+
+## 16. A ⛔ 3.6 jóváhagyása és a 7. lépés (F102.7)
+
+**Orkesztrátori döntés** (local_c8cc3610, a felhasználó felhatalmazásával, 2026-11-09):
+- **DT-F102d: (ii)** — a szeletelő marad; az átállás a 2.30-ra az N-F102e javítása után, újraméréssel. Pontosítás a döntési sorban: a (C) a szóráson
+  túli különbségre értendő; azon belül a szeletelő marad.
+- **Az ítéleti tábla jóváhagyva**, a kérdéses tételekre: M143 kulcs-hiba (nem számít a szeletelő ellen); M018 a mérésből kizárva; M036 és a seed-101
+  M162 `forras_hiba`; M091 `forras_hiba`; M214 bibliai (kitöltő-hiba marad); M039, M127, M196: a mai óvatos szabály marad; M060: saját hiba (a
+  könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik, ha egyértelmű; kódváltozás nincs, l. N-F102f).
+- **A kapu**: a „próba” jelölés marad, a szó-lapon az új nyers szám CI-vel.
+
+**Ítélet utáni számok, jóváhagyva** (tájékoztató; a nyers szám a kapu, nem változik) *(proveniencia: scope=seed-102 véletlen 200 | forras=naplok/BDB_SZELETELO_M2_seed102_iteletek.md (manual ítélet) + m2_minta_osszevet.py [--szakasztabla] | ts=2026-11-09)*:
+
+| | nyers | ítélet utáni (M018 kizárva, n = 199) | megmaradó saját hiba |
+|---|---:|---:|---:|
+| seed-102, szeletelő | 183 / 200 (91,5%; CI 86,7–95,0%) | **185 / 199 (93,0%)** | 14 |
+| seed-102, szakasztábla | 184 / 200 (92,0%; CI 87,3–95,4%) | **187 / 199 (94,0%)** | 12 (11 + M058 átvett `szakasz`) |
+
+Javítások a nyers számhoz képest: M052 kitöltő-hiba, M036 `forras_hiba`, M143 kulcs-hiba (mindkét kulcsnál +1-1); az M018 kizárva (a szeletelőnél
+helyes volt, a táblánál hibás). Szűrés: M060 most szeletelő-hiba (szűrés); M039, M127, M196 nem hiba (a szabály szándékosan óvatos).
+
+**Seed-101 újraszámolva** (a M162 a mai, 1c. szabály szerint `forras_hiba`): a #99 ítéletének állapotán (a F99.25-ös kulcs, 184 nyers) a szeletelő-hibák
+13 → **12**, az ítélet utáni szám 187 → **188 / 200 (94,0%)**. A mai tábla állapotán (F102.4, DT-F102a összevetési szabály; nyers 187 / 200) a
+megmaradó eltérések: M028, M043, M140, M146, M236, M243, M031, M203, M238 szeletelő-hiba (9), M102, M117, M162 (az 1c. szerint mind `forras_hiba`;
+az orkesztrátor a M162-t nevezte meg), M029 (a DT-F102a szerint okafogyott: a kulcs `II` szakasza helyes) → ítélet után **191 / 200 (95,5%)**, ha az
+1c. mindhárom `forras_hiba`-ját alkalmazzuk; csak a M162-vel 189 / 200. *(proveniencia: scope=seed-101 | forras=m2_minta_osszevet.py --mai-tabla + naplok/BDB_SZELETELO_M2_seed101_iteletek.md | ts=2026-11-09)*
+
+**7. lépés**: `eszkozok/olvaso_szerver/blokkok.py` `BDB_MERT_PONTOSSAG` → „2026-11-09: 91,5% (95%-os konfidencia-intervallum: 86,7–95,0%)” (a seed-102
+nyers száma, a szeletelő); teszt: `teszt_olvaso_szerver.py` `test_bdb_proba_es_mert_pontossag` (91,5%, 86,7–95,0%; a régi 92,0% és az ítélet utáni
+93,0% nem áll a lapon). A „próba” jelölés marad.

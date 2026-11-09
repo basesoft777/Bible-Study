@@ -1,4 +1,6 @@
-# F102 — a seed-102 újramérés eltéréseinek soronkénti ítélete (⛔ 3.6, jóváhagyásra)
+# F102 — a seed-102 újramérés eltéréseinek soronkénti ítélete (⛔ 3.6)
+
+**Jóváhagyva** (orkesztrátori döntés, local_c8cc3610, a felhasználó felhatalmazásával, 2026-11-09): az ítéletek, a kérdéses tételekre: **M143** kulcs-hiba (alaktani megjegyzés, nem alpont), nem számít a szeletelő (és a tábla) ellen; **M018** a mérésből kizárva (jelölve); **M036** és a seed-101 **M162** mindkettő `forras_hiba` a mai (1c.) szabály szerint; **M091** `forras_hiba`; **M214** bibliai hely (a kitöltés „bizonytalan”-ja tehát kitöltő-hiba marad); **M039, M127, M196** a mai óvatos szabály marad (nem szeletelő-hiba); **M060** a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik, ha egyértelmű — itt a „compare Gen 19:20” után 1Móz 13:10; a szeletelő a könyvet örökli, de a sort szűri (a TAHOT-kapu a H6920-at keresi, a TSV H6920-sora viszont a Cóar (Zoar) szócikke: N-F102f), tehát saját hiba (csak ítélet, kódváltozás nincs). DT-F102d: (ii), a szeletelő marad. A kapu: a „próba” marad, a szó-lapon az új nyers szám CI-vel.
 
 *Kézi ítélet a forrásszöveg alapján (`konkordancia/BDB_teljes_unabridged.tsv`, a Strong sora, a szeletelő „lapított” alakjában; a `poz` a
 hivatkozás helye), a seed-101 mintájára (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`). Kategóriák: **szeletelő-hiba** (a 2.29 kulcsa hibás),
@@ -23,14 +25,15 @@ Pi'el/- ↔ Pi'el/2), egyik sem az írásmódból jön. Az összevetőnek itt ni
 | kitöltő-hiba | 1 (M052) | 1 (M052) |
 | `forras_hiba` | 1 (M036) | 1 (M036) |
 | kulcs-ellentmondás | 0 | 0 |
-| **ítélet utáni** (csak tájékoztató) | **185** (92,5%; 87,9–95,7%) | **186** (93,0%; 88,5–96,1%) |
+| ítélet utáni, a jóváhagyás előtti javaslat | 185 / 200 | 186 / 200 |
+| **ítélet utáni, jóváhagyott** (csak tájékoztató; M018 kizárva, n = 199; M143 kulcs-hiba) | **185 / 199** (93,0%) | **187 / 199** (94,0%) |
 | könyv/vers, véletlen 200 | 199 (99,5%; 97,2–100%); az 1 eltérés `forras_hiba` (M091) → ítélet után 200 | ugyanaz |
 
 **A kapu (DT-F102c (a), nyers szám):** könyv/vers 99,5% ≥ 99% teljesül, **jelentéspont 91,5% < 97% nem teljesül** → a „próba” jelölés marad; a
 szó-lapon (`blokkok.py` `BDB_MERT_PONTOSSAG`) az új nyers szám és CI áll; a további javítás külön feladat, a #102-ben nincs több mérési kör.
-**A forrás (DT-F102d (C)):** a nyers jelentéspont szakasztábla 184 > szeletelő 183 → **a szakasztábla nyer** (egy találattal; ítélet után is
-+1, 186 ↔ 185). A (C) szerint a 2.29 átállása a 2.30-ra **csak a `bont.py` hibaosztályainak (N-F102e) javítása után**; a különbség (1/200) a
-mérési szóráson belül van (a két CI szinte azonos).
+**A forrás (DT-F102d):** a nyers jelentéspont szakasztábla 184, szeletelő 183; a különbség (1/200) a mérési szóráson belül van (a két CI szinte
+azonos). A jóváhagyott döntés: **(ii) — a szeletelő marad**; az átállás a 2.30-ra az N-F102e javítása után, újraméréssel (a (C) a szóráson túli
+különbségre értendő).
 
 ## 2. Jelentéspont — soronkénti ítélet
 
@@ -44,7 +47,7 @@ Jelölés: SZ = a szeletelő kulcsa, T = a szakasztábla kulcsa, K = a kitölté
 | M009 | H5674 | `Hithpa'el/2/a` | `Hiph'il/2/a` | `Hiph`il/2/a` | „— Hithpa`el see [עָבַר] below Hiph`il Perfect … 2. a. … Neh 8:15. b. let pass through” | **szeletelő-hiba** | — | a „Hithpa`el see … below” kereszthivatkozás hamis törzsfej, a rögtön utána álló Hiph`il elvész |
 | M011 | H3254 | `Niph'al/2` | `Hiph'il/-` | `Hiph`il` | „Hiph`il172Perfect הֹסִיף 2Kin 24:7” | **szeletelő-hiba** | — | a gyakoriságszámhoz tapadt „Hiph`il172” törzsfejet a szeletelő nem ismeri fel; a hely a Hiph`il alaktani feje |
 | M016 | H2161 | `-/2/b` | `Qal/2/b` | `Qal/2/b` | „b. of evil purpose … absolute Prov 30:32 … **the text of Prov 30:32 is questioned” | **szeletelő-hiba** | — | a szócikk igei, a Qal fej (poz 195) elveszett; a lábjegyzet a Qal 2.b-hez tartozik |
-| M018 | H2534 | `-/2/c` | `-/2/-` | `-/2/c` | „Vbs. used with חֵמָה … 2. c.: הֵשִׁיב turn away wrath … arises עלה 2Chr 36:16” | — | **szakasztábla-hiba** | a függelék „2. c.:” címkéje alatt; a tábla csak a 2-ig jut (előtagként helyes) |
+| M018 | H2534 | `-/2/c` | `-/2/-` | `-/2/c` | „Vbs. used with חֵמָה … 2. c.: הֵשִׁיב turn away wrath … arises עלה 2Chr 36:16” | **kizárva** | **kizárva** | a függelék „2. c.:” címkéje alatt; a jóváhagyás szerint a mérésből kizárva (n = 199) |
 | M027 | H7323 | `Hiph'il/1` | `Qal/1` | `Qal/1` | „(… compare Hiph`il below); … אֵת person accompare Jer 12:5” | **szeletelő-hiba** | — | a „compare Hiph`il below” kereszthivatkozás hamis törzsfej |
 | M034 | H2490 | `III Hiph'il/-/b` | `III Hiph'il/2` | `III Hiph`il/2` | „Hiph`il 1. a. … b. … 2 begin, Perfect הֵחֵל … with Infinitive (ל) begin to … 2Chr 3:1-2, 29:17” | **szeletelő-hiba** | — | a „2 begin,” jelentésfej elvész, a hely az 1.b-be csúszik |
 | M036 | H3318 | `fej` | `-/1/h` | `Qal/1/h` | „h. … with idea of unfolding, growth Job 8:16; 14:2; 31:40” | **`forras_hiba`** | **`forras_hiba`** | a H3318 „Qal” neve mindkét nyers forrásból hiányzik (a seed-101 M162 hibaosztálya; 2.31 kézi sor); a jelentés (1.h) a táblában helyes |
@@ -54,7 +57,7 @@ Jelölés: SZ = a szeletelő kulcsa, T = a szakasztábla kulcsa, K = a kitölté
 | M056 | H3452 | `-/-/b` | `-/-/a` | `-/b` | „b. without article, a waste or wilderness … Psa 68:8; 78:40; 106:14” | — | **szakasztábla-hiba** | a hely a b.-ben áll; a tábla a b. fejet nem bontja |
 | M194 | H3452 | `-/-/b` | `-/-/a` | `-/b` | „b. without article … with reference to returning exiles Isa 43:19-20” | — | **szakasztábla-hiba** | mint M056 |
 | M058 | H3651 | `I -/3/f` | `I fej` | `tagolatlan` | „IV. כֵּן see II. כנן. p. 467, below adverb thus … Dan 2:24 …, 2:25; 4:11” | **szeletelő-hiba** | **szeletelő-hiba** (a 2.29-ből átvett `szakasz` I) | a szócikk végi jelöletlen arámi כֵּן címszó tagolatlan; a szeletelő az I. 3.f-be teszi, a `--szakasztabla` útvonala (`fej`) helyes, de a `szakasz` I a 2.29-é |
-| M143 | H1980 | `Qal/-/a` | `Qal/-/a` | `Qal` | „Imperative rarely a. הֲלוֺךְ Prov 13:20 (Kt.; Qr הֹלֵךְ” | **szeletelő-hiba** | **szakasztábla-hiba** | az „a.” az alaktani felsorolás (Imperative-alakok) betűje, nem jelentés-alpont — *kérdéses* (l. 4.) |
+| M143 | H1980 | `Qal/-/a` | `Qal/-/a` | `Qal` | „Imperative rarely a. הֲלוֺךְ Prov 13:20 (Kt.; Qr הֹלֵךְ” | **kulcs-hiba** (jóváhagyva; nem számít) | **kulcs-hiba** (nem számít) | az „a.” az alaktani felsorolás (Imperative-alakok) betűje, nem jelentés-alpont |
 | M198 | H3117 | `-/2/e` | `-/3/e` | `-/2/e` | „(see Zech 14:7 below 3 below) d. day as defined by evening … e. day of month … Exod 12:10” | — | **szakasztábla-hiba** | a „below 3 below” visszautalás hamis „3” fej (a H2403 „see 1 above” osztálya) |
 | M201 | H3117 | `-/2/e` | `-/3/e` | `-/2/e` | ugyanott: „… Exod 12:10; 2Kin 25:1, 3; Ezek 1:1-2” | — | **szakasztábla-hiba** | mint M198 |
 | M205 | H5595 | `Qal/-` | `Qal/2` | `Qal/2` | „2 transitive: Imperfect … suffix לִסְמּוֺתָהּ Psa 40:15” | **szeletelő-hiba** | — | a „2 transitive:” jelentésfej elvész |
@@ -82,10 +85,10 @@ hamis fej (M198, M201), kimaradt betűfej (M056, M194), durvább szint (M018, M0
 | M248 H4266 (véletlen) | „site unknown, see Di^Gn; הַמַּחֲנָ֑יִם כִּמְחֹלַת Cant 7:1 is put here by Ew Hi Öttli” | **szeletelő-hiba** (szűrés): bibliai idézet (Én 7:1); a `sigla_kozel` szűrte, mert a TAHOT nem igazolta |
 | M156 H2022 (szűrt) | „but Ezek 18:6, 15 read perhaps הַדָּם for הרים compare RS^K 310 & 33:25” | **szeletelő-hiba** (szűrés): a 33:25 (Ez 33:25) bibliai hely, nem a sigla része |
 | M188 H6994 (szűrt) | „(ה)ק ׳הר Isa 11:9 6t. Isa^2; Isa^3; Jer 31:23” | **szeletelő-hiba** (szűrés): az „Isa^2; Isa^3;” könyvrész-jel (Deutero-/Trito-Ézsaiás), nem kommentár; a Jer 31:23 bibliai |
-| M039 H1121 (bizonytalan) | „1Chr 9:18; … 12:27; Nehemiah 10:40; הַלֵּוִי בְּנֵי 15:15; 24:30” | **szeletelő-hiba** — *kérdéses*: a közbeékelt Nehemiásnak nincs 15. fejezete; a helyes 1Krón 15:15 (a szeletelő `orokles_hibas`-t ad, a szabály szerint bizonytalan) |
-| M127 H5203 (bizonytalan) | „1Sam 30:16 …; … Hosea 12:15 …; leave in charge of … sheep 17:20, 28; baggage 17:22” | **szeletelő-hiba** — *kérdéses*: mint M039 (1Sám 17:20) |
-| M196 H1736 (bizonytalan) | „noun masculine^Gen 30:14 … 30:14; Cant 7:14; construct דּוּדָאֵי 30:14 3t.” | **szeletelő-hiba** — *kérdéses*: mint M039 (1Móz 30:14) |
-| M060 H6920 (bizonytalan) | „— Σηλωρ, ᵐ5^L Σιλωρ, but 13:10; Jer 48:34 Ζογορ(α)” | **kulcs-ellentmondás** — *kérdéses*: a forrás könyvnév nélkül írja a 13:10-et (a LXX-alak helye, valószínűleg 1Móz 13:10); a kulcs könyv híján szűrt, a kitöltés bibliai — a szabály nem dönti el |
+| M039 H1121 (bizonytalan) | „1Chr 9:18; … 12:27; Nehemiah 10:40; הַלֵּוִי בְּנֵי 15:15; 24:30” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): a közbeékelt Nehemiásnak nincs 15. fejezete; a helyes 1Krón 15:15 (a szeletelő `orokles_hibas`-t ad, a szabály szerint bizonytalan) |
+| M127 H5203 (bizonytalan) | „1Sam 30:16 …; … Hosea 12:15 …; leave in charge of … sheep 17:20, 28; baggage 17:22” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): mint M039 (1Sám 17:20) |
+| M196 H1736 (bizonytalan) | „noun masculine^Gen 30:14 … 30:14; Cant 7:14; construct דּוּדָאֵי 30:14 3t.” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): mint M039 (1Móz 30:14) |
+| M060 H6920 (bizonytalan) | „— Σηλωρ, ᵐ5^L Σιλωρ, but 13:10; Jer 48:34 Ζογορ(α)” | **szeletelő-hiba** (jóváhagyva): a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik („compare Gen 19:20” → 1Móz 13:10); a szeletelő a könyvet örökli, de a TAHOT-kapu szűri (a TSV H6920-sora a Cóar szócikke, a TAHOT a H6920-at keresi: N-F102f) |
 
 Szűrés, ítélet után: véletlen 197 → 199 kitöltő-hiba nélkül (M214), a szeletelő 2 hibája (M015, M248) marad; szűrt 23/25 (M156, M188 szeletelő-hiba);
 bizonytalan 21/25 (M039, M127, M196 szeletelő-hiba — a közbeékelt, nem létező fejezetű könyv átugrása, az F102 (b) szabályának kiterjesztése
