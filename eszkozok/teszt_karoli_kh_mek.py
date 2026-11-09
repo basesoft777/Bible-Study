@@ -655,6 +655,30 @@ class RepoTablak(unittest.TestCase):
         for r in SZ.mek_sorok():
             self.assertEqual(SZ.hu_megjelenites(r), r['Kapcsolódó igehely magyar megjelenítése'])
 
+    def test_szuroproba_reprodukalhato_es_itelet_nelkuli(self):
+        """ELLENOR_F181 E5: a szúrópróba a rögzített maggal ismételhető; az ítélet- és indok-oszlop üres (az ítéletet
+        Opus hozza, DT-F181j); a mintában az E2-szűrt és a megerősített HunKar-sor is szerepel."""
+        import argparse
+        import io
+        import tempfile
+        import contextlib
+        with tempfile.TemporaryDirectory() as d:
+            ki = []
+            for i in (1, 2):
+                a = argparse.Namespace(be=os.path.join(GYOKER, K.JAVITOTT), ki=None, md=os.path.join(d, 'm%d.md' % i),
+                                       kontroll=40, hunkar_gyanus=30, mag=181, hossz=150, ts='2026-11-09',
+                                       tabla_allapot='teszt')
+                with contextlib.redirect_stdout(io.StringIO()):
+                    K.szuroproba_main(a)
+                ki.append(open(a.md, encoding='utf-8').read())
+        self.assertEqual(ki[0], ki[1])
+        sorok = [s for s in ki[0].split(chr(10)) if s.startswith('| ') and not s.startswith('| #') and s[2].isdigit()]
+        self.assertEqual(len(sorok), 40 + 30 + 6 + 10 + 21 + 9 + 20)
+        for s in sorok:
+            self.assertTrue(s.endswith(' |  |  |'), s)  # üres ítélet és indok
+        self.assertEqual(sum('E2-szűrt' in s for s in sorok), 9)
+        self.assertEqual(sum('megerősített HunKar-sor' in s for s in sorok), 20)
+
     def test_alias_tabla(self):
         al = K.mek_aliasok()
         self.assertEqual(len(set(al.values())), 66)

@@ -1154,38 +1154,86 @@ def retegzett_minta(sorok, kulcs, n, mag):
     return minta, {k: (len(v), alap[k]) for k, v in csop.items() if v}
 
 
+def _md_cella(s):
+    return (s or '').replace('|', '/').replace('\n', ' ').strip()
+
+
 def szuroproba_main(a):
+    """Rétegzett szúrópróba-minta a javított tábla állapotából (J3; F181 javítókör 1: az E1/E2/E3 szabályok után). A rétegek:
+    (1) kontroll: a beemelt MEK-sorok könyvenként arányos mintája; (2) a HunKar-oldali gyanús-jelölésű forrásversen
+    beemelt MEK-sorok könyvenként arányos mintája (DT-F181f); (3) maradék: MEK-oldali gyanús ismétlődő; (4) maradék:
+    elírás-gyanús; (5) maradék: HunKar-oldali jelölt sor (mind); (6) az E2-hibaminta szűrt töredékei (mind); (7) a HunKar-sorok,
+    amelyeket az E1/E2/E3 szabály megerősített (mind). Csak mintát vesz, az ítéletet nem adja (`--md`: üres ítélet-oszlop)."""
     ts = a.ts or os.environ.get('PARDES_DATUM', '2026-11-09')
     jav = [m[:6] for m in tsv_sorok(a.be) if len(m) >= 6]
-    bontas, _, _ = _bontas_sorokra(jav)
+    bontas, gy_hk, _ = _bontas_sorokra(jav)
     szov = karoli_szoveg()
     kon = lambda fv: fv.split('.')[0]  # noqa: E731
     sorok = []
+    beemelt = [m for m in jav if m[2] == 'megerositett' and m[3] == 'MEK' and SZABALY_JEL in m[4]]
+    hk_gy = [m for m in beemelt if m[0] in gy_hk]
     gy = [r for r in bontas if r['dontes'] == D_GYANUS]
+    el = [r for r in bontas if r['dontes'] == D_ELIRAS]
     hkm = [r for r in bontas if r['dontes'] == D_HK_MARAD]
-    kontroll = [m for m in jav if m[2] == 'megerositett' and m[3] == 'MEK' and SZABALY_JEL in m[4]]
-    m1, e1 = retegzett_minta(gy, lambda r: kon(r['forras_vers']), a.maradek, a.mag)
-    m3, e3 = retegzett_minta(kontroll, lambda r: kon(r[0]), a.kontroll, a.mag)
+    e2 = [r for r in bontas if r['dontes'] == D_E2]
+    hk_vissza = [m for m in jav if m[2] == 'megerositett' and m[3] in ('HunKar', 'HunKar+MEK') and SZABALY_JEL in m[4]]
+    m1, e1 = retegzett_minta(beemelt, lambda r: kon(r[0]), a.kontroll, a.mag)
+    m2, e2_ = retegzett_minta(hk_gy, lambda r: kon(r[0]), a.hunkar_gyanus, a.mag)
+    al = lambda m: (m[4].split('mek_alak=')[1].split(';')[0] if 'mek_alak=' in m[4] else '')  # noqa: E731
     for r in m1:
-        sorok.append(('maradék: gyanús ismétlődő', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+        sorok.append(('kontroll: beemelt MEK-sor', r[0], r[1], al(r), 'MEK'))
+    for r in m2:
+        sorok.append(('HunKar-gyanús forrásversen beemelt MEK-sor', r[0], r[1], al(r), 'MEK'))
+    for r in gy:
+        sorok.append(('maradék: MEK-oldali gyanús ismétlődő (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in el:
+        sorok.append(('maradék: elírás-gyanús (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
     for r in hkm:
         sorok.append(('maradék: HunKar-sor jelölt marad (mind)', r['forras_vers'], r['cel'], '', r['oldal']))
-    for r in m3:
-        sorok.append(('kontroll: beemelt MEK-sor', r[0], r[1], (r[4].split('mek_alak=')[1].split(';')[0]
-                                                                if 'mek_alak=' in r[4] else ''), 'MEK'))
-    ki = ['ts=%s | mag=%d | maradék-gyanús: %d sor -> %d minta; HunKar-marad: %d (mind); kontroll: %d beemelt -> %d minta' % (
-        ts, a.mag, len(gy), len(m1), len(hkm), len(kontroll), len(m3))]
-    ki.append('allokáció (gyanús, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e1.items()))
-    ki.append('allokáció (kontroll, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e3.items()))
-    for i, (ret, fv, cel, al, oldal) in enumerate(sorok, 1):
+    for r in e2:
+        sorok.append(('E2-szűrt MEK-töredék (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in hk_vissza:
+        sorok.append(('E1/E2/E3: megerősített HunKar-sor (mind)', r[0], r[1], '', 'HunKar'))
+    ki = ['ts=%s | mag=%d | kontroll: %d beemelt MEK-sor -> %d minta; HunKar-gyanús beemelt: %d -> %d minta; gyanús: %d; '
+          'elírás-gyanús: %d; HunKar-marad: %d; E2-szűrt: %d; megerősített HunKar-sor (E1/E2/E3): %d; összesen %d tétel' % (
+              ts, a.mag, len(beemelt), len(m1), len(hk_gy), len(m2), len(gy), len(el), len(hkm), len(e2),
+              len(hk_vissza), len(sorok))]
+    ki.append('allokáció (kontroll, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e1.items()))
+    ki.append('allokáció (HunKar-gyanús, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e2_.items()))
+    for i, (ret, fv, cel, alak, oldal) in enumerate(sorok, 1):
         c0 = cel.split('-')[0]
-        ki.append('#%d [%s] %s -> %s %s' % (i, ret, fv, cel, '[%s]' % al if al else ''))
+        ki.append('#%d [%s] %s -> %s %s' % (i, ret, fv, cel, '[%s]' % alak if alak else ''))
         ki.append('   F: ' + szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz])
         ki.append('   C: ' + szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])
     szoveg = '\n'.join(ki) + '\n'
     if a.ki:
         with open(a.ki, 'w', encoding='utf-8', newline='\n') as f:
             f.write(szoveg)
+    if a.md:
+        hu = {v: k for k, v in hu_step().items()}
+
+        def igehely(k):
+            r = step_ref(k)
+            return '%s %d:%d' % (hu.get(r[0], r[0]), r[1], r[2]) if r else k
+        md = ['# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5, DT-F181j)', '',
+              '*A tételek előállítása: `python eszkozok/karoli_kh_mek.py szuroproba --be konkordancia/Karoli_KH_javitott.tsv '
+              '--md naplok/F181_szuroproba.md --mag %d --kontroll %d --hunkar-gyanus %d --hossz %d --ts %s` (a tábla '
+              'állapota: %s). Az ítélet és az indok oszlop üres: az értelmező ítéletet Opus hozza külön lépésben '
+              '(DT-F181j).*' % (a.mag, a.kontroll, a.hunkar_gyanus, a.hossz, ts, a.tabla_allapot or 'lásd a commitot'), '',
+              '*Rétegzés (könyvenként arányos, legnagyobb maradék módszere, rögzített mag): %s*' % ki[0], '',
+              '*A Károli-szöveg a `Karoli_1908.tsv`-ből (`python eszkozok/lekerdez.py karoli "<hely>"` ugyanezt adja), '
+              'legfeljebb %d karakter; „F”: a forrásvers, „C”: a hivatkozott vers.*' % a.hossz, '',
+              '| # | réteg | forrásvers | cél | MEK-alak | F (forrásvers) | C (cél) | ítélet | indok |',
+              '|---|---|---|---|---|---|---|---|---|']
+        for i, (ret, fv, cel, alak, oldal) in enumerate(sorok, 1):
+            c0 = cel.split('-')[0]
+            celnev = igehely(c0) + (' – ' + igehely(cel.split('-')[-1]) if '-' in cel else '')
+            md.append('| %d | %s | %s | %s | %s | %s | %s |  |  |' % (
+                i, _md_cella(ret), igehely(fv), celnev, _md_cella(alak),
+                _md_cella(szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz]),
+                _md_cella(szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])))
+        with open(a.md, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(md) + '\n')
     print(szoveg)
     return 0
 
@@ -1219,8 +1267,11 @@ def main():
     z = sp.add_parser('szuroproba', help='rétegzett szúrópróba-minta a maradékból és a beemeltekből (F181, J3)')
     z.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
     z.add_argument('--ki')
-    z.add_argument('--maradek', type=int, default=30)
-    z.add_argument('--kontroll', type=int, default=40)
+    z.add_argument('--kontroll', type=int, default=40, help='a beemelt MEK-sorokból vett minta mérete')
+    z.add_argument('--hunkar-gyanus', dest='hunkar_gyanus', type=int, default=30,
+                   help='a HunKar-oldali gyanús-jelölésű forrásversen beemelt MEK-sorokból vett minta mérete')
+    z.add_argument('--md', help='a minta tételei markdown-táblában (üres ítélet- és indok-oszloppal)')
+    z.add_argument('--tabla-allapot', dest='tabla_allapot', help='a tábla commitja (a md fejlécébe)')
     z.add_argument('--mag', type=int, default=181)
     z.add_argument('--hossz', type=int, default=140)
     z.add_argument('--ts')
