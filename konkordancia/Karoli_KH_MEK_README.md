@@ -86,8 +86,8 @@ Versenként (a HunKar `Karoli_kereszthivatkozasok_gyanus.tsv`-vel): a 5 078 gyan
 261 teljesen egyezik, 44 eltér; a nem gyanús versek közül 11 396 egyezik, 1 438 eltér, 1 905-nek a MEK-ben nincs KH-ja, 32 csak a
 MEK-ben szerepel. **Hibás hivatkozás** (nem létező hivatkozott vers) 161 sorban van (142 különböző nem létező vers): 117 csak MEK-sor
 (114 nem létező hivatkozott vers, a MEK-elírások, pl. `2 Móz. 26,59` a 2Móz 6:20-nál, `1 Móz. 15,26` az 5Móz 7:15-nél), 22 egyező sor (mindkét forrás ugyanazt a hibás
-hivatkozást hordozza, pl. 1Krón 28:8 → 4Móz 28:68), 22 `kiesik` HunKar-sor. A 117 csak MEK-sor között 3 nem értelmezhető MEK-sor van (`1 Sám. 12,.`, `2 Kir. 12,.`, `2 Kir. 21,.`:
-a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`).
+hivatkozást hordozza, pl. 1Krón 28:8 → 4Móz 28:1–68, a tartomány vége, a 28:68 nem létező vers), 22 `kiesik` HunKar-sor. A 117 csak MEK-sor között 3 nem értelmezhető MEK-sor van (`1 Sám. 12,.`, `2 Kir. 12,.`, `2 Kir. 21,.`:
+a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`). Mindhárom a HunKar-tartomány második végpontjának helyén áll (2Sám 7:8: `1Sám 16:11–12`; 2Kir 21:5: `2Kir 23:11–12`; 1Krón 6:14: `2Kir 25:18–21`), de a MEK-alak fejezetszáma is eltér (12 / 12 / 21 a 16 / 23 / 25 helyett); ez megfigyelés, az adatot nem javítottuk.
 **TSK-jelölés a `kiesik` soron is** (ELLENOR_F177 1.): minden `kiesik` sor indoka `mek_ures_vers;tsk=igen|nem` (+ esetleg `hibas_hivatkozas`), ugyanazzal a szabállyal, mint a `jelolt` soroké. A 11 027 `kiesik` sorból `tsk=igen` 321, `tsk=nem` 10 706; a nem gyanús versekre eső 3 373 sorból `tsk=igen` 318, `tsk=nem` 3 055. A szint nem változik, a jelölés csak támasz.
 **Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
 (N-F177b) nem része a menetnek.

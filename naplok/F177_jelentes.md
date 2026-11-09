@@ -55,7 +55,7 @@ A `Karoli_1908.tsv` Jeremiás siralmait `Sir`-ként adja (alias a táblában). A
 117 csak-MEK sor (a szó szerinti MEK-alak a `mek_alak` oszlopban), köztük a brief példái: 2Móz 6:20 → 2Móz 26:59 (nem létező vers; helyesen valószínűleg 4Móz 26:59), 5Móz 7:15 → 1Móz 15:26
 (nem létező vers); az 5Móz 21:23 → Gal 2:13 létező vers (Gal 2:13), ezért nem `hibas_hivatkozas`, hanem `csak_mek` jelölt (`tsk=nem`) — a MEK-elírás itt egy létező vers, a helyes Gal 3:13 nincs a HunKar-táblában azon a versen.
 További példák: Ám 7:8 → Ám 8:28, Zsolt 37:37 → Zsolt 20:44, Zsolt 27:4 → Zsolt 23:42, 1Sám 31:11 → 2Sám 2:45. Nem értelmezhető (hiányzó versszám a hivatkozásban): 2Sám 7:8, 2Kir 21:5 és
-1Krón 6:14 egy-egy sora (`indok`: `hibas_hivatkozas=ertelmezhetetlen`). A teljes lista: `grep hibas_hivatkozas konkordancia/Karoli_KH_javitott.tsv`.
+1Krón 6:14 egy-egy sora (`indok`: `hibas_hivatkozas=ertelmezhetetlen`). Megfigyelés az adatból: mindhárom a HunKar-tartomány második végpontjának helyén áll (2Sám 7:8: HunKar `1Sám 16:11–12`, MEK `1 Sám. 16,11.` + `1 Sám. 12,.`; 2Kir 21:5: HunKar `2Kir 23:11–12`, MEK `2 Kir. 23,11.` + `2 Kir. 12,.`; 1Krón 6:14: HunKar `2Kir 25:18–21`, MEK `2 Kir. 25,18.` + `2 Kir. 21,.`), de a MEK-alak fejezetszáma is eltér (12 / 12 / 21 a 16 / 23 / 25 helyett). Ez megfigyelés: az adatot nem javítottam, a sor üres `kapcsolodo`-val marad. A teljes lista: `grep hibas_hivatkozas konkordancia/Karoli_KH_javitott.tsv`.
 Kétforrású hibás hivatkozások (mindkét forrás ugyanazt hordozza): pl. 1Krón 28:8 → 4Móz 28:1–68, Józs 8:34 → 5Móz 27:15–28 (a hivatkozott tartomány vége nem létező vers).
 
 ## 5. A MEK-kivonat naplója
