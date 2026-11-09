@@ -12,3 +12,4 @@
 - **Nyitott tétel:** N-F166a — az `adat/SEMA.md` 2.50 számütközése (F166 ↔ F162), `nyitott/uj/f166-zaras.md`.
 - **Egyeztetett eltérés:** a brief munkája a #631-gyel már lefutott; ez a menet zárás, a független ellenőrzés a #631 diffjén fut (`naplok/ELLENOR_F166.md`).
 - **Tanulság (DT-F166b):** a ⛔ tartalmi döntés helyőrzője után a megvalósítás csak a megerősítés után commitolható (a #631 a megvalósítást, a682ba9d 18:05:30, a megerősítés, 6c44e06e 18:07:21, előtt commitolta; elfogadva, utólag nem javítható).
+- **Ellenőrzés és javítókörök:** `naplok/ELLENOR_F166.md` ELTÉRÉS (4) → 1. kör (DT-F166b, SEMA 2.50 címe, lista és 46/45/41, proveniencia) → `ELLENOR_F166_2` ELTÉRÉS (2: E5 szándékos-törlés jelölés, N-F166a címe) → 2. kör → `ELLENOR_F166_3` TISZTA. Nyitott pont még: N-F166b (az E27Teszt Windows-meghajtóhibája, nem javítva).

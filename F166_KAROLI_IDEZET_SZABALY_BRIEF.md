@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: lezarva
 ag: claude/jolly-sutherland-85d152
 pr: 631
 ad: új, gátló `ellenoriz.py`-szabály: az `elofordulasok.tsv` `kapcsolodas` mezőjében és a kézi 1/a-prózában az idézőjeles, Károli-idézetként álló szöveg egyezik a Károli-vers szövegével (normalizálva), vagy „saját fordítás” jelölésű; a régi lapok 46 helye jelezve
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 166 — újraellenőrzés függ: naplok/ELLENOR_F166_3.md"
+kovetkezo: lezárva (PR #631, 2026-11-04; zárás és 2 javítókör: PR #660, claude/f166-zaras, 2026-11-09)
 olvas: [eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, adat/elofordulasok.tsv, konkordancia/, adat/SEMA.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/SEMA.md]
 fugg: []
