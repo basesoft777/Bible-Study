@@ -17,7 +17,7 @@
 
 | # | szabály (rövid név + azonosító) | előfordulások (fájl:szakasz/sor) | eltérnek-e a másolatok | javasolt kanonikus hely | D2 érinti a SEMA-t |
 |---|---|---|---|---|---|
-| 1 | Visszhang: a lánc levezetése a motívumadatból (DT648) | `MUNKAMENET.md` C-vh :75; `adat/SEMA.md` 2.53 „A lánc honnan jön” :2120–2131; `sablonok/6_…` „A 4.11 visszhang-blokk szabályai” 0. :532; `DONTESEK.md` :682 | **igen** — hiány: a C-vh rövidebb (nincs benne a szópár, a `tematikus:` és a görög elem kizárása, „az első Pesat-sor könyvében”, „Pesat-sor nélkül nincs lánc”); a SEMA és a `6_` egyezik | `6_` 4.11-szabályok 0. pont (lapszabály); a SEMA 2.53 a tábla szerepét mondja + hivatkozás; a C-vh csak lépés + hivatkozás | igen |
+| 1 | Visszhang: a lánc levezetése a motívumadatból (DT648) | `MUNKAMENET.md` C-vh :75; `adat/SEMA.md` 2.53 „A lánc honnan jön” :2120–2131; `sablonok/6_…` „A 4.11 visszhang-blokk szabályai” 0. :532; `DONTESEK.md` :682 | **igen** — hiány: a C-vh rövidebb (nincs benne a szópár, a `tematikus:` és a görög elem kizárása, „az első Pesat-sor könyvében”, „Pesat-sor nélkül nincs lánc”); a SEMA és a `6_` egyezik *[helyesbítés, F184.13 (ELLENOR_F184 1.): nem egyezett; a SEMA-ban négy elem többlet volt, l. „Javítókör 1/2”]* | `6_` 4.11-szabályok 0. pont (lapszabály); a SEMA 2.53 a tábla szerepét mondja + hivatkozás; a C-vh csak lépés + hivatkozás | igen |
 | 2 | Visszhang: kinyerés két kézzel, átnézés-bemenet (DT639, DT646, ELLENOR_F178 3–4.) | `MUNKAMENET.md` C-vh :75; `adat/SEMA.md` 2.53 „Két kéz” :2133–2148; `sablonok/9_…` :5; `sablonok/6_…` :519 (említés) | nem (a C-vh tömörített, egyező) | SEMA 2.53 „Két kéz” (adatírás szabálya) | nem |
 | 3 | ⛔ Visszhang: mikor kiemelt a következtetés (DT645 + utólagos pontosítás) | `sablonok/6_…` „Visszhang-blokk (4.11)” összefoglaló :527; `sablonok/6_…` 4.11-szabályok 2.–3. :534–535; `eszkozok/olvasoi_kapu.py` V5-komment :975–976; `DONTESEK.md` DT645 :679 | **igen** — tartalom: a :527 és a V5-komment szerint két héber lánc-szó egy szóval *feltétel nélkül* kiemelt (a DT645 (a) eredeti szövege); a :535 és a DT645 „Pontosítás (orkesztrátori átnézés)” szerint csak alapvonallal (Targum/Vulgata: nem kiemelt). A DT-sor tartalma utólag, új tétel nélkül módosult (a brief #178-as esete) | javaslat: `6_` :535 (a pontosított alak); a :527 → hivatkozás; a V5-komment a D3-ban a kódból | nem |
 | 4 | Visszhang-kapu V1–V7 (DT646, DT-F178d/e) | `eszkozok/olvasoi_kapu.py` docstring :37–40 (V1–V7); ugyanott kódkomment :970–977 (**V1–V6**); `sablonok/6_…` :529–540 (a szabályokba szórva); `MUNKAMENET.md` :75 („V1–V7”); `DONTESEK.md` DT646 :680 (V1–V7) | **igen** — a kód belső kommentje V1–V6 (V7 hiányzik); a dokumentumok egyeznek | a kód docstringje → D3 GENERÁLT blokk | nem |
@@ -144,6 +144,53 @@ Korlát: ha egy PR csak a célt változtatja meg (például átszámoz egy SEMA-
 A mai repón az E36 egyetlen találata a SEMA 2.34 kettőzése (N-F184b).
 
 Tesztek: `E36Teszt` (7) és `E37Teszt` (7) a `eszkozok/ellenorzes/tesztek/test_szabalyok.py`-ban.
+
+## Javítókör 1/2 (ELLENOR_F184, 5 ELTÉRÉS-tétel)
+
+*A besorolás és a döntések az orkesztrátoré (`local_c8cc3610`): az 1–4. tétel mechanikus, az 5. tartalmi, az orkesztrátor döntésével. A modell-ellenőrzés: a session tényleges modellje `claude-opus-5-5`, a brief `modell` mezője `opus` — egyezik.*
+
+### 1. A D2 cseréinek tartalomvesztés-ellenőrzése (F184.13; ELLENOR_F184 1.)
+
+A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatkozásra. Hatókör: a `b4c4dae5..d4bd1f44` diff minden törölt sora (109), a brief fejlécének sorai nélkül (azokat az orkesztrátor állítja). Minden törlést tartalmazó hely (hunk) egy sor; a törölt tartalmat tagmondatonként vetettem össze a kanonikus hellyel (kiolvasás, nem gépi mérés).
+
+| # | csere | törölt tartalom | hol áll a kanonikus helyen | eredmény |
+|---|---|---|---|---|
+| 1 | `befogad.md:29` (30. sor) | a CI-javító kör teljes leírása (`gh run …`, log-idézet + proveniencia, javítható/nem javítható, két kör, üzenetalak, megállás) | `.claude/commands/kovetkezo.md` 10. lépés, „CI-javító kör” (minden elem; a „befogadott brief” is) + a két szűkítés a `befogad.md`-ben | OK |
+| 2 | `elteres.md:30` (26. sor) | nincs törölt tartalom (csak hivatkozás került a sor végére) | – | OK; a hivatkozás célja hibás volt, l. a 4. tételt |
+| 3 | `kiadas.md:22` (7. sor) | a `kiadasok.tsv` mezői és kitöltésük | `adat/SEMA.md` 2.46 (`kiadas` folytonos, `datum`, `valtozas` egy mondat, `proza_modell` a futó környezetből vagy `manual`, `forras`); a „nem briefből másolva”: `CLAUDE.md` „Modell-ellenőrzés” | OK |
+| 4–8 | `kovetkezo.md:56, 81, 83, 87, 92` (D4) | „zárójelentés”, `naplok/<feladat>_zaras.md` | a D4 döntése szerint a jelentés „Zárás” szakasza; `BRIEF_SABLON.md` „Jelentés” | OK (szándékolt csere, D4) |
+| 9 | `lap-javit.md:15` (27. sor) | a modell-eltérés jelzésének szövege | `CLAUDE.md` „Modell-ellenőrzés” (szó szerint) | OK |
+| 10 | `lap-javit.md:87` (7. sor) | `kiadas` = előző + 1, `valtozas` egy mondat, `proza_modell` a tényleges modellnév | `adat/SEMA.md` 2.46 | OK |
+| 11 | `lap-javit.md:88` (9. sor) | DT569; gépi forrásadat-javítás csak a szótári részen nem érvényteleníti; próza-/szerkezeti változásnál új átnézés | `adat/SEMA.md` 2.48 „Érvényesség” (DT-F184b, a DT569 általánosítása; „minden más lapváltozás érvényteleníti”) | OK |
+| 12 | `BRIEF_SABLON.md:73` (25. sor) | PR-fájl, a fő fájl végére nem (ütközés, `dontes_nezet.py`), `szamkiosztas` Action, helyőrző, végleges szám nem | `CLAUDE.md` „Git” (minden elem) | OK |
+| 13 | `MUNKAMENET.md` C1 (16. sor) | „a hét rés” felsorolása | `adat/SEMA.md` 2.12 (kilenc rés; a hét elavult, DT276) | OK (elavult másolat) |
+| 14 | `MUNKAMENET.md` C2 (16. sor) | „hét rés, l. lent” | `adat/SEMA.md` 2.12 | OK (elavult másolat) |
+| 15 | `MUNKAMENET.md` C-w (13. sor) | az U2/U3 szabály szövege | `sablonok/9_…` hét szabály 1. | OK |
+| 16 | `MUNKAMENET.md` C-vh, lánc (1. sor) | a lánc-szó, a kulcsszavak, a láncvers, a gerinc meghatározása | `sablonok/6_…` 4.11-szabályok 0. pont | OK |
+| 17 | `MUNKAMENET.md` C-vh, két kéz (2. sor) | soronkénti ítélet, lemma-megerősítés, `bdb`-kulcs, a sablonmondatot elutasító beolvasó, a kinyerő = ellenőr eset | `adat/SEMA.md` 2.53 „Két kéz” | OK |
+| 18 | `MUNKAMENET.md` C-vh, kapu (4. sor) | „V1–V7” | `adat/SEMA.md` 3.11 (GENERÁLT, V1–V7) | OK |
+| 19 | `MUNKAMENET.md` C-g (5. sor) | 24. és 25. szabály, a forma helye, a teljesség-mérés | `sablonok/6_…` Minőségi kapu L8 (a 3. tétel bővítésével) | OK |
+| 20 | `MUNKAMENET.md` C-h (14. sor) | 52/60/11; a `SORÁLLAPOT`-jel és parancsa; az elavulás feltétele; Feed 5; `ellenoriz.py` 39.: **„jelentés minden érintett motívumra”** | `sablonok/9_…` hét szabály 2. és a bevezető (52/60/11) — a „jelentés minden érintett motívumra” tagmondat **hiányzott** | **visszaállítva** a 9_ hét szabály 2. pontjába |
+| 21 | `MUNKAMENET.md:95` (17. sor) | a régi lektori kártyák lezárása („az újraírás okafogyottá tette”) | `MUNKAMENET.md` 5. menetszabály (bővebb: a határkártyák kivétele) | OK |
+| 22 | `MUNKAMENET.md:101` (9. sor) | a DT569 kivétele | `adat/SEMA.md` 2.48 „Érvényesség” | OK |
+| 23–27 | `sablonok/1_`, `2_`, `4_:437`, `5_`, gyorsreferencia: „Kiejtés.” (10. sor) | a kiejtés-szabály teljes bekezdése | `sablonok/6_…` :382, bájtazonos | OK |
+| 28 | `sablonok/4_:387` (6. sor) | C-h (a felhasználó indítja) → C-l (`naplok/LEKTOR_<ID>.tsv`) → C5 (Feed-kapuk, 1. kiadás, verzió-emelés); `/kiadas` = 2. kiadás bemenete (C-k) | `MUNKAMENET.md` C-h, C-l, C5, C-k („Feed 8” → 9: DT547) | OK |
+| 29 | `sablonok/6_:304`, kolofon (6., 7., 8. sor) | verzió-emelés, újragenerálás; `/kiadas` 5. lépése, a felhasználó indítja; DT486; `/lap-javit` útja, a négy `gond`, `lap_javitasok.tsv` | `MUNKAMENET.md` C5, C-k, C-j; `adat/SEMA.md` 2.46, 2.49 | OK |
+| 30 | `sablonok/6_:481–482`, L8 | nincs törölt tartalom (a két törölt sor szövege a négy új sorban megvan) | – | OK; a bővítés: 3. tétel |
+| 31 | `sablonok/6_:527` (3. sor) | cella kiejtéssel és `n/N`; „ugyanaz a szócsalád”; betoldás; alapvonal (≥ 80%, < 40%, Targum/Vulgata nem mérhető); kiemelés; csak valódi rokon nyelv, nyelvenként egy sor; kiejtés minden nem latin betűs szónál | `sablonok/6_…` 4.11-szabályok 1–6. (a kiemelés a DT-F184a szerinti pontosított alakban) | OK |
+| 32 | `sablonok/6_:529` (4. sor) | „V1–V7” | `adat/SEMA.md` 3.11 | OK |
+| 33 | `sablonok/9_:283` (5. sor) | 24., 25. szabály („arany szintű: kerek próza + Funkció”), olvasói kapu, teljesség-mérés | `sablonok/6_…` L8 | OK |
+| 34 | `adat/SEMA.md:9–11` (22. sor) | egyirányúság: kinyerés a `jeloltek.tsv`-n át, generálás, nincs visszaírás | `adat/SEMA.md` 3. szakasz 9. | OK |
+| 35 | `adat/SEMA.md` 2.53 „A lánc honnan jön” (1. sor) | a lánc levezetése, benne: **„A háttér-táblában csak a lánc-szavak és tövük állnak”**, **„(TAHOT)”**, **„HAMART-001: 6 kulcsszó”**, **„(a beépített sorok versei, a tartomány versenként)”** | `sablonok/6_…` 4.11-szabályok 0. pont — a négy elem **hiányzott** (a többi megvan; a „lánc-szó `bdb` sor nélkül” mondat a 8. pontban, a `lanc_szavak` a SEMA 2.53-ban maradt) | **visszaállítva**: a három lánc-elem a 0. pontba, a „lánc-szavak és tövük” a 6. pontba (BDB-háttér) |
+| 36 | `adat/SEMA.md` 2.48 (9. sor) | nincs törölt tartalom (a két sor bővült) | – | OK |
+| 37 | `adat/SEMA.md` 2.49 :1934 (9. sor) | „DT569” | `adat/SEMA.md` 2.48 („a DT569 általánosítása”) | OK |
+| 38 | `adat/SEMA.md` 2.50 → 2.55 (31. sor) | a teljes E34-szakasz | `adat/SEMA.md` 2.55, szó szerint (a cím kiegészült) | OK; a mutatók: 2. tétel |
+| 39 | `eszkozok/olvasoi_kapu.py` docstring (D3) | a 23 kapu leírása és súlyossága | `KAPUK` tábla (szó szerint; a helyőrzők helyén a végleges DT602/603/645/646) | OK |
+| 40 | `eszkozok/olvasoi_kapu.py` V1–V6 komment (4. sor) | V1–V6 leírása | `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT-F184a szerint) | OK |
+| 41 | `.github/workflows/ellenorzes.yml:73` | a lépés neve („E2-E30”) | ugyanott, „E2-E37” (a régi szöveg minden eleme megvan) | OK |
+| 42 | `NYITOTT_FELADATOK.md:852` | nincs törölt tartalom (az N-F166a sora lezárva, a régi szöveg „Előzmény”-ként megmaradt) | – | OK |
+
+**Összesítés:** 42 törlést tartalmazó hely; ebből **2 volt hiányos** (20., 35.); visszaállítva **5 elem** (a 9_ hét szabály 2. pontjába 1 tagmondat; a 6_ 4.11-szabályok 0. pontjába 3, a 6. pontjába 1). A többi 40 helyen a törölt tartalom szó szerint vagy egyenértékűen megvan a kanonikus helyen.
 
 ## Zárás
 
