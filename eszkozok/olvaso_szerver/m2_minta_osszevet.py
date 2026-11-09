@@ -11,6 +11,9 @@ Az összevetés szabálya (a felhasználó döntése, 2026-10-15; rögzítve a K
     jelentéspont elején (a kulcsban a `szakasz`), a szócikk római számos fő tagolása (rész) külön (a kulcsban és az új vak lapon a `resz`
     oszlop). Mindkettő pontosan egyezzen. A régi (seed-99/100) kitöltésekben nincs `resz` oszlop: ott a jelentéspont második római száma a
     rész („III I/3”), egy római szám a homonima-szám;
+  * F102 (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-09; a seed-102 kitöltése ELŐTT rögzítve): a fő mutató a
+    nagybetűs csoportszintet (egyetlen nagybetű, `A`–`H`: „Qal/A/3”, „Hiph`il/B/2”) és a görög betűs szintet („δ”, „(δ)”) a zárójeles
+    szinttel együtt elhagyja; az előtag-mutató változatlan. (A seed-101 korábbi számai e szabály előtt készültek.);
   * könyv és MT-vers: pontos egyezés (a vak lap Károli-könyvrövidítést ír); a Károli-oszlopot nem a vak lap bírálja, hanem a gépi
     összevetés (`karoli_ellenoriz.py`).
 Csak olvas. Használat (a repó gyökeréből):
@@ -35,6 +38,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROMAI = re.compile(r'^(?:I{1,3}|IV|V|VI)$')
 ZAROJEL = re.compile(r'^\([^)]*\)$')
+# F102: a fő mutatóban elhagyott további szintek — nagybetűs csoport és görög betű
+CSOPORT = re.compile(r'^[A-H]\.?$')
+GOROG = re.compile(r'^[α-ω]\.?$')
 
 
 def olvas(p):
@@ -135,7 +141,7 @@ def normal(seg):
 
 
 def fo(seg):
-    return normal([x for x in seg if not ZAROJEL.match(x)])
+    return normal([x for x in seg if not (ZAROJEL.match(x) or CSOPORT.match(x) or GOROG.match(x))])
 
 
 def elotag(kulcs, kit):

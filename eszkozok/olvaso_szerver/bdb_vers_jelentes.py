@@ -65,6 +65,10 @@ SZURENDO = {'nem_bibliai'}
 # NEM tartalmazza a szócikk Strong-számát; ha tartalmazza, bibliai hivatkozás marad, okkód `sigla_igazolt`. A TAHOT `Igehely` kulcsa a
 # Károli-vers (F85.6); Károli-vers híján az azonos számú vers.
 SIGLA_OK = {'sigla_tapadt', 'sigla_kozel', 'sigla_lista'}
+# F102, DT-F102e (B) (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-09): a tapadt és a listás sigla (a közvetlenül a
+# hely előtt álló szerző^mű) a kommentár helyét idézi, nem a szó példáját: mindig szűrt, a TAHOT-tól függetlenül; a közeli siglánál marad
+# a TAHOT (DT-F99k)
+SIGLA_MINDIG_SZURT = {'sigla_tapadt', 'sigla_lista'}
 # F99 M2 (felhasználó, 2026-10-15, seed-100 M006, M064, M079): a BDB forrásszövegének hibás igehelye. A tábla a forrás szövegét rögzíti
 # (könyv, vers, jelentéspont változatlan), az okkód `forras_hiba`; nem szűrt. Kulcs: (Strong, poz); érték: a forrással igazolt ok (kézi,
 # a felhasználó döntése; a vak ellenőr megjegyzése a TAHOT-tal egyezik).
@@ -298,7 +302,7 @@ def general(ts, strongok=None):
                 # DT-F99k: a TAHOT dönt (a Károli-versen, annak híján az azonos számú versen)
                 kulcs = kar or ('%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v']) if h['konyv'] else '')
                 n_st = int(re.match(r'^H0*(\d+)', strong).group(1))
-                if kulcs and n_st in tahot.get(kulcs, ()):
+                if h['okkod'] not in SIGLA_MINDIG_SZURT and kulcs and n_st in tahot.get(kulcs, ()):
                     ok = ','.join(['sigla_igazolt'] + ok.split(',')[1:])
                 else:
                     szurt = True

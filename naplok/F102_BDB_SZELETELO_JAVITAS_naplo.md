@@ -213,3 +213,33 @@ Az aranyminta mindhárom csoport után változatlan (a `bdb_szelet_m0.py --arany
 A #102 a DT190-et (a 2.30 útvonal-formátuma mint kanonikus kulcs) **nem dönti el**, hanem **feltételezi** a mai állapotát: a 2.29 formátuma nem
 változott, a `--szakasztabla` mérés a 2.30 útvonalát a 2.29 alakjára hozza (a csoport- és a zárójeles szint nélkül). Ha a DT-F102a (b) vagy a
 DT-F102d (B) választódik, az a DT190-et érinti (a 2.29 a 2.30 kulcsát venné át).
+
+## 13. A döntések alkalmazása (F102.4)
+
+Orkesztrátori döntés (local_c8cc3610, a felhasználó felhatalmazásával), 2026-11-09, mind a javaslat szerint: DT-F102a (a), DT-F102c (a), DT-F102d (C),
+DT-F102e (B), DT-F102f (A).
+
+- **DT-F102a (a)** — `m2_minta_osszevet.py` `fo()`: a fő mutató a zárójeles szint mellett az egyetlen nagybetűs csoportszegmenst (`A`–`H`) és a görög
+  betűs szegmenst is elhagyja; az előtag-mutató változatlan. A seed-102 kitöltése ELŐTT rögzítve. Hatás a seed-101-en (tájékoztató, a korábbi
+  számok e szabály előtt készültek): jelentéspont 185 → **187** (M008, M011 most egyezik). *(proveniencia: scope=seed-101 véletlen 200 | forras=m2_minta_osszevet.py --mai-tabla | ts=2026-11-09)*
+- **DT-F102c (a)** — a kapu: a seed-102 NYERS mért száma dönt, az ítélet előtt kiszámolva, a fenti összevetési szabállyal: könyv/vers ≥ 99% ÉS
+  jelentéspont ≥ 97% a 200 véletlen soron → a „próba” jelölés lekerül, a `blokkok.py` `BDB_MERT_PONTOSSAG` az új nyers szám és 95%-os CI; különben a
+  „próba” marad, a lapon az új nyers szám és CI, a további javítás külön feladat, a #102-ben nincs több mérési kör. A 3.6 ítélete csak osztályoz.
+- **DT-F102d (C)** — a seed-102-n mindkét kulcs mérve ugyanazzal a kitöltéssel (szeletelő és `--szakasztabla`); a magasabb jelentéspont-szám dönt,
+  döntetlennél marad a szeletelő; a 2.30-ra állás csak a `bont.py` hibaosztályainak (N-F102e) javítása után.
+- **DT-F102e (B)** — `bdb_vers_jelentes.py` `SIGLA_MINDIG_SZURT`: a `sigla_tapadt` és a `sigla_lista` mindig szűrt; a TAHOT-kapu csak a `sigla_kozel`-é.
+  Hatás a teljes táblán: **192 sor** `sigla_igazolt` → szűrt (`okkod`, `szurt`, `mt_vers`, `karoli_vers`, `vers_feloldas`), más mező nem.
+  *(proveniencia: scope=adat/bdb_vers_jelentes.tsv, teljes | forras=eseti diff (tabla_diff.py) az F102.3 táblájával szemben | ts=2026-11-09)*
+- **DT-F102f (A)** — nincs tartomány-kibontás; a DT382 döntése érvényes.
+
+**A seed-102 kulcsa:** a `--minta 102` újrafuttatása a megváltozott rétegkészletek (a „bizonytalan” réteg a `sigla_igazolt` sorokat is húzza) miatt
+**más mintát húzna** — ezért nem futott újra. A meglévő kulcs soraiba (ugyanazok az azonosítók, `strong` + `poz`) a mai 2.29 értékei kerültek
+(eseti szkript `kulcs_frissit.py`; a kulcs első sora ezt kimondja): **10 sor változott**, mind a „bizonytalan” rétegben (M031, M122, M157, M162,
+M185, M191, M197, M212, M213, M215: `sigla_igazolt` → `sigla_tapadt`, szűrt); a véletlen 200-ból egy sem. A vak munkalap bájtra változatlan.
+
+**A kitöltés utáni összevetés** (a repó gyökeréből):
+- szeletelő: `python eszkozok/olvaso_szerver/m2_minta_osszevet.py --kulcs naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv --kitoltott naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv naplok/BDB_SZELETELO_M2_seed102_kitoltott_B.tsv`
+- szakasztábla: ugyanez `--szakasztabla` kapcsolóval.
+
+Csoportzárás (F102.4): tábla `--ts 2026-11-09` (kilépési kód 0, mtime-őr, `--ellenoriz` bájtra azonos); aranyminta, `teszt_bdb_vers_jelentes`,
+`teszt_futtat --gyors`: l. a commit-üzenetet.

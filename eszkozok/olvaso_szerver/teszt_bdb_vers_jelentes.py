@@ -350,9 +350,13 @@ class Tabla(unittest.TestCase):
         self.assertEqual([x[i['mt_vers']] for x in sor(self.sorok, strong='H1004', poz='9208')], ['2Krón 10:20'])
 
     def test_sigla_tahot_szerint(self):
-        # DT-F99k: a sigla melletti hivatkozás bibliai marad, ha a TAHOT a versben hordozza a Strong-számot („De^Job 34:36”: אָבִי)
+        # F102, DT-F102e (B): a tapadt sigla („De^Job 34:36”) mindig szűrt, akkor is, ha a TAHOT a versben hordozza a szót (אָבִי);
+        # a DT-F99k TAHOT-kapuja csak a közeli siglára vonatkozik
         x = sor(self.sorok, strong='H0015', nyers='Job 34:36')[0]
-        self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_igazolt', '0', 'Jób 34:36'))
+        self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_tapadt', '1', ''))
+        # a közeli sigla a TAHOT igazolásával bibliai marad (H1242 „8:26”, Dán 8:26)
+        x = sor(self.sorok, strong='H1242', poz='2899')[0]
+        self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_igazolt', '0', 'Dán 8:26'))
         # … és szűrt, ha nem („ᵐ5^Lev 11:30”: a שְׂמָמִית nincs a 3Móz 11:30-ban; seed-100 M075)
         x = sor(self.sorok, strong='H8079', nyers='Lev 11:30')[0]
         self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_tapadt', '1', ''))
