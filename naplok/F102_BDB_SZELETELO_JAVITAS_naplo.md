@@ -180,7 +180,7 @@ Mindkét oszlop ugyanazzal a szkripttel: `python eszkozok/olvaso_szerver/m2_mint
 | M146, M243 | zárójeles jelölő | hibás | hibás (a 2.30 megoldja) |
 | M140 | OCR / fejléc-glossza | hibás | hibás (a 2.30 megoldja) |
 | M236 | laza „2. a.” | hibás | hibás (a 2.30 megoldja) |
-| M102, M117, M162 | `forras_hiba` (2.31 kézi sor) | hibás | hibás (forráshiba; egyik réteg sem oldja) |
+| M102, M117, M162 | `forras_hiba` (2.31 kézi sor) — **az M162-re érvénytelen**: a mai ítélet szerint szeletelő-hiba (l. 19., 22.; ELLENOR_F102_2 5.) | hibás | hibás (M102, M117: forráshiba; M162: szeletelő-hiba, N-F102h) |
 | M031 | törzsfejléc „Hiph`il A./B.” | hibás | hibás (a 2.30 `Hiph'il.B/2`; formátum: DT-F102a) |
 | M203 | fő tagolás (H3068, angol „II.”) | hibás | hibás (a 2.30 `resz` II; a 2.29 `resz`-e nem) |
 | M238 | jelöletlen alcímszó | hibás | hibás (a 2.30 helyes, de a kurzoros illesztés nem találja) |
@@ -192,7 +192,7 @@ Mindkét oszlop ugyanazzal a szkripttel: `python eszkozok/olvaso_szerver/m2_mint
 | M054, M065, M147, M149, M191, M198, M230 | a hét `sigla_igazolt` | bibliai (a kitöltés: kommentár-hely) | változatlan — DT-F102e |
 | M008, M011, M029 | kulcs-ellentmondás (formátum, homonima) | eltérés | eltérés — DT-F102a |
 
-A 13 jóváhagyott szeletelő-hibából 1 javult a szeletelőben (M130); 6-ot a 2.30 útvonala javítana (DT-F102d); 3 forráshiba; 3 marad (M031, M203,
+A 13 jóváhagyott szeletelő-hibából 1 javult a szeletelőben (M130); 6-ot a 2.30 útvonala javítana (DT-F102d); ~~3 forráshiba~~ a mai ítélet szerint 2 forráshiba (M102, M117; az M162 szeletelő-hiba, l. 19.); 3 marad (M031, M203,
 M238 — mindhárom a 2.30-ban helyes vagy formátumkérdés). Öröklés: 1/1; szűrés: a 2 igazolt hamis pozitív (4 + 3 sor) 2/2; M223 1/1. A szűrés
 „bizonytalan” rétegének egyezése 13 maradt: az M051 (17:9, `orokles_egyfejezetes` → 1Kir 17:9) most egyezik, az M092 most nem, mert a kitöltő
 „bizonytalan”-t írt — a jóváhagyott ítélet szerint viszont a 2Krón 31:1 a helyes.

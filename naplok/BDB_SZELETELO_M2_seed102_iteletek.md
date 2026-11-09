@@ -74,7 +74,8 @@ Szeletelő-hiba 16: M003, M009, M011, M016, M027, M034, M036, M042, M050, M058, 
 M042, M056, M143, M194, M198, M201, M221, M223, M226, M233, M242 (+ M058 a 2.29-ből átvett `szakasz`-szal). (A jóváhagyás szerint az M143
 kulcs-hiba, az M018 kizárva.)
 **Okcsoportok** — szeletelő: kereszthivatkozásból hamis törzsfej (M003, M009, M027), gyakoriságszámhoz tapadt törzsnév (M011, M223, M233), mondat
-belsejében álló vagy fej-glossza utáni jelentésfej (M034, M042, M205, M208, M249), elveszett törzsfej (M016), elcsúszott számozás (M050),
+belsejében álló vagy fej-glossza utáni jelentésfej (M034, M042, M205, M208, M249), elveszett törzsfej (M016), Qal-név nélküli első törzs, a
+számozás is a fejbe esik (M036; ELLENOR_F102 3.), elcsúszott számozás (M050),
 jelöletlen alcímszó (M058), alaktani betű (M143). Szakasztábla: elveszett törzsfej (M002, M221 Hiph`il; M223, M233 Hithpa`lel), visszautalásból
 hamis fej (M198, M201), kimaradt betűfej (M056, M194), durvább szint (M018, M042, M226), alcímszó (M242), alaktani betű (M143).
 
