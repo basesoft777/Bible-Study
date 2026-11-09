@@ -12,6 +12,7 @@ kovetkezo: Indítható a fugg szerint: az 1. lépéssel (a #76 nem függés, DT2
 olvas: [eszkozok/olvaso_szerver/, eszkozok/olvaso_pilot/bdb_szelet_m0.py, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, naplok/BDB_SZELETELO_M0.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, naplok/BDB_SZELETELO_M2_seed100_iteletek.md, naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv, naplok/BDB_SZELETELO_M2_seed101_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed101_kitoltott_B.tsv, naplok/F85_esetlista.tsv, konkordancia/_convert_bdb.py, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md]
 ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/m2_minta_osszevet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv, adat/bdb_aranyminta.tsv, adat/SEMA.md, adat/datasetek.tsv]
 fugg: [99, 107, 119]
+nem_fugg: [138]
 ---
 
 # F<nn>_BDB_SZELETELO_JAVITAS_BRIEF.md — A BDB-szeletelő javítása a seed-101 hibaosztályai szerint
