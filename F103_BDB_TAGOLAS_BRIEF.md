@@ -8,6 +8,7 @@ modell: opus
 munka: folyamat
 allapot: megallt
 ag: claude/f103-bdb-tagolas
+pr: 666
 ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT167 szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
 kovetkezo: Te: /elteres 103
 lezarva_osszegzes: A szeletelő a jelentést és az alpontot használati csoportokra bontja (DT167 (1) (a); magyarul csak egyező jelölő-sorozatnál, DT-F103b (a)); aranyminta 0 → 164/184, csoportszinten 0 hamis határ (a 20/18 eltérés szerkezeti okú); a 2.29 két új oszlopa (csoport, csoport_jel), a régi oszlopok bájtra azonosak, jelentéspont seed-102 183 → 183; SEMA 2.29; a terminológia-kötés az N-F103a-ban (egyeztetett eltérés). Zárás: naplok/BDB_TAGOLAS_zaras.md
