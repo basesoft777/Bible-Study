@@ -247,6 +247,16 @@ def general(ts, strongok=None):
                 h = dict(h, konyv=None)
                 ok = 'orokles_hibas'
                 kmod = 'feloldhatatlan'
+            elif ok == 'orokles_egyfejezetes' and h['konyv'] in osz:
+                # F102 (b): az egyfejezetes könyvet átugró öröklés (seed-101 M092) csak a TAHOT igazolásával áll (a DT-F99k mintájára):
+                # a Károli-vers (annak híján az azonos számú vers) hordozza a Strong-számot. Különben a sor marad `orokles_hibas`:
+                # az Abdiás utáni könyv nélküli hely a TSV-ben gyakran fejezetszámmal elrontott Abdiás-vers („Obadiah 6, … 49:18”, H6215)
+                _mt, _kar, _vm, _k = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
+                _kar = f85.get(_mt) or EZS3.get(_mt) or _kar or '%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v'])
+                if int(re.match(r'^H0*(\d+)', strong).group(1)) not in tahot.get(_kar, ()):
+                    h = dict(h, konyv=None)
+                    ok = 'orokles_hibas'
+                    kmod = 'feloldhatatlan'
             if (strong, h['poz']) in FORRAS_HIBA:
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
             if h.get('forras_javitas'):
