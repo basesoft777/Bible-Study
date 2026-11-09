@@ -243,3 +243,94 @@ M185, M191, M197, M212, M213, M215: `sigla_igazolt` → `sigla_tapadt`, szűrt);
 
 Csoportzárás (F102.4): tábla `--ts 2026-11-09` (kilépési kód 0, mtime-őr, `--ellenoriz` bájtra azonos); aranyminta, `teszt_bdb_vers_jelentes`,
 `teszt_futtat --gyors`: l. a commit-üzenetet.
+
+## 14. A seed-102 vak kitöltése és nyers összevetése (F102.5)
+
+**Kitöltés** (az orkesztrátor indította, 2026-11-09): két független, friss kontextusú Opus-kitöltő; `naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv`
+(M001–M125) és `_B.tsv` (M126–M250), változtatás nélkül mentve (az orkesztrátor `cmp`-vel igazolta). **Eltérés a brieftől és a döntéstől:** a kitöltők
+a munkalap felén és a `konkordancia/BDB_teljes_unabridged.tsv`-n kívül a `karoli_vers` oszlophoz a `konkordancia/Karoli_1908.tsv`-t és a
+`konkordancia/Konyv_normalizalo_tabla.tsv`-t is látták (a brief és a DT-F102c csak a BDB-t nevezte). A jelentéspontot és a szűrést ez nem érinti; a
+Károli-oszlopot az összevetés nem bírálja.
+
+**Nyers összevetés — szeletelő (2.29)** *(proveniencia: scope=seed-102 | forras=m2_minta_osszevet.py | ts=2026-11-09)*:
+
+```
+# M2 minta-összevetés: kulcs=naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed102_kitoltott_B.tsv
+veletlen	200
+konyv_vers_egyezik	199
+jelentespont_egyezik	183
+jelentespont_elotagkent_helyes	183
+VERS	M091	H2370	2:41	kulcs: Ezsd 2:41	kitoltott: Dán 2:41
+JP	M003	H2505	kulcs: I  Niph'al/3	kitoltott: I Pi`el/1	
+JP	M009	H5674	kulcs:   Hithpa'el/2/a	kitoltott: Hiph`il/2/a	
+JP	M011	H3254	kulcs:   Niph'al/2	kitoltott: Hiph`il	
+JP	M016	H2161	kulcs:   -/2/b	kitoltott: Qal/2/b	
+JP	M027	H7323	kulcs:   Hiph'il/1	kitoltott: Qal/1	
+JP	M034	H2490	kulcs: III  Hiph'il/-/b	kitoltott: III Hiph`il/2	
+JP	M036	H3318	kulcs:   fej	kitoltott: Qal/1/h	
+JP	M042	H5066	kulcs:   Qal/-	kitoltott: Qal/1	
+JP	M050	H2063	kulcs:   -/3/i	kitoltott: -/6/g	
+JP	M052	H9003	kulcs: I r:III -/5	kitoltott: -/5 r:III	
+JP	M058	H3651	kulcs: I  -/3/f	kitoltott: tagolatlan	
+JP	M143	H1980	kulcs:   Qal/-/a	kitoltott: Qal	
+JP	M205	H5595	kulcs:   Qal/-	kitoltott: Qal/2	
+JP	M208	H7617	kulcs:   Qal/-	kitoltott: Qal/2	
+JP	M223	H7812	kulcs:   Hiph'il/1/b	kitoltott: Hithpa`lel/1/b	
+JP	M233	H7812	kulcs:   Hiph'il/2/c	kitoltott: Hithpa`lel/2/c	
+JP	M249	H2076	kulcs:   Pi'el/-	kitoltott: Pi`el/2	
+szures_veletlen	200	egyezik 197
+SZ	M015	Gen 10:4	kulcs: bibliai 	kitoltott: alhivatkozas: Dillmann-kommentár (Di Gen 10:4)
+SZ	M214	Deut 4:25	kulcs: bibliai 	kitoltott: bizonytalan: Driver-hivatkozás (Dr^Intr 191) után áll, lehet Driver Deut-komment
+SZ	M248	Cant 7:1	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+szures_szurt	25	egyezik 23
+SZ	M156	33:25	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M188	Jer 31:23	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+szures_bizonytalan	25	egyezik 21
+SZ	M039	15:15	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M060	13:10	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M127	17:20	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M196	30:14	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+```
+
+**Nyers összevetés — szakasztábla (2.30 útvonal)** *(proveniencia: scope=seed-102 | forras=m2_minta_osszevet.py --szakasztabla | ts=2026-11-09)*:
+
+```
+# szakasztábla-útvonal: a nem szűrt kulcssorokból 1 nem rendelhető a 2.30-hoz (ott a 2.29 útvonala áll)
+# M2 minta-összevetés: kulcs=naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed102_kitoltott_B.tsv
+veletlen	200
+konyv_vers_egyezik	199
+jelentespont_egyezik	184
+jelentespont_elotagkent_helyes	185
+VERS	M091	H2370	2:41	kulcs: Ezsd 2:41	kitoltott: Dán 2:41
+JP	M002	H2388	kulcs:   Pi'el/6/c	kitoltott: Hiph`il/6/c	
+JP	M018	H2534	kulcs:   -/2/-	kitoltott: -/2/c	előtagként helyes
+JP	M036	H3318	kulcs:   -/1/h	kitoltott: Qal/1/h	
+JP	M042	H5066	kulcs:   Qal/-/-	kitoltott: Qal/1	
+JP	M052	H9003	kulcs: I r:III -/5/-	kitoltott: -/5 r:III	
+JP	M056	H3452	kulcs:   -/-/a	kitoltott: -/b	
+JP	M058	H3651	kulcs: I  fej	kitoltott: tagolatlan	
+JP	M143	H1980	kulcs:   Qal/-/a	kitoltott: Qal	
+JP	M194	H3452	kulcs:   -/-/a	kitoltott: -/b	
+JP	M198	H3117	kulcs:   -/3/e	kitoltott: -/2/e	
+JP	M201	H3117	kulcs:   -/3/e	kitoltott: -/2/e	
+JP	M221	H2388	kulcs:   Pi'el/6/a	kitoltott: Hiph`il/6/a	
+JP	M223	H7812	kulcs:   Hiph'il/1/b	kitoltott: Hithpa`lel/1/b	
+JP	M226	H5676	kulcs: I  -/-/-	kitoltott: I -/1/B	
+JP	M233	H7812	kulcs:   Hiph'il/2/c	kitoltott: Hithpa`lel/2/c	
+JP	M242	H5973	kulcs: h:מעם  -/5/a	kitoltott: -/a	
+szures_veletlen	200	egyezik 197
+SZ	M015	Gen 10:4	kulcs: bibliai 	kitoltott: alhivatkozas: Dillmann-kommentár (Di Gen 10:4)
+SZ	M214	Deut 4:25	kulcs: bibliai 	kitoltott: bizonytalan: Driver-hivatkozás (Dr^Intr 191) után áll, lehet Driver Deut-komment
+SZ	M248	Cant 7:1	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+szures_szurt	25	egyezik 23
+SZ	M156	33:25	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M188	Jer 31:23	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+szures_bizonytalan	25	egyezik 21
+SZ	M039	15:15	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M060	13:10	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M127	17:20	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M196	30:14	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+```
+
+Nyers számok (a DT-F102c (a) kapuja ezekre vonatkozik): szeletelő — könyv/vers 199/200 (99,5%), jelentéspont **183/200 (91,5%)**; szakasztábla —
+könyv/vers 199/200, jelentéspont **184/200 (92,0%)**.
