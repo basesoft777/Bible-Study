@@ -181,3 +181,5 @@ meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `
 
 ⛔ ① nem (a modell egyezett, a #176 a `main`-ben); ⛔ ② a licenc: a munka belső tanúként folytatódott, a megerősítés nyitva (DT-F177b); ⛔ ③ nem (77,1% a nem gyanús verseken);
 ⛔ ④ nem (egyetlen KH-t sem javítottam kézzel; a `jelolt` sorok eldöntetlenek, N-F177b).
+
+**Kiegészítés (F177.17, 2026-11-09): DT-F177b (a) közkincs.** A felhasználó döntése (szó szerint: „(a) közkincs”): a MEK 00161 Károli-kiadása a kimenet szempontjából közkincs, `kereskedelmi=igen`; a fenti 9. szakasz és a 10. ⛔ ② pont „megerősítés nyitva” állapota ezzel megszűnt. A `Karoli_KH_MEK` és a `Karoli_KH_javitott` licencsora, a dataset-sor, a SEMA 2.19 és a MEK-README átvezetve; a naplók (ELLENOR_*) változatlanok.

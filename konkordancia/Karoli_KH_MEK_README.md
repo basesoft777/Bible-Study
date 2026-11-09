@@ -2,9 +2,9 @@
 
 A `Karoli_kereszthivatkozasok.tsv` (HunKar OSIS ← szentiras.hu KG) ismert hibája, hogy sok vers egy másik vers
 KH-listáját hordozza (N-F156a). A MEK 00161 kiadás (*Szent Biblia*, Károli) versenként, a vers alatt adja a KH-t,
-a HunKar-tól függetlenül: **ez a második, független tanú**. A MEK-ből származó tartalom **belső tanú**: a nyílt
-magba, a lapokra és bármely kimenetbe addig semmi nem kerül belőle, amíg a felhasználó a licencet nem erősíti meg
-(l. „Licenc”).
+a HunKar-tól függetlenül: **ez a második, független tanú**. A MEK Károli-kiadása a kimenet szempontjából **közkincs**
+(DT-F177b, a felhasználó döntése, 2026-11-09: „(a) közkincs”; l. „Licenc”): a MEK-ből származó sor a kimenetbe
+(lap, nyílt mag) kerülhet.
 
 ## 1. Forrás és ellenőrizhetőség
 
@@ -70,10 +70,12 @@ A MEK szerzői jogi oldala (https://mek.oszk.hu/html/allando/copyright.htm, lek�
 szabadon másolható, de csak saját célokra, nem-kereskedelmi jellegű felhasználásra, változtatások nélkül és a forrásra
 való megfelelő hivatkozással: "Országos Széchényi Könyvtár, Magyar Elektronikus Könyvtár".*” A dokumentum a szerzői
 jogról szóló 1999. évi LXXVI. törvény IV/B. fejezete (kereskedelmi forgalomban nem elérhető művek) alapján került
-fel. A tétel katalóguscédulája ugyanakkor: „*Jogi közlemény: Nem jogvédett*”. **A felhasználónak külön meg kell
-erősítenie** (a Sefaria-döntés elve szerint: közkincs tartalomnál a szerzői jog az irányadó), mielőtt a MEK-ből
-származó bármi a kimenetbe (lap, nyílt mag) kerül. Addig a `licencek.tsv` sora `kereskedelmi=feltetelesen`, `allapot=tisztazatlan`,
-és a MEK belső tanú. A javított tábla a saját döntésünk; a MEK szövege (a versszöveg) nem került át, csak a
+fel. A tétel katalóguscédulája ugyanakkor: „*Jogi közlemény: Nem jogvédett*”. A mű kora miatt a kiadás
+közkincs: **DT-F177b (a felhasználó döntése, 2026-11-09, szó szerint: „(a) közkincs”)**, a Sefaria-döntés elve szerint
+(DT-F176b): közkincs tartalomnál a szerzői jog az irányadó. A `licencek.tsv` sora ezért `közkincs` / `kereskedelmi=igen` /
+`allapot=kozkincs`; a MEK-ből származó sor a kimenetbe (lap, nyílt mag) kerülhet. A két fenti MEK-állítás (a copyright-szöveg
+és a cédula) idézete a döntés alapja, nem nyitott kérdés. A forrásmegjelölés („Országos Széchényi Könyvtár, Magyar
+Elektronikus Könyvtár”, MEK 00161) udvariasságból a forrásleírásban marad. A javított tábla a saját döntésünk; a MEK szövege (a versszöveg) nem került át, csak a
 hivatkozás-tény és a szó szerinti hivatkozás-alak (`mek_alak`).
 
 ## 6. Mért eredmény (2026-11-09; részletek: `naplok/F177_jelentes.md`)

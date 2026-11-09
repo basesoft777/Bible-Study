@@ -14,7 +14,7 @@
   - 2. javítókör → `ELLENOR_F177_3`: **TISZTA**.
 - **Döntések (helyőrzővel, `dontesek/uj/karoli-kh-mek.md`):**
   - DT-F177a 🟢: a karantént a `kiesik` szint váltja ki;
-  - **DT-F177b 🟡: a MEK licence, a felhasználóra vár.** Addig a MEK belső tanú, a kimenetbe semmi nem kerül;
+  - **DT-F177b 🟢: a MEK licence — (a) közkincs** (a felhasználó, 2026-11-09, átvezetve az F177.17-ben); a MEK-ből származó sor a kimenetbe kerülhet;
   - DT-F177c 🟡: a versellenőrzés alapja a `Karoli_1908` és a MEK uniója;
   - DT-F177d 🟢: az F177.7 commit-üzenetének téves számai, a jelentésben helyesbítve.
 - **Nyitott (`nyitott/uj/karoli-kh-mek.md`):**
