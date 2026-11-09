@@ -34,8 +34,8 @@ Pi'el/- ↔ Pi'el/2), egyik sem az írásmódból jön. Az összevetőnek itt ni
 **A kapu (DT-F102c (a), nyers szám):** könyv/vers 99,5% ≥ 99% teljesül, **jelentéspont 91,5% < 97% nem teljesül** → a „próba” jelölés marad; a
 szó-lapon (`blokkok.py` `BDB_MERT_PONTOSSAG`) az új nyers szám és CI áll; a további javítás külön feladat, a #102-ben nincs több mérési kör.
 **A forrás (DT-F102d):** a nyers jelentéspont szakasztábla 184, szeletelő 183; a különbség (1/200) a mérési szóráson belül van (a két CI szinte
-azonos). A jóváhagyott döntés: **(ii) — a szeletelő marad**; az átállás a 2.30-ra az N-F102e javítása után, újraméréssel (a (C) a szóráson túli
-különbségre értendő).
+azonos). A jóváhagyott döntés: **(ii) — a szeletelő marad**; az átállás a 2.30-ra az N-F102e javítása után, újraméréssel (~~a (C) a szóráson túli
+különbségre értendő~~ — visszavonva: a (ii) a (C)-től való utólagos eltérés, l. DT-F102g; ELLENOR_F102_2 2.).
 
 ## 2. Jelentéspont — soronkénti ítélet
 
