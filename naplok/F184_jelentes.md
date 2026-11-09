@@ -112,7 +112,7 @@ Ahol nem cseréltem, és miért:
 - **22., 23. sor:** a jóváhagyott tábla szerint a SEMA a kanonikus. A SEMA bevezetőjének egyirányúság-mondata hivatkozássá vált; a `CLAUDE.md` alapszabályai maradtak (belépési pont).
 - **24. sor:** nem mértem → N-F184d.
 - **29. sor (próza-lefedettség):** a `kiadas.md` :13 csak egy tagmondatot ismétel (DT471); csere nélkül hagytam.
-- **31. sor:** a „2.50” szétválasztásakor az E34-szakasz kapott új számot (2.55, a 2.54 után), mert a nyílt mag 2.50-es szakaszára élő mutatók hivatkoznak (`adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py`). Az E34-szakaszra csak a lezárt F166 brief `lezarva_osszegzes`-e és a belőle generált `FELADATOK.md`-sor mutat; ezek történeti szövegek, nem javítottam őket. Az N-F166a a `NYITOTT_FELADATOK.md` meglévő sorában lezárva.
+- **31. sor:** a „2.50” szétválasztásakor az E34-szakasz kapott új számot (2.55, a 2.54 után), mert a nyílt mag 2.50-es szakaszára élő mutatók hivatkoznak (`adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py`). Az E34-szakaszra csak a lezárt F166 brief `lezarva_osszegzes`-e és a belőle generált `FELADATOK.md`-sor mutat; ezek történeti szövegek, nem javítottam őket. *[Helyesbítés, F184.14 (ELLENOR_F184 2.): az állítás nem volt igaz. Élő mutató a `DONTESEK.md` DT614-sorának hivatkozás-oszlopa is volt; a `DONTESEK.md` nem állt az `ir`-ben, ezért jelentenem kellett volna. A javítás és a teljes mutatólista: „Javítókör 1/2”, 2. tétel.]* Az N-F166a a `NYITOTT_FELADATOK.md` meglévő sorában lezárva.
 
 **Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** A két ⛔ sort (3., 9.) a DT-F184a és a DT-F184b fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
 
@@ -191,6 +191,21 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 42 | `NYITOTT_FELADATOK.md:852` | nincs törölt tartalom (az N-F166a sora lezárva, a régi szöveg „Előzmény”-ként megmaradt) | – | OK |
 
 **Összesítés:** 42 törlést tartalmazó hely; ebből **2 volt hiányos** (20., 35.); visszaállítva **5 elem** (a 9_ hét szabály 2. pontjába 1 tagmondat; a 6_ 4.11-szabályok 0. pontjába 3, a 6. pontjába 1). A többi 40 helyen a törölt tartalom szó szerint vagy egyenértékűen megvan a kanonikus helyen.
+
+### 2. A régi „2.50”-mutatók (F184.14; ELLENOR_F184 2.)
+
+Keresés: `git grep -n -I '2\.50'` a teljes repón, a találatok kézi szétválogatásával (a `12.50`-féle UBS-domén és versszám-találatok kiszűrve). `scope=teljes repó | forras=git grep '2\.50' @ 6a6c39ab | ts=2026-11-09`
+
+- **Javítva (élő mutató az E34-szakaszra):** `DONTESEK.md:652`, a DT614-sor hivatkozás-oszlopa: `adat/SEMA.md` 2.50 → 2.55 (a meglévő sor szerkesztése, a „Közös koordinációs fájlok” kivétele szerint; a fájl végére nem írtam). Más élő mutató az E34-szakaszra nincs: a kódban, a `.tsv`-fejlécekben, a `.claude/`, a `dontesek/uj/` és a `nyitott/uj/` alatt 0 találat.
+- **Helyes, nem változik (a nyílt mag 2.50-es szakaszára mutat):** `DONTESEK.md:649` (DT610), `adat/nyilt_kodkonyv.tsv` és `adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py:37`.
+- **Meg nem változtatott történeti mutatók** (az orkesztrátor kivétele, illetve a futáskori állapotot rögzítő napló):
+  - `F166_KAROLI_IDEZET_SZABALY_BRIEF.md:17` (`lezarva_osszegzes`) és `:53` (a lezárt brief naplósora);
+  - `FELADATOK.md:142` (generált blokk, a lezárt F166 összegzéséből);
+  - `F184_DOKU_EGY_FORRAS_BRIEF.md:27` (a brief problémaleírása a #166 esetéről);
+  - `naplok/F166_zaras.md:12, 15`; `naplok/ELLENOR_F166.md`, `ELLENOR_F166_2.md`, `ELLENOR_F166_3.md` (az akkori SEMA-állapotról);
+  - e jelentés D0-leltára (12. és 31. sor) és az orkesztrátor szó szerint idézett döntése;
+  - `NYITOTT_FELADATOK.md:852` (az N-F166a lezárt sora, amely az átszámozást maga írja le).
+- **A jelentés pontatlansága:** a D2 „31. sor” bekezdése (és az F184.7 `d0cb8d6c` commit-üzenete) szerint az E34-szakaszra csak történeti szöveg mutatott. Ez nem volt igaz; a bekezdés helyesbítve, a commit-üzenet nem írható át.
 
 ## Zárás
 
