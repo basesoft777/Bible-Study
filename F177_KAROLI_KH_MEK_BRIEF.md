@@ -5,15 +5,16 @@ kod: KAROLI_KH_MEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ag: claude/karoli-kh-mek
 ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 177 — újraellenőrzés függ: naplok/ELLENOR_F177_3.md"
+kovetkezo: "Te: a draft PR átnézése és merge; DT-F177b (MEK-licenc) és DT-F177c döntése; utána a lapok újragenerálása a lapszerkezeti generátor-körben (N-F177a)"
 munka: folyamat
 olvas: [konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok_README.md, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/karoli_kh_epseg.py, eszkozok/karoli_kh_szuro.py, naplok/KAROLI_KH_EPSEG_jelentes.md, adat/SEMA.md]
 ir: [konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, eszkozok/karoli_kh_gyanus_general.py, konkordancia/Karoli_KH_MEK_README.md, konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, eszkozok/karoli_kh_szuro.py, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, naplok/F177_jelentes.md]
 fugg: [176]
 nem_fugg: [38]
+lezarva_osszegzes: MEK 00161 mint második tanú — Karoli_KH_MEK.tsv (29 987 sor) és háromszintű Karoli_KH_javitott.tsv (megerősített 21 314 / kiesik 11 027 / jelölt 2 863), a nem gyanús versek egyezése 77,1%; a szűrő és fogyasztói átállítva, a karantén archív, N-F156a/c lezárva; két javítókör (ELLENOR_F177, _2, _3: TISZTA); DT-F177b (MEK-licenc) 🟡, a kimenetbe MEK-eredetű adat nem került; a lapok érintetlenek (N-F177a)
 ---
 
 # F177_KAROLI_KH_MEK_BRIEF.md — A Károli-kereszthivatkozások javítása a MEK-kel
