@@ -467,3 +467,14 @@ az orkesztrátor a M162-t nevezte meg), M029 (a DT-F102a szerint okafogyott: a k
 **7. lépés**: `eszkozok/olvaso_szerver/blokkok.py` `BDB_MERT_PONTOSSAG` → „2026-11-09: 91,5% (95%-os konfidencia-intervallum: 86,7–95,0%)” (a seed-102
 nyers száma, a szeletelő); teszt: `teszt_olvaso_szerver.py` `test_bdb_proba_es_mert_pontossag` (91,5%, 86,7–95,0%; a régi 92,0% és az ítélet utáni
 93,0% nem áll a lapon). A „próba” jelölés marad.
+
+## 17. A teljes tesztkör (F102.8)
+
+`python eszkozok/teszt_futtat.py` (teljes, a lassú `teszt_szintek.py`-val; WSL, `~/pardes/pardes.db`, az F102.7 állapotán): **11 fájl zöld, 1 hibás** —
+`teszt_arculat` 27, `teszt_bdb_vers_jelentes` 38, `teszt_indito` 39, `teszt_kereses` 36, `teszt_megfelelo_kinyer` 27, `teszt_olvaso_szerver` 91 (2 kihagyva),
+`teszt_pilot_aranymintaval` 22, `teszt_tanulmany_oldal` 17, `teszt_tervezo` 49, `teszt_ubs_dbh` 6, `teszt_visszhang_kapu` 22 OK; `teszt_szintek` 13 tesztből
+**1 FAIL**: `test_heber_szavak_alacsony_es_magas_szinten` (H0120: a `forditasok` adatbeli „H120. adam אָדָם_560 hímnemű f” darab nincs a lapon, mert
+a lap a héber szó után U+200E jelet ír: „אָדָם\u200e_560”). **Nem az ág hibája:** ugyanez a teszt a main-en (`e72ef053`, ideiglenes leválasztott
+munkafán, ugyanazzal az adatbázissal) ugyanígy bukik; az ág nem érinti sem a renderelést, sem a `forditasok` adatot. → N-F102g.
+`python eszkozok/feladatok.py ellenoriz`: 198 brief, 0 hiba, 0 figyelmeztetés.
+*(proveniencia: scope=teljes tesztkör | forras=eszkozok/teszt_futtat.py, eszkozok/feladatok.py ellenoriz | ts=2026-11-09)*
