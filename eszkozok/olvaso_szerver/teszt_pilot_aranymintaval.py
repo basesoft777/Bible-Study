@@ -38,9 +38,14 @@ VAN_PILOT = os.path.exists(GY + 'konkordancia/Karoli_1908.tsv') or bool(os.envir
 SZAKASZOK = (('1Móz 1:1-2:3', '1moz_1_1_2_3'), ('Zsolt 22', 'zsolt_22'))
 
 
+# N105: a renderelés a héber szó után irányjelet tesz (U+200E LRM, eszkozok/bdb_rovidites.py) a kétirányú
+# szöveg helyes megjelenítéséhez; a szöveg-összevetésben ez megjelenítési jel, nem tartalom.
+_IRANYJELEK = re.compile(r'[\u200e\u200f\u202a-\u202e\u2066-\u2069]')
+
+
 def szoveg(h):
-    """HTML -> sima szöveg (címkék nélkül, entitások feloldva, szóközök egységesítve)."""
-    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', h))).strip()
+    """HTML -> sima szöveg (címkék nélkül, entitások feloldva, irányjelek nélkül, szóközök egységesítve)."""
+    return re.sub(r'\s+', ' ', _IRANYJELEK.sub('', html.unescape(re.sub(r'<[^>]+>', ' ', h)))).strip()
 
 
 def igehely_reszek(ig):

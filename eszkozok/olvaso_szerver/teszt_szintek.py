@@ -37,6 +37,9 @@ import lekerdezesek as q
 import oldalak
 from teszt_olvaso_szerver import DB, KONFIG, VAN_DB, VAN_FLASK, _pilot_json
 from teszt_pilot_aranymintaval import SZAKASZOK, VAN_PILOT, igehely_reszek, szoveg
+# N105: a renderelés a héber idézetek szórendjét és geresh-jelét javítja (bdb_rovidites), ezért a magyar darab csak
+# héber betű nélküli szakaszból vehető; a héber rész összevetése nem ennek a tesztnek a dolga.
+HEBER_RX = re.compile(r'[\u0590-\u05FF\uFB1D-\uFB4F]')
 
 PROBA = 'hozzaferes_proba.toml'
 ALSO, KOZEP, FELSO = 'nyilvanos', 'regisztralt', 'kutato'
@@ -179,7 +182,7 @@ class TestSzintekValodiLapokon(unittest.TestCase):
                     # alacsony szinten egyik sincs meg.
                     bdb = blokkok._bdb_adat(oldalak.Kontekst(self.con, self.gyar.kozos, strong=strong))      # a forditasok adatból (alias esetén az alias szócikke)
                     mag, ang = szoveg(bdb['hu']), szoveg(bdb['en'] or '')
-                    darabok = [mag[i:i + 30] for i in range(0, min(len(mag) - 30, 400), 40) if mag[i:i + 30] not in ang]
+                    darabok = [mag[i:i + 30] for i in range(0, min(len(mag) - 30, 400), 40) if mag[i:i + 30] not in ang and not HEBER_RX.search(mag[i:i + 30])]
                     lent_t, fent_t = szoveg(lent), szoveg(fent)
                     if len(mag) > 300:
                         self.assertGreaterEqual(len(darabok), 2, '%s: nincs elég megkülönböztető magyar darab' % strong)
