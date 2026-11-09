@@ -1,4 +1,4 @@
-# M2 ⛔ KULCS (F99): seed=102; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó. F102.4: a kulcs a DT-F102e (B) utáni 2.29 szerint frissítve (strong + poz; a minta és a vak lap változatlan).
+# M2 ⛔ KULCS (F99): seed=102; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó. F102.4: a kulcs a DT660 (B) utáni 2.29 szerint frissítve (strong + poz; a minta és a vak lap változatlan).
 azon	reteg	strong	sorszam	poz	nyers	konyv_feloldas	mt_vers	karoli_vers	vers_feloldas	szakasz	resz	utvonal	okkod	szurt
 M001	veletlen	H3508	12	620	9:19	orokolt	3Móz 9:19	3Móz 9:19	azonos			tagolatlan		0
 M002	veletlen	H2388	255	7454	11:6	orokolt	Dán 11:6	Dán 11:6	azonos			Hiph'il/6/c		0

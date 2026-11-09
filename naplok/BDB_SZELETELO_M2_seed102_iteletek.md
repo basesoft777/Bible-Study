@@ -1,13 +1,13 @@
 # F102 — a seed-102 újramérés eltéréseinek soronkénti ítélete (⛔ 3.6)
 
-**Jóváhagyva** (orkesztrátori döntés, local_c8cc3610, a felhasználó felhatalmazásával, 2026-11-09): az ítéletek, a kérdéses tételekre: **M143** kulcs-hiba (alaktani megjegyzés, nem alpont), nem számít a szeletelő (és a tábla) ellen; **M018** a mérésből kizárva (jelölve); ~~**M036** és a seed-101 **M162** mindkettő `forras_hiba` a mai (1c.) szabály szerint~~ — **visszavonva** (orkesztrátori döntés, local_c8cc3610, 2026-11-09, ELLENOR_F102 3.): mindkettő **szeletelő-hiba**, mert a forrásban van „1 … h.” (ill. „1 … a.”) számozás, csak a „Qal” név hiányzik; **M091** `forras_hiba`; **M214** bibliai hely (a kitöltés „bizonytalan”-ja tehát kitöltő-hiba marad); **M039, M127, M196** a mai óvatos szabály marad (nem szeletelő-hiba); **M060** a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik, ha egyértelmű — itt a „compare Gen 19:20” után 1Móz 13:10; a szeletelő a könyvet örökli, de a sort szűri (a TAHOT-kapu a H6920-at keresi, a TSV H6920-sora viszont a Cóar (Zoar) szócikke: N-F102f), tehát saját hiba (csak ítélet, kódváltozás nincs). DT-F102d: (ii), a szeletelő marad. A kapu: a „próba” marad, a szó-lapon az új nyers szám CI-vel.
+**Jóváhagyva** (orkesztrátori döntés, local_c8cc3610, a felhasználó felhatalmazásával, 2026-11-09): az ítéletek, a kérdéses tételekre: **M143** kulcs-hiba (alaktani megjegyzés, nem alpont), nem számít a szeletelő (és a tábla) ellen; **M018** a mérésből kizárva (jelölve); ~~**M036** és a seed-101 **M162** mindkettő `forras_hiba` a mai (1c.) szabály szerint~~ — **visszavonva** (orkesztrátori döntés, local_c8cc3610, 2026-11-09, ELLENOR_F102 3.): mindkettő **szeletelő-hiba**, mert a forrásban van „1 … h.” (ill. „1 … a.”) számozás, csak a „Qal” név hiányzik; **M091** `forras_hiba`; **M214** bibliai hely (a kitöltés „bizonytalan”-ja tehát kitöltő-hiba marad); **M039, M127, M196** a mai óvatos szabály marad (nem szeletelő-hiba); **M060** a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik, ha egyértelmű — itt a „compare Gen 19:20” után 1Móz 13:10; a szeletelő a könyvet örökli, de a sort szűri (a TAHOT-kapu a H6920-at keresi, a TSV H6920-sora viszont a Cóar (Zoar) szócikke: N104), tehát saját hiba (csak ítélet, kódváltozás nincs). DT659: (ii), a szeletelő marad. A kapu: a „próba” marad, a szó-lapon az új nyers szám CI-vel.
 
 *Kézi ítélet a forrásszöveg alapján (`konkordancia/BDB_teljes_unabridged.tsv`, a Strong sora, a szeletelő „lapított” alakjában; a `poz` a
 hivatkozás helye), a seed-101 mintájára (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`). Kategóriák: **szeletelő-hiba** (a 2.29 kulcsa hibás),
 **szakasztábla-hiba** (a `--szakasztabla` kulcs útvonala hibás), **kitöltő-hiba** (csak a forrással bizonyítva), **kulcs-ellentmondás**,
 **`forras_hiba`**. Mérés: kulcs `naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv` (F102.4), kitöltések `naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv`
 és `_B.tsv` (F102.5), összevetés `m2_minta_osszevet.py` és `--szakasztabla` (`naplok/F102_BDB_SZELETELO_JAVITAS_naplo.md` 14.). A kapu
-következménye az ítélet ELŐTT rögzítve: DT-F102c (a) (nyers szám); a forrás választása: DT-F102d (C). Proveniencia: `scope=seed-102 vak minta |
+következménye az ítélet ELŐTT rögzítve: DT658 (a) (nyers szám); a forrás választása: DT659 (C). Proveniencia: `scope=seed-102 vak minta |
 forras=BDB_teljes_unabridged.tsv (lapított; eseti szkript itel_dump.py, szakasz_ki.py) + m2_minta_osszevet.py [--szakasztabla] | ts=2026-11-09`;
 az ítélet értelmezés (manual), nem gépi eredmény.*
 
@@ -31,11 +31,11 @@ Pi'el/- ↔ Pi'el/2), egyik sem az írásmódból jön. Az összevetőnek itt ni
 | **ítélet utáni, végleges** (csak tájékoztató; M018 kizárva, n = 199; M143 kulcs-hiba; M036 a szeletelőn hiba, a táblán `forras_hiba`; ELLENOR_F102 3., ELLENOR_F102_2 1.) | **184 / 199** (92,5%) | **187 / 199** (94,0%) |
 | könyv/vers, véletlen 200 | 199 (99,5%; 97,2–100%); az 1 eltérés `forras_hiba` (M091) → ítélet után 200 | ugyanaz |
 
-**A kapu (DT-F102c (a), nyers szám):** könyv/vers 99,5% ≥ 99% teljesül, **jelentéspont 91,5% < 97% nem teljesül** → a „próba” jelölés marad; a
+**A kapu (DT658 (a), nyers szám):** könyv/vers 99,5% ≥ 99% teljesül, **jelentéspont 91,5% < 97% nem teljesül** → a „próba” jelölés marad; a
 szó-lapon (`blokkok.py` `BDB_MERT_PONTOSSAG`) az új nyers szám és CI áll; a további javítás külön feladat, a #102-ben nincs több mérési kör.
-**A forrás (DT-F102d):** a nyers jelentéspont szakasztábla 184, szeletelő 183; a különbség (1/200) a mérési szóráson belül van (a két CI szinte
-azonos). A jóváhagyott döntés: **(ii) — a szeletelő marad**; az átállás a 2.30-ra az N-F102e javítása után, újraméréssel (~~a (C) a szóráson túli
-különbségre értendő~~ — visszavonva: a (ii) a (C)-től való utólagos eltérés, l. DT-F102g; ELLENOR_F102_2 2.).
+**A forrás (DT659):** a nyers jelentéspont szakasztábla 184, szeletelő 183; a különbség (1/200) a mérési szóráson belül van (a két CI szinte
+azonos). A jóváhagyott döntés: **(ii) — a szeletelő marad**; az átállás a 2.30-ra az N103 javítása után, újraméréssel (~~a (C) a szóráson túli
+különbségre értendő~~ — visszavonva: a (ii) a (C)-től való utólagos eltérés, l. DT662; ELLENOR_F102_2 2.).
 
 ## 2. Jelentéspont — soronkénti ítélet
 
@@ -66,7 +66,7 @@ Jelölés: SZ = a szeletelő kulcsa, T = a szakasztábla kulcsa, K = a kitölté
 | M208 | H7617 | `Qal/-` | `Qal/2` | `Qal/2` | „2 with accusative of congnate meaning … 2Chr 28:5, 11” | **szeletelő-hiba** | — | mint M205 |
 | M223 | H7812 | `Hiph'il/1/b` | `Hiph'il/1/b` | `Hithpa`lel/1/b` | „Hithpa`lel_170 (Ges^§ 75kk) Perfect … b. with ל … Isa 60:14” | **szeletelő-hiba** | **szakasztábla-hiba** | a „Hithpa`lel” törzset (gyakoriságszámmal) egyik sem ismeri fel; a hely a Hithpa`lel 1.b-je |
 | M233 | H7812 | `Hiph'il/2/c` | `Hiph'il/2/c` | `Hithpa`lel/2/c` | „c. with לְ only: 1Sam 1:28” | **szeletelő-hiba** | **szakasztábla-hiba** | mint M223 |
-| M226 | H5676 | `I -/1` | `I -/-/-` | `I -/1/B` | „1 … B. West Jordan … + יָ֫מָּה Josh 5:1” | — | **szakasztábla-hiba** | a hely az 1. pont B. csoportjában; a nagybetűs szintet a DT-F102a (a) szerint a fő mutató elhagyja, a tábla viszont az „1”-et is elveszti |
+| M226 | H5676 | `I -/1` | `I -/-/-` | `I -/1/B` | „1 … B. West Jordan … + יָ֫מָּה Josh 5:1” | — | **szakasztábla-hiba** | a hely az 1. pont B. csoportjában; a nagybetűs szintet a DT657 (a) szerint a fő mutató elhagyja, a tábla viszont az „1”-et is elveszti |
 | M242 | H5973 | `h:מעם -/-/a` | `-/5/a` | `-/a` | „(a jelöletlen מֵעִם címszó) … after שׁאל to ask … Isa 7:11” | — | **szakasztábla-hiba** | a jelöletlen מֵעִם alcímszó saját a.-ja; a tábla az עִם 5.a-jába vonja |
 | M249 | H2076 | `Pi'el/-` | `Pi'el/2` | `Pi`el/2` | „but 2 elsewhere of sacrifice to other deities … Hab 1:16” | **szeletelő-hiba** | — | a mondat belsejében álló „2” jelentésfej elvész |
 
@@ -84,7 +84,7 @@ hamis fej (M198, M201), kimaradt betűfej (M056, M194), durvább szint (M018, M0
 | azon | forrásidézet | ítélet |
 |---|---|---|
 | M091 H2370 (VERS) | „3 usually behold in dream or vision …, Ezra 4:20, accusative of thing 2:41” | **`forras_hiba`**: a forrás „Ezra 4:20”-at ír a Dán 4:20 helyett (a 4:14 valóban Ezsdrás); a 2:41 ezt a hibás könyvet örökli (Ezsd 2:41). **A TAHOT dönt** (javítva, ELLENOR_F102 4.): `lekerdez.py scan H2370 --szakasz "Dán 2:41"` → n=1 (2 szó-előfordulás) *(scope=range:Dán 2:41 \| forras=TAHOT_kivonat.tsv \| strong=H2370 \| n=1 \| ts=2026-11-09T17:15Z)*; `--szakasz "Ezsd 2:41"` → n=0 *(scope=range:Ezsd 2:41 \| forras=TAHOT_kivonat.tsv \| strong=H2370 \| n=0 \| ts=2026-11-09T17:15Z)*; a helyes Dán 2:41 — a kitöltés szerint |
-| M015 H0473 (véletlen) | „Italy, … compare ᵑ7 … Ezek, Di Gen 10:4; Carthage = Elissa” | **szeletelő-hiba** (szűrés): „Di Gen 10:4” = Dillmann kommentárja a helyhez (`^` nélküli szerző-sigla, a szeletelő nem ismeri fel); a DT-F102e (B) szerint szűrendő |
+| M015 H0473 (véletlen) | „Italy, … compare ᵑ7 … Ezek, Di Gen 10:4; Carthage = Elissa” | **szeletelő-hiba** (szűrés): „Di Gen 10:4” = Dillmann kommentárja a helyhez (`^` nélküli szerző-sigla, a szeletelő nem ismeri fel); a DT660 (B) szerint szűrendő |
 | M214 H3707 (véletlen) | „— The phrase is characteristic of D …; see Dr^Intr 191; Deut 4:25 Holz^eini. Hexateuch 287” | **kitöltő-hiba** — *kérdéses*: a „Dr^Intr 191;” lezárt hivatkozás után a Deut 4:25 a kifejezés fent már idézett bibliai helye (a 2.b-ben), nem Driver lapszáma |
 | M248 H4266 (véletlen) | „site unknown, see Di^Gn; הַמַּחֲנָ֑יִם כִּמְחֹלַת Cant 7:1 is put here by Ew Hi Öttli” | **szeletelő-hiba** (szűrés): bibliai idézet (Én 7:1); a `sigla_kozel` szűrte, mert a TAHOT nem igazolta |
 | M156 H2022 (szűrt) | „but Ezek 18:6, 15 read perhaps הַדָּם for הרים compare RS^K 310 & 33:25” | **szeletelő-hiba** (szűrés): a 33:25 (Ez 33:25) bibliai hely, nem a sigla része |
@@ -92,7 +92,7 @@ hamis fej (M198, M201), kimaradt betűfej (M056, M194), durvább szint (M018, M0
 | M039 H1121 (bizonytalan) | „1Chr 9:18; … 12:27; Nehemiah 10:40; הַלֵּוִי בְּנֵי 15:15; 24:30” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): a közbeékelt Nehemiásnak nincs 15. fejezete; a helyes 1Krón 15:15 (a szeletelő `orokles_hibas`-t ad, a szabály szerint bizonytalan) |
 | M127 H5203 (bizonytalan) | „1Sam 30:16 …; … Hosea 12:15 …; leave in charge of … sheep 17:20, 28; baggage 17:22” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): mint M039 (1Sám 17:20) |
 | M196 H1736 (bizonytalan) | „noun masculine^Gen 30:14 … 30:14; Cant 7:14; construct דּוּדָאֵי 30:14 3t.” | **nem hiba** (jóváhagyva: a mai óvatos szabály marad; `orokles_hibas`, bizonytalan): mint M039 (1Móz 30:14) |
-| M060 H6920 (bizonytalan) | „— Σηλωρ, ᵐ5^L Σιλωρ, but 13:10; Jer 48:34 Ζογορ(α)” | **szeletelő-hiba** (jóváhagyva): a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik („compare Gen 19:20” → 1Móz 13:10); a szeletelő a könyvet örökli, de a TAHOT-kapu szűri (a TSV H6920-sora a Cóar szócikke, a TAHOT a H6920-at keresi: N-F102f) |
+| M060 H6920 (bizonytalan) | „— Σηλωρ, ᵐ5^L Σιλωρ, but 13:10; Jer 48:34 Ζογορ(α)” | **szeletelő-hiba** (jóváhagyva): a könyvnév nélküli hely a szócikkben utoljára megnevezett könyvre oldódik („compare Gen 19:20” → 1Móz 13:10); a szeletelő a könyvet örökli, de a TAHOT-kapu szűri (a TSV H6920-sora a Cóar szócikke, a TAHOT a H6920-at keresi: N104) |
 
 Szűrés, ítélet után: véletlen 197 → 199 kitöltő-hiba nélkül (M214), a szeletelő 2 hibája (M015, M248) marad; szűrt 23/25 (M156, M188 szeletelő-hiba);
 bizonytalan 21/25 (M039, M127, M196 szeletelő-hiba — a közbeékelt, nem létező fejezetű könyv átugrása, az F102 (b) szabályának kiterjesztése
