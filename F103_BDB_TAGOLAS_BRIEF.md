@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f103-bdb-tagolas
 ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT167 szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
 kovetkezo: Indítható a fugg szerint (a #102 után; a #76 nem függés, DT297); a terminológia-lista a ⛔ 3. pontnál a #38 következő adagjába kerül (DT167 (4))
 olvas: [eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
