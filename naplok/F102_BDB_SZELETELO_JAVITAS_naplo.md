@@ -532,3 +532,17 @@ megsértése). A lekérdezés:
   *(proveniencia: scope=range:Ezsd 2:41 | forras=TAHOT_kivonat.tsv | strong=H2370 | n=0 | ts=2026-11-09T17:15Z)*
 
 A TAHOT tehát dönt: a hely Dán 2:41, a forrás „Ezra 4:20”-a könyvnév-hiba; az ítélet (`forras_hiba`) nem változik, csak az indoklása.
+
+## 21. Javítókör 2/2 — ELLENOR_F102_2 1.: az M036 szakasztábla-oldala `forras_hiba` (F102.17)
+
+Az ELLENOR_F102 3. orkesztrátori döntése (M036 és M162 szeletelő-hiba) **csak a szeletelő-oldalra szólt**; a 19. szakasz ezt a szakasztábla-kulcsra is
+kiterjesztette, ami túllépés volt. Visszaállítva: a szakasztábla-oldalon az M036 **`forras_hiba`** — a 2.30 a hely számozását hordozza (`-/1/h`, H3318
+12. sor), csak a forrásban hiányzó „Qal” törzsnevet nem; ezt a 2.31 `jelolo_hianyzik` kézi sora pótolja (H3318 sorszam 3 → `Qal/1`), ez az 1c.
+`forras_hiba` osztálya. A szeletelő-oldal marad szeletelő-hiba (a szeletelő a számozást sem látja: `fej`).
+
+**Ellenőrző számolás (szakasztábla-kulcs, seed-102):** nyers 184 / 200 egyezés; az M018 kizárva (a táblánál eltérés volt) → 184 / 199; javítás a
+nyershez: M052 (kitöltő-hiba) +1, M036 (`forras_hiba`) +1, M143 (kulcs-hiba) +1 → **187 / 199 (94,0%)**. A maradék 12 eltérés: 11 szakasztábla-hiba
+(M002, M042, M056, M194, M198, M201, M221, M223, M226, M233, M242) + M058 (a 2.29-ből átvett `szakasz`); 187 + 12 = 199. A szeletelő: nyers 183 → az
+M018 kizárva (ott egyezett) 182 / 199; + M052, + M143 → **184 / 199 (92,5%)**; maradék 15 szeletelő-hiba (M003, M009, M011, M016, M027, M034, M036,
+M042, M050, M058, M205, M208, M223, M233, M249); 184 + 15 = 199.
+*(proveniencia: scope=seed-102 véletlen 200 | forras=m2_minta_osszevet.py [--szakasztabla] + naplok/BDB_SZELETELO_M2_seed102_iteletek.md (manual ítélet) | ts=2026-11-09)*

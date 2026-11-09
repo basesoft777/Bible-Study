@@ -21,13 +21,14 @@ Pi'el/- ↔ Pi'el/2), egyik sem az írásmódból jön. Az összevetőnek itt ni
 |---|---:|---:|
 | nyers jelentéspont, véletlen 200 | **183** (91,5%; 95% CI 86,7–95,0%) | **184** (92,0%; 87,3–95,4%) |
 | eltérés | 17 | 16 |
-| ebből saját hiba (szeletelő-, ill. szakasztábla-hiba) | 16 (M036-tal; ebből M143 utóbb kulcs-hiba) | 14 (M036-tal; + 1 szeletelő-hiba a 2.29-ből átvett `szakasz`-ban: M058) |
+| ebből saját hiba (szeletelő-, ill. szakasztábla-hiba) | 16 (M036-tal; ebből M143 utóbb kulcs-hiba) | 13 (+ 1 szeletelő-hiba a 2.29-ből átvett `szakasz`-ban: M058; ebből M143 utóbb kulcs-hiba, M018 kizárva) |
 | kitöltő-hiba | 1 (M052) | 1 (M052) |
-| `forras_hiba` | 0 (az M036 szeletelő-hiba, ELLENOR_F102 3.) | 0 |
+| `forras_hiba` | 0 (az M036 szeletelő-hiba, ELLENOR_F102 3.) | 1 (M036; ELLENOR_F102_2 1.) |
 | kulcs-ellentmondás | 0 | 0 |
 | ítélet utáni, a jóváhagyás előtti javaslat | 185 / 200 | 186 / 200 |
 | ~~ítélet utáni, jóváhagyott (M036 `forras_hiba`-val)~~ | ~~185 / 199~~ | ~~187 / 199~~ |
-| **ítélet utáni, javított** (csak tájékoztató; M018 kizárva, n = 199; M143 kulcs-hiba; M036 szeletelő-, ill. szakasztábla-hiba; ELLENOR_F102 3.) | **184 / 199** (92,5%) | **186 / 199** (93,5%) |
+| ~~ítélet utáni, javított (M036 a táblán is hiba)~~ | 184 / 199 | ~~186 / 199~~ |
+| **ítélet utáni, végleges** (csak tájékoztató; M018 kizárva, n = 199; M143 kulcs-hiba; M036 a szeletelőn hiba, a táblán `forras_hiba`; ELLENOR_F102 3., ELLENOR_F102_2 1.) | **184 / 199** (92,5%) | **187 / 199** (94,0%) |
 | könyv/vers, véletlen 200 | 199 (99,5%; 97,2–100%); az 1 eltérés `forras_hiba` (M091) → ítélet után 200 | ugyanaz |
 
 **A kapu (DT-F102c (a), nyers szám):** könyv/vers 99,5% ≥ 99% teljesül, **jelentéspont 91,5% < 97% nem teljesül** → a „próba” jelölés marad; a
@@ -51,7 +52,7 @@ Jelölés: SZ = a szeletelő kulcsa, T = a szakasztábla kulcsa, K = a kitölté
 | M018 | H2534 | `-/2/c` | `-/2/-` | `-/2/c` | „Vbs. used with חֵמָה … 2. c.: הֵשִׁיב turn away wrath … arises עלה 2Chr 36:16” | **kizárva** | **kizárva** | a függelék „2. c.:” címkéje alatt; a jóváhagyás szerint a mérésből kizárva (n = 199) |
 | M027 | H7323 | `Hiph'il/1` | `Qal/1` | `Qal/1` | „(… compare Hiph`il below); … אֵת person accompare Jer 12:5” | **szeletelő-hiba** | — | a „compare Hiph`il below” kereszthivatkozás hamis törzsfej |
 | M034 | H2490 | `III Hiph'il/-/b` | `III Hiph'il/2` | `III Hiph`il/2` | „Hiph`il 1. a. … b. … 2 begin, Perfect הֵחֵל … with Infinitive (ל) begin to … 2Chr 3:1-2, 29:17” | **szeletelő-hiba** | — | a „2 begin,” jelentésfej elvész, a hely az 1.b-be csúszik |
-| M036 | H3318 | `fej` | `-/1/h` | `Qal/1/h` | „h. … with idea of unfolding, growth Job 8:16; 14:2; 31:40” | **szeletelő-hiba** (javítva, ELLENOR_F102 3.; korábban `forras_hiba`) | **szakasztábla-hiba** (a nyers 2.30 `-/1/h`; a 2.31 `jelolo_hianyzik` kézi sora — H3318 sorszam 3 → `Qal/1` — pótolná) | a H3318 „Qal” neve mindkét nyers forrásból hiányzik (a seed-101 M162 hibaosztálya; 2.31 kézi sor); a jelentés (1.h) a táblában helyes |
+| M036 | H3318 | `fej` | `-/1/h` | `Qal/1/h` | „h. … with idea of unfolding, growth Job 8:16; 14:2; 31:40” | **szeletelő-hiba** (javítva, ELLENOR_F102 3.; korábban `forras_hiba`) | **`forras_hiba`** (visszaállítva, ELLENOR_F102_2 1.: a 2.30 `-/1/h`-t ad, a hiányzó „Qal” a 2.31 `jelolo_hianyzik` kézi sora — H3318 sorszam 3 → `Qal/1` —, az 1c. `forras_hiba` osztálya; az ELLENOR_F102 3. döntése csak a szeletelő-oldalra szólt) | a szeletelő a forrásban meglévő „1 … h.” számozást sem látja (`fej`) — szeletelő-hiba; a tábla a számozást hordozza, csak a forrásban hiányzó törzsnevet nem |
 | M042 | H5066 | `Qal/-` | `Qal/-` | `Qal/1` | „— draw or come near, 1 human subject: followed by אֶלֿ person … Exod 19:15” | **szeletelő-hiba** | **szakasztábla-hiba** | a fej-glossza utáni „1” jelentésfejet egyik sem ismeri fel |
 | M050 | H2063 | `-/3/i` | `-/6/g` | `-/6/g` | „6 … f. זֶה עַל on this account … g. זֶה עִם in spite of this Neh 5:18” | **szeletelő-hiba** | — | a hely a 6.g-ben áll; a szeletelő a 3.i-nél ragad |
 | M052 | H9003 | `I r:III -/5` | `I r:III -/5` | `-/5 r:III` | „ב בּ ב,, Bêth, 2nd letter; … I. בְּ, preposition” | — | — | **kitöltő-hiba**: a címszó előtt a forrás „I.”-t ír; a vak lap (1) szabálya szerint a fő címszónál is írandó |
@@ -69,8 +70,8 @@ Jelölés: SZ = a szeletelő kulcsa, T = a szakasztábla kulcsa, K = a kitölté
 | M242 | H5973 | `h:מעם -/-/a` | `-/5/a` | `-/a` | „(a jelöletlen מֵעִם címszó) … after שׁאל to ask … Isa 7:11” | — | **szakasztábla-hiba** | a jelöletlen מֵעִם alcímszó saját a.-ja; a tábla az עִם 5.a-jába vonja |
 | M249 | H2076 | `Pi'el/-` | `Pi'el/2` | `Pi`el/2` | „but 2 elsewhere of sacrifice to other deities … Hab 1:16” | **szeletelő-hiba** | — | a mondat belsejében álló „2” jelentésfej elvész |
 
-Szeletelő-hiba 16: M003, M009, M011, M016, M027, M034, M036, M042, M050, M058, M143, M205, M208, M223, M233, M249. Szakasztábla-hiba 14: M002, M018,
-M036, M042, M056, M143, M194, M198, M201, M221, M223, M226, M233, M242 (+ M058 a 2.29-ből átvett `szakasz`-szal). (A jóváhagyás szerint az M143
+Szeletelő-hiba 16: M003, M009, M011, M016, M027, M034, M036, M042, M050, M058, M143, M205, M208, M223, M233, M249. Szakasztábla-hiba 13: M002, M018,
+M042, M056, M143, M194, M198, M201, M221, M223, M226, M233, M242 (+ M058 a 2.29-ből átvett `szakasz`-szal). (A jóváhagyás szerint az M143
 kulcs-hiba, az M018 kizárva.)
 **Okcsoportok** — szeletelő: kereszthivatkozásból hamis törzsfej (M003, M009, M027), gyakoriságszámhoz tapadt törzsnév (M011, M223, M233), mondat
 belsejében álló vagy fej-glossza utáni jelentésfej (M034, M042, M205, M208, M249), elveszett törzsfej (M016), elcsúszott számozás (M050),
@@ -100,7 +101,7 @@ lenne —, M060 kulcs-ellentmondás).
 
 - **M143** H1980: az „Imperative rarely a. הֲלוֺךְ” „a.”-ja alaktani felsorolás vagy szerkezeti alpont? Az ítélet: alaktani (mindkét kulcs hibás).
 - **M018** H2534: a „Vbs. used with חֵמָה … 2. c.:” függelék címkéje jelentéspont-e; az ítélet a kulcsot és a kitöltést fogadja el (a tábla durvább).
-- **M036** H3318: eldöntve (ELLENOR_F102 3.): **szeletelő-hiba**, mint a seed-101 M162 (a forrásban van számozás, csak a „Qal” név hiányzik).
+- **M036** H3318: eldöntve (ELLENOR_F102 3.): **szeletelő-hiba** a szeletelő-oldalon, mint a seed-101 M162 (a forrásban van számozás, csak a „Qal” név hiányzik); a szakasztábla-oldalon `forras_hiba` (ELLENOR_F102_2 1.).
 - **M091** H2370: a forrás „Ezra 4:20”-a könyvnév-hiba (Dán) — ~~a TAHOT itt nem dönt (… 0 találat mindkét versre)~~ **javítva** (ELLENOR_F102 4.; a korábbi állítás hamis volt és proveniencia nélküli): a TAHOT dönt, Dán 2:41 n=1, Ezsd 2:41 n=0 (l. 3.).
 - **M214** H3707: a „Dr^Intr 191; Deut 4:25” Deut 4:25-je bibliai visszautalás (az ítélet) vagy Driver kommentár-helye.
 - **M039, M127, M196**: a közbeékelt könyv utáni, abban nem létező fejezetű hely a korábbi könyvet folytatja-e — a mai szabály (bizonytalan) szándékosan óvatos.
