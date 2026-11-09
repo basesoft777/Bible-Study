@@ -5,13 +5,13 @@ kod: DOKU_EGY_FORRAS
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/doku-egy-forras
 ad: a többszörösen leírt folyamat-szabályok egy kanonikus helyen, a többi hivatkozik; a kapuk szabálylistája a kódból generált GENERÁLT blokk CI-őrrel; menet- és zárójelentés egy fájlban; hivatkozás-kapu teszttel
-kovetkezo: "Te: F184.D0 ⛔ — a leltár-tábla jóváhagyása (naplok/F184_jelentes.md)"
+kovetkezo: "F184 D1–D5 fut (a D0 jóváhagyva, 2026-11-09)"
 munka: folyamat
 olvas: [DONTESEK.md, eszkozok/ellenorzes/]
-ir: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, adat/SEMA.md, "sablonok/6_*", "sablonok/9_*", "sablonok/10_*", .claude/commands/kovetkezo.md, .claude/commands/elteres.md, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, .github/workflows/ellenorzes.yml, naplok/F184_jelentes.md]
+ir: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, adat/SEMA.md, "sablonok/6_*", "sablonok/9_*", "sablonok/10_*", .claude/commands/kovetkezo.md, .claude/commands/elteres.md, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, .github/workflows/ellenorzes.yml, naplok/F184_leltar_azonositok.py, naplok/F184_leltar_kifejezesek.py, dontesek/uj/doku-egy-forras.md, nyitott/uj/doku-egy-forras.md, NYITOTT_FELADATOK.md, "sablonok/1_*", "sablonok/2_*", "sablonok/4_*", "sablonok/5_*", sablonok/PaRDeS_gyorsreferencia.md, .claude/commands/lap-javit.md, .claude/commands/kiadas.md, .claude/commands/befogad.md, naplok/F184_jelentes.md]
 fugg: []
 ---
 
