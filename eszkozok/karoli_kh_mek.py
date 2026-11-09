@@ -534,8 +534,11 @@ D_HK_E1 = 'HunKar-sor -> megerositett (a MEK-pár célja nem létezik)'
 D_HK_E2 = 'HunKar-sor -> megerositett (a MEK fejezet-hibamintájának megfelelője)'
 D_HK_VEGPONT = 'HunKar-tartomány -> megerositett (a MEK az egyik végpontot adja)'
 D_MEK_VEGPONT = 'MEK-végpontsor -> kiesik (a megerősített HunKar-tartományba olvad)'
+# E3-szűkítés (DT-F181n): egyfejezetes könyvben a HunKar `1:1-N` tartomány műtermék, a MEK pontos `1:N` verse a cél
+D_MEK_EGYF = 'MEK-sor -> megerositett (egyfejezetes könyv: a HunKar 1:1-N tartomány műtermék)'
+D_HK_EGYF = 'HunKar-tartomány -> kiesik (egyfejezetes könyv: a MEK pontos 1:N verse a cél)'
 DONTESEK = (D_BEEMEL, D_GYANUS, D_NEMLETEZO, D_ELIRAS, D_E2, D_HK_KIESIK, D_HK_MARAD, D_HK_E1, D_HK_E2, D_HK_VEGPONT,
-            D_MEK_VEGPONT)
+            D_MEK_VEGPONT, D_MEK_EGYF, D_HK_EGYF)
 # a jelolt-ban maradó sor oka (`marad=<kód>` tag az indokban, E8)
 _MARAD_KOD = {D_NEMLETEZO: 'nem_letezo_cel', D_GYANUS: 'gyanus_ismetlodo', D_ELIRAS: 'eliras_gyanus',
               D_E2: 'mek_fejezet_minta'}
@@ -645,6 +648,13 @@ def e2_mintak(lista, letezo, hk_celok):
 _GOMB_VEG = re.compile(r'(\d+),\.$')
 
 
+def egyfejezetes_konyv(konyv, letezo):
+    """Igaz, ha a könyv (STEP-kód) minden létező verse az 1. fejezetben áll (Abd, Filem, 2Ján, 3Ján, Júd; a létező
+    versek halmazából, nem kézi listából)."""
+    fejezetek = {r.split('.')[1] for r in letezo if r.split('.')[0] == konyv}
+    return fejezetek == {'1'}
+
+
 def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyanus_mek, mek_lista=None):
     """A `jelolt` sorok bontása és a J2 szabály döntése soronként.
 
@@ -657,7 +667,8 @@ def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyan
     A szabály szövege egy helyen áll: Karoli_KH_MEK_README.md 7. (F181; DT-F181d–f, DT-F181g–i). Röviden: a MEK-oldali
     jelölt sor `megerositett`, kivéve a nem létező cél, a MEK-oldali gyanús ismétlődés, az E2-hibaminta létező töredéke és
     az elírás-gyanús osztály. A HunKar-oldali jelölt sor `megerositett`, ha a MEK-oldali párja nem ellentmond neki (E1: a
-    pár célja nem létezik; E2: a hibaminta megfelelője; E3: a MEK a tartomány egyik végpontját adja); különben `kiesik`,
+    pár célja nem létezik; E2: a hibaminta megfelelője; E3: a MEK a tartomány egyik végpontját adja; egyfejezetes
+    könyvben az `1:1-N` tartomány `kiesik`, a MEK `1:N` verse `megerositett`: DT-F181n); különben `kiesik`,
     ha a verse MEK-listájából legalább egy sor beemelődik (kivéve az elírás-gyanús sor párját), egyébként jelölt marad."""
     csoport = collections.OrderedDict()
     for s in javitott:
@@ -749,11 +760,19 @@ def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyan
             gomb = [r for r in mek_d if not r['cel'] and _GOMB_VEG.search(r['mek_alak'] or '') and
                     int(_GOMB_VEG.search(r['mek_alak']).group(1)) == v[1][2] and vegek[1] not in
                     {t['cel'] for t in talalt}]
-            e3[hs[1]] = (talalt, gomb)
-        for cel_h, (talalt, gomb) in e3.items():
+            # DT-F181n (E3-szűkítés): egyfejezetes könyvben a `1:1-N` HunKar-tartomány műtermék (a HunKar a verset
+            # a könyv elejétől N-ig tartománynak adja); ha a MEK az `1:N` verset adja, az a cél, a tartomány kiesik
+            egyf = (v[0][1:] == (1, 1) and v[1][1] == 1 and egyfejezetes_konyv(v[0][0], letezo) and
+                    vegek[1] in {t['cel'] for t in talalt})
+            e3[hs[1]] = (talalt, gomb, egyf)
+        for cel_h, (talalt, gomb, egyf) in e3.items():
             for r in talalt + gomb:
-                r['dontes'] = D_MEK_VEGPONT
-                r['jegyzet'] = 'tartomany_vegpont=' + cel_h
+                if egyf and r['cel'] == cel_h.split('-')[-1]:
+                    r['dontes'] = D_MEK_EGYF
+                    r['jegyzet'] = 'egyfejezetes_tartomany=' + cel_h
+                else:
+                    r['dontes'] = D_MEK_VEGPONT
+                    r['jegyzet'] = 'tartomany_vegpont=' + cel_h
         van_beemel = any(r['dontes'] == D_BEEMEL for r in mek_d)
         eliras_par = {(x['partner']) for x in sv if x['oldal'] == 'MEK' and x['dontes'] == D_ELIRAS and x['partner']}
         for s in jel:
@@ -766,9 +785,12 @@ def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyan
             if sajat_ok and r['cel'] in e2_hk:
                 r['dontes'] = D_HK_E2
                 r['jegyzet'] = 'mek_fejezet_minta=' + '+'.join(e2_hk[r['cel']]['tagok'])
+            elif sajat_ok and r['cel'] in e3 and e3[r['cel']][2]:
+                r['dontes'] = D_HK_EGYF
+                r['jegyzet'] = 'egyfejezetes_tartomany_muterek=' + r['cel'].split('-')[-1]
             elif sajat_ok and r['cel'] in e3:
                 r['dontes'] = D_HK_VEGPONT
-                talalt, gomb = e3[r['cel']]
+                talalt, gomb, _ = e3[r['cel']]
                 r['jegyzet'] = 'mek_vegpont=' + '+'.join(t['cel'] for t in talalt) + ''.join(
                     ';mek_vege_elirt=' + g['mek_alak'] for g in gomb)
             elif r['cel'] in eliras_par:
@@ -836,6 +858,10 @@ def beemel(javitott, bontas, ts):
         elif d == D_HK_KIESIK:
             ki.append([s[0], s[1], 'kiesik', s[3], s[4] + ';' + SZABALY_JEL, prov])
         elif d == D_MEK_VEGPONT:
+            ki.append([s[0], s[1], 'kiesik', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d == D_MEK_EGYF:
+            ki.append([s[0], s[1], 'megerositett', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d == D_HK_EGYF:
             ki.append([s[0], s[1], 'kiesik', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
         elif d in (D_HK_E1, D_HK_E2):
             ki.append([s[0], s[1], 'megerositett', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])

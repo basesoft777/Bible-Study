@@ -371,6 +371,41 @@ class JeloltSzabaly(unittest.TestCase):
             kivul, letezo, lambda f, c: False, lambda f, c: False, set(), set())}
         self.assertNotEqual(b[('Gen.2.4-Gen.2.5', 'HunKar')]['dontes'], K.D_HK_VEGPONT)
 
+    def test_e3_szukites_egyfejezetes_konyvben(self):
+        """DT-F181n: egyfejezetes könyvben (Filem) a HunKar `1:1-N` tartomány műtermék; ha a MEK az `1:N` verset adja,
+        a MEK-vers `megerositett`, a tartomány `kiesik` (nem lesz önálló sor sem a tartomány, sem a végpont duplikációja)."""
+        letezo = set(self.LETEZO) | {'Phm.1.%d' % i for i in range(1, 26)}
+        jav = [('Col.4.9', 'Phm.1.1-Phm.1.10', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Col.4.9', 'Phm.1.10', 'jelolt', 'MEK', 'csak_mek;mek_alak=Filem. 1,10.;tsk=igen')]
+        letezo |= {'Col.4.9'}
+        bon = K.jelolt_bontas(jav, letezo, lambda f, c: False, lambda f, c: False, set(), set())
+        b = {(r['cel'], r['oldal']): r for r in bon}
+        self.assertEqual(b[('Phm.1.1-Phm.1.10', 'HunKar')]['dontes'], K.D_HK_EGYF)
+        self.assertEqual(b[('Phm.1.10', 'MEK')]['dontes'], K.D_MEK_EGYF)
+        uj = K.beemel([m + ('p',) for m in jav], bon, '2026-11-09')
+        self.assertEqual([(m[2], m[3]) for m in uj], [('kiesik', 'HunKar'), ('megerositett', 'MEK')])
+        self.assertIn('egyfejezetes_tartomany_muterek=Phm.1.10', uj[0][4])
+        self.assertIn('egyfejezetes_tartomany=Phm.1.1-Phm.1.10', uj[1][4])
+
+    def test_e3_szukites_nem_vonatkozik_tobbfejezetes_konyvre_es_belso_tartomanyra(self):
+        letezo = set(self.LETEZO) | {'Phm.1.%d' % i for i in range(1, 26)} | {'Col.4.9'}
+        # többfejezetes könyv (Gen): a tartomány `1:1-N` alakban is marad (E3: a végpont a tartományba olvad)
+        letezo |= {'Gen.2.1', 'Gen.2.2', 'Gen.2.3'}
+        tobb = [('Col.4.9', 'Gen.2.1-Gen.2.5', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+                ('Col.4.9', 'Gen.2.5', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        b = {(r['cel'], r['oldal']): r for r in K.jelolt_bontas(
+            tobb, letezo, lambda f, c: False, lambda f, c: False, set(), set())}
+        self.assertEqual(b[('Gen.2.1-Gen.2.5', 'HunKar')]['dontes'], K.D_HK_VEGPONT)
+        # egyfejezetes könyv, de a tartomány nem a könyv elejéről indul (Obad 1:10-14 típus): marad az E3
+        belso = [('Col.4.9', 'Phm.1.5-Phm.1.7', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+                 ('Col.4.9', 'Phm.1.7', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        b = {(r['cel'], r['oldal']): r for r in K.jelolt_bontas(
+            belso, letezo, lambda f, c: False, lambda f, c: False, set(), set())}
+        self.assertEqual(b[('Phm.1.5-Phm.1.7', 'HunKar')]['dontes'], K.D_HK_VEGPONT)
+        self.assertEqual(b[('Phm.1.7', 'MEK')]['dontes'], K.D_MEK_VEGPONT)
+        self.assertTrue(K.egyfejezetes_konyv('Phm', letezo))
+        self.assertFalse(K.egyfejezetes_konyv('Gen', letezo))
+
     def test_e8_a_maradas_oka_a_sorban(self):
         """ELLENOR_F181 E8: a jelolt-ban maradó sor indoka `marad=<kód>` taggal bővül (nem létező cél, gyanús
         ismétlődő, elírás-gyanús, E2-töredék; HunKar-oldalon a pár vagy a nem elfogadott MEK-lista)."""
@@ -574,6 +609,23 @@ class RepoTablak(unittest.TestCase):
                     x = next((y for y in self.jav if y[0] == m[0] and y[1] == v and y[3] == 'MEK'), None)
                     self.assertTrue(x is None or x[2] != 'megerositett', (m[:3], v))
 
+    def test_e3_szukites_a_tablan(self):
+        """DT-F181n: a Filem `1:1-N` HunKar-tartomány (2Kor 7:4, Kol 1:7, Kol 4:9, Kol 4:14, Kol 4:15) `kiesik`, a MEK
+        pontos `1:N` verse `megerositett` (forras=MEK); egyfejezetes könyvben nem áll megerősített `1:1-N` tartomány."""
+        d = {(m[0], m[1]): m for m in self.jav}
+        for f, n in (('2Co.7.4', 8), ('Col.1.7', 23), ('Col.4.9', 10), ('Col.4.14', 24), ('Col.4.15', 2)):
+            tart = d[(f, 'Phm.1.1-Phm.1.%d' % n)]
+            vers = d[(f, 'Phm.1.%d' % n)]
+            self.assertEqual(tuple(tart[2:4]), ('kiesik', 'HunKar'), (f, n))
+            self.assertEqual(tuple(vers[2:4]), ('megerositett', 'MEK'), (f, n))
+            self.assertFalse(SZ.elfogad(f, tart[1]))
+            self.assertTrue(SZ.elfogad(f, vers[1]))
+        egy = {'Phm', 'Oba', 'Jud', '2Jn', '3Jn'}
+        for m in self.jav:
+            if m[2] == 'megerositett' and '-' in m[1]:
+                a = m[1].split('-')[0].split('.')
+                self.assertFalse(a[0] in egy and a[1:] == ['1', '1'], m[:3])
+
     def test_szuro(self):
         self.assertTrue(SZ.elfogad('Gen.1.1', 'Psa.33.6'))
         self.assertFalse(SZ.elfogad('Exo.6.20', 'Exo.26.59'))
@@ -673,11 +725,12 @@ class RepoTablak(unittest.TestCase):
                 ki.append(open(a.md, encoding='utf-8').read())
         self.assertEqual(ki[0], ki[1])
         sorok = [s for s in ki[0].split(chr(10)) if s.startswith('| ') and not s.startswith('| #') and s[2].isdigit()]
-        self.assertEqual(len(sorok), 40 + 30 + 6 + 10 + 21 + 9 + 20)
+        # a megerősített HunKar-sorok rétege: 20 az E3-szűkítés (DT-F181n, F181.24) előtt, 15 utána (a 5 Filem-tartomány kiesik)
+        self.assertEqual(len(sorok), 40 + 30 + 6 + 10 + 21 + 9 + 15)
         for s in sorok:
             self.assertTrue(s.endswith(' |  |  |'), s)  # üres ítélet és indok
         self.assertEqual(sum('E2-szűrt' in s for s in sorok), 9)
-        self.assertEqual(sum('megerősített HunKar-sor' in s for s in sorok), 20)
+        self.assertEqual(sum('megerősített HunKar-sor' in s for s in sorok), 15)
 
     def test_alias_tabla(self):
         al = K.mek_aliasok()
