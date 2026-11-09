@@ -85,7 +85,7 @@ Amikor a felhasználó jelzi, hogy nincs több hely:
 3. **Lista a felhasználónak:** a javított helyek táblája (hely · típus · gond · régi · új), a külön útra terelt helyek (jelölt-sor, N-tétel), és a kolofon új „Emberi lektorálás” sora.
 4. **Kiadott lapnál** ehhez jön:
    - a **kiadási sor** (`adat/kiadasok.tsv`, a mezők: SEMA 2.46); csak ha a felhasználó a kiadást kéri;
-   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Hogy egy későbbi lapváltozás (például gépi szótári vagy Károli-KH forrásadat-javítás) érvényteleníti-e az átnézést: SEMA 2.48 „Érvényesség” (DT-F184b).
+   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Hogy egy későbbi lapváltozás (például gépi szótári vagy Károli-KH forrásadat-javítás) érvényteleníti-e az átnézést: SEMA 2.48 „Érvényesség” (DT665).
 5. A parancs **nem commitol és nem pushol.** A commit a felhasználó kérésére történik, a CLAUDE.md szabályai szerint (tétel-azonosítóval, UTF-8 fájlból).
 
 ## 6. A lapnézet és a blokkjel (F165, DT637)

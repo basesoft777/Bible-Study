@@ -76,15 +76,15 @@ Ma a CI E-szabályok listája egyetlen folyamat-dokumentumban sem áll (csak ré
 Az orkesztrátor (`local_c8cc3610`) üzenete, a döntések szó szerint:
 
 - „A 31 soros leltár-tábla jóváhagyva.”
-- „(1) DT645: a 6-os sablon 535. sora (kiemelés csak alapvonallal) a kanonikus. Az 527. sort és a V5-kommentet erre igazítsd. A DT645 utólagos pontosítását új helyőrzős tétel rögzítse: DT-F184a, 🟢, orkesztrátori döntés, hivatkozással a #178 javítókörére, ahol ez már így dőlt el.”
-- „(2) DT569: általános szabály, a tágabb hatókörrel. A **gépi** szótári és Károli-KH forrásadat-javítás nem érvényteleníti a lap átnézését, ha (a) a próza, a minősítés és a határ nem változik, (b) a diff csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés felsorolja. Minden más lapváltozás érvényteleníti. Kanonikus hely: a SEMA 2.48; a MUNKAMENET és a /lap-javit erre hivatkozik. Új helyőrzős tétel: DT-F184b.”
+- „(1) DT645: a 6-os sablon 535. sora (kiemelés csak alapvonallal) a kanonikus. Az 527. sort és a V5-kommentet erre igazítsd. A DT645 utólagos pontosítását új helyőrzős tétel rögzítse: DT664, 🟢, orkesztrátori döntés, hivatkozással a #178 javítókörére, ahol ez már így dőlt el.”
+- „(2) DT569: általános szabály, a tágabb hatókörrel. A **gépi** szótári és Károli-KH forrásadat-javítás nem érvényteleníti a lap átnézését, ha (a) a próza, a minősítés és a határ nem változik, (b) a diff csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés felsorolja. Minden más lapváltozás érvényteleníti. Kanonikus hely: a SEMA 2.48; a MUNKAMENET és a /lap-javit erre hivatkozik. Új helyőrzős tétel: DT665.”
 - „D1: a munkamenet-szintű szabály a CLAUDE.md-ben, a lapszintű a 6-os sablonban kanonikus. A CLAUDE.md „Ezt olvasd” táblájába egy sor kerül a kanonikus helyekről.”
 - „D3: a GENERÁLT blokk az adat/SEMA.md új 3.11 „Gépi kapuk — szabálylista” szakaszába kerül, generátorral és CI-őrrel. Ha egy kapu (pl. a V-alszabályok) leírása ma csak docstringben áll, vezess be hozzá modulszintű táblát.”
 - „A két leltár-szkript maradhat; vedd fel őket a brief `ir` mezőjébe.”
 - „Futás közben nincs hatókör-bővítés.”
 - Kiegészítés: „a SEMA-cserék most mehetnek, külön commitokban, a nem-SEMA munka után. A 2.50-es szétválasztásnál: a #166 (PR #660, mergelve) nyitott tételként már rögzítette a két 2.50 ütközését (N-F166a). A szétválasztás ezt zárja le.”
 
-A két új döntés a `dontesek/uj/doku-egy-forras.md`-ben áll (DT-F184a, DT-F184b, 🟢).
+A két új döntés a `dontesek/uj/doku-egy-forras.md`-ben áll (DT664, DT665, 🟢).
 
 **Az `ir` mező kiegészítése.** A leltár-szkriptek és a PR-fájlok mellett felvettem azokat a fájlokat, amelyeket a jóváhagyott D0 tábla D2-cseréi érintenek, de a befogadó `ir`-listájából hiányoztak: `sablonok/1_*`, `2_*`, `4_*`, `5_*`, `sablonok/PaRDeS_gyorsreferencia.md`, `.claude/commands/lap-javit.md`, `kiadas.md`, `befogad.md`, valamint a `NYITOTT_FELADATOK.md`-t (az N-F166a lezárása). Ez nem új hatókör: a D2 a jóváhagyott tábla szerint ezeket a fájlokat cseréli. Ha az orkesztrátor másként látja, a megfelelő cserék visszavonhatók.
 
@@ -100,7 +100,7 @@ A D0 tábla javasolt helyeitől két ponton tértem el, a D1-döntés miatt. (1)
 |---|---|---|---|
 | nem-SEMA cserék | F184.2 `e3338a2b` | 29 | 13 |
 | SEMA: lánc-levezetés (1.), egyirányúság (22.), a 2.49 érvényesség-hivatkozása (9.) | F184.5 `0dfe41a7` | 3 | 1 |
-| SEMA 2.48: DT-F184b (9.) | F184.6 `e3114724` | 1 | 1 |
+| SEMA 2.48: DT665 (9.) | F184.6 `e3114724` | 1 | 1 |
 | SEMA: a két „2.50” szétválasztása (31.) + az N-F166a lezárása | F184.7 `d0cb8d6c` | 1 + 1 | 2 |
 
 Leltár-soronként (a nem-SEMA rész): 1.: 1, 2.: 1, 3.: 1, 4.: 2, 5.: 2, 6.: 2, 7.: 3, 8.: 1, 9.: 2, 10.: 5, 13.: 1, 14.: 1, 16.: 2, 17.: 1, 25.: 1, 26.: 1, 27.: 1, 30.: 1. A számlálás a cseréket méri; a 6-os sablon kolofon-mondata egyetlen cserével a 6., 7. és 8. sort is érinti, ezért ott a sorösszeg nagyobb a cserék számánál.
@@ -114,11 +114,11 @@ Ahol nem cseréltem, és miért:
 - **29. sor (próza-lefedettség):** a `kiadas.md` :13 csak egy tagmondatot ismétel (DT471); csere nélkül hagytam.
 - **31. sor:** a „2.50” szétválasztásakor az E34-szakasz kapott új számot (2.55, a 2.54 után), mert a nyílt mag 2.50-es szakaszára élő mutatók hivatkoznak (`adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py`). Az E34-szakaszra csak a lezárt F166 brief `lezarva_osszegzes`-e és a belőle generált `FELADATOK.md`-sor mutat; ezek történeti szövegek, nem javítottam őket. *[Helyesbítés, F184.14 (ELLENOR_F184 2.): az állítás nem volt igaz. Élő mutató a `DONTESEK.md` DT614-sorának hivatkozás-oszlopa is volt; a `DONTESEK.md` nem állt az `ir`-ben, ezért jelentenem kellett volna. A javítás és a teljes mutatólista: „Javítókör 1/2”, 2. tétel.]* Az N-F166a a `NYITOTT_FELADATOK.md` meglévő sorában lezárva.
 
-**Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** *[Helyesbítés, F184.15 (ELLENOR_F184 1., 3.): a 6_ L8 bővült (a másolatok uniója, „Javítókör 1/2”, 3. tétel), és két csere tartalmat törölt (1. tétel); ezek a jelentésből hiányoztak.]* A két ⛔ sort (3., 9.) a DT-F184a és a DT-F184b fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
+**Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** *[Helyesbítés, F184.15 (ELLENOR_F184 1., 3.): a 6_ L8 bővült (a másolatok uniója, „Javítókör 1/2”, 3. tétel), és két csere tartalmat törölt (1. tétel); ezek a jelentésből hiányoztak.]* A két ⛔ sort (3., 9.) a DT664 és a DT665 fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
 
 ## D3 — generált szabálylista (F184.4 `5c5575dd`, F184.8 `f26301dc`)
 
-- **Modulszintű táblák:** `eszkozok/olvasoi_kapu.py` `KAPUK` (23 azonosító, súlyosság, leírás) és `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT-F184a szerint). A docstring ellenőrzés-listája és a V1–V6-os kommentblokk helyett hivatkozás áll. `eszkozok/ellenorzes/szabalyok.py`: `SZABALY_LEIRAS` (30 CI-szabály) és `KULSO_SZABALYOK` (E1, E18). Az `ellenoriz.py` szabálycímei a kódliterálokból jönnek (`Sor('<N>. …')`, `cim = '<N>. …'`; 43 sor, a 34. szabály nem létezik).
+- **Modulszintű táblák:** `eszkozok/olvasoi_kapu.py` `KAPUK` (23 azonosító, súlyosság, leírás) és `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT664 szerint). A docstring ellenőrzés-listája és a V1–V6-os kommentblokk helyett hivatkozás áll. `eszkozok/ellenorzes/szabalyok.py`: `SZABALY_LEIRAS` (30 CI-szabály) és `KULSO_SZABALYOK` (E1, E18). Az `ellenoriz.py` szabálycímei a kódliterálokból jönnek (`Sor('<N>. …')`, `cim = '<N>. …'`; 43 sor, a 34. szabály nem létezik).
 - **Generátor:** `python eszkozok/ellenorzes/szabalyok.py --kapulista [--ir]`. Az `adat/SEMA.md` új 3.11 szakaszába ír, a `<!-- GENERÁLT-KEZDET: szabalyok.py --kapulista -->` … `<!-- GENERÁLT-VÉGE: … -->` jelölők közé.
 - **CI-őr: E37** (HIBA, fájlszintű). A blokk egyezik a generálttal, és a forrástáblák a kóddal: a kibocsátott `talalat(...)`-azonosítók, a V-üzenetek, a `SZINT` kulcsai és a workflow lépésneveinek E-azonosítói. Akkor fut, ha a PR a SEMA-t vagy a blokk valamely forrását módosítja.
 - A V5-kód már a pontosított szabályt mérte (`VH_KIEMELT_JO_RX`); csak a komment volt elavult.
@@ -161,7 +161,7 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 4–8 | `kovetkezo.md:56, 81, 83, 87, 92` (D4) | „zárójelentés”, `naplok/<feladat>_zaras.md` | a D4 döntése szerint a jelentés „Zárás” szakasza; `BRIEF_SABLON.md` „Jelentés” | OK (szándékolt csere, D4) |
 | 9 | `lap-javit.md:15` (27. sor) | a modell-eltérés jelzésének szövege | `CLAUDE.md` „Modell-ellenőrzés” (szó szerint) | OK |
 | 10 | `lap-javit.md:87` (7. sor) | `kiadas` = előző + 1, `valtozas` egy mondat, `proza_modell` a tényleges modellnév | `adat/SEMA.md` 2.46 | OK |
-| 11 | `lap-javit.md:88` (9. sor) | DT569; gépi forrásadat-javítás csak a szótári részen nem érvényteleníti; próza-/szerkezeti változásnál új átnézés | `adat/SEMA.md` 2.48 „Érvényesség” (DT-F184b, a DT569 általánosítása; „minden más lapváltozás érvényteleníti”) | OK |
+| 11 | `lap-javit.md:88` (9. sor) | DT569; gépi forrásadat-javítás csak a szótári részen nem érvényteleníti; próza-/szerkezeti változásnál új átnézés | `adat/SEMA.md` 2.48 „Érvényesség” (DT665, a DT569 általánosítása; „minden más lapváltozás érvényteleníti”) | OK |
 | 12 | `BRIEF_SABLON.md:73` (25. sor) | PR-fájl, a fő fájl végére nem (ütközés, `dontes_nezet.py`), `szamkiosztas` Action, helyőrző, végleges szám nem | `CLAUDE.md` „Git” (minden elem) | OK |
 | 13 | `MUNKAMENET.md` C1 (16. sor) | „a hét rés” felsorolása | `adat/SEMA.md` 2.12 (kilenc rés; a hét elavult, DT276) | OK (elavult másolat) |
 | 14 | `MUNKAMENET.md` C2 (16. sor) | „hét rés, l. lent” | `adat/SEMA.md` 2.12 | OK (elavult másolat) |
@@ -177,7 +177,7 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 28 | `sablonok/4_:387` (6. sor) | C-h (a felhasználó indítja) → C-l (`naplok/LEKTOR_<ID>.tsv`) → C5 (Feed-kapuk, 1. kiadás, verzió-emelés); `/kiadas` = 2. kiadás bemenete (C-k) | `MUNKAMENET.md` C-h, C-l, C5, C-k („Feed 8” → 9: DT547) | OK |
 | 29 | `sablonok/6_:304`, kolofon (6., 7., 8. sor) | verzió-emelés, újragenerálás; `/kiadas` 5. lépése, a felhasználó indítja; DT486; `/lap-javit` útja, a négy `gond`, `lap_javitasok.tsv` | `MUNKAMENET.md` C5, C-k, C-j; `adat/SEMA.md` 2.46, 2.49 | OK |
 | 30 | `sablonok/6_:481–482`, L8 | nincs törölt tartalom (a két törölt sor szövege a négy új sorban megvan) | – | OK; a bővítés: 3. tétel |
-| 31 | `sablonok/6_:527` (3. sor) | cella kiejtéssel és `n/N`; „ugyanaz a szócsalád”; betoldás; alapvonal (≥ 80%, < 40%, Targum/Vulgata nem mérhető); kiemelés; csak valódi rokon nyelv, nyelvenként egy sor; kiejtés minden nem latin betűs szónál | `sablonok/6_…` 4.11-szabályok 1–6. (a kiemelés a DT-F184a szerinti pontosított alakban) | OK |
+| 31 | `sablonok/6_:527` (3. sor) | cella kiejtéssel és `n/N`; „ugyanaz a szócsalád”; betoldás; alapvonal (≥ 80%, < 40%, Targum/Vulgata nem mérhető); kiemelés; csak valódi rokon nyelv, nyelvenként egy sor; kiejtés minden nem latin betűs szónál | `sablonok/6_…` 4.11-szabályok 1–6. (a kiemelés a DT664 szerinti pontosított alakban) | OK |
 | 32 | `sablonok/6_:529` (4. sor) | „V1–V7” | `adat/SEMA.md` 3.11 | OK |
 | 33 | `sablonok/9_:283` (5. sor) | 24., 25. szabály („arany szintű: kerek próza + Funkció”), olvasói kapu, teljesség-mérés | `sablonok/6_…` L8 | OK |
 | 34 | `adat/SEMA.md:9–11` (22. sor) | egyirányúság: kinyerés a `jeloltek.tsv`-n át, generálás, nincs visszaírás | `adat/SEMA.md` 3. szakasz 9. | OK |
@@ -186,7 +186,7 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 37 | `adat/SEMA.md` 2.49 :1934 (9. sor) | „DT569” | `adat/SEMA.md` 2.48 („a DT569 általánosítása”) | OK |
 | 38 | `adat/SEMA.md` 2.50 → 2.55 (31. sor) | a teljes E34-szakasz | `adat/SEMA.md` 2.55, szó szerint (a cím kiegészült) | OK; a mutatók: 2. tétel |
 | 39 | `eszkozok/olvasoi_kapu.py` docstring (D3) | a 23 kapu leírása és súlyossága | `KAPUK` tábla (szó szerint; a helyőrzők helyén a végleges DT602/603/645/646) | OK |
-| 40 | `eszkozok/olvasoi_kapu.py` V1–V6 komment (4. sor) | V1–V6 leírása | `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT-F184a szerint) | OK |
+| 40 | `eszkozok/olvasoi_kapu.py` V1–V6 komment (4. sor) | V1–V6 leírása | `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT664 szerint) | OK |
 | 41 | `.github/workflows/ellenorzes.yml:73` | a lépés neve („E2-E30”) | ugyanott, „E2-E37” (a régi szöveg minden eleme megvan) | OK |
 | 42 | `NYITOTT_FELADATOK.md:852` | nincs törölt tartalom (az N-F166a sora lezárva, a régi szöveg „Előzmény”-ként megmaradt) | – | OK |
 
@@ -225,7 +225,7 @@ Ez az `elteres.md` meglévő szabályának áthelyezése, új tartalom nincs ben
 
 Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így már valós célra mutat, ezért szövegén nem változtattam.
 
-### 5. Az E34 súlyossága (F184.17; ELLENOR_F184 5.; DT-F184c)
+### 5. Az E34 súlyossága (F184.17; ELLENOR_F184 5.; DT666)
 
 **Orkesztrátori döntés:** a kód szerinti súlyosság a kanonikus. A generált 3.11 a kódból jön, és az a kanonikus.
 
@@ -253,7 +253,7 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
 
 - **E13:** a kód tanulmányfájlon HIBA-t ad (`E13_TANULMANY_SZINT = 'HIBA'`, `szabalyok.py` :62, :871; a tanulmányfájl: `kozos.tanulmany_fajl_e`), máshol az alapszintet (`SZINT['E13']` = FIGYELMEZTETES). Új `SZINT_EMELES`-sor: „HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, `motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`)”. Az E13 nem fájlszintű, ezért PR-módban a diff szerint leminősülhet (`futtat.py` `_szint_diff_szerint`); ez minden nem fájlszintű szabályra áll, a sor csak a kód saját szintjét mondja.
 - **További emelés a kódban (grep):** `grep -nE "szint\s*=\s*[^=]|Talalat\([^)]*'(HIBA|FIGYELMEZTETES|JELENTES)'" szabalyok.py` (a `SZINT[` nélküli találatok). Eredmény: :871 (E13), :1369 (E25 (a), leminősítés: JELENTES/FIGYELMEZTETES), :2920 (E34), **:1317 (E25 (c): `Talalat('E25', 'HIBA', …)`)**. Az ellenőr mintája (`'HIBA' if|else 'FIGYELMEZTETES'|_SZINT = 'HIBA'`) az E25 (c)-t nem fogta meg: a hibás `adat/dontes_hatas.tsv`-sor (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum) HIBA, az alapszint (`SZINT['E25']`) FIGYELMEZTETES; a SEMA E25-bekezdése ezt ki is mondja („Csak az (c) HIBA”, DT-F51-4). Ugyanaz a hibaosztály, ezért ugyanebben a commitban ez is `SZINT_EMELES`-sort kapott. `scope=eszkozok/ellenorzes/szabalyok.py | forras=grep (fent) @ d3283a5e | ts=2026-11-09`
-- **A DT-F184c elve fedi:** a kód szerinti, találatonkénti szint a kanonikus; a 3.11 forrástáblája mondja ki az emelést. A DT-F184c sora nem változott (az E34-ről szól; az elv általános).
+- **A DT666 elve fedi:** a kód szerinti, találatonkénti szint a kanonikus; a 3.11 forrástáblája mondja ki az emelést. A DT666 sora nem változott (az E34-ről szól; az elv általános).
 - **Újragenerálás:** `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir` → „újraírva”; kézi szerkesztés nincs. A `SZINT_EMELES` most: E13, E25, E34.
 - **Tesztek:** két új (`test_szint_emeles_e13_a_blokkban`, `test_szint_emeles_e25_a_blokkban`); a `SZINT_EMELES` kulcsait vagy a blokk sorait számoló teszt nincs, más tesztet nem kellett igazítani.
 - **Mellékesen:** `szabalyok.py` `wf =_e36_olvas(` → `wf = _e36_olvas(`.
@@ -261,7 +261,7 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
 ### 2. A „nem hiány-kitöltés” tagmondat és a tagmondat-szintű újraátnézés (F184.22; ELLENOR_F184_2 2.)
 
 - **Visszaállítva:** `sablonok/6_…` 4.11-szabályok 0. pont, a Targum-cella mondata: „„nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a Targum `N`-jébe nem számít”. A tartalomvesztés-táblázat 35. sora és az összesítés helyesbítve.
-- **Újraátnézés:** `git diff --word-diff=porcelain b4c4dae5..d4bd1f44`, a dokumentumfájlok (a kód, a `naplok/`, a brief, a `dontesek/uj/`, a `nyitott/uj/` nélkül) minden törölt szakasza (124). Gépi előszűrés: a szakasz, illetve tagmondatai (`;`, `,`, `—`, zárójel, mondathatár szerint) szó szerint megvannak-e a HEAD dokumentumaiban; 66 igen. A maradék 58-at kézzel vetettem össze a kanonikus hellyel (kulcsszó-keresés, majd a hely kiolvasása): `kovetkezo.md` 10. lépés (befogad CI-kör), SEMA 2.46 (kiadási sor), 2.48 „Érvényesség” (DT569/DT-F184b), 2.53 „Két kéz” és „A lánc honnan jön”, 2.55 (E34), `9_` hét szabály 1–2. (U2/U3, SORÁLLAPOT), `6_` L8, 4.11-szabályok 0.–8., `MUNKAMENET.md` C5, C-k, C-j, `CLAUDE.md` „Git” és „Egyirányúság”. **További elveszett tagmondat nincs.** Két nem szó szerinti, de nem vesztes eltérés: a `6_` régi összefoglalójának „kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza” mondata a DT-F184a szerint pontosított alakban áll (3. pont: csak alapvonallal); a `4_`/`6_` „Feed 8 kapuja” a DT547 szerint 9. `scope=b4c4dae5..d4bd1f44, dokumentumfájlok | forras=git diff --word-diff=porcelain + kulcsszó-keresés @ 27beed32 | ts=2026-11-09`
+- **Újraátnézés:** `git diff --word-diff=porcelain b4c4dae5..d4bd1f44`, a dokumentumfájlok (a kód, a `naplok/`, a brief, a `dontesek/uj/`, a `nyitott/uj/` nélkül) minden törölt szakasza (124). Gépi előszűrés: a szakasz, illetve tagmondatai (`;`, `,`, `—`, zárójel, mondathatár szerint) szó szerint megvannak-e a HEAD dokumentumaiban; 66 igen. A maradék 58-at kézzel vetettem össze a kanonikus hellyel (kulcsszó-keresés, majd a hely kiolvasása): `kovetkezo.md` 10. lépés (befogad CI-kör), SEMA 2.46 (kiadási sor), 2.48 „Érvényesség” (DT569/DT665), 2.53 „Két kéz” és „A lánc honnan jön”, 2.55 (E34), `9_` hét szabály 1–2. (U2/U3, SORÁLLAPOT), `6_` L8, 4.11-szabályok 0.–8., `MUNKAMENET.md` C5, C-k, C-j, `CLAUDE.md` „Git” és „Egyirányúság”. **További elveszett tagmondat nincs.** Két nem szó szerinti, de nem vesztes eltérés: a `6_` régi összefoglalójának „kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza” mondata a DT664 szerint pontosított alakban áll (3. pont: csak alapvonallal); a `4_`/`6_` „Feed 8 kapuja” a DT547 szerint 9. `scope=b4c4dae5..d4bd1f44, dokumentumfájlok | forras=git diff --word-diff=porcelain + kulcsszó-keresés @ 27beed32 | ts=2026-11-09`
 
 ### 3. A hatókör sorszáma (F184.23; ELLENOR_F184_2 3.)
 
@@ -269,7 +269,7 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
 
 ## Zárás
 
-- **Elkészült:** D1 (1 sor a `CLAUDE.md`-ben; DT-F184a, DT-F184b), D2 (34 csere: 29 nem-SEMA csere 13 fájlban + 5 SEMA-csere, köztük a DT-F184b 2.48-szövege és a „2.50” szétválasztása; ezen felül az N-F166a lezárása a `NYITOTT_FELADATOK.md` meglévő sorában), D3 (modulszintű táblák, generátor, SEMA 3.11 GENERÁLT blokk, E37), D4 (`/kovetkezo` 10. lépés + 4 kapcsolódó csere, BRIEF_SABLON „Jelentés”), D5 (E36). A D6 (független ellenőr, draft PR) az orkesztrátoré.
+- **Elkészült:** D1 (1 sor a `CLAUDE.md`-ben; DT664, DT665), D2 (34 csere: 29 nem-SEMA csere 13 fájlban + 5 SEMA-csere, köztük a DT665 2.48-szövege és a „2.50” szétválasztása; ezen felül az N-F166a lezárása a `NYITOTT_FELADATOK.md` meglévő sorában), D3 (modulszintű táblák, generátor, SEMA 3.11 GENERÁLT blokk, E37), D4 (`/kovetkezo` 10. lépés + 4 kapcsolódó csere, BRIEF_SABLON „Jelentés”), D5 (E36). A D6 (független ellenőr, draft PR) az orkesztrátoré.
 - **SEMA-commitok** külön, a többi után: F184.5 `0dfe41a7`, F184.6 `e3114724`, F184.7 `d0cb8d6c`, F184.8 `f26301dc`, F184.10 `ebe7add9` (a blokk újragenerálása az F184.9 után).
 - **A CI PR-módú futásának javítása (F184.9 `88d0293b`):** az első futás két, általam okozott HIBA-t talált. (1) E32: a `KAPUK` literáljaiban már kiosztott helyőrzők álltak (DT-F181b/c, DT-F178d/e); ezek helyére a végleges számok kerültek (DT602, DT603, DT645, DT646). (2) E10: az E10 saját leírása a generált blokkban kiváltotta a tiltott-fordítás mintát; a leírást átfogalmaztam.
 - **Generált blokk:** `adat/SEMA.md` 3.11, naprakész (`python eszkozok/ellenorzes/szabalyok.py --kapulista --ir` → „naprakész”); E37: 0 találat.
@@ -282,13 +282,13 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
 - **CI-futtató PR-módban** (`futtat.py`, base `a0547c03`..HEAD): a javítások után exit 0, HIBA nincs; JELENTÉS-szinten E9 5, E25 3, E27 43, E30 1, E34 41, E36 1 (a SEMA 2.34, N-F184b) — ezek nem a #184 hozzáadott sorain állnak. A futás `--pr-cim "[ELLENŐRZŐ] …"`-tel ment.
 - **E16:** a PR az ellenőrzőt módosítja (`szabalyok.py`, `olvasoi_kapu.py`, `ellenorzes.yml`), ezért a PR címe `[ELLENŐRZŐ]` jelölést kíván.
 - **Nyitott pontok** (`nyitott/uj/doku-egy-forras.md`):
-  - N-F184a: a Feed 9. kapuja még nem ismeri a DT-F184b kivételét (a blokkszintű lapdiff gépi ellenőrzése hiányzik);
+  - N-F184a: a Feed 9. kapuja még nem ismeri a DT665 kivételét (a blokkszintű lapdiff gépi ellenőrzése hiányzik);
   - N-F184b: a SEMA 2.34 kettőzése (az E36 találta; a D0-n kívül esett);
   - N-F184c: a „Kontextus-őrzés” és a `munka` mező szabályainak helye a D1-hez képest (döntés kell);
   - N-F184d: a szintjelölés (SEMA 3.10 ↔ 9-es sablon) mérése.
   - Egyik sem blokkolja a #184 lezárását.
 - **Proveniencia:** `scope=F184 D1–D5 | forras=git log 19290a7a..HEAD, a fenti parancsok kimenete | ts=2026-11-09`.
-- **Javítókör 1/2 (ELLENOR_F184, 5 tétel):** F184.13 (tartalomvesztés: 42 hely, 2 hiányos, 5 elem visszaállítva), F184.14 (DT614 → SEMA 2.55; a régi 2.50-mutatók listája), F184.15 (a 6_ L8-bővítése a jelentésben), F184.16 (`Co-Authored-By` → `CLAUDE.md` „Git”), F184.17 (E34 súlyossága a kód szerint, `SZINT_EMELES`, DT-F184c). Részletek: „Javítókör 1/2”.
+- **Javítókör 1/2 (ELLENOR_F184, 5 tétel):** F184.13 (tartalomvesztés: 42 hely, 2 hiányos, 5 elem visszaállítva), F184.14 (DT614 → SEMA 2.55; a régi 2.50-mutatók listája), F184.15 (a 6_ L8-bővítése a jelentésben), F184.16 (`Co-Authored-By` → `CLAUDE.md` „Git”), F184.17 (E34 súlyossága a kód szerint, `SZINT_EMELES`, DT666). Részletek: „Javítókör 1/2”.
 - **Egyeztetett eltérés:** az `ir` mező bővítését (`sablonok/1_*`, `2_*`, `4_*`, `5_*`, `sablonok/PaRDeS_gyorsreferencia.md`, `.claude/commands/lap-javit.md`, `kiadas.md`, `befogad.md`, `NYITOTT_FELADATOK.md`) az orkesztrátor (`local_c8cc3610`) utólag jóváhagyta, mert ezek a fájlok a jóváhagyott leltár D2-soraiban állnak. A javítókörben a `DONTESEK.md` meglévő DT614-sorát a „Közös koordinációs fájlok” kivétele szerint szerkesztettem (az orkesztrátor 2. tétele), az `ir` mező ezért nem változott.
 - **Tesztek a javítókör után (2026-11-09, HEAD `1193658f`):**
   - `python eszkozok/feladatok.py ellenoriz`: 201 brief, 0 hiba, 0 figyelmeztetés;
@@ -297,7 +297,7 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
   - `python eszkozok/ellenoriz.py` (E1): 0 SÉRTÉS (RENDBEN 27, KÉZI 2, JELENTÉS 14);
   - `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`: „naprakész”;
   - CI-futtató PR-módban (`futtat.py --valtozott <29 fájl> --diff-alap b4c4dae5 --diff-fej 1193658f --pr-cim "[ELLENŐRZŐ] F184" --commit-uzenet-fajl <a PR üzenetei> --esemeny pull_request`; a base a `git merge-base origin/main HEAD`; futásidő 6 perc 41 mp): exit 0, HIBA nincs. JELENTES-szinten: E9 5, E25 3, E27 43, E30 1 (az F184.2 üzenetében az „elteres” parancsnév), E34 41 (mind nem kiadott motívumon: kiadott motívumon 0 HIBA), E36 1 (a SEMA 2.34, N-F184b); E37 0.
-- **Javítókör 2/2 (ELLENOR_F184_2, 3 tétel):** F184.21 (`SZINT_EMELES`: E13, és a grep-átnézésben talált E25 (c); a 3.11 újragenerálva; DT-F184c elve), F184.22 (a „nem hiány-kitöltés” tagmondat vissza a `6_` 0. pontjába; a word-diff tagmondat-szintű újraátnézése: 124 törölt szakasz, további vesztés nincs), F184.23 (109 törölt sor, ebből 3 a brief, nélküle 106). Részletek: „Javítókör 2/2”.
+- **Javítókör 2/2 (ELLENOR_F184_2, 3 tétel):** F184.21 (`SZINT_EMELES`: E13, és a grep-átnézésben talált E25 (c); a 3.11 újragenerálva; DT666 elve), F184.22 (a „nem hiány-kitöltés” tagmondat vissza a `6_` 0. pontjába; a word-diff tagmondat-szintű újraátnézése: 124 törölt szakasz, további vesztés nincs), F184.23 (109 törölt sor, ebből 3 a brief, nélküle 106). Részletek: „Javítókör 2/2”.
 - **Tesztek a 2. javítókör után (2026-11-09, HEAD `2665aec1`):**
   - `python eszkozok/feladatok.py ellenoriz`: 201 brief, 0 hiba, 0 figyelmeztetés;
   - `python eszkozok/teszt_feladatok.py`: 119 teszt, OK;

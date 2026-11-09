@@ -21,8 +21,8 @@ A jelentést nem tudtam fájlba írni: nincs íróeszközöm. A szöveg az aláb
 | **D2 / 6_ L8 (5. sor)** | **ELTÉRÉS** | `sablonok/6_…:480-484` | Lásd a 3. pontot. |
 | D2 / 6_ kolofon, 4_ (6–8. sor) | OK | `sablonok/6_…:304`, `sablonok/4_…:387`, `MUNKAMENET.md:81-83` | A törölt részek (verzió-emelés, `/kiadas` 5. lépése, DT486, `/lap-javit`) a C5, C-k és C-j sorban megvannak. A „Feed 8” helyett „9”: ezt a DT547 fedi. A „Feed 8” sehol sem maradt (Grep: 0). |
 | D2 / kiadas.md, lap-javit.md → SEMA 2.46 | OK | `adat/SEMA.md:1838-1841` | A `kiadas` folytonos, a `valtozas` egy mondat, a `proza_modell` „a futó környezetből”: a 2.46 mindhármat tartalmazza. |
-| D2 / 9. sor → SEMA 2.48 | OK | `adat/SEMA.md:1898-1902`; `dontesek/uj/doku-egy-forras.md:2` | A szöveg szó szerint egyezik a DT-F184b (a)–(c) feltételeivel. A DT569 csak a SEMA-ban maradt (Grep `DT569`: 1 találat). |
-| D2 / 3. sor (DT-F184a) | OK | `sablonok/6_…:529, 537`; `eszkozok/olvasoi_kapu.py` V5 | A pontosított alak (kiemelés csak alapvonallal) maradt. A V1–V6 komment eltűnt (Grep `V1–V6`: 0). |
+| D2 / 9. sor → SEMA 2.48 | OK | `adat/SEMA.md:1898-1902`; `dontesek/uj/doku-egy-forras.md:2` | A szöveg szó szerint egyezik a DT665 (a)–(c) feltételeivel. A DT569 csak a SEMA-ban maradt (Grep `DT569`: 1 találat). |
+| D2 / 3. sor (DT664) | OK | `sablonok/6_…:529, 537`; `eszkozok/olvasoi_kapu.py` V5 | A pontosított alak (kiemelés csak alapvonallal) maradt. A V1–V6 komment eltűnt (Grep `V1–V6`: 0). |
 | D2 / 10. sor (kiejtés) | OK | `sablonok/6_…:382` + 5 hivatkozás | A kanonikus bekezdés változatlan, az öt másolat helyén hivatkozás áll. A D1-döntés fedi. |
 | D2 / 16., 17., 22., 25., 27., 30. sor | OK | `MUNKAMENET.md:68-69, 95`; `adat/SEMA.md:9-10`; `BRIEF_SABLON.md:73-75`; `befogad.md:29` | A célok megvannak: SEMA 2.12 (kilenc rés, :741), SEMA 3/9 (:2203), 5. menetszabály, `/kovetkezo` 10. lépés. |
 | **D2 / 26. sor (elteres.md)** | **ELTÉRÉS** | `.claude/commands/elteres.md:30` | Lásd a 4. pontot. |
@@ -33,7 +33,7 @@ A jelentést nem tudtam fájlba írni: nincs íróeszközöm. A szöveg az aláb
 | D4 | OK | `.claude/commands/kovetkezo.md:56-87`; `BRIEF_SABLON.md:73` | Grep `zárójelentés\|_zaras\.md`: csak a 10. lépés („külön `_zaras.md` nem készül”) és a `feladatok.py`-kivétel maradt. |
 | D5 E36 / E37 tesztek | NEM ELLENŐRIZHETŐ | `test_szabalyok.py:2117-2234` | A Grep szerint megvan az `E36Teszt` (7 teszt) és az `E37Teszt` (7 teszt). A futtatásukhoz `unittest` kell, ez nem megengedett parancs. |
 | ir-mező bővítése | OK (megjegyzéssel) | `F184_DOKU_EGY_FORRAS_BRIEF.md:14` | Az 1_/2_/4_/5_, a gyorsreferencia, a `lap-javit`, `kiadas`, `befogad` és a `NYITOTT_FELADATOK` mind a jóváhagyott leltár D2-soraiban áll (10., 6., 7–9., 30., 31. sor). Tartalmi hatókör-bővítést nem látok. Az orkesztrátor kifejezetten csak a leltár-szkripteket engedte felvenni, a többi bővítés a végrehajtó saját lépése, a jelentésben jelezve (:89). |
-| Végleges DT/N szám | OK | `dontesek/uj/…`, `nyitott/uj/…`, `olvasoi_kapu.py` | Az új tételek helyőrzősek (DT-F184a/b, N-F184a–d). A `KAPUK`-ban álló DT602/603/645/646 meglévő szám; a megfeleltetést a `git log --grep="DT-F181b"` → `b4ef5dad` és a `55fa1573` igazolja. A `DONTESEK.md`-t a diff nem érinti. |
+| Végleges DT/N szám | OK | `dontesek/uj/…`, `nyitott/uj/…`, `olvasoi_kapu.py` | Az új tételek helyőrzősek (DT664/b, N-F184a–d). A `KAPUK`-ban álló DT602/603/645/646 meglévő szám; a megfeleltetést a `git log --grep="DT-F181b"` → `b4ef5dad` és a `55fa1573` igazolja. A `DONTESEK.md`-t a diff nem érinti. |
 | A1 | OK | `naplok/F184_jelentes.md:14` | A „másolat-e” és az „eltér-e” ítéletet a jelentés értelmezésnek jelöli, nem gépi mérésnek. |
 | A2 | OK | `adat/SEMA.md:1454, 1611` | Az N-F184b nyitottsága igaz: a Grep `^### 2.34` két címsort ad. Az N-F166a ténylegesen megoldott. |
 | A3, A4, A5 | NEM ELLENŐRIZHETŐ | – | Nem alkalmazható: nincs tanulmány- vagy prózaszöveg, nincs nevesített tanító a diffben. |

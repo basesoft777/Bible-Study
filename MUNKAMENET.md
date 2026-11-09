@@ -98,7 +98,7 @@ A lépésszám cikkenként rögzített (DT566, a felhasználó jóváhagyásáva
 
 5. **A régi lektori kártyák** (a Kiadón az elavult prózáról feltett kérdések) a Kiadó-lépésben „az újraírás okafogyottá tette” jelöléssel zárulnak, az orkesztrátorral egyeztetve; a **határkártyákra** (`forras=hatar`) a felhasználó dönt, ezeket nem zárja le a menet.
 6. **A lapnézet** a C-v-hez: `python C:\Users\bases\pardes_eszkozok\epit_nezet.py lexikon/<ID>_TUDOMANYOS.md <scratchpad>\x.html <commit>`, **privát** artifactként, mindig világos témával; a link az `eszkozok/lektor_felulet/lapnezetek.tsv`-be kerül. A menet a renderelt lapot maga is megnyitja és átnézi, mielőtt kész-nek jelzi.
-7. **Átnézés és kiadás csak a felhasználó szavával.** Az `adat/lap_atnezesek.tsv` sora és az 1. kiadás (`adat/kiadasok.tsv`) csak a felhasználó szó szerinti jóváhagyásával íródik. Hogy egy későbbi lapváltozás érvényteleníti-e az átnézést: `adat/SEMA.md` 2.48 „Érvényesség” (DT-F184b).
+7. **Átnézés és kiadás csak a felhasználó szavával.** Az `adat/lap_atnezesek.tsv` sora és az 1. kiadás (`adat/kiadasok.tsv`) csak a felhasználó szó szerinti jóváhagyásával íródik. Hogy egy későbbi lapváltozás érvényteleníti-e az átnézést: `adat/SEMA.md` 2.48 „Érvényesség” (DT665).
 
 ## A4 és B5 — kötelező megállási pont
 
