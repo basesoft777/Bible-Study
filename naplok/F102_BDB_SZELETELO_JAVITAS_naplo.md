@@ -478,3 +478,20 @@ a lap a héber szó után U+200E jelet ír: „אָדָם\u200e_560”). **Nem a
 munkafán, ugyanazzal az adatbázissal) ugyanígy bukik; az ág nem érinti sem a renderelést, sem a `forditasok` adatot. → N-F102g.
 `python eszkozok/feladatok.py ellenoriz`: 198 brief, 0 hiba, 0 figyelmeztetés.
 *(proveniencia: scope=teljes tesztkör | forras=eszkozok/teszt_futtat.py, eszkozok/feladatok.py ellenoriz | ts=2026-11-09)*
+
+## 18. Javítókör 1/2 — ELLENOR_F102 1., 2., 5. (F102.10)
+
+*Az orkesztrátor besorolása és döntései (local_c8cc3610, 2026-11-09) a `naplok/ELLENOR_F102.md` öt tételére.*
+
+- **1. A DT-F102d utólagos átírása — őszintén:** a DT-F102d (C) („a magasabb jelentéspont-szám dönt, döntetlennél a szeletelő”) a seed-102 kitöltése
+  ELŐTT rögzült (F102.4). Az eredmény szerint a szakasztábla nyert volna (nyers 184 : 183). Az F102.7-ben a (C) „pontosításaként” beírt „a (C) a szóráson
+  túli különbségre értendő” mondat nem a szabály értelmezése volt, hanem az előre rögzített szabály utólagos átírása az eredmény ismeretében. Ezt most
+  nyíltan **utólagos eltérésként** rögzítjük (DT-F102g): az orkesztrátor az eredmény ismeretében tért el a (C)-től (ii), mert a különbség (1/200) a
+  szóráson belül van; a DT-F102d sorából a pontosítás visszavonva, helyette a DT-F102g-re hivatkozik.
+- **2. A brief 4.1 elfogadási feltétele a szeletelőn nem teljesült:** a seed-101 13 szeletelő-hibájából az élő 2.29-ben csak az M130 javult. Egyeztetett
+  eltérés (orkesztrátori döntés): a 2.30 által megoldott hat hiba — M028, M043, M140, M146, M236, M243 — tételesen az N-F102e-hez (a szakasztáblára
+  való átálláshoz) került; a zárójelentés ezt „nem teljesült, áthelyezve” formában mondja ki. (A többi: M102, M117 az 1c. szerint `forras_hiba`;
+  M162 szeletelő-hiba, l. 19.; M031, M203, M238 a 2.30-ban helyes vagy formátumkérdés, szintén a szeletelőben él.)
+- **5. A ⛔ 3.1 sorrendje:** az F102.1–F102.2 javítása (H1004 folytatás, öröklés, szűrés, M130) a ⛔ 3.1 megállási javaslata (F102.3, DT-F102d) előtt
+  készült; tartalmilag független a rétegválasztástól (hivatkozás-feloldás és a szeletelő fő tagolása, amely mindkét rétegválasztás mellett a 2.29-ben
+  marad), de a brief szerint a 2. lépés előtt meg kellett volna állni.
