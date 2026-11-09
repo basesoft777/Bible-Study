@@ -1,0 +1,39 @@
+ELTÉRÉS: 3 tétel
+# ELLENOR_F103 — `F103_BDB_TAGOLAS_BRIEF.md`, `94c4c2ac..6de2329e`
+
+*A `fuggetlen-ellenor` jelentése (modell: claude-opus-5-5). Az ellenőrnek nincs fájlíró eszköze, ezért a szöveget az orkesztrátor írta ki szó szerint és commitolta.*
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0 modell | OK | `naplok/F103_BDB_TAGOLAS_naplo.md:3` | ellenőrző `claude-opus-5-5`, kért `opus`; a menet napló-/zárásfejléce és az F103.0 commit `claude-opus-5-5`; adattábla `modell`-mezője nem változott (`git diff --numstat 94c4c2ac..HEAD -- adat/ konkordancia/`: csak SEMA.md és bdb_vers_jelentes.tsv) |
+| G/D a briefben | NEM ELLENŐRIZHETŐ | `F103_BDB_TAGOLAS_BRIEF.md:60-62` | a briefben nincs G-pont, a döntésnapló üres („helyőrzők a futáskor”); a D-pontok a `dontesek/uj/f103-bdb-tagolas.md`-ben, l. lent |
+| DT668 (A) (1) két új oszlop, a régiek bájtra azonosak | OK | `adat/bdb_vers_jelentes.tsv` | `git diff 94c4c2ac..HEAD --word-diff=porcelain --word-diff-regex='[^<TAB>]+' -- adat/bdb_vers_jelentes.tsv` → Grep: egyetlen eltávolított mező a `# forras:` fejléc (kód-hash); beszúrt sor 29 637 = `+++` + `# forras` + oszlopfejléc `csoport<TAB>csoport_jel` (a `szurt` után, a `proveniencia` előtt) + 29 634 adatsor `+<n><TAB><jel>` (`^\+\+\d+\t`: 29 634); egymezős beszúrás nincs; `+0` nincs; a `fej`/`tagolatlan` utvonalú sorok közül egy sem kapott csoportot (multiline Grep: 0). Korlát: az üres mezőt a szóhatár-diff nem látja — mezőeltolódást csak a sorszám-egyezés (`--numstat` 162055/162055) és a szúrópróba zár ki; a végrehajtó SHA-256 tesztjét (`63373512…`) nem futtathattam |
+| DT668 (2) `utvonal` változatlan, #102 183/200 | OK (`utvonal`) / NEM ELLENŐRIZHETŐ (183) | — | az `utvonal` a fenti diff szerint egyetlen sorban sem változott; a 183/200 mérést (`m2_minta_osszevet.py`) nem futtathattam — ha a mérés oszlopnév szerint olvas, az azonos `utvonal` mellett nem változhat, de ez levezetés, nem futtatott mérés |
+| DT668 (3) `lexikon_general.py` és lapok változatlanok | OK | — | `git diff --stat 94c4c2ac..HEAD -- lexikon/ eszkozok/lexikon_general.py`: üres; saját `futtat.py`-futásom: **E28: 0 találat, „5 migrált nézet”** (a zárójelentés „CI E28 ellenőrzendő” pontja itt helyben zöld) |
+| DT668 (4) SEMA 2.29 | OK | `adat/SEMA.md:1336-1337` | `git diff … -- adat/SEMA.md`: `csoport`, `csoport_jel` leírva, `utvonal`-sor frissítve; a leírás (üres a `fej`/`tagolatlan` sorokban; 164/184) egyezik a táblával |
+| DT668 (5) „Egyeztetett eltérés” | OK | `naplok/BDB_TAGOLAS_zaras.md:11-16` | öt pont (⛔ 3., #102 fejléc, `ir`-bővítés, 674→8099, ágfájlnév) |
+| DT668: `ir` bővítése | OK | `F103_BDB_TAGOLAS_BRIEF.md:15` | a diffben nincs `ir`-en kívüli kódfájl; a `naplok/`, a `dontesek/uj/`, a `nyitott/uj/` és a brief szokásos |
+| DT669 (a) 🟢 | OK | `eszkozok/olvaso_szerver/bdb_szelet.py` (`_CS_HU`) | a `_CS_HU` a régi alakokat is jelölőnek veszi (képletesen, ellentétben, szemben); státusz 🟢, orkesztrátori döntés |
+| állítás: aranyminta 0 → 164/184 | NEM ELLENŐRIZHETŐ | `naplok/F103_BDB_TAGOLAS_naplo.md:163` | az aranyminta 184 csoportsora: Grep `\tcsoport\t` a `adat/bdb_aranyminta.tsv`-n = 184; a 164-et a mérőszkript/teszt adja, ezeket nem futtathattam. Szúrópróba Greppel: H3176 Job 14:14 → `Pi'el/1` `+1` `absolute`, Ezek 13:6 → `Pi'el/2` `+1` `followed by` — egyezik az aranyminta 17. és 19. sorával; `lekerdez.py scan H3176 --szakasz "Jób 14:14"` / `"Ez 13:6"`: n=1 mindkettő |
+| állítás: csoportszintű hamis határ 0 | NEM ELLENŐRIZHETŐ, és a teszt lazább a mérésnél | `eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py` (`CsoportAranyminta`) | nem futtatható; a teszt csoportszintű hamis határnak csak a `(strong,)+k in szulok and v` esetet veszi — ha az aranyminta egy szülőhöz nem vár csoportot, de a kód bont, a teszt szerkezetinek könyveli el (≤18 kereten belül); a mérőszkript (`F103_BDB_TAGOLAS_meres.py:212`) ezt a feltételt nem tartalmazza, ezért szigorúbb → ELTÉRÉS (2) |
+| brief 4. elfogadási feltétel 1 | ELTÉRÉS | `F103_BDB_TAGOLAS_BRIEF.md:57` | „az aranymintán a csoportok egyeznek, hamis határ 0”: az eredmény 164/184, 20 hiány, 18 hamis határ, mind „szerkezeti” besorolással (N109); ez nincs az egyeztetett eltérések között, és a teszt a 20/18-at küszöbként rögzíti → ELTÉRÉS (1) |
+| állítás: a `teszt_szintek.py` H0120-hibája a main-en is fennáll (N110) | NEM ELLENŐRIZHETŐ | `nyitott/uj/f103-bdb-tagolas.md:4` | a tesztet nem futtathattam; igazolható: a `teszt_szintek.py` és a lapot előállító `lexikon_general.py` nem változott a diffben |
+| ⛔ 3. (#38-kötés) feltétel szerint | OK | — | `git log 94c4c2ac..HEAD -- adat/terminologia.tsv F38_BDB_FORDITAS_BRIEF.md adat/dontes_hatas.tsv`: üres; N107 a `nyitott/uj/`-ban |
+| #102 fejléc | OK | — | `git diff --stat`: nincs F102-brief a változott fájlok között |
+| N108 (#182) | OK | `eszkozok/lexikon_general.py:3261` | Grep: `<summary>%s (%d szakasz)</summary>`; a hivatkozás pontos, a menet nem javította |
+| A1 | OK | `nyitott/uj/f103-bdb-tagolas.md` | értelmező állítás nincs; a számoknál proveniencia-sor (napló 1., 2., 4.; DT668, DT669) |
+| A2 a nyitott tételek valóban nyitottak | ELTÉRÉS | `nyitott/uj/f103-bdb-tagolas.md:1` | N107: „a hét sor a `terminologia.tsv` új verziójába” — Grep `^absolute` a `adat/terminologia.tsv`-n: 67. sor `absolute (használat)	abszolút használatban … v3	nem` **már benne van**; a többi hat alakra nincs találat (Grep `utána\|kifejezésekben\|ellentéte\|különösen`: 0) → ELTÉRÉS (3) |
+| A3–A6 | nem alkalmazható | — | nincs tanulmány, Remez/Sod, tanító, E12–E15-találat (E12–E15: 0) |
+| CI-jelentés összevetése | NEM ELLENŐRIZHETŐ (nem kaptam CI-jelentést), saját futás | — | `python eszkozok/ellenorzes/futtat.py --valtozott <13 fájl> --diff-alap 94c4c2ac --diff-fej HEAD` → kilépési kód 0; E2–E16, E19, E20, E26, E28, E29, E31–E33, E35: 0; E25 (3), E27 (43), E34 (41): repószintű előzmény, nem a változott fájlokból; E30 1 figyelmeztetés: `9ca93633:uzenet` „utvonal” (oszlopnév, de a szabály szerint figyelmeztetés) |
+| ellenőrzőlista 1 — kiszűrt/törölt sorok | OK | — | `--numstat`: tábla 162055 törölt / 162055 új = 162053 adatsor + 2 fejlécsor, mind átírt sor; tartalmi törlés 0; változott a `# forras` sor és az oszlopfejléc, 29 634 sor kapott új mezőértéket, 132 419 két üres mezőt |
+| 2 — kulcstartomány | OK | — | sorszám-egyezés, Strong-kulcs nem esett ki; szúrópróba: H0001 sorai az 1. sortól; H0559 Qal: `Qal/\d` 0 sor, `Qal/-`-ben 191 csoportos sor — egyezik az N109 leírásával |
+| 3 — „nulla-diff” hatóköre | OK | — | „bájtra azonos” = a régi 15 oszlop a 162 053 adatsoron; nem vonatkozik a `# forras` fejlécre (kód-hash, szabálylista változott) és az oszlopfejlécre; „lexikon változatlan” = lexikonlapok + 5 migrált nézet (E28) |
+| 4 — táblák sorszámváltozása | OK | — | `adat/bdb_vers_jelentes.tsv`: Δ 0 (162 053 → 162 053); más `.tsv` nem változott az `adat/`, `konkordancia/` alatt (`git diff --numstat -- adat/ konkordancia/`); küszöböt nem ér el |
+| 5 — ⛔ pontok | OK | — | ⛔ 3. az egyeztetett hatókör szerint nem állított meg; a DT-F103a-nál a végrehajtó megállt (F103.5/F103.6), és csak a döntés után folytatta (F103.7) |
+
+**ELTÉRÉS-ek súlyosság szerint:**
+1. A brief 4. elfogadási feltétele („a csoportok egyeznek, hamis határ 0”) csak csoportszinten teljesül; a 20 hiány és a 18 hamis határ „szerkezeti” besorolása nincs az egyeztetett eltérések között — döntés kell, elfogadható-e.
+2. A `CsoportAranyminta` teszt lazább a mérőszkriptnél (`and v`): egy valódi hamis határt, ahol az aranyminta a szülőhöz nem vár csoportot, szerkezetinek könyvel el, így a „csoportszinten 0” állítást a teszt nem őrzi teljesen.
+3. Az N107 hét új terminológiai sort ír elő, holott az „abszolút használatban” már a `terminologia.tsv` 67. sorában áll (v3).
+
+Tájékoztatás (nem ELTÉRÉS): az `origin/main` közben `b4c4dae5`-re lépett; az a SEMA 2.29 `szurt` sorát (`DT-F102e` → `DT660`) módosította, az ág közvetlenül utána szúr be — a merge-kor SEMA.md-ütközés várható.

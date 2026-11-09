@@ -1,0 +1,2330 @@
+# F103 (N107): a DT167 (2) kötelező magyar alakjától eltérő (régi) bevezető-alakok a magyar BDB-szócikkekben, szócikkenként. scope=magyar BDB (8099 szócikk, a szerver bdb_magyar-szabálya) | forras=forditasok.tsv@0be309b96bc3 + naplok/F103_BDB_TAGOLAS_meres.py | ts=2026-11-09T19:15
+# A régi alak nem hiba a kész szövegben (DT167 (5) (a): csak mérés és lista, csere nincs); a mondatkezdő oszlop a csoportot nyitó helyzet (; . : — után).
+strong	angol_bevezeto	kotelezo_alak	regi_alak	elofordulas	mondatkezdo
+H0001	followed by	utána	ragos héber (-val/-vel)	1	0
+H0001	figurative	átvitt értelemben	képletesen	2	0
+H0006	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H0009	followed by	utána	ragos héber (-val/-vel)	2	2
+H0014	followed by	utána	követi	4	2
+H0014	followed by	utána	ragos héber (-val/-vel)	2	0
+H0034	especially	különösen	főleg	1	0
+H0056	figurative	átvitt értelemben	képletesen	2	0
+H0056	absolute	abszolút használatban	abszolút (más alakban)	5	2
+H0060	followed by	utána	követi	2	0
+H0101	followed by	utána	ragos héber (-val/-vel)	1	0
+H0101	opposed to	ellentéte	szemben	1	0
+H0102	followed by	utána	ragos héber (-val/-vel)	1	0
+H0113	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0113	especially	különösen	főleg	1	0
+H0117	figurative	átvitt értelemben	képletesen	2	1
+H0120	opposed to	ellentéte	szemben	3	0
+H0123	in phrase(s)	kifejezésekben	kifejezésben	1	1
+H0123	especially	különösen	főként	1	0
+H0156	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H0157	followed by	utána	követi	6	0
+H0157	figurative	átvitt értelemben	átvitt (más alakban)	4	2
+H0157	opposed to	ellentéte	szemben	1	0
+H0160	figurative	átvitt értelemben	képletesen	2	2
+H0160	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H0178	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0182	followed by	utána	követi	1	0
+H0182	followed by	utána	ragos héber (-val/-vel)	1	0
+H0183	followed by	utána	követi	7	2
+H0185	followed by	utána	követi	1	0
+H0194	followed by	utána	követi	2	0
+H0200	followed by	utána	ragos héber (-val/-vel)	3	2
+H0204	opposed to	ellentéte	ellentétben	1	0
+H0205	especially	különösen	főként	1	0
+H0213	followed by	utána	követi	5	2
+H0215	followed by	utána	követi	5	0
+H0215	figurative	átvitt értelemben	képletesen	1	1
+H0219	opposed to	ellentéte	szemben	1	0
+H0224	opposed to	ellentéte	szemben	1	0
+H0226	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0232	figurative	átvitt értelemben	képletesen	1	0
+H0234	followed by	utána	ragos héber (-val/-vel)	1	0
+H0238	absolute	abszolút használatban	abszolút (más alakban)	4	0
+H0247	figurative	átvitt értelemben	képletesen	3	1
+H0249	figurative	átvitt értelemben	képletesen	1	0
+H0251	followed by	utána	ragos héber (-val/-vel)	2	0
+H0251	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H0259	followed by	utána	követi	3	0
+H0268	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0268	opposed to	ellentéte	szemben	2	0
+H0270	figurative	átvitt értelemben	képletesen	2	0
+H0272	figurative	átvitt értelemben	képletesen	1	1
+H0310	followed by	utána	ragos héber (-val/-vel)	1	0
+H0310	especially	különösen	főként	1	0
+H0311	followed by	utána	ragos héber (-val/-vel)	1	0
+H0312	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0319	opposed to	ellentéte	szemben	2	0
+H0328	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0335	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0340	opposed to	ellentéte	szemben	2	0
+H0343	especially	különösen	főként	1	0
+H0346	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0346	opposed to	ellentéte	ellentétben	1	0
+H0352	figurative	átvitt értelemben	átvitt (más alakban)	3	3
+H0367	figurative	átvitt értelemben	képletesen	1	0
+H0369	followed by	utána	követi	2	0
+H0369	followed by	utána	ragos héber (-val/-vel)	2	0
+H0369	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H0369	opposed to	ellentéte	szemben	1	0
+H0374	especially	különösen	főként	1	1
+H0375	followed by	utána	ragos héber (-val/-vel)	2	0
+H0375	opposed to	ellentéte	szemben	2	0
+H0376	followed by	utána	követi	2	0
+H0376	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	1
+H0376	figurative	átvitt értelemben	képletesen	2	2
+H0376	opposed to	ellentéte	szemben	3	0
+H0383	followed by	utána	követi	2	0
+H0386	figurative	átvitt értelemben	képletesen	2	0
+H0386	opposed to	ellentéte	szemben	1	0
+H0389	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H0389	opposed to	ellentéte	ellentétben	4	0
+H0391	followed by	utána	ragos héber (-val/-vel)	1	0
+H0391	opposed to	ellentéte	szemben	1	1
+H0394	followed by	utána	ragos héber (-val/-vel)	1	0
+H0398	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H0398	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H0402	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0402	figurative	átvitt értelemben	képletesen	2	1
+H0403	opposed to	ellentéte	ellentétben	1	0
+H0408	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H0410	followed by	utána	követi	2	0
+H0413	followed by	utána	követi	1	0
+H0413	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H0413	opposed to	ellentéte	szemben	3	0
+H0418	followed by	utána	ragos héber (-val/-vel)	1	0
+H0422	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0423	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0424	figurative	átvitt értelemben	képletesen	1	1
+H0428	followed by	utána	ragos héber (-val/-vel)	3	2
+H0430	followed by	utána	ragos héber (-val/-vel)	1	0
+H0430	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0430	especially	különösen	főként	1	0
+H0430	especially	különösen	kiváltképp	1	0
+H0457	opposed to	ellentéte	ellentétben	1	1
+H0489	figurative	átvitt értelemben	képletesen	1	0
+H0490	figurative	átvitt értelemben	képletesen	1	1
+H0503	followed by	utána	követi	4	0
+H0518	followed by	utána	ragos héber (-val/-vel)	1	0
+H0518	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H0519	figurative	átvitt értelemben	képletesen	1	0
+H0520	followed by	utána	követi	4	1
+H0520	especially	különösen	főleg	1	1
+H0520	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H0522	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0530	followed by	utána	ragos héber (-val/-vel)	1	0
+H0539	followed by	utána	ragos héber (-val/-vel)	2	1
+H0541	followed by	utána	követi	6	0
+H0541	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0541	opposed to	ellentéte	ellentétben	2	0
+H0559	followed by	utána	követi	2	0
+H0559	followed by	utána	ragos héber (-val/-vel)	5	2
+H0559	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	5	2
+H0560	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0562	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0572	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0575	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0576	followed by	utána	követi	1	1
+H0577	followed by	utána	követi	2	0
+H0579	followed by	utána	ragos héber (-val/-vel)	2	0
+H0584	followed by	utána	követi	3	0
+H0589	followed by	utána	ragos héber (-val/-vel)	1	0
+H0595	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0595	opposed to	ellentéte	szemben	2	0
+H0599	followed by	utána	követi	2	0
+H0605	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0622	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	4	2
+H0622	figurative	átvitt értelemben	képletesen	1	0
+H0622	especially	különösen	főleg	1	0
+H0631	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0637	followed by	utána	ragos héber (-val/-vel)	1	0
+H0639	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0645	followed by	utána	ragos héber (-val/-vel)	1	0
+H0646	followed by	utána	ragos héber (-val/-vel)	1	0
+H0650	figurative	átvitt értelemben	képletesen	1	1
+H0652	opposed to	ellentéte	szemben	2	0
+H0653	followed by	utána	ragos héber (-val/-vel)	2	0
+H0653	opposed to	ellentéte	szemben	2	0
+H0657	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0657	especially	különösen	főként	1	0
+H0665	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H0669	followed by	utána	ragos héber (-val/-vel)	1	0
+H0681	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0688	opposed to	ellentéte	szemben	1	0
+H0693	followed by	utána	ragos héber (-val/-vel)	4	1
+H0693	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H0702	especially	különösen	főként	1	0
+H0705	followed by	utána	követi	1	0
+H0713	followed by	utána	ragos héber (-val/-vel)	4	2
+H0713	especially	különösen	főleg	1	0
+H0724	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H0730	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H0734	followed by	utána	követi	1	0
+H0734	figurative	átvitt értelemben	képletesen	3	0
+H0734	opposed to	ellentéte	szemben	2	0
+H0744	followed by	utána	ragos héber (-val/-vel)	1	0
+H0748	followed by	utána	ragos héber (-val/-vel)	2	0
+H0750	opposed to	ellentéte	szemben	3	0
+H0758	in phrase(s)	kifejezésekben	kifejezésben	1	1
+H0776	followed by	utána	ragos héber (-val/-vel)	1	0
+H0776	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H0776	figurative	átvitt értelemben	képletesen	1	0
+H0776	opposed to	ellentéte	szemben	4	0
+H0779	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H0779	especially	különösen	főként	2	0
+H0781	followed by	utána	követi	2	1
+H0781	followed by	utána	ragos héber (-val/-vel)	1	0
+H0801	especially	különösen	főleg	1	1
+H0802	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H0807	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0816	followed by	utána	ragos héber (-val/-vel)	3	1
+H0816	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0816	opposed to	ellentéte	szemben	1	0
+H0834	followed by	utána	követi	3	0
+H0834	followed by	utána	ragos héber (-val/-vel)	9	0
+H0834	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0834	opposed to	ellentéte	szemben	1	0
+H0834	opposed to	ellentéte	ellentétben	1	1
+H0835	followed by	utána	ragos héber (-val/-vel)	3	2
+H0853	opposed to	ellentéte	ellentétben	1	0
+H0854	followed by	utána	ragos héber (-val/-vel)	3	1
+H0854	in phrase(s)	kifejezésekben	fordulat(ok)ban	3	0
+H0854	opposed to	ellentéte	szemben	1	0
+H0854	opposed to	ellentéte	ellentétben	3	0
+H0857	followed by	utána	követi	3	0
+H0858	followed by	utána	követi	1	0
+H0865	followed by	utána	ragos héber (-val/-vel)	3	0
+H0874	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0875	followed by	utána	ragos héber (-val/-vel)	1	0
+H0875	figurative	átvitt értelemben	képletesen	2	2
+H0884	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0894	followed by	utána	ragos héber (-val/-vel)	1	0
+H0894	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0898	followed by	utána	ragos héber (-val/-vel)	2	2
+H0898	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0905	especially	különösen	főleg	1	0
+H0914	followed by	utána	követi	18	2
+H0914	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0928	followed by	utána	követi	1	0
+H0935	followed by	utána	követi	71	25
+H0935	followed by	utána	ragos héber (-val/-vel)	3	0
+H0935	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0935	in phrase(s)	kifejezésekben	fordulat(ok)ban	3	0
+H0935	figurative	átvitt értelemben	képletesen	4	1
+H0936	followed by	utána	követi	1	0
+H0936	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0937	followed by	utána	ragos héber (-val/-vel)	1	0
+H0937	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0953	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0953	figurative	átvitt értelemben	képletesen	4	4
+H0954	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0954	especially	különösen	főként	1	0
+H0957	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H0957	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H0959	followed by	utána	követi	3	1
+H0959	followed by	utána	ragos héber (-val/-vel)	1	0
+H0962	followed by	utána	követi	2	0
+H0962	followed by	utána	ragos héber (-val/-vel)	2	1
+H0962	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0967	followed by	utána	követi	1	0
+H0977	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0981	opposed to	ellentéte	szemben	1	0
+H0990	opposed to	ellentéte	szemben	3	0
+H0994	followed by	utána	követi	2	0
+H0995	followed by	utána	követi	1	0
+H0995	followed by	utána	ragos héber (-val/-vel)	13	11
+H0995	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H0996	followed by	utána	ragos héber (-val/-vel)	3	0
+H1004	followed by	utána	követi	1	0
+H1004	followed by	utána	ragos héber (-val/-vel)	7	0
+H1004	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H1004	figurative	átvitt értelemben	átvitt (más alakban)	2	0
+H1004	opposed to	ellentéte	szemben	3	1
+H1027	opposed to	ellentéte	szemben	1	0
+H1058	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H1058	opposed to	ellentéte	ellentétben	1	0
+H1065	followed by	utána	ragos héber (-val/-vel)	1	0
+H1075	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1079	followed by	utána	követi	1	0
+H1082	followed by	utána	ragos héber (-val/-vel)	1	0
+H1086	figurative	átvitt értelemben	képletesen	2	1
+H1097	followed by	utána	követi	2	0
+H1097	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H1097	figurative	átvitt értelemben	képletesen	1	0
+H1097	especially	különösen	főleg	1	0
+H1101	followed by	utána	követi	1	0
+H1104	figurative	átvitt értelemben	képletesen	3	3
+H1110	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H1115	followed by	utána	követi	2	0
+H1115	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1116	opposed to	ellentéte	szemben	1	0
+H1121	followed by	utána	követi	1	0
+H1121	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1121	opposed to	ellentéte	szemben	1	1
+H1121	especially	különösen	főként	1	0
+H1129	followed by	utána	követi	2	1
+H1129	followed by	utána	ragos héber (-val/-vel)	3	0
+H1129	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1129	figurative	átvitt értelemben	átvitt (más alakban)	5	2
+H1129	opposed to	ellentéte	szemben	2	1
+H1156	followed by	utána	ragos héber (-val/-vel)	1	0
+H1159	followed by	utána	ragos héber (-val/-vel)	1	0
+H1163	followed by	utána	ragos héber (-val/-vel)	1	0
+H1175	followed by	utána	ragos héber (-val/-vel)	1	0
+H1178	followed by	utána	ragos héber (-val/-vel)	1	0
+H1197	followed by	utána	követi	5	1
+H1197	followed by	utána	ragos héber (-val/-vel)	4	0
+H1197	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1197	figurative	átvitt értelemben	képletesen	7	3
+H1197	especially	különösen	főleg	1	0
+H1214	figurative	átvitt értelemben	képletesen	1	0
+H1215	followed by	utána	ragos héber (-val/-vel)	1	0
+H1219	followed by	utána	ragos héber (-val/-vel)	2	0
+H1219	figurative	átvitt értelemben	képletesen	1	1
+H1234	followed by	utána	követi	2	0
+H1234	figurative	átvitt értelemben	képletesen	3	0
+H1238	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1239	followed by	utána	követi	3	0
+H1242	followed by	utána	követi	1	1
+H1242	followed by	utána	ragos héber (-val/-vel)	10	0
+H1242	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	1
+H1242	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H1242	opposed to	ellentéte	szemben	10	4
+H1251	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1254	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1259	followed by	utána	ragos héber (-val/-vel)	2	0
+H1259	figurative	átvitt értelemben	képletesen	2	2
+H1265	figurative	átvitt értelemben	képletesen	2	1
+H1272	followed by	utána	követi	2	0
+H1272	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1272	figurative	átvitt értelemben	képletesen	2	1
+H1280	figurative	átvitt értelemben	képletesen	2	1
+H1288	followed by	utána	ragos héber (-val/-vel)	2	0
+H1288	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1300	figurative	átvitt értelemben	képletesen	1	0
+H1300	especially	különösen	főleg	1	0
+H1316	figurative	átvitt értelemben	képletesen	3	0
+H1319	especially	különösen	főként	1	0
+H1320	followed by	utána	ragos héber (-val/-vel)	1	0
+H1320	opposed to	ellentéte	szemben	2	0
+H1323	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H1342	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1350	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1350	especially	különösen	főként	3	0
+H1354	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1354	figurative	átvitt értelemben	képletesen	3	0
+H1354	especially	különösen	főként	1	0
+H1356	followed by	utána	ragos héber (-val/-vel)	1	0
+H1396	followed by	utána	ragos héber (-val/-vel)	3	3
+H1397	especially	különösen	főleg	1	0
+H1416	figurative	átvitt értelemben	képletesen	1	1
+H1419	followed by	utána	ragos héber (-val/-vel)	1	0
+H1419	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H1419	opposed to	ellentéte	szemben	1	0
+H1420	especially	különösen	főként	1	1
+H1438	figurative	átvitt értelemben	átvitt (más alakban)	2	2
+H1442	followed by	utána	követi	1	0
+H1443	followed by	utána	ragos héber (-val/-vel)	1	0
+H1460	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1471	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H1474	followed by	utána	ragos héber (-val/-vel)	1	0
+H1478	especially	különösen	főként	1	0
+H1481	followed by	utána	követi	1	0
+H1481	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1481	figurative	átvitt értelemben	képletesen	1	1
+H1486	especially	különösen	főként	1	0
+H1486	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H1494	figurative	átvitt értelemben	képletesen	2	0
+H1496	opposed to	ellentéte	szemben	1	0
+H1497	figurative	átvitt értelemben	képletesen	2	2
+H1504	followed by	utána	követi	3	0
+H1513	figurative	átvitt értelemben	képletesen	1	1
+H1516	figurative	átvitt értelemben	képletesen	1	1
+H1516	opposed to	ellentéte	szemben	4	0
+H1518	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H1523	followed by	utána	ragos héber (-val/-vel)	2	2
+H1525	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H1530	followed by	utána	ragos héber (-val/-vel)	1	0
+H1530	figurative	átvitt értelemben	képletesen	1	1
+H1537	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1540	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H1544	in phrase(s)	kifejezésekben	kifejezésben	1	1
+H1548	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H1553	opposed to	ellentéte	szemben	1	0
+H1556	followed by	utána	követi	1	0
+H1556	figurative	átvitt értelemben	képletesen	2	2
+H1558	followed by	utána	ragos héber (-val/-vel)	1	0
+H1588	figurative	átvitt értelemben	képletesen	2	1
+H1589	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H1589	figurative	átvitt értelemben	képletesen	1	0
+H1589	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H1598	followed by	utána	ragos héber (-val/-vel)	5	0
+H1598	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1602	followed by	utána	ragos héber (-val/-vel)	1	0
+H1610	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1612	figurative	átvitt értelemben	képletesen	4	3
+H1616	opposed to	ellentéte	szemben	1	0
+H1624	followed by	utána	követi	1	1
+H1624	figurative	átvitt értelemben	képletesen	1	1
+H1630	followed by	utána	követi	1	0
+H1630	opposed to	ellentéte	szemben	1	0
+H1637	followed by	utána	ragos héber (-val/-vel)	1	0
+H1637	figurative	átvitt értelemben	képletesen	1	1
+H1639	followed by	utána	követi	4	0
+H1639	followed by	utána	ragos héber (-val/-vel)	2	0
+H1639	opposed to	ellentéte	szemben	1	1
+H1644	followed by	utána	követi	6	0
+H1644	followed by	utána	ragos héber (-val/-vel)	1	1
+H1648	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1653	figurative	átvitt értelemben	képletesen	1	1
+H1665	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1672	followed by	utána	követi	3	1
+H1672	followed by	utána	ragos héber (-val/-vel)	3	1
+H1681	followed by	utána	ragos héber (-val/-vel)	2	0
+H1692	followed by	utána	követi	21	2
+H1692	figurative	átvitt értelemben	képletesen	3	2
+H1696	followed by	utána	követi	1	1
+H1696	followed by	utána	ragos héber (-val/-vel)	10	5
+H1696	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H1696	figurative	átvitt értelemben	képletesen	3	0
+H1697	followed by	utána	ragos héber (-val/-vel)	1	0
+H1697	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1697	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H1700	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1706	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1706	figurative	átvitt értelemben	képletesen	1	1
+H1709	opposed to	ellentéte	ellentétben	1	0
+H1714	figurative	átvitt értelemben	képletesen	1	1
+H1752	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H1753	followed by	utána	követi	1	0
+H1755	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1758	figurative	átvitt értelemben	képletesen	2	1
+H1760	followed by	utána	követi	1	0
+H1767	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H1777	followed by	utána	követi	1	0
+H1779	followed by	utána	követi	1	0
+H1792	figurative	átvitt értelemben	képletesen	3	1
+H1802	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1814	followed by	utána	követi	2	1
+H1814	followed by	utána	ragos héber (-val/-vel)	1	0
+H1814	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1814	opposed to	ellentéte	szemben	1	0
+H1818	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1818	especially	különösen	főleg	1	0
+H1819	followed by	utána	követi	9	3
+H1819	figurative	átvitt értelemben	képletesen	1	0
+H1820	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1823	especially	különösen	főként	1	0
+H1824	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H1824	opposed to	ellentéte	szemben	1	0
+H1826	followed by	utána	követi	1	0
+H1826	followed by	utána	ragos héber (-val/-vel)	1	1
+H1830	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H1832	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1832	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H1832	opposed to	ellentéte	szemben	1	1
+H1832	especially	különösen	főként	1	0
+H1833	followed by	utána	követi	1	0
+H1847	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1847	opposed to	ellentéte	szemben	1	1
+H1854	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1854	figurative	átvitt értelemben	képletesen	2	1
+H1864	opposed to	ellentéte	szemben	1	0
+H1865	followed by	utána	ragos héber (-val/-vel)	1	0
+H1869	followed by	utána	követi	5	2
+H1869	figurative	átvitt értelemben	képletesen	5	2
+H1870	followed by	utána	követi	1	0
+H1870	followed by	utána	ragos héber (-val/-vel)	1	0
+H1870	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H1870	opposed to	ellentéte	szemben	1	0
+H1875	followed by	utána	követi	1	0
+H1875	followed by	utána	ragos héber (-val/-vel)	11	7
+H1875	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H1875	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H1877	opposed to	ellentéte	szemben	1	0
+H1879	opposed to	ellentéte	szemben	1	0
+H1881	followed by	utána	ragos héber (-val/-vel)	2	1
+H1881	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H1888	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1892	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1892	opposed to	ellentéte	szemben	1	0
+H1897	followed by	utána	követi	2	0
+H1897	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H1898	followed by	utána	követi	1	0
+H1898	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H1906	opposed to	ellentéte	ellentétben	1	0
+H1918	opposed to	ellentéte	szemben	1	1
+H1920	followed by	utána	követi	3	0
+H1921	followed by	utána	követi	1	0
+H1926	figurative	átvitt értelemben	képletesen	1	0
+H1926	especially	különösen	főleg	1	0
+H1931	followed by	utána	követi	2	1
+H1931	followed by	utána	ragos héber (-val/-vel)	1	0
+H1931	opposed to	ellentéte	szemben	2	0
+H1935	followed by	utána	ragos héber (-val/-vel)	1	0
+H1935	especially	különösen	főként	1	0
+H1942	figurative	átvitt értelemben	képletesen	1	0
+H1945	followed by	utána	követi	2	0
+H1952	followed by	utána	ragos héber (-val/-vel)	1	0
+H1952	opposed to	ellentéte	szemben	4	0
+H1959	followed by	utána	követi	1	0
+H1961	followed by	utána	követi	39	7
+H1961	followed by	utána	ragos héber (-val/-vel)	40	7
+H1961	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H1961	figurative	átvitt értelemben	képletesen	2	2
+H1961	especially	különösen	főleg	2	0
+H1964	opposed to	ellentéte	szemben	1	1
+H1969	followed by	utána	követi	1	0
+H1970	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H1973	followed by	utána	követi	2	0
+H1980	followed by	utána	követi	48	5
+H1980	followed by	utána	ragos héber (-val/-vel)	15	3
+H1980	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	11	1
+H1980	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H1980	figurative	átvitt értelemben	átvitt (más alakban)	12	1
+H1980	opposed to	ellentéte	szemben	8	4
+H1980	especially	különösen	főként	2	0
+H1984	followed by	utána	követi	8	1
+H1984	followed by	utána	ragos héber (-val/-vel)	3	1
+H1984	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H1984	figurative	átvitt értelemben	képletesen	2	0
+H1984	especially	különösen	főleg	1	0
+H1986	followed by	utána	követi	2	0
+H1992	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H1992	opposed to	ellentéte	szemben	1	0
+H1993	followed by	utána	követi	4	0
+H1993	figurative	átvitt értelemben	képletesen	1	0
+H2005	opposed to	ellentéte	szemben	1	0
+H2005	especially	különösen	főleg	1	0
+H2008	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2009	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H2013	followed by	utána	követi	1	0
+H2015	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H2022	followed by	utána	ragos héber (-val/-vel)	1	0
+H2022	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2026	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2029	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	4	2
+H2029	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2030	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2040	followed by	utána	követi	2	0
+H2040	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2040	figurative	átvitt értelemben	képletesen	5	3
+H2063	followed by	utána	ragos héber (-val/-vel)	9	1
+H2063	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H2077	opposed to	ellentéte	ellentétben	1	0
+H2087	opposed to	ellentéte	szemben	2	0
+H2090	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2091	followed by	utána	követi	2	0
+H2091	followed by	utána	ragos héber (-val/-vel)	2	0
+H2094	followed by	utána	követi	3	0
+H2094	followed by	utána	ragos héber (-val/-vel)	2	0
+H2094	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2100	figurative	átvitt értelemben	képletesen	1	0
+H2102	followed by	utána	követi	3	1
+H2109	figurative	átvitt értelemben	képletesen	1	0
+H2122	especially	különösen	főleg	1	0
+H2131	followed by	utána	ragos héber (-val/-vel)	3	0
+H2132	followed by	utána	ragos héber (-val/-vel)	1	0
+H2132	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2134	opposed to	ellentéte	szemben	1	0
+H2138	opposed to	ellentéte	szemben	1	0
+H2142	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2143	followed by	utána	ragos héber (-val/-vel)	2	1
+H2145	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2145	opposed to	ellentéte	szemben	4	4
+H2151	opposed to	ellentéte	szemben	2	0
+H2154	followed by	utána	követi	1	0
+H2154	followed by	utána	ragos héber (-val/-vel)	2	0
+H2154	especially	különösen	főleg	1	0
+H2161	followed by	utána	követi	3	0
+H2161	opposed to	ellentéte	szemben	1	0
+H2167	followed by	utána	követi	6	3
+H2167	followed by	utána	ragos héber (-val/-vel)	1	0
+H2180	opposed to	ellentéte	szemben	2	0
+H2181	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H2199	opposed to	ellentéte	szemben	1	0
+H2204	opposed to	ellentéte	szemben	1	0
+H2205	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2205	opposed to	ellentéte	ellentétben	5	4
+H2219	figurative	átvitt értelemben	képletesen	4	2
+H2220	followed by	utána	ragos héber (-val/-vel)	2	0
+H2220	figurative	átvitt értelemben	képletesen	1	0
+H2222	followed by	utána	követi	1	0
+H2224	figurative	átvitt értelemben	képletesen	2	1
+H2232	followed by	utána	követi	2	2
+H2232	followed by	utána	ragos héber (-val/-vel)	1	0
+H2232	figurative	átvitt értelemben	képletesen	2	2
+H2236	followed by	utána	követi	4	0
+H2247	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2254	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2254	opposed to	ellentéte	szemben	1	0
+H2256	figurative	átvitt értelemben	képletesen	3	2
+H2260	opposed to	ellentéte	ellentétben	1	0
+H2263	followed by	utána	követi	2	1
+H2266	followed by	utána	követi	8	0
+H2266	figurative	átvitt értelemben	képletesen	1	0
+H2280	followed by	utána	követi	4	0
+H2280	followed by	utána	ragos héber (-val/-vel)	1	0
+H2280	figurative	átvitt értelemben	képletesen	3	2
+H2296	followed by	utána	követi	5	2
+H2296	figurative	átvitt értelemben	képletesen	2	0
+H2308	followed by	utána	követi	8	4
+H2308	opposed to	ellentéte	szemben	1	0
+H2310	opposed to	ellentéte	szemben	1	0
+H2315	figurative	átvitt értelemben	képletesen	1	0
+H2320	especially	különösen	főleg	1	0
+H2336	followed by	utána	ragos héber (-val/-vel)	1	0
+H2336	opposed to	ellentéte	szemben	1	0
+H2342	followed by	utána	követi	5	1
+H2342	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H2342	figurative	átvitt értelemben	képletesen	4	4
+H2346	opposed to	ellentéte	ellentétben	1	0
+H2351	opposed to	ellentéte	ellentétben	5	1
+H2370	followed by	utána	ragos héber (-val/-vel)	1	0
+H2372	followed by	utána	ragos héber (-val/-vel)	2	2
+H2388	followed by	utána	követi	38	15
+H2388	followed by	utána	ragos héber (-val/-vel)	3	1
+H2388	figurative	átvitt értelemben	átvitt (más alakban)	3	2
+H2388	opposed to	ellentéte	szemben	2	0
+H2389	followed by	utána	ragos héber (-val/-vel)	4	1
+H2389	opposed to	ellentéte	szemben	1	0
+H2397	followed by	utána	ragos héber (-val/-vel)	1	0
+H2398	followed by	utána	ragos héber (-val/-vel)	7	4
+H2398	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H2398	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2398	opposed to	ellentéte	szemben	1	0
+H2399	followed by	utána	ragos héber (-val/-vel)	2	2
+H2401	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2401	especially	különösen	főként	1	0
+H2403	followed by	utána	ragos héber (-val/-vel)	5	5
+H2404	followed by	utána	követi	1	0
+H2406	especially	különösen	főleg	1	0
+H2416	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2421	followed by	utána	ragos héber (-val/-vel)	2	2
+H2421	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H2421	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2428	especially	különösen	főleg	1	0
+H2435	followed by	utána	ragos héber (-val/-vel)	1	0
+H2435	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2435	opposed to	ellentéte	szemben	1	0
+H2436	figurative	átvitt értelemben	képletesen	3	3
+H2441	figurative	átvitt értelemben	képletesen	1	1
+H2441	especially	különösen	főleg	1	1
+H2449	followed by	utána	ragos héber (-val/-vel)	1	0
+H2450	opposed to	ellentéte	szemben	1	0
+H2455	opposed to	ellentéte	szemben	1	0
+H2461	followed by	utána	ragos héber (-val/-vel)	1	0
+H2461	figurative	átvitt értelemben	képletesen	3	2
+H2470	followed by	utána	követi	5	0
+H2470	followed by	utána	ragos héber (-val/-vel)	1	0
+H2470	figurative	átvitt értelemben	képletesen	1	0
+H2476	opposed to	ellentéte	ellentétben	1	1
+H2480	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2486	followed by	utána	ragos héber (-val/-vel)	1	0
+H2489	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2495	opposed to	ellentéte	szemben	1	0
+H2502	followed by	utána	követi	8	3
+H2502	followed by	utána	ragos héber (-val/-vel)	2	0
+H2505	followed by	utána	követi	6	1
+H2505	figurative	átvitt értelemben	képletesen	2	0
+H2506	followed by	utána	követi	1	1
+H2509	opposed to	ellentéte	szemben	1	0
+H2513	figurative	átvitt értelemben	képletesen	1	0
+H2527	opposed to	ellentéte	szemben	1	0
+H2529	followed by	utána	ragos héber (-val/-vel)	2	0
+H2530	followed by	utána	követi	1	0
+H2532	followed by	utána	követi	1	0
+H2543	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H2550	followed by	utána	ragos héber (-val/-vel)	1	0
+H2550	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H2552	figurative	átvitt értelemben	képletesen	1	0
+H2568	followed by	utána	követi	3	2
+H2568	followed by	utána	ragos héber (-val/-vel)	2	0
+H2568	especially	különösen	főként	1	0
+H2572	followed by	utána	követi	2	1
+H2574	followed by	utána	ragos héber (-val/-vel)	2	0
+H2574	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2580	especially	különösen	főként	1	1
+H2583	especially	különösen	főként	1	0
+H2587	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2595	figurative	átvitt értelemben	képletesen	1	1
+H2598	followed by	utána	ragos héber (-val/-vel)	1	0
+H2598	opposed to	ellentéte	szemben	1	0
+H2600	followed by	utána	ragos héber (-val/-vel)	1	1
+H2600	figurative	átvitt értelemben	képletesen	1	0
+H2600	especially	különösen	főleg	1	0
+H2603	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2610	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2616	especially	különösen	főleg	1	0
+H2617	followed by	utána	ragos héber (-val/-vel)	5	3
+H2617	opposed to	ellentéte	szemben	2	0
+H2620	followed by	utána	ragos héber (-val/-vel)	1	0
+H2620	figurative	átvitt értelemben	képletesen	1	0
+H2623	especially	különösen	főleg	1	0
+H2633	opposed to	ellentéte	szemben	1	0
+H2645	followed by	utána	ragos héber (-val/-vel)	2	0
+H2645	especially	különösen	főként	2	0
+H2648	followed by	utána	ragos héber (-val/-vel)	1	0
+H2651	followed by	utána	követi	1	0
+H2654	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2656	followed by	utána	ragos héber (-val/-vel)	1	1
+H2657	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2658	figurative	átvitt értelemben	átvitt (más alakban)	2	0
+H2659	figurative	átvitt értelemben	képletesen	1	0
+H2664	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2664	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2671	figurative	átvitt értelemben	képletesen	1	0
+H2672	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H2673	followed by	utána	követi	2	0
+H2675	followed by	utána	ragos héber (-val/-vel)	1	0
+H2682	figurative	átvitt értelemben	képletesen	1	0
+H2710	figurative	átvitt értelemben	képletesen	2	1
+H2712	followed by	utána	ragos héber (-val/-vel)	1	0
+H2717	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H2717	figurative	átvitt értelemben	képletesen	3	2
+H2719	especially	különösen	főleg	1	0
+H2720	opposed to	ellentéte	szemben	1	1
+H2722	especially	különösen	főleg	1	0
+H2723	especially	különösen	főként	1	0
+H2724	opposed to	ellentéte	szemben	2	2
+H2729	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H2731	followed by	utána	ragos héber (-val/-vel)	1	0
+H2731	opposed to	ellentéte	szemben	1	1
+H2734	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2740	opposed to	ellentéte	ellentétben	2	0
+H2742	figurative	átvitt értelemben	képletesen	2	0
+H2763	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2763	figurative	átvitt értelemben	képletesen	1	0
+H2763	opposed to	ellentéte	ellentétben	1	0
+H2764	figurative	átvitt értelemben	képletesen	1	0
+H2778	followed by	utána	ragos héber (-val/-vel)	2	1
+H2778	figurative	átvitt értelemben	képletesen	1	0
+H2786	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2789	figurative	átvitt értelemben	képletesen	1	0
+H2789	opposed to	ellentéte	szemben	1	0
+H2790	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2790	especially	különösen	főként	1	1
+H2796	figurative	átvitt értelemben	képletesen	1	0
+H2814	figurative	átvitt értelemben	képletesen	1	0
+H2814	opposed to	ellentéte	ellentétben	1	0
+H2814	especially	különösen	főleg	1	0
+H2820	followed by	utána	követi	2	1
+H2821	figurative	átvitt értelemben	képletesen	4	0
+H2822	opposed to	ellentéte	szemben	1	0
+H2825	opposed to	ellentéte	szemben	1	0
+H2825	especially	különösen	főként	1	0
+H2826	followed by	utána	követi	1	0
+H2834	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2836	followed by	utána	ragos héber (-val/-vel)	1	0
+H2851	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H2853	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H2856	followed by	utána	ragos héber (-val/-vel)	1	0
+H2856	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H2856	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H2856	opposed to	ellentéte	szemben	1	0
+H2859	followed by	utána	ragos héber (-val/-vel)	4	2
+H2864	followed by	utána	követi	2	1
+H2865	followed by	utána	követi	3	0
+H2865	figurative	átvitt értelemben	képletesen	3	2
+H2873	opposed to	ellentéte	szemben	1	1
+H2883	followed by	utána	ragos héber (-val/-vel)	1	0
+H2891	especially	különösen	főként	1	1
+H2895	followed by	utána	követi	3	1
+H2895	followed by	utána	ragos héber (-val/-vel)	1	0
+H2895	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2896	followed by	utána	ragos héber (-val/-vel)	2	2
+H2898	figurative	átvitt értelemben	képletesen	1	0
+H2902	followed by	utána	ragos héber (-val/-vel)	2	1
+H2903	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H2904	followed by	utána	követi	2	1
+H2904	figurative	átvitt értelemben	képletesen	3	2
+H2912	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2914	especially	különösen	főként	1	1
+H2918	followed by	utána	ragos héber (-val/-vel)	2	0
+H2919	followed by	utána	követi	1	1
+H2919	figurative	átvitt értelemben	képletesen	1	1
+H2921	especially	különösen	főként	1	1
+H2925	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H2934	followed by	utána	követi	3	1
+H2938	followed by	utána	követi	1	0
+H2938	followed by	utána	ragos héber (-val/-vel)	1	0
+H2938	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H2940	figurative	átvitt értelemben	képletesen	1	0
+H2942	followed by	utána	ragos héber (-val/-vel)	1	0
+H2952	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H2956	followed by	utána	követi	1	0
+H2958	followed by	utána	követi	1	0
+H2963	followed by	utána	ragos héber (-val/-vel)	1	0
+H2963	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H2964	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H2966	followed by	utána	ragos héber (-val/-vel)	1	0
+H2968	especially	különösen	főleg	1	0
+H2974	followed by	utána	követi	8	1
+H2980	especially	különösen	főleg	1	0
+H2992	opposed to	ellentéte	szemben	1	0
+H3001	figurative	átvitt értelemben	képletesen	3	1
+H3001	especially	különösen	főleg	1	0
+H3002	opposed to	ellentéte	szemben	3	2
+H3004	figurative	átvitt értelemben	képletesen	1	1
+H3004	opposed to	ellentéte	szemben	2	0
+H3013	followed by	utána	követi	4	2
+H3013	opposed to	ellentéte	szemben	1	0
+H3015	opposed to	ellentéte	szemben	2	0
+H3021	followed by	utána	követi	5	1
+H3021	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3027	followed by	utána	követi	7	1
+H3027	followed by	utána	ragos héber (-val/-vel)	12	2
+H3027	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H3027	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H3027	opposed to	ellentéte	szemben	2	0
+H3027	especially	különösen	főként	1	0
+H3034	opposed to	ellentéte	ellentétben	1	1
+H3034	especially	különösen	főként	1	0
+H3045	followed by	utána	ragos héber (-val/-vel)	5	0
+H3045	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H3050	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3051	followed by	utána	követi	1	0
+H3051	followed by	utána	ragos héber (-val/-vel)	2	0
+H3068	followed by	utána	követi	1	0
+H3068	followed by	utána	ragos héber (-val/-vel)	18	12
+H3068	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H3084	especially	különösen	főként	1	0
+H3117	followed by	utána	követi	4	0
+H3117	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H3117	opposed to	ellentéte	szemben	1	0
+H3117	especially	különösen	főként	2	0
+H3119	followed by	utána	ragos héber (-val/-vel)	1	0
+H3119	opposed to	ellentéte	szemben	1	0
+H3120	opposed to	ellentéte	szemben	1	0
+H3138	followed by	utána	ragos héber (-val/-vel)	1	0
+H3138	opposed to	ellentéte	szemben	1	0
+H3148	followed by	utána	követi	1	1
+H3148	opposed to	ellentéte	szemben	1	0
+H3162	opposed to	ellentéte	ellentétben	1	0
+H3173	especially	különösen	főként	1	0
+H3176	absolute	abszolút használatban	abszolút (más alakban)	4	3
+H3187	followed by	utána	követi	1	0
+H3190	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H3190	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3190	opposed to	ellentéte	ellentétben	1	1
+H3195	followed by	utána	ragos héber (-val/-vel)	2	0
+H3195	opposed to	ellentéte	szemben	1	0
+H3198	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3199	opposed to	ellentéte	szemben	1	0
+H3201	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3205	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H3206	opposed to	ellentéte	szemben	1	0
+H3207	followed by	utána	ragos héber (-val/-vel)	1	0
+H3207	opposed to	ellentéte	szemben	1	1
+H3211	opposed to	ellentéte	szemben	1	0
+H3213	followed by	utána	követi	4	2
+H3225	opposed to	ellentéte	ellentétben	3	1
+H3238	followed by	utána	követi	1	0
+H3238	especially	különösen	kiváltképp	1	0
+H3243	followed by	utána	követi	2	1
+H3243	figurative	átvitt értelemben	képletesen	1	0
+H3245	followed by	utána	követi	4	0
+H3247	figurative	átvitt értelemben	képletesen	2	2
+H3254	followed by	utána	követi	15	5
+H3254	followed by	utána	ragos héber (-val/-vel)	4	1
+H3254	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H3254	opposed to	ellentéte	szemben	2	0
+H3256	followed by	utána	követi	2	0
+H3256	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H3259	followed by	utána	követi	1	0
+H3259	followed by	utána	ragos héber (-val/-vel)	3	2
+H3264	opposed to	ellentéte	ellentétben	1	1
+H3266	opposed to	ellentéte	szemben	1	0
+H3267	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3270	followed by	utána	ragos héber (-val/-vel)	1	1
+H3276	followed by	utána	követi	2	0
+H3276	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3282	followed by	utána	követi	2	0
+H3284	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3290	especially	különösen	főleg	1	0
+H3303	figurative	átvitt értelemben	képletesen	1	0
+H3313	followed by	utána	követi	1	0
+H3313	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3318	followed by	utána	ragos héber (-val/-vel)	4	1
+H3318	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H3318	opposed to	ellentéte	ellentétben	1	0
+H3320	followed by	utána	ragos héber (-val/-vel)	7	1
+H3320	figurative	átvitt értelemben	képletesen	2	0
+H3322	figurative	átvitt értelemben	képletesen	1	1
+H3332	followed by	utána	követi	5	3
+H3332	followed by	utána	ragos héber (-val/-vel)	1	0
+H3332	figurative	átvitt értelemben	képletesen	7	3
+H3334	opposed to	ellentéte	szemben	1	0
+H3335	figurative	átvitt értelemben	képletesen	1	1
+H3341	followed by	utána	követi	2	1
+H3341	figurative	átvitt értelemben	képletesen	2	0
+H3363	followed by	utána	követi	2	1
+H3364	followed by	utána	követi	1	1
+H3365	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3368	opposed to	ellentéte	szemben	1	1
+H3369	followed by	utána	követi	1	0
+H3381	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3383	especially	különösen	főleg	1	0
+H3384	followed by	utána	ragos héber (-val/-vel)	2	1
+H3384	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3389	followed by	utána	ragos héber (-val/-vel)	1	0
+H3407	figurative	átvitt értelemben	képletesen	1	0
+H3409	followed by	utána	ragos héber (-val/-vel)	1	0
+H3411	figurative	átvitt értelemben	képletesen	1	0
+H3417	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H3423	followed by	utána	követi	9	2
+H3423	followed by	utána	ragos héber (-val/-vel)	4	0
+H3423	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3423	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H3423	opposed to	ellentéte	szemben	4	2
+H3427	followed by	utána	követi	1	0
+H3427	followed by	utána	ragos héber (-val/-vel)	21	14
+H3427	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3427	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H3427	figurative	átvitt értelemben	képletesen	3	1
+H3427	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H3451	followed by	utána	követi	1	0
+H3453	opposed to	ellentéte	szemben	2	0
+H3462	followed by	utána	ragos héber (-val/-vel)	1	1
+H3463	followed by	utána	ragos héber (-val/-vel)	1	0
+H3465	opposed to	ellentéte	szemben	2	1
+H3467	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3467	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3474	followed by	utána	ragos héber (-val/-vel)	2	1
+H3474	figurative	átvitt értelemben	átvitt (más alakban)	2	1
+H3474	opposed to	ellentéte	szemben	1	0
+H3478	opposed to	ellentéte	szemben	2	1
+H3489	figurative	átvitt értelemben	átvitt (más alakban)	3	1
+H3498	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3499	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3499	opposed to	ellentéte	ellentétben	2	0
+H3504	followed by	utána	követi	1	1
+H3510	opposed to	ellentéte	szemben	1	0
+H3513	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H3513	opposed to	ellentéte	ellentétben	1	0
+H3516	figurative	átvitt értelemben	képletesen	1	0
+H3518	followed by	utána	követi	4	2
+H3518	figurative	átvitt értelemben	átvitt (más alakban)	5	1
+H3526	figurative	átvitt értelemben	képletesen	2	1
+H3526	especially	különösen	főként	1	0
+H3529	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3530	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3533	followed by	utána	követi	4	1
+H3533	figurative	átvitt értelemben	képletesen	1	1
+H3541	followed by	utána	ragos héber (-val/-vel)	3	2
+H3541	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H3541	especially	különösen	főként	1	0
+H3543	followed by	utána	követi	1	0
+H3543	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3544	opposed to	ellentéte	szemben	1	0
+H3546	followed by	utána	követi	1	0
+H3557	opposed to	ellentéte	szemben	1	0
+H3557	absolute	abszolút használatban	abszolút (más alakban)	2	0
+H3559	followed by	utána	követi	1	0
+H3559	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H3559	figurative	átvitt értelemben	képletesen	1	0
+H3563	followed by	utána	ragos héber (-val/-vel)	1	0
+H3563	figurative	átvitt értelemben	képletesen	1	1
+H3576	followed by	utána	követi	2	0
+H3576	especially	különösen	főleg	1	1
+H3577	followed by	utána	ragos héber (-val/-vel)	6	4
+H3577	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3582	followed by	utána	követi	5	1
+H3582	figurative	átvitt értelemben	képletesen	1	0
+H3582	opposed to	ellentéte	szemben	1	0
+H3584	followed by	utána	követi	5	0
+H3584	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3588	followed by	utána	követi	5	2
+H3588	followed by	utána	ragos héber (-val/-vel)	1	1
+H3588	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3588	figurative	átvitt értelemben	képletesen	1	0
+H3588	opposed to	ellentéte	szemben	1	0
+H3588	opposed to	ellentéte	ellentétben	1	0
+H3588	especially	különösen	főként	1	0
+H3595	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H3596	followed by	utána	ragos héber (-val/-vel)	1	0
+H3602	followed by	utána	ragos héber (-val/-vel)	2	0
+H3605	followed by	utána	követi	1	0
+H3605	followed by	utána	ragos héber (-val/-vel)	1	1
+H3605	opposed to	ellentéte	szemben	1	0
+H3605	opposed to	ellentéte	ellentétben	1	0
+H3605	especially	különösen	főként	1	0
+H3605	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H3607	figurative	átvitt értelemben	képletesen	2	0
+H3611	figurative	átvitt értelemben	képletesen	1	1
+H3615	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3615	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3627	figurative	átvitt értelemben	képletesen	1	0
+H3629	figurative	átvitt értelemben	képletesen	1	0
+H3632	figurative	átvitt értelemben	képletesen	1	1
+H3644	followed by	utána	követi	1	0
+H3644	especially	különösen	főleg	1	0
+H3651	followed by	utána	ragos héber (-val/-vel)	4	1
+H3651	in phrase(s)	kifejezésekben	szólás(ok)ban	2	0
+H3658	figurative	átvitt értelemben	képletesen	1	0
+H3658	especially	különösen	főként	2	0
+H3664	opposed to	ellentéte	szemben	1	0
+H3671	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3678	followed by	utána	ragos héber (-val/-vel)	1	0
+H3680	especially	különösen	főként	1	0
+H3687	opposed to	ellentéte	ellentétben	1	0
+H3697	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H3700	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H3701	followed by	utána	ragos héber (-val/-vel)	5	0
+H3708	followed by	utána	ragos héber (-val/-vel)	1	0
+H3708	opposed to	ellentéte	szemben	2	0
+H3709	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3709	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3712	opposed to	ellentéte	szemben	1	0
+H3722	followed by	utána	követi	1	0
+H3722	followed by	utána	ragos héber (-val/-vel)	1	1
+H3722	figurative	átvitt értelemben	képletesen	1	0
+H3724	figurative	átvitt értelemben	képletesen	1	0
+H3727	opposed to	ellentéte	szemben	1	0
+H3738	followed by	utána	követi	3	1
+H3738	figurative	átvitt értelemben	képletesen	2	1
+H3742	followed by	utána	ragos héber (-val/-vel)	1	0
+H3742	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3742	opposed to	ellentéte	szemben	2	0
+H3760	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3766	followed by	utána	ragos héber (-val/-vel)	4	0
+H3766	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3772	followed by	utána	ragos héber (-val/-vel)	5	4
+H3772	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3782	followed by	utána	követi	1	0
+H3782	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H3782	figurative	átvitt értelemben	képletesen	5	1
+H3782	opposed to	ellentéte	szemben	2	0
+H3782	especially	különösen	főleg	1	0
+H3789	followed by	utána	követi	6	0
+H3789	followed by	utána	ragos héber (-val/-vel)	7	2
+H3789	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3789	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H3789	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H3789	especially	különösen	főként	1	0
+H3802	figurative	átvitt értelemben	képletesen	6	1
+H3807	figurative	átvitt értelemben	képletesen	3	3
+H3808	followed by	utána	követi	3	1
+H3808	followed by	utána	ragos héber (-val/-vel)	3	0
+H3808	opposed to	ellentéte	ellentétben	2	1
+H3808	especially	különösen	főként	1	0
+H3808	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H3811	followed by	utána	követi	3	1
+H3811	figurative	átvitt értelemben	képletesen	1	1
+H3814	followed by	utána	ragos héber (-val/-vel)	1	0
+H3816	especially	különösen	főleg	1	0
+H3820	followed by	utána	ragos héber (-val/-vel)	8	2
+H3820	opposed to	ellentéte	szemben	1	0
+H3820	opposed to	ellentéte	ellentétben	1	1
+H3822	especially	különösen	főleg	2	0
+H3824	followed by	utána	ragos héber (-val/-vel)	7	1
+H3824	opposed to	ellentéte	szemben	1	0
+H3824	opposed to	ellentéte	ellentétben	1	1
+H3830	figurative	átvitt értelemben	képletesen	3	0
+H3833	figurative	átvitt értelemben	képletesen	5	3
+H3836	especially	különösen	főleg	1	1
+H3847	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	3
+H3847	especially	különösen	főként	1	0
+H3852	figurative	átvitt értelemben	képletesen	1	1
+H3856	followed by	utána	követi	1	0
+H3863	followed by	utána	követi	10	8
+H3863	followed by	utána	ragos héber (-val/-vel)	1	0
+H3865	opposed to	ellentéte	szemben	1	0
+H3867	followed by	utána	követi	4	2
+H3868	especially	különösen	főleg	1	0
+H3871	followed by	utána	követi	1	0
+H3871	figurative	átvitt értelemben	képletesen	2	0
+H3871	especially	különösen	főként	1	0
+H3878	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H3881	especially	különösen	főként	1	0
+H3884	followed by	utána	követi	3	3
+H3885	opposed to	ellentéte	szemben	1	0
+H3885	especially	különösen	főként	1	0
+H3887	followed by	utána	ragos héber (-val/-vel)	1	0
+H3887	figurative	átvitt értelemben	képletesen	1	1
+H3894	opposed to	ellentéte	szemben	1	0
+H3895	figurative	átvitt értelemben	képletesen	1	0
+H3898	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3898	especially	különösen	főként	1	0
+H3899	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H3905	followed by	utána	követi	3	0
+H3905	figurative	átvitt értelemben	képletesen	1	0
+H3907	followed by	utána	ragos héber (-val/-vel)	1	0
+H3910	especially	különösen	főként	1	0
+H3915	especially	különösen	főleg	1	0
+H3920	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3925	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3947	followed by	utána	követi	11	1
+H3947	followed by	utána	ragos héber (-val/-vel)	6	1
+H3947	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3947	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H3947	figurative	átvitt értelemben	átvitt (más alakban)	3	3
+H3950	figurative	átvitt értelemben	képletesen	1	0
+H3950	absolute	abszolút használatban	abszolút (más alakban)	4	1
+H3966	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H3967	followed by	utána	követi	8	0
+H3967	especially	különösen	főként	3	0
+H3971	figurative	átvitt értelemben	képletesen	2	0
+H3971	especially	különösen	főleg	1	0
+H3972	followed by	utána	ragos héber (-val/-vel)	1	0
+H3976	figurative	átvitt értelemben	képletesen	2	2
+H3976	opposed to	ellentéte	szemben	1	1
+H3978	figurative	átvitt értelemben	képletesen	1	1
+H3985	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3987	followed by	utána	követi	1	0
+H3988	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H3988	opposed to	ellentéte	szemben	1	1
+H3996	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H3996	opposed to	ellentéte	szemben	1	0
+H3999	followed by	utána	követi	1	0
+H3999	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4013	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4013	figurative	átvitt értelemben	képletesen	1	0
+H4026	figurative	átvitt értelemben	képletesen	1	1
+H4032	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4038	followed by	utána	ragos héber (-val/-vel)	2	2
+H4043	figurative	átvitt értelemben	képletesen	6	5
+H4054	opposed to	ellentéte	ellentétben	1	0
+H4057	followed by	utána	ragos héber (-val/-vel)	1	0
+H4058	followed by	utána	követi	1	0
+H4058	figurative	átvitt értelemben	képletesen	1	0
+H4058	especially	különösen	főként	1	0
+H4060	figurative	átvitt értelemben	képletesen	2	0
+H4100	followed by	utána	követi	1	0
+H4100	followed by	utána	ragos héber (-val/-vel)	4	1
+H4100	opposed to	ellentéte	ellentétben	1	0
+H4102	followed by	utána	ragos héber (-val/-vel)	1	0
+H4102	opposed to	ellentéte	szemben	1	0
+H4103	opposed to	ellentéte	szemben	1	0
+H4103	especially	különösen	főként	1	1
+H4107	opposed to	ellentéte	szemben	1	0
+H4116	followed by	utána	követi	2	1
+H4116	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H4116	figurative	átvitt értelemben	képletesen	1	1
+H4117	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H4126	followed by	utána	ragos héber (-val/-vel)	1	0
+H4127	figurative	átvitt értelemben	képletesen	3	1
+H4131	figurative	átvitt értelemben	képletesen	2	2
+H4135	figurative	átvitt értelemben	képletesen	1	1
+H4136	figurative	átvitt értelemben	képletesen	1	1
+H4161	opposed to	ellentéte	szemben	4	0
+H4164	followed by	utána	ragos héber (-val/-vel)	1	0
+H4164	opposed to	ellentéte	szemben	1	0
+H4170	figurative	átvitt értelemben	képletesen	2	0
+H4171	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	0
+H4171	figurative	átvitt értelemben	képletesen	1	0
+H4175	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4177	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4180	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H4185	followed by	utána	követi	7	1
+H4185	figurative	átvitt értelemben	képletesen	2	2
+H4186	figurative	átvitt értelemben	képletesen	1	1
+H4191	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H4191	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H4194	opposed to	ellentéte	ellentétben	1	0
+H4196	followed by	utána	ragos héber (-val/-vel)	3	0
+H4196	in phrase(s)	kifejezésekben	szólás(ok)ban	2	0
+H4209	especially	különösen	főleg	1	1
+H4210	followed by	utána	követi	1	0
+H4213	opposed to	ellentéte	szemben	1	0
+H4217	followed by	utána	ragos héber (-val/-vel)	2	0
+H4229	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4229	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4234	opposed to	ellentéte	szemben	2	0
+H4237	opposed to	ellentéte	szemben	1	0
+H4238	opposed to	ellentéte	szemben	2	0
+H4242	figurative	átvitt értelemben	képletesen	2	1
+H4264	opposed to	ellentéte	szemben	2	0
+H4272	followed by	utána	követi	1	1
+H4272	opposed to	ellentéte	szemben	2	0
+H4279	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4283	followed by	utána	ragos héber (-val/-vel)	1	0
+H4284	followed by	utána	ragos héber (-val/-vel)	1	1
+H4284	especially	különösen	főként	1	0
+H4288	opposed to	ellentéte	szemben	4	0
+H4294	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H4298	figurative	átvitt értelemben	képletesen	1	0
+H4300	figurative	átvitt értelemben	képletesen	1	0
+H4305	figurative	átvitt értelemben	képletesen	1	1
+H4306	figurative	átvitt értelemben	képletesen	1	0
+H4307	figurative	átvitt értelemben	képletesen	1	0
+H4308	opposed to	ellentéte	ellentétben	1	0
+H4310	followed by	utána	követi	2	0
+H4310	followed by	utána	ragos héber (-val/-vel)	3	0
+H4310	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H4325	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H4334	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H4339	figurative	átvitt értelemben	képletesen	1	0
+H4347	followed by	utána	ragos héber (-val/-vel)	2	0
+H4347	figurative	átvitt értelemben	képletesen	1	0
+H4349	figurative	átvitt értelemben	képletesen	1	1
+H4349	especially	különösen	főleg	1	0
+H4376	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4383	figurative	átvitt értelemben	képletesen	1	1
+H4385	followed by	utána	ragos héber (-val/-vel)	1	0
+H4390	followed by	utána	ragos héber (-val/-vel)	3	1
+H4392	figurative	átvitt értelemben	képletesen	3	3
+H4396	followed by	utána	ragos héber (-val/-vel)	1	0
+H4403	followed by	utána	ragos héber (-val/-vel)	1	0
+H4405	figurative	átvitt értelemben	képletesen	1	1
+H4414	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H4420	followed by	utána	ragos héber (-val/-vel)	1	0
+H4420	opposed to	ellentéte	szemben	1	0
+H4422	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H4427	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4428	figurative	átvitt értelemben	képletesen	2	1
+H4436	followed by	utána	követi	1	0
+H4438	especially	különösen	főként	1	0
+H4448	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4456	opposed to	ellentéte	szemben	3	0
+H4467	especially	különösen	főként	1	0
+H4468	followed by	utána	ragos héber (-val/-vel)	3	1
+H4474	followed by	utána	ragos héber (-val/-vel)	1	0
+H4480	followed by	utána	követi	8	0
+H4480	followed by	utána	ragos héber (-val/-vel)	22	5
+H4480	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4480	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H4480	figurative	átvitt értelemben	átvitt (más alakban)	2	1
+H4480	opposed to	ellentéte	szemben	1	0
+H4480	especially	különösen	főként	2	0
+H4480	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H4487	followed by	utána	követi	4	1
+H4487	followed by	utána	ragos héber (-val/-vel)	1	0
+H4496	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H4498	followed by	utána	ragos héber (-val/-vel)	1	0
+H4499	followed by	utána	ragos héber (-val/-vel)	1	0
+H4500	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4513	followed by	utána	követi	6	1
+H4513	figurative	átvitt értelemben	képletesen	1	0
+H4514	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4519	especially	különösen	főként	1	0
+H4521	especially	különösen	főként	1	0
+H4522	followed by	utána	követi	1	0
+H4522	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4534	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4539	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H4541	figurative	átvitt értelemben	képletesen	1	0
+H4542	opposed to	ellentéte	szemben	1	0
+H4547	followed by	utána	követi	1	0
+H4549	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4549	figurative	átvitt értelemben	képletesen	1	0
+H4550	followed by	utána	ragos héber (-val/-vel)	1	0
+H4570	figurative	átvitt értelemben	képletesen	2	0
+H4578	followed by	utána	ragos héber (-val/-vel)	1	0
+H4578	figurative	átvitt értelemben	képletesen	1	0
+H4581	figurative	átvitt értelemben	képletesen	2	1
+H4583	figurative	átvitt értelemben	képletesen	2	1
+H4586	followed by	utána	ragos héber (-val/-vel)	1	0
+H4591	followed by	utána	ragos héber (-val/-vel)	1	0
+H4591	opposed to	ellentéte	szemben	1	0
+H4592	followed by	utána	követi	1	0
+H4598	figurative	átvitt értelemben	képletesen	1	0
+H4599	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H4603	followed by	utána	ragos héber (-val/-vel)	1	0
+H4603	especially	különösen	főleg	1	0
+H4604	followed by	utána	ragos héber (-val/-vel)	2	0
+H4605	followed by	utána	követi	3	1
+H4605	followed by	utána	ragos héber (-val/-vel)	2	0
+H4605	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4605	figurative	átvitt értelemben	képletesen	3	3
+H4616	followed by	utána	követi	2	1
+H4616	followed by	utána	ragos héber (-val/-vel)	1	0
+H4622	followed by	utána	követi	1	0
+H4627	followed by	utána	ragos héber (-val/-vel)	1	0
+H4628	followed by	utána	követi	1	0
+H4628	opposed to	ellentéte	szemben	3	0
+H4639	followed by	utána	ragos héber (-val/-vel)	1	0
+H4639	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H4655	especially	különösen	főleg	1	0
+H4662	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4671	followed by	utána	ragos héber (-val/-vel)	1	0
+H4672	followed by	utána	követi	2	0
+H4672	followed by	utána	ragos héber (-val/-vel)	2	1
+H4672	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H4672	figurative	átvitt értelemben	átvitt (más alakban)	4	2
+H4676	figurative	átvitt értelemben	képletesen	1	0
+H4686	figurative	átvitt értelemben	képletesen	2	0
+H4692	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4705	opposed to	ellentéte	szemben	1	0
+H4723	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4725	followed by	utána	ragos héber (-val/-vel)	2	0
+H4725	figurative	átvitt értelemben	képletesen	2	0
+H4726	figurative	átvitt értelemben	képletesen	6	3
+H4731	figurative	átvitt értelemben	képletesen	1	1
+H4733	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4743	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H4745	followed by	utána	ragos héber (-val/-vel)	1	1
+H4751	followed by	utána	ragos héber (-val/-vel)	1	0
+H4751	figurative	átvitt értelemben	képletesen	1	0
+H4751	opposed to	ellentéte	szemben	2	0
+H4758	opposed to	ellentéte	ellentétben	2	0
+H4768	opposed to	ellentéte	szemben	1	0
+H4772	opposed to	ellentéte	szemben	1	0
+H4775	followed by	utána	ragos héber (-val/-vel)	1	0
+H4784	followed by	utána	ragos héber (-val/-vel)	1	1
+H4784	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4784	opposed to	ellentéte	szemben	3	0
+H4791	figurative	átvitt értelemben	képletesen	3	0
+H4801	figurative	átvitt értelemben	képletesen	1	1
+H4809	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4818	figurative	átvitt értelemben	képletesen	1	1
+H4820	opposed to	ellentéte	szemben	2	1
+H4829	figurative	átvitt értelemben	képletesen	2	0
+H4832	figurative	átvitt értelemben	képletesen	2	0
+H4843	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4843	figurative	átvitt értelemben	képletesen	1	0
+H4853	followed by	utána	követi	1	0
+H4853	figurative	átvitt értelemben	képletesen	2	1
+H4862	followed by	utána	ragos héber (-val/-vel)	2	0
+H4864	figurative	átvitt értelemben	képletesen	1	0
+H4869	figurative	átvitt értelemben	képletesen	2	1
+H4886	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H4900	figurative	átvitt értelemben	képletesen	3	0
+H4910	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H4924	opposed to	ellentéte	szemben	1	0
+H4929	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H4939	followed by	utána	ragos héber (-val/-vel)	1	0
+H4941	opposed to	ellentéte	szemben	1	0
+H4960	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4960	figurative	átvitt értelemben	képletesen	3	1
+H4962	followed by	utána	ragos héber (-val/-vel)	1	0
+H4962	opposed to	ellentéte	szemben	1	1
+H4970	followed by	utána	követi	3	0
+H4974	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4975	figurative	átvitt értelemben	képletesen	2	1
+H4984	followed by	utána	követi	3	0
+H4984	followed by	utána	ragos héber (-val/-vel)	6	3
+H4984	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H4984	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H4984	figurative	átvitt értelemben	átvitt (más alakban)	12	3
+H4985	opposed to	ellentéte	szemben	1	0
+H4994	followed by	utána	ragos héber (-val/-vel)	1	0
+H4994	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H5003	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5003	figurative	átvitt értelemben	képletesen	2	0
+H5006	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5012	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5027	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5028	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5034	followed by	utána	ragos héber (-val/-vel)	1	0
+H5034	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5034	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5034	opposed to	ellentéte	szemben	1	0
+H5035	followed by	utána	ragos héber (-val/-vel)	1	0
+H5035	figurative	átvitt értelemben	képletesen	2	2
+H5038	especially	különösen	főként	1	0
+H5042	opposed to	ellentéte	szemben	2	0
+H5045	opposed to	ellentéte	ellentétben	1	0
+H5046	followed by	utána	követi	1	0
+H5046	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5046	especially	különösen	főleg	2	0
+H5048	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5048	opposed to	ellentéte	szemben	7	1
+H5049	opposed to	ellentéte	szemben	1	0
+H5051	figurative	átvitt értelemben	képletesen	2	0
+H5055	followed by	utána	követi	2	0
+H5062	followed by	utána	követi	3	0
+H5062	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5064	followed by	utána	követi	1	0
+H5065	followed by	utána	követi	1	0
+H5065	followed by	utána	ragos héber (-val/-vel)	1	0
+H5065	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5066	followed by	utána	követi	1	0
+H5069	followed by	utána	ragos héber (-val/-vel)	1	0
+H5079	figurative	átvitt értelemben	képletesen	1	0
+H5079	especially	különösen	főleg	1	0
+H5080	followed by	utána	követi	11	3
+H5080	followed by	utána	ragos héber (-val/-vel)	7	5
+H5080	figurative	átvitt értelemben	képletesen	3	0
+H5087	followed by	utána	ragos héber (-val/-vel)	1	1
+H5088	opposed to	ellentéte	szemben	1	1
+H5090	followed by	utána	követi	3	0
+H5090	figurative	átvitt értelemben	képletesen	3	1
+H5098	opposed to	ellentéte	szemben	1	1
+H5102	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5106	followed by	utána	követi	4	0
+H5110	followed by	utána	követi	3	0
+H5110	figurative	átvitt értelemben	képletesen	1	0
+H5110	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H5116	figurative	átvitt értelemben	képletesen	2	1
+H5116	especially	különösen	főleg	1	0
+H5117	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H5127	followed by	utána	követi	12	9
+H5127	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5127	figurative	átvitt értelemben	képletesen	2	1
+H5128	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5128	figurative	átvitt értelemben	képletesen	3	2
+H5130	followed by	utána	ragos héber (-val/-vel)	1	1
+H5130	figurative	átvitt értelemben	képletesen	1	0
+H5130	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H5137	followed by	utána	követi	3	3
+H5140	figurative	átvitt értelemben	képletesen	3	2
+H5141	figurative	átvitt értelemben	képletesen	1	0
+H5144	followed by	utána	követi	1	0
+H5144	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5148	figurative	átvitt értelemben	képletesen	1	1
+H5155	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5155	opposed to	ellentéte	szemben	1	0
+H5157	figurative	átvitt értelemben	képletesen	1	0
+H5158	especially	különösen	főként	1	0
+H5172	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5175	figurative	átvitt értelemben	képletesen	3	2
+H5181	followed by	utána	követi	2	1
+H5181	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5181	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5183	opposed to	ellentéte	szemben	2	2
+H5193	figurative	átvitt értelemben	képletesen	4	0
+H5193	opposed to	ellentéte	szemben	4	0
+H5197	figurative	átvitt értelemben	képletesen	2	1
+H5201	followed by	utána	ragos héber (-val/-vel)	1	0
+H5203	figurative	átvitt értelemben	képletesen	1	0
+H5207	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5210	opposed to	ellentéte	szemben	1	0
+H5216	figurative	átvitt értelemben	képletesen	3	1
+H5218	opposed to	ellentéte	szemben	1	0
+H5220	followed by	utána	ragos héber (-val/-vel)	1	0
+H5221	followed by	utána	ragos héber (-val/-vel)	4	3
+H5221	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5225	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5226	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5226	opposed to	ellentéte	szemben	1	0
+H5228	followed by	utána	ragos héber (-val/-vel)	1	0
+H5228	opposed to	ellentéte	szemben	1	0
+H5234	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5234	opposed to	ellentéte	szemben	1	0
+H5237	figurative	átvitt értelemben	képletesen	2	0
+H5237	especially	különösen	főként	1	0
+H5247	opposed to	ellentéte	szemben	1	0
+H5253	followed by	utána	ragos héber (-val/-vel)	3	0
+H5253	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5254	followed by	utána	ragos héber (-val/-vel)	2	2
+H5258	followed by	utána	ragos héber (-val/-vel)	1	0
+H5258	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5265	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5271	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5271	figurative	átvitt értelemben	képletesen	5	1
+H5274	followed by	utána	ragos héber (-val/-vel)	1	0
+H5275	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5276	followed by	utána	ragos héber (-val/-vel)	1	0
+H5287	especially	különösen	főként	1	0
+H5289	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5300	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5301	followed by	utána	követi	2	2
+H5307	followed by	utána	ragos héber (-val/-vel)	28	5
+H5307	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5307	figurative	átvitt értelemben	átvitt (más alakban)	9	3
+H5307	opposed to	ellentéte	szemben	4	1
+H5310	followed by	utána	ragos héber (-val/-vel)	1	0
+H5310	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5310	figurative	átvitt értelemben	átvitt (más alakban)	2	0
+H5315	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5315	especially	különösen	főként	1	0
+H5323	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5324	followed by	utána	ragos héber (-val/-vel)	2	1
+H5324	figurative	átvitt értelemben	képletesen	2	1
+H5329	followed by	utána	követi	1	0
+H5337	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5341	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5342	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5344	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5347	followed by	utána	ragos héber (-val/-vel)	4	0
+H5347	opposed to	ellentéte	szemben	4	0
+H5352	followed by	utána	ragos héber (-val/-vel)	2	0
+H5352	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H5355	followed by	utána	ragos héber (-val/-vel)	1	1
+H5358	followed by	utána	ragos héber (-val/-vel)	7	2
+H5358	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5358	especially	különösen	főleg	1	0
+H5360	followed by	utána	ragos héber (-val/-vel)	4	3
+H5361	followed by	utána	ragos héber (-val/-vel)	1	0
+H5362	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5362	figurative	átvitt értelemben	képletesen	2	0
+H5377	followed by	utána	követi	1	0
+H5377	followed by	utána	ragos héber (-val/-vel)	1	1
+H5377	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5378	opposed to	ellentéte	szemben	1	0
+H5381	followed by	utána	ragos héber (-val/-vel)	1	0
+H5381	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5381	figurative	átvitt értelemben	képletesen	3	2
+H5382	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5387	opposed to	ellentéte	szemben	1	0
+H5391	figurative	átvitt értelemben	képletesen	3	1
+H5391	especially	különösen	főként	1	0
+H5391	especially	különösen	főleg	1	0
+H5392	followed by	utána	ragos héber (-val/-vel)	2	0
+H5393	followed by	utána	ragos héber (-val/-vel)	1	0
+H5399	opposed to	ellentéte	szemben	3	1
+H5400	followed by	utána	ragos héber (-val/-vel)	1	0
+H5401	followed by	utána	ragos héber (-val/-vel)	2	1
+H5401	figurative	átvitt értelemben	képletesen	1	0
+H5404	figurative	átvitt értelemben	képletesen	2	0
+H5410	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H5413	figurative	átvitt értelemben	képletesen	1	0
+H5414	followed by	utána	ragos héber (-val/-vel)	36	16
+H5414	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5414	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H5414	figurative	átvitt értelemben	képletesen	7	3
+H5414	opposed to	ellentéte	szemben	1	0
+H5422	figurative	átvitt értelemben	képletesen	1	0
+H5422	especially	különösen	főként	1	0
+H5423	figurative	átvitt értelemben	képletesen	2	0
+H5423	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H5425	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5428	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H5437	especially	különösen	főként	1	0
+H5439	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5448	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5452	followed by	utána	követi	1	0
+H5462	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5462	opposed to	ellentéte	szemben	2	0
+H5462	especially	különösen	főként	1	1
+H5467	followed by	utána	ragos héber (-val/-vel)	1	0
+H5470	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5480	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5482	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5486	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5492	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5493	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5498	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5502	followed by	utána	ragos héber (-val/-vel)	1	1
+H5518	figurative	átvitt értelemben	képletesen	1	1
+H5521	figurative	átvitt értelemben	képletesen	1	0
+H5526	followed by	utána	ragos héber (-val/-vel)	3	1
+H5545	followed by	utána	ragos héber (-val/-vel)	2	1
+H5549	followed by	utána	ragos héber (-val/-vel)	2	0
+H5550	followed by	utána	ragos héber (-val/-vel)	1	1
+H5553	figurative	átvitt értelemben	képletesen	3	1
+H5553	opposed to	ellentéte	szemben	1	0
+H5557	opposed to	ellentéte	szemben	1	0
+H5564	followed by	utána	ragos héber (-val/-vel)	1	0
+H5564	figurative	átvitt értelemben	képletesen	1	0
+H5573	opposed to	ellentéte	szemben	1	0
+H5582	especially	különösen	főként	1	0
+H5587	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5591	figurative	átvitt értelemben	átvitt (más alakban)	2	1
+H5591	opposed to	ellentéte	szemben	1	0
+H5592	figurative	átvitt értelemben	képletesen	1	0
+H5594	followed by	utána	ragos héber (-val/-vel)	4	2
+H5594	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5603	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5619	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5627	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5641	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5641	especially	különösen	főként	1	0
+H5643	followed by	utána	ragos héber (-val/-vel)	1	0
+H5643	figurative	átvitt értelemben	képletesen	2	1
+H5658	opposed to	ellentéte	szemben	1	0
+H5666	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5670	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5674	followed by	utána	ragos héber (-val/-vel)	29	16
+H5674	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5674	figurative	átvitt értelemben	átvitt (más alakban)	4	1
+H5674	opposed to	ellentéte	szemben	4	1
+H5675	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5676	opposed to	ellentéte	szemben	4	0
+H5676	especially	különösen	főként	1	0
+H5688	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5688	figurative	átvitt értelemben	átvitt (más alakban)	2	2
+H5696	opposed to	ellentéte	szemben	1	0
+H5697	figurative	átvitt értelemben	képletesen	2	0
+H5704	followed by	utána	követi	6	2
+H5704	followed by	utána	ragos héber (-val/-vel)	1	0
+H5704	especially	különösen	főleg	1	0
+H5704	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H5705	followed by	utána	követi	2	1
+H5731	followed by	utána	ragos héber (-val/-vel)	1	1
+H5736	opposed to	ellentéte	szemben	1	1
+H5737	followed by	utána	ragos héber (-val/-vel)	1	0
+H5739	figurative	átvitt értelemben	képletesen	1	1
+H5749	followed by	utána	ragos héber (-val/-vel)	1	1
+H5749	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5750	followed by	utána	ragos héber (-val/-vel)	3	1
+H5750	in phrase(s)	kifejezésekben	szólás(ok)ban	3	0
+H5753	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5774	followed by	utána	követi	1	0
+H5774	figurative	átvitt értelemben	átvitt (más alakban)	3	1
+H5782	opposed to	ellentéte	szemben	2	0
+H5784	opposed to	ellentéte	szemben	1	0
+H5787	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5787	opposed to	ellentéte	szemben	1	1
+H5788	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5791	opposed to	ellentéte	szemben	2	1
+H5794	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H5795	especially	különösen	főként	1	0
+H5797	followed by	utána	ragos héber (-val/-vel)	2	0
+H5797	figurative	átvitt értelemben	képletesen	5	0
+H5800	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5810	especially	különösen	főként	2	0
+H5826	opposed to	ellentéte	szemben	1	0
+H5844	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5844	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5844	figurative	átvitt értelemben	képletesen	2	0
+H5848	figurative	átvitt értelemben	képletesen	1	1
+H5848	opposed to	ellentéte	szemben	1	1
+H5850	figurative	átvitt értelemben	átvitt (más alakban)	4	2
+H5869	followed by	utána	ragos héber (-val/-vel)	9	5
+H5869	figurative	átvitt értelemben	átvitt (más alakban)	3	1
+H5869	opposed to	ellentéte	szemben	2	0
+H5889	figurative	átvitt értelemben	képletesen	3	0
+H5896	opposed to	ellentéte	szemben	1	0
+H5911	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5916	opposed to	ellentéte	szemben	2	0
+H5920	followed by	utána	ragos héber (-val/-vel)	18	4
+H5920	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H5920	figurative	átvitt értelemben	átvitt (más alakban)	12	1
+H5920	opposed to	ellentéte	szemben	1	0
+H5920	especially	különösen	főleg	1	0
+H5923	figurative	átvitt értelemben	képletesen	2	1
+H5927	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5934	especially	különösen	főleg	1	0
+H5937	figurative	átvitt értelemben	képletesen	1	1
+H5953	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H5953	figurative	átvitt értelemben	képletesen	1	0
+H5955	opposed to	ellentéte	szemben	1	0
+H5956	followed by	utána	ragos héber (-val/-vel)	2	0
+H5956	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H5956	figurative	átvitt értelemben	képletesen	1	1
+H5971	followed by	utána	ragos héber (-val/-vel)	2	0
+H5971	opposed to	ellentéte	szemben	3	0
+H5973	followed by	utána	ragos héber (-val/-vel)	4	1
+H5973	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H5973	especially	különösen	főleg	2	0
+H5975	followed by	utána	ragos héber (-val/-vel)	11	8
+H5975	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H5975	opposed to	ellentéte	szemben	1	0
+H5977	followed by	utána	ragos héber (-val/-vel)	1	1
+H5980	followed by	utána	ragos héber (-val/-vel)	2	0
+H5998	followed by	utána	ragos héber (-val/-vel)	4	0
+H5999	followed by	utána	ragos héber (-val/-vel)	1	1
+H6009	followed by	utána	követi	1	0
+H6009	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6009	opposed to	ellentéte	szemben	1	1
+H6010	opposed to	ellentéte	szemben	4	0
+H6013	figurative	átvitt értelemben	képletesen	1	0
+H6016	figurative	átvitt értelemben	képletesen	1	1
+H6017	figurative	átvitt értelemben	képletesen	1	1
+H6026	followed by	utána	ragos héber (-val/-vel)	2	0
+H6030	figurative	átvitt értelemben	képletesen	1	0
+H6031	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6035	followed by	utána	ragos héber (-val/-vel)	1	0
+H6041	opposed to	ellentéte	szemben	3	2
+H6051	especially	különösen	főként	1	0
+H6058	figurative	átvitt értelemben	képletesen	1	0
+H6059	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6064	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6072	figurative	átvitt értelemben	képletesen	1	0
+H6086	followed by	utána	ragos héber (-val/-vel)	1	0
+H6086	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H6086	opposed to	ellentéte	szemben	1	1
+H6089	opposed to	ellentéte	szemben	1	0
+H6094	opposed to	ellentéte	szemben	1	0
+H6111	followed by	utána	ragos héber (-val/-vel)	1	0
+H6113	followed by	utána	követi	1	1
+H6113	followed by	utána	ragos héber (-val/-vel)	2	0
+H6113	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6113	figurative	átvitt értelemben	képletesen	1	0
+H6117	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6118	figurative	átvitt értelemben	képletesen	1	0
+H6119	figurative	átvitt értelemben	képletesen	4	0
+H6127	figurative	átvitt értelemben	képletesen	1	0
+H6131	opposed to	ellentéte	szemben	1	0
+H6144	especially	különösen	főként	1	0
+H6148	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6150	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6153	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H6154	opposed to	ellentéte	szemben	1	0
+H6160	figurative	átvitt értelemben	képletesen	1	0
+H6160	opposed to	ellentéte	szemben	1	0
+H6168	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6168	figurative	átvitt értelemben	képletesen	2	0
+H6170	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6172	followed by	utána	ragos héber (-val/-vel)	2	0
+H6172	figurative	átvitt értelemben	képletesen	5	2
+H6172	especially	különösen	főként	1	1
+H6175	opposed to	ellentéte	szemben	1	0
+H6186	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6187	figurative	átvitt értelemben	képletesen	1	0
+H6189	figurative	átvitt értelemben	képletesen	2	1
+H6190	figurative	átvitt értelemben	képletesen	2	2
+H6191	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6203	figurative	átvitt értelemben	képletesen	3	1
+H6205	figurative	átvitt értelemben	képletesen	1	1
+H6209	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6213	followed by	utána	követi	1	0
+H6213	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6213	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	1
+H6218	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6223	followed by	utána	ragos héber (-val/-vel)	5	0
+H6223	opposed to	ellentéte	szemben	5	2
+H6227	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H6235	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6237	followed by	utána	ragos héber (-val/-vel)	1	0
+H6237	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6240	followed by	utána	követi	1	0
+H6242	followed by	utána	követi	5	0
+H6242	followed by	utána	ragos héber (-val/-vel)	1	0
+H6246	followed by	utána	követi	1	0
+H6251	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6257	followed by	utána	ragos héber (-val/-vel)	1	0
+H6258	followed by	utána	követi	1	1
+H6258	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H6258	opposed to	ellentéte	szemben	3	0
+H6260	figurative	átvitt értelemben	képletesen	2	1
+H6279	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6281	followed by	utána	követi	1	0
+H6287	opposed to	ellentéte	szemben	1	0
+H6293	followed by	utána	követi	1	0
+H6297	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H6298	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6298	figurative	átvitt értelemben	képletesen	1	0
+H6299	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H6310	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H6310	opposed to	ellentéte	szemben	1	0
+H6313	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6320	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H6327	figurative	átvitt értelemben	képletesen	3	0
+H6331	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H6331	opposed to	ellentéte	szemben	1	0
+H6340	opposed to	ellentéte	szemben	1	0
+H6341	followed by	utána	ragos héber (-val/-vel)	1	0
+H6341	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6342	followed by	utána	ragos héber (-val/-vel)	3	2
+H6343	followed by	utána	ragos héber (-val/-vel)	1	0
+H6351	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6370	figurative	átvitt értelemben	képletesen	1	0
+H6381	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6385	especially	különösen	főleg	2	0
+H6403	followed by	utána	ragos héber (-val/-vel)	1	0
+H6403	opposed to	ellentéte	szemben	1	0
+H6423	followed by	utána	ragos héber (-val/-vel)	1	0
+H6423	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6437	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6437	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6437	opposed to	ellentéte	ellentétben	1	1
+H6440	followed by	utána	követi	1	1
+H6440	followed by	utána	ragos héber (-val/-vel)	14	2
+H6440	in phrase(s)	kifejezésekben	fordulat(ok)ban	4	0
+H6440	figurative	átvitt értelemben	képletesen	3	0
+H6440	opposed to	ellentéte	szemben	1	0
+H6441	opposed to	ellentéte	szemben	1	0
+H6452	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6456	followed by	utána	ragos héber (-val/-vel)	3	0
+H6459	followed by	utána	ragos héber (-val/-vel)	2	0
+H6468	figurative	átvitt értelemben	képletesen	1	0
+H6473	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6475	figurative	átvitt értelemben	képletesen	2	0
+H6481	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6484	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6485	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6486	followed by	utána	ragos héber (-val/-vel)	1	0
+H6491	followed by	utána	követi	1	0
+H6491	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6491	figurative	átvitt értelemben	képletesen	2	1
+H6496	followed by	utána	ragos héber (-val/-vel)	1	0
+H6504	followed by	utána	ragos héber (-val/-vel)	3	0
+H6504	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6509	figurative	átvitt értelemben	képletesen	2	0
+H6510	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6517	opposed to	ellentéte	szemben	2	0
+H6519	opposed to	ellentéte	szemben	2	0
+H6521	followed by	utána	ragos héber (-val/-vel)	2	0
+H6521	opposed to	ellentéte	szemben	2	0
+H6524	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6524	figurative	átvitt értelemben	képletesen	3	2
+H6525	figurative	átvitt értelemben	képletesen	1	0
+H6531	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6533	followed by	utána	ragos héber (-val/-vel)	1	0
+H6539	followed by	utána	ragos héber (-val/-vel)	1	0
+H6541	followed by	utána	ragos héber (-val/-vel)	1	0
+H6541	figurative	átvitt értelemben	képletesen	4	0
+H6555	followed by	utána	ragos héber (-val/-vel)	1	1
+H6555	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6556	figurative	átvitt értelemben	képletesen	2	1
+H6556	especially	különösen	főleg	1	0
+H6566	figurative	átvitt értelemben	képletesen	3	0
+H6567	especially	különösen	főleg	1	0
+H6570	opposed to	ellentéte	szemben	1	0
+H6571	figurative	átvitt értelemben	képletesen	1	0
+H6576	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6581	followed by	utána	ragos héber (-val/-vel)	1	0
+H6581	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6584	followed by	utána	ragos héber (-val/-vel)	2	0
+H6586	followed by	utána	ragos héber (-val/-vel)	2	0
+H6586	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6586	absolute	abszolút használatban	abszolút (más alakban)	2	1
+H6588	followed by	utána	ragos héber (-val/-vel)	2	1
+H6597	followed by	utána	ragos héber (-val/-vel)	2	0
+H6601	followed by	utána	ragos héber (-val/-vel)	1	1
+H6601	figurative	átvitt értelemben	képletesen	1	0
+H6605	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H6605	opposed to	ellentéte	ellentétben	2	1
+H6609	figurative	átvitt értelemben	képletesen	1	0
+H6617	especially	különösen	főleg	1	0
+H6626	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6632	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6639	figurative	átvitt értelemben	képletesen	1	0
+H6643	figurative	átvitt értelemben	képletesen	2	0
+H6654	figurative	átvitt értelemben	képletesen	1	0
+H6662	opposed to	ellentéte	szemben	1	0
+H6663	followed by	utána	ragos héber (-val/-vel)	4	1
+H6664	opposed to	ellentéte	ellentétben	1	0
+H6669	opposed to	ellentéte	szemben	1	0
+H6670	followed by	utána	ragos héber (-val/-vel)	2	1
+H6672	opposed to	ellentéte	szemben	3	0
+H6677	figurative	átvitt értelemben	képletesen	2	0
+H6679	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6680	followed by	utána	ragos héber (-val/-vel)	5	3
+H6680	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H6682	followed by	utána	ragos héber (-val/-vel)	1	0
+H6684	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6686	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6692	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6693	followed by	utána	ragos héber (-val/-vel)	1	0
+H6696	followed by	utána	ragos héber (-val/-vel)	6	5
+H6696	figurative	átvitt értelemben	képletesen	1	0
+H6696	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H6711	followed by	utána	ragos héber (-val/-vel)	2	1
+H6722	especially	különösen	főként	1	0
+H6723	figurative	átvitt értelemben	képletesen	3	0
+H6726	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6731	figurative	átvitt értelemben	képletesen	2	0
+H6738	figurative	átvitt értelemben	képletesen	4	0
+H6739	followed by	utána	ragos héber (-val/-vel)	1	0
+H6748	followed by	utána	ragos héber (-val/-vel)	1	0
+H6748	opposed to	ellentéte	szemben	1	0
+H6754	figurative	átvitt értelemben	képletesen	1	0
+H6757	figurative	átvitt értelemben	képletesen	1	0
+H6772	figurative	átvitt értelemben	képletesen	1	1
+H6779	figurative	átvitt értelemben	képletesen	5	2
+H6783	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6793	figurative	átvitt értelemben	képletesen	1	1
+H6800	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6801	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6806	figurative	átvitt értelemben	képletesen	1	0
+H6810	followed by	utána	ragos héber (-val/-vel)	3	0
+H6810	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H6810	opposed to	ellentéte	szemben	4	0
+H6812	opposed to	ellentéte	szemben	1	1
+H6815	followed by	utána	ragos héber (-val/-vel)	1	0
+H6817	followed by	utána	követi	2	1
+H6817	followed by	utána	ragos héber (-val/-vel)	1	1
+H6817	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6819	followed by	utána	ragos héber (-val/-vel)	1	0
+H6819	opposed to	ellentéte	szemben	1	0
+H6822	figurative	átvitt értelemben	képletesen	3	3
+H6823	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H6832	opposed to	ellentéte	szemben	1	0
+H6833	followed by	utána	ragos héber (-val/-vel)	1	0
+H6833	figurative	átvitt értelemben	képletesen	1	0
+H6845	followed by	utána	ragos héber (-val/-vel)	1	0
+H6884	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6884	figurative	átvitt értelemben	képletesen	2	2
+H6887	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6892	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H6895	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6901	followed by	utána	követi	2	0
+H6901	opposed to	ellentéte	szemben	3	0
+H6903	followed by	utána	követi	3	3
+H6903	followed by	utána	ragos héber (-val/-vel)	3	0
+H6903	opposed to	ellentéte	szemben	1	0
+H6908	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6912	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6913	figurative	átvitt értelemben	képletesen	2	2
+H6923	followed by	utána	ragos héber (-val/-vel)	1	0
+H6924	opposed to	ellentéte	szemben	2	0
+H6925	followed by	utána	ragos héber (-val/-vel)	2	1
+H6926	opposed to	ellentéte	szemben	1	0
+H6931	opposed to	ellentéte	szemben	2	0
+H6936	especially	különösen	főként	1	1
+H6937	figurative	átvitt értelemben	képletesen	2	2
+H6942	followed by	utána	ragos héber (-val/-vel)	2	1
+H6942	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H6942	opposed to	ellentéte	szemben	1	1
+H6957	figurative	átvitt értelemben	képletesen	2	1
+H6960	followed by	utána	követi	3	1
+H6960	followed by	utána	ragos héber (-val/-vel)	3	2
+H6960	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H6965	followed by	utána	ragos héber (-val/-vel)	5	1
+H6965	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H6965	figurative	átvitt értelemben	képletesen	2	0
+H6965	especially	különösen	főként	1	0
+H6967	figurative	átvitt értelemben	képletesen	1	0
+H6979	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H6994	followed by	utána	ragos héber (-val/-vel)	1	0
+H6994	opposed to	ellentéte	szemben	1	0
+H6994	especially	különösen	főleg	1	0
+H6996	opposed to	ellentéte	ellentétben	6	2
+H6999	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H7023	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7034	opposed to	ellentéte	szemben	3	0
+H7037	followed by	utána	ragos héber (-val/-vel)	1	0
+H7043	followed by	utána	ragos héber (-val/-vel)	5	0
+H7043	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7043	opposed to	ellentéte	szemben	5	1
+H7044	followed by	utána	követi	1	0
+H7050	figurative	átvitt értelemben	képletesen	1	0
+H7053	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7065	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7069	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7070	figurative	átvitt értelemben	képletesen	1	0
+H7080	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7081	followed by	utána	ragos héber (-val/-vel)	1	1
+H7093	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7097	opposed to	ellentéte	szemben	1	0
+H7105	followed by	utána	ragos héber (-val/-vel)	1	0
+H7105	figurative	átvitt értelemben	képletesen	6	1
+H7107	followed by	utána	ragos héber (-val/-vel)	3	3
+H7110	followed by	utána	ragos héber (-val/-vel)	1	1
+H7112	figurative	átvitt értelemben	képletesen	1	0
+H7114	followed by	utána	ragos héber (-val/-vel)	1	0
+H7114	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H7114	figurative	átvitt értelemben	képletesen	4	1
+H7114	opposed to	ellentéte	szemben	1	0
+H7116	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7116	opposed to	ellentéte	szemben	1	0
+H7121	especially	különösen	főként	1	0
+H7122	followed by	utána	ragos héber (-val/-vel)	1	0
+H7122	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7122	figurative	átvitt értelemben	képletesen	2	0
+H7122	opposed to	ellentéte	szemben	1	0
+H7126	followed by	utána	ragos héber (-val/-vel)	3	1
+H7126	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H7126	especially	különösen	főleg	1	0
+H7126	absolute	abszolút használatban	abszolút (más alakban)	1	0
+H7131	followed by	utána	ragos héber (-val/-vel)	1	0
+H7132	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7136	followed by	utána	ragos héber (-val/-vel)	1	0
+H7136	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7138	opposed to	ellentéte	szemben	3	0
+H7138	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H7139	especially	különösen	főleg	1	0
+H7140	opposed to	ellentéte	szemben	1	0
+H7144	opposed to	ellentéte	szemben	1	1
+H7146	opposed to	ellentéte	szemben	1	0
+H7151	figurative	átvitt értelemben	képletesen	1	0
+H7151	especially	különösen	főleg	1	0
+H7161	opposed to	ellentéte	szemben	1	1
+H7167	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7167	figurative	átvitt értelemben	képletesen	1	1
+H7170	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7179	figurative	átvitt értelemben	képletesen	2	1
+H7185	figurative	átvitt értelemben	képletesen	1	0
+H7186	followed by	utána	ragos héber (-val/-vel)	3	1
+H7186	figurative	átvitt értelemben	képletesen	1	0
+H7188	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7194	followed by	utána	ragos héber (-val/-vel)	2	1
+H7194	figurative	átvitt értelemben	képletesen	2	1
+H7200	followed by	utána	követi	11	4
+H7200	followed by	utána	ragos héber (-val/-vel)	9	3
+H7200	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H7200	figurative	átvitt értelemben	átvitt (más alakban)	2	1
+H7200	opposed to	ellentéte	szemben	1	0
+H7218	followed by	utána	ragos héber (-val/-vel)	1	0
+H7218	in phrase(s)	kifejezésekben	fordulat(ok)ban	2	0
+H7218	figurative	átvitt értelemben	átvitt (más alakban)	3	0
+H7220	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7223	opposed to	ellentéte	ellentétben	5	0
+H7227	followed by	utána	követi	1	1
+H7227	followed by	utána	ragos héber (-val/-vel)	4	0
+H7227	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7227	opposed to	ellentéte	szemben	4	0
+H7229	figurative	átvitt értelemben	képletesen	1	0
+H7233	opposed to	ellentéte	szemben	3	1
+H7235	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H7235	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7243	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7250	followed by	utána	ragos héber (-val/-vel)	1	0
+H7250	opposed to	ellentéte	szemben	1	0
+H7250	especially	különösen	főleg	1	0
+H7251	opposed to	ellentéte	szemben	1	0
+H7256	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7257	figurative	átvitt értelemben	képletesen	7	3
+H7264	followed by	utána	ragos héber (-val/-vel)	1	0
+H7264	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7264	figurative	átvitt értelemben	képletesen	2	0
+H7264	absolute	abszolút használatban	abszolút (más alakban)	1	1
+H7272	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7272	figurative	átvitt értelemben	képletesen	1	1
+H7273	opposed to	ellentéte	szemben	1	0
+H7273	especially	különösen	főként	1	0
+H7275	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7280	followed by	utána	ragos héber (-val/-vel)	1	0
+H7280	opposed to	ellentéte	szemben	1	0
+H7287	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7300	figurative	átvitt értelemben	átvitt (más alakban)	2	0
+H7301	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7301	figurative	átvitt értelemben	képletesen	5	0
+H7302	followed by	utána	ragos héber (-val/-vel)	1	0
+H7302	opposed to	ellentéte	szemben	1	0
+H7306	followed by	utána	ragos héber (-val/-vel)	1	1
+H7307	opposed to	ellentéte	szemben	1	1
+H7321	followed by	utána	ragos héber (-val/-vel)	5	4
+H7323	followed by	utána	ragos héber (-val/-vel)	1	0
+H7323	figurative	átvitt értelemben	képletesen	6	1
+H7326	followed by	utána	ragos héber (-val/-vel)	3	0
+H7326	opposed to	ellentéte	szemben	2	0
+H7332	opposed to	ellentéte	szemben	1	1
+H7337	figurative	átvitt értelemben	képletesen	1	0
+H7337	figurative	átvitt értelemben	átvitt (más alakban)	4	0
+H7342	figurative	átvitt értelemben	képletesen	3	1
+H7350	opposed to	ellentéte	szemben	1	0
+H7354	figurative	átvitt értelemben	képletesen	1	0
+H7355	followed by	utána	ragos héber (-val/-vel)	2	2
+H7355	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7356	followed by	utána	ragos héber (-val/-vel)	3	2
+H7356	figurative	átvitt értelemben	képletesen	1	0
+H7368	followed by	utána	követi	1	1
+H7368	followed by	utána	ragos héber (-val/-vel)	1	0
+H7368	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7368	figurative	átvitt értelemben	képletesen	2	0
+H7378	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H7378	figurative	átvitt értelemben	képletesen	2	0
+H7379	figurative	átvitt értelemben	képletesen	1	1
+H7381	figurative	átvitt értelemben	képletesen	1	1
+H7385	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7385	especially	különösen	főként	1	1
+H7389	opposed to	ellentéte	szemben	2	0
+H7390	figurative	átvitt értelemben	képletesen	2	0
+H7390	opposed to	ellentéte	szemben	1	0
+H7393	especially	különösen	főként	1	1
+H7401	followed by	utána	ragos héber (-val/-vel)	1	0
+H7402	figurative	átvitt értelemben	képletesen	1	0
+H7423	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7423	opposed to	ellentéte	szemben	1	0
+H7429	figurative	átvitt értelemben	képletesen	2	0
+H7430	especially	különösen	főleg	1	0
+H7442	followed by	utána	ragos héber (-val/-vel)	2	1
+H7442	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7451	followed by	utána	ragos héber (-val/-vel)	7	7
+H7453	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7453	figurative	átvitt értelemben	képletesen	1	1
+H7453	opposed to	ellentéte	szemben	1	0
+H7455	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7456	followed by	utána	ragos héber (-val/-vel)	2	0
+H7456	opposed to	ellentéte	szemben	2	1
+H7457	figurative	átvitt értelemben	képletesen	1	0
+H7460	followed by	utána	ragos héber (-val/-vel)	1	0
+H7462	absolute	abszolút használatban	abszolút (más alakban)	2	1
+H7463	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7468	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7481	followed by	utána	ragos héber (-val/-vel)	1	0
+H7482	opposed to	ellentéte	szemben	1	1
+H7488	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7488	figurative	átvitt értelemben	képletesen	3	0
+H7489	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H7489	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7489	opposed to	ellentéte	ellentétben	2	2
+H7493	followed by	utána	ragos héber (-val/-vel)	2	1
+H7494	figurative	átvitt értelemben	képletesen	1	1
+H7495	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H7495	figurative	átvitt értelemben	képletesen	4	1
+H7495	opposed to	ellentéte	szemben	4	0
+H7503	followed by	utána	ragos héber (-val/-vel)	1	0
+H7503	figurative	átvitt értelemben	képletesen	5	2
+H7518	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7519	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7523	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7533	figurative	átvitt értelemben	képletesen	2	0
+H7543	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7546	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7563	especially	különösen	főleg	1	1
+H7568	followed by	utána	ragos héber (-val/-vel)	6	1
+H7568	figurative	átvitt értelemben	képletesen	2	0
+H7579	figurative	átvitt értelemben	képletesen	1	0
+H7580	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7580	figurative	átvitt értelemben	képletesen	2	1
+H7585	opposed to	ellentéte	szemben	3	2
+H7588	figurative	átvitt értelemben	képletesen	1	0
+H7588	opposed to	ellentéte	ellentétben	1	0
+H7592	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	1
+H7592	especially	különösen	főként	1	0
+H7602	followed by	utána	ragos héber (-val/-vel)	1	1
+H7602	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7602	figurative	átvitt értelemben	képletesen	2	0
+H7605	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7607	figurative	átvitt értelemben	képletesen	2	2
+H7620	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7621	followed by	utána	ragos héber (-val/-vel)	2	0
+H7622	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7623	followed by	utána	ragos héber (-val/-vel)	1	1
+H7623	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7626	followed by	utána	ragos héber (-val/-vel)	1	0
+H7626	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7626	opposed to	ellentéte	szemben	1	0
+H7639	figurative	átvitt értelemben	képletesen	1	0
+H7646	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7646	figurative	átvitt értelemben	képletesen	8	1
+H7649	followed by	utána	ragos héber (-val/-vel)	1	0
+H7649	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7649	opposed to	ellentéte	szemben	1	0
+H7650	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H7651	followed by	utána	követi	1	1
+H7665	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H7666	figurative	átvitt értelemben	képletesen	1	1
+H7667	followed by	utána	ragos héber (-val/-vel)	1	0
+H7667	figurative	átvitt értelemben	képletesen	3	1
+H7673	followed by	utána	ragos héber (-val/-vel)	5	5
+H7685	followed by	utána	ragos héber (-val/-vel)	1	0
+H7685	opposed to	ellentéte	szemben	1	0
+H7686	followed by	utána	ragos héber (-val/-vel)	2	1
+H7686	figurative	átvitt értelemben	képletesen	1	0
+H7688	followed by	utána	ragos héber (-val/-vel)	1	0
+H7699	followed by	utána	ragos héber (-val/-vel)	2	0
+H7699	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7703	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H7704	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7704	opposed to	ellentéte	szemben	10	1
+H7707	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7716	figurative	átvitt értelemben	képletesen	1	1
+H7723	figurative	átvitt értelemben	képletesen	1	0
+H7725	followed by	utána	követi	5	1
+H7725	followed by	utána	ragos héber (-val/-vel)	26	5
+H7725	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	6	2
+H7725	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H7725	figurative	átvitt értelemben	átvitt (más alakban)	16	3
+H7725	opposed to	ellentéte	szemben	13	2
+H7737	followed by	utána	ragos héber (-val/-vel)	2	1
+H7741	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7757	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7758	followed by	utána	ragos héber (-val/-vel)	1	0
+H7760	followed by	utána	ragos héber (-val/-vel)	19	7
+H7760	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7760	figurative	átvitt értelemben	képletesen	1	0
+H7768	followed by	utána	ragos héber (-val/-vel)	1	1
+H7771	followed by	utána	ragos héber (-val/-vel)	2	0
+H7771	opposed to	ellentéte	szemben	2	0
+H7782	especially	különösen	főként	1	0
+H7786	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7794	opposed to	ellentéte	szemben	3	1
+H7797	followed by	utána	ragos héber (-val/-vel)	3	2
+H7797	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7799	figurative	átvitt értelemben	képletesen	1	0
+H7804	followed by	utána	ragos héber (-val/-vel)	1	0
+H7810	followed by	utána	ragos héber (-val/-vel)	1	0
+H7812	followed by	utána	ragos héber (-val/-vel)	1	0
+H7812	opposed to	ellentéte	ellentétben	1	1
+H7814	opposed to	ellentéte	szemben	2	0
+H7819	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7832	figurative	átvitt értelemben	képletesen	1	0
+H7833	figurative	átvitt értelemben	átvitt (más alakban)	1	1
+H7834	followed by	utána	ragos héber (-val/-vel)	1	0
+H7837	followed by	utána	ragos héber (-val/-vel)	2	0
+H7837	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7837	opposed to	ellentéte	szemben	1	1
+H7843	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7845	followed by	utána	ragos héber (-val/-vel)	9	6
+H7845	figurative	átvitt értelemben	átvitt (más alakban)	2	1
+H7849	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7857	figurative	átvitt értelemben	képletesen	2	0
+H7872	figurative	átvitt értelemben	képletesen	2	1
+H7892	opposed to	ellentéte	szemben	1	0
+H7896	followed by	utána	ragos héber (-val/-vel)	6	2
+H7896	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7896	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7901	followed by	utána	ragos héber (-val/-vel)	14	5
+H7901	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H7901	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H7901	figurative	átvitt értelemben	átvitt (más alakban)	3	1
+H7901	opposed to	ellentéte	szemben	5	0
+H7902	followed by	utána	ragos héber (-val/-vel)	1	0
+H7903	followed by	utána	ragos héber (-val/-vel)	1	0
+H7911	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7911	opposed to	ellentéte	ellentétben	4	1
+H7916	figurative	átvitt értelemben	képletesen	1	0
+H7919	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7925	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H7925	opposed to	ellentéte	szemben	1	0
+H7926	figurative	átvitt értelemben	képletesen	2	1
+H7926	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H7936	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7937	figurative	átvitt értelemben	képletesen	2	2
+H7939	figurative	átvitt értelemben	képletesen	1	0
+H7941	opposed to	ellentéte	szemben	1	0
+H7957	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7961	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H7962	opposed to	ellentéte	szemben	1	0
+H7969	followed by	utána	követi	1	0
+H7969	especially	különösen	főként	3	0
+H7970	followed by	utána	követi	2	2
+H7971	followed by	utána	követi	4	1
+H7971	followed by	utána	ragos héber (-val/-vel)	5	2
+H7971	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H7971	figurative	átvitt értelemben	átvitt (más alakban)	4	0
+H7983	followed by	utána	ragos héber (-val/-vel)	1	0
+H7989	followed by	utána	ragos héber (-val/-vel)	1	0
+H7990	followed by	utána	követi	1	0
+H7991	figurative	átvitt értelemben	képletesen	1	0
+H7993	followed by	utána	ragos héber (-val/-vel)	1	0
+H7993	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H7993	figurative	átvitt értelemben	képletesen	5	1
+H7997	followed by	utána	ragos héber (-val/-vel)	1	1
+H7997	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H7999	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8002	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8002	opposed to	ellentéte	szemben	1	1
+H8003	followed by	utána	ragos héber (-val/-vel)	1	1
+H8008	figurative	átvitt értelemben	képletesen	1	0
+H8010	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8032	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8034	followed by	utána	ragos héber (-val/-vel)	7	1
+H8034	in phrase(s)	kifejezésekben	kifejezésben	2	0
+H8034	especially	különösen	főként	1	0
+H8041	opposed to	ellentéte	szemben	1	0
+H8042	opposed to	ellentéte	szemben	1	0
+H8045	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	2
+H8052	followed by	utána	ragos héber (-val/-vel)	1	1
+H8055	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H8055	opposed to	ellentéte	ellentétben	1	1
+H8056	followed by	utána	ragos héber (-val/-vel)	1	0
+H8057	opposed to	ellentéte	szemben	1	1
+H8064	followed by	utána	ragos héber (-val/-vel)	5	0
+H8064	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H8064	figurative	átvitt értelemben	átvitt (más alakban)	2	0
+H8064	opposed to	ellentéte	szemben	4	1
+H8065	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8065	figurative	átvitt értelemben	képletesen	1	0
+H8066	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8074	followed by	utána	ragos héber (-val/-vel)	1	0
+H8074	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8074	figurative	átvitt értelemben	képletesen	1	0
+H8080	especially	különösen	főleg	1	0
+H8084	followed by	utána	követi	2	0
+H8085	followed by	utána	ragos héber (-val/-vel)	4	1
+H8085	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8085	figurative	átvitt értelemben	képletesen	1	1
+H8104	followed by	utána	ragos héber (-val/-vel)	3	1
+H8104	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8104	in phrase(s)	kifejezésekben	szólás(ok)ban	1	0
+H8121	opposed to	ellentéte	ellentétben	1	0
+H8127	figurative	átvitt értelemben	képletesen	1	0
+H8130	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8130	figurative	átvitt értelemben	képletesen	1	1
+H8138	followed by	utána	ragos héber (-val/-vel)	1	0
+H8138	especially	különösen	főleg	3	0
+H8147	especially	különösen	főként	1	0
+H8156	followed by	utána	ragos héber (-val/-vel)	1	0
+H8172	followed by	utána	ragos héber (-val/-vel)	1	0
+H8172	figurative	átvitt értelemben	képletesen	2	0
+H8181	figurative	átvitt értelemben	képletesen	1	1
+H8185	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8191	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8198	figurative	átvitt értelemben	képletesen	1	0
+H8198	opposed to	ellentéte	szemben	1	0
+H8199	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8213	figurative	átvitt értelemben	képletesen	2	1
+H8242	followed by	utána	ragos héber (-val/-vel)	3	0
+H8242	figurative	átvitt értelemben	képletesen	1	0
+H8248	figurative	átvitt értelemben	képletesen	4	1
+H8252	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H8252	figurative	átvitt értelemben	képletesen	1	0
+H8252	absolute	abszolút használatban	abszolút (más alakban)	2	1
+H8254	followed by	utána	ragos héber (-val/-vel)	2	0
+H8254	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	3	2
+H8254	figurative	átvitt értelemben	képletesen	2	1
+H8257	opposed to	ellentéte	szemben	3	2
+H8259	followed by	utána	ragos héber (-val/-vel)	6	3
+H8259	figurative	átvitt értelemben	képletesen	1	0
+H8262	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H8266	opposed to	ellentéte	szemben	1	0
+H8271	opposed to	ellentéte	szemben	1	0
+H8295	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8307	followed by	utána	követi	1	0
+H8313	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8313	especially	különösen	főként	1	0
+H8328	figurative	átvitt értelemben	képletesen	1	0
+H8334	figurative	átvitt értelemben	képletesen	1	0
+H8334	opposed to	ellentéte	szemben	1	0
+H8336	figurative	átvitt értelemben	képletesen	2	0
+H8337	followed by	utána	követi	1	0
+H8337	especially	különösen	főként	1	0
+H8342	figurative	átvitt értelemben	képletesen	1	1
+H8354	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8385	followed by	utána	követi	1	0
+H8388	followed by	utána	ragos héber (-val/-vel)	3	2
+H8393	figurative	átvitt értelemben	képletesen	1	1
+H8398	opposed to	ellentéte	szemben	1	0
+H8401	followed by	utána	ragos héber (-val/-vel)	1	0
+H8401	opposed to	ellentéte	szemben	2	0
+H8411	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8416	followed by	utána	ragos héber (-val/-vel)	4	2
+H8416	figurative	átvitt értelemben	képletesen	1	1
+H8424	followed by	utána	ragos héber (-val/-vel)	2	0
+H8424	opposed to	ellentéte	szemben	2	0
+H8426	followed by	utána	ragos héber (-val/-vel)	1	0
+H8442	followed by	utána	ragos héber (-val/-vel)	2	0
+H8444	especially	különösen	főként	1	1
+H8446	followed by	utána	követi	1	1
+H8446	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H8449	figurative	átvitt értelemben	képletesen	1	0
+H8458	opposed to	ellentéte	szemben	1	0
+H8460	followed by	utána	ragos héber (-val/-vel)	1	1
+H8462	followed by	utána	követi	1	0
+H8478	followed by	utána	követi	1	0
+H8478	followed by	utána	ragos héber (-val/-vel)	2	1
+H8482	figurative	átvitt értelemben	képletesen	1	0
+H8486	followed by	utána	ragos héber (-val/-vel)	2	0
+H8486	opposed to	ellentéte	szemben	2	0
+H8486	especially	különösen	főként	1	0
+H8505	figurative	átvitt értelemben	képletesen	1	0
+H8519	followed by	utána	követi	1	1
+H8535	opposed to	ellentéte	szemben	1	0
+H8551	followed by	utána	ragos héber (-val/-vel)	2	0
+H8551	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	0
+H8551	figurative	átvitt értelemben	képletesen	2	2
+H8552	followed by	utána	követi	2	0
+H8552	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8571	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8572	followed by	utána	ragos héber (-val/-vel)	1	0
+H8574	followed by	utána	ragos héber (-val/-vel)	1	1
+H8577	figurative	átvitt értelemben	képletesen	1	1
+H8581	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8582	followed by	utána	ragos héber (-val/-vel)	3	2
+H8582	figurative	átvitt értelemben	képletesen	1	1
+H8587	followed by	utána	ragos héber (-val/-vel)	1	0
+H8594	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8604	followed by	utána	ragos héber (-val/-vel)	1	0
+H8609	followed by	utána	ragos héber (-val/-vel)	1	0
+H8609	opposed to	ellentéte	szemben	1	0
+H8610	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	2	1
+H8610	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8610	figurative	átvitt értelemben	képletesen	5	2
+H8622	followed by	utána	ragos héber (-val/-vel)	1	0
+H8622	opposed to	ellentéte	szemben	1	0
+H8626	followed by	utána	ragos héber (-val/-vel)	1	0
+H8626	opposed to	ellentéte	szemben	2	0
+H8628	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H8628	figurative	átvitt értelemben	képletesen	1	0
+H8628	opposed to	ellentéte	szemben	1	1
+H8635	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8641	especially	különösen	főként	1	1
+H8643	followed by	utána	ragos héber (-val/-vel)	1	1
+H8648	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8648	opposed to	ellentéte	szemben	1	0
+H8659	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8668	followed by	utána	ragos héber (-val/-vel)	1	0
+H8668	in phrase(s)	kifejezésekben	kifejezésben	1	0
+H8668	opposed to	ellentéte	szemben	1	0
+H8672	followed by	utána	követi	1	1
+H8672	especially	különösen	főleg	1	0
+H8673	followed by	utána	követi	2	1
+H9000	in phrase(s)	kifejezésekben	fordulat(ok)ban	1	0
+H9000	opposed to	ellentéte	ellentétben	1	1
+H9000	especially	különösen	főként	2	0
+H9000	especially	különösen	kiváltképp	1	0
+H9003	followed by	utána	követi	1	1
+H9003	in phrase(s)	kifejezésekben	kifejezésben	3	0
+H9003	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H9004	followed by	utána	követi	1	0
+H9004	followed by	utána	ragos héber (-val/-vel)	2	0
+H9004	opposed to	ellentéte	szemben	1	0
+H9005	in phrase(s)	kifejezésekben	kifejezésben	8	0
+H9005	figurative	átvitt értelemben	átvitt (más alakban)	1	0
+H9005	opposed to	ellentéte	szemben	1	0
+H9005	especially	különösen	főként	5	1
+H9008	Inf. abs. as adverb	infinitivus absolutus határozószóként	infinitivus absolutus (más folytatással)	1	1
+H9009	followed by	utána	követi	2	0
+H9009	opposed to	ellentéte	ellentétben	4	0
+H9009	especially	különösen	főként	2	0
