@@ -35,7 +35,7 @@ ADAT = ROOT / "adat"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import tsk_kulcs  # noqa: E402  (F114: a TSK KJV-kulcsa -> Károli)
-import karoli_kh_szuro  # noqa: E402  (N-F156a: másolt Károli-KH listák kihagyása)
+import karoli_kh_szuro  # noqa: E402  (F177: csak a MEK-kel megerősített Károli-KH sorok)
 from strong_util import strong_normalizal  # noqa: E402  (F62: az egyetlen Strong-normalizáló)
 
 
@@ -569,18 +569,20 @@ def cmd_karoli(args):
         step_key = None
 
     kh_rows = load_karoli_kh()
-    kh_hits = [r for r in kh_rows if r["Igehely"] == step_key] if step_key else []
-    if step_key in karoli_kh_szuro.gyanus_forrasok():
-        # N-F156a: a forrás (HunKar OSIS) ehhez a vershez másik vers jegyzetét köti; a lista nem megbízható
-        print(f"# Károli-KH ({igehely}) — 0 kapcsolódó igehely megjelenítve: {len(kh_hits)} sor a forrásban másolt "
-              f"lista gyanúja miatt kihagyva (konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv)")
-        kh_hits = []
+    kh_nyers = [r for r in kh_rows if r["Igehely"] == step_key] if step_key else []
+    # F177: csak a MEK-kel megerősített sor jut tovább (konkordancia/Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad);
+    # a kiesik és a jelolt szintű sor nem (a jelöltlistán marad).
+    kh_hits = [r for r in kh_nyers if karoli_kh_szuro.elfogad(step_key, r["Kapcsolódó igehely"])]
+    if len(kh_hits) < len(kh_nyers):
+        print(f"# Károli-KH ({igehely}) — {len(kh_hits)} kapcsolódó igehely (megerősített); "
+              f"{len(kh_nyers) - len(kh_hits)} sor nem megerősített (kiesik / jelölt), kihagyva "
+              f"(konkordancia/Karoli_KH_javitott.tsv)")
     else:
         print(f"# Károli-KH ({igehely}) — {len(kh_hits)} kapcsolódó igehely")
     for r in kh_hits:
         print(r["Kapcsolódó igehely magyar megjelenítése"])
 
-    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv "
+    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv "
             f"| n={len(kh_hits)} | ts={ts()}")
     print(f"proveniencia: {prov}")
 

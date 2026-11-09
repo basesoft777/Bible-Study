@@ -192,10 +192,10 @@ for r in tsk_kulcs.forras_sorok(_tsk_nyers, set(VERSEK)):
                               r['Kapcsolódó igehely magyar megjelenítése']))
 kh = defaultdict(list)
 STEP_HU = step_tabla()
-_KH_GYANUS = karoli_kh_szuro.gyanus_forrasok()  # N-F156a: a forrás-XML másolt listái kimaradnak
+# F177: csak a MEK-kel megerősített sor (karoli_kh_szuro.elfogad) jut át
 for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
-    if m and len(r) > 2 and r[0] not in _KH_GYANUS:
+    if m and len(r) > 2 and karoli_kh_szuro.elfogad(r[0], r[1]):
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
         if kulcs in VERSEK:
             kh[kulcs].append(r[2])
