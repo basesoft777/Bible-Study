@@ -13,7 +13,7 @@
   `konkordancia/Karoli_KH_MEK_versszerkezet.tsv` (a MEK vers-szerkezete a versellenőrzéshez); a döntési és nyitott fájlok: `dontesek/uj/karoli-kh-mek.md`,
   `nyitott/uj/karoli-kh-mek.md`; további fogyasztói átállítás: `eszkozok/lekerdez.py`, `sqlite_epit.py`, `eszkozok/olvaso_pilot/adat.py`, `eszkozok/olvaso_mockup/nav_kinyer.py`
   (a `karoli_kh_szuro.py` ezen át működik; a brief a szűrő átállítását írja elő, a fogyasztói a szűrő hívói).
-* **A versellenőrzés alapja (DT-F177c):** a `Karoli_1908.tsv` ∪ a MEK vers-szerkezete (a brief a `Karoli_1908.tsv`-t írja; az 14 + 2 vers eltérése miatt, l. 3.).
+* **A versellenőrzés alapja (DT652):** a `Karoli_1908.tsv` ∪ a MEK vers-szerkezete (a brief a `Karoli_1908.tsv`-t írja; az 14 + 2 vers eltérése miatt, l. 3.).
 
 ## 2. Mérések (a próbaméréshez képest)
 
@@ -29,7 +29,7 @@ Versenként (a `Karoli_kereszthivatkozasok_gyanus.tsv` gyanús halmazával):
 | csak a MEK-ben | 74 | **32** |
 
 A különbségek okát nem vizsgáltam (a próbamérés szkriptje nem áll rendelkezésemre); a mérés a `eszkozok/karoli_kh_mek.py` két futásából újraállítható. Egy ismert eltérő
-kezelés: a három „1. 2.” elírású fejezetnél (Jób 24, Zsolt 102, Zak 11) a versszám nálam a sorrendből jön (DT-F177c), a `kapcsolodo` nélküli (nem értelmezhető) MEK-sor
+kezelés: a három „1. 2.” elírású fejezetnél (Jób 24, Zsolt 102, Zak 11) a versszám nálam a sorrendből jön (DT652), a `kapcsolodo` nélküli (nem értelmezhető) MEK-sor
 pedig a „csak MEK” halmazban `jelolt` sorként szerepel.
 Az **egyezés a nem gyanús verseken** (ahol van KH valamelyik forrásban): 11 396 / 14 771 = **77,1%**, a két oldalon is KH-t hordozóknál 11 396 / 12 834 = 88,8% — a ⛔ ③
 küszöb (60%) fölött, megállás nem kellett.
@@ -48,11 +48,11 @@ küszöb (60%) fölött, megállás nem kellett.
 
 A MEK-nek 14 verse nincs a `Karoli_1908.tsv`-ben (1Kor 3:23, Préd 2:27, Hós 1:12, Hós 11:12, Ézs 3:28, Ézs 9:21, Ján 1:52, Jób 16:23, Jób 36:34, Luk 23:57,
 4Móz 29:40, Péld 11:32, Róm 3:31, Róm 8:39), és a `Karoli_1908.tsv`-nek 2 verse nincs a MEK-ben (Ézs 4:6, Zak 9:17); az eltérés oka: A `Karoli_1908.tsv` egyes versekben két MEK-verset hordoz egyben (a Károli két versét egy versként adja), ezért a MEK külön versei hiányoznak belőle. Mérve (`python eszkozok/lekerdez.py karoli "<vers>"`; scope=range:<vers> | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv | ts=2026-11-09): a 4Móz 29:39, a Róm 3:30, az 1Kor 3:22 és a Ján 1:51 egy-egy Károli-versben adja a MEK két versét; a 29:40, 3:31, 3:23 és 1:52 ezért „Nincs Károli-szöveg”. A 14 hiányzó MEK-vers közül ilyen a Róm 8:39, a Hós 11:12, az Ézs 9:21 és a Préd 2:27 is (az előző Károli-vers szövege a két MEK-verset együtt hordozza; a Préd 2:26 kétvers-egység: a Károli Préd 2:26 „Mert kicsoda ehetnék…” + „Mert az embernek, a ki jó…” a KJV 2:25–26-nak felel meg, a `KJV_Strongs_teljes.tsv` Ecc.2.25 [H398 eat, H2363 hasten, H2351 more] és Ecc.2.26 sorai szerint; `python eszkozok/lekerdez.py karoli "Préd 2:26"`, scope=range:Préd 2:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv | n=1 | ts=2026-11-09T11:09Z; „Préd 2:27” → „Nincs Károli-szöveg”). Összevonásos eset tehát 8 van. A Jób 16:23, a Jób 36:34, a Péld 11:32 és a Hós 1:12 esetén pedig az utolsó Károli-vers a következő fejezet első versének megfelelő szöveget is tartalmazza (4 fejezetvégi eset; a megfelelés a KJV-számozás szerint áll, a forrás a repóbeli `KJV_Strongs_teljes.tsv`; a `Karoli_1908.tsv` saját következő fejezeti 1. verse mást hordoz). Az Ézs 3:28 és a Luk 23:57 esetén a fejezet utolsó Károli-verse egyetlen versnyi szöveg, ott az eltérés a fejezeten belül van (a MEK szövege nélkül nem jelölhető ki; 2 vizsgálatlan eset). Bontás: 8 + 4 + 2 = 14. Az Ézs 4:6 és a Zak 9:17 fordított irányú: a `Karoli_1908.tsv`-ben külön vers, a MEK-ben nincs.
-A `Karoli_1908.tsv` Jeremiás siralmait `Sir`-ként adja (alias a táblában). A létezés a két forrás uniója (DT-F177c).
+A `Karoli_1908.tsv` Jeremiás siralmait `Sir`-ként adja (alias a táblában). A létezés a két forrás uniója (DT652).
 
 ## Helyesbítés a commit-üzenethez
 
-Az F177.7 (`cdc62075`) commit-üzenete szerint „10 esetben” mutatja a Károli-vers az összevonást, 3 eset nem jelölhető ki, és „2 fordított irányú”; ez téves. A helyes bontás (az F177.11 után): a 14 hiányzó MEK-vers = 8 versösszevonás (4Móz 29:40, Róm 3:31, 1Kor 3:23, Ján 1:52, Róm 8:39, Hós 11:12, Ézs 9:21, Préd 2:27) + 4 fejezetvégi (Jób 16:23, Jób 36:34, Péld 11:32, Hós 1:12) + 2 vizsgálatlan (Ézs 3:28, Luk 23:57) = 14. A 2 fordított irányú eset (Ézs 4:6, Zak 9:17) nem része a 14-nek: ezek a `Karoli_1908.tsv`-ben meglévő, a MEK-ben nem szereplő versek. A git-történet nem íródik át (az ág pusholva); DT-F177d.
+Az F177.7 (`cdc62075`) commit-üzenete szerint „10 esetben” mutatja a Károli-vers az összevonást, 3 eset nem jelölhető ki, és „2 fordított irányú”; ez téves. A helyes bontás (az F177.11 után): a 14 hiányzó MEK-vers = 8 versösszevonás (4Móz 29:40, Róm 3:31, 1Kor 3:23, Ján 1:52, Róm 8:39, Hós 11:12, Ézs 9:21, Préd 2:27) + 4 fejezetvégi (Jób 16:23, Jób 36:34, Péld 11:32, Hós 1:12) + 2 vizsgálatlan (Ézs 3:28, Luk 23:57) = 14. A 2 fordított irányú eset (Ézs 4:6, Zak 9:17) nem része a 14-nek: ezek a `Karoli_1908.tsv`-ben meglévő, a MEK-ben nem szereplő versek. A git-történet nem íródik át (az ág pusholva); DT653.
 
 ## 4. A MEK-elírások (a nem létező hivatkozott vers; a javítás nem történt meg)
 
@@ -155,7 +155,7 @@ Károli; katolikus, King James teljes szövegekkel. 3.0 ver. Budapest : Arcanum,
 
 A `licencek.tsv` `Karoli_KH_MEK` sora: `kereskedelmi=feltetelesen`, `allapot=tisztazatlan`, `cimke=tisztázatlan`; a MEK copyright-szövege személyes, nem kereskedelmi másolást enged,
 forrásmegjelöléssel („Országos Széchényi Könyvtár, Magyar Elektronikus Könyvtár”); a katalóguscédula ugyanakkor „Jogi közlemény: Nem jogvédett”. **A felhasználónak külön meg kell
-erősítenie (DT-F177b), mielőtt a MEK-ből származó bármi a kimenetbe (lap, nyílt mag) kerül.** A munka során semmi MEK-eredetű nem került kimenetbe: a lapok újragenerálása nem történt
+erősítenie (DT651), mielőtt a MEK-ből származó bármi a kimenetbe (lap, nyílt mag) kerül.** A munka során semmi MEK-eredetű nem került kimenetbe: a lapok újragenerálása nem történt
 meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `jelolt` szintűek és nem jutnak a szűrőn át. A `Karoli_KH_javitott` licencsora szintén `feltetelesen` / `tisztazatlan`.
 
 ## 8. Mi változott a rendszerben
@@ -164,7 +164,7 @@ meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `
 * Átállított fogyasztók: `lekerdez.py`, `sqlite_epit.py`, `eszkozok/olvaso_pilot/adat.py`, `eszkozok/olvaso_mockup/nav_kinyer.py`. **Nem módosítva** (kizárt): `lexikon_general.py` (`kh_index`), a lapok;
   az `olvasoi_kapu.py` `KH_MASOLT` szabálya a `karoli_kh_epseg.gyanus_forrasok()`-t használja (N-F177a).
 * A `Karoli_kereszthivatkozasok_gyanus.tsv` ARCHÍV fejlécet kapott (a generátorból újragenerálva; az adat változatlan, csak a `ts=` és a fejléc), a generátor megjegyzést.
-* N-F156a és N-F156c lezárva (`NYITOTT_FELADATOK.md`, helyben); új: N-F177a, N-F177b (`nyitott/uj/karoli-kh-mek.md`); új döntések: DT-F177a, b, c (`dontesek/uj/karoli-kh-mek.md`).
+* N-F156a és N-F156c lezárva (`NYITOTT_FELADATOK.md`, helyben); új: N-F177a, N-F177b (`nyitott/uj/karoli-kh-mek.md`); új döntések: DT650, b, c (`dontesek/uj/karoli-kh-mek.md`).
 
 ## 9. Ellenőrzések kimenete
 
@@ -179,7 +179,7 @@ meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `
 
 ## 10. Megállási pontok
 
-⛔ ① nem (a modell egyezett, a #176 a `main`-ben); ⛔ ② a licenc: a munka belső tanúként folytatódott, a megerősítés nyitva (DT-F177b); ⛔ ③ nem (77,1% a nem gyanús verseken);
+⛔ ① nem (a modell egyezett, a #176 a `main`-ben); ⛔ ② a licenc: a munka belső tanúként folytatódott, a megerősítés nyitva (DT651); ⛔ ③ nem (77,1% a nem gyanús verseken);
 ⛔ ④ nem (egyetlen KH-t sem javítottam kézzel; a `jelolt` sorok eldöntetlenek, N-F177b).
 
-**Kiegészítés (F177.17, 2026-11-09): DT-F177b (a) közkincs.** A felhasználó döntése (szó szerint: „(a) közkincs”): a MEK 00161 Károli-kiadása a kimenet szempontjából közkincs, `kereskedelmi=igen`; a fenti 9. szakasz és a 10. ⛔ ② pont „megerősítés nyitva” állapota ezzel megszűnt. A `Karoli_KH_MEK` és a `Karoli_KH_javitott` licencsora, a dataset-sor, a SEMA 2.19 és a MEK-README átvezetve; a naplók (ELLENOR_*) változatlanok.
+**Kiegészítés (F177.17, 2026-11-09): DT651 (a) közkincs.** A felhasználó döntése (szó szerint: „(a) közkincs”): a MEK 00161 Károli-kiadása a kimenet szempontjából közkincs, `kereskedelmi=igen`; a fenti 9. szakasz és a 10. ⛔ ② pont „megerősítés nyitva” állapota ezzel megszűnt. A `Karoli_KH_MEK` és a `Karoli_KH_javitott` licencsora, a dataset-sor, a SEMA 2.19 és a MEK-README átvezetve; a naplók (ELLENOR_*) változatlanok.

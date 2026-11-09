@@ -9,13 +9,13 @@ allapot: lezarva
 ag: claude/karoli-kh-mek
 pr: https://github.com/basesoft777/Bible-Study/pull/656
 ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
-kovetkezo: "Te: a draft PR átnézése és merge (DT-F177b: (a) közkincs, 2026-11-09, átvezetve; DT-F177c: 🟢); utána a lapok újragenerálása a lapszerkezeti generátor-körben (N-F177a)"
+kovetkezo: "Te: a draft PR átnézése és merge (DT651: (a) közkincs, 2026-11-09, átvezetve; DT652: 🟢); utána a lapok újragenerálása a lapszerkezeti generátor-körben (N-F177a)"
 munka: folyamat
 olvas: [konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok_README.md, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/karoli_kh_epseg.py, eszkozok/karoli_kh_szuro.py, naplok/KAROLI_KH_EPSEG_jelentes.md, adat/SEMA.md]
 ir: [konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, eszkozok/karoli_kh_gyanus_general.py, konkordancia/Karoli_KH_MEK_README.md, konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, eszkozok/karoli_kh_szuro.py, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, naplok/F177_jelentes.md]
 fugg: [176]
 nem_fugg: [38]
-lezarva_osszegzes: MEK 00161 mint második tanú — Karoli_KH_MEK.tsv (29 987 sor) és háromszintű Karoli_KH_javitott.tsv (megerősített 21 314 / kiesik 11 027 / jelölt 2 863), a nem gyanús versek egyezése 77,1%; a szűrő és fogyasztói átállítva, a karantén archív, N-F156a/c lezárva; két javítókör (ELLENOR_F177, _2, _3: TISZTA); DT-F177b (MEK-licenc) 🟢 (a) közkincs (a felhasználó, 2026-11-09; F177.17: átvezetve), a lapokra MEK-eredetű adat nem került; a lapok érintetlenek (N-F177a)
+lezarva_osszegzes: MEK 00161 mint második tanú — Karoli_KH_MEK.tsv (29 987 sor) és háromszintű Karoli_KH_javitott.tsv (megerősített 21 314 / kiesik 11 027 / jelölt 2 863), a nem gyanús versek egyezése 77,1%; a szűrő és fogyasztói átállítva, a karantén archív, N-F156a/c lezárva; két javítókör (ELLENOR_F177, _2, _3: TISZTA); DT651 (MEK-licenc) 🟢 (a) közkincs (a felhasználó, 2026-11-09; F177.17: átvezetve), a lapokra MEK-eredetű adat nem került; a lapok érintetlenek (N-F177a)
 ---
 
 # F177_KAROLI_KH_MEK_BRIEF.md — A Károli-kereszthivatkozások javítása a MEK-kel
@@ -44,7 +44,7 @@ A MEK-nek **saját elírásai** vannak (pl. 2Móz 6:20 → „2Móz 26,59”, he
 
 - A nyers fájlok a felhasználó gépén: `E:\Letöltések\00161.rtf` (és `.pdf`, `.epub`, `.prc` — ugyanaz a kiadás; az RTF elég). **A nyers fájl nem kerül a repóba**; a repóba a kivonat (`Karoli_KH_MEK.tsv`) és a konverziós szkript kerül. A forrás-URL: https://mek.oszk.hu/00100/00161/. A fájl SHA-256-ja a README-be.
 - A fájlban nincs impresszum; a szöveg helyesírása az 1908-as revízióé. A kiadás azonosítását (melyik nyomtatott kiadás) a README rögzítse, ha kideríthető; ha nem, „nem azonosított”.
-- **⛔ Licenc.** A MEK szerzői jogi oldala (https://www.mek.oszk.hu/html/allando/copyright.htm) személyes, nem kereskedelmi másolást enged, forrásmegjelöléssel; a szöveg a Szjt. IV/B. fejezete szerinti általános szöveg, nem biztos, hogy erre a közkincs dokumentumra vonatkozik. A felhasználó elve (2026-11-08, a Sefariánál): közkincs tartalomnál a szerzői jog az irányadó. **A MEK-re ezt a felhasználónak külön meg kellett erősítenie** *(megerősítve: DT-F177b (a) közkincs, 2026-11-09; a `licencek.tsv` sora `közkincs` / `kereskedelmi=igen`)*. A javított tábla (3. pont) a saját döntésünk; a MEK szövege a nyílt magba nem kerül.
+- **⛔ Licenc.** A MEK szerzői jogi oldala (https://www.mek.oszk.hu/html/allando/copyright.htm) személyes, nem kereskedelmi másolást enged, forrásmegjelöléssel; a szöveg a Szjt. IV/B. fejezete szerinti általános szöveg, nem biztos, hogy erre a közkincs dokumentumra vonatkozik. A felhasználó elve (2026-11-08, a Sefariánál): közkincs tartalomnál a szerzői jog az irányadó. **A MEK-re ezt a felhasználónak külön meg kellett erősítenie** *(megerősítve: DT651 (a) közkincs, 2026-11-09; a `licencek.tsv` sora `közkincs` / `kereskedelmi=igen`)*. A javított tábla (3. pont) a saját döntésünk; a MEK szövege a nyílt magba nem kerül.
 
 ## 3. Tételek
 
@@ -69,7 +69,7 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `sonnet`). A #176 (`fugg`) a `l
 - A `karoli_kh_szuro.py` a javított táblát használja: a `megerositett` szint jut a lapra, a `kiesik` nem, a `jelolt` nem (a jelöltlistán marad).
 
 ### F177.4 — Lezárás és jelentés
-- N-F156a és N-F156c lezárása a `NYITOTT_FELADATOK.md`-ben (meglévő sor szerkesztése, a mért számokkal); a DT558 karanténja a `kiesik` szinttel váltódik ki — az ehhez szükséges döntés helyőrzővel a `dontesek/uj/<ágnév>.md`-be (DT-F177a).
+- N-F156a és N-F156c lezárása a `NYITOTT_FELADATOK.md`-ben (meglévő sor szerkesztése, a mért számokkal); a DT558 karanténja a `kiesik` szinttel váltódik ki — az ehhez szükséges döntés helyőrzővel a `dontesek/uj/<ágnév>.md`-be (DT650).
 - **A karantén feloldása (a felhasználó, 2026-11-08: „utána a karantént fel kell oldani”):** a javított tábla elkészülte után a karantén (`Karoli_kereszthivatkozasok_gyanus.tsv` és a `karoli_kh_szuro.py` mai kizárása) megszűnik: a `megerositett` sorok — a korábban gyanúsak közül a MEK által megerősítettek is — visszakerülnek a KH-indexbe, a `kiesik` sorok végleg kimaradnak. A `Karoli_kereszthivatkozasok_gyanus.tsv` archiválva marad (ARCHÍV fejléc, nem törlés), a generátora (`karoli_kh_gyanus_general.py`) a javított táblára mutató megjegyzést kap. A lapokon a változás a lapszerkezeti generátor-körben jelenik meg.
 - `naplok/F177_jelentes.md`: a mérések, a MEK-elírások listája, a kiadás-azonosítás eredménye, a licenc-állapot.
 - `python eszkozok/ellenoriz.py`, a meglévő tesztek, `teszt_karoli_kh_mek.py` zöld; független ellenőr; draft PR. Merge a felhasználóé.
@@ -81,6 +81,6 @@ A CLAUDE.md szerinti modell-ellenőrzés (kért: `sonnet`). A #176 (`fugg`) a `l
 
 ## 5. Megállási pontok (⛔)
 1. A kért modell eltér, vagy a #176 munkája nincs a `main`-ben (F177.0).
-2. A MEK licence a kimenet szempontjából: DT-F177b (a) közkincs (a felhasználó, 2026-11-09) — a munka belső tanúként folyt; a MEK-eredetű sor a kimenetbe kerülhet.
+2. A MEK licence a kimenet szempontjából: DT651 (a) közkincs (a felhasználó, 2026-11-09) — a munka belső tanúként folyt; a MEK-eredetű sor a kimenetbe kerülhet.
 3. A kiadás nem azonosítható, és a KH-margó a próbamérésnél lényegesen nagyobb mértékben tér el (pl. az egyezés 60% alatti a nem gyanús verseken): megállás, jelentés.
 4. Tartalmi döntés (pl. egy vers KH-jának kézi javítása): tétel a `dontesek/uj/`-ba, megállás.

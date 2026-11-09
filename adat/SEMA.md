@@ -1041,7 +1041,7 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
    **Nave_basokant** (Nave, 1897) sorra a `kozkincs` állapothoz a (c) feltétel nem követelmény: a mű kora miatt közkincs,
    kiadói nyilatkozat nélkül is. A kivétel a művekre szól, a digitális réteg külön feltételeit (formázás, lekaparás)
    nem igazolja; azokat a sorok megjegyzése `javaslat:` jelöléssel tartja nyilván. Más sorra nem általánosítható.
-   **DT-F177b (felhasználói döntés, 2026.11.09: „(a) közkincs”), negyedik kivétel:** a **Karoli_KH_MEK** sorra (a MEK 00161 Károli-kiadása) a `kozkincs` állapothoz a (c) feltétel nem követelmény: a mű kora miatt közkincs, a katalóguscédula „Nem jogvédett”, és közkincs tartalomnál a szerzői jog az irányadó (DT-F176b). `kereskedelmi=igen`; a MEK-oldal copyright-szövegét (saját célú, nem kereskedelmi másolás) a sor `forras_hely` mezője szó szerint idézi, a forrásmegjelölés udvariasságból marad. Más sorra nem általánosítható.
+   **DT651 (felhasználói döntés, 2026.11.09: „(a) közkincs”), negyedik kivétel:** a **Karoli_KH_MEK** sorra (a MEK 00161 Károli-kiadása) a `kozkincs` állapothoz a (c) feltétel nem követelmény: a mű kora miatt közkincs, a katalóguscédula „Nem jogvédett”, és közkincs tartalomnál a szerzői jog az irányadó (DT-F176b). `kereskedelmi=igen`; a MEK-oldal copyright-szövegét (saját célú, nem kereskedelmi másolás) a sor `forras_hely` mezője szó szerint idézi, a forrásmegjelölés udvariasságból marad. Más sorra nem általánosítható.
 3. A `projekt_adat` sor a repó saját adatáé és prózáé. **F89 / DT131 (felhasználói döntés, 2026.10.13; DT116):** a jogok forrása a jogtulajdonos döntése, a repó gyökerében lévő `LICENSE`-ban rögzítve (ez a sor `forras_hely`-e);
    minden jog fenntartva, `kereskedelmi=igen` (a jogtulajdonos maga használhatja; harmadik félnek a `LICENSE` nem ad jogot), `share_alike=nem`, `allapot=tisztazott`.
    A harmadik fél adatára a `LICENSE` nem terjed ki, az a saját sora szerint érvényes; a CC BY-SA és az MCGED eredetű rész nem kerülhet zárt csomagba. (A DT-F24 halasztása lezárva, a DT112 felülírva.)
@@ -2175,7 +2175,7 @@ hivatkozott verse nem létezik — **döntés nélkül** (CLAUDE.md 2. szabály)
 `karoli_kh_epseg.py` ±3 vers szabálya; a visszautalás a HunKar- és a MEK-listán; a `jelolt` és a `kiesik` soron egyaránt, a `kiesik` indoka `mek_ures_vers;tsk=…`; a jelölés nem változtatja a szintet). A `forras`: `HunKar+MEK` \| `HunKar` \| `MEK`.
 
 **Fogyasztók.** A `karoli_kh_szuro.py` ebből szűr: a `megerositett` szint jut a lapra / a KH-indexbe, a `kiesik` és a
-`jelolt` nem (a jelöltlistán marad). A `Karoli_kereszthivatkozasok_gyanus.tsv` archívum (a karantén megszűnt, DT-F177a).
+`jelolt` nem (a jelöltlistán marad). A `Karoli_kereszthivatkozasok_gyanus.tsv` archívum (a karantén megszűnt, DT650).
 
 ## 3. Integritási szabályok
 
