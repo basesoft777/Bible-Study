@@ -13,10 +13,10 @@
   - 1. javítókör → `ELLENOR_F177_2`: 2 ELTÉRÉS;
   - 2. javítókör → `ELLENOR_F177_3`: **TISZTA**.
 - **Döntések (helyőrzővel, `dontesek/uj/karoli-kh-mek.md`):**
-  - DT-F177a 🟢: a karantént a `kiesik` szint váltja ki;
-  - **DT-F177b 🟢: a MEK licence — (a) közkincs** (a felhasználó, 2026-11-09, átvezetve az F177.17-ben); a MEK-ből származó sor a kimenetbe kerülhet;
-  - DT-F177c 🟡: a versellenőrzés alapja a `Karoli_1908` és a MEK uniója;
-  - DT-F177d 🟢: az F177.7 commit-üzenetének téves számai, a jelentésben helyesbítve.
+  - DT650 🟢: a karantént a `kiesik` szint váltja ki;
+  - **DT651 🟢: a MEK licence — (a) közkincs** (a felhasználó, 2026-11-09, átvezetve az F177.17-ben); a MEK-ből származó sor a kimenetbe kerülhet;
+  - DT652 🟡: a versellenőrzés alapja a `Karoli_1908` és a MEK uniója;
+  - DT653 🟢: az F177.7 commit-üzenetének téves számai, a jelentésben helyesbítve.
 - **Nyitott (`nyitott/uj/karoli-kh-mek.md`):**
   - N-F177a: a lapok, a `lexikon_general` és az `olvasoi_kapu` átállítása a lapszerkezeti generátor-körben;
   - N-F177b: a 2 863 `jelolt` sor eldöntése.
