@@ -181,6 +181,8 @@ def arany(en, hu, lem):
             continue
         szulo = szulo_norm(g['utvonal'].rsplit('/', 1)[0])
         vart_en[(g['strong'], szak_kulcs(g['szakasz'], g.get('resz', '')), szulo)].append(g)
+    arany_szulok = {(g['strong'], szak_kulcs(g['szakasz'], g.get('resz', '')), szulo_norm(g['utvonal']))
+                    for g in sorok if g['szint'] in ('jelentes', 'alpont')}
     szocikkek = []
     for g in sorok:
         if g['strong'] not in szocikkek:
@@ -191,7 +193,12 @@ def arany(en, hu, lem):
     for strong in szocikkek:
         r = csoport_bont(B.szeletel(en[strong], lem.get(strong, '')), 'en')
         kapott = szeletelo_csoportok(r)
+        szeletelo_szulok = ({(szak_kulcs(*B.szakasz_bont(sz)), ut) for sz, ut, _ in B.csoport_bejar(r)}
+                            if hasattr(B, 'csoport_bejar') else set())
         kulcsok = {k[1:] for k in vart_en if k[0] == strong} | set(kapott)
+        # a szülő-hiány miatt hiányzó várt csoportok horgonyai: a máshová (rossz szülő alá) bontott csoport is szerkezeti okú
+        arva_horgony = [szoveg_norm(g['kezdet_en']) for k2, gs in vart_en.items() if k2[0] == strong and k2[1:] not in szeletelo_szulok
+                        for g in gs if g['kezdet_en']]
         for k in sorted(kulcsok):
             vg = vart_en.get((strong,) + k, [])
             kg = kapott.get(k, [])
@@ -199,26 +206,40 @@ def arany(en, hu, lem):
                               for kst, ksz, kut in kihagy):
                 continue
             par = lcs([g['jel'] for g in vg], [c['jel'] for c in kg])
+            # szerkezeti ok: a szülő csomópont a szeletelőben (hiányzó csoportnál) vagy az aranymintában (hamis határnál) nincs meg —
+            # a csoport ilyenkor rossz szülő alá kerül; ez a szeletelő szerkezeti hibája (BDB_SZELETELO_M0.md 2.3), nem a csoportbontásé
+            sz_ok_hiany = bool(vg) and k not in szeletelo_szulok
+            sz_ok_hamis = bool(kg) and (strong,) + k not in arany_szulok
             ossz['en_vart'] += len(vg)
             ossz['en_kapott'] += len(kg)
             ossz['en_egyezik'] += len(par)
             ossz['en_hianyzik'] += len(vg) - len(par)
             ossz['en_hamis_hatar'] += len(kg) - len(par)
+            ossz['en_hianyzik_szerkezeti_ok'] += (len(vg) - len(par)) if sz_ok_hiany else 0
+            ossz['en_hamis_hatar_szerkezeti_ok'] += (len(kg) - len(par)) if sz_ok_hamis else 0
+            kezdetek_kapott = [szoveg_norm(c['szoveg']) for c in kg]
             for i, j in par:
                 kezdet = szoveg_norm(vg[i]['kezdet_en'])
-                if kezdet and kezdet not in szoveg_norm(kg[j]['szoveg'])[:len(kezdet) + 25]:
-                    ossz['en_rossz_kezdet'] += 1
-                    hibak.append('rossz kezdet\t%s\t%s %s\t%s\tvárt „%s”, kapott „%s”' % (
-                        strong, k[0], k[1], vg[i]['jel'], vg[i]['kezdet_en'], szoveg_norm(kg[j]['szoveg'])[:50]))
+                if kezdet and kezdet not in kezdetek_kapott[j][:len(kezdet) + 25]:
+                    masik = any(kezdet in x[:len(kezdet) + 25] for x in kezdetek_kapott)
+                    ossz['en_sorrend_elteres' if masik else 'en_rossz_kezdet'] += 1
+                    hibak.append('%s	%s	%s %s	%s	várt „%s”, kapott „%s”' % (
+                        'sorrend (a horgony a szülő másik csoportjánál)' if masik else 'rossz kezdet',
+                        strong, k[0], k[1], vg[i]['jel'], vg[i]['kezdet_en'], kezdetek_kapott[j][:50]))
             pi = {i for i, _ in par}
             pj = {j for _, j in par}
             for i, g in enumerate(vg):
                 if i not in pi:
-                    hibak.append('hiányzik\t%s\t%s %s\t%s\t„%s”%s' % (strong, k[0], k[1], g['jel'], g['kezdet_en'],
-                                                                   '' if k in kapott or not kapott else ''))
+                    hibak.append('hiányzik%s	%s	%s %s	%s	„%s”' % (' (szerkezeti ok)' if sz_ok_hiany else '', strong, k[0], k[1],
+                                                                       g['jel'], g['kezdet_en']))
             for j, c in enumerate(kg):
-                if j not in pj:
-                    hibak.append('hamis határ\t%s\t%s %s\t%s\t„%s”' % (strong, k[0], k[1], c['jel'], szoveg_norm(c['szoveg'])[:50]))
+                if j not in pj and not sz_ok_hamis and any(kezdetek_kapott[j].startswith(h) for h in arva_horgony):
+                    ossz['en_hamis_hatar_szerkezeti_ok'] += 1
+                    hibak.append('hamis határ (szerkezeti ok: rossz szülő)	%s	%s %s	%s	„%s”' % (
+                        strong, k[0], k[1], c['jel'], kezdetek_kapott[j][:50]))
+                elif j not in pj:
+                    hibak.append('hamis határ%s	%s	%s %s	%s	„%s”' % (' (szerkezeti ok)' if sz_ok_hamis else '', strong, k[0], k[1],
+                                                                          c['jel'], szoveg_norm(c['szoveg'])[:50]))
         # magyar: várt bontás ott, ahol a szülő minden angol csoportjának van magyar horgonya
         if strong in hu:
             rh = csoport_bont(B.szeletel(hu[strong], lem.get(strong, '')), 'hu')

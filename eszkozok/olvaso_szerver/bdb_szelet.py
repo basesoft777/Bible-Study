@@ -905,6 +905,208 @@ def jelentespont(poz, savok, szakaszok=None):
     return '', 'fej'
 
 
+# ---------- használati csoportok (F103, FELADATOK #103; DT167) ----------
+# A jelentésen (és alponton) belüli használati csoport a DT167 (1) (a) szerint (felhasználó, 2026-10-15): csak mondatkezdő (`;` `.` `:`
+# `—` utáni), zárójelen kívüli bevezető a listáról — absolute, followed by, with + héber / accusative / suffix / infinitive, Inf. abs. as
+# adverb (a „so” után is), in phrase(s), opposed to, especially (a „; &” után is, aranyminta B2) —, valamint a zárójeles harmadik szint
+# `(1)`, `(a)` sorrendben, legalább a második tagig (az OCR-torzult `(I)`, `-2`, a görög `(β)` is jelölő, ELLENOR_F99_minta E1). A so /
+# also / often nem nyit csoportot; a csomópont első szava a csomópont feje, nem csoport. A bontás kiegészítő: a `szeletel()` kimenetét
+# nem változtatja, a `csoport_bont()` a csomópontokra `csop` listát tesz. Magyarul (DT167 (5) (a)) a bontás csak ott marad, ahol a
+# magyar jelölők sorozata (szám és sorrend) az angoléval egyezik (`csoport_magyar`); a „with + héber” csoportnak nincs magyar bevezetője.
+_CS_MONDAT = r'(?:(?<=[;.:]\s)|(?<=—\s))'
+_CS_HEB = "֐-׿יִ-ﭏ"
+_CS_KULCS = {'absolute': 'absolute', 'followed': 'followed by', 'with': 'with', 'figurative': 'figurative', 'infabs': 'Inf. abs. as adverb',
+             'phrase': 'in phrase', 'opposed': 'opposed to', 'especially': 'especially'}
+_CS_EN = re.compile(_CS_MONDAT + r'(?:'
+                    r'(?P<absolute>absolute(?:ly)?\b)'
+                    r'|(?P<followed>followed\s+by\b)'
+                    r'|(?P<with>[Ww]ith\s+(?=[' + _CS_HEB + r']|(?:accusative|acc|suffix|infinitive|Infinitive|inf)\b))'
+                    r'|(?P<figurative>figurative(?:ly)?\b)'
+                    r'|(?P<infabs>(?:so\s+)?(?:Inf(?:initive)?\.?|infinitive)\s+abs(?:olute)?\.?\s+(?:as\s+)?adverb)'
+                    r'|(?P<phrase>in\s+phrases?\b)'
+                    r'|(?P<opposed>opposed\s+to\b)'
+                    r'|(?P<especially>(?:&\s+)?especially\b))')
+# a magyar fordítás bevezetői: a DT167 (2) kötelező alakja és a kész fordításban élő régi alak (a régi alak is jelölő, csere nincs:
+# DT167 (5) (a)); a „követi” hátravetett („infinitivus követi”), mondatkezdő bevezetőként nem ismerhető fel
+_CS_HU = re.compile(_CS_MONDAT + r'(?:'
+                    r'(?P<absolute>abszolút\s+használatban)'
+                    r'|(?P<followed>utána\b)'
+                    r'|(?P<figurative>átvitt\s+értelemben|képletesen\b)'
+                    r'|(?P<infabs>(?:így\s+)?(?:az\s+)?infinitivus\s+absolutus\s+határozó\w*)'
+                    r'|(?P<phrase>kifejezés(?:ek)?ben\b)'
+                    r'|(?P<opposed>ellentéte\b|ellentétben\b|szemben\b)'
+                    r'|(?P<especially>(?:és\s+)?különösen\b))')
+_CS_ZAROJELES = re.compile(r'(?:(?<=\s)|^)\((\d{1,2}|I|[a-h]|[α-θ])\)(?=\s|[' + _CS_HEB + r'])'
+                           r'|(?:(?<=[\s;.:])|^)-(\d)(?=[^\d\s:,;.)\-])')
+_GOROG = 'αβγδεζηθ'
+
+
+def _cs_melyseg(t):
+    """Igaz-hamis lista: a pozíció zárójelen belül áll-e — a szeletelő `_zarojelben` szabálya (a csoport csak 400 karakteren belüli
+    lezárással számít: a lezáratlan OCR-zárójel — „עַליֿד(יׅ:”, H3027 5/h — nem némít el mindent utána)."""
+    return _zarojelben(t)
+
+
+# A zárójeles jelölő nem a prózai felsorolás tagja: ha az első 40 karakteren (a csomópont fején) túl áll, előtte nem prózai kötő- vagy
+# viszonyszó van („developed … by (1) the prefixing … and (2) the addition …”, H0834 etimológiája); a hivatkozás-sor utáni „+ often (b)”
+# (H6440 II 6/c) és a fejben álló jelölő („of divine love (a) to individual men”, H0157 5.) jelölő.
+_CS_PROZA_ELOTTE = re.compile(r'(?<![A-Za-z])(and|or|by|of|to|the|in|with|from|that|as)\s$')
+
+
+def _cs_zarojeles(t, mely):
+    """A zárójeles harmadik szint jelölői sorrendben: [(kezdet, vég, jel)]. Sorozat 1-től (vagy a-tól), legalább a második tagig; a jel
+    az aranyminta alakja: „(2)” (az OCR „-2” és „(I)” = „(1)” is), „(a)”, „(β)”."""
+    sor, tipus, varas, ki = [], None, 1, []
+
+    def lezar():
+        if len(sor) >= 2:
+            ki.extend(sor)
+
+    for m in _CS_ZAROJELES.finditer(t):
+        # a jelölő maga zárójel: a körülötte álló zárójelet az előtte álló pozíció mutatja
+        if m.start() > 0 and mely[m.start() - 1]:
+            continue
+        if m.group(1) is not None and m.start() >= 40:
+            if _CS_PROZA_ELOTTE.search(t[max(0, m.start() - 10):m.start()]):
+                continue
+        cimke = m.group(1) if m.group(1) is not None else m.group(2)
+        if cimke == 'I' or cimke.isdigit():
+            tp, idx, jel = 'szam', 1 if cimke == 'I' else int(cimke), '(%s)' % (1 if cimke == 'I' else int(cimke))
+        elif m.group(2) is None:
+            tp = 'betu'
+            idx = (_GOROG.index(cimke) + 1) if cimke in _GOROG else ord(cimke) - ord('a') + 1
+            jel = '(%s)' % cimke
+        else:
+            continue
+        if m.group(2) is not None and tp != 'szam':
+            continue
+        if sor and tp == tipus and idx == varas:
+            sor.append((m.start(), m.end(), jel))
+            varas += 1
+        elif idx == 1 and (not sor or tp != tipus):
+            lezar()
+            sor, tipus, varas = [(m.start(), m.end(), jel)], tp, 2
+    lezar()
+    return sorted(ki)
+
+
+def _csoportok(t, nyelv='en'):
+    """Egy csomópont saját szövegének használati csoportjai: [{'jel', 'kezd', 'szoveg'}] (a `kezd` a szövegen belüli eltolás)."""
+    if not t:
+        return []
+    mely = _cs_melyseg(t)
+    lex = [(m.start(), m.end(), _CS_KULCS[m.lastgroup]) for m in (_CS_HU if nyelv == 'hu' else _CS_EN).finditer(t)
+           if not mely[m.start()]]
+    zar = _cs_zarojeles(t, mely)
+    kezdetek = []
+    zar_kezd = {z[0]: z for z in zar}
+    elnyelt = set()
+    for a, b, kulcs in lex:
+        # a bevezető közvetlenül a zárójeles jelölő előtt („especially (3) ביד נתן”, H3027 5/b): egy csoport, a zárójeles jelölővel
+        z = next((z for z in zar if z[0] >= b and not t[b:z[0]].strip()), None)
+        if z:
+            elnyelt.add(z[0])
+            kezdetek.append((a, z[2]))
+        else:
+            kezdetek.append((a, kulcs))
+    kezdetek += [(z[0], z[2]) for z in zar if z[0] not in elnyelt]
+    kezdetek = sorted(set(k for k in kezdetek if k[0] > 0))
+    ki = []
+    for i, (k, jel) in enumerate(kezdetek):
+        v = kezdetek[i + 1][0] if i + 1 < len(kezdetek) else len(t)
+        ki.append({'jel': jel, 'kezd': k, 'szoveg': t[k:v].strip(' ;,')})
+    return ki
+
+
+def csoport_bejar(r, fo_homonima=False):
+    """A szeletelő csomópontjai (jelentés, alpont) a csoportbontáshoz: [(szakasz-címke, útvonal, csomópont-dict)]. A fő szakasz címkéje
+    '' (az aranyminta alakja), `fo_homonima` esetén a saját homonima-száma (a 2.29 alakja, mint a `csomopont_savok`-ban)."""
+    ki = []
+
+    def torzsek(szak, tl):
+        for t in tl:
+            tn = t['nev'] or '-'
+            for j in t['jelentesek']:
+                jp = '%s/%s' % (tn, j['jel'] or '-')
+                ki.append((szak, jp, j))
+                for a in j['al']:
+                    ki.append((szak, '%s/%s' % (jp, a['jel']), a))
+    torzsek((r['fej'].get('homonima', '') or '') if fo_homonima else '', r['torzsek'])
+    for x in r.get('szakaszok', []):
+        torzsek(_szakasz_cimke(x), x['torzsek'])
+    return ki
+
+
+def csoport_bont(r, nyelv='en'):
+    """A csomópontokra `csop` lista (helyben; vissza is adja). A törzs számozott jelentései előtti számozatlan elem (az alak-lista:
+    „Perfect … Inf. abs. …”) nem kap csoportot: ott az „absolute” és az „Inf. abs.” alaktan, nem használat (DT167 (1) (a))."""
+    if not r:
+        return r
+
+    def torzsek(tl):
+        for t in tl:
+            szamozott = any(j['jel'] for j in t['jelentesek'])
+            for j in t['jelentesek']:
+                j['csop'] = [] if (szamozott and not j['jel']) else _csoportok(j['szoveg'], nyelv)
+                for a in j['al']:
+                    a['csop'] = _csoportok(a['szoveg'], nyelv)
+    torzsek(r['torzsek'])
+    for x in r.get('szakaszok', []):
+        torzsek(x['torzsek'])
+    return r
+
+
+def csoport_magyar(r_hu, r_en):
+    """DT167 (5) (a): a magyar csomópont csoportjai csak ott maradnak, ahol a magyar jelölő-sorozat (szám és sorrend) azonos az angol
+    szócikk ugyanazon csomópontjáéval (szakasz + útvonal); máshol a magyar csomópont bontás nélkül áll. Mindkét elemzésen előbb
+    `csoport_bont` fut (magyarul `nyelv='hu'`)."""
+    if not r_hu or not r_en:
+        return r_hu
+
+    def sorozatok(r):
+        d = {}
+        for szak, ut, n in csoport_bejar(r):
+            d.setdefault((szak, ut), []).extend(c['jel'] for c in n.get('csop') or [])
+        return d
+    en, hu = sorozatok(r_en), sorozatok(r_hu)
+    for szak, ut, n in csoport_bejar(r_hu):
+        if hu.get((szak, ut)) != en.get((szak, ut)):
+            n['csop'] = []
+    return r_hu
+
+
+def csoport_savok(szoveg, r):
+    """A használati csoportok sávjai a `lapit(szoveg)`-ben, a `csomopont_savok` keresésével: [(kezdet, vég, szakasz, '<útvonal>/+<n>',
+    'csoport')]; a csomópontokon előbb `csoport_bont` fut. A sorszám a csomóponton belüli (1-től), mint az aranyminta `+n`-je."""
+    s = lapit(szoveg)
+    savok = []
+    sorszam = {}
+
+    def keres(szak, ut, node, kurzor):
+        t0 = node.get('szoveg') or ''
+        t = t0.strip()
+        if not t:
+            return kurzor
+        i = s.find(t, kurzor)
+        if i < 0:
+            i = s.find(t)
+        if i < 0:
+            return kurzor
+        lead = len(t0) - len(t0.lstrip())
+        cs = node.get('csop') or []
+        for k, c in enumerate(cs):
+            a = i + c['kezd'] - lead
+            b = i + (cs[k + 1]['kezd'] - lead if k + 1 < len(cs) else len(t))
+            n = sorszam[(szak, ut)] = sorszam.get((szak, ut), 0) + 1
+            savok.append((a, b, szak, '%s/+%d' % (ut, n), 'csoport'))
+        return i + len(t)
+
+    kurzor = {}
+    for szak, ut, node in csoport_bejar(r, fo_homonima=True):
+        kurzor[szak] = keres(szak, ut, node, kurzor.get(szak, 0))
+    return sorted(savok)
+
+
 if __name__ == '__main__':
     import json
     import os
