@@ -3,6 +3,8 @@
 *Végrehajtó: `claude-sonnet-5-5`. Ág: `claude/f181-karoli-kh-jeloltek`. 2026-11-09.*
 *scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK.tsv + konkordancia/Karoli_kereszthivatkozasok.tsv + konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv + konkordancia/Karoli_1908.tsv + konkordancia/Karoli_KH_MEK_versszerkezet.tsv + konkordancia/TSK_kereszthivatkozasok.tsv | forras=eszkozok/karoli_kh_mek.py jelolt-bontas | ts=2026-11-09*
 
+*Az 1–6. szakasz a #177 utáni (J4 előtti) táblán készült: `git show d3252809:konkordancia/Karoli_KH_javitott.tsv` (az F181.1 commit; a tábla a J4 commitig változatlan), a mérés `python eszkozok/karoli_kh_mek.py jelolt-bontas --be <ez a fájl>`.*
+
 ## 1. A jelölt sorok és az altípusok (J1; mért: 2863 sor)
 
 | altípus | sor | MEK-oldali | HunKar-oldali | egyező |
@@ -215,3 +217,199 @@ Jelölés: `forrásvers → cél` [MEK-alak]; partner: a másik oldal párosíto
 * Php.1.3 → Phm.1.4 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
 * Col.1.9 → Col.2.18-Col.2.23 | HunKar | altípus: eltér (nem sorolható) | TSK nem/nem | L: igen
 
+
+## 7. A maradék szúrópróbája és a kontroll (J3)
+
+*scope=konkordancia/Karoli_KH_javitott.tsv (a J4 utáni állapot) + konkordancia/Karoli_1908.tsv | forras=eszkozok/karoli_kh_mek.py szuroproba (mag=181) + a végrehajtó olvasata | ts=2026-11-09*
+
+**Módszer.** A minta könyvenként arányos (legnagyobb maradék módszere), rögzített maggal ismételhető (`python eszkozok/karoli_kh_mek.py szuroproba`). Rétegek: (1) a gyanús ismétlődésként jelöltben maradt 86 MEK-oldali sorból 30; (2) a HunKar-oldali, jelöltben maradt 14 sor mind; (3) **kontroll**: a szabály által beemelt 2 594 sorból 40 (a szabály hibaarányának mérésére). A 139 nem létező célvers sort nem mintázom: tételesen az A. függelék. Az ítélet a két vers (Károli) szövegének olvasata: **rendben** = a cél a forrásvers idézete, párhuzama vagy szoros témai kapcsolata; **gyenge** = laza, de védhető kapcsolat; **hiba** = nincs felismerhető kapcsolat. **Korlát:** az ítélet a végrehajtó (nem független) olvasata, a `fuggetlen-ellenor` nem helyettesíti; olyan elírást, amely véletlenül értelmes helyre mutat, nem fog meg. A hibaarány ezért alsó becslés.
+
+| réteg | n | rendben | gyenge | hiba | hibaarány | 95% Wilson-felső |
+|---|---|---|---|---|---|---|
+| maradék: gyanús ismétlődő | 30 | 25 | 5 | 0 | 0.0% | 11.4% |
+| maradék: HunKar-sor jelölt marad (mind) | 14 | 9 | 4 | 1 | 7.1% | 31.5% |
+| kontroll: beemelt MEK-sor | 40 | 35 | 5 | 0 | 0.0% | 8.8% |
+
+**Mit mutat.** (1) A gyanús ismétlődésként jelöltben tartott MEK-sorok mintájában **egyetlen hiba sincs** (30-ból 25 rendben, 5 gyenge): a kizárás itt döntően jó sort tart vissza. Oka: a 86 sorból 80 a **HunKar-oldali** gyanús-jelölés miatt marad (a #177 gyanús halmaza a HunKar-lista másoltságát jelzi, a MEK-lista ilyenkor pont a javító tanú); csak 6 sor esik a MEK-oldali ismétlődés alá. **Javaslat a felhasználónak (döntés kell, DT-F181a értelmezése):** a gyanús ismétlődés kizárása legyen csak MEK-oldali (a 80 HunKar-oldali sor beemelődne). (2) A jelöltben maradt HunKar-oldali sorok 14-ből 9 rendben, 4 gyenge, 1 hiba: a HunKar-sor itt többnyire helyes, a MEK-párja nem létező vers (MEK-elírás), tehát a „jelölt marad” helyes választás. (3) A beemelés kontrollmintájában 40-ből 0 hiba (35 rendben, 5 gyenge), a Wilson-felső korlát 8,8%.
+
+**Célzott réteg: az elírás-gyanús beemelések (15 sor).** Ahol a beemelt MEK-sor egyetlen összetevőben tér el a forrásvers HunKar-sorától (l. 4. szakasz), külön, tételesen olvastam mind a 15-öt (forrásvers / MEK-cél / HunKar-pár):
+
+| forrásvers | MEK-cél | HunKar-pár | olvasat |
+|---|---|---|---|
+| Jos.2.15 | Act.9.25 | Act.9.2 | a MEK helyes (kosárban a falon át), a HunKar-pár téves |
+| Jos.2.15 | 2Co.11.25 | Act.11.25 | bizonytalan (mindkettő laza; a helyes 2Kor 11:33) |
+| Psa.27.4 | Psa.23.2 | Psa.42.2-3 | a MEK hibás (a HunKar-pár a jobb) |
+| Psa.27.4 | Psa.23.3 | Psa.42.2-3 | a MEK hibás |
+| Psa.34.18 | Psa.9.10 | Psa.32.10 | a MEK elfogadható (a kővár a szükség idején) |
+| Psa.35.12 | Psa.38.10 | Psa.41.10 | bizonytalan |
+| Isa.5.30 | Amo.8.1 | Amo.8.10 | a MEK hibás |
+| Isa.53.7 | Psa.38.10 | Psa.39.10 | a MEK hibás (a „megnémultam” a Zsolt 39:10) |
+| Php.3.4 | 2Co.11.21 | Rom.11.21 | a MEK helyes (testi dicsekvés) |
+| 1Th.3.9 | 1Th.2.19 | 1Th.2.19–2.3 (tartomány-szemét) | a MEK helyes, a HunKar-sor hibás tartomány |
+| 1Pe.2.20 | Luk.12.47 | Luk.12.47–12.15 (tartomány-szemét) | a MEK elfogadható |
+| 1Pe.2.20 | Luk.15.14 | Luk.3.14–17 | bizonytalan |
+| 1Pe.2.20 | Luk.15.17 | Luk.3.14–17 | bizonytalan |
+| 1Jn.2.27 | Jhn.14.26 | Jhn.14.26–14.16 (tartomány-szemét) | a MEK helyes |
+| 1Jn.2.27 | Jhn.16.13 | Jhn.14.13 | a MEK helyes (a Lélek tanít) |
+
+Összesítve: a MEK **helyes/elfogadható 7**, **hibás 4** (Zsolt 27:4 → Zsolt 23:2 és 23:3, Ézs 5:30 → Ám 8:1, Ézs 53:7 → Zsolt 38:10), **bizonytalan 4**. A 15 sor a beemelt sorok 0,6%-a; a 4 hibás sor a 2 594-nek 0,15%-a, és mind létező célverset hordoz (a versellenőrzés nem fogja meg). **Ajánlás:** a 15 elírás-gyanús sor (vagy legalább a 4 hibás) maradjon `jelolt`; ez szűkítés lenne a felhasználó szabályán, ezért a J4-ben **nem** alkalmaztam, hanem jelzem (a 15 sor azonosítható: `altipus` ∈ könyv-/fejezet-/versszám-elírás, MEK-oldali, beemelt).
+
+## A. függelék — a nem létező célvers miatt jelöltben maradó sorok (tételesen, 139)
+
+Forrásvers → cél [a MEK szó szerinti alakja]; „egyező”: a HunKar és a MEK ugyanazt a nem létező célt hordozza (a hibás tartomány-végpont). Mérés: `Karoli_1908` ∪ MEK-versszerkezet.
+
+* Exo.6.3 → Gen.16.17 [1 Móz. 16,17.]
+* Lev.19.6 → Lev.7.15-Lev.7.48 (egyező)
+* Lev.23.17 → Lev.2.17 [3 Móz. 2,17.] — HunKar-pár: Lev.2.12
+* Lev.26.14 → Deu.18.15-Deu.18.58 (egyező)
+* Num.26.64 → Num.1.64 [4 Móz. 1,64.]
+* Num.27.3 → Gen.32.35 [1 Móz. 32,35.]
+* Deu.4.6 → Psa.111.25 [Zsolt. 111,25.]
+* Deu.4.35 → Isa.18.22 [Ésa. 18,22.]
+* Deu.31.21 → Ezk.19.21 [Ezék. 19,21.]
+* Deu.32.39 → Isa.18.22 [Ésa. 18,22.]
+* Jos.6.25 → Jos.6.32 [Józs. 6,32.]
+* Jos.8.34 → Deu.27.15-Deu.27.28 (egyező)
+* Jos.8.34 → Deu.27.68 [5 Móz. 27,68.]
+* Jos.22.3 → Jos.11.28 [Józs. 11,28.] — HunKar-pár: Jos.11.18
+* Jos.22.20 → Jos.20.21 [Józs. 20,21.]
+* Jos.22.20 → Jos.20.24 [Józs. 20,24.]
+* Jos.22.20 → Jos.20.26 [Józs. 20,26.]
+* Jos.24.7 → Exo.15.19-Exo.15.29 (egyező)
+* Jos.24.11 → Jos.20.21 [Józs. 20,21.]
+* Jdg.6.22 → Jdg.13.22-Jdg.13.33 (egyező)
+* 1Sa.31.11 → 2Sa.2.45 [2 Sám. 2,45.]
+* 2Sa.7.8 →  [1 Sám. 12,.]
+* 2Sa.23.3 → Deu.30.21 [5 Móz. 30,21.]
+* 1Ki.2.26 → 1Sa.22.33 [1 Sám. 22,33.]
+* 1Ki.5.12 → 1Ki.4.29-1Ki.4.39 (egyező)
+* 2Ki.21.5 →  [2 Kir. 12,.]
+* 1Ch.6.14 →  [2 Kir. 21,.]
+* 1Ch.11.11 → 1Sa.23.8-1Sa.23.39 (egyező)
+* 1Ch.15.19 → Psa.73.74 [Zsolt. 73,74.]
+* 1Ch.15.19 → Psa.73.75 [Zsolt. 73,75.]
+* 1Ch.28.8 → Num.28.1-Num.28.68 (egyező)
+* 2Ch.32.32 → Isa.36.37 [Ésa. 36,37.]
+* 2Ch.32.32 → Isa.36.38 [Ésa. 36,38.]
+* 2Ch.35.27 → 2Ki.22.1-2Ki.22.23 (egyező)
+* 2Ch.35.27 → 2Ki.22.28 [2 Kir. 22,28.]
+* Ezr.9.12 → Ezr.1.19 [Ezsdr. 1,19.]
+* Neh.1.5 → Neh.4.32 [Nehem. 4,32.] — HunKar-pár: Neh.9.32
+* Neh.8.9 → Neh.10.65 [Nehem. 10,65.]
+* Neh.8.9 → Neh.10.70 [Nehem. 10,70.]
+* Neh.12.28 → Ezr.1.22 [Ezsdr. 1,22.]
+* Neh.13.10 → Neh.5.12-Neh.5.47 (egyező)
+* Est.1.19 → Dan.12.15 [Dán. 12,15.]
+* Job.26.6 → Psa.138.8-Psa.138.12 (egyező)
+* Psa.9.12 → Psa.133.13 [Zsolt. 133,13.]
+* Psa.9.12 → Psa.133.14 [Zsolt. 133,14.]
+* Psa.26.8 → Psa.42.23 [Zsolt. 42,23.]
+* Psa.27.4 → Psa.23.42 [Zsolt. 23,42.]
+* Psa.34.18 → Psa.9.32 [Zsolt. 9,32.]
+* Psa.35.12 → Psa.38.41 [Zsolt. 38,41.]
+* Psa.37.37 → Psa.20.44 [Zsolt. 20,44.]
+* Psa.49.15 → Psa.58.13 [Zsolt. 58,13.]
+* Psa.55.6 → 2Sa.21.11-2Sa.21.23 (egyező)
+* Psa.80.15 → Isa.64.9-Isa.64.12 (egyező)
+* Psa.93.1 → Psa.97.13 [Zsolt. 97,13.]
+* Psa.104.26 → Job.25.13 [Jób. 25,13.]
+* Psa.105.13 → Gen.20.26 [1 Móz. 20,26.]
+* Psa.106.39 → Jdg.10.18-Jdg.10.19 (egyező)
+* Psa.107.34 → Deu.24.38 [5 Móz. 24,38.]
+* Psa.107.34 → Deu.24.42 [5 Móz. 24,42.]
+* Psa.126.4 → 2Ch.16.35 [2 Krón. 16,35.]
+* Psa.129.6 → Isa.36.37 [Ésa. 36,37.]
+* Psa.138.7 → Psa.16.17 [Zsolt. 16,17.]
+* Psa.141.7 → Isa.27.19 [Ésa. 27,19.]
+* Psa.143.3 → 1Sa.23.78 [1 Sám. 23,78.] — HunKar-pár: 1Sa.23.7-1Sa.23.8
+* Psa.145.18 → Psa.50.51 [Zsolt. 50,51.]
+* Pro.11.17 → Pro.11.25-Pro.11.37 (egyező)
+* Ecc.7.15 → Psa.63.4-Psa.63.17 (egyező)
+* Isa.1.1 → 2Ch.26.29 [2 Krón. 26,29.]
+* Isa.1.24 → Deu.23.63 [5 Móz. 23,63.]
+* Isa.19.25 → Gen.12.23 [1 Móz. 12,23.]
+* Isa.42.7 → Luk.4.48 [Luk. 4,48.]
+* Isa.45.1 → 2Ch.22.23 [2 Krón. 22,23.]
+* Isa.47.6 → Isa.4.16 [Ésa. 4,16.]
+* Isa.53.7 → Psa.38.39 [Zsolt. 38,39.]
+* Isa.55.12 → Isa.35.12 [Ésa. 35,12.]
+* Isa.65.15 → Num.5.51 [4 Móz. 5,51.]
+* Jer.7.3 → 2Ch.19.21 [2 Krón. 19,21.]
+* Jer.9.26 → Isa.15.18 [Ésa. 15,18.]
+* Jer.49.1 → Num.19.38 [4 Móz. 19,38.]
+* Jer.50.2 → Isa.39.46 [Ésa. 39,46.]
+* Ezk.10.2 → Ezk.9.3-Ezk.9.16 (egyező)
+* Ezk.11.19 → Jer.2.32-Jer.2.39 (egyező)
+* Ezk.16.8 → Deu.26.27 [5 Móz. 26,27.]
+* Ezk.20.36 → Num.27.64 [4 Móz. 27,64.]
+* Ezk.20.36 → Num.27.65 [4 Móz. 27,65.]
+* Ezk.21.12 → 2Ki.7.19-2Ki.7.21 (egyező)
+* Ezk.23.32 → 2Ki.16.23 [2 Kir. 16,23.]
+* Ezk.23.32 → 2Ki.16.24 [2 Kir. 16,24.]
+* Ezk.36.22 → Isa.33.25 [Ésa. 33,25.]
+* Hos.2.17 → Mic.4.34 [Mik. 4,34.]
+* Hos.4.10 → Hos.12.16 [Hós. 12,16.]
+* Amo.7.8 → Amo.8.28 [Ámós. 8,28.]
+* Mal.2.15 → Gen.2.24-Gen.2.28 (egyező)
+* Mat.23.12 → Isa.21.31 [Ésa. 21,31.]
+* Mrk.1.44 → Deu.14.2-Deu.14.32 (egyező)
+* Luk.23.30 → Rev.6.19 [Jel. 6,19.]
+* Jhn.8.12 → Jhn.9.46 [Ján. 9,46.] — HunKar-pár: Jhn.12.46
+* Act.14.22 → Act.11.43 [Csel. 11,43.] — HunKar-pár: Act.13.43
+* Act.21.8 → Act.12.26 [Csel. 12,26.] — HunKar-pár: Act.8.26-Act.8.40
+* Act.21.8 → Act.12.40 [Csel. 12,40.] — HunKar-pár: Act.8.26-Act.8.40
+* 1Co.1.20 → Job.17.20 [Jób. 17,20.]
+* 2Co.8.16 → 1Co.16.57 [1 Kor. 16,57.]
+* Eph.2.12 → Gen.12.23 [1 Móz. 12,23.]
+* Eph.2.20 → Isa.18.16 [Ésa. 18,16.] — HunKar-pár: Isa.28.16
+* Col.2.12 → Rom.4.17-Rom.4.26 (egyező)
+* 1Th.1.5 → 1Co.2.20 [1 Kor. 2,20.]
+* 2Pe.3.14 → Col.1.32 [Kol. 1,32.]
+* Rev.16.5 → Rev.4.17 [Jel. 4,17.]
+* Exo.6.20 → Exo.26.59 [2 Móz. 26,59.]
+* Exo.30.1 → Exo.37.35 [2 Móz. 37,35.]
+* Deu.7.15 → Gen.15.26 [1 Móz. 15,26.]
+* 2Sa.19.40 → 2Sa.11.41 [2 Sám. 11,41.]
+* 2Sa.19.40 → 2Sa.11.43 [2 Sám. 11,43.]
+* 2Ch.34.14 → Deu.21.24 [5 Móz. 21,24.]
+* 2Ch.34.14 → Deu.21.26 [5 Móz. 21,26.]
+* Job.7.14 → Job.23.21 [Jób. 23,21.]
+* Job.13.24 → Psa.8.15 [Zsolt. 8,15.]
+* Job.34.29 → Rom.8.61 [Róm. 8,61.]
+* Job.37.12 → Job.26.27 [Jób. 26,27.]
+* Job.37.12 → Job.26.28 [Jób. 26,28.]
+* Psa.9.16 → Psa.16.17 [Zsolt. 16,17.]
+* Psa.24.5 → Isa.18.18 [Ésa. 18,18.]
+* Psa.106.40 → Psa.78.79 [Zsolt. 78,79.]
+* Psa.142.3 → Psa.2.19 [Zsolt. 2,19.]
+* Psa.143.6 → Psa.63.20 [Zsolt. 63,20.]
+* Pro.5.3 → Pro.2.26 [Péld. 2,26.]
+* Pro.15.18 → Pro.26.32 [Péld. 26,32.]
+* Isa.13.1 → Isa.46.47 [Ésa. 46,47.]
+* Isa.42.8 → Isa.18.11 [Ésa. 18,11.]
+* Jer.37.5 → Jer.24.31 [Jer. 24,31.]
+* Ezk.5.17 → Deu.26.22 [5 Móz. 26,22.]
+* Ezk.28.24 → Num.35.55 [4 Móz. 35,55.]
+* Ezk.28.24 → Num.35.56 [4 Móz. 35,56.]
+* Dan.10.9 → Dan.8.28 [Dán. 8,28.]
+* Amo.9.13 → Hos.2.23 [Hós. 2,23.]
+* Mat.6.6 → 2Co.4.33 [2 Kor. 4,33.]
+* Mat.12.1 → Deu.23.26 [5 Móz. 23,26.]
+* Mat.12.40 → Jon.2.12 [Jón. 2,12.]
+* Mrk.12.8 → Psa.13.12 [Zsolt. 13,12.]
+
+
+## 8. A J4 Δ-naplója (a tábla frissítése)
+
+*scope=konkordancia/Karoli_KH_javitott.tsv | forras=eszkozok/karoli_kh_mek.py beemel | ts=2026-11-09*
+
+```
+sorok: 35204 -> 35204
+megerositett: 21314 -> 23908 (Δ +2594)
+kiesik: 11027 -> 11057 (Δ +30)
+jelolt: 2863 -> 239 (Δ -2624)
+átment jelolt -> kiesik: 30
+átment jelolt -> megerositett: 2594
+```
+
+A 239 jelölt maradék: 139 nem létező célvers (ebből 22 egyező), 86 gyanús ismétlődő, 14 HunKar-oldali. A `osszevet` (a beemeléssel) és a `beemel` kimenete bájtra azonos; a `beemel` a kész táblán idempotens (mérve). A szűrő (`karoli_kh_szuro.py`) és a fogyasztók változatlanok; lap nem generálódott.

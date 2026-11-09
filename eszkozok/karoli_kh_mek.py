@@ -935,6 +935,83 @@ def beemel_main(a):
     return 0
 
 
+# ----------------------------------------------------------------------------------------------------------------
+# szuroproba (F181, J3): rétegzett (könyvenkénti, arányos) szúrópróba-minta a döntés nélküli maradékból és a
+# beemelt sorokból (kontroll). Csak mintát vesz és kiírja a két vers szövegét; az ítéletet nem adja (az emberi/
+# végrehajtói olvasás, a jelentésben).
+# ----------------------------------------------------------------------------------------------------------------
+
+def karoli_szoveg():
+    """{STEP-kulcs: Károli-vers szövege} a Karoli_1908.tsv-ből."""
+    norm = dict(hu_step())
+    norm.update(aliasok('karoli_1908'))
+    ki = {}
+    for m in tsv_sorok(KAROLI):
+        r = re.match(r'(\S+) (\d+):(\d+)$', m[0])
+        if r and r.group(1) in norm and len(m) > 1:
+            ki['%s.%s.%s' % (norm[r.group(1)], r.group(2), r.group(3))] = m[1]
+    return ki
+
+
+def retegzett_minta(sorok, kulcs, n, mag):
+    """Könyvenkénti arányos (legnagyobb maradék) minta: a `kulcs(sor)` a könyv; a mag rögzített, ezért ismételhető.
+    Visszaadja (minta, {könyv: (populáció, mintaszám)})."""
+    import random
+    rnd = random.Random(mag)
+    csop = collections.OrderedDict()
+    for k in step_konyvek():
+        csop[k] = []
+    for r in sorok:
+        csop.setdefault(kulcs(r), []).append(r)
+    ossz = sum(len(v) for v in csop.values())
+    n = min(n, ossz)
+    alap = {k: (len(v) * n) // ossz for k, v in csop.items()}
+    maradek = sorted(csop, key=lambda k: -((len(csop[k]) * n) % ossz))
+    for k in maradek[:n - sum(alap.values())]:
+        alap[k] += 1
+    minta = []
+    for k, v in csop.items():
+        if alap[k]:
+            minta.extend(rnd.sample(v, alap[k]))
+    return minta, {k: (len(v), alap[k]) for k, v in csop.items() if v}
+
+
+def szuroproba_main(a):
+    ts = a.ts or os.environ.get('PARDES_DATUM', '2026-11-09')
+    jav = [m[:6] for m in tsv_sorok(a.be) if len(m) >= 6]
+    bontas, _, _ = _bontas_sorokra(jav)
+    szov = karoli_szoveg()
+    kon = lambda fv: fv.split('.')[0]  # noqa: E731
+    sorok = []
+    gy = [r for r in bontas if r['dontes'] == D_GYANUS]
+    hkm = [r for r in bontas if r['dontes'] == D_HK_MARAD]
+    kontroll = [m for m in jav if m[2] == 'megerositett' and m[3] == 'MEK' and SZABALY_JEL in m[4]]
+    m1, e1 = retegzett_minta(gy, lambda r: kon(r['forras_vers']), a.maradek, a.mag)
+    m3, e3 = retegzett_minta(kontroll, lambda r: kon(r[0]), a.kontroll, a.mag)
+    for r in m1:
+        sorok.append(('maradék: gyanús ismétlődő', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in hkm:
+        sorok.append(('maradék: HunKar-sor jelölt marad (mind)', r['forras_vers'], r['cel'], '', r['oldal']))
+    for r in m3:
+        sorok.append(('kontroll: beemelt MEK-sor', r[0], r[1], (r[4].split('mek_alak=')[1].split(';')[0]
+                                                                if 'mek_alak=' in r[4] else ''), 'MEK'))
+    ki = ['ts=%s | mag=%d | maradék-gyanús: %d sor -> %d minta; HunKar-marad: %d (mind); kontroll: %d beemelt -> %d minta' % (
+        ts, a.mag, len(gy), len(m1), len(hkm), len(kontroll), len(m3))]
+    ki.append('allokáció (gyanús, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e1.items()))
+    ki.append('allokáció (kontroll, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e3.items()))
+    for i, (ret, fv, cel, al, oldal) in enumerate(sorok, 1):
+        c0 = cel.split('-')[0]
+        ki.append('#%d [%s] %s -> %s %s' % (i, ret, fv, cel, '[%s]' % al if al else ''))
+        ki.append('   F: ' + szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz])
+        ki.append('   C: ' + szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])
+    szoveg = '\n'.join(ki) + '\n'
+    if a.ki:
+        with open(a.ki, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
+    print(szoveg)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description='Károli-KH ellenőrzés a MEK 00161 kiadással (F177)')
     sp = ap.add_subparsers(dest='parancs', required=True)
@@ -959,7 +1036,17 @@ def main():
     b.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
     b.add_argument('--ki')
     b.add_argument('--ts')
+    z = sp.add_parser('szuroproba', help='rétegzett szúrópróba-minta a maradékból és a beemeltekből (F181, J3)')
+    z.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
+    z.add_argument('--ki')
+    z.add_argument('--maradek', type=int, default=30)
+    z.add_argument('--kontroll', type=int, default=40)
+    z.add_argument('--mag', type=int, default=181)
+    z.add_argument('--hossz', type=int, default=140)
+    z.add_argument('--ts')
     a = ap.parse_args()
+    if a.parancs == 'szuroproba':
+        return szuroproba_main(a)
     if a.parancs == 'jelolt-bontas':
         return jelolt_bontas_main(a)
     if a.parancs == 'beemel':
