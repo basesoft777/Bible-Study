@@ -495,3 +495,27 @@ munkafán, ugyanazzal az adatbázissal) ugyanígy bukik; az ág nem érinti sem 
 - **5. A ⛔ 3.1 sorrendje:** az F102.1–F102.2 javítása (H1004 folytatás, öröklés, szűrés, M130) a ⛔ 3.1 megállási javaslata (F102.3, DT-F102d) előtt
   készült; tartalmilag független a rétegválasztástól (hivatkozás-feloldás és a szeletelő fő tagolása, amely mindkét rétegválasztás mellett a 2.29-ben
   marad), de a brief szerint a 2. lépés előtt meg kellett volna állni.
+
+## 19. Javítókör 1/2 — ELLENOR_F102 3.: M036 és M162 szeletelő-hiba (F102.11)
+
+Az orkesztrátor visszavonta a ⛔ 3.6 erre vonatkozó ítéletét (local_c8cc3610, 2026-11-09): a seed-102 **M036** és a seed-101 **M162** (mindkettő H3318)
+**szeletelő-hiba**, nem `forras_hiba` — a forrásban van „1 … a. … h.” számozás, csak a „Qal” név hiányzik; a szeletelő a 7947. karakternél (M036) is
+`fej`-et ad. A 16. szakasz ezzel ellentétes állítása (M036, M162 `forras_hiba`) és az ott közölt ítélet utáni számok érvényüket vesztik.
+
+**A szakasztábla-kulcson (mérve):** a 2.30 a M036 helyét `-/1/h`-nak adja (`adat/bdb_szakaszok.tsv` H3318 12. sor, `point` „h.”), a vak kitöltés
+`Qal/1/h`; a „Qal” nevet a 2.30 nem hordozza, csak a 2.31 `jelolo_hianyzik` kézi sora (H3318 sorszam 3 → `Qal/1`) pótolná. A `--szakasztabla` kulcs a
+nyers 2.30-at olvassa, ezért ott is eltérés: **szakasztábla-hiba** (a javítótáblával helyes volna).
+*(proveniencia: scope=H3318 | forras=adat/bdb_szakaszok.tsv + adat/bdb_forras_javitas.tsv (grep) + m2_minta_osszevet.py --szakasztabla | ts=2026-11-09)*
+
+**Javított ítélet utáni számok** (tájékoztató; a nyers kapu változatlan: szeletelő 183/200):
+
+| | nyers | ítélet utáni, javítva | maradó saját hiba |
+|---|---:|---:|---:|
+| seed-102, szeletelő | 183 / 200 | **184 / 199 (92,5%)** | 15 |
+| seed-102, szakasztábla | 184 / 200 | **186 / 199 (93,5%)** | 13 (+ M058 átvett `szakasz`) |
+| seed-101, a #99 kulcsán (F99.25; M162 szeletelő-hiba, mint a #99 ítéletében) | 184 / 200 | **187 / 200 (93,5%)** | 13 |
+| seed-101, a mai táblán (F102.4; DT-F102a; M029 okafogyott) | 187 / 200 | **188 / 200 (94,0%)**; ha az 1c. szerint az M102 és az M117 `forras_hiba`: 190 / 200 | 12, ill. 10 |
+
+A seed-101 ítéleti fájlja (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, #99) az M162-t eleve szeletelő-hibának ítélte (45. sor), és a #102 nem írta
+át: nincs mit igazítani (a fájl nincs a #102 `ir`-jében; csak itt jelölve).
+*(proveniencia: scope=seed-101, seed-102 | forras=m2_minta_osszevet.py --mai-tabla, [--szakasztabla] + naplok/BDB_SZELETELO_M2_seed10{1,2}_iteletek.md (manual ítélet) | ts=2026-11-09)*
