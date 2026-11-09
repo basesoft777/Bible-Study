@@ -44,6 +44,10 @@ with open(f'{ROOT}/konkordancia/Karoli_kereszthivatkozasok.tsv', encoding='utf-8
         m = s.rstrip('\n').split('\t')
         if m[0].startswith('Jol.2.') and karoli_kh_szuro.elfogad(m[0], m[1]):
             kh[f"{KONYV} {FEJ}:{m[0].split('.')[2]}"].append(m[2])
+# F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
+for x in karoli_kh_szuro.mek_sorok():
+    if x['Igehely'].startswith('Jol.2.') and karoli_kh_szuro.elfogad(x['Igehely'], x['Kapcsolódó igehely']):
+        kh[f"{KONYV} {FEJ}:{x['Igehely'].split('.')[2]}"].append(x['Kapcsolódó igehely magyar megjelenítése'])
 
 nave = defaultdict(list)
 for ih, tema in q(f"select igehely, tema from nave_vers where igehely in ({','.join('?'*len(ihs))})", *ihs):

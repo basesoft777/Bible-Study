@@ -68,3 +68,50 @@ def gyanus_forrasok():
                         ki.add(m[0])
         _CACHE = ki
     return _CACHE
+
+
+_MEK_SOROK = None
+_STEP_HU = None
+
+
+def _step_hu():
+    """STEP-kód -> magyar rövidítés (Konyv_normalizalo_tabla.tsv 1. és 2. oszlopa)."""
+    global _STEP_HU
+    if _STEP_HU is None:
+        ki = {}
+        ut = os.path.join(GYOKER, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
+        if os.path.exists(ut):
+            with open(ut, encoding='utf-8', newline='') as f:
+                next(f, None)
+                for s in f:
+                    m = s.rstrip('\n').rstrip('\r').split('\t')
+                    if len(m) > 1 and m[0]:
+                        ki[m[0]] = m[1]
+        _STEP_HU = ki
+    return _STEP_HU
+
+
+def mek_sorok(forras=None):
+    """F181 (a jelölt szint beemelése): a javított tábla csak a MEK-ben álló, `megerositett` sorai a HunKar-tábla
+    soraival azonos kulcsokkal (`Igehely`, `Kapcsolódó igehely`, `Kapcsolódó igehely magyar megjelenítése`), hogy a
+    fogyasztók a HunKar-sorok mellett ezeket is láthassák. A `kiesik` és a `jelolt` sor nem szerepel. A magyar
+    megjelenítés a HunKar-tábla alakját követi (pl. `1Móz 18,10`). `forras`: csak az adott forrásvers (STEP-alak)."""
+    global _MEK_SOROK
+    if _MEK_SOROK is None:
+        hu = _step_hu()
+        ki = []
+        if os.path.exists(JAVITOTT):
+            with open(JAVITOTT, encoding='utf-8', newline='') as f:
+                for s in f:
+                    if s.startswith('#') or s.startswith('igehely\t'):
+                        continue
+                    m = s.rstrip('\n').rstrip('\r').split('\t')
+                    if len(m) < 4 or m[2] != 'megerositett' or m[3] != 'MEK':
+                        continue
+                    r = m[1].split('.')
+                    if len(r) != 3 or r[0] not in hu:
+                        continue
+                    ki.append({'Igehely': m[0], 'Kapcsolódó igehely': m[1],
+                               'Kapcsolódó igehely magyar megjelenítése': '%s %s,%s' % (hu[r[0]], r[1], r[2])})
+        _MEK_SOROK = ki
+    return [r for r in _MEK_SOROK if forras is None or r['Igehely'] == forras]

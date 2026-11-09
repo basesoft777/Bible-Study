@@ -570,6 +570,9 @@ def cmd_karoli(args):
 
     kh_rows = load_karoli_kh()
     kh_nyers = [r for r in kh_rows if r["Igehely"] == step_key] if step_key else []
+    # F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
+    if step_key:
+        kh_nyers += karoli_kh_szuro.mek_sorok(step_key)
     # F177: csak a MEK-kel megerősített sor jut tovább (konkordancia/Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad);
     # a kiesik és a jelolt szintű sor nem (a jelöltlistán marad).
     kh_hits = [r for r in kh_nyers if karoli_kh_szuro.elfogad(step_key, r["Kapcsolódó igehely"])]

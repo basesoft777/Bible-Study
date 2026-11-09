@@ -193,7 +193,10 @@ for r in tsk_kulcs.forras_sorok(_tsk_nyers, set(VERSEK)):
 kh = defaultdict(list)
 STEP_HU = step_tabla()
 # F177: csak a MEK-kel megerősített sor (karoli_kh_szuro.elfogad) jut át
-for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
+# F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
+_MEK_KH = [[x['Igehely'], x['Kapcsolódó igehely'], x['Kapcsolódó igehely magyar megjelenítése']]
+           for x in karoli_kh_szuro.mek_sorok()]
+for r in list(sorok('konkordancia/Karoli_kereszthivatkozasok.tsv')) + _MEK_KH:
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
     if m and len(r) > 2 and karoli_kh_szuro.elfogad(r[0], r[1]):
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))

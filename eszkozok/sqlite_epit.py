@@ -738,7 +738,8 @@ class Epito(object):
                    tsk, SZARMAZTATOTT_LICENC['tsk'], ['igehely', 'cel_igehely'])
         kh = []
         # F177: csak a MEK-kel megerősített sor kerül be (Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad)
-        for r in G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]:
+        # F181: a csak a MEK-ben álló, megerősített sorok is (KHSZ.mek_sorok)
+        for r in list(G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]) + KHSZ.mek_sorok():
             if not KHSZ.elfogad(r['Igehely'], r['Kapcsolódó igehely']):
                 continue
             fo = self.konyvek.step_igehely(r['Igehely'])

@@ -3,7 +3,7 @@
 *Végrehajtó: `claude-sonnet-5-5`. Ág: `claude/f181-karoli-kh-jeloltek`. 2026-11-09.*
 *scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK.tsv + konkordancia/Karoli_kereszthivatkozasok.tsv + konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv + konkordancia/Karoli_1908.tsv + konkordancia/Karoli_KH_MEK_versszerkezet.tsv + konkordancia/TSK_kereszthivatkozasok.tsv | forras=eszkozok/karoli_kh_mek.py jelolt-bontas | ts=2026-11-09*
 
-*Az 1–6. szakasz a #177 utáni (J4 előtti) táblán készült: `git show d3252809:konkordancia/Karoli_KH_javitott.tsv` (az F181.1 commit), a mérés `python eszkozok/karoli_kh_mek.py jelolt-bontas --be <ez a fájl>`.*
+*Az 1–6. szakasz a #177 utáni (J4 előtti) táblán készült: `git show d3252809:konkordancia/Karoli_KH_javitott.tsv` (az F181.1 commit), a mérés `python eszkozok/karoli_kh_mek.py jelolt-bontas --be <ez a fájl>`; a soronkénti döntés a végleges szabályé (DT-F181d, e, f).*
 
 ## 1. A jelölt sorok és az altípusok (J1; mért: 2863 sor)
 
@@ -25,37 +25,38 @@ Nem létező cél vagy forrásvers (`Karoli_1908` ∪ MEK-versszerkezet szerint)
 
 ## 2. A szabály (J2) kimenete, soronként
 
-A szabály: a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers gyanús ismétlődő. A HunKar-oldali jelölt sor `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik; különben jelölt marad. A TSK nem szerepel a szabályban.
+A szabály: a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik; különben jelölt marad. A TSK nem szerepel a szabályban.
 
 | döntés | sor |
 |---|---|
-| beemel (MEK-sor -> megerositett) | 2594 |
-| marad: gyanús ismétlődő | 86 |
+| beemel (MEK-sor -> megerositett) | 2659 |
+| marad: MEK-oldali gyanús ismétlődő | 6 |
 | marad: nem létező célvers | 139 |
-| HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) | 30 |
-| HunKar-sor marad jelölt (a MEK-sor nem emelődik be) | 14 |
+| marad: elírás-gyanús (egyetlen összetevőben tér el a HunKar-céltól) | 15 |
+| HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) | 14 |
+| HunKar-sor marad jelölt (a MEK-sor nem emelődik be) | 30 |
 | **összesen** | **2863** |
 
-**A három szám (MEK-oldali jelölt sorok: 2797):** bekerül **2594**; gyanús ismétlődésként marad **86**; a nem létező célvers miatt marad **117** (+ 22 egyező-de-nem-létező sor, összesen 139 nem létező célvers).
+**A három szám (MEK-oldali jelölt sorok: 2797):** bekerül **2659**; gyanús ismétlődésként marad **6**; a nem létező célvers miatt marad **117** (+ 22 egyező-de-nem-létező sor, összesen 139 nem létező célvers); elírás-gyanús osztályként marad **15**.
 
-A gyanús ismétlődés két forrása (a MEK-oldali jelölt sorokon): HunKar-oldali jelölés (a #177 gyanús halmaza, 5078 forrásvers) 80 sor; MEK-oldali ismétlődés (a MEK-lista szó szerint azonos egy másik vers MEK-listájával, ≥2 elem, 496 forrásvers) 6 sor; mindkettő 0 sor. **Figyelem:** a HunKar-oldali jelölés a *HunKar-lista* másoltságát jelzi, nem a MEK-listáét; a szabály (a koordinátori előírás szerint) mégis jelöltben tartja ezeket.
-A **nem létező célvers** és a gyanús ismétlődés átfedése: 1 MEK-oldali sor mindkettő; a táblázatban a nem létező célvers az elsőbbségű.
+A gyanús ismétlődés kizárása csak a **MEK-oldali** ismétlődésre vonatkozik (a MEK-lista szó szerint azonos egy másik vers MEK-listájával, ≥2 elem, 496 forrásvers): 6 sor marad jelölt. A **HunKar-oldali** gyanús-jelölés (a #177 gyanús halmaza, 5078 forrásvers) a HunKar-lista másoltságát jelzi, nem a MEK-listáét; az ilyen forrásversen álló, ismétlődés nélküli MEK-sor (80 sor) a felhasználó döntése szerint beemelődik (DT-F181f). A szúrópróba (7. szakasz) szerint ezek mintája hibátlan volt.
+A **nem létező célvers** és a gyanús ismétlődés átfedése: 0 MEK-oldali sor mindkettő; a nem létező célvers az elsőbbségű.
 
-**A HunKar-oldali jelölt sor sorsa (mit választottam és miért).** A #177 `eltero_lista` sora: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen. Ha a MEK-lista a versen irányadó (a MEK-sor beemelődik), akkor a HunKar-sor a MEK-lista szerint nincs ott: ugyanaz a helyzet, mint a `kiesik` szinten (a MEK a versen nem listázza), ezért `kiesik` lesz (indok: `eltero_lista;tsk=…;szabaly=F181`). Ha a verse egyik MEK-sora sem emelődik be (nem létező cél, gyanús), a HunKar-sor jelölt marad: a verse MEK-listája nincs elfogadva, tehát a HunKar-sor sorsáról sincs mi alapján dönteni (hiányt nem töltünk ki, CLAUDE.md 3. szabály). A `kiesik` itt **nem** jelent hibás HunKar-sort: a sor a MEK-lista elfogadásának következménye (l. 4. az elírás-gyanús párokat). HunKar-oldali jelölt sor: 44; ebből `kiesik`: 30, jelölt marad: 14.
+**A HunKar-oldali jelölt sor sorsa (mit választottam és miért).** A #177 `eltero_lista` sora: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen. Ha a MEK-lista a versen irányadó (a MEK-sor beemelődik), akkor a HunKar-sor a MEK-lista szerint nincs ott: ugyanaz a helyzet, mint a `kiesik` szinten (a MEK a versen nem listázza), ezért `kiesik` lesz (indok: `eltero_lista;tsk=…;szabaly=F181`). Ha a verse egyik MEK-sora sem emelődik be (nem létező cél, gyanús), a HunKar-sor jelölt marad: a verse MEK-listája nincs elfogadva, tehát a HunKar-sor sorsáról sincs mi alapján dönteni (hiányt nem töltünk ki, CLAUDE.md 3. szabály). A `kiesik` itt **nem** jelent hibás HunKar-sort: a sor a MEK-lista elfogadásának következménye (l. 4. az elírás-gyanús párokat). HunKar-oldali jelölt sor: 44; ebből `kiesik`: 14, jelölt marad: 30.
 
 ## 3. Keresztábla és könyvenkénti eloszlás
 
 **Altípus × döntés:**
 
-| altípus | beemel (MEK-sor -> megerositett) | marad: gyanús ismétlődő | marad: nem létező célvers | HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) | HunKar-sor marad jelölt (a MEK-sor nem emelődik be) |
-|---|---|---|---|---|---|
-| tartomány/vershatár | 9 | 0 | 0 | 9 | 0 |
-| könyv-elírás | 2 | 0 | 0 | 1 | 0 |
-| fejezet-elírás | 8 | 0 | 6 | 9 | 2 |
-| versszám-elírás | 5 | 0 | 3 | 9 | 3 |
-| eltér (nem sorolható) | 18 | 0 | 8 | 2 | 9 |
-| csak MEK | 2552 | 86 | 100 | 0 | 0 |
-| egyéb (egyező, de nem létező hivatkozás) | 0 | 0 | 22 | 0 | 0 |
+| altípus | beemel (MEK-sor -> megerositett) | marad: MEK-oldali gyanús ismétlődő | marad: nem létező célvers | marad: elírás-gyanús (egyetlen összetevőben tér el a HunKar-céltól) | HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) | HunKar-sor marad jelölt (a MEK-sor nem emelődik be) |
+|---|---|---|---|---|---|---|
+| tartomány/vershatár | 9 | 0 | 0 | 0 | 9 | 0 |
+| könyv-elírás | 0 | 0 | 0 | 2 | 0 | 1 |
+| fejezet-elírás | 0 | 0 | 6 | 8 | 3 | 8 |
+| versszám-elírás | 0 | 0 | 3 | 5 | 0 | 12 |
+| eltér (nem sorolható) | 18 | 0 | 8 | 0 | 2 | 9 |
+| csak MEK | 2632 | 6 | 100 | 0 | 0 | 0 |
+| egyéb (egyező, de nem létező hivatkozás) | 0 | 0 | 22 | 0 | 0 | 0 |
 
 **TSK-támogatás (csak tájékoztatás, nem szabály-feltétel)** — a mai `tsk=` szabály szerint (TSK ±3 vagy visszautalás); „tiszta TSK”: csak a TSK ±3. Kategória: melyik oldal célját támogatja (a sor és a párosított másik oldali sor célja; párosítás nélkül a hiányzó oldal „nem támogatott”).
 
@@ -87,30 +88,30 @@ A sor saját céljára mutató TSK-támogatás: mai szabály szerint 2053 sor, e
 | könyv | jelölt | beemel | gyanús | nem létező | HunKar→kiesik | HunKar marad |
 |---|---|---|---|---|---|---|
 | Gen | 16 | 15 | 1 | 0 | 0 | 0 |
-| Exo | 23 | 19 | 1 | 3 | 0 | 0 |
+| Exo | 23 | 20 | 0 | 3 | 0 | 0 |
 | Lev | 17 | 13 | 0 | 3 | 0 | 1 |
-| Num | 35 | 31 | 2 | 2 | 0 | 0 |
+| Num | 35 | 33 | 0 | 2 | 0 | 0 |
 | Deu | 103 | 97 | 0 | 5 | 0 | 1 |
-| Jos | 127 | 113 | 0 | 9 | 4 | 1 |
+| Jos | 127 | 111 | 0 | 9 | 0 | 5 |
 | Jdg | 7 | 6 | 0 | 1 | 0 | 0 |
 | Rut | 2 | 2 | 0 | 0 | 0 | 0 |
 | 1Sa | 11 | 10 | 0 | 1 | 0 | 0 |
-| 2Sa | 111 | 101 | 5 | 4 | 1 | 0 |
-| 1Ki | 93 | 84 | 7 | 2 | 0 | 0 |
-| 2Ki | 62 | 59 | 1 | 1 | 1 | 0 |
-| 1Ch | 84 | 69 | 9 | 5 | 1 | 0 |
-| 2Ch | 90 | 81 | 3 | 6 | 0 | 0 |
+| 2Sa | 111 | 106 | 0 | 4 | 1 | 0 |
+| 1Ki | 93 | 89 | 2 | 2 | 0 | 0 |
+| 2Ki | 62 | 60 | 0 | 1 | 1 | 0 |
+| 1Ch | 84 | 77 | 1 | 5 | 1 | 0 |
+| 2Ch | 90 | 84 | 0 | 6 | 0 | 0 |
 | Ezr | 9 | 8 | 0 | 1 | 0 | 0 |
 | Neh | 29 | 23 | 0 | 5 | 1 | 0 |
 | Est | 14 | 13 | 0 | 1 | 0 | 0 |
 | Job | 23 | 17 | 0 | 6 | 0 | 0 |
-| Psa | 198 | 157 | 10 | 27 | 3 | 1 |
-| Pro | 56 | 49 | 4 | 3 | 0 | 0 |
-| Ecc | 6 | 3 | 2 | 1 | 0 | 0 |
-| Isa | 69 | 56 | 0 | 11 | 2 | 0 |
-| Jer | 121 | 101 | 14 | 5 | 0 | 1 |
-| Ezk | 102 | 89 | 1 | 12 | 0 | 0 |
-| Dan | 42 | 40 | 1 | 1 | 0 | 0 |
+| Psa | 198 | 163 | 0 | 27 | 0 | 4 |
+| Pro | 56 | 53 | 0 | 3 | 0 | 0 |
+| Ecc | 6 | 5 | 0 | 1 | 0 | 0 |
+| Isa | 69 | 54 | 0 | 11 | 0 | 2 |
+| Jer | 121 | 115 | 0 | 5 | 0 | 1 |
+| Ezk | 102 | 90 | 0 | 12 | 0 | 0 |
+| Dan | 42 | 41 | 0 | 1 | 0 | 0 |
 | Hos | 45 | 43 | 0 | 2 | 0 | 0 |
 | Jol | 7 | 7 | 0 | 0 | 0 | 0 |
 | Amo | 23 | 21 | 0 | 2 | 0 | 0 |
@@ -119,27 +120,27 @@ A sor saját céljára mutató TSK-támogatás: mai szabály szerint 2053 sor, e
 | Hag | 1 | 1 | 0 | 0 | 0 | 0 |
 | Zec | 4 | 4 | 0 | 0 | 0 | 0 |
 | Mal | 5 | 4 | 0 | 1 | 0 | 0 |
-| Mat | 82 | 76 | 2 | 4 | 0 | 0 |
-| Mrk | 29 | 25 | 2 | 2 | 0 | 0 |
+| Mat | 82 | 77 | 1 | 4 | 0 | 0 |
+| Mrk | 29 | 26 | 1 | 2 | 0 | 0 |
 | Luk | 106 | 105 | 0 | 1 | 0 | 0 |
 | Jhn | 89 | 86 | 0 | 1 | 1 | 1 |
 | Act | 226 | 218 | 0 | 3 | 2 | 3 |
-| Rom | 43 | 42 | 1 | 0 | 0 | 0 |
-| 1Co | 158 | 145 | 12 | 1 | 0 | 0 |
-| 2Co | 98 | 94 | 2 | 1 | 1 | 0 |
+| Rom | 43 | 43 | 0 | 0 | 0 | 0 |
+| 1Co | 158 | 157 | 0 | 1 | 0 | 0 |
+| 2Co | 98 | 96 | 0 | 1 | 1 | 0 |
 | Gal | 11 | 11 | 0 | 0 | 0 | 0 |
 | Eph | 11 | 7 | 0 | 2 | 1 | 1 |
-| Php | 6 | 3 | 0 | 0 | 1 | 2 |
+| Php | 6 | 2 | 0 | 0 | 0 | 3 |
 | Col | 14 | 6 | 0 | 1 | 5 | 2 |
-| 1Th | 4 | 1 | 0 | 1 | 2 | 0 |
+| 1Th | 4 | 0 | 0 | 1 | 0 | 2 |
 | 1Ti | 7 | 7 | 0 | 0 | 0 | 0 |
 | 2Ti | 6 | 6 | 0 | 0 | 0 | 0 |
-| Tit | 6 | 5 | 1 | 0 | 0 | 0 |
-| Heb | 42 | 40 | 2 | 0 | 0 | 0 |
+| Tit | 6 | 6 | 0 | 0 | 0 | 0 |
+| Heb | 42 | 42 | 0 | 0 | 0 | 0 |
 | Jas | 17 | 17 | 0 | 0 | 0 | 0 |
-| 1Pe | 6 | 4 | 0 | 0 | 2 | 0 |
-| 2Pe | 30 | 26 | 3 | 1 | 0 | 0 |
-| 1Jn | 41 | 39 | 0 | 0 | 2 | 0 |
+| 1Pe | 6 | 1 | 0 | 0 | 0 | 2 |
+| 2Pe | 30 | 29 | 0 | 1 | 0 | 0 |
+| 1Jn | 41 | 37 | 0 | 0 | 0 | 2 |
 | 2Jn | 2 | 2 | 0 | 0 | 0 | 0 |
 | 3Jn | 2 | 2 | 0 | 0 | 0 | 0 |
 | Jud | 6 | 6 | 0 | 0 | 0 | 0 |
@@ -147,42 +148,39 @@ A sor saját céljára mutató TSK-támogatás: mai szabály szerint 2053 sor, e
 
 ## 4. Mire kell figyelni a szabály alkalmazásakor
 
-* **Elírás-gyanús beemelés:** 15 beemelt MEK-sor áll olyan HunKar-sorral párban, amelytől egyetlen összetevőben (könyv/fejezet/versszám) tér el, és a MEK-cél létezik. Ezekben a MEK-elírás is lehet (pl. 5Móz 21:23 → Gal 2:13 a Gal 3:13 helyett); a szabály a MEK-et fogadja el (a felhasználó előírása), a HunKar-párja `kiesik` lesz. Bontás: könyv-elírás 2, fejezet-elírás 8, versszám-elírás 5. Ez a szabály tudott ára; a J3 szúrópróba ezt méri.
+* **Elírás-gyanús osztály (orkesztrátori döntés, DT-F181e):** 15 MEK-oldali sor áll olyan HunKar-sorral párban, amelytől egyetlen összetevőben (könyv/fejezet/versszám) tér el, és a MEK-cél létezik. A végrehajtói olvasat szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: könyv-elírás 2, fejezet-elírás 8, versszám-elírás 5.
 * **Tartomány-végpontok:** 9 beemelt MEK-sor a HunKar-tartomány végpontja vagy annak szomszédja; a HunKar a tartományt egy sorban adja, a MEK két végponttal, ezért a beemelt végpontsor és a `kiesik` tartománysor együtt azonos tartalmat hordozhat (a lap/index oldalán összevonandó).
-* **A fogyasztók nem látják a MEK-oldali megerősített sort.** A `karoli_kh_szuro.elfogad(forras, cel)` és a hívói (`lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, `nav_kinyer.py`) a `Karoli_kereszthivatkozasok.tsv` sorait szűrik; a csak a MEK-ben álló, most `megerositett` sorok nincsenek abban a táblában, ezért a lapra/indexbe csak a fogyasztók bővítésével jutnának (N-F177a körébe tartozik; ez a menet nem módosítja őket).
-
+* **A fogyasztók** (`karoli_kh_szuro.mek_sorok()` a `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, `nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (N-F181e, lezárva: 9. szakasz).
 ## 5. A jelölt szint súlya
 
 * A tábla sorai: 35204; ebből `jelolt`: **2863** (8.1%).
 * Forrásversek a táblában: 19849; legalább egy `megerositett` sora van: 13120; legalább egy `jelolt` sora van: **1530**.
 * **Jelölt nélkül nem marad megerősített KH-ja: 51 vers** (a jelölt versek 3.3%-a); ezek közül 0 versnek van `kiesik` sora is, 51 versnek csak jelölt sora van.
-* A szabály 1379 forrásversen emel be sort; ebből 13 versnek ezzel lesz először megerősített KH-ja (a `megerositett` szint 13120 forrásversét 0.1%-kal bővíti).
+* A szabály 1414 forrásversen emel be sort; ebből 11 versnek ezzel lesz először megerősített KH-ja (a `megerositett` szint 13120 forrásversét 0.1%-kal bővíti).
 
 ## 6. Példák (kategóriánként legfeljebb 8, egyenletes minta a tábla sorrendjéből)
 
 Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TSK: a saját cél (mai szabály / tiszta; csak tájékoztatás); L: a cél létezik; gy: gyanús (H: HunKar-oldali, M: MEK-oldali).
 
-### beemel (MEK-sor -> megerositett) (2594 sor)
+### beemel (MEK-sor -> megerositett) (2659 sor)
 
 * Gen.21.2 → Gen.18.10 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
-* 2Sa.6.10 → 1Ch.13.13 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
-* 2Ch.8.6 → 1Ki.7.12 | MEK | altípus: csak MEK | TSK nem/nem | L: igen
-* Isa.1.16 → Jas.4.8 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
-* Jol.2.32 → Oba.1.17 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
-* Jhn.17.12 → Psa.41.10 | MEK | altípus: csak MEK | TSK nem/nem | L: igen
-* 1Co.7.10 → Mat.5.32 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
-* 1Jn.2.2 → Jhn.4.42 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* 2Sa.6.16 → 2Sa.6.23 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* 2Ch.7.6 → Psa.136.1 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* Ecc.1.17 → Ecc.2.1 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* Hos.10.9 → Jdg.19.1 | MEK | altípus: csak MEK | TSK nem/nem | L: igen
+* Jhn.13.13 → 1Co.8.6 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* 1Co.4.12 → Rom.12.14 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
+* 2Pe.3.11 → Jas.1.27 | MEK | altípus: csak MEK | TSK igen/igen | L: igen
 
-### marad: gyanús ismétlődő (86 sor)
+### marad: MEK-oldali gyanús ismétlődő (6 sor)
 
 * Gen.48.4 → Gen.28.13 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: M
+* 1Ki.2.5 → 2Sa.20.10 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: M
 * 1Ki.2.32 → 2Sa.20.10 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: M
-* 1Ch.17.9 → 2Ki.21.14 | MEK | altípus: csak MEK | TSK nem/nem | L: igen | gy: H
-* Psa.18.31 → Psa.12.7 | MEK | altípus: csak MEK | TSK igen/nem | L: igen | gy: H
-* Ecc.1.1 → Ecc.1.12 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: H
-* Jer.25.31 → Jer.15.6 | MEK | altípus: csak MEK | TSK nem/nem | L: igen | gy: H
+* 1Ch.6.8 → 1Ch.27.17 | MEK | altípus: csak MEK | TSK nem/nem | L: igen | gy: M
+* Mat.21.13 → Jer.7.11 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: M
 * Mrk.11.17 → Jer.7.11 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: M
-* 1Co.6.7 → 1Th.5.15 | MEK | altípus: csak MEK | TSK igen/igen | L: igen | gy: H
 
 ### marad: nem létező célvers (139 sor)
 
@@ -195,43 +193,54 @@ Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TS
 * Col.2.12 → Rom.4.17-Rom.4.26 | egyező | altípus: egyéb (egyező, de nem létező hivatkozás) | TSK igen/igen | L: nem
 * Psa.24.5 → Isa.18.18 | MEK | altípus: csak MEK | TSK nem/nem | L: nem
 
-### HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) (30 sor)
+### marad: elírás-gyanús (egyetlen összetevőben tér el a HunKar-céltól) (15 sor)
 
-* Jos.2.15 → Act.9.2 | partner: Act.9.25 | HunKar | altípus: versszám-elírás | TSK nem/nem | L: igen
-* Jos.2.15 → Act.11.25 | partner: Act.9.25 | HunKar | altípus: fejezet-elírás | TSK nem/nem | L: igen
+* Jos.2.15 → Act.9.25 | partner: Act.9.2 | MEK | altípus: versszám-elírás | TSK igen/igen | L: igen
+* Jos.2.15 → 2Co.11.25 | partner: Act.11.25 | MEK | altípus: könyv-elírás | TSK nem/nem | L: igen
+* Psa.27.4 → Psa.23.3 | partner: Psa.42.2-Psa.42.3 | MEK | altípus: fejezet-elírás | TSK igen/igen | L: igen
+* Psa.35.12 → Psa.38.10 | partner: Psa.41.10 | MEK | altípus: fejezet-elírás | TSK nem/nem | L: igen
+* Isa.53.7 → Psa.38.10 | partner: Psa.39.10 | MEK | altípus: fejezet-elírás | TSK igen/igen | L: igen
+* 1Th.3.9 → 1Th.2.19 | partner: 1Th.2.19-1Th.2.3 | MEK | altípus: versszám-elírás | TSK igen/igen | L: igen
+* 1Pe.2.20 → Luk.15.14 | partner: Luk.3.14-Luk.3.17 | MEK | altípus: fejezet-elírás | TSK nem/nem | L: igen
+* 1Jn.2.27 → Jhn.14.26 | partner: Jhn.14.26-Jhn.14.16 | MEK | altípus: versszám-elírás | TSK igen/igen | L: igen
+
+### HunKar-sor -> kiesik (a MEK-lista elfogadva a versen) (14 sor)
+
+* 2Sa.7.8 → 1Sa.16.11-1Sa.16.12 | partner: 1Sa.16.11 | HunKar | altípus: tartomány/vershatár | TSK igen/igen | L: igen
+* 2Ki.21.5 → 2Ki.23.11-2Ki.23.12 | partner: 2Ki.23.11 | HunKar | altípus: tartomány/vershatár | TSK igen/igen | L: igen
 * Neh.1.5 → Neh.9.32 | partner: Neh.4.32 | HunKar | altípus: fejezet-elírás | TSK igen/igen | L: igen
-* Isa.5.30 → Amo.8.10 | partner: Amo.8.1 | HunKar | altípus: versszám-elírás | TSK igen/igen | L: igen
-* Act.14.22 → Act.13.43 | partner: Act.11.43 | HunKar | altípus: fejezet-elírás | TSK igen/igen | L: igen
-* Php.3.4 → Rom.11.21 | partner: 2Co.11.21 | HunKar | altípus: könyv-elírás | TSK nem/nem | L: igen
+* Act.5.40 → Mrk.13.2 | HunKar | altípus: eltér (nem sorolható) | TSK nem/nem | L: igen
+* 2Co.7.4 → Phm.1.1-Phm.1.8 | partner: Phm.1.8 | HunKar | altípus: tartomány/vershatár | TSK igen/igen | L: igen
+* Eph.3.1 → Gal.6.2 | HunKar | altípus: eltér (nem sorolható) | TSK nem/nem | L: igen
+* Col.4.9 → Phm.1.1-Phm.1.10 | partner: Phm.1.10 | HunKar | altípus: tartomány/vershatár | TSK igen/igen | L: igen
 * Col.4.15 → Phm.1.1-Phm.1.2 | partner: Phm.1.2 | HunKar | altípus: tartomány/vershatár | TSK igen/igen | L: igen
-* 1Pe.2.20 → Luk.12.47-Luk.12.15 | partner: Luk.12.47 | HunKar | altípus: versszám-elírás | TSK nem/nem | L: igen
 
-### HunKar-sor marad jelölt (a MEK-sor nem emelődik be) (14 sor)
+### HunKar-sor marad jelölt (a MEK-sor nem emelődik be) (30 sor)
 
 * Lev.23.17 → Lev.2.12 | partner: Lev.2.17 | HunKar | altípus: versszám-elírás | TSK igen/igen | L: igen
-* Deu.28.38 → Hag.1.6 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
-* Psa.143.3 → 1Sa.23.7-1Sa.23.8 | partner: 1Sa.23.78 | HunKar | altípus: versszám-elírás | TSK nem/nem | L: igen
-* Jhn.5.8 → Mrk.2.11 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
-* Act.21.8 → Act.8.12 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
-* Act.21.8 → Act.8.26-Act.8.40 | partner: Act.12.26 | HunKar | altípus: fejezet-elírás | TSK igen/igen | L: igen
-* Php.1.3 → Phm.1.4 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
+* Jos.2.15 → Act.9.5-Act.9.2 | partner: Act.9.25 | HunKar | altípus: versszám-elírás | TSK nem/nem | L: igen
+* Psa.27.4 → Psa.42.2-Psa.42.3 | partner: Psa.23.2 | HunKar | altípus: fejezet-elírás | TSK igen/igen | L: igen
+* Isa.5.30 → Amo.8.10 | partner: Amo.8.1 | HunKar | altípus: versszám-elírás | TSK igen/igen | L: igen
+* Act.19.29 → Phm.1.24 | HunKar | altípus: eltér (nem sorolható) | TSK igen/igen | L: igen
+* Eph.2.20 → Isa.28.16 | partner: Isa.18.16 | HunKar | altípus: fejezet-elírás | TSK igen/igen | L: igen
 * Col.1.9 → Col.2.18-Col.2.23 | HunKar | altípus: eltér (nem sorolható) | TSK nem/nem | L: igen
+* 1Pe.2.20 → Luk.12.47-Luk.12.15 | partner: Luk.12.47 | HunKar | altípus: versszám-elírás | TSK nem/nem | L: igen
 
 ## 7. A maradék szúrópróbája és a kontroll (J3)
 
 *scope=konkordancia/Karoli_KH_javitott.tsv (a J4 utáni állapot) + konkordancia/Karoli_1908.tsv | forras=eszkozok/karoli_kh_mek.py szuroproba (mag=181) + a végrehajtó olvasata | ts=2026-11-09*
 
-**Módszer.** A minta könyvenként arányos (legnagyobb maradék módszere), rögzített maggal ismételhető (`python eszkozok/karoli_kh_mek.py szuroproba`). Rétegek: (1) a gyanús ismétlődésként jelöltben maradt 86 MEK-oldali sorból 30; (2) a HunKar-oldali, jelöltben maradt 14 sor mind; (3) **kontroll**: a szabály által beemelt 2 594 sorból 40 (a szabály hibaarányának mérésére). A 139 nem létező célvers sort nem mintázom: tételesen az A. függelék. Az ítélet a két vers (Károli) szövegének olvasata: **rendben** = a cél a forrásvers idézete, párhuzama vagy szoros témai kapcsolata; **gyenge** = laza, de védhető kapcsolat; **hiba** = nincs felismerhető kapcsolat. **Korlát:** az ítélet a végrehajtó (nem független) olvasata, a `fuggetlen-ellenor` nem helyettesíti; olyan elírást, amely véletlenül értelmes helyre mutat, nem fog meg. A hibaarány ezért alsó becslés.
+**Módszer.** A minta könyvenként arányos (legnagyobb maradék módszere), rögzített maggal ismételhető (az F181.5 commit állapotán: `git checkout c29b0f65`, majd `python eszkozok/karoli_kh_mek.py szuroproba`; a végleges szabálynál a rétegek mérete más). Rétegek: (1) az első szabályváltozat szerint gyanús ismétlődésként jelöltben maradt 86 MEK-oldali sorból 30 (ebből 80 HunKar-oldali jelölésű, ezek a végleges szabály szerint beemelődnek: a minta róluk szól); (2) a HunKar-oldali, jelöltben maradt 14 sor mind (a végleges szabály szerint 30: a többi az elírás-gyanús sorok HunKar-oldali párja, ezeket a célzott rétegben olvastam); (3) **kontroll**: a szabály első változata által beemelt 2 594 sorból 40 (a szabály hibaarányának mérésére); ebből 1 sor (a 58.) az elírás-gyanús osztályba esik, amely a végleges szabály szerint nem emelődik be, ezért a kontrollban 39 sor érvényes. A 139 nem létező célvers sort nem mintázom: tételesen az A. függelék. Az ítélet a két vers (Károli) szövegének olvasata: **rendben** = a cél a forrásvers idézete, párhuzama vagy szoros témai kapcsolata; **gyenge** = laza, de védhető kapcsolat; **hiba** = nincs felismerhető kapcsolat. **Korlát:** az ítélet a végrehajtó (nem független) olvasata, a `fuggetlen-ellenor` nem helyettesíti; olyan elírást, amely véletlenül értelmes helyre mutat, nem fog meg. A hibaarány ezért alsó becslés.
 
 | réteg | n | rendben | gyenge | hiba | hibaarány | 95% Wilson-felső |
 |---|---|---|---|---|---|---|
 | maradék: gyanús ismétlődő | 30 | 25 | 5 | 0 | 0.0% | 11.4% |
 | maradék: HunKar-sor jelölt marad (mind) | 14 | 9 | 4 | 1 | 7.1% | 31.5% |
-| kontroll: beemelt MEK-sor | 40 | 35 | 5 | 0 | 0.0% | 8.8% |
+| kontroll: beemelt MEK-sor | 39 | 35 | 4 | 0 | 0.0% | 9.0% |
 
-**Mit mutat.** (1) A gyanús ismétlődésként jelöltben tartott MEK-sorok mintájában **egyetlen hiba sincs** (30-ból 25 rendben, 5 gyenge): a kizárás itt döntően jó sort tart vissza. Oka: a 86 sorból 80 a **HunKar-oldali** gyanús-jelölés miatt marad (a #177 gyanús halmaza a HunKar-lista másoltságát jelzi, a MEK-lista ilyenkor pont a javító tanú); csak 6 sor esik a MEK-oldali ismétlődés alá. **Javaslat a felhasználónak (döntés kell, DT-F181d értelmezése):** a gyanús ismétlődés kizárása legyen csak MEK-oldali (a 80 HunKar-oldali sor beemelődne). (2) A jelöltben maradt HunKar-oldali sorok 14-ből 9 rendben, 4 gyenge, 1 hiba: a HunKar-sor itt többnyire helyes, a MEK-párja nem létező vers (MEK-elírás), tehát a „jelölt marad” helyes választás. (3) A beemelés kontrollmintájában 40-ből 0 hiba (35 rendben, 5 gyenge), a Wilson-felső korlát 8,8%.
+**Mit mutat.** (1) A gyanús ismétlődésként elsőre kizárt 86 MEK-oldali sor 30-as mintájában **egyetlen hiba sincs** (25 rendben, 5 gyenge). A 86 sorból 80 a **HunKar-oldali** gyanús-jelölés miatt esett volna ki (a #177 gyanús halmaza a HunKar-lista másoltságát jelzi, a MEK-lista ilyenkor a javító tanú), 6 a MEK-oldali ismétlődés miatt. A felhasználó döntése (DT-F181f, „beemeljük”): a 80 HunKar-oldali gyanús-jelölésű, a MEK-ben ismétlődés nélkül álló sor `megerositett` lesz; a 6 MEK-oldali ismétlődés miatti sor `jelolt` marad. A mintában 3 sor MEK-oldali ismétlődés is volt (Gen.48.4, 1Ki.2.32, Mrk.11.17): ezek is rendben voltak, de a döntés szerint jelöltben maradnak. (2) A jelöltben maradt HunKar-oldali sorok első változatból vett 14-es mintájában 9 rendben, 4 gyenge, 1 hiba: a HunKar-sor itt többnyire helyes, a MEK-párja nem létező vers (MEK-elírás), tehát a „jelölt marad” helyes választás. (3) A beemelés kontrollmintájában 39-ből 0 hiba (35 rendben, 4 gyenge), a Wilson-felső korlát 9,0%.
 
-**Célzott réteg: az elírás-gyanús beemelések (15 sor).** Ahol a beemelt MEK-sor egyetlen összetevőben tér el a forrásvers HunKar-sorától (l. 4. szakasz), külön, tételesen olvastam mind a 15-öt (a 7. szakasz sorszámai az `elo.tsv` szerinti sorrend; a pár: forrásvers / MEK-cél / HunKar-pár):
+**Célzott réteg: az elírás-gyanús osztály (15 sor, DT-F181e).** Ahol a MEK-sor egyetlen összetevőben tér el a forrásvers HunKar-sorától (l. 4. szakasz), külön, tételesen olvastam mind a 15-öt (a 7. szakasz sorszámai az `elo.tsv` szerinti sorrend; a pár: forrásvers / MEK-cél / HunKar-pár):
 
 | forrásvers | MEK-cél | HunKar-pár | olvasat |
 |---|---|---|---|
@@ -251,7 +260,7 @@ Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TS
 | 1Jn.2.27 | Jhn.14.26 | Jhn.14.26–14.16 (tartomány-szemét) | a MEK helyes |
 | 1Jn.2.27 | Jhn.16.13 | Jhn.14.13 | a MEK helyes (a Lélek tanít) |
 
-Összesítve: a MEK **helyes/elfogadható 7**, **hibás 4** (Zsolt 27:4 → Zsolt 23:2 és 23:3, Ézs 5:30 → Ám 8:1, Ézs 53:7 → Zsolt 38:10), **bizonytalan 4**. A 15 sor a beemelt sorok 0,6%-a; a 4 hibás sor a 2 594-nek 0,15%-a, és mind létező célverset hordoz (a versellenőrzés nem fogja meg). **Ajánlás:** a 15 elírás-gyanús sor (vagy legalább a 4 hibás) maradjon `jelolt`; ez szűkítés lenne a felhasználó szabályán, ezért a J4-ben **nem** alkalmaztam, hanem jelzem (a 15 sor azonosítható: `altipus` ∈ könyv-/fejezet-/versszám-elírás, MEK-oldali, beemelt).
+Összesítve: a MEK **helyes/elfogadható 7**, **hibás 4** (Zsolt 27:4 → Zsolt 23:2 és 23:3, Ézs 5:30 → Ám 8:1, Ézs 53:7 → Zsolt 38:10), **bizonytalan 4**. A 4 hibás sor mind létező célverset hordoz (a versellenőrzés nem fogja meg). **Döntés (DT-F181e, orkesztrátori, nem felhasználói):** a 4 valószínű MEK-elírás miatt az egész osztály (MEK-oldali sor, amely egyetlen összetevőben tér el a forrásvers egy jelölt HunKar-sorának céljától, és létezik) `jelolt` marad, nem emelődik be. A szabály a `karoli_kh_mek.py`-ban (`D_ELIRAS`) és a README 7. szakaszában áll.
 
 ## A. függelék — a nem létező célvers miatt jelöltben maradó sorok (tételesen, 139)
 
@@ -397,17 +406,28 @@ Forrásvers → cél; „egyező”: a HunKar és a MEK ugyanazt a nem létező 
 * Mat.12.40 → Jon.2.12
 * Mrk.12.8 → Psa.13.12
 
-## 8. A J4 Δ-naplója (a tábla frissítése)
+## 8. A J4 Δ-naplója (a tábla frissítése, a végleges szabállyal)
 
 *scope=konkordancia/Karoli_KH_javitott.tsv | forras=eszkozok/karoli_kh_mek.py beemel | ts=2026-11-09*
 
 ```
 sorok: 35204 -> 35204
-megerositett: 21314 -> 23908 (Δ +2594)
-kiesik: 11027 -> 11057 (Δ +30)
-jelolt: 2863 -> 239 (Δ -2624)
-átment jelolt -> kiesik: 30
-átment jelolt -> megerositett: 2594
+megerositett: 21314 -> 23973 (Δ +2659)
+kiesik: 11027 -> 11041 (Δ +14)
+jelolt: 2863 -> 190 (Δ -2673)
+átment jelolt -> kiesik: 14
+átment jelolt -> megerositett: 2659
 ```
 
-A 239 jelölt maradék: 139 nem létező célvers (ebből 22 egyező), 86 gyanús ismétlődő, 14 HunKar-oldali. A `osszevet` (a beemeléssel) és a `beemel` kimenete bájtra azonos; a `beemel` a kész táblán idempotens (mérve). A szűrő (`karoli_kh_szuro.py`) és a fogyasztók változatlanok; lap nem generálódott.
+**Menet közbeni döntések és hatásuk.** Az első szabályváltozat (DT-F181d, a felhasználó szava) 2 594 sort emelt be (jelölt 239). Ezt két döntés módosította:
+* **DT-F181e (orkesztrátori döntés, nem felhasználói):** a 15 egyetlen összetevőben a HunKar-céltól eltérő MEK-sor (a 7. szakasz célzott rétege: 4 valószínű MEK-elírás) az egész osztályával `jelolt` marad. Esetek: Zsolt 27:4 → Zsolt 23:2 és 23:3 (a HunKar-pár Zsolt 42:2–3), Ézs 5:30 → Ám 8:1 (HunKar-pár Ám 8:10), Ézs 53:7 → Zsolt 38:10 (HunKar-pár Zsolt 39:10). A HunKar-oldali párjuk is `jelolt` marad (nem `kiesik`), mert a pár eldöntetlen.
+* **DT-F181f (a felhasználó szava: „beemeljük”):** a 80 HunKar-oldali gyanús-jelölésű sor, amely a MEK-ben ismétlődés nélkül áll, `megerositett`. A MEK-oldali ismétlődés miatti 6 sor `jelolt` marad. A 30-as minta róluk hibátlan volt (7. szakasz).
+A végleges maradék 190 `jelolt` sor: 139 nem létező célvers (22 egyező), 6 MEK-oldali gyanús ismétlődő, 15 elírás-gyanús MEK-sor, 30 HunKar-oldali sor (14 egy elírás-gyanús MEK-sor párja, 2 ugyanazon a versen álló másik HunKar-sor, 7 olyan, amelynek a verse jelölt MEK-sora nem létező célverset hordoz, 7 olyan, amelynek a versén nincs más jelölt MEK-sor, azaz a MEK-lista többi tagja egy másik HunKar-sorral egyezik). Az 1–6. szakasz soronkénti döntései a végleges szabályé. A `osszevet` (a beemeléssel) és a `beemel` kimenete bájtra azonos; a `beemel` a kész táblán idempotens.
+
+## 9. Egyeztetett eltérés a briefhez képest (N-F181e: a fogyasztók)
+
+A brief `ir` listáján a szűrő és a fogyasztói nem szerepeltek; a koordinátor és a felhasználó („javítani”, 2026-11-09) a hatókört bővítette, hogy a `Karoli_KH_javitott.tsv` csak a MEK-ben álló, `megerositett` sorait a fogyasztók is lássák. Módosított fájlok (kód; a bővített `ir` mező a brief fejlécében):
+* `eszkozok/karoli_kh_szuro.py`: új `mek_sorok(forras=None)` (a csak-MEK `megerositett` sorok a HunKar-tábla kulcsaival és magyar megjelenítéssel); az `elfogad` a javított tábla minden `megerositett` sorát elfogadja (ez eddig is így volt kulcsra, most van olyan sor, amelyet a fogyasztók a HunKar-táblából nem kaptak volna meg).
+* `eszkozok/lekerdez.py` (`karoli`), `eszkozok/sqlite_epit.py` (`kh` tábla építése), `eszkozok/olvaso_pilot/adat.py`, `eszkozok/olvaso_mockup/nav_kinyer.py`: a HunKar-sorok mellé a `mek_sorok()`-t is olvassák, ugyanazzal az `elfogad` szűrővel.
+* `eszkozok/teszt_karoli_kh_mek.py`: `test_szuro_csak_mek_megerositett_sor` (a szűrő elfogadja a csak-MEK sort; a `kiesik` és a `jelolt` nem jut át).
+Nem történt: lexikonlap-újragenerálás; a `pardes.db` (a `sqlite_epit.py` csak kódja módosult, az adatbázis nem épült újra). A `lexikon_general.py` `kh_index` és az `olvasoi_kapu.py` `KH_MASOLT` szabálya (N-F177a) változatlan. **N-F181e lezárva** ebben a PR-ban (kód + teszt); a lapok újragenerálása a motívumonkénti teljes folyamatban (N-F177a).

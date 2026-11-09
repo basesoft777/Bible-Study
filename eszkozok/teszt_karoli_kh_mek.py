@@ -191,11 +191,27 @@ class JeloltSzabaly(unittest.TestCase):
                ('Gen.4.1', 'Psa.89.12', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem'),
                ('Gen.5.1', 'Gen.99.9', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Gen.99.9'),
                ('Gen.6.1', 'Gen.2.4', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
-        b = self.bontas(jav, gy_hk={'Gen.4.1'}, gy_mek={'Gen.6.1'})
-        self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'MEK')]['dontes'], K.D_BEEMEL)
+        b = self.bontas(jav, gy_hk={'Gen.3.1'}, gy_mek={'Gen.4.1', 'Gen.6.1'})
+        self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'MEK')]['dontes'], K.D_BEEMEL)  # a HunKar-oldali gyanús-jelölés nem zár ki
         self.assertEqual(b[('Gen.4.1', 'Psa.89.12', 'MEK')]['dontes'], K.D_GYANUS)
         self.assertEqual(b[('Gen.5.1', 'Gen.99.9', 'MEK')]['dontes'], K.D_NEMLETEZO)
         self.assertEqual(b[('Gen.6.1', 'Gen.2.4', 'MEK')]['dontes'], K.D_GYANUS)
+
+    def test_hunkar_oldali_gyanus_jeloles_nem_zar_ki(self):
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        b = K.jelolt_bontas(jav, self.LETEZO, lambda f, c: False, lambda f, c: False, {'Gen.3.1'}, set())
+        self.assertEqual(b[0]['dontes'], K.D_BEEMEL)
+
+    def test_elirasgyanus_osztaly_marad(self):
+        # a MEK-cél egyetlen összetevőben (fejezet) tér el a forrásvers HunKar-sorától és létezik -> jelolt marad
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.3.1', 'Psa.89.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        letezo = set(self.LETEZO) | {'Psa.89.6'}
+        b = {(r['cel'], r['oldal']): r for r in K.jelolt_bontas(
+            jav, letezo, lambda f, c: False, lambda f, c: False, set(), set())}
+        self.assertEqual(b[('Psa.89.6', 'MEK')]['altipus'], 'fejezet-elírás')
+        self.assertEqual(b[('Psa.89.6', 'MEK')]['dontes'], K.D_ELIRAS)
+        self.assertEqual(b[('Psa.33.6', 'HunKar')]['dontes'], K.D_HK_MARAD)
 
     def test_a_tsk_nem_szabaly_feltetel(self):
         jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
@@ -327,19 +343,37 @@ class RepoTablak(unittest.TestCase):
         self.assertTrue(be)
         for m in be:
             self.assertTrue(K.cel_letezik(m[1], letezo) and m[0] in letezo, m)
-            self.assertNotIn(m[0], gy_hk)
-            self.assertNotIn(m[0], gy_mek)
+            self.assertNotIn(m[0], gy_mek)  # csak a MEK-oldali ismétlődés zár ki; a HunKar-oldali jelölés nem (DT-F181f)
         for m in self.jav:
             if m[2] == 'jelolt' and m[3] == 'MEK':
                 nincs = not K.cel_letezik(m[1], letezo) or m[0] not in letezo
-                self.assertTrue(nincs or m[0] in gy_hk or m[0] in gy_mek, m)
+                elir = m[0] in {x[0] for x in self.jav if x[2] == 'jelolt' and x[3] == 'HunKar'}
+                self.assertTrue(nincs or m[0] in gy_mek or elir, m)
         van_be = {m[0] for m in be}
         for m in self.jav:
-            if m[2] == 'jelolt' and m[3] == 'HunKar':
-                self.assertNotIn(m[0], van_be, m)  # a MEK-lista beemelődött -> a HunKar-sor kiesik
+            if m[2] == 'jelolt' and m[3] == 'HunKar' and m[0] in van_be:
+                # a MEK-lista beemelődött -> a HunKar-sor kiesik; kivétel az elírás-gyanús MEK-sor párja (jelolt marad)
+                self.assertIn(m[0], {x[0] for x in self.jav if x[2] == 'jelolt' and x[3] == 'MEK'}, m)
         sorok6 = [m[:6] for m in self.jav]
         bontas, _, _ = K._bontas_sorokra(sorok6)
         self.assertEqual(K.beemel(sorok6, bontas, '2026-11-09'), [list(m) for m in sorok6])
+
+    def test_szuro_csak_mek_megerositett_sor(self):
+        """F181: a szűrő a csak a MEK-ben álló, megerősített sort elfogadja és kiadja (mek_sorok); a kiesik és a
+        jelolt sor nem jut át."""
+        mek = SZ.mek_sorok()
+        be = [m for m in self.jav if m[2] == 'megerositett' and m[3] == 'MEK']
+        self.assertEqual(len(mek), len(be))
+        self.assertTrue(mek)
+        for r in mek:
+            self.assertTrue(SZ.elfogad(r['Igehely'], r['Kapcsolódó igehely']))
+            self.assertRegex(r['Kapcsolódó igehely magyar megjelenítése'], r'^\S+ \d+,\d+$')
+        self.assertEqual(len(SZ.mek_sorok(mek[0]['Igehely'])), sum(1 for r in mek if r['Igehely'] == mek[0]['Igehely']))
+        for m in self.jav:
+            if m[2] in ('kiesik', 'jelolt'):
+                self.assertFalse(SZ.elfogad(m[0], m[1]), m)
+        kulcsok = {(r['Igehely'], r['Kapcsolódó igehely']) for r in mek}
+        self.assertFalse(kulcsok & {(f, c) for f, c, _, _ in self.hk if SZ.szint(f, c) != 'megerositett'})
 
     def test_alias_tabla(self):
         al = K.mek_aliasok()
