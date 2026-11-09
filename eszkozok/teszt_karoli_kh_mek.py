@@ -476,6 +476,21 @@ class RepoTablak(unittest.TestCase):
         jav = collections.Counter((m[0], m[1]) for m in self.jav if m[3] in ('HunKar', 'HunKar+MEK'))
         self.assertEqual(hk, jav)
 
+    def test_nincs_azonos_kulcsu_sor(self):
+        """DT-F181p: a táblában nem áll két azonos (igehely, kapcsolodo) kulcsú sor. A HunKar-forrástábla négy kulcsot
+        kétszer hordoz (Józs 2:15 → ApCsel 9:2, 1Kir 11:11 → 6:12, 1Kor 7:4 → 7:7, 1Kor 12:11 → 7:7): a generátor
+        (`hunkar_sorok`) az elsőt tartja meg. A teljes táblán bukik, ha azonos kulcsú sor marad."""
+        kulcsok = collections.Counter((m[0], m[1]) for m in self.jav)
+        self.assertEqual([k for k, v in kulcsok.items() if v > 1], [])
+        forras = collections.Counter(
+            (m[0], m[1]) for m in K.tsv_sorok(K.HUNKAR) if len(m) > 1 and m[0])
+        self.assertEqual(sorted(k for k, v in forras.items() if v > 1),
+                         [('1Co.12.11', '1Co.7.7'), ('1Co.7.4', '1Co.7.7'), ('1Ki.11.11', '1Ki.6.12'),
+                          ('Jos.2.15', 'Act.9.2')])
+        # minden különböző HunKar-kulcs pontosan egyszer szerepel a táblában
+        tabla = {(m[0], m[1]) for m in self.jav if m[3] in ('HunKar', 'HunKar+MEK')}
+        self.assertEqual(tabla, set(forras))
+
     def test_megerositett_ketforrasu_kiesik_hunkar(self):
         """A #177 szintjei, az F181 beemelésével: a megerősített sor vagy két forrású, vagy a szabály által
         beemelt MEK-sor (`szabaly=F181`), vagy a HunKar-sor, amelynek a MEK-párja nem ellentmond (`szabaly=F181`); a
@@ -639,7 +654,7 @@ class RepoTablak(unittest.TestCase):
         gy_hk = K.gyanus_versek()
         gy_mek = K.mek_ismetlodo(K.mek_sorok_betolt())
         letezo = K.karoli_versek()
-        self.assertEqual(len(self.jav), 35204)
+        self.assertEqual(len(self.jav), 35200)  # 35 204 a kettőzött HunKar-kulcsok (DT-F181p, F181.25) kiszűrése előtt
         be = [m for m in self.jav if m[2] == 'megerositett' and m[3] == 'MEK']
         self.assertTrue(be)
         for m in be:
@@ -725,8 +740,9 @@ class RepoTablak(unittest.TestCase):
                 ki.append(open(a.md, encoding='utf-8').read())
         self.assertEqual(ki[0], ki[1])
         sorok = [s for s in ki[0].split(chr(10)) if s.startswith('| ') and not s.startswith('| #') and s[2].isdigit()]
-        # a megerősített HunKar-sorok rétege: 20 az E3-szűkítés (DT-F181n, F181.24) előtt, 15 utána (a 5 Filem-tartomány kiesik)
-        self.assertEqual(len(sorok), 40 + 30 + 6 + 10 + 21 + 9 + 15)
+        # a megerősített HunKar-sorok rétege: 20 az E3-szűkítés (DT-F181n, F181.24) előtt, 15 utána (az 5 Filem-tartomány kiesik);
+        # a HunKar-marad réteg: 21 a kettőzött kulcsok kiszűrése (DT-F181p, F181.25) előtt, 20 utána (a Józs 2:15 → ApCsel 9:2 egyszer áll)
+        self.assertEqual(len(sorok), 40 + 30 + 6 + 10 + 20 + 9 + 15)
         for s in sorok:
             self.assertTrue(s.endswith(' |  |  |'), s)  # üres ítélet és indok
         self.assertEqual(sum('E2-szűrt' in s for s in sorok), 9)

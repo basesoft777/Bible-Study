@@ -359,11 +359,18 @@ def mek_versek():
 
 
 def hunkar_sorok():
-    """[(forras, cel_nyers, kezdet, veg)] a HunKar-táblából; a tartomány 'A-B' egy sor (kezdet != veg)."""
+    """[(forras, cel_nyers, kezdet, veg)] a HunKar-táblából; a tartomány 'A-B' egy sor (kezdet != veg).
+    A (forrásvers, cél) kulcs egyszer áll (DT-F181p): a HunKar-tábla négy kulcsot kétszer hordoz (Józs 2:15 → ApCsel 9:2,
+    1Kir 11:11 → 6:12, 1Kor 7:4 → 7:7, 1Kor 12:11 → 7:7); az első előfordulás marad, a kettőzött sor nem kerül a
+    javított táblába."""
     ki = []
+    lattuk = set()
     for m in tsv_sorok(HUNKAR):
         if len(m) < 2 or not m[0]:
             continue
+        if (m[0], m[1]) in lattuk:
+            continue
+        lattuk.add((m[0], m[1]))
         reszek = m[1].split('-')
         ki.append((m[0], m[1], reszek[0], reszek[-1]))
     return ki
