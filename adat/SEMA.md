@@ -2471,14 +2471,14 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E10 | HIBA | a „spirit” / „spiritual” tiltott magyarítása (helyesen: szellem, szellemi) | `eszkozok/ellenorzes/szabalyok.py` |
 | E11 | HIBA | Cremer/NIDNTTE/NIDOTTE tiltás (TWOT-szám kivétel) | `eszkozok/ellenorzes/szabalyok.py` |
 | E12 | FIGYELMEZTETES | proveniencia a prózában | `eszkozok/ellenorzes/szabalyok.py` |
-| E13 | FIGYELMEZTETES | héber/görög szó kiejtés nélkül | `eszkozok/ellenorzes/szabalyok.py` |
+| E13 | FIGYELMEZTETES; HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, `motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`) | héber/görög szó kiejtés nélkül | `eszkozok/ellenorzes/szabalyok.py` |
 | E14 | FIGYELMEZTETES | a tematikus sablon 1. pontjának „Jelentés-szöveg” oszlopa angol | `eszkozok/ellenorzes/szabalyok.py` |
 | E15 | FIGYELMEZTETES | SzPA-idézet 25 szónál hosszabb | `eszkozok/ellenorzes/szabalyok.py` |
 | E16 | HIBA | a PR az ellenőrzést magát módosítja (ellenőrző-önmódosítás) | `eszkozok/ellenorzes/szabalyok.py` |
 | E18 | HIBA | a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja | `eszkozok/feladatok.py ellenoriz` |
 | E19 | HIBA | szótári hivatkozás fordítás nélkül | `eszkozok/ellenorzes/szabalyok.py` |
 | E20 | HIBA | tanulmány: minden kötelező szakasz megvan | `eszkozok/ellenorzes/szabalyok.py` |
-| E25 | FIGYELMEZTETES | döntés átvezetése (`adat/dontes_hatas.tsv`) | `eszkozok/ellenorzes/szabalyok.py` |
+| E25 | FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum: E25 (c)) | döntés átvezetése (`adat/dontes_hatas.tsv`) | `eszkozok/ellenorzes/szabalyok.py` |
 | E26 | HIBA | végleges DT/N szám az ágon | `eszkozok/ellenorzes/szabalyok.py` |
 | E27 | HIBA | a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e | `eszkozok/ellenorzes/szabalyok.py` |
 | E28 | HIBA | a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal | `eszkozok/ellenorzes/szabalyok.py` |

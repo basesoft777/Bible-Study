@@ -3043,6 +3043,10 @@ SZABALY_LEIRAS = {
 # magasabbat ad egyes talalatokra, a kapulista Szint-oszlopa az alapszint mellett ezt is kimondja. A kulcs a `SZINT`
 # kulcsa (az E37 ellenorzi).
 SZINT_EMELES = {
+    'E13': 'HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, '
+           '`motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`)',
+    'E25': 'HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, '
+           '`erintett_fajl`, hibás regex vagy dátum: E25 (c))',
     'E34': 'HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van)',
 }
 # A `szabalyok.py`-n kivul futo CI-azonositok (a workflow lepesei).
@@ -3245,7 +3249,7 @@ def kapulista_ellentmondasok(root=None):
                                                   else 'SZABALY_LEIRAS-ban van, a SZINT-ben nincs'))
     for k in sorted(set(SZINT_EMELES) - set(SZINT), key=_e_szam):
         hibak.append('szabalyok.py: a %s SZINT_EMELES-ben van, a SZINT-ben nincs' % k)
-    wf =_e36_olvas(E37_WORKFLOW, root) or ''
+    wf = _e36_olvas(E37_WORKFLOW, root) or ''
     ismert = set(SZINT) | {k[0] for k in KULSO_SZABALYOK}
     for sor in wf.split('\n'):
         if sor.strip().startswith('- name:'):

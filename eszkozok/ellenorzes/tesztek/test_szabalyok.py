@@ -2240,5 +2240,18 @@ class E37Teszt(unittest.TestCase):
         self.assertEqual(len(sor), 1, sor)
         self.assertIn('FIGYELMEZTETES; HIBA a kiadott motívumon', sor[0])
 
+    def test_szint_emeles_e13_a_blokkban(self):
+        # ELLENOR_F184_2 1., DT-F184c: az E13 sora a tanulmányfájlon adott HIBA-t is kimondja (E13_TANULMANY_SZINT)
+        self.assertEqual(SZ.E13_TANULMANY_SZINT, 'HIBA')
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E13 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a tanulmányfájlon', sor[0])
+
+    def test_szint_emeles_e25_a_blokkban(self):
+        # ELLENOR_F184_2 1., DT-F184c: az E25 sora a (c) pont HIBA-ját is kimondja
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E25 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron', sor[0])
+
 if __name__ == '__main__':
     unittest.main()
