@@ -2170,7 +2170,7 @@ Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **t
 - **Normalizálás és egyeztetés** (az olvasói kapuval azonos, `olvasoi_kapu.karoli_egyezik`): kisbetű, ékezet- és írásjel-független; szavanként 0,75-ös hasonlósági tűrés (a Károli régies helyesírása); a `...`, `…` és `[…]` szerint darabolt részletek mindegyike sorrendben követi a vers szavait, a szószámmal arányos kihagyással. Más igealak vagy más szó (kihirdetem ↔ kiáltom) eltérés.
 - **Nem versidézet:** a zárójel utáni glossza (`(„…”)`) és a három szónál rövidebb részlet.
 - **Jelölés alakja (DT614):** a „saját fordítás” szöveg (kis-nagybetű nélkül; elfogadott még „szó szerint:” és „ford.:”) a `kapcsolodas` mezőben, ugyanabban a mezőben, mint az idézet. Új jelölő nincs; az olvasói kapu ugyanezt ismeri.
-- **Szint.** HIBA azon a motívumon, amelynek az `adat/kiadasok.tsv`-ben (2.46) sora van; a többin FIGYELMEZTETÉS (JELENTES a futtatóban). A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
+- **Szint** (a kód szerint: `e34_karoli_idezet`; DT-F184c). Találatonként dől el: HIBA, ha a sor `id`-je szerepel az `adat/kiadasok.tsv`-ben (2.46: a kiadott motívum); különben FIGYELMEZTETÉS (az alapszint, `SZINT['E34']`; a 3.11 Szint-oszlopa mindkettőt mondja). Fájlszintű szabály, ezért PR-módban a diff nem minősíti le: a kiadott motívum régi sorának találata is HIBA, és a futás bukik. A futtató jelentése a nem HIBA találatot a JELENTES-számba veszi; `--teljes` módban minden találat JELENTES. A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
 - **Hatókör.** Fájlszintű, adattáblán futó szabály (mint az E31): a `fajlok` paramétertől független. A szabály nem javít; a találat javítása a lap saját menete (nem a `csv` modullal: `split('\t')`).
 
 ## 3. Integritási szabályok
@@ -2365,7 +2365,7 @@ A gépi kapuk (olvasói kapu, `ellenoriz.py`, CI) azonosítói és rövid leír�
 kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosítót, a súlyosságot és egy rövid leírást ad.
 
 <!-- GENERÁLT-KEZDET: szabalyok.py --kapulista -->
-*Generált blokk, kézzel ne szerkeszd: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`; őre a CI E37. Forrás: az `eszkozok/olvasoi_kapu.py` `KAPUK` és `VISSZHANG_ALSZABALYOK` táblája, az `eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZABALY_LEIRAS` és `KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista az azonosítókat és egy rövid leírást ad.*
+*Generált blokk, kézzel ne szerkeszd: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`; őre a CI E37. Forrás: az `eszkozok/olvasoi_kapu.py` `KAPUK` és `VISSZHANG_ALSZABALYOK` táblája, az `eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZINT_EMELES`, `SZABALY_LEIRAS` és `KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista az azonosítókat és egy rövid leírást ad.*
 
 **Olvasói kapu** (`eszkozok/olvasoi_kapu.py`; a Feed 9. kapuja)
 
@@ -2487,7 +2487,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E31 | HIBA | a `forras_tanulmany` létező, repóbeli fájlra mutat | `eszkozok/ellenorzes/szabalyok.py` |
 | E32 | HIBA | kiosztott helyőrző egy kimeneti string-literálban | `eszkozok/ellenorzes/szabalyok.py` |
 | E33 | FIGYELMEZTETES | az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe | `eszkozok/ellenorzes/szabalyok.py` |
-| E34 | FIGYELMEZTETES | a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű | `eszkozok/ellenorzes/szabalyok.py` |
+| E34 | FIGYELMEZTETES; HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van) | a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű | `eszkozok/ellenorzes/szabalyok.py` |
 | E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |

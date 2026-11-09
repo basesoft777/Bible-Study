@@ -3039,6 +3039,12 @@ SZABALY_LEIRAS = {
            'a SEMA szakaszszámai egyediek',
     'E37': 'az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal',
 }
+# Talalatonkent emelt szint (F184 javitokor, ELLENOR_F184 5., DT-F184c): ahol a fuggveny a `SZINT`-beli alapszintnel
+# magasabbat ad egyes talalatokra, a kapulista Szint-oszlopa az alapszint mellett ezt is kimondja. A kulcs a `SZINT`
+# kulcsa (az E37 ellenorzi).
+SZINT_EMELES = {
+    'E34': 'HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van)',
+}
 # A `szabalyok.py`-n kivul futo CI-azonositok (a workflow lepesei).
 KULSO_SZABALYOK = (
     ('E1', 'HIBA', 'az `eszkozok/ellenoriz.py` futása (a SEMA 3. szakaszának szabályai és a lapkapuk; a CI-ben mindig fut)',
@@ -3198,7 +3204,7 @@ SZABALYOK_FUGGVENYEI['E36'] = e36_hivatkozas_cel
 # E37 -- a kapuk generalt szabalylistaja (F184 D3): `adat/SEMA.md` 3.11, a kodbol
 # ---------------------------------------------------------------------------
 # A blokk forrasai: az `olvasoi_kapu.py` `KAPUK` es `VISSZHANG_ALSZABALYOK` tablaja, az `ellenoriz.py` szabalycimei
-# (`Sor('<N>. …')` / `cim = '<N>. …'`), e modul `SZINT` + `SZABALY_LEIRAS` tablaja es a `KULSO_SZABALYOK`.
+# (`Sor('<N>. …')` / `cim = '<N>. …'`), e modul `SZINT` + `SZINT_EMELES` + `SZABALY_LEIRAS` tablaja es a `KULSO_SZABALYOK`.
 # Ujrageneralas: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`. HIBA, fajlszintu: a blokk elter a
 # generalttol, hianyzik, vagy a forrastablak nem egyeznek a koddal.
 E37_SEMA = 'adat/SEMA.md'
@@ -3237,7 +3243,9 @@ def kapulista_ellentmondasok(root=None):
     for k in sorted(set(SZINT) ^ set(SZABALY_LEIRAS), key=_e_szam):
         hibak.append('szabalyok.py: a %s %s' % (k, 'SZINT-ben van, a SZABALY_LEIRAS-ban nincs' if k in SZINT
                                                   else 'SZABALY_LEIRAS-ban van, a SZINT-ben nincs'))
-    wf = _e36_olvas(E37_WORKFLOW, root) or ''
+    for k in sorted(set(SZINT_EMELES) - set(SZINT), key=_e_szam):
+        hibak.append('szabalyok.py: a %s SZINT_EMELES-ben van, a SZINT-ben nincs' % k)
+    wf =_e36_olvas(E37_WORKFLOW, root) or ''
     ismert = set(SZINT) | {k[0] for k in KULSO_SZABALYOK}
     for sor in wf.split('\n'):
         if sor.strip().startswith('- name:'):
@@ -3258,8 +3266,8 @@ def kapulista_blokk(root=None):
     ki = [E37_KEZDET,
           '*Generált blokk, kézzel ne szerkeszd: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`; '
           'őre a CI E37. Forrás: az `eszkozok/olvasoi_kapu.py` `KAPUK` és `VISSZHANG_ALSZABALYOK` táblája, az '
-          '`eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZABALY_LEIRAS` és '
-          '`KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista '
+          '`eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZINT_EMELES`, '
+          '`SZABALY_LEIRAS` és `KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista '
           'az azonosítókat és egy rövid leírást ad.*',
           '',
           '**Olvasói kapu** (`eszkozok/olvasoi_kapu.py`; a Feed 9. kapuja)',
@@ -3278,7 +3286,8 @@ def kapulista_blokk(root=None):
     ki += ['', '**CI-szabályok** (`.github/workflows/ellenorzes.yml`)', '',
            '| Azonosító | Szint | Mit mér | Forrás |', '|---|---|---|---|']
     sorok = [(k[0], k[1], k[2], k[3]) for k in KULSO_SZABALYOK]
-    sorok += [(k, SZINT[k], SZABALY_LEIRAS.get(k, ''), '`eszkozok/ellenorzes/szabalyok.py`') for k in SZINT]
+    sorok += [(k, SZINT[k] + ('; ' + SZINT_EMELES[k] if k in SZINT_EMELES else ''), SZABALY_LEIRAS.get(k, ''),
+               '`eszkozok/ellenorzes/szabalyok.py`') for k in SZINT]
     for azon, szint, leiras, forras in sorted(sorok, key=lambda r: _e_szam(r[0])):
         ki.append('| %s | %s | %s | %s |' % (azon, szint, _cella(leiras), forras))
     ki.append(E37_VEGE)

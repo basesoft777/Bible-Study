@@ -2234,5 +2234,11 @@ class E37Teszt(unittest.TestCase):
     def test_valodi_repo_forrastablai_egyeznek_a_koddal(self):
         self.assertEqual(SZ.kapulista_ellentmondasok(), [])
 
+    def test_szint_emeles_a_blokkban(self):
+        # ELLENOR_F184 5., DT-F184c: az E34 sora az alapszint mellett a kiadott motívumon adott HIBA-t is kimondja
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E34 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a kiadott motívumon', sor[0])
+
 if __name__ == '__main__':
     unittest.main()

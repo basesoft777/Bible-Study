@@ -225,6 +225,26 @@ Ez az `elteres.md` meglévő szabályának áthelyezése, új tartalom nincs ben
 
 Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így már valós célra mutat, ezért szövegén nem változtattam.
 
+### 5. Az E34 súlyossága (F184.17; ELLENOR_F184 5.; DT-F184c)
+
+**Orkesztrátori döntés:** a kód szerinti súlyosság a kanonikus. A generált 3.11 a kódból jön, és az a kanonikus.
+
+**A kódból kiolvasott viselkedés:**
+- `eszkozok/ellenorzes/szabalyok.py`, `e34_karoli_idezet`: minden találat szintje `'HIBA' if d.get('id', '') in kiadott else 'FIGYELMEZTETES'`, ahol `kiadott` az `adat/kiadasok.tsv` `id`-halmaza (`_e34_kiadott`).
+- `SZINT['E34'] = 'FIGYELMEZTETES'`: ez csak az alapszint.
+- Az E34 a `FAJLSZINTU_SZABALYOK` és a `HATOKOR_SZABALYOK` tagja. Ezért a `futtat.py` PR-módban nem minősíti le a diff szerint: a találat a saját szintjén marad, és HIBA-nál a kilépési kód 1.
+- A jelentés a nem HIBA találatot „JELENTES”-ként számolja; `--teljes` módban minden találat JELENTES.
+
+**Az eltérés oka:** a 3.11 Szint-oszlopa a `SZINT`-ből jött, ezért csak az alapszintet mutatta. A SEMA 2.55 szövege tartalmilag helyes volt, de nem mondta ki a fájlszintűség következményét.
+
+**Javítás:**
+- **Forrástábla:** új `SZINT_EMELES` tábla a `szabalyok.py`-ban (`'E34': 'HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van)'`). A generátor a Szint-oszlopba az alapszint mellé írja. Az E37 a `kapulista_ellentmondasok`-ban azt is ellenőrzi, hogy a kulcs a `SZINT`-ben áll.
+- **Újragenerálás:** a blokkot a `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir` írta újra; kézzel nem szerkesztettem. Az E34 sora most: „FIGYELMEZTETES; HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van)”.
+- **SEMA 2.55 „Szint”:** a kód szerint pontosítva (találatonkénti szint, alapszint, fájlszintűség PR-módban, `--teljes`).
+- **Teszt:** `E37Teszt.test_szint_emeles_a_blokkban`.
+
+**Megfigyelés (nem javítottam, hatókörön kívül):** az E13 is találatonként emel: tanulmányfájlon `E13_TANULMANY_SZINT = 'HIBA'`, máshol `FIGYELMEZTETES`. A 3.11 E13-sora ugyanígy csak az alapszintet mutatja. A `SZINT_EMELES` egy sorával javítható; ez az orkesztrátor döntése.
+
 ## Zárás
 
 - **Elkészült:** D1 (1 sor a `CLAUDE.md`-ben; DT-F184a, DT-F184b), D2 (34 csere: 29 nem-SEMA csere 13 fájlban + 5 SEMA-csere, köztük a DT-F184b 2.48-szövege és a „2.50” szétválasztása; ezen felül az N-F166a lezárása a `NYITOTT_FELADATOK.md` meglévő sorában), D3 (modulszintű táblák, generátor, SEMA 3.11 GENERÁLT blokk, E37), D4 (`/kovetkezo` 10. lépés + 4 kapcsolódó csere, BRIEF_SABLON „Jelentés”), D5 (E36). A D6 (független ellenőr, draft PR) az orkesztrátoré.
