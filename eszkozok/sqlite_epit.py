@@ -96,7 +96,7 @@ RESERVALT_OSZLOP = {'licenc_allapot', 'kereskedelmi', 'licenc_dataset'}
 # Tabla -> a licencek.tsv `dataset` kulcsai. Szarmaztatott tablanal tobb kulcs: a
 # legszigorubb ertek ervenyes (DT-F79a (2c)).
 SZARMAZTATOTT_LICENC = {
-    # F89 (DT-F89a): a Karoli-Strong tablak sajat licencsora van (minden jog fenntartva; a
+    # F89 (DT-F89a): a Karoli-Strong tablak sajat licencsora van (F181: DT623 szerint CC BY 4.0; a
     # forrasaik, Karoli 1908 es TAHOT/TAGNT, a sor megjegyzeseben es a komponens-sorokban)
     'token_par': ['Karoli_Strong_parok'],
     'token_karoli': ['Karoli_Strong_szavak'],
