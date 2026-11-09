@@ -266,3 +266,12 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
   - N-F184d: a szintjelölés (SEMA 3.10 ↔ 9-es sablon) mérése.
   - Egyik sem blokkolja a #184 lezárását.
 - **Proveniencia:** `scope=F184 D1–D5 | forras=git log 19290a7a..HEAD, a fenti parancsok kimenete | ts=2026-11-09`.
+- **Javítókör 1/2 (ELLENOR_F184, 5 tétel):** F184.13 (tartalomvesztés: 42 hely, 2 hiányos, 5 elem visszaállítva), F184.14 (DT614 → SEMA 2.55; a régi 2.50-mutatók listája), F184.15 (a 6_ L8-bővítése a jelentésben), F184.16 (`Co-Authored-By` → `CLAUDE.md` „Git”), F184.17 (E34 súlyossága a kód szerint, `SZINT_EMELES`, DT-F184c). Részletek: „Javítókör 1/2”.
+- **Egyeztetett eltérés:** az `ir` mező bővítését (`sablonok/1_*`, `2_*`, `4_*`, `5_*`, `sablonok/PaRDeS_gyorsreferencia.md`, `.claude/commands/lap-javit.md`, `kiadas.md`, `befogad.md`, `NYITOTT_FELADATOK.md`) az orkesztrátor (`local_c8cc3610`) utólag jóváhagyta, mert ezek a fájlok a jóváhagyott leltár D2-soraiban állnak. A javítókörben a `DONTESEK.md` meglévő DT614-sorát a „Közös koordinációs fájlok” kivétele szerint szerkesztettem (az orkesztrátor 2. tétele), az `ir` mező ezért nem változott.
+- **Tesztek a javítókör után (2026-11-09, HEAD `1193658f`):**
+  - `python eszkozok/feladatok.py ellenoriz`: 201 brief, 0 hiba, 0 figyelmeztetés;
+  - `python eszkozok/teszt_feladatok.py`: 119 teszt, OK;
+  - `eszkozok/ellenorzes/tesztek` (`TMP=E:\…`): `test_szabalyok` 252 (+1: `test_szint_emeles_a_blokkban`), `test_dontes_nezet` 9, `test_szamkiosztas` 14, `test_tanulmany` 32 — mind OK;
+  - `python eszkozok/ellenoriz.py` (E1): 0 SÉRTÉS (RENDBEN 27, KÉZI 2, JELENTÉS 14);
+  - `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`: „naprakész”;
+  - CI-futtató PR-módban (`futtat.py --valtozott <29 fájl> --diff-alap b4c4dae5 --diff-fej 1193658f --pr-cim "[ELLENŐRZŐ] F184" --commit-uzenet-fajl <a PR üzenetei> --esemeny pull_request`; a base a `git merge-base origin/main HEAD`; futásidő 6 perc 41 mp): exit 0, HIBA nincs. JELENTES-szinten: E9 5, E25 3, E27 43, E30 1 (az F184.2 üzenetében az „elteres” parancsnév), E34 41 (mind nem kiadott motívumon: kiadott motívumon 0 HIBA), E36 1 (a SEMA 2.34, N-F184b); E37 0.
