@@ -27,6 +27,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G  # noqa: E402
+import ellenoriz as E  # noqa: E402
 import sqlite_epit as S  # noqa: E402
 import nave_bontas as NB  # noqa: E402
 
@@ -43,8 +44,11 @@ def masolat(tmp):
             shutil.copy(src, os.path.join(cel, f))
     kon = os.path.join(tmp, 'konkordancia')
     os.makedirs(kon)
-    for f in ('Thayer_teljes.tsv', 'BDB_teljes_unabridged.tsv', 'UBS_DNTG_jelentesek.tsv'):
-        shutil.copy(os.path.join(ROOT, 'konkordancia', f), os.path.join(kon, f))
+    # N-F181-teszt: a fajllista a 13. szabaly sajat forraslistaja (egy szabaly, egy hely)
+    for f in E.szabaly13_konkordancia_forrasok():
+        src = os.path.join(ROOT, 'konkordancia', f)
+        if os.path.exists(src):
+            shutil.copy(src, os.path.join(kon, f))
     return tmp
 
 
