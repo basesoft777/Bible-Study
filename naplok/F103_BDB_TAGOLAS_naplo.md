@@ -62,3 +62,19 @@ Terminológia (a 4. lépés mérése, N-F103a): `naplok/F103_BDB_TAGOLAS_regi_al
 A brief 2. pontja a 2.29 csoport-szintű útvonalát kéri, de a csoport a táblába csak a `bdb_vers_jelentes.py` (új oszlop) vagy az `utvonal`
 `/+n` bővítése útján kerülhet; az utóbbi a `lexikon_general.py` 2.29 ↔ 2.30 útvonal-illesztését töri. Mindkettő `ir`-en kívüli fájl, ezért
 a hatókör 4. pontja szerint itt megállok; a SEMA 2.29 bővítése a döntés után (a választott alak szerint) készül. Opciók és javaslat: DT-F103a.
+
+## 4. A döntés után: a 2.29 csoport-oszlopai (F103.7; DT-F103a (A), DT-F103b (a), orkesztrátori döntés, 2026-11-09)
+
+*proveniencia: scope=adat/bdb_vers_jelentes.tsv (162 053 sor) | forras=bdb_vers_jelentes.py --ts 2026-11-09 + naplok/F103_oszlop_hash.py +
+m2_minta_osszevet.py --mai-tabla (seed-102) | ts=2026-11-09*
+
+| feltétel | eredmény |
+|---|---|
+| (1) csak két új oszlop, a régiek bájtra azonosak | `csoport`, `csoport_jel` a `szurt` után; a régi 15 oszlop SHA-256-ja a main-en (94c4c2ac), F103.4-ben és F103.7-ben azonos: `63373512b29fe3cb5b3a37494c9b411da240df7270c2999c7821b264e2347447` (teszt: `CsoportOszlop.test_regi_oszlopok_bajtra_azonosak`) |
+| (2) `utvonal` változatlan, #102-mérés | `+` nincs az `utvonal`-ban (teszt); seed-102: könyv/vers 199, jelentéspont **183 / 200** (azonos) |
+| (3) `lexikon_general.py` nem változik, E28 | a fájl nem változott; E28: a 10. pont szerint |
+| (4) SEMA 2.29 | a két oszlop leírva |
+| (5) `ir` | a brief `ir`-je: `eszkozok/olvaso_szerver/bdb_vers_jelentes.py` |
+
+Újragenerálás: kilépési kód 0, mtime 19:14:24 → 19:20:31, `--ellenoriz` bájtra azonos (kód 0). Csoportos sor: 29 634 / 162 053 (with 7767,
+especially 3936, absolute 2490, (a) 1846, figurative 1766, (b) 1708, (2) 1080, (1) 973 …).
