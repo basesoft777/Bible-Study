@@ -12,7 +12,7 @@ A „mehet”, „jó”, „igen” csak arra a helyre vonatkozik, amelyről é
 
 ## 0. Modell-ellenőrzés
 
-Írd ki a saját tényleges modellnevedet a futó környezetből (pl. `claude-opus-5-5`), és vesd össze a kérttel: **`opus`**. Ha eltér, nem dolgozol, nem írsz: „A kért modell `opus`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. A próza egy kézben, egy modellel készül (K1): ha a kolofon `Próza modellje` sora más modellcsaládot mutat, jelezd, és kérdezd meg, folytassuk-e.
+Írd ki a saját tényleges modellnevedet a futó környezetből (pl. `claude-opus-5-5`), és vesd össze a kérttel: **`opus`**. Ha eltér, nem dolgozol, nem írsz, és megállsz (a szabály és a jelzés szövege: `CLAUDE.md`, „Modell-ellenőrzés”). A próza egy kézben, egy modellel készül (K1): ha a kolofon `Próza modellje` sora más modellcsaládot mutat, jelezd, és kérdezd meg, folytassuk-e.
 
 ## 1. Beolvasás
 
@@ -84,8 +84,8 @@ Amikor a felhasználó jelzi, hogy nincs több hely:
 2. **Kapuk:** `python eszkozok/olvasoi_kapu.py <ID> [<ID2> …]` (0 BUKÁS, és nem több FIGYELMEZTETÉS, mint előtte) és `python eszkozok/ellenoriz.py` (0 SÉRTÉS). Bukásnál a hibát megnevezed, és a javítás körébe visszamész.
 3. **Lista a felhasználónak:** a javított helyek táblája (hely · típus · gond · régi · új), a külön útra terelt helyek (jelölt-sor, N-tétel), és a kolofon új „Emberi lektorálás” sora.
 4. **Kiadott lapnál** ehhez jön:
-   - a **kiadási sor** (`adat/kiadasok.tsv`, SEMA 2.46): `kiadas` = az előző + 1, `valtozas` egy mondatban, `proza_modell` = a tényleges modellneved; csak ha a felhasználó a kiadást kéri;
-   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48, DT569): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Ha az átnézés után csak gépi forrásadat változott, és csak a szótári részt érinti, a régi átnézés érvényes marad (DT569); próza- vagy szerkezeti változásnál új átnézés kell.
+   - a **kiadási sor** (`adat/kiadasok.tsv`, a mezők: SEMA 2.46); csak ha a felhasználó a kiadást kéri;
+   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Hogy egy későbbi lapváltozás (például gépi szótári vagy Károli-KH forrásadat-javítás) érvényteleníti-e az átnézést: SEMA 2.48 „Érvényesség” (DT665).
 5. A parancs **nem commitol és nem pushol.** A commit a felhasználó kérésére történik, a CLAUDE.md szabályai szerint (tétel-azonosítóval, UTF-8 fájlból).
 
 ## 6. A lapnézet és a blokkjel (F165, DT637)

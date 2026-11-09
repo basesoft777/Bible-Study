@@ -69,7 +69,7 @@ Ha a mélyelemzés csak *megerősíti* a már ismert kapcsolatot, nem hoz új fe
 ---
 
 **Formai szabályok (a PaRDeS-tanulmányokkal megegyezően):**
-- **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
+- **Kiejtés.** A szabály egy helyen áll: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „Közös terminológiai és formai szabályok”, „Kiejtés” pont (gépi mérője: `ellenoriz.py` 22.).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23").
 - Idézetekhez a közkincs Károli-fordítás használandó.
 

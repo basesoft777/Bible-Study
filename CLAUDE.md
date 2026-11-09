@@ -23,6 +23,7 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 | lexikai kutatás | `adat/datasetek.tsv` + `konkordancia/README.md` |
 | új dataset, licenc | `Rendszerfejlesztesi_playbook.md` 2. pont |
 | rendszer-átalakítás | `ATALAKITASI_TERV.md.md` (fázisok: 6. szakasz) |
+| hol áll egy szabály (egy szabály, egy hely; F184) | lapszabály → `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`; forrás-/cikkszabály → `sablonok/9_PaRDeS_motivum_forras_sablon.md`, a próza promptja `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`; adatszabály → `adat/SEMA.md` (a gépi kapuk listája: 3.11, generált); munkamenet-lépés → `MUNKAMENET.md` (a lépés és a hivatkozás, a szabály szövege nem); munkamenet-szintű szabály → ez a fájl; döntés → `DONTESEK.md` (a döntés, nem a szabály teljes szövege). Máshol csak hivatkozás áll. |
 
 ## Rétegek — a réteghatár egyetlen kérdés: ki írja?
 
@@ -191,6 +192,7 @@ Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és e
 álljon meg (minta: `eszkozok/igazolas_migracio.py`).
 
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
+a végén a végrehajtó modelljének `Co-Authored-By` sora (a tényleges modell, l. „Modell-ellenőrzés”);
 push csak kérésre.
 
 Ha egy commit fájlt áthelyez, átnevez vagy töröl, ugyanabban a commitban frissíti a rá mutató hivatkozásokat a `FELADATOK.md`-ben, a `NYITOTT_FELADATOK.md`-ben és a briefek `olvas` mezőjében. *(CI: E27, hivatkozás-ellenőrzés.)*

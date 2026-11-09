@@ -6,9 +6,8 @@
 
 Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, `motivumlog/`
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
-markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányba mozog (3/9,
-DT28): a kézi forrásból ide kinyerés van (`jeloltek.tsv`), innen a kimenetbe generálás;
-forrásba visszaírás nincs.
+markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányba mozog: l. a 3. szakasz
+9. szabályát (DT28).
 
 A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valamint a belőle származtatott `karoli_variancia.tsv`, 2.24) és a hozzájuk tartozó kulcs:
 
@@ -1898,8 +1897,11 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 | `idezet` | a felhasználó jóváhagyó szavai **szó szerint** (chat); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` (hol hangzott el) |
 
-**Érvényesség (DT554).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
-a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
+**Érvényesség (DT554, DT665).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
+a 9. kapu piros, és új átnézés kell. Kivétel (DT665, a DT569 általánosítása): a **gépi** szótári és Károli-KH
+forrásadat-javítás nem érvényteleníti az átnézést, ha (a) a próza, a minősítés és a határ nem változik, (b) a lapdiff
+csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés
+felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése a 9. kapuban még nincs meg (N-F184a). Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
 Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 8 sor — ALVIL-001 4, ANTROP-001 3, ISTENTISZT-001 1.
@@ -1933,24 +1935,11 @@ lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rend
 forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.
 
 **Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
-átnézi (`lap_atnezesek.tsv`, 2.48, DT569); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
+átnézi (`lap_atnezesek.tsv`; az érvényesség: 2.48); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
 
 Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` és `gond` a zárt készletből; `id` létező motívum;
 `datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
 `datum`. Állapot (2026-11-04): 0 sor.
-
-### 2.50 A `kapcsolodas` Károli-idézete — a CI E34 szabálya (`eszkozok/ellenorzes/szabalyok.py`) (F166, DT614, 2026-11-04)
-
-Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **tartalmi kötése**. A mező az 1/a-próza szó szerinti szövegének forrása (`eszkozok/lexikon_general.py`, 1/a-blokk), ezért a Károli-idézetet az adatban kell megfogni, nem csak a kész lapon (olvasói kapu, IDEZET).
-
-- **Szabály.** A `kapcsolodas` minden idézőjeles (`„…”` vagy `"…"`), legalább három szavas részlete egyezzen a sor `igehely` mezőjének Károli-szövegével (`konkordancia/Karoli_1908.tsv`; tartomány esetén minden verse egybefűzve), **vagy** a mező tartalmazza a „saját fordítás” jelölést.
-- **Normalizálás és egyeztetés** (az olvasói kapuval azonos, `olvasoi_kapu.karoli_egyezik`): kisbetű, ékezet- és írásjel-független; szavanként 0,75-ös hasonlósági tűrés (a Károli régies helyesírása); a `...`, `…` és `[…]` szerint darabolt részletek mindegyike sorrendben követi a vers szavait, a szószámmal arányos kihagyással. Más igealak vagy más szó (kihirdetem ↔ kiáltom) eltérés.
-- **Nem versidézet:** a zárójel utáni glossza (`(„…”)`) és a három szónál rövidebb részlet.
-- **Jelölés alakja (DT614):** a „saját fordítás” szöveg (kis-nagybetű nélkül; elfogadott még „szó szerint:” és „ford.:”) a `kapcsolodas` mezőben, ugyanabban a mezőben, mint az idézet. Új jelölő nincs; az olvasói kapu ugyanezt ismeri.
-- **Szint.** HIBA azon a motívumon, amelynek az `adat/kiadasok.tsv`-ben (2.46) sora van; a többin FIGYELMEZTETÉS (JELENTES a futtatóban). A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
-- **Hatókör.** Fájlszintű, adattáblán futó szabály (mint az E31): a `fajlok` paramétertől független. A szabály nem javít; a találat javítása a lap saját menete (nem a `csv` modullal: `split('\t')`).
-
----
 
 ### 2.50 `nyilt_kodkonyv.tsv` és a `nyilt_mag/` csomag — a nyílt mag kódkönyve és generált exportja (F162, FELADATOK #162, DT610, DT611, 2026-11-04)
 
@@ -2120,17 +2109,11 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 **Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
 
 **A lánc honnan jön (DT648, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
-vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
-`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó) — a lánc
-kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers
-a motívum Pesat-gerincének azon verse, amelyben a kulcsszó a héber szövegben (TAHOT) áll — **a motívum saját
-verse** (a beépített sorok versei, a tartomány versenként), nem a szó teljes előfordulása, a gerincen belül sem
-(ELLENOR_F178_2 1.). A gerinc: ha a negatív kritérium (2.1) megnevezi a láncot („az 1Móz 3–9 láncára”), az; különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében; Pesat-sor nélkül nincs lánc (rögzített szakasz nincs; `lexikon_general.lanc_mag`). A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap
-2. szakaszában), nem láncversek; a kinyerés így kis, rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
-kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
-láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a
-Targum `N`-jébe nem számít. A háttér-táblában csak a lánc-szavak és tövük állnak; lánc-szó `bdb` sor nélkül: „a
-rokon nyelvi adat kinyerése még nem történt meg”.
+vezeti le (`lexikon_general.lanc_szavak`, `lanc_mag`), nem e tábla soraiból; a szabály egy helyen áll:
+`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai” 0. pont (a hiánymondatok: 8. pont).
+A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap 2. szakaszában), nem láncversek; a kinyerés így kis,
+rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
+kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel.
 
 **Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
 `beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével
@@ -2178,6 +2161,19 @@ hivatkozott verse nem létezik — **döntés nélkül** (CLAUDE.md 2. szabály)
 
 **Fogyasztók.** A `karoli_kh_szuro.py` ebből szűr: a `megerositett` szint jut a lapra / a KH-indexbe, a `kiesik` és a
 `jelolt` nem (a jelöltlistán marad). A `Karoli_kereszthivatkozasok_gyanus.tsv` archívum (a karantén megszűnt, DT650).
+
+---
+
+### 2.55 A `kapcsolodas` Károli-idézete — a CI E34 szabálya (`eszkozok/ellenorzes/szabalyok.py`) (F166, DT614, 2026-11-04; 2.50-ről átszámozva: F184, N-F166a)
+
+Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **tartalmi kötése**. A mező az 1/a-próza szó szerinti szövegének forrása (`eszkozok/lexikon_general.py`, 1/a-blokk), ezért a Károli-idézetet az adatban kell megfogni, nem csak a kész lapon (olvasói kapu, IDEZET).
+
+- **Szabály.** A `kapcsolodas` minden idézőjeles (`„…”` vagy `"…"`), legalább három szavas részlete egyezzen a sor `igehely` mezőjének Károli-szövegével (`konkordancia/Karoli_1908.tsv`; tartomány esetén minden verse egybefűzve), **vagy** a mező tartalmazza a „saját fordítás” jelölést.
+- **Normalizálás és egyeztetés** (az olvasói kapuval azonos, `olvasoi_kapu.karoli_egyezik`): kisbetű, ékezet- és írásjel-független; szavanként 0,75-ös hasonlósági tűrés (a Károli régies helyesírása); a `...`, `…` és `[…]` szerint darabolt részletek mindegyike sorrendben követi a vers szavait, a szószámmal arányos kihagyással. Más igealak vagy más szó (kihirdetem ↔ kiáltom) eltérés.
+- **Nem versidézet:** a zárójel utáni glossza (`(„…”)`) és a három szónál rövidebb részlet.
+- **Jelölés alakja (DT614):** a „saját fordítás” szöveg (kis-nagybetű nélkül; elfogadott még „szó szerint:” és „ford.:”) a `kapcsolodas` mezőben, ugyanabban a mezőben, mint az idézet. Új jelölő nincs; az olvasói kapu ugyanezt ismeri.
+- **Szint** (a kód szerint: `e34_karoli_idezet`; DT666). Találatonként dől el: HIBA, ha a sor `id`-je szerepel az `adat/kiadasok.tsv`-ben (2.46: a kiadott motívum); különben FIGYELMEZTETÉS (az alapszint, `SZINT['E34']`; a 3.11 Szint-oszlopa mindkettőt mondja). Fájlszintű szabály, ezért PR-módban a diff nem minősíti le: a kiadott motívum régi sorának találata is HIBA, és a futás bukik. A futtató jelentése a nem HIBA találatot a JELENTES-számba veszi; `--teljes` módban minden találat JELENTES. A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
+- **Hatókör.** Fájlszintű, adattáblán futó szabály (mint az E31): a `fajlok` paramétertől független. A szabály nem javít; a találat javítása a lap saját menete (nem a `csv` modullal: `split('\t')`).
 
 ## 3. Integritási szabályok
 
@@ -2364,6 +2360,140 @@ azzal a megjegyzéssel, hogy új oszlopot kérhet. A DT84 döntése:
    a sor hiányát jelenti. A hiányzó sort nem a forrásból kinyert szöveg tölti, hanem a
    meglévő adatút a saját döntésével. A 3/9 „csak a `jeloltek.tsv`-n át” szabálya a
    forrásból kinyert sorra szól; ilyen sor itt nem keletkezik.
+
+### 3.11 Gépi kapuk — szabálylista (F184 D3)
+
+A gépi kapuk (olvasói kapu, `ellenoriz.py`, CI) azonosítói és rövid leírása, a kódból generálva. A szabály szövege a
+kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosítót, a súlyosságot és egy rövid leírást ad.
+
+<!-- GENERÁLT-KEZDET: szabalyok.py --kapulista -->
+*Generált blokk, kézzel ne szerkeszd: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`; őre a CI E37. Forrás: az `eszkozok/olvasoi_kapu.py` `KAPUK` és `VISSZHANG_ALSZABALYOK` táblája, az `eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZINT_EMELES`, `SZABALY_LEIRAS` és `KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista az azonosítókat és egy rövid leírást ad.*
+
+**Olvasói kapu** (`eszkozok/olvasoi_kapu.py`; a Feed 9. kapuja)
+
+| Azonosító | Súlyosság | Mit mér |
+|---|---|---|
+| `BELSO` | BUKÁS | belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor, gerinc, .tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög szó és a kiejtése — a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / „(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603) |
+| `MOTIVUM_ID` | FIGYELMEZTETÉS | más motívum azonosítója link nélkül |
+| `PONT` | BUKÁS | „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS |
+| `ANGOL` | BUKÁS | angol maradék és munkazsargon a szólistából |
+| `ANGOL_SOR` | FIGYELMEZTETÉS | ≥3 angol funkciószó egy sorban |
+| `IDEZOJEL` | BUKÁS | egyenes " a magyar szövegben |
+| `ATIRAS` | BUKÁS | ugyanaz a héber/görög szó két kiejtéssel |
+| `ATIRAS_VALT` | FIGYELMEZTETÉS | a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen |
+| `KONYV` | BUKÁS | könyvrövidítés nem a `Konyv_normalizalo_tabla.tsv` alakjával |
+| `BDB_JEL` | BUKÁS | torzult jel a szövegben (^, ®, °, a BDB átírási betűkészletének ¹ µ £ ¥ ‰ ƒ ‡ ¢ jele, rafe, latin betű héber szóhoz tapadva, ,,) |
+| `ZAROJEL` | BUKÁS | nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS) |
+| `FUNKCIO_URES` | BUKÁS | az 1. tábla „Funkció” oszlopában üres cella |
+| `IDEZET` | BUKÁS | az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés |
+| `KIVONAT_SZAM` | FIGYELMEZTETÉS | a Kivonat darabszáma eltér a tábla összesítőjétől |
+| `KOLOFON` | BUKÁS | hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező |
+| `HIANYJEL` | FIGYELMEZTETÉS | belső hiányjelzés az olvasói cellában („(nincs …)”) |
+| `SZINT_ALATT` | FIGYELMEZTETÉS | üres vagy az arany laphoz mérve szint alatti blokk |
+| `KH_MASOLT` | FIGYELMEZTETÉS | a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a) |
+| `LABJEGYZET` | BUKÁS | definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) |
+| `PROZA_1A` | BUKÁS | az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`) |
+| `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
+| `VISSZHANG` | BUKÁS | a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
+| `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
+
+**A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai”)
+
+| Azonosító | Mit mér |
+|---|---|
+| `V1` | angol maradék a blokkban (BDB-fordulat, angol glossza, „fordításra vár”) |
+| `V2` | nem rokon nyelvi sor a BDB-háttérben (újhéber, targumi arámi, Sirák) |
+| `V3` | „nincs rokon nyelvi adat”, holott a BDB-szócikk nem azonosítható (bdb_szócikk=0): a kettő nem vonható össze |
+| `V4` | „ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”) |
+| `V5` | kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a láncon kívüli alapvonallal (a LXX sávja szerint), két héber lánc-szó egyesítése is csak így; a Targumnál és a Vulgatánál nem (DT645, pontosítva) |
+| `V6` | ugyanaz a tagmondat (a számok és a fordítók neve nélkül) legalább háromszor a táblán |
+| `V7` | az alapvonal-mondat nem a sávja (≥ 80% / 40–80% / < 40%) szerinti, a zárójeles versszám nevezőként áll, vagy a három szám nem egyezik |
+
+**Az `eszkozok/ellenoriz.py` szabályai** (a CI-ben: E1)
+
+| Sorszám | Cím |
+|---|---|
+| 1 | Hivatkozási épség |
+| 2 | Nincs közvetlen út |
+| 2/b | Motívumközi jelölt és kapcsolat (DT277) |
+| 3 | Proveniencia-kényszer |
+| 4 | Horgony-kényszer |
+| 5 | Károli-triplet |
+| 6 | Gate-kényszer (4.6) |
+| 7 | Ütközés-/részhalmaz-jelentés (gate.py) |
+| 8 | Dataset-lefedettség (gépi) |
+| 8/b | Feltételes datasetek |
+| 8/c | Kézi dataset-lefedettség |
+| 9 | 'teljes'/'részlet' jelentes_szam korlatok (SEMA 2.2.2) |
+| 10 | LEXV2_2 tablak (forditas_ubs -- RETIRED S1.1, lxx_dontesek) |
+| 11 | Rés-forrás egyezés (tanulmány/adat ≡ tábla + tanulmány) |
+| 12 | `lap` forrású rés-sorok száma |
+| 13 | Fordítási gyorsítótár (kulcs egyediség, forras_hash) |
+| 14 | Kiejtés és terminológia (JELENTÉS) |
+| 15 | kapcsolatok.tsv fejléc (SEMA 2.3) |
+| 16 | elofordulasok.tsv fejléc (SEMA 2.2) |
+| 17 | szotar_szakasz_cimke.tsv (SEMA 2.40) |
+| 18 | Gerinc-Strong szakaszcímkéje (F148, SEMA 2.40) |
+| 19 | Kötelező szótári mezők (F148, SEMA 2.2.2) |
+| 20 | `jelentes_hu`: a szóról szól (F148, N62) |
+| 21 | Generált lap tisztasága (F148) |
+| 22 | Kiejtés nélküli héber/görög szó (F125) |
+| 23 | Próza-lefedettség (F125) |
+| 24 | Lábjegyzet-definíció a generált lapon |
+| 25 | Az 1/a igehelyenkénti prózája (arany lap) |
+| 26 | A BDB-szakaszfordítás táblája naprakész (bdb_szakasz_hu.tsv) |
+| 27 | A BDB-gerinc szócikkenként (F123.BDBGER) |
+| 28 | Nincs „egyéb” az 1/b. blokkban (F123.EGYEB) |
+| 29 | A jelölt indoklása belső jel nélkül (F123.INDOKLAS) |
+| 30 | lap_javitasok.tsv (SEMA 2.49) |
+| 31 | Adat nélküli szerkezeti blokk az olvasói lapon |
+| 32 | Olvasói kapu a kiadott lapokon (SEMA 2.46) |
+| 33 | Az összesítő jelöltsor versszáma géppel olvasható (F123.TUD1B) |
+| 35 | Közlemény-hivatkozások a lapon (F168) |
+| 36 | Egy vers nem előfordulás és csoportos kizárás egyszerre (F123.HAMART3) |
+| 37 | Beépített sor nem esik a lap saját csoportos kizárási okába (F123.HAMART3) |
+| 38 | Strukturális vagy fogalmi motívumnál a beépítés nem „csak e szó miatt” (F123.HAMART3) |
+| 39 | Határ-frissesség: a modelles rész a mai beépített sorokon készült (F178.1) |
+| 40 | A HAMART-001 regressziós kapui minden lapon (F178.3) |
+| 41 | „Felhasználó” / „orkesztrátor” a közleményben (F178.6) |
+
+**CI-szabályok** (`.github/workflows/ellenorzes.yml`)
+
+| Azonosító | Szint | Mit mér | Forrás |
+|---|---|---|---|
+| E1 | HIBA | az `eszkozok/ellenoriz.py` futása (a SEMA 3. szakaszának szabályai és a lapkapuk; a CI-ben mindig fut) | `eszkozok/ellenoriz.py` |
+| E2 | HIBA | „ellenőrizve” jelölés csak proveniencia-sorral egy szakaszban | `eszkozok/ellenorzes/szabalyok.py` |
+| E3 | HIBA | a proveniencia-mező nem üres; lekérdezés nélkül `manual`, nem „ellenőrizve” | `eszkozok/ellenorzes/szabalyok.py` |
+| E4 | HIBA | friss teljes keresés (`auditok.tsv`): naplófájl és minden jelölt döntése | `eszkozok/ellenorzes/szabalyok.py` |
+| E5 | HIBA | tartalomvesztés-őr (git diff): törölt címsor vagy 30-nál több törölt sor csak `TORLES-SZANDEKOS:` jelöléssel | `eszkozok/ellenorzes/szabalyok.py` |
+| E6 | HIBA | tematikus study: „0. Forrás-összegyűjtés” szakasz és az élő sablon oszlopszáma | `eszkozok/ellenorzes/szabalyok.py` |
+| E7 | HIBA | a `bekerült` döntés igehelye a study táblázatában áll, nem csak a prózában | `eszkozok/ellenorzes/szabalyok.py` |
+| E8 | HIBA | igehely-formátum | `eszkozok/ellenorzes/szabalyok.py` |
+| E9 | HIBA | angol „sense” szó a study- és lexikonszövegben | `eszkozok/ellenorzes/szabalyok.py` |
+| E10 | HIBA | a „spirit” / „spiritual” tiltott magyarítása (helyesen: szellem, szellemi) | `eszkozok/ellenorzes/szabalyok.py` |
+| E11 | HIBA | Cremer/NIDNTTE/NIDOTTE tiltás (TWOT-szám kivétel) | `eszkozok/ellenorzes/szabalyok.py` |
+| E12 | FIGYELMEZTETES | proveniencia a prózában | `eszkozok/ellenorzes/szabalyok.py` |
+| E13 | FIGYELMEZTETES; HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, `motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`) | héber/görög szó kiejtés nélkül | `eszkozok/ellenorzes/szabalyok.py` |
+| E14 | FIGYELMEZTETES | a tematikus sablon 1. pontjának „Jelentés-szöveg” oszlopa angol | `eszkozok/ellenorzes/szabalyok.py` |
+| E15 | FIGYELMEZTETES | SzPA-idézet 25 szónál hosszabb | `eszkozok/ellenorzes/szabalyok.py` |
+| E16 | HIBA | a PR az ellenőrzést magát módosítja (ellenőrző-önmódosítás) | `eszkozok/ellenorzes/szabalyok.py` |
+| E18 | HIBA | a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja | `eszkozok/feladatok.py ellenoriz` |
+| E19 | HIBA | szótári hivatkozás fordítás nélkül | `eszkozok/ellenorzes/szabalyok.py` |
+| E20 | HIBA | tanulmány: minden kötelező szakasz megvan | `eszkozok/ellenorzes/szabalyok.py` |
+| E25 | FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum: E25 (c)) | döntés átvezetése (`adat/dontes_hatas.tsv`) | `eszkozok/ellenorzes/szabalyok.py` |
+| E26 | HIBA | végleges DT/N szám az ágon | `eszkozok/ellenorzes/szabalyok.py` |
+| E27 | HIBA | a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e | `eszkozok/ellenorzes/szabalyok.py` |
+| E28 | HIBA | a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal | `eszkozok/ellenorzes/szabalyok.py` |
+| E29 | HIBA | a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO` | `eszkozok/ellenorzes/szabalyok.py` |
+| E30 | FIGYELMEZTETES | ékezet nélkül írt magyar szó a PR commit-üzeneteiben | `eszkozok/ellenorzes/szabalyok.py` |
+| E31 | HIBA | a `forras_tanulmany` létező, repóbeli fájlra mutat | `eszkozok/ellenorzes/szabalyok.py` |
+| E32 | HIBA | kiosztott helyőrző egy kimeneti string-literálban | `eszkozok/ellenorzes/szabalyok.py` |
+| E33 | FIGYELMEZTETES | az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe | `eszkozok/ellenorzes/szabalyok.py` |
+| E34 | FIGYELMEZTETES; HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van) | a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű | `eszkozok/ellenorzes/szabalyok.py` |
+| E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
+| E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
+| E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
+<!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---
 
