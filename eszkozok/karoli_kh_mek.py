@@ -481,8 +481,15 @@ def osszevet_main(a):
     prov = proveniencia_javitott(ts)
     fej = '# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet — kézzel szerkeszteni tilos; a szintek: megerositett / ' \
           'kiesik / jelolt (a jelolt sorokról nincs döntés, CLAUDE.md 2. szabály)'
-    tsv_ir(a.ki, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'],
-           [[v, c, sz, fo, ind, prov] for v, c, sz, fo, ind in sorok], fej)
+    sorok6 = [[v, c, sz, fo, ind, prov] for v, c, sz, fo, ind in sorok]
+    if not a.nyers:
+        # F181 (DT-F181a): az osszevet kimenete a beemelési szabállyal együtt áll elő, hogy az újragenerálás ne
+        # veszítse el a J4 állapotát; a #177 háromszintű nyers állapota a --nyers kapcsolóval.
+        bontas, _, _ = _bontas_sorokra(sorok6)
+        sorok6 = beemel(sorok6, bontas, ts)
+        sorok = [tuple(m[:5]) for m in sorok6]
+        fej = FEJ_BEEMELT
+    tsv_ir(a.ki, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'], sorok6, fej)
     stat = osszegzes(sorok, hk, mek)
     print(stat)
     if a.jelentes:
@@ -504,6 +511,8 @@ def osszegzes(sorok, hk, mek):
 
 GYANUS_TSV = KONK + '/Karoli_kereszthivatkozasok_gyanus.tsv'
 SZABALY_JEL = 'szabaly=F181'
+FEJ_BEEMELT = ('# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet + beemel (DT-F181a) — kézzel szerkeszteni tilos; a szintek: '
+               'megerositett / kiesik / jelolt (a jelolt sorokról a döntés nélküli maradék: Karoli_KH_MEK_README.md 7.)')
 ALTIPUSOK = ('tartomány/vershatár', 'könyv-elírás', 'fejezet-elírás', 'versszám-elírás', 'eltér (nem sorolható)',
              'csak MEK', 'egyéb (egyező, de nem létező hivatkozás)')
 _RANG = {'tartomány/vershatár': 0, 'versszám-elírás': 1, 'fejezet-elírás': 2, 'könyv-elírás': 3}
@@ -878,6 +887,10 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
 
 def _bontas_futtat(be, ts):
     jav = [m[:6] for m in tsv_sorok(be) if len(m) >= 6]
+    return (jav,) + _bontas_sorokra(jav)
+
+
+def _bontas_sorokra(jav):
     letezo = karoli_versek()
     import karoli_kh_epseg as E
     _, tsk = E.betolt()
@@ -887,7 +900,7 @@ def _bontas_futtat(be, ts):
     gy_mek = mek_ismetlodo(mek)
     bontas = jelolt_bontas([m[:5] for m in jav], letezo, teljes, lambda f, c: bool(c) and E.tamogatott(f, c, {}, tsk),
                            gy_hk, gy_mek)
-    return jav, bontas, gy_hk, gy_mek
+    return bontas, gy_hk, gy_mek
 
 
 def jelolt_bontas_main(a):
@@ -911,8 +924,7 @@ def beemel_main(a):
     elo = collections.Counter(s[2] for s in jav)
     utan = collections.Counter(s[2] for s in uj)
     valt = collections.Counter((j[2], u[2]) for j, u in zip(jav, uj) if j[2] != u[2])
-    fej = '# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet, majd beemel (DT-F181a) — kézzel szerkeszteni tilos; a szintek: ' \
-          'megerositett / kiesik / jelolt (a jelolt sorokról a döntés nélküli maradék: l. Karoli_KH_MEK_README.md)'
+    fej = FEJ_BEEMELT
     tsv_ir(a.ki or a.be, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'], uj, fej)
     szoveg = ['sorok: %d -> %d' % (len(jav), len(uj))]
     for k in SZINTEK:
@@ -937,6 +949,7 @@ def main():
     o.add_argument('--ki', default=os.path.join(GYOKER, JAVITOTT))
     o.add_argument('--jelentes')
     o.add_argument('--ts')
+    o.add_argument('--nyers', action='store_true', help='a #177 háromszintű nyers állapota, a beemelési szabály nélkül')
     j = sp.add_parser('jelolt-bontas', help='a jelolt szint mérése és bontása (F181, J1); nem módosítja a táblát')
     j.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
     j.add_argument('--jelentes')

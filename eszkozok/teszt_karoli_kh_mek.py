@@ -160,6 +160,82 @@ class Osszevetes(unittest.TestCase):
         self.assertEqual(r[('Gen.3.1', '')][2], 'jelolt')
 
 
+class JeloltSzabaly(unittest.TestCase):
+    """F181 (DT-F181a): a jelolt szint bontása és a beemelési szabály mesterséges adaton."""
+    LETEZO = {'Gen.1.1', 'Gen.2.4', 'Gen.2.5', 'Gen.3.1', 'Gen.4.1', 'Gen.5.1', 'Gen.6.1', 'Psa.33.6', 'Psa.89.12',
+              'Mat.5.32', 'Exo.6.20', 'Num.26.59'}
+
+    def bontas(self, sorok, gy_hk=(), gy_mek=()):
+        return {(r['forras_vers'], r['cel'], r['oldal']): r for r in K.jelolt_bontas(
+            sorok, self.LETEZO, lambda f, c: False, lambda f, c: False, set(gy_hk), set(gy_mek))}
+
+    def test_kapcsolat_tipusok(self):
+        self.assertEqual(K.kapcsolat('Gen.2.4', 'Gen.2.4-Gen.2.5'), 'tartomány/vershatár')
+        self.assertEqual(K.kapcsolat('Gen.2.6', 'Gen.2.4-Gen.2.5'), 'tartomány/vershatár')
+        self.assertEqual(K.kapcsolat('Gal.2.13', 'Gal.3.13'), 'fejezet-elírás')
+        self.assertEqual(K.kapcsolat('Exo.26.59', 'Num.26.59'), 'könyv-elírás')
+        self.assertEqual(K.kapcsolat('Gen.2.9', 'Gen.2.4'), 'versszám-elírás')
+        self.assertIsNone(K.kapcsolat('Psa.89.12', 'Gen.2.4'))
+
+    def test_cel_letezik_tartomany(self):
+        self.assertTrue(K.cel_letezik('Gen.2.4-Gen.2.5', self.LETEZO))
+        self.assertFalse(K.cel_letezik('Gen.2.4-Gen.2.9', self.LETEZO))
+
+    def test_mek_ismetlodo(self):
+        mek = {'A.1.1': [('Gen.1.1', 'a'), ('Gen.2.4', 'b')], 'A.1.2': [('Gen.2.4', 'c'), ('Gen.1.1', 'd')],
+               'A.1.3': [('Gen.1.1', 'e')], 'A.1.4': [('Gen.1.1', 'f')]}
+        self.assertEqual(K.mek_ismetlodo(mek), {'A.1.1', 'A.1.2'})  # az egyelemű egyezés nem ismétlődés
+
+    def test_beemel_nem_letezo_gyanus(self):
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem'),
+               ('Gen.4.1', 'Psa.89.12', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem'),
+               ('Gen.5.1', 'Gen.99.9', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Gen.99.9'),
+               ('Gen.6.1', 'Gen.2.4', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        b = self.bontas(jav, gy_hk={'Gen.4.1'}, gy_mek={'Gen.6.1'})
+        self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'MEK')]['dontes'], K.D_BEEMEL)
+        self.assertEqual(b[('Gen.4.1', 'Psa.89.12', 'MEK')]['dontes'], K.D_GYANUS)
+        self.assertEqual(b[('Gen.5.1', 'Gen.99.9', 'MEK')]['dontes'], K.D_NEMLETEZO)
+        self.assertEqual(b[('Gen.6.1', 'Gen.2.4', 'MEK')]['dontes'], K.D_GYANUS)
+
+    def test_a_tsk_nem_szabaly_feltetel(self):
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem')]
+        igen = K.jelolt_bontas(jav, self.LETEZO, lambda f, c: True, lambda f, c: True, set(), set())
+        nem = K.jelolt_bontas(jav, self.LETEZO, lambda f, c: False, lambda f, c: False, set(), set())
+        self.assertEqual(igen[0]['dontes'], nem[0]['dontes'])
+        self.assertEqual(nem[0]['dontes'], K.D_BEEMEL)
+
+    def test_egyezo_nem_letezo_marad(self):
+        jav = [('Gen.3.1', 'Gen.99.9', 'jelolt', 'HunKar+MEK', 'egyezik;hibas_hivatkozas=Gen.99.9')]
+        self.assertEqual(self.bontas(jav)[('Gen.3.1', 'Gen.99.9', 'egyező')]['dontes'], K.D_NEMLETEZO)
+
+    def test_hunkar_oldali_sor_sorsa(self):
+        # a MEK-sor beemelődik -> a HunKar-sor kiesik; a MEK-sor nem létező -> a HunKar-sor jelölt marad
+        jav = [('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.3.1', 'Psa.89.12', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem'),
+               ('Gen.4.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem'),
+               ('Gen.4.1', 'Gen.99.9', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Gen.99.9')]
+        b = self.bontas(jav)
+        self.assertEqual(b[('Gen.3.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_KIESIK)
+        self.assertEqual(b[('Gen.4.1', 'Psa.33.6', 'HunKar')]['dontes'], K.D_HK_MARAD)
+
+    def test_beemel_alkalmazasa(self):
+        jav = [('Gen.1.1', 'Psa.33.6', 'megerositett', 'HunKar+MEK', 'egyezik', 'p'),
+               ('Gen.3.1', 'Psa.33.6', 'jelolt', 'HunKar', 'eltero_lista;tsk=nem', 'p'),
+               ('Gen.3.1', 'Psa.89.12', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem', 'p'),
+               ('Gen.4.1', 'Gen.99.9', 'jelolt', 'MEK', 'csak_mek;mek_alak=x;tsk=nem;hibas_hivatkozas=Gen.99.9', 'p'),
+               ('Gen.5.1', 'Psa.33.6', 'kiesik', 'HunKar', 'mek_ures_vers;tsk=nem', 'p')]
+        b = K.jelolt_bontas([m[:5] for m in jav], self.LETEZO, lambda f, c: False, lambda f, c: False, set(), set())
+        uj = K.beemel(jav, b, '2026-11-09')
+        self.assertEqual(len(uj), len(jav))
+        self.assertEqual([m[2] for m in uj], ['megerositett', 'kiesik', 'megerositett', 'jelolt', 'kiesik'])
+        self.assertIn('szabaly=F181', uj[2][4])
+        self.assertEqual(uj[0], list(jav[0]))
+        self.assertEqual(uj[3], list(jav[3]))
+        # idempotens
+        b2 = K.jelolt_bontas([m[:5] for m in uj], self.LETEZO, lambda f, c: False, lambda f, c: False, set(), set())
+        self.assertEqual(K.beemel(uj, b2, '2026-11-09'), uj)
+
+
 @unittest.skipUnless(os.path.exists(os.path.join(GYOKER, K.JAVITOTT)) and os.path.exists(os.path.join(GYOKER, K.MEK_TSV)),
                      'a javított tábla nincs a repóban')
 class RepoTablak(unittest.TestCase):
