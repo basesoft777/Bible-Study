@@ -2,9 +2,9 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum HAMART-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=HAMART-001 | ts=2026-11-05T08:50Z | bemenet=adat/elofordulasok.tsv@1d1ccd0a3b,adat/motivumok.tsv@fab2ec03bf,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=HAMART-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül · beépített sor: 60 (86 vers)
+**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: „a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül” · beépített sor: 48 (56 vers)
 
 ## Gépi rész
 
@@ -12,20 +12,20 @@
 
 Módszer: a beépített igehelyek (`elofordulasok.tsv`) versekre bontva (tartomány = minden vers), HAMART-001 összes beépített versét minden más motívuméval összevetve, mindkét irányban. Kérdés: A ⊆ B, vagy |A ∩ B| / |A| ≥ 80% (A = az ellenőrzött oldal, B = a másik oldal; a fordított irányt külön vizsgálja).
 
-**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (86 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
+**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (56 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
 
 Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is látszanak):
 
 | másik motívum | HAMART-001 versei | másik versei | közös | közös/HAMART-001 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
-| ALVIL-001 | 86 | 75 | 0 | 0% | 0% | nincs |
-| ANTROP-001 | 86 | 11 | 0 | 0% | 0% | nincs |
-| HODIT-001 | 86 | 33 | 0 | 0% | 0% | nincs |
-| ISTENTISZT-001 | 86 | 22 | 0 | 0% | 0% | 5 |
-| KIRALY-001 | 86 | 38 | 0 | 0% | 0% | nincs |
-| MENNY-001 | 86 | 11 | 0 | 0% | 0% | nincs |
-| TEREMT-001 | 86 | 45 | 0 | 0% | 0% | nincs |
-| TEREMT-002 | 86 | 3 | 0 | 0% | 0% | nincs |
+| ALVIL-001 | 56 | 75 | 0 | 0% | 0% | nincs |
+| ANTROP-001 | 56 | 11 | 0 | 0% | 0% | nincs |
+| HODIT-001 | 56 | 33 | 0 | 0% | 0% | nincs |
+| ISTENTISZT-001 | 56 | 22 | 0 | 0% | 0% | 5 |
+| KIRALY-001 | 56 | 38 | 0 | 0% | 0% | nincs |
+| MENNY-001 | 56 | 11 | 0 | 0% | 0% | nincs |
+| TEREMT-001 | 56 | 45 | 0 | 0% | 0% | nincs |
+| TEREMT-002 | 56 | 3 | 0 | 0% | 0% | nincs |
 
 ### 2. Negatív kritérium a beépített sorokon
 
@@ -35,61 +35,44 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 
 <!-- MODELLES-KEZDET -->
 
-*Második vélemény a mai adaton (60 beépített sor, 86 vers; a 2026-11-02/03-i, 52 soros állapotra írt K1 és a felhasználói besorolása ezzel felülírva; az akkori döntés nyoma a fájl git-történetében: f4061848). Bemenet: csak a motívum azonosítója; a készítő session összefoglalóját nem vettem figyelembe. A gépi rész két eredményét (részhalmaz: 0 kérdés; negatív kritérium: strukturális hordozón nem fut) nem ismétlem. Minden pont kérdés a felhasználóhoz, nem javítás; új igehelyet nem javaslok, nem döntök.*
+<!-- SORÁLLAPOT: n=48 ujj=c477c896b6bd -->
 
-**10 kérdés.** (1. kérdés = következetlen határ; 2. kérdés = hígulás a fölérendelt fogalom felé.)
 
-**K1 — A Jer 51:25 beépítve áll a romlás-ige fizikai jelentésénél, miközben a Jer 51:20 ugyanezt az igét ugyanarra a Babilonra „fizikai pusztítás” indokkal zárja ki.**
-- `adat/elofordulasok.tsv:243` — Jer 51:25, `gerinc_elem`=H7843, `jelentes_szam`=„Hif'íl 1”; `adat/jeloltek.tsv:810`: „a hely nem a katonai pusztítás általános esete (az elutasítva), hanem egy birodalom vádja, amely az egész földet rontotta meg”.
-- `adat/jeloltek.tsv:480` — Jer 51:20, elutasítva: „Fizikai pusztítás (épületek, országok, szőlő), nem erkölcsi megromlás”; `adat/jeloltek.tsv:735` (összesítő sor, 112 vers): „katonai vagy fizikai pusztítás, egy nép vagy ház bűne, az egyetemes romlás szerkezete nélkül. A Jer 51:25 nem tagja a csoportnak: saját sorban, beépítve áll.”
-- Miért kérdés (1.): az 1Móz 6:12 és a Zsolt 14:1/53:2 a sor saját adata szerint „Hif'íl 2” (erkölcsi), a Jer 51:25 „Hif'íl 1” (fizikai), vagyis a beépített sor a BDB-jelentés szerint az elutasított csoport oldalán áll; a különbség csak az „egész föld” tárgy, amelyet a kizárási indok nem nevez határnak.
+*Második vélemény a mai adaton (48 beépített sor, 56 vers). Bemenet: csak a motívum azonosítója; a készítő sessionök összefoglalóit és a korábbi Modelles rész döntéseit nem vettem figyelembe, a határt az adatból olvastam ki. A 2026-11-08-i, 60 soros állapotra írt K1–K10 ezzel felülírva; nyoma a fájl git-történetében (3ba995c0, 6f42447a). A gépi rész két eredményét (részhalmaz: 0 kérdés; negatív kritérium: strukturális hordozón nem fut) nem ismétlem. Minden pont kérdés a felhasználóhoz, nem javítás; új igehelyet nem javaslok, nem döntök.*
 
-**K2 — A Mal 3:11 a föld termésének megóvását a tized szövetségi rendjében mondja ki, amit a negatív kritérium és az 1Kir 8:34-35 kizárása a motívumon kívülre tesz.**
-- `adat/elofordulasok.tsv:247` — Mal 3:11, `gerinc_elem`=H7843, `jelentes_szam`=„Hif'íl 1”, `funkcio`: „megfordítás — a föld termését többé nem rontja meg a kártevő”; `adat/jeloltek.tsv:668`: „a 3:9 átka (arar) után az Úr megígéri, hogy a kártevő »nem veszti el földetek gyümölcsét«”.
-- `adat/jeloltek.tsv:657` — 1Kir 8:34-35, elutasítva: „a vétek miatt a nép fogságba kerül a földről, vagy elmarad az eső, és a megtérés után visszakapja. Ez a szövetségi átok rendje, mint a korábban elutasított 5Móz 28:23-24 és 3Móz 26:20 helyeken; a szöveg a Genezisre nem utal vissza.” — és `adat/jeloltek.tsv:471` — Mal 3:9, elutasítva: „Az arar itt rituális, jogi vagy indulati átok-kimondás … prófétai feddés”.
-- Miért kérdés (1. és 2.): a beépítés indoka a Mal 3:9 átkára épül, amelyet ugyanez a tábla kizár; a Mal 3:11 termés-ígérete a „bűn és következményei” fölérendelt fogalom szövetségi alakja (`adat/motivumok.tsv:10`: „az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki”), a Genezisre való visszautalást az indoklás nem nevezi meg.
+**6 kérdés.** (1. kérdés = következetlen határ; 2. kérdés = hígulás a fölérendelt fogalom felé.)
 
-**K3 — A Hab 2:8, a Hab 2:17 és a Jón 3:8 a chámász szón egyedül, kollokáció nélkül áll bent, miközben 39 más chámász-vers pontosan a kollokáció hiánya miatt van kizárva.**
-- `adat/elofordulasok.tsv:238`, `:239`, `:240` — Hab 2:8, Hab 2:17, Jón 3:8, `gerinc_elem`=H2555 (nem málé+chámász, nem sámá+chámász); `adat/jeloltek.tsv:258`: „az erőszak visszatér elkövetőjére: a gyűrűzés mint megtorlási elv, explicit kimondva”; `:260`: „az egyetlen hely, ahol egy nép a chámász-ból megtérve elkerüli a már kimondott pusztulást”.
-- `adat/jeloltek.tsv:417` — Zsolt 11:5, elutasítva: „chámász általános használatban, kollokáció nélkül”; `adat/jeloltek.tsv:734` (összesítő sor, 36 vers): „a חָמָס (chámász, erőszak) szava áll bennük, általános használatban: a »megtelt erőszakkal« és a »hallatszik az erőszak« szókapcsolata nélkül, a láncra való visszautalás nélkül.”
-- Miért kérdés (1. és 2.): a TAHOT szerint a Hab 2:8 és 2:17 versében H2555 és H0776 áll, a „megtelt”/„hallatszik” ige nem (a Jón 3:8-ban csak H2555); a beépítés indoka („megtorlási elv”, „megtérés”) a fölérendelt fogalom (a bűn következményei általában), nem a lánc szópárja.
+**K1 — Az 1Móz 4:2-3 „Kain pedig földmívelő” mondata a föld szaván bent áll, az 1Móz 9:20 „Noé pedig földmívelő kezde lenni” mondata ugyanazzal a szóval „semleges, narratív adamá-használat” indokkal kint.**
+- `adat/elofordulasok.tsv:206` — 1Móz 4:2-3, `gerinc_elem`=H0127, `funkcio`: „láncszem — az átkozott föld a következő nemzedéken; a testvéri viszály színtere”; `adat/jeloltek.tsv:230`: „Kain "földmívelő", és a földből hozza áldozatát: az átkozott föld a testvéri konfliktus színtere”.
+- `adat/jeloltek.tsv:514` — 1Móz 9:20, elutasítva: „semleges, narratív adamá-használat, nem az átok-szerkezetben (napló 4/c, H0127 sor: genezisen belüli határeset)”. TAHOT: 1Móz 4:2 H5647+H0127 (óvéd adámá), 1Móz 9:20 H0376+H0127 (ís há-adámá); a Károli mindkettőt „földmívelő”-nek fordítja.
+- Miért kérdés (1.): mindkét vers elbeszélő foglalkozás-megnevezés az átok szava nélkül, és a 4:2-3 beépítési indoka („az átkozott föld … színtere”) a versen kívüli összekötés, amelyet az indoklás a 9:20-nál nem mérlegel — a két sor közti határ nincs kimondva.
 
-**K4 — A Jer 17:5 egyéni „Átkozott az, a ki…” formulája bent áll, a Jer 11:3 és a Zsolt 119:21 ugyanilyen formulája „prófétai feddés” indokkal kint.**
-- `adat/elofordulasok.tsv:227` — Jer 17:5, `funkcio`: „formula egyénre — az átok a bizalom rossz irányára szól”; `adat/jeloltek.tsv:249`: „a próféta az átok-formulát egyéni bizalmi döntésre alkalmazza”.
-- `adat/jeloltek.tsv:462` — Jer 11:3 („Átkozott mindenki, a ki meg nem hallja e szövetségnek igéit”, `konkordancia/Karoli_1908.tsv`), elutasítva: „Az arar itt rituális, jogi vagy indulati átok-kimondás (… eskü, önátok, prófétai feddés) — nincs meg a következmény-terjedés szerkezete … A arar önmagában nem a motívum, csak annak egyik eszköze; a motívum a arar + adamá együttállásán és a fokozási soron áll”; ugyanez az indok a `:472` Zsolt 119:21 soron.
-- Miért kérdés (1. és 2.): a Jer 17:5-ben sem adamá, sem fokozási sor nincs, az indoklás a láncra való visszautalást nem nevezi meg; a Jer 11:3 ráadásul az 5Móz 27:26 formulája, amelyet a Gal 3:10 beépített sora idéz (`adat/jeloltek.tsv:268`).
+**K2 — Az Ez 12:19 a chámász szón, a „megtelt” ige nélkül bent áll, a Hab 2:8 és a Hab 2:17 ugyanezzel a szóval és ugyanazzal a föld + lakói szerkezettel „a szókapcsolat nélkül” indokkal kint.**
+- `adat/elofordulasok.tsv:229` — Ez 12:19, `gerinc_elem`=H2555 (nem málé+chámász); `adat/jeloltek.tsv:664`: „A héber vers együtt hozza az erőszak (chámász, a Károliban »álnokság«), a föld (adamá) és a teljesség (melóá, a »megtelt« igének tövéből; a Károliban »bőség«) szavát, vagyis az 1Móz 6:11-13 szerkezetét.”
+- `adat/jeloltek.tsv:258` — Hab 2:8, elutasítva: „A chámász szava itt a megtorlás elveként áll, a »megtelt erőszakkal« és a »hallatszik az erőszak« szókapcsolata nélkül, mint a csoportosan kizárt chámász-versekben.” (ugyanez `:259`, Hab 2:17). TAHOT: Ez 12:19 H2555 + H0127 („admat Jiszráél”) + H0776 + H4393 (melóá, főnév) + H3427, a H4390 ige nincs benne; Hab 2:8 és 2:17: H2555 + H0776 + H3427 („chámász erec … vechol jósvé váh”).
+- Miért kérdés (1.): a gépi málé+chámász kollokáció (8 vers) az Ez 12:19-et nem tartalmazza, az adamá itt az „Izráel földje” országnév-szerkezetben áll (a kritérium a „föld mint ország” használatot kizárja), így a bent és a kint között egyedül a melóá főnév tő-érve áll, amelyet a Hab-soroknál az indoklás nem mérlegel.
 
-**K5 — Az 1Móz 12:3 „a ki téged átkoz, megátkozom azt” formulája bent áll, a szó szerinti ismétlései (1Móz 27:29, 4Móz 24:9) kint.**
-- `adat/jeloltek.tsv:246` — 1Móz 12:3, beépítve: „a lánc megfordítása: ugyanaz az ige (arar) és ugyanaz a főnév (adamá), de most az áldás keretében”.
-- `adat/jeloltek.tsv:444` — 1Móz 27:29 („Átkozott, a ki téged átkoz, és a ki téged áld, legyen áldott”), elutasítva: „áldás-átok formula pátriárkai áldásban … nincs meg a következmény-terjedés szerkezete”; ugyanez a `:454` 4Móz 24:9 soron („ki átkoz téged, átkozott lészen”).
-- Miért kérdés (1.): ha a 12:3-at a megfordítás (átok az áldás keretében) teszi láncelemmé, ugyanez a megfordítás a 27:29-ben és a 24:9-ben is áll; ha az adamá, akkor az indoklás „megfordítás” fele nem a határ.
+**K3 — A Gal 3:13-14 beépítési indoka az 5Móz 21:23-ra épül („az átok és a föld együtt áll”), miközben az 5Móz 21:23 átok-szava a qelálá (H7045), amelyet a motívum saját kizárásai „nem a motívum szava”-ként kezelnek, és a vers maga csak blokk-kizárásban szerepel.**
+- `adat/jeloltek.tsv:269` — Gal 3:13-14, beépítve: „Pál az 5Móz 21:23 átok-mondatát idézi, amelyben az átok és a föld együtt áll, a lánc görög átok-szavával (ἐπικατάρατος, epikataratosz); a kapcsolatot a 3:14 áldás-mondata adja, amely az 1Móz 12:3 ígéretét veszi fel.”
+- `adat/jeloltek.tsv:742` — összesítő sor (13 vers): „a Károli »átok«-csoport szava (átok) ezekben a versekben a H7045 szót fordítja; a motívum saját szava a versekben nem áll.”; `adat/jeloltek.tsv:731` — a qalal 71 verse: „nem a negatív kritérium lexémája”; `adat/jeloltek.tsv:268` — Gal 3:10, elutasítva: „Pál az 5Móz 27:26 átok-mondatát idézi; az átok a tóra megszegőjére szól, a szövetség rendjében, a föld szava nélkül”. TAHOT 5Móz 21:23: H7045 (qilelat) + H0127 (admátekhá); `naplok/F123_teljesseg_HAMART-001.tsv:575`, `:1506`: a vers ELTÉRÉS-ként a H0127- és a Károli „átkozott”-hálóban, beépítés nélkül.
+- Miért kérdés (1. és 2.): a Gal 3:10 forrásversében (5Móz 27:26) a lánc igéje (árar) áll, és a hely kint van; a Gal 3:13 forrásversében a kivezetett qalal-tő áll, és a hely bent van — a bent-állás így az áldás-mondaton és a „szövetség átka” fölérendelt fogalmán át áll, amit a sor maga „határeset”-nek jelöl.
 
-**K6 — Az 1Móz 9:25 Noé pátriárkai átka egy leszármazottra bent áll, az 1Móz 49:7 Jákób pátriárkai átka a leszármazottakra „pátriárkai áldásban” indokkal kint.**
-- `adat/jeloltek.tsv:245` — 1Móz 9:25, beépítve: „az átok-lánc az özönvíz után azonnal újraindul, immár egy leszármazottra”.
-- `adat/jeloltek.tsv:445` — 1Móz 49:7 („Átkozott haragjok, mert erőszakos … eloszlatom őket Jákóbban”), elutasítva: „Az arar itt rituális, jogi vagy indulati átok-kimondás (áldás-átok formula pátriárkai áldásban …)”.
-- Miért kérdés (1.): a két hely ugyanaz a beszédhelyzet (apa átka fiára vagy unokájára, adamá nélkül); a határ itt csak a fejezetszám (1Móz 3–9), amelyet az indoklás nem mond ki.
+**K4 — Az Ez 28:16, a Mik 6:12 és a Sof 1:9 a „megtelt erőszakkal” szópáron áll bent, de a megtelt dolog egyikben sem a föld (egy fejedelem belseje, a gazdagok, egy ház), és az indoklásuk a kritérium második feltételét (az erőszakkal megtelt föld kimondása vagy ismétlése) nem nevezi meg.**
+- `adat/jeloltek.tsv:254` — Ez 28:16: „a kollokáció Tírusz fejedelmére”; `:256` — Mik 6:12: „a kollokáció Izráel gazdagjaira”; `:257` — Sof 1:9: „a kollokáció az úr házának megtöltésére”. TAHOT: Ez 28:16 H4390 + H8432 (tókh) + H2555; Mik 6:12 H4390 + H2555 (alany: a gazdagok); Sof 1:9 H4390 + H1004 (bét) + H2555; H0127 vagy H0776 egyikben sincs.
+- `adat/motivumok.tsv:10` — negatív kritérium: „vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg.”
+- Miért kérdés (2.): ha a szópár önmagában elég, a határ a kollokáció és nem a kritérium második mondata; ha nem elég, a három sor csak az erőszak mint bűn tágabb fogalmán át tartozik ide — a kettő közül az indoklás egyiket sem mondja ki.
 
-**K7 — Az 5Móz 27:15-26 és 28:16-19 szövetségi átkai bent állnak, miközben a negatív kritérium a szövetségi rendet kizárja, és az 5Móz 28:20-24 kizárása csak az arar hiányát nevezi meg.**
-- `adat/elofordulasok.tsv:226` — 5Móz 28:16-19, `funkcio`: „törvényi formula — négy átok az áldások tükörképeként; a föld termése is alá esik”; `adat/jeloltek.tsv:248`: „Négy אָרוּר (árúr) a szövetségszegés következményeiként, a 28:3-6 négy בָּרוּךְ (bárúkh) tükörképeként”.
-- `adat/motivumok.tsv:10` — negatív kritérium: „és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki”; `adat/jeloltek.tsv:405` — 5Móz 28:23, elutasítva: „Szövetségi átok-szakaszok, amelyek nem az arar igét használják”.
-- Miért kérdés (2.): a beépített sorok indoklása a láncra való visszautalást (átok a földön, föld romlása) nem nevezi meg, csak a szót és a formula-jelleget; a szomszédos versek határa így az arar lexéma, nem a kritérium második feltétele (visszautalás), ami a fölérendelt fogalom (szövetségi átok általában) felé nyit.
+**K5 — Az 1Móz 6:5 tematikus sorként bent áll, miközben a Jer 17:9, a Jer 4:14 és a Mt 15:19 / Mk 7:21-23 a „jetzer — a szív romlott hajlama” másik motívum tárgyaként kint, holott a jécer szó (H3336) éppen az 1Móz 6:5-ben áll.**
+- `adat/elofordulasok.tsv:212` — 1Móz 6:5, `gerinc_elem`=„tematikus:1Móz 6:5”; `adat/jeloltek.tsv:236`: „רָעָה / רַע … — a diagnózis kiterjesztése: a gonoszság nem tettekben, hanem a szív minden gondolat-alkotásában”.
+- `adat/jeloltek.tsv:347` — Jer 17:9, elutasítva: „a szív romlottsága a "jetzer — a szív romlott hajlama" motívum tárgya, amely a naplóban önálló tételként szerepel. Kereszt-motívum szennyeződés elkerülése (Q4)”; `:273` — Mt 15:19, elutasítva: „Ugyanaz a másik motívum, mint a Jer 17:9-nél: a szív romlott hajlama. A lánc egyetlen szava sem áll a versben, és az 1Móz 6:5, amelyre utal, maga is tematikus sor.” TAHOT 1Móz 6:5: H3336 (jécer) + H4284 + H3820 + H7451; a H7451 a lánc szavai közül kikerült (`adat/jeloltek.tsv:730`).
+- Miért kérdés (1. és 2.): a sor jeloltek-indoklása a kivezetett רַע (ra) szón áll, a mai hordozó csak a név szerinti tematikus jelölés, és a Jer 17:9 kizárási indoka (a szív hajlama önálló motívum, Q4) szó szerint erre a versre is illik.
 
-**K8 — A Mt 15:19 és a Mk 7:21-23 tematikus sorként a szív gonosz gondolataira utal vissza, miközben a Jer 17:9 és a Préd 7:29 ugyanezt a szív-diagnózist más motívumhoz sorolva vagy „antropológiai általánosításként” zárja ki.**
-- `adat/elofordulasok.tsv:257` — Mt 15:19, `gerinc_elem`=„tematikus:1Móz 6:5”; `adat/jeloltek.tsv:273`: „»a szívből származnak a gonosz gondolatok« — a 1Móz 6:5 szív-diagnózisának újszövetségi megismétlése ⇒ tematikus, nem lexikai”.
-- `adat/jeloltek.tsv:347` — Jer 17:9 („Csalárdabb a szív mindennél, és gonosz az”), elutasítva: „a szív romlottsága a »jetzer — a szív romlott hajlama« motívum tárgya … Kereszt-motívum szennyeződés elkerülése (Q4)”; `:349` — Préd 7:29: „Antropológiai általánosítás az emberi szívről; nem a következmény-terjedésről”.
-- Miért kérdés (1. és 2.): a Mt/Mk sor célpontja (1Móz 6:5) maga is tematikus sor (`adat/elofordulasok.tsv:212`; a H7451 a 2026-11-03-i döntés óta nem gerinc-elem), így a két evangéliumi hely a lánc egyetlen szavát és szerkezetét sem hordozza, csak a „bűn általában” fölérendelt fogalmat; a Jer 17:9 kizárási indoka (a szív romlott hajlama önálló motívum) szó szerint rájuk is illik.
+**K6 — Formai: a Gal 3:14 és a Zsid 6:7 a lánc szava nélkül a beépített tartomány része, a Róm 8:20 ugyanilyen helyzetben külön elutasított sor „folytatás” indokkal.**
+- `adat/jeloltek.tsv:813` — Róm 8:20, elutasítva: „A hely a Róm 8:21 sorának folytatása: a teremtett világ »hiábavalóság alá vettetett«; a romlás szava (φθορά) a 8:21-ben áll, és az a motívumban van.”; `motivumok/HAMART-001.md:31`: „a Róm 8:20-22 érveléséből csak a 8:21, amelyben a romlás szava áll. A szomszédos versek saját sorban, elutasítva szerepelnek.”
+- `adat/elofordulasok.tsv:243` — Gal 3:13-14 egy sorban, `adat/jeloltek.tsv:269`: „a kapcsolatot a 3:14 áldás-mondata adja”; `adat/elofordulasok.tsv:244` — Zsid 6:7-8 egy sorban, `adat/jeloltek.tsv:388` (Jer 12:13 kizárása): „ezt kizárólag a Zsid 6:8 hozza”; `motivumok/HAMART-001.md:31`: „Hét sor több verset fog össze, mert a hely egy összefüggő mondatban vagy szakaszban áll”. TAGNT: Gal 3:14, Zsid 6:7 és Róm 8:20 egyikében sincs a lánc görög szava (G1944, G2671, G5351, G5356, G1311, G0173, G5146); a Gal 3:13-ban G1944+G2671, a Zsid 6:8-ban G0173+G2671+G5146, a Róm 8:21-ben G5356 áll.
+- Miért kérdés (1.): a „tartomány csak addig, ahol a lánc szava áll” szabály a Róm 8:20-22-n és az 5Móz 28:16-19-en érvényesül, a Gal 3:13-14-en és a Zsid 6:7-8-on nem, és a fájl „egy mondat” elve a Róm 8:20-21-re nincs megvizsgálva.
 
-**K9 — A 2Pét 3:6-7 az özönvíz ítéletét tematikus sorként bent tartja, a 2Pét 2:5 ugyanezt az özönvíz-ítéletet „Noé alakja” indokkal kint.**
-- `adat/jeloltek.tsv:275` — 2Pét 3:6-7, beépítve: „az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — a 1Móz 6:13 ítélet-logikájának eszkatológiai kiterjesztése ⇒ tematikus, nem lexikai”.
-- `adat/jeloltek.tsv:435` — 2Pét 2:5 („özönvízzel borítván el az istentelenek világát”), elutasítva: „Noé alakja és az özönvíz-narratíva újszövetségi felidézése; a motívum (az átok/romlás terjedése) nem tárgyuk”.
-- Miért kérdés (1.): mindkét hely az özönvizet az istentelenek ítéletének mintájaként idézi, lánc-szó nélkül; az egyiknél ez „ítélet-logika”, a másiknál „Noé alakja”.
+*Nem kérdés (összevetve, a határ következetes): az 1Móz 3:14 (Isten átka a kígyóra, a lánc első kimondása) az 1Móz 9:25 (Noé emberi átka) kizárásával szemben; az 1Móz 12:3 és az 5Móz 28:18 (árar + adámá egy versben) az 1Móz 27:29, 4Móz 24:9, 5Móz 27:15-26, 28:16-17, 28:19 (árar a föld szava nélkül) kizárásával szemben; a Zsolt 14:1 / 53:2 „egyetemes” hifíl sorok a „szövetséges nép” sáchat-kizárásokkal (5Móz 4:25, Bír 2:19, Sof 3:7, Hós 9:9, 5Móz 9:26-27) szemben; a „föld színéről” fordulat (1Móz 7:4, 7:23, Sof 1:2-3 bent; 1Kir 13:34, 14:15-16, 2Kir 17:22-23 kint) az egyetemes felsorolás határán; a négy sámá+chámász sor; a Hós 10:8 szópárja; a romlandó test és a sír-enyészet (1Kor 15, ApCsel 2 és 13, 1Pét 1) kizárása a Róm 8:21-gyel szemben; az Ez 28:17 és a Mik 6:13 „folytatás” kizárása a Róm 8:20/22-vel összhangban.*
 
-**K10 — Formai: a bent lévő sor „folytatása” hol külön elutasított sor, hol a beépített tartomány része.**
-- `adat/jeloltek.tsv:665` — Ez 28:17, elutasítva: „A hely az Ez 28:16 sorának folytatása … új láncelem nélkül”; ugyanez a `:667` Mik 6:13 és a `:515` 2Pét 3:10 soron.
-- `adat/elofordulasok.tsv:250` — Róm 8:20-22 egy sorban; `motivumok/HAMART-001.md:31`: „A Róm 8:20-22 három verse egy érvelés, amelyben a romlás szava a középső versben (8:21) áll.”
-- Miért kérdés (1.): a Róm 8:20 és 8:22 ugyanúgy „folytatás, új láncelem nélkül”, mint az Ez 28:17, de az egyik a beépített vers-számba (86) kerül, a másik elutasított sor; a lapon a határ ettől másnak látszik, mint ami.
-
-*Nem kérdés (összevetve, a határ következetes): a sáchat „szövetséges nép” kizárása (5Móz 4:25, Bír 2:19, Sof 3:7, Hós 9:9, 5Móz 9:26-27) a Zsolt 14:1/53:2 „egyetemes” beépítésével szemben; a „föld színéről” fordulat (1Móz 7:4, 7:23, Sof 1:2-3 bent; 1Kir 13:34, 14:15-16, 2Kir 17:22-23 kint) az egyetemes felsorolás határán; a Hós 10:8 szópárja; a málé+chámász és sámá+chámász sorok; a romlandó test (ApCsel, 1Kor 15) kizárása a Róm 8:20-22-vel szemben.*
-
-(proveniencia: scope=adat/motivumok.tsv:10 (azonossag_tipusa, negativ_kriterium, folerendelt_fogalom), motivumok/HAMART-001.md (1., 2., 7. szakasz), adat/jeloltek.tsv (HAMART-001: 331 sor, 60 beépítve, 271 elutasítva), adat/elutasitasi_okok.tsv (HAMART-001 minták), adat/elofordulasok.tsv (HAMART-001: 60 sor, gerinc_elem, jelentes_szam), naplok/HATAR_HAMART-001.md Gépi rész, konkordancia/Karoli_1908.tsv és konkordancia/TAHOT_kivonat.tsv (a K1–K6 versei, grep) | forras=modell:claude-fable-5-1 (split('\t'), olvasó lekérdezés) | ts=2026-11-08T09:00Z)
+(proveniencia: scope=adat/motivumok.tsv:10 (azonossag_tipusa, negativ_kriterium, folerendelt_fogalom), motivumok/HAMART-001.md (Kivonat, 1., 2., 7. szakasz), adat/jeloltek.tsv (HAMART-001: 335 sor, 48 beépítve, 287 elutasítva), adat/elutasitasi_okok.tsv (HAMART-001 minták), adat/elofordulasok.tsv (HAMART-001: 48 sor, gerinc_elem, jelentes_szam, funkcio), adat/motivum_kapcsolatok.tsv (HAMART-001: 1 sor), naplok/HATAR_HAMART-001.md Gépi rész, naplok/F123_teljesseg_HAMART-001.tsv (5Móz 21:23 sorai), konkordancia/TAHOT_kivonat.tsv (1Móz 4:2, 9:20, 6:5, 8:21, Ez 12:19, 28:16, Hab 1:2, 2:8, 2:17, Jón 3:8, 5Móz 21:23, Mik 6:12, Sof 1:9, Zsolt 74:20, Jer 51:46), konkordancia/TAGNT_kivonat.tsv (Gal 3:13-14, Zsid 6:7-8, Róm 8:20-21), konkordancia/Karoli_1908.tsv (ugyanezek a versek), git log (HATAR_HAMART-001.md, a három adattábla) | forras=modell:claude-fable-5-1 (split(tab), olvasó lekérdezés) | ts=2026-11-09T19:23Z)
 <!-- MODELLES-VEGE -->

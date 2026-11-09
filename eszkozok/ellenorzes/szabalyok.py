@@ -2999,3 +2999,384 @@ def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None):
 
 SZINT['E35'] = 'HIBA'
 FAJLSZINTU_SZABALYOK.add('E35')
+
+
+# ---------------------------------------------------------------------------
+# A CI-szabalyok rovid leirasa (F184 D3): ez az egyetlen leirasuk; ebbol generalodik az `adat/SEMA.md` 3.11
+# „Gépi kapuk — szabálylista” blokkja. Az E37 ellenorzi, hogy a kulcsok egyeznek a `SZINT` kulcsaival, es hogy a
+# workflow lepesneveiben szereplo E-azonositok mind szerepelnek (a `KULSO_SZABALYOK`-kal egyutt).
+# ---------------------------------------------------------------------------
+SZABALY_LEIRAS = {
+    'E2': '„ellenőrizve” jelölés csak proveniencia-sorral egy szakaszban',
+    'E3': 'a proveniencia-mező nem üres; lekérdezés nélkül `manual`, nem „ellenőrizve”',
+    'E4': 'friss teljes keresés (`auditok.tsv`): naplófájl és minden jelölt döntése',
+    'E5': 'tartalomvesztés-őr (git diff): törölt címsor vagy 30-nál több törölt sor csak `TORLES-SZANDEKOS:` jelöléssel',
+    'E6': 'tematikus study: „0. Forrás-összegyűjtés” szakasz és az élő sablon oszlopszáma',
+    'E7': 'a `bekerült` döntés igehelye a study táblázatában áll, nem csak a prózában',
+    'E8': 'igehely-formátum',
+    'E9': 'angol „sense” szó a study- és lexikonszövegben',
+    'E10': 'a „spirit” / „spiritual” tiltott magyarítása (helyesen: szellem, szellemi)',
+    'E11': 'Cremer/NIDNTTE/NIDOTTE tiltás (TWOT-szám kivétel)',
+    'E12': 'proveniencia a prózában',
+    'E13': 'héber/görög szó kiejtés nélkül',
+    'E14': 'a tematikus sablon 1. pontjának „Jelentés-szöveg” oszlopa angol',
+    'E15': 'SzPA-idézet 25 szónál hosszabb',
+    'E16': 'a PR az ellenőrzést magát módosítja (ellenőrző-önmódosítás)',
+    'E19': 'szótári hivatkozás fordítás nélkül',
+    'E20': 'tanulmány: minden kötelező szakasz megvan',
+    'E25': 'döntés átvezetése (`adat/dontes_hatas.tsv`)',
+    'E26': 'végleges DT/N szám az ágon',
+    'E27': 'a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e',
+    'E28': 'a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal',
+    'E29': 'a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`',
+    'E30': 'ékezet nélkül írt magyar szó a PR commit-üzeneteiben',
+    'E31': 'a `forras_tanulmany` létező, repóbeli fájlra mutat',
+    'E32': 'kiosztott helyőrző egy kimeneti string-literálban',
+    'E33': 'az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe',
+    'E34': 'a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű',
+    'E35': 'a commitolt `nyilt_mag/` naprakész',
+    'E36': 'hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, '
+           'a SEMA szakaszszámai egyediek',
+    'E37': 'az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal',
+}
+# Talalatonkent emelt szint (F184 javitokor, ELLENOR_F184 5., DT-F184c): ahol a fuggveny a `SZINT`-beli alapszintnel
+# magasabbat ad egyes talalatokra, a kapulista Szint-oszlopa az alapszint mellett ezt is kimondja. A kulcs a `SZINT`
+# kulcsa (az E37 ellenorzi).
+SZINT_EMELES = {
+    'E13': 'HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, '
+           '`motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`)',
+    'E25': 'HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, '
+           '`erintett_fajl`, hibás regex vagy dátum: E25 (c))',
+    'E34': 'HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van)',
+}
+# A `szabalyok.py`-n kivul futo CI-azonositok (a workflow lepesei).
+KULSO_SZABALYOK = (
+    ('E1', 'HIBA', 'az `eszkozok/ellenoriz.py` futása (a SEMA 3. szakaszának szabályai és a lapkapuk; a CI-ben mindig fut)',
+     '`eszkozok/ellenoriz.py`'),
+    ('E18', 'HIBA', 'a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja',
+     '`eszkozok/feladatok.py ellenoriz`'),
+)
+
+
+# ---------------------------------------------------------------------------
+# E36 -- hivatkozas-kapu (F184 D5): a folyamat-dokumentumok szabaly- es szakaszhivatkozasa letezo celra mutat
+# ---------------------------------------------------------------------------
+# Nem a masolatok egyezeset nezi (azokat a F184 D2 hivatkozasra csereli), hanem hogy a hivatkozott cel letezik-e:
+#   (a) `SEMA[.md] n.nn[.n]` -> van ilyen szamu cimsor az `adat/SEMA.md`-ben;
+#   (b) az `adat/SEMA.md` szakaszszamai egyediek (a #166 esete: ket „2.50”);
+#   (c) `MUNKAMENET[.md] <lepes>` (pl. C-vh, C5, B10) -> van ilyen lepes a MUNKAMENET tablaiban;
+#   (d) `ellenoriz.py N.` -> van ilyen sorszamu szabaly az `eszkozok/ellenoriz.py`-ban;
+#   (e) `olvasói kapu <AZON>` / `olvasoi_kapu.py <AZON>` -> van ilyen azonosito a `KAPUK` tablaban.
+# Sorhoz kotott talalat (D8): a PR altal hozzaadott soron HIBA, mashol JELENTES.
+E36_DOKUMENTUMOK = ('CLAUDE.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'adat/SEMA.md', 'Rendszerfejlesztesi_playbook.md')
+E36_GLOBOK = ('sablonok', '.claude/commands')
+E36_SEMA = 'adat/SEMA.md'
+E36_MUNKAMENET = 'MUNKAMENET.md'
+E36_ELLENORIZ = 'eszkozok/ellenoriz.py'
+E36_SEMA_CIM = re.compile(r'^#{2,5}\s+(\d+(?:\.\d+)+)\s')
+E36_SEMA_REF = re.compile(r'SEMA(?:\.md)?`?\s*(?:§\s*)?(\d+\.\d+(?:\.\d+)?)')
+E36_LEPES = r'(?:[ABC]-[a-z]{1,2}|[ABC]\d{1,2})'
+E36_MM_LEPES = re.compile(r'^\|\s*(?:~~)?(' + E36_LEPES + r')\b')
+E36_MM_REF = re.compile(r'MUNKAMENET(?:\.md)?`?\s*\(?(' + E36_LEPES + r')(?![\w-])')
+E36_ELL_REF = re.compile(r'ellenoriz\.py`?\s*\(?(\d{1,2})\.(?!\d)')
+E36_SEMA_TETEL = re.compile(r'^(\d{1,2})\.\s+\*\*')
+E36_OK_REF = re.compile(r'(?:olvasói kapu|olvasoi_kapu\.py`?)\s+([A-Z][A-Z0-9_]{2,})\b')
+
+
+def _e36_olvas(relut, root=None):
+    ut = os.path.join(root or ROOT, *relut.split('/'))
+    if not os.path.exists(ut):
+        return None
+    with open(ut, encoding='utf-8') as f:
+        return f.read().replace('\r\n', '\n')
+
+
+def _e36_dokumentumok(root=None):
+    root = root or ROOT
+    ki = [d for d in E36_DOKUMENTUMOK if os.path.exists(os.path.join(root, *d.split('/')))]
+    for mappa in E36_GLOBOK:
+        ut = os.path.join(root, *mappa.split('/'))
+        if os.path.isdir(ut):
+            ki += sorted(mappa + '/' + n for n in os.listdir(ut) if n.endswith('.md'))
+    return ki
+
+
+def _e36_sema_cimek(root=None):
+    """{szam: [sorszam, ...]} az `adat/SEMA.md` szamozott cimsoraibol; a 3. szakasz szamozott tetelei
+    (`1. **Hivatkozási épség.**` ...) „3.n” kulccsal, ha nincs ilyen szamu cimsor (`SEMA 3.8` = a 8. tetel)."""
+    cimek = {}
+    tetelek = {}
+    szoveg = _e36_olvas(E36_SEMA, root) or ''
+    harmas = False
+    for i, sor in enumerate(szoveg.split('\n'), start=1):
+        m = E36_SEMA_CIM.match(sor)
+        if m:
+            cimek.setdefault(m.group(1), []).append(i)
+        if sor.startswith('## '):
+            harmas = sor.startswith('## 3.')
+        elif harmas:
+            t = E36_SEMA_TETEL.match(sor)
+            if t:
+                tetelek.setdefault('3.' + t.group(1), i)
+    for k, i in tetelek.items():
+        cimek.setdefault(k, [i])
+    return cimek
+
+
+def _e36_lepesek(root=None):
+    szoveg = _e36_olvas(E36_MUNKAMENET, root) or ''
+    return {m.group(1) for m in (E36_MM_LEPES.match(s) for s in szoveg.split('\n')) if m}
+
+
+def ellenoriz_szabalyok(root=None):
+    """{sorszam (int): cim} az `eszkozok/ellenoriz.py` `Sor('<N>. …')` / `cim = '<N>. …'` literaljaibol."""
+    szoveg = _e36_olvas(E36_ELLENORIZ, root) or ''
+    ki = {}
+    for m in re.finditer(r'''(?:Sor\(|cim\s*=\s*)(['"])((\d{1,2})((?:/[a-c])?)\.\s.*?)\1''', szoveg):
+        kulcs = (int(m.group(3)), m.group(4))
+        ki.setdefault(kulcs, m.group(2))
+    return ki
+
+
+def _olvasoi_kapu_modul():
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import olvasoi_kapu as OK
+    return OK
+
+
+def e36_hivatkozas_cel(fajlok=None, root=None):
+    """E36: a folyamat-dokumentumok `SEMA n.nn`, `MUNKAMENET <lepes>`, `ellenoriz.py N.` es `olvasói kapu <AZON>`
+    hivatkozasa letezo celra mutat, es a SEMA szakaszszamai egyediek. Hatokor: a `fajlok` kozti folyamat-
+    dokumentumok (a PR sajat hibaja); `None` vagy `['__TELJES__']`: mindegyik."""
+    root = root or ROOT
+    talalatok = []
+    if _e36_olvas(E36_SEMA, root) is None:
+        return talalatok  # SEMA nelkul (pl. tesztkornyezet) a hivatkozasi celok nem allapithatok meg
+    dokumentumok = _e36_dokumentumok(root)
+    if fajlok is not None and '__TELJES__' not in fajlok:
+        valtozott = {f.replace('\\', '/') for f in fajlok}
+        dokumentumok = [d for d in dokumentumok if d in valtozott]
+    if not dokumentumok:
+        return talalatok
+    cimek = _e36_sema_cimek(root)
+    for szam, sorok in sorted(cimek.items()):
+        if E36_SEMA not in dokumentumok:
+            break
+        for sor in sorok[1:]:
+            talalatok.append(Talalat('E36', SZINT['E36'], E36_SEMA, sor,
+                                     'a SEMA %s szakaszszáma nem egyedi (első: %d. sor); a hivatkozás kétértelmű' % (szam, sorok[0])))
+    lepesek = _e36_lepesek(root)
+    ell = {k[0] for k in ellenoriz_szabalyok(root)}
+    try:
+        kapuk = {k[0] for k in _olvasoi_kapu_modul().KAPUK}
+    except Exception:  # a kapu modulja nem toltheto: ezt az ellenorzest kihagyjuk
+        kapuk = None
+    for relut in dokumentumok:
+        szoveg = _e36_olvas(relut, root)
+        if szoveg is None:
+            continue
+        for i, sor in enumerate(szoveg.split('\n'), start=1):
+            for m in E36_SEMA_REF.finditer(sor):
+                if m.group(1) not in cimek:
+                    talalatok.append(Talalat('E36', SZINT['E36'], relut, i,
+                                             'nem létező SEMA-szakaszra mutat: „%s”' % m.group(0)))
+            if lepesek:
+                for m in E36_MM_REF.finditer(sor):
+                    if m.group(1) not in lepesek:
+                        talalatok.append(Talalat('E36', SZINT['E36'], relut, i,
+                                                 'nem létező MUNKAMENET-lépésre mutat: „%s”' % m.group(0)))
+            if ell:
+                for m in E36_ELL_REF.finditer(sor):
+                    if int(m.group(1)) not in ell:
+                        talalatok.append(Talalat('E36', SZINT['E36'], relut, i,
+                                                 'nem létező `ellenoriz.py`-szabályra mutat: „%s”' % m.group(0)))
+            if kapuk:
+                for m in E36_OK_REF.finditer(sor):
+                    if m.group(1) not in kapuk:
+                        talalatok.append(Talalat('E36', SZINT['E36'], relut, i,
+                                                 'nem létező olvasóikapu-azonosítóra mutat: „%s”' % m.group(0)))
+    return talalatok
+
+
+SZINT['E36'] = 'HIBA'
+SZABALYOK_FUGGVENYEI['E36'] = e36_hivatkozas_cel
+
+
+# ---------------------------------------------------------------------------
+# E37 -- a kapuk generalt szabalylistaja (F184 D3): `adat/SEMA.md` 3.11, a kodbol
+# ---------------------------------------------------------------------------
+# A blokk forrasai: az `olvasoi_kapu.py` `KAPUK` es `VISSZHANG_ALSZABALYOK` tablaja, az `ellenoriz.py` szabalycimei
+# (`Sor('<N>. …')` / `cim = '<N>. …'`), e modul `SZINT` + `SZINT_EMELES` + `SZABALY_LEIRAS` tablaja es a `KULSO_SZABALYOK`.
+# Ujrageneralas: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`. HIBA, fajlszintu: a blokk elter a
+# generalttol, hianyzik, vagy a forrastablak nem egyeznek a koddal.
+E37_SEMA = 'adat/SEMA.md'
+E37_KEZDET = '<!-- GENERÁLT-KEZDET: szabalyok.py --kapulista -->'
+E37_VEGE = '<!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->'
+E37_WORKFLOW = '.github/workflows/ellenorzes.yml'
+E37_KIVALTO = frozenset((E37_SEMA, E37_WORKFLOW, 'eszkozok/olvasoi_kapu.py', 'eszkozok/ellenoriz.py',
+                         'eszkozok/ellenorzes/szabalyok.py'))
+E37_OK_TALALAT = re.compile(r"talalat\('([A-Z][A-Z0-9_]+)'")
+E37_OK_V = re.compile(r"'(V[1-9]) ")
+
+
+def _e_szam(k):
+    return int(k[1:])
+
+
+def kapulista_ellentmondasok(root=None):
+    """A forrastablak es a kod kozti elteresek listaja (ures, ha egyeznek)."""
+    root = root or ROOT
+    hibak = []
+    OK = _olvasoi_kapu_modul()
+    forras = _e36_olvas('eszkozok/olvasoi_kapu.py', root) or ''
+    kod_kapuk = set(E37_OK_TALALAT.findall(forras))
+    tabla = [k[0] for k in OK.KAPUK]
+    if len(set(tabla)) != len(tabla):
+        hibak.append('olvasoi_kapu.KAPUK: ismétlődő azonosító')
+    for k in sorted(kod_kapuk - set(tabla)):
+        hibak.append('olvasoi_kapu.py: a kód kibocsátja a %s találatot, a KAPUK táblában nincs' % k)
+    for k in sorted(set(tabla) - kod_kapuk):
+        hibak.append('olvasoi_kapu.KAPUK: a %s a táblában áll, a kód nem bocsátja ki' % k)
+    kod_v = set(E37_OK_V.findall(forras))
+    tabla_v = {v[0] for v in OK.VISSZHANG_ALSZABALYOK}
+    for v in sorted(kod_v ^ tabla_v):
+        hibak.append('olvasoi_kapu.VISSZHANG_ALSZABALYOK: a %s %s' % (
+            v, 'csak a kód üzeneteiben áll' if v in kod_v else 'csak a táblában áll'))
+    for k in sorted(set(SZINT) ^ set(SZABALY_LEIRAS), key=_e_szam):
+        hibak.append('szabalyok.py: a %s %s' % (k, 'SZINT-ben van, a SZABALY_LEIRAS-ban nincs' if k in SZINT
+                                                  else 'SZABALY_LEIRAS-ban van, a SZINT-ben nincs'))
+    for k in sorted(set(SZINT_EMELES) - set(SZINT), key=_e_szam):
+        hibak.append('szabalyok.py: a %s SZINT_EMELES-ben van, a SZINT-ben nincs' % k)
+    wf = _e36_olvas(E37_WORKFLOW, root) or ''
+    ismert = set(SZINT) | {k[0] for k in KULSO_SZABALYOK}
+    for sor in wf.split('\n'):
+        if sor.strip().startswith('- name:'):
+            for k in re.findall(r'\bE(\d{1,2})\b', sor):
+                if 'E' + k not in ismert:
+                    hibak.append('%s: a lépésnév %s azonosítója a listában nincs' % (E37_WORKFLOW, 'E' + k))
+    return sorted(set(hibak))
+
+
+def _cella(s):
+    return s.replace('|', '\\|').replace('\n', ' ')
+
+
+def kapulista_blokk(root=None):
+    """A 3.11 blokk teljes szovege a jelolok kozott (a jeloloket is beleertve), LF sorvegekkel."""
+    root = root or ROOT
+    OK = _olvasoi_kapu_modul()
+    ki = [E37_KEZDET,
+          '*Generált blokk, kézzel ne szerkeszd: `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`; '
+          'őre a CI E37. Forrás: az `eszkozok/olvasoi_kapu.py` `KAPUK` és `VISSZHANG_ALSZABALYOK` táblája, az '
+          '`eszkozok/ellenoriz.py` szabálycímei, az `eszkozok/ellenorzes/szabalyok.py` `SZINT`, `SZINT_EMELES`, '
+          '`SZABALY_LEIRAS` és `KULSO_SZABALYOK` táblája. A szabály szövege a kanonikus helyén áll (CLAUDE.md, „Ezt olvasd”); ez a lista '
+          'az azonosítókat és egy rövid leírást ad.*',
+          '',
+          '**Olvasói kapu** (`eszkozok/olvasoi_kapu.py`; a Feed 9. kapuja)',
+          '',
+          '| Azonosító | Súlyosság | Mit mér |',
+          '|---|---|---|']
+    for azon, suly, leiras in OK.KAPUK:
+        ki.append('| `%s` | %s | %s |' % (azon, suly, _cella(leiras)))
+    ki += ['', '**A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, '
+               '„A 4.11 visszhang-blokk szabályai”)', '', '| Azonosító | Mit mér |', '|---|---|']
+    for azon, leiras in OK.VISSZHANG_ALSZABALYOK:
+        ki.append('| `%s` | %s |' % (azon, _cella(leiras)))
+    ki += ['', '**Az `eszkozok/ellenoriz.py` szabályai** (a CI-ben: E1)', '', '| Sorszám | Cím |', '|---|---|']
+    for (n, betu), cim in sorted(ellenoriz_szabalyok(root).items()):
+        ki.append('| %d%s | %s |' % (n, betu, _cella(cim.split('. ', 1)[1] if '. ' in cim else cim)))
+    ki += ['', '**CI-szabályok** (`.github/workflows/ellenorzes.yml`)', '',
+           '| Azonosító | Szint | Mit mér | Forrás |', '|---|---|---|---|']
+    sorok = [(k[0], k[1], k[2], k[3]) for k in KULSO_SZABALYOK]
+    sorok += [(k, SZINT[k] + ('; ' + SZINT_EMELES[k] if k in SZINT_EMELES else ''), SZABALY_LEIRAS.get(k, ''),
+               '`eszkozok/ellenorzes/szabalyok.py`') for k in SZINT]
+    for azon, szint, leiras, forras in sorted(sorok, key=lambda r: _e_szam(r[0])):
+        ki.append('| %s | %s | %s | %s |' % (azon, szint, _cella(leiras), forras))
+    ki.append(E37_VEGE)
+    return '\n'.join(ki)
+
+
+def _e37_tartalom(szoveg):
+    """(kezd_index, vege_index) a jelolok kozott (a jeloloket is beleertve), vagy None."""
+    a = szoveg.find(E37_KEZDET)
+    if a < 0:
+        return None
+    b = szoveg.find(E37_VEGE, a)
+    if b < 0:
+        return None
+    return a, b + len(E37_VEGE)
+
+
+def e37_kapulista_naprakesz(fajlok=None, root=None):
+    """E37: az `adat/SEMA.md` 3.11 generalt kapulistaja egyezik a kodbol generalttal, es a forrastablak a koddal.
+    HIBA, fajlszintu. Akkor fut, ha a PR a blokk valamely forrasat vagy a SEMA-t modositja (`E37_KIVALTO`);
+    `None` vagy `['__TELJES__']`: mindig."""
+    root = root or ROOT
+    talalatok = []
+    if fajlok is not None and '__TELJES__' not in fajlok:
+        if not any(f.replace('\\', '/') in E37_KIVALTO for f in fajlok):
+            return talalatok
+    if _e36_olvas(E37_SEMA, root) is None or _e36_olvas('eszkozok/olvasoi_kapu.py', root) is None:
+        return talalatok  # a forras nincs a gyokerben (pl. tesztkornyezet): nincs mit osszevetni
+    for h in kapulista_ellentmondasok(root):
+        talalatok.append(Talalat('E37', SZINT['E37'], E37_SEMA, 0, h))
+    szoveg = _e36_olvas(E37_SEMA, root)
+    if szoveg is None:
+        return talalatok
+    hely = _e37_tartalom(szoveg)
+    if hely is None:
+        talalatok.append(Talalat('E37', SZINT['E37'], E37_SEMA, 0,
+                                 'a 3.11 kapulista-blokk jelölői hiányoznak (%s … %s)' % (E37_KEZDET, E37_VEGE)))
+        return talalatok
+    if szoveg[hely[0]:hely[1]] != kapulista_blokk(root):
+        sor = szoveg[:hely[0]].count('\n') + 1
+        talalatok.append(Talalat('E37', SZINT['E37'], E37_SEMA, sor,
+                                 'a 3.11 kapulista-blokk elavult; futtasd: python eszkozok/ellenorzes/szabalyok.py '
+                                 '--kapulista --ir, és commitold'))
+    return talalatok
+
+
+def kapulista_ir(root=None):
+    """A 3.11 blokk ujrairasa az `adat/SEMA.md`-ben (a sorveg megmarad). Visszaad: True, ha valtozott."""
+    root = root or ROOT
+    ut = os.path.join(root, *E37_SEMA.split('/'))
+    with open(ut, encoding='utf-8', newline='') as f:
+        nyers = f.read()
+    crlf = '\r\n' in nyers
+    szoveg = nyers.replace('\r\n', '\n')
+    hely = _e37_tartalom(szoveg)
+    if hely is None:
+        raise SystemExit('a 3.11 jelölői hiányoznak az %s-ben: %s … %s' % (E37_SEMA, E37_KEZDET, E37_VEGE))
+    uj = szoveg[:hely[0]] + kapulista_blokk(root) + szoveg[hely[1]:]
+    if uj == szoveg:
+        return False
+    if crlf:
+        uj = uj.replace('\n', '\r\n')
+    with open(ut, 'w', encoding='utf-8', newline='') as f:
+        f.write(uj)
+    return True
+
+
+SZINT['E37'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E37')
+SZABALYOK_FUGGVENYEI['E37'] = e37_kapulista_naprakesz
+
+
+if __name__ == '__main__':
+    import argparse
+    _ap = argparse.ArgumentParser(description='A kapuk szabálylistája (adat/SEMA.md 3.11), F184 D3.')
+    _ap.add_argument('--kapulista', action='store_true', help='a generált blokk kiírása')
+    _ap.add_argument('--ir', action='store_true', help='a blokk újraírása az adat/SEMA.md-ben')
+    _args = _ap.parse_args()
+    if not _args.kapulista:
+        _ap.error('csak a --kapulista mód van')
+    _hibak = kapulista_ellentmondasok()
+    for _h in _hibak:
+        print('ELTÉRÉS: ' + _h, file=sys.stderr)
+    if _args.ir:
+        print('adat/SEMA.md 3.11: ' + ('újraírva' if kapulista_ir() else 'naprakész'))
+    else:
+        print(kapulista_blokk())
+    sys.exit(1 if _hibak else 0)
