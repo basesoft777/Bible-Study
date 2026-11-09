@@ -830,7 +830,7 @@ class Epito(object):
         kihagy = bsb_bizonytalan(versek, self.ot_vers_strongok)
         for kulcs, ok in sorted(kihagy.items()):
             self.jelent_norm('bsb', step_kulcs[kulcs], ok)   # BSB-kulcs STEP-alakban (nem tévesztheto ossze a Karoli-kulccsal)
-        self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT-F120a: a Károli-cél tartalmilag nem igazolt '
+        self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT457: a Károli-cél tartalmilag nem igazolt '
                                  'vagy ütközik; a jelentés `bsb` sorai)' % len(kihagy))
         bsb, szamozas_vers = [], {}
         rang = {'mt': 0, 'kjv': 1, 'ellenorizetlen': 2}

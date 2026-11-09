@@ -33,7 +33,7 @@ _ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
 _ap.add_argument('--kimenet', default=None,
                  help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
 _ap.add_argument('--kiadas', choices=('belso', 'nyilvanos', 'kereskedelmi'), default='belso',
-                 help='a kiadás típusa (DT-F60a): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
+                 help='a kiadás típusa (DT124): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
                       'kereskedelmi: a KJV-Strong és az MCGED blokk is kimarad')
 _args = _ap.parse_args()
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

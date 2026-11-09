@@ -785,7 +785,7 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     w('A gyanús ismétlődés kizárása csak a **MEK-oldali** ismétlődésre vonatkozik (a MEK-lista szó szerint azonos egy '
       'másik vers MEK-listájával, ≥2 elem, %d forrásvers): %d sor marad jelölt. A **HunKar-oldali** gyanús-jelölés (a #177 '
       'gyanús halmaza, %d forrásvers) a HunKar-lista másoltságát jelzi, nem a MEK-listáét; az ilyen forrásversen álló, '
-      'ismétlődés nélküli MEK-sor (%d sor) a felhasználó döntése szerint beemelődik (DT-F181f). A szúrópróba (7. szakasz) '
+      'ismétlődés nélküli MEK-sor (%d sor) a felhasználó döntése szerint beemelődik. A szúrópróba (7. szakasz) '
       'szerint ezek mintája hibátlan volt.' % (
           gy_mek_db, _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_GYANUS), gy_hk_db, hk_be))
     w('A **nem létező célvers** és a gyanús ismétlődés átfedése: %d MEK-oldali sor mindkettő; a nem létező '
@@ -844,7 +844,7 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
 
     w('## 4. Mire kell figyelni a szabály alkalmazásakor\n')
     elir = [r for r in bontas if r['oldal'] == 'MEK' and r['dontes'] == D_ELIRAS]
-    w('* **Elírás-gyanús osztály (orkesztrátori döntés, DT-F181e):** %d MEK-oldali sor áll olyan HunKar-sorral párban, '
+    w('* **Elírás-gyanús osztály (orkesztrátori döntés):** %d MEK-oldali sor áll olyan HunKar-sorral párban, '
       'amelytől egyetlen összetevőben (könyv/fejezet/versszám) tér el, és a MEK-cél létezik. A végrehajtói olvasat '
       'szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: %s.' % (
           len(elir), ', '.join('%s %d' % (a, _db(elir, lambda r: r['altipus'] == a)) for a in ELIRAS)))
