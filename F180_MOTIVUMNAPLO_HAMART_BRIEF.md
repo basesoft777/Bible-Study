@@ -5,10 +5,10 @@ kod: MOTIVUMNAPLO_HAMART
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/motivumnaplo-hamart
 ad: a `motivumlog/PaRDeS_motivumok.md` kézi HAMART-001-szakaszai az `elofordulasok.tsv` mai soraihoz igazítva; a határkörben kikerült helyek mellett jelzés (nem törlés), a Gal 3:13-14 tárgyszerűen, kiemelés nélkül; a generált blokkok változatlanok, a CI (E28) zöld
-kovetkezo: "F180.1–F180.2 kész; független ellenőrzés (fuggetlen-ellenor), majd PR"
+kovetkezo: "Te: /elteres 180"
 munka: ertelmezo
 olvas: [motivumlog/PaRDeS_motivumok.md, adat/elofordulasok.tsv, DONTESEK.md, naplok/ELLENOR_F123_HAMART3_javitokor2.md]
 ir: [motivumlog/PaRDeS_motivumok.md]
