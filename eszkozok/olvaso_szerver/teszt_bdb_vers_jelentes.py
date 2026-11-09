@@ -496,18 +496,53 @@ class CsoportAranyminta(unittest.TestCase):
             return szak
         return 'h:' + re.sub(r'[֑-ׇ]', '', unicodedata.normalize('NFC', szak))
 
+    @staticmethod
+    def _szoveg_norm(s):
+        import re
+        import unicodedata
+        s = unicodedata.normalize('NFC', (s or '').replace('\n', ' '))
+        s = re.sub('[֑-ׇ‎‏]', '', s)
+        return re.sub(r'\s+', ' ', s).strip()
+
+    @staticmethod
+    def _lcs(a, b):
+        """A két jelölő-sorozat leghosszabb közös részsorozata [(i, j)] — a mérőszkript `lcs`-e (naplok/F103_BDB_TAGOLAS_meres.py)."""
+        n, m = len(a), len(b)
+        t = [[0] * (m + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                t[i][j] = t[i + 1][j + 1] + 1 if a[i] == b[j] else max(t[i + 1][j], t[i][j + 1])
+        i = j = 0
+        ki = []
+        while i < n and j < m:
+            if a[i] == b[j]:
+                ki.append((i, j))
+                i += 1
+                j += 1
+            elif t[i + 1][j] >= t[i][j + 1]:
+                i += 1
+            else:
+                j += 1
+        return ki
+
     def test_aranyminta_csoportjai(self):
+        # a besorolás a mérőszkript (naplok/F103_BDB_TAGOLAS_meres.py, arany()) feltételeit követi (ELLENOR_F103 2.):
+        # hiány szerkezeti, ha a várt szülő a szeletelőben nincs meg; hamis határ szerkezeti, ha a kapott szülő az aranymintában
+        # nincs meg, vagy ha a pár nélküli csoport egy árva (szülő-hiány miatt el nem helyezett) várt csoport horgonyával kezdődik;
+        # minden más eltérés csoportszintű (a várt csoport nélküli, de az aranymintában meglévő szülő alatti bontás is)
         import collections
-        import difflib
         import re
         vart = collections.defaultdict(list)
         szulok = set()
+        kihagy = []
         for g in self.arany:
             if g['szint'] in ('jelentes', 'alpont'):
                 szulok.add((g['strong'], self._kulcs(g['szakasz']), g['utvonal']))
+            if g['szint'] == 'kihagy':
+                kihagy.append((g['strong'], self._kulcs(g['szakasz']), g['utvonal']))
             if g['szint'] == 'csoport':
                 p = g['utvonal'].rsplit('/', 1)[0]
-                vart[(g['strong'], self._kulcs(g['szakasz']), p)].append(g['jel'])
+                vart[(g['strong'], self._kulcs(g['szakasz']), p)].append(g)
         self.assertEqual(sum(len(v) for v in vart.values()), 184)
         egyezik = hiany_sz = hamis_sz = 0
         csoportszintu = []
@@ -521,10 +556,17 @@ class CsoportAranyminta(unittest.TestCase):
                 # az aranyminta a jelentés nélküli alpontot „X/a” alakban írja
                 ut2 = re.sub(r'^([^/]+)/-/([a-l])$', r'\1/\2', ut)
                 sz_szulok.add((k, ut2))
-                kapott[(k, ut2)].extend(c['jel'] for c in n.get('csop') or [])
+                kapott[(k, ut2)].extend(n.get('csop') or [])
+            arva_horgony = [self._szoveg_norm(g['kezdet_en']) for k2, gs in vart.items()
+                            if k2[0] == strong and k2[1:] not in sz_szulok for g in gs if g['kezdet_en']]
             for k in set(kapott) | {x[1:] for x in vart if x[0] == strong}:
-                v, kp = vart.get((strong,) + k, []), kapott.get(k, [])
-                m = sum(b.size for b in difflib.SequenceMatcher(a=v, b=kp, autojunk=False).get_matching_blocks())
+                vg, kg = vart.get((strong,) + k, []), kapott.get(k, [])
+                if not vg and any(kst == strong and k[0] == ksz and (k[1] == kut or k[1].startswith(kut + '/'))
+                                  for kst, ksz, kut in kihagy):
+                    continue
+                v, kp = [g['jel'] for g in vg], [c['jel'] for c in kg]
+                par = self._lcs(v, kp)
+                m = len(par)
                 egyezik += m
                 if len(v) > m:
                     if k in sz_szulok:
@@ -532,10 +574,17 @@ class CsoportAranyminta(unittest.TestCase):
                     else:
                         hiany_sz += len(v) - m
                 if len(kp) > m:
-                    if (strong,) + k in szulok and v:
-                        csoportszintu.append(('hamis határ', strong, k, v, kp))
-                    else:
+                    if (strong,) + k not in szulok:
                         hamis_sz += len(kp) - m
+                        continue
+                    pj = {j for _, j in par}
+                    for j, c in enumerate(kg):
+                        if j in pj:
+                            continue
+                        if any(self._szoveg_norm(c['szoveg']).startswith(h) for h in arva_horgony):
+                            hamis_sz += 1
+                        else:
+                            csoportszintu.append(('hamis határ', strong, k, v, kp, c['jel']))
         self.assertEqual(csoportszintu, [])
         self.assertGreaterEqual(egyezik, 184 - self.SZERKEZETI_HIANY_MAX)
         self.assertLessEqual(hiany_sz, self.SZERKEZETI_HIANY_MAX)
