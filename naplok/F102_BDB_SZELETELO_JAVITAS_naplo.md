@@ -512,7 +512,7 @@ nyers 2.30-at olvassa, ezért ott is eltérés: **szakasztábla-hiba** (a javít
 | | nyers | ítélet utáni, javítva | maradó saját hiba |
 |---|---:|---:|---:|
 | seed-102, szeletelő | 183 / 200 | **184 / 199 (92,5%)** | 15 |
-| seed-102, szakasztábla | 184 / 200 | **186 / 199 (93,5%)** | 13 (+ M058 átvett `szakasz`) |
+| seed-102, szakasztábla | 184 / 200 | **186 / 199 (93,5%)** | 12 (+ M058 átvett `szakasz`) = 13 |
 | seed-101, a #99 kulcsán (F99.25; M162 szeletelő-hiba, mint a #99 ítéletében) | 184 / 200 | **187 / 200 (93,5%)** | 13 |
 | seed-101, a mai táblán (F102.4; DT-F102a; M029 okafogyott) | 187 / 200 | **188 / 200 (94,0%)**; ha az 1c. szerint az M102 és az M117 `forras_hiba`: 190 / 200 | 12, ill. 10 |
 
