@@ -171,6 +171,8 @@ meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `
 * `eszkozok/teszt_sqlite_epit.py`: 3 FAIL + 1 ERROR (`Integracio` setUpClass, `FeliratHalmaz`, `Negativ.baseline`, `Pozitiv.mai_adat`) — **ugyanaz az alapállapoton** (`git stash`-sel mérve: azonos 3 + 1); a `Pozitiv` / `Negativ` hibaüzenete a HAMART-001 11. szabály-sértését idézi; a másik kettő okát nem vizsgáltam, az F177 egyiket sem okozza (azonos az alapállapoton).
 * Az olvasó-szerver tesztjei (`teszt_futtat.py`, WSL-venv és natív `pardes.db` kell) ebben a környezetben nem futtathatók; a `karoli_kh_szuro.elfogad` hívó oldalai (`olvaso_pilot/adat.py`, `nav_kinyer.py`) szintaktikailag és a szűrő tesztjén át ellenőrzöttek, a teljes lefutás a CI-re vár.
 
+* A CI-szabályok helyi futtatása (`eszkozok/ellenorzes/futtat.py`, E2–E35, az `origin/main` és a fej között): **0 HIBA** a végén. Menet közben javított HIBÁK: E8 (a MEK-alak tiltott igehely-formája a jelentésben), E27 (két fogyasztó-útvonal a nyitott-sorban), E32 (a `karoli_kh_gyanus_general.py` string-literáljában döntés-helyőrző), E35 (a `nyilt_mag/` újragenerálva: csak a `Karoli_KH_MEK` és a `Karoli_KH_javitott` kizárt-forrás sora került be, tisztázatlan licenc, kizárva). Maradt JELENTÉS/FIGYELMEZTETÉS (nem az F177 hibái): E25, E27 (48, régi hivatkozások), E34 (41), E30 (1: a `jelolt` azonosító-érték a 59a18d7d commit-üzenetben, a `jelölt` szó ékezet nélküli alakja; a push előtti üzenet, nem módosítható).
+
 ## 10. Megállási pontok
 
 ⛔ ① nem (a modell egyezett, a #176 a `main`-ben); ⛔ ② a licenc: a munka belső tanúként folytatódott, a megerősítés nyitva (DT-F177b); ⛔ ③ nem (77,1% a nem gyanús verseken);
