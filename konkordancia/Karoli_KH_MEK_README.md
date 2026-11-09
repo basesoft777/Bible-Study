@@ -117,7 +117,18 @@ A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;sza
 
 **4. A TSK nem tanú és nem feltétel.** A `tsk=igen|nem` jelölés az indokban tájékoztatás marad (ELLENOR_F177 1.), a szabály nem használja.
 
-**5. A döntés nélküli maradék `jelolt` marad** (hiányt nem töltünk ki, CLAUDE.md 3. szabály; a lapra/indexbe nem jut): a nem létező célvers (139 sor, tételesen a `naplok/F181_jelentes.md` A. függelékében), a MEK-oldali gyanús ismétlődő (6), az elírás-gyanús osztály (15), és a jelöltben maradt HunKar-oldali sorok (30). Összesen **190** sor. A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz.
+**5. A döntés nélküli maradék `jelolt` marad** (hiányt nem töltünk ki, CLAUDE.md 3. szabály; a lapra/indexbe nem jut). **Minden ilyen sor a saját indokában hordozza a maradás okát**: `…;marad=<kód>` (F181 javítókör 1; DT-F181k, ELLENOR_F181 E8; új oszlop nélkül; egy sor pontosan egy kódot kap). A kódok és a sorok száma:
+
+| kód | sor | jelentés |
+|---|---|---|
+| `marad=nem_letezo_cel` | 136 | a hivatkozott vers vagy a forrásvers nem létezik (a `Karoli_1908` ∪ MEK-versszerkezet szerint), vagy a MEK-sor értelmezhetetlen; ide tartozik az `egyezik;hibas_hivatkozas=…` sor is (tételesen: `naplok/F181_jelentes.md` A. függelék) |
+| `marad=gyanus_ismetlodo` | 6 | MEK-oldali gyanús ismétlődő: a forrásvers MEK-listája szó szerint azonos egy másik vers MEK-listájával |
+| `marad=eliras_gyanus` | 10 | a MEK-cél egyetlen összetevőben tér el a forrásvers egy jelölt HunKar-sorának céljától, és létezik (DT-F181e) |
+| `marad=mek_fejezet_minta` | 9 | az E2-hibaminta létező töredéke (DT-F181h) |
+| `marad=eliras_gyanus_par` | 10 | HunKar-oldali sor, amelynek MEK-párja elírás-gyanús vagy E2-töredék sor: a pár eldöntetlen |
+| `marad=mek_lista_nincs_elfogadva` | 11 | HunKar-oldali sor, amelynek forrásversén a MEK-lista egyik sora sem emelődik be (nem létező cél, gyanús ismétlődő), tehát a HunKar-sor sorsáról nincs mi alapján dönteni |
+
+Összesen **182** sor. A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz, az új minta tételei: `naplok/F181_szuroproba.md`.
 
 **6. A fogyasztók.** A `karoli_kh_szuro.mek_sorok()` a csak a MEK-ben álló, `megerositett` sorokat adja (a HunKar-tábla kulcsaival és magyar megjelenítéssel); a `lekerdez.py` (`karoli`), a `sqlite_epit.py` (`kh` tábla), az `olvaso_pilot/adat.py` és az `olvaso_mockup/nav_kinyer.py` a HunKar-sorok mellé ezeket is olvassa, ugyanazzal az `elfogad` szűrővel. A `kiesik` és a `jelolt` sor nem jut át. A lapokat és a `pardes.db`-t ez a menet nem építette újra (N-F177a).
 

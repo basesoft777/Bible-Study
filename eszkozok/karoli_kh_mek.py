@@ -539,6 +539,9 @@ DONTESEK = (D_BEEMEL, D_GYANUS, D_NEMLETEZO, D_ELIRAS, D_E2, D_HK_KIESIK, D_HK_M
 # a jelolt-ban maradó sor oka (`marad=<kód>` tag az indokban, E8)
 _MARAD_KOD = {D_NEMLETEZO: 'nem_letezo_cel', D_GYANUS: 'gyanus_ismetlodo', D_ELIRAS: 'eliras_gyanus',
               D_E2: 'mek_fejezet_minta'}
+# a HunKar-oldali jelolt sor két oka (a jelolt_bontas állítja): a párja elírás-gyanús MEK-sor, vagy a forrásvers MEK-listája
+# nincs elfogadva (egyetlen sora sem emelődik be)
+MARAD_KODOK = tuple(_MARAD_KOD.values()) + ('eliras_gyanus_par', 'mek_lista_nincs_elfogadva')
 
 
 def gyanus_versek():
@@ -838,6 +841,8 @@ def beemel(javitott, bontas, ts):
             ki.append([s[0], s[1], 'megerositett', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
         elif d == D_HK_VEGPONT:
             ki.append([s[0], s[1], 'megerositett', 'HunKar+MEK', s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif r and r['marad'] and 'marad=' not in s[4]:
+            ki.append([s[0], s[1], s[2], s[3], s[4] + ';marad=' + r['marad'], prov2])  # E8: a maradás oka a sorban
         else:
             ki.append(list(s))
     return ki
