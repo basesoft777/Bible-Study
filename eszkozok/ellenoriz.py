@@ -652,9 +652,10 @@ def szabaly10_v22_tablak(adat_dir):
 # naptól minden helyes rés SÉRTÉS lenne. A ts-en kívüli minden eltérés
 # (a rés tartalma, a forrás-lista, a scope) továbbra is SÉRTÉS. Ha a résben
 # nincs proveniencia-ts, a viselkedés a régi (general.TS).
+# F178 utóhatás (javítás): az új szerkezetű lapon (F178.4, olvasói átírás) a nyers proveniencia-sor
+# a látható olvasói sor végén, `<!-- eredeti: … -->` megjegyzésben áll, ezért a minta nincs sorhoz kötve.
 _RES_PROV_TS_RE = re.compile(
-    r'^\*Proveniencia: `scope=id:(\S+) \| forras=[^`]* \| ts=(\d{4}-\d{2}-\d{2})`\*$',
-    re.MULTILINE)
+    r'\*Proveniencia: `scope=id:(\S+) \| forras=[^`]* \| ts=(\d{4}-\d{2}-\d{2})`\*')
 
 
 def res_lap_ts(tenyleges, motivum_id):
