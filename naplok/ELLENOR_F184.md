@@ -64,3 +64,16 @@ A jelentést nem tudtam fájlba írni: nincs íróeszközöm. A szöveg az aláb
 5. **A generált 3.11 blokk és a SEMA 2.55 ellentmond egymásnak az E34 súlyosságában.** A 3.11 (`SZINT['E34']`) `FIGYELMEZTETES`-t ír, a 2.55 szerint a kiadott motívumon `HIBA`. Egy helyen áll, de a két dokumentum szövege eltér.
 
 Nyitva maradt, rajtam kívül eső okból: a CI-összevetés, a blokk naprakészsége (E37) és az E36/E37 tesztek futása. Ezeket a parancsaimmal nem tudtam lezárni, ezért NEM ELLENŐRIZHETŐ.
+
+## Kiegészítés (az ellenőr második üzenete, változtatás nélkül)
+
+Az előző válaszomhoz képest egy sor változott: a CI-összevetés lefutott, és az eredménye most az alábbi táblázatban áll.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| CI-jelentés | OK, egy magyarázott eltéréssel | – | **Parancs:** `python eszkozok/ellenorzes/futtat.py --valtozott <27 fájl> --diff-alap b4c4dae5… --diff-fej d4bd1f44 --pr-cim "[ELLENŐRZŐ] F184"`, a teljes kimenet itt: `C:\Users\bases\AppData\Local\Temp\claude\bca85216bf055db3\54cf5227-7bc8-4827-82be-1c52bb2f8f03\scratchpad\ci_f184.txt`. **Eredmény:** `EXIT=1`. JELENTÉS-szinten E9 5, E25 3, E27 43, E30 1, E34 41, E36 1 (a SEMA 2.34 kettőzése), E37 0, E26 0, E32 0, E12–E15 0. Ezek a számok egyeznek a végrehajtó jelentésével. **Az egyetlen HIBA az E5:** „törölt címsor TÖRLÉS-SZÁNDÉKOS jelölés nélkül: ### 2.50 A `kapcsolodas` Károli-idézete…”. Ezt az okozza, hogy a saját futásomnak nem adtam át commit-üzenetet. A CI ezt átadja: `ellenorzes.yml:89`, `--commit-uzenet-fajl commit_uzenetek.txt`, a PR összes üzenete. A `d0cb8d6c` üzenetének egy sora `TORLES-SZANDEKOS:`-szal kezdődik. Az elfogadó minta (`szabalyok.py:246-247`, `^\s*(TÖRLÉS-SZÁNDÉKOS\|TORLES-SZANDEKOS):`, MULTILINE) ezt elfogadja, tehát a CI-ben az E5 várhatóan zöld. Ezt üzenettel újrafuttatva nem igazoltam. |
+| D3 generált blokk / E37 | OK | `adat/SEMA.md:2362-2494` | Ugyanez a futás: `## E37 (0 talalat)`. A blokk naprakész, és a forrástáblák egyeznek a kóddal. A `--kapulista --ir` parancsot nem futtattam, mert fájlt ír. |
+| A6 (E12–E15) | OK | – | Ugyanez a futás: E12, E13, E14 és E15 egyaránt 0 találat. |
+| D5 E36/E37 tesztek | NEM ELLENŐRIZHETŐ | `test_szabalyok.py:2117-2234` | A `unittest` futtatása nem megengedett parancs. Csak a meglétet igazoltam: 7 és 7 teszt. |
+
+Az összes többi sor változatlan. Az eltérések listája (1–5.) változatlan.
