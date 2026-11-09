@@ -6,12 +6,15 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/jolly-sutherland-85d152
+pr: 631
 ad: új, gátló `ellenoriz.py`-szabály: az `elofordulasok.tsv` `kapcsolodas` mezőjében és a kézi 1/a-prózában az idézőjeles, Károli-idézetként álló szöveg egyezik a Károli-vers szövegével (normalizálva), vagy „saját fordítás” jelölésű; a régi lapok 46 helye jelezve
-kovetkezo: "Te: indítás a /kovetkezo-val"
+kovetkezo: lezárva (PR #631, 2026-11-04; fejléc-zárás: claude/f166-zaras, 2026-11-09)
 olvas: [eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, adat/elofordulasok.tsv, konkordancia/, adat/SEMA.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/SEMA.md]
 fugg: []
+lezarva_osszegzes: E34 (gátló a kiadott motívumokon, figyelmeztetés a többin) a `kapcsolodas` Károli-idézetére, 11 teszttel, SEMA 2.50, DT614; a main-en 41 jelzett hely a régi lapokon (TEREMT-001 28, HODIT-001 7, KIRALY-001 5, MENNY-001 1), `naplok/F166_zaras.md`; a csonka, értelmet változtató idézet lektori tétel, nem gépi kapu
 ---
 
 # F166_KAROLI_IDEZET_SZABALY_BRIEF.md — Adat-szintű Károli-idézet szabály
@@ -45,4 +48,6 @@ Az új cikkek menete (#123) ezt automatikusan teljesíti.
 
 ## 5. Döntésnapló
 
-*(a menet tölti ki)*
+- 2026-11-04 — DT614 (DT-F166a): a jelölés alakja a meglévő „saját fordítás” a `kapcsolodas` mezőben (orkesztrátori megerősítés); E34, PR #631.
+- 2026-11-09 — a brief fejléce a #631 merge-e után nem zárult le; a zárás külön menetben (claude/f166-zaras), független ellenőrzéssel a #631 diffjén.
+- 2026-11-09 — orkesztrátori döntés: a csonka, értelmet változtató Károli-idézetre (pl. HAMART-001, 1Móz 7:23) gépi kapu nem készül (vesszőhatáron áll, gépileg nem megbízható); lektori ellenőrzőlista-tétel. N-F166a: a SEMA 2.50 számütközése (F166 ↔ F162).
