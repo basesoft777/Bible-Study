@@ -58,8 +58,10 @@ EZS3 = {'Ézs 2:22': 'Ézs 3:1'}
 EZS3.update({'Ézs 3:%d' % v: 'Ézs 3:%d' % (v + 1) for v in range(1, 27)})
 
 # DT-F99i: a `szakasz` a címszó homonima-száma (vagy h:<váz>), a `resz` a szócikk római számos fő tagolása (üres, ha nincs)
+# F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a használati csoport két új oszlopban (`csoport`: „+<n>”, a jelentésponton belüli
+# sorszám; `csoport_jel`: a bevezető kulcsa vagy a zárójeles jelölő), az `utvonal` és a többi oszlop változatlan
 FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz',
-       'utvonal', 'okkod', 'szurt', 'proveniencia']
+       'utvonal', 'okkod', 'szurt', 'csoport', 'csoport_jel', 'proveniencia']
 SZURENDO = {'nem_bibliai'}
 # DT-F99k (felhasználó, 2026-10-15): a sigla melletti (tapadt, közeli vagy listás) hivatkozás akkor szűrődik, ha a TAHOT szerint a vers
 # NEM tartalmazza a szócikk Strong-számát; ha tartalmazza, bibliai hivatkozás marad, okkód `sigla_igazolt`. A TAHOT `Igehely` kulcsa a
@@ -232,6 +234,8 @@ def general(ts, strongok=None):
         # a szakaszok sávja: a csomópontokon kívüli hivatkozás a saját szakaszának „fej”-e, vagy „tagolatlan”, ha a szakaszban nincs
         # törzs, számozott jelentés vagy alpont (F99 M2 újramérés előtt: a szakasz a kulcs része)
         szsav = B.szakasz_savok(szoveg, r)
+        # F103: a használati csoportok sávjai (a csoportbontás a csomópontokra `csop` listát tesz; a fenti sávokat nem érinti)
+        csav = B.csoport_savok(szoveg, B.csoport_bont(r, 'en'))
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
         for n, h in enumerate(hivatkozas_javit(strong, B.hivatkozasok(szoveg), javitasok.get(strong, [])), 1):
@@ -308,8 +312,10 @@ def general(ts, strongok=None):
                     szurt = True
                     mt = kar = vmod = ''
                     ok = h['okkod']
+            # F103: a hivatkozás csoportja — a jelentéspontjának (szakasz + útvonal) a hivatkozást tartalmazó csoportsávja
+            cs = next((x for x in csav if x[0] <= h['poz'] < x[1] and x[2] == cimke and x[3].rsplit('/', 1)[0] == ut), None)
             sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], kmod, mt, kar, vmod,
-                          szak, resz, ut, ok, '1' if szurt else '0', prov])
+                          szak, resz, ut, ok, '1' if szurt else '0', cs[3].rsplit('/', 1)[1] if cs else '', cs[5] if cs else '', prov])
     return sorok, modhash
 
 
@@ -319,7 +325,7 @@ def kiir(sorok, modhash, ts):
            'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
            '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + '
            'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179'
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + DT-F103a (csoport)'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), modhash),
            '\t'.join(FEJ)]

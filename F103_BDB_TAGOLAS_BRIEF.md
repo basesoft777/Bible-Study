@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: fut
 ag: claude/f103-bdb-tagolas
 ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT167 szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
-kovetkezo: Megállt a DT-F103a-nál (F103.5): a 2.29 csoportszintje ir-en kívüli fájlt kíván (bdb_vers_jelentes.py új oszlop, vagy utvonal /+n a lexikon_general.py illesztésével); a döntés után a SEMA 2.29 bővítése, a tábla újragenerálása és a teljes tesztkör, majd a zárás (naplok/BDB_TAGOLAS_zaras.md). Kész: csoportbontás a szeletelőben (aranyminta 164/184, csoportszinten 0 eltérés), tesztek, mérés előtte/utána, N-F103a–c, DT-F103a–b
+kovetkezo: DT-F103a (A) és DT-F103b (a) szerint (orkesztrátori döntés, 2026-11-09): a 2.29 két új oszlopa (csoport, csoport_jel), SEMA 2.29, a tábla újragenerálása, a #102-mérés megismétlése, a teljes tesztkör, majd a zárás (naplok/BDB_TAGOLAS_zaras.md)
 olvas: [eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
-ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
+ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
 fugg: [99, 102, 119]
 nem_fugg: [7, 9, 11, 27, 38, 154, 161]
 ---

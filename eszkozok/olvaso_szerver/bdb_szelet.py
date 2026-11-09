@@ -1077,7 +1077,8 @@ def csoport_magyar(r_hu, r_en):
 
 def csoport_savok(szoveg, r):
     """A használati csoportok sávjai a `lapit(szoveg)`-ben, a `csomopont_savok` keresésével: [(kezdet, vég, szakasz, '<útvonal>/+<n>',
-    'csoport')]; a csomópontokon előbb `csoport_bont` fut. A sorszám a csomóponton belüli (1-től), mint az aranyminta `+n`-je."""
+    'csoport', jel)]; a csomópontokon előbb `csoport_bont` fut. A sorszám a csomóponton belüli (1-től), mint az aranyminta `+n`-je; a
+    szakasz-címke a `csomopont_savok`-é (a fő szakasz a saját homonima-számával)."""
     s = lapit(szoveg)
     savok = []
     sorszam = {}
@@ -1098,7 +1099,7 @@ def csoport_savok(szoveg, r):
             a = i + c['kezd'] - lead
             b = i + (cs[k + 1]['kezd'] - lead if k + 1 < len(cs) else len(t))
             n = sorszam[(szak, ut)] = sorszam.get((szak, ut), 0) + 1
-            savok.append((a, b, szak, '%s/+%d' % (ut, n), 'csoport'))
+            savok.append((a, b, szak, '%s/+%d' % (ut, n), 'csoport', c['jel']))
         return i + len(t)
 
     kurzor = {}

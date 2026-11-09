@@ -542,6 +542,49 @@ class CsoportAranyminta(unittest.TestCase):
         self.assertLessEqual(hamis_sz, self.SZERKEZETI_HAMIS_MAX)
 
 
+class CsoportOszlop(unittest.TestCase):
+    """F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a 2.29 két új oszlopa; a régi oszlopok és az `utvonal` változatlan."""
+    # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
+    # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő
+    REGI_OSZLOPOK_SHA256 = '63373512b29fe3cb5b3a37494c9b411da240df7270c2999c7821b264e2347447'
+
+    @classmethod
+    def setUpClass(cls):
+        cls.sorok, _ = V.general('2026-11-09', ['H3176', 'H3027', 'H0157'])
+        cls.i = {k: n for n, k in enumerate(V.FEJ)}
+
+    def test_fejlec(self):
+        self.assertEqual(V.FEJ[V.FEJ.index('szurt') + 1:], ['csoport', 'csoport_jel', 'proveniencia'])
+
+    def test_csoport_a_jelentesponton_belul(self):
+        i = self.i
+        x = sor(self.sorok, strong='H3176', nyers='Job 14:14')[0]
+        self.assertEqual((x[i['utvonal']], x[i['csoport']], x[i['csoport_jel']]), ("Pi'el/1", '+1', 'absolute'))
+        x = sor(self.sorok, strong='H3176', nyers='Micah 5:6', utvonal="Pi'el/1")[0]
+        self.assertEqual((x[i['csoport']], x[i['csoport_jel']]), ('', ''))  # a jelentés feje: nincs csoport
+        x = sor(self.sorok, strong='H3176', nyers='Ezek 13:6', utvonal="Pi'el/2")[0]
+        self.assertEqual((x[i['csoport']], x[i['csoport_jel']]), ('+1', 'followed by'))
+
+    def test_utvonal_nem_kap_csoportot_es_jel_csak_csoporttal(self):
+        i = self.i
+        for x in self.sorok:
+            self.assertNotIn('+', x[i['utvonal']])
+            self.assertEqual(bool(x[i['csoport']]), bool(x[i['csoport_jel']]))
+
+    def test_regi_oszlopok_bajtra_azonosak(self):
+        import hashlib
+        with open(V.KI, encoding='utf-8', newline='') as f:
+            sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+        fej = sorok[0].split('\t')
+        regi = [k for k in V.FEJ if k not in ('csoport', 'csoport_jel')]
+        idx = [fej.index(k) for k in regi]
+        h = hashlib.sha256()
+        for s in sorok[1:]:
+            m = s.split('\t')
+            h.update(('\t'.join(m[j] for j in idx) + '\n').encode('utf-8'))
+        self.assertEqual(h.hexdigest(), self.REGI_OSZLOPOK_SHA256)
+
+
 class Ujrageneralas(unittest.TestCase):
     """ELLENOR_F99 3.: platformtól függetlenül fut (a kód- és a forrás-hash LF-re normalizált tartalomból számolódik)."""
     def test_bajtra_azonos(self):
