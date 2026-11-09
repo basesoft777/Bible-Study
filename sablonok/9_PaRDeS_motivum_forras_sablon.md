@@ -280,7 +280,7 @@ A mérce: a lexikonoldal-sablon Minőségi kapuja **L1–L7** + a **DT2 két ré
 
 A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` a kiadható kimenetben): `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
 
-**Gépi kapuk a generált lapon** (v0.5; DT546, DT547). A forrás és az adat akkor kész, ha a belőlük generált lapon az `ellenoriz.py` **24. szabálya** (minden lábjegyzet-hivatkozásnak van definíciója) és **25. szabálya** (az 1/a minden igehelye arany szintű: kerek próza + „Funkció:” sor, l. 4. pont) RENDBEN, az **olvasói kapu** (Feed 9, `eszkozok/olvasoi_kapu.py`) 0 BUKÁS, és a teljesség-mérés (4. pont) lefutott. A kapuk a szerkezetet és a gépesíthető olvasói hibát mérik; a mondat minősége (kerek-e, és a Funkció tényleg a motívumbeli szerepet mondja-e) a lektori kör és a felhasználó vizuális átnézése (`MUNKAMENET.md` C-v).
+**Gépi kapuk a generált lapon** (v0.5; DT546, DT547). A forrás és az adat akkor kész, ha a belőlük generált lap átmegy a lexikonoldal-sablon Minőségi kapujának L8 pontján (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`: 24. és 25. szabály, teljesség-mérés, olvasói kapu). A kapuk a szerkezetet és a gépesíthető olvasói hibát mérik; a mondat minősége (kerek-e, és a Funkció tényleg a motívumbeli szerepet mondja-e) a lektori kör és a felhasználó vizuális átnézése (`MUNKAMENET.md` C-v).
 
 ## 9. A v0 nyitott pontjai — eldöntve (DT84, 🟢, felhasználó, 2026-10-12)
 
