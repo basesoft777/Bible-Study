@@ -597,12 +597,14 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>in Sh®°ôl</p>'))), '<p>in Sheʾôl</p>')
 
     def test_bdb_proba_es_mert_pontossag(self):
-        """DT-F99l (c): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll (F99, seed-101)."""
+        """DT-F99l (c), F102 DT-F102c (a): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll
+        (F102, seed-102: 183/200)."""
         t = self.get('/r/szo/H7451').get_data(as_text=True)
         self.assertIn('Gépi szeletelés (próba)', t)
-        self.assertIn('92,0%', t)
-        self.assertIn('87,3–95,4%', t)
-        self.assertNotIn('93,5%', t)          # az ítélet utáni érték csak a naplóban
+        self.assertIn('91,5%', t)
+        self.assertIn('86,7–95,0%', t)
+        self.assertNotIn('92,0%', t)          # a seed-101 régi száma
+        self.assertNotIn('93,0%', t)          # az ítélet utáni érték csak a naplóban
 
     def test_bdb_jelentes_cime_es_vazlata(self):
         """A főjelentés címe a szócikk saját szavaiból képződik (gépi): saját szöveg híján az első alpontéból (H0776 אֶרֶץ: 1 „föld”,

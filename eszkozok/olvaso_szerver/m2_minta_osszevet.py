@@ -11,6 +11,9 @@ Az összevetés szabálya (a felhasználó döntése, 2026-10-15; rögzítve a K
     jelentéspont elején (a kulcsban a `szakasz`), a szócikk római számos fő tagolása (rész) külön (a kulcsban és az új vak lapon a `resz`
     oszlop). Mindkettő pontosan egyezzen. A régi (seed-99/100) kitöltésekben nincs `resz` oszlop: ott a jelentéspont második római száma a
     rész („III I/3”), egy római szám a homonima-szám;
+  * F102 (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-09; a seed-102 kitöltése ELŐTT rögzítve): a fő mutató a
+    nagybetűs csoportszintet (egyetlen nagybetű, `A`–`H`: „Qal/A/3”, „Hiph`il/B/2”) és a görög betűs szintet („δ”, „(δ)”) a zárójeles
+    szinttel együtt elhagyja; az előtag-mutató változatlan. (A seed-101 korábbi számai e szabály előtt készültek.);
   * könyv és MT-vers: pontos egyezés (a vak lap Károli-könyvrövidítést ír); a Károli-oszlopot nem a vak lap bírálja, hanem a gépi
     összevetés (`karoli_ellenoriz.py`).
 Csak olvas. Használat (a repó gyökeréből):
@@ -18,6 +21,11 @@ Csak olvas. Használat (a repó gyökeréből):
       --kitoltott naplok/BDB_SZELETELO_M2_minta_kitoltott_A.tsv naplok/BDB_SZELETELO_M2_minta_kitoltott_B.tsv [--mai-tabla]
 A `--mai-tabla` a kulcs szeletelő-oszlopait a mai `adat/bdb_vers_jelentes.tsv` megfelelő soraival (strong + poz) cseréli: így mérhető, hogy a
 javítás után a szeletelő mit adna ugyanarra a mintára (tájékoztató, nem új mérés).
+A `--szakasztabla` (F102) a kulcs `utvonal`-át a szakasztábla (`adat/bdb_szakaszok.tsv`, 2.30) útvonalára cseréli: a hivatkozás
+(`nyers`) a Strong tábla-szövegében, a 2.29 sorainak sorrendjében, kurzorral keresve (az `eszkozok/bdb_jelolt/szerkezet_osszevet.py
+--korpusz` eljárása), a 2.29 alakjára hozva (a nagybetűs csoport és a zárójeles szint nélkül, három szint, `cim`/`fej` → `fej`, tagolatlan
+Strongnál `tagolatlan`); a `szakasz` és a `resz` marad (a 2.30 homonima-száma a címsorban áll). Nem rendelhető sornál a kulcs útvonala
+változatlan, és a darabszámot kiírja. Így ugyanaz a vak kitöltés a szeletelő és a szakasztábla útvonalát is méri.
 """
 import argparse
 import os
@@ -30,12 +38,58 @@ if hasattr(sys.stdout, 'reconfigure'):
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROMAI = re.compile(r'^(?:I{1,3}|IV|V|VI)$')
 ZAROJEL = re.compile(r'^\([^)]*\)$')
+# F102: a fő mutatóban elhagyott további szintek — nagybetűs csoport és görög betű
+CSOPORT = re.compile(r'^[A-H]\.?$')
+GOROG = re.compile(r'^[α-ω]\.?$')
 
 
 def olvas(p):
     L = [l.rstrip('\n').split('\t') for l in open(p, encoding='utf-8') if l.strip() and not l.startswith('#')]
     h = L[0]
     return [dict(zip(h, r + [''] * (len(h) - len(r)))) for r in L[1:]]
+
+
+def _tabla_ut(ut):
+    if ut in ('cim', 'fej', ''):
+        return 'fej'
+    r = ut.split('/')
+    r[0] = r[0].split('.')[0]
+    r = r[:3]
+    while len(r) < 3:
+        r.append('-')
+    return '/'.join(r)
+
+
+def szakasztabla_utvonal():
+    """{(strong, poz): útvonal} a 2.30-ból, a 2.29 minden nem szűrt sorára (l. a docstring `--szakasztabla`)."""
+    sys.path.insert(0, os.path.join(REPO, 'eszkozok', 'bdb_jelolt'))
+    import szerkezet_osszevet as SO
+    tab = SO.tabla_strongonkent()
+    szoveg, tagolt = {}, {}
+    for st, sorok in tab.items():
+        darabok, hatar, p = [], [], 0
+        for x in sorok:
+            t = ' '.join(y for y in (x['jel'], x['szoveg']) if y) + ' '
+            darabok.append(t)
+            hatar.append((p, p + len(t), x))
+            p += len(t)
+        szoveg[st] = (''.join(darabok), hatar)
+        tagolt[st] = any(x['utvonal'] not in ('cim', 'fej') for x in sorok)
+    ki, kurzor = {}, {}
+    for d in SO.olvas(SO.BVJ, 2):
+        st = d['strong']
+        if st not in szoveg or d['szurt'] == '1':
+            continue
+        t, hatar = szoveg[st]
+        nyers = d['nyers'].strip().lstrip(', ').strip()
+        k = t.find(nyers, kurzor.get(st, 0)) if nyers else -1
+        if k < 0:
+            continue
+        kurzor[st] = k + len(nyers)
+        x = next(h[2] for h in hatar if h[0] <= k < h[1])
+        ut = _tabla_ut(x['utvonal'])
+        ki[(st, d['poz'])] = 'tagolatlan' if ut == 'fej' and not tagolt[st] else ut
+    return ki
 
 
 def bont(szakasz, ut):
@@ -87,7 +141,7 @@ def normal(seg):
 
 
 def fo(seg):
-    return normal([x for x in seg if not ZAROJEL.match(x)])
+    return normal([x for x in seg if not (ZAROJEL.match(x) or CSOPORT.match(x) or GOROG.match(x))])
 
 
 def elotag(kulcs, kit):
@@ -100,6 +154,7 @@ def main():
     ap.add_argument('--kulcs', required=True)
     ap.add_argument('--kitoltott', nargs='+', required=True)
     ap.add_argument('--mai-tabla', action='store_true')
+    ap.add_argument('--szakasztabla', action='store_true', help='a kulcs útvonala a 2.30 szakasztáblából (F102)')
     a = ap.parse_args()
     kulcs = {r['azon']: r for r in olvas(a.kulcs)}
     if a.mai_tabla:
@@ -113,6 +168,15 @@ def main():
                     k[o] = m.get(o, '')
             else:
                 k['utvonal'] = '?nincs a mai táblában'
+    if a.szakasztabla:
+        tu = szakasztabla_utvonal()
+        nincs = 0
+        for k in kulcs.values():
+            if (k['strong'], k['poz']) in tu:
+                k['utvonal'] = tu[(k['strong'], k['poz'])]
+            elif k['szurt'] != '1':
+                nincs += 1
+        print('# szakasztábla-útvonal: a nem szűrt kulcssorokból %d nem rendelhető a 2.30-hoz (ott a 2.29 útvonala áll)' % nincs)
     kit = {}
     for f in a.kitoltott:
         for r in olvas(f):

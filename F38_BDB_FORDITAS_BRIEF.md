@@ -119,7 +119,7 @@ A tapadt „N.szó” alakot a fordító részben szétválasztotta (EN 9 → HU
 megköveteli a fordításban. A jelentésszámok így a magyar szövegben is az angolt követik — de csak ott, ahol a sima szövegből a
 jelölő felismerhető; ahol a szeletelő téved (#102 seed-101: 13 hely), ott a kapu sem lát jelölőt.
 
-**Miért most.** A 8 099 szócikkből 674 kész (≈ 8%). A tagolás forrásáról a #102 1. lépése dönt (DT-F102d helyőrző, #102 1a.);
+**Miért most.** A 8 099 szócikkből 674 kész (≈ 8%). A tagolás forrásáról a #102 1. lépése dönt (DT659 helyőrző, #102 1a.);
 ha a jelölt forrásra vált, a magyar szövegnek is hordoznia kell a jelentéshatárokat, különben az angol és a magyar tagolás elválik.
 Minél több adag készül el addig, annál drágább az utólagos illesztés vagy újrafordítás.
 
