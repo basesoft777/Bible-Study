@@ -490,7 +490,7 @@ munkafán, ugyanazzal az adatbázissal) ugyanígy bukik; az ág nem érinti sem 
   szóráson belül van; a DT-F102d sorából a pontosítás visszavonva, helyette a DT-F102g-re hivatkozik.
 - **2. A brief 4.1 elfogadási feltétele a szeletelőn nem teljesült:** a seed-101 13 szeletelő-hibájából az élő 2.29-ben csak az M130 javult. Egyeztetett
   eltérés (orkesztrátori döntés): a 2.30 által megoldott hat hiba — M028, M043, M140, M146, M236, M243 — tételesen az N-F102e-hez (a szakasztáblára
-  való átálláshoz) került; a zárójelentés ezt „nem teljesült, áthelyezve” formában mondja ki. (A többi: M102, M117 az 1c. szerint `forras_hiba`;
+  való átálláshoz) került; a zárójelentésnek ezt „nem teljesült, áthelyezve” formában ki kell mondania (a zárójelentés a zárásnál készül). (A többi: M102, M117 az 1c. szerint `forras_hiba`;
   M162 szeletelő-hiba, l. 19.; M031, M203, M238 a 2.30-ban helyes vagy formátumkérdés, szintén a szeletelőben él.)
 - **5. A ⛔ 3.1 sorrendje:** az F102.1–F102.2 javítása (H1004 folytatás, öröklés, szűrés, M130) a ⛔ 3.1 megállási javaslata (F102.3, DT-F102d) előtt
   készült; tartalmilag független a rétegválasztástól (hivatkozás-feloldás és a szeletelő fő tagolása, amely mindkét rétegválasztás mellett a 2.29-ben
