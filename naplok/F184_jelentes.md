@@ -1,6 +1,6 @@
 # F184 — Egy szabály, egy hely (DOKU_EGY_FORRAS): jelentés
 
-*Menet- és zárójelentés egy fájlban (a brief D4 szerint). Ebben a körben csak a D0 szakasz készült; utána ⛔.*
+*Menet- és zárójelentés egy fájlban (a brief D4 szerint). Első kör: D0, majd ⛔; második kör (a D0 jóváhagyása után): D1–D5 és a Zárás. A D6 (független ellenőr, draft PR) az orkesztrátoré.*
 
 ## D0 — leltár
 
@@ -70,3 +70,99 @@ Ma a CI E-szabályok listája egyetlen folyamat-dokumentumban sem áll (csak ré
 **Javaslat a GENERÁLT blokk helyére (egy hely):** `adat/SEMA.md` 3. szakasz („Integritási szabályok”) végén egy új alszakasz, például „3.11 Gépi kapuk — szabálylista”, `<!-- GENERÁLT: … -->` jelölők között. Három blokk: olvasói kapu (V-alszabályokkal), `ellenoriz.py` 1–41, CI E1–E35; mindegyik sorban azonosító, rövid leírás, súlyosság, forrásfüggvény. A CI-őr a blokkot újragenerálja, és eltérésnél bukik.
 - Ok: a SEMA 3. szakasza ma is az `ellenoriz.py` szabályait írja le (1–9.), tehát ez a meglévő helye, és a kapuk zöme adatszabály. A `6_` L8, a `9_` :283 és :160, valamint a MUNKAMENET C-g és C-o csak hivatkozik rá.
 - Alternatíva: a `6_` Minőségi kapuja, ha a blokk csak a lapon futó kapukat (olvasói kapu, 24., 25., 37–40.) tartja. Ekkor a CI és az adatszabályok listája külön helyre kerülne, ami a D3 „egy hely” céljával ütközik.
+
+## A D0 jóváhagyása és az orkesztrátor döntései (2026-11-09, szó szerint)
+
+Az orkesztrátor (`local_c8cc3610`) üzenete, a döntések szó szerint:
+
+- „A 31 soros leltár-tábla jóváhagyva.”
+- „(1) DT645: a 6-os sablon 535. sora (kiemelés csak alapvonallal) a kanonikus. Az 527. sort és a V5-kommentet erre igazítsd. A DT645 utólagos pontosítását új helyőrzős tétel rögzítse: DT-F184a, 🟢, orkesztrátori döntés, hivatkozással a #178 javítókörére, ahol ez már így dőlt el.”
+- „(2) DT569: általános szabály, a tágabb hatókörrel. A **gépi** szótári és Károli-KH forrásadat-javítás nem érvényteleníti a lap átnézését, ha (a) a próza, a minősítés és a határ nem változik, (b) a diff csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés felsorolja. Minden más lapváltozás érvényteleníti. Kanonikus hely: a SEMA 2.48; a MUNKAMENET és a /lap-javit erre hivatkozik. Új helyőrzős tétel: DT-F184b.”
+- „D1: a munkamenet-szintű szabály a CLAUDE.md-ben, a lapszintű a 6-os sablonban kanonikus. A CLAUDE.md „Ezt olvasd” táblájába egy sor kerül a kanonikus helyekről.”
+- „D3: a GENERÁLT blokk az adat/SEMA.md új 3.11 „Gépi kapuk — szabálylista” szakaszába kerül, generátorral és CI-őrrel. Ha egy kapu (pl. a V-alszabályok) leírása ma csak docstringben áll, vezess be hozzá modulszintű táblát.”
+- „A két leltár-szkript maradhat; vedd fel őket a brief `ir` mezőjébe.”
+- „Futás közben nincs hatókör-bővítés.”
+- Kiegészítés: „a SEMA-cserék most mehetnek, külön commitokban, a nem-SEMA munka után. A 2.50-es szétválasztásnál: a #166 (PR #660, mergelve) nyitott tételként már rögzítette a két 2.50 ütközését (N-F166a). A szétválasztás ezt zárja le.”
+
+A két új döntés a `dontesek/uj/doku-egy-forras.md`-ben áll (DT-F184a, DT-F184b, 🟢).
+
+**Az `ir` mező kiegészítése.** A leltár-szkriptek és a PR-fájlok mellett felvettem azokat a fájlokat, amelyeket a jóváhagyott D0 tábla D2-cseréi érintenek, de a befogadó `ir`-listájából hiányoztak: `sablonok/1_*`, `2_*`, `4_*`, `5_*`, `sablonok/PaRDeS_gyorsreferencia.md`, `.claude/commands/lap-javit.md`, `kiadas.md`, `befogad.md`, valamint a `NYITOTT_FELADATOK.md`-t (az N-F166a lezárása). Ez nem új hatókör: a D2 a jóváhagyott tábla szerint ezeket a fájlokat cseréli. Ha az orkesztrátor másként látja, a megfelelő cserék visszavonhatók.
+
+## D1 — kanonikus helyek (F184.1, `62900b28`)
+
+A `CLAUDE.md` „Ezt olvasd” táblájába egy sor került: lapszabály → 6-os sablon; forrás-/cikkszabály → 9-es sablon, a próza promptja a 10-es; adatszabály → `adat/SEMA.md` (a kapulista: 3.11); munkamenet-lépés → `MUNKAMENET.md` (csak a lépés és a hivatkozás); munkamenet-szintű szabály → `CLAUDE.md`; döntés → `DONTESEK.md`.
+
+A D0 tábla javasolt helyeitől két ponton tértem el, a D1-döntés miatt. (1) A kiejtés-szabály (10. sor) kanonikus helye a 6-os sablon lett a gyorsreferencia helyett, mert a D1 a lapszintű szabályt a 6-osba teszi. (2) A „kész” feltétel (6. sor) a `MUNKAMENET.md` C5-ben és a `muhely_allapot.py`-ban maradt; a 6-os és a 4-es sablon elavult „Feed 8” mondatát javítottam és hivatkozássá tettem.
+
+## D2 — a másolatok cseréje hivatkozásra
+
+| tétel | commit | cserék | fájlok |
+|---|---|---|---|
+| nem-SEMA cserék | F184.2 `e3338a2b` | 29 | 13 |
+| SEMA: lánc-levezetés (1.), egyirányúság (22.), a 2.49 érvényesség-hivatkozása (9.) | F184.5 `0dfe41a7` | 3 | 1 |
+| SEMA 2.48: DT-F184b (9.) | F184.6 `e3114724` | 1 | 1 |
+| SEMA: a két „2.50” szétválasztása (31.) + az N-F166a lezárása | F184.7 `d0cb8d6c` | 1 + 1 | 2 |
+
+Leltár-soronként (a nem-SEMA rész): 1.: 1, 2.: 1, 3.: 1, 4.: 2, 5.: 2, 6.: 2, 7.: 3, 8.: 1, 9.: 2, 10.: 5, 13.: 1, 14.: 1, 16.: 2, 17.: 1, 25.: 1, 26.: 1, 27.: 1, 30.: 1. A számlálás a cseréket méri; a 6-os sablon kolofon-mondata egyetlen cserével a 6., 7. és 8. sort is érinti, ezért ott a sorösszeg nagyobb a cserék számánál.
+
+Ahol nem cseréltem, és miért:
+- **11., 12., 15., 18., 19., 28. sor:** a másolat már hivatkozás volt, vagy a kanonikus helyen áll; nincs teendő.
+- **10-es U3-prompt (11., 13., 14. sor):** a `sablonok/10_…` :15, :33, :35 a modellnek szóló utasítás. A D1 a 10-est a próza promptjaként a 9-essel együtt kanonikusnak veszi, ezért nem cseréltem.
+- **20., 21. sor („egy kézben”, `munka` mező):** a D1 szerint a `CLAUDE.md` a kanonikus hely. A részletes szabályok azonban a MUNKAMENET „Kontextus-őrzés” szakaszában és a BRIEF_SABLON-ban állnak; áthelyezésük tartalmi és terjedelmi kérdés, ezért nem döntöttem → N-F184c.
+- **22., 23. sor:** a jóváhagyott tábla szerint a SEMA a kanonikus. A SEMA bevezetőjének egyirányúság-mondata hivatkozássá vált; a `CLAUDE.md` alapszabályai maradtak (belépési pont).
+- **24. sor:** nem mértem → N-F184d.
+- **29. sor (próza-lefedettség):** a `kiadas.md` :13 csak egy tagmondatot ismétel (DT471); csere nélkül hagytam.
+- **31. sor:** a „2.50” szétválasztásakor az E34-szakasz kapott új számot (2.55, a 2.54 után), mert a nyílt mag 2.50-es szakaszára élő mutatók hivatkoznak (`adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py`). Az E34-szakaszra csak a lezárt F166 brief `lezarva_osszegzes`-e és a belőle generált `FELADATOK.md`-sor mutat; ezek történeti szövegek, nem javítottam őket. Az N-F166a a `NYITOTT_FELADATOK.md` meglévő sorában lezárva.
+
+**Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** A két ⛔ sort (3., 9.) a DT-F184a és a DT-F184b fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
+
+## D3 — generált szabálylista (F184.4 `5c5575dd`, F184.8 `f26301dc`)
+
+- **Modulszintű táblák:** `eszkozok/olvasoi_kapu.py` `KAPUK` (23 azonosító, súlyosság, leírás) és `VISSZHANG_ALSZABALYOK` (V1–V7; a V5 a DT-F184a szerint). A docstring ellenőrzés-listája és a V1–V6-os kommentblokk helyett hivatkozás áll. `eszkozok/ellenorzes/szabalyok.py`: `SZABALY_LEIRAS` (30 CI-szabály) és `KULSO_SZABALYOK` (E1, E18). Az `ellenoriz.py` szabálycímei a kódliterálokból jönnek (`Sor('<N>. …')`, `cim = '<N>. …'`; 43 sor, a 34. szabály nem létezik).
+- **Generátor:** `python eszkozok/ellenorzes/szabalyok.py --kapulista [--ir]`. Az `adat/SEMA.md` új 3.11 szakaszába ír, a `<!-- GENERÁLT-KEZDET: szabalyok.py --kapulista -->` … `<!-- GENERÁLT-VÉGE: … -->` jelölők közé.
+- **CI-őr: E37** (HIBA, fájlszintű). A blokk egyezik a generálttal, és a forrástáblák a kóddal: a kibocsátott `talalat(...)`-azonosítók, a V-üzenetek, a `SZINT` kulcsai és a workflow lépésneveinek E-azonosítói. Akkor fut, ha a PR a SEMA-t vagy a blokk valamely forrását módosítja.
+- A V5-kód már a pontosított szabályt mérte (`VH_KIEMELT_JO_RX`); csak a komment volt elavult.
+
+## D4 — egy jelentés feladatonként (F184.3, `223b44d4`)
+
+A `/kovetkezo` 10. lépése a zárást a `naplok/F<nn>_jelentes.md` „Zárás” szakaszába teszi. Külön `_zaras.md` nem készül, az `ELLENOR_*` külön marad. Az 5d, a 8. lépés és a csomag-sorok a jelentésre mutatnak (5 csere). A BRIEF_SABLON új „Jelentés” bekezdést kapott. A régi `_zaras.md` fájlokhoz nem nyúltam. A `feladatok.py` ütközés-kivétele (`naplok/*_zaras.md`, a feladat saját `naplok/F<nn>_*` fájljai) változatlanul lefedi a jelentést, ezért a `feladatok.py`-t nem kellett módosítani.
+
+## D5 — hivatkozás-kapu (F184.4, `5c5575dd`)
+
+**E36** (`eszkozok/ellenorzes/szabalyok.py`). A folyamat-dokumentumok négyféle hivatkozása létező célra kell, hogy mutasson:
+- `SEMA[.md] n.nn[.n]` (a 3. szakasz számozott tételei „SEMA 3.n”-ként is érvényesek);
+- `MUNKAMENET[.md] <lépés>`;
+- `ellenoriz.py N.`;
+- `olvasói kapu <AZON>`.
+
+Emellett a SEMA szakaszszámai egyediek. A szabály nem a másolatok egyezését nézi.
+
+Hatókör: a PR változott folyamat-dokumentumai. `None` vagy `--teljes` módban mindegyik dokumentumot nézi. Sorhoz kötött (D8): a hozzáadott soron HIBA, máshol JELENTÉS.
+
+Korlát: ha egy PR csak a célt változtatja meg (például átszámoz egy SEMA-szakaszt), a változatlan hivatkozó dokumentumot PR-módban nem nézi. A `--teljes` jelentés viszont mutatja.
+
+A mai repón az E36 egyetlen találata a SEMA 2.34 kettőzése (N-F184b).
+
+Tesztek: `E36Teszt` (7) és `E37Teszt` (7) a `eszkozok/ellenorzes/tesztek/test_szabalyok.py`-ban.
+
+## Zárás
+
+- **Elkészült:** D1 (1 sor a `CLAUDE.md`-ben; DT-F184a, DT-F184b), D2 (34 csere: 29 nem-SEMA csere 13 fájlban + 5 SEMA-csere, köztük a DT-F184b 2.48-szövege és a „2.50” szétválasztása; ezen felül az N-F166a lezárása a `NYITOTT_FELADATOK.md` meglévő sorában), D3 (modulszintű táblák, generátor, SEMA 3.11 GENERÁLT blokk, E37), D4 (`/kovetkezo` 10. lépés + 4 kapcsolódó csere, BRIEF_SABLON „Jelentés”), D5 (E36). A D6 (független ellenőr, draft PR) az orkesztrátoré.
+- **SEMA-commitok** külön, a többi után: F184.5 `0dfe41a7`, F184.6 `e3114724`, F184.7 `d0cb8d6c`, F184.8 `f26301dc`, F184.10 `ebe7add9` (a blokk újragenerálása az F184.9 után).
+- **A CI PR-módú futásának javítása (F184.9 `88d0293b`):** az első futás két, általam okozott HIBA-t talált. (1) E32: a `KAPUK` literáljaiban már kiosztott helyőrzők álltak (DT-F181b/c, DT-F178d/e); ezek helyére a végleges számok kerültek (DT602, DT603, DT645, DT646). (2) E10: az E10 saját leírása a generált blokkban kiváltotta a tiltott-fordítás mintát; a leírást átfogalmaztam.
+- **Generált blokk:** `adat/SEMA.md` 3.11, naprakész (`python eszkozok/ellenorzes/szabalyok.py --kapulista --ir` → „naprakész”); E37: 0 találat.
+- **Tesztek (2026-11-09):**
+  - `python eszkozok/feladatok.py ellenoriz`: 201 brief, 0 hiba, 0 figyelmeztetés;
+  - `python eszkozok/teszt_feladatok.py`: 119 teszt, OK;
+  - `eszkozok/ellenorzes/tesztek`: `test_szabalyok` 251 (köztük E36Teszt 7, E37Teszt 7), `test_dontes_nezet` 9, `test_szamkiosztas` 14, `test_tanulmany` 32 — mind OK;
+  - `python eszkozok/ellenoriz.py` (E1): 0 SÉRTÉS (RENDBEN 27, KÉZI 2, JELENTÉS 14).
+  - A `test_szabalyok` 26 E27-tesztje ezen a gépen csak akkor fut le, ha az ideiglenes könyvtár a repóval azonos meghajtón van (`TMP=E:\…`; különben `relpath`-hiba: „path is on mount 'E:', start on mount 'C:'”). Ez környezeti adottság, nem a #184 hatása.
+- **CI-futtató PR-módban** (`futtat.py`, base `a0547c03`..HEAD): a javítások után exit 0, HIBA nincs; JELENTÉS-szinten E9 5, E25 3, E27 43, E30 1, E34 41, E36 1 (a SEMA 2.34, N-F184b) — ezek nem a #184 hozzáadott sorain állnak. A futás `--pr-cim "[ELLENŐRZŐ] …"`-tel ment.
+- **E16:** a PR az ellenőrzőt módosítja (`szabalyok.py`, `olvasoi_kapu.py`, `ellenorzes.yml`), ezért a PR címe `[ELLENŐRZŐ]` jelölést kíván.
+- **Nyitott pontok** (`nyitott/uj/doku-egy-forras.md`):
+  - N-F184a: a Feed 9. kapuja még nem ismeri a DT-F184b kivételét (a blokkszintű lapdiff gépi ellenőrzése hiányzik);
+  - N-F184b: a SEMA 2.34 kettőzése (az E36 találta; a D0-n kívül esett);
+  - N-F184c: a „Kontextus-őrzés” és a `munka` mező szabályainak helye a D1-hez képest (döntés kell);
+  - N-F184d: a szintjelölés (SEMA 3.10 ↔ 9-es sablon) mérése.
+  - Egyik sem blokkolja a #184 lezárását.
+- **Proveniencia:** `scope=F184 D1–D5 | forras=git log 19290a7a..HEAD, a fenti parancsok kimenete | ts=2026-11-09`.
