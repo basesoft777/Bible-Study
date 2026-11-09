@@ -21,7 +21,7 @@
 | 2 | Visszhang: kinyerés két kézzel, átnézés-bemenet (DT639, DT646, ELLENOR_F178 3–4.) | `MUNKAMENET.md` C-vh :75; `adat/SEMA.md` 2.53 „Két kéz” :2133–2148; `sablonok/9_…` :5; `sablonok/6_…` :519 (említés) | nem (a C-vh tömörített, egyező) | SEMA 2.53 „Két kéz” (adatírás szabálya) | nem |
 | 3 | ⛔ Visszhang: mikor kiemelt a következtetés (DT645 + utólagos pontosítás) | `sablonok/6_…` „Visszhang-blokk (4.11)” összefoglaló :527; `sablonok/6_…` 4.11-szabályok 2.–3. :534–535; `eszkozok/olvasoi_kapu.py` V5-komment :975–976; `DONTESEK.md` DT645 :679 | **igen** — tartalom: a :527 és a V5-komment szerint két héber lánc-szó egy szóval *feltétel nélkül* kiemelt (a DT645 (a) eredeti szövege); a :535 és a DT645 „Pontosítás (orkesztrátori átnézés)” szerint csak alapvonallal (Targum/Vulgata: nem kiemelt). A DT-sor tartalma utólag, új tétel nélkül módosult (a brief #178-as esete) | javaslat: `6_` :535 (a pontosított alak); a :527 → hivatkozás; a V5-komment a D3-ban a kódból | nem |
 | 4 | Visszhang-kapu V1–V7 (DT646, DT-F178d/e) | `eszkozok/olvasoi_kapu.py` docstring :37–40 (V1–V7); ugyanott kódkomment :970–977 (**V1–V6**); `sablonok/6_…` :529–540 (a szabályokba szórva); `MUNKAMENET.md` :75 („V1–V7”); `DONTESEK.md` DT646 :680 (V1–V7) | **igen** — a kód belső kommentje V1–V6 (V7 hiányzik); a dokumentumok egyeznek | a kód docstringje → D3 GENERÁLT blokk | nem |
-| 5 | Gépi kapuk a generált lapon: `ellenoriz.py` 24. és 25., olvasói kapu 0 BUKÁS, teljesség-mérés (DT546, DT547) | `MUNKAMENET.md` C-g :76, „A lezárás menete” 1. :90; `sablonok/6_…` Minőségi kapu L8 :480–483; `sablonok/9_…` „Gépi kapuk a generált lapon” :283; `sablonok/10_…` :55–59; `.claude/commands/lap-javit.md` 5.2 :84 | nem | `6_` Minőségi kapu L8 | nem |
+| 5 | Gépi kapuk a generált lapon: `ellenoriz.py` 24. és 25., olvasói kapu 0 BUKÁS, teljesség-mérés (DT546, DT547) | `MUNKAMENET.md` C-g :76, „A lezárás menete” 1. :90; `sablonok/6_…` Minőségi kapu L8 :480–483; `sablonok/9_…` „Gépi kapuk a generált lapon” :283; `sablonok/10_…` :55–59; `.claude/commands/lap-javit.md` 5.2 :84 | nem *[helyesbítés, F184.15 (ELLENOR_F184 3.): igen, hiány: a `6_` L8 (a kanonikus) a teljesség-mérést és a 25. szabály formáját nem mondta; a D2 a másolatok uniójára bővítette, l. „Javítókör 1/2”, 3. tétel]* | `6_` Minőségi kapu L8 | nem |
 | 6 | A lezárás „kész” feltétele: Feed-kapuk száma (DT547: 9. kapu = olvasói kapu) | `MUNKAMENET.md` C5 :81 („mind a 9 kapuja”); `sablonok/6_…` Kolofon :304 („a Feed 8 kapuja zöld”); `sablonok/4_…` :387 („a Feed 8 kapuja zöld”); `DONTESEK.md` :588 | **igen** — elavult: a `6_` és a `4_` a DT547 előtti 8 kaput mondja (a döntés eldöntötte, nem tartalmi kérdés) | a „kész” definíció: `6_` (a lap kiadhatósága), a kapulista a `muhely_allapot.py`-ból (D3-jelölt); MUNKAMENET C5 hivatkozik | nem |
 | 7 | Kiadás-sor és kolofon kiadásszám (SEMA 2.46, DT492, DT486) | `adat/SEMA.md` 2.46 :1827–; `sablonok/6_…` :304; `MUNKAMENET.md` C5 :81, C-k :82; `.claude/commands/kiadas.md` 5. :22; `.claude/commands/lap-javit.md` 5.4 :87 | nem (a `kiadas.md` a mezőket is felsorolja, egyezően) | SEMA 2.46 | nem |
 | 8 | Lapjavítás és a kolofon „Emberi lektorálás” sora (SEMA 2.49, DT599) | `adat/SEMA.md` 2.49 :1907–1936; `sablonok/6_…` :304; `MUNKAMENET.md` C-j :83; `.claude/commands/lap-javit.md` :7, :97; `.claude/commands/kiadas.md` 4. :21 | nem | SEMA 2.49 (adat) + `lap-javit.md` (az eljárás) | nem |
@@ -114,7 +114,7 @@ Ahol nem cseréltem, és miért:
 - **29. sor (próza-lefedettség):** a `kiadas.md` :13 csak egy tagmondatot ismétel (DT471); csere nélkül hagytam.
 - **31. sor:** a „2.50” szétválasztásakor az E34-szakasz kapott új számot (2.55, a 2.54 után), mert a nyílt mag 2.50-es szakaszára élő mutatók hivatkoznak (`adat/nyilt_angol.tsv` fejléce, `eszkozok/nyilt_mag_angol.py`). Az E34-szakaszra csak a lezárt F166 brief `lezarva_osszegzes`-e és a belőle generált `FELADATOK.md`-sor mutat; ezek történeti szövegek, nem javítottam őket. *[Helyesbítés, F184.14 (ELLENOR_F184 2.): az állítás nem volt igaz. Élő mutató a `DONTESEK.md` DT614-sorának hivatkozás-oszlopa is volt; a `DONTESEK.md` nem állt az `ir`-ben, ezért jelentenem kellett volna. A javítás és a teljes mutatólista: „Javítókör 1/2”, 2. tétel.]* Az N-F166a a `NYITOTT_FELADATOK.md` meglévő sorában lezárva.
 
-**Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** A két ⛔ sort (3., 9.) a DT-F184a és a DT-F184b fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
+**Tartalmi eltérés, amelyet a döntések nem fednek: nincs.** *[Helyesbítés, F184.15 (ELLENOR_F184 1., 3.): a 6_ L8 bővült (a másolatok uniója, „Javítókör 1/2”, 3. tétel), és két csere tartalmat törölt (1. tétel); ezek a jelentésből hiányoztak.]* A két ⛔ sort (3., 9.) a DT-F184a és a DT-F184b fedi; az elavult másolatokat (1., 4., 6., 16., 17.) meglévő döntés dönti el.
 
 ## D3 — generált szabálylista (F184.4 `5c5575dd`, F184.8 `f26301dc`)
 
@@ -206,6 +206,14 @@ Keresés: `git grep -n -I '2\.50'` a teljes repón, a találatok kézi szétvál
   - e jelentés D0-leltára (12. és 31. sor) és az orkesztrátor szó szerint idézett döntése;
   - `NYITOTT_FELADATOK.md:852` (az N-F166a lezárt sora, amely az átszámozást maga írja le).
 - **A jelentés pontatlansága:** a D2 „31. sor” bekezdése (és az F184.7 `d0cb8d6c` commit-üzenete) szerint az E34-szakaszra csak történeti szöveg mutatott. Ez nem volt igaz; a bekezdés helyesbítve, a commit-üzenet nem írható át.
+
+### 3. A 6-os sablon L8-bővítése (F184.15; ELLENOR_F184 3.)
+
+Az F184.2 (`e3338a2b`) a `sablonok/6_…` Minőségi kapujának L8 pontját (a leltár 5. sorának kanonikus helyét) két elemmel bővítette:
+- a 25. szabály formája: „1/a próza: kerek mondat + „Funkció:” sor, a forma: `9_PaRDeS_motivum_forras_sablon.md` 4. pont” (előtte csak „25. (1/a próza)”);
+- „új cikknél a teljesség-mérés (három háló, `9_` 4. pont) lefutott” (előtte nem állt az L8-ban).
+
+**Miért:** a két elem a két másolatban állt, a kanonikusban nem: a forma a `MUNKAMENET.md` C-g-ben és a `9_` :283-ban („arany szintű: kerek próza + „Funkció:” sor”), a teljesség-mérés mindkettőben. A csere hivatkozásra csak akkor nem töröl tartalmat, ha a kanonikus hely a másolatok unióját hordozza; új szabály nem keletkezett. A leltár 5. sorának „nem” ítélete ezért téves volt (a másolatok tartalmilag eltértek a kanonikustól: a kanonikus volt hiányos); a sor helyesbítve, ahogy a D2 „Tartalmi eltérés … nincs” mondata is. A bővítést korábban csak a commit-üzenet említette.
 
 ## Zárás
 
