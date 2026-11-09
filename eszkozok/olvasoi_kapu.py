@@ -46,8 +46,8 @@ BUKAS, FIGY = 'BUKÁS', 'FIGYELMEZTETÉS'
 KAPUK = (
     ('BELSO', BUKAS, 'belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor, gerinc, '
                      '.tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög szó és a kiejtése — '
-                     'a jelölt alak (hivatkozás + felső index, DT-F181b) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / '
-                     '„(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT-F181c)'),
+                     'a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / '
+                     '„(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603)'),
     ('MOTIVUM_ID', FIGY, 'más motívum azonosítója link nélkül'),
     ('PONT', BUKAS, '„N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS'),
     ('ANGOL', BUKAS, 'angol maradék és munkazsargon a szólistából'),
@@ -69,7 +69,7 @@ KAPUK = (
     ('LABJEGYZET', BUKAS, 'definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van)'),
     ('PROZA_1A', BUKAS, 'az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)'),
     ('CELLA_ISMETLES', BUKAS, 'egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3)'),
-    ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): a `VISSZHANG_ALSZABALYOK` V1–V7'),
+    ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
     ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
                           'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
 )
@@ -82,7 +82,7 @@ VISSZHANG_ALSZABALYOK = (
     ('V3', '„nincs rokon nyelvi adat”, holott a BDB-szócikk nem azonosítható (bdb_szócikk=0): a kettő nem vonható össze'),
     ('V4', '„ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”)'),
     ('V5', 'kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a láncon kívüli alapvonallal (a LXX sávja szerint), '
-           'két héber lánc-szó egyesítése is csak így; a Targumnál és a Vulgatánál nem (DT645, DT-F184a)'),
+           'két héber lánc-szó egyesítése is csak így; a Targumnál és a Vulgatánál nem (DT645, pontosítva)'),
     ('V6', 'ugyanaz a tagmondat (a számok és a fordítók neve nélkül) legalább háromszor a táblán'),
     ('V7', 'az alapvonal-mondat nem a sávja (≥ 80% / 40–80% / < 40%) szerinti, a zárójeles versszám nevezőként áll, '
            'vagy a három szám nem egyezik'),

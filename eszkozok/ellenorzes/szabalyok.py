@@ -3015,7 +3015,7 @@ SZABALY_LEIRAS = {
     'E7': 'a `bekerült` döntés igehelye a study táblázatában áll, nem csak a prózában',
     'E8': 'igehely-formátum',
     'E9': 'angol „sense” szó a study- és lexikonszövegben',
-    'E10': 'spirit → lélek / spiritual → lelki tiltott fordítás',
+    'E10': 'a „spirit” / „spiritual” tiltott magyarítása (helyesen: szellem, szellemi)',
     'E11': 'Cremer/NIDNTTE/NIDOTTE tiltás (TWOT-szám kivétel)',
     'E12': 'proveniencia a prózában',
     'E13': 'héber/görög szó kiejtés nélkül',
