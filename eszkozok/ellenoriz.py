@@ -688,8 +688,20 @@ def res_egyezik(elvart, tenyleges):
     import lexikon_general as LG
     # F123.GENKOR: a jelölt Strong-szám felirata (szám · rövid jelentés, DT-F181b) és a címsor szerzőségi jelölés
     # nélkül (DT-F181c) a generátoréval azonos
-    return tenyleges in (elvart, OU.alkalmaz(elvart),
-                         OU.alkalmaz(LG.cimjeloles_ki(elvart), strong_cim=LG.strong_cim))
+    if tenyleges in (elvart, OU.alkalmaz(elvart), OU.alkalmaz(LG.cimjeloles_ki(elvart), strong_cim=LG.strong_cim)):
+        return True
+    # F178.4: az új szerkezetű lapon a rés is olvasói átíráson megy át, és a lapszintű kiejtés-pótlás (az első
+    # előfordulás kiejtése) a rés héber/görög szavát is érintheti: a kiejtés-zárójel nélkül összevetve
+    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.olvasoi_atiras(elvart)), strong_cim=LG.strong_cim)
+    return tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj)
+
+
+_KIEJTES_ZAROJEL_RX = re.compile(r'([֐-׿Ͱ-Ͽἀ-῿]+(?:\]\([^)]*\))?'
+                                 r'(?:<sup[^>]*>[^<]*</sup>)?)\s\([^()\n]{1,40}\)')
+
+
+def _kiejtes_nelkul(szoveg):
+    return _KIEJTES_ZAROJEL_RX.sub(r'\1', szoveg or '')
 
 
 def szabaly11_res_forras_egyezes(adat_dir):
@@ -720,6 +732,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         motivum_resek.setdefault(r['id'], set()).add(r['res'])
     for motivum_id, resek in motivum_resek.items():
         for res in LG.RES_SORREND:
+            if res == 'tanitoi' and res not in resek:
+                continue   # DT-F178b: a tanítói rés lépcsős kivezetése (motívumonként, a teljes folyamattal)
             if res not in resek:
                 hibas.append('%s / %s -- hiányzó res_forras.tsv sor' % (motivum_id, res))
         for res in sorted(resek - set(LG.RES_SORREND)):
@@ -738,6 +752,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         if lex_szoveg is None:
             hibas.append('%s / %s -- nincs lexikonoldal' % (motivum_id, res))
             continue
+        if res == 'tanitoi' and LG.UJ_SZERKEZET_RX.search(lex_szoveg):
+            continue  # F178.4: a nevesített tanítói rész az új szerkezetű lapon nem áll (a rés sorsa: DT-F178b)
         try:
             elvart, tenyleges = res_elvart_es_tenyleges(LG, lex_szoveg, motivum_id, res, r)
         except Exception as exc:
@@ -2122,6 +2138,160 @@ def szabaly38_csak_szo(adat_dir):
                            'vagy a sor elutasítva' if peldak else None))
 
 
+# 39. szabály (F178.1, határ-frissesség): a határ-ellenőrzés modelles része a motívum beépített sorainak egy adott
+# állapotára készül. A HAMART-001 határ-ellenőrzése 52 soron futott, a lezárás 60 soron, és 11 határhiba csúszott át.
+# A mérés módja: a modelles rész gépi sorállapot-jele (`<!-- SORÁLLAPOT: n=<sorok> ujj=<sha256[:12]> -->`), amelyet a
+# modelles rész írója a futás elején a `python eszkozok/ellenoriz.py --hatar-ujjlenyomat <ID>` kimenetéből másol be.
+# Az ujjlenyomat a motívum `elofordulasok.tsv`-sorainak rendezett, sorvég-független SHA-256-ja: minden sor-változás
+# (új, törölt vagy módosított sor) megváltoztatja, a sorrend és a CRLF nem. A git-időbélyeg helyett ez azért, mert a
+# munkaágon, rebase és cherry-pick után a commit ideje nem a tartalom ideje, és a sorállapot a fájlból ellenőrizhető.
+# Régi (jel nélküli) modelles résznél a bevezető „N beépített sor” száma a tartalék mérce (csak a darabszám).
+SORALLAPOT_RX = re.compile(r'<!--\s*SORÁLLAPOT:\s*n=(\d+)\s+ujj=([0-9a-f]{12})\s*-->')
+MODELLES_SORSZAM_RX = re.compile(r'(\d+)\s+beépített sor')
+
+
+def hatar_ujjlenyomat(adat_dir, mid):
+    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül)."""
+    with open(os.path.join(adat_dir, 'elofordulasok.tsv'), encoding='utf-8') as f:
+        sorok = [s.rstrip('\r\n') for s in f]
+    sajat = sorted(s for s in sorok if s.split('\t', 1)[0] == mid)
+    return len(sajat), hashlib.sha256('\n'.join(sajat).encode('utf-8')).hexdigest()[:12]
+
+
+def hatar_frissesseg(adat_dir, mid, naplo_dir=None):
+    """(állapot, szöveg): `friss` | `elavult` | `nincs_jel` | `nincs_naplo` | `nincs_modelles`."""
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    ut = os.path.join(naplo_dir, 'HATAR_%s.md' % mid)
+    if not os.path.exists(ut):
+        return 'nincs_naplo', 'nincs naplok/HATAR_%s.md' % mid
+    with open(ut, encoding='utf-8') as f:
+        t = f.read()
+    m = re.search(r'<!-- MODELLES-KEZDET -->(.*?)<!-- MODELLES-V[EÉ]GE -->', t, re.S)
+    modelles = (m.group(1) if m else '').strip()
+    if not modelles or modelles.startswith('*(üres') or len(modelles) < 40:
+        return 'nincs_modelles', 'a HATAR_%s.md modelles része üres' % mid
+    n, ujj = hatar_ujjlenyomat(adat_dir, mid)
+    jel = SORALLAPOT_RX.search(modelles)
+    if jel:
+        if (int(jel.group(1)), jel.group(2)) == (n, ujj):
+            return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
+        return 'elavult', ('a modelles rész n=%s ujj=%s állapotra készült, a mai: n=%d ujj=%s'
+                           % (jel.group(1), jel.group(2), n, ujj))
+    regi = MODELLES_SORSZAM_RX.search(modelles)
+    if regi and int(regi.group(1)) != n:
+        return 'elavult', 'a modelles rész %s beépített sorra készült, a mai %d sor' % (regi.group(1), n)
+    return 'nincs_jel', ('a modelles részben nincs SORÁLLAPOT-jel (a mai: n=%d ujj=%s); a frissesség nem '
+                         'igazolható' % (n, ujj))
+
+
+def szabaly39_hatar_frissesseg(adat_dir, naplo_dir=None):
+    """JELENTÉS minden motívumra, amelynek határ-ellenőrzési modelles része elavult vagy nem igazolhatóan friss. A
+    kiadás kapuja (HIBA) a Feed 5. kritériuma (`muhely_allapot.kriterium_5`): ott a nem friss modelles rész piros, a
+    lap nem adható ki. A CI-ben jelentés, mert a már kiadott lap elavult határa a lap 2. kiadásának tétele (F178.3:
+    a meglévő lap bukása a jelentésbe kerül, nem kivétel és nem kézi folt), és a javítás (a modelles rész
+    újrafuttatása) a felhasználó jóváhagyásához kötött (C-h)."""
+    cim = '39. Határ-frissesség: a modelles rész a mai beépített sorokon készült (F178.1)'
+    if not os.path.exists(os.path.join(adat_dir, 'elofordulasok.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/elofordulasok.tsv')
+    naplo_dir = naplo_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'naplok')
+    kiadott = kiadott_idk(adat_dir)
+    hibak, jelentes = [], []
+    idk = sorted(n[len('HATAR_'):-len('.md')] for n in os.listdir(naplo_dir)
+                 if n.startswith('HATAR_') and n.endswith('.md')) if os.path.isdir(naplo_dir) else []
+    for mid in sorted(set(idk) | kiadott):
+        allapot, szoveg = hatar_frissesseg(adat_dir, mid, naplo_dir)
+        if allapot == 'friss':
+            continue
+        jelentes.append(
+            '%s%s: %s' % (mid, ' (kiadott)' if mid in kiadott else '', szoveg))
+    return Sor(cim, _verdikt(hibak, jelentes), (len(hibak) or len(jelentes)) or None, hibak or jelentes,
+               megjegyzes=('javítás: a modelles rész újrafuttatása a mai adaton (MUNKAMENET C-h), a jel: '
+                           'python eszkozok/ellenoriz.py --hatar-ujjlenyomat <ID>' if hibak or jelentes else None))
+
+
+# 40. szabály (F178.3, a HAMART-001 mint arany; a felhasználó: „fontos hogy most már visszaesés ne legyen innen”):
+# regressziós kapuk minden lapon — kerek 2.1/1/a + „Funkció:” sor (a 25. szabály mérője), olvasói kapu kivétel nélkül
+# 0 BUKÁS (Károli-idézet, belső jel), a Döntési út számai összeadódnak, döntés nélküli vers 0, a Nave-blokk nem üres.
+# Az új szerkezetű lapon SÉRTÉS; a régi szerkezetű lapon JELENTÉS (a lap 2. kiadásának tétele: F178.3, „nem kivétel
+# és nem kézi folt”), mert a Döntési út és a kivétel nélküli mérés ott még nem áll.
+OSSZEADAS_RX = re.compile(r'\*\*Összeadás:\*\*\s*(.*?)\s=\s([\d\u202f\u00a0 ]+)\s*megvizsgált vers\. Döntés nélkül maradt '
+                          r'vers:\s*([\d\u202f\u00a0 ]+)\.')
+
+
+def _szam(s):
+    return int(re.sub(r'\D', '', s) or 0)
+
+
+def lap_regresszio(mid, lap):
+    """[hiba] egy lapra (a 40. szabály mércéje)."""
+    import olvasoi_kapu as OK
+    import proza_1a as P1
+    import lexikon_general as LG
+    hibak = []
+    uj = bool(LG.UJ_SZERKEZET_RX.search(lap))
+    tal, _ = OK.lap_meres(lap)
+    _, buk, _ = OK.osszesit(tal)
+    if buk:
+        hibak.append('olvasói kapu%s: %d BUKÁS' % (' (kivétel nélkül)' if uj else '', buk))
+    d = P1.osszesit(P1.meres(lap))
+    if not d['igehely']:
+        hibak.append('az igehelyek prózája nem található')
+    elif d['arany'] < d['igehely']:
+        hibak.append('az igehelyek prózája: %d hely nem kerek vagy „Funkció:” nélküli' % (d['igehely'] - d['arany']))
+    if uj:
+        o = OSSZEADAS_RX.search(lap)
+        if not o:
+            hibak.append('a Döntési út összeadás-sora hiányzik')
+        else:
+            tagok = [_szam(x) for x in re.findall(r'([\d\u202f\u00a0 ]+)\s\(', o.group(1))]
+            if sum(tagok) != _szam(o.group(2)):
+                hibak.append('a Döntési út számai nem adódnak össze: %s ≠ %d' % (' + '.join(map(str, tagok)),
+                                                                                 _szam(o.group(2))))
+            if _szam(o.group(3)):
+                hibak.append('döntés nélkül maradt vers: %d' % _szam(o.group(3)))
+    else:
+        hibak.append('nincs Döntési út (régi szerkezet)')
+    nave = re.search(r'(?ms)^#### (?:4\.)?12\. Tematikus index.*?(?=^#### |^### |^## )', lap)
+    if not nave or not re.search(r'(?m)^(?:- \*\*|\| (?!---|Téma))', nave.group(0)):
+        hibak.append('a Nave-blokk (tematikus index) üres')
+    return uj, hibak
+
+
+def szabaly40_hamart_regresszio(adat_dir, lex_dir=None):
+    cim = '40. A HAMART-001 regressziós kapui minden lapon (F178.3)'
+    lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    sertes, jelentes = [], []
+    for nev in sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md')):
+        mid = nev[:-len('_TUDOMANYOS.md')]
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            uj, hibak = lap_regresszio(mid, f.read().replace('\r\n', '\n'))
+        if hibak:
+            (sertes if uj else jelentes).append('%s%s: %s' % (mid, '' if uj else ' (2. kiadás)', '; '.join(hibak)))
+    return Sor(cim, _verdikt(sertes, jelentes), (len(sertes) or len(jelentes)) or None, sertes or jelentes,
+               megjegyzes='javítás: a forrás vagy a generátor, utána újragenerálás; kézi folt nincs')
+
+
+# 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
+# (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
+def szabaly41_kozlemeny_szerkeszto(adat_dir):
+    cim = '41. „Felhasználó” / „orkesztrátor” a közleményben (F178.6)'
+    kd = os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'kozlemeny')
+    if not os.path.isdir(kd):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs kozlemeny/ könyvtár')
+    rx = re.compile(r"\b(?:[Ff]elhasználó\w*|[Oo]rkesztrátor\w*|[Oo]rchestrator\w*|user's decision)")
+    peldak = []
+    for nev in sorted(os.listdir(kd)):
+        if nev.endswith('.md'):
+            with open(os.path.join(kd, nev), encoding='utf-8') as f:
+                n = len(rx.findall(f.read()))
+            if n:
+                peldak.append('%s: %d' % (nev, n))
+    return Sor(cim, _verdikt([], peldak), len(peldak) or None, peldak,
+               megjegyzes='a közlemény javítókörében: „szerkesztői döntés” / „editorial decision”' if peldak else None)
+
+
 def szabaly35_kozlemeny_hivatkozas(adat_dir, lex_dir=None):
     """SÉRTÉS, ha egy lexikonlapról (`lexikon/<ID>_TUDOMANYOS.md`) hiányzik a közlemények kötelező hivatkozása
     (Kolofon: MI-nyilatkozat, „Hogyan idézd”, a nyílt adatkészletre mutató mondat; Jelmagyarázat: recepciós keret), egy hivatkozott fájl nem
@@ -2148,9 +2318,16 @@ def main():
     parser.add_argument('--study', action='append', default=[],
                          help='study-fájl Q1/Q7 ellenőrzéséhez (ismételhető)')
     parser.add_argument('--md', default=None, help='a jelentés Markdown fájlba is')
+    parser.add_argument('--hatar-ujjlenyomat', metavar='ID', default=None,
+                        help='a motívum SORÁLLAPOT-jele a határ-ellenőrzés modelles részéhez (F178.1), majd kilép')
     parser.add_argument('--ag-allapot', choices=['main', 'ag'], default=None,
                         help='a 21. szabály súlyossága (DT440); alapból CI-ben a push a main-re, helyben a kivett ág')
     args = parser.parse_args()
+
+    if args.hatar_ujjlenyomat:
+        n, ujj = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat)
+        print('<!-- SORÁLLAPOT: n=%d ujj=%s -->' % (n, ujj))
+        sys.exit(0)
 
     try:
         _, motivumok = G.tsv_beolvas(os.path.join(args.adat, 'motivumok.tsv'))
@@ -2215,6 +2392,9 @@ def main():
         tabla_sorok.append(szabaly36_csoport_elofordulas(args.adat))
         tabla_sorok.append(szabaly37_beepitett_csoportos_ok(args.adat))
         tabla_sorok.append(szabaly38_csak_szo(args.adat))
+        tabla_sorok.append(szabaly39_hatar_frissesseg(args.adat))
+        tabla_sorok.append(szabaly40_hamart_regresszio(args.adat))
+        tabla_sorok.append(szabaly41_kozlemeny_szerkeszto(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

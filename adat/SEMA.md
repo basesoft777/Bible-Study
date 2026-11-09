@@ -739,7 +739,8 @@ A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
 
 ### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
 
-Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` kivezetés alatt, DT-F178b: a
+motívum sora a motívum teljes folyamatának lapgenerálásával kerül ki; sor nélkül a rés nem renderel)
 (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
 `alkalmazas`, `tanitoi`, `modszertan`) motívumonkénti és résenkénti forrása — a
 render-elv szerint a rés törzse nem a lexikonoldalon él, hanem a tanulmányban
@@ -2087,6 +2088,68 @@ rokon írás (`bdb_szócikk≥1`, `rokon_írás_sor=0`).
 (a nyílt mag `elofordulasok.tsv` sorai, amelyeknek `forras_dataset` vagy `szotar` oszlopa a forrást nevezi; sor, nem
 egyedi forrástétel — felső becslés); 1% felett FIGYELMEZTETÉS, 5% felett BUKÁS; a küszöbök óvatos mérnöki értékek,
 jogi alapjuk nincs.
+
+### 2.53 `visszhang_megfelelok.tsv` — a visszhang-blokk kinyerő táblája (F178.5, FELADATOK #178, DT639, 2026-11-08)
+
+A lexikonlap visszhang-blokkja (4.11) lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e
+vissza a lánc szavát minden láncversben (`n/N`; a felhasználó: „az azonosság a visszhang, nem az eltérés”). A
+fordítások (2.52) és a héber szöveg között szóillesztés nincs, ezért a lánc-szó fordításbeli megfelelőjét ez a tábla
+hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Író: `eszkozok/visszhang/megfelelo_kinyer.py`
+(`beolvas`, `lxx`, `ellenoriz`).
+
+| Oszlop | Tartalom |
+|---|---|
+| `motivum` | a motívum azonosítója |
+| `strong` | a lánc-szó (Strong); a lánc-szót nem ez a tábla jelöli ki, hanem a motívumadat (l. „A lánc honnan jön”); a betoldás-sornál a betoldott szó Strongja |
+| `igehely` | a láncvers (Károli-alak); a `bdb` sornál üres |
+| `forras` | `targum` \| `vulgata` \| `lxx` \| `bdb` (a BDB rokon nyelvi háttere; a brief három értékét ez az egy bővíti) |
+| `alak` | a versben álló szó, szó szerint (két előfordulás ` · `-tal); hiánynál üres, és a `megjegyzes` kimondja |
+| `lemma` | a szótári alak; a `bdb` sornál a rokon nyelv neve (asszír, arab, etióp, szír, óarámi, Tell el-Amarna, sabeus …) |
+| `kiejtes` | magyaros kiejtés: arámi gépi (`heber_kiejtes.kiejt(aram=True)`), görög gépi (a generátor `gepi_atiras` + `gorog_magyaros`), a rokon nyelvi alaké a kinyerőé |
+| `jelentes` | rövid magyar jelentés |
+| `betoldas` | `igen` \| `nem`: a fordítás a lánc szavát olyan láncversbe teszi, ahol a héberben nincs (külön sor a lapon) |
+| `megjegyzes` | legfeljebb egy mondat; az ellenőr javítása `[ellenőri …]` jelöléssel |
+| `kinyeres` | `gepi` \| `modell` \| `kezi` |
+| `modell` | a kinyerő tényleges modellneve (CLAUDE.md), `gepi` sornál üres |
+| `ellenorzes` | az ellenőrző kéz (tényleges modellnév), dátum és mód; **üres: ellenőrizetlen, a lapon nem renderel** |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` |
+
+**Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
+
+**A lánc honnan jön (DT-F178g, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
+vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
+`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó) — a lánc
+kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers
+a motívum Pesat-gerincének azon verse, amelyben a kulcsszó a héber szövegben (TAHOT) áll — **a motívum saját
+verse** (a beépített sorok versei, a tartomány versenként), nem a szó teljes előfordulása, a gerincen belül sem
+(ELLENOR_F178_2 1.). A gerinc: ha a negatív kritérium (2.1) megnevezi a láncot („az 1Móz 3–9 láncára”), az; különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében; Pesat-sor nélkül nincs lánc (rögzített szakasz nincs; `lexikon_general.lanc_mag`). A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap
+2. szakaszában), nem láncversek; a kinyerés így kis, rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
+kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
+láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a
+Targum `N`-jébe nem számít. A háttér-táblában csak a lánc-szavak és tövük állnak; lánc-szó `bdb` sor nélkül: „a
+rokon nyelvi adat kinyerése még nem történt meg”.
+
+**Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
+`beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével
+(NFD, a mellékjelek kódpont-sorrendben; üres alak nem gépi egyezés), a kézi átnézést pedig nem a kód állítja, hanem
+az ellenőr soronkénti ítélete az átnézés-bemenetben (`motivum`, `strong`, `igehely`, `forras`, `alak`, `lemma`,
+`jelentes`, `atnezo`, `itelet` = `jo` \| `elvet`, `megjegyzes`; ELLENOR_F178 4.). A kulcs a tábla kulcsa: a `bdb` sornál
+a nyelv (`lemma`) és a `jelentes` is, mert egy szócikk több alak nélküli sora csak így különböztethető meg. A
+`megjegyzes` az ítélet soronkénti, érdemi indoka (mit vetett össze, mi igaz a sorra); a beolvasó elutasítja a
+bemenetet, ha egy sorból hiányzik az ítélet, az átnéző vagy az indok, ha egy kulcs kétszer áll, vagy ha ugyanaz a
+megjegyzés a sorok ötödénél (de legalább 3 sornál) többször áll (`megfelelo_kinyer.atnezes_ellenoriz`; ELLENOR_F178_2 2.). Az `ellenorzes` csak akkor nem üres, ha a sor gépileg
+egyezik (vagy alak nélküli) **és** az ellenőr jóváhagyta; ha a kinyerő és az ellenőr ugyanaz (`modell` =
+`--ellenor`), üres marad. Az ellenőr lemma-javítása (`--lemma-javitas`, `[ellenőri lemma-egységesítés …]`) az ellenőr
+saját változtatása, ezért a sor csak egy második kéz (nem az ellenőr; lehet a kinyerő) megerősítésével
+(`--lemma-megerosites`) ellenőrzött (ELLENOR_F178 3.). A LXX-oszlop gépi, ahol egyértelmű: a vers görög lemmái közül az, amely a héber szóval a
+versszintű párokban (`LXX_versszintu_parok.tsv`) a legerősebben társul (Dice-arány ≥ 0,05, legalább kétszeres
+különbséggel a következő, más szócsaládú lemmához); a szócsalád az előtag nélküli tő (φθείρω ~ καταφθείρω). Ahol nem
+egyértelmű, a sor alak nélkül, ellenőrizetlenül áll (modell-kinyerésre vár). A hiány nem tölthető ki (CLAUDE.md 3.).
+
+**A `bdb` sorok.** A rokon nyelvi alak a `BDB_teljes_unabridged.tsv` szócikkének etimológiai zárójeléből (latin
+betűs átírás is: asszír, óarámi, Tell el-Amarna, sabeus) és a `BDB_rokon_irasok.tsv`-ből (arab, etióp, szír írás).
+Ha a szócikkben nincs rokon nyelvi adat: egy sor, üres `alak`-kal, „a BDB-szócikkben nincs rokon nyelvi adat”; ha a
+szócikk nem azonosítható: „a BDB-szócikk nem azonosítható” — a kettő nem vonható össze.
 
 ## 3. Integritási szabályok
 

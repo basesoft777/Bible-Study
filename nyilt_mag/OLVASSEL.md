@@ -1,6 +1,6 @@
-# PaRDeS nyílt mag — olvass el
+# [A LEXIKON CÍME] — nyílt mag — olvass el
 
-# GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 *English version: `README.md`.*
 

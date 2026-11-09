@@ -262,5 +262,57 @@ class Teszt(unittest.TestCase):
         self.assertIsNone(M.datum_iso('x'))
 
 
+class TesztHatarFrissesseg(unittest.TestCase):
+    """F178.1: a határ-frissesség kapuja — a modelles rész SORÁLLAPOT-jele a mai beépített sorokhoz mérve."""
+
+    ALAP = ('X-001\t1Móz 1:1\ta', 'X-001\t1Móz 1:2\tb', 'Y-001\t1Móz 2:1\tc')
+
+    def _kornyezet(self, modelles, sorok=ALAP):
+        import tempfile
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, 'adat'))
+        os.makedirs(os.path.join(d, 'naplok'))
+        with open(os.path.join(d, 'adat', 'elofordulasok.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('id\tigehely\tx\n' + '\n'.join(sorok) + '\n')
+        if modelles is not None:
+            with open(os.path.join(d, 'naplok', 'HATAR_X-001.md'), 'w', encoding='utf-8') as f:
+                f.write('# x\n\n## Modelles rész\n\n<!-- MODELLES-KEZDET -->\n%s\n<!-- MODELLES-VEGE -->\n' % modelles)
+        return os.path.join(d, 'adat'), os.path.join(d, 'naplok')
+
+    def _jel(self):
+        import ellenoriz as ELL
+        adat, _ = self._kornyezet(None)
+        n, ujj = ELL.hatar_ujjlenyomat(adat, 'X-001')
+        self.assertEqual(n, 2)
+        return '<!-- SORÁLLAPOT: n=%d ujj=%s -->\n' % (n, ujj) + 'második vélemény ' * 5
+
+    def test_friss_jel(self):
+        import ellenoriz as ELL
+        adat, naplo = self._kornyezet(self._jel())
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
+
+    def test_sorvaltozas_elavult(self):
+        import ellenoriz as ELL
+        adat, naplo = self._kornyezet(self._jel(), sorok=('X-001\t1Móz 1:1\ta', 'X-001\t1Móz 1:2\tMÓDOSÍTVA'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'elavult')
+
+    def test_regi_sorszam_tartalek(self):
+        import ellenoriz as ELL
+        adat, naplo = self._kornyezet('*Második vélemény a mai adaton (52 beépített sor, 60 vers).* ' + 'x ' * 30)
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'elavult')
+
+    def test_jel_nelkul_nem_friss(self):
+        import ellenoriz as ELL
+        adat, naplo = self._kornyezet('*Második vélemény, darabszám nélkül.* ' + 'x ' * 30)
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'nincs_jel')
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'Z-001', naplo)[0], 'nincs_naplo')
+
+    def test_hamart_a_valos_adaton_nem_friss(self):
+        """A HAMART-001 modelles része 60 soros állapotra készült, a mai sorszám más (az F178.1 oka)."""
+        import ellenoriz as ELL
+        allapot, _ = ELL.hatar_frissesseg(os.path.join(M.GYOKER, 'adat'), 'HAMART-001')
+        self.assertNotEqual(allapot, 'friss')
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,5 +1,7 @@
 # PaRDeS — Nevesített tanítói keresés sablon
 
+> **ARCHÍV (F178.4, 2026-11-08).** A nevesített tanítói rész a lexikonlapról kikerült, a B9 lépés a `MUNKAMENET.md`-ből kivezetve (a felhasználó jóváhagyásával: „minden itteni javaslatod a lexikon ág lezárására”). A sablon a meglévő tanítói fájlok értelmezéséhez marad meg; új tanítói menet nem indul. A recepció helye a lap visszhang-rétege.
+
 *v1 — 2026.09.21, F8_BRIEF.md G8.*
 
 Ez a sablon a `4_PaRDeS_tematikus_sablon.md` 5. pontjának ("Alkalmazás és

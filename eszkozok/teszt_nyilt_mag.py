@@ -409,5 +409,29 @@ class Osis(unittest.TestCase):
         self.assertEqual(66, len(set(E.hu_osis().values())))
 
 
+class TesztSzerkesztoi(unittest.TestCase):
+    """F178.6: „a felhasználó döntése” → „szerkesztői döntés”, angolul „editorial decision”; a kapu jelez."""
+
+    def test_csere(self):
+        self.assertEqual('Kontraszt (szerkesztői döntés, 2026-11-01)', E.szerkesztoi('Kontraszt (a felhasználó döntése, 2026-11-01)'))
+        self.assertEqual('Szerkesztői döntés (2026-10-20): beépítve', E.szerkesztoi('A felhasználó döntése (2026-10-20): beépítve'))
+        self.assertEqual('— szerkesztői döntés: »a', E.szerkesztoi('— az orkesztrátor döntése a felhasználó felhatalmazásával: »a'))
+        self.assertEqual('(szerkesztői átnézés, 2026-11-02)', E.szerkesztoi('(a felhasználó átnézése, 2026-11-02)'))
+        self.assertEqual('Contrast (editorial decision, 2026-11-01)', E.szerkesztoi("Contrast (the user's decision, 2026-11-01)"))
+        self.assertEqual('Editorial decision (2026-10-20): open', E.szerkesztoi("The user's decision (2026-10-20): open"))
+        self.assertEqual('a felhasználás feltételei', E.szerkesztoi('a felhasználás feltételei'))
+
+    def test_idempotens_es_forditas_friss(self):
+        hu = 'Kontraszt (a felhasználó döntése, 2026-11-01)'
+        self.assertEqual(E.szerkesztoi(hu), E.szerkesztoi(E.szerkesztoi(hu)))
+        self.assertTrue(E.szerkesztoi_egyezik(hu, E.szerkesztoi(hu)))
+        self.assertFalse(E.szerkesztoi_egyezik(hu, 'más szöveg'))
+
+    def test_kapu_jelez(self):
+        tal = G.ell_szerkeszto({'x.tsv': 'a\tb\nA felhasználó döntése\n', 'y.md': "the user's decision\n", 'z.md': 'tiszta\n'})
+        self.assertEqual(['x.tsv', 'y.md'], sorted(t.fajl for t in tal))
+        self.assertTrue(all(t.suly == G.BUKAS for t in tal))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

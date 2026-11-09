@@ -1,0 +1,87 @@
+# F178 javítókör 2/2 (ELLENOR_F178_2 2.): az ellenőr soronkénti, érdemi ítélete; atnezo = a tényleges modellnév. A versszöveg (Onkelos / Clementina) és a TAHOT héber szava, illetve a BDB-szócikk és a rokon írások gyorsítótára soronként összevetve; a bdb sor kulcsa a nyelv (lemma) és a jelentés is. Csak a jo sor kap `ellenorzes`-t (megfelelo_kinyer.py beolvas --atnezes).
+motivum	strong	igehely	forras	alak	lemma	jelentes	atnezo	itelet	megjegyzes
+HAMART-001	H0127	1Móz 3:17	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„lítá ar’á bedílák”: az אַרְעָא az ʾărûrâ hāʾădāmâ föld-szava; a versben más föld-szó nincs
+HAMART-001	H0127	1Móz 4:11	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„min ar’á diftáchat”: a min-hāʾădāmâ ʾăšer pāṣtâ megfelelője, a vonatkozó mondat is egyezik
+HAMART-001	H0127	1Móz 5:29	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„min ar’á di latteta”: a min-hāʾădāmâ ʾăšer ʾērărāh megfelelője; a vers egyetlen föld-szava
+HAMART-001	H0127	1Móz 8:21	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„lemélat od jat ar’á”: a leqallēl ʿôd ʾet-hāʾădāmâ tárgya; a vers egyetlen föld-szava
+HAMART-001	H0779	1Móz 3:17	targum	לִיטָא	לוּט	átkozott (nőnemű, állítmányi)	claude-opus-5-5	jo	a לִיטָא nőnemű szenvedő melléknévi alak az ʾărûrâ helyén, a föld (ar’á) jelzője; a lemma pontozása szótári konvenció, a gyök (לוט) biztos
+HAMART-001	H0779	1Móz 4:11	targum	לִיט	לוּט	átkozott	claude-opus-5-5	jo	„ukhe’an lít att”: a לִיט az ʾārûr ʾattâ megfelelője, ugyanaz az alak, mint a 3:14-ben
+HAMART-001	H0779	1Móz 5:29	targum	לַטְטַהּ	לוּט	átkozta (őt: a földet)	claude-opus-5-5	jo	„di latteta JJ”: Pael perfectum nőnemű tárgyi raggal, az ʾērărāh (Piél, tárgyi rag) pontos megfelelője; a törzs is egyezik
+HAMART-001	H2403	1Móz 8:21	targum	חוֹבֵי	חוֹבָא	bűnei, vétkei (összetételi alak, többes)	claude-opus-5-5	jo	a betoldás igaz: a héber baʿăbûr hāʾādām helyén „bedíl chóvé enásá” (az ember bűnei miatt) áll; de ez a חוֹבָא szó, nem a 4:7 חֶטְאָא-ja, tehát jelentésbeli, nem szó szerinti visszhang
+HAMART-001	H2555	1Móz 6:11	targum	חֲטּוֹפִין	חֲטוֹף	rablások, erőszakos elragadás (többes)	claude-opus-5-5	jo	„ve’itmelíat ar’á chatófín”: a חָמָס helyén a „rablások” szó áll, többes számban; a pontozás a forrásé (dages a ט-ben)
+HAMART-001	H2555	1Móz 6:13	targum	חֲטוֹפִין	חֲטוֹף	rablások, erőszakos elragadás (többes)	claude-opus-5-5	jo	„itmelíat ar’á chatófín min kodam ovadehón”: ugyanaz a szó, mint 6:11-ben, itt dages nélkül; a megfelelés egyértelmű
+HAMART-001	H6093	1Móz 3:16	targum	צַעֲרַיְכִי	צַעֲרָא	fájdalmaid, szenvedéseid (többes, 2. sz. nőnemű toldalék)	claude-opus-5-5	jo	„aszgé caarajkhí”: az ʿiṣṣᵉbônēk megfelelője; a vers második fájdalom-szava (bᵉʿeṣeb → bica’ar) helyesen kimaradt
+HAMART-001	H6093	1Móz 3:17	targum	בַּעֲמַל	עֲמַל	fáradsággal, gyötrelmes munkával (bᵉ- „-val” + fáradság)	claude-opus-5-5	jo	„baamal tíkhlinah”: a bᵉʿiṣṣābôn tōʾkᵃlennâ szerkezet pontos megfelelője; az amal itt más szó, mint a 3:16-ban
+HAMART-001	H6093	1Móz 5:29	targum	וּמִלֵּאוּת	לֵאוּתָא	és a fáradtságtól, kimerítő munkától (ו „és” + min „-tól” + fáradtság)	claude-opus-5-5	jo	„meovádaná umilleút jedáná”: a mimmaʿăśēnû ûmēʿiṣṣᵉbôn yādênû szerkezete pontosan követve; az alak ו+מן+לֵאוּת, a lemma (léútá) a szó, nem az összetétel
+HAMART-001	H7043	1Móz 8:21	targum	לְמֵילַט	לוּט	átkozni	claude-opus-5-5	jo	„lá ószéf lemélat”: a leqallēl helyén ugyanaz a לוט gyök áll, mint az ʾārar helyén; lánc-szón kívüli sor (kálal), a lapon nem renderel
+HAMART-001	H7843	1Móz 6:11	targum	אִתְחַבָּלַת	חֲבַל	megromlott, elpusztult (Itpaal, 3. sz. nőnemű)	claude-opus-5-5	jo	„ve’itchabbalat ar’á”: Itpaal a Nifal tiššāḥēt helyén; a törzs-megfelelés (szenvedő) pontos
+HAMART-001	H7843	1Móz 6:12	targum	אִתְחַבָּלַת · חַבִּילוּ	חֲבַל	megromlott, elpusztult · megrontották, elpusztították	claude-opus-5-5	jo	két héber alak, két arámi: nišḥātâ → itchabbalat (Itpaal), hišḥît → chabbílú (Pael); mindkettő a versben áll
+HAMART-001	H7843	1Móz 6:13	targum	מְחַבֶּלְהוֹן	חֲבַל	elpusztítom őket (résztag + toldalék)	claude-opus-5-5	jo	„ha aná mechabbelhón im ar’á”: Pael melléknévi igenév tárgyi raggal, a mašḥîtām szerkezete; a gyök a 6:11–12-vel azonos
+HAMART-001	H0127	1Móz 3:17	vulgata	terra	terra	föld	claude-opus-5-5	jo	„maledicta terra in opere tuo”: a terra az ʾădāmâ helyén; az „in opere tuo” a bᵉʿăbûrekā más olvasata, a föld-szót nem érinti
+HAMART-001	H0127	1Móz 4:11	vulgata	terram	terra	föld (tárgyeset)	claude-opus-5-5	jo	„maledictus eris super terram”: a min-hāʾădāmâ szabadabb vonzattal (super), a főnév a terra
+HAMART-001	H0127	1Móz 5:29	vulgata	terra	terra	föld	claude-opus-5-5	jo	„in terra, cui maledixit Dominus”: az ʾădāmâ ʾăšer ʾērărāh vonatkozó szerkezete megmaradt
+HAMART-001	H0127	1Móz 8:21	vulgata	terræ	terra	földnek (részes eset)	claude-opus-5-5	jo	„maledicam terræ propter homines”: részes eset a maledico vonzataként, az ʾădāmâ helyén
+HAMART-001	H0779	1Móz 3:17	vulgata	maledicta	maledico	átkozott (nőnemű: a föld)	claude-opus-5-5	jo	a maledicta (nőnem, a terra jelzője) az ʾărûrâ szenvedő melléknévi igenevének szoros megfelelője
+HAMART-001	H0779	1Móz 4:11	vulgata	maledictus	maledico	átkozott	claude-opus-5-5	jo	„maledictus eris”: az ʾārûr ʾattâ megfelelője jövő idővel (eris) — az ige ugyanaz
+HAMART-001	H0779	1Móz 5:29	vulgata	maledixit	maledico	átkozta (őt: a földet)	claude-opus-5-5	jo	„cui maledixit Dominus”: perfectum az ʾērărāh helyén; a Piél–Qal különbséget a latin nem jelöli, a lemma ugyanaz
+HAMART-001	H2403	1Móz 8:21	vulgata				claude-opus-5-5	jo	a versben „propter homines” áll, bűn-szó nélkül: a Vulgata nem told be (a Targummal szemben); az alak nélküli sor ezt a hiányt rögzíti, nem kitöltés
+HAMART-001	H2555	1Móz 6:11	vulgata	iniquitate	iniquitas	gonoszság, igazságtalanság	claude-opus-5-5	jo	„repleta est iniquitate”: a ḥāmās helyén az iniquitas, ablativusban a repleo vonzataként
+HAMART-001	H2555	1Móz 6:13	vulgata	iniquitate	iniquitas	gonoszság, igazságtalanság	claude-opus-5-5	jo	„repleta est terra iniquitate a facie eorum”: ugyanaz a szó és szerkezet, mint 6:11-ben
+HAMART-001	H6093	1Móz 3:16	vulgata	ærumnas	ærumna	szenvedések, nyomorúságok (tárgyeset, többes)	claude-opus-5-5	jo	„Multiplicabo ærumnas tuas”: az ʿiṣṣᵉbônēk helyén az ærumna (nyomorúság), nem a labor — a lánc-szót itt más szóval adja
+HAMART-001	H6093	1Móz 3:17	vulgata	laboribus	labor	fáradságokban, munkákban (in laboribus)	claude-opus-5-5	jo	„in laboribus comedes”: a bᵉʿiṣṣābôn megfelelője, többes számmal; az előtte álló „in opere tuo” nem a lánc-szó
+HAMART-001	H6093	1Móz 5:29	vulgata	laboribus	labor	fáradságoktól, munkáktól (ab operibus et laboribus)	claude-opus-5-5	jo	„ab operibus et laboribus manuum”: a laboribus az ʿiṣṣᵉbôn, az operibus a maʿăśēnû helyén — a kinyerő megkülönböztetése helyes
+HAMART-001	H7043	1Móz 8:21	vulgata	maledicam	maledico	átkozom, átkozni fogom (E/1. sz. jövő)	claude-opus-5-5	jo	„Nequaquam ultra maledicam”: a qallēl helyén ugyanaz a maledico, mint az ʾārar helyén; lánc-szón kívüli sor, nem renderel
+HAMART-001	H7843	1Móz 6:11	vulgata	Corrupta	corrumpo	megromlott, megrontott	claude-opus-5-5	jo	„Corrupta est autem terra”: a Nifal tiššāḥēt szenvedő megfelelője; a nagybetű a mondatkezdeté
+HAMART-001	H7843	1Móz 6:12	vulgata	corruptam · corruperat	corrumpo	megromlott (tárgyas szerkezet) · megrontotta	claude-opus-5-5	jo	„terram esse corruptam (omnis … caro corruperat viam suam)”: a nišḥātâ és a hišḥît egy igével, mint a héberben
+HAMART-001	H7843	1Móz 6:13	vulgata	disperdam	disperdo	el fogom pusztítani	claude-opus-5-5	jo	„ego disperdam eos”: a mašḥîtām helyén más ige (disperdo) áll, itt szakad meg a corrumpo — a cella „más szó”-ja igaz
+HAMART-001	H0127		bdb	أَدَمَة	arab	bőr (simán befedő, szorosan simuló)	claude-opus-5-5	jo	a BDB Fleischer nyomán az arab „skin, as smoothly covering & close-fitting” szót veti össze; az írás (أَدَمَة) a gyorsítótár Sefaria-sorából, a helyi szövegben hiányzik
+HAMART-001	H0127		bdb	دَمَّ	arab	kenni, bekenni (felületen szétteríteni)	claude-opus-5-5	jo	a BDB a √דם gyökhöz az arab „smear (spread over surface)” igét idézi; az írás (دَمَّ) a gyorsítótárból — tőösszevetés, nem a főnév közvetlen rokona
+HAMART-001	H0779		bdb	arâru	asszír	átkozni (a BDB a „köt” és „átkoz” jelentés összefüggésére utal)	claude-opus-5-5	jo	„Assyrian arâru (Zim BP 68)”, a kötés–átok viszony Delitzsch Pr 101 alapján — alak és jelentés a szócikkel egyezik
+HAMART-001	H2554		bdb		újhéber	ugyanez: erőszakosan cselekedik, erőszakosan bánik valakivel	claude-opus-5-5	jo	„Late Hebrew id., act violently, treat violently”: a BDB alakot nem közöl, csak „id.”-et, ezért alak nélküli a sor; a jelentés a szócikké
+HAMART-001	H2554		bdb		arab	kemény, szigorú, könyörtelen	claude-opus-5-5	jo	„Arabic … be hard, strict, rigorous”: az arab szó a helyi szövegből kiesett, a gyorsítótárban H2554-sor nincs — az alak hiánya forrás-hiány, a jelentés helyes
+HAMART-001	H2554		bdb	חֲמַס	arámi	erőszakosan megragad	claude-opus-5-5	jo	„Aramaic חֲמַס (rare) violently seize”: alak, jelentés és a „rare” jelölés a szócikk szerint
+HAMART-001	H2555		bdb				claude-opus-5-5	jo	a חָמָס főnév szócikkében nincs etimológiai zárójel; az üres sor a hiányt rögzíti, a lap a tő (H2554) soraira utal
+HAMART-001	H6087		bdb		újhéber	fájdalmat érez, szenved (Nithpa'al és származékok)	claude-opus-5-5	jo	„Late Hebrew Nithp. and in derivatives” az I. עָצַב (hurt, pain) szócikkben; alakot a BDB nem ad, a jelentés a szócikk szenvedő törzséből következik
+HAMART-001	H6087		bdb		etióp	kemény, nehéz	claude-opus-5-5	jo	„Ethiopic be hard, difficult, Lag BN 50”: az etióp szó a helyi szövegben írás nélkül áll, a jelentés egyezik
+HAMART-001	H6087		bdb		arab	haragos, mérges	claude-opus-5-5	jo	„compare Arabic be angry, but dubious”: a BDB maga kétségesnek mondja, a sor ezt kimondja; pontosabban „haragszik” (ige), de a lényeget nem torzítja
+HAMART-001	H6087		bdb		újhéber	formába nyújt (gyermeket Pi'el)	claude-opus-5-5	elvet	ez a II. עָצַב (shape, fashion) szócikk adata: homonim gyök, nem az iccávón (fájdalom, fáradság) töve — a lánc-szó háttér-sorába nem tartozik
+HAMART-001	H6093		bdb				claude-opus-5-5	jo	az עִצָּבוֹן szócikk (pain, toil) etimológiai zárójel nélküli; az üres sor a hiányt rögzíti, a lap a tő (I. עָצַב) soraira utal
+HAMART-001	H7843		bdb		újhéber	Hifil = bibliai héber	claude-opus-5-5	jo	„Late Hebrew Hiph`il = Biblical Hebrew”: alak nélkül, a jelentés a szócikk szerint; nem rokon nyelv, a lapon nem renderel
+HAMART-001	H7843		bdb	šaḫâtu	Tell el-Amarna	elesni (különösen városról), földre borulni (?földről)	claude-opus-5-5	elvet	az alak (šaḫâtu) és az első jelentés helyes, de a „be prostrate (? of land)” nem „földre borulni (?földről)”, hanem ‘leborul, elterül (? országról)’ — a jelentés javítása után újra átnézendő
+HAMART-001	H7843		bdb	šêtu	asszír	menekülni, megmenekülni	claude-opus-5-5	jo	„Assyrian possibly šêtu, flee, escape (compare אבד)”: a bizonytalanságot (possibly) a sor megjegyzése kimondja
+HAMART-001	H7843		bdb	שְׁחַת	arámi	megcsonkítani	claude-opus-5-5	jo	„Aramaic שְׁחַת … mutilate”, a ת hasonulásával; a Gerber-féle denominatív eredetet a BDB elveti, a sor ezt helyesen adja
+HAMART-001	H7843		bdb	שחיתה	Sirák fia (újhéber)	romlott tett	claude-opus-5-5	jo	„Ecclus. שחיתה 30:11 corrupt act” szó szerint; héber, nem rokon nyelv, a lapon nem renderel
+HAMART-001	H7843		bdb	שחת	óarámi (Zindzsirli)	elpusztít	claude-opus-5-5	jo	„Old Aramaic (Zinjirli) שחת destroy Lzb 374”: alak és jelentés a szócikk szerint
+HAMART-001	H7843		bdb	سَحَتَ	arab	kiirtani	claude-opus-5-5	jo	„Arabic … extirpate”; az írás (سَحَتَ) a gyorsítótár Sefaria-sorából, a helyi szövegben hiányzik
+HAMART-001	H7843		bdb	ܫܰܚܶܛ	szír	megcsonkítani	claude-opus-5-5	jo	a BDB (Sefaria-szöveg) az arámi alak mellett a szír ܫܰܚܶܛ-et is adja „mutilate” jelentéssel; az írás a gyorsítótárból
+HAMART-001	H7843		bdb	ሰሐጠ	etióp	megsérteni, erőszakot tenni	claude-opus-5-5	jo	„Ethiopic ሰሐጠ injure, violate”: az írás a gyorsítótárból, a jelentés a szócikk szerint
+HAMART-001	H0779	1Móz 3:14	targum	לִיט	לוּט	átkozott	claude-opus-5-5	jo	„lít att mikkol beírá”: az ʾārûr ʾattâ megfelelője; a lánc első átok-szava a Targumban is ugyanaz a gyök
+HAMART-001	H0779	1Móz 3:14	vulgata	maledictus	maledico	átkozott	claude-opus-5-5	jo	„maledictus es inter omnia animantia”: az ʾārûr ʾattâ megfelelője; a vers elején álló „[” a Clementina szerkesztési jele, a szót nem érinti
+HAMART-001	H0127	1Móz 3:19	targum	לְאַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„ad detítúv lear’á”: az ʾel-hāʾădāmâ megfelelője; a vers végi ʿāpār a עַפְרָא, nem a lánc szava
+HAMART-001	H0127	1Móz 3:19	vulgata	terram	terra	föld	claude-opus-5-5	jo	„donec revertaris in terram”: az ʾel-hāʾădāmâ helyén; a pulvis a ʿāpār-é
+HAMART-001	H0127	1Móz 3:23	targum	אַדְמְתָא	אַדְמְתָא	föld, termőföld	claude-opus-5-5	jo	a versben „lemiflach jat admetá” áll: itt az Onkelos nem ar’á-t ír, hanem a héber szó arámi alakját; a forrásszöveg ezt igazolja, a lemma pontozása bizonytalan, a szó azonossága nem
+HAMART-001	H0127	1Móz 3:23	vulgata	terram	terra	föld	claude-opus-5-5	jo	„ut operaretur terram de qua sumptus est”: a laʿăbōd ʾet-hāʾădāmâ szerkezete; a Targummal szemben a Vulgata itt is terra
+HAMART-001	H0127	1Móz 4:2	targum	בְּאַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„hava fálach bear’á”: az ʿōbēd ʾădāmâ körülírása, a föld-szó megvan; a megfelelés helyes, a szerkezet szabadabb
+HAMART-001	H0127	1Móz 4:2	vulgata			földműves (a kifejezés egészére)	claude-opus-5-5	jo	a versben „Cain agricola” áll: az ʿōbēd ʾădāmâ egy szóba vonva, önálló föld-szó nincs; az alak nélküli sor a hiányt rögzíti — a cella „nincs megfelelő szó”-ja igaz
+HAMART-001	H0127	1Móz 4:3	targum	דְאַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„meibbá dear’á”: a mippᵉrî hāʾădāmâ birtokos szerkezete, a föld-szó egyezik
+HAMART-001	H0127	1Móz 4:3	vulgata	terræ	terra	föld	claude-opus-5-5	jo	„de fructibus terræ”: a mippᵉrî hāʾădāmâ birtokos szerkezete
+HAMART-001	H0127	1Móz 4:10	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„kavlín kodámaj min ar’á”: a ṣōʿăqîm ʾēlay min-hāʾădāmâ megfelelője; a vers egyetlen föld-szava
+HAMART-001	H0127	1Móz 4:10	vulgata	terra	terra	föld	claude-opus-5-5	jo	„clamat ad me de terra”: a min-hāʾădāmâ megfelelője
+HAMART-001	H0127	1Móz 4:12	targum	בְאַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	a versben kétszer áll: az első (tifláach bear’á) az ʾădāmâ, a második (gálé tehé bear’á) az ʾereṣ helyén — a kinyerő megkülönböztetése helyes, az alak azonos
+HAMART-001	H0127	1Móz 4:12	vulgata	eam	is	azt (a földet)	claude-opus-5-5	elvet	„Cum operatus fueris eam”: az eam névmás (a 4:11 terram-jára utal), nem a lánc szavának fordítása; a lapon „is” más szóként jelenne meg, ami félrevezető — helyes rögzítése alak nélküli sor (mint a 4:2), ez új kinyerés
+HAMART-001	H0127	1Móz 4:14	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„meal appé ar’á” = mēʿal pᵉnê hāʾădāmâ; a vers végi bear’á az ʾereṣ-é, a kinyerő helyesen az elsőt vette
+HAMART-001	H0127	1Móz 4:14	vulgata	terræ	terra	föld	claude-opus-5-5	jo	„a facie terræ” = mēʿal pᵉnê hāʾădāmâ; a vers végi „in terra” az ʾereṣ-é, a kinyerő az elsőt vette
+HAMART-001	H0127	1Móz 6:7	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„meal appé ar’á”: a föld színéről-formula a 4:14-gyel szó szerint egyezik
+HAMART-001	H0127	1Móz 6:7	vulgata	terræ	terra	föld	claude-opus-5-5	jo	„Delebo … a facie terræ”: a föld színéről-formula ugyanúgy, mint 4:14-ben
+HAMART-001	H0127	1Móz 7:4	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	a versben kétszer: az utolsó (meal appé ar’á) az ʾădāmâ, az első (al ar’á) az ʾereṣ helyén — helyes megkülönböztetés
+HAMART-001	H0127	1Móz 7:4	vulgata	terræ	terra	föld	claude-opus-5-5	jo	„de superficie terræ”: a mēʿal pᵉnê hāʾădāmâ; az előtte álló „super terram” az ʾereṣ helyén — helyes megkülönböztetés
+HAMART-001	H0127	1Móz 7:23	targum	אַרְעָא	אַרְעָא	föld	claude-opus-5-5	jo	„al appé ar’á” = ʿal-pᵉnê hāʾădāmâ; a „min ar’á” az ʾereṣ-é — a kinyerő az elsőt vette, helyesen
+HAMART-001	H0127	1Móz 7:23	vulgata	terram	terra	föld	claude-opus-5-5	jo	„quæ erat super terram”: az ʿal-pᵉnê hāʾădāmâ helyén; a „deleta sunt de terra” az ʾereṣ-é
+HAMART-001	H2403	1Móz 4:7	targum	חֶטְאָךְ	חֶטְאָא	bűnöd	claude-opus-5-5	jo	„lejóm diná chet’ák netír”: a חַטָּאת helyén a חֶטְאָא szó áll birtokos raggal; a Targum a mondatot ítéletnapra értelmezi, de a bűn-szó megvan
+HAMART-001	H2403	1Móz 4:7	vulgata	peccatum	peccatum	bűn	claude-opus-5-5	jo	„in foribus peccatum aderit”: a laḥeṭṭāʾt rōbēṣ helyén peccatum, a szó egyértelmű
+HAMART-001	H7843	1Móz 6:17	targum	לְחַבָּלָא	חֲבַל	elpusztítani	claude-opus-5-5	jo	„lechabbálá kol biszrá”: Pael infinitivus a lᵉšaḥēt helyén, ugyanaz a gyök
+HAMART-001	H7843	1Móz 6:17	vulgata	interficiam	interficio	meg fogok ölni	claude-opus-5-5	jo	„ut interficiam omnem carnem”: a lᵉšaḥēt helyén a „megölni” ige; más szó, a cellában helyesen ilyenként áll
+HAMART-001	H7843	1Móz 9:11	targum	לְחַבָּלָא	חֲבַל	elpusztítani	claude-opus-5-5	jo	„ṭófáná lechabbálá ar’á”: a lᵉšaḥēt hāʾāreṣ megfelelője; ugyanaz az alak, mint 6:17-ben
+HAMART-001	H7843	1Móz 9:11	vulgata	dissipans	dissipo	szétszóró, pusztító	claude-opus-5-5	jo	„diluvium dissipans terram”: a lᵉšaḥēt hāʾāreṣ melléknévi igenévvel, a dissipo igével — más szó
+HAMART-001	H7843	1Móz 9:15	targum	לְחַבָּלָא	חֲבַל	elpusztítani	claude-opus-5-5	jo	„leṭófáná lechabbálá kol biszrá”: a lᵉšaḥēt kol-bāśār megfelelője, a 9:11 alakjával azonos
+HAMART-001	H7843	1Móz 9:15	vulgata	delendum	deleo	eltörlendő, kiirtandó	claude-opus-5-5	jo	„ad delendum universam carnem”: gerundivum a lᵉšaḥēt helyén, a deleo igével — más szó

@@ -34,6 +34,10 @@ Ellenőrzések (azonosító — súlyosság):
     LABJEGYZET   definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) — BUKÁS
     PROZA_1A     az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)   — BUKÁS
     CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
+    VISSZHANG    a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): V1 angol maradék, V2 nem rokon
+                 nyelvi sor a BDB-háttérben, V3 „nincs” a „nem azonosítható” helyén, V4 „ugyanaz a szó” két
+                 lemmánál, V5 kiemelt következtetés alapvonal nélkül, V6 ugyanaz a tagmondat ≥3-szor a táblán,
+                 V7 az alapvonal-mondat nem a sávja (80% / 40%) szerinti                          — BUKÁS
     NAVE_ANGOL   a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers
                  HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)                       — BUKÁS
 
@@ -66,8 +70,17 @@ sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
 BUKAS, FIGY = 'BUKÁS', 'FIGYELMEZTETÉS'
 ARANY = 'ISTENTISZT-001'
 
-KIZART_SZAKASZ = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
+KIZART_SZAKASZ_REGI = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
+KIZART_SZAKASZ = KIZART_SZAKASZ_REGI
 IRODALOM = '8. Irodalom'
+# F178.4: az új szerkezetű lapon (1. Döntési út … 12. Irodalom) az olvasói kapu kivétel nélkül mér: a Tartalomjegyzék,
+# a Jelmagyarázat, a Kolofon és az Irodalom is olvasói szöveg, a technikai dőlt sor és a lábjegyzet is (a nyers
+# proveniencia-sor a lap forrásában HTML-megjegyzésben áll). A régi szerkezetű lapon a régi mérce, amíg a lap az új
+# körben újra nem generálódik (a felhasználó: „Előbb csak a hamart”, 2026-11-08).
+UJ_SZERKEZET_RX = re.compile(r'(?m)^## 1\. Döntési út[ \t]*$')
+KIVETEL_NELKUL = False
+ELOFORDULAS_SZAKASZ = ('1. Előfordulások', '2. Előfordulások')
+SZOTARI_SZAKASZ = ('2. Szótári', '4. Szótári')
 
 # --- BELSO: belső jelölések (az átvilágítás A4, A21, T3, T14, G4, G5, G7)
 BELSO = [
@@ -178,6 +191,8 @@ class Sor:
     @property
     def olvasoi(self):
         """Olvasói próza-e (az ellenőrzések nagy része csak ezeken fut)."""
+        if KIVETEL_NELKUL:
+            return self.fajta in ('proza', 'tabla', 'cim', 'labjegyzet', 'dolt', 'proveniencia')
         if self.fajta not in ('proza', 'tabla', 'cim', 'labjegyzet'):
             return False
         return not self.szakasz.startswith(KIZART_SZAKASZ)
@@ -226,7 +241,7 @@ def tagol(szoveg):
             def_szoveg = nyers.split(':', 1)[1].strip()
             fajta = 'proveniencia' if re.match(r'(proveniencia|forrás)\s*:', def_szoveg) or 'scope=' in def_szoveg \
                 else 'labjegyzet'
-            lat = def_szoveg
+            lat = re.sub(r'<!--.*?-->', '', def_szoveg)   # F178.4: a nyers proveniencia megjegyzésben áll
         elif t.startswith('|'):
             fajta = 'tabla'
             cellak = re.split(r'(?<!\\)\|', t.strip('|'))
@@ -304,13 +319,24 @@ def kornyezet(s, m, szel=50):
 
 # ----------------------------------------------------------------------------- ellenőrzések
 
+# F178.6: a „felhasználó” mint munkafolyamat-szereplő az új szerkezetű lapon BUKÁS (olvasói név: szerkesztői
+# döntés); a régi szerkezetű lapon a következő körben javul, a belső adat (`jeloltek.tsv` indoklása) nem változik —
+# ezért a minta nem a BELSO listában áll (azt az `ellenoriz.py` 29. szabálya és a `szerep_kizart` is használja)
+FELHASZNALO_RX = re.compile(r'(?<!\w)[Ff]elhasználó\w*')
+
+
 def ell_belso(sorok):
     ki = []
     for s in sorok:
         if not s.olvasoi:
             continue
+        if KIVETEL_NELKUL:
+            m = FELHASZNALO_RX.search(s.szoveg)
+            if m:
+                ki.append(talalat('BELSO', BUKAS, s.n, kornyezet(s.szoveg, m), 'munkafolyamat-szereplő: ' + m.group(0),
+                                  'felhasznalo'))
         for rx, nev in BELSO:
-            if nev == 'belső fájl' and s.szakasz.startswith(IRODALOM):
+            if nev == 'belső fájl' and s.szakasz.startswith(IRODALOM) and not KIVETEL_NELKUL:
                 continue  # az Irodalom a lapot és a forrásfájlt idézhetőként nevezi meg
             m = rx.search(s.szoveg)
             if m:
@@ -562,7 +588,7 @@ def zarojel_nyitva(r):
 
 def zarojel_talalat(s, r):
     i = r.rfind('(')
-    szotar = s.szakasz.startswith('2. Szótári')
+    szotar = s.szakasz.startswith(SZOTARI_SZAKASZ)
     return talalat('ZAROJEL', BUKAS if szotar else FIGY, s.n, r[max(0, i - 60):i + 60], 'nyitva maradt zárójel')
 
 
@@ -586,7 +612,7 @@ def elso_tabla(sorok, szakasz_kezd):
 
 
 def ell_funkcio(sorok):
-    fej, tabla = elso_tabla(sorok, '1. Előfordulások')
+    fej, tabla = elso_tabla(sorok, ELOFORDULAS_SZAKASZ)
     if not fej:
         return []
     oszl = next((i for i, c in enumerate(fej) if c.startswith('Funkció')), None)
@@ -689,7 +715,7 @@ def ell_idezet(sorok):
 
 def elofordulas_szamok(sorok):
     """Az 1. tábla sorai: (összes, ÓSZ, ÚSZ)."""
-    _, tabla = elso_tabla(sorok, '1. Előfordulások')
+    _, tabla = elso_tabla(sorok, ELOFORDULAS_SZAKASZ)
     _, _, usz = konyvek()
     ossz = len(tabla)
     u = 0
@@ -803,7 +829,8 @@ SZINT_ALATT_RX = re.compile(r'ennél a motívumnál még nincs|nem futott|üres 
 SZINT_ARANY = 0.25      # a szakasz szószáma az arany lap azonos szakaszáénak ennyi része alatt: figyelmeztetés
 SZINT_MIN_ARANY = 150   # csak az arany lapon legalább ennyi szavas szakaszokat mérjük
 # csak az értelmező (kézi) és a kapcsolati szakaszokat: az 1., 1/b., 2–4. hossza az előfordulások számával arányos
-SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan')
+SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan',
+                 '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan')
 
 
 def szakasz_szoszam(sorok):
@@ -938,8 +965,122 @@ def ell_nave_angol(sorok):
     return ki
 
 
+# VISSZHANG (F178.5, DT639, DT-F178d; a felhasználó: „Legyen biztosítva, hogy ezt át tudjuk vinni, ne legyen
+# visszaesés”, 2026-11-08): a 4.11 visszhang-blokk szabályai minden lapon, ahol a blokk áll — BUKÁS. Hat szabály:
+#   V1 angol maradék a blokkban (BDB-fordulat, angol glossza, „fordításra vár”);
+#   V2 nem rokon nyelvi sor a BDB-háttérben (újhéber, targumi arámi, Sirák);
+#   V3 „nincs rokon nyelvi adat”, holott a rokon írások lekérdezése a szócikket nem azonosította (bdb_szócikk=0):
+#      a kettő nem vonható össze („nem azonosítható” ≠ „nincs”);
+#   V4 „ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”);
+#   V5 kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a két héber szó egyesítése és a láncban
+#      választott (szokatlan) szó;
+#   V6 sablonmondat-ismétlés: ugyanaz a következtetés-mondat legalább három sorban.
+VH_ANGOL_RX = re.compile(r"\b(?:see|so|cf|Assyrian|Arabic|Syriac|Ethiopic|Aramaic|Late Hebrew|Hiph'?il|Ecclus|"
+                         r"cursed|curse|grief|corruption)\b|fordításra vár")
+VH_NEM_ROKON_RX = re.compile(r'^\s*(?:újhéber|targumi|Sirák|késői héber)', re.I)
+VH_KIEMELT_JO_RX = re.compile(r'láncon kívül.*\d+%')   # kiemelt csak alapvonallal (DT-F178d, pontosítva)
+VH_FORDITASOK = ((1, 'Targum'), (2, 'Vulgata'), (3, 'LXX'))
+_VH_NEM_AZONOSITOTT = None
+
+
+def _niqqud_nelkul(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if not ('֑' <= c <= 'ׇ'))
+
+
+def vh_nem_azonositott():
+    """A rokon írások gyorsítótárában bdb_szócikk=0 Strongok próbált alakjai (pontozatlan héber)."""
+    global _VH_NEM_AZONOSITOTT
+    if _VH_NEM_AZONOSITOTT is None:
+        _VH_NEM_AZONOSITOTT = set()
+        ut = os.path.join(GYOKER, 'konkordancia', 'BDB_rokon_irasok.tsv')
+        if os.path.exists(ut):
+            with open(ut, encoding='utf-8') as f:
+                for sor in f:
+                    m = re.match(r'# lekérdezve: H\d+ \| próbált_alakok=([^|]+)\|.*bdb_szócikk=0\b', sor)
+                    if m:
+                        _VH_NEM_AZONOSITOTT.update(x.strip() for x in m.group(1).split(','))
+    return _VH_NEM_AZONOSITOTT
+
+
+def _vh_cellak(t):
+    return [c.strip() for c in t.strip().strip('|').split('|')]
+
+
+def ell_visszhang(sorok):
+    ki = []
+    mondatok = {}
+    for s in sorok:
+        if s.fajta not in ('tabla', 'proza') or not (s.alszakasz.startswith('4.11.') or
+                                                    s.alszakasz.startswith('Háttér: rokon nyelvek')):
+            continue
+        t = s.szoveg
+        m = VH_ANGOL_RX.search(t)
+        if m:
+            ki.append(talalat('VISSZHANG', BUKAS, s.n, kornyezet(t, m), 'V1 angol maradék a visszhang-blokkban: ' +
+                              m.group(0), 'V1' + m.group(0)))
+        if s.fajta != 'tabla':
+            continue
+        c = _vh_cellak(t)
+        if s.alszakasz.startswith('Háttér') and len(c) == 4 and not set(c[0]) <= set('-: '):
+            if VH_NEM_ROKON_RX.search(c[1]):
+                ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V2 nem rokon nyelvi sor a BDB-háttérben: ' + c[1][:40]))
+            if 'nincs rokon nyelvi adat' in c[1]:
+                szo = re.findall('[֐-׿]+', c[0])
+                if szo and _niqqud_nelkul(szo[0]) in vh_nem_azonositott():
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V3 „nincs rokon nyelvi adat”, holott a BDB-szócikk '
+                                                                  'nem azonosított (nem azonosítható ≠ nincs)'))
+        elif s.alszakasz.startswith('4.11.') and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
+                and not set(c[0]) <= set('-: '):
+            mit = c[4]
+            for i, nev in VH_FORDITASOK:
+                cella = c[i].replace('**', '')
+                mm = re.match(r'^(.*?) · (\d+)/(\d+)\b', cella)
+                if mm and len(mm.group(1).split(' · ')) >= 2 and re.search(r'\b%s: ugyanaz a szó\b' % nev, mit):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, mit[:120], 'V4 „ugyanaz a szó” két lemmánál (%s): '
+                                                                         'helyesen „ugyanaz a szócsalád”' % nev))
+            for b in re.findall(r'\*\*(.+?)\*\*', mit):
+                if not VH_KIEMELT_JO_RX.search(b):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, b[:120], 'V5 kiemelt következtetés alapvonal nélkül'))
+            # V6: tagmondatonként (pont és pontosvessző), a számok és a fordítók neve nélkül, a teljes táblán és a
+            # cellán belül is számolva
+            for mondat in re.split(r'(?<=[.;])\s+', mit.replace('**', '')):
+                kulcs = re.sub(r'\d+', '#', re.sub(r'\b(?:A|a) (?:Targum|Vulgata|LXX)\b:?', '', mondat)).strip(' .;')
+                if len(kulcs) > 25:
+                    mondatok.setdefault(kulcs, []).append(s.n)
+            # V7: a LXX alapvonal-mondata a sávja szerinti: ≥ 80% „szokásos”, 40–80% „gyakori, de nem kizárólagos”,
+            # < 40% kiemelt „más szót választ”
+            for mondat in re.split(r'(?<=\.)\s+', mit.replace('**', '')):
+                pcts = [int(x) for x in re.findall(r'(\d+)%', mondat)] if 'láncon kívül' in mondat else []
+                if not pcts:
+                    continue
+                pct, kor = min(pcts), mondat
+                egyesit = 'mindkét héber szót' in mondat
+                kell = (('így van' if egyesit else 'szokásos fordítása') if pct >= 80 else
+                        ('gyakran, de nem kizárólag' if egyesit else 'gyakori, de nem kizárólag') if pct >= 40 else
+                        ('nem így' if egyesit else 'más szót választ'))
+                if kell not in kor:
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 az alapvonal (%d%%) mondata nem a sávja '
+                                                                          'szerinti („%s”)' % (pct, kell)))
+                # ELLENOR_F178 5.: a nevező nem állhat találatszámként („a versek 98%-ában (97 vers)”); a helyes alak
+                # „a láncon kívüli N versből x versben (y%)”, és a három szám egymással egyezik
+                if re.search(r'%-[aá]ban \(\d+ vers\)', kor):
+                    ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 a zárójeles versszám a nevező, az olvasó '
+                                                                          'találatnak érti: helyesen „a láncon kívüli N '
+                                                                          'versből x versben (y%)”'))
+                for nn, xx, yy in re.findall(r'kívüli (\d+) versből (?:csak )?(\d+) versben \((\d+)%\)', kor):
+                    nn, xx, yy = int(nn), int(xx), int(yy)
+                    if not nn or xx > nn or int(round(100.0 * xx / nn)) != yy:
+                        ki.append(talalat('VISSZHANG', BUKAS, s.n, kor[:120], 'V7 az alapvonal számai nem egyeznek: '
+                                                                              '%d versből %d (%d%%)' % (nn, xx, yy)))
+    for mondat, ns in mondatok.items():
+        if len(ns) >= 3:
+            ki.append(talalat('VISSZHANG', BUKAS, ns[0], mondat[:120], 'V6 sablonmondat-ismétlés: %d sorban' % len(ns)))
+    return ki
+
+
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
-                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol]
+                ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
+                ell_visszhang]
 
 
 def arany_szoszam():
@@ -955,7 +1096,10 @@ def arany_szoszam():
 
 
 def lap_meres(szoveg, kh=True, atvett=True, arany=True):
-    """Egy lap szövegének mérése: (találatok, megjegyzések)."""
+    """Egy lap szövegének mérése: (találatok, megjegyzések). Az új szerkezetű lapon kivétel nélkül (F178.4)."""
+    global KIVETEL_NELKUL, KIZART_SZAKASZ
+    KIVETEL_NELKUL = bool(UJ_SZERKEZET_RX.search(szoveg))
+    KIZART_SZAKASZ = () if KIVETEL_NELKUL else KIZART_SZAKASZ_REGI
     sorok = tagol(szoveg)
     ki = []
     for f in ELLENORZESEK:

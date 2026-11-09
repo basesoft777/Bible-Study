@@ -37,11 +37,61 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FEJLEC = ('# GENERÁLT: a PaRDeS nyílt mag exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
-          'szerkesztendő; a „#” kezdetű sor megjegyzés.')
+# F178.7: a központi keretezésben (cím, GENERÁLT-fejléc) a lexikon címének helyőrzője áll; a munkanév
+# „Bibliai motívum-kereszthivatkozás lexikon” / „Biblical Motif Cross-Reference Lexicon”. A „PaRDeS-szint” oszlop
+# és a tartalmi említések maradnak (a felhasználó jóváhagyásával, 2026-11-08).
+LEXIKON_CIME = '[A LEXIKON CÍME]'
+LEXIKON_CIME_EN = '[A LEXIKON CÍME]'
+FEJLEC = ('# GENERÁLT: a(z) %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
+          'szerkesztendő; a „#” kezdetű sor megjegyzés.' % LEXIKON_CIME)
 KOD_FEJLEC = FEJLEC
-FEJLEC_EN = ('# GENERATED: export of the PaRDeS open core (CC BY 4.0), generated from the project data — do not '
-             'edit by hand; a line starting with "#" is a comment.')
+FEJLEC_EN = ('# GENERATED: export of the %s open core (CC BY 4.0), generated from the project data — do not '
+             'edit by hand; a line starting with "#" is a comment.' % LEXIKON_CIME_EN)
+
+# F178.6: a szerkesztői döntés olvasói neve. A belső adat nem változik (a `jeloltek.tsv`, a `DONTESEK.md` szövege
+# marad); a csomag minden fájlja az ellenőrző összeg előtt ezen a cserén megy át, magyarul és angolul. A tárolt
+# angol fordítás a csere előtti magyar szövegre készült: a frissesség mércéje a csere utáni egyezés (a kapu is így
+# méri, `szerkesztoi_egyezik`).
+SZERKESZTOI_CSERE = [
+    (re.compile(r"\b([Aa]z) orkesztrátor döntése a felhasználó felhatalmazásával"), lambda m: _nagy(m, 'szerkesztői döntés')),
+    (re.compile(r"\b([Aa]) szerkesztő döntése a felhasználó felhatalmazásával"), lambda m: _nagy(m, 'szerkesztői döntés')),
+    (re.compile(r"\b([Aa]) felhasználó döntése"), lambda m: _nagy(m, 'szerkesztői döntés')),
+    (re.compile(r"\b([Aa]) felhasználó átnézése"), lambda m: _nagy(m, 'szerkesztői átnézés')),
+    (re.compile(r"\b([Aa]) felhasználó jóváhagyásával"), lambda m: _nagy(m, 'szerkesztői jóváhagyással')),
+    (re.compile(r"\b([Aa]) felhasználó döntött"), lambda m: _nagy(m, 'a szerkesztő döntött')),
+    (re.compile(r"\(a felhasználó, "), lambda m: '(szerkesztői döntés, '),
+    (re.compile(r"\bFelhasználó, (?=\d{4})"), lambda m: 'Szerkesztői döntés, '),
+    (re.compile(r"\b([Aa]) felhasználó\b"), lambda m: _nagy(m, 'a szerkesztő')),
+    (re.compile(r"\bfelhasználó\w*"), lambda m: 'szerkesztő'),
+    (re.compile(r"\b([Aa]z) orkesztrátor\b"), lambda m: _nagy(m, 'a szerkesztő')),
+    (re.compile(r"\b[Oo]rkesztrátor\w*"), lambda m: 'szerkesztő'),
+    (re.compile(r"\b([Tt]he) editor's decision with the user's authori[sz]ation"), lambda m: _nagy(m, 'editorial decision')),
+    (re.compile(r"\b([Tt]he) orchestrator's decision with the user's authori[sz]ation"), lambda m: _nagy(m, 'editorial decision')),
+    (re.compile(r"\b([Tt]he) user's decision"), lambda m: _nagy(m, 'editorial decision')),
+    (re.compile(r"\b([Tt]he) user's review"), lambda m: _nagy(m, 'editorial review')),
+    (re.compile(r"\b([Tt]he) user decided"), lambda m: _nagy(m, 'the editor decided')),
+    (re.compile(r"\(the user, "), lambda m: '(editorial decision, '),
+    (re.compile(r"\bUser, (?=\d{4})"), lambda m: 'Editorial decision, '),
+    (re.compile(r"\b([Tt]he) user\b"), lambda m: _nagy(m, 'the editor')),
+    (re.compile(r"\b([Tt]he) orchestrator\b"), lambda m: _nagy(m, 'the editor')),
+    (re.compile(r"\b[Oo]rchestrator\b"), lambda m: 'editor'),
+]
+
+
+def _nagy(m, szoveg):
+    """A csere a találat kezdőbetűjének kis/nagy alakjával (mondat elején nagybetű)."""
+    return (szoveg[:1].upper() + szoveg[1:]) if m.group(1)[:1].isupper() else szoveg
+
+
+def szerkesztoi(szoveg):
+    for rx, f in SZERKESZTOI_CSERE:
+        szoveg = rx.sub(f, szoveg)
+    return szoveg
+
+
+def szerkesztoi_egyezik(forras_hu, hu):
+    """A tárolt fordítás forrása (`forras_hu`) a csere után a mai magyar cella-e (F178.6)."""
+    return bool(forras_hu) and szerkesztoi(forras_hu) == hu
 
 # --- a licencszűrés
 ENGEDETT_CIMKE = {'közkincs', 'CC0 1.0', 'CC BY 4.0'}
@@ -1230,7 +1280,7 @@ def export(kimenet):
                            'domen_neve': s['domen'], 'glossza': s['glossza']})
     sd.sort(key=lambda s: (s['strong'], s['szotar'], s['jelentes_azonosito']))
     sd_fej, sd = cimke_bovit('cc_by_sa_reteg/szemantikai_domenek.tsv', sd_fej, sd)
-    sa_fejlec = ('# GENERÁLT: a PaRDeS nyílt mag külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
+    sa_fejlec = ('# GENERÁLT: a(z) ' + LEXIKON_CIME + ' nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
                  'kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.')
     fajlok['cc_by_sa_reteg/szemantikai_domenek.tsv'] = (
         sa_fejlec + '\n' + '\t'.join(sd_fej) + '\n' +
@@ -1280,7 +1330,7 @@ def export(kimenet):
     # --- OLVASSEL.md
     peldak = olvasasi_peldak(fajlok)
     sorszamok = ''.join('| `%s` | %d |\n' % (k, v) for k, v in sorted(stat.items()))
-    ol = ['# PaRDeS nyílt mag — olvass el', '', FEJLEC, '', '*English version: `README.md`.*', '',
+    ol = ['# %s — nyílt mag — olvass el' % LEXIKON_CIME, '', FEJLEC, '', '*English version: `README.md`.*', '',
           '**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma '
           'külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.', '',
           '**Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, '
@@ -1341,7 +1391,7 @@ def export(kimenet):
     fajlok['OLVASSEL.md'] = '\n'.join(ol)
 
     # --- README.md (az OLVASSEL.md angol megfelelője: ugyanaz a tartalom)
-    re_ = ['# PaRDeS Open Core — Read Me', '', FEJLEC_EN, '',
+    re_ = ['# %s — Open Core — Read Me' % LEXIKON_CIME_EN, '', FEJLEC_EN, '',
            '*Magyar változat: `OLVASSEL.md`.*', '',
            "**Licence:** CC BY 4.0 (the open core's own data and text). The contents of the `cc_by_sa_reteg/` "
            'directory are under a separate licence, CC BY-SA 4.0; see the `OLVASSEL.md` there.', '',
@@ -1409,6 +1459,10 @@ def export(kimenet):
     if CIMKE_HIANY:
         raise SystemExit('a zárt érték angol címkéje (cimke_en) hiányzik a kódkönyvből: %s' % '; '.join(
             '%s/%s = %s' % x for x in sorted(set(CIMKE_HIANY))))
+
+    # --- F178.6: a szerkesztői döntés olvasói neve, minden fájlban (az ellenőrző összeg előtt)
+    for rel in list(fajlok):
+        fajlok[rel] = szerkesztoi(fajlok[rel])
 
     # --- ellenőrző összeg
     sor = []

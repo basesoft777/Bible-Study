@@ -106,6 +106,14 @@ class Szabalyok(unittest.TestCase):
         self.assertEqual(HK.kiejt(alak, elotag, makkef), 'semó')
         self.assertEqual(HK.teljes_szo(sorok, 2)[2], True)
 
+    def test_a1_arami_zart_szotag(self):
+        """F178.5: arámiul a rövid magánhangzó utáni sevá az ajin/álef előtt néma, a torokhang aposztróf."""
+        self.assertEqual(HK.kiejt('אַרְעָא', aram=True), "ar'á")
+        self.assertEqual(HK.kiejt('אַרְעָא'), 'areá')              # héberül változatlan (R3)
+        self.assertEqual(HK.kiejt('לִיטָא', aram=True), 'lítá')
+        self.assertEqual(HK.kiejt('אִתְחַבָּלַת', aram=True), 'itchabbálat')
+        self.assertEqual(HK.kiejt('חוֹבֵי', aram=True), 'chóvé')
+
 
 if __name__ == '__main__':
     unittest.main()
