@@ -280,7 +280,23 @@ Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TS
 
 ## 7. A maradék szúrópróbája és a kontroll (J3) — az első kör, történeti
 
-> **Javítókör 1 (ELLENOR_F181 E5, DT-F181j):** ez a szakasz az első kör mintája és a végrehajtó olvasata (az E1/E2/E3 előtti szabályra; a számai — 190 jelölt, 15 elírás-gyanús, 30 HunKar-oldali sor — nem frissültek, mert a mintát újra kell venni). Az ellenőr szerint a tételek nincsenek dokumentálva, és az értelmező ítéletet Opus hozza. Az E1/E2/E3 utáni új minta tételei, üres ítélet-oszloppal: `naplok/F181_szuroproba.md` (136 tétel, mag=181). Az alábbi hibaarányok **nem** az új mintára vonatkoznak.
+> **Javítókör 1 (ELLENOR_F181 E5, DT-F181j): az érvényes szúrópróba az Opus-ítélet (F181.21).** Az E1/E2/E3 utáni új minta 136 tétele, tételes ítélettel és indokkal: `naplok/F181_szuroproba.md` (mag=181, a tábla állapota `6af8b0cf`; ítélet: `claude-opus-5-5`, a két vers Károli-szövege alapján).
+>
+> *scope=naplok/F181_szuroproba.md + konkordancia/Karoli_1908.tsv + konkordancia/Karoli_KH_javitott.tsv | forras=a `claude-opus-5-5` olvasata, tételesen | ts=2026-11-09*
+>
+> | réteg | n | rendben | gyenge | hibás | bizonytalan | hibaarány | 95% Wilson-felső |
+> |---|---|---|---|---|---|---|---|
+> | kontroll: beemelt MEK-sor | 40 | 28 | 11 | 1 | 0 | 2,5% | 12,9% |
+> | HunKar-gyanús forrásversen beemelt MEK-sor | 30 | 22 | 7 | 1 | 0 | 3,3% | 16,7% |
+> | maradék: MEK-oldali gyanús ismétlődő | 6 | 6 | 0 | 0 | 0 | 0,0% | 39,0% |
+> | maradék: elírás-gyanús | 10 | 5 | 1 | 4 | 0 | 40,0% | 68,7% |
+> | maradék: HunKar-sor jelölt marad | 21 | 6 | 5 | 10 | 0 | 47,6% | 67,6% |
+> | E2-szűrt MEK-töredék | 9 | 1 | 1 | 7 | 0 | 77,8% | 93,7% |
+> | E1/E2/E3: megerősített HunKar-sor | 20 | 13 | 3 | 4 | 0 | 20,0% | 41,6% |
+>
+> Ez egy modell olvasata, **alsó becslés, nem igazolás**: a véletlenül értelmes helyre mutató elírást nem fogja meg. **Lényeg:** (1) A beemelt MEK-rétegekben 70 sorból 2 hibás (3. 5Móz 14:21 → 4Móz 22:28; 68. 2Kor 3:5 → Ján 15:15). Mindkettő `csak_mek` és `tsk=nem`, és létező, de tartalmilag idegen versre mutató MEK-elírás. A `tsk=nem` 22 sorából 2 hibás és 11 gyenge, a `tsk=igen` 48 sorából 0 hibás: ez kockázati jelzést sejtet, kizáró szűrőt nem. (2) Az E1/E2 12 HunKar-sora hibátlan (10 rendben, 2 gyenge), az öt E1-határeset is. Az **E3** 8 tartománysorából viszont 4 hibás (131, 133, 134, 135), 1 gyenge (136). Ez **Filemon-tartomány-műtermék**: a HunKar `Filem 1,1-N`, a helyes cél csak az N. vers, ezt a MEK adja, az E3 pedig ezt a MEK-verset tette `kiesik`-be. Ez új gépi szűrőt sejtet; a szabályt nem változtattam, döntés kell róla. (3) A jelölt rétegekben magas a hibaarány, a visszatartás tehát indokolt. Kivétel az 1Kir 2:26 → 1Sám 22:20 (rendben, N-F181f (b) mellett szól). A táblában a `Jos.2.15 → Act.9.2` HunKar-sor kettőzött (88., 90.). Részletek: a szúrópróba-fájl „Összesítés rétegenként” szakasza.
+>
+> **Mi változott a korábbi Sonnet-ítélethez képest:** az alábbi első kör (kontroll 0/39, gyanús 0/30, HunKar-jelölt 1/14 hiba) más mintán és a végrehajtó olvasatán alapult, tételek nélkül. Az új, tételes Opus-ítélet a kontrollban 1 hibát talál (40-ből), a HunKar-oldali jelöltek között 10-et (21-ből), az E3-ban pedig egy új hibatípust (a Filemon-tartomány). Az alábbi táblázat és szöveg történeti, nem érvényes.
 
 *scope=konkordancia/Karoli_KH_javitott.tsv (a J4 utáni állapot) + konkordancia/Karoli_1908.tsv | forras=eszkozok/karoli_kh_mek.py szuroproba (mag=181) + a végrehajtó olvasata | ts=2026-11-09*
 
