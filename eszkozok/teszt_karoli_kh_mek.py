@@ -574,6 +574,30 @@ class RepoTablak(unittest.TestCase):
         kulcsok = {(r['Igehely'], r['Kapcsolódó igehely']) for r in mek}
         self.assertFalse(kulcsok & {(f, c) for f, c, _, _ in self.hk if SZ.szint(f, c) != 'megerositett'})
 
+    def test_megjelenites_egyseges_konyvnevekkel(self):
+        """F181 E6: a HunKar-sor és a MEK-sor megjelenítése ugyanazt a könyvnevet adja (ApCsel, nem Csel; Ézs, nem Ésa)."""
+        hu = K.hu_step()
+        step_hu = {v: k for k, v in hu.items()}
+        self.assertEqual(SZ.hu_megjelenites({'Kapcsolódó igehely': 'Act.11.23',
+                                             'Kapcsolódó igehely magyar megjelenítése': 'Csel 11,23'}), 'ApCsel 11,23')
+        self.assertEqual(SZ.hu_megjelenites({'Kapcsolódó igehely': 'Isa.1.1-Isa.1.2',
+                                             'Kapcsolódó igehely magyar megjelenítése': 'Ésa 1,1-2'}), 'Ézs 1,1-2')
+        # ismeretlen könyv / szokatlan alak: változatlan
+        self.assertEqual(SZ.hu_megjelenites({'Kapcsolódó igehely': 'Xyz.1.1',
+                                             'Kapcsolódó igehely magyar megjelenítése': 'Xyz 1,1'}), 'Xyz 1,1')
+        valtozott = 0
+        sorok = K.tsv_sorok(K.HUNKAR)
+        for m in sorok:
+            if len(m) < 3 or not m[1]:
+                continue
+            r = {'Igehely': m[0], 'Kapcsolódó igehely': m[1], 'Kapcsolódó igehely magyar megjelenítése': m[2]}
+            ki = SZ.hu_megjelenites(r)
+            self.assertTrue(ki.startswith(step_hu[m[1].split('-')[0].split('.')[0]] + ' '), (m, ki))
+            valtozott += ki != m[2]
+        self.assertGreater(valtozott, 0)
+        for r in SZ.mek_sorok():
+            self.assertEqual(SZ.hu_megjelenites(r), r['Kapcsolódó igehely magyar megjelenítése'])
+
     def test_alias_tabla(self):
         al = K.mek_aliasok()
         self.assertEqual(len(set(al.values())), 66)

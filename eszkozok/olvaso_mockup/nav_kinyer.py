@@ -43,7 +43,9 @@ with open(f'{ROOT}/konkordancia/Karoli_kereszthivatkozasok.tsv', encoding='utf-8
     for s in f:
         m = s.rstrip('\n').split('\t')
         if m[0].startswith('Jol.2.') and karoli_kh_szuro.elfogad(m[0], m[1]):
-            kh[f"{KONYV} {FEJ}:{m[0].split('.')[2]}"].append(m[2])
+            # F181 E6: a repó egységes könyvnevével (ApCsel, nem Csel)
+            kh[f"{KONYV} {FEJ}:{m[0].split('.')[2]}"].append(karoli_kh_szuro.hu_megjelenites(
+                {'Kapcsolódó igehely': m[1], 'Kapcsolódó igehely magyar megjelenítése': m[2]}))
 # F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
 for x in karoli_kh_szuro.mek_sorok():
     if x['Igehely'].startswith('Jol.2.') and karoli_kh_szuro.elfogad(x['Igehely'], x['Kapcsolódó igehely']):

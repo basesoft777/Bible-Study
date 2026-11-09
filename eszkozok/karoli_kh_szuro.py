@@ -8,13 +8,18 @@ listáját hordozta (N-F156a). Az F177 óta a MEK 00161 kiadással mint második
 `konkordancia/Karoli_KH_javitott.tsv` az irányadó: a fogyasztók ezen a modulon át csak a `megerositett` szintű sort
 veszik át; a `kiesik` és a `jelolt` nem jut a lapra / az indexbe (a `jelolt` a jelöltlistán marad).
 
-  `elfogad(forras, cel)`: igaz, ha a HunKar-tábla (forras, cel) sora `megerositett`. A `cel` a HunKar-tábla
+  `elfogad(forras, cel)`: igaz, ha a (forras, cel) sor a javított táblában `megerositett`. A `cel` a HunKar-tábla
       `Kapcsolódó igehely` oszlopának alakja (pl. `Gen.2.4-Gen.2.5`), a `forras` STEP-alakú (pl. `Gen.1.1`).
   `szint(forras, cel)`: `megerositett` | `kiesik` | `jelolt` | None (a táblában nincs ilyen sor).
+  `mek_sorok(forras=None)`: a csak a MEK-ben álló, `megerositett` sorok a HunKar-tábla kulcsaival (F181).
+  `hu_megjelenites(sor)`: a hivatkozás magyar megjelenítése a repó egységes könyvnevével (`ApCsel`, `Ézs`, `Mt`: a
+      `Konyv_normalizalo_tabla.tsv` 2. oszlopa). A HunKar-tábla saját megjelenítése szentiras.hu-alakú (`Csel`, `Ésa`,
+      `Mát`), a `mek_sorok` a repó alakját adja; a fogyasztók ezen át egy listában sem keverik a kettőt (F181 E6).
   `gyanus_forrasok()`: ARCHÍV — a megszűnt karantén (`Karoli_kereszthivatkozasok_gyanus.tsv`) forrásversei; szűrésre NEM
       használandó (a karantén megszűnt, DT-F177a), csak az archívum tesztjéhez és a történeti hivatkozáshoz marad.
 """
 import os
+import re
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GYANUS = os.path.join(GYOKER, 'konkordancia', 'Karoli_kereszthivatkozasok_gyanus.tsv')
@@ -115,3 +120,15 @@ def mek_sorok(forras=None):
                                'Kapcsolódó igehely magyar megjelenítése': '%s %s,%s' % (hu[r[0]], r[1], r[2])})
         _MEK_SOROK = ki
     return [r for r in _MEK_SOROK if forras is None or r['Igehely'] == forras]
+
+
+def hu_megjelenites(sor):
+    """A `Kapcsolódó igehely magyar megjelenítése` a repó egységes könyvnevével (l. a modul docstringjét): a HunKar-tábla
+    szentiras.hu-alakú könyvnevét (`Csel 11,23`) a normalizáló tábla nevére (`ApCsel 11,23`) cseréli, a tartomány és a
+    versszám marad. A könyv a `Kapcsolódó igehely` STEP-alakú kezdő végpontjából jön; ha az nem ismert, vagy a
+    megjelenítés alakja nem `<könyv> <szám…>`, a megjelenítés változatlan."""
+    disp = sor['Kapcsolódó igehely magyar megjelenítése']
+    konyv = sor['Kapcsolódó igehely'].split('-')[0].split('.')[0]
+    nev = _step_hu().get(konyv)
+    m = re.match(r'^(\S+)( \d.*)$', disp)
+    return nev + m.group(2) if (nev and m) else disp

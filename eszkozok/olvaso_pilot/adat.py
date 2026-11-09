@@ -196,7 +196,11 @@ STEP_HU = step_tabla()
 # F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
 _MEK_KH = [[x['Igehely'], x['Kapcsolódó igehely'], x['Kapcsolódó igehely magyar megjelenítése']]
            for x in karoli_kh_szuro.mek_sorok()]
-for r in list(sorok('konkordancia/Karoli_kereszthivatkozasok.tsv')) + _MEK_KH:
+_KH_FEJ = ['Igehely', 'Kapcsolódó igehely', 'Kapcsolódó igehely magyar megjelenítése']
+# F181 E6: a HunKar-sor megjelenítése is a repó egységes könyvnevével (ApCsel, nem Csel)
+_HK_KH = [r[:2] + [karoli_kh_szuro.hu_megjelenites(dict(zip(_KH_FEJ, r)))] + r[3:] if len(r) > 2 else r
+          for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv')]
+for r in _HK_KH + _MEK_KH:
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
     if m and len(r) > 2 and karoli_kh_szuro.elfogad(r[0], r[1]):
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
