@@ -384,7 +384,7 @@ Régebbi címke nem írható át újabbra ellenőrzés nélkül. A régi címke 
 
 ### Lezárási checklist (sorrendben végigjárandó)
 
-> **A tanulmány lezárása nem a lexikonlap lezárása.** Ez a checklist a tematikus tanulmányt zárja. A motívum lexikonlapjának lezárása (az 1. kiadás) külön menet, a `MUNKAMENET.md` C-szakasza szerint: C-h határ-ellenőrzés (a `hatar-ellenor`-t a felhasználó indítja) → C-l döntések a Kiadóban (felület) (`naplok/LEKTOR_<ID>.tsv`) → C5 lezárás: a Feed 8 kapuja zöld (`eszkozok/muhely_allapot.py`), az 1. kiadás sora az `adat/kiadasok.tsv`-ben, a `motivumok.tsv` verzió-emelése. A `/kiadas` a 2. kiadás bemenete, a lezárást nem akasztja (C-k). Az egyforrású (migrált vagy új) motívum kézi forrása a `9_PaRDeS_motivum_forras_sablon.md` szerint készül.
+> **A tanulmány lezárása nem a lexikonlap lezárása.** Ez a checklist a tematikus tanulmányt zárja. A motívum lexikonlapjának lezárása (az 1. kiadás) külön menet, a `MUNKAMENET.md` „A lezárás menete motívumonként” szakasza szerint (a C5 feltétele: a Feed mind a 9 kapuja zöld, DT547). Az egyforrású (migrált vagy új) motívum kézi forrása a `9_PaRDeS_motivum_forras_sablon.md` szerint készül.
 
 Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
 
@@ -434,7 +434,7 @@ Ugyanezt mondja a tanulmány sablon (`2_PaRDeS_bovitett_sablon.md` v21)
 ## Terminológiai és formai szabályok (megegyezik a többi sablonnal)
 
 - „Szentlélek" helyett mindig **„Szent Szellem"**
-- **Kiejtés.** A görög és a héber szó kiejtése szakaszonként (két `##`/`###` cím között) az **első előfordulásnál** kötelező, továbbá **minden címsorban és táblázatfejben**; ugyanabban a bekezdésben ugyanarra a szóra nem ismétlendő. Szó szerinti forrásidézetben (BDB, Thayer, LSJ, TBESG) nincs. Héberül a jóváhagyott `adat/kiejtes_kivetelek.tsv` alak, ennek híján a gépi magyaros kiejtés (`eszkozok/heber_kiejtes.py`), **jelölés nélkül**; görögül gépi magyaros átírás (`eszkozok/kiejtes.py`); a ragozott alak a saját kiejtését kapja. Ha egy szó egy szakaszban egyszer sem kap kiejtést, az `ellenoriz.py` 22. szabálya JELENTÉS-sorban jelzi (nem gátol).
+- **Kiejtés.** A szabály egy helyen áll: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „Közös terminológiai és formai szabályok”, „Kiejtés” pont (gépi mérője: `ellenoriz.py` 22.).
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
 - A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás
 

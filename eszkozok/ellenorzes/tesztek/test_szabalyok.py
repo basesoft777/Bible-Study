@@ -2100,5 +2100,158 @@ class E35Teszt(unittest.TestCase):
         self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}, teljes=True), [])
 
 
+_VALODI_GYOKER = os.path.dirname(os.path.dirname(_ELLENORZES))
+
+
+def _masol(gyoker, relut):
+    with open(os.path.join(_VALODI_GYOKER, *relut.split('/')), encoding='utf-8') as f:
+        return _ir(gyoker, relut, f.read())
+
+
+_E36_SEMA = ('# SEMA\n\n## 2. Táblák\n\n### 2.1 `motivumok.tsv`\n\nx\n\n#### 2.2.2 mező\n\n'
+             '## 3. Integritási szabályok\n\n1. **Hivatkozási épség.** x\n2. **Nincs közvetlen út.** y\n')
+_E36_MM = '| # | Lépés |\n|---|---|\n| C-vh | visszhang |\n| C5 ⛔ | lezárás |\n| ~~B9~~ | kivezetve |\n'
+_E36_ELL = "def a():\n    return Sor('1. Hivatkozási épség', 'RENDBEN')\ncim = '24. Lábjegyzet'\n"
+
+
+class E36Teszt(unittest.TestCase):
+    """E36 (F184 D5): a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat; a SEMA
+    szakaszszámai egyediek."""
+
+    def _fut(self, claude='', sema=_E36_SEMA, sablon=None):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/SEMA.md', sema)
+            _ir(gy, 'MUNKAMENET.md', _E36_MM)
+            _ir(gy, 'eszkozok/ellenoriz.py', _E36_ELL)
+            _ir(gy, 'CLAUDE.md', claude)
+            if sablon is not None:
+                _ir(gy, 'sablonok/6_proba.md', sablon)
+            return SZ.e36_hivatkozas_cel(None)
+
+    def test_pozitiv_minden_cel_letezik(self):
+        t = self._fut('a: SEMA 2.1, `adat/SEMA.md` 2.2.2, SEMA 3.2 (a 3. szakasz 2. tétele)\n'
+                      'b: `MUNKAMENET.md` C-vh, MUNKAMENET C5, MUNKAMENET B9\n'
+                      'c: `ellenoriz.py` 24. és `ellenoriz.py` (1. szabály)\n'
+                      'd: olvasói kapu VISSZHANG, `olvasoi_kapu.py` NAVE_ANGOL\n')
+        self.assertEqual(t, [])
+
+    def test_negativ_nem_letezo_sema_szakasz(self):
+        t = self._fut('elso sor\nl. SEMA 2.9\n')
+        self.assertEqual([(x.szabaly, x.szint, x.fajl, x.sor) for x in t], [('E36', 'HIBA', 'CLAUDE.md', 2)])
+        self.assertIn('SEMA 2.9', t[0].reszlet)
+
+    def test_negativ_ismetlodo_sema_szakaszszam(self):
+        t = self._fut(sema=_E36_SEMA + '\n### 2.1 masik tabla\n')
+        self.assertEqual([(x.fajl, x.sor) for x in t], [('adat/SEMA.md', 16)])
+        self.assertIn('nem egyedi', t[0].reszlet)
+
+    def test_negativ_lepes_szabaly_es_kapu(self):
+        t = self._fut(sablon='MUNKAMENET.md C-zz\n`ellenoriz.py` 99.\nolvasói kapu NINCS_ILYEN\n')
+        self.assertEqual([(x.fajl, x.sor) for x in t],
+                         [('sablonok/6_proba.md', 1), ('sablonok/6_proba.md', 2), ('sablonok/6_proba.md', 3)])
+
+    def test_pozitiv_harmadik_szakasz_tetele_csak_ott_ervenyes(self):
+        # a „3.2” a 3. szakasz tétele; a 2. szakaszban álló számozott sor nem ad „3.n” célt
+        t = self._fut('SEMA 3.2\nSEMA 3.5\n')
+        self.assertEqual([x.sor for x in t], [2])
+
+    def test_hatokor_csak_a_valtozott_dokumentum(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/SEMA.md', _E36_SEMA + '\n### 2.1 masik tabla\n')
+            _ir(gy, 'MUNKAMENET.md', _E36_MM)
+            _ir(gy, 'CLAUDE.md', 'SEMA 2.9\n')
+            _ir(gy, 'BRIEF_SABLON.md', 'SEMA 2.8\n')
+            t = SZ.e36_hivatkozas_cel(['BRIEF_SABLON.md', 'eszkozok/x.py'])
+            self.assertEqual([(x.fajl, x.sor) for x in t], [('BRIEF_SABLON.md', 1)])
+            self.assertEqual(SZ.e36_hivatkozas_cel(['eszkozok/x.py']), [])
+
+    def test_valodi_repo_nem_dob_kivetelt(self):
+        self.assertIsInstance(SZ.e36_hivatkozas_cel(None), list)
+
+
+class E37Teszt(unittest.TestCase):
+    """E37 (F184 D3): az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal, és a forrástáblák
+    (olvasói kapu `KAPUK`, `VISSZHANG_ALSZABALYOK`, CI `SZABALY_LEIRAS`) a kóddal."""
+
+    FORRASOK = ('eszkozok/olvasoi_kapu.py', 'eszkozok/ellenoriz.py', '.github/workflows/ellenorzes.yml')
+
+    def _gyoker(self, gy, sema_blokkal=True):
+        for f in self.FORRASOK:
+            _masol(gy, f)
+        if sema_blokkal:
+            _ir(gy, 'adat/SEMA.md', '### 3.11 Gépi kapuk\n\n%s\n%s\n\n## 4.\n' % (SZ.E37_KEZDET, SZ.E37_VEGE))
+            SZ.kapulista_ir(gy)
+
+    def test_pozitiv_frissen_generalt_blokk_zold(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy)
+            self.assertEqual(SZ.e37_kapulista_naprakesz(None), [])
+            self.assertFalse(SZ.kapulista_ir(gy))
+
+    def test_negativ_hianyzo_jelolok(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy, sema_blokkal=False)
+            _ir(gy, 'adat/SEMA.md', '### 3.11 Gépi kapuk\n\nnincs blokk\n')
+            t = SZ.e37_kapulista_naprakesz(None)
+            self.assertEqual([(x.szabaly, x.szint) for x in t], [('E37', 'HIBA')])
+            self.assertIn('jelölői hiányoznak', t[0].reszlet)
+
+    def test_negativ_kezzel_szerkesztett_blokk(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy)
+            ut = os.path.join(gy, 'adat', 'SEMA.md')
+            with open(ut, encoding='utf-8') as f:
+                s = f.read()
+            _ir(gy, 'adat/SEMA.md', s.replace('| `BELSO` |', '| `BELSO2` |'))
+            t = SZ.e37_kapulista_naprakesz(None)
+            self.assertEqual(len(t), 1)
+            self.assertIn('elavult', t[0].reszlet)
+
+    def test_negativ_kod_es_tabla_elter(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy)
+            ut = os.path.join(gy, 'eszkozok', 'olvasoi_kapu.py')
+            with open(ut, encoding='utf-8') as f:
+                s = f.read()
+            _ir(gy, 'eszkozok/olvasoi_kapu.py', s + "\n# x\n_ = lambda: talalat('UJ_KAPU', BUKAS, 0, '', 'V9 uj')\n")
+            hibak = SZ.kapulista_ellentmondasok(gy)
+            self.assertTrue(any('UJ_KAPU' in h for h in hibak), hibak)
+            self.assertTrue(any('V9' in h for h in hibak), hibak)
+
+    def test_negativ_workflow_ismeretlen_azonosito(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy)
+            _ir(gy, '.github/workflows/ellenorzes.yml', 'jobs:\n  - name: E99 -- uj lepes\n')
+            self.assertTrue(any('E99' in h for h in SZ.kapulista_ellentmondasok(gy)))
+
+    def test_hatokor_csak_kivalto_fajlnal_fut(self):
+        with _IdeiglenesGyoker() as gy:
+            self._gyoker(gy, sema_blokkal=False)
+            _ir(gy, 'adat/SEMA.md', 'nincs blokk\n')
+            self.assertEqual(SZ.e37_kapulista_naprakesz(['MUNKAMENET.md']), [])
+            self.assertEqual(len(SZ.e37_kapulista_naprakesz(['eszkozok/olvasoi_kapu.py'])), 1)
+
+    def test_valodi_repo_forrastablai_egyeznek_a_koddal(self):
+        self.assertEqual(SZ.kapulista_ellentmondasok(), [])
+
+    def test_szint_emeles_a_blokkban(self):
+        # ELLENOR_F184 5., DT-F184c: az E34 sora az alapszint mellett a kiadott motívumon adott HIBA-t is kimondja
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E34 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a kiadott motívumon', sor[0])
+
+    def test_szint_emeles_e13_a_blokkban(self):
+        # ELLENOR_F184_2 1., DT-F184c: az E13 sora a tanulmányfájlon adott HIBA-t is kimondja (E13_TANULMANY_SZINT)
+        self.assertEqual(SZ.E13_TANULMANY_SZINT, 'HIBA')
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E13 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a tanulmányfájlon', sor[0])
+
+    def test_szint_emeles_e25_a_blokkban(self):
+        # ELLENOR_F184_2 1., DT-F184c: az E25 sora a (c) pont HIBA-ját is kimondja
+        sor = [s for s in SZ.kapulista_blokk().split('\n') if s.startswith('| E25 |')]
+        self.assertEqual(len(sor), 1, sor)
+        self.assertIn('FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron', sor[0])
+
 if __name__ == '__main__':
     unittest.main()
