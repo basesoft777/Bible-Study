@@ -151,7 +151,7 @@ Tesztek: `E36Teszt` (7) és `E37Teszt` (7) a `eszkozok/ellenorzes/tesztek/test_s
 
 ### 1. A D2 cseréinek tartalomvesztés-ellenőrzése (F184.13; ELLENOR_F184 1.)
 
-A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatkozásra. Hatókör: a `b4c4dae5..d4bd1f44` diff minden törölt sora (109), a brief fejlécének sorai nélkül (azokat az orkesztrátor állítja). Minden törlést tartalmazó hely (hunk) egy sor; a törölt tartalmat tagmondatonként vetettem össze a kanonikus hellyel (kiolvasás, nem gépi mérés).
+A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatkozásra. Hatókör: a `b4c4dae5..d4bd1f44` diff minden törölt sora a brief fejlécének sorai nélkül (azokat az orkesztrátor állítja): 109 törölt sor összesen, ebből 3 a brief sora, a brief nélkül 106 *[helyesbítés, F184.23 (ELLENOR_F184_2 3.): korábban „(109), a brief fejlécének sorai nélkül”]*. Minden törlést tartalmazó hely (hunk) egy sor; a törölt tartalmat tagmondatonként vetettem össze a kanonikus hellyel (kiolvasás, nem gépi mérés).
 
 | # | csere | törölt tartalom | hol áll a kanonikus helyen | eredmény |
 |---|---|---|---|---|
