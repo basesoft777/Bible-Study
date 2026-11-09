@@ -298,6 +298,31 @@ Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TS
 >
 > **Mi változott a korábbi Sonnet-ítélethez képest:** az alábbi első kör (kontroll 0/39, gyanús 0/30, HunKar-jelölt 1/14 hiba) más mintán és a végrehajtó olvasatán alapult, tételek nélkül. Az új, tételes Opus-ítélet a kontrollban 1 hibát talál (40-ből), a HunKar-oldali jelöltek között 10-et (21-ből), az E3-ban pedig egy új hibatípust (a Filemon-tartomány). Az alábbi táblázat és szöveg történeti, nem érvényes.
 
+### 7.1 A maradék hiba rétegenként (DT-F181o; F181.26)
+
+*scope=naplok/F181_szuroproba.md (136 tétel, mag=181; a tábla állapota `6af8b0cf`) | forras=a `claude-opus-5-5` tételes olvasata (F181.21), a Wilson-intervallum a tételes számokból számolva (score-intervallum, z = 1,96, kétoldali; a felső határ azonos a `naplok/F181_szuroproba.md` összesítésének „95% Wilson-felső” oszlopával) | ts=2026-11-09*
+
+| réteg | n | rendben | gyenge | hibás | hibaarány | 95% Wilson-intervallum |
+|---|---|---|---|---|---|---|
+| **beemelt MEK-sor (az adat, amelyet a fogyasztó lát)** | | | | | | |
+| kontroll: beemelt MEK-sor | 40 | 28 | 11 | 1 | 2,5% | 0,4% – 12,9% |
+| HunKar-gyanús forrásversen beemelt MEK-sor | 30 | 22 | 7 | 1 | 3,3% | 0,6% – 16,7% |
+| **a jelöltben maradt és az E-szabályokkal döntött rétegek** | | | | | | |
+| maradék: MEK-oldali gyanús ismétlődő | 6 | 6 | 0 | 0 | 0,0% | 0,0% – 39,0% |
+| maradék: elírás-gyanús | 10 | 5 | 1 | 4 | 40,0% | 16,8% – 68,7% |
+| maradék: HunKar-sor jelölt marad | 21 | 6 | 5 | 10 | 47,6% | 28,3% – 67,6% |
+| E2-szűrt MEK-töredék | 9 | 1 | 1 | 7 | 77,8% | 45,3% – 93,7% |
+| E1/E2/E3: megerősített HunKar-sor | 20 | 13 | 3 | 4 | 20,0% | 8,1% – 41,6% |
+| **levezetve a javítások után (nem új mérés)** | | | | | | |
+| maradék: HunKar-sor jelölt marad (a kettőzött sor egyszer: 88. = 90. tétel) | 20 | 6 | 5 | 9 | 45,0% | 25,8% – 65,8% |
+| E1/E2/E3: megerősített HunKar-sor (a Filem-tartományok nélkül) | 15 | 13 | 2 | 0 | 0,0% | 0,0% – 20,4% |
+
+**A mondat (DT-F181o): a MEK irányadó; a maradék hiba a MEK saját elírása.** A beemelt MEK-sorok maradék hibája elfogadott, mért maradék hiba: a kontrollban 1/40, a HunKar-gyanús forrásversen beemeltek között 1/30. Mindkét hibás sor `csak_mek` és `tsk=nem`, létező, de tartalmilag idegen versre mutató MEK-elírás (3. tétel: 5Móz 14:21 → 4Móz 22:28; 68. tétel: 2Kor 3:5 → Ján 15:15). A TSK külön, egyenrangú rendszer, nem tanú és nem feltétel, ezért a `csak_mek` + `tsk=nem` együttállás **nem** kerül kockázati jelként a sorba (a jelölés az indokban továbbra is tájékoztatás). A hibaarány **alsó becslés**: egyetlen modell olvasata, és olyan elírást, amely véletlenül értelmes helyre mutat, nem fog meg. A két beemelt réteg mintája átfed (a 15. és az 56. tétel ugyanaz a táblasor), ezért a két réteget nem vontam össze egyetlen arányba.
+
+**A jelöltben maradt rétegek magas aránya nem a beemelt adat hibája**, hanem azt mutatja, hogy a szabály a hibás sorokat helyesen tartja vissza (jelölt szint, a lapra/indexbe nem jut).
+
+**Az E3-szűkítés és a duplikátum-javítás hatása (F181.24, F181.25), levezetve a tételes ítéletből.** (1) Az E1/E2/E3 réteg 20 tételéből a 131., 133., 134., 135. (hibás) és a 136. (gyenge) tétel a Filem-tartomány; ezek az 5 HunKar-tartomány-sorok a DT-F181n szabály szerint `kiesik`-be kerültek, a réteg tehát 15 sorra szűkült: 13 rendben, 2 gyenge, **0 hibás**. Ez a levezetés a tételes ítélet 5 sorának elhagyása; új mérés nincs. (2) A helyükre `megerositett`-be emelt 5 MEK-vers (2Kor 7:4 → Filem 1:8, Kol 1:7 → 1:23, Kol 4:9 → 1:10, Kol 4:14 → 1:24, Kol 4:15 → 1:2) a mintában nem szerepelt, rájuk ítélet nincs; az Opus indoka szerint a 133–136. tételnél éppen ez a pontos vers a helyes cél. A 2Kor 7:4-nél az Opus értelmezése az 1:7 volt (a 131. tétel indoka), a MEK 1:8-at ad; ezt nem ítélte. A beemelt MEK-sorok populációja így 2 647-ről 2 652 sorra nőtt; a kontroll hibaarányát újramérés nélkül nem becslem. (3) A „HunKar-sor jelölt marad” rétegben a 88. és a 90. tétel ugyanaz a táblasor, amely a duplikátum-javítás után egyszer áll: n = 20, hibás 9 (6 rendben, 5 gyenge).
+
 *scope=konkordancia/Karoli_KH_javitott.tsv (a J4 utáni állapot) + konkordancia/Karoli_1908.tsv | forras=eszkozok/karoli_kh_mek.py szuroproba (mag=181) + a végrehajtó olvasata | ts=2026-11-09*
 
 **Módszer.** A minta könyvenként arányos (legnagyobb maradék módszere), rögzített maggal ismételhető (az F181.5 commit állapotán: `git checkout c29b0f65`, majd `python eszkozok/karoli_kh_mek.py szuroproba`; a végleges szabálynál a rétegek mérete más). Rétegek: (1) az első szabályváltozat szerint gyanús ismétlődésként jelöltben maradt 86 MEK-oldali sorból 30 (ebből 80 HunKar-oldali jelölésű, ezek a végleges szabály szerint beemelődnek: a minta róluk szól); (2) a HunKar-oldali, jelöltben maradt 14 sor mind (a végleges szabály szerint 30: a többi az elírás-gyanús sorok HunKar-oldali párja, ezeket a célzott rétegben olvastam); (3) **kontroll**: a szabály első változata által beemelt 2 594 sorból 40 (a szabály hibaarányának mérésére); ebből 1 sor (a 58.) az elírás-gyanús osztályba esik, amely a végleges szabály szerint nem emelődik be, ezért a kontrollban 39 sor érvényes. A 139 nem létező célvers sort nem mintázom: tételesen az A. függelék. Az ítélet a két vers (Károli) szövegének olvasata: **rendben** = a cél a forrásvers idézete, párhuzama vagy szoros témai kapcsolata; **gyenge** = laza, de védhető kapcsolat; **hiba** = nincs felismerhető kapcsolat. **Korlát:** az ítélet a végrehajtó (nem független) olvasata, a `fuggetlen-ellenor` nem helyettesíti; olyan elírást, amely véletlenül értelmes helyre mutat, nem fog meg. A hibaarány ezért alsó becslés.

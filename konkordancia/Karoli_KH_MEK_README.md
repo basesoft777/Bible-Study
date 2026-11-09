@@ -149,3 +149,18 @@ A +2 667 `megerositett`: 2 647 MEK-sor, 12 HunKar-sor (5: a MEK-pár célja nem 
 * A tartomány-végpontok duplikációját az E3 szabály kezeli: a megerősített HunKar-tartomány mellett a MEK-végpontsor `kiesik` (nem önálló sor).
 * A szúrópróbát az első körben a végrehajtó olvasta, nem független ellenőr (alsó becslés: olyan MEK-elírást, amely véletlenül értelmes helyre mutat, nem fog meg). A javítókör utáni új minta tételei ítélet nélkül: `naplok/F181_szuroproba.md`; az ítéletet Opus hozza (DT-F181j).
 * Az E2-hibaminta HunKar-megfelelő nélküli esete (1Kir 2:26 → 1Sám 22:20) tartalmilag helyesnek látszik, de a szabály szerint `jelolt` (N-F181f, az orkesztrátor döntésére vár).
+
+## 8. A beemelt sorok maradék hibája (adatleírás; F181, DT-F181o)
+
+A `Karoli_KH_javitott.tsv` `megerositett` szintje a MEK-ben álló, beemelt sorokat (`forras=MEK`) is hordozza. **A MEK irányadó; a maradék hiba a MEK saját elírása.** A hibát az Opus-szúrópróba mérte (`naplok/F181_szuroproba.md`, 136 tétel, mag=181; ítélet: `claude-opus-5-5`, a két vers Károli-szövege alapján; részletek és az összes réteg: `naplok/F181_jelentes.md` 7.1). Rétegenként (n, hibás, arány, 95% Wilson-intervallum, score-módszer, z = 1,96):
+
+| réteg | n | hibás | hibaarány | 95% Wilson-intervallum |
+|---|---|---|---|---|
+| kontroll: beemelt MEK-sor | 40 | 1 | 2,5% | 0,4% – 12,9% |
+| HunKar-gyanús forrásversen beemelt MEK-sor | 30 | 1 | 3,3% | 0,6% – 16,7% |
+| E1/E2/E3: megerősített HunKar-sor (az E3-szűkítés után, levezetve) | 15 | 0 | 0,0% | 0,0% – 20,4% |
+
+* A két hibás beemelt sor `csak_mek` és `tsk=nem` (létező, de idegen versre mutató MEK-elírás: 5Móz 14:21 → 4Móz 22:28; 2Kor 3:5 → Ján 15:15). A hibaarány alsó becslés: egyetlen modell olvasata, a véletlenül értelmes helyre mutató elírást nem fogja meg. A két beemelt réteg mintája átfed (egy közös táblasor).
+* A TSK külön, egyenrangú rendszer, nem tanú és nem feltétel (DT-F181o), ezért a sorban TSK-alapú kockázati jel nincs.
+* A jelöltben maradt és az E-szabályokkal döntött többi réteg (gyanús ismétlődő 0/6, elírás-gyanús 4/10, HunKar-sor jelölt marad 9/20, E2-szűrt 7/9) a lapra/indexbe nem jut; a magas arányuk a jelölt szint indokoltságát mutatja.
+* Az E3-szűkítés (DT-F181n) előtt az E1/E2/E3 réteg 4/20 hibás volt (20,0%, 8,1% – 41,6%); mind a 4 az 5 Filem-tartományból, amelyek a szűkítés után `kiesik`-ek. A helyükre emelt 5 MEK-vers a mintában nem szerepelt.
