@@ -6,7 +6,12 @@ karoli_kh_gyanus_general.py -- a `konkordancia/Karoli_kereszthivatkozasok_gyanus
 Az ok (a forrás hibája): a HunKar OSIS XML jegyzetei a szentiras.hu/KG-ből származnak, és sok vershez egy másik vers
 jegyzete van kötve (pl. Acts.2.18–2.47 = Acts.7.5–7.34 listái, `naplok/N_F156a_jelentes.md`). A főtábla a forráshoz hű
 (`eszkozok/karoli_kh_osis_konverzio.py --osszevet`: 0 eltérés), ezért nem javítjuk: ez a fájl a gyanús forrásverseket
-sorolja fel, a fogyasztók (`karoli_kh_szuro.py`) kihagyják őket.
+sorolja fel; a fogyasztók (`karoli_kh_szuro.py`) kihagyták őket.
+
+ARCHÍV (F177, DT-F177a): a karantén megszűnt. A fogyasztók a MEK 00161 kiadással összevetett, háromszintű
+`konkordancia/Karoli_KH_javitott.tsv`-ből szűrnek (`eszkozok/karoli_kh_mek.py osszevet`; a `megerositett` szint jut a
+lapra, a `kiesik` és a `jelolt` nem). Ez a szkript és a kimenete archívum: a gyanú-szabály történeti mérése
+(a javított tábla `kiesik` szintje a gyanús versek 4 773 / 5 078 részét lefedi); szűrésre nem használandó.
 
 Gyanú-szabály: `eszkozok/karoli_kh_epseg.py` (`gyanus_forrasok`). Ez a szkript a gyanús verseket két osztályba sorolja:
   - `blokk`: legalább 3 gyanús vers azonos könyvben, a gazdájukkal azonos, konstans verssorszám-eltolással (a Karoli_1908.tsv
@@ -92,6 +97,8 @@ def main():
         with open(os.path.join(GYOKER, a.ki), 'w', encoding='utf-8', newline='\n') as f:
             f.write('# GENERÁLT: eszkozok/karoli_kh_gyanus_general.py — kézzel szerkeszteni tilos; ok: N-F156a '
                     '(a forrás-XML jegyzetei másik versé), a főtábla nyers-hű\n')
+            f.write('# ARCHÍV (F177): a karantén megszűnt; az irányadó tábla a konkordancia/Karoli_KH_javitott.tsv '
+                    '(eszkozok/karoli_kh_mek.py osszevet), a karoli_kh_szuro.py abból szűr — ez a fájl csak történeti\n')
             f.write('\t'.join(['forras', 'osztaly', 'blokk_eltolas', 'ok', 'vele_azonos_lista_tamogatott',
                                'kh_lista', 'proveniencia']) + '\n')
             for k, o, d, g in lista:

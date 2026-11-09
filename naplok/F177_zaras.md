@@ -1,0 +1,26 @@
+# F177 — zárójelentés (KAROLI_KH_MEK)
+
+- **Ág:** `claude/karoli-kh-mek`; végrehajtó: `vegrehajto-sonnet`, a modell-ellenőrzés egyezett; orkesztrátor: `/kovetkezo`, utána `/elteres`.
+- **Egyeztetett eltérés:** a nyers forrást (`00161.rtf`) nem a felhasználó gépéről vettük, hanem a MEK-ről töltöttük le (`https://mek.oszk.hu/00100/00161/00161.rtf`, 2026-11-09, a repón kívülre). SHA-256: `92130f2a…7473a`; az orkesztrátor újramérte, egyezik.
+- **Eredmény:**
+  - a MEK-kivonat (`Karoli_KH_MEK.tsv`, 29 987 sor);
+  - a háromszintű `Karoli_KH_javitott.tsv` (35 204 sor): megerősített 21 314, kiesik 11 027 (`tsk=igen` 321), jelölt 2 863;
+  - a nem gyanús versek egyezése 77,1%.
+- **Szűrő:** a `karoli_kh_szuro.py` és a fogyasztói a javított táblát olvassák. A karantén archív lett, az N-F156a és az N-F156c lezárult.
+- **Részletek:** `naplok/F177_jelentes.md`.
+- **Ellenőrzés:**
+  - `ELLENOR_F177`: 2 ELTÉRÉS;
+  - 1. javítókör → `ELLENOR_F177_2`: 2 ELTÉRÉS;
+  - 2. javítókör → `ELLENOR_F177_3`: **TISZTA**.
+- **Döntések (helyőrzővel, `dontesek/uj/karoli-kh-mek.md`):**
+  - DT-F177a 🟢: a karantént a `kiesik` szint váltja ki;
+  - **DT-F177b 🟢: a MEK licence — (a) közkincs** (a felhasználó, 2026-11-09, átvezetve az F177.17-ben); a MEK-ből származó sor a kimenetbe kerülhet;
+  - DT-F177c 🟡: a versellenőrzés alapja a `Karoli_1908` és a MEK uniója;
+  - DT-F177d 🟢: az F177.7 commit-üzenetének téves számai, a jelentésben helyesbítve.
+- **Nyitott (`nyitott/uj/karoli-kh-mek.md`):**
+  - N-F177a: a lapok, a `lexikon_general` és az `olvasoi_kapu` átállítása a lapszerkezeti generátor-körben;
+  - N-F177b: a 2 863 `jelolt` sor eldöntése.
+- **Ismert, nem az F177 okozta:**
+  - az `ellenoriz.py` 1 SÉRTÉS-e (11., HAMART-001) a base-en is fennáll;
+  - a `teszt_sqlite_epit.py` 3 FAIL + 1 ERROR a végrehajtó szerint azonos az alapállapottal (az orkesztrátor nem mérte vissza).
+- **Merge:** a felhasználóé.
