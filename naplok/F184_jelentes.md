@@ -181,7 +181,7 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 32 | `sablonok/6_:529` (4. sor) | „V1–V7” | `adat/SEMA.md` 3.11 | OK |
 | 33 | `sablonok/9_:283` (5. sor) | 24., 25. szabály („arany szintű: kerek próza + Funkció”), olvasói kapu, teljesség-mérés | `sablonok/6_…` L8 | OK |
 | 34 | `adat/SEMA.md:9–11` (22. sor) | egyirányúság: kinyerés a `jeloltek.tsv`-n át, generálás, nincs visszaírás | `adat/SEMA.md` 3. szakasz 9. | OK |
-| 35 | `adat/SEMA.md` 2.53 „A lánc honnan jön” (1. sor) | a lánc levezetése, benne: **„A háttér-táblában csak a lánc-szavak és tövük állnak”**, **„(TAHOT)”**, **„HAMART-001: 6 kulcsszó”**, **„(a beépített sorok versei, a tartomány versenként)”** | `sablonok/6_…` 4.11-szabályok 0. pont — a négy elem **hiányzott** (a többi megvan; a „lánc-szó `bdb` sor nélkül” mondat a 8. pontban, a `lanc_szavak` a SEMA 2.53-ban maradt) | **visszaállítva**: a három lánc-elem a 0. pontba, a „lánc-szavak és tövük” a 6. pontba (BDB-háttér) |
+| 35 | `adat/SEMA.md` 2.53 „A lánc honnan jön” (1. sor) | a lánc levezetése, benne: **„A háttér-táblában csak a lánc-szavak és tövük állnak”**, **„(TAHOT)”**, **„HAMART-001: 6 kulcsszó”**, **„(a beépített sorok versei, a tartomány versenként)”** | `sablonok/6_…` 4.11-szabályok 0. pont — a négy elem **hiányzott** (a többi megvan; a „lánc-szó `bdb` sor nélkül” mondat a 8. pontban, a `lanc_szavak` a SEMA 2.53-ban maradt) *[helyesbítés, F184.22 (ELLENOR_F184_2 2.): nem a többi volt meg; ötödikként a „nincs Targum-forrás (…)” cella utáni **„— nem hiány-kitöltés”** tagmondat is hiányzott]* | **visszaállítva**: a három lánc-elem a 0. pontba, a „lánc-szavak és tövük” a 6. pontba (BDB-háttér); *[F184.22: a „nem hiány-kitöltés” a 0. pontba, a Targum-cella mondatába]* |
 | 36 | `adat/SEMA.md` 2.48 (9. sor) | nincs törölt tartalom (a két sor bővült) | – | OK |
 | 37 | `adat/SEMA.md` 2.49 :1934 (9. sor) | „DT569” | `adat/SEMA.md` 2.48 („a DT569 általánosítása”) | OK |
 | 38 | `adat/SEMA.md` 2.50 → 2.55 (31. sor) | a teljes E34-szakasz | `adat/SEMA.md` 2.55, szó szerint (a cím kiegészült) | OK; a mutatók: 2. tétel |
@@ -190,7 +190,7 @@ A szabály: a csere nem törölhet tartalmat, csak másolatot cserélhet hivatko
 | 41 | `.github/workflows/ellenorzes.yml:73` | a lépés neve („E2-E30”) | ugyanott, „E2-E37” (a régi szöveg minden eleme megvan) | OK |
 | 42 | `NYITOTT_FELADATOK.md:852` | nincs törölt tartalom (az N-F166a sora lezárva, a régi szöveg „Előzmény”-ként megmaradt) | – | OK |
 
-**Összesítés:** 42 törlést tartalmazó hely; ebből **2 volt hiányos** (20., 35.); visszaállítva **5 elem** (a 9_ hét szabály 2. pontjába 1 tagmondat; a 6_ 4.11-szabályok 0. pontjába 3, a 6. pontjába 1). A többi 40 helyen a törölt tartalom szó szerint vagy egyenértékűen megvan a kanonikus helyen.
+**Összesítés:** 42 törlést tartalmazó hely; ebből **2 volt hiányos** (20., 35.); visszaállítva **5 elem** (a 9_ hét szabály 2. pontjába 1 tagmondat; a 6_ 4.11-szabályok 0. pontjába 3, a 6. pontjába 1). A többi 40 helyen a törölt tartalom szó szerint vagy egyenértékűen megvan a kanonikus helyen. *[Helyesbítés, F184.22 (ELLENOR_F184_2 2.): a 35. helyen egy hatodik elem (tagmondat) is hiányzott; visszaállítva **6 elem**. A tagmondat-szintű újraátnézés: „Javítókör 2/2”, 2. tétel.]*
 
 ### 2. A régi „2.50”-mutatók (F184.14; ELLENOR_F184 2.)
 
