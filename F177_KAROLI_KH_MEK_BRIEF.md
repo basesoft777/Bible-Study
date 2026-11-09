@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/karoli-kh-mek
 ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
-kovetkezo: "Te: /elteres 177 (ELLENOR_F177: 2 ELTÉRÉS — a kiesik sorok TSK-jelölése; a DT-F177c indoklása); nyitva: DT-F177b (MEK-licenc), DT-F177c"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 177 — újraellenőrzés függ: naplok/ELLENOR_F177_2.md"
 munka: folyamat
 olvas: [konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok_README.md, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/karoli_kh_epseg.py, eszkozok/karoli_kh_szuro.py, naplok/KAROLI_KH_EPSEG_jelentes.md, adat/SEMA.md]
 ir: [konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv, eszkozok/karoli_kh_gyanus_general.py, konkordancia/Karoli_KH_MEK_README.md, konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, eszkozok/karoli_kh_szuro.py, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, naplok/F177_jelentes.md]
