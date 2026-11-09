@@ -4,7 +4,7 @@
 
 *(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=HAMART-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül · beépített sor: 48 (56 vers)
+**Motívum:** HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás · hordozó: `strukturális` · fölérendelt fogalom: „a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül” · beépített sor: 48 (56 vers)
 
 ## Gépi rész
 
@@ -34,6 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 <!-- SORÁLLAPOT: n=48 ujj=c477c896b6bd -->
 
 

@@ -4,7 +4,7 @@
 
 *(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ALVIL-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** ALVIL-001 — Hádész (Seol) — a halottak birodalma · hordozó: `lexikai` · fölérendelt fogalom: a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül · beépített sor: 74 (75 vers)
+**Motívum:** ALVIL-001 — Hádész (Seol) — a halottak birodalma · hordozó: `lexikai` · fölérendelt fogalom: „a halál és a túlvilág általában, a halottak birodalmának megnevezése nélkül” · beépített sor: 74 (75 vers)
 
 ## Gépi rész
 
@@ -34,6 +34,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 <!-- SORÁLLAPOT: n=74 ujj=460c69bb3460 -->
 
 *Független második vélemény (hatar-ellenor), bemenet: csak az azonosító. A gépi rész eredményét (részhalmaz, gerinc-kombináció) nem ismétli. Minden pont kérdés a felhasználóhoz, nem javítás. Ez a rész a 2026-11-02-i modelles részt váltja: annak két kérdése (Mt 16:18, 1Kor 15:55) a mai adatban nem áll fenn — mindkét hely beépített (`adat/jeloltek.tsv:345`, `:346`), és a negatív kritérium (`adat/motivumok.tsv:6`) a Károli alapszövegét (TR) nevezi mércének.*
