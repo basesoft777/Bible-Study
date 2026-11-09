@@ -65,6 +65,10 @@ SZURENDO = {'nem_bibliai'}
 # NEM tartalmazza a szócikk Strong-számát; ha tartalmazza, bibliai hivatkozás marad, okkód `sigla_igazolt`. A TAHOT `Igehely` kulcsa a
 # Károli-vers (F85.6); Károli-vers híján az azonos számú vers.
 SIGLA_OK = {'sigla_tapadt', 'sigla_kozel', 'sigla_lista'}
+# F102, DT-F102e (B) (orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-09): a tapadt és a listás sigla (a közvetlenül a
+# hely előtt álló szerző^mű) a kommentár helyét idézi, nem a szó példáját: mindig szűrt, a TAHOT-tól függetlenül; a közeli siglánál marad
+# a TAHOT (DT-F99k)
+SIGLA_MINDIG_SZURT = {'sigla_tapadt', 'sigla_lista'}
 # F99 M2 (felhasználó, 2026-10-15, seed-100 M006, M064, M079): a BDB forrásszövegének hibás igehelye. A tábla a forrás szövegét rögzíti
 # (könyv, vers, jelentéspont változatlan), az okkód `forras_hiba`; nem szűrt. Kulcs: (Strong, poz); érték: a forrással igazolt ok (kézi,
 # a felhasználó döntése; a vak ellenőr megjegyzése a TAHOT-tal egyezik).
@@ -240,6 +244,16 @@ def general(ts, strongok=None):
             mt = kar = ''
             vmod = ''
             kmod = h['konyv_mod']
+            if ok == 'nem_bibliai' and h.get('alt_konyv') in osz and h['c'] in versek.get(h['alt_konyv'], {}):
+                # F102 (c) (ELLENOR_F99 12.: H2623 „116:15”, „149:1, 5, 9”; H4912 „1:1”): a nem bibliai jelölőről öröklődő könyv
+                # helyett a jelölő előtti utolsó bibliai könyv, ha a TAHOT a versben hordozza a Strong-számot (a DT-F99k mintájára);
+                # különben a sor nem bibliai (szűrt) marad
+                alt = h['alt_konyv']
+                _mt, _kar, _vm, _k = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, alt, h['c'], h['v'])
+                _kar = f85.get(_mt) or EZS3.get(_mt) or _kar or '%s %d:%d' % (KAROLI_KONYV.get(alt, alt), h['c'], h['v'])
+                if int(re.match(r'^H0*(\d+)', strong).group(1)) in tahot.get(_kar, ()):
+                    h = dict(h, konyv=alt, okkod='')
+                    ok = 'orokles_nem_bibliai_utan'
             if (h['konyv'] and kmod in ('orokolt', 'folytatas') and h['konyv'] in osz and ok not in SZURENDO
                     and h['c'] not in versek.get(h['konyv'], {})):
                 # F99 M2 (felhasználó, 2026-10-15, seed-100 M013 „Malachi 3:20 … 143:1”): nem létező fejezetre a könyv nem öröklődik;
@@ -247,6 +261,16 @@ def general(ts, strongok=None):
                 h = dict(h, konyv=None)
                 ok = 'orokles_hibas'
                 kmod = 'feloldhatatlan'
+            elif ok == 'orokles_egyfejezetes' and h['konyv'] in osz:
+                # F102 (b): az egyfejezetes könyvet átugró öröklés (seed-101 M092) csak a TAHOT igazolásával áll (a DT-F99k mintájára):
+                # a Károli-vers (annak híján az azonos számú vers) hordozza a Strong-számot. Különben a sor marad `orokles_hibas`:
+                # az Abdiás utáni könyv nélküli hely a TSV-ben gyakran fejezetszámmal elrontott Abdiás-vers („Obadiah 6, … 49:18”, H6215)
+                _mt, _kar, _vm, _k = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
+                _kar = f85.get(_mt) or EZS3.get(_mt) or _kar or '%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v'])
+                if int(re.match(r'^H0*(\d+)', strong).group(1)) not in tahot.get(_kar, ()):
+                    h = dict(h, konyv=None)
+                    ok = 'orokles_hibas'
+                    kmod = 'feloldhatatlan'
             if (strong, h['poz']) in FORRAS_HIBA:
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
             if h.get('forras_javitas'):
@@ -278,7 +302,7 @@ def general(ts, strongok=None):
                 # DT-F99k: a TAHOT dönt (a Károli-versen, annak híján az azonos számú versen)
                 kulcs = kar or ('%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v']) if h['konyv'] else '')
                 n_st = int(re.match(r'^H0*(\d+)', strong).group(1))
-                if kulcs and n_st in tahot.get(kulcs, ()):
+                if h['okkod'] not in SIGLA_MINDIG_SZURT and kulcs and n_st in tahot.get(kulcs, ()):
                     ok = ','.join(['sigla_igazolt'] + ok.split(',')[1:])
                 else:
                     szurt = True
@@ -342,8 +366,9 @@ def minta(seed, n, kieg, vak_ut, kulcs_ut):
            '# A RÓMAI SZAKASZ a jelentéspont része (a felhasználó döntése, 2026-10-15): (1) ha a forrás a címszó előtt római számot ír („H3499. yether '
            'I. יֶ֫תֶר noun …”, „II. [יָאַל] verb …”), azt a FŐ címszónál is írd („I fej”, „II Hiph`il”); (2) a szócikk római számos fő tagolását '
            '(„I. of man: 1 … II. of God: 1 …”, „I. preposition … II. conjunction …”) a KÜLÖN `resz` oszlopba írd (csak a római számot, pl. „II”), '
-           'NEM a jelentéspontba (DT-F99i: két római szint, két mező; pl. „ad III. עַד … I. preposition … 3 …” → jelentespont „III -/3”, resz „I”); '
-           'igénél a tagolás a törzsön belüli, a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz (resz üres); (3) római számot csak a forrásban kiírtat írj, következtetettet ne; (4) a '
+           'NEM a jelentéspontba (DT174: két római szint, két mező; pl. „ad III. עַד … I. preposition … 3 …” → jelentespont „III -/3”, resz „I”); '
+           'igénél a tagolás a törzsön belüli, a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz (resz üres); (3) római számot csak a forrásban kiírtat írj, következtetettet ne; '
+           '(3a) a szócikk belsejében HÉBER CÍMSZÓVAL álló római fej („II. פְּנֵי with prepositions”) címszó-szakasz, nem rész: a jelentéspont elejére írd (DT229 (a) (2)); (4) a '
            'jelöletlen második címszó (római szám nélkül) szakaszát római szám nélkül, a saját törzs/jelentés útvonalával írd. Az összevetés csak a „`” és az '
            '„\'” különbségét, és a „fej” = „tagolatlan” = „<törzs>” (= „<törzs>/-”) egyenértékűséget normálja; a zárójeles szint („(2)”, „(c)”) külön mutató.',
            '# A poz a hivatkozás kezdete a szöveg „lapított” alakjában (sortörés helyett szóköz; „1.a” → „1. a.”), csak a megtaláláshoz.',

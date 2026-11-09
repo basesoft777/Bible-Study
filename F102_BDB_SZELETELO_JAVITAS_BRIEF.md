@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: megallt
+ag: claude/f102-bdb-szeleto-javitas
 ad: a BDB-szeletelő a #99 seed-101 vak mérésének hibaosztályaiban javítva, az útvonal-formátum a görög és a nagybetűs szinttel bővítve, a vers → jelentés tábla újragenerálva, és új vak mintán mért pontosság (a „próba” jelölés levétele vagy megtartása a mért szám szerint)
-kovetkezo: Indítható a fugg szerint: az 1. lépéssel (a #76 nem függés, DT297)
+kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F102_3 1. mechanikus, 2. mechanikus, 3. mechanikus, 4. mechanikus — ismert napló-pontatlanság, a helyes értékkel a zárójelentésben (pl. a 19. szakasz 186/199-e helyesen 187/199; a 10. szakasz bontása helyesen 13; a 18. szakasz „hat” helye helyesen 10; az ítéleti fájl 3. sora csak a szeletelő-oldalra); harmadik kör nincs (orkesztrátori döntés), az adat és a nyers mérés nem érintett; draft PR #664, a merge a felhasználóé"
 olvas: [eszkozok/olvaso_szerver/, eszkozok/olvaso_pilot/bdb_szelet_m0.py, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, naplok/BDB_SZELETELO_M0.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, naplok/BDB_SZELETELO_M2_seed100_iteletek.md, naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv, naplok/BDB_SZELETELO_M2_seed101_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed101_kitoltott_B.tsv, naplok/F85_esetlista.tsv, konkordancia/_convert_bdb.py, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md]
 ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/m2_minta_osszevet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv, adat/bdb_aranyminta.tsv, adat/SEMA.md, adat/datasetek.tsv]
 fugg: [99, 107, 119]

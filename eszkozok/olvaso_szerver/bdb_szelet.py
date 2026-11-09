@@ -394,6 +394,7 @@ TAGOLAS = re.compile(r"(?:(?<=[.;:)]\s)|(?<=—\s))(I{1,3}|IV|V|VI)\.\s+(?=[A-Za
 # A sorozat folytatása (II. …) írásjel nélkül is állhat, ha nagybetűs glossza követi: „… see a. (e) above II. Come into being” (H1961).
 TAGOLAS_FOLYT = re.compile(r"(?<=\s)(II|III|IV|V|VI)\.\s+(?=[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű])")
 ROMAI_SOR = ['I', 'II', 'III', 'IV', 'V', 'VI']
+MAGANY_II = re.compile(r"(?<=\s)II\.\s+(?=as\s+(?:preposition|conjunction|adverb|substantive|noun|adjective)\b)")
 
 
 def _tagolas(s, tilos):
@@ -406,7 +407,15 @@ def _tagolas(s, tilos):
         if var < len(ROMAI_SOR) and romai == ROMAI_SOR[var]:
             ki.append((poz, romai))
             var += 1
-    return ki if len(ki) >= 2 else []
+    if len(ki) >= 2:
+        return ki
+    # F102 (d), seed-101 M130 (H8478 „— 1 as adverb accusative … Ezek 47:1b II. as preposition; … 2 … a. … Hab 3:16”): a magányos
+    # „II.” (I. nélkül) akkor fő tagolás, ha szófaj-fej követi („as preposition”); az előtte álló rész római szám nélküli (a forrás nem
+    # írja ki az „I.”-t). A teljes BDB-n csak a H8478-ban fordul elő (a többi I. nélküli „II.” arab igetörzs, l. naplo 5.)
+    magany = [m.start() for m in MAGANY_II.finditer(s) if not any(abs(m.start() - t) <= 2 for t in tilos)]
+    if not ki and len(magany) == 1 and not re.search(r'(?:^|[\s.;:)—])I\.\s', s):
+        return [(magany[0], 'II')]
+    return []
 
 
 def _kons(x):
@@ -689,6 +698,8 @@ _FOLYTATAS = re.compile(r'\s*,\s*(\d{1,3})(?:\s*-\s*\d{1,3})?(?=[\s,;.)\]]|$)(?!
 # DT382 (A) (felhasználó, 2026-10-28): a kiírt vagy örökölt hivatkozás utáni verstartomány („1Kin 18:24-25, 26”): a tartomány
 # átlépése után a vers-folytatás keresése ugyanúgy fut, mint tartomány nélkül; a tartományt nem bontja ki (a „-25” nem lesz sor)
 _TARTOMANY = re.compile(r'\s*[-–]\s*(\d{1,3})(?![\d:])')
+# F102 (b): az egyfejezetes könyvek (Károli-rövidítés); a könyv nélküli, nem 1. fejezetű hely nem ezeket örökli
+EGYFEJEZETES_KONYV = frozenset({'Abd', 'Filem', '2Ján', '3Ján', 'Júd'})
 # egyfejezetes könyv fejezetszám nélkül (DT-F99a (4)): „Obad 8”, „Obadiah 13” → 1. fejezet
 _EGYFEJEZETES = re.compile(r'(?<![A-Za-z0-9])(Obad|Obadiah)\.?\s+(\d{1,2})(?![\d:])')
 
@@ -716,10 +727,11 @@ def hivatkozasok(szoveg):
     for m in K.CSUPASZ.finditer(s):
         if m.start() not in lefedett:
             kiirt.setdefault(m.start(), (m.start(), m.end(), None, int(m.group(1)), int(m.group(2)), m.group(0)))
-    ki, utolso, kint = [], None, None
+    ki, utolso, kint, egyfej_elott, utolso_bibliai = [], None, None, None, None
     bent = _zarojelben(s)
     for p in sorted(kiirt):
         a, e, alak, c, v, nyers = kiirt[p]
+        atugrott = False
         if alak is not None:
             n = alak.rstrip('.')
             if n in K.LEK:
@@ -731,7 +743,15 @@ def hivatkozasok(szoveg):
             else:
                 konyv, ok = None, 'ismeretlen_alak'
             mod = 'kiirt'
+            if konyv in EGYFEJEZETES_KONYV:
+                # F102 (b): az egyfejezetes könyv előtti (nem egyfejezetes, bibliai) könyv megjegyezve
+                if utolso is not None and utolso[0] and utolso[0] not in EGYFEJEZETES_KONYV:
+                    egyfej_elott = utolso
+            else:
+                egyfej_elott = None
             utolso = (konyv, ok)
+            if konyv:
+                utolso_bibliai = konyv
             if not bent[a] or ok == '':
                 # F99 M2: a zárójelen belüli nem bibliai/ismeretlen könyvjelölő („(… compare also Di 2:2)”, „(Ecclus … Ecclesiasticus
                 # 50:12a)”) nem öröklődik a zárójelen kívülre: ott a zárójel előtti könyv folytatódik (H1714, H5409)
@@ -743,6 +763,10 @@ def hivatkozasok(szoveg):
             konyv, ok, mod = None, 'nincs_elozmeny', 'feloldhatatlan'
         else:
             (konyv, ok), mod = utolso, 'orokolt'
+        if mod == 'orokolt' and konyv in EGYFEJEZETES_KONYV and c != 1 and egyfej_elott is not None:
+            # F102 (b), seed-101 M092: „2Chr 17:2; compare 34:6; … Obadiah 19; hence … 31:1” — az egyfejezetes könyvnek nincs 31.
+            # fejezete: a könyv nélküli hely a közbeékelt egyfejezetes könyv előtti könyvet folytatja (2Krón 31:1), okkóddal
+            (konyv, ok), atugrott = egyfej_elott, True
         sajat = ok
         if ok == '':
             if a and s[a - 1] == '^':
@@ -764,16 +788,31 @@ def hivatkozasok(szoveg):
                 while szavak and (re.fullmatch(r"[\u0590-\u05ff\ufb1d-\ufb4f׳־]+", szavak[-1]) or szavak[-1] in ('on', 'in', 'i.')):
                     szavak.pop()
                 sajat = 'sigla_lista' if szavak and _SIGLA_LISTA.match(szavak[-1]) else 'sigla_kozel'
-        ki.append({'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat})
+                # F102 (c), seed-101 M223 (ELLENOR_F99 9.): a lezárt zárójeles megjegyzésben álló sigla („Josh 23:7 (R^D), compare
+                # Hosea 2:19”, „(Kö^ii.l,74) Jer 6:13”, „(MI^10) Jer 48:1”) után a hely nem sigla-sor: a sigla és a hely között záró
+                # zárójel áll, a sigla tehát nem a helyre vonatkozik
+                if sajat == 'sigla_kozel':
+                    elozo = s[max(0, a - 40):a]
+                    if re.search(r'[)\]]', elozo[elozo.rfind('^'):]):
+                        sajat = ''
+        if atugrott and sajat == '':
+            sajat = 'orokles_egyfejezetes'
+        hiv = {'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat}
+        if sajat == 'nem_bibliai' and mod == 'orokolt' and utolso_bibliai:
+            # F102 (c), seed-101 (ELLENOR_F99 12.): a nem bibliai jelölőről öröklődő könyv („see 1Macc 2:42; 7:13; 2 Macc 14:6 …;
+            # so perhaps 116:15; 149:1”, H2623) — a jelölő előtti utolsó bibliai könyv a jelölt; a generátor TAHOT-igazolással dönt
+            hiv['alt_konyv'] = utolso_bibliai
+        ki.append(hiv)
         t = _TARTOMANY.match(s, e)
         q = t.end() if t else e
         while True:
             f = _FOLYTATAS.match(s, q)
-            # a tartomány utáni „, 1 Samuel 21:16” „1”-e a következő kiírt hivatkozás kezdete, nem vers-folytatás (DT382 (A))
-            if not f or (t and f.start(1) in kiirt):
+            # a tartomány utáni „, 1 Samuel 21:16” „1”-e a következő kiírt hivatkozás kezdete, nem vers-folytatás (DT382 (A)); F102 (g):
+            # tartomány nélkül is („2Chr 10:19, 2 Chronicles 10…”, H1004: a „2” könyvnév, nem a 2Krón 10:2)
+            if not f or f.start(1) in kiirt:
                 break
-            ki.append({'poz': f.start(1), 'veg': f.end(), 'nyers': f.group(0).strip(), 'konyv': konyv, 'c': c, 'v': int(f.group(1)),
-                       'konyv_mod': 'folytatas', 'okkod': sajat})
+            ki.append(dict({'poz': f.start(1), 'veg': f.end(), 'nyers': f.group(0).strip(), 'konyv': konyv, 'c': c, 'v': int(f.group(1)),
+                            'konyv_mod': 'folytatas', 'okkod': sajat}, **({'alt_konyv': hiv['alt_konyv']} if 'alt_konyv' in hiv else {})))
             q = f.end()
     return ki
 
