@@ -1937,7 +1937,7 @@ Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` 
 `datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
 `datum`. Állapot (2026-11-04): 0 sor.
 
-### 2.50 A `kapcsolodas` Károli-idézete — az `ellenoriz.py` 34. szabálya (F166, DT614, 2026-11-04)
+### 2.50 A `kapcsolodas` Károli-idézete — a CI E34 szabálya (`eszkozok/ellenorzes/szabalyok.py`) (F166, DT614, 2026-11-04)
 
 Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **tartalmi kötése**. A mező az 1/a-próza szó szerinti szövegének forrása (`eszkozok/lexikon_general.py`, 1/a-blokk), ezért a Károli-idézetet az adatban kell megfogni, nem csak a kész lapon (olvasói kapu, IDEZET).
 
