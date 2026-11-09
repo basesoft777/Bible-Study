@@ -337,8 +337,8 @@ def karoli_versek():
 
 
 def mek_versek():
-    """A MEK saját vers-szerkezete (STEP-kulcsok) a Karoli_KH_MEK_versszerkezet.tsv-ből. A Karoli_1908.tsv (KJV-számozású)
-    néhány fejezetben összevon / eltér a Károli-számozástól (pl. Ján 1:52); a MEK és a HunKar a Károli-számozást követi."""
+    """A MEK saját vers-szerkezete (STEP-kulcsok) a Karoli_KH_MEK_versszerkezet.tsv-ből. A Karoli_1908.tsv
+    néhány versben két MEK-verset hordoz egyben (pl. Ján 1:51 = a MEK 1:51 és 1:52), ezért a MEK külön versei hiányoznak belőle."""
     ki = set()
     for m in tsv_sorok(SZERKEZET):
         if len(m) >= 3:

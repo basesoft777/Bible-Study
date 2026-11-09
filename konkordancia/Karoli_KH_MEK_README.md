@@ -58,8 +58,8 @@ szöveg helyesírása az 1908-as revízióé (a `Karoli_1908.tsv`-vel egyező sz
 ## 4. A versellenőrzés alapja
 
 Egy hivatkozott (és egy forrás-) vers akkor létezik, ha benne van a `Karoli_1908.tsv`-ben **vagy** a MEK saját
-vers-szerkezetében. A `Karoli_1908.tsv` KJV-számozású, és néhány fejezetben összevon (pl. Ján 1:51–52 egy versként), míg
-a MEK és a HunKar a Károli-számozást követi; a kettős alap miatt a valódi Károli-versek nem esnek ki. A nem létező vers
+vers-szerkezetében. A `Karoli_1908.tsv` egyes versekben két MEK-verset hordoz egyben (a Károli két versét egy versként adja), ezért a MEK külön versei hiányoznak belőle. Mérve (`python eszkozok/lekerdez.py karoli "<vers>"`; scope=range:<vers> | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv | ts=2026-11-09): a 4Móz 29:39, a Róm 3:30, az 1Kor 3:22 és a Ján 1:51 egy-egy Károli-versben adja a MEK két versét; a 29:40, 3:31, 3:23 és 1:52 ezért „Nincs Károli-szöveg”. A 14 hiányzó MEK-vers közül ilyen a Róm 8:39, a Hós 11:12 és az Ézs 9:21 is (az előző Károli-vers szövege a két MEK-verset együtt hordozza), a Jób 16:23, a Jób 36:34, a Péld 11:32 és a Hós 1:12 esetén pedig az utolsó Károli-vers a következő fejezet első versének megfelelő szöveget is tartalmazza (a megfelelés a szövegből látszik, külön forrás nélkül). A Préd 2:27, az Ézs 3:28 és a Luk 23:57 esetén a fejezet utolsó Károli-verse egyetlen versnyi szöveg, ott az eltérés a fejezeten belül van (a MEK szövege nélkül nem jelölhető ki; nem vizsgáltam). Az Ézs 4:6 és a Zak 9:17 fordított irányú: a `Karoli_1908.tsv`-ben külön vers, a MEK-ben nincs.
+A kettős alap miatt a MEK valódi versei nem esnek ki. A nem létező vers
 `hibas_hivatkozas` jelöléssel marad a táblában. Mért: 14 MEK-vers nincs a `Karoli_1908.tsv`-ben (1Kor 3:23, Préd 2:27, Hós 1:12,
 Hós 11:12, Ézs 3:28, Ézs 9:21, Ján 1:52, Jób 16:23, Jób 36:34, Luk 23:57, 4Móz 29:40, Péld 11:32, Róm 3:31, Róm 8:39), és 2
 `Karoli_1908`-vers nincs a MEK-ben (Ézs 4:6, Zak 9:17); a MEK összesen 31 170 verse a `Karoli_1908.tsv` 31 158 versével szemben.
