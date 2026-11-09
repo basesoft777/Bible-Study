@@ -832,5 +832,72 @@ class Szabaly27(unittest.TestCase):
         self.assertEqual(len(hibak), 1)  # a sorrend is számít
 
 
+class KetreteguBdbKartya(unittest.TestCase):
+    """F104 (DT-F104b): az új szerkezetű lap 4.2-es BDB-kártyája két rétegű — olvasói (a jelentések rendje glosszával, a
+    motívum helyeinek jelentése, DT178 szerint tippelés nélkül) és a csukott kutatói apparátus (a teljes szöveg), egységes
+    jelölővel; a régi út (ctx nélkül) változatlan."""
+
+    def _adat(self):
+        sz = {'H8034': [
+            {'strong': 'H8034', 'sorszam': '1', 'utvonal': 'cim', 'jel': '', 'szoveg': ''},
+            {'strong': 'H8034', 'sorszam': '2', 'utvonal': 'fej', 'jel': '', 'szoveg': 'name'},
+            {'strong': 'H8034', 'sorszam': '3', 'utvonal': '-/4/-', 'jel': '4', 'szoveg': 'of false gods'},
+            {'strong': 'H8034', 'sorszam': '4', 'utvonal': '-/5/-', 'jel': '5', 'szoveg': 'memorial Isa 55:13'},
+        ]}
+        hu = {('H8034', '2'): {'szoveg_hu': 'H8034. név', 'kategoria': 'jelolo_nelkul'},
+              ('H8034', '3'): {'szoveg_hu': '4 hamis istenekről (J) 1Kir 18:24', 'kategoria': 'illeszkedik'},
+              ('H8034', '4'): {'szoveg_hu': '5 = emlékjel Ézs 55:13', 'kategoria': 'illeszkedik'}}
+        return adat([], [vj_sor('H8034', 300, 'Ézs 55:13', '-/5')], sz, hu)
+
+    def _blokk(self, ctx, sorok=None):
+        sorok = sorok or [elo('Ézs 55:13', '', strong='H8034', entry=''), elo('Ézs 1:1', '', strong='H8034', entry='')]
+        return '\n\n'.join(LG.gerinc_blokk(self._adat(), 'BDB', 'H8034', sorok, ctx)[0])
+
+    def test_ket_reteg_egyseges_jelolovel(self):
+        szov = self._blokk({'uj': True, 'fl': {}})
+        kezd = szov.index(LG.APPARATUS_KEZDET % 'H8034')
+        vege = szov.index(LG.APPARATUS_VEGE % 'H8034')
+        self.assertLess(kezd, vege)
+        self.assertEqual(len(LG.APPARATUS_RX.findall(szov)), 2)
+        olvasoi, app = szov[:kezd], szov[kezd:vege]
+        self.assertIn('<details>\n<summary>%s</summary>' % LG.APPARATUS_CIM, app)
+        # olvasói réteg: a jelentések rendje (a hordozó félkövér), a hely jelentése, a nem idézett hely kimondva
+        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertIn('- **5.** emlékjel', olvasoi)
+        self.assertIn('**A motívum helyein:** Ézs 55:13 → 5. emlékjel.', olvasoi)
+        self.assertIn('A szótár ezt a helyet nem idézi: Ézs 1:1.', olvasoi)
+        self.assertNotIn('(J)', olvasoi)
+        # kutatói réteg: semmi nem vész el — a teljes magyar szöveg, a rövidítéssel, a nem idézett hely kutatói alakja
+        self.assertIn('(J)', app)
+        self.assertIn('= emlékjel **Ézs 55:13**', app)
+        self.assertIn('a szótár nem idézi: Ézs 1:1', app)
+        # a csukott cím glosszával (F10 (2)), nem „4 (1 szakasz)”
+        self.assertIn('<summary>4. — hamis istenekről (1 hivatkozás)</summary>', app)
+        self.assertNotIn('(1 szakasz)', szov)
+
+    def test_bevezeto_egyszer(self):
+        ctx = {'uj': True, 'fl': {}}
+        elso, masodik = self._blokk(ctx), self._blokk(ctx)
+        self.assertEqual(elso.count('Szótári tagolás (DT272)'), 1)
+        self.assertLess(elso.index('Szótári tagolás'), elso.index('##### H8034'))
+        self.assertNotIn('Szótári tagolás', masodik)
+
+    def test_regi_ut_valtozatlan(self):
+        szov = self._blokk(None)
+        self.assertNotIn('APPARATUS-', szov)
+        self.assertIn('Szótári gerinc (DT272)', szov)
+        self.assertIn('<summary>4 (1 szakasz)</summary>', szov)
+
+    def test_olvasoi_glossza_es_egy_torzsalak(self):
+        self.assertEqual(LG.vegyes_cim_nelkul("Hithpa'el", 'Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35'), 'perfectum הִתְאַבֵּל 1Sám 15:35')
+        self.assertEqual(LG.vegyes_cim_nelkul("Hiph'il", 'Hiphil_103 perfectum'), 'perfectum')
+        self.assertIsNone(LG.olvasoi_glossza("Hithpa'el", '', 'Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35'))
+        self.assertEqual(LG.olvasoi_glossza('2', '', '2 — földdarab, földbirtok 1Móz 47:18-19'), 'földdarab, földbirtok')
+        self.assertEqual(LG.olvasoi_glossza('4', '', '4 — átkozódás a היה לאלה kifejezésben'), 'átkozódás')
+        self.assertEqual(LG.olvasoi_glossza('1', 'a megművelt föld', 'bármi'), 'a megművelt föld')
+        self.assertEqual(LG.fej_glossza('H2555. chamas חָמָס hímnemű főnév Zsolt 7:17: erőszak, jogtalanság — status'),
+                         'erőszak, jogtalanság')
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,7 @@ ag: claude/f104-bdb-megjelenites
 ad: a szó-lap BDB-blokkjában a teljes szócikk mindig látszik, két jelölési szinttel (erős: „a BDB itt idézi”; gyenge: „vonatkozhat”), kattintható igehelyekkel és pontos hivatkozásszámmal, a „próba” felirat és a mért pontosság a kiemelés mellett
 kovetkezo: Indítható a fugg szerint (a #102 és a #103 után; a #76 nem függés, DT297)
 olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
-ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/olvasoi_kapu.py, adat/SEMA.md]
+ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/olvasoi_kapu.py, eszkozok/teszt_olvasoi_kapu.py, adat/SEMA.md]
 fugg: [99, 102, 103]
 nem_fugg: [122, 123, 138]
 ---

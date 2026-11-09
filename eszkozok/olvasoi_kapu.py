@@ -72,6 +72,8 @@ KAPUK = (
     ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
     ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
                           'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
+    ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső '
+                           'címke vagy nyers sorszám; csak az új szerkezetű lapon (F104)'),
 )
 
 # A VISSZHANG alszabályai (DT639, DT645, DT646, DT-F184a); a szabályok szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`,
@@ -1090,9 +1092,84 @@ def ell_visszhang(sorok):
     return ki
 
 
+# --- BDB_OLVASOI (F104, DT-F104b): a 4.2 kétrétegű BDB-kártyájának olvasói rétege. A kutatói réteg (apparátus) határa a
+# generátor jelölője (`lexikon_general.APPARATUS_RX`, egy helyen definiálva); a feloldatlan jelek: a gyakoriság-számláló, a
+# zárójeles forrásjel, a szövegtanú- és gyökjel, az egybetűs rövidítés, a `konfig/bdb_jelek.tsv` szerző- és szövegtanú-jelei
+# (3+ betű), a „szerző mű szám” alakú irodalmi hivatkozás; belső címke: sorszám, BDB-azonosító, „nincs címke”, kutatói jel.
+BDB_OLVASOI_MINTA = [
+    (re.compile(r'(?<=\S)_\d+'), 'nyers gyakoriság-számláló (_N)'),
+    (re.compile(r'\((?:mind\s+|mindkettő\s+)?(?:J|E|P|D|H|R|JE)(?:\s+(?:J|E|P|D|H|R))*\)'), 'feloldatlan forrásjel'),
+    (re.compile('[ᵐᵑ⅏√]'), 'feloldatlan szövegtanú- vagy gyökjel'),
+    (re.compile('[א-ת][\u0591-\u05C7]*׳'), 'feloldatlan egybetűs rövidítés'),
+    (re.compile(r'\b[A-Z][a-zö]{0,3}\s[A-Z][A-Za-z]{0,3}\s\d{2,4}\b'), 'irodalmi hivatkozás (szerző mű szám)'),
+    (re.compile(r'\bsorsz[aá]m\w*|\bBDB\d+|nincs címke|ⓘ|[Kk]utatói (?:megjegyzés|jelölés)|\bhorgony'), 'belső címke vagy sorszám'),
+]
+_BDB_JELEK_RX = None
+
+
+def _bdb_jelek_rx():
+    global _BDB_JELEK_RX
+    if _BDB_JELEK_RX is None:
+        jelek = []
+        ut = os.path.join(GYOKER, 'eszkozok', 'olvaso_szerver', 'konfig', 'bdb_jelek.tsv')
+        if os.path.exists(ut):
+            fej = None
+            with open(ut, encoding='utf-8') as f:
+                for sor in f:
+                    sor = sor.rstrip('\n')
+                    if not sor or sor.startswith('#'):
+                        continue
+                    m = sor.split('\t')
+                    if fej is None:
+                        fej = m
+                        continue
+                    d = dict(zip(fej, m))
+                    if d.get('csoport') in ('szerző', 'szövegtanú') and len(d.get('jel', '')) >= 3:
+                        jelek.append(d['jel'])
+        _BDB_JELEK_RX = re.compile(r'(?<![\w])(%s)(?![\w])' % '|'.join(re.escape(j) for j in sorted(jelek, key=len, reverse=True))) \
+            if jelek else None
+    return _BDB_JELEK_RX
+
+
+def ell_bdb_olvasoi(sorok):
+    """Az új szerkezetű lap 4.2-es szakaszában a BDB-kártyák olvasói rétege (a `##### … · BDB` címtől az apparátus
+    kezdetéig) nem hordozhat feloldatlan rövidítést, belső címkét vagy nyers sorszámot. A régi lapon nem fut."""
+    if not KIVETEL_NELKUL:
+        return []
+    from lexikon_general import APPARATUS_RX
+    # a kétrétegű kártyát még nem hordozó (az F104 előtt generált) új szerkezetű lapon sem fut: a lap a saját teljes
+    # folyamatával kapja meg (a kapuk verziózása a lapszerkezet jelölőjével, mint az F178.4-nél)
+    if not any(APPARATUS_RX.search(s.nyers) for s in sorok):
+        return []
+    ki, in42, kartya = [], False, False
+    jelek = _bdb_jelek_rx()
+    for s in sorok:
+        if s.fajta == 'cim':
+            t = s.szoveg.strip()
+            if re.match(r'^#{1,4}\s', t):
+                in42 = bool(re.match(r'^#{4}\s+4\.2\.', t))
+                kartya = False
+            elif in42 and re.match(r'^#{5}\s', t):
+                kartya = t.rstrip().endswith('· BDB')
+            continue
+        m = APPARATUS_RX.search(s.nyers)
+        if m:
+            if m.group(1) == 'KEZDET':
+                kartya = False
+            continue
+        if not (in42 and kartya) or s.fajta in ('komment', 'kod', 'ures'):
+            continue
+        t = kod_nelkul(s.szoveg)
+        for rx, nev in BDB_OLVASOI_MINTA + ([(jelek, 'feloldatlan szerző- vagy szövegtanú-jel')] if jelek else []):
+            mm = rx.search(t)
+            if mm:
+                ki.append(talalat('BDB_OLVASOI', BUKAS, s.n, kornyezet(t, mm, 40), nev, nev))
+    return ki
+
+
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang]
+                ell_visszhang, ell_bdb_olvasoi]
 
 
 def arany_szoszam():
