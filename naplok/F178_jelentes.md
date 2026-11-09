@@ -16,8 +16,8 @@
 | F178.1 | kész | `ellenoriz.py` 39. szabály (határ-frissesség, SORÁLLAPOT-jel: a motívumsorok rendezett SHA-256-ja; JELENTÉS), Feed 5. kritérium piros nem friss modelles résznél (HIBA: a lap nem adható ki), `--hatar-ujjlenyomat`; MUNKAMENET C-h |
 | F178.2 | kész | U2/U3 szétválasztás: 9-es sablon v2 (hét szabály), MUNKAMENET C-w |
 | F178.3 | kész | 10-es U3-prompt sablon; 9-es sablon v2; 6-os sablon v4; `ellenoriz.py` 40. szabály (regressziós HIBA-kapuk), 41. szabály (közlemény, JELENTÉS) |
-| F178.4 | kész a HAMART-001-en; ⛔ DT-F178b nyitva | Döntési út, folyamatos számozás 1–12 (4.1–4.14), tanítói rész nélkül, áttekintő tábla, belső jel olvasói formára (a nyers proveniencia HTML-megjegyzésben), olvasói kapu kivétel nélkül az új szerkezetű lapon; B9 kivezetve, 7-es sablon ARCHÍV |
-| F178.5 | kész a HAMART-001-en | `adat/visszhang_megfelelok.tsv` (SEMA 2.53; f46b10b7: 74 sor, bb3020eb: 82 sor — a „74” a végállapotra elavult volt, ELLENOR_F178 6.; a javítókör után 127 sor, l. „Bontási napló”), `megfelelo_kinyer.py`, arámi kiejtés (A1), a 4.11 blokk alapvonallal (DT-F178d), BDB-háttér szűkítve |
+| F178.4 | kész a HAMART-001-en; ⛔ DT643 nyitva | Döntési út, folyamatos számozás 1–12 (4.1–4.14), tanítói rész nélkül, áttekintő tábla, belső jel olvasói formára (a nyers proveniencia HTML-megjegyzésben), olvasói kapu kivétel nélkül az új szerkezetű lapon; B9 kivezetve, 7-es sablon ARCHÍV |
+| F178.5 | kész a HAMART-001-en | `adat/visszhang_megfelelok.tsv` (SEMA 2.53; f46b10b7: 74 sor, bb3020eb: 82 sor — a „74” a végállapotra elavult volt, ELLENOR_F178 6.; a javítókör után 127 sor, l. „Bontási napló”), `megfelelo_kinyer.py`, arámi kiejtés (A1), a 4.11 blokk alapvonallal (DT645), BDB-háttér szűkítve |
 | F178.6 | kész (a lapon és az exportban; a `nyilt_mag/` nincs újragenerálva) | SZERKESZTOI_CSERE (magyar, angol), SZERKESZTO-kapu; a lapon „felhasználó” BUKÁS az új szerkezetben |
 | F178.7 | kész az exportban | [A LEXIKON CÍME] a nyílt mag címében és fejlécében |
 | F178.8 | kész (a #639 elvégezte) | a HAMART-001-en NAVE_ANGOL 0 |
@@ -41,10 +41,10 @@
 
 ## Helyőrzős döntések (`dontesek/uj/lexikon-ag-lezaras.md`)
 
-- **DT-F178b** (⛔): a `tanitoi` rés sorsa — (a) kivezetés, (b) az adatrétegben marad, a lapon nem áll, (c) a visszhang tanúrétegévé alakul; javaslat: (b) most, (a) a többi lap körével.
-- **DT-F178c**: a lapszerkezet levezetett részletei (4.11 visszhang, 10. Alkalmazás, az 1.4/1.5 gépi tartalma).
-- **DT-F178d** (🟢, „Mehet”): a visszhang következtetési szabálya (alapvonal, 80% / 40%).
-- **DT-F178e** (🟢): a visszhang-szabályok átvihetősége (sablon, C-vh, VISSZHANG kapu, arany-minta teszt).
+- **DT643** (⛔): a `tanitoi` rés sorsa — (a) kivezetés, (b) az adatrétegben marad, a lapon nem áll, (c) a visszhang tanúrétegévé alakul; javaslat: (b) most, (a) a többi lap körével.
+- **DT644**: a lapszerkezet levezetett részletei (4.11 visszhang, 10. Alkalmazás, az 1.4/1.5 gépi tartalma).
+- **DT645** (🟢, „Mehet”): a visszhang következtetési szabálya (alapvonal, 80% / 40%).
+- **DT646** (🟢): a visszhang-szabályok átvihetősége (sablon, C-vh, VISSZHANG kapu, arany-minta teszt).
 
 ## Kiegészítés (2026-11-08, a menet végén)
 
@@ -74,7 +74,7 @@ Van: az **E28** (`eszkozok/ellenorzes/szabalyok.py` `e28_generalt_nezet_egyezes`
 
 A **C-vh** (MUNKAMENET): a Targum- és a Vulgata-megfelelőt modell emeli ki, egy másik kéz ellenőrzi (`megfelelo_kinyer.py beolvas … --ellenor`), a LXX-oszlop és az alapvonal gépi (`… lxx`), a BDB rokon nyelvi háttér ugyanitt; a lapot a generátor állítja elő (C1), a VISSZHANG kapu (C-o) védi. A próza (C-w, 10-es prompt) a blokk után jön, és nem állít többet nála. A meglévő lapoknál ez a motívumonkénti lezárás (#10) lépése.
 
-### DT-F178b — a felhasználóhoz (röviden)
+### DT643 — a felhasználóhoz (röviden)
 
 A `tanitoi` rés sorsa: (a) kivezetés az adatrétegből (a `res_forras.tsv` sorai, nyolc rés, a CLAUDE.md mondata, a tanítói fájlok archívumba); (b) a rés az adatrétegben marad, a lapon nem áll; (c) a visszhang tanúrétegévé alakul (2. fázis). **Ajánlás: (b) most** (visszafordítható, adatot nem érint, a régi lapok nem törnek el), **(a) akkor, amikor az utolsó lap is átment a teljes folyamaton**; a (c) a 2. fázis saját döntése.
 
@@ -93,7 +93,7 @@ A 4.11 hat pontja generátor-szinten javítva (l. a commit üzenetét); a HAMART
 | ATIRAS_VALT | 4 | „adamá”, „arar” a jelöltindoklásokban (adat), „chamasz” a 4.2-ben, „adama” az arab rokon alak kiejtése — a héber adámától eltérő szó vagy régi indoklás |
 | SZINT_ALATT | 4 | üres szótári pontok (4.1 görög, 4.13, 4.14: „javaslat”), a 7. Kapcsolatok „még nincs ilyen” mondata |
 
-## DT-F178b végrehajtása — ⛔ megállva
+## DT643 végrehajtása — ⛔ megállva
 
 A felhasználó döntése („Kivezetjük”) a `dontesek/uj/lexikon-ag-lezaras.md`-ben 🟢. **A végrehajtás nem történt meg**, mert a régi lapokat érintené:
 
@@ -101,11 +101,11 @@ A felhasználó döntése („Kivezetjük”) a `dontesek/uj/lexikon-ag-lezaras.
 - az E28 a négy migrált lapon (ISTENTISZT-001, ALVIL-001, TEREMT-002, ANTROP-001) bukna;
 - a két tanítói forrásfájl (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`, `motivumok/naplok/TEREMT-002_tanitoi_kereses.md`) a régi lapok résforrása; archiválásuk ugyanígy a régi lapokat változtatná; rájuk mutat a `NYITOTT_FELADATOK.md` és kilenc brief `olvas` mezője.
 
-**Javaslat (a döntés az orkesztrátoré):** lépcsős kivezetés. Most csak a HAMART-001 `tanitoi` sora törlődik (az egyetlen új szerkezetű lap; kimenete nem változik), a generátor a rést csak a sorral rendelkező motívumnál keresi. A többi motívum sora és tanítói fájlja (`archivum/<ID>/`, ARCHÍV fejléccel, a hivatkozásokkal együtt) a motívum teljes folyamatának lapgenerálásával egy commitban kerül ki; a CLAUDE.md és a SEMA „kilenc rés” mondata addig „kilenc rés, a `tanitoi` kivezetés alatt (DT-F178b)”, az utolsó lappal „nyolc rés”. A `CLAUDE.md` és az `archivum/` érintése az `ir` mezőn kívüli: egyeztetett eltérésként jelzem, amikor megtörténik.
+**Javaslat (a döntés az orkesztrátoré):** lépcsős kivezetés. Most csak a HAMART-001 `tanitoi` sora törlődik (az egyetlen új szerkezetű lap; kimenete nem változik), a generátor a rést csak a sorral rendelkező motívumnál keresi. A többi motívum sora és tanítói fájlja (`archivum/<ID>/`, ARCHÍV fejléccel, a hivatkozásokkal együtt) a motívum teljes folyamatának lapgenerálásával egy commitban kerül ki; a CLAUDE.md és a SEMA „kilenc rés” mondata addig „kilenc rés, a `tanitoi` kivezetés alatt (DT643)”, az utolsó lappal „nyolc rés”. A `CLAUDE.md` és az `archivum/` érintése az `ir` mezőn kívüli: egyeztetett eltérésként jelzem, amikor megtörténik.
 
-## DT-F178b végrehajtva — lépcsős kivezetés (2026-11-08)
+## DT643 végrehajtva — lépcsős kivezetés (2026-11-08)
 
-Orkesztrátori döntés a „Kivezetjük” módjáról: a HAMART-001 `tanitoi` sora törölve az `adat/res_forras.tsv`-ből (a lap kimenete nem változott: „változatlan, 546606 bájt”); a generátor sor nélkül a rést kivezetettnek veszi (`res_kivezetett`, a régi címhatár a váz literál fejlécével); az `ellenoriz.py` 11. szabálya a hiányzó `tanitoi` sort nem kéri. A CLAUDE.md és a SEMA 2.12 mondata: „kilenc rés, a `tanitoi` kivezetés alatt (DT-F178b)”. A többi motívum sora és tanítói fájlja a saját teljes folyamatának lapgenerálásával egy commitban kerül ki (MUNKAMENET C5). Egyeztetett eltérés: a `CLAUDE.md` és az `adat/res_forras.tsv` az `ir` mezőn kívül.
+Orkesztrátori döntés a „Kivezetjük” módjáról: a HAMART-001 `tanitoi` sora törölve az `adat/res_forras.tsv`-ből (a lap kimenete nem változott: „változatlan, 546606 bájt”); a generátor sor nélkül a rést kivezetettnek veszi (`res_kivezetett`, a régi címhatár a váz literál fejlécével); az `ellenoriz.py` 11. szabálya a hiányzó `tanitoi` sort nem kéri. A CLAUDE.md és a SEMA 2.12 mondata: „kilenc rés, a `tanitoi` kivezetés alatt (DT643)”. A többi motívum sora és tanítói fájlja a saját teljes folyamatának lapgenerálásával egy commitban kerül ki (MUNKAMENET C5). Egyeztetett eltérés: a `CLAUDE.md` és az `adat/res_forras.tsv` az `ir` mezőn kívül.
 
 ## Bontási napló: `adat/visszhang_megfelelok.tsv` (ELLENOR_F178 6.)
 
@@ -124,7 +124,7 @@ A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla
 | **összesen** | | | **82** | **127** |
 
 - Forrásonként: targum 17 → 32, vulgata 17 → 32, lxx 17 → 32, bdb 31 → 31. A Targum és a Vulgata 17 sorából 16 a lánc-szavak sora, 1 a 8:21 betoldás-sora (H2403).
-- A változás (+45): a motívumadatból levezetett lánc (DT-F178g) 15 hiányzó (lánc-szó, láncvers) párja — Targum +15, Vulgata +15 (kinyerő `claude-sonnet-5-5`, ellenőr `claude-opus-5-5`), LXX +15 gépi (11 egyértelmű; 4 nem egyértelmű, ellenőrizetlen: H0127 1Móz 3:23, 4:2, 4:12; H7843 9:15).
+- A változás (+45): a motívumadatból levezetett lánc (DT648) 15 hiányzó (lánc-szó, láncvers) párja — Targum +15, Vulgata +15 (kinyerő `claude-sonnet-5-5`, ellenőr `claude-opus-5-5`), LXX +15 gépi (11 egyértelmű; 4 nem egyértelmű, ellenőrizetlen: H0127 1Móz 3:23, 4:2, 4:12; H7843 9:15).
 - A bdb ellenőrzött 30 → 21: a meglévő sorok `ellenorzes`-e az új szabállyal íródott újra (ELLENOR_F178 4.: a kézi átnézés csak az átnézés-bemenetből, `naplok/F178_visszhang_atnezes.tsv`). Nincs átnézve: a kálal (H7043) 8 modell-sora — nem lánc-szó, nem renderel — és a H6087 targumi arámi sora (az ellenőr korábbi pontosítása; nem rokon nyelv, nem renderel).
 - Bemenetek (mind commitolva): `naplok/F178_kinyert_uj.tsv` (a Sonnet-kinyerés, változatlanul), `naplok/F178_kinyert_ujraolvas.tsv` (a beolvasás bemenete), `naplok/F178_visszhang_atnezes.tsv` (85 átnézett sor), `naplok/F178_lemma_megerosites.tsv` (9 megerősítés, `claude-sonnet-5-5`).
 - A lapon nem renderel (127-ből): ellenőrizetlen 15 (lxx 5, bdb 10); a lánc-szón kívüli kálal (H7043) Targum-, Vulgata- és LXX-sora 3; a nem rokon nyelvi bdb sor (újhéber, targumi arámi, Sirák) és a tartalom nélküli sor a háttér-szabály szerint.
@@ -135,8 +135,8 @@ A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla
 
 | ELLENOR | Tétel | Állapot |
 |---|---|---|
-| 1. E35 / nyílt mag (DT-F178f) | F178.11, F178.12 | kész: a diff csak szóhasználat + ellenőrzőösszeg (20 fájl, 73/73 sor); E35 0 |
-| 2. a lánc a motívumadatból (DT-F178g) | F178.11, .15, .16, .22, .23 | kész: lánc-szó a kulcsszó (gerinc-elem), láncvers mindig a genezisi mag (1Móz 3–9) verse, ahol áll; 30 új Targum/Vulgata-sor két kézzel, 15 LXX gépi (4 nem egyértelmű, ellenőrizetlen) |
+| 1. E35 / nyílt mag (DT647) | F178.11, F178.12 | kész: a diff csak szóhasználat + ellenőrzőösszeg (20 fájl, 73/73 sor); E35 0 |
+| 2. a lánc a motívumadatból (DT648) | F178.11, .15, .16, .22, .23 | kész: lánc-szó a kulcsszó (gerinc-elem), láncvers mindig a genezisi mag (1Móz 3–9) verse, ahol áll; 30 új Targum/Vulgata-sor két kézzel, 15 LXX gépi (4 nem egyértelmű, ellenőrizetlen) |
 | 3. lemma-egységesítés második kézzel | F178.16 | kész: 9/9 megerősítve (claude-sonnet-5-5) |
 | 4. `ellenorzes` mező, üres alak | F178.13, .16 | kész: kód + 15 teszt; a meglévő sorok újra átnézve (85 átnézett sor) |
 | 5. alapvonal-mondat | F178.17 | kész: „a láncon kívüli N versből x versben (y%)”; sablon, V7 |
@@ -160,7 +160,7 @@ A tábla a #178 új fájlja (a `9af7cecf` alapon nincs). Sorszám a mért tábla
 
 | ELLENOR_F178_2 | Tétel | Állapot |
 |---|---|---|
-| 1. a láncvers meghatározása; a gerinc az adatból | F178.26 | kész: a láncvers a motívum Pesat-gerincének azon verse, ahol a kulcsszó a héberben áll (a motívum saját verse). A gerinc (`lanc_mag`): a negatív kritérium megnevezése, különben a Pesat-sorok (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében, Pesat-sor nélkül nincs lánc; a „teljes 1Mózes” tartalék megszűnt. A HAMART-001 4.11 táblája nem változott; a bevezető „a lánc 6 kulcsszava … (az 1.2 teljes szólistája ennél bővebb)”, „Peshat-magjának (1Móz 3–9)”. Teszt: Ez 7–12 gerincű szintetikus motívum. SEMA 2.53, MUNKAMENET C-vh, 6-os sablon 0. pont, DT-F178g |
+| 1. a láncvers meghatározása; a gerinc az adatból | F178.26 | kész: a láncvers a motívum Pesat-gerincének azon verse, ahol a kulcsszó a héberben áll (a motívum saját verse). A gerinc (`lanc_mag`): a negatív kritérium megnevezése, különben a Pesat-sorok (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében, Pesat-sor nélkül nincs lánc; a „teljes 1Mózes” tartalék megszűnt. A HAMART-001 4.11 táblája nem változott; a bevezető „a lánc 6 kulcsszava … (az 1.2 teljes szólistája ennél bővebb)”, „Peshat-magjának (1Móz 3–9)”. Teszt: Ez 7–12 gerincű szintetikus motívum. SEMA 2.53, MUNKAMENET C-vh, 6-os sablon 0. pont, DT648 |
 | 2. az átnézés soronkénti ítélete | F178.27 | kész: 85 sor érdemi indokkal, 82 `jo`, 3 `elvet` (Vulgata 4:12 eam; H6087 újhéber II. szócikk; H7843 Tell el-Amarna jelentés). A bdb-sor átnézési kulcsa a nyelvvel és a jelentéssel (eddig a H6087 4 és a H2554 2 alak nélküli sora egy kulcson állt). Kapu: `atnezes_ellenoriz` (indok nélküli sor, kettőzött kulcs, sablonmondat), teszttel. „Második kéz (nem az ellenőr; lehet a kinyerő)” a MUNKAMENET C-vh-ban, a SEMA 2.53-ban és a kódban |
 | 3. H2403 lemmaalak | F178.28 | kész a 4.11-ben és a BDB-háttérben: `strong_valtozat_versben` (TAHOT-szótő ↔ TBESH-változat), 1Móz 4:7 → H2403b חַטָּאת (chattát), teszttel; 6-os sablon 1. pont |
 

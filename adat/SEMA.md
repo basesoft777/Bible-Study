@@ -739,7 +739,7 @@ A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
 
 ### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
 
-Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` kivezetés alatt, DT-F178b: a
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` kivezetés alatt, DT643: a
 motívum sora a motívum teljes folyamatának lapgenerálásával kerül ki; sor nélkül a rés nem renderel)
 (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
 `alkalmazas`, `tanitoi`, `modszertan`) motívumonkénti és résenkénti forrása — a
@@ -2116,7 +2116,7 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 
 **Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
 
-**A lánc honnan jön (DT-F178g, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
+**A lánc honnan jön (DT648, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
 vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
 `gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó) — a lánc
 kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers
