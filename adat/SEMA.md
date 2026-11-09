@@ -1895,8 +1895,11 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 | `idezet` | a felhasználó jóváhagyó szavai **szó szerint** (chat); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` (hol hangzott el) |
 
-**Érvényesség (DT554).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
-a 9. kapu piros, és új átnézés kell. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
+**Érvényesség (DT554, DT-F184b).** Az átnézés a lap commitjához kötött: ha a lap azóta változott (újragenerálás, javítás), a sor nem érvényes,
+a 9. kapu piros, és új átnézés kell. Kivétel (DT-F184b, a DT569 általánosítása): a **gépi** szótári és Károli-KH
+forrásadat-javítás nem érvényteleníti az átnézést, ha (a) a próza, a minősítés és a határ nem változik, (b) a lapdiff
+csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés
+felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése a 9. kapuban még nincs meg (N-F184a). Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
 Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 8 sor — ALVIL-001 4, ANTROP-001 3, ISTENTISZT-001 1.
