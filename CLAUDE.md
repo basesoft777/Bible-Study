@@ -192,6 +192,7 @@ Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és e
 álljon meg (minta: `eszkozok/igazolas_migracio.py`).
 
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
+a végén a végrehajtó modelljének `Co-Authored-By` sora (a tényleges modell, l. „Modell-ellenőrzés”);
 push csak kérésre.
 
 Ha egy commit fájlt áthelyez, átnevez vagy töröl, ugyanabban a commitban frissíti a rá mutató hivatkozásokat a `FELADATOK.md`-ben, a `NYITOTT_FELADATOK.md`-ben és a briefek `olvas` mezőjében. *(CI: E27, hivatkozás-ellenőrzés.)*

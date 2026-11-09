@@ -215,6 +215,16 @@ Az F184.2 (`e3338a2b`) a `sablonok/6_…` Minőségi kapujának L8 pontját (a l
 
 **Miért:** a két elem a két másolatban állt, a kanonikusban nem: a forma a `MUNKAMENET.md` C-g-ben és a `9_` :283-ban („arany szintű: kerek próza + „Funkció:” sor”), a teljesség-mérés mindkettőben. A csere hivatkozásra csak akkor nem töröl tartalmat, ha a kanonikus hely a másolatok unióját hordozza; új szabály nem keletkezett. A leltár 5. sorának „nem” ítélete ezért téves volt (a másolatok tartalmilag eltértek a kanonikustól: a kanonikus volt hiányos); a sor helyesbítve, ahogy a D2 „Tartalmi eltérés … nincs” mondata is. A bővítést korábban csak a commit-üzenet említette.
 
+### 4. A `Co-Authored-By` szabály helye (F184.16; ELLENOR_F184 4.)
+
+**Keresés:** `git grep -n 'Co-Authored'` a `*.md` fájlokban és a `.claude/` alatt, továbbá `grep 'Co-Author\|trailer'` a `CLAUDE.md`-ben, a `MUNKAMENET.md`-ben, a `BRIEF_SABLON.md`-ben, a `.claude/commands/` és a `.claude/agents/` alatt. A szabály egyetlen helyen állt: az `.claude/commands/elteres.md:30`-ban. A többi találat történeti: a DT275 egy esetről döntött, az `ELLENOR_*` fájlok trailer-ellenőrzései, illetve az F112 kizárási listája. Kanonikus hely nem volt. `scope=folyamat-dokumentumok + naplok | forras=git grep 'Co-Authored' @ 3b50eba2 | ts=2026-11-09`
+
+**Döntés (az orkesztrátor szabálya szerint):** a commit-üzenet szabálya munkamenet-szintű. A D1 szerint ennek kanonikus helye a `CLAUDE.md`. Ezért a „Git” bekezdésbe egy sor került: „a végén a végrehajtó modelljének `Co-Authored-By` sora (a tényleges modell, l. „Modell-ellenőrzés”)”.
+
+Ez az `elteres.md` meglévő szabályának áthelyezése, új tartalom nincs benne. A „tényleges modell” a CLAUDE.md modell-szabályának alkalmazása, mert a trailert az ellenőrök a modell bizonyítékaként olvassák (DT275).
+
+Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így már valós célra mutat, ezért szövegén nem változtattam.
+
 ## Zárás
 
 - **Elkészült:** D1 (1 sor a `CLAUDE.md`-ben; DT-F184a, DT-F184b), D2 (34 csere: 29 nem-SEMA csere 13 fájlban + 5 SEMA-csere, köztük a DT-F184b 2.48-szövege és a „2.50” szétválasztása; ezen felül az N-F166a lezárása a `NYITOTT_FELADATOK.md` meglévő sorában), D3 (modulszintű táblák, generátor, SEMA 3.11 GENERÁLT blokk, E37), D4 (`/kovetkezo` 10. lépés + 4 kapcsolódó csere, BRIEF_SABLON „Jelentés”), D5 (E36). A D6 (független ellenőr, draft PR) az orkesztrátoré.
