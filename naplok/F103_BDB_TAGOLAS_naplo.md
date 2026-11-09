@@ -72,9 +72,20 @@ m2_minta_osszevet.py --mai-tabla (seed-102) | ts=2026-11-09*
 |---|---|
 | (1) csak két új oszlop, a régiek bájtra azonosak | `csoport`, `csoport_jel` a `szurt` után; a régi 15 oszlop SHA-256-ja a main-en (94c4c2ac), F103.4-ben és F103.7-ben azonos: `63373512b29fe3cb5b3a37494c9b411da240df7270c2999c7821b264e2347447` (teszt: `CsoportOszlop.test_regi_oszlopok_bajtra_azonosak`) |
 | (2) `utvonal` változatlan, #102-mérés | `+` nincs az `utvonal`-ban (teszt); seed-102: könyv/vers 199, jelentéspont **183 / 200** (azonos) |
-| (3) `lexikon_general.py` nem változik, E28 | a fájl nem változott; E28: a 10. pont szerint |
+| (3) `lexikon_general.py` nem változik, E28 | a fájl nem változott. A helyi E2–E30 körben (`eszkozok/ellenorzes/futtat.py`, alap 94c4c2ac) az E28 három nézetnél HIBA-t adott, de nem tartalmi okból: a `general.py` alfolyamat el sem indult (kilépési kód 3221225794 = 0xC0000142, Windows-folyamatindítás; ugyanakkor a `git show` is „nem érhető el”). Kézi ellenőrzés: mind az öt migrált nézet (`e28_migralt_nezetek.tsv`) újragenerálva a repón kívülre (`general.py --cel lexikon --id <ID> --kimenet …`, a lista dátumával), a HEAD-beli fájlhoz képest csak a dátumsorok térnek el (`ts=`, „Generálva:”, proveniencia-dátum: a lista dátuma ≠ a lap utolsó generálásáé), tartalmi eltérés 0 / 5 nézet. A CI E28-futása ellenőrzendő. |
 | (4) SEMA 2.29 | a két oszlop leírva |
 | (5) `ir` | a brief `ir`-je: `eszkozok/olvaso_szerver/bdb_vers_jelentes.py` |
 
 Újragenerálás: kilépési kód 0, mtime 19:14:24 → 19:20:31, `--ellenoriz` bájtra azonos (kód 0). Csoportos sor: 29 634 / 162 053 (with 7767,
 especially 3936, absolute 2490, (a) 1846, figurative 1766, (b) 1708, (2) 1080, (1) 973 …).
+
+E32 (helyőrző a generált fejléc string-literáljában) javítva: F103.8 („DT167 + F103 (csoport)”); a tábla újragenerálva, csak a 2. fejlécsor változott.
+
+## 5. Teljes tesztkör (F103.9)
+
+`python eszkozok/teszt_futtat.py` (WSL, `~/pardes/pardes.db`, epites_ts 2026-11-02; a 10 perces előtér-korlát miatt az eszköz 180 mp után a
+háttérbe tette, a kimenet szó szerint): `együtt 304.5 mp (a lassú fájlok nélkül)`, `lassú fájlok külön 96.1 mp (teszt_szintek.py)`,
+`kilépési kód: 1` — 11 fájl zöld (`teszt_bdb_vers_jelentes.py` 52 teszt), `teszt_szintek.py: HIBA (1)`
+(`test_heber_szavak_alacsony_es_magas_szinten`: „H0120: a magyar darab magas szinten sincs a lapon: 'H120. adam אָדָם_560 hímnemű f'”).
+A hiba **előzetesen fennáll**: az ág kiindulópontján (94c4c2ac, ideiglenes worktree, utána eltávolítva) ugyanez a teszt ugyanígy bukik
+(`Ran 13 tests … FAILED (failures=1)`); N-F103d. `python eszkozok/feladatok.py ellenoriz`: „201 brief, 0 hiba, 0 figyelmeztetés”.
