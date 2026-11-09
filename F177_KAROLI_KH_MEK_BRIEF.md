@@ -7,6 +7,7 @@ fazis: folyamat
 modell: sonnet
 allapot: lezarva
 ag: claude/karoli-kh-mek
+pr: https://github.com/basesoft777/Bible-Study/pull/656
 ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
 kovetkezo: "Te: a draft PR átnézése és merge; DT-F177b (MEK-licenc) és DT-F177c döntése; utána a lapok újragenerálása a lapszerkezeti generátor-körben (N-F177a)"
 munka: folyamat
