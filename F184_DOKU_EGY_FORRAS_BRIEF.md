@@ -5,12 +5,15 @@ kod: DOKU_EGY_FORRAS
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+ag: claude/doku-egy-forras
 ad: a többszörösen leírt folyamat-szabályok egy kanonikus helyen, a többi hivatkozik; a kapuk szabálylistája a kódból generált GENERÁLT blokk CI-őrrel; menet- és zárójelentés egy fájlban; hivatkozás-kapu teszttel
-kovetkezo: "Te: F184.D0 — a #182 (HAMART javító menet) előtt fut; fejléccel kör nélkül nem fejezhető ki (a #182 nem függ levezetetten a #184-től, a számsorrend a #182-t tenné előre): a sorrendet az orkesztrátor tartja"
+kovetkezo: "[elteres_kor 2/2] lezárva: ELLENOR_F184_3 TISZTA; merge a felhasználóé"
+pr: https://github.com/basesoft777/Bible-Study/pull/665
+lezarva_osszegzes: 31 soros leltár (szabály → előfordulások → kanonikus hely); kanonikus helyek a CLAUDE.md-ben; 34 másolat hivatkozásra cserélve, tartalomvesztés-ellenőrzéssel (6 elem visszaállítva); SEMA 3.11 kódból generált kapulista (E37 őr, SZINT_EMELES), E36 hivatkozás-kapu; menet- és zárójelentés egy fájlban; DT664–c, N-F184a–d; 2 javítókör, ELLENOR_F184_3 TISZTA; egyeztetett eltérés: ir-bővítés a leltár szerint (`naplok/F184_jelentes.md`)
 munka: folyamat
 olvas: [DONTESEK.md, eszkozok/ellenorzes/]
-ir: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, adat/SEMA.md, "sablonok/6_*", "sablonok/9_*", "sablonok/10_*", .claude/commands/kovetkezo.md, .claude/commands/elteres.md, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, .github/workflows/ellenorzes.yml, naplok/F184_jelentes.md]
+ir: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, adat/SEMA.md, "sablonok/6_*", "sablonok/9_*", "sablonok/10_*", .claude/commands/kovetkezo.md, .claude/commands/elteres.md, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, .github/workflows/ellenorzes.yml, naplok/F184_leltar_azonositok.py, naplok/F184_leltar_kifejezesek.py, dontesek/uj/doku-egy-forras.md, nyitott/uj/doku-egy-forras.md, NYITOTT_FELADATOK.md, "sablonok/1_*", "sablonok/2_*", "sablonok/4_*", "sablonok/5_*", sablonok/PaRDeS_gyorsreferencia.md, .claude/commands/lap-javit.md, .claude/commands/kiadas.md, .claude/commands/befogad.md, naplok/F184_jelentes.md]
 fugg: []
 ---
 
