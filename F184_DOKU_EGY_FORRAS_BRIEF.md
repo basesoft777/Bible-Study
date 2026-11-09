@@ -5,9 +5,10 @@ kod: DOKU_EGY_FORRAS
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/doku-egy-forras
 ad: a többszörösen leírt folyamat-szabályok egy kanonikus helyen, a többi hivatkozik; a kapuk szabálylistája a kódból generált GENERÁLT blokk CI-őrrel; menet- és zárójelentés egy fájlban; hivatkozás-kapu teszttel
-kovetkezo: "Te: F184.D0 — a #182 (HAMART javító menet) előtt fut; fejléccel kör nélkül nem fejezhető ki (a #182 nem függ levezetetten a #184-től, a számsorrend a #182-t tenné előre): a sorrendet az orkesztrátor tartja"
+kovetkezo: "F184.D0 fut: leltár a többszörösen leírt szabályokról (naplok/F184_jelentes.md)"
 munka: folyamat
 olvas: [DONTESEK.md, eszkozok/ellenorzes/]
 ir: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, adat/SEMA.md, "sablonok/6_*", "sablonok/9_*", "sablonok/10_*", .claude/commands/kovetkezo.md, .claude/commands/elteres.md, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, .github/workflows/ellenorzes.yml, naplok/F184_jelentes.md]
