@@ -617,7 +617,8 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(re.findall(r'<span class="jcim">(<span class="kolcsonzott")?', blokk)[:3], ['<span class="kolcsonzott"', '', '<span class="kolcsonzott"'])
         self.assertIn('title="A BDB-ben ennek a jelentésnek nincs saját meghatározása; a cím az a. alpontból képződik (gépi)."', blokk)
         # a szám a kiírt igehely-hivatkozásoké, nem az előfordulásoké: a felirat és a súgó ezt mondja
-        self.assertRegex(blokk, r'<span class="helyek" title="a BDB ennél a jelentésnél[^"]*">60 hivatkozás</span>')
+        # F104: a szám a vers -> jelentés tábla feloldott, szűrt hivatkozásaié (a súgó ezt mondja; a pontos érték: TestF104BdbJeloles)
+        self.assertRegex(blokk, r'<span class="helyek" title="a BDB ennél a pontnál[^"]*">\d+ hivatkozás</span>')
         self.assertNotRegex(blokk, r'\d hely</span>')
         self.assertIn('class="jel-vazlat"', blokk)
         vz = blokk[blokk.index('class="jel-vazlat"'):blokk.index('</nav>')]
@@ -1387,6 +1388,213 @@ class TestNavigacio(unittest.TestCase):
         self.assertNotIn('max-width: 1448px', css)
         self.assertIn('.szoveg-oszlop.szel-kozepes { max-width: 60ch; }', css)
         self.assertIn("classList.toggle('szel-kozepes'", js)
+
+
+# =====================================================================================================================
+# F104 (FELADATOK #104, DT178): a BDB-blokk vers szerinti jelölése, pontos hivatkozásszám, kattintható helyek, egy forrású pontosság
+# =====================================================================================================================
+def _clopper_pearson(k, n, alfa=0.05):
+    """A binomiális arány kétoldali Clopper–Pearson intervalluma (stdlib): P(X >= k | p) = alfa/2 és P(X <= k | p) = alfa/2 gyöke."""
+    from math import comb
+
+    def cdf(x, p):
+        return sum(comb(n, i) * p ** i * (1 - p) ** (n - i) for i in range(0, x + 1))
+    also = 0.0 if k == 0 else _gyok(lambda p: (1 - cdf(k - 1, p)) - alfa / 2)
+    felso = 1.0 if k == n else _gyok(lambda p: cdf(k, p) - alfa / 2)
+    return also, felso
+
+
+def _gyok(f):
+    """f monoton a [0, 1]-en, előjelet vált: a gyöke felezéssel."""
+    lo, hi = 0.0, 1.0
+    flo = f(lo)
+    for _ in range(100):
+        mid = (lo + hi) / 2
+        if (f(mid) > 0) == (flo > 0):
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
+class TestF104Egysegek(unittest.TestCase):
+    """Adatbázis nélkül: a pontosság egy forrásból, a hivatkozás-felismerés, a jelölő a saját fixture-ön (tippelés nélkül)."""
+
+    def test_bdb_pontossag_egy_forrasbol(self):
+        p = blokkok.BDB_PONTOSSAG
+        self.assertEqual((p['talalt'], p['minta']), (183, 200))           # DT658 (a): a seed-102 nyers száma (F102 14.)
+        self.assertIn('91,5%', blokkok.BDB_MERT_PONTOSSAG)
+        self.assertIn('86,7–95,0%', blokkok.BDB_MERT_PONTOSSAG)
+        also, felso = _clopper_pearson(p['talalt'], p['minta'])
+        self.assertEqual(round(also * 100, 1), p['ci_also'])
+        self.assertEqual(round(felso * 100, 1), p['ci_felso'])
+        self.assertTrue(p['proveniencia'].startswith('scope=') and '| forras=' in p['proveniencia'] and '| ts=' in p['proveniencia'])
+        forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
+        for szam in ('91,5', '86,7', '95,0', '183/200'):
+            self.assertNotIn(szam, forras, 'a szám kézzel a kódban: %s' % szam)
+        self.assertIn('title="proveniencia: scope=', str(blokkok._pontossag_html()))
+
+    def test_ref_tokenek(self):
+        s = 'Bír 8:7, 16; 1Móz 2:9, 17; 3:5 és Ézs 7:15-16, összesen 10-szer'
+        self.assertEqual([k for _, _, k in blokkok._ref_tokenek(s)], [(8, 7), (8, 16), (2, 9), (2, 17), (3, 5), (7, 15)])
+        a, b, _ = blokkok._ref_tokenek(s)[0]
+        self.assertEqual(s[a:b], 'Bír 8:7')
+
+    def _a(self):
+        return {'fej': {'homonima': ''}, 'szakaszok': [], 'torzsek': [
+            {'nev': 'Qal', 'db': '', 'jelentesek': [
+                {'jel': '1', 'szoveg': 'egy 1Móz 1:1; 2:3', 'ref': 2, 'al': [{'jel': 'a', 'szoveg': 'alpont 5:6', 'ref': 1}]},
+                {'jel': '2', 'szoveg': 'kettő 7:8', 'ref': 1, 'al': []}]},
+            {'nev': "Pi'el", 'db': '', 'jelentesek': [{'jel': '', 'szoveg': 'piel 9:9', 'ref': 1, 'al': []}]}]}
+
+    def _sor(self, sorszam, mt, karoli, utvonal, okkod='', szurt='0', vf='azonos'):
+        return {'sorszam': str(sorszam), 'nyers': mt.split(' ', 1)[-1], 'konyv_feloldas': 'kiirt', 'mt_vers': mt, 'karoli_vers': karoli,
+                'vers_feloldas': vf, 'szakasz': '', 'resz': '', 'utvonal': utvonal, 'okkod': okkod, 'szurt': szurt, 'csoport': ''}
+
+    def test_jelolo_eros_gyenge_es_tippeles_nelkul(self):
+        sorok = [self._sor(1, '1Móz 1:1', '1Móz 1:1', 'Qal/1'), self._sor(2, '1Móz 2:3', '1Móz 2:3', 'Qal/1'),
+                 self._sor(3, '1Móz 5:6', '1Móz 5:6', 'Qal/1/a', okkod='forras_hiba'),
+                 self._sor(4, '1Móz 7:8', '1Móz 7:8', 'Qal/3')]          # a bontásban nincs Qal/3: nem köthető, nem tippelünk
+        vj = blokkok.VersJelolo(self._a(), sorok, '1Móz 1:1', {'1Móz': '1Moz'})
+        self.assertEqual(vj.jel, {'bdb-0-1': 'eros'})
+        self.assertEqual(vj.db('bdb-0-1'), 2)
+        self.assertEqual(len(vj.nem_azonosithato), 1)
+        vj = blokkok.VersJelolo(self._a(), sorok, '1Móz 5:6', {'1Móz': '1Moz'})
+        self.assertEqual(vj.jel, {'bdb-0-1a': 'gyenge'})
+        vj = blokkok.VersJelolo(self._a(), sorok, '1Móz 7:8', {'1Móz': '1Moz'})
+        self.assertEqual(vj.jel, {})                                    # a sor létezik, de pontja nem azonosítható: jelölés nincs
+        h = str(blokkok._torzsek_html(self._a()['torzsek'], 'bdb', set(), vj, ''))
+        self.assertNotIn('bdb-itt', h.replace('igehely bdb-itt', ''))
+        # idézet nélküli vers: csak a törzs (a vers igetörzse szerint), jelentéspont nélkül
+        vj = blokkok.VersJelolo(self._a(), sorok, '1Móz 9:9', {'1Móz': '1Moz'}, {'piel': 'piel'})
+        self.assertEqual(vj.jel, {})
+        self.assertEqual(vj.torzs_jel, {'bdb-t1'})
+        h = str(blokkok._torzsek_html(self._a()['torzsek'], 'bdb', set(), vj, ''))
+        self.assertIn('<div class="torzs bdb-vonatkozhat" id="bdb-t1">', h)
+        self.assertNotRegex(h, r'<li [^>]*class="bdb-')
+        # tábla nélkül (régi adatbázis): jelölés nincs, a gépi szám marad
+        vj = blokkok.VersJelolo(self._a(), None, '1Móz 1:1', {'1Móz': '1Moz'}, {'qal': 'qal'})
+        self.assertEqual((vj.jel, vj.torzs_jel, vj.van), ({}, set(), False))
+
+    def test_linkeles_a_tabla_sorai_szerint(self):
+        sorok = [self._sor(1, '1Móz 1:1', '1Móz 1:1', 'Qal/1'), self._sor(2, '1Móz 2:3', '1Móz 2:4', 'Qal/1', vf='atkulcsolt')]
+        vj = blokkok.VersJelolo(self._a(), sorok, '1Móz 1:1', {'1Móz': '1Moz'})
+        h = str(vj.szoveg('egy 1Móz 1:1; 2:3 és 4:4', None, 'bdb-0-1'))
+        self.assertIn('<a class="igehely bdb-itt" href="/1Moz/1/1" title="feloldva: 1Móz 1:1">1Móz 1:1</a>', h)
+        self.assertIn('href="/1Moz/2/4" title="feloldva: 1Móz 2:4 (a BDB a héber versszámozást követi: 1Móz 2:3)">2:3</a>', h)
+        self.assertIn(' 4:4', h)                                         # a táblában nincs: nem link
+        self.assertEqual(h.count('<a '), 2)
+
+
+@unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
+class TestF104BdbJeloles(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.app = app_keszit('belso')
+        cls.c = cls.app.test_client()
+        cls.con = sqlite3.connect(DB)
+
+    def blokk(self, u, b='szo.bdb_apparatus'):
+        t = self.c.get(u).get_data(as_text=True)
+        i = t.index('data-blokk="%s"' % b)
+        return t[i:t.index('</section>', i)]
+
+    @staticmethod
+    def jeloles_nelkul(b):
+        """A blokk a jelölés elemei nélkül: a doboz, a felirat, a próba-bekezdés és a jelölő osztályok ki."""
+        b = re.sub(r'<div class="bdb-ebben">.*?</div>', '', b, flags=re.S)
+        b = re.sub(r'<p class="megj">Gépi szeletelés \(próba\).*?</p>', '', b, flags=re.S)
+        b = re.sub(r'<span class="bdb-jelzes"[^>]*>[^<]*</span>', '', b)
+        b = re.sub(r' class="bdb-(?:itt|vonatkozhat)"', '', b)
+        return b.replace('igehely bdb-itt', 'igehely').replace('igehely bdb-vonatkozhat', 'igehely').replace(
+            'torzs bdb-vonatkozhat', 'torzs').replace('jsz bdb-csop bdb-itt', 'jsz bdb-csop').replace('jsz bdb-csop bdb-vonatkozhat', 'jsz bdb-csop')
+
+    def test_semmi_nem_rejtodik(self):
+        """A jelölt lapon a teljes szócikk szövege és szerkezete megmarad: a jelölés elemei nélkül a blokk azonos a vers nélküli lapéval."""
+        for st, ig in (('H1242', '1Moz/1/5'), ('H3615', '1Moz/6/16'), ('H7451', '1Moz/2/9'), ('H1802', '2Moz/2/6')):
+            vers = self.blokk('/r/szo/%s?ig=%s' % (st, ig))
+            nelkul = self.blokk('/r/szo/%s' % st)
+            self.assertIn('class="bdb-ebben"', vers, st)
+            self.assertEqual(self.jeloles_nelkul(vers), self.jeloles_nelkul(nelkul), st)
+            # a csoportsorok összefűzve a csomópont teljes szövegét adják: a szöveg nem változik
+            self.assertEqual(re.sub(r'<[^>]+>', '', self.jeloles_nelkul(vers)), re.sub(r'<[^>]+>', '', self.jeloles_nelkul(nelkul)))
+
+    def test_eros_jeloles(self):
+        b = self.blokk('/r/szo/H1242?ig=1Moz/1/5')
+        self.assertIn('a BDB itt idézi ezt a verset', b)
+        self.assertRegex(b, r'<li id="bdb-0-1e" data-jel="e\." class="bdb-itt">')
+        self.assertEqual(len(re.findall(r'<a class="igehely bdb-itt" href="/1Moz/1/5"', b)), 2)       # az alaktanban és az 1. e.-ben
+        self.assertIn('<a href="#bdb-0-1e">1. e.</a>', b)
+
+    def test_nem_idezi_nincs_kiemeles(self):
+        b = self.blokk('/r/szo/H7451?ig=1Moz/19/19')
+        self.assertIn('A BDB ezt a verset nem idézi.', b)
+        self.assertNotIn('bdb-itt', b)
+        self.assertNotIn('bdb-vonatkozhat', b)
+        # idézet nélküli versnél jelentéspont nem kap jelölést, csak az igetörzs szakasza (DT178 (b))
+        b = self.blokk('/r/szo/H3615?ig=1Moz/6/16')
+        self.assertIn('A BDB ezt a verset nem idézi.', b)
+        self.assertNotRegex(b, r'<li [^>]*class="bdb-')
+        self.assertNotIn('igehely bdb-', b)
+        self.assertRegex(b, r'<div class="torzs bdb-vonatkozhat" id="bdb-t\d+"><h5>Pi&#39;el')
+
+    def test_gyenge_kulonbozik_az_erostol(self):
+        gy = self.blokk('/r/szo/H1802?ig=2Moz/2/6')            # forras_hiba: a BDB nyomtatott igehelye hibás (F99 M049)
+        self.assertRegex(gy, r'<li id="[^"]+" data-jel="[^"]*" class="bdb-vonatkozhat">')
+        self.assertIn('>vonatkozhat</span>', gy)
+        self.assertIn('a BDB nyomtatott igehelye hibás', gy)
+        self.assertNotIn('a BDB itt idézi', gy)
+        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
+        eros = re.search(r'\n\.bdb-itt \{([^}]*)\}', css).group(1)
+        gyenge = re.search(r'\n\.bdb-vonatkozhat \{([^}]*)\}', css).group(1)
+        self.assertIn('var(--accent-soft)', eros)
+        self.assertIn('var(--gold-soft)', gyenge)
+        self.assertRegex(css, r'\.bdb-vonatkozhat \.bdb-jelzes \{[^}]*font-style: italic')
+
+    def test_proba_es_pontossag_a_kiemeles_mellett(self):
+        for u in ('/r/szo/H1242?ig=1Moz/1/5', '/r/szo/H3615?ig=1Moz/6/16', '/r/szo/H7451?ig=1Moz/19/19'):
+            b = self.blokk(u)
+            doboz = re.search(r'<div class="bdb-ebben">.*?</div>', b, re.S).group(0)
+            self.assertIn('Gépi szeletelés (próba)', doboz, u)
+            self.assertIn(blokkok.BDB_MERT_PONTOSSAG, doboz.replace('&#34;', '"'), u)
+
+    def test_pontos_hivatkozasszam(self):
+        """A szám a tábla feloldott, szűrt hivatkozásaié (szurt=0, maszoréta vers), csomópontonként és a címszónál."""
+        b = self.blokk('/r/szo/H1242')
+        sorok = self.con.execute("SELECT utvonal, szurt, mt_vers FROM bdb_vers_jelentes WHERE strong='H1242'").fetchall()
+        db = lambda ut: sum(1 for u, s, m in sorok if u == ut and str(s) != '1' and m)                     # noqa: E731
+        ossz = sum(1 for u, s, m in sorok if str(s) != '1' and m)
+        self.assertIn('>%d hivatkozás a címszónál</span>' % ossz, b)
+        li2 = b[b.index('<li id="bdb-0-2"'):]
+        self.assertRegex(li2, r'^<li id="bdb-0-2" data-jel="2"><details open><summary><span class="jcim">[^<]*</span><span class="helyek" '
+                              r'title="a BDB ennél a pontnál[^"]*">%d hivatkozás</span>' % db('-/2'))
+        li1e = b[b.index('<li id="bdb-0-1e"'):]
+        self.assertIn('>%d hivatkozás</span>' % db('-/1/e'), li1e[:li1e.index('</li>')])
+
+    def test_kattinthato_helyek(self):
+        b = self.blokk('/r/szo/H6975')
+        linkek = re.findall(r'<a class="igehely" href="(/[^"]+)" title="feloldva: ([^"]+)">', b)
+        self.assertGreaterEqual(len(linkek), 10)
+        for href, hely in linkek:
+            self.assertTrue(href.startswith('/'), href)
+            self.assertNotIn(' 0', hely)
+        self.assertIn('href="/Ez/28/24"', b)
+
+    def test_csoportsorok(self):
+        b = self.blokk('/r/szo/H0430')
+        self.assertIn('<p class="jsz bdb-csop">', b)
+
+    def test_cimszo_es_nyers_blokk_belso_jel_nelkul(self):
+        """HAMART-001 F10 (5): a STEP-átírás és a gyakoriság-számláló („_226”) nem renderel; a kiejtés a projekt jóváhagyott alakja."""
+        app = self.blokk('/r/szo/H7451')
+        self.assertIn('<span>(ra) · I. címszó</span>', app)
+        self.assertNotIn("ra &#39;", app)
+        for b in ('szo.bdb_magyar', 'szo.bdb_angol'):
+            nyers = self.blokk('/r/szo/H7451', b)
+            self.assertNotRegex(nyers, r'_\d')
+            self.assertNotIn('H7451.', nyers)
+            self.assertNotIn("ra &#39;", nyers)
+            self.assertIn('<sub title="a szó előfordulásainak száma a BDB szerint">226</sub>', nyers)
 
 
 if __name__ == '__main__':
