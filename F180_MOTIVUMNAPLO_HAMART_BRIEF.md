@@ -5,10 +5,12 @@ kod: MOTIVUMNAPLO_HAMART
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
 ag: claude/motivumnaplo-hamart
 ad: a `motivumlog/PaRDeS_motivumok.md` kézi HAMART-001-szakaszai az `elofordulasok.tsv` mai soraihoz igazítva; a határkörben kikerült helyek mellett jelzés (nem törlés), a Gal 3:13-14 tárgyszerűen, kiemelés nélkül; a generált blokkok változatlanok, a CI (E28) zöld
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 180 — újraellenőrzés függ: naplok/ELLENOR_F180_2.md"
+kovetkezo: "lezárva (PR #662, 2026-11-09; [elteres_kor 1/2], ELLENOR_F180_2 TISZTA); a merge a felhasználóé"
+pr: https://github.com/basesoft777/Bible-Study/pull/662
+lezarva_osszegzes: a motívumnapló kézi HAMART-001-szakaszai és a kézi könyv-index a 48 soros előfordulás-állapothoz igazítva; 13 kikerült hely jelölve, nem törölve (DT-F123hc/hd), az 5Móz 21:23 nem önálló előfordulásként jelölve; a Gal 3:13-14 tárgyszerű, az indexben →1Móz 12:3 (DT-F123he); generált blokk változatlan, E28 0; egyeztetett eltérés: a #123 fejléce elavult, az orkesztrátor megerősítésével indult (`naplok/F180_zaras.md`)
 munka: ertelmezo
 olvas: [motivumlog/PaRDeS_motivumok.md, adat/elofordulasok.tsv, DONTESEK.md, naplok/ELLENOR_F123_HAMART3_javitokor2.md]
 ir: [motivumlog/PaRDeS_motivumok.md]
