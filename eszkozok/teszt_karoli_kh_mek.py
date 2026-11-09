@@ -257,20 +257,25 @@ class RepoTablak(unittest.TestCase):
         self.assertEqual(hk, jav)
 
     def test_megerositett_ketforrasu_kiesik_hunkar(self):
+        """A #177 szintjei, az F181 (DT-F181a) beemelésével: a megerősített sor vagy két forrású, vagy a szabály által
+        beemelt MEK-sor (`szabaly=F181`); a kiesik sor HunKar-sor; a MEK-sor csak a szabállyal lehet nem jelölt."""
         for m in self.jav:
             if m[2] == 'megerositett':
-                self.assertEqual(m[3], 'HunKar+MEK')
+                self.assertIn(m[3], ('HunKar+MEK', 'MEK'))
                 self.assertNotIn('hibas_hivatkozas', m[4])
+                if m[3] == 'MEK':
+                    self.assertIn('szabaly=F181', m[4])
             if m[2] == 'kiesik':
                 self.assertEqual(m[3], 'HunKar')
-            if m[3] == 'MEK':
-                self.assertEqual(m[2], 'jelolt')
+            if m[3] == 'MEK' and m[2] != 'jelolt':
+                self.assertEqual(m[2], 'megerositett')
+                self.assertIn('szabaly=F181', m[4])
 
     def test_kiesik_sor_tsk_jelolest_kap(self):
         """ELLENOR_F177 1.: minden kiesik sor indokában ott a tsk=igen / tsk=nem, mint az eltero_lista és csak_mek soron."""
         for m in self.jav:
             if m[2] == 'kiesik':
-                self.assertRegex(m[4], r'^mek_ures_vers;tsk=(igen|nem)(;|$)', m)
+                self.assertRegex(m[4], r'^(mek_ures_vers|eltero_lista);tsk=(igen|nem)(;|$)', m)
 
     def test_kiesik_tsk_jeloles_a_szabalyt_koveti(self):
         r = Osszevetes().ov([('Gen.1.1', 'Psa.33.6')], {})
@@ -282,7 +287,7 @@ class RepoTablak(unittest.TestCase):
     def test_kiesik_verse_a_mekben_ures(self):
         mek_versek = {m[0] for m in self.mek}
         for m in self.jav:
-            if m[2] == 'kiesik':
+            if m[2] == 'kiesik' and 'szabaly=F181' not in m[4]:
                 self.assertNotIn(m[0], mek_versek)
 
     def test_mek_sor_megvan_a_javitottban(self):
@@ -310,6 +315,31 @@ class RepoTablak(unittest.TestCase):
         kiesik = next(m for m in self.jav if m[2] == 'kiesik')
         self.assertFalse(SZ.elfogad(kiesik[0], kiesik[1]))
         self.assertEqual(SZ.szint(kiesik[0], kiesik[1]), 'kiesik')
+
+    def test_f181_szabaly_a_tablan(self):
+        """DT-F181a: a beemelt MEK-sor célja és forrásverse létezik, a forrásvers nem gyanús ismétlődő; a MEK-oldali
+        jelölt maradék indoka nem létező célvers vagy gyanús ismétlődés; a beemelés idempotens; a sorszám állandó."""
+        gy_hk = K.gyanus_versek()
+        gy_mek = K.mek_ismetlodo(K.mek_sorok_betolt())
+        letezo = K.karoli_versek()
+        self.assertEqual(len(self.jav), 35204)
+        be = [m for m in self.jav if m[2] == 'megerositett' and m[3] == 'MEK']
+        self.assertTrue(be)
+        for m in be:
+            self.assertTrue(K.cel_letezik(m[1], letezo) and m[0] in letezo, m)
+            self.assertNotIn(m[0], gy_hk)
+            self.assertNotIn(m[0], gy_mek)
+        for m in self.jav:
+            if m[2] == 'jelolt' and m[3] == 'MEK':
+                nincs = not K.cel_letezik(m[1], letezo) or m[0] not in letezo
+                self.assertTrue(nincs or m[0] in gy_hk or m[0] in gy_mek, m)
+        van_be = {m[0] for m in be}
+        for m in self.jav:
+            if m[2] == 'jelolt' and m[3] == 'HunKar':
+                self.assertNotIn(m[0], van_be, m)  # a MEK-lista beemelődött -> a HunKar-sor kiesik
+        sorok6 = [m[:6] for m in self.jav]
+        bontas, _, _ = K._bontas_sorokra(sorok6)
+        self.assertEqual(K.beemel(sorok6, bontas, '2026-11-09'), [list(m) for m in sorok6])
 
     def test_alias_tabla(self):
         al = K.mek_aliasok()

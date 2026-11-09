@@ -93,3 +93,37 @@ a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`). Mindhárom
 **TSK-jelölés a `kiesik` soron is** (ELLENOR_F177 1.): minden `kiesik` sor indoka `mek_ures_vers;tsk=igen|nem` (+ esetleg `hibas_hivatkozas`), ugyanazzal a szabállyal, mint a `jelolt` soroké. A 11 027 `kiesik` sorból `tsk=igen` 321, `tsk=nem` 10 706; a nem gyanús versekre eső 3 373 sorból `tsk=igen` 318, `tsk=nem` 3 055. A szint nem változik, a jelölés csak támasz.
 **Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
 (N-F177b) nem része a menetnek.
+
+## 7. A jelölt szint feldolgozása — a beemelési szabály (F181, DT-F181a)
+
+**A szabály egy helyen (ez a szakasz); a megvalósítás: `eszkozok/karoli_kh_mek.py` (`jelolt_bontas`, `beemel`); tesztek: `eszkozok/teszt_karoli_kh_mek.py` (`JeloltSzabaly`, `RepoTablak`).**
+A döntés alapja a felhasználó szava (2026-11-09, szó szerint): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a MEK-et, ha ott nem volt gyanús ismétlődő.”
+
+**1. A MEK-oldali `jelolt` sor (`forras=MEK`, azaz a MEK-ben áll, a HunKar-ban azon a versen nem) `megerositett` lesz**, kivéve, ha
+* a hivatkozott vers vagy a forrásvers **nem létezik** (a versellenőrzés alapja a 4. szakasz: `Karoli_1908` ∪ MEK-versszerkezet) → `jelolt` marad (`hibas_hivatkozas`);
+* a forrásvers **gyanús ismétlődő** → `jelolt` marad. Gyanús ismétlődő: a `Karoli_kereszthivatkozasok_gyanus.tsv` forrásverse (a #177 gyanús-jelölése, HunKar-oldali), **vagy** a forrásvers MEK-listája (legalább 2 különböző cél) szó szerint azonos egy másik forrásvers MEK-listájával (MEK-oldali ismétlődés).
+A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;szabaly=F181`.
+
+**2. A HunKar-oldali `jelolt` sor** (`eltero_lista`: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen): `kiesik`, ha a forrásvers MEK-listájából legalább egy sor beemelődik (a MEK-lista a versen irányadó, és a sor abban nincs); különben `jelolt` marad. A `kiesik` itt nem állítja, hogy a HunKar-sor hibás: a MEK-lista elfogadásának következménye (a jelentés 3.–4. szakasza).
+
+**3. Az `egyezik`, de nem létező hivatkozású sor (`HunKar+MEK`) `jelolt` marad.**
+
+**4. A TSK nem tanú és nem feltétel.** A `tsk=igen|nem` jelölés az indokban tájékoztatás marad (ELLENOR_F177 1.), a szabály nem használja.
+
+**5. A döntés nélküli maradék `jelolt` marad** (hiányt nem töltünk ki, CLAUDE.md 3. szabály; a lapra/indexbe nem jut): a nem létező célvers (139 sor, tételesen a `naplok/F181_jelentes.md` A. függelékében), a gyanús ismétlődő (86 sor), és a jelöltben maradt HunKar-oldali sorok (14). Összesen **239** sor. A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz.
+
+**Előállítás.** `python eszkozok/karoli_kh_mek.py osszevet` a #177 összevetése **és** a beemelési szabály együtt (a tábla fejléce: `osszevet + beemel`); `osszevet --nyers` a #177 háromszintű nyers állapotát adja; `beemel` a kész táblán alkalmazza a szabályt (idempotens); `jelolt-bontas` a `jelolt` szintet méri; `szuroproba` a rétegzett mintát veszi. A sorok száma a szabály alkalmazásakor nem változik.
+
+**Mért eredmény (2026-11-09).**
+
+| szint | #177 | F181 után | Δ |
+|---|---|---|---|
+| `megerositett` | 21 314 | 23 908 | +2 594 |
+| `kiesik` | 11 027 | 11 057 | +30 |
+| `jelolt` | 2 863 | 239 | −2 624 |
+| összesen | 35 204 | 35 204 | 0 |
+
+**Figyelmeztetések (részletek: a jelentés 4. és 7. szakasza).**
+* A `karoli_kh_szuro.elfogad(forras, cel)` és a fogyasztói a **HunKar-tábla** sorait szűrik; a csak a MEK-ben álló, most `megerositett` sorok ott nincsenek, ezért a lapra/indexbe csak a fogyasztók bővítésével jutnak (N-F181b, N-F177a). A lapokat ez a menet nem generálta újra.
+* A beemelt sorok között 15 elírás-gyanús van (a MEK-cél egyetlen összetevőben tér el a HunKar-céltól); ezek közül a végrehajtói olvasat szerint 4 a MEK hibás (mind létező célvers). A szabály ezeket a felhasználó előírása szerint beemelte; a jelentés 7. szakasza tételesen mutatja.
+* A gyanús ismétlődés kizárása 80 sorban HunKar-oldali jelölésen áll (a HunKar-lista másolt, a MEK-lista nem); a szúrópróba szerint ezek nem hibásak. Ha a kizárás csak a MEK-oldali ismétlődésre vonatkozna, a 80 sor beemelődne (felhasználói döntés).
