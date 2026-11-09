@@ -546,3 +546,10 @@ nyershez: M052 (kitöltő-hiba) +1, M036 (`forras_hiba`) +1, M143 (kulcs-hiba) +
 M018 kizárva (ott egyezett) 182 / 199; + M052, + M143 → **184 / 199 (92,5%)**; maradék 15 szeletelő-hiba (M003, M009, M011, M016, M027, M034, M036,
 M042, M050, M058, M205, M208, M223, M233, M249); 184 + 15 = 199.
 *(proveniencia: scope=seed-102 véletlen 200 | forras=m2_minta_osszevet.py [--szakasztabla] + naplok/BDB_SZELETELO_M2_seed102_iteletek.md (manual ítélet) | ts=2026-11-09)*
+
+## 22. Javítókör 2/2 — ELLENOR_F102_2 3.: a brief 4.1 nem teljesült helyei, mind nyitott tételben (F102.19)
+
+A brief 4.1 elfogadási feltétele (a seed-101 13 szeletelő-hibája a táblában a jóváhagyott ítélet szerint, teszttel) **10 helyen nem teljesült**:
+M028, M043, M140, M146, M236, M243, M203, M238 → **N-F102e** (a 2.30 megoldja; a szakasztáblára való átállással zárul); M031, M162 → **N-F102h** (a
+szeletelő törzsfejléc-osztálya). Az M102 és az M117 `forras_hiba` (1c.); az **M130 javult** (F102.2). Orkesztrátori döntés (local_c8cc3610, 2026-11-09):
+mind a tíz nyitott tételben áll; a zárójelentésnek ki kell mondania: „nem teljesült, áthelyezve”.
