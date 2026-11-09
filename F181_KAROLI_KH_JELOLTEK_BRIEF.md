@@ -5,7 +5,8 @@ kod: KAROLI_KH_JELOLTEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+ag: claude/f181-karoli-kh-jeloltek
+allapot: fut
 ad: a 2 863 jelölt sor mért bontása; jóváhagyott, tesztelt gépi beemelési szabály; rétegzett szúrópróba hibaaránnyal; frissített Karoli_KH_javitott.tsv; N-F177b lezárása
 kovetkezo: a lapok a motívumonkénti teljes folyamatban kapják meg (N-F177a)
 munka: folyamat
