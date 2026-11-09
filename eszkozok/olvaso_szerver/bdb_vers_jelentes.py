@@ -362,8 +362,9 @@ def minta(seed, n, kieg, vak_ut, kulcs_ut):
            '# A RÓMAI SZAKASZ a jelentéspont része (a felhasználó döntése, 2026-10-15): (1) ha a forrás a címszó előtt római számot ír („H3499. yether '
            'I. יֶ֫תֶר noun …”, „II. [יָאַל] verb …”), azt a FŐ címszónál is írd („I fej”, „II Hiph`il”); (2) a szócikk római számos fő tagolását '
            '(„I. of man: 1 … II. of God: 1 …”, „I. preposition … II. conjunction …”) a KÜLÖN `resz` oszlopba írd (csak a római számot, pl. „II”), '
-           'NEM a jelentéspontba (DT-F99i: két római szint, két mező; pl. „ad III. עַד … I. preposition … 3 …” → jelentespont „III -/3”, resz „I”); '
-           'igénél a tagolás a törzsön belüli, a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz (resz üres); (3) római számot csak a forrásban kiírtat írj, következtetettet ne; (4) a '
+           'NEM a jelentéspontba (DT174: két római szint, két mező; pl. „ad III. עַד … I. preposition … 3 …” → jelentespont „III -/3”, resz „I”); '
+           'igénél a tagolás a törzsön belüli, a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz (resz üres); (3) római számot csak a forrásban kiírtat írj, következtetettet ne; '
+           '(3a) a szócikk belsejében HÉBER CÍMSZÓVAL álló római fej („II. פְּנֵי with prepositions”) címszó-szakasz, nem rész: a jelentéspont elejére írd (DT229 (a) (2)); (4) a '
            'jelöletlen második címszó (római szám nélkül) szakaszát római szám nélkül, a saját törzs/jelentés útvonalával írd. Az összevetés csak a „`” és az '
            '„\'” különbségét, és a „fej” = „tagolatlan” = „<törzs>” (= „<törzs>/-”) egyenértékűséget normálja; a zárójeles szint („(2)”, „(c)”) külön mutató.',
            '# A poz a hivatkozás kezdete a szöveg „lapított” alakjában (sortörés helyett szóköz; „1.a” → „1. a.”), csak a megtaláláshoz.',

@@ -107,3 +107,109 @@ hordozza a szót (DT176 → bibliai), a két vak kitöltő mind a 7-et kommentá
 Csoportzárás (F102.2): tábla `--ts 2026-11-09` (kilépési kód 0, mtime-őr, `--ellenoriz` bájtra azonos); aranyminta összesítő változatlan;
 `teszt_bdb_vers_jelentes` 38/38. A `test_kozvetlen_szerzo_sigla_tapadt` három elvárása az M223-szabály szerint módosult (a „(MI^10) Jer 48:1”,
 „(Kö^ii.l,74) Jer 6:13”, „(both R^D), Jer 6:24” most bibliai).
+
+## 7. (e) A korpusz-eltérés osztályozása (F102.3)
+
+Javítás után: `szerkezet_osszevet.py --korpusz` 161 275 nem szűrt hivatkozás, egyezik 138 046 (**85,6%**, előtte 85,5%); `jelentes_elter` 6 486,
+`csak_resz` 4 556, `torzs_elter` 3 978, `alpont_elter` 2 602, `szeletelo_fej_tabla_tagolt` 2 441, `nem_talalt` 1 778, `tabla_fej_szeletelo_tagolt`
+1 388. *(proveniencia: scope=adat/bdb_szakaszok.tsv × adat/bdb_vers_jelentes.tsv (F102.2) | forras=eszkozok/bdb_jelolt/szerkezet_osszevet.py --korpusz --lista 100000 | ts=2026-11-09)*
+
+**Minták szerint** (a számok N-re normálva; a leggyakoribb párok osztályonként):
+- `csak_resz`: a két réteg római-szint szemantikája tér el — a 2.29 `resz`-e (DT174, a szócikk fő tagolása) a 2.30-ban sokszor `szakasz` (homonima)
+  vagy üres, és fordítva („szeletelő II -/N ↔ tábla - -/N/-” 553, „I -/N ↔ -” 303, „- ↔ tábla II” 257). Rendszerszintű, nem soronkénti hiba: a 2.30
+  homonima-száma a címsorban áll, nem oszlopban.
+- `torzs_elter`: törzshatár-eltérés („Hiph'il/N ↔ Qal/N” 164; „-/N ↔ Qal/N” 154: a szeletelő a törzsnév nélküli első törzset nem nevezi meg —
+  M162-típus; „Qal/- ↔ Niph'al” 117).
+- `jelentes_elter`: számozás-elcsúszás azonos alakkal („-/N ↔ -/N/-” 796; betűvel osztályonként 300 körül) — hamis vagy kimaradt számfej mindkét
+  oldalon (gyakoriságszám, zárójeles jelölő a szeletelőben; kereszthivatkozás a táblában).
+- `alpont_elter`: „-/N/a ↔ -/N/-” 237, „Pi'el/- ↔ Pi'el/N” 113: kimaradt vagy hamis betű-/számfej.
+- `szeletelo_fej_tabla_tagolt` / `tabla_fej_szeletelo_tagolt`: a fej-határ (a szeletelőben tagolatlan, a táblában számozott: 504; a táblában fej, a
+  szeletelőben `-/N`: 580).
+- `nem_talalt` (1 778): a hivatkozás a 2.30 szövegében nem található (a két szövegréteg eltérése: a TSV F34/F46 hivatkozás-javításai, pe/mem).
+
+**Melyik a helyes — vak kitöltéssel ítélt minta** (az egyetlen ítélt mérés a soronkénti igazságról; eseti szkript `elteres_itelt.py`, a kitöltés a mérce):
+
+| minta | mindkettő jó | csak a szeletelő jó | csak a tábla jó | mindkettő rossz, eltérő | mindkettő rossz, azonos |
+|---|---:|---:|---:|---:|---:|
+| seed-101 | 179 | 6 | 6 | 3 (M031, M117, M162) | 6 |
+| seed-100 | 184 | 8 | 0 | 1 (M101) | 7 |
+
+*(proveniencia: scope=seed-100, seed-101 véletlen 200 | forras=eseti szkript elteres_itelt.py (m2_minta_osszevet.bont/fo) + kitoltott_A/B | ts=2026-11-09)*
+Következtetés: a 14,4% eltérés két nagyjából egyforma hibaforrás összege; az ítélt mintán az eltérő sorok fele-fele arányban oszlanak (a
+seed-100-on a szeletelő javára, amelyre a szeletelő hangolódott). A soronkénti osztályozás a teljes korpuszon ítélet nélkül nem automatizálható;
+a döntés a seed-102-n (DT-F102d (C)).
+
+## 8. Döntési pontok (⛔ 3.1, 3.3; F102.3)
+
+- **3.1 (DT-F102d)**: hogy a hibák egy része a szövegrétegben keletkezik, azt az 1a./1c. és a #107 már igazolta (a 2.30 a jelölt szövegréteg, DT225); a
+  #102 kérdése most az, hogy a 2.29 jelentéspontja melyik rétegből jöjjön. Javaslat: (C), mérés a seed-102-n.
+- **3.3 (DT-F102a)**: a 2.30-ban a formátum már bővült (DT190 🟡); a 2.29 formátuma és az összevetés szabálya nyitott — javaslat (a). Az **M029**
+  okafogyott (a 2.29 ma is homonima-szakaszként adja, a 2.30 is, DT229 (a) (2)); külön DT-F102b nem nyílt; a seed-102 vak lap fejléce a (3a) pontban
+  kimondja.
+- **DT382 (B) (DT-F102f)**: javaslat (A), a DT382 🟢 megerősítése.
+- **DT-F102e**: a hét `sigla_igazolt`, javaslat (B).
+
+## 9. ⛔ 3.5 — az újramérés előkészítése (F102.3)
+
+- Vak munkalap és kulcs, **seed 102**: `naplok/BDB_SZELETELO_M2_minta_seed102_vak.tsv` (250 sor), `naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv`
+  (réteg: véletlen 200, szűrt 25, bizonytalan 25); `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 102`, a tábla F102.2 állapotán. A vak
+  lap fejléce a (3a) ponttal bővült (M029-típus, DT229 (a) (2)).
+- A kapu következménye: DT-F102c (javaslat (a): nyers szám, a kitöltés ELŐTT rögzítve).
+- **Kitöltés**: két független, friss kontextusú **modell**-kitöltő (mint a seed-99/100/101-nél): `_A` M001–M125, `_B` M126–M250, egyenként
+  **125 elem**; a vak lapot és a BDB TSV-t látják, a kulcsot nem. Kimenet: `naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv`, `_B.tsv` (a seed-101
+  oszlopaival: `azon strong konyv_mt karoli_vers jelentespont resz szures megjegyzes`). A vak kitöltést az orkesztrátor indítja, nem a #102 menete.
+- Összevetés a kitöltés után: `m2_minta_osszevet.py --kulcs …seed102_kulcs.tsv --kitoltott …_A.tsv …_B.tsv` (szeletelő), és ugyanez `--szakasztabla`-val
+  (a 2.30 útvonala) — a DT-F102d (C) szerint; ha a DT-F102a (a), az összevetés szabályát a kitöltés előtt kell beírni.
+
+## 10. A seed-101 hibaosztályai előtte / utána (kötelező mérés)
+
+Mindkét oszlop ugyanazzal a szkripttel: `python eszkozok/olvaso_szerver/m2_minta_osszevet.py --kulcs naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv
+--kitoltott …_A.tsv …_B.tsv --mai-tabla`; előtte a main táblája (`b92d4dc5`), utána az ág táblája (F102.2; az F102.3 csak a fejléc kód-hash-ét írja).
+*(proveniencia: scope=seed-101 (250 sor) | forras=eszkozok/olvaso_szerver/m2_minta_osszevet.py --mai-tabla | ts=2026-11-09)*
+
+| mutató | előtte | utána |
+|---|---:|---:|
+| jelentéspont, véletlen 200 | 184 (92,0%) | **185** (92,5%) |
+| előtagként helyes | 185 | 186 |
+| könyv/vers, véletlen 200 | 197 | 197 |
+| szűrés egyezése: véletlen / szűrt / bizonytalan | 197 / 22 / 13 | 197 / **24** / 13 |
+
+| hely | osztály | előtte | utána |
+|---|---|---|---|
+| M028, M043 | gyakoriságszámos jelölő | hibás | hibás (a 2.30 megoldja; DT-F102d) |
+| M146, M243 | zárójeles jelölő | hibás | hibás (a 2.30 megoldja) |
+| M140 | OCR / fejléc-glossza | hibás | hibás (a 2.30 megoldja) |
+| M236 | laza „2. a.” | hibás | hibás (a 2.30 megoldja) |
+| M102, M117, M162 | `forras_hiba` (2.31 kézi sor) | hibás | hibás (forráshiba; egyik réteg sem oldja) |
+| M031 | törzsfejléc „Hiph`il A./B.” | hibás | hibás (a 2.30 `Hiph'il.B/2`; formátum: DT-F102a) |
+| M203 | fő tagolás (H3068, angol „II.”) | hibás | hibás (a 2.30 `resz` II; a 2.29 `resz`-e nem) |
+| M238 | jelöletlen alcímszó | hibás | hibás (a 2.30 helyes, de a kurzoros illesztés nem találja) |
+| **M130** | magányos „II.” | hibás | **helyes** (`II -/2/a`) |
+| **M092** | öröklés egyfejezetes könyv után | `orokles_hibas` (könyv nélkül) | **2Krón 31:1** (a jóváhagyott ítélet szerint; TAHOT-igazolt) |
+| **M001** (H2623 116:15) | nem bibliai jelölőről öröklés | szűrt (`nem_bibliai`) | **bibliai, Zsolt 116:15** (+ 149:1, 5, 9) |
+| **M159** (H4912 1:1) | ugyanaz | szűrt | **bibliai, Péld 1:1** (+ 1:1, 1:6) |
+| M223 (H8034 Hos 2:19) | lezárt megjegyzés utáni sigla | bibliai (`sigla_igazolt`, a main-en már) | bibliai, okkód nélkül |
+| M054, M065, M147, M149, M191, M198, M230 | a hét `sigla_igazolt` | bibliai (a kitöltés: kommentár-hely) | változatlan — DT-F102e |
+| M008, M011, M029 | kulcs-ellentmondás (formátum, homonima) | eltérés | eltérés — DT-F102a |
+
+A 13 jóváhagyott szeletelő-hibából 1 javult a szeletelőben (M130); 6-ot a 2.30 útvonala javítana (DT-F102d); 3 forráshiba; 3 marad (M031, M203,
+M238 — mindhárom a 2.30-ban helyes vagy formátumkérdés). Öröklés: 1/1; szűrés: a 2 igazolt hamis pozitív (4 + 3 sor) 2/2; M223 1/1. A szűrés
+„bizonytalan” rétegének egyezése 13 maradt: az M051 (17:9, `orokles_egyfejezetes` → 1Kir 17:9) most egyezik, az M092 most nem, mert a kitöltő
+„bizonytalan”-t írt — a jóváhagyott ítélet szerint viszont a 2Krón 31:1 a helyes.
+Az aranyminta mindhárom csoport után változatlan (a `bdb_szelet_m0.py --arany` összesítője bájtra azonos: EN hibás szócikk 7/32, szerkezeti eltérés
+52; HU 23/32, 220).
+
+## 11. A HAMART-001 két esete — rétegmérés (csak mérés; javítás nincs, a lap nem generálódott újra)
+
+- **H2403 (chattát)** → **(i) a 2.30** (`bdb_szakaszok.tsv` BDB2699 `sorszam` 13: a „see 1 above” hamis `1` fej; a 14–16. sor `-/1/a–c` a
+  `-/4/a–c` helyett) + **(iii) a generátor** (`lexikon_general.py` `bdb_gerinc_szocikkek()`: a nem szomszédos azonos `(bdb_id, utvonal)` kulcsok
+  összevonása; a 13. sor `horgonnyal` kategóriája → `HORGONNYAL_JELOLES`). A 2.29 helyes (Lev 23:19 `-/4`, Lev 4:24 `-/4/a` …). → **N-F102a**.
+- **H7451 (ra)** → **(iii) a magyar illesztés** (`bdb_szakasz_hu.tsv`: a BDB8033 és a BDB8034 `fej` sora `jelolo_nelkul`, szöveg nélkül; a „II. רַע …”
+  fej a BDB8032 10.d magyar szövegének végén áll; a H7451 fordítása nem szakaszonkénti). A 2.30 szócikkhatára helyes, a 2.29 nem érintett. → **N-F102b**.
+*(proveniencia: scope=H2403, H7451 | forras=adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, lexikon/HAMART-001_TUDOMANYOS.md (1687., 1801. sor), eszkozok/lexikon_general.py | ts=2026-11-09)*
+
+## 12. DT190-érintettség
+
+A #102 a DT190-et (a 2.30 útvonal-formátuma mint kanonikus kulcs) **nem dönti el**, hanem **feltételezi** a mai állapotát: a 2.29 formátuma nem
+változott, a `--szakasztabla` mérés a 2.30 útvonalát a 2.29 alakjára hozza (a csoport- és a zárójeles szint nélkül). Ha a DT-F102a (b) vagy a
+DT-F102d (B) választódik, az a DT190-et érinti (a 2.29 a 2.30 kulcsát venné át).
