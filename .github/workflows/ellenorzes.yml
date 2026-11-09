@@ -70,7 +70,7 @@ jobs:
           echo "Valtozott fajlok:"
           cat valtozott_fajlok.txt
 
-      - name: E2-E30 (eszkozok/ellenorzes/futtat.py; E27 = hivatkozas-ellenorzes, F40; E28 = generalt nezet egyezese, E29 = kiadhato kimenet tisztasaga, F116; E30 = ekezet nelkuli szo a commit-uzenetben, F112)
+      - name: E2-E37 (eszkozok/ellenorzes/futtat.py; E27 = hivatkozas-ellenorzes, F40; E36 = szabaly- es szakaszhivatkozas celja, E37 = SEMA 3.11 kapulista, F184; E28 = generalt nezet egyezese, E29 = kiadhato kimenet tisztasaga, F116; E30 = ekezet nelkuli szo a commit-uzenetben, F112)
         id: e2e16
         env:
           DIFF_ALAP: ${{ steps.diff.outputs.base }}

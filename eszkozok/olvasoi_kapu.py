@@ -7,39 +7,10 @@ A lap-átvilágítás (2026-11-02) olvasói hibái átmentek a szerkezeti kapuko
 Ez az eszköz az átvilágítás „Mi gépesíthető” táblázatának pontjait méri azon, amit az olvasó lát: a lapon.
 Csak olvas; lapot, prózát, adatot nem javít. A Feed 9. kapuja (`muhely_allapot.py`) erre épül (DT-F156k).
 
-Ellenőrzések (azonosító — súlyosság):
-    BELSO        belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor,
-                 gerinc, .tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög
-                 szó és a kiejtése — a jelölt alak (hivatkozás + felső index, DT-F181b) és a táblázat
-                 „Strong” oszlopa nem hiba; a „(kézi)” / „(generált)” szerzőségi jelölés a lap bármely
-                 látható sorában, a Tartalomjegyzékben is, DT-F181c)                      — BUKÁS
-    MOTIVUM_ID   más motívum azonosítója link nélkül                                       — FIGYELMEZTETÉS
-    PONT         „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS
-    ANGOL        angol maradék és munkazsargon a szólistából                               — BUKÁS
-    ANGOL_SOR    ≥3 angol funkciószó egy sorban                                            — FIGYELMEZTETÉS
-    IDEZOJEL     egyenes " a magyar szövegben                                              — BUKÁS
-    ATIRAS       ugyanaz a héber/görög szó két kiejtéssel                                  — BUKÁS
-    ATIRAS_VALT  a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen        — FIGYELMEZTETÉS
-    KONYV        könyvrövidítés nem a `Konyv_normalizalo_tabla.tsv` alakjával              — BUKÁS
-    BDB_JEL      torzult jel a szövegben (^, ®, °, a BDB átírási betűkészletének ¹ µ £ ¥ ‰ ƒ ‡ ¢ jele, rafe,
-                 latin betű héber szóhoz tapadva, ,,)                                         — BUKÁS
-    ZAROJEL      nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS)
-    FUNKCIO_URES az 1. tábla „Funkció” oszlopában üres cella                               — BUKÁS
-    IDEZET       az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés — BUKÁS
-    KIVONAT_SZAM a Kivonat darabszáma eltér a tábla összesítőjétől                         — FIGYELMEZTETÉS
-    KOLOFON      hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező    — BUKÁS
-    HIANYJEL     belső hiányjelzés az olvasói cellában („(nincs …)”)                        — FIGYELMEZTETÉS
-    SZINT_ALATT  üres vagy az arany laphoz mérve szint alatti blokk                        — FIGYELMEZTETÉS
-    KH_MASOLT    a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a) — FIGYELMEZTETÉS
-    LABJEGYZET   definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) — BUKÁS
-    PROZA_1A     az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)   — BUKÁS
-    CELLA_ISMETLES egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) — BUKÁS
-    VISSZHANG    a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): V1 angol maradék, V2 nem rokon
-                 nyelvi sor a BDB-háttérben, V3 „nincs” a „nem azonosítható” helyén, V4 „ugyanaz a szó” két
-                 lemmánál, V5 kiemelt következtetés alapvonal nélkül, V6 ugyanaz a tagmondat ≥3-szor a táblán,
-                 V7 az alapvonal-mondat nem a sávja (80% / 40%) szerinti                          — BUKÁS
-    NAVE_ANGOL   a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers
-                 HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)                       — BUKÁS
+Ellenőrzések: a modulszintű `KAPUK` tábla (azonosító, súlyosság, leírás) és a VISSZHANG alszabályai
+(`VISSZHANG_ALSZABALYOK`, V1–V7). A tábla az egyetlen leírás: belőle generálódik az `adat/SEMA.md` 3.11
+„Gépi kapuk — szabálylista” blokkja (`python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`), a CI E37
+pedig ellenőrzi, hogy a tábla azonosítói egyeznek a kódban kibocsátott találatokéval (F184 D3).
 
 Az olvasói szöveg: minden látható sor, kivéve a HTML-megjegyzést, a kódblokkot, a technikai dőlt sort (egész
 sor `*…*`), a proveniencia-lábjegyzetet (`[^x]: proveniencia:` / `forrás:` / `scope=`), valamint a Tartalomjegyzék,
@@ -68,6 +39,54 @@ GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
 
 BUKAS, FIGY = 'BUKÁS', 'FIGYELMEZTETÉS'
+
+# Az olvasói kapu ellenőrzései (F184 D3): ez az egyetlen leírásuk. Ebből generálódik az `adat/SEMA.md` 3.11 blokkja
+# (`python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`); a CI E37 ellenőrzi, hogy az azonosítók egyeznek a
+# kódban kibocsátott `talalat('<AZON>', …)` hívásokéval, és a V-alszabályok a VISSZHANG üzeneteivel.
+KAPUK = (
+    ('BELSO', BUKAS, 'belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor, gerinc, '
+                     '.tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög szó és a kiejtése — '
+                     'a jelölt alak (hivatkozás + felső index, DT-F181b) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / '
+                     '„(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT-F181c)'),
+    ('MOTIVUM_ID', FIGY, 'más motívum azonosítója link nélkül'),
+    ('PONT', BUKAS, '„N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS'),
+    ('ANGOL', BUKAS, 'angol maradék és munkazsargon a szólistából'),
+    ('ANGOL_SOR', FIGY, '≥3 angol funkciószó egy sorban'),
+    ('IDEZOJEL', BUKAS, 'egyenes " a magyar szövegben'),
+    ('ATIRAS', BUKAS, 'ugyanaz a héber/görög szó két kiejtéssel'),
+    ('ATIRAS_VALT', FIGY, 'a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen'),
+    ('KONYV', BUKAS, 'könyvrövidítés nem a `Konyv_normalizalo_tabla.tsv` alakjával'),
+    ('BDB_JEL', BUKAS, 'torzult jel a szövegben (^, ®, °, a BDB átírási betűkészletének ¹ µ £ ¥ ‰ ƒ ‡ ¢ jele, rafe, '
+                       'latin betű héber szóhoz tapadva, ,,)'),
+    ('ZAROJEL', BUKAS, 'nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS)'),
+    ('FUNKCIO_URES', BUKAS, 'az 1. tábla „Funkció” oszlopában üres cella'),
+    ('IDEZET', BUKAS, 'az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés'),
+    ('KIVONAT_SZAM', FIGY, 'a Kivonat darabszáma eltér a tábla összesítőjétől'),
+    ('KOLOFON', BUKAS, 'hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező'),
+    ('HIANYJEL', FIGY, 'belső hiányjelzés az olvasói cellában („(nincs …)”)'),
+    ('SZINT_ALATT', FIGY, 'üres vagy az arany laphoz mérve szint alatti blokk'),
+    ('KH_MASOLT', FIGY, 'a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a)'),
+    ('LABJEGYZET', BUKAS, 'definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van)'),
+    ('PROZA_1A', BUKAS, 'az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)'),
+    ('CELLA_ISMETLES', BUKAS, 'egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3)'),
+    ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT-F178d, DT-F178e): a `VISSZHANG_ALSZABALYOK` V1–V7'),
+    ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
+                          'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
+)
+
+# A VISSZHANG alszabályai (DT639, DT645, DT646, DT-F184a); a szabályok szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`,
+# „A 4.11 visszhang-blokk szabályai”.
+VISSZHANG_ALSZABALYOK = (
+    ('V1', 'angol maradék a blokkban (BDB-fordulat, angol glossza, „fordításra vár”)'),
+    ('V2', 'nem rokon nyelvi sor a BDB-háttérben (újhéber, targumi arámi, Sirák)'),
+    ('V3', '„nincs rokon nyelvi adat”, holott a BDB-szócikk nem azonosítható (bdb_szócikk=0): a kettő nem vonható össze'),
+    ('V4', '„ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”)'),
+    ('V5', 'kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a láncon kívüli alapvonallal (a LXX sávja szerint), '
+           'két héber lánc-szó egyesítése is csak így; a Targumnál és a Vulgatánál nem (DT645, DT-F184a)'),
+    ('V6', 'ugyanaz a tagmondat (a számok és a fordítók neve nélkül) legalább háromszor a táblán'),
+    ('V7', 'az alapvonal-mondat nem a sávja (≥ 80% / 40–80% / < 40%) szerinti, a zárójeles versszám nevezőként áll, '
+           'vagy a három szám nem egyezik'),
+)
 ARANY = 'ISTENTISZT-001'
 
 KIZART_SZAKASZ_REGI = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
@@ -966,15 +985,8 @@ def ell_nave_angol(sorok):
 
 
 # VISSZHANG (F178.5, DT639, DT-F178d; a felhasználó: „Legyen biztosítva, hogy ezt át tudjuk vinni, ne legyen
-# visszaesés”, 2026-11-08): a 4.11 visszhang-blokk szabályai minden lapon, ahol a blokk áll — BUKÁS. Hat szabály:
-#   V1 angol maradék a blokkban (BDB-fordulat, angol glossza, „fordításra vár”);
-#   V2 nem rokon nyelvi sor a BDB-háttérben (újhéber, targumi arámi, Sirák);
-#   V3 „nincs rokon nyelvi adat”, holott a rokon írások lekérdezése a szócikket nem azonosította (bdb_szócikk=0):
-#      a kettő nem vonható össze („nem azonosítható” ≠ „nincs”);
-#   V4 „ugyanaz a szó”, holott a cellában két lemma áll (helyesen: „ugyanaz a szócsalád”);
-#   V5 kiemelt (félkövér) következtetés alapvonal nélkül: kiemelt csak a két héber szó egyesítése és a láncban
-#      választott (szokatlan) szó;
-#   V6 sablonmondat-ismétlés: ugyanaz a következtetés-mondat legalább három sorban.
+# visszaesés”, 2026-11-08): a 4.11 visszhang-blokk szabályai minden lapon, ahol a blokk áll — BUKÁS. Az alszabályok
+# (V1–V7) leírása a `VISSZHANG_ALSZABALYOK` táblában (fent) áll, egy helyen (F184 D3, DT-F184a).
 VH_ANGOL_RX = re.compile(r"\b(?:see|so|cf|Assyrian|Arabic|Syriac|Ethiopic|Aramaic|Late Hebrew|Hiph'?il|Ecclus|"
                          r"cursed|curse|grief|corruption)\b|fordításra vár")
 VH_NEM_ROKON_RX = re.compile(r'^\s*(?:újhéber|targumi|Sirák|késői héber)', re.I)
