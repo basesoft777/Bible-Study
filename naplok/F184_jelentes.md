@@ -243,7 +243,29 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
 - **SEMA 2.55 „Szint”:** a kód szerint pontosítva (találatonkénti szint, alapszint, fájlszintűség PR-módban, `--teljes`).
 - **Teszt:** `E37Teszt.test_szint_emeles_a_blokkban`.
 
-**Megfigyelés (nem javítottam, hatókörön kívül):** az E13 is találatonként emel: tanulmányfájlon `E13_TANULMANY_SZINT = 'HIBA'`, máshol `FIGYELMEZTETES`. A 3.11 E13-sora ugyanígy csak az alapszintet mutatja. A `SZINT_EMELES` egy sorával javítható; ez az orkesztrátor döntése.
+**Megfigyelés (nem javítottam, hatókörön kívül):** az E13 is találatonként emel: tanulmányfájlon `E13_TANULMANY_SZINT = 'HIBA'`, máshol `FIGYELMEZTETES`. A 3.11 E13-sora ugyanígy csak az alapszintet mutatja. A `SZINT_EMELES` egy sorával javítható; ez az orkesztrátor döntése. *[F184.21: javítva, l. „Javítókör 2/2”, 1. tétel.]*
+
+## Javítókör 2/2 (ELLENOR_F184_2, 3 ELTÉRÉS-tétel)
+
+*A besorolás az orkesztrátoré (`local_c8cc3610`): mindhárom tétel mechanikus. A modell-ellenőrzés: a session tényleges modellje `claude-opus-5-5`, a brief `modell` mezője `opus` — egyezik.*
+
+### 1. Az E13 (és az E25) szint-emelése a 3.11-ben (F184.21; ELLENOR_F184_2 1.)
+
+- **E13:** a kód tanulmányfájlon HIBA-t ad (`E13_TANULMANY_SZINT = 'HIBA'`, `szabalyok.py` :62, :871; a tanulmányfájl: `kozos.tanulmany_fajl_e`), máshol az alapszintet (`SZINT['E13']` = FIGYELMEZTETES). Új `SZINT_EMELES`-sor: „HIBA a tanulmányfájlon (`_bovitett.md` / `_tanulmany.md` utótag, a `naplok/`, `sablonok/`, `lexikon/`, `motivumlog/`, `motivumok/`, `tematikus_lezart/`, `melyelemzesek/` alatt nem; `E13_TANULMANY_SZINT`)”. Az E13 nem fájlszintű, ezért PR-módban a diff szerint leminősülhet (`futtat.py` `_szint_diff_szerint`); ez minden nem fájlszintű szabályra áll, a sor csak a kód saját szintjét mondja.
+- **További emelés a kódban (grep):** `grep -nE "szint\s*=\s*[^=]|Talalat\([^)]*'(HIBA|FIGYELMEZTETES|JELENTES)'" szabalyok.py` (a `SZINT[` nélküli találatok). Eredmény: :871 (E13), :1369 (E25 (a), leminősítés: JELENTES/FIGYELMEZTETES), :2920 (E34), **:1317 (E25 (c): `Talalat('E25', 'HIBA', …)`)**. Az ellenőr mintája (`'HIBA' if|else 'FIGYELMEZTETES'|_SZINT = 'HIBA'`) az E25 (c)-t nem fogta meg: a hibás `adat/dontes_hatas.tsv`-sor (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum) HIBA, az alapszint (`SZINT['E25']`) FIGYELMEZTETES; a SEMA E25-bekezdése ezt ki is mondja („Csak az (c) HIBA”, DT-F51-4). Ugyanaz a hibaosztály, ezért ugyanebben a commitban ez is `SZINT_EMELES`-sort kapott. `scope=eszkozok/ellenorzes/szabalyok.py | forras=grep (fent) @ d3283a5e | ts=2026-11-09`
+- **A DT-F184c elve fedi:** a kód szerinti, találatonkénti szint a kanonikus; a 3.11 forrástáblája mondja ki az emelést. A DT-F184c sora nem változott (az E34-ről szól; az elv általános).
+- **Újragenerálás:** `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir` → „újraírva”; kézi szerkesztés nincs. A `SZINT_EMELES` most: E13, E25, E34.
+- **Tesztek:** két új (`test_szint_emeles_e13_a_blokkban`, `test_szint_emeles_e25_a_blokkban`); a `SZINT_EMELES` kulcsait vagy a blokk sorait számoló teszt nincs, más tesztet nem kellett igazítani.
+- **Mellékesen:** `szabalyok.py` `wf =_e36_olvas(` → `wf = _e36_olvas(`.
+
+### 2. A „nem hiány-kitöltés” tagmondat és a tagmondat-szintű újraátnézés (F184.22; ELLENOR_F184_2 2.)
+
+- **Visszaállítva:** `sablonok/6_…` 4.11-szabályok 0. pont, a Targum-cella mondata: „„nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a Targum `N`-jébe nem számít”. A tartalomvesztés-táblázat 35. sora és az összesítés helyesbítve.
+- **Újraátnézés:** `git diff --word-diff=porcelain b4c4dae5..d4bd1f44`, a dokumentumfájlok (a kód, a `naplok/`, a brief, a `dontesek/uj/`, a `nyitott/uj/` nélkül) minden törölt szakasza (124). Gépi előszűrés: a szakasz, illetve tagmondatai (`;`, `,`, `—`, zárójel, mondathatár szerint) szó szerint megvannak-e a HEAD dokumentumaiban; 66 igen. A maradék 58-at kézzel vetettem össze a kanonikus hellyel (kulcsszó-keresés, majd a hely kiolvasása): `kovetkezo.md` 10. lépés (befogad CI-kör), SEMA 2.46 (kiadási sor), 2.48 „Érvényesség” (DT569/DT-F184b), 2.53 „Két kéz” és „A lánc honnan jön”, 2.55 (E34), `9_` hét szabály 1–2. (U2/U3, SORÁLLAPOT), `6_` L8, 4.11-szabályok 0.–8., `MUNKAMENET.md` C5, C-k, C-j, `CLAUDE.md` „Git” és „Egyirányúság”. **További elveszett tagmondat nincs.** Két nem szó szerinti, de nem vesztes eltérés: a `6_` régi összefoglalójának „kiemelt, ha a fordító két különböző héber lánc-szót egy szóval ad vissza” mondata a DT-F184a szerint pontosított alakban áll (3. pont: csak alapvonallal); a `4_`/`6_` „Feed 8 kapuja” a DT547 szerint 9. `scope=b4c4dae5..d4bd1f44, dokumentumfájlok | forras=git diff --word-diff=porcelain + kulcsszó-keresés @ 27beed32 | ts=2026-11-09`
+
+### 3. A hatókör sorszáma (F184.23; ELLENOR_F184_2 3.)
+
+`git diff --numstat b4c4dae5..d4bd1f44`: 109 törölt sor összesen, ebből 3 a brief sora (`F184_DOKU_EGY_FORRAS_BRIEF.md`: 4 hozzáadott, 3 törölt), a brief nélkül 106. A „Javítókör 1/2” 1. pontja helyesbítve.
 
 ## Zárás
 
@@ -275,3 +297,10 @@ Az `elteres.md:30` hivatkozása („a szabály: `CLAUDE.md`, „Git””) így 
   - `python eszkozok/ellenoriz.py` (E1): 0 SÉRTÉS (RENDBEN 27, KÉZI 2, JELENTÉS 14);
   - `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`: „naprakész”;
   - CI-futtató PR-módban (`futtat.py --valtozott <29 fájl> --diff-alap b4c4dae5 --diff-fej 1193658f --pr-cim "[ELLENŐRZŐ] F184" --commit-uzenet-fajl <a PR üzenetei> --esemeny pull_request`; a base a `git merge-base origin/main HEAD`; futásidő 6 perc 41 mp): exit 0, HIBA nincs. JELENTES-szinten: E9 5, E25 3, E27 43, E30 1 (az F184.2 üzenetében az „elteres” parancsnév), E34 41 (mind nem kiadott motívumon: kiadott motívumon 0 HIBA), E36 1 (a SEMA 2.34, N-F184b); E37 0.
+- **Javítókör 2/2 (ELLENOR_F184_2, 3 tétel):** F184.21 (`SZINT_EMELES`: E13, és a grep-átnézésben talált E25 (c); a 3.11 újragenerálva; DT-F184c elve), F184.22 (a „nem hiány-kitöltés” tagmondat vissza a `6_` 0. pontjába; a word-diff tagmondat-szintű újraátnézése: 124 törölt szakasz, további vesztés nincs), F184.23 (109 törölt sor, ebből 3 a brief, nélküle 106). Részletek: „Javítókör 2/2”.
+- **Tesztek a 2. javítókör után (2026-11-09, HEAD `2665aec1`):**
+  - `python eszkozok/feladatok.py ellenoriz`: 201 brief, 0 hiba, 0 figyelmeztetés;
+  - `python eszkozok/teszt_feladatok.py`: 119 teszt, OK;
+  - `eszkozok/ellenorzes/tesztek` (`TMP=E:\tmp_f184`, `unittest discover`): 309 teszt, OK (`test_szabalyok` 254: +2, `test_szint_emeles_e13_a_blokkban`, `test_szint_emeles_e25_a_blokkban`; `test_dontes_nezet` 9, `test_szamkiosztas` 14, `test_tanulmany` 32);
+  - `python eszkozok/ellenoriz.py` (E1): 0 SÉRTÉS (RENDBEN 27, KÉZI 2, JELENTÉS 14);
+  - `python eszkozok/ellenorzes/szabalyok.py --kapulista --ir`: „naprakész”.
