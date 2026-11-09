@@ -6,9 +6,8 @@
 
 Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, `motivumlog/`
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
-markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányba mozog (3/9,
-DT28): a kézi forrásból ide kinyerés van (`jeloltek.tsv`), innen a kimenetbe generálás;
-forrásba visszaírás nincs.
+markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányba mozog: l. a 3. szakasz
+9. szabályát (DT28).
 
 A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valamint a belőle származtatott `karoli_variancia.tsv`, 2.24) és a hozzájuk tartozó kulcs:
 
@@ -1931,7 +1930,7 @@ lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rend
 forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.
 
 **Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
-átnézi (`lap_atnezesek.tsv`, 2.48, DT569); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
+átnézi (`lap_atnezesek.tsv`; az érvényesség: 2.48); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
 
 Integritás: az `ellenoriz.py` 30. szabálya (fejléc pontosan a fenti; `tipus` és `gond` a zárt készletből; `id` létező motívum;
 `datum` alakja; `jovahagyta` nem üres és nem modellnév; a proveniencia érvényes; minden mező kitöltött). Kulcs: `id` + `hely` +
@@ -2118,17 +2117,11 @@ hordozza; a generátor csak ebből renderel, a 2.52 tábláit nem írja át. Ír
 **Kulcs:** `motivum` + `strong` + `igehely` + `forras` (a `bdb` sornál + `alak` + `lemma` + `jelentes`).
 
 **A lánc honnan jön (DT648, ELLENOR_F178 2.).** A lánc-szavakat és a láncverseket a generátor a motívumadatból
-vezeti le (`lexikon_general.lanc_szavak`), nem e tábla soraiból: lánc-szó a motívum beépített sorainak (2.2)
-`gerinc_elem`-értéke, ha egyetlen héber Strong (a szópár, a `tematikus:` és a görög elem nem lánc-szó) — a lánc
-kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers
-a motívum Pesat-gerincének azon verse, amelyben a kulcsszó a héber szövegben (TAHOT) áll — **a motívum saját
-verse** (a beépített sorok versei, a tartomány versenként), nem a szó teljes előfordulása, a gerincen belül sem
-(ELLENOR_F178_2 1.). A gerinc: ha a negatív kritérium (2.1) megnevezi a láncot („az 1Móz 3–9 láncára”), az; különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében; Pesat-sor nélkül nincs lánc (rögzített szakasz nincs; `lexikon_general.lanc_mag`). A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap
-2. szakaszában), nem láncversek; a kinyerés így kis, rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
-kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel. Tórán kívüli
-láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a
-Targum `N`-jébe nem számít. A háttér-táblában csak a lánc-szavak és tövük állnak; lánc-szó `bdb` sor nélkül: „a
-rokon nyelvi adat kinyerése még nem történt meg”.
+vezeti le (`lexikon_general.lanc_szavak`, `lanc_mag`), nem e tábla soraiból; a szabály egy helyen áll:
+`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai” 0. pont (a hiánymondatok: 8. pont).
+A gerincen kívüli helyek a lánc bibliai visszhangjai (a lap 2. szakaszában), nem láncversek; a kinyerés így kis,
+rögzített halmazra kell. E tábla csak a cellákat adja: a láncvers, amelynek nincs sora, a lapon „a megfelelő
+kinyerése még nem történt meg”; a tábla lánc-szón kívüli sora (HAMART-001: a kálal, H7043) nem renderel.
 
 **Két kéz.** A Targum és a Vulgata megfelelőjét modell emeli ki (`kinyeres=modell`), egy másik kéz ellenőrzi: a
 `beolvas --ellenor <modellnév> --atnezes <átnézés.tsv>` gépileg összeveti a nem üres alakot a forrás versszövegével
