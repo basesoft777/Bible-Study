@@ -519,3 +519,16 @@ nyers 2.30-at olvassa, ezért ott is eltérés: **szakasztábla-hiba** (a javít
 A seed-101 ítéleti fájlja (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, #99) az M162-t eleve szeletelő-hibának ítélte (45. sor), és a #102 nem írta
 át: nincs mit igazítani (a fájl nincs a #102 `ir`-jében; csak itt jelölve).
 *(proveniencia: scope=seed-101, seed-102 | forras=m2_minta_osszevet.py --mai-tabla, [--szakasztabla] + naplok/BDB_SZELETELO_M2_seed10{1,2}_iteletek.md (manual ítélet) | ts=2026-11-09)*
+
+## 20. Javítókör 1/2 — ELLENOR_F102 4.: az M091 indoklása (F102.12)
+
+A 15. szakasz (és a ⛔ 3.6 ítéleti fájl) állítása — „a TAHOT itt nem dönt (az arámi Strong a kivonatban nem illeszkedik: 0 találat mindkét versre)” —
+**hamis és proveniencia nélküli volt** (egy `grep` a Strong-szám rossz alakjával, nem a projekt lekérdezése; a CLAUDE.md 1. és 3. szabályának
+megsértése). A lekérdezés:
+
+- `python eszkozok/lekerdez.py scan H2370 --szakasz "Dán 2:41"` → 1 igehely, 2 szó-előfordulás
+  *(proveniencia: scope=range:Dán 2:41 | forras=TAHOT_kivonat.tsv | strong=H2370 | n=1 | ts=2026-11-09T17:15Z)*
+- `python eszkozok/lekerdez.py scan H2370 --szakasz "Ezsd 2:41"` → 0 igehely
+  *(proveniencia: scope=range:Ezsd 2:41 | forras=TAHOT_kivonat.tsv | strong=H2370 | n=0 | ts=2026-11-09T17:15Z)*
+
+A TAHOT tehát dönt: a hely Dán 2:41, a forrás „Ezra 4:20”-a könyvnév-hiba; az ítélet (`forras_hiba`) nem változik, csak az indoklása.

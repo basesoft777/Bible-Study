@@ -81,7 +81,7 @@ hamis fej (M198, M201), kimaradt betűfej (M056, M194), durvább szint (M018, M0
 
 | azon | forrásidézet | ítélet |
 |---|---|---|
-| M091 H2370 (VERS) | „3 usually behold in dream or vision …, Ezra 4:20, accusative of thing 2:41” | **`forras_hiba`**: a forrás „Ezra 4:20”-at ír a Dán 4:20 helyett (a 4:14 valóban Ezsdrás); a 2:41 ezt a hibás könyvet örökli (Ezsd 2:41); a helyes Dán 2:41 — a kitöltés szerint |
+| M091 H2370 (VERS) | „3 usually behold in dream or vision …, Ezra 4:20, accusative of thing 2:41” | **`forras_hiba`**: a forrás „Ezra 4:20”-at ír a Dán 4:20 helyett (a 4:14 valóban Ezsdrás); a 2:41 ezt a hibás könyvet örökli (Ezsd 2:41). **A TAHOT dönt** (javítva, ELLENOR_F102 4.): `lekerdez.py scan H2370 --szakasz "Dán 2:41"` → n=1 (2 szó-előfordulás) *(scope=range:Dán 2:41 \| forras=TAHOT_kivonat.tsv \| strong=H2370 \| n=1 \| ts=2026-11-09T17:15Z)*; `--szakasz "Ezsd 2:41"` → n=0 *(scope=range:Ezsd 2:41 \| forras=TAHOT_kivonat.tsv \| strong=H2370 \| n=0 \| ts=2026-11-09T17:15Z)*; a helyes Dán 2:41 — a kitöltés szerint |
 | M015 H0473 (véletlen) | „Italy, … compare ᵑ7 … Ezek, Di Gen 10:4; Carthage = Elissa” | **szeletelő-hiba** (szűrés): „Di Gen 10:4” = Dillmann kommentárja a helyhez (`^` nélküli szerző-sigla, a szeletelő nem ismeri fel); a DT-F102e (B) szerint szűrendő |
 | M214 H3707 (véletlen) | „— The phrase is characteristic of D …; see Dr^Intr 191; Deut 4:25 Holz^eini. Hexateuch 287” | **kitöltő-hiba** — *kérdéses*: a „Dr^Intr 191;” lezárt hivatkozás után a Deut 4:25 a kifejezés fent már idézett bibliai helye (a 2.b-ben), nem Driver lapszáma |
 | M248 H4266 (véletlen) | „site unknown, see Di^Gn; הַמַּחֲנָ֑יִם כִּמְחֹלַת Cant 7:1 is put here by Ew Hi Öttli” | **szeletelő-hiba** (szűrés): bibliai idézet (Én 7:1); a `sigla_kozel` szűrte, mert a TAHOT nem igazolta |
@@ -101,7 +101,7 @@ lenne —, M060 kulcs-ellentmondás).
 - **M143** H1980: az „Imperative rarely a. הֲלוֺךְ” „a.”-ja alaktani felsorolás vagy szerkezeti alpont? Az ítélet: alaktani (mindkét kulcs hibás).
 - **M018** H2534: a „Vbs. used with חֵמָה … 2. c.:” függelék címkéje jelentéspont-e; az ítélet a kulcsot és a kitöltést fogadja el (a tábla durvább).
 - **M036** H3318: eldöntve (ELLENOR_F102 3.): **szeletelő-hiba**, mint a seed-101 M162 (a forrásban van számozás, csak a „Qal” név hiányzik).
-- **M091** H2370: a forrás „Ezra 4:20”-a könyvnév-hiba (Dán) — a TAHOT itt nem dönt (az arámi Strong a kivonatban nem illeszkedik: 0 találat mindkét versre).
+- **M091** H2370: a forrás „Ezra 4:20”-a könyvnév-hiba (Dán) — ~~a TAHOT itt nem dönt (… 0 találat mindkét versre)~~ **javítva** (ELLENOR_F102 4.; a korábbi állítás hamis volt és proveniencia nélküli): a TAHOT dönt, Dán 2:41 n=1, Ezsd 2:41 n=0 (l. 3.).
 - **M214** H3707: a „Dr^Intr 191; Deut 4:25” Deut 4:25-je bibliai visszautalás (az ítélet) vagy Driver kommentár-helye.
 - **M039, M127, M196**: a közbeékelt könyv utáni, abban nem létező fejezetű hely a korábbi könyvet folytatja-e — a mai szabály (bizonytalan) szándékosan óvatos.
 - **M060** H6920: a könyvnév nélküli „13:10” (LXX-alak helye) — a forrás nem nevezi meg a könyvet.
