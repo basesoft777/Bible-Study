@@ -97,7 +97,7 @@ def main():
         with open(os.path.join(GYOKER, a.ki), 'w', encoding='utf-8', newline='\n') as f:
             f.write('# GENERÁLT: eszkozok/karoli_kh_gyanus_general.py — kézzel szerkeszteni tilos; ok: N-F156a '
                     '(a forrás-XML jegyzetei másik versé), a főtábla nyers-hű\n')
-            f.write('# ARCHÍV (F177, DT-F177a): a karantén megszűnt; az irányadó tábla a konkordancia/Karoli_KH_javitott.tsv '
+            f.write('# ARCHÍV (F177): a karantén megszűnt; az irányadó tábla a konkordancia/Karoli_KH_javitott.tsv '
                     '(eszkozok/karoli_kh_mek.py osszevet), a karoli_kh_szuro.py abból szűr — ez a fájl csak történeti\n')
             f.write('\t'.join(['forras', 'osztaly', 'blokk_eltolas', 'ok', 'vele_azonos_lista_tamogatott',
                                'kh_lista', 'proveniencia']) + '\n')

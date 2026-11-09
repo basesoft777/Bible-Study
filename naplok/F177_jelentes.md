@@ -11,7 +11,7 @@
   összevetheti (`certutil -hashfile 00161.rtf SHA256`); egyezés esetén a kivonat onnan is ugyanígy áll elő.
 * **Új fájlok az `ir` listán kívül (a briefben megkövetelt tartalomhoz):** `konkordancia/Karoli_KH_MEK_konyvaliasok.tsv` (a „könyv-aliasok a táblában rögzítve”),
   `konkordancia/Karoli_KH_MEK_versszerkezet.tsv` (a MEK vers-szerkezete a versellenőrzéshez); a döntési és nyitott fájlok: `dontesek/uj/karoli-kh-mek.md`,
-  `nyitott/uj/karoli-kh-mek.md`; további fogyasztói átállítás: `eszkozok/lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, `olvaso_mockup/nav_kinyer.py`
+  `nyitott/uj/karoli-kh-mek.md`; további fogyasztói átállítás: `eszkozok/lekerdez.py`, `sqlite_epit.py`, `eszkozok/olvaso_pilot/adat.py`, `eszkozok/olvaso_mockup/nav_kinyer.py`
   (a `karoli_kh_szuro.py` ezen át működik; a brief a szűrő átállítását írja elő, a fogyasztói a szűrő hívói).
 * **A versellenőrzés alapja (DT-F177c):** a `Karoli_1908.tsv` ∪ a MEK vers-szerkezete (a brief a `Karoli_1908.tsv`-t írja; az 14 + 2 vers eltérése miatt, l. 3.).
 
@@ -52,10 +52,10 @@ A MEK-nek 14 verse nincs a `Karoli_1908.tsv`-ben (1Kor 3:23, Préd 2:27, Hós 1:
 
 ## 4. A MEK-elírások (a nem létező hivatkozott vers; a javítás nem történt meg)
 
-117 csak-MEK sor, köztük a brief példái: 2Móz 6:20 → „2 Móz. 26,59.” (helyesen valószínűleg 4Móz 26,59), 5Móz 7:15 → „1 Móz. 15,26.”; az 5Móz 21:23 → „Gal. 2,13.”
-létező vers (Gal 2:13), ezért nem `hibas_hivatkozas`, hanem `csak_mek` jelölt (`tsk=nem`) — a MEK-elírás itt egy létező vers, a helyes Gal 3:13 nincs a HunKar-táblában azon a versen.
-További példák: Ámós 7:8 → „Ámós. 8,28.”, Zsolt 37:37 → „Zsolt. 20,44.”, Zsolt 27:4 → „Zsolt. 23,42.”, 1Sám 31:11 → „2 Sám. 2,45.”. Nem értelmezhető (hiányzó versszám):
-2Sám 7:8 (`1 Sám. 12,.`), 2Kir 21:5 (`2 Kir. 12,.`), 1Krón 6:14 (`2 Kir. 21,.`). A teljes lista: `grep hibas_hivatkozas konkordancia/Karoli_KH_javitott.tsv`.
+117 csak-MEK sor (a szó szerinti MEK-alak a `mek_alak` oszlopban), köztük a brief példái: 2Móz 6:20 → 2Móz 26:59 (nem létező vers; helyesen valószínűleg 4Móz 26:59), 5Móz 7:15 → 1Móz 15:26
+(nem létező vers); az 5Móz 21:23 → Gal 2:13 létező vers (Gal 2:13), ezért nem `hibas_hivatkozas`, hanem `csak_mek` jelölt (`tsk=nem`) — a MEK-elírás itt egy létező vers, a helyes Gal 3:13 nincs a HunKar-táblában azon a versen.
+További példák: Ám 7:8 → Ám 8:28, Zsolt 37:37 → Zsolt 20:44, Zsolt 27:4 → Zsolt 23:42, 1Sám 31:11 → 2Sám 2:45. Nem értelmezhető (hiányzó versszám a hivatkozásban): 2Sám 7:8, 2Kir 21:5 és
+1Krón 6:14 egy-egy sora (`indok`: `hibas_hivatkozas=ertelmezhetetlen`). A teljes lista: `grep hibas_hivatkozas konkordancia/Karoli_KH_javitott.tsv`.
 Kétforrású hibás hivatkozások (mindkét forrás ugyanazt hordozza): pl. 1Krón 28:8 → 4Móz 28:1–68, Józs 8:34 → 5Móz 27:15–28 (a hivatkozott tartomány vége nem létező vers).
 
 ## 5. A MEK-kivonat naplója
@@ -157,7 +157,7 @@ meg, a `megerositett` szintű sorok közkincs HunKar-sorok, a `csak_mek` sorok `
 ## 8. Mi változott a rendszerben
 
 * `karoli_kh_szuro.py`: `elfogad(forras, cel)` / `szint(forras, cel)` a javított táblából; a `gyanus_forrasok()` archív (szűrésre nem használt).
-* Átállított fogyasztók: `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, `olvaso_mockup/nav_kinyer.py`. **Nem módosítva** (kizárt): `lexikon_general.py` (`kh_index`), a lapok;
+* Átállított fogyasztók: `lekerdez.py`, `sqlite_epit.py`, `eszkozok/olvaso_pilot/adat.py`, `eszkozok/olvaso_mockup/nav_kinyer.py`. **Nem módosítva** (kizárt): `lexikon_general.py` (`kh_index`), a lapok;
   az `olvasoi_kapu.py` `KH_MASOLT` szabálya a `karoli_kh_epseg.gyanus_forrasok()`-t használja (N-F177a).
 * A `Karoli_kereszthivatkozasok_gyanus.tsv` ARCHÍV fejlécet kapott (a generátorból újragenerálva; az adat változatlan, csak a `ts=` és a fejléc), a generátor megjegyzést.
 * N-F156a és N-F156c lezárva (`NYITOTT_FELADATOK.md`, helyben); új: N-F177a, N-F177b (`nyitott/uj/karoli-kh-mek.md`); új döntések: DT-F177a, b, c (`dontesek/uj/karoli-kh-mek.md`).

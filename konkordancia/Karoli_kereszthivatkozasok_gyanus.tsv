@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/karoli_kh_gyanus_general.py — kézzel szerkeszteni tilos; ok: N-F156a (a forrás-XML jegyzetei másik versé), a főtábla nyers-hű
-# ARCHÍV (F177, DT-F177a): a karantén megszűnt; az irányadó tábla a konkordancia/Karoli_KH_javitott.tsv (eszkozok/karoli_kh_mek.py osszevet), a karoli_kh_szuro.py abból szűr — ez a fájl csak történeti
+# ARCHÍV (F177): a karantén megszűnt; az irányadó tábla a konkordancia/Karoli_KH_javitott.tsv (eszkozok/karoli_kh_mek.py osszevet), a karoli_kh_szuro.py abból szűr — ez a fájl csak történeti
 forras	osztaly	blokk_eltolas	ok	vele_azonos_lista_tamogatott	kh_lista	proveniencia
 Gen.1.15	egyedi		masolt_lista_a_forrasban	Isa.45.7	Jer.31.35	scope=konkordancia/Karoli_kereszthivatkozasok.tsv | forras=eszkozok/karoli_kh_gyanus_general.py (karoli_kh_epseg.py szabály, RITKA_STRONG=150) | ts=2026-11-09
 Gen.3.5	egyedi		masolt_lista_a_forrasban	1Jn.3.8 Jud.1.6	Jhn.8.44	scope=konkordancia/Karoli_kereszthivatkozasok.tsv | forras=eszkozok/karoli_kh_gyanus_general.py (karoli_kh_epseg.py szabály, RITKA_STRONG=150) | ts=2026-11-09
