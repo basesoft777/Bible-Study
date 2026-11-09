@@ -2171,7 +2171,7 @@ mindkét végpontját), és a forrás- és a célvers létezik (a `Karoli_1908.t
 törlődik); `jelolt`: a versen eltérő a két lista, vagy a hivatkozás csak a MEK-ben szerepel, vagy az egyező sor
 hivatkozott verse nem létezik — **döntés nélkül** (CLAUDE.md 2. szabály), az `indok` tartalmazza a versellenőrzést
 (`hibas_hivatkozas=<vers>`; `ertelmezhetetlen` a MEK nem értelmezhető sorára) és a TSK-támogatást (`tsk=igen|nem`, a
-`karoli_kh_epseg.py` ±3 vers szabálya; a visszautalás a HunKar- és a MEK-listán). A `forras`: `HunKar+MEK` \| `HunKar` \| `MEK`.
+`karoli_kh_epseg.py` ±3 vers szabálya; a visszautalás a HunKar- és a MEK-listán; a `jelolt` és a `kiesik` soron egyaránt, a `kiesik` indoka `mek_ures_vers;tsk=…`; a jelölés nem változtatja a szintet). A `forras`: `HunKar+MEK` \| `HunKar` \| `MEK`.
 
 **Fogyasztók.** A `karoli_kh_szuro.py` ebből szűr: a `megerositett` szint jut a lapra / a KH-indexbe, a `kiesik` és a
 `jelolt` nem (a jelöltlistán marad). A `Karoli_kereszthivatkozasok_gyanus.tsv` archívum (a karantén megszűnt, DT-F177a).

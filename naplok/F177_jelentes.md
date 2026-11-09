@@ -39,7 +39,7 @@ küszöb (60%) fölött, megállás nem kellett.
 | szint | sor | ebből |
 |---|---|---|
 | `megerositett` | **21 314** | gyanús versen 317, nem gyanús versen 20 997 |
-| `kiesik` | **11 027** | gyanús versen 7 654, nem gyanús versen 3 373 |
+| `kiesik` | **11 027** | gyanús versen 7 654, nem gyanús versen 3 373; TSK-jelölés (`tsk=`, ELLENOR_F177 1.): `tsk=igen` **321**, `tsk=nem` **10 706**; a nem gyanús versek 3 373 sorából `tsk=igen` 318, `tsk=nem` **3 055** (a gyanús 7 654-ből `igen` 3, `nem` 7 651). A szint nem változott: a `kiesik` marad `kiesik`, a jelölés csak támasz a későbbi döntéshez (N-F177b) |
 | `jelolt` | **2 863** | 2 797 `csak_mek` (2 018 TSK-támogatással, 779 nélkül), 44 `eltero_lista` (22 TSK-val), 22 `egyezik`, de nem létező hivatkozott verssel |
 
 **Hibás hivatkozás** (`hibas_hivatkozas`): 161 sor, 142 különböző nem létező vers; 117 csak-MEK sor (köztük a 3 nem értelmezhető MEK-sor), 22 egyező sor, 22 `kiesik` HunKar-sor.

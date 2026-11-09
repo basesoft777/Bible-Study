@@ -388,7 +388,7 @@ def osszevet(hk, mek, letezo, tamogat_):
       - a HunKar-sor és a MEK ugyanarra a versre mind a végpontjait listázza -> egyezik;
       - egyező sor: `megerositett`, ha a forrásvers és minden végpont létezik a Károli-szövegben, különben `jelolt`
         (hibas_hivatkozas);
-      - HunKar-sor, ha a MEK a versen semmit nem ad -> `kiesik`;
+      - HunKar-sor, ha a MEK a versen semmit nem ad -> `kiesik` (az indokban tsk=igen|nem is);
       - HunKar-sor, ha a MEK a versen mást ad -> `jelolt` (eltér); a MEK-sor, amelyet a HunKar a versen nem ad
         -> `jelolt` (csak MEK). A versellenőrzés és a TSK-támogatás az indokban."""
     ki = []
@@ -419,7 +419,8 @@ def osszevet(hk, mek, letezo, tamogat_):
                 else:
                     ki.append((forras, cel_nyers, 'megerositett', 'HunKar+MEK', 'egyezik'))
             elif not mek_cel:
-                ki.append((forras, cel_nyers, 'kiesik', 'HunKar', 'mek_ures_vers' + (
+                ki.append((forras, cel_nyers, 'kiesik', 'HunKar', 'mek_ures_vers;tsk=' + (
+                    'igen' if tamogat(forras, kezdet) else 'nem') + (
                     ';hibas_hivatkozas=' + ','.join(hibas) if hibas else '')))
             else:
                 ind = 'eltero_lista;tsk=' + ('igen' if tamogat(forras, kezdet) else 'nem')

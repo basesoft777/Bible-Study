@@ -190,6 +190,19 @@ class RepoTablak(unittest.TestCase):
             if m[3] == 'MEK':
                 self.assertEqual(m[2], 'jelolt')
 
+    def test_kiesik_sor_tsk_jelolest_kap(self):
+        """ELLENOR_F177 1.: minden kiesik sor indokában ott a tsk=igen / tsk=nem, mint az eltero_lista és csak_mek soron."""
+        for m in self.jav:
+            if m[2] == 'kiesik':
+                self.assertRegex(m[4], r'^mek_ures_vers;tsk=(igen|nem)(;|$)', m)
+
+    def test_kiesik_tsk_jeloles_a_szabalyt_koveti(self):
+        r = Osszevetes().ov([('Gen.1.1', 'Psa.33.6')], {})
+        self.assertIn('tsk=nem', r[('Gen.1.1', 'Psa.33.6')][4])
+        hk = [('Gen.1.1', 'Psa.33.6', 'Psa.33.6', 'Psa.33.6')]
+        s = K.osszevet(hk, {}, Osszevetes.LETEZO, lambda f, c: True)
+        self.assertIn('tsk=igen', s[0][4])
+
     def test_kiesik_verse_a_mekben_ures(self):
         mek_versek = {m[0] for m in self.mek}
         for m in self.jav:
