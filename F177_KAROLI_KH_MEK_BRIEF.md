@@ -5,7 +5,8 @@ kod: KAROLI_KH_MEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/karoli-kh-mek
 ad: a KH-karantén feloldása; MEK-kivonat (konkordancia/Karoli_KH_MEK.tsv) licencsorral; összevető szkript; javított, háromszintű KH-tábla (megerősített / kiesik / jelölt); N-F156a és N-F156c lezárása
 kovetkezo: a lapok újragenerálása a lapszerkezeti generátor-körben
 munka: folyamat
