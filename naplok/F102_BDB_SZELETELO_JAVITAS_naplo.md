@@ -74,3 +74,36 @@ A TSV Abdiás-fejezetszám-hibája (9 sor) forrás-/konverziós hiba, nem a szel
 
 Csoportzárás (F102.1): tábla `--ts 2026-11-09` (kilépési kód 0, mtime változott, `--ellenoriz` bájtra azonos); aranyminta változatlan
 (az összesítő bájtra azonos); `teszt_bdb_vers_jelentes` 35/35; `teszt_futtat --gyors` 11 fájl zöld (322 mp).
+
+## 5. (d) A magányos „II.” — M130 (F102.2)
+
+Mérés a teljes BDB-n (eseti szkript `magany_ii.py`: „II.” kisbetűs vagy zárójeles folytatással, „I.” nélküli szócikkben, kereszthivatkozás
+és héber szó után nem): **21 jelölt**, ebből 20 arab igetörzs a nyelvi háttérben („Arabic II. prolongavit, IV. …”), 1 valódi fő tagolás
+(H8478 „Ezek 47:1b II. as preposition”). A szabály ezért szűk: `bdb_szelet._tagolas` — ha nincs legalább kételemű római sor, a magányos
+„II.” akkor fő tagolás, ha szófaj-fej követi („as preposition|conjunction|adverb|substantive|noun|adjective”), a szócikkben nincs „I.”, és
+pontosan egy ilyen van. Hatás: csak a H8478 — 214 sor `resz` → `II`, 25 sor `utvonal` `-/1` → `fej` (a „II. as preposition; so construct,
+and with suffix …” alaktani bevezetője; a 2.30 ugyanezt `II -/-/-`-ként bontja). M130 (poz 3485, Hab 3:16): `resz` II, `-/2/a` — a vak
+lap szerint. *(proveniencia: scope=adat/bdb_vers_jelentes.tsv, teljes | forras=eseti diff (tabla_diff.py) + magany_ii.py | ts=2026-11-09)*
+
+## 6. (c) Szűrés (F102.2)
+
+**(c1) A nem bibliai jelölőről öröklődő könyv** (ELLENOR_F99 12.: H2623 „116:15” + Zsolt 149:1, 5, 9; H4912 „1:1”). `hivatkozasok`: a
+`nem_bibliai`-t öröklő könyv nélküli hely megkapja a jelölő előtti utolsó bibliai könyvet (`alt_konyv`); a generátor TAHOT-igazolással
+fogadja el (okkód `orokles_nem_bibliai_utan`, nem szűrt), különben marad `nem_bibliai` (szűrt). Hatás: **10 sor** — H2623 116:15, 149:1,
+149:5, 149:9 (Zsolt); H4912 1:1 (2×), 1:6 (Péld); H0966 1:4 (Bír, „Error in 1:4-5”); H7073 1:13 (Bír, „GFM 1:13ff.”: Moore kommentárja a
+Bír 1:13-hoz — a vers a szót hordozza); H7350 20:18 (2Móz, „Gi 20:15; 20:18”). A H2623 „7:13” (1Makk) szűrt marad (a TAHOT nem igazolja).
+Forrással átnézve: mind a 10 bibliai hely.
+**(c2) M223-típus** (ELLENOR_F99 9.; a `bdb_szelet.py` megjegyzése ezt a javítási feladatra hagyta): a `sigla_kozel` nem áll, ha a sigla és a
+hely között záró zárójel van („Josh 23:7 (R^D), compare Hosea 2:19”). Hatás: **224 sor okkódja** — 200 `sigla_igazolt` → üres (eddig is
+bibliai), **24** `sigla_kozel` (szűrt, a TAHOT nem igazolta) → bibliai. A 24 forrással átnézve: mind bibliai idézet (nem kommentár-hely),
+a TAHOT-igazolás főleg az arámi Strongoknál (Dán) hiányzott (H0002, H0321, H0744, H3860, H4429, H4576, H5750, H8128 …). Az M223 maga a
+main-en már `sigla_igazolt` volt (az F85-ös Károli-kulcs óta: Hós 2:19 MT → Károli 2:16), most okkód nélküli.
+*(proveniencia: scope=adat/bdb_vers_jelentes.tsv, teljes | forras=eseti diff (tabla_diff.py) + kornyezet.py (BDB_teljes_unabridged.tsv, lapított) | ts=2026-11-09)*
+**(c3) A hét `sigla_igazolt` eltérés** (M054, M065, M147, M149, M191, M198, M230): mind tapadt vagy közvetlen szerző-sigla („see Di^Lev 7:30”,
+„compare Dr^Amos 2:2”, „COT^Gen 10:22”, „Dr^Deut 2:11”, „(Baer^Josh 1:7)”, „Du^Isa 29:3 thinks …”, „: Dr^1Sam 14:18)”); a TAHOT a versben
+hordozza a szót (DT176 → bibliai), a két vak kitöltő mind a 7-et kommentár-helynek ítélte. Ez a DT176 finomítása, tartalmi döntés:
+**DT-F102e** (javaslat, nem alkalmazva).
+
+Csoportzárás (F102.2): tábla `--ts 2026-11-09` (kilépési kód 0, mtime-őr, `--ellenoriz` bájtra azonos); aranyminta összesítő változatlan;
+`teszt_bdb_vers_jelentes` 38/38. A `test_kozvetlen_szerzo_sigla_tapadt` három elvárása az M223-szabály szerint módosult (a „(MI^10) Jer 48:1”,
+„(Kö^ii.l,74) Jer 6:13”, „(both R^D), Jer 6:24” most bibliai).

@@ -240,6 +240,16 @@ def general(ts, strongok=None):
             mt = kar = ''
             vmod = ''
             kmod = h['konyv_mod']
+            if ok == 'nem_bibliai' and h.get('alt_konyv') in osz and h['c'] in versek.get(h['alt_konyv'], {}):
+                # F102 (c) (ELLENOR_F99 12.: H2623 „116:15”, „149:1, 5, 9”; H4912 „1:1”): a nem bibliai jelölőről öröklődő könyv
+                # helyett a jelölő előtti utolsó bibliai könyv, ha a TAHOT a versben hordozza a Strong-számot (a DT-F99k mintájára);
+                # különben a sor nem bibliai (szűrt) marad
+                alt = h['alt_konyv']
+                _mt, _kar, _vm, _k = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, alt, h['c'], h['v'])
+                _kar = f85.get(_mt) or EZS3.get(_mt) or _kar or '%s %d:%d' % (KAROLI_KONYV.get(alt, alt), h['c'], h['v'])
+                if int(re.match(r'^H0*(\d+)', strong).group(1)) in tahot.get(_kar, ()):
+                    h = dict(h, konyv=alt, okkod='')
+                    ok = 'orokles_nem_bibliai_utan'
             if (h['konyv'] and kmod in ('orokolt', 'folytatas') and h['konyv'] in osz and ok not in SZURENDO
                     and h['c'] not in versek.get(h['konyv'], {})):
                 # F99 M2 (felhasználó, 2026-10-15, seed-100 M013 „Malachi 3:20 … 143:1”): nem létező fejezetre a könyv nem öröklődik;
