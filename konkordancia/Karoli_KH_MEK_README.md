@@ -60,7 +60,9 @@ szöveg helyesírása az 1908-as revízióé (a `Karoli_1908.tsv`-vel egyező sz
 Egy hivatkozott (és egy forrás-) vers akkor létezik, ha benne van a `Karoli_1908.tsv`-ben **vagy** a MEK saját
 vers-szerkezetében. A `Karoli_1908.tsv` KJV-számozású, és néhány fejezetben összevon (pl. Ján 1:51–52 egy versként), míg
 a MEK és a HunKar a Károli-számozást követi; a kettős alap miatt a valódi Károli-versek nem esnek ki. A nem létező vers
-`hibas_hivatkozas` jelöléssel marad a táblában.
+`hibas_hivatkozas` jelöléssel marad a táblában. Mért: 14 MEK-vers nincs a `Karoli_1908.tsv`-ben (1Kor 3:23, Préd 2:27, Hós 1:12,
+Hós 11:12, Ézs 3:28, Ézs 9:21, Ján 1:52, Jób 16:23, Jób 36:34, Luk 23:57, 4Móz 29:40, Péld 11:32, Róm 3:31, Róm 8:39), és 2
+`Karoli_1908`-vers nincs a MEK-ben (Ézs 4:6, Zak 9:17); a MEK összesen 31 170 verse a `Karoli_1908.tsv` 31 158 versével szemben.
 
 ## 5. Licenc
 
@@ -73,3 +75,18 @@ erősítenie** (a Sefaria-döntés elve szerint: közkincs tartalomnál a szerz�
 származó bármi a kimenetbe (lap, nyílt mag) kerül. Addig a `licencek.tsv` sora `kereskedelmi=feltetelesen`, `allapot=tisztazatlan`,
 és a MEK belső tanú. A javított tábla a saját döntésünk; a MEK szövege (a versszöveg) nem került át, csak a
 hivatkozás-tény és a szó szerinti hivatkozás-alak (`mek_alak`).
+
+## 6. Mért eredmény (2026-11-09; részletek: `naplok/F177_jelentes.md`)
+
+A `Karoli_KH_javitott.tsv` 35 204 sora: **megerositett 21 314**, **kiesik 11 027**, **jelolt 2 863** (ebből 2 797 csak a MEK-ben
+szereplő hivatkozás, 44 eltérő lista, 22 egyező, de nem létező hivatkozott verssel). A 32 407 HunKar-sor mindegyike pontosan egyszer szerepel.
+A MEK 13 171 versén áll KH (29 987 sor); a HunKar-táblában 19 817 forrásvers.
+
+Versenként (a HunKar `Karoli_kereszthivatkozasok_gyanus.tsv`-vel): a 5 078 gyanús vers közül 4 773-nak a MEK-ben nincs KH-ja,
+261 teljesen egyezik, 44 eltér; a nem gyanús versek közül 11 396 egyezik, 1 438 eltér, 1 905-nek a MEK-ben nincs KH-ja, 32 csak a
+MEK-ben szerepel. **Hibás hivatkozás** (nem létező hivatkozott vers) 161 sorban van (142 különböző nem létező vers): 117 csak MEK-sor
+(114 nem létező hivatkozott vers, a MEK-elírások, pl. `2 Móz. 26,59` a 2Móz 6:20-nál, `1 Móz. 15,26` az 5Móz 7:15-nél), 22 egyező sor (mindkét forrás ugyanazt a hibás
+hivatkozást hordozza, pl. 1Krón 28:8 → 4Móz 28:68), 22 `kiesik` HunKar-sor. A 117 csak MEK-sor között 3 nem értelmezhető MEK-sor van (`1 Sám. 12,.`, `2 Kir. 12,.`, `2 Kir. 21,.`:
+a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`).
+**Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
+(N-F177b) nem része a menetnek.

@@ -95,3 +95,7 @@ azonosan állítja elő (0 eltérés). A hiba a **forrásban** van: sok vershez 
 gyanús forrásversek a `Karoli_kereszthivatkozasok_gyanus.tsv`-ben állnak (`eszkozok/karoli_kh_gyanus_general.py`; osztály `blokk`:
 konstans eltolású másolat-blokk, a legerősebb bizonyíték; `egyedi`: nagyobb hamis-pozitív kockázat). **A fogyasztók a gyanús
 forrásverseket kihagyják** (`eszkozok/karoli_kh_szuro.py`). Jelentés: `naplok/N_F156a_jelentes.md`.
+
+**Frissítés (F177, 2026-11-09): a karantén megszűnt.** A fogyasztók a MEK 00161 kiadással összevetett, háromszintű
+`konkordancia/Karoli_KH_javitott.tsv`-ből szűrnek (`eszkozok/karoli_kh_szuro.py`: a `megerositett` szint jut át, a `kiesik` és
+a `jelolt` nem); a `Karoli_kereszthivatkozasok_gyanus.tsv` archív. Leírás: `konkordancia/Karoli_KH_MEK_README.md`.
