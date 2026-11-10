@@ -14,5 +14,5 @@
 Megjegyzés: a Jel 19:2 „a föld megromlásának szerkezete” fordulata a 38. őr dokumentált korlátjának esete. Tartalmilag védhető (az ige és a föld kollokációja).
 
 **ELTÉRÉS-ek (súlyossági sorrendben):**
-1. **8b, ki döntött:** a DT-F123he a Gal 3:13-14 bizonyosságát és rétegét orkesztrátori döntésként rögzíti. A brief 111. sora szerint ez B5-ös ⛔ (jelöltminősítés), amelyet a felhasználónak kell meghoznia. Hogy a felhatalmazás erre a pontra is kiterjed-e, a repóból nem igazolható.
+1. **8b, ki döntött:** a DT687 a Gal 3:13-14 bizonyosságát és rétegét orkesztrátori döntésként rögzíti. A brief 111. sora szerint ez B5-ös ⛔ (jelöltminősítés), amelyet a felhasználónak kell meghoznia. Hogy a felhatalmazás erre a pontra is kiterjed-e, a repóból nem igazolható.
 2. **8a, réteg és próza:** a `Remez` rétegű Gal 3:13-14 nem szerepel a Remez-bekezdésekben, csak a Drash-ban.

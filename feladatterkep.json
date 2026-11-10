@@ -564,7 +564,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: [elteres_kor 2/2] HAMART-001 (#639): az ELLENOR_F123_HAMART3_javitokor3 mindkét tétele rendezve (2. mechanikus: F123.HAMART3.43; 1. tartalmi: DT-F123he a felhasználó szavával); új kör nincs (korlát). Következik: a renderelt lap átnézése (orkesztrátor, majd a felhasználó), merge a felhasználótól.",
+   "most": "Te: [elteres_kor 2/2] HAMART-001 (#639): az ELLENOR_F123_HAMART3_javitokor3 mindkét tétele rendezve (2. mechanikus: F123.HAMART3.43; 1. tartalmi: DT687 a felhasználó szavával); új kör nincs (korlát). Következik: a renderelt lap átnézése (orkesztrátor, majd a felhasználó), merge a felhasználótól.",
    "fugg": "#11 (kész), #12 (kész), #102*, #125*, #126 (kész), #127 (kész), #151*, #156*, #157*, #179*, #182*",
    "tervezett": false,
    "reszletes": "",
@@ -4787,7 +4787,7 @@
    {
     "id": "DT602",
     "feladat": "F123.GENKOR (a Strong-szám megjelenítése az olvasói prózában; 2026-11-04)",
-    "kerdes": "A DT-F123ib óta a generátor a szó és a kiejtése mellett álló Strong-számot eltávolította, de csak a generált részen; a kézi prózában a kapu BUKÁS-t adott (ISTENTISZT-001: „(מִזְבֵּחַ, mizbéah, H4196)”). Maradjon-e a Strong-szám, és milyen alakban?",
+    "kerdes": "A DT676 óta a generátor a szó és a kiejtése mellett álló Strong-számot eltávolította, de csak a generált részen; a kézi prózában a kapu BUKÁS-t adott (ISTENTISZT-001: „(מִזְבֵּחַ, mizbéah, H4196)”). Maradjon-e a Strong-szám, és milyen alakban?",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -4805,7 +4805,7 @@
     "sor": 639
    },
    {
-    "id": "DT-F123kva",
+    "id": "DT678",
     "feladat": "F123.KIADVEG (az ISTENTISZT-001 11-04-i lektori javítása: külön kiadás vagy az 1. kiadás véglegesítése; 2026-11-04)",
     "kerdes": "Az `adat/kiadasok.tsv`-ben az ISTENTISZT-001-nek két sora volt: az 1. kiadás (2026.11.02, a #152 és a #151 K1–K5 átvezetése) még az olvasói kapu bevezetése előtt készült, a 2. kiadás (2026.11.04) a `/lap-javit` lektori javítása (#623), amely után a lap először zárult 0 BUKÁS-sal. Külön kiadás-e a javítás?",
     "allapot": "alkalmazasra_var",
@@ -4815,7 +4815,7 @@
     "sor": 640
    },
    {
-    "id": "DT-F123kvb",
+    "id": "DT679",
     "feladat": "F123.KIADVEG (az olvasói kapu a CI-ban; 2026-11-04)",
     "kerdes": "Az olvasói kapu (`eszkozok/olvasoi_kapu.py`) eddig csak a Feed 9. kapujában és kézi futtatásban mért; a CI zöldje és a Feed 8/9-e megtévesztő volt: kiadott lap BUKÁS-sal is átment. Legyen-e gátló CI-szabály, és mely lapokra?",
     "allapot": "alkalmazasra_var",
@@ -5861,7 +5861,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F123ga",
+    "id": "DT672",
     "feladat": "#123 BDBGER (a BDB-gerinc szócikk-összevonása, az N98 második fele; 2026-11-03)",
     "kerdes": "A `lexikon_general.py` BDB-gerince a szakaszokat csak útvonal szerint (`-/1/-`) azonosította, így egy több BDB-szócikkű Strong (`bdb_id`: I., II., arámi) különböző szócikkeinek azonos útvonalú szakaszai, és mindegyik szócikk feje, egy szakaszba folytak össze (H2416: az `1` a BDB2718, BDB2721 és BDB9522 szövegét fűzte egybe; a 2.30-ban 1 583 Strong érintett, ebből 133-ban a fejen kívül is). Mi legyen a szakasz kulcsa, és hogyan álljon a lapon?",
     "allapot": "ellenorizendo",
@@ -5873,7 +5873,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F123gb",
+    "id": "DT673",
     "feladat": "#123 BDBGER (kapu a BDB-gerinc szócikk-összevonására; 2026-11-03)",
     "kerdes": "A régi összevonást egyik kapu sem jelezte. Milyen kapu, és milyen fokozatú?",
     "allapot": "ellenorizendo",
@@ -5885,7 +5885,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F123ia",
+    "id": "DT675",
     "feladat": "F123.INDOKLAS (a `jeloltek.tsv` `indoklas` mezőjének belső jelei; 2026-11-04)",
     "kerdes": "Mért (2026-11-04): a 722 sorból 118 `indoklas`-a belső jelet hordoz az `olvasoi_kapu.BELSO` mintái szerint (döntés-azonosító, F-/N-tétel, fájlnév, `manual`, „gerinc”); motívumonként ISTENTISZT-001 55, HAMART-001 41, ANTROP-001 9, HODIT-001 5, ALVIL-001 3, a többi 1–2. A lap Minősítés-blokkja a `",
     "allapot": "ellenorizendo",

@@ -15,7 +15,7 @@
   - a `lekerdez.py kollokacio H0779 H0127` öt helyet ad: 1Móz 3:17, 4:11, 5:29, 12:3 és 5Móz 28:18, ez egyezik az indoklással;
   - a Jel 19:2 sorában nincs Jer 51:25;
   - a Gal 3:10 és a Gal 3:13 adatsorai nem változtak;
-  - DT28: minden törölt előfordulásnak van elutasított jelöltsora, DT-F123hc hivatkozással;
+  - DT28: minden törölt előfordulásnak van elutasított jelöltsora, DT685 hivatkozással;
   - egyik ok sem „egyéb”;
   - az indoklásban nincs belső jel.
 - **G2, próza:** a hibás Kivonat-mondat kikerült, a számok egyeznek (49 sor, 56 vers, 1Móz 24, többi ÓSZ 18, ÚSZ 7, tematikus 4; az 577 = 255 + 174 + 36 + 112). A Károli-idézetek szó szerintiek.
