@@ -290,6 +290,15 @@ class SzintTest(unittest.TestCase):
                    'naplok/'):
             self.assertEqual(self.szint(ir=[ut], munka='folyamat'), ('teljes', 2), ut)
 
+    def test_olvasoi_kod_naplo_bemenete_teljes(self):
+        # DT-F188e (a), ELLENOR_F188_3 2.: a nyilt_mag_export.py kh_meres() bemenete teljes; a saját jelentés könnyített
+        self.assertEqual(self.szint(ir=['naplok/KAROLI_KH_EPSEG_jelentes.md'], munka='folyamat'), ('teljes', 2))
+        self.assertEqual(self.szint(ir=['naplok/F188_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
+        mintak = F.olvasoi_naplok()
+        self.assertIn('naplok/KAROLI_KH_EPSEG_jelentes.md', mintak)
+        self.assertIn('naplok/F123_teljesseg_*.tsv', mintak)  # a `%s` helyen `*`
+        self.assertFalse(any(m.endswith('/') for m in mintak))
+
     def test_lassu_lefedett_kodja_teljes(self):
         # ELLENOR_F188_2 2.: a két lista nem mondhat ellent egymásnak: amit a teszt_futtat.py LASSU_LEFEDETT olvasói
         # kódnak vesz, az a szint szerint teljes (kivétel a futtató maga, amely nem állít elő olvasói kimenetet)

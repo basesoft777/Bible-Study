@@ -1299,11 +1299,59 @@ def eszkalacio_fajl(ut):
         return eszkalacio(f.read())
 
 
+# DT-F188e (a), ELLENOR_F188_3 2.: az olvasoi kod altal hivatkozott `naplok/`-fajlok (pl. a `nyilt_mag_export.py`
+# `kh_meres()` bemenete, `naplok/KAROLI_KH_EPSEG_jelentes.md`) teljes szintuek, akkor is, ha `*.md`-k. A lista egyetlen
+# helye a gepi gyujtes: a `SZINT_OLVASOI_*` fajlok szovegebol a `'naplok/<nev>'` es az `'naplok', '<nev>'` alaku
+# literalok (a `%s` / `{…}` helyen `*`). Korlat: a futasidoben osszerakott, literal nelkuli utat nem latja.
+_OLVASOI_NAPLO_LITERAL = re.compile(r'''['"]naplok/([^'"\s]+)['"]''')
+_OLVASOI_NAPLO_JOIN = re.compile(r'''['"]naplok['"]\s*,\s*['"]([^'"\s]+)['"]''')
+_OLVASOI_NAPLOK_CACHE = {}
+
+
+def olvasoi_kod_fajlok(gyoker=REPO):
+    """A `SZINT_OLVASOI_*` listara eso .py fajlok (repo-relativ)."""
+    ki = set()
+    for e in SZINT_OLVASOI_KIMENET:
+        ut = os.path.join(gyoker, *e.rstrip('/').split('/'))
+        if e.endswith('/'):
+            for gy, _, nevek in os.walk(ut):
+                for n in nevek:
+                    if n.endswith('.py'):
+                        ki.add(os.path.relpath(os.path.join(gy, n), gyoker).replace(os.sep, '/'))
+        elif os.path.isfile(ut):
+            ki.add(e)
+    for m in SZINT_OLVASOI_MINTA:
+        for ut in glob.glob(os.path.join(gyoker, *m.split('/'))):
+            ki.add(os.path.relpath(ut, gyoker).replace(os.sep, '/'))
+    return sorted(ki)
+
+
+def olvasoi_naplok(gyoker=REPO):
+    """Az olvasoi kod altal hivatkozott `naplok/` utak fnmatch-mintai (gepi gyujtes, gyorsitotarazva)."""
+    if gyoker in _OLVASOI_NAPLOK_CACHE:
+        return _OLVASOI_NAPLOK_CACHE[gyoker]
+    mintak = set()
+    for rel in olvasoi_kod_fajlok(gyoker):
+        try:
+            with open(os.path.join(gyoker, *rel.split('/')), encoding='utf-8') as f:
+                szoveg = f.read()
+        except (OSError, UnicodeDecodeError):
+            continue
+        for nev in _OLVASOI_NAPLO_LITERAL.findall(szoveg) + _OLVASOI_NAPLO_JOIN.findall(szoveg):
+            nev = re.sub(r'%[sd]|\{[^}]*\}', '*', nev)
+            if nev and not nev.endswith('/'):
+                mintak.add('naplok/' + nev)
+    _OLVASOI_NAPLOK_CACHE[gyoker] = tuple(sorted(mintak))
+    return _OLVASOI_NAPLOK_CACHE[gyoker]
+
+
 def szint_teljes_ok(ut):
     """F188 T5: miért teljes szintű egy `ir`-elem (szöveg), vagy None, ha a könnyített listára esik."""
     if ut.startswith(SZINT_OLVASOI_KIMENET) or ut in SZINT_OLVASOI_KIMENET or \
             any(fnmatch.fnmatchcase(ut, m) for m in SZINT_OLVASOI_MINTA):
         return 'olvasói kimenetet állít elő: %s' % ut
+    if ut.startswith('naplok/') and any(fnmatch.fnmatchcase(ut, m) for m in olvasoi_naplok()):
+        return 'olvasói kód bemenete (DT-F188e): %s' % ut
     if any(c in ut for c in '*?['):
         return 'glob az `ir`-ben: %s' % ut
     if ut.endswith('/'):
