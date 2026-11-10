@@ -170,6 +170,36 @@ A fejléc `munka` mezője (`BRIEF_SABLON.md`) jelöli; a négy szabály:
 A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi; a
 `/kovetkezo` csomagjavaslat előtt kötelezően futtatja.
 
+## Menet-ellenőrzés: előjavítás, ellenőrzési szint, lassú tesztek, helyi zár (F188)
+
+*A brief-menetek (`/kovetkezo`, `/elteres`) ellenőrzési lépései. Ez a kanonikus helyük (DT-F188c); a parancsok és az ügynökök csak hivatkoznak ide. A gépi részletek a hivatkozott szkriptek docstringjében állnak.*
+
+1. **Előjavítás a commit előtt (T3).** A végrehajtó minden commit előtt futtatja: `python eszkozok/ellenorzes/elojavit.py --ir`. A szkript a diff által érintett fájlokon dolgozik. Gépiesen javítja az E32 zárójeles helyőrzőjét és az E8 adatidézet-formázását, a többit jelzi, és a jelzést a végrehajtó javítja. Az E5-nél jelzett törlésnél a végrehajtó dönt a szándékról. Ha a törlés szándékos: `--e5-jelol --ir --commit-uzenet-fajl <üzenetfájl>`. Hogy mit javít és mit jelez, azt a szkript docstringje írja le.
+2. **Ellenőrzési szint (T5).** A szint a brief meglévő `munka` és `ir` mezőjéből jön, új fejlécmező nincs. Levezetés: `python eszkozok/feladatok.py szint <nn>` (befogadáskor `--extra <fejlécfájl>`).
+
+   | Szint | Mikor | Független ellenőr | Javítókör |
+   |---|---|---|---|
+   | `teljes` | `munka: ertelmezo`; régi fejléc `ir` nélkül; vagy az `ir` tartalmi réteget ír: `adat/`, `konkordancia/`, `motivumok/`, `motivumlog/`, `lexikon/`, `tematikus_lezart/`, a tanulmány-mappák, `sablonok/`, `kozlemeny/`, `nyilt_mag/`, illetve a lapot előállító generátort (a lista: `feladatok.py` `SZINT_TELJES_*`) | a teljes ellenőrzőlista | legfeljebb 2 |
+   | `konnyitett` | minden más: mechanikus, infrastruktúra, parancs, CI, formai CI-javítás | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
+
+   - **Minden szinten megmarad:**
+     - a PR teljes CI-je (E1–E37; a szint egyetlen szabályt sem kapcsol ki);
+     - a modell-ellenőrzés;
+     - a brief minden G/D pontja és ⛔ pontja;
+     - az adattáblák sorszám-változása (E17, DT3), ha a diff `adat/` vagy `konkordancia/` táblát érint;
+     - a proveniencia (A1) minden adatállításnál;
+     - a `teves` besorolás csak saját lekérdezéssel.
+
+     A könnyített szint két dolgot hagy el: a tartalmi A3–A6 pontokat (a diffben nincs tartalmi réteg) és a második kört.
+   - **A formai tétel nem nyit új kört.** Akkor nincs újraellenőrzés, ha egy javítókör minden tétele `mechanikus` és formai: CI-szabály szerinti formai hiba, amelyet az előjavító javított, vagy amelyet a CI zöldje igazol. Ilyenkor a zöld CI zárja a kört, és a körszámláló nem nő. Tartalmi vagy adatot érintő tétel mindig újraellenőrzést kap.
+3. **Lassú tesztek csak érintettség esetén (T4).** Futtatás: `python eszkozok/teszt_futtat.py --diff origin/main`. A lassú olvasó-szerver tesztek (`teszt_arculat.py`, `teszt_szintek.py`) csak akkor futnak, ha a diff a lefedett fájljaikat érinti; a lista egy helyen áll: `eszkozok/teszt_futtat.py` `LASSU_LEFEDETT`. Ha a diff nem érinti őket, a CI eredménye a mérvadó. A szabály a végrehajtóra és a független ellenőrre is vonatkozik.
+4. **Egyszerre egy helyi teljes ellenőrzés (zár).** Az `eszkozok/ellenorzes/futtat.py` és az `eszkozok/teszt_futtat.py` helyi futása közös fájlzárat vesz. A zár helye a repón kívül van, a worktree-k között közösen: `~/.pardes/ellenorzes.zar`.
+   - Windowson ez a `%USERPROFILE%\.pardes\` mappa, WSL-ben a WSL saját home-ja. A `teszt_futtat.py` a Windows-oldalon veszi a zárat, mielőtt a WSL-be lép.
+   - A hely a `PARDES_ZAR_KONYVTAR` változóval felülírható.
+   - Ha a zár foglalt, a futás kiírja, ki tartja, és vár.
+   - Feloldja magát, ha a zárat tartó folyamat már nem él, vagy ha a zár a korlátnál régebbi (alapból 120 perc, `PARDES_ZAR_KORLAT_PERC`).
+   - A GitHub-futás (`GITHUB_ACTIONS`) nem vesz zárat.
+
 ## Generátor-tények
 
 - `ELESITHETO = {naplo, index, nyitott, lexikon, torzscikk}` — ez az öt

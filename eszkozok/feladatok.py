@@ -29,6 +29,9 @@ Parancsok:
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
                     fejlecekbe (--szaraz: csak kiir)
     kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1
+    szint SZAM..    F188 T5: az ellenorzesi szint (`teljes` / `konnyitett`) es a javitokor-korlat,
+                    a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
+                    a befogadando brief javasolt fejlece (mint a `fuggesek`-nel)
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
@@ -89,6 +92,15 @@ KESZ_NAPOK = 14
 # `fut` + FOLYTATAS_ELOTAG = felbemaradt, folytathato; `fut` mas = valoban dolgozik rajta
 # valaki. A `.claude/commands/kovetkezo.md` 8. lepese erre a konstansra hivatkozik.
 FOLYTATAS_ELOTAG = 'Folytatás:'
+
+# F188 T5: kockazat szerinti ellenorzesi szint (a szabaly: MUNKAMENET.md „Menet-ellenőrzés”). A szint a meglevo
+# fejlecmezokbol jon, uj mezo nincs: `teljes` (2 javitokor), ha a feladat ertelmezo munka, regi fejlecu (nincs `ir`),
+# vagy az `ir` tartalmi reteget ir (adat, motivum, lexikon, forras, sablon, kozlemeny, nyilt mag) vagy a lapot
+# eloallito generatort; kulonben `konnyitett` (1 javitokor).
+SZINT_TELJES_ELOTAG = ('adat/', 'konkordancia/', 'motivumok/', 'motivumlog/', 'lexikon/', 'tematikus_lezart/',
+                       'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'sablonok/', 'kozlemeny/', 'nyilt_mag/')
+SZINT_TELJES_MINTA = ('eszkozok/*general*.py', 'eszkozok/nyilt_mag_export.py', 'eszkozok/olvasoi_kapu.py')
+SZINT_KOROK = {'teljes': 2, 'konnyitett': 1}
 VAR_RAD_ELOTAG = 'Te:'
 
 ALLAPOT_JEL = {
@@ -1241,6 +1253,20 @@ def kovetkezo_szam(briefek):
     return (max(hasznalt) if hasznalt else 0) + 1
 
 
+def ellenorzesi_szint(b):
+    """F188 T5: (szint, javitokor-korlat, ok) a brief fejlecebol."""
+    munka = b.fej.get('munka', '')
+    if munka == 'ertelmezo':
+        return 'teljes', SZINT_KOROK['teljes'], 'munka: ertelmezo'
+    if b.regi:
+        return 'teljes', SZINT_KOROK['teljes'], 'nincs `ir` (régi fejléc)'
+    for u in b.fej.get('ir', []):
+        n = _norm(u)
+        if n.startswith(SZINT_TELJES_ELOTAG) or any(fnmatch.fnmatchcase(n, m) for m in SZINT_TELJES_MINTA):
+            return 'teljes', SZINT_KOROK['teljes'], 'tartalmi réteget ír: %s' % n
+    return 'konnyitett', SZINT_KOROK['konnyitett'], 'nem ír tartalmi réteget (munka: %s)' % (munka or 'adat')
+
+
 def extra_hozzaad(briefek, utak):
     """A befogadando brief(ek) javasolt fejlecet a szamitashoz hozzaadja (nem ir semmit).
 
@@ -1325,6 +1351,10 @@ def main(argv=None):
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
     alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
+    sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
+    sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
+    sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
+                    help='a befogadandó brief javasolt fejléce (a repón kívüli fájl)')
     arg = p.parse_args(argv)
     ma = datetime.strptime(arg.ma, '%Y-%m-%d').date() if arg.ma else None
 
@@ -1391,6 +1421,24 @@ def main(argv=None):
         if arg.parancs == 'kovetkezo_szam':
             print(kovetkezo_szam(briefek))
             return 0
+        if arg.parancs == 'szint':
+            regi = {id(b) for b in briefek}
+            briefek = extra_hozzaad(briefek, arg.extra)
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            kert = list(arg.feladatok) + [b.szam for b in briefek if id(b) not in regi and b.szam is not None]
+            if not kert:
+                print('HIBA: SZAM vagy --extra kell', file=sys.stderr)
+                return 2
+            rossz = 0
+            for n in kert:
+                b = by.get(n)
+                if b is None:
+                    print('NINCS	#%d' % n)
+                    rossz += 1
+                    continue
+                szint, korok, ok = ellenorzesi_szint(b)
+                print('SZINT	#%d	%s	%d kör	%s' % (n, szint, korok, ok))
+            return 1 if rossz else 0
     except (OSError, ValueError) as ex:
         print('HIBA: %s' % ex, file=sys.stderr)
         return 2

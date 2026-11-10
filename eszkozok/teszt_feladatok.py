@@ -236,6 +236,35 @@ class FuggesTest(Alap):
         self.assertIn('FUGGES\t1\t3\tkezi', szoveg)
 
 
+class SzintTest(unittest.TestCase):
+    """F188 T5: a kockázat szerinti ellenőrzési szint a `munka` és az `ir` mezőből."""
+
+    def szint(self, **kw):
+        fej, torzs, hibak = F.fejlec_elemez(brief_szoveg(1, **kw))
+        return F.ellenorzesi_szint(F.Brief('F01_A_BRIEF.md', fej, torzs, hibak))[:2]
+
+    def test_adatot_iro_teljes(self):
+        self.assertEqual(self.szint(ir=['adat/elofordulasok.tsv'], munka='adat'), ('teljes', 2))
+        self.assertEqual(self.szint(ir=['"adat/*.tsv"'], munka='folyamat'), ('teljes', 2))
+
+    def test_lexikon_motivum_sablon_teljes(self):
+        for ut in ('lexikon/HAMART-001_TUDOMANYOS.md', 'motivumok/HAMART-001.md', 'sablonok/6_x.md',
+                   'adat/SEMA.md'):
+            self.assertEqual(self.szint(ir=[ut], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_generator_teljes(self):
+        self.assertEqual(self.szint(ir=['eszkozok/lexikon_general.py'], munka='adat'), ('teljes', 2))
+
+    def test_ertelmezo_es_regi_teljes(self):
+        self.assertEqual(self.szint(ir=['eszkozok/x.py'], munka='ertelmezo'), ('teljes', 2))
+        self.assertEqual(self.szint(), ('teljes', 2))
+
+    def test_infrastruktura_konnyitett(self):
+        self.assertEqual(self.szint(ir=['.claude/commands/kovetkezo.md', 'eszkozok/ellenorzes/szabalyok.py',
+                                        'naplok/F01_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
+        self.assertEqual(self.szint(ir=['eszkozok/teszt_futtat.py'], munka='adat'), ('konnyitett', 1))
+
+
 class EllenorizTest(Alap):
     def hibak(self):
         return F.ellenoriz(self.g.briefek(), self.g.ut)

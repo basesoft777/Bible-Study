@@ -15,7 +15,7 @@ Mit mer PR-onkent (a `gh` es a helyi `git` adataibol, hálózati hibánál a mez
 - `javitokor`: a lezajlott javítókörök száma, három jelből a legnagyobb:
   (a) a PR-ban álló `naplok/ELLENOR_F<nn>[_<n>].md` legnagyobb sorszáma − 1
       (az első ellenőrzés nem javítókör; `_ujra`/`_valasz` nem számít);
-  (b) a commit-címekben álló `[elteres_kor k/2]` és „javítókör k/2” jelölő k-ja;
+  (b) a commit-címekben álló `[elteres_kor k/K]` és „javítókör k/K” jelölő k-ja (K = 2 vagy 1, F188 T5);
   (c) az ellenőri jelentést rögzítő commitok száma − 1 (az F188 T1 óta a
       jelentés a `naplok/F<nn>_jelentes.md` „Független ellenőrzés” szakaszába
       kerül; a commit címe `<tétel>: ellenőri jelentés (…)` alakú, l. BRIEF_SABLON
@@ -71,7 +71,7 @@ CEL_JAVITOKOR = 1.0
 CEL_ELLENOR_PERC = 15.0
 
 _ELLENOR_FAJL = re.compile(r'^naplok/ELLENOR_(F[0-9A-Za-z]+?)(?:_(\d+))?\.md$')
-_KOR_JELOLO = re.compile(r'(?:\[elteres_kor\s+(\d)/2\]|[Jj]avítókör\s+(\d)/2)')
+_KOR_JELOLO = re.compile(r'(?:\[elteres_kor\s+(\d)/[12]\]|[Jj]avítókör\s+(\d)/[12])')  # F188 T5: k/2 vagy k/1
 _ELLENORI_JELENTES_CIM = re.compile(r'^[^\s:]+:\s+ellenőri jelentés\b', re.IGNORECASE)
 _CI_JAVITAS = re.compile(r'CI-javítás')
 _TETEL_ELOTAG = re.compile(r'^([A-Z][A-Z0-9_-]*?)[.:]')
