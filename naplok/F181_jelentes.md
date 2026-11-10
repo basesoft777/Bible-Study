@@ -602,3 +602,5 @@ A #177 → második adag Δ a kettőzések nélküli alaphoz képest (21 312 / 1
 5. **Egyeztetett eltérések dokumentáltsága (F181.35):** a fenti bekezdés kiegészítve a `teszt_sqlite_epit.py` (F181.22) módosításával; jelölve, hogy a `sqlite_epit.py` az `ir`-en belül van.
 
 **Tesztek.** `python eszkozok/teszt_karoli_kh_mek.py`: **63 teszt, mind OK** (volt 62). `python eszkozok/teszt_karoli_kh_gyanus.py`: 3 teszt OK. `python eszkozok/teszt_sqlite_epit.py`: 500 s időkorláttal indítva nem fejeződött be (az összegző sor nincs meg); a futott tesztek pontjai és az adatbázis-építések (85 tábla, egyedi `kh` sorokkal) hiba nélkül lementek, a teljes futás a `teszt_futtat.py`-val (WSL, natív adatbázis) még hátra van.
+
+**Átnevezett címsorok (E5, ELLENOR_F181_2).** Két `## 7.` címsor átnevezés, nem tartalmi törlés: a `konkordancia/Karoli_KH_MEK_README.md` 7. szakasza „A jelölt szint feldolgozása — a beemelési szabály” a hivatkozott döntések bővülő listájával (DT-F181g–i), és a jelentés 7. szakasza „A maradék szúrópróbája és a kontroll (J3)” az „— az első kör, történeti” kiegészítéssel; a szakaszok törzse megmaradt. A jelölés a commit-üzenetben áll (`TÖRLÉS-SZÁNDÉKOS:`).
