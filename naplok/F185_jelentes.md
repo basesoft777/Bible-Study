@@ -237,3 +237,51 @@ maqqéf-feloldást alkalmazta; a `pe_mem` javítást csak a `nezet_general.py --
 Strongban az alak minden előfordulása javított. A `forditasok.tsv` nem változott. Teszt: `teszt_szotari_gerinc.py`
 `F185BetuJavitas` (a `gerinc_blokk` kimenetén a H0127 magyar 4.2-blokkja: „(מִן־הָא ׳עָפָר)” és „vö. még פְּנֵי הָא׳”, a régi
 alak nélkül) — OK.
+
+## 8. P5 — a seed-103 vak mérés (egyetlen mérés, megismétlés nélkül)
+
+*Proveniencia: scope=seed-103 (200 sor, 183 szócikk) | forras=naplok/BDB_SZELETELO_M2_minta_seed103_kulcs.tsv (a 2.29 F185.4
+utáni állapota) + négy vak kitöltés (A-K1, A-K2, B-K1, B-K2; mind `claude-opus-5-5`, külön subagent; összefűzve:
+`naplok/BDB_SZELETELO_M2_seed103_kitoltott_A.tsv`, `_B.tsv`) + naplok/F185_seed103_osszevet.py + kézi ítélet (claude-opus-5-5) |
+ts=2026-11-10.*
+
+**A kitöltés körülményei.** A kitöltőket az orkesztrátor indította, a repón kívüli másolaton (a vak lap és a szócikkszöveg
+két Strong-zárt kötegre bontva, változtatás nélkül; a jelölők száma ellenőrizve: K1 91/91, K2 106/106). A kitöltői utasítást
+(`naplok/F185_seed103_kitoltoi_utasitas.md`, változatlan másolat) **az orkesztrátor írta a kitöltés előtt, és az a kitöltés
+előtt nem került commitba**; a kitöltés szabályai (4.3) és a kapu (4.5) igen (F185.5, `39f359e4`). Mind a négy kitöltő
+jelentette, hogy csak a saját bemenetét nyitotta meg.
+
+| mutató | gépi = arany | arány | Wilson 95% |
+|---|---:|---:|---|
+| könyv/vers | **200 / 200** | 100,0% | 98,1–100,0 |
+| jelentéspont (fő mutató) | **188 / 200** | **94,0%** | **89,8–96,5** |
+| tájékoztató: A / B a gépivel (jelentéspont) | 187 / 188 | | |
+| tájékoztató: `biztos` / `ketes` sor helyes | 180 / 181 · 8 / 19 | | |
+
+- **A kapu (≥ 194 / 200): NEM teljesül** (188 / 200); a könyv/vers teljesül. A `BDB_MERT_PONTOSSAG` (`konfig/bdb_pontossag.toml`:
+  183 / 200, 2026-11-09) **változatlan**; P3 nem indul — az orkesztrátor dönt (4.5).
+- **A ≠ B: 1 sor** (N182 H3318, A `-/1/c`, B `Qal/1/c`): ítélet B — „— 1 go or come out or forth: … c.”; a „Qal” név a
+  digitális forrásban hiányzik (2.31 kézi `jelolo_hianyzik`), a szócikk később Hiph`il-t és Hoph`al-t nyit, tehát az 1. pont a
+  Qal-é; a gépi helyes. Kitöltő-hiba más sorban nem vizsgálva (A = B soron ítélet nem mozdítja a számot, 4.4).
+- **A „fej” = „<törzs>” egyenértékűség** a mérőben él (`m2_minta_osszevet.normal`: a „fej”, a „Qal” és a „Qal/-” egyaránt
+  `NINCS_PONT`); a törzs alaktanában álló helyek ezért nem eltérések.
+- **A 12 gépi hiba osztályai** (A = B): homonima-szám vagy rész (római) 6 — N028, N122 H7451 és N076 H7651 (hiányzó „I”),
+  N094 H3899 (fölös „I”), N061 H7663 (II mint rész ↔ szakasz, és a törzs), N124 H5920 (I ↔ II); számozás/tagolás 4 — N013
+  H2469 (`fej` ↔ `-/1`), N040, N105 H3881 (a „II. … 3.” szint hiányzik), N058 H3915 (`-/8` ↔ `-/1/b`); törzs 2 — N004 H8248
+  (Qal ↔ Hiph`il), N071 H5186 (`jp_illesztes`, a pont az előző hivatkozásé). A 12-ből 11 `ketes` volt (a P2 jelölése a hibák
+  92%-át előre jelezte); a `biztos` sorok 99,4%-a helyes.
+- **Tokenfogyasztás:** A-K1 300 771, A-K2 308 404, B-K1 295 939, B-K2 304 617, összesen **1 209 731** — **a becslés (0,73 M;
+  sáv 0,43–0,97 M) és az 1 M-es küszöb fölött**, mint a #186 seed-204-én; a karakterarány 2,18 token/karakter (a #186 legnagyobb
+  arányánál, 1,74-nél is magasabb).
+
+## 9. Zárás (P1–P5)
+
+- **P1:** a szakasztábla fejfelismerése (hamis bekezdés-eleji fej, tapadt betűfej, törzsnévlista, csoport, alcímszó,
+  homonima-szám) és a sorbelső fejek oszlopa (DT-F185b), sorvágás nélkül; a fordítások 29 311 kulcsa változatlan.
+- **Forrás:** a 2.29 jelentéspontja a szakasztáblából (DT-F185a); a szeletelő hivatkozás-kinyerés, csoport és tanú.
+- **P2:** `bizonyossag` (`biztos` / `ketes:<ok>`); a seed-103-on a `biztos` 180 / 181, a `ketes` 8 / 19 helyes.
+- **P4:** pe/mem és rés/dálet tanúval (belső tanú, Sefaria), 341 tételes javítás; a javítás a megjelenítésben mindkét nyelven.
+- **P5:** könyv/vers 200 / 200; jelentéspont **188 / 200 (94,0%, Wilson 89,8–96,5)** — a 97%-os kapu nem teljesül; a
+  `BDB_MERT_PONTOSSAG` változatlan, a lapot nem generáltam újra. A seed-102-höz (183 / 200, más minta) képest +5.
+- **Nyitott:** N-F185b (leképezés), N-F185c (könyvnév nélküli hely); a 12 hiba osztályai (római szám, mélyebb számozás, törzs)
+  a következő kör jelöltjei, a P3-ról az orkesztrátor dönt.
