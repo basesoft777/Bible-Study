@@ -8,14 +8,17 @@ Kimenet a `--ki` könyvtárba (a repón KÍVÜL; a fájlokat nem commitoljuk):
     döntés, a DT445-állapot, a Strong-szám, a nyers forrásalak, és semmi, ami megmondja, melyik a forrás.
   - `kulcs.tsv`: sorszám, és melyik betű (A/B) a helyreállított alak.
 Az A/B hozzárendelés tételenként rögzített seeddel (`random.Random(105000 + sorszám)`) véletlenszerű.
-A két alakon ugyanaz a megjelenítési normalizálás fut (a rafe-maqqéf feloldása, `F105_minta.maqqef`), hogy a maqqéf ne
-árulja el a forrást; a geres helyéhez nem nyúl.
+A két alakon ugyanaz a megjelenítési normalizálás fut, hogy a forma ne árulja el a forrást: (1) a rafe-maqqéf feloldása
+(`F105_minta.maqqef`); (2) a geres egységesítése: minden szóban (szóköz és maqqéf között) a geres a szó végére kerül
+(módszertani döntés, 2026-11-10: a forrás `׳X` alakja helyesírási hiba volna, és a vers nélkül is elárulná a forrást; a
+kérdés csak a szavak sorrendje). A fájl elején ez jelölve áll.
 
 Futtatás: python naplok/F105_vak.py --be <könyvtár> --ki <könyvtár a repón kívül>
 """
 import argparse
 import os
 import random
+import re
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -29,6 +32,8 @@ sys.path.insert(0, NAPLOK)
 import F105_minta as FM  # noqa: E402
 
 TAHOT = os.path.join(REPO, 'konkordancia', 'TAHOT_kivonat.tsv')
+GERES = '׳'
+JELOLES = 'a geres helye mindkét alakban egységesítve; a kérdés csak a szavak sorrendje'
 
 
 def kivalasztas(be):
@@ -39,8 +44,28 @@ def kivalasztas(be):
     return sorted(rnd.sample(jelolt, 50), key=lambda d: (d['strong'], int(d['poz'])))
 
 
+def geres_vegre(szo):
+    """A szóban álló geres a szó végére (egy darab)."""
+    return szo.replace(GERES, '') + GERES if GERES in szo else szo
+
+
+def _token(t):
+    """Egy (szóközzel határolt) token maqqéffel tagolt részei; a csak geresből álló rész (pl. a rafe feloldása után
+    `׳־צ…`) geresét az előző rész kapja, ha nincs előző, a következő; utána minden részben a geres a végére kerül."""
+    reszek = FM.maqqef(t).split('־')
+    tiszta, plusz = [], [False] * len(reszek)
+    for i, r in enumerate(reszek):
+        if r and not r.replace(GERES, ''):
+            j = i - 1 if i else i + 1
+            if 0 <= j < len(reszek):
+                plusz[j] = True
+            continue
+        tiszta.append(i)
+    return '־'.join(geres_vegre(reszek[i] + (GERES if plusz[i] else '')) for i in tiszta)
+
+
 def alak(futam):
-    return ' '.join(FM.maqqef(t) for t in futam.split(' '))
+    return ' '.join(_token(t) for t in futam.split(' '))
 
 
 def main():
@@ -59,6 +84,7 @@ def main():
         if d['Igehely'] in kell:
             vers.setdefault(d['Igehely'], []).append(d.get('Ragozott alak', '').strip())
     md = ['# Vak minta: a BDB héber idézeteinek szórendje (50 tétel)', '',
+          '**Jelölés: %s.**' % JELOLES, '',
           'Tételenként: a hivatkozott vers (Károli-kulcs), a vers héber szövege (TAHOT; a TAHOT morfémánként tagol, ezért '
           'egyes előtagok és végződések külön állnak), és ugyanannak a BDB-idézetnek két sorrendje, A és B. '
           'Kérdés: melyik sorrend egyezik a vers szövegével (illetve a nyomtatott BDB-vel)? '
@@ -79,6 +105,8 @@ def main():
         f.write('\n'.join(md))
     with open(os.path.join(ki, 'kulcs.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(kulcs) + '\n')
+    hibas = sum(1 for s in md if s.startswith(('- A: ', '- B: ')) and re.search(r'(^|[\s־])' + GERES, s[5:]))
+    print('geres szó elején:', hibas)
     print('tétel:', len(minta), '| A = helyreállított:', sum(1 for s in kulcs[1:] if s.endswith('A')))
 
 
