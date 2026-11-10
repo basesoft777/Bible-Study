@@ -50,9 +50,13 @@ LEX_UT = os.path.join(GYOKER, 'konkordancia', 'lexikonok_nyers', 'BDB.lexicon')
 KI_UT = os.path.join(GYOKER, 'adat', 'bdb_szakaszok.tsv')
 JSON_HASH = '5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d'
 
-# A törzsnevek listája a szeletelőével azonos (eszkozok/olvaso_szerver/bdb_szelet.py TORZS, TORZS_KANON; csak olvasva).
-TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`el|Hithpe`el|Hithpo`el|Hithpalpel|"
-         r"Pilpel|Polpal|Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el|"
+# A törzsnevek listája a szeletelőéből indult (eszkozok/olvaso_szerver/bdb_szelet.py TORZS, TORZS_KANON; csak olvasva).
+# F185 (N106, seed-102 M223/M233 H7812 „Hithpa`lel”): a forrás félkövér törzsfejei közül a szeletelő listáján nem álló teljes
+# nevek is törzsek (a korpuszon: Hithpo`lel 9, Hithpolel 7, Po`lel 8, Hothpa`al 4, Pi`lel 4, Po`lal 2, Pu`lal 2, Pol`el 2,
+# Pa`lel 1, Hithpa`lel 1); a rövidítés („Hithpa.”, „Po`l.”) nem, az a hivatkozásban áll. A hosszabb név előbb áll (alternáció).
+TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`lel|Hithpo`lel|Hithpolel|Hothpa`al|Hithpa`el|Hithpe`el|Hithpo`el|"
+         r"Hithpalpel|Pilpel|Polpal|Po`lel|Po`lal|Pol`el|Pi`lel|Pu`lal|Pa`lel|"
+         r"Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el|"
          r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpa`al|Pe`il|Ishtaph`al")
 TORZS_KANON = {'Pual': "Pu'al", 'Piel': "Pi'el", 'Hiphil': "Hiph'il", 'Niphal': "Niph'al", 'Hophal': "Hoph'al",
                'Ishtaphel': "Ishtaph'el"}
@@ -349,6 +353,94 @@ def lexikon_szerint_hivatkozas(szocikk_adat, tokenek, maradek_html):
     return bool(legjobb and legjobb[2])
 
 
+# F185 (N103 (2), a Thayer K2-jének megfelelője): a JSON a kereszthivatkozás vagy a zárójeles megjegyzés KÖZEPÉN tör bekezdést,
+# és a hivatkozott jelölő („see 1 above”, „(compare Pi`el as Ezek 30:24)”, „(see Zech 14:7 below 3 below)”) félkövéren a következő
+# bekezdés elejére kerül. Ilyenkor a bekezdés-eleji fej NEM fej (a szöveg része, az útvonal öröklődik; a sor nem vágódik, a `sorszam`
+# nem változik). Négy, egymástól független jel (bármelyik elég):
+#   (a) zárójel: az előző bekezdésben lezáratlan „(” áll, és ennek a bekezdésnek az eleje (120 karakteren belül) nyitás nélkül zár
+#       „)”-t — a fej a zárójeles megjegyzés belsejében áll (seed-102 M002/M221 H2388, M198/M201 H3117, M004 H3588, seed-101 M184 H9004);
+#   (b) „above” / „below” követi a fejet: visszautalás (H2403 „see 1 above”, N99; H1004 „2 below”, seed-101 M237);
+#   (c) az előző bekezdés utaló szóval végződik („see”, „compare”, „cf.”, „read”, „reads”), és a fej egyetlen törzsnév („compare
+#       Qal”, „read Hiph`il”); szám- vagy betűfejnél nem, mert ott a JSON az utaló szó tárgyát gyakran elhagyja, és a fej valódi
+#       (a korpuszon: H1518 „compare | 2 transitive”, H3205 „yet see | 2 less often beget:”, H4601 „see | 3. b. father of”);
+#   (d) sorrendsértés mondat közepén: az előző bekezdés betűvel végződik (nincs mondatzáró jel), és a fej egyetlen, „a”-nál későbbi,
+#       a már elért alpontnál nem későbbi betű (seed-101 M154 H2471 „burnt on the altar with c. Lev 8:26”: a „c.” a c. pontra
+#       utal; H6499 „— both b. and c.”). Az „a.” újrakezdés lehet (H2850 „usually a. collective”), az nem hamis.
+HAMIS_UTAN_SZO = {'see', 'compare', 'cf', 'read', 'reads'}
+
+
+def _nyitott_zarojel(t):
+    m = 0
+    for c in t:
+        if c == '(':
+            m += 1
+        elif c == ')' and m:
+            m -= 1
+    return m
+
+
+def _elol_zar(t, n=120):
+    m = 0
+    for c in t[:n]:
+        if c == '(':
+            m += 1
+        elif c == ')':
+            if m == 0:
+                return True
+            m -= 1
+    return False
+
+
+def hamis_fej_kornyezet(elozo_sima, maradek_sima, tokenek, allapot):
+    """F185: a bekezdés-eleji fej a környezete szerint hivatkozás (l. fent (a)–(d)); visszaadja a jel betűjelét vagy ''."""
+    if _nyitott_zarojel(elozo_sima) and _elol_zar(maradek_sima):
+        return 'a'
+    if re.match(r'(?:above|below)\b', maradek_sima):
+        return 'b'
+    w = re.findall(r'(?:^|[^A-Za-z])([A-Za-z]+)\.?$', elozo_sima)
+    if w and w[0].lower() in HAMIS_UTAN_SZO and len(tokenek) == 1 and tokenek[0][0] == 'torzs':
+        return 'c'
+    if (len(tokenek) == 1 and tokenek[0][0] == 'betu' and allapot.get('betu')
+            and re.search(r'[A-Za-z֐-׿]$', elozo_sima)
+            and 'a' < tokenek[0][1].rstrip('.') <= allapot['betu']):
+        return 'd'
+    return ''
+
+
+# F185 (seed-101 M238 H5608): a jelöletlen alcímszó a JSON-ban `sub1` nélkül is állhat — a bekezdés héber címszóval (egy-két alak,
+# vesszővel) kezdődik, és utána félkövér szófaj áll („<p> סוֺפֵר סֹפֵר, <b>noun masculine</b>”); a tagolás-állapot ilyenkor is nullázódik.
+ALCIMSZO_SZOFAJ = r'(?:noun|adjective|verb|proper name|adverb|preposition|particle|pronoun|conjunction|interjection)'
+ALCIMSZO_NYITO = re.compile(r'^\[?[֐-׿][֐-׿־\[\] ]{0,40},?\s*' + ALCIMSZO_SZOFAJ + r'\b')
+
+
+def alcimszo_nyito(blokk_html):
+    t = sima(blokk_html)
+    if not ALCIMSZO_NYITO.match(t):
+        return False
+    return re.search(r'<b>\s*' + ALCIMSZO_SZOFAJ + r'\b', blokk_html[:600]) is not None
+
+
+# F185 (N103, seed-101 M184 H9004 „(see יוֺם 7h), … see <b>3b. b.</b> qualitatively”; M057 H4994 „see above <b>3b, c. c.</b>”): a
+# félkövér a kereszthivatkozás jelölőjét („3b,”, „3b.”) és a valódi betűfejet együtt fogja; a valódi fej az utolsó betű, ha a
+# sorrendben a várt (a következő betű, vagy szám után „a”). A `jel` a teljes félkövér marad (a szakasz szövege így nem változik).
+HIVATKOZAS_FEJ = re.compile(r'^(\d{1,2}[a-z](?:[.,]\s*[a-z])*[.,]?)\s+([a-z])\.$')
+
+
+def hivatkozas_fej(blokk_html, allapot):
+    """-> (jel, betű, maradék_html) vagy None."""
+    m = re.match(r'\s*<b>(.*?)</b>', blokk_html, re.S)
+    if not m:
+        return None
+    tartalom = html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).strip()
+    h = HIVATKOZAS_FEJ.match(tartalom)
+    if not h:
+        return None
+    var = chr(ord(allapot['betu']) + 1) if allapot.get('betu') else 'a'
+    if h.group(2) != var:
+        return None
+    return tartalom, h.group(2), blokk_html[m.end():]
+
+
 def lexikon_beolvas():
     con = sqlite3.connect('file:' + LEX_UT.replace('\\', '/') + '?mode=ro', uri=True)
     szocikk = {}
@@ -483,6 +575,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
     allapot = dict.fromkeys(MINDEN_SZINT, '')
     alsz = 0
     szakasz, szakasz_mod, volt_fej = '', None, False
+    nagy_szam_alatt = False
     kiir_bdb = kategoria not in BDB_NELKUL
     section_jel = {}
     if kiir_bdb:
@@ -498,6 +591,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
             allapot = dict.fromkeys(MINDEN_SZINT, '')
             alsz = 0
             szakasz, szakasz_mod, volt_fej = '', None, False
+            nagy_szam_alatt = False
         if i == 0:
             jelolo, jel, gy, szoveg, ut = 'cim', '', '', sima(bh), 'cim'
         else:
@@ -505,11 +599,30 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                 alsz += 1
                 allapot = dict.fromkeys(MINDEN_SZINT, '')
                 szakasz, szakasz_mod, volt_fej = '', None, False
+                nagy_szam_alatt = False
             tokenek, maradek = fej_bont(bh)
             if tokenek and not fej_valodi(tokenek, maradek):
                 # DT-F107g (a) (1): hamis fej (hivatkozás a bekezdéstörés után) — a szöveg része, nem jelölő
                 tokenek, maradek = [], bh
-            if (tokenek and kiir_bdb and bdb and not szocikk_eleje
+            hiv_jel = None
+            if i > 1 and not szocikk_eleje:
+                hf = hivatkozas_fej(bh, allapot)
+                if hf:
+                    hiv_jel, betu, maradek = hf
+                    tokenek = [('betu', betu + '.')]
+            if (tokenek and i > 1 and not szocikk_eleje and not sub1 and not hiv_jel
+                    and hamis_fej_kornyezet(sima(blokkok[i - 1][0]), sima(maradek), tokenek, allapot)):
+                # F185 (N103 (2)): a környezet szerint hivatkozás (zárójel, „above/below”, „see …”, sorrendsértés)
+                tokenek, maradek = [], bh
+            if not tokenek and i > 1 and not szocikk_eleje and not sub1 and alcimszo_nyito(bh):
+                # F185: jelöletlen alcímszó `sub1` nélkül (seed-101 M238)
+                alsz += 1
+                allapot = dict.fromkeys(MINDEN_SZINT, '')
+                szakasz, szakasz_mod, volt_fej, nagy_szam_alatt = '', None, False, False
+                alcimszo_uj = True
+            else:
+                alcimszo_uj = False
+            if (tokenek and kiir_bdb and bdb and not szocikk_eleje and not hiv_jel
                     and lexikon_szerint_hivatkozas(szocikk[bdb], tokenek, maradek)):
                 # DT-F107h (a): a lexikonban ugyanez a fej a szövegen belül áll — hivatkozás a JSON bekezdéstörése után
                 tokenek, maradek = [], bh
@@ -531,6 +644,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                             # DT-F107g (a) (2): ha a szócikk első római feje „I.”, és előtte nem volt szám-, betű- vagy
                             # törzsfej, a római fejek homonima-szakaszok (H6440), különben fő tagolás (`resz`; H3068, H8478)
                             szakasz_mod = szov == 'I.' and not volt_fej
+                        nagy_szam_alatt = False
                         if szakasz_mod:
                             allapot = dict.fromkeys(MINDEN_SZINT, '')
                             szakasz = szov.rstrip('.')
@@ -540,7 +654,18 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                             allapot['resz'] = szov.rstrip('.')
                     else:
                         volt_fej = True
-                        for x in TOROL[szint]:
+                        torol = TOROL[szint]
+                        if szint == 'nagy' and (nagy_szam_alatt or (allapot['szam'] and not allapot['nagy'])):
+                            # F185 (seed-102 M226 H5676 „1 … A. east Jordan … B. West Jordan … 2”): a számozott pont ALATT álló
+                            # nagybetűs csoport a számot nem törli; a következő szám a csoportot zárja (lent)
+                            nagy_szam_alatt = True
+                            torol = ('betu', 'zaro')
+                        elif szint == 'szam' and nagy_szam_alatt:
+                            nagy_szam_alatt = False
+                            torol = ('nagy',) + TOROL['szam']
+                        elif szint in ('torzs', 'nagy'):
+                            nagy_szam_alatt = False
+                        for x in torol:
                             allapot[x] = ''
                         if szint == 'torzs':
                             nev = szov.rstrip('.')
@@ -552,7 +677,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                         else:
                             allapot[szint] = szov
                 jelolo = 'point'
-                jel = ' '.join(s for _, s in tokenek)
+                jel = hiv_jel or ' '.join(s for _, s in tokenek)
                 szoveg = sima(maradek)
                 ut = utvonal(allapot)
                 if ut == '-/-/-' and not allapot['resz']:
@@ -560,8 +685,8 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
             else:
                 jel = ''
                 szoveg = sima(bh)
-                if szocikk_eleje or (sub1 and not any(allapot[x] for x in MINDEN_SZINT)):
-                    jelolo, ut = ('alcimszo' if sub1 and not szocikk_eleje else 'fej'), 'fej'
+                if szocikk_eleje or ((sub1 or alcimszo_uj) and not any(allapot[x] for x in MINDEN_SZINT)):
+                    jelolo, ut = ('alcimszo' if (sub1 or alcimszo_uj) and not szocikk_eleje else 'fej'), 'fej'
                 elif not any(allapot[x] for x in MINDEN_SZINT):
                     jelolo, ut = 'bekezdes', 'fej'
                 else:
@@ -615,7 +740,7 @@ def general(ts, json_ut=JSON_UT):
 def fajl_szoveg(sorok, ts):
     fej = ['# GENERÁLT: eszkozok/bdb_jelolt/bont.py --ts %s — kézzel nem szerkesztendő (F107; séma: adat/SEMA.md, bdb_szakaszok.tsv).' % ts,
            '# forras: konkordancia/lexikonok_nyers/DictBDB.json@%s (szöveg, tagolás) + konkordancia/lexikonok_nyers/BDB.lexicon@%s '
-           '(csak bdb_id, szócikkhatár, section/remarks; DT-F107a) + kód@%s' % (sha256_fajl(JSON_UT)[:12], sha256_fajl(LEX_UT)[:12], kod_hash()[:12]),
+           '(csak bdb_id, szócikkhatár, section/remarks; DT225) + kód@%s' % (sha256_fajl(JSON_UT)[:12], sha256_fajl(LEX_UT)[:12], kod_hash()[:12]),
            '\t'.join(FEJLEC)]
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
 
