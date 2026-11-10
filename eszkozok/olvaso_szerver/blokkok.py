@@ -46,6 +46,7 @@ def _eszkoz_modul(nev):
 
 bdb_rovidites = _eszkoz_modul('bdb_rovidites')
 tanulmany_regiszter = _eszkoz_modul('tanulmany_regiszter')
+bdb_vj_szabaly = _eszkoz_modul('bdb_vj_szabaly')   # a 2.29 sorainak minősítése, közös a lexikon-generátorral (DT-F104d/e)
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -1028,9 +1029,9 @@ def _vazlat_html(tl, elotag, vj=None):
 # blokk elején, szövegesen áll.
 # ---------------------------------------------------------------------------------------------------------------------
 # a táblában maradó bizonytalan sorok okkódjai és a bizonytalan versfeloldás: az ilyen hivatkozás pontja csak gyenge jelölést kap;
-# a halmaz és a szabály a `bdb_szelet`-ben áll, mert a lexikon-generátor 4.2-es kártyája is ezt használja (DT-F104e)
-BIZONYTALAN_OK = bdb_szelet.BIZONYTALAN_OK
-BIZONYTALAN_VERS = bdb_szelet.BIZONYTALAN_VERS
+# a halmaz és a szabály az `eszkozok/bdb_vj_szabaly.py`-ban áll, mert a lexikon-generátor 4.2-es kártyája is ezt használja (DT-F104e)
+BIZONYTALAN_OK = bdb_vj_szabaly.BIZONYTALAN_OK
+BIZONYTALAN_VERS = bdb_vj_szabaly.BIZONYTALAN_VERS
 
 _HELYEK_PONTOS_SUGO = ('a BDB ennél a pontnál kiírt bibliai hivatkozásainak száma, feloldva és szűrve (a nem bibliai és a '
                        'kommentár-jelhez tapadt helyek nélkül); nem a szó előfordulásainak száma')
@@ -1040,12 +1041,12 @@ _REF_KONYV = re.compile(r'(?:[1-5]\s?)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőú
 _SOR_CV = re.compile(r'(\d+):(\d+)')
 
 
-_vj_bizonytalan = bdb_szelet.vj_bizonytalan      # a sor bizonytalanságának okai (olvasói szöveg); üres lista: biztos sor
+_vj_bizonytalan = bdb_vj_szabaly.vj_bizonytalan      # a sor bizonytalanságának okai (olvasói szöveg); üres lista: biztos sor
 
 
-# a pontos hivatkozásszám alapja (nem szűrt, feloldott bibliai hivatkozás): a szabály a `bdb_szelet`-ben áll, mert a
+# a pontos hivatkozásszám alapja (nem szűrt, feloldott bibliai hivatkozás): a szabály az `eszkozok/bdb_vj_szabaly.py`-ban áll, mert a
 # lexikon-generátor 4.2-es kártyája is ezt használja (DT-F104d)
-_vj_feloldott = bdb_szelet.vj_feloldott
+_vj_feloldott = bdb_vj_szabaly.vj_feloldott
 
 
 def _sor_kulcs(r):

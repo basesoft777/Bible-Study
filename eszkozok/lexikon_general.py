@@ -46,6 +46,7 @@ import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtet�
 import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
 import olvasoi_utofeldolg as OU  # az olvasói szöveg egységesítése a kész lapon (olvasói kapu, 2026-11-02)
 import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
+import bdb_vj_szabaly as VJ  # a 2.29 sorainak minősítése, közös az olvasó-szerverrel (DT-F104d/e)
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -2696,7 +2697,7 @@ def gerinc_adat():
     bdb_vj, bdb_vj_feloldott = {}, {}
     for r in be(BDB_VERS_JELENTES_FAJL):
         # DT-F104d: a 4.2 kártyájának hivatkozásszáma a feloldott, szűrt hivatkozásoké (a szerver szabálya, Károli-vers nélkül is)
-        if _szelet_modul().vj_feloldott(r):
+        if VJ.vj_feloldott(r):
             bdb_vj_feloldott.setdefault(r['strong'], []).append(r)
         if r.get('szurt') == '1' or not r.get('karoli_vers'):
             continue
@@ -2744,8 +2745,7 @@ _bdb_szelet = None
 
 
 def _szelet_modul():
-    """Az olvasó-szerver szeletelője (`olvaso_szerver/bdb_szelet.py`), egyszer betöltve; a 2.29 sorainak minősítése is itt
-    áll, közösen a szerverrel (DT-F104d)."""
+    """Az olvasó-szerver szeletelője (`olvaso_szerver/bdb_szelet.py`), egyszer betöltve."""
     global _bdb_szelet
     if _bdb_szelet is None:
         import importlib.util
@@ -3410,7 +3410,7 @@ def _versek_rovid(versek):
 def bdb_hivatkozas_szam(adat, strong):
     """DT-F104d: a kártya hivatkozásszámai a vers -> jelentés táblából (2.29), nem a magyar szakaszszöveg regexéből:
     {szakaszkulcs (bdb_id, a 2.30 útvonala; a fejé (bdb_id, 'fej')): a feloldott, szűrt hivatkozások száma}. A sorhalmaz a
-    szerver pontos hivatkozásszámáé (`bdb_szelet.vj_feloldott`: `szurt≠1`, van MT-vers); a sor szakasza a `gerinc_blokk`
+    szerver pontos hivatkozásszámáé (`bdb_vj_szabaly.vj_feloldott`: `szurt≠1`, van MT-vers); a sor szakasza a `gerinc_blokk`
     illesztése (`bdb_vers_szocikk` + a levágott útvonal a szakasztáblában). A szám a szakasz saját soraié (az alpontoké nem),
     mint a szerver `VersJelolo.db`-jében; a szócikkhez nem köthető sor egyik szakaszhoz sem számít."""
     cache = adat.setdefault('_bdb_hiv_db', {})
@@ -3674,12 +3674,12 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     uj = bool(ctx and ctx.get('bdb_kartya'))
     vers_pont, pont_nelkul = [], []
     # DT-F104e (DT178): a bizonytalan okkódú sor pontja gyenge („vonatkozhat”); ha ugyanannak a helynek és pontnak erős sora is
-    # van, az erős marad (a szerver `VersJelolo`-jával egyezően). A szabály: `bdb_szelet.vj_bizonytalan`.
+    # van, az erős marad (a szerver `VersJelolo`-jával egyezően). A szabály: `bdb_vj_szabaly.vj_bizonytalan`.
     eros_pont, gyenge_ok = set(), {}
 
     def pont(vers, k, r):
         vers_pont.append((vers, k))
-        okok = _szelet_modul().vj_bizonytalan(r) if szotar == 'BDB' else []
+        okok = VJ.vj_bizonytalan(r) if szotar == 'BDB' else []
         if okok:
             gyenge_ok.setdefault((vers, k), set()).update(okok)
         else:

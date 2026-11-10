@@ -944,12 +944,12 @@ class KetreteguBdbKartya(unittest.TestCase):
         olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H8034')[0]
         self.assertIn('**A motívum helyein:** Ézs 1:1 → 4. hamis istenekről *(vonatkozhat; a hivatkozás bizonytalan: a BDB '
                       'nyomtatott igehelye hibás)* · Ézs 55:13 → 5. emlékjel.', olvasoi)
-        # a bizonytalansági szabály egy helyen (`bdb_szelet`): a szerver blokkja csak rámutat
+        # a bizonytalansági szabály egy helyen (`eszkozok/bdb_vj_szabaly.py`): a szerver blokkja csak rámutat
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver', 'blokkok.py'), encoding='utf-8') as f:
             blokkok = f.read()
-        self.assertIn('_vj_bizonytalan = bdb_szelet.vj_bizonytalan', blokkok)
+        self.assertIn('_vj_bizonytalan = bdb_vj_szabaly.vj_bizonytalan', blokkok)
         self.assertNotIn("'forras_hiba':", blokkok)
-        self.assertEqual(LG._szelet_modul().vj_bizonytalan({'okkod': 'forras_hiba,karoli_tahot'}),
+        self.assertEqual(LG.VJ.vj_bizonytalan({'okkod': 'forras_hiba,karoli_tahot'}),
                          ['a BDB nyomtatott igehelye hibás'])
 
     def test_bizonytalan_okkod_valodi_adat(self):
