@@ -5,6 +5,8 @@ A `forras_javit.general()` új sorait összeveti a mostani `adat/bdb_forras_javi
     nem ír;
   - a változás bontása: törölt / új sorok, (hiba, régi állapot → új állapot) szerint, a sor kulcsán (strong, sorszam, hiba,
     szo_sorszam, elofordulas, forras_alak).
+`--prov-csere RÉGI=>ÚJ`: az összevetés előtt a régi sorok `proveniencia` mezőjében a RÉGI részszöveg ÚJ-ra cserélődik
+(ELLENOR_F105 1.: a helyőrző számfüggetlen szövegre cserélése; minden más mező szó szerint vetődik össze).
 Csak `--ir` mellett írja a táblát (a generátor saját `fajl_szoveg`-ével); a számokat a `--ki` fájlba is kiírja.
 Futtatás: python naplok/F105_tabla_osszevet.py --ts 2026-10-18 --ts-heber-sorrend 2026-11-01 --ts-atiras 2026-11-03
           --ts-hivatkozott-vers 2026-11-10 --ki <fájl> [--ir]
@@ -36,9 +38,14 @@ def main():
     ap.add_argument('--ts-hivatkozott-vers')
     ap.add_argument('--ki', required=True)
     ap.add_argument('--ir', action='store_true')
+    ap.add_argument('--prov-csere', help='RÉGI=>ÚJ: a régi sorok proveniencia-mezőjének cseréje az összevetés előtt')
     a = ap.parse_args()
     with open(FJ.KI_UT, encoding='utf-8', newline='') as f:
         regi = [s.split('\t') for s in f.read().split('\n') if s and not s.startswith('#')][1:]
+    if a.prov_csere:
+        r_mit, r_mire = a.prov_csere.split('=>', 1)
+        print('proveniencia-csere a régi sorokon: %d sor' % sum(1 for s in regi if r_mit in s[10]))
+        regi = [s[:10] + [s[10].replace(r_mit, r_mire)] + s[11:] for s in regi]
     uj, stat = FJ.general(a.ts, a.ts_heber_sorrend, a.ts_atiras, a.ts_hivatkozott_vers)
     r_k = collections.defaultdict(list)
     for s in regi:

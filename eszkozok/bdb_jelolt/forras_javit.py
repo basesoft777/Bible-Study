@@ -214,7 +214,7 @@ def heber_sorrend_sorok(stat, ts, ts_vers=None):
     hv = HS.HivatkozottVers(BDB_EN_UT, VJ_UT, bdb_szelet.lapit)
     kezi = {(s, unicodedata.normalize('NFC', a)): (v, i) for s, a, v, i in KEZI_HEBER_SORREND}
     prov_vers = ('scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): heber_sorrend.py R_hib + hivatkozott-vers-próba '
-                 '(TAHOT a bdb_vers_jelentes.tsv Károli-versén; F105, DT-F105a) | ts=%s')
+                 '(TAHOT a bdb_vers_jelentes.tsv Károli-versén; F105) | ts=%s')
     sorok_kulcs = collections.OrderedDict()
     for r in tabla_sorok():
         top, blokk = r['forras'].split(':', 1)[1].split('#')
