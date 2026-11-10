@@ -90,54 +90,91 @@ class ZarTeszt(unittest.TestCase):
         with self._zar(el_e=lambda pid: False):
             pass
         self.assertTrue(any('elavult zár átvéve' in u and 'nem él' in u for u in self.uzenetek), self.uzenetek)
-        self.assertEqual([n for n in os.listdir(os.path.dirname(self.ut)) if 'elavult' in n], [])
+        self.assertEqual(os.listdir(os.path.dirname(self.ut)), [])  # sem fő, sem átvételi zár nem maradt
 
-    def test_atvetel_nem_lopja_el_a_friss_zarat(self):
-        # ELLENOR_F188 4.: B elavultnak látta a zárat, közben A átvette és frisset írt; B átvétele nem veheti el A-ét
+    def test_atvetel_ujraolvas_es_friss_zarat_nem_torli(self):
+        # ELLENOR_F188_2 1.: B elavultnak látta a zárat, közben A átvette és frisset írt; B átvétele az átvételi zár
+        # alatt újraolvas, és A friss zárát nem törli
         import socket
         self._idegen_zar(gep=socket.gethostname(), pid=4242, azon='regi')
-        b = self._zar(el_e=lambda pid: False)
-        elavult = b._olvas()
-        a = self._zar(el_e=lambda pid: False)
-        a.__enter__()  # A átveszi és saját zárat ír
-        self.assertEqual(a._olvas()['azon'], a.azon)
-        self.assertFalse(b.atvesz(elavult))
-        self.assertEqual(b._olvas()['azon'], a.azon)  # A zára a helyén maradt
+        a = self._zar(el_e=lambda pid: pid == os.getpid())
+        b = self._zar(el_e=lambda pid: pid == os.getpid())
+        self.assertTrue(b._elavult()[0])
+        a.__enter__()
+        self.assertFalse(b.atvesz())
+        self.assertEqual(b._olvas()['azon'], a.azon)
         a.__exit__(None, None, None)
-        self.assertFalse(os.path.exists(self.ut))
+        self.assertEqual(os.listdir(os.path.dirname(self.ut)), [])
 
-    def test_verseny_ket_szal_egy_elavult_zarra(self):
-        # ELLENOR_F188 4.: két szál egyszerre talál egy elavult zárat; egyszerre legfeljebb egy tarthatja
+    def test_iro_zar_nem_elavult(self):
+        # az O_EXCL-lel létrehozott, még üres (íródó) fő zár a türelmi időn belül nem elavult; utána igen
+        os.makedirs(os.path.dirname(self.ut), exist_ok=True)
+        open(self.ut, 'w').close()
+        z = self._zar()
+        self.assertEqual(z._elavult()[0], False)
+        regi = time.time() - FT.ZAR_TURELEM_MP - 5
+        os.utime(self.ut, (regi, regi))
+        self.assertEqual(z._elavult()[0], True)
+
+    def test_elavult_atveteli_zar(self):
+        os.makedirs(os.path.dirname(self.ut), exist_ok=True)
+        with open(self.ut + FT.ZAR_ATVETEL_UTOTAG, 'w') as f:
+            f.write('osszeomlott')
+        z = self._zar()
+        self.assertFalse(z._atveteli_zar())  # friss: nem veszi el
+        regi = time.time() - FT.ZAR_ATVETEL_ELAVULT_MP - 5
+        os.utime(self.ut + FT.ZAR_ATVETEL_UTOTAG, (regi, regi))
+        self.assertFalse(z._atveteli_zar())  # elavult: törli, ebben a körben nem veszi meg
+        self.assertTrue(z._atveteli_zar())
+        z._atveteli_zar_el()
+        self.assertFalse(os.path.exists(self.ut + FT.ZAR_ATVETEL_UTOTAG))
+
+    def _verseny(self, szalak_szama, korok, uj_erkezo_kesleltetes=None):
         import socket
         import threading
-        for _ in range(20):
+        for kor in range(korok):
             self._idegen_zar(gep=socket.gethostname(), pid=4242, azon='regi')
-            bent, legtobb, hibak = [0], [0], []
+            bent, legtobb, hibak, kesz = [0], [0], [], [0]
             zar_lock = threading.Lock()
-            indul = threading.Barrier(2)
+            n = szalak_szama + (1 if uj_erkezo_kesleltetes is not None else 0)
+            indul = threading.Barrier(szalak_szama)
 
-            def munka():
+            def munka(kesleltetes=None):
                 try:
-                    indul.wait()
-                    z = FT.HelyiZar('verseny', ut=self.ut, varakozas=0.001, kiir=lambda s: None,
+                    if kesleltetes is None:
+                        indul.wait()
+                    else:
+                        time.sleep(kesleltetes)  # újonnan érkező: az átvétel közben ér oda
+                    z = FT.HelyiZar('verseny', ut=self.ut, varakozas=0.0005, kiir=lambda s: None,
                                     el_e=lambda pid: pid == os.getpid())  # a 4242 halott, a saját (közös) pid él
                     with z:
                         with zar_lock:
                             bent[0] += 1
                             legtobb[0] = max(legtobb[0], bent[0])
-                        time.sleep(0.01)
+                        time.sleep(0.002)
                         with zar_lock:
                             bent[0] -= 1
+                            kesz[0] += 1
                 except Exception as e:  # pragma: no cover
                     hibak.append(e)
-            szalak = [threading.Thread(target=munka) for _ in range(2)]
+            szalak = [threading.Thread(target=munka) for _ in range(szalak_szama)]
+            if uj_erkezo_kesleltetes is not None:
+                szalak.append(threading.Thread(target=munka, args=((kor % 5) * uj_erkezo_kesleltetes,)))
             for t in szalak:
                 t.start()
             for t in szalak:
-                t.join(30)
-            self.assertEqual(hibak, [])
-            self.assertEqual(legtobb[0], 1)
-            self.assertFalse(os.path.exists(self.ut))
+                t.join(60)
+            self.assertEqual(hibak, [], 'kör %d' % kor)
+            self.assertEqual(kesz[0], n, 'kör %d: nem futott le mindenki' % kor)
+            self.assertEqual(legtobb[0], 1, 'kör %d: egyszerre több tartó' % kor)
+            self.assertEqual(os.listdir(os.path.dirname(self.ut)), [], 'kör %d: maradt zárfájl' % kor)
+
+    def test_verseny_ket_szal_egy_elavult_zarra(self):
+        self._verseny(2, 20)
+
+    def test_verseny_harom_szal_es_uj_erkezo(self):
+        # ELLENOR_F188_2 1.: 3 szál egy elavult zárra, és egy negyedik, amely az átvétel közben érkezik; sok kör
+        self._verseny(3, 40, uj_erkezo_kesleltetes=0.0005)
 
     def test_idokorlat_feloldja(self):
         self._idegen_zar(ts=time.time() - (FT.ZAR_ALAP_KORLAT_PERC + 5) * 60)

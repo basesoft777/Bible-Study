@@ -47,7 +47,7 @@ import szabalyok as SZ
 # ---------------------------------------------------------------------------
 # A zár helye: ~/.pardes/ellenorzes.zar (Windowson %USERPROFILE%\.pardes\, WSL-ben a WSL home-ja), a worktree-k
 # között közös; a PARDES_ZAR_KONYVTAR felülírja. A zárfájl JSON: pid, gép, időbélyeg, leírás, munkakönyvtár.
-# Foglalt zárnál a futás kiírja, ki tartja, és vár. Elavult (atomi átnevezéssel veszi át, l. HelyiZar): a tartó folyamat ugyanazon a gépen már nem
+# Foglalt zárnál a futás kiírja, ki tartja, és vár. Elavult (az átvételi zár alatt veszi át, l. HelyiZar): a tartó folyamat ugyanazon a gépen már nem
 # él, vagy a zár a korlátnál (PARDES_ZAR_KORLAT_PERC, alap 120 perc) régebbi. A GitHub-futás nem vesz zárat. A
 # szabály: MUNKAMENET.md „Menet-ellenőrzés”, 4. pont. Az `eszkozok/teszt_futtat.py` ugyanezt a zárat használja.
 ZAR_KONYVTAR_VALTOZO = 'PARDES_ZAR_KONYVTAR'
@@ -60,11 +60,6 @@ ZAR_VARAKOZAS_MP = 5
 def json_betolt(f):
     import json
     return json.load(f)
-
-
-def glob_escape(ut):
-    import glob as _glob
-    return _glob.escape(ut)
 
 
 def zar_ut():
@@ -128,22 +123,33 @@ def zar_elavult(adat, most=None, korlat_perc=None, gep=None, el_e=folyamat_el):
     return False, ''
 
 
+ZAR_ATVETEL_UTOTAG = '.atvetel'
+ZAR_ATVETEL_ELAVULT_MP = 60   # az átvételi zár (rövid kritikus szakasz) ennyi idő után elavult: a tartója összeomlott
+ZAR_TURELEM_MP = 60           # az olvashatatlan/üres fő zár (még íródik vagy sérült) csak ennyi idő után elavult
+
+
 class HelyiZar(object):
     """Context manager: a kozos helyi ellenorzes-zar (l. fent). `kiir`, `alvas`, `el_e` a tesztekhez cserelheto.
 
-    Atomi atvetel (ELLENOR_F188 4.): a zar letrehozasa `os.open(O_CREAT | O_EXCL)`, tehat egyszerre egy folyamat hozhatja
-    letre. Az elavult zarat a varakozo nem torli, hanem egyedi nevre atnevezi (`os.rename` atomi: ugyanazt a fajlt
-    csak egy atnevezo nevezheti at), majd az atnevezett tartalmat osszeveti azzal, amit elavultnak itelt. Ha kozben mas
-    friss zarat irt a helyere (a beolvasas es az atnevezes kozott), az nem az elavult zar: visszateszi (`os.link`, amely
-    letezo celra nem ir), es tovabb var. A tartot a zarfajl egyedi azonositoja (`azon`) jeloli, nem a pid: igy az azonos
-    folyamat ket szala sem engedi el egymas zarat. A tarto a kilepeskor a sajat azonositoju atnevezett peldanyt is
-    torli, ezert a visszatett zar nem maradhat arvan."""
+    Helyesseg (ELLENOR_F188_2 1.). Ket fajl: a fo zar (`ut`) es az atveteli zar (`ut + '.atvetel'`).
+    (1) A fo zar csak `os.open(O_CREAT | O_EXCL)`-lel jon letre: egyszerre legfeljebb egy letrehozo nyer.
+    (2) A fo zarat csak az atveteli zar tartoja torli: az elavult zar atvetelekor (ujraolvasas utan, ha meg mindig
+        elavult), es a tarto a sajat zarat kilepeskor (ugyancsak az atveteli zar alatt, `azon` szerint).
+    (3) Az atveteli zar alatt a fo zar ujraolvasasa es torlese kozott senki mas nem torolheti a fo zarat (2), es amig
+        letezik, senki nem hozhat letre ujat (1); a torolt fajl tehat pontosan az, amelyet elavultnak iteltunk.
+    (4) Torles utan az atvevo is `O_EXCL`-lel probal fo zarat letrehozni; ha kozben mas nyert, tovabb var.
+    Atnevezes es visszateves nincs. Olvashatatlan vagy ures fo zar (a letrehozo meg irja) csak `ZAR_TURELEM_MP`
+    utan elavult (mtime). Maradek kockazat: ha egy folyamat az atveteli zar ezredmasodperces kritikus szakaszaban
+    omlik ossze, a `ZAR_ATVETEL_ELAVULT_MP` utan az atveteli zarat torolni kell; ha ezt ket varo egyszerre teszi,
+    ketten lehetnek a kritikus szakaszban. Ehhez osszeomlas es pontos idozites egyszerre kell; a fo zar (1) akkor is
+    kizarja, hogy ket fo zar egyszerre letezzen."""
 
     def __init__(self, leiras, ut=None, varakozas=ZAR_VARAKOZAS_MP, kiir=None, alvas=None, el_e=folyamat_el):
         import time as _time
         import uuid
         self.leiras = leiras
         self.ut = ut or zar_ut()
+        self.atvetel_ut = self.ut + ZAR_ATVETEL_UTOTAG
         self.varakozas = varakozas
         self.kiir = kiir or (lambda s: print(s, file=sys.stderr, flush=True))
         self.alvas = alvas or _time.sleep
@@ -160,37 +166,81 @@ class HelyiZar(object):
         except (OSError, ValueError):
             return None
 
-    @staticmethod
-    def _kulcs(adat):
-        return (adat or {}).get('azon'), (adat or {}).get('pid'), (adat or {}).get('ts')
+    def _elavult(self):
+        """(elavult-e, ok, adat) a fo zar MOSTANI allapotara; (False, 'nincs', None), ha nincs fo zar."""
+        import time as _time
+        adat = self._olvas()
+        if adat is None:
+            try:
+                kor = _time.time() - os.path.getmtime(self.ut)
+            except OSError:
+                return False, 'nincs', None
+            if kor > ZAR_TURELEM_MP:
+                return True, 'olvashatatlan zárfájl, %.0f mp óta' % kor, None
+            return False, 'íródó vagy olvashatatlan zárfájl', None
+        elavult, ok = zar_elavult(adat, el_e=self.el_e)
+        return elavult, ok, adat
 
-    def atvesz(self, elavult_adat):
-        """Az elavultnak itelt zar atnevezese egyedi nevre, es torlese. True: ez a futas nevezte at az elavult zarat
-        (utana ugyanugy O_EXCL-lel probal zarat letrehozni); False: mas nevezte at elobb, vagy a helyen mar friss zar
-        allt (azt visszatette)."""
-        ideiglenes = '%s.elavult.%s' % (self.ut, self.azon)
+    def _atveteli_zar(self):
+        """Az atveteli zar megszerzese (rovid varakozassal), vagy None, ha most nem sikerult. Visszaad: a tartott
+        zar azonositoja (a torleshez)."""
+        import time as _time
         try:
-            os.rename(self.ut, ideiglenes)
-        except OSError:
-            return False  # mas nevezte at elobb, vagy eltunt
-        atnevezett = self._olvas(ideiglenes)
-        if elavult_adat.get('azon') is not None or atnevezett is not None:
-            if self._kulcs(atnevezett) != self._kulcs(elavult_adat):
-                # kozben friss zar kerult a helyere: nem a miénk, vissza (letezo celra nem ir)
-                try:
-                    os.link(ideiglenes, self.ut)
-                except OSError:
-                    pass
-                try:
-                    os.remove(ideiglenes)
-                except OSError:
-                    pass
-                return False
-        try:
-            os.remove(ideiglenes)
-        except OSError:
-            pass
+            fd = os.open(self.atvetel_ut, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except (FileExistsError, PermissionError):
+            try:
+                if _time.time() - os.path.getmtime(self.atvetel_ut) > ZAR_ATVETEL_ELAVULT_MP:
+                    self.kiir('[zár] elavult átvételi zár törölve: %s' % self.atvetel_ut)
+                    os.remove(self.atvetel_ut)
+            except OSError:
+                pass
+            return False
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(self.azon)
         return True
+
+    def _atveteli_zar_el(self):
+        for _ in range(400):
+            try:
+                with open(self.atvetel_ut, encoding='utf-8') as f:
+                    sajat = f.read().strip() == self.azon
+                if sajat:
+                    os.remove(self.atvetel_ut)
+                return
+            except FileNotFoundError:
+                return
+            except PermissionError:
+                import time as _time
+                _time.sleep(0.005)
+
+    def _torol(self, ut):
+        """Fajl torlese; Windowson a mas altal eppen olvasott fajlra rovid ideig ujraprobal."""
+        import time as _time
+        for _ in range(400):
+            try:
+                os.remove(ut)
+                return True
+            except FileNotFoundError:
+                return False
+            except PermissionError:
+                _time.sleep(0.005)
+        return False
+
+    def atvesz(self):
+        """Az elavult fo zar torlese az atveteli zar alatt. True: torolte (utana O_EXCL-lel probal); False: nem kapta
+        meg az atveteli zarat, vagy a fo zar az ujraolvasaskor mar nem elavult (vagy nincs)."""
+        if not self._atveteli_zar():
+            return False
+        try:
+            elavult, ok, _ = self._elavult()
+            if not elavult:
+                return False
+            if self._torol(self.ut):
+                self.kiir('[zár] elavult zár átvéve (%s): %s' % (ok, self.ut))
+                return True
+            return False
+        finally:
+            self._atveteli_zar_el()
 
     def __enter__(self):
         import json
@@ -205,7 +255,7 @@ class HelyiZar(object):
             try:
                 fd = os.open(self.ut, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
             except PermissionError:
-                # Windows: a fájl törlése vagy átnevezése folyamatban (pending delete); rövid várakozás, újra.
+                # Windows: a fájl törlése folyamatban (pending delete); rövid várakozás, újra.
                 # Tartós jogosultsághiba nem várakoztat végtelenül.
                 foglalt_torles += 1
                 if foglalt_torles > 2000:
@@ -214,18 +264,14 @@ class HelyiZar(object):
                 continue
             except FileExistsError:
                 foglalt_torles = 0
-                adat = self._olvas()
-                if adat is None:
-                    try:  # felig irt vagy serult zarfajl: a modositasi ido a kor
-                        adat = {'ts': os.path.getmtime(self.ut), 'gep': None}
-                    except OSError:
-                        continue  # kozben eltunt
-                elavult, ok = zar_elavult(adat, el_e=self.el_e)
+                elavult, ok, adat = self._elavult()
                 if elavult:
-                    if self.atvesz(adat):
-                        self.kiir('[zár] elavult zár átvéve (%s): %s' % (ok, self.ut))
+                    self.atvesz()
                     continue
+                if ok == 'nincs':
+                    continue  # közben eltűnt
                 if not jelezve:
+                    adat = adat or {}
                     self.kiir('[zár] vár: a helyi ellenőrzést más futás tartja (pid %s, %s, %s óta: %s) -- %s'
                               % (adat.get('pid'), adat.get('munkakonyvtar', '?'), adat.get('kezdet', '?'),
                                  adat.get('leiras', '?'), self.ut))
@@ -242,40 +288,33 @@ class HelyiZar(object):
             return self
 
     def __exit__(self, *exc):
+        import time as _time
         if not self.aktiv:
             return False
-        import time as _time
-        # Windows: ha egy váró éppen olvassa a zárfájlt, a törlés és az olvasás PermissionError-ral bukik; rövid ideig
-        # újrapróbáljuk, különben a zár árván maradna (a tartó él, tehát a váró nem venné elavultnak).
-        for _ in range(400):
-            try:
-                with open(self.ut, encoding='utf-8') as f:
-                    sajat = json_betolt(f).get('azon') == self.azon
-            except FileNotFoundError:
+        # A saját zár törlése is az átvételi zár alatt (2): így a törlés nem kerülhet egy átvevő újraolvasása és
+        # törlése közé. Ha az átvételi zár sokáig foglalt (elavult), legfeljebb ZAR_ATVETEL_ELAVULT_MP + ráhagyás.
+        hatar = _time.time() + ZAR_ATVETEL_ELAVULT_MP + 10
+        while not self._atveteli_zar():
+            if _time.time() > hatar:
                 break
-            except PermissionError:
-                _time.sleep(0.005)
-                continue
-            except (OSError, ValueError, AttributeError):
-                break
-            if not sajat:
-                break
-            try:
-                os.remove(self.ut)
-                break
-            except FileNotFoundError:
-                break
-            except PermissionError:
-                _time.sleep(0.005)
-        # Ha egy váró közben (tévesen) átnevezte a zárunkat, és vissza akarja tenni (`atvesz`), az átnevezett
-        # példányt itt töröljük: így a visszatett zár nem maradhat árván a kilépésünk után (a `os.link` forrása eltűnik).
-        import glob as _glob
-        for ut in _glob.glob(glob_escape(self.ut) + '.elavult.*'):
-            if (self._olvas(ut) or {}).get('azon') == self.azon:
+            _time.sleep(0.005)
+        try:
+            for _ in range(400):
                 try:
-                    os.remove(ut)
-                except OSError:
-                    pass
+                    with open(self.ut, encoding='utf-8') as f:
+                        sajat = json_betolt(f).get('azon') == self.azon
+                except FileNotFoundError:
+                    break
+                except PermissionError:
+                    _time.sleep(0.005)
+                    continue
+                except (OSError, ValueError, AttributeError):
+                    break
+                if sajat:
+                    self._torol(self.ut)
+                break
+        finally:
+            self._atveteli_zar_el()
         return False
 
 
