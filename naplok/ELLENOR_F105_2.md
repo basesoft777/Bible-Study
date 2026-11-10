@@ -48,5 +48,3 @@ ELTÉRÉS: 4 tétel
 4. A napló 6.2 szakasza elavult: a 180. sor a `בָּאֿזִקִּים`-ot még nyitott hibaként sorolja, a 174. sor „végleges” táblája a régi szabály számait adja.
 
 **Nem futtatta az ellenőr, mert kívül esik a Bash-körén:** `teszt_bdb_rovidites.py`, `teszt_futtat.py --gyors`, `forras_javit.py --ellenoriz`. Ezek a javítókörben futtatandók.
-
-**Az ellenőr kiegészítése (ugyanebből a futásból, a jelentés után küldve):** egy ellenőrző futás a lexikonlapok nélkül (`--valtozott` a 17 nem `lexikon/` fájllal), ugyanazzal a `--diff-alap 3d7605a1 --diff-fej HEAD` kapcsolóval. Eredménye: HIBA 0, E28 0, E32 0, E12 0, E13 0; E25 3, E27 43, E30 4, E34 41, E36 1, ugyanúgy, mint a teljes futásban. A teljes futás E12 (1374) és E13 (277) találatai tehát a lapok már meglévő tartalmából jönnek, nem a 17 szórend- és maqqéf-sorból. Ez igazolja a CI- és az A6-sorban írt „a diffen kívülre mutat” megállapítást. Az E30 rejtett negyedik találata ezzel a futással sem látszik, ez a sor NEM ELLENŐRIZHETŐ marad.

@@ -1,0 +1,5 @@
+# ELLENOR_F105_2 — az ellenőr utólagos üzenete (kiegészítés)
+
+*Az `ELLENOR_F105_2.md` az ellenőr jelentését változatlanul rögzíti (F105.24). Az ellenőr a jelentés után még küldött egy üzenetet: egy ellenőrző CI-futást a lexikonlapok nélkül. Ezt a szöveget eredetileg az F105.30 fűzte a jelentés végére, ami az `/elteres` 7. pontjába ütközik (ELLENOR_F105_3 1.). Most innen áll, a jelentés pedig visszaállt az eredetire. A tartalmát az ellenőr újrafuttatással igazolta (`ELLENOR_F105_3_kiegeszites.md`).*
+
+**Az ellenőr kiegészítése (ugyanebből a futásból, a jelentés után küldve):** egy ellenőrző futás a lexikonlapok nélkül (`--valtozott` a 17 nem `lexikon/` fájllal), ugyanazzal a `--diff-alap 3d7605a1 --diff-fej HEAD` kapcsolóval. Eredménye: HIBA 0, E28 0, E32 0, E12 0, E13 0; E25 3, E27 43, E30 4, E34 41, E36 1, ugyanúgy, mint a teljes futásban. A teljes futás E12 (1374) és E13 (277) találatai tehát a lapok már meglévő tartalmából jönnek, nem a 17 szórend- és maqqéf-sorból. Ez igazolja a CI- és az A6-sorban írt „a diffen kívülre mutat” megállapítást. Az E30 rejtett negyedik találata ezzel a futással sem látszik, ez a sor NEM ELLENŐRIZHETŐ marad.
