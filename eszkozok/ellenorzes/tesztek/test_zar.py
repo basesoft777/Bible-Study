@@ -144,6 +144,37 @@ class LassuTesztTeszt(unittest.TestCase):
         self.assertEqual(TF.erintett_lassu(['eszkozok/olvaso_szerver_regi.py']),
                          {f: False for f in TF.LASSU_LEFEDETT})
 
+    def test_olvaso_pilot_es_fuggesek(self):
+        # ELLENOR_F188 2.: a blokkok.py az olvaso_pilot/bdb_szelet.py-t tölti be, a teszt_szintek az olvaso_pilot/adat.py-t
+        TF = _teszt_futtat()
+        for ut in ('eszkozok/olvaso_pilot/bdb_szelet.py', 'eszkozok/olvaso_pilot/adat.py', 'eszkozok/bdb_rovidites.py',
+                   'eszkozok/bdb_konyv_javit.py', 'eszkozok/bdb_jelolt/szakasz_bemenet.py'):
+            self.assertEqual(TF.erintett_lassu([ut]), {f: True for f in TF.LASSU_LEFEDETT}, ut)
+        # a teszt_szintek a TSV-kből épít (pilot JSON), a teszt_arculat nem
+        self.assertEqual(TF.erintett_lassu(['adat/elofordulasok.tsv']),
+                         {'teszt_szintek.py': True, 'teszt_arculat.py': False})
+
+    def test_olvaso_szerver_fajlutas_betoltesei_a_listan(self):
+        # statikus őr: az olvasó-szerver nem-teszt moduljainak fájlútról / import_module-lal betöltött modulja a listán áll
+        import re
+        TF = _teszt_futtat()
+        szerver = os.path.join(_REPO, 'eszkozok', 'olvaso_szerver')
+        kell = set()
+        for nev in os.listdir(szerver):
+            if not nev.endswith('.py') or nev.startswith('teszt_'):
+                continue
+            with open(os.path.join(szerver, nev), encoding='utf-8') as f:
+                szoveg = f.read()
+            if "'olvaso_pilot'" in szoveg:
+                kell.add('eszkozok/olvaso_pilot/x.py')
+            if "'bdb_jelolt'" in szoveg:
+                kell.add('eszkozok/bdb_jelolt/x.py')
+            for m in re.findall(r"_eszkoz_modul\('(\w+)'\)|import_module\('(\w+)'\)", szoveg):
+                kell.add('eszkozok/%s.py' % (m[0] or m[1]))
+        self.assertTrue(kell)
+        for ut in sorted(kell):
+            self.assertTrue(all(TF.erintett_lassu([ut]).values()), ut)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

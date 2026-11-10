@@ -21,7 +21,8 @@ Kilépési kód: 0, ha minden fájl zöld; egyébként 1.
 F188 (MUNKAMENET.md „Menet-ellenőrzés”, 3–4. pont):
   * a lassú tesztek lefedett fájljainak egyetlen listája a `LASSU_LEFEDETT`; a `--diff ALAP` a többi tesztet futtatja, a lassút
     csak akkor, ha a diff (a munkafa a `git merge-base ALAP HEAD`-hez képest, az új fájlokkal) a lefedett fájlok valamelyikét
-    érinti; különben kiírja, hogy kihagyta, és a CI eredménye a mérvadó;
+    érinti; különben kiírja, melyiket nem futtatta, és miért. A CI ezeket a teszteket nem futtatja: ha a diff érinti őket,
+    helyben futniuk kell (ELLENOR_F188 2.);
   * a futás a közös helyi ellenőrzés-zárat veszi (`eszkozok/ellenorzes/futtat.py` `HelyiZar`, `~/.pardes/ellenorzes.zar`);
     Windowsról a Windows-oldalon veszi, mielőtt a WSL-be lép, és a WSL-beli futás (`--zar-tartva`) már nem vesz újat.
 """
@@ -40,11 +41,20 @@ if hasattr(sys.stderr, 'reconfigure'):
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SZERVER = os.path.join(REPO, 'eszkozok', 'olvaso_szerver')
 LASSU = ('teszt_szintek.py', 'teszt_arculat.py')  # ~19 perc (#98, párhuzamos futás mellett); ~30 perc (#104 javítóköre)
-# F188 T4: a lassú tesztfájlok lefedett fájljai (repó-relatív előtag; `/`-re végződő = könyvtár). Egy hely: ez. A tesztek
-# az olvasó-szerver kódját és a kész ~/pardes/pardes.db-t használják (a diff adatváltozása a DB újraépítéséig nem hat rájuk).
+# F188 T4 (ELLENOR_F188 2.): a lassú tesztfájlok lefedett fájljai (repó-relatív; `/`-re végződő = könyvtár). Egy hely: ez.
+# A lista a tesztek importfüggése: az olvasó-szerver kódja, és amit fájlútról vagy a sys.path-on át betölt (`blokkok.py`:
+# olvaso_pilot/bdb_szelet, bdb_rovidites -> kiejtes, tanulmany_regiszter; `bdb_szelet.py`: bdb_konyv_javit -> normalizal,
+# forditas_kapuk -> naplok/FORDITAS_P4_ellenoriz.py; `lekerdezesek.py`: bdb_jelolt/szakasz_bemenet). A `teszt_szintek` a
+# `_pilot_json`-on át az `olvaso_pilot/adat.py`-t is futtatja, amely a TSV-kből épít (tsk_kulcs, karoli_kh_szuro, bdb_jelolt):
+# ezért az `adat/` és a `konkordancia/` változása is érinti. A `test_zar.py` statikusan ellenőrzi, hogy az olvasó-szerver
+# fájlútról betöltött moduljai a listán vannak.
+_OLVASO_KOD = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/bdb_jelolt/', 'eszkozok/bdb_rovidites.py',
+               'eszkozok/kiejtes.py', 'eszkozok/tanulmany_regiszter.py', 'eszkozok/bdb_konyv_javit.py',
+               'eszkozok/normalizal.py', 'eszkozok/forditas_kapuk.py', 'naplok/FORDITAS_P4_ellenoriz.py',
+               'eszkozok/tsk_kulcs.py', 'eszkozok/karoli_kh_szuro.py', 'eszkozok/teszt_futtat.py')
 LASSU_LEFEDETT = {
-    'teszt_szintek.py': ('eszkozok/olvaso_szerver/',),
-    'teszt_arculat.py': ('eszkozok/olvaso_szerver/',),
+    'teszt_szintek.py': _OLVASO_KOD + ('adat/', 'konkordancia/'),
+    'teszt_arculat.py': _OLVASO_KOD,
 }
 WSL_DISZTRO = 'pardes'
 WSL_VENV_PY = '$HOME/pardes/eszkozok/olvaso_szerver/.venv/bin/python'
@@ -157,8 +167,9 @@ def main():
         else:
             for f, erint in sorted(erintett_lassu(valtozott).items()):
                 if not erint:
-                    print('[teszt_futtat] kihagyva: %s -- a diff nem érinti a lefedett fájljait (%s); a CI eredménye a mérvadó'
-                          % (f, ', '.join(LASSU_LEFEDETT[f])))
+                    print('[teszt_futtat] NEM FUTOTT: %s -- a diff (%d fájl, merge-base %s) egyik lefedett fájlját sem érinti '
+                          '(LASSU_LEFEDETT: %d elem); ezt a tesztet a CI sem futtatja' % (f, len(valtozott), a.diff,
+                                                                                         len(LASSU_LEFEDETT[f])))
                     argv += ['--kihagy', f]
                     a.kihagy.append(f)
         i = argv.index('--diff')

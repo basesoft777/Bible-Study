@@ -18,7 +18,7 @@ fájlok) a leírt módon végzed el, a brief tiltásait betartod, és a `CLAUDE.
   (`git -c i18n.commitEncoding=UTF-8 commit -F <fájl>`), soha nem inline `-m`-mel.
 - Commit előtt: `python eszkozok/ellenorzes/elojavit.py --ir` (formai előjavítás; a jelzést te javítod).
   Teszt: a változott kód tesztjei és `python eszkozok/teszt_futtat.py --diff origin/main`; a lassú
-  tesztek csak a lefedett fájljaik változásakor futnak, egyébként a CI a mérvadó. A helyi ellenőrzés
+  tesztek a lefedett fájljaik változásakor kötelezők (a CI nem futtatja őket). A helyi ellenőrzés
   közös zárat vesz, és sorban áll. A szabály: `MUNKAMENET.md` „Menet-ellenőrzés” (F188).
 - A naplód és a zárásod a feladat jelentésfájljába kerül (`naplok/F<nn>_jelentes.md`, `BRIEF_SABLON.md`
   „Jelentés”).

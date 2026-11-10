@@ -66,8 +66,9 @@ ellenőrzőlista egyetlen pontja sem marad el miatta.
    akkor is csak a változott kódhoz tartozó tesztfájlokat (`eszkozok/teszt_<név>.py`,
    `eszkozok/ellenorzes/tesztek/`), valamint `python eszkozok/teszt_futtat.py --diff base`.
    A lassú olvasó-szerver tesztek csak akkor futnak, ha a diff a lefedett fájljaikat
-   érinti (`eszkozok/teszt_futtat.py` `LASSU_LEFEDETT`). Ha a diff nem érint kódot, a
-   CI szabály-tesztjeinek eredménye a mérvadó.
+   érinti (`eszkozok/teszt_futtat.py` `LASSU_LEFEDETT`); ezeket a CI nem futtatja, ezért
+   érintettségnél kötelezők. Ha a diff nem érint kódot, a CI szabály-tesztjeinek
+   eredménye a mérvadó.
 
 ## Ellenőrzési szint (F188 T5)
 
