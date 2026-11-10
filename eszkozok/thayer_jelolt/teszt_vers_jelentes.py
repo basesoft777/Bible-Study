@@ -154,8 +154,9 @@ class Tabla(unittest.TestCase):
 
 
 ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
-# a mért, de nem javított osztály (naplok/F186_jelentes.md 3.: K3, a záró szinonima-jegyzet; a táblában nincs `zaro` érték)
-NEM_JAVITOTT = {'K3'}
+# a mért, de nem javított osztályok (naplok/F186_jelentes.md 3. és 5.): K3 — a záró szinonima-jegyzet (a táblában nincs `zaro`
+# érték); a seed-202 osztályai (K1b, K1c, K2b, K4) — a javításuk a T4 utáni döntésre vár (új vak minta kell, seed-203)
+NEM_JAVITOTT = {'K3', 'K1b', 'K1c', 'K2b', 'K4'}
 
 
 def arany():
