@@ -165,3 +165,46 @@ A hatókör az orkesztrátor döntésével bővült: az N-F186g-vel (az olvasó 
 `teszt_thayer_api_koteg.py` tagsor-biztos) és az F29 (a)–(e)-vel (a BDB-kártya hibái), a BDB_OLVASOI kapu bővítésével (a (b)–(c) és a
 görög kártya). Az orkesztrátor menet közbeni iránya szerint a kérdéses pontok (F29 (d), (c) az apparátusban) nem javultak, csak
 jelölve vannak (N-F187a, N-F187b). Az `ir` mező ennek megfelelően bővült (F187.0).
+
+## Javítókör (ELLENOR_F187)
+
+*Az egyetlen javítókör (orkesztrátor, 2026-11-10): utána nincs újraellenőrzés; a maradék csak leírva. A független ellenőr
+jelentése: `naplok/ELLENOR_F187.md` (F187.6).*
+
+1. **T4 + A1 (súlyos) — javítva (F187.7).** A szó-lap száma a #186 mérvadó, valóban vak seed-204 mérése: 196/200 = 98,0%,
+   Wilson 95,0–99,2 (`naplok/F186_jelentes.md` 10.3; a #186 brief `lezarva_osszegzes`-e). A toml felirata „200 véletlen
+   újszövetségi hivatkozás valóban vak ellenőrzéssel”, a proveniencia a seed-204-re mutat; a teszt és a 4.1 pont igazítva.
+2. **A szó-lap glosszája — javítva (F187.8).** A glossza-szabály közös modulba került (`eszkozok/szotari_glossza.py`:
+   `olvasoi_glossza`, `thayer_glossza`, `thayer_fej_glossza`, `thayer_csak_alak`); a `lexikon_general.py` innen importálja, a
+   szó-lap (`blokkok._r_magyar_gorog`) ugyanezt hívja, a jóváhagyott címkével (`szotar_szakasz_cimke`, `lekerdezesek.thayer_cimkek`).
+   A saját `_th_glossza` megszűnt. Teszt: G1311 1. → „megront, rosszabbá tesz”.
+3. **A szó-lap jelentésfája — javítva (F187.8).** A pontok a `thayer_szakaszok`-ból (`lekerdezesek.thayer_szakasz_sorok`;
+   azonos útvonal egyszer); érvényes fordítás nélkül a pont „(fordításra vár)” jelöléssel áll (az olvasói rétegben és az
+   apparátusban), a lappal azonos szöveggel. Teszt: `test_forditas_nelkuli_pont_jelolve`.
+4. **N128 (= N-F186g) — lezárva (F187.9)** a fő `NYITOTT_FELADATOK.md`-ben, a meglévő sor áthúzva, „LEZÁRVA” jelöléssel.
+5. **A `_r_usz` „(DT-F76d)” eltávolítása — marad, külön pontként rögzítve.** Az `elojavit.py --ir` (E32) az F187.2 commit előtt a
+   szó-lap ÚSZ-blokkjának olvasói szövegéből („… A `token_strong` a láncelemeket is számolja (DT-F76d).”) a döntésazonosítót
+   kivette. Hatókörön kívüli változás, de az F29 (c) elvével egyező: belső azonosító nem áll az olvasói szövegben.
+6. **N-F187b — lezárva (F187.10, F187.12), orkesztrátori döntéssel:** „A kutatói réteg (apparátus) összecsukott, és a kutatónak
+   szól, ezért ott a BDB-szócikk azonosítója forrás-hivatkozásként maradhat. Egy feltétellel: olvasható formában álljon, ne nyers
+   megjegyzésként, például „(BDB 9520. szócikk)”. Az olvasói rétegben továbbra se legyen.” Végrehajtás generátorszinten, csak a
+   kétrétegű kártyán: `bdb_azonosito_olvashato` (fejcím „**BDB 2699. szócikk**”, elnyelő mondat „a BDB 9520. szócikk fejét”),
+   `bdb_kulcs_olvashato` (kutatói megjegyzés „BDB 9520. szócikk, feje → BDB 2699. szócikk, 5. szakasz”, nyers útvonal nélkül). A
+   „pont” szót a kapu PONT-figyelmeztetése miatt „szakasz”-ra cseréltem (a lap szóhasználata). Teszt:
+   `test_c_apparatusban_olvashato_forras_hivatkozas`. A `nyitott/uj` fájlban lezártnak jelölve.
+7. **Holt kód — törölve (F187.11):** `_szocikk_nev`, a `helyek_pontjai` `fej_jelentes` paramétere.
+8. **Az `elojavit` T2-jelzése — javítva (F187.7):** a 4.1 proveniencia-sora a tábla számát nem ismétli, a táblára hivatkozik.
+
+**Ellenőrző futások a javítókör végén:**
+
+- Kikapcsolt kapcsolóval a HAMART-001 `--kimenet` próbája a `ts=` sorokon kívül bájtra azonos a commitolt lappal (a glossza-modul
+  áthelyezése után is).
+- Az új minta (`…\scratchpad\f187_minta\`, a fájlok a 6. szakasz szerint, felülírva): olvasói kapu 0 BUKÁS, 25 FIGY; kiejtés-szabály
+  21 hiány — mindkettő azonos a mai lappal. A héber és a görög olvasói réteget újra átnéztem: munkaszó, belső azonosító, számjegyes
+  szócikk-sorszám nincs; egy vers egyszer áll; a félkövér a helyek sorát követi. Az apparátusban nyers `BDB<szám>` és nyers útvonal
+  nincs.
+- Tesztek: `teszt_szotari_gerinc.F187KartyaJavitasok` + `KetreteguBdbKartya`, `teszt_olvasoi_kapu.BdbOlvasoiReteg` (Windows) OK;
+  WSL-ben `teszt_olvaso_szerver.TestF187ThayerKartya` + `TestRegiszterEsAdatbazis`, `teszt_tervezo`, `teszt_ubs_dbh`: 68 OK.
+
+**Nem javított maradék:** N-F187a (F29 (d)), N-F187c (a kártya forrása a #185 után), N-F187d (glossza nélküli BDB-szakaszok) —
+változatlanul nyitott. A szó-lap Thayer-része a WSL-natív `pardes.db` újraépítéséig a #186 előtti szakasztáblát látja.
