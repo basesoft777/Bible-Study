@@ -200,7 +200,9 @@ def _heber_jel(c):
 # utolsó betűjére (`עִםֿ הַחֲמוֺר`, `בַּתֿ צִיּוֺן`). Szabály: végbetű-alak, vagy a token utolsó betűje (utána nem héber betű
 # vagy geres áll) → a szóhatár utána; minden más betű → előtte (a második szó eleje). „Előtte”: maqqéf a betű elé, az előző betű végbetű-alakra (ha nem rövidítés); csak ha a szóban van
 # előző betű. „Utána”: maqqéf a betű jelei után, ha ott héber betű áll, vagy a közvetlen szóköz helyére, ha utána héber
-# betű jön. Ahol egyik sem áll, a rafe marad (nem találgatunk). Mérés (a magánhangzó-pont szerinti változat elvetve):
+# betű jön. Ahol egyik sem áll, a rafe marad (nem találgatunk). Kivétel (`_szotag_zaro`, ELLENOR_F105 3.): pont nélküli
+# rafés betű nyitott szótag után → utána (`אֶתֿכֹּל` → `אֶת־כֹּל`), ha pedig mater-betű (ו / י) követi, szón belüli rafe → marad.
+# Mérés (a magánhangzó-pont szerinti változat elvetve):
 # `naplok/F105_naplo.md`, `naplok/F105_maqqef_meres.py`.
 RAFE = 'ֿ'
 MAQQEF = '־'
@@ -213,6 +215,26 @@ def _betu(c):
 
 def _jel(c):
     return '֑' <= c <= 'ׇ' and c != MAQQEF
+
+
+_PONT = set('ְֱֲֳִֵֶַָׇֹֺֻ')   # magánhangzó-pontok (a sva is)
+
+
+def _szotag_zaro(s, b, e):
+    """A rafét hordozó (b) betű nyitott szótag után áll: neki nincs magánhangzó-pontja, az előtte álló betűnek van (a sva nem
+    számít), és az nem mater-betű (ו / י: `לוֺ`, `עֲלֵי` után a következő betű a második szó eleje). Ilyenkor a betű az első
+    szó szótagját zárja (`אֶתֿכֹּל` → 'utana'), kivéve ha utána mater-betű (ו / י) jön: az a szón belüli rafe (`חֲטֻבֿוֺת`,
+    `מִמֵּנֿוּ`), nem maqqéf → 'marad'. Más esetben None (az általános szabály dönt)."""
+    if any(c in _PONT for c in s[b + 1:e]):
+        return None
+    p = b - 1
+    while p >= 0 and _jel(s[p]):
+        p -= 1
+    if p < 0 or not _betu(s[p]) or s[p] in 'וי':
+        return None
+    if not any(c in _PONT and c != 'ְ' for c in s[p + 1:b]):
+        return None
+    return 'marad' if e < len(s) and s[e] in 'וי' else 'utana'
 
 
 def maqqef_javit(szoveg):
@@ -235,7 +257,11 @@ def maqqef_javit(szoveg):
         while e < len(s) and _jel(s[e]):
             e += 1
         kov = s[e] if e < len(s) else ''
-        elotte = s[b] not in 'ךםןףץ' and (_betu(kov) or kov == '׳')
+        zaro = _szotag_zaro(s, b, e)
+        if zaro == 'marad':
+            i += 1
+            continue
+        elotte = s[b] not in 'ךםןףץ' and (_betu(kov) or kov == '׳') and zaro != 'utana'
         if elotte:
             p = b - 1                               # az előző betű (a jelei és a geres átugrásával)
             while p >= 0 and (_jel(s[p]) or s[p] == '׳'):

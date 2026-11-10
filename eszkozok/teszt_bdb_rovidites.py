@@ -164,6 +164,18 @@ class Maqqef(unittest.TestCase):
     def test_vegbetu_a_szohatar_utana(self):
         self.assertEqual(nfc(BR.maqqef_javit('עִםֿ הַחֲמוֺר')), nfc('עִם־הַחֲמוֺר'))
 
+    def test_nyitott_szotag_utan_a_szohatar_utana(self):
+        # ELLENOR_F105 3.: a pont nélküli rafés betű az első szó szótagját zárja
+        self.assertEqual(nfc(BR.maqqef_javit('אֶתֿכֹּל׃')), nfc('אֶת־כֹּל׃'))
+
+    def test_szon_beluli_rafe_marad(self):
+        # nyitott szótag után mater-betű követi: szón belüli rafe, nem maqqéf
+        for sz in ('חֲטֻבֿוֺת', 'מִמֵּ֫נֿוּ'):
+            self.assertEqual(BR.maqqef_javit(sz), sz)
+
+    def test_sva_nem_zarja_a_szotagot(self):
+        self.assertEqual(nfc(BR.maqqef_javit('אַךְטֿוֺב')), nfc('אַךְ־טוֺב'))
+
     def test_token_vegi_rafe_a_szohatar_utana(self):
         self.assertEqual(nfc(BR.maqqef_javit('בַּתֿ צִיּוֺן')), nfc('בַּת־צִיּוֺן'))
 
