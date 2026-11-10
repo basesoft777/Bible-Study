@@ -1,4 +1,4 @@
-# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5, DT-F181j)
+# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5)
 
 *A tételek előállítása: `python eszkozok/karoli_kh_mek.py szuroproba --be konkordancia/Karoli_KH_javitott.tsv --md naplok/F181_szuroproba.md --mag 181 --kontroll 40 --hunkar-gyanus 30 --hossz 150 --ts 2026-11-09` (a tábla állapota: 6af8b0cf (F181.17)). Az ítélet és az indok oszlopot az F181.21 töltötte ki (DT-F181j, ELLENOR_F181 E5): `claude-opus-5-5` olvasata, a két vers Károli-szövege alapján; az összesítés a fájl végén.*
 

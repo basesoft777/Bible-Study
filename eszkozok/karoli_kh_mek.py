@@ -907,7 +907,7 @@ def e2_meres(hk, mek, letezo):
     volt_gyanus = sorted(k for k in csak_mek if sorban[k]['dontes'] == D_E2 and sorban[k]['gyanus_mek'])
     hk_nelkul = sorted(k for k in csak_mek if not any(
         m['hunkar'] for f, m in mintak_ if f == k[0] and k[1] in m['letezo_tagok']))
-    sz = ['E2-hibaminta (DT-F181h), teljes mérés a nyers táblán',
+    sz = ['E2-hibaminta, teljes mérés a nyers táblán',
           'minta (két-három egymás utáni MEK-sor): %d; forrásvers: %d' % (len(mintak_), len(versek)),
           'HunKar-megfelelővel bíró minta: %d (forrásvers: %d); HunKar-megfelelő nélküli: %d' % (
               len(hk_van), len({f for f, _ in hk_van}), len(mintak_) - len(hk_van)),
@@ -972,10 +972,10 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
     w('## 2. A szabály (J2) kimenete, soronként\n')
     w('A szabály (a szövege egy helyen: `konkordancia/Karoli_KH_MEK_README.md` 7.): a MEK-oldali jelölt sor `megerositett`, '
       '**kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a '
-      'HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke (DT-F181h), (4) a MEK-cél '
+      'HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke, (4) a MEK-cél '
       'egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `megerositett`, ha a MEK-párja '
-      'nem ellentmond neki (E1: a pár célja nem létezik, DT-F181g; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik '
-      'végpontját adja, DT-F181i); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az '
+      'nem ellentmond neki (E1: a pár célja nem létezik; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik '
+      'végpontját adja); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az '
       'elírás-gyanús sor párját); egyébként jelölt marad. A TSK nem szerepel a szabályban.\n')
     w('| döntés | sor |')
     w('|---|---|')
@@ -1063,17 +1063,17 @@ def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
       'szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: %s.' % (
           len(elir), ', '.join('%s %d' % (a, _db(elir, lambda r: r['altipus'] == a)) for a in ELIRAS)))
     tart = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['altipus'] == 'tartomány/vershatár')
-    w('* **Tartomány-végpontok (E3, DT-F181i):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a '
+    w('* **Tartomány-végpontok (E3):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a '
       'tartomány egyik végpontját adja (a másik hiányzik vagy értelmezhetetlen), a HunKar-tartomány `megerositett` (%d sor, ebből %d értelmezhetetlen, de a tartomány végének versszámával egyező MEK-véggel), a MEK-végpontsor és az '
       'értelmezhetetlen társa `kiesik` (%d sor): a lap/index a tartományt egyszer kapja, a tartomány vége nem vész el. A '
       'beemelt MEK-sorok közül még %d a HunKar-tartomány szomszédja (nem végpontja), ezek nem olvadnak be.' % (
           dk[D_HK_VEGPONT], _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_MEK_VEGPONT and not r['cel']),
           dk[D_MEK_VEGPONT], tart))
-    w('* **Az E2-hibaminta (DT-F181h):** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező '
+    w('* **Az E2-hibaminta:** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező '
       'töredék nem emelődik be (%d sor `jelolt`), a HunKar-megfelelő `megerositett` (%d sor); a teljes mérés: '
       '`python eszkozok/karoli_kh_mek.py e2-meres` (10. szakasz).' % (dk[D_E2], dk[D_HK_E2]))
     w('* **A fogyasztók** (`karoli_kh_szuro.mek_sorok()` a `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, '
-      '`nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (N-F181e, lezárva: 9. szakasz).')
+      '`nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (lezárva: 9. szakasz).')
 
     w('## 5. A jelölt szint súlya\n')
     s = suly
@@ -1263,11 +1263,11 @@ def szuroproba_main(a):
         def igehely(k):
             r = step_ref(k)
             return '%s %d:%d' % (hu.get(r[0], r[0]), r[1], r[2]) if r else k
-        md = ['# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5, DT-F181j)', '',
+        md = ['# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5)', '',
               '*A tételek előállítása: `python eszkozok/karoli_kh_mek.py szuroproba --be konkordancia/Karoli_KH_javitott.tsv '
               '--md naplok/F181_szuroproba.md --mag %d --kontroll %d --hunkar-gyanus %d --hossz %d --ts %s` (a tábla '
               'állapota: %s). Az ítélet és az indok oszlop üres: az értelmező ítéletet Opus hozza külön lépésben '
-              '(DT-F181j).*' % (a.mag, a.kontroll, a.hunkar_gyanus, a.hossz, ts, a.tabla_allapot or 'lásd a commitot'), '',
+              '(az orkesztrátor szúrópróba-döntése).*' % (a.mag, a.kontroll, a.hunkar_gyanus, a.hossz, ts, a.tabla_allapot or 'lásd a commitot'), '',
               '*Rétegzés (könyvenként arányos, legnagyobb maradék módszere, rögzített mag): %s*' % ki[0], '',
               '*A Károli-szöveg a `Karoli_1908.tsv`-ből (`python eszkozok/lekerdez.py karoli "<hely>"` ugyanezt adja), '
               'legfeljebb %d karakter; „F”: a forrásvers, „C”: a hivatkozott vers.*' % a.hossz, '',
@@ -1310,7 +1310,7 @@ def main():
     b.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
     b.add_argument('--ki')
     b.add_argument('--ts')
-    e = sp.add_parser('e2-meres', help='az E2-hibaminta teljes mérése a nyers táblán (F181, DT-F181h)')
+    e = sp.add_parser('e2-meres', help='az E2-hibaminta teljes mérése a nyers táblán (F181)')
     e.add_argument('--ki')
     z = sp.add_parser('szuroproba', help='rétegzett szúrópróba-minta a maradékból és a beemeltekből (F181, J3)')
     z.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))

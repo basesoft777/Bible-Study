@@ -25,7 +25,7 @@ Nem létező cél vagy forrásvers (`Karoli_1908` ∪ MEK-versszerkezet szerint)
 
 ## 2. A szabály (J2) kimenete, soronként
 
-A szabály (a szövege egy helyen: `konkordancia/Karoli_KH_MEK_README.md` 7.): a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke (DT-F181h), (4) a MEK-cél egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `megerositett`, ha a MEK-párja nem ellentmond neki (E1: a pár célja nem létezik, DT-F181g; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik végpontját adja, DT-F181i); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az elírás-gyanús sor párját); egyébként jelölt marad. A TSK nem szerepel a szabályban.
+A szabály (a szövege egy helyen: `konkordancia/Karoli_KH_MEK_README.md` 7.): a MEK-oldali jelölt sor `megerositett`, **kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke, (4) a MEK-cél egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `megerositett`, ha a MEK-párja nem ellentmond neki (E1: a pár célja nem létezik; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik végpontját adja); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az elírás-gyanús sor párját); egyébként jelölt marad. A TSK nem szerepel a szabályban.
 
 | döntés | sor |
 |---|---|
@@ -154,8 +154,8 @@ A sor saját céljára mutató TSK-támogatás: mai szabály szerint 2053 sor, e
 ## 4. Mire kell figyelni a szabály alkalmazásakor
 
 * **Elírás-gyanús osztály (orkesztrátori döntés):** 10 MEK-oldali sor áll olyan HunKar-sorral párban, amelytől egyetlen összetevőben (könyv/fejezet/versszám) tér el, és a MEK-cél létezik. A végrehajtói olvasat szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: könyv-elírás 2, fejezet-elírás 3, versszám-elírás 5.
-* **Tartomány-végpontok (E3, DT-F181i):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a tartomány egyik végpontját adja (a másik hiányzik vagy értelmezhetetlen), a HunKar-tartomány `megerositett` (8 sor, ebből 3 értelmezhetetlen, de a tartomány végének versszámával egyező MEK-véggel), a MEK-végpontsor és az értelmezhetetlen társa `kiesik` (11 sor): a lap/index a tartományt egyszer kapja, a tartomány vége nem vész el. A beemelt MEK-sorok közül még 1 a HunKar-tartomány szomszédja (nem végpontja), ezek nem olvadnak be.
-* **Az E2-hibaminta (DT-F181h):** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező töredék nem emelődik be (9 sor `jelolt`), a HunKar-megfelelő `megerositett` (7 sor); a teljes mérés: `python eszkozok/karoli_kh_mek.py e2-meres` (10. szakasz).
+* **Tartomány-végpontok (E3):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a tartomány egyik végpontját adja (a másik hiányzik vagy értelmezhetetlen), a HunKar-tartomány `megerositett` (8 sor, ebből 3 értelmezhetetlen, de a tartomány végének versszámával egyező MEK-véggel), a MEK-végpontsor és az értelmezhetetlen társa `kiesik` (11 sor): a lap/index a tartományt egyszer kapja, a tartomány vége nem vész el. A beemelt MEK-sorok közül még 1 a HunKar-tartomány szomszédja (nem végpontja), ezek nem olvadnak be.
+* **Az E2-hibaminta:** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező töredék nem emelődik be (9 sor `jelolt`), a HunKar-megfelelő `megerositett` (7 sor); a teljes mérés: `python eszkozok/karoli_kh_mek.py e2-meres` (10. szakasz).
 * **A fogyasztók** (`karoli_kh_szuro.mek_sorok()` a `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, `nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (N-F181e, lezárva: 9. szakasz).
 ## 5. A jelölt szint súlya
 
@@ -280,7 +280,7 @@ Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TS
 
 ## 7. A maradék szúrópróbája és a kontroll (J3) — az első kör, történeti
 
-> **Javítókör 1 (ELLENOR_F181 E5, DT-F181j): az érvényes szúrópróba az Opus-ítélet (F181.21).** Az E1/E2/E3 utáni új minta 136 tétele, tételes ítélettel és indokkal: `naplok/F181_szuroproba.md` (mag=181, a tábla állapota `6af8b0cf`; ítélet: `claude-opus-5-5`, a két vers Károli-szövege alapján).
+> **Javítókör 1 (ELLENOR_F181 E5): az érvényes szúrópróba az Opus-ítélet (F181.21).** Az E1/E2/E3 utáni új minta 136 tétele, tételes ítélettel és indokkal: `naplok/F181_szuroproba.md` (mag=181, a tábla állapota `6af8b0cf`; ítélet: `claude-opus-5-5`, a két vers Károli-szövege alapján).
 >
 > *scope=naplok/F181_szuroproba.md + konkordancia/Karoli_1908.tsv + konkordancia/Karoli_KH_javitott.tsv | forras=a `claude-opus-5-5` olvasata, tételesen | ts=2026-11-09*
 >
@@ -536,7 +536,7 @@ Nem történt: lexikonlap-újragenerálás; a `pardes.db` (a `sqlite_epit.py` cs
 **E2 — a MEK fejezet-hibamintája (DT-F181h; F181.13).** Gépi felismerés: `karoli_kh_mek.e2_mintak`; teljes mérés: `python eszkozok/karoli_kh_mek.py e2-meres` (a nyers táblán):
 
 ```
-E2-hibaminta (DT-F181h), teljes mérés a nyers táblán
+E2-hibaminta, teljes mérés a nyers táblán
 minta (két-három egymás utáni MEK-sor): 26; forrásvers: 24
 HunKar-megfelelővel bíró minta: 7 (forrásvers: 7); HunKar-megfelelő nélküli: 19
 létező MEK-töredék a mintákban: 21
