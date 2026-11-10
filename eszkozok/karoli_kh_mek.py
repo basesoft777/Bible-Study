@@ -1277,7 +1277,7 @@ def szuroproba_main(a):
             c0 = cel.split('-')[0]
             celnev = igehely(c0) + (' – ' + igehely(cel.split('-')[-1]) if '-' in cel else '')
             md.append('| %d | %s | %s | %s | %s | %s | %s |  |  |' % (
-                i, _md_cella(ret), igehely(fv), celnev, _md_cella(alak),
+                i, _md_cella(ret), igehely(fv), celnev, ('`%s`' % _md_cella(alak) if alak else ''),  # E8: szó szerinti MEK-idézet, kódformázva
                 _md_cella(szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz]),
                 _md_cella(szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])))
         with open(a.md, 'w', encoding='utf-8', newline='\n') as f:
