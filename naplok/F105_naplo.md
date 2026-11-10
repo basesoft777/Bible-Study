@@ -179,7 +179,7 @@ a Macula szókészletében):
 A „rossz” felső becslés (a 2. változatnál 113): benne a pe/mem-forráshiba (`אֶת־מִּיהָ` = פִּיהָ) és a ritka / csonka szó (`אֶל־הַחָם`) zaja;
 valódi hiba a nem maqqéf-jelölő rafe (`אַרְכָֿה`, `לאֿהרן`) és — a 2. változatban — a szón belüli szóvégi rafe (`אֶתֿכֹּל` →
 `אֶ־תכֹּל`; az F105.15 javította). A token
-végi rafe (`בַּתֿ צִיּוֺן` → `בַּת־צִיּוֺן`) a szomszéd szóval kapcsolódik; ezt a szómérés nem látja (a „változatlan” 1 631-ben).
+végi rafe (`בַּתֿ צִיּוֺן` → `בַּת־צִיּוֺן`) a szomszéd szóval kapcsolódik; ezt a szómérés nem látja (a „változatlan” 1 641-ben a végleges szabályon, `naplok/F105_maqqef_meres.py`; az F105.9-es szabályon 1 631 volt).
 
 *Javítókör (ELLENOR_F105 3., 2026-11-10):* az ismert hibás kimenet (`אֶתֿכֹּל` → `אֶ־תכֹּל`) javítva. Kivétel a szabályban (`_szotag_zaro`): ha a rafét hordozó betűnek nincs magánhangzó-pontja, az előtte állónak van (a sva nem számít, a ו / י mater-betű nem), a betű az első szó szótagját zárja → a szóhatár utána (`אֶת־כֹּל`, `תִּתֶּן־דֹּפִי`); ha pedig ilyenkor mater-betű (ו / י) követi, a rafe szón belüli (`חֲטֻבֿוֺת`, `מִמֵּנֿוּ`, `בְּחֻקֿוֺ`) → nem bont, marad. Mérés ugyanúgy: jó 2 556, rossz 110 (előtte 2 555 / 113), nem dönt 1 577. Egy első próbaváltozat (sva is számít, mater-követés nélkül) 22 esetből csak 2-t javított, és az `אַךְטֿוֺב`-ot elrontotta: elvetve. A `בָּאֿזִקִּים` (az F105.15 után még `בָּא־זִקִּים`) az F105.19-ben javult (8. szakasz). Ismert maradék: `וּלְחֻמֿם`, és a Préd 4:2
 `עֲדֶ֫נָֿה` (8. szakasz). A szabály kézi ellenőrzése: vak minta (`naplok/F105_vak_maqqef.py`, a kimenet a repón kívül).
