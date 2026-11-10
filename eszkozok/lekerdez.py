@@ -585,7 +585,7 @@ def cmd_karoli(args):
     for r in kh_hits:
         print(karoli_kh_szuro.hu_megjelenites(r))  # F181 E6: a repó egységes könyvnevei (ApCsel), nem a HunKar `Csel`
 
-    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv "
+    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_MEK.tsv(MEK 00161)+Karoli_KH_javitott.tsv "
             f"| n={len(kh_hits)} | ts={ts()}")
     print(f"proveniencia: {prov}")
 
