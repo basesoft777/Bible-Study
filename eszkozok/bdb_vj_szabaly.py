@@ -30,6 +30,7 @@ BIZONYTALAN_OK = {'sigla_kozel': 'a hely mellett kommentár-jel áll', 'tobberte
                   'ismeretlen_alak': 'a könyvnév alakja ismeretlen', 'nincs_elozmeny': 'a könyv nem állapítható meg',
                   'orokles_hibas': 'az örökölt könyvben nincs ilyen fejezet', 'forras_hiba': 'a BDB nyomtatott igehelye hibás'}
 BIZONYTALAN_VERS = {'atkulcsolt_bizonytalan': 'a héber és a Károli-versszámozás megfeleltetése bizonytalan'}
+BIZONYTALAN_PONT = 'a jelentéspont gépi hozzárendelése kétes'
 
 
 def vj_bizonytalan(r):
@@ -37,4 +38,7 @@ def vj_bizonytalan(r):
     okok = [BIZONYTALAN_OK[o] for o in (r.get('okkod') or '').split(',') if o in BIZONYTALAN_OK]
     if r.get('vers_feloldas') in BIZONYTALAN_VERS:
         okok.append(BIZONYTALAN_VERS[r['vers_feloldas']])
+    # F185 (P2, SEMA 2.29 `bizonyossag`): a gépileg kétes jelentéspont is csak gyenge jelölést kap
+    if (r.get('bizonyossag') or '').startswith('ketes'):
+        okok.append(BIZONYTALAN_PONT)
     return okok

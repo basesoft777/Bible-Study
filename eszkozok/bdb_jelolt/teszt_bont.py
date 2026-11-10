@@ -613,6 +613,35 @@ class F185Fejek(unittest.TestCase):
         # seed-102 M223/M233
         self.assertEqual([self.ut('H7812', n) for n in (5, 6, 7)], ["Hithpa'lel/-/-", "Hithpa'lel/1/-", "Hithpa'lel/1/a"])
 
+    def test_tabla_belso_fejek(self):
+        # DT-F185b (a): a bekezdés közepi fej a sorbelső oszlopban (seed-102 M056/M194 H3452; seed-101 M117 H0539 a 2.31 kézi
+        # soraival; M057 H4994 „3b, c. c.”; seed-102 M042 H5066 „, 1 human subject”); a sor `utvonal`-a a sor eleji állapot
+        self.assertEqual(self.t[('H3452', '3')]['belso_fejek'].split('|')[1:], ['b.', '-/-/b'])
+        self.assertEqual([f.split('|')[2] for f in self.t[('H0539', '8')]['belso_fejek'].split(';')], ["Niph'al/-/-", "Niph'al/1/-"])
+        self.assertEqual(self.t[('H4994', '12')]['belso_fejek'].split('|')[1:], ['3b, c. c.', '-/4/c'])
+        self.assertEqual(self.t[('H5066', '3')]['belso_fejek'].split('|')[1:], ['1', 'Qal/1/-'])
+        self.assertEqual(self.ut('H3318', 3), 'Qal/1/-')     # 2.31 kézi: a hiányzó „Qal” a sor eleji jelölőhöz
+
+    def test_forditasok_kulcsai_valtozatlanok(self):
+        # DT-F185b (a), kötelező: a `forditasok.tsv` minden BDB `sz<n>` sorának kulcsa megvan, és a szakasz-nézet hash-e a sor
+        # `forras_hash`-ével egyezik (az F185 előtt 29 311 / 29 311; a sorbelső fejek és a hamis fejek a `jel` + `szoveg`-et nem
+        # változtatják)
+        import re
+        import szakasz_bemenet as sb
+        ford = []
+        with open(os.path.join(GYOKER, 'adat', 'forditasok.tsv'), encoding='utf-8') as f:
+            for sor in f:
+                m = sor.rstrip('\n').split('\t')
+                if len(m) > 5 and m[0] == 'BDB' and re.match(r'^sz\d+$', m[3]):
+                    ford.append((m[1], int(m[3][2:]), m[5]))
+        h = {}
+        for st in sorted({x[0] for x in ford}):
+            for x in sb.szakaszok(st) or []:
+                h[(st, int(x['sorszam']))] = x['hash']
+        rossz = [x for x in ford if h.get(x[:2]) != x[2]]
+        self.assertEqual(rossz, [])
+        self.assertGreaterEqual(len(ford), 29311)
+
     def test_tabla_sorszam_nem_valtozik(self):
         # az F185 szabályai sort nem vágnak: a fordítások (`forditasok.tsv` sz<n>) és a 2.31 horgonyai érvényesek maradnak
         self.assertEqual(len(self.t), 36621)

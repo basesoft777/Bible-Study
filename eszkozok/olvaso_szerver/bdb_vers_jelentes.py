@@ -61,7 +61,7 @@ EZS3.update({'Ézs 3:%d' % v: 'Ézs 3:%d' % (v + 1) for v in range(1, 27)})
 # F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a használati csoport két új oszlopban (`csoport`: „+<n>”, a jelentésponton belüli
 # sorszám; `csoport_jel`: a bevezető kulcsa vagy a zárójeles jelölő), az `utvonal` és a többi oszlop változatlan
 FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz',
-       'utvonal', 'okkod', 'szurt', 'csoport', 'csoport_jel', 'proveniencia']
+       'utvonal', 'okkod', 'szurt', 'csoport', 'csoport_jel', 'proveniencia', 'bizonyossag']
 SZURENDO = {'nem_bibliai'}
 # DT-F99k (felhasználó, 2026-10-15): a sigla melletti (tapadt, közeli vagy listás) hivatkozás akkor szűrődik, ha a TAHOT szerint a vers
 # NEM tartalmazza a szócikk Strong-számát; ha tartalmazza, bibliai hivatkozás marad, okkód `sigla_igazolt`. A TAHOT `Igehely` kulcsa a
@@ -86,6 +86,137 @@ FORRAS_HIBA = {
 # javítják: a Strong `elofordulas`-adik olyan hivatkozása, amelynek fejezet:verse a `forras_alak`, a `javitott_alak` versére oldódik
 # (a `nyers` a forrás alakja marad), okkód `forras_javitas`. A FORRAS_HIBA (fent) a hibát csak rögzíti, ez javít.
 JAVITAS = os.path.join(REPO, 'adat', 'bdb_forras_javitas.tsv')
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# F185, DT-F185a (A) (orkesztrátori döntés, 2026-11-10, a felhasználó delegálásával): a jelentéspont (szakasz, rész, útvonal)
+# FORRÁSA a szakasztábla (`adat/bdb_szakaszok.tsv`, 2.30; a sorbelső fejekkel, DT-F185b), nem a szeletelő. A szeletelő itt csak
+# a hivatkozásokat nyeri ki és oldja fel (könyv, vers: `bdb_szelet.hivatkozasok`), a használati csoportot adja (F103, csak ahol a
+# csoport csomópontja a tábla jelentéspontjával egyezik), és tanú a bizonyossághoz (P2). Egy szabály, egy hely: a lapgenerátor,
+# az olvasó és a kártya ezt a 2.29-et olvassa.
+# A leképezés: a 2.29 hivatkozása (a TSV-szöveg `poz`-a) a Strong táblaszövegében (`jel` + `szoveg` soronként), a hivatkozások
+# sorrendjében, kurzorral keresve; a vers-folytatás („, 22”) csak az előző talált hivatkozás után 40 karakteren belül. Ha nincs
+# találat, a pont az előző talált helyé, és a sor `ketes` (`jp_illesztes`).
+# P2, bizonyosság (`bizonyossag`): `ketes`, ha (a) a hivatkozás nem illeszthető a táblaszövegre (`jp_illesztes`); (b) a
+# szeletelő (független tanú) fő mutatója más pontot ad (`jp_tanu_elter`: a két útvonal a szakasszal és a résszel együtt, a
+# nagybetűs és a zárójeles szint nélkül nem azonos, és egyik sem előtagja a másiknak); (c) a hely egy szakasz első 3 karakterén
+# belül vagy egy sorbelső fej előtt 3 karakteren belül áll (`jp_hatar`). Különben `biztos`.
+SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
+HB_SZO = re.compile(r'[\u0590-\u05ff\ufb1d-\ufb4f][\u0590-\u05ff\ufb1d-\ufb4f\u05be]*')
+
+
+def tabla_betolt():
+    """{strong: [sor]} a 2.30-ból (a fejléc két `#` sora után)."""
+    ki = collections.defaultdict(list)
+    for d in tsv_sorok(SZAKASZOK):
+        ki[d['strong']].append(d)
+    return ki
+
+
+def _ut3(ut):
+    """A 2.30 útvonala a 2.29 alakjában: a nagybetűs csoport és a zárójeles szint nélkül, három szint; `cim`/`fej` → `fej`."""
+    if ut in ('cim', 'fej', ''):
+        return 'fej'
+    r = ut.split('/')
+    r[0] = r[0].split('.')[0]
+    r = r[:3]
+    while len(r) < 3:
+        r.append('-')
+    if r[2] == '-':
+        # a 2.29 alakja (a szeletelő csomópont-útvonala): a hiányzó alpont nem szegmens („-/3”, „Qal/-”), a hiányzó jelentés igen
+        r = r[:2]
+    return '/'.join(r)
+
+
+class TablaPont:
+    """Egy Strong táblaszövege és a hivatkozások leképezése rá."""
+
+    def __init__(self, sorok):
+        self.darabok, self.fejek = [], []      # (kezdet, vég, sor, szakasz) ; (abszolút eltolás, útvonal, szakasz, rész)
+        p, alcim, fo = 0, '', ''
+        szoveg = []
+        for x in sorok:
+            if x['alszocikk'] == '0' and x['szakasz']:
+                fo = x['szakasz']
+            if x['jelolo'] == 'alcimszo':
+                # jelöletlen alcímszó: héber címszóval nyíló sor (h:<váz>); a héber címszó nélküli `sub1` bekezdés (H5704
+                # „preposition as far as …”) a fő címszó szakaszát viszi tovább
+                m = re.match(r'\[?(' + HB_SZO.pattern + ')', x['szoveg'])
+                alcim = 'h:' + B._kons(m.group(1)) if m else fo
+            elif x['alszocikk'] == '0':
+                alcim = ''
+            szak = x['szakasz'] or alcim
+            t = ' '.join(y for y in (x['jel'], x['szoveg']) if y) + ' '
+            kezd = p
+            self.fejek.append((kezd, x['utvonal'], szak, x['resz']))
+            eltol = len(x['jel']) + 1 if x['jel'] else 0
+            for f in (x.get('belso_fejek') or '').split(';'):
+                if f:
+                    o, _j, u = f.split('|', 2)
+                    self.fejek.append((kezd + eltol + int(o), u, szak, x['resz']))
+            szoveg.append(t)
+            p += len(t)
+        self.t = ''.join(szoveg)
+        self.fejek.sort(key=lambda f: f[0])
+        self.tagolt = any(_ut3(u) != 'fej' for _k, u, _s, _r in self.fejek)
+        self.kurzor, self.utolso = 0, None
+
+    def keres(self, h):
+        """-> (abszolút pozíció, illeszkedett-e)."""
+        nyers = h['nyers'].strip().lstrip(', ').strip()
+        if not nyers:
+            return self.utolso, False
+        if h['konyv_mod'] == 'folytatas' and self.utolso is not None and ':' not in nyers:
+            m = re.compile(r'(?<![\d:])%s(?![\d:])' % re.escape(nyers)).search(self.t, self.utolso, self.utolso + 40 + len(nyers))
+            if m:
+                self.utolso = m.start()
+                self.kurzor = m.end()
+                return m.start(), True
+        k = self.t.find(nyers, self.kurzor)
+        if k < 0:
+            return self.utolso, False
+        self.kurzor = k + len(nyers)
+        self.utolso = k
+        return k, True
+
+    def pont(self, poz):
+        """-> (szakasz, rész, útvonal, határ-közeli-e) a pozíción."""
+        if poz is None:
+            return '', '', 'fej', True
+        f = None
+        hatar = False
+        for i, x in enumerate(self.fejek):
+            if x[0] <= poz:
+                f = x
+            else:
+                hatar = x[0] - poz <= 3
+                break
+        if f is None:
+            return '', '', 'fej', True
+        ut = _ut3(f[1])
+        if ut == 'fej' and not self.tagolt:
+            ut = 'tagolatlan'
+        return f[2], f[3], ut, hatar or poz - f[0] <= 3
+
+
+def _fo3(szak, resz, ut):
+    sz = szak if re.match(r'^(?:I{1,3}|IV|V|VI)$', szak or '') else ''
+    r = [x.replace('`', "'") for x in (ut or '').split('/') if x not in ('', '-')]
+    while r and r[-1] in ('fej', 'tagolatlan'):
+        r.pop()
+    if len(r) == 1 and not re.match(r'^\d|^[a-z]$', r[0]):
+        r = []
+    return sz, resz or '', r
+
+
+def tanu_elter(tabla, szelet):
+    """P2 (b): a két fő mutató nem azonos, és egyik sem előtagja a másiknak."""
+    a, b = _fo3(*tabla), _fo3(*szelet)
+    if a[:2] != b[:2]:
+        return True
+    x, y = a[2], b[2]
+    n = min(len(x), len(y))
+    return x[:n] != y[:n]
 
 
 def kezi_hivatkozas_javitasok():
@@ -226,6 +357,7 @@ def general(ts, strongok=None):
     osz = set(K.OSZ)
     modhash = '+'.join(fajl_hash(u) for u in KOD_FAJLOK)
     javitasok = kezi_hivatkozas_javitasok()
+    tabla = tabla_betolt()
     sorok = []
     for strong in sorted(strongok if strongok is not None else en):
         szoveg = en[strong]
@@ -238,12 +370,27 @@ def general(ts, strongok=None):
         csav = B.csoport_savok(szoveg, B.csoport_bont(r, 'en'))
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
+        tp = TablaPont(tabla.get(strong, []))
         for n, h in enumerate(hivatkozas_javit(strong, B.hivatkozasok(szoveg), javitasok.get(strong, [])), 1):
-            cimke, ut = B.jelentespont(h['poz'], savok, szsav)
-            szak, resz = B.szakasz_bont(cimke)
-            if ut == '-/-':
+            # a szeletelő pontja: csak tanú (P2), a döntés a tábláé (DT-F185a)
+            t_cimke, t_ut = B.jelentespont(h['poz'], savok, szsav)
+            t_szak, t_resz = B.szakasz_bont(t_cimke)
+            if t_ut == '-/-':
                 tag = next((t for a, b, c, t in szsav if a <= h['poz'] < b), True)
-                ut = 'fej' if tag else 'tagolatlan'
+                t_ut = 'fej' if tag else 'tagolatlan'
+            tpoz, illeszt = tp.keres(h)
+            szak, resz, ut, hatar = tp.pont(tpoz)
+            if not tabla.get(strong):
+                # a Strong nincs a 2.30-ban: nincs tábla-pont (explicit hiány), a sor `ketes`
+                szak, resz, ut, illeszt = '', '', 'fej', False
+            ketes = []
+            if not illeszt:
+                ketes.append('jp_illesztes')
+            elif tanu_elter((szak, resz, ut), (t_szak, t_resz, t_ut)):
+                ketes.append('jp_tanu_elter')
+            elif hatar:
+                ketes.append('jp_hatar')
+            cimke = szak + (B.RESZ_SEP + resz if resz else '')
             ok = h['okkod']
             mt = kar = ''
             vmod = ''
@@ -315,7 +462,8 @@ def general(ts, strongok=None):
             # F103: a hivatkozás csoportja — a jelentéspontjának (szakasz + útvonal) a hivatkozást tartalmazó csoportsávja
             cs = next((x for x in csav if x[0] <= h['poz'] < x[1] and x[2] == cimke and x[3].rsplit('/', 1)[0] == ut), None)
             sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], kmod, mt, kar, vmod,
-                          szak, resz, ut, ok, '1' if szurt else '0', cs[3].rsplit('/', 1)[1] if cs else '', cs[5] if cs else '', prov])
+                          szak, resz, ut, ok, '1' if szurt else '0', cs[3].rsplit('/', 1)[1] if cs else '', cs[5] if cs else '', prov,
+                          ('ketes:' + ketes[0]) if ketes else 'biztos'])
     return sorok, modhash
 
 
@@ -324,10 +472,10 @@ def kiir(sorok, modhash, ts):
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
            'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
            '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + '
-           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport)'
+           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)) + adat/bdb_szakaszok.tsv@%s (a jelentéspont forrása, DT-F185a); '
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (DT-F185a, DT-F185b; bizonyosság: P2)'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
-              fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), modhash),
+              fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), fajl_hash(SZAKASZOK), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
         for x in s:

@@ -82,7 +82,8 @@ TOROL = {
 }
 
 FEJLEC = ['strong', 'bdb_id', 'sorszam', 'alszocikk', 'szakasz', 'resz', 'utvonal', 'jelolo', 'jel', 'gyakorisag', 'szoveg',
-          'illesztes', 'forras', 'forras_hash', 'proveniencia']
+          'illesztes', 'forras', 'forras_hash', 'proveniencia', 'belso_fejek']
+JAVITAS_UT = os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv')
 
 # Az illesztési ujjlenyomatban a pe (és a pe sofit) a memmel egy vázbetű: a DictBDB.json a dagesses pét dagesses
 # memként írja (0 dagesses pe, l. naplok/F107_BDB_JELOLT_SZOVEG_naplo.md 2.2); a SZÖVEG ezt nem javítja (DT-F107f).
@@ -426,6 +427,9 @@ def alcimszo_nyito(blokk_html):
 HIVATKOZAS_FEJ = re.compile(r'^(\d{1,2}[a-z](?:[.,]\s*[a-z])*[.,]?)\s+([a-z])\.$')
 
 
+HOMONIMA_NYITO = re.compile(r'^((?:VI|IV|V|I{1,3}))\.\s+\[?[\u0590-\u05ff\ufb1d-\ufb4f]')
+
+
 def hivatkozas_fej(blokk_html, allapot):
     """-> (jel, betű, maradék_html) vagy None."""
     m = re.match(r'\s*<b>(.*?)</b>', blokk_html, re.S)
@@ -439,6 +443,138 @@ def hivatkozas_fej(blokk_html, allapot):
     if h.group(2) != var:
         return None
     return tartalom, h.group(2), blokk_html[m.end():]
+
+
+# ---------------------------------------------------------------- sorbelső fejek (F185, DT-F185b (a))
+# A bekezdés KÖZEPÉN álló, félkövér nélküli fej (N103 (1), a Thayer K1-ének megfelelője) a sort nem vágja (a `sorszam`-ra kulcsolódó
+# fordítások és a 2.31 horgonyai miatt), hanem a `belso_fejek` oszlopba kerül: `<eltolás a szoveg-ben>|<jel>|<útvonal>`, `;`-vel
+# elválasztva; az útvonal a fej utáni állapot, és a következő sorok ebből az állapotból öröklődnek. A sor `utvonal`-a a sor eleji
+# állapot marad. Csak a sorrendben VÁRT fej számít (a következő betű; a következő szám; az „1” csak törzsállapotban, az „a” csak
+# számállapotban):
+#   betű: írásjel („.;:)]”, „—”, „,”) után „x.” + szó (seed-102 M056/M194 H3452 „… elsewhere) b. without article”);
+#   szám: írásjel vagy pont után „n” vagy „n.” + kisbetűs szó (H0539 „Deut 28:59. 1.carried”); vessző után csak az „1”
+#         (H5066 „come near, 1 human subject”, a forrásban dőlt);
+#   törzsnév: mondatvég vagy „—” után, héber alak vagy alaktani szó előtt (H0539 „see אֵמֻן. Niph`al נֶאֱמַן”);
+#   hivatkozással tapadt betűfej: „3b, c. c.” (seed-101 M057 H4994; a bekezdés-eleji alak: `hivatkozas_fej`).
+# Kizárva: utaló vagy rövidítő szó előtte (see, compare, cf., p., comp., ib., in, under, and, or, of, to, above, below …), betű
+# után egybetűs rövidítés („a. d.”, „i. e.”), szám, „)”, „,” vagy „;”; szám után személyszám („3 masculine”), „t.”, „times”.
+# A 2.31 `jelolo_hianyzik` kézi sorai (a forrásban hiányzó jelölő, DT-F107g (b)) ugyanígy, a horgony-`sorszam` sorában álló
+# `forras_alak` helyén; a sor eleji jelölőhöz tartozó („</p>”-t tartalmazó) alak a sor eleji állapotot javítja (H3318 „Qal”).
+BELSO_TILT_ELOTTE = {'see', 'compare', 'cf', 'p', 'pp', 'comp', 'ib', 'id', 'in', 'under', 'and', 'or', 'of', 'to', 'above',
+                     'below', 'also', 'so', 'as', 'with', 'from', 'on', 'vid', 'sq', 'ff', 'l', 'c', 'e', 'i', 'v', 'vs', 'ch', 'col'}
+_IRASJEL_UTAN = r'(?:(?<=[.;:)\]]\s)|(?<=—\s)|(?<=,\s))'
+_SZEMELY = r'(?:masculine|feminine|common|singular|plural|pers|person|t\.|times|ed\b|st\b|nd\b|rd\b|th\b|end\b|near\b|above\b|below\b)'
+
+
+def _elozo_szo(s, poz):
+    m = re.search(r'([A-Za-z]+)\.?[,;:)\]]?\s*(?:—\s*)?$', s[max(0, poz - 20):poz])
+    return m.group(1).lower() if m else ''
+
+
+def kezi_jelolok():
+    """{(strong, sorszam): [(forras_alak, javitott_alak)]} a 2.31 `jelolo_hianyzik` kézi soraiból (ha a tábla még nincs, üres)."""
+    ki = collections.defaultdict(list)
+    if not os.path.exists(JAVITAS_UT):
+        return ki
+    fej = None
+    with open(JAVITAS_UT, encoding='utf-8', newline='') as f:
+        for sor in f:
+            if sor.startswith('#'):
+                continue
+            m = sor.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            if d.get('hiba') == 'jelolo_hianyzik':
+                ki[(d['strong'], d['sorszam'])].append((d['forras_alak'], d['javitott_alak']))
+    return ki
+
+
+def _javitott_allapot(allapot, javitott):
+    r = javitott.split('/')
+    torzs = r[0] if r[0] not in ('', '-') else ''
+    if torzs and torzs != allapot['torzs']:
+        for x in TOROL['torzs']:
+            allapot[x] = ''
+        allapot['torzs'] = torzs
+    if len(r) > 1 and r[1] not in ('', '-'):
+        for x in TOROL['szam']:
+            allapot[x] = ''
+        allapot['szam'] = r[1]
+    if len(r) > 2 and r[2] not in ('', '-'):
+        allapot['betu'] = r[2]
+
+
+def belso_fejek(szoveg, allapot, kezi=()):
+    """A sor szövegének sorbelső fejei sorrendben: [(eltolás, jel, útvonal)]; az `allapot`-ot helyben lépteti."""
+    ki, poz = [], 0
+    kezi_hely = []
+    for forras_alak, javitott in kezi:
+        if '</p>' in forras_alak:
+            continue
+        frag = html.unescape(re.sub(r'<[^>]+>', '', forras_alak))
+        k = szoveg.find(frag)
+        if k < 0:
+            continue
+        utolso = javitott.split('/')[-1]
+        if re.match(r'\d', utolso):
+            j = [m.start() for m in re.finditer(r'(?<!\d)%s(?!\d)' % re.escape(utolso), frag)]
+        else:
+            j = [m.start() for m in re.finditer(re.escape(utolso.replace("'", '`')), frag)]
+        if j:
+            kezi_hely.append((k + j[-1], javitott))
+    while True:
+        jeloltek = []
+        var_b = chr(ord(allapot['betu']) + 1) if allapot['betu'] else ('a' if allapot['szam'] else '')
+        var_sz = str(int(allapot['szam']) + 1) if allapot['szam'].isdigit() else ('1' if allapot['torzs'] and not allapot['szam'] else '')
+        if var_b:
+            for m in re.finditer(_IRASJEL_UTAN + r'(%s)[.:]\s(?=[^\d\s),;])(?!end\b|near\b|above\b|below\b)' % var_b, szoveg[poz:]):
+                a = poz + m.start(1)
+                if re.match(r'[a-z]\.\s', szoveg[a + 3:a + 6]) or _elozo_szo(szoveg, a) in BELSO_TILT_ELOTTE:
+                    continue
+                jeloltek.append((a, '%s.' % var_b, ('betu', var_b)))
+                break
+            for m in re.finditer(r'(?<=\s)(\d{1,2}[a-z](?:[.,]\s*[a-z])*[.,]?)\s+(%s)\.\s' % var_b, szoveg[poz:]):
+                jeloltek.append((poz + m.start(1), '%s %s.' % (m.group(1), var_b), ('betu', var_b)))
+                break
+        if var_sz:
+            for m in re.finditer(r'(?:' + _IRASJEL_UTAN + r'|(?<=\.))(%s)(?:\.\s?|\s)(?=[a-z]{2})(?!%s)' % (var_sz, _SZEMELY),
+                                 szoveg[poz:]):
+                a = poz + m.start(1)
+                elotte = szoveg[max(0, a - 2):a]
+                if elotte.endswith(', ') and var_sz != '1':
+                    continue
+                if elotte.endswith('.') and not re.search(r'[a-z\d)]\.$', elotte):
+                    continue
+                if _elozo_szo(szoveg, a) in BELSO_TILT_ELOTTE:
+                    continue
+                pont = szoveg[a + len(var_sz):a + len(var_sz) + 1] == '.'
+                jeloltek.append((a, var_sz + ('.' if pont else ''), ('szam', var_sz)))
+                break
+        for m in re.finditer(r'(?:(?<=[.;]\s)|(?<=—\s))(' + TORZS + r')(?=\s+(?:[\u0590-\u05ff]|Perfect|Imperfect|Participle|'
+                             r'Infinitive|Imperative))', szoveg[poz:]):
+            a = poz + m.start(1)
+            nev = TORZS_KANON.get(m.group(1), m.group(1)).replace('`', "'")
+            if nev == allapot['torzs'] or _elozo_szo(szoveg, a) in BELSO_TILT_ELOTTE:
+                continue
+            jeloltek.append((a, m.group(1), ('torzs', nev)))
+            break
+        for a, javitott in kezi_hely:
+            if a >= poz:
+                jeloltek.append((a, szoveg[a:a + 12].split(' ')[0], ('kezi', javitott)))
+        if not jeloltek:
+            return ki
+        a, jel, (szint, ertek) = min(jeloltek, key=lambda x: x[0])
+        if szint == 'kezi':
+            kezi_hely = [x for x in kezi_hely if x[0] != a]
+            _javitott_allapot(allapot, ertek)
+        else:
+            for x in TOROL[szint]:
+                allapot[x] = ''
+            allapot[szint] = ertek
+        ki.append((a, jel, utvonal(allapot)))
+        poz = a + max(1, len(jel))
 
 
 def lexikon_beolvas():
@@ -570,8 +706,9 @@ def utvonal(allapot):
 BDB_NELKUL = {'reszleges', 'sikertelen', 'csonk'}
 
 
-def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, ts):
+def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, ts, kezi=None):
     sorok = []
+    kezi = kezi or {}
     allapot = dict.fromkeys(MINDEN_SZINT, '')
     alsz = 0
     szakasz, szakasz_mod, volt_fej = '', None, False
@@ -605,6 +742,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                 # DT-F107g (a) (1): hamis fej (hivatkozás a bekezdéstörés után) — a szöveg része, nem jelölő
                 tokenek, maradek = [], bh
             hiv_jel = None
+            demotalt = ''
             if i > 1 and not szocikk_eleje:
                 hf = hivatkozas_fej(bh, allapot)
                 if hf:
@@ -613,8 +751,18 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
             if (tokenek and i > 1 and not szocikk_eleje and not sub1 and not hiv_jel
                     and hamis_fej_kornyezet(sima(blokkok[i - 1][0]), sima(maradek), tokenek, allapot)):
                 # F185 (N103 (2)): a környezet szerint hivatkozás (zárójel, „above/below”, „see …”, sorrendsértés)
+                # a `jel` + `szoveg` összefűzve változatlan marad (a fordítások `forras_hash`-e erre a nézetre számol)
+                demotalt = ' '.join(y for y in (' '.join(x for _, x in tokenek), sima(maradek)) if y)
                 tokenek, maradek = [], bh
-            if not tokenek and i > 1 and not szocikk_eleje and not sub1 and alcimszo_nyito(bh):
+            hm = HOMONIMA_NYITO.match(sima(bh)) if not tokenek and i else None
+            if hm:
+                # F185 (seed-101 M009 H4428 „I. מֶ֫לֶךְ noun”, H1390 „II. גִּבְעָה proper name”): a félkövér nélküli római szám a
+                # héber címszó előtt a homonima száma (a 2.29 `szakasz`-a); a szócikk belsejében új címszó-szakaszt nyit (DT229 (a) (2))
+                if not szocikk_eleje:
+                    allapot = dict.fromkeys(MINDEN_SZINT, '')
+                    szakasz_mod, volt_fej, nagy_szam_alatt = None, False, False
+                szakasz = hm.group(1)
+            if not tokenek and i > 1 and not szocikk_eleje and not sub1 and not hm and alcimszo_nyito(bh):
                 # F185: jelöletlen alcímszó `sub1` nélkül (seed-101 M238)
                 alsz += 1
                 allapot = dict.fromkeys(MINDEN_SZINT, '')
@@ -643,7 +791,11 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                         if szakasz_mod is None:
                             # DT-F107g (a) (2): ha a szócikk első római feje „I.”, és előtte nem volt szám-, betű- vagy
                             # törzsfej, a római fejek homonima-szakaszok (H6440), különben fő tagolás (`resz`; H3068, H8478)
-                            szakasz_mod = szov == 'I.' and not volt_fej
+                            # F185 (seed-101 M062 H3824 „I. seldom of things”): homonima-szakasz csak héber címszó előtt;
+                            # glossza előtt a fő tagolás (`resz`), mint a szeletelő TAGOLAS-a
+                            # (a „II. פְּנֵי with prepositions” is, ha nem „I.” az első: seed-101 M029, seed-102 M024 H6440)
+                            szakasz_mod = (not volt_fej
+                                           and re.match(r'\[?[\u0590-\u05ff]', sima(maradek)) is not None)
                         nagy_szam_alatt = False
                         if szakasz_mod:
                             allapot = dict.fromkeys(MINDEN_SZINT, '')
@@ -684,7 +836,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                     ut = 'fej'      # csak homonima-szakasz fej (pl. „II.”), jelentésszint nélkül
             else:
                 jel = ''
-                szoveg = sima(bh)
+                szoveg = demotalt or sima(bh)
                 if szocikk_eleje or ((sub1 or alcimszo_uj) and not any(allapot[x] for x in MINDEN_SZINT)):
                     jelolo, ut = ('alcimszo' if (sub1 or alcimszo_uj) and not szocikk_eleje else 'fej'), 'fej'
                 elif not any(allapot[x] for x in MINDEN_SZINT):
@@ -699,13 +851,25 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                         jelolo = osztaly
                         del section_jel[bdb][j]
                         break
+        belso = []
         if i == 0:
             ut = 'cim'
+        else:
+            kz = kezi.get((strong_pad, str(i + 1)), [])
+            if any('</p>' in f for f, _ in kz):
+                # a sor eleji jelölőhöz hiányzó törzsnév (2.31 kézi, H3318 „Qal”)
+                for f, jav in kz:
+                    if '</p>' in f:
+                        _javitott_allapot(allapot, jav)
+                ut = utvonal(allapot)
+            if any(allapot[x] for x in ('torzs', 'szam', 'betu')) or kz:
+                belso = belso_fejek(szoveg, allapot, kz)
         sorok.append([strong_pad, bdb if kiir_bdb else '', str(i + 1), str(alsz), szakasz if i else '',
                       allapot['resz'] if i else '', ut, jelolo, jel, gy, szoveg,
                       kategoria, 'DictBDB.json:%s#%d' % (strong_eredeti, i),
                       hashlib.sha256(bh.encode('utf-8')).hexdigest()[:16],
-                      'scope=%s | forras=bdb_jelolt/bont.py (fejléc) | ts=%s' % (strong_pad, ts)])
+                      'scope=%s | forras=bdb_jelolt/bont.py (fejléc) | ts=%s' % (strong_pad, ts),
+                      ';'.join('%d|%s|%s' % x for x in belso)])
         if i and fejsor_torzs and ut == 'fej':
             allapot['torzs'] = fejsor_torzs
     return sorok
@@ -722,6 +886,7 @@ def general(ts, json_ut=JSON_UT):
         for c in e['cimkek']:
             cimke_szerint[c].append(e['id'])
     sorok, stat, reszlet = [], collections.Counter(), {}
+    kezi = kezi_jelolok()
     for item in data:
         top = item.get('top', '')
         m = re.match(r'^H(\d+)', top)
@@ -733,7 +898,7 @@ def general(ts, json_ut=JSON_UT):
         stat[kat] += 1
         if kat != 'egyezik':
             reszlet[pad] = (kat, r)
-        sorok.extend(strong_sorok(pad, top, blokkok, hozz, kat, szocikk, ts))
+        sorok.extend(strong_sorok(pad, top, blokkok, hozz, kat, szocikk, ts, kezi))
     return sorok, stat, reszlet
 
 
