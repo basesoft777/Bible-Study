@@ -3405,6 +3405,25 @@ def bdb_hivatkozas_szam(adat, strong):
     return cache[strong]
 
 
+def bdb_kulcs_olvashato(k):
+    """N-F187b: a szakaszkulcs olvasható forrás-hivatkozásként: `('BDB9520', 'fej')` → „BDB 9520. szócikk, feje”,
+    `('BDB2699', '-/5/-')` → „BDB 2699. szócikk, 5. pont” (nyers útvonal nélkül)."""
+    m = re.match(r'BDB(\d+)$', k[0] or '')
+    nev = ('BDB %s. szócikk' % m.group(1)) if m else (k[0] or 'a szócikk')
+    if k[1] == 'fej':
+        return '%s, feje' % nev
+    return '%s, %s pont' % (nev, szakasz_szoveg(szakasz_jel(k[1]), nevelo=False))
+
+
+_BDB_AZON_RX = re.compile(r'(?<![\w.])BDB(\d+)\b(?:\s+szócikk)?')
+
+
+def bdb_azonosito_olvashato(szoveg):
+    """N-F187b (orkesztrátori döntés, 2026-11-10): a kutatói rétegben (apparátus) a BDB-szócikk azonosítója forrás-hivatkozásként
+    maradhat, olvasható formában: „BDB9520” / „BDB9520 szócikk” → „BDB 9520. szócikk”. Az olvasói rétegben nem áll (kapu)."""
+    return _BDB_AZON_RX.sub(lambda m: 'BDB %s. szócikk' % m.group(1), szoveg)
+
+
 SORSZAMNEV = ('első', 'második', 'harmadik', 'negyedik', 'ötödik', 'hatodik')
 CSAK_ALAKKENT = 'a szótár csak alakként idézi'
 
@@ -3857,7 +3876,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         if napl['elnyelt']:
             # F123.BDBGER (N-F123ga): a 2.32 jelölő nélküli sora szócikkhatáron át az előző sor szövegében áll
             reszek.append('a magyar szöveg szócikkhatáron át az előző sorban áll (`%s`, jelölő nélküli sor): %s'
-                          % (BDB_SZAKASZ_HU_FAJL, '; '.join(napl['elnyelt'])))
+                          % (BDB_SZAKASZ_HU_FAJL, '; '.join(napl['elnyelt']) if not uj else '; '.join(
+                              '%s → %s' % (bdb_kulcs_olvashato(k), bdb_kulcs_olvashato(v)) for k, v in sorted(elnyelt.items()))))
         if napl['tiltott']:
             reszek.append('ismert hiány: a magyar szöveg tiltott fordulatot tartalmaz (`%s`): %s; a javítás a '
                           'fordítás újrafuttatása (#142, DT379), a lap a szöveget nem írja át'
@@ -3884,8 +3904,9 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         fej0 = szocikkek[0]['fej'] if szocikkek else None
         olv = bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, napl['nem_idezett'], tart, pont_nelkul,
                                 gyenge, szotar=szotar, fej_hu=(fej0[2] if fej0 and szotar == 'Thayer' else None))
+        # N-F187b (orkesztrátori döntés): az apparátusban a BDB-azonosító olvasható forrás-hivatkozásként áll
         bek = bev + [bek[0]] + olv + [APPARATUS_KEZDET % strong, '<details>\n<summary>%s</summary>' % APPARATUS_CIM] + \
-            bek[2:] + ['</details>', APPARATUS_VEGE % strong]
+            [bdb_azonosito_olvashato(b) for b in bek[2:]] + ['</details>', APPARATUS_VEGE % strong]
     if ctx is not None:
         fl = ctx['fl']
         if szotar == 'BDB':
