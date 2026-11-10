@@ -25,7 +25,7 @@ Az ellenőr modellje `claude-opus-5-5`, a kért modell `opus`: egyezik. Szint: `
 | BDB_OLVASOI kapu (b)–(c) és a Thayer-ág | OK | `olvasoi_kapu.py:1105-1199`, `adat/SEMA.md:2458` | A SEMA 3.11 sora szó szerint egyezik a `KAPUK` leírásával. `teszt_olvasoi_kapu.BdbOlvasoiReteg` OK. |
 | Tiltás: lap nem generálódott újra | OK | – | `git diff --numstat 3e45c886..HEAD -- adat/ konkordancia/ lexikon/ generalt_proba/`: csak `adat/SEMA.md` (1/1). A `git diff --no-index --stat lexikon/HAMART-001_TUDOMANYOS.md <minta>/kikapcsolt/...`: üres, tehát bájtra azonos. |
 | Tiltás: a kapcsoló kikapcsolva | OK | `lexikon_general.py:3303` | `KETRETEGU_BDB_KARTYA = frozenset()` |
-| A2: nyitott tételek | **ELTÉRÉS** | `NYITOTT_FELADATOK.md:884` | Az N128 (= N-F186g, „a #187-é”) a diffben megvalósult, de a fő fájlban nyitott maradt. A CLAUDE.md szerint az N lezárását közvetlenül a fő fájlban kell elvégezni. Az N-F187a–d valóban nyitott. |
+| A2: nyitott tételek | **ELTÉRÉS** | `NYITOTT_FELADATOK.md:884` | Az N128 (= N-F186g, „a #187-é”) a diffben megvalósult, de a fő fájlban nyitott maradt. A CLAUDE.md szerint az N lezárását közvetlenül a fő fájlban kell elvégezni. Az N137–d valóban nyitott. |
 | Hatókörön kívüli, jelentetlen változás | **ELTÉRÉS** | `blokkok.py` `_r_usz` (hunk @1672) | A „(DT-F76d)” kikerült az ÚSZ-blokk olvasói szövegéből (`9861d9cf`). Önmagában nem káros, de nem tartozik a feladathoz, és a jelentés nem említi. |
 | A3, A4, A5 | NEM ALKALMAZHATÓ | – | A diff nem hoz párhuzamot, PaRDeS-réteget vagy nevesített tanítót. |
 | A6 (E12–E15) | OK | – | Saját CI-futtatás: E12–E15 mind 0 találat. |

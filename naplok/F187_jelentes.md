@@ -15,7 +15,7 @@ A tényleges modell `claude-opus-5-5`, a brief `modell` mezője `opus`: egyezik.
 | a szó-lap Thayer-része két rétegű | `blokkok._r_magyar_gorog`, `lekerdezesek.py` | kész |
 | N-F186g: csak érvényes Thayer-sor | `lekerdezesek.magyar_gorog`, `olvaso_pilot/adat.py`, `teszt_thayer_api_koteg.py` | kész |
 | F29 (a), (b), (c) olvasói réteg, (e) | `lexikon_general.py` | kész |
-| F29 (c) apparátus, (d) | — | nem javítva, N-F187b, N-F187a |
+| F29 (c) apparátus, (d) | — | nem javítva, N-F187b, N137 |
 | BDB_OLVASOI kapu: (b), (c), Thayer-kártya | `eszkozok/olvasoi_kapu.py`, SEMA 3.11 | kész |
 
 A lapok nem generálódtak újra, a `lexikon/` nem változott. A kapcsoló (`KETRETEGU_BDB_KARTYA`) üres maradt: a #182 kapcsolja be.
@@ -62,7 +62,7 @@ a BDB9520 szövege a BDB2699 5. szakaszában áll), nincs szócikk-név. A hébe
 rétegként marad (szócikkfej, elnyelő mondat, kutatói megjegyzés); az F29 szövege szerint „nem maradhat a lapon” — ez kérdéses,
 N-F187b.
 
-### 3.4 (d) az 1.a számeltérése — nem javítva (N-F187a); lelet
+### 3.4 (d) az 1.a számeltérése — nem javítva (N137); lelet
 
 *Proveniencia: scope=H2403 | forras=adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv (olvasva) | ts=2026-11-10.*
 
@@ -119,7 +119,7 @@ nem kellett). `lekerdezesek.magyar_gorog` (SQL-szűrés; az `allapot` oszlop né
   szeletelőből veszi (`blokkok._bdb_bontas`), a vers-jelölést a DB `bdb_vers_jelentes`-éből.
 - **A #185 után:** ha a #185 a `bdb_vers_jelentes.tsv` `utvonal`-át a javított szakasztáblából írja újra, a kártya változtatás nélkül
   követi; ha új táblát vagy oszlopot vezet be, a `gerinc_adat` `bdb_vj`/`bdb_vj_feloldott` betöltése és a `bdb_hivatkozas_szam` arra
-  állítandó, és a szó-lap `_bdb_bontas`-a is. N-F187c.
+  állítandó, és a szó-lap `_bdb_bontas`-a is. N138.
 
 ## 6. Minta és saját átnézés
 
@@ -138,7 +138,7 @@ A #104-es bekapcsolt állapoton az új kapu 4 BUKÁS-t ad (görög alak a Thayer
 - *Ismétlés:* egyetlen vers sem áll kétszer; a H0127 1Móz 3:23 és a H7843 1Móz 6:12, illetve a G1311 Jel 11:18 két különböző,
   egymásba nem ágyazott pontnál áll, egy csoportban.
 - *Félkövér:* a helyek sorának pontjai; a csak alakjegyzékes ős-törzs (Hiph'il) nem.
-- *Maradék észrevételek:* három BDB-szakasz glossza nélkül áll („külön meghatározás nélkül”: H2403 1.f, H7451 6., 8.) — N-F187d;
+- *Maradék észrevételek:* három BDB-szakasz glossza nélkül áll („külön meghatározás nélkül”: H2403 1.f, H7451 6., 8.) — N139;
   a G2671 „c — a szótár csak párhuzamot közöl” a Thayer saját, előzmény nélküli „c” jelét adja (a forrás tagolása); a glosszák
   igealakja vegyes (címke: „megront”, fordítás: „elpusztítani”) — a címke- és fordításrétegé, nem a kártyáé.
 
@@ -164,7 +164,7 @@ A #104-es bekapcsolt állapoton az új kapu 4 BUKÁS-t ad (görög alak a Thayer
 A hatókör az orkesztrátor döntésével bővült: az N-F186g-vel (az olvasó és a #60 pilot csak érvényes Thayer-sort mutat; a
 `teszt_thayer_api_koteg.py` tagsor-biztos) és az F29 (a)–(e)-vel (a BDB-kártya hibái), a BDB_OLVASOI kapu bővítésével (a (b)–(c) és a
 görög kártya). Az orkesztrátor menet közbeni iránya szerint a kérdéses pontok (F29 (d), (c) az apparátusban) nem javultak, csak
-jelölve vannak (N-F187a, N-F187b). Az `ir` mező ennek megfelelően bővült (F187.0).
+jelölve vannak (N137, N-F187b). Az `ir` mező ennek megfelelően bővült (F187.0).
 
 ## Javítókör (ELLENOR_F187)
 
@@ -206,5 +206,5 @@ jelentése: `naplok/ELLENOR_F187.md` (F187.6).*
 - Tesztek: `teszt_szotari_gerinc.F187KartyaJavitasok` + `KetreteguBdbKartya`, `teszt_olvasoi_kapu.BdbOlvasoiReteg` (Windows) OK;
   WSL-ben `teszt_olvaso_szerver.TestF187ThayerKartya` + `TestRegiszterEsAdatbazis`, `teszt_tervezo`, `teszt_ubs_dbh`: 68 OK.
 
-**Nem javított maradék:** N-F187a (F29 (d)), N-F187c (a kártya forrása a #185 után), N-F187d (glossza nélküli BDB-szakaszok) —
+**Nem javított maradék:** N137 (F29 (d)), N138 (a kártya forrása a #185 után), N139 (glossza nélküli BDB-szakaszok) —
 változatlanul nyitott. A szó-lap Thayer-része a WSL-natív `pardes.db` újraépítéséig a #186 előtti szakasztáblát látja.
