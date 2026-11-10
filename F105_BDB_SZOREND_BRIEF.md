@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: fut
 ag: claude/f105-bdb-szorend
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: "Te: (1) DT-F105a, hol valósuljon meg a #105 (javaslat: (a) a DT445 útján, javítótábla + bdb_rovidites, hivatkozott-vers-próbával, maqqéf-feloldással; a brief ir mezője bővül); (2) ⛔ az 50-es minta jóváhagyása (naplok/F105_naplo.md 5., kézi ítélet oszlop; független ellenőr vagy felhasználó). Mérés: 29 469 futam, 17 953 ellenőrizhető, a mai megjelenítés 85,2%-ban egyezik a hivatkozott verssel, 1 823 javítható; a teljes bevezetés nincs bekapcsolva"
+kovetkezo: "Folyamatban: DT-F105a (a) rögzítve; a vak 50-es minta két független kitöltőnek (naplok/F105_vak.py, a kimenet a repón kívül); utána a megvalósítás a DT445 útján (heber_sorrend.py / forras_javit.py hivatkozott-vers-próba, bdb_rovidites maqqéf-feloldás), a teljes bevezetés a minta jóváhagyása után"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
-ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szoerend.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py]
+ir: [eszkozok/bdb_jelolt/heber_sorrend.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_rovidites.py, adat/bdb_forras_javitas.tsv, eszkozok/teszt_bdb_rovidites.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, naplok/F105_naplo.md, naplok/F105_meres.py, naplok/F105_minta.py, naplok/F105_vak.py, naplok/F105_utkozes.tsv, dontesek/uj/f105-bdb-szorend.md]
 fugg: [99, 102, 103, 104]
 ---
 
@@ -46,4 +46,5 @@ helyet); egyezési arány a naplóba; **⛔ minta:** 50 idézet kézi ellenőrz�
 
 ## 5. Döntésnapló
 
-- DT-F105a (🟡, `dontesek/uj/f105-bdb-szorend.md`): hol valósuljon meg a szabály; a DT445 óta élő javítás miatt a brief 2. lépése a döntésig áll.
+- DT-F105a (🟢 (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10; `dontesek/uj/f105-bdb-szorend.md`): a szabály a DT445 útján valósul meg.
+- **Egyeztetett eltérés (2026-11-10):** a brief 2. lépésének új olvasói modulja (`eszkozok/olvaso_szerver/bdb_szoerend.py`) nem készül, mert a szórend-javítás a DT445 óta a javítótáblán és a közös megjelenítésben (`eszkozok/bdb_rovidites.py`) él; a hivatkozott-vers-próba a `heber_sorrend.py` / `forras_javit.py`-ba, a maqqéf-feloldás a `bdb_rovidites.py`-ba kerül. Az `ir` mező ennek megfelelően bővült, a `bdb_szoerend.py` kikerült. Az 50-es minta vakon, két független kitöltővel ellenőrződik (`naplok/F105_vak.py`).
