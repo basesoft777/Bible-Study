@@ -811,6 +811,82 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
     `Sigla`-hiba, 9.10);
   - `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
 
+## 12. Javítókör 2 (`naplok/ELLENOR_F186_2.md`, ELTÉRÉS 7 tétel; orkesztrátori döntések, 2026-11-10)
+
+### 12.1 Az azonos útvonalú szakaszok összevonása (ELLENOR_F186_2 1–2.; F186.28, F186.32, F186.37)
+
+- **Gyökérok:** a `bont.py` szakaszvágása után két egymást követő szakasz ugyanazon az útvonalon állhatott (pl. G4151 13/14
+  `-/4/a`: a 4.a és a hamis „**b.** bb.; γεννάω” bekezdés; G5590 1.b és a „c. below), 2Co 12:15.” töredék). A lap ezért kétszer
+  hozta a 4.a fejet, és a példahelyet csak a második blokkban kereste: a „1Kor 2:14 … kiemelés nincs” megjegyzés valótlan volt.
+- **Javítás** (`bont.osszevon`, a generátorhoz nem nyúltam): az egymást követő, azonos útvonalú szakaszok (a `cim` kivételével)
+  egy szakasszá vonódnak; a nyers HTML-t `\n<p>\n` köti (a sima szövegben szóköz, a `</ref>` utáni folytatás-lánc nem fut át
+  rajta). 55 pár, 44 Strong. **A szakasztábla 17 317 → 17 261 sor**; az illesztés változatlan (5 411 + 15).
+- **Igazolás:** a `thayer_vers_jelentes.tsv` a `szakasz` és a `proveniencia` mezőn kívül bájtra azonos (64 431 sor, 0 eltérés;
+  4 853 szakasz-mutató változott). A mérés útvonal-szintű, ezért a seed-201–204 eredménye változatlan (a mai kódon: 199, 198,
+  194, 196 — ugyanaz, mint az összevonás előtt; a mérés pillanatában: 189, 192, 194, 196).
+- **Tesztek:** `teszt_bont` (az összevonás, a G4151 „b. bb.; γεννάω” és a G5590 „below)” töredék, az összevonás előtti nézet),
+  `teszt_vers_jelentes` (nincs egymást követő azonos útvonal; az 1Kor 2:14 / G4151 egyetlen 4.a szakaszban, a γεννάω-töredékkel
+  együtt), `teszt_forditas_atkulcsol` (a második kör).
+- **A fordítássorok második átkulcsolása** (`forditas_atkulcsol.py --osszevonas`, egyszeri, idempotens, bájtőrző): 342 sor
+  átkulcsolva (csak azonos `forras_hash`-nél), 4 `elavult`, 35 összevont csoport egy-egy `elavult` sorrá fűzve (38 tagsor kikerül,
+  a szövege az összefűzött sorban marad — két sor egy kulcson nem állhat), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
+  bájtbizonyítása az összevonás előtti táblára (1f408b47) vonatkozik; az első kör útja (`bekezdes_elso`) ezért az összevonás
+  előtti nézetet használja.
+- **A lapon szereplő Strongok:** a G4151 (sz13: 4.a + töredék) és a G5590 (sz5: 1.b + töredék) összevont szakasza elavult. A
+  #132 láncával újrafordítva, ugyanazzal a Sonnet subagenttel (`claude-sonnet-5-5`, előfizetésből): a G4151-nél az elavult
+  szakaszt tartalmazó c3 csoport (⟪13⟫) új fordítása, a többi 15 szakasz a meglévő, hash-egyező fordítás; a G5590-nél az egyetlen
+  csoport teljes új fordítása (10 szakasz). Minden kapu első körre RENDBEN (`15_tiltott`, `16_sigla` is); 26 sor. Az új szöveget
+  átolvastam: elírás nincs; a „8:18>”, „20:28>” jel a forrásé (a `Thayer_teljes.tsv` 238 helyén áll ilyen).
+- **Végső számok (az adatból):**
+  - szakaszkulcsok az F186 előtti táblához képest (6289c687): **184 Strong, 1 299 megváltozott kulcs** (13. melléklet; a 9.5 a
+    második kör előtti állapot);
+  - `forditasok.tsv`, Thayer `sz`-sorok: **2 883, ebből 142 `elavult`**; az első kör jelölése 578 átkulcsolt és 105 elavult soron
+    áll (a 588/117-ből a G4151 és a G5590 újrafordított, valamint a második körben összefűzött sorok kivonva), a második köré 409
+    soron;
+  - az `ellenoriz.py` 13. szabálya: **JELENTÉS (218): 142 `elavult` sor vár újrafordításra, 76 Thayer-Strong fordítatlan
+    szakasszal, egyik sem lexikonlapon; SÉRTÉS 0.**
+- **Generátorhiba a regenerált lapon:** nem maradt. A „kiemelés nincs” megjegyzés a lapon már sehol nem áll; a G4151 4.a egyetlen
+  blokk, az 1Kor 2:14 kiemelve. N-tétel a #187-hez nem kell.
+
+### 12.2 A többi tétel
+
+- **3. (F186.29):** a „korlátozott vakság” az adatrétegben: a `thayer_aranyminta.tsv` két fejlécsora és a seed-202/203 400
+  sorának provenienciája (bájtőrző: 402 sor), a SEMA 2.56.
+- **4. (F186.30):** DT-F186e — az ANTROP-001 kiadott lap újragenerálása, generált apparátus-változás (SEMA 2.48, DT665: a próza,
+  a minősítés és a határ nem változik, a diff csak a generált szótári blokkokat és lábjegyzeteiket érinti, a jelentés felsorolja;
+  külön táblaírást a mechanizmus nem kíván, a lap átnézése érvényes marad).
+- **5. (F186.31):** N-F186d (K1d, K1e) és N-F186e (K2c, K2d, K5) a `nyitott/uj`-ban, a seed-202/203/204 eseteivel.
+- **6. (F186.33, F186.34):** a brief `olvas` mezőjébe vett `motivumok/ANTROP-001.md` a `feladatok.py ellenoriz` szerint
+  **függési kört** okoz (#7 ↔ #38 ↔ #123 ↔ #125 ↔ #138 ↔ #154 ↔ #156 ↔ #157 ↔ #161 ↔ #179 ↔ #186 ↔ #187; „a döntés a
+  felhasználóé”), ezért az `olvas` az előző állapotra állt vissza (a régi globok, amelyeket az E18 kíván); 0 hiba. Az F186.33
+  üzenete tévesen 0 hibát állított, az F186.34 javítja. **Döntésre vár:** a `motivumok/ANTROP-001.md` felvétele (a kör feloldása).
+- **7. (F186.35):** a DT-F186d az „élteti” javítókörrel és az összevonás utáni újrafordítással; a számok itt, a 12.1-ben.
+
+### 12.3 A main beolvasztása és a teljes lapdiff a main-hez képest (F186.36, F186.37)
+
+- `origin/main` (75b04e6a, benne a #104 generátorváltozása) beolvasztva merge committal, ütközés nélkül.
+- **E28** (a CI-vel azonos futtatás, `--diff-alap` a merge-alap): egyetlen lapot jelzett, az ANTROP-001-et; újragenerálva a lap
+  dátumával (`PARDES_DATUM=2026-11-04`), a repón kívüli generálással bájtra azonos.
+- **A teljes lapdiff a main-hez képest (62 sor), tételesen — mind a #186-ból:**
+  1. [^6], [^8]: a G5591 példahelye „Thayer fej” → „Thayer a” (K1);
+  2. G4151 4.a: egyetlen blokk, az új ⟪13⟫-fordítással; a csukott cím „4.b – 5 (4 szakasz)” → „(3 szakasz)”, a „`4.b` — bb.”
+     töredéksor eltűnt (összevonás);
+  3. G5590: a fej és az 1.a, 1.b, 1.c, 2, 2.a, 2.b új fordítása (F186.32), a szerkezet (az 1.b az „alább), 2Kor 12:15.”
+     töredékkel egy szakasz; a 2 bekezdésen belüli „a.” → új `2.a`), a csukott 2.b-cím;
+  4. két kutatói megjegyzés kiesett (1Kor 15:45 „-/1/c”; 1Kor 15:44, 15:46 „fej”), mert a példahely most a megfelelő blokkban
+     áll; G5591: új `a` blokk.
+  **A #104 generátorváltozásából ezen a lapon nem keletkezett diff** (a lap BDB-blokkjai a main-beli változattal azonosak). DT/N-
+  hivatkozás, munkaszó a diffben nincs; „kiemelés nincs” állítás a lapon nem maradt; a csukott címek számai a mai táblából vannak.
+
+### 12.4 Záró futások (a F186.37 után)
+
+- `python eszkozok/ellenoriz.py` — kilépési kód 0: RENDBEN 27, **SÉRTÉS 0**, KÉZI 2, JELENTÉS 14; a 13. szabály JELENTÉS (218).
+- A CI-szabálykészlet (`futtat.py --valtozott … --diff-alap <merge-alap 75b04e6a> --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F186: …"
+  --esemeny pull_request`): kilépési kód 0, **E28 0 találat**, HIBA nincs.
+- `teszt_ellenoriz_13`, `teszt_bont`, `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc`: a `Betolto` a szakaszszám
+  (17 261) frissítésével zöld (DT-F186c sora, F186.38); a `Sigla` régi hibája marad (9.10).
+- `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
@@ -1362,3 +1438,196 @@ for blokk in szov.split('=== ')[1:]:
 print('szócikk: %d egyezik a nyers bekezdésekkel, %d eltér; ebből gépileg vágott szócikk (a régi mintavevő szivárgott volna): %d'
       % (jo, rossz, vagott))
 ```
+
+## 13. Melléklet — a megváltozott szakaszkulcsok, végleges (az F186 előtti tábla, 6289c687, és a mai tábla)
+
+*Oszlopok: mint a 8. A-ban. Ez váltja a 9.5-öt (a második kör előtti állapot).*
+
+| Strong | sor (régi → új) | megváltozott kulcsok (`sorszam`) | új szakasz: belső fej (új `sorszam` · útvonal · jel) | K2 (fej → örökölt) |
+|---|---|---|---|---|
+| G0101 | 5 → 4 | sz4–sz5 | — | — |
+| G0191 | 17 → 16 | sz16–sz17 | — | — |
+| G0212 | 4 → 5 | sz3–sz5 | sz4 · -/-/b · b. | — |
+| G0214 | 5 → 6 | sz4–sz6 | sz5 · -/-/c · c. | — |
+| G0217 | 7 → 8 | sz7–sz8 | sz8 · -/4/- · 4. | — |
+| G0225 | 9 → 11 | sz4–sz11 | sz5 · I/1/a · a.; sz8 · I/2/a · a. | — |
+| G0316 | 4 → 5 | sz3–sz5 | sz4 · -/-/b · b. | — |
+| G0331 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G0350 | 4 → 4 | sz3 | sz3 · -/-/a · a. | — |
+| G0387 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G0435 | 6 → 8 | sz3–sz8 | sz4 · -/1/a · a.; sz5 · -/1/b · b. | — |
+| G0444 | 16 → 19 | sz3–sz19 | sz4 · -/1/a · a.; sz12 · -/2/a · a.; sz15 · -/4/- · 4.; sz16 · -/4/a · a. | — |
+| G0450 | 12 → 13 | sz8–sz13 | sz8 · II/1/- · 1.; sz9 · II/1/a · a. | — |
+| G0473 | 13 → 15 | sz6–sz15 | sz7 · -/2/c · c.; sz10 · -/3/- · 3.; sz11 · -/3/a · a. | — |
+| G0476 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G0536 | 6 → 5 | sz4–sz6 | — | — |
+| G0575 | 29 → 30 | sz11–sz21, sz23–sz30 | sz12 · I/4/a · a.; sz23 · II/2/- · 2.; sz24 · II/2/a · a. | — |
+| G0602 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G0630 | 12 → 13 | sz4–sz13 | sz5 · -/2/a · a. | — |
+| G0703 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G0752 | 3 → 4 | sz3–sz4 | sz4 · -/-/d · d. | — |
+| G0812 | 6 → 5 | sz5–sz6 | sz5 · -/-/c · c. | — |
+| G0831 | 4 → 4 | sz4 | sz4 · -/-/b · b. | — |
+| G0846 | 19 → 23 | sz4–sz23 | sz5 · I/1/a · a.; sz10 · I/2/- · 2.; sz11 · I/2/a · a.; sz20 · II/7/- · 7. | — |
+| G0863 | 21 → 22 | sz21–sz22 | sz22 · -/3/h · h. | — |
+| G0891 | 7 → 8 | sz3–sz8 | sz4 · -/1/a · a. | — |
+| G0908 | 6 → 5 | sz5–sz6 | — | — |
+| G1060 | 8 → 9 | sz6–sz9 | sz7 · -/2/a · a. | — |
+| G1063 | 20 → 24 | sz14–sz24 | sz15 · II/9/a · a.; sz16 · II/9/b · b.; sz17 · II/9/c · c.; sz19 · II/10/a · a. | — |
+| G1096 | 17 → 18 | sz17–sz18 | sz18 · -/5/g · g. | — |
+| G1112 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G1135 | 3 → 4 | sz3–sz4 | sz4 · -/2/- · 2. | — |
+| G1163 | 8 → 9 | sz2–sz9 | sz3 · -/-/a · a. | — |
+| G1308 | 6 → 7 | sz4–sz7 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G1325 | 38 → 40 | sz9–sz40 | sz9 · B.I/4/- · 4.; sz10 · B.I/4/a · a.; sz15 · B.I/6/a · a.; sz16 · B.I/6/b · b. | — |
+| G1330 | 8 → 8 | sz5 | sz5 · -/1/b · b. | — |
+| G1343 | 6 → 7 | sz4–sz7 | sz5 · -/1/b · b. | — |
+| G1380 | 7 → 7 | sz6 | sz6 · -/3/a · a. | — |
+| G1392 | 9 → 9 | sz7 | sz7 · -/4/a · a. | — |
+| G1437 | 18 → 20 | sz8–sz20 | sz9 · I/2/a · a.; sz10 · I/2/b · b. | — |
+| G1453 | 13 → 14 | sz5–sz14 | sz6 · -/3/a · a. | — |
+| G1487 | 52 → 56 | sz31–sz56 | sz31 · III/3/- · 3.; sz32 · III/3/a · a.; sz36 · III/6/- · 6.; sz37 · III/6/a · a.; sz40 · III/8/- · 8.; sz41 · III/8/a · a.; sz53 · III/15/- · 15.; sz54 · III/15/a · a. | — |
+| G1510 | 91 → 105 | sz16–sz105 | sz17 · II/4/a · a.; sz19 · II/4/c · c.; sz45 · IV/1/h · h.; sz55 · V/2/- · 2.; sz56 · V/2/a · a.; sz60 · V/3/- · 3.; sz61 · V/3/a · a.; sz66 · V/4/- · 4.; sz67 · V/4/a · a.; sz74 · V/4/h · h.; sz75 · V/5/- · 5.; sz76 · V/5/a · a.; sz79 · V/6/- · 6.; sz80 · V/6/a · a.; sz82 · V/7/- · 7.; sz83 · V/7/a · a.; sz85 · V/8/- · 8.; sz86 · V/8/a · a.; sz90 · V/9/a · a.; sz93 · V/10/- · 10.; sz94 · V/10/a · a.; sz97 · V/11/- · 11.; sz98 · V/11/a · a.; sz100 · V/12/- · 12.; sz101 · V/12/a · a. | — |
+| G1519 | 43 → 44 | sz5–sz44 | sz6 · A.I/1/a · a.; sz7 · A.I/1/b · b.; sz35 · B.II/3/- · 3.; sz36 · B.II/3/a · a. | — |
+| G1537 | 50 → 49 | sz6–sz50 | — | — |
+| G1544 | 15 → 16 | sz10–sz16 | sz11 · -/1/h · h. | — |
+| G1588 | 6 → 7 | sz3–sz7 | sz3 · -/1/- · 1.; sz4 · -/1/a · a. | — |
+| G1590 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G1622 | 3 → 4 | sz3–sz4 | sz4 · -/-/b · b. | — |
+| G1632 | 3 → 4 | sz3–sz4 | sz4 · -/-/b · b. | — |
+| G1699 | 4 → 5 | sz4–sz5 | sz5 · -/-/c · c. | — |
+| G1722 | 42 → 49 | sz5–sz49 | sz6 · I/1/b · b.; sz12 · I/3/a · a.; sz20 · I/5/d · d.; sz22 · I/5/f · f.; sz23 · I/5/g · g.; sz24 · I/5/h · h.; sz29 · I/6/d · d.; sz37 · II/-/- · II.; sz38 · II/-/a · a. | — |
+| G1744 | 5 → 6 | sz3–sz6 | sz4 · -/1/a · a. | — |
+| G1777 | 7 → 8 | sz2–sz8 | sz3 · -/-/a · a. | — |
+| G1807 | 5 → 6 | sz4–sz6 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G1883 | 7 → 8 | sz6–sz8 | sz7 · -/2/a · a. | — |
+| G1899 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G1904 | 8 → 9 | sz6–sz9 | sz7 · -/2/a · a. | — |
+| G1909 | 63 → 58 | sz24–sz63 | — | — |
+| G2135 | 4 → 5 | sz3–sz5 | sz3 · -/-/a · a.; sz4 · -/-/b · b.; sz5 · -/-/c · c. | — |
+| G2192 | 22 → 29 | sz18–sz29 | sz19 · I/2/h · h.; sz20 · I/2/i · i.; sz21 · I/2/k · k.; sz22 · I/2/l · l.; sz23 · I/2/m · m.; sz24 · I/2/n · n.; sz25 · I/2/o · o. | — |
+| G2193 | 23 → 23 | sz4–sz9 | sz5 · I/1/a · a. | — |
+| G2222 | 8 → 7 | sz7–sz8 | — | — |
+| G2228 | 23 → 24 | sz21–sz24 | sz21 · -/4/b · b.; sz22 · -/4/c · c. | — |
+| G2298 | 5 → 6 | sz2–sz6 | sz3 · -/-/a · a. | — |
+| G2307 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G2378 | 5 → 4 | sz4–sz5 | — | — |
+| G2396 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G2398 | 8 → 10 | sz3–sz10 | sz3 · -/1/- · 1.; sz4 · -/1/a · a.; sz6 · -/1/c · c. | — |
+| G2443 | 23 → 23 | sz10–sz13 | sz13 · II/2/a · a. | — |
+| G2519 | 3 → 4 | sz3–sz4 | sz4 · -/-/b · b. | — |
+| G2521 | 5 → 4 | sz4–sz5 | — | — |
+| G2531 | 9 → 10 | sz6–sz10 | sz6 · -/4/- · 4.; sz7 · -/4/a · a. | — |
+| G2532 | 33 → 32 | sz9–sz11, sz14–sz16, sz23–sz33 | sz10 · I/2/b · b.; sz16 · I/2/h · h. | — |
+| G2588 | 6 → 7 | sz4–sz7 | sz5 · -/2/a · a. | — |
+| G2590 | 8 → 8 | sz5–sz6 | sz6 · -/2/b · b. | — |
+| G2673 | 2 → 3 | sz2–sz3 | sz3 · -/1/- · 1. | — |
+| G2776 | 2 → 3 | sz2–sz3 | sz3 · -/-/a · a. | — |
+| G2817 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G2840 | 5 → 6 | sz4–sz6 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G2937 | 7 → 8 | sz4–sz8 | sz5 · -/2/a · a. | — |
+| G2962 | 5 → 6 | sz2–sz6 | sz3 · -/-/a · a. | — |
+| G2974 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3000 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3004 | 42 → 45 | sz7–sz29, sz35–sz45 | sz8 · -/2/a · a.; sz36 · II/1/h · h.; sz37 · II/1/i · i.; sz38 · II/1/k · k. | — |
+| G3007 | 5 → 6 | sz3–sz6 | sz4 · -/1/a · a. | — |
+| G3008 | 5 → 7 | sz5–sz7 | sz6 · -/2/b · b.; sz7 · -/2/c · c. | — |
+| G3009 | 7 → 8 | sz6–sz8 | sz6 · -/3/- · 3.; sz7 · -/3/a · a. | — |
+| G3034 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3049 | 10 → 11 | sz8–sz11 | sz9 · -/3/a · a. | — |
+| G3056 | 26 → 27 | sz7–sz27 | sz8 · I/2/c · c. | — |
+| G3123 | 9 → 10 | sz5–sz10 | sz6 · -/1/c · c. | — |
+| G3140 | 6 → 5 | sz3–sz6 | — | — |
+| G3173 | 11 → 13 | sz3–sz13 | sz3 · -/1/- · 1.; sz4 · -/1/a · a.; sz8 · -/2/- · 2.; sz9 · -/2/a · a. | — |
+| G3195 | 8 → 9 | sz4–sz9 | sz5 · -/2/a · a. | — |
+| G3326 | 23 → 24 | sz9–sz11, sz14–sz24 | sz11 · I/2/d · d.; sz15 · I/2/h · h. | — |
+| G3342 | 5 → 6 | sz3–sz6 | sz4 · -/1/a · a. | — |
+| G3343 | 4 → 5 | sz4–sz5 | sz5 · -/2/a · a. | — |
+| G3354 | 5 → 6 | sz3–sz6 | sz3 · -/1/- · 1.; sz4 · -/1/a · a. | — |
+| G3360 | 6 → 7 | sz3–sz7 | sz4 · -/1/a · a. | — |
+| G3361 | 39 → 40 | sz12–sz40 | sz13 · I/5/a · a. | — |
+| G3367 | 10 → 12 | sz2–sz12 | sz3 · -/-/a · a.; sz10 · -/-/h · h. | — |
+| G3371 | 9 → 10 | sz9–sz10 | sz10 · -/-/h · h. | — |
+| G3379 | 8 → 7 | sz4–sz8 | — | — |
+| G3386 | 2 → 4 | sz2–sz4 | sz3 · -/-/a · a.; sz4 · -/-/b · b. | — |
+| G3398 | 7 → 8 | sz2–sz8 | sz3 · -/-/a · a. | — |
+| G3458 | 3 → 4 | sz2–sz4 | sz3 · -/1/- · 1. | — |
+| G3471 | 5 → 6 | sz4–sz6 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G3521 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3588 | 41 → 47 | sz8–sz47 | sz9 · II/1/a · a.; sz13 · II/1/e · e.; sz24 · II/5/- · 5.; sz25 · II/5/a · a.; sz28 · II/6/- · 6.; sz29 · II/6/a · a.; sz32 · II/7/a · a.; sz40 · II/10/- · 10.; sz41 · II/10/a · a. | — |
+| G3598 | 9 → 8 | sz5–sz9 | — | — |
+| G3606 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G3686 | 12 → 13 | sz10–sz13 | sz11 · -/2/f · f. | — |
+| G3687 | 4 → 5 | sz3–sz5 | sz4 · -/-/b · b. | — |
+| G3717 | 3 → 4 | sz3–sz4 | sz4 · -/-/b · b. | — |
+| G3739 | 24 → 25 | sz10–sz25 | sz10 · II/3/- · 3.; sz11 · II/3/a · a. | — |
+| G3745 | 6 → 6 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G3761 | 6 → 5 | sz3–sz6 | — | — |
+| G3767 | 7 → 9 | sz2–sz9 | sz3 · -/-/a · a.; sz9 · -/-/h · h. | — |
+| G3778 | 23 → 24 | sz12–sz24 | sz12 · I/2/- · 2.; sz13 · I/2/a · a. | — |
+| G3779 | 13 → 13 | sz6–sz13 | sz13 · -/5/f · f. | — |
+| G3825 | 7 → 8 | sz7–sz8 | sz8 · -/3/- · 3. | — |
+| G3844 | 24 → 24 | sz4–sz14 | sz14 · II/-/e · e. | — |
+| G3908 | 5 → 6 | sz3–sz6 | sz4 · -/1/a · a. | — |
+| G3918 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3936 | 12 → 13 | sz5–sz13 | sz6 · -/1/a · a. | — |
+| G3947 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G3958 | 5 → 4 | sz3–sz5 | — | — |
+| G3961 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G3962 | 12 → 15 | sz3–sz15 | sz4 · -/1/a · a.; sz5 · -/1/b · b.; sz11 · -/3/- · 3.; sz12 · -/3/a · a. | — |
+| G3986 | 6 → 5 | sz4–sz6 | sz4 · -/-/b · b. | — |
+| G3992 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4101 | 3 → 4 | sz3–sz4 | sz4 · -/-/b · b. | — |
+| G4151 | 17 → 16 | sz13–sz17 | — | — |
+| G4160 | 24 → 23 | sz5–sz24 | sz13 · I/2/b · b.; sz14 · I/2/c · c. | — |
+| G4164 | 3 → 4 | sz3–sz4 | sz3 · -/-/a · a.; sz4 · -/-/b · b. | — |
+| G4176 | 7 → 8 | sz5–sz8 | sz6 · -/3/a · a. | — |
+| G4183 | 6 → 7 | sz2–sz7 | sz3 · -/-/a · a. | — |
+| G4190 | 9 → 8 | sz8–sz9 | — | — |
+| G4202 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4226 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G4229 | 5 → 6 | sz2–sz6 | sz3 · -/-/a · a. | — |
+| G4253 | 5 → 6 | sz2–sz6 | sz3 · -/-/a · a. | — |
+| G4254 | 5 → 6 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G4277 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G4281 | 5 → 6 | sz4–sz6 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G4291 | 6 → 7 | sz4–sz7 | sz5 · -/2/a · a. | — |
+| G4295 | 6 → 7 | sz4–sz7 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G4314 | 30 → 31 | sz4–sz6, sz10–sz31 | sz5 · I/1/a · a.; sz13 · I/2/b · b.; sz15 · I/3/a · a. | — |
+| G4341 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4352 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4396 | 13 → 15 | sz7–sz15 | sz8 · II/1/a · a.; sz14 · II/1/g · g. | — |
+| G4442 | 3 → 2 | sz2–sz3 | — | — |
+| G4459 | 8 → 10 | sz3–sz10 | sz4 · I/-/a · a.; sz6 · I/-/c · c. | — |
+| G4487 | 9 → 10 | sz7–sz10 | sz8 · -/2/a · a. | — |
+| G4510 | 2 → 4 | sz2–sz4 | sz3 · -/1/- · 1.; sz4 · -/2/- · 2. | — |
+| G4525 | 4 → 5 | sz2–sz5 | sz3 · -/1/- · 1. | — |
+| G4624 | 4 → 5 | sz4–sz5 | sz5 · -/-/c · c. | — |
+| G4815 | 7 → 8 | sz6–sz8 | sz6 · -/2/- · 2.; sz7 · -/2/a · a. | — |
+| G4820 | 6 → 5 | sz3–sz6 | — | — |
+| G4856 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4864 | 5 → 6 | sz4–sz6 | sz4 · -/2/- · 2.; sz5 · -/2/a · a. | — |
+| G4905 | 5 → 6 | sz3–sz6 | sz3 · -/1/- · 1.; sz4 · -/1/a · a. | — |
+| G4912 | 7 → 8 | sz4–sz8 | sz5 · -/2/a · a. | — |
+| G4934 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G4984 | 4 → 4 | sz3 | sz3 · -/-/a · a. | — |
+| G4991 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G5013 | 6 → 5 | sz5–sz6 | — | — |
+| G5037 | 12 → 13 | sz3–sz13 | sz4 · -/1/a · a. | — |
+| G5083 | 7 → 6 | sz5–sz7 | — | — |
+| G5100 | 14 → 12 | sz8–sz14 | — | — |
+| G5101 | 11 → 12 | sz8–sz12 | sz9 · -/1/e · e. | — |
+| G5259 | 13 → 14 | sz5–sz14 | sz6 · I/2/a · a. | — |
+| G5302 | 8 → 8 | sz4 | sz4 · -/1/a · a. | — |
+| G5442 | 8 → 10 | sz3–sz10 | sz4 · -/1/a · a.; sz8 · -/2/- · 2.; sz9 · -/2/a · a. | — |
+| G5446 | 4 → 5 | sz2–sz5 | sz3 · -/-/a · a. | — |
+| G5479 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a: | — |
+| G5483 | 7 → 6 | sz6–sz7 | — | — |
+| G5547 | 6 → 5 | sz4–sz6 | sz5 · -/2/a · a. | — |
+| G5548 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G5590 | 10 → 10 | sz5–sz8 | sz7 · -/2/- · 2.; sz8 · -/2/a · a. | — |
+| G5591 | 4 → 4 | sz3 | sz3 · -/-/a · a. | — |
+| G5599 | 3 → 4 | sz2–sz4 | sz3 · -/-/a · a. | — |
+| G5613 | 25 → 24 | sz5–sz6, sz13–sz25 | sz6 · I/2/a · a. | — |
+
+Összesen: 184 Strong, 1299 megváltozott kulcs.

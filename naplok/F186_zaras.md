@@ -1,19 +1,27 @@
 # F186 — zárójelentés (THAYER_JELENTESPONT_97; végrehajtó: claude-opus-5-5; 2026-11-10)
 
-- **Hatókör:** T0–T4, a T6-ból a jelentés (`naplok/F186_jelentes.md`); a T5 a #187-é. **Egyeztetett eltérések:** a SORREND (a #121 `megallt`); az `ir` bővítése (DT-F186b/c/d, javítókör 1: `forditasok.tsv`, `teszt_lanc.py`, `forras_javit.py`, az átkulcsoló és tesztje, `ellenoriz.py`, `teszt_ellenoriz_13.py`, a lánc munkatáblája, `lexikon/ANTROP-001_TUDOMANYOS.md`, a `dontesek/uj`, a `nyitott/uj` és ez a fájl); a G5590 újrafordítása (DT-F186d).
-- **Mérések** (két független vak Opus-kitöltő, kapu ≥ 194/200), a jelentéspont:
-  - seed-201 (a javítás előtt): 189/200 = 94,5% (Wilson 90,4–96,9);
-  - seed-202 és seed-203: 192/200 és 194/200; mindkettő „korlátozott vakság” jelöléssel, mert a kitöltők látták a gépi bekezdés-vágást (ELLENOR_F186 1c);
-  - **seed-204 (valóban vak, nyers forrásbekezdések): 196/200 = 98,0% (Wilson 95,0–99,2) — a kapu teljesült, ez a mérvadó szám.**
+- **Hatókör:** T0–T4, a T6-ból a jelentés (`naplok/F186_jelentes.md`); a T5 a #187-é.
+- **Egyeztetett eltérések:**
+  - a SORREND (a #121 `megallt`);
+  - az `ir` bővítése (DT-F186b/c/d/e, két javítókör);
+  - a G5590 és a G4151 újrafordítása (DT-F186d);
+  - az ANTROP-001 kiadott lap újragenerálása (DT-F186e, generált apparátus-változás, SEMA 2.48 / DT665).
+- **Mérések** (két független Opus-kitöltő, kapu ≥ 194/200), a jelentéspont:
+  - seed-201: 189/200 = 94,5% (Wilson 90,4–96,9);
+  - seed-202 és seed-203: 192/200 és 194/200, korlátozott vaksággal (az adatrétegben is jelölve);
+  - **seed-204 (valóban vak, a mérvadó szám): 196/200 = 98,0% (Wilson 95,0–99,2) — a kapu teljesült.**
   - A könyv/vers mind a négy mérésen 200/200.
-- **Javítások** (`bont.py`), két körben: K1, K1b, K1c, K2, K2b. A szakasztábla 17 093 → 17 317 sor. Mérve, nem javítva: K3, K4, K1d, K1e, K2c, K2d, K5.
-- **Kulcsváltozás:** 173 Strong, 1 221 kulcs.
-- **#7:** 590 fordítássor átkulcsolva, 118 `elavult`.
-- **G5590 (lapon):** a #132 láncával újrafordítva, Sonnettel (`claude-sonnet-5-5`), egy javítókörrel („éltetí” → „élteti”). HAMART nem érintett; a görög 4.2-je nem változik.
+- **Javítások** (`bont.py`): K1, K1b, K1c, K2, K2b, valamint az azonos útvonalú szakaszok összevonása. Ez a vers → útvonal táblát nem változtatja, a mérések változatlanok. A szakasztábla 17 093 → 17 261 sor.
+- **Mérve, de nem javítva:** K3, K4 (N-F186a), K1d, K1e (N-F186d), K2c, K2d, K5 (N-F186e).
+- **Kulcsváltozás:** 184 Strong, 1 299 kulcs.
+- **Fordítássorok:**
+  - Thayer `sz`-sor: 2 883, ebből 142 `elavult`; a két átkulcsolás csak azonos hash-nél kulcsolt át, bájtőrzően.
+  - A lapon szereplő G5590 és G4151 a #132 láncával újrafordítva, Sonnettel (`claude-sonnet-5-5`); a kapuk átmentek.
+  - HAMART nem érintett.
 - **CI:**
-  - `ellenoriz.py`: **SÉRTÉS 0**; a 13. szabály JELENTÉS (117 + 67, a #7-é).
-  - E28: zöld (az ANTROP-001 újragenerálva).
-  - E16: a PR-cím „[ELLENŐRZŐ]” előtagja kell.
-  - Tesztek: a `teszt_lanc` `Sigla`-hibája régi, a többi zöld. `feladatok.py ellenoriz`: 0 hiba.
-- **Tokenfogyasztás:** a seed-204 1,09 M token volt, a becslés (0,82 M) és az 1 M-es küszöb fölött; a túllépés a mérés után derült ki.
+  - `ellenoriz.py`: SÉRTÉS 0; a 13. szabály JELENTÉS (142 elavult sor, 76 lapon kívüli Strong — ezek a #7-é).
+  - E28: zöld a main beolvasztása után; a #104 a lapon nem okozott diffet.
+  - E16: a PR-cím „[ELLENŐRZŐ]” előtaggal tiszta.
+- **Nyitott, döntésre vár:** a `motivumok/ANTROP-001.md` felvétele a brief `olvas`-ába, mert függési kört okoz.
+- **Tokenfogyasztás:** a seed-204 1,09 M token, a küszöb fölött; ez csak utólag derült ki.
 - A brief fejlécét az orkesztrátor írja. Push nincs.
