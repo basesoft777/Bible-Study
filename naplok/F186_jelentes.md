@@ -726,6 +726,35 @@ seed-201-et (a javítás előtt) ez nem érinti.
   (673 097 / 871 099), átlag 1,32. **Becslés: 0,82 M token** (sáv 0,48–1,02 M). A pontbecslés 1 M alatt van: a mérés indul. (A
   sáv felső széle a két legkorábbi, segédszkript nélküli kitöltés arányából jön.)
 
+### 10.3 A seed-204 eredménye — **ez a mérvadó szám**
+
+*Proveniencia: scope=seed-204 (200 ÚSZ-hivatkozás, 169 szócikk; a seed-201/202/203 sorai kizárva; nyers forrásbekezdések) |
+forras=adat/thayer_vers_jelentes.tsv (a F186.13 utáni állapot) + Thayer.lexicon + négy vak kitöltés (A1, A2, B1, B2; mind
+`claude-opus-5-5`, ugyanaz az utasítás) + kézi ítélet (claude-opus-5-5) | ts=2026-11-10. Soronként: `adat/thayer_aranyminta.tsv`
+(`seed = 204`).*
+
+| mutató | gépi = arany | arány | Wilson 95% |
+|---|---:|---:|---|
+| könyv/vers | **200 / 200** | 100,0% | 98,1–100,0 |
+| jelentéspont (fő mutató) | **196 / 200** | **98,0%** | **95,0–99,2** |
+| tájékoztató: A / B kitöltő a gépivel | 196 / 195 | | |
+
+- **Rétegenként:** gyakori 97/100, ritka 99/100. **A kapu (≥ 194/200): TELJESÜL.** A F186 mérvadó száma ez (valóban vak);
+  a seed-202/203 „korlátozott vakság” jelöléssel tájékoztató.
+- **Tényleges tokenfogyasztás: 1 086 703** (A1 294 617, A2 296 648, B1 296 793, B2 198 645) — **a becslés (0,82 M) és az 1 M-es
+  küszöb fölött**; a becslés a karakterarány átlagán alapult, a sáv felső széle (1,02 M) is alacsonyabb volt. A mérés már lefutott,
+  amikor ez kiderült; jelzem.
+- **Ítéletek:** 1 kitöltő-hiba (W043: B `zaro`-t írt a G1510 végi külön címszóra, A és a gépi `fej` — helyes); 4 hozzárendelés-hiba:
+
+| azon | Strong | gépi | arany | osztály | forrásidézet (rövidítve) |
+|---|---|---|---|---|---|
+| W020 | G2041 | -/3/d | -/3/- | K2c | „**d.** Br. an d. Gal., p. 194ff): … Gal 3:10” — irodalmi hivatkozás töredéke |
+| W089 | G3686 | -/2/b | -/2/- | K2c | „**b.** (aa.)), Mat 28:19; … 1Jo 5:13a” — kereszthivatkozás-töredék |
+| W118 | G2983 | I/6/d | I/6/- | K2c | „**d.** at the end; (Liddell and Scott, II. 3)) … Rev 20:4” — utalás-töredék „;”-vel |
+| W125 | G1994 | -/2/c | -/2/a | K1e | „… Act 28:27. In the middle and 2 aorist passive a. to turn oneself about … Joh 21:20” — új betűsor a 2. c.-n belül |
+
+  A maradék hibák mérve, nem javítva: az orkesztrátori döntés szerint a seed-204 után nincs további javítókör.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.

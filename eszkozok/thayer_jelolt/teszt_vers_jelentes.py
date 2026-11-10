@@ -161,7 +161,9 @@ ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
 # A seed-203 (a kapu mérése, 194/200) maradék osztályai mérve, nem javítva (a javítás új független mérést kívánna): K1d (belső
 # fej a „Rec.” után), K2c (további utalás-töredék alakok: „b. e. above)”, „c. and d.;”, „d. drei erst.”), K2d (félkövér fej
 # zárójeles etimológiában), K5 (görög α félkövér latin „a.”-ként; az U014 is ez).
-NEM_JAVITOTT = {'K3', 'K4', 'K1d', 'K2c', 'K2d', 'K5'}
+# A seed-204 (valóban vak mérés, 196/200) maradéka: K2c (további utalás-töredékek), K1e (új betűsor a bekezdésen belül, a várt
+# következő betű helyett „a.”) — mérve, nem javítva (az orkesztrátori döntés szerint a seed-204 után nincs további javítókör).
+NEM_JAVITOTT = {'K3', 'K4', 'K1d', 'K1e', 'K2c', 'K2d', 'K5'}
 NEM_JAVITOTT_SOR = {'U014'}
 
 
