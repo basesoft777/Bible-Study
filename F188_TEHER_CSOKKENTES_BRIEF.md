@@ -11,7 +11,7 @@ ad: feladatonként egy jelentésfájl, gépi formai előjavítás a commit előt
 kovetkezo: "Indítható (fugg nincs), a T0 mérés-alappal. Sorrend (orkesztrátori döntés, 2026-11-10): a #188 a #182 2. fázisa (F26, közös MUNKAMENET.md) előtt; a T0 és a T3 (új fájlok) korábban is mergelhető; a parancs- és ügynök-PR merge-e a #104, a /elteres 181 és a #186 lezárása után; a SEMA-írás a #104 merge-e után. A .github/workflows/ellenorzes.yml nincs az ir-ben (a #183 írja): ha a T4/T6 workflow-változást kíván, az külön tétel a #183 után"
 munka: folyamat
 olvas: [CLAUDE.md, DONTESEK.md, F184_DOKU_EGY_FORRAS_BRIEF.md, naplok/F184_jelentes.md, naplok/, eszkozok/ellenorzes/]
-ir: [.claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/commands/befogad.md, .claude/agents/fuggetlen-ellenor.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, BRIEF_SABLON.md, MUNKAMENET.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/, eszkozok/ellenorzes/elojavit.py, eszkozok/ellenorzes/teher_meres.py, naplok/F188_jelentes.md]
+ir: [.claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/commands/befogad.md, .claude/agents/fuggetlen-ellenor.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, BRIEF_SABLON.md, MUNKAMENET.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/, eszkozok/ellenorzes/elojavit.py, eszkozok/ellenorzes/teher_meres.py, eszkozok/ellenorzes/futtat.py, eszkozok/teszt_futtat.py, naplok/F188_jelentes.md]
 fugg: []
 ---
 
