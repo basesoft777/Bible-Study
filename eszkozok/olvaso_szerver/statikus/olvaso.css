@@ -184,6 +184,14 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .jel-cimke.krit { color: var(--gold); border-color: var(--gold); }
 .allapot { display: inline-block; font: 600 var(--fs-allapot) var(--font-ui); padding: 1px 8px; border-radius: var(--radius-pill); background: var(--gold-soft); color: var(--gold); margin: 0 0 4px; }
 .allapot.folyamat { background: var(--panel); border: 1px solid var(--rule); color: var(--muted); }
+/* F104 (DT178): a BDB-blokk vers szerinti jelölése — erős („a BDB itt idézi”: accent-soft) és gyenge („vonatkozhat”: gold-soft, dőlt
+   felirat); a jelölés a színen túl szövegesen is különbözik. Új méret nincs: minden érték meglévő tokenből. */
+.bdb-ebben { margin: var(--space-blokkkoz) 0; padding: var(--space-utmutato-fugg) var(--space-utmutato-vizsz); background: var(--panel); border-radius: var(--radius-panel); font: var(--fs-sor)/var(--lh-forrassor) var(--font-ui); }
+.bdb-itt { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
+.bdb-vonatkozhat { background: var(--gold-soft); border-radius: var(--radius-kiemeles); }
+.bdb-jelzes { font: 600 var(--fs-megjegyzes) var(--font-ui); color: var(--accent); }
+.bdb-vonatkozhat .bdb-jelzes { font-style: italic; font-weight: 400; color: var(--gold); }
+.bdb-csop { padding-left: var(--space-gomb-vizsz); }
 /* Arculat (F76 arculat): a #60 pilot méretei és tipográfiája a szerver elemein (sablon.html F60.11/F60.12 végső értékei) */
 body { font: var(--fs-torzs)/var(--lh-torzs) var(--font-ui); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; font-kerning: normal; }
 ::selection { background: var(--accent-soft); color: var(--fg); }

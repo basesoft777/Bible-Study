@@ -355,7 +355,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H922. bohu בֹּ֫הוּ főnév [hímnemű]: üresség (az alakról l. Ges § 84a, 1 b Sta § 95, 198 a, a használatról vö. Lag Or. ii. 60 k.) mindig a תֹּהוּ szóval, l. ott; — תֹּהוּ וָבֹהוּ‎ 1Móz 1:2 az ősi földről; Jer 4:23 a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> ítélete alatt álló földről; קַותהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a pusztaság mérőzsinórja és az üresség kövei, azaz függőónok, amelyeket nem a szokott módon építésre, hanem falak lerombolására használnak; vö. Di & l. alább אבן‎ 6
+**A szócikk feje (nyelvi háttér).** H922. bohu בֹּ֫הוּ főnév [hímnemű]: üresség (az alakról l. Ges § 84a, 1 b Sta § 95, 198 a, a használatról vö. Lag Or. ii. 60 k.) mindig a תֹּהוּ szóval, l. ott; — תֹּהוּ וָבֹהוּ‎ 1Móz 1:2 az ősi földről; Jer 4:23 a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> ítélete alatt álló földről; קַו־תהֹוּ וְאַבְנֵי בֹהוּ Ézs 34:11: a pusztaság mérőzsinórja és az üresség kövei, azaz függőónok, amelyeket nem a szokott módon építésre, hanem falak lerombolására használnak; vö. Di & l. alább אבן‎ 6
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 1 (1Móz 1:2, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorszam 3 (Ézs 34:11, tagolatlan): az útvonal nincs a szakasztáblában; bdb_vers_jelentes.tsv sorszam 2 (Jer 4:23, tagolatlan): az útvonal nincs a szakasztáblában.*
 
@@ -369,7 +369,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **`1` — formátlanság**
 
-  > formátlanság, az ősi földről **1Móz 1:2** (P), az ősi káoszba visszasüllyesztett földről **Jer 4:23** (mindkettő + וָבֹהוּ: és üresség), **Ézs 34:11** ׳קַות (|| אַבְנֵי בֹהוּ‎), 45:18 לֹא <abbr class="rovidites" title="a címszó: תֹּ֫הוּ (tóhú)">ת׳</abbr> בְרָאָהּ (|| יְצָרָתּ לָשֶׁבֶת‎); 24:10 ׳קִרְיַתאתּ: a káosz városa (a romba dőlt városról); = semmiség, üres tér, Jób 26:7 עַלתּ׳ תֹּלֶה אֶרֶץ; üres, úttalan pusztaságról 5Móz 32:10 (|| מִדְבָּר), Jób 6:18; 12:24 = Zsolt 107:40.
+  > formátlanság, az ősi földről **1Móz 1:2** (P), az ősi káoszba visszasüllyesztett földről **Jer 4:23** (mindkettő + וָבֹהוּ: és üresség), **Ézs 34:11** ׳קַות (|| אַבְנֵי בֹהוּ‎), 45:18 לֹא <abbr class="rovidites" title="a címszó: תֹּ֫הוּ (tóhú)">ת׳</abbr> בְרָאָהּ (|| יְצָרָתּ לָשֶׁבֶת‎); 24:10 ׳קִרְיַתאתּ: a káosz városa (a romba dőlt városról); = semmiség, üres tér, Jób 26:7 עַל־תּ׳ תֹּלֶה אֶרֶץ; üres, úttalan pusztaságról 5Móz 32:10 (|| מִדְבָּר), Jób 6:18; 12:24 = Zsolt 107:40.
 
 <details>
 <summary>2 (1 szakasz)</summary>

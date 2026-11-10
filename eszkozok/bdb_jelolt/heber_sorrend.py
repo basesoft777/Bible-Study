@@ -113,6 +113,24 @@ def tiszta(js):
 
 # ---------------------------------------------------------------- héber Biblia
 
+def rafe_bont(t):
+    """A rafe-maqqéffel egybeírt token részei (F105): vágás a rafét hordozó betű előtt, ha az nem a token első betűje. A
+    vázfolyamban a vágás helye csak a geres résénél számít (a rés annak a résznek jár, amelyben a geres áll)."""
+    nfd = unicodedata.normalize('NFD', t)
+    vagas, utolso = [], None
+    for j, c in enumerate(nfd):
+        if 'א' <= c <= 'ת':
+            utolso = j
+        elif c == RAFE and utolso and any('א' <= x <= 'ת' for x in nfd[:utolso]):
+            vagas.append(utolso)
+    reszek, kezd = [], 0
+    for v in vagas:
+        reszek.append(nfd[kezd:v])
+        kezd = v
+    reszek.append(nfd[kezd:])
+    return [r for r in reszek if r]
+
+
 class Biblia:
     """A TAHOT vázfolyama versenként; `van(alak)` → az első találat verse, None (nincs), vagy False (nem próbálható)."""
 
@@ -171,6 +189,43 @@ class Biblia:
         self.cache[alak] = talalt
         return talalt
 
+    @staticmethod
+    def minta_vers(alak):
+        """A hivatkozott-vers-próba mintája (F105): mint a `minta`, de a rafe-maqqéffel egybeírt tokent a rafét hordozó
+        (nem első) betű előtt két szóra bontja, és a geres csak annak a résznek ad rést, amelyben áll (`ח׳לֵֿב` → „ח” + rés,
+        „לב”). A DT445 `minta`-ja változatlan (a meglévő sorok ítélete nem változik)."""
+        reszek, teljes, rov = [], 0, 0
+        for t in ws(alak).replace(MAKKEF, ' ').split(' '):
+            if ELLIPSZIS in t and not vaz(t):
+                if reszek:
+                    reszek.append('[^|]{0,60}')
+                continue
+            for d in rafe_bont(t):
+                v = vaz(d)
+                if not v:
+                    continue
+                if G in d:
+                    reszek.append(re.escape(v) + '[^|]{0,8}')
+                    rov += 1
+                else:
+                    reszek.append(re.escape(v))
+                    teljes += 1
+        if teljes < 1 or teljes + rov < 2:
+            return None
+        return re.compile(''.join(reszek))
+
+    def van_versben(self, alak, vers):
+        """Az alak mintája (`minta_vers`) egy adott vers (TAHOT-kulcs = Károli-vers) vázában: True / False; None, ha nem
+        próbálható (kevés az anyag, vagy a vers nincs a TAHOT-ban). F105, DT-F105a."""
+        if not hasattr(self, 'index'):
+            self.index = {k: i for i, k in enumerate(self.kulcsok)}
+        i = self.index.get(vers)
+        rx = self.minta_vers(alak)
+        if rx is None or i is None:
+            return None
+        a = self.kezdet[i]
+        return bool(rx.search(self.f, a, self.f.find('|', a) + 1))
+
 
 def itelet(bib, js, jelolt):
     """(ítélet, a JSON-alak verse, a jelölt verse)."""
@@ -182,6 +237,68 @@ def itelet(bib, js, jelolt):
     if a and not b:
         return 'rontott', a, None
     return 'eldonthetetlen', a, b
+
+
+def itelet_versen(bib, js, jelolt, vers):
+    """A hivatkozott vers ítélete (F105, DT-F105a): `helyes` (a vers a jelöltet illeszti, a forrás alakját nem), `rontott`
+    (fordítva), `eldonthetetlen` (mindkettő / egyik sem / nem próbálható)."""
+    a, b = bib.van_versben(js, vers), bib.van_versben(jelolt, vers)
+    if a is None or b is None:
+        return 'eldonthetetlen'
+    return 'helyes' if b and not a else 'rontott' if a and not b else 'eldonthetetlen'
+
+
+# ---------------------------------------------------------------- hivatkozott vers (F105, DT-F105a)
+# A BDB a héber idézet után többnyire a forrásversét hivatkozza („אֶזְרַח הָאָרֶץ Lev 24:16”). A vers a szócikk teljes
+# szövegéből (`konkordancia/BDB_teljes_unabridged.tsv`, a szeletelő `lapit` alakjában) és a vers → jelentés táblából
+# (`adat/bdb_vers_jelentes.tsv`: `poz`, `karoli_vers`, `szurt`) jön. A szakasztábla sorának előfordulását a környezete
+# (30-30 karakter, a szóköz rugalmas) illeszti a teljes szövegbe; csak egyértelmű illesztésnél, és csak ha a futam után
+# legfeljebb írásjel, zárójel, szóköz vagy „&c.” áll a hivatkozásig, és a hivatkozásnak van Károli-verse, nincs kiszűrve.
+KOZ_RE = re.compile(r'^(?:[\s,;:.()\[\]‎]|&c\.?)*$')
+
+
+def _strong_pad(st):
+    m = re.match(r'^H(\d+)(.*)$', st or '')
+    return 'H%04d%s' % (int(m.group(1)), m.group(2)) if m else st
+
+
+class HivatkozottVers:
+    def __init__(self, bdb_ut, vj_ut, lapit):
+        self.flat = {}
+        with open(bdb_ut, encoding='utf-8') as f:
+            fej = next(f).rstrip('\n').rstrip('\r').split('\t')
+            for ln in f:
+                d = dict(zip(fej, ln.rstrip('\n').rstrip('\r').split('\t')))
+                self.flat[d['Strong_padded']] = lapit(d.get('Teljes_szocikk', ''))
+        self.hiv = collections.defaultdict(list)
+        with open(vj_ut, encoding='utf-8') as f:
+            sorok = [s.rstrip('\n').rstrip('\r').split('\t') for s in f if not s.startswith('#')]
+        for s in sorok[1:]:
+            d = dict(zip(sorok[0], s))
+            self.hiv[_strong_pad(d['strong'])].append((int(d['poz']), d.get('karoli_vers', ''), d.get('szurt', '')))
+        for v in self.hiv.values():
+            v.sort()
+
+    @staticmethod
+    def _rx(szoveg):
+        return r'\s*'.join(re.escape(x) for x in szoveg.split()) if szoveg.strip() else ''
+
+    def vers(self, strong, szoveg, poz, alak):
+        """A `szoveg` `poz` helyén álló `alak` után hivatkozott vers Károli-kulcsa, vagy None."""
+        st = _strong_pad(strong)
+        flat = self.flat.get(st)
+        if not flat:
+            return None
+        e = poz + len(alak)
+        rx = re.compile(self._rx(szoveg[max(0, poz - 30):poz]) + r'\s*(' + re.escape(alak) + r')\s*' +
+                        self._rx(szoveg[e:e + 30]))
+        talal = [m.end(1) for m in rx.finditer(flat)]
+        if len(talal) != 1:
+            return None
+        for hp, kar, szurt in self.hiv.get(st, []):
+            if hp >= talal[0]:
+                return kar if (KOZ_RE.match(flat[talal[0]:hp]) and kar and szurt != '1') else None
+        return None
 
 
 # ---------------------------------------------------------------- bemenet
