@@ -82,15 +82,18 @@ A félkövér a végső helyek-lista erős (nem csak bizonytalan okkódú) pontj
 
 ## 4. A szó-lap: két réteg, mért pontosság, N-F186g
 
-### 4.1 A mért szám
+### 4.1 A mért szám (a javítókörben javítva, ELLENOR_F187 T4 + A1)
 
-*Proveniencia: scope=seed-203, 200 ÚSZ-hivatkozás | forras=adat/thayer_aranyminta.tsv (seed = 203; 200 sor, gep_utvonal = arany_utvonal:
-194; itelet: egyezik 191, hozzarendeles_hiba 6, kitolto_hiba 3), naplok/F186_jelentes.md 9.6 | ts=2026-11-10.*
+*Proveniencia: scope=seed-204, a mérvadó vak mérés | forras=adat/thayer_aranyminta.tsv (`seed = 204`; a `gep_utvonal` =
+`arany_utvonal` sorok: egyezik + kitolto_hiba) + naplok/F186_jelentes.md 10.3 | ts=2026-11-10.*
 
-A mérést nem ismételtem. A szám: **194/200 (97,0%), Wilson 95%: 93,6–98,6%** — egyetlen forrása a
-`konfig/thayer_pontossag.toml` (proveniencia-sorral); a szó-lap ebből számolja, a teszt a Wilson-intervallumot újraszámolja, és ellenőrzi,
-hogy a szám kézzel nem áll a kódban (`test_thayer_pontossag_egy_forrasbol`). Megjegyzés: a BDB-nél a lapon a nyers mért szám áll
-(DT658 (a)); a seed-203-on az A kitöltő nyers egyezése is 194, így itt a nyers és az ítélet utáni érték azonos.
+A mérést nem ismételtem. A szám: **196/200 (98,0%), Wilson 95%: 95,0–99,2%** — a #186 mérvadó, valóban vak mérése (a
+`F186_jelentes.md` 10.3: „ez a mérvadó szám”; a kitöltő a nyers forrásbekezdéseket kapta). Egyetlen forrása a
+`konfig/thayer_pontossag.toml` (proveniencia-sorral, a seed-204-re); a szó-lap ebből számolja, a teszt a Wilson-intervallumot
+újraszámolja, és ellenőrzi, hogy a szám kézzel nem áll a kódban (`test_thayer_pontossag_egy_forrasbol`). Az első menetben ide a
+seed-203 száma került (194/200), „vak ellenőrzéssel” felirattal; a seed-203 vaksága a tábla fejléce szerint korlátozott, tehát ez
+hiba volt. A seed-204-en az A kitöltő nyers egyezése is 196 (10.3, tájékoztató sor), így a nyers és az ítélet utáni érték azonos
+(a BDB-nél a lapon a nyers szám áll, DT658 (a)).
 
 ### 4.2 A szó-lap Thayer-része (`szo.magyar_gorog`)
 

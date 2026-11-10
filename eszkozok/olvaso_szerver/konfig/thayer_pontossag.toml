@@ -1,18 +1,19 @@
 # A Thayer vers -> jelentéspont hozzárendelés (adat/thayer_vers_jelentes.tsv) mért pontossága: a szó-lap Thayer-blokkjában
-# a „próba” felirat mellett ez áll (F187, a #186 T4 mérése). EGYETLEN forrás: a szám kézzel sehol máshol nem szerepel a
+# a „próba” felirat mellett ez áll (F187, a #186 mérvadó mérése). EGYETLEN forrás: a szám kézzel sehol máshol nem szerepel a
 # szerverben; a blokkok.py innen olvassa, a százalékot a találat / minta hányadosából számolja. A konfidencia-intervallum
 # a #186 jelentésének módszere szerint Wilson-féle 95%-os; a teszt (teszt_olvaso_szerver.py,
 # test_thayer_pontossag_egy_forrasbol) a találat / minta párból újraszámolja és összeveti.
 #
-# A mérés nem ismétlődött (F187): a szám a #186 seed-203 vak mérésének értéke (a gépi kimenet = az arany érték; a két
-# kitöltő közül az A nyers egyezése ugyanennyi). Csere új mérésnél: a [jelentespont] mezői együtt cserélődnek.
+# A mérés nem ismétlődött (F187): a szám a #186 seed-204 mérésének értéke (naplok/F186_jelentes.md 10.3, „ez a mérvadó
+# szám”, valóban vak: a kitöltő a nyers forrásbekezdéseket kapta). A seed-202/203 vaksága korlátozott, tájékoztató.
+# Csere új mérésnél: a [jelentespont] mezői együtt cserélődnek.
 
 [jelentespont]
-talalt = 194
+talalt = 196
 minta = 200
-ci_also = 93.6
-ci_felso = 98.6
+ci_also = 95.0
+ci_felso = 99.2
 modszer = "Wilson"
 datum = "2026-11-10"
-leiras = "jelentéspont, 200 véletlen újszövetségi hivatkozás vak ellenőrzéssel"
-proveniencia = "scope=seed-203, véletlen 200 ÚSZ-hivatkozás (172 szócikk) | forras=adat/thayer_aranyminta.tsv (seed = 203), naplok/F186_jelentes.md 9.6 | ts=2026-11-10"
+leiras = "jelentéspont, 200 véletlen újszövetségi hivatkozás valóban vak ellenőrzéssel"
+proveniencia = "scope=seed-204, véletlen 200 ÚSZ-hivatkozás (169 szócikk; a seed-201/202/203 sorai kizárva; nyers forrásbekezdések) | forras=adat/thayer_aranyminta.tsv (seed = 204), naplok/F186_jelentes.md 10.3 | ts=2026-11-10"

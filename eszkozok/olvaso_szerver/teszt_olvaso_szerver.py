@@ -1665,15 +1665,17 @@ class TestF187ThayerKartya(unittest.TestCase):
 
     def test_thayer_pontossag_egy_forrasbol(self):
         p = blokkok.THAYER_PONTOSSAG
-        self.assertEqual((p['talalt'], p['minta']), (194, 200))       # a #186 seed-203 mérése (F186_jelentes 9.6)
-        self.assertIn('97,0%', blokkok.THAYER_MERT_PONTOSSAG)
-        self.assertIn('93,6–98,6%', blokkok.THAYER_MERT_PONTOSSAG)
+        self.assertEqual((p['talalt'], p['minta']), (196, 200))       # a #186 mérvadó, seed-204 mérése (F186_jelentes 10.3)
+        self.assertIn('98,0%', blokkok.THAYER_MERT_PONTOSSAG)
+        self.assertIn('95,0–99,2%', blokkok.THAYER_MERT_PONTOSSAG)
+        self.assertIn('valóban vak', blokkok.THAYER_MERT_PONTOSSAG)
+        self.assertIn('seed-204', p['proveniencia'])
         also, felso = _wilson(p['talalt'], p['minta'])
         self.assertEqual(round(also * 100, 1), p['ci_also'])
         self.assertEqual(round(felso * 100, 1), p['ci_felso'])
         self.assertTrue(p['proveniencia'].startswith('scope=') and '| forras=' in p['proveniencia'] and '| ts=' in p['proveniencia'])
         forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
-        for szam in ('97,0', '93,6', '98,6', '194/200'):
+        for szam in ('98,0', '95,0', '99,2', '196/200'):
             self.assertNotIn(szam, forras, 'a szám kézzel a kódban: %s' % szam)
 
 
