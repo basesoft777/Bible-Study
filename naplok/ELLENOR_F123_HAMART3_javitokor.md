@@ -45,8 +45,8 @@
 2. A generátorban javítva (`olvasoi_kovetkeztetes.kizart`, teszttel): a mondat csak TSK- vagy Károli-kereszthivatkozás forrás esetén szól a kereszthivatkozásokról. Az ALVIL-001 és az ANTROP-001 lap újragenerálva.
 3. Az N-F123hb kiegészítve. Megmondja, miért és mely lapok generálódtak újra (CI E28, NAVE_ANGOL, az orkesztrátor felhatalmazása), és hogy a négy régi lap (HODIT, KIRALY, MENNY, TEREMT-001) továbbra is halasztva van.
 4. Az 1Móz 12:3 indoklása pontosítva: „Az átok-formula ismétléseinél a határ…”. Az 1Móz 3:14 a lánc első kimondása, nem ismétlés (`naplok/F123_HAMART3_javitokor2.py`).
-5. Új nyitott tétel: **N-F123hc** (Gal 3:10 / 3:13, ⛔, javaslattal).
-6. A 38. őr szóegyezés-mintája kis-nagybetű-független, új teszttel. Az „idéz” szűkítése az N-F123hc döntésével együtt jár, mert ma csak a Gal 3:10 akadna fenn rajta.
+5. Új nyitott tétel: **N116** (Gal 3:10 / 3:13, ⛔, javaslattal).
+6. A 38. őr szóegyezés-mintája kis-nagybetű-független, új teszttel. Az „idéz” szűkítése az N116 döntésével együtt jár, mert ma csak a Gal 3:10 akadna fenn rajta.
 7. **Nem javítva, csak bontás:** a +177 sor táblánként és mezőnként a következő:
    - kizarasok/indoklas 120;
    - elofordulasok/funkcio 49;

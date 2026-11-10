@@ -41,7 +41,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 |---|---|
 | `beepitesi_dontesek.tsv` | 253 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
-| `dontesnaplo.tsv` | 8 |
+| `dontesnaplo.tsv` | 11 |
 | `elofordulasok.tsv` | 251 |
 | `forrasok_es_licencek.tsv` | 61 |
 | `kapcsolatok.tsv` | 32 |
