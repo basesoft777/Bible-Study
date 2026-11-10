@@ -277,7 +277,7 @@ def belso_fejek(raw, t, kezdet=0):
     return ki
 
 
-def szerkezet(definition):
+def szerkezet(definition, osszevonas=True):
     """-> [{'raw', 'plain', 'utvonal', 'jel', 'bekezdes'}] a szócikk szakaszaira: a bekezdések, a bekezdésen belüli fejeknél
     (F186 K1) kettévágva; a `bekezdes` a forrásbekezdés sorszáma (1-től, a cím is; az F186 előtti tábla `sorszam`-a)."""
     ki, t, allapot = [], {}, 'kezdet'
@@ -316,6 +316,28 @@ def szerkezet(definition):
             darabok = [d for d in darabok if sima(d[0])] or darabok[:1]
         for r, ut, j in darabok:
             ki.append({'raw': r, 'plain': sima(r) if len(darabok) > 1 else plain, 'utvonal': ut, 'jel': j, 'bekezdes': bek})
+    return osszevon(ki) if osszevonas else ki
+
+
+# F186 (ELLENOR_F186_2 1–2.): az egymást követő, azonos útvonalú szakaszok egy szakasszá vonódnak (pl. G4151 4.a + a hamis
+# „b. bb.;” bekezdés, G5590 1.b + „c. below), 2Co 12:15.”); a nyers HTML-t ez a jelölő köti össze: a sima szövegben szóköz, és a
+# `</ref>` utáni folytatás-lánc nem fut át rajta (a hivatkozások sorrendje és száma változatlan).
+OSSZEVONO = '\n<p>\n'
+
+
+def osszevon(sz):
+    """A szakaszlista, az egymást követő azonos `utvonal`-ú (a `cim` kivételével) szakaszok összevonva: a `jel` és a `bekezdes` az
+    elsőé, a `raw` az `OSSZEVONO`-val, a `plain` szóközzel fűzve; a `bekezdesek` az összevont bekezdések sorszámai."""
+    ki = []
+    for x in sz:
+        if ki and x['utvonal'] == ki[-1]['utvonal'] and x['utvonal'] != 'cim':
+            e = ki[-1]
+            e['raw'] = e['raw'] + OSSZEVONO + x['raw']
+            e['plain'] = (e['plain'] + ' ' + x['plain']).strip()
+            if x['bekezdes'] not in e['bekezdesek']:
+                e['bekezdesek'].append(x['bekezdes'])
+            continue
+        ki.append(dict(x, bekezdesek=[x['bekezdes']]))
     return ki
 
 

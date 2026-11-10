@@ -87,7 +87,7 @@ class Egyseg(unittest.TestCase):
     def test_szerkezet_szintek(self):
         d = ('<div><p><b>G9 — x</b></p><p>fej</p><p>A. első</p><p><span class="lexheading">I.</span> r</p>'
              '<p><b>1.</b> sz</p><p><b>a.</b> b</p><p>örökölt</p><p><b>2.</b> k</p><p>B. második</p><p>D. nem fej</p></div>')
-        sz = bont.szerkezet(d)
+        sz = bont.szerkezet(d, osszevonas=False)  # a fejfelismerés; az összevonás: F186Fejek
         self.assertEqual([x['utvonal'] for x in sz],
                          ['cim', 'fej', 'A/-/-', 'A.I/-/-', 'A.I/1/-', 'A.I/1/a', 'A.I/1/a', 'A.I/2/-', 'B/-/-', 'B/-/-'])
         self.assertEqual([x['jel'] for x in sz], ['', '', 'A.', 'I.', '1.', 'a.', '', '2.', 'B.', ''])
@@ -102,8 +102,9 @@ class Egyseg(unittest.TestCase):
         self.assertEqual(bont.illeszt(sz, None), ('sikertelen', ['', '', '']))
 
 
-def _ut(d):
-    return [(x['utvonal'], x['jel'], x['plain'][:14]) for x in bont.szerkezet('<div><p><b>G9 — x</b></p>' + d + '</div>')]
+def _ut(d, osszevonas=True):
+    return [(x['utvonal'], x['jel'], x['plain'][:14])
+            for x in bont.szerkezet('<div><p><b>G9 — x</b></p>' + d + '</div>', osszevonas=osszevonas)]
 
 
 class F186Fejek(unittest.TestCase):
@@ -181,7 +182,7 @@ class F186Fejek(unittest.TestCase):
     def test_k2b_utalas_zarojellel(self):
         # seed-202 U014 G1519: „<b>d.</b> at the end): Luk 20:20” — utalás-töredék, nem fej
         sz = _ut('<p><b>c.</b> u</p><p><b>d.</b> at the end): <ref onclick="bcv(42,20,20)">Luk 20:20</ref></p>'
-                 '<p><b>d.</b> w</p><p><b>e.</b> above)).</p>')
+                 '<p><b>d.</b> w</p><p><b>e.</b> above)).</p>', osszevonas=False)  # a fejdöntés, összevonás előtt
         self.assertEqual([x[0] for x in sz], ['cim', '-/-/c', '-/-/c', '-/-/d', '-/-/d'])
 
     def test_k1_sorrend(self):
@@ -189,10 +190,32 @@ class F186Fejek(unittest.TestCase):
         sz = _ut('<p><b>a.</b> x; and so c. other</p>')
         self.assertEqual([x[0] for x in sz], ['cim', '-/-/a'])
 
+    def test_osszevonas_hamis_fej_toredek(self):
+        # ELLENOR_F186_2 1–2.: a G4151 4.a utáni „<b>b.</b> bb.; γεννάω, …” töredék nem külön `-/4/a` szakasz, hanem a 4.a része
+        sz = _ut('<p><b>4.</b> u</p><p><b>a.</b> v (see βαπτίζω, II. b.</p><p><b>b.</b> bb.; γεννάω, 1 at the end) '
+                 '<ref onclick="bcv(46,2,14)">1Co 2:14</ref></p><p><b>b.</b> w</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/4/-', '-/4/a', '-/4/b'])
+        teljes = bont.szerkezet('<div><p><b>G9 — x</b></p><p><b>4.</b> u</p><p><b>a.</b> v (see βαπτίζω, II. b.</p><p><b>b.</b> '
+                                'bb.; γεννάω</p></div>')
+        self.assertEqual(teljes[2]['bekezdesek'], [3, 4])
+        self.assertIn('v (see βαπτίζω, II. b. b. bb.; γεννάω', teljes[2]['plain'])
+
+    def test_osszevonas_below_toredek(self):
+        # G5590: a „c. below), 2Co 12:15.” utalás-töredék (K2b) az 1.b-hez tartozik, egy szakaszban
+        sz = _ut('<p><b>1.</b> u</p><p><b>b.</b> life: x</p><p><b>c.</b> below), <ref onclick="bcv(47,12,15)">2Co 12:15</ref>.</p>'
+                 '<p><b>c.</b> that in which there is life</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/b', '-/1/c'])
+
+    def test_osszevonas_nelkul(self):
+        # az összevonás előtti szerkezet (az F186.9 átkulcsolásának bemenete) változatlanul elérhető
+        d = '<div><p><b>G9 — x</b></p><p><b>a.</b> v</p><p><b>b.</b> bb.; y</p></div>'
+        self.assertEqual([x['utvonal'] for x in bont.szerkezet(d, osszevonas=False)], ['cim', '-/-/a', '-/-/a'])
+        self.assertEqual([x['utvonal'] for x in bont.szerkezet(d)], ['cim', '-/-/a'])
+
     def test_k2_hamis_bekezdes_eleji_fej(self):
         # T145 G4151: „<b>b.</b> bb.; γεννάω, …” egy kettétört kereszthivatkozás töredéke; G1909: „<b>c.</b>)): as …”
         sz = _ut('<p><b>4.</b> u</p><p><b>a.</b> v (see βαπτίζω, II. b.</p><p><b>b.</b> bb.; γεννάω, 1 at the end) '
-                 '<ref onclick="bcv(45,8,1)">Rom 8:1</ref></p><p><b>c.</b>)): as x</p><p><b>b.</b> w</p>')
+                 '<ref onclick="bcv(45,8,1)">Rom 8:1</ref></p><p><b>c.</b>)): as x</p><p><b>b.</b> w</p>', osszevonas=False)
         self.assertEqual([x[0] for x in sz], ['cim', '-/4/-', '-/4/a', '-/4/a', '-/4/a', '-/4/b'])
         self.assertEqual([x[1] for x in sz], ['', '4.', 'a.', '', '', 'b.'])
 

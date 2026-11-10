@@ -218,6 +218,24 @@ class Aranyminta(unittest.TestCase):
                 rossz.append((r['azon'], s['utvonal'], r['arany_utvonal']))
         self.assertEqual(rossz, [])
 
+    def test_nincs_egymast_koveto_azonos_utvonal(self):
+        # ELLENOR_F186_2 1–2.: a szakasztáblában két egymást követő szakasz nem áll ugyanazon az útvonalon (a `cim` kivételével)
+        _, sz = olvas(SZAKASZ)
+        rossz = [(a['strong'], a['sorszam']) for a, b in zip(sz, sz[1:])
+                 if a['strong'] == b['strong'] and a['utvonal'] == b['utvonal'] and a['utvonal'] != 'cim']
+        self.assertEqual(rossz, [])
+
+    def test_1kor_2_14_g4151_egy_4a_szakaszban(self):
+        # ELLENOR_F186_2 1d: a G4151 1Kor 2:14 (sorszám 217) a 4.a egyetlen szakaszában áll, amely a „b. bb.; γεννάω” töredéket
+        # is tartalmazza — így a lap a példahelyet abban a blokkban keresi, ahol az áll
+        a = adat()
+        s = {(x['strong'], x['sorszam']): x for x in a['sorok']}[('G4151', '217')]
+        self.assertEqual((s['konyv'], s['fejezet'], s['vers'], s['utvonal']), ('1Kor', '2', '14', '-/4/a'))
+        sor = a['szak'][('G4151', s['szakasz'])]
+        self.assertEqual(sor['utvonal'], '-/4/a')
+        self.assertIn('γεννάω', sor['szoveg'])
+        self.assertIn('1Co 2:14', sor['szoveg'])
+
     def test_szakasz_mutat_az_utvonalra(self):
         # a vers-sor `szakasz`-a a szakasztábla azon sorára mutat, amelynek az útvonala a vers-soré (a belső fej is szakasz)
         a = adat()

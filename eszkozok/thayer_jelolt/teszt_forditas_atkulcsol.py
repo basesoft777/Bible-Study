@@ -69,6 +69,52 @@ class Terv(unittest.TestCase):
         self.assertEqual(v, [])
 
 
+# ELLENOR_F186_2 1–2.: a második kör. Az összevonás előtt 5 szakasz; a 3. és a 4. összevonódik (új 3., új hash „CD”), az 5. → 4.
+MAI2 = [{'sorszam': 1, 'hash': 'A'}, {'sorszam': 2, 'hash': 'B'}, {'sorszam': 3, 'hash': 'CD'}, {'sorszam': 4, 'hash': 'E'}]
+TERKEP2 = {1: 1, 2: 2, 3: 3, 4: 3, 5: 4}
+
+
+class Osszevonas(unittest.TestCase):
+    def terv(self, sorok):
+        return FA.terv_osszevonas(adat(sorok), lambda sp: MAI2, lambda sp: TERKEP2)
+
+    def test_atkulcsolas_csak_azonos_hashnel_es_osszefuzes(self):
+        v = {(x['regi'], x['uj'], x['tipus'], len(x['tagok'])) for x in
+             self.terv([sor('sz1', 'A'), sor('sz2', 'B'), sor('sz3', 'C'), sor('sz4', 'D'), sor('sz5', 'E')])}
+        # sz1, sz2 változatlan; a 3.+4. összefűzve egy elavult sorrá az új sz3-on; sz5 (azonos hash) → sz4
+        self.assertEqual(v, {(3, 3, 'osszefuz', 1), (5, 4, 'atkulcsol', 0)})
+
+    def test_eltero_hash_elavul_nem_kulcsol(self):
+        v = {(x['regi'], x['tipus']) for x in self.terv([sor('sz1', 'A'), sor('sz5', 'X')])}
+        self.assertEqual(v, {(5, 'elavult')})
+
+    def test_elavult_sor_athelyezve(self):
+        v = {(x['regi'], x['uj'], x['tipus']) for x in self.terv([sor('sz5', 'X', allapot='elavult')])}
+        self.assertEqual(v, {(5, 4, 'athelyez')})
+
+    def test_kezi_osszevont_megall(self):
+        with self.assertRaises(SystemExit):
+            self.terv([sor('sz3', 'C', allapot='kezi'), sor('sz4', 'D')])
+
+    def test_iras_bajtorzo_es_idempotens(self):
+        regi = ['\t'.join(FEJ), sor('sz1', 'A'), sor('sz3', 'C'), sor('sz4', 'D'), sor('sz5', 'E'),
+                sor('sz9', 'Z', szotar='BDB', strong='H0002')]
+        v = FA.terv_osszevonas([(i, dict(zip(FEJ, s.split('\t')))) for i, s in enumerate(regi) if i],
+                               lambda sp: MAI2, lambda sp: TERKEP2)
+        uj, torol = FA.alkalmaz_osszevonas(regi, FEJ, v, '2026.11.10')
+        FA.ellenoriz_iras_osszevonas(regi, uj, v, torol)
+        self.assertEqual(torol, {3})
+        self.assertEqual((uj[0], uj[1], uj[4]), (regi[0], regi[1], regi[5]))
+        m = dict(zip(FEJ, uj[2].split('\t')))
+        self.assertEqual((m['jelentes_szam'], m['allapot'], m['forditas_hu']), ('sz3', 'elavult', 'ford sz3 ford sz4'))
+        m = dict(zip(FEJ, uj[3].split('\t')))
+        self.assertEqual((m['jelentes_szam'], m['allapot'], m['forras_hash']), ('sz4', 'sonnet', 'E'))
+        # újrafuttatva: a már átkulcsolt Strong kimarad
+        v2 = FA.terv_osszevonas([(i, dict(zip(FEJ, s.split('\t')))) for i, s in enumerate(uj) if i],
+                                lambda sp: MAI2, lambda sp: TERKEP2)
+        self.assertEqual(v2, [])
+
+
 class Iras(unittest.TestCase):
     def test_bajtorzo(self):
         regi = ['# fejléc-megjegyzés', '\t'.join(FEJ), sor('sz1', 'A'), sor('sz2', 'B'), sor('sz3', 'C'),
