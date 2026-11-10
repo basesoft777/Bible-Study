@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: fut
 ag: claude/f105-bdb-szorend
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F105_3 1. tartalmi (az ELLENOR_F105_2 utólagos kiegészítése, F105.30: elfogadás vagy külön fájlba helyezés), 2. mechanikus (a napló 6.2 „változatlan” száma: 1 631 → a végleges szabály szerint mérendő, várhatóan 1 641)"
+kovetkezo: "Zárás és draft PR (a korlát fölötti kör kész, engedéllyel)"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/bdb_jelolt/heber_sorrend.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_rovidites.py, adat/bdb_forras_javitas.tsv, eszkozok/teszt_bdb_rovidites.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv (csak a fejléc: a javítótábla hash-e), adat/SEMA.md, naplok/F105_naplo.md, naplok/F105_tabla_osszevet.py, naplok/F105_maqqef_meres.py, naplok/F105_meres.py, naplok/F105_minta.py, naplok/F105_vak.py, naplok/F105_utkozes.tsv, dontesek/uj/f105-bdb-szorend.md, naplok/F105_vak_minta.md, naplok/F105_vak_kulcs.tsv, naplok/F105_vak_kitolto_1.tsv, naplok/F105_vak_kitolto_2.tsv, naplok/F105_vak_osszevet.py, naplok/F105_vak_maqqef.py, naplok/F105_vak_maqqef_*, nyitott/uj/f105-bdb-szorend.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ALVIL-001_TUDOMANYOS.md, lexikon/TEREMT-002_TUDOMANYOS.md, lexikon/ANTROP-001_TUDOMANYOS.md, lexikon/HAMART-001_TUDOMANYOS.md]
 fugg: [99, 102, 103, 104]
