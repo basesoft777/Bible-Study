@@ -22,6 +22,10 @@ ami itt tiszta, az a CI-ban is az.
   (`„…”`, `"…"`) igehely-idézet szintén. Más esetben (próza: `1 Móz 3:16`) csak jelez,
   a javasolt alakkal (`1Móz 3:16`).
 
+Tájékoztató jelzés (F188 T2, nem gátol, a kilépési kódba nem számít): a nyitott tételben, a README-ben és a
+jelentésben a hozzáadott sor, amely egy `.tsv` tábla darabszámát ismétli proveniencia-sor nélkül
+(`szabalyok.szamismetles`; a CI-szabállyá emelése a #104 merge-e után, N-F188a).
+
 Hatókör: a megadott fájlok, ennek hiányában a diff által érintettek (a munkafa a
 `git merge-base <alap> HEAD`-hez képest, a nem követett új fájlokkal együtt).
 Alapból száraz futás: kiírja a diffet, nem ír. `--ir`: a javítást a fájlba írja.
@@ -367,11 +371,45 @@ def _kiir_diff(relut, regi, uj):
         sys.stdout.write(sor)
 
 
+def munkafa_hozzaadott_sorok(mb, relut):
+    """A munkafa `relut` fájljának a merge-base-hez képest hozzáadott/módosított sorai (halmaz); None: a fájl
+    egésze új (nincs a merge-base-ben), vagy a diff nem állapítható meg."""
+    if mb is None or _git(['cat-file', '-e', '%s:%s' % (mb, relut)]) is None:
+        return None
+    ki = _git(['diff', '--unified=0', mb, '--', relut])
+    if ki is None:
+        return None
+    sorok = set()
+    for sor in ki.splitlines():
+        m = K._HUNK_FEJLEC.match(sor)
+        if m:
+            kezdo, hossz = int(m.group(1)), int(m.group(2)) if m.group(2) is not None else 1
+            sorok.update(range(kezdo, kezdo + hossz))
+    return sorok
+
+
+def t2_szures(talalatok, hozzaadott):
+    """Csak a hozzáadott sorok találatai (`hozzaadott` None: mind)."""
+    return [t for t in talalatok if hozzaadott is None or t.sor in hozzaadott]
+
+
+def t2_jelzesek(fajlok, alap):
+    mb = merge_base(alap)
+    leletek = []
+    for f in fajlok:
+        if not SZ.szamismetles_hatokor(f):
+            continue
+        for t in t2_szures(SZ.szamismetles([f]), munkafa_hozzaadott_sorok(mb, f)):
+            leletek.append(Lelet('T2', t.fajl, t.sor, t.reszlet, False))
+    return leletek
+
+
 def fut(fajlok, alap, ir, uzenet_fajl=None, e5_jelol=False):
     leletek = []
     leletek += e32_javitasok(fajlok, ir)
     leletek += e8_javitasok(fajlok, ir)
     leletek += e5_ellenoriz(alap, uzenet_fajl, e5_jelol, ir)
+    leletek += t2_jelzesek(fajlok, alap)
     return leletek
 
 
@@ -401,7 +439,7 @@ def main(argv=None):
         print('- JAVÍT %s `%s:%s` — %s' % (le.szabaly, le.fajl, le.sor, le.szoveg))
     for le in jelzett:
         print('- JELEZ %s `%s:%s` — %s' % (le.szabaly, le.fajl, le.sor, le.szoveg))
-    if jelzett or (javitott and not args.ir):
+    if any(le.szabaly != 'T2' for le in jelzett) or (javitott and not args.ir):  # a T2 tájékoztató
         return 1
     return 0
 

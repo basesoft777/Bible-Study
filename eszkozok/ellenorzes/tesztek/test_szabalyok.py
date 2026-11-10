@@ -2254,6 +2254,34 @@ class E37Teszt(unittest.TestCase):
         self.assertIn('FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron', sor[0])
 
 
+class SzamismetlesTeszt(unittest.TestCase):
+    """F188 T2: a tábla-szám ismétlése (még nem CI-szabály; az elojavit.py jelzi, N-F188a)."""
+
+    def test_hatokor(self):
+        for f in ('NYITOTT_FELADATOK.md', 'nyitott/uj/f188-x.md', 'README.md', 'eszkozok/x/README.md',
+                  'naplok/F188_jelentes.md'):
+            self.assertTrue(SZ.szamismetles_hatokor(f), f)
+        for f in ('MUNKAMENET.md', 'naplok/ELLENOR_F1.md', 'naplok/F188_zaras.md', 'adat/SEMA.md'):
+            self.assertFalse(SZ.szamismetles_hatokor(f), f)
+
+    def test_sorok(self):
+        sorok = ['Az `adat/kiadasok.tsv` 779 sor.',                                   # 1: találat
+                 'A Karoli_versmegfeleltetes.tsv 26 során áll.',                     # 2: találat
+                 'A tábla (adat/x.tsv) 14 976 tételt hordoz.',                        # 3: találat, ezres tagolás
+                 'adat/x.tsv: 12 sor `scope=adat/x.tsv | forras=lekerdez | ts=2026-11-10`',  # 4: proveniencia
+                 'Az adat/x.tsv 3 versösszevonásos helye.',                          # 5: nem darabszám-szó
+                 '<!-- GENERÁLT-KEZDET: x -->', 'adat/x.tsv 5 sor', '<!-- GENERÁLT-VÉGE: x -->',  # 6-8
+                 '```', 'adat/x.tsv 5 sor', '```',                                    # 9-11: kódblokk
+                 'Lásd az adat/x.tsv-t, a `5 sor` csak példa.']                        # 12: backtick
+        self.assertEqual([(n, kif) for n, _, kif in SZ.szamismetles_sorok(sorok)],
+                         [(1, '779 sor'), (2, '26 során'), (3, '14 976 tételt')])
+
+    def test_nincs_a_ci_szabalyok_kozott(self):
+        # a CI-szabállyá emelés a #104 merge-e után (SEMA 3.11 + SZINT együtt); addig az E37 zöld marad
+        self.assertNotIn(SZ.SZAMISMETLES_AZON, SZ.SZINT)
+        self.assertNotIn(SZ.SZAMISMETLES_AZON, SZ.SZABALYOK_FUGGVENYEI)
+
+
 class E28CsakTeszt(unittest.TestCase):
     """F188 T4: a PARDES_E28_CSAK szűkítés csak helyi futásban hat, a CI-ben (GITHUB_ACTIONS) nem."""
 

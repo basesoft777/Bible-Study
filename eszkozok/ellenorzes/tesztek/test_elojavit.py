@@ -173,6 +173,23 @@ class E5Teszt(unittest.TestCase):
                          'F1.2: cím\n\nTÖRLÉS-SZÁNDÉKOS: A.md\n')
 
 
+class T2Teszt(unittest.TestCase):
+    def test_csak_hozzaadott_sor(self):
+        ts = [K.Talalat('SZAMISMETLES', 'JELENTES', 'NYITOTT_FELADATOK.md', n, 'x') for n in (3, 7)]
+        self.assertEqual([t.sor for t in EJ.t2_szures(ts, {7, 8})], [7])
+        self.assertEqual([t.sor for t in EJ.t2_szures(ts, None)], [3, 7])
+
+    def test_jelzes_uj_fajlban(self):
+        with _Gyoker() as g:
+            _git(g, 'init', '-q')
+            _ir(g, 'x.txt', 'a\n')
+            _git(g, 'add', '.')
+            _git(g, 'commit', '-q', '-m', 'alap')
+            _ir(g, 'naplok/F9_jelentes.md', '# J\n\nAz `adat/x.tsv` most 312 sor.\n')
+            leletek = EJ.t2_jelzesek(['naplok/F9_jelentes.md'], 'HEAD')
+            self.assertEqual([(le.szabaly, le.sor, le.javitott) for le in leletek], [('T2', 3, False)])
+
+
 def _git(gyoker, *args):
     subprocess.run(['git', '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false'] + list(args),
                    cwd=gyoker, check=True, capture_output=True)
