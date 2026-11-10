@@ -70,9 +70,9 @@ def terv_osszevonas(sorok, szakaszok, terkep):
     (összevont) szakaszok; terkep(sp) -> {régi sorszám: új sorszám}. Soronként, a régi kulcs új csoportja szerint:
       * a csoportba egy régi sor esik: nem `elavult` sor azonos hash-sel -> `atkulcsol` (vagy változatlan, ha a kulcs sem
         változik); nem `elavult`, eltérő hash -> `elavult`; `elavult` sor -> csak a kulcsa követi a térképet (`athelyez`);
-      * a csoportba több régi sor esik (összevont szakasz): egyetlen `elavult` sor lesz belőlük az új kulcson, a fordítások
-        sorrendben egy szóközzel fűzve (`osszefuz`; a többi régi sor kikerül, a szövege benne marad) — két sor egy kulcson nem
-        állhat. `kezi` sor nem avulhat el (megáll).
+      * a csoportba több régi sor esik (összevont szakasz): az új kulcson egy összefűzött sor áll, a fordítások sorrendben
+        egy szóközzel fűzve (`osszefuz`); a régi sorok nem törlődnek, hanem `elavult` tagsorként `sz<új>~<régi>` kulcsot
+        kapnak, és az összefűzött sorra mutatnak (SEMA 2.14, DT-F186f). `kezi` sor nem avulhat el (megáll).
     -> [{'i', 'strong', 'regi', 'uj', 'tipus', 'tagok'}]"""
     csoport = collections.defaultdict(list)
     for i, r in sorok:

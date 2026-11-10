@@ -262,6 +262,8 @@ szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
 | binyan + igealak | ha a megkülönböztetés igealakon múlik | `Qal pass. ptc.`, `Qal impf.` |
 | alternatíva | ha a hely két binyan között eldöntetlen | `Nif'ál / Hif'íl` |
 | `teljes` | **a forrásfájl nem bont számozott jelentésekre — a teljes szócikk egy sorban áll** (LEXV2_2_BRIEF.md V2.3, jelenleg: Thayer) | `teljes` |
+| `sz<n>` | **a Thayer szócikk n-edik szakasza** (`adat/thayer_szakaszok.tsv` `sorszam`, SEMA 2.34; a #132 szakaszonkénti fordítása) | `sz1`, `sz13` |
+| `sz<n>~<m>` | **elavult tagsor**: az azonos útvonalú szakaszok összevonása előtti régi `sz<m>` sor, amelynek szövege az `sz<n>` összefűzött sorában áll; mindig `elavult` (SEMA 2.14, DT-F186f) | `sz5~6` |
 | `részlet` | **a szótári szócikk egy kiemelt része** (szócikkfej, etimológia vagy reprezentatív kivonat), amikor a forrás nem jelentés-szám szerint van tagolva, vagy a teljes szócikk terjedelme miatt csak részlet szerepel (ISTENTISZT_2B_ADATOSITAS.md D0) | `részlet` |
 
 **A `teljes` és a `részlet` érték három korlátja — azonos:**

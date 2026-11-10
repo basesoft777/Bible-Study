@@ -828,8 +828,8 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   `teszt_vers_jelentes` (nincs egymást követő azonos útvonal; az 1Kor 2:14 / G4151 egyetlen 4.a szakaszban, a γεννάω-töredékkel
   együtt), `teszt_forditas_atkulcsol` (a második kör).
 - **A fordítássorok második átkulcsolása** (`forditas_atkulcsol.py --osszevonas`, egyszeri, idempotens, bájtőrző): 342 sor
-  átkulcsolva (csak azonos `forras_hash`-nél), 4 `elavult`, 35 összevont csoport egy-egy `elavult` sorrá fűzve (38 tagsor kikerül,
-  a szövege az összefűzött sorban marad — két sor egy kulcson nem állhat), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
+  átkulcsolva (csak azonos `forras_hash`-nél), 4 `elavult`, 35 összevont csoport egy-egy `elavult` sorrá fűzve (a 38 régi
+  tagsor a 3. körben `sz<új>~<régi>` kulccsal, `elavult` állapotban visszaállt, DT-F186f, 14.), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
   bájtbizonyítása az összevonás előtti táblára (1f408b47) vonatkozik; az első kör útja (`bekezdes_elso`) ezért az összevonás
   előtti nézetet használja.
 - **A lapon szereplő Strongok** (tényre javítva, ELLENOR_F186_3 1g, 1h; „a korlát fölött, engedéllyel javítva” (ELLENOR_F186_3)): a G4151 (sz13: 4.a + töredék) és a
@@ -1817,3 +1817,16 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+## 16. Zárás (F184 D4; a korlát fölött, engedéllyel, dokumentum-javítás: ELLENOR_F186_4 2g, 5b, 5c)
+
+- **Hatókör:** T0–T4 és a jelentés; a T5 a #187-é. Javítókör: kettő a korláton belül, egy a korlát fölött engedéllyel (14.), utána dokumentum-javítás.
+- **Egyeztetett eltérések:** SORREND (a #121 `megallt`); az `ir` bővítése (DT-F186b–f); az ANTROP-001 kiadott lap újragenerálása (DT-F186e, generált apparátus-változás, SEMA 2.48 / DT665).
+- **Mérés** (két független Opus-kitöltő, kapu ≥ 194/200), jelentéspont: seed-201 189/200; seed-202 192 és seed-203 194/200 (korlátozott vakság); **seed-204 (valóban vak, mérvadó) 196/200 = 98,0% (Wilson 95,0–99,2)**; könyv/vers mind a négyen 200/200.
+- **Javítások** (`bont.py`): K1, K1b, K1c, K2, K2b és az azonos útvonalú szakaszok összevonása (a mérést nem változtatja). Szakasztábla 17 093 → 17 261 sor; kulcsváltozás 184 Strong, 1 299 kulcs.
+- **Mérve, nem javítva:** K3, K4 (N-F186a), K1d, K1e (N-F186d), K2c, K2d, K5 (N-F186e).
+- **Fordítássorok:** 2 883 Thayer `sz`-sor, ebből 142 `elavult`, plusz 38 `sz<új>~<régi>` tagsor (DT-F186f); átkulcsolás csak azonos hash-nél, bájtőrzően. G4151: csak az sz13 új fordítás; G5590: új fordítás nem készült (F186.13 marad, az sz5 összefűzve). HAMART nem érintett.
+- **CI:** `ellenoriz.py` 0 SÉRTÉS (13. szabály JELENTÉS: 142 + 76, a #7-é); E28 zöld; tesztek zöldek (a régi `teszt_lanc` `Sigla`-hiba kivételével); `feladatok.py ellenoriz` 0 hiba. A PR-cím `[ELLENŐRZŐ]` (E16).
+- **Nyitott:** N-F186a, b, d, e, f, g (a g: az olvasó ne mutassa az elavult és a tagsorokat, a #187-é).
+- **Tokenfogyasztás:** a seed-204 1,09 M token, a küszöb fölött; ez csak utólag derült ki.
+- A korábbi külön zárójelentés (`naplok/F186_zaras.md`) ide került, és törölve.
