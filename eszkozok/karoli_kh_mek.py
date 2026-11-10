@@ -7,7 +7,7 @@ A `konkordancia/Karoli_kereszthivatkozasok.tsv` (HunKar OSIS <- szentiras.hu KG)
 másik vers KH-listáját hordozza (N-F156a). A MEK 00161 kiadás (*Szent Biblia*, Károli) versenként, a vers alatt adja
 a KH-t, a HunKar-tól függetlenül: ez a második, független tanú. A nyers RTF NEM kerül a repóba.
 
-Két alparancs:
+Alparancsok (a harmadiktól: F181):
 
   kivonat <rtf> [--ki konkordancia/Karoli_KH_MEK.tsv] [--naplo <fájl>] [--sha256 <hex>] [--ts <dátum>]
       RTF-dekódolás (a `\\'xx` cp1250, a `\\uN`), könyvpárosítás a MEK saját tartalomjegyzéke szerint (66 cím,
@@ -17,6 +17,17 @@ Két alparancs:
   osszevet [--ki konkordancia/Karoli_KH_javitott.tsv] [--jelentes <fájl>]
       versellenőrzés (a hivatkozott vers létezik-e a Karoli_1908.tsv-ben), versenkénti összevetés a HunKar-táblával,
       TSK-támogatás; háromszintű tábla: megerositett / kiesik / jelolt. A `jelolt` sorokról NEM dönt (CLAUDE.md 2.).
+
+  jelolt-bontas [--be konkordancia/Karoli_KH_javitott.tsv] [--jelentes <fájl>] [--modell <név>] [--ts <dátum>]
+      a `jelolt` szint mérése és bontása (altípusok, a beemelési szabály soronkénti döntése, könyvenkénti eloszlás,
+      a jelölt szint súlya; a TSK csak tájékoztatás). Csak olvas, a táblát nem módosítja.
+
+  e2-meres [--ki <fájl>]
+      az E2-hibaminta (DT-F181h) teljes mérése a #177 nyers táblán: minták, forrásversek, töredékek, HunKar-megfelelő.
+
+  beemel [--be konkordancia/Karoli_KH_javitott.tsv] [--ki <fájl>] [--ts <dátum>]
+      a beemelési szabály alkalmazása: a MEK-oldali jelölt sor megerositett lesz, kivéve a nem létező
+      célvers és a gyanús ismétlődés; a MEK-listával ütköző HunKar-oldali jelölt sor kiesik. A sorok száma nem változik.
 
 TSV-olvasás/írás: `split('\\t')` / `'\\t'.join()`, a `csv` modul nem használható (CLAUDE.md).
 """
@@ -348,11 +359,18 @@ def mek_versek():
 
 
 def hunkar_sorok():
-    """[(forras, cel_nyers, kezdet, veg)] a HunKar-táblából; a tartomány 'A-B' egy sor (kezdet != veg)."""
+    """[(forras, cel_nyers, kezdet, veg)] a HunKar-táblából; a tartomány 'A-B' egy sor (kezdet != veg).
+    A (forrásvers, cél) kulcs egyszer áll (DT-F181p): a HunKar-tábla négy kulcsot kétszer hordoz (Józs 2:15 → ApCsel 9:2,
+    1Kir 11:11 → 6:12, 1Kor 7:4 → 7:7, 1Kor 12:11 → 7:7); az első előfordulás marad, a kettőzött sor nem kerül a
+    javított táblába."""
     ki = []
+    lattuk = set()
     for m in tsv_sorok(HUNKAR):
         if len(m) < 2 or not m[0]:
             continue
+        if (m[0], m[1]) in lattuk:
+            continue
+        lattuk.add((m[0], m[1]))
         reszek = m[1].split('-')
         ki.append((m[0], m[1], reszek[0], reszek[-1]))
     return ki
@@ -473,8 +491,15 @@ def osszevet_main(a):
     prov = proveniencia_javitott(ts)
     fej = '# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet — kézzel szerkeszteni tilos; a szintek: megerositett / ' \
           'kiesik / jelolt (a jelolt sorokról nincs döntés, CLAUDE.md 2. szabály)'
-    tsv_ir(a.ki, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'],
-           [[v, c, sz, fo, ind, prov] for v, c, sz, fo, ind in sorok], fej)
+    sorok6 = [[v, c, sz, fo, ind, prov] for v, c, sz, fo, ind in sorok]
+    if not a.nyers:
+        # F181 (DT-F181d): az osszevet kimenete a beemelési szabállyal együtt áll elő, hogy az újragenerálás ne
+        # veszítse el a J4 állapotát; a #177 háromszintű nyers állapota a --nyers kapcsolóval.
+        bontas, _, _ = _bontas_sorokra(sorok6)
+        sorok6 = beemel(sorok6, bontas, ts)
+        sorok = [tuple(m[:5]) for m in sorok6]
+        fej = FEJ_BEEMELT
+    tsv_ir(a.ki, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'], sorok6, fej)
     stat = osszegzes(sorok, hk, mek)
     print(stat)
     if a.jelentes:
@@ -486,6 +511,779 @@ def osszevet_main(a):
 def osszegzes(sorok, hk, mek):
     szamlalo = collections.Counter(s[2] for s in sorok)
     return '\n'.join('%s: %d' % (k, szamlalo.get(k, 0)) for k in SZINTEK) + '\nsor összesen: %d' % len(sorok)
+
+
+# ----------------------------------------------------------------------------------------------------------------
+# F181: a `jelolt` szint mérése (jelolt-bontas, J1), a beemelési szabály (J2) és alkalmazása (beemel, J4).
+# DT-F181d (a felhasználó szava, 2026-11-09): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a
+# MEK-et, ha ott nem volt gyanús ismétlődő.” A TSK tehát NEM tanú és nem feltétel: a bontásban csak tájékoztató.
+# ----------------------------------------------------------------------------------------------------------------
+
+GYANUS_TSV = KONK + '/Karoli_kereszthivatkozasok_gyanus.tsv'
+SZABALY_JEL = 'szabaly=F181'
+FEJ_BEEMELT = ('# GENERÁLT: eszkozok/karoli_kh_mek.py osszevet + beemel — kézzel szerkeszteni tilos; a szintek: '
+               'megerositett / kiesik / jelolt (a jelolt sorokról a döntés nélküli maradék: Karoli_KH_MEK_README.md 7.)')
+ALTIPUSOK = ('tartomány/vershatár', 'könyv-elírás', 'fejezet-elírás', 'versszám-elírás', 'eltér (nem sorolható)',
+             'csak MEK', 'egyéb (egyező, de nem létező hivatkozás)')
+_RANG = {'tartomány/vershatár': 0, 'versszám-elírás': 1, 'fejezet-elírás': 2, 'könyv-elírás': 3}
+ELIRAS = ('könyv-elírás', 'fejezet-elírás', 'versszám-elírás')
+TSK_KATEGORIAK = ('mindkettő', 'csak a MEK-cél', 'csak a HunKar-cél', 'egyik sem')
+
+# a döntés-kategóriák (a szabály kimenete soronként)
+D_BEEMEL = 'beemel (MEK-sor -> megerositett)'
+D_NEMLETEZO = 'marad: nem létező célvers'
+D_GYANUS = 'marad: MEK-oldali gyanús ismétlődő'
+D_ELIRAS = 'marad: elírás-gyanús (egyetlen összetevőben tér el a HunKar-céltól)'
+D_E2 = 'marad: MEK fejezet-hibaminta (a létező töredék)'
+D_HK_KIESIK = 'HunKar-sor -> kiesik (a MEK-lista elfogadva a versen)'
+D_HK_MARAD = 'HunKar-sor marad jelölt (a MEK-sor nem emelődik be)'
+D_HK_E1 = 'HunKar-sor -> megerositett (a MEK-pár célja nem létezik)'
+D_HK_E2 = 'HunKar-sor -> megerositett (a MEK fejezet-hibamintájának megfelelője)'
+D_HK_VEGPONT = 'HunKar-tartomány -> megerositett (a MEK az egyik végpontot adja)'
+D_MEK_VEGPONT = 'MEK-végpontsor -> kiesik (a megerősített HunKar-tartományba olvad)'
+# E3-szűkítés (DT-F181n): egyfejezetes könyvben a HunKar `1:1-N` tartomány műtermék, a MEK pontos `1:N` verse a cél
+D_MEK_EGYF = 'MEK-sor -> megerositett (egyfejezetes könyv: a HunKar 1:1-N tartomány műtermék)'
+D_HK_EGYF = 'HunKar-tartomány -> kiesik (egyfejezetes könyv: a MEK pontos 1:N verse a cél)'
+DONTESEK = (D_BEEMEL, D_GYANUS, D_NEMLETEZO, D_ELIRAS, D_E2, D_HK_KIESIK, D_HK_MARAD, D_HK_E1, D_HK_E2, D_HK_VEGPONT,
+            D_MEK_VEGPONT, D_MEK_EGYF, D_HK_EGYF)
+# a jelolt-ban maradó sor oka (`marad=<kód>` tag az indokban, E8)
+_MARAD_KOD = {D_NEMLETEZO: 'nem_letezo_cel', D_GYANUS: 'gyanus_ismetlodo', D_ELIRAS: 'eliras_gyanus',
+              D_E2: 'mek_fejezet_minta'}
+# a HunKar-oldali jelolt sor két oka (a jelolt_bontas állítja): a párja elírás-gyanús MEK-sor, vagy a forrásvers MEK-listája
+# nincs elfogadva (egyetlen sora sem emelődik be)
+MARAD_KODOK = tuple(_MARAD_KOD.values()) + ('eliras_gyanus_par', 'mek_lista_nincs_elfogadva')
+
+
+def gyanus_versek():
+    """A #177 gyanús-jelölése (HunKar-oldali): a `Karoli_kereszthivatkozasok_gyanus.tsv` forrásversei (STEP-alak)."""
+    return {m[0] for m in tsv_sorok(GYANUS_TSV) if m and m[0]}
+
+
+def mek_ismetlodo(mek, min_elem=2):
+    """A MEK-oldali gyanús ismétlődés: azok a forrásversek, amelyek MEK-listája (a nem üres célok halmaza, legalább
+    `min_elem` elem) szó szerint azonos egy másik forrásvers MEK-listájával. Az egyelemű lista nem számít ismétlődésnek
+    (a gyakori, pl. Róm 3:23, természetes egyezés)."""
+    csop = collections.defaultdict(list)
+    for v, lis in mek.items():
+        halmaz = frozenset(c for c, _ in lis if c)
+        if len(halmaz) >= min_elem:
+            csop[halmaz].append(v)
+    return {v for vs in csop.values() if len(vs) > 1 for v in vs}
+
+
+def cel_vegpontok(cel):
+    """A HunKar-cél (egy vers vagy 'A-B' tartomány) két végpontja (kezdet, vég) STEP-tuple-ként; hibás cél -> None."""
+    r = cel.split('-')
+    k = step_ref(r[0])
+    e = step_ref(r[-1]) or k
+    return (k, e) if k else None
+
+
+def kapcsolat(mek_cel, hk_cel):
+    """A MEK-cél (STEP-ref) és a HunKar-cél (vers vagy tartomány) viszonya: az `ALTIPUSOK` egyik típusa vagy None.
+    tartomány/vershatár: a MEK-cél a HunKar-tartományban vagy annak végpontjától egy versnyire áll (azonos fejezet);
+    könyv-/fejezet-/versszám-elírás: a MEK-cél egyetlen összetevőben (könyv / fejezet / vers) tér el valamelyik
+    végponttól (az 1 verses eltérés vershatár, a versszám-elírás ennél nagyobb)."""
+    m = step_ref(mek_cel)
+    v = cel_vegpontok(hk_cel)
+    if not m or not v:
+        return None
+    k, e = v
+    if k[0] == m[0] and k <= m <= e:
+        return 'tartomány/vershatár'
+    for p in (k, e):
+        if p[0] == m[0] and p[1] == m[1] and abs(p[2] - m[2]) == 1:
+            return 'tartomány/vershatár'
+    legjobb = None
+    for p in (k, e):
+        if p[0] != m[0] and p[1:] == m[1:]:
+            t = 'könyv-elírás'
+        elif p[0] == m[0] and p[1] != m[1] and p[2] == m[2]:
+            t = 'fejezet-elírás'
+        elif p[0] == m[0] and p[1] == m[1] and p[2] != m[2]:
+            t = 'versszám-elírás'
+        else:
+            continue
+        if legjobb is None or _RANG[t] < _RANG[legjobb]:
+            legjobb = t
+    return legjobb
+
+
+def cel_letezik(cel, letezo):
+    """Igaz, ha a cél (vers vagy tartomány) minden végpontja létező vers."""
+    v = cel_vegpontok(cel)
+    return bool(v) and all(ref_str(p) in letezo for p in v)
+
+
+def e2_mintak(lista, letezo, hk_celok):
+    """A MEK rendszeres hibamintája (DT-F181h, ELLENOR_F181 E2). A MEK a HunKar `X a:b` célját (a: fejezet, b: vers)
+    két töredékre bontva adja: `X c:a` és `X c:b`, ahol `c` az előző hivatkozás fejezete; az egyik töredék létező,
+    a másik nem (Neh 1:5: HunKar 9:32, MEK 4,9 és 4,32).
+
+    lista: [(cel, mek_alak)] a forrásvers MEK-sorai sorrendben; hk_celok: a forrásvers HunKar-céljai (nyers alak).
+    Minta: két egymás utáni MEK-sor, azonos könyv és fejezet (c), a versszámok a és b, a != c, `X a:b` létező vers,
+    és a két sor közül legalább az egyik nem létező. Ha a forrásversnek van HunKar-sora, amely `X a:b`-vel kezdődik
+    (vers vagy tartomány), a minta megfelelője megvan; a HunKar-tartomány további versei (`X a:b+1` ...) a MEK-ben
+    ugyanabban a fejezetben (c) egymás után álló sorokként a mintához tartoznak (Zsolt 27:4: 23,42 + 23,2 + 23,3).
+    Visszaadja: [{'tagok': [cel, ...], 'letezo_tagok': [cel, ...], 'cel': 'X.a.b', 'hunkar': nyers HunKar-cél vagy None}]."""
+    ki = []
+    for i in range(len(lista) - 1):
+        r1, r2 = step_ref(lista[i][0]), step_ref(lista[i + 1][0])
+        if not r1 or not r2 or r1[0] != r2[0] or r1[1] != r2[1]:
+            continue
+        x, c, a, b = r1[0], r1[1], r1[2], r2[2]
+        e1, e2 = lista[i][0] in letezo, lista[i + 1][0] in letezo
+        cel = ref_str((x, a, b))
+        if a == c or (e1 and e2) or cel not in letezo:
+            continue
+        hk = next((h for h in hk_celok if h.split('-')[0] == cel), None)
+        tagok = [lista[i][0], lista[i + 1][0]]
+        if hk and '-' in hk:
+            veg = step_ref(hk.split('-')[-1])
+            if veg and veg[0] == x and veg[1] == a:
+                j = i + 2
+                for v in range(b + 1, veg[2] + 1):
+                    if j < len(lista) and lista[j][0] == ref_str((x, c, v)):
+                        tagok.append(lista[j][0])
+                        j += 1
+                    else:
+                        break
+        ki.append({'tagok': tagok, 'letezo_tagok': [t for t in tagok if t in letezo], 'cel': cel, 'hunkar': hk})
+    return ki
+
+
+_GOMB_VEG = re.compile(r'(\d+),\.$')
+
+
+def egyfejezetes_konyv(konyv, letezo):
+    """Igaz, ha a könyv (STEP-kód) minden létező verse az 1. fejezetben áll (Abd, Filem, 2Ján, 3Ján, Júd; a létező
+    versek halmazából, nem kézi listából)."""
+    fejezetek = {r.split('.')[1] for r in letezo if r.split('.')[0] == konyv}
+    return fejezetek == {'1'}
+
+
+def jelolt_bontas(javitott, letezo, tamogat_teljes, tamogat_tsk, gyanus_hk, gyanus_mek, mek_lista=None):
+    """A `jelolt` sorok bontása és a J2 szabály döntése soronként.
+
+    javitott: [(igehely, kapcsolodo, szint, forras, indok)] (a teljes tábla). A TSK-támogatás (tamogat_teljes: mai
+    `tsk=` szabály; tamogat_tsk: tiszta TSK ±3) csak tájékoztató, a szabály nem használja (l. Karoli_KH_MEK_README.md 7.).
+    gyanus_hk / gyanus_mek: a gyanús ismétlődő forrásversek két halmaza (HunKar-oldali jelölés / MEK-oldali ismétlődés);
+    a szabály csak a MEK-oldalit használja, a HunKar-oldali csak jelzés. mek_lista: {forrásvers: [(cel, mek_alak)]}
+    a MEK-sorok eredeti sorrendjében (az E2-minta felismeréséhez); ha nincs megadva, a tábla MEK-sorai adják.
+
+    A szabály szövege egy helyen áll: Karoli_KH_MEK_README.md 7. (F181; DT-F181d–f, DT-F181g–i). Röviden: a MEK-oldali
+    jelölt sor `megerositett`, kivéve a nem létező cél, a MEK-oldali gyanús ismétlődés, az E2-hibaminta létező töredéke és
+    az elírás-gyanús osztály. A HunKar-oldali jelölt sor `megerositett`, ha a MEK-oldali párja nem ellentmond neki (E1: a
+    pár célja nem létezik; E2: a hibaminta megfelelője; E3: a MEK a tartomány egyik végpontját adja; egyfejezetes
+    könyvben az `1:1-N` tartomány `kiesik`, a MEK `1:N` verse `megerositett`: DT-F181n); különben `kiesik`,
+    ha a verse MEK-listájából legalább egy sor beemelődik (kivéve az elírás-gyanús sor párját), egyébként jelölt marad."""
+    csoport = collections.OrderedDict()
+    for s in javitott:
+        csoport.setdefault(s[0], []).append(s)
+    ki = []
+    for fv, sorok in csoport.items():
+        jel = [s for s in sorok if s[2] == 'jelolt']
+        if not jel:
+            continue
+        mek_sor = [s for s in jel if s[3] == 'MEK']
+        hk_sor = [s for s in jel if s[3] == 'HunKar']
+        par_mek = {}
+        par_hk = {}
+        for ms in mek_sor:
+            lis = sorted(((_RANG[t], t, hs) for hs in hk_sor for t in [kapcsolat(ms[1], hs[1])] if t),
+                         key=lambda x: x[0])
+            par_mek[id(ms)] = lis
+        for hs in hk_sor:
+            lis = sorted(((_RANG[t], t, ms) for ms in mek_sor for t in [kapcsolat(ms[1], hs[1])] if t),
+                         key=lambda x: x[0])
+            par_hk[id(hs)] = lis
+        # E2: a MEK hibamintája (a forrásvers összes MEK- és HunKar-sora alapján, szinttől függetlenül)
+        lista = (mek_lista or {}).get(fv)
+        if lista is None:
+            lista = [(s[1], '') for s in sorok if s[3] == 'MEK']
+        hk_celok = [s[1] for s in sorok if s[3] in ('HunKar', 'HunKar+MEK')]
+        e2 = e2_mintak(lista, letezo, hk_celok)
+        e2_mek = {t for m in e2 if m['letezo_tagok'] for t in m['letezo_tagok']}
+        e2_hk = {m['hunkar']: m for m in e2 if m['hunkar'] and m['letezo_tagok']}
+        sv = []
+        raw2sv = {}
+        for s in jel:
+            oldal = {'MEK': 'MEK', 'HunKar': 'HunKar'}.get(s[3], 'egyező')
+            partner = None
+            if oldal == 'egyező':
+                alt = 'egyéb (egyező, de nem létező hivatkozás)'
+            else:
+                lis = (par_mek if oldal == 'MEK' else par_hk)[id(s)]
+                if lis:
+                    alt, partner = lis[0][1], lis[0][2]
+                elif oldal == 'MEK' and not hk_sor:
+                    alt = 'csak MEK'
+                else:
+                    alt = 'eltér (nem sorolható)'
+            letezik = cel_letezik(s[1], letezo)
+            forras_l = fv in letezo
+            sajat = bool(tamogat_teljes(fv, s[1]))
+            sajat_t = bool(tamogat_tsk(fv, s[1]))
+            ptsk = pt = None
+            if partner is not None:
+                ptsk = bool(tamogat_teljes(fv, partner[1]))
+                pt = bool(tamogat_tsk(fv, partner[1]))
+            if oldal == 'egyező':
+                kat = 'mindkettő' if sajat else 'egyik sem'
+            else:
+                mek_t = sajat if oldal == 'MEK' else bool(ptsk)
+                hk_t = sajat if oldal == 'HunKar' else bool(ptsk)
+                kat = ('mindkettő' if mek_t and hk_t else 'csak a MEK-cél' if mek_t else
+                       'csak a HunKar-cél' if hk_t else 'egyik sem')
+            gy_hk = fv in gyanus_hk
+            gy_mek = fv in gyanus_mek
+            dontes = None
+            if oldal == 'egyező' or not letezik or not forras_l:
+                dontes = D_NEMLETEZO if oldal != 'HunKar' else None
+            if oldal == 'MEK':
+                if dontes is None:
+                    dontes = (D_E2 if s[1] in e2_mek else D_GYANUS if gy_mek else D_ELIRAS if alt in ELIRAS
+                              else D_BEEMEL)
+            d = {'forras_vers': fv, 'cel': s[1], 'oldal': oldal, 'indok_kod': s[4].split(';')[0],
+                 'altipus': alt, 'partner': partner[1] if partner is not None else None,
+                 'sajat_tsk': sajat, 'partner_tsk': ptsk, 'sajat_tsk_tiszta': sajat_t,
+                 'partner_tsk_tiszta': pt, 'tsk_kat': kat, 'cel_letezik': letezik, 'forras_letezik': forras_l,
+                 'gyanus_hk': gy_hk, 'gyanus_mek': gy_mek, 'dontes': dontes, 'marad': None, 'jegyzet': '',
+                 'mek_alak': (s[4].split('mek_alak=')[1].split(';')[0] if 'mek_alak=' in s[4] else '')}
+            sv.append(d)
+            raw2sv[id(s)] = d
+        mek_d = [r for r in sv if r['oldal'] == 'MEK']
+        # E3: a HunKar-tartomány egyik végpontját a MEK adja (a másik hiányzik vagy értelmezhetetlen) -> a tartomány
+        # megmarad, a MEK-végpontsor a tartományba olvad (nem önálló sor)
+        e3 = {}
+        for hs in hk_sor:
+            v = cel_vegpontok(hs[1])
+            if not v or not v[0] < v[1] or not (cel_letezik(hs[1], letezo) and fv in letezo):  # csak rendezett tartomány
+                continue
+            vegek = [ref_str(v[0]), ref_str(v[1])]
+            talalt = [r for r in mek_d if r['cel'] in vegek and r['cel_letezik']]
+            if not talalt:
+                continue
+            gomb = [r for r in mek_d if not r['cel'] and _GOMB_VEG.search(r['mek_alak'] or '') and
+                    int(_GOMB_VEG.search(r['mek_alak']).group(1)) == v[1][2] and vegek[1] not in
+                    {t['cel'] for t in talalt}]
+            # DT-F181n (E3-szűkítés): egyfejezetes könyvben a `1:1-N` HunKar-tartomány műtermék (a HunKar a verset
+            # a könyv elejétől N-ig tartománynak adja); ha a MEK az `1:N` verset adja, az a cél, a tartomány kiesik
+            egyf = (v[0][1:] == (1, 1) and v[1][1] == 1 and egyfejezetes_konyv(v[0][0], letezo) and
+                    vegek[1] in {t['cel'] for t in talalt})
+            e3[hs[1]] = (talalt, gomb, egyf)
+        for cel_h, (talalt, gomb, egyf) in e3.items():
+            for r in talalt + gomb:
+                if egyf and r['cel'] == cel_h.split('-')[-1]:
+                    r['dontes'] = D_MEK_EGYF
+                    r['jegyzet'] = 'egyfejezetes_tartomany=' + cel_h
+                else:
+                    r['dontes'] = D_MEK_VEGPONT
+                    r['jegyzet'] = 'tartomany_vegpont=' + cel_h
+        van_beemel = any(r['dontes'] == D_BEEMEL for r in mek_d)
+        eliras_par = {(x['partner']) for x in sv if x['oldal'] == 'MEK' and x['dontes'] == D_ELIRAS and x['partner']}
+        for s in jel:
+            r = raw2sv[id(s)]
+            if r['oldal'] != 'HunKar':
+                r['marad'] = _MARAD_KOD.get(r['dontes'])
+                continue
+            sajat_ok = r['cel_letezik'] and r['forras_letezik']
+            partnerek = [raw2sv[id(p[2])] for p in par_hk[id(s)]]
+            if sajat_ok and r['cel'] in e2_hk:
+                r['dontes'] = D_HK_E2
+                r['jegyzet'] = 'mek_fejezet_minta=' + '+'.join(e2_hk[r['cel']]['tagok'])
+            elif sajat_ok and r['cel'] in e3 and e3[r['cel']][2]:
+                r['dontes'] = D_HK_EGYF
+                r['jegyzet'] = 'egyfejezetes_tartomany_muterek=' + r['cel'].split('-')[-1]
+            elif sajat_ok and r['cel'] in e3:
+                r['dontes'] = D_HK_VEGPONT
+                talalt, gomb, _ = e3[r['cel']]
+                r['jegyzet'] = 'mek_vegpont=' + '+'.join(t['cel'] for t in talalt) + ''.join(
+                    ';mek_vege_elirt=' + g['mek_alak'] for g in gomb)
+            elif r['cel'] in eliras_par:
+                r['dontes'] = D_HK_MARAD
+                r['marad'] = 'eliras_gyanus_par'
+            elif sajat_ok and partnerek and all(not p['cel_letezik'] for p in partnerek):
+                r['dontes'] = D_HK_E1
+                r['jegyzet'] = 'mek_par_nem_letezik=' + '+'.join(p['mek_alak'] or p['cel'] for p in partnerek)
+            elif van_beemel:
+                r['dontes'] = D_HK_KIESIK
+            else:
+                r['dontes'] = D_HK_MARAD
+                r['marad'] = 'mek_lista_nincs_elfogadva'
+        ki.extend(sv)
+    return ki
+
+
+def jelolt_sulya(javitott, bontas):
+    """A jelölt szint súlya: sorok, forrásversek, és hány versnek nem marad megerősített KH-ja a jelölt nélkül."""
+    versek = {s[0] for s in javitott}
+    meg_versek = {s[0] for s in javitott if s[2] == 'megerositett'}
+    jel_versek = {r['forras_vers'] for r in bontas}
+    nincs = jel_versek - meg_versek
+    jel_kiesik = {s[0] for s in javitott if s[2] == 'kiesik'}
+    be_versek = {r['forras_vers'] for r in bontas if r['dontes'] == D_BEEMEL}
+    return {'sor_osszes': len(javitott), 'sor_jelolt': len(bontas), 'versek_osszes': len(versek),
+            'versek_megerositettel': len(meg_versek), 'versek_jelolttel': len(jel_versek),
+            'jelolt_vers_megerositett_nelkul': len(nincs), 'ebbol_kiesik_is': len(nincs & jel_kiesik),
+            'ebbol_nincs_mas_sor': len(nincs - jel_kiesik), 'beemel_versek': len(be_versek),
+            'beemel_uj_versek': len(nincs & be_versek)}
+
+
+def mintak(sorok, n=5):
+    """Egyenletesen elosztott, determinisztikus minta (a sorok sorrendjéből)."""
+    if len(sorok) <= n:
+        return list(sorok)
+    lep = len(sorok) / n
+    return [sorok[int(i * lep)] for i in range(n)]
+
+
+def beemel(javitott, bontas, ts):
+    """A szabály alkalmazása (J4). javitott: [(igehely, kapcsolodo, szint, forras, indok, proveniencia)]; a
+    visszaadott lista ugyanilyen, ugyanabban a sorrendben, a sorok száma nem változik. Csak a `jelolt` sorok
+    módosulhatnak: a beemelt MEK-sor `megerositett` lesz (indok + `;szabaly=F181`); a HunKar-oldali, MEK-listával
+    ütköző sor és a megerősített HunKar-tartományba olvadó MEK-végpontsor `kiesik`; a HunKar-oldali sor, amelynek a
+    MEK-párja nem ellentmond (E1, E2, E3), `megerositett`; a jelolt-ban maradó sor indoka `;marad=<kód>` taggal bővül
+    (E8). A többi sor változatlan. Idempotens (a már módosult sor nem jelolt, a kód nem kerül kétszer a sorba)."""
+    dont = {(r['forras_vers'], r['cel'], r['oldal']): r for r in bontas}
+    prov = ('scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK_versszerkezet.tsv + '
+            'konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv | forras=eszkozok/karoli_kh_mek.py beemel | ts=%s' % ts)
+    prov2 = ('scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK.tsv + '
+             'konkordancia/Karoli_KH_MEK_versszerkezet.tsv + konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv | '
+             'forras=eszkozok/karoli_kh_mek.py beemel | ts=%s' % ts)
+    ki = []
+    for s in javitott:
+        if s[2] != 'jelolt':
+            ki.append(list(s))
+            continue
+        oldal = {'MEK': 'MEK', 'HunKar': 'HunKar'}.get(s[3], 'egyező')
+        r = dont.get((s[0], s[1], oldal))
+        d = r['dontes'] if r else None
+        jegy = (';' + r['jegyzet']) if r and r['jegyzet'] else ''
+        if d == D_BEEMEL:
+            ki.append([s[0], s[1], 'megerositett', s[3], s[4] + ';' + SZABALY_JEL, prov])
+        elif d == D_HK_KIESIK:
+            ki.append([s[0], s[1], 'kiesik', s[3], s[4] + ';' + SZABALY_JEL, prov])
+        elif d == D_MEK_VEGPONT:
+            ki.append([s[0], s[1], 'kiesik', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d == D_MEK_EGYF:
+            ki.append([s[0], s[1], 'megerositett', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d == D_HK_EGYF:
+            ki.append([s[0], s[1], 'kiesik', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d in (D_HK_E1, D_HK_E2):
+            ki.append([s[0], s[1], 'megerositett', s[3], s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif d == D_HK_VEGPONT:
+            ki.append([s[0], s[1], 'megerositett', 'HunKar+MEK', s[4] + jegy + ';' + SZABALY_JEL, prov2])
+        elif r and r['marad'] and 'marad=' not in s[4]:
+            ki.append([s[0], s[1], s[2], s[3], s[4] + ';marad=' + r['marad'], prov2])  # E8: a maradás oka a sorban
+        else:
+            ki.append(list(s))
+    return ki
+
+
+def e2_meres(hk, mek, letezo):
+    """Az E2-hibaminta teljes méréséhez (DT-F181h): a #177 nyers táblájából (osszevet --nyers) indul, és megszámolja a
+    mintákat, az érintett forrásverseket és MEK-töredékeket, a HunKar-megfelelővel bíró mintákat, valamint azt,
+    hány töredék került volna be a minta nélkül. Visszaad: (szöveg, adatok)."""
+    nyers = [list(s) + [''] for s in osszevet(hk, mek, letezo, lambda f, c: False)]
+    bontas = jelolt_bontas([tuple(s[:5]) for s in nyers], letezo, lambda f, c: False, lambda f, c: False,
+                           gyanus_versek(), mek_ismetlodo(mek), mek)
+    hk_celok = collections.defaultdict(list)
+    for f, c, _, _ in hk:
+        hk_celok[f].append(c)
+    mintak_ = []
+    for f, lista in mek.items():
+        for m in e2_mintak(lista, letezo, hk_celok[f]):
+            mintak_.append((f, m))
+    versek = {f for f, _ in mintak_}
+    hk_van = [(f, m) for f, m in mintak_ if m['hunkar']]
+    toredek = {(f, t) for f, m in mintak_ for t in m['letezo_tagok']}
+    sorban = {(r['forras_vers'], r['cel']): r for r in bontas if r['oldal'] == 'MEK'}
+    csak_mek = {k for k in toredek if k in sorban}
+    egyezik = toredek - csak_mek
+    volt_beemel = sorted(k for k in csak_mek if sorban[k]['dontes'] == D_E2 and not (
+        sorban[k]['gyanus_mek'] or sorban[k]['altipus'] in ELIRAS))
+    volt_eliras = sorted(k for k in csak_mek if sorban[k]['dontes'] == D_E2 and sorban[k]['altipus'] in ELIRAS)
+    volt_gyanus = sorted(k for k in csak_mek if sorban[k]['dontes'] == D_E2 and sorban[k]['gyanus_mek'])
+    hk_nelkul = sorted(k for k in csak_mek if not any(
+        m['hunkar'] for f, m in mintak_ if f == k[0] and k[1] in m['letezo_tagok']))
+    sz = ['E2-hibaminta, teljes mérés a nyers táblán',
+          'minta (két-három egymás utáni MEK-sor): %d; forrásvers: %d' % (len(mintak_), len(versek)),
+          'HunKar-megfelelővel bíró minta: %d (forrásvers: %d); HunKar-megfelelő nélküli: %d' % (
+              len(hk_van), len({f for f, _ in hk_van}), len(mintak_) - len(hk_van)),
+          'létező MEK-töredék a mintákban: %d' % len(toredek),
+          '  ebből a táblában csak_mek sor (a szűrő érinti): %d; HunKar-sorral egyezik (a szűrő nem érinti): %d' % (
+              len(csak_mek), len(egyezik)),
+          '  a csak_mek töredékek közül a minta nélkül beemelődött volna: %d; elírás-gyanús osztályban lett volna: %d; '
+          'gyanús ismétlődőként jelolt lett volna: %d' % (len(volt_beemel), len(volt_eliras), len(volt_gyanus)),
+          '  a csak_mek töredékek közül HunKar-megfelelő nélküli mintában áll: %d' % len(hk_nelkul)]
+    sz.append('a minta nélkül beemelődött töredékek: ' + '; '.join('%s → %s' % k for k in volt_beemel))
+    sz.append('a HunKar-megfelelő nélküli mintában álló csak_mek töredékek: ' + '; '.join('%s → %s' % k for k in hk_nelkul))
+    return '\n'.join(sz), {'minta': len(mintak_), 'versek': len(versek), 'hk_minta': len(hk_van),
+                           'toredek': len(toredek), 'csak_mek': len(csak_mek), 'volt_beemel': volt_beemel,
+                           'hk_nelkul': hk_nelkul}
+
+
+def e2_meres_main(a):
+    hk = hunkar_sorok()
+    mek = mek_sorok_betolt()
+    szoveg, _ = e2_meres(hk, mek, karoli_versek())
+    print(szoveg)
+    if a.ki:
+        with open(a.ki, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg + '\n')
+    return 0
+
+
+def _db(rs, felt):
+    return sum(1 for r in rs if felt(r))
+
+
+def jelolt_bontas_szoveg(bontas, suly, modell, ts, gy_hk_db, gy_mek_db):
+    ki = []
+    w = ki.append
+    n = len(bontas)
+    prov = ('scope=konkordancia/Karoli_KH_javitott.tsv (szint=jelolt) + konkordancia/Karoli_KH_MEK.tsv + '
+            'konkordancia/Karoli_kereszthivatkozasok.tsv + konkordancia/Karoli_kereszthivatkozasok_gyanus.tsv + '
+            'konkordancia/Karoli_1908.tsv + konkordancia/Karoli_KH_MEK_versszerkezet.tsv + '
+            'konkordancia/TSK_kereszthivatkozasok.tsv | forras=eszkozok/karoli_kh_mek.py jelolt-bontas | ts=%s' % ts)
+    w('# F181 jelentés — a Károli-KH jelölt szintjének mérése, a beemelési szabály és alkalmazása\n')
+    w('*Végrehajtó: `%s`. Ág: `claude/f181-karoli-kh-jeloltek`. %s.*' % (modell, ts))
+    w('*%s*\n' % prov)
+    w('## 1. A jelölt sorok és az altípusok (J1; mért: %d sor)\n' % n)
+    w('| altípus | sor | MEK-oldali | HunKar-oldali | egyező |')
+    w('|---|---|---|---|---|')
+    sz = collections.Counter((r['altipus'], r['oldal']) for r in bontas)
+    for a in ALTIPUSOK:
+        m, h, e = sz[(a, 'MEK')], sz[(a, 'HunKar')], sz[(a, 'egyező')]
+        w('| %s | %d | %d | %d | %d |' % (a, m + h + e, m, h, e))
+    w('| **összesen** | **%d** | %d | %d | %d |\n' % (
+        n, sum(v for (a, o), v in sz.items() if o == 'MEK'), sum(v for (a, o), v in sz.items() if o == 'HunKar'),
+        sum(v for (a, o), v in sz.items() if o == 'egyező')))
+    w('Indok-kódok: ' + ', '.join('`%s` %d' % (k, v) for k, v in sorted(
+        collections.Counter(r['indok_kod'] for r in bontas).items())) + '.')
+    w('Az altípus a másik oldal **jelölt** soraihoz viszonyít (azonos forrásvers): a MEK-cél és a HunKar-cél egyetlen '
+      'összetevőben tér el (könyv-/fejezet-/versszám-elírás), vagy a MEK-cél a HunKar-tartományban / egy versnyire '
+      'áll (tartomány/vershatár). `csak MEK`: a forrásversen nincs jelölt HunKar-sor. `eltér (nem sorolható)`: van '
+      'másik oldali jelölt sor, de a pár nem áll közel.\n')
+    hibas = _db(bontas, lambda r: not r['cel_letezik'] or not r['forras_letezik'])
+    w('Nem létező cél vagy forrásvers (`Karoli_1908` ∪ MEK-versszerkezet szerint): **%d** sor.\n' % hibas)
+
+    w('## 2. A szabály (J2) kimenete, soronként\n')
+    w('A szabály (a szövege egy helyen: `konkordancia/Karoli_KH_MEK_README.md` 7.): a MEK-oldali jelölt sor `megerositett`, '
+      '**kivéve** (1) a hivatkozott vers vagy a forrásvers nem létezik, (2) a forrásvers MEK-listája gyanús ismétlődő (a '
+      'HunKar-oldali gyanús-jelölés nem zár ki), (3) a MEK-cél az E2-hibaminta létező töredéke, (4) a MEK-cél '
+      'egyetlen összetevőben tér el a HunKar-céltól (elírás-gyanús). A HunKar-oldali jelölt sor `megerositett`, ha a MEK-párja '
+      'nem ellentmond neki (E1: a pár célja nem létezik; E2: az E2-minta megfelelője; E3: a MEK a tartomány egyik '
+      'végpontját adja); különben `kiesik`, ha a forrásverse MEK-listájából legalább egy sor beemelődik (kivéve az '
+      'elírás-gyanús sor párját); egyébként jelölt marad. A TSK nem szerepel a szabályban.\n')
+    w('| döntés | sor |')
+    w('|---|---|')
+    dk = collections.Counter(r['dontes'] for r in bontas)
+    for d in DONTESEK:
+        w('| %s | %d |' % (d, dk[d]))
+    w('| **összesen** | **%d** |\n' % n)
+    mek_db = _db(bontas, lambda r: r['oldal'] == 'MEK')
+    w('**A számok (MEK-oldali jelölt sorok: %d):** bekerül **%d**; gyanús ismétlődésként marad **%d**; a nem létező '
+      'célvers miatt marad **%d** (+ %d egyező-de-nem-létező sor, összesen %d nem létező célvers); elírás-gyanús '
+      'osztályként marad **%d**; az E2-hibaminta létező töredékeként marad **%d**; a megerősített HunKar-tartományba olvad '
+      '(kiesik) **%d**.\n' % (
+          mek_db, dk[D_BEEMEL], dk[D_GYANUS],
+          _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_NEMLETEZO),
+          _db(bontas, lambda r: r['oldal'] == 'egyező'), dk[D_NEMLETEZO], dk[D_ELIRAS], dk[D_E2], dk[D_MEK_VEGPONT]))
+    hk_be = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['gyanus_hk'])
+    w('A gyanús ismétlődés kizárása csak a **MEK-oldali** ismétlődésre vonatkozik (a MEK-lista szó szerint azonos egy '
+      'másik vers MEK-listájával, ≥2 elem, %d forrásvers): %d sor marad jelölt. A **HunKar-oldali** gyanús-jelölés (a #177 '
+      'gyanús halmaza, %d forrásvers) a HunKar-lista másoltságát jelzi, nem a MEK-listáét; az ilyen forrásversen álló, '
+      'ismétlődés nélküli MEK-sor (%d sor) a felhasználó döntése szerint beemelődik. A szúrópróba (7. szakasz) '
+      'szerint ezek mintája hibátlan volt.' % (
+          gy_mek_db, _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_GYANUS), gy_hk_db, hk_be))
+    w('A **nem létező célvers** és a gyanús ismétlődés átfedése: %d MEK-oldali sor mindkettő; a nem létező '
+      'célvers az elsőbbségű.\n' % _db(bontas, lambda r: r['oldal'] == 'MEK' and
+                                                 (not r['cel_letezik'] or not r['forras_letezik']) and
+                                                 r['gyanus_mek']))
+    hk_db = _db(bontas, lambda r: r['oldal'] == 'HunKar')
+    w('**A HunKar-oldali jelölt sor sorsa.** A #177 `eltero_lista` sora: a HunKar-sor, amelyet a MEK a versen nem listáz, de '
+      'más hivatkozást igen. A javítókör (ELLENOR_F181 E1–E3) után a sorrend: (1) az E2-hibaminta megfelelője → `megerositett` '
+      '(%d); (2) a MEK a tartomány egyik végpontját adja → a tartomány `megerositett`, `forras=HunKar+MEK` (%d), a MEK-végpontsor '
+      'és az értelmezhetetlen társa `kiesik` (%d sor); (3) a MEK-pár nem létező célra mutat → `megerositett` (%d); (4) a sor '
+      'egy elírás-gyanús MEK-sor párja → jelölt marad; (5) egyébként `kiesik`, ha a verse MEK-listájából legalább egy sor '
+      'beemelődik (%d), különben jelölt marad. A `kiesik` itt **nem** állítja, hogy a HunKar-sor hibás: a MEK-lista '
+      'elfogadásának következménye. HunKar-oldali jelölt sor: %d; ebből `megerositett`: %d, `kiesik`: %d, jelölt marad: %d.\n' % (
+          dk[D_HK_E2], dk[D_HK_VEGPONT], dk[D_MEK_VEGPONT], dk[D_HK_E1], dk[D_HK_KIESIK], hk_db,
+          dk[D_HK_E1] + dk[D_HK_E2] + dk[D_HK_VEGPONT], dk[D_HK_KIESIK], dk[D_HK_MARAD]))
+
+    w('## 3. Keresztábla és könyvenkénti eloszlás\n')
+    w('**Altípus × döntés:**\n')
+    w('| altípus | ' + ' | '.join(DONTESEK) + ' |')
+    w('|---|' + '---|' * len(DONTESEK))
+    kt = collections.Counter((r['altipus'], r['dontes']) for r in bontas)
+    for a in ALTIPUSOK:
+        if any(kt[(a, d)] for d in DONTESEK):
+            w('| %s | ' % a + ' | '.join(str(kt[(a, d)]) for d in DONTESEK) + ' |')
+    w('')
+    w('**TSK-támogatás (csak tájékoztatás, nem szabály-feltétel)** — a mai `tsk=` szabály szerint (TSK ±3 vagy '
+      'visszautalás); „tiszta TSK”: csak a TSK ±3. Kategória: melyik oldal célját támogatja (a sor és a párosított '
+      'másik oldali sor célja; párosítás nélkül a hiányzó oldal „nem támogatott”).\n')
+    w('| altípus | TSK-kategória | cél létezik | cél nem létezik |')
+    w('|---|---|---|---|')
+    kt2 = collections.Counter((r['altipus'], r['tsk_kat'], r['cel_letezik']) for r in bontas)
+    for a in ALTIPUSOK:
+        for k in TSK_KATEGORIAK:
+            i, nem = kt2[(a, k, True)], kt2[(a, k, False)]
+            if i or nem:
+                w('| %s | %s | %d | %d |' % (a, k, i, nem))
+    w('')
+    tisz = _db(bontas, lambda r: r['sajat_tsk_tiszta'])
+    teljes = _db(bontas, lambda r: r['sajat_tsk'])
+    w('A sor saját céljára mutató TSK-támogatás: mai szabály szerint %d sor, ebből tiszta TSK ±3-mal %d, csak '
+      'visszautalással %d.\n' % (teljes, tisz, teljes - tisz))
+    w('**Könyvenként (a forrásvers könyve szerint):**\n')
+    w('| könyv | jelölt | beemel | gyanús | nem létező | elírás-gyanús | E2-töredék | HunKar→megerősített | HunKar→kiesik | HunKar marad | MEK-végpont→kiesik |')
+    w('|---|---|---|---|---|---|---|---|---|---|---|')
+    konyv = collections.OrderedDict()
+    for r in bontas:
+        konyv.setdefault(r['forras_vers'].split('.')[0], []).append(r)
+    for k in step_konyvek():
+        rs = konyv.get(k)
+        if rs:
+            w('| %s | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d |' % (
+                k, len(rs), _db(rs, lambda r: r['dontes'] == D_BEEMEL), _db(rs, lambda r: r['dontes'] == D_GYANUS),
+                _db(rs, lambda r: r['dontes'] == D_NEMLETEZO), _db(rs, lambda r: r['dontes'] == D_ELIRAS),
+                _db(rs, lambda r: r['dontes'] == D_E2),
+                _db(rs, lambda r: r['dontes'] in (D_HK_E1, D_HK_E2, D_HK_VEGPONT)),
+                _db(rs, lambda r: r['dontes'] == D_HK_KIESIK), _db(rs, lambda r: r['dontes'] == D_HK_MARAD),
+                _db(rs, lambda r: r['dontes'] == D_MEK_VEGPONT)))
+    w('')
+
+    w('## 4. Mire kell figyelni a szabály alkalmazásakor\n')
+    elir = [r for r in bontas if r['oldal'] == 'MEK' and r['dontes'] == D_ELIRAS]
+    w('* **Elírás-gyanús osztály (orkesztrátori döntés):** %d MEK-oldali sor áll olyan HunKar-sorral párban, '
+      'amelytől egyetlen összetevőben (könyv/fejezet/versszám) tér el, és a MEK-cél létezik. A végrehajtói olvasat '
+      'szerint ezek közül 4 valószínűen MEK-elírás (7. szakasz), ezért az egész osztály `jelolt` marad. Bontás: %s.' % (
+          len(elir), ', '.join('%s %d' % (a, _db(elir, lambda r: r['altipus'] == a)) for a in ELIRAS)))
+    tart = _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_BEEMEL and r['altipus'] == 'tartomány/vershatár')
+    w('* **Tartomány-végpontok (E3):** a HunKar a tartományt egy sorban adja, a MEK két végponttal. Ahol a MEK a '
+      'tartomány egyik végpontját adja (a másik hiányzik vagy értelmezhetetlen), a HunKar-tartomány `megerositett` (%d sor, ebből %d értelmezhetetlen, de a tartomány végének versszámával egyező MEK-véggel), a MEK-végpontsor és az '
+      'értelmezhetetlen társa `kiesik` (%d sor): a lap/index a tartományt egyszer kapja, a tartomány vége nem vész el. A '
+      'beemelt MEK-sorok közül még %d a HunKar-tartomány szomszédja (nem végpontja), ezek nem olvadnak be.' % (
+          dk[D_HK_VEGPONT], _db(bontas, lambda r: r['oldal'] == 'MEK' and r['dontes'] == D_MEK_VEGPONT and not r['cel']),
+          dk[D_MEK_VEGPONT], tart))
+    w('* **Az E2-hibaminta:** a MEK a HunKar `X a:b` célját két töredékre bontva adja (`X c:a`, `X c:b`); a létező '
+      'töredék nem emelődik be (%d sor `jelolt`), a HunKar-megfelelő `megerositett` (%d sor); a teljes mérés: '
+      '`python eszkozok/karoli_kh_mek.py e2-meres` (10. szakasz).' % (dk[D_E2], dk[D_HK_E2]))
+    w('* **A fogyasztók** (`karoli_kh_szuro.mek_sorok()` a `lekerdez.py`, `sqlite_epit.py`, `olvaso_pilot/adat.py`, '
+      '`nav_kinyer.py` oldalán) a csak a MEK-ben álló, megerősített sorokat is olvassák (lezárva: 9. szakasz).')
+
+    w('## 5. A jelölt szint súlya\n')
+    s = suly
+    w('* A tábla sorai: %d; ebből `jelolt`: **%d** (%.1f%%).' % (s['sor_osszes'], s['sor_jelolt'],
+                                                              100 * s['sor_jelolt'] / s['sor_osszes']))
+    w('* Forrásversek a táblában: %d; legalább egy `megerositett` sora van: %d; legalább egy `jelolt` sora van: '
+      '**%d**.' % (s['versek_osszes'], s['versek_megerositettel'], s['versek_jelolttel']))
+    w('* **Jelölt nélkül nem marad megerősített KH-ja: %d vers** (a jelölt versek %.1f%%-a); ezek közül %d versnek van '
+      '`kiesik` sora is, %d versnek csak jelölt sora van.' % (
+          s['jelolt_vers_megerositett_nelkul'],
+          100 * s['jelolt_vers_megerositett_nelkul'] / max(1, s['versek_jelolttel']), s['ebbol_kiesik_is'],
+          s['ebbol_nincs_mas_sor']))
+    w('* A szabály %d forrásversen emel be sort; ebből %d versnek ezzel lesz először megerősített KH-ja (a '
+      '`megerositett` szint %d forrásversét %.1f%%-kal bővíti).\n' % (
+          s['beemel_versek'], s['beemel_uj_versek'], s['versek_megerositettel'],
+          100 * s['beemel_uj_versek'] / max(1, s['versek_megerositettel'])))
+
+    w('## 6. Példák (kategóriánként legfeljebb 8, egyenletes minta a tábla sorrendjéből)\n')
+    w('Jelölés: `forrásvers → cél`; partner: a másik oldal párosított sora; TSK: a saját cél '
+      '(mai szabály / tiszta; csak tájékoztatás); L: a cél létezik; gy: gyanús (H: HunKar-oldali, M: MEK-oldali).\n')
+    for d in DONTESEK:
+        rs = [r for r in bontas if r['dontes'] == d]
+        if not rs:
+            continue
+        w('### %s (%d sor)\n' % (d, len(rs)))
+        for r in mintak(rs, 8):
+            w('* %s → %s %s| %s | altípus: %s | TSK %s/%s | L: %s%s%s' % (
+                r['forras_vers'], r['cel'],
+                '| partner: %s ' % r['partner'] if r['partner'] else '', r['oldal'], r['altipus'],
+                'igen' if r['sajat_tsk'] else 'nem', 'igen' if r['sajat_tsk_tiszta'] else 'nem',
+                'igen' if r['cel_letezik'] else 'nem', '' if r['forras_letezik'] else ' | forrásvers nem létezik',
+                ' | gy: %s%s' % ('H' if r['gyanus_hk'] else '', 'M' if r['gyanus_mek'] else '')
+                if (r['gyanus_hk'] or r['gyanus_mek']) else ''))
+        w('')
+    return '\n'.join(ki) + '\n'
+
+
+def _bontas_futtat(be, ts):
+    jav = [m[:6] for m in tsv_sorok(be) if len(m) >= 6]
+    return (jav,) + _bontas_sorokra(jav)
+
+
+def _bontas_sorokra(jav):
+    letezo = karoli_versek()
+    import karoli_kh_epseg as E
+    _, tsk = E.betolt()
+    teljes = tamogato()
+    mek = mek_sorok_betolt()
+    gy_hk = gyanus_versek()
+    gy_mek = mek_ismetlodo(mek)
+    bontas = jelolt_bontas([m[:5] for m in jav], letezo, teljes, lambda f, c: bool(c) and E.tamogatott(f, c, {}, tsk),
+                           gy_hk, gy_mek, mek)
+    return bontas, gy_hk, gy_mek
+
+
+def jelolt_bontas_main(a):
+    ts = a.ts or os.environ.get('PARDES_DATUM', '2026-11-09')
+    jav, bontas, gy_hk, gy_mek = _bontas_futtat(a.be, ts)
+    suly = jelolt_sulya([m[:5] for m in jav], bontas)
+    szoveg = jelolt_bontas_szoveg(bontas, suly, a.modell, ts, len(gy_hk), len(gy_mek))
+    print(szoveg)
+    if a.jelentes:
+        with open(a.jelentes, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
+    return 0
+
+
+def beemel_main(a):
+    """A szabály alkalmazása a táblán (J4): a sorok száma nem változik; a Δ-napló a kimeneten."""
+    ts = a.ts or os.environ.get('PARDES_DATUM', '2026-11-09')
+    jav, bontas, _, _ = _bontas_futtat(a.be, ts)
+    uj = beemel(jav, bontas, ts)
+    assert len(uj) == len(jav)
+    elo = collections.Counter(s[2] for s in jav)
+    utan = collections.Counter(s[2] for s in uj)
+    valt = collections.Counter((j[2], u[2]) for j, u in zip(jav, uj) if j[2] != u[2])
+    fej = FEJ_BEEMELT
+    tsv_ir(a.ki or a.be, ['igehely', 'kapcsolodo', 'szint', 'forras', 'indok', 'proveniencia'], uj, fej)
+    szoveg = ['sorok: %d -> %d' % (len(jav), len(uj))]
+    for k in SZINTEK:
+        szoveg.append('%s: %d -> %d (Δ %+d)' % (k, elo[k], utan[k], utan[k] - elo[k]))
+    for (x, y), v in sorted(valt.items()):
+        szoveg.append('átment %s -> %s: %d' % (x, y, v))
+    print('\n'.join(szoveg))
+    return 0
+
+
+# ----------------------------------------------------------------------------------------------------------------
+# szuroproba (F181, J3): rétegzett (könyvenkénti, arányos) szúrópróba-minta a döntés nélküli maradékból és a
+# beemelt sorokból (kontroll). Csak mintát vesz és kiírja a két vers szövegét; az ítéletet nem adja (az emberi/
+# végrehajtói olvasás, a jelentésben).
+# ----------------------------------------------------------------------------------------------------------------
+
+def karoli_szoveg():
+    """{STEP-kulcs: Károli-vers szövege} a Karoli_1908.tsv-ből."""
+    norm = dict(hu_step())
+    norm.update(aliasok('karoli_1908'))
+    ki = {}
+    for m in tsv_sorok(KAROLI):
+        r = re.match(r'(\S+) (\d+):(\d+)$', m[0])
+        if r and r.group(1) in norm and len(m) > 1:
+            ki['%s.%s.%s' % (norm[r.group(1)], r.group(2), r.group(3))] = m[1]
+    return ki
+
+
+def retegzett_minta(sorok, kulcs, n, mag):
+    """Könyvenkénti arányos (legnagyobb maradék) minta: a `kulcs(sor)` a könyv; a mag rögzített, ezért ismételhető.
+    Visszaadja (minta, {könyv: (populáció, mintaszám)})."""
+    import random
+    rnd = random.Random(mag)
+    csop = collections.OrderedDict()
+    for k in step_konyvek():
+        csop[k] = []
+    for r in sorok:
+        csop.setdefault(kulcs(r), []).append(r)
+    ossz = sum(len(v) for v in csop.values())
+    n = min(n, ossz)
+    alap = {k: (len(v) * n) // ossz for k, v in csop.items()}
+    maradek = sorted(csop, key=lambda k: -((len(csop[k]) * n) % ossz))
+    for k in maradek[:n - sum(alap.values())]:
+        alap[k] += 1
+    minta = []
+    for k, v in csop.items():
+        if alap[k]:
+            minta.extend(rnd.sample(v, alap[k]))
+    return minta, {k: (len(v), alap[k]) for k, v in csop.items() if v}
+
+
+def _md_cella(s):
+    return (s or '').replace('|', '/').replace('\n', ' ').strip()
+
+
+def szuroproba_main(a):
+    """Rétegzett szúrópróba-minta a javított tábla állapotából (J3; F181 javítókör 1: az E1/E2/E3 szabályok után). A rétegek:
+    (1) kontroll: a beemelt MEK-sorok könyvenként arányos mintája; (2) a HunKar-oldali gyanús-jelölésű forrásversen
+    beemelt MEK-sorok könyvenként arányos mintája (DT-F181f); (3) maradék: MEK-oldali gyanús ismétlődő; (4) maradék:
+    elírás-gyanús; (5) maradék: HunKar-oldali jelölt sor (mind); (6) az E2-hibaminta szűrt töredékei (mind); (7) a HunKar-sorok,
+    amelyeket az E1/E2/E3 szabály megerősített (mind). Csak mintát vesz, az ítéletet nem adja (`--md`: üres ítélet-oszlop)."""
+    ts = a.ts or os.environ.get('PARDES_DATUM', '2026-11-09')
+    jav = [m[:6] for m in tsv_sorok(a.be) if len(m) >= 6]
+    bontas, gy_hk, _ = _bontas_sorokra(jav)
+    szov = karoli_szoveg()
+    kon = lambda fv: fv.split('.')[0]  # noqa: E731
+    sorok = []
+    beemelt = [m for m in jav if m[2] == 'megerositett' and m[3] == 'MEK' and SZABALY_JEL in m[4]]
+    hk_gy = [m for m in beemelt if m[0] in gy_hk]
+    gy = [r for r in bontas if r['dontes'] == D_GYANUS]
+    el = [r for r in bontas if r['dontes'] == D_ELIRAS]
+    hkm = [r for r in bontas if r['dontes'] == D_HK_MARAD]
+    e2 = [r for r in bontas if r['dontes'] == D_E2]
+    hk_vissza = [m for m in jav if m[2] == 'megerositett' and m[3] in ('HunKar', 'HunKar+MEK') and SZABALY_JEL in m[4]]
+    m1, e1 = retegzett_minta(beemelt, lambda r: kon(r[0]), a.kontroll, a.mag)
+    m2, e2_ = retegzett_minta(hk_gy, lambda r: kon(r[0]), a.hunkar_gyanus, a.mag)
+    al = lambda m: (m[4].split('mek_alak=')[1].split(';')[0] if 'mek_alak=' in m[4] else '')  # noqa: E731
+    for r in m1:
+        sorok.append(('kontroll: beemelt MEK-sor', r[0], r[1], al(r), 'MEK'))
+    for r in m2:
+        sorok.append(('HunKar-gyanús forrásversen beemelt MEK-sor', r[0], r[1], al(r), 'MEK'))
+    for r in gy:
+        sorok.append(('maradék: MEK-oldali gyanús ismétlődő (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in el:
+        sorok.append(('maradék: elírás-gyanús (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in hkm:
+        sorok.append(('maradék: HunKar-sor jelölt marad (mind)', r['forras_vers'], r['cel'], '', r['oldal']))
+    for r in e2:
+        sorok.append(('E2-szűrt MEK-töredék (mind)', r['forras_vers'], r['cel'], r['mek_alak'], r['oldal']))
+    for r in hk_vissza:
+        sorok.append(('E1/E2/E3: megerősített HunKar-sor (mind)', r[0], r[1], '', 'HunKar'))
+    ki = ['ts=%s | mag=%d | kontroll: %d beemelt MEK-sor -> %d minta; HunKar-gyanús beemelt: %d -> %d minta; gyanús: %d; '
+          'elírás-gyanús: %d; HunKar-marad: %d; E2-szűrt: %d; megerősített HunKar-sor (E1/E2/E3): %d; összesen %d tétel' % (
+              ts, a.mag, len(beemelt), len(m1), len(hk_gy), len(m2), len(gy), len(el), len(hkm), len(e2),
+              len(hk_vissza), len(sorok))]
+    ki.append('allokáció (kontroll, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e1.items()))
+    ki.append('allokáció (HunKar-gyanús, könyv: populáció/minta): ' + ', '.join('%s %d/%d' % (k, v[0], v[1]) for k, v in e2_.items()))
+    for i, (ret, fv, cel, alak, oldal) in enumerate(sorok, 1):
+        c0 = cel.split('-')[0]
+        ki.append('#%d [%s] %s -> %s %s' % (i, ret, fv, cel, '[%s]' % alak if alak else ''))
+        ki.append('   F: ' + szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz])
+        ki.append('   C: ' + szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])
+    szoveg = '\n'.join(ki) + '\n'
+    if a.ki:
+        with open(a.ki, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
+    if a.md:
+        hu = {v: k for k, v in hu_step().items()}
+
+        def igehely(k):
+            r = step_ref(k)
+            return '%s %d:%d' % (hu.get(r[0], r[0]), r[1], r[2]) if r else k
+        md = ['# F181 szúrópróba — az E1/E2/E3 javítás után (ELLENOR_F181 E5)', '',
+              '*A tételek előállítása: `python eszkozok/karoli_kh_mek.py szuroproba --be konkordancia/Karoli_KH_javitott.tsv '
+              '--md naplok/F181_szuroproba.md --mag %d --kontroll %d --hunkar-gyanus %d --hossz %d --ts %s` (a tábla '
+              'állapota: %s). Az ítélet és az indok oszlop üres: az értelmező ítéletet Opus hozza külön lépésben '
+              '(az orkesztrátor szúrópróba-döntése).*' % (a.mag, a.kontroll, a.hunkar_gyanus, a.hossz, ts, a.tabla_allapot or 'lásd a commitot'), '',
+              '*Rétegzés (könyvenként arányos, legnagyobb maradék módszere, rögzített mag): %s*' % ki[0], '',
+              '*A Károli-szöveg a `Karoli_1908.tsv`-ből (`python eszkozok/lekerdez.py karoli "<hely>"` ugyanezt adja), '
+              'legfeljebb %d karakter; „F”: a forrásvers, „C”: a hivatkozott vers.*' % a.hossz, '',
+              '| # | réteg | forrásvers | cél | MEK-alak | F (forrásvers) | C (cél) | ítélet | indok |',
+              '|---|---|---|---|---|---|---|---|---|']
+        for i, (ret, fv, cel, alak, oldal) in enumerate(sorok, 1):
+            c0 = cel.split('-')[0]
+            celnev = igehely(c0) + (' – ' + igehely(cel.split('-')[-1]) if '-' in cel else '')
+            md.append('| %d | %s | %s | %s | %s | %s | %s |  |  |' % (
+                i, _md_cella(ret), igehely(fv), celnev, ('`%s`' % _md_cella(alak) if alak else ''),  # E8: szó szerinti MEK-idézet, kódformázva
+                _md_cella(szov.get(fv, '(nincs Károli-szöveg)')[:a.hossz]),
+                _md_cella(szov.get(c0, '(nincs Károli-szöveg)')[:a.hossz])))
+        with open(a.md, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(md) + '\n')
+    print(szoveg)
+    return 0
 
 
 def main():
@@ -502,7 +1300,38 @@ def main():
     o.add_argument('--ki', default=os.path.join(GYOKER, JAVITOTT))
     o.add_argument('--jelentes')
     o.add_argument('--ts')
+    o.add_argument('--nyers', action='store_true', help='a #177 háromszintű nyers állapota, a beemelési szabály nélkül')
+    j = sp.add_parser('jelolt-bontas', help='a jelolt szint mérése és bontása (F181, J1); nem módosítja a táblát')
+    j.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
+    j.add_argument('--jelentes')
+    j.add_argument('--modell', default='?')
+    j.add_argument('--ts')
+    b = sp.add_parser('beemel', help='a beemelési szabály alkalmazása a táblán (F181, J4)')
+    b.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
+    b.add_argument('--ki')
+    b.add_argument('--ts')
+    e = sp.add_parser('e2-meres', help='az E2-hibaminta teljes mérése a nyers táblán (F181)')
+    e.add_argument('--ki')
+    z = sp.add_parser('szuroproba', help='rétegzett szúrópróba-minta a maradékból és a beemeltekből (F181, J3)')
+    z.add_argument('--be', default=os.path.join(GYOKER, JAVITOTT))
+    z.add_argument('--ki')
+    z.add_argument('--kontroll', type=int, default=40, help='a beemelt MEK-sorokból vett minta mérete')
+    z.add_argument('--hunkar-gyanus', dest='hunkar_gyanus', type=int, default=30,
+                   help='a HunKar-oldali gyanús-jelölésű forrásversen beemelt MEK-sorokból vett minta mérete')
+    z.add_argument('--md', help='a minta tételei markdown-táblában (üres ítélet- és indok-oszloppal)')
+    z.add_argument('--tabla-allapot', dest='tabla_allapot', help='a tábla commitja (a md fejlécébe)')
+    z.add_argument('--mag', type=int, default=181)
+    z.add_argument('--hossz', type=int, default=140)
+    z.add_argument('--ts')
     a = ap.parse_args()
+    if a.parancs == 'szuroproba':
+        return szuroproba_main(a)
+    if a.parancs == 'jelolt-bontas':
+        return jelolt_bontas_main(a)
+    if a.parancs == 'beemel':
+        return beemel_main(a)
+    if a.parancs == 'e2-meres':
+        return e2_meres_main(a)
     return kivonat_main(a) if a.parancs == 'kivonat' else osszevet_main(a)
 
 

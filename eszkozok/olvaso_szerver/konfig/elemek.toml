@@ -961,6 +961,60 @@ tulajdonsag = [
   { nev = "„összecsuk” felirat színe", token = "muted" },
 ]
 
+# F104 (FELADATOK #104, DT178): a BDB-blokk vers szerinti jelölése (a versből megnyitott szó-lapon)
+[[elem]]
+id = "bdb-ebben"
+nev = "BDB „Ebben a versben” doboz (a próba felirattal és a mért pontossággal)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".bdb-ebben"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Külső térköz", token = "space-blokkkoz" },
+]
+
+[[elem]]
+id = "bdb-itt"
+nev = "Erős jelölés: a BDB itt idézi a verset (jelentés, alpont, csoport, igehely)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".bdb-itt"
+tulajdonsag = [
+  { nev = "Háttér", token = "accent-soft" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "bdb-vonatkozhat"
+nev = "Gyenge jelölés: vonatkozhat (bizonytalan hivatkozás vagy az igetörzs szakasza)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".bdb-vonatkozhat"
+tulajdonsag = [
+  { nev = "Háttér", token = "gold-soft" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "bdb-jelzes"
+nev = "A jelölés felirata („a BDB itt idézi ezt a verset” / „vonatkozhat”)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".bdb-jelzes"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín (erős)", token = "accent" },
+  { nev = "Szín (gyenge)", token = "gold" },
+]
+
+[[elem]]
+id = "bdb-csop"
+nev = "Használati csoport sora a jelentésen belül (F103)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".bdb-csop"
+tulajdonsag = [
+  { nev = "Behúzás", token = "space-gomb-vizsz" },
+]
+
 # ---------------------------------------------------------------------------------------------------------------------
 # N. Navigáció és arculat (#134 M3; DT295, DT296; a mockup 9. változata): a navigáció komponensei (M2) és a műfajszínek (--g-*),
 # a felugró elemek árnyéka (arnyek). Az M2-ben a [kizart] táblán álló osztályok közül ezek a komponensstílusok kerültek ide.
@@ -1281,6 +1335,7 @@ tan-olvaso = "a tanulmány-oldal „Az olvasóban” sora (F149): a muted színt
 tan-toc = "a tanulmány-oldal szakaszjegyzéke (F149): tisztán szerkezeti"
 szint-3 = "a tanulmány-oldal szakaszjegyzékében a ### címsor behúzása (F149): tisztán szerkezeti"
 tan-szoveg = "a tanulmány-oldal generált szövege (F149): tisztán szerkezeti"
+bdb-pontossag = "szövegrész-horog (F104): a BDB-szeletelő mért pontossága a próba felirat mellett, proveniencia-súgóval; a megjegyzés (megj) tokenjeit örökli"
 legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-megjegyzes, muted tokenek"
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"

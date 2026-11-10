@@ -1,0 +1,44 @@
+TISZTA
+
+# ELLENOR_F104_2 — `F104_BDB_MEGJELENITES_BRIEF.md`, `0e2bc822..46b44f15` (az `/elteres 104` 1. javítóköre, F104.10–F104.15)
+
+*A `fuggetlen-ellenor` jelentése (modell: claude-opus-5-5). Az ellenőr csak a megengedett körben futtatott Bash-parancsot (`git diff`, `git log`, `lekerdez.py`, `futtat.py`). A tábla sorait a Grep eszközzel számolta. Tesztszkriptet nem futtatott, mert a szerepe ezt nem engedi.*
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0 Modell | OK | — | A session modellje `claude-opus-5-5`, a kért `opus`. A tartományban adattábla nem változott, így `modell` mezőt sem írt a menet. A hat commit mindegyike `Co-Authored-By: Claude Opus 5.5` sorral zárul (`git log --format='%h %s%n%b' 0e2bc822..46b44f15`). Hogy a végrehajtó ténylegesen milyen modellen futott, azt ezen a soron túl nem lehet igazolni. |
+| 1 / DT692: „(N hely)” a táblából | OK | `eszkozok/lexikon_general.py:3464` | `git diff 0e2bc822..46b44f15 -- eszkozok/lexikon_general.py`: `n = hiv_db.get(k, 0)` a `bdb_hivatkozas_szam`-ból jön. A régi `len(hivatkozasok_a_szovegben(hu))` megszűnt. Grep a `hivatkozasok_a_szovegben\(` mintára: már csak a definícióban (`:3181`) és a `kiemel`-ben (`:3208`, kiemelés, nem szám) fordul elő. |
+| 1 / DT692: „(N hivatkozás)” a táblából | OK | `lexikon_general.py:3546`, `_osszecsukva_uj` `:3501–3513` | A futam 5. eleme `hiv_db.get(k, 0)`, és a `gerinc_blokk` a `bdb_hivatkozas_szam(adat, strong)`-ot adja át neki. A futamcím „(N szakasz)” száma a futam hossza, szerkezeti szám, nem hivatkozásszám. Más szám nem áll a kártyán. |
+| 1 / H7843 Hiph'il 13, Pi'el 5 (tábla) | OK | `adat/bdb_vers_jelentes.tsv` (52–64. sorszám; 8–12. sorszám) | Grep `^H7843\t.*\tHiph'il/-\t[^\t]*\t0\t` → 13 sor, mind `szurt=0`, mindnek van `mt_vers`-e. Grep `^H7843\t.*\tPi'el/-\t[^\t]*\t0\t` → 5 sor. A teszt (`teszt_szotari_gerinc.py` `test_h7843_valodi_adat`) ugyanezt a két számot várja. |
+| 1 / ugyanaz a sorhalmaz, mint a szerveré | OK | `eszkozok/bdb_vj_szabaly.py:24`; `blokkok.py:1049`, `:1155` | A szerver `VersJelolo.db` és a generátor `bdb_vj_feloldott` indexe (`lexikon_general.py:2697–2701`) ugyanazt a függvényt használja (`bdb_vj_szabaly.vj_feloldott`: `szurt≠1` és van `mt_vers`). A sor szakaszhoz rendelése eltér: a generátor `bdb_vers_szocikk`-kel dolgozik, és a szócikkhez nem köthető sort kihagyja. A DT692 ezt kifejezetten rögzíti. |
+| 1 / teszt saját futtatással | NEM ELLENŐRIZHETŐ | `teszt_szotari_gerinc.py:920–975` | A `python eszkozok/teszt_szotari_gerinc.py` nincs a megengedett parancsok között. A kód és a teszt olvasása alapján: a `test_hivatkozasszam_a_tablabol_nem_a_szovegbol` különválasztja a szöveg- és a táblaszámot a „(N hely)”-nél. A csukott cím „(1 hivatkozás)” állítása (`:883`) viszont nem választja külön: a szövegben is 1 hely áll, a táblában is 1 nem szűrt sor. |
+| 2 / DT693: gyenge szint a 4.2-ben | OK | `lexikon_general.py:3475–3488`, `:3677–3688`, `:3820–3823` | A pont gyenge, ha csak bizonytalan sor idézi. Ha ugyanannál a versnél és pontnál erős sor is van, az erős marad (`eros_pont` kizárja). Ez megegyezik a szerver `VersJelolo.__init__` sorrendjével (`blokkok.py:1114–1123`: a gyenge után az erős ír felül). A kimenet alakja: „*(vonatkozhat; a hivatkozás bizonytalan: …)*”. A tagolatlan pontra is érvényes (`:3734`). |
+| 2 / az okkód-halmaz egy helyről jön | OK | `bdb_vj_szabaly.py:29–40`; `blokkok.py:1033–1044` | Grep a `BIZONYTALAN_OK\|_vj_bizonytalan\|vj_bizonytalan` mintára az `eszkozok/` alatt: a halmaz csak a `bdb_vj_szabaly.py`-ban van definiálva. A `blokkok.py` csak hivatkozik rá. Halmaz-tartalmú `'forras_hiba':` literál a `blokkok.py`-ban nincs. |
+| 2 / teszt és valós adat | OK (adat) · NEM ELLENŐRIZHETŐ (futtatás) | `adat/bdb_vers_jelentes.tsv` H1802 6. sorszám | Grep `^H1802\t.*2Móz 2:6` → `… Qal/-	forras_hiba	0 …`. Ez a sor a valós adatú teszt bemenete. A DT693 állítását is ellenőriztem: bizonytalan okkódú, nem szűrt, Károli-verssel bíró sorból 5 van, mind `forras_hiba` (H1802, H3051, H5591, H7804, H7913). A nem szűrt bizonytalan sorok teljes száma 117. `atkulcsolt_bizonytalan` sor 0. |
+| 3 / `bdb_szelet.py` bájtra azonos | OK | — | `git diff 0e2bc822..46b44f15 -- eszkozok/olvaso_szerver/bdb_szelet.py \| wc -l` → 0. A fájlt az F104.11 és az F104.12 módosította, az F104.13 visszaállította. Ezért a tábla kód-hash bemenete változatlan. |
+| 3 / `KETRETEGU_BDB_KARTYA` | OK | `lexikon_general.py:3302` | Értéke `frozenset()`. A sor a tartomány diffjében nem szerepel. |
+| 3 / `lexikon/` és az adattáblák | OK | — | `git diff --numstat 0e2bc822..46b44f15 -- adat konkordancia lexikon` → üres. |
+| 4 / E27 HIBA megszűnt | OK | `nyitott/uj/f104-bdb-megjelenites.md:1` | `python eszkozok/ellenorzes/futtat.py --valtozott &lt;a git diff --name-only 1dbf7854..HEAD 22 fájlja&gt; --diff-alap 1dbf7854 --diff-fej HEAD` → „E27 (JELENTES: 43)”, HIBA szint nincs; kilépési kód 0. Az előző futásban „1 HIBA + 43 JELENTÉS” volt. Glob: az `eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv` létezik. |
+| 5 / `bdb_vj_szabaly.py` megfelel a CLAUDE.md-nek | OK | `eszkozok/bdb_vj_szabaly.py:13–18` | `import sys` a docstring után, utána a `reconfigure`-őr. Grep `^import\|^from\|csv` → csak `import sys`, `csv` nincs. |
+| 5 / az `ir` mező fedi a változott kódfájlokat | OK | brief 13. sor | A tartomány négy kódfájlja (`bdb_vj_szabaly.py`, `lexikon_general.py`, `blokkok.py`, `teszt_szotari_gerinc.py`) mind szerepel a végső `ir`-ben. Az új modul az F104.13-ban került be. |
+| 5 / commit-üzenetek | OK, megjegyzéssel | `8af6ee6d` | Mind a hat üzenet magyar, `F104.1x:` azonosítóval, `Co-Authored-By` sorral. E30 FIGYELMEZTETÉS: „`szurt` → `szűrt`”. Ez oszlopnév kódformázásban, nem ékezet nélkül írt próza. |
+| 6 / tesztek, régi bukások a base-en | NEM ELLENŐRIZHETŐ | — | A `teszt_szotari_gerinc.py` és a `teszt_olvasoi_kapu.py` futtatását a szerepem nem engedi. A „6 bukás, mind a base-en is” és az „1 bukás, a base-en is” állítást ezért nem igazoltam. |
+| 3 CI-jelentés összevetése | OK (saját futtatás) | — | A fenti `futtat.py`-futás eredménye: E25 3 (JELENTÉS/FIGY), E27 43 JELENTÉS, E28 0 („5 migrált nézet”), E30 1 FIGY, E32 1 (`blokkok.py:1675` DT-F76d; nem ennek a javítókörnek a hunkja), E34 41 FIGY (`elofordulasok.tsv`, nem változott), E36 1 (`SEMA.md:1613`). A végrehajtó CI-jelentését nem kaptam meg, ezért összevetni nem tudtam. |
+| A1–A6 | nem értelmezhető | — | A tartományban nincs tanulmány és nincs motívumadat. A2: az N117 sora csak útvonal-javítást kapott, az N118 nem változott. |
+| DT692/e, proveniencia | OK | `dontesek/uj/f104-bdb-megjelenites.md:4–5` | Mindkettő helyőrzős, 🟢, proveniencia-sorral. Végleges DT-szám nincs. A „176 bizonytalan okkódú sor” állítást nem számoltam újra. A belőle levezetett „csak az 5 `forras_hiba` jut be” állítást igen (lásd 2. pont). |
+| Lista 1. kiszűrt/törölt sorok | OK | `git diff --stat 0e2bc822..46b44f15` | 45 törölt sor. Mind kód- vagy tesztcsere, ezen belül a `BIZONYTALAN_*` és a `_vj_*` definíciók áthelyezése a `blokkok.py`-ból. Adatsor nem törlődött. |
+| Lista 2. kulcstartomány-lefedettség | nem értelmezhető | — | Adattábla nem változott. |
+| Lista 3. a „nulla-diff” hatóköre | OK, megjegyzéssel | — | A tartományban a `bdb_szelet.py`, az `adat/`, a `konkordancia/` és a `lexikon/` diffje nulla. Az E28 öt migrált nézete bájtra egyezik, kikapcsolt kapcsolóval. A bekapcsolt kártya kimenetére (#182) és a TORZSCIKK-nézetekre a nulla-diff nem vonatkozik. |
+| Lista 4. táblák sorszám-Δ (E17, DT3) | OK | `git diff --numstat 1dbf7854..HEAD -- adat konkordancia lexikon` | Csak az `adat/SEMA.md` változott (nem .tsv, és nem ebben a tartományban). Az `adat/` és a `konkordancia/` alatt minden `.tsv` Δ = 0. |
+| Lista 5. ⛔ pontok | OK | brief 47. sor; fejléc `allapot: megallt` | A 4. ⛔ (felhasználói próba) előtt a menet megállt. A `kovetkezo` az újraellenőrzésre vár. |
+
+Megjegyzések (nem ELTÉRÉS):
+1. A csukott cím „(N hivatkozás)” száma a kódban a táblából jön. Tesztje (`teszt_szotari_gerinc.py:883`) viszont a régi szövegregexszel is zöld lenne, mert a szöveg és a tábla ott ugyanazt adja.
+2. A köztes F104.11 és F104.12 commit a `bdb_szelet.py`-t módosította, így a `test_bajtra_azonos` ott bukott. Az F104.13 helyreállította, a végállapot rendben van. A bisect ezen a két commiton bukó tesztet talál.
+3. A végrehajtó saját megfigyelését nem vizsgáltam tételként. A kódban látszik: a „jelentések rendje” félkövére a `hordozo`-ból jön, a gyenge pont is bekerül oda. Ez a DT693 hatókörén kívül esik.
+
+Ami nyitva maradt:
+- **A két tesztfájl futtatása (6. pont):** a `teszt_szotari_gerinc.py` és a `teszt_olvasoi_kapu.py` futtatását a szerepem nem engedi, ezért NEM ELLENŐRIZHETŐ maradt.
+- **A tesztek az 1–2. pontban:** az ottani teszteket kódolvasással néztem át, futtatással nem igazoltam.
+
+Az igazolást valakinek külön le kell futtatnia.
