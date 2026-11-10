@@ -72,8 +72,10 @@ KAPUK = (
     ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
     ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
                           'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
-    ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső '
-                           'címke vagy nyers sorszám; csak az új szerkezetű lapon (F104)'),
+    ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan '
+                           'rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint '
+                           'jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak '
+                           'az új szerkezetű lapon (F104, F187)'),
 )
 
 # A VISSZHANG alszabályai (DT639, DT645, DT646, DT-F184a); a szabályok szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`,
@@ -1103,7 +1105,31 @@ BDB_OLVASOI_MINTA = [
     (re.compile('[א-ת][\u0591-\u05C7]*׳'), 'feloldatlan egybetűs rövidítés'),
     (re.compile(r'\b[A-Z][a-zö]{0,3}\s[A-Z][A-Za-z]{0,3}\s\d{2,4}\b'), 'irodalmi hivatkozás (szerző mű szám)'),
     (re.compile(r'\bsorsz[aá]m\w*|\bBDB\d+|nincs címke|ⓘ|[Kk]utatói (?:megjegyzés|jelölés)|\bhorgony'), 'belső címke vagy sorszám'),
+    # F187 / F29 (c): a szócikk sorszáma („1. szócikk”, „II. szócikk”) belső tagolás, nem olvasói név
+    (re.compile(r'(?<![\w.])(?:\d+|[IVX]+)\.\s+szócikk'), 'belső címke vagy sorszám'),
+    # F187 / F29 (b): a szócikk feje nem jelentéspont
+    (re.compile(r'a szócikk feje'), 'a szócikk feje jelentéspontként'),
 ]
+# F187: a görög kártya olvasói rétegében nyers görög alak sem állhat (az alakjegyzék az apparátusé)
+THAYER_OLVASOI_MINTA = [(re.compile('[Ͱ-Ͽἀ-῿]'), 'nyers görög alak az olvasói rétegben')]
+_HELY_RX = re.compile(r'((?:[1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\s+)?)(\d+):(\d+)')
+
+
+def helyek_ismetlese(sor):
+    """F29 (b): „A motívum helyein:” sorban kétszer álló versek (a rövidített felsorolás — „1Móz 3:17, 3:23” — könyvnevét
+    örökítve); csak a „→” előtti versek számítanak."""
+    t = re.sub(r'^\s*\*\*A motívum helyein:\*\*\s*', '', sor)
+    lat, ketszer, konyv = set(), [], ''
+    for resz in t.split(' · '):
+        if ' → ' not in resz:
+            continue
+        for m in _HELY_RX.finditer(resz.split(' → ', 1)[0]):
+            konyv = m.group(1).strip() or konyv
+            v = '%s %s:%s' % (konyv, m.group(2), m.group(3))
+            if v in lat and v not in ketszer:
+                ketszer.append(v)
+            lat.add(v)
+    return ketszer
 _BDB_JELEK_RX = None
 
 
@@ -1150,7 +1176,8 @@ def ell_bdb_olvasoi(sorok):
                 in42 = bool(re.match(r'^#{4}\s+4\.2\.', t))
                 kartya = False
             elif in42 and re.match(r'^#{5}\s', t):
-                kartya = t.rstrip().endswith('· BDB')
+                # F187: a görög (Thayer) kártya olvasói rétegét ugyanez a kapu védi
+                kartya = 'BDB' if t.rstrip().endswith('· BDB') else ('Thayer' if t.rstrip().endswith('· Thayer') else False)
             continue
         m = APPARATUS_RX.search(s.nyers)
         if m:
@@ -1160,10 +1187,16 @@ def ell_bdb_olvasoi(sorok):
         if not (in42 and kartya) or s.fajta in ('komment', 'kod', 'ures'):
             continue
         t = kod_nelkul(s.szoveg)
-        for rx, nev in BDB_OLVASOI_MINTA + ([(jelek, 'feloldatlan szerző- vagy szövegtanú-jel')] if jelek else []):
+        for rx, nev in BDB_OLVASOI_MINTA + ([(jelek, 'feloldatlan szerző- vagy szövegtanú-jel')] if jelek else []) + \
+                (THAYER_OLVASOI_MINTA if kartya == 'Thayer' else []):
             mm = rx.search(t)
             if mm:
                 ki.append(talalat('BDB_OLVASOI', BUKAS, s.n, kornyezet(t, mm, 40), nev, nev))
+        if t.lstrip().startswith('**A motívum helyein:**'):
+            dupla = helyek_ismetlese(t.strip())
+            if dupla:
+                nev = 'egy vers kétszer a motívum helyei között'
+                ki.append(talalat('BDB_OLVASOI', BUKAS, s.n, ', '.join(dupla), nev, nev))
     return ki
 
 

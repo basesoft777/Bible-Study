@@ -2455,7 +2455,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
 | `VISSZHANG` | BUKÁS | a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
 | `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
-| `BDB_OLVASOI` | BUKÁS | a 4.2 BDB-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám; csak az új szerkezetű lapon (F104) |
+| `BDB_OLVASOI` | BUKÁS | a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak az új szerkezetű lapon (F104, F187) |
 
 **A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai”)
 

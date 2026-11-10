@@ -430,6 +430,22 @@ class BdbOlvasoiReteg(unittest.TestCase):
                       '- 1. BDB2699 apa', '- 1. apa (nincs címke: 1.b)', '- 1. א׳ apa', '- 1. apa (Klo)'):
             self.assertTrue(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya(hibas))), hibas)
 
+    def test_f187_szocikk_sorszam_fej_es_ismetles(self):
+        for hibas in ('- *1. szócikk*', '- *II. szócikk*', '**A motívum helyein:** 1Móz 4:7 → a szócikk feje (alakok)',
+                      '**A motívum helyein:** 1Móz 3:17, 3:23 → 1. föld · 1Móz 3:23 → 3. anyag.'):
+            self.assertTrue(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya(hibas))), hibas)
+        jo = '**A motívum helyein:** 1Móz 3:17, 3:23 → 1. föld; 3. anyag · 1Móz 4:2 → 1. föld.'
+        self.assertEqual(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya(jo))), [])
+        self.assertEqual(K.helyek_ismetlese('**A motívum helyein:** 1Móz 3:17, 3:23 → a · Zsolt 3:23 → b.'), [])
+
+    def test_f187_thayer_kartya(self):
+        def thayer(olvasoi):
+            return self.kartya(olvasoi).replace('##### H0001 — אָב (áv) · BDB', '##### G0001 — ἄλφα (alfa) · Thayer')
+        self.assertTrue(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + thayer('- 1. ἐπικατάρατος, átkozott'))))
+        self.assertEqual(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + thayer('- **1.** átkozott'))), [])
+        # a BDB-kártyán a görög betű nem hiba (a görög-szabály a Thayer-kártyára szól)
+        self.assertEqual(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya('- 1. apa (LXX πατήρ)'))), [])
+
     def test_regi_es_jelolo_nelkuli_lapon_nem_fut(self):
         self.assertEqual(self.bdb(lap(tobbi='## 3. Valami\n\n' + self.kartya('- 1. apa (J)'))), [])
         self.assertEqual(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya('- 1. apa (J)', marker=False))), [])
