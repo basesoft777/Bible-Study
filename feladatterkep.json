@@ -5339,7 +5339,7 @@
     "sor": 718
    },
    {
-    "id": "DT-F105a",
+    "id": "DT710",
     "feladat": "#105 BDB_SZOREND (brief 2. lépés: „A helyreállítás szabálya és a gépi ellenőrzés”; az `ir` mezőben `eszkozok/olvaso_szerver/bdb_szoerend.py` + `blokkok.py`)",
     "kerdes": "A brief (v1, 2026-10-15) új, az olvasóba kötött szórend-szabályt ír elő, de a szórend-javítás a DT445 óta élesben van: javítótábla (`adat/bdb_forras_javitas.tsv` `heber_sorrend`, generálja `eszkozok/bdb_jelolt/forras_javit.py` + `heber_sorrend.py`) és közös megjelenítés (`eszkozok/bdb_rovidites.heber_sorrend_javit`: az olvasó `blokkok._rovidites` és a lexikon-generátor is ezt hívja). A brief új eleme a hivatkozott vers szerinti ellenőrzés: a mérés szerint a 29 469 többszavas futamból 17 953 ellenőrizhető, az eldönthető 12 308-on a mai megjelenítés 85,2%-ban egyezik a verssel, és 1 823 nem javított futamot (`jelolt_marad` 1 748, nincs sora 69, részleges 6) a hivatkozott vers a lexikon nélküli R_hib alakjában igazol, a forrásalakjában nem; a DT445 `javitva` cseréit a vers sehol nem cáfolja (8 369 / 8 369), 2 `valodi_sorrend` sorral ütközik. A rafe-maqqéfet (2 891 futam) ma semmi nem oldja fel. Hol és hogyan valósuljon meg a #105? *(proveniencia: scope=BDB_teljes_unabridged.tsv többszavas héber futamai (29 469) \\| forras=naplok/F105_meres.py \\| ts=2026-11-10)*",
     "allapot": "alkalmazasra_var",
@@ -5349,7 +5349,7 @@
     "sor": 719
    },
    {
-    "id": "DT-F105b",
+    "id": "DT711",
     "feladat": "#105 BDB_SZOREND (javítókörök: ELLENOR_F105 2. és 3.)",
     "kerdes": "Két, a megvalósítás után felmerült kérdés: (i) az E28 kapu öt migrált lexikonnézetet jelez, amely a #105 megjelenítési változása miatt tér el a commitolt alaktól — újragenerálódjon-e ebben a PR-ban? (ii) a rafe-maqqéf szabály (`bdb_rovidites.maqqef_javit`) kézi minta nélkül került a megjelenítésbe — mi a kapuja? *(proveniencia: scope=lexikon/ öt lapja, a rafe-maqqéfes szavak \\| forras=naplok/F105_naplo.md 8–9., ELLENOR_F105 \\| ts=2026-11-10)*",
     "allapot": "alkalmazasra_var",

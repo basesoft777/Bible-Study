@@ -13,7 +13,7 @@ ELTÉRÉS: 7 tétel
 | Elfogadás: a forrás bájtra változatlan | OK | – | `git diff --numstat origin/main HEAD -- konkordancia/ lexikon/` → 0 sor. |
 | Elfogadás: a gépi arány és a minta a naplóban | OK | `naplok/F105_naplo.md:177-218` | Az aritmetika stimmel: 10 483/12 308 = 85,17%; 12 287/12 308 = 99,83%; 12 287+20+1 = 12 308; 1 825 = 1 748+69+6+2. Az újramérés futtatása NEM ELLENŐRIZHETŐ. |
 | Elfogadás: a meglévő tesztek zöldek | NEM ELLENŐRIZHETŐ | – | A `teszt_futtat.py --gyors` és a `teszt_bdb_rovidites.py` kívül esik az ellenőr Bash-körén. A `teszt_szotari_gerinc` 6 hibájának base-beli megléte sem igazolt. |
-| DT-F105a (a) | OK (egyeztetett eltérés) | `dontesek/uj/f105-bdb-szorend.md:1` | Az olvasót a diff nem érinti. A szabály a javítótáblában és a `bdb_rovidites`-ben él. |
+| DT710 (a) | OK (egyeztetett eltérés) | `dontesek/uj/f105-bdb-szorend.md:1` | Az olvasót a diff nem érinti. A szabály a javítótáblában és a `bdb_rovidites`-ben él. |
 | ⛔ minta: két vak kitöltő | OK (egyeztetett eltérés) | `naplok/F105_vak_kitolto_{1,2}.tsv` | Kézi összevetés mind az 50 soron: 50/50, a két kitöltő között 0 eltérés. A Wilson-alsó korlát n/(n+z²): 0,929 és 0,927. |
 | ⛔ betartása: bevezetés a jóváhagyás után | OK, megjegyzéssel | – | Az F105.7–9 commitok (tábla és megjelenítés) a vak eredmény commitja (F105.10) előtt készültek. Mind az ágon maradtak: merge és lapgenerálás nem volt. |
 | ⛔ hatókör: a maqqéf-szabály | **ELTÉRÉS** | `eszkozok/bdb_rovidites.py:197-262` | A vak minta mindkét alakból kiszedte a maqqéfet, ezért a rafe-maqqéf szabály kézi minta nélkül került a megjelenítésbe. A felső becslés 113 hibás eset 2 668 eldönthetőből. Ismert hibás kimenet: `אֶתֿכֹּל` → `אֶ־תכֹּל` (`F105_naplo.md:174`). |
@@ -26,22 +26,22 @@ ELTÉRÉS: 7 tétel
 | `bdb_vers_jelentes.tsv` hash (kör) | OK (szerkezet) | `adat/bdb_vers_jelentes.tsv:2`, `forras_javit.py:57-66` | Egyetlen fejlécsor változott. A kör megtört, van fixpont. A hash-értékek kiszámítása NEM ELLENŐRIZHETŐ. |
 | SEMA 2.31 | OK | `adat/SEMA.md:1387, 1398, 1400, 1403` | Grep-számlálás a táblán: 43 572 / 36 320 / 16 824 / 222 / 19 274. Egyezik a SEMA-val. |
 | `lexikon/` érintetlen, `KETRETEGU_BDB_KARTYA` | OK | `eszkozok/lexikon_general.py:3302` | A `lexikon/` diffje 0, a kapcsoló értéke `frozenset()`. |
-| Lexikon-nézetek a CI szerint (E28) | **ELTÉRÉS** | `lexikon/ISTENTISZT-001_TUDOMANYOS.md:743` és még 4 | `futtat.py` E28: 5 HIBA, a commitolt nézet eltér az újragenerálttól. Az ISTENTISZT-001 eltérése bizonyosan az F105-ből jön (H7121). A másik 4 (pl. ALVIL-001:1043, TEREMT-002:358) oka nem látszik. A DT-F105a „most nem generálódnak újra” mondata ezt a piros kaput nem kezeli. |
-| Helyőrző string-literálban (E32) | **ELTÉRÉS** | `eszkozok/bdb_jelolt/forras_javit.py:217` | A `DT-F105a` a `prov_vers` literálban áll, és ugyanez a szöveg áll az 1 846 táblasor `proveniencia` mezőjében is. A `szamkiosztas` ezt nem cseréli, ezért merge után a tábla, a generátor és a `--ellenoriz` szétcsúszhat. |
+| Lexikon-nézetek a CI szerint (E28) | **ELTÉRÉS** | `lexikon/ISTENTISZT-001_TUDOMANYOS.md:743` és még 4 | `futtat.py` E28: 5 HIBA, a commitolt nézet eltér az újragenerálttól. Az ISTENTISZT-001 eltérése bizonyosan az F105-ből jön (H7121). A másik 4 (pl. ALVIL-001:1043, TEREMT-002:358) oka nem látszik. A DT710 „most nem generálódnak újra” mondata ezt a piros kaput nem kezeli. |
+| Helyőrző string-literálban (E32) | **ELTÉRÉS** | `eszkozok/bdb_jelolt/forras_javit.py:217` | A `DT710` a `prov_vers` literálban áll, és ugyanez a szöveg áll az 1 846 táblasor `proveniencia` mezőjében is. A `szamkiosztas` ezt nem cseréli, ezért merge után a tábla, a generátor és a `--ellenoriz` szétcsúszhat. |
 | A napló belső ellentmondásai | **ELTÉRÉS** | `naplok/F105_naplo.md:3-4, 136-137, 97, 103` | A fejléc szerint „az adat, a megjelenítés … nem változott”, pedig a 6. szakasz szerint változott. A 136–137. sor szerint a jóváhagyás nyitott, a 7. szakasz szerint teljesült. Az 5. táblában a 17. sor (Hós 14:8) Macula-oszlopa üres, a 23. sor (Ézs 3:3) az MT 3:3-at adja a Károli 3:3 helyett. A vak mintában (`F105_vak_minta.md:186`) a vers helyes. |
 | A brief `ir` mezője | **ELTÉRÉS** | `F105_BDB_SZOREND_BRIEF.md:14` | Hiányzik belőle: `naplok/F105_vak_minta.md`, `F105_vak_kulcs.tsv`, `F105_vak_kitolto_{1,2}.tsv`, `F105_vak_osszevet.py`, `nyitott/uj/f105-bdb-szorend.md`. |
 | Commit-üzenetek (E30) | **ELTÉRÉS** (enyhe) | `d724e487`, `97410ec1` | „versen” helyesen „versén”. A `javitva` jelzés téves riasztás (állapot-azonosító). |
 | Vak eljárás: árulkodó jel | OK, egy kivétellel | `naplok/F105_vak_minta.md:35` | Strong, állapot és geres nincs a fájlban. Az egyetlen jel: a 4. tétel A-alakjában maqqéf áll. Ezt a napló jelzi, és a 4. tétel nélküli számot is közli. |
 | Vak eljárás: a kulcs elérhetősége | NEM ELLENŐRIZHETŐ | `naplok/F105_naplo.md:79-130` | A helyreállított alak a kitöltés alatt a repóban állt (az 5. tábla, `0ad712f3`). A kitöltők utasítása megtiltotta a megnyitását, és mindkét kitöltő indoka versalapú. |
 | Vak eljárás: hatókör | OK, megjegyzéssel | – | 49 tétel `javitva` sorként áll a táblában. A 25. tétel (H4725, 3Móz 10:17) nem: a H4725-nek 0 sora van. A minta a mérés 1 823 jelöltjét fedi, nem a bevezetett 1 848 sort. |
-| N-F105a valóban nyitott (A2) | OK | `nyitott/uj/f105-bdb-szorend.md:1` | A csere alak szerint történik (`bdb_rovidites.py:276-284`). |
+| N119 valóban nyitott (A2) | OK | `nyitott/uj/f105-bdb-szorend.md:1` | A csere alak szerint történik (`bdb_rovidites.py:276-284`). |
 | A1 | OK | – | Minden számállítás mellett szkript és proveniencia áll. |
 | A3, A4, A5 | nem alkalmazható | – | – |
 | A6 / E12–E15 | OK | – | `futtat.py`: 0 találat. |
 | CI | NEM ELLENŐRIZHETŐ (részben) | – | Saját `futtat.py --valtozott …` futás: HIBA E28 5, E32 1. Figyelmeztetés: E25 3, E27 43, E30 5, E34 41, E36 1. Az E25/E27/E34/E36 a diffen kívülre mutat. |
 
 **ELTÉRÉS-ek, súlyossági sorrendben:**
-1. E32 HIBA: a `DT-F105a` helyőrző a `forras_javit.py:217` literáljában és az 1 846 táblasor provenienciájában.
+1. E32 HIBA: a `DT710` helyőrző a `forras_javit.py:217` literáljában és az 1 846 táblasor provenienciájában.
 2. E28 HIBA: 5 lexikon-nézet eltér az újragenerálttól, ebből legalább egy bizonyosan az F105 miatt.
 3. A rafe-maqqéf szabály ⛔ kézi minta nélkül került a megjelenítésbe, és van ismert hibás kimenete.
 4. A `kod_hash` nem fedi a `bdb_szelet.py`-t.
