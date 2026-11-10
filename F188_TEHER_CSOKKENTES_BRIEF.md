@@ -5,7 +5,8 @@ kod: TEHER_CSOKKENTES
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f188-teher-csokkentes
 ad: feladatonként egy jelentésfájl, gépi formai előjavítás a commit előtt, a CI-t újra nem futtató és kockázat szerint szintezett független ellenőr, main-őr a /kovetkezo-ban; előtte-utána mérés (admin ≤ tartalmi, javítókör ≤ 1, ellenőr ≤ 15 perc)
 kovetkezo: "Indítható (fugg nincs), a T0 mérés-alappal. Sorrend (orkesztrátori döntés, 2026-11-10): a #188 a #182 2. fázisa (F26, közös MUNKAMENET.md) előtt; a T0 és a T3 (új fájlok) korábban is mergelhető; a parancs- és ügynök-PR merge-e a #104, a /elteres 181 és a #186 lezárása után; a SEMA-írás a #104 merge-e után. A .github/workflows/ellenorzes.yml nincs az ir-ben (a #183 írja): ha a T4/T6 workflow-változást kíván, az külön tétel a #183 után"
 munka: folyamat
