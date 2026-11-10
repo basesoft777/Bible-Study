@@ -20,7 +20,7 @@ ELTÉRÉS: 6 tétel
 | 2b átkulcsolás csak azonos hash-nél | OK (mintával) | `eszkozok/thayer_jelolt/forditas_atkulcsol.py:73-94` | `assert hash_itt[uj] == forras_hash`; a G0225 mintája egyezik. |
 | 2c `csv` modul | OK | – | 0 találat. |
 | 2d G5590 kapui és provenienciája | OK (a kapuk NEM ELLENŐRIZHETŐK) | `adat/forditasok.tsv` | 10 módosított és 1 új sor; `sonnet` / `claude-sonnet-5-5` / `prompt v5.2`; a `kezi` `teljes` sor érintetlen. |
-| 2e átkulcsoló, kód és adat | **ELTÉRÉS** (alacsony) | `forditas_atkulcsol.py:119-123` | A megjegyzés-literált az adat megírása után írták át `DT-F186b`-ről `F186 átkulcsolás`-ra. A 705 adatsor `DT-F186b`-t tartalmaz, ezért a commitolt kód már nem állítja elő a megírt bájtokat. |
+| 2e átkulcsoló, kód és adat | **ELTÉRÉS** (alacsony) | `forditas_atkulcsol.py:119-123` | A megjegyzés-literált az adat megírása után írták át `DT714`-ről `F186 átkulcsolás`-ra. A 705 adatsor `DT714`-t tartalmaz, ezért a commitolt kód már nem állítja elő a megírt bájtokat. |
 | 3a `ellenoriz.py` → 0 SÉRTÉS | NEM ELLENŐRIZHETŐ (az ellenőrnek) | – | Az orkesztrátor futtatta: 0 SÉRTÉS. |
 | 3b tesztek | NEM ELLENŐRIZHETŐ (az ellenőrnek) | – | Kódolvasással: mindkét ág tesztelve. |
 | 3c a szabály szövege a SEMA-ban | OK | `adat/SEMA.md:839-848` | A docstring csak hivatkozik rá. Ha nincs `lexikon/`, a szabály mindent JELENTÉS-nek vesz (fail-open); ez tesztelt, szándékos viselkedés. |
@@ -32,11 +32,11 @@ ELTÉRÉS: 6 tétel
 | **CI E28** | **ELTÉRÉS** (magas) | `lexikon/ANTROP-001_TUDOMANYOS.md:126` | A `futtat.py --valtozott … --diff-alap 9976340 --diff-fej d864e36` E28-on HIBA-t ad: a commitolt nézet eltér az újragenerálttól. Valószínű ok: a [^6] lábjegyzet a G5591 1. sorát „Thayer fej”-ként idézi, a #186 után ez `-/-/a`. A brief a lapok újragenerálását kizárja. |
 | CI E16 | OK (feltételes) | – | `[ELLENŐRZŐ]` PR-cím kell. |
 | CI E12–E15, egyéb | OK | – | E12–E15: 0 találat. E25, E27, E30, E34, E36: régi vagy figyelmeztető tételek. |
-| G/D: DT-F186a/b/c | OK | `dontesek/uj/f186-thayer-jelentespont-97.md` | A végrehajtás egyezik a döntésekkel. |
-| D: N-F186c, G5590-kivétel | **ELTÉRÉS** (alacsony–közepes) | `nyitott/uj/…:3` | A CI-szabály súlyosságának módosítása és a „Nem része: fordítás” alóli kivétel döntés, de nincs hozzá `DT-F186d` sor. |
+| G/D: DT713/b/c | OK | `dontesek/uj/f186-thayer-jelentespont-97.md` | A végrehajtás egyezik a döntésekkel. |
+| D: N-F186c, G5590-kivétel | **ELTÉRÉS** (alacsony–közepes) | `nyitott/uj/…:3` | A CI-szabály súlyosságának módosítása és a „Nem része: fordítás” alóli kivétel döntés, de nincs hozzá `DT716` sor. |
 | T6 HAMART 4.2 minta | **ELTÉRÉS** (alacsony) | brief 64–66. sor | A minta sem elkészítve, sem indokolva nincs. |
 | A1 | OK | – | `manual` / kézi proveniencia, forrásidézettel. |
-| A2 | OK | – | Az N-F186a és az N-F186b nyitott. |
+| A2 | OK | – | Az N123 és az N124 nyitott. |
 | A3–A5 | nem alkalmazható | – | – |
 | Ell. 1–5 | OK | – | Törölt sor nincs; a kulcstartomány 5426/5426; a nulla-diff hatóköre rendben (de l. E28); a sorszám-Δ: `forditasok` +1, `thayer_aranyminta` +600, `thayer_szakaszok` +224; a ⛔ pontok sorrendje rendben. |
 

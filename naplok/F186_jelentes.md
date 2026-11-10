@@ -207,7 +207,7 @@ előzmény), a Thayer betűsora a „j”-t kihagyja (K1c), a K2 egy további al
 forrás-torzulás (K4). A hiba most is a gyakori rétegben van (a nagy, sokszintű szócikkek).
 
 **⛔ Megállás.** A seed-202 eseteire hangolt javítás után a seed-202 már nem független mérés: a kapu igazolásához új vak minta
-(seed-203) kellene, ami nem része a briefnek. A döntés az orkesztrátoré (6.3, DT-F186a). Tájékoztatóul egy **repón
+(seed-203) kellene, ami nem része a briefnek. A döntés az orkesztrátoré (6.3, DT713). Tájékoztatóul egy **repón
 kívüli, nem commitolt prototípus** (`f186_proto.py`, memóriában felülírt szabály: a „,” és a „to” kizárás helyett a nyitott
 zárójelen belüli jelölő nem fej; i után k is; a K2 alakja „at the end)/above)/below)”-val bővítve) a két aranymintán
 **199/200** (seed-201) és **198/200** (seed-202; maradék: U014, U049) értéket ad, a korpuszon 239 belső fejet (167 Strong,
@@ -246,7 +246,7 @@ A 636-ból **539 csak eltolódott** (a régi szöveg változatlanul megvan ugyan
 valóban megváltozott** (a kettévágott bekezdés első része, a K2-bekezdések). A tételes lista: 8. melléklet, B tábla.
 
 **Az `adat/forditasok.tsv`-t nem írtam** (nincs az `ir`-ben, és a #121/#153/#161 is írja). A CI E1 (`ellenoriz.py`) ezért
-a PR-on a 13. szabálynál SÉRTÉS-t ad, amíg a sorok sorsáról nincs döntés (6.3, DT-F186b). A lehetséges parancsok:
+a PR-on a 13. szabálynál SÉRTÉS-t ad, amíg a sorok sorsáról nincs döntés (6.3, DT714). A lehetséges parancsok:
 
 - jelzés és lista: `python eszkozok/thayer_jelolt/szolista.py` (a #7 futási listája), `python eszkozok/ellenoriz.py`;
 - `elavult`-ra állítás: a meglévő eszközök közül egyik sem teszi meg újrafordítás nélkül; egy egyszeri, bájtőrző szkript kell,
@@ -257,30 +257,30 @@ a PR-on a 13. szabálynál SÉRTÉS-t ad, amíg a sorok sorsáról nincs dönté
 
 ### 6.3 Nyitott kérdések (az orkesztrátornak; helyőrzővel)
 
-- **DT-F186a — a T4 kapuja nem teljesült (192/200).** (a) második szabálykör a seed-202 osztályaira (K1b, K1c, K2b; a K4
+- **DT713 — a T4 kapuja nem teljesült (192/200).** (a) második szabálykör a seed-202 osztályaira (K1b, K1c, K2b; a K4
   forrás-torzulás tételesen) és új vak mérés **seed-203**-mal (költség: négy Opus-kitöltő, mérésenként ≈ 1,2 M subagent-token,
   a seed-201/202 alapján) · (b) a T3: kétes esetek modelles döntése (költségbecslés előbb) · (c) a mért 96,0% elfogadása „próba”
   jelöléssel (a BDB DT177 (c) mintája). **Javaslat: (a)** — a hibák osztályokba rendeződnek, a prototípus szerint olcsón
   javíthatók, és a ritka réteg már 100/100.
-- **DT-F186b — a 636 hash-eltérő fordítássor (és a CI 13. szabálya).** (a) egyszeri bájtőrző `elavult`-ra állítás mind a
+- **DT714 — a 636 hash-eltérő fordítássor (és a CI 13. szabálya).** (a) egyszeri bájtőrző `elavult`-ra állítás mind a
   636 sorra · (b) átkulcsolás hash szerint az 539 eltolódott sorra, `elavult` csak a 97-re · (c) a szakasztábla vágása
   helyett a vers-sor útvonala a hivatkozás pozíciójából (a szakaszkulcsok nem változnak, 0 elavuló sor; a mért mennyiség
   ugyanaz, de a vers útvonala a szakasztáblában nem létező pontra mutathat, és a #187 jelentésfája ezt nem látja). **Javaslat:
   (b)**, ha a #7 lánca ezt vállalja; különben (a).
-- **DT-F186c — `ir`-en kívüli, egysoros javítások** (a döntés nélkül nem írtam): `eszkozok/thayer_jelolt/teszt_lanc.py:59` a
+- **DT715 — `ir`-en kívüli, egysoros javítások** (a döntés nélkül nem írtam): `eszkozok/thayer_jelolt/teszt_lanc.py:59` a
   szakaszszámot rögzíti (`17093` → `17266`, a `Betolto.test_ellenoriz` most bukik); `eszkozok/thayer_jelolt/forras_javit.py:125`
   fejléc-literálja a kiosztott helyőrzőt írja (`DT-F132i` → `DT333`; a regenerált `thayer_forras_javitas.tsv` fejlécében így a
   helyőrző áll). A `teszt_lanc.py` `Sigla.test_tabla_determinisztikus_es_kezi_vedett` már a változtatás előtt bukott
   (`thayer_sigla.tsv` darabszám-eltérés, 66 ≠ 60) — nem a #186 okozta.
-- **N-F186a — K3, a záró szinonima-jegyzet** (T181): új `utvonal`-érték (`zaro`) vagy a jegyzet leválasztása; a fogyasztók
+- **N123 — K3, a záró szinonima-jegyzet** (T181): új `utvonal`-érték (`zaro`) vagy a jegyzet leválasztása; a fogyasztók
   (lapgenerátor, #187) érintettek. 1/200 a seed-201-en, 0/200 a seed-202-n.
-- **N-F186b — a `bcv` tartalmi hibája** (T119 G0027 „Luk 8:18”: a forrás valószínűleg az Ascensio Isaiae-t jelöli Lukácsnak;
+- **N124 — a `bcv` tartalmi hibája** (T119 G0027 „Luk 8:18”: a forrás valószínűleg az Ascensio Isaiae-t jelöli Lukácsnak;
   mindkét kitöltő jelezte; a jelentéspontot nem érinti).
 
-## 9. Második kör (a DT-F186a/b/c orkesztrátori döntései után, 2026-11-10)
+## 9. Második kör (a DT713/b/c orkesztrátori döntései után, 2026-11-10)
 
-*A döntések (orkesztrátor, 2026-11-10; `dontesek/uj/f186-thayer-jelentespont-97.md`, 🟢): DT-F186a (a) — második szabálykör
-és új vak mérés (seed-203); DT-F186b (b) — átkulcsolás hash szerint, a szövegében változott sor `elavult`; DT-F186c igen.
+*A döntések (orkesztrátor, 2026-11-10; `dontesek/uj/f186-thayer-jelentespont-97.md`, 🟢): DT713 (a) — második szabálykör
+és új vak mérés (seed-203); DT714 (b) — átkulcsolás hash szerint, a szövegében változott sor `elavult`; DT715 igen.
 A `forditasok.tsv`, a `teszt_lanc.py`, a `forras_javit.py`, az átkulcsoló és tesztje egyeztetett eltérésként az `ir`-ben.*
 
 ### 9.1 A második szabálykör (F186.8)
@@ -293,15 +293,15 @@ A `forditasok.tsv`, a `teszt_lanc.py`, a `forras_javit.py`, az átkulcsoló és 
   bekezdés, mind átnézve, mind utalás). Az U014 ezzel sem helyes: a forrás a G1519 B.II.3 „c.” alatti görög α-t félkövér
   „a.”-ként írja. A „visszaugró betű nem fej” szabályt kipróbáltam és **elvetettem**: a korpuszon 50 bekezdést érintett,
   többségük valódi fej (pl. G5483, G2722, G0575 sorozatai).
-- **Nem javítva:** K3 (T181, N-F186a), K4 (U049 forrás-torzulás „5 B a Hebraism”; a `thayer_forras_javitas.tsv` a
+- **Nem javítva:** K3 (T181, N123), K4 (U049 forrás-torzulás „5 B a Hebraism”; a `thayer_forras_javitas.tsv` a
   TSV-szövegvesztésé, a szerkezeti forrás-torzulásra nincs mechanizmus), U014.
 - **Eredmény:** a szakasztábla 17 317 sor (17 093 bekezdés + 224 belső fejnél nyíló szakasz, 152 Strongban); a korpuszon 232
   belső fej (160 Strong), 42 hamis bekezdés-eleji fej. Az aranymintán (tájékoztató, nem független): seed-201 **199/200**,
   seed-202 **198/200**. A korpuszminta (40, seed 77) a végleges szabállyal: nyilvánvaló hamis fej nincs.
 - **Tesztek:** `teszt_bont` `F186Fejek` (K1b pozitív és negatív alakok, K1c, K2b), `teszt_vers_jelentes` `Aranyminta` (K1b 4,
-  K1c 2 aranysor). DT-F186c: `teszt_lanc.py:59` → 17 317; `forras_javit.py:125` → DT333.
+  K1c 2 aranysor). DT715: `teszt_lanc.py:59` → 17 317; `forras_javit.py:125` → DT333.
 
-### 9.2 Az átkulcsolás (DT-F186b, F186.9)
+### 9.2 Az átkulcsolás (DT714, F186.9)
 
 *Proveniencia: scope=adat/forditasok.tsv (Thayer `sz<n>` sorok, 2 920) × a második kör utáni adat/thayer_szakaszok.tsv |
 forras=eszkozok/thayer_jelolt/forditas_atkulcsol.py | ts=2026-11-10.*
@@ -310,7 +310,7 @@ A végső számok (a második kör utáni táblán, a korábbi 539/97 helyett): 
 a Strong mai szakaszai között pontosan egy szakaszé, bájtazonos forrásszöveg), **118 sor `elavult`** (a szöveg megváltozott;
 többértelmű hash nem fordult elő). Az `elavult` sor a forrásbekezdés új kezdő szakaszának kulcsára került: a régi kulcson
 32 esetben átkulcsolt sor állt volna (kulcsütközés), a bekezdés új kezdetén viszont érvényes fordítás nem állhat. Ez a
-DT-F186b végrehajtási részlete, a `megjegyzes` mezőben jelölve. A bájtőrzés: pontosan 708 sor változott, a többi bájtra
+DT714 végrehajtási részlete, a `megjegyzes` mezőben jelölve. A bájtőrzés: pontosan 708 sor változott, a többi bájtra
 azonos (írás előtti összevetés), a kulcsok egyediek, a `kezi` sor nem érintett, és újrafuttatva a terv üres
 (`teszt_forditas_atkulcsol.py`: csak azonos hash-nél kulcsol, többértelmű hash nem kulcsol, `kezi` nem avul, ütközésnél
 megáll, bájtőrző írás, idempotens).
@@ -375,13 +375,13 @@ töredezettségéből jön; a ritka réteg 98–100%. A T3 nem kell (a seed-203 
 ### 9.7 Ellenőrző futások (a végső állapoton, 2026-11-10)
 
 - `teszt_bont.py` OK (36 teszt), `teszt_vers_jelentes.py` OK (17), `teszt_forditas_atkulcsol.py` OK (9);
-  `teszt_lanc.py`: 43-ból 42 OK — a `Betolto.test_ellenoriz` a DT-F186c javítással zöld; a
+  `teszt_lanc.py`: 43-ból 42 OK — a `Betolto.test_ellenoriz` a DT715 javítással zöld; a
   `Sigla.test_tabla_determinisztikus_es_kezi_vedett` bukik, de ez már a #186 előtt is bukott (`thayer_sigla.tsv`, 66 ≠ 60).
 - `--ellenoriz`: a `thayer_szakaszok`, `thayer_vers_jelentes`, `thayer_forras_javitas` bájtra azonos.
 - `python eszkozok/feladatok.py ellenoriz`: 204 brief, 0 hiba, 0 figyelmeztetés.
 - `python eszkozok/ellenoriz.py`: RENDBEN 26, KÉZI 2, JELENTÉS 14, **SÉRTÉS 1: a 13. szabály (186)** — 9.2, N-F186c.
 - CI E32 (kiosztott helyőrző literálban): a módosított `.py` fájlokon tiszta (az átkulcsoló literálja számfüggetlen; a
-  `forditasok.tsv` 708 `megjegyzes`-ében a `DT-F186b` helyőrző áll, ezt a `szamkiosztas` merge-kor cseréli).
+  `forditasok.tsv` 708 `megjegyzes`-ében a `DT714` helyőrző áll, ezt a `szamkiosztas` merge-kor cseréli).
 
 ### 9.8 A 13. szabály súlyossága (N-F186c, orkesztrátori döntés, 2026-11-10: (b) szűkítve; F186.12)
 
@@ -443,7 +443,7 @@ hiba **már a #186 indulásakor fennállt** (a 2026-11-10-i első alapfutás, a 
 `thayer_sigla.tsv` nincs az `ir`-ben. Javasolt külön tétel: a sigla-tábla újragenerálása vagy a teszt elvárásának
 igazítása (a #7 / #132 gazdája dönt).
 
-### 9.4 Az érintett Strongok és fordítássoraik (DT-F186b; `forditas_atkulcsol.py --lista`)
+### 9.4 Az érintett Strongok és fordítássoraik (DT714; `forditas_atkulcsol.py --lista`)
 
 Az újrafordítás (a 118 `elavult` sor és a fordítatlan új szakaszok) a #7-é. HAMART-szó a listában nincs.
 
@@ -796,10 +796,10 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
 
 ### 10.6 A javítókör többi tétele és a záró futások
 
-- **ELLENOR_F186 3. (F186.19):** a `DT-F186d` sor (🟢) a `dontesek/uj/` fájlban — a 13. szabály súlyossága és a G5590
+- **ELLENOR_F186 3. (F186.19):** a `DT716` sor (🟢) a `dontesek/uj/` fájlban — a 13. szabály súlyossága és a G5590
   fordítási kivétele.
 - **ELLENOR_F186 5. (F186.18):** a SEMA 2.14 „9.2, 10.” → „9.2, 9.8”, a 2.34 „5.” → „9.5”.
-- **ELLENOR_F186 6. (F186.17):** az átkulcsoló két megjegyzés-literálja visszaállítva a megírt adat szövegére (`DT-F186b`,
+- **ELLENOR_F186 6. (F186.17):** az átkulcsoló két megjegyzés-literálja visszaállítva a megírt adat szövegére (`DT714`,
   `e32-kihagy` jelöléssel); bizonyítva: a mai kód az F186.9 előtti `forditasok.tsv`-ből bájtra az F186.9 kimenetét adja (708
   változás, azonos).
 - **Záró futások (a F186.23 után):**
@@ -829,7 +829,7 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   együtt), `teszt_forditas_atkulcsol` (a második kör).
 - **A fordítássorok második átkulcsolása** (`forditas_atkulcsol.py --osszevonas`, egyszeri, idempotens, bájtőrző): 342 sor
   átkulcsolva (csak azonos `forras_hash`-nél), 4 `elavult`, 35 összevont csoport egy-egy `elavult` sorrá fűzve (a 38 régi
-  tagsor a 3. körben `sz<új>~<régi>` kulccsal, `elavult` állapotban visszaállt, DT-F186f, 14.), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
+  tagsor a 3. körben `sz<új>~<régi>` kulccsal, `elavult` állapotban visszaállt, DT718, 14.), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
   bájtbizonyítása az összevonás előtti táblára (1f408b47) vonatkozik; az első kör útja (`bekezdes_elso`) ezért az összevonás
   előtti nézetet használja.
 - **A lapon szereplő Strongok** (tényre javítva, ELLENOR_F186_3 1g, 1h; „a korlát fölött, engedéllyel javítva” (ELLENOR_F186_3)): a G4151 (sz13: 4.a + töredék) és a
@@ -849,7 +849,7 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   - szakaszkulcsok az F186 előtti táblához képest (6289c687): **184 Strong, 1 299 megváltozott kulcs** (13. melléklet; a 9.5 a
     második kör előtti állapot);
   - `forditasok.tsv`, Thayer `sz`-sorok: **2 883, ebből 142 `elavult`**, és **38 összevonási tagsor** (`sz<új>~<régi>`,
-    `elavult`; DT-F186f, F186.42); az első kör jelölése **588** átkulcsolt és **117** elavult soron áll (a tagsorok és a G4151/G5590
+    `elavult`; DT718, F186.42); az első kör jelölése **588** átkulcsolt és **117** elavult soron áll (a tagsorok és a G4151/G5590
     visszaállított sorai hordozzák újra); a második köré **407** soron (342 átkulcsolt, 28 áthelyezett, 4 elavult, 33 összefűzött)
     és a 38 tagsoron — az ELLENOR_F186_3 számolta 399-hez képest a G4151 és a G5590 8 átkulcsolt sorának visszaállt jegye a
     különbség;
@@ -862,15 +862,15 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
 
 - **3. (F186.29):** a „korlátozott vakság” az adatrétegben: a `thayer_aranyminta.tsv` két fejlécsora és a seed-202/203 400
   sorának provenienciája (bájtőrző: 402 sor), a SEMA 2.56.
-- **4. (F186.30):** DT-F186e — az ANTROP-001 kiadott lap újragenerálása, generált apparátus-változás (SEMA 2.48, DT665: a próza,
+- **4. (F186.30):** DT717 — az ANTROP-001 kiadott lap újragenerálása, generált apparátus-változás (SEMA 2.48, DT665: a próza,
   a minősítés és a határ nem változik, a diff csak a generált szótári blokkokat és lábjegyzeteiket érinti, a jelentés felsorolja;
   külön táblaírást a mechanizmus nem kíván, a lap átnézése érvényes marad).
-- **5. (F186.31):** N-F186d (K1d, K1e) és N-F186e (K2c, K2d, K5) a `nyitott/uj`-ban, a seed-202/203/204 eseteivel.
+- **5. (F186.31):** N125 (K1d, K1e) és N126 (K2c, K2d, K5) a `nyitott/uj`-ban, a seed-202/203/204 eseteivel.
 - **6. (F186.33, F186.34):** a brief `olvas` mezőjébe vett `motivumok/ANTROP-001.md` a `feladatok.py ellenoriz` szerint
   **függési kört** okoz (#7 ↔ #38 ↔ #123 ↔ #125 ↔ #138 ↔ #154 ↔ #156 ↔ #157 ↔ #161 ↔ #179 ↔ #186 ↔ #187; „a döntés a
   felhasználóé”), ezért az `olvas` az előző állapotra állt vissza (a régi globok, amelyeket az E18 kíván); 0 hiba. Az F186.33
   üzenete tévesen 0 hibát állított, az F186.34 javítja. **Döntésre vár:** a `motivumok/ANTROP-001.md` felvétele (a kör feloldása).
-- **7. (F186.35):** a DT-F186d az „élteti” javítókörrel és az összevonás utáni újrafordítással; a számok itt, a 12.1-ben.
+- **7. (F186.35):** a DT716 az „élteti” javítókörrel és az összevonás utáni újrafordítással; a számok itt, a 12.1-ben.
 
 ### 12.3 A main beolvasztása és a teljes lapdiff a main-hez képest (F186.36, F186.37)
 
@@ -895,7 +895,7 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
 - A CI-szabálykészlet (`futtat.py --valtozott … --diff-alap <merge-alap 75b04e6a> --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F186: …"
   --esemeny pull_request`): kilépési kód 0, **E28 0 találat**, HIBA nincs.
 - `teszt_ellenoriz_13`, `teszt_bont`, `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc`: a `Betolto` a szakaszszám
-  (17 261) frissítésével zöld (DT-F186c sora, F186.38); a `Sigla` régi hibája marad (9.10).
+  (17 261) frissítésével zöld (DT715 sora, F186.38); a `Sigla` régi hibája marad (9.10).
 - `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
 
 ## 14. Javítókör 3 — a korlát fölött, engedéllyel javítva (`naplok/ELLENOR_F186_3.md`, ELTÉRÉS 7 tétel; orkesztrátori engedély, 2026-11-10)
@@ -906,8 +906,8 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   összevont szakasz `forras_hash`-ével, jegye „összefűzve (sz5+sz6), szöveg változatlan, F186” — a mai sz5 forrásszövege bájtra a
   régi sz5 és sz6 szóközzel fűzött szövege (mind az 52 összevont csoportban így van, `osszefuz_hu.py`). A G4151 sz13 valódi új
   fordítás, marad. A lánc munkatáblája (`naplok/F132_THAYER_SZAKASZ_munka.tsv`) a G4151/G5590 26 sorában a `forditasok.tsv`-hez
-  igazítva. A 12.1 és a DT-F186d a tényre javítva.
-- **2–3. (F186.42) — a régi sor nem törlődik (DT289; DT-F186f).** A SEMA 2.14 kulcsa (szótár + strong + `entry_id` +
+  igazítva. A 12.1 és a DT716 a tényre javítva.
+- **2–3. (F186.42) — a régi sor nem törlődik (DT289; DT718).** A SEMA 2.14 kulcsa (szótár + strong + `entry_id` +
   `jelentes_szam` + mező) két sort egy kulcson nem enged; a `jelentes_szam` viszont union (2.2.2), ezért a választott megoldás: a
   tagsor saját, egyedi kulcsot kap, **`sz<új>~<régi>`** (pl. `sz5~6`). Ez nem `sz<n>` alakú, így a szakasz-fogyasztók (lefedés,
   Strong magyar szövege, szólista, E19) kihagyják, és a 13. szabály az `elavult` tagsort JELENTÉS-nek veszi (nem `elavult` tagsor:
@@ -923,7 +923,7 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   `elavult`.
 - **6. (F186.46):** az N-F186e-ben az U014 K2b (a maradék hibája a K5 mechanizmusa), a K5-eset a V023.
 - **7. (F186.47):** a nem létező `tematikus_lezart/ANTROP-001*` globok kivétele után az E18 2 hibát ad, ezért visszakerültek; a
-  `motivumok/ANTROP-001.md` a függési kör miatt nem kerül be — N-F186f.
+  `motivumok/ANTROP-001.md` a függési kör miatt nem kerül be — N127.
 - **Záró futások:**
   - `python eszkozok/ellenoriz.py` — kilépési kód 0: RENDBEN 27, **SÉRTÉS 0**, KÉZI 2, JELENTÉS 14; a 13. szabály JELENTÉS
     (218): 142 `elavult` sor vár újrafordításra, 38 összevonási tagsor (archív), 76 Thayer-Strong fordítatlan szakasszal, egyik sem
@@ -1686,7 +1686,7 @@ A repón kívül futott (A és B fázis, `--ir`), a git-beli állapotokból (6fa
 ```python
 """F186, 3. javítókör (ELLENOR_F186_3; a korlát fölött, engedéllyel): a `forditasok.tsv` bájtőrző javítása.
 
-A fázis (2–3. tétel, DT-F186f): (a) a F186.28-ban kivett 38 összefűzési tagsor visszaáll a 6fa021c9-beli (összevonás előtti)
+A fázis (2–3. tétel, DT718): (a) a F186.28-ban kivett 38 összefűzési tagsor visszaáll a 6fa021c9-beli (összevonás előtti)
 tartalmával, `jelentes_szam = sz<új>~<régi>`, `allapot = elavult`, jeggyel, közvetlenül az összefűzött sora után; (b) az
 összefűzött sorok `megjegyzes`-e a tagsoraikra hivatkozik; (c) a G4151 15 változatlan szövegű sora (sz1–sz12, sz14–sz16) a
 4a6f0ca2-beli (az F186.32 előtti) mezőkkel áll vissza; az sz13 (az egyetlen valódi új fordítás) jegye a tényre áll.
@@ -1792,7 +1792,7 @@ def main():
             uj[idx[k]] = allit(s4, allapot='sonnet', forras_hash=mezo(uj[idx[k]], 'forras_hash'), megjegyzes='; '.join(x for x in (
                 elo, 'F186 (2026.11.10): összefűzve (sz5+sz6), szöveg változatlan, F186 — a mai sz5 forrásszövege bájtra a régi sz5 '
                      'és sz6 szakasz szóközzel fűzött szövege, ezért a fűzött fordítás érvényes; a forras_hash az összevont szakaszé '
-                     '(DT-F186f); tagsor: sz5~6') if x))
+                     '(DT718); tagsor: sz5~6') if x))
             valt.add(idx[k])
     # összeállítás és bájtőrző ellenőrzés
     ki = []
@@ -1821,13 +1821,13 @@ if __name__ == '__main__':
 ## 16. Zárás (F184 D4; a korlát fölött, engedéllyel, dokumentum-javítás: ELLENOR_F186_4 2g, 5b, 5c)
 
 - **Hatókör:** T0–T4 és a jelentés; a T5 a #187-é. Javítókör: kettő a korláton belül, egy a korlát fölött engedéllyel (14.), utána dokumentum-javítás.
-- **Egyeztetett eltérések:** SORREND (a #121 `megallt`); az `ir` bővítése (DT-F186b–f); az ANTROP-001 kiadott lap újragenerálása (DT-F186e, generált apparátus-változás, SEMA 2.48 / DT665).
+- **Egyeztetett eltérések:** SORREND (a #121 `megallt`); az `ir` bővítése (DT714–f); az ANTROP-001 kiadott lap újragenerálása (DT717, generált apparátus-változás, SEMA 2.48 / DT665).
 - **Mérés** (két független Opus-kitöltő, kapu ≥ 194/200), jelentéspont: seed-201 189/200; seed-202 192 és seed-203 194/200 (korlátozott vakság); **seed-204 (valóban vak, mérvadó) 196/200 = 98,0% (Wilson 95,0–99,2)**; könyv/vers mind a négyen 200/200.
 - **Javítások** (`bont.py`): K1, K1b, K1c, K2, K2b és az azonos útvonalú szakaszok összevonása (a mérést nem változtatja). Szakasztábla 17 093 → 17 261 sor; kulcsváltozás 184 Strong, 1 299 kulcs.
-- **Mérve, nem javítva:** K3, K4 (N-F186a), K1d, K1e (N-F186d), K2c, K2d, K5 (N-F186e).
-- **Fordítássorok:** 2 883 Thayer `sz`-sor, ebből 142 `elavult`, plusz 38 `sz<új>~<régi>` tagsor (DT-F186f); átkulcsolás csak azonos hash-nél, bájtőrzően. G4151: csak az sz13 új fordítás; G5590: új fordítás nem készült (F186.13 marad, az sz5 összefűzve). HAMART nem érintett.
+- **Mérve, nem javítva:** K3, K4 (N123), K1d, K1e (N125), K2c, K2d, K5 (N126).
+- **Fordítássorok:** 2 883 Thayer `sz`-sor, ebből 142 `elavult`, plusz 38 `sz<új>~<régi>` tagsor (DT718); átkulcsolás csak azonos hash-nél, bájtőrzően. G4151: csak az sz13 új fordítás; G5590: új fordítás nem készült (F186.13 marad, az sz5 összefűzve). HAMART nem érintett.
 - **CI:** `ellenoriz.py` 0 SÉRTÉS (13. szabály JELENTÉS: 142 + 76, a #7-é); E28 zöld; tesztek zöldek (a régi `teszt_lanc` `Sigla`-hiba kivételével); `feladatok.py ellenoriz` 0 hiba. A PR-cím `[ELLENŐRZŐ]` (E16).
-- **Nyitott:** N-F186a, b, d, e, f, g (a g: az olvasó ne mutassa az elavult és a tagsorokat, a #187-é).
+- **Nyitott:** N123, b, d, e, f, g (a g: az olvasó ne mutassa az elavult és a tagsorokat, a #187-é).
 - **Tokenfogyasztás:** a seed-204 1,09 M token, a küszöb fölött; ez csak utólag derült ki.
 - A korábbi külön zárójelentés (`naplok/F186_zaras.md`) ide került, és törölve.
 
@@ -1851,5 +1851,5 @@ A main-hez mérve a #186-ban **a G5590 9 szakasza és a G4151 sz13 új Sonnet-fo
 | G4151 | sz13 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új (az összevont 4.a) | ANTROP-001, 2. Mélységi szócikk, G4151 πνεῦμα · Thayer, 4.a | nem |
 
 - **HAMART:** egyik sor sem tartozik a HAMART görög szavai közé (G1311, G1944, G2671, G5351, G5356, G3077). A #182 2. fázisa ezeket nem fordítja újra, és a HAMART-szavak sorai a #186-ban nem változtak (E28 bájtazonos).
-- **Bekötés:** a lapgenerátor a `forditasok.tsv` érvényes `sz<n>` sorát mutatja (pontos kulcs, `lexikon_general.py:3641`). Az `elavult` és az `sz<n>~<m>` tagsort nem mutatja. Az újragenerált ANTROP-001 lapon („Szellemtől megragadva”, „minden emberi lélek”, „Isten országában”) a javított szöveg áll, a régi („a Szellem birtokában”, „az ember minden lelke”) 0 találat. Az **olvasó szerver** szólapja ma minden Thayer-sort mutat, az elavultat és a tagsort is (N-F186g, a #187-é). A lexikonlapot ez nem érinti.
+- **Bekötés:** a lapgenerátor a `forditasok.tsv` érvényes `sz<n>` sorát mutatja (pontos kulcs, `lexikon_general.py:3641`). Az `elavult` és az `sz<n>~<m>` tagsort nem mutatja. Az újragenerált ANTROP-001 lapon („Szellemtől megragadva”, „minden emberi lélek”, „Isten országában”) a javított szöveg áll, a régi („a Szellem birtokában”, „az ember minden lelke”) 0 találat. Az **olvasó szerver** szólapja ma minden Thayer-sort mutat, az elavultat és a tagsort is (N128, a #187-é). A lexikonlapot ez nem érinti.
 - **Nyitott (a lánc szabálya, nem a fordítóé):** a G4151 sz13 két hivatkozása (`Zsolt 50:13`, `Zsolt 105:33`) Thayer LXX-számozását követi; a Károliban Zsolt 51:13 és Zsolt 106:33. Az átszámozás a #132 lánc dolga, ezért nem javítottam.
