@@ -743,8 +743,32 @@ def thayer(con, g):
 
 def magyar_gorog(con, g):
     """[(szotar, jelentes_szam, forditas_hu, mezo)] a Thayer és az UBS DNTG magyar fordításai (a `mezo` különbözteti meg
-    az UBS-sorok `definicio_hu` és `glosszak_hu` változatát; F121, DT393)."""
-    return con.execute("SELECT szotar, jelentes_szam, forditas_hu, mezo FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') AND strong=? AND forditas_hu <> '' ORDER BY rowid", (g,)).fetchall()
+    az UBS-sorok `definicio_hu` és `glosszak_hu` változatát; F121, DT393). F187 (N-F186g): csak az érvényes sorok — az
+    `elavult` sor és az összevonási tagsor (`sz<n>~<m>`, SEMA 2.14, mindig `elavult`) nem."""
+    return con.execute("SELECT szotar, jelentes_szam, forditas_hu, mezo FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') "
+                       "AND strong=? AND forditas_hu <> '' AND COALESCE(allapot, '') <> 'elavult' "
+                       "AND jelentes_szam NOT LIKE '%~%' ORDER BY rowid", (g,)).fetchall()
+
+
+def thayer_szakasz_jelek(con, g):
+    """F187: {sorszam: (utvonal, jel)} a Thayer-szakasztáblából (`adat/thayer_szakaszok.tsv`, SEMA 2.34); {} , ha a tábla
+    hiányzik (régebbi adatbázis)."""
+    try:
+        return {str(s): (u or '', j or '') for s, u, j in
+                con.execute('SELECT sorszam, utvonal, jel FROM thayer_szakaszok WHERE strong=?', (g,))}
+    except sqlite3.OperationalError:
+        return {}
+
+
+def thayer_vers_pontok(con, g, karoli_vers):
+    """F187: a Thayer vers -> jelentéspont tábla (`adat/thayer_vers_jelentes.tsv`, SEMA 2.35) sorai egy versre:
+    [(szakasz, utvonal)]; None, ha a tábla hiányzik."""
+    try:
+        return [(str(sz), u or '') for sz, u in con.execute(
+            'SELECT szakasz, utvonal FROM thayer_vers_jelentes WHERE strong=? AND karoli_vers=? ORDER BY CAST(sorszam AS INTEGER)',
+            (g, karoli_vers))]
+    except sqlite3.OperationalError:
+        return None
 
 
 def ubs_dbh_szo(con, h):
