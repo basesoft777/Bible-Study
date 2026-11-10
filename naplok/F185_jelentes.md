@@ -132,3 +132,73 @@ rendezve), a seed-99/100/101/102 kulcsainak sorai kizárva; azonosító `N001`�
   pontbecslésre vonatkozik; a CI a jelentésben áll.
 - **Következmény:** ha teljesül, a „próba” jelölés lekerül, a szó-lapon (`blokkok.py` `BDB_MERT_PONTOSSAG`) az új mért szám CI-vel;
   ha nem, a mért szám kerül a lapra „mért” jelöléssel, ismételt mérés nincs (orkesztrátori döntés, 2026-11-10).
+
+## 5. P1 vége, forrásváltás, P2 (F185.3–F185.4)
+
+*Döntések: DT-F185a (A) a szakasztábla a forrás; DT-F185b (a) sorbelső fej-oszlop (orkesztrátori döntések, 2026-11-10, a
+felhasználó delegálásával). Takarékos menet (a felhasználó szava, 2026-11-10): ami kétes, `ketes` jelölést kap, nem hangolok
+tovább, a seed-101/102-n egyetlen záró tájékoztató szám.*
+
+### 5.1 A 2.30 szabályai (a 2. szakaszon túl)
+
+- **Sorbelső fejek (N103 (1), K1)** — `belso_fejek` oszlop (SEMA 2.30): a bekezdés közepi, félkövér nélküli, sorrendben várt
+  betű-, szám- és törzsfej, a kereszthivatkozással tapadt betűfej („3b, c. c.”), és a 2.31 `jelolo_hianyzik` kézi sorai.
+  A korpuszon 56 fej 43 Strongban (H3452 „) b. without article”, H5066 „, 1 human subject”, H0539 „Niph`al … 1.carried”,
+  H4994 „3b, c. c.”, H0559 „Qal … 263.1Say”); a 2.31 sor eleji kézi javítása a H3318 „Qal”-ját is adja.
+- **Homonima-szám:** a félkövér nélküli római szám a héber címszó előtt („I. מֶ֫לֶךְ noun”) a `szakasz`; a glossza előtti „I.”
+  fő tagolás (`resz`), nem homonima (H3824 „I. seldom of things”).
+- **A lefokozott fej szövege változatlan:** a `jel` + `szoveg` összefűzve ugyanaz, mint előtte (a fordítások hash-e erre számol).
+  **Kötelező teszt** (`teszt_bont.py` `test_forditasok_kulcsai_valtozatlanok`): a `forditasok.tsv` 29 311 BDB `sz<n>` sorának
+  kulcsa megvan, és a szakasz-nézet hash-e a sor `forras_hash`-ével egyezik — előtte és utána is 29 311 / 29 311.
+- **Nem javítva (`ketes` vagy nyitott):** a könyvnév nélküli hely és a közbeékelt, nem létező fejezet (a seed-102 M060, M039,
+  M127, M196) a mai óvatos szabály szerint `orokles_hibas` okkódot kap, amely a kártyán és az olvasóban gyenge jelölés; új
+  szabály nem készült (a könyv/vers mérce a seed-101/102-n 99,5% fölött). N-F185c.
+
+### 5.2 A forrásváltás (DT-F185a (A); egy szabály, egy hely)
+
+A vers → jelentéspont döntés egyetlen helye a 2.29 generátora; minden fogyasztó (lapgenerátor, olvasó, #104 kártya) a 2.29-et
+olvassa, a szeletelő jelentéspontját sehol máshol nem használja (`grep`: a `bdb_szelet.jelentespont`/`csomopont_savok` hívója
+csak a `bdb_vers_jelentes.py` és a régi `eszkozok/olvaso_mockup/bdb_kinyer.py` mockup).
+
+| fájl | függvény | változás |
+|---|---|---|
+| `eszkozok/olvaso_szerver/bdb_vers_jelentes.py` | `general`, új `tabla_betolt`, `TablaPont`, `_ut3`, `tanu_elter` | a `szakasz`/`resz`/`utvonal` a 2.30-ból (a hivatkozás a táblaszövegre illesztve); a szeletelő csak hivatkozás-kinyerés, csoport és tanú; új `bizonyossag` oszlop; a fejléc a 2.30 hash-ét is hordozza |
+| `eszkozok/bdb_vj_szabaly.py` (**kártya-fájl**, a #104 kártyája és az olvasó közös szabálya) | `vj_bizonytalan`, új `BIZONYTALAN_PONT` | a `ketes` jelentéspont gyenge jelölést kap („vonatkozhat”) |
+| `eszkozok/bdb_jelolt/bont.py` | `strong_sorok`, új `belso_fejek`, `kezi_jelolok`, `hamis_fej_kornyezet`, `hivatkozas_fej`, `alcimszo_nyito` | a 2.30 szabályai |
+
+A `lexikon_general.py` és az `olvaso_szerver/blokkok.py` kódja nem változott (a 2.29-et olvassák). Az olvasó BDB-blokkja a
+szeletelő bontását **megjeleníti**, és a 2.29 sorait (szakasz, útvonal) ennek csomópontjaihoz köti: ahol a tábla pontja a
+szeletelő csomópontjai között nincs, a sor a blokk elején, szövegesen áll (a meglévő „nem azonosítható” út). Ez megjelenítési
+kérdés, nem jelentéspont-döntés.
+
+### 5.3 P2 — bizonyosság
+
+A szabály a SEMA 2.29 `bizonyossag` sorában áll: `ketes`, ha (a) a hivatkozás nem illeszthető a táblaszövegre (`jp_illesztes`),
+(b) a szeletelő mint független tanú más pontot ad (`jp_tanu_elter`), (c) a hely szakaszhatáron áll (`jp_hatar`); különben
+`biztos`. A teljes 2.29-en (162 053 sor): `biztos` 146 679, `ketes` 15 374 (`jp_tanu_elter` 12 917, `jp_illesztes` 2 062,
+`jp_hatar` 395).
+
+### 5.4 Záró tájékoztató szám (nem vak; a seed-101/102 a hangolás alapja)
+
+*Proveniencia: scope=seed-101 véletlen 200, seed-102 véletlen 199 | forras=adat/bdb_vers_jelentes.tsv (F185.4) + a kitöltések és
+az ítéletek; eseti meres2.py | ts=2026-11-10.*
+
+| | jelentéspont | `biztos` sor helyes | `ketes` sor helyes |
+|---|---:|---:|---:|
+| seed-101 | **190 / 200** | 183 / 184 | 7 / 16 |
+| seed-102 | **192 / 199** | 183 / 183 | 9 / 16 |
+
+## 6. Seed-103: a minta és a vakság-próba (a kitöltés előtt)
+
+*Proveniencia: scope=adat/bdb_vers_jelentes.tsv (F185.4) | forras=naplok/F185_minta103.py, naplok/F185_vaksag_proba.py +
+konkordancia/lexikonok_nyers/DictBDB.json | ts=2026-11-10.*
+
+- **Minta:** sokaság 161 065 sor (a korábbi minták 988 sora kizárva); 200 sor, 183 szócikk; a mintavételkori bizonyosság:
+  `biztos` 181, `ketes` 19 (a kulcsban; a kitöltőnek nem adandó). Jelölő nélkül (a nyers szövegben a hivatkozás nem található,
+  a kitöltő a környezet szerint keres): 3 (N056, N071, N135).
+- **Vakság-próba:** a 183 szócikkből **183-ban** a kiírt bekezdések (a jelölők nélkül) sorrendben azonosak a nyers
+  forrásbekezdésekkel, 0 eltér; ebből 9 szócikkben a gépi szerkezet vágna vagy sorbelső fejet tenne (ott szivárgott volna a
+  gépi tagolásra épülő munkalap). A vak lapon gépi oszlop (útvonal, szakasz, okkód, bizonyosság, vers) nincs.
+- **Szöveg:** 556 147 karakter. **Tokenbecslés két független Opus-kitöltőre együtt** (a #186 tényleges token/karakter
+  arányaiból: 0,77; 1,32 átlag; 1,74 a seed-204-en): **≈ 0,73 M token** (sáv 0,43–0,97 M); a seed-204 aránya szerint a felső
+  szél ≈ 0,97 M.
