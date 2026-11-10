@@ -9,7 +9,7 @@ allapot: fut
 ag: claude/f188-teher-csokkentes
 pr: 677
 ad: feladatonként egy jelentésfájl, gépi formai előjavítás a commit előtt, a CI-t újra nem futtató és kockázat szerint szintezett független ellenőr, main-őr a /kovetkezo-ban; előtte-utána mérés (admin ≤ tartalmi, javítókör ≤ 1, ellenőr ≤ 15 perc)
-kovetkezo: "Folytatás: [elteres_kor 2/2] ELLENOR_F188_4 TISZTA (korlát fölött, engedéllyel javítva); draft PR-ok nyitva, merge a felhasználóé. Hátra: T7 — a merge utáni első 3 PR mérése (python eszkozok/ellenorzes/teher_meres.py --pr <n1> <n2> <n3>, N-F188e); a SEMA-rész (a T2 CI-szabállyá emelése és szövege, N-F188a) külön lépés a merge után (orkesztrátori döntés, 2026-11-10)"
+kovetkezo: "Folytatás: [elteres_kor 2/2] ELLENOR_F188_4 TISZTA (korlát fölött, engedéllyel javítva); draft PR-ok nyitva, merge a felhasználóé. Hátra: T7 — a merge utáni első 3 PR mérése (python eszkozok/ellenorzes/teher_meres.py --pr <n1> <n2> <n3>, N133); a SEMA-rész (a T2 CI-szabállyá emelése és szövege, N129) külön lépés a merge után (orkesztrátori döntés, 2026-11-10)"
 munka: folyamat
 olvas: [CLAUDE.md, DONTESEK.md, F184_DOKU_EGY_FORRAS_BRIEF.md, naplok/F184_jelentes.md, naplok/, eszkozok/ellenorzes/]
 ir: [.claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/commands/befogad.md, .claude/agents/fuggetlen-ellenor.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, BRIEF_SABLON.md, MUNKAMENET.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/, eszkozok/ellenorzes/elojavit.py, eszkozok/ellenorzes/teher_meres.py, eszkozok/ellenorzes/futtat.py, eszkozok/teszt_futtat.py, naplok/F188_jelentes.md]

@@ -172,7 +172,7 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
 
 ## Menet-ellenőrzés: előjavítás, ellenőrzési szint, lassú tesztek, helyi zár (F188)
 
-*A brief-menetek (`/kovetkezo`, `/elteres`) ellenőrzési lépései. Ez a kanonikus helyük (DT-F188c); a parancsok és az ügynökök csak hivatkoznak ide. A gépi részletek a hivatkozott szkriptek docstringjében állnak.*
+*A brief-menetek (`/kovetkezo`, `/elteres`) ellenőrzési lépései. Ez a kanonikus helyük (DT722); a parancsok és az ügynökök csak hivatkoznak ide. A gépi részletek a hivatkozott szkriptek docstringjében állnak.*
 
 1. **Előjavítás a commit előtt (T3).** A végrehajtó minden commit előtt futtatja: `python eszkozok/ellenorzes/elojavit.py --ir`. A szkript a diff által érintett fájlokon dolgozik. Gépiesen javítja az E32 zárójeles helyőrzőjét és az E8 adatidézet-formázását, a többit jelzi, és a jelzést a végrehajtó javítja. Az E5-nél jelzett törlésnél a végrehajtó dönt a szándékról. Ha a törlés szándékos: `--e5-jelol --ir --commit-uzenet-fajl <üzenetfájl>`. Hogy mit javít és mit jelez, azt a szkript docstringje írja le.
 2. **Ellenőrzési szint (T5).** A szint a brief meglévő `munka` és `ir` mezőjéből jön, új fejlécmező nincs. Levezetés: `python eszkozok/feladatok.py szint <nn>` (befogadáskor `--extra <fejlécfájl>`).
@@ -180,7 +180,7 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
    | Szint | Mikor | Független ellenőr | Javítókör |
    |---|---|---|---|
    | `teljes` (alapértelmezés) | minden feladat, amely nem könnyített: `munka: ertelmezo`; régi fejléc `ir` nélkül; üres `ir`; az `ir` bármely eleme, amely nincs a könnyített listán (adat, motívum, lexikon, forrás, sablon, nyílt adatkészlet, új mappa, szkript), glob vagy perjel nélküli könyvtárnév; és mindig az olvasói kimenetet előállító kód (`eszkozok/olvaso_szerver/`, `eszkozok/olvaso_pilot/`, `lexikon_general.py`, `olvasoi_kapu.py`, `nyilt_mag_export.py`, `*general*.py`) | a teljes ellenőrzőlista | legfeljebb 2 |
-   | `konnyitett` | csak ha az `ir` **minden** eleme a szűk, kifejezett listára esik: dokumentáció és koordináció (a `naplok/` szöveges `*.md` fájljai — a `.py`, `.tsv` és minden más nem —, `dontesek/uj/`, `nyitott/uj/`, `*_BRIEF.md`, a folyamat-dokumentumok), teszt (`teszt_*` / `test_*`, `tesztek/`), CI és parancs (`.claude/`, `.github/`, `eszkozok/ellenorzes/`, `feladatok.py`); a lista egyetlen helye: `eszkozok/feladatok.py` `SZINT_KONNYITETT_*` és `SZINT_OLVASOI_*` (DT-F188b (c)) | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
+   | `konnyitett` | csak ha az `ir` **minden** eleme a szűk, kifejezett listára esik: dokumentáció és koordináció (a `naplok/` szöveges `*.md` fájljai — a `.py`, `.tsv` és minden más nem —, `dontesek/uj/`, `nyitott/uj/`, `*_BRIEF.md`, a folyamat-dokumentumok), teszt (`teszt_*` / `test_*`, `tesztek/`), CI és parancs (`.claude/`, `.github/`, `eszkozok/ellenorzes/`, `feladatok.py`); a lista egyetlen helye: `eszkozok/feladatok.py` `SZINT_KONNYITETT_*` és `SZINT_OLVASOI_*` (DT721 (c)) | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
 
    - **Minden szinten megmarad:**
      - a PR teljes CI-je (E1–E37; a szint egyetlen szabályt sem kapcsol ki);
@@ -199,7 +199,7 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
    - A hely a `PARDES_ZAR_KONYVTAR` változóval felülírható.
    - Ha a zár foglalt, a futás kiírja, ki tartja, és vár.
    - Feloldja magát, ha a zárat tartó folyamat már nem él, vagy ha a zár a korlátnál régebbi (alapból 120 perc, `PARDES_ZAR_KORLAT_PERC`).
-   - Az elavult zárat csak egy átvevő törölheti: az átvételt egy OS-szintű zár védi (`~/.pardes/ellenorzes.zar.atvetel`, Windowson `msvcrt.locking`, WSL-ben `fcntl.flock`), amelyet a rendszer összeomláskor magától felold (DT-F188d).
+   - Az elavult zárat csak egy átvevő törölheti: az átvételt egy OS-szintű zár védi (`~/.pardes/ellenorzes.zar.atvetel`, Windowson `msvcrt.locking`, WSL-ben `fcntl.flock`), amelyet a rendszer összeomláskor magától felold (DT723).
    - A GitHub-futás (`GITHUB_ACTIONS`) nem vesz zárat.
 
 ## Generátor-tények
