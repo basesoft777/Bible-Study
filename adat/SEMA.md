@@ -2191,8 +2191,9 @@ Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **t
 
 **Kézi tábla, nem generált** (a 2.28 BDB-aranyminta párja). Egy sor = a vak mérés egy mintasora: egy ÚSZ-hivatkozás a
 `thayer_vers_jelentes.tsv`-ből (2.35; `strong` + `sorszam`). A minta eljárása, a kapu és a mutatók a mérés előtt rögzítve:
-`naplok/F186_jelentes.md` 1. (rétegzett véletlen 200 sor, seedenként; két független vak Opus-kitöltő, A és B, akik a gépi
-kimenetet nem látták; az eltérésekről a végrehajtó ítél a forrásszöveg alapján). Az első két sor `#` megjegyzés, a harmadik a
+`naplok/F186_jelentes.md` 1. (rétegzett véletlen 200 sor, seedenként; két független Opus-kitöltő, A és B, akik a gépi
+kimenetet nem látták — a seed-202 és a seed-203 kitöltői viszont a gépi bekezdés-vágást igen, ezért e két
+seed vaksága **korlátozott** (ELLENOR_F186 1c; a mérvadó, valóban vak mérés a seed-204, a nyers forrásbekezdéseken); az eltérésekről a végrehajtó ítél a forrásszöveg alapján). Az első két sor `#` megjegyzés, a harmadik a
 fejléc. Olvasás `split('\t')`. **Mérési adat, nem study-adat.** A `teszt_vers_jelentes.py` `Aranyminta` osztálya a mai táblát
 veti össze vele (hibaosztályonként).
 
@@ -2209,7 +2210,7 @@ veti össze vele (hibaosztályonként).
 | `osztaly` | a hiba osztálya (`K1` bekezdésen belüli fej, `K1b`/`K1c`/`K1d` alesetei; `K2` hamis bekezdés-eleji fej, `K2b`/`K2c`/`K2d` alesetei; `K3` záró szinonima-jegyzet; `K4` forrás-torzulás; `K5` görög α latin „a.”-ként; `naplok/F186_jelentes.md` 3., 5., 9.) |
 | `indoklas` | az ítélet forrásidézettel |
 | `kitolto_modell` | a két kitöltő tényleges modellje (`A=…; B=…`) |
-| `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>` |
+| `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>`; a seed-202/203 sorain „két korlátozottan vak Opus-kitöltő (… a gépi bekezdés-vágást látták …)” |
 
 ## 3. Integritási szabályok
 
