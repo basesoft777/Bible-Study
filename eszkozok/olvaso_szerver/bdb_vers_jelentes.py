@@ -102,6 +102,14 @@ JAVITAS = os.path.join(REPO, 'adat', 'bdb_forras_javitas.tsv')
 # nagybetűs és a zárójeles szint nélkül nem azonos, és egyik sem előtagja a másiknak); (c) a hely egy szakasz első 3 karakterén
 # belül vagy egy sorbelső fej előtt 3 karakteren belül áll (`jp_hatar`). Különben `biztos`.
 SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
+# F185 (DT-F185g, orkesztrátori döntés, 2026-11-10): tételes jelentéspont-felülírás ott, ahol a forrással igazoltan a tábla téved
+# (a hibaosztály: N-F185d). Kulcs: (Strong, poz); érték: (szakasz, rész, útvonal, indok idézettel). A sor okkódja `jp_kezi`, a
+# bizonyossága `biztos` (a pont kézzel, a forrás idézetével igazolt). Csak itt; a TSV-t kézzel nem szerkesztjük.
+JELENTESPONT_KEZI = {
+    ('H7585', 2802): ('', '', '-/2/b', 'DictBDB H7585: „… Ezek 31:15-16, 17; 32:21, 27 b. righteous shall not be aban-doned, ׳לשׁ '
+                                       'Psa 16:10 (|| שַׁחַת q. v. …)” — a „b.” a sor közepén, félkövér nélkül, „27” után áll (a '
+                                       'sorbelső fej szabálya írásjelet vár), a hely a 2.b-ben'),
+}
 HB_SZO = re.compile(r'[\u0590-\u05ff\ufb1d-\ufb4f][\u0590-\u05ff\ufb1d-\ufb4f\u05be]*')
 
 
@@ -390,6 +398,10 @@ def general(ts, strongok=None):
                 ketes.append('jp_tanu_elter')
             elif hatar:
                 ketes.append('jp_hatar')
+            kezi = JELENTESPONT_KEZI.get((strong, h['poz']))
+            if kezi:
+                szak, resz, ut = kezi[:3]
+                ketes = []
             cimke = szak + (B.RESZ_SEP + resz if resz else '')
             ok = h['okkod']
             mt = kar = ''
@@ -426,6 +438,8 @@ def general(ts, strongok=None):
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
             if h.get('forras_javitas'):
                 ok = ok + ',forras_javitas' if ok else 'forras_javitas'
+            if kezi:
+                ok = ok + ',jp_kezi' if ok else 'jp_kezi'
             szurt = h['okkod'] in SZURENDO
             if h['konyv'] and not szurt:
                 if h['konyv'] in osz:
@@ -472,8 +486,8 @@ def kiir(sorok, modhash, ts):
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
            'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
            '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + '
-           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)) + adat/bdb_szakaszok.tsv@%s (a jelentéspont forrása, DT-F185a); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (DT-F185a, DT-F185b; bizonyosság: P2)'
+           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)) + adat/bdb_szakaszok.tsv@%s (a jelentéspont forrása: a szakasztábla, F185); '
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (a szakasztábla és a sorbelső fejek; bizonyosság: P2)'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), fajl_hash(SZAKASZOK), modhash),
            '\t'.join(FEJ)]

@@ -595,8 +595,8 @@ class CsoportOszlop(unittest.TestCase):
     """F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a 2.29 két új oszlopa; a régi oszlopok és az `utvonal` változatlan."""
     # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
     # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő.
-    # F185 (DT-F185a: a jelentéspont a szakasztáblából; naplok/F185_jelentes.md): a szakasz/rész/útvonal változott, új érték
-    REGI_OSZLOPOK_SHA256 = '991cc2d40acc0b3ea92b9a13cdd1b80df41bcf681d418a7048c3c8b26b19b174'
+    # F185 (a jelentéspont a szakasztáblából, a H7585 tételes felülírásával; naplok/F185_jelentes.md): új érték
+    REGI_OSZLOPOK_SHA256 = '35bb8019983e1e41a484750e38ffab0ff8c89e9bf3a3ebd2d5e394c2852e3ddf'
 
     @classmethod
     def setUpClass(cls):
