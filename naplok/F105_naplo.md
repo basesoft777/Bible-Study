@@ -172,13 +172,17 @@ a Macula szókészletében):
 | Változat | jó | rossz | nem dönt |
 |---|---:|---:|---:|
 | 1. (magánhangzó-pont szerint előtte/utána; elvetve) | 2 189 | 483 (a „mögötte” ágon 399, ott 33 jó) | 1 849 |
-| **végleges** (előtte, kivéve végbetű / token vége) | **2 555** | **113** | 1 584 |
+| 2. (előtte, kivéve végbetű / token vége; az F105.15 előtt) | 2 555 | 113 | 1 584 |
+| 3. (+ `_szotag_zaro`, `אֶתֿכֹּל`; az F105.19 előtt) | 2 556 | 110 | 1 577 |
+| **végleges** (+ néma álef, `בָּאֿזִקִּים`; F105.19) | **2 555** | **110** | **1 577** |
 
-A 113 „rossz” felső becslés: benne a pe/mem-forráshiba (`אֶת־מִּיהָ` = פִּיהָ) és a ritka / csonka szó (`אֶל־הַחָם`) zaja;
-valódi hiba a nem maqqéf-jelölő rafe (`אַרְכָֿה`, `לאֿהרן`) és a szón belüli szóvégi rafe (`אֶתֿכֹּל` → `אֶ־תכֹּל`). A token
+A „rossz” felső becslés (a 2. változatnál 113): benne a pe/mem-forráshiba (`אֶת־מִּיהָ` = פִּיהָ) és a ritka / csonka szó (`אֶל־הַחָם`) zaja;
+valódi hiba a nem maqqéf-jelölő rafe (`אַרְכָֿה`, `לאֿהרן`) és — a 2. változatban — a szón belüli szóvégi rafe (`אֶתֿכֹּל` →
+`אֶ־תכֹּל`; az F105.15 javította). A token
 végi rafe (`בַּתֿ צִיּוֺן` → `בַּת־צִיּוֺן`) a szomszéd szóval kapcsolódik; ezt a szómérés nem látja (a „változatlan” 1 631-ben).
 
-*Javítókör (ELLENOR_F105 3., 2026-11-10):* az ismert hibás kimenet (`אֶתֿכֹּל` → `אֶ־תכֹּל`) javítva. Kivétel a szabályban (`_szotag_zaro`): ha a rafét hordozó betűnek nincs magánhangzó-pontja, az előtte állónak van (a sva nem számít, a ו / י mater-betű nem), a betű az első szó szótagját zárja → a szóhatár utána (`אֶת־כֹּל`, `תִּתֶּן־דֹּפִי`); ha pedig ilyenkor mater-betű (ו / י) követi, a rafe szón belüli (`חֲטֻבֿוֺת`, `מִמֵּנֿוּ`, `בְּחֻקֿוֺ`) → nem bont, marad. Mérés ugyanúgy: jó 2 556, rossz 110 (előtte 2 555 / 113), nem dönt 1 577. Egy első próbaváltozat (sva is számít, mater-követés nélkül) 22 esetből csak 2-t javított, és az `אַךְטֿוֺב`-ot elrontotta: elvetve. Ismert maradék: `בָּאֿזִקִּים` → `בָּא־זִקִּים` (egy szó), `וּלְחֻמֿם`. A szabály kézi ellenőrzése: vak minta (`naplok/F105_vak_maqqef.py`, a kimenet a repón kívül).
+*Javítókör (ELLENOR_F105 3., 2026-11-10):* az ismert hibás kimenet (`אֶתֿכֹּל` → `אֶ־תכֹּל`) javítva. Kivétel a szabályban (`_szotag_zaro`): ha a rafét hordozó betűnek nincs magánhangzó-pontja, az előtte állónak van (a sva nem számít, a ו / י mater-betű nem), a betű az első szó szótagját zárja → a szóhatár utána (`אֶת־כֹּל`, `תִּתֶּן־דֹּפִי`); ha pedig ilyenkor mater-betű (ו / י) követi, a rafe szón belüli (`חֲטֻבֿוֺת`, `מִמֵּנֿוּ`, `בְּחֻקֿוֺ`) → nem bont, marad. Mérés ugyanúgy: jó 2 556, rossz 110 (előtte 2 555 / 113), nem dönt 1 577. Egy első próbaváltozat (sva is számít, mater-követés nélkül) 22 esetből csak 2-t javított, és az `אַךְטֿוֺב`-ot elrontotta: elvetve. A `בָּאֿזִקִּים` (az F105.15 után még `בָּא־זִקִּים`) az F105.19-ben javult (8. szakasz). Ismert maradék: `וּלְחֻמֿם`, és a Préd 4:2
+`עֲדֶ֫נָֿה` (8. szakasz). A szabály kézi ellenőrzése: vak minta (`naplok/F105_vak_maqqef.py`, a kimenet a repón kívül).
 
 **6.3 Gépi egyezés a hivatkozott versen, előtte / utána** (`naplok/F105_meres.py@a7c99e9b58d1`; a maqqéf a mérésben is szóhatár; az „előtte” oszlop az F105.1-es futásé, akkor még nem volt maqqéf; proveniencia: scope=a 29 469 futam | forras=naplok/F105_meres.py, adat/bdb_forras_javitas.tsv (F105.7) | ts=2026-11-10)
 
