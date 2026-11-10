@@ -1,8 +1,9 @@
 # F105 — a BDB héber idézeteinek szórendje: mérés, gépi egyezés, 50-es minta (FELADATOK #105)
 
 *2026-11-10. Modell: `claude-opus-5-5`. Ág: `claude/f105-bdb-szorend`. Az 1–5. szakasz mérés és minta (akkor az adat és
-a megjelenítés még nem változott); a 6. szakasz a megvalósítás (a javítótábla és a megjelenítés változott); a 7. a vak minta
-eredménye. A forrás (`BDB_teljes_unabridged.tsv`) és a `lexikon/` egyik szakaszban sem változott. Mérőszkript: `naplok/F105_meres.py` (kb. 10 mp), minta: `naplok/F105_minta.py`.*
+a megjelenítés még nem változott); a 6. szakasz a megvalósítás (a javítótábla és a megjelenítés változott); a 7. és a 8. a két
+vak minta eredménye; a 9. a lexikonlapok újragenerálása: az öt lap az F105.21-ben újragenerálódott (orkesztrátori döntés,
+ELLENOR_F105 2.; 17 sor). A forrás (`BDB_teljes_unabridged.tsv`) egyik szakaszban sem változott. Mérőszkript: `naplok/F105_meres.py` (kb. 10 mp), minta: `naplok/F105_minta.py`.*
 
 *proveniencia: scope=BDB_teljes_unabridged.tsv minden szócikkének többszavas héber futama (29 469) | forras=naplok/F105_meres.py@49a9f39bea4a;
 konkordancia/BDB_teljes_unabridged.tsv@d4b15b2faea6, konkordancia/TAHOT_kivonat.tsv@4c876f570aad, adat/bdb_vers_jelentes.tsv@17a27594fd5e,
@@ -137,7 +138,7 @@ a gépi ellenőrzés a TAHOT-on fut). A „kézi ítélet” (helyes / rossz / n
 ## 6. Megvalósítás (DT-F105a (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10)
 
 *A megvalósítás (F105.7–F105.9) a vak minta eredménye előtt készült; a minta eredménye a 7. szakaszban áll (két kitöltő,
-50/50). A lexikonlapok ebben a szakaszban nem generálódtak újra.*
+50/50). A lexikonlapok abban a szakaszban (F105.7–F105.9) nem generálódtak újra; az újragenerálás: 9. szakasz.*
 
 **6.1 A javítótábla** (`eszkozok/bdb_jelolt/forras_javit.py` + `heber_sorrend.py`; újragenerálás:
 `naplok/F105_tabla_osszevet.py`, írás előtti összevetéssel; a generátor `--ellenoriz` módja bájtra azonosnak méri).
@@ -266,3 +267,13 @@ végződik, `וּבָאתָלְֿךָ`). **Maradék ismert hiba.** *A minta terv
 rafe, a szabály nem bont (`_szotag_zaro`). Eseti összevetés a régi kimenettel (minden rafés szó): egyetlen szó változott, maga a
 `בָּאֿזִקִּים`; a Macula-próba ezt „jónak” számolta (a בא és a זקים külön is szó: mérési műtermék), ezért a mért szám jó 2 555,
 rossz 110, nem dönt 1 577 (előtte 2 556 / 110 / 1 577).
+
+## 9. A lexikonlapok újragenerálása (ELLENOR_F105 2.; orkesztrátori döntés, 2026-11-10)
+
+Az E28 kapu öt migrált nézetet jelzett, amelyek a commitolt alakjuktól a #105 megjelenítési változása miatt tértek el. Előbb
+repón kívüli generálás és soronkénti diff (17 sor: ISTENTISZT-001 3, ALVIL-001 1, TEREMT-002 2, ANTROP-001 5, HAMART-001 6):
+16 sor csak a BDB-apparátus héber szórendjét / maqqéfját érinti, a HAMART-001 1616. sorában a kiejtés-átírás csoportosítása is
+változik (há, mené → mené há); DT/N-hivatkozás, szám, munkaszó nem változott. Az orkesztrátor döntése után az F105.21
+újragenerálta az öt lapot (`general.py --cel lexikon --id <ID> --ir`, a lap saját `PARDES_DATUM`-ával); a diff pontosan ez a 17
+sor, a lapok bájtra azonosak a repón kívüli generálással, és az E28 0 találatot ad. Közben talált két BDB-forráshiba (OCR):
+N-F105b (H0127, `פְּנֵי`), N-F105c (`עָפָר`), mindkettő a #185 P4-é.
