@@ -182,6 +182,20 @@ A kör alapja `2d1baf31` (az ELLENOR_F188_2 rögzítése; a B ág ebben a #674-e
 
 **Tesztek ebben a körben** (célzott): `test_zar.py` 17 OK; `teszt_feladatok.py` `SzintTest` 10 és `EszkalacioTest` 3 OK; `feladatok.py ellenoriz` 0 hiba; a `futtat.py` PR-módban, `[ELLENŐRZŐ]` címmel, a merge-base-hez (`99763405`) mérve: kilépési kód 0, HIBA nincs; csak jelentés (E25: 3, E27: 43, E30: 7, E34: 41). `scope=99763405..940927d2 | forras=futtat.py | ts=2026-11-10`. Megjegyzés: az `origin/main..HEAD` kétpontos diffje 11 hamis E5-HIBA-t adott, mert a main közben 22 commitot lépett (a #104 is bekerült); a CI a merge-base-t használja.
 
+## Korlát fölötti javítás (engedéllyel) (`naplok/ELLENOR_F188_3.md`, 2 ELTÉRÉS-tétel)
+
+A javítókör-korlát (2/2) betelt; a korlát fölött, engedéllyel javítva: a felhasználó a sessionök döntéseit az orkesztrátorra bízta, és ő ezt a javítást engedélyezte (2026-11-10). A döntések: DT-F188d = (b)+(c), DT-F188e = (a). Alap: `85eae013`. Csak célzott tesztek futottak.
+
+1. **Zár: OS-szintű átvételi zár** (F188.20; ELLENOR_F188_3 1.; DT-F188d (b)+(c)).
+   - Az átvételi zár az állandó `<ut>.atvetel` fájlon álló OS-zár: Windowson `msvcrt.locking`, POSIX/WSL-en `fcntl.flock`, nyitott fájlleíróval. Összeomláskor a rendszer magától feloldja, ezért az elavult átvételi zár és a 60 s-os mtime-törlés megszűnt. Ezzel megszűnt a 2/2-es kör maradék kockázata is: két tartó nem kerülhet a kritikus szakaszba.
+   - Az OS-zár alatt marad az újraolvasás, az elavult fő zár törlése, és kilépéskor a saját zár törlése.
+   - A pörgés helyére rövid alvás került (0,02 s). Ha a kilépő 60 s alatt sem kapja meg az OS-zárat, a saját zárát nem törli; a halott pid miatt a következő váró elavultként átveszi.
+   - Teszt: `test_zar.py`, 19 teszt. Az OS-zár kizárja a második átvevőt. Az átvételi zár birtokában `os._exit`-tel kilépő alfolyamat után a zár felszabadul. A váró nem pörög. A korábbi versenytesztek is zöldek. Háromszor futtatva zöld.
+2. **T5: az olvasói kód `naplok/`-bemenetei teljesek** (F188.21; ELLENOR_F188_3 2.; DT-F188e (a)).
+   - Gépi gyűjtés egy helyen (`feladatok.py` `olvasoi_naplok()`): a `SZINT_OLVASOI_*` fájlok `naplok/` útvonal-literáljai. Ma 16 minta, köztük a `naplok/KAROLI_KH_EPSEG_jelentes.md`.
+   - Teszt: ez a fájl teljes, a `naplok/F188_jelentes.md` könnyített.
+   - Korlát: a literál nélkül, futásidőben összerakott utat a gyűjtés nem látja.
+
 ## Folytatás a #104 merge-e után
 
 1. A T2 CI-szabállyá emelése és a szabály szövege a SEMA-ban, egy commitban (N-F188a): `SZINT`, `SZABALY_LEIRAS`, `SZABALYOK_FUGGVENYEI`, `szabalyok.py --kapulista --ir`.
