@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: megallt
 ag: claude/f105-bdb-szorend
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: "Független ellenőrzés (fuggetlen-ellenor), majd draft PR. A ⛔ 50-es minta: két vak Opus-kitöltő, 50/50 egyezés, 95% Wilson 0,929–1,000 (naplok/F105_naplo.md 7.); a DT-F105a (a) megvalósítva (F105.7–F105.9)"
+kovetkezo: "Te: /elteres F105 (ELLENOR_F105: 7 eltérés; HIBA: E32 a DT-F105a helyőrző a forras_javit.py literáljában és 1 846 táblasor provenienciájában; E28: 5 lexikon-nézet eltér az újragenerálttól, ebből az ISTENTISZT-001 bizonyosan az F105 miatt; a rafe-maqqéf szabály kézi minta nélkül élesedett)"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/bdb_jelolt/heber_sorrend.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_rovidites.py, adat/bdb_forras_javitas.tsv, eszkozok/teszt_bdb_rovidites.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv (csak a fejléc: a javítótábla hash-e), adat/SEMA.md, naplok/F105_naplo.md, naplok/F105_tabla_osszevet.py, naplok/F105_maqqef_meres.py, naplok/F105_meres.py, naplok/F105_minta.py, naplok/F105_vak.py, naplok/F105_utkozes.tsv, dontesek/uj/f105-bdb-szorend.md]
 fugg: [99, 102, 103, 104]
