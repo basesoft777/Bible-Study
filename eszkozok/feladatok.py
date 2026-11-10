@@ -1351,7 +1351,7 @@ def szint_teljes_ok(ut):
             any(fnmatch.fnmatchcase(ut, m) for m in SZINT_OLVASOI_MINTA):
         return 'olvasói kimenetet állít elő: %s' % ut
     if ut.startswith('naplok/') and any(fnmatch.fnmatchcase(ut, m) for m in olvasoi_naplok()):
-        return 'olvasói kód bemenete (DT-F188e): %s' % ut
+        return 'olvasói kód bemenete: %s' % ut
     if any(c in ut for c in '*?['):
         return 'glob az `ir`-ben: %s' % ut
     if ut.endswith('/'):
