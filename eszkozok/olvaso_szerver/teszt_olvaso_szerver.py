@@ -1607,8 +1607,9 @@ def _wilson(k, n, z=1.959963984540054):
 
 
 class TestF187ThayerKartya(unittest.TestCase):
-    """F187: a szó-lap Thayer-része két rétegű (olvasói jelentésfa glosszával, „Ebben a versben”, mért pontosság; a teljes
-    magyar szöveg csukva), és csak az érvényes sort mutatja (N-F186g: `elavult` és `sz<n>~<m>` tagsor nem)."""
+    """F187: a szó-lap Thayer-része két rétegű (olvasói jelentésfa a `thayer_szakaszok`-ból, a lap glossza-szabályával és a
+    jóváhagyott címkével; „Ebben a versben”; mért pontosság; a teljes magyar szöveg csukva), a fordítás nélküli pont
+    „(fordításra vár)” jelöléssel áll, és csak az érvényes sor látszik (N-F186g: `elavult` és `sz<n>~<m>` tagsor nem)."""
 
     def _con(self):
         con = sqlite3.connect(':memory:')
@@ -1616,16 +1617,21 @@ class TestF187ThayerKartya(unittest.TestCase):
                     'forras_hash TEXT, forditas_hu TEXT, allapot TEXT, modell TEXT, datum TEXT, terminologia_verzio TEXT, '
                     'megjegyzes TEXT)')
         for jsz, hu, allapot in (('sz1', 'átkozott, utálatos: Gal 3:13', 'sonnet'),
-                                 ('sz2', '1. megrontani (latin): Jel 11:18', 'sonnet'),
-                                 ('sz3', 'RÉGI elavult szöveg', 'elavult'),
-                                 ('sz2~4', 'TAGSOR szöveg', 'elavult')):
+                                 ('sz2', '1. rosszabbra változtatni, megrontani: Jel 11:18', 'sonnet'),
+                                 ('sz3', '2. elpusztítani (latin perdere): Jel 8:9', 'sonnet'),
+                                 ('sz4', 'RÉGI elavult szöveg', 'elavult'),
+                                 ('sz3~4', 'TAGSOR szöveg', 'elavult')):
             con.execute('INSERT INTO forditasok VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
-                        ('Thayer', 'G9999', 'G9999', jsz, 'forditas_hu', 'h', hu, allapot, 'm', 'd', 'v', ''))
+                        ('Thayer', 'G1311', 'G1311', jsz, 'forditas_hu', 'h', hu, allapot, 'm', 'd', 'v', ''))
         con.execute('CREATE TABLE thayer_szakaszok (strong TEXT, sorszam TEXT, utvonal TEXT, jel TEXT)')
         con.executemany('INSERT INTO thayer_szakaszok VALUES (?,?,?,?)',
-                        [('G9999', '1', 'fej', ''), ('G9999', '2', '-/1/-', '1.'), ('G9999', '3', '-/2/-', '2.')])
+                        [('G1311', '0', 'cim', ''), ('G1311', '1', 'fej', ''), ('G1311', '2', '-/1/-', '1.'),
+                         ('G1311', '3', '-/2/-', '2.'), ('G1311', '4', '-/2/a', 'a.')])
+        con.execute('CREATE TABLE szotar_szakasz_cimke (szotar TEXT, strong TEXT, bdb_id TEXT, szakasz TEXT, '
+                    'lexikon_jelentes_szam TEXT, cimke_hu TEXT)')
+        con.execute("INSERT INTO szotar_szakasz_cimke VALUES ('Thayer', 'G1311', '', '-/1/-', '1', 'megront, rosszabbá tesz')")
         con.execute('CREATE TABLE thayer_vers_jelentes (strong TEXT, sorszam TEXT, szakasz TEXT, karoli_vers TEXT, utvonal TEXT)')
-        con.execute("INSERT INTO thayer_vers_jelentes VALUES ('G9999', '1', '2', 'Jel 11:18', '-/1')")
+        con.execute("INSERT INTO thayer_vers_jelentes VALUES ('G1311', '1', '2', 'Jel 11:18', '-/1')")
         return con
 
     def _html(self, ig=None):
@@ -1634,33 +1640,43 @@ class TestF187ThayerKartya(unittest.TestCase):
         class K:
             pass
         k = K()
-        k.con, k.strong, k.ig = con, 'G9999', ig
-        return str(blokkok._r_magyar_gorog(q.magyar_gorog(con, 'G9999'), k))
+        k.con, k.strong, k.ig = con, 'G1311', ig
+        return str(blokkok._r_magyar_gorog(q.magyar_gorog(con, 'G1311'), k))
 
     def test_csak_ervenyes_sor(self):
-        sorok = q.magyar_gorog(self._con(), 'G9999')
-        self.assertEqual([r[1] for r in sorok], ['sz1', 'sz2'])
+        sorok = q.magyar_gorog(self._con(), 'G1311')
+        self.assertEqual([r[1] for r in sorok], ['sz1', 'sz2', 'sz3'])
         h = self._html()
         self.assertNotIn('RÉGI', h)
         self.assertNotIn('TAGSOR', h)
-        self.assertNotIn('sz2~4', h)
+        self.assertNotIn('sz3~4', h)
 
-    def test_ket_reteg(self):
+    def test_ket_reteg_a_lap_glossza_szabalyaval(self):
         h = self._html()
         olvasoi, app = h.split('<details>', 1)
         self.assertIn('A jelentések rendje a Thayer szerint', olvasoi)
         self.assertIn('a szócikk eleje — átkozott, utálatos', olvasoi)
-        self.assertIn('1 — megrontani', olvasoi)
+        # a jóváhagyott címke a lappal azonosan (adat/szotar_szakasz_cimke.tsv: Thayer G1311 -/1/-)
+        self.assertIn('1 — megront, rosszabbá tesz', olvasoi)
+        self.assertIn('2 — elpusztítani', olvasoi)
         self.assertNotIn('Gal 3:13', olvasoi)
         self.assertNotIn('sz1', olvasoi)                      # munkaszó (sorszám) nincs az olvasói rétegben
         self.assertIn('Szótári apparátus', app)
         self.assertIn('Gal 3:13', app)
         self.assertIn(blokkok.THAYER_MERT_PONTOSSAG.split(':')[0], olvasoi)
+        # egy szabály, egy hely: a szó-lap a közös modul glossza-szabályát hívja
+        forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
+        self.assertIn('szotari_glossza.thayer_glossza(', forras)
+        self.assertNotIn('def _th_glossza', forras)
+
+    def test_forditas_nelkuli_pont_jelolve(self):
+        olvasoi = self._html().split('<details>', 1)[0]
+        self.assertIn('2.a — <i>(fordításra vár)</i>', olvasoi)
 
     def test_ebben_a_versben(self):
         h = self._html('Jel 11:18')
         self.assertIn('Ebben a versben: Jel 11:18', h)
-        self.assertIn('A Thayer itt idézi: 1 — megrontani', h)
+        self.assertIn('A Thayer itt idézi: 1 — megront, rosszabbá tesz', h)
         self.assertIn('A Thayer ezt a verset nem idézi', self._html('Jel 1:1'))
 
     def test_thayer_pontossag_egy_forrasbol(self):

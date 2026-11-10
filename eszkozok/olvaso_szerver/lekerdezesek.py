@@ -752,12 +752,23 @@ def magyar_gorog(con, g):
                        (g,)).fetchall()
 
 
-def thayer_szakasz_jelek(con, g):
-    """F187: {sorszam: (utvonal, jel)} a Thayer-szakasztáblából (`adat/thayer_szakaszok.tsv`, SEMA 2.34); {} , ha a tábla
-    hiányzik (régebbi adatbázis)."""
+def thayer_szakasz_sorok(con, g):
+    """F187: [(sorszam, utvonal, jel)] a Thayer-szakasztáblából (`adat/thayer_szakaszok.tsv`, SEMA 2.34), sorszám szerint, a
+    `cim` sor nélkül; [], ha a tábla hiányzik (régebbi adatbázis)."""
     try:
-        return {str(s): (u or '', j or '') for s, u, j in
-                con.execute('SELECT sorszam, utvonal, jel FROM thayer_szakaszok WHERE strong=?', (g,))}
+        return [(str(s), u or '', j or '') for s, u, j in con.execute(
+            "SELECT sorszam, utvonal, jel FROM thayer_szakaszok WHERE strong=? AND utvonal <> 'cim' "
+            "ORDER BY CAST(sorszam AS INTEGER)", (g,))]
+    except sqlite3.OperationalError:
+        return []
+
+
+def thayer_cimkek(con, g):
+    """F187: {utvonal: cimke_hu} a jóváhagyott szakaszcímkékből (`adat/szotar_szakasz_cimke.tsv`, Thayer); {}, ha a tábla
+    hiányzik."""
+    try:
+        return {sz: c for sz, c in con.execute(
+            "SELECT szakasz, cimke_hu FROM szotar_szakasz_cimke WHERE szotar='Thayer' AND strong=? AND cimke_hu <> ''", (g,))}
     except sqlite3.OperationalError:
         return {}
 

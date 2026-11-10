@@ -47,6 +47,10 @@ import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasó
 import olvasoi_utofeldolg as OU  # az olvasói szöveg egységesítése a kész lapon (olvasói kapu, 2026-11-02)
 import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
 import bdb_vj_szabaly as VJ  # a 2.29 sorainak minősítése, közös az olvasó-szerverrel (DT-F104d/e)
+# F187: a szótári glossza-szabály (a 4.2 kártyája és a szó-lap közös szabálya, egy hely)
+from szotari_glossza import (  # noqa: E402,F401
+    jelolo_levag, _GOROG_BETU_RX, _KLASSZIKUS, _zarojel_nelkul, _THAYER_META, thayer_fej_glossza, thayer_glossza,
+    thayer_csak_alak, _torzs_norm, vegyes_cim_nelkul, _GLOSSZA_VAG, olvasoi_glossza, _ALAKTANI_KEZDET)
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -3246,19 +3250,6 @@ def _elso_tagmondat(szoveg, hatar=90):
     return s.strip() or EM_DASH
 
 
-def jelolo_levag(szoveg, jel):
-    """A szótári szöveg elejéről a saját tagolási jelét (`3`, `2. a.`, `c.`) levágja, ha az a címke
-    `jel`-ének része: a kibontott szakaszon a jel a címkében már áll, az idézetben nem ismétlődik.
-    A betűjelet csak ponttal vágja (a névelő `a` így nem jel); más kezdet változatlan marad."""
-    jelek = set(t for t in re.split(r'[.\s]+', jel or '') if re.fullmatch(r'\d+|[a-z]', t))
-    s = szoveg or ''
-    while True:
-        m = re.match(r'\s*(\d+)\.?\s+|\s*([a-z])\.\s+', s)
-        if not m or (m.group(1) or m.group(2)) not in jelek or not s[m.end():].strip():
-            return s
-        s = s[m.end():]
-
-
 def _vazlat_sor(jel, cimke, szoveg):
     return '- `%s` — %s' % (jel, cimke if cimke else _elso_tagmondat(szoveg))
 
@@ -3327,62 +3318,6 @@ UJ_GERINC_BEVEZETO = {
 
 # F187 (DT-F104b Thayer-ága): a vers -> jelentéspont hozzárendelés mért pontossága a lap bevezetőjében nem áll (a szó-lapon
 # áll, `olvaso_szerver/konfig/thayer_pontossag.toml`); a lapon csak a jelentésfa és a helyek.
-_GOROG_BETU_RX = re.compile('[Ͱ-Ͽἀ-῿]')
-_KLASSZIKUS = re.compile(r'(?i)\b(?:Plat[óo]n|Xenoph[óo]n|Arisztotel[ée]sz|Aristotle|Aeschylus|Aiszkh[üu]losz|Euripid[ée]sz?|'
-                         r'H[ée]rodotosz|Herodotus|Hom[ée]rosz|Plutarkhosz|Plutarch|Pol[üy]bi(?:osz|us)|Josephus|Phil[óo]n?|'
-                         r'Thuk[üy]did[ée]sz|Thucydides|Diodorus|Lukianosz|Lucian|Szophokl[ée]sz|Sophocles|Pindarosz|'
-                         r'D[ée]mosthen[ée]sz|Isokrat[ée]sz|Aelian|Dionysius|mások)\b')
-
-
-def _zarojel_nelkul(s):
-    """A (beágyazott) zárójeles részek elhagyása."""
-    ki, mely = [], 0
-    for c in s or '':
-        if c == '(':
-            mely += 1
-        elif c == ')':
-            mely = max(0, mely - 1)
-        elif not mely:
-            ki.append(c)
-    return ''.join(ki)
-
-
-_THAYER_META = re.compile(r'(?i)Septuaginta|használ|\bidő\b|aoriszt|alakban|szenvedő|melléknévi igenév|rokon|óta\b|kezdve|'
-                          r'írásokban|\bvö\.|\bl\.\s|nőnemű|hímnemű|semlegesnemű|főnév|ige\b|^\s*csak\b')
-
-
-def thayer_fej_glossza(hu):
-    """A Thayer-szócikk fejének magyar meghatározása: a zárójelek nélküli szöveg „:” és „;” határolta első olyan része, amelyben
-    nincs görög vagy héber betű, igehely és nyelvtani/forrásmegjegyzés („átkozott, utálatos, … Isten átka alatt álló”). None,
-    ha a fej csak alakot és forrást közöl."""
-    for resz in re.split(r'[:;]', _zarojel_nelkul(hu)):
-        r = resz.strip(' ,.—–-')
-        if (not r or _GOROG_BETU_RX.search(r) or re.search('[֐-׿]', r) or re.search(r'\d+:\d+|\d', r)
-                or _THAYER_META.search(r) or _KLASSZIKUS.search(r)):
-            continue
-        g = olvasoi_glossza('', '', r)
-        if g:
-            return g
-    return None
-
-
-def thayer_glossza(jel, cimke, hu):
-    """A Thayer-szakasz olvasói meghatározása: a jóváhagyott címke, ennek híján a magyar szöveg első tagmondata (mint a
-    BDB-nél), a görög szó előtt elvágva."""
-    g = olvasoi_glossza(jel, cimke, hu)
-    if g and not cimke:
-        m = _GOROG_BETU_RX.search(g)
-        if m:
-            g = g[:m.start()].strip(' ,;:—–-') or None
-            g = re.sub(r'(?:\s+(?:a|az|és|vagy|mint|egy|is|de))+$', '', g) if g else None
-    return g if g and re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', g) else None
-
-
-def thayer_csak_alak(hu):
-    """A meghatározás nélküli Thayer-szakasz kimondott ténye (F187, T5): párhuzamot vagy alakot közöl."""
-    return 'a szótár csak párhuzamot közöl' if _KLASSZIKUS.search(hu or '') else 'a szótár csak alakot közöl'
-
-
 def thayer_hivatkozas_szam(adat, strong):
     """A Thayer-kártya hivatkozásszámai a vers -> jelentés táblából (2.35): {('', a szakasztábla útvonala): sorok száma}
     (a `gerinc_blokk` illesztése szerint: a levágott útvonal a szakasztáblában)."""
@@ -3400,48 +3335,6 @@ def thayer_hivatkozas_szam(adat, strong):
                         db[('', u)] += 1
         cache[strong] = db
     return cache[strong]
-
-
-def _torzs_norm(s):
-    return re.sub(r"[\s'`’ʼ]", '', s or '').lower()
-
-
-def vegyes_cim_nelkul(jel, szoveg):
-    """„Hithpa'el — Hithpael — perfectum …”: a szöveg elején a jel törzsnevének másik írásmódja elmarad (egy alak)."""
-    torzs = (jel or '').split(' ')[0]
-    if not torzs or not torzs[0].isalpha() or len(torzs) < 3:
-        return szoveg or ''
-    m = re.match(r'\s*([^\s—–,;:]+)[\s—–,;:]*', szoveg or '')
-    if m and _torzs_norm(re.sub(r'_\d+$', '', m.group(1))) == _torzs_norm(torzs):
-        return (szoveg or '')[m.end():]
-    return szoveg or ''
-
-
-_GLOSSZA_VAG = re.compile(r'[(\[;:=^]|\s[—–]\s|(?:(?<![\w])[1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\s+)?\d+:\d+|[֐-׿יִ-ﭏ]|\s(?:l\.|vö\.|ld\.|stb\.)(?:\s|$)|\s(?:J|E|P|D)\b')
-
-
-def olvasoi_glossza(jel, cimke, szoveg):
-    """A jelentés rövid magyar meghatározása az olvasói réteghez: a jóváhagyott címke, ennek híján a magyar szöveg
-    első tagmondata az első zárójel, igehely, héber szó, rövidítés vagy hivatkozó szó előtt; None, ha nem marad szó."""
-    if cimke:
-        return vegyes_cim_nelkul(jel, cimke).strip(' ,;—–-') or None
-    s = vegyes_cim_nelkul(jel, jelolo_levag(szoveg or '', jel))
-    s = re.sub(r'_\d+', '', re.sub(r'^\s*(?:(?:\d+|[a-z])\.\s*)+', '', s)).lstrip(' =—–-')
-    m = _GLOSSZA_VAG.search(s)
-    if m:
-        s = s[:m.start()]
-    s = re.sub(r'\s+', ' ', s).strip(' ,.;—–-')
-    s = re.sub(r'(?:\s+(?:a|az|és|vagy|mint|egy|is|de|mind|mindkettő))+$', '', s).rstrip(' ,;—–-')
-    if len(s) > 70:
-        s = s[:70].rsplit(' ', 1)[0].rstrip(' ,;') + '…'
-    # az alakjegyzékkel nyíló szakasz („perfectum …”, „participium …”) első szava nyelvtani alak, nem jelentés
-    if _ALAKTANI_KEZDET.match(s):
-        return None
-    return s if re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', s) else None
-
-
-_ALAKTANI_KEZDET = re.compile(r'(?i)(?:perfectum|imperfectum|participium|infinitivus|imperativus|status|suffixum|többes '
-                              r'szám|egyes szám|hímnemű|nőnemű|jussivus|cohortativus)\b')
 
 
 def fej_glossza(hu):
