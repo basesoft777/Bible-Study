@@ -71,16 +71,16 @@ FAJL = {'DT': 'DONTESEK.md', 'N': 'NYITOTT_FELADATOK.md', 'D': 'FELADATOK.md'}
 _HATAR_E = r'(?<![A-Za-z0-9-])'
 _HATAR_U = r'(?![A-Za-z0-9-])'
 HELYORZO = {
-    k: re.compile(_HATAR_E + k + r'-F(\d+)([a-z]?)' + _HATAR_U)
+    k: re.compile(_HATAR_E + k + r'-F(\d+)([a-z]*)' + _HATAR_U)
     for k in ('DT', 'N', 'D')
 }
-_HELYORZO_BARMELY = re.compile(_HATAR_E + r'(?:DT|N|D)-F\d+[a-z]?' + _HATAR_U)
+_HELYORZO_BARMELY = re.compile(_HATAR_E + r'(?:DT|N|D)-F\d+[a-z]*' + _HATAR_U)
 
 # definicios sor mintak (a sor elejen)
 _DEF = {
-    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]?)\s*\|'),
-    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]?)' + _HATAR_U),
-    'D': re.compile(r'^\|\s*(D-F\d+[a-z]?)\s*\|'),
+    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]*)\s*\|'),
+    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]*)' + _HATAR_U),
+    'D': re.compile(r'^\|\s*(D-F\d+[a-z]*)\s*\|'),
 }
 _SZAM = {
     'DT': re.compile(r'\bDT(\d+)\b'),
