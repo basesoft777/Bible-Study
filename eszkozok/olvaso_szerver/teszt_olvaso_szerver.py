@@ -604,9 +604,10 @@ class TestLapok(unittest.TestCase):
         self.assertIn('Gépi szeletelés:', t)
         self.assertNotIn('(próba)', t)
         self.assertIn('kétes pontjai', t)
-        self.assertIn('94,0%', t)
-        self.assertIn('89,8–96,5%', t)
-        self.assertNotIn('91,5%', t)          # a seed-102 (szeletelő) régi száma
+        # F185 (DT-F185h, a felhasználó döntése): a mért pontosság a dobozban nem áll (az adat a konfigban marad)
+        self.assertNotIn('Mért pontosság', t)
+        self.assertNotIn('94,0%', t)
+        self.assertNotIn('91,5%', t)
 
     def test_bdb_jelentes_cime_es_vazlata(self):
         """A főjelentés címe a szócikk saját szavaiból képződik (gépi): saját szöveg híján az első alpontéból (H0776 אֶרֶץ: 1 „föld”,
@@ -1567,7 +1568,7 @@ class TestF104BdbJeloles(unittest.TestCase):
             b = self.blokk(u)
             doboz = re.search(r'<div class="bdb-ebben">.*?</div>', b, re.S).group(0)
             self.assertIn('Gépi szeletelés:', doboz, u)
-            self.assertIn(blokkok.BDB_MERT_PONTOSSAG, doboz.replace('&#34;', '"'), u)
+            self.assertNotIn('Mért pontosság', doboz, u)          # DT-F185h
 
     def test_pontos_hivatkozasszam(self):
         """A szám a tábla feloldott, szűrt hivatkozásaié (szurt=0, maszoréta vers), csomópontonként és a címszónál."""

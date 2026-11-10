@@ -344,3 +344,15 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 
 **A #182 teendői:** a `betu_javit` kapcsoló (`lexikon_general.BDB_BETU_JAVIT`) bekapcsolása a lapokon a teljes folyamatban (az
 F35 mellé), motívumonként; a `biztos`/`ketes` bontás lapra vitele (2. fázis).
+
+## 12. A mért pontosság az olvasóban (DT-F185h; a felhasználó döntése, 2026-11-10: „semmi helye ott”)
+
+A szólap BDB-blokkjának megjegyzéséből (`blokkok.py`) a mért pontosság kikerült; a megjegyzés: „Gépi szeletelés: … A vers →
+jelentéspont hozzárendelés kétes pontjai „vonatkozhat” jelölést kapnak.” A `BDB_MERT_PONTOSSAG` adat (`konfig/bdb_pontossag.toml`:
+188 / 200, Wilson 89,8–96,5) a kódban és a dokumentációban marad, az olvasó nem jeleníti meg. Egyeztetett eltérés a DT-F185e-től
+(ott a „próba” helyén a mért szám állt). Teszt (`teszt_olvaso_szerver.py`, a munkafa kódjával, WSL): `TestLapok.test_bdb_proba_es_mert_pontossag`,
+`TestF104BdbJeloles`, `TestF104Egysegek` — 14 teszt, OK; a doboz nem tartalmaz pontossági számot.
+
+**Maradt (a javítókör utáni helyi CI szerint, döntésre):** E28 HAMART-001:1687 — a 2.30 H2403 „see 1 above” javítása (N99) a
+lapon a bűnáldozat szövegét a 4.a–c alá tenné (a commitolt lap a régi, hibás helyen hordozza); a lap újragenerálása ebben a
+feladatban tilos. Ez az N99 javításának lapra kerülése, nem új hiba.

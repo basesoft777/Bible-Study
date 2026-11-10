@@ -1453,9 +1453,11 @@ def _r_bdb_apparatus(d, K):
     ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', ('Lefordítva · %s' % d['meta']) if hu else 'Magyar fordítás nincs · az angol eredeti áll')
     if d['alias']:
         ki += _alias_megj(d['alias'])
-    proba = Markup('<p class="megj">%s</p>' % ('Gépi szeletelés: a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, '
+    # F185 (DT-F185h, a felhasználó döntése, 2026-11-10: „semmi helye ott”): a mért pontosság (`BDB_MERT_PONTOSSAG`) a dobozban
+    # nem áll; az adat a `konfig/bdb_pontossag.toml`-ban és a dokumentációban (SEMA, jelentés) marad, a módszertan helyén
+    proba = Markup('<p class="megj">Gépi szeletelés: a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, '
                    'törzsnevek); hibás határ előfordulhat. A szöveg nem változik. A vers → jelentéspont hozzárendelés kétes pontjai '
-                   '„vonatkozhat” jelölést kapnak. %s')) % _pontossag_html()
+                   '„vonatkozhat” jelölést kapnak.</p>')
     ki += _ebben_html(vj, ig, proba) if ig else proba
     talalt = set()
     fej = a['fej']
