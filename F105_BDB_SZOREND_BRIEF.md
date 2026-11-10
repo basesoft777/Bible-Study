@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ag: claude/f105-bdb-szorend
+pr: 678
+lezarva_osszegzes: "A BDB többszavas héber idézeteinek szórendje a DT445 útján (DT-F105a (a)): hivatkozott-vers-próba a javítótáblában (1 778 jelolt_marad → javitva, 68 új, 2 kézi sor), rafe-maqqéf-feloldás a bdb_rovidites-ben; a megjelenítés a hivatkozott verssel 85,2% → 99,8%; két vak minta (szórend 50/50, maqqéf 49/50 = 98%); 5 lexikonlap újragenerálva (DT-F105b, 17 sor); a forrás bájtra változatlan, a kártya kapcsolója kikapcsolva"
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: "Zárás és draft PR (a korlát fölötti kör kész, engedéllyel)"
+kovetkezo: "Lezárva (F105.39; ELLENOR_F105_3 után a korlát fölötti kör engedéllyel); a merge a felhasználóé. Nyitott: N-F105a (alakonkénti csere), N-F105b/c (OCR, #185 P4); az ANTROP-001 a #186-tal ütközhet"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/bdb_jelolt/heber_sorrend.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_rovidites.py, adat/bdb_forras_javitas.tsv, eszkozok/teszt_bdb_rovidites.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv (csak a fejléc: a javítótábla hash-e), adat/SEMA.md, naplok/F105_naplo.md, naplok/F105_tabla_osszevet.py, naplok/F105_maqqef_meres.py, naplok/F105_meres.py, naplok/F105_minta.py, naplok/F105_vak.py, naplok/F105_utkozes.tsv, dontesek/uj/f105-bdb-szorend.md, naplok/F105_vak_minta.md, naplok/F105_vak_kulcs.tsv, naplok/F105_vak_kitolto_1.tsv, naplok/F105_vak_kitolto_2.tsv, naplok/F105_vak_osszevet.py, naplok/F105_vak_maqqef.py, naplok/F105_vak_maqqef_*, nyitott/uj/f105-bdb-szorend.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ALVIL-001_TUDOMANYOS.md, lexikon/TEREMT-002_TUDOMANYOS.md, lexikon/ANTROP-001_TUDOMANYOS.md, lexikon/HAMART-001_TUDOMANYOS.md]
 fugg: [99, 102, 103, 104]
