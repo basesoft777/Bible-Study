@@ -681,6 +681,7 @@ A kapcsolat forrásának olvasói neve; üres, ha nincs rögzítve.
 
 *The reader-facing name of the link’s source; empty when not recorded.*
 
+- `forras_megnevezes` = `a projekt saját mérése és naplója` (en: `the project's own measurement and log`): A sor forrásának megnevezése: a projekt saját mérése és naplója. / Name of the source of the row: the project's own measurement and log.
 - `forras_megnevezes` = `szerkesztői döntés` (en: `editorial decision`): A sor forrásának megnevezése: szerkesztői döntés. / Name of the source of the row: editorial decision.
 
 ### `forras_megnevezes_en`
