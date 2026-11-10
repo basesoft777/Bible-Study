@@ -136,22 +136,22 @@ def tanu_halmaz():
 
 
 def _itel(jeloltek, hibas, s1, s2):
-    """-> (ítélet, szint): L1, majd (ha kétes, és nem töredék) L2."""
+    """-> (ítélet, szint): L1, majd (ha kétes, és nem töredék) L2; a `ketes` szintje az utolsó vizsgált szint."""
     j = {norm1(x) for x in jeloltek} - {norm1(hibas)}
     if not j:
-        return 'ketes', ''
+        return 'ketes', 'L1'
     ji, hi = any(x in s1 for x in j), norm1(hibas) in s1
     if ji != hi:
         return ('javit' if ji else 'marad'), 'L1'
     if toredek(hibas):
-        return 'ketes', ''
+        return 'ketes', 'L1'
     jv = {vaz(x) for x in j} - {vaz(hibas)}
     if not jv:
-        return 'ketes', ''
+        return 'ketes', 'L1'
     ji, hi = any(x in s2 for x in jv), vaz(hibas) in s2
     if ji != hi:
         return ('javit' if ji else 'marad'), 'L2'
-    return 'ketes', ''
+    return 'ketes', 'L2'
 
 
 def belso_itelet(jeloltek, hibas):
@@ -228,7 +228,7 @@ def sefaria_itelet(cache, lemma, strong_szoveg, jeloltek, hibas):
         if legjobb is None or o > legjobb[0]:
             legjobb = (o, tok)
     if legjobb is None or legjobb[0] < 0.25:
-        return 'ketes', ''
+        return 'ketes', 'L0'          # nincs illeszthető BDB-szócikk
     tok = legjobb[1]
     return _itel(jeloltek, hibas, set(tok), set(vaz(t) for t in tok))
 
@@ -243,7 +243,17 @@ def osszesit(belso, kulso):
         return b, '%s:%s:%s' % (BELSO_TANU, bsz, b)
     if k and k != 'ketes':
         return k, '%s:%s:%s' % (SEFARIA_TANU, ksz, k)
-    return 'ketes', '%s:ketes' % BELSO_TANU + ('; %s:ketes' % SEFARIA_TANU if k else '')
+    return 'ketes', '%s:%s:ketes' % (BELSO_TANU, bsz or 'L1') + ('; %s:%s:ketes' % (SEFARIA_TANU, ksz or 'L0') if k else '')
+
+
+def rogzitett_itelet(tanu):
+    """A korábban rögzített `tanu` mező Sefaria-része (szint, ítélet), vagy ('', ''): a gyorsítótár nélküli újragenerálás ezzel
+    tartja meg a Sefaria-ítéletet (SEMA 2.31 `tanu`)."""
+    for t in (tanu or '').split(';'):
+        r = t.strip().split(':')
+        if len(r) == 3 and r[0] == SEFARIA_TANU:
+            return r[2], r[1]
+    return '', ''
 
 
 # ---------------------------------------------------------------- rés/dálet jelöltek

@@ -680,8 +680,13 @@ class Determinizmus(unittest.TestCase):
         ts = elso.split('--ts ')[1].split(' ')[0]
         tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
         tsa = elso.split('--ts-atiras ')[1].split(' ')[0] if '--ts-atiras ' in elso else ts
+        tsv = elso.split('--ts-hivatkozott-vers ')[1].split(' ')[0] if '--ts-hivatkozott-vers ' in elso else ts
+        tst = elso.split('--ts-tanu ')[1].split(' ')[0] if '--ts-tanu ' in elso else ts
+        # F185: a Sefaria-gyorsítótár nélkül (üres útvonal) a rögzített Sefaria-ítéletek maradnak (SEMA 2.31 `tanu`): a tábla
+        # gyorsítótárral és anélkül is bájtra azonos
         r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
-                            '--ts-atiras', tsa, '--ellenoriz'],
+                            '--ts-atiras', tsa, '--ts-hivatkozott-vers', tsv, '--ts-tanu', tst, '--sefaria-cache', '',
+                            '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

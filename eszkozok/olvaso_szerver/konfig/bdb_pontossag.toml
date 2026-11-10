@@ -14,4 +14,4 @@ ci_also = 89.8
 ci_felso = 96.5
 datum = "2026-11-10"
 leiras = "jelentéspont a szakasztábla szerint, 200 véletlen igehely valóban vak ellenőrzéssel"
-proveniencia = "scope=seed-103, véletlen 200 igehely, a szakasztábla hozzárendelése (DT-F185a) | forras=naplok/F185_seed103_osszevet.py (kulcs: naplok/BDB_SZELETELO_M2_minta_seed103_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed103_kitoltott_A.tsv, _B.tsv; két független kéz a nyers forrásbekezdéseken; Wilson 95%; naplok/F185_jelentes.md 8.) | ts=2026-11-10"
+proveniencia = "scope=seed-103, véletlen 200 igehely, a szakasztábla hozzárendelése (F185) | forras=naplok/F185_seed103_osszevet.py (kulcs: naplok/BDB_SZELETELO_M2_minta_seed103_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed103_kitoltott_A.tsv, _B.tsv; két független kéz a nyers forrásbekezdéseken; Wilson 95%; naplok/F185_jelentes.md 8.) | ts=2026-11-10"

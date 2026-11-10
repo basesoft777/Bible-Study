@@ -2,9 +2,9 @@
 
 *FELADATOK #185 · végrehajtó: claude-opus-5-5 · ág: `claude/f185-bdb-jelentespont-97` · 2026-11-10*
 
-**Állapot:** a P1 részben kész, a P2 nem indult. Az orkesztrátor hatókör-módosítása (2026-11-10: egy külső BDB-digitalizáció
-lehet a hozzárendelés forrása, döntés még nincs) szerint a menet tiszta ponton megáll. A P3–P6 nem indult. A seed-103 mintát nem
-húztam ki.
+**Állapot (2026-11-10, a javítókör után):** P1, P2, P4 kész; P3 elmaradt (DT-F185e); P5: a seed-103 vak mérés 188 / 200 (94,0%),
+a `BDB_MERT_PONTOSSAG` erre áll (10.); független ellenőrzés: `naplok/ELLENOR_F185.md`, javítókör: 11.
+*(Történeti, a 2. szakasz idején: „a P1 részben kész, a P2 nem indult … A P3–P6 nem indult. A seed-103 mintát nem húztam ki.”)*
 
 ## 1. P0 — a seed-101/102 beolvasása
 
@@ -94,7 +94,7 @@ BDB-szócikk egy igehely-hivatkozása. Két mutató, külön számmal:
 ### 4.2 A minta
 
 `naplok/F185_minta103.py`: 200 egyszerű véletlen sor a 2.29 összes sorából (`random.Random(103)`, (strong, sorszam) szerint
-rendezve), a seed-99/100/101/102 kulcsainak sorai kizárva; azonosító `N001`–`N200`. Rétegzés nincs (a seed-101/102 eljárása).
+rendezve), a seed-99/100/101/102 kulcsainak sorai kizárva; azonosító `N001`–`s103:N200`. Rétegzés nincs (a seed-101/102 eljárása).
 
 ### 4.3 A kitöltés (vak, két független kéz)
 
@@ -195,7 +195,7 @@ konkordancia/lexikonok_nyers/DictBDB.json | ts=2026-11-10.*
 
 - **Minta:** sokaság 161 065 sor (a korábbi minták 988 sora kizárva); 200 sor, 183 szócikk; a mintavételkori bizonyosság:
   `biztos` 181, `ketes` 19 (a kulcsban; a kitöltőnek nem adandó). Jelölő nélkül (a nyers szövegben a hivatkozás nem található,
-  a kitöltő a környezet szerint keres): 3 (N056, N071, N135).
+  a kitöltő a környezet szerint keres): 3 (s103:N056, s103:N071, s103:N135).
 - **Vakság-próba:** a 183 szócikkből **183-ban** a kiírt bekezdések (a jelölők nélkül) sorrendben azonosak a nyers
   forrásbekezdésekkel, 0 eltér; ebből 9 szócikkben a gépi szerkezet vágna vagy sorbelső fejet tenne (ott szivárgott volna a
   gépi tagolásra épülő munkalap). A vak lapon gépi oszlop (útvonal, szakasz, okkód, bizonyosság, vers) nincs.
@@ -222,7 +222,8 @@ megnevezésével), laponkénti kézi javítás nincs.
   ellentmondást `ketes`-nek jelölné.
 - **Sefaria-kérések:** 415 + 122 = 537 (a P0b 360 korábbi válaszát újrahasznosítva), 0 hiba; futásidő 657 + 213 s;
   ≥ 1,2 s szünet, User-Agent `bdb-ocr-check/1.0`; a gyorsítótár a repón kívül (`scratchpad\sefaria_cache\`), a hívó szkript is.
-  A 2.31 a gyorsítótár nélkül újragenerálva a Sefaria-ítéleteket nem kapja meg (`--sefaria-cache`; SEMA 2.31).
+  *(Történeti; a 11. szakasz óta érvénytelen:)* ~~A 2.31 a gyorsítótár nélkül újragenerálva a Sefaria-ítéleteket nem kapja meg.~~
+  A javítókör óta gyorsítótár nélkül a rögzített Sefaria-ítéletek maradnak (SEMA 2.31 `tanu`).
 - A rés/dálet jelölt-szabálya a felhasználó HAMART-esetére (H0127 „׳עָפָד”) a 3 mássalhangzós, rövidítő geresses szóra is
   kiterjesztve (a P0b 4-es küszöbe ezt kihagyta).
 
@@ -259,16 +260,17 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 | tájékoztató: `biztos` / `ketes` sor helyes | 180 / 181 · 8 / 19 | | |
 
 - **A kapu (≥ 194 / 200): NEM teljesül** (188 / 200); a könyv/vers teljesül. A `BDB_MERT_PONTOSSAG` (`konfig/bdb_pontossag.toml`:
-  183 / 200, 2026-11-09) **változatlan**; P3 nem indul — az orkesztrátor dönt (4.5).
-- **A ≠ B: 1 sor** (N182 H3318, A `-/1/c`, B `Qal/1/c`): ítélet B — „— 1 go or come out or forth: … c.”; a „Qal” név a
+  183 / 200, 2026-11-09) *(történeti, a mérés napján:)* változatlan; P3 nem indul — az orkesztrátor dönt (4.5). **Utóbb (10.,
+  DT-F185e): a `BDB_MERT_PONTOSSAG` 188 / 200-ra állt.**
+- **A ≠ B: 1 sor** (s103:N182 H3318, A `-/1/c`, B `Qal/1/c`): ítélet B — „— 1 go or come out or forth: … c.”; a „Qal” név a
   digitális forrásban hiányzik (2.31 kézi `jelolo_hianyzik`), a szócikk később Hiph`il-t és Hoph`al-t nyit, tehát az 1. pont a
   Qal-é; a gépi helyes. Kitöltő-hiba más sorban nem vizsgálva (A = B soron ítélet nem mozdítja a számot, 4.4).
 - **A „fej” = „<törzs>” egyenértékűség** a mérőben él (`m2_minta_osszevet.normal`: a „fej”, a „Qal” és a „Qal/-” egyaránt
   `NINCS_PONT`); a törzs alaktanában álló helyek ezért nem eltérések.
-- **A 12 gépi hiba osztályai** (A = B): homonima-szám vagy rész (római) 6 — N028, N122 H7451 és N076 H7651 (hiányzó „I”),
-  N094 H3899 (fölös „I”), N061 H7663 (II mint rész ↔ szakasz, és a törzs), N124 H5920 (I ↔ II); számozás/tagolás 4 — N013
-  H2469 (`fej` ↔ `-/1`), N040, N105 H3881 (a „II. … 3.” szint hiányzik), N058 H3915 (`-/8` ↔ `-/1/b`); törzs 2 — N004 H8248
-  (Qal ↔ Hiph`il), N071 H5186 (`jp_illesztes`, a pont az előző hivatkozásé). A 12-ből 11 `ketes` volt (a P2 jelölése a hibák
+- **A 12 gépi hiba osztályai** (A = B): homonima-szám vagy rész (római) 6 — s103:N028, s103:N122 H7451 és s103:N076 H7651 (hiányzó „I”),
+  s103:N094 H3899 (fölös „I”), s103:N061 H7663 (II mint rész ↔ szakasz, és a törzs), s103:N124 H5920 (I ↔ II); számozás/tagolás 4 — s103:N013
+  H2469 (`fej` ↔ `-/1`), s103:N040, s103:N105 H3881 (a „II. … 3.” szint hiányzik), s103:N058 H3915 (`-/8` ↔ `-/1/b`); törzs 2 — s103:N004 H8248
+  (Qal ↔ Hiph`il), s103:N071 H5186 (`jp_illesztes`, a pont az előző hivatkozásé). A 12-ből 11 `ketes` volt (a P2 jelölése a hibák
   92%-át előre jelezte); a `biztos` sorok 99,4%-a helyes.
 - **Tokenfogyasztás:** A-K1 300 771, A-K2 308 404, B-K1 295 939, B-K2 304 617, összesen **1 209 731** — **a becslés (0,73 M;
   sáv 0,43–0,97 M) és az 1 M-es küszöb fölött**, mint a #186 seed-204-én; a karakterarány 2,18 token/karakter (a #186 legnagyobb
@@ -282,7 +284,7 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 - **P2:** `bizonyossag` (`biztos` / `ketes:<ok>`); a seed-103-on a `biztos` 180 / 181, a `ketes` 8 / 19 helyes.
 - **P4:** pe/mem és rés/dálet tanúval (belső tanú, Sefaria), 341 tételes javítás; a javítás a megjelenítésben mindkét nyelven.
 - **P5:** könyv/vers 200 / 200; jelentéspont **188 / 200 (94,0%, Wilson 89,8–96,5)** — a 97%-os kapu nem teljesül; a
-  `BDB_MERT_PONTOSSAG` változatlan, a lapot nem generáltam újra. A seed-102-höz (183 / 200, más minta) képest +5.
+  `BDB_MERT_PONTOSSAG` *(történeti: változatlan)* — utóbb 188 / 200 (10.); a lapot nem generáltam újra. A seed-102-höz (183 / 200, más minta) képest +5.
 - **Nyitott:** N-F185b (leképezés), N-F185c (könyvnév nélküli hely); a 12 hiba osztályai (római szám, mélyebb számozás, törzs)
   a következő kör jelöltjei, a P3-ról az orkesztrátor dönt.
 
@@ -305,3 +307,40 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 - **Tesztek:** `teszt_olvaso_szerver.py` a munkafa kódjával, a WSL-venv-vel és a WSL-natív `pardes.db`-vel (2026-11-02-i építés):
   104 teszt, OK (2 kihagyva); ebből a `TestF104Egysegek` (a pontosság egy forrásból, Wilson-CI) adatbázis nélkül is OK. (A
   `teszt_futtat.py` a WSL-ben a `~/pardes` klónt futtatja, nem ezt a munkafát, ezért a munkafát közvetlenül futtattam.)
+
+## 11. Javítókör (`naplok/ELLENOR_F185.md`; egyetlen kör, 2026-11-10)
+
+**Mechanikus tételek:**
+1. **E32:** a `bdb_vers_jelentes.py` fejléc-literáljában és a `bdb_pontossag.toml` proveniencia-sorában semleges leírás („a
+   szakasztábla, F185”) áll a helyőrző helyett; a 2.29 újragenerálva — csak a fejlécsor változott.
+2. **E26:** a seed-103 mintaazonosítói a `.md` fájlokban `s103:N…` alakban (`naplok/F185_jelentes.md`, `nyitott/uj/…`, és a
+   `naplok/ELLENOR_F185.md`-ben is, csak az azonosító alakja változott).
+3. **A 2.31 reprodukálhatósága:** a GENERÁLT fejlécben a `--ts-tanu` és a `--sefaria-cache`; gyorsítótár nélkül (vagy ha a szó
+   nincs benne) a mai tábla rögzített Sefaria-ítélete marad (`forras_javit._rogzitett`, `belso_tanu.rogzitett_itelet`; SEMA
+   2.31). A `test_javitas_ellenoriz` gyorsítótár nélkül, az összes `--ts` kapcsolóval fut: OK.
+4. **SEMA 2.31 állapot** (saját számlálás): `pe_mem` `javitva` 4 046, `valodi_mem` 2 402, `jelolt_marad` 333; `res_dalet` 252
+   (`javitva` 118, `jelolt_marad` 134); 43 824 sor.
+5. **Rés/dálet szabály** a SEMA-ban a kód szerint: ≥ 3 mássalhangzó, a szó szélén álló geres megengedett.
+6. **N-F185a** lezárt blokkba (DT-F185b, `belso_fejek`).
+7. A jelentés „Állapot” sora és a 8–9. szakasz „változatlan” mondata frissítve (a régi szöveg történetiként jelölve).
+8. **Tanú-formátum:** a `ketes` is szinttel (`tahot/oshb:L2:ketes`, Sefariánál `L0`: nincs illeszthető szócikk); a pe_mem és a
+   res_dalet proveniencia-mezője azonos alakú (`… (fejléc) + belso_tanu.py | ts=…`). A 2.31 újragenerálva; a sorok száma
+   (43 824), a `sorszam`, az `allapot` és a `javitott_alak` 0 sorban változott, csak az `indok`, a `proveniencia` és a `tanu`.
+9. **CK3 — a forrásváltás hatása a 2.29-re** (a base `ae37c175`-höz képest; tájékoztatás): **23 814 sor** (1 486 Strong) `szakasz`,
+   `resz` vagy `utvonal` értéke változott (mezőnként: `utvonal` 17 606, `szakasz` 5 963, `resz` 2 440); ebből `ketes` 14 447,
+   `biztos` 9 367. A 162 053 sorból a `ketes` összesen 15 374. *(Proveniencia: scope=adat/bdb_vers_jelentes.tsv, a base és a mai |
+   forras=eseti összevetés kulcs (strong, sorszam) szerint | ts=2026-11-10.)*
+
+**Tartalmi döntések (orkesztrátor, 2026-11-10):**
+- **DT-F185f — a `betu_javit` kapcsolója:** `eszkozok/lexikon_general.py` `BDB_BETU_JAVIT = False` (egyetlen hely, a
+  `KETRETEGU_BDB_KARTYA` mintájára); a generátor kikapcsolva a base kimenetét adja (a HAMART-001 és az ANTROP-001 E28-a zöld,
+  lapújragenerálás nélkül); az olvasó (`blokkok.py`) a javítást alkalmazza. Tesztek: `F185BetuJavitas` (a bekapcsolt ág a
+  függvény szintjén és a generátorban, a kapcsolót a teszt kapcsolja be; és a kikapcsolt kapcsoló hatástalansága) — OK.
+- **DT-F185g — ALVIL-001, H7585 Zsolt 16:10:** a DictBDB H7585: „… Ezek 31:15-16, 17; 32:21, 27 b. righteous shall not be
+  aban-doned, ׳לשׁ Psa 16:10 (|| שַׁחַת q. v. …)” — a hely a **2.b**-ben áll; **a tábla tévedett** (`-/2/a`, `ketes:jp_illesztes`):
+  a sor közepi „b.” „27” után áll, a sorbelső fej szabálya írásjelet vár előtte. Lépés: tételes felülírás a 2.29 előállításánál
+  (`bdb_vers_jelentes.JELENTESPONT_KEZI`, kulcs Strong + `poz`, indok idézettel, okkód `jp_kezi`, SEMA 2.29); a sor `-/2/b`, a
+  többi 2.29-sor nem változott. Az osztály az N-F185d-ben.
+
+**A #182 teendői:** a `betu_javit` kapcsoló (`lexikon_general.BDB_BETU_JAVIT`) bekapcsolása a lapokon a teljes folyamatban (az
+F35 mellé), motívumonként; a `biztos`/`ketes` bontás lapra vitele (2. fázis).
