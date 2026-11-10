@@ -8,6 +8,7 @@ modell: opus
 munka: folyamat
 allapot: lezarva
 ag: claude/f185-bdb-jelentespont-97
+pr: https://github.com/basesoft777/Bible-Study/pull/681
 ad: a vers → BDB-jelentéspont hozzárendelés a vak mérésen ≥ 97% (seed-103, előre rögzített kapu), gépi bizonyossági jelöléssel; teljesülés esetén a „próba” jelölés lekerül, a szó-lapon az új mért szám CI-vel
 kovetkezo: "merge (a felhasználóé). Utána: #187 kártyája a táblára épül; #182 2. fázis: BDB_BETU_JAVIT bekapcsolása a lapokon, biztos/ketes bontás; N-F185b/c/d"
 lezarva_osszegzes: "BDB vers → jelentéspont: a forrás a szakasztábla (DT-F185a), sorbelső fejekkel sorvágás nélkül (29 311 fordításkulcs bájtra azonos); seed-103 valóban vak mérés 188/200 = 94,0% (Wilson 89,8–96,5), a ≥ 194 kapu NEM teljesült, P3 elmaradt (DT-F185e); biztos 180/181, ketes 8/19; BDB_MERT_PONTOSSAG 188/200, a dobozban nem jelenik meg (DT-F185h); P4: pe/mem 223 + rés/dálet 118 javítás TAHOT/OSHB és Sefaria-tanúval; betu_javit a generátorban kikapcsolva (DT-F185f); ALVIL H7585 kézi pont (DT-F185g); HAMART-001 egy pontja újragenerálva (H2403, N99, DT-F185i); egy javítókör; nyitott: N-F185b,c,d"
