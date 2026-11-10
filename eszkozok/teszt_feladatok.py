@@ -259,10 +259,33 @@ class SzintTest(unittest.TestCase):
         self.assertEqual(self.szint(ir=['eszkozok/x.py'], munka='ertelmezo'), ('teljes', 2))
         self.assertEqual(self.szint(), ('teljes', 2))
 
-    def test_infrastruktura_konnyitett(self):
+    def test_doku_teszt_ci_konnyitett(self):
+        # ELLENOR_F188 1.: könnyített csak, ha az `ir` minden eleme a szűk listán áll
         self.assertEqual(self.szint(ir=['.claude/commands/kovetkezo.md', 'eszkozok/ellenorzes/szabalyok.py',
-                                        'naplok/F01_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
-        self.assertEqual(self.szint(ir=['eszkozok/teszt_futtat.py'], munka='adat'), ('konnyitett', 1))
+                                        'naplok/F01_jelentes.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md',
+                                        'dontesek/uj/x.md', 'nyitott/uj/x.md', 'F01_A_BRIEF.md',
+                                        '.github/workflows/ellenorzes.yml', 'eszkozok/ellenorzes/tesztek/'],
+                                    munka='folyamat'), ('konnyitett', 1))
+        self.assertEqual(self.szint(ir=['eszkozok/teszt_futtat.py', 'eszkozok/teszt_x.py',
+                                        'eszkozok/karoli_strong/teszt_pontossag.py'], munka='adat'), ('konnyitett', 1))
+
+    def test_valos_adat_ir_teljes(self):
+        # F174 / F159 / F172 típusú `ir` (nyílt adatkészlet, fordítás-mappa, új adatmappa, szkript)
+        for ir in (['nyilt_karoli_modern/', 'eszkozok/karoli_modern_export.py', 'eszkozok/teszt_karoli_modern_export.py'],
+                   ['eszkozok/thayer_api_koteg.py', 'eszkozok/teszt_thayer_api_koteg.py', 'forditas/thayer_api/',
+                    'naplok/THAYER_B_UT_naplo.md'],
+                   ['f172/', 'naplok/KAROLI_PONTOSSAG_jelentes.md', 'eszkozok/karoli_strong/pontossag_meres.py']):
+            self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
+
+    def test_olvasoi_kimenet_teljes(self):
+        for ut in ('eszkozok/olvaso_szerver/blokkok.py', 'eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/adat.py',
+                   'eszkozok/olvasoi_kapu.py', 'eszkozok/nyilt_mag_export.py', 'eszkozok/general.py',
+                   'eszkozok/olvaso_szerver/teszt_arculat.py'):
+            self.assertEqual(self.szint(ir=[ut, 'naplok/F01_jelentes.md'], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_szelso_esetek_teljes(self):
+        for ir in ([], ['lexikon'], ['ismeretlen.md'], ['"naplok/*.md"'], ['"**/README.md"'], ['naplok']):
+            self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
 
 
 class EllenorizTest(Alap):

@@ -179,8 +179,8 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
 
    | Szint | Mikor | Független ellenőr | Javítókör |
    |---|---|---|---|
-   | `teljes` | `munka: ertelmezo`; régi fejléc `ir` nélkül; vagy az `ir` tartalmi réteget ír: `adat/`, `konkordancia/`, `motivumok/`, `motivumlog/`, `lexikon/`, `tematikus_lezart/`, a tanulmány-mappák, `sablonok/`, `kozlemeny/`, `nyilt_mag/`, illetve a lapot előállító generátort (a lista: `feladatok.py` `SZINT_TELJES_*`) | a teljes ellenőrzőlista | legfeljebb 2 |
-   | `konnyitett` | minden más: mechanikus, infrastruktúra, parancs, CI, formai CI-javítás | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
+   | `teljes` (alapértelmezés) | minden feladat, amely nem könnyített: `munka: ertelmezo`; régi fejléc `ir` nélkül; üres `ir`; az `ir` bármely eleme, amely nincs a könnyített listán (adat, motívum, lexikon, forrás, sablon, nyílt adatkészlet, új mappa, szkript), glob vagy perjel nélküli könyvtárnév; és mindig az olvasói kimenetet előállító kód (`eszkozok/olvaso_szerver/`, `eszkozok/olvaso_pilot/`, `lexikon_general.py`, `olvasoi_kapu.py`, `nyilt_mag_export.py`, `*general*.py`) | a teljes ellenőrzőlista | legfeljebb 2 |
+   | `konnyitett` | csak ha az `ir` **minden** eleme a szűk, kifejezett listára esik: dokumentáció és koordináció (`naplok/`, `dontesek/uj/`, `nyitott/uj/`, `*_BRIEF.md`, a folyamat-dokumentumok), teszt (`teszt_*` / `test_*`, `tesztek/`), CI és parancs (`.claude/`, `.github/`, `eszkozok/ellenorzes/`, `feladatok.py`); a lista egyetlen helye: `eszkozok/feladatok.py` `SZINT_KONNYITETT_*` és `SZINT_OLVASOI_*` (DT-F188b (c)) | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
 
    - **Minden szinten megmarad:**
      - a PR teljes CI-je (E1–E37; a szint egyetlen szabályt sem kapcsol ki);

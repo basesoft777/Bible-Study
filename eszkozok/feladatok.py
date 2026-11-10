@@ -93,13 +93,24 @@ KESZ_NAPOK = 14
 # valaki. A `.claude/commands/kovetkezo.md` 8. lepese erre a konstansra hivatkozik.
 FOLYTATAS_ELOTAG = 'Folytatás:'
 
-# F188 T5: kockazat szerinti ellenorzesi szint (a szabaly: MUNKAMENET.md „Menet-ellenőrzés”). A szint a meglevo
-# fejlecmezokbol jon, uj mezo nincs: `teljes` (2 javitokor), ha a feladat ertelmezo munka, regi fejlecu (nincs `ir`),
-# vagy az `ir` tartalmi reteget ir (adat, motivum, lexikon, forras, sablon, kozlemeny, nyilt mag) vagy a lapot
-# eloallito generatort; kulonben `konnyitett` (1 javitokor).
-SZINT_TELJES_ELOTAG = ('adat/', 'konkordancia/', 'motivumok/', 'motivumlog/', 'lexikon/', 'tematikus_lezart/',
-                       'genezis/', 'ujszovetseg/', 'melyelemzesek/', 'sablonok/', 'kozlemeny/', 'nyilt_mag/')
-SZINT_TELJES_MINTA = ('eszkozok/*general*.py', 'eszkozok/nyilt_mag_export.py', 'eszkozok/olvasoi_kapu.py')
+# F188 T5 (DT-F188b (c), kiterjesztve; ELLENOR_F188 1.): kockazat szerinti ellenorzesi szint (a szabaly: MUNKAMENET.md
+# „Menet-ellenőrzés”). Uj fejlecmezo nincs. Alapbol `teljes` (2 javitokor). `konnyitett` (1 javitokor) csak akkor, ha a
+# feladat nem ertelmezo munka, es az `ir` MINDEN eleme a lenti szuk, kifejezett listara esik (dokumentacio, teszt, CI,
+# parancs, koordinacio), es egyik sem allit elo olvasoi kimenetet. Uj mappa (nyilt_*, forditas/, f172/ ...), ures `ir`,
+# ismeretlen elem, glob es perjel nelkuli konyvtarnev mind `teljes`. Ez a lista egyetlen helye.
+SZINT_KONNYITETT_KONYVTAR = ('.claude/', '.github/', 'naplok/', 'dontesek/uj/', 'nyitott/uj/', 'beerkezo/',
+                             'eszkozok/ellenorzes/')
+SZINT_KONNYITETT_FAJL = ('CLAUDE.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'FELADATOK.md', 'DONTESEK.md',
+                         'NYITOTT_FELADATOK.md', 'DONTES_KERDES_SABLON.md', 'Rendszerfejlesztesi_playbook.md',
+                         'GitHub_feltoltesi_workflow.md', 'eszkozok/feladatok.py', 'eszkozok/teszt_futtat.py',
+                         'eszkozok/szamkiosztas.py', 'eszkozok/dontes_nezet.py')
+# fnmatch-minta, `/`-en at nem illeszt (a gyoker briefjei; tesztfajl barhol az eszkozok/ alatt)
+SZINT_KONNYITETT_MINTA = ('*_BRIEF.md', 'eszkozok/teszt_*.py', 'eszkozok/*/teszt_*.py', 'eszkozok/*/test_*.py',
+                          'eszkozok/*/*/teszt_*.py', 'eszkozok/*/*/test_*.py')
+# Olvasoi kimenetet eloallito kod: mindig `teljes`, akkor is, ha egy fenti minta (pl. teszt-nev) illeszkedne ra.
+SZINT_OLVASOI_KIMENET = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/lexikon_general.py',
+                         'eszkozok/olvasoi_kapu.py', 'eszkozok/nyilt_mag_export.py')
+SZINT_OLVASOI_MINTA = ('eszkozok/*general*.py',)
 SZINT_KOROK = {'teljes': 2, 'konnyitett': 1}
 VAR_RAD_ELOTAG = 'Te:'
 
@@ -1260,11 +1271,30 @@ def ellenorzesi_szint(b):
         return 'teljes', SZINT_KOROK['teljes'], 'munka: ertelmezo'
     if b.regi:
         return 'teljes', SZINT_KOROK['teljes'], 'nincs `ir` (régi fejléc)'
-    for u in b.fej.get('ir', []):
-        n = _norm(u)
-        if n.startswith(SZINT_TELJES_ELOTAG) or any(fnmatch.fnmatchcase(n, m) for m in SZINT_TELJES_MINTA):
-            return 'teljes', SZINT_KOROK['teljes'], 'tartalmi réteget ír: %s' % n
-    return 'konnyitett', SZINT_KOROK['konnyitett'], 'nem ír tartalmi réteget (munka: %s)' % (munka or 'adat')
+    ir = b.fej.get('ir', [])
+    if not ir:
+        return 'teljes', SZINT_KOROK['teljes'], 'üres `ir`'
+    for u in ir:
+        ok = szint_teljes_ok(_norm(u))
+        if ok:
+            return 'teljes', SZINT_KOROK['teljes'], ok
+    return 'konnyitett', SZINT_KOROK['konnyitett'], 'az `ir` minden eleme dokumentáció, teszt, CI vagy parancs'
+
+
+def szint_teljes_ok(ut):
+    """F188 T5: miért teljes szintű egy `ir`-elem (szöveg), vagy None, ha a könnyített listára esik."""
+    if ut.startswith(SZINT_OLVASOI_KIMENET) or ut in SZINT_OLVASOI_KIMENET or \
+            any(fnmatch.fnmatchcase(ut, m) for m in SZINT_OLVASOI_MINTA):
+        return 'olvasói kimenetet állít elő: %s' % ut
+    if any(c in ut for c in '*?['):
+        return 'glob az `ir`-ben: %s' % ut
+    if ut.endswith('/'):
+        return None if ut.startswith(SZINT_KONNYITETT_KONYVTAR) else 'nem a könnyített listán: %s' % ut
+    if ut in SZINT_KONNYITETT_FAJL or ut.startswith(SZINT_KONNYITETT_KONYVTAR):
+        return None
+    if any(fnmatch.fnmatchcase(ut, m) and ut.count('/') == m.count('/') for m in SZINT_KONNYITETT_MINTA):
+        return None
+    return 'nem a könnyített listán: %s' % ut
 
 
 def extra_hozzaad(briefek, utak):
