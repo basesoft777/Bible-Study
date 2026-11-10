@@ -2693,8 +2693,11 @@ def gerinc_adat():
     bdb_hu = {}
     for r in be(BDB_SZAKASZ_HU_FAJL):
         bdb_hu[(r['strong'], r['sorszam'])] = r
-    bdb_vj = {}
+    bdb_vj, bdb_vj_feloldott = {}, {}
     for r in be(BDB_VERS_JELENTES_FAJL):
+        # DT-F104d: a 4.2 kártyájának hivatkozásszáma a feloldott, szűrt hivatkozásoké (a szerver szabálya, Károli-vers nélkül is)
+        if _szelet_modul().vj_feloldott(r):
+            bdb_vj_feloldott.setdefault(r['strong'], []).append(r)
         if r.get('szurt') == '1' or not r.get('karoli_vers'):
             continue
         bdb_vj.setdefault((r['strong'], r['karoli_vers']), []).append(r)
@@ -2719,6 +2722,7 @@ def gerinc_adat():
     # F123.BDBGER: a teljes angol szócikk (a 2.29 `poz`-ának szövege), a példahely szócikkének azonosításához
     bdb_en = {r['Strong_padded']: r['Teljes_szocikk'] for r in be(BDB_TELJES_FAJL)}
     _gerinc_adat_cache = {'cimke': cimke, 'bdb_sz': bdb_sz, 'bdb_hu': bdb_hu, 'bdb_vj': bdb_vj,
+                          'bdb_vj_feloldott': bdb_vj_feloldott,
                           'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza, 'tiltott': tiltott,
                           'token_szam': token_szam, 'bdb_en': bdb_en}
     return _gerinc_adat_cache
@@ -2739,8 +2743,9 @@ _ROMAI_LEMMA_RE = re.compile(r'\s*(?:(IV|V|VI{0,3}|I{1,3})\.\s+)?\[?([^\s\[\]]*[
 _bdb_szelet = None
 
 
-def _lapit(szoveg):
-    """A szeletelő `lapit`-ja (`olvaso_szerver/bdb_szelet.py`): a 2.29 `poz`-a erre a szövegalakra vonatkozik."""
+def _szelet_modul():
+    """Az olvasó-szerver szeletelője (`olvaso_szerver/bdb_szelet.py`), egyszer betöltve; a 2.29 sorainak minősítése is itt
+    áll, közösen a szerverrel (DT-F104d)."""
     global _bdb_szelet
     if _bdb_szelet is None:
         import importlib.util
@@ -2748,7 +2753,12 @@ def _lapit(szoveg):
             'bdb_szelet_lg', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver', 'bdb_szelet.py'))
         _bdb_szelet = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(_bdb_szelet)
-    return _bdb_szelet.lapit(szoveg)
+    return _bdb_szelet
+
+
+def _lapit(szoveg):
+    """A szeletelő `lapit`-ja (`olvaso_szerver/bdb_szelet.py`): a 2.29 `poz`-a erre a szövegalakra vonatkozik."""
+    return _szelet_modul().lapit(szoveg)
 
 
 def cimke_kulcs(r):
@@ -3397,8 +3407,31 @@ def _versek_rovid(versek):
     return ', '.join(ki)
 
 
+def bdb_hivatkozas_szam(adat, strong):
+    """DT-F104d: a kártya hivatkozásszámai a vers -> jelentés táblából (2.29), nem a magyar szakaszszöveg regexéből:
+    {szakaszkulcs (bdb_id, a 2.30 útvonala; a fejé (bdb_id, 'fej')): a feloldott, szűrt hivatkozások száma}. A sorhalmaz a
+    szerver pontos hivatkozásszámáé (`bdb_szelet.vj_feloldott`: `szurt≠1`, van MT-vers); a sor szakasza a `gerinc_blokk`
+    illesztése (`bdb_vers_szocikk` + a levágott útvonal a szakasztáblában). A szám a szakasz saját soraié (az alpontoké nem),
+    mint a szerver `VersJelolo.db`-jében; a szócikkhez nem köthető sor egyik szakaszhoz sem számít."""
+    cache = adat.setdefault('_bdb_hiv_db', {})
+    if strong not in cache:
+        szocikkek, _elnyelt = bdb_gerinc_szocikkek(adat, strong)
+        teljes_ut = {(k[0], gerinc_utvonal_vag(k[1])): k for sz in szocikkek for k, _j, _h, _a, _f in sz['szakaszok']}
+        db = collections.Counter()
+        for r in adat.get('bdb_vj_feloldott', {}).get(strong, []):
+            b, _ok = bdb_vers_szocikk(adat, strong, r)
+            if b is None:
+                continue
+            k = (b, 'fej') if r['utvonal'] == 'fej' else teljes_ut.get((b, gerinc_utvonal_vag(r['utvonal'])))
+            if k is not None:
+                db[k] += 1
+        cache[strong] = db
+    return cache[strong]
+
+
 def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, tartomanyban, pont_nelkul):
     """Az olvasói réteg bekezdései: a jelentések rendje (hordozó szakasz félkövér) és „A motívum helyein” sor."""
+    hiv_db = bdb_hivatkozas_szam(adat, strong)
     tobb = len(szocikkek) > 1
     nevek, sorok = {}, []
     for i, sz in enumerate(szocikkek, 1):
@@ -3425,7 +3458,7 @@ def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, 
                 # az alakjegyzékkel nyíló szakasz: az alak utáni magyar meghatározás, ennek híján a kimondott tény (DT-F104c 4.)
                 gl = alak_utani_glossza(hu)
                 if not gl:
-                    n = len(hivatkozasok_a_szovegben(hu))
+                    n = hiv_db.get(k, 0)     # DT-F104d: a táblából, nem a szövegből
                     csak_alak = 'a szótár csak alakot közöl' + (' (%d hely)' % n if n else '')
             elv = ' — ' if jel[:1].isalpha() else ' '
             nevek[k] = ('%s%s%s' % (_jel_olvasoi(jel), elv, gl)) if gl else _jel_olvasoi(jel)
@@ -3474,13 +3507,14 @@ def _osszecsukva_uj(futam):
     return '<details>\n<summary>%s</summary>\n\n%s\n\n</details>' % (cim, '\n'.join(f[2] for f in futam))
 
 
-def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, elnyelt=None, uj=False):
+def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, elnyelt=None, uj=False, hiv_db=None):
     """A tagolás vázlata: [(kulcs, jel, szöveg_hu vagy None, angol, kategória)] sorrendben, a kulcs (bdb_id, utvonal).
     A hordozó szakaszok kibontva (címke + teljes magyar szöveg, kiemeléssel), a többi összecsukott
     futamokban. `elnyelt`: {kulcs: a szövegét hordozó kulcs} (F123.BDBGER). Visszaad: (bekezdések, kiemelt
     azonosítók, meg nem talált azonosítók). `uj` (F104, az új szerkezetű lap): az összecsukott futam címe glosszával, a
-    vázlatsorban a törzsnév egy alakban."""
+    vázlatsorban a törzsnév egy alakban; a cím hivatkozásszáma `hiv_db`-ből (`bdb_hivatkozas_szam`, DT-F104d)."""
     elnyelt = elnyelt or {}
+    hiv_db = hiv_db or {}
     elnyelo = {}
     for k, hova in elnyelt.items():
         elnyelo.setdefault(hova, []).append(k)
@@ -3503,7 +3537,7 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
                 vazlat += HORGONNYAL_JELOLES
             if k in elnyelo:
                 vazlat += ' ' + elnyelo_mondat(elnyelo[k])
-            futam.append((jel, k, vazlat, olvasoi_glossza(jel, cimke, hu), len(hivatkozasok_a_szovegben(hu or angol)))
+            futam.append((jel, k, vazlat, olvasoi_glossza(jel, cimke, hu), hiv_db.get(k, 0))
                          if uj else (jel, k, vazlat))
             continue
         lezar()
@@ -3733,7 +3767,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             napl['nem_talalt'] += [a for _, a in fc]
             bek.append('**A szócikk feje (nyelvi háttér).** > %s %s' % (fej[3], FORDITASRA_VAR))
         lista, talalt, hiany = gerinc_szakasz_lista(sz['szakaszok'], hordozo, celok, adat['cimke'], szotar, strong,
-                                                    elnyelt, uj=uj and szotar == 'BDB')
+                                                    elnyelt, uj=uj and szotar == 'BDB',
+                                                    hiv_db=bdb_hivatkozas_szam(adat, strong) if uj and szotar == 'BDB' else None)
         napl['kiemelt'] += talalt
         napl['nem_talalt'] += hiany
         bek.extend(lista)

@@ -38,8 +38,9 @@ def cimke_sor(szotar, strong, szakasz, ljsz='', cimke='', bdb_id=''):
             'megjegyzes': ''}
 
 
-def vj_sor(strong, sorszam, vers, utvonal):
-    return {'strong': strong, 'sorszam': str(sorszam), 'karoli_vers': vers, 'utvonal': utvonal, 'szurt': '0'}
+def vj_sor(strong, sorszam, vers, utvonal, szurt='0', okkod='', mt_vers=None):
+    return {'strong': strong, 'sorszam': str(sorszam), 'karoli_vers': vers, 'mt_vers': vers if mt_vers is None else mt_vers,
+            'utvonal': utvonal, 'szurt': szurt, 'okkod': okkod}
 
 
 def adat(cimkek=(), vj=(), bdb_sz=None, bdb_hu=None):
@@ -47,8 +48,13 @@ def adat(cimkek=(), vj=(), bdb_sz=None, bdb_hu=None):
          'glossza': {}}
     for c in cimkek:
         a['cimke'][LG.cimke_kulcs(c)] = c
+    a['bdb_vj_feloldott'] = {}
     for r in vj:
-        a['bdb_vj'].setdefault((r['strong'], r['karoli_vers']), []).append(r)
+        # a `gerinc_adat` két indexe: a hivatkozásszámé (DT-F104d: szűretlen, feloldott) és a versé (szűretlen, Károli-verssel)
+        if r['szurt'] != '1' and r['mt_vers']:
+            a['bdb_vj_feloldott'].setdefault(r['strong'], []).append(r)
+        if r['szurt'] != '1' and r['karoli_vers']:
+            a['bdb_vj'].setdefault((r['strong'], r['karoli_vers']), []).append(r)
     return a
 
 
@@ -847,7 +853,9 @@ class KetreteguBdbKartya(unittest.TestCase):
         hu = {('H8034', '2'): {'szoveg_hu': 'H8034. név', 'kategoria': 'jelolo_nelkul'},
               ('H8034', '3'): {'szoveg_hu': '4 hamis istenekről (J) 1Kir 18:24', 'kategoria': 'illeszkedik'},
               ('H8034', '4'): {'szoveg_hu': '5 = emlékjel Ézs 55:13', 'kategoria': 'illeszkedik'}}
-        return adat([], [vj_sor('H8034', 300, 'Ézs 55:13', '-/5')], sz, hu)
+        # a csukott cím hivatkozásszáma a táblából (DT-F104d): a -/4 egy feloldott sora; a szűrt sor nem számít
+        return adat([], [vj_sor('H8034', 300, 'Ézs 55:13', '-/5'), vj_sor('H8034', 290, '1Kir 18:24', '-/4'),
+                         vj_sor('H8034', 291, '', '-/4', szurt='1', okkod='nem_bibliai', mt_vers='')], sz, hu)
 
     def _blokk(self, ctx, sorok=None):
         sorok = sorok or [elo('Ézs 55:13', '', strong='H8034', entry=''), elo('Ézs 1:1', '', strong='H8034', entry='')]
@@ -901,12 +909,40 @@ class KetreteguBdbKartya(unittest.TestCase):
         hu = {('H0056', '1'): {'szoveg_hu': 'gyászol', 'kategoria': 'illeszkedik'},
               ('H0056', '2'): {'szoveg_hu': "Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35", 'kategoria': 'illeszkedik'},
               ('H0056', '3'): {'szoveg_hu': "Niphal participium נֵאָרִים átkozott Mal 3:9.", 'kategoria': 'illeszkedik'}}
-        a = adat([], [], sz, hu)
+        # a „(N hely)” a táblából (DT-F104d): egy feloldott Hithpa'el sor
+        a = adat([], [vj_sor('H0056', 10, '1Sám 15:35', "Hithpa'el/-")], sz, hu)
         szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H0056', [elo('Hós 4:3', '', strong='H0056', entry='')],
                                              {'bdb_kartya': True, 'fl': {}})[0])
         self.assertIn("- Hithpa'el — a szótár csak alakot közöl (1 hely)", szov)
         self.assertIn("- Niph'al — átkozott", szov)
         self.assertNotIn('külön meghatározás nélkül', szov)
+
+    def test_hivatkozasszam_a_tablabol_nem_a_szovegbol(self):
+        # DT-F104d (ELLENOR_F104 1.): a magyar szöveg két helyet ír, a tábla szerint a szakasznak nincs feloldott sora —
+        # a szám a tábláé, ezért nincs „(N hely)”
+        sz = {'H0056': [
+            {'strong': 'H0056', 'sorszam': '2', 'utvonal': "Hithpa'el/-/-", 'jel': "Hithpa'el", 'szoveg': 'Pf.'}]}
+        hu = {('H0056', '2'): {'szoveg_hu': "Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35, 16:1", 'kategoria': 'illeszkedik'}}
+        a = adat([], [vj_sor('H0056', 10, '', "Hithpa'el/-", szurt='1', okkod='sigla_tapadt', mt_vers='')], sz, hu)
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H0056', [elo('Hós 4:3', '', strong='H0056', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H0056')[0]
+        self.assertIn("- Hithpa'el — a szótár csak alakot közöl\n", olvasoi + '\n')
+        self.assertNotIn('hely)', olvasoi)
+
+    def test_h7843_valodi_adat(self):
+        # ELLENOR_F104 1.: a H7843 Hiph'il magyar bontása az „1 singular”-t pontnak vette (a szövegben 1 hely maradt); a tábla
+        # 13 feloldott `Hiph'il/-` sort tartalmaz, a Pi'el 5-öt
+        a = LG.gerinc_adat()
+        szam = {k[1]: n for k, n in LG.bdb_hivatkozas_szam(a, 'H7843').items()}
+        self.assertEqual(szam.get("Hiph'il/-/-"), 13)
+        self.assertEqual(szam.get("Pi'el/-/-"), 5)
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H7843', [elo('1Móz 6:12', '', strong='H7843', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H7843')[0]
+        # a törzs félkövér lehet (a motívum helyén álló jelentés hordozója)
+        self.assertRegex(olvasoi, r"\n- (\*\*)?Hiph'il(\*\*)? — a szótár csak alakot közöl \(13 hely\)")
+        self.assertRegex(olvasoi, r"\n- (\*\*)?Pi'el(\*\*)? — a szótár csak alakot közöl \(5 hely\)")
 
     def test_olvasoi_glossza_es_egy_torzsalak(self):
         self.assertEqual(LG.vegyes_cim_nelkul("Hithpa'el", 'Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35'), 'perfectum הִתְאַבֵּל 1Sám 15:35')

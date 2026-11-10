@@ -1108,6 +1108,17 @@ def csoport_savok(szoveg, r):
     return sorted(savok)
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# A vers -> jelentés tábla (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29) sorainak minősítése: EGY helyen, mert az olvasó-szerver
+# BDB-blokkja (`blokkok.VersJelolo`) és a lexikon-generátor 4.2-es kártyája (`lexikon_general.bdb_olvasoi_reteg`) is ezt
+# használja (DT-F104d; egy szabály, egy hely).
+# ---------------------------------------------------------------------------------------------------------------------
+def vj_feloldott(r):
+    """A pontos hivatkozásszám alapja (#104 brief 2.: „a feloldott, szűrt hivatkozásoké”): nem szűrt, feloldott (maszoréta
+    versszámmal bíró) bibliai hivatkozás. A Károli-vers nem feltétel."""
+    return r.get('szurt') != '1' and bool(r.get('mt_vers'))
+
+
 if __name__ == '__main__':
     import json
     import os

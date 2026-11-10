@@ -1050,9 +1050,9 @@ def _vj_bizonytalan(r):
     return okok
 
 
-def _vj_feloldott(r):
-    """A pontos hivatkozásszám alapja: nem szűrt, feloldott (maszoréta versszámmal bíró) bibliai hivatkozás."""
-    return r.get('szurt') != '1' and bool(r.get('mt_vers'))
+# a pontos hivatkozásszám alapja (nem szűrt, feloldott bibliai hivatkozás): a szabály a `bdb_szelet`-ben áll, mert a
+# lexikon-generátor 4.2-es kártyája is ezt használja (DT-F104d)
+_vj_feloldott = bdb_szelet.vj_feloldott
 
 
 def _sor_kulcs(r):
