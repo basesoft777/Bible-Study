@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: megallt
 ag: claude/f105-bdb-szorend
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: Indítható a fugg szerint (a #104 után)
+kovetkezo: "Te: (1) DT-F105a, hol valósuljon meg a #105 (javaslat: (a) a DT445 útján, javítótábla + bdb_rovidites, hivatkozott-vers-próbával, maqqéf-feloldással; a brief ir mezője bővül); (2) ⛔ az 50-es minta jóváhagyása (naplok/F105_naplo.md 5., kézi ítélet oszlop; független ellenőr vagy felhasználó). Mérés: 29 469 futam, 17 953 ellenőrizhető, a mai megjelenítés 85,2%-ban egyezik a hivatkozott verssel, 1 823 javítható; a teljes bevezetés nincs bekapcsolva"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szoerend.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py]
 fugg: [99, 102, 103, 104]
@@ -46,4 +46,4 @@ helyet); egyezési arány a naplóba; **⛔ minta:** 50 idézet kézi ellenőrz�
 
 ## 5. Döntésnapló
 
-- (helyőrzők a futáskor)
+- DT-F105a (🟡, `dontesek/uj/f105-bdb-szorend.md`): hol valósuljon meg a szabály; a DT445 óta élő javítás miatt a brief 2. lépése a döntésig áll.
