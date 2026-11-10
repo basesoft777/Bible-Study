@@ -5,7 +5,8 @@ kod: HAMART_JAVITO
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/hamart-javito
 ad: a HAMART-001 lapja az F1–F18 és az N-F178a/b leletek szerint javítva (generátor-szinten, adatjavítás szkripttel, HIBA-kapuk teszttel), friss határ-ellenőrzés, a HAMART kapcsolat-sorai, két folyamat-kapu (jelölő-kapu a /kiadas előtt, előfeltétel-térkép), saját renderelt átnézés és független ellenőrzés; a régi lapok bájtra változatlanok
 kovetkezo: "Te: F182.H0 — indítás csak az orkesztrátor jelzésére: előfeltétel (egyeztetett eltérés, KOR miatt nem fugg) a #102–#105 és a #180 a main-ben"
 munka: ertelmezo
