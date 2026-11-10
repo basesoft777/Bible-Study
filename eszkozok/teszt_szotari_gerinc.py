@@ -987,7 +987,8 @@ class KetreteguBdbKartya(unittest.TestCase):
 
 class F185BetuJavitas(unittest.TestCase):
     """F185 P4: a 2.31 pe/mem és rés/dálet javításai megjelenítéskor mindkét nyelvre (`bdb_rovidites.betu_javit`, a
-    `heber_sorrend_javit` része): a HAMART-001 H0127 BDB-blokkja (4.2) a magyar szövegben a javított alakot mutatja."""
+    `heber_sorrend_javit` része): a bekapcsolt ág a függvény szintjén és a generátorban (a kapcsolót a teszt kapcsolja be);
+    kikapcsolva (DT-F185f, `lexikon_general.BDB_BETU_JAVIT`) a generátor kimenete a régi."""
 
     def test_betu_javit_pontos_token(self):
         import bdb_rovidites as BR
@@ -995,13 +996,33 @@ class F185BetuJavitas(unittest.TestCase):
         self.assertEqual(BR.betu_javit('vö. még מְּנֵי הָא׳', 'H0127', t), 'vö. még פְּנֵי הָא׳')
         self.assertEqual(BR.betu_javit('הַמְּנֵיכֶם', 'H0127', t), 'הַמְּנֵיכֶם')      # nem egész token: marad
 
-    def test_h0127_blokk_magyar(self):
-        a = LG.gerinc_adat()
-        szov = '\n'.join(LG.gerinc_blokk(a, 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')])[0])
-        self.assertIn('(מִן־הָא ׳עָפָר)', szov)            # a lap 1606. sorának esete (rés/dálet)
+    def test_heber_sorrend_javit_bekapcsolva(self):
+        import bdb_rovidites as BR
+        self.assertEqual(BR.heber_sorrend_javit('vö. még מְּנֵי הָא׳', 'H0127'), 'vö. még פְּנֵי הָא׳')
+        self.assertEqual(BR.heber_sorrend_javit('(מִן־הָא ׳עָפָד)', 'H0127'), '(מִן־הָא ׳עָפָר)')
+        self.assertEqual(BR.heber_sorrend_javit('vö. még מְּנֵי הָא׳', 'H0127', betu=False), 'vö. még מְּנֵי הָא׳')
+
+    def _blokk(self):
+        return '\n'.join(LG.gerinc_blokk(LG.gerinc_adat(), 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')])[0])
+
+    def test_h0127_blokk_magyar_bekapcsolva(self):
+        regi = LG.BDB_BETU_JAVIT
+        LG.BDB_BETU_JAVIT = True
+        try:
+            szov = self._blokk()
+        finally:
+            LG.BDB_BETU_JAVIT = regi
+        self.assertIn('(מִן־הָא ׳עָפָר)', szov)            # a HAMART-001 1606. sorának esete (rés/dálet)
         self.assertNotIn('עָפָד', szov)
-        self.assertIn('vö. még פְּנֵי הָא׳', szov)           # a lap 1616. sorának esete (pe/mem)
+        self.assertIn('vö. még פְּנֵי הָא׳', szov)           # a 1616. sor esete (pe/mem)
         self.assertNotIn('מְּנֵי', szov)
+
+    def test_kapcsolo_kikapcsolva_hatastalan(self):
+        # DT-F185f: a generátorban ma kikapcsolva; a kimenet a régi (a lap E28-a ezért zöld újragenerálás nélkül)
+        self.assertFalse(LG.BDB_BETU_JAVIT)
+        szov = self._blokk()
+        self.assertIn('עָפָד', szov)
+        self.assertIn('מְּנֵי', szov)
 
 
 if __name__ == '__main__':

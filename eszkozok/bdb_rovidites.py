@@ -289,12 +289,14 @@ def maqqef_javit(szoveg):
     return ''.join(s)
 
 
-def heber_sorrend_javit(szoveg, strong, javitasok=None):
+def heber_sorrend_javit(szoveg, strong, javitasok=None, betu=True):
     """A Strong `javitva` héber kifejezéseinek cseréje a szövegben (betű szerint, héber betűvel nem határos előfordulás;
     a hosszabb kifejezés elsőbbséggel, átfedés nélkül), utána a rafe-maqqéf feloldása (`maqqef_javit`, F105), majd a pe/mem
     és rés/dálet betűjavítás (`betu_javit`, F185 P4): a megjelenítés egyetlen héber javító lépése, az olvasó
-    (`blokkok._rovidites`) és a lexikon-generátor is ezt hívja, az angol és a magyar szövegre egyaránt."""
-    return betu_javit(maqqef_javit(_sorrend_csere(szoveg, strong, javitasok)), strong)
+    (`blokkok._rovidites`) és a lexikon-generátor is ezt hívja, az angol és a magyar szövegre egyaránt. `betu`: a betűjavítás
+    kapcsolója (DT-F185f: az olvasóban be, a lexikon-generátorban a `lexikon_general.BDB_BETU_JAVIT` szerint)."""
+    s = maqqef_javit(_sorrend_csere(szoveg, strong, javitasok))
+    return betu_javit(s, strong) if betu else s
 
 
 def _sorrend_csere(szoveg, strong, javitasok=None):
