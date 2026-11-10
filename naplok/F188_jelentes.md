@@ -164,6 +164,24 @@ Ebben az ágban nem végezhető el: a merge utáni első 3 PR-on fut, pontos hí
    - Teszt: két szál egy elavult zárra, 20 kör; egyszerre legfeljebb egy tartó, a végén nem marad zárfájl.
 5. **Eszkaláció** (F188.8): ha az ellenőr könnyített szintről teljesre vált, a jelentés második sora ezt írja: `SZINT-ESZKALÁCIÓ: konnyitett → teljes — …`. A `/elteres` a K kört ebből veszi: K = a levezetett szint és az eszkaláció nagyobbika.
 
+## Javítókör 2/2 (`naplok/ELLENOR_F188_2.md`, 3 ELTÉRÉS-tétel)
+
+A kör alapja `2d1baf31` (az ELLENOR_F188_2 rögzítése; a B ág ebben a #674-es main-t is tartalmazza). Mindhárom tétel `mechanikus`, a már meghozott döntések alkalmazása (orkesztrátor). A gépen több session dolgozik, ezért csak célzott teszteket futtattam; a lassú teszteket és a teljes tesztsort nem.
+
+1. **Zár** (F188.13; ELLENOR_F188_2 1.): az átnevezés és a visszatevés megszűnt, helyette a javasolt minta, átvételi zárral (`<ut>.atvetel`, `O_CREAT|O_EXCL`).
+   - **Miért helyes.** A fő zár csak `O_EXCL`-lel jön létre. A fő zárat csak az átvételi zár tartója törli: az elavultat újraolvasás után, a sajátját kilépéskor. Így az újraolvasás és a törlés között senki más nem törölheti a fő zárat, és amíg az létezik, újat sem hozhat létre senki: a törölt fájl pontosan az elavultnak ítélt. Átvétel után az átvevő is `O_EXCL`-lel próbál, és ha más nyert, tovább vár.
+   - **Időkorlátok:** az átvételi zár 60 s után (mtime) elavult. Az olvashatatlan vagy üres fő zár (a létrehozó még írja) 60 s türelmi időn belül nem elavult.
+   - **Maradék kockázat:** ha egy folyamat az átvételi zár ezredmásodperces kritikus szakaszában omlik össze, és a 60 s után két váró egyszerre törli az elavult átvételi zárat, ketten lehetnek a kritikus szakaszban. Két fő zár ekkor sem létezhet egyszerre, mert az `O_EXCL` kizárja.
+   - **Teszt:** `test_zar.py`, 17 teszt. A verseny 3 szállal és egy újonnan érkezővel fut, 40 körben; mindenki lefut, egyszerre legfeljebb egy tartó, a végén nem marad fájl. Ötször futtatva zöld.
+2. **T5** (F188.14; ELLENOR_F188_2 2.): a `naplok/` közül csak a szöveges `*.md` könnyített; a `naplok/*.py`, `*.tsv`, `*.txt` és a puszta `naplok/` teljes.
+   - A `LASSU_LEFEDETT` és a `SZINT_*` ellentmondását egy teszt fogja meg: a `LASSU_LEFEDETT` minden kódeleme a szint szerint teljes. Egyik lista nem származik a másikból, mert a kettő más kérdésre felel (olvasói kimenet, illetve tesztlefedés); a teszt köti össze őket.
+   - A mai briefeken a szám változatlan: 174 teljes, 11 könnyített.
+3. **Eszkaláció** (F188.15; ELLENOR_F188_2 3.): az eszkalációt egy önálló, sor eleji `SZINT-ESZKALÁCIÓ: konnyitett → teljes` sor jelzi, bárhol a jelentésben.
+   - Gépi olvasás: `feladatok.py szint <nn> --jelentes <fájl>`, amely a tényleges kör-korlátot adja.
+   - Teszt: `EszkalacioTest`, 3 teszt (⛔ első sor, szakaszos jelentés, CRLF; nem illeszkedik idézetre és behúzásra).
+
+**Tesztek ebben a körben** (célzott): `test_zar.py` 17 OK; `teszt_feladatok.py` `SzintTest` 10 és `EszkalacioTest` 3 OK; `feladatok.py ellenoriz` 0 hiba; a `futtat.py` PR-módban a kör végén (l. a Zárás előtti futás).
+
 ## Folytatás a #104 merge-e után
 
 1. A T2 CI-szabállyá emelése és a szabály szövege a SEMA-ban, egy commitban (N-F188a): `SZINT`, `SZABALY_LEIRAS`, `SZABALYOK_FUGGVENYEI`, `szabalyok.py --kapulista --ir`.
