@@ -98,15 +98,17 @@ FOLYTATAS_ELOTAG = 'Folytatás:'
 # feladat nem ertelmezo munka, es az `ir` MINDEN eleme a lenti szuk, kifejezett listara esik (dokumentacio, teszt, CI,
 # parancs, koordinacio), es egyik sem allit elo olvasoi kimenetet. Uj mappa (nyilt_*, forditas/, f172/ ...), ures `ir`,
 # ismeretlen elem, glob es perjel nelkuli konyvtarnev mind `teljes`. Ez a lista egyetlen helye.
-SZINT_KONNYITETT_KONYVTAR = ('.claude/', '.github/', 'naplok/', 'dontesek/uj/', 'nyitott/uj/', 'beerkezo/',
+SZINT_KONNYITETT_KONYVTAR = ('.claude/', '.github/', 'dontesek/uj/', 'nyitott/uj/', 'beerkezo/',
                              'eszkozok/ellenorzes/')
 SZINT_KONNYITETT_FAJL = ('CLAUDE.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'FELADATOK.md', 'DONTESEK.md',
                          'NYITOTT_FELADATOK.md', 'DONTES_KERDES_SABLON.md', 'Rendszerfejlesztesi_playbook.md',
                          'GitHub_feltoltesi_workflow.md', 'eszkozok/feladatok.py', 'eszkozok/teszt_futtat.py',
                          'eszkozok/szamkiosztas.py', 'eszkozok/dontes_nezet.py')
 # fnmatch-minta, `/`-en at nem illeszt (a gyoker briefjei; tesztfajl barhol az eszkozok/ alatt)
-SZINT_KONNYITETT_MINTA = ('*_BRIEF.md', 'eszkozok/teszt_*.py', 'eszkozok/*/teszt_*.py', 'eszkozok/*/test_*.py',
-                          'eszkozok/*/*/teszt_*.py', 'eszkozok/*/*/test_*.py')
+# A `naplok/` nem egeszeben konnyitett (ELLENOR_F188_2 2.): csak a szoveges `*.md`; a `naplok/*.py`, `*.tsv`, `*.txt`
+# es minden mas (pl. a `naplok/FORDITAS_P4_ellenoriz.py`, amelyet az olvaso-szerver lanca betolt) teljes.
+SZINT_KONNYITETT_MINTA = ('*_BRIEF.md', 'naplok/*.md', 'naplok/*/*.md', 'eszkozok/teszt_*.py', 'eszkozok/*/teszt_*.py',
+                          'eszkozok/*/test_*.py', 'eszkozok/*/*/teszt_*.py', 'eszkozok/*/*/test_*.py')
 # Olvasoi kimenetet eloallito kod: mindig `teljes`, akkor is, ha egy fenti minta (pl. teszt-nev) illeszkedne ra.
 SZINT_OLVASOI_KIMENET = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/lexikon_general.py',
                          'eszkozok/olvasoi_kapu.py', 'eszkozok/nyilt_mag_export.py')

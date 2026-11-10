@@ -283,6 +283,28 @@ class SzintTest(unittest.TestCase):
                    'eszkozok/olvaso_szerver/teszt_arculat.py'):
             self.assertEqual(self.szint(ir=[ut, 'naplok/F01_jelentes.md'], munka='folyamat'), ('teljes', 2), ut)
 
+    def test_naplok_csak_md_konnyitett(self):
+        # ELLENOR_F188_2 2.: a naplok/ nem egészben könnyített
+        self.assertEqual(self.szint(ir=['naplok/F188_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
+        for ut in ('naplok/FORDITAS_P4_ellenoriz.py', 'naplok/ELOSZURES_x.tsv', 'naplok/THAYER_B_UT_mero_strongok.txt',
+                   'naplok/'):
+            self.assertEqual(self.szint(ir=[ut], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_lassu_lefedett_kodja_teljes(self):
+        # ELLENOR_F188_2 2.: a két lista nem mondhat ellent egymásnak: amit a teszt_futtat.py LASSU_LEFEDETT olvasói
+        # kódnak vesz, az a szint szerint teljes (kivétel a futtató maga, amely nem állít elő olvasói kimenetet)
+        import importlib.util
+        ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'teszt_futtat.py')
+        spec = importlib.util.spec_from_file_location('teszt_futtat_szint', ut)
+        TF = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(TF)
+        elemek = {e for lista in TF.LASSU_LEFEDETT.values() for e in lista} - {'eszkozok/teszt_futtat.py'}
+        self.assertTrue(elemek)
+        for e in sorted(elemek):
+            self.assertIsNotNone(F.szint_teljes_ok(e), e)
+            if e.endswith('/'):
+                self.assertIsNotNone(F.szint_teljes_ok(e + 'x.py'), e)
+
     def test_szelso_esetek_teljes(self):
         for ir in ([], ['lexikon'], ['ismeretlen.md'], ['"naplok/*.md"'], ['"**/README.md"'], ['naplok']):
             self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
