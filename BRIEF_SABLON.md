@@ -78,7 +78,7 @@ Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATO
 
 Külön `naplok/<feladat>_zaras.md` és `naplok/ELLENOR_<tétel>.md` nem készül. A régi fájlok változatlanok: a korábban indult feladatnál, amelynek már van `naplok/ELLENOR_F<nn>*.md` jelentése, a `/elteres` azt olvassa, és a sorozatot abban a formában folytatja.
 
-*Korlát:* a CI a `naplok/ELLENOR_*` fájlokat kihagyja (D14, `eszkozok/ellenorzes/kozos.py`), a jelentésfájlt nem. Ha a mentett ellenőri szakasz egy idézett sora CI-találatot ad, a szöveghez nem nyúlsz: a találat a CI-javító körben jelentendő (N-F188c).
+*Korlát:* a CI a `naplok/ELLENOR_*` fájlokat kihagyja (D14, `eszkozok/ellenorzes/kozos.py`), a jelentésfájlt nem. Ha a mentett ellenőri szakasz egy idézett sora CI-találatot ad, a szöveghez nem nyúlsz: a találat a CI-javító körben jelentendő (N131).
 
 Az új döntés- és nyitott-tételek helye (`dontesek/uj/<ágnév>.md`, `nyitott/uj/<ágnév>.md`), a helyőrzők és a számkiosztás szabálya: `CLAUDE.md`, „Git” (F30, CI E26).
 
