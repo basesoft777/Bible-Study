@@ -109,8 +109,9 @@ SZARMAZTATOTT_LICENC = {
     'vers_szamozas': ['Karoli_versmegfeleltetes', 'BSB_Strongs'],
     'konyv': ['Konyv_nevtablak'],
     # F181 E7: a `kh` sorai a HunKar-táblából (Karoli_KH) és a MEK 00161-ből (Karoli_KH_MEK, közkincs, DT651) állnak; a
-    # szűrő, a Karoli_KH_javitott.tsv szintje a táblába nem kerül (csak a megerősített sor), ezért a térképben nem szerepel
-    'tsk': ['TSK'], 'kh': ['Karoli_KH', 'Karoli_KH_MEK'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
+    # szűrő, a Karoli_KH_javitott.tsv szintje a táblába nem kerül (csak a megerősített sor), de a sorok kiválasztása a
+    # saját munka: a licenc-sora is szerepel (CC BY 4.0, DT-F181q; F181.27), így a származtatott licenc nem szigorodik
+    'tsk': ['TSK'], 'kh': ['Karoli_KH', 'Karoli_KH_MEK', 'Karoli_KH_javitott'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
     'kjv': ['KJV_Strongs_teljes'], 'karoli_strong_kivonat': ['Karoli_Strong_kivonat'],
     'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
