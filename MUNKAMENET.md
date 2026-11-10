@@ -199,6 +199,7 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
    - A hely a `PARDES_ZAR_KONYVTAR` változóval felülírható.
    - Ha a zár foglalt, a futás kiírja, ki tartja, és vár.
    - Feloldja magát, ha a zárat tartó folyamat már nem él, vagy ha a zár a korlátnál régebbi (alapból 120 perc, `PARDES_ZAR_KORLAT_PERC`).
+   - Az elavult zárat csak egy átvevő törölheti: az átvételt egy OS-szintű zár védi (`~/.pardes/ellenorzes.zar.atvetel`, Windowson `msvcrt.locking`, WSL-ben `fcntl.flock`), amelyet a rendszer összeomláskor magától felold (DT-F188d).
    - A GitHub-futás (`GITHUB_ACTIONS`) nem vesz zárat.
 
 ## Generátor-tények

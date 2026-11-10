@@ -90,7 +90,7 @@ class ZarTeszt(unittest.TestCase):
         with self._zar(el_e=lambda pid: False):
             pass
         self.assertTrue(any('elavult zár átvéve' in u and 'nem él' in u for u in self.uzenetek), self.uzenetek)
-        self.assertEqual(os.listdir(os.path.dirname(self.ut)), [])  # sem fő, sem átvételi zár nem maradt
+        self.assertEqual(self._maradt(), [])  # fő zár nem maradt (az állandó átvételi fájl nem zár)
 
     def test_atvetel_ujraolvas_es_friss_zarat_nem_torli(self):
         # ELLENOR_F188_2 1.: B elavultnak látta a zárat, közben A átvette és frisset írt; B átvétele az átvételi zár
@@ -104,7 +104,7 @@ class ZarTeszt(unittest.TestCase):
         self.assertFalse(b.atvesz())
         self.assertEqual(b._olvas()['azon'], a.azon)
         a.__exit__(None, None, None)
-        self.assertEqual(os.listdir(os.path.dirname(self.ut)), [])
+        self.assertEqual(self._maradt(), [])
 
     def test_iro_zar_nem_elavult(self):
         # az O_EXCL-lel létrehozott, még üres (íródó) fő zár a türelmi időn belül nem elavult; utána igen
@@ -116,18 +116,73 @@ class ZarTeszt(unittest.TestCase):
         os.utime(self.ut, (regi, regi))
         self.assertEqual(z._elavult()[0], True)
 
-    def test_elavult_atveteli_zar(self):
+    def _maradt(self):
+        # a fő zár és bármely nem az állandó átvételi fájl
+        return [n for n in os.listdir(os.path.dirname(self.ut)) if n != FT.ZAR_NEV + FT.ZAR_ATVETEL_UTOTAG]
+
+    def test_os_zar_kizarja_a_masodik_atvevot(self):
+        # DT-F188d (b), ELLENOR_F188_3 1.: az átvételi OS-zárat egyszerre egy példány tartja
         os.makedirs(os.path.dirname(self.ut), exist_ok=True)
-        with open(self.ut + FT.ZAR_ATVETEL_UTOTAG, 'w') as f:
-            f.write('osszeomlott')
-        z = self._zar()
-        self.assertFalse(z._atveteli_zar())  # friss: nem veszi el
-        regi = time.time() - FT.ZAR_ATVETEL_ELAVULT_MP - 5
-        os.utime(self.ut + FT.ZAR_ATVETEL_UTOTAG, (regi, regi))
-        self.assertFalse(z._atveteli_zar())  # elavult: törli, ebben a körben nem veszi meg
-        self.assertTrue(z._atveteli_zar())
-        z._atveteli_zar_el()
-        self.assertFalse(os.path.exists(self.ut + FT.ZAR_ATVETEL_UTOTAG))
+        a, b = self._zar(), self._zar()
+        self.assertTrue(a._atveteli_zar())
+        self.assertFalse(b._atveteli_zar())
+        a._atveteli_zar_el()
+        self.assertTrue(b._atveteli_zar())
+        b._atveteli_zar_el()
+        self.assertTrue(os.path.exists(self.ut + FT.ZAR_ATVETEL_UTOTAG))  # az állandó fájl nem törlődik
+
+    def test_osszeomlott_tarto_utan_felszabadul(self):
+        # DT-F188d (b): az átvételi OS-zár birtokában os._exit-tel kilépő alfolyamat után a zár felszabadul
+        import subprocess
+        os.makedirs(os.path.dirname(self.ut), exist_ok=True)
+        kod = ('import os, sys\n'
+               'sys.path.insert(0, sys.argv[1])\n'
+               'import futtat as FT\n'
+               'z = FT.HelyiZar("osszeomlo", ut=sys.argv[2])\n'
+               'assert z._atveteli_zar()\n'
+               'print("tartom", flush=True)\n'
+               'sys.stdin.readline()\n'
+               'os._exit(0)\n')
+        p = subprocess.Popen([sys.executable, '-c', kod, _ELLENORZES, self.ut], stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE, text=True, encoding='utf-8')
+        try:
+            self.assertEqual(p.stdout.readline().strip(), 'tartom')
+            masik = self._zar()
+            self.assertFalse(masik._atveteli_zar())  # a gyerek tartja
+            p.stdin.write('\n')
+            p.stdin.flush()
+            p.wait(30)
+        finally:
+            if p.poll() is None:
+                p.kill()
+        masik = self._zar()
+        self.assertTrue(masik._atveteli_zar())  # a rendszer feloldotta (nem engedte el, os._exit)
+        masik._atveteli_zar_el()
+
+    def test_varakozas_alszik_nem_porog(self):
+        # DT-F188d (c): elavult fő zár, de az átvételi OS-zárat más tartja -> a váró nem hív atvesz-t pörögve
+        import socket
+        import threading
+        self._idegen_zar(gep=socket.gethostname(), pid=4242, azon='regi')
+        tarto = self._zar()
+        self.assertTrue(tarto._atveteli_zar())
+        hivas = [0]
+
+        class Szamlalo(FT.HelyiZar):
+            def atvesz(self):
+                hivas[0] += 1
+                return FT.HelyiZar.atvesz(self)
+        z = Szamlalo('varo', ut=self.ut, varakozas=0.001, kiir=lambda s: None, el_e=lambda pid: pid == os.getpid())
+        t = threading.Thread(target=lambda: (z.__enter__(), z.__exit__(None, None, None)))
+        t.start()
+        time.sleep(0.3)
+        n = hivas[0]
+        tarto._atveteli_zar_el()
+        t.join(30)
+        self.assertFalse(t.is_alive())
+        self.assertLess(n, 0.3 / FT.ZAR_ROVID_ALVAS_MP + 5, 'pörög: %d atvesz-hívás 0,3 s alatt' % n)
+        self.assertGreater(n, 0)
+        self.assertEqual(self._maradt(), [])
 
     def _verseny(self, szalak_szama, korok, uj_erkezo_kesleltetes=None):
         import socket
@@ -167,7 +222,7 @@ class ZarTeszt(unittest.TestCase):
             self.assertEqual(hibak, [], 'kör %d' % kor)
             self.assertEqual(kesz[0], n, 'kör %d: nem futott le mindenki' % kor)
             self.assertEqual(legtobb[0], 1, 'kör %d: egyszerre több tartó' % kor)
-            self.assertEqual(os.listdir(os.path.dirname(self.ut)), [], 'kör %d: maradt zárfájl' % kor)
+            self.assertEqual(self._maradt(), [], 'kör %d: maradt zárfájl' % kor)
 
     def test_verseny_ket_szal_egy_elavult_zarra(self):
         self._verseny(2, 20)
