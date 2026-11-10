@@ -539,6 +539,35 @@ def bdb_angol(con, s):
     return r[0] if r else None
 
 
+_VJ_OSZLOPOK = ('sorszam', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz', 'utvonal', 'okkod', 'szurt')
+
+
+def bdb_vers_jelentes(con, s):
+    """F104: a BDB-szócikk igehely-hivatkozásai jelentésponttal (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29), a szócikkön belüli
+    sorrendben: [dict] a `_VJ_OSZLOPOK` mezőivel, és ha a tábla már hordozza (F103), a `csoport`-tal (különben ''). A `s` a
+    BDB-sor kulcsa (alias esetén a tábla-Strong). None, ha a tábla hiányzik (régebbi adatbázis): a hívó a gépi számra esik vissza."""
+    try:
+        oszl = {r[1] for r in con.execute('PRAGMA table_info(bdb_vers_jelentes)')}
+        if not oszl:
+            return None
+        cs = ', csoport' if 'csoport' in oszl else ", ''"
+        sorok = con.execute('SELECT %s%s FROM bdb_vers_jelentes WHERE strong=? ORDER BY CAST(sorszam AS INTEGER)'
+                            % (', '.join(_VJ_OSZLOPOK), cs), (s,)).fetchall()
+    except sqlite3.OperationalError:
+        return None
+    return [dict(zip(_VJ_OSZLOPOK + ('csoport',), ['' if x is None else str(x) for x in r])) for r in sorok]
+
+
+def igetorzs_nevek(con):
+    """{(nyelv, kód): az igetörzs forrásneve} a `morf_kulcs_heber` `igetorzs` soraiból (OSHB-kód → „qal”, „piel”, „peal” …);
+    a BDB-szócikk törzsfejével (Qal, Pi'el, Pe'al) a `blokkok._torzs_kulcs` normalizálásával vethető össze."""
+    try:
+        return {(ny, k): f for ny, k, f in con.execute(
+            "SELECT nyelv, kod, jelentes_forras FROM morf_kulcs_heber WHERE pozicio='igetorzs'")}
+    except sqlite3.OperationalError:
+        return {}
+
+
 def tbesh_lemma(con, s):
     """(lemma, STEP-átírás) a TBESH-ből, vagy None: pontos Strong, majd a betűutótagos első sor (H2416 → H2416a), mint a
     lexikon-generátor `tbesg_tbesh_index`-e. A BDB-rövidítés címszó-feloldásához (N-F131x). Hiányzó tábla (licenc) → None."""
