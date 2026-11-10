@@ -745,9 +745,11 @@ def magyar_gorog(con, g):
     """[(szotar, jelentes_szam, forditas_hu, mezo)] a Thayer és az UBS DNTG magyar fordításai (a `mezo` különbözteti meg
     az UBS-sorok `definicio_hu` és `glosszak_hu` változatát; F121, DT393). F187 (N-F186g): csak az érvényes sorok — az
     `elavult` sor és az összevonási tagsor (`sz<n>~<m>`, SEMA 2.14, mindig `elavult`) nem."""
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(forditasok)')}
+    allapot = " AND COALESCE(allapot, '') <> 'elavult'" if 'allapot' in oszl else ''    # régi/teszt-tábla: nincs állapot
     return con.execute("SELECT szotar, jelentes_szam, forditas_hu, mezo FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') "
-                       "AND strong=? AND forditas_hu <> '' AND COALESCE(allapot, '') <> 'elavult' "
-                       "AND jelentes_szam NOT LIKE '%~%' ORDER BY rowid", (g,)).fetchall()
+                       "AND strong=? AND forditas_hu <> ''%s AND jelentes_szam NOT LIKE '%%~%%' ORDER BY rowid" % allapot,
+                       (g,)).fetchall()
 
 
 def thayer_szakasz_jelek(con, g):

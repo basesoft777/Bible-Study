@@ -1699,13 +1699,13 @@ def _r_magyar_gorog(d, K):
         cim = _th_jel(ut, jel) if jelek else jsz
         gl = _th_glossza(fh)
         nev[n] = Markup('%s — %s') % (cim, gl) if gl else Markup('%s') % cim
-        melyseg = len([x for x in ut.split('/')[1:] if x and x != '-']) if ut and '/' in ut else 0
-        lista.append(Markup('<li class="th-m%d">%s</li>') % (min(melyseg, 3), nev[n] if gl else
-                                                             Markup('%s — <i>a szótár itt csak alakot vagy párhuzamot közöl</i>') % cim))
+        # a hierarchiát a jel mutatja („2”, „2.a”); új osztály nincs (a regiszter-őr: `regiszter_or.py`)
+        lista.append(Markup('<li>%s</li>') % (nev[n] if gl else
+                                              Markup('%s — <i>a szótár itt csak alakot vagy párhuzamot közöl</i>') % cim))
     proba = Markup('<p class="megj">Gépi hozzárendelés (próba): a hivatkozás jelentéspontját a szócikk saját tagolása adja. '
                    '<span class="bdb-pontossag" title="proveniencia: %s">%s</span></p>') % (
         THAYER_PONTOSSAG['proveniencia'], THAYER_MERT_PONTOSSAG)
-    ki = Markup('<p><b>A jelentések rendje a Thayer szerint</b></p><ul class="th-jelentesek">%s</ul>') % Markup('').join(lista)
+    ki = Markup('<p><b>A jelentések rendje a Thayer szerint</b></p><ul>%s</ul>') % Markup('').join(lista)
     if K.ig:
         pontok = q.thayer_vers_pontok(K.con, K.strong, K.ig)
         if pontok is None:
