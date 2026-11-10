@@ -898,6 +898,42 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   (17 261) frissítésével zöld (DT-F186c sora, F186.38); a `Sigla` régi hibája marad (9.10).
 - `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
 
+## 14. Javítókör 3 — a korlát fölött, engedéllyel javítva (`naplok/ELLENOR_F186_3.md`, ELTÉRÉS 7 tétel; orkesztrátori engedély, 2026-11-10)
+
+- **1. (F186.43) — őszinte proveniencia.** A G5590-hez az F186.32-ben **új fordítás nem készült**: a 10 sorból 9 szövege bájtra
+  változatlan (csak átkulcsolás érte), az sz5 a régi sz5 és sz6 gépi összefűzése, változatlan szöveggel. A sorok az F186.28 utáni
+  (az F186.13-as Sonnet-fordítás) mezőire álltak vissza (`modell`, `datum`, `terminologia_verzio` a fordításé); az sz5: `sonnet`, az
+  összevont szakasz `forras_hash`-ével, jegye „összefűzve (sz5+sz6), szöveg változatlan, F186” — a mai sz5 forrásszövege bájtra a
+  régi sz5 és sz6 szóközzel fűzött szövege (mind az 52 összevont csoportban így van, `osszefuz_hu.py`). A G4151 sz13 valódi új
+  fordítás, marad. A lánc munkatáblája (`naplok/F132_THAYER_SZAKASZ_munka.tsv`) a G4151/G5590 26 sorában a `forditasok.tsv`-hez
+  igazítva. A 12.1 és a DT-F186d a tényre javítva.
+- **2–3. (F186.42) — a régi sor nem törlődik (DT289; DT-F186f).** A SEMA 2.14 kulcsa (szótár + strong + `entry_id` +
+  `jelentes_szam` + mező) két sort egy kulcson nem enged; a `jelentes_szam` viszont union (2.2.2), ezért a választott megoldás: a
+  tagsor saját, egyedi kulcsot kap, **`sz<új>~<régi>`** (pl. `sz5~6`). Ez nem `sz<n>` alakú, így a szakasz-fogyasztók (lefedés,
+  Strong magyar szövege, szólista, E19) kihagyják, és a 13. szabály az `elavult` tagsort JELENTÉS-nek veszi (nem `elavult` tagsor:
+  SÉRTÉS). A 38 tagsor a 6fa021c9-beli tartalmával, `elavult`-ként, az összefűzött sorra mutató jeggyel visszaállt; a 33
+  összefűzött sor a tagsoraira hivatkozik; a G4151 15 változatlan sorának `datum`-a (2026.10.27) és `terminologia_verzio`-ja (v3)
+  visszaállt; a G4151 és a G5590 is hordozza az összevonási jegyet. Az `--osszevonas` törlés helyett tagsort ír, és idempotens
+  (teszt: a mai adaton a második futás 0 változás). Bájtőrző írás (javítószkript: 15. melléklet). A szabály: SEMA 2.14 („Az
+  összevont szakasz régi sorai”).
+- **4. (F186.45):** SEMA 2.34 — 17 261 sor, egy sor több bekezdést is átfoghat (`bont.osszevon`, `bont.OSSZEVONO`).
+- **5. (F186.44):** a számok az adatból — 56 kiesett szakasz (55 pár és 1 `fej`-pár), 33 sor lapdiff a main-hez (17 + 16),
+  a második kör 407 jelölt sora (342 átkulcsolt, 28 áthelyezett, 4 elavult, 33 összefűzött) és 38 tagsor (az ELLENOR_F186_3
+  399-e a G4151/G5590 8 sorának akkor felülírt jegye miatt kevesebb), az első kör 588/117; Thayer `sz`-sor 2 883, ebből 142
+  `elavult`.
+- **6. (F186.46):** az N-F186e-ben az U014 K2b (a maradék hibája a K5 mechanizmusa), a K5-eset a V023.
+- **7. (F186.47):** a nem létező `tematikus_lezart/ANTROP-001*` globok kivétele után az E18 2 hibát ad, ezért visszakerültek; a
+  `motivumok/ANTROP-001.md` a függési kör miatt nem kerül be — N-F186f.
+- **Záró futások:**
+  - `python eszkozok/ellenoriz.py` — kilépési kód 0: RENDBEN 27, **SÉRTÉS 0**, KÉZI 2, JELENTÉS 14; a 13. szabály JELENTÉS
+    (218): 142 `elavult` sor vár újrafordításra, 38 összevonási tagsor (archív), 76 Thayer-Strong fordítatlan szakasszal, egyik sem
+    lexikonlapon;
+  - a CI-szabálykészlet (`futtat.py`, merge-alap 75b04e6a, `[ELLENŐRZŐ]` PR-cím): kilépési kód 0, **E28 0 találat** — a lap nem
+    változott (az ANTROP-001 újragenerálása nem kellett), HIBA nincs;
+  - `teszt_ellenoriz_13`, `teszt_bont`, `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc` 42/43 (a régi `Sigla`-hiba,
+    9.10);
+  - `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
@@ -1642,3 +1678,142 @@ print('szócikk: %d egyezik a nyers bekezdésekkel, %d eltér; ebből gépileg v
 | G5613 | 25 → 24 | sz5–sz6, sz13–sz25 | sz6 · I/2/a · a. | — |
 
 Összesen: 184 Strong, 1299 megváltozott kulcs.
+
+## 15. Melléklet — a 3. javítókör adatjavító szkriptje (`f186_javit3.py`)
+
+A repón kívül futott (A és B fázis, `--ir`), a git-beli állapotokból (6fa021c9, 4a6f0ca2) dolgozik.
+
+```python
+"""F186, 3. javítókör (ELLENOR_F186_3; a korlát fölött, engedéllyel): a `forditasok.tsv` bájtőrző javítása.
+
+A fázis (2–3. tétel, DT-F186f): (a) a F186.28-ban kivett 38 összefűzési tagsor visszaáll a 6fa021c9-beli (összevonás előtti)
+tartalmával, `jelentes_szam = sz<új>~<régi>`, `allapot = elavult`, jeggyel, közvetlenül az összefűzött sora után; (b) az
+összefűzött sorok `megjegyzes`-e a tagsoraikra hivatkozik; (c) a G4151 15 változatlan szövegű sora (sz1–sz12, sz14–sz16) a
+4a6f0ca2-beli (az F186.32 előtti) mezőkkel áll vissza; az sz13 (az egyetlen valódi új fordítás) jegye a tényre áll.
+B fázis (1. tétel): a G5590 10 sora a 4a6f0ca2-beli mezőkkel áll vissza (az F186.32 nem fordított újra); az sz5 az összefűzött
+szöveg, `sonnet`, az összevont szakasz `forras_hash`-ével, a jegye: „összefűzve (sz5+sz6), szöveg változatlan, F186”.
+Használat: python f186_javit3.py A|B [--ir]
+"""
+import subprocess
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8')
+R = r'E:\Claude\Bible-Study\cranky-easley-763e7c'
+UT = R + r'\adat\forditasok.tsv'
+JEGY_TAG = ('F186 (2026.11.10): elavult — azonos útvonalú szakaszok összevonása: tagsor (a régi sz%d); a szövege az sz%d '
+            'összefűzött sorában')
+
+
+def git_sorok(rev):
+    t = subprocess.run(['git', '-C', R, 'show', '%s:adat/forditasok.tsv' % rev], capture_output=True).stdout.decode('utf-8')
+    return t.split('\n')[:-1]
+
+
+def kulcs(s):
+    return tuple(s.split('\t')[:5])
+
+
+def main():
+    fazis, ir = sys.argv[1], '--ir' in sys.argv
+    szoveg = open(UT, encoding='utf-8', newline='').read()
+    assert szoveg.endswith('\n') and '\r' not in szoveg
+    sorok = szoveg.split('\n')[:-1]
+    fej_i = next(i for i, s in enumerate(sorok) if s and not s.startswith('#'))
+    fej = sorok[fej_i].split('\t')
+    I = {m: fej.index(m) for m in fej}
+    idx = {kulcs(s): i for i, s in enumerate(sorok) if i > fej_i}
+    regi = {kulcs(s): s for s in git_sorok('6fa021c9')[fej_i + 1:]}
+    k4a = {kulcs(s): s for s in git_sorok('4a6f0ca2')[fej_i + 1:]}
+    uj = list(sorok)
+    beszur = {}  # sorindex -> [új sorok utána]
+    valt = set()
+
+    def mezo(s, m):
+        return s.split('\t')[I[m]]
+
+    def allit(s, **kw):
+        t = s.split('\t')
+        for m, v in kw.items():
+            t[I[m]] = v
+        return '\t'.join(t)
+
+    if fazis == 'A':
+        # az összefűzött sorok és tagjaik a 4a6f0ca2 jegyeiből
+        for k, s in k4a.items():
+            mj = mezo(s, 'megjegyzes')
+            if 'azonos útvonalú szakaszok összevonása: sz' not in mj or k[0] != 'Thayer':
+                continue
+            resz = mj.split('azonos útvonalú szakaszok összevonása: sz', 1)[1].split(' → sz')
+            ns = [int(x.strip().lstrip('sz')) for x in resz[0].split(',')]
+            m = int(resz[1].split(';')[0].split(' ')[0])
+            tag_k = ['sz%d~%d' % (m, n) for n in ns[1:]]
+            i = idx[k]
+            # (b) az összefűzött sor jegye: tagsor-hivatkozás (ha a sor azóta nem íródott felül — G4151/G5590 külön)
+            if k[1] not in ('G4151', 'G5590'):
+                assert uj[i] == s, k
+                uj[i] = allit(uj[i], megjegyzes=mj + '; tagsor: ' + ', '.join(tag_k))
+                valt.add(i)
+            # (a) a tagsorok
+            uj_tag = []
+            for n, tk in zip(ns[1:], tag_k):
+                r = regi[(k[0], k[1], k[2], 'sz%d' % n, k[4])]
+                rm = mezo(r, 'megjegyzes')
+                uj_tag.append(allit(r, jelentes_szam=tk, allapot='elavult',
+                                    megjegyzes='; '.join(x for x in (rm, JEGY_TAG % (n, m)) if x)))
+            beszur[i] = uj_tag
+        # (c) G4151: a 15 változatlan sor a 4a6f0ca2 mezőivel; az sz13 jegye a tényre
+        for n in list(range(1, 13)) + [14, 15, 16]:
+            k = ('Thayer', 'G4151', 'G4151', 'sz%d' % n, 'forditas_hu')
+            assert mezo(uj[idx[k]], 'forditas_hu') == mezo(k4a[k], 'forditas_hu'), n
+            assert mezo(uj[idx[k]], 'forras_hash') == mezo(k4a[k], 'forras_hash'), n
+            if uj[idx[k]] != k4a[k]:
+                uj[idx[k]] = k4a[k]
+                valt.add(idx[k])
+        k = ('Thayer', 'G4151', 'G4151', 'sz13', 'forditas_hu')
+        mj = mezo(uj[idx[k]], 'megjegyzes')
+        kiv = [x for x in mj.split('; ') if x.startswith('terminológia-kivétel')]
+        uj[idx[k]] = allit(uj[idx[k]], megjegyzes='; '.join(
+            ['prompt v5.2; F186 (2026.11.10): az összevont 4.a szakasz (a régi sz13 és sz14, azonos útvonalú szakaszok összevonása) '
+             'új fordítása a #132 láncával (a c3 csoport), Sonnet subagent, előfizetésből; tagsor: sz13~14'] + kiv))
+        valt.add(idx[k])
+    else:
+        for n in range(1, 11):
+            k = ('Thayer', 'G5590', 'G5590', 'sz%d' % n, 'forditas_hu')
+            s4 = k4a[k]
+            assert mezo(uj[idx[k]], 'forditas_hu') == mezo(s4, 'forditas_hu'), n
+            if n != 5:
+                assert mezo(uj[idx[k]], 'forras_hash') == mezo(s4, 'forras_hash'), n
+                if uj[idx[k]] != s4:
+                    uj[idx[k]] = s4
+                    valt.add(idx[k])
+                continue
+            mj4 = mezo(s4, 'megjegyzes')
+            elo = mj4.split('; F186 (2026.11.10): elavult — azonos útvonalú szakaszok összevonása', 1)[0]
+            uj[idx[k]] = allit(s4, allapot='sonnet', forras_hash=mezo(uj[idx[k]], 'forras_hash'), megjegyzes='; '.join(x for x in (
+                elo, 'F186 (2026.11.10): összefűzve (sz5+sz6), szöveg változatlan, F186 — a mai sz5 forrásszövege bájtra a régi sz5 '
+                     'és sz6 szakasz szóközzel fűzött szövege, ezért a fűzött fordítás érvényes; a forras_hash az összevont szakaszé '
+                     '(DT-F186f); tagsor: sz5~6') if x))
+            valt.add(idx[k])
+    # összeállítás és bájtőrző ellenőrzés
+    ki = []
+    for i, s in enumerate(uj):
+        ki.append(s)
+        ki.extend(beszur.get(i, []))
+    for i, (a, b) in enumerate(zip(sorok, uj)):
+        if i not in valt and a != b:
+            raise SystemExit('váratlan eltérés a %d. sorban' % (i + 1))
+    kk = [kulcs(s) for s in ki if s and not s.startswith('#')]
+    if len(kk) != len(set(kk)):
+        raise SystemExit('duplikált kulcs')
+    if [s for s in ki if s not in set(sum(beszur.values(), []))] != uj:
+        raise SystemExit('a beszúráson kívül a sorrend megváltozott')
+    print('%s fázis: módosított sor %d, beszúrt tagsor %d; sorok %d -> %d'
+          % (fazis, len(valt), sum(len(v) for v in beszur.values()), len(sorok), len(ki)))
+    if ir:
+        open(UT, 'w', encoding='utf-8', newline='').write('\n'.join(ki) + '\n')
+        print('írva')
+
+
+if __name__ == '__main__':
+    main()
+```
