@@ -261,3 +261,8 @@ Szűken nem javítható: a „saját magánhangzós rafés betű teljes magánha
 érintene (ott a forrás a magánhangzót az előző betűre tolta, pl. `לאֹיִֿכָּרֵת`, `אֶתִשְֿׁמוֺ`, vagy az első szó magánhangzóra
 végződik, `וּבָאתָלְֿךָ`). **Maradék ismert hiba.** *A minta tervezési korlátja:* a „vers dönt” ítélet a TAHOT morfématagolásán
 áll, ezért a leválasztott végződés (itt `נָ | ה`) álszóhatárt adhat; a 41. tétel így került a poolba.
+
+**A `בָּאֿזִקִּים` (ELLENOR_F105, javítókör 2.):** szűken javítva — a nyitott szótag utáni, pont nélküli (néma) álef szón belüli
+rafe, a szabály nem bont (`_szotag_zaro`). Eseti összevetés a régi kimenettel (minden rafés szó): egyetlen szó változott, maga a
+`בָּאֿזִקִּים`; a Macula-próba ezt „jónak” számolta (a בא és a זקים külön is szó: mérési műtermék), ezért a mért szám jó 2 555,
+rossz 110, nem dönt 1 577 (előtte 2 556 / 110 / 1 577).

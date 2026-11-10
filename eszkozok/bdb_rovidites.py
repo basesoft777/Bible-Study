@@ -224,9 +224,9 @@ def _szotag_zaro(s, b, e):
     """A rafét hordozó (b) betű nyitott szótag után áll: neki nincs magánhangzó-pontja, az előtte álló betűnek van (a sva nem
     számít), és az nem mater-betű (ו / י: `לוֺ`, `עֲלֵי` után a következő betű a második szó eleje). Ilyenkor a betű az első
     szó szótagját zárja (`אֶתֿכֹּל` → 'utana'), kivéve ha utána mater-betű (ו / י) jön: az a szón belüli rafe (`חֲטֻבֿוֺת`,
-    `מִמֵּנֿוּ`), nem maqqéf → 'marad'. Más esetben None (az általános szabály dönt)."""
-    if any(c in _PONT for c in s[b + 1:e]):
-        return None
+    `מִמֵּנֿוּ`), nem maqqéf → 'marad'; a pont nélküli (néma) álef is szón belüli (`בָּאֿזִקִּים`, ELLENOR_F105) → 'marad'.
+    Más esetben None (az általános szabály dönt)."""
+    sajat = any(c in _PONT for c in s[b + 1:e])
     p = b - 1
     while p >= 0 and _jel(s[p]):
         p -= 1
@@ -234,7 +234,9 @@ def _szotag_zaro(s, b, e):
         return None
     if not any(c in _PONT and c != 'ְ' for c in s[p + 1:b]):
         return None
-    return 'marad' if e < len(s) and s[e] in 'וי' else 'utana'
+    if sajat:
+        return None
+    return 'marad' if (e < len(s) and s[e] in 'וי') or s[b] == 'א' else 'utana'
 
 
 def maqqef_javit(szoveg):

@@ -173,6 +173,10 @@ class Maqqef(unittest.TestCase):
         for sz in ('חֲטֻבֿוֺת', 'מִמֵּ֫נֿוּ'):
             self.assertEqual(BR.maqqef_javit(sz), sz)
 
+    def test_nema_alef_szon_beluli(self):
+        # ELLENOR_F105: a nyitott szótag utáni, pont nélküli álef szón belüli (a „bilincsekben”), nem bont
+        self.assertEqual(BR.maqqef_javit('בָּאֿזִקִּים'), 'בָּאֿזִקִּים')
+
     def test_sva_nem_zarja_a_szotagot(self):
         self.assertEqual(nfc(BR.maqqef_javit('אַךְטֿוֺב')), nfc('אַךְ־טוֺב'))
 
