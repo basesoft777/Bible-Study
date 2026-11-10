@@ -66,8 +66,8 @@ class TestRegiszter(unittest.TestCase):
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
     def test_101_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83 + 18)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18)
+        self.assertEqual(len(self.r.elemek), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
         self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):
@@ -717,7 +717,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83 + 18)                    # a tájoló pirula kikerült (DT-F134n)
+        self.assertEqual(len(t['regiszter']), 83 + 18 + 5)                # a tájoló pirula kikerült (DT-F134n); F104: +5 (a BDB vers szerinti jelölése)
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet
@@ -877,7 +877,9 @@ LAPOK = (
 # jelzés (.allapot.folyamat). Kódjuk és regiszter-bejegyzésük megmarad (a regiszter-őr az osztályokat külön ellenőrzi); az illesztő önteszt
 # (TestIlleszto) a szelektort mesterséges fán igazolja. Ha a fordítás egy szócikknél újra hiányzik, az elem ismét megjelenik.
 ADATALLAPOT_MIATT_NEM_ELERHETO = ('szamlalo-arany', 'allapot-folyamat')
-TOREDEKEK = ('/r/szo/G3056?ig=Jan/1/1', '/r/szo/H0430?ig=1Moz/1/1', '/r/vers/1Moz/1/1', '/r/vers/Jan/1/1')
+TOREDEKEK = ('/r/szo/G3056?ig=Jan/1/1', '/r/szo/H0430?ig=1Moz/1/1', '/r/vers/1Moz/1/1', '/r/vers/Jan/1/1',
+             # F104: az erős („a BDB itt idézi”) és a gyenge („vonatkozhat”: az igetörzs szakasza) jelölés
+             '/r/szo/H1242?ig=1Moz/1/5', '/r/szo/H3615?ig=1Moz/6/16')
 
 
 @unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
