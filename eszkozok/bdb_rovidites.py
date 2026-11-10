@@ -291,9 +291,10 @@ def maqqef_javit(szoveg):
 
 def heber_sorrend_javit(szoveg, strong, javitasok=None):
     """A Strong `javitva` héber kifejezéseinek cseréje a szövegben (betű szerint, héber betűvel nem határos előfordulás;
-    a hosszabb kifejezés elsőbbséggel, átfedés nélkül), utána a rafe-maqqéf feloldása (`maqqef_javit`, F105): a
-    megjelenítés egyetlen héber szórend-lépése, az olvasó (`blokkok._rovidites`) és a lexikon-generátor is ezt hívja."""
-    return maqqef_javit(_sorrend_csere(szoveg, strong, javitasok))
+    a hosszabb kifejezés elsőbbséggel, átfedés nélkül), utána a rafe-maqqéf feloldása (`maqqef_javit`, F105), majd a pe/mem
+    és rés/dálet betűjavítás (`betu_javit`, F185 P4): a megjelenítés egyetlen héber javító lépése, az olvasó
+    (`blokkok._rovidites`) és a lexikon-generátor is ezt hívja, az angol és a magyar szövegre egyaránt."""
+    return betu_javit(maqqef_javit(_sorrend_csere(szoveg, strong, javitasok)), strong)
 
 
 def _sorrend_csere(szoveg, strong, javitasok=None):
@@ -313,6 +314,61 @@ def _sorrend_csere(szoveg, strong, javitasok=None):
     for i, e, uj in sorted(cserek, reverse=True):
         szoveg = szoveg[:i] + uj + szoveg[e:]
     return szoveg
+
+
+# ---------------------------------------------------------------- betűjavítás (F185 P4: pe/mem, rés/dálet)
+# A `adat/bdb_forras_javitas.tsv` `pe_mem` és `res_dalet` / `javitva` sorai (a digitalizálás betűhibája: dagesses mem a pe
+# helyett, rés ↔ dálet), megjelenítéskor, MINDKÉT nyelvre: az angol forrásszövegben és a magyar fordítás (#38) héber tokenjeiben
+# is (a fordítás a hibás alakot szó szerint átvette; a `forditasok.tsv` nem íródik át). Pontos héber tokenre (betűk és
+# pontozás, NFD; a rövidítő geres nem a token része), Strongonként; a tábla a forrásbeli helyet (`sorszam`, `szo_sorszam`) a
+# magyar szövegre nem hordozza, ezért egy alak csak akkor cserélődik, ha a Strongban minden előfordulása javított (ha ugyanaz az
+# alak máshol `valodi_mem` vagy `jelolt_marad`, kimarad: nem egyértelmű).
+_BETU = None
+_TOKEN_RE = re.compile('[%s][%s%s]*' % (HEB_BETU, HEB_BETU, '\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4-\u05c7'))
+
+
+def betu_javitasok(ut=None):
+    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad)."""
+    global _BETU
+    if _BETU is not None and not ut:
+        return _BETU
+    jav, tilt = {}, {}
+    try:
+        with open(ut or JAVITAS_UT, encoding='utf-8') as f:
+            sorok = [x.rstrip('\n').split('\t') for x in f if not x.startswith('#')]
+    except OSError:
+        sorok = []
+    fej = sorok[0] if sorok else []
+    for x in sorok[1:]:
+        d = dict(zip(fej, x))
+        if d.get('hiba') not in ('pe_mem', 'res_dalet'):
+            continue
+        a = unicodedata.normalize('NFD', d.get('forras_alak', '')).strip('׳')
+        if d.get('allapot') == 'javitva' and d.get('javitott_alak'):
+            jav.setdefault(d['strong'], {}).setdefault(a, set()).add(
+                unicodedata.normalize('NFD', d['javitott_alak']).strip('׳'))
+        else:
+            tilt.setdefault(d['strong'], set()).add(a)
+    ki = {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
+          for st, t in jav.items()}
+    if not ut:
+        _BETU = ki
+    return ki
+
+
+def betu_javit(szoveg, strong, javitasok=None):
+    """A Strong pe/mem és rés/dálet javításai a szöveg héber tokenjein (pontos tokenre; a token Unicode-alakja megmarad)."""
+    t = (javitasok if javitasok is not None else betu_javitasok()).get(_strong_kulcs(strong))
+    if not t or not szoveg:
+        return szoveg
+
+    def csere(m):
+        tok = m.group(0)
+        uj = t.get(unicodedata.normalize('NFD', tok))
+        if uj is None:
+            return tok
+        return uj if tok == unicodedata.normalize('NFD', tok) else unicodedata.normalize('NFC', uj)
+    return _TOKEN_RE.sub(csere, szoveg)
 
 
 # ---------------------------------------------------------------- izolálás (a jelentés 9. szakasza)

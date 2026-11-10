@@ -228,7 +228,26 @@ class Javitas(unittest.TestCase):
             if s['allapot'] == 'javitva' and s['hiba'] == 'pe_mem':
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
                 self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
-                self.assertTrue(s['bdb_id'])
+                # a lexikon szerinti javításnak bdb_id kell; a tanús (F185 P4) javításnak a tanú `javit` ítélete
+                self.assertTrue(s['bdb_id'] or s.get('tanu', '').split(';')[0].endswith(':javit'))
+
+    def test_tanus_dontes(self):
+        # F185 P4 (DT-F185c, DT-F185d): a tanús sorok mezője `<tanú>:<szint>:<ítélet>`; `javit` → javitva, különben jelolt_marad;
+        # a rés/dálet belső döntése csak L1 (a vázszint körkörös); ellentmondásnál ketes
+        t = [s for s in self.sorok if s.get('tanu')]
+        self.assertTrue(t)
+        for s in t:
+            self.assertIn(s['hiba'], ('pe_mem', 'res_dalet'))
+            elso = s['tanu'].split(';')[0]
+            self.assertTrue(elso.startswith(('tahot/oshb:', 'sefaria-api 2026-11-10:')), s['tanu'])
+            if 'ellentmondás' in s['tanu']:
+                self.assertEqual(s['allapot'], 'jelolt_marad')
+            elif elso.endswith(':javit'):
+                self.assertEqual(s['allapot'], 'javitva')
+            else:
+                self.assertEqual(s['allapot'], 'jelolt_marad')
+            if s['hiba'] == 'res_dalet' and elso.startswith('tahot/oshb:'):
+                self.assertNotIn(':L2:', elso)
 
     def test_heber_sorrend_sorok(self):
         # DT-F131z: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers

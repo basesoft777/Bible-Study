@@ -202,3 +202,38 @@ konkordancia/lexikonok_nyers/DictBDB.json | ts=2026-11-10.*
 - **Szöveg:** 556 147 karakter. **Tokenbecslés két független Opus-kitöltőre együtt** (a #186 tényleges token/karakter
   arányaiból: 0,77; 1,32 átlag; 1,74 a seed-204-en): **≈ 0,73 M token** (sáv 0,43–0,97 M); a seed-204 aránya szerint a felső
   szél ≈ 0,97 M.
+
+## 7. P4 — forráshibák tanúval (DT-F185c, DT-F185d)
+
+*Proveniencia: scope=adat/bdb_forras_javitas.tsv `pe_mem` `jelolt_marad` (556) + `res_dalet` jelöltek (252) | forras=
+eszkozok/bdb_jelolt/belso_tanu.py (TAHOT_kivonat.tsv teljes szavak és tő-tokenek, OSHL_lexikalis_index.tsv, Strong_szotar.tsv)
++ Sefaria `/api/words` (a repón kívüli gyorsítótárból) | ts=2026-11-10.*
+
+A szabály a `belso_tanu.py` docstringjében és a SEMA 2.31 `tanu` sorában áll (belső tanú L1, majd L2; ahol kétes, Sefaria;
+ellentmondásnál `ketes`; a rés/dálet belső döntése csak L1). A javítás tételes sor a 2.31-ben (`javitva`, a `tanu`
+megnevezésével), laponkénti kézi javítás nincs.
+
+| | belső tanú dönt | Sefaria dönt | `ketes` marad | ebből `javitva` |
+|---|---:|---:|---:|---:|
+| `pe_mem` `jelolt_marad` (556) | 295 (javít 175, marad 120) | 103 (javít 48, marad 55) | 158 | 223 |
+| `res_dalet` jelölt (252) | 98 (javít 98) | 48 (javít 20, marad 28) | 106 | 118 |
+
+- **Ellentmondás: 0** — a Sefaria csak a belső tanú kétes soraira fut, így a két tanú egy soron nem dönt egyszerre; a szabály az
+  ellentmondást `ketes`-nek jelölné.
+- **Sefaria-kérések:** 415 + 122 = 537 (a P0b 360 korábbi válaszát újrahasznosítva), 0 hiba; futásidő 657 + 213 s;
+  ≥ 1,2 s szünet, User-Agent `bdb-ocr-check/1.0`; a gyorsítótár a repón kívül (`scratchpad\sefaria_cache\`), a hívó szkript is.
+  A 2.31 a gyorsítótár nélkül újragenerálva a Sefaria-ítéleteket nem kapja meg (`--sefaria-cache`; SEMA 2.31).
+- A rés/dálet jelölt-szabálya a felhasználó HAMART-esetére (H0127 „׳עָפָד”) a 3 mássalhangzós, rövidítő geresses szóra is
+  kiterjesztve (a P0b 4-es küszöbe ezt kihagyta).
+
+### 7.1 A javítás megjelenítése mindkét nyelven (az orkesztrátor kiegészítése)
+
+**(a) Előtte: nem.** A megjelenítés egyetlen héber javító lépése a `eszkozok/bdb_rovidites.py` `heber_sorrend_javit`-ja (a
+lexikon-generátor `lexikon_general.bdb_rovidites_jelol`-ja és az olvasó `olvaso_szerver/blokkok.py` 747. sora hívja, az angol
+és a magyar szövegre egyaránt), de csak a `heber_sorrend` sorokat (`sorrend_javitasok` → `_javitasok('heber_sorrend')`) és a
+maqqéf-feloldást alkalmazta; a `pe_mem` javítást csak a `nezet_general.py --pe-mem` nézet (angol) ismerte.
+**(b) Most:** a `heber_sorrend_javit` a végén a `betu_javit`-ot is hívja (új, ugyanabban a modulban): a 2.31 `pe_mem` és
+`res_dalet` `javitva` sorai Strongonként, pontos héber tokenre (betű és pontozás, NFD; a rövidítő geres nem a token része), ha a
+Strongban az alak minden előfordulása javított. A `forditasok.tsv` nem változott. Teszt: `teszt_szotari_gerinc.py`
+`F185BetuJavitas` (a `gerinc_blokk` kimenetén a H0127 magyar 4.2-blokkja: „(מִן־הָא ׳עָפָר)” és „vö. még פְּנֵי הָא׳”, a régi
+alak nélkül) — OK.

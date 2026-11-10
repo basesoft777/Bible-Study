@@ -985,5 +985,24 @@ class KetreteguBdbKartya(unittest.TestCase):
                          'erőszak, jogtalanság')
 
 
+class F185BetuJavitas(unittest.TestCase):
+    """F185 P4: a 2.31 pe/mem és rés/dálet javításai megjelenítéskor mindkét nyelvre (`bdb_rovidites.betu_javit`, a
+    `heber_sorrend_javit` része): a HAMART-001 H0127 BDB-blokkja (4.2) a magyar szövegben a javított alakot mutatja."""
+
+    def test_betu_javit_pontos_token(self):
+        import bdb_rovidites as BR
+        t = {'H0127': {'מְּנֵי': 'פְּנֵי'}}
+        self.assertEqual(BR.betu_javit('vö. még מְּנֵי הָא׳', 'H0127', t), 'vö. még פְּנֵי הָא׳')
+        self.assertEqual(BR.betu_javit('הַמְּנֵיכֶם', 'H0127', t), 'הַמְּנֵיכֶם')      # nem egész token: marad
+
+    def test_h0127_blokk_magyar(self):
+        a = LG.gerinc_adat()
+        szov = '\n'.join(LG.gerinc_blokk(a, 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')])[0])
+        self.assertIn('(מִן־הָא ׳עָפָר)', szov)            # a lap 1606. sorának esete (rés/dálet)
+        self.assertNotIn('עָפָד', szov)
+        self.assertIn('vö. még פְּנֵי הָא׳', szov)           # a lap 1616. sorának esete (pe/mem)
+        self.assertNotIn('מְּנֵי', szov)
+
+
 if __name__ == '__main__':
     unittest.main()
