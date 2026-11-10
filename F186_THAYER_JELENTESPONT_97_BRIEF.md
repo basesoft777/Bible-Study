@@ -6,9 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f186-thayer-jelentespont-97
 ad: a vers → Thayer-jelentéspont hozzárendelés vak méréssel mérve (seed-201), hibaosztályonként javítva, és új vak mérésen (seed-202) ≥ 97%, előre rögzített kapuval; a megváltozott Thayer-szakaszkulcsok tételes listája a jelentésben
-kovetkezo: "Indítható (fugg nincs). KIZAR a #121-gyel (eszkozok/thayer_jelolt/vers_jelentes.py), SORREND: a #121 előbb. A #7 következő fordítási adagja csak a #186 merge-e után indul (orkesztrátori döntés, 2026-11-10)"
+kovetkezo: "fut (2026-11-10): T1 vak mérés (seed-201) előkészítése; egyeztetett eltérés a SORREND-től: a #121 megallt, az ága nem nyúl az eszkozok/thayer_jelolt/-hoz. A #7 következő fordítási adagja csak a #186 merge-e után indul (orkesztrátori döntés, 2026-11-10)"
 olvas: [eszkozok/thayer_jelolt/, F132_THAYER_SZAKASZ_BRIEF.md, F185_BDB_JELENTESPONT_97_BRIEF.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md]
 ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_aranyminta.tsv, adat/SEMA.md, naplok/F186_jelentes.md, naplok/ELLENOR_F186.md]
 fugg: []
