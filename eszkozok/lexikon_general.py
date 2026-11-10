@@ -3365,14 +3365,6 @@ def _jel_olvasoi(jel):
     return szakasz_szoveg(jel, nevelo=False)
 
 
-def _szocikk_nev(adat, strong, bdb_id, i):
-    """A szócikk olvasói neve több szócikkes Strongnál: „I. szócikk” (a fej római száma), ennek híján „2. szócikk”."""
-    fej = next((r for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam']))
-                if r.get('bdb_id', '') == bdb_id and r['utvonal'] == 'fej'), None)
-    m = _ROMAI_LEMMA_RE.match((fej or {}).get('szoveg') or '')
-    return '%s. szócikk' % (m.group(1) if (m and m.group(1)) else i)
-
-
 def _versek_rovid(versek):
     """„1Móz 3:17, 1Móz 3:23, Sof 1:2” → „1Móz 3:17, 3:23, Sof 1:2” (az ismételt könyvnév elmarad)."""
     ki, elozo = [], None
@@ -3447,10 +3439,10 @@ def _os_pont(a, b):
     return len(pa) < len(pb) and pb[:len(pa)] == pa
 
 
-def helyek_pontjai(vers_pont, szocikkek, fej_jelentes=False):
+def helyek_pontjai(vers_pont, szocikkek):
     """F29 (b): {vers: [kulcs]} a vers → pont párokból, a vers első előfordulásának sorrendjében. A tagolatlan szócikk fej-pontja a
-    szócikk egésze; a fej-pont elmarad, ha a versnek más pontja is van (`fej_jelentes`: a Thayer feje meghatározást hordoz, ott
-    csak a többi ponttal együtt marad el); az ős-pont elmarad, ha ugyanannál a versnél a leszármazottja is áll."""
+    szócikk egésze; a fej-pont elmarad, ha a versnek más pontja is van; az ős-pont elmarad, ha ugyanannál a versnél a
+    leszármazottja is áll."""
     tagolatlan = {sz['bdb_id'] for sz in szocikkek if not sz['szakaszok']}
     pontok = collections.OrderedDict()
     for vers, k in vers_pont:
