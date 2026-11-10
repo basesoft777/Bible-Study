@@ -109,7 +109,7 @@ A teher ezért nem a CI egyes futásaiban van (1–6 perc), hanem három helyen:
 
 - **Levezetés:** a `feladatok.py szint <nn>` (vagy `--extra`) a meglévő `munka` és `ir` mezőből vezeti le a szintet, új mező nélkül (DT-F188b).
 - **A szabály kanonikus helye:** `MUNKAMENET.md` „Menet-ellenőrzés” (DT-F188c).
-- **A mai briefeken:** #181, #184, #186, #188: `teljes`; #104: `konnyitett` (DT-F188b (c) kérdés).
+- **A mai briefeken:** #181, #184, #186, #188: `teljes`; #104: `konnyitett` (DT-F188b (c) kérdés; a javítókör után `teljes`, l. „Javítókör 1/2”, 1.).
 - **Minden szinten megmarad:**
   - a PR teljes CI-je, E1–E37;
   - a modell-ellenőrzés;
@@ -142,6 +142,28 @@ A `/kovetkezo` 1. lépése: `gh run list --branch main --workflow ellenorzes --l
 
 Ebben az ágban nem végezhető el: a merge utáni első 3 PR-on fut, pontos hívással (N-F188e).
 
+## Javítókör 1/2 (`naplok/ELLENOR_F188.md`, 5 ELTÉRÉS-tétel)
+
+**Egyeztetett eltérés:** a javítókör az orkesztrátor döntésére ebben a sessionben fut, nem külön sessionben, mert az asztali alkalmazás túlterhelt (749 session). Mind az 5 tétel döntése az orkesztrátoré; a besorolás mind az 5 tételnél `mechanikus`, mert a döntés megvan, és minden érintett fájl benne van az `ir`-ben. A javítókör alapja: `df7a658b` (az ELLENOR_F188 rögzítése).
+
+1. **T5, fordított logika** (F188.4; DT-F188b (c), kiterjesztve; DT-F188c): a szint alapból `teljes`. `konnyitett` csak akkor lehet, ha az `ir` minden eleme a `feladatok.py` `SZINT_KONNYITETT_*` listájára esik: dokumentáció, koordináció, teszt, CI vagy parancs.
+   - Az olvasói kimenetet előállító kód (`SZINT_OLVASOI_*`) mindig teljes.
+   - Ugyancsak teljes: üres `ir`, ismeretlen elem, glob, perjel nélküli könyvtárnév.
+   - A mai briefeken 174 teljes és 11 könnyített: #26, #29, #32, #39, #40, #45, #47, #49, #50, #111, #112. A #104, #159, #172 és #174 teljes.
+   - Teszt: SzintTest, 8 teszt.
+2. **T4** (F188.5): a `LASSU_LEFEDETT` kiegészült az importfüggésekkel: `olvaso_pilot/`, `bdb_jelolt/`, `bdb_rovidites` és `kiejtes`, `tanulmany_regiszter`, `bdb_konyv_javit`, `normalizal`, `forditas_kapuk`, `tsk_kulcs`, `karoli_kh_szuro`. A `teszt_szintek`-nél az `adat/` és a `konkordancia/` is a listán van, mert a pilot JSON a TSV-kből épül.
+   - A kihagyási üzenet most azt mondja meg, mit nem futtatott és miért. A „CI a mérvadó” kikerült belőle, mert a CI ezeket a teszteket nem futtatja.
+   - Teszt: `test_zar.py`, köztük statikus őr: az olvasó-szerver fájlútról betöltött moduljai a listán állnak.
+3. **T3, az A ágon** (F188.6, `28ccd53b`; beolvasztva `7eec99b1`, `--no-ff`): az előjavító generált fájlba nem ír. Generált a `lexikon/`, `nyilt_mag/`, `generalt_proba/` alatti fájl és a `# GENERÁLT` / `<!-- GENERÁLT:` fejlécű fájl; a kézi fájl `GENERÁLT-KEZDET` blokkjába sem ír.
+   - Az E8 csak táblacellában és rövid (60 karakteres vagy rövidebb), egysoros adatidézetben formáz; prózában csak jelez.
+   - Teszt: `test_elojavit.py`, 27 teszt a B ágon (25 az A ágon).
+4. **Zár** (F188.7): a zár létrehozása `O_EXCL`-lel történik; az elavult zárat a váró átnevezéssel veszi át, és utána tartalmi összevetéssel ellenőrzi, hogy nem friss zárat nevezett-e át.
+   - A tartót a zár egyedi azonosítója (`azon`) jelöli, nem a pid.
+   - Kilépéskor a tartó a saját átnevezett példányát is törli.
+   - Windowson a PermissionError-t rövid ideig újrapróbálja.
+   - Teszt: két szál egy elavult zárra, 20 kör; egyszerre legfeljebb egy tartó, a végén nem marad zárfájl.
+5. **Eszkaláció** (F188.8): ha az ellenőr könnyített szintről teljesre vált, a jelentés második sora ezt írja: `SZINT-ESZKALÁCIÓ: konnyitett → teljes — …`. A `/elteres` a K kört ebből veszi: K = a levezetett szint és az eszkaláció nagyobbika.
+
 ## Folytatás a #104 merge-e után
 
 1. A T2 CI-szabállyá emelése és a szabály szövege a SEMA-ban, egy commitban (N-F188a): `SZINT`, `SZABALY_LEIRAS`, `SZABALYOK_FUGGVENYEI`, `szabalyok.py --kapulista --ir`.
@@ -163,7 +185,7 @@ Ebben az ágban nem végezhető el: a merge utáni első 3 PR-on fut, pontos hí
 
 **Mi készült:** T0, T1, T3, T4, T5, T6 kész. A T2 részben készült: a felismerés kész, a CI-szabály a #104 után jön. A T7 a merge után fut.
 
-**Döntések:** DT-F188a 🟢; DT-F188b és DT-F188c 🟡 (javaslattal).
+**Döntések:** DT-F188a 🟢; DT-F188b 🟢 (c), kiterjesztve; DT-F188c 🟢 (orkesztrátor, 2026-11-10).
 
 **Nyitott tételek:** N-F188a–e.
 
