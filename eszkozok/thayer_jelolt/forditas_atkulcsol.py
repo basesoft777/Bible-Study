@@ -115,12 +115,14 @@ def alkalmaz(sorok, fej, valtozasok, datum):
         m = uj[v['i']].split('\t')
         assert m[i_jsz] == 'sz%d' % v['regi']
         m[i_jsz] = 'sz%d' % v['uj']
+        # A megjegyzés szövege bájtra az, amit az F186.9 a forditasok.tsv-be írt (ELLENOR_F186 2e): a helyőrzőt az adatban a
+        # szamkiosztas merge-kor cseréli, a .py-ban nem; ezért a két sor szándékosan történeti literál (e32-kihagy).
         if v['tipus'] == 'atkulcsol':
-            jegy = 'F186 (%s): átkulcsolva sz%d → sz%d, azonos forras_hash (a szakaszok újraszámozása, F186 átkulcsolás)' % (datum, v['regi'], v['uj'])
+            jegy = 'F186 (%s): átkulcsolva sz%d → sz%d, azonos forras_hash (a szakaszok újraszámozása; DT-F186b)' % (datum, v['regi'], v['uj'])  # e32-kihagy
         else:
             m[i_all] = 'elavult'
             jegy = ('F186 (%s): elavult — a forrásbekezdés szövege a szakasztáblában megváltozott (bekezdésen belüli fej vagy hamis '
-                    'fej); sz%d → sz%d, a bekezdés új kezdő szakasza (F186 átkulcsolás)' % (datum, v['regi'], v['uj']))
+                    'fej); sz%d → sz%d, a bekezdés új kezdő szakasza (DT-F186b)' % (datum, v['regi'], v['uj']))  # e32-kihagy
         m[i_megj] = '; '.join(x for x in (m[i_megj], jegy) if x)
         uj[v['i']] = '\t'.join(m)
     return uj
