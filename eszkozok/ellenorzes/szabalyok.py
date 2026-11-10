@@ -249,7 +249,7 @@ SZANDEKOS_JELOLES_MINTA = re.compile(
 
 
 # DT-F<nn><betu> / N-F<nn><betu> helyorzo (a betu elhagyhato)
-HELYORZO_MINTA = re.compile(r'\b(DT|N)-F\d+[a-z]?\b')
+HELYORZO_MINTA = re.compile(r'\b(DT|N)-F\d+[a-z]*\b')
 
 
 def _cimsor_szoveg_kulcs(cimsor):
@@ -1419,9 +1419,9 @@ _E26_VEGLEGES_DEF = {
     'D': re.compile(r'^\|\s*(D\d+)\s*\|'),
 }
 _E26_HELYORZO_DEF = {
-    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]?)\s*\|'),
-    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]?)(?![A-Za-z0-9])'),
-    'D': re.compile(r'^\|\s*(D-F\d+[a-z]?)\s*\|'),
+    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]*)\s*\|'),
+    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]*)(?![A-Za-z0-9])'),
+    'D': re.compile(r'^\|\s*(D-F\d+[a-z]*)\s*\|'),
 }
 _E26_DT_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])DT(\d+)(?![A-Za-z0-9])')
 _E26_N_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])N(\d{1,3})(?![A-Za-z0-9])')
@@ -2560,7 +2560,7 @@ E32_KIZART_FAJLOK = {
 }
 E32_KIZART_ELOTAG = ('eszkozok/ellenorzes/tesztek/',)
 E32_KIHAGY_JELOLESEK = ('e32-kihagy', 'szamkiosztas-kihagy')
-_E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]?)\s*→\s*((?:DT|N|D)\d+)')
+_E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]*)\s*→\s*((?:DT|N|D)\d+)')
 
 
 def _szamkiosztas_modul():
@@ -2703,7 +2703,7 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
     varo = {} if fajlok and fajlok[0] == '__TELJES__' else _e32_kiosztasra_varo()
     if not kiosztott and not varo:
         return talalatok
-    minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]?(?![A-Za-z0-9-])')
+    minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]*(?![A-Za-z0-9-])')
     for relut in py_fajlok:
         ut = os.path.join(ROOT, *relut.split('/'))
         try:

@@ -36,11 +36,15 @@ DONTESEK = (
     '| DT5 | #5 ot |\n'
     '| DT-F40b | #40 masodik |\n'
     '| DT-F40a | #40 elso |\n'
+    '| DT-F40ab | #40 ketbetus utotag |\n'
 )
 NYITOTT = (
     '# Nyitott\n\n'
     '- **N7 -- regi tetel.**\n'
     '- **N-F40a -- uj tetel** (l. DT-F40a)\n'
+    '- **N-F40ab -- ketbetus utotag**\n'
+    # ÚJ-alaku sor: NEM definicios sor, ezert arva marad, nem kap szamot
+    '* **ÚJ (F40, 2026-11-08) — N-F40x: nem definicios alak.**\n'
 )
 FELADATOK = (
     '# Feladatok\n\n## Dontesnaplo\n\n'
@@ -48,7 +52,7 @@ FELADATOK = (
     '| D3 | regi |\n'
     '| D-F40 | uj |\n'
 )
-NAPLO = ('A DT-F40a es a DT-F40b dontes, N-F40a nyitott, D-F40 napló. DT-F99 arva. DT-F40ab nem helyorzo.\n'
+NAPLO = ('A DT-F40a es a DT-F40b dontes, N-F40a nyitott, D-F40 napló. DT-F99 arva. DT-F40ab ketbetus helyorzo.\n'
          # brief belso dontesnaploja (F51 K0): kotojel + sorszam -- nem helyorzo, nem arva
          'Belso dontes: DT-F40a-3 es DT-F51-2 (kotojeles alak).\n')
 
@@ -76,10 +80,10 @@ class SzamkiosztasTeszt(unittest.TestCase):
         with _Gyoker() as gy:
             h, figy, arvak = SK.terv(gy)
             self.assertEqual(list(h.items()), [
-                ('DT-F40b', 'DT6'), ('DT-F40a', 'DT7'),
-                ('N-F40a', 'N8'), ('D-F40', 'D4')])
+                ('DT-F40b', 'DT6'), ('DT-F40a', 'DT7'), ('DT-F40ab', 'DT8'),
+                ('N-F40a', 'N8'), ('N-F40ab', 'N9'), ('D-F40', 'D4')])
             # a kotojeles DT-F51-2 nem helyorzo: nem arva (konzisztencia 2026-10-06, 2. talalat)
-            self.assertEqual(arvak, ['DT-F99'])
+            self.assertEqual(arvak, ['DT-F99', 'N-F40x'])
 
     def test_ir_cserel_es_idempotens(self):
         with _Gyoker() as gy:
@@ -88,7 +92,11 @@ class SzamkiosztasTeszt(unittest.TestCase):
             self.assertIn('| DT6 | #40 masodik |', _olvas(gy, 'DONTESEK.md'))
             self.assertIn('A DT7 es a DT6 dont', _olvas(gy, 'naplo.md'))
             self.assertIn('DT-F99 arva', _olvas(gy, 'naplo.md'))
-            self.assertIn('DT-F40ab nem helyorzo', _olvas(gy, 'naplo.md'))
+            # a ketbetus utotag teljes szokent kap szamot, a DT-F40a cserje nem rontja el (ütközésmentes sorrend)
+            self.assertIn('DT8 ketbetus helyorzo', _olvas(gy, 'naplo.md'))
+            self.assertIn('| DT8 | #40 ketbetus utotag |', _olvas(gy, 'DONTESEK.md'))
+            self.assertIn('- **N9 -- ketbetus utotag**', _olvas(gy, 'NYITOTT_FELADATOK.md'))
+            self.assertIn('N-F40x', _olvas(gy, 'NYITOTT_FELADATOK.md'))
             # a kotojeles belso azonosito erintetlen: a DT-F40a-3 nem lett DT7-3
             self.assertIn('DT-F40a-3 es DT-F51-2', _olvas(gy, 'naplo.md'))
             self.assertIn('napló', _olvas(gy, 'naplo.md'))
