@@ -15,6 +15,10 @@ veszik át; a `kiesik` és a `jelolt` nem jut a lapra / az indexbe (a `jelolt` a
   `hu_megjelenites(sor)`: a hivatkozás magyar megjelenítése a repó egységes könyvnevével (`ApCsel`, `Ézs`, `Mt`: a
       `Konyv_normalizalo_tabla.tsv` 2. oszlopa). A HunKar-tábla saját megjelenítése szentiras.hu-alakú (`Csel`, `Ésa`,
       `Mát`), a `mek_sorok` a repó alakját adja; a fogyasztók ezen át egy listában sem keverik a kettőt (F181 E6).
+  `kulcs(sor)` / `egyedi(sorok, kulcs=kulcs)`: a fogyasztóknak átadott sorok kulcs szerinti egyediesítése (F181.33, DT-F181p):
+      azonos (Igehely, Kapcsolódó igehely) kulcsú sor csak egyszer (az első előfordulás, a sorrend marad) jut át, a
+      javított tábla kulcsdefiníciójával összhangban (a HunKar-forrástábla duplikátumait itt zárja ki, nem fogyasztónként).
+      A `kulcs` paraméter a nem-szótár sorokhoz (pl. listasor: `lambda r: (r[0], r[1])`).
   `gyanus_forrasok()`: ARCHÍV — a megszűnt karantén (`Karoli_kereszthivatkozasok_gyanus.tsv`) forrásversei; szűrésre NEM
       használandó (a karantén megszűnt, DT-F177a), csak az archívum tesztjéhez és a történeti hivatkozáshoz marad.
 """
@@ -47,6 +51,24 @@ def _javitott():
                         ki[k] = m[2]
         _SZINT = ki
     return _SZINT
+
+
+def kulcs(sor):
+    """A javított tábla kulcsa a HunKar-/MEK-szótársor alakjában: (forrásvers, kapcsolódó igehely)."""
+    return (sor['Igehely'], sor['Kapcsolódó igehely'])
+
+
+def egyedi(sorok, kulcs=kulcs):
+    """Az azonos kulcsú sorokból csak az elsőt adja (sorrendtartó); l. a modul docstringjét (DT-F181p)."""
+    lattott = set()
+    ki = []
+    for r in sorok:
+        k = kulcs(r)
+        if k in lattott:
+            continue
+        lattott.add(k)
+        ki.append(r)
+    return ki
 
 
 def szint(forras, cel):

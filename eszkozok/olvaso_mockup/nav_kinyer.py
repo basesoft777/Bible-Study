@@ -38,17 +38,21 @@ for s in strongok:
 sys.path.insert(0, f'{ROOT}/eszkozok')
 import karoli_kh_szuro  # noqa: E402  (F177)
 kh = defaultdict(list)
+_kh_sorok = []
 with open(f'{ROOT}/konkordancia/Karoli_kereszthivatkozasok.tsv', encoding='utf-8') as f:
     next(f)
     for s in f:
         m = s.rstrip('\n').split('\t')
-        if m[0].startswith('Jol.2.') and karoli_kh_szuro.elfogad(m[0], m[1]):
+        if m[0].startswith('Jol.2.'):
             # F181 E6: a repó egységes könyvnevével (ApCsel, nem Csel)
-            kh[f"{KONYV} {FEJ}:{m[0].split('.')[2]}"].append(karoli_kh_szuro.hu_megjelenites(
-                {'Kapcsolódó igehely': m[1], 'Kapcsolódó igehely magyar megjelenítése': m[2]}))
+            _kh_sorok.append({'Igehely': m[0], 'Kapcsolódó igehely': m[1],
+                              'Kapcsolódó igehely magyar megjelenítése': karoli_kh_szuro.hu_megjelenites(
+                                  {'Kapcsolódó igehely': m[1], 'Kapcsolódó igehely magyar megjelenítése': m[2]})})
 # F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
-for x in karoli_kh_szuro.mek_sorok():
-    if x['Igehely'].startswith('Jol.2.') and karoli_kh_szuro.elfogad(x['Igehely'], x['Kapcsolódó igehely']):
+_kh_sorok += [x for x in karoli_kh_szuro.mek_sorok() if x['Igehely'].startswith('Jol.2.')]
+# F181.33 (DT-F181p): azonos kulcsú sor egyszer (karoli_kh_szuro.egyedi)
+for x in karoli_kh_szuro.egyedi(_kh_sorok):
+    if karoli_kh_szuro.elfogad(x['Igehely'], x['Kapcsolódó igehely']):
         kh[f"{KONYV} {FEJ}:{x['Igehely'].split('.')[2]}"].append(x['Kapcsolódó igehely magyar megjelenítése'])
 
 nave = defaultdict(list)

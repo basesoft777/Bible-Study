@@ -722,6 +722,33 @@ class RepoTablak(unittest.TestCase):
         for r in SZ.mek_sorok():
             self.assertEqual(SZ.hu_megjelenites(r), r['Kapcsolódó igehely magyar megjelenítése'])
 
+    def _hunkar_szotar_sorok(self, forras):
+        """A HunKar-forrástábla nyers sorai (duplikátumokkal) szótárként, mint ahogy a fogyasztók olvassák (F181.33)."""
+        return [{'Igehely': f, 'Kapcsolódó igehely': c, 'Kapcsolódó igehely magyar megjelenítése': d}
+                for f, c, d in (m[:3] for m in K.tsv_sorok(K.HUNKAR) if len(m) > 2) if f == forras]
+
+    def test_egyedi_kulcs_szerint_a_fogyasztoknak(self):
+        """F181.33 (DT-F181p): azonos (Igehely, Kapcsolódó igehely) kulcsú sor egyszer jut át a fogyasztóknak."""
+        # a mesterséges eset: a sorrend marad, az első előfordulás él
+        a = {'Igehely': 'X.1.1', 'Kapcsolódó igehely': 'Y.1.1', 'Kapcsolódó igehely magyar megjelenítése': 'a'}
+        b = dict(a, **{'Kapcsolódó igehely': 'Y.1.2'})
+        self.assertEqual(SZ.egyedi([a, b, dict(a)]), [a, b])
+        self.assertEqual(SZ.egyedi([['X', 'Y', 1], ['X', 'Y', 2]], kulcs=lambda r: (r[0], r[1])), [['X', 'Y', 1]])
+        # 1Kir 11:11 -> 1Kir 6:12: a HunKar-forrástáblában kétszer áll, a fogyasztónak egyszer
+        nyers = self._hunkar_szotar_sorok('1Ki.11.11')
+        self.assertEqual(sum(1 for r in nyers if r['Kapcsolódó igehely'] == '1Ki.6.12'), 2)
+        egyedi = SZ.egyedi(nyers + SZ.mek_sorok('1Ki.11.11'))
+        self.assertEqual(sum(1 for r in egyedi if r['Kapcsolódó igehely'] == '1Ki.6.12'), 1)
+        self.assertEqual(len(egyedi), len({SZ.kulcs(r) for r in egyedi}))
+        # Józs 2:15: a nem megerősített sorok száma egyedi kulcsokra (a javított tábla 3 HunKar-sort tart, a nyers 4)
+        nyers = self._hunkar_szotar_sorok('Jos.2.15')
+        self.assertEqual(len(nyers), 4)
+        egyedi = SZ.egyedi(nyers)
+        self.assertEqual(len(egyedi), 3)
+        self.assertEqual(sum(1 for r in egyedi if not SZ.elfogad(r['Igehely'], r['Kapcsolódó igehely'])), 3)
+        jav_hunkar = [m for m in self.jav if m[0] == 'Jos.2.15' and m[3].startswith('HunKar')]
+        self.assertEqual(len(jav_hunkar), len(egyedi))
+
     def test_szuroproba_reprodukalhato_es_itelet_nelkuli(self):
         """ELLENOR_F181 E5: a szúrópróba a rögzített maggal ismételhető; az ítélet- és indok-oszlop üres (az ítéletet
         Opus hozza, DT-F181j); a mintában az E2-szűrt és a megerősített HunKar-sor is szerepel."""

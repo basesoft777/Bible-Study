@@ -575,6 +575,7 @@ def cmd_karoli(args):
         kh_nyers += karoli_kh_szuro.mek_sorok(step_key)
     # F177: csak a MEK-kel megerősített sor jut tovább (konkordancia/Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad);
     # a kiesik és a jelolt szintű sor nem (a jelöltlistán marad).
+    kh_nyers = karoli_kh_szuro.egyedi(kh_nyers)  # F181.33 (DT-F181p): azonos kulcsú sor egyszer
     kh_hits = [r for r in kh_nyers if karoli_kh_szuro.elfogad(step_key, r["Kapcsolódó igehely"])]
     if len(kh_hits) < len(kh_nyers):
         print(f"# Károli-KH ({igehely}) — {len(kh_hits)} kapcsolódó igehely (megerősített); "

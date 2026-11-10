@@ -200,7 +200,8 @@ _KH_FEJ = ['Igehely', 'Kapcsolódó igehely', 'Kapcsolódó igehely magyar megje
 # F181 E6: a HunKar-sor megjelenítése is a repó egységes könyvnevével (ApCsel, nem Csel)
 _HK_KH = [r[:2] + [karoli_kh_szuro.hu_megjelenites(dict(zip(_KH_FEJ, r)))] + r[3:] if len(r) > 2 else r
           for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv')]
-for r in _HK_KH + _MEK_KH:
+# F181.33 (DT-F181p): azonos kulcsú sor egyszer (karoli_kh_szuro.egyedi)
+for r in karoli_kh_szuro.egyedi([r for r in _HK_KH + _MEK_KH if len(r) > 1], kulcs=lambda r: (r[0], r[1])):
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
     if m and len(r) > 2 and karoli_kh_szuro.elfogad(r[0], r[1]):
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))

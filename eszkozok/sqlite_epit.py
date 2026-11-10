@@ -742,7 +742,8 @@ class Epito(object):
         kh = []
         # F177: csak a MEK-kel megerősített sor kerül be (Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad)
         # F181: a csak a MEK-ben álló, megerősített sorok is (KHSZ.mek_sorok)
-        for r in list(G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]) + KHSZ.mek_sorok():
+        # F181.33 (DT-F181p): azonos kulcsú sor egyszer (KHSZ.egyedi)
+        for r in KHSZ.egyedi(list(G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]) + KHSZ.mek_sorok()):
             if not KHSZ.elfogad(r['Igehely'], r['Kapcsolódó igehely']):
                 continue
             fo = self.konyvek.step_igehely(r['Igehely'])
