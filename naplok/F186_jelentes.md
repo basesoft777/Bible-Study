@@ -820,7 +820,7 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   hozta a 4.a fejet, és a példahelyet csak a második blokkban kereste: a „1Kor 2:14 … kiemelés nincs” megjegyzés valótlan volt.
 - **Javítás** (`bont.osszevon`, a generátorhoz nem nyúltam): az egymást követő, azonos útvonalú szakaszok (a `cim` kivételével)
   egy szakasszá vonódnak; a nyers HTML-t `\n<p>\n` köti (a sima szövegben szóköz, a `</ref>` utáni folytatás-lánc nem fut át
-  rajta). 55 pár, 44 Strong. **A szakasztábla 17 317 → 17 261 sor**; az illesztés változatlan (5 411 + 15).
+  rajta). 56 összevonás (55 pár és 1 `fej`-pár), 44 Strong: **56 szakasz esett ki, a szakasztábla 17 317 → 17 261 sor**; az illesztés változatlan (5 411 + 15).
 - **Igazolás:** a `thayer_vers_jelentes.tsv` a `szakasz` és a `proveniencia` mezőn kívül bájtra azonos (64 431 sor, 0 eltérés;
   4 853 szakasz-mutató változott). A mérés útvonal-szintű, ezért a seed-201–204 eredménye változatlan (a mai kódon: 199, 198,
   194, 196 — ugyanaz, mint az összevonás előtt; a mérés pillanatában: 189, 192, 194, 196).
@@ -832,17 +832,27 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   a szövege az összefűzött sorban marad — két sor egy kulcson nem állhat), 28 `elavult` sor áthelyezve; 31 Strong. Az F186.17
   bájtbizonyítása az összevonás előtti táblára (1f408b47) vonatkozik; az első kör útja (`bekezdes_elso`) ezért az összevonás
   előtti nézetet használja.
-- **A lapon szereplő Strongok:** a G4151 (sz13: 4.a + töredék) és a G5590 (sz5: 1.b + töredék) összevont szakasza elavult. A
-  #132 láncával újrafordítva, ugyanazzal a Sonnet subagenttel (`claude-sonnet-5-5`, előfizetésből): a G4151-nél az elavult
-  szakaszt tartalmazó c3 csoport (⟪13⟫) új fordítása, a többi 15 szakasz a meglévő, hash-egyező fordítás; a G5590-nél az egyetlen
-  csoport teljes új fordítása (10 szakasz). Minden kapu első körre RENDBEN (`15_tiltott`, `16_sigla` is); 26 sor. Az új szöveget
-  átolvastam: elírás nincs; a „8:18>”, „20:28>” jel a forrásé (a `Thayer_teljes.tsv` 238 helyén áll ilyen).
+- **A lapon szereplő Strongok** (tényre javítva, ELLENOR_F186_3 1g, 1h; „a korlát fölött, engedéllyel javítva” (ELLENOR_F186_3)): a G4151 (sz13: 4.a + töredék) és a
+  G5590 (sz5: 1.b + töredék) összevont szakasza elavult lett.
+  - **G4151:** a #132 láncával az elavult szakaszt tartalmazó c3 csoport (⟪13⟫) **új fordítása** készült (Sonnet subagent,
+    `claude-sonnet-5-5`, előfizetésből; a szöveg valóban új). A többi 15 sor szövege változatlan, csak a vázlat része volt; az F186.32
+    tévesen átírta a `datum`-ukat és a `terminologia_verzio`-jukat, az F186.42 visszaállította.
+  - **G5590: új fordítás nem készült.** A subagent a korábbi (F186.13) szöveget adta vissza: a 10 sorból 9 szövege bájtra
+    változatlan (csak átkulcsolás érte), az sz5 a régi sz5 és sz6 gépi összefűzése, változatlan szöveggel. Az F186.32 „újrafordítva”
+    jegye és a korábbi „teljes új fordítás” állítás valótlan volt; az F186.43 a sorokat az F186.28 utáni (F186.13-as) mezőkre
+    állította vissza, az sz5 jegye: „összefűzve (sz5+sz6), szöveg változatlan, F186”, `sonnet`, az összevont szakasz
+    `forras_hash`-ével (a mai sz5 forrásszövege bájtra a régi sz5 és sz6 szóközzel fűzött szövege; mind az 52 összevont csoportban
+    így van).
+  - Minden kapu első körre RENDBEN (`15_tiltott`, `16_sigla` is). A „8:18>”, „20:28>” jel a forrásé (a `Thayer_teljes.tsv` 238
+    helyén áll ilyen).
 - **Végső számok (az adatból):**
   - szakaszkulcsok az F186 előtti táblához képest (6289c687): **184 Strong, 1 299 megváltozott kulcs** (13. melléklet; a 9.5 a
     második kör előtti állapot);
-  - `forditasok.tsv`, Thayer `sz`-sorok: **2 883, ebből 142 `elavult`**; az első kör jelölése 578 átkulcsolt és 105 elavult soron
-    áll (a 588/117-ből a G4151 és a G5590 újrafordított, valamint a második körben összefűzött sorok kivonva), a második köré 409
-    soron;
+  - `forditasok.tsv`, Thayer `sz`-sorok: **2 883, ebből 142 `elavult`**, és **38 összevonási tagsor** (`sz<új>~<régi>`,
+    `elavult`; DT-F186f, F186.42); az első kör jelölése **588** átkulcsolt és **117** elavult soron áll (a tagsorok és a G4151/G5590
+    visszaállított sorai hordozzák újra); a második köré **407** soron (342 átkulcsolt, 28 áthelyezett, 4 elavult, 33 összefűzött)
+    és a 38 tagsoron — az ELLENOR_F186_3 számolta 399-hez képest a G4151 és a G5590 8 átkulcsolt sorának visszaállt jegye a
+    különbség;
   - az `ellenoriz.py` 13. szabálya: **JELENTÉS (218): 142 `elavult` sor vár újrafordításra, 76 Thayer-Strong fordítatlan
     szakasszal, egyik sem lexikonlapon; SÉRTÉS 0.**
 - **Generátorhiba a regenerált lapon:** nem maradt. A „kiemelés nincs” megjegyzés a lapon már sehol nem áll; a G4151 4.a egyetlen
@@ -867,11 +877,12 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
 - `origin/main` (75b04e6a, benne a #104 generátorváltozása) beolvasztva merge committal, ütközés nélkül.
 - **E28** (a CI-vel azonos futtatás, `--diff-alap` a merge-alap): egyetlen lapot jelzett, az ANTROP-001-et; újragenerálva a lap
   dátumával (`PARDES_DATUM=2026-11-04`), a repón kívüli generálással bájtra azonos.
-- **A teljes lapdiff a main-hez képest (62 sor), tételesen — mind a #186-ból:**
+- **A teljes lapdiff a main-hez képest (33 sor: 17 törölt + 16 új; `git diff --numstat 75b04e6a HEAD`), tételesen — mind a #186-ból:**
   1. [^6], [^8]: a G5591 példahelye „Thayer fej” → „Thayer a” (K1);
   2. G4151 4.a: egyetlen blokk, az új ⟪13⟫-fordítással; a csukott cím „4.b – 5 (4 szakasz)” → „(3 szakasz)”, a „`4.b` — bb.”
      töredéksor eltűnt (összevonás);
-  3. G5590: a fej és az 1.a, 1.b, 1.c, 2, 2.a, 2.b új fordítása (F186.32), a szerkezet (az 1.b az „alább), 2Kor 12:15.”
+  3. G5590: a fej és az 1.a, 1.b, 1.c, 2, 2.a, 2.b szövege a main-hez képest más (az F186.13 fordítása; az F186.32 nem fordított
+     újra), a szerkezet (az 1.b az „alább), 2Kor 12:15.”
      töredékkel egy szakasz; a 2 bekezdésen belüli „a.” → új `2.a`), a csukott 2.b-cím;
   4. két kutatói megjegyzés kiesett (1Kor 15:45 „-/1/c”; 1Kor 15:44, 15:46 „fej”), mert a példahely most a megfelelő blokkban
      áll; G5591: új `a` blokk.
