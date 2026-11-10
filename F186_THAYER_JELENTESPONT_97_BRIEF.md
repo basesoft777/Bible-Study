@@ -10,7 +10,7 @@ allapot: megallt
 ag: claude/f186-thayer-jelentespont-97
 ad: a vers → Thayer-jelentéspont hozzárendelés vak méréssel mérve (seed-201), hibaosztályonként javítva, és új vak mérésen (seed-202) ≥ 97%, előre rögzített kapuval; a megváltozott Thayer-szakaszkulcsok tételes listája a jelentésben
 kovetkezo: "Te: [elteres_kor 1/2] /elteres 186 — újraellenőrzés függ: naplok/ELLENOR_F186_2.md"
-olvas: [eszkozok/thayer_jelolt/, F132_THAYER_SZAKASZ_BRIEF.md, F185_BDB_JELENTESPONT_97_BRIEF.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md]
+olvas: [eszkozok/thayer_jelolt/, F132_THAYER_SZAKASZ_BRIEF.md, F185_BDB_JELENTESPONT_97_BRIEF.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, tematikus_lezart/ANTROP-001*, tematikus_lezart/naplok/ANTROP-001*]
 ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_aranyminta.tsv, adat/SEMA.md, naplok/F186_jelentes.md, naplok/ELLENOR_F186.md, adat/forditasok.tsv, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/thayer_jelolt/forras_javit.py, eszkozok/thayer_jelolt/forditas_atkulcsol.py, eszkozok/thayer_jelolt/teszt_forditas_atkulcsol.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, naplok/F132_THAYER_SZAKASZ_munka.tsv, dontesek/uj/f186-thayer-jelentespont-97.md, nyitott/uj/f186-thayer-jelentespont-97.md, naplok/F186_zaras.md, lexikon/ANTROP-001_TUDOMANYOS.md, naplok/ELLENOR_F186_2.md]
 fugg: []
 ---
