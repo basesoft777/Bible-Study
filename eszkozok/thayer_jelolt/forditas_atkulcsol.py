@@ -116,11 +116,11 @@ def alkalmaz(sorok, fej, valtozasok, datum):
         assert m[i_jsz] == 'sz%d' % v['regi']
         m[i_jsz] = 'sz%d' % v['uj']
         if v['tipus'] == 'atkulcsol':
-            jegy = 'F186 (%s): átkulcsolva sz%d → sz%d, azonos forras_hash (a szakaszok újraszámozása; DT-F186b)' % (datum, v['regi'], v['uj'])
+            jegy = 'F186 (%s): átkulcsolva sz%d → sz%d, azonos forras_hash (a szakaszok újraszámozása, F186 átkulcsolás)' % (datum, v['regi'], v['uj'])
         else:
             m[i_all] = 'elavult'
             jegy = ('F186 (%s): elavult — a forrásbekezdés szövege a szakasztáblában megváltozott (bekezdésen belüli fej vagy hamis '
-                    'fej); sz%d → sz%d, a bekezdés új kezdő szakasza (DT-F186b)' % (datum, v['regi'], v['uj']))
+                    'fej); sz%d → sz%d, a bekezdés új kezdő szakasza (F186 átkulcsolás)' % (datum, v['regi'], v['uj']))
         m[i_megj] = '; '.join(x for x in (m[i_megj], jegy) if x)
         uj[v['i']] = '\t'.join(m)
     return uj

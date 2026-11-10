@@ -158,7 +158,10 @@ ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
 # N-F186a); K4 — forrás-torzulás („5 B a Hebraism”). Soronként: U014 (K2b) — a „d. at the end)” hamis fej a második körben
 # felismerve, de a forrás a „c.” alatti görög α-t félkövér „a.”-ként írja, így az útvonal B.II/3/a (a visszaugró betű
 # szabálya a korpuszon több valódi fejet nyelt el, ezért nincs bevezetve)
-NEM_JAVITOTT = {'K3', 'K4'}
+# A seed-203 (a kapu mérése, 194/200) maradék osztályai mérve, nem javítva (a javítás új független mérést kívánna): K1d (belső
+# fej a „Rec.” után), K2c (további utalás-töredék alakok: „b. e. above)”, „c. and d.;”, „d. drei erst.”), K2d (félkövér fej
+# zárójeles etimológiában), K5 (görög α félkövér latin „a.”-ként; az U014 is ez).
+NEM_JAVITOTT = {'K3', 'K4', 'K1d', 'K2c', 'K2d', 'K5'}
 NEM_JAVITOTT_SOR = {'U014'}
 
 

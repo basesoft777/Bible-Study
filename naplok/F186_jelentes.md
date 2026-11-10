@@ -337,6 +337,52 @@ seed-202 **1 150 029** (a szócikkszöveg 770 ezer, ill. 705 ezer karakter). A s
 (négy Opus-kitöltő, 2 × 2 köteg, ~160 szócikk): **becslés 1,17 M token (sáv 1,10–1,25 M)**, plusz a végrehajtó saját
 összevetése és ítélete (elhanyagolható, < 0,05 M). **1,5 M alatt: a mérés indul.**
 
+### 9.6 A seed-203 vak mérés (a kapu mérése, a második kör utáni táblán)
+
+*Proveniencia: scope=seed-203 (200 ÚSZ-hivatkozás, 172 szócikk; a seed-201 és -202 sorai kizárva) | forras=adat/thayer_vers_jelentes.tsv
+(F186.9 utáni állapot) + Thayer.lexicon + négy vak kitöltés (A1, A2, B1, B2; mind `claude-opus-5-5`, ugyanaz az utasítás) +
+kézi ítélet (claude-opus-5-5) | ts=2026-11-10. Soronként: `adat/thayer_aranyminta.tsv` (`seed = 203`).*
+
+**Tényleges tokenfogyasztás:** 673 097 (A1 160 976, A2 183 412, B1 160 595, B2 168 114) — a becslés (1,17 M) alatt.
+
+| mutató | gépi = arany | arány | Wilson 95% |
+|---|---:|---:|---|
+| könyv/vers | **200 / 200** | 100,0% | 98,1–100,0 |
+| jelentéspont (fő mutató) | **194 / 200** | **97,0%** | 93,6–98,6 |
+| tájékoztató: A kitöltő / B kitöltő a gépivel | 194 / 191 | | |
+
+- **Rétegenként:** gyakori 96/100, ritka 98/100.
+- **A kapu (≥ 194/200): TELJESÜL** (pontosan a küszöbön). A Wilson-intervallum alsó határa 93,6%: a pontbecslés 97%, a
+  97% mint alsó korlát nem igazolt — ezt a lapon a CI-vel együtt kell közölni (#187).
+- **A kitöltők** most három sorban eltértek egymástól (V046, V121, V123): mindháromban az A és a gépi helyes, a B kitöltő
+  egy szintet elhagyott (`kitolto_hiba`).
+
+**A hat hozzárendelés-hiba (új alosztályok; mérve, nem javítva — a javítás után újabb független mérés kellene):**
+
+| azon | Strong | gépi | arany | osztály | forrásidézet (rövidítve) |
+|---|---|---|---|---|---|
+| V007 | G5547 | -/2/a | -/2/b | K1d | „… Act 19:4 Rec. b. ὁ Χριστός is a proper name … 2Co 13:5” — a „Rec.” utáni belső fej |
+| V042 | G2443 | II/1/b | II/1/c | K2c | „**b.** e. above); … Rev 22:14” — utalás-töredék |
+| V069 | G1519 | B.I/1/c | B.I/1/- | K2c | „**c.** and d.; … Act 2:20” — utalás-töredék |
+| V095 | G4990 | -/-/d | fej | K2c | „**d.** drei erst. Evang. …”, „**c.** 6, p. 397{b}” — irodalmi hivatkozás töredéke |
+| V092 | G0536 | -/-/b | -/-/a | K2d | „(from ἀπάρχομαι: **a.** … **b.** …) … employed a. of persons … 2Th 2:13” — zárójeles etimológia félkövér betűi |
+| V023 | G1519 | B.II/2/a | B.II/2/c | K5 | „**c.** of the mood …” alatt „**a.** in a good sense” — görög α latin „a.”-ként (az U014 is ez) |
+
+**Összkép a három mérésen** (a gépi kimenet a mérés pillanatában): seed-201 189/200 (94,5%) → seed-202 192/200 (96,0%) →
+**seed-203 194/200 (97,0%)**. A hiba mindhárom mérésben a nagy, sokszintű szócikkek (gyakori réteg) forrás-HTML-jének
+töredezettségéből jön; a ritka réteg 98–100%. A T3 nem kell (a seed-203 teljesül).
+
+### 9.7 Ellenőrző futások (a végső állapoton, 2026-11-10)
+
+- `teszt_bont.py` OK (36 teszt), `teszt_vers_jelentes.py` OK (17), `teszt_forditas_atkulcsol.py` OK (9);
+  `teszt_lanc.py`: 43-ból 42 OK — a `Betolto.test_ellenoriz` a DT-F186c javítással zöld; a
+  `Sigla.test_tabla_determinisztikus_es_kezi_vedett` bukik, de ez már a #186 előtt is bukott (`thayer_sigla.tsv`, 66 ≠ 60).
+- `--ellenoriz`: a `thayer_szakaszok`, `thayer_vers_jelentes`, `thayer_forras_javitas` bájtra azonos.
+- `python eszkozok/feladatok.py ellenoriz`: 204 brief, 0 hiba, 0 figyelmeztetés.
+- `python eszkozok/ellenoriz.py`: RENDBEN 26, KÉZI 2, JELENTÉS 14, **SÉRTÉS 1: a 13. szabály (186)** — 9.2, N-F186c.
+- CI E32 (kiosztott helyőrző literálban): a módosított `.py` fájlokon tiszta (az átkulcsoló literálja számfüggetlen; a
+  `forditasok.tsv` 708 `megjegyzes`-ében a `DT-F186b` helyőrző áll, ezt a `szamkiosztas` merge-kor cseréli).
+
 ### 9.4 Az érintett Strongok és fordítássoraik (DT-F186b; `forditas_atkulcsol.py --lista`)
 
 Az újrafordítás (a 118 `elavult` sor és a fordítatlan új szakaszok) a #7-é. HAMART-szó a listában nincs.

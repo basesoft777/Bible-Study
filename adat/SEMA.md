@@ -2188,15 +2188,15 @@ veti össze vele (hibaosztályonként).
 
 | Oszlop | Jelentés |
 |---|---|
-| `seed` | a minta seedje (`201`: a javítás előtti mérés, a T2 tesztjei erre épülnek; `202`: a független ismételt mérés) |
-| `azon` | a mintasor azonosítója (`T001`–`T200`, `U001`–`U200`) |
+| `seed` | a minta seedje (`201`: a javítás előtti mérés; `202`: a T2 utáni független mérés; `203`: a második szabálykör utáni független mérés, a kapu mérése — 194/200; a tesztek mindháromra épülnek) |
+| `azon` | a mintasor azonosítója (`T001`–`T200`, `U001`–`U200`, `V001`–`V200`) |
 | `reteg` | `gyakori` \| `ritka` (a Strong ÚSZ-hivatkozásszáma szerint; a két réteg a sokaság egy-egy fele, a minta önsúlyozó) |
 | `strong`, `sorszam` | a `thayer_vers_jelentes.tsv` kulcsa (a hivatkozás sorszáma a szócikkben; a szakaszok újraszámozása nem érinti) |
 | `gep_konyv_vers`, `gep_utvonal` | a gépi kimenet **a mérés pillanatában** (nem a mai tábla) |
 | `A_konyv_vers`, `A_jelentespont`, `A_melyebb`; `B_…` | a két vak kitöltő értéke (a `melyebb` a görög betűs vagy mélyebb szint, nem része a fő mutatónak) |
 | `arany_konyv_vers`, `arany_utvonal` | az arany érték: A = B egyezése, eltérésnél vagy a gépitől való egybehangzó eltérésnél az ítélet; a `zaro` a tagolás utáni záró rész (szinonima-jegyzet), a táblában ilyen érték nincs |
 | `itelet` | `egyezik` \| `hozzarendeles_hiba` \| `kitolto_alak` (a kitöltő alakja tér el, pl. verstartomány; a gépi helyes) \| `kitolto_hiba` \| `forras_hiba` |
-| `osztaly` | a hiba osztálya (`K1` bekezdésen belüli fej, `K2` hamis bekezdés-eleji fej, `K3` záró szinonima-jegyzet; `naplok/F186_jelentes.md` 3.) |
+| `osztaly` | a hiba osztálya (`K1` bekezdésen belüli fej, `K1b`/`K1c`/`K1d` alesetei; `K2` hamis bekezdés-eleji fej, `K2b`/`K2c`/`K2d` alesetei; `K3` záró szinonima-jegyzet; `K4` forrás-torzulás; `K5` görög α latin „a.”-ként; `naplok/F186_jelentes.md` 3., 5., 9.) |
 | `indoklas` | az ítélet forrásidézettel |
 | `kitolto_modell` | a két kitöltő tényleges modellje (`A=…; B=…`) |
 | `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>` |
