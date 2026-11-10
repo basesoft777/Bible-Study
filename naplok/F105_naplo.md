@@ -59,12 +59,12 @@ nélkül a tokenek megfordítása, geresnél a DT445 `r_str`-je, `eszkozok/bdb_j
 szerint 5 589 kifejezést). A minta helyreállított alakja a feloldást is mutatja (a rafét hordozó, nem első betű elé U+05BE, a
 rafe ki, az előző betű végbetűre).
 
-## 4. Megállás: hatóköri döntés (DT-F105a) és ⛔ 50-es minta
+## 4. Megállás: hatóköri döntés (DT710) és ⛔ 50-es minta
 
 A brief 2. lépése egy új, az olvasóba kötött szabálymodult (`eszkozok/olvaso_szerver/bdb_szoerend.py`) ír elő. A DT445 óta
 a szórend szabálya és a csere egy helyen él (javítótábla + `bdb_rovidites`, a lexikonlap és az olvasó közös útja); egy
 második, csak az olvasóban futó szabály ugyanazt a futamot kétszer fordíthatná meg, és a lexikonlap eltérne az olvasótól.
-Ezért a megvalósítás előtt megálltam: **DT-F105a** (`dontesek/uj/f105-bdb-szorend.md`). A `blokkok.py`, a
+Ezért a megvalósítás előtt megálltam: **DT710** (`dontesek/uj/f105-bdb-szorend.md`). A `blokkok.py`, a
 `teszt_olvaso_szerver.py` és a `bdb_szoerend.py` nem változott, a `KETRETEGU_BDB_KARTYA` kapcsolóhoz nem nyúltam.
 
 A ⛔ 50-es minta (5. szakasz) a fenti 1 823 jelöltből készült. Bármelyik változat ezeket javítaná újonnan, így a minta
@@ -135,7 +135,7 @@ a gépi ellenőrzés a TAHOT-on fut). A „kézi ítélet” (helyes / rossz / n
 
 *A 17. (Hós 14:8) és a 23. sor (Ézs 3:3) versszövege a TAHOT-ból (Károli-kulcs, morfémák szóközzel; ELLENOR_F105 5.): a Macula `karoli` oszlopa a Hós 14-ben üres, az Ézs 3-ban pedig azonosságot ad, holott ott az F85 eltolást mért (DT179), ezért az eredeti táblában a 17. sor üres volt, a 23. az MT 3:3-at adta. A vak minta (7. szakasz) már a TAHOT-ot használta.*
 
-## 6. Megvalósítás (DT-F105a (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10)
+## 6. Megvalósítás (DT710 (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10)
 
 *A megvalósítás (F105.7–F105.9) a vak minta eredménye előtt készült; a minta eredménye a 7. szakaszban áll (két kitöltő,
 50/50). A lexikonlapok abban a szakaszban (F105.7–F105.9) nem generálódtak újra; az újragenerálás: 9. szakasz.*
@@ -280,4 +280,4 @@ repón kívüli generálás és soronkénti diff (17 sor: ISTENTISZT-001 3, ALVI
 változik (há, mené → mené há); DT/N-hivatkozás, szám, munkaszó nem változott. Az orkesztrátor döntése után az F105.21
 újragenerálta az öt lapot (`general.py --cel lexikon --id <ID> --ir`, a lap saját `PARDES_DATUM`-ával); a diff pontosan ez a 17
 sor, a lapok bájtra azonosak a repón kívüli generálással, és az E28 0 találatot ad. Közben talált két BDB-forráshiba (OCR):
-N-F105b (H0127, `פְּנֵי`), N-F105c (`עָפָר`), mindkettő a #185 P4-é.
+N120 (H0127, `פְּנֵי`), N121 (`עָפָר`), mindkettő a #185 P4-é.

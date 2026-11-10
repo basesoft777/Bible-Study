@@ -15,6 +15,7 @@ Vizsgálja (a brief 2. lépése szerint):
     python eszkozok/teszt_szotari_gerinc.py
 """
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -1023,6 +1024,111 @@ class F185BetuJavitas(unittest.TestCase):
         szov = self._blokk()
         self.assertIn('עָפָד', szov)
         self.assertIn('מְּנֵי', szov)
+
+
+class F187KartyaJavitasok(unittest.TestCase):
+    """F187 / F29 (a)–(e): a kétrétegű BDB-kártya olvasói rétegének javításai, és a görög (Thayer) kártya két rétege."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.a = LG.gerinc_adat()
+
+    def kartya(self, szotar, strong, versek):
+        szov = '\n\n'.join(LG.gerinc_blokk(self.a, szotar, strong, [elo(v, '', strong=strong, szotar=szotar, entry='')
+                                                                     for v in versek], {'bdb_kartya': True, 'fl': {}})[0])
+        kezd = szov.index(LG.APPARATUS_KEZDET % strong)
+        return szov[:kezd], szov[kezd:]
+
+    @staticmethod
+    def helyek(olvasoi):
+        return next(s for s in olvasoi.split('\n\n') if s.startswith('**A motívum helyein:**'))
+
+    def test_a_piel_glossza_szemelyszammal_kezdodo_alakjegyzekbol(self):
+        olvasoi, _app = self.kartya('BDB', 'H0779', ['1Móz 3:14'])
+        self.assertIn("- Pi'el — átkozni, átok alá vetni", olvasoi)
+        self.assertNotIn('külön meghatározás nélkül', olvasoi)
+
+    def test_b_fej_nem_jelentespont_es_vers_egyszer(self):
+        import olvasoi_kapu as OK
+        for strong, vers, pont in (('H2403', '1Móz 4:7', '1.b Isten ellen'), ('H6975', '1Móz 3:18', '1. tövisbokor')):
+            sor = self.helyek(self.kartya('BDB', strong, [vers])[0])
+            self.assertNotIn('a szócikk feje', sor)
+            self.assertEqual(sor.count(vers.split(' ')[1]), 1, sor)
+            self.assertIn(pont, sor)
+            self.assertEqual(OK.helyek_ismetlese(sor), [])
+
+    def test_b_helyek_pontjai(self):
+        szocikkek = [{'bdb_id': 'B1', 'fej': (('B1', 'fej'), '', 'x', '', ''),
+                      'szakaszok': [(('B1', '-/1/-'), '1', 'egy', '', '')]}]
+        # a csak a fejben idézett hely fej-pont marad (a kártyán: „a szótár csak alakként idézi”)
+        self.assertEqual(LG.helyek_pontjai([('1Móz 1:1', ('B1', 'fej'))], szocikkek)['1Móz 1:1'], [('B1', 'fej')])
+        # a fej más pont mellett, az ős-pont a leszármazott mellett elmarad
+        vp = [('1Móz 4:7', ('B1', 'fej')), ('1Móz 4:7', ('B1', '-/1/b'))]
+        self.assertEqual(LG.helyek_pontjai(vp, szocikkek)['1Móz 4:7'], [('B1', '-/1/b')])
+        vp = [('1Móz 6:12', ('B1', "Hiph'il/-/-")), ('1Móz 6:12', ('B1', "Hiph'il/2/-"))]
+        self.assertEqual(LG.helyek_pontjai(vp, szocikkek)['1Móz 6:12'], [('B1', "Hiph'il/2/-")])
+        self.assertEqual(LG.CSAK_ALAKKENT, 'a szótár csak alakként idézi')
+
+    def test_c_szocikk_neve_sorszam_es_azonosito_nelkul(self):
+        olvasoi, _app = self.kartya('BDB', 'H7451', ['1Móz 6:5'])
+        self.assertNotRegex(olvasoi, r'(?<![\w.])(?:\d+|[IVX]+)\.\s+szócikk')
+        self.assertNotRegex(olvasoi, r'BDB\d+')
+        self.assertIn('- *első szócikk*', olvasoi)
+        self.assertIn('- *második szócikk*', olvasoi)
+        olvasoi, _app = self.kartya('BDB', 'H2403', ['1Móz 4:7'])
+        self.assertNotIn('szócikk*', olvasoi)        # egy látható szócikk: nincs szócikk-név
+        self.assertNotRegex(olvasoi, r'BDB\d+')
+
+    def test_c_apparatusban_olvashato_forras_hivatkozas(self):
+        # N-F187b (orkesztrátori döntés): az apparátusban a BDB-azonosító olvasható forrás-hivatkozás, nyers útvonal nélkül
+        self.assertEqual(LG.bdb_kulcs_olvashato(('BDB9520', 'fej')), 'BDB 9520. szócikk, feje')
+        self.assertEqual(LG.bdb_kulcs_olvashato(('BDB2699', '-/5/-')), 'BDB 2699. szócikk, 5. szakasz')
+        self.assertEqual(LG.bdb_azonosito_olvashato('a BDB9520 szócikk fejét; **BDB2699**'),
+                         'a BDB 9520. szócikk fejét; **BDB 2699. szócikk**')
+        _olv, app = self.kartya('BDB', 'H2403', ['1Móz 4:7'])
+        self.assertNotRegex(app, r'BDB\d')
+        self.assertNotIn('-/5/-', app)
+        self.assertIn('**BDB 2699. szócikk**', app)
+        self.assertIn('BDB 9520. szócikk, feje → BDB 2699. szócikk, 5. szakasz', app)
+        self.assertIn('a BDB 9520. szócikk fejét is tartalmazza', app)
+
+    def test_e_csak_gyenge_pont_nem_felkover(self):
+        sz = {'H8034': [
+            {'strong': 'H8034', 'sorszam': '2', 'utvonal': 'fej', 'jel': '', 'szoveg': 'name'},
+            {'strong': 'H8034', 'sorszam': '3', 'utvonal': '-/4/-', 'jel': '4', 'szoveg': 'of false gods'}]}
+        hu = {('H8034', '2'): {'szoveg_hu': 'H8034. név', 'kategoria': 'jelolo_nelkul'},
+              ('H8034', '3'): {'szoveg_hu': '4 hamis istenekről 1Kir 18:24', 'kategoria': 'illeszkedik'}}
+        a = adat([], [vj_sor('H8034', 310, 'Ézs 1:1', '-/4', okkod='forras_hiba')], sz, hu)
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 1:1', '', strong='H8034', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H8034')[0]
+        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertNotIn('**4.**', olvasoi)
+        self.assertIn('vonatkozhat', olvasoi)
+
+    def test_thayer_ket_reteg(self):
+        olvasoi, app = self.kartya('Thayer', 'G1944', ['Gal 3:13', 'Gal 3:14'])
+        self.assertIn('**A jelentések rendje a Thayer szerint**', olvasoi)
+        self.assertIn('a szócikk egésze** (nincs számozott jelentése) — átkozott, utálatos', olvasoi)
+        self.assertIn('**A motívum helyein:** Gal 3:13 → a szócikk egésze — átkozott', olvasoi)
+        self.assertIn('A szótár ezt a helyet nem idézi: Gal 3:14.', olvasoi)
+        self.assertIsNone(re.search('[Ͱ-Ͽἀ-῿]', '\n'.join(s for s in olvasoi.split('\n') if not s.startswith('#####'))))   # a címsoron kívül
+        self.assertIn('<summary>%s</summary>' % LG.APPARATUS_CIM, app)
+        self.assertIn('ἐπικατάρατον', app)       # a görög alakjegyzék az apparátusban
+
+    def test_thayer_glosszas_cimek(self):
+        olvasoi, app = self.kartya('Thayer', 'G1311', ['Jel 11:18'])
+        self.assertIn('- **2.b** elpusztítani', olvasoi)
+        self.assertIn('- **`2.b` — elpusztítani**', app)
+        self.assertRegex(app, r'<summary>2\. – 2\.a \(2 szakasz\): elpusztítani')
+        olvasoi, _app = self.kartya('Thayer', 'G2671', ['Zsid 6:8'])
+        self.assertIn('c — a szótár csak párhuzamot közöl', olvasoi)
+        self.assertIn('Zsid 6:8 → a szócikk eleje — kiátkozás, elátkozás, átok', olvasoi)
+
+    def test_thayer_fej_glossza(self):
+        self.assertEqual(LG.thayer_fej_glossza('ἐπικατάρατον (ἐπικαταράομαι x), csak bibliai és egyházi használatban: átkozott, '
+                                               'utálatos: Ján 7:49'), 'átkozott, utálatos')
+        self.assertIsNone(LG.thayer_fej_glossza('φθορᾶς, ἡ (φθείρω), Aeschylus és Hérodotosz óta:'))
 
 
 if __name__ == '__main__':

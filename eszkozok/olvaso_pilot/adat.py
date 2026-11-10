@@ -486,7 +486,8 @@ for r in sorok('konkordancia/Thayer_teljes.tsv'):
         thayer[n] = r[2]
 gor_hu = defaultdict(list)
 for r in sorok('adat/forditasok.tsv'):
-    if len(r) > 7 and r[0] in ('Thayer', 'UBS_DNTG') and r[6].strip():
+    # F187 (N-F186g): csak az érvényes sor — az `elavult` és az összevonási tagsor (`sz<n>~<m>`, SEMA 2.14) nem
+    if len(r) > 7 and r[0] in ('Thayer', 'UBS_DNTG') and r[6].strip() and r[7] != 'elavult' and '~' not in r[3]:
         n = hnorm(r[1])
         if n in gor_szavak:
             gor_hu[n].append({'szotar': r[0], 'szam': r[3], 'szoveg': r[6].replace('\\n', '\n')})

@@ -15,7 +15,16 @@ Használat (a repó gyökeréből, Windowsról vagy WSL-ből ugyanúgy):
     python eszkozok/teszt_futtat.py --gyors               # a lassú teszt_szintek.py nélkül
     python eszkozok/teszt_futtat.py --fajl teszt_tervezo  # csak a megnevezett fájl(ok); többször is megadható
     python eszkozok/teszt_futtat.py --reszletes           # a tesztek teljes kimenete (alapból csak az összegzés, hibánál minden)
+    python eszkozok/teszt_futtat.py --diff origin/main    # a lassú fájlok csak akkor, ha a diff a lefedett fájljaikat érinti
 Kilépési kód: 0, ha minden fájl zöld; egyébként 1.
+
+F188 (MUNKAMENET.md „Menet-ellenőrzés”, 3–4. pont):
+  * a lassú tesztek lefedett fájljainak egyetlen listája a `LASSU_LEFEDETT`; a `--diff ALAP` a többi tesztet futtatja, a lassút
+    csak akkor, ha a diff (a munkafa a `git merge-base ALAP HEAD`-hez képest, az új fájlokkal) a lefedett fájlok valamelyikét
+    érinti; különben kiírja, melyiket nem futtatta, és miért. A CI ezeket a teszteket nem futtatja: ha a diff érinti őket,
+    helyben futniuk kell (ELLENOR_F188 2.);
+  * a futás a közös helyi ellenőrzés-zárat veszi (`eszkozok/ellenorzes/futtat.py` `HelyiZar`, `~/.pardes/ellenorzes.zar`);
+    Windowsról a Windows-oldalon veszi, mielőtt a WSL-be lép, és a WSL-beli futás (`--zar-tartva`) már nem vesz újat.
 """
 import argparse
 import os
@@ -31,7 +40,22 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SZERVER = os.path.join(REPO, 'eszkozok', 'olvaso_szerver')
-LASSU = ('teszt_szintek.py',)                      # #98-nál párhuzamos futás mellett ~19 perc; külön mérendő
+LASSU = ('teszt_szintek.py', 'teszt_arculat.py')  # ~19 perc (#98, párhuzamos futás mellett); ~30 perc (#104 javítóköre)
+# F188 T4 (ELLENOR_F188 2.): a lassú tesztfájlok lefedett fájljai (repó-relatív; `/`-re végződő = könyvtár). Egy hely: ez.
+# A lista a tesztek importfüggése: az olvasó-szerver kódja, és amit fájlútról vagy a sys.path-on át betölt (`blokkok.py`:
+# olvaso_pilot/bdb_szelet, bdb_rovidites -> kiejtes, tanulmany_regiszter; `bdb_szelet.py`: bdb_konyv_javit -> normalizal,
+# forditas_kapuk -> naplok/FORDITAS_P4_ellenoriz.py; `lekerdezesek.py`: bdb_jelolt/szakasz_bemenet). A `teszt_szintek` a
+# `_pilot_json`-on át az `olvaso_pilot/adat.py`-t is futtatja, amely a TSV-kből épít (tsk_kulcs, karoli_kh_szuro, bdb_jelolt):
+# ezért az `adat/` és a `konkordancia/` változása is érinti. A `test_zar.py` statikusan ellenőrzi, hogy az olvasó-szerver
+# fájlútról betöltött moduljai a listán vannak.
+_OLVASO_KOD = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/bdb_jelolt/', 'eszkozok/bdb_rovidites.py',
+               'eszkozok/kiejtes.py', 'eszkozok/tanulmany_regiszter.py', 'eszkozok/bdb_konyv_javit.py',
+               'eszkozok/normalizal.py', 'eszkozok/forditas_kapuk.py', 'naplok/FORDITAS_P4_ellenoriz.py',
+               'eszkozok/tsk_kulcs.py', 'eszkozok/karoli_kh_szuro.py', 'eszkozok/teszt_futtat.py')
+LASSU_LEFEDETT = {
+    'teszt_szintek.py': _OLVASO_KOD + ('adat/', 'konkordancia/'),
+    'teszt_arculat.py': _OLVASO_KOD,
+}
 WSL_DISZTRO = 'pardes'
 WSL_VENV_PY = '$HOME/pardes/eszkozok/olvaso_szerver/.venv/bin/python'
 
@@ -90,15 +114,75 @@ def fut(fajl, kornyezet, reszletes):
     return p.returncode, mp, osszegzo
 
 
+def erintett_lassu(valtozott):
+    """{lassú fájl: True/False}: érinti-e a változott fájlok listája a lefedett fájljait."""
+    valtozott = [v.replace('\\', '/') for v in valtozott]
+    ki = {}
+    for fajl, elotagok in LASSU_LEFEDETT.items():
+        ki[fajl] = any(v == e.rstrip('/') or v.startswith(e if e.endswith('/') else e + '/') or v == e
+                       for v in valtozott for e in elotagok)
+    return ki
+
+
+def diff_fajlok(alap):
+    """A munkafa változott és új fájljai a `git merge-base alap HEAD`-hez képest, vagy None (git-hiba)."""
+    def git(*args):
+        try:
+            return subprocess.check_output(['git'] + list(args), cwd=REPO, stderr=subprocess.DEVNULL).decode('utf-8', 'replace')
+        except (subprocess.CalledProcessError, OSError):
+            return None
+    mb = git('merge-base', alap, 'HEAD')
+    if mb is None:
+        return None
+    lista = (git('diff', '--name-only', mb.strip()) or '').splitlines()
+    lista += (git('ls-files', '--others', '--exclude-standard') or '').splitlines()
+    return sorted({x.strip() for x in lista if x.strip()})
+
+
+def helyi_zar(leiras):
+    """A közös helyi ellenőrzés-zár (`eszkozok/ellenorzes/futtat.py` `HelyiZar`), fájlútról betöltve."""
+    import importlib.util
+    ut = os.path.join(REPO, 'eszkozok', 'ellenorzes', 'futtat.py')
+    spec = importlib.util.spec_from_file_location('ellenorzes_futtat', ut)
+    modul = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modul)
+    return modul.HelyiZar(leiras)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--gyors', action='store_true', help='a lassú fájlok (%s) kihagyása' % ', '.join(LASSU))
     ap.add_argument('--fajl', action='append', default=[], help='csak ez a fájl (teszt_x vagy teszt_x.py)')
     ap.add_argument('--reszletes', action='store_true')
     ap.add_argument('--nincs-wsl', action='store_true', help='Windowson se induljon újra a WSL-ben (a hívó felel a környezetért)')
+    ap.add_argument('--diff', metavar='ALAP', help='a lassú fájlok csak akkor, ha a diff (merge-base ALAP) a lefedett fájljaikat érinti')
+    ap.add_argument('--kihagy', action='append', default=[], help='ez a fájl kimarad (a --diff tölti ki a WSL-futásnak)')
+    ap.add_argument('--zar-tartva', action='store_true', help='a hívó már tartja a helyi ellenőrzés-zárat (belső)')
     a, _ = ap.parse_known_args()
+    argv = [x for x in sys.argv[1:]]
+    if a.diff and not a.fajl:
+        valtozott = diff_fajlok(a.diff)
+        if valtozott is None:
+            print('[teszt_futtat] FIGYELEM: a diff nem állapítható meg (%s); a lassú fájlok is futnak' % a.diff)
+        else:
+            for f, erint in sorted(erintett_lassu(valtozott).items()):
+                if not erint:
+                    print('[teszt_futtat] NEM FUTOTT: %s -- a diff (%d fájl, merge-base %s) egyik lefedett fájlját sem érinti '
+                          '(LASSU_LEFEDETT: %d elem); ezt a tesztet a CI sem futtatja' % (f, len(valtozott), a.diff,
+                                                                                         len(LASSU_LEFEDETT[f])))
+                    argv += ['--kihagy', f]
+                    a.kihagy.append(f)
+        i = argv.index('--diff')
+        del argv[i:i + 2]
+    if a.zar_tartva:
+        return _fut(a, argv)
+    with helyi_zar('teszt_futtat.py %s' % ' '.join(argv)):
+        return _fut(a, argv + ['--zar-tartva'])
+
+
+def _fut(a, argv):
     if os.name == 'nt' and not a.nincs_wsl:
-        return wslben_ujra(sys.argv[1:])
+        return wslben_ujra(argv)
 
     db, honnan = adatbazis_valasztas()
     kornyezet = dict(os.environ, PARDES_DB=db, PYTHONIOENCODING='utf-8')
@@ -133,6 +217,9 @@ def main():
         fajlok = [f for f in fajlok if f in kert]
     elif a.gyors:
         fajlok = [f for f in fajlok if f not in LASSU]
+    if a.kihagy:
+        kihagy = {f if f.endswith('.py') else f + '.py' for f in a.kihagy}
+        fajlok = [f for f in fajlok if f not in kihagy]
 
     eredmenyek = []
     for f in fajlok:

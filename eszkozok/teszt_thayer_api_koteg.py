@@ -7,6 +7,7 @@
 
 import json
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -25,7 +26,9 @@ STRONG = 'G1941'     # kész sonnet szakaszos fordítás (7 szakasz, 37 helyőrz
 
 def hu_sorok(strong):
     return [r for r in E.tsv_dict_sorok(E.FORDITASOK_UT)
-            if r['szotar'] == 'Thayer' and r['strong'] == strong and r['jelentes_szam'].startswith('sz')]
+            # F187 (N-F186g): tagsor-biztos — csak az `sz<n>` alakú, nem `elavult` sor (a `sz<n>~<m>` tagsor nem)
+            if r['szotar'] == 'Thayer' and r['strong'] == strong and re.fullmatch(r'sz\d+', r['jelentes_szam'])
+            and r.get('allapot') != 'elavult']
 
 
 def hamis_valasz(strong, sorok):

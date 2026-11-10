@@ -52,6 +52,7 @@ class JavitokorTeszt(unittest.TestCase):
         commitok = [{'cim': 'F181.9: fejléc — Te: [elteres_kor 2/2] /elteres 181', 'fajlok': []},
                     {'cim': 'F184.25: a javítókör 2/2 fejléce', 'fajlok': []}]
         self.assertEqual(T.javitokor([], commitok)[0], 2)
+        self.assertEqual(T.javitokor([], [{'cim': 'F190.3: Te: [elteres_kor 1/1] x', 'fajlok': []}])[0], 1)
 
     def test_uj_jelentes_commit(self):
         commitok = [{'cim': 'F190.4: ellenőri jelentés (1. ellenőrzés: ELTÉRÉS, 2 tétel)', 'fajlok': None},
