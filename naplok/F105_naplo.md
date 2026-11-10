@@ -192,3 +192,37 @@ előfordulása a Strongban); `valodi_sorrend` előfordulással egy új sor sem �
 **6.4 Renderelt minta (repón kívül):** `C:\Users\bases\AppData\Local\Temp\F105_kartya_minta\F105_kartya_minta.html` — az
 olvasó BDB-kártyájának szövegrétege (a `blokkok._rovidites` lánca) előtte (a `b2317a2e` kódja és táblája) / utána, H1323
 (12 változó szakaszsor), H2638 (1), H0413 (12).
+
+## 7. ⛔ Az 50-es minta: két független vak kitöltő (orkesztrátori eljárás, 2026-11-10)
+
+A felhasználó a mintát nem tölti ki. Az eljárás: két független, vak Opus-kitöltő dolgozott subagentként, a végrehajtón kívül. Az elv: aki javít, az nem ítél.
+
+**Mit kaptak a kitöltők:** a hivatkozott vers Károli-kulcsát, a vers héber szövegét a TAHOT-ból, és a futam két sorrendjét „A” és „B” címkével. A címkék tételenként rögzített seeddel, véletlenszerűen kerültek a két sorrendre: 26 tételben az A, 24-ben a B a helyreállított alak. A gépi döntést, a DT445-állapotot és a Strong-számot nem kapták meg.
+
+**Vakság:** a geres mindkét alakból kikerült (`naplok/F105_vak.py`, F105.4–F105.6). Ennek az oka, hogy a geres a betű előtt csak a forrásalakban állt, és ez 34 tételben árulkodott. A két alak 49 tételben ugyanannak a tokenhalmaznak a permutációja. Az 50. tétel, a 4. kivétel: a rafe-maqqéf csak az egyik alakban bontott két szóra.
+
+**Kérdés:** melyik sorrend áll a versben (`A` / `B` / `egyik_sem` / `nem_donthető`).
+
+**Eredmény** (`python naplok/F105_vak_osszevet.py`):
+
+| | helyes / n | 95% Wilson |
+|---|---|---|
+| 1. kitöltő | 50 / 50 | 0,929–1,000 |
+| 2. kitöltő | 50 / 50 | 0,929–1,000 |
+| a két kitöltő egyezik, és a helyreállított alakot választja | 50 / 50 | 0,929–1,000 |
+| ugyanez a 4. tétel nélkül | 49 / 49 | 0,927–1,000 |
+
+- A két kitöltő egyetlen tételben sem tért el egymástól, ezért nincs orkesztrátori döntésre váró tétel.
+- Egyik kitöltő sem adott `egyik_sem` vagy `nem_donthető` ítéletet.
+- A mért szám: a hivatkozott vers a helyreállított sorrendet igazolja az 1 823 jelöltből vett 50-es mintán (seed 105), 95%-os alsó korláttal 92,9%.
+- A minta az 1 823 jelöltből vett véletlen minta, nem a teljes `javitva` halmazból. A DT445 meglévő cseréit a 3. szakasz gépi mérése fedi.
+
+**Fájlok:**
+- `naplok/F105_vak_minta.md`: a kitöltők bemenete.
+- `naplok/F105_vak_kulcs.tsv`: a kulcs, a kitöltés alatt a repón kívül volt.
+- `naplok/F105_vak_kitolto_1.tsv`, `naplok/F105_vak_kitolto_2.tsv`: a két kitöltés, indokkal.
+- `naplok/F105_vak_osszevet.py`: az összevetés szkriptje.
+
+Az 5. szakasz táblájának „kézi ítélet” oszlopa üres marad: az ítéletet a két kitöltő-fájl hordozza.
+
+*proveniencia: scope=F105 50-es minta (seed 105, az 1 823 jelöltből) | forras=naplok/F105_vak_osszevet.py | ts=2026-11-10*

@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: fut
 ag: claude/f105-bdb-szorend
 ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek meg (a forrásfájl változatlan), gépi ellenőrzéssel a hivatkozott vers héber szövegén és 50 idézetes kézi mintával
-kovetkezo: "Te: ⛔ az 50-es vak minta eredménye (két független kitöltő, a kulcs a repón kívül); utána független ellenőrzés. A DT-F105a (a) megvalósítva (F105.7–F105.9): a javítótáblában 1 778 jelolt_marad → javitva és 68 új javitva sor (hivatkozott-vers-próba), 2 kézi sor; a rafe-maqqéf feloldása a bdb_rovidites-ben; a megjelenítés a hivatkozott verssel 85,2% → 99,8%. A lexikonlapok nem generálódtak újra"
+kovetkezo: "Független ellenőrzés (fuggetlen-ellenor), majd draft PR. A ⛔ 50-es minta: két vak Opus-kitöltő, 50/50 egyezés, 95% Wilson 0,929–1,000 (naplok/F105_naplo.md 7.); a DT-F105a (a) megvalósítva (F105.7–F105.9)"
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/bdb_jelolt/heber_sorrend.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_rovidites.py, adat/bdb_forras_javitas.tsv, eszkozok/teszt_bdb_rovidites.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, adat/bdb_vers_jelentes.tsv (csak a fejléc: a javítótábla hash-e), adat/SEMA.md, naplok/F105_naplo.md, naplok/F105_tabla_osszevet.py, naplok/F105_maqqef_meres.py, naplok/F105_meres.py, naplok/F105_minta.py, naplok/F105_vak.py, naplok/F105_utkozes.tsv, dontesek/uj/f105-bdb-szorend.md]
 fugg: [99, 102, 103, 104]
@@ -48,3 +48,5 @@ helyet); egyezési arány a naplóba; **⛔ minta:** 50 idézet kézi ellenőrz�
 
 - DT-F105a (🟢 (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10; `dontesek/uj/f105-bdb-szorend.md`): a szabály a DT445 útján valósul meg.
 - **Egyeztetett eltérés (2026-11-10):** a brief 2. lépésének új olvasói modulja (`eszkozok/olvaso_szerver/bdb_szoerend.py`) nem készül, mert a szórend-javítás a DT445 óta a javítótáblán és a közös megjelenítésben (`eszkozok/bdb_rovidites.py`) él; a hivatkozott-vers-próba a `heber_sorrend.py` / `forras_javit.py`-ba, a maqqéf-feloldás a `bdb_rovidites.py`-ba kerül. Az `ir` mező ennek megfelelően bővült, a `bdb_szoerend.py` kikerült. Az 50-es minta vakon, két független kitöltővel ellenőrződik (`naplok/F105_vak.py`).
+- **Egyeztetett eltérés, ⛔ minta (2026-11-10):** az 50-es mintát nem a felhasználó, hanem két független, vak Opus-kitöltő tölti ki (orkesztrátori eljárás). Aki javít, az nem ítél. A geres mindkét alakból kikerül, mert a forrásalakot elárulná. Eredmény: 50/50, a két kitöltő között nincs eltérés, 95% Wilson 0,929–1,000 (`naplok/F105_naplo.md` 7.). A jóváhagyás feltétele teljesült.
+- N-F105a (`nyitott/uj/f105-bdb-szorend.md`): alakonkénti csere egy Strongon belül, eldönthetetlen előfordulással (42 alak). Nyitott kérdés, nem a #105 hatóköre.
