@@ -31,7 +31,8 @@ Parancsok:
     kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1
     szint SZAM..    F188 T5: az ellenorzesi szint (`teljes` / `konnyitett`) es a javitokor-korlat,
                     a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
-                    a befogadando brief javasolt fejlece (mint a `fuggesek`-nel)
+                    a befogadando brief javasolt fejlece (mint a `fuggesek`-nel); --jelentes FAJL:
+                    az ellenori jelentes(ek): az eszkalacio (`SZINT-ESZKALÁCIÓ:` sor) teljesre emel
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
@@ -1283,6 +1284,21 @@ def ellenorzesi_szint(b):
     return 'konnyitett', SZINT_KOROK['konnyitett'], 'az `ir` minden eleme dokumentáció, teszt, CI vagy parancs'
 
 
+# F188 (ELLENOR_F188_2 3.): a fuggetlen ellenor eszkalacios jelolese -- onallo sor barhol a jelentesben (a regi
+# ELLENOR_* fajlban es a jelentesfajl szakaszaban is), sor eleji illesztessel, a ⛔ elso sortol fuggetlenul.
+ESZKALACIO_MINTA = re.compile(r'^SZINT-ESZKALÁCIÓ:\s*konnyitett\s*(?:→|->)\s*teljes\b', re.MULTILINE)
+
+
+def eszkalacio(szoveg):
+    """Van-e a jelentes szovegeben eszkalacios sor (`SZINT-ESZKALÁCIÓ: konnyitett → teljes …`)."""
+    return bool(ESZKALACIO_MINTA.search((szoveg or '').replace('\r\n', '\n')))
+
+
+def eszkalacio_fajl(ut):
+    with open(ut, encoding='utf-8') as f:
+        return eszkalacio(f.read())
+
+
 def szint_teljes_ok(ut):
     """F188 T5: miért teljes szintű egy `ir`-elem (szöveg), vagy None, ha a könnyített listára esik."""
     if ut.startswith(SZINT_OLVASOI_KIMENET) or ut in SZINT_OLVASOI_KIMENET or \
@@ -1387,6 +1403,9 @@ def main(argv=None):
     sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
     sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
                     help='a befogadandó brief javasolt fejléce (a repón kívüli fájl)')
+    sz.add_argument('--jelentes', action='append', default=[], metavar='FAJL',
+                    help='a feladat ellenőri jelentése(i) (régi ELLENOR_* vagy a jelentésfájl); ha bármelyikben '
+                         '`SZINT-ESZKALÁCIÓ: konnyitett → teljes` sor áll, a tényleges kör-korlát a teljes szinté')
     arg = p.parse_args(argv)
     ma = datetime.strptime(arg.ma, '%Y-%m-%d').date() if arg.ma else None
 
@@ -1465,11 +1484,15 @@ def main(argv=None):
             for n in kert:
                 b = by.get(n)
                 if b is None:
-                    print('NINCS	#%d' % n)
+                    print('NINCS\t#%d' % n)
                     rossz += 1
                     continue
                 szint, korok, ok = ellenorzesi_szint(b)
-                print('SZINT	#%d	%s	%d kör	%s' % (n, szint, korok, ok))
+                eszk = [j for j in arg.jelentes if eszkalacio_fajl(j)]
+                if eszk and szint != 'teljes':
+                    szint, korok, ok = 'teljes', SZINT_KOROK['teljes'], 'ellenőri eszkaláció: %s (levezetve: %s)' % (
+                        ', '.join(eszk), ok)
+                print('SZINT\t#%d\t%s\t%d kör\t%s' % (n, szint, korok, ok))
             return 1 if rossz else 0
     except (OSError, ValueError) as ex:
         print('HIBA: %s' % ex, file=sys.stderr)

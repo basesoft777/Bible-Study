@@ -81,11 +81,14 @@ A szintet a bemenet adja (`python eszkozok/feladatok.py szint <nn>`; a szabály:
   tartalmi réteget vagy olvasói kimenetet előállító kódot találsz a diffben (adat,
   motívum, lexikon, forrás, sablon, olvasó-szerver, generátor), az ELTÉRÉS, és a teljes
   listát futtatod.
-- **Eszkaláció (gépi jelölés, ELLENOR_F188 5.):** ha könnyített szintről a teljes
-  listára váltasz, a jelentés **második sora** (közvetlenül az első sor után, önálló
-  sorként) pontosan ez: `SZINT-ESZKALÁCIÓ: konnyitett → teljes — <ok egy mondatban>`.
-  A `/elteres` ebből veszi a javítókör-korlátot (K = 2). Eszkaláció nélkül ilyen sor
-  nem áll a jelentésben. Minden más pont megmarad: a 0. (modell), az 1.
+- **Eszkaláció (gépi jelölés, ELLENOR_F188 5., ELLENOR_F188_2 3.):** ha könnyített
+  szintről a teljes listára váltasz, a jelentésben egy **önálló sor**, a sor elején,
+  pontosan ez áll: `SZINT-ESZKALÁCIÓ: konnyitett → teljes — <ok egy mondatban>`. A helye
+  nem kötött (célszerűen az első sor, illetve a ⛔ és a `TISZTA`/`ELTÉRÉS` sor után, a
+  táblázat előtt); táblázatcellába, idézetbe vagy behúzva ne írd. A `/elteres` a jelentés
+  egészében keresi (`python eszkozok/feladatok.py szint <nn> --jelentes <fájl>`), és
+  ebből veszi a javítókör-korlátot (K = 2). Eszkaláció nélkül ilyen sor nem áll a
+  jelentésben. Minden más pont megmarad: a 0. (modell), az 1.
   (G/D), a 2. A1–A2, a 3. (CI), a kötelező ellenőrzőlista mind az öt pontja, és a
   tanulmány-ellenőrzés, ha a diff tanulmányt hoz.
 

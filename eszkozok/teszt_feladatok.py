@@ -310,6 +310,40 @@ class SzintTest(unittest.TestCase):
             self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
 
 
+class EszkalacioTest(unittest.TestCase):
+    """ELLENOR_F188_2 3.: az eszkalációs sor bárhol a jelentésben, sor eleji illesztéssel."""
+
+    def test_barhol_a_jelentesben(self):
+        for szoveg in ('ELTÉRÉS: 2 tétel\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — adat a diffben\n',
+                       '⛔ DÖNTÉS KELL: x\nELTÉRÉS: 1 tétel\n\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — x\n',
+                       '## Független ellenőrzés — 2. ellenőrzés\r\n\r\nTISZTA\r\n| a | b |\r\n'
+                       'SZINT-ESZKALÁCIÓ: konnyitett -> teljes — x\r\n'):
+            self.assertTrue(F.eszkalacio(szoveg), szoveg)
+
+    def test_nem_sor_eleji_vagy_mas_irany(self):
+        for szoveg in ('TISZTA\n', 'a jelölés: `SZINT-ESZKALÁCIÓ: konnyitett → teljes` (idézet)\n',
+                       ' SZINT-ESZKALÁCIÓ: konnyitett → teljes\n', 'SZINT-ESZKALÁCIÓ: teljes → konnyitett\n'):
+            self.assertFalse(F.eszkalacio(szoveg), szoveg)
+
+    def test_szint_parancs_a_jelentessel(self):
+        feladatok_py = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'feladatok.py')
+        with tempfile.TemporaryDirectory() as d:
+            brief = os.path.join(d, 'fej.md')
+            with open(brief, 'w', encoding='utf-8') as f:
+                f.write(brief_szoveg(None, ir=['.claude/commands/x.md'], munka='folyamat'))
+            jel = os.path.join(d, 'ELLENOR_F9.md')
+            with open(jel, 'w', encoding='utf-8') as f:
+                f.write('⛔ DÖNTÉS KELL: x\nELTÉRÉS: 1\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — x\n')
+            gyoker = os.path.join(d, 'repo')
+            os.makedirs(gyoker)
+            ki = subprocess.run([sys.executable, feladatok_py, '--gyoker', gyoker, 'szint', '--extra', brief],
+                                capture_output=True, text=True, encoding='utf-8')
+            self.assertIn('\tkonnyitett\t1 kör', ki.stdout, ki.stderr)
+            ki = subprocess.run([sys.executable, feladatok_py, '--gyoker', gyoker, 'szint', '--extra', brief,
+                                 '--jelentes', jel], capture_output=True, text=True, encoding='utf-8')
+            self.assertIn('\tteljes\t2 kör\tellenőri eszkaláció', ki.stdout, ki.stderr)
+
+
 class EllenorizTest(Alap):
     def hibak(self):
         return F.ellenoriz(self.g.briefek(), self.g.ut)
