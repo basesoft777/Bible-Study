@@ -836,6 +836,16 @@ beszúrásaival. A 13. szabály (`ellenoriz.py`) a `szotar = Thayer`, `sz<n>` so
 nem `elavult` `sz<n>` sorok lefedettségét a BDB-vel azonos módon ellenőrzi. A CI **E19** (`szabalyok.py`) a `lexikon_hivatkozasok.tsv` `jelentes_szam = teljes`
 sorát fedettnek veszi, ha a Strongnak (szótár + strong + entry_id) a szótár összes szakaszát lefedő, nem `elavult` (`opus` / `sonnet` / `kezi`) `sz<n>` sorai vannak
 (a szakaszkészlet a 13. szabályéval azonos forrásból, a 2.30 / 2.34 táblából); részleges lefedettség nem fed.
+**A 13. szabály súlyossága (F186, N-F186c, orkesztrátori döntés, 2026-11-10).** SÉRTÉS: a duplikált kulcs, az ismeretlen
+`allapot`, a hiányzó forrásszöveg, a nem `elavult` sor eltérő `forras_hash`-e, a fölös (nem létező szakaszra mutató) `sz<n>`
+sor, és a fordítatlan szakasz (a Strong nem `elavult` `sz<n>` sorai nem fedik a szakaszait) — kivéve a két JELENTÉS-esetet:
+(1) az `elavult` sor eltérő `forras_hash`-e (újrafordításra vár; a jelentés számlálója mutatja, hány); (2) a fordítatlan
+**Thayer**-szakasz, ha a Strong egyetlen lexikonlap szólistáján sem szerepel. A lap szólistája: a `lexikon/*_TUDOMANYOS.md`
+lapok motívumainak gerincszavai (`lexikon_general.motivum_strong_tokenek`, a motívum `elofordulasok.tsv`-sorainak `strong`-ja)
+és peremszavai (`lexikon_general.rokon_szavak_strongok`: a motívum verseinek `lxx_dontesek.tsv` `gorog_strong`-ja, ha van nem
+kiegészítő lexikonhivatkozása); a számítás: `ellenoriz.lap_strongok`. Lapon szereplő Strong fordítatlan szakasza SÉRTÉS
+marad (a lapot a #7 újrafordítása javítja). A BDB-szakasz lefedése változatlanul SÉRTÉS. Ok: az F186 szakasz-újraszámozása
+(`naplok/F186_jelentes.md` 9.2, 10.).
 A hívás egysége (DT287 (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
 nélküli szövegen (`kapuk_futtat_szakaszos`).
@@ -2454,7 +2464,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 10 | LEXV2_2 tablak (forditas_ubs -- RETIRED S1.1, lxx_dontesek) |
 | 11 | Rés-forrás egyezés (tanulmány/adat ≡ tábla + tanulmány) |
 | 12 | `lap` forrású rés-sorok száma |
-| 13 | Fordítási gyorsítótár (kulcs egyediség, forras_hash) |
+| 13 | Fordítási gyorsítótár (kulcs egyediség, forras_hash, lefedés; elavult / lapon kívüli: jelentés) |
 | 14 | Kiejtés és terminológia (JELENTÉS) |
 | 15 | kapcsolatok.tsv fejléc (SEMA 2.3) |
 | 16 | elofordulasok.tsv fejléc (SEMA 2.2) |

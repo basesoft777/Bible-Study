@@ -383,6 +383,31 @@ töredezettségéből jön; a ritka réteg 98–100%. A T3 nem kell (a seed-203 
 - CI E32 (kiosztott helyőrző literálban): a módosított `.py` fájlokon tiszta (az átkulcsoló literálja számfüggetlen; a
   `forditasok.tsv` 708 `megjegyzes`-ében a `DT-F186b` helyőrző áll, ezt a `szamkiosztas` merge-kor cseréli).
 
+### 9.8 A 13. szabály súlyossága (N-F186c, orkesztrátori döntés, 2026-11-10: (b) szűkítve; F186.12)
+
+*Proveniencia: scope=eszkozok/ellenoriz.py 13. szabály × adat/forditasok.tsv × lexikon/*_TUDOMANYOS.md (9 lap) |
+forras=`ellenoriz.lap_strongok` (a `lexikon_general.motivum_strong_tokenek` + `rokon_szavak_strongok`, csak olvasva) |
+ts=2026-11-10.*
+
+- **A szabály** (szövege: `adat/SEMA.md` 2.14, „A 13. szabály súlyossága”; a 3.11 a generátorral frissítve): az `elavult` sor
+  eltérő `forras_hash`-e JELENTÉS (számlálóval); a fordítatlan Thayer-szakasz JELENTÉS, ha a Strong egyetlen lexikonlap
+  szólistáján (gerinc + perem) sem szerepel; lapon szereplő Strongnál SÉRTÉS marad. A fölös `sz<n>` sor, a nem `elavult` sor
+  hash-eltérése és a BDB-lefedés SÉRTÉS marad.
+- **A lap-szólista:** 9 lap, 43 Strong (16 görög). A 68 érintett Strongból **1 szerepel lapon: G5590 (ψυχή, az ANTROP-001
+  gerincszava)** — hiányzó szakaszai: sz8, sz9 (a második szabálykör K2b-je és a vágás). Nincs átállítva.
+- **Eredmény (`python eszkozok/ellenoriz.py`):** a 13. szabály **SÉRTÉS (1)** — G5590; a megjegyzés: „118 elavult sor (eltérő
+  forras_hash) újrafordításra vár; 67 Thayer-Strong fordítatlan szakasszal, egyik sem lexikonlapon”. Összesen RENDBEN 26,
+  SÉRTÉS 1, KÉZI 2, JELENTÉS 14. **A CI E1 a 13. szabályon piros marad (G5590) — ez az orkesztrátori döntés szerint
+  elfogadott**; a G5590 sz8–sz9 újrafordítása (#7) teszi zölddé.
+- **Tesztek** (`eszkozok/teszt_ellenoriz_13.py`, 75 OK): az `elavult` hash-eltérés JELENTÉS, a nem `elavult` SÉRTÉS; a
+  fordítatlan Thayer-szakasz lapon SÉRTÉS, lapon kívül és lap nélkül JELENTÉS; a fölös sor SÉRTÉS; a két régi lefedési teszt
+  lapot kap (SÉRTÉS marad).
+- **Egyéb futások:** `eszkozok/ellenorzes/tesztek/test_szabalyok.py` (a CI hívásával): 254 teszt, 26 ERROR — mind az
+  `E27Teszt`-ben, mind `ValueError: path is on mount 'E:', start on mount 'C:'` (a worktree az `E:`, az ideiglenes könyvtár a
+  `C:` meghajtón; környezeti, a #186-tól független, a CI egy meghajtón fut); a többi zöld. Thayer-tesztek: `teszt_bont`,
+  `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc` 42/43 (a régi `Sigla`-hiba). `feladatok.py ellenoriz`:
+  204 brief, 0 hiba.
+
 ### 9.4 Az érintett Strongok és fordítássoraik (DT-F186b; `forditas_atkulcsol.py --lista`)
 
 Az újrafordítás (a 118 `elavult` sor és a fordítatlan új szakaszok) a #7-é. HAMART-szó a listában nincs.

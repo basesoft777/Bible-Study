@@ -944,13 +944,33 @@ def _szakasz_szoveg(adat_dir, sor, cache):
 FORDITAS_ALLAPOTOK = ('kezi', 'opus', 'sonnet', 'pilot', 'elavult')
 
 
+def lap_strongok(adat_dir):
+    """F186 (N-F186c): a lexikonlapok szólistájának Strongjai (Strong_padded), a `lexikon/*_TUDOMANYOS.md` lapok motívumaira:
+    a gerinc (`lexikon_general.motivum_strong_tokenek`) és a perem (`lexikon_general.rokon_szavak_strongok`), a motívum
+    `elofordulasok.tsv`-soraiból. A szabály szövege: adat/SEMA.md 2.14 („A 13. szabály súlyossága”)."""
+    import lexikon_general as LG
+    lex_dir = os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    elof = os.path.join(adat_dir, 'elofordulasok.tsv')
+    if not (os.path.isdir(lex_dir) and os.path.exists(elof)):
+        return set()
+    lapok = [f[:-len('_TUDOMANYOS.md')] for f in os.listdir(lex_dir) if f.endswith('_TUDOMANYOS.md')]
+    _, sorok = G.tsv_beolvas(elof)
+    id_szerint = G.elofordulasok_id_szerint(sorok)
+    ki = set()
+    for m in lapok:
+        sorai = id_szerint.get(m, [])
+        tok = LG.motivum_strong_tokenek(sorai)
+        for t in list(tok) + list(LG.rokon_szavak_strongok(sorai, tok)):
+            ki.add(_strong_padded(t))
+    return ki
+
+
 def szabaly13_forditasi_gyorsitotar(adat_dir):
-    """F05_SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
-    kulcsa (szotar+strong+entry_id+jelentes_szam+mezo) egyedi legyen, es a
-    tarolt forras_hash egyezzen a forrasszoveg (szoveg_en / UBS
-    definicio_rovid / glosszak) ujraszamolt SHA-1-evel. Eltéres SÉRTÉS,
-    `allapot=elavult` javaslattal -- a tablat ez a szabaly nem irja at."""
-    cim = '13. Fordítási gyorsítótár (kulcs egyediség, forras_hash)'
+    """F05_SZOTAR_BRIEF.md S1.5, 13. szabaly: a forditasok.tsv kulcsa egyedi, a tarolt forras_hash a forrasszoveg
+    ujraszamolt SHA-1-e, az `sz<n>` sorok a Strong szakaszait fedik. A szabaly szovege es sulyossaga (F186, N-F186c: az
+    `elavult` sor hash-elterese es a lapon nem szereplo Strong forditatlan Thayer-szakasza JELENTÉS): adat/SEMA.md 2.14.
+    A tablat ez a szabaly nem irja at."""
+    cim = '13. Fordítási gyorsítótár (kulcs egyediség, forras_hash, lefedés; elavult / lapon kívüli: jelentés)'
     path = os.path.join(adat_dir, 'forditasok.tsv')
     if not os.path.exists(path):
         return Sor(cim, 'KÉZI', megjegyzes='nincs adat/forditasok.tsv')
@@ -975,17 +995,30 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     teljes_cache = {}
     szakasz_cache = {}
     tovabbi_cache = {}
+    elavult_var = 0
     # F128: egy Strong nem `elavult` `sz<n>` sorai egyutt a Strong osszes szakaszat fedik (SEMA 2.14)
     sz_strongok = {}
     for sor in sorok:
         m = _SZAKASZ_JSZ.match(sor.get('jelentes_szam') or '')
         if m and sor.get('szotar') in ('BDB', 'Thayer') and sor.get('allapot') != 'elavult':
             sz_strongok.setdefault((sor.get('szotar'), _strong_padded(sor.get('strong'))), set()).add(int(m.group(1)))
+    # F186 (N-F186c, SEMA 2.14): a fordítatlan Thayer-szakasz JELENTÉS, ha a Strong egyetlen lexikonlap szólistáján sincs
+    lapon = None
+    jelentes_lefedes = []
     for (szotar, sp), meglevo in sorted(sz_strongok.items(), key=lambda p: (p[0][0], str(p[0][1]))):
         szak = _szakaszok_strongra(adat_dir, sp, szakasz_cache, szotar) if sp else None
         if szak is not None and meglevo != set(szak):
-            hibas.append('%s %s: a szakaszsorok nem fedik le a szakaszokat (hiányzik: %s; fölös: %s)' % (
-                szotar, sp, sorted(set(szak) - meglevo)[:10], sorted(meglevo - set(szak))[:10]))
+            hiany, folos = sorted(set(szak) - meglevo), sorted(meglevo - set(szak))
+            uzenet = '%s %s: a szakaszsorok nem fedik le a szakaszokat (hiányzik: %s; fölös: %s)' % (
+                szotar, sp, hiany[:10], folos[:10])
+            if szotar == 'Thayer' and not folos:
+                if lapon is None:
+                    lapon = lap_strongok(adat_dir)
+                if sp not in lapon:
+                    jelentes_lefedes.append(uzenet)
+                    continue
+                uzenet += ' — a Strong lexikonlapon szerepel'
+            hibas.append(uzenet)
     hibas.extend(szakasz_cache.get('hiba', []))
     for sor in sorok:
         kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
@@ -1005,11 +1038,23 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
             continue
         ujra_hash = hashlib.sha1(forras_szoveg.encode('utf-8')).hexdigest()
         if ujra_hash != (sor.get('forras_hash') or ''):
+            if sor.get('allapot') == 'elavult':
+                # F186 (N-F186c): a már elavult sor újrafordításra vár — JELENTÉS, nem SÉRTÉS (SEMA 2.14)
+                elavult_var += 1
+                continue
             hibas.append('%s: forras_hash eltér (tárolt=%s, újraszámolt=%s) -- '
                           'allapot=elavult javasolt' % (
                               kulcs, sor.get('forras_hash'), ujra_hash))
+    jelentes = []
+    if elavult_var:
+        jelentes.append('%d elavult sor (eltérő forras_hash) újrafordításra vár' % elavult_var)
+    if jelentes_lefedes:
+        jelentes.append('%d Thayer-Strong fordítatlan szakasszal, egyik sem lexikonlapon' % len(jelentes_lefedes))
     if hibas:
-        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas, megjegyzes='; '.join(jelentes) or None)
+    if jelentes:
+        return Sor(cim, 'JELENTÉS', elavult_var + len(jelentes_lefedes), jelentes_lefedes,
+                   megjegyzes='; '.join(jelentes))
     return Sor(cim, 'RENDBEN')
 
 
