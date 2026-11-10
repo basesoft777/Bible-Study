@@ -180,7 +180,7 @@ A kör alapja `2d1baf31` (az ELLENOR_F188_2 rögzítése; a B ág ebben a #674-e
    - Gépi olvasás: `feladatok.py szint <nn> --jelentes <fájl>`, amely a tényleges kör-korlátot adja.
    - Teszt: `EszkalacioTest`, 3 teszt (⛔ első sor, szakaszos jelentés, CRLF; nem illeszkedik idézetre és behúzásra).
 
-**Tesztek ebben a körben** (célzott): `test_zar.py` 17 OK; `teszt_feladatok.py` `SzintTest` 10 és `EszkalacioTest` 3 OK; `feladatok.py ellenoriz` 0 hiba; a `futtat.py` PR-módban a kör végén (l. a Zárás előtti futás).
+**Tesztek ebben a körben** (célzott): `test_zar.py` 17 OK; `teszt_feladatok.py` `SzintTest` 10 és `EszkalacioTest` 3 OK; `feladatok.py ellenoriz` 0 hiba; a `futtat.py` PR-módban, `[ELLENŐRZŐ]` címmel, a merge-base-hez (`99763405`) mérve: kilépési kód 0, HIBA nincs; csak jelentés (E25: 3, E27: 43, E30: 7, E34: 41). `scope=99763405..940927d2 | forras=futtat.py | ts=2026-11-10`. Megjegyzés: az `origin/main..HEAD` kétpontos diffje 11 hamis E5-HIBA-t adott, mert a main közben 22 commitot lépett (a #104 is bekerült); a CI a merge-base-t használja.
 
 ## Folytatás a #104 merge-e után
 
