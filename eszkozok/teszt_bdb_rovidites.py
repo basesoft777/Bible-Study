@@ -3,6 +3,9 @@
 Futtatás: python eszkozok/teszt_bdb_rovidites.py
 """
 import os
+import shutil
+import tempfile
+import unicodedata
 import sys
 import unittest
 
@@ -141,6 +144,95 @@ class Zarojel(unittest.TestCase):
         kesz = 'c. megidéztetni (vö. Qal 5): Ézs 31:4'
         self.assertEqual(BR.zarojel_javit(kesz, 'H7121'), kesz)               # idempotens
         self.assertEqual(BR.zarojel_javit('felolvastatni vö. Qal 4)', 'H0001'), 'felolvastatni vö. Qal 4)')
+
+
+def nfc(s):
+    return unicodedata.normalize('NFC', s)
+
+
+class Maqqef(unittest.TestCase):
+    """F105, DT-F105a: a rafe-maqqéf (U+05BF) feloldása a megjelenítésben."""
+
+    def test_masodik_szo_elso_betuje(self):
+        self.assertEqual(nfc(BR.maqqef_javit('מִןהָֿאָרֶץ')), nfc('מִן־הָאָרֶץ'))
+        self.assertEqual(nfc(BR.maqqef_javit('לֹאתִֿתֵּן')), nfc('לֹא־תִתֵּן'))
+
+    def test_mater_betus_szokezdet(self):
+        # a magánhangzót a következő mater-betű hordozza: a szóhatár akkor is a rafét hordozó betű előtt
+        self.assertEqual(nfc(BR.maqqef_javit('קְצַררֿוּחַ')), nfc('קְצַר־רוּחַ'))
+
+    def test_vegbetu_a_szohatar_utana(self):
+        self.assertEqual(nfc(BR.maqqef_javit('עִםֿ הַחֲמוֺר')), nfc('עִם־הַחֲמוֺר'))
+
+    def test_elozo_betu_vegbetu_alakra(self):
+        self.assertEqual(nfc(BR.maqqef_javit('עִמהַֿחֲמוֺר')), nfc('עִם־הַחֲמוֺר'))
+
+    def test_rovidites(self):
+        self.assertEqual(nfc(BR.maqqef_javit('ב׳צֿ׳')), nfc('ב׳־צ׳'))
+
+    def test_valtozatlan_es_idempotens(self):
+        for sz in ('אֶזְרַח הָאָרֶץ', 'Gen 1:1', '', 'הָֿ'):
+            self.assertEqual(BR.maqqef_javit(sz), sz)
+        egyszer = BR.maqqef_javit('מִןהָֿאָרֶץ')
+        self.assertEqual(BR.maqqef_javit(egyszer), egyszer)
+
+    def test_a_sorrend_cserevel_egy_lepes(self):
+        # a megjelenítés egyetlen héber lépése: javítás nélküli Strongnál is feloldja
+        self.assertEqual(nfc(BR.heber_sorrend_javit('a מִןהָֿאָרֶץ b', 'H0001', {})), nfc('a מִן־הָאָרֶץ b'))
+
+
+class HivatkozottVers(unittest.TestCase):
+    """F105, DT-F105a: a hivatkozott-vers-próba (heber_sorrend.Biblia.van_versben, itelet_versen) egy kis TAHOT-on."""
+
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt'))
+        import heber_sorrend as HS
+        cls.HS = HS
+        cls.tmp = tempfile.mkdtemp()
+        ut = os.path.join(cls.tmp, 'tahot.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('Igehely\tStrong-szám\tRagozott alak\n')
+            for vers, szo in (('Péld 17:18', 'אָדָם'), ('Péld 17:18', 'חֲסַר'), ('Péld 17:18', 'לֵב'),
+                              ('Sir 4:7', 'חֲלָבִים'), ('Sir 4:7', 'אָדָם')):
+                f.write('%s\tH0000\t%s\n' % (vers, szo))
+        cls.bib = HS.Biblia(ut)
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def test_hivatkozott_vers_dont(self):
+        js, uj = 'ח לֵֿב׳אָדָם', 'אָדָם ח׳לֵֿב'
+        self.assertEqual(self.HS.itelet_versen(self.bib, js, uj, 'Péld 17:18'), 'helyes')
+
+    def test_masik_vers_nem_igazol(self):
+        self.assertEqual(self.HS.itelet_versen(self.bib, 'ח לֵֿב׳אָדָם', 'אָדָם ח׳לֵֿב', 'Sir 4:7'), 'eldonthetetlen')
+
+    def test_nincs_vers(self):
+        self.assertIsNone(self.bib.van_versben('אָדָם לֵב', 'Jób 1:1'))
+
+
+class HeberSorrendF105Tabla(unittest.TestCase):
+    """A generált tábla F105-sorai: a hivatkozott-vers-próbával javított és a két kézi sor betöltődik és cserél."""
+
+    def test_hivatkozott_vers_sorok(self):
+        n = 0
+        with open(BR.JAVITAS_UT, encoding='utf-8') as f:
+            for s in f:
+                m = s.rstrip('\n').split('\t')
+                if len(m) > 10 and m[3] == 'heber_sorrend' and m[8] == 'javitva' and 'hivatkozott-vers-próba' in m[10]:
+                    n += 1
+        self.assertGreaterEqual(n, 1800)
+
+    def test_h1245_amos_8_12(self):
+        self.assertEqual(BR.heber_sorrend_javit('י ׳דבר Amos 8:12', 'H1245'), 'דבר י׳ Amos 8:12')
+
+    def test_ket_kezi_sor(self):
+        # a megjelenítés a forrás pontos alakját cseréli: a forrásalak a táblából (NFC szerint azonosítva)
+        for st, forras, vart in (('H2638', 'ח לֵֿב׳אָדָם', 'אָדָם ח׳־לֵב'), ('H3801', 'קֹדֶשׁ׳כּ בַּֿד', 'כּ׳־בַּד קֹדֶשׁ')):
+            alak = next(a for a, _u in BR.sorrend_javitasok().get(st, []) if nfc(a) == nfc(forras))
+            self.assertEqual(nfc(BR.heber_sorrend_javit(alak, st)), nfc(vart))
 
 
 if __name__ == '__main__':
