@@ -1683,7 +1683,10 @@ F131.1-ben itt tartott átmeneti kézi határok az F131.3.6-ban kivezetve). **A 
 szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak a szótári gerinccel
 renderelt motívumok (`lexikon_general.gerinc_aktiv`, 2.44) Strongjai: az arany lap (ISTENTISZT-001), és a #123
 migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT417).
-Olvasás `split('\t')`.
+Olvasás `split('\t')`. **Az új szerkezetű lapon (F104, DT690)** a címke a 4.2 BDB-kártyájának olvasói rétegében is áll
+(a jelentések rendje, „A motívum helyein”); a kártya kutatói rétegének (szótári apparátus) gépi jelölője a generátor
+`lexikon_general.APPARATUS_KEZDET` / `APPARATUS_VEGE` konstansa (ott definiálva; itt csak hivatkozás), az olvasói réteg
+kapuja a 3.11 `BDB_OLVASOI`.
 
 | Oszlop | Jelentés |
 |---|---|
@@ -2433,6 +2436,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
 | `VISSZHANG` | BUKÁS | a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
 | `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
+| `BDB_OLVASOI` | BUKÁS | a 4.2 BDB-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám; csak az új szerkezetű lapon (F104) |
 
 **A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai”)
 
