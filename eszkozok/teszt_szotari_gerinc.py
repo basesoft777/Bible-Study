@@ -1042,14 +1042,14 @@ class F187KartyaJavitasok(unittest.TestCase):
     def test_c_apparatusban_olvashato_forras_hivatkozas(self):
         # N-F187b (orkesztrátori döntés): az apparátusban a BDB-azonosító olvasható forrás-hivatkozás, nyers útvonal nélkül
         self.assertEqual(LG.bdb_kulcs_olvashato(('BDB9520', 'fej')), 'BDB 9520. szócikk, feje')
-        self.assertEqual(LG.bdb_kulcs_olvashato(('BDB2699', '-/5/-')), 'BDB 2699. szócikk, 5. pont')
+        self.assertEqual(LG.bdb_kulcs_olvashato(('BDB2699', '-/5/-')), 'BDB 2699. szócikk, 5. szakasz')
         self.assertEqual(LG.bdb_azonosito_olvashato('a BDB9520 szócikk fejét; **BDB2699**'),
                          'a BDB 9520. szócikk fejét; **BDB 2699. szócikk**')
         _olv, app = self.kartya('BDB', 'H2403', ['1Móz 4:7'])
         self.assertNotRegex(app, r'BDB\d')
         self.assertNotIn('-/5/-', app)
         self.assertIn('**BDB 2699. szócikk**', app)
-        self.assertIn('BDB 9520. szócikk, feje → BDB 2699. szócikk, 5. pont', app)
+        self.assertIn('BDB 9520. szócikk, feje → BDB 2699. szócikk, 5. szakasz', app)
         self.assertIn('a BDB 9520. szócikk fejét is tartalmazza', app)
 
     def test_e_csak_gyenge_pont_nem_felkover(self):

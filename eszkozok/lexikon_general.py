@@ -3399,12 +3399,12 @@ def bdb_hivatkozas_szam(adat, strong):
 
 def bdb_kulcs_olvashato(k):
     """N-F187b: a szakaszkulcs olvasható forrás-hivatkozásként: `('BDB9520', 'fej')` → „BDB 9520. szócikk, feje”,
-    `('BDB2699', '-/5/-')` → „BDB 2699. szócikk, 5. pont” (nyers útvonal nélkül)."""
+    `('BDB2699', '-/5/-')` → „BDB 2699. szócikk, 5. szakasz” (nyers útvonal nélkül; a lap szóhasználata „szakasz”, nem „pont”)."""
     m = re.match(r'BDB(\d+)$', k[0] or '')
     nev = ('BDB %s. szócikk' % m.group(1)) if m else (k[0] or 'a szócikk')
     if k[1] == 'fej':
         return '%s, feje' % nev
-    return '%s, %s pont' % (nev, szakasz_szoveg(szakasz_jel(k[1]), nevelo=False))
+    return '%s, %s szakasz' % (nev, szakasz_szoveg(szakasz_jel(k[1]), nevelo=False))
 
 
 _BDB_AZON_RX = re.compile(r'(?<![\w.])BDB(\d+)\b(?:\s+szócikk)?')
