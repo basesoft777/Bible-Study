@@ -42,6 +42,158 @@ from kozos import md_fajlok, kizart_e, git_diff_hozzaadott_sorok, ROOT
 import szabalyok as SZ
 
 
+# ---------------------------------------------------------------------------
+# F188 (T5/T6 kiegészítés): egyszerre egy helyi teljes ellenőrzés -- közös fájlzár a repón kívül
+# ---------------------------------------------------------------------------
+# A zár helye: ~/.pardes/ellenorzes.zar (Windowson %USERPROFILE%\.pardes\, WSL-ben a WSL home-ja), a worktree-k
+# között közös; a PARDES_ZAR_KONYVTAR felülírja. A zárfájl JSON: pid, gép, időbélyeg, leírás, munkakönyvtár.
+# Foglalt zárnál a futás kiírja, ki tartja, és vár. Elavult (feloldja): a tartó folyamat ugyanazon a gépen már nem
+# él, vagy a zár a korlátnál (PARDES_ZAR_KORLAT_PERC, alap 120 perc) régebbi. A GitHub-futás nem vesz zárat. A
+# szabály: MUNKAMENET.md „Menet-ellenőrzés”, 4. pont. Az `eszkozok/teszt_futtat.py` ugyanezt a zárat használja.
+ZAR_KONYVTAR_VALTOZO = 'PARDES_ZAR_KONYVTAR'
+ZAR_KORLAT_VALTOZO = 'PARDES_ZAR_KORLAT_PERC'
+ZAR_NEV = 'ellenorzes.zar'
+ZAR_ALAP_KORLAT_PERC = 120
+ZAR_VARAKOZAS_MP = 5
+
+
+def zar_ut():
+    konyvtar = os.environ.get(ZAR_KONYVTAR_VALTOZO) or os.path.join(os.path.expanduser('~'), '.pardes')
+    return os.path.join(konyvtar, ZAR_NEV)
+
+
+def zar_korlat_perc():
+    try:
+        return float(os.environ.get(ZAR_KORLAT_VALTOZO, ZAR_ALAP_KORLAT_PERC))
+    except ValueError:
+        return float(ZAR_ALAP_KORLAT_PERC)
+
+
+def folyamat_el(pid):
+    """El-e a `pid` folyamat ezen a gepen. Windowson az os.kill(pid, 0) nem hasznalhato (leallitana)."""
+    try:
+        pid = int(pid)
+    except (TypeError, ValueError):
+        return False
+    if pid <= 0:
+        return False
+    if os.name == 'nt':
+        import ctypes
+        kernel32 = ctypes.windll.kernel32
+        h = kernel32.OpenProcess(0x1000, False, pid)  # PROCESS_QUERY_LIMITED_INFORMATION
+        if not h:
+            return False
+        try:
+            kod = ctypes.c_ulong()
+            if not kernel32.GetExitCodeProcess(h, ctypes.byref(kod)):
+                return True
+            return kod.value == 259  # STILL_ACTIVE
+        finally:
+            kernel32.CloseHandle(h)
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
+def zar_elavult(adat, most=None, korlat_perc=None, gep=None, el_e=folyamat_el):
+    """(elavult-e, ok) a zarfajl tartalmara (dict, vagy None, ha olvashatatlan)."""
+    import socket
+    import time as _time
+    most = _time.time() if most is None else most
+    korlat_perc = zar_korlat_perc() if korlat_perc is None else korlat_perc
+    gep = socket.gethostname() if gep is None else gep
+    if not adat:
+        return False, 'olvashatatlan zárfájl'
+    kor = (most - float(adat.get('ts', most))) / 60.0
+    if kor > korlat_perc:
+        return True, 'a zár %.0f perces (korlát: %.0f perc)' % (kor, korlat_perc)
+    if adat.get('gep') == gep and not el_e(adat.get('pid')):
+        return True, 'a zárat tartó folyamat (pid %s) már nem él' % adat.get('pid')
+    return False, ''
+
+
+class HelyiZar(object):
+    """Context manager: a kozos helyi ellenorzes-zar (l. fent). `kiir`, `alvas`, `el_e` a tesztekhez cserelheto."""
+
+    def __init__(self, leiras, ut=None, varakozas=ZAR_VARAKOZAS_MP, kiir=None, alvas=None, el_e=folyamat_el):
+        import time as _time
+        self.leiras = leiras
+        self.ut = ut or zar_ut()
+        self.varakozas = varakozas
+        self.kiir = kiir or (lambda s: print(s, file=sys.stderr, flush=True))
+        self.alvas = alvas or _time.sleep
+        self.el_e = el_e
+        self.aktiv = not os.environ.get('GITHUB_ACTIONS')
+        self.vart = 0.0
+
+    def _olvas(self):
+        import json
+        try:
+            with open(self.ut, encoding='utf-8') as f:
+                return json.load(f)
+        except (OSError, ValueError):
+            return None
+
+    def __enter__(self):
+        import json
+        import socket
+        import time as _time
+        if not self.aktiv:
+            return self
+        os.makedirs(os.path.dirname(self.ut), exist_ok=True)
+        jelezve = False
+        while True:
+            try:
+                fd = os.open(self.ut, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            except FileExistsError:
+                adat = self._olvas()
+                if adat is None:
+                    try:  # felig irt vagy serult zarfajl: a modositasi ido a kor
+                        adat = {'ts': os.path.getmtime(self.ut), 'gep': None}
+                    except OSError:
+                        continue  # kozben eltunt
+                elavult, ok = zar_elavult(adat, el_e=self.el_e)
+                if elavult:
+                    self.kiir('[zár] elavult zár feloldva (%s): %s' % (ok, self.ut))
+                    try:
+                        os.remove(self.ut)
+                    except OSError:
+                        pass
+                    continue
+                if not jelezve:
+                    self.kiir('[zár] vár: a helyi ellenőrzést más futás tartja (pid %s, %s, %s óta: %s) -- %s'
+                              % (adat.get('pid'), adat.get('munkakonyvtar', '?'), adat.get('kezdet', '?'),
+                                 adat.get('leiras', '?'), self.ut))
+                    jelezve = True
+                self.alvas(self.varakozas)
+                self.vart += self.varakozas
+                continue
+            with os.fdopen(fd, 'w', encoding='utf-8') as f:
+                json.dump({'pid': os.getpid(), 'gep': socket.gethostname(), 'ts': _time.time(),
+                           'kezdet': _time.strftime('%Y-%m-%d %H:%M:%S'), 'leiras': self.leiras,
+                           'munkakonyvtar': os.getcwd()}, f, ensure_ascii=False)
+            if jelezve:
+                self.kiir('[zár] megszerezve %.0f mp várakozás után' % self.vart)
+            return self
+
+    def __exit__(self, *exc):
+        if not self.aktiv:
+            return False
+        adat = self._olvas()
+        if adat and adat.get('pid') == os.getpid():
+            try:
+                os.remove(self.ut)
+            except OSError:
+                pass
+        return False
+
+
 def _szint_diff_szerint(talalat, alap_szint, hozzaadott_cache, diff_alap, diff_fej):
     """D8: a talalat vegleges szintje -- HIBA csak akkor marad, ha a
     talalat sora a diff altal hozzaadott/modositott sorok kozott van."""
@@ -197,11 +349,12 @@ def main():
         with open(args.commit_uzenet_fajl, encoding='utf-8') as f:
             commit_uzenet = f.read()
 
-    eredmeny = fut(
-        valtozott_relativ, args.teljes,
-        diff_alap=args.diff_alap, diff_fej=args.diff_fej,
-        pr_cim=args.pr_cim, commit_uzenet=commit_uzenet, esemeny=args.esemeny,
-    )
+    with HelyiZar('futtat.py %s' % ('--teljes' if args.teljes else '--valtozott (%d fájl)' % len(valtozott_relativ))):
+        eredmeny = fut(
+            valtozott_relativ, args.teljes,
+            diff_alap=args.diff_alap, diff_fej=args.diff_fej,
+            pr_cim=args.pr_cim, commit_uzenet=commit_uzenet, esemeny=args.esemeny,
+        )
     szoveg, hiba_van = jelentes_szoveg(eredmeny, args.teljes, args.minta, args.esemeny)
     print(szoveg)
     annotaciok_kiirasa(eredmeny.get('E27', []))

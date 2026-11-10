@@ -2005,6 +2005,21 @@ def _migralt_lista():
     return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
 
 
+E28_CSAK_VALTOZO = 'PARDES_E28_CSAK'
+
+
+def e28_csak_szures():
+    """F188 T4: a migrált nézetek szűkítése helyi futásban (a független ellenőr diétája): a `PARDES_E28_CSAK`
+    környezeti változó vesszős ID-listája, vagy None (nincs szűkítés). A GitHub-futásban (`GITHUB_ACTIONS`) a
+    változót figyelmen kívül hagyja: a CI-ben mindig a teljes E28 fut."""
+    if os.environ.get('GITHUB_ACTIONS'):
+        return None
+    nyers = os.environ.get(E28_CSAK_VALTOZO, '').strip()
+    if not nyers:
+        return None
+    return {x.strip() for x in nyers.split(',') if x.strip()}
+
+
 def _lf(szoveg):
     return szoveg.replace('\r\n', '\n')
 
@@ -2182,6 +2197,13 @@ def e28_generalt_nezet_egyezes(fajlok):
 
     # (2) migrált nézetek
     lista = _migralt_lista()
+    csak = e28_csak_szures()
+    if csak is not None:
+        # F188 T4: a független ellenőr helyi futása az érintett lapokra szűkíthet; a CI ezt nem állítja be
+        kihagyott = [d['id'].strip() for _, d in lista if d.get('id', '').strip() not in csak]
+        lista = [(n, d) for n, d in lista if d.get('id', '').strip() in csak]
+        E28_JEGYZETEK.append('E28: szűkítve (%s=%s); kihagyva: %s' % (
+            E28_CSAK_VALTOZO, ','.join(sorted(csak)), ', '.join(kihagyott) or '-'))
     if not lista:
         E28_JEGYZETEK.append('E28: 0 migrált nézet')
     else:

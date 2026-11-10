@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+test_zar.py -- F188 (T4/T5/T6 kiegészítés): a közös helyi ellenőrzés-zár (`futtat.py` `HelyiZar`) és a lassú
+tesztek érintettsége (`eszkozok/teszt_futtat.py` `LASSU_LEFEDETT`, `erintett_lassu`). A zár ideiglenes
+könyvtárban (a `~/.pardes/`-hez nem nyúl).
+
+Futtatás a repó gyökeréből:
+    python eszkozok/ellenorzes/tesztek/test_zar.py
+"""
+
+import importlib.util
+import json
+import os
+import shutil
+import sys
+import tempfile
+import time
+import unittest
+
+_ITT = os.path.dirname(os.path.abspath(__file__))
+_ELLENORZES = os.path.dirname(_ITT)
+_REPO = os.path.dirname(os.path.dirname(_ELLENORZES))
+sys.path.insert(0, _ELLENORZES)
+
+import futtat as FT  # noqa: E402
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+
+def _teszt_futtat():
+    spec = importlib.util.spec_from_file_location('teszt_futtat_modul', os.path.join(_REPO, 'eszkozok', 'teszt_futtat.py'))
+    modul = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modul)
+    return modul
+
+
+class ZarTeszt(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix='zar_teszt_')
+        self.ut = os.path.join(self.tmp, 'al', FT.ZAR_NEV)
+        self.uzenetek = []
+        self._gh = os.environ.pop('GITHUB_ACTIONS', None)
+
+    def tearDown(self):
+        if self._gh is not None:
+            os.environ['GITHUB_ACTIONS'] = self._gh
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _zar(self, **kw):
+        kw.setdefault('kiir', self.uzenetek.append)
+        kw.setdefault('alvas', lambda mp: None)
+        return FT.HelyiZar('teszt', ut=self.ut, **kw)
+
+    def _idegen_zar(self, **adat):
+        os.makedirs(os.path.dirname(self.ut), exist_ok=True)
+        alap = {'pid': 999999, 'gep': 'masik-gep', 'ts': time.time(), 'leiras': 'más futás', 'kezdet': 'most'}
+        alap.update(adat)
+        with open(self.ut, 'w', encoding='utf-8') as f:
+            json.dump(alap, f)
+
+    def test_megszerez_es_elenged(self):
+        with self._zar():
+            self.assertTrue(os.path.exists(self.ut))
+            with open(self.ut, encoding='utf-8') as f:
+                self.assertEqual(json.load(f)['pid'], os.getpid())
+        self.assertFalse(os.path.exists(self.ut))
+
+    def test_var_amig_foglalt(self):
+        self._idegen_zar()
+        hivas = []
+
+        def alvas(mp):
+            hivas.append(mp)
+            if len(hivas) == 3:
+                os.remove(self.ut)  # a másik futás közben végez
+        with self._zar(alvas=alvas):
+            pass
+        self.assertEqual(len(hivas), 3)
+        self.assertEqual(sum(1 for u in self.uzenetek if u.startswith('[zár] vár:')), 1, self.uzenetek)
+        self.assertTrue(any('más futás' in u for u in self.uzenetek))
+        self.assertTrue(any(u.startswith('[zár] megszerezve') for u in self.uzenetek))
+
+    def test_holt_pid_feloldja(self):
+        import socket
+        self._idegen_zar(gep=socket.gethostname(), pid=4242)
+        with self._zar(el_e=lambda pid: False):
+            pass
+        self.assertTrue(any('elavult zár feloldva' in u and 'nem él' in u for u in self.uzenetek), self.uzenetek)
+
+    def test_idokorlat_feloldja(self):
+        self._idegen_zar(ts=time.time() - (FT.ZAR_ALAP_KORLAT_PERC + 5) * 60)
+        with self._zar(el_e=lambda pid: True):
+            pass
+        self.assertTrue(any('korlát' in u for u in self.uzenetek), self.uzenetek)
+
+    def test_elo_masik_gep_nem_elavult(self):
+        self.assertEqual(FT.zar_elavult({'pid': 1, 'gep': 'masik', 'ts': 1000.0}, most=1000.0 + 60,
+                                        korlat_perc=120, gep='ez', el_e=lambda p: False), (False, ''))
+
+    def test_github_alatt_nincs_zar(self):
+        os.environ['GITHUB_ACTIONS'] = 'true'
+        try:
+            with self._zar():
+                self.assertFalse(os.path.exists(self.ut))
+        finally:
+            os.environ.pop('GITHUB_ACTIONS', None)
+
+    def test_mas_zarjat_nem_torli(self):
+        z = self._zar()
+        z.__enter__()
+        self._idegen_zar()  # közben valaki felülírta (pl. elavultnak vette)
+        z.__exit__(None, None, None)
+        self.assertTrue(os.path.exists(self.ut))
+
+    def test_zar_helye(self):
+        regi = os.environ.get(FT.ZAR_KONYVTAR_VALTOZO)
+        try:
+            os.environ.pop(FT.ZAR_KONYVTAR_VALTOZO, None)
+            self.assertEqual(FT.zar_ut(), os.path.join(os.path.expanduser('~'), '.pardes', 'ellenorzes.zar'))
+            os.environ[FT.ZAR_KONYVTAR_VALTOZO] = self.tmp
+            self.assertEqual(FT.zar_ut(), os.path.join(self.tmp, 'ellenorzes.zar'))
+        finally:
+            if regi is None:
+                os.environ.pop(FT.ZAR_KONYVTAR_VALTOZO, None)
+            else:
+                os.environ[FT.ZAR_KONYVTAR_VALTOZO] = regi
+
+
+class LassuTesztTeszt(unittest.TestCase):
+    def test_lefedett_lista_egy_helyen(self):
+        TF = _teszt_futtat()
+        self.assertEqual(set(TF.LASSU_LEFEDETT), set(TF.LASSU))
+
+    def test_erintettseg(self):
+        TF = _teszt_futtat()
+        self.assertEqual(TF.erintett_lassu(['eszkozok/ellenorzes/szabalyok.py', 'MUNKAMENET.md']),
+                         {f: False for f in TF.LASSU_LEFEDETT})
+        self.assertEqual(TF.erintett_lassu(['eszkozok/olvaso_szerver/arculat.py']),
+                         {f: True for f in TF.LASSU_LEFEDETT})
+        self.assertEqual(TF.erintett_lassu(['eszkozok/olvaso_szerver_regi.py']),
+                         {f: False for f in TF.LASSU_LEFEDETT})
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=1)
