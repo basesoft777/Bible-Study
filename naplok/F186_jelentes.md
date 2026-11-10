@@ -408,6 +408,41 @@ ts=2026-11-10.*
   `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc` 42/43 (a régi `Sigla`-hiba). `feladatok.py ellenoriz`:
   204 brief, 0 hiba.
 
+### 9.9 A G5590 újrafordítása ebben a PR-ban (egyeztetett eltérés; orkesztrátori döntés, 2026-11-10; F186.13)
+
+*Proveniencia: scope=G5590 (ψυχή, az ANTROP-001 gerincszava), 11 Thayer-szakasz | forras=eszkozok/thayer_jelolt/forditas.py
+(`elokeszit` → Sonnet subagent → `ellenoriz` → `rogzit` → `beir`), prompt `forditas/prompt_v5_2.md` | ts=2026-11-10.*
+
+- **Miért:** piros CI-vel nincs merge; a 68 érintett Strongból egyedül a G5590 szerepel lapon (9.8), ezért a fordítatlan
+  szakaszai (sz8 új kezdete és az sz9 új szakasz; az sz8 korábbi sora `elavult`) a 13. szabályon SÉRTÉS-t adtak. **Egyeztetett
+  eltérés:** a brief „Nem része: a Thayer magyar fordítása” pontja alól ez az egy Strong kivétel.
+- **A lánc, pontosan a #132 / #7 mintájára:** `forditas.py elokeszit G5590` (1 csoport, 11 szakasz, a csoportprompt a tokenes
+  forrással, adatblokkal); a fordítást egy **Sonnet subagent** (`general-purpose`, `model: sonnet`; a tényleges modell
+  **`claude-sonnet-5-5`**, saját bejelentése) végezte a promptból, előfizetésből, API-hívás és mérés nélkül; a válasz a prompt
+  JSON-sémája (`strong`, `forditas_hu`, `bizonytalan_feloldasok`: Macc. (Makk), Wis. (Bölcs), Cyril, Antiquities, Aelian,
+  Antoninus). A végrehajtó csak előkészített, kinyerte a `forditas_hu`-t, és futtatta a kapukat.
+- **Kapuk** (`forditas.py ellenoriz`, a `bizonytalan_feloldasok` mint `--kivetel`): mind RENDBEN, első körre — `1_gorog_heber`,
+  `2_versszam`, `3_karoli_roviditesek`, `4_formazas`, `5_terminologia`, `6_hosszarany` (1,02), `8_idezojel`, `9_tagolas` (11
+  szakasz), `11_konyvek`, `12_szentlelek`, `13_fejezetszam`, `15_tiltott` (0 találat), `14_szakasz` (11), `16_sigla` (39 besorolt
+  sigla rendben). Javítókör nem kellett; a javítóréteg nem változtatott.
+- **Rögzítés:** `rogzit G5590 --allapot sonnet --modell claude-sonnet-5-5 --datum 2026.11.10` (a munkatábla
+  `naplok/F132_THAYER_SZAKASZ_munka.tsv` G5590-sorai cserélve; az `ir` ezzel bővül), majd `beir G5590 --allapot sonnet
+  --kezi-marad` (a G5590 `teljes` sora `kezi`, DT-F132c (ii) szerint érvényes marad): **11 sor** változott vagy új a
+  `forditasok.tsv`-ben (sz1–sz11, `sonnet`, `claude-sonnet-5-5`; a régi `elavult` sz8 sor felülírva). Más sor nem változott (a
+  `beir` írás előtti ellenőrzése).
+- **Eredmény:** `python eszkozok/ellenoriz.py` kilépési kód 0 — RENDBEN 26, **SÉRTÉS 0**, KÉZI 2, JELENTÉS 15; a 13. szabály
+  **JELENTÉS (184)**: 117 `elavult` sor újrafordításra vár, 67 Thayer-Strong fordítatlan szakasszal, egyik sem lexikonlapon (a
+  #7 következő adagjáé). Más lapon szereplő Strong nem érintett.
+- **Tesztek:** `teszt_ellenoriz_13` OK; `teszt_bont`, `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc`: 9.10;
+  `feladatok.py ellenoriz`: 204 brief, 0 hiba.
+
+### 9.10 A `teszt_lanc` a G5590 újrafordítása után
+
+43-ból 42 OK; a `Sigla.test_tabla_determinisztikus_es_kezi_vedett` bukik (`adat/thayer_sigla.tsv` darabszám 66 ≠ 60) — ez a
+hiba **már a #186 indulásakor fennállt** (a 2026-11-10-i első alapfutás, a változtatások előtt), és nem a #186 okozza; a
+`thayer_sigla.tsv` nincs az `ir`-ben. Javasolt külön tétel: a sigla-tábla újragenerálása vagy a teszt elvárásának
+igazítása (a #7 / #132 gazdája dönt).
+
 ### 9.4 Az érintett Strongok és fordítássoraik (DT-F186b; `forditas_atkulcsol.py --lista`)
 
 Az újrafordítás (a 118 `elavult` sor és a fordítatlan új szakaszok) a #7-é. HAMART-szó a listában nincs.

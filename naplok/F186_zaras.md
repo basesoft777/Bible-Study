@@ -9,6 +9,6 @@
 - **Mérve, de nem javítva:** K3 (N-F186a), K4, a seed-203 hat maradék hibája (K1d, K2c, K2d, K5).
 - **Kulcsváltozás:** 173 Strong, 1 221 szakaszkulcs.
 - **#7:** 590 fordítássor átkulcsolva hash szerint, 118 `elavult` (68 Strong); HAMART-szó nem érintett. Az újrafordítás a #7-é.
-- **CI (N-F186c, (b) szűkítve):** a 13. szabályban az `elavult` hash-eltérés (118) és a 67 lapon kívüli Strong fordítatlan szakasza JELENTÉS; SÉRTÉS 1 marad: G5590 (ANTROP-001 gerinc), az E1 ezen piros — elfogadott. Szabály: SEMA 2.14. Tesztek: thayer_jelolt (a `Sigla` régi hiba), `teszt_ellenoriz_13` 75 OK; `feladatok.py ellenoriz` 0 hiba (jelentés 9.7–9.8).
+- **CI (N-F186c (b) szűkítve + a G5590 újrafordítása):** a 13. szabályban az `elavult` hash-eltérés (117) és a 67 lapon kívüli Strong fordítatlan szakasza JELENTÉS; a lapon szereplő G5590 (ANTROP-001) a #132 láncával újrafordítva (Sonnet subagent, `claude-sonnet-5-5`, kapuk első körre átmentek, 11 sor). `ellenoriz.py`: **SÉRTÉS 0**. Tesztek zöldek (a `Sigla` régi hiba), `feladatok.py ellenoriz` 0 hiba (jelentés 9.7–9.10).
 - **Tokenfogyasztás:** seed-203 673 ezer token (becslés 1,17 M).
 - A brief `allapot`-a `fut` marad; az ellenőr, a PR, a push és a lezárás az orkesztrátoré.
