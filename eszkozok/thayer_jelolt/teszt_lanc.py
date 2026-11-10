@@ -56,7 +56,7 @@ class Betolto(unittest.TestCase):
     def test_ellenoriz(self):
         hibak, stat, _ = TB.ellenoriz()
         self.assertEqual(hibak, [])
-        self.assertEqual(stat['szakasz'], 17093)
+        self.assertEqual(stat['szakasz'], 17317)  # F186: + a bekezdésen belüli fejnél nyíló szakaszok
 
 
 class Szolista(unittest.TestCase):

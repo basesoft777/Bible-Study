@@ -76,7 +76,8 @@ FEJ_NAGY = re.compile(r'^([A-H])\.(?=\s)')
 WS = re.compile(r'\s+')
 # F186 K2: a bekezdés eleji félkövér jelölő, amelyet „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követ, egy a forrásban
 # kettétört kereszthivatkozás töredéke („<b>b.</b> bb.; γεννάω, …”, „<b>c.</b>)): as …”), nem fej (seed-201 T145).
-HAMIS_FEJ_UTAN = re.compile(r'\s*[),;\]]|\s+([a-z])\1\.')
+# F186 K2b (második kör, seed-202 U014): „<b>d.</b> at the end):” — utalás-töredék záró zárójellel.
+HAMIS_FEJ_UTAN = re.compile(r'\s*[),;\]]|\s+([a-z])\1\.|\s+(?:at the end|above|below)\s*\)')
 # F186 K1: bekezdésen belüli fej (félkövér nélkül is): kisbetű „a.”/„a:”/„i.:” vagy szám „2.” a szövegben (a címkék és a
 # <ref>/<ref0> tartalma kitakarva), a sorrendben várt következő jelölő; l. `belso_fejek`.
 TAKAR = re.compile(r'<(ref0?)\b[^>]*>.*?</\1>|<[^>]+>|&[#\w]+;', re.S)
@@ -85,10 +86,15 @@ BELSO_SZAM = re.compile(r'(?<=[.;:)][\s\x00])(\d{1,2})\.(?=\s+[\x00A-Za-z])')
 # az előző szó, amely után a betű nem fej (rövidítés, utalás, hivatkozás): „i. e.”, „cf. a.”, „see b.”, „l. c.”, „p. 5 a.” …
 NEM_FEJ_ELOTT = {'i', 'e', 'p', 'pp', 'l', 'cf', 'see', 'comp', 'vol', 'ed', 'no', 'ch', 'sq', 'ff', 'sub', 'under', 'art',
                  'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                 'Rev', 'Rec', 'ad', 'et', 'ib', 'ibid', 'op', 'cit', 'loc', 'viz', 'q', 'v', 's', 'u', 'to'}
+                 'Rev', 'Rec', 'ad', 'et', 'ib', 'ibid', 'op', 'cit', 'loc', 'viz', 'q', 'v', 's', 'u', 'an'}
+# F186 K1b (második kör, seed-202): a „to” és a „,” előzmény nem kizáró („applied to a. the O. T. prophets”, „τί, a.
+# properly”, „i. e., a. what one wishes”); helyette a nyitott zárójelen belüli jelölő nem fej („(some refer this to b. in
+# the sense …)”), és a felsorolt utalás („I. 1 a. and c.”) sem. A német „an d.” („Brief an d. Heb”) rövidítés.
+FELSOROLT_UTALAS = re.compile(r'(?<![\w])[a-z]\.[\s\x00]*$')
 # a betű után álló folytatás, amely hivatkozásra vall: szám („h. a. 5, 19”), egybetűs rövidítés („a. d. Heb”, „b. g. 1”,
 # „i. e.”, „e. g.”), utalás („c. below”, „c. above”, „b. at the end”)
-BETU_UTAN_NEM = re.compile(r'[\s\x00]*(?:\d|[a-z]\.|([a-z])\1\.|below\b|above\b|at the end\b|init\b|fin\b)')
+# (második kör: nagybetűs rövidítés — „Einl. in d. N. T.” —, és a bekezdés vége — „see γωνία, a.” —, tartalom nélkül)
+BETU_UTAN_NEM = re.compile(r'[\s\x00]*(?:\d|[a-z]\.|[A-Z]\.(?!\w)|([a-z])\1\.|below\b|above\b|at the end\b|init\b|fin\b)')
 # a szám után álló római szám („1. ix. quaest.”): helyjelölés, nem fej
 SZAM_UTAN_NEM = re.compile(r'\s+[ivxl]+\.')
 
@@ -198,14 +204,37 @@ def _elozo(tk, p):
     return kar, tk[s + 1:q + 1]
 
 
+def _szo_eleje(tk, p):
+    """A `p` előtti szó kezdete a takart szövegben (a szóközök és a takart részek átlépésével)."""
+    q = p - 1
+    while q >= 0 and (tk[q].isspace() or tk[q] == '\x00'):
+        q -= 1
+    while q >= 0 and tk[q].isalpha():
+        q -= 1
+    return q + 1
+
+
+def _zarojel_melyseg(tk, p):
+    """A `p` pozíción nyitott kerek zárójelek száma a bekezdésben (a takart részek nem számítanak)."""
+    d = 0
+    for ch in tk[:p]:
+        if ch == '(':
+            d += 1
+        elif ch == ')' and d:
+            d -= 1
+    return d
+
+
 def belso_fejek(raw, t, kezdet=0):
     """F186 K1: a bekezdés belsejében (a `kezdet` után) nyitó fejek, sorrendben: [(poz a raw-ban, szint, jel, érték)].
 
     Fej a kisbetű („a.”, „a:”, „i.:”) vagy a szám („2.”), ha (1) a sorrendben várt következő jelölő (betű: az aktuális betű
-    utáni, vagy `a`, ha nincs betű; szám: az aktuális szám utáni, vagy `1`); (2) betűnél utána szóköz, címke vagy a szöveg vége
-    áll (nem „)”, „,”, „;”), az előtte álló karakter nem „,”, számjegy, „§”, „(”, „-”, „/”, „&”, az előző szó nem rövidítés
-    vagy utalás (`NEM_FEJ_ELOTT`; „i. e.”, „e. g.” sem); (3) számnál előtte mondatzáró írásjel és szóköz, utána szóköz és szó
-    áll. A `t` másolatán halad (a bekezdés eleji fej már benne van); a számfej a betűt törli (TOROL)."""
+    utáni — i után k is, mert a Thayer a „j”-t kihagyja (K1c) —, vagy `a`, ha nincs betű; szám: az aktuális szám utáni, vagy
+    `1`); (2) betűnél utána szóköz, címke vagy szöveg áll (nem „)”, „,”, „;”, szám, egybetűs rövidítés, „below/above/at the
+    end”, és nem a bekezdés vége), az előtte álló karakter nem számjegy, „§”, „(”, „-”, „/”, „&”, az előző szó nem rövidítés
+    vagy utalás (`NEM_FEJ_ELOTT`; „i. e.”, „e. g.” sem, de az „i. e., a.” igen), nem felsorolt utalás („1 a. and c.”), és a
+    jelölő nincs nyitott zárójelen belül (K1b, második kör); (3) számnál előtte mondatzáró írásjel és szóköz, utána szóköz és
+    szó áll, zárójelen kívül. A `t` másolatán halad (a bekezdés eleji fej már benne van); a számfej a betűt törli (TOROL)."""
     tk = _takar(raw)
     t = dict(t)
     jelolt = []
@@ -216,15 +245,18 @@ def belso_fejek(raw, t, kezdet=0):
     ki = []
     for p, szint, jel, ertek in sorted(jelolt):
         if szint == 'betu':
-            varhato = chr(ord(t['betu']) + 1) if t.get('betu') else 'a'
-            if ertek != varhato:
+            # F186 K1c: a Thayer betűsora a „j”-t kihagyja (i → k), ezért i után k is várt
+            varhato = ({chr(ord(t['betu']) + 1)} | ({'k'} if t['betu'] == 'i' else set())) if t.get('betu') else {'a'}
+            if ertek not in varhato:
                 continue
             kar, szo = _elozo(tk, p)
-            if kar and (kar in ',§(-/&=+' or kar.isdigit()):
+            if kar and (kar in '§(-/&=+' or kar.isdigit()):
                 continue
-            if szo in NEM_FEJ_ELOTT:
+            if szo in NEM_FEJ_ELOTT and not (szo == 'e' and kar == ','):
                 continue
-            if BETU_UTAN_NEM.match(tk, p + len(jel)):
+            if szo in ('and', 'or') and FELSOROLT_UTALAS.search(tk, 0, _szo_eleje(tk, p)):
+                continue
+            if BETU_UTAN_NEM.match(tk, p + len(jel)) or _zarojel_melyseg(tk, p) or not sima(raw[p + len(jel):]):
                 continue
         else:
             varhato = str(int(t['szam']) + 1) if (t.get('szam') or '').isdigit() else '1'
@@ -232,7 +264,7 @@ def belso_fejek(raw, t, kezdet=0):
                 continue
             # a szám előtt egybetűs vagy ismert rövidítés („orac. def. c. 1.”, „§ 27, 6 N. 1.”): fejezet-/jegyzetszám
             _, szo = _elozo(tk, p)
-            if len(szo) == 1 or szo in NEM_FEJ_ELOTT:
+            if len(szo) == 1 or szo in NEM_FEJ_ELOTT or _zarojel_melyseg(tk, p):
                 continue
         t[szint] = ertek
         for x in TOROL[szint]:

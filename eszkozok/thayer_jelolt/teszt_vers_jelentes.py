@@ -154,9 +154,12 @@ class Tabla(unittest.TestCase):
 
 
 ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
-# a mért, de nem javított osztályok (naplok/F186_jelentes.md 3. és 5.): K3 — a záró szinonima-jegyzet (a táblában nincs `zaro`
-# érték); a seed-202 osztályai (K1b, K1c, K2b, K4) — a javításuk a T4 utáni döntésre vár (új vak minta kell, seed-203)
-NEM_JAVITOTT = {'K3', 'K1b', 'K1c', 'K2b', 'K4'}
+# a mért, de nem javított osztályok (naplok/F186_jelentes.md): K3 — a záró szinonima-jegyzet (a táblában nincs `zaro` érték,
+# N-F186a); K4 — forrás-torzulás („5 B a Hebraism”). Soronként: U014 (K2b) — a „d. at the end)” hamis fej a második körben
+# felismerve, de a forrás a „c.” alatti görög α-t félkövér „a.”-ként írja, így az útvonal B.II/3/a (a visszaugró betű
+# szabálya a korpuszon több valódi fejet nyelt el, ezért nincs bevezetve)
+NEM_JAVITOTT = {'K3', 'K4'}
+NEM_JAVITOTT_SOR = {'U014'}
 
 
 def arany():
@@ -191,6 +194,14 @@ class Aranyminta(unittest.TestCase):
         # seed-201: T145
         self.assertEqual(len(self._osztaly('K2')), 1)
 
+    def test_k1b_vesszo_es_to_utan(self):
+        # seed-202 (második kör): U009, U034, U140, U180
+        self.assertEqual(len(self._osztaly('K1b')), 4)
+
+    def test_k1c_j_kimarad(self):
+        # seed-202 (második kör): U036, U165
+        self.assertEqual(len(self._osztaly('K1c')), 2)
+
     def test_minden_arany_sor(self):
         # a K1/K2 javítás nem ront el más sort: minden nem K3 sor könyv/verse és jelentéspontja az arany érték
         rossz = []
@@ -198,7 +209,7 @@ class Aranyminta(unittest.TestCase):
             s = self.sor(r)
             if '%s %s:%s' % (s['konyv'], s['fejezet'], s['vers']) != r['arany_konyv_vers']:
                 rossz.append((r['azon'], 'könyv/vers'))
-            if r['osztaly'] not in NEM_JAVITOTT and jp(s['utvonal']) != r['arany_utvonal']:
+            if r['osztaly'] not in NEM_JAVITOTT and r['azon'] not in NEM_JAVITOTT_SOR and jp(s['utvonal']) != r['arany_utvonal']:
                 rossz.append((r['azon'], s['utvonal'], r['arany_utvonal']))
         self.assertEqual(rossz, [])
 

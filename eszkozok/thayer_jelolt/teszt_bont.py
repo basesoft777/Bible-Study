@@ -156,6 +156,34 @@ class F186Fejek(unittest.TestCase):
             sz = _ut(d)
             self.assertEqual(len(sz), 2, d)
 
+    def test_k1b_vesszo_es_to_utan(self):
+        # seed-202 U009 G4314 „πρός τινα or τί, a. properly”; U034/U180 G4396 „applied to a. the O. T. prophets”;
+        # U140 G2307 „will, i. e., a. what one wishes”
+        for d, ut in (('<p><b>1.</b> toward: <ref0 class="word" entry="τί">τί</ref0>, a. properly, after verbs</p>', '-/1/a'),
+                      ('<p><b>1.</b> The title is applied to a. </i></b>the O. T. prophets</p>', '-/1/a'),
+                      ('<p>will, i. e., a. what one wishes: <ref onclick="bcv(60,4,2)">1Pe 4:2</ref></p>', '-/-/a')):
+            self.assertEqual(_ut(d)[-1][0], ut, d)
+
+    def test_k1b_nem_fej(self):
+        # zárójelen belül, felsorolt utalás, bekezdés végi jelölő, nagybetűs rövidítés, német „an d.”
+        for d in ('<p><b>1.</b> x (some refer this to a. in the sense of farewell); y</p>',
+                  '<p><b>1.</b> x, see ποιέω, I. 1 a. and b.; y</p>',
+                  '<p><b>1.</b> x; see γωνία, a.</p>',
+                  '<p><b>1.</b> x, cf. Hilgenfeld, Einl. in a. N. T., p. 487</p>',
+                  '<p><b>1.</b> x, Bleek, Brief an a. Heb 2:2</p>'):
+            self.assertEqual(len(_ut(d)), 2, d)
+
+    def test_k1c_j_kimarad(self):
+        # seed-202 U036 G3004, U165 G2192: a Thayer betűsora a „j”-t kihagyja (i → k)
+        sz = _ut('<p><b>i.</b> x, <ref onclick="bcv(45,15,17)">Rom 15:17</ref>. k. ἔχειν τί is used of one</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/i', '-/-/k'])
+
+    def test_k2b_utalas_zarojellel(self):
+        # seed-202 U014 G1519: „<b>d.</b> at the end): Luk 20:20” — utalás-töredék, nem fej
+        sz = _ut('<p><b>c.</b> u</p><p><b>d.</b> at the end): <ref onclick="bcv(42,20,20)">Luk 20:20</ref></p>'
+                 '<p><b>d.</b> w</p><p><b>e.</b> above)).</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/c', '-/-/c', '-/-/d', '-/-/d'])
+
     def test_k1_sorrend(self):
         # csak a várt következő jelölő nyit: a „c.” nem nyit, ha az aktuális betű „a”
         sz = _ut('<p><b>a.</b> x; and so c. other</p>')
