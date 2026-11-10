@@ -78,8 +78,14 @@ A szintet a bemenet adja (`python eszkozok/feladatok.py szint <nn>`; a szabály:
 - **`teljes`:** minden pont, ahogy alább áll.
 - **`konnyitett`:** az A3–A6 (tartalmi) pontok helyére egy sor kerül:
   `A3–A6 | kihagyva: könnyített szint (a diffben nincs tartalmi réteg)`. Ha mégis
-  tartalmi réteget találsz a diffben (adat, motívum, lexikon, forrás, sablon), az
-  ELTÉRÉS, és a teljes listát futtatod. Minden más pont megmarad: a 0. (modell), az 1.
+  tartalmi réteget vagy olvasói kimenetet előállító kódot találsz a diffben (adat,
+  motívum, lexikon, forrás, sablon, olvasó-szerver, generátor), az ELTÉRÉS, és a teljes
+  listát futtatod.
+- **Eszkaláció (gépi jelölés, ELLENOR_F188 5.):** ha könnyített szintről a teljes
+  listára váltasz, a jelentés **második sora** (közvetlenül az első sor után, önálló
+  sorként) pontosan ez: `SZINT-ESZKALÁCIÓ: konnyitett → teljes — <ok egy mondatban>`.
+  A `/elteres` ebből veszi a javítókör-korlátot (K = 2). Eszkaláció nélkül ilyen sor
+  nem áll a jelentésben. Minden más pont megmarad: a 0. (modell), az 1.
   (G/D), a 2. A1–A2, a 3. (CI), a kötelező ellenőrzőlista mind az öt pontja, és a
   tanulmány-ellenőrzés, ha a diff tanulmányt hoz.
 
