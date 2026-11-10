@@ -278,14 +278,14 @@ def belso_fejek(raw, t, kezdet=0):
 
 
 def szerkezet(definition):
-    """-> [{'raw', 'plain', 'utvonal', 'jel'}] a szócikk szakaszaira: a bekezdések, a bekezdésen belüli fejeknél (F186 K1)
-    kettévágva."""
+    """-> [{'raw', 'plain', 'utvonal', 'jel', 'bekezdes'}] a szócikk szakaszaira: a bekezdések, a bekezdésen belüli fejeknél
+    (F186 K1) kettévágva; a `bekezdes` a forrásbekezdés sorszáma (1-től, a cím is; az F186 előtti tábla `sorszam`-a)."""
     ki, t, allapot = [], {}, 'kezdet'
-    for raw in szegmensek(definition):
+    for bek, raw in enumerate(szegmensek(definition), 1):
         plain = sima(raw)
         if CIM.match(raw):
             t, allapot = {}, 'cim'
-            ki.append({'raw': raw, 'plain': plain, 'utvonal': 'cim', 'jel': ''})
+            ki.append({'raw': raw, 'plain': plain, 'utvonal': 'cim', 'jel': '', 'bekezdes': bek})
             continue
         szint, jel = fej_felismer(raw, t)
         if szint:
@@ -315,7 +315,7 @@ def szerkezet(definition):
                 darabok.append((raw[p:vege], utvonal(t), j))
             darabok = [d for d in darabok if sima(d[0])] or darabok[:1]
         for r, ut, j in darabok:
-            ki.append({'raw': r, 'plain': sima(r) if len(darabok) > 1 else plain, 'utvonal': ut, 'jel': j})
+            ki.append({'raw': r, 'plain': sima(r) if len(darabok) > 1 else plain, 'utvonal': ut, 'jel': j, 'bekezdes': bek})
     return ki
 
 
