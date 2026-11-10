@@ -755,6 +755,45 @@ forras=adat/thayer_vers_jelentes.tsv (a F186.13 utáni állapot) + Thayer.lexico
 
   A maradék hibák mérve, nem javítva: az orkesztrátori döntés szerint a seed-204 után nincs további javítókör.
 
+### 10.4 A HAMART görög 4.2-mintája (ELLENOR_F186 T6)
+
+*Proveniencia: scope=lexikon/HAMART-001_TUDOMANYOS.md | forras=`python eszkozok/general.py --cel lexikon --id HAMART-001
+--kimenet <scratchpad>` (a repón kívül) | ts=2026-11-10.*
+
+A HAMART-001 lapot a mai adatokon a repón kívül újrageneráltam, és a commitolt lappal vetettem össze: **a két lap bájtra
+azonos (0 eltérő sor), a görög 4.2 (diaftheiró, epikataratosz, katara, ftheiró, fthora) tehát nem változik.** Ok: a HAMART-szavak
+(G1311, G1944, G2671, G5351, G5356, G3077) szakaszkulcsa és fordítássora a #186-ban nem változott (9.2), és a görög 4.2 új,
+kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcsolja be; a #186 csak az adatréteget írja.
+
+### 10.5 Az ANTROP-001 lap újragenerálása (ELLENOR_F186 1., CI E28; F186.22)
+
+- **Mit jelzett az E28** (a CI-vel azonos `futtat.py --valtozott … --diff-alap 9976340 --diff-fej HEAD`): egyetlen lapot,
+  `lexikon/ANTROP-001_TUDOMANYOS.md` (a 126. sor [^6] lábjegyzete a G5591 1. példahelyét „Thayer fej”-ként idézte, a #186 után
+  `-/-/a`). A többi migrált nézet (ISTENTISZT-001, ALVIL-001, TEREMT-002, HAMART-001) nem jelzett.
+- **Újragenerálás:** `PARDES_DATUM=2026-11-04 python eszkozok/general.py --cel lexikon --id ANTROP-001 --ir` (a dátum a lap
+  meglévő `ts`-e, ahogy az E28 is újragenerál); kézi szerkesztés nincs; `_TORZSCIKK.md` az ANTROP-001-nek nincs. A lap
+  egyeztetett eltérésként kerül az `ir`-be (a fejlécet az orkesztrátor írja).
+- **A teljes lapdiff (40 sor) átnézve**, tételesen — mind a #186 adatváltozásából:
+  1. a [^6] és a [^8] lábjegyzet: G5591 példahely „Thayer fej” → „Thayer a” (K1: a ψυχικός bevezető bekezdésén belüli „a.”);
+  2. a G4151 4. pontja: a hamis „**b.** bb.;” bekezdés (K2) a 4.a-hoz kerül (új kibontott `4.a` blokk), a csukott cím „4.b – 5
+     (4 szakasz)” → „(3 szakasz)”; új kutatói megjegyzés: a 1Kor 2:14 (sorszám 217, `-/4/a`) a magyar szövegben nem található
+     (a 4.a blokkba most két szakasz tartozik; a G4151 17 `sz`-sorának hash-e mind egyezik — a K2 nem változtatta a `jel` +
+     `szoveg` összefűzött szövegét —, ezért a G4151 nem a 68 érintett Strong között van; a megjegyzés a blokk-összevonás
+     következménye, nem fordítási hiány);
+  3. a G5590: az 1.b csukott címe „(1 szakasz)” → „(2 szakasz)” (a „c. below), 2Co 12:15.” utalás-töredék a K2b miatt az 1.b-hez
+     tartozik), az 1.c → 2, a 2 bekezdésen belüli „a.” → új `2.a` (K1); a magyar szöveg a F186.13 (és a javítókör) Sonnet-fordítása
+     (szóhasználati különbségek a régi `teljes`-ből vett szöveghez képest, pl. „lélegzeni” → „lélegezni”, „az éltető erő” → „az
+     életerő”); a két kutatói megjegyzés (1Kor 15:45; 1Kor 15:44, 15:46 „fej”) az új szakaszhatárok szerint;
+  4. a G5591 (ψυχικός): új `a` blokk (K1: a 3. bekezdés eleji „a.” — a szakaszok száma és kulcsa nem változott, csak az
+     útvonal: `fej` → `-/-/a`; a 4 `sz`-sor hash-e egyezik), a kutatói megjegyzés a két „fej” példahely nélkül.
+  **#186-on kívüli generátorváltozás a diffben nincs** (minden sor a fenti négy Thayer-blokkhoz és lábjegyzeteihez tartozik).
+  DT/N-hivatkozás, munkaszó („gerinc”, „orkesztrátor”, „manual”) a diffben nincs; a `.tsv`-említések az apparátus meglévő
+  proveniencia-lábjegyzeteiben állnak, a régi sorokkal azonos formában. A számok (szakaszszám a csukott címekben, sorszám a
+  megjegyzésekben) a mai táblákból vannak.
+- **A lapdiff átnézésének lelete:** a G5590 sz4 új szövegében elírás volt („az életerő, amely a testet éltetí”). Egy javítókör
+  ugyanazzal a Sonnet subagenttel (`claude-sonnet-5-5`), csak ez az egy szó („élteti”); a lánc (`ellenoriz`: ÁTMENT, `rogzit`,
+  `beir --kezi-marad`) újra lefutott; a sorok `megjegyzes`-e jelöli a javítókört.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
