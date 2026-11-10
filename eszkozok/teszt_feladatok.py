@@ -203,6 +203,15 @@ class FuggesTest(Alap):
         self.assertEqual(fugg, {1: {}, 2: {}})
         self.assertEqual(utk, [])
 
+    def test_sajat_jelentesfajl_nem_utkozik(self):
+        # F188 T1: a napló, a zárás és az ellenőri jelentés egy fájlban (naplok/F<nn>_jelentes.md); a feladat
+        # saját fájlja (_kozos), ezért két, egymás jelentését nem író feladat között nem ad ütközést
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['a'], ir=['x', 'naplok/F01_jelentes.md']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, olvas=['b'], ir=['y', 'naplok/F02_jelentes.md']))
+        fugg, utk, _, _ = self.fugg()
+        self.assertEqual(fugg, {1: {}, 2: {}})
+        self.assertEqual(utk, [])
+
     def test_regi_fejlec(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['adat/x.tsv']))
         self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, ir=['a']))

@@ -35,7 +35,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    egy csomagba és nem enged párhuzamosan futni; a `REGI` sora (régi fejléc, `ir` hiányzik) csomagot kizár:
    az ilyen feladat csak egyedül fut. A `FIGYELEM ... kölcsönös függés` sor nem hiba, a `KOR` sor igen (döntés a felhasználóé).
    Kivételek az ütközésvizsgálatból (`feladatok.py`: `UTKOZES_KIVETEL`, `HELYETTESITO_IR`, `KONTEXTUS_OLVAS`): `naplok/ELLENOR_*`,
-   `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat,
+   `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*` (benne a jelentésfájl, F188 T1), `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat,
    ha nincs ütközése; a végrehajtót kizárólag a brief `modell` mezője választja (6. lépés).
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
    Csomagjavaslat előtt kötelezően futtasd a csomag tagjaira: `python eszkozok/feladatok.py csomag <szám> <szám> …` (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”). Ha hibát ad (`NEM_CSOMAGOLHATO`: `munka: ertelmezo`, motívumfájlt író `folyamat`, vagy `munka` nélküli, motívumfájlt író brief), az érintett feladatot egyedül ajánlod, nem csomagban; az `OLVAS_HIANY` és a `MUNKA_HIANY` sor (`fuggesek`) fejléchiba (E18), jelezd a javaslatban, és a feladatot ne ajánld futtathatónak.
@@ -82,10 +82,10 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    mezőbe a folytatási pont egy sorban, `Folytatás:` kezdettel (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa; ez különbözteti meg a félbemaradt feladatot attól, amin éppen dolgoznak); a jelentésbe (`naplok/F<nn>_jelentes.md`) írd a részletes „Folytatási pont” szakaszt, és állj meg.
    A következő `/kovetkezo` a `FOLYTATAS` sorból onnan folytatja (3. lépés).
    Csomagnál minden feladat a saját ágán, a saját jelentésében kap folytatási pontot.
-9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; jelentése: `naplok/ELLENOR_<feladat>.md`.
+9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; a jelentését (a válaszát) változtatás nélkül mentsd a feladat jelentésfájljába, „Független ellenőrzés — <n>. ellenőrzés” szakaszként, külön commitban (`BRIEF_SABLON.md` „Jelentés”, F188 T1). Ha a feladatnak már van `naplok/ELLENOR_F<nn>*.md` jelentése (korábban indult), a sorozat abban a formában folytatódik.
    Csomagnál feladatonként külön, a saját worktree-jében; az ellenőrök párhuzamosan futhatnak.
    Ha a jelentés első sora `ELTÉRÉS`, a menet a zárás (10. lépés) előtt megáll: a brief fejléce `allapot: megallt`, `kovetkezo: Te: /elteres <feladat>` (ha a mezőben már áll `[elteres_kor k/2]` jelölő, az megmarad: `Te: [elteres_kor k/2] /elteres <feladat>`); a javítókör külön sessionben fut.
-10. ZÁRÁS (CLAUDE.md menetzárás): a feladat jelentésének (`naplok/F<nn>_jelentes.md`, menet- és zárójelentés egy fájlban, `BRIEF_SABLON.md` „Jelentés”) végére „Zárás” szakasz (≤20 sor); külön `_zaras.md` nem készül (a régiek maradnak), az `ELLENOR_*` jelentés külön fájl marad;
+10. ZÁRÁS (CLAUDE.md menetzárás): a feladat jelentésének (`naplok/F<nn>_jelentes.md`, menet-, ellenőri és zárójelentés egy fájlban, `BRIEF_SABLON.md` „Jelentés”) végére „Zárás” szakasz (≤20 sor); külön `_zaras.md` és `ELLENOR_*` fájl nem készül (a régiek maradnak);
     a saját brief fejlécében `allapot: lezarva`, `pr` és `lezarva_osszegzes` kitöltve (a `FELADATOK.md`-t nem
     szerkeszted), push, draft PR a main-be.
     A felhasználónak adott válasz első sora: PR-link + CI-állapot; utána legfeljebb 5 sor.

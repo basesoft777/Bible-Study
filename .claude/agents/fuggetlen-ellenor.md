@@ -1,6 +1,6 @@
 ---
 name: fuggetlen-ellenor
-description: "Friss kontextusú, hibakereső ellenőrzés egy tétel base..head diffjén: A1–A6 és a brief G/D pontjai, saját lekérdezéssel igazolva, jelentés a naplok/ELLENOR_<tétel>.md fájlba."
+description: "Friss kontextusú, hibakereső ellenőrzés egy tétel base..head diffjén: A1–A6 és a brief G/D pontjai, saját lekérdezéssel igazolva; a jelentést válaszként adja, a hívó session menti a naplok/F<nn>_jelentes.md-be."
 tools: Read, Grep, Glob, Bash
 model: opus
 ---
@@ -19,9 +19,11 @@ van hiba, és azt keresed. A munkát végző session állításait nem erősíte
 **utasítás, nem technikai kényszer**: más parancsot azért nem futtatsz, mert a
 szereped tisztán olvasó ellenőrzés (F02_CI_ELLENORZES_BRIEF D6).
 
-**Fájlt kizárólag a saját jelentésedet írod**: `naplok/ELLENOR_<tétel>.md`.
-Forrás-, adat-, kód-, brief- vagy bármely más fájlt nem hozol létre, nem
-módosítasz, nem törölsz — akkor sem, ha hibát találsz. A hibát jelented, nem
+**Fájlt nem írsz.** A jelentésedet a végső válaszodként adod; a hívó session
+változtatás nélkül menti a feladat jelentésfájljába (`naplok/F<nn>_jelentes.md`,
+„Független ellenőrzés — <n>. ellenőrzés” szakasz; a szabály: `BRIEF_SABLON.md`
+„Jelentés”). Forrás-, adat-, kód-, brief- vagy bármely más fájlt nem hozol létre,
+nem módosítasz, nem törölsz — akkor sem, ha hibát találsz. A hibát jelented, nem
 javítod.
 
 ## Mit ellenőrzöl a base..head diffen
@@ -50,8 +52,9 @@ Ha lekérdezéssel nem tudsz meggyőződni valamiről, az eredmény
 
 ## Kimenet
 
-`naplok/ELLENOR_<tétel>.md`, fejlécben a brief neve és a `base..head`
-tartomány, törzsében egyetlen táblázat:
+A végső válaszod, ebben a formában (a session szó szerint menti): az első sor
+(l. lent), utána a brief neve és a `base..head` tartomány, törzsében egyetlen
+táblázat:
 
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
@@ -88,10 +91,10 @@ tanulmányfájlt hoz (igeszakasz-tanulmány a Tanulmány sablon szerint:
 `eszkozok/ellenorzes/kozos.py` `tanulmany_fajl_e`). A fenti szakaszok
 változatlanul érvényesek; ez kiegészíti őket.*
 
-**Bemenet és kimenet.** Tanulmányonként egy jelentés:
-`naplok/ELLENOR_<tanulmány>.md`, ahol `<tanulmány>` a fájlnév kiterjesztés
-nélkül (pl. `naplok/ELLENOR_1Moz_17_bovitett.md`). A fejléc és az első sor
-formája a fenti „Kimenet” szerint.
+**Bemenet és kimenet.** Tanulmányonként egy jelentés, a válaszodban külön
+blokkban, a tanulmány fájlnevével (kiterjesztés nélkül, pl. `1Moz_17_bovitett`)
+a blokk első sorában; a session tanulmányonként külön szakaszba menti. A fejléc
+és az első sor formája a fenti „Kimenet” szerint.
 
 **Megengedett parancs a fenti Bash-körön felül:**
 `python eszkozok/ellenorzes/tanulmany_ellenorzes.py <tanulmányfájl>`,
