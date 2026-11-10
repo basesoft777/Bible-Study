@@ -6,9 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f185-bdb-jelentespont-97
 ad: a vers → BDB-jelentéspont hozzárendelés a vak mérésen ≥ 97% (seed-103, előre rögzített kapu), gépi bizonyossági jelöléssel; teljesülés esetén a „próba” jelölés lekerül, a szó-lapon az új mért szám CI-vel
-kovetkezo: halasztva: a #104 és a #105 lezárásáig (a BDB-lánc után); utána az orkesztrátor oldja fel
+kovetkezo: "Fut: P0–P2 (seed-101/102 beolvasása, szabályjavítás osztályonként, bizonyossági jelölés), utána megállás és jelentés; a P4–P6 külön üzenetben. A halasztást az orkesztrátor feloldotta (a #104 és a #105, PR #678, a main-en)"
 olvas: [eszkozok/olvaso_szerver/, eszkozok/bdb_jelolt/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv, naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, naplok/BDB_SZELETELO_M2_seed102_iteletek.md, naplok/ELLENOR_F102_2.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md]
 ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, eszkozok/olvaso_szerver/m2_minta_osszevet.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/teszt_bont.py, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_aranyminta.tsv, adat/SEMA.md, naplok/BDB_SZELETELO_M2_minta_seed103_kulcs.tsv, naplok/BDB_SZELETELO_M2_minta_seed103_vak.tsv, naplok/BDB_SZELETELO_M2_seed103_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed103_kitoltott_B.tsv, naplok/BDB_SZELETELO_M2_seed103_iteletek.md, naplok/F185_jelentes.md, naplok/ELLENOR_F185.md]
 fugg: [104, 105]
