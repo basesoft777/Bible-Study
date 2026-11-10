@@ -9,7 +9,7 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
   `konfig/elemek.toml`, `teszt_olvaso_szerver.py`).
 - **Egyeztetett eltérés 1 (orkesztrátor):** a mért pontosság egyetlen forrása új konfigfájl: `eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml`
   („konfig vagy adat”, az orkesztrátor feladatleírása szerint); az `ir`-be felvéve.
-- **Egyeztetett eltérés 2 (orkesztrátor, a felhasználó jóváhagyásával, „mehet most”, 2026-11-09; DT-F104b):** hatókör-bővítés —
+- **Egyeztetett eltérés 2 (orkesztrátor, a felhasználó jóváhagyásával, „mehet most”, 2026-11-09; DT690):** hatókör-bővítés —
   a lexikonlap 4.2 kétrétegű BDB-kártyája (`eszkozok/lexikon_general.py`, `eszkozok/olvasoi_kapu.py`, `adat/SEMA.md`, a két tesztfájl);
   az `ir` bővítve. A `feladatok.py fuggesek` KIZAR-ütközést ad a `lexikon_general.py`-n a #178-cal (`megallt`), a #182-vel és a
   #183-mal (`nem_indult`); **`fut` állapotú feladattal nincs ütközés**, ezért a generátor-munka indult. Figyelem: a #178 ága
@@ -20,7 +20,7 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
 - **Nem készült el (a brief 2. pontja):** a `/szo/<strong>?vers=` paraméter. A vers-kontextus a versből megnyitott szó-fülön
   (`/<könyv>/<f>/<v>?szo=…&ful=szo`, `/r/szo/…?ig=…`) működik; az önálló szó-lap `?vers=` paramétere az `alkalmazas.py` és az
   `oldalak.py` módosítását kívánná, ezek nincsenek az `ir`-ben. Döntésre: a #104 javítókörébe kerüljön-e (két fájl, néhány sor), vagy
-  külön tétel. → Döntés: kimarad, N-F104b (8. szakasz).
+  külön tétel. → Döntés: kimarad, N118 (8. szakasz).
 
 ## 2. A szó-lap BDB-blokkja (F104.1)
 
@@ -39,7 +39,7 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
 - **Gyenge** („vonatkozhat”): (a) a bizonytalan sor — a SEMA 2.29 „bizonytalan, a táblában marad” okkódjai (`sigla_kozel`,
   `tobbertelmu`, `ismeretlen_alak`, `nincs_elozmeny`, `orokles_hibas`), a `forras_hiba` és az `atkulcsolt_bizonytalan`; a helyi DB-ben
   Károli-verssel csak 5 ilyen sor van, mind `forras_hiba` (H1802 2Móz 2:6, H3051, H5591, H7804, H7913). (b) idézet nélküli versnél az
-  igetörzs szakasza, jelentéspont nélkül (DT-F104a).
+  igetörzs szakasza, jelentéspont nélkül (DT689).
 - **„A BDB ezt a verset nem idézi”**: kiemelés nélkül; ha a szó ige és a törzse azonosítható, a (b) gyenge jelölés.
 - **A próba felirat és a mért pontosság** a vers-kontextusban az „Ebben a versben” dobozban, a jelölés mellett.
 - **Pontos hivatkozásszám:** csomópontonként és a címszónál a tábla feloldott, szűrt sorai (`szurt` ≠ 1, van maszoréta vers); a súgó ezt
@@ -52,7 +52,7 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
 - **Regiszter:** 5 új elem (`bdb-ebben`, `bdb-itt`, `bdb-vonatkozhat`, `bdb-jelzes`, `bdb-csop`), 1 kizárt horog (`bdb-pontossag`); az
   értékek meglévő tokenekből (új méret nincs). Regiszter-őr: `hiba: 0`.
 
-## 3. DT-F104a — a gyenge (b) szint igetörzs-forrása
+## 3. DT689 — a gyenge (b) szint igetörzs-forrása
 
 A TAHOT kivonata (és a `token_eredeti`) nem hordoz morfológiát. A javasolt (a): a jelenlét a TAHOT szerint, az igetörzs a versbeli azonos
 Strongú Macula-sor OSHB-kódjából (`morf_kulcs_heber` `igetorzs`; arámi szónál az arámi kulcs). A végrehajtó ezzel haladt tovább; az orkesztrátor
@@ -71,10 +71,10 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
 |---|---|---|
 | (5) „H6975. qots I. קוֺץ”, „H7451. ra ' I. רַע‎_226” | az apparátus Címszó-sora STEP-átírást mutatott; a nyers angol/magyar blokk a sor kulcsát és a `_226`-ot | a Címszó a jóváhagyott kiejtést mutatja („(kóc)”, „(ra)”), jóváhagyott kiejtés híján átírást nem; a nyers blokkban a sor kulcsa (Strong + STEP-átírás) nem áll, a `_N` a BDB saját alsó indexe (`<sub>`, súgóval) |
 | (5) „ק׳”, „(J)”, „(E)”, „Co törli” | a ק׳ feloldott (címszó-rövidítés); a (J), (E), Co csak a jelentések szövegében | a jelmagyarázat az alapjelentésre, a nyelvi háttérre és az alaktanra is kiterjed: a H6975 és a H7451 lapján mind feloldott |
-| (5) „status absolutus/constructus” | feloldatlan | **N-F104a**: a `bdb_jelek.tsv`-ből hiányzik (és: SS, Wetzst, Hu, De); nem találtam ki |
+| (5) „status absolutus/constructus” | feloldatlan | **N117**: a `bdb_jelek.tsv`-ből hiányzik (és: SS, Wetzst, Hu, De); nem találtam ki |
 | (3) „BDB8032 (a H7451 1. BDB-szócikke a 3-ből)” | a szerveren nem látszik; az alias-megjegyzés viszont a belső BDB-azonosítót és a párosító tábla nevét mutatta, a blokk-felirat a `bdb_szelet.py` fájlnevet | olvasói alakra hozva |
 
-## 6. A lexikonlap 4.2 kétrétegű BDB-kártyája (F104.3; DT-F104b)
+## 6. A lexikonlap 4.2 kétrétegű BDB-kártyája (F104.3; DT690)
 
 - **Csak a kapcsolóval bekapcsolt új szerkezetű lapon** (`ctx['bdb_kartya']` = `bdb_kartya_aktiv(id)`; a kapcsoló a 9. szakaszban); a régi út változatlan (teszt). A görög (Thayer)
   4.2-ben csak a bevezető ismétlődése szűnt meg.
@@ -119,9 +119,9 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
   `teszt_ellenoriz_vedokorlat`, `teszt_torzscikk_migralt`) Windowson: a változtatás előtt és után **ugyanazok** a tesztek buknak
   (6, 1, 1, 3, 1, 1; előzetes, a #104-től független — a lexikon-fájlok ideiglenes visszaállításával mérve); az új tesztek zöldek.
 
-## 8. Az orkesztrátor döntései után (F104.5–F104.7; DT-F104a 🟢, DT-F104c, N-F104b)
+## 8. Az orkesztrátor döntései után (F104.5–F104.7; DT689 🟢, DT691, N118)
 
-- **Kapcsoló (DT-F104c (1)):** `eszkozok/lexikon_general.py` `KETRETEGU_BDB_KARTYA` (frozenset, ma üres; egyetlen hely), a
+- **Kapcsoló (DT691 (1)):** `eszkozok/lexikon_general.py` `KETRETEGU_BDB_KARTYA` (frozenset, ma üres; egyetlen hely), a
   `bdb_kartya_aktiv(id)` = benne van **és** új szerkezetű lap. **A #182 teendője:** a HAMART-001 újragenerálásakor a kapcsolóba
   felvenni a `'HAMART-001'`-et, és a lapot a teljes folyamattal újragenerálni (az E28 akkor az új alakot várja). A régi lapok a saját
   teljes folyamatukban kerülnek bele. A `BDB_OLVASOI` kapu a lap `APPARATUS` jelölőjéhez igazodik: kikapcsolt kártyánál (régi alak)
@@ -131,13 +131,13 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
 - **Bekapcsolt minta:** a kapcsoló csak egy repón kívüli futtató folyamatában bekapcsolva
   (`scratchpad\minta_bekapcsolva.py`); a minta az eddigivel azonos, kivéve a (3) sorait és a dátumsorokat. Olvasói kapu a mintán:
   0 BUKÁS, 25 FIGY (mint a mai lapon).
-- **Alakjegyzékes szakasz (DT-F104c (3)):** ha a szakasznak van magyar meghatározása az alak után, az áll („Niph'al — átkozott”,
+- **Alakjegyzékes szakasz (DT691 (3)):** ha a szakasznak van magyar meghatározása az alak után, az áll („Niph'al — átkozott”,
   „Hoph'al — átkozottnak lenni”, „Hoph'al — elrontott, tönkretett, forrásról”); ha nincs: „Pi'el — a szótár csak alakot közöl
   (5 hely)”. Teszt: `test_csak_alakot_kozlo_szakasz`.
-- **Licenc (DT-F104a 🟢):** `adat/licencek.tsv` 26. sor `Macula_heber` (CC BY 4.0, `tisztazott`), a használt fájl
+- **Licenc (DT689 🟢):** `adat/licencek.tsv` 26. sor `Macula_heber` (CC BY 4.0, `tisztazott`), a használt fájl
   `konkordancia/Macula_heber_*.tsv` (`datasetek.tsv`; a DB `token_macula`); `morf_kulcs_heber` (51.), `morf_nyelv_aramai` (52.)
   szintén `tisztazott`. A szó-lap BDB-blokkjának forrássora mostantól ezeket a táblákat és a `bdb_vers_jelentes`-t is megnevezi (F104.7).
-- **`?vers=`:** kimarad (DT-F104c (2)), N-F104b.
+- **`?vers=`:** kimarad (DT691 (2)), N118.
 
 ## 9. ⛔ Felhasználói próba (a brief 4. lépése)
 
