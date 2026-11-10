@@ -164,6 +164,9 @@ class Maqqef(unittest.TestCase):
     def test_vegbetu_a_szohatar_utana(self):
         self.assertEqual(nfc(BR.maqqef_javit('עִםֿ הַחֲמוֺר')), nfc('עִם־הַחֲמוֺר'))
 
+    def test_token_vegi_rafe_a_szohatar_utana(self):
+        self.assertEqual(nfc(BR.maqqef_javit('בַּתֿ צִיּוֺן')), nfc('בַּת־צִיּוֺן'))
+
     def test_elozo_betu_vegbetu_alakra(self):
         self.assertEqual(nfc(BR.maqqef_javit('עִמהַֿחֲמוֺר')), nfc('עִם־הַחֲמוֺר'))
 

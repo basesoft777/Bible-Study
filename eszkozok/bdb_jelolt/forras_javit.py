@@ -54,6 +54,18 @@ def sha256_fajl(ut):
     return h.hexdigest()
 
 
+def sha256_adatsorok(ut):
+    """A fájl adatsorainak (a `#` kezdetű fejlécsorok nélkül, LF-re normalizálva) sha256-ja. A `bdb_vers_jelentes.tsv`-hez:
+    annak fejléce e tábla hash-ét hordozza (a `hivatkozas_kezi` sorok miatt), ez a tábla pedig az övét (F105, a
+    hivatkozott-vers-próba) — a fejléc nélküli hash töri meg a kört."""
+    h = hashlib.sha256()
+    with open(ut, 'rb') as f:
+        for sor in f:
+            if not sor.startswith(b'#'):
+                h.update(sor.replace(b'\r\n', b'\n'))
+    return h.hexdigest()
+
+
 def kod_hash():
     """A forras_javit.py és a heber_sorrend.py (a heber_sorrend osztály szabálya) együttes hash-e."""
     h = hashlib.sha256()
@@ -621,9 +633,9 @@ def fajl_szoveg(sorok, ts, ts_heber=None, ts_atiras=None, ts_vers=None):
               + (' --ts-hivatkozott-vers %s' % ts_vers if ts_vers else '')),
            '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás és darabhatár) + '
            'konkordancia/lexikonok_nyers/DictBDB.json@%s + konkordancia/TAHOT_kivonat.tsv@%s (heber_sorrend) + '
-           'konkordancia/BDB_teljes_unabridged.tsv@%s + adat/bdb_vers_jelentes.tsv@%s (heber_sorrend, hivatkozott vers; F105) + kód@%s'
+           'konkordancia/BDB_teljes_unabridged.tsv@%s + adat/bdb_vers_jelentes.tsv@%s (adatsorok, a fejléc nélkül; heber_sorrend, hivatkozott vers; F105) + kód@%s'
            % (sha256_fajl(TABLA)[:12], sha256_fajl(LEX_UT)[:12], sha256_fajl(JSON_UT)[:12], sha256_fajl(TAHOT_UT)[:12],
-              sha256_fajl(BDB_EN_UT)[:12], sha256_fajl(VJ_UT)[:12], kod_hash()[:12]),
+              sha256_fajl(BDB_EN_UT)[:12], sha256_adatsorok(VJ_UT)[:12], kod_hash()[:12]),
            '\t'.join(FEJLEC)]
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
 

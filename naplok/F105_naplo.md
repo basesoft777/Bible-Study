@@ -130,3 +130,65 @@ a gépi ellenőrzés a TAHOT-on fut). A „kézi ítélet” (helyes / rossz / n
 | 50 | H9005 | jelolt_marad | לְ מִקֶּדֶם | מִקֶּדֶם לְ | 1Móz 3:24 | וַיְגָ֖רֶשׁ אֶת הָֽאָדָ֑ם וַיַּשְׁכֵּן֩ מִקֶּ֨דֶם לְגַן עֵ֜דֶן אֶת הַכְּרֻבִ֗ים וְאֵ֨ת לַ֤הַט הַחֶ֨רֶב֙ הַמִּתְהַפֶּ֔כֶת לִשְׁמֹ֕ר אֶת דֶּ֖רֶךְ עֵ֥ץ הַֽחַיִּֽים |  |
 
 *A 4. sor (H1323) helyreállított alakjában a maqqéf a rafe feloldásából jön; a futamszámlálás (2. szakasz) ezt a tokent nem számolta rafe-maqqéfesnek, mert ott a rafe a token első betűjén áll a geres után.*
+
+## 6. Megvalósítás (DT-F105a (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10)
+
+*A vak minta (`naplok/F105_vak.py`, a kimenet a repón kívül) a két független kitöltőnél van; az 5. szakasz jóváhagyása
+továbbra is nyitott (⛔). A lexikonlapok nem generálódtak újra.*
+
+**6.1 A javítótábla** (`eszkozok/bdb_jelolt/forras_javit.py` + `heber_sorrend.py`; újragenerálás:
+`naplok/F105_tabla_osszevet.py`, írás előtti összevetéssel; a generátor `--ellenoriz` módja bájtra azonosnak méri).
+
+| Változás | Sor |
+|---|---:|
+| sorok száma | 43 504 → 43 572 |
+| meglévő `javitva` sor sérült (bármely osztály) | **0** |
+| `heber_sorrend` `jelolt_marad` → `javitva` (hivatkozott-vers-próba) | 1 778 |
+| `heber_sorrend` `valodi_sorrend` → `javitva` (kézi, `manual`: H2638 Péld 17:18, H3801 3Móz 16:4) | 2 |
+| új `heber_sorrend` `javitva` sor (több `<heb>` elemre bontott futam, hivatkozott-vers-próba) | 68 |
+| `heber_sorrend` utána: `javitva` / `valodi_sorrend` / `jelolt_marad` | 16 824 / 222 / 19 274 |
+
+A próba: a szakasztábla sorának előfordulását a környezete (30-30 karakter) illeszti a szócikk teljes `lapit`-szövegébe
+(a feltáró mérés szerint a `jelolt_marad` sorok 99,4%-a egyértelműen illeszthető: 20 929 / 21 052; 119 nem, 4 többször);
+a hivatkozott vers a `bdb_vers_jelentes.tsv`-ből (Károli-vers, nem kiszűrt, a futam és a hivatkozás között csak írásjel,
+zárójel, szóköz, „&c.”); a TAHOT-minta (`Biblia.minta_vers`) a rafét hordozó betű előtt szóra bont, így a rövidítés rése a
+saját részéé (`ח׳לֵֿב`: „ח” + rés, „לב”). A DT445 `minta`-ja változatlan. A két kézi sorban a DT445 bármely-vers-próbája a
+forrás alakját véletlenül egy idegen versben találta (Sir 4:7, 3Móz 23:8) a rövidítés 8 betűs résével.
+
+*Körkörös hivatkozás:* a `bdb_vers_jelentes.tsv` fejléce a javítótábla hash-ét hordozza (a `hivatkozas_kezi` sorok miatt),
+a javítótábla most az övét. A javítótábla fejlécében ezért a `bdb_vers_jelentes.tsv` hash-e csak az adatsorokra vonatkozik;
+a `bdb_vers_jelentes.tsv` csak a fejlécében változott (újragenerálva, `--ts 2026-11-09`).
+
+**6.2 A megjelenítés: rafe-maqqéf** (`eszkozok/bdb_rovidites.maqqef_javit`; a `heber_sorrend_javit` a sorrend-csere után
+hívja, így az olvasó és a lexikon-generátor is). Szabály: a maqqéf a rafét hordozó betű elé kerül, kivéve ha az végbetű-alak
+vagy a token utolsó betűje (akkor utána: a következő betű elé, vagy a közvetlen szóköz helyére); az előző betű
+végbetű-alakra; ahol nincs szomszédos betű, a rafe marad. Mérés (`naplok/F105_maqqef_meres.py`: a szón belüli bontás két része
+a Macula szókészletében):
+
+| Változat | jó | rossz | nem dönt |
+|---|---:|---:|---:|
+| 1. (magánhangzó-pont szerint előtte/utána; elvetve) | 2 189 | 483 (a „mögötte” ágon 399, ott 33 jó) | 1 849 |
+| **végleges** (előtte, kivéve végbetű / token vége) | **2 555** | **113** | 1 584 |
+
+A 113 „rossz” felső becslés: benne a pe/mem-forráshiba (`אֶת־מִּיהָ` = פִּיהָ) és a ritka / csonka szó (`אֶל־הַחָם`) zaja;
+valódi hiba a nem maqqéf-jelölő rafe (`אַרְכָֿה`, `לאֿהרן`) és a szón belüli szóvégi rafe (`אֶתֿכֹּל` → `אֶ־תכֹּל`). A token
+végi rafe (`בַּתֿ צִיּוֺן` → `בַּת־צִיּוֺן`) a szomszéd szóval kapcsolódik; ezt a szómérés nem látja (a „változatlan” 1 631-ben).
+
+**6.3 Gépi egyezés a hivatkozott versen, előtte / utána** (`naplok/F105_meres.py@a7c99e9b58d1`; a maqqéf a mérésben is szóhatár; az „előtte” oszlop az F105.1-es futásé, akkor még nem volt maqqéf; proveniencia: scope=a 29 469 futam | forras=naplok/F105_meres.py, adat/bdb_forras_javitas.tsv (F105.7) | ts=2026-11-10)
+
+| | előtte (F105.1) | utána |
+|---|---:|---:|
+| ellenőrizhető / eldönthető futam | 17 953 / 12 308 | 17 953 / 12 308 |
+| a megjelenítés egyezik a verssel | 10 483 (**85,2%**) | 12 287 (**99,8%**) |
+| javítható, de nem javított (M nem, R igen) | 1 825 | 20 (12 `jelolt_marad`: nem egyértelmű illesztés; 8 a H4725 sor nélküli, ismétlődő futama) |
+| a forrás jó, a megjelenítés nem (F igen, M nem) | 0 | 1 (H7121, Siral 3:55; l. lent) |
+| a futamok állapota (`javitva` / `jelolt_marad` / sor nélkül) | 14 744 / 11 437 / 2 933 | 16 581 / 9 671 / 2 870 |
+
+*A H7121-es eset nem visszaesés:* a megjelenítés a Strongon belül alak szerint cserél (DT445), ezért az új `javitva` sor
+(sorszám 39, Jer 44:26) a `י ׳שֵׁם` másik, eldönthetetlen előfordulását (Siral 3:55) is `שֵׁם י׳`-re javítja; a mérés ott a
+vers `שִׁמְךָ` toldaléka miatt téved. Ugyanez a hatás 42 alakra áll (új `javitva` sor mellett ugyanazon alak `jelolt_marad`
+előfordulása a Strongban); `valodi_sorrend` előfordulással egy új sor sem ütközik (0).
+
+**6.4 Renderelt minta (repón kívül):** `C:\Users\bases\AppData\Local\Temp\F105_kartya_minta\F105_kartya_minta.html` — az
+olvasó BDB-kártyájának szövegrétege (a `blokkok._rovidites` lánca) előtte (a `b2317a2e` kódja és táblája) / utána, H1323
+(12 változó szakaszsor), H2638 (1), H0413 (12).

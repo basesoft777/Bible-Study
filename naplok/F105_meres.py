@@ -100,6 +100,8 @@ def szavak(token):
 def minta(tokenek):
     """Regex a vers vázfolyamára; None, ha nincs elég anyag (legalább egy teljes szó és még egy egység)."""
     darabok, teljes = [], 0
+    # a maqqéf (U+05BE; a megjelenítés a rafe-maqqéfet erre oldja fel, F105.8) is szóhatár
+    tokenek = [d for t in tokenek for d in t.split('־') if d]
     for t in tokenek:
         if not betuk(t):                      # ellipszis (a forrás „…”-je): legfeljebb 60 betűnyi rés
             if darabok:

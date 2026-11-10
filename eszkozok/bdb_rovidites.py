@@ -197,8 +197,8 @@ def _heber_jel(c):
 # ---------------------------------------------------------------- rafe-maqqéf (F105, DT-F105a)
 # A forrás a maqqéf (U+05BE) helyén a két szót egybeírja, és rafét (U+05BF) tesz a szóhatár melletti betűre: hol a második
 # szó első betűjére (`מִןהָֿאָרֶץ`, `יֿוֺם`: a magánhangzót gyakran a következő mater-betű hordozza), ritkán az első szó
-# utolsó, végbetű-alakú betűjére (`עִםֿ הַחֲמוֺר`). Szabály: végbetű-alak → a szóhatár utána; minden más betű → előtte (a
-# második szó eleje). „Előtte”: maqqéf a betű elé, az előző betű végbetű-alakra (ha nem rövidítés); csak ha a szóban van
+# utolsó betűjére (`עִםֿ הַחֲמוֺר`, `בַּתֿ צִיּוֺן`). Szabály: végbetű-alak, vagy a token utolsó betűje (utána nem héber betű
+# vagy geres áll) → a szóhatár utána; minden más betű → előtte (a második szó eleje). „Előtte”: maqqéf a betű elé, az előző betű végbetű-alakra (ha nem rövidítés); csak ha a szóban van
 # előző betű. „Utána”: maqqéf a betű jelei után, ha ott héber betű áll, vagy a közvetlen szóköz helyére, ha utána héber
 # betű jön. Ahol egyik sem áll, a rafe marad (nem találgatunk). Mérés (a magánhangzó-pont szerinti változat elvetve):
 # `naplok/F105_naplo.md`, `naplok/F105_maqqef_meres.py`.
@@ -235,7 +235,7 @@ def maqqef_javit(szoveg):
         while e < len(s) and _jel(s[e]):
             e += 1
         kov = s[e] if e < len(s) else ''
-        elotte = s[b] not in 'ךםןףץ'
+        elotte = s[b] not in 'ךםןףץ' and (_betu(kov) or kov == '׳')
         if elotte:
             p = b - 1                               # az előző betű (a jelei és a geres átugrásával)
             while p >= 0 and (_jel(s[p]) or s[p] == '׳'):
