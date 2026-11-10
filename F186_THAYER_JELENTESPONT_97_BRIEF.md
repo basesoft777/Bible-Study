@@ -6,12 +6,12 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: dontesre_var
+allapot: fut
 ag: claude/f186-thayer-jelentespont-97
 ad: a vers → Thayer-jelentéspont hozzárendelés vak méréssel mérve (seed-201), hibaosztályonként javítva, és új vak mérésen (seed-202) ≥ 97%, előre rögzített kapuval; a megváltozott Thayer-szakaszkulcsok tételes listája a jelentésben
-kovetkezo: "Te: DT-F186a (a T4 kapuja nem teljesült: seed-202 192/200 = 96,0%, Wilson 92,3–98,0; javaslat: második szabálykör + seed-203), DT-F186b (636 hash-eltérő Thayer-fordítássor, CI 13. szabály SÉRTÉS; javaslat: átkulcsolás hash szerint), DT-F186c (két ir-en kívüli egysoros javítás); dontesek/uj/f186-thayer-jelentespont-97.md, naplok/F186_jelentes.md. A #7 következő adagja csak a #186 merge-e után indul."
+kovetkezo: "fut (2026-11-10): DT-F186a/b/c eldöntve (a / b / igen); második szabálykör (K1b, K1c, K2b), átkulcsolás hash szerint a forditasok.tsv-ben, utána vak mérés seed-203 (kapu ≥ 194/200). A #7 következő adagja csak a #186 merge-e után indul."
 olvas: [eszkozok/thayer_jelolt/, F132_THAYER_SZAKASZ_BRIEF.md, F185_BDB_JELENTESPONT_97_BRIEF.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md]
-ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_aranyminta.tsv, adat/SEMA.md, naplok/F186_jelentes.md, naplok/ELLENOR_F186.md]
+ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_aranyminta.tsv, adat/SEMA.md, naplok/F186_jelentes.md, naplok/ELLENOR_F186.md, adat/forditasok.tsv, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/thayer_jelolt/forras_javit.py, eszkozok/thayer_jelolt/forditas_atkulcsol.py, eszkozok/thayer_jelolt/teszt_forditas_atkulcsol.py, dontesek/uj/f186-thayer-jelentespont-97.md, nyitott/uj/f186-thayer-jelentespont-97.md, naplok/F186_zaras.md]
 fugg: []
 ---
 
