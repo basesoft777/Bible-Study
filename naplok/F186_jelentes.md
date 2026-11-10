@@ -702,6 +702,30 @@ Az újrafordítás (a 118 `elavult` sor és a fordítatlan új szakaszok) a #7-�
 
 Összesen: 173 Strong, 1221 megváltozott kulcs.
 
+## 10. Javítókör 1 (`naplok/ELLENOR_F186.md`, ELTÉRÉS 6 tétel; orkesztrátori döntések, 2026-11-10)
+
+### 10.1 A seed-203 vaksága korlátozott (ELLENOR_F186 1c)
+
+A seed-202 és a seed-203 mintavevője (`f186_minta.py`) a szócikkszöveget a `bont.szerkezet(d)` szakaszaiból rakta össze; az
+F186.4 óta ez a gépileg felismert belső fejnél kettévágja a bekezdést. A kitöltők így a gépi K1/K2-döntéseket bekezdéshatárként
+látták. **A seed-202 (192/200) és a seed-203 (194/200) eredménye ezért „korlátozott vakság” jelöléssel marad a jelentésben**; a
+seed-201-et (a javítás előtt) ez nem érinti.
+
+### 10.2 A seed-204 — valóban vak mérés (eljárás és költségbecslés a mérés előtt)
+
+- **Mintavevő:** `f186_minta2.py` (forrása: 11. melléklet). A sokaság, a rétegzés, a választás, a kulcs és a kitöltés
+  utasítása ugyanaz, mint az 1. szakaszban (két független Opus-kitöltő, kapu ≥ 194/200, Wilson-CI, könyv/vers és jelentéspont
+  külön); a seed-201/202/203 sorai kizárva; azonosító `W001`–`W200`. **A különbség:** a kitöltő a szócikk **nyers
+  forrásbekezdéseit** kapja (`bont.szegmensek`, a forrás `<p>`/`<div>` határai), a gépi vágás nélkül; a jelölő a bekezdés nyers
+  HTML-jébe vetítve kerül. A szöveg minden szócikkben az utolsó jelölt bekezdés utáni bekezdésnél véget ér.
+- **Vakság-próba** (`vaksag_proba.py`, 11. melléklet): a 169 szócikkből **169-ben** a kiírt bekezdések (a jelölők nélkül)
+  sorrendben azonosak a nyers forrásbekezdésekkel, 0 eltér; ebből 31 szócikkben a gépi szerkezet vágna (itt szivárgott volna a
+  régi mintavevő).
+- **⛔ Költségbecslés (a mérés előtt):** a szöveg **624 366 karakter** (169 szócikk). A korábbi mérések tényleges
+  subagent-fogyasztása karakterenként: seed-201 1,55 (1 193 120 / 770 006), seed-202 1,63 (1 150 029 / 704 982), seed-203 0,77
+  (673 097 / 871 099), átlag 1,32. **Becslés: 0,82 M token** (sáv 0,48–1,02 M). A pontbecslés 1 M alatt van: a mérés indul. (A
+  sáv felső széle a két legkorábbi, segédszkript nélküli kitöltés arányából jön.)
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
@@ -1099,3 +1123,157 @@ if __name__ == '__main__':
 | G5613 | sz6–sz25 | sz5 |
 
 Összesen: 61 Strong, 636 sor (eltolódott 539, megváltozott szövegű 97).
+
+## 11. Melléklet — a seed-204 mintavevője (`f186_minta2.py`) és a vakság-próba (`vaksag_proba.py`)
+
+A `f186_minta2.py` a 7. melléklet `f186_minta.py`-ját importálja (a sokaság, a rétegzés és a segédfüggvények onnan).
+
+```python
+"""F186 seed-204 — valóban vak minta (ELLENOR_F186 1c): a kitöltő a szócikk NYERS forrásbekezdéseit kapja.
+
+Eltérés az f186_minta.py-tól (a sokaság, a rétegzés, a választás és a kulcs ugyanaz): a szöveg a `bont.szegmensek(d)`
+bekezdéseiből áll (a forrás `<p>`/`<div>` határai), NEM a `bont.szerkezet(d)` szakaszaiból — így a gépi K1 (bekezdésen belüli
+fej szerinti vágás) és K2 döntése nem látszik. A hivatkozás sorszáma (a kulcs) a `vers_jelentes.general` sorrendje: a
+szakaszonként számolt pozíció a bekezdésbeli eltolással a bekezdés nyers HTML-jére vetítve. A szöveg minden szócikkben az
+utolsó jelölt bekezdés utáni bekezdésnél véget ér (a jelentéspontot a jelölő előtti fejek döntik el).
+Használat: python f186_minta2.py --seed 204 --elotag W --ki <könyvtár> --kizar <kulcs.tsv> ...
+"""
+import argparse
+import collections
+import os
+import random
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import f186_minta as M  # noqa: E402  (olvas, usz_konyvek, hivatkozas_poziciok, sima_jelolovel, bont, VJ)
+
+
+def bekezdes_jelolok(d, cel):
+    """{bekezdés index: {poz a bekezdés nyers HTML-jében: azon}}, nyers: {azon: megjelenő szöveg}."""
+    szegm = M.bont.szegmensek(d)
+    szak = M.bont.szerkezet(d)
+    # a szakasz nyers HTML-je a bekezdés összefüggő részlete: eltolás a bekezdésben (sorrendben, kurzorral)
+    hely, kurzor = [], collections.defaultdict(int)
+    for x in szak:
+        b = x['bekezdes'] - 1
+        o = szegm[b].find(x['raw'], kurzor[b])
+        assert o >= 0, 'a szakasz nem a bekezdés részlete'
+        hely.append((b, o))
+        kurzor[b] = o + len(x['raw'])
+    jel, nyers, n = collections.defaultdict(dict), {}, 0
+    for x, (b, o) in zip(szak, hely):
+        for poz, megj in M.hivatkozas_poziciok(x['raw'], 0):
+            n += 1
+            if n in cel:
+                jel[b][o + poz] = cel[n]
+                nyers[cel[n]] = megj
+    return szegm, jel, nyers
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--seed', type=int, required=True)
+    ap.add_argument('--elotag', required=True)
+    ap.add_argument('--ki', required=True)
+    ap.add_argument('--kizar', nargs='*', default=[])
+    a = ap.parse_args()
+    usz = set(M.usz_konyvek())
+    sorok = [r for r in M.olvas(M.VJ.KI_UT) if r['konyv'] in usz]
+    kizart = set()
+    for k in a.kizar:
+        kizart |= {(r['strong'], r['sorszam']) for r in M.olvas(k)}
+    db = collections.Counter(r['strong'] for r in sorok)
+    rend = sorted(db, key=lambda s: (-db[s], s))
+    fel, acc, gyakori = len(sorok) / 2, 0, set()
+    for s in rend:
+        if acc >= fel:
+            break
+        gyakori.add(s)
+        acc += db[s]
+    retegek = {'gyakori': [], 'ritka': []}
+    for r in sorok:
+        if (r['strong'], r['sorszam']) not in kizart:
+            retegek['gyakori' if r['strong'] in gyakori else 'ritka'].append(r)
+    rng = random.Random(a.seed)
+    minta = []
+    for nev in ('gyakori', 'ritka'):
+        L = sorted(retegek[nev], key=lambda r: (r['strong'], int(r['sorszam'])))
+        for r in rng.sample(L, 100):
+            minta.append(dict(r, reteg=nev))
+    rng.shuffle(minta)
+    for i, r in enumerate(minta, 1):
+        r['azon'] = '%s%03d' % (a.elotag, i)
+    print('sokaság ÚSZ-sor: %d; gyakori Strong: %d (%d sor); kizárt: %d' % (len(sorok), len(gyakori), acc, len(kizart)))
+
+    lex = M.bont.lexikon_beolvas()
+    cel = collections.defaultdict(dict)
+    for r in minta:
+        cel[r['strong']][int(r['sorszam'])] = r['azon']
+    szoveg, kornyezet, nyers_osszes = {}, {}, {}
+    for sp in sorted(cel):
+        szegm, jel, nyers = bekezdes_jelolok(lex[sp][1], cel[sp])
+        nyers_osszes.update(nyers)
+        bekezdesek = [M.sima_jelolovel(raw, jel.get(b, {})) for b, raw in enumerate(szegm)]
+        utolso = max(jel)
+        for az in cel[sp].values():
+            for bk in bekezdesek:
+                i = bk.find('⟦%s⟧' % az)
+                if i >= 0:
+                    kornyezet[az] = bk[max(0, i - 160):i + 120]
+        tovabb = len(bekezdesek) > utolso + 2
+        szoveg[sp] = '\n\n'.join(bekezdesek[:utolso + 2]) + (
+            '\n\n[… a szócikk folytatódik; a jelölt hivatkozások mind a fenti részben állnak]' if tovabb else '')
+    os.makedirs(a.ki, exist_ok=True)
+    tag = 'seed%d' % a.seed
+    with open(os.path.join(a.ki, tag + '_szocikkek.txt'), 'w', encoding='utf-8', newline='\n') as f:
+        for sp in sorted(szoveg):
+            f.write('=== %s ===\n%s\n\n' % (sp, szoveg[sp]))
+    with open(os.path.join(a.ki, tag + '_vak.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(['azon', 'strong', 'nyers', 'kornyezet', 'konyv_vers', 'jelentespont', 'melyebb', 'megjegyzes']) + '\n')
+        for r in sorted(minta, key=lambda r: r['azon']):
+            f.write('\t'.join([r['azon'], r['strong'], nyers_osszes[r['azon']], kornyezet[r['azon']].replace('\t', ' '),
+                               '', '', '', '']) + '\n')
+    with open(os.path.join(a.ki, tag + '_kulcs.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        mezok = ['azon', 'reteg', 'strong', 'sorszam', 'szakasz', 'konyv', 'fejezet', 'vers', 'utvonal']
+        f.write('\t'.join(mezok) + '\n')
+        for r in sorted(minta, key=lambda r: r['azon']):
+            f.write('\t'.join(r[m] for m in mezok) + '\n')
+    hiany = [r['azon'] for r in minta if r['azon'] not in nyers_osszes or r['azon'] not in kornyezet]
+    print('szócikk: %d; szöveg %d karakter; jelölő nélkül: %s' % (len(szoveg), sum(len(v) for v in szoveg.values()), hiany))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+```python
+"""A seed-204 szócikkszövege: minden bekezdés (a ⟦…⟧ jelölők nélkül) egy-egy nyers forrásbekezdés (bont.szegmensek), sorrendben;
+és megszámolja, hány olyan szócikk van benne, amelyben a gépi szerkezet (bont.szerkezet) vágna (ott a régi mintavevő szivárgott volna)."""
+import os
+import re
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import f186_minta as M  # noqa: E402
+
+szov = open(sys.argv[1], encoding='utf-8').read()
+lex = M.bont.lexikon_beolvas()
+jo = rossz = vagott = 0
+for blokk in szov.split('=== ')[1:]:
+    sp, tor = blokk.split(' ===\n', 1)
+    bek = [re.sub(r'⟦[A-Z]\d{3}⟧ ', '', b) for b in tor.strip().split('\n\n') if not b.startswith('[… a szócikk')]
+    d = lex[sp][1]
+    szegm = [M.sima_jelolovel(r, {}) for r in M.bont.szegmensek(d)]
+    if bek == szegm[:len(bek)]:
+        jo += 1
+    else:
+        rossz += 1
+        print('ELTÉR:', sp)
+    if len(M.bont.szerkezet(d)) > len(M.bont.szegmensek(d)):
+        vagott += 1
+print('szócikk: %d egyezik a nyers bekezdésekkel, %d eltér; ebből gépileg vágott szócikk (a régi mintavevő szivárgott volna): %d'
+      % (jo, rossz, vagott))
+```
