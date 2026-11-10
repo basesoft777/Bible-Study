@@ -263,7 +263,7 @@ szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
 | alternatíva | ha a hely két binyan között eldöntetlen | `Nif'ál / Hif'íl` |
 | `teljes` | **a forrásfájl nem bont számozott jelentésekre — a teljes szócikk egy sorban áll** (LEXV2_2_BRIEF.md V2.3, jelenleg: Thayer) | `teljes` |
 | `sz<n>` | **a Thayer szócikk n-edik szakasza** (`adat/thayer_szakaszok.tsv` `sorszam`, SEMA 2.34; a #132 szakaszonkénti fordítása) | `sz1`, `sz13` |
-| `sz<n>~<m>` | **elavult tagsor**: az azonos útvonalú szakaszok összevonása előtti régi `sz<m>` sor, amelynek szövege az `sz<n>` összefűzött sorában áll; mindig `elavult` (SEMA 2.14, DT-F186f) | `sz5~6` |
+| `sz<n>~<m>` | **elavult tagsor**: az azonos útvonalú szakaszok összevonása előtti régi `sz<m>` sor, amelynek szövege az `sz<n>` összefűzött sorában áll; mindig `elavult` (SEMA 2.14, DT718) | `sz5~6` |
 | `részlet` | **a szótári szócikk egy kiemelt része** (szócikkfej, etimológia vagy reprezentatív kivonat), amikor a forrás nem jelentés-szám szerint van tagolva, vagy a teljes szócikk terjedelme miatt csak részlet szerepel (ISTENTISZT_2B_ADATOSITAS.md D0) | `részlet` |
 
 **A `teljes` és a `részlet` érték három korlátja — azonos:**
@@ -848,7 +848,7 @@ lapok motívumainak gerincszavai (`lexikon_general.motivum_strong_tokenek`, a mo
 kiegészítő lexikonhivatkozása); a számítás: `ellenoriz.lap_strongok`. Lapon szereplő Strong fordítatlan szakasza SÉRTÉS
 marad (a lapot a #7 újrafordítása javítja). A BDB-szakasz lefedése változatlanul SÉRTÉS. Ok: az F186 szakasz-újraszámozása
 (`naplok/F186_jelentes.md` 9.2, 9.8).
-**Az összevont szakasz régi sorai (F186, DT-F186f, orkesztrátori döntés, 2026-11-10; a DT289 elvének alkalmazása).** Ha a
+**Az összevont szakasz régi sorai (F186, DT718, orkesztrátori döntés, 2026-11-10; a DT289 elvének alkalmazása).** Ha a
 szakasztáblában szakaszok összevonódnak (2.34: az egymást követő, azonos útvonalú szakaszok), a régi `sz<n>` sorok egy új
 kulcsra esnének. A régi sor nem törlődik: a csoport első sora az összefűzött sor (`sz<új>`, a régi fordítások egy szóközzel
 fűzve; `elavult`, kivéve, ha a fűzött szöveg hűen fedi az összevont forrásszöveget és ezt a `megjegyzes` kimondja, pl. a G5590
