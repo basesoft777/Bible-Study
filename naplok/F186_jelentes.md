@@ -1830,3 +1830,26 @@ if __name__ == '__main__':
 - **Nyitott:** N-F186a, b, d, e, f, g (a g: az olvasó ne mutassa az elavult és a tagsorokat, a #187-é).
 - **Tokenfogyasztás:** a seed-204 1,09 M token, a küszöb fölött; ez csak utólag derült ki.
 - A korábbi külön zárójelentés (`naplok/F186_zaras.md`) ide került, és törölve.
+
+## 17. A #186-ban lefordított sorok, Opus-ellenőrzéssel (a bekötés és a kettős fordítás elkerülése)
+
+A main-hez mérve a #186-ban **a G5590 9 szakasza és a G4151 sz13 új Sonnet-fordítás (2026-11-10), Opus-ellenőrzéssel**. Az ellenőr független Opus-subagent volt (`claude-opus-5-5`, nem a fordító). Szempontjai: hűség a görög Thayer-szakaszhoz, terminológia (szójegyzék > Károli > BDB > szótár; ψυχή = lélek, πνεῦμα = szellem/Szellem, a `terminologia.tsv` szerint), jelölés, valamint a felhasználó kérésére hűség a Károli-mankóhoz (a #132 lánc adatblokkja). 4 szakasz RENDBEN, 6 JAVÍTANDÓ. A javított szöveg a lánc `utofeldolgoz()` kapuin ment át (G5590 és G4151: ATMENT; a G4151 sz13-ban az ellenőr idézőjel-cseréjét a 8_idezojel kapu miatt visszaállítottam). A beírás bájtőrző volt, 10 sor `megjegyzes`-e és 6 sor szövege változott.
+*Proveniencia: scope=adat/forditasok.tsv (G5590, G4151) | forras=f186_lektor_be2.py (repón kívül; forditas.utofeldolgoz) + Opus-ellenőr kimenete | ts=2026-11-10.*
+
+| Strong | kulcs | allapot | datum | ellenorzes | szöveg a main-hez | lap és blokk | HAMART-szó |
+|---|---|---|---|---|---|---|---|
+| G5590 | sz1 | sonnet | 2026.11.10 | – | a main-nel azonos (a címsor; csak a dátum új) | ANTROP-001, 2. Mélységi szócikk, G5590 ψυχή · Thayer | nem |
+| G5590 | sz2 | sonnet | 2026.11.10 | opus+karoli-manko (változatlan) | új | ua. (a szócikk feje) | nem |
+| G5590 | sz3 | sonnet | 2026.11.10 | opus+karoli-manko (változatlan) | új | ua. 1. | nem |
+| G5590 | sz4 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új | ua. 1.a | nem |
+| G5590 | sz5 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új (+ a régi sz6 összefűzve) | ua. 1.b | nem |
+| G5590 | sz6 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új | ua. 1.c | nem |
+| G5590 | sz7 | sonnet | 2026.11.10 | opus+karoli-manko (változatlan) | új | ua. 2. | nem |
+| G5590 | sz8 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új | ua. 2.a | nem |
+| G5590 | sz9 | sonnet | 2026.11.10 | opus+karoli-manko (változatlan) | új | ua. 2.b | nem |
+| G5590 | sz10 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új | ua. 2.c | nem |
+| G4151 | sz13 | sonnet | 2026.11.10 | opus+karoli-manko (javítva) | új (az összevont 4.a) | ANTROP-001, 2. Mélységi szócikk, G4151 πνεῦμα · Thayer, 4.a | nem |
+
+- **HAMART:** egyik sor sem tartozik a HAMART görög szavai közé (G1311, G1944, G2671, G5351, G5356, G3077). A #182 2. fázisa ezeket nem fordítja újra, és a HAMART-szavak sorai a #186-ban nem változtak (E28 bájtazonos).
+- **Bekötés:** a lapgenerátor a `forditasok.tsv` érvényes `sz<n>` sorát mutatja (pontos kulcs, `lexikon_general.py:3641`). Az `elavult` és az `sz<n>~<m>` tagsort nem mutatja. Az újragenerált ANTROP-001 lapon („Szellemtől megragadva”, „minden emberi lélek”, „Isten országában”) a javított szöveg áll, a régi („a Szellem birtokában”, „az ember minden lelke”) 0 találat. Az **olvasó szerver** szólapja ma minden Thayer-sort mutat, az elavultat és a tagsort is (N-F186g, a #187-é). A lexikonlapot ez nem érinti.
+- **Nyitott (a lánc szabálya, nem a fordítóé):** a G4151 sz13 két hivatkozása (`Zsolt 50:13`, `Zsolt 105:33`) Thayer LXX-számozását követi; a Károliban Zsolt 51:13 és Zsolt 106:33. Az átszámozás a #132 lánc dolga, ezért nem javítottam.
