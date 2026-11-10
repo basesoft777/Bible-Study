@@ -285,3 +285,23 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
   `BDB_MERT_PONTOSSAG` változatlan, a lapot nem generáltam újra. A seed-102-höz (183 / 200, más minta) képest +5.
 - **Nyitott:** N-F185b (leképezés), N-F185c (könyvnév nélküli hely); a 12 hiba osztályai (római szám, mélyebb számozás, törzs)
   a következő kör jelöltjei, a P3-ról az orkesztrátor dönt.
+
+## 10. Döntések a P5 után (DT-F185e, orkesztrátori döntés, 2026-11-10)
+
+- **A mért szám:** a `BDB_MERT_PONTOSSAG` (`eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml`) új értéke **188 / 200
+  (94,0%, Wilson 89,8–96,5), seed-103, valóban vak, 2026-11-10**, a szakasztábla hozzárendelésére. A régi 183 / 200 (seed-102,
+  86,7–95,0, Clopper–Pearson) a szeletelőé volt: történeti adat. A CI-módszer a seed-103 eljárása szerint Wilson (a teszt is).
+- **P3 elmarad;** a `ketes` sorok gyenge jelölést kapnak (`bdb_vj_szabaly.BIZONYTALAN_PONT`); a `biztos`/`ketes` bontás lapra
+  vitele a #182 2. fázisa.
+- **A „próba” kivezetése:** a brief feltételét („97% fölött kerül le”) az orkesztrátor kiváltotta. Az előfordulások:
+  javítva — `eszkozok/olvaso_szerver/blokkok.py` (a BDB-blokk megjegyzése: „Gépi szeletelés (próba): …” → „Gépi szeletelés: … A
+  vers → jelentéspont hozzárendelés kétes pontjai „vonatkozhat” jelölést kapnak.” + a mért szám; két kódmegjegyzés),
+  `konfig/bdb_pontossag.toml` (fejléc), `konfig/elemek.toml` (két leírás), `teszt_olvaso_szerver.py` (három teszt). A
+  lapgenerátorban (`eszkozok/lexikon_general.py`) és a `sablonok/`-ban BDB-vonatkozású „próba” nincs (a #182-nek nincs teendője
+  ebből; a lexikon-oldalak meglévő szövegét nem néztem, lapot nem generáltam).
+- **N-F185d:** a 12 hiba osztályai (római szám vagy rész 6, számozás 4, törzs 2) nyitott tételként.
+- **Becslési tanulság:** a héber BDB-szöveg vak kitöltése kb. **2,2 token / karakter** (seed-103: 1 209 731 / 556 147), a #186
+  görög Thayer-szövegének 1,74-es arányánál több; a következő BDB-becslés ezzel számoljon.
+- **Tesztek:** `teszt_olvaso_szerver.py` a munkafa kódjával, a WSL-venv-vel és a WSL-natív `pardes.db`-vel (2026-11-02-i építés):
+  104 teszt, OK (2 kihagyva); ebből a `TestF104Egysegek` (a pontosság egy forrásból, Wilson-CI) adatbázis nélkül is OK. (A
+  `teszt_futtat.py` a WSL-ben a `~/pardes` klónt futtatja, nem ezt a munkafát, ezért a munkafát közvetlenül futtattam.)

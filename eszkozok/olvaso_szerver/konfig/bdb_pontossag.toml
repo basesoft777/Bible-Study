@@ -1,16 +1,17 @@
-# A BDB-szeletelő mért pontossága: a szó-lap BDB-blokkjának „próba” felirata mellett ez áll (DT177 (c), DT658 (a)).
+# A BDB vers → jelentéspont hozzárendelés mért pontossága: a szó-lap BDB-blokkjában ez áll (DT177 (c), DT658 (a); F185: a „próba”
+# felirat helyett a mért szám és a kétes pontok jelölése, DT-F185e).
 # EGYETLEN forrás: a szám kézzel sehol máshol nem szerepel a szerverben; a blokkok.py innen olvassa, a százalékot a
-# találat / minta hányadosából számolja. A konfidencia-intervallum (Clopper–Pearson, 95%) itt áll, a teszt
+# találat / minta hányadosából számolja. A konfidencia-intervallum (95%; F185 óta Wilson, a seed-103 eljárása szerint) itt áll, a teszt
 # (teszt_olvaso_szerver.py, test_bdb_pontossag_egy_forrasbol) a találat / minta párból újraszámolja és összeveti.
 #
 # Csere új mérésnél: a [jelentespont] mind a hét mezője együtt cserélődik (az előző érték a git-történetben marad);
 # a DT658 (a) szerint a NYERS mért szám áll a lapon, az ítélet utáni érték csak a naplóban.
 
 [jelentespont]
-talalt = 183
+talalt = 188
 minta = 200
-ci_also = 86.7
-ci_felso = 95.0
-datum = "2026-11-09"
-leiras = "jelentéspont, 200 véletlen igehely vak ellenőrzéssel"
-proveniencia = "scope=seed-102, véletlen 200 igehely | forras=eszkozok/olvaso_szerver/m2_minta_osszevet.py (kulcs: naplok/BDB_SZELETELO_M2_minta_seed102_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed102_kitoltott_A.tsv, _B.tsv; naplok/F102_BDB_SZELETELO_JAVITAS_naplo.md 14.) | ts=2026-11-09"
+ci_also = 89.8
+ci_felso = 96.5
+datum = "2026-11-10"
+leiras = "jelentéspont a szakasztábla szerint, 200 véletlen igehely valóban vak ellenőrzéssel"
+proveniencia = "scope=seed-103, véletlen 200 igehely, a szakasztábla hozzárendelése (DT-F185a) | forras=naplok/F185_seed103_osszevet.py (kulcs: naplok/BDB_SZELETELO_M2_minta_seed103_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed103_kitoltott_A.tsv, _B.tsv; két független kéz a nyers forrásbekezdéseken; Wilson 95%; naplok/F185_jelentes.md 8.) | ts=2026-11-10"
