@@ -3431,7 +3431,7 @@ def olvasoi_glossza(jel, cimke, szoveg):
     if m:
         s = s[:m.start()]
     s = re.sub(r'\s+', ' ', s).strip(' ,.;—–-')
-    s = re.sub(r'(?:\s+(?:a|az|és|vagy|mint|egy|is|de|mind|mindkettő))+$', '', s)
+    s = re.sub(r'(?:\s+(?:a|az|és|vagy|mint|egy|is|de|mind|mindkettő))+$', '', s).rstrip(' ,;—–-')
     if len(s) > 70:
         s = s[:70].rsplit(' ', 1)[0].rstrip(' ,;') + '…'
     # az alakjegyzékkel nyíló szakasz („perfectum …”, „participium …”) első szava nyelvtani alak, nem jelentés
@@ -3517,14 +3517,10 @@ CSAK_ALAKKENT = 'a szótár csak alakként idézi'
 
 
 def _szocikk_olvasoi_nev(adat, strong, bdb_id, i):
-    """F187 / F29 (c): a több szócikkes Strong szócikkének olvasói neve belső azonosító és sorszám nélkül: „első szócikk:
-    רַע” (a fej első héber szava), arámi szócikknél „(arámi)”."""
-    fej = next((r for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam']))
-                if r.get('bdb_id', '') == bdb_id and r['utvonal'] == 'fej'), None)
-    m = _ROMAI_LEMMA_RE.match((fej or {}).get('szoveg') or '')
+    """F187 / F29 (c): a több szócikkes Strong szócikkének olvasói neve belső azonosító és számjegyes sorszám nélkül
+    („első szócikk”), arámi szócikknél „(arámi)”. A héber címszó nem áll itt (a kiejtés-szabály miatt csak a jóváhagyott
+    kiejtéssel állhatna; a szócikkek címszava az apparátusban áll)."""
     nev = '%s szócikk' % (SORSZAMNEV[i - 1] if i <= len(SORSZAMNEV) else 'további')
-    if m and m.group(2):
-        nev += ': %s' % m.group(2)
     szam = re.match(r'BDB(\d+)$', bdb_id or '')
     if szam and int(szam.group(1)) >= BDB_ARAMI_ELSO:
         nev += ' (arámi)'
@@ -3700,10 +3696,10 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
         if k not in hordozo:
             vazlat = _vazlat_sor(jel, cimke, hu or angol)
             if uj:
-                # F29 (d): az apparátus a teljes szócikk — az összecsukott szakasz a teljes magyar szövegét hordozza (a cím
-                # hivatkozásszáma így a látható szövegre vonatkozik), nem az első tagmondatot
-                vazlat = '- `%s` — %s' % (jel, vegyes_cim_nelkul(jel, jelolo_levag(hu, jel)).strip() if hu else
-                                         '%s %s' % (angol, FORDITASRA_VAR))
+                # F29 (d) nem javítva (F187, N-F187a): a vázlatsor az első tagmondat; a teljes szöveg a kiejtés-szabály
+                # hiányát 21-ről 126-ra emelné a HAMART-001-en
+                vazlat = '- `%s` — %s' % (jel, vegyes_cim_nelkul(jel, cimke) if cimke else
+                                         vegyes_cim_nelkul(jel, _elso_tagmondat(hu or angol)))
             if kat == 'horgonnyal':
                 # ELLENOR_SZOTARI_GERINC 4. (7.2a): a határjelölés az összecsukott szakaszon is látszik
                 vazlat += HORGONNYAL_JELOLES

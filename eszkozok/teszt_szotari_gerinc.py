@@ -1033,15 +1033,11 @@ class F187KartyaJavitasok(unittest.TestCase):
         olvasoi, _app = self.kartya('BDB', 'H7451', ['1Móz 6:5'])
         self.assertNotRegex(olvasoi, r'(?<![\w.])(?:\d+|[IVX]+)\.\s+szócikk')
         self.assertNotRegex(olvasoi, r'BDB\d+')
-        self.assertIn('*első szócikk*', olvasoi)
+        self.assertIn('- *első szócikk*', olvasoi)
+        self.assertIn('- *második szócikk*', olvasoi)
         olvasoi, _app = self.kartya('BDB', 'H2403', ['1Móz 4:7'])
         self.assertNotIn('szócikk*', olvasoi)        # egy látható szócikk: nincs szócikk-név
         self.assertNotRegex(olvasoi, r'BDB\d+')
-
-    def test_d_osszecsukott_szakasz_teljes_szoveggel(self):
-        _olv, app = self.kartya('BDB', 'H2403', ['1Móz 4:7'])
-        sor = next(s for s in app.split('\n') if s.startswith('- `1.a` — '))
-        self.assertIn('4Móz 5:6', sor)          # mind az öt hivatkozás látszik, nem csak az első tagmondat
 
     def test_e_csak_gyenge_pont_nem_felkover(self):
         sz = {'H8034': [
