@@ -222,3 +222,11 @@ A javítókör-korlát (2/2) betelt; a korlát fölött, engedéllyel javítva: 
 **Nyitott tételek:** N-F188a–e.
 
 **Megjegyzés a PR-hoz:** a PR címe `[ELLENŐRZŐ]` előtagú legyen, mert a diff az `eszkozok/ellenorzes/`-t és a `fuggetlen-ellenor.md`-t érinti (E16). A brief fejléce `fut` marad; a lezárás az orkesztrátoré.
+
+**Ellenőrzési menet:** `ELLENOR_F188` (5 ELTÉRÉS) → javítókör 1/2 → `ELLENOR_F188_2` (3) → javítókör 2/2 → `ELLENOR_F188_3` (2; DT-F188d, DT-F188e) → korlát fölötti javítás, orkesztrátori engedéllyel → `ELLENOR_F188_4`: **TISZTA**. Az ellenőr futásai ~5,5 / ~10 / ~7 / ~8 perc (a cél ≤ 15 perc teljesült). A javítókör a „külön session” szabálytól eltérően ebben a sessionben futott (orkesztrátori döntés: az asztali alkalmazás túlterhelt). A javítókör-korlát (2) betelt; a harmadik javítás „a korlát fölött, engedéllyel javítva”. Ez maga is mérés a T7-hez: ezen a teljes szintű, folyamatot író feladaton 3 kör kellett, a cél (≤ 1) nem teljesült.
+
+**Döntések (frissítve):** DT-F188d 🟡 → orkesztrátor (b)+(c); DT-F188e 🟡 → orkesztrátor (a) (2026-11-10). Átvezetés a `dontesek/uj/`-ban a merge előtt, a session dolga a PR-ban.
+
+**Az `ELLENOR_F188_4` megjegyzései (nem ELTÉRÉS, nyitott pontként):** a kilépő 60 s-os ágára nincs teszt; felfüggesztett OS-zár-tartó mellett a várók üzenet nélkül várnak (élőség, nem kettős futás); a `naplok/`-gyűjtés az importált modulokat nem követi; két hamis pozitív a gyűjtésben (szigorúbb irány).
+
+**N-F188a (SEMA):** az orkesztrátor döntése szerint (2026-11-10) nem ebben a menetben: külön lépés a PR-ok merge-e után.
