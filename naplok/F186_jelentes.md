@@ -78,6 +78,62 @@ forrás maga hibás, pl. a `bcv` mást mond, mint a megjelenő szöveg — a gé
   **⛔ T3** csak akkor kell, ha a T2 utáni seed-201 érték 97% alatt marad (költségbecslés, megállás).
 - **T4:** új vak mérés (seed-202) ugyanezzel az eljárással; ez a kapu döntő mérése.
 
+## 2. A seed-201 mérés (a javítás előtt)
+
+*Proveniencia: scope=seed-201 (200 ÚSZ-hivatkozás, 163 szócikk) | forras=adat/thayer_vers_jelentes.tsv (a mérés előtti
+állapot, ts=2026-10-28) + Thayer.lexicon + négy vak kitöltés (A1, A2, B1, B2; mind `claude-opus-5-5`, külön subagent) + kézi
+ítélet (claude-opus-5-5) | ts=2026-11-10. Az összevetést a repón kívüli `f186_osszevet.py` végezte; az ítéletek és a
+kitöltések soronként: `adat/thayer_aranyminta.tsv` (`seed = 201`).*
+
+- **A kitöltők egymással:** A és B **mind a 200 sorban** azonos könyv/verset és azonos jelentéspontot adott (eltérés 0).
+- **Nyers egyezés a gépi kimenettel:** könyv/vers A: 198/200, B: 198/200; jelentéspont A: 189/200, B: 189/200.
+- **Ítélet után (a mért érték):**
+
+| mutató | gépi = arany | arány | Wilson 95% |
+|---|---:|---:|---|
+| könyv/vers | **200 / 200** | 100,0% | 98,1–100,0 |
+| jelentéspont (fő mutató) | **189 / 200** | **94,5%** | 90,4–96,9 |
+| jelentéspont, előtagként helyes (tájékoztató) | 192 / 200 | 96,0% | 92,3–98,0 |
+
+- **Rétegenként (tájékoztató):** gyakori — könyv/vers 100/100, jelentéspont 91/100; ritka — könyv/vers 100/100,
+  jelentéspont 98/100. A hiba szinte mind a nagy, sokszintű szócikkekben van.
+- **A kapu (≥ 194/200): nem teljesül** — a T2 szükséges.
+
+## 3. A seed-201 eltéréseinek ítélete
+
+A 13 eltérő sorban A és B egybehangzóan tért el a gépitől. A forrás nyers HTML-je (`Thayer.lexicon`) alapján:
+
+| azon | Strong | gépi | arany | ítélet | osztály | forrásidézet (rövidítve) |
+|---|---|---|---|---|---|---|
+| T004 | G4336 | Mt 6:5 · fej | Mt 6:5 · fej | kitöltő-alak | — | „Mat 6:5-7”: a kitöltők tartományt írtak; a tábla a `bcv` kezdőversét adja, a tartomány nincs kibontva (SEMA 2.35) — a gépi helyes |
+| T104 | G2344 | Mt 6:19 · -/2/- | Mt 6:19 · -/2/- | kitöltő-alak | — | „Mat 6:19-21”, mint T004 |
+| T007 | G3588 | II/5/- | II/5/a | hozzárendelés-hiba | K1 | „**5.** The article prefixed to participles a. gives them the force of substantives …; ὁ ὀλοθρεύων, Heb 11:28” |
+| T025 | G3004 | II/1/g | II/1/i | hozzárendelés-hiba | K1 | „…:12. h. with the dative … :18. i.: λέγω followed by prepositions … Joh 2:21” |
+| T029 | G3360 | -/1/- | -/1/a | hozzárendelés-hiba | K1 | „**1.** … and is used a. of time: … 1Ti 6:14” |
+| T044 | G4487 | -/2/- | -/2/a | hozzárendelés-hiba | K1 | „**2.** In imitation of the Hebrew …; and that a. so far forth as it is a matter of narration: … Act 10:37” |
+| T114 | G5479 | fej | -/-/a | hozzárendelés-hiba | K1 | „… joy, gladness; a: Luk 1:14 … 3Jo 1:4” (kettősponttal nyitó „a:”) |
+| T147 | G0846 | I/1/e | I/2/a | hozzárendelés-hiba | K1 | „**e.** … Joh 16:27 (…). 2. When it gives Prominence, it answers a. to our emphatic he, she, it: Mat 1:21” |
+| T159 | G2228 | -/4/b | -/4/c | hozzárendelés-hiba | K1 | „**b.** ἤ γάρ, see γάρ, I. at the end c. ἤ καί (…) … Luk 11:12” |
+| T171 | G3367 | fej | -/-/a | hozzárendelés-hiba | K1 | „… in the same constructions as μή; accordingly a. with an imperative: … Luk 9:3” |
+| T191 | G2192 | I/2/g | I/2/h | hozzárendelés-hiba | K1 | „… Joh 15:22, etc. h. of age and time: … Mar 3:26” |
+| T145 | G4151 | -/4/b | -/4/a | hozzárendelés-hiba | K2 | „**b.** bb.; γεννάω, 1 at the end and 2 d.; ἐκχέω b.; χρίω, a.) …” — a bekezdés eleji félkövér „b.” egy kereszthivatkozás („βαπτίζω, II. b. bb.”) töredéke; a valódi „b.” a következő bekezdés |
+| T181 | G2513 | -/-/d | zaro | hozzárendelés-hiba | K3 | „**d.** in a levitical and ethical sense: … (Synonym: see εἰλικρινής; cf. Westcott on 1Jo 3:3.)” |
+
+**Kitöltő-hiba: 0; forrás-hiba: 0** (a T119 G0027 „Luk 8:18” gyanúját mindkét kitöltő jelezte — „Ascensio Isa. … Luk 7:23;
+Luk 8:18” —, de a jelentéspont `fej` és a könyv/vers a forrás `bcv`-je szerint egyezik; a forrás itt valószínűleg az
+Ézsaiás mennybemenetelét Lukácsnak jelöli. Ez a `bcv` tartalmi hibája, nem a hozzárendelésé; N-tétel jelölt, l. 6.).
+
+**Hibaosztályok (11 hiba):**
+
+- **K1 — bekezdésen belüli fej (9: T007, T025, T029, T044, T114, T147, T159, T171, T191).** A `bont.py` feltevése („a
+  forrásban bekezdésen belüli fej nem fordul elő”) csak a félkövér (`<b>…</b>`) fejekre igaz. A forrás a bekezdés
+  belsejében félkövér nélkül is nyit pontot: betűt („used a. of time”, „that a. so far”, „; a:”, „etc. h. of age”,
+  „:12. h. with”, „:18. i.:”, „at the end c. ἤ καί”) és számot („). 2. When it gives Prominence, it answers a.”).
+- **K2 — hamis bekezdés-eleji fej (1: T145).** A forrás a kereszthivatkozás közepén bekezdést tör, és a töredék eleje
+  félkövér betűként áll („**b.** bb.;”). Ugyanilyen a G1909 B/2 „**c.**)):”, „**d.**):”, „**e.**):” bekezdései.
+- **K3 — záró szinonima-jegyzet (1: T181).** A „(Synonym: …)” a szócikk végén a teljes szóra vonatkozik, a gépi kimenet
+  az utolsó alpontra teszi.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
