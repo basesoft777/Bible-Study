@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: fut
 ag: claude/f188-teher-csokkentes
+pr: 677
 ad: feladatonként egy jelentésfájl, gépi formai előjavítás a commit előtt, a CI-t újra nem futtató és kockázat szerint szintezett független ellenőr, main-őr a /kovetkezo-ban; előtte-utána mérés (admin ≤ tartalmi, javítókör ≤ 1, ellenőr ≤ 15 perc)
 kovetkezo: "Folytatás: [elteres_kor 2/2] ELLENOR_F188_4 TISZTA (korlát fölött, engedéllyel javítva); draft PR-ok nyitva, merge a felhasználóé. Hátra: T7 — a merge utáni első 3 PR mérése (python eszkozok/ellenorzes/teher_meres.py --pr <n1> <n2> <n3>, N-F188e); a SEMA-rész (a T2 CI-szabállyá emelése és szövege, N-F188a) külön lépés a merge után (orkesztrátori döntés, 2026-11-10)"
 munka: folyamat
