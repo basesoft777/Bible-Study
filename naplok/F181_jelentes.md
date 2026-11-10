@@ -564,3 +564,28 @@ Tehát **26 minta (24 forrásvers)**, ebből **7-nek van HunKar-megfelelője** (
 **Tesztek.** `python eszkozok/teszt_karoli_kh_mek.py`: **58 teszt, mind OK** (a javítókör előtt 39). `python eszkozok/teszt_sqlite_epit.py`: 79 teszt, 1 bukás (l. E7: UBS_DBH 13. szabály + a horgony-kényszer 1 sérülése, nem a `kh`-hoz tartozó).
 
 **Nyitott.** N-F181f (az E2-minta egy HunKar-megfelelő nélküli esete: 1Kir 2:26 → 1Sám 22:20); a szúrópróba Opus-ítélete (DT-F181j); az E1 kiterjesztése a 3 megnevezett eseten túli 4 sorra (Józs 22:3, Zsolt 143:3, ApCsel 21:8, Ef 2:20) az orkesztrátor jóváhagyására vár.
+
+### Második adag: a szúrópróba Opus-ítélete után (F181.23–F181.28)
+
+*Végrehajtó: `claude-sonnet-5-5`. Az orkesztrátor döntései: DT-F181l–q (`dontesek/uj/f181-karoli-kh-jeloltek.md`; a DT-F181q a felhasználó döntése az orkesztrátoron át). Commitok: F181.23 (döntések), F181.24 (E3-szűkítés), F181.25 (duplikátum), F181.26 (maradék hiba, 7.1 szakasz), F181.27 (licenc), F181.28 (ez a szakasz és a README számai). Az ágon nem történt push, merge és lapgenerálás.*
+
+**Mért esetszámok.** (1) **E3-szűkítés (DT-F181n):** 5 forrásvers (2Kor 7:4, Kol 1:7, Kol 4:9, Kol 4:14, Kol 4:15), **10 tábla-sor** változott (5 HunKar-tartomány `megerositett` → `kiesik`, 5 MEK-vers `kiesik` → `megerositett`); a többi egyfejezetes könyvben (Abd, Júd, 2Ján, 3Ján) 0 sor, mert ott nincs `1:1-N` HunKar-tartomány. Egyfejezetes könyv: a létező versek halmazából, nem kézi listából. A nem érintett sorok bájtra azonosak (a diff pontosan a 10 sor). A tábla újraállítása nem `beemel`-lel, hanem `osszevet`-tel történt (az osszevet = osszevet + beemel): a `beemel` csak a `jelolt` sorokat érinti, az E3-sorok pedig már nem `jelolt`-ak voltak. Az `osszevet` az előző állapotot a javítás előtt bájtra reprodukálta. (2) **Duplikátum (DT-F181p):** **4 azonos (igehely, kapcsolodo) kulcs, 8 sor** (Józs 2:15 → ApCsel 9:2 `jelolt`; 1Kir 11:11 → 6:12 és 1Kor 12:11 → 7:7 `megerositett`; 1Kor 7:4 → 7:7 `kiesik`); gyökérok: a HunKar-forrástábla maga hordozza kétszer a négy kulcsot (32 407 sor, 32 403 különböző kulcs). A generátor (`hunkar_sorok`) az első előfordulást tartja meg; a javítás 4 sor törlése, 0 egyéb változás. Teszt: `test_nincs_azonos_kulcsu_sor` a teljes táblán.
+
+**Régi → új számok.**
+
+| | #177 | első adag vége (F181.20) | második adag (F181.28) |
+|---|---|---|---|
+| sorok | 35 204 | 35 204 | **35 200** |
+| `megerositett` | 21 314 | 23 981 | **23 979** |
+| `kiesik` | 11 027 | 11 041 | **11 040** |
+| `jelolt` | 2 863 | 182 | **181** |
+
+A #177 → második adag Δ a kettőzések nélküli alaphoz képest (21 312 / 11 026 / 2 862): `megerositett` +2 667 (2 652 MEK-sor, 12 HunKar-sor, 3 HunKar-tartomány), `kiesik` +14 (8 HunKar-sor, 6 MEK-végpontsor), `jelolt` −2 681. A `megerositett` forrása: `MEK` 2 652 (volt 2 647), `HunKar+MEK` 21 315, `HunKar` 12. A 181 `jelolt` sor oka: `nem_letezo_cel` 136, `mek_lista_nincs_elfogadva` 11, `eliras_gyanus` 10, `eliras_gyanus_par` 9 (volt 10), `mek_fejezet_minta` 9, `gyanus_ismetlodo` 6. A korábbi szakaszok (8. és 10. első fele) a saját idejük számait mutatják (35 204 / 23 981 / 11 041 / 182).
+
+**Maradék hiba (DT-F181o):** 7.1 szakasz. **Az N-F181f lezárva (DT-F181l); a szúrópróba 108. tétele „rendben”.** **A DT-F181m (E1-kiterjesztés)** az Opus-ítélet szerint 4 rendben, 1 gyenge (Zsolt 143:3), 0 hibás: a szabály nem szűkült.
+
+**Egyeztetett eltérések a briefhez képest (az `ir` listán kívüli fájlok; az orkesztrátor egyeztetésével).**
+1. **A Karoli_Strong licencsorok (F181.22, DT623):** `adat/licencek.tsv` `Karoli_Strong_parok` és `Karoli_Strong_szavak` sora: a saját rész licence a „minden jog fenntartva” (F89) helyett CC BY 4.0 (a #172 pontosságmérése után, a felhasználó szavával: „már mértük és elfogadtuk”), a cimke `CC BY 4.0`; a `sqlite_epit.py` megjegyzése igazítva. A fájl kívül esik a brief `ir` listáján.
+2. **A Karoli_KH_javitott licence (F181.27, DT-F181q):** `adat/licencek.tsv` `Karoli_KH_javitott` sora: licenc `CC BY 4.0 (a saját rész: a háromszintű besorolás és az indok, konkordancia/Karoli_KH_javitott.tsv; DT-F181q) + Karoli_KH (közkincs, DT-F33e) + Karoli_KH_MEK (közkincs, DT651)`, a `forras_hely`, a `kotelezo_megjeloles` (udvariassági MEK-megjelölés), a megjegyzés (a régi „minden jog fenntartva” elavult; a MEK versszövege nem kerül a nyílt adatba) és a cimke (`CC BY 4.0`) a Karoli_Strong_parok mintájára; a többi licencsor bájtra azonos (1 eltérő sor). `eszkozok/sqlite_epit.py` `SZARMAZTATOTT_LICENC['kh']`: a `Karoli_KH_javitott` is szerepel (az F181 E7 megjegyzés igazítva; a származtatott licenc ezzel CC BY 4.0, nem szigorodik). Mindkét fájl az `ir` listán kívül van; a hatókör-bővítést az orkesztrátor egyeztette.
+
+**Tesztek.** `python eszkozok/teszt_karoli_kh_mek.py`: **62 teszt, mind OK** (az első adag végén 58). `python eszkozok/teszt_karoli_kh_gyanus.py`: 3 teszt OK.`python eszkozok/teszt_sqlite_epit.py` (háttérben, fájlba irányítva; 600 s): **79 teszt, 1 bukás: az ismert `test_baseline_a_masolaton_zold`** (13. szabály, `UBS_DBH` definicio_hu, 443 tétel; külön session: local_7dc8df8f-3d34-452d-845b-fec09f2b2761); a licencváltozás (a `kh` származtatott licencébe a `Karoli_KH_javitott` bekerült) más tesztet nem tört. `python eszkozok/teszt_nyilt_mag.py`: 62 teszt, 1 bukás (`feloldatlan_dt` = `['DT-F123h']`, egy másik feladat feloldatlan helyőrzője; a licenc- és KH-változtatáshoz nem tartozik).

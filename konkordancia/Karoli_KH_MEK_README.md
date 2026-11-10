@@ -125,30 +125,31 @@ A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;sza
 | `marad=gyanus_ismetlodo` | 6 | MEK-oldali gyanús ismétlődő: a forrásvers MEK-listája szó szerint azonos egy másik vers MEK-listájával |
 | `marad=eliras_gyanus` | 10 | a MEK-cél egyetlen összetevőben tér el a forrásvers egy jelölt HunKar-sorának céljától, és létezik (DT-F181e) |
 | `marad=mek_fejezet_minta` | 9 | az E2-hibaminta létező töredéke (DT-F181h) |
-| `marad=eliras_gyanus_par` | 10 | HunKar-oldali sor, amelynek MEK-párja elírás-gyanús vagy E2-töredék sor: a pár eldöntetlen |
+| `marad=eliras_gyanus_par` | 9 | HunKar-oldali sor, amelynek MEK-párja elírás-gyanús vagy E2-töredék sor: a pár eldöntetlen |
 | `marad=mek_lista_nincs_elfogadva` | 11 | HunKar-oldali sor, amelynek forrásversén a MEK-lista egyik sora sem emelődik be (nem létező cél, gyanús ismétlődő), tehát a HunKar-sor sorsáról nincs mi alapján dönteni |
 
-Összesen **182** sor. A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz, az új minta tételei: `naplok/F181_szuroproba.md`.
+Összesen **181** sor (136 + 6 + 10 + 9 + 9 + 11; a Józs 2:15 → ApCsel 9:2 HunKar-sor kettőzött előfordulása a DT-F181p szerint megszűnt, ezért 182 helyett 181). A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz, az új minta tételei: `naplok/F181_szuroproba.md`.
 
 **6. A fogyasztók.** A `karoli_kh_szuro.mek_sorok()` a csak a MEK-ben álló, `megerositett` sorokat adja (a HunKar-tábla kulcsaival és magyar megjelenítéssel); a `lekerdez.py` (`karoli`), a `sqlite_epit.py` (`kh` tábla), az `olvaso_pilot/adat.py` és az `olvaso_mockup/nav_kinyer.py` a HunKar-sorok mellé ezeket is olvassa, ugyanazzal az `elfogad` szűrővel. A `kiesik` és a `jelolt` sor nem jut át. A lapokat és a `pardes.db`-t ez a menet nem építette újra (N-F177a).
 
 **Előállítás.** `python eszkozok/karoli_kh_mek.py osszevet` a #177 összevetése **és** a beemelési szabály együtt (a tábla fejléce: `osszevet + beemel`); `osszevet --nyers` a #177 háromszintű nyers állapotát adja; `beemel` a kész táblán alkalmazza a szabályt (idempotens); `jelolt-bontas` a `jelolt` szintet méri; `e2-meres` az E2-hibaminta teljes mérése; `szuroproba` a rétegzett mintát veszi (`--md`: tételes táblázat üres ítélet-oszloppal). A sorok száma a szabály alkalmazásakor nem változik.
 
-**Mért eredmény (2026-11-09; a javítókör 1 után, ELLENOR_F181 E1–E3 és E8).**
+**Mért eredmény (2026-11-09; a javítókör 1 második adaga után: E1–E3, E8, DT-F181n és DT-F181p).** A #177 oszlopa a kettőzött HunKar-kulcsok (4 sor) nélkül értendő: a #177 táblája 35 204 sort, 21 314 / 11 027 / 2 863 szintet adott; a 4 kettőzött sor (1 `megerositett` ×2, 1 `kiesik`, 1 `jelolt`) kiszűrése után 35 200 sor, 21 312 / 11 026 / 2 862.
 
 | szint | #177 | F181 után | Δ |
 |---|---|---|---|
-| `megerositett` | 21 314 | 23 981 | +2 667 |
-| `kiesik` | 11 027 | 11 041 | +14 |
-| `jelolt` | 2 863 | 182 | −2 681 |
-| összesen | 35 204 | 35 204 | 0 |
+| `megerositett` | 21 312 | 23 979 | +2 667 |
+| `kiesik` | 11 026 | 11 040 | +14 |
+| `jelolt` | 2 862 | 181 | −2 681 |
+| összesen | 35 200 | 35 200 | 0 |
 
-A +2 667 `megerositett`: 2 647 MEK-sor, 12 HunKar-sor (5: a MEK-pár célja nem létezik; 7: az E2-hibaminta megfelelője), 8 HunKar-tartomány (a MEK az egyik végpontot adja). A +14 `kiesik`: 3 HunKar-sor (a MEK-lista elfogadva a versen) és 11 MEK-végpontsor (a megerősített HunKar-tartományba olvad). A `megerositett` sorok forrása: `HunKar+MEK` (egyező; a tartomány), `MEK` (beemelt), `HunKar` (a MEK-pár nem ellentmond).
+A +2 667 `megerositett`: 2 652 MEK-sor (2 647 beemelt + 5 pontos Filem-vers az E3-szűkítésből, DT-F181n), 12 HunKar-sor (5: a MEK-pár célja nem létezik; 7: az E2-hibaminta megfelelője), 3 HunKar-tartomány (a MEK az egyik végpontot adja; a másik 5 Filem-tartomány az E3-szűkítés után `kiesik`). A +14 `kiesik`: 8 HunKar-sor (3: a MEK-lista elfogadva a versen; 5: az egyfejezetes könyv `1:1-N` tartománya) és 6 MEK-végpontsor (a megerősített HunKar-tartományba olvad). A `megerositett` sorok forrása: `HunKar+MEK` (egyező; a tartomány), `MEK` (beemelt), `HunKar` (a MEK-pár nem ellentmond).
 
 **Figyelmeztetések (részletek: a jelentés 4., 7., 9. és 10. szakasza).**
 * A tartomány-végpontok duplikációját az E3 szabály kezeli: a megerősített HunKar-tartomány mellett a MEK-végpontsor `kiesik` (nem önálló sor).
-* A szúrópróbát az első körben a végrehajtó olvasta, nem független ellenőr (alsó becslés: olyan MEK-elírást, amely véletlenül értelmes helyre mutat, nem fog meg). A javítókör utáni új minta tételei ítélet nélkül: `naplok/F181_szuroproba.md`; az ítéletet Opus hozza (DT-F181j).
-* Az E2-hibaminta HunKar-megfelelő nélküli esete (1Kir 2:26 → 1Sám 22:20) tartalmilag helyesnek látszik, de a szabály szerint `jelolt` (N-F181f, az orkesztrátor döntésére vár).
+* A szúrópróbát az első körben a végrehajtó olvasta, nem független ellenőr (alsó becslés: olyan MEK-elírást, amely véletlenül értelmes helyre mutat, nem fog meg). A javítókör utáni új minta tételes ítéletét az Opus hozta (DT-F181j, F181.21): `naplok/F181_szuroproba.md`; az eredmény és a maradék hiba: 8. szakasz.
+* Az E2-hibaminta HunKar-megfelelő nélküli esete (1Kir 2:26 → 1Sám 22:20) tartalmilag helyes, de a szabály szerint `jelolt` marad (DT-F181l, az N-F181f lezárva): a rendszeres MEK-töredékminta forrása gyanús, a jelölt sor nem hiány, az ok a sorban áll.
+* A szúrópróba táblája (`naplok/F181_szuroproba.md`) a `6af8b0cf` állapotú táblára készült; a jelen tábla ettől a Filem-sorokban (DT-F181n) és a kettőzött sor kiszűrésében (DT-F181p) tér el.
 
 ## 8. A beemelt sorok maradék hibája (adatleírás; F181, DT-F181o)
 
