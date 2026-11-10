@@ -5,10 +5,10 @@ kod: HAMART_JAVITO
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/hamart-javito
 ad: a HAMART-001 lapja az F1–F18 és az N-F178a/b leletek szerint javítva (generátor-szinten, adatjavítás szkripttel, HIBA-kapuk teszttel), friss határ-ellenőrzés, a HAMART kapcsolat-sorai, két folyamat-kapu (jelölő-kapu a /kiadas előtt, előfeltétel-térkép), saját renderelt átnézés és független ellenőrzés; a régi lapok bájtra változatlanok
-kovetkezo: "Te: F182.H0 — indítás csak az orkesztrátor jelzésére: előfeltétel (egyeztetett eltérés, KOR miatt nem fugg) a #102–#105 és a #180 a main-ben"
+kovetkezo: "Orkesztrátor: 2. fázis a #104/#105/#185/#186/#187 után"
 munka: ertelmezo
 olvas: [CLAUDE.md, MUNKAMENET.md, adat/SEMA.md, "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", F178_LEXIKON_AG_LEZARAS_BRIEF.md, motivumok/HAMART-001.md, lexikon/HAMART-001_TUDOMANYOS.md, naplok/HATAR_HAMART-001.md, naplok/F123_teljesseg_HAMART-001_blokkok.tsv, nyilt_mag/kizaras_csoportok.tsv, konkordancia/tW_szocikkek.tsv, konkordancia/BDB_rokon_irasok.tsv, adat/karoli_strong/, adat/kiadasok.tsv, adat/motivumok.tsv]
 ir: [eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/teszt_olvasoi_kovetkeztetes.py, eszkozok/olvasoi_kapu.py, eszkozok/teszt_olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/szerep_karoli.py, eszkozok/teszt_szerep_karoli.py, eszkozok/visszhang/megfelelo_kinyer.py, eszkozok/olvaso_szerver/teszt_visszhang_kapu.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, CLAUDE.md, motivumok/HAMART-001.md, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/res_forras.tsv, adat/szotar_szerepek.tsv, adat/visszhang_megfelelok.tsv, adat/nyilt_angol.tsv, adat/SEMA.md, lexikon/HAMART-001_TUDOMANYOS.md, "nyilt_mag/*", naplok/HATAR_HAMART-001.md, archivum/HAMART-001/, naplok/F182_jelentes.md]
