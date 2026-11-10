@@ -74,3 +74,61 @@ A vak lap oszlopai (`azon strong poz nyers kornyezet` + üres kitöltendők) gé
 gépi elem van benne: (1) a ⟦…⟧ jelölő a szeletelő hivatkozás-kinyeréséből (a könyv/vers mérést érinti, a jelentéspontot nem);
 (2) a `kornyezet` a szeletelő `lapit()` alakja („1.a” → „1. a.”), ez a jelölőt szóközzel választja el, tagolást nem árul el. A
 jelentéspont-tagolás nem szivárgott; a mérvadóságot az érinti inkább, hogy mindkét minta a javítás hangolási alapja lett.
+
+## 4. Seed-103: eljárás és kapu (rögzítve a mintavétel és a kitöltés ELŐTT)
+
+*Az orkesztrátor döntése szerint (2026-11-10) a seed-103 az egyetlen vak mérés, megismétlés nélkül; ha 97% alatt marad, a mért
+szám kerül a lapra „mért” jelöléssel, és a P3 elmarad (erről az orkesztrátor dönt). A #186 seed-204 eljárásának mintájára.*
+
+### 4.1 Mit mérünk
+
+Az `adat/bdb_vers_jelentes.tsv` (2.29; a mintavételkori állapot, a jelentéspont forrása a szakasztábla, DT-F185a) egy sora: egy
+BDB-szócikk egy igehely-hivatkozása. Két mutató, külön számmal:
+- **könyv/vers:** az `mt_vers` (Károli-könyvrövidítés + MT fejezet:vers); szűrt (nem bibliai) sornál üres, ott a kitöltő
+  „alhivatkozás” ítélete egyezik;
+- **jelentéspont:** `szakasz` (római homonima-szám; a `h:` alcímszó-címke üresnek számít) + `resz` + `utvonal`. Az összevetés
+  az `m2_minta_osszevet.py` szabálya: a törzsnévben „`” = „'”; „fej” = „tagolatlan” = „<törzs>” (= „<törzs>/-”); a fő mutató a
+  zárójeles szintet („(2)”, „(c)”), a nagybetűs csoportot (`A`–`H`) és a görög betűs szintet elhagyja (DT657 (a)); a római
+  szakasz és a rész pontosan egyezzen.
+
+### 4.2 A minta
+
+`naplok/F185_minta103.py`: 200 egyszerű véletlen sor a 2.29 összes sorából (`random.Random(103)`, (strong, sorszam) szerint
+rendezve), a seed-99/100/101/102 kulcsainak sorai kizárva; azonosító `N001`–`N200`. Rétegzés nincs (a seed-101/102 eljárása).
+
+### 4.3 A kitöltés (vak, két független kéz)
+
+- **Két független kitöltő, mindkettő Opus** (A és B), **mindkettő mind a 200 sort** kitölti (kitöltőnként legfeljebb két köteg,
+  a köteg Strongonként zárt); egymás eredményét nem látják.
+- **Amit kapnak:** a vak munkalap (`naplok/BDB_SZELETELO_M2_minta_seed103_vak.tsv`: `azon`, `strong`, a hivatkozás nyers alakja,
+  `jelolve`, a TSV-szöveg ±100 karakteres környezete) és a szócikkek **nyers forrásbekezdései**
+  (`naplok/BDB_SZELETELO_M2_minta_seed103_szocikkek.txt`: a `DictBDB.json` `<p>` bekezdései sima szövegként, gépi vágás és gépi
+  döntés nélkül; a mért hely előtt `⟦azon⟧`; a szöveg az utolsó jelölt bekezdés utáni bekezdésnél véget ér). Ha a sorhoz nincs
+  jelölő (`jelolve` = `nem`), a helyet a környezet szerint keresik meg.
+- **Amit nem láthatnak:** a kulcsot, a 2.29-et, a 2.30-at, a 2.31-et, a `bdb_szelet.py`-t, a `bont.py`-t, és a repó más táblázatát
+  sem olvashatják.
+- **Amit kitöltenek** (a seed-102 vak lapjának szabályai szerint): `konyv_mt` (Károli-rövidítés és MT fejezet:vers; nem bibliai
+  helynél „alhivatkozás: <ok>”); `jelentespont`: a BDB tagolása szerinti hely — római homonima-szám, ha a forrás a címszó előtt
+  kiírja (a fő címszónál is: „I fej”, „II Hiph`il”), törzs, számozott jelentés, alpont (pl. „II Qal/2/a”, „-/1/b”), vagy „fej”
+  (címsor, nyelvi háttér, alaktan), vagy „tagolatlan”; a római számos fő tagolás a `resz` oszlopba („I. of man … II. of God …”);
+  a szócikk belsejében héber címszóval álló római fej címszó-szakasz (a jelentéspont elején); a jelöletlen második címszó
+  szakasza római szám nélkül; a kereszthivatkozásban álló jelölő („see 1 above”, „compare Pi`el”) nem fej; `megjegyzes`:
+  bizonytalanság, forráshiba gyanúja.
+
+### 4.4 Az arany érték és az eltérések
+
+- Ahol **A = B**, az az arany érték (a kapu számát ítélet nem változtatja; ha a végrehajtó a forrás alapján kitöltő-hibát lát,
+  az külön, tájékoztató számként áll).
+- Ahol **A ≠ B**, soronkénti ítélet a forrásszöveg alapján, idézettel (a végrehajtó; aki dönt, nem ellenőriz — a független
+  ellenőrzés a `fuggetlen-ellenor`-é). Kategóriák: hozzárendelés-hiba, kitöltő-hiba, forrás-hiba (a forrás maga hibás: a gépi
+  kimenet hibásnak számít).
+
+### 4.5 A mutatók és a kapu
+
+- **Mutatók:** a gépi kimenet egyezése az arany értékkel, **nyers számmal (x / 200)** és **Wilson-féle 95%-os
+  konfidencia-intervallummal**, külön a könyv/versre és a jelentéspontra; tájékoztatóul A-ra és B-re külön, és a
+  `bizonyossag` szerint (`biztos` / `ketes`) külön.
+- **A kapu (előre rögzítve):** jelentéspont **≥ 194 / 200** (97%), és könyv/vers ≥ 198 / 200 (99%, DT658). A kapu a
+  pontbecslésre vonatkozik; a CI a jelentésben áll.
+- **Következmény:** ha teljesül, a „próba” jelölés lekerül, a szó-lapon (`blokkok.py` `BDB_MERT_PONTOSSAG`) az új mért szám CI-vel;
+  ha nem, a mért szám kerül a lapra „mért” jelöléssel, ismételt mérés nincs (orkesztrátori döntés, 2026-11-10).
