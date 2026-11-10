@@ -1,7 +1,8 @@
 # F105 — a BDB héber idézeteinek szórendje: mérés, gépi egyezés, 50-es minta (FELADATOK #105)
 
-*2026-11-10. Modell: `claude-opus-5-5`. Ág: `claude/f105-bdb-szorend`. Csak mérés és minta: a forrás, az adat, a
-megjelenítés és a lexikon nem változott. Mérőszkript: `naplok/F105_meres.py` (kb. 10 mp), minta: `naplok/F105_minta.py`.*
+*2026-11-10. Modell: `claude-opus-5-5`. Ág: `claude/f105-bdb-szorend`. Az 1–5. szakasz mérés és minta (akkor az adat és
+a megjelenítés még nem változott); a 6. szakasz a megvalósítás (a javítótábla és a megjelenítés változott); a 7. a vak minta
+eredménye. A forrás (`BDB_teljes_unabridged.tsv`) és a `lexikon/` egyik szakaszban sem változott. Mérőszkript: `naplok/F105_meres.py` (kb. 10 mp), minta: `naplok/F105_minta.py`.*
 
 *proveniencia: scope=BDB_teljes_unabridged.tsv minden szócikkének többszavas héber futama (29 469) | forras=naplok/F105_meres.py@49a9f39bea4a;
 konkordancia/BDB_teljes_unabridged.tsv@d4b15b2faea6, konkordancia/TAHOT_kivonat.tsv@4c876f570aad, adat/bdb_vers_jelentes.tsv@17a27594fd5e,
@@ -94,13 +95,13 @@ a gépi ellenőrzés a TAHOT-on fut). A „kézi ítélet” (helyes / rossz / n
 | 14 | H3671 | jelolt_marad | כ ׳בַּעַל | בַּעַל כ׳ | Péld 1:17 | כִּֽי חִ֭נָּם מְזֹרָ֣ה הָרָ֑שֶׁת בְּ֝עֵינֵ֗י כָל בַּ֥עַל כָּנָֽף |  |
 | 15 | H3680 | nincs_sor | כִסִּתִי אֵלֶיךָ | אֵלֶיךָ כִסִּתִי | Zsolt 143:9 | הַצִּילֵ֖נִי מֵאֹיְבַ֥י יְהוָ֗ה אֵלֶ֥יךָ כִסִּֽתִי |  |
 | 16 | H3820 | jelolt_marad | אין לב | לב אין | Péld 17:16 | לָמָּה זֶּ֣ה מְחִ֣יר בְּיַד כְּסִ֑יל לִקְנ֖וֹת חָכְמָ֣ה וְלֶב אָֽיִן |  |
-| 17 | H3844 | jelolt_marad | ל ׳יֵין | יֵין ל׳ | Hós 14:8 |  |  |
+| 17 | H3844 | jelolt_marad | ל ׳יֵין | יֵין ל׳ | Hós 14:8 | יָשֻׁ֙בוּ֙ יֹשְׁבֵ֣י בְ צִלּ֔ וֹ יְחַיּ֥וּ דָגָ֖ן וְ יִפְרְח֣וּ כַ גָּ֑פֶן זִכְר֖ וֹ כְּ יֵ֥ין לְבָנֽוֹן (TAHOT*) |  |
 | 18 | H3956 | jelolt_marad | ל ׳שׁוֺט | שׁוֺט ל׳ | Jób 5:21 | בְּשׁ֣וֹט לָ֭שׁוֹן תֵּחָבֵ֑א וְֽלֹא תִירָ֥א מִ֝שֹּׁ֗ד כִּ֣י יָבֽוֹא |  |
 | 19 | H3956 | jelolt_marad | הַלּ ׳בַּעַל | בַּעַל הַלּ׳ | Préd 10:8 | אִם יִשֹּׁ֥ךְ הַנָּחָ֖שׁ בְּלוֹא לָ֑חַשׁ וְאֵ֣ין יִתְר֔וֹן לְבַ֖עַל הַלָּשֽׁוֹן |  |
 | 20 | H3967 | jelolt_marad | מ ׳חֲמֵשׁ בַּשֶּׁקֶל | חֲמֵשׁ מ׳ בַּשֶּׁקֶל | 2Móz 30:24 | וְקִדָּ֕ה חֲמֵ֥שׁ מֵא֖וֹת בְּשֶׁ֣קֶל הַקֹּ֑דֶשׁ וְשֶׁ֥מֶן זַ֖יִת הִֽין |  |
 | 21 | H4033 | jelolt_marad | מ ׳בֵּית | בֵּית מ׳ | Zsolt 119:54 | זְ֭מִרוֹת הָֽיוּ לִ֥י חֻקֶּ֗יךָ בְּבֵ֣ית מְגוּרָֽי |  |
 | 22 | H4347 | jelolt_marad | מ ׳מַחַץ | מַחַץ מ׳ | Ézs 30:26 | וְהָיָ֤ה אֽוֹר הַלְּבָנָה֙ כְּא֣וֹר הַֽחַמָּ֔ה וְא֤וֹר הַֽחַמָּה֙ יִהְיֶ֣ה שִׁבְעָתַ֔יִם כְּא֖וֹר שִׁבְעַ֣ת הַיָּמִ֑ים בְּי֗וֹם חֲבֹ֤שׁ יְהוָה֙ אֶת שֶׁ֣בֶר עַמּ֔וֹ וּמַ֥חַץ מַכָּת֖וֹ יִרְפָּֽא |  |
-| 23 | H4421 | jelolt_marad | מ ׳אִישׁ | אִישׁ מ׳ | Ézs 3:3 | שַׂר חֲמִשִּׁ֖ים וּנְשׂ֣וּא פָנִ֑ים וְיוֹעֵ֛ץ וַחֲכַ֥ם חֲרָשִׁ֖ים וּנְב֥וֹן לָֽחַשׁ |  |
+| 23 | H4421 | jelolt_marad | מ ׳אִישׁ | אִישׁ מ׳ | Ézs 3:3 | גִּבּ֖וֹר וְ אִ֣ישׁ מִלְחָמָ֑ה שׁוֹפֵ֥ט וְ נָבִ֖יא וְ קֹסֵ֥ם וְ זָקֵֽן (TAHOT*) |  |
 | 24 | H4659 | jelolt_marad | י ׳מִפְעֲלוֺת | מִפְעֲלוֺת י׳ | Zsolt 46:9 | לְֽכוּ חֲ֭זוּ מִפְעֲל֣וֹת יְהוָ֑ה אֲשֶׁר שָׂ֖ם שַׁמּ֣וֹת בָּאָֽרֶץ  |  |
 | 25 | H4725 | nincs_sor | הַקֹּדֶשׁ ׳מְ | מְ הַקֹּדֶשׁ׳ | 3Móz 10:17 | מַדּ֗וּעַ לֹֽא אֲכַלְתֶּ֤ם אֶת הַֽחַטָּאת֙ בִּמְק֣וֹם הַקֹּ֔דֶשׁ כִּ֛י קֹ֥דֶשׁ קָֽדָשִׁ֖ים הִ֑וא וְאֹתָ֣הּ נָתַ֣ן לָכֶ֗ם לָשֵׂאת֙ אֶת עֲוֺ֣ן הָעֵדָ֔ה לְכַפֵּ֥ר עֲלֵיהֶ֖ם לִפְנֵ֥י יְהוָֽה |  |
 | 26 | H4931 | jelolt_marad | מ ׳עֲלֵיהֶם | עֲלֵיהֶם מ׳ | 1Krón 9:27 | וּסְבִיב֥וֹת בֵּית הָאֱלֹהִ֖ים יָלִ֑ינוּ כִּֽי עֲלֵיהֶ֣ם מִשְׁמֶ֔רֶת וְהֵ֥ם עַל הַמַּפְתֵּ֖חַ וְלַבֹּ֥קֶר  לַבֹּֽקֶר  |  |
@@ -131,10 +132,12 @@ a gépi ellenőrzés a TAHOT-on fut). A „kézi ítélet” (helyes / rossz / n
 
 *A 4. sor (H1323) helyreállított alakjában a maqqéf a rafe feloldásából jön; a futamszámlálás (2. szakasz) ezt a tokent nem számolta rafe-maqqéfesnek, mert ott a rafe a token első betűjén áll a geres után.*
 
+*A 17. (Hós 14:8) és a 23. sor (Ézs 3:3) versszövege a TAHOT-ból (Károli-kulcs, morfémák szóközzel; ELLENOR_F105 5.): a Macula `karoli` oszlopa a Hós 14-ben üres, az Ézs 3-ban pedig azonosságot ad, holott ott az F85 eltolást mért (DT179), ezért az eredeti táblában a 17. sor üres volt, a 23. az MT 3:3-at adta. A vak minta (7. szakasz) már a TAHOT-ot használta.*
+
 ## 6. Megvalósítás (DT-F105a (a), orkesztrátori döntés a felhasználó felhatalmazásával, 2026-11-10)
 
-*A vak minta (`naplok/F105_vak.py`, a kimenet a repón kívül) a két független kitöltőnél van; az 5. szakasz jóváhagyása
-továbbra is nyitott (⛔). A lexikonlapok nem generálódtak újra.*
+*A megvalósítás (F105.7–F105.9) a vak minta eredménye előtt készült; a minta eredménye a 7. szakaszban áll (két kitöltő,
+50/50). A lexikonlapok ebben a szakaszban nem generálódtak újra.*
 
 **6.1 A javítótábla** (`eszkozok/bdb_jelolt/forras_javit.py` + `heber_sorrend.py`; újragenerálás:
 `naplok/F105_tabla_osszevet.py`, írás előtti összevetéssel; a generátor `--ellenoriz` módja bájtra azonosnak méri).
