@@ -8,6 +8,7 @@ modell: opus
 munka: folyamat
 allapot: lezarva
 ag: claude/f187-thayer-kartya
+pr: https://github.com/basesoft777/Bible-Study/pull/680
 ad: a lexikonlap görög 4.2-je és a szó-lap Thayer-blokkja kétrétegű (olvasói réteg glosszás jelentésfával és „A motívum helyein” listával; kutatói apparátus <details>-ben), a #104 kapcsolójával, jelölőjével és HIBA-kapujával; a #186 mért pontossága a szó-lapon CI-vel; a lapok nem generálódnak újra
 kovetkezo: "merge (a felhasználóé). Utána: a #182 2. fázisa (a kártya bekapcsolása a HAMART-on; előtte a megjelenítés átállítása a #185 szakasztáblájára, N-F187c); a #185-tel az a PR olvassa be a main-t, amelyik később kerül be"
 lezarva_osszegzes: "kétrétegű Thayer-kártya a lap 4.2-ben és a szó-lapon a #104 kapcsolójával (kikapcsolva), jelölőjével és BDB_OLVASOI kapujával; közös glossza-szabály (eszkozok/szotari_glossza.py); a szó-lapon a #186 mérvadó seed-204 száma (196/200 = 98,0%); N-F186g (N128) kész; F29 (a)(b)(c)(e) javítva, a kapu a (b)–(c)-t is méri, (d) jelezve (N-F187a); N-F187b lezárva (orkesztrátori döntés); független ellenőrzés ELTÉRÉS → egy javítókör, mind a 8 pont javítva; nyitott: N-F187a, c, d; lap nem generálódott újra"
