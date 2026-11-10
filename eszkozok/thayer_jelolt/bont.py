@@ -6,14 +6,20 @@ Forrás (DT-F132a (b), felhasználó, 2026-10-25):
     HTML; a formázási réteg licence a forrásmondat szerint nem tisztázott, ezért innen csak szerkezet és azonosító jön);
   - szöveg: konkordancia/Thayer_teljes.tsv (`Teljes_szocikk`), illesztéssel: a szakasz szövege a TSV-szöveg szelete.
 
-Kimenet: adat/thayer_szakaszok.tsv (séma: adat/SEMA.md, „thayer_szakaszok.tsv”). Egy sor = a szócikk egy bekezdése: a
-`<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a forrás
-HTML-je helyenként egymásba ágyazott vagy lezáratlan `<p>`-t tartalmaz, pl. G21, G687; ezért a határ a jelölő, nem a
-`<p>…</p>` pár).
+Kimenet: adat/thayer_szakaszok.tsv (séma: adat/SEMA.md, „thayer_szakaszok.tsv”). Egy sor = a szócikk egy szakasza: egy
+bekezdés — a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a
+forrás HTML-je helyenként egymásba ágyazott vagy lezáratlan `<p>`-t tartalmaz, pl. G21, G687; ezért a határ a jelölő, nem a
+`<p>…</p>` pár) —, vagy (F186 K1) a bekezdésnek egy bekezdésen belüli fejnél kezdődő része. A `forras` `#n`-je a szakasz
+sorszáma.
 
-Fejek (a bekezdés elején; a forrásban bekezdésen belüli fej nem fordul elő, mért: M1 felmérés):
-  `<span class="lexheading">I.</span>` római (romai) · sima `A. ` nagybetű (nagy; csak a sorban következő betű: A, B, …)
-  · `<b>1.</b>` szám (szam) · `<b>a.</b>` betű (betu). A felsőbb szint a mélyebbeket törli.
+Fejek a bekezdés elején: `<span class="lexheading">I.</span>` római (romai) · sima `A. ` nagybetű (nagy; csak a sorban
+  következő betű: A, B, …) · `<b>1.</b>` szám (szam) · `<b>a.</b>` betű (betu). A felsőbb szint a mélyebbeket törli.
+  F186 K2: a bekezdés eleji félkövér jelölő nem fej, ha „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követi (a forrás
+  kereszthivatkozás közepén tört bekezdést, pl. G4151 „<b>b.</b> bb.;”, G1909 „<b>c.</b>)):”).
+Bekezdésen belüli fej (F186 K1; a seed-201 vak mérés 9 hibája, naplok/F186_jelentes.md): a forrás a bekezdés belsejében
+  félkövér nélkül is nyit pontot („is used a. of time”, „; a: Luk 1:14”, „etc. h. of age”, „). 2. When …, it answers a.”).
+  Ilyenkor a bekezdés a fejnél **kettéválik**: egy sor = egy szakasz (a bekezdés, vagy a bekezdésen belüli fejnél kezdődő
+  része). A szabály: `belso_fejek` (a sorrendben várt következő betű/szám, a hivatkozás- és rövidítés-alakok kizárásával).
 `utvonal`: `<felső>/<szám>/<betű>` (`-` a hiányzó szint; a felső a nagybetű és a római pontokkal: `A`, `I`, `A.I`);
 különleges: `cim` (a `<b>G… — …</b>` / `<b>G…a: …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az
 első fej előtti bekezdés). Fej nélküli bekezdés az előző útvonalát örökli (`jel` üres).
@@ -68,6 +74,29 @@ FEJ_ROMAI = re.compile(r'^\s*<span class="lexheading">((?:VIII|VII|VI|IV|IX|III|
 FEJ_B = re.compile(r'^\s*<b>(\d{1,2}\.|[a-z]\.)</b>')
 FEJ_NAGY = re.compile(r'^([A-H])\.(?=\s)')
 WS = re.compile(r'\s+')
+# F186 K2: a bekezdés eleji félkövér jelölő, amelyet „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követ, egy a forrásban
+# kettétört kereszthivatkozás töredéke („<b>b.</b> bb.; γεννάω, …”, „<b>c.</b>)): as …”), nem fej (seed-201 T145).
+# F186 K2b (második kör, seed-202 U014): „<b>d.</b> at the end):” — utalás-töredék záró zárójellel.
+HAMIS_FEJ_UTAN = re.compile(r'\s*[),;\]]|\s+([a-z])\1\.|\s+(?:at the end|above|below)\s*\)')
+# F186 K1: bekezdésen belüli fej (félkövér nélkül is): kisbetű „a.”/„a:”/„i.:” vagy szám „2.” a szövegben (a címkék és a
+# <ref>/<ref0> tartalma kitakarva), a sorrendben várt következő jelölő; l. `belso_fejek`.
+TAKAR = re.compile(r'<(ref0?)\b[^>]*>.*?</\1>|<[^>]+>|&[#\w]+;', re.S)
+BELSO_BETU = re.compile(r'(?<![\w&])([a-z])(\.:?|:)(?=[\s\x00]|$)')
+BELSO_SZAM = re.compile(r'(?<=[.;:)][\s\x00])(\d{1,2})\.(?=\s+[\x00A-Za-z])')
+# az előző szó, amely után a betű nem fej (rövidítés, utalás, hivatkozás): „i. e.”, „cf. a.”, „see b.”, „l. c.”, „p. 5 a.” …
+NEM_FEJ_ELOTT = {'i', 'e', 'p', 'pp', 'l', 'cf', 'see', 'comp', 'vol', 'ed', 'no', 'ch', 'sq', 'ff', 'sub', 'under', 'art',
+                 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                 'Rev', 'Rec', 'ad', 'et', 'ib', 'ibid', 'op', 'cit', 'loc', 'viz', 'q', 'v', 's', 'u', 'an'}
+# F186 K1b (második kör, seed-202): a „to” és a „,” előzmény nem kizáró („applied to a. the O. T. prophets”, „τί, a.
+# properly”, „i. e., a. what one wishes”); helyette a nyitott zárójelen belüli jelölő nem fej („(some refer this to b. in
+# the sense …)”), és a felsorolt utalás („I. 1 a. and c.”) sem. A német „an d.” („Brief an d. Heb”) rövidítés.
+FELSOROLT_UTALAS = re.compile(r'(?<![\w])[a-z]\.[\s\x00]*$')
+# a betű után álló folytatás, amely hivatkozásra vall: szám („h. a. 5, 19”), egybetűs rövidítés („a. d. Heb”, „b. g. 1”,
+# „i. e.”, „e. g.”), utalás („c. below”, „c. above”, „b. at the end”)
+# (második kör: nagybetűs rövidítés — „Einl. in d. N. T.” —, és a bekezdés vége — „see γωνία, a.” —, tartalom nélkül)
+BETU_UTAN_NEM = re.compile(r'[\s\x00]*(?:\d|[a-z]\.|[A-Z]\.(?!\w)|([a-z])\1\.|below\b|above\b|at the end\b|init\b|fin\b)')
+# a szám után álló római szám („1. ix. quaest.”): helyjelölés, nem fej
+SZAM_UTAN_NEM = re.compile(r'\s+[ivxl]+\.')
 
 
 def sha256_fajl(ut):
@@ -134,7 +163,7 @@ def fej_felismer(raw, tagolas):
     if m:
         return 'romai', m.group(1)
     m = FEJ_B.match(raw)
-    if m:
+    if m and not HAMIS_FEJ_UTAN.match(raw, m.end()):
         return ('szam' if m.group(1)[0].isdigit() else 'betu'), m.group(1)
     m = FEJ_NAGY.match(sima(raw))
     if m and not raw.lstrip().startswith('<'):
@@ -152,14 +181,111 @@ def utvonal(t):
     return '%s/%s/%s' % (felso, t.get('szam') or '-', t.get('betu') or '-')
 
 
-def szerkezet(definition):
-    """-> [{'raw', 'plain', 'utvonal', 'jel'}] a szócikk bekezdéseire."""
+def _takar(raw):
+    """A raw azonos hosszú másolata, a címkék, a <ref>/<ref0> tartalma és az entitások helyén \\x00 (a pozíciók megmaradnak)."""
+    return TAKAR.sub(lambda m: '\x00' * len(m.group(0)), raw)
+
+
+def _elozo(tk, p):
+    """(az előző nem szóköz, nem takart karakter, az előző szó) a `p` előtt a takart szövegben."""
+    q = p - 1
+    while q >= 0 and (tk[q].isspace() or tk[q] == '\x00'):
+        q -= 1
+    if q < 0:
+        return '', ''
+    kar = tk[q]
+    if kar == '.':
+        q -= 1
+    elif not kar.isalpha():
+        return kar, ''
+    s = q
+    while s >= 0 and tk[s].isalpha():
+        s -= 1
+    return kar, tk[s + 1:q + 1]
+
+
+def _szo_eleje(tk, p):
+    """A `p` előtti szó kezdete a takart szövegben (a szóközök és a takart részek átlépésével)."""
+    q = p - 1
+    while q >= 0 and (tk[q].isspace() or tk[q] == '\x00'):
+        q -= 1
+    while q >= 0 and tk[q].isalpha():
+        q -= 1
+    return q + 1
+
+
+def _zarojel_melyseg(tk, p):
+    """A `p` pozíción nyitott kerek zárójelek száma a bekezdésben (a takart részek nem számítanak)."""
+    d = 0
+    for ch in tk[:p]:
+        if ch == '(':
+            d += 1
+        elif ch == ')' and d:
+            d -= 1
+    return d
+
+
+def belso_fejek(raw, t, kezdet=0):
+    """F186 K1: a bekezdés belsejében (a `kezdet` után) nyitó fejek, sorrendben: [(poz a raw-ban, szint, jel, érték)].
+
+    Fej a kisbetű („a.”, „a:”, „i.:”) vagy a szám („2.”), ha (1) a sorrendben várt következő jelölő (betű: az aktuális betű
+    utáni — i után k is, mert a Thayer a „j”-t kihagyja (K1c) —, vagy `a`, ha nincs betű; szám: az aktuális szám utáni, vagy
+    `1`); (2) betűnél utána szóköz, címke vagy szöveg áll (nem „)”, „,”, „;”, szám, egybetűs rövidítés, „below/above/at the
+    end”, és nem a bekezdés vége), az előtte álló karakter nem számjegy, „§”, „(”, „-”, „/”, „&”, az előző szó nem rövidítés
+    vagy utalás (`NEM_FEJ_ELOTT`; „i. e.”, „e. g.” sem, de az „i. e., a.” igen), nem felsorolt utalás („1 a. and c.”), és a
+    jelölő nincs nyitott zárójelen belül (K1b, második kör); (3) számnál előtte mondatzáró írásjel és szóköz, utána szóköz és
+    szó áll, zárójelen kívül. A `t` másolatán halad (a bekezdés eleji fej már benne van); a számfej a betűt törli (TOROL)."""
+    tk = _takar(raw)
+    t = dict(t)
+    jelolt = []
+    for m in BELSO_BETU.finditer(tk, kezdet):
+        jelolt.append((m.start(), 'betu', m.group(0), m.group(1)))
+    for m in BELSO_SZAM.finditer(tk, kezdet):
+        jelolt.append((m.start(), 'szam', m.group(0), m.group(1)))
+    ki = []
+    for p, szint, jel, ertek in sorted(jelolt):
+        if szint == 'betu':
+            # F186 K1c: a Thayer betűsora a „j”-t kihagyja (i → k), ezért i után k is várt
+            varhato = ({chr(ord(t['betu']) + 1)} | ({'k'} if t['betu'] == 'i' else set())) if t.get('betu') else {'a'}
+            if ertek not in varhato:
+                continue
+            kar, szo = _elozo(tk, p)
+            if kar and (kar in '§(-/&=+' or kar.isdigit()):
+                continue
+            if szo in NEM_FEJ_ELOTT and not (szo == 'e' and kar == ','):
+                continue
+            if szo in ('and', 'or') and FELSOROLT_UTALAS.search(tk, 0, _szo_eleje(tk, p)):
+                continue
+            if BETU_UTAN_NEM.match(tk, p + len(jel)) or _zarojel_melyseg(tk, p) or not sima(raw[p + len(jel):]):
+                continue
+        else:
+            varhato = str(int(t['szam']) + 1) if (t.get('szam') or '').isdigit() else '1'
+            if ertek != varhato or SZAM_UTAN_NEM.match(tk, p + len(jel)):
+                continue
+            # a szám előtt egybetűs vagy ismert rövidítés („orac. def. c. 1.”, „§ 27, 6 N. 1.”): fejezet-/jegyzetszám
+            _, szo = _elozo(tk, p)
+            if len(szo) == 1 or szo in NEM_FEJ_ELOTT or _zarojel_melyseg(tk, p):
+                continue
+        t[szint] = ertek
+        for x in TOROL[szint]:
+            t.pop(x, None)
+        # a félkövér jelölő („<b>a.</b>”) a címkével együtt nyit
+        q = p
+        while q >= 3 and raw[q - 3:q] == '<b>':
+            q -= 3
+        ki.append((q, szint, jel.rstrip(':') if jel.endswith('.:') else jel, ertek))
+    return ki
+
+
+def szerkezet(definition, osszevonas=True):
+    """-> [{'raw', 'plain', 'utvonal', 'jel', 'bekezdes'}] a szócikk szakaszaira: a bekezdések, a bekezdésen belüli fejeknél
+    (F186 K1) kettévágva; a `bekezdes` a forrásbekezdés sorszáma (1-től, a cím is; az F186 előtti tábla `sorszam`-a)."""
     ki, t, allapot = [], {}, 'kezdet'
-    for raw in szegmensek(definition):
+    for bek, raw in enumerate(szegmensek(definition), 1):
         plain = sima(raw)
         if CIM.match(raw):
             t, allapot = {}, 'cim'
-            ki.append({'raw': raw, 'plain': plain, 'utvonal': 'cim', 'jel': ''})
+            ki.append({'raw': raw, 'plain': plain, 'utvonal': 'cim', 'jel': '', 'bekezdes': bek})
             continue
         szint, jel = fej_felismer(raw, t)
         if szint:
@@ -167,10 +293,51 @@ def szerkezet(definition):
             for x in TOROL[szint]:
                 t.pop(x, None)
             allapot = 'fejes'
-            ki.append({'raw': raw, 'plain': plain, 'utvonal': utvonal(t), 'jel': jel})
+            darabok = [(raw, utvonal(t), jel)]
         else:
-            ut = utvonal(t) if allapot == 'fejes' else 'fej'
-            ki.append({'raw': raw, 'plain': plain, 'utvonal': ut, 'jel': ''})
+            darabok = [(raw, utvonal(t) if allapot == 'fejes' else 'fej', '')]
+        # a bekezdés eleji félkövér jelölő (fej vagy K2 szerinti hamis fej) a belső keresésből kimarad
+        mb = FEJ_B.match(raw)
+        kezdet = mb.end() if mb else 0
+        belso = belso_fejek(raw, t, kezdet)
+        if belso:
+            elso_raw, elso_ut, elso_jel = darabok[0]
+            darabok, elozo = [], 0
+            vagas = [p for p, _, _, _ in belso]
+            for i, (p, sz, j, ertek) in enumerate(belso):
+                if i == 0:
+                    darabok.append((raw[:p], elso_ut, elso_jel))
+                t[sz] = ertek
+                for x in TOROL[sz]:
+                    t.pop(x, None)
+                allapot = 'fejes'
+                vege = vagas[i + 1] if i + 1 < len(vagas) else len(raw)
+                darabok.append((raw[p:vege], utvonal(t), j))
+            darabok = [d for d in darabok if sima(d[0])] or darabok[:1]
+        for r, ut, j in darabok:
+            ki.append({'raw': r, 'plain': sima(r) if len(darabok) > 1 else plain, 'utvonal': ut, 'jel': j, 'bekezdes': bek})
+    return osszevon(ki) if osszevonas else ki
+
+
+# F186 (ELLENOR_F186_2 1–2.): az egymást követő, azonos útvonalú szakaszok egy szakasszá vonódnak (pl. G4151 4.a + a hamis
+# „b. bb.;” bekezdés, G5590 1.b + „c. below), 2Co 12:15.”); a nyers HTML-t ez a jelölő köti össze: a sima szövegben szóköz, és a
+# `</ref>` utáni folytatás-lánc nem fut át rajta (a hivatkozások sorrendje és száma változatlan).
+OSSZEVONO = '\n<p>\n'
+
+
+def osszevon(sz):
+    """A szakaszlista, az egymást követő azonos `utvonal`-ú (a `cim` kivételével) szakaszok összevonva: a `jel` és a `bekezdes` az
+    elsőé, a `raw` az `OSSZEVONO`-val, a `plain` szóközzel fűzve; a `bekezdesek` az összevont bekezdések sorszámai."""
+    ki = []
+    for x in sz:
+        if ki and x['utvonal'] == ki[-1]['utvonal'] and x['utvonal'] != 'cim':
+            e = ki[-1]
+            e['raw'] = e['raw'] + OSSZEVONO + x['raw']
+            e['plain'] = (e['plain'] + ' ' + x['plain']).strip()
+            if x['bekezdes'] not in e['bekezdesek']:
+                e['bekezdesek'].append(x['bekezdes'])
+            continue
+        ki.append(dict(x, bekezdesek=[x['bekezdes']]))
     return ki
 
 
@@ -358,9 +525,9 @@ def general(ts, lex_ut=LEX_UT, tsv_ut=TSV_UT, jav_ut=JAV_UT):
 
 def fajl_szoveg(sorok, ts):
     fej = ['# GENERÁLT: eszkozok/thayer_jelolt/bont.py --ts %s — kézzel nem szerkesztendő (F132; séma: adat/SEMA.md, thayer_szakaszok.tsv).' % ts,
-           '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (csak szerkezet: bekezdéshatár, fej; DT-F132a (b)) + '
+           '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (csak szerkezet: bekezdéshatár, fej; DT327 (b)) + '
            'konkordancia/Thayer_teljes.tsv@%s (szöveg, illesztéssel) + adat/thayer_forras_javitas.tsv@%s (csak a határokhoz; '
-           'DT-F132i (2)) + kód@%s'
+           'DT333 (2)) + kód@%s'
            % (sha256_fajl(LEX_UT)[:12], sha256_fajl(TSV_UT)[:12],
               sha256_fajl(JAV_UT)[:12] if os.path.exists(JAV_UT) else 'nincs', kod_hash()[:12]),
            '\t'.join(FEJLEC)]

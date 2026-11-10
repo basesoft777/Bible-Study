@@ -215,15 +215,78 @@ class Szabaly13Thayer(Szabaly13Teljes):
     def test_negativ_thayer_hibas_hash_bukik(self):
         self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, 'más szöveg')]).verdict, 'SÉRTÉS')
 
+    def _lap(self, strong='G0001'):
+        """F186 (N-F186c): egy lexikonlap (TESZT-001), amelynek szólistáján (gerinc) a `strong` áll."""
+        with open(os.path.join(self.adat, 'elofordulasok.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('id\tigehely\tstrong\n')
+            fh.write('TESZT-001\tMt 1:1\t%s\n' % strong)
+        os.makedirs(os.path.join(self.gyoker, 'lexikon'), exist_ok=True)
+        with open(os.path.join(self.gyoker, 'lexikon', 'TESZT-001_TUDOMANYOS.md'), 'w', encoding='utf-8') as fh:
+            fh.write('# teszt\n')
+
     def test_negativ_thayer_hianyos_szakaszsorok(self):
+        # a Strong lexikonlapon szerepel: a fordítatlan szakasz SÉRTÉS (F186, N-F186c)
+        self._lap()
         e = self._futtat([self._t(1, TSZ1)])
         self.assertEqual(e.verdict, 'SÉRTÉS')
-        self.assertTrue(any(h.startswith('Thayer G0001: a szakaszsorok nem fedik le') for h in e.peldak), e.peldak)
+        self.assertTrue(any(h.startswith('Thayer G0001: a szakaszsorok nem fedik le') and 'lexikonlapon' in h
+                            for h in e.peldak), e.peldak)
 
     def test_thayer_elavult_nem_szamit_a_lefedesbe(self):
+        self._lap()
         self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2, allapot='elavult')]).verdict, 'SÉRTÉS')
         self.assertEqual(self._futtat([self._t(1, TSZ1, allapot='elavult'), self._t(2, '1. ' + TSZ2, allapot='elavult')]).verdict,
                          'RENDBEN')
+
+    def test_f186_forditatlan_szakasz_lapon_kivul_jelentes(self):
+        # a Strong egyetlen lap szólistáján sincs: a fordítatlan Thayer-szakasz JELENTÉS
+        self._lap(strong='G0002')
+        e = self._futtat([self._t(1, TSZ1)])
+        self.assertEqual(e.verdict, 'JELENTÉS')
+        self.assertIn('fordítatlan szakasszal', e.megjegyzes)
+        self.assertTrue(any(h.startswith('Thayer G0001: a szakaszsorok nem fedik le') for h in e.peldak), e.peldak)
+
+    def test_f186_forditatlan_szakasz_lap_nelkul_jelentes(self):
+        # nincs lexikon/ könyvtár (és elofordulasok.tsv): a lap-szólista üres, a fordítatlan szakasz JELENTÉS
+        self.assertEqual(self._futtat([self._t(1, TSZ1)]).verdict, 'JELENTÉS')
+
+    def test_f186_folos_szakaszsor_tovabbra_is_sertes(self):
+        # a fölös (nem létező szakaszra mutató) sor nem fordítatlan szakasz: SÉRTÉS marad, lapon kívül is
+        e = self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2), self._t(3, 'x')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+
+    def test_f186_elavult_hash_elteres_jelentes(self):
+        # az elavult sor eltérő forras_hash-e JELENTÉS (újrafordításra vár), a számláló mutatja
+        # (G0002 sz2: elavult, a régi szöveg hash-ével; a szakasza így fordítatlan, lapon kívül: az is JELENTÉS)
+        e = self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2), self._t(1, TJ1, *self.G2),
+                          self._t(2, 'régi szöveg', *self.G2, allapot='elavult')])
+        self.assertEqual(e.verdict, 'JELENTÉS')
+        self.assertIn('1 elavult sor', e.megjegyzes)
+        # lapon szereplő Strongnál a fordítatlan szakasz SÉRTÉS marad, az elavult hash-eltérés akkor is csak jelentés
+        self._lap(strong='G0002')
+        e = self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2), self._t(1, TJ1, *self.G2),
+                          self._t(2, 'régi szöveg', *self.G2, allapot='elavult')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertEqual(len(e.peldak), 1, e.peldak)
+        self.assertIn('1 elavult sor', e.megjegyzes)
+
+    def test_f186_osszevonasi_tagsor(self):
+        # DT-F186f: az összevont szakasz megőrzött tagsora (`sz<új>~<régi>`, elavult) forrásszöveg nélkül JELENTÉS;
+        # nem elavult tagsor SÉRTÉS (nincs hozzá forrásszöveg)
+        alap = [self._t(1, TSZ1), self._t(2, '1. ' + TSZ2)]
+        tag = dict(self._t(2, 'régi tag'), jelentes_szam='sz2~3', allapot='elavult')
+        e = self._futtat(alap + [tag])
+        self.assertEqual(e.verdict, 'JELENTÉS')
+        self.assertIn('1 összevonási tagsor', e.megjegyzes)
+        e = self._futtat(alap + [dict(tag, allapot='sonnet')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('nincs hozzá forrásszöveg' in h for h in e.peldak), e.peldak)
+
+    def test_f186_nem_elavult_hash_elteres_sertes(self):
+        # a nem elavult sor eltérő forras_hash-e továbbra is SÉRTÉS
+        e = self._futtat([self._t(1, TSZ1), self._t(2, 'régi szöveg')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('forras_hash eltér' in h for h in e.peldak), e.peldak)
 
     def test_negativ_thayer_tablan_kivuli_strong(self):
         e = self._futtat([self._t(1, TSZ1, strong='G9999', entry_id='G9999')])
