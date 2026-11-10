@@ -352,7 +352,9 @@ def motivum_szoveg(cel_id, adat, bemenet, ts, vers_st, regi=None, bonto=None):
           'a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; '
           'adatot, motívumfájlt, lapot ez a fájl nem módosít.*' % cel_id, '',
           '*(proveniencia: %s | bemenet=%s)*' % (prov, bemenet), '',
-          '**Motívum:** %s — %s · hordozó: `%s` · fölérendelt fogalom: %s · beépített sor: %d (%d vers)' % (
+          # a fölérendelt fogalom az adat szó szerinti idézete („…”): az angol szava (pl. „sense”) nem a napló
+          # szövege, ezért az E9 nem méri (HATAR.GEPI, KIRALY-001)
+          '**Motívum:** %s — %s · hordozó: `%s` · fölérendelt fogalom: „%s” · beépített sor: %d (%d vers)' % (
               cel_id, mot.get('cim', ''), hordozo, vag(mot.get('folerendelt_fogalom', ''), 160),
               sum(1 for _l, r in sorok if r['id'] == cel_id), len(a_v)),
           '', '## Gépi rész', '']

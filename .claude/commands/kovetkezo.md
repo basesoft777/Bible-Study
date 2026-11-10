@@ -53,7 +53,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
       új tervet, és várj újra.
    c) Csak a kifejezett „mehet” (vagy egyértelmű igen a végső tervre) indítja a 6. lépést.
       Hallgatás, kétértelmű válasz vagy témaváltás nem jóváhagyás.
-   d) Ha a felhasználó a briefben rögzítettől eltérő hatókört kér, azt a zárójelentésben
+   d) Ha a felhasználó a briefben rögzítettől eltérő hatókört kér, azt a jelentés „Zárás” szakaszában
       „Egyeztetett eltérés” címen rögzítsd.
 6. VÉGREHAJTÁS: új ág a main-ből (`claude/<feladat-slug>`). Az ág első commitja a saját brief fejlécében
    `allapot: fut`, és kitölti az `ag` mezőt; ez a végrehajtó modell-ellenőrzése után történik, így modell-eltérésnél nem marad `fut` állapotú ág. A munkát a brief modelljének
@@ -78,18 +78,18 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    megállási ok: a tétel a zárás előtt, összesítve kerül a `DONTESEK.md`-be.
    Csomagnál a ⛔ csak az érintett feladatot állítja meg; a többi fut tovább.
 8. KERETKIMERÜLÉS: ha a használati keret fogy, tiszta ponton commitolj; az `allapot` marad `fut`, a `kovetkezo`
-   mezőbe a folytatási pont egy sorban, `Folytatás:` kezdettel (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa; ez különbözteti meg a félbemaradt feladatot attól, amin éppen dolgoznak); a zárójelentésbe írd a részletes „Folytatási pont” szakaszt, és állj meg.
+   mezőbe a folytatási pont egy sorban, `Folytatás:` kezdettel (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa; ez különbözteti meg a félbemaradt feladatot attól, amin éppen dolgoznak); a jelentésbe (`naplok/F<nn>_jelentes.md`) írd a részletes „Folytatási pont” szakaszt, és állj meg.
    A következő `/kovetkezo` a `FOLYTATAS` sorból onnan folytatja (3. lépés).
-   Csomagnál minden feladat a saját ágán, a saját zárójelentésében kap folytatási pontot.
+   Csomagnál minden feladat a saját ágán, a saját jelentésében kap folytatási pontot.
 9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; jelentése: `naplok/ELLENOR_<feladat>.md`.
    Csomagnál feladatonként külön, a saját worktree-jében; az ellenőrök párhuzamosan futhatnak.
    Ha a jelentés első sora `ELTÉRÉS`, a menet a zárás (10. lépés) előtt megáll: a brief fejléce `allapot: megallt`, `kovetkezo: Te: /elteres <feladat>` (ha a mezőben már áll `[elteres_kor k/2]` jelölő, az megmarad: `Te: [elteres_kor k/2] /elteres <feladat>`); a javítókör külön sessionben fut.
-10. ZÁRÁS (CLAUDE.md menetzárás): zárójelentés `naplok/<feladat>_zaras.md` (≤20 sor),
+10. ZÁRÁS (CLAUDE.md menetzárás): a feladat jelentésének (`naplok/F<nn>_jelentes.md`, menet- és zárójelentés egy fájlban, `BRIEF_SABLON.md` „Jelentés”) végére „Zárás” szakasz (≤20 sor); külön `_zaras.md` nem készül (a régiek maradnak), az `ELLENOR_*` jelentés külön fájl marad;
     a saját brief fejlécében `allapot: lezarva`, `pr` és `lezarva_osszegzes` kitöltve (a `FELADATOK.md`-t nem
     szerkeszted), push, draft PR a main-be.
     A felhasználónak adott válasz első sora: PR-link + CI-állapot; utána legfeljebb 5 sor.
     CI-javító kör (F50, DT252; csak olvas + korlátozott javítás): a push és a draft PR után egyszer olvasd a CI-t (`gh run list --branch <ág>`, `gh run view <id> --log-failed`); ha a futás még nem ért véget, jelezd „a CI még fut”, nem vársz és nem pollolsz (az Auto-fix a `ccd_pr` dolga). Az idézett hiba a log szó szerinti sora, proveniencia: a futás azonosítója és a commit sha. **Javítható** (a saját PR tartalmából eredő formai hiba): a PR által létrehozott vagy befogadott brief hiányzó vagy érvénytelen fejlécmezője; fájlnév–szám egyezés (`git mv` a saját fájlra); a PR által hozzáadott fájl formai hibája, amelyet a CI megnevez (kódolás, sorvég, UTF-8 commit-üzenet); a generált blokk PR-beli módosításának visszavonása (E18). **Nem javítható, jelentendő:** CI-szabály vagy workflow hibája (D6, külön ágon); függési kör (`KOR`), `kizar`-ütközés, vagy bármi, ami másik feladat fejlécének vagy fájljának módosítását kéri; tartalmi vagy hatókör-döntés, licenc, titok, `DONTESEK.md`-tétel; ha a log nem mondja ki egyértelműen az okot (nincs találgatás). Korlát: legfeljebb két kör, mindegyik új commit (nem `--amend`, nem `--force`), üzenete `<tétel>.<n>: CI-javítás — <szabály-azonosító>`, UTF-8 fájlból; a harmadik lépésnél vagy nem javítható hibánál megállsz és jelentesz. A válasz első sora marad PR-link + CI-állapot, utána: „javító kör: n (javítva: …; jelentve: …)”; a jelentett hibához a log szó szerinti sora és egy mondatos javaslat, a döntés a felhasználóé.
-    Csomagnál: feladatonként külön zárójelentés és draft PR. A válaszban feladatonként egy sor
+    Csomagnál: feladatonként külön jelentés („Zárás” szakasszal) és draft PR. A válaszban feladatonként egy sor
     (PR-link, CI, ⛔ vagy nyitott tétel, „javító kör: n (javítva: …; jelentve: …)”), utána legfeljebb 5 sor összesítés.
     A worktree-ket a CI-javító kör lezárása után távolítsd el (`git worktree remove`); a javító commitok a saját ágon, a worktree-ben készülnek; az ágak maradnak.
 11. SOHA: merge, ágtörlés, más feladatsor módosítása, új feladat felvétele, tartalmi döntés.

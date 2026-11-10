@@ -385,6 +385,255 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['szakasz']], x[i['resz']], x[i['utvonal']]), ('III', 'I', '-/3'))
 
 
+def _jelek(t, nyelv='en'):
+    return [c['jel'] for c in B._csoportok(t, nyelv)]
+
+
+class Csoportok(unittest.TestCase):
+    """F103 (DT167 (1) (a), (5) (a)): a jelentésen belüli használati csoportok."""
+
+    def test_mondatkezdo_bevezeto_vesszo_utan_nem(self):
+        # H3176 Pi`el 2: a vessző utáni „followed by” a jelentés feje, a pontosvessző utáni csoport
+        t = 'wait for = hope for, followed by לְ Isa 42:4; followed by ל infinitive Ezek 13:6; followed by אֶל Isa 51:5; absolute hope, Job 6:11.'
+        self.assertEqual(_jelek(t), ['followed by', 'followed by', 'absolute'])
+
+    def test_zarojelben_so_also_nem(self):
+        t = 'love Gen 22:2 (absolute 3:8 & see below); so 1Sam 1:5; also Psa 1:1; with עַל Gen 2:3; & especially הבקר 5:5.'
+        self.assertEqual(_jelek(t), ['with', 'especially'])
+
+    def test_inf_abs_csak_hatarozoszoi(self):
+        self.assertEqual(_jelek('finish Gen 1:1; so infinitive absolute adverb 2:2; Infinitive absolute הַבְדֵּל Isa 56:3.'),
+                         ['Inf. abs. as adverb'])
+
+    def test_zarojeles_sorozat_ocr_es_gorog(self):
+        self.assertEqual(_jelek('in the hand of: -1בְּיַד נָתַן give Gen 27:17; -2into the possession 10:25; especially (3) ביד נתן Josh 6:2; '
+                                '(4) בְּיַד נתן Gen 30:35.'), ['(1)', '(2)', '(3)', '(4)'])
+        self.assertEqual(_jelek('of direction: (a) Gen 6:4; (β) 35:13; (γ) in אֲשֶׁר אֶל 2:2.'), ['(a)', '(β)', '(γ)'])
+        # egyetlen tag nem sorozat
+        self.assertEqual(_jelek('of place: (a) Gen 6:4 only.'), [])
+
+    def test_prozai_felsorolas_nem_tagolas(self):
+        t = 'according to Sperling, developed from the relative שׁ by (1) the prefixing of a merely prosthetic א, and (2) the addition of ל.'
+        self.assertEqual(_jelek(t), [])
+
+    def test_alaklista_nem_kap_csoportot(self):
+        # a törzs számozott jelentései előtti alaklista („Perfect …; absolute …”) nem kap csoportot (status absolutus, nem használat)
+        r = B.csoport_bont(B.szeletel('H9999. x [אבד] verb Qal Perfect אָבַד Gen 1:1; — 1 perish Gen 3:3; absolute Job 4:4. '
+                                      '2 vanish Gen 5:5; with מִן Psa 6:6. Pi`el Perfect אִבֵּד Gen 7:7; absolute אִבֵּד 7:8; — 1 destroy '
+                                      'Gen 8:8. 2 kill Gen 9:9.'), 'en')
+        csop = {ut: [c['jel'] for c in n.get('csop') or []] for _, ut, n in B.csoport_bejar(r)}
+        self.assertEqual(csop.get('Qal/1'), ['absolute'])
+        self.assertEqual(csop.get('Qal/2'), ['with'])
+        self.assertIn("Pi'el/-", csop)
+        self.assertEqual(csop["Pi'el/-"], [])
+
+    def test_magyar_csak_egyezo_sorozatnal(self):
+        en = B.csoport_bont(B.szeletel('H9999. x אב noun — 1 day Gen 1:1; especially הבקר 2:2; figurative of end 3:3. '
+                                       '2 night Gen 4:4; followed by לְ 5:5; with עַל 6:6.'), 'en')
+        hu = B.csoport_bont(B.szeletel('H9999. x אב főnév — 1 nap 1Móz 1:1; különösen הבקר 2:2; képletesen a végről 3:3. '
+                                       '2 éjszaka 1Móz 4:4; utána לְ 5:5; עַל-val 6:6.'), 'hu')
+        B.csoport_magyar(hu, en)
+        csop = {ut: [c['jel'] for c in n.get('csop') or []] for _, ut, n in B.csoport_bejar(hu)}
+        self.assertEqual(csop.get('-/1'), ['especially', 'figurative'])
+        self.assertEqual(csop.get('-/2'), [])  # a „with + héber” csoportnak nincs magyar bevezetője: a sorozat eltér, nincs bontás
+
+    def test_csoport_savok_utvonal(self):
+        t = 'H9999. x אב noun — 1 day Gen 1:1; especially of morning 2:2; opposed to night 3:3. 2 night Gen 4:4.'
+        r = B.csoport_bont(B.szeletel(t), 'en')
+        sv = B.csoport_savok(t, r)
+        s = B.lapit(t)
+        self.assertEqual([(x[3], x[4]) for x in sv], [('-/1/+1', 'csoport'), ('-/1/+2', 'csoport')])
+        self.assertTrue(s[sv[0][0]:sv[0][1]].startswith('especially of morning'))
+        self.assertTrue(s[sv[1][0]:sv[1][1]].startswith('opposed to night'))
+
+    def test_szeletel_kimenete_valtozatlan(self):
+        # a bontás kiegészítő: a szeletel() önmagában nem tesz `csop` kulcsot (a lexikon és a 2.29 bemenete változatlan)
+        r = B.szeletel('H9999. x אב noun — 1 day Gen 1:1; especially of morning 2:2. 2 night Gen 4:4.')
+        self.assertFalse(any('csop' in n for _, _, n in B.csoport_bejar(r)))
+
+
+class CsoportAranyminta(unittest.TestCase):
+    """F103: az aranyminta (adat/bdb_aranyminta.tsv) 184 csoport-sora tesztesetként. A szülő-csomópontonként illesztett jelölő-sorozatban
+    csoportszintű hamis határ és hiány nincs; ami eltér, az a szeletelő szerkezeti hibája (a csoport szülője hiányzik vagy rossz),
+    és ennek száma nem nőhet a F103 zárómérése fölé (naplok/F103_BDB_TAGOLAS_naplo.md)."""
+    SZERKEZETI_HIANY_MAX = 20
+    SZERKEZETI_HAMIS_MAX = 18
+
+    @classmethod
+    def setUpClass(cls):
+        repo = os.path.dirname(os.path.dirname(D))
+        cls.arany = []
+        fej = None
+        with open(os.path.join(repo, 'adat', 'bdb_aranyminta.tsv'), encoding='utf-8', newline='') as f:
+            for s in f:
+                if s.startswith('#'):
+                    continue
+                m = s.rstrip('\r\n').split('\t')
+                if fej is None:
+                    fej = m
+                    continue
+                cls.arany.append(dict(zip(fej, m)))
+        kell = {g['strong'] for g in cls.arany}
+        cls.en = {}
+        with open(os.path.join(repo, 'konkordancia', 'BDB_teljes_unabridged.tsv'), encoding='utf-8', newline='') as f:
+            for s in f:
+                k = s[:5]
+                if k in kell:
+                    m = s.rstrip('\r\n').split('\t')
+                    cls.en[m[0]] = m[2]
+        cls.lemma = {}
+        with open(os.path.join(repo, 'konkordancia', 'Strong_szotar.tsv'), encoding='utf-8', newline='') as f:
+            for i, s in enumerate(f):
+                m = s.rstrip('\r\n').split('\t')
+                if i and not s.startswith('#') and len(m) > 1 and m[0] in kell:
+                    cls.lemma.setdefault(m[0], m[1])
+
+    @staticmethod
+    def _kulcs(szak):
+        import re
+        import unicodedata
+        if not szak or re.match(r'^(?:I{1,3}|IV|V|VI)$', szak) or szak.startswith('h:'):
+            return szak
+        return 'h:' + re.sub(r'[֑-ׇ]', '', unicodedata.normalize('NFC', szak))
+
+    @staticmethod
+    def _szoveg_norm(s):
+        import re
+        import unicodedata
+        s = unicodedata.normalize('NFC', (s or '').replace('\n', ' '))
+        s = re.sub('[֑-ׇ‎‏]', '', s)
+        return re.sub(r'\s+', ' ', s).strip()
+
+    @staticmethod
+    def _lcs(a, b):
+        """A két jelölő-sorozat leghosszabb közös részsorozata [(i, j)] — a mérőszkript `lcs`-e (naplok/F103_BDB_TAGOLAS_meres.py)."""
+        n, m = len(a), len(b)
+        t = [[0] * (m + 1) for _ in range(n + 1)]
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                t[i][j] = t[i + 1][j + 1] + 1 if a[i] == b[j] else max(t[i + 1][j], t[i][j + 1])
+        i = j = 0
+        ki = []
+        while i < n and j < m:
+            if a[i] == b[j]:
+                ki.append((i, j))
+                i += 1
+                j += 1
+            elif t[i + 1][j] >= t[i][j + 1]:
+                i += 1
+            else:
+                j += 1
+        return ki
+
+    def test_aranyminta_csoportjai(self):
+        # a besorolás a mérőszkript (naplok/F103_BDB_TAGOLAS_meres.py, arany()) feltételeit követi (ELLENOR_F103 2.):
+        # hiány szerkezeti, ha a várt szülő a szeletelőben nincs meg; hamis határ szerkezeti, ha a kapott szülő az aranymintában
+        # nincs meg, vagy ha a pár nélküli csoport egy árva (szülő-hiány miatt el nem helyezett) várt csoport horgonyával kezdődik;
+        # minden más eltérés csoportszintű (a várt csoport nélküli, de az aranymintában meglévő szülő alatti bontás is)
+        import collections
+        import re
+        vart = collections.defaultdict(list)
+        szulok = set()
+        kihagy = []
+        for g in self.arany:
+            if g['szint'] in ('jelentes', 'alpont'):
+                szulok.add((g['strong'], self._kulcs(g['szakasz']), g['utvonal']))
+            if g['szint'] == 'kihagy':
+                kihagy.append((g['strong'], self._kulcs(g['szakasz']), g['utvonal']))
+            if g['szint'] == 'csoport':
+                p = g['utvonal'].rsplit('/', 1)[0]
+                vart[(g['strong'], self._kulcs(g['szakasz']), p)].append(g)
+        self.assertEqual(sum(len(v) for v in vart.values()), 184)
+        egyezik = hiany_sz = hamis_sz = 0
+        csoportszintu = []
+        for strong in sorted({g['strong'] for g in self.arany}):
+            r = B.csoport_bont(B.szeletel(self.en[strong], self.lemma.get(strong, '')), 'en')
+            kapott = collections.defaultdict(list)
+            sz_szulok = set()
+            for szak, ut, n in B.csoport_bejar(r):
+                a, b = B.szakasz_bont(szak)
+                k = self._kulcs(a) + (' r:' + b if b else '')
+                # az aranyminta a jelentés nélküli alpontot „X/a” alakban írja
+                ut2 = re.sub(r'^([^/]+)/-/([a-l])$', r'\1/\2', ut)
+                sz_szulok.add((k, ut2))
+                kapott[(k, ut2)].extend(n.get('csop') or [])
+            arva_horgony = [self._szoveg_norm(g['kezdet_en']) for k2, gs in vart.items()
+                            if k2[0] == strong and k2[1:] not in sz_szulok for g in gs if g['kezdet_en']]
+            for k in set(kapott) | {x[1:] for x in vart if x[0] == strong}:
+                vg, kg = vart.get((strong,) + k, []), kapott.get(k, [])
+                if not vg and any(kst == strong and k[0] == ksz and (k[1] == kut or k[1].startswith(kut + '/'))
+                                  for kst, ksz, kut in kihagy):
+                    continue
+                v, kp = [g['jel'] for g in vg], [c['jel'] for c in kg]
+                par = self._lcs(v, kp)
+                m = len(par)
+                egyezik += m
+                if len(v) > m:
+                    if k in sz_szulok:
+                        csoportszintu.append(('hiányzik', strong, k, v, kp))
+                    else:
+                        hiany_sz += len(v) - m
+                if len(kp) > m:
+                    if (strong,) + k not in szulok:
+                        hamis_sz += len(kp) - m
+                        continue
+                    pj = {j for _, j in par}
+                    for j, c in enumerate(kg):
+                        if j in pj:
+                            continue
+                        if any(self._szoveg_norm(c['szoveg']).startswith(h) for h in arva_horgony):
+                            hamis_sz += 1
+                        else:
+                            csoportszintu.append(('hamis határ', strong, k, v, kp, c['jel']))
+        self.assertEqual(csoportszintu, [])
+        self.assertGreaterEqual(egyezik, 184 - self.SZERKEZETI_HIANY_MAX)
+        self.assertLessEqual(hiany_sz, self.SZERKEZETI_HIANY_MAX)
+        self.assertLessEqual(hamis_sz, self.SZERKEZETI_HAMIS_MAX)
+
+
+class CsoportOszlop(unittest.TestCase):
+    """F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a 2.29 két új oszlopa; a régi oszlopok és az `utvonal` változatlan."""
+    # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
+    # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő
+    REGI_OSZLOPOK_SHA256 = '63373512b29fe3cb5b3a37494c9b411da240df7270c2999c7821b264e2347447'
+
+    @classmethod
+    def setUpClass(cls):
+        cls.sorok, _ = V.general('2026-11-09', ['H3176', 'H3027', 'H0157'])
+        cls.i = {k: n for n, k in enumerate(V.FEJ)}
+
+    def test_fejlec(self):
+        self.assertEqual(V.FEJ[V.FEJ.index('szurt') + 1:], ['csoport', 'csoport_jel', 'proveniencia'])
+
+    def test_csoport_a_jelentesponton_belul(self):
+        i = self.i
+        x = sor(self.sorok, strong='H3176', nyers='Job 14:14')[0]
+        self.assertEqual((x[i['utvonal']], x[i['csoport']], x[i['csoport_jel']]), ("Pi'el/1", '+1', 'absolute'))
+        x = sor(self.sorok, strong='H3176', nyers='Micah 5:6', utvonal="Pi'el/1")[0]
+        self.assertEqual((x[i['csoport']], x[i['csoport_jel']]), ('', ''))  # a jelentés feje: nincs csoport
+        x = sor(self.sorok, strong='H3176', nyers='Ezek 13:6', utvonal="Pi'el/2")[0]
+        self.assertEqual((x[i['csoport']], x[i['csoport_jel']]), ('+1', 'followed by'))
+
+    def test_utvonal_nem_kap_csoportot_es_jel_csak_csoporttal(self):
+        i = self.i
+        for x in self.sorok:
+            self.assertNotIn('+', x[i['utvonal']])
+            self.assertEqual(bool(x[i['csoport']]), bool(x[i['csoport_jel']]))
+
+    def test_regi_oszlopok_bajtra_azonosak(self):
+        import hashlib
+        with open(V.KI, encoding='utf-8', newline='') as f:
+            sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+        fej = sorok[0].split('\t')
+        regi = [k for k in V.FEJ if k not in ('csoport', 'csoport_jel')]
+        idx = [fej.index(k) for k in regi]
+        h = hashlib.sha256()
+        for s in sorok[1:]:
+            m = s.split('\t')
+            h.update(('\t'.join(m[j] for j in idx) + '\n').encode('utf-8'))
+        self.assertEqual(h.hexdigest(), self.REGI_OSZLOPOK_SHA256)
+
+
 class Ujrageneralas(unittest.TestCase):
     """ELLENOR_F99 3.: platformtól függetlenül fut (a kód- és a forrás-hash LF-re normalizált tartalomból számolódik)."""
     def test_bajtra_azonos(self):
