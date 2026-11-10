@@ -1460,24 +1460,26 @@ azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_bont.py` ellenőrzi
 **a szerkezet** (bekezdéshatár, fej, útvonal) a `konkordancia/lexikonok_nyers/Thayer.lexicon`-ból (`Lexicon(Topic, Definition)`, HTML;
 a formázási réteg licence nem tisztázott, ezért innen csak szerkezet és azonosító jön, szöveg nem); **a szöveg** a
 `konkordancia/Thayer_teljes.tsv` `Teljes_szocikk`-jéből, illesztéssel (a szakasz szövege a TSV-szöveg szelete). Egy sor = a szócikk egy
-bekezdése: a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a forrásban
-helyenként egymásba ágyazott vagy lezáratlan `<p>` áll, ezért a határ a jelölő). Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
+**szakasza**: egy bekezdés — a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a
+forrásban helyenként egymásba ágyazott vagy lezáratlan `<p>` áll, ezért a határ a jelölő) —, vagy (F186 K1) a bekezdésnek egy
+bekezdésen belüli fejnél kezdődő része (a szakaszok szövege bekezdésenként összefűzve a bekezdés szövege). Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
 bemenet és a kód hash-e), a harmadik a fejléc. Olvasás `split('\t')`. **Lexikai forrásréteg, nem study-adat:** keresési találatból nem
 lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 
 | Oszlop | Jelentés |
 |---|---|
 | `strong` | `Strong_padded` (`G0012`); a lexikon `Topic`-ja (`G12`) az `eszkozok/thayer_jelolt/kulcs.py` `strong_pad` függvényével normalizálva (DT328 (4): egyetlen függvény) |
-| `sorszam` | a bekezdés sorszáma a szócikkben (1-től; az 1. a cím) |
-| `utvonal` | `<felső>/<szám>/<betű>`, a hiányzó szint `-` (pl. `-/1/-`, `II/1/a`, `A.I/2/-`); a felső szint a nagybetűs fej (`A.`, sima szöveg, csak a sorban következő betű) és a római fej (`<span class="lexheading">I.</span>`) ponttal; különleges: `cim` (a `<b>G… — …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az első fej előtti bekezdés). Fej nélküli bekezdés az előző útvonalát örökli |
-| `jel` | a bekezdés elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`); üres, ha nincs. A forrásban bekezdésen belüli fej nem fordul elő (F132 M1 felmérés) |
+| `sorszam` | a szakasz sorszáma a szócikkben (1-től; az 1. a cím). Az F186 óta a bekezdésen belüli fej új szakaszt nyit, ezért az érintett szócikkekben a későbbi szakaszok sorszáma eltolódott (a tételes lista: `naplok/F186_jelentes.md` 5.) |
+| `utvonal` | `<felső>/<szám>/<betű>`, a hiányzó szint `-` (pl. `-/1/-`, `II/1/a`, `A.I/2/-`); a felső szint a nagybetűs fej (`A.`, sima szöveg, csak a sorban következő betű) és a római fej (`<span class="lexheading">I.</span>`) ponttal; különleges: `cim` (a `<b>G… — …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az első fej előtti bekezdés). Fej nélküli szakasz az előző útvonalát örökli |
+| `jel` | a szakasz elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`, a bekezdésen belüli fejnél `a:` is); üres, ha nincs. **Bekezdés eleji fej** (`bont.fej_felismer`): a félkövér szám/betű, a római `lexheading`, a sorban következő nagybetű; nem fej a félkövér jelölő, amelyet „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követ — a forrás kereszthivatkozás közepén tört bekezdést (F186 K2; G4151 „**b.** bb.;”, G1909 „**c.**)):”). **Bekezdésen belüli fej** (F186 K1, `bont.belso_fejek`; az F132 M1 feltevése, hogy ilyen nincs, csak a félkövér fejre igaz): a kisbetű (`a.`, `a:`, `i.:`) vagy a szám (`2.`) a bekezdés belsejében, ha a sorrendben várt következő jelölő (betű: az aktuális utáni vagy `a`; szám: az aktuális utáni vagy `1`), és nem hivatkozás vagy rövidítés: betűnél utána nem áll szám, egybetűs rövidítés („a. d.”, „i. e.”), „below/above/at the end”, „)”, „,”, „;”, előtte nem „,”, számjegy, „§”, „(”, és az előző szó nem rövidítés vagy utalás („cf.”, „see”, „to”, „p.”, római szám …); számnál előtte mondatzáró írásjel és szóköz, utána szóköz és szó áll, de nem római szám, és a szám előtti szó nem egybetűs rövidítés („c. 1.”, „N. 1.”). Mérés: `naplok/F186_jelentes.md` |
 | `szoveg` | a bekezdés szövege a `jel` után, a `Thayer_teljes.tsv` szövegéből (a szóközök összevonva, tab nélkül); `sikertelen` illesztésnél üres (explicit hiány). **Nyers:** a `thayer_forras_javitas.tsv` (2.38) beszúrásai nem kerülnek bele; a javított szöveg nézet (`thayer_bemenet.szakaszok`) |
 | `illesztes` | a Strong illesztési kategóriája: `egyezik` (a bekezdések szóközök nélküli szövege sorban, hézag és maradék nélkül kiadja a TSV szövegét) \| `javitassal` (így van, de csak a 2.38 `javitva` sorainak beszúrásával: a határok pontosak, a `szoveg` nyers; DT333 (2)) \| `reszleges` (nem így: a határok a difflib egyező blokkjain át vetülnek a TSV-szövegre; a szöveg közelítő) \| `sikertelen` (a TSV-ben nincs ilyen Strong) |
-| `forras` | `Thayer.lexicon:<Topic>#<sorszam>` (a szerkezet helye) |
-| `forras_hash` | a bekezdés nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
+| `forras` | `Thayer.lexicon:<Topic>#<sorszam>` (a szerkezet helye; a `#` után a szakasz sorszáma) |
+| `forras_hash` | a szakasz nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
 | `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
 
-Kulcs: `strong` + `sorszam`. Állapot (F132.11, 2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
+Kulcs: `strong` + `sorszam`. Állapot (F186, 2026-11-10): 5 426 Strong, 17 266 sor (17 093 bekezdés + 173 bekezdésen belüli
+fejnél nyíló szakasz, 124 Strongban); illesztés változatlan. Az F132.11-es állapot (2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
 `reszleges` 0, `sikertelen` 0; fejes szócikk 1 687. A 15 `javitassal` Strong mindegyikében a `Thayer_teljes.tsv` egy összefüggő
 szövegrészt elveszít (összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a
 TSV-konverzió hibája); a javítótábla nélkül ezek `reszleges`-ek (F132 M1). A kezelés: DT333 (2), 2.38. A `# forras:` fejlécsor a
@@ -1504,7 +1506,7 @@ sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `spli
 |---|---|
 | `strong` | `Strong_padded` (a `thayer_jelolt/kulcs.py` szerint) |
 | `sorszam` | a hivatkozás sorszáma a szócikkben (1-től; a 2.29 `sorszam`-ja) |
-| `szakasz` | a hivatkozást tartalmazó bekezdés `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat) |
+| `szakasz` | a hivatkozást tartalmazó szakasz `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat). Az F186 óta a szakasz a bekezdésen belüli fejnél is kezdődhet, így a hivatkozás a bekezdésen belül nyitó pontra mutat (a `teszt_vers_jelentes.py` `Aranyminta` osztálya ellenőrzi, hogy a `szakasz` útvonala a sor útvonala) |
 | `konyv` | `bcv`-sor: a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`); folytatás-sor: a lánc előző tagjától öröklött könyv |
 | `fejezet`, `vers` | `bcv`-sor: a `bcv` fejezet- és versszáma, változatlanul; folytatás-sor: a vers (és `; c:v`-nél a fejezet) a `</ref>` utáni szövegből visszafejtve, `,v`-nél a fejezet öröklött; a sor jelölése a `proveniencia` `folytatas`-a |
 | `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
@@ -2174,6 +2176,30 @@ Nem új tábla, hanem az `elofordulasok.tsv` (2.2) `kapcsolodas` mezőjének **t
 - **Jelölés alakja (DT614):** a „saját fordítás” szöveg (kis-nagybetű nélkül; elfogadott még „szó szerint:” és „ford.:”) a `kapcsolodas` mezőben, ugyanabban a mezőben, mint az idézet. Új jelölő nincs; az olvasói kapu ugyanezt ismeri.
 - **Szint** (a kód szerint: `e34_karoli_idezet`; DT666). Találatonként dől el: HIBA, ha a sor `id`-je szerepel az `adat/kiadasok.tsv`-ben (2.46: a kiadott motívum); különben FIGYELMEZTETÉS (az alapszint, `SZINT['E34']`; a 3.11 Szint-oszlopa mindkettőt mondja). Fájlszintű szabály, ezért PR-módban a diff nem minősíti le: a kiadott motívum régi sorának találata is HIBA, és a futás bukik. A futtató jelentése a nem HIBA találatot a JELENTES-számba veszi; `--teljes` módban minden találat JELENTES. A ki nem adott lap helyei az új cikk menetének bemenetei, nem teszik pirossá a main-t.
 - **Hatókör.** Fájlszintű, adattáblán futó szabály (mint az E31): a `fajlok` paramétertől független. A szabály nem javít; a találat javítása a lap saját menete (nem a `csv` modullal: `split('\t')`).
+
+### 2.56 `thayer_aranyminta.tsv` — a Thayer vers → jelentéspont hozzárendelés vak mérésének aranymintája (F186, FELADATOK #186, 2026-11-10)
+
+**Kézi tábla, nem generált** (a 2.28 BDB-aranyminta párja). Egy sor = a vak mérés egy mintasora: egy ÚSZ-hivatkozás a
+`thayer_vers_jelentes.tsv`-ből (2.35; `strong` + `sorszam`). A minta eljárása, a kapu és a mutatók a mérés előtt rögzítve:
+`naplok/F186_jelentes.md` 1. (rétegzett véletlen 200 sor, seedenként; két független vak Opus-kitöltő, A és B, akik a gépi
+kimenetet nem látták; az eltérésekről a végrehajtó ítél a forrásszöveg alapján). Az első két sor `#` megjegyzés, a harmadik a
+fejléc. Olvasás `split('\t')`. **Mérési adat, nem study-adat.** A `teszt_vers_jelentes.py` `Aranyminta` osztálya a mai táblát
+veti össze vele (hibaosztályonként).
+
+| Oszlop | Jelentés |
+|---|---|
+| `seed` | a minta seedje (`201`: a javítás előtti mérés, a T2 tesztjei erre épülnek; `202`: a független ismételt mérés) |
+| `azon` | a mintasor azonosítója (`T001`–`T200`, `U001`–`U200`) |
+| `reteg` | `gyakori` \| `ritka` (a Strong ÚSZ-hivatkozásszáma szerint; a két réteg a sokaság egy-egy fele, a minta önsúlyozó) |
+| `strong`, `sorszam` | a `thayer_vers_jelentes.tsv` kulcsa (a hivatkozás sorszáma a szócikkben; a szakaszok újraszámozása nem érinti) |
+| `gep_konyv_vers`, `gep_utvonal` | a gépi kimenet **a mérés pillanatában** (nem a mai tábla) |
+| `A_konyv_vers`, `A_jelentespont`, `A_melyebb`; `B_…` | a két vak kitöltő értéke (a `melyebb` a görög betűs vagy mélyebb szint, nem része a fő mutatónak) |
+| `arany_konyv_vers`, `arany_utvonal` | az arany érték: A = B egyezése, eltérésnél vagy a gépitől való egybehangzó eltérésnél az ítélet; a `zaro` a tagolás utáni záró rész (szinonima-jegyzet), a táblában ilyen érték nincs |
+| `itelet` | `egyezik` \| `hozzarendeles_hiba` \| `kitolto_alak` (a kitöltő alakja tér el, pl. verstartomány; a gépi helyes) \| `kitolto_hiba` \| `forras_hiba` |
+| `osztaly` | a hiba osztálya (`K1` bekezdésen belüli fej, `K2` hamis bekezdés-eleji fej, `K3` záró szinonima-jegyzet; `naplok/F186_jelentes.md` 3.) |
+| `indoklas` | az ítélet forrásidézettel |
+| `kitolto_modell` | a két kitöltő tényleges modellje (`A=…; B=…`) |
+| `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>` |
 
 ## 3. Integritási szabályok
 

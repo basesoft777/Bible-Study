@@ -134,6 +134,42 @@ Luk 8:18” —, de a jelentéspont `fej` és a könyv/vers a forrás `bcv`-je s
 - **K3 — záró szinonima-jegyzet (1: T181).** A „(Synonym: …)” a szócikk végén a teljes szóra vonatkozik, a gépi kimenet
   az utolsó alpontra teszi.
 
+## 4. T2 — javítás hibaosztályonként
+
+*Proveniencia: scope=eszkozok/thayer_jelolt/bont.py, a teljes Thayer (5 426 szócikk) | forras=Thayer.lexicon + a seed-201
+aranyminta | ts=2026-11-10.*
+
+**K2 — hamis bekezdés-eleji fej** (`bont.fej_felismer`, `HAMIS_FEJ_UTAN`): a bekezdés eleji félkövér szám/betű nem fej, ha
+közvetlenül „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követi. A teljes korpuszon **20 bekezdés** (pl. G0575 „c.; Winers
+Grammar …”, G1519 „b. aa.); …”, G1909 öt bekezdése, G2532 három). Ezek a bekezdések az előző útvonalat öröklik, és a
+belső-fej keresés a jelölőjüket kihagyja.
+
+**K1 — bekezdésen belüli fej** (`bont.belso_fejek`): a bekezdés belsejében álló kisbetű (`a.`, `a:`, `i.:`) vagy szám (`2.`)
+fej, ha (1) a sorrendben várt következő jelölő, és (2) nem hivatkozás vagy rövidítés. A kizárások a teljes korpusz jelöltjeinek
+átnézéséből (két véletlen 40-es minta és mind a 16 számfej): betű után szám („h. a. 5, 19” — Historia animalium), egybetűs
+rövidítés („a. d. Heb”, „b. g. 1”, „i. e.”, „e. g.”), „below/above/at the end”, „)”, „,”, „;”; betű előtt „,”, számjegy, „§”,
+„(” vagy rövidítés/utalás („cf.”, „see”, „to”, „p.”, római szám); szám után római szám („1. ix. quaest.”), szám előtt
+egybetűs rövidítés („orac. def. c. 1.”, „§ 27, 6 N. 1.”). Fejnél a bekezdés **kettéválik** (egy sor = egy szakasz), így
+a `vers_jelentes.py` (amely a `bont.szerkezet`-et használja) változtatás nélkül követi, és a szakasztábla jelentésfája is
+tartalmazza az új pontot.
+
+- **A korpuszon:** 181 belső fej 132 szócikkben; a szakasztábla 17 093 → **17 266 sor** (+173; 124 Strong). Az illesztés
+  változatlan (`egyezik` 5 411, `javitassal` 15): a vágás a szöveget nem rontja.
+- **A becsült pontosság:** a 40-es véletlen mintában (a végleges szabállyal) nincs nyilvánvaló hamis fej; a számfejek közül
+  a két hamisat (G0855, G0896) a végleges szabály kizárja, a G4525 kétes „I. 2. metaphorically”-t is (konzervatív).
+- **K3 (záró szinonima-jegyzet, T181): nem javítva.** A javítás új `utvonal`-értéket (`zaro`) kívánna, amelyet a tábla
+  fogyasztói (a lapgenerátor, a #187 kártyája) is kezelnének — ezek nincsenek az `ir`-ben. Nyitott kérdés (6.).
+- **Forráshiba: nincs mért.** A `adat/thayer_forras_javitas.tsv` adattartalma nem változott, csak két sor `sorszam`-a
+  (G0575 12 → 13, G0846 19 → 23) a szakaszok újraszámozása miatt (a tábla generált, újragenerálva).
+- **Tesztek:** `teszt_bont.py` `F186Fejek` (a K1 öt alakja a seed-201 eseteiből, kilenc negatív alak, a sorrend, a K2);
+  `teszt_vers_jelentes.py` `Aranyminta` (a K1 kilenc és a K2 egy sora a mai táblán; minden nem K3 aranysor egyezik; a vers-sor
+  `szakasz`-ának útvonala a sor útvonala). A `teszt_bont.py` három régi tesztje („egy sor = egy bekezdés”) az új szabályhoz
+  igazítva: a sorok a `szerkezet` szakaszai, és a szakaszok szövege bekezdésenként összefűzve a bekezdés szövege.
+- **A seed-201 a javított táblán (tájékoztató, nem független):** könyv/vers 200/200; jelentéspont **199/200** (99,5%,
+  Wilson 97,2–99,9); a maradék a K3 (T181). A **⛔ T3 nem szükséges** (a T2 utáni érték ≥ 97%).
+- **Mellékes javítás:** a `bont.py` fejléc-literáljában a kiosztott helyőrző (`DT-F132a`, `DT-F132i`) a kiosztott számra írva
+  (DT327, DT333; a CI E32 szabálya), így a tábla fejléce a régivel azonos szöveget ad.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.

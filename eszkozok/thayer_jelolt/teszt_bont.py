@@ -102,6 +102,73 @@ class Egyseg(unittest.TestCase):
         self.assertEqual(bont.illeszt(sz, None), ('sikertelen', ['', '', '']))
 
 
+def _ut(d):
+    return [(x['utvonal'], x['jel'], x['plain'][:14]) for x in bont.szerkezet('<div><p><b>G9 — x</b></p>' + d + '</div>')]
+
+
+class F186Fejek(unittest.TestCase):
+    """F186 T2: a seed-201 vak mérés hibaosztályai (naplok/F186_jelentes.md 3.), a forrás alakjával egyszerűsítve."""
+
+    def test_k1_betu_szo_utan(self):
+        # T029 G3360: „1. … and is used a. of time: …”; T044 G4487 „that a. so far forth”; T007 G3588 „participles a. gives”
+        sz = _ut('<p><b>1.</b> it has the force of a preposition, and is used a. of time: '
+                 '<ref onclick="bcv(54,6,14)">1Ti 6:14</ref>; b. of place: x</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/a', '-/1/b'])
+        self.assertEqual([x[1] for x in sz], ['', '1.', 'a.', 'b.'])
+
+    def test_k1_bevezeto_bekezdesben(self):
+        # T114 G5479: „joy, gladness; a: Luk 1:14” (kettősponttal); T171 G3367: „accordingly a. with an imperative”
+        sz = _ut('<p>joy, gladness; a: <ref onclick="bcv(42,1,14)">Luk 1:14</ref></p>')
+        self.assertEqual([x[0] for x in sz], ['cim', 'fej', '-/-/a'])
+        self.assertEqual(sz[2][1], 'a:')
+
+    def test_k1_mondatzaro_utan(self):
+        # T191 G2192: „Joh 15:22, etc. h. of age”; T025 G3004: „…:12. h. with the dative … :18. i.: λέγω”
+        sz = _ut('<p><b>g.</b> x, <ref onclick="bcv(43,15,22)">Joh 15:22</ref>, etc. h. of age: y</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/g', '-/-/h'])
+        sz = _ut('<p><b>g.</b> x <ref onclick="bcv(43,3,12)">Joh 3:12</ref>. h. with the dative <ref onclick="bcv(43,3,18)">'
+                 'Joh 3:18</ref>. i.:<ref0 class="word" entry="λέγω">λέγω</ref0> followed</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/g', '-/-/h', '-/-/i'])
+        self.assertEqual(sz[3][1], 'i.')
+
+    def test_k1_utalas_utan(self):
+        # T159 G2228: „b. ἤ γάρ, see γάρ, I. at the end c. ἤ καί”
+        sz = _ut('<p><b>b.</b> x, see y, I. at the end c. z</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/b', '-/-/c'])
+
+    def test_k1_szam_es_betu(self):
+        # T147 G0846: „e. … Joh 16:27 (… Xenophon). 2. When it gives Prominence, it answers a. to our emphatic he”
+        sz = _ut('<p><b>1.</b> u</p><p><b>e.</b> self, <ref onclick="bcv(43,16,27)">Joh 16:27</ref> (Xenophon). '
+                 '2. When it gives Prominence, it answers a. to our emphatic he: <ref onclick="bcv(40,1,21)">Mat 1:21</ref></p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/e', '-/2/-', '-/2/a'])
+
+    def test_k1_nem_fej(self):
+        # a hivatkozás- és rövidítés-alakok nem nyitnak pontot (a teljes korpusz átnézett hamis jelöltjei)
+        for d in ('<p><b>1.</b> x, Aristotle, h. a. 5, 19; y</p>',          # Historia animalium + szám
+                  '<p><b>1.</b> x; cf. Bleek, Brief a. d. Heb 2:1</p>',      # „a. d.” rövidítés
+                  '<p><b>1.</b> x, i. e. y; e. g. z</p>',                    # i. e., e. g.
+                  '<p><b>1.</b> x (see in a. below); y</p>',                 # utalás
+                  '<p><b>1.</b> x (cf. <b>χαίρω</b>, a.); y</p>',            # „)” követi
+                  '<p><b>1.</b> x, cf. Winers Grammar, § 5, 1 a.; y</p>',    # szám előzi
+                  '<p><b>1.</b> x (some refer this to a. in the sense); y</p>',  # „to” előzi
+                  '<p>x, Plutarch, orac. def. c. 1. Sometimes y</p>',        # „c. 1.” fejezetszám
+                  '<p>x, Winers Grammar, § 27, 6 N. 1. But y</p>'):          # „N. 1.” jegyzetszám
+            sz = _ut(d)
+            self.assertEqual(len(sz), 2, d)
+
+    def test_k1_sorrend(self):
+        # csak a várt következő jelölő nyit: a „c.” nem nyit, ha az aktuális betű „a”
+        sz = _ut('<p><b>a.</b> x; and so c. other</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/-/a'])
+
+    def test_k2_hamis_bekezdes_eleji_fej(self):
+        # T145 G4151: „<b>b.</b> bb.; γεννάω, …” egy kettétört kereszthivatkozás töredéke; G1909: „<b>c.</b>)): as …”
+        sz = _ut('<p><b>4.</b> u</p><p><b>a.</b> v (see βαπτίζω, II. b.</p><p><b>b.</b> bb.; γεννάω, 1 at the end) '
+                 '<ref onclick="bcv(45,8,1)">Rom 8:1</ref></p><p><b>c.</b>)): as x</p><p><b>b.</b> w</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/4/-', '-/4/a', '-/4/a', '-/4/a', '-/4/b'])
+        self.assertEqual([x[1] for x in sz], ['', '4.', 'a.', '', '', 'b.'])
+
+
 class Tabla(unittest.TestCase):
     def test_fejlec(self):
         with open(TABLA, encoding='utf-8') as f:
@@ -114,11 +181,15 @@ class Tabla(unittest.TestCase):
         a = adatok()
         self.assertEqual(set(a['st']), set(a['lex']))
         n = 0
+        # F186 K1: egy sor = egy szakasz (a bekezdés, vagy annak a bekezdésen belüli fejnél kezdődő része); a szakaszok
+        # sima szövege bekezdésenként összefűzve a bekezdés sima szövege
         for sp, (topic, d) in a['lex'].items():
             seg = bont.szegmensek(d)
+            sz = bont.szerkezet(d)
             sorok = a['st'][sp]
-            self.assertEqual([int(r['sorszam']) for r in sorok], list(range(1, len(seg) + 1)), sp)
-            self.assertEqual([r['forras'] for r in sorok], ['Thayer.lexicon:%s#%d' % (topic, i) for i in range(1, len(seg) + 1)])
+            self.assertEqual([int(r['sorszam']) for r in sorok], list(range(1, len(sz) + 1)), sp)
+            self.assertEqual([r['forras'] for r in sorok], ['Thayer.lexicon:%s#%d' % (topic, i) for i in range(1, len(sz) + 1)])
+            self.assertEqual(nows(''.join(x['plain'] for x in sz)), nows(''.join(bont.sima(s) for s in seg)), sp)
             n += len(seg)
         self.assertEqual(n, 17093)  # a forrás <p>-száma (M0)
 
@@ -135,7 +206,7 @@ class Tabla(unittest.TestCase):
                 continue
             egyezik += 1
             self.assertEqual(nows(''.join(r['jel'] + r['szoveg'] for r in sorok)), nows(a['tsv'][sp]), sp)
-            plain = [bont.sima(s) for s in bont.szegmensek(a['lex'][sp][1])]
+            plain = [x['plain'] for x in bont.szerkezet(a['lex'][sp][1])]
             self.assertEqual([nows(r['jel'] + r['szoveg']) for r in sorok], [nows(p) for p in plain], sp)
         self.assertGreaterEqual(egyezik, 5400)
 
@@ -205,7 +276,7 @@ class Javitas(unittest.TestCase):
         for r in self.jav():
             sp = r['strong']
             nezet = TB.szakaszok(sp)
-            plain = [bont.sima(s) for s in bont.szegmensek(a['lex'][sp][1])]
+            plain = [x['plain'] for x in bont.szerkezet(a['lex'][sp][1])]
             self.assertEqual([nows(x['szoveg']) for x in nezet], [nows(p) for p in plain], sp)
             self.assertIn(r['javitott_alak'], nezet[int(r['sorszam']) - 1]['szoveg'])
 

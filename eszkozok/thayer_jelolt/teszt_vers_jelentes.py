@@ -153,6 +153,62 @@ class Tabla(unittest.TestCase):
         self.assertEqual(len(kv), 66)
 
 
+ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
+# a mért, de nem javított osztály (naplok/F186_jelentes.md 3.: K3, a záró szinonima-jegyzet; a táblában nincs `zaro` érték)
+NEM_JAVITOTT = {'K3'}
+
+
+def arany():
+    with open(ARANY, encoding='utf-8', newline='') as f:
+        s = [x for x in f.read().split('\n') if x and not x.startswith('#')]
+    fej = s[0].split('\t')
+    return [dict(zip(fej, x.split('\t'))) for x in s[1:]]
+
+
+def jp(u):
+    return 'fej' if u in ('tagolatlan', '-/-/-') else u
+
+
+class Aranyminta(unittest.TestCase):
+    """F186 T2: a vak mérés arany értékei (adat/thayer_aranyminta.tsv) a mai táblán, hibaosztályonként."""
+
+    def sor(self, r):
+        return {(x['strong'], x['sorszam']): x for x in adat()['sorok']}[(r['strong'], r['sorszam'])]
+
+    def _osztaly(self, osztaly):
+        ki = [r for r in arany() if r['osztaly'] == osztaly]
+        self.assertTrue(ki, osztaly)
+        for r in ki:
+            self.assertEqual(jp(self.sor(r)['utvonal']), r['arany_utvonal'], '%s %s' % (r['azon'], r['strong']))
+        return ki
+
+    def test_k1_bekezdesen_beluli_fej(self):
+        # seed-201: T007, T025, T029, T044, T114, T147, T159, T171, T191
+        self.assertEqual(len(self._osztaly('K1')), 9)
+
+    def test_k2_hamis_bekezdes_eleji_fej(self):
+        # seed-201: T145
+        self.assertEqual(len(self._osztaly('K2')), 1)
+
+    def test_minden_arany_sor(self):
+        # a K1/K2 javítás nem ront el más sort: minden nem K3 sor könyv/verse és jelentéspontja az arany érték
+        rossz = []
+        for r in arany():
+            s = self.sor(r)
+            if '%s %s:%s' % (s['konyv'], s['fejezet'], s['vers']) != r['arany_konyv_vers']:
+                rossz.append((r['azon'], 'könyv/vers'))
+            if r['osztaly'] not in NEM_JAVITOTT and jp(s['utvonal']) != r['arany_utvonal']:
+                rossz.append((r['azon'], s['utvonal'], r['arany_utvonal']))
+        self.assertEqual(rossz, [])
+
+    def test_szakasz_mutat_az_utvonalra(self):
+        # a vers-sor `szakasz`-a a szakasztábla azon sorára mutat, amelynek az útvonala a vers-soré (a belső fej is szakasz)
+        a = adat()
+        for r in arany():
+            s = self.sor(r)
+            self.assertEqual(a['szak'][(s['strong'], s['szakasz'])]['utvonal'], s['utvonal'], r['azon'])
+
+
 class Determinizmus(unittest.TestCase):
     def test_ellenoriz(self):
         r = subprocess.run([sys.executable, os.path.join(ITT, 'vers_jelentes.py'), '--ellenoriz'],
