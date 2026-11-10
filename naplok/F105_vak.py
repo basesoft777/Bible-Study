@@ -9,9 +9,10 @@ Kimenet a `--ki` könyvtárba (a repón KÍVÜL; a fájlokat nem commitoljuk):
   - `kulcs.tsv`: sorszám, és melyik betű (A/B) a helyreállított alak.
 Az A/B hozzárendelés tételenként rögzített seeddel (`random.Random(105000 + sorszám)`) véletlenszerű.
 A két alakon ugyanaz a megjelenítési normalizálás fut, hogy a forma ne árulja el a forrást: (1) a rafe-maqqéf feloldása
-(`F105_minta.maqqef`); (2) a geres egységesítése: minden szóban (szóköz és maqqéf között) a geres a szó végére kerül
-(módszertani döntés, 2026-11-10: a forrás `׳X` alakja helyesírási hiba volna, és a vers nélkül is elárulná a forrást; a
-kérdés csak a szavak sorrendje). A fájl elején ez jelölve áll.
+(`F105_minta.maqqef`); (2) a geres (rövidítésjel) mindkét alakból eltávolítva, az így üresen maradt szórész is (módszertani
+döntés, 2026-11-10: a geres helye és hordozója a vers nélkül is elárulná a forrást; a kérdés csak a szavak sorrendje).
+A fájl elején ez jelölve áll. Ellenőrzés: tételenként A és B ugyanannak a tokenhalmaznak (szóközzel vagy maqqéffel
+határolt rész) a permutációja-e; az eltérő tétel bent marad, a száma kiíródik.
 
 Futtatás: python naplok/F105_vak.py --be <könyvtár> --ki <könyvtár a repón kívül>
 """
@@ -33,7 +34,7 @@ import F105_minta as FM  # noqa: E402
 
 TAHOT = os.path.join(REPO, 'konkordancia', 'TAHOT_kivonat.tsv')
 GERES = '׳'
-JELOLES = 'a geres helye mindkét alakban egységesítve; a kérdés csak a szavak sorrendje'
+JELOLES = 'a geres mindkét alakból eltávolítva (rövidítésjel); a kérdés csak a szavak sorrendje'
 
 
 def kivalasztas(be):
@@ -44,28 +45,18 @@ def kivalasztas(be):
     return sorted(rnd.sample(jelolt, 50), key=lambda d: (d['strong'], int(d['poz'])))
 
 
-def geres_vegre(szo):
-    """A szóban álló geres a szó végére (egy darab)."""
-    return szo.replace(GERES, '') + GERES if GERES in szo else szo
-
-
 def _token(t):
-    """Egy (szóközzel határolt) token maqqéffel tagolt részei; a csak geresből álló rész (pl. a rafe feloldása után
-    `׳־צ…`) geresét az előző rész kapja, ha nincs előző, a következő; utána minden részben a geres a végére kerül."""
-    reszek = FM.maqqef(t).split('־')
-    tiszta, plusz = [], [False] * len(reszek)
-    for i, r in enumerate(reszek):
-        if r and not r.replace(GERES, ''):
-            j = i - 1 if i else i + 1
-            if 0 <= j < len(reszek):
-                plusz[j] = True
-            continue
-        tiszta.append(i)
-    return '־'.join(geres_vegre(reszek[i] + (GERES if plusz[i] else '')) for i in tiszta)
+    """Egy (szóközzel határolt) token: a rafe-maqqéf feloldása után a geres ki, az üresen maradt maqqéfes rész is."""
+    return '־'.join(r for r in (x.replace(GERES, '') for x in FM.maqqef(t).split('־')) if r)
 
 
 def alak(futam):
-    return ' '.join(_token(t) for t in futam.split(' '))
+    return ' '.join(x for x in (_token(t) for t in futam.split(' ')) if x)
+
+
+def tokenek(x):
+    """Szóközzel vagy maqqéffel határolt részek, rendezve (a permutáció-próbához)."""
+    return sorted(r for r in re.split(r'[\s־]+', x) if r)
 
 
 def main():
@@ -105,8 +96,10 @@ def main():
         f.write('\n'.join(md))
     with open(os.path.join(ki, 'kulcs.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(kulcs) + '\n')
-    hibas = sum(1 for s in md if s.startswith(('- A: ', '- B: ')) and re.search(r'(^|[\s־])' + GERES, s[5:]))
-    print('geres szó elején:', hibas)
+    ab = [s[5:] for s in md if s.startswith(('- A: ', '- B: '))]
+    print('geres az A/B sorokban:', sum(GERES in x for x in ab))
+    print('nem permutáció (A és B tokenhalmaza eltér):', sum(tokenek(a) != tokenek(b) for a, b in zip(ab[::2], ab[1::2])),
+          '| azonos A és B:', sum(a == b for a, b in zip(ab[::2], ab[1::2])))
     print('tétel:', len(minta), '| A = helyreállított:', sum(1 for s in kulcs[1:] if s.endswith('A')))
 
 
