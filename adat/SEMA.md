@@ -1728,7 +1728,7 @@ Olvasás `split('\t')`.
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
 Kulcs: `id` + `forras` + `tema_id`. A `kivalasztott` és a `kizart` sor a mai jelöltek közé tartozik (különben a döntés elavult;
-teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-11-04): 71 sor — ISTENTISZT-001 22 (4 tiltott, 8 kivalasztott, 10 kizart); ALVIL-001 37 (3 tiltott, 4 kivalasztott, 30 kizart); ANTROP-001 12 (0 tiltott, 4 kivalasztott, 8 kizart) (DT-F123nva).
+teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-11-04): 71 sor — ISTENTISZT-001 22 (4 tiltott, 8 kivalasztott, 10 kizart); ALVIL-001 37 (3 tiltott, 4 kivalasztott, 30 kizart); ANTROP-001 12 (0 tiltott, 4 kivalasztott, 8 kizart) (DT677).
 
 ### 2.42 `nave_tema_hu.tsv` — a Nave-témák és -altételek magyar neve (ISTENTISZT-001 arany lap, 2026-10-29)
 
@@ -1748,7 +1748,7 @@ SHA-1-ével, az angol áll „(fordításra vár)” jelöléssel. Olvasás `spl
 | `datum` | `DATUM` (1.3) |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `tema_id` + `cimke_en`. Állapot (2026-11-04): 46 sor — az ISTENTISZT-001 8 kiválasztott témája és altételei (18), az ALVIL-001 és az ANTROP-001 4–4 kiválasztott témája és altételei (28; Sonnet-tervezet, DT-F123nva).
+Kulcs: `tema_id` + `cimke_en`. Állapot (2026-11-04): 46 sor — az ISTENTISZT-001 8 kiválasztott témája és altételei (18), az ALVIL-001 és az ANTROP-001 4–4 kiválasztott témája és altételei (28; Sonnet-tervezet, DT677).
 
 ### 2.43 `elutasitasi_okok.tsv` — az 1/b. blokk elutasítási okainak mintaszótára (ISTENTISZT-001 arany lap, 2026-10-29)
 
@@ -1835,7 +1835,7 @@ Strong-halmazában (TAHOT+TAGNT) a motívum egyetlen gerinc-kombinációja sincs
 (`eszkozok/lexikon_general.py` `blokk_kolofon`; a kolofont kézzel szerkeszteni tilos). Motívum sora nélkül a kolofon nem ír
 kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('	')`; a `#`-sor megjegyzés.
 
-**Olvasói kapu (DT-F123kvb).** A kiadott lap — amelynek motívumához itt sor áll — az `eszkozok/olvasoi_kapu.py` mérésén 0 BUKÁS-t ad: az `ellenoriz.py` 32. szabálya ezt gátlóan ellenőrzi (SÉRTÉS, ha a kiadott lapon BUKÁS van, vagy a kiadott motívumnak nincs lapja). A ki nem adott lapok BUKÁS-a csak JELENTÉS; a FIGYELMEZTETÉS nem számít. Teszt: `eszkozok/teszt_ellenoriz_32.py`.
+**Olvasói kapu (DT679).** A kiadott lap — amelynek motívumához itt sor áll — az `eszkozok/olvasoi_kapu.py` mérésén 0 BUKÁS-t ad: az `ellenoriz.py` 32. szabálya ezt gátlóan ellenőrzi (SÉRTÉS, ha a kiadott lapon BUKÁS van, vagy a kiadott motívumnak nincs lapja). A ki nem adott lapok BUKÁS-a csak JELENTÉS; a FIGYELMEZTETÉS nem számít. Teszt: `eszkozok/teszt_ellenoriz_32.py`.
 
 | Oszlop | Jelentés |
 |---|---|
@@ -1846,7 +1846,7 @@ kiadás-sort, és a marker-blokk forráslistája változatlan. Olvasás `split('
 | `proza_modell` | a lap prózáját író tényleges modellnév a futó környezetből (CLAUDE.md modell-szabálya, DT473), vagy `manual`, ha nem megállapítható (DT443); nem üres |
 | `forras` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (2026.11.04: a 11-02-i első kiadás a 11-04-i lektori javítással véglegesítve, nem külön kiadás; DT-F123kva); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT-F123nva).
+Kulcs: `id` + `kiadas`. Állapot (2026-11-04): 5 sor — ISTENTISZT-001 1. kiadás (2026.11.04: a 11-02-i első kiadás a 11-04-i lektori javítással véglegesítve, nem külön kiadás; DT678); ALVIL-001 és ANTROP-001 1. és 2. kiadás (a 2.: a Tematikus index (Nave) és az 1/b., 2/b. blokk generált javításai, DT677).
 
 ---
 

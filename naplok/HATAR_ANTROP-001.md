@@ -2,9 +2,9 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum ANTROP-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ANTROP-001 | ts=2026-11-03T09:25Z | bemenet=adat/elofordulasok.tsv@b120d694f9,adat/motivumok.tsv@8b8bf2c709,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ANTROP-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** ANTROP-001 — Pneuma/pszükhé megkülönböztetés · hordozó: `lexikai` · fölérendelt fogalom: az ember belső élete, lelke és szelleme általában, a két szó megkülönböztető együttállása nélkül · beépített sor: 11 (11 vers)
+**Motívum:** ANTROP-001 — Pneuma/pszükhé megkülönböztetés · hordozó: `lexikai` · fölérendelt fogalom: „az ember belső élete, lelke és szelleme általában, a két szó megkülönböztető együttállása nélkül” · beépített sor: 11 (11 vers)
 
 ## Gépi rész
 
@@ -19,7 +19,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 | másik motívum | ANTROP-001 versei | másik versei | közös | közös/ANTROP-001 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
 | ALVIL-001 | 11 | 75 | 0 | 0% | 0% | nincs |
-| HAMART-001 | 11 | 77 | 0 | 0% | 0% | nincs |
+| HAMART-001 | 11 | 56 | 0 | 0% | 0% | nincs |
 | HODIT-001 | 11 | 33 | 0 | 0% | 0% | nincs |
 | ISTENTISZT-001 | 11 | 22 | 0 | 0% | 0% | nincs |
 | KIRALY-001 | 11 | 38 | 0 | 0% | 0% | nincs |
@@ -34,6 +34,10 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+<!-- SORÁLLAPOT: n=11 ujj=0934584b47a0 -->
+*Sorállapot-igazolás (2026-11-09, HATAR.ANTROP-001): az alábbi K1–K2 a `5377bca8` állapoton készült; az ANTROP-001 `elofordulasok.tsv`-sorainak igehely-halmaza (11) és minden mezője azonos a maival, egyetlen eltérés a `proveniencia` mezőben a helyőrző átszámozása (`DT-F123r` → `DT588`, 8 sor, `7c6ec946`). A `hatar-ellenor` ezért nem futott újra (orkesztrátori döntés, 2026-11-09); a jel a mai sorállapotot rögzíti.*
+(proveniencia: scope=adat/elofordulasok.tsv (ANTROP-001, 5377bca8 ↔ HEAD, mezőnkénti összevetés) | forras=split('\t'), python eszkozok/ellenoriz.py --hatar-ujjlenyomat ANTROP-001 | ts=2026-11-09)
+
 *A `hatar-ellenor` modelles része nem futott (DT443 után). Az alábbi K1 nem a `hatar-ellenor` kimenete: a #123 ANTROP-001 új cikkének U2-jében az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03) — a Fil 1:27 egyelőre elutasítva, de a hely határkérdés, ezért a felhasználóé (`naplok/F123_ANTROP2_naplo.md` U2). A K2 ugyanígy kézi: az U4 javítókörében (DT588 (1)) az 1Kor 2:15 név szerinti kivétellel bent marad, a kérdés a 2. kiadás bemenete. A válaszok következménye az `eszkozok/lektor_felulet/osszefoglalo_ANTROP-001.tsv`-ben.*
 
 **2 kérdés.**
