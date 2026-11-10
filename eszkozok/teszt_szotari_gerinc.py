@@ -854,7 +854,7 @@ class KetreteguBdbKartya(unittest.TestCase):
         return '\n\n'.join(LG.gerinc_blokk(self._adat(), 'BDB', 'H8034', sorok, ctx)[0])
 
     def test_ket_reteg_egyseges_jelolovel(self):
-        szov = self._blokk({'uj': True, 'fl': {}})
+        szov = self._blokk({'bdb_kartya': True, 'fl': {}})
         kezd = szov.index(LG.APPARATUS_KEZDET % 'H8034')
         vege = szov.index(LG.APPARATUS_VEGE % 'H8034')
         self.assertLess(kezd, vege)
@@ -876,7 +876,7 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertNotIn('(1 szakasz)', szov)
 
     def test_bevezeto_egyszer(self):
-        ctx = {'uj': True, 'fl': {}}
+        ctx = {'bdb_kartya': True, 'fl': {}}
         elso, masodik = self._blokk(ctx), self._blokk(ctx)
         self.assertEqual(elso.count('Szótári tagolás (DT272)'), 1)
         self.assertLess(elso.index('Szótári tagolás'), elso.index('##### H8034'))
@@ -887,6 +887,26 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertNotIn('APPARATUS-', szov)
         self.assertIn('Szótári gerinc (DT272)', szov)
         self.assertIn('<summary>4 (1 szakasz)</summary>', szov)
+
+    def test_kapcsolo_alapbol_ki(self):
+        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset())
+        self.assertFalse(LG.bdb_kartya_aktiv('HAMART-001'))
+
+    def test_csak_alakot_kozlo_szakasz(self):
+        sz = {'H0056': [
+            {'strong': 'H0056', 'sorszam': '1', 'utvonal': 'fej', 'jel': '', 'szoveg': 'mourn'},
+            {'strong': 'H0056', 'sorszam': '2', 'utvonal': "Hithpa'el/-/-", 'jel': "Hithpa'el", 'szoveg': 'Pf.'},
+            {'strong': 'H0056', 'sorszam': '3', 'utvonal': "Niph'al/-/-", 'jel': "Niph'al", 'szoveg': 'Pt.'},
+        ]}
+        hu = {('H0056', '1'): {'szoveg_hu': 'gyászol', 'kategoria': 'illeszkedik'},
+              ('H0056', '2'): {'szoveg_hu': "Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35", 'kategoria': 'illeszkedik'},
+              ('H0056', '3'): {'szoveg_hu': "Niphal participium נֵאָרִים átkozott Mal 3:9.", 'kategoria': 'illeszkedik'}}
+        a = adat([], [], sz, hu)
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H0056', [elo('Hós 4:3', '', strong='H0056', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        self.assertIn("- Hithpa'el — a szótár csak alakot közöl (1 hely)", szov)
+        self.assertIn("- Niph'al — átkozott", szov)
+        self.assertNotIn('külön meghatározás nélkül', szov)
 
     def test_olvasoi_glossza_es_egy_torzsalak(self):
         self.assertEqual(LG.vegyes_cim_nelkul("Hithpa'el", 'Hithpael — perfectum הִתְאַבֵּל 1Sám 15:35'), 'perfectum הִתְאַבֵּל 1Sám 15:35')

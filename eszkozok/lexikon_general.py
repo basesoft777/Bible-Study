@@ -2284,7 +2284,7 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
             kozos.add(int(s['sorrend']))
 
     ctx = {'fl': fajl_licenc_kulcsok, 'tbesg_tbesh': fajl_licenc_kulcsok_tbesg_tbesh, 'sorai': sorai or [],
-           'gerinc': gerinc_aktiv(motivum_id), 'uj': uj_szerkezet(motivum_id)}
+           'gerinc': gerinc_aktiv(motivum_id), 'bdb_kartya': bdb_kartya_aktiv(motivum_id)}
     reszek_szoveg = []
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
@@ -3286,6 +3286,16 @@ def elnyelo_mondat(kulcsok):
 # megjegyzés, a szónézet-mutató), alapból csukott <details>-ben. A kutatói réteg gépi jelölője EGY helyen áll (itt); a
 # SEMA, a sablon és az olvasói kapu csak hivatkozik rá. A <details> sor szándékosan attribútum nélküli: a meglévő
 # <details>-számlálók (`kiejtes_szoveg.py`, `torzscikk_general.py`) így változatlanul működnek.
+# A KAPCSOLÓ (DT-F104c): a kétrétegű kártya csak az itt felsorolt (új szerkezetű) lapokon áll; ma üres, így minden lap
+# bájtra a korábbi alakjában generálódik (E28). A #182 a HAMART-001 újragenerálásakor veszi fel; a régi lapok a saját
+# teljes folyamatukban. A kapcsoló egyetlen helye ez; a kapu (`olvasoi_kapu.BDB_OLVASOI`) a lap jelölőjéhez igazodik.
+KETRETEGU_BDB_KARTYA = frozenset()
+
+
+def bdb_kartya_aktiv(motivum_id):
+    return motivum_id in KETRETEGU_BDB_KARTYA and uj_szerkezet(motivum_id)
+
+
 APPARATUS_KEZDET = '<!-- APPARATUS-KEZDET: %s -->'
 APPARATUS_VEGE = '<!-- APPARATUS-VÉGE: %s -->'
 APPARATUS_CIM = 'Szótári apparátus'
@@ -3351,6 +3361,20 @@ def fej_glossza(hu):
     return olvasoi_glossza('', '', s[kp[-1].end():]) if kp else None
 
 
+_ALAK_UTAN = re.compile(r'[֐-׿יִ-ﭏ][^\s]*\s*(?:\([^)]*\)\s*)?\u200e?\s*'
+                        r'([a-záéíóöőúüű][a-záéíóöőúüű ,]*?)(?=\s*(?:[1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\s+)?\d+:\d+|\s*[;(.:]|[\s,]*[֐-׿יִ-ﭏ]|$)')
+
+
+def alak_utani_glossza(szoveg):
+    """Az alakjegyzékkel nyíló szakasz magyar meghatározása az alak után („participium נֵאָרִים átkozott Mal 3:9” →
+    „átkozott”), ha van; None, ha a szakasz csak alakot közöl."""
+    for m in _ALAK_UTAN.finditer(szoveg or ''):
+        g = m.group(1).strip(' ,')
+        if len(g) >= 3 and not _ALAKTANI_KEZDET.match(g) and not re.fullmatch(r'(?:és|vagy|mind|stb)', g):
+            return g
+    return None
+
+
 def _jel_olvasoi(jel):
     return szakasz_szoveg(jel, nevelo=False)
 
@@ -3396,14 +3420,21 @@ def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, 
         for k, jel, hu, _angol, _kat in sz['szakaszok']:
             cimke = (adat['cimke'].get(('BDB', strong) + k) or {}).get('cimke_hu') or ''
             gl = olvasoi_glossza(jel, cimke, hu)
+            csak_alak = None
+            if not gl and hu and _ALAKTANI_KEZDET.match(vegyes_cim_nelkul(jel, jelolo_levag(hu, jel)).strip(' —–-')):
+                # az alakjegyzékkel nyíló szakasz: az alak utáni magyar meghatározás, ennek híján a kimondott tény (DT-F104c 4.)
+                gl = alak_utani_glossza(hu)
+                if not gl:
+                    n = len(hivatkozasok_a_szovegben(hu))
+                    csak_alak = 'a szótár csak alakot közöl' + (' (%d hely)' % n if n else '')
             elv = ' — ' if jel[:1].isalpha() else ' '
             nevek[k] = ('%s%s%s' % (_jel_olvasoi(jel), elv, gl)) if gl else _jel_olvasoi(jel)
             if tobb:
                 nevek[k] = '%s, %s' % (_szocikk_nev(adat, strong, sz['bdb_id'], i), nevek[k])
             melyseg = len([x for x in re.split(r'[ .]', jel) if x]) - 1
             jel_m = ('**%s**' % _jel_olvasoi(jel)) if k in hordozo else _jel_olvasoi(jel)
-            sorok.append('%s%s- %s%s%s' % (behuz, '  ' * max(0, melyseg), jel_m, elv if gl else ' ',
-                                           gl if gl else '*(külön meghatározás nélkül)*'))
+            sorok.append('%s%s- %s%s%s' % (behuz, '  ' * max(0, melyseg), jel_m, ' — ' if (gl and elv == ' — ') or csak_alak else ' ',
+                                           gl or csak_alak or '*(külön meghatározás nélkül)*'))
     bek = ['**A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)', '\n'.join(sorok)]
     csop, rend = {}, []
     for vers, k in vers_pont:
@@ -3600,7 +3631,7 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     lk = lemma_kiejtes(strong)
     cim = '##### %s%s · %s' % (strong, ' — %s' % lemma_cim(lk) if lk else '', szotar)
     napl = {'strong': strong, 'szotar': szotar, 'kiemelt': [], 'nem_talalt': [], 'nem_idezett': []}
-    uj = bool(ctx and ctx.get('uj'))
+    uj = bool(ctx and ctx.get('bdb_kartya'))
     vers_pont, pont_nelkul = [], []
     if szotar == 'BDB':
         # F123.BDBGER: szócikkenként (bdb_id), a BDB saját rendjében; a szakasz kulcsa (bdb_id, utvonal)

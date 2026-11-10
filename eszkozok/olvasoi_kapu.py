@@ -1137,8 +1137,8 @@ def ell_bdb_olvasoi(sorok):
     if not KIVETEL_NELKUL:
         return []
     from lexikon_general import APPARATUS_RX
-    # a kétrétegű kártyát még nem hordozó (az F104 előtt generált) új szerkezetű lapon sem fut: a lap a saját teljes
-    # folyamatával kapja meg (a kapuk verziózása a lapszerkezet jelölőjével, mint az F178.4-nél)
+    # a kétrétegű kártyát nem hordozó új szerkezetű lapon sem fut (a generátor kapcsolója, `lexikon_general.KETRETEGU_BDB_KARTYA`,
+    # ki van kapcsolva, vagy a lap még a régi alakú): a kapu a lap jelölőjéhez igazodik, mint az F178.4-nél a lapszerkezethez
     if not any(APPARATUS_RX.search(s.nyers) for s in sorok):
         return []
     ki, in42, kartya = [], False, False
