@@ -89,7 +89,55 @@ class ZarTeszt(unittest.TestCase):
         self._idegen_zar(gep=socket.gethostname(), pid=4242)
         with self._zar(el_e=lambda pid: False):
             pass
-        self.assertTrue(any('elavult zár feloldva' in u and 'nem él' in u for u in self.uzenetek), self.uzenetek)
+        self.assertTrue(any('elavult zár átvéve' in u and 'nem él' in u for u in self.uzenetek), self.uzenetek)
+        self.assertEqual([n for n in os.listdir(os.path.dirname(self.ut)) if 'elavult' in n], [])
+
+    def test_atvetel_nem_lopja_el_a_friss_zarat(self):
+        # ELLENOR_F188 4.: B elavultnak látta a zárat, közben A átvette és frisset írt; B átvétele nem veheti el A-ét
+        import socket
+        self._idegen_zar(gep=socket.gethostname(), pid=4242, azon='regi')
+        b = self._zar(el_e=lambda pid: False)
+        elavult = b._olvas()
+        a = self._zar(el_e=lambda pid: False)
+        a.__enter__()  # A átveszi és saját zárat ír
+        self.assertEqual(a._olvas()['azon'], a.azon)
+        self.assertFalse(b.atvesz(elavult))
+        self.assertEqual(b._olvas()['azon'], a.azon)  # A zára a helyén maradt
+        a.__exit__(None, None, None)
+        self.assertFalse(os.path.exists(self.ut))
+
+    def test_verseny_ket_szal_egy_elavult_zarra(self):
+        # ELLENOR_F188 4.: két szál egyszerre talál egy elavult zárat; egyszerre legfeljebb egy tarthatja
+        import socket
+        import threading
+        for _ in range(20):
+            self._idegen_zar(gep=socket.gethostname(), pid=4242, azon='regi')
+            bent, legtobb, hibak = [0], [0], []
+            zar_lock = threading.Lock()
+            indul = threading.Barrier(2)
+
+            def munka():
+                try:
+                    indul.wait()
+                    z = FT.HelyiZar('verseny', ut=self.ut, varakozas=0.001, kiir=lambda s: None,
+                                    el_e=lambda pid: pid == os.getpid())  # a 4242 halott, a saját (közös) pid él
+                    with z:
+                        with zar_lock:
+                            bent[0] += 1
+                            legtobb[0] = max(legtobb[0], bent[0])
+                        time.sleep(0.01)
+                        with zar_lock:
+                            bent[0] -= 1
+                except Exception as e:  # pragma: no cover
+                    hibak.append(e)
+            szalak = [threading.Thread(target=munka) for _ in range(2)]
+            for t in szalak:
+                t.start()
+            for t in szalak:
+                t.join(30)
+            self.assertEqual(hibak, [])
+            self.assertEqual(legtobb[0], 1)
+            self.assertFalse(os.path.exists(self.ut))
 
     def test_idokorlat_feloldja(self):
         self._idegen_zar(ts=time.time() - (FT.ZAR_ALAP_KORLAT_PERC + 5) * 60)
