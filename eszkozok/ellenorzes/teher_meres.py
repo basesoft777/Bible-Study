@@ -18,13 +18,18 @@ Mit mer PR-onkent (a `gh` es a helyi `git` adataibol, hálózati hibánál a mez
   (b) a commit-címekben álló `[elteres_kor k/2]` és „javítókör k/2” jelölő k-ja;
   (c) az ellenőri jelentést rögzítő commitok száma − 1 (az F188 T1 óta a
       jelentés a `naplok/F<nn>_jelentes.md` „Független ellenőrzés” szakaszába
-      kerül; a commit címe „ellenőri jelentés”-t mond, l. BRIEF_SABLON „Jelentés”).
+      kerül; a commit címe `<tétel>: ellenőri jelentés (…)` alakú, l. BRIEF_SABLON
+      „Jelentés”; a cím közepén álló „ellenőri jelentés” szó nem számít).
+  Az összesítés az átlagot kétféle alapon adja: minden mért PR-on, és csak az
+  ellenőrzött PR-okon (ahol volt ellenőr-commit).
   `ci_javitas`: a „CI-javítás” című commitok száma (a /kovetkezo 10. lépése).
 - `ellenor_perc`: ellenőri futásonként a jelentést rögzítő commit és az azt
-  megelőző PR-commit időbélyegének különbsége (perc). **Korlát:** ez felső
-  becslés (benne van a session mentése, és ha a menet közben állt, a várakozás
-  is); ha a PR-ban nincs ellenőr-commit, „nem mérhető”. Az összesítés a
-  legnagyobbat és az összeget adja.
+  megelőző PR-commit szerzői időbélyegének (`authoredDate`; a rebase ezt nem írja
+  át, a committer-dátumot igen) különbsége (perc). **Korlát:** becslés, két irányban
+  is torzíthat: benne van a session mentése és a menet esetleges állása (túlbecslés),
+  és ha a session az ellenőr futása közben commitolt (pl. fejléc), a rés rövidebb
+  (alulbecslés). Ha a PR-ban nincs ellenőr-commit, „nem mérhető”. Az összesítés a
+  legnagyobbat adja.
 - `ci_futas`, `ci_bukott`, `ci_perc_atlag`, `ci_perc_osszes`: az `ellenorzes`
   workflow futásai a PR ágán (`gh run list --branch`); a futás ideje az
   `updatedAt − createdAt` (a sorban állással együtt).
@@ -67,7 +72,7 @@ CEL_ELLENOR_PERC = 15.0
 
 _ELLENOR_FAJL = re.compile(r'^naplok/ELLENOR_(F[0-9A-Za-z]+?)(?:_(\d+))?\.md$')
 _KOR_JELOLO = re.compile(r'(?:\[elteres_kor\s+(\d)/2\]|[Jj]avítókör\s+(\d)/2)')
-_ELLENORI_JELENTES_CIM = re.compile(r'(?i)ellenőri jelentés')
+_ELLENORI_JELENTES_CIM = re.compile(r'^[^\s:]+:\s+ellenőri jelentés\b', re.IGNORECASE)
 _CI_JAVITAS = re.compile(r'CI-javítás')
 _TETEL_ELOTAG = re.compile(r'^([A-Z][A-Z0-9_-]*?)[.:]')
 
@@ -117,8 +122,8 @@ def _perc(a, b):
 
 def ellenor_commit_e(cim, fajlok):
     """Az ellenőri jelentést rögzítő commit: `naplok/ELLENOR_*.md`-t hoz létre (`fajlok`: a commit által
-    HOZZÁADOTT fájlok; a meglévő jelentés kiegészítése nem új futás), vagy a címe „ellenőri jelentés”-t mond
-    (F188 T1 egy-fájlos jelentés)."""
+    HOZZÁADOTT fájlok; a meglévő jelentés kiegészítése nem új futás), vagy a címe `<tétel>: ellenőri jelentés`
+    kezdetű (F188 T1 egy-fájlos jelentés)."""
     if fajlok and any(_ELLENOR_FAJL.match(f.replace('\\', '/')) for f in fajlok):
         return True
     return bool(_ELLENORI_JELENTES_CIM.search(cim or ''))
@@ -234,7 +239,8 @@ def pr_meres(szam):
         fajlok = _commit_fajlok(c.get('oid', ''))
         if fajlok is None:
             git_hiany += 1
-        commitok.append({'cim': c.get('messageHeadline') or '', 'ido': c.get('committedDate') or '',
+        commitok.append({'cim': c.get('messageHeadline') or '',
+                         'ido': c.get('authoredDate') or c.get('committedDate') or '',
                          'fajlok': fajlok})
     if all(c['ido'] for c in commitok):
         commitok.sort(key=lambda c: _ido(c['ido']))
@@ -277,6 +283,12 @@ def osszesites(sorok):
         atlag = sum(korok) / len(korok)
         ki.append('átlagos javítókör: %.2f (cél: ≤ %.0f) — %s' % (
             atlag, CEL_JAVITOKOR, 'teljesül' if atlag <= CEL_JAVITOKOR else 'nem teljesül'))
+        ell = [_szam(s['javitokor']) for s in sorok
+               if _szam(s['javitokor']) is not None and (_szam(s.get('ellenor_futas')) or 0) > 0]
+        if ell:
+            a2 = sum(ell) / len(ell)
+            ki.append('átlagos javítókör az ellenőrzött PR-okon: %.2f (%d PR) — %s' % (
+                a2, len(ell), 'teljesül' if a2 <= CEL_JAVITOKOR else 'nem teljesül'))
     else:
         ki.append('átlagos javítókör: %s' % NEM_MERT)
     percek = []
@@ -286,7 +298,7 @@ def osszesites(sorok):
                 percek.append(_szam(p))
     if percek:
         tul = sum(1 for p in percek if p > CEL_ELLENOR_PERC)
-        ki.append('ellenőri futás: %d mért, legnagyobb %.0f perc, %d a %.0f perces cél fölött (felső becslés)'
+        ki.append('ellenőri futás: %d mért, legnagyobb %.0f perc, %d a %.0f perces cél fölött (becslés)'
                   % (len(percek), max(percek), tul, CEL_ELLENOR_PERC))
     else:
         ki.append('ellenőri futás: %s (nincs ellenőr-commit a mért PR-okban)' % NEM_MERHETO)

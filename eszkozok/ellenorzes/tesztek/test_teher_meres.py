@@ -58,6 +58,10 @@ class JavitokorTeszt(unittest.TestCase):
                     {'cim': 'F190.6: ellenőri jelentés (2. ellenőrzés: TISZTA)', 'fajlok': None}]
         self.assertEqual(T.javitokor([], commitok), (1, 'ellenőr-commit'))
 
+    def test_cim_kozepen_nem_ellenor_commit(self):
+        self.assertFalse(T.ellenor_commit_e('F102.14: az első ellenőri jelentés pótlása a CI-sorhoz', []))
+        self.assertTrue(T.ellenor_commit_e('F190.4: ellenőri jelentés (1. ellenőrzés: TISZTA)', None))
+
     def test_nincs_jel(self):
         self.assertEqual(T.javitokor(['adat/x.tsv'], [{'cim': 'F1.1: x', 'fajlok': ['adat/x.tsv']}]),
                          (0, 'nincs jel'))
@@ -110,12 +114,14 @@ class KimenetTeszt(unittest.TestCase):
 
     def test_osszesites_celokkal(self):
         sorok = [self._sor(pr='#1', admin='2', tartalmi='5', javitokor='0', ellenor_perc='12', ci_perc_atlag='1.0',
-                           ci_futas='2'),
+                           ci_futas='2', ellenor_futas='1'),
                  self._sor(pr='#2', admin='9', tartalmi='1', javitokor='2', ellenor_perc='40;20',
-                           ci_perc_atlag='2.0', ci_futas='3')]
+                           ci_perc_atlag='2.0', ci_futas='3', ellenor_futas='3'),
+                 self._sor(pr='#3', admin='1', tartalmi='0', javitokor='0', ellenor_futas='0')]
         ki = T.osszesites(sorok)
-        self.assertIn('admin ≤ tartalmi: 1 / 2 PR teljesíti (cél: mind)', ki)
-        self.assertTrue(any(s.startswith('átlagos javítókör: 1.00') and s.endswith('teljesül') for s in ki), ki)
+        self.assertIn('admin ≤ tartalmi: 1 / 3 PR teljesíti (cél: mind)', ki)
+        self.assertTrue(any(s.startswith('átlagos javítókör: 0.67') and s.endswith('teljesül') for s in ki), ki)
+        self.assertIn('átlagos javítókör az ellenőrzött PR-okon: 1.00 (2 PR) — teljesül', ki)
         self.assertTrue(any('legnagyobb 40 perc, 2 a 15 perces cél fölött' in s for s in ki), ki)
 
     def test_nem_mert_nem_ures(self):
