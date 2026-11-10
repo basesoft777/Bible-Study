@@ -16,11 +16,17 @@ ami itt tiszta, az a CI-ban is az.
   szándékot csak a végrehajtó tudja. Ezért alapból csak jelez, és kiírja a kész
   jelölősort; a `--e5-jelol --ir --commit-uzenet-fajl F` hármas fűzi az F
   üzenetfájlba (a `Co-Authored-By` sor elé).
-- **E8** (tiltott igehely-formátum): a STEPBible-alak (`Gen.12.7`) a tanulmányfájlban
-  adatformátum-idézet, ezért kódformázást kap (`` `Gen.12.7` ``); egy adatforrást
-  megnevező sorban (`.tsv`, `adat/`, `konkordancia/`, `scope=`) az idézőjeles
-  (`„…”`, `"…"`) igehely-idézet szintén. Más esetben (próza: `1 Móz 3:16`) csak jelez,
-  a javasolt alakkal (`1Móz 3:16`).
+- **E8** (tiltott igehely-formátum): kódformázást csak két helyen ad (ELLENOR_F188 3.):
+  táblacellában (a tanulmányfájl STEPBible-alakja, pl. `` `Gen.12.7` ``, és az adatsor
+  idézőjeles igehely-idézete), valamint rövid (legfeljebb `E8_ROVID_IDEZET` karakteres),
+  egysoros adatidézetben egy adatforrást megnevező sorban (`.tsv`, `adat/`,
+  `konkordancia/`, `scope=`). Prózában (a STEPBible-alak is, a hosszú idézet is, és
+  `1 Móz 3:16`) csak jelez, a javasolt alakkal (`1Móz 3:16`).
+
+**Generált fájlba soha nem ír** (ELLENOR_F188 3.): `lexikon/`, `nyilt_mag/`,
+`generalt_proba/`, és minden fájl, amelynek az első sorai között `# GENERÁLT` vagy
+`<!-- GENERÁLT:` jelölés áll; kézi fájlban a `GENERÁLT-KEZDET` … `GENERÁLT-VÉGE` blokk
+sorait sem írja. Ezeken a találat jelzés: a forrást kell javítani, és újragenerálni.
 
 Tájékoztató jelzés (F188 T2, nem gátol, a kilépési kódba nem számít): a nyitott tételben, a README-ben és a
 jelentésben a hozzáadott sor, amely egy `.tsv` tábla darabszámát ismétli proveniencia-sor nélkül
@@ -59,6 +65,13 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 _HELYORZO_RESZLETBEN = re.compile(r'`((?:DT|N|D)-F\d+[a-z]*)`')
 E8_ADATFORRAS = re.compile(r'\.tsv\b|\badat/|\bkonkordancia/|\bscope\s*=')
+E8_ROVID_IDEZET = 60  # karakter, az idézőjelekkel együtt
+GENERALT_KONYVTAR = ('lexikon/', 'nyilt_mag/', 'generalt_proba/')
+GENERALT_FEJLEC_SOROK = 5
+_GENERALT_FEJLEC = re.compile(r'^\s*(?:#\s*GENERÁLT\b|<!--\s*GENERÁLT:)')
+_GENERALT_BLOKK_KEZD = re.compile(r'<!--\s*GENERÁLT-KEZDET')
+_GENERALT_BLOKK_VEGE = re.compile(r'<!--\s*GENERÁLT-VÉGE')
+GENERALT_JELZES = ' (generált fájl vagy blokk: nem írom; a forrást javítsd, és generáld újra)'
 _E8_IDEZET = re.compile(r'„[^”\n]*”|"[^"\n]*"')
 _E8_STEP = SZ.TANULMANY_TILTOTT_IGEHELY_MINTAK[1]
 # javasolt alak a prózai esethez (csak jelzésben; nem írja)
@@ -103,6 +116,40 @@ def _sor_torzs(sor):
 def _ir_sorok(relut, sorok):
     with open(os.path.join(K.ROOT, *relut.split('/')), 'w', encoding='utf-8', newline='') as f:
         f.write(''.join(sorok))
+
+
+def generalt_fajl(relut, sorok=None):
+    """Generált (kimenet-rétegbeli) fájl-e: a könyvtára, vagy a fejlécében álló `# GENERÁLT` / `<!-- GENERÁLT:`
+    jelölés szerint (CLAUDE.md „Rétegek”: kézzel szerkeszteni tilos)."""
+    relut = relut.replace('\\', '/')
+    if relut.startswith(GENERALT_KONYVTAR):
+        return True
+    if sorok is None:
+        try:
+            sorok = _olvas_sorok(relut)
+        except (IOError, OSError, UnicodeDecodeError):
+            return False
+    return any(_GENERALT_FEJLEC.match(s) for s in sorok[:GENERALT_FEJLEC_SOROK])
+
+
+def generalt_blokk_sorai(sorok):
+    """A `GENERÁLT-KEZDET` … `GENERÁLT-VÉGE` blokkok sorszámai (1-alapú, a jelölőkkel együtt)."""
+    ki, bent = set(), False
+    for i, s in enumerate(sorok, start=1):
+        if _GENERALT_BLOKK_KEZD.search(s):
+            bent = True
+        if bent:
+            ki.add(i)
+        if _GENERALT_BLOKK_VEGE.search(s):
+            bent = False
+    return ki
+
+
+def _generalt_vissza(leletek, relut):
+    for le in leletek:
+        if le.fajl == relut and le.javitott:
+            le.javitott = False
+            le.szoveg += GENERALT_JELZES
 
 
 def _git(args):
@@ -187,6 +234,9 @@ def e32_javitasok(fajlok, ir):
                     le.javitott = False
                     le.szoveg += ' (a javítás után a fájl nem értelmezhető: %s; nem írtam)' % e
             continue
+        if generalt_fajl(relut, eredeti):
+            _generalt_vissza(leletek, relut)
+            continue
         _kiir_diff(relut, eredeti, sorok)
         if ir:
             _ir_sorok(relut, sorok)
@@ -212,22 +262,25 @@ def _becsomagol(sor, kezd, veg):
 
 
 def e8_sor_javitas(sor, tanulmany):
-    """(új_sor, maradék_jelzések). A STEPBible-alakot (tanulmányfájlban), és adatforrást megnevező sorban az
-    idézőjeles igehely-idézetet kódformázza; a többi tiltott alakra jelzést ad a javasolt alakkal."""
+    """(új_sor, maradék_jelzések). Kódformázás csak táblacellában (a tanulmányfájl STEPBible-alakja és az adatsor
+    idézőjeles igehely-idézete) és rövid, egysoros adatidézetben (adatforrást megnevező sor, legfeljebb
+    `E8_ROVID_IDEZET` karakter); prózában minden tiltott alakra csak jelzés, a javasolt alakkal (ELLENOR_F188 3.)."""
     mintak = SZ.TILTOTT_IGEHELY_MINTAK + (SZ.TANULMANY_TILTOTT_IGEHELY_MINTAK if tanulmany else [])
     adatsor = bool(E8_ADATFORRAS.search(sor))
+    tabla = sor.lstrip().startswith('|')
     for _ in range(50):  # minden kör legfeljebb egy cserét tesz; a sor véges
         csere = None
         for kezd, veg in _kodon_kivul(sor):
             resz = sor[kezd:veg]
-            if tanulmany:
+            if tanulmany and tabla:
                 m = _E8_STEP.search(resz)
                 if m:
                     csere = (kezd + m.start(), kezd + m.end())
                     break
             if adatsor:
                 for idez in _E8_IDEZET.finditer(resz):
-                    if any(mt.search(idez.group(0)) for mt in mintak):
+                    if (tabla or len(idez.group(0)) <= E8_ROVID_IDEZET) and \
+                            any(mt.search(idez.group(0)) for mt in mintak):
                         csere = (kezd + idez.start(), kezd + idez.end())
                         break
                 if csere:
@@ -258,12 +311,17 @@ def e8_javitasok(fajlok, ir):
         sorok = _olvas_sorok(relut)
         eredeti = list(sorok)
         tanulmany = K.tanulmany_fajl_e(relut)
+        generalt = generalt_fajl(relut, eredeti)
+        blokk = generalt_blokk_sorai(eredeti)
         for n in sorted(sorszamok[relut]):
             torzs, veg = _sor_torzs(sorok[n - 1])
             uj, jelzesek = e8_sor_javitas(torzs, tanulmany)
             if uj != torzs:
-                sorok[n - 1] = uj + veg
-                leletek.append(Lelet('E8', relut, n, 'adatidézet kódformázva', True))
+                if generalt or n in blokk:
+                    leletek.append(Lelet('E8', relut, n, 'kódformázható adatidézet' + GENERALT_JELZES, False))
+                else:
+                    sorok[n - 1] = uj + veg
+                    leletek.append(Lelet('E8', relut, n, 'adatidézet kódformázva', True))
             for j in jelzesek:
                 leletek.append(Lelet('E8', relut, n, j, False))
         if sorok != eredeti:
