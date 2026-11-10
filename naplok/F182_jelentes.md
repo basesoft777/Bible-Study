@@ -14,12 +14,13 @@
 | Tétel | Commit | Idő (commit) | Lényeg |
 |---|---|---|---|
 | F182.0 | 6337bdba | 07:42 | fejléc: `allapot: fut`, `ag: claude/hamart-javito` |
-| F182.1 | ab258f05 | 07:53 | határ: K1, K5, K6 átvezetve; K2, K3 lezárt; K4 a felhasználóé |
+| F182.1 | ab258f05 | 07:53 | határ: K1, K5, K6 átvezetve; K2, K3 lezárt; K4 a felhasználóé (eldőlt: F182.7) |
 | F182.2 | dbdbb45e | 08:09 | kapcsolatok (F16): 103 jelölt, 56 kapcsolat-sor |
 | F182.3 | 7a54418d | 08:14 | próza a forrásban: F2, F24 (a)(b), a határkör következményei |
 | F182.4 | 7eb3e62c | 08:17 | TBESG-glossza: G1944, G2671, G5356 |
 | F182.5 | ad7f3ee2 | 08:35 | a nyílt mag újragenerálása (CI E35), a négy új indoklás angol párja, egy kódkönyv-sor |
-| F182.6 | (ez a commit) | — | jelentés, a brief fejléce: `allapot: megallt` |
+| F182.6 | fffe83c2 | 08:50 | jelentés, a brief fejléce: `allapot: megallt` |
+| F182.7 | (ez a commit) | — | K4 alkalmazása: DT-F182d (A); a HAMART határa lezárt (F26) |
 
 ### 1. Határkérdések (`naplok/HATAR_HAMART-001.md`, 48 sor)
 
@@ -30,11 +31,11 @@ Minden kérdésnél előbb megnéztem, van-e rá szerkesztői döntés (`DONTESE
 | K1 (1Móz 4:2-3 ↔ 9:20, „földmívelő”) | nincs | **eldöntve: DT-F182a** — az 1Móz 4:2-3 kint | A negatív kritérium kizárja a „föld mint talaj” általános használatot, és megköveteli az átok kimondását, ismétlését vagy megfordítását. Mért jegy (TAHOT, 1Móz 1–9 minden H0127-verse): az 1Móz 2:5, 4:2-3 és 9:20 a földet művelés vagy foglalkozás megnevezésében hozza, átok nélkül; a bent álló 11 adámá-vers mind ítéletet mond ki vagy hajt végre. Azonos jegy, azonos sors: mindhárom kint. A 9:20 indoklása ugyanarra a szövegre igazodott. `elofordulasok.tsv` 48 → 47 sor, 56 → 54 vers. |
 | K2 (Ez 12:19 bent ↔ Hab 2:8, 2:17 kint) | DT-F123ha (B), DT-F123hc (K3) | **lezárt** | Következetesség mérve (TAHOT, minden chámász-vers): a 13 vers, amelyben a chámász mellett a ml'-tő (ige vagy a melóá főnév) vagy a sámá áll, mind bent; a 46 szópár nélküli mind kint. Az Ez 12:19 a ml'-tő egyetlen főnévi esete. Adat nem változott. |
 | K3 (Gal 3:13-14) | N-F123hc, DT-F123hd, DT-F123he | **lezárt, nem nyitottam újra** | A lap a sort „Határeset: a kapcsolat az áldás-mondaton át” funkcióval és a „Határesetek” listán (közepes) mutatja; olvasható. Megjegyzés: a felhasználó „tematikus kapcsolat”-nak nevezte, az adat „határeset”-nek (a G1944 a versben áll, ezért nem „tematikus, nem lexikai” sor). |
-| K4 (Ez 28:16, Mik 6:12, Sof 1:9: a szópár a föld nélkül) | nincs | **a felhasználóé: DT-F182d 🟡** | A negatív kritérium második mondata két olvasatot enged (l. lent). Adat nem változott. |
+| K4 (Ez 28:16, Mik 6:12, Sof 1:9: a szópár a föld nélkül) | nincs | **lezárt: DT-F182d (A), a felhasználó döntése** (2026-11-10, az orkesztrátor továbbításában: „a”) | A szópár (málé + chámász, illetve sámá + chámász) önmagában elég: a formula az 1Móz 6:11-13 szava, maga utal vissza. A sorok maradnak. Az öt vers (Ez 28:16, Mik 6:12, Sof 1:9, Jer 6:7, Hab 1:2) indoklása (`jeloltek.tsv`) és 1/a prózája (`elofordulasok.tsv`) ezt kimondja (`naplok/F182_k4.py`, összevetéssel). A sámá-soroknál pontosítva: az 1Móz 6:11 és 6:13-ban a chámász a málé igével áll (TAHOT: H2555 + H4390), a sámá nem; ott az indoklás azt mondja, hogy az erőszak szava az 1Móz 6:11-13 szava, a „hallatszik az erőszak” pedig a lánc szópárja. A nyílt mag és az öt indoklás angol párja frissítve (Sonnet; két helyen a „voice of the earth” félrefordítást „word for the earth”-re javítottam: `claude-sonnet-5-5; javítás: claude-opus-5-5`); a nyílt mag kapuja 0 BUKÁS. |
 | K5 (1Móz 6:5 ↔ Jer 17:9 „jetzer”) | DT-F123ha (E), DT-F123hc (K8) | **lezárt; az indoklás frissítve: DT-F182b** | A sor marad. Az elavult indoklás (a kivezetett רַע szóra épült) helyett: a vers a 6:7 ítéletének indoka ugyanabban az elbeszélésben, és a bent álló 8:21 ugyanezt az indokot mondja ki; a Jer 17:9, Jer 4:14, Mt 15:19, Mk 7:21-23 a lánc elbeszélésén kívül áll. |
 | K6 (Gal 3:14, Zsid 6:7 a tartományban ↔ Róm 8:20 kint) | DT-F123hd (Gal), DT-F123hc (K10, Róm) | **Gal és Róm lezárt; Zsid: DT-F182c** | Szabály a két lezárt döntéssel összhangban: a tartomány addig tart, ameddig a hely állításához szükséges rész áll. A Zsid 6:8 igenévi mondatának alanya (γῆ) a 6:7-ben van (TAGNT; Károli: „A mely pedig …”), a Róm 8:21 maga hordozza az alanyt (κτίσις) és a φθορά szót. Csak a Zsid 6:7-8 indoklása változott. |
 
-Írás: `naplok/F182_hatar.py` (soronkénti összevetés az eredetivel; csak a megnevezett mezők változhattak). `ellenoriz.py`: 0 SÉRTÉS. A 39. szabály jelzi, hogy a határ-ellenőrzés modelles része a 48 soros állapotra készült (ma: 47); az újrafuttatás a 2. fázis listáján áll.
+Írás: `naplok/F182_hatar.py` (soronkénti összevetés az eredetivel; csak a megnevezett mezők változhattak). `ellenoriz.py`: 0 SÉRTÉS. A 39. szabály jelzi, hogy a határ-ellenőrzés modelles része a 48 soros állapotra készült (ma: 47). **A HAMART határa lezárt (F26): nem lesz újabb modelles határ-kör**; a 39. szabály JELENTÉS-e ezért ismert, elfogadott eltérés (a K1–K6 döntései: ez a jelentés és a `dontesek/uj/hamart-javito.md`).
 
 ### 2. Kapcsolatok (F16)
 
@@ -45,7 +46,7 @@ A HAMART-001-nek eddig 0 sora volt az `adat/kapcsolatok.tsv`-ben.
 - A lánc fő ívei a táblában: 1Móz 3:17 → 4:10-11 (Variáns), → 5:29, → 8:21 (Kontraszt), → 5Móz 28:18; 6:11 → 6:13 és az ezékieli „megtelt erőszakkal” helyek; 6:12 → 6:13 (Variáns, tükörítélet); 6:5 → 8:21 (Kontraszt); 6:17 → 9:11 (Kontraszt); 1Móz 3:18 → Hós 10:8, Zsid 6:7-8; 12:3 → Gal 3:13-14 (közepes, határeset).
 - A meglévő 32 kapcsolat-sor bájtra változatlan (a szkript összeveti).
 - **N-F182a:** a `jeloltek.tsv`-ben nincs igehely-pár jelöltfajta (SEMA 2.3 „a küszöb alatti sor a jeloltek.tsv-ben marad” ↔ 2.4 `jelolt_tipus`: csak `elofordulas`, `motivumkozi`); a jelöltnapló ezért a `naplok/` alatt áll.
-- Ha a K4 a (B)-re dől, az Ez 28:16, a Jer 6:7 és a Hab 1:2 kapcsolat-sora is kikerül (a Mik 6:12 és a Sof 1:9 a redundancia-szabály miatt eleve nem kapott sort).
+- A K4 az (A)-ra dőlt: az Ez 28:16, a Jer 6:7 és a Hab 1:2 kapcsolat-sora marad (a Mik 6:12 és a Sof 1:9 a redundancia-szabály miatt nem kapott sort).
 
 ### 3. Próza a forrásban
 
@@ -74,21 +75,16 @@ Az `adat/*.tsv` változásával a commitolt `nyilt_mag/` az újragenerált expor
 
 ## Nyitott kérdések a felhasználóhoz
 
-1. **K4 (DT-F182d): elég-e a „megtelt erőszakkal” / „hallatszik az erőszak” szópár önmagában, vagy a helynek a földet is ki kell mondania?**
-   - (A) A szópár maga a visszautalás: a sorok maradnak, az indoklásuk kimondja, hogy a szópár az 1Móz 6:11-13 szava. A mai adat ezen az olvasaton következetes: 13/13 szópáros chámász-vers bent, 46/46 szópár nélküli kint.
-   - (B) A föld szava is kell: az Ez 28:16, a Mik 6:12, a Sof 1:9, a Jer 6:7 és a Hab 1:2 kikerül (47 → 42 sor), a Mik 6:13 és az Ez 28:17 „folytatás”-indoka átírandó, és 3 kapcsolat-sor is kikerül.
-   - **Javaslat: (A)**, mert az eddigi szerkesztői döntés (DT-F123hc K3) a szópárt szükséges feltételként rögzítette, és a fölérendelt fogalom felé nem hígít: a szópár a lánc saját szava. Ha (A), a negatív kritérium második mondatát érdemes pontosítani („… vagy a lánc szópárja, amely maga az 1Móz 6:11-13 szava”), és ez szerkesztői döntés.
-2. **K1 visszafordíthatósága (DT-F182a, tájékoztatás):** az 1Móz 4:2-3 kivételét a negatív kritériumból vezettem le. Ha a szerkesztő a (b)-t választja (a földmívelő-helyek a genezisi elbeszélés részeként bent), a `naplok/F182_hatar.py` visszafordítható, és a 9:20 is bekerül.
+1. **K4 (DT-F182d): eldőlt, (A)** (a felhasználó, 2026-11-10: „a”). Nyitva marad egy szerkesztői javaslat: a negatív kritérium második mondatának pontosítása („… vagy a lánc szópárja, amely maga az 1Móz 6:11-13 szava”); a `motivumok.tsv` szövegét ez a fázis nem írta át.
+2. **K1 (DT-F182a, tájékoztatás):** az 1Móz 4:2-3 kivételét a negatív kritériumból vezettem le. A HAMART határa lezárt (F26); ha a szerkesztő mégis a (b)-t választaná, a `naplok/F182_hatar.py` visszafordítható.
 3. **N-F182a:** a kapcsolat-jelölt helye: új `jelolt_tipus`, vagy a `naplok/` alatti jelöltnapló a rögzített út.
 
 ## A 2. fázis listája (tétel → érintett fájl → előfeltétel)
 
-*A 2. fázis a generátort, a kapukat és a lapot írja. Közös feltétele: a #104 a main-en (`lexikon_general.py` és kapuk), a #187 a main-en (ugyanazt a generátort írja), és a K4 döntése (a sorhalmaz). A lap újragenerálása az utolsó lépés.*
+*A 2. fázis a generátort, a kapukat és a lapot írja. Közös feltétele: a #104 a main-en (`lexikon_general.py` és kapuk) és a #187 a main-en (ugyanazt a generátort írja). A sorhalmaz végleges (K4 eldőlt, a határ lezárt: F26). A lap újragenerálása az utolsó lépés.*
 
 | Tétel | Érintett fájl | Előfeltétel |
 |---|---|---|
-| K4 alkalmazása, ha (B) | `adat/jeloltek.tsv`, `adat/elofordulasok.tsv`, `adat/kapcsolatok.tsv`, `motivumok/HAMART-001.md` | a felhasználó döntése (DT-F182d) |
-| Határ-ellenőrzés újrafuttatása a végleges sorhalmazon (39. szabály: a modelles rész n=48-ra készült) | `naplok/HATAR_HAMART-001.md` | K4; a felhasználó jóváhagyása (`hatar-ellenor`) |
 | F1 — a 2. szakasz összegző következtetése (súlypont, szövetség-arány) | `eszkozok/olvasoi_kovetkeztetes.py`, `eszkozok/teszt_olvasoi_kovetkeztetes.py`, `sablonok/6_*` | #104, #187 |
 | F3 — a kizárások teljes listája mellékletlapon; a blokk-tagok az adatrétegbe; a 1 717 ↔ 1 754 számeltérés mérése | `eszkozok/lexikon_general.py`, új adattábla + `adat/SEMA.md`, `nyilt_mag/*` | #104, #187 |
 | F4 — az indoklás-mezők névelője és átírása (héber/görög írás + zárójeles kiejtés); a kapu; az angol nyílt mag újrafordítása | `adat/jeloltek.tsv`, `adat/elutasitasi_okok.tsv` (a minták az indoklás szövegére illeszkednek), `eszkozok/olvasoi_kapu.py` + teszt, `adat/nyilt_angol.tsv` | #104 (kapu); az adatjavítás a kapuval együtt, hogy a minták és a szöveg egy lépésben változzanak |
@@ -121,5 +117,5 @@ Az `adat/*.tsv` változásával a commitolt `nyilt_mag/` az újragenerált expor
 
 ## Ellenőrzés a menet végén
 
-- `python eszkozok/ellenoriz.py`: 0 SÉRTÉS (a 39. szabály JELENTÉS-e a fenti határ-újrafuttatás).
+- `python eszkozok/ellenoriz.py` (az F182.7 után): **1 SÉRTÉS**, a 11. szabály („Rés-forrás egyezés”): a lap négy rése (`kivonat`, `miert_fontos`, `ertelmezes`, `modszertan`) eltér a forrástól, mert az F182.3 a `motivumok/HAMART-001.md` prózáját javította, a lap viszont az 1. fázisban nem generálódhatott újra (a `lexikon/` alatt semmit nem írtam). Az F182.1–F182.2 utáni futás még 0 SÉRTÉS volt; az F182.3 után nem futtattam újra, ezért ez csak most derült ki. **Döntés kell (orkesztrátor):** (a) a lap újragenerálása már most (a lexikonlap-tilalom alóli kivétel, csak a rések frissülnek); (b) a CI-hiba vállalása a 2. fázisig (a PR addig nem mergelhető); (c) a forrás prózajavításának visszavétele a 2. fázisig. Javaslat: (b), mert a PR úgyis a 2. fázissal együtt zárul, és a lap a 2. fázisban egyszer generálódik újra. A 39. szabály JELENTÉS-e a lezárt határ ismert eltérése (F26).
 - `python eszkozok/nyilt_mag_kapu.py`: 0 BUKÁS. A CI-futtató (`eszkozok/ellenorzes/futtat.py`) helyben: az F182.2 utáni futás egyetlen hibát adott (a kódkönyv hiányzó zárt értéke, az F182.5 javította); a teljes ágra indított futás 25 perc után időtúllépéssel megállt, eredmény nélkül. A teljes CI a GitHubon fut a push után.

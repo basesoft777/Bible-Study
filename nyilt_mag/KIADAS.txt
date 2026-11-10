@@ -1,4 +1,4 @@
-kiadas_azonosito: 2026-11-10-6e69967ef99db69e
+kiadas_azonosito: 2026-11-10-92c182d8898831a3
 adatallapot_datuma: 2026-11-10
-tartalmi_hash_sha256: 6e69967ef99db69e17bf5c4cc8e2720ecbc641220625cc6258c98682a17733fe
+tartalmi_hash_sha256: 92c182d8898831a39db6b653cc9d5164a74753bf7e06ddac6de6057c9a939c64
 kozzeteteli_hely: <KANONIKUS_FORRAS_URL>
