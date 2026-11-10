@@ -1671,7 +1671,7 @@ F131.1-ben itt tartott átmeneti kézi határok az F131.3.6-ban kivezetve). **A 
 szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak a szótári gerinccel
 renderelt motívumok (`lexikon_general.gerinc_aktiv`, 2.44) Strongjai: az arany lap (ISTENTISZT-001), és a #123
 migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT417).
-Olvasás `split('\t')`. **Az új szerkezetű lapon (F104, DT-F104b)** a címke a 4.2 BDB-kártyájának olvasói rétegében is áll
+Olvasás `split('\t')`. **Az új szerkezetű lapon (F104, DT690)** a címke a 4.2 BDB-kártyájának olvasói rétegében is áll
 (a jelentések rendje, „A motívum helyein”); a kártya kutatói rétegének (szótári apparátus) gépi jelölője a generátor
 `lexikon_general.APPARATUS_KEZDET` / `APPARATUS_VEGE` konstansa (ott definiálva; itt csak hivatkozás), az olvasói réteg
 kapuja a 3.11 `BDB_OLVASOI`.
