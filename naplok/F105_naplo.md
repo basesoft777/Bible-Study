@@ -231,3 +231,33 @@ A felhasználó a mintát nem tölti ki. Az eljárás: két független, vak Opus
 Az 5. szakasz táblájának „kézi ítélet” oszlopa üres marad: az ítéletet a két kitöltő-fájl hordozza.
 
 *proveniencia: scope=F105 50-es minta (seed 105, az 1 823 jelöltből) | forras=naplok/F105_vak_osszevet.py | ts=2026-11-10*
+
+## 8. A rafe-maqqéf szabály vak mintája (ELLENOR_F105 3.; orkesztrátori eljárás, 2026-11-10)
+
+**Eljárás.** `naplok/F105_vak_maqqef.py` (F105.16): a rafe-maqqéfes szavak közül azok, amelyeknél a hivatkozott vers a
+szóhatárt eldönti (pool 1 507; a vers TAHOT-sorainak összefűzése adja a szóhatárt), seed 1051-gyel 50 tétel. Tételenként a
+Károli-kulcs, a vers TAHOT-szövege és két jelölt: a szabály kimenete és a rafét hordozó betű másik oldali bontása (összevont
+alternatíva a mintában nem fordult elő). Az A/B tételenként rögzített seeddel véletlen (24 tételben az A a szabályé); a geres
+mindkét jelöltből kikerült; gépi ellenőrzés: rafe 0, geres 0, eltérő betűsor 0, azonos jelölt 0, Strong / állapot 0. A
+kitöltés alatt a kulcs a repón kívül volt.
+
+**Kitöltők.** Két független, vak kitöltő, `claude-opus-5-5`, general-purpose subagent (a session modelljét öröklik), a
+végrehajtón kívül. *Ugyanez áll a 7. szakasz első vak mintájára is (az ELLENOR_F105 a modellnevet hiányolta).*
+
+**Eredmény** (`python naplok/F105_vak_maqqef_osszevet.py`; fájlok: `naplok/F105_vak_maqqef_minta.md`, `_kulcs.tsv`,
+`_kitolto_1.tsv`, `_kitolto_2.tsv`):
+
+| | a szabályt választja / n | 95% Wilson |
+|---|---|---|
+| 1. kitöltő | 49 / 50 | 0,895–0,996 |
+| 2. kitöltő | 49 / 50 | 0,895–0,996 |
+| a két kitöltő egyezik (0 eltérés) és a szabályt választja | 49 / 50 (98%) | 0,895–0,996 |
+
+**Kapu:** ≥ 97% a pontbecslésre (orkesztrátori döntés): 98% → teljesül, a szabály marad.
+
+**A 41. tétel (Préd 4:2, `עֲדֶ֫נָֿה`):** a kulcs szerint az A a szabályé (`עֲדֶ֫־נָה`), mindkét kitöltő `egyik_sem`-et adott: a
+versben ez egyetlen szó (`עֲדֶנָה`), a TAHOT csak a végződést tagolja le. Szón belüli rafe, amelyet a szabály maqqéfnek vesz.
+Szűken nem javítható: a „saját magánhangzós rafés betű teljes magánhangzós betű után → marad” kivétel 12 mért jó esetet is
+érintene (ott a forrás a magánhangzót az előző betűre tolta, pl. `לאֹיִֿכָּרֵת`, `אֶתִשְֿׁמוֺ`, vagy az első szó magánhangzóra
+végződik, `וּבָאתָלְֿךָ`). **Maradék ismert hiba.** *A minta tervezési korlátja:* a „vers dönt” ítélet a TAHOT morfématagolásán
+áll, ezért a leválasztott végződés (itt `נָ | ה`) álszóhatárt adhat; a 41. tétel így került a poolba.
