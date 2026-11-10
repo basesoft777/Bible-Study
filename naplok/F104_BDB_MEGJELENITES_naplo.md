@@ -20,7 +20,7 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
 - **Nem készült el (a brief 2. pontja):** a `/szo/<strong>?vers=` paraméter. A vers-kontextus a versből megnyitott szó-fülön
   (`/<könyv>/<f>/<v>?szo=…&ful=szo`, `/r/szo/…?ig=…`) működik; az önálló szó-lap `?vers=` paramétere az `alkalmazas.py` és az
   `oldalak.py` módosítását kívánná, ezek nincsenek az `ir`-ben. Döntésre: a #104 javítókörébe kerüljön-e (két fájl, néhány sor), vagy
-  külön tétel.
+  külön tétel. → Döntés: kimarad, N-F104b (8. szakasz).
 
 ## 2. A szó-lap BDB-blokkja (F104.1)
 
@@ -55,8 +55,8 @@ lépésénél megállva (felhasználói próba a futó szerveren + a lexikonlap-
 ## 3. DT-F104a — a gyenge (b) szint igetörzs-forrása
 
 A TAHOT kivonata (és a `token_eredeti`) nem hordoz morfológiát. A javasolt (a): a jelenlét a TAHOT szerint, az igetörzs a versbeli azonos
-Strongú Macula-sor OSHB-kódjából (`morf_kulcs_heber` `igetorzs`; arámi szónál az arámi kulcs). A végrehajtó ezzel haladt tovább; a tétel
-🟡, megerősítésre (`dontesek/uj/f104-bdb-megjelenites.md`).
+Strongú Macula-sor OSHB-kódjából (`morf_kulcs_heber` `igetorzs`; arámi szónál az arámi kulcs). A végrehajtó ezzel haladt tovább; az orkesztrátor
+megerősítette (🟢, a licenc-ellenőrzés után, 8. szakasz) (`dontesek/uj/f104-bdb-megjelenites.md`).
 
 ## 4. A mért pontosság egy forrásból
 
@@ -76,7 +76,7 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
 
 ## 6. A lexikonlap 4.2 kétrétegű BDB-kártyája (F104.3; DT-F104b)
 
-- **Csak az új szerkezetű lapon** (`ctx['uj']` = `uj_szerkezet(id)`, ma a HAMART-001); a régi út változatlan (teszt). A görög (Thayer)
+- **Csak a kapcsolóval bekapcsolt új szerkezetű lapon** (`ctx['bdb_kartya']` = `bdb_kartya_aktiv(id)`; a kapcsoló a 9. szakaszban); a régi út változatlan (teszt). A görög (Thayer)
   4.2-ben csak a bevezető ismétlődése szűnt meg.
 - **Olvasói réteg:** a jelentések rendje (a hordozó szakasz félkövér; a glossza a `szotar_szakasz_cimke.tsv` címkéje, ennek híján a
   magyar szöveg első tagmondata az első zárójel, igehely, héber szó, rövidítés és hivatkozó szó előtt; az alakjegyzékkel nyíló szakasz
@@ -101,9 +101,7 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
   szakasz `<details>`-ét olvassa (a 4.2-t nem). Az olvasói kapu a HTML-megjegyzést kiveszi. A lektor-felület (`lektor_felulet/lapnezet.py`)
   üres sorral határolt blokkokra bont; a `<details>` és a megjegyzés-sor már ma is előfordul a lapon — **nem futtattam**, kódolvasás alapján
   nem bukik.
-- **E28:** a kézi utánzat (a migrált nézetek újragenerálása a repón kívülre, a commitolt fájl `ts=` dátumával): ISTENTISZT-001, ALVIL-001,
-  TEREMT-002, ANTROP-001 **AZONOS**; **HAMART-001 ELTÉR** (csak a 4.2, a szándékolt változás). A lap nem generálódott újra (utasítás
-  szerint); a CI E28 a HAMART-001-en ezért HIBA lesz, amíg a lap újra nem generálódik — döntésre.
+- **E28:** l. a 8. szakaszt (a kapcsolóval mind az öt nézet bájtra azonos).
 - **Minta (a repón kívül):** `C:\Users\bases\AppData\Local\Temp\claude\aa58ea4f1403746e\4a9af85a-3b17-4dbd-95ea-f0d25820c95d\scratchpad\f104_minta\`
   — a teljes lap: `lexikon\HAMART-001_TUDOMANYOS.md`; kivágva: `HAMART-001_4.2_heber.md`, `HAMART-001_4.2_gorog.md`.
 - **Nem a #104-é (változatlan):** a 2. táblázat „(nincs címke: 1.b)” cellája, a lábjegyzetek „‹E1› … sorszám” nyelve, a 4.9 tömörítése. A
@@ -121,7 +119,27 @@ a 183/200-ból újraszámolja; a `blokkok.py`-ban a szám nem áll (teszt). A la
   `teszt_ellenoriz_vedokorlat`, `teszt_torzscikk_migralt`) Windowson: a változtatás előtt és után **ugyanazok** a tesztek buknak
   (6, 1, 1, 3, 1, 1; előzetes, a #104-től független — a lexikon-fájlok ideiglenes visszaállításával mérve); az új tesztek zöldek.
 
-## 8. ⛔ Felhasználói próba (a brief 4. lépése)
+## 8. Az orkesztrátor döntései után (F104.5–F104.7; DT-F104a 🟢, DT-F104c, N-F104b)
+
+- **Kapcsoló (DT-F104c (1)):** `eszkozok/lexikon_general.py` `KETRETEGU_BDB_KARTYA` (frozenset, ma üres; egyetlen hely), a
+  `bdb_kartya_aktiv(id)` = benne van **és** új szerkezetű lap. **A #182 teendője:** a HAMART-001 újragenerálásakor a kapcsolóba
+  felvenni a `'HAMART-001'`-et, és a lapot a teljes folyamattal újragenerálni (az E28 akkor az új alakot várja). A régi lapok a saját
+  teljes folyamatukban kerülnek bele. A `BDB_OLVASOI` kapu a lap `APPARATUS` jelölőjéhez igazodik: kikapcsolt kártyánál (régi alak)
+  nem fut.
+- **E28 (kikapcsolt kapcsolóval):** az E28-utánzat (`general.py --kimenet` a repón kívülre, a commitolt fájl `ts=` dátumával;
+  a munkafa `lexikon/` = `origin/main`): ISTENTISZT-001, ALVIL-001, TEREMT-002, ANTROP-001, HAMART-001 — mind **AZONOS**.
+- **Bekapcsolt minta:** a kapcsoló csak egy repón kívüli futtató folyamatában bekapcsolva
+  (`scratchpad\minta_bekapcsolva.py`); a minta az eddigivel azonos, kivéve a (3) sorait és a dátumsorokat. Olvasói kapu a mintán:
+  0 BUKÁS, 25 FIGY (mint a mai lapon).
+- **Alakjegyzékes szakasz (DT-F104c (3)):** ha a szakasznak van magyar meghatározása az alak után, az áll („Niph'al — átkozott”,
+  „Hoph'al — átkozottnak lenni”, „Hoph'al — elrontott, tönkretett, forrásról”); ha nincs: „Pi'el — a szótár csak alakot közöl
+  (5 hely)”. Teszt: `test_csak_alakot_kozlo_szakasz`.
+- **Licenc (DT-F104a 🟢):** `adat/licencek.tsv` 26. sor `Macula_heber` (CC BY 4.0, `tisztazott`), a használt fájl
+  `konkordancia/Macula_heber_*.tsv` (`datasetek.tsv`; a DB `token_macula`); `morf_kulcs_heber` (51.), `morf_nyelv_aramai` (52.)
+  szintén `tisztazott`. A szó-lap BDB-blokkjának forrássora mostantól ezeket a táblákat és a `bdb_vers_jelentes`-t is megnevezi (F104.7).
+- **`?vers=`:** kimarad (DT-F104c (2)), N-F104b.
+
+## 9. ⛔ Felhasználói próba (a brief 4. lépése)
 
 **Indítás:** a „PaRDeS olvaso - belso (tervezo)” parancsikon a főcheckoutot indítja; ezt az ágat így:
 
