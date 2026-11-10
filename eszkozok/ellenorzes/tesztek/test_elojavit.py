@@ -104,9 +104,28 @@ class E32FajlTeszt(unittest.TestCase):
 
 
 class E8SorTeszt(unittest.TestCase):
-    def test_stepbible_tanulmanyban(self):
+    def test_stepbible_tablacellaban(self):
+        uj, jel = EJ.e8_sor_javitas('| 1 | Gen.12.7 | ígéret |', True)
+        self.assertEqual(uj, '| 1 | `Gen.12.7` | ígéret |')
+        self.assertEqual(jel, [])
+
+    def test_stepbible_prozaban_csak_jelez(self):
+        # ELLENOR_F188 3.: prózában nem formáz, csak jelez
         uj, jel = EJ.e8_sor_javitas('A Gen.12.7 versben áll.', True)
-        self.assertEqual(uj, 'A `Gen.12.7` versben áll.')
+        self.assertEqual(uj, 'A Gen.12.7 versben áll.')
+        self.assertEqual(len(jel), 1)
+
+    def test_hosszu_adatidezet_csak_jelez(self):
+        sor = ('A `adat/elofordulasok.tsv` kapcsolódása: „Az asszonynak pedig monda, lásd 1 Móz 3:16, '
+               'sokképpen megsokasítom fájdalmadat és terhességedet”.')
+        uj, jel = EJ.e8_sor_javitas(sor, False)
+        self.assertEqual(uj, sor)
+        self.assertEqual(len(jel), 1)
+
+    def test_tablacella_adatidezet(self):
+        sor = '| adat/x.tsv | „1 Móz 3:16 és a hozzá tartozó hosszabb megjegyzés, amely túllépi a hatvan karaktert” |'
+        uj, jel = EJ.e8_sor_javitas(sor, False)
+        self.assertIn('`„1 Móz 3:16', uj)
         self.assertEqual(jel, [])
 
     def test_stepbible_mas_fajlban_nem_tiltott(self):
@@ -132,19 +151,71 @@ class E8FajlTeszt(unittest.TestCase):
     def test_tanulmany_javitas_utan_tiszta(self):
         with _Gyoker() as g:
             rel = 'genezis/1Moz_12_tanulmany.md'
-            _ir(g, rel, '# T\n\nA Gen.12.7 és a Gen.13.15 egybecseng.\n\n```\nGen.1.1\n```\n')
+            _ir(g, rel, '# T\n\n| Gen.12.7 | Gen.13.15 | egybecseng |\n\n```\nGen.1.1\n```\n')
             leletek = _csendben(EJ.e8_javitasok, [rel], True)
             self.assertTrue(all(le.javitott for le in leletek))
-            self.assertIn('A `Gen.12.7` és a `Gen.13.15` egybecseng.', _olvas(g, rel))
+            self.assertIn('| `Gen.12.7` | `Gen.13.15` | egybecseng |', _olvas(g, rel))
             self.assertIn('```\nGen.1.1\n```', _olvas(g, rel))
             self.assertEqual(SZ.e8_igehely_format([rel]), [])
 
     def test_szaraz_futas_nem_ir(self):
         with _Gyoker() as g:
             rel = 'genezis/1Moz_12_tanulmany.md'
-            _ir(g, rel, 'A Gen.12.7 áll.\n')
+            _ir(g, rel, '| Gen.12.7 | áll |\n')
             _csendben(EJ.e8_javitasok, [rel], False)
-            self.assertEqual(_olvas(g, rel), 'A Gen.12.7 áll.\n')
+            self.assertEqual(_olvas(g, rel), '| Gen.12.7 | áll |\n')
+
+
+class GeneraltTeszt(unittest.TestCase):
+    """ELLENOR_F188 3.: az előjavító generált fájlba és generált blokkba soha nem ír."""
+
+    SOR = 'A `adat/x.tsv` sora: „1 Móz 3:16”.\n'
+
+    def test_generalt_konyvtar_es_fejlec(self):
+        with _Gyoker() as g:
+            _ir(g, 'naplok/F1_lista.md', '# GENERÁLT: x.py\n\n' + self.SOR)
+            _ir(g, 'tematikus_lezart/X_tematikus.md', '<!-- GENERÁLT: general.py --cel x -->\n' + self.SOR)
+            _ir(g, 'naplok/F1_kezi.md', '# Kézi\n' + self.SOR)
+            self.assertTrue(EJ.generalt_fajl('lexikon/HAMART-001_TUDOMANYOS.md', []))
+            self.assertTrue(EJ.generalt_fajl('nyilt_mag/x.md', []))
+            self.assertTrue(EJ.generalt_fajl('naplok/F1_lista.md'))
+            self.assertTrue(EJ.generalt_fajl('tematikus_lezart/X_tematikus.md'))
+            self.assertFalse(EJ.generalt_fajl('naplok/F1_kezi.md'))
+
+    def test_e8_generalt_fajlba_nem_ir(self):
+        with _Gyoker() as g:
+            for rel, eleje in (('lexikon/A-001_TUDOMANYOS.md', ''), ('naplok/F1_lista.md', '# GENERÁLT: x.py\n')):
+                _ir(g, rel, eleje + self.SOR)
+                leletek = _csendben(EJ.e8_javitasok, [rel], True)
+                self.assertEqual(_olvas(g, rel), eleje + self.SOR, rel)
+                self.assertTrue(leletek and not any(le.javitott for le in leletek), rel)
+                self.assertTrue(any('generált' in le.szoveg for le in leletek), rel)
+
+    def test_e8_generalt_blokkba_nem_ir(self):
+        with _Gyoker() as g:
+            rel = 'naplok/F1_kezi.md'
+            tartalom = ('# Kézi\n' + self.SOR + '<!-- GENERÁLT-KEZDET: x -->\n' + self.SOR +
+                        '<!-- GENERÁLT-VÉGE: x -->\n')
+            _ir(g, rel, tartalom)
+            _csendben(EJ.e8_javitasok, [rel], True)
+            uj = _olvas(g, rel).split('\n')
+            self.assertEqual(uj[1], 'A `adat/x.tsv` sora: `„1 Móz 3:16”`.')
+            self.assertEqual(uj[3], self.SOR.rstrip('\n'))
+
+    def test_e32_generalt_fajlba_nem_ir(self):
+        with _Gyoker() as g:
+            rel = 'eszkozok/gen.py'
+            _ir(g, rel, "# GENERÁLT: x.py\nA = 'blokk (DT-F9a)'\n")
+            regi = SZ.e32_kiosztott_helyorzo_literalban
+            SZ.e32_kiosztott_helyorzo_literalban = lambda f: [
+                K.Talalat('E32', 'HIBA', rel, 2, '`DT-F9a` kiosztott helyőrző …')]
+            try:
+                leletek = _csendben(EJ.e32_javitasok, [rel], True)
+            finally:
+                SZ.e32_kiosztott_helyorzo_literalban = regi
+            self.assertIn('(DT-F9a)', _olvas(g, rel))
+            self.assertFalse(leletek[0].javitott)
+            self.assertIn('generált', leletek[0].szoveg)
 
 
 class E5Teszt(unittest.TestCase):
