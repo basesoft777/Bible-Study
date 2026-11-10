@@ -67,9 +67,11 @@ def sha256_adatsorok(ut):
 
 
 def kod_hash():
-    """A forras_javit.py és a heber_sorrend.py (a heber_sorrend osztály szabálya) együttes hash-e."""
+    """A forras_javit.py, a heber_sorrend.py (a heber_sorrend osztály szabálya) és a hivatkozott-vers-próba által használt
+    eszkozok/olvaso_szerver/bdb_szelet.py (`lapit`; ELLENOR_F105 4.) együttes hash-e."""
     h = hashlib.sha256()
-    for ut in (os.path.abspath(__file__), os.path.join(ITT, 'heber_sorrend.py')):
+    for ut in (os.path.abspath(__file__), os.path.join(ITT, 'heber_sorrend.py'),
+               os.path.join(GYOKER, 'eszkozok', 'olvaso_szerver', 'bdb_szelet.py')):
         with open(ut, 'rb') as f:
             h.update(f.read().replace(b'\r\n', b'\n'))
     return h.hexdigest()
