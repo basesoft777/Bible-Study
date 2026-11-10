@@ -570,8 +570,12 @@ def cmd_karoli(args):
 
     kh_rows = load_karoli_kh()
     kh_nyers = [r for r in kh_rows if r["Igehely"] == step_key] if step_key else []
+    # F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
+    if step_key:
+        kh_nyers += karoli_kh_szuro.mek_sorok(step_key)
     # F177: csak a MEK-kel megerősített sor jut tovább (konkordancia/Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad);
     # a kiesik és a jelolt szintű sor nem (a jelöltlistán marad).
+    kh_nyers = karoli_kh_szuro.egyedi(kh_nyers)  # F181.33 (DT-F181p): azonos kulcsú sor egyszer
     kh_hits = [r for r in kh_nyers if karoli_kh_szuro.elfogad(step_key, r["Kapcsolódó igehely"])]
     if len(kh_hits) < len(kh_nyers):
         print(f"# Károli-KH ({igehely}) — {len(kh_hits)} kapcsolódó igehely (megerősített); "
@@ -580,9 +584,9 @@ def cmd_karoli(args):
     else:
         print(f"# Károli-KH ({igehely}) — {len(kh_hits)} kapcsolódó igehely")
     for r in kh_hits:
-        print(r["Kapcsolódó igehely magyar megjelenítése"])
+        print(karoli_kh_szuro.hu_megjelenites(r))  # F181 E6: a repó egységes könyvnevei (ApCsel), nem a HunKar `Csel`
 
-    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_javitott.tsv "
+    prov = (f"scope=range:{igehely} | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv+Karoli_KH_MEK.tsv(MEK 00161)+Karoli_KH_javitott.tsv "
             f"| n={len(kh_hits)} | ts={ts()}")
     print(f"proveniencia: {prov}")
 

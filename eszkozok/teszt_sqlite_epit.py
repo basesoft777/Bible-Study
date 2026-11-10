@@ -432,7 +432,8 @@ class Integracio(unittest.TestCase):
                       ('frazis_pozicio', 'Karoli_Strong_parok')):
             r = self.con.execute('SELECT licenc_dataset, licenc_allapot, kereskedelmi, cimke '
                                  'FROM tabla_licenc WHERE tabla=?', (t,)).fetchall()
-            self.assertEqual(r, [(ds, 'tisztazott', 'igen', 'minden jog fenntartva')], t)
+            # F181 (DT623): a Karoli-Strong sajat resze CC BY 4.0
+            self.assertEqual(r, [(ds, 'tisztazott', 'igen', 'CC BY 4.0')], t)
 
     def test_g4_legszigorubb_ertek(self):
         # egy szarmaztatott tabla a forrasai kozul a legszigorubb erteket kapja (DT109 (2c))
@@ -457,9 +458,13 @@ class Integracio(unittest.TestCase):
         for k in ('SDBH', 'SDGNT', 'UBS_DBH', 'UBS_DNTG', 'LSJ', 'tW_szocikkek'):
             self.assertEqual(ep.licenc_feloldas([k])[3], 'CC BY-SA 4.0', k)
         self.assertEqual(ep.licenc_feloldas(['MCGED'])[3], '© Mounce 1993')
-        for k in ('projekt_adat', 'Karoli_Strong_parok', 'Karoli_Strong_szavak', 'karoli_variancia'):
+        for k in ('projekt_adat', 'karoli_variancia'):
             self.assertEqual(ep.licenc_feloldas([k])[0:2], ('tisztazott', 'igen'), k)
             self.assertEqual(ep.licenc_feloldas([k])[3], 'minden jog fenntartva', k)
+        # F181 (DT623): a Karoli-Strong sajat resze CC BY 4.0
+        for k in ('Karoli_Strong_parok', 'Karoli_Strong_szavak'):
+            self.assertEqual(ep.licenc_feloldas([k])[0:2], ('tisztazott', 'igen'), k)
+            self.assertEqual(ep.licenc_feloldas([k])[3], 'CC BY 4.0', k)
 
     def test_g6_ismeretlen_licenc_nem_kap_alaperteket(self):
         # licencsor nelkuli tabla nem epul be (a mintaban nincs ilyen, a mechanizmus kozvetlenul)

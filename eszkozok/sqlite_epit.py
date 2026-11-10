@@ -96,7 +96,7 @@ RESERVALT_OSZLOP = {'licenc_allapot', 'kereskedelmi', 'licenc_dataset'}
 # Tabla -> a licencek.tsv `dataset` kulcsai. Szarmaztatott tablanal tobb kulcs: a
 # legszigorubb ertek ervenyes (DT-F79a (2c)).
 SZARMAZTATOTT_LICENC = {
-    # F89 (DT-F89a): a Karoli-Strong tablak sajat licencsora van (minden jog fenntartva; a
+    # F89 (DT-F89a): a Karoli-Strong tablak sajat licencsora van (F181: DT623 szerint CC BY 4.0; a
     # forrasaik, Karoli 1908 es TAHOT/TAGNT, a sor megjegyzeseben es a komponens-sorokban)
     'token_par': ['Karoli_Strong_parok'],
     'token_karoli': ['Karoli_Strong_szavak'],
@@ -108,7 +108,10 @@ SZARMAZTATOTT_LICENC = {
     'vers': ['Karoli_1908'],
     'vers_szamozas': ['Karoli_versmegfeleltetes', 'BSB_Strongs'],
     'konyv': ['Konyv_nevtablak'],
-    'tsk': ['TSK'], 'kh': ['Karoli_KH'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
+    # F181 E7: a `kh` sorai a HunKar-táblából (Karoli_KH) és a MEK 00161-ből (Karoli_KH_MEK, közkincs, DT651) állnak; a
+    # szűrő, a Karoli_KH_javitott.tsv szintje a táblába nem kerül (csak a megerősített sor), de a sorok kiválasztása a
+    # saját munka: a licenc-sora is szerepel (CC BY 4.0, DT-F181q; F181.27), így a származtatott licenc nem szigorodik
+    'tsk': ['TSK'], 'kh': ['Karoli_KH', 'Karoli_KH_MEK', 'Karoli_KH_javitott'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
     'kjv': ['KJV_Strongs_teljes'], 'karoli_strong_kivonat': ['Karoli_Strong_kivonat'],
     'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
@@ -738,7 +741,9 @@ class Epito(object):
                    tsk, SZARMAZTATOTT_LICENC['tsk'], ['igehely', 'cel_igehely'])
         kh = []
         # F177: csak a MEK-kel megerősített sor kerül be (Karoli_KH_javitott.tsv, karoli_kh_szuro.elfogad)
-        for r in G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]:
+        # F181: a csak a MEK-ben álló, megerősített sorok is (KHSZ.mek_sorok)
+        # F181.33 (DT-F181p): azonos kulcsú sor egyszer (KHSZ.egyedi)
+        for r in KHSZ.egyedi(list(G.tsv_beolvas(os.path.join(self.konk, 'Karoli_kereszthivatkozasok.tsv'))[1]) + KHSZ.mek_sorok()):
             if not KHSZ.elfogad(r['Igehely'], r['Kapcsolódó igehely']):
                 continue
             fo = self.konyvek.step_igehely(r['Igehely'])
@@ -829,7 +834,7 @@ class Epito(object):
         kihagy = bsb_bizonytalan(versek, self.ot_vers_strongok)
         for kulcs, ok in sorted(kihagy.items()):
             self.jelent_norm('bsb', step_kulcs[kulcs], ok)   # BSB-kulcs STEP-alakban (nem tévesztheto ossze a Karoli-kulccsal)
-        self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT-F120a: a Károli-cél tartalmilag nem igazolt '
+        self.megjegyzesek.append('bsb: %d BSB-vers kihagyva (F120, DT457: a Károli-cél tartalmilag nem igazolt '
                                  'vagy ütközik; a jelentés `bsb` sorai)' % len(kihagy))
         bsb, szamozas_vers = [], {}
         rang = {'mt': 0, 'kjv': 1, 'ellenorizetlen': 2}
