@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/f186-thayer-jelentespont-97
 ad: a vers → Thayer-jelentéspont hozzárendelés vak méréssel mérve (seed-201), hibaosztályonként javítva, és új vak mérésen (seed-202) ≥ 97%, előre rögzített kapuval; a megváltozott Thayer-szakaszkulcsok tételes listája a jelentésben
-kovetkezo: "fut, döntésre vár (2026-11-10): seed-201 94,5% → T2 (K1, K2) → seed-201 99,5% (tájékoztató); T4 seed-202 192/200 = 96,0% (Wilson 92,3–98,0) — a kapu NEM teljesült; nyitott: DT-F186a (második szabálykör + seed-203), DT-F186b (636 hash-eltérő Thayer-fordítássor, a CI 13. szabálya), DT-F186c (ir-en kívüli egysoros javítások); naplok/F186_jelentes.md. Egyeztetett eltérés a SORREND-től: a #121 megallt, az ága nem nyúl az eszkozok/thayer_jelolt/-hoz. A #7 következő fordítási adagja csak a #186 merge-e után indul (orkesztrátori döntés, 2026-11-10)"
+kovetkezo: "Te: DT-F186a (a T4 kapuja nem teljesült: seed-202 192/200 = 96,0%, Wilson 92,3–98,0; javaslat: második szabálykör + seed-203), DT-F186b (636 hash-eltérő Thayer-fordítássor, CI 13. szabály SÉRTÉS; javaslat: átkulcsolás hash szerint), DT-F186c (két ir-en kívüli egysoros javítás); dontesek/uj/f186-thayer-jelentespont-97.md, naplok/F186_jelentes.md. A #7 következő adagja csak a #186 merge-e után indul."
 olvas: [eszkozok/thayer_jelolt/, F132_THAYER_SZAKASZ_BRIEF.md, F185_BDB_JELENTESPONT_97_BRIEF.md, naplok/BDB_SZELETELO_M2_seed101_iteletek.md]
 ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_aranyminta.tsv, adat/SEMA.md, naplok/F186_jelentes.md, naplok/ELLENOR_F186.md]
 fugg: []
