@@ -1,0 +1,170 @@
+# F188 — A menetek könyvelési és ellenőrzési terhének csökkentése (TEHER_CSOKKENTES): jelentés
+
+*Brief: `F188_TEHER_CSOKKENTES_BRIEF.md` · végrehajtó: `claude-opus-5-5` (a modell-ellenőrzés egyezett a brief `modell: opus` mezőjével) · 2026-11-10*
+
+Két ág készült (DT-F188a). Az A ág, `claude/f188-t0-t3`, két új fájlt hoz tesztekkel, és nem élesít semmit. A B ág, `claude/f188-teher-csokkentes`, az A ág tetejére épül, ezért az A merge-e után a B diffje magától szűkül.
+
+## T0 — mérés-alap
+
+**Szkript:** `eszkozok/ellenorzes/teher_meres.py`. Hívás: `--pr <n…>` vagy `--utolso N`. A kimenet TSV, összesítés a célokkal és proveniencia-sor. A mezők meghatározása és korlátai a docstringben állnak:
+
+- **Admin és tartalmi fájl:** a brief admin-meghatározása szerint.
+- **Javítókör:** három jelből a legnagyobb:
+  - az ELLENOR-fájl sorszáma − 1;
+  - a `[elteres_kor k/K]` vagy „javítókör k/K” jelölő;
+  - a `<tétel>: ellenőri jelentés` című commitok száma − 1.
+- **Ellenőri idő:** az ELLENOR-fájlt létrehozó (vagy „ellenőri jelentés” című) commit és az előző commit közötti idő, a szerzői időbélyegből számolva.
+  - A committer-dátum nem használható: a rebase átírja. A #664-ben hat commit egy másodpercre esett.
+  - A mérték becslés, két irányban is torzíthat. Túlbecsül, mert benne van a mentés és a menet esetleges állása. Alulbecsül, ha a session az ellenőr futása közben commitolt.
+- **CI:** az `ellenorzes` workflow futásai a PR ágán. A futás ideje `updatedAt − createdAt`, a sorban állással együtt.
+- **Hibakezelés:** hálózati vagy git-hibánál a mező értéke „nem mért”, sosem üres.
+
+**Kiindulás:** a #664, #665, #666, #668, és a legutóbbi 10 mergelt PR (átfedéssel: 10 PR).
+
+| PR | tétel | commit (merge) | admin | tartalmi | javítókör (jel) | CI-javítás | ellenőr-futás | ellenőri perc | CI-futás (bukott) | CI perc átlag / össz. |
+|---|---|---|---|---|---|---|---|---|---|---|
+| #663 | F184 | 2 (1) | 1 | 0 | 0 | 0 | 0 | nem mérhető | 2 (0) | 2,2 / 4,4 |
+| #664 | F102 | 26 (1) | 14 | 8 | 2 (ELLENOR-fájl, ellenőr-commit) | 0 | 3 | 12; 5; 5 | 3 (0) | 6,0 / 17,9 |
+| #665 | F184 | 30 (1) | 11 | 20 | 2 (mindhárom jel) | 0 | 3 | 13; 13; 6 | 5 (1) | 4,6 / 22,9 |
+| #666 | F103 | 19 (1) | 10 | 5 | 1 (mindhárom jel) | 0 | 2 | 12; 3 | 4 (0) | 5,8 / 23,3 |
+| #667 | F185 | 4 (2) | 1 | 0 | 0 | 1 | 0 | nem mérhető | 4 (1) | 2,2 / 8,6 |
+| #668 | HATAR | 8 (2) | 9 | 1 | 0 | 0 | 0 | nem mérhető | 3 (1) | 2,4 / 7,1 |
+| #669 | – | 3 (1) | 0 | 2 | 0 | 0 | 0 | nem mérhető | 3 (1) | 2,0 / 6,1 |
+| #670 | – | 1 (0) | 2 | 0 | 0 | 0 | 0 | nem mérhető | 1 (0) | 1,9 / 1,9 |
+| #672 | F188 | 1 (0) | 1 | 0 | 0 | 0 | 0 | nem mérhető | 1 (0) | 1,4 / 1,4 |
+| #673 | MAIN-ZOLD | 3 (2) | 0 | 3 | 0 | 0 | 0 | nem mérhető | 3 (0) | 1,7 / 5,2 |
+
+`scope=PR #663, #664, #665, #666, #667, #668, #669, #670, #672, #673 | forras=gh+git (teher_meres.py @ f910d799) | ts=2026-11-10T09:02+0100`
+
+**Összesítés a célokkal:**
+
+- **admin ≤ tartalmi:** 3 PR teljesíti a 10-ből. Nem teljesül.
+- **Átlagos javítókör:** 0,50 a 10 PR-on (teljesül). A 3 ellenőrzött feladat-PR-on (#664, #665, #666) viszont 1,67, ami nem teljesül.
+- **Ellenőri futás:** 8 futás mérhető, a leghosszabb 13 perc; a 15 perces célt egyik sem lépi át (becslés).
+- **CI:** 29 futás, átlagosan 3,0 perc futásonként.
+
+A brief táblájának számait (#664, #665, #666, #668: commit, admin, tartalmi) a mérés hiánytalanul visszaadta.
+
+**Orkesztrátori közlés (mért adat, nem a szkriptből):** `manual (orkesztrátori közlés, 2026-11-10)`
+
+1. A `teszt_arculat.py` egymagában kb. 30 percig fut; ezt a #104 javítókörében mérték. A végrehajtók minden körben lefuttatják.
+2. A #181 végrehajtójának helyi CI-futása kb. 1 óráig tartott, mert a gépen egyszerre 5–6 session futtatott ellenőrzést.
+
+**Amit a mérés nem fed le:** a brief „20–60 perc” ellenőri ideje a #104-ből jön, amely még nincs mergelve, ezért nincs a mintában. A commit-rés módszer a mért PR-okon legfeljebb 13 percet ad.
+
+A teher ezért nem a CI egyes futásaiban van (1–6 perc), hanem három helyen:
+
+- a helyi tesztekben (a `teszt_arculat` kb. 30 perc);
+- a párhuzamos helyi futásokban (kb. 1 óra);
+- a feladat-PR-ok admin-túlsúlyában.
+
+## T3 — előzetes formai javító (A ág)
+
+`eszkozok/ellenorzes/elojavit.py`. A felismerés a CI saját kódja: a `szabalyok.py`-t importálja, nem másolja.
+
+- **E32:** a zárójeles hivatkozás eleme helyőrzőt törli, így a szöveg számfüggetlen lesz.
+- **E8:** a tanulmányfájl STEPBible-alakját és az adatforrást megnevező sor idézőjeles igehely-idézetét kódformázza. A prózai tiltott alakot csak jelzi, a javasolt alakkal.
+- **E5:** a törölt címsort csak jelzi, a kész jelölősorral, mert a szándékot csak a végrehajtó tudja. A `--e5-jelol --ir --commit-uzenet-fajl` hármas beírja a sort az üzenetfájlba.
+- **Működés:** alapból száraz futás (a diff a stdout-ra kerül), `--ir`-rel ír. Kilépési kód: 0, ha nincs teendő; 1, ha van; 2 futási hibánál.
+- **Próba a repón:** a `eszkozok/general.py` egy E32-helye javítható; két további helyet csak jelez, mert ott a helyőrző a mondat része.
+- **Tesztek:** `tesztek/test_elojavit.py`, 20 teszt (a T2-jelzés tesztjeivel együtt).
+
+## T1 — egy jelentésfájl feladatonként
+
+- **`BRIEF_SABLON.md` „Jelentés”** (a kanonikus hely, F184 D4):
+  - a napló, a „Független ellenőrzés — <n>. ellenőrzés” szakasz(ok) és a Zárás egy fájlban áll;
+  - az ellenőr jelentését a session menti, szó szerint, külön commitban, `F<nn>.<t>: ellenőri jelentés (…)` címmel (ezt méri a T0);
+  - a régi `ELLENOR_*` és `_zaras.md` fájlok változatlanok.
+- **`fuggetlen-ellenor`:** fájlt nem ír, a jelentést válaszként adja. Eddig sem volt Write eszköze.
+- **`/kovetkezo`:** a 9. és a 10. lépés a jelentésfájlba ment.
+- **`/elteres`:** a legutóbbi jelentés a legnagyobb sorszámú szakasz. A függő újraellenőrzés jelölője: `újraellenőrzés függ: <n+1>. ellenőrzés`.
+  - **Visszafelé kompatibilis:** a régi `ELLENOR_F<nn>*` sorozatú feladatnál a régi forma folytatódik.
+- **`feladatok.py`:** kivétel-módosítás nem kellett, mert a jelentésfájl a feladat saját `naplok/F<nn>_*` fájlja (`_kozos`). Új teszt rögzíti.
+- **Korlát:** a CI D14-kizárása (`kozos.py`) a jelentésfájlra nem vonatkozik. Mért kockázat: a 361 régi ELLENOR-fájlon a nem adattáblás szabályok 1 találatot adnának (E2). Teendő: N-F188c.
+
+## T2 — számot csak egy helyen
+
+- **Felismerés:** a `szabalyok.py` `szamismetles` függvénye, JELENTES szinten. Ezt jelzi:
+  - hatókör: nyitott tétel, README, jelentés;
+  - a sor `.tsv` táblát nevez meg és darabszámot mond;
+  - nincs mellette proveniencia, és nem generált blokkban, kódblokkban vagy backtickes kódban áll.
+- **Mért kiindulás:** 133 fájl, 366 találat, 103 fájlban. `scope=NYITOTT_FELADATOK.md, nyitott/uj/, naplok/*_jelentes.md, **/README.md | forras=szabalyok.szamismetles @ de9d34ed | ts=2026-11-10`
+- **Ami most működik:** az `elojavit.py` a hozzáadott sorokon tájékoztatóként jelez; a kilépési kódba nem számít.
+- **Ami kimaradt, és miért:** a CI-szabállyá emelés (E38) és a szabály szövege. Mindkettő a SEMA 3.11 generált kapulistáját és a SEMA szövegét írná, azt pedig a #104 előtt nem írjuk. A pontos teendő: N-F188a.
+
+## T4 — ellenőr-diéta, lassú tesztek
+
+- **`fuggetlen-ellenor`** bemenete a szint és a head-re szóló CI-jelentés.
+  - A CI által lefuttatott vizsgálatot nem futtatja újra. A `futtat.py`-t csak akkor futtatja, ha a head-re nincs befejezett futás.
+  - Az E28-at az érintett lapokra szűkíti (`PARDES_E28_CSAK`, csak helyben; a CI-ben a teljes E28 fut).
+  - Tesztet csak kódot érintő diffnél futtat.
+- **`szabalyok.py` `e28_csak_szures`:** új CI-szabály nincs, a `SZINT` és a 3.11 változatlan.
+- **`teszt_futtat.py`** (orkesztrátori kiegészítés):
+  - `LASSU_LEFEDETT`: a lassú tesztek lefedett fájljainak listája, egy helyen;
+  - `--diff ALAP`: a `teszt_arculat` és a `teszt_szintek` csak akkor fut, ha a diff az `eszkozok/olvaso_szerver/` alatti fájlt érint;
+  - a `teszt_arculat` bekerült a `--gyors` által kihagyott lassú fájlok közé.
+- **Végrehajtók:** a `vegrehajto-*.md` ugyanezt írja elő.
+
+## T5 — kockázat szerinti ellenőrzési szint
+
+- **Levezetés:** a `feladatok.py szint <nn>` (vagy `--extra`) a meglévő `munka` és `ir` mezőből vezeti le a szintet, új mező nélkül (DT-F188b).
+- **A szabály kanonikus helye:** `MUNKAMENET.md` „Menet-ellenőrzés” (DT-F188c).
+- **A mai briefeken:** #181, #184, #186, #188: `teljes`; #104: `konnyitett` (DT-F188b (c) kérdés).
+- **Minden szinten megmarad:**
+  - a PR teljes CI-je, E1–E37;
+  - a modell-ellenőrzés;
+  - a brief G/D és ⛔ pontjai;
+  - az E17 sorszám-változás;
+  - az A1 proveniencia;
+  - a `teves` besorolás csak saját lekérdezéssel.
+- **Amit a könnyített szint elhagy:** csak az A3–A6-ot és a második javítókört.
+- **Formai kör:** a tisztán formai javítókör nem nyit újraellenőrzést; a zöld CI zárja.
+- **Ahol átvezetve:** `/elteres` (korlát `K`, jelölő `[elteres_kor k/K]`), `/kovetkezo` 9. lépés, `/befogad`.
+
+**Helyi zár** (orkesztrátori kiegészítés): a `futtat.py` `HelyiZar` osztálya. Ugyanezt a zárat veszi a `teszt_futtat.py` is.
+
+- A zár helye: `~/.pardes/ellenorzes.zar`. Windowson ez `C:\Users\<név>\.pardes\ellenorzes.zar`, WSL-ben a WSL saját home-ja.
+- A `teszt_futtat.py` a zárat a Windows-oldalon veszi, mielőtt a WSL-be lép.
+- A hely felülírható: `PARDES_ZAR_KONYVTAR`.
+- Foglalt zárnál a futás kiírja, ki tartja, és vár.
+- A zár feloldódik, ha a tartó folyamat ugyanazon a gépen már nem él, vagy ha a zár a korlátnál régebbi (120 perc, `PARDES_ZAR_KORLAT_PERC`).
+- GitHub alatt nincs zár.
+- Teszt: `tesztek/test_zar.py`, 10 teszt.
+
+## T6 — main-őr
+
+A `/kovetkezo` 1. lépése: `gh run list --branch main --workflow ellenorzes --limit 1`. Ha a main utolsó futása piros, a javaslat első sora jelzi, a futás azonosítójával, a commit-sha-val és a bukott lépéssel. A jelzés nem blokkol.
+
+- **Próba:** 42775641047 (`904c52da`), failure. A bukott lépés az E2–E37 és az E1. Ez nem a #188 diffjéből ered; nem javítottam.
+- **Feed/Stash:** az ottani jelzés N-F188b.
+
+## T7 — mérés utána
+
+Ebben az ágban nem végezhető el: a merge utáni első 3 PR-on fut, pontos hívással (N-F188e).
+
+## Folytatás a #104 merge-e után
+
+1. A T2 CI-szabállyá emelése és a szabály szövege a SEMA-ban, egy commitban (N-F188a): `SZINT`, `SZABALY_LEIRAS`, `SZABALYOK_FUGGVENYEI`, `szabalyok.py --kapulista --ir`.
+2. Más SEMA-változás nem kell: a T5 nem hozott új fejlécmezőt.
+
+## Zárás
+
+**Egyeztetett eltérés** (orkesztrátor, 2026-11-10):
+
+- két ág, és a PR-t nem a végrehajtó nyitja;
+- a SEMA-t a #104 merge-éig nem írjuk, ezért a T2 CI-része kimaradt;
+- a `.github/workflows/` nincs az `ir`-ben (N-F188d: az új tesztek a CI-ben);
+- a T7 a merge után fut;
+- kiegészítés:
+  - a lassú tesztek csak érintettség esetén futnak;
+  - egyszerre egy helyi teljes ellenőrzés fut (zár);
+  - a T0-ba az orkesztrátor két mért adata került;
+  - az `ir` kiegészült az `eszkozok/ellenorzes/futtat.py`-jal és az `eszkozok/teszt_futtat.py`-jal.
+
+**Mi készült:** T0, T1, T3, T4, T5, T6 kész. A T2 részben készült: a felismerés kész, a CI-szabály a #104 után jön. A T7 a merge után fut.
+
+**Döntések:** DT-F188a 🟢; DT-F188b és DT-F188c 🟡 (javaslattal).
+
+**Nyitott tételek:** N-F188a–e.
+
+**Megjegyzés a PR-hoz:** a PR címe `[ELLENŐRZŐ]` előtagú legyen, mert a diff az `eszkozok/ellenorzes/`-t és a `fuggetlen-ellenor.md`-t érinti (E16). A brief fejléce `fut` marad; a lezárás az orkesztrátoré.
