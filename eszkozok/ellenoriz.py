@@ -871,6 +871,7 @@ def _teljes_szocikk(adat_dir, sor, cache):
 # `hivatkozas` / `javitva` javitasaval, pe/mem csere nelkul -- a fordito bemenete
 # (eszkozok/bdb_jelolt/szakasz_bemenet.py), az adat_dir tablaibol.
 _SZAKASZ_JSZ = re.compile(r'^sz(\d+)$')
+_TAGSOR_JSZ = re.compile(r'^sz\d+~\d+$')  # F186, DT-F186f: az összevont szakasz megőrzött tagsora (SEMA 2.14)
 
 
 def _szakasz_bemenet():
@@ -996,6 +997,7 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     szakasz_cache = {}
     tovabbi_cache = {}
     elavult_var = 0
+    tagsor_db = 0
     # F128: egy Strong nem `elavult` `sz<n>` sorai egyutt a Strong osszes szakaszat fedik (SEMA 2.14)
     sz_strongok = {}
     for sor in sorok:
@@ -1032,6 +1034,11 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
             # F121 (DT-F121k): TBESH/TBESG/tW/MCGED/LSJ/BDB-nyelvi háttér -- egy feloldó (SEMA 2.14)
             import glossza_lexikon_forditas as GLF
             forras_szoveg = GLF.tovabbi_forras(sor, os.path.join(os.path.dirname(adat_dir), 'konkordancia'), tovabbi_cache)
+        if (forras_szoveg is None and sor.get('allapot') == 'elavult' and sor.get('szotar') in ('BDB', 'Thayer')
+                and _TAGSOR_JSZ.match(sor.get('jelentes_szam') or '')):
+            # F186 (DT-F186f, SEMA 2.14): az összevont szakasz megőrzött régi tagsora (`sz<új>~<régi>`) — archív, JELENTÉS
+            tagsor_db += 1
+            continue
         if forras_szoveg is None:
             hibas.append('%s: nincs hozzá forrásszöveg (lexikon_hivatkozasok.tsv / '
                           'UBS_DNTG_jelentesek.tsv / teljes szócikk)' % (kulcs,))
@@ -1048,6 +1055,8 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     jelentes = []
     if elavult_var:
         jelentes.append('%d elavult sor (eltérő forras_hash) újrafordításra vár' % elavult_var)
+    if tagsor_db:
+        jelentes.append('%d összevonási tagsor (elavult, archív, sz<új>~<régi>)' % tagsor_db)
     if jelentes_lefedes:
         jelentes.append('%d Thayer-Strong fordítatlan szakasszal, egyik sem lexikonlapon' % len(jelentes_lefedes))
     if hibas:

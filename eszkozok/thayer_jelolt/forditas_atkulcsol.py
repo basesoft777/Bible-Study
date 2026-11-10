@@ -114,13 +114,25 @@ def terv_osszevonas(sorok, szakaszok, terkep):
     return ki
 
 
+TAGSOR = re.compile(r'^sz(\d+)~(\d+)$')
+TAB = chr(9)
+
+
+def tagsor_kulcs(uj, regi):
+    """Az összevont csoport megmaradó tagsorának `jelentes_szam`-a (DT-F186f, SEMA 2.14): `sz<új>~<régi>` — egyedi kulcs, nem
+    `sz<n>` alakú, ezért a szakasz-fogyasztók (lefedés, Strong magyar szövege, szólista) kihagyják."""
+    return 'sz%d~%d' % (uj, regi)
+
+
 def alkalmaz_osszevonas(sorok, fej, valtozasok, datum):
-    """-> (új sorlista, törölt sorindexek); csak a `valtozasok` sorai változnak, az összefűzött tagok sorai kikerülnek."""
+    """-> (új sorlista, üres halmaz); csak a `valtozasok` sorai változnak. Az összevont csoport első sora az összefűzött `elavult` sor
+    (a tagsoraira hivatkozik); a többi régi sor nem törlődik (DT289, DT-F186f): `elavult`, `jelentes_szam = sz<új>~<régi>`,
+    a jegye az összefűzött sorra mutat."""
     i_jsz, i_all, i_megj, i_hu = (fej.index('jelentes_szam'), fej.index('allapot'), fej.index('megjegyzes'),
                                   fej.index('forditas_hu'))
-    uj, torol = list(sorok), set()
+    uj = list(sorok)
     for v in valtozasok:
-        m = uj[v['i']].split('\t')
+        m = uj[v['i']].split(TAB)
         assert m[i_jsz] == 'sz%d' % v['regi']
         m[i_jsz] = 'sz%d' % v['uj']
         if v['tipus'] == 'atkulcsol':
@@ -137,18 +149,27 @@ def alkalmaz_osszevonas(sorok, fej, valtozasok, datum):
             szovegek = [m[i_hu]] + [r['forditas_hu'] for _, _, r in v['tagok']]
             m[i_hu] = ' '.join(x for x in szovegek if x)
             jegy = ('F186 (%s): elavult — azonos útvonalú szakaszok összevonása: sz%s → sz%d; a régi sorok fordítása egy szóközzel '
-                    'fűzve, a forras_hash az elsőé' % (datum, ', sz'.join(str(n) for n in [v['regi']] + [n for n, _, _ in v['tagok']]),
-                                                     v['uj']))
-            torol.update(i for _, i, _ in v['tagok'])
+                    'fűzve, a forras_hash az elsőé; tagsor: %s' % (
+                        datum, ', sz'.join(str(n) for n in [v['regi']] + [n for n, _, _ in v['tagok']]), v['uj'],
+                        ', '.join(tagsor_kulcs(v['uj'], n) for n, _, _ in v['tagok'])))
+            for n, i, _ in v['tagok']:
+                t = uj[i].split(TAB)
+                assert t[i_jsz] == 'sz%d' % n
+                t[i_jsz] = tagsor_kulcs(v['uj'], n)
+                t[i_all] = 'elavult'
+                t[i_megj] = '; '.join(x for x in (t[i_megj], (
+                    'F186 (%s): elavult — azonos útvonalú szakaszok összevonása: tagsor (a régi sz%d); a szövege az sz%d összefűzött '
+                    'sorában' % (datum, n, v['uj']))) if x)
+                uj[i] = TAB.join(t)
         m[i_megj] = '; '.join(x for x in (m[i_megj], jegy) if x)
-        uj[v['i']] = '\t'.join(m)
-    return [s for k, s in enumerate(uj) if k not in torol], torol
+        uj[v['i']] = TAB.join(m)
+    return uj, set()
 
 
 def ellenoriz_iras_osszevonas(regi, uj, valtozasok, torol):
     """Írás előtti összevetés: a nem érintett sorok bájtra azonosak és sorrendben maradnak; csak a `torol` sorai esnek ki; a kulcsok
     egyediek."""
-    erintett = {v['i'] for v in valtozasok}
+    erintett = {v['i'] for v in valtozasok} | {i for v in valtozasok for _, i, _ in v['tagok']}
     maradt = [k for k in range(len(regi)) if k not in torol]
     if len(maradt) != len(uj):
         raise SystemExit('a sorok száma nem a várt — megállok')
@@ -270,7 +291,7 @@ def main():
     if a.osszevonas:
         v = terv_osszevonas(adat, TB.szakaszok, lambda sp: osszevonas_terkep(sp, lex))
         db = collections.Counter(x['tipus'] for x in v)
-        print('átkulcsolás: %d; elavult: %d; összefűzött (elavult): %d, ebből kikerülő tagsor: %d; áthelyezett elavult: %d; '
+        print('átkulcsolás: %d; elavult: %d; összefűzött (elavult): %d, ebből tagsor (elavult, megmarad): %d; áthelyezett elavult: %d; '
               'érintett Strong: %d' % (db['atkulcsol'], db['elavult'], db['osszefuz'], sum(len(x['tagok']) for x in v),
                                        db['athelyez'], len({x['strong'] for x in v})))
         if a.lista:

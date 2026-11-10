@@ -846,6 +846,18 @@ lapok motívumainak gerincszavai (`lexikon_general.motivum_strong_tokenek`, a mo
 kiegészítő lexikonhivatkozása); a számítás: `ellenoriz.lap_strongok`. Lapon szereplő Strong fordítatlan szakasza SÉRTÉS
 marad (a lapot a #7 újrafordítása javítja). A BDB-szakasz lefedése változatlanul SÉRTÉS. Ok: az F186 szakasz-újraszámozása
 (`naplok/F186_jelentes.md` 9.2, 9.8).
+**Az összevont szakasz régi sorai (F186, DT-F186f, orkesztrátori döntés, 2026-11-10; a DT289 elvének alkalmazása).** Ha a
+szakasztáblában szakaszok összevonódnak (2.34: az egymást követő, azonos útvonalú szakaszok), a régi `sz<n>` sorok egy új
+kulcsra esnének. A régi sor nem törlődik: a csoport első sora az összefűzött sor (`sz<új>`, a régi fordítások egy szóközzel
+fűzve; `elavult`, kivéve, ha a fűzött szöveg hűen fedi az összevont forrásszöveget és ezt a `megjegyzes` kimondja, pl. a G5590
+sz5), a többi régi sor **összevonási tagsor**: `jelentes_szam = sz<új>~<régi>` (pl. `sz5~6`: az új sz5-be fűzött régi sz6),
+`allapot = elavult`, a mezői különben a régi sor értékei, a `megjegyzes` az összefűzött sorra mutat, az összefűzött sor
+`megjegyzes`-e a tagsoraira („tagsor: sz5~6”). Ez a `jelentes_szam` union (2.2.2) egy alakja; a kulcs (szótár + strong +
+`entry_id` + `jelentes_szam` + mező) így egyedi marad. A tagsor nem `sz<n>` alakú, ezért a szakasz-fogyasztók (a lefedés, a
+Strong magyar szövege, a szólista, az E19) kihagyják. A 13. szabály a forrásszöveg nélküli **`elavult`** tagsort JELENTÉS-nek
+veszi (külön számlálóval), a nem `elavult` tagsort SÉRTÉS-nek. Írja: `eszkozok/thayer_jelolt/forditas_atkulcsol.py --osszevonas`
+(egyszeri, idempotens, bájtőrző). Az átkulcsolt és a változatlan sor `datum`-a és `terminologia_verzio`-ja a fordításé marad;
+új dátumot csak a ténylegesen új vagy összefűzött sor kaphat.
 A hívás egysége (DT287 (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
 nélküli szövegen (`kapuk_futtat_szakaszos`).

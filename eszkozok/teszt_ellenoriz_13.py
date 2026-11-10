@@ -270,6 +270,18 @@ class Szabaly13Thayer(Szabaly13Teljes):
         self.assertEqual(len(e.peldak), 1, e.peldak)
         self.assertIn('1 elavult sor', e.megjegyzes)
 
+    def test_f186_osszevonasi_tagsor(self):
+        # DT-F186f: az összevont szakasz megőrzött tagsora (`sz<új>~<régi>`, elavult) forrásszöveg nélkül JELENTÉS;
+        # nem elavult tagsor SÉRTÉS (nincs hozzá forrásszöveg)
+        alap = [self._t(1, TSZ1), self._t(2, '1. ' + TSZ2)]
+        tag = dict(self._t(2, 'régi tag'), jelentes_szam='sz2~3', allapot='elavult')
+        e = self._futtat(alap + [tag])
+        self.assertEqual(e.verdict, 'JELENTÉS')
+        self.assertIn('1 összevonási tagsor', e.megjegyzes)
+        e = self._futtat(alap + [dict(tag, allapot='sonnet')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('nincs hozzá forrásszöveg' in h for h in e.peldak), e.peldak)
+
     def test_f186_nem_elavult_hash_elteres_sertes(self):
         # a nem elavult sor eltérő forras_hash-e továbbra is SÉRTÉS
         e = self._futtat([self._t(1, TSZ1), self._t(2, 'régi szöveg')])

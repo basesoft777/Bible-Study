@@ -103,11 +103,16 @@ class Osszevonas(unittest.TestCase):
                                lambda sp: MAI2, lambda sp: TERKEP2)
         uj, torol = FA.alkalmaz_osszevonas(regi, FEJ, v, '2026.11.10')
         FA.ellenoriz_iras_osszevonas(regi, uj, v, torol)
-        self.assertEqual(torol, {3})
-        self.assertEqual((uj[0], uj[1], uj[4]), (regi[0], regi[1], regi[5]))
+        # DT289, DT-F186f: régi sor nem törlődik — a tagsor `elavult`, egyedi kulccsal (sz<új>~<régi>)
+        self.assertEqual((torol, len(uj)), (set(), len(regi)))
+        self.assertEqual((uj[0], uj[1], uj[5]), (regi[0], regi[1], regi[5]))
         m = dict(zip(FEJ, uj[2].split('\t')))
         self.assertEqual((m['jelentes_szam'], m['allapot'], m['forditas_hu']), ('sz3', 'elavult', 'ford sz3 ford sz4'))
-        m = dict(zip(FEJ, uj[3].split('\t')))
+        self.assertIn('tagsor: sz3~4', m['megjegyzes'])
+        t = dict(zip(FEJ, uj[3].split('\t')))
+        self.assertEqual((t['jelentes_szam'], t['allapot'], t['forditas_hu'], t['forras_hash']), ('sz3~4', 'elavult', 'ford sz4', 'D'))
+        self.assertIn('a szövege az sz3 összefűzött sorában', t['megjegyzes'])
+        m = dict(zip(FEJ, uj[4].split('\t')))
         self.assertEqual((m['jelentes_szam'], m['allapot'], m['forras_hash']), ('sz4', 'sonnet', 'E'))
         # újrafuttatva: a már átkulcsolt Strong kimarad
         v2 = FA.terv_osszevonas([(i, dict(zip(FEJ, s.split('\t')))) for i, s in enumerate(uj) if i],
@@ -137,6 +142,17 @@ class Iras(unittest.TestCase):
 
 
 class Mai(unittest.TestCase):
+    def test_osszevonas_ujrafuttatva_nincs_teendo(self):
+        # ELLENOR_F186_2/3: az --osszevonas a mai adaton idempotens (a második futás 0 változás; a G4151 és a G5590 is jelölt)
+        szoveg, sorok, fej, adat_ = FA.beolvas(FA.FORDITASOK_UT)
+        import bont
+        import thayer_bemenet as TB
+        lex = bont.lexikon_beolvas()
+        self.assertEqual(FA.terv_osszevonas(adat_, TB.szakaszok, lambda sp: FA.osszevonas_terkep(sp, lex)), [])
+        for sp in ('G4151', 'G5590'):
+            self.assertTrue(any(FA.OSSZEVONAS_JEGY in r.get('megjegyzes', '') for _, r in adat_
+                                if r.get('szotar') == 'Thayer' and r.get('strong') == sp), sp)
+
     def test_ujrafuttatva_nincs_teendo(self):
         # a forditasok.tsv átkulcsolása után a mai táblákon a terv üres (idempotens)
         szoveg, sorok, fej, adat_ = FA.beolvas(FA.FORDITASOK_UT)
