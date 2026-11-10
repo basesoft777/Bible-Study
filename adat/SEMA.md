@@ -1484,7 +1484,12 @@ a formázási réteg licence nem tisztázott, ezért innen csak szerkezet és az
 `konkordancia/Thayer_teljes.tsv` `Teljes_szocikk`-jéből, illesztéssel (a szakasz szövege a TSV-szöveg szelete). Egy sor = a szócikk egy
 **szakasza**: egy bekezdés — a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a
 forrásban helyenként egymásba ágyazott vagy lezáratlan `<p>` áll, ezért a határ a jelölő) —, vagy (F186 K1) a bekezdésnek egy
-bekezdésen belüli fejnél kezdődő része (a szakaszok szövege bekezdésenként összefűzve a bekezdés szövege). Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
+bekezdésen belüli fejnél kezdődő része (a szakaszok szövege bekezdésenként összefűzve a bekezdés szövege). **Összevonás (F186,
+ELLENOR_F186_2 1–2.; `bont.osszevon`):** az egymást követő, azonos útvonalú szakaszok (a `cim` kivételével) egy szakasszá
+vonódnak, ezért **egy sor több bekezdést is átfoghat** (pl. a fej utáni örökölt bekezdés, a hamis bekezdés-eleji fej töredéke);
+a nyers HTML-t a `bont.OSSZEVONO` (`\n<p>\n`) köti (a sima szövegben szóköz, a `</ref>` utáni folytatás-lánc nem fut át
+rajta), a `jel` az első tagé, a szöveg a tagok szövegének szóközzel fűzött egymásutánja. Az összevonás előtti nézet:
+`bont.szerkezet(…, osszevonas=False)`. Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
 bemenet és a kód hash-e), a harmadik a fejléc. Olvasás `split('\t')`. **Lexikai forrásréteg, nem study-adat:** keresési találatból nem
 lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 
@@ -1500,8 +1505,8 @@ lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 | `forras_hash` | a szakasz nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
 | `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
 
-Kulcs: `strong` + `sorszam`. Állapot (F186, második szabálykör, 2026-11-10): 5 426 Strong, 17 317 sor (17 093 bekezdés + 224 bekezdésen
-belüli fejnél nyíló szakasz, 152 Strongban); illesztés változatlan. Az F132.11-es állapot (2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
+Kulcs: `strong` + `sorszam`. Állapot (F186, az összevonás után, 2026-11-10): 5 426 Strong, **17 261 sor** (17 093 bekezdés + 224 bekezdésen belüli fejnél
+nyíló szakasz, 152 Strongban, − 56 összevont szakasz, 44 Strongban); illesztés változatlan. Az F132.11-es állapot (2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
 `reszleges` 0, `sikertelen` 0; fejes szócikk 1 687. A 15 `javitassal` Strong mindegyikében a `Thayer_teljes.tsv` egy összefüggő
 szövegrészt elveszít (összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a
 TSV-konverzió hibája); a javítótábla nélkül ezek `reszleges`-ek (F132 M1). A kezelés: DT333 (2), 2.38. A `# forras:` fejlécsor a
