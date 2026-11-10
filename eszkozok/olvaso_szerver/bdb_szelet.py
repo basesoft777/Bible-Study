@@ -1119,6 +1119,22 @@ def vj_feloldott(r):
     return r.get('szurt') != '1' and bool(r.get('mt_vers'))
 
 
+# a táblában maradó bizonytalan sorok okkódjai (SEMA 2.29 `okkod`: „bizonytalan, a táblában marad”), a kézzel azonosított hibás
+# forrás-hely és a bizonytalan versszám-megfeleltetés: az ilyen hivatkozás pontja csak gyenge jelölést kap (DT178, DT-F104e)
+BIZONYTALAN_OK = {'sigla_kozel': 'a hely mellett kommentár-jel áll', 'tobbertelmu': 'a könyvnév rövidítése többértelmű',
+                  'ismeretlen_alak': 'a könyvnév alakja ismeretlen', 'nincs_elozmeny': 'a könyv nem állapítható meg',
+                  'orokles_hibas': 'az örökölt könyvben nincs ilyen fejezet', 'forras_hiba': 'a BDB nyomtatott igehelye hibás'}
+BIZONYTALAN_VERS = {'atkulcsolt_bizonytalan': 'a héber és a Károli-versszámozás megfeleltetése bizonytalan'}
+
+
+def vj_bizonytalan(r):
+    """A sor bizonytalanságának okai (olvasói szöveg); üres lista: biztos sor."""
+    okok = [BIZONYTALAN_OK[o] for o in (r.get('okkod') or '').split(',') if o in BIZONYTALAN_OK]
+    if r.get('vers_feloldas') in BIZONYTALAN_VERS:
+        okok.append(BIZONYTALAN_VERS[r['vers_feloldas']])
+    return okok
+
+
 if __name__ == '__main__':
     import json
     import os

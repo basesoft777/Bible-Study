@@ -930,6 +930,36 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertIn("- Hithpa'el — a szótár csak alakot közöl\n", olvasoi + '\n')
         self.assertNotIn('hely)', olvasoi)
 
+    def test_bizonytalan_okkod_gyenge_szint(self):
+        # DT-F104e (ELLENOR_F104 2.): a csak bizonytalan okkódú sorral idézett pont gyenge („vonatkozhat”, az okkal), nem az
+        # erőssel azonos alakban; ahol a helynek és a pontnak erős sora is van, az erős marad
+        a = self._adat()
+        for r in (vj_sor('H8034', 310, 'Ézs 1:1', '-/4', okkod='forras_hiba'),
+                  vj_sor('H8034', 311, 'Ézs 55:13', '-/5', okkod='forras_hiba')):
+            a['bdb_vj'].setdefault(('H8034', r['karoli_vers']), []).append(r)
+            a['bdb_vj_feloldott']['H8034'].append(r)
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 55:13', '', strong='H8034', entry=''),
+                                                                elo('Ézs 1:1', '', strong='H8034', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H8034')[0]
+        self.assertIn('**A motívum helyein:** Ézs 1:1 → 4. hamis istenekről *(vonatkozhat; a hivatkozás bizonytalan: a BDB '
+                      'nyomtatott igehelye hibás)* · Ézs 55:13 → 5. emlékjel.', olvasoi)
+        # a bizonytalansági szabály egy helyen (`bdb_szelet`): a szerver blokkja csak rámutat
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver', 'blokkok.py'), encoding='utf-8') as f:
+            blokkok = f.read()
+        self.assertIn('_vj_bizonytalan = bdb_szelet.vj_bizonytalan', blokkok)
+        self.assertNotIn("'forras_hiba':", blokkok)
+        self.assertEqual(LG._szelet_modul().vj_bizonytalan({'okkod': 'forras_hiba,karoli_tahot'}),
+                         ['a BDB nyomtatott igehelye hibás'])
+
+    def test_bizonytalan_okkod_valodi_adat(self):
+        # a táblában a H1802 2Móz 2:6 sora `forras_hiba` okkódú (Qal): a 4.2-ben gyenge szinten áll
+        a = LG.gerinc_adat()
+        szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H1802', [elo('2Móz 2:6', '', strong='H1802', entry='')],
+                                             {'bdb_kartya': True, 'fl': {}})[0])
+        sor = next(s for s in szov.split('\n\n') if s.startswith('**A motívum helyein:**'))
+        self.assertRegex(sor, r'2Móz 2:6 → Qal[^·]*\*\(vonatkozhat; a hivatkozás bizonytalan: a BDB nyomtatott igehelye hibás\)\*')
+
     def test_h7843_valodi_adat(self):
         # ELLENOR_F104 1.: a H7843 Hiph'il magyar bontása az „1 singular”-t pontnak vette (a szövegben 1 hely maradt); a tábla
         # 13 feloldott `Hiph'il/-` sort tartalmaz, a Pi'el 5-öt

@@ -1027,12 +1027,10 @@ def _vazlat_html(tl, elotag, vj=None):
 # jelentéspont nélkül. Pontot nem tippelünk: ami a táblából nem köthető a megjelenített bontás csomópontjához, az csak a
 # blokk elején, szövegesen áll.
 # ---------------------------------------------------------------------------------------------------------------------
-# a táblában maradó bizonytalan sorok okkódjai (SEMA 2.29 `okkod`: „bizonytalan, a táblában marad”), a kézzel azonosított hibás
-# forrás-hely és a bizonytalan versszám-megfeleltetés: az ilyen hivatkozás pontja csak gyenge jelölést kap
-BIZONYTALAN_OK = {'sigla_kozel': 'a hely mellett kommentár-jel áll', 'tobbertelmu': 'a könyvnév rövidítése többértelmű',
-                  'ismeretlen_alak': 'a könyvnév alakja ismeretlen', 'nincs_elozmeny': 'a könyv nem állapítható meg',
-                  'orokles_hibas': 'az örökölt könyvben nincs ilyen fejezet', 'forras_hiba': 'a BDB nyomtatott igehelye hibás'}
-BIZONYTALAN_VERS = {'atkulcsolt_bizonytalan': 'a héber és a Károli-versszámozás megfeleltetése bizonytalan'}
+# a táblában maradó bizonytalan sorok okkódjai és a bizonytalan versfeloldás: az ilyen hivatkozás pontja csak gyenge jelölést kap;
+# a halmaz és a szabály a `bdb_szelet`-ben áll, mert a lexikon-generátor 4.2-es kártyája is ezt használja (DT-F104e)
+BIZONYTALAN_OK = bdb_szelet.BIZONYTALAN_OK
+BIZONYTALAN_VERS = bdb_szelet.BIZONYTALAN_VERS
 
 _HELYEK_PONTOS_SUGO = ('a BDB ennél a pontnál kiírt bibliai hivatkozásainak száma, feloldva és szűrve (a nem bibliai és a '
                        'kommentár-jelhez tapadt helyek nélkül); nem a szó előfordulásainak száma')
@@ -1042,12 +1040,7 @@ _REF_KONYV = re.compile(r'(?:[1-5]\s?)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőú
 _SOR_CV = re.compile(r'(\d+):(\d+)')
 
 
-def _vj_bizonytalan(r):
-    """A sor bizonytalanságának okai (olvasói szöveg); üres lista: biztos sor."""
-    okok = [BIZONYTALAN_OK[o] for o in (r.get('okkod') or '').split(',') if o in BIZONYTALAN_OK]
-    if r.get('vers_feloldas') in BIZONYTALAN_VERS:
-        okok.append(BIZONYTALAN_VERS[r['vers_feloldas']])
-    return okok
+_vj_bizonytalan = bdb_szelet.vj_bizonytalan      # a sor bizonytalanságának okai (olvasói szöveg); üres lista: biztos sor
 
 
 # a pontos hivatkozásszám alapja (nem szűrt, feloldott bibliai hivatkozás): a szabály a `bdb_szelet`-ben áll, mert a

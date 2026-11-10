@@ -3429,8 +3429,11 @@ def bdb_hivatkozas_szam(adat, strong):
     return cache[strong]
 
 
-def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, tartomanyban, pont_nelkul):
-    """Az olvasói réteg bekezdései: a jelentések rendje (hordozó szakasz félkövér) és „A motívum helyein” sor."""
+def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, tartomanyban, pont_nelkul, gyenge=None):
+    """Az olvasói réteg bekezdései: a jelentések rendje (hordozó szakasz félkövér) és „A motívum helyein” sor.
+    `gyenge`: {(vers, kulcs): [ok]} — a csak bizonytalan okkódú sorral idézett pont (DT-F104e, DT178): a sorban gyenge
+    szinten („vonatkozhat”, az okkal) áll, nem az erőssel azonos alakban."""
+    gyenge = gyenge or {}
     hiv_db = bdb_hivatkozas_szam(adat, strong)
     tobb = len(szocikkek) > 1
     nevek, sorok = {}, []
@@ -3469,17 +3472,20 @@ def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, 
             sorok.append('%s%s- %s%s%s' % (behuz, '  ' * max(0, melyseg), jel_m, ' — ' if (gl and elv == ' — ') or csak_alak else ' ',
                                            gl or csak_alak or '*(külön meghatározás nélkül)*'))
     bek = ['**A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)', '\n'.join(sorok)]
+    # a csoport kulcsa (pont, gyenge okai): az erős és a gyenge hely ugyanannál a pontnál külön rész
     csop, rend = {}, []
     for vers, k in vers_pont:
-        if k not in csop:
-            csop[k] = []
-            rend.append(k)
-        if vers not in csop[k]:
-            csop[k].append(vers)
+        g = (k, tuple(gyenge.get((vers, k), ())))
+        if g not in csop:
+            csop[g] = []
+            rend.append(g)
+        if vers not in csop[g]:
+            csop[g].append(vers)
     reszek = []
-    for k in rend:
+    for k, okok in rend:
         nev = 'a szócikk feje (alakok, nyelvi háttér)' if k[1] == 'fej' else nevek.get(k, _jel_olvasoi(szakasz_jel(k[1])))
-        reszek.append('%s → %s' % (_versek_rovid(csop[k]), nev))
+        jel = (' *(vonatkozhat; a hivatkozás bizonytalan: %s)*' % '; '.join(okok)) if okok else ''
+        reszek.append('%s → %s%s' % (_versek_rovid(csop[(k, okok)]), nev, jel))
     mondat = '**A motívum helyein:** %s.' % (' · '.join(reszek) if reszek else 'a szótár egyiket sem idézi')
     if nem_idezett:
         mondat += ' A szótár ezt a helyet nem idézi: %s.' % _versek_rovid(nem_idezett)
@@ -3667,6 +3673,17 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     napl = {'strong': strong, 'szotar': szotar, 'kiemelt': [], 'nem_talalt': [], 'nem_idezett': []}
     uj = bool(ctx and ctx.get('bdb_kartya'))
     vers_pont, pont_nelkul = [], []
+    # DT-F104e (DT178): a bizonytalan okkódú sor pontja gyenge („vonatkozhat”); ha ugyanannak a helynek és pontnak erős sora is
+    # van, az erős marad (a szerver `VersJelolo`-jával egyezően). A szabály: `bdb_szelet.vj_bizonytalan`.
+    eros_pont, gyenge_ok = set(), {}
+
+    def pont(vers, k, r):
+        vers_pont.append((vers, k))
+        okok = _szelet_modul().vj_bizonytalan(r) if szotar == 'BDB' else []
+        if okok:
+            gyenge_ok.setdefault((vers, k), set()).update(okok)
+        else:
+            eros_pont.add((vers, k))
     if szotar == 'BDB':
         # F123.BDBGER: szócikkenként (bdb_id), a BDB saját rendjében; a szakasz kulcsa (bdb_id, utvonal)
         szocikkek, elnyelt = bdb_gerinc_szocikkek(adat, strong)
@@ -3702,7 +3719,7 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
                 pont_nelkul.append(vers)
                 continue
             if r['utvonal'] == 'fej':
-                vers_pont.append((vers, (b, 'fej')))
+                pont(vers, (b, 'fej'), r)
                 hova = elnyelt.get((b, 'fej'), (b, 'fej'))
                 if hova[1] == 'fej':
                     fej_celok.setdefault(hova[0], []).append((vers, azon))
@@ -3714,11 +3731,11 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             if k is None:
                 napl['nem_talalt'].append(azon + ': az útvonal nincs a szakasztáblában')
                 if r['utvonal'] == 'tagolatlan':
-                    vers_pont.append((vers, (b, 'tagolatlan')))       # F104: a tagolatlan szócikk egésze
+                    pont(vers, (b, 'tagolatlan'), r)       # F104: a tagolatlan szócikk egésze
                 else:
                     pont_nelkul.append(vers)
                 continue
-            vers_pont.append((vers, k))
+            pont(vers, k, r)
             # DT381 (a): a forrásjavított sornál a magyar szöveg a forrás alakját hordozza („26:35”): azt emeli ki
             keres = vers
             if 'forras_javitas' in (r.get('okkod') or '').split(',') and re.fullmatch(r'\d+:\d+', r['nyers']):
@@ -3803,7 +3820,9 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         bev = [UJ_GERINC_BEVEZETO.get(szotar, bek[1])] if elso else []
         if szotar == 'BDB':
             tart = [t.split(': ', 1)[0] for t in napl['tartomanyban']]
-            olv = bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, napl['nem_idezett'], tart, pont_nelkul)
+            gyenge = {p: sorted(o) for p, o in gyenge_ok.items() if p not in eros_pont}
+            olv = bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, napl['nem_idezett'], tart, pont_nelkul,
+                                    gyenge)
             bek = bev + [bek[0]] + olv + [APPARATUS_KEZDET % strong, '<details>\n<summary>%s</summary>' % APPARATUS_CIM] + \
                 bek[2:] + ['</details>', APPARATUS_VEGE % strong]
         else:
