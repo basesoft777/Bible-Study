@@ -93,3 +93,75 @@ a versszám hiányzik; `indok`: `hibas_hivatkozas=ertelmezhetetlen`). Mindhárom
 **TSK-jelölés a `kiesik` soron is** (ELLENOR_F177 1.): minden `kiesik` sor indoka `mek_ures_vers;tsk=igen|nem` (+ esetleg `hibas_hivatkozas`), ugyanazzal a szabállyal, mint a `jelolt` soroké. A 11 027 `kiesik` sorból `tsk=igen` 321, `tsk=nem` 10 706; a nem gyanús versekre eső 3 373 sorból `tsk=igen` 318, `tsk=nem` 3 055. A szint nem változik, a jelölés csak támasz.
 **Korlát:** a MEK a tartományt két végponttal adja, ezért a `csak_mek` sorok között tartomány-végpontpárok is lehetnek; a sorok eldöntése
 (N-F177b) nem része a menetnek.
+
+## 7. A jelölt szint feldolgozása — a beemelési szabály (F181; DT-F181d, DT-F181e, DT-F181f, DT-F181g, DT-F181h, DT-F181i)
+
+**A szabály egy helyen (ez a szakasz); a megvalósítás: `eszkozok/karoli_kh_mek.py` (`jelolt_bontas`, `beemel`); tesztek: `eszkozok/teszt_karoli_kh_mek.py` (`JeloltSzabaly`, `RepoTablak`).**
+Az alap a felhasználó szava (2026-11-09, szó szerint): „TSK külön rendszer, nem kell összevetni őket. Károlinak meg elfogadjuk a MEK-et, ha ott nem volt gyanús ismétlődő.” Módosításai: DT-F181e (orkesztrátori döntés, nem felhasználói: az elírás-gyanús osztály jelölt marad) és DT-F181f (a felhasználó: „beemeljük”: a HunKar-oldali gyanús-jelölés nem zár ki).
+
+**1. A MEK-oldali `jelolt` sor (`forras=MEK`, azaz a MEK-ben áll, a HunKar-ban azon a versen nem) `megerositett` lesz**, kivéve, ha
+* a hivatkozott vers vagy a forrásvers **nem létezik** (a versellenőrzés alapja a 4. szakasz: `Karoli_1908` ∪ MEK-versszerkezet) → `jelolt` marad (`hibas_hivatkozas`);
+* a MEK-cél az **E2-hibaminta létező töredéke** (F181 javítókör 1; DT-F181h, ELLENOR_F181 E2): a MEK a HunKar `X a:b` (a: fejezet, b: vers) célját két töredékre bontva adja: `X c:a` és `X c:b`, ahol `c` az előző hivatkozás fejezete, és a két töredék egymás után áll a versen (Neh 1:5: HunKar 9:32, MEK `4,9` és `4,32`; Zsolt 35:12: HunKar 41:10, MEK `38,41` és `38,10`). A gépi felismerés (`karoli_kh_mek.e2_mintak`): két egymás utáni MEK-sor azonos könyvvel és fejezettel (`c`), versszámaik `a` és `b`, `a ≠ c`, az `X a:b` létező vers, és a két töredék közül legalább az egyik nem létezik. A **létező töredék** (Neh 4:9, Ján 9:12, ApCsel 11:13) nem emelődik be, `jelolt` marad; a nem létező társa a nem létező célok közt marad. Ha a forrásversen van HunKar-sor, amely `X a:b`-vel kezdődik (vers vagy tartomány), az a minta megfelelője: `megerositett` (a HunKar-tartomány további versei, `X a:b+1` …, ha a MEK-ben `X c:b+1` … következik, a mintához tartoznak: Zsolt 27:4 → 42:2–3, MEK `23,42` + `23,2` + `23,3`); indoka `…;mek_fejezet_minta=<a töredékek>;szabaly=F181`. A mintának nem kell HunKar-megfelelője legyen: HunKar-megfelelő nélkül is `jelolt` a létező töredék (hiányt nem töltünk ki; a helyes cél `X a:b` a HunKar-sor nélkül nem kerül a táblába);
+* a forrásvers **MEK-oldali gyanús ismétlődő**: a forrásvers MEK-listája (legalább 2 különböző cél) szó szerint azonos egy másik forrásvers MEK-listájával → `jelolt` marad. (A `Karoli_kereszthivatkozasok_gyanus.tsv` HunKar-oldali jelölése **nem** zár ki: az a HunKar-lista másoltságát jelzi, a MEK-lista ilyenkor a javító tanú; DT-F181f.)
+* a MEK-cél **egyetlen összetevőben** (könyv, fejezet vagy versszám) tér el a forrásvers egy jelölt HunKar-sorának céljától (**elírás-gyanús osztály**, DT-F181e: a végrehajtói olvasat szerint 15 sorból 4 valószínű MEK-elírás; a javítókörben az E2-szűrő 5 sort kiemelt, 10 marad) → `jelolt` marad.
+A `megerositett` MEK-sor `forras=MEK`, indoka `csak_mek;mek_alak=…;tsk=…;szabaly=F181`.
+
+**2. A HunKar-oldali `jelolt` sor** (`eltero_lista`: a HunKar-sor, amelyet a MEK a versen nem listáz, de más hivatkozást igen). A sorrend:
+* **az E2-hibaminta megfelelője → `megerositett`** (az 1. pontban leírt minta; DT-F181h): indoka `eltero_lista;tsk=…;mek_fejezet_minta=<a töredékek>;szabaly=F181`;
+* **a MEK a tartomány egyik végpontját adja → a tartomány megmarad** (F181 javítókör 1; DT-F181i, ELLENOR_F181 E3): ha a HunKar-sor rendezett tartomány (`A-B`, A < B, mindkét vég és a forrásvers létezik), és a forrásvers MEK-listájában a tartomány **egyik végpontja** áll (a másik végpont hiányzik, vagy értelmezhetetlen alakban áll, pl. `1 Sám. 12,.`: a megmaradt szám a tartomány végének versszáma), a MEK nem ellentmond a tartománynak, a tartomány vége nem veszhet el. A HunKar-sor `forras=HunKar+MEK`, `megerositett`, indoka `eltero_lista;tsk=…;mek_vegpont=<a végpont>[;mek_vege_elirt=<a MEK szó szerinti alakja>];szabaly=F181`. Hogy ne keletkezzen duplikáció, és a tábla többi tartománykezelésével összhangban (az `egyezik` tartománynál a MEK-végpontok sem önálló sorok), a MEK-végpontsor és az értelmezhetetlen társa `kiesik` (`forras=MEK`, indoka `…;tartomany_vegpont=<a tartomány>;szabaly=F181`): a lap/index a tartományt egyszer kapja. Fordított tartományra (a vég kisebb a kezdetnél, a HunKar-adat hibás) a szabály nem vonatkozik. **Szűkítés egyfejezetes könyvben (DT-F181n; Opus-szúrópróba, `naplok/F181_szuroproba.md` 131., 133–136.):** ha a könyv minden verse az 1. fejezetben áll (Abd, Filem, 2Ján, 3Ján, Júd; a létező versek halmazából), a HunKar-tartomány a könyv elejétől indul (`1:1-N`), és a MEK az `1:N` verset adja, a tartomány műtermék (a HunKar a levél elejétől az N. versig tartományt ad, a MEK a pontos verset): a MEK-vers `megerositett` (`forras=MEK`, indoka `…;egyfejezetes_tartomany=<a tartomány>;szabaly=F181`), a HunKar-tartomány `kiesik` (indoka `eltero_lista;tsk=…;egyfejezetes_tartomany_muterek=<a vég>;szabaly=F181`). Más tartományra (többfejezetes könyv, vagy nem a könyv elejéről induló tartomány, pl. Filem 1:5–7) az E3 változatlan. Példák: 2Kor 7:4 → Filem 1:8, Kol 1:7 → 1:23, Kol 4:9 → 1:10, Kol 4:14 → 1:24, Kol 4:15 → 1:2. Példák: 2Sám 7:8 → 1Sám 16:11–12 (MEK `16,11` + `12,.`), 2Kir 21:5 → 2Kir 23:11–12, 1Krón 6:14 → 2Kir 25:18–21; mindhárom megmaradó tartományban a MEK a tartomány elejét adja, a végét értelmezhetetlen alakban (`12,.`, `12,.`, `21,.`), pl. 1Krón 6:14 → 2Kir 25:18–21 (MEK `25,18` + `21,.`). A Kol 4:9 → Filem 1:1–10 nem ilyen példa: az egyfejezetes könyv szűkítése miatt a tartomány kiesik, a MEK 1:10 verse megerősített (fent);
+* **a MEK-pár nem ellentmond neki → `megerositett`** (DT-F181g, ELLENOR_F181 E1): ha a HunKar-sor célverse létezik, és a MEK-oldali párja (a MEK-sor, amely egyetlen összetevőben tér el tőle: könyv/fejezet/versszám) **nem létező** célra mutat, a MEK-hiba nem ítélheti el a helyes HunKar-sort. A sor `forras=HunKar`, `megerositett`, az indoka `eltero_lista;tsk=…;mek_par_nem_letezik=<a MEK szó szerinti alakja>;szabaly=F181`. A döntés a sor saját párjától függ, nem attól, hogy a versen más, független MEK-sor beemelődik-e. Példák: Lev 23:17 → Lev 2:12 (MEK `2,17`), Józs 22:3 → 11:18 (MEK `11,28`), Zsolt 143:3 → 1Sám 23:7–8 (MEK `23,78`), ApCsel 21:8 → 8:26–40 (MEK `12,26`, `12,40`), Ef 2:20 → Ézs 28:16 (MEK `18,16`); a Neh 1:5, Ján 8:12 és ApCsel 14:22 az E2-megfelelő (az első pont);
+* ha a sor egy elírás-gyanús MEK-sor párja → `jelolt` marad (a pár eldöntetlen: a HunKar-cél lehet a helyes);
+* egyébként `kiesik`, ha a forrásvers MEK-listájából legalább egy sor beemelődik (a MEK-lista a versen irányadó, és a sor abban nincs); különben `jelolt` marad. A `kiesik` itt nem állítja, hogy a HunKar-sor hibás: a MEK-lista elfogadásának következménye.
+
+**3. Az `egyezik`, de nem létező hivatkozású sor (`HunKar+MEK`) `jelolt` marad.**
+
+**4. A TSK nem tanú és nem feltétel.** A `tsk=igen|nem` jelölés az indokban tájékoztatás marad (ELLENOR_F177 1.), a szabály nem használja.
+
+**5. A döntés nélküli maradék `jelolt` marad** (hiányt nem töltünk ki, CLAUDE.md 3. szabály; a lapra/indexbe nem jut). **Minden ilyen sor a saját indokában hordozza a maradás okát**: `…;marad=<kód>` (F181 javítókör 1; DT-F181k, ELLENOR_F181 E8; új oszlop nélkül; egy sor pontosan egy kódot kap). A kódok és a sorok száma:
+
+| kód | sor | jelentés |
+|---|---|---|
+| `marad=nem_letezo_cel` | 136 | a hivatkozott vers vagy a forrásvers nem létezik (a `Karoli_1908` ∪ MEK-versszerkezet szerint), vagy a MEK-sor értelmezhetetlen; ide tartozik az `egyezik;hibas_hivatkozas=…` sor is (tételesen: `naplok/F181_jelentes.md` A. függelék) |
+| `marad=gyanus_ismetlodo` | 6 | MEK-oldali gyanús ismétlődő: a forrásvers MEK-listája szó szerint azonos egy másik vers MEK-listájával |
+| `marad=eliras_gyanus` | 10 | a MEK-cél egyetlen összetevőben tér el a forrásvers egy jelölt HunKar-sorának céljától, és létezik (DT-F181e) |
+| `marad=mek_fejezet_minta` | 9 | az E2-hibaminta létező töredéke (DT-F181h) |
+| `marad=eliras_gyanus_par` | 9 | HunKar-oldali sor, amelynek MEK-párja elírás-gyanús vagy E2-töredék sor: a pár eldöntetlen |
+| `marad=mek_lista_nincs_elfogadva` | 11 | HunKar-oldali sor, amelynek forrásversén a MEK-lista egyik sora sem emelődik be (nem létező cél, gyanús ismétlődő), tehát a HunKar-sor sorsáról nincs mi alapján dönteni |
+
+Összesen **181** sor (136 + 6 + 10 + 9 + 9 + 11; a Józs 2:15 → ApCsel 9:2 HunKar-sor kettőzött előfordulása a DT-F181p szerint megszűnt, ezért 182 helyett 181). A maradékról nincs döntés; a szúrópróba és a mért hibaarány: `naplok/F181_jelentes.md` 7. szakasz, az új minta tételei: `naplok/F181_szuroproba.md`.
+
+**6. A fogyasztók.** A `karoli_kh_szuro.mek_sorok()` a csak a MEK-ben álló, `megerositett` sorokat adja (a HunKar-tábla kulcsaival és magyar megjelenítéssel); a `lekerdez.py` (`karoli`), a `sqlite_epit.py` (`kh` tábla), az `olvaso_pilot/adat.py` és az `olvaso_mockup/nav_kinyer.py` a HunKar-sorok mellé ezeket is olvassa, ugyanazzal az `elfogad` szűrővel. A `kiesik` és a `jelolt` sor nem jut át. A lapokat és a `pardes.db`-t ez a menet nem építette újra (N-F177a).
+
+**Előállítás.** `python eszkozok/karoli_kh_mek.py osszevet` a #177 összevetése **és** a beemelési szabály együtt (a tábla fejléce: `osszevet + beemel`); `osszevet --nyers` a #177 háromszintű nyers állapotát adja; `beemel` a kész táblán alkalmazza a szabályt (idempotens); `jelolt-bontas` a `jelolt` szintet méri; `e2-meres` az E2-hibaminta teljes mérése; `szuroproba` a rétegzett mintát veszi (`--md`: tételes táblázat üres ítélet-oszloppal). A sorok száma a szabály alkalmazásakor nem változik.
+
+**Mért eredmény (2026-11-09; a javítókör 1 második adaga után: E1–E3, E8, DT-F181n és DT-F181p).** A #177 oszlopa a kettőzött HunKar-kulcsok (4 sor) nélkül értendő: a #177 táblája 35 204 sort, 21 314 / 11 027 / 2 863 szintet adott; a 4 kettőzött sor (1 `megerositett` ×2, 1 `kiesik`, 1 `jelolt`) kiszűrése után 35 200 sor, 21 312 / 11 026 / 2 862.
+
+| szint | #177 | F181 után | Δ |
+|---|---|---|---|
+| `megerositett` | 21 312 | 23 979 | +2 667 |
+| `kiesik` | 11 026 | 11 040 | +14 |
+| `jelolt` | 2 862 | 181 | −2 681 |
+| összesen | 35 200 | 35 200 | 0 |
+
+A +2 667 `megerositett`: 2 652 MEK-sor (2 647 beemelt + 5 pontos Filem-vers az E3-szűkítésből, DT-F181n), 12 HunKar-sor (5: a MEK-pár célja nem létezik; 7: az E2-hibaminta megfelelője), 3 HunKar-tartomány (a MEK az egyik végpontot adja; a másik 5 Filem-tartomány az E3-szűkítés után `kiesik`). A +14 `kiesik`: 8 HunKar-sor (3: a MEK-lista elfogadva a versen; 5: az egyfejezetes könyv `1:1-N` tartománya) és 6 MEK-végpontsor (a megerősített HunKar-tartományba olvad). A `megerositett` sorok forrása: `HunKar+MEK` (egyező; a tartomány), `MEK` (beemelt), `HunKar` (a MEK-pár nem ellentmond).
+
+**Figyelmeztetések (részletek: a jelentés 4., 7., 9. és 10. szakasza).**
+* A tartomány-végpontok duplikációját az E3 szabály kezeli: a megerősített HunKar-tartomány mellett a MEK-végpontsor `kiesik` (nem önálló sor).
+* A szúrópróbát az első körben a végrehajtó olvasta, nem független ellenőr (alsó becslés: olyan MEK-elírást, amely véletlenül értelmes helyre mutat, nem fog meg). A javítókör utáni új minta tételes ítéletét az Opus hozta (DT-F181j, F181.21): `naplok/F181_szuroproba.md`; az eredmény és a maradék hiba: 8. szakasz.
+* Az E2-hibaminta HunKar-megfelelő nélküli esete (1Kir 2:26 → 1Sám 22:20) tartalmilag helyes, de a szabály szerint `jelolt` marad (DT-F181l, az N-F181f lezárva): a rendszeres MEK-töredékminta forrása gyanús, a jelölt sor nem hiány, az ok a sorban áll.
+* A szúrópróba táblája (`naplok/F181_szuroproba.md`) a `6af8b0cf` állapotú táblára készült; a jelen tábla ettől a Filem-sorokban (DT-F181n) és a kettőzött sor kiszűrésében (DT-F181p) tér el.
+
+## 8. A beemelt sorok maradék hibája (adatleírás; F181, DT-F181o)
+
+A `Karoli_KH_javitott.tsv` `megerositett` szintje a MEK-ben álló, beemelt sorokat (`forras=MEK`) is hordozza. **A MEK irányadó; a maradék hiba a MEK saját elírása.** A hibát az Opus-szúrópróba mérte (`naplok/F181_szuroproba.md`, 136 tétel, mag=181; ítélet: `claude-opus-5-5`, a két vers Károli-szövege alapján; részletek és az összes réteg: `naplok/F181_jelentes.md` 7.1). Rétegenként (n, hibás, arány, 95% Wilson-intervallum, score-módszer, z = 1,96):
+
+| réteg | n | hibás | hibaarány | 95% Wilson-intervallum |
+|---|---|---|---|---|
+| kontroll: beemelt MEK-sor | 40 | 1 | 2,5% | 0,4% – 12,9% |
+| HunKar-gyanús forrásversen beemelt MEK-sor | 30 | 1 | 3,3% | 0,6% – 16,7% |
+| E1/E2/E3: megerősített HunKar-sor (az E3-szűkítés után, levezetve) | 15 | 0 | 0,0% | 0,0% – 20,4% |
+
+* A két hibás beemelt sor `csak_mek` és `tsk=nem` (létező, de idegen versre mutató MEK-elírás: 5Móz 14:21 → 4Móz 22:28; 2Kor 3:5 → Ján 15:15). A hibaarány alsó becslés: egyetlen modell olvasata, a véletlenül értelmes helyre mutató elírást nem fogja meg. A két beemelt réteg mintája átfed (egy közös táblasor).
+* A TSK külön, egyenrangú rendszer, nem tanú és nem feltétel (DT-F181o), ezért a sorban TSK-alapú kockázati jel nincs.
+* A jelöltben maradt és az E-szabályokkal döntött többi réteg (gyanús ismétlődő 0/6, elírás-gyanús 4/10, HunKar-sor jelölt marad 9/20, E2-szűrt 7/9) a lapra/indexbe nem jut; a magas arányuk a jelölt szint indokoltságát mutatja.
+* Az E3-szűkítés (DT-F181n) előtt az E1/E2/E3 réteg 4/20 hibás volt (20,0%, 8,1% – 41,6%); mind a 4 az 5 Filem-tartományból, amelyek a szűkítés után `kiesik`-ek. A helyükre emelt 5 MEK-vers a mintában nem szerepelt.
