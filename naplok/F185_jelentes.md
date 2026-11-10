@@ -356,3 +356,21 @@ jelentéspont hozzárendelés kétes pontjai „vonatkozhat” jelölést kapnak
 **Maradt (a javítókör utáni helyi CI szerint, döntésre):** E28 HAMART-001:1687 — a 2.30 H2403 „see 1 above” javítása (N99) a
 lapon a bűnáldozat szövegét a 4.a–c alá tenné (a commitolt lap a régi, hibás helyen hordozza); a lap újragenerálása ebben a
 feladatban tilos. Ez az N99 javításának lapra kerülése, nem új hiba.
+
+## 13. Zárás a javítókör után
+
+- **HAMART-001 újragenerálva (DT-F185i, N99; kikapcsolt `BDB_BETU_JAVIT`):** a lapdiff 4 hunk, mind a H2403 4.2-blokkjában — az
+  „1 — bűn” sorából kikerül a bűnáldozat szövege és a „kutatói jelölés: … ellenőrzendő” sor, a „b. bikát …” töredék is; a
+  szakaszszám 8 → 11; új 4.a, 4.b, 4.c sor. Más nem változott (új DT/N-hivatkozás és munkaszó nincs).
+- **Teljes helyi CI** (`eszkozok/ellenorzes/futtat.py`, base `ae37c175` … `0cbbbe3a`): kilépési kód 0; HIBA egyik szabályban sincs
+  (E26 0, E28 0, E32 csak a nem az ágból eredő `blokkok.py:1677` `DT-F76d` JELENTES). JELENTES/FIGYELMEZTETÉS: E12 423 és E13 79
+  (az újragenerált HAMART-001 lap meglévő jelölései), E30 5 (ékezet nélküli szó a korábbi commit-üzenetekben: `ketes`,
+  `javitva`), nem az ágból: E25 3 (`CLAUDE.md`, `MUNKAMENET.md`), E27 43, E34 41 (`adat/elofordulasok.tsv`), E36 1 (`SEMA.md:1617`).
+
+**Maradék:**
+- N-F185b — a mérő útvonal leképezése (rövid folytatás-hivatkozás) és a `szakasz`/`resz` forrása a mérésben;
+- N-F185c — a könyvnév nélküli hely és a közbeékelt fejezet feloldása;
+- N-F185d — a seed-103 12 hibájának osztályai (római szám vagy rész 6, számozás 4, törzs 2) + a H7585 sorbelső fej számjegy után;
+- az olvasó BDB-blokkja a szeletelő bontását jeleníti meg (a 2.29 táblapontja, ahol a csomópontok között nincs, szövegesen áll);
+- a #182 teendői: a `BDB_BETU_JAVIT` bekapcsolása a lapokon a teljes folyamatban (az F35 mellé), a `biztos`/`ketes` bontás lapra
+  vitele (2. fázis).
