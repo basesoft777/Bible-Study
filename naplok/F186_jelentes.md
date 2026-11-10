@@ -794,6 +794,23 @@ kétrétegű megjelenítését (a #104 kártyájának Thayer-ága) a #187 kapcso
   ugyanazzal a Sonnet subagenttel (`claude-sonnet-5-5`), csak ez az egy szó („élteti”); a lánc (`ellenoriz`: ÁTMENT, `rogzit`,
   `beir --kezi-marad`) újra lefutott; a sorok `megjegyzes`-e jelöli a javítókört.
 
+### 10.6 A javítókör többi tétele és a záró futások
+
+- **ELLENOR_F186 3. (F186.19):** a `DT-F186d` sor (🟢) a `dontesek/uj/` fájlban — a 13. szabály súlyossága és a G5590
+  fordítási kivétele.
+- **ELLENOR_F186 5. (F186.18):** a SEMA 2.14 „9.2, 10.” → „9.2, 9.8”, a 2.34 „5.” → „9.5”.
+- **ELLENOR_F186 6. (F186.17):** az átkulcsoló két megjegyzés-literálja visszaállítva a megírt adat szövegére (`DT-F186b`,
+  `e32-kihagy` jelöléssel); bizonyítva: a mai kód az F186.9 előtti `forditasok.tsv`-ből bájtra az F186.9 kimenetét adja (708
+  változás, azonos).
+- **Záró futások (a F186.23 után):**
+  - `python eszkozok/ellenoriz.py` — kilépési kód 0: RENDBEN 27, **SÉRTÉS 0**, KÉZI 2, JELENTÉS 14; a 13. szabály JELENTÉS
+    (184: 117 `elavult` sor, 67 lapon kívüli Strong);
+  - a CI-szabálykészlet (`futtat.py --valtozott … --diff-alap 9976340 --diff-fej HEAD`): **E28 0 találat (zöld)**; egyetlen HIBA az
+    E16 (a PR-cím „[ELLENŐRZŐ]” előtagja, mert a PR az `ellenoriz.py`-t érinti — a PR címét az orkesztrátor adja);
+  - `teszt_ellenoriz_13`, `teszt_bont`, `teszt_vers_jelentes`, `teszt_forditas_atkulcsol` OK; `teszt_lanc` 42/43 (a régi
+    `Sigla`-hiba, 9.10);
+  - `python eszkozok/feladatok.py ellenoriz`: 205 brief, 0 hiba.
+
 ## 7. Melléklet — a mintavevő forrása (`f186_minta.py`)
 
 A szkript a repón kívül fut (a brief `ir` mezője nem tartalmaz mérőszkriptet); a mintát ez a forrás és a seed teljesen meghatározza.
