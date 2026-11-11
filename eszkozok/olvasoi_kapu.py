@@ -517,6 +517,7 @@ NYERS_JELEK = [
     (re.compile(r'szónézet: /szo/'), 'nyers szónézet-útvonal'),
     (re.compile(r'(?<![\w/])(?:kt|other|names)/[a-z]'), 'tW-azonosító'),
     (re.compile(r'(?<=[֐-׿יִ-ﭏ\]])\u200e?_\d+\b'), 'a címszó belső számlálója'),
+    (re.compile(r'(?<![\w./-])(?:adat|konkordancia|naplok|eszkozok)/\w'), 'a repó belső útvonala'),
 ]
 
 

@@ -3508,7 +3508,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - a héber glosszák magyar táblája (CC BY 4.0)
 - a jelöltek döntésnaplója (minden jog fenntartva)
 - a kapcsolat-tábla (minden jog fenntartva)
-- adat/karoli_strong (minden jog fenntartva)
+- a Károli–Strong párosítás (minden jog fenntartva)
 - a lap szótári hivatkozástáblája (közkincs)
 - az LXX-fordítói döntések táblája (minden jog fenntartva)
 - a motívumtábla (minden jog fenntartva)
@@ -3564,7 +3564,6 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 |---|---|---|
 | a BDB-szótár | közkincs | 4. Szótári háttér |
 | a BDB-szótár versenkénti jelentései | közkincs | 2. Előfordulások, 4. Szótári háttér |
-| adat/karoli_strong | minden jog fenntartva | 4. Szótári háttér |
 | a héber glosszák magyar táblája | CC BY 4.0 | 4. Szótári háttér |
 | a jelöltek döntésnaplója | minden jog fenntartva | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
 | a kapcsolat-tábla | minden jog fenntartva | 7. Kapcsolatok |
@@ -3572,6 +3571,7 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a Károli-kereszthivatkozások | közkincs | 6. Kereszthivatkozások |
 | a Károli-szavak szótári alakjai | minden jog fenntartva | 4. Szótári háttér |
 | a Károli-versmegfeleltetés | minden jog fenntartva | 2. Előfordulások |
+| a Károli–Strong párosítás | minden jog fenntartva | 4. Szótári háttér |
 | a lap fordítástáblája | közkincs, minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
 | a lap szótári hivatkozástáblája | közkincs | 4. Szótári háttér |
 | az LXX-fordítói döntések táblája | minden jog fenntartva | 5. LXX-fordítói döntések |

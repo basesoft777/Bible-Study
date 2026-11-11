@@ -7051,6 +7051,7 @@ def OU_PROV(p):
 # 1. szabály: a sor a lap forrásában az állítás mellett áll, az olvasó a forrás nevét és dátumát látja). Az olvasói
 # kapu az új szerkezetű lapon kivétel nélkül mér (a technikai dőlt sor, a lábjegyzet, a Kolofon és az Irodalom is).
 OLVASOI_FORRASNEV = (
+    (r'karoli_strong', 'a Károli–Strong párosítás'),   # F182 (A24): a 4.14 forrása (könyvtár, a párosítás táblái)
     (r'[\w-]*_kereszthivatkozas_naplo\.md', 'a motívum korábbi kereszthivatkozás-naplója'),
     (r'F123_teljesseg_[\w-]+?(?:_blokkok)?\.(?:md|tsv)', 'a lap teljesség-mérése'),
     (r'F123_[\w-]+\.(?:md|tsv|py)', 'a lap munkanaplója'),

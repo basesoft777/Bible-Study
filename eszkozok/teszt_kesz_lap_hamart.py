@@ -93,6 +93,9 @@ class Lap(unittest.TestCase):
         self.assertNotIn('a 2. szerepben', p48)
         self.assertIn('#### 4.11. Visszhang: ókori fordítások\n', self.lap)
 
+    def test_nincs_belso_utvonal(self):
+        self.assertIsNone(re.search(r'(?<![\w./-])(?:adat|konkordancia|naplok)/\w', self.lathato))
+
     def test_a11_a12_magyar_cimek(self):
         self.assertIsNone(re.search(r'(?<![\w/])(?:kt|other)/[a-z]', self.lathato))
         self.assertNotIn('Destroy', self.lathato)
@@ -203,7 +206,7 @@ class Kapuk(unittest.TestCase):
 
     def test_nyers_jel(self):
         for hibas in ('[^1]: proveniencia: forrás: x | igazolas: y', 'napló: a motívum naplója (4/b. rész)',
-                      'tW: kt/curse', 'a szó: [szónézet: /szo/G1](/szo/G1)', 'רַע‎_226 melléknév'):
+                      'tW: kt/curse', 'a szó: [szónézet: /szo/G1](/szo/G1)', '| adat/karoli_strong | x |', 'רַע‎_226 melléknév'):
             self.assertTrue(kapu(uj_lap(hibas), 'NYERS_JEL'), hibas)
         self.assertEqual(kapu(uj_lap('Forrás: a jelöltek döntésnaplója, 2026-11-11.'), 'NYERS_JEL'), [])
         self.assertEqual(kapu('# X\n\n## 2. Előfordulások\n\nnapló: x\n', 'NYERS_JEL'), [])
