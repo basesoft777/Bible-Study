@@ -31,7 +31,12 @@ def arany_blokk():
         t = f.read().replace('\r\n', '\n')
     a = t.index('#### 4.11. ')
     b = t.index('#### 4.12. ', a)
-    return '## 4. Szótári háttér\n\n' + t[a:b]
+    blokk = '## 4. Szótári háttér\n\n' + t[a:b]
+    # F182 (A15, DT-F182l): a rokon nyelvi háttér a héber 4.8 végén áll; a V2/V3 a „Háttér: rokon nyelvek” alcím alatt mér
+    h = t.find('##### Háttér: rokon nyelvek')
+    if h >= 0 and h < a:
+        blokk = blokk.rstrip('\n') + '\n\n' + t[h:t.index('#### 4.9. ', h)]
+    return blokk
 
 
 def visszhang(szoveg):
