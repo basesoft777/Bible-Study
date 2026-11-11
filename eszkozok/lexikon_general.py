@@ -3663,6 +3663,21 @@ def alak_utani_glossza(szoveg):
     return None
 
 
+def gondolatjel_utani_glossza(hu):
+    """F182 (A17; F10 (2), K55): a törzs-szakasz (Hithpa'el, Niph'al …) glosszája, ha a címketábla nem ad: a BDB-szakasz
+    alakjegyzéke utáni első gondolatjel és a következő pontosvessző / zárójel / pont közti rész („… 1Sám 16:1 összesen
+    2-szer stb.; — gyászolni (többnyire próza)” → „gyászolni”); None, ha nincs ilyen vagy nem magyar szó."""
+    def jo(g):
+        return g and 3 <= len(g) <= 80 and not re.search(r'[֐-׿יִ-ﭏ\d]', g) and not _ALAKTANI_KEZDET.match(g)
+    for m in re.finditer(r'\s—\s+([a-záéíóöőúüű][^;(.:]*?)\s*(?=[;(.:]|$)', hu or ''):
+        if jo(m.group(1).strip(' ,')):
+            return m.group(1).strip(' ,')
+    m = re.search(r'^\S+:\s+([a-záéíóöőúüű][^;(.:]*?)(?=,\s*(?:perfectum|imperfectum|participium|infinitivus)|[;(.:]|$)',
+                  hu or '')
+    g = m.group(1).strip(' ,') if m else (alak_utani_glossza(hu) or '')
+    return g if jo(g) else None
+
+
 def _jel_olvasoi(jel):
     return szakasz_szoveg(jel, nevelo=False)
 
@@ -3927,8 +3942,10 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
                 vazlat += HORGONNYAL_JELOLES
             if k in elnyelo:
                 vazlat += ' ' + elnyelo_mondat(elnyelo[k])
-            futam.append((jel, k, vazlat, (thayer_glossza if szotar == 'Thayer' else olvasoi_glossza)(jel, cimke, hu), hiv_db.get(k, 0))
-                         if uj else (jel, k, vazlat))
+            gl = (thayer_glossza if szotar == 'Thayer' else olvasoi_glossza)(jel, cimke, hu) if uj else ''
+            if uj and not gl and szotar != 'Thayer':
+                gl = gondolatjel_utani_glossza(hu)   # F182 (A17; F10 (2)): a törzs-szakasz glosszája a gondolatjel után
+            futam.append((jel, k, vazlat, gl, hiv_db.get(k, 0)) if uj else (jel, k, vazlat))
             continue
         lezar()
         fej = '- **`%s` — %s**' % (jel, cimke) if cimke else '- **`%s`**' % jel
@@ -7378,7 +7395,16 @@ def kesz_lap_utana(szoveg, m, sorai):
             sor = mm.group(1) + jelolt_labjegyzet_olvasoi(mm.group(2)) + (mm.group(3) or '')
         ki.append(sor)
     # F182 (F6 (2), F10 (6)): a szónézet linkje olvasói szöveggel, a nyers útvonal („szónézet: /szo/G1311”) nélkül
-    return SZONEZET_NYERS_RX.sub(r'[szónézet](\1)', '\n'.join(ki))
+    szoveg = SZONEZET_NYERS_RX.sub(r'[szónézet](\1)', '\n'.join(ki))
+    # F182 (A17; F10 (5), K54): a BDB-fej nyers előtagja („H7451. ra ' ”) és a címszó belső számlálója („רַע‎_226”) nélkül
+    szoveg = BDB_FEJ_NYERS_RX.sub(r'\1', szoveg)
+    return BDB_SZAMLALO_RX.sub('', szoveg)
+
+
+BDB_FEJ_NYERS_RX = re.compile(r'(\*\*A szócikk feje \(nyelvi háttér\)\.\*\* )[HG]\d{1,4}[a-z]?\. [^֐-׿יִ-ﭏ\[\n]*?'
+                              r'(?=(?:[IV]+\. )?\[?[֐-׿יִ-ﭏ])')
+BDB_SZAMLALO_RX = re.compile(r'(?:(?<=[֐-׿יִ-ﭏ\]‎])‎?|(?<=Qal)|(?<=[`\']al)|(?<=[`\']el)|(?<=[`\']il)|'
+                             r'(?<=Hiphil)|(?<=Hophal)|(?<=Niphal))_\d+(?=[\s,;.)\]])')
 
 
 SZONEZET_NYERS_RX = re.compile(r'\[szónézet: (/szo/[HG]\d{4}[a-z]?)\]\(\1\)')
