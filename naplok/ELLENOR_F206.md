@@ -31,7 +31,7 @@ ELTÉRÉS: 10 tétel
 | A1 Memória vs. lekérdezés | ELTÉRÉS | `naplok/F206_jelentes.md:17,107,171,191-192` | A futtatásból származó számok mellől hiányzik a proveniencia-sor (CLAUDE.md 1. szabály). |
 | A2 Nyitott tételek | ELTÉRÉS | `nyitott/uj/epic-hawking-d0313a.md:1` | Mindkettő valóban nyitott (a #699 nincs a main-en), de az N-F206a tétellistája kihagyja a V9-es 20. és 27. tételt. |
 | A3 / A4 / A5 | OK / n. a. | — | A Jel 22:3 tematikus (`elofordulasok.tsv:246`); PaRDeS-tanulmány, nevesített tanító a diffben nincs. |
-| A6 / CI | NEM ELLENŐRIZHETŐ | — | A `futtat.py` futását egy másik worktree ellenőrzési zára tartotta. |
+| A6 / CI | OK (utólag) | — | A zár felszabadulása után: `python eszkozok/ellenorzes/futtat.py --valtozott <a 8 fájl> --diff-alap 5b2d9fe1 --diff-fej 0896aaf5` → kilépési kód 0; E12–E15: 0 találat. Jelzés csak a diffen kívüli fájlokon: E25 (`CLAUDE.md:35`, `MUNKAMENET.md:70,251`), E27 (44, `FELADATOK.md`, `NYITOTT_FELADATOK.md`), E34 (41, `adat/elofordulasok.tsv`, KIRALY-001). A munkafán ekkor már az F206.5 is rajta volt. |
 | Ellenőrzőlista 1–5 | OK | — | 7 törölt sor, mind átírás; kulcstartományok hézag nélkül; `adat`, `konkordancia`, `lexikon`, `motivumok`, `MUNKAMENET.md` diffje üres; `.tsv` Δ = 0; merge és végleges szám nincs. |
 | Adat-szúrópróba | OK | — | `lekerdez.py scan H0776 --szakasz "1Móz 6:11-13"` → 3; `scan H0127` ugyanott → 0; `scan H0776 --szakasz "Jer 51:46"` → 1; `scan H0779 --szakasz "1Móz 9:25-26"` → 9:25; `scan H1288` → 9:26; `scan H0127` 1Kir 13:34 / 2Kir 17:23 → 1 / 1; `karoli "2Kir 17:23"`: „az ő földéből”; `karoli "Jer 6:7"`: „betegség és vereség van előttem szüntelen”; `kollokacio H2555 H8085` → 4 vers. |
 
