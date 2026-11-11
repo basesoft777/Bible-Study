@@ -8,6 +8,7 @@ modell: opus
 munka: folyamat
 allapot: megallt
 ag: claude/f203-thayer-forditas
+pr: 704
 ad: a Thayer-bontó mért, nem javított fej-alesetei (K1d, K2c, K2d) és a G0027 nem bibliai hivatkozása javítva, az átkulcsolás általános móddal; a fordítási lista csak a lapon ténylegesen fordítatlan egységet listázza, és nem ír a repóba; a Feed 9. kapuja a DT665 kivételét blokkszintű lapdiffel ismeri; a C8 fordítási része becsléssel, döntésre
 kovetkezo: "Te: a draft PR merge-e az orkesztrátoré, a HAMART /kiadas után. Döntésre vár: DT-F203a ({L:…} megjelenítése), N-F203a (új vak Thayer-mérés, ≈ 1,1 M token). Külön menet: N-F203c (a teljes görög glossza-tábla, előfizetői keret), N-F203d (TBESH teljes szócikk útja), N-F203e (beir: csak az elavult szakasz)"
 olvas: [CLAUDE.md, NYITOTT_FELADATOK.md, adat/SEMA.md, naplok/F186_jelentes.md, eszkozok/thayer_jelolt/, eszkozok/glossza_lexikon_forditas.py, eszkozok/szakasz_cimke_levezet.py, eszkozok/muhely_allapot.py, adat/lap_atnezesek.tsv]
