@@ -7354,12 +7354,29 @@ UJ_JELMAGYARAZAT_CSERE = (
 )
 
 
+# F182 javítókör (ELLENOR_F182 #7): a mondatközi kisbetűsítés nem bántja a mozaikszót („LXX-híd”) és a tulajdonnevet
+# („Károli-megfelelők”); a tulajdonnevek listája a szerepnevekben álló nevek.
+KISBETU_TULAJDONNEV = ('Károli', 'Septuaginta', 'Strong', 'Thayer', 'Vulgata', 'Targum', 'Nave', 'Pesitta', 'BDB', 'TSK')
+
+
+def kisbetus_kezdes(s):
+    """A szöveg első betűje kisbetűvel, kivéve, ha az első szó (kötőjelig) mozaikszó (legalább két nagybetű) vagy
+    tulajdonnév (`KISBETU_TULAJDONNEV`)."""
+    if not s:
+        return s
+    elso = re.match(r'[^\s\-–/(]+', s)
+    szo = elso.group(0) if elso else ''
+    if sum(1 for c in szo if c.isupper()) >= 2 or szo in KISBETU_TULAJDONNEV:
+        return s
+    return s[0].lower() + s[1:]
+
+
 def szotari_pontok_jelmagyarazat():
     """F182 (A09; F8 (4)): a 4. szakasz pontrendszerének magyarázata a Jelmagyarázatban (a szóbevezető helyett), a
     szerepmátrix (`adat/szotar_szerepek.tsv`) sorrendjében és neveivel; a 4.11 a visszhang-blokk."""
     nevek = {int(r['sorrend']): szerep_megjelenitett(r['szerep']).strip() for r in szerepek_sorok() if r['nyelv'] == 'gorog'}
     nevek[11] = 'Visszhang: ókori fordítások'
-    pontok = '; '.join('4.%d %s' % (n, nevek[n][0].lower() + nevek[n][1:]) for n in sorted(nevek))
+    pontok = '; '.join('4.%d %s' % (n, kisbetus_kezdes(nevek[n])) for n in sorted(nevek))
     return ('**A szótári pontok** (4. Szótári háttér): szavanként számozott pontok követik egymást, mindegyik egy kérdésre '
             'felel: %s. A 4.1–4.10 nyelvenként, szavanként áll, a 4.11–4.14 a motívum egészére vonatkozik.' % pontok)
 

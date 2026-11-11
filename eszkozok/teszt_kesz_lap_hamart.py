@@ -70,6 +70,8 @@ class Lap(unittest.TestCase):
 
     def test_a26_a09_jelmagyarazat(self):
         self.assertIn('**A szótári pontok** (4. Szótári háttér)', self.lap)
+        self.assertNotIn('lXX-híd', self.lap)            # F182 javítókör (ELLENOR_F182 #7)
+        self.assertNotIn('károli-megfelelők', self.lap)
         self.assertNotIn('study-jából', self.lap)
         self.assertNotIn('a lap munkaanyaga alakú', self.lathato)
 
@@ -173,6 +175,18 @@ class Generator(unittest.TestCase):
             'gyászolni')
         self.assertEqual(LG.gondolatjel_utani_glossza('Niph`al: megromlani, elrontódni, perfectum 3.'),
                          'megromlani, elrontódni')
+
+    def test_jelmagyarazat_kisbetu(self):
+        """F182 javítókör (ELLENOR_F182 #7): a mozaikszó és a tulajdonnév nem lesz kisbetűs („lXX-híd”, „károli-…”)."""
+        self.assertEqual(LG.kisbetus_kezdes('LXX-híd'), 'LXX-híd')
+        self.assertEqual(LG.kisbetus_kezdes('Károli-megfelelők'), 'Károli-megfelelők')
+        self.assertEqual(LG.kisbetus_kezdes('Alapjelentés'), 'alapjelentés')
+        self.assertEqual(LG.kisbetus_kezdes('Rejtett / hamis párhuzam'), 'rejtett / hamis párhuzam')
+        j = LG.szotari_pontok_jelmagyarazat()
+        self.assertIn('4.6 LXX-híd', j)
+        self.assertIn('4.13 Károli-megfelelők', j)
+        self.assertNotIn('lXX', j)
+        self.assertNotIn('károli', j)
 
     def test_bdb_fej_es_szamlalo(self):
         s = '**A szócikk feje (nyelvi háttér).** H7451. ra \' I. רַע‎_226 melléknév'
