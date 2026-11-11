@@ -21,7 +21,7 @@ forrásszöveg). Ebből a `szotar` ∈ {UBS_DNTG, UBS_DBH, TBESG} és `allapot` 
   bevesz   --munka D --cid C --valasz F --modell M   a subagent válasza a valaszok.jsonl-be (M: a ténylegesen futott modell)
   kapuz    --munka D             válasz → JSON → helyőrző-visszaállítás → javítóréteg → kapuk → kapu_eredmeny.jsonl
   javit    --munka D             a kapun bukott egységek javító kérései (keresek_p2.jsonl; a kapu hibaüzenetével; egyszer)
-  rogzit   --munka D [--datum]   az átment egységek sorai (rogzitett.tsv, a forditasok.tsv sémája); a kétszer bukottak a
+  rogzit   --munka D --menet M [--datum]   az átment egységek sorai (rogzitett.tsv, a forditasok.tsv sémája); a kétszer bukottak a
                                  bukottak.tsv-be
   beir     --munka D [--jelzes-atnezve] [--felulir]   a rogzitett.tsv sorai az adat/forditasok.tsv-be
   --onteszt                      hálózat nélküli önteszt (a teljes teszt: teszt_glossza_api_koteg.py)
@@ -711,7 +711,12 @@ def allapot_modellbol(modell):
     return a, m
 
 
-def rogzit(datum=None):
+def cid_menettel(cid, menet):
+    """F203 (ELLENOR_F203): a kérés azonosítója a menet jelével (`F203/G001-p1`); menet nélkül változatlan (a régi sorok alakja)."""
+    return '%s/%s' % (menet, cid) if menet else cid
+
+
+def rogzit(datum=None, menet=None):
     datum = datum or datetime.date.today().strftime('%Y.%m.%d')
     egys = {e['id']: e for e in egysegek_be()}
     vegso = vegso_allapot()
@@ -723,7 +728,7 @@ def rogzit(datum=None):
             all_, mod = allapot_modellbol(r['modell'])
             megj = ('%s (glossza-lánc, prompt %s, %s, %s): kapuk átmentek%s%s; terminológia %s | scope=%s %s %s %s %s | '
                     'forras=%s | ts=%s' % (
-                        MENETJEL, PROMPT_VERZIO, r['custom_id'], (SUBAGENT_EREDET % r['modell']) if r['eredet'] == 'subagent'
+                        MENETJEL, PROMPT_VERZIO, cid_menettel(r['custom_id'], menet), (SUBAGENT_EREDET % r['modell']) if r['eredet'] == 'subagent'
                         else 'Batch API',
                         '; javítóréteg: ' + ', '.join(x[0] for x in r['valtozasok']) if r['valtozasok'] else '',
                         '; bizonytalan: ' + ', '.join(r['bizonytalan']) if r['bizonytalan'] else '',
@@ -851,6 +856,7 @@ def main(argv=None):
     p.add_argument('--plafon', type=float, default=0.0)
     p.add_argument('--kor', type=int, choices=[1, 2], default=1)
     p.add_argument('--datum')
+    p.add_argument('--menet', help='a menet jele (pl. F203); a rogzit-hoz kötelező')
     p.add_argument('--jelzes-atnezve', action='store_true')
     p.add_argument('--felulir', action='store_true')
     p.add_argument('--onteszt', action='store_true')
@@ -879,7 +885,11 @@ def main(argv=None):
     if a.parancs == 'javit':
         return javit()
     if a.parancs == 'rogzit':
-        return rogzit(a.datum)
+        if not a.menet:
+            # F203 (ELLENOR_F203): a menet jelölése kötelező — a `custom_id` (G001-p1 …) menetek között nem egyedi, és a
+            # MENETJEL a lánc azonosítója, nem a meneté
+            p.error('a rogzit-hoz --menet kell (a menet jele, pl. F203): a sor megjegyzése ezzel azonosítja a menetet')
+        return rogzit(a.datum, a.menet)
     if a.parancs == 'beir':
         beir(a.jelzes_atnezve, a.felulir)
         return 0

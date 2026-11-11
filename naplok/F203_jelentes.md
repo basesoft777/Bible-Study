@@ -9,7 +9,7 @@
 |---|---|---:|---:|
 | C7 (N125, N126) | Thayer-aranyminta (800 sor), jelentéspont = arany | 787 | **795** |
 | | seed-201 / -202 / -203 / -204 | 199 / 198 / 194 / 196 | 199 / 198 / 199 / 199 |
-| | szakasztábla sorai (`thayer_szakaszok.tsv`) | 17 261 | 17 220 |
+| | szakasztábla sorai (`thayer_szakaszok.tsv`; −52 / +11, 7. pont) | 17 261 | 17 220 |
 | | változott szócikk (a korpuszon, átnézve) | — | 64 (K2c/K2d 54, K1d 10) |
 | C7 (N124) | `bcv` nem bibliai műre, Károli-verssel | 3 (G0027 Luk 7:23, 8:18, 8:25) | 0 (`nem_bibliai`) |
 | C7 | Thayer-fordítássor: átkulcsolva / elavult / összefűzött + tagsor | — | 38 / 7 / 10 + 10 |
@@ -188,7 +188,7 @@ Mérés a valós git-történeten:
 | `eszkozok/thayer_jelolt/teszt_forditas_atkulcsol.py` | 22 OK | + `TervTabla` (6), `Mai` (általános mód) |
 | `eszkozok/thayer_jelolt/teszt_lanc.py` | 42 OK, 1 bukás | a `Sigla.test_tabla_determinisztikus_es_kezi_vedett` az F186 6.3 szerint már előtte bukott (66 ≠ 60) |
 | `eszkozok/teszt_glossza_lexikon_forditas.py` | 22 OK | + `Lista` (6) |
-| `eszkozok/teszt_glossza_api_koteg.py` | 22 OK, 1 hiba | a `TeljesUt.test_bevesz_kapuz_javit_rogzit_beir` a main-en is hibás (F31 a valós tábla UBS_DNTG G4151 során); + `Tulajdonnev` (2) |
+| `eszkozok/teszt_glossza_api_koteg.py` | 25 OK, 1 hiba | a `TeljesUt.test_bevesz_kapuz_javit_rogzit_beir` a main-en is hibás (F31 a valós tábla UBS_DNTG G4151 során); + `Tulajdonnev` (2), `Menetjel` (3) |
 | `eszkozok/teszt_lapdiff_blokk.py` | 10 OK | új |
 | `eszkozok/teszt_muhely_allapot.py` | 34 OK, 1 bukás | a `TesztHatarFrissesseg.test_hamart_…` a változás nélkül is bukik (a HAMART határ-frissessége, a #182 területe) |
 | `python eszkozok/ellenoriz.py` | 0 SÉRTÉS | a 13. szabály a G2671 fordítása után RENDBEN/JELENTÉS |
@@ -203,3 +203,30 @@ Mérés a valós git-történeten:
 - **DT665 (b):** gépi blokkdiff a kapuban, teszttel (`teszt_lapdiff_blokk.py`).
 - **Thayer-fejek:** a javított osztályok (K1d, K2c, K2d) a `teszt_vers_jelentes.py` aranyminta-tesztjében és a
   `teszt_bont.py` `F203Fejek` szintetikus eseteiben. A `NEM_JAVITOTT` halmazból kikerültek, így visszaesésük bukást okoz.
+
+## 7. Javítókör 1 (`naplok/ELLENOR_F203.md`, ELTÉRÉS 3 tétel; 2026-11-11)
+
+1. **(1) a zöld tesztek feltétele (F203.5).** A saját tesztek zöldek; a megmaradt bukások függetlensége most igazolva, futtatással:
+   - `teszt_glossza_api_koteg.py` `TeljesUt`: az `origin/main` `glossza_api_koteg.py` + teszt + `forditasok.tsv` állapotán futtatva
+     ugyanez a hiba (F31, UBS_DNTG G4151) — a main-en is hibás;
+   - `teszt_muhely_allapot.py` `TesztHatarFrissesseg`: a `muhely_allapot.py` F203 előtti változatával futtatva ugyanígy bukik;
+   - `teszt_lanc.py` `Sigla`: az F186 jelentés 6.3 (66 ≠ 60) szerint korábbról;
+   - `teszt_futtat.py --gyors` 4 BDB-teszt (`teszt_olvaso_szerver.py`): a WSL-adatbázist (2026-11-02-i építés, a teszt szerint
+     elavult) és az olvasó-szerver kódját olvassák; `git diff --stat 9926ae54..HEAD -- eszkozok/olvaso_szerver` üres, az adatbázis
+     nem épült újra — a változás ezeket nem érheti el.
+   A brief „zöld” feltétele így a saját tesztekre teljesül, a négy idegen bukás a jelentésben megnevezve marad (a main-en / a
+   környezetben is így).
+2. **(2) a 68 TBESG-sor menetjele.** Gyökérok: a `glossza_api_koteg.py rogzit` a lánc azonosítóját (`MENETJEL` = F161, az
+   egyenérték-tábla kizárója — ennek maradnia kell) írta, a menetét nem, és a `custom_id` menetek között nem egyedi. Javítás: a
+   `rogzit` CLI-ben a `--menet` kötelező (nélküle 2-es kilépés), a megjegyzés `F161 (glossza-lánc, prompt glossza v2, F203/G001-p1, …`
+   alakú (`cid_menettel`). A 68 sor megjegyzése bájtőrzően átírva (`F203/G00n-p1|p2`); teszt: `teszt_glossza_api_koteg.py`
+   `Menetjel` (3).
+3. **(3) a `thayer_szakaszok.tsv` −41 sorának bontása.** Strongonkénti szakaszszámmal: **−52** (48 Strong; a K2c/K2d hamis fejek az
+   előző szakaszba olvadnak) és **+11** (10 Strong; a K1d belső fejek nyitnak) = −41; további 6 Strong szakaszszáma változatlan, a
+   tartalma (összevonás és nyitás egyszerre, vagy útvonal) változott — összesen 64. A (strong, útvonal, jel, hash) kulcs szerint 123
+   sor tűnt el és 82 új (az összevont szakaszok hash-e is új).
+
+Megjegyzések (nem ELTÉRÉS), tudomásul véve: a `Mai` teszt első állítása azonos táblára triviális, a védelem a hash-egyezés (második
+állítás); a `lapdiff_blokk._normal` a sorvégi szóközt nem számítja (Markdown-sortörés) — a generált lapokon sorvégi kettős szóköz nincs
+használatban, de a rés nyitott; a G2671 sz2 egyedi írószkriptje a repón kívül van (a beírt sor a `beir` szabványos alakja, a hash a mai
+sz2-é: `teszt_forditas_atkulcsol.py` `Mai` második állítása ezt gépileg igazolja).
