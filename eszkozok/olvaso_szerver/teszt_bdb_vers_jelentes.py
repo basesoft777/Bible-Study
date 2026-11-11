@@ -596,7 +596,7 @@ class CsoportOszlop(unittest.TestCase):
     # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
     # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő.
     # F185 (a jelentéspont a szakasztáblából, a H7585 tételes felülírásával; naplok/F185_jelentes.md): új érték
-    REGI_OSZLOPOK_SHA256 = '35bb8019983e1e41a484750e38ffab0ff8c89e9bf3a3ebd2d5e394c2852e3ddf'
+    REGI_OSZLOPOK_SHA256 = 'd0cf1fb5c42112a1b553606b1004a789ea21f1a1314c3d1fef4cc84e562224a3'
 
     @classmethod
     def setUpClass(cls):
