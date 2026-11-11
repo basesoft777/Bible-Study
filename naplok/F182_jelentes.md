@@ -7,7 +7,7 @@
 - **Két fázis, most csak az 1.** Az orkesztrátor jelzése, a felhasználó 2026-11-10-i jóváhagyásával („mehet”). Az 1. fázis a HAMART-001 saját forrását (`motivumok/HAMART-001.md`) és adatsorait írja: határkérdések, kapcsolat-sorok, prózajavítás a forrásban, a Thayertől független fordításpótlás. Generátor, kapu, sablon és a `lexikon/` alatti lap nem változott; a lap nem generálódott újra.
 - **A brief menetrendjétől eltérően** a H0 előfeltétele (#102–#105, #180 a main-ben) és a H1 (Fable-határ-ellenőrzés) nem e fázis feltétele: a határ-ellenőrzés a PR #668-ban kész volt (48 sorra), a kérdéseit (K1–K6) ez a fázis dönti el.
 - **Pontosítás (orkesztrátor, menet közben):** a 2. fázis Thayer-előfeltétele a #186 (THAYER_JELENTESPONT_97, mérés és javítás) és a #187 (THAYER_KARTYA, a kétrétegű görög kártya a `lexikon_general.py`-ban; a #182 2. fázisa előtt fut, mert ugyanazt a generátort írja). A `fugg` mező nem változott.
-- **Az `ir`-listán kívül írt fájlok:** `adat/elutasitasi_okok.tsv` (a HAMART saját 112-es mintája, egy alternatívával bővítve; DT-F182a), `adat/auditok.tsv` (a lekérdezések proveniencia-sorai, MUNKAMENET A5), `adat/forditasok.tsv` (a 4. lépés kimenete, a #161 lánca szerint), `adat/nyilt_kodkonyv.tsv` (egy zárt érték; a CI E35 miatt, l. 5. pont), a menet szkriptjei és a jelöltnapló a `naplok/` alatt (`F182_hatar.py`, `F182_kapcsolat.py`, `F182_kapcsolat_dontes.py`, `F182_kapcsolat_jeloltek.tsv`, `F182_proza_adat.py`), valamint a helyőrzős döntések és nyitott tételek fájljai (`dontesek/uj/hamart-javito.md`, `nyitott/uj/hamart-javito.md`).
+- **Az `ir`-listán kívül írt fájlok:** `adat/elutasitasi_okok.tsv` (a HAMART saját 112-es mintája, egy alternatívával bővítve; DT744), `adat/auditok.tsv` (a lekérdezések proveniencia-sorai, MUNKAMENET A5), `adat/forditasok.tsv` (a 4. lépés kimenete, a #161 lánca szerint), `adat/nyilt_kodkonyv.tsv` (egy zárt érték; a CI E35 miatt, l. 5. pont), a menet szkriptjei és a jelöltnapló a `naplok/` alatt (`F182_hatar.py`, `F182_kapcsolat.py`, `F182_kapcsolat_dontes.py`, `F182_kapcsolat_jeloltek.tsv`, `F182_proza_adat.py`), valamint a helyőrzős döntések és nyitott tételek fájljai (`dontesek/uj/hamart-javito.md`, `nyitott/uj/hamart-javito.md`).
 
 ## Elvégzett tételek
 
@@ -20,7 +20,7 @@
 | F182.4 | 7eb3e62c | 08:17 | TBESG-glossza: G1944, G2671, G5356 |
 | F182.5 | ad7f3ee2 | 08:35 | a nyílt mag újragenerálása (CI E35), a négy új indoklás angol párja, egy kódkönyv-sor |
 | F182.6 | fffe83c2 | 08:50 | jelentés, a brief fejléce: `allapot: megallt` |
-| F182.7 | (ez a commit) | — | K4 alkalmazása: DT-F182d (A); a HAMART határa lezárt (F26) |
+| F182.7 | (ez a commit) | — | K4 alkalmazása: DT747 (A); a HAMART határa lezárt (F26) |
 
 ### 1. Határkérdések (`naplok/HATAR_HAMART-001.md`, 48 sor)
 
@@ -28,12 +28,12 @@ Minden kérdésnél előbb megnéztem, van-e rá szerkesztői döntés (`DONTESE
 
 | K | Előzmény | Sors | Hogyan |
 |---|---|---|---|
-| K1 (1Móz 4:2-3 ↔ 9:20, „földmívelő”) | nincs | **eldöntve: DT-F182a** — az 1Móz 4:2-3 kint | A negatív kritérium kizárja a „föld mint talaj” általános használatot, és megköveteli az átok kimondását, ismétlését vagy megfordítását. Mért jegy (TAHOT, 1Móz 1–9 minden H0127-verse): az 1Móz 2:5, 4:2-3 és 9:20 a földet művelés vagy foglalkozás megnevezésében hozza, átok nélkül; a bent álló 11 adámá-vers mind ítéletet mond ki vagy hajt végre. Azonos jegy, azonos sors: mindhárom kint. A 9:20 indoklása ugyanarra a szövegre igazodott. `elofordulasok.tsv` 48 → 47 sor, 56 → 54 vers. |
+| K1 (1Móz 4:2-3 ↔ 9:20, „földmívelő”) | nincs | **eldöntve: DT744** — az 1Móz 4:2-3 kint | A negatív kritérium kizárja a „föld mint talaj” általános használatot, és megköveteli az átok kimondását, ismétlését vagy megfordítását. Mért jegy (TAHOT, 1Móz 1–9 minden H0127-verse): az 1Móz 2:5, 4:2-3 és 9:20 a földet művelés vagy foglalkozás megnevezésében hozza, átok nélkül; a bent álló 11 adámá-vers mind ítéletet mond ki vagy hajt végre. Azonos jegy, azonos sors: mindhárom kint. A 9:20 indoklása ugyanarra a szövegre igazodott. `elofordulasok.tsv` 48 → 47 sor, 56 → 54 vers. |
 | K2 (Ez 12:19 bent ↔ Hab 2:8, 2:17 kint) | DT683 (B), DT685 (K3) | **lezárt** | Következetesség mérve (TAHOT, minden chámász-vers): a 13 vers, amelyben a chámász mellett a ml'-tő (ige vagy a melóá főnév) vagy a sámá áll, mind bent; a 46 szópár nélküli mind kint. Az Ez 12:19 a ml'-tő egyetlen főnévi esete. Adat nem változott. |
 | K3 (Gal 3:13-14) | N116, DT686, DT687 | **lezárt, nem nyitottam újra** | A lap a sort „Határeset: a kapcsolat az áldás-mondaton át” funkcióval és a „Határesetek” listán (közepes) mutatja; olvasható. Megjegyzés: a felhasználó „tematikus kapcsolat”-nak nevezte, az adat „határeset”-nek (a G1944 a versben áll, ezért nem „tematikus, nem lexikai” sor). |
-| K4 (Ez 28:16, Mik 6:12, Sof 1:9: a szópár a föld nélkül) | nincs | **lezárt: DT-F182d (A), a felhasználó döntése** (2026-11-10, az orkesztrátor továbbításában: „a”) | A szópár (málé + chámász, illetve sámá + chámász) önmagában elég: a formula az 1Móz 6:11-13 szava, maga utal vissza. A sorok maradnak. Az öt vers (Ez 28:16, Mik 6:12, Sof 1:9, Jer 6:7, Hab 1:2) indoklása (`jeloltek.tsv`) és 1/a prózája (`elofordulasok.tsv`) ezt kimondja (`naplok/F182_k4.py`, összevetéssel). A sámá-soroknál pontosítva: az 1Móz 6:11 és 6:13-ban a chámász a málé igével áll (TAHOT: H2555 + H4390), a sámá nem; ott az indoklás azt mondja, hogy az erőszak szava az 1Móz 6:11-13 szava, a „hallatszik az erőszak” pedig a lánc szópárja. A nyílt mag és az öt indoklás angol párja frissítve (Sonnet; két helyen a „voice of the earth” félrefordítást „word for the earth”-re javítottam: `claude-sonnet-5-5; javítás: claude-opus-5-5`); a nyílt mag kapuja 0 BUKÁS. |
-| K5 (1Móz 6:5 ↔ Jer 17:9 „jetzer”) | DT683 (E), DT685 (K8) | **lezárt; az indoklás frissítve: DT-F182b** | A sor marad. Az elavult indoklás (a kivezetett רַע szóra épült) helyett: a vers a 6:7 ítéletének indoka ugyanabban az elbeszélésben, és a bent álló 8:21 ugyanezt az indokot mondja ki; a Jer 17:9, Jer 4:14, Mt 15:19, Mk 7:21-23 a lánc elbeszélésén kívül áll. |
-| K6 (Gal 3:14, Zsid 6:7 a tartományban ↔ Róm 8:20 kint) | DT686 (Gal), DT685 (K10, Róm) | **Gal és Róm lezárt; Zsid: DT-F182c** | Szabály a két lezárt döntéssel összhangban: a tartomány addig tart, ameddig a hely állításához szükséges rész áll. A Zsid 6:8 igenévi mondatának alanya (γῆ) a 6:7-ben van (TAGNT; Károli: „A mely pedig …”), a Róm 8:21 maga hordozza az alanyt (κτίσις) és a φθορά szót. Csak a Zsid 6:7-8 indoklása változott. |
+| K4 (Ez 28:16, Mik 6:12, Sof 1:9: a szópár a föld nélkül) | nincs | **lezárt: DT747 (A), a felhasználó döntése** (2026-11-10, az orkesztrátor továbbításában: „a”) | A szópár (málé + chámász, illetve sámá + chámász) önmagában elég: a formula az 1Móz 6:11-13 szava, maga utal vissza. A sorok maradnak. Az öt vers (Ez 28:16, Mik 6:12, Sof 1:9, Jer 6:7, Hab 1:2) indoklása (`jeloltek.tsv`) és 1/a prózája (`elofordulasok.tsv`) ezt kimondja (`naplok/F182_k4.py`, összevetéssel). A sámá-soroknál pontosítva: az 1Móz 6:11 és 6:13-ban a chámász a málé igével áll (TAHOT: H2555 + H4390), a sámá nem; ott az indoklás azt mondja, hogy az erőszak szava az 1Móz 6:11-13 szava, a „hallatszik az erőszak” pedig a lánc szópárja. A nyílt mag és az öt indoklás angol párja frissítve (Sonnet; két helyen a „voice of the earth” félrefordítást „word for the earth”-re javítottam: `claude-sonnet-5-5; javítás: claude-opus-5-5`); a nyílt mag kapuja 0 BUKÁS. |
+| K5 (1Móz 6:5 ↔ Jer 17:9 „jetzer”) | DT683 (E), DT685 (K8) | **lezárt; az indoklás frissítve: DT745** | A sor marad. Az elavult indoklás (a kivezetett רַע szóra épült) helyett: a vers a 6:7 ítéletének indoka ugyanabban az elbeszélésben, és a bent álló 8:21 ugyanezt az indokot mondja ki; a Jer 17:9, Jer 4:14, Mt 15:19, Mk 7:21-23 a lánc elbeszélésén kívül áll. |
+| K6 (Gal 3:14, Zsid 6:7 a tartományban ↔ Róm 8:20 kint) | DT686 (Gal), DT685 (K10, Róm) | **Gal és Róm lezárt; Zsid: DT746** | Szabály a két lezárt döntéssel összhangban: a tartomány addig tart, ameddig a hely állításához szükséges rész áll. A Zsid 6:8 igenévi mondatának alanya (γῆ) a 6:7-ben van (TAGNT; Károli: „A mely pedig …”), a Róm 8:21 maga hordozza az alanyt (κτίσις) és a φθορά szót. Csak a Zsid 6:7-8 indoklása változott. |
 
 Írás: `naplok/F182_hatar.py` (soronkénti összevetés az eredetivel; csak a megnevezett mezők változhattak). `ellenoriz.py`: 0 SÉRTÉS. A 39. szabály jelzi, hogy a határ-ellenőrzés modelles része a 48 soros állapotra készült (ma: 47). **A HAMART határa lezárt (F26): nem lesz újabb modelles határ-kör**; a 39. szabály JELENTÉS-e ezért ismert, elfogadott eltérés (a K1–K6 döntései: ez a jelentés és a `dontesek/uj/hamart-javito.md`).
 
@@ -42,10 +42,10 @@ Minden kérdésnél előbb megnéztem, van-e rá szerkesztői döntés (`DONTESE
 A HAMART-001-nek eddig 0 sora volt az `adat/kapcsolatok.tsv`-ben.
 
 - **Jelöltek** (`naplok/F182_kapcsolat.py`): a 47 sor 54 versére a TSK és a Károli-KH (`lekerdez.py tsk` / `karoli`, MUNKAMENET A5; 154 proveniencia-sor az `adat/auditok.tsv`-ben, 0 találatnál is), a lap 1/a prózájának igehely-hivatkozásai (`manual`) és a tematikus sorok `gerinc_elem`-je. **103 jelölt pár**; mindegyik mellett a mért bizonyíték: közös lánc-szó és lánc-szópár (TAHOT/TAGNT), a nyelvközi párokon LXX-híd és görög szócsalád (`lekerdez.py lxx-hid`), és a szó szerint visszatérő, nem köznapi szavak.
-- **Döntés** (`naplok/F182_kapcsolat_dontes.py`, DT-F182e): a bizonyosság a mért bizonyítékból, szabály szerint (a szabály a szkript docstringjében és a DT-ben); a típus és a funkció kézi. **56 sor beépítve** (26 magas, 30 közepes; Párhuzam 43, Kontraszt 7, Variáns 6; PaRDeS-szint Remez), **47 elutasítva** indokkal: 30 közös bizonyíték nélkül (csak tematikus rokonság), 8 küszöb alatt (egy szó, 1–2 TSK-szavazat), 9 redundáns (két nem genezisi hely ugyanazzal a szópárral, amely mindkettőt a genezisi forrásvershez köti). A döntés és az indok jelöltenként: `naplok/F182_kapcsolat_jeloltek.tsv`.
+- **Döntés** (`naplok/F182_kapcsolat_dontes.py`, DT748): a bizonyosság a mért bizonyítékból, szabály szerint (a szabály a szkript docstringjében és a DT-ben); a típus és a funkció kézi. **56 sor beépítve** (26 magas, 30 közepes; Párhuzam 43, Kontraszt 7, Variáns 6; PaRDeS-szint Remez), **47 elutasítva** indokkal: 30 közös bizonyíték nélkül (csak tematikus rokonság), 8 küszöb alatt (egy szó, 1–2 TSK-szavazat), 9 redundáns (két nem genezisi hely ugyanazzal a szópárral, amely mindkettőt a genezisi forrásvershez köti). A döntés és az indok jelöltenként: `naplok/F182_kapcsolat_jeloltek.tsv`.
 - A lánc fő ívei a táblában: 1Móz 3:17 → 4:10-11 (Variáns), → 5:29, → 8:21 (Kontraszt), → 5Móz 28:18; 6:11 → 6:13 és az ezékieli „megtelt erőszakkal” helyek; 6:12 → 6:13 (Variáns, tükörítélet); 6:5 → 8:21 (Kontraszt); 6:17 → 9:11 (Kontraszt); 1Móz 3:18 → Hós 10:8, Zsid 6:7-8; 12:3 → Gal 3:13-14 (közepes, határeset).
 - A meglévő 32 kapcsolat-sor bájtra változatlan (a szkript összeveti).
-- **N-F182a:** a `jeloltek.tsv`-ben nincs igehely-pár jelöltfajta (SEMA 2.3 „a küszöb alatti sor a jeloltek.tsv-ben marad” ↔ 2.4 `jelolt_tipus`: csak `elofordulas`, `motivumkozi`); a jelöltnapló ezért a `naplok/` alatt áll.
+- **N153:** a `jeloltek.tsv`-ben nincs igehely-pár jelöltfajta (SEMA 2.3 „a küszöb alatti sor a jeloltek.tsv-ben marad” ↔ 2.4 `jelolt_tipus`: csak `elofordulas`, `motivumkozi`); a jelöltnapló ezért a `naplok/` alatt áll.
 - A K4 az (A)-ra dőlt: az Ez 28:16, a Jer 6:7 és a Hab 1:2 kapcsolat-sora marad (a Mik 6:12 és a Sof 1:9 a redundancia-szabály miatt nem kapott sort).
 
 ### 3. Próza a forrásban
@@ -75,9 +75,9 @@ Az `adat/*.tsv` változásával a commitolt `nyilt_mag/` az újragenerált expor
 
 ## Nyitott kérdések a felhasználóhoz
 
-1. **K4 (DT-F182d): eldőlt, (A)** (a felhasználó, 2026-11-10: „a”). Nyitva marad egy szerkesztői javaslat: a negatív kritérium második mondatának pontosítása („… vagy a lánc szópárja, amely maga az 1Móz 6:11-13 szava”); a `motivumok.tsv` szövegét ez a fázis nem írta át.
-2. **K1 (DT-F182a, tájékoztatás):** az 1Móz 4:2-3 kivételét a negatív kritériumból vezettem le. A HAMART határa lezárt (F26); ha a szerkesztő mégis a (b)-t választaná, a `naplok/F182_hatar.py` visszafordítható.
-3. **N-F182a:** a kapcsolat-jelölt helye: új `jelolt_tipus`, vagy a `naplok/` alatti jelöltnapló a rögzített út.
+1. **K4 (DT747): eldőlt, (A)** (a felhasználó, 2026-11-10: „a”). Nyitva marad egy szerkesztői javaslat: a negatív kritérium második mondatának pontosítása („… vagy a lánc szópárja, amely maga az 1Móz 6:11-13 szava”); a `motivumok.tsv` szövegét ez a fázis nem írta át.
+2. **K1 (DT744, tájékoztatás):** az 1Móz 4:2-3 kivételét a negatív kritériumból vezettem le. A HAMART határa lezárt (F26); ha a szerkesztő mégis a (b)-t választaná, a `naplok/F182_hatar.py` visszafordítható.
+3. **N153:** a kapcsolat-jelölt helye: új `jelolt_tipus`, vagy a `naplok/` alatti jelöltnapló a rögzített út.
 
 ## A 2. fázis listája (tétel → érintett fájl → előfeltétel)
 
@@ -134,17 +134,17 @@ Az `adat/*.tsv` változásával a commitolt `nyilt_mag/` az újragenerált expor
 
 | Tétel | Commit | Generátor / kapu / teszt |
 |---|---|---|
-| F33 — a tagolás a szakasztáblából, egy forrásból | F182.10 | új közös modul `eszkozok/bdb_tagolas.py` (a kártya `bdb_gerinc_szocikkek`-je delegál, kimenete bájtra azonos; az olvasó `_bdb_bontas`-a a szakasztábla fáját mutatja, a szeletelő csak a fej szövegét elemzi); a kártya fán kívüli pontja „nem azonosítható” (`fan_kivuli_pontok`); teszt: `teszt_bdb_tagolas.py` (a HAMART minden 2.29-pontja a fában, a kártya és az olvasó ugyanaz a fa, repó-szintű regresszióőr: 440 fán kívüli, 5 368 nem egyértelmű pont; N-F182b, N-F182c) |
+| F33 — a tagolás a szakasztáblából, egy forrásból | F182.10 | új közös modul `eszkozok/bdb_tagolas.py` (a kártya `bdb_gerinc_szocikkek`-je delegál, kimenete bájtra azonos; az olvasó `_bdb_bontas`-a a szakasztábla fáját mutatja, a szeletelő csak a fej szövegét elemzi); a kártya fán kívüli pontja „nem azonosítható” (`fan_kivuli_pontok`); teszt: `teszt_bdb_tagolas.py` (a HAMART minden 2.29-pontja a fában, a kártya és az olvasó ugyanaz a fa, repó-szintű regresszióőr: 440 fán kívüli, 5 368 nem egyértelmű pont; N144, N145) |
 | N-F185c (N141) | — | a könyvnév nélküli hely `orokles_hibas` okkódja a kártyán és az olvasóban gyenge jelölés (`bdb_vj_szabaly`, a #185 kódja); a HAMART lapon nincs ilyen pont |
 | F25 — a kapcsolók | F182.11 | `KETRETEGU_BDB_KARTYA` = {HAMART-001}; a `BDB_BETU_JAVIT` motívumhalmaz (egy hely), = {HAMART-001}; a régi lapok kikapcsolva; teszt: `teszt_szotari_gerinc` |
-| 6. tétel — a `ketes` jelentéspontok | F182.12 | egyetlen kétes pont állt a lapon (l. lent); `jp_kezi` a `JELENTESPONT_KEZI`-ben; 2.29 újragenerálva azonos `--ts`-sel (csak a fejléc kód-hash-e és a sor változott); DT-F182f |
-| F22 (a)(b), H4 (a), F24 (a)(c), F35 | F182.13 | `olvasoi_kapu.MUNKASZO` (a lista egy helyen: `MUNKASZAVAK`; új szerkezetű lapon BUKÁS, régin FIGYELMEZTETÉS) és `SZAKASZ_HIV`; a generátor új szerkezetű olvasói átírása (`UJ_OLVASOI_MUNKASZO`, a régi lapok szövege változatlan; DT-F182h); U3-sablon tilalmai; SEMA 3.11 újragenerálva; a mért BDB-pontosság a SEMA 2.29-ben (módszertan), a lapon és az olvasóban nem; „tematikus, nem lexikai” címke marad (DT-F182g); tesztek: `MunkaszoSzakaszHiv`, `HamartLapMunkaszo` (a rontott másolat jelez) |
-| F27 — elavult DT nem kerül lapra | F182.13 | jelölés a `DONTESEK.md` fejében (⛔ + `**FELÜLÍRVA → DT<n>**` / `**VISSZAVONVA**` / `**OKAFOGYOTT**`; DT-F182i), olvasó: `eszkozok/dontes_allapot.py`; a generátor a felülíró döntés dátumát írja (`ervenyes_dontes`); a 21. szabály SÉRTÉS érvénytelen DT-re; teszt: `teszt_dontes_allapot.py` (a rontott állapot jelez). A meglévő 79 szöveges „felülírt/elavult” előfordulást nem minősítettem át (tartalmi döntés) |
-| F26 — a határ-kör lezárása | F182.14 | a szabály a `9_` sablon 2. pontjában; `ellenoriz.py` HATÁRDÖNTÉS-jel (DT/N nélküli ujjlenyomat, a számkiosztásnak ellenáll), a `--hatar-ujjlenyomat` kiírja a sablonját; a HAMART jele a modelles rész végén (DT-F182a–d, DT683, DT685–DT687); a 39. szabály a HAMART-ra friss; teszt: `teszt_muhely_allapot.TesztHatarFrissesseg` |
+| 6. tétel — a `ketes` jelentéspontok | F182.12 | egyetlen kétes pont állt a lapon (l. lent); `jp_kezi` a `JELENTESPONT_KEZI`-ben; 2.29 újragenerálva azonos `--ts`-sel (csak a fejléc kód-hash-e és a sor változott); DT749 |
+| F22 (a)(b), H4 (a), F24 (a)(c), F35 | F182.13 | `olvasoi_kapu.MUNKASZO` (a lista egy helyen: `MUNKASZAVAK`; új szerkezetű lapon BUKÁS, régin FIGYELMEZTETÉS) és `SZAKASZ_HIV`; a generátor új szerkezetű olvasói átírása (`UJ_OLVASOI_MUNKASZO`, a régi lapok szövege változatlan; DT751); U3-sablon tilalmai; SEMA 3.11 újragenerálva; a mért BDB-pontosság a SEMA 2.29-ben (módszertan), a lapon és az olvasóban nem; „tematikus, nem lexikai” címke marad (DT750); tesztek: `MunkaszoSzakaszHiv`, `HamartLapMunkaszo` (a rontott másolat jelez) |
+| F27 — elavult DT nem kerül lapra | F182.13 | jelölés a `DONTESEK.md` fejében (⛔ + `**FELÜLÍRVA → DT<n>**` / `**VISSZAVONVA**` / `**OKAFOGYOTT**`; DT752), olvasó: `eszkozok/dontes_allapot.py`; a generátor a felülíró döntés dátumát írja (`ervenyes_dontes`); a 21. szabály SÉRTÉS érvénytelen DT-re; teszt: `teszt_dontes_allapot.py` (a rontott állapot jelez). A meglévő 79 szöveges „felülírt/elavult” előfordulást nem minősítettem át (tartalmi döntés) |
+| F26 — a határ-kör lezárása | F182.14 | a szabály a `9_` sablon 2. pontjában; `ellenoriz.py` HATÁRDÖNTÉS-jel (DT/N nélküli ujjlenyomat, a számkiosztásnak ellenáll), a `--hatar-ujjlenyomat` kiírja a sablonját; a HAMART jele a modelles rész végén (DT744–d, DT683, DT685–DT687); a 39. szabály a HAMART-ra friss; teszt: `teszt_muhely_allapot.TesztHatarFrissesseg` |
 | F28 — a nyílt mag lyukai | F182.15 | a feloldatlan DT olvasói mondatrészre íródik („egy korábbi szerkesztői döntés”, raggal), a határ-ellenőrzés jegyzőkönyve „határ-ellenőrzés”, a `gerinc_elem` ragos alakja „motívumszava”, az egymondatos vágás zárójelen kívül; `nyilt_mag_kapu` LYUK (BUKÁS); teszt: `teszt_nyilt_mag.F28Lyuk` |
 | F29/F34 — N137, N139 | F182.16, .16b | N137: a kártya csukott vázlatsora „…”-re végződik, ha a szakasz folytatódik; N139: a közös glossza-szabály a forrás-besorolás, a „+ <héber> <nyelvtani>:” és a héber kifejezés előtagot levágja (H2403 1.f „a pap engesztelést szerez valakiért”, H7451 6. „rosszabb”, 8. „gonosz tervet kigondolni”); N138 = F33; teszt: `F182Glossza` |
 | F31 — fordítás-pótlás | F182.17 | a lista a `forditasok.tsv` `allapot`-ából: a HAMART 15 Strongjára minden Thayer-szakasz, TBESG-glossza és BDB-szakasz érvényes fordítással áll — fordítandó 0, a subagent nem futott (a G3077 nem a HAMART Strongja); közös őr: `eszkozok/forditas_vedelem.py` (érvényes, azonos forrású sor nem fordul újra; a TBESG-, Thayer- és BDB-lánc beíró lépése hívja); 42. szabály (a lapon szereplő Strong érvényes fordítása a lapon áll; új szerkezetű lapon SÉRTÉS); teszt: `teszt_forditas_vedelem.py` |
-| F32 — Károli-versszámozás | F182.18, .19 | a kártya kutatói rétegében a BDB-szöveg hivatkozása a 2.29 átkulcsolt sorai szerint Károli-számmal, az eredeti jelölésével („5Móz 29:21 (héber számozás: 29:20)”), könyv- és fejezet-örökléssel; a Károliban nem létező versre mutató hivatkozás átirányítás nélkül, gyenge jelöléssel (orkesztrátori keret); egy parser (`szotari_hivatkozasok`) a megjelenítéshez és a 43. szabályhoz (JELENTÉS); a HAMART lapon 21 átszámozott, 8 jelölt hivatkozás (N-F182e); teszt: `F182KaroliSzamozas`. A Thayer-tábla a HAMART görög szavain számeltérést nem rögzít |
+| F32 — Károli-versszámozás | F182.18, .19 | a kártya kutatói rétegében a BDB-szöveg hivatkozása a 2.29 átkulcsolt sorai szerint Károli-számmal, az eredeti jelölésével („5Móz 29:21 (héber számozás: 29:20)”), könyv- és fejezet-örökléssel; a Károliban nem létező versre mutató hivatkozás átirányítás nélkül, gyenge jelöléssel (orkesztrátori keret); egy parser (`szotari_hivatkozasok`) a megjelenítéshez és a 43. szabályhoz (JELENTÉS); a HAMART lapon 21 átszámozott, 8 jelölt hivatkozás (N146); teszt: `F182KaroliSzamozas`. A Thayer-tábla a HAMART görög szavain számeltérést nem rögzít |
 | 7. tétel — a lap újragenerálása | F182.20, .21, .23 | `general.py --cel lexikon --id HAMART-001 --ir`; a 27. szabály mintája az olvasható szócikkfejet is felismeri (a kártya bekapcsolásával előjött téves SÉRTÉS); látható hibák javítva a generátorban (l. lent) |
 | A nyílt mag (E35) | F182.22 | újragenerálva; 39 szöveg (45 cella) angol párja a meglévő láncon (claude-sonnet-5-5); állapot: 1039 cella, hiányzó 0, elavult 0; kapu 0 BUKÁS |
 | Látható hibák a lapon (befagyasztás 1. pont) | F182.21, .23, .24 | a Jelentés cella hiányjelei, a hamis „nem található” megjegyzés, a „- 2.” felsorolás; **A01**: az Alátámasztás „nincs rögzített kapcsolat” hamis mondata (a rögzített hiány-mondat csak adat híján áll; a rés az 56 kapcsolat-sorból renderel; teszt: `ResTorzsAdatAg`) |
@@ -158,17 +158,17 @@ A bekapcsolt kártyán a lap egyetlen kétes pontot mutatott:
 
 | Szó | Hely | Pont | Ok | Sors |
 |---|---|---|---|---|
-| H7451 רַע (ra) | 1Móz 6:5 | első szócikk, 10.c („gonosz (a szív gondolatairól)”) | `ketes:jp_tanu_elter` (a szeletelő mint tanú más pontot adott) | **igazolva** — a DictBDB szövege: „c. of thoughts, יֵצֶר Gen 6:5; 8:21 (J), …” (a 2.30 BDB8032 15. sora, `-/10/c`); `jp_kezi` tétel a `JELENTESPONT_KEZI`-ben, a sor `biztos` (DT-F182f) |
+| H7451 רַע (ra) | 1Móz 6:5 | első szócikk, 10.c („gonosz (a szív gondolatairól)”) | `ketes:jp_tanu_elter` (a szeletelő mint tanú más pontot adott) | **igazolva** — a DictBDB szövege: „c. of thoughts, יֵצֶר Gen 6:5; 8:21 (J), …” (a 2.30 BDB8032 15. sora, `-/10/c`); `jp_kezi` tétel a `JELENTESPONT_KEZI`-ben, a sor `biztos` (DT749) |
 
 A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként (a kártya a fejet elhagyja, ha a versnek más pontja is van). Gyenge jelölés a lapon ezután nem maradt.
 
 ### A lapdiff ellenőrzése (origin/main → ág; `lexikon/HAMART-001_TUDOMANYOS.md`: +740 / −330 sor)
 
-- **DT-hivatkozások:** a lapon DT199, DT564, DT683, DT685, DT686, DT687 áll (látható alakban „szerkesztői döntés, <dátum>”) — mind érvényes a `DONTESEK.md` szerint (`dontes_allapot`: 0 érvénytelen); a 21. szabály (iv) 0 lelet. A DT-F182d helyőrző csak HTML-megjegyzésben (eredeti proveniencia-sor) áll; a 21. szabály (i) ágon JELENTÉS, a számkiosztás a merge után cseréli.
+- **DT-hivatkozások:** a lapon DT199, DT564, DT683, DT685, DT686, DT687 áll (látható alakban „szerkesztői döntés, <dátum>”) — mind érvényes a `DONTESEK.md` szerint (`dontes_allapot`: 0 érvénytelen); a 21. szabály (iv) 0 lelet. A DT747 helyőrző csak HTML-megjegyzésben (eredeti proveniencia-sor) áll; a 21. szabály (i) ágon JELENTÉS, a számkiosztás a merge után cseréli.
 - **Munkaszavak:** a látható szövegben 0 (MUNKASZO kapu). Előtte a próbalapon: „üres blokk: javaslat” 2, „kutatói jelölés … ellenőrzendő” 1, „függőben” 19, „azonosításra vár” 8, „nincs bekötve” 1, „audit” 15, „token” 9 — a generátor új szerkezetű olvasói átírása kezeli. „gerinc”, „orkesztrátor”, „felhasználó” a látható szövegben nincs (BELSO kapu); „felhasználó” csak HTML-megjegyzésben.
 - **Számok:** 47 hely, 54 vers (Kivonat, 1. tábla, Döntési út összeadás — a 40. szabály szerint egyezik); az „1 756 verset” a 3. szakasz számlálása (az F3 1 717 ↔ 1 754 eltérés-mérése nem e menet tétele).
 - **Látható hibák a renderelt lapon (saját átnézés), generátorban javítva:** (1) a 2. tábla Jelentés cellája „*(nincs címke: 1.b)*” / „*(nincs hozzárendelés)*” → „Isten ellen · 1.b”, „a szócikk egésze — fájdalom, fáradság”, Strong nélküli sornál „—”; (2) a H2555 kutatói megjegyzése a tagolatlan szócikk pontjait hamisan „az útvonal nincs a szakasztáblában”-nak mondta → elmarad; (3) a kártya nem félkövér „- 2. …” sora üres felsorolásjelként, beágyazott listaként renderelt → „2\.”. Tesztek: `F182LathatoHibak`.
-- **Maradt (nem hamis állítás, FIGYELMEZTETÉS):** „*(nincs görög szó)*” a Jel 22:3 tematikus sor UBS-cellájában (igaz állítás); KIVONAT_SZAM 2 (téves: „47 hely 54 versben”); a 8 nem létező Károli-versre mutató szótári hivatkozás gyenge jelöléssel (N-F182e).
+- **Maradt (nem hamis állítás, FIGYELMEZTETÉS):** „*(nincs görög szó)*” a Jel 22:3 tematikus sor UBS-cellájában (igaz állítás); KIVONAT_SZAM 2 (téves: „47 hely 54 versben”); a 8 nem létező Károli-versre mutató szótári hivatkozás gyenge jelöléssel (N146).
 
 ### Mérési sorok
 
@@ -194,7 +194,7 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 
 ### Tesztek és `ellenoriz.py`
 
-- **`python eszkozok/ellenoriz.py`** (a lap újragenerálása után): kilépési kód 0 — **0 SÉRTÉS**, RENDBEN 26, JELENTÉS 17, KÉZI 2. A **11. szabály RENDBEN**: az 1. fázis után fennmaradt rés-forrás SÉRTÉS a lap újragenerálásával megszűnt. A 21. szabály JELENTÉS (ág: a DT-F182d helyőrző a lap HTML-megjegyzésében), a 39. JELENTÉS (más motívumok üres modelles része; a HAMART friss a határdöntés-jellel), a 42. JELENTÉS (régi lapok), a 43. JELENTÉS (HAMART: 8 szótári hivatkozás, N-F182e).
+- **`python eszkozok/ellenoriz.py`** (a lap újragenerálása után): kilépési kód 0 — **0 SÉRTÉS**, RENDBEN 26, JELENTÉS 17, KÉZI 2. A **11. szabály RENDBEN**: az 1. fázis után fennmaradt rés-forrás SÉRTÉS a lap újragenerálásával megszűnt. A 21. szabály JELENTÉS (ág: a DT747 helyőrző a lap HTML-megjegyzésében), a 39. JELENTÉS (más motívumok üres modelles része; a HAMART friss a határdöntés-jellel), a 42. JELENTÉS (régi lapok), a 43. JELENTÉS (HAMART: 8 szótári hivatkozás, N146).
 - **Olvasói kapu (HAMART-001):** 0 BUKÁS. **Nyílt mag kapu:** 0 BUKÁS.
 - **Windows-tesztkör** (`eszkozok/teszt_*.py`, 79 modul, modulonként `python -m unittest`): a bukó modulokat tesztnevenként összevetettem az `origin/main` alapvonalával (külön worktree, ugyanazok a modulok). **Csak az ágon bukik:** `teszt_ellenoriz_vedokorlat.ValodiAdat.test_20_21_a_repon` és `teszt_nyilt_mag.Pozitiv.test_nincs_nyitva_sor_es_nincs_feloldatlan_dt` — mindkettő a DT-F182 helyőrzők ági állapota (a 21. szabály „main” módban SÉRTÉS-nek veszi a helyőrzőt; az export feloldatlan DT-t jelez); a merge utáni számkiosztás megszünteti. A többi bukás (bdb_adatblokk, bdb_zaras, general_ellenorzo, general_kinyeres, jelolt_eloszures, lektor_kerdesek, lexikon_adatres, olvasoi_kapu Arany.G7, render_diff_osztalyoz, szakasz_cimke_levezet, szerep_karoli, szerep_nave, szerepmatrix, glossza_api_koteg, thayer_api_koteg, emeles relpath, szotari_gerinc 6) az alapvonalon is bukik. Az e menetben írt tesztek mind zöldek (`teszt_bdb_tagolas`, `teszt_dontes_allapot`, `teszt_forditas_vedelem`, `MunkaszoSzakaszHiv`, `HamartLapMunkaszo`, `F28Lyuk`, `TesztHatarFrissesseg`, `F182Glossza`, `F182KaroliSzamozas`, `F182LathatoHibak`, `ResTorzsAdatAg`).
 - **Olvasó-tesztek** (`teszt_olvaso_szerver.py`, a munkafa kódjával, WSL-venv, a munkafa adatából épített friss `pardes.db` — a `~/pardes` klón régi, ezért a `teszt_futtat.py` helyett közvetlenül): 111 teszt, 3 bukás → az SQL-szabálysértés javítva (F182.25), a BDB-tesztek (TestSzabalyok, TestF104BdbJeloles, TestF104Egysegek, TestBdbMagyarOsszefuzo: 23) OK; a két `TestD2PilotEgyezes` (1Móz 1:25, Zsolt 22) a görög Thayer-szócikk meglétén bukik (a friss adatbázis frissebb Thayer-adata a pilothoz képest), nem a BDB-módosításon.
@@ -206,13 +206,13 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 
 ### Nyitott és elhalasztott tételek
 
-- Új nyitott tételek (`nyitott/uj/hamart-javito.md`): **N-F182b** (a sorbelső fej nem csomópont a fában; 440 pont repó-szinten, HAMART: 0), **N-F182c** (két szócikk azonos 2.29-címkével: az olvasó nem dönt a hely szerint; 5 368 sor, HAMART: 172, mind H7451), **N-F182d** („független megerősítés” mondat a TSK ↔ Károli-KH viszonyáról, tartalmi kérdés), **N-F182e** (8 nem létező Károli-versre mutató szótári hivatkozás; a Lam → „Sir” `karoli_vers`).
+- Új nyitott tételek (`nyitott/uj/hamart-javito.md`): **N144** (a sorbelső fej nem csomópont a fában; 440 pont repó-szinten, HAMART: 0), **N145** (két szócikk azonos 2.29-címkével: az olvasó nem dönt a hely szerint; 5 368 sor, HAMART: 172, mind H7451), **N154** („független megerősítés” mondat a TSK ↔ Károli-KH viszonyáról, tartalmi kérdés), **N146** (8 nem létező Károli-versre mutató szótári hivatkozás; a Lam → „Sir” `karoli_vers`).
 - Elhalasztva (a hatókör szerint): F1, F3–F21 (a látható hibákon túl), F24 (c) (1) kapuja (a nyers proveniencia-sor), H4 (b) előfeltétel-térkép, H5, N-F178a/b; az `.claude/agents/hatar-ellenor.md` hivatkozása (felhasználói jóváhagyás).
 - Előzetes tesztbukások (nem e menetből): `teszt_szotari_gerinc` 6 (a #187 jelentésének listája), `teszt_olvasoi_kapu` Arany.test_G7, `teszt_glossza_api_koteg` TeljesUt (a valódi táblára épülő adatfüggő eset: az érvényes UBS-sor már létezik; az őr nélkül is SystemExit), `teszt_thayer_api_koteg` BUt (G4151 kérésterv: 4 csoport 3 helyett), `teszt_nyilt_mag` `test_nincs_nyitva_sor_es_nincs_feloldatlan_dt` (a DT-F182 helyőrzők ágon feloldatlanok; a számkiosztás után zöld).
 
 ## 3. menet (2026-11-11): a kész lap követelménylistájának HAMART-tételei
 
-*Végrehajtó: claude-opus-5-5 (modell-ellenőrzés: a brief `modell: opus` mezőjével egyezik). Kezdés: 09:43. A fordítási lépés subagentje: claude-sonnet-5-5 (saját kiírt modellneve). Hatókör: a `sablonok/KESZ_LAP_KOVETELMENY.md` (a) listájának nyitott HAMART-tételei (A02, A03, A05–A17, A19–A26; az A27 a #183-é) és a (b) lista #182-t érintő döntései (DT-F182j, DT-F182k), az orkesztrátor menet közbeni lelete (a KH-lábjegyzet napló-utalása) és a befagyasztás 1. pontja (a lapon látható hiba). A lap a végén generálódott újra (F182.39); a saját átnézés két apró látható hibája után még kétszer (F182.40, F182.41). Ez a jelentés nem minősíti a munkát ellenőrzöttnek.*
+*Végrehajtó: claude-opus-5-5 (modell-ellenőrzés: a brief `modell: opus` mezőjével egyezik). Kezdés: 09:43. A fordítási lépés subagentje: claude-sonnet-5-5 (saját kiírt modellneve). Hatókör: a `sablonok/KESZ_LAP_KOVETELMENY.md` (a) listájának nyitott HAMART-tételei (A02, A03, A05–A17, A19–A26; az A27 a #183-é) és a (b) lista #182-t érintő döntései (DT753, DT754), az orkesztrátor menet közbeni lelete (a KH-lábjegyzet napló-utalása) és a befagyasztás 1. pontja (a lapon látható hiba). A lap a végén generálódott újra (F182.39); a saját átnézés két apró látható hibája után még kétszer (F182.40, F182.41). Ez a jelentés nem minősíti a munkát ellenőrzöttnek.*
 
 ### A/B állapottábla (tétel → állapot → commit)
 
@@ -224,7 +224,7 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 | A04 | teljesül (2. fázis) | F182.26, F182.29 |
 | A05 | teljesül — az indoklás nem hivatkozik más sorra, a tanulmányra, a naplóra | F182.33 |
 | A06 | teljesül — névelő, írás + zárójeles kiejtés (71 + 4 indoklás); kapu: NEVELO | F182.33, F182.38 |
-| A07 | teljesül, kivétellel — a Kivonat, a 3. szakasz és a Döntési út bevezetője, a Módszertan harmadik személyben; a sablon v4 kötelező „1.2 Hol kerestünk” alcíme marad (K33 ↔ K12 ütközés, N-F182g, döntési pont); kapu: MI_HANG | F182.30, F182.36, F182.38 |
+| A07 | teljesül, kivétellel — a Kivonat, a 3. szakasz és a Döntési út bevezetője, a Módszertan harmadik személyben; a sablon v4 kötelező „1.2 Hol kerestünk” alcíme marad (K33 ↔ K12 ütközés, N155, döntési pont); kapu: MI_HANG | F182.30, F182.36, F182.38 |
 | A08 | teljesül — a lábjegyzet olvasói alakja; a KH-lábjegyzet napló-utalása (186 + 69 sor) és nyers jele nélkül; kapu: NYERS_JEL | F182.30, F182.38 |
 | A09 | teljesül — a 4. szakasz szólistái írással és kiejtéssel; a pontrendszer a Jelmagyarázatban | F182.30 |
 | A10 | teljesül — a görög 4.1 a TBESG rövid jelentéséből | F182.34 |
@@ -232,20 +232,20 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 | A12 | teljesül — a 4.4 doménnevek magyarul | F182.34 |
 | A13 | teljesül — a 4.6 szavanként egy mondat, kis elemszámnál következtetés nélkül | F182.30 |
 | A14 | teljesül — a 4.7 egy mondata, következtetés csak a SECE-párnál; kapu: KOV_ISM | F182.30, F182.38 |
-| A15 | teljesül — a rokon nyelvi tábla a 4.8-ban, „2. szerep”, nyelvtani alak, „késői héber” nélkül (DT-F182l) | F182.32 |
+| A15 | teljesül — a rokon nyelvi tábla a 4.8-ban, „2. szerep”, nyelvtani alak, „késői héber” nélkül (DT755) | F182.32 |
 | A16 | teljesül — a 4.9 csoportosított mondata, a kivételek igehellyel | F182.30 |
-| A17 | **részben** — a két csukott cím glosszája és a `_226` / nyers BDB-fej kész; a szócikkhatár-hibák (K56) nem (adat: a `bdb_szakasz_hu.tsv` illesztő lánca, N-F182f) | F182.35 |
+| A17 | **részben** — a két csukott cím glosszája és a `_226` / nyers BDB-fej kész; a szócikkhatár-hibák (K56) nem (adat: a `bdb_szakasz_hu.tsv` illesztő lánca, N147) | F182.35 |
 | A18 | teljesül (fordítva értendő: mért BDB-pontosság nincs a lapon) | 2. fázis |
 | A19 | teljesül — az 5. szakasz és a 4.11 egy forrásból; kapu: eltérésnél a generálás megáll | F182.30 |
 | A20 | teljesül — a 4.6 és az 5. szakasz versben mér | F182.30 |
-| A21 | teljesül — az Alkalmazás lekerül, a forrás szövege archívumban; a Kolofon szerzőségi mondata a mai szakasznevekkel (DT-F182m) | F182.30, F182.36, F182.37 |
+| A21 | teljesül — az Alkalmazás lekerül, a forrás szövege archívumban; a Kolofon szerzőségi mondata a mai szakasznevekkel (DT756) | F182.30, F182.36, F182.37 |
 | A22 | teljesül — egységes kiejtés az indoklásokban; a rokon nyelvi alak más szó (az ATIRAS_VALT ott nem mér) | F182.33, F182.38 |
-| A23 | teljesül — `lexikon/HAMART-001_KIZARASOK.md`, kapuval; lelet: 14 kétszer számolt vers (DT-F182n) | F182.31 |
-| A24 | teljesül — 4.13 és 4.14 adatból, szavanként mérve (DT-F182o) | F182.30, F182.40 |
+| A23 | teljesül — `lexikon/HAMART-001_KIZARASOK.md`, kapuval; lelet: 14 kétszer számolt vers (DT757) | F182.31 |
+| A24 | teljesül — 4.13 és 4.14 adatból, szavanként mérve (DT758) | F182.30, F182.40 |
 | A25 | teljesül — az áttekintő tábla LXX-oszlopának lábjegyzete a 4.11-hez méri | F182.31 |
 | A26 | teljesül — a Jelmagyarázat két lektori aprósága | F182.30 |
 | A27 | nem e menet tétele (#183) | — |
-| B04 | végrehajtva (sablon 6 v4, sablon 9, sablon 10; a CLAUDE.md mondata felhasználói jóváhagyással, N-F182h) | F182.30, F182.36, F182.37 |
+| B04 | végrehajtva (sablon 6 v4, sablon 9, sablon 10; a CLAUDE.md mondata felhasználói jóváhagyással, N148) | F182.30, F182.36, F182.37 |
 | B07 | végrehajtva (l. A07) | F182.30, F182.36, F182.38 |
 | B08 | végrehajtva (indoklások; sablon 6 „Kiejtés formája”) | F182.33, F182.37 |
 | B09 | végrehajtva — a generátor a licenctábla szerint jelölt (SECE közkincs, MCGED tisztázott); a sablon bekezdése igazítva | F182.37 |
@@ -256,13 +256,13 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 ### A 4.13 és a 4.14 eredménye
 
 - **4.13 Károli-megfelelők:** a motívum 47 helyén a Károli 27 szótári alakot használ; szavanként (legalább 3 hely): a חָמָס (chámász) 12 helyéből 9-ben „erőszak”, az אֲדָמָה (adámá) 10-ből 10-ben „föld”, az אָרַר (árar) 4-ből 3-ban „átkoz” (ezek magyarul is követhetők), a שָׁחַת (sáchat) 7-ből legfeljebb 2-ben ugyanaz („elvesztés”; váltakozó). A többi 11 szó 3 helynél kevesebben áll: következtetés nélkül.
-- **4.14 Rejtett / hamis párhuzam:** a 14. szerep szabálya (a szó helyeinek legalább felében álló szótári alak) a 15 szóból kettőnek ad kulcsszót: adámá „föld”, árar „átkoz”. A többinél a lap kimondja, hogy a módszerrel nem mérhető (asszociatív kitöltés nincs). Rejtett párhuzam: 1 hely (1Móz 12:3 „megátkozom”, igekötős alak). Hamis párhuzam: 2 318 Károli-vers; a Károli–Strong párosítás szerint a „föld” mögött leggyakrabban az אֶרֶץ (erec) áll (1 957 vers), az „átkoz” mögött a קָלַל (kálal) (9 vers). Következtetés: a magyar szókeresés 2 331 találatának 99%-a nem a motívumé. A lista könyvenként, igehellyel, csukva; jelölt belőle nem lett (CLAUDE.md 2. szabály). A formula-motívumra szabott „A motívum kulcsszavai” blokk az új lapon nem áll (DT-F182o). A TSK/Károli-KH negatív párjai és a `kizaras_csoportok.tsv` nem kellettek: a meglévő Károli-építő (a #22 párosítás) adatot adott.
+- **4.14 Rejtett / hamis párhuzam:** a 14. szerep szabálya (a szó helyeinek legalább felében álló szótári alak) a 15 szóból kettőnek ad kulcsszót: adámá „föld”, árar „átkoz”. A többinél a lap kimondja, hogy a módszerrel nem mérhető (asszociatív kitöltés nincs). Rejtett párhuzam: 1 hely (1Móz 12:3 „megátkozom”, igekötős alak). Hamis párhuzam: 2 318 Károli-vers; a Károli–Strong párosítás szerint a „föld” mögött leggyakrabban az אֶרֶץ (erec) áll (1 957 vers), az „átkoz” mögött a קָלַל (kálal) (9 vers). Következtetés: a magyar szókeresés 2 331 találatának 99%-a nem a motívumé. A lista könyvenként, igehellyel, csukva; jelölt belőle nem lett (CLAUDE.md 2. szabály). A formula-motívumra szabott „A motívum kulcsszavai” blokk az új lapon nem áll (DT758). A TSK/Károli-KH negatív párjai és a `kizaras_csoportok.tsv` nem kellettek: a meglévő Károli-építő (a #22 párosítás) adatot adott.
 
 ### Látható hibák (a lapon, a generátorban javítva)
 
 1. A KH- és a minősítés-lábjegyzetek napló-utalása („napló: … (4/b. rész)”, 186 + 69 sor), nyers indoklása és belső keresési jele (`halo=`, `blokk=`, „lanc ±1”, „csalad H…”) — az orkesztrátor lelete (F182.30). A `<!-- eredeti: … -->` megjegyzés sem a nyílt magba, sem a renderelt lapnézetbe nem jut ki (a nyílt mag exportja a lapot nem olvassa; a lapnézet szövegében 0 „eredeti:”).
-2. A Döntési út és a 3. szakasz számai 14 verset kétszer számoltak (1 520 → 1 506 csoportos, 1 810 → 1 796 megvizsgált vers; DT-F182n) — a melléklet kapujának lelete (F182.31).
-3. A 4.13–4.14 meglévő építőjének hamis mondatai a több szóval hordozott motívumon (DT-F182o) (F182.30).
+2. A Döntési út és a 3. szakasz számai 14 verset kétszer számoltak (1 520 → 1 506 csoportos, 1 810 → 1 796 megvizsgált vers; DT757) — a melléklet kapujának lelete (F182.31).
+3. A 4.13–4.14 meglévő építőjének hamis mondatai a több szóval hordozott motívumon (DT758) (F182.30).
 4. Az 1.5 „a 11. szakaszban (Módszertan …)” hivatkozása az Alkalmazás nélküli lapon a 10. szakaszra (F182.38).
 5. A dőlt forrássorok „Proveniencia:” mezőneve (F182.38); a Kolofon „adat/karoli_strong” nyers útvonala (F182.41, a lapnézet átnézésének lelete).
 
@@ -270,7 +270,7 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 
 - `teszt_kesz_lap_hamart.py`: 27 teszt, OK (lap, melléklet + rontott csoport, generátor, OK-szövegek, a négy új kapu rontott mintán és a régi lapon).
 - Olvasói kapu, HAMART-001: **0 BUKÁS**, 16 FIGYELMEZTETÉS (ANGOL_SOR 7: licencsor vagy `title`; MOTIVUM_ID 6; KIVONAT_SZAM 2: hamis riasztás; HIANYJEL 1: „(nincs görög szó)”, igaz állítás). A 3. menet előtti lap mint rontott minta: 84 BUKÁS.
-- `ellenoriz.py`: **0 SÉRTÉS**, RENDBEN 26, JELENTÉS 17, KÉZI 2 (a 11. szabály a kivezetett résre és az új lap utómunkájára igazítva; a 43. szabály hatóköre a 4.13 előtt; a 27. szabály 4 HAMART-jelentése: N-F182f; a 21. szabály a DT-F182 helyőrzőket jelzi).
+- `ellenoriz.py`: **0 SÉRTÉS**, RENDBEN 26, JELENTÉS 17, KÉZI 2 (a 11. szabály a kivezetett résre és az új lap utómunkájára igazítva; a 43. szabály hatóköre a 4.13 előtt; a 27. szabály 4 HAMART-jelentése: N147; a 21. szabály a DT-F182 helyőrzőket jelzi).
 - Nyílt mag kapu: 0 BUKÁS; angol pár: 1 039 cella, hiányzó 0, elavult 0.
 - Régi lapok: a 8 régi lap generált kimenete a menet előtti kód (e1080b2a, külön munkafa) kimenetével bájtra azonos.
 - A Windows-tesztkör és a `teszt_futtat.py --gyors` eredménye: a „Tesztkör” alszakaszban.
@@ -300,17 +300,17 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 
 ### Lapnézet
 
-`C:\Users\bases\AppData\Local\Temp\claude\256fc271ccf0bd2c\02da030a-5490-4ba6-b1c8-245010c77469\scratchpad\HAMART-001_lapnezet.html` — az `epit_nezet.py` kimenete a HEAD lapjából; utólag: cím, charset, világos téma (`data-theme="light"`), a fejsáv fájlneve HAMART-001-re (N-F182j). Saját átnézés a renderelt nézetben: azonosító tábla, Tartalomjegyzék, 4.6, 4.13, 4.14, Kolofon, a Döntési út melléklet-linkjei (29), nyers jel 0.
+`C:\Users\bases\AppData\Local\Temp\claude\256fc271ccf0bd2c\02da030a-5490-4ba6-b1c8-245010c77469\scratchpad\HAMART-001_lapnezet.html` — az `epit_nezet.py` kimenete a HEAD lapjából; utólag: cím, charset, világos téma (`data-theme="light"`), a fejsáv fájlneve HAMART-001-re (N150). Saját átnézés a renderelt nézetben: azonosító tábla, Tartalomjegyzék, 4.6, 4.13, 4.14, Kolofon, a Döntési út melléklet-linkjei (29), nyers jel 0.
 
 ### Döntési pontok a felhasználónak
 
-1. **N-F182g:** a sablon 6 v4 kötelező alcíme („1.1 Mit keresünk · 1.2 Hol kerestünk”) ütközik a B07/K12 harmadik személyű szabályával. Javaslat: „1.1 Mit keres a lap · 1.2 Hol keresett” (a generált bevezető már így szól).
-2. **N-F182h:** a CLAUDE.md „kilenc rés” mondata az `alkalmazas` kivezetésével (DT-F182m) — a CLAUDE.md-t a végrehajtó nem írja.
-3. **A17 / N-F182f:** a BDB-szócikkhatár javítása a BDB-lánc adatfeladata; lapszinten (kézi folttal) nem javítható. Javaslat: a #185-lánc saját tételeként az 1. kiadás előtt, vagy a 2. kiadásra.
+1. **N155:** a sablon 6 v4 kötelező alcíme („1.1 Mit keresünk · 1.2 Hol kerestünk”) ütközik a B07/K12 harmadik személyű szabályával. Javaslat: „1.1 Mit keres a lap · 1.2 Hol keresett” (a generált bevezető már így szól).
+2. **N148:** a CLAUDE.md „kilenc rés” mondata az `alkalmazas` kivezetésével (DT756) — a CLAUDE.md-t a végrehajtó nem írja.
+3. **A17 / N147:** a BDB-szócikkhatár javítása a BDB-lánc adatfeladata; lapszinten (kézi folttal) nem javítható. Javaslat: a #185-lánc saját tételeként az 1. kiadás előtt, vagy a 2. kiadásra.
 
 ### Új nyitott tételek
 
-N-F182f (BDB-szócikkhatár), N-F182g (K33 ↔ K12 alcím), N-F182h (az `alkalmazas` kivezetésének maradéka), N-F182i (a 14. szerep szócsalád-összevonása), N-F182j (a lapnézet-eszköz feliratai) — `nyitott/uj/hamart-javito.md`.
+N147 (BDB-szócikkhatár), N155 (K33 ↔ K12 alcím), N148 (az `alkalmazas` kivezetésének maradéka), N149 (a 14. szerep szócsalád-összevonása), N150 (a lapnézet-eszköz feliratai) — `nyitott/uj/hamart-javito.md`.
 
 ## Javítókör (2026-11-11): a független ellenőrzés (`naplok/ELLENOR_F182.md`, 11 tétel) után
 
@@ -327,24 +327,24 @@ N-F182f (BDB-szócikkhatár), N-F182g (K33 ↔ K12 alcím), N-F182h (az `alkalma
 | 5 | „(7. rész)” napló-utalás | igen | F182.51 | Az olvasói átírás minden `(\d+(/[a-z])?\. rész)` alakot elhagy, a fájl „§N” jele sem lesz „(N. rész)”; a NYERS_JEL kapu mindet fogja. Teszt: a rontott minták között a „(7. rész)”. |
 | 6 | Nyers jelek | igen | F182.51 | `csatorna=cli` törölve, `szamozas_elteres` → „versszámozás miatt nem párosítva”, „(forras_kereses: …)” → „(a keresés forrása: …)”; mind a `NYERS_JELEK`-ben; tesztek: `test_nyers_jel`, `test_olvasoi_atiras_nyers_jelek`. |
 | 7 | Jelmagyarázat kisbetűsítése | igen | F182.52 | `kisbetus_kezdes`: mozaikszó (≥ 2 nagybetű) és tulajdonnév (`KISBETU_TULAJDONNEV`) változatlan; „4.6 LXX-híd”, „4.13 Károli-megfelelők”. Teszt: `test_jelmagyarazat_kisbetu`. |
-| 8 | Indoklások (A05/A06/B08) | igen, egy korláttal | F182.53, F182.57 | Adat szkripttel, összevetéssel (`naplok/F182_indoklas_javitokor.py`): 48 `jeloltek.tsv`-indoklás, 1 `elofordulasok.tsv`-próza (Jel 22:3), az elutasítási ok 123-as mintája. Kiejtés a generátor szabályából (`lemma_kiejtes`, `heber_gepi`); a „… sorának folytatása” helyett „a szomszédos vers, az … folytatása”; a munkajavaslat ki, a javaslat N-F182l. Kapu: új INDOKLAS (BUKÁS, új szerkezet). **Korlát:** az E13 a HAMART-ra nem vihető 0-ra: a találatok nagyobb része a 4. szakasz BDB-szövegének héber töredéke („ק׳”, „הִ”), ahol kiejtés nem követelmény; ezért az indoklásokra a külön kapu áll. A nyílt mag és 21 szöveg (48 cella) angol párja frissítve (Sonnet, átnézve). |
-| 9 | 4.13 „erőszak (2)” / „megroml” | igen (a HAMART-on látható részt) | F182.54 | Egy szabály, egy hely: `szerep_karoli.szocsalad`; a lista és a próza szócsaládonként („erőszak” 9 = a próza 9/12-e; 27 → 23 szó). „megroml” → „megromlik”: kivétel a `hibrid.py`-ban, a generált szótárialak-tábla az eredeti `--ts`-sel újraépítve (5 sor + fejléc-hash). A többi nem szótári alak („színe”, „fájdalma”, „ragadománnyal”, „elveszessek”, „megrontott”) a tábla közös sorain áll, a 14. szerep teljes Károli-keresésén át más lapokat is érinthet: N-F182i kiegészítve. |
-| 10 | Alcím (N-F182g, A07) | igen | F182.55 | „1.1 A keresés tárgya · 1.2 A keresés forrásai” a sablon 6 v4-ben, a K33-ban és a generátorban; a MI_HANG kivétele megszűnt. DT-F182p; az N-F182g lezárva. A sablon 9-ben az alcím nem áll. |
-| 11 | BDB szócikkhatár (A17/K56) | igen a HAMART-on | F182.56 | A `bdb_szakasz_hu.tsv` generált, ezért a tételek a generátor kézi szótárában (`hu_illeszt.SZOCIKKHATAR_KEZI`, a `JELENTESPONT_KEZI` mintája; `scope=manual`, a forrás idézetével; ha a horgony nem pontosan egyszer áll, a generálás megáll). Részleges újragenerálás (`--strong H2403,H7451 --ts 2026-11-10`): 6 sor + fejléc. A 27. szabály a HAMART-on 0. DT-F182q; az illesztő általános javítása az N-F182f-ben marad. |
-| 12 | CLAUDE.md réslista | igen | F182.48 | „nyolc rés”, az `alkalmazas` a felsorolásból ki, egy mondat a kivezetésről (DT-F182m). Más nem változott. |
-| 13 | N-F182d lezárása | igen | F182.48 | A DT-F182j alapján lezárva; a SEMA 2.12-höz a javítókör nem nyúlt. |
-| ELLENOR #10 | kapcsolat-jelöltnapló | igen (dokumentáció) | F182.48 | DT-F182r (a felhasználó szavával), N-F182a lezárva, N-F182k új (sémabővítés és átköltöztetés a generátor-körben). A CLAUDE.md nem változott. |
-| ELLENOR #11 | DT-F182m és SEMA 2.12 | igen (dokumentáció) | F182.48 | A DT-F182m-ben a felhasználó jóváhagyása („mehet”); a SEMA 2.12 marad. |
+| 8 | Indoklások (A05/A06/B08) | igen, egy korláttal | F182.53, F182.57 | Adat szkripttel, összevetéssel (`naplok/F182_indoklas_javitokor.py`): 48 `jeloltek.tsv`-indoklás, 1 `elofordulasok.tsv`-próza (Jel 22:3), az elutasítási ok 123-as mintája. Kiejtés a generátor szabályából (`lemma_kiejtes`, `heber_gepi`); a „… sorának folytatása” helyett „a szomszédos vers, az … folytatása”; a munkajavaslat ki, a javaslat N152. Kapu: új INDOKLAS (BUKÁS, új szerkezet). **Korlát:** az E13 a HAMART-ra nem vihető 0-ra: a találatok nagyobb része a 4. szakasz BDB-szövegének héber töredéke („ק׳”, „הִ”), ahol kiejtés nem követelmény; ezért az indoklásokra a külön kapu áll. A nyílt mag és 21 szöveg (48 cella) angol párja frissítve (Sonnet, átnézve). |
+| 9 | 4.13 „erőszak (2)” / „megroml” | igen (a HAMART-on látható részt) | F182.54 | Egy szabály, egy hely: `szerep_karoli.szocsalad`; a lista és a próza szócsaládonként („erőszak” 9 = a próza 9/12-e; 27 → 23 szó). „megroml” → „megromlik”: kivétel a `hibrid.py`-ban, a generált szótárialak-tábla az eredeti `--ts`-sel újraépítve (5 sor + fejléc-hash). A többi nem szótári alak („színe”, „fájdalma”, „ragadománnyal”, „elveszessek”, „megrontott”) a tábla közös sorain áll, a 14. szerep teljes Károli-keresésén át más lapokat is érinthet: N149 kiegészítve. |
+| 10 | Alcím (N155, A07) | igen | F182.55 | „1.1 A keresés tárgya · 1.2 A keresés forrásai” a sablon 6 v4-ben, a K33-ban és a generátorban; a MI_HANG kivétele megszűnt. DT760; az N155 lezárva. A sablon 9-ben az alcím nem áll. |
+| 11 | BDB szócikkhatár (A17/K56) | igen a HAMART-on | F182.56 | A `bdb_szakasz_hu.tsv` generált, ezért a tételek a generátor kézi szótárában (`hu_illeszt.SZOCIKKHATAR_KEZI`, a `JELENTESPONT_KEZI` mintája; `scope=manual`, a forrás idézetével; ha a horgony nem pontosan egyszer áll, a generálás megáll). Részleges újragenerálás (`--strong H2403,H7451 --ts 2026-11-10`): 6 sor + fejléc. A 27. szabály a HAMART-on 0. DT761; az illesztő általános javítása az N-F182f-ben marad. |
+| 12 | CLAUDE.md réslista | igen | F182.48 | „nyolc rés”, az `alkalmazas` a felsorolásból ki, egy mondat a kivezetésről (DT756). Más nem változott. |
+| 13 | N154 lezárása | igen | F182.48 | A DT753 alapján lezárva; a SEMA 2.12-höz a javítókör nem nyúlt. |
+| ELLENOR #10 | kapcsolat-jelöltnapló | igen (dokumentáció) | F182.48 | DT759 (a felhasználó szavával), N153 lezárva, N151 új (sémabővítés és átköltöztetés a generátor-körben). A CLAUDE.md nem változott. |
+| ELLENOR #11 | DT756 és SEMA 2.12 | igen (dokumentáció) | F182.48 | A DT-F182m-ben a felhasználó jóváhagyása („mehet”); a SEMA 2.12 marad. |
 
 A végén: a lap egyszer újragenerálva (F182.58; a melléklet nem változott); a CI két új jelzése (E32, E37), a követelménylista állapota és a brief fejléce (F182.59); ez a jelentés (F182.60).
 
 ### Saját átnézés (renderelt lapnézet)
 
-`C:\Users\bases\AppData\Local\Temp\claude\256fc271ccf0bd2c\02da030a-5490-4ba6-b1c8-245010c77469\scratchpad\HAMART-001_lapnezet.html` (az `epit_nezet.py` kimenete a HEAD lapjából; utómunka: cím, charset, világos téma, a fejsáv és a lábsor HAMART-001-re, N-F182j). A böngészőben (helyi HTTP-szerverről) ellenőrizve: világos téma; az 1.1–1.2 új alcíme; a Jelmagyarázat „4.6 LXX-híd”; a 4.13 „23 … (szócsaládonként)”, „erőszak (9)”, „megromlik”; az 5. szakasz 1Móz 3:17 sora „γῆ (gé) · eltérő · gépi társítás”; a Jób 31:40-csoport „(חוֹחַ (chóach) és בָּאְשָׁה (bosá))”; az Ez 7:6 indoklása munkajavaslat nélkül; a BDB9520, BDB8033, BDB8034 feje a saját magyar szövegével, a „szócikkhatáron át” megjegyzés 0. A látható szövegben 0: „(N. rész)”, `csatorna=`, `szamozas_elteres`, `forras_kereses`, „eredeti:”, „Mit keresünk / Hol kerestünk”, „lXX”, „sorának folytatása”, „érdemes lehet”.
+`C:\Users\bases\AppData\Local\Temp\claude\256fc271ccf0bd2c\02da030a-5490-4ba6-b1c8-245010c77469\scratchpad\HAMART-001_lapnezet.html` (az `epit_nezet.py` kimenete a HEAD lapjából; utómunka: cím, charset, világos téma, a fejsáv és a lábsor HAMART-001-re, N150). A böngészőben (helyi HTTP-szerverről) ellenőrizve: világos téma; az 1.1–1.2 új alcíme; a Jelmagyarázat „4.6 LXX-híd”; a 4.13 „23 … (szócsaládonként)”, „erőszak (9)”, „megromlik”; az 5. szakasz 1Móz 3:17 sora „γῆ (gé) · eltérő · gépi társítás”; a Jób 31:40-csoport „(חוֹחַ (chóach) és בָּאְשָׁה (bosá))”; az Ez 7:6 indoklása munkajavaslat nélkül; a BDB9520, BDB8033, BDB8034 feje a saját magyar szövegével, a „szócikkhatáron át” megjegyzés 0. A látható szövegben 0: „(N. rész)”, `csatorna=`, `szamozas_elteres`, `forras_kereses`, „eredeti:”, „Mit keresünk / Hol kerestünk”, „lXX”, „sorának folytatása”, „érdemes lehet”.
 
 ### Ellenőrzők és tesztek
 
-- **CI-futtató** (`python eszkozok/ellenorzes/futtat.py --valtozott <git diff --name-only merge-base..HEAD> --diff-alap <merge-base> --diff-fej HEAD --commit-uzenet-fajl <a PR commit-üzenetei>`, a CI workflow szerint): a javítókör előtt E28 HIBA 4, E5 HIBA 2, E16 HIBA 1. Az első javított futás két új HIBA-t mutatott (E32: a `DT-F182q` helyőrző a `hu_illeszt.py` string-literáljában; E37: a SEMA 3.11 generált kapulistája az új INDOKLAS kapu nélkül), mindkettő javítva (F182.59). A végső futás (HEAD `9c33c27e`): **HIBA csak az E16** (a PR-cím „[ELLENŐRZŐ]” előtagja; helyben üres PR-címmel fut), E28 0 („5 migrált nézet”), E5 0. JELENTÉS-szint: E12 569, E13 75 (előtte 79), E25 3, E27 43, E30 9, E32 13 (régi helyőrzők az `emeles.py`-ban), E34 41, E36 1.
+- **CI-futtató** (`python eszkozok/ellenorzes/futtat.py --valtozott <git diff --name-only merge-base..HEAD> --diff-alap <merge-base> --diff-fej HEAD --commit-uzenet-fajl <a PR commit-üzenetei>`, a CI workflow szerint): a javítókör előtt E28 HIBA 4, E5 HIBA 2, E16 HIBA 1. Az első javított futás két új HIBA-t mutatott (E32: a `DT761` helyőrző a `hu_illeszt.py` string-literáljában; E37: a SEMA 3.11 generált kapulistája az új INDOKLAS kapu nélkül), mindkettő javítva (F182.59). A végső futás (HEAD `9c33c27e`): **HIBA csak az E16** (a PR-cím „[ELLENŐRZŐ]” előtagja; helyben üres PR-címmel fut), E28 0 („5 migrált nézet”), E5 0. JELENTÉS-szint: E12 569, E13 75 (előtte 79), E25 3, E27 43, E30 9, E32 13 (régi helyőrzők az `emeles.py`-ban), E34 41, E36 1.
 - **`python eszkozok/ellenoriz.py`** (végső állapot): **0 SÉRTÉS**, RENDBEN 26, JELENTÉS 17, KÉZI 2. A 26. szabály (a `bdb_szakasz_hu.tsv` = a generátor kimenete) RENDBEN; a 27. szabály 2 jelentése az ALVIL-001-é és az ISTENTISZT-001-é (a HAMART-001-é 0).
 - **`python eszkozok/teszt_futtat.py --gyors`** (WSL, `~/pardes/pardes.db`, építés 2026-11-02): 10 modulból 7 zöld; bukott a `teszt_bdb_vers_jelentes` (CsoportOszlop), a `teszt_olvaso_szerver` (TestF104BdbJeloles.test_kattinthato_helyek, TestLapok.test_bdb_jelentesszerkezet_jeloloi_a_szocikkbol) és a `teszt_pilot_aranymintaval` (DT_F76f, DT_F76g) — tesztnevenként ugyanaz, mint a 3. menet alapvonala (a WSL-adatbázis állapotához kötött).
 - **Windows, az érintett modulok** (a javítókör előtti HEAD, `1e0da664`, külön munkafán futtatott alapvonallal tesztnevenként összevetve): `teszt_kesz_lap_hamart` 34 teszt, OK (köztük az új tesztek); `teszt_forditas_vedelem` OK; a `teszt_olvasoi_kapu` (Arany.test_G7_dt_a_prozaban), a `teszt_szerep_karoli` (ValodiAdat: 3), a `teszt_nyilt_mag` (Pozitiv.test_nincs_nyitva_sor_es_nincs_feloldatlan_dt) és a `teszt_lexikon_adatres` (KolofonKiadas.test_igazi_tabla_istentiszt) bukásai az alapvonalon is ugyanazok; új bukás nincs.
@@ -359,12 +359,12 @@ A végén: a lap egyszer újragenerálva (F182.58; a melléklet nem változott);
 |---|---|---|---|
 | modell-ellenőrzés, bemenet, CI-alapállapot | 11:38 | 11:42 | 4 perc |
 | E28, E5 (F182.47) | 11:40 | 11:42 | 2 perc |
-| CLAUDE.md, DT-F182r, nyitott-tételek (F182.48) | 11:42 | 11:43 | 1 perc |
+| CLAUDE.md, DT759, nyitott-tételek (F182.48) | 11:42 | 11:43 | 1 perc |
 | 4.14, 5. szakasz, nyers jelek, Jelmagyarázat (F182.49–52) | 11:43 | 11:49 | 6 perc |
 | indoklás-adat, INDOKLAS kapu (F182.53) | 11:49 | 11:55 | 6 perc |
 | 4.13, szótárialak-kivétel (F182.54) | 11:55 | 11:58 | 3 perc |
-| alcímek, DT-F182p (F182.55) | 11:58 | 11:59 | 1 perc |
-| BDB szócikkhatár, DT-F182q (F182.56) | 11:59 | 12:03 | 4 perc |
+| alcímek, DT760 (F182.55) | 11:58 | 11:59 | 1 perc |
+| BDB szócikkhatár, DT761 (F182.56) | 11:59 | 12:03 | 4 perc |
 | nyílt mag, angol pár (Sonnet subagent: kb. 30 mp) (F182.57) | 12:03 | 12:06 | 3 perc |
 | lap újragenerálása, lapdiff (F182.58) | 12:06 | 12:08 | 2 perc |
 | lapnézet, saját átnézés | 12:08 | 12:12 | 4 perc |
@@ -373,9 +373,9 @@ A végén: a lap egyszer újragenerálva (F182.58; a melléklet nem változott);
 
 ### Nyitott pontok
 
-- **N-F182f:** az illesztő lánc általános szócikkhatár-szabálya (az ALVIL-001 és az ISTENTISZT-001 egy-egy 27. szabály-jelentése; utána a kézi tételek kivezethetők).
-- **N-F182i:** a 14. szerep szócsalád-összevonása és a szótárialak-tábla maradék nem szótári alakjai (a HAMART-on látható: „színe”, „fájdalma”, „ragadománnyal”, „elveszessek”, „megrontott”).
-- **N-F182k:** a `jeloltek.tsv` sémabővítése és a 103 kapcsolat-jelölt átköltöztetése (generátor-kör).
-- **N-F182l:** a „vég elérkezett” formula mint lehetséges önálló motívum (nem a #182-é).
+- **N147:** az illesztő lánc általános szócikkhatár-szabálya (az ALVIL-001 és az ISTENTISZT-001 egy-egy 27. szabály-jelentése; utána a kézi tételek kivezethetők).
+- **N149:** a 14. szerep szócsalád-összevonása és a szótárialak-tábla maradék nem szótári alakjai (a HAMART-on látható: „színe”, „fájdalma”, „ragadománnyal”, „elveszessek”, „megrontott”).
+- **N151:** a `jeloltek.tsv` sémabővítése és a 103 kapcsolat-jelölt átköltöztetése (generátor-kör).
+- **N152:** a „vég elérkezett” formula mint lehetséges önálló motívum (nem a #182-é).
 - **E13:** a HAMART-on a BDB-szöveg héber töredékei miatt JELENTÉS marad (FIGYELMEZTETÉS-szint).
 - Az olvasó-szerver adatbázisa (`pardes.db`) a szótárialak-tábla és a `bdb_szakasz_hu.tsv` változását a saját újraépítésével kapja meg.

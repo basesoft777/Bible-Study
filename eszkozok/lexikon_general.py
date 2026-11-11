@@ -6898,7 +6898,7 @@ def blokk_dontesi_ut(m, sorai):
     karoli = L.load_karoli_1908()
     reszek = []
 
-    # 1.1 A keresés tárgya (DT-F182p: névszói alcím, a K12 harmadik személyű szabálya szerint)
+    # 1.1 A keresés tárgya (DT760: névszói alcím, a K12 harmadik személyű szabálya szerint)
     neg = (m.get('negativ_kriterium') or '').strip()
     neg = SZKZ.olvasoi_indok(neg) or neg
     ide, sep, nem = neg.partition('Nem tartozik ide')
@@ -6913,7 +6913,7 @@ def blokk_dontesi_ut(m, sorai):
         r1.append('**Ami nem:** %s.' % (fol[:1].upper() + fol[1:].rstrip('.')))
     reszek.append('\n\n'.join(r1))
 
-    # 1.2 A keresés forrásai (DT-F182p)
+    # 1.2 A keresés forrásai (DT760)
     lanc = []
     for s in sorai:
         for e in (s.get('gerinc_elem') or '').split('+'):

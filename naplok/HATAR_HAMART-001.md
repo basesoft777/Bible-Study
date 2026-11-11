@@ -77,6 +77,6 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 (proveniencia: scope=adat/motivumok.tsv:10 (azonossag_tipusa, negativ_kriterium, folerendelt_fogalom), motivumok/HAMART-001.md (Kivonat, 1., 2., 7. szakasz), adat/jeloltek.tsv (HAMART-001: 335 sor, 48 beépítve, 287 elutasítva), adat/elutasitasi_okok.tsv (HAMART-001 minták), adat/elofordulasok.tsv (HAMART-001: 48 sor, gerinc_elem, jelentes_szam, funkcio), adat/motivum_kapcsolatok.tsv (HAMART-001: 1 sor), naplok/HATAR_HAMART-001.md Gépi rész, naplok/F123_teljesseg_HAMART-001.tsv (5Móz 21:23 sorai), konkordancia/TAHOT_kivonat.tsv (1Móz 4:2, 9:20, 6:5, 8:21, Ez 12:19, 28:16, Hab 1:2, 2:8, 2:17, Jón 3:8, 5Móz 21:23, Mik 6:12, Sof 1:9, Zsolt 74:20, Jer 51:46), konkordancia/TAGNT_kivonat.tsv (Gal 3:13-14, Zsid 6:7-8, Róm 8:20-21), konkordancia/Karoli_1908.tsv (ugyanezek a versek), git log (HATAR_HAMART-001.md, a három adattábla) | forras=modell:claude-fable-5-1 (split(tab), olvasó lekérdezés) | ts=2026-11-09T19:23Z)
 *A határ lezárt (F26): a fenti kérdések (K1–K6) döntései a `jeloltek.tsv`-n át, DT-hivatkozással; a sorállapot a döntés állapota. Új modelles kör csak új, nem a határdöntésből eredő sor-változás után.*
 
-<!-- HATÁRDÖNTÉS: n=47 ujjd=a8fdcc3a1b63 | DT-F182a, DT-F182b, DT-F182c, DT-F182d, DT683, DT685, DT686, DT687 -->
+<!-- HATÁRDÖNTÉS: n=47 ujjd=a8fdcc3a1b63 | DT744, DT745, DT746, DT747, DT683, DT685, DT686, DT687 -->
 
 <!-- MODELLES-VEGE -->

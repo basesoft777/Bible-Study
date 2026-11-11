@@ -54,7 +54,7 @@ class Lap(unittest.TestCase):
         self.assertNotIn('publikálható (v1', self.lathato)
 
     def test_dontesi_ut_alcimek(self):
-        """F182 javítókör (N-F182g, DT-F182p): az 1.1–1.2 alcím névszói, az 1.3–1.5 változatlan."""
+        """F182 javítókör (N155, DT760): az 1.1–1.2 alcím névszói, az 1.3–1.5 változatlan."""
         for c in ('### 1.1. A keresés tárgya', '### 1.2. A keresés forrásai', '### 1.3.', '### 1.4.', '### 1.5.'):
             self.assertIn(c, self.lap)
         self.assertNotIn('Mit keresünk', self.lap)
@@ -211,7 +211,7 @@ class Generator(unittest.TestCase):
         self.assertNotIn('károli', j)
 
     def test_szocikkhatar_kezi(self):
-        """F182 javítókör (A17 / K56, DT-F182q): a tételes szócikkhatár-javítás a következő szócikk fejénél vág; a forrás
+        """F182 javítókör (A17 / K56, DT761): a tételes szócikkhatár-javítás a következő szócikk fejénél vág; a forrás
         változásakor (a horgony nincs meg) a generálás megáll; a HAMART-001-en a 27. szabály nem jelez."""
         sys.path.insert(0, os.path.join(GYOKER, 'eszkozok', 'bdb_jelolt'))
         import hu_illeszt as HI
@@ -306,7 +306,7 @@ class Kapuk(unittest.TestCase):
 
     def test_mi_hang(self):
         self.assertTrue(kapu(uj_lap('A szavakat átnéztük, és a helyeket elbíráltuk.'), 'MI_HANG'))
-        # F182 javítókör (DT-F182p): a régi „1.2 Hol kerestünk” alcím már nem kivétel
+        # F182 javítókör (DT760): a régi „1.2 Hol kerestünk” alcím már nem kivétel
         self.assertTrue(kapu(uj_lap('### 1.2. Hol kerestünk'), 'MI_HANG'))
         self.assertEqual(kapu(uj_lap('A helyek átnézésre kerültek. Alattuk és közöttük „vétkeztünk”.'), 'MI_HANG'), [])
 
