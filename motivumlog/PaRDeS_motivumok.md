@@ -24,7 +24,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
-- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 48 igehely-sor — publikálható (v1, 2026.09.11)
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 47 igehely-sor — publikálható (v1, 2026.09.11)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -491,11 +491,11 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 251 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 250 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
-| 1Móz | 44 | 1Móz 1:2 [TEREMT-001], 1Móz 1:2 [TEREMT-002], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:4 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 7:23 [HAMART-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
+| 1Móz | 43 | 1Móz 1:2 [TEREMT-001], 1Móz 1:2 [TEREMT-002], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:4 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 7:23 [HAMART-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
 | 2Móz | 5 | 2Móz 15:5 [TEREMT-001], 2Móz 15:8 [TEREMT-001], 2Móz 19:6 [KIRALY-001], 2Móz 33:19 [ISTENTISZT-001], 2Móz 34:5 [ISTENTISZT-001] |
 | 4Móz | 4 | 4Móz 13:34 [MENNY-001], 4Móz 13:34 [HODIT-001], 4Móz 16:30 [ALVIL-001], 4Móz 16:33 [ALVIL-001] |
 | 5Móz | 8 | 5Móz 2:11 [HODIT-001], 5Móz 2:20 [HODIT-001], 5Móz 3:11 [HODIT-001], 5Móz 3:13 [HODIT-001], 5Móz 8:7 [TEREMT-001], 5Móz 28:18 [HAMART-001], 5Móz 32:22 [ALVIL-001], 5Móz 33:13 [TEREMT-001] |
