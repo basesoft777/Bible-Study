@@ -1,4 +1,4 @@
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 motivum_azonosito	igehely	igehely_osis	jelolt_tipus	jelolt_tipus_en	cel_motivum	cel_igehely	cel_igehely_osis	indoklas	indoklas_en	korabbi_minosites	korabbi_minosites_en	keresesi_mod	keresesi_mod_en	dontesek	datum	forditas_modja
 ALVIL-001	1Kir 2:6	1Kgs.2.6	elofordulas	occurrence				Dávid Salamonnak — Joáb "őszen szálljon a Seólba"	David to Solomon — Joab "őszen szálljon a Seólba" ["let him go down to Sheol with gray hair"]			szó-szintű visszakeresés a héber/görög szövegben	word-level look-up in the Hebrew/Greek text		2026.09.10	gépi fordítás (claude-sonnet-5-5)
 ALVIL-001	1Kir 2:9	1Kgs.2.9	elofordulas	occurrence				ua. — Simei	ditto — Shimei			szó-szintű visszakeresés a héber/görög szövegben	word-level look-up in the Hebrew/Greek text		2026.09.10	gépi fordítás (claude-sonnet-5-5)

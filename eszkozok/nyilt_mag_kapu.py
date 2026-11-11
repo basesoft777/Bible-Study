@@ -40,6 +40,8 @@ Ellenőrzések (azonosító — súlyosság):
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
     VISSZHANG    a hatástörténet-táblákban Chain Lineage-tanú / BDB-sor / nem jóváhagyott forrás, összefoglaló-szöveg,
                  forrás-megnevezés vagy licenc nélküli sor (F198)                                            — BUKÁS
+    HELYORZO     nyers `[A LEXIKON CÍME]`, `[HELYŐRZŐ…]` vagy `<…_URL>` a csomagban; a lexikon címe hiányzik (a szerző,
+                 az ORCID és a közzétételi hely hiányát a KANONIKUS és a KETNYELV ellenőrzés mondja ki)                                                                   — BUKÁS
     ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
                  FIGYELMEZTETÉS (átnézés a következő kiadás előtt), 5% felett BUKÁS (a további átvétel a felhasználó
                  döntésével vagy ügyvédi vélemény után); a küszöbök óvatos mérnöki értékek, jogi alapjuk nincs
@@ -558,13 +560,13 @@ def ell_kanonikus(fajlok):
             if m:
                 ki.append(Talalat('KANONIKUS', BUKAS, rel, i, kor(sor, m), 'GitHub-hivatkozás a csomagban'))
     o = fajlok.get('OLVASSEL.md', '')
-    for kell in ('<KANONIKUS_FORRAS_URL>', '## Mi van benne, mi nincs', 'KIADAS.txt'):
+    for kell in (E.KANONIKUS_HELY, E.SZERZO, E.ORCID, '## Mi van benne, mi nincs', 'KIADAS.txt'):
         if kell not in o:
             ki.append(Talalat('KANONIKUS', BUKAS, 'OLVASSEL.md', 1, kell, 'hiányzik'))
     k = fajlok.get('KIADAS.txt', '')
     h = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
-    if 'kiadas_azonosito:' not in k or h not in k or '<KANONIKUS_FORRAS_URL>' not in k:
-        ki.append(Talalat('KANONIKUS', BUKAS, 'KIADAS.txt', 1, k[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
+    if 'kiadas_azonosito:' not in k or h not in k or E.KANONIKUS_HELY not in k:
+        ki.append(Talalat('KANONIKUS', BUKAS, 'KIADAS.txt', 1, k[:80], 'a kiadás-azonosító, a tartalmi hash vagy a közzétételi hely hibás/hiányzik'))
     if E.ADATMAG_LEXIKON_HU not in fajlok.get('KODKONYV.md', '') or E.ADATMAG_LEXIKON_EN not in fajlok.get('KODKONYV.md', ''):
         ki.append(Talalat('KANONIKUS', BUKAS, 'KODKONYV.md', 1, '', 'a kódkönyv nem mondja ki a nyílt adatmag és a lexikon határát'))
     return ki
@@ -586,7 +588,7 @@ def ell_ketnyelv(fajlok):
     for ds in kizart:
         if ds not in en:
             ki.append(Talalat('KETNYELV', BUKAS, 'README.md', 1, ds, 'a kizárt dataset listája nem mondja ki'))
-    for kell in ('<KANONIKUS_FORRAS_URL>', '## What is in it and what is not', 'RELEASE.txt', 'KNOWN_ISSUES.md',
+    for kell in (E.KANONIKUS_HELY, E.SZERZO, E.ORCID, '## What is in it and what is not', 'RELEASE.txt', 'KNOWN_ISSUES.md',
                  'OLVASSEL.md'):
         if kell not in en:
             ki.append(Talalat('KETNYELV', BUKAS, 'README.md', 1, kell, 'hiányzik'))
@@ -601,8 +603,8 @@ def ell_ketnyelv(fajlok):
         ki.append(Talalat('KETNYELV', BUKAS, 'KNOWN_ISSUES.md', 1, '', 'a Károli-KH hiba hiányzik'))
     r, k_ = fajlok.get('RELEASE.txt', ''), fajlok.get('KIADAS.txt', '')
     hash_ = hashlib.sha256(fajlok.get('ELLENORZO_OSSZEG.sha256', '').encode('utf-8')).hexdigest()
-    if 'release_id:' not in r or hash_ not in r or '<KANONIKUS_FORRAS_URL>' not in r:
-        ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító vagy a tartalmi hash hibás'))
+    if 'release_id:' not in r or hash_ not in r or E.KANONIKUS_HELY not in r:
+        ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító, a tartalmi hash vagy a közzétételi hely hibás/hiányzik'))
     elif r.split(chr(10))[0].split(': ')[1] != k_.split(chr(10))[0].split(': ')[1]:
         ki.append(Talalat('KETNYELV', BUKAS, 'RELEASE.txt', 1, r[:80], 'a kiadás-azonosító nem egyezik a KIADAS.txt-vel'))
     return ki
@@ -794,6 +796,20 @@ def ell_visszhang(fajlok):
     return ki
 
 
+def ell_helyorzo(fajlok):
+    """HELYORZO: nyers helyőrző (`[A LEXIKON CÍME]`, `[HELYŐRZŐ…]`, `<…_URL>`) nem állhat a csomagban; a cím a
+    megállapított cím, a közzétételi hely a DOI-hivatkozás, a szerző és az ORCID a README-ben és az OLVASSEL-ben áll."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        for i, sor in enumerate(sz.split('\n'), 1):
+            m = E.NYERS_HELYORZO.search(sor)
+            if m:
+                ki.append(Talalat('HELYORZO', BUKAS, rel, i, kor(sor, m), 'nyers helyőrző a csomagban: ' + m.group(0)))
+    if E.LEXIKON_CIM_HU not in fajlok.get('OLVASSEL.md', '') or E.LEXIKON_CIM_EN not in fajlok.get('README.md', ''):
+        ki.append(Talalat('HELYORZO', BUKAS, 'OLVASSEL.md', 1, E.LEXIKON_CIM_HU, 'a lexikon címe nem áll a README-ben / OLVASSEL-ben'))
+    return ki
+
+
 def mer(fajlok, kimenet=None, ujra=True):
     ki = []
     for rel in KOTELEZO:
@@ -803,7 +819,7 @@ def mer(fajlok, kimenet=None, ujra=True):
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
-              ell_szerkeszto, ell_lyuk, ell_visszhang):
+              ell_szerkeszto, ell_lyuk, ell_visszhang, ell_helyorzo):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
