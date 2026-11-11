@@ -39,7 +39,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import szerep_kizart as SZKZ  # noqa: E402  (a tartomány-kulcs bontása: SZKZ.versek)
+
+GYOKER =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KAROLI = os.path.join(GYOKER, 'konkordancia', 'Karoli_1908.tsv')
 TAHOT = os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv')
 TAGNT = os.path.join(GYOKER, 'konkordancia', 'TAGNT_kivonat.tsv')
@@ -336,7 +339,8 @@ def hamis_parhuzamok(sorai, versek=None, strongok=None, tabla=None, kulcs=None):
         return []
     versek = karoli_versek() if versek is None else versek
     strongok = vers_strongok() if strongok is None else strongok
-    sajat = {s['igehely'] for s in sorai}
+    # F182 javítókör (ELLENOR_F182 #3): a tartomány-kulcsú motívumsor („Gal 3:13-14”) minden verse saját vers
+    sajat = {v for s in sorai for v in SZKZ.versek(s['igehely'])}
     gerinc = set().union(*kulcs)
     ki = []
     for hely, szoveg in versek:
