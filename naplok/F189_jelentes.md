@@ -4,7 +4,7 @@
 
 ## Menet
 
-- **F189.0** — a brief (`allapot: fut`) és a DT-F189a helyőrző (`dontesek/uj/teher-kovetkezo-claude-4e1093.md`, 🟢: a felhasználó jóváhagyása az orkesztrátoron át: „csináljuk meg”, „csináljuk”, „menjen párhuzamosan”).
+- **F189.0** — a brief (`allapot: fut`) és a DT736 helyőrző (`dontesek/uj/teher-kovetkezo-claude-4e1093.md`, 🟢: a felhasználó jóváhagyása az orkesztrátoron át: „csináljuk meg”, „csináljuk”, „menjen párhuzamosan”).
 - **F189.1** — A) rész:
   - `.claude/commands/kovetkezo.md`: az 5. lépés javaslata a végrehajtás módját nevezi meg; a 6. lépés alapesete a session saját végrehajtása. A lépésszámozás változatlan, így a `feladatok.py` 94. sorának hivatkozása (8. lépés, `FOLYTATAS_ELOTAG`) érvényes marad.
   - `.claude/commands/elteres.md`, 4. lépés: ugyanez a javítókörre.
@@ -14,7 +14,7 @@
 - **F189.2** — B) rész:
   - A `CLAUDE.md` magyarázó részei szó szerint az új `CSAPDAK.md`-be kerültek.
   - A `CLAUDE.md`-ben a szabály maradt, hivatkozással; a szakaszcímek változatlanok, mert kód, briefek és az E27/E36 hivatkozik rájuk.
-  - A „Modell-ellenőrzés” szakasz a DT-F189a szerint változott.
+  - A „Modell-ellenőrzés” szakasz a DT736 szerint változott.
   - A `CSAPDAK.md` a `feladatok.py` `SZINT_KONNYITETT_FAJL` listájára került (dokumentáció).
 
 ### A) — mely esetekben marad subagent
@@ -68,7 +68,7 @@ Az áthelyezett szakaszok minden szabálya és állítása:
 | G3 | az ékezetes üzenet (a `git log --grep` miatt) | `CLAUDE.md` „Git” („ékezetesen”); az ok a `CSAPDAK.md`-ben | megmaradt, tiltásként kimondva |
 | G4 | a granularitás és a fájlból írt üzenet oka | `CSAPDAK.md` | ok áthelyezve |
 | M1–M3, M5–M7 | a „Modell-ellenőrzés” szakasz: első lépés; a kért modell a végrehajtónak a brief `modell` mezője, az ellenőrnek a saját fájlja; `külső:<név>`; eltérésnél nincs munka; az adattábla `modell` mezője | `CLAUDE.md` „Modell-ellenőrzés” | megmaradt (tartalmilag azonos; a „közvetlenül futtató session” helyett „a briefet végrehajtó session”, a többi szó szerint) |
-| M4 | „a `/kovetkezo` orkesztrátor nem végrehajt …, az ellenőrzése a végrehajtóra hárul” | `CLAUDE.md` „Modell-ellenőrzés” + `kovetkezo.md` 6. lépés | **szándékosan megváltozott** (DT-F189a): az ellenőrzés a sessionre hárul; eltérésnél a session nem dolgozik, a felhasználó új sessiont vagy subagentet választ |
+| M4 | „a `/kovetkezo` orkesztrátor nem végrehajt …, az ellenőrzése a végrehajtóra hárul” | `CLAUDE.md` „Modell-ellenőrzés” + `kovetkezo.md` 6. lépés | **szándékosan megváltozott** (DT736): az ellenőrzés a sessionre hárul; eltérésnél a session nem dolgozik, a felhasználó új sessiont vagy subagentet választ |
 
 Eredmény: a szabályok közül egy sem veszett el. Kettő szigorodott, mert kimondott tiltás lett, ami korábban csak indoklásban állt (S2, G3). Szándékosan egy változott (M4). Az áthelyezett tartalom indoklás, mért kár vagy részlet. Ezt a `CSAPDAK.md` szó szerint hordozza, és szakaszonként visszamutat a szabály helyére. A többi szakasz (Rétegek, Három szabály, Kutatási menet, Új motívum-ID, Igehely-formátum, a Git helyőrző-szabályai) változatlan.
 
@@ -96,7 +96,7 @@ A kért modell `opus`, a tényleges modellem `claude-opus-5-5`, a kettő egyezik
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
 | 0 modell | OK | `naplok/F189_jelentes.md:3` | A jelentés a `claude-opus-5-5` modellt írja. A `git log --format='%h %(trailers:key=Co-Authored-By,valueonly)' f66f0fcc..ee899789` szerint mind a 4 commit trailere `Claude Opus 5.5`. Adattábla nem változott, ezért adattáblában nincs ellenőrizendő `modell` mező. |
-| D: DT-F189a | ELTÉRÉS (alacsony) | `dontesek/uj/teher-kovetkezo-claude-4e1093.md:1`, `F189_KOVETKEZO_KARCSU_BRIEF.md:57` | `git diff f66f0fcc..ee899789 -- dontesek/`. A brief „javaslat”-ként hivatkozik a sorra, a sor állapota viszont 🟢 (eldöntve). Hogy a felhasználó az orkesztrátoron át jóváhagyta, azt a repóból nem tudom igazolni, ezért NEM ELLENŐRIZHETŐ. A brief és a sor jelölése egymásnak ellentmond. |
+| D: DT736 | ELTÉRÉS (alacsony) | `dontesek/uj/teher-kovetkezo-claude-4e1093.md:1`, `F189_KOVETKEZO_KARCSU_BRIEF.md:57` | `git diff f66f0fcc..ee899789 -- dontesek/`. A brief „javaslat”-ként hivatkozik a sorra, a sor állapota viszont 🟢 (eldöntve). Hogy a felhasználó az orkesztrátoron át jóváhagyta, azt a repóból nem tudom igazolni, ezért NEM ELLENŐRIZHETŐ. A brief és a sor jelölése egymásnak ellentmond. |
 | G-pontok | OK | – | A brief nem tartalmaz G-pontot. A hatókör tételeit (4. elfogadási feltétel) a lenti sorok veszik sorra. |
 | Elfogadás 1: nem vész el és nem gyengül szabály | OK | `CLAUDE.md:126–160`, `CSAPDAK.md` | A régi és az új szöveget magam vetettem össze a `git diff f66f0fcc..ee899789 -- CLAUDE.md` kimenetén. Shell: megmaradt az inline tilalom, és a heredocra vonatkozó tiltás most kifejezetten benne van. Megmaradt a wrapper is (importblokk után, a PYTHONIOENCODING csak tartalék) és a `teszt_futtat.py`-szabály. TSV: a split/join, a `QUOTE_NONE` és az írás előtti összevetés szó szerint áll. TAHOT: a Károli-kulcs, a 9 összevonás és az „olvass kulcs szerint” megvan. Git: tétel-szintű commit, UTF-8 fájlból, nincs `-m`, és új elem az „ékezetesen”. Ami kikerült, az indoklás, mért kár vagy állapotadat (F2/F84, eltolások, 23 204 kulcs, Jób 40:1–5, WSL/45 perc), és mind szó szerint megvan a `CSAPDAK.md`-ben (1–100. sor). A diff a többi szakaszhoz nem nyúlt. |
 | Elfogadás 1b: a jelentés pontossága | ELTÉRÉS (alacsony) | `naplok/F189_jelentes.md:70` | Az M1–M3 sor „megmaradt (szó szerint)” állítása nem pontos. A „közvetlenül futtató session” szöveg helyére „a briefet végrehajtó session” került. A jelentés tartalmilag azonos, a „szó szerint” állítás viszont téves. |
@@ -123,7 +123,7 @@ A kért modell `opus`, a tényleges modellem `claude-opus-5-5`, a kettő egyezik
 
 1. **Közepes, `kovetkezo.md` 5a ↔ 6:** az 5a lépésnek a modell-egyezést abban a fordulóban kell kimondania, amely a `model: sonnet` frontmatter alatt fut. A 6. lépés éppen ezt a fordulót tekinti nem mérvadónak. Ebből hamis eltérés-jelzés és felesleges subagent-kérdés lehet.
 2. **Alacsony–közepes, `vegrehajto-*.md` description:** az új „csak … hívandó” megfogalmazás ellentmond a `MUNKAMENET.md` C0 lépésének (fordítás `vegrehajto-opus` subagenttel) és a `sonnet_koteg.py` `vegrehajto-sonnet` használatának.
-3. **Alacsony:** a DT-F189a a briefben „javaslat”, a döntésfájlban 🟢.
+3. **Alacsony:** a DT736 a briefben „javaslat”, a döntésfájlban 🟢.
 4. **Alacsony:** a jelentés M1–M3 sora „szó szerint”-et állít, pedig a szöveg átfogalmazott.
 
 ## Megjegyzések
@@ -136,14 +136,14 @@ A kért modell `opus`, a tényleges modellem `claude-opus-5-5`, a kettő egyezik
 Mind a négy tétel `mechanikus`, javítva:
 1. `kovetkezo.md` 5a: a javaslat a brief `modell` mezőjét és az alapesetet nevezi meg. A modell-egyezést nem méri, mert ez a forduló a parancs frontmatter-modelljén futhat. A mérés és az „új session vagy subagent” kérdés a 6. lépés elején van.
 2. `vegrehajto-*.md` leírás és `MUNKAMENET.md`: a korlátozás csak a `/kovetkezo`-ra és a `/elteres`-re szól. A más helyen kifejezetten előírt hívás (MUNKAMENET C0, `sonnet_koteg.py`) változatlan. A törzs megjegyzése a `/elteres` `tartalmi` ágát is megnevezi.
-3. A brief döntésnaplója: DT-F189a 🟢, a fejléc alatti jóváhagyás-idézettel. A jóváhagyás a megbízó session üzenetéből származik, a repóban nincs más nyoma.
+3. A brief döntésnaplója: DT736 🟢, a fejléc alatti jóváhagyás-idézettel. A jóváhagyás a megbízó session üzenetéből származik, a repóban nincs más nyoma.
 4. A jelentés M1–M3 sora: „tartalmilag azonos”, az átfogalmazás megnevezve.
 
 A szint `konnyitett` (1 kör). Ez volt az egyetlen kör, újraellenőrzés nincs: a takarékos szabály szerint a folytatásról az orkesztrátor dönt.
 
 ## Zárás
 
-- **A)** A `/kovetkezo` és a `/elteres` alapesete a subagent nélküli végrehajtás (DT-F189a). Subagent marad: eltérő modellnél (ha a felhasználó nem kér új sessiont), csomagmódban és `külső:<név>` briefnél. A `fuggetlen-ellenor` mindig subagent.
+- **A)** A `/kovetkezo` és a `/elteres` alapesete a subagent nélküli végrehajtás (DT736). Subagent marad: eltérő modellnél (ha a felhasználó nem kér új sessiont), csomagmódban és `külső:<név>` briefnél. A `fuggetlen-ellenor` mindig subagent.
 - **B)** A `CLAUDE.md` mérete 18 132 → 14 102 bájt (CRLF), 223 → 164 sor. A magyarázat a `CSAPDAK.md`-be került. A szabálylista-összevetés szerint egy szabály sem veszett el, kettő szigorodott, egy szándékosan változott (M4).
 - Helyi E-ellenőrzés: 0 HIBA. `teszt_futtat.py --gyors`: zöld. Független ellenőrzés: 1 kör (ELTÉRÉS: 4 tétel), egy javítókör, mind a négy javítva.
 - PR: #682 (draft). A merge a felhasználóé.

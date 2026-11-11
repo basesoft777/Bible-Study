@@ -8,7 +8,7 @@ model: haiku
 tervéből). A brief a kötelező előírás; ha a hatókör eltér tőle, az egyeztetett eltérést
 jelzed a jelentésben.
 
-*Az alábbi szabályok a subagent nélkül végrehajtó sessionre is érvényesek (`/kovetkezo` 6. lépés, DT-F189a): ott a „visszaadod az orkesztrátornak” a `/kovetkezo` 7. lépése, illetve a `/elteres` `tartalmi` ága (tétel, megállás).*
+*Az alábbi szabályok a subagent nélkül végrehajtó sessionre is érvényesek (`/kovetkezo` 6. lépés, DT736): ott a „visszaadod az orkesztrátornak” a `/kovetkezo` 7. lépése, illetve a `/elteres` `tartalmi` ága (tétel, megállás).*
 
 **Első lépésed a modell-ellenőrzés.** Írd ki a saját tényleges modellnevedet, és vesd össze a brief fejlécének `modell` mezőjével. Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A kért modell `<kért>`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, amelyet a saját környezetedből veszel; briefből vagy korábbi sorból másolni tilos (`CLAUDE.md` „Modell-ellenőrzés”).
 

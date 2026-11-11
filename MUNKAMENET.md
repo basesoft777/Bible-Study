@@ -128,7 +128,7 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
   `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` (archív) szerint dolgozott, kizárólag a
   `[study-mappa]/naplok/[motívum]_tanitoi_kereses.md` fájlt írta. Új futása nincs.
 - **végrehajtó (`/kovetkezo`, `/elteres`)** — alapesetben maga a session, subagent nélkül, ha a tényleges
-  modellje egyezik a brief `modell` mezőjével (DT-F189a: a brief egyszer olvasódik). Ezekben a parancsokban a `vegrehajto-*`
+  modellje egyezik a brief `modell` mezőjével (DT736: a brief egyszer olvasódik). Ezekben a parancsokban a `vegrehajto-*`
   subagent csak eltérő modellnél (ha a felhasználó nem kér új sessiont), csomagmódban és `külső:<név>`
   briefnél fut; a szabály: `.claude/commands/kovetkezo.md` 6. lépés. A `fuggetlen-ellenor` mindig subagent
   (friss kontextus kell hozzá).

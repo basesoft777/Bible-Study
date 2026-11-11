@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-11-10",
-   "commit": "8f97a648"
+   "datum": "2026-11-11",
+   "commit": "7055ba40"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5506,6 +5506,16 @@
      "🟢"
     ],
     "sor": 740
+   },
+   {
+    "id": "DT736",
+    "feladat": "#189 KOVETKEZO_KARCSU (a végrehajtás alapesete)",
+    "kerdes": "Ma a `/kovetkezo` sessionje beolvassa a briefet, majd egy `vegrehajto-*` subagentnek adja át, amely mindent újra beolvas: egy feladatot két kontextus olvas végig. A felhasználó 7 napos használati képe szerint a keret 86%-a subagent-nehéz sessionökből jött, ebből a `vegrehajto-opus` 21%.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 741
    }
   ],
   "javasolt": [],

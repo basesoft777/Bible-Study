@@ -14,7 +14,7 @@ munka: folyamat
 olvas: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, CLAUDE.md, CSAPDAK.md, MUNKAMENET.md, eszkozok/feladatok.py]
 fugg: []
-lezarva_osszegzes: a /kovetkezo és a /elteres alapesete a subagent nélküli végrehajtás (DT-F189a); a CLAUDE.md 18 KB-ról 14 KB-ra karcsúsodott, a magyarázat a CSAPDAK.md-ben
+lezarva_osszegzes: a /kovetkezo és a /elteres alapesete a subagent nélküli végrehajtás (DT736); a CLAUDE.md 18 KB-ról 14 KB-ra karcsúsodott, a magyarázat a CSAPDAK.md-ben
 ---
 
 # F189_KOVETKEZO_KARCSU_BRIEF.md — A /kovetkezo alapesete subagent nélküli végrehajtás, és a CLAUDE.md karcsúsítása
@@ -56,4 +56,4 @@ A heti keret terhének csökkentése két ponton (mért adat: a felhasználó 7 
 
 ## 5. Döntésnapló
 
-- DT-F189a (🟢, a felhasználó jóváhagyásával, l. a fejléc alatti idézetet; `dontesek/uj/teher-kovetkezo-claude-4e1093.md`): a `/kovetkezo` és a `/elteres` alapesete a subagent nélküli végrehajtás.
+- DT736 (🟢, a felhasználó jóváhagyásával, l. a fejléc alatti idézetet; `dontesek/uj/teher-kovetkezo-claude-4e1093.md`): a `/kovetkezo` és a `/elteres` alapesete a subagent nélküli végrehajtás.
