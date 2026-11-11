@@ -77,6 +77,9 @@ KAPUK = (
                         '„Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); '
                         'az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, '
                         'F24, F35)'),
+    ('HELYORZO', BUKAS, 'nyers helyőrző a lapon („<KANONIKUS_FORRAS_URL>”, „[HELYŐRZŐ…]”, „<DOI>”, üres „DOI: .”); '
+                        'csak az új szerkezetű lapon (a felhasználó döntései, 2026-11-11: a szerző, a lexikon címe és a '
+                        'kanonikus cím a generátor beállításából, hiányuk olvasói mondattal)'),
     ('SZAKASZ_HIV', BUKAS, 'a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat '
                            '(a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b))'),
     ('NYERS_JEL', BUKAS, 'nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, '
@@ -671,6 +674,23 @@ SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜ�
 SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
 SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
 SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')
+
+
+HELYORZO_RX = re.compile(r'<KANONIKUS_FORRAS_URL>|\[HELYŐRZŐ[^\]]*\]|<DOI>|DOI:\s*[.`]?\s*$|DOI:\s*\.')
+
+
+def ell_helyorzo(sorok):
+    """A felhasználó döntései (2026-11-11): az új szerkezetű lapon nyers helyőrző nem állhat (a megjegyzés kivétel)."""
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if s.fajta in ('komment', 'kod'):
+            continue
+        m = HELYORZO_RX.search(s.szoveg)
+        if m:
+            ki.append(talalat('HELYORZO', BUKAS, s.n, kornyezet(s.szoveg, m), 'nyers helyőrző a lapon: „%s”' % m.group(0)))
+    return ki
 
 
 def ell_szakasz_hiv(sorok):
@@ -1459,7 +1479,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_nyers_jel, ell_mi_hang,
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_nyers_jel, ell_mi_hang,
                 ell_nevelo, ell_kov_ism, ell_indoklas]
 
 

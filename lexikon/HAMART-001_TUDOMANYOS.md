@@ -3516,13 +3516,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 *Ez a blokk a motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásonként) és az adatforrásokat adja.*
 
-**Hogyan hivatkozz:**
-- ID: HAMART-001
-- Cím: A bűn következményeinek gyűrűzése — átok, föld és romlás
-- Státusz: nincs kiadva — feldolgozás alatt
-- Generálva: 2026-11-11
-- Hely: <KANONIKUS_FORRAS_URL>
-- Idézési forma: a Kolofon „Hogyan idézd” bekezdése
+**Hogyan hivatkozz:** az idézési forma a [Kolofon](#kolofon) „Hogyan idézd” bekezdésében áll.
 
 **Felhasznált szótárak:**
 - BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (a BDB-szótár, közkincs)
@@ -3589,11 +3583,11 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
-*Ez a blokk a motívum törzsadatait (a motívumtábla) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
+*Ez a blokk a motívum azonosító adatait, a lap kiadási állapotát és a lap minden forrását, licencével együtt, sorolja fel.*
 
 **Szerzőség.** Az értelmező szakaszok (Kivonat, Miért fontos ez a lelet, Értelmezés, Módszertan és nyitott kérdések) még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
 
-**Hogyan idézd.** [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: A LEXIKON CÍME]*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), kiadás előtti változat, még nem idézhető, <KANONIKUS_FORRAS_URL>. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: DOI: <DOI>.
+**Hogyan idézd.** Demeter Tamás: *Logosz Lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), kiadás előtti változat, még nem idézhető, 2026-11-11, https://logoszlexikon.hu/HAMART-001. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: a nyílt adatkészlet DOI-ja az első Zenodo-közléskor kerül ide.
 
 **Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).
 
@@ -3611,6 +3605,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Negatív kritérium | A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, romlandó test), és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki. A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide. Az újszövetségi helyeknél a Textus Receptus a mérce. |
 | Fölérendelt fogalom | a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
+| Generálva | 2026-11-11 |
 | Kiadás | nincs kiadva — feldolgozás alatt |
 | Próza modellje | nincs kiadva — feldolgozás alatt |
 

@@ -68,6 +68,25 @@ class Lap(unittest.TestCase):
         sor = [s for s in kolofon.split('\n') if s.startswith('| a lap fordítástáblája |')]
         self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
 
+    def test_idezes_egy_helyen_helyorzo_nelkul(self):
+        """A felhasználó döntései (2026-11-11): szerző, lexikon címe, kanonikus cím a beállításból; egy idézési forma
+        (a Kolofonban), az Irodalomban mutató; nyers helyőrző nem áll; a HELYORZO kapu a rontott másolatra jelez."""
+        self.assertIn('**Hogyan idézd.** %s: *%s*' % (LG.SZERZO_NEV, LG.LEXIKON_CIM), self.lap)
+        self.assertIn(LG.kanonikus_cim('HAMART-001'), self.lap)
+        self.assertEqual(self.lap.count('**Hogyan idézd.**'), 1)
+        self.assertIn('**Hogyan hivatkozz:** az idézési forma a [Kolofon](#kolofon)', self.lap)
+        for nyers in ('<KANONIKUS_FORRAS_URL>', '[HELYŐRZŐ', '<DOI>', 'DOI: .'):
+            self.assertNotIn(nyers, self.lap)
+        import olvasoi_kapu as OK
+        rontott = self.lap.replace(LG.kanonikus_cim('HAMART-001'), '<KANONIKUS_FORRAS_URL>', 1)
+        regi = OK.KIVETEL_NELKUL
+        OK.KIVETEL_NELKUL = True
+        try:
+            self.assertTrue(OK.ell_helyorzo(OK.tagol(rontott)))
+            self.assertFalse(OK.ell_helyorzo(OK.tagol(self.lap)))
+        finally:
+            OK.KIVETEL_NELKUL = regi
+
     def test_modszertani_elvek_proza(self):
         self.assertNotIn('[A módszer Hays hét kritériumának tükrében](', self.lap)
         self.assertIn('**Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje', self.lap)

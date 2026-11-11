@@ -16,3 +16,15 @@
 - `ellenoriz.py`: 0 SÉRTÉS (27 RENDBEN). Olvasói kapu (HAMART-001): 0 BUKÁS.
 - `teszt_kesz_lap_hamart` 36/36 (az A02-teszt az új formára; új: a saját adat licence, a Módszertani elvek prózája), `teszt_hatastortenet` OK, `teszt_gyokerok_kapuk` OK, `teszt_olvasoi_kapu` 68/69 (az `Arany.G7` az alapvonalon is bukik).
 - A lexikon/ alatt csak a HAMART-001 lapja változott.
+
+## F182.68 — az idézés adatai, egy idézési forma, nyers helyőrző nélkül (a felhasználó döntései, 2026-11-11; DT-F182t)
+
+- **Szerző és cím:** „Demeter Tamás”, „Logosz Lexikon” (`SZERZO_NEV`, `LEXIKON_CIM`).
+- **Kanonikus cím:** egyetlen beállítás, `KANONIKUS_ALAP_URL` = https://logoszlexikon.hu; a szócikk állandó címe https://logoszlexikon.hu/HAMART-001, a kiadás változatcíme `…/HAMART-001/<kiadás>` (a kiadáskor). Üres beállításnál: „a lap állandó webcíme az első nyilvános megjelenéskor kerül ide”.
+- **DOI:** az adatban nincs (a `CITATION.cff` szerint a nyílt mag Zenodo-közlése után kerül be); a lapon: „a nyílt adatkészlet DOI-ja az első Zenodo-közléskor kerül ide” (`NYILT_ADAT_DOI` üres).
+- **Egy idézési forma:** a Kolofon „Hogyan idézd” bekezdése (Demeter Tamás: *Logosz Lexikon*, „<cím>” (<ID>), <kiadás>, <dátum>, <cím>); a 12. Irodalom „Hogyan hivatkozz” listája helyett mutató; a generálás dátuma a Kolofon táblájában (a státusz ott állt).
+- **A Kolofon hatókör-mondata** olvasói („motívumtábla” nélkül).
+- **Kapu:** olvasói kapu HELYORZO (BUKÁS, csak az új szerkezetű lapon): „<KANONIKUS_FORRAS_URL>”, „[HELYŐRZŐ…]”, „<DOI>”, üres „DOI: .”; teszt a rontott másolattal (`teszt_kesz_lap_hamart.test_idezes_egy_helyen_helyorzo_nelkul`); SEMA 3.11 újragenerálva.
+- **Jelzés (hiány):** a „Nyilatkozat a mesterséges intelligencia használatáról” a lapon relatív linkkel a közleményre mutat (`../kozlemeny/MI_NYILATKOZAT.md`); a szöveg nem a lap része, és a nyilvános webcíme még nincs eldöntve (a közlemények kanonikus címe a nyitóoldal-tétel része). A régi lapok és a nyílt mag, a CITATION.cff, a közlemények: nem változtak (külön tétel).
+
+Ellenőrzés: `ellenoriz.py` 0 SÉRTÉS; olvasói kapu 0 BUKÁS; nyílt mag kapu 0 BUKÁS; `teszt_kesz_lap_hamart` 37/37, `teszt_ellenoriz_35` OK, `teszt_gyokerok_kapuk` OK, `teszt_hatastortenet` OK, `teszt_olvasoi_kapu` 68/69 (az `Arany.G7` az alapvonalon is bukik).
