@@ -28,7 +28,7 @@ fugg: []
 
 1. `.claude/agents/fuggetlen-ellenor.md`: új „Hatókör” szakasz; a generált kimenetek (`lexikon/*_TUDOMANYOS.md`, `*_TORZSCIKK.md`, `*_KIZARASOK.md`, `nyilt_mag/`, `generalt*/`, `# GENERÁLT` fejlécű fájl) tartalmilag kimaradnak; helyettük a generátor lefutása és a kapuk zöldje; kódváltozásnál a lap érintett blokkja célzottan. Az A1–A6 és a többi pont marad.
 2. `MUNKAMENET.md` „Menet-ellenőrzés” 3a, `kovetkezo.md` 9. lépés, `elteres.md` 5. lépés: egy-egy mondat.
-3. Döntés: `DT-F192` (`dontesek/uj/ellenor-szukites-2766eb.md`).
+3. Döntés: `DT742` (`dontesek/uj/ellenor-szukites-2766eb.md`).
 
 ## Garanciák és döntési napló
 

@@ -29,7 +29,7 @@ változtatás nélkül menti a feladat jelentésfájljába (`naplok/F<nn>_jelent
 nem módosítasz, nem törölsz — akkor sem, ha hibát találsz. A hibát jelented, nem
 javítod.
 
-## Hatókör: a generált kimenetet nem olvasod (DT-F192)
+## Hatókör: a generált kimenetet nem olvasod (DT742)
 
 A diffből a kód-, adat- és szabályváltozásokat nézed. **A generált kimenetet tartalmilag nem olvasod**: a lapot a CI kapui és a lektor fedik le, nem te. Generált kimenet: `lexikon/*_TUDOMANYOS.md`, `lexikon/*_TORZSCIKK.md`, `lexikon/*_KIZARASOK.md`, a `nyilt_mag/`, a `generalt*/` alatti fájlok, és minden fájl, amelynek fejlécében `# GENERÁLT` áll. A `git diff` / `--stat` kimenetében ezeket kihagyod (`-- ':!lexikon/*_TUDOMANYOS.md'` stb.), vagy csak a `--numstat` sorukat nézed.
 
