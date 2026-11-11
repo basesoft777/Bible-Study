@@ -3857,8 +3857,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             # eredeti (héber) szám jelölésével; az olvasói réteg „A motívum helyein” sora eleve Károli-vers
             # (itt a `bek[2:]` még csak a kutatói tartalom; az olvasói réteg lent, külön épül)
             terkep = bdb_karoli_terkep(adat, strong)
-            if terkep:
-                bek[2:] = [karoli_szamozas(b, terkep) for b in bek[2:]]
+            kv = karoli_versek()
+            bek[2:] = [karoli_szamozas(b, terkep, kv) for b in bek[2:]]
     napl['elnyelt'] = ['%s → %s' % (' '.join(k), ' '.join(v)) for k, v in sorted(elnyelt.items())]
     if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban'] or napl['elnyelt']:
         reszek = []
@@ -3955,11 +3955,13 @@ def bdb_karoli_terkep(adat, strong):
     return ki
 
 
-def karoli_szamozas(szoveg, terkep):
-    """A szöveg hivatkozásai a `terkep` szerint Károli-számozással, az eredeti szám jelölésével (csak megjelenítés)."""
-    if not terkep:
-        return szoveg
-    ki, poz, konyv, fej, elozo_veg = [], 0, None, None, -10
+NINCS_KAROLI_JEL = ' *(a Károliban nincs ilyen vers: a szótár hivatkozása)*'
+
+
+def szotari_hivatkozasok(szoveg):
+    """[(match, könyv, fejezet, vers)] a szöveg hivatkozásai a könyv és a fejezet öröklésével (a BDB szokása: „5Móz 29:11, 13;
+    30:1”). Egy hely: a Károli-számozás (`karoli_szamozas`) és az `ellenoriz.py` 43. szabálya is ezt használja."""
+    ki, konyv, fej, elozo_veg = [], None, None, -10
     for m in _HIV_TOK.finditer(szoveg):
         if m.group('k'):
             konyv, fej, vers = m.group('k'), m.group('c'), m.group('v')
@@ -3974,8 +3976,40 @@ def karoli_szamozas(szoveg, terkep):
                 continue
             vers = m.group('v3')
         elozo_veg = m.end()
-        cel = terkep.get((konyv, fej, vers))
+        ki.append((m, konyv, fej, vers))
+    return ki
+
+
+_karoli_versek_cache = None
+
+
+def karoli_versek():
+    """{'versek': {„1Móz 3:17”, …}, 'konyvek': {…}} a Károli-szövegből (`konkordancia/Karoli_1908.tsv`)."""
+    global _karoli_versek_cache
+    if _karoli_versek_cache is None:
+        v = set()
+        with io.open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
+            for sor in f:
+                c = sor.split('\t', 1)[0]
+                if re.match(r'^\S+ \d+:\d+$', c):
+                    v.add(c)
+        _karoli_versek_cache = {'versek': v, 'konyvek': {x.rsplit(' ', 1)[0] for x in v}}
+    return _karoli_versek_cache
+
+
+def karoli_szamozas(szoveg, terkep, versek=None):
+    """A szöveg hivatkozásai a `terkep` szerint Károli-számozással, az eredeti szám jelölésével (csak megjelenítés). A
+    Károliban nem létező versre mutató hivatkozás (ha `versek` adott) átirányítás nélkül, gyenge jelöléssel áll
+    (orkesztrátori keret, 2026-11-11: hamis átirányítás nem kerülhet a lapra)."""
+    if not terkep and not versek:
+        return szoveg
+    ki, poz = [], 0
+    for m, konyv, fej, vers in szotari_hivatkozasok(szoveg):
+        cel = (terkep or {}).get((konyv, fej, vers))
         if not cel:
+            if (versek and konyv in versek['konyvek'] and '%s %s:%s' % (konyv, fej, vers) not in versek['versek']):
+                ki.append(szoveg[poz:m.end()] + NINCS_KAROLI_JEL)
+                poz = m.end()
             continue
         eredeti = '%s:%s' % (fej, vers)
         if m.group('k'):

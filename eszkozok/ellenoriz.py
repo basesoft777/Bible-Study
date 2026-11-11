@@ -2465,19 +2465,8 @@ def szotari_hivatkozas_hibak(lap, karoli_versek):
         return []
     t = re.sub(r'<!--.*?-->', '', m.group(0), flags=re.S)
     t = re.sub(r'\s\(héber számozás: [^)]*\)', '', t)
-    ki, konyv, fej, elozo_veg = [], None, None, -10
-    for h in LG._HIV_TOK.finditer(t):
-        if h.group('k'):
-            konyv, fej, vers = h.group('k'), h.group('c'), h.group('v')
-        elif h.group('c2'):
-            if konyv is None:
-                continue
-            fej, vers = h.group('c2'), h.group('v2')
-        else:
-            if konyv is None or fej is None or h.start() - elozo_veg != 2:
-                continue
-            vers = h.group('v3')
-        elozo_veg = h.end()
+    ki = []
+    for _m, konyv, fej, vers in LG.szotari_hivatkozasok(t):
         ig = '%s %s:%s' % (konyv, fej, vers)
         if konyv in karoli_versek['konyvek'] and ig not in karoli_versek['versek']:
             ki.append(ig)
