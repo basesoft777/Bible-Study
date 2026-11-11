@@ -11,8 +11,8 @@ kovetkezo: "Te: a draft PR áttekintése; a merge az orkesztrátoré, a HAMART-0
 munka: adat
 olvas: [CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/olvaso_szerver/bdb_szelet.py]
 ir: [F202_BDB_LANC_BRIEF.md, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_igehely_javitas.tsv, adat/bdb_vers_jelentes.tsv, adat/SEMA.md, naplok/F202_jelentes.md, NYITOTT_FELADATOK.md, dontesek/uj/epic-spence-e4ece9.md, nyitott/uj/epic-spence-e4ece9.md]
-fugg: [185, 197]
-nem_fugg: [182]
+fugg: [185]
+nem_fugg: [102, 104, 121, 122, 123, 133, 138, 182]
 ---
 
 # F202_BDB_LANC_BRIEF.md — A BDB-lánc javítása (C1, C2, C4, C5)
