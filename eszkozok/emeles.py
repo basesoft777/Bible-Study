@@ -48,6 +48,8 @@ import os
 import re
 import sys
 
+import forditas_vedelem as FV  # F182 (F31): érvényes fordítás nem fordul újra (az eszkozok/ modulja)
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 if hasattr(sys.stderr, 'reconfigure'):
@@ -730,6 +732,7 @@ def cmd_beir(args):
             regi = sorok[idx[k]].split('\t')
             if regi[FORDITASOK_FEJLEC.index('allapot')] == 'kezi' and not args.kezi_felulir:
                 raise SystemExit('vedett kezi sor: %s' % (k,))
+            FV.ellenoriz(regi, uj.split('\t'), FORDITASOK_FEJLEC, k)   # F182 (F31): ervenyes forditas nem fordul ujra
             sorok[idx[k]] = uj
             valtozott.add(idx[k])
         else:

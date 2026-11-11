@@ -53,6 +53,7 @@ import api_koteg as AK  # noqa: E402  (REST-hívó, kulcs: PARDES_API_KEY, tsv_o
 import bdb_api_koteg as B  # noqa: E402  (csak a tiszta segédek: koltseg, jsonl, modell_allapot, NAPLO/BATCH_FEJLEC)
 import emeles as E  # noqa: E402  (helyőrzők, terminológia, kötelező alakok, a forditasok.tsv fejléce)
 import forditas_kapuk as K  # noqa: E402  (a meglévő fordítási kapuk, módosítás nélkül)
+import forditas_vedelem as FV  # noqa: E402  (F182, F31: érvényes fordítás nem fordul újra)
 import glossza_lexikon_forditas as GLF  # noqa: E402  (a #121 feloldója és mankója)
 import olvasoi_kapu as OK  # noqa: E402  (az olvasói kapu tiltásai: BELSO, ANGOL_SZO, ANGOL_FUNKCIO)
 
@@ -747,6 +748,7 @@ def beir(jelzes_atnezve=False, felulir=False, forditasok_ut=None):
             regi = sorok[idx[k]].split('\t')
             if regi[i_all] == 'kezi':
                 raise SystemExit('védett kezi sor: %s' % (k,))
+            FV.ellenoriz(regi, sor.split('\t'), FEJLEC, k)      # F182 (F31): érvényes fordítás nem fordul újra
             if not felulir:
                 raise SystemExit('már van sor ehhez a kulcshoz (%s): csak --felulir-ral' % (k,))
             csere[idx[k]] = sor

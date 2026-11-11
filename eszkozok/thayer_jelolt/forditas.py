@@ -42,6 +42,7 @@ for _u in (ITT, ESZK):
         sys.path.insert(0, _u)
 import adatblokk  # noqa: E402
 import emeles as E  # noqa: E402
+import forditas_vedelem as FV  # noqa: E402  (F182, F31: érvényes fordítás nem fordul újra)
 import kulcs  # noqa: E402
 import szolista  # noqa: E402
 import thayer_bemenet as TB  # noqa: E402
@@ -228,6 +229,7 @@ def beir(strongok, allapot, datum=None, megjegyzes=None, regi_elavult=False, kez
             if k in idx:
                 if sorok[idx[k]].split('\t')[i_all] == 'kezi' and not kezi_felulir:
                     raise SystemExit('védett kezi sor: %s' % (k,))
+                FV.ellenoriz(sorok[idx[k]].split('\t'), uj.split('\t'), FEJLEC, k)   # F182 (F31)
                 sorok[idx[k]] = uj
                 valtozott.add(idx[k])
             else:

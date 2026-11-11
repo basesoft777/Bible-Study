@@ -2369,6 +2369,92 @@ def szabaly40_hamart_regresszio(adat_dir, lex_dir=None):
                megjegyzes='javítás: a forrás vagy a generátor, utána újragenerálás; kézi folt nincs')
 
 
+# 42. szabály (F182, F31 (b)): a lapon szereplő Strong érvényes fordítása (a `forditasok.tsv` nem `elavult` sora: a Thayer
+# szakaszsora `sz<n>`, a TBESG-glossza; a BDB-szakasz magyar szövege a 2.32-ből) a lapon is áll. A mérés: a fordítás első négy
+# egymást követő magyar szava (számjegy, héber és görög írás nélkül) a lap normalizált szövegében. Az új szerkezetű lapon
+# SÉRTÉS, a régin JELENTÉS (a lap a saját teljes folyamatában kapja meg).
+_FORD_SZO = re.compile(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2,}')
+
+
+def _ford_norm(t):
+    """A sz\u00f6veg csak bet\u0171s szavai kisbet\u0171vel, egy sz\u00f3k\u00f6zzel (a c\u00edmk\u00e9k, \u00edr\u00e1sjelek, sz\u00e1mok, h\u00e9ber \u00e9s g\u00f6r\u00f6g \u00edr\u00e1s n\u00e9lk\u00fcl)."""
+    t = re.sub(r'<[^>]+>', ' ', t or '')
+    return ' '.join(w.lower() for w in _FORD_SZO.findall(t))
+
+
+def _ford_proba(t):
+    """A szöveg elejének legfeljebb három betűs szava, a tagolási jel után, az első tagmondat-határig („:”, „;”) vagy az első
+    nem betűs szóig (szám, héber, görög): ennyit a lap a csukott vázlatsorban is mutat. None, ha nincs."""
+    futam = []
+    for w in re.split(r'\s+', (t or '').strip()):
+        if not futam and re.fullmatch(r'\(?(?:\d+|[a-zA-Z]|[IVX]+)[.)]?', w):
+            continue                                    # a tagolási jel („1”, „a.”, „II.”)
+        szavak = _FORD_SZO.findall(w)
+        if not szavak or re.search(r'[\d\u0590-\u05ff\u0370-\u03ff\u1f00-\u1fff]', w):
+            break
+        futam.extend(x.lower() for x in szavak)
+        if len(futam) >= 3 or w.endswith((':', ';')):
+            break
+    return ' '.join(futam[:3]) or None
+
+
+def lap_forditas_hianyok(adat_dir, mid, lap):
+    """[(strong, forrás, egység)] — a motívum Strongjainak érvényes fordítása, amely a lapon nem áll."""
+    _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    strongok = sorted({t for r in elo if r.get('id') == mid for t in (r.get('strong') or '').split('+') if t})
+    if not strongok:
+        return []
+    norm = ' %s ' % _ford_norm(lap)
+    ki = []
+    _, ford = G.tsv_beolvas(os.path.join(adat_dir, 'forditasok.tsv'))
+    halmaz = set(strongok) | {'G%d' % int(x[1:]) for x in strongok if x[:1] == 'G' and x[1:].isdigit()}
+    for r in ford:
+        st = r.get('strong') or ''
+        if st not in halmaz or r.get('allapot') == 'elavult' or not (r.get('forditas_hu') or '').strip():
+            continue
+        sz = r.get('szotar')
+        if sz == 'Thayer' and re.fullmatch(r'sz\d+', r.get('jelentes_szam') or '') and r.get('mezo') == 'forditas_hu':
+            egyseg = r['jelentes_szam']
+        elif sz == 'TBESG' and r.get('mezo') == 'glosszak_hu':
+            egyseg = 'glossza'
+        else:
+            continue
+        p = _ford_proba(r['forditas_hu'])
+        if p and (' %s ' % p) not in norm:
+            ki.append((st, sz, egyseg))
+    hu_ut = os.path.join(adat_dir, 'bdb_szakasz_hu.tsv')
+    if os.path.exists(hu_ut):
+        _, bdb = G.tsv_beolvas(hu_ut)
+        for r in bdb:
+            if (r.get('strong') in halmaz and (r.get('szoveg_hu') or '').strip() and r.get('kategoria') != 'elakad'
+                    and r.get('utvonal') != 'cim'):
+                p = _ford_proba(r['szoveg_hu'])
+                if p and (' %s ' % p) not in norm:
+                    ki.append((r['strong'], 'BDB', 'sorszám %s' % r['sorszam']))
+    return ki
+
+
+def szabaly42_forditas_a_lapon(adat_dir, lex_dir=None):
+    cim = '42. A lapon szereplő Strong érvényes fordítása a lapon is áll (F182, F31)'
+    lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    import lexikon_general as LG
+    sertes, jelentes = [], []
+    for nev in sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md')):
+        mid = nev[:-len('_TUDOMANYOS.md')]
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lap = f.read()
+        hiany = lap_forditas_hianyok(adat_dir, mid, lap)
+        if hiany:
+            uj = bool(LG.UJ_SZERKEZET_RX.search(lap))
+            sor = '%s%s: %d érvényes fordítás nem áll a lapon (pl. %s)' % (
+                mid, '' if uj else ' (2. kiadás)', len(hiany), ', '.join('%s %s %s' % h for h in hiany[:4]))
+            (sertes if uj else jelentes).append(sor)
+    return Sor(cim, _verdikt(sertes, jelentes), (len(sertes) or len(jelentes)) or None, sertes or jelentes,
+               megjegyzes='javítás: a bekötés a generátorban, utána újragenerálás')
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2494,6 +2580,7 @@ def main():
         tabla_sorok.append(szabaly39_hatar_frissesseg(args.adat))
         tabla_sorok.append(szabaly40_hamart_regresszio(args.adat))
         tabla_sorok.append(szabaly41_kozlemeny_szerkeszto(args.adat))
+        tabla_sorok.append(szabaly42_forditas_a_lapon(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
