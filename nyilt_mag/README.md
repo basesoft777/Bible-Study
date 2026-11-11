@@ -47,9 +47,13 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 359 |
+| `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
+| `sblgnt_apparatus.tsv` | 35 |
+| `visszhang_megfelelok.tsv` | 101 |
+| `visszhang_tanuk.tsv` | 6 |
+| `vitatott_forrasok.tsv` | 3 |
 
 ## Licence filtering
 
@@ -66,6 +70,14 @@ With the release, citation metadata (Citation File Format) and a statement on th
 ## English layer
 
 The column names and values of the package are Hungarian; English parallel columns stand next to them. **Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book code is standard, chapter and verse follow the versification of the Károli translation — where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. **Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); `jelentes_en` is separate, a dictionary excerpt.
+
+## Reception history (the echo layer)
+
+Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work, what they see in the passage; no quotation, one sentence in our own words), `vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an empty author denotes a gap row: no peer-reviewed source on the question was found in the databases searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament passages). Only rows verified by a second hand are included.
+
+**Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) is not in the package, only factual data and one sentence in our own words.
+
+**Credits.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com): the notes of `sblgnt_apparatus.tsv`. Sefaria, CC BY: the rabbinic witness (changes: filtering and conversion to Károli numbering). The Septuagint counterparts rest on the OpenScriptorium LXX-morph data (CC BY 4.0; the Rahlfs text is public domain). The metadata of the patristic witnesses come from the HistoricalChristianFaith collection (the collection’s public-domain dedication covers the compilation and the metadata; the quotation texts are not in the package). The text of the Targum (Sefaria edition), the Vulgate (Clementine) and the Glossa Ordinaria (Migne) is in the public domain.
 
 ## Group exclusion
 

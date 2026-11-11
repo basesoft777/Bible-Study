@@ -47,9 +47,13 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 359 |
+| `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
+| `sblgnt_apparatus.tsv` | 35 |
+| `visszhang_megfelelok.tsv` | 101 |
+| `visszhang_tanuk.tsv` | 6 |
+| `vitatott_forrasok.tsv` | 3 |
 
 ## Licencszűrés
 
@@ -66,6 +70,14 @@ A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges in
 ## Angol réteg
 
 A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.
+
+## Hatástörténet (visszhang-réteg)
+
+Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: `visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), `visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai apparátusa). Csak a második kéz által ellenőrzött sor szerepel bennük.
+
+**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és saját szavas egy mondat.
+
+**Forrásmegjelölés.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com): az `sblgnt_apparatus.tsv` jegyzetei. Sefaria, CC BY: a rabbinikus tanú (a változás: szűrés és Károli-átvezetés). A Septuaginta megfelelői az OpenScriptorium LXX-morph adatán alapulnak (CC BY 4.0; a Rahlfs-szöveg közkincs). Az egyházatyai tanúk metaadata a HistoricalChristianFaith-gyűjteményből való (a gyűjtemény közkincs-nyilatkozata a kompilációra és a metaadatra szól; az idézetszövegek nincsenek a csomagban). A Targum (Sefaria-kiadás), a Vulgata (Clementina) és a Glossa Ordinaria (Migne) szövege közkincs.
 
 ## Csoportos kizárás
 

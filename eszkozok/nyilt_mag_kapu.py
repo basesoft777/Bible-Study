@@ -38,6 +38,8 @@ Ellenőrzések (azonosító — súlyosság):
                  nyitva maradt zárójel (F182, F28)                                                           — BUKÁS
     OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
+    VISSZHANG    a hatástörténet-táblákban Chain Lineage-tanú / BDB-sor / nem jóváhagyott forrás, összefoglaló-szöveg,
+                 forrás-megnevezés vagy licenc nélküli sor (F197)                                            — BUKÁS
     ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
                  FIGYELMEZTETÉS (átnézés a következő kiadás előtt), 5% felett BUKÁS (a további átvétel a felhasználó
                  döntésével vagy ügyvédi vélemény után); a küszöbök óvatos mérnöki értékek, jogi alapjuk nincs
@@ -70,6 +72,7 @@ BUKAS, FIGY = K.BUKAS, K.FIGY
 
 KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv', 'kizaras_csoportok.tsv', 'kapcsolatok.tsv',
             'motivum_kapcsolatok.tsv', 'dontesnaplo.tsv', 'forrasok_es_licencek.tsv', 'kodkonyv.tsv', 'KODKONYV.md',
+            'visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'vitatott_forrasok.tsv', 'sblgnt_apparatus.tsv',
             'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256', 'KIADAS.txt',
             'README.md', 'KNOWN_ISSUES.md', 'RELEASE.txt',
             'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
@@ -86,9 +89,12 @@ def angol_oszlop(o):
     return o in ANGOL_OSZLOP or o.endswith('_en') or o.endswith('_osis')
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
 SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban', 'szerepe_a_csomagban_en'}
+# a hivatkozás-oszlopok (URL, DOI) a forrás saját alakjában állnak: a snake_case-minta nem vonatkozik rájuk (F197)
+URL_OSZLOP = {'forras_url', 'url', 'doi'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
-                          r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek)\.tsv'
+                          r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek|'
+                          r'visszhang_megfelelok|visszhang_tanuk|vitatott_forrasok|sblgnt_apparatus)\.tsv'
                           r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK|README|KNOWN_ISSUES)\.md|ELLENORZO_OSSZEG\.sha256')
 
 EXTRA_BELSO = [
@@ -170,7 +176,7 @@ def ell_belso(fajlok):
             m = rx.search(t)
             if m:
                 ki.append(Talalat('BELSO', BUKAS, rel, n, kor(t, m), '%s [%s]: %s' % (nev, o or 'szöveg', m.group(0))))
-        if rel.endswith('.tsv') and o and not (rel == 'forrasok_es_licencek.tsv' and o in SNAKE_KIVETEL):
+        if rel.endswith('.tsv') and o and o not in URL_OSZLOP and not (rel == 'forrasok_es_licencek.tsv' and o in SNAKE_KIVETEL):
             m = SNAKE.search(t)
             if m:
                 ki.append(Talalat('BELSO', BUKAS, rel, n, kor(t, m), 'belső azonosító (snake_case) [%s]: %s' % (
@@ -756,6 +762,38 @@ def ell_arany(fajlok):
     return ki
 
 
+# --- VISSZHANG (F197): a hatástörténet-táblák csak a jóváhagyott forrásokból állhatnak ----------------------------
+VISSZHANG_ENGEDETT = {
+    'visszhang_megfelelok.tsv': ('forras', {'targum', 'vulgata', 'lxx'}),
+    'visszhang_tanuk.tsv': ('forras', {'hcf', 'sefaria', 'glossa'}),
+}
+VISSZHANG_TILTOTT = re.compile(r'chain[ _-]?lineage|mblida|biblindex|blidstein', re.I)
+
+
+def ell_visszhang(fajlok):
+    """VISSZHANG: a Chain Lineage-tanú (nincs licence) és a BDB-sor nem szerepelhet a hatástörténet-táblákban; csak a
+    jóváhagyott `forras`-értékek állhatnak; a vitatott források táblájában nincs összefoglaló-szöveg; minden sor
+    forrás-megnevezést és licencet hordoz, a licenc nem lehet tisztázatlan."""
+    ki = []
+    for rel in ('visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'vitatott_forrasok.tsv', 'sblgnt_apparatus.tsv'):
+        fej, sorok = tsv_sorok(fajlok.get(rel, ''))
+        if 'osszefoglalo' in fej or 'osszefoglalo_en' in fej:
+            ki.append(Talalat('VISSZHANG', BUKAS, rel, 2, 'osszefoglalo', 'a vitatott források összefoglaló-szövege nincs a csomagban'))
+        for n, d in sorok:
+            for o in fej:
+                m = VISSZHANG_TILTOTT.search(d[o])
+                if m:
+                    ki.append(Talalat('VISSZHANG', BUKAS, rel, n, kor(d[o], m), 'licenc nélküli forrás (Chain Lineage) a csomagban'))
+            if rel in VISSZHANG_ENGEDETT:
+                o, ok = VISSZHANG_ENGEDETT[rel]
+                if d[o] not in ok:
+                    ki.append(Talalat('VISSZHANG', BUKAS, rel, n, d[o], 'nem jóváhagyott forrás-érték'))
+            if rel != 'vitatott_forrasok.tsv':
+                if not d.get('forras_megnevezes') or d.get('forras_licenc') in ('', 'tisztázatlan'):
+                    ki.append(Talalat('VISSZHANG', BUKAS, rel, n, '', 'a sorból hiányzik a forrás megnevezése vagy a licenc'))
+    return ki
+
+
 def mer(fajlok, kimenet=None, ujra=True):
     ki = []
     for rel in KOTELEZO:
@@ -765,7 +803,7 @@ def mer(fajlok, kimenet=None, ujra=True):
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
-              ell_szerkeszto, ell_lyuk):
+              ell_szerkeszto, ell_lyuk, ell_visszhang):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

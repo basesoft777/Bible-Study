@@ -116,6 +116,10 @@ ZART = {
     'kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa', 'forras_megnevezes'],
     'motivum_kapcsolatok.tsv': ['tipus', 'bizonyossag', 'pardes_szint', 'lekerdezes_tipusa', 'forras_megnevezes'],
     'forrasok_es_licencek.tsv': ['licenc', 'szerepe_a_csomagban', 'ok'],
+    'visszhang_megfelelok.tsv': ['forras', 'betoldas', 'forras_licenc'],
+    'visszhang_tanuk.tsv': ['hagyomany', 'forras', 'forras_licenc'],
+    'vitatott_forrasok.tsv': ['nyilt_eleres'],
+    'sblgnt_apparatus.tsv': ['forras_licenc'],
     'cc_by_sa_reteg/szemantikai_domenek.tsv': ['szotar'],
 }
 
@@ -171,6 +175,9 @@ SZABAD = {
     'kizarasok.tsv': ['indoklas', 'korabbi_minosites'],
     'beepitesi_dontesek.tsv': ['indoklas', 'korabbi_minosites'],
     'dontesnaplo.tsv': ['kerdes', 'dontes'],
+    'visszhang_megfelelok.tsv': ['jelentes', 'megjegyzes'],
+    'visszhang_tanuk.tsv': ['kapcsolat'],
+    'vitatott_forrasok.tsv': ['pont'],
 }
 SORKULCS = {
     'motivumok.tsv': ['motivum_azonosito'],
@@ -178,6 +185,9 @@ SORKULCS = {
     'kizarasok.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
     'beepitesi_dontesek.tsv': ['motivum_azonosito', 'igehely', 'cel_motivum', 'cel_igehely'],
     'dontesnaplo.tsv': ['dontes_azonosito'],
+    'visszhang_megfelelok.tsv': ['motivum_azonosito', 'strong', 'igehely', 'forras', 'alak'],
+    'visszhang_tanuk.tsv': ['motivum_azonosito', 'igehely', 'hagyomany', 'tanu', 'forras'],
+    'vitatott_forrasok.tsv': ['motivum_azonosito', 'pont'],
 }
 ANGOL_TABLA = 'adat/nyilt_angol.tsv'
 ANGOL_FEJ = ['tabla', 'oszlop', 'sorkulcs', 'forras_hash', 'forras_hu', 'angol', 'modell', 'datum']
@@ -1068,6 +1078,121 @@ def hogyan_olvasd_en(p):
             % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
 
 
+# --- a visszhang-réteg (hatástörténet) táblái (F197): a jóváhagyott források, forrásonként a licenccel. Csak a második
+# kéz által ellenőrzött sor kerül át (üres `ellenorzes`: nem exportálódik, mint a lapon sem). A Chain Lineage-tanú
+# nem kerül be (nincs licence; a felhasználó döntése, 2026-11-11), és a `bdb` megfelelő-sor sem (DT-F197a).
+VISSZHANG_FORRAS = {
+    'targum': ('Targum (Onkelos és Jonatán, Sefaria-kiadás)', 'Targum_PD'),
+    'vulgata': ('Vulgata (Clementina, 1598)', 'Vulgata_Clementina'),
+    'lxx': ('Septuaginta (Rahlfs; LXX-morph adat)', 'LXX_OS'),
+    'hcf': ('HistoricalChristianFaith-adatbázis (metaadat)', 'Tanu_atyak_index'),
+    'sefaria': ('Sefaria, CC BY (szűrés és Károli-átvezetés)', 'Tanu_rabbinikus_index'),
+    'glossa': ('Glossa Ordinaria (Migne, 1880; eBible latVUC)', 'Glossa_Ordinaria'),
+    'sblgnt': ('SBL Greek New Testament, apparátus (SBL és Logos, 2010)', 'SBLGNT_apparatus'),
+}
+VISSZHANG_MEGFELELO = ('targum', 'vulgata', 'lxx')
+VISSZHANG_TANU = ('hcf', 'sefaria', 'glossa')
+DATUM_RX = re.compile(r'\d{4}-\d{2}-\d{2}')
+
+
+MUNKAJEL_RX = re.compile(r'\s*\[(?:ellenőri|lemma megerősítve)[^\]]*\]')
+
+
+def megjegyzes_tisztit(t):
+    """A munkaközi ellenőri jelölések (`[ellenőri …]`, `[lemma megerősítve …]`) nem kerülnek a csomagba."""
+    return MUNKAJEL_RX.sub('', t or '').strip()
+
+
+def jelentes_tisztit(t):
+    """A „fordításra vár” jelölésű jelentés (a magyar szótári jelentés még hiányzik) üres marad: a hiány nem tölthető ki."""
+    return '' if 'fordításra vár' in (t or '') else t
+
+
+def tanu_hely_normal(t):
+    return '; '.join(igehely_normal(x.strip()) for x in (t or '').split(';') if x.strip())
+
+
+def visszhang_tablak(lic, elo):
+    """({fájl: (oszlopok, sorok)}, a használt datasetek halmaza)."""
+    ki, hasznalt = {}, set()
+
+    def forras(k):
+        nev, ds = VISSZHANG_FORRAS[k]
+        hasznalt.add(ds)
+        return nev, lic.cimke(ds)
+
+    # --- visszhang_megfelelok.tsv
+    _, mf = tsv('adat/visszhang_megfelelok.tsv')
+    fej = ['motivum_azonosito', 'strong', 'igehely', 'forras', 'alak', 'lemma', 'kiejtes', 'jelentes', 'betoldas',
+           'megjegyzes', 'forras_megnevezes', 'forras_licenc', 'datum']
+    sorok = []
+    for r in mf:
+        if r['forras'] not in VISSZHANG_MEGFELELO or not r['ellenorzes'].strip():
+            continue
+        nev, cim = forras(r['forras'])
+        p = prov_parse(r['proveniencia'])
+        d = DATUM_RX.search(p.get('ts', '') or r['ellenorzes'])
+        sorok.append({'motivum_azonosito': r['motivum'], 'strong': r['strong'], 'igehely': r['igehely'],
+                      'forras': r['forras'], 'alak': r['alak'], 'lemma': r['lemma'], 'kiejtes': r['kiejtes'],
+                      'jelentes': jelentes_tisztit(r['jelentes']), 'betoldas': r['betoldas'],
+                      'megjegyzes': megjegyzes_tisztit(r['megjegyzes']),
+                      'forras_megnevezes': nev, 'forras_licenc': cim, 'datum': d.group(0) if d else ''})
+    sorok.sort(key=lambda s: (s['motivum_azonosito'], s['strong'], s['igehely'], s['forras'], s['alak']))
+    ki['visszhang_megfelelok.tsv'] = (fej, sorok)
+
+    # --- visszhang_tanuk.tsv (idézet nincs; a saját szavas egy mondat a `kapcsolat`)
+    _, tk = tsv('adat/visszhang_tanuk.tsv')
+    fej = ['motivum_azonosito', 'igehely', 'tanu_hely', 'hagyomany', 'tanu', 'mu', 'kor', 'kapcsolat', 'forras',
+           'forras_url', 'forras_megnevezes', 'forras_licenc', 'datum']
+    sorok = []
+    for r in tk:
+        if r['forras'] not in VISSZHANG_TANU or not r['ellenorzes'].strip():
+            continue
+        nev, cim = forras(r['forras'])
+        url = '' if 'github.com' in r['forras_url'] else r['forras_url']
+        sorok.append({'motivum_azonosito': r['motivum'], 'igehely': r['igehely'],
+                      'tanu_hely': tanu_hely_normal(r['tanu_hely']), 'hagyomany': r['hagyomany'], 'tanu': r['tanu'],
+                      'mu': r['mu'], 'kor': r['kor'], 'kapcsolat': r['kapcsolat'], 'forras': r['forras'],
+                      'forras_url': url, 'forras_megnevezes': nev, 'forras_licenc': cim, 'datum': r['lekerdezve']})
+    sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], s['hagyomany'], s['tanu'], s['forras']))
+    ki['visszhang_tanuk.tsv'] = (fej, sorok)
+
+    # --- vitatott_forrasok.tsv: csak a bibliográfiai adat (az `osszefoglalo` nincs, DT-F197b); a hiány-sor
+    # (üres szerző) kimondott hiány: ehhez a ponthoz nincs a kérdésről szóló lektorált forrás
+    _, vt = tsv('adat/vitatott_forrasok.tsv')
+    fej = ['motivum_azonosito', 'pont', 'szerzo', 'cim', 'megjelenes', 'ev', 'doi', 'url', 'nyilt_eleres', 'datum']
+    sorok = []
+    for r in vt:
+        if not r['ellenorzes'].strip():
+            continue
+        sorok.append({'motivum_azonosito': r['motivum'], 'pont': r['pont'], 'szerzo': r['szerzo'], 'cim': r['cim'],
+                      'megjelenes': r['megjelenes'], 'ev': r['ev'], 'doi': r['doi'], 'url': r['url'],
+                      'nyilt_eleres': r['nyilt_eleres'], 'datum': r['lekerdezve']})
+    sorok.sort(key=lambda s: (s['motivum_azonosito'], s['pont']))
+    ki['vitatott_forrasok.tsv'] = (fej, sorok)
+
+    # --- sblgnt_apparatus.tsv: az apparátus-jegyzetek a motívumok igehelyeire (a forrás saját fejezet:vers számozása)
+    _, ap = tsv('konkordancia/SBLGNT_apparatus.tsv')
+    jegyzetek = {}
+    for a in ap:
+        jegyzetek.setdefault(a['igehely'], []).append(a)
+    nev, cim = VISSZHANG_FORRAS['sblgnt'][0], lic.cimke('SBLGNT_apparatus')
+    fej = ['motivum_azonosito', 'igehely', 'sorszam', 'jegyzet', 'forras_megnevezes', 'forras_licenc']
+    sorok, latott = [], set()
+    for e in elo:
+        for a in jegyzetek.get(e['igehely'], []):
+            k = (e['id'], a['igehely'], a['sorszam'])
+            if k in latott:
+                continue
+            latott.add(k)
+            hasznalt.add('SBLGNT_apparatus')
+            sorok.append({'motivum_azonosito': e['id'], 'igehely': a['igehely'], 'sorszam': a['sorszam'],
+                          'jegyzet': a['jegyzet'], 'forras_megnevezes': nev, 'forras_licenc': cim})
+    sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], int(s['sorszam'])))
+    ki['sblgnt_apparatus.tsv'] = (fej, sorok)
+    return ki, hasznalt
+
+
 def export(kimenet):
     global _ANGOL
     _ANGOL = None
@@ -1264,8 +1389,14 @@ def export(kimenet):
     fajlok['dontesnaplo.tsv'] = oszlop_tsv(fej, sorok, 'dontesnaplo.tsv')
     stat['dontesnaplo.tsv'] = len(sorok)
 
+    # --- a visszhang-réteg táblái (F197)
+    vtablak, vhasznalt = visszhang_tablak(lic, elo)
+    for rel, (vfej, vsorok) in vtablak.items():
+        fajlok[rel] = oszlop_tsv(vfej, vsorok, rel)
+        stat[rel] = len(vsorok)
+
     # --- forrasok_es_licencek.tsv
-    hasznalt = set()
+    hasznalt = set(vhasznalt)
     for e in elo:
         p = prov_parse(e['proveniencia'])
         hasznalt.update(forras_fordit(p.get('forras', ''), lic)[1])
@@ -1401,6 +1532,24 @@ def export(kimenet):
           'modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a '
           'Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House '
           'Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.', '',
+          '## Hatástörténet (visszhang-réteg)', '',
+          'Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: '
+          '`visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), '
+          '`visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; '
+          'idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: '
+          'csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem '
+          'került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai '
+          'apparátusa). Csak a második kéz által ellenőrzött sor szerepel bennük.', '',
+          '**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi '
+          'sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és '
+          'saját szavas egy mondat.', '',
+          '**Forrásmegjelölés.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos '
+          'Bible Software, CC BY 4.0 (https://sblgnt.com): az `sblgnt_apparatus.tsv` jegyzetei. Sefaria, CC BY: a '
+          'rabbinikus tanú (a változás: szűrés és Károli-átvezetés). A Septuaginta megfelelői az OpenScriptorium '
+          'LXX-morph adatán alapulnak (CC BY 4.0; a Rahlfs-szöveg közkincs). Az egyházatyai tanúk metaadata a '
+          'HistoricalChristianFaith-gyűjteményből való (a gyűjtemény közkincs-nyilatkozata a kompilációra és a '
+          'metaadatra szól; az idézetszövegek nincsenek a csomagban). A Targum (Sefaria-kiadás), a Vulgata '
+          '(Clementina) és a Glossa Ordinaria (Migne) szövege közkincs.', '',
           '## Csoportos kizárás', '',
           'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
           'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
@@ -1466,6 +1615,26 @@ def export(kimenet):
            '**Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the '
            'Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); '
            '`jelentes_en` is separate, a dictionary excerpt.', '',
+           '## Reception history (the echo layer)', '',
+           'Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for '
+           'each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate '
+           'and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in '
+           'which work, what they see in the passage; no quotation, one sentence in our own words), '
+           '`vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an '
+           'empty author denotes a gap row: no peer-reviewed source on the question was found in the databases '
+           'searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament '
+           'passages). Only rows verified by a second hand are included.', '',
+           '**Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the '
+           'cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) '
+           'is not in the package, only factual data and one sentence in our own words.', '',
+           '**Credits.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible '
+           'Software, CC BY 4.0 (https://sblgnt.com): the notes of `sblgnt_apparatus.tsv`. Sefaria, CC BY: the rabbinic '
+           'witness (changes: filtering and conversion to Károli numbering). The Septuagint counterparts rest on the '
+           'OpenScriptorium LXX-morph data (CC BY 4.0; the Rahlfs text is public domain). The metadata of the '
+           'patristic witnesses come from the HistoricalChristianFaith collection (the collection’s public-domain '
+           'dedication covers the compilation and the metadata; the quotation texts are not in the package). The '
+           'text of the Targum (Sefaria edition), the Vulgate (Clementine) and the Glossa Ordinaria (Migne) is in '
+           'the public domain.', '',
            '## Group exclusion', '',
            'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
            'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '

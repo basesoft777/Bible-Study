@@ -1,0 +1,1 @@
+- N-F197a: a `bdb` megfelelő-sorok (31 ellenőrzött sor) nem kerültek a nyílt magba, mert a jóváhagyott lista nem nevezi őket; a BDB közkincs (`BDB_rokon_irasok`), felvételük a #688 (BDB-tanú) beolvasztása után külön döntés (DT-F197a).

@@ -1391,3 +1391,454 @@ Az előző oszlop (tema) szövegének angol párja: **gépi fordítás**, a sor 
 
 *English counterpart of the text in the preceding column (tema): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
+
+## sblgnt_apparatus.tsv
+
+
+### `forras_licenc`
+
+A forrás-adatkészlet licence.
+
+*The licence of the source dataset.*
+
+- `forras_licenc` = `CC BY 4.0` (en: `CC BY 4.0`): Creative Commons Nevezd meg! 4.0 (a forrást meg kell nevezni) / Creative Commons Attribution 4.0 (the source must be credited)
+
+### `forras_licenc_en`
+
+Az előző oszlop (forras_licenc) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (forras_licenc), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `forras_megnevezes`
+
+A forrás olvasói neve, a kötelező megjelöléssel: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (sblgnt.com).
+
+*The reader-facing name of the source, with the required credit: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (sblgnt.com).*
+
+
+### `igehely`
+
+Az igehely, amelyhez az apparátus-jegyzet tartozik: magyar könyvrövidítés és a forrás saját fejezet:vers számozása (nem Károli-átszámozás).
+
+*The passage the apparatus note belongs to: Hungarian book abbreviation and the source’s own chapter:verse numbering (not a Károli renumbering).*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-fordítás versszámozása; ahol ez eltér a KJV- vagy a STEPBible-számozástól, az OSIS-kulcs a Károli-verset jelöli.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the versification of the Károli translation; where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse.*
+
+
+### `jegyzet`
+
+Az SBLGNT kritikai apparátusának jegyzete szó szerint a forrásból (az SBLGNT alapszövege nincs a csomagban).
+
+*A note of the critical apparatus of the SBLGNT, verbatim from the source (the SBLGNT base text is not in the package).*
+
+
+### `motivum_azonosito`
+
+A motívum azonosítója, amelyhez a sor tartozik.
+
+*The identifier of the motif the row belongs to.*
+
+
+### `sorszam`
+
+A jegyzet sorszáma a vers alatt.
+
+*The running number of the note under the verse.*
+
+
+## visszhang_megfelelok.tsv
+
+
+### `alak`
+
+A fordításbeli megfelelő a versben, szó szerint (arámi, latin vagy görög); üres, ha a fordítás a szónak nem ad megfelelőt, vagy a megfelelő nem állapítható meg egyértelműen (a hiányt a sor nem tölti ki).
+
+*The counterpart in the translation, verbatim (Aramaic, Latin or Greek); empty if the translation gives the word no counterpart or none can be identified unambiguously (the gap is not filled in).*
+
+
+### `betoldas`
+
+A fordítás a lánc szavát olyan láncversbe teszi-e, ahol a héber szövegben nincs (betoldás).
+
+*Whether the translation puts the chain word into a chain verse where the Hebrew text has none (insertion).*
+
+- `betoldas` = `igen` (en: `yes`): igen / yes
+- `betoldas` = `nem` (en: `no`): nem / no
+
+### `betoldas_en`
+
+Az előző oszlop (betoldas) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (betoldas), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `datum`
+
+A rögzítés vagy a lekérdezés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.
+
+*The date of recording or of the query (YYYY-MM-DD); empty when not recorded.*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
+### `forras`
+
+A megfelelő forrása: az ókori fordítás.
+
+*The source of the counterpart: the ancient translation.*
+
+- `forras` = `lxx` (en: `Septuagint`): a görög Septuaginta (Rahlfs-szöveg) / the Greek Septuagint (Rahlfs text)
+- `forras` = `targum` (en: `Targum`): az arámi Targum (Onkelos a Tórához, Jonatán a Prófétákhoz) / the Aramaic Targum (Onkelos on the Torah, Jonathan on the Prophets)
+- `forras` = `vulgata` (en: `Vulgate`): a latin Vulgata (Clementina, 1598) / the Latin Vulgate (Clementine, 1598)
+
+### `forras_en`
+
+Az előző oszlop (forras) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (forras), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `forras_licenc`
+
+A forrás-adatkészlet licence.
+
+*The licence of the source dataset.*
+
+- `forras_licenc` = `CC BY 4.0` (en: `CC BY 4.0`): Creative Commons Nevezd meg! 4.0 (a forrást meg kell nevezni) / Creative Commons Attribution 4.0 (the source must be credited)
+- `forras_licenc` = `közkincs` (en: `public domain`): közkincs (a mű kora vagy a forrás nyilatkozata miatt) / public domain (by the age of the work or the source’s declaration)
+
+### `forras_licenc_en`
+
+Az előző oszlop (forras_licenc) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (forras_licenc), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `forras_megnevezes`
+
+A forrás olvasói neve (a licenc megnevezésével, ahol a licenc ezt kéri).
+
+*The reader-facing name of the source (including the licence credit where the licence asks for it).*
+
+
+### `igehely`
+
+A láncvers, Károli-számozással.
+
+*The chain verse, in Károli numbering.*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-fordítás versszámozása; ahol ez eltér a KJV- vagy a STEPBible-számozástól, az OSIS-kulcs a Károli-verset jelöli.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the versification of the Károli translation; where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse.*
+
+
+### `jelentes`
+
+A megfelelő rövid magyar jelentése.
+
+*A short Hungarian meaning of the counterpart.*
+
+
+### `jelentes_en`
+
+Az előző oszlop (jelentes) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik; ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt.
+
+*The English counterpart of the text of the preceding column (jelentes): **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text; if the Hungarian text changed, the cell is empty and `forditas_modja` states the gap.*
+
+
+### `kiejtes`
+
+Magyaros kiejtés, ahol van (arámi és görög szónál gépi átírás); egyébként üres.
+
+*A Hungarian-style pronunciation where available (machine transliteration for Aramaic and Greek words); otherwise empty.*
+
+
+### `lemma`
+
+A megfelelő szótári alakja.
+
+*The dictionary form of the counterpart.*
+
+
+### `megjegyzes`
+
+Legfeljebb egy mondat a sorhoz (mit állít a sor, mire kell vigyázni); üres, ha nincs.
+
+*At most one sentence on the row (what it claims, what to watch for); empty if none.*
+
+
+### `megjegyzes_en`
+
+Az előző oszlop (megjegyzes) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik; ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt.
+
+*The English counterpart of the text of the preceding column (megjegyzes): **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text; if the Hungarian text changed, the cell is empty and `forditas_modja` states the gap.*
+
+
+### `motivum_azonosito`
+
+A motívum azonosítója, amelyhez a sor tartozik.
+
+*The identifier of the motif the row belongs to.*
+
+
+### `strong`
+
+A héber lánc-szó Strong-száma; a betoldás-soroknál a betoldott szóé.
+
+*The Strong number of the Hebrew chain word; for insertion rows, of the inserted word.*
+
+
+## visszhang_tanuk.tsv
+
+
+### `datum`
+
+A rögzítés vagy a lekérdezés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.
+
+*The date of recording or of the query (YYYY-MM-DD); empty when not recorded.*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
+### `forras`
+
+A tanú adatának forrása.
+
+*The source of the witness data.*
+
+- `forras` = `glossa` (en: `Glossa Ordinaria`): a Glossa Ordinaria jegyzete (Migne, 1880) / a note of the Glossa Ordinaria (Migne, 1880)
+- `forras` = `hcf` (en: `HCF database`): a HistoricalChristianFaith-adatbázis metaadata (szerző, mű, kor) és a helyi szöveg olvasása / the metadata of the HistoricalChristianFaith database (author, work, date) and the reading of the passage
+- `forras` = `sefaria` (en: `Sefaria`): a Sefaria szövege és adatbázisa (rabbinikus tanú) / the Sefaria text and database (rabbinic witness)
+
+### `forras_en`
+
+Az előző oszlop (forras) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (forras), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `forras_licenc`
+
+A forrás-adatkészlet licence.
+
+*The licence of the source dataset.*
+
+- `forras_licenc` = `CC BY 4.0` (en: `CC BY 4.0`): Creative Commons Nevezd meg! 4.0 (a forrást meg kell nevezni) / Creative Commons Attribution 4.0 (the source must be credited)
+- `forras_licenc` = `közkincs` (en: `public domain`): közkincs (a mű kora vagy a forrás nyilatkozata miatt) / public domain (by the age of the work or the source’s declaration)
+
+### `forras_licenc_en`
+
+Az előző oszlop (forras_licenc) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (forras_licenc), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `forras_megnevezes`
+
+A forrás olvasói neve (a licenc megnevezésével, ahol a licenc ezt kéri).
+
+*The reader-facing name of the source (including the licence credit where the licence asks for it).*
+
+
+### `forras_url`
+
+A forrás nyilvános helye; üres, ha csak az adatbázis megnevezése áll.
+
+*The public location of the source; empty if only the database is named.*
+
+
+### `hagyomany`
+
+A tanú hagyománya (nyelve).
+
+*The tradition (language) of the witness.*
+
+- `hagyomany` = `gorog` (en: `Greek`): görög nyelvű egyházi hagyomány / Greek-language church tradition
+- `hagyomany` = `latin` (en: `Latin`): latin nyelvű egyházi hagyomány / Latin-language church tradition
+- `hagyomany` = `rabbinikus` (en: `rabbinic`): rabbinikus hagyomány / rabbinic tradition
+- `hagyomany` = `szir` (en: `Syriac`): szír nyelvű egyházi hagyomány / Syriac-language church tradition
+
+### `hagyomany_en`
+
+Az előző oszlop (hagyomany) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (hagyomany), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `igehely`
+
+A motívum helye (Károli-számozással), amelyhez a tanú tartozik.
+
+*The passage of the motif (Károli numbering) the witness belongs to.*
+
+
+### `igehely_osis`
+
+Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-fordítás versszámozása; ahol ez eltér a KJV- vagy a STEPBible-számozástól, az OSIS-kulcs a Károli-verset jelöli.
+
+*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the versification of the Károli translation; where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse.*
+
+
+### `kapcsolat`
+
+Egy mondat, saját szavakkal, idézet nélkül: mit lát a tanú a helyen. A nyers szöveg (idézet) nincs a csomagban.
+
+*One sentence in our own words, without quotation: what the witness sees in the passage. No source text (quotation) is in the package.*
+
+
+### `kapcsolat_en`
+
+Az előző oszlop (kapcsolat) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik; ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt.
+
+*The English counterpart of the text of the preceding column (kapcsolat): **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text; if the Hungarian text changed, the cell is empty and `forditas_modja` states the gap.*
+
+
+### `kor`
+
+A forrás szerinti kor (N. sz.); a forrás nélkül üres.
+
+*The date given by the source (century); empty without a source.*
+
+
+### `motivum_azonosito`
+
+A motívum azonosítója, amelyhez a sor tartozik.
+
+*The identifier of the motif the row belongs to.*
+
+
+### `mu`
+
+A mű címe a forrás alakjában.
+
+*The title of the work in the form of the source.*
+
+
+### `tanu`
+
+A tanú: a szerző (magyar névalakkal, ahol van) vagy a rabbinikus mű.
+
+*The witness: the author (with a Hungarian name form where one exists) or the rabbinic work.*
+
+
+### `tanu_hely`
+
+Ahol a tanú a kapcsolatot teszi: a tárgyalt vers(ek), Károli-számozással, `; `-vel.
+
+*Where the witness makes the connection: the verse(s) discussed, in Károli numbering, separated by `; `.*
+
+
+## vitatott_forrasok.tsv
+
+
+### `cim`
+
+A forrás címe.
+
+*The title of the source.*
+
+
+### `datum`
+
+A rögzítés vagy a lekérdezés napja (ÉÉÉÉ-HH-NN); üres, ha nincs rögzítve.
+
+*The date of recording or of the query (YYYY-MM-DD); empty when not recorded.*
+
+
+### `doi`
+
+A forrás DOI-ja, ahol van.
+
+*The DOI of the source, where there is one.*
+
+
+### `ev`
+
+A megjelenés éve.
+
+*The year of publication.*
+
+
+### `forditas_modja`
+
+A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
+
+*How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
+### `megjelenes`
+
+A megjelenés helye (folyóirat vagy kötet, kiadó, oldalszám).
+
+*Where it appeared (journal or volume, publisher, pages).*
+
+
+### `motivum_azonosito`
+
+A motívum azonosítója, amelyhez a sor tartozik.
+
+*The identifier of the motif the row belongs to.*
+
+
+### `nyilt_eleres`
+
+Nyílt hozzáférésű-e a forrás (az adatbázis jelzése szerint).
+
+*Whether the source is open access (as flagged by the database).*
+
+- `nyilt_eleres` = `igen` (en: `yes`): igen / yes
+- `nyilt_eleres` = `nem` (en: `no`): nem / no
+
+### `nyilt_eleres_en`
+
+Az előző oszlop (nyilt_eleres) értékének rövid angol címkéje a kódkönyvből (szerkesztett címke, nem gépi fordítás).
+
+*Short English label of the value in the preceding column (nyilt_eleres), taken from the codebook (an edited label, not a machine translation).*
+
+
+### `pont`
+
+A motívum vitatott pontja (a lap „Vitatott pontok” részének címe).
+
+*The disputed point of the motif (the heading in the “Disputed points” part of the page).*
+
+
+### `pont_en`
+
+Az előző oszlop (pont) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik; ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt.
+
+*The English counterpart of the text of the preceding column (pont): **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text; if the Hungarian text changed, the cell is empty and `forditas_modja` states the gap.*
+
+
+### `szerzo`
+
+A lektorált forrás szerzője; **üres: hiány-sor**, ehhez a ponthoz a kérdésről szóló lektorált forrás a vizsgált adatbázisokban nem került elő.
+
+*The author of the peer-reviewed source; **empty: a gap row**, no peer-reviewed source on the question was found in the databases searched for this point.*
+
+
+### `url`
+
+A forrás hivatkozása.
+
+*The link to the source.*
+
