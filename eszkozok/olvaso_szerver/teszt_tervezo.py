@@ -363,7 +363,7 @@ class TestSzinkron(unittest.TestCase):
 
     def test_alap_nelkul(self):
         ki = self.sz.tokens_json(self.a, self.r, self.css, None, '2026-10-15', 'teszt@0')
-        self.assertEqual(list(ki), ['version', 'color', 'type', 'spacing', 'radius', 'name', 'meta'])
+        self.assertEqual(list(ki), ['version', 'color', 'type', 'spacing', 'radius', 'shadow', 'name', 'meta'])
         self.assertEqual({t['name']: t['value'] for t in ki['color']['tokens']}, self.a.adat['szin'])
         st = self.stilusok(ki)
         self.assertEqual(set(st), set(self.a.adat['betumeret']))
@@ -408,6 +408,39 @@ class TestSzinkron(unittest.TestCase):
         self.assertEqual(ki['meta']['paths']['fonts'], ['f/'])
         self.assertEqual(ki['meta']['repo'], 'basesoft777/Bible-Study')
 
+
+    def test_arnyek_tokenek(self):
+        """F195: az --arnyek-et keverő box-shadow értékek a shadow családba kerülnek, témánként rgba()-val, azonos érték egyszer."""
+        ki = self.sz.tokens_json(self.a, self.r, self.css, None, '2026-10-15', 'teszt@0')
+        arny = {t['name']: t for t in ki['shadow']['tokens']}
+        self.assertIn('arnyek-reszletek', arny)
+        self.assertEqual(arny['arnyek-reszletek']['value']['light'], '0 -10px 30px rgba(0, 0, 0, 0.2)')
+        self.assertEqual(len({(t['value']['light']) for t in ki['shadow']['tokens']}), len(ki['shadow']['tokens']))
+        mini = '.a { box-shadow: 0 1px 2px color-mix(in srgb, var(--arnyek) 15%, transparent); } .b, .c { box-shadow: 0 1px 2px color-mix(in srgb, var(--arnyek) 15%, transparent); }'
+        t = self.sz.arnyek_tokenek(mini, {'szin': {'arnyek': {'light': '#102030', 'dark': '#fff'}}})
+        self.assertEqual([x['name'] for x in t], ['arnyek-a'])
+        self.assertEqual(t[0]['value'], {'light': '0 1px 2px rgba(16, 32, 48, 0.15)', 'dark': '0 1px 2px rgba(255, 255, 255, 0.15)'})
+        self.assertIn('.b, .c', t[0]['usage'])
+
+    def test_tokens_css_es_bundle_css(self):
+        """F195: a tokens.css a típus szerkezetében (első sor, téma-blokkok, stílusosztály, @font-face); a bundle.css a nem-szín változókkal és a stíluslappal."""
+        ki = self.sz.tokens_json(self.a, self.r, self.css, None, '2026-10-15', 'teszt@0')
+        ki['type']['fonts'] = [{'family': 'X', 'file': 'x.woff2', 'weight': '400', 'style': 'normal'}]
+        tc = self.sz.tokens_css(ki)
+        self.assertTrue(tc.startswith('/* PaRDeS olvasó — generated from tokens.json */\n:root, [data-theme="light"] {'))
+        self.assertIn('[data-theme="dark"] {', tc)
+        self.assertIn('  --g-tor: %s;' % self.a.adat['szin']['g-tor']['dark'], tc)
+        self.assertIn('--arnyek-reszletek: 0 -10px 30px rgba(0, 0, 0, 0.2);', tc)
+        self.assertIn('--space-fejlec-sor: %s;' % self.a.adat['terkoz']['fejlec-sor'], tc)
+        self.assertIn('.karoli-folyo {\n  font-family: var(--font-text);\n  font-size: 1.25rem;', tc)
+        self.assertIn('src: url("fonts/x.woff2") format("woff2");', tc)
+        bc = self.sz.bundle_css(self.a, self.css, 'teszt@0')
+        self.assertTrue(bc.endswith(self.css))
+        self.assertIn('  --fs-karoli-folyo: 1.25rem;\n', bc)
+        self.assertIn('  --space-fejlec-sor: %s;\n' % self.a.adat['terkoz']['fejlec-sor'], bc)
+        elotag = bc[:len(bc) - len(self.css)]
+        self.assertNotIn('--accent:', elotag)
+        self.assertNotIn('--font-', elotag.split(':root {', 1)[1])
 
 # =====================================================================================================================
 # a végpont, a lapok és a kiadások

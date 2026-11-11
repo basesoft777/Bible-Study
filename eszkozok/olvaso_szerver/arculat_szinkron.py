@@ -12,9 +12,17 @@ tedd (`--kimenet`).
   pl. az `oldalcim` 600, M0 5. szakasz 2.).
 - `--alap` nélkül a betűstílusok betűcsaládonként csoportosulnak; `--alap`-pal a design system csoportjai maradnak (a
   stílusok értéke frissül), a többi betűméret-token egy új csoportba kerül („Szerver: további stílusok”).
-- A design system térköz-skálája (`space-1` … `space-6`) helyére a szerver térköz-tokenjei kerülnek (DT-F98b).
+- A design system térköz-skálája (`space-1` … `space-6`) helyére a szerver térköz-tokenjei kerülnek (DT154).
+- Árnyék (F195): a stíluslap `box-shadow` értékei, amelyek az `--arnyek` színt keverik (`color-mix(… var(--arnyek) N%,
+  transparent)`), a design system `shadow` családjába kerülnek, témánként `rgba()` értékkel; a név `arnyek-` + a szabály
+  első osztályneve, azonos érték csak egyszer.
+- `--tokens-css` (F195): a design system `tokens.css`-e a kiírt `tokens.json`-ból, a típus „tokens.css as compiled” szerkezetében
+  (első sora `/* <név> — generated from tokens.json */`, így a lap a későbbi mentéskor átveszi).
+- `--bundle-css` (F195): a design system `components/bundle.css`-e: a szerver token-blokkjának nem szín- és nem betűcsalád-
+  változói (`--fs-*`, `--lh-*`, `--space-*`, `--radius-*`), utánuk a mai `statikus/olvaso.css` változtatás nélkül.
 
 Használat:  python arculat_szinkron.py --kimenet <tokens.json> [--alap <a design system mostani tokens.json-ja>] [--datum ÉÉÉÉ-HH-NN]
+                [--tokens-css <tokens.css>] [--bundle-css <bundle.css>]
 """
 import argparse
 import datetime
@@ -137,7 +145,7 @@ def tokens_json(arc, regiszter, css, alap=None, datum=None, ref=None):
     maradek = sorted(k for k in adat['betumeret'] if k not in lefedett)
     if alap.get('type'):
         if maradek:
-            csoportok.append({'name': UJ_CSOPORT, 'family': 'ui', 'note': 'A szerver szerep szerinti betűméret-tokenjei (DT-F98a), amelyeknek a design systemben még nincs stílusa.',
+            csoportok.append({'name': UJ_CSOPORT, 'family': 'ui', 'note': 'A szerver szerep szerinti betűméret-tokenjei (DT153), amelyeknek a design systemben még nincs stílusa.',
                               'styles': [stilus(k, csoport_csalad='ui') for k in maradek]})
     else:
         for csalad, nev in CSALAD_CSOPORT:
@@ -152,6 +160,8 @@ def tokens_json(arc, regiszter, css, alap=None, datum=None, ref=None):
     rad_sor += sorted(('radius-' + k for k in adat['lekerekites'] if 'radius-' + k not in rad_sor), key=lambda n: float(adat['lekerekites'][n[7:]][:-2]))
     sugar = [{'name': n, 'value': adat['lekerekites'][n[7:]], 'usage': _leiras(n, alap_rad.get(n, {}).get('usage'), hasz)} for n in rad_sor]
 
+    arnyek = arnyek_tokenek(css, adat)
+
     meta = dict(alap.get('meta') or {})
     meta.update({'source': 'github', 'repo': REPO, 'ref': ref or git_ref(), 'package': CSOMAG,
                  'synced': datum or datetime.date.today().isoformat(), 'arculat_hash': arc.hash,
@@ -164,12 +174,113 @@ def tokens_json(arc, regiszter, css, alap=None, datum=None, ref=None):
         'version': 1,
         'color': {'themes': temak, 'tokens': szinek},
         'type': {'fonts': (alap.get('type') or {}).get('fonts', []), 'families': dict(adat['betucsalad']), 'groups': csoportok},
-        'spacing': {'note': 'A szerver térköz-tokenjei (konfig/arculat.json, terkoz): csak a regiszterben kitett térközök (DT-F98b); a többi térköz literál.',
+        'spacing': {'note': 'A szerver térköz-tokenjei (konfig/arculat.json, terkoz): csak a regiszterben kitett térközök (DT154); a többi térköz literál.',
                     'tokens': terkoz},
         'radius': {'note': (alap.get('radius') or {}).get('note', ''), 'tokens': sugar},
+        'shadow': {'note': 'A felugró elemek árnyéka (statikus/olvaso.css, box-shadow): az arnyek szín keverve; a stíluslapban '
+                           'color-mix(), itt témánként rgba().', 'tokens': arnyek},
         'name': alap.get('name', 'PaRDeS olvasó'),
         'meta': meta,
     }
+
+
+def _rgba(hexa, szazalek):
+    h = hexa.lstrip('#')
+    if len(h) == 3:
+        h = ''.join(c * 2 for c in h)
+    r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    alfa = ('%.4f' % (float(szazalek) / 100)).rstrip('0').rstrip('.')
+    return 'rgba(%d, %d, %d, %s)' % (r, g, b, alfa)
+
+
+ARNYEK_MINTA = re.compile(r'box-shadow\s*:\s*([^;{}]*?)color-mix\(\s*in srgb\s*,\s*var\(--arnyek\)\s*([\d.]+)%\s*,\s*transparent\s*\)\s*([^;{}]*)')
+
+
+def arnyek_tokenek(css, adat):
+    """[{name, value: {light, dark}, usage}] a stíluslap `--arnyek`-et keverő `box-shadow` értékeiből (sorrendben, azonos érték egyszer)."""
+    css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
+    ki, latott = [], {}
+    for m in re.finditer(r'([^{}]*)\{([^{}]*)\}', css):
+        szelektor, torzs = m.group(1).strip(), m.group(2)
+        for a in ARNYEK_MINTA.finditer(torzs):
+            elo, szazalek, uto = a.group(1).strip(), a.group(2), a.group(3).strip()
+            kulcs = (elo, szazalek, uto)
+            if kulcs in latott:
+                latott[kulcs]['usage_szel'].append(szelektor)
+                continue
+            osztaly = re.search(r'\.([a-z][a-z0-9-]*)', szelektor)
+            nev = 'arnyek-' + (osztaly.group(1) if osztaly else str(len(ki) + 1))
+            ertek = {t: ' '.join(x for x in (elo, _rgba(adat['szin']['arnyek'][t], szazalek), uto) if x) for t in ('light', 'dark')}
+            tok = {'name': nev, 'value': ertek, 'usage_szel': [szelektor], 'szazalek': szazalek}
+            latott[kulcs] = tok
+            ki.append(tok)
+    for t in ki:
+        szel = ', '.join(dict.fromkeys(re.sub(r'\s+', ' ', s) for s in t.pop('usage_szel')))
+        t['usage'] = 'Az arnyek szín %s%%-a. Használja a stíluslap szabálya: %s.' % (t.pop('szazalek'), szel)
+    return ki
+
+
+def _megj(s):
+    return (s or '').replace('*/', '* /').replace('\n', ' ')
+
+
+def tokens_css(tj):
+    """A design system `tokens.css`-e a `tokens.json`-ból (a típus „tokens.css as compiled” szerkezete)."""
+    temak = [t['id'] for t in tj['color']['themes']]
+    elso = temak[0]
+
+    def ertek(tok, tema):
+        v = tok['value']
+        return v if isinstance(v, str) else v.get(tema, v.get(elso))
+
+    szin_arnyek = list(tj['color']['tokens']) + list((tj.get('shadow') or {}).get('tokens', []))
+    sorok = ['/* %s — generated from tokens.json */' % tj.get('name', 'PaRDeS olvasó'),
+             ':root, [data-theme="%s"] {' % elso]
+    for t in szin_arnyek:
+        sorok.append('  --%s: %s; /* %s */' % (t['name'], ertek(t, elso), _megj(t.get('usage'))))
+    sorok.append('}')
+    for tema in temak[1:]:
+        sorok.append('[data-theme="%s"] {' % tema)
+        sorok += ['  --%s: %s;' % (t['name'], ertek(t, tema)) for t in szin_arnyek]
+        sorok.append('}')
+    sorok.append(':root {')
+    for csal in ('spacing', 'radius'):
+        for t in (tj.get(csal) or {}).get('tokens', []):
+            sorok.append('  --%s: %s; /* %s */' % (t['name'], t['value'], _megj(t.get('usage'))))
+    for k, v in tj['type']['families'].items():
+        sorok.append('  --font-%s: %s;' % (k, v))
+    stilusok = []
+    for g in tj['type']['groups']:
+        for s in g['styles']:
+            csalad = s.get('family') or g.get('family') or 'ui'
+            stilusok.append((s, csalad))
+            sorok.append('  --text-%s: %s %s/%s var(--font-%s); /* %s */' % (
+                s['name'], s.get('fontWeight', '400'), s['fontSize'], s.get('lineHeight', 'normal'), csalad, _megj(s.get('usage'))))
+    sorok.append('}')
+    for s, csalad in stilusok:
+        sorok += ['.%s {' % s['name'], '  font-family: var(--font-%s);' % csalad, '  font-size: %s;' % s['fontSize'],
+                  '  line-height: %s;' % s.get('lineHeight', 'normal'), '  font-weight: %s;' % s.get('fontWeight', '400'),
+                  '  letter-spacing: %s;' % (s.get('letterSpacing') or '0')]
+        if s.get('fontStyle') and s['fontStyle'] != 'normal':
+            sorok.append('  font-style: %s;' % s['fontStyle'])
+        sorok.append('}')
+    for f in tj['type'].get('fonts', []):
+        fajl = f['file'] if '/' in f['file'] else 'fonts/' + f['file']
+        sorok += ['@font-face {', '  font-family: "%s";' % f['family'], '  src: url("%s") format("woff2");' % fajl,
+                  '  font-weight: %s;' % f.get('weight', '400'), '  font-style: %s;' % f.get('style', 'normal'),
+                  '  font-display: swap;', '}']
+    return '\n'.join(sorok) + '\n'
+
+
+def bundle_css(arc, css, ref=None):
+    """A design system `components/bundle.css`-e: a szerver nem szín- és nem betűcsalád-változói, majd a mai `olvaso.css`."""
+    fej = ('/* PaRDeS olvasó: a szerver stíluslapja (eszkozok/olvaso_szerver/statikus/olvaso.css, %s), arculat_szinkron.py --bundle-css.\n'
+           '   Előtte a szerver token-blokkjából (konfig/arculat.json, arculat.py; hash %s) a méret-, sorköz-, térköz- és lekerekítés-változók\n'
+           '   (--fs-*, --lh-*, --space-*, --radius-*): a szerver stíluslapja ezekre hivatkozik. A színeket, az árnyékot és a betűcsaládokat\n'
+           '   (--bg, --accent, --g-*, --arnyek …, --font-*) a design system tokens.css-e adja, a szerverrel azonos néven. */\n') % (ref or git_ref(), arc.hash)
+    valt = [(v, e) for v, e in arculat_modul.valtozok(arc.adat, 'light')
+            if v.startswith(('--fs-', '--lh-', '--space-', '--radius-'))]
+    return fej + ':root {\n' + ''.join('  %s: %s;\n' % (v, e) for v, e in valt) + '}\n' + css
 
 
 def main():
@@ -177,6 +288,8 @@ def main():
     ap.add_argument('--kimenet', required=True, help='a kimeneti tokens.json (a repón kívül)')
     ap.add_argument('--alap', help='a design system mostani tokens.json-ja (a leírások és a csoportok megtartásához)')
     ap.add_argument('--datum', help='a meta.synced értéke (alap: a mai nap)')
+    ap.add_argument('--tokens-css', help='a design system tokens.css-e (a kiírt tokens.json-ból; a repón kívül)')
+    ap.add_argument('--bundle-css', help='a design system components/bundle.css-e (a repón kívül)')
     a = ap.parse_args()
     arc = arculat_modul.Arculat.betolt()
     reg = tervezo.Regiszter.betolt(arc.adat)
@@ -184,12 +297,21 @@ def main():
     if a.alap:
         with open(a.alap, encoding='utf-8') as f:
             alap = json.load(f)
-    ki = tokens_json(arc, reg, tervezo.css_beolvas(), alap, a.datum)
+    css = tervezo.css_beolvas()
+    ki = tokens_json(arc, reg, css, alap, a.datum)
     with open(a.kimenet, 'w', encoding='utf-8', newline='\n') as f:
         f.write(json.dumps(ki, ensure_ascii=False, indent=2) + '\n')
-    print('kiírva: %s (szín %d, betűstílus %d, térköz %d, lekerekítés %d; arculat %s)' % (
+    print('kiírva: %s (szín %d, betűstílus %d, térköz %d, lekerekítés %d, árnyék %d; arculat %s)' % (
         a.kimenet, len(ki['color']['tokens']), sum(len(g['styles']) for g in ki['type']['groups']), len(ki['spacing']['tokens']),
-        len(ki['radius']['tokens']), arc.hash))
+        len(ki['radius']['tokens']), len(ki['shadow']['tokens']), arc.hash))
+    if a.tokens_css:
+        with open(a.tokens_css, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(tokens_css(ki))
+        print('kiírva: %s' % a.tokens_css)
+    if a.bundle_css:
+        with open(a.bundle_css, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(bundle_css(arc, css))
+        print('kiírva: %s' % a.bundle_css)
 
 
 if __name__ == '__main__':
