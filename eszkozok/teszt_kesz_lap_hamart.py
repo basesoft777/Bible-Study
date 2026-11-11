@@ -99,7 +99,7 @@ class Lap(unittest.TestCase):
     def test_idezes_egy_helyen_helyorzo_nelkul(self):
         """A felhasználó döntései (2026-11-11): szerző, lexikon címe, kanonikus cím a beállításból; egy idézési forma
         (a Kolofonban), az Irodalomban mutató; nyers helyőrző nem áll; a HELYORZO kapu a rontott másolatra jelez."""
-        self.assertIn('**Hogyan idézd.** %s: *%s*' % (LG.SZERZO_NEV, LG.LEXIKON_CIM), self.lap)
+        self.assertIn('**Hogyan idézd.** %s: *%s*' % (LG.SZERZO_NEV, LG.LEXIKON_CIM_HU), self.lap)
         self.assertIn(LG.kanonikus_cim('HAMART-001'), self.lap)
         self.assertEqual(self.lap.count('**Hogyan idézd.**'), 1)
         self.assertIn('**Hogyan hivatkozz:** az idézési forma a [Kolofon](#kolofon)', self.lap)

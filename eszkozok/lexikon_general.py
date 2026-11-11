@@ -653,12 +653,14 @@ LEXIKON_CIM_HELYORZO = '[HELYŐRZŐ: A LEXIKON CÍME]'
 NYILT_ADAT_MUTATO = 'A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők'
 SZERZO_HELYORZO = '[HELYŐRZŐ: SZERZŐ NEVE]'
 
-# A felhasználó döntései (2026-11-11, az orkesztrátor továbbításában): a szerző „Demeter Tamás”, a lexikon címe „Logosz
-# Lexikon”, a kanonikus cím egyetlen beállításból („logoszlexikon.hu - a domain”): a szócikk állandó címe `<alap>/<ID>`, a
+# A felhasználó döntései (2026-11-11, az orkesztrátor továbbításában): a szerző „Demeter Tamás”, a lexikon címe „Logosz-
+# lexikon”, a kanonikus cím egyetlen beállításból („logoszlexikon.hu - a domain”): a szócikk állandó címe `<alap>/<ID>`, a
 # kiadás változatcíme `<alap>/<ID>/<kiadás>`. Üres beállításnál olvasói mondat áll, nyers helyőrző nem (olvasói kapu:
 # HELYORZO). Csak az új szerkezetű lapon; a nyílt mag, a CITATION.cff és a közlemények külön tétel.
 SZERZO_NEV = 'Demeter Tamás'
-LEXIKON_CIM = 'Logosz Lexikon'
+# a lexikon neve (a felhasználó, 2026-11-11: „mehet” a javaslatra): magyar szövegben „Logosz-lexikon” (AkH. 12.:
+# tulajdonnév + köznév, kötőjellel, kisbetűs köznév); angol metaadatban „Logosz Lexikon” — a lapon angol cím nem áll
+LEXIKON_CIM_HU = 'Logosz-lexikon'
 KANONIKUS_ALAP_URL = 'https://logoszlexikon.hu'
 # a nyílt adatmag concept DOI-ja (Zenodo); a felhasználó (2026-11-11): Zenodo-feltöltés „még nem volt” — a HAMART kiadása
 # után a felhasználó lépése, a kapott DOI ide kerül
@@ -5576,7 +5578,7 @@ def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
         nyilt = ('%s: https://doi.org/%s.' % (NYILT_ADAT_MUTATO, NYILT_MAG_DOI) if NYILT_MAG_DOI
                  else '%s; %s.' % (NYILT_ADAT_MUTATO_UJ, DOI_HIANY))
         idezes = ('**Hogyan idézd.** %s: *%s*, „%s” (%s), %s, %s, %s. %s' % (
-            SZERZO_NEV, LEXIKON_CIM, m.get('cim') or m['id'], m['id'], kiadas_szoveg, datum,
+            SZERZO_NEV, LEXIKON_CIM_HU, m.get('cim') or m['id'], m['id'], kiadas_szoveg, datum,
             kanonikus_cim(m['id'], kiadasszam), nyilt))
     modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
                'Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti '
