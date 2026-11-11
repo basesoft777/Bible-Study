@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: dontesre_var
 ag: claude/kesz-lap-kovetelmeny-15a3b5
+pr: 683
 ad: egy helyen, blokkonként áll, mitől kész egy lexikonlap; a HAMART-001 mért állapota soronként; a hiányok, az ellentmondások és a gépesíthető emberi ellenőrzések listája
 kovetkezo: "Te: a lista elfogadása és a (b) tételek döntése (DT-F190a), utána a draft PR merge-e"
 munka: folyamat
