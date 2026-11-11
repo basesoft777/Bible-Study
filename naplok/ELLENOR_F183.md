@@ -40,7 +40,7 @@ Brief: F183_VISSZHANG_USZ_TANU_BRIEF.md · tartomány: 7095bc63..27430a13 (merge
 | 6 K65–K67f, A27 | ELTÉRÉS (1, 4, 5, 9, 10) | KESZ_LAP_KOVETELMENY.md:129-137, 239 | K67b „teljesül”, de hiányzik a mondat (1). K67f „nem része az 1. kiadásnak”, holott az N-F183a szerint a döntés nyitott, a K67/A27 pedig „kötelező az 1. kiadáshoz” (4). K67a ellenőrzés-oszlopa: „gépi: teszt_hatastortenet.py”, de az ÚSZ-táblát nem teszteli (5). K67d „7 helyen” (9). Hivatkozás „F183.2 (generátor)” F183.3 helyett (10). K67e arány-kapu: csak a Glossára él (README 7.), futtatni nem tudtam |
 | 6 dontesek/uj, nyitott/uj | OK | dontesek/uj/visszhang-usz-tanu.md, nyitott/uj/visszhang-usz-tanu.md | helyőrzők DT-F183a–c és N-F183a–c; az ág nevéhez illő fájlnév |
 | 6 végleges szám | OK | — | Grep a `+` sorokra (`\b(DT\|N)\d{2,3}\b`): csak a main számai (DT639–664, DT760, DT761, N155) |
-| 6 A2: nyitott tételek | ELTÉRÉS (6) | NYITOTT_FELADATOK.md:841 | az N-F176a teljes egészében lezárva, de a Vulgata-kiadás kérdése (1592/1598/1880) eldöntetlen; a DT-F183b csak a Glossára szól. N-F176b/c: valóban nyitott |
+| 6 A2: nyitott tételek | ELTÉRÉS (6) | NYITOTT_FELADATOK.md:841 | az N-F176a teljes egészében lezárva, de a Vulgata-kiadás kérdése (1592/1598/1880) eldöntetlen; a DT774 csak a Glossára szól. N-F176b/c: valóban nyitott |
 | 7 csv | OK | eszkozok/visszhang/ | Grep `import csv\|csv\.`: 0 találat |
 | 7 DT28 | OK | — | a generátor az adatból renderel; forrásba visszaírás nincs. A jeloltek.tsv két indoklásának szakaszhivatkozása adatrétegbeli javítás |
 | 7 nincs közvetlen út | OK | lexikon_general.py:8323-8344 | a tanú csak a visszhang_tanuk.tsv ellenőrzött sorából jut a lapra |
