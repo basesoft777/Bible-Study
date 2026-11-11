@@ -1,6 +1,7 @@
 # A BDB-szócikkek rövidítéseinek feloldása a szó-lap jelmagyarázatához (szo.bdb_apparatus). Kézi összeállítás, nem a BDB része.
 # Csak a magyar BDB-ben mért, egyértelmű jelek (a szövegkörnyezet a ᵐ5 után görög, a ᵑ9 után latin szót mutat); kimaradt a „De” (a magyar
 # „de” kötőszóval ütközik) és a bizonytalan feloldású Hu, Lo, Gu, Ri, Sam. A forrásjelek (J, E, P, D, H, R, JE) csak zárójelben jelölők.
+# N117 (F204): a nyelvtani latin terminusok (csoport: nyelvtani) és az SS, Wetzst; a feloldás a BDB rövidítésjegyzékéből, a repóban a jegyzék nincs meg.
 jel	feloldas	csoport	proveniencia
 J	jahvista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)	forrásjel	manual
 E	elohista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)	forrásjel	manual
@@ -63,3 +64,9 @@ HPS	H. P. Smith	szerző	manual
 Ki	D. Kimhi (Radak)	szerző	manual
 Ra	Rasi	szerző	manual
 AE	Ibn Ezra	szerző	manual
+status absolutus	status absolutus: önálló alak (a névszó nem birtokos szerkezetben áll)	nyelvtani	manual
+status constructus	status constructus: kapcsolati alak (a névszó a birtokos szerkezet első tagja)	nyelvtani	manual
+absolutus	status absolutus: önálló alak (a névszó nem birtokos szerkezetben áll)	nyelvtani	manual
+constructus	status constructus: kapcsolati alak (a névszó a birtokos szerkezet első tagja)	nyelvtani	manual
+SS	Siegfried–Stade: Hebräisches Wörterbuch zum Alten Testamente (1893; a BDB rövidítése, a rövidítésjegyzék szerint)	szerző	manual
+Wetzst	J. G. Wetzstein (a BDB rövidítése, a rövidítésjegyzék szerint)	szerző	manual
