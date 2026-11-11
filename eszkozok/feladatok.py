@@ -28,7 +28,8 @@ Parancsok:
                     1-es kilepesi kod, ha valamelyik nem
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
                     fejlecekbe (--szaraz: csak kiir)
-    kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1
+    kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1; --tavoli: a tavoli agak briefjeit es a
+                    foglalasokat is figyelembe veszi; --foglal AGNEV: atomi foglalas az originen (F201)
     szint SZAM..    F188 T5: az ellenorzesi szint (`teljes` / `konnyitett`) es a javitokor-korlat,
                     a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
                     a befogadando brief javasolt fejlece (mint a `fuggesek`-nel); --jelentes FAJL:
@@ -1267,6 +1268,83 @@ def kovetkezo_szam(briefek):
     return (max(hasznalt) if hasznalt else 0) + 1
 
 
+# F201 (DT-F201b): a parhuzamos agak ne kapjanak azonos F-szamot (#688 es #689 is F196 lett).
+# Ket vedelem, mindketto a tavoli oldalt latja:
+#   (1) a tavoli agak gyokerebeli `F<nn>_*` fajljai (a mar pusholt, de meg nem mergelt briefek);
+#   (2) a foglalas: az `origin` `foglalas/F<nn>` agai. A foglalas atomi (a push csak akkor sikerul, ha
+#       az ag meg nincs: --force-with-lease az ures vart ertekkel), igy ket egyidejű kero nem kaphatja
+#       ugyanazt a szamot, meg ha az egyik meg nem pusholt semmit. A foglalo ag commitja a main csucsa
+#       fole epul, uzenete: `F<nn> foglalas: <agnev>`. A szamkiosztas Action torli a foglalast, ha a
+#       szamnak mar van briefje a main-en (eszkozok/foglalas_takarit.py).
+FOGLALAS_ELOTAG = 'foglalas/F'
+_TAVOLI_BRIEF = re.compile(r'^F(\d{2,})_')
+
+
+def _git_tavoli(gyoker, *args, check=True):
+    p = subprocess.run(['git'] + list(args), cwd=gyoker, capture_output=True)
+    if check and p.returncode != 0:
+        raise RuntimeError('git %s: %s' % (' '.join(args), p.stderr.decode('utf-8', 'replace').strip()))
+    return p.returncode, p.stdout.decode('utf-8', 'replace'), p.stderr.decode('utf-8', 'replace')
+
+
+def tavoli_szamok(gyoker, remote='origin', frissit=True):
+    """A tavoli agakon es foglalasokban hasznalt feladatszamok halmaza. `frissit`: elotte `git fetch`
+    (a foglalasok az origin/foglalas/* tavoli kovetoagakban latszanak)."""
+    if frissit:
+        _git_tavoli(gyoker, 'fetch', '--quiet', '--prune', remote)
+    szamok = set()
+    _, ki, _ = _git_tavoli(gyoker, 'for-each-ref', '--format=%(refname)', 'refs/remotes/%s/' % remote)
+    for ref in ki.split('\n'):
+        ref = ref.strip()
+        if not ref:
+            continue
+        nev = ref[len('refs/remotes/%s/' % remote):]
+        if nev.startswith(FOGLALAS_ELOTAG):
+            m = re.match(r'^(\d+)$', nev[len(FOGLALAS_ELOTAG):])
+            if m:
+                szamok.add(int(m.group(1)))
+            continue
+        if nev == 'HEAD':
+            continue
+        rc, fajlok, _ = _git_tavoli(gyoker, 'ls-tree', '--name-only', ref, check=False)
+        if rc != 0:
+            continue
+        for f in fajlok.split('\n'):
+            m = _TAVOLI_BRIEF.match(f.strip())
+            if m:
+                szamok.add(int(m.group(1)))
+    return szamok
+
+
+def kovetkezo_szam_tavoli(briefek, gyoker, frissit=True):
+    """A kovetkezo szabad szam a helyi briefek ES a tavoli agak/foglalasok figyelembevetelevel."""
+    alap = kovetkezo_szam(briefek) - 1
+    tavoli = tavoli_szamok(gyoker, frissit=frissit)
+    return max([alap] + list(tavoli)) + 1
+
+
+def foglal(briefek, gyoker, agnev, remote='origin', frissit=True, probak=8):
+    """Kiosztja ES atomian lefoglalja a kovetkezo szabad szamot (push a `foglalas/F<nn>` agra).
+    Ha a push elbukik (kozben mas foglalta), a kovetkezo szamot probalja. Visszaadja a szamot."""
+    n = kovetkezo_szam_tavoli(briefek, gyoker, frissit=frissit)
+    _, csucs, _ = _git_tavoli(gyoker, 'rev-parse', '%s/main' % remote)
+    csucs = csucs.strip()
+    _, fa, _ = _git_tavoli(gyoker, 'rev-parse', '%s^{tree}' % csucs)
+    for _ in range(probak):
+        uzenet = 'F%d foglalas: %s\n' % (n, agnev)
+        _, commit, _ = _git_tavoli(gyoker, '-c', 'user.name=foglalas', '-c', 'user.email=foglalas@invalid',
+                            'commit-tree', fa.strip(), '-p', csucs, '-m', uzenet)
+        ref = 'refs/heads/%s%d' % (FOGLALAS_ELOTAG, n)
+        rc, _, hiba = _git_tavoli(gyoker, 'push', '--quiet', '--force-with-lease=%s:' % ref, remote,
+                           '%s:%s' % (commit.strip(), ref), check=False)
+        if rc == 0:
+            return n
+        n += 1
+        if frissit:
+            n = max(n, kovetkezo_szam_tavoli(briefek, gyoker, frissit=True))
+    raise RuntimeError('a foglalas %d probara sem sikerult' % probak)
+
+
 def ellenorzesi_szint(b):
     """F188 T5: (szint, javitokor-korlat, ok) a brief fejlecebol."""
     munka = b.fej.get('munka', '')
@@ -1446,7 +1524,11 @@ def main(argv=None):
     alp.add_parser('jeloltek', help='az 1. fázis jelöltjei, a folyamat-alternatívák és a kihagyás okai (nem indít semmit)')
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
-    alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
+    ks = alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
+    ks.add_argument('--tavoli', action='store_true',
+                    help='F201: a tavoli agak (origin) gyokerebeli F<nn>_* fajljait es a foglalasokat is figyelembe veszi (git fetch)')
+    ks.add_argument('--foglal', metavar='AGNEV',
+                    help='F201: a szamot atomian lefoglalja az originen (foglalas/F<nn> ag; push!), igy mas ag nem kaphatja meg')
     sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
     sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
     sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
@@ -1518,7 +1600,12 @@ def main(argv=None):
                 print('%s\t%s\t%s -> %s' % (fajl, kulcs, regi, uj))
             return 0
         if arg.parancs == 'kovetkezo_szam':
-            print(kovetkezo_szam(briefek))
+            if arg.foglal:
+                print(foglal(briefek, arg.gyoker, arg.foglal))
+            elif arg.tavoli:
+                print(kovetkezo_szam_tavoli(briefek, arg.gyoker))
+            else:
+                print(kovetkezo_szam(briefek))
             return 0
         if arg.parancs == 'szint':
             regi = {id(b) for b in briefek}
