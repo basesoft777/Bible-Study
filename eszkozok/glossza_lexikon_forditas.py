@@ -130,16 +130,17 @@ def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
         t = cache['tW_cim'].get(eid)
         return t[1] if t and t[0] == strong else None
     if szotar in ('SDBH', 'SDGNT'):
-        # F182 (A12): a szemantikai domén neve (`domen`), kulcs: entry_id = domen_kod, strong = em-dash, jelentes_szam domen
-        if jsz != 'domen' or mezo != 'glosszak_hu' or strong != EM_DASH:
+        # F182 (A12): a szemantikai domén neve (`domen`), kulcs: strong = a szó Strongja, entry_id = domen_kod,
+        # jelentes_szam domen; a forrás a Strong azon sora, amelyen ez a domén áll
+        if jsz != 'domen' or mezo != 'glosszak_hu':
             return None
         k = szotar + '_domen'
         if k not in cache:
             idx = {}
             for r in tsv_sorok(ut):
-                idx.setdefault(r['domen_kod'], r['domen'])
+                idx.setdefault((r['strong'], r['domen_kod']), r['domen'])
             cache[k] = idx
-        return cache[k].get(eid)
+        return cache[k].get((strong, eid))
     if szotar == 'tW_szocikkek':
         if jsz != EM_DASH or mezo != 'forditas_hu':
             return None

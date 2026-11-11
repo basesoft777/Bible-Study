@@ -1104,8 +1104,8 @@ def lexikon_hivatkozasok_ehhez(strong):
 UJ_DOMEN_MAGYAR = [False]   # F182: a render idejére az új szerkezetű motívumnál igaz (`run`)
 
 
-def domen_magyar(szotar, kod, label):
-    hu = forditas_ehhez(szotar, EM_DASH, kod, 'domen', 'glosszak_hu')
+def domen_magyar(szotar, kod, label, strong):
+    hu = forditas_ehhez(szotar, strong, kod, 'domen', 'glosszak_hu')
     return hu if hu else '%s %s' % (label, FORDITASRA_VAR)
 
 
@@ -1172,7 +1172,7 @@ def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcs
     if UJ_DOMEN_MAGYAR[0]:
         # F182 (A12, K11): az új szerkezetű lapon a doménnév magyarul (fordítási gyorsítótár), a kód nélkül; fordítás
         # nélkül az angol név „fordításra vár” jelöléssel
-        domen_szoveg = '; '.join(domen_magyar('SDBH' if strong.startswith('H') else 'SDGNT', kod, label)
+        domen_szoveg = '; '.join(domen_magyar('SDBH' if strong.startswith('H') else 'SDGNT', kod, label, strong)
                                  for kod, label in domenek) if domenek else EM_DASH
     domen_sorok = ['**Szemantikai domén:** %s' % domen_szoveg]
     domen_fajl = 'konkordancia/SDBH_domenek.tsv' if strong.startswith('H') else 'konkordancia/SDGNT_domenek.tsv'

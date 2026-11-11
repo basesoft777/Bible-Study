@@ -3,7 +3,8 @@ szemantikai doménnevek magyar sora a fordítási gyorsítótárba (`adat/fordit
 
 Kulcsok (a feloldó: `eszkozok/glossza_lexikon_forditas.tovabbi_forras`):
   tW_szocikkek | <a cikk első Strongja> | <tw_id> | cim   | glosszak_hu — forrás: a `tW_szocikkek.tsv` `cim` oszlopa;
-  SDBH / SDGNT | —                       | <domen_kod> | domen | glosszak_hu — forrás: a `*_domenek.tsv` `domen` oszlopa.
+  SDBH / SDGNT | <a szó Strongja>        | <domen_kod> | domen | glosszak_hu — forrás: a `*_domenek.tsv` `domen` oszlopa
+  (a betöltés még „—” kulcsot írt; az F182.44 `naplok/F182_domen_kulcs_strong.py` állította át a szó Strongjára).
 A fordítás Sonnet-subagent munkája (claude-sonnet-5-5, saját kiírt modellnév; a kérés szövege a
 `naplok/F182_jelentes.md` 3. menetében), mérés nélkül; ami már le van fordítva, nem fordul újra (a lista csak a hiányzó kulcsokat adta).
 
