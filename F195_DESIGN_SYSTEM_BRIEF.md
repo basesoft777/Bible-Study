@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/design-system-8e5bb3
-pr: 0
+pr: 692
 ad: a design system tokenjei, README-je és komponensei a mai olvasót írják le; a token-réteg gépi úton frissíthető
 kovetkezo: "Te: a lexikonlap arculatának választása a vásznon (N-F195a), a draft PR áttekintése és merge-e"
 munka: folyamat
