@@ -98,6 +98,7 @@ ENGEDETT_CIMKE = {'közkincs', 'CC0 1.0', 'CC BY 4.0'}
 SA_CIMKE = 'CC BY-SA 4.0'
 SA_RETEG = ('SDBH', 'SDGNT')           # a külön rétegbe kerülő SA-források
 SAJAT_SOR = 'projekt_adat'
+NYILT_MAG_SAJAT_LICENC = 'CC BY 4.0'    # a saját sor licence a nyílt mag forrástáblájában (a csomag licence)
 KIZARAS_OKA = [
     (re.compile(r'GPL', re.I), 'GPL licenc: nem építhető be nyílt (CC BY) csomagba'),
 ]
@@ -1434,7 +1435,10 @@ def export(kimenet):
             szerep = 'forrás (a sorok forrásmegjelölésében szerepel)'
         else:
             szerep = 'engedett, de a csomag nem használja'
-        sorok.append({'dataset': ds, 'licenc': lic.cimke(ds), 'szerepe_a_csomagban': szerep, 'ok': ok})
+        # a projekt saját adata a nyílt magban CC BY 4.0 alatt jelenik meg; a leltár „minden jog fenntartva” címkéje a
+        # nyílt magon kívüli, belső adatra vonatkozik (a felhasználó, 2026-11-11, az orkesztrátor továbbításában: „mehet”)
+        licenc = NYILT_MAG_SAJAT_LICENC if st == 'sajat' else lic.cimke(ds)
+        sorok.append({'dataset': ds, 'licenc': licenc, 'szerepe_a_csomagban': szerep, 'ok': ok})
     fajlok['forrasok_es_licencek.tsv'] = oszlop_tsv(fej, sorok, 'forrasok_es_licencek.tsv')
     stat['forrasok_es_licencek.tsv'] = len(sorok)
     kizartak = sorted(s['dataset'] for s in sorok if s['szerepe_a_csomagban'] == 'kizárva')
