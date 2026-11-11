@@ -39,7 +39,7 @@ lekérdezés `python eszkozok/tanu_index.py keres \"<igehely>\"`”); Sefaria-sz
 
 1. Modell-ellenőrzés (`claude-sonnet-5-5` = a kért); felmérés, playbook 2. pont.
 2. **Licenc.** HCF: a `LICENSE` „PUBLIC DOMAIN DEDICATION” a metaadatra, a „FAIR USE NOTICE” az idézetekre → csak metaadat. Sefaria links: a fejlesztői oldal „Links License” szakasza
-   „CC-BY” (a verzió nincs megadva; a szerkesztő CC BY-ként elfogadta, DT-F191a, N-F191c lezárva); a `LICENSE.md` csak a szövegekről szól. Mindkét nyers fájl letöltve (HCF 176 242 688 bájt, Sefaria 18 CSV
+   „CC-BY” (a verzió nincs megadva; a szerkesztő CC BY-ként elfogadta, DT740, N-F191c lezárva); a `LICENSE.md` csak a szövegekről szól. Mindkét nyers fájl letöltve (HCF 176 242 688 bájt, Sefaria 18 CSV
    ~680 MB), sha256 a README-ben.
 3. **Index.** `Tanu_atyak_index.tsv` + `Tanu_atyak_mu.tsv` (97 572 sor, 9,5 MB; a teljes kanon), `Tanu_rabbinikus_index.tsv` (5 259 sor, 0,5 MB; a teljes Tanakh 24 MB lenne → első körben csak a
    lexikonmotívumok 289 versével átfedő sorok, N-F191a). A rabbinikus kategóriák: Midrash, Talmud, Mishnah, Tosefta, Targum.
@@ -54,4 +54,4 @@ lekérdezés `python eszkozok/tanu_index.py keres \"<igehely>\"`”); Sefaria-sz
 
 ## 5. Döntésnapló
 
-DT-F191a (🟢): a Sefaria links CC BY-ként elfogadva (a letöltést a felhasználó jóváhagyta). Nyitott: N-F191a (rabbinikus hatókör), N-F191b (UT-átvezetés), N-F191c (lezárva, DT-F191a), N-F191d (középkori kommentárok).
+DT740 (🟢): a Sefaria links CC BY-ként elfogadva (a letöltést a felhasználó jóváhagyta). Nyitott: N-F191a (rabbinikus hatókör), N-F191b (UT-átvezetés), N-F191c (lezárva, DT740), N-F191d (középkori kommentárok).
