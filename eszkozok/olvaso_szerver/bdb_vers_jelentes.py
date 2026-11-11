@@ -251,11 +251,18 @@ def kezi_hivatkozas_javitasok():
 def hivatkozas_javit(strong, hiv, javitasok):
     """A `hivatkozas_kezi` javítások alkalmazása a Strong hivatkozásaira; hiányzó illesztésnél megáll."""
     for forras_alak, k, javitott in javitasok:
-        talalt = [i for i, h in enumerate(hiv) if h['konyv'] and '%d:%d' % (h['c'], h['v']) == forras_alak]
+        # F202.4: csak a forrásban szó szerint álló alak számít (a 2.31 `elofordulas`-a is a nézet-szöveg szó szerinti
+        # előfordulásait számolja); a „…10:24-25, 26” folytatás („, 26” → 10:26) nem a „10:26” forrás-alak előfordulása
+        talalt = [i for i, h in enumerate(hiv) if h['konyv'] and '%d:%d' % (h['c'], h['v']) == forras_alak
+                  and re.search(r'(?<![\d:])' + re.escape(forras_alak) + r'(?![\d:])', h['nyers'])]
         if len(talalt) < k:
             raise SystemExit('HIBA: a 2.31 hivatkozas_kezi sora nem illeszthető: %s %s (%d. előfordulás)' % (strong, forras_alak, k))
-        c, v = (int(x) for x in javitott.split(':'))
-        hiv[talalt[k - 1]] = dict(hiv[talalt[k - 1]], c=c, v=v, forras_javitas=True)
+        # F202.4 (N102): a javított alak könyvet is hordozhat („1Kir 12:20”; a forrás könyvnév-hibája), különben csak fejezet:vers
+        m = re.match(r'^(?:(\S+) )?(\d+):(\d+)$', javitott)
+        uj = {'c': int(m.group(2)), 'v': int(m.group(3)), 'forras_javitas': True}
+        if m.group(1):
+            uj['konyv'] = m.group(1)
+        hiv[talalt[k - 1]] = dict(hiv[talalt[k - 1]], **uj)
     return hiv
 
 

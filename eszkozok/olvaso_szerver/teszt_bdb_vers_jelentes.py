@@ -313,6 +313,18 @@ class Tabla(unittest.TestCase):
                          ('1Móz 26:25', '1Móz 26:25', 'forras_javitas', '0', '-/3'))
         self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Móz 26:35'))
 
+    def test_forras_javitas_konyvvel(self):
+        # F202.4 (N102): H1004 „1Kin 12:19 2Chr 10:19, 2 Chronicles 10:20; 2 Chronicles 10:26; 13:2; 14:8” → 1Kir 12:20, 26; 13:2;
+        # 14:8 (a 2.31 kézi sorai könyvvel); a korábbi „2Kin 10:24-25, 26” folytatás („, 26”) érintetlen
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        got = [(x[i['nyers']], x[i['karoli_vers']], x[i['okkod']]) for x in sor(self.sorok, strong='H1004')
+               if 'forras_javitas' in x[i['okkod']]]
+        self.assertEqual(got, [('2 Chronicles 10:20', '1Kir 12:20', 'forras_javitas'),
+                               ('2 Chronicles 10:26', '1Kir 12:26', 'forras_javitas'),
+                               ('13:2', '1Kir 13:2', 'forras_javitas'), ('14:8', '1Kir 14:8', 'forras_javitas')])
+        self.assertEqual([x[i['karoli_vers']] for x in sor(self.sorok, strong='H1004', nyers=', 26')
+                          if x[i['mt_vers']] == '2Kir 10:26'], ['2Kir 10:26'])
+
     def test_h7585_negyedik_pont_es_kezi_javitas(self):
         # F123: a 4. pont („NT.] 4 ׳שׁ figurative …”) példái a -/4 alatt, nem a -/3/b-ben; a „Prov 25:11” → Péld 15:11 (2.31 kézi sor)
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -366,7 +378,8 @@ class Tabla(unittest.TestCase):
         # F102 (g): „2Chr 10:19, 2 Chronicles 10:20” — a 2Krón 10:2 nem sor (a javítás előtt `folytatas`, sorszam 286)
         i = {k: n for n, k in enumerate(V.FEJ)}
         self.assertFalse([x for x in sor(self.sorok, strong='H1004', mt_vers='2Krón 10:2') if x[i['konyv_feloldas']] == 'folytatas'])
-        self.assertEqual([x[i['mt_vers']] for x in sor(self.sorok, strong='H1004', poz='9208')], ['2Krón 10:20'])
+        # a poz 9208 („2 Chronicles 10:20”) külön sor marad; F202.4 (N102): a 2.31 kézi sora 1Kir 12:20-ra javítja
+        self.assertEqual([x[i['mt_vers']] for x in sor(self.sorok, strong='H1004', poz='9208')], ['1Kir 12:20'])
 
     def test_sigla_tahot_szerint(self):
         # F102, DT-F102e (B): a tapadt sigla („De^Job 34:36”) mindig szűrt, akkor is, ha a TAHOT a versben hordozza a szót (אָבִי);
@@ -616,8 +629,9 @@ class CsoportOszlop(unittest.TestCase):
     # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő.
     # F185 (a jelentéspont a szakasztáblából, a H7585 tételes felülírásával; naplok/F185_jelentes.md): új érték
     # F202 (naplok/F202_jelentes.md): a 2.30 szócikkhatára a zárójel-töredéknél (F202.2: 25 sor útvonala vagy szakasza) és a nem
-    # létező fejezetre öröklődő hely TAHOT-igazolt feloldása (F202.3: 77 `orokles_hibas` → `orokles_tahot`): új érték
-    REGI_OSZLOPOK_SHA256 = '28387ec501dbdccb1b8e3aca65983b2e36be281234f05c1b5a5024cc6d315cce'
+    # létező fejezetre öröklődő hely TAHOT-igazolt feloldása (F202.3: 77 `orokles_hibas` → `orokles_tahot`), a H1004 négy
+    # könyvnév-hibás helye (F202.4, a 2.31 kézi sorai): új érték
+    REGI_OSZLOPOK_SHA256 = 'd9b91eb479f370719437c7de7dcea3f897438f293d379b7b549ae74c8c172d67'
 
     @classmethod
     def setUpClass(cls):
