@@ -282,6 +282,7 @@ def strong_illeszt(sorok, hu):
                 hatar = max(hu.rfind('. ', also, p), hu.rfind('; ', also, p), hu.rfind('— ', also, p))
                 eleje = (hatar + 2) if hatar > also else p
             e[:] = ['horgonnyal', m.group(0), eleje]
+    szocikkfej_horgony(sorok, eredmeny, hu)
     # Strong-szint, szigorú (a kapu _illeszt-je a tábla jelölősorozatán, törzsnév nélkül, mint a kiinduló mérés)
     a = [j for x in sorok if x['jelolo'] in ('point', 'section', 'remarks')
          for j in forras_jelolok(x['jel']) if not j.startswith('T:')]
@@ -301,6 +302,73 @@ def strong_illeszt(sorok, hu):
     else:
         horgonyos = 'elakad'
     return eredmeny, szigoru, horgonyos
+
+
+# F202.1 (C1; N147, N100, K56): szócikkhatár a horgonyos illesztésben. A jelölő nélküli szócikkfej (a sor `bdb_id`-je más, mint
+# az előző soré) eddig pozíciót nem kapott, ezért a magyar szövege az előző szócikk utolsó szakaszában maradt (az `ellenoriz.py`
+# 27. szabályának jelentése; a mérés előtt 316 sor, 191 Strong). A fej a magyarban a forrás címszavával nyit: a sor eleji
+# homonima-szám („II.”), a zárójel („[”) és az első héber szó változatlanul áll a fordításban („II. רַע_126 hímnemű főnév”,
+# „[מָּצַץ] ige”, „צחר (a következő √-je”). A horgony ez az előtag: az előző és a következő illesztett pozíció között keresve;
+# több találatnál az első, amely előtt tagolásjel („. ”, „; ”, „) ” …) áll, különben az utolsó (a szócikk vége előtti utalás,
+# „l. fent IV. צַר”, a következő fej előtt áll). Ha a forrássor nem héber szóval nyit, vagy a magyarban nincs meg, a sor
+# változatlan marad (a 27. szabály jelentése megmarad; a kézi javítás helye a fordítás, nem az illesztő).
+SZOCIKKFEJ_ELOTAG = re.compile(r'^((?:(?:VI|IV|V|I{1,3})\.\s+)?)(\[?)\s*((?:\([֐-׿יִ-ﭏ]+\))?[֐-׿יִ-ﭏ]+)')
+SZOCIKKFEJ_HATAR = ('.', ';', ':', '!', '?', ')', ']', '—')
+
+
+def szocikkfej_elotag(x):
+    """A szócikkfej-sor magyar horgonyának mintája és megjelenített alakja: (regex, horgony) vagy (None, '')."""
+    m = SZOCIKKFEJ_ELOTAG.match(re.sub(r'<[^>]+>', '', (x.get('jel', '') + ' ' + x.get('szoveg', '')).strip()))
+    if not m:
+        return None, ''
+    romai, zar, szo = m.groups()
+    minta = (re.escape(romai.strip()) + r'\s+' if romai else '') + (r'\[\s*' if zar else '') + re.escape(szo) \
+        + r'(?![֐-׿יִ-ﭏ])'
+    return re.compile(minta), (romai.strip() + ' ' if romai else '') + zar + szo
+
+
+def szocikkfej_horgony(sorok, eredmeny, hu):
+    """F202.1: a jelölő nélküli szócikkfej-sorok pozíciója (helyben, az `eredmeny` [kat, horgony, poz] elemein). A következő
+    fej csak az előző fej horgonya UTÁN kezdődhet (H0520 „III. [אַמָּה]” + „[אַמָּה K^§ 51”: a második nem köthet az első belsejébe)."""
+    vege = {}
+    for i, (x, e) in enumerate(zip(sorok, eredmeny)):
+        if (e[0] != 'jelolo_nelkul' or e[2] is not None or i < 2 or not x.get('bdb_id')
+                or x['bdb_id'] == sorok[i - 1].get('bdb_id')):
+            continue
+        rx, horgony = szocikkfej_elotag(x)
+        if rx is None:
+            continue
+        also = max([vege.get(t, r[2] + 1) for t, r in enumerate(eredmeny[:i]) if r[2] is not None] or [1])
+        felso = min([r[2] for r in eredmeny[i + 1:] if r[2] is not None] or [len(hu)])
+        talalat = [m for m in rx.finditer(hu, also, felso)]
+        if not talalat:
+            continue
+        hatarral = [m for m in talalat if hu[:m.start()].rstrip().endswith(SZOCIKKFEJ_HATAR)]
+        m = hatarral[0] if hatarral else talalat[-1]
+        e[:] = ['jelolo_nelkul', horgony, m.start()]
+        vege[i] = m.end()
+
+
+def szocikkhatar_jelentesek(sorok_szak, sorok_hu):
+    """A 2.32 szócikkhatáron át elnyelt sorai (az `ellenoriz.py` 27. szabályának mérése minden Strongra, nem csak a lapokéra):
+    [(strong, sorszam, bdb_id, az elnyelő sor bdb_id-je, sorszáma)]. `sorok_szak`: a 2.30 sorai (dict), `sorok_hu`: a 2.32-éi."""
+    hu_k = {(r['strong'], r['sorszam']): r for r in sorok_hu}
+    strongonkent = collections.OrderedDict()
+    for r in sorok_szak:
+        strongonkent.setdefault(r['strong'], []).append(r)
+    ki = []
+    for st, sorok in strongonkent.items():
+        if len(set(r['bdb_id'] for r in sorok if r['bdb_id'])) < 2:
+            continue
+        utolso = None
+        for r in sorok:
+            h = hu_k.get((st, r['sorszam'])) or {}
+            if h.get('szoveg_hu'):
+                utolso = r
+            elif (h.get('kategoria') == 'jelolo_nelkul' and utolso is not None and r['utvonal'] != 'cim'
+                  and utolso.get('bdb_id') != r.get('bdb_id')):
+                ki.append((st, r['sorszam'], r['bdb_id'], utolso['bdb_id'], utolso['sorszam']))
+    return ki
 
 
 def szakasz_sorok(sorok, sz11):
@@ -373,7 +441,8 @@ def general(ts, csak=None, egy_az_egyhez=True, tabla=None, ford_ut=None, jav=Non
             ki.append([st, x['sorszam'], x['bdb_id'], x.get('szakasz', ''), x['resz'], x['utvonal'], x['jel'], kat, horgony,
                        '' if p is None else str(p), '' if p is None else str(len(szoveg_hu)),
                        szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
-                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc%s) | ts=%s' % (st, jeloles, ts)])
+                       'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc%s%s) | ts=%s'
+                       % (st, jeloles, '; szócikkfej a címszónál' if kat == 'jelolo_nelkul' and horgony else '', ts)])
     return szocikkhatar_kezi(ki, ts), stat, sor_stat, nincs, len(ford)
 
 
@@ -383,19 +452,10 @@ def general(ts, csak=None, egy_az_egyhez=True, tabla=None, ford_ut=None, jav=Non
 # a fej magyar szövegének horgonya, a horgony előtt álló szavak száma (a héber címszó és a római szám), indok a forrás
 # idézetével). A vágás a horgony előtti szavaknál; a célsor üres kell legyen; ha a horgony nem pontosan egyszer áll, a
 # generálás megáll (a forrás változott: a tételt újra kell nézni). Az illesztő lánc általános javítása: N-F182f.
-SZOCIKKHATAR_KEZI = {
-    ('H2403', '17'): ('18', ' nőnemű főnév: bűnért való áldozat', 1,
-                      'bdb_szakaszok.tsv H2403 18–19. sor: a BDB9520 szócikk feje („noun feminine sin-offering (Biblical '
-                      'Hebrew …; Nabataean … penalty, according to SAC^51); — absolute … Ezra 6:17”); a BDB2699 -/5/- sora a '
-                      '„… only water of purification was used).” mondattal zárul'),
-    ('H7451', '16'): ('18', ' hímnemű főnév^Jób 30:26', 2,
-                      'bdb_szakaszok.tsv H7451 18. sor: a BDB8033 szócikk feje („II. … noun masculine^Job 30:26 evil, '
-                      'distress, misery, injury, calamity; — absolute …”); a BDB8032 -/10/d sora a „… for evil deeds are in '
-                      'their dwelling.” mondattal zárul'),
-    ('H7451', '21'): ('23', ' nőnemű főnév: rossz, nyomorúság', 1,
-                      'bdb_szakaszok.tsv H7451 23. sor: a BDB8034 szócikk feje („… noun feminine evil, misery, distress, '
-                      'injury; — absolute …”); a BDB8033 -/3/- sora a „… (but read … Gr Bi Toy).” mondattal zárul'),
-}
+# F202.1: az általános szabály (`szocikkfej_horgony`) a három HAMART-tételt (H2403 17→18, H7451 16→18, H7451 21→23) bájtra
+# ugyanígy vágja (a `hu_kezdet` is azonos), ezért a tételek kivezetve; a mechanizmus marad annak a szócikkfejnek, amelynek a
+# forrássora nem héber címszóval nyit (`teszt_hu_illeszt.Szocikkhatar`).
+SZOCIKKHATAR_KEZI = {}
 
 
 class SzocikkhatarHiba(Exception):
