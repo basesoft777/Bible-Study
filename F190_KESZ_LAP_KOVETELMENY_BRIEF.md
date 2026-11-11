@@ -54,13 +54,14 @@ A lap követelményei ma négy helyen állnak: a lapsablonban, a döntésekben, 
 
 ## 6. Jelentés
 
-**109 követelmény · 27 HAMART-hiány · 18 ellentmondó vagy elavult követelmény** (+ 4 javasolt felvétel, 16 gépesíthető emberi ellenőrzés).
+**109 követelmény · 26 HAMART-hiány · 19 ellentmondó vagy elavult követelmény** (+ 4 javasolt felvétel, 16 gépesíthető emberi ellenőrzés).
 
-- A 109 sor állapota: 52 teljesül, 29 hiányzik, 16 részben, 6 nem eldönthető, 6 hátralévő lépés. A 27 pótlandó tétel (az (a) lista) a 29 hiányzó és a 16 részben teljesülő sorból áll össze.
+- A 109 sor állapota: 53 teljesül, 29 hiányzik, 15 részben, 6 nem eldönthető, 6 hátralévő lépés. A 26 pótlandó tétel (az (a) lista; az A18 törölve) a hiányzó és a részben teljesülő sorokból áll össze.
+- F190.6 (a felhasználó szó szerint idézett döntései, az orkesztrátor továbbításával): a K57 megfordult („semmi helye ott”, 2026-11-10: a lapon nincs mért BDB-pontosság; új B19, az A18 törölve). Döntve: B04, B06, B13, B14, B15 (F3, F18: az 1. kiadás feltételei). Nyitott: az F14. Javaslat, a szerkesztő jóváhagyására vár: B01–B03, B05, B07–B12, B16–B18, J1–J4.
 - Kiegészítés (F190.5, az orkesztrátor továbbításával): a felhasználó döntése (2026-11-11): „a visszhang 1-2 kötelező”. A K67 forrása ez, állapota „hiányzik (#183 folyamatban)”. A visszhang 2 hat sora (K67a–K67f) az `F183_VISSZHANG_USZ_TANU_BRIEF.md` V1–V3 pontjából és a `visszhang-reteg-terv` memóriából jön, „a briefből, a #183 után a HAMART szerint véglegesítendő” jelöléssel. Új (a)-tétel: A27.
 - **Hátralévő:** a #183 után egy frissítés a K67a–K67f sorokat a tényleges HAMART visszhang 2 szerint pontosítja; a lista ezzel zárul le, a lektor előtt.
 
 - A mérés alapja: a lap `4f51e371` (F182.21), az ág feje `9e74455e`. Olvasói kapu: 0 BUKÁS, 19 FIGYELMEZTETÉS; 1/a: 47/47; `ellenoriz.py`: a 36–40. szabály a HAMART-ra tiszta.
 - A legsúlyosabb lelet: **hamis állítás** a lapon. Az Alátámasztás „A motívumhoz nincs rögzített kapcsolat.” mondatot hoz az 56 kapcsolatsor alatt (A01, K77). Ez a leletlistában nem szerepelt.
-- Az F1–F35 leletekből a lapon még nem látszik: F1, F3, F4, F5, F6, F7, F8, F11, F12, F13, F14, F15, F17, F18, F35 (a #182 2. fázisa még fut).
+- Az F1–F35 leletekből a lapon még nem látszik: F1, F3, F4, F5, F6, F7, F8, F11, F12, F13, F14, F15, F17, F18 (a #182 2. fázisa még fut; az F35-öt a felhasználó 2026-11-10-én felülírta).
 - Egyeztetett eltérés: a feladat a lapot a `claude/bold-joliot-1d4089` ágon nevezte meg. A `bold-joliot-1d4089` munkafa valójában a `claude/hamart-javito` ágon áll; a mérés ezen az ágon készült.
