@@ -2241,6 +2241,51 @@ veti össze vele (hibaosztályonként).
 | `kitolto_modell` | a két kitöltő tényleges modellje (`A=…; B=…`) |
 | `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>`; a seed-202/203 sorain „két korlátozottan vak Opus-kitöltő (… a gépi bekezdés-vágást látták …)” |
 
+### 2.57 `visszhang_tanuk.tsv` — a hatástörténeti szakasz tanúrétege (F183, FELADATOK #183, 2026-11-11)
+
+A lexikonlap „9. Hatástörténet: ókori fordítások és értelmezők” szakaszának „Ókori értelmezők” része ebből a táblából
+renderel. Egy sor = egy ókori értelmező (tanú), aki a motívum egy helyét **ugyanazzal a kapcsolattal** olvassa, amelyet a
+lap leír. A keresési találat (a tanúindex, `konkordancia/Tanu_*` — 2.52 mellett F191; a Chain Lineage Browser) jelölt,
+nem a lap sora: a lapra csak e tábla ellenőrzött sora kerül (CLAUDE.md 2. szabály). Író:
+`eszkozok/visszhang/tanu_kinyer.py` (`beolvas`, `cl`, `ellenoriz`); a Chain Lineage-lekérdezés:
+`eszkozok/visszhang/chain_lineage.py`.
+
+| Oszlop | Tartalom |
+|---|---|
+| `motivum` | a motívum azonosítója |
+| `igehely` | a motívum helye (Károli-alak, az `elofordulasok.tsv` `igehely`-e); csak Remez- vagy Sod-szintű hely (a generátor a többit nem rendereli) |
+| `tanu_hely` | ahol a tanú a kapcsolatot teszi: a tárgyalt vers(ek), Károli-alakban, `; `-vel |
+| `hagyomany` | `gorog` \| `latin` \| `szir` \| `rabbinikus`; helyenként hagyományonként legfeljebb egy ellenőrzött sor |
+| `tanu` | a szerző (magyar névalak, ahol van) vagy a rabbinikus mű |
+| `mu` | a mű címe (a forrás alakjában) |
+| `kor` | a forrás szerinti kor (`N. sz.`; a HCF éve zárójelben); a forrás nélkül üres — emlékezetből nem tölthető |
+| `kapcsolat` | egy mondat, **saját szavakkal, idézet nélkül**: mit lát a tanú; a `gepi` sornál a lánc magversei |
+| `forras` | `hcf` (HistoricalChristianFaith metaadat + a helyi szöveg olvasása) \| `sefaria` (Sefaria-szöveg olvasása) \| `chain_lineage` (tényadat) |
+| `forras_url` | a forrás helye (a `chain_lineage` sornál a lekérdezés JSON-végpontja) |
+| `lekerdezve` | a lekérdezés napja |
+| `biblindex` | `igen`, ha a Chain Lineage-tanú a BiblIndex-láncból jön; különben üres |
+| `kinyeres` | `modell` \| `gepi` |
+| `modell` | a kinyerő tényleges modellneve; `gepi` sornál üres |
+| `ellenorzes` | a második kéz (tényleges modellnév, dátum, a soronkénti indok), a `gepi` sornál a lekérdezés újrafuttatása; **üres: ellenőrizetlen, a lapon nem renderel** |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` (a HCF-sornál a `hcf_id` és a nyers adatbázis sha256-ja) |
+
+**Kulcs:** `motivum` + `igehely` + `hagyomany` + `tanu` + `forras`.
+
+**Szöveg nincs a táblában.** A HCF-idézetek egy része jogvédett (2.52 mellett: `konkordancia/Tanu_index_README.md`), a
+Chain Lineage Browser licencet nem ad meg (a felhasználó döntése, 2026-11-11: csak tényadat és hivatkozás), a Sefaria-
+szövegek licence szövegenként eltér. Ezért a tábla csak tényadatot és egy saját szavas mondatot hordoz; az olvasott
+szöveg a kinyerő és az ellenőr munkaanyaga, a repóba nem kerül.
+
+**Két kéz.** A `modell` sor `kapcsolat` mondatát egy másik modell ellenőrzi a forrásszövegen (a mondat hű-e, a tanú
+ugyanazt a kapcsolatot látja-e, a szerző, mű és kor egyezik-e, nem szó szerinti idézet-e); az ítélet soronkénti, érdemi
+indokkal áll az átnézés-bemenetben (`motivum`, `igehely`, `hagyomany`, `tanu`, `atnezo`, `itelet` = `jo` \| `elvet`,
+`megjegyzes`). A `gepi` sor a lekérdezés újrafuttatásával ellenőrzött: a sor csak akkor íródik, ha a megadott szerző és
+mű a válaszban a lánccsalád minden magversét idézi.
+
+**Forrásmegjelölés a lapon** (a felhasználó jóváhagyásával, 2026-11-11): a Chain Lineage-tanúnál a böngésző
+(Blidstein, Inowlocki, Verheyden; URL, lekérdezési dátum) és a bibliai hivatkozások eredete (BiblIndex, Institut des
+Sources Chrétiennes, CNRS – HiSoMA, Lyon); a HCF-tanúnál a HistoricalChristianFaith adatbázis; a rabbinikusnál a Sefaria.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
