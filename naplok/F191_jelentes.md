@@ -12,7 +12,7 @@
 ## Licenc (a letöltés előtt)
 
 - **HCF:** `LICENSE`: a kompiláció (metaadat) közkincs-dedikáció; az idézetek fair use alapon, a dedikáción kívül → csak metaadat került az indexbe.
-- **Sefaria links:** a fejlesztői oldal „Links License”: „CC-BY” (verzió nélkül) → letölthető és közölhető forrásmegjelöléssel; a szerkesztő (az orkesztrátor továbbításával, 2026-11-11) CC BY-ként elfogadta, forrásmegjelöléssel „Sefaria, CC BY” (DT-F191a; N-F191c lezárva). A Sefaria-szövegek (szövegenként külön licenc) nincsenek az indexben.
+- **Sefaria links:** a fejlesztői oldal „Links License”: „CC-BY” (verzió nélkül) → letölthető és közölhető forrásmegjelöléssel; a szerkesztő (az orkesztrátor továbbításával, 2026-11-11) CC BY-ként elfogadta, forrásmegjelöléssel „Sefaria, CC BY” (DT740; N-F191c lezárva). A Sefaria-szövegek (szövegenként külön licenc) nincsenek az indexben.
 - Nyers adat: `D:\pardes_tanu\hcf\commentaries.sqlite` (sha256 `693e4a90…cd82`), `D:\pardes_tanu\sefaria\links0–17.csv` (sha256 a README-ben).
 
 ## HAMART-minta
