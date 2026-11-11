@@ -3852,6 +3852,13 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     if szotar == 'BDB':
         betu = bdb_betu_javit_aktiv((ctx or {}).get('id'))
         bek[2:] = [bdb_rovidites_jelol(b, strong, betu) for b in bek[2:]]
+        if uj:
+            # F182 (F32): a kutatói rétegben (az apparátusban) a BDB magyar szövegének hivatkozásai Károli-számozással, az
+            # eredeti (héber) szám jelölésével; az olvasói réteg „A motívum helyein” sora eleve Károli-vers
+            # (itt a `bek[2:]` még csak a kutatói tartalom; az olvasói réteg lent, külön épül)
+            terkep = bdb_karoli_terkep(adat, strong)
+            if terkep:
+                bek[2:] = [karoli_szamozas(b, terkep) for b in bek[2:]]
     napl['elnyelt'] = ['%s → %s' % (' '.join(k), ' '.join(v)) for k, v in sorted(elnyelt.items())]
     if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban'] or napl['elnyelt']:
         reszek = []
@@ -3922,6 +3929,64 @@ BDB_BETU_JAVIT = frozenset({'HAMART-001'})
 
 def bdb_betu_javit_aktiv(motivum_id):
     return bool(motivum_id) and motivum_id in BDB_BETU_JAVIT
+
+
+# F182 (F32): a szótári szöveg versszámozása (a BDB a héber MT-t követi) a megjelenítésben Károli-számozásra vált, az eredeti
+# szám jelölésével („2Móz 22:28 (héber számozás: 22:27)”). A térkép a 2.29 átkulcsolt soraiból (`vers_feloldas` =
+# `atkulcsolt*`, `mt_vers` ≠ `karoli_vers`); a forrás szövege nem változik. A könyv és a fejezet a folytatólagos hivatkozásra
+# öröklődik („5Móz 29:11, 13” — a 13 is 5Móz 29).
+KAROLI_SZAM_JEL = ' (héber számozás: %s)'
+_HIV_TOK = re.compile(r'(?P<k>(?<![\w])(?:[1-5])?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{1,6})\s(?P<c>\d{1,3}):(?P<v>\d{1,3})(?![\d:])'
+                      r'|(?<![\w:.])(?P<c2>\d{1,3}):(?P<v2>\d{1,3})(?![\d:])'
+                      r'|(?<=, )(?P<v3>\d{1,3})(?![\d:])')
+
+
+def bdb_karoli_terkep(adat, strong):
+    """{(könyv, fejezet, vers) az MT szerint: (fejezet, vers) a Károliban} a Strong 2.29-soraiból (csak az átkulcsolt sorok)."""
+    ki = {}
+    for sorok in adat['bdb_vj'].values():
+        for r in sorok:
+            if r['strong'] != strong or not (r.get('vers_feloldas') or '').startswith('atkulcsolt'):
+                continue
+            m1 = re.match(r'^(.+) (\d+):(\d+)$', r.get('mt_vers') or '')
+            m2 = re.match(r'^(.+) (\d+):(\d+)$', r.get('karoli_vers') or '')
+            if m1 and m2 and m1.group(1) == m2.group(1) and m1.groups() != m2.groups():
+                ki[(m1.group(1), m1.group(2), m1.group(3))] = (m2.group(2), m2.group(3))
+    return ki
+
+
+def karoli_szamozas(szoveg, terkep):
+    """A szöveg hivatkozásai a `terkep` szerint Károli-számozással, az eredeti szám jelölésével (csak megjelenítés)."""
+    if not terkep:
+        return szoveg
+    ki, poz, konyv, fej, elozo_veg = [], 0, None, None, -10
+    for m in _HIV_TOK.finditer(szoveg):
+        if m.group('k'):
+            konyv, fej, vers = m.group('k'), m.group('c'), m.group('v')
+        elif m.group('c2'):
+            if konyv is None:
+                elozo_veg = m.end()
+                fej = m.group('c2')
+                continue
+            fej, vers = m.group('c2'), m.group('v2')
+        else:
+            if konyv is None or fej is None or m.start() - elozo_veg != 2:
+                continue
+            vers = m.group('v3')
+        elozo_veg = m.end()
+        cel = terkep.get((konyv, fej, vers))
+        if not cel:
+            continue
+        eredeti = '%s:%s' % (fej, vers)
+        if m.group('k'):
+            uj = '%s %s:%s' % (konyv, cel[0], cel[1])
+        elif m.group('c2') or cel[0] != fej:
+            uj = '%s:%s' % cel
+        else:
+            uj = cel[1]
+        ki.append(szoveg[poz:m.start()] + uj + KAROLI_SZAM_JEL % eredeti)
+        poz = m.end()
+    return ''.join(ki) + szoveg[poz:]
 
 
 def bdb_rovidites_jelol(szoveg, strong, betu=False):

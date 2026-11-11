@@ -1155,5 +1155,25 @@ class F182Glossza(unittest.TestCase):
         self.assertEqual(LG._elso_tagmondat(t, csonkit_jel=True), 'ember ellen 1Móz 31:36 …')
         self.assertEqual(LG._elso_tagmondat('a. ember ellen 1Móz 31:36', csonkit_jel=True), 'ember ellen 1Móz 31:36')
 
+
+class F182KaroliSzamozas(unittest.TestCase):
+    """F182 (F32): Károli-versszámozás a szótári hivatkozásokban (csak megjelenítés, az eredeti szám jelölésével)."""
+
+    T = {('2Móz', '22', '27'): ('22', '28'), ('5Móz', '29', '11'): ('29', '12'), ('5Móz', '29', '13'): ('29', '14')}
+
+    def test_konyv_es_fejezet_oroklodik(self):
+        self.assertEqual(LG.karoli_szamozas('átok 2Móz 22:27; 5Móz 29:11, 13, 18; 30:1', self.T),
+                         'átok 2Móz 22:28 (héber számozás: 22:27); 5Móz 29:12 (héber számozás: 29:11), '
+                         '14 (héber számozás: 29:13), 18; 30:1')
+
+    def test_terkep_a_2_29_atkulcsolt_sorabol(self):
+        self.assertEqual(LG.bdb_karoli_terkep(LG.gerinc_adat(), 'H0779'), {('2Móz', '22', '27'): ('22', '28')})
+
+    def test_nem_letezo_karoli_vers_jelentes(self):
+        import ellenoriz as E
+        lap = '## 4. Szótári háttér\n\nl. 2Móz 22:28; 99:1, és 1Móz 3:17\n\n## 5. LXX\n'
+        kv = {'versek': {'2Móz 22:28', '1Móz 3:17'}, 'konyvek': {'2Móz', '1Móz'}}
+        self.assertEqual(E.szotari_hivatkozas_hibak(lap, kv), ['2Móz 99:1'])
+
 if __name__ == '__main__':
     unittest.main()

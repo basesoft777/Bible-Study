@@ -2455,6 +2455,64 @@ def szabaly42_forditas_a_lapon(adat_dir, lex_dir=None):
                megjegyzes='javítás: a bekötés a generátorban, utána újragenerálás')
 
 
+# 43. szabály (F182, F32 (b)): a szótári szöveg (a lap 4. szakasza) hivatkozása — a könyv és a fejezet öröklésével, a
+# megjelenítő Károli-számozása után — a Károliban nem létező versre mutat. JELENTÉS (a szótár saját hibája vagy eltérő
+# számozása, amelyet a megjelenítő nem ismer; a forrás nem változik).
+def szotari_hivatkozas_hibak(lap, karoli_versek):
+    import lexikon_general as LG
+    m = re.search(r'(?ms)^## 4\. Szótári háttér.*?(?=^## 5\.)', lap)
+    if not m:
+        return []
+    t = re.sub(r'<!--.*?-->', '', m.group(0), flags=re.S)
+    t = re.sub(r'\s\(héber számozás: [^)]*\)', '', t)
+    ki, konyv, fej, elozo_veg = [], None, None, -10
+    for h in LG._HIV_TOK.finditer(t):
+        if h.group('k'):
+            konyv, fej, vers = h.group('k'), h.group('c'), h.group('v')
+        elif h.group('c2'):
+            if konyv is None:
+                continue
+            fej, vers = h.group('c2'), h.group('v2')
+        else:
+            if konyv is None or fej is None or h.start() - elozo_veg != 2:
+                continue
+            vers = h.group('v3')
+        elozo_veg = h.end()
+        ig = '%s %s:%s' % (konyv, fej, vers)
+        if konyv in karoli_versek['konyvek'] and ig not in karoli_versek['versek']:
+            ki.append(ig)
+    return ki
+
+
+def szabaly43_szotari_hivatkozas(adat_dir, lex_dir=None):
+    cim = '43. A szótári szöveg hivatkozása létező Károli-versre mutat (F182, F32)'
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    lex_dir = lex_dir or os.path.join(gyoker, 'lexikon')
+    kar = os.path.join(gyoker, 'konkordancia', 'Karoli_1908.tsv')
+    if not os.path.isdir(lex_dir) or not os.path.exists(kar):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ vagy Karoli_1908.tsv')
+    import lexikon_general as LG
+    versek = set()
+    with open(kar, encoding='utf-8') as f:
+        for sor in f:
+            c = sor.split('\t', 1)[0]
+            if re.match(r'^\S+ \d+:\d+$', c):
+                versek.add(c)
+    kv = {'versek': versek, 'konyvek': {v.rsplit(' ', 1)[0] for v in versek}}
+    jelentes = []
+    for nev in sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md')):
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lap = f.read()
+        if not LG.UJ_SZERKEZET_RX.search(lap):
+            continue
+        hibak = szotari_hivatkozas_hibak(lap, kv)
+        if hibak:
+            jelentes.append('%s: %d hivatkozás nem létező Károli-versre (pl. %s)' % (
+                nev[:-len('_TUDOMANYOS.md')], len(hibak), ', '.join(hibak[:6])))
+    return Sor(cim, _verdikt([], jelentes), len(jelentes) or None, jelentes,
+               megjegyzes='a szótár hivatkozása; a megjelenítő Károli-számozása: lexikon_general.karoli_szamozas')
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2581,6 +2639,7 @@ def main():
         tabla_sorok.append(szabaly40_hamart_regresszio(args.adat))
         tabla_sorok.append(szabaly41_kozlemeny_szerkeszto(args.adat))
         tabla_sorok.append(szabaly42_forditas_a_lapon(args.adat))
+        tabla_sorok.append(szabaly43_szotari_hivatkozas(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
