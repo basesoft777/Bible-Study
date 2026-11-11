@@ -9,7 +9,7 @@ allapot: megallt
 ag: claude/szabalyhelyek-97e545
 pr: 687
 ad: a sablon 6, 9, 10 és a MUNKAMENET a HAMART új szerkezetét (9. Hatástörténet, 10–12. átszámozva) és a KESZ_LAP_KOVETELMENY (b) és J döntéseit írja elő; az ISTENTISZT-001 prózaírója nem ismétli a „10. Alkalmazás”-hibát
-kovetkezo: "Te: a DT-F193d (részleges felülírás-jelölés) jóváhagyása, a draft PR áttekintése és merge-e; az ISTENTISZT-001 prózája ezután és a visszhang 2 adata (#183) után indulhat (sablon 10 előfeltétel 3.)"
+kovetkezo: "Te: a draft PR áttekintése és merge-e; az ISTENTISZT-001 prózája ezután és a visszhang 2 adata (#183) után indulhat (sablon 10 előfeltétel 3.)"
 munka: folyamat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, DONTESEK.md]
 ir: [sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, .claude/commands/kiadas.md, DONTESEK.md, naplok/ELLENOR_F193.md, dontesek/uj/szabalyhelyek-97e545.md, nyitott/uj/szabalyhelyek-97e545.md, F193_SZABALYHELYEK_BRIEF.md]
@@ -54,7 +54,7 @@ fugg: []
 
 ## Megállás
 
-A DT-F193a–c a felhasználó döntéseinek alkalmazása. A DT-F193d (részleges jelölés, az Eltérések 1–2. pontja) a B17 és a B19 szövegétől eltér, ezért 🟡 javaslat: ⛔ a felhasználó jóváhagyására vár; ha elveti, a DT547 a DT752 szerinti teljes jelölést kapja. A merge a felhasználóé.
+A DT-F193a–c a felhasználó döntéseinek alkalmazása. A DT-F193d (részleges jelölés, az Eltérések 1–2. pontja) a B17 és a B19 szövegétől eltér, ezért javaslatként ment a felhasználó elé; jóváhagyva (2026-11-11, az orkesztrátor továbbításában: „mehet”), 🟢. A merge a felhasználóé.
 
 ## Ellenőrzés és javítókör
 
