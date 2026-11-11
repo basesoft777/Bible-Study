@@ -9,7 +9,7 @@
 3. **A Kolofon licencei** (`olvasoi_licencek`, a forrástáblában és a 12. Irodalom „Adatforrások” listájában): a nyílt adatmagban (CC BY 4.0) kiadott saját adat — a motívumtábla, az előfordulás-tábla, a jelöltek döntésnaplója, a kapcsolat-tábla, a motívumközi kapcsolatok, az elutasítási okok (`nyilt_mag_export.py` forrásai) — „CC BY 4.0 (a nyílt adatmagban)”; a Károli–Strong párosítás CC BY 4.0 (DT623, `Karoli_Strong_parok`); a fordítástábla: „a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva”. A nyílt magba nem kerülő saját táblák (pl. a Károli-szavak szótári alakjai, a versmegfeleltetés, az LXX-döntések táblája) licence „minden jog fenntartva” marad — ez igaz.
 4. **Módszertani elvek:** a bekezdés eddig egy link-címet hordozott („[A módszer Hays hét kritériumának tükrében](…)”), amely olvasóként kitöltetlen helyőrzőnek látszott. Helyette saját szavas próza a közlemény (`kozlemeny/HAYS_LEKEPEZES.md`) táblája szerint: mit fed a módszer Hays hét kérdéséből, mit részben, mit nem; a közlemény címe idézőjelben, link-szintaxis nélkül.
 
-**Nem változott (a felhasználó értékeire vár):** a szerző neve, a lexikon címe és a kanonikus URL helyőrzője („[HELYŐRZŐ: SZERZŐ NEVE]”, „[HELYŐRZŐ: A LEXIKON CÍME]”, „<KANONIKUS_FORRAS_URL>”).
+**A szerző neve, a lexikon címe és a kanonikus cím:** az F182.67-ben még helyőrző volt; a felhasználó értékeivel az F182.68 vezette át (l. lent).
 
 ## Ellenőrzés (helyben)
 
