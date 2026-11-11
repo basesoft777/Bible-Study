@@ -5,10 +5,12 @@ kod: VISSZHANG_USZ_TANU
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: lezarva
 ag: claude/visszhang-usz-tanu
 ad: a HAMART-001 visszhang-rétegének ÚSZ-ága (Vulgata, szövegváltozat, LXX-előkép) és tanúrétege (egyházatyai index, rabbinikus, Glossa Ordinaria) kinyerő táblából, két kézzel; akadémiai forrás a vitatott pontoknál; N-F176b/c; makett jóváhagyása után a generátor és a HAMART-lap újragenerálása
-kovetkezo: "F183 fut: hatástörténeti főszakasz, ÚSZ-ág, tanúréteg (ebben a sessionben, subagent nélkül)"
+kovetkezo: "merge a felhasználótól; utána a HAMART-001 lap átnézése (lektor, felhasználó) egyszer, egy javítókör, kiadás"
+pr: https://github.com/basesoft777/Bible-Study/pull/690
+lezarva_osszegzes: "A HAMART-001 lapján a 9. Hatástörténet főszakasz (a visszhang 1 áthelyezve, ÚSZ-ág: Vulgata, szövegváltozat, LXX-előkép; tanúréteg: 10 tanú 6 helyen HCF-, Sefaria-, Glossa- és Chain Lineage-forrásból, két kézzel), a Glossa Ordinaria a Vulgata-csomagból (12 968 jegyzet), új eszközök és teszt a CI-ben; független ellenőrzés ELTÉRÉS 13 → egy javítókör; az akadémiai hang (K67f) nyitott: N-F183a"
 munka: folyamat
 olvas: [F176_VISSZHANG_ADAT_BRIEF.md, "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", F178_LEXIKON_AG_LEZARAS_BRIEF.md, konkordancia/VISSZHANG_README.md, konkordancia/Vulgata_Clementina.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/TAGNT_valtozatok.tsv, adat/visszhang_megfelelok.tsv, adat/SEMA.md, motivumok/HAMART-001.md, lexikon/HAMART-001_TUDOMANYOS.md, naplok/HATAR_HAMART-001.md]
 ir: [eszkozok/lexikon_general.py, eszkozok/visszhang/, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/SEMA.md, adat/datasetek.tsv, konkordancia/VISSZHANG_README.md, lexikon/HAMART-001_TUDOMANYOS.md, naplok/F183_jelentes.md, .github/workflows/ellenorzes.yml]
