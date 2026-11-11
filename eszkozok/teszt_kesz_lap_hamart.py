@@ -75,8 +75,20 @@ class Lap(unittest.TestCase):
 
     def test_a08_es_kh_labjegyzet(self):
         for t in ('proveniencia: forrás:', '| igazolas:', 'jelentes_szam', '(4/b. rész)', '(4/c. rész)', 'napló: ',
-                  'indoklás (nyers)', 'halo=', 'lanc ±1'):
+                  'indoklás (nyers)', 'halo=', 'lanc ±1', 'csatorna=', 'szamozas_elteres', 'forras_kereses'):
             self.assertNotIn(t, self.lathato, t)
+        self.assertIsNone(re.search(r'\(\d+(?:/[a-z])?\. rész\)', self.lathato))   # F182 javítókör: „(7. rész)” sem
+
+    def test_olvasoi_atiras_nyers_jelek(self):
+        """F182 javítókör (ELLENOR_F182 #5, #6): az olvasói átírás a napló-utalást és a nyers jeleket olvasói alakra írja."""
+        for be, tilos in (('forrás: `négyforrásos audit a napló §7 szerint, retroaktív N14 betöltés`', 'rész)'),
+                          ('*Proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | n=2 | ts=2026-11-02T13:17Z '
+                           '| csatorna=cli*', 'csatorna'),
+                          ('| Jer 51:46 | — | x | — | szamozas_elteres | Septuaginta |', 'szamozas_elteres'),
+                          ('a minősített jelöltek (forras_kereses: TSK / Károli-KH).', 'forras_kereses')):
+            ki = LG.olvasoi_atiras(be)
+            self.assertNotIn(tilos, re.sub(r'<!--.*?-->', '', ki), ki)
+            self.assertEqual(kapu(uj_lap(re.sub(r'<!--.*?-->', '', ki)), 'NYERS_JEL'), [], ki)
         self.assertIsNone(re.search(r'sorszám \d+(?:, \d+)*\)', self.lathato))
 
     def test_a24_413_414(self):
@@ -223,7 +235,11 @@ class Kapuk(unittest.TestCase):
 
     def test_nyers_jel(self):
         for hibas in ('[^1]: proveniencia: forrás: x | igazolas: y', 'napló: a motívum naplója (4/b. rész)',
-                      'tW: kt/curse', 'a szó: [szónézet: /szo/G1](/szo/G1)', '| adat/karoli_strong | x |', 'רַע‎_226 melléknév'):
+                      'tW: kt/curse', 'a szó: [szónézet: /szo/G1](/szo/G1)', '| adat/karoli_strong | x |', 'רַע‎_226 melléknév',
+                      # F182 javítókör (ELLENOR_F182 #5, #6)
+                      '[^k1]: forrás: a motívum kereszthivatkozás-naplójában (7. rész), utólagos betöltés',
+                      '*Forrás: a héber szöveg, 2026-11-02 | csatorna=cli*', '| Jer 51:46 | — | x | — | szamozas_elteres |',
+                      'a minősített jelöltek (forras_kereses: TSK / Károli-KH).'):
             self.assertTrue(kapu(uj_lap(hibas), 'NYERS_JEL'), hibas)
         self.assertEqual(kapu(uj_lap('Forrás: a jelöltek döntésnaplója, 2026-11-11.'), 'NYERS_JEL'), [])
         self.assertEqual(kapu('# X\n\n## 2. Előfordulások\n\nnapló: x\n', 'NYERS_JEL'), [])

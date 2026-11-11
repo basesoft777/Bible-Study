@@ -7182,7 +7182,14 @@ UJ_OLVASOI_MUNKASZO = (
     (re.compile(r'\bindoklas mezőjéből\b'), 'indoklás mezőjéből'),
     (re.compile(r'\b(Strong-)?token(\w*)'), lambda m: _token_olvasoi(m.group(1), m.group(2))),
     (re.compile(r'négyforrásos audit a napló §7 szerint, retroaktív\s+betöltés'),
-     'négy forrás összevetése a motívum korábbi kereszthivatkozás-naplójában (7. rész), utólagos betöltés'),
+     'négy forrás összevetése a motívum korábbi kereszthivatkozás-naplójában, utólagos betöltés'),
+    # F182 javítókör (ELLENOR_F182 #5, #6): a napló-szakasz utalása („(7. rész)”, „(4/b. rész)”) és a nyers mezőnevek,
+    # -értékek (`csatorna=cli`, `szamozas_elteres`, `forras_kereses`) olvasói alakja; a kapu: `olvasoi_kapu.NYERS_JELEK`
+    (re.compile(r'\s*\(\d+(?:/[a-z])?\. rész\)'), ''),
+    (re.compile(r'\s*[|·]\s*csatorna=\w+'), ''),
+    (re.compile(r'\bszamozas_elteres\b'), 'versszámozás miatt nem párosítva'),
+    (re.compile(r'\s*\(forras_kereses: ([^)]*)\)'), r' (a keresés forrása: \1)'),
+    (re.compile(r'\bforras_kereses\b'), 'a keresés forrása'),
 )
 _TOKEN_RAG = {'': 'szó', 'je': 'szava', 'jét': 'szavát', 'jei': 'szavai', 'jeihez': 'szavaihoz', 'enként': 'szavanként',
               're': 'szóra', 'hez': 'szóhoz', 'ek': 'szavak', 'sorrend': 'szósorrend'}
@@ -7264,8 +7271,8 @@ def _olvasoi_resz(t):
     # a ragozott fájlnév („az `elofordulasok.tsv`-ből”): a név zárójeles forrásmegjelölésként, rag és névelő nélkül
     t = re.sub(r'(?:\b[Aa]z?\s+)?`?((?:[\w.-]+/)*[\w-]+\.(?:tsv|py|md|txt|json))`?-[a-záéíóöőúüű]+',
                lambda m: '(forrás: %s)' % olvasoi_forrasnev(m.group(1)), t)
-    t = _FAJL_RX.sub(lambda m: olvasoi_forrasnev(m.group(0).split('§')[0].strip())
-                     + ((' (%s. rész)' % m.group(1)) if m.group(1) else ''), t)
+    # F182 javítókör (ELLENOR_F182 #5): a fájl szakaszjele („§7”) napló-utalás, az olvasói szövegben nem áll
+    t = _FAJL_RX.sub(lambda m: olvasoi_forrasnev(m.group(0).split('§')[0].strip()), t)
     t = _DT_RX.sub(lambda m: 'szerkesztői döntés' + ((', ' + dontes_datum(ervenyes_dontes(m.group(0))))
                                                       if dontes_datum(ervenyes_dontes(m.group(0))) else ''), t)
     t = _TETEL_RX.sub('', t)
