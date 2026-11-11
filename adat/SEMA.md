@@ -1970,7 +1970,12 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 a 9. kapu piros, és új átnézés kell. Kivétel (DT665, a DT569 általánosítása): a **gépi** szótári és Károli-KH
 forrásadat-javítás nem érvényteleníti az átnézést, ha (a) a próza, a minősítés és a határ nem változik, (b) a lapdiff
 csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés
-felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése a 9. kapuban még nincs meg (N-F184a). Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
+felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése (F203, N-F184a): `eszkozok/lapdiff_blokk.py` a lap
+két változatát blokkokra bontja (a generált blokk a jelölője `#<név>`-e, a kívüli szöveg az előző `##` címsor szerint; a jelölősor
+`ts=`-e nem számít), és a (b) akkor teljesül, ha csak a `szocikkek`, a `kereszthivatkozasok` és a `kolofon` blokk változott. A 9.
+kapu (`muhely_allapot.vizualis_atnezes`) a lap mai commitjáról szóló sor híján a legutóbbi olyan felhasználói sort fogadja el,
+amelynek a változatától a mai lapig a (b) teljesül, és az átnézett változat őse a mainak; a részletben a kivételt és a kolofon
+változását (a (c) jele) kiírja. A (c) jelentésbeli felsorolását a kapu nem olvassa. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
 Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 8 sor — ALVIL-001 4, ANTROP-001 3, ISTENTISZT-001 1.
