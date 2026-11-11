@@ -575,7 +575,39 @@ def manko_jelzes(e, vegleges, tabla, karoli_cache):
     if e['strong'] not in karoli_cache:
         karoli_cache[e['strong']] = GLF.karoli_alakok_strongra(e['strong'])
     ka = GLF.karoli_ellenorzes(sor, karoli_cache[e['strong']])
-    return {'szojegyzek': list(sz), 'karoli': list(ka), 'jelzes': sz[0] == 'utkozik'}
+    tn = tulajdonnev_jelzes(e['strong'], vegleges)
+    return {'szojegyzek': list(sz), 'karoli': list(ka), 'tulajdonnev': tn, 'jelzes': sz[0] == 'utkozik' or bool(tn)}
+
+
+_TIPNR = {}
+
+
+def tipnr_strongok(ut=None):
+    """A TIPNR tulajdonnév-index Strong-számai (`konkordancia/TIPNR_kivonat.tsv` `Strong-szám` oszlopa), Strong_padded alakban."""
+    ut = ut or os.path.join(os.path.dirname(ITT), 'konkordancia', 'TIPNR_kivonat.tsv')
+    if ut not in _TIPNR:
+        ki = set()
+        if os.path.exists(ut):
+            with open(ut, encoding='utf-8') as f:
+                fej = f.readline().rstrip('\n').split('\t')
+                i = fej.index('Strong-szám') if 'Strong-szám' in fej else 2
+                for l in f:
+                    c = l.rstrip('\n').split('\t')
+                    if len(c) > i and re.match(r'^[GH]\d{4}', c[i]):
+                        ki.add(c[i][:5])
+        _TIPNR[ut] = ki
+    return _TIPNR[ut]
+
+
+def tulajdonnev_jelzes(strong, vegleges, tipnr=None):
+    """F203 (N88 (2), második előfordulás: F161.11 után a G0076 „ádám”): a TIPNR tulajdonnév-indexében álló Strong kisbetűs
+    fordítása jelzés (a beíráshoz `--jelzes-atnezve` kell). Nem gátol és nem javít: a népnév/törzsnév a magyarban kisbetűs
+    (G3019 „lévita”), ezt a jelzés átnézője dönti el. -> a jelzés szövege, vagy ''."""
+    t = tipnr if tipnr is not None else tipnr_strongok()
+    elso = (vegleges or '').lstrip()[:1]
+    if strong[:5] in t and elso.isalpha() and elso.islower():
+        return 'tulajdonnév-index (TIPNR) Strongja kisbetűvel: %s' % vegleges
+    return ''
 
 
 def kapuz():

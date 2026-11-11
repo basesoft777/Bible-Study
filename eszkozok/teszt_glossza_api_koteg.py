@@ -304,5 +304,23 @@ class TeljesUt(Alap):
             self.assertEqual(a.read(), b.read())
 
 
+class Tulajdonnev(unittest.TestCase):
+    """F203 (N88 (2), második előfordulás): a TIPNR-Strong kisbetűs fordítása jelzés (a beírás `--jelzes-atnezve`-t kér)."""
+
+    def test_kisbetus_tulajdonnev_jelzes(self):
+        t = {'G0076', 'G3019'}
+        self.assertTrue(L.tulajdonnev_jelzes('G0076', 'ádám', t))
+        self.assertEqual(L.tulajdonnev_jelzes('G0076', 'Ádám', t), '')
+        self.assertTrue(L.tulajdonnev_jelzes('G3019', 'lévita', t))      # a jelzés átnézője dönt (a népnév kisbetűs)
+        self.assertEqual(L.tulajdonnev_jelzes('G0068', 'mező', t), '')   # nem tulajdonnév
+
+    def test_a_valos_tipnr(self):
+        t = L.tipnr_strongok()
+        if not t:
+            self.skipTest('nincs TIPNR_kivonat.tsv')
+        self.assertIn('G0076', t)
+        self.assertNotIn('G0068', t)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
