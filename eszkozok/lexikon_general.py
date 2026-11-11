@@ -849,7 +849,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         labjegyzet_jel = ''
         jelentes_ik = ''
         if gerinc:
-            jelentes_szo, jelentes_ik = jelentes_cella(g_adat, s)
+            jelentes_szo, jelentes_ik = jelentes_cella(g_adat, s, uj=uj_szerkezet(m['id']))
         if proveniencia or igazolas or jelentes_ik:
             lj = 'proveniencia: %s | igazolas: %s' % (proveniencia or EM_DASH, igazolas or EM_DASH)
             if jelentes_ik:
@@ -3086,9 +3086,31 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
 
 
 
-def jelentes_cella(adat, sor):
+def _szakasz_olvasoi_glossza(adat, strong, jel):
+    """F182: a BDB-szakasz olvasói glosszája a jele szerint (a kártya szabályával: `olvasoi_glossza`); None, ha nincs."""
+    for sz in bdb_gerinc_szocikkek(adat, strong)[0]:
+        for k, j, hu, _a, _f in sz['szakaszok']:
+            if szakasz_kulcs_jel(adat, 'BDB', strong, k) == jel:
+                cimke = (adat['cimke'].get(('BDB', strong) + k) or {}).get('cimke_hu') or ''
+                return olvasoi_glossza(j, cimke, hu)
+    return None
+
+
+def _tagolatlan_olvasoi(adat, strong):
+    """F182: a tagolatlan (számozott jelentés nélküli) BDB-szócikk olvasói neve a fej glosszájával; None, ha a szócikk tagolt."""
+    szocikkek = bdb_gerinc_szocikkek(adat, strong)[0]
+    if len(szocikkek) != 1 or szocikkek[0]['szakaszok']:
+        return None
+    fej = szocikkek[0]['fej']
+    gl = fej_glossza(fej[2] if fej and fej[2] else '')
+    return 'a szócikk egésze' + (' — %s' % gl if gl else '')
+
+
+def jelentes_cella(adat, sor, uj=False):
     """Az előfordulás-tábla „Jelentés (a szó)” cellája és az ⓘ szövege: (cella, ⓘ).
-    Összetett Strong-mezőnél tokenenként; a kutatói hozzárendelés a `lexikon_entry_id` tokenjéé."""
+    Összetett Strong-mezőnél tokenenként; a kutatói hozzárendelés a `lexikon_entry_id` tokenjéé. `uj` (F182, az új
+    szerkezetű lap): címke nélküli pontnál a szakasz olvasói glosszája áll a „(nincs címke: …)” helyett, a tagolatlan
+    szócikknél „a szócikk egésze” a „(nincs hozzárendelés)” helyett (a régi lapok szövege változatlan, E28)."""
     szotar = sor.get('lexikon_szotar') or ''
     entry = sor.get('lexikon_entry_id') or ''
     tokenek = [t for t in (sor.get('strong') or '').split('+') if t and STRONG_TOKEN_RE.match(t)]
@@ -3111,8 +3133,14 @@ def jelentes_cella(adat, sor):
             else:
                 tinfo = 'a Thayer a helyet nem idézi (`%s`)' % THAYER_VERS_JELENTES_FAJL
             info = '; '.join(x for x in (info, tinfo) if x)
+        gl = _szakasz_olvasoi_glossza(adat, t, jel) if (uj and not cimke and jel and t_szotar == 'BDB') else None
+        tg = _tagolatlan_olvasoi(adat, t) if (uj and not cimke and not jel and t.startswith('H')) else None
         if cimke:
             szov = '%s · %s' % (cimke, jel)
+        elif gl:
+            szov = '%s · %s' % (gl, jel)
+        elif tg:
+            szov = tg
         elif jel:
             szov = '*(nincs címke: %s)*' % jel
         else:
@@ -3122,7 +3150,7 @@ def jelentes_cella(adat, sor):
         reszek.append((t, szov))
         ik.append('%s — %s' % (t, info) if len(tokenek) > 1 else info)
     if not reszek:
-        return '*(nincs hozzárendelés)*', 'a sornak nincs Strong-tokenje'
+        return (EM_DASH if uj else '*(nincs hozzárendelés)*'), 'a sornak nincs Strong-tokenje'
     if len(reszek) == 1:
         cella = reszek[0][1]
     else:
@@ -3788,7 +3816,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
                 continue
             k = teljes_ut.get((b, gerinc_utvonal_vag(r['utvonal'])))
             if k is None:
-                napl['nem_talalt'].append(azon + ': az útvonal nincs a szakasztáblában')
+                if not (uj and r['utvonal'] == 'tagolatlan'):
+                    napl['nem_talalt'].append(azon + ': az útvonal nincs a szakasztáblában')
                 if r['utvonal'] == 'tagolatlan':
                     pont(vers, (b, 'tagolatlan'), r)       # F104: a tagolatlan szócikk egésze
                 else:

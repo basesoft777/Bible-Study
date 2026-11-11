@@ -1175,5 +1175,31 @@ class F182KaroliSzamozas(unittest.TestCase):
         kv = {'versek': {'2Móz 22:28', '1Móz 3:17'}, 'konyvek': {'2Móz', '1Móz'}}
         self.assertEqual(E.szotari_hivatkozas_hibak(lap, kv), ['2Móz 99:1'])
 
+
+class F182LathatoHibak(unittest.TestCase):
+    """F182 (befagyasztás, 1. pont): a HAMART-001 lapján nem áll belső hiányjel a Jelentés cellában, és a tagolatlan szócikk
+    pontja nem „nem található”."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'lexikon',
+                               'HAMART-001_TUDOMANYOS.md'), encoding='utf-8') as f:
+            cls.lap = f.read()
+
+    def test_nincs_belso_hianyjel(self):
+        for t in ('*(nincs címke:', '*(nincs hozzárendelés)*', 'az útvonal nincs a szakasztáblában'):
+            self.assertNotIn(t, self.lap, t)
+
+    def test_cella_glosszaval(self):
+        self.assertIn('| Isten ellen · 1.b[^', self.lap)
+        self.assertIn('| a szócikk egésze — fájdalom, fáradság[^', self.lap)
+
+    def test_regi_lapon_valtozatlan(self):
+        a = LG.gerinc_adat()
+        sor = {'lexikon_szotar': 'BDB', 'lexikon_entry_id': 'H6093', 'strong': 'H6093', 'jelentes_szam': '',
+               'igehely': '1Móz 3:16'}
+        self.assertEqual(LG.jelentes_cella(a, sor)[0], '*(nincs hozzárendelés)*')
+        self.assertTrue(LG.jelentes_cella(a, sor, uj=True)[0].startswith('a szócikk egésze'))
+
 if __name__ == '__main__':
     unittest.main()
