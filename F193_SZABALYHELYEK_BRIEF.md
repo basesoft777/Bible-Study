@@ -14,6 +14,7 @@ munka: folyamat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, DONTESEK.md]
 ir: [sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, .claude/commands/kiadas.md, DONTESEK.md, naplok/ELLENOR_F193.md, dontesek/uj/szabalyhelyek-97e545.md, nyitott/uj/szabalyhelyek-97e545.md, F193_SZABALYHELYEK_BRIEF.md]
 fugg: []
+nem_fugg: [123, 125, 178, 190]
 ---
 
 # F193_SZABALYHELYEK_BRIEF.md — A szabályhelyek igazítása a HAMART új aranyához
