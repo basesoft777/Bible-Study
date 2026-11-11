@@ -112,6 +112,10 @@
 - 2.: a Jel 22:3 cellája.
 - Minden lista és tábla névelő nélkül.
 
+## Független ellenőrzés és javítókör
+
+A `fuggetlen-ellenor` (claude-opus-5-5) az F125.LJ1–LJ3-at nézte: ELTÉRÉS 17. Az egyetlen javítókör (F125.LJ6) tételenként a `naplok/ELLENOR_HAMART_lapjavit.md` végén. A legsúlyosabb: a 2Kir 17:23 „szín” szava (Isten színe, nem a földé) — javítva; az Ez 28:16/17 megszólítottja a jelöltsorokban és a nyílt magban — javítva; a `nevelo_le` mondat-cellái és kódblokkja — javítva; a „többsége közepes” feltétele — javítva. Az „Emberi lektorálás” sor: a helyekre a modell-lektor (claude-fable-5-2) mutatott rá, a jóváhagyás a felhasználóé, az orkesztrátoron át.
+
 ## A 46 tétel — hol és hogyan
 
 | # | Hol | Hogyan |

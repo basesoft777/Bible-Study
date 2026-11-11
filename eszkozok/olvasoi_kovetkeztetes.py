@@ -385,8 +385,10 @@ def kapcsolatok(n, csomopont, tipusok, magas, kozepes=None):
     else:
         szerk = 'a motívum helyei között többféle kapcsolat van, egyik sem uralkodó'
     keves = 'a kapcsolatok többsége bizonytalan'
-    if kozepes is not None and kozepes >= (n - magas) / 2:
+    if kozepes is not None and 2 * kozepes > n:   # ELLENOR_HAMART_lapjavit 5.: csak ha valóban többség
         keves = 'a kapcsolatok többsége közepes bizonyosságú'
+    elif kozepes is not None:
+        keves = 'a kapcsolatok kevesebb mint fele magas bizonyosságú'
     biz = {'szinte': 'a kapcsolatok szinte mind biztosak', 'tobbseg': 'a kapcsolatok többsége biztos',
            'fele': 'a kapcsolatok fele-kétharmada biztos', 'keves': keves}[fok(magas / n)]
     return '%s %s %s, és %s.' % (lelet, KOVETKEZTETES, szerk, biz)

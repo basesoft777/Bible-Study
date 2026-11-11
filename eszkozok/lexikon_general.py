@@ -7650,10 +7650,13 @@ SZONEZET_NYERS_RX = re.compile(r'\[szónézet: (/szo/[HG]\d{4}[a-z]?)\]\(\1\)')
 # --- lap-javit HAMART-001 (orkesztrátori tétel, a felhasználó: „pedig ezt külön megjelöltük”): lista- és
 # táblaelem nem kezdődik névelővel. A forrásnév a táblában névelő nélkül tárolódik (`olvasoi_forrasnev`); az adatból
 # jövő leíró cella vagy listaelem eleji kisbetűs „a”/„az” névelője itt marad le, és az elem nagy kezdőbetűt kap. A
-# mondatkezdő, nagybetűs „A”/„Az” (pl. számozott kérdéslista) marad. Kapu: `olvasoi_kapu.py` NEVELO.
-_NEVELO_ELEM_RX = re.compile(r'^((?:\*\*|\*|\[|`)?)(?:a|az)\s+(?=\S)')
+# mondatkezdő, nagybetűs „A”/„Az” (pl. számozott kérdéslista) marad. Kapu: `olvasoi_kapu.py` LISTA_NEVELO.
+# ELLENOR_HAMART_lapjavit 4.: a mondat értékű elem (legalább NEVELO_MONDAT_SZO szó) a névelőt megtartja, nagy
+# kezdőbetűvel („A szótár a héber … szerint idézi”); a kódblokk belseje és az inline kód védett.
+_NEVELO_ELEM_RX = re.compile(r'^((?:\*\*|\*|\[)?)(a|az)\s+(?=\S)')
 _LISTAELEM_RX = re.compile(r'^(\s*(?:[-*]|\d+\.)\s+)(.*)$')
 _KOMMENT_RX = re.compile(r'<!--.*?-->')
+NEVELO_MONDAT_SZO = 6
 
 
 def _nevelo_nelkul(e):
@@ -7661,22 +7664,28 @@ def _nevelo_nelkul(e):
     if not m:
         return e
     rest = e[m.end():]
+    if len(_KOMMENT_RX.sub('', rest).split()) >= NEVELO_MONDAT_SZO:
+        return m.group(1) + m.group(2).capitalize() + ' ' + rest
     return m.group(1) + (rest[:1].upper() + rest[1:] if rest[:1].isalpha() else rest)
 
 
 def nevelo_le(szoveg):
-    ki, komment = [], False
+    ki, komment, kod = [], False, False
     for sor in szoveg.split('\n'):
         t = sor.strip()
+        if t.startswith('```'):
+            kod = not kod
+            ki.append(sor)
+            continue
+        if kod:
+            ki.append(sor)
+            continue
         if komment:
             komment = '-->' not in sor
             ki.append(sor)
             continue
         if t.startswith('<!--'):
             komment = '-->' not in sor
-            ki.append(sor)
-            continue
-        if t.startswith('```'):
             ki.append(sor)
             continue
         megj = []
@@ -8366,6 +8375,8 @@ def blokk_visszhang(m, sorai):
               % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100), int(ALAPVONAL_SZOKASOS * 100),
                  int(ALAPVONAL_RITKA * 100))]
     if uj_szerkezet(m['id']):
+        # ELLENOR_HAMART_lapjavit (24.): az „alapvonal” szó a cellában sem áll
+        reszek[2] = reszek[2].replace('az alapvonal nem mérhető', 'így nem mérhető, szokásos fordítás-e')
         # lektor 24., 44.: a jegyzet a forrást és a módszert nevezi meg, a munkamenet leírása nélkül
         reszek[3] = ('*A cella a fordítás szava (kiejtéssel) és az, hány láncversben áll ugyanaz (n/N). A „Mit mutat” '
                      'azt mondja meg, szokásos-e ez a fordítás: a héber szó láncon kívüli ószövetségi verseiben (a '
@@ -8621,6 +8632,8 @@ def blokk_hatas_usz(m, sorai):
                     'használja.' % ((' (a tematikus %s a lánc szava nélkül áll, ezért nem szerepel)' % ', '.join(tem))
                                     if tem else '', len(csoportok), egyezo))
         tabla[0] = tabla[0].replace('Előkép a Septuagintában', 'Ugyanez a szó a Genezis-lánc Septuagintájában')
+        # ELLENOR_HAMART_lapjavit (26.): az „előkép” szó a cellákban sem áll
+        tabla = [x.replace('előképversében', 'versében').replace('előképverseiben', 'verseiben') for x in tabla]
     lab = ('*A Vulgata-cella a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin '
            'megfelelőt modell emeli ki, egy másik kéz ellenőrzi. Szövegváltozat: az SBL Greek New Testament apparátusa '
            '(CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a lánc szavát érinti. Előkép: '

@@ -409,6 +409,16 @@ class Kapuk(unittest.TestCase):
         self.assertEqual(LG.olvasoi_forrasnev('adat/kapcsolatok.tsv', nevelovel=False), 'Kapcsolat-tábla')
         self.assertEqual(LG.olvasoi_forrasnev('konkordancia/UBS_DBH_x.tsv'), 'az UBS Dictionary of Biblical Hebrew')
         self.assertEqual(kapu(LG.nevelo_le(uj_lap('- a BDB-szótár (közkincs)')), 'LISTA_NEVELO'), [])
+        # ELLENOR_HAMART_lapjavit 4.: a mondat értékű cella a névelőt megtartja (nagybetűvel); a kódblokk védett
+        ki = LG.nevelo_le('| a szótár a héber vagy a görög versszámozás szerint idézi a helyet | x |\n```\n- a kód\n```')
+        self.assertEqual(ki.split('\n')[0], '| A szótár a héber vagy a görög versszámozás szerint idézi a helyet | x |')
+        self.assertEqual(ki.split('\n')[2], '- a kód')
+
+    def test_kh_masolt_kapu_rontott(self):
+        """ELLENOR_HAMART_lapjavit: a KH_MASOLT kapu az új szerkezetű lapon BUKÁS-t ad a másolt listára."""
+        lap = uj_lap('x').replace('## 2. Előfordulások', '## 6. Kereszthivatkozások\n\n#### Sof 1:9\n- Károli-KH: Mk 3:22-30')
+        tal = [t for t in K.lap_meres(lap, kh=True, atvett=False, arany=False)[0] if t['azonosito'] == 'KH_MASOLT']
+        self.assertTrue(tal and tal[0]['sulyossag'] == K.BUKAS, tal)
 
     def test_kh_reszlista_masolat(self):
         """Lektor 15.: a Sof 1:9 Károli-KH listája a Mt 12:22 listájának része (részlista-másolat); a történeti
