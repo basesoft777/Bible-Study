@@ -32,7 +32,7 @@ A motívum tehát nem a bűn és következményei általában, hanem az a saját
 
 A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
-*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (a lapszerkezet leírása G1).*
+*Ez a blokk a lexikon-oldal 15 szakaszának tartalomjegyzékét adja (a lapszerkezet leírása G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -44,9 +44,10 @@ A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata m
 - [6. Kereszthivatkozások](#6-kereszthivatkozások)
 - [7. Kapcsolatok](#7-kapcsolatok)
 - [8. Kapcsolódó motívumok](#8-kapcsolódó-motívumok)
-- [9. Értelmezés](#9-értelmezés)
-- [10. Módszertan és nyitott kérdések](#10-módszertan-és-nyitott-kérdések)
-- [11. Irodalom és idézés](#11-irodalom-és-idézés)
+- [9. Hatástörténet: ókori fordítások és értelmezők](#9-hatástörténet-ókori-fordítások-és-értelmezők)
+- [10. Értelmezés](#10-értelmezés)
+- [11. Módszertan és nyitott kérdések](#11-módszertan-és-nyitott-kérdések)
+- [12. Irodalom és idézés](#12-irodalom-és-idézés)
 - [Kolofon](#kolofon)
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#tartalom -->
@@ -69,7 +70,7 @@ A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagy
 meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem
 kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A
 besorolást e munka adja, saját szabályai szerint; nevesített magyarázók olvasatát a lap nem
-gyűjti; az ókori fordítások visszhangját a 4.11 pont mutatja. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
+gyűjti; az ókori fordítások és értelmezők olvasatát a 9. szakasz mutatja. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem
 a szint (részletesen: [A PaRDeS-szint mint recepciós címke](../kozlemeny/PARDES_RECEPCIOS_KERET.md)).
 
 **Funkció:** a vers szerepe a motívum ívében — az az adatséma szerint
@@ -89,7 +90,7 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
 jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
-**A szótári pontok** (4. Szótári háttér): szavanként számozott pontok követik egymást, mindegyik egy kérdésre felel: 4.1 alapjelentés; 4.2 mélységi szócikk; 4.3 teológiai szócikk; 4.4 jelentésszerkezet, szemantikai mező; 4.5 tömör jelentés, előfordulás; 4.6 LXX-híd; 4.7 megfelelők a másik nyelven; 4.8 nyelvi háttér; 4.9 versenkénti jelentés; 4.10 kiejtés (magyaros); 4.11 visszhang: ókori fordítások; 4.12 tematikus index (témák és igehely-hivatkozások); 4.13 Károli-megfelelők; 4.14 rejtett / hamis párhuzam. A 4.1–4.10 nyelvenként, szavanként áll, a 4.11–4.14 a motívum egészére vonatkozik.
+**A szótári pontok** (4. Szótári háttér): szavanként számozott pontok követik egymást, mindegyik egy kérdésre felel: 4.1 alapjelentés; 4.2 mélységi szócikk; 4.3 teológiai szócikk; 4.4 jelentésszerkezet, szemantikai mező; 4.5 tömör jelentés, előfordulás; 4.6 LXX-híd; 4.7 megfelelők a másik nyelven; 4.8 nyelvi háttér; 4.9 versenkénti jelentés; 4.10 kiejtés (magyaros); 4.11 visszhang: ókori fordítások (a 9. szakaszban); 4.12 tematikus index (témák és igehely-hivatkozások); 4.13 Károli-megfelelők; 4.14 rejtett / hamis párhuzam. A 4.1–4.10 nyelvenként, szavanként áll, a 4.11–4.14 a motívum egészére vonatkozik.
 
 **Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
@@ -218,7 +219,7 @@ A lap első lépése, az igehelyek előtt: mit keres a lap, hol keresett, mi ese
 - **A „vég” formulája.** Az 1Móz 6:13 „Minden testnek vége elérkezett” mondata Ezékielnél és Ámósnál is visszatér (Ez 7:2, 7:6, Ámós 8:2), de más kulcsszóval.
 - **A törvény átka és a pogányok.** A Galata-levél címzettjei nem zsidók (a levél szerint egykor azoknak szolgáltak, „a mik természet szerint nem istenek”, Gal 4:8).
 
-A kérdések kifejtése a 9. (Értelmezés) és a 10. szakaszban (Módszertan és nyitott kérdések) áll.
+A kérdések kifejtése a 10. (Értelmezés) és a 11. szakaszban (Módszertan és nyitott kérdések) áll.
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#dontesi_ut -->
 
@@ -712,8 +713,8 @@ További 18 ok, összesen 118 vers: emberi átkozódás, nem a genezisi lánc fo
 | Préd 9:5 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 20, 21[^k4] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: Antropológiai általánosítás az emberi szívről; nem a következmény-terjedésről (Az igehely javítva: a TSK az angol, KJV-versszámozás szerint adta meg, Préd 9:3 → Préd 9:5.) |
 | Róm 1:28 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 33[^k5] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: A „kivetett elme” páli katalógusa — hamartológiai rokon, de sem lexikai kapocs, sem a terjedés-szerkezet nincs meg benne |
 | Róm 1:31 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 33[^k6] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: A „kivetett elme” páli katalógusa — hamartológiai rokon, de sem lexikai kapocs, sem a terjedés-szerkezet nincs meg benne |
-| Ef 2:1 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^k7] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. a 9. Értelmezés vitatott pontjait) |
-| Ef 2:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^k8] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. a 9. Értelmezés vitatott pontjait) |
+| Ef 2:1 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^k7] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. az Értelmezés szakasz vitatott pontjait) |
+| Ef 2:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^k8] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. az Értelmezés szakasz vitatott pontjait) |
 | Tit 3:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 15[^k9] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: Megtérés előtti életmód-katalógus; nincs lexikai vagy szerkezeti kapocs |
 | Jób 14:1 | TSK-ajánlás az 1Móz 3:17 helyről, szavazat: 1-8[^k10] | **elutasítva** — a fáradság bölcsességirodalmi toposza, a genezisi szó nélkül: Az emberi fáradság/hiábavalóság bölcsességirodalmi toposza. A Zsolt 127:2 kivételesen tartalmazza a rokon [עֶצֶב](/szo/H6089)<sup class="strong" title="H6089 · fáradság">H6089</sup> (ecev) szót, de nem a H6093 iccávón-t — a három iccávón-hely a Genezisre korlátozódik |
 | Jób 21:17 | TSK-ajánlás az 1Móz 3:17 helyről, szavazat: 1-8[^k11] | **elutasítva** — a fáradság bölcsességirodalmi toposza, a genezisi szó nélkül: Az emberi fáradság/hiábavalóság bölcsességirodalmi toposza. A Zsolt 127:2 kivételesen tartalmazza a rokon [עֶצֶב](/szo/H6089)<sup class="strong" title="H6089 · fáradság">H6089</sup> (ecev) szót, de nem a H6093 iccávón-t — a három iccávón-hely a Genezisre korlátozódik |
@@ -1294,7 +1295,7 @@ A motívum 15 szava egy táblában: a kiejtés, a rövid alapjelentés, a görö
 | φθείρω (ftheiró) | elpusztítani | héberül: שָׁחַת (sáchat) · 9 vers | 1 |
 | φθορά (fthora) | megromlás | — | 1 |
 
-*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem szóillesztés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncverseiben álló görög megfelelőt a 4.11 pont adja, ezért a kettő eltérhet.*
+*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem szóillesztés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncverseiben álló görög megfelelőt a 9. szakasz (Hatástörténet) ószövetségi táblázata adja, ezért a kettő eltérhet.*
 
 
 ### Görög szavak: G1311, G1944, G2671, G5351, G5356
@@ -2502,21 +2503,7 @@ A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a 
 
 #### 4.11. Visszhang: ókori fordítások
 
-A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A lánc 6 kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy (az 1.2 teljes szólistája ennél bővebb: szópárokat és görög szavakat is felsorol); láncvers a motívum Peshat-magjának (1Móz 3–9) azon verse, amelyben a kulcsszó a héber szövegben áll; a magon kívüli helyek a lánc bibliai visszhangjai, a 2. szakaszban állnak. A motívum 6 lánc-szavából a Targum 4, a Vulgata 3, a LXX 4 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.<!-- olvasói -->
-
-| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
-|---|---|---|---|---|
-| אָרַר (árar) — megátkozni<br>3:14, 3:17, 4:11, 5:29 | לוּט (lút) · 4/4 | *maledico* · 4/4 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 4/4 | LXX: a láncon kívüli 47 versből 39 versben (83%) is ez áll: a szócsalád szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
-| עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | három különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; egy versben más szó: 3:16 *ærumna* | λύπη (lüpé) · 3/3 | LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető. |
-| אֲדָמָה (adámá) — föld: talaj<br>3:17, 3:19, 3:23, 4:10, 4:11, 4:12, 4:14, 5:29, 6:7, 7:4, 7:23, 8:21 | אַרְעָא (ar'á) · 11/12; egy versben más szó: 3:23 אַדְמְתָא (admetá) | *terra* · 11/12; egy versben: 4:12 nincs ellenőrzött adat | γῆ (gé) · 10/12; két versben: 3:23 nincs ellenőrzött adat; 4:12 nincs ellenőrzött adat | LXX: 2 versben nincs ellenőrzött adat. |
-| חַטָּאת (chattát) — bűn<br>4:7 | חֶטְאָא (chet'á) · 1/1 | *peccatum* · 1/1 | ἁμαρτάνω (hamartanó) · 1/1 | LXX: a láncon kívüli 266 versből 252 versben (95%) is ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
-| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13, 6:17, 9:11, 9:15 | חֲבַל (chaval) · 6/6 | *corrumpo* · 2/6; más szó: 6:13 *disperdo*; 6:17 *interficio*; 9:11 *dissipo*; 9:15 *deleo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 5/6; egy versben: 9:15 nincs ellenőrzött adat | LXX: egy versben nincs ellenőrzött adat. |
-| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | LXX: a láncon kívüli 52 versből 22 versben (42%) áll ez: a szó gyakori, de nem kizárólagos fordítása. |
-| nincs héber szó<br>8:21: bűn betoldás | חוֹבֵי (chóvé) — bűnei, vétkei · betoldás | nincs betoldás | nincs ellenőrzött adat | Betoldás: a Targum a lánc szavát (bűn) olyan láncversbe teszi, ahol a héberben nincs. |
-
-*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). A láncversek a motívum Peshat-magjának azon versei, ahol a kulcsszó áll: a motívum saját helyei, nem a szó teljes előfordulása (a magon belül sem). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
-
-A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.
+Az ókori fordítások és értelmezők olvasata a [9. Hatástörténet: ókori fordítások és értelmezők](#9-hatástörténet-ókori-fordítások-és-értelmezők) szakaszban áll.<!-- olvasói -->
 
 #### 4.12. Tematikus index (témák és igehely-hivatkozások)
 
@@ -2958,8 +2945,8 @@ A 115 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet ér
 | Préd 9:5 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 20, 21[^mj4] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: Antropológiai általánosítás az emberi szívről; nem a következmény-terjedésről (Az igehely javítva: a TSK az angol, KJV-versszámozás szerint adta meg, Préd 9:3 → Préd 9:5.) |
 | Róm 1:28 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 33[^mj5] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: A „kivetett elme” páli katalógusa — hamartológiai rokon, de sem lexikai kapocs, sem a terjedés-szerkezet nincs meg benne |
 | Róm 1:31 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 33[^mj6] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: A „kivetett elme” páli katalógusa — hamartológiai rokon, de sem lexikai kapocs, sem a terjedés-szerkezet nincs meg benne |
-| Ef 2:1 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^mj7] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. a 9. Értelmezés vitatott pontjait) |
-| Ef 2:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^mj8] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. a 9. Értelmezés vitatott pontjait) |
+| Ef 2:1 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^mj7] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. az Értelmezés szakasz vitatott pontjait) |
+| Ef 2:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 25[^mj8] | **elutasítva** — az öröklött bűnösség kérdése, amelyet a lap nem dönt el: „Természet szerint a harag fiai” — az öröklött bűnösség kérdése, amelyet a lap nem dönt el (l. az Értelmezés szakasz vitatott pontjait) |
 | Tit 3:3 | TSK-ajánlás az 1Móz 6:5 helyről, szavazat: 15[^mj9] | **elutasítva** — általános bűn-leírás, a terjedés szerkezete nélkül: Megtérés előtti életmód-katalógus; nincs lexikai vagy szerkezeti kapocs |
 | Jób 14:1 | TSK-ajánlás az 1Móz 3:17 helyről, szavazat: 1-8[^mj10] | **elutasítva** — a fáradság bölcsességirodalmi toposza, a genezisi szó nélkül: Az emberi fáradság/hiábavalóság bölcsességirodalmi toposza. A Zsolt 127:2 kivételesen tartalmazza a rokon [עֶצֶב](/szo/H6089)<sup class="strong" title="H6089 · fáradság">H6089</sup> (ecev) szót, de nem a H6093 iccávón-t — a három iccávón-hely a Genezisre korlátozódik |
 | Jób 21:17 | TSK-ajánlás az 1Móz 3:17 helyről, szavazat: 1-8[^mj11] | **elutasítva** — a fáradság bölcsességirodalmi toposza, a genezisi szó nélkül: Az emberi fáradság/hiábavalóság bölcsességirodalmi toposza. A Zsolt 127:2 kivételesen tartalmazza a rokon [עֶצֶב](/szo/H6089)<sup class="strong" title="H6089 · fáradság">H6089</sup> (ecev) szót, de nem a H6093 iccávón-t — a három iccávón-hely a Genezisre korlátozódik |
@@ -3410,7 +3397,61 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kapcsolodo -->
 
-## 9. Értelmezés
+## 9. Hatástörténet: ókori fordítások és értelmezők
+
+A szakasz azt mutatja, hogyan olvasták a motívum láncát a legkorábbi fordítók és értelmezők: az ószövetségi lánc ókori fordításai (Targum, Vulgata, Septuaginta), az újszövetségi helyek latin fordítása és szövegváltozatai, végül az egyházatyák és a rabbinikus hagyomány tanúi.<!-- olvasói -->
+
+### Ókori fordítások: Ószövetség
+
+A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber szót minden láncversben. A lánc 6 kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy (az 1.2 teljes szólistája ennél bővebb: szópárokat és görög szavakat is felsorol); láncvers a motívum Peshat-magjának (1Móz 3–9) azon verse, amelyben a kulcsszó a héber szövegben áll; a magon kívüli helyek a lánc bibliai visszhangjai, a 2. szakaszban állnak. A motívum 6 lánc-szavából a Targum 4, a Vulgata 3, a LXX 4 szót ad vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.<!-- olvasói -->
+
+| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
+|---|---|---|---|---|
+| אָרַר (árar) — megátkozni<br>3:14, 3:17, 4:11, 5:29 | לוּט (lút) · 4/4 | *maledico* · 4/4 | ἐπικατάρατος (epikataratosz) · καταράομαι (kataraomai) · 4/4 | LXX: a láncon kívüli 47 versből 39 versben (83%) is ez áll: a szócsalád szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
+| עִצָּבוֹן (iccávón) — fáradság<br>3:16, 3:17, 5:29 | három különböző szó: 3:16 צַעֲרָא (caará); 3:17 עֲמַל (amal); 5:29 לֵאוּתָא (léútá) | *labor* · 2/3; egy versben más szó: 3:16 *ærumna* | λύπη (lüpé) · 3/3 | LXX: a héber szó a láncon kívül nem fordul elő, az alapvonal nem mérhető. |
+| אֲדָמָה (adámá) — föld: talaj<br>3:17, 3:19, 3:23, 4:10, 4:11, 4:12, 4:14, 5:29, 6:7, 7:4, 7:23, 8:21 | אַרְעָא (ar'á) · 11/12; egy versben más szó: 3:23 אַדְמְתָא (admetá) | *terra* · 11/12; egy versben: 4:12 nincs ellenőrzött adat | γῆ (gé) · 10/12; két versben: 3:23 nincs ellenőrzött adat; 4:12 nincs ellenőrzött adat | LXX: 2 versben nincs ellenőrzött adat. |
+| חַטָּאת (chattát) — bűn<br>4:7 | חֶטְאָא (chet'á) · 1/1 | *peccatum* · 1/1 | ἁμαρτάνω (hamartanó) · 1/1 | LXX: a láncon kívüli 266 versből 252 versben (95%) is ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet. |
+| שָׁחַת (sáchat) — elpusztítani, megrontani<br>6:11, 6:12, 6:13, 6:17, 9:11, 9:15 | חֲבַל (chaval) · 6/6 | *corrumpo* · 2/6; más szó: 6:13 *disperdo*; 6:17 *interficio*; 9:11 *dissipo*; 9:15 *deleo* | φθείρω (ftheiró) · καταφθείρω (kataftheiró) · 5/6; egy versben: 9:15 nincs ellenőrzött adat | LXX: egy versben nincs ellenőrzött adat. |
+| חָמָס (chámász) — erőszak<br>6:11, 6:13 | חֲטוֹף (chatóf) · 2/2 | *iniquitas* · 2/2 | ἀδικία (adikia) · 2/2 | LXX: a láncon kívüli 52 versből 22 versben (42%) áll ez: a szó gyakori, de nem kizárólagos fordítása. |
+| nincs héber szó<br>8:21: bűn betoldás | חוֹבֵי (chóvé) — bűnei, vétkei · betoldás | nincs betoldás | nincs ellenőrzött adat | Betoldás: a Targum a lánc szavát (bűn) olyan láncversbe teszi, ahol a héberben nincs. |
+
+*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). A láncversek a motívum Peshat-magjának azon versei, ahol a kulcsszó áll: a motívum saját helyei, nem a szó teljes előfordulása (a magon belül sem). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A fordítás szavát a kinyerő tábla adja: a LXX-ét gépi társítás, a Targumét és a Vulgatáét modell emeli ki, egy másik kéz ellenőrzi; ellenőrizetlen sor nem áll a táblában.*
+
+A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.
+
+### Ókori fordítások: Újszövetség
+
+Az újszövetségi helyeken a lánc görög szavai állnak. A táblázat szócsaládonként azt mutatja, hogy a latin Vulgata ugyanazzal a latin szóval adja-e vissza őket, van-e a lánc szavát érintő szövegváltozat, és hol áll ugyanez a görög szó a Genezis-lánc Septuaginta-szövegében. A 2 görög szócsaládból 1 esetében a Vulgata a két szövetségben ugyanazt a latin szócsaládot használja.<!-- olvasói -->
+
+| Görög szó · helyek | Vulgata | Szövegváltozat | Előkép a Septuagintában | Mit mutat |
+|---|---|---|---|---|
+| διαφθείρω (diaftheiró) · φθορά (fthora) · φθείρω (ftheiró)<br>Róm 8:21, Jel 11:18, Jel 19:2 | Róm 8:21 *corruptionis*; Jel 11:18 *exterminandi · corruperunt*; Jel 19:2 *corrupit* · 3/3 | Jel 19:2: ἔφθειρεν (eftheiren) — NA28, NA27, Tyn, SBL, WH, Treg, TR; διέφθειρεν (dieftheiren) — Byz | 6:11, 6:12, 6:13, 6:17, 9:11 (φθείρω, καταφθείρω) | A Vulgata az újszövetségi helyeken 3/3 versben a *corru-* szócsaládot használja; a Genezis-lánc előképverseiben ugyanezt 2/5 versben: a latin szóválasztás a két szövetség között csak részben egyezik. |
+| ἐπικατάρατος (epikataratosz) · κατάρα (katara)<br>Gal 3:13, Zsid 6:8 | Gal 3:13 *Maledictus · maledicto · maledictum*; Zsid 6:8 *maledicto* · 2/2 | nincs a lánc szavát érintő változat | 3:14, 3:17, 4:11, 5:29 (ἐπικατάρατος, καταράομαι) | A Vulgata az újszövetségi helyeken és a Genezis-lánc 4 előképversében is ugyanazt a latin szócsaládot használja (*maled-*): a latin olvasó a két szövetség helyeit egy szóval olvassa. |
+
+*A Vulgata-cella a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin megfelelőt modell emeli ki, egy másik kéz ellenőrzi. Szövegváltozat: az SBL Greek New Testament apparátusa (CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a lánc szavát érinti. Előkép: ugyanaz a görög szócsalád a Genezis-lánc ellenőrzött Septuaginta-soraiban (az ószövetségi táblázat LXX-oszlopa). Vulgata: Clementina (közkincs). A szír fordítás (Peshitta) nem vizsgált: szabad, digitális forrása nem áll rendelkezésre.*
+
+### Ókori értelmezők
+
+Az ókori értelmezők közül azok állnak itt, akik a motívum egy helyét ugyanazzal a kapcsolattal olvassák, amelyet a lap leír: a bűn következménye az átok, a föld és a romlás láncán terjed. Hagyományonként (görög, latin, szír, rabbinikus) helyenként legfeljebb egy tanú áll, csak a lánc Remez- és Sod-szintű helyein; a mondat a tanú olvasatának saját szavas összefoglalása, nem idézet. A motívum 6 helyén 10 tanú áll.<!-- olvasói -->
+
+| Hely | Tanú · hagyomány · kor | Mit lát | Forrás |
+|---|---|---|---|
+| [1Móz 4:10-11](#ige-1móz-4-10-11) | Órigenész, *In Numeros homiliae XXVIII (2nd éd.)* · görög · 3. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:14, 1Móz 3:17, 1Móz 4:11, 4Móz 23:7. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 · BiblIndex |
+| [1Móz 4:10-11](#ige-1móz-4-10-11) | Glossa Ordinaria, *Glossa Ordinaria, jegyzet az 1Móz 4:11-hez (RAB. jelzéssel; Migne, 1880)* · latin | Kiemeli, hogy Ádám bűne miatt a föld lett átkozott, Kain viszont maga, mert az első vétek ítéletének tudatában testvérgyilkosságot tett hozzá. (Tárgyalt hely: 1Móz 4:11.) | Glossa Ordinaria (Migne, 1880) a Vulgata Clementina csomagjában (eBible, közkincs) |
+| [1Móz 5:29](#ige-1móz-5-29) | Szír Szent Efrém, *Commentary on Genesis 5.2.2* · szír · 4. sz. (HCF: 373) | Noé nevét Lámekh próféciájaként olvassa: Noé könnyebbséget hoz a föld miatt, amelyet az Úr megátkozott, Isten pedig a föld lakóinak bűne miatt a vízözönnel pusztítja el, amit a kezük munkája épített. | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [1Móz 5:29](#ige-1móz-5-29) | Bereshit Rabba, *Bereshit Rabbah 25.2* · rabbinikus | Rabbi Jóhánán szerint Ádám bűne óta a barázda és az igavonó állat nem engedelmeskedett a szántónak, és Noé eljövetele vetett ennek véget. | Sefaria, lekérdezve: 2026-11-11 |
+| [1Móz 8:21](#ige-1móz-8-21) | Damaszkuszi Szent János, *Sacra Parallela* · görög · 7. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:16, 1Móz 3:17, 1Móz 8:21, Jób 7:1. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+| [1Móz 8:21](#ige-1móz-8-21) | Szent Ambrus, *On Noah and the Ark 22.80* · latin · 4. sz. (HCF: 397) | A föld újabb megátkozásának elmaradását Isten irgalmaként magyarázza: Isten egyszer, példaként büntetett, a továbbiakban kímél, hogy a bűn keserűsége ne uralkodjon mindig az emberen. | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [Róm 8:21](#ige-róm-8-21) | Aranyszájú Szent János, *Homily on Romans 14* · görög · 4–5. sz. (HCF: 407) | A teremtés romlandóságát az emberre vezeti vissza: mivel az ember halandó és szenvedő testet kapott, a föld is átkot kapott, és tövist és bogáncsot termett. (Tárgyalt hely: Róm 8:19-20.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [Gal 3:13-14](#ige-gal-3-13-14) | Gabalai Szeveriánosz, *De serpente homilia* · görög · 4. sz. | Egy versláncban idézi a következő helyeket: Gal 3:13, 1Móz 3:14. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+| [Gal 3:13-14](#ige-gal-3-13-14) | Szent Jeromos, *Commentary on Galatians* · latin · 4–5. sz. (HCF: 420) | A „fán függő átkozott” magyarázatában sorra veszi a Genezis átkait (a kígyót, a földet, Kaint, Kánaánt), és a keresztfát a jó és rossz tudásának fájával állítja szembe. (Tárgyalt hely: Gal 3:13.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [Zsid 6:7-8](#ige-zsid-6-7-8) | Szent Jeromos, *Commentaria in Isaiam* · latin · 4. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:18, Zsid 6:8, Luk 12:49. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+
+*A tanú-jelölteket a tanúindex (HistoricalChristianFaith, Sefaria), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser adta; a lapra csak ellenőrzött sor kerül: a modell által írt mondatot egy másik kéz a forrásszövegen ellenőrzi, a Chain Lineage-sor tényadat (szerző, mű, század, nyelv, az együtt idézett versek), a lekérdezés újrafuttatásával ellenőrizve. Az egyházatyák és a rabbinikus források szövegét a lap nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*
+
+A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) jegyzetei a lánc Remez- és Sod-helyein átnézésre kerültek; tanúként ott áll, ahol ugyanezt a kapcsolatot mondja ki.
+
+## 10. Értelmezés
 
 A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.<!-- olvasói -->
 
@@ -3442,7 +3483,7 @@ A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utal�
 
 *Forrás: a lap munkaanyaga; kézi szerkesztés, 2026-11-05 · az első olvasat melletti mondat (a 8:21 után a földre nem hangzik el átok; az átok igéje a Genezis hátralévő részében csak személyre vagy indulatra áll: 9:25, 12:3, 27:29, 49:7): forrás: a STEPBible héber szövege (TAHOT), 2026-11-08*<!-- eredeti: *Proveniencia: scope=manual | forras=archivum/HAMART-001/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md (a régi tanulmány három vitatott pontja; ellenőrzött lekérdezés nélkül) | ts=2026-11-05 · az első olvasat melletti mondat (a 8:21 után a földre nem hangzik el átok; az átok igéje a Genezis hátralévő részében csak személyre vagy indulatra áll: 9:25, 12:3, 27:29, 49:7): scope=range:1Móz 9:1-50:26 | forras=TAHOT_kivonat.tsv | strong=H0779 | n=4 | ts=2026-11-08T10:55Z* -->
 
-## 10. Módszertan és nyitott kérdések
+## 11. Módszertan és nyitott kérdések
 
 Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.<!-- olvasói -->
 
@@ -3465,7 +3506,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 3. **A „vég” formulája.** Az 1Móz 6:13 „Minden testnek vége elérkezett” mondata Ezékielnél és Ámósnál is visszatér (Ez 7:2, 7:6, Ámós 8:2), de más kulcsszóval. Nyitott, hogy ez önálló motívum-e.
 4. **A törvény átka és a pogányok.** A Galata-levél címzettjei nem zsidók (a levél szerint egykor azoknak szolgáltak, „a mik természet szerint nem istenek”, Gal 4:8). A levél három olvasatot enged: az átok feltételes (aki körülmetélkedik, „köteles az egész törvényt megtartani”, Gal 5:3); a „minket” elsősorban Izraelt jelenti, és az áldás ezen át jut a pogányokhoz (Gal 3:13-14); a törvény alatti és a bálványok alatti élet ugyanannak a szolgaságnak két alakja („a világ elemei alá voltunk vettetve”, Gal 4:3; vö. 4:8-9). A lap nem dönt közöttük.
 
-## 11. Irodalom és idézés
+## 12. Irodalom és idézés
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-11 -->
 

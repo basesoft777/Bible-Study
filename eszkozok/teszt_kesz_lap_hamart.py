@@ -62,8 +62,9 @@ class Lap(unittest.TestCase):
 
     def test_a21_nincs_alkalmazas(self):
         self.assertNotIn('## 10. Alkalmazás', self.lap)
-        self.assertIn('## 10. Módszertan és nyitott kérdések', self.lap)
-        self.assertIn('## 11. Irodalom és idézés', self.lap)
+        # F183: a 9. szakasz a Hatástörténet, ezért a Módszertan a 11., az Irodalom a 12.
+        self.assertIn('## 11. Módszertan és nyitott kérdések', self.lap)
+        self.assertIn('## 12. Irodalom és idézés', self.lap)
         self.assertNotIn('Alkalmazás és tanítványság', self.lathato)
         self.assertNotIn('A hívő számára', self.lathato)
 
