@@ -34,7 +34,7 @@ Te a `[ID]` motívum (`[cím]`) teljes prózáját írod meg **nulláról, egy k
 3. **Értelmezés** (PaRDeS-keret, vitatott pontok) és **Módszertan és nyitott kérdések** (az Alkalmazás kivezetve: F17, B04, DT-F182m; nem írandó): a 9-es sablon 4. pontja szerint; a nyitott kérdés tartalmi, a séma-korlát és az adatállapot `【NAPLO】`.
 4. **Nave-döntések** (U3b, ha még nincs): az `adat/tematikus_temak.tsv`-be, indokkal; üres Nave-blokkal a lap nem adható ki.
 
-**A 4.11 visszhang-blokk** generált (a kinyerő táblából, `MUNKAMENET.md` C-vh); a próza nem ír helyette, és nem állít
+**A visszhang-blokk** (a 9. Hatástörténet szakaszban; korábban 4.11) és a szakasz többi része (az újszövetségi ág, az ókori értelmezők) generált (a kinyerő táblából, `MUNKAMENET.md` C-vh); a próza nem ír helyette, és nem állít
 róla többet, mint amit a blokk alapvonala mond (a 6-os sablon „A 4.11 visszhang-blokk szabályai”): a fordítók „hallották”
 a láncot mondat csak ott állhat, ahol a blokk kiemelt következtetése (két héber szó egyesítése, szokatlan választás) ezt
 alátámasztja.
