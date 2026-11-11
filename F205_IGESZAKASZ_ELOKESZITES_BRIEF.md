@@ -6,7 +6,7 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: nem_indult
-ad: a 2. sablonban igehelyenként hat jelölt blokk (funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás) üres-jelöléssel; a MUNKAMENET A-szakaszában a helyük a vak olvasás sorrendjében; egy kinyerő, amely a blokkokból csak jelölt-sort ír a jeloltek.tsv-be manual provenienciával; a jelentéspont saját olvasata külön mezőben, a BDB-kártya érintetlen; a szakasz Strong-szavainak hiányzó fordítása egy kötegben; a SEMA és a tesztek; a mérési terv a következő tanulmányra
+ad: a 2. sablonban igehelyenként hat jelölt blokk (funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás) üres-jelöléssel; a MUNKAMENET A-szakaszában a helyük a vak olvasás sorrendjében; egy kinyerő, amely a blokkokból csak jelölt-sort ír a jeloltek.tsv-be manual provenienciával; a jelentéspont saját olvasata külön mezőben, a BDB-kártya érintetlen; a szakasz Strong-szavainak hiányzó fordítása egy kötegben; a SEMA és a tesztek; igehely-sor szintű, folyamatos mérési terv
 kovetkezo: "a HAMART-001 1. kiadása (/kiadas, PR #696) merge-e után indul; első lépés az M0 séma-javaslat ⛔"
 munka: folyamat
 olvas: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/KESZ_LAP_KOVETELMENY.md, adat/SEMA.md, adat/jeloltek.tsv, adat/visszhang_tanuk.tsv, adat/visszhang_megfelelok.tsv, adat/vitatott_forrasok.tsv, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/gerinc_kartya.py, eszkozok/forditas_vedelem.py, naplok/F182_jelentes.md]
@@ -16,7 +16,7 @@ fugg: [125]
 
 # F205_IGESZAKASZ_ELOKESZITES_BRIEF.md — Az igeszakasz-tanulmány előkészíti a motívumcikket
 
-*FELADATOK #205 · Modell: opus · v1 · 2026.11.11*
+*FELADATOK #205 · Modell: opus · v2 · 2026.11.11*
 
 **Indítási feltétel.** A HAMART-001 1. kiadása (a `/kiadas` menete, F125; PR #696) a `main`-en van. Addig a menet nem indul: a HAMART javítóköre ugyanezeket a fájlokat írhatja (`MUNKAMENET.md`, sablonok). A `fugg: [125]` ezt a függést jelöli; ha a kiadás más feladatszám alatt zárul, a futtató az indításkor a PR állapotát nézi, nem a számot.
 
@@ -47,10 +47,10 @@ A tanulmány egy igehelyet egyszer és alaposan olvas, kontextusban. A motívumc
 4. Gépi lépés (`eszkozok/szakasz_forditas.py`): a szakasz Strong-szavainak hiányzó szótári fordítása egy kötegben, a meglévő fordítási láncokon át.
 5. A jelentéspont saját olvasatának helye az adatrétegben (külön mező vagy tábla, l. M0), és a motívumcikk szabálya, ha az olvasatunk eltér a BDB-étől (`sablonok/9_…`, hivatkozással a `10_` promptban).
 6. `adat/SEMA.md`: az új jelölt-fajták, a mezők, a kinyerés jelölőnkénti táblája (a 3.10.5 mintájára), a gépi kapuk listája (3.11, generált).
-7. Mérési terv: mit és hogyan mér a következő igeszakasz-tanulmány és az abból dolgozó cikk.
+7. Mérési terv igehely-sor szinten: a motívumcikk blokkos és blokk nélküli sorainak összevetése (l. M6). Egy cikk nem egy tanulmányból készül, és egy tanulmány nem egy cikkhez tartozik, ezért a mérés egysége nem a tanulmány–cikk pár.
 
 **Nincs benne:**
-- **Visszamenőleges tanulmány nincs.** A 9 lexikonlaphoz nem készül tanulmány, és a meglévő tanulmányok sem kapnak utólag blokkot.
+- **Visszamenőleges blokk nincs.** A meglévő igeszakasz-tanulmányok utólag nem kapnak blokkot.
 - **A határt nem a tanulmány zárja.** A tanulmány jelöltet és indoklást ad, ítéletet nem; a határt a motívum menete zárja (B5, `hatar-ellenor`).
 - Új tanulmány írása. A próba tanulmánya saját feladat (`munka: ertelmezo`), a felhasználó választja ki a szakaszt; ez a feladat csak a formát, a kinyerőt és a mérési tervet adja.
 - A lexikonlap generátorának (`lexikon_general.py`) módosítása. Ha az M0 azt mutatja, hogy az eltérő jelentéspont-olvasat a lapon csak generátorral jelenhet meg, az ⛔ és külön feladat.
@@ -109,11 +109,13 @@ A „ma mivel fut” oszlop csak létező parancsot nevezhet meg (a fájl szabá
 - `sablonok/9_PaRDeS_motivum_forras_sablon.md`: a K5 cikkszabálya (a BDB-től eltérő olvasat mondata a motívum-rétegben; érdemi eltérésnél a Vitatott pontok); a `10_` promptban csak hivatkozás rá.
 - Ha az M0 döntése új `jelolt_tipus` értéket hoz: `general.py` `JELOLT_TIPUSOK` és `ellenoriz.py` 2/b. szabálya, teszttel; a meglévő `jeloltek.tsv` sorai bájtra változatlanok.
 
-**M6 — mérési terv.** A `naplok/F205_jelentes.md` mérési szakasza:
-- **alapvonal:** a soronkénti egységköltség (keret% / igehely-sor: U1-adat, visszhang két kézzel, kapcsolatok) és a Strong-onkénti (hiányzó fordítás, szótári blokk) a meglévő mérésekből (#182 2. fázis, #183, az ISTENTISZT-001 mérése, ha addig elkészül); amit nem mértek, az „nincs mérés”, nem becsült szám;
-- **próba:** a következő igeszakasz-tanulmány a blokkokkal készül; mérve a tanulmány többletköltsége (a blokkok kitöltése, keret%), és az abból dolgozó cikk soronkénti költsége azoknál a soroknál, amelyekhez van blokk, a blokk nélküli sorokhoz és az alapvonalhoz képest;
-- **siker:** a cikk soronkénti költsége a blokkos soroknál csökken, és a csökkenés nagyobb, mint a tanulmány többletköltsége soronként; ha nem, a blokkokat szűkíteni kell (melyik pont nem térült meg).
-A próba és a mérés későbbi feladat (a következő tanulmány és cikk ütemezése a felhasználóé); erre a menet nyitott tételt nyit (`nyitott/uj/<ágnév>.md`, N-F205a).
+**M6 — mérési terv.** A `naplok/F205_jelentes.md` mérési szakasza. **A mérés egysége az igehely-sor, nem a tanulmány és nem a cikk.** Egy igeszakasz-tanulmány egy szakaszt olvas, és több motívumot érint; egy motívumcikk sok szakaszból gyűjt igehelyeket, tehát sok tanulmányból. Tanulmány–cikk pár ezért nincs.
+- **mérőszám:** soronként a késői leletek száma a cikk menetében, a naplókból kiolvasva. Ide tartozik a határváltozás, a jelentéspont-javítás, a pótolt fordítás, a pótolt vita vagy visszhang, a versszámozási javítás és a sorra eső lektori tétel. A keret% soronként nem bontható szét megbízhatóan, ezért nem mérőszám.
+- **alapvonal:** a HAMART-001 (F182 1–2. fázis, a lektor 46 tétele) és a többi meglévő cikk soronkénti késői lelete a naplókból. Amit nem naplóztak, az „nincs mérés”, nem becsült szám.
+- **összevetés:** minden új motívumcikknél a sorok két csoportja. Blokkos az a sor, amelynek versére bármely tanulmány adott blokkot; blokk nélküli a többi. A két csoport soronkénti késői leleteit vetjük össze, pontonként is: melyik blokkpont előzött meg leletet.
+- **lefedettség:** a cikk sorainak hány százaléka blokkos. Eleinte kicsi, mert a hatás a tanulmányok számával nő. Ezt a mérés külön kimondja, hogy a kis minta ne tűnjön hatástalanságnak.
+- **siker és szűkítés:** a blokkos sorokon kevesebb a késői lelet. Az a blokkpont, amely több cikk után sem előz meg leletet, kikerül, mert nem térül meg.
+A mérés folyamatos: minden cikk lezárásakor fut, és nem egy próbatanulmányhoz kötött. Erre a menet nyitott tételt nyit (`nyitott/uj/<ágnév>.md`, N-F205a), és megadja, melyik eszköz számolja a soronkénti leleteket. Ha ez új eszköz, az külön feladat.
 
 **M7 — ellenőrzés és zárás.** Tesztek (`teszt_tanulmany_kinyer`, `teszt_szakasz_forditas`, a `general.py`/`ellenoriz.py` érintett tesztjei), `python eszkozok/ellenoriz.py` (0 új SÉRTÉS), `python eszkozok/feladatok.py ellenoriz` 0. Egy `fuggetlen-ellenor` futás, legfeljebb egy javítókör (a `/kovetkezo` szerint), jelentés a `naplok/F205_jelentes.md`-be. Draft PR; **a merge nem ennek a sessionnek a dolga.**
 
@@ -134,3 +136,4 @@ A próba és a mérés későbbi feladat (a következő tanulmány és cikk üte
 - 2026-11-10 — a felhasználó elfogadta az elvet („igen”): a tanulmány egy igehelyet egyszer, alaposan olvas, a cikk sok igehelyet futólag; igehelyenként hat pont, gépi lépésként a hiányzó fordítás.
 - 2026-11-10 — a felhasználó pontosítása („de attól mi még juthatunk eltérő véleményre”): a tanulmány jelentéspontja a mi olvasatunk, külön mezőben, `manual` provenienciával; a BDB-kártyát nem írja felül; a `jp_kezi` csak a BDB félreolvasásának javítása.
 - 2026-11-11 — brief és befogadás; a végrehajtás a HAMART-001 1. kiadása után.
+- 2026-11-11 — a felhasználó javítása („egy cikket nem lehet konkréten egy tanulmányhoz kötni”; a 9 lapos kizárásra: „nincs ilyen összefüggés”). v2: a mérés egysége az igehely-sor, a blokkos és a blokk nélküli sorok késői leleteinek összevetése, nem a tanulmány–cikk pár. A „9 lexikonlaphoz nem készül tanulmány” kimarad, mert a lexikonlapok nem igeszakasz-tanulmányból készülnek.
