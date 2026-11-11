@@ -63,4 +63,18 @@ python eszkozok/ellenoriz.py
 
 A mérce: 25. szabály RENDBEN (minden 1/a kerek + „Funkció:”), olvasói kapu 0 BUKÁS, 37–39. szabály a motívumra tiszta, a lap regressziós kapui (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A HAMART-001 regressziós kapui”) zöldek. Ha egy kapu bukik, a forrást javítod (a lapot soha), és újragenerálsz.
 
+**Állítás-ellenőrzés — a próza után, a lektor előtt** (`MUNKAMENET.md` C-a; F200):
+
+```
+python eszkozok/proza_allitas.py [ID]
+```
+
+A `naplok/ALLITAS_[ID].md` a próza versre hivatkozó állításait (a rések mondatai és a `kapcsolodas` sorai) veti össze a verssel és az adattal.
+
+- **ELTÉR-sor:** a gépi ítélet a vers héber/görög Strong-során, a Károli-szövegen vagy az adaton áll (a szó áll vagy nem áll a versben; a szópár mellett más szó áll; a fordulat két szava nem szomszédos; az idézet nem a Károli szövege; a szám nem egyezik). Minden ELTÉR-sort a forrásban javítasz, és újrafuttatod; a javított mondat a vers saját szövegét mondja (ki/mi az alany, melyik héber szó áll), nem a régit tompítja.
+- **⚑ tétel a kézi listán:** a magyar szó a versben más héber szót fordít, mint a lánc szava (a „föld” erec, nem adámá), a lánc szava nincs a versben, vagy a mondat kizárólagos állítást tesz („először”, „egyetlen”, „mindig”) lekérdezés nélkül. Mindet magad nézed át: vagy kimondod a különbséget (más héber szó áll), vagy a lekérdezés eredményét adod (proveniencia-sorral), vagy olvasatként jelölöd.
+- **A többi kézi tétel** (az állítás, a Károli-vers és a héber/görög sor egymás mellett) az olcsó modell (Sonnet) vagy ember átnézésére megy, a lektor előtt; a kérdés tételenként: azt mondja-e a vers, amit az állítás neki tulajdonít (alany, tárgy, szó, kapcsolat).
+
+A lépés kapu-szintje JELENTÉS: nem bukik, de a lektor csak az ELTÉR-sorok javítása után indul.
+
 **Kimenet:** a `motivumok/[ID].md` (forrásréteg) és a menetnapló; tételenkénti commit, UTF-8 fájlból. A lap a generátor kimenete, kézzel nem szerkeszted.
