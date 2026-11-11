@@ -10,7 +10,7 @@ ad: metaadat-szintű, helyi tanúindex (egyházatyák: HCF; rabbinikus: Sefaria 
 kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
 munka: adat
 olvas: [CLAUDE.md, Rendszerfejlesztesi_playbook.md, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, adat/elofordulasok.tsv]
-ir: [nyilt_mag/, eszkozok/tanu_index.py, eszkozok/teszt_tanu_index.py, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_atyak_mu.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Tanu_index_README.md, adat/datasetek.tsv, adat/licencek.tsv, nyitott/uj/tanuindex-8ed546.md, naplok/F191_jelentes.md]
+ir: [nyilt_mag/, eszkozok/tanu_index.py, eszkozok/teszt_tanu_index.py, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_atyak_mu.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Tanu_index_README.md, adat/datasetek.tsv, adat/licencek.tsv, nyitott/uj/tanuindex-8ed546.md, dontesek/uj/tanuindex-8ed546.md, naplok/F191_jelentes.md]
 fugg: []
 ---
 
@@ -38,7 +38,7 @@ lekérdezés `python eszkozok/tanu_index.py keres \"<igehely>\"`”); Sefaria-sz
 
 1. Modell-ellenőrzés (`claude-sonnet-5-5` = a kért); felmérés, playbook 2. pont.
 2. **Licenc.** HCF: a `LICENSE` „PUBLIC DOMAIN DEDICATION” a metaadatra, a „FAIR USE NOTICE” az idézetekre → csak metaadat. Sefaria links: a fejlesztői oldal „Links License” szakasza
-   „CC-BY” (a verzió nincs megadva → `licencek.tsv`: tisztázatlan, N-F191c); a `LICENSE.md` csak a szövegekről szól. Mindkét nyers fájl letöltve (HCF 176 242 688 bájt, Sefaria 18 CSV
+   „CC-BY” (a verzió nincs megadva; a szerkesztő CC BY-ként elfogadta, DT-F191a, N-F191c lezárva); a `LICENSE.md` csak a szövegekről szól. Mindkét nyers fájl letöltve (HCF 176 242 688 bájt, Sefaria 18 CSV
    ~680 MB), sha256 a README-ben.
 3. **Index.** `Tanu_atyak_index.tsv` + `Tanu_atyak_mu.tsv` (97 572 sor, 9,5 MB; a teljes kanon), `Tanu_rabbinikus_index.tsv` (5 259 sor, 0,5 MB; a teljes Tanakh 24 MB lenne → első körben csak a
    lexikonmotívumok 289 versével átfedő sorok, N-F191a). A rabbinikus kategóriák: Midrash, Talmud, Mishnah, Tosefta, Targum.
@@ -53,4 +53,4 @@ lekérdezés `python eszkozok/tanu_index.py keres \"<igehely>\"`”); Sefaria-sz
 
 ## 5. Döntésnapló
 
-Új döntés nincs (a letöltést a felhasználó jóváhagyta). Nyitott: N-F191a (rabbinikus hatókör), N-F191b (UT-átvezetés), N-F191c (Sefaria-licenc verziója, a felhasználó dönt), N-F191d (középkori kommentárok).
+DT-F191a (🟢): a Sefaria links CC BY-ként elfogadva (a letöltést a felhasználó jóváhagyta). Nyitott: N-F191a (rabbinikus hatókör), N-F191b (UT-átvezetés), N-F191c (lezárva, DT-F191a), N-F191d (középkori kommentárok).

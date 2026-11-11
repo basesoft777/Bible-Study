@@ -36,8 +36,8 @@ az idézetszövegek egy része jogvédett művekből való, „fair use” alapo
 **Ezért az index a `txt` (idézet) oszlopot nem tartalmazza; csak metaadat.** A CCEL-szöveg szintén nem kerül a repóba.
 
 **Sefaria links** — `Sefaria-Export` `links/links0.csv … links17.csv` (a nyilvános `gs://sefaria-export/` vödörből, 2026-11-11). Licenc: a Sefaria
-fejlesztői oldala (https://developers.sefaria.org/docs/usage-of-our-name-and-logo, „Links License”) szerint a kapcsolat-adatkészlet „CC-BY” (a verzió
-nincs megadva; `adat/licencek.tsv`: a címke ezért tisztázatlan). A `Sefaria-Export/LICENSE.md` csak a szövegekről szól (szövegenként külön licenc);
+fejlesztői oldala (https://developers.sefaria.org/docs/usage-of-our-name-and-logo, „Links License”) szerint a kapcsolat-adatkészlet „CC-BY” (a forrás
+verziószámot nem ad meg; a szerkesztő elfogadta CC BY-ként, forrásmegjelöléssel: „Sefaria, CC BY”; DT-F191a, 2026-11-11; `adat/licencek.tsv`: tisztázott). A `Sefaria-Export/LICENSE.md` csak a szövegekről szól (szövegenként külön licenc);
 **a Sefaria-szövegek nincsenek az indexben.** Forrásmegjelölés: Sefaria.org; a változás jelzése: szűrés és Károli-átvezetés.
 
 | Nyers fájl | sha256 |
