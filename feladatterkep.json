@@ -1172,7 +1172,7 @@
    "fazis": "folyamat",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a draft PR #689 áttekintése és merge-e; a HIBA-szintre emelés (DT-F196a) a HAMART-001 kiadása után, külön döntéssel",
+   "most": "Te: a draft PR #689 áttekintése és merge-e; a HIBA-szintre emelés (DT771) a HAMART-001 kiadása után, külön döntéssel",
    "fugg": "#104*, #121*, #123*, #125*, #178*, #183*, #188*, #190*",
    "tervezett": false,
    "reszletes": "",
@@ -6546,7 +6546,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F196a",
+    "id": "DT771",
     "feladat": "#196 GYOKEROK_KAPUK (a két gyökérok-kapu szintje; 2026-11-11)",
     "kerdes": "Az állítás–adat kapu és a követelménylista-kapu mikor gátoljon? A HAMART-001 lezárása most fut, nem bukhat el rajtuk.",
     "allapot": "ellenorizendo",
@@ -6558,7 +6558,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F196b",
+    "id": "DT772",
     "feladat": "#196 GYOKEROK_KAPUK (a kapuk helye a CI-ben; 2026-11-11)",
     "kerdes": "Szabályszámot (E38, E39) kapjanak-e most a `szabalyok.py`-ban? Az E-szám a `adat/SEMA.md` 3.11 generált kapulistáját is írja (E37), az `adat/`-hoz ez a menet nem nyúl.",
     "allapot": "ellenorizendo",
