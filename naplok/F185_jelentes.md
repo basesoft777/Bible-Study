@@ -2,7 +2,7 @@
 
 *FELADATOK #185 · végrehajtó: claude-opus-5-5 · ág: `claude/f185-bdb-jelentespont-97` · 2026-11-10*
 
-**Állapot (2026-11-10, a javítókör után):** P1, P2, P4 kész; P3 elmaradt (DT-F185e); P5: a seed-103 vak mérés 188 / 200 (94,0%),
+**Állapot (2026-11-10, a javítókör után):** P1, P2, P4 kész; P3 elmaradt (DT730); P5: a seed-103 vak mérés 188 / 200 (94,0%),
 a `BDB_MERT_PONTOSSAG` erre áll (10.); független ellenőrzés: `naplok/ELLENOR_F185.md`, javítókör: 11.
 *(Történeti, a 2. szakasz idején: „a P1 részben kész, a P2 nem indult … A P3–P6 nem indult. A seed-103 mintát nem húztam ki.”)*
 
@@ -82,7 +82,7 @@ szám kerül a lapra „mért” jelöléssel, és a P3 elmarad (erről az orkes
 
 ### 4.1 Mit mérünk
 
-Az `adat/bdb_vers_jelentes.tsv` (2.29; a mintavételkori állapot, a jelentéspont forrása a szakasztábla, DT-F185a) egy sora: egy
+Az `adat/bdb_vers_jelentes.tsv` (2.29; a mintavételkori állapot, a jelentéspont forrása a szakasztábla, DT726) egy sora: egy
 BDB-szócikk egy igehely-hivatkozása. Két mutató, külön számmal:
 - **könyv/vers:** az `mt_vers` (Károli-könyvrövidítés + MT fejezet:vers); szűrt (nem bibliai) sornál üres, ott a kitöltő
   „alhivatkozás” ítélete egyezik;
@@ -135,7 +135,7 @@ rendezve), a seed-99/100/101/102 kulcsainak sorai kizárva; azonosító `N001`�
 
 ## 5. P1 vége, forrásváltás, P2 (F185.3–F185.4)
 
-*Döntések: DT-F185a (A) a szakasztábla a forrás; DT-F185b (a) sorbelső fej-oszlop (orkesztrátori döntések, 2026-11-10, a
+*Döntések: DT726 (A) a szakasztábla a forrás; DT727 (a) sorbelső fej-oszlop (orkesztrátori döntések, 2026-11-10, a
 felhasználó delegálásával). Takarékos menet (a felhasználó szava, 2026-11-10): ami kétes, `ketes` jelölést kap, nem hangolok
 tovább, a seed-101/102-n egyetlen záró tájékoztató szám.*
 
@@ -152,9 +152,9 @@ tovább, a seed-101/102-n egyetlen záró tájékoztató szám.*
   kulcsa megvan, és a szakasz-nézet hash-e a sor `forras_hash`-ével egyezik — előtte és utána is 29 311 / 29 311.
 - **Nem javítva (`ketes` vagy nyitott):** a könyvnév nélküli hely és a közbeékelt, nem létező fejezet (a seed-102 M060, M039,
   M127, M196) a mai óvatos szabály szerint `orokles_hibas` okkódot kap, amely a kártyán és az olvasóban gyenge jelölés; új
-  szabály nem készült (a könyv/vers mérce a seed-101/102-n 99,5% fölött). N-F185c.
+  szabály nem készült (a könyv/vers mérce a seed-101/102-n 99,5% fölött). N141.
 
-### 5.2 A forrásváltás (DT-F185a (A); egy szabály, egy hely)
+### 5.2 A forrásváltás (DT726 (A); egy szabály, egy hely)
 
 A vers → jelentéspont döntés egyetlen helye a 2.29 generátora; minden fogyasztó (lapgenerátor, olvasó, #104 kártya) a 2.29-et
 olvassa, a szeletelő jelentéspontját sehol máshol nem használja (`grep`: a `bdb_szelet.jelentespont`/`csomopont_savok` hívója
@@ -203,7 +203,7 @@ konkordancia/lexikonok_nyers/DictBDB.json | ts=2026-11-10.*
   arányaiból: 0,77; 1,32 átlag; 1,74 a seed-204-en): **≈ 0,73 M token** (sáv 0,43–0,97 M); a seed-204 aránya szerint a felső
   szél ≈ 0,97 M.
 
-## 7. P4 — forráshibák tanúval (DT-F185c, DT-F185d)
+## 7. P4 — forráshibák tanúval (DT728, DT729)
 
 *Proveniencia: scope=adat/bdb_forras_javitas.tsv `pe_mem` `jelolt_marad` (556) + `res_dalet` jelöltek (252) | forras=
 eszkozok/bdb_jelolt/belso_tanu.py (TAHOT_kivonat.tsv teljes szavak és tő-tokenek, OSHL_lexikalis_index.tsv, Strong_szotar.tsv)
@@ -261,7 +261,7 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 
 - **A kapu (≥ 194 / 200): NEM teljesül** (188 / 200); a könyv/vers teljesül. A `BDB_MERT_PONTOSSAG` (`konfig/bdb_pontossag.toml`:
   183 / 200, 2026-11-09) *(történeti, a mérés napján:)* változatlan; P3 nem indul — az orkesztrátor dönt (4.5). **Utóbb (10.,
-  DT-F185e): a `BDB_MERT_PONTOSSAG` 188 / 200-ra állt.**
+  DT730): a `BDB_MERT_PONTOSSAG` 188 / 200-ra állt.**
 - **A ≠ B: 1 sor** (s103-N182 H3318, A `-/1/c`, B `Qal/1/c`): ítélet B — „— 1 go or come out or forth: … c.”; a „Qal” név a
   digitális forrásban hiányzik (2.31 kézi `jelolo_hianyzik`), a szócikk később Hiph`il-t és Hoph`al-t nyit, tehát az 1. pont a
   Qal-é; a gépi helyes. Kitöltő-hiba más sorban nem vizsgálva (A = B soron ítélet nem mozdítja a számot, 4.4).
@@ -279,16 +279,16 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 ## 9. Zárás (P1–P5)
 
 - **P1:** a szakasztábla fejfelismerése (hamis bekezdés-eleji fej, tapadt betűfej, törzsnévlista, csoport, alcímszó,
-  homonima-szám) és a sorbelső fejek oszlopa (DT-F185b), sorvágás nélkül; a fordítások 29 311 kulcsa változatlan.
-- **Forrás:** a 2.29 jelentéspontja a szakasztáblából (DT-F185a); a szeletelő hivatkozás-kinyerés, csoport és tanú.
+  homonima-szám) és a sorbelső fejek oszlopa (DT727), sorvágás nélkül; a fordítások 29 311 kulcsa változatlan.
+- **Forrás:** a 2.29 jelentéspontja a szakasztáblából (DT726); a szeletelő hivatkozás-kinyerés, csoport és tanú.
 - **P2:** `bizonyossag` (`biztos` / `ketes:<ok>`); a seed-103-on a `biztos` 180 / 181, a `ketes` 8 / 19 helyes.
 - **P4:** pe/mem és rés/dálet tanúval (belső tanú, Sefaria), 341 tételes javítás; a javítás a megjelenítésben mindkét nyelven.
 - **P5:** könyv/vers 200 / 200; jelentéspont **188 / 200 (94,0%, Wilson 89,8–96,5)** — a 97%-os kapu nem teljesül; a
   `BDB_MERT_PONTOSSAG` *(történeti: változatlan)* — utóbb 188 / 200 (10.); a lapot nem generáltam újra. A seed-102-höz (183 / 200, más minta) képest +5.
-- **Nyitott:** N-F185b (leképezés), N-F185c (könyvnév nélküli hely); a 12 hiba osztályai (római szám, mélyebb számozás, törzs)
+- **Nyitott:** N140 (leképezés), N141 (könyvnév nélküli hely); a 12 hiba osztályai (római szám, mélyebb számozás, törzs)
   a következő kör jelöltjei, a P3-ról az orkesztrátor dönt.
 
-## 10. Döntések a P5 után (DT-F185e, orkesztrátori döntés, 2026-11-10)
+## 10. Döntések a P5 után (DT730, orkesztrátori döntés, 2026-11-10)
 
 - **A mért szám:** a `BDB_MERT_PONTOSSAG` (`eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml`) új értéke **188 / 200
   (94,0%, Wilson 89,8–96,5), seed-103, valóban vak, 2026-11-10**, a szakasztábla hozzárendelésére. A régi 183 / 200 (seed-102,
@@ -301,7 +301,7 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
   `konfig/bdb_pontossag.toml` (fejléc), `konfig/elemek.toml` (két leírás), `teszt_olvaso_szerver.py` (három teszt). A
   lapgenerátorban (`eszkozok/lexikon_general.py`) és a `sablonok/`-ban BDB-vonatkozású „próba” nincs (a #182-nek nincs teendője
   ebből; a lexikon-oldalak meglévő szövegét nem néztem, lapot nem generáltam).
-- **N-F185d:** a 12 hiba osztályai (római szám vagy rész 6, számozás 4, törzs 2) nyitott tételként.
+- **N142:** a 12 hiba osztályai (római szám vagy rész 6, számozás 4, törzs 2) nyitott tételként.
 - **Becslési tanulság:** a héber BDB-szöveg vak kitöltése kb. **2,2 token / karakter** (seed-103: 1 209 731 / 556 147), a #186
   görög Thayer-szövegének 1,74-es arányánál több; a következő BDB-becslés ezzel számoljon.
 - **Tesztek:** `teszt_olvaso_szerver.py` a munkafa kódjával, a WSL-venv-vel és a WSL-natív `pardes.db`-vel (2026-11-02-i építés):
@@ -321,7 +321,7 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 4. **SEMA 2.31 állapot** (saját számlálás): `pe_mem` `javitva` 4 046, `valodi_mem` 2 402, `jelolt_marad` 333; `res_dalet` 252
    (`javitva` 118, `jelolt_marad` 134); 43 824 sor.
 5. **Rés/dálet szabály** a SEMA-ban a kód szerint: ≥ 3 mássalhangzó, a szó szélén álló geres megengedett.
-6. **N-F185a** lezárt blokkba (DT-F185b, `belso_fejek`).
+6. **N143** lezárt blokkba (DT727, `belso_fejek`).
 7. A jelentés „Állapot” sora és a 8–9. szakasz „változatlan” mondata frissítve (a régi szöveg történetiként jelölve).
 8. **Tanú-formátum:** a `ketes` is szinttel (`tahot/oshb:L2:ketes`, Sefariánál `L0`: nincs illeszthető szócikk); a pe_mem és a
    res_dalet proveniencia-mezője azonos alakú (`… (fejléc) + belso_tanu.py | ts=…`). A 2.31 újragenerálva; a sorok száma
@@ -332,11 +332,11 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
    forras=eseti összevetés kulcs (strong, sorszam) szerint | ts=2026-11-10.)*
 
 **Tartalmi döntések (orkesztrátor, 2026-11-10):**
-- **DT-F185f — a `betu_javit` kapcsolója:** `eszkozok/lexikon_general.py` `BDB_BETU_JAVIT = False` (egyetlen hely, a
+- **DT731 — a `betu_javit` kapcsolója:** `eszkozok/lexikon_general.py` `BDB_BETU_JAVIT = False` (egyetlen hely, a
   `KETRETEGU_BDB_KARTYA` mintájára); a generátor kikapcsolva a base kimenetét adja (a HAMART-001 és az ANTROP-001 E28-a zöld,
   lapújragenerálás nélkül); az olvasó (`blokkok.py`) a javítást alkalmazza. Tesztek: `F185BetuJavitas` (a bekapcsolt ág a
   függvény szintjén és a generátorban, a kapcsolót a teszt kapcsolja be; és a kikapcsolt kapcsoló hatástalansága) — OK.
-- **DT-F185g — ALVIL-001, H7585 Zsolt 16:10:** a DictBDB H7585: „… Ezek 31:15-16, 17; 32:21, 27 b. righteous shall not be
+- **DT732 — ALVIL-001, H7585 Zsolt 16:10:** a DictBDB H7585: „… Ezek 31:15-16, 17; 32:21, 27 b. righteous shall not be
   aban-doned, ׳לשׁ Psa 16:10 (|| שַׁחַת q. v. …)” — a hely a **2.b**-ben áll; **a tábla tévedett** (`-/2/a`, `ketes:jp_illesztes`):
   a sor közepi „b.” „27” után áll, a sorbelső fej szabálya írásjelet vár előtte. Lépés: tételes felülírás a 2.29 előállításánál
   (`bdb_vers_jelentes.JELENTESPONT_KEZI`, kulcs Strong + `poz`, indok idézettel, okkód `jp_kezi`, SEMA 2.29); a sor `-/2/b`, a
@@ -345,7 +345,7 @@ jelentette, hogy csak a saját bemenetét nyitotta meg.
 **A #182 teendői:** a `betu_javit` kapcsoló (`lexikon_general.BDB_BETU_JAVIT`) bekapcsolása a lapokon a teljes folyamatban (az
 F35 mellé), motívumonként; a `biztos`/`ketes` bontás lapra vitele (2. fázis).
 
-## 12. A mért pontosság az olvasóban (DT-F185h; a felhasználó döntése, 2026-11-10: „semmi helye ott”)
+## 12. A mért pontosság az olvasóban (DT733; a felhasználó döntése, 2026-11-10: „semmi helye ott”)
 
 A szólap BDB-blokkjának megjegyzéséből (`blokkok.py`) a mért pontosság kikerült; a megjegyzés: „Gépi szeletelés: … A vers →
 jelentéspont hozzárendelés kétes pontjai „vonatkozhat” jelölést kapnak.” A `BDB_MERT_PONTOSSAG` adat (`konfig/bdb_pontossag.toml`:
@@ -359,7 +359,7 @@ feladatban tilos. Ez az N99 javításának lapra kerülése, nem új hiba.
 
 ## 13. Zárás a javítókör után
 
-- **HAMART-001 újragenerálva (DT-F185i, N99; kikapcsolt `BDB_BETU_JAVIT`):** a lapdiff 4 hunk, mind a H2403 4.2-blokkjában — az
+- **HAMART-001 újragenerálva (DT734, N99; kikapcsolt `BDB_BETU_JAVIT`):** a lapdiff 4 hunk, mind a H2403 4.2-blokkjában — az
   „1 — bűn” sorából kikerül a bűnáldozat szövege és a „kutatói jelölés: … ellenőrzendő” sor, a „b. bikát …” töredék is; a
   szakaszszám 8 → 11; új 4.a, 4.b, 4.c sor. Más nem változott (új DT/N-hivatkozás és munkaszó nincs).
 - **Teljes helyi CI** (`eszkozok/ellenorzes/futtat.py`, base `ae37c175` … `0cbbbe3a`): kilépési kód 0; HIBA egyik szabályban sincs
@@ -368,9 +368,9 @@ feladatban tilos. Ez az N99 javításának lapra kerülése, nem új hiba.
   `javitva`), nem az ágból: E25 3 (`CLAUDE.md`, `MUNKAMENET.md`), E27 43, E34 41 (`adat/elofordulasok.tsv`), E36 1 (`SEMA.md:1617`).
 
 **Maradék:**
-- N-F185b — a mérő útvonal leképezése (rövid folytatás-hivatkozás) és a `szakasz`/`resz` forrása a mérésben;
-- N-F185c — a könyvnév nélküli hely és a közbeékelt fejezet feloldása;
-- N-F185d — a seed-103 12 hibájának osztályai (római szám vagy rész 6, számozás 4, törzs 2) + a H7585 sorbelső fej számjegy után;
+- N140 — a mérő útvonal leképezése (rövid folytatás-hivatkozás) és a `szakasz`/`resz` forrása a mérésben;
+- N141 — a könyvnév nélküli hely és a közbeékelt fejezet feloldása;
+- N142 — a seed-103 12 hibájának osztályai (római szám vagy rész 6, számozás 4, törzs 2) + a H7585 sorbelső fej számjegy után;
 - az olvasó BDB-blokkja a szeletelő bontását jeleníti meg (a 2.29 táblapontja, ahol a csomópontok között nincs, szövegesen áll);
 - a #182 teendői: a `BDB_BETU_JAVIT` bekapcsolása a lapokon a teljes folyamatban (az F35 mellé), a `biztos`/`ketes` bontás lapra
   vitele (2. fázis).

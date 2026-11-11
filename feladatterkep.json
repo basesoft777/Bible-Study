@@ -5418,9 +5418,9 @@
     "sor": 731
    },
    {
-    "id": "DT-F185a",
-    "feladat": "#185 BDB_JELENTESPONT_97 (P1: a jelentéspont forrása, DT659 (ii)/DT662; N-F185a)",
-    "kerdes": "Az F185.1 után (sorvágás nélküli szabályok a `bont.py`-ban) a szakasztábla-útvonal a seed-101-en 193/200, a seed-102-n 193/199; a szeletelő 188 és 184 (tájékoztató, a szabályok ezeken a mintákon készültek). A maradék tábla-hibák fele bekezdésen belüli fej (N-F185a), amely sorvágást vagy sorbelső fej-oszlopot kíván; a többi a mérő útvonal leképezése (N-F185b). Az orkesztrátor jelezte (2026-11-10), hogy külső BDB-digitalizáció (Sefaria-BDB) is lehet a forrás. *(proveniencia: scope=seed-101 véletlen 200, seed-102 véletlen 199 \\| forras=eseti meres.py (m2_minta_osszevet.py függvényeivel) + adat/bdb_szakaszok.tsv (F185.1) \\| ts=2026-11-10)*",
+    "id": "DT726",
+    "feladat": "#185 BDB_JELENTESPONT_97 (P1: a jelentéspont forrása, DT659 (ii)/DT662; N143)",
+    "kerdes": "Az F185.1 után (sorvágás nélküli szabályok a `bont.py`-ban) a szakasztábla-útvonal a seed-101-en 193/200, a seed-102-n 193/199; a szeletelő 188 és 184 (tájékoztató, a szabályok ezeken a mintákon készültek). A maradék tábla-hibák fele bekezdésen belüli fej (N143), amely sorvágást vagy sorbelső fej-oszlopot kíván; a többi a mérő útvonal leképezése (N140). Az orkesztrátor jelezte (2026-11-10), hogy külső BDB-digitalizáció (Sefaria-BDB) is lehet a forrás. *(proveniencia: scope=seed-101 véletlen 200, seed-102 véletlen 199 \\| forras=eseti meres.py (m2_minta_osszevet.py függvényeivel) + adat/bdb_szakaszok.tsv (F185.1) \\| ts=2026-11-10)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -5428,8 +5428,8 @@
     "sor": 732
    },
    {
-    "id": "DT-F185b",
-    "feladat": "#185 BDB_JELENTESPONT_97 (N-F185a: a bekezdésen belüli fej)",
+    "id": "DT727",
+    "feladat": "#185 BDB_JELENTESPONT_97 (N143: a bekezdésen belüli fej)",
     "kerdes": "A félkövér nélküli, bekezdés közepi fej (N103 (1)) a 2.30-ban sorvágással vagy sorbelső fej-oszloppal vehető fel; a sorvágás a `sorszam`-ot eltolja, erre kulcsolódik a `forditasok.tsv` 29 311 BDB-szakaszfordítása és a 2.31 horgonyai.",
     "allapot": "alkalmazasra_var",
     "jelek": [
@@ -5438,7 +5438,7 @@
     "sor": 733
    },
    {
-    "id": "DT-F185c",
+    "id": "DT728",
     "feladat": "#185 BDB_JELENTESPONT_97 (P4: forráshibák tanúja)",
     "kerdes": "A digitalizálás pe/mem és rés/dálet jelöltjeinek eldöntéséhez a belső tanú (TAHOT/OSHB) mellé külső tanú: a Sefaria-BDB API. A felhasználó szavával: „szerintem nem érinti a licenszet ha javításra felhasználjuk”.",
     "allapot": "alkalmazasra_var",
@@ -5448,7 +5448,7 @@
     "sor": 734
    },
    {
-    "id": "DT-F185d",
+    "id": "DT729",
     "feladat": "#185 BDB_JELENTESPONT_97 (P4: a rés/dálet hibaosztály)",
     "kerdes": "A digitalizálás rés ↔ dálet tévesztése (a felhasználó „עָפָד” példája) a 2.31-ben nem önálló osztály. A belső tanú mérése (F185_P0b 7.: 12-es minta, 8 javít, 3 marad, 1 kétes, a Sefariával 8/8 egyezik) szerint létezik, a jelölt-lista zajos.",
     "allapot": "alkalmazasra_var",
@@ -5458,7 +5458,7 @@
     "sor": 735
    },
    {
-    "id": "DT-F185e",
+    "id": "DT730",
     "feladat": "#185 BDB_JELENTESPONT_97 (P5 után: a mért szám, a P3 és a „próba” jelölés)",
     "kerdes": "A seed-103 (valóban vak, a szakasztábla hozzárendelése) jelentéspontja 188 / 200 (94,0%, Wilson 89,8–96,5); a brief kapuja (≥ 97%) nem teljesült. A brief szerint a „próba” jelölés csak 97% fölött kerül le; az arany lapon a jelölő-kapu a „próba” szót tiltja.",
     "allapot": "alkalmazasra_var",
@@ -5468,7 +5468,7 @@
     "sor": 736
    },
    {
-    "id": "DT-F185f",
+    "id": "DT731",
     "feladat": "#185 BDB_JELENTESPONT_97 (ELLENOR_F185: a `betu_javit` és a commitolt lapok E28-eltérése)",
     "kerdes": "A pe/mem és rés/dálet javítás megjelenítése (`bdb_rovidites.betu_javit`) a lexikon-generátorban a commitolt lapok (HAMART-001, ANTROP-001) szövegét változtatná; a lap újragenerálása ebben a feladatban tilos.",
     "allapot": "alkalmazasra_var",
@@ -5478,7 +5478,7 @@
     "sor": 737
    },
    {
-    "id": "DT-F185g",
+    "id": "DT732",
     "feladat": "#185 BDB_JELENTESPONT_97 (ELLENOR_F185: ALVIL-001, H7585 Zsolt 16:10, GerincHiba)",
     "kerdes": "A forrásváltás után a 2.29 H7585 Zsolt 16:10 sora `-/2/a` (`ketes:jp_illesztes`), a kutatói hozzárendelés 2.b; a lexikon-generátor GerincHiba miatt leáll. A DictBDB: „… 32:21, 27 b. righteous shall not be aban-doned, ׳לשׁ Psa 16:10 …” — a hely a 2.b-ben áll.",
     "allapot": "alkalmazasra_var",
@@ -5488,7 +5488,7 @@
     "sor": 738
    },
    {
-    "id": "DT-F185h",
+    "id": "DT733",
     "feladat": "#185 BDB_JELENTESPONT_97 (az olvasó szólapjának „Ebben a versben” doboza: a mért pontosság szövege)",
     "kerdes": "A doboz a BDB-megjegyzés után a mért pontosságot írta ki („Mért pontosság (…): 94,0% (…)”). A felhasználó szava: „semmi helye ott”.",
     "allapot": "alkalmazasra_var",
@@ -5498,7 +5498,7 @@
     "sor": 739
    },
    {
-    "id": "DT-F185i",
+    "id": "DT734",
     "feladat": "#185 BDB_JELENTESPONT_97 (a javítókör utáni E28: HAMART-001:1687)",
     "kerdes": "A 2.30 H2403 „see 1 above” javítása (N99; F185.1) a HAMART-001 4.2-blokkjában a bűnáldozat szövegét a 4.a–c alá tenné; a commitolt lap a régi, hibás helyen hordozta. A lap újragenerálása a briefben tilos volt.",
     "allapot": "alkalmazasra_var",

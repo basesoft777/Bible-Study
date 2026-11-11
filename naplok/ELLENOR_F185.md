@@ -10,13 +10,13 @@ ELTÉRÉS: 11 tétel
 |---|---|---|---|
 | 0 modell | OK | — | A tényleges modell `claude-opus-5-5`, a kért modell `opus`. |
 | 0 modell-mezők | OK / NEM ELLENŐRIZHETŐ | `naplok/F185_jelentes.md:3,244` | Új `modell` oszlopú adattábla-sor nincs a diffben. A jelentés a végrehajtót `claude-opus-5-5`-nek írja, a commitok `Co-Authored-By: Claude Opus 5.5` sorral zárulnak (`git log ae37c175..492821f4`). A négy kitöltő modelljét („mind `claude-opus-5-5`”) a repóból nem tudtam igazolni. |
-| G/D | — | brief | A briefben nincs G- vagy D-jelű pont, ezért a P0–P6 tételeket és a DT-F185a–e döntéseket vettem sorra. |
+| G/D | — | brief | A briefben nincs G- vagy D-jelű pont, ezért a P0–P6 tételeket és a DT726–e döntéseket vettem sorra. |
 | P0 | OK | `naplok/F185_jelentes.md:9-25` | A seed-101/102 beolvasása és a tájékoztató szám dokumentálva van. |
-| P1 | OK (részleges, egyeztetve) | `nyitott/uj/f185-bdb-jelentespont-97.md:3` | A könyvnév nélküli hely nem készült el, ez az N-F185c (a menet takarékos volt). |
+| P1 | OK (részleges, egyeztetve) | `nyitott/uj/f185-bdb-jelentespont-97.md:3` | A könyvnév nélküli hely nem készült el, ez az N141 (a menet takarékos volt). |
 | P2 | OK | `adat/bdb_vers_jelentes.tsv` | Grep-számlálás: `\tbiztos$` 146 679; `ketes:jp_tanu_elter` 12 917; `jp_illesztes` 2 062; `jp_hatar` 395. Az összeg 162 053, egyezik a jelentés 5.3 szakaszával. |
-| P3 / DT-F185e | OK (egyeztetve) | `dontesek/uj/f185-bdb-jelentespont-97.md:5` | A P3 elmaradása, a 188/200 érték és a „próba” felirat kivezetése rögzítve van. |
-| P0b / DT-F185c | OK | `dontesek/uj/…:3`, `adat/SEMA.md` 2.31 `tanu` | A Sefaria tanúként, a repón kívüli gyorsítótárból fut. |
-| DT-F185a/b/d | OK | `dontesek/uj/…:1,2,4` | Helyőrzős sorok, 🟢 állapotban. |
+| P3 / DT730 | OK (egyeztetve) | `dontesek/uj/f185-bdb-jelentespont-97.md:5` | A P3 elmaradása, a 188/200 érték és a „próba” felirat kivezetése rögzítve van. |
+| P0b / DT728 | OK | `dontesek/uj/…:3`, `adat/SEMA.md` 2.31 `tanu` | A Sefaria tanúként, a repón kívüli gyorsítótárból fut. |
+| DT726/b/d | OK | `dontesek/uj/…:1,2,4` | Helyőrzős sorok, 🟢 állapotban. |
 | `ir`-bővítés | OK | `F185_…_BRIEF.md:14` | A diff 31 fájljából 30 benne van az `ir`-ben; a 31. maga a brief, amelynek a fejlécét a menet frissíti (`git diff --name-status`). |
 | 1 vakság: munkalap és szócikkfájl | OK | `naplok/BDB_SZELETELO_M2_minta_seed103_{vak.tsv,szocikkek.txt}` | Grep a gépi jegyekre (`biztos\|ketes\|utvonal\|bizonyossag\|jp_\|tagolatlan\|<törzs>/<n>/<betű>\|-/<n>`): 0 találat. A `⟦N…⟧` jelölőből 197 van, hiányzik az s103-N056, az s103-N071 és az s103-N135, ahogy a jelentés mondja. A H3318-szócikk nyers bekezdésekből áll (1123–1132. sor). |
 | 1 vakság: hivatkozás a munkalap fejlécében | megjegyzés | `…seed103_vak.tsv:1` | A fejléc a repóbeli `naplok/F185_jelentes.md`-re utal. A kitöltői utasítás a repót kifejezetten tiltja (`F185_seed103_kitoltoi_utasitas.md:10`). Szivárgás nincs, de a kulcs az F185.6 óta commitolva áll a repóban. |
@@ -37,9 +37,9 @@ ELTÉRÉS: 11 tétel
 | 7 lapok | OK | — | `git diff --stat … -- lexikon/ eszkozok/lexikon_general.py sablonok/ motivumlog/ generalt_proba/`: üres. |
 | 7 `KETRETEGU_BDB_KARTYA` | OK | `eszkozok/lexikon_general.py:3302` | Értéke `frozenset()`, a fájl nincs a diffben. |
 | 7 `csv` modul | OK | — | Grep `import csv\|csv\.(reader\|writer\|Dict)` a diffben érintett `.py` fájlokra: 0 találat. |
-| 7 végleges DT/N szám | OK, de a CI E26 HIBA-t ad | `dontesek/uj/…`, `nyitott/uj/…` | Csak `DT-F185a–e` és `N-F185a–d` helyőrző szerepel; ezeket l. a következő sorban. |
+| 7 végleges DT/N szám | OK, de a CI E26 HIBA-t ad | `dontesek/uj/…`, `nyitott/uj/…` | Csak `DT726–e` és `N143–d` helyőrző szerepel; ezeket l. a következő sorban. |
 | CI E26 | ELTÉRÉS (mechanikus, CI-blokkoló) | `naplok/F185_jelentes.md:97,198,263` (+2 hely) | A futás (l. a CI-jelentés sorát) 5 HIBA-t ad: a mintaazonosítókat (s103-N135, s103-N182, s103-N200 …) végleges N-számnak veszi. |
-| CI E32 | ELTÉRÉS (mechanikus, CI-blokkoló) | `eszkozok/olvaso_szerver/bdb_vers_jelentes.py:475-476` | 3 HIBA: `DT-F185a`/`DT-F185b` áll a string-literálban. Ugyanez kerül a 2.29 generált `# forras:` fejlécébe, ahol a merge utáni számkiosztás nem cseréli le. |
+| CI E32 | ELTÉRÉS (mechanikus, CI-blokkoló) | `eszkozok/olvaso_szerver/bdb_vers_jelentes.py:475-476` | 3 HIBA: `DT726`/`DT727` áll a string-literálban. Ugyanez kerül a 2.29 generált `# forras:` fejlécébe, ahol a merge utáni számkiosztás nem cseréli le. |
 | CI E28: ALVIL-001 | ELTÉRÉS (tartalmi, súlyos) | `lexikon/ALVIL-001_TUDOMANYOS.md` | `GerincHiba: H7585 Zsolt 16:10: a BDB-példa ('BDB8375','-/2/a') és a kutatói hozzárendelés (2.b) …`. Az ok ezen az ágon van: a word-diffben a 2.29 H7585/80 sora `-/2/b` → `-/2/a`, `ketes:jp_illesztes`. A lap generálása tehát elbukik, és ezt a jelentés nem említi. |
 | CI E28: HAMART-001, ANTROP-001 | ELTÉRÉS (tartalmi, döntés kell) | `lexikon/HAMART-001_TUDOMANYOS.md:1606`, `lexikon/ANTROP-001_TUDOMANYOS.md:659` | A commitolt nézet eltér az újragenerálttól; ez a `betu_javit` következménye. A lap újragenerálását a brief P6 pontja tiltja, ezért ütközés áll fenn, és a jelentés nem jelzi. |
 | CI E25, E27, E34, E36 | nem az ágé | `CLAUDE.md`, `MUNKAMENET.md`, `FELADATOK.md`, `adat/elofordulasok.tsv`, `SEMA.md:1617` | Ezek a fájlok vagy sorok nincsenek a diffben. Az E30 csak FIGYELMEZTETÉS: ékezet nélküli szavak a commit-üzenetekben. |
@@ -48,9 +48,9 @@ ELTÉRÉS: 11 tétel
 | CK2 kulcstartomány-lefedettség | OK | — | A 2.29 és a 2.30 Strong-, `sorszam`- és `poz`-mezőjében, valamint a versmezőkben 0 változott token van (word-diff, Grep). A Strong-lefedettség változatlan. |
 | CK3 a „nulla-diff” hatóköre | ELTÉRÉS (tartalmi, közepes) | `naplok/F185_jelentes.md` 5.2 | Változatlan: a fordítási kulcsok, a 2.30 sorhatárai és a 2.29 vers- és kulcsmezői. A forrásváltás viszont a 2.29 `szakasz`/`resz`/`utvonal` mezőjét tömegesen átírta: a word-diff bal oldalán ≥ 20 086 ilyen mezőcsoport változott (Grep `^-(fej\|tagolatlan\|[IVX]+\|[^\t]*/)`). Ezt a jelentés nem számszerűsíti, pedig a lapok következő generálásakor ez jelenik meg. |
 | CK4 sorszám-változás (E17) | OK | — | `git diff --numstat`: `bdb_forras_javitas.tsv` Δ +252 (bontás: 252 `res_dalet`; a jelentés 7. szakasza és a Grep is ennyit ad). `bdb_szakaszok.tsv` Δ 0, `bdb_szakasz_hu.tsv` Δ 0, `bdb_vers_jelentes.tsv` Δ 0. A `konkordancia/` alatt nincs változás. |
-| CK5 ⛔ pontok | OK | brief | A briefben nincs ⛔ pont. A P3 feltételét és a „97% fölött” feltételt a DT-F185e váltja ki (egyeztetve). |
+| CK5 ⛔ pontok | OK | brief | A briefben nincs ⛔ pont. A P3 feltételét és a „97% fölött” feltételt a DT730 váltja ki (egyeztetve). |
 | A1 memória vs. lekérdezés | OK | `naplok/F185_jelentes.md` 5.4, 6–8 | A mért számok mellett ott a proveniencia-sor; az s103-N182 ítélete idézettel áll. |
-| A2 nyitott tételek | ELTÉRÉS (mechanikus) | `nyitott/uj/f185-bdb-jelentespont-97.md:1` | Az N-F185a nyitottként szerepel, pedig a DT-F185b eldöntötte és a `belso_fejek` oszlop megvalósította. Az N-F185b, -c és -d valóban nyitott. |
+| A2 nyitott tételek | ELTÉRÉS (mechanikus) | `nyitott/uj/f185-bdb-jelentespont-97.md:1` | Az N143 nyitottként szerepel, pedig a DT727 eldöntötte és a `belso_fejek` oszlop megvalósította. Az N140, -c és -d valóban nyitott. |
 | A3–A5 | nem alkalmazható | — | A diffben nincs párhuzam, PaRDeS-réteg vagy tanító. |
 | A6 E12–E15 | OK | — | A CI-futásban mind a négy szabály 0 találatot adott. |
 | a jelentés belső ellentmondásai | ELTÉRÉS (mechanikus) | `naplok/F185_jelentes.md:5-7, 261-262, 285` | Az „Állapot” sor szerint „a P2 nem indult … a seed-103 mintát nem húztam ki”, ami elavult. A 8. és a 9. szakasz szerint a „`BDB_MERT_PONTOSSAG` változatlan”, ezzel szemben a 10. szakasz és a `bdb_pontossag.toml` már 188-at ír. |
@@ -66,6 +66,6 @@ ELTÉRÉS: 11 tétel
 6. **Rés/dálet-szabály (mechanikus).** A SEMA és a kód kétféleképpen írja le.
 7. **A 2.31 reprodukálhatósága (mechanikus).** A fejlécből hiányzik a `--sefaria-cache`, és a `test_javitas_ellenoriz` valószínűleg bukik.
 8. **SEMA 2.31 (mechanikus).** Az állapotszámok elavultak.
-9. **N-F185a (mechanikus).** Nyitottként szerepel, pedig már megoldott.
+9. **N143 (mechanikus).** Nyitottként szerepel, pedig már megoldott.
 10. **A jelentés belső ellentmondásai (mechanikus).** Az „Állapot” sor és a 8–9. szakasz elavult.
 11. **Tanú- és proveniencia-formátum (mechanikus, enyhe).** A két osztály eltér egymástól és a SEMA-tól.

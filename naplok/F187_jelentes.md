@@ -111,7 +111,7 @@ nem kellett). `lekerdezesek.magyar_gorog` (SQL-szűrés; az `allapot` oszlop né
 (`olvaso_pilot/adat.py`: `r[7] != 'elavult'`, `'~' not in r[3]`) és a `teszt_thayer_api_koteg.py` `hu_sorok`-ja (csak `sz\d+`, nem
 `elavult`). Teszt: `test_csak_ervenyes_sor`.
 
-## 5. A BDB-kártya forrása és a #185 (DT-F185a)
+## 5. A BDB-kártya forrása és a #185 (DT726)
 
 - **Ma:** a 4.2 BDB-kártyájának vers → pont adata a `adat/bdb_vers_jelentes.tsv` (a szeletelő, `olvaso_szerver/bdb_szelet.py` +
   `bdb_vers_jelentes.py` kimenete); a jelentésfa és a szöveg a `adat/bdb_szakaszok.tsv` + `adat/bdb_szakasz_hu.tsv` (`bdb_jelolt/bont.py`).
