@@ -69,3 +69,9 @@ A brief V0–V6 tételei helyett az orkesztrátor által rögzített, lezárt ha
 **A javítókörön kívül, de a lezárt hatókörben (a fő szál lelete):** a Kolofon forrástáblája és a 12. Irodalom a 9. szakasz forrásait (köztük a Chain Lineage Browsert és a BiblIndexet, az orkesztrátor kérése szerint) eddig nem nevezte meg — a 12. tétellel együtt pótolva.
 
 **Ellenőrzés a javítókör után:** `ellenoriz.py` 0 SÉRTÉS (27 RENDBEN); olvasói kapu 0 BUKÁS; nyílt mag kapu 0 BUKÁS (az angol pár teljes: 1047/1047); `teszt_hatastortenet` 15/15, `teszt_kesz_lap_hamart` 34/34, `teszt_visszhang_kapu` 22/22, `teszt_olvasoi_kapu` 68/69 (az `Arany.G7` az alapvonalon is bukik).
+
+## Utólagos javítás a PR-ban (F183.11; az orkesztrátor döntései, 2026-11-11)
+
+- **K66 (a 4 hiány-cella):** az adat megvolt, ezért javítva. Az 1Móz 3:23 és 4:12 LXX-cellája (γῆ) és a 9:15 LXX-cellája (ἐξαλείφω — más szó, a φθείρω-családon kívül) modell-kinyerés (claude-opus-5-5), második kéz claude-sonnet-5-5; a 4:12 Vulgata-sora (*eam*, névmás; kinyerő claude-sonnet-5-5) második kéz claude-opus-5-5; a betoldás-sor LXX-cellája (ἔργα, nincs betoldás) második kéz claude-sonnet-5-5 (az első ítélet a sort megfelelés-sornak olvasta, a SEMA 2.53 betoldás-sémájának megadása után újraítélte). A táblában „nincs ellenőrzött adat” nem maradt; a LXX sora: adámá 12/12, sáchat 5/6 (egy versben más szó).
+- **A Chain Lineage licence a lapon:** „licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva” (a `licencek.tsv` belső jelölése `tisztazatlan` marad; a forrás a nyílt magba nem kerül).
+- **K67f:** nyitott, a felhasználó döntésére vár.

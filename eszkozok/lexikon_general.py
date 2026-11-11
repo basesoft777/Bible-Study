@@ -8419,6 +8419,9 @@ def blokk_hatas_tanuk(m, sorai):
     return '\n\n'.join(reszek)
 
 
+CHAIN_LINEAGE_LICENC_OLVASOI = 'licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva'
+
+
 def hatastortenet_forrasok(m):
     """F183: a 9. Hatástörténet szakasz forrásai a Kolofon forrástáblájához és az Irodalomhoz [(fájl, licenc)]; csak az
     új szerkezetű lapon, csak a ténylegesen használt forrás (a tanúréteg forrásai a tábla ellenőrzött soraiból)."""
@@ -8439,7 +8442,9 @@ def hatastortenet_forrasok(m):
     if 'glossa' in forrasok:
         ki.append(('konkordancia/Glossa_Ordinaria.tsv', LC('Glossa_Ordinaria')))
     if 'chain_lineage' in forrasok:
-        ki.append(('chain-lineages', LC('Chain_Lineage_Browser')))
+        # az orkesztrátor döntése (2026-11-11): az olvasónak a „tisztázatlan” félrevezető; a `licencek.tsv` belső
+        # jelölése `tisztazatlan` marad, a lapon ez a mondat áll (a forrás a nyílt magba nem kerül)
+        ki.append(('chain-lineages', CHAIN_LINEAGE_LICENC_OLVASOI))
     return ki
 
 
