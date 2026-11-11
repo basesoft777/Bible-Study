@@ -101,7 +101,7 @@ FOLYTATAS_ELOTAG = 'Folytatás:'
 # ismeretlen elem, glob es perjel nelkuli konyvtarnev mind `teljes`. Ez a lista egyetlen helye.
 SZINT_KONNYITETT_KONYVTAR = ('.claude/', '.github/', 'dontesek/uj/', 'nyitott/uj/', 'beerkezo/',
                              'eszkozok/ellenorzes/')
-SZINT_KONNYITETT_FAJL = ('CLAUDE.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'FELADATOK.md', 'DONTESEK.md',
+SZINT_KONNYITETT_FAJL = ('CLAUDE.md', 'CSAPDAK.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'FELADATOK.md', 'DONTESEK.md',
                          'NYITOTT_FELADATOK.md', 'DONTES_KERDES_SABLON.md', 'Rendszerfejlesztesi_playbook.md',
                          'GitHub_feltoltesi_workflow.md', 'eszkozok/feladatok.py', 'eszkozok/teszt_futtat.py',
                          'eszkozok/szamkiosztas.py', 'eszkozok/dontes_nezet.py')
