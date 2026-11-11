@@ -9,7 +9,7 @@ allapot: megallt
 ag: claude/design-system-8e5bb3
 pr: 692
 ad: a design system tokenjei, README-je és komponensei a mai olvasót írják le; a token-réteg gépi úton frissíthető
-kovetkezo: "Te: a lexikonlap arculatának választása a vásznon (N-F195a), a draft PR áttekintése és merge-e"
+kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az N-F195a (a lexikonlap-nézet és a lektor-felület átállása) a HAMART-001 lezárása után"
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/arculat_szinkron.py, eszkozok/olvaso_szerver/konfig/arculat.json, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/blokkok.py]
 ir: [eszkozok/olvaso_szerver/arculat_szinkron.py, eszkozok/olvaso_szerver/teszt_tervezo.py, dontesek/uj/design-system-8e5bb3.md, nyitott/uj/design-system-8e5bb3.md, naplok/ELLENOR_F195.md, F195_DESIGN_SYSTEM_BRIEF.md]
@@ -39,7 +39,7 @@ fugg: []
 - G1: a repóban csak az `ir` fájlok változnak; a `lexikon/`, a generátor, a `sablonok/`, az `adat/`, a `DONTESEK.md` és az olvasó-szerver stíluslapja, sablonjai és regisztere nem.
 - G2: a szkript kimenete a repón kívülre kerül; a `tokens.json` értékei az `arculat.json`-nal egyeznek (teszt: `teszt_tervezo.TestSzinkron`).
 - G3: az artifact frissítése előtt minden módosított fájl friss beolvasása; az index (`design-system.json`) az utolsó hívásban.
-- D1: döntés `DT-F195` (`dontesek/uj/design-system-8e5bb3.md`); nyitott tétel `N-F195a` (`nyitott/uj/design-system-8e5bb3.md`).
+- D1: döntés `DT-F195` és `DT-F195a` (`dontesek/uj/design-system-8e5bb3.md`); nyitott tétel `N-F195a` (`nyitott/uj/design-system-8e5bb3.md`).
 - D2: a régi leírások (usage) közül a megszűnt nézetekre utalók („Olvasópult”, „Munkaasztal”, „nézetváltó”, „jobb oldali panel”) a futtatás előtt, a design system példányán javulnak; a szkript a meglévő leírást megtartja.
 - Egy független ellenőrzés, legfeljebb egy javítókör. ⛔ A merge a felhasználóé.
 
@@ -49,4 +49,5 @@ fugg: []
 - **Design system:** https://claude.ai/artifact/AtQvPhFShiG71apnGPm2AU (15. változat): tokens.json (19 szín, 3 árnyék, 35 térköz), tokens.css, bundle.css a szkriptből; új README; 11 új kártya (AaMenu, BdbVersJeloles, Chip, KanonSav, Kereso, KonyvValaszto, NavigaciosLap, ReszletekAlsoLap, ReszletekLap, TanulmanyJel; Fejlec, Fulek, KaroliSzoveg, Utmutato átírva; Blokk, HeberCsempe, InterlinearisCsempe README-je javítva). A lexikonlap nincs benne (N-F195a).
 - **Lelet a leltárhoz:** a `g-*`, az `arnyek` és a fejléc-térközök átvitelét a szkript már tudta; a design system `tokens.json`-ja volt régebbi.
 - **Független ellenőrzés:** `naplok/ELLENOR_F195.md` — 1 ELTÉRÉS (a stílusosztályok ütköztek a szerver osztályaival), az 1. javítókörben javítva (`ds-` előtag), teszt zöld.
+- **Döntés az arculatról (2026-11-11):** a felhasználó az (a)-t választotta, egy arculat (DT-F195a). A design system README-je „Lexikonlap és lektor-felület” szakaszt kapott, második téma nincs; a vásznon a (b) keret „elvetett változat” felirattal, összevetésként maradt. A lexikonlap-nézet és a lektor-felület CSS-átállása: N-F195a, a HAMART-001 lezárása után, nem ebben a PR-ban.
 - Nem készült el: a generált `api/` kártyák és a README „Consuming/Index” része a design system oldalán csak egy kézi mentéskor generálódik újra; az `eszkozok/olvaso_szerver/README.md` nem említi az új kapcsolókat (nincs az `ir`-ben).
