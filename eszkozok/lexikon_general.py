@@ -394,11 +394,44 @@ def lemma_cim(lk):
 KIEJTES_HIANY = {}
 
 
+# F182 (A04, N-F178b): a betű nélküli Strong TBESH-változata (H2403a חַטָּאָה ↔ H2403b חַטָּאת) a motívum szövegéhez
+# illesztve: a motívum verseinek TAHOT-szótöve (`Szótő`) dönt. Csak az új szerkezetű lap generálása alatt áll be
+# (`lemma_valtozat_beallit`); a régi lapok a betű nélküli alapalakot kapják (E28).
+LEMMA_VALTOZAT = {}
+
+
+def _nikud_nelkul(x):
+    return re.sub(r'[\u0591-\u05af\u05bd\u05c0\u05c3]', '', unicodedata.normalize('NFC', x or ''))
+
+
+def lemma_valtozat_beallit(sorai):
+    """{Strong: változat-kulcs} a motívum soraiból: ha a Strongnak több TBESH-változata van, az, amelynek lemmája a
+    motívum versein a TAHOT-szótővel egyezik (egyértelmű egyezésnél)."""
+    LEMMA_VALTOZAT.clear()
+    pontos, _alap = tbesg_tbesh_index()
+    strongok = {t for s in sorai or [] for t in (s.get('strong') or '').split('+') if t.startswith('H')}
+    if not strongok:
+        return LEMMA_VALTOZAT
+    versek = {v for s in sorai for v in igehely_lista(s['igehely'])}
+    szotovek = {}
+    for r in L.load_tahot():
+        if r['Strong-szám'] in strongok and r['Igehely'] in versek:
+            szotovek.setdefault(r['Strong-szám'], set()).add(_nikud_nelkul(r.get('Szótő')))
+    for st in strongok:
+        valtozatok = [k for k in pontos if re.fullmatch(re.escape(st) + r'[a-z]', k)]
+        if len(valtozatok) < 2:
+            continue
+        egyezo = [k for k in valtozatok if _nikud_nelkul(pontos[k][0]) in szotovek.get(st, set())]
+        if len(egyezo) == 1:
+            LEMMA_VALTOZAT[st] = egyezo[0]
+    return LEMMA_VALTOZAT
+
+
 def lemma_kiejtes_szabaly(strong):
     """(lemma, magyaros kiejtés vagy '') vagy None. Héberül jóváhagyott kiejtés híján gépi, jelölve (DT-F131y); ha az
     sincs, '' (a KIEJTES_HIANY-ba kerül)."""
     pontos, alap = tbesg_tbesh_index()
-    nyers = pontos.get(strong) or alap.get(strong)
+    nyers = pontos.get(LEMMA_VALTOZAT.get(strong, strong)) or pontos.get(strong) or alap.get(strong)
     if not nyers:
         return None
     lemma, step = nyers
@@ -7694,6 +7727,10 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
                   'még nem indult el ehhez a motívumhoz, l. FELADATOK #11/#12)' % m['id'])
             continue
 
+        if uj_szerkezet(m['id']):
+            lemma_valtozat_beallit(sorai)        # F182 (A04): a lemma-változat a motívum szövegéhez
+        else:
+            LEMMA_VALTOZAT.clear()
         blokkok, tisztazatlan_erintve_szocikkek = render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek)
         osszesitett_tisztazatlan[m['id']] = tisztazatlan_erintve_szocikkek
 

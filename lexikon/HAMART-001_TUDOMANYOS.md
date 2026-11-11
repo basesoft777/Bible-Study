@@ -117,7 +117,7 @@ A lap első lépése, az igehelyek előtt: mit keresünk, hol kerestünk, mi ese
 
 ### 1.2. Hol kerestünk
 
-**A motívum szavai:** אֲדָמָה (adámá), föld: talaj; אָרַר (árar), megátkozni; דַּרְדַּר (dardar), bogáncs; חַטָּאָה (chattáá), bűn; חָמָס (chámász), erőszak; עִצָּבוֹן (iccávón), fáradság; קוֹץ (kóc), tövis; שָׁחַת (sáchat), elpusztítani, megrontani; διαφθείρω (diaftheiró), elpusztítani; ἐπικατάρατος (epikataratosz), átkozott; κατάρα (katara), átok; φθείρω (ftheiró), elpusztítani; φθορά (fthora), megromlás.
+**A motívum szavai:** אֲדָמָה (adámá), föld: talaj; אָרַר (árar), megátkozni; דַּרְדַּר (dardar), bogáncs; חַטָּאת (chattát), bűn; חָמָס (chámász), erőszak; עִצָּבוֹן (iccávón), fáradság; קוֹץ (kóc), tövis; שָׁחַת (sáchat), elpusztítani, megrontani; διαφθείρω (diaftheiró), elpusztítani; ἐπικατάρατος (epikataratosz), átkozott; κατάρα (katara), átok; φθείρω (ftheiró), elpusztítani; φθορά (fthora), megromlás.
 
 | Keresés | Vers | Mit nézett |
 |---|---|---|
@@ -181,7 +181,7 @@ A lap első lépése, az igehelyek előtt: mit keresünk, hol kerestünk, mi ese
 <details open><summary><strong>עִצָּבוֹן (iccávón) — fáradság</strong> — 2 hely</summary><p>2 hely: 2 a Genezisben.</p><ul><li><a href="#ige-1móz-3-16">1Móz 3:16</a>: A fájdalom szava az asszonyra; a szó mindhárom előfordulása a láncban áll.</li><li><a href="#ige-1móz-5-29">1Móz 5:29</a>: A lánc három szava egy mondatban; az átok állapot, amelyből vigasztalást várnak.</li></ul></details>
 <details open><summary><strong>אֲדָמָה (adámá) — föld: talaj</strong> — 10 hely</summary><p>10 hely: 9 a Genezisben és 1 az Ószövetség többi könyvében.</p><ul><li><a href="#ige-1móz-3-17">1Móz 3:17</a>: Az átok a földre lép; az átok, a föld és a fáradság szava először áll együtt.</li><li><a href="#ige-1móz-3-19">1Móz 3:19</a>: A föld mint az ember anyaga és sírja; az átok a halálig ér.</li><li><a href="#ige-1móz-3-23">1Móz 3:23</a>: A kiűzetés az átkozott földhöz köti az embert.</li><li><a href="#ige-1móz-4-12">1Móz 4:12</a>: A föld megtagadja termését; a büntetés a 3:17-19-nél súlyosabb.</li><li><a href="#ige-1móz-4-14">1Móz 4:14</a>: Kiűzetés a föld színéről; a fordulat az özönvíz ítéletében tér vissza.</li><li><a href="#ige-1móz-6-7">1Móz 6:7</a>: A föld színéről való eltörlés kimondása; az özönvíz-elbeszélés ezt hajtja végre.</li><li><a href="#ige-1móz-7-4">1Móz 7:4</a>: A 6:7 kimondásának bejelentése, ugyanazzal az igével és fordulattal.</li><li><a href="#ige-1móz-7-23">1Móz 7:23</a>: A 6:7 ítéletének végrehajtása; csak Noé és a vele lévők maradnak meg a bárkában.</li><li><a href="#ige-1móz-8-21">1Móz 8:21</a>: Az ígéret a föld további átkát zárja ki, más igével; a szív állapota változatlan.</li><li><a href="#ige-sof-1-2-3">Sof 1:2-3</a>: Az 1Móz 6:7 felsorolása és fordulata a próféta ítéletében.</li></ul></details>
 <details open><summary><strong>קוֹץ (kóc) + דַּרְדַּר (dardar)</strong> — 2 hely</summary><p>2 hely: 1 a Genezisben és 1 az Ószövetség többi könyvében.</p><ul><li><a href="#ige-1móz-3-18">1Móz 3:18</a>: Az átok látható jele a föld termésén; a szópár később szó szerint visszatér.</li><li><a href="#ige-hós-10-8">Hós 10:8</a>: A genezisi tövis és bogáncs a bűn helyén nő.</li></ul></details>
-<details open><summary><strong>חַטָּאָה (chattáá) — bűn</strong> — 1 hely</summary><p>Egy hely, a Genezisben.</p><ul><li><a href="#ige-1móz-4-7">1Móz 4:7</a>: A bűn szavának első előfordulása, még az ajtó előtt; a lánc itt még megállítható.</li></ul></details>
+<details open><summary><strong>חַטָּאת (chattát) — bűn</strong> — 1 hely</summary><p>Egy hely, a Genezisben.</p><ul><li><a href="#ige-1móz-4-7">1Móz 4:7</a>: A bűn szavának első előfordulása, még az ajtó előtt; a lánc itt még megállítható.</li></ul></details>
 <details open><summary><strong>a lánc szavai nélkül (tematikus, nem lexikai kapcsolat)</strong> — 4 hely</summary><p>4 hely: 1 a Genezisben, 2 az Ószövetség többi könyvében és 1 az Újszövetségben.</p><ul><li><a href="#ige-1móz-6-5">1Móz 6:5</a>: A bűn belső, egyetemes állapottá válik; erre felel a 6:7 és a 6:13 ítélete.</li><li><a href="#ige-ézs-24-5-6">Ézs 24:5-6</a>: A föld, az átok és a lakók hármasa más átok-szóval.</li><li><a href="#ige-hós-4-1-3">Hós 4:1-3</a>: A lakók bűne miatt búsul a föld.</li><li><a href="#ige-jel-22-3">Jel 22:3</a>: A kánon zárása: az átok megszűnik.</li></ul></details>
 <details open><summary><strong>שָׁחַת (sáchat) — elpusztítani, megrontani</strong> — 7 hely</summary><p>7 hely: 5 a Genezisben és 2 az Ószövetség többi könyvében.</p><ul><li><a href="#ige-1móz-6-11">1Móz 6:11</a>: A föld megromlik és megtelik erőszakkal; a romlás és az erőszak szavának első együttállása.</li><li><a href="#ige-1móz-6-12">1Móz 6:12</a>: Minden test megrontotta útját; a Zsoltárok ezt az igealakot veszik át.</li><li><a href="#ige-1móz-6-17">1Móz 6:17</a>: Az ítélet célja ugyanazzal az igével, mint az ember romlása.</li><li><a href="#ige-1móz-9-11">1Móz 9:11</a>: A romlás-ige tagadva; a szövetség kizárja a föld újabb elvesztését.</li><li><a href="#ige-1móz-9-15">1Móz 9:15</a>: A tagadás minden testre szól, a 6:12 körére.</li><li><a href="#ige-zsolt-14-1">Zsolt 14:1</a>: Az 1Móz 6:12 igealakja a zsoltárban; senki sincs kivétel.</li><li><a href="#ige-zsolt-53-2">Zsolt 53:2</a>: A 14. zsoltár párja, ugyanazzal az igealakkal.</li></ul></details>
 <details open><summary><strong>חָמָס (chámász) — erőszak</strong> — 2 hely</summary><p>2 hely: 1 a Genezisben és 1 az Ószövetség többi könyvében.</p><ul><li><a href="#ige-1móz-6-13">1Móz 6:13</a>: Isten ugyanazzal az igével felel, amellyel az ember a földet megrontotta.</li><li><a href="#ige-ez-12-19">Ez 12:19</a>: Az erőszakkal megtelt föld kiürül; az 1Móz 6:11-13 szerkezete Izraelre.</li></ul></details>
@@ -1255,7 +1255,7 @@ További 18 ok, összesen 118 vers: emberi átkozódás, nem a genezisi lánc fo
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
 
-A motívumot hordozó szavak szótári háttere: héberül az ával (H0056), az adámá (H0127), az álá (H0423), az árar (H0779), a chattáá (H2403), a chámász (H2555), az iccávón (H6093), a kóc (H6975), a ra (H7451) és a sáchat (H7843), görögül a diaftheiró, az epikataratosz, a katara, a ftheiró és a fthora. Minden szónál számozott pontok követik egymást; a 4.2 pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
+A motívumot hordozó szavak szótári háttere: héberül az ával (H0056), az adámá (H0127), az álá (H0423), az árar (H0779), a chattát (H2403), a chámász (H2555), az iccávón (H6093), a kóc (H6975), a ra (H7451) és a sáchat (H7843), görögül a diaftheiró, az epikataratosz, a katara, a ftheiró és a fthora. Minden szónál számozott pontok követik egymást; a 4.2 pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
 *Ez a blokk a motívum 15 Strong-számát fedi, szerepenként a szerepmátrix (a szótári pontok rendje) sorrendjében, van jelentés-hivatkozással (forrás: a lap szótári hivatkozástáblája).*
 
@@ -1269,7 +1269,7 @@ A motívum 15 szava egy táblában: a kiejtés, a rövid alapjelentés, a görö
 | אֲדָמָה (adámá) | föld: talaj | γῆ (gé) · 200 vers | 10 |
 | אָלָה (álá) | eskü | — | 1 |
 | אָרַר (árar) | megátkozni | ἐπικατάρατος (epikataratosz) · 36 vers | 4 |
-| חַטָּאָה (chattáá) | bűn | ἁμαρτία (hamartia) · 243 vers | 1 |
+| חַטָּאת (chattát) | bűn | ἁμαρτία (hamartia) · 243 vers | 1 |
 | חָמָס (chámász) | erőszak | ἀσέβεια (aszebeia) · 12 vers | 12 |
 | עִצָּבוֹן (iccávón) | fáradság | λύπη (lüpé) · 3 vers | 2 |
 | קוֹץ (kóc) | tövis | ἄκανθα (akantha) · 12 vers | 2 |
@@ -1595,7 +1595,7 @@ A szó magyaros kiejtése.<!-- olvasói -->
 
 ### Héber szavak: H0056, H0127, H0423, H0779, H2403, H2555, H6093, H6975, H7451, H7843
 
-A motívumot hordozó héber szavak (héberül az ával (H0056), az adámá (H0127), az álá (H0423), az árar (H0779), a chattáá (H2403), a chámász (H2555), az iccávón (H6093), a kóc (H6975), a ra (H7451) és a sáchat (H7843)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
+A motívumot hordozó héber szavak (héberül az ával (H0056), az adámá (H0127), az álá (H0423), az árar (H0779), a chattát (H2403), a chámász (H2555), az iccávón (H6093), a kóc (H6975), a ra (H7451) és a sáchat (H7843)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).<!-- olvasói -->
 
 #### 4.1. Alapjelentés
 
@@ -1805,7 +1805,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 <!-- APPARATUS-VÉGE: H0779 -->
 
-##### H2403 — חַטָּאָה (chattáá) · BDB
+##### H2403 — חַטָּאת (chattát) · BDB
 
 **A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)
 
@@ -1833,7 +1833,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **BDB 2699. szócikk** *(a H2403 1. BDB-szócikke a 2-ből)*
 
-**A szócikk feje (nyelvi háttér).** H2403. chatta 'ah חַטָּאת nőnemű főnév 1Sám 14:38 (az **1Móz 4:7** nem kivétel, mert a רֹבֵץ főnév = lesben kuporgó vadállat): bűn, bűnért való áldozat, <abbr class="rovidites" title="a címszó: חַטָּאָה (chattáá)">ח׳</abbr>‎ **4:7**, összesen 124-szer; לְחַטָּ֯ת‎ 4Móz 15:24 (szövegromlás לחטאת helyett), לְחַטַּאת Zak 13:1 (de olv. לְחַטָּאת Sta ZAW i. 35); status constructus חַטַּאת‎ 2Móz 30:10, összesen 19-szer; suffixummal חַטָּאתִי‎ 1Móz 31:36, összesen 16-szor; חַטָּאתֹיו֯ 1Kir 16:26, חַטַּאתְכֶם‎ 2Móz 32:30, összesen 3-szor; stb., + 52-szer suffixummal; többes szám חַטָּאוֺת‎ 2Kir 12:16 (héber számozás: 12:17), összesen 3-szor; status constructus חַטּאֹות Zsolt 25:7, összesen 17-szer; חַטּאֹת‎ 4Móz 5:6, összesen 6-szor; suffixummal חַטּאֹותָ֑י Zsolt 25:18; חַטּאֹתָו֯ Ez 18:21; 33:16 stb., + 40-szer suffixummal; —
+**A szócikk feje (nyelvi háttér).** H2403. chatta 'ah חַטָּאת nőnemű főnév 1Sám 14:38 (az **1Móz 4:7** nem kivétel, mert a רֹבֵץ főnév = lesben kuporgó vadállat): bűn, bűnért való áldozat, <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr>‎ **4:7**, összesen 124-szer; לְחַטָּ֯ת‎ 4Móz 15:24 (szövegromlás לחטאת helyett), לְחַטַּאת Zak 13:1 (de olv. לְחַטָּאת Sta ZAW i. 35); status constructus חַטַּאת‎ 2Móz 30:10, összesen 19-szer; suffixummal חַטָּאתִי‎ 1Móz 31:36, összesen 16-szor; חַטָּאתֹיו֯ 1Kir 16:26, חַטַּאתְכֶם‎ 2Móz 32:30, összesen 3-szor; stb., + 52-szer suffixummal; többes szám חַטָּאוֺת‎ 2Kir 12:16 (héber számozás: 12:17), összesen 3-szor; status constructus חַטּאֹות Zsolt 25:7, összesen 17-szer; חַטּאֹת‎ 4Móz 5:6, összesen 6-szor; suffixummal חַטּאֹותָ֑י Zsolt 25:18; חַטּאֹתָו֯ Ez 18:21; 33:16 stb., + 40-szer suffixummal; —
 
 - **1 — bűn**
 
@@ -1848,7 +1848,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **1.b**
 
-  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאָה (chattáá)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאָה (chattáá)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאָה (chattáá)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ **1Móz 4:7** (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban Hós 10:8; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאָה (chattáá)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
+  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ **1Móz 4:7** (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban Hós 10:8; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
 
 <details>
 <summary>1.c – 5. (11 szakasz): az embereknek meg kell térniük a bűnből · Isten bánása a bűnnel · engesztelés szerezhető érte · a pap engesztelést szerez valakiért …</summary>
@@ -2234,7 +2234,7 @@ A motívum 46 ószövetségi helyéből 7 helyen a görög fordítás (Septuagin
 
 **H0779 — אָרַר (árar)** · a motívum 5 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát használja-e: egyező 3 · eltérő 1 · megállapítatlan 1 — versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések)
 
-**H2403 — חַטָּאָה (chattáá)** · a motívum 1 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát használja-e: eltérő 1 — versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések)
+**H2403 — חַטָּאת (chattát)** · a motívum 1 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát használja-e: eltérő 1 — versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések)
 
 **H2555 — חָמָס (chámász)** · a motívum 12 ószövetségi versében, ahol ez a szó áll, a görög szöveg a motívum görög szavát használja-e: eltérő 9 · megállapítatlan 2 · versszámozás miatt nem párosítva 1 — versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések)
 
@@ -2272,7 +2272,7 @@ A motívum 46 ószövetségi helyéből 7 helyen a görög fordítás (Septuagin
 
 #### 4.7. Megfelelők a másik nyelven
 
-A kétnyelvű szótár (SECE) az ával szónak 5 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) az adámá szónak 2 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) az árar szónak 5 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a chattáá szónak 9 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a chámász szónak 7 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a kóc szónak 1 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a ra szónak 14 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a sáchat szónak 30 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a diaftheiró és a ftheiró. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
+A kétnyelvű szótár (SECE) az ával szónak 5 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) az adámá szónak 2 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) az árar szónak 5 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a chattát szónak 9 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a chámász szónak 7 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a kóc szónak 1 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a ra szónak 14 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a sáchat felel meg a másik nyelv szavának. A kétnyelvű szótár (SECE) a sáchat szónak 30 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a diaftheiró és a ftheiró. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.<!-- olvasói -->
 
 **H0056 — אָבַל (ával)** · SECE — görög megfelelők (5):
 
@@ -2303,7 +2303,7 @@ A kétnyelvű szótár (SECE) az ával szónak 5 megfelelőjét adja a másik bi
 | πτωχός | ptókhosz | G4434 | szegény |
 | ταπεινός | tapeinosz | G5011 | alázatos |
 
-**H2403 — חַטָּאָה (chattáá)** · SECE — görög megfelelők (9):
+**H2403 — חַטָּאת (chattát)** · SECE — görög megfelelők (9):
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
@@ -2405,7 +2405,7 @@ A szó eredete és nyelvi háttere.<!-- olvasói -->
 
 **H0779 — אָרַר (árar)** · alapjelentés: átkozni · rokon nyelvi adat: asszír — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
-**H2403 — חַטָּאָה (chattáá)** · alapjelentés: bűn *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+**H2403 — חַטָּאת (chattát)** · alapjelentés: bűn *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 **H2555 — חָמָס (chámász)** · alapjelentés: erőszak, jogtalanság — status absolutus <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 1Móz 6:11 és máshol, összesen 44-szer; status constructus חֲמַס (chamasz) Bír 9:24, összesen 7-szer; suffixummal חֲמָסִי (chamászí)‎ 1Móz 16:5; Jer 51:35 — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
@@ -2419,7 +2419,7 @@ A szó eredete és nyelvi háttere.<!-- olvasói -->
 
 #### 4.9. Versenkénti jelentés
 
-A motívum 1 ószövetségi helyéből 1 helyen az ával egyetlen jelentésben áll; a motívum 10 ószövetségi helyéből 10 helyen az adámá egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 1 helyen az álá egyetlen jelentésben áll; a motívum 4 ószövetségi helyéből 4 helyen az árar egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 1 helyen a chattáá egyetlen jelentésben áll; a motívum 12 ószövetségi helyéből 12 helyen a chámász egyetlen jelentésben áll; a motívum 2 ószövetségi helyéből 2 helyen az iccávón egyetlen jelentésben áll; a motívum 2 ószövetségi helyéből 2 helyen a kóc egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 0 helyen a ra egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű; a motívum 7 ószövetségi helyéből 6 helyen a sáchat egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
+A motívum 1 ószövetségi helyéből 1 helyen az ával egyetlen jelentésben áll; a motívum 10 ószövetségi helyéből 10 helyen az adámá egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 1 helyen az álá egyetlen jelentésben áll; a motívum 4 ószövetségi helyéből 4 helyen az árar egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 1 helyen a chattát egyetlen jelentésben áll; a motívum 12 ószövetségi helyéből 12 helyen a chámász egyetlen jelentésben áll; a motívum 2 ószövetségi helyéből 2 helyen az iccávón egyetlen jelentésben áll; a motívum 2 ószövetségi helyéből 2 helyen a kóc egyetlen jelentésben áll; a motívum 1 ószövetségi helyéből 0 helyen a ra egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű; a motívum 7 ószövetségi helyéből 6 helyen a sáchat egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
 **H0056 — אָבַל (ával)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H0056](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew.
 
@@ -2429,7 +2429,7 @@ A motívum 1 ószövetségi helyéből 1 helyen az ával egyetlen jelentésben �
 
 **H0779 — אָרַר (árar)** · a motívum 4 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (4 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H0779](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H2403 — חַטָּאָה (chattáá)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H2403](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H2403 — חַטָּאת (chattát)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H2403](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew.
 
 **H2555 — חָמָס (chámász)** · a motívum 12 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (12 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H2555](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew.
 
@@ -2453,7 +2453,7 @@ A szó magyaros kiejtése.<!-- olvasói -->
 
 **H0779** · אָרַר (árar)
 
-**H2403** · חַטָּאָה (chattáá)
+**H2403** · חַטָּאת (chattát)
 
 **H2555** · חָמָס (chámász)
 

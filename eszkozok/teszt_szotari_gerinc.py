@@ -871,7 +871,7 @@ class KetreteguBdbKartya(unittest.TestCase):
         olvasoi, app = szov[:kezd], szov[kezd:vege]
         self.assertIn('<details>\n<summary>%s</summary>' % LG.APPARATUS_CIM, app)
         # olvasói réteg: a jelentések rendje (a hordozó félkövér), a hely jelentése, a nem idézett hely kimondva
-        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertIn(r'- 4\. hamis istenekről', olvasoi)   # F182.23: a sor eleji jel escape-elve
         self.assertIn('- **5.** emlékjel', olvasoi)
         self.assertIn('**A motívum helyein:** Ézs 55:13 → 5. emlékjel.', olvasoi)
         self.assertIn('A szótár ezt a helyet nem idézi: Ézs 1:1.', olvasoi)
@@ -1102,7 +1102,7 @@ class F187KartyaJavitasok(unittest.TestCase):
         szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 1:1', '', strong='H8034', entry='')],
                                              {'bdb_kartya': True, 'fl': {}})[0])
         olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H8034')[0]
-        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertIn(r'- 4\. hamis istenekről', olvasoi)   # F182.23: a sor eleji jel escape-elve
         self.assertNotIn('**4.**', olvasoi)
         self.assertIn('vonatkozhat', olvasoi)
 
