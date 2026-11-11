@@ -10,7 +10,7 @@ ad: metaadat-szintű, helyi tanúindex (egyházatyák: HCF; rabbinikus: Sefaria 
 kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
 munka: adat
 olvas: [CLAUDE.md, Rendszerfejlesztesi_playbook.md, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, adat/elofordulasok.tsv]
-ir: [eszkozok/tanu_index.py, eszkozok/teszt_tanu_index.py, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_atyak_mu.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Tanu_index_README.md, adat/datasetek.tsv, adat/licencek.tsv, nyitott/uj/tanuindex-8ed546.md, naplok/F191_jelentes.md]
+ir: [nyilt_mag/, eszkozok/tanu_index.py, eszkozok/teszt_tanu_index.py, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_atyak_mu.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Tanu_index_README.md, adat/datasetek.tsv, adat/licencek.tsv, nyitott/uj/tanuindex-8ed546.md, naplok/F191_jelentes.md]
 fugg: []
 ---
 

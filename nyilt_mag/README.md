@@ -43,7 +43,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 11 |
 | `elofordulasok.tsv` | 251 |
-| `forrasok_es_licencek.tsv` | 61 |
+| `forrasok_es_licencek.tsv` | 63 |
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 539 |
@@ -53,7 +53,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 
 ## Licence filtering
 
-The filtering follows the project's licence inventory. **Excluded sources** (the package contains no value from them): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. The reason for each is given in the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the project's closed derived layer). This is an inventory, not a legal opinion.
+The filtering follows the project's licence inventory. **Excluded sources** (the package contains no value from them): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `Tanu_rabbinikus_index`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. The reason for each is given in the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the project's closed derived layer). This is an inventory, not a legal opinion.
 
 ## Place of publication
 

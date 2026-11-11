@@ -43,7 +43,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 11 |
 | `elofordulasok.tsv` | 251 |
-| `forrasok_es_licencek.tsv` | 61 |
+| `forrasok_es_licencek.tsv` | 63 |
 | `kapcsolatok.tsv` | 32 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 539 |
@@ -53,7 +53,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 
 ## Licencszűrés
 
-A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz belőlük): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. Okuk soronként a `forrasok_es_licencek.tsv` `ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt származtatott rétege). Ez a leltár, nem jogi vélemény.
+A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz belőlük): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `Tanu_rabbinikus_index`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. Okuk soronként a `forrasok_es_licencek.tsv` `ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt származtatott rétege). Ez a leltár, nem jogi vélemény.
 
 ## Közzétételi hely
 
