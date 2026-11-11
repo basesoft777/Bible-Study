@@ -1,6 +1,6 @@
 # 10. PaRDeS U3-prompt sablon — a motívum teljes prózája nulláról, egy kézből
 
-**Állapot: v1 (F178.3, 2026-11-08).** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete, nem szabályforrás — ellentmondásnál a 9-es sablon az irányadó.
+**Állapot: v1.1 (F193, 2026-11-11: a lap új számozása — 9. Hatástörténet, 10. Értelmezés, 11. Módszertan és nyitott kérdések, DT766; J2–J4; hang és alcím, DT768). v1: F178.3, 2026-11-08.** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete, nem szabályforrás — ellentmondásnál a 9-es sablon az irányadó.
 
 *Használat: a `[…]` helyőrzőket a session indítója tölti ki; a prompt többi része szó szerint megy. A session modellje `opus` (értelmező próza, egy kéz: CLAUDE.md, KONTEXTUS K1).*
 
@@ -14,6 +14,7 @@ Te a `[ID]` motívum (`[cím]`) teljes prózáját írod meg **nulláról, egy k
 
 1. A határ kész és nem a te döntésed (U2/U3 szétválasztás): a `jeloltek.tsv` motívumsorai döntöttek (`nyitva` 0), a `naplok/HATAR_[ID].md` modelles része friss (`python eszkozok/ellenoriz.py --hatar-ujjlenyomat [ID]` jele egyezik a modelles rész első sorával). Ha nem friss, vagy ebben a sessionben határdöntést hoztál, **állj meg**: a próza a határkör után jön.
 2. A modell-ellenőrzés (CLAUDE.md): a saját modellneved a `kiadasok.tsv` / `res_forras.tsv` `proza_modell` mezőjébe kerül, a környezetedből véve.
+3. A 9. Hatástörténet adata kész: a visszhang 1 és 2 kinyerő sorai két kézzel ellenőrizve (`MUNKAMENET.md` C-vh), a lap újragenerálva. Ha nem, **állj meg**: a próza a 9. után jön.
 
 **Bemenet** (célzottan olvasd, ne egészben):
 
@@ -21,7 +22,7 @@ Te a `[ID]` motívum (`[cím]`) teljes prózáját írod meg **nulláról, egy k
 - `adat/elofordulasok.tsv` `[ID]` sorai: `igehely`, `karoli_szo`, `gerinc_elem`, `funkcio`, `kapcsolodas`, `jelentes_szam`;
 - `adat/jeloltek.tsv` `[ID]` elutasított sorai (az okok, nem egyenként);
 - az U1 kivonata: `naplok/F123_alapanyag_[ID].md` (vagy a motívum saját U1-fájlja);
-- a lap generált része (`lexikon/[ID]_TUDOMANYOS.md`) csak a számokért (Döntési út, 2. és 3. szakasz).
+- a lap generált része (`lexikon/[ID]_TUDOMANYOS.md`) csak a számokért (Döntési út, 2. és 3. szakasz) és a 9. Hatástörténet soraiért.
 
 **Amit írsz, sorrendben:**
 
@@ -31,17 +32,18 @@ Te a `[ID]` motívum (`[cím]`) teljes prózáját írod meg **nulláról, egy k
    - 3. bekezdés: a két kötelező határ-elem — a negatív kritérium szó szerint ellenőrizhetően (mely alak tartozik ide, mely nem), az ÚSZ-mérce (a Károli alapszövege, a Textus Receptus), és strukturális/fogalmi hordozónál: a lista keresési módszer eredménye.
    - 4. bekezdés: a fölérendelt fogalom („nem a … általában, hanem …”), a név szerinti tematikus kivételek.
 2. **1/a — minden igehely**: a `kapcsolodas` **kerek mondat** (alany, állítmány; idézet csak a fölötte álló Károli-vers szó szerinti része, „…”-ben), alatta a „Funkció:” sor (`címke — magyarázat`, a motívumbeli szerep). Töredék súlyos hiba.
-3. **Értelmezés** (PaRDeS-keret, vitatott pontok) és **Módszertan és nyitott kérdések** (az Alkalmazás kivezetve: F17, B04, DT756; nem írandó): a 9-es sablon 4. pontja szerint; a nyitott kérdés tartalmi, a séma-korlát és az adatállapot `【NAPLO】`.
+3. **10. Értelmezés** (PaRDeS-keret, vitatott pontok) és **11. Módszertan és nyitott kérdések**: a 9-es sablon 4. pontja szerint, „Az értelmező szakaszok kötelező elemei” mind a négy pontjával — az Értelmezés eleje olvasói magyarázat a négy szintről, az állítások alatt a mért adat forrássora (J3); a Vitatott pontok mindkét olvasatot adatból igazolt érvvel mondják, és kimondják: „a lap a kérdést nem dönti el” (J4); a Módszertanban „A határ második ellenőrzése” bekezdés (J2), próza, nem táblázat. A nyitott kérdés tartalmi, a séma-korlát és az adatállapot `【NAPLO】`. **Alkalmazás-szakasz nincs** (F17, B04, DT756: a felhasználó, 2026-11-10: „nincs is alkalmazás”) — nem írod, és más szakaszba sem viszed át.
 4. **Nave-döntések** (U3b, ha még nincs): az `adat/tematikus_temak.tsv`-be, indokkal; üres Nave-blokkal a lap nem adható ki.
 
-**A visszhang-blokk** (a 9. Hatástörténet szakaszban; korábban 4.11) és a szakasz többi része (az újszövetségi ág, az ókori értelmezők) generált (a kinyerő táblából, `MUNKAMENET.md` C-vh); a próza nem ír helyette, és nem állít
-róla többet, mint amit a blokk alapvonala mond (a 6-os sablon „A 4.11 visszhang-blokk szabályai”): a fordítók „hallották”
+**A 9. Hatástörténet: ókori fordítások és értelmezők** generált (a visszhang 1 és 2 kinyerő tábláiból, `MUNKAMENET.md` C-vh), és a próza előtt kész; a próza nem ír helyette, és nem állít
+róla többet, mint amit a blokk alapvonala és a tanúsorok mondanak (a 6-os sablon „A 9. Hatástörténet szabályai” és „A 4.11 visszhang-blokk szabályai”): a fordítók „hallották”
 a láncot mondat csak ott állhat, ahol a blokk kiemelt következtetése (két héber szó egyesítése, szokatlan választás) ezt
-alátámasztja.
+alátámasztja; egyházatyai vagy rabbinikus tanúra csak a 9. sora alapján hivatkozol, szöveget nem idézel belőle.
 
 **Olvasói szöveg — mindenütt:**
 
 - a lelettel kezdesz (számok, a szavak kiejtéssel, példahely), és szabály szerinti következtetéssel zársz;
+- harmadik személyben írsz: „mi”-hang, olvasót megszólító mondat és első személyű ellenőrzési állítás („megnéztük”, „vizsgáltuk”) nincs; ha alcímet írsz, névszói alakú (6-os sablon „Alcím és hang”, DT768);
 - minden héber, arámi és görög szó mellett a magyaros kiejtés (a lapon egy szónak egy kiejtése van);
 - belső szó nem kerül a szövegbe: döntés-azonosító, feladatszám, fájlnév, „gerinc”, „szerep”, „orkesztrátor”, „felhasználó”; a döntés olvasói neve „szerkesztői döntés”;
 - a beépítés indoka szerkezeti jegy (lánc, visszautalás, szókapcsolat), nem a szó puszta egyezése;

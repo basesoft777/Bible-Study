@@ -2,6 +2,8 @@
 
 **Állapot: v2 (F178, 2026-11-08): a HAMART-001 mint arany — a lezárás hét szabálya (4. pont).** Előző: v1 (a #123 DT585 tétele, 2026-11-03). A v1 a v0.5 és az ALVIL-001 új cikkének öt tanulsága mint sablonszabály (4. pont, „Az új cikk öt szabálya”); a menetszabályok a `MUNKAMENET.md` „A lezárás menete motívumonként” szakaszában állnak. A #12-höz igazítás kérdése tárgytalan (a #12 2026-11-02-án lezárult, a TEREMT-002 a #123-é). Az első motívum, amely a v1-re íródik: ANTROP-001.
 
+*v2.1 — 2026.11.11 (F193; DT738, DT766, DT768): a 4. pontban „Az értelmező szakaszok kötelező elemei” (J2–J4), a szakasztábla a lap új számaival (10. Értelmezés, 11. Módszertan), a kerek 1/a mintája a HAMART-001-ből (B12).*
+
 *v2 — 2026.11.08 (F178.2–F178.3, a felhasználó jóváhagyásával, 2026-11-08: a 4. pontban az öt szabály után „A HAMART-001 mint arany: a lezárás hét szabálya” — U2/U3 két kézben, határ-frissesség, a Kivonat fordulópontja, szerkezeti indok, kerek 1/a, Nave, U3-prompt.)*
 
 *v1 — 2026.11.03 (DT585, az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03); az ALVIL-001 új cikkének (PR #604, #606) tanulságai: a 4. pontban, a teljesség-mérés után „Az új cikk öt szabálya” — saját elutasítási okok, lexémánként egy blokk-sor, a negatív kritérium ÚSZ-mércéje (DT563), a Septuaginta-többlet, az idézet jelölése. Szabály a v0.5-höz képest csak ez; a 9. pont záró mondata a véglegesítéshez igazítva.)*
@@ -60,7 +62,7 @@ Három szint: `olvasoi` ⊂ `apparatus` ⊂ `belso` (a nézet a saját szintjét
 
 A szakasz aktiválási feltétele a 4. pont táblázatában áll. Inaktív szakasz **üres címmel nem áll a forrásban**; a helyén egy sor: `<!-- INAKTÍV: [szakasz] — a feltétel nem áll fenn: [ok] -->`. A generált nézet az inaktív szakaszt kihagyja.
 
-**A tematikus szakaszok (3., 5., és a lexikonoldal 6. Értelmezés rése) aktiválása (D37, DT66 (c)):**
+**A tematikus szakaszok (3., 5., és a lexikonoldal Értelmezés rése: a régi lapon 6., az új szerkezetű lapon 10.) aktiválása (D37, DT66 (c)):**
 
 > aktív, ha `COUNT(DISTINCT fo_elofordulas) ≥ 3` (⭐ küszöb, SEMA 2.2.3) **VAGY** a motívum `statusz` mezője `publikálható` vagy `véglegesített` (`adat/motivumok.tsv`).
 
@@ -84,7 +86,7 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 | 2.S | Szótári háttér — szerepmátrix | `generalt` (5. pont) | `apparatus` | mindig | `ADAT-NÉZET` (`--cel lexikon#…#szocikkek`) |
 | 2/b | Kiegészítő szótári adatok | `adat` (`lexikon_hivatkozasok.tsv`, SEMA 2.5) | `apparatus` | feltételes: van a generált blokkon túli szótári anyag | nincs kézi blokk; a kísérő mondatok a „Miért fontos” résbe |
 | 2.M | Miért fontos ez a lelet | `kezi_forras` | `apparatus` | feltételes: többforrásos szerep-blokk | `RÉS: miert_fontos` |
-| 3 | PaRDeS: Peshat, Remez, Drash, Sod | `kezi_forras` | `olvasoi` | tematikus (3. pont) | `RÉS: ertelmezes` |
+| 3 | PaRDeS: Peshat, Remez, Drash, Sod (a lapon: 10. Értelmezés; DT766) | `kezi_forras` | `olvasoi` | tematikus (3. pont) | `RÉS: ertelmezes` |
 | 3.V | ⚠️ Vitatott pontok | `kezi_forras` | `olvasoi` | értelmezői: tudományosan vitatott | próza vagy `INAKTÍV` |
 | 3.U | Új felismerés | `kezi_forras` (a 3. szakasz része) | `olvasoi` | feltételes: van ilyen | próza a 3. szakaszon belül |
 | 4 | Kapcsolódás a kutatási sablonhoz | `kezi_forras` | `apparatus` | értelmezői: van pünkösdi/karizmatikus szakirodalmi vonatkozás | próza vagy `INAKTÍV` |
@@ -94,7 +96,7 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 | 7.K | Kereszthivatkozások + Minősítés | `adat` (`jeloltek.tsv` `dontes` + `indoklas`, SEMA 2.4); a „független megerősítés” a minősítés-nézetben generált (TSK-találat ∩ beépített sor), séma-bővítés nélkül (DT84 (8)) | `apparatus` | mindig | `ADAT-NÉZET`; a kétpontos modellbe nem férő tárgyalás kézi próza |
 | 7.A | Kapcsolatok + Alátámasztás | `adat` (`kapcsolatok.tsv`, új `indoklas` oszloppal: DT84 (8); a séma-bővítés nem e terv része, SEMA 3.10.7; helye: DT183) | `apparatus` | feltételes: van `kapcsolatok.tsv` sor | `ADAT-NÉZET`; a kétpontos modellbe nem férő eset kézi próza |
 | 7.M | Módszertan — ellenőrzési rétegek | `generalt` (a meglévő `auditok.tsv`-sorokból; a régi kézi módszertan-tábla a #11-ben archívum, DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
-| 7.N | Nyitott kérdések | `kezi_forras` tételenként (l. alább) | `apparatus` | feltételes: van nyitott tétel | `RÉS: modszertan` (csak a tartalmi tételek) |
+| 7.N | Nyitott kérdések (a lapon: 11. Módszertan és nyitott kérdések) | `kezi_forras` tételenként (l. alább) | `apparatus` | feltételes: van nyitott tétel | `RÉS: modszertan` (csak a tartalmi tételek) |
 | 7.Q | Minőségi kapu, verzió-címke | `adat` (`motivumok.tsv` `sablon_verzio`); a kapu-eredmény nézete a meglévő audit-sorokból, a régi kézi kapu-eredmény a #11-ben archívum (DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
 | P | Proveniencia-sorok | `kezi_forras` (a lábjegyzetek gyűjtőhelye) | `belso` | mindig, ha van lábjegyzet | lábjegyzet-definíciók |
 
@@ -111,21 +113,24 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 2. **A `funkcio`: „címke — magyarázat”.** A gondolatjel (` — `) előtt a rövid címke (pl. `🌱 alap-előfordulás`), utána a motívumbeli szerep egy tagmondatban: mit tesz ez a hely a motívum egészében (első megjelenés, ismétlés, kontraszt, betöltés, kivétel stb.). A generátor a gondolatjel utáni részt írja a „Funkció:” sorba, a címkét az 1. tábla „Funkció (a motívumban)” oszlopába. A kettőspontos (`címke: magyarázat`) és a csak címkés alak nem ez a forma: a generátor kiírja (DT-F1Ab), de a prózai menet „címke — magyarázat” alakra hozza.
 3. **Minden igehelyen mindkettő.** Igehely nem maradhat próza vagy „Funkció:” sor nélkül; a tartomány-sor minden verse külön mondatot kap, ha a funkciója más.
 
-**Minta — ISTENTISZT-001, 1Móz 4:26** (az arany lap; `adat/elofordulasok.tsv`, szó szerint):
+**Minta — HAMART-001, 1Móz 3:17** (az arany lap, B12; `adat/elofordulasok.tsv`, szó szerint, 2026-11-11):
 
 | mező | érték |
 |---|---|
-| `kapcsolodas` | A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele. |
-| `funkcio` | 🌱 alap-előfordulás — a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza |
+| `kapcsolodas` | Az ember bűne miatt az átok nem az emberre, hanem a földre száll: „Átkozott legyen a föld te miattad, fáradságos munkával élj belőle”. Ebben a versben áll együtt először az átok (árar), a föld (adámá) és a fáradság (iccávón) szava; a következmény itt lép ki az elkövetőből a környezetébe. |
+| `funkcio` | 🔑 kulcsvers — az átok a földre lép; az átok, a föld és a fáradság szava először áll együtt |
 
-A lapon (`lexikon/ISTENTISZT-001_TUDOMANYOS.md`, 1/a):
+A lapon (`lexikon/HAMART-001_TUDOMANYOS.md`, 2.1 Az igehelyek szövege):
 
 ```
-**1Móz 4:26**
-*Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.*
-A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele.
-Funkció: a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza
+**1Móz 3:17**
+*Az embernek pedig monda: Mivelhogy hallgattál a te feleséged szavára, és ettél arról a fáról, a melyről azt parancsoltam, hogy ne egyél arról: Átkozott legyen a föld te miattad, fáradságos munkával élj belőle életednek minden napjaiban.*
+Az ember bűne miatt az átok nem az emberre, hanem a földre száll: „Átkozott legyen a föld te miattad, fáradságos munkával élj belőle”. Ebben a versben áll együtt először az átok (árar), a föld (adámá) és a fáradság (iccávón) szava; a következmény itt lép ki az elkövetőből a környezetébe.
+
+Funkció: az átok a földre lép; az átok, a föld és a fáradság szava először áll együtt
 ```
+
+*A korábbi minta (ISTENTISZT-001, 1Móz 4:26: „A formula első előfordulása — Séth fia, Énós nemzedéke; …”) gondolatjeles, állítmány nélküli alak: az 1. pont szerint töredék, nem követendő (F193).*
 
 **A próza nem hivatkozik a régi tanulmány pontszámaira** (v0.5; a TEREMT-002 lapjának tanulsága, 2026-11-02). A régi tematikus tanulmány és a régi motívumforrás saját számozása („3. pont, Remez”, „7. pont”, „P2/P3/P4”) a lapon más szakaszra mutat, vagy sehova. A forrás prózája csak a lap saját szakaszaira hivatkozik, a szakasz nevével (pl. „az LXX-fordítói döntések szakasza”); a P1–P7 lépésjel, a DT-, N-, F-szám, a `.tsv`-fájlnév és a belső szó (gerinc, szerep) az olvasói rétegben nem áll (ha kell, `belso` blokk vagy `【NAPLO】`, 2. pont). A régi tanulmány csak alapanyag: az új cikk mondata nem költözik belőle bájtra (DT546).
 
@@ -156,6 +161,13 @@ Mindhárom háló találata a motívum `elofordulasok.tsv`- és `jeloltek.tsv`-s
 5. **Kerek 1/a és „Funkció:” sor minden igehelyen**; minden idézet a fölötte álló Károli-vers szó szerinti része (25. szabály, olvasói kapu IDEZET).
 6. **A Nave-blokk (Tematikus index) nem üres**, a döntések az `adat/tematikus_temak.tsv`-ben (DT595).
 7. **A próza nulláról, egy kézből, a `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md` szerint** (`MUNKAMENET.md` C-w).
+
+**Az értelmező szakaszok kötelező elemei** (F193; a követelménylista J2–J4, DT738: „Igen, mind”; minta: a HAMART-001 10. és 11. szakasza). A lap számozása: 9. Hatástörténet (generált, a próza nem írja), 10. Értelmezés, 11. Módszertan és nyitott kérdések (DT766).
+
+1. **Az Értelmezés eleje olvasói magyarázat** (J3): egy rövid bekezdés arról, mit jelent a négy szint (Peshat, Remez, Drash, Sod) ezen a lapon, belső szó nélkül. A szintek állításai alatt a mért adat forrássora áll (melyik szakasz, melyik szám igazolja), nem a próza feltevése.
+2. **A Vitatott pontok mindkét olvasatot adatból igazolt érvvel mondják** (J4), és kimondják: „a lap a kérdést nem dönti el”. Az egyik olvasat nem szalmabáb; ha az egyikhez nincs adat, a pont nem vitatott, hanem nyitott kérdés (11.).
+3. **A Módszertanban „A határ második ellenőrzése” bekezdés áll** (J2): mi került ki a független határkörben (`MUNKAMENET.md` C-h) és miért, olvasói nyelven, számokkal; ha semmi, ezt mondja ki. A vizsgálati rétegeket próza írja le, nem táblázat (B05).
+4. **Hang és címek:** harmadik személy, névszói alcímek (a 6-os sablon „Alcím és hang”, DT768). Alkalmazás-szakasz nincs (DT756).
 
 A szabályok gépi része a lexikonlap regressziós HIBA-kapuja (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A HAMART-001 regressziós kapui”); ahol egy meglévő lap elbukik, a hiba a lap 2. kiadásának tétele, nem kivétel és nem kézi folt.
 
