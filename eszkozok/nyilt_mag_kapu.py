@@ -34,6 +34,8 @@ Ellenőrzések (azonosító — súlyosság):
                  rövid címke; a nem exportált mezőt a kódkönyv nem mondja ki                                 — BUKÁS
     KH_NEV       a „KJV” szó szövegben (versszámozási megjegyzés lehet, nem adat)                           — FIGYELMEZTETÉS
     SZERKESZTO   „felhasználó” / „orkesztrátor” / „the user's decision” a csomagban (F178.6)              — BUKÁS
+    LYUK         üres hivatkozáshely a szövegmezőben: „: ;”, árva rag („a -ből”, „8:21 -je”), árva névelő („a ;”),
+                 nyitva maradt zárójel (F182, F28)                                                           — BUKÁS
     OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
     ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
@@ -475,6 +477,28 @@ def ell_szerkeszto(fajlok):
     return ki
 
 
+# F182 (F28): a kivágott belső hivatkozás helyén maradt lyuk (az export olvasói mondatra írja át, nem vágja ki)
+LYUK_RX = [
+    (re.compile(r':\s*[;,)]'), 'üres hivatkozáshely („: ;”)'),
+    (re.compile(r'(?:^|\s)-(?:je|ja|ből|ból|ben|ban|re|ra|val|vel|nak|nek|hez|hoz|t|et|ot|at|e|a)\b'), 'árva rag'),
+    (re.compile(r'(?<![\w-])(?:[Aa]z?|[Ee]gy)\s+[;,.)]'), 'árva névelő'),
+]
+
+
+def ell_lyuk(fajlok):
+    ki = []
+    for rel, n, o, ertek in szoveg_cellak(fajlok):
+        if not rel.endswith('.tsv') or angol_oszlop(o) or o.endswith('_en'):
+            continue
+        for rx, nev in LYUK_RX:
+            m = rx.search(ertek)
+            if m:
+                ki.append(Talalat('LYUK', BUKAS, rel, n, kor(ertek, m), '%s [%s]' % (nev, o)))
+        if ertek.count('(') > ertek.count(')') and not ertek.rstrip().endswith('…'):   # a „…”-es vágás szándékos
+            ki.append(Talalat('LYUK', BUKAS, rel, n, ertek[-60:], 'nyitva maradt zárójel [%s]' % o))
+    return ki
+
+
 def ell_kh_nev(fajlok):
     ki = []
     for rel, n, o, ertek in szoveg_cellak(fajlok):
@@ -741,7 +765,7 @@ def mer(fajlok, kimenet=None, ujra=True):
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
-              ell_szerkeszto):
+              ell_szerkeszto, ell_lyuk):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

@@ -374,7 +374,58 @@ def general(ts, csak=None, egy_az_egyhez=True, tabla=None, ford_ut=None, jav=Non
                        '' if p is None else str(p), '' if p is None else str(len(szoveg_hu)),
                        szoveg_hu.replace('\t', ' ').replace('\n', ' '), ford[st]['forras_hash'],
                        'scope=%s | forras=bdb_jelolt/hu_illeszt.py (fejléc%s) | ts=%s' % (st, jeloles, ts)])
-    return ki, stat, sor_stat, nincs, len(ford)
+    return szocikkhatar_kezi(ki, ts), stat, sor_stat, nincs, len(ford)
+
+
+# F182 javítókör (A17 / K56, DT-F182q; a `bdb_vers_jelentes.JELENTESPONT_KEZI` mintája): tételes, kézi szócikkhatár-javítás.
+# A horgonyos illesztés a jelölő nélküli szócikkfej magyar szövegét az előző szócikk utolsó sorában hagyta (az `ellenoriz.py`
+# 27. szabályának jelentése). Kulcs: (Strong, a forrássor sorszáma); érték: (a célsor sorszáma — a következő szócikk feje —,
+# a fej magyar szövegének horgonya, a horgony előtt álló szavak száma (a héber címszó és a római szám), indok a forrás
+# idézetével). A vágás a horgony előtti szavaknál; a célsor üres kell legyen; ha a horgony nem pontosan egyszer áll, a
+# generálás megáll (a forrás változott: a tételt újra kell nézni). Az illesztő lánc általános javítása: N-F182f.
+SZOCIKKHATAR_KEZI = {
+    ('H2403', '17'): ('18', ' nőnemű főnév: bűnért való áldozat', 1,
+                      'bdb_szakaszok.tsv H2403 18–19. sor: a BDB9520 szócikk feje („noun feminine sin-offering (Biblical '
+                      'Hebrew …; Nabataean … penalty, according to SAC^51); — absolute … Ezra 6:17”); a BDB2699 -/5/- sora a '
+                      '„… only water of purification was used).” mondattal zárul'),
+    ('H7451', '16'): ('18', ' hímnemű főnév^Jób 30:26', 2,
+                      'bdb_szakaszok.tsv H7451 18. sor: a BDB8033 szócikk feje („II. … noun masculine^Job 30:26 evil, '
+                      'distress, misery, injury, calamity; — absolute …”); a BDB8032 -/10/d sora a „… for evil deeds are in '
+                      'their dwelling.” mondattal zárul'),
+    ('H7451', '21'): ('23', ' nőnemű főnév: rossz, nyomorúság', 1,
+                      'bdb_szakaszok.tsv H7451 23. sor: a BDB8034 szócikk feje („… noun feminine evil, misery, distress, '
+                      'injury; — absolute …”); a BDB8033 -/3/- sora a „… (but read … Gr Bi Toy).” mondattal zárul'),
+}
+
+
+class SzocikkhatarHiba(Exception):
+    pass
+
+
+def szocikkhatar_kezi(ki, ts):
+    """A `SZOCIKKHATAR_KEZI` tételei a kész sorokon (helyben): a forrássor szövege a horgony előtti szavaknál kettéválik, a
+    második rész a célsor (a következő szócikk feje) szövege; mindkét sor `hu_hossz`-a, a célsor `hu_kezdet`-e és
+    `proveniencia`-ja (`scope=manual`) frissül. Részleges generálásnál a hiányzó Strong tétele kimarad."""
+    idx = {(r[0], r[1]): r for r in ki}
+    for (st, n), (cel, horgony, elotte, _indok) in sorted(SZOCIKKHATAR_KEZI.items()):
+        f, c = idx.get((st, n)), idx.get((st, cel))
+        if f is None and c is None:
+            continue
+        if f is None or c is None:
+            raise SzocikkhatarHiba('%s: a %s vagy a %s sor hiányzik' % (st, n, cel))
+        if f[11].count(horgony) != 1:
+            raise SzocikkhatarHiba('%s %s: a horgony (%r) nem pontosan egyszer áll a sorban' % (st, n, horgony))
+        if c[11]:
+            raise SzocikkhatarHiba('%s %s: a célsor nem üres' % (st, cel))
+        eleje = f[11][:f[11].index(horgony)].split(' ')
+        vag = len(' '.join(eleje[:len(eleje) - elotte]))
+        uj_f, uj_c = f[11][:vag].rstrip(), f[11][vag:].strip()
+        kezdet = int(f[9]) + f[11].index(uj_c) if f[9] else ''
+        f[10], f[11] = str(len(uj_f)), uj_f
+        c[9], c[10], c[11] = str(kezdet), str(len(uj_c)), uj_c
+        c[13] = ('scope=manual | forras=bdb_jelolt/hu_illeszt.py SZOCIKKHATAR_KEZI, a %s %s. sorából vágva | ts=%s'
+                 % (st, n, ts))
+    return ki
 
 
 def fajl_szoveg(sorok, ts):

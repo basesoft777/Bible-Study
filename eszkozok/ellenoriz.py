@@ -693,7 +693,8 @@ def res_egyezik(elvart, tenyleges):
         return True
     # F178.4: az új szerkezetű lapon a rés is olvasói átíráson megy át, és a lapszintű kiejtés-pótlás (az első
     # előfordulás kiejtése) a rés héber/görög szavát is érintheti: a kiejtés-zárójel nélkül összevetve
-    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.olvasoi_atiras(elvart)), strong_cim=LG.strong_cim)
+    # F182 (3. menet): az új szerkezetű lap olvasói utómunkája (a jelölt-lábjegyzet, a szónézet-link) is
+    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.kesz_lap_utana(LG.olvasoi_atiras(elvart), None, None)), strong_cim=LG.strong_cim)
     return tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj)
 
 
@@ -733,8 +734,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         motivum_resek.setdefault(r['id'], set()).add(r['res'])
     for motivum_id, resek in motivum_resek.items():
         for res in LG.RES_SORREND:
-            if res == 'tanitoi' and res not in resek:
-                continue   # DT-F178b: a tanítói rés lépcsős kivezetése (motívumonként, a teljes folyamattal)
+            if res in LG.KIVEZETETT_RES_FEJLEC and res not in resek:
+                continue   # DT-F178b, DT-F182m: a tanítói és az alkalmazás rés lépcsős kivezetése (motívumonként)
             if res not in resek:
                 hibas.append('%s / %s -- hiányzó res_forras.tsv sor' % (motivum_id, res))
         for res in sorted(resek - set(LG.RES_SORREND)):
@@ -1410,9 +1411,10 @@ def _letezo_tetelek(gyoker):
                                     | set(re.findall(r'^\s*\*\s+N(\d+)\s+—', n, re.M))))
 
 
-def lap_hibak(szoveg, letezo_dt, letezo_n):
+def lap_hibak(szoveg, letezo_dt, letezo_n, dontes_allapot=None):
     """A 21. szabaly egy lapra: {(i)/(ii)/(iv): [lelet]}. A (iii) (jeloletlen forditatlan egyseg) nem gepi:
-    a merese renderelest kivan (N-F148a, `naplok/F148_meres.py --forditas`)."""
+    a merese renderelest kivan (N-F148a, `naplok/F148_meres.py --forditas`). F182 (F27): a (iv) az ervenytelen
+    (felulirt, visszavont, okafogyott; a `DONTESEK.md` jelolese, `dontes_allapot`) dontesre hivatkozast is jelzi."""
     ki = {'i': [], 'ii': [], 'iv': []}
     for h in sorted(set(LAP_HELYORZO_RE.findall(szoveg))):
         ki['i'].append('helyőrző: %s' % h)
@@ -1428,6 +1430,12 @@ def lap_hibak(szoveg, letezo_dt, letezo_n):
     if letezo_n is not None:
         for d in sorted({x for x in LAP_N_RE.findall(szoveg) if x not in letezo_n}, key=int):
             ki['iv'].append('nem létező nyitott tétel: N%s' % d)
+    if dontes_allapot:
+        for d in sorted({x for x in LAP_DT_RE.findall(szoveg)}, key=int):
+            a = dontes_allapot.get('DT' + d)
+            if a and not a['ervenyes']:
+                ki['iv'].append('érvénytelen döntés a lapon: DT%s (%s%s)' % (
+                    d, a['ok'], (', helyette: %s' % a['utod']) if a['utod'] else ''))
     return ki
 
 
@@ -1444,6 +1452,8 @@ def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
         return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
     main = main_agon() if main is None else main
     letezo_dt, letezo_n = _letezo_tetelek(gyoker)
+    import dontes_allapot as DA
+    dontes_allapot = DA.betolt(gyoker)
     hibak, jelentes = [], []
     for nev in sorted(os.listdir(lex_dir)):
         utotag = next((u for u in LAP_UTOTAG if nev.endswith(u)), None)
@@ -1452,7 +1462,7 @@ def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
         mid = nev[:-len(utotag)]
         with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
             szoveg = f.read()
-        for pont, leletek in sorted(lap_hibak(szoveg, letezo_dt, letezo_n).items()):
+        for pont, leletek in sorted(lap_hibak(szoveg, letezo_dt, letezo_n, dontes_allapot).items()):
             for lelet in leletek:
                 sor = '%s (%s): %s' % (nev, pont, lelet)
                 if mid in kivetel or (pont == 'i' and not main):
@@ -1709,7 +1719,8 @@ def szabaly26_bdb_szakasz_hu(adat_dir):
 
 
 GERINC_BDB_CIM_RE = re.compile(r'^##### (H\d{4})\b.*· BDB\s*$')
-GERINC_SZOCIKK_FEJ_RE = re.compile(r'^\*\*(BDB\d+)(?: · [^*]*)?\*\*')
+# F182: a kétrétegű kártya apparátusában a szócikkfej olvasható alakban áll („**BDB 2699. szócikk**”, N-F187b); mindkét alak
+GERINC_SZOCIKK_FEJ_RE = re.compile(r'^\*\*BDB ?(\d+)(?:\. szócikk)?(?: · [^*]*)?\*\*')
 
 
 def bdb_szocikk_sorrend(adat_dir):
@@ -1754,7 +1765,7 @@ def gerinc_szocikk_hibak(adat_dir):
             j = i + 1
             while j < len(sorok) and not sorok[j].startswith('#'):
                 j += 1
-            fejek = [f.group(1) for f in (GERINC_SZOCIKK_FEJ_RE.match(x) for x in sorok[i + 1:j]) if f]
+            fejek = ['BDB' + f.group(1) for f in (GERINC_SZOCIKK_FEJ_RE.match(x) for x in sorok[i + 1:j]) if f]
             vart = ids.get(strong, [])
             if len(vart) > 1 and fejek != vart:
                 hibak.append('%s %s: a BDB-gerinc nem szócikkenként áll (a lapon: %s; a bdb_szakaszok.tsv szócikkei: %s), '
@@ -2217,11 +2228,21 @@ SORALLAPOT_RX = re.compile(r'<!--\s*SORÁLLAPOT:\s*n=(\d+)\s+ujj=([0-9a-f]{12})\
 MODELLES_SORSZAM_RX = re.compile(r'(\d+)\s+beépített sor')
 
 
-def hatar_ujjlenyomat(adat_dir, mid):
-    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül)."""
+# F182 (F26 (c)): a határdöntés-jel (a modelles rész végén, mert az újrafuttatáskor csak az marad meg; a döntés commitja írja; a szabály: a 9-es sablon „hét szabály”
+# 2. pontja). Az ujjlenyomata DT/N-azonosítók nélkül készül (`ujjd`), mert a döntés-helyőrzőt (DT-F…) a merge utáni
+# számkiosztás a sorokban lecseréli: az nem sor-változás.
+HATARDONTES_RX = re.compile(r'<!--\s*HATÁRDÖNTÉS:\s*n=(\d+)\s+ujjd=([0-9a-f]{12})\s*\\?\|\s*(.*?)\s*-->')
+_DT_MASZK = re.compile(r'(?<![\w-])(?:DT-?F?\d+[a-z]{0,2}|N-F\d+[a-z]{0,2}|N\d{1,3})\b')
+
+
+def hatar_ujjlenyomat(adat_dir, mid, dt_nelkul=False):
+    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül); `dt_nelkul`: a
+    döntés- és tétel-azonosítók maszkolva (a határdöntés-jelhez)."""
     with open(os.path.join(adat_dir, 'elofordulasok.tsv'), encoding='utf-8') as f:
         sorok = [s.rstrip('\r\n') for s in f]
     sajat = sorted(s for s in sorok if s.split('\t', 1)[0] == mid)
+    if dt_nelkul:
+        sajat = sorted(_DT_MASZK.sub('DT', s) for s in sajat)
     return len(sajat), hashlib.sha256('\n'.join(sajat).encode('utf-8')).hexdigest()[:12]
 
 
@@ -2239,9 +2260,19 @@ def hatar_frissesseg(adat_dir, mid, naplo_dir=None):
         return 'nincs_modelles', 'a HATAR_%s.md modelles része üres' % mid
     n, ujj = hatar_ujjlenyomat(adat_dir, mid)
     jel = SORALLAPOT_RX.search(modelles)
+    if jel and (int(jel.group(1)), jel.group(2)) == (n, ujj):
+        return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
+    hd = HATARDONTES_RX.search(t)
+    if hd:
+        nd, ujjd = hatar_ujjlenyomat(adat_dir, mid, dt_nelkul=True)
+        import dontes_allapot as DA
+        allapot = DA.betolt(os.path.dirname(os.path.abspath(adat_dir)))
+        dtk = [x.strip() for x in re.split(r'[,;]', hd.group(3)) if x.strip()]
+        rossz = [x for x in dtk if x not in allapot or not allapot[x]['ervenyes']]
+        if (int(hd.group(1)), hd.group(2)) == (nd, ujjd) and dtk and not rossz:
+            return 'friss', ('a határ a modelles rész kérdéseinek döntésével lezárt (%s); a mai %d sor a döntés állapota '
+                             '(ujjd=%s)' % (', '.join(dtk), nd, ujjd))
     if jel:
-        if (int(jel.group(1)), jel.group(2)) == (n, ujj):
-            return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
         return 'elavult', ('a modelles rész n=%s ujj=%s állapotra készült, a mai: n=%d ujj=%s'
                            % (jel.group(1), jel.group(2), n, ujj))
     regi = MODELLES_SORSZAM_RX.search(modelles)
@@ -2340,6 +2371,140 @@ def szabaly40_hamart_regresszio(adat_dir, lex_dir=None):
                megjegyzes='javítás: a forrás vagy a generátor, utána újragenerálás; kézi folt nincs')
 
 
+# 42. szabály (F182, F31 (b)): a lapon szereplő Strong érvényes fordítása (a `forditasok.tsv` nem `elavult` sora: a Thayer
+# szakaszsora `sz<n>`, a TBESG-glossza; a BDB-szakasz magyar szövege a 2.32-ből) a lapon is áll. A mérés: a fordítás első négy
+# egymást követő magyar szava (számjegy, héber és görög írás nélkül) a lap normalizált szövegében. Az új szerkezetű lapon
+# SÉRTÉS, a régin JELENTÉS (a lap a saját teljes folyamatában kapja meg).
+_FORD_SZO = re.compile(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2,}')
+
+
+def _ford_norm(t):
+    """A sz\u00f6veg csak bet\u0171s szavai kisbet\u0171vel, egy sz\u00f3k\u00f6zzel (a c\u00edmk\u00e9k, \u00edr\u00e1sjelek, sz\u00e1mok, h\u00e9ber \u00e9s g\u00f6r\u00f6g \u00edr\u00e1s n\u00e9lk\u00fcl)."""
+    t = re.sub(r'<[^>]+>', ' ', t or '')
+    return ' '.join(w.lower() for w in _FORD_SZO.findall(t))
+
+
+def _ford_proba(t):
+    """A szöveg elejének legfeljebb három betűs szava, a tagolási jel után, az első tagmondat-határig („:”, „;”) vagy az első
+    nem betűs szóig (szám, héber, görög): ennyit a lap a csukott vázlatsorban is mutat. None, ha nincs."""
+    futam = []
+    for w in re.split(r'\s+', (t or '').strip()):
+        if not futam and re.fullmatch(r'\(?(?:\d+|[a-zA-Z]|[IVX]+)[.)]?', w):
+            continue                                    # a tagolási jel („1”, „a.”, „II.”)
+        szavak = _FORD_SZO.findall(w)
+        if not szavak or re.search(r'[\d\u0590-\u05ff\u0370-\u03ff\u1f00-\u1fff]', w):
+            break
+        futam.extend(x.lower() for x in szavak)
+        if len(futam) >= 3 or w.endswith((':', ';')):
+            break
+    return ' '.join(futam[:3]) or None
+
+
+def lap_forditas_hianyok(adat_dir, mid, lap):
+    """[(strong, forrás, egység)] — a motívum Strongjainak érvényes fordítása, amely a lapon nem áll."""
+    _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    strongok = sorted({t for r in elo if r.get('id') == mid for t in (r.get('strong') or '').split('+') if t})
+    if not strongok:
+        return []
+    norm = ' %s ' % _ford_norm(lap)
+    ki = []
+    _, ford = G.tsv_beolvas(os.path.join(adat_dir, 'forditasok.tsv'))
+    halmaz = set(strongok) | {'G%d' % int(x[1:]) for x in strongok if x[:1] == 'G' and x[1:].isdigit()}
+    for r in ford:
+        st = r.get('strong') or ''
+        if st not in halmaz or r.get('allapot') == 'elavult' or not (r.get('forditas_hu') or '').strip():
+            continue
+        sz = r.get('szotar')
+        if sz == 'Thayer' and re.fullmatch(r'sz\d+', r.get('jelentes_szam') or '') and r.get('mezo') == 'forditas_hu':
+            egyseg = r['jelentes_szam']
+        elif sz == 'TBESG' and r.get('mezo') == 'glosszak_hu':
+            egyseg = 'glossza'
+        else:
+            continue
+        p = _ford_proba(r['forditas_hu'])
+        if p and (' %s ' % p) not in norm:
+            ki.append((st, sz, egyseg))
+    hu_ut = os.path.join(adat_dir, 'bdb_szakasz_hu.tsv')
+    if os.path.exists(hu_ut):
+        _, bdb = G.tsv_beolvas(hu_ut)
+        for r in bdb:
+            if (r.get('strong') in halmaz and (r.get('szoveg_hu') or '').strip() and r.get('kategoria') != 'elakad'
+                    and r.get('utvonal') != 'cim'):
+                p = _ford_proba(r['szoveg_hu'])
+                if p and (' %s ' % p) not in norm:
+                    ki.append((r['strong'], 'BDB', 'sorszám %s' % r['sorszam']))
+    return ki
+
+
+def szabaly42_forditas_a_lapon(adat_dir, lex_dir=None):
+    cim = '42. A lapon szereplő Strong érvényes fordítása a lapon is áll (F182, F31)'
+    lex_dir = lex_dir or os.path.join(os.path.dirname(os.path.abspath(adat_dir)), 'lexikon')
+    if not os.path.isdir(lex_dir):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
+    import lexikon_general as LG
+    sertes, jelentes = [], []
+    for nev in sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md')):
+        mid = nev[:-len('_TUDOMANYOS.md')]
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lap = f.read()
+        hiany = lap_forditas_hianyok(adat_dir, mid, lap)
+        if hiany:
+            uj = bool(LG.UJ_SZERKEZET_RX.search(lap))
+            sor = '%s%s: %d érvényes fordítás nem áll a lapon (pl. %s)' % (
+                mid, '' if uj else ' (2. kiadás)', len(hiany), ', '.join('%s %s %s' % h for h in hiany[:4]))
+            (sertes if uj else jelentes).append(sor)
+    return Sor(cim, _verdikt(sertes, jelentes), (len(sertes) or len(jelentes)) or None, sertes or jelentes,
+               megjegyzes='javítás: a bekötés a generátorban, utána újragenerálás')
+
+
+# 43. szabály (F182, F32 (b)): a szótári szöveg (a lap 4. szakasza) hivatkozása — a könyv és a fejezet öröklésével, a
+# megjelenítő Károli-számozása után — a Károliban nem létező versre mutat. JELENTÉS (a szótár saját hibája vagy eltérő
+# számozása, amelyet a megjelenítő nem ismer; a forrás nem változik).
+def szotari_hivatkozas_hibak(lap, karoli_versek):
+    import lexikon_general as LG
+    # F182 (A24): a 4.13–4.14 Károli-listája nem szótári szöveg (a hamis párhuzam igehelyei a Károliból jönnek)
+    m = re.search(r'(?ms)^## 4\. Szótári háttér.*?(?=^#### 4\.13\.|^## 5\.)', lap)
+    if not m:
+        return []
+    t = re.sub(r'<!--.*?-->', '', m.group(0), flags=re.S)
+    t = re.sub(r'\s\(héber számozás: [^)]*\)', '', t)
+    ki = []
+    for _m, konyv, fej, vers in LG.szotari_hivatkozasok(t):
+        ig = '%s %s:%s' % (konyv, fej, vers)
+        if konyv in karoli_versek['konyvek'] and ig not in karoli_versek['versek']:
+            ki.append(ig)
+    return ki
+
+
+def szabaly43_szotari_hivatkozas(adat_dir, lex_dir=None):
+    cim = '43. A szótári szöveg hivatkozása létező Károli-versre mutat (F182, F32)'
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    lex_dir = lex_dir or os.path.join(gyoker, 'lexikon')
+    kar = os.path.join(gyoker, 'konkordancia', 'Karoli_1908.tsv')
+    if not os.path.isdir(lex_dir) or not os.path.exists(kar):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ vagy Karoli_1908.tsv')
+    import lexikon_general as LG
+    versek = set()
+    with open(kar, encoding='utf-8') as f:
+        for sor in f:
+            c = sor.split('\t', 1)[0]
+            if re.match(r'^\S+ \d+:\d+$', c):
+                versek.add(c)
+    kv = {'versek': versek, 'konyvek': {v.rsplit(' ', 1)[0] for v in versek}}
+    jelentes = []
+    for nev in sorted(n for n in os.listdir(lex_dir) if n.endswith('_TUDOMANYOS.md')):
+        with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
+            lap = f.read()
+        if not LG.UJ_SZERKEZET_RX.search(lap):
+            continue
+        hibak = szotari_hivatkozas_hibak(lap, kv)
+        if hibak:
+            jelentes.append('%s: %d hivatkozás nem létező Károli-versre (pl. %s)' % (
+                nev[:-len('_TUDOMANYOS.md')], len(hibak), ', '.join(hibak[:6])))
+    return Sor(cim, _verdikt([], jelentes), len(jelentes) or None, jelentes,
+               megjegyzes='a szótár hivatkozása; a megjelenítő Károli-számozása: lexikon_general.karoli_szamozas')
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2394,6 +2559,9 @@ def main():
     if args.hatar_ujjlenyomat:
         n, ujj = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat)
         print('<!-- SORÁLLAPOT: n=%d ujj=%s -->' % (n, ujj))
+        # F182 (F26 (c)): a határdöntés-jel sablonja (a döntés commitja írja, a modelles részen kívül, a döntések azonosítóival)
+        nd, ujjd = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat, dt_nelkul=True)
+        print('<!-- HATÁRDÖNTÉS: n=%d ujjd=%s | <a határkérdések döntései, vesszővel> -->' % (nd, ujjd))
         sys.exit(0)
 
     try:
@@ -2462,6 +2630,8 @@ def main():
         tabla_sorok.append(szabaly39_hatar_frissesseg(args.adat))
         tabla_sorok.append(szabaly40_hamart_regresszio(args.adat))
         tabla_sorok.append(szabaly41_kozlemeny_szerkeszto(args.adat))
+        tabla_sorok.append(szabaly42_forditas_a_lapon(args.adat))
+        tabla_sorok.append(szabaly43_szotari_hivatkozas(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

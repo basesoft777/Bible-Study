@@ -871,7 +871,7 @@ class KetreteguBdbKartya(unittest.TestCase):
         olvasoi, app = szov[:kezd], szov[kezd:vege]
         self.assertIn('<details>\n<summary>%s</summary>' % LG.APPARATUS_CIM, app)
         # olvasói réteg: a jelentések rendje (a hordozó félkövér), a hely jelentése, a nem idézett hely kimondva
-        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertIn(r'- 4\. hamis istenekről', olvasoi)   # F182.23: a sor eleji jel escape-elve
         self.assertIn('- **5.** emlékjel', olvasoi)
         self.assertIn('**A motívum helyein:** Ézs 55:13 → 5. emlékjel.', olvasoi)
         self.assertIn('A szótár ezt a helyet nem idézi: Ézs 1:1.', olvasoi)
@@ -897,9 +897,11 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertIn('Szótári gerinc (DT272)', szov)
         self.assertIn('<summary>4 (1 szakasz)</summary>', szov)
 
-    def test_kapcsolo_alapbol_ki(self):
-        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset())
-        self.assertFalse(LG.bdb_kartya_aktiv('HAMART-001'))
+    def test_kapcsolo_csak_a_hamart(self):
+        # F182 (2. fázis, F25): az F33 után a HAMART-001 bekapcsolva; a régi lapok a saját teljes folyamatukban
+        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset({'HAMART-001'}))
+        self.assertTrue(LG.bdb_kartya_aktiv('HAMART-001'))
+        self.assertFalse(LG.bdb_kartya_aktiv('ANTROP-001'))
 
     def test_csak_alakot_kozlo_szakasz(self):
         sz = {'H0056': [
@@ -1003,25 +1005,23 @@ class F185BetuJavitas(unittest.TestCase):
         self.assertEqual(BR.heber_sorrend_javit('(מִן־הָא ׳עָפָד)', 'H0127'), '(מִן־הָא ׳עָפָר)')
         self.assertEqual(BR.heber_sorrend_javit('vö. még מְּנֵי הָא׳', 'H0127', betu=False), 'vö. még מְּנֵי הָא׳')
 
-    def _blokk(self):
-        return '\n'.join(LG.gerinc_blokk(LG.gerinc_adat(), 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')])[0])
+    def _blokk(self, mid=None):
+        return '\n'.join(LG.gerinc_blokk(LG.gerinc_adat(), 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')],
+                                          {'id': mid, 'fl': {}} if mid else None)[0])
 
     def test_h0127_blokk_magyar_bekapcsolva(self):
-        regi = LG.BDB_BETU_JAVIT
-        LG.BDB_BETU_JAVIT = True
-        try:
-            szov = self._blokk()
-        finally:
-            LG.BDB_BETU_JAVIT = regi
+        # F182 (2. fázis, F25): a kapcsoló motívumhalmaz; a HAMART-001 lapján bekapcsolva
+        szov = self._blokk('HAMART-001')
         self.assertIn('(מִן־הָא ׳עָפָר)', szov)            # a HAMART-001 1606. sorának esete (rés/dálet)
         self.assertNotIn('עָפָד', szov)
         self.assertIn('vö. még פְּנֵי הָא׳', szov)           # a 1616. sor esete (pe/mem)
         self.assertNotIn('מְּנֵי', szov)
 
     def test_kapcsolo_kikapcsolva_hatastalan(self):
-        # DT-F185f: a generátorban ma kikapcsolva; a kimenet a régi (a lap E28-a ezért zöld újragenerálás nélkül)
-        self.assertFalse(LG.BDB_BETU_JAVIT)
-        szov = self._blokk()
+        # DT731 (b): a régi lapokon kikapcsolva; a kimenet a régi (az E28 újragenerálás nélkül zöld)
+        self.assertEqual(LG.BDB_BETU_JAVIT, frozenset({'HAMART-001'}))
+        self.assertFalse(LG.bdb_betu_javit_aktiv('ANTROP-001'))
+        szov = self._blokk('ANTROP-001')
         self.assertIn('עָפָד', szov)
         self.assertIn('מְּנֵי', szov)
 
@@ -1102,7 +1102,7 @@ class F187KartyaJavitasok(unittest.TestCase):
         szov = '\n\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 1:1', '', strong='H8034', entry='')],
                                              {'bdb_kartya': True, 'fl': {}})[0])
         olvasoi = szov.split(LG.APPARATUS_KEZDET % 'H8034')[0]
-        self.assertIn('- 4. hamis istenekről', olvasoi)
+        self.assertIn(r'- 4\. hamis istenekről', olvasoi)   # F182.23: a sor eleji jel escape-elve
         self.assertNotIn('**4.**', olvasoi)
         self.assertIn('vonatkozhat', olvasoi)
 
@@ -1130,6 +1130,83 @@ class F187KartyaJavitasok(unittest.TestCase):
                                                'utálatos: Ján 7:49'), 'átkozott, utálatos')
         self.assertIsNone(LG.thayer_fej_glossza('φθορᾶς, ἡ (φθείρω), Aeschylus és Hérodotosz óta:'))
 
+
+
+class F182Glossza(unittest.TestCase):
+    """F182 (N137, N139): a csonkítási jel a kártya vázlatsorán; a glossza nélküli szakasz három általános esete."""
+
+    def test_n139_forras_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('1.f', '', 'f. a P (H) szerint a pap engesztelést szerez valakiért (על כמּר) bűnért'),
+                         'a pap engesztelést szerez valakiért')
+
+    def test_n139_plusz_heber_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('6', '', '+ מִן comparativus: rosszabb, mint, 2Sám 19:8'), 'rosszabb')
+
+    def test_n139_heber_kifejezes_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('8', '', 'מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10'),
+                         'gonosz tervet kigondolni')
+
+    def test_n139_zarojeles_kezdet_valtozatlan(self):
+        self.assertIsNone(LG.olvasoi_glossza('1', '', '(vö. alább) bűn: x'))
+
+    def test_n137_csonkitasi_jel(self):
+        t = 'a. ember ellen 1Móz 31:36; 50:17 (E), 4Móz 12:11 (J)'
+        self.assertEqual(LG._elso_tagmondat(t), 'ember ellen 1Móz 31:36')
+        self.assertEqual(LG._elso_tagmondat(t, csonkit_jel=True), 'ember ellen 1Móz 31:36 …')
+        self.assertEqual(LG._elso_tagmondat('a. ember ellen 1Móz 31:36', csonkit_jel=True), 'ember ellen 1Móz 31:36')
+
+
+class F182KaroliSzamozas(unittest.TestCase):
+    """F182 (F32): Károli-versszámozás a szótári hivatkozásokban (csak megjelenítés, az eredeti szám jelölésével)."""
+
+    T = {('2Móz', '22', '27'): ('22', '28'), ('5Móz', '29', '11'): ('29', '12'), ('5Móz', '29', '13'): ('29', '14')}
+
+    def test_konyv_es_fejezet_oroklodik(self):
+        self.assertEqual(LG.karoli_szamozas('átok 2Móz 22:27; 5Móz 29:11, 13, 18; 30:1', self.T),
+                         'átok 2Móz 22:28 (héber számozás: 22:27); 5Móz 29:12 (héber számozás: 29:11), '
+                         '14 (héber számozás: 29:13), 18; 30:1')
+
+    def test_terkep_a_2_29_atkulcsolt_sorabol(self):
+        self.assertEqual(LG.bdb_karoli_terkep(LG.gerinc_adat(), 'H0779'), {('2Móz', '22', '27'): ('22', '28')})
+
+    def test_nem_letezo_karoli_vers_jelentes(self):
+        import ellenoriz as E
+        lap = '## 4. Szótári háttér\n\nl. 2Móz 22:28; 99:1, és 1Móz 3:17\n\n## 5. LXX\n'
+        kv = {'versek': {'2Móz 22:28', '1Móz 3:17'}, 'konyvek': {'2Móz', '1Móz'}}
+        self.assertEqual(E.szotari_hivatkozas_hibak(lap, kv), ['2Móz 99:1'])
+
+
+class F182LathatoHibak(unittest.TestCase):
+    """F182 (befagyasztás, 1. pont): a HAMART-001 lapján nem áll belső hiányjel a Jelentés cellában, és a tagolatlan szócikk
+    pontja nem „nem található”."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'lexikon',
+                               'HAMART-001_TUDOMANYOS.md'), encoding='utf-8') as f:
+            cls.lap = f.read()
+
+    def test_nincs_belso_hianyjel(self):
+        for t in ('*(nincs címke:', '*(nincs hozzárendelés)*', 'az útvonal nincs a szakasztáblában'):
+            self.assertNotIn(t, self.lap, t)
+
+    def test_nincs_ures_felsorolasjel(self):
+        # a sor eleji „- 2. …” a Markdownban üres felsorolásjel + beágyazott számozott lista
+        import re
+        self.assertEqual(re.findall(r'(?m)^ *- \d+\. .*$', self.lap), [])
+
+    def test_cella_glosszaval(self):
+        self.assertIn('| Isten ellen · 1.b[^', self.lap)
+        self.assertIn('| a szócikk egésze — fájdalom, fáradság[^', self.lap)
+
+    def test_regi_lapon_valtozatlan(self):
+        a = LG.gerinc_adat()
+        import general as G
+        _, elo = G.tsv_beolvas(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'adat',
+                                            'elofordulasok.tsv'))
+        sor = next(r for r in elo if r['id'] == 'HAMART-001' and r['igehely'] == '1Móz 3:16')
+        self.assertEqual(LG.jelentes_cella(a, sor)[0], '*(nincs hozzárendelés)*')
+        self.assertTrue(LG.jelentes_cella(a, sor, uj=True)[0].startswith('a szócikk egésze'))
 
 if __name__ == '__main__':
     unittest.main()

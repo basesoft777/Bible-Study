@@ -39,7 +39,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import szerep_kizart as SZKZ  # noqa: E402  (a tartomány-kulcs bontása: SZKZ.versek)
+
+GYOKER =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KAROLI = os.path.join(GYOKER, 'konkordancia', 'Karoli_1908.tsv')
 TAHOT = os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv')
 TAGNT = os.path.join(GYOKER, 'konkordancia', 'TAGNT_kivonat.tsv')
@@ -160,6 +163,23 @@ def karoli_megfelelok(sorai, tabla=None):
             hely[cel].extend(h for h in hely[l] if h not in hely[cel])
             del hely[l]
     return sorted(((l, alak[l], sorted(h, key=vers_kulcs)) for l, h in hely.items()), key=lambda x: (-len(x[2]), x[0]))
+
+
+CSALAD_MIN = 5   # a ragozott maradék a legalább ennyi betűs szótári alakba olvad („erőszakossággal” → „erőszak”)
+
+
+def szocsalad(tetel):
+    """F182 (A24; javítókör, ELLENOR_F182 #9): [(szótári alak, [szóalak], [igehely])] a `karoli_megfelelok` tételeiből,
+    szócsaládonként: a ragozott maradék (a szótárialak-tábla hiánya) a rövidebb, legalább `CSALAD_MIN` betűs szótári
+    alakba olvad. A 4.13 prózája és listája ugyanezt a szabályt használja (egy szabály, egy hely)."""
+    d = collections.OrderedDict((l, (list(a), list(h))) for l, a, h in tetel)
+    for l in sorted(d, key=len, reverse=True):
+        alap = next((x for x in d if x != l and len(x) >= CSALAD_MIN and l.startswith(x)), None)
+        if alap:
+            a, h = d.pop(l)
+            d[alap][0].extend(w for w in a if w not in d[alap][0])
+            d[alap][1].extend(x for x in h if x not in d[alap][1])
+    return sorted(((l, a, sorted(h, key=vers_kulcs)) for l, (a, h) in d.items()), key=lambda x: (-len(x[2]), x[0]))
 
 
 def grammatikai_strongok():
@@ -336,7 +356,8 @@ def hamis_parhuzamok(sorai, versek=None, strongok=None, tabla=None, kulcs=None):
         return []
     versek = karoli_versek() if versek is None else versek
     strongok = vers_strongok() if strongok is None else strongok
-    sajat = {s['igehely'] for s in sorai}
+    # F182 javítókör (ELLENOR_F182 #3): a tartomány-kulcsú motívumsor („Gal 3:13-14”) minden verse saját vers
+    sajat = {v for s in sorai for v in SZKZ.versek(s['igehely'])}
     gerinc = set().union(*kulcs)
     ki = []
     for hely, szoveg in versek:
@@ -352,14 +373,20 @@ def _prov(scope, forras, n, ts):
     return '*(proveniencia: scope=%s | forras=%s | n=%d | ts=%s)*' % (scope, forras, n, ts)
 
 
-def blokk_13(sorai, ts):
-    """A 13. szerep bekezdései (lista); üres, ha a motívumsoroknak nincs `karoli_szo`-ja."""
+def blokk_13(sorai, ts, csalad=False):
+    """A 13. szerep bekezdései (lista); üres, ha a motívumsoroknak nincs `karoli_szo`-ja. `csalad` (F182 javítókör, az új
+    szerkezetű lap): a lista szócsaládonként (`szocsalad`), a próza (`lexikon_general.olvasoi_13_szavankent`) alapján."""
     mid = sorai[0]['id'] if sorai else ''
     tetel = karoli_megfelelok(sorai)
     if not tetel:
         return []
     out = ['*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként '
            '(`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*']
+    if csalad:
+        tetel = szocsalad(tetel)
+        out = ['*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szócsaládonként: a '
+               'szótári alak (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), a ragozott maradék a rövidebb szótári '
+               'alakba olvasztva, névelő nélkül; a szóalakok, és hány igehelyen, melyiken.*']
     out.append('\n'.join('- **%s** (%d) — %s: %s' % (l, len(h), ', '.join(a), ', '.join(h)) for l, a, h in tetel))
     if szpa_aktiv():
         out.append('*+SZPA (konkordáns alternatíva): jelölt hiány — a hiány nincs kitöltve.*')
@@ -369,9 +396,37 @@ def blokk_13(sorai, ts):
     return out
 
 
-def blokk_14(sorai, ts, szo_nev=None):
+def hamis_strongjai(hamis, kulcs, tabla=None):
+    """F182 (A24): {kulcsszó: [(Strong, versszám), …]} — a hamis párhuzam verseiben a Károli–Strong párosítás szerint
+    melyik (nem nyelvtani) Strong áll a kulcsszó mögött, gyakoriság szerint. A párosítás javaslat-állapotú (SEMA 2.20):
+    a szám a párosítás tábla száma, a pár nélküli vers nem számít."""
+    par = parok([h for h, _sz, _g in hamis])
+    ki = collections.OrderedDict()
+    for kw in [w for v in kulcs.values() for w in v]:
+        c = collections.Counter()
+        for h, _sz, _g in hamis:
+            st = {s for hu, s in par.get(h, []) if egyezik(hu, kw, tabla) and not nyelvtani(s)}
+            c.update(st)
+        ki[kw] = c.most_common()
+    return ki
+
+
+def _tomor_lista(hamis, szo_nev):
+    """F182 (A24, F3-szabály): a hosszú hamis-párhuzam lista könyvenként, csak igehellyel (a vers szövege nélkül); a
+    versben álló motívumszó a hely után."""
+    konyvek = collections.OrderedDict()
+    for h, _sz, g in hamis:
+        konyv, hely = h.rsplit(' ', 1)
+        konyvek.setdefault(konyv, []).append(hely + (' (a versben: %s)' % ', '.join(szo_nev(x) for x in g) if g else ''))
+    # a könyvnév az első hely előtt áll (a szótári hivatkozás-elemző így örökíti a könyvet a többi helyre)
+    return '\n'.join('- %s %s — %d vers' % (k, ', '.join(v), len(v)) for k, v in konyvek.items())
+
+
+def blokk_14(sorai, ts, szo_nev=None, tomor=False, kulcs_nev=None):
     """A 14. szerep bekezdései (lista); üres, ha nincs kulcsszó (nincs `karoli_szo` vagy `strong`). `szo_nev`: a
-    versben álló motívumszó olvasói neve Strong-számból („kárá (H7121)”, F152 A.3); alapból a Strong-szám."""
+    versben álló motívumszó olvasói neve Strong-számból („kárá (H7121)”, F152 A.3); alapból a Strong-szám. `tomor`
+    (F182, az új szerkezetű lap): a technikai sor olvasói alakban (`kulcs_nev`: a kombináció olvasói neve), a hosszú
+    hamis-lista könyvenként, igehellyel."""
     szo_nev = szo_nev or (lambda s: s)
     mid = sorai[0]['id'] if sorai else ''
     kulcs = collections.OrderedDict((k, v) for k, v in kulcsszavak(sorai).items() if v)
@@ -382,20 +437,40 @@ def blokk_14(sorai, ts, szo_nev=None):
     out = ['*Kulcsszavak gerinc-kombinációnként: %s — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében '
            'álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: '
            'jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*' % kulcs_sz]
+    if tomor:
+        out = ['*Kulcsszó szavanként: %s — a szó motívumhelyein a Károli-szóalakok legalább felében álló szótári alak '
+               '(a Károli–Strong párosításban csak más szóra párosuló magyar szó nélkül). A lista csak megjelenítés: '
+               'motívumhely ebből csak egyedi döntéssel lehet (a jelöltek döntésnaplóján át).*'
+               % '; '.join('%s: %s' % ((kulcs_nev or (lambda k: '+'.join(sorted(k))))(k), ', '.join('„%s”' % w for w in v))
+                           for k, v in kulcs.items())]
     rejt = rejtett_parhuzamok(sorai, kulcs=kulcs)
-    out.append('**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját '
-               'szókapcsolatának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
-    if rejt:
-        out.append('\n'.join('- %s — „%s” (%s; hiányzik: %s)' % (h, k, s, ', '.join(hi)) for h, k, s, hi in rejt))
+    if tomor:
+        out.append('**Rejtett párhuzam** (a motívum szava áll, de a Károli nem a kulcsszóval fordítja) — %d hely.' % len(rejt))
+        if rejt:
+            out.append('\n'.join('- %s — „%s” (a szó: %s; a kulcsszó: %s)' % (h, k, (kulcs_nev or str)(_komb({'strong': s})),
+                                                                               ', '.join('„%s”' % x for x in hi))
+                                 for h, k, s, hi in rejt))
+    else:
+        out.append('**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját '
+                   'szókapcsolatának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
+        if rejt:
+            out.append('\n'.join('- %s — „%s” (%s; hiányzik: %s)' % (h, k, s, ', '.join(hi)) for h, k, s, hi in rejt))
     hamis = hamis_parhuzamok(sorai, kulcs=kulcs)
-    out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a motívum szókapcsolata nélkül): Károli-versek valamely '
-               'szókapcsolat minden kulcsszavával, amelyekben a motívum egyik szókapcsolata sem teljes — %d vers. A versben '
-               'álló motívumszó (a szókapcsolat egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben '
-               'ugyanazt a kifejezést keresik.' % len(hamis))
+    if tomor:
+        out.append('**Hamis párhuzam** (a magyar kulcsszó áll, de az eredetiben nem a motívum szava): a motívumon kívüli '
+                   'Károli-versek, amelyekben valamely kulcsszó áll, a hozzá tartozó motívumszó pedig nem — %d vers, '
+                   'könyvenként. Ha a versben a motívum egy másik szava áll, a hely után zárójelben.' % len(hamis))
+    else:
+        out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a motívum szókapcsolata nélkül): Károli-versek valamely '
+                   'szókapcsolat minden kulcsszavával, amelyekben a motívum egyik szókapcsolata sem teljes — %d vers. A versben '
+                   'álló motívumszó (a szókapcsolat egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben '
+                   'ugyanazt a kifejezést keresik.' % len(hamis))
     if hamis:
         sorok = '\n'.join('- %s — %s · *a motívum szavaiból a versben: %s*%s' % (
             h, sz, ', '.join(szo_nev(x) for x in g) if g else 'nincs', ' · *jelölt: %s*' % dontes[h] if h in dontes else '')
             for h, sz, g in hamis)
+        if tomor and len(hamis) > RESZLET_HATAR:
+            sorok = _tomor_lista(hamis, szo_nev)
         out.append('<details>\n<summary>A %d vers</summary>\n\n%s\n\n</details>' % (len(hamis), sorok)
                    if len(hamis) > RESZLET_HATAR else sorok)
     out.append(_prov('Károli teljes (%s)' % kulcs_sz,

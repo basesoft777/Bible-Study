@@ -67,7 +67,8 @@ def forras_szoveg_dbh(sor, idx):
 
 
 TOVABBI_FAJL = {'TBESH': 'TBESH.txt', 'TBESG': 'TBESG.txt', 'tW_szocikkek': 'tW_szocikkek.tsv', 'MCGED': 'MCGED_teljes.tsv',
-                'LSJ': 'LSJ_teljes.tsv', 'BDB': 'BDB_etimologia_kezi_hatarok.tsv'}
+                'LSJ': 'LSJ_teljes.tsv', 'BDB': 'BDB_etimologia_kezi_hatarok.tsv',
+                'SDBH': 'SDBH_domenek.tsv', 'SDGNT': 'SDGNT_domenek.tsv'}
 
 
 def _tbes_tisztit(szoveg):
@@ -122,6 +123,24 @@ def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
         rovid = list(dict.fromkeys(x for x in (_tbes_tisztit(r[0]) for r in t) if x))
         teljes = list(dict.fromkeys(x for x in (_tbes_tisztit(r[1]) for r in t) if x))
         return ('; '.join(rovid) + ' ' + ' | '.join(teljes)).strip()
+    if szotar == 'tW_szocikkek' and jsz == 'cim' and mezo == 'glosszak_hu':
+        # F182 (A11): a tW-szócikk címe (a `cim` oszlop); a strong a cikk `strong` oszlopának első eleme
+        if 'tW_cim' not in cache:
+            cache['tW_cim'] = {r['tw_id']: (r['strong'].split('+')[0], r['cim']) for r in tsv_sorok(ut)}
+        t = cache['tW_cim'].get(eid)
+        return t[1] if t and t[0] == strong else None
+    if szotar in ('SDBH', 'SDGNT'):
+        # F182 (A12): a szemantikai domén neve (`domen`), kulcs: strong = a szó Strongja, entry_id = domen_kod,
+        # jelentes_szam domen; a forrás a Strong azon sora, amelyen ez a domén áll
+        if jsz != 'domen' or mezo != 'glosszak_hu':
+            return None
+        k = szotar + '_domen'
+        if k not in cache:
+            idx = {}
+            for r in tsv_sorok(ut):
+                idx.setdefault((r['strong'], r['domen_kod']), r['domen'])
+            cache[k] = idx
+        return cache[k].get((strong, eid))
     if szotar == 'tW_szocikkek':
         if jsz != EM_DASH or mezo != 'forditas_hu':
             return None

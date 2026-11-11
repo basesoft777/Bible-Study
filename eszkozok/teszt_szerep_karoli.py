@@ -82,6 +82,27 @@ class Szintetikus(unittest.TestCase):
         self.assertEqual([x[0] for x in h], ['V 2:2'])            # 2:1 gerinces, 2:3-ból hiányzik a kulcsszó, 1:1 saját
         self.assertEqual(h[0][2], ['H1'])                          # a részleges gerinc kiíródik
 
+    def test_szocsalad(self):
+        """F182 javítókör (ELLENOR_F182 #9): a ragozott maradék a rövidebb szótári alakba olvad, a helyek egyszer."""
+        tetel = [('erőszakossággal', ['erőszakossággal'], ['V 1:1', 'V 1:2']), ('erőszak', ['erőszak'], ['V 1:3']),
+                 ('erőszaktétel', ['erőszaktétel'], ['V 1:2']), ('föld', ['föld'], ['V 2:1'])]
+        cs = SK.szocsalad(tetel)
+        self.assertEqual(cs[0][0], 'erőszak')
+        self.assertEqual(cs[0][2], ['V 1:1', 'V 1:2', 'V 1:3'])
+        self.assertEqual(set(cs[0][1]), {'erőszak', 'erőszakossággal', 'erőszaktétel'})
+        self.assertEqual([x[0] for x in cs], ['erőszak', 'föld'])
+
+    def test_hamis_tartomany_kulcs(self):
+        """F182 javítókör (ELLENOR_F182 #3): a tartomány-kulcsú motívumsor („V 3:1-2”) minden verse a motívumé, ezért
+        egyik sem kerülhet a hamis párhuzamok közé (a hiba: a 4.14 hat motívumverset, pl. a Gal 3:13-at, hamisnak mért)."""
+        sorai = SORAI + [sor('V 3:1-2', 'H1+H2', 'segítségül hívá az ő nevét')]
+        k = SK.kulcsszavak(sorai, tabla=TABLA, parositas=PAROK)
+        versek = [('V 3:1', 'segítségül hívá a nevét'), ('V 3:2', 'segítségül hívá a nevét'),
+                  ('V 3:3', 'segítségül hívá a nevét')]
+        strongok = {'V 3:1': {'H1'}, 'V 3:2': {'H1'}, 'V 3:3': {'H1'}}
+        h = SK.hamis_parhuzamok(sorai, versek=versek, strongok=strongok, tabla=TABLA, kulcs=k)
+        self.assertEqual([x[0] for x in h], ['V 3:3'])            # a 3:1 és a 3:2 a tartomány verse, nem hamis
+
 
 class ValodiAdat(unittest.TestCase):
     @classmethod

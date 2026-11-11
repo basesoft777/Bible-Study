@@ -31,7 +31,7 @@ Te a `[ID]` motívum (`[cím]`) teljes prózáját írod meg **nulláról, egy k
    - 3. bekezdés: a két kötelező határ-elem — a negatív kritérium szó szerint ellenőrizhetően (mely alak tartozik ide, mely nem), az ÚSZ-mérce (a Károli alapszövege, a Textus Receptus), és strukturális/fogalmi hordozónál: a lista keresési módszer eredménye.
    - 4. bekezdés: a fölérendelt fogalom („nem a … általában, hanem …”), a név szerinti tematikus kivételek.
 2. **1/a — minden igehely**: a `kapcsolodas` **kerek mondat** (alany, állítmány; idézet csak a fölötte álló Károli-vers szó szerinti része, „…”-ben), alatta a „Funkció:” sor (`címke — magyarázat`, a motívumbeli szerep). Töredék súlyos hiba.
-3. **Értelmezés** (PaRDeS-keret, vitatott pontok), **Alkalmazás**, **Módszertan és nyitott kérdések**: a 9-es sablon 4. pontja szerint; a nyitott kérdés tartalmi, a séma-korlát és az adatállapot `【NAPLO】`.
+3. **Értelmezés** (PaRDeS-keret, vitatott pontok) és **Módszertan és nyitott kérdések** (az Alkalmazás kivezetve: F17, B04, DT-F182m; nem írandó): a 9-es sablon 4. pontja szerint; a nyitott kérdés tartalmi, a séma-korlát és az adatállapot `【NAPLO】`.
 4. **Nave-döntések** (U3b, ha még nincs): az `adat/tematikus_temak.tsv`-be, indokkal; üres Nave-blokkal a lap nem adható ki.
 
 **A 4.11 visszhang-blokk** generált (a kinyerő táblából, `MUNKAMENET.md` C-vh); a próza nem ír helyette, és nem állít
@@ -45,6 +45,9 @@ alátámasztja.
 - minden héber, arámi és görög szó mellett a magyaros kiejtés (a lapon egy szónak egy kiejtése van);
 - belső szó nem kerül a szövegbe: döntés-azonosító, feladatszám, fájlnév, „gerinc”, „szerep”, „orkesztrátor”, „felhasználó”; a döntés olvasói neve „szerkesztői döntés”;
 - a beépítés indoka szerkezeti jegy (lánc, visszautalás, szókapcsolat), nem a szó puszta egyezése;
+- „független” csak akkor, ha a két forrásnak nincs közös bemenete: a motívum keresései közös szavakból (Strong-listából) indulnak, ezért egybeesésük „egybeesés, nem független megerősítés” (F24 (a); a kapu: `olvasoi_kapu.MUNKASZAVAK`);
+- a zárómondat (Sod és minden szakasz vége) a motívum saját leletéből áll; más lap zárómondata, a lapok közötti sablonmondat („A motívum legmélyebb rétege ezért … az a remény”) tilos (F24 (b));
+- munkaszó és munkajelölő nem kerül a szövegbe („próba”, „javaslat”, „ellenőrzendő”, „függőben”, „audit”, „token” — a teljes lista: `olvasoi_kapu.MUNKASZAVAK`);
 - hiányt nem töltesz ki asszociatív anyaggal: ha nincs adat, kimondod (CLAUDE.md 3. szabály).
 
 **Önellenőrzés a commit előtt** (mind fusson le, a kimenet a menetnaplóba):

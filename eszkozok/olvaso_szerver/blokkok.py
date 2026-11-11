@@ -48,6 +48,7 @@ bdb_rovidites = _eszkoz_modul('bdb_rovidites')
 tanulmany_regiszter = _eszkoz_modul('tanulmany_regiszter')
 bdb_vj_szabaly = _eszkoz_modul('bdb_vj_szabaly')   # a 2.29 sorainak minősítése, közös a lexikon-generátorral (DT-F104d/e)
 szotari_glossza = _eszkoz_modul('szotari_glossza')   # a szótári glossza-szabály, közös a lexikon-generátorral (F187)
+bdb_tagolas = _eszkoz_modul('bdb_tagolas')   # a BDB tagolása a szakasztáblából, közös a lexikon-generátorral (F182, F33)
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -778,22 +779,40 @@ def _alias_megj(a):
     return Markup('<p class="megj">A BDB ezt a szócikket a(z) %s Strong-szám alatt tartja (gépi párosítás, szöveghasonlóság: %s).</p>') % (a['tabla_strong'], a['hasonlosag'])
 
 
+def _fej_elemzes(cim, szoveg):
+    """A címszó fejének elemzése (alapjelentés, szófaj, nyelvi háttér, alakok) a szeletelő fej-elemzőjével (`bdb_szelet._egy`):
+    ez a fej szövegének bontása, nem a tagolás (F33). A címsor („H2403. chatta'ah”) a fej elé kerül, ha a szöveg nem azzal nyílik."""
+    if not szoveg:
+        return {}
+    t = szoveg if re.match(r'^H\d+\.\s', szoveg) else ('%s %s' % (cim, szoveg) if cim else 'H0000. - ' + szoveg)
+    return bdb_szelet._egy(t) or {}
+
+
+def _ref_szam(t):
+    return len(bdb_szelet.REF.findall(t or ''))
+
+
 def _bdb_bontas(K):
-    """A BDB-szócikk gépi szeletelése a pilot `bdb_szelet.szeletel`-ével (DT-F76g): a magyar fordítás, ennek híján az angol eredeti szövegére;
-    a lemma a Strong-szótár szótője. None, ha nincs szócikk."""
+    """A BDB-szócikk tagolása a szakasztáblából (F182, F33; SEMA 2.30): a `bdb_tagolas.szeletelo_alak` fája — ugyanaz a tábla, amelyből
+    a 2.29 jelentéspontja (DT726) és a lexikon-generátor 4.2-es kártyája épül (egy szabály, egy hely). A csomópont szövege a magyar bontás
+    (`bdb_szakasz_hu`), ha a lap magyar BDB-t mutathat és van, különben az angol eredeti. None, ha nincs szócikk vagy szakasztábla."""
     def f():
         d = _bdb_adat(K)
-        szoveg = d['hu'] or d['en']
-        if not szoveg:
+        if not (d['hu'] or d['en']):
             return None
-        sz = q.strong_szotar(K.con, K.strong)
-        appar = bdb_szelet.szeletel(szoveg, sz[0] if sz else '')
+        forras_strong = d['alias']['tabla_strong'] if d['alias'] else K.strong
+        sorok = q.bdb_szakasz_sorok(K.con, forras_strong)
+        if not sorok:
+            return None
+        hu_sorok = (q.bdb_szakasz_hu_sorok(K.con, forras_strong) or {}) if d['hu'] else {}
+        hu = bool(d['hu']) and any(r.get('szoveg_hu') for r in hu_sorok.values())
+        cim = next((r['szoveg'] for r in sorok if r.get('utvonal') == 'cim'), '')
+        appar = bdb_tagolas.szeletelo_alak(sorok, hu_sorok, 'hu' if hu else 'en', lambda t: _fej_elemzes(cim, t), _ref_szam)
         if not appar:
             return None
-        hu = bool(d['hu'])
-        forras_strong = d['alias']['tabla_strong'] if d['alias'] else K.strong
         return {'appar': appar, 'hu': hu, 'meta': q.bdb_magyar_meta(K.con, forras_strong) if hu else None, 'alias': d['alias'],
-                'alap': bdb_szelet.alap_jelentes(appar['alap']) if hu else None}
+                'alap': bdb_szelet.alap_jelentes(appar['alap']) if hu and appar.get('alap') else None,
+                'sorok': sorok, 'cim': cim}
     return K.memo('bdb_bontas', f)
 
 
@@ -1092,11 +1111,11 @@ class VersJelolo:
     def __init__(self, a, sorok, ig=None, slug=None, igetorzsek=None):
         self.a, self.ig, self.slug = a, ig, slug or {}
         self.sorok = sorok
-        self.fo = a['fej'].get('homonima', '') or ''
+        self.fo = a['fej'].get('cimke', a['fej'].get('homonima', '')) or ''   # F33: a 2.29 címkéje (a kijelzés a homonima)
         self.csp, self.ketszer, self.szakasz_cimke, self.torzs_id = {}, set(), {}, {}
         self._bejar(self.fo, 'bdb', a['torzsek'])
         for k, x in enumerate(a.get('szakaszok') or []):
-            self.szakasz_cimke[k] = bdb_szelet._szakasz_cimke(x)
+            self.szakasz_cimke[k] = bdb_tagolas.szakasz_cimke(x)   # F33: a 2.29 címkéje
             self._bejar(self.szakasz_cimke[k], 'bdb-s%d' % k, x['torzsek'])
         for kulcs in self.ketszer:
             self.csp.pop(kulcs, None)
@@ -1371,8 +1390,8 @@ def _csoportok_bont(K, b):
         if not b['hu']:
             bdb_szelet.csoport_bont(a, 'en')
             return True
-        en = _bdb_adat(K)['en']
-        r_en = bdb_szelet.szeletel(en, '') if en else None
+        # F33: az angol pár ugyanabból a szakasztáblából (a csomópontok kulcsa azonos)
+        r_en = bdb_tagolas.szeletelo_alak(b['sorok'], {}, 'en', lambda t: _fej_elemzes(b['cim'], t), _ref_szam)
         if not r_en:
             return False
         bdb_szelet.csoport_bont(a, 'hu')
@@ -1438,7 +1457,7 @@ def _ebben_html(vj, ig, proba):
 
 
 def _r_bdb_apparatus(d, K):
-    """A pilot `apparatus()` átirata: a `bdb_szelet.szeletel` kimenete, minden szöveg escape-elve (csak a saját, escape-elt elemek Markup).
+    """A pilot `apparatus()` átirata: a szakasztábla fája (`_bdb_bontas`, F33), minden szöveg escape-elve (csak a saját, escape-elt elemek Markup).
     F104: a vers -> jelentés tábla szerinti jelölés (vers-kontextusban), a pontos hivatkozásszám, a kattintható igehelyek, a
     használati csoportok sorai."""
     a, hu = d['appar'], d['hu']

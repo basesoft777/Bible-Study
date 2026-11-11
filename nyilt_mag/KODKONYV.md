@@ -681,6 +681,7 @@ A kapcsolat forrásának olvasói neve; üres, ha nincs rögzítve.
 
 *The reader-facing name of the link’s source; empty when not recorded.*
 
+- `forras_megnevezes` = `a projekt saját mérése és naplója` (en: `the project's own measurement and log`): A sor forrásának megnevezése: a projekt saját mérése és naplója. / Name of the source of the row: the project's own measurement and log.
 - `forras_megnevezes` = `szerkesztői döntés` (en: `editorial decision`): A sor forrásának megnevezése: szerkesztői döntés. / Name of the source of the row: editorial decision.
 
 ### `forras_megnevezes_en`
@@ -960,7 +961,7 @@ A kizárás oka szöveges besorolásban.
 - `kizaras_oka` = `a tohu és bohu szópár nincs a versben` (en: `the word pair tohu and bohu is not in the verse`): Kizárási ok: a tohu és bohu szópár nincs a versben. / Reason for exclusion: the word pair tohu and bohu is not in the verse.
 - `kizaras_oka` = `a „vég” formulája, más kulcsszóval` (en: `the formula of "the end", with another key word`): Kizárási ok: a „vég” formulája, más kulcsszóval. / Reason for exclusion: the formula of "the end", with another key word.
 - `kizaras_oka` = `az erőszak szava más használatban, nem a föld megtelése` (en: `the word for violence in another use, not the filling of the earth`): Kizárási ok: az erőszak szava más használatban, nem a föld megtelése. / Reason for exclusion: the word for violence in another use, not the filling of the earth.
-- `kizaras_oka` = `az öröklött bűnösség kérdése, amelyet a tanulmány nem dönt el` (en: `the question of inherited sinfulness, which the study leaves open`): Kizárási ok: az öröklött bűnösség kérdése, amelyet a tanulmány nem dönt el. / Reason for exclusion: the question of inherited sinfulness, which the study leaves open.
+- `kizaras_oka` = `az öröklött bűnösség kérdése, amelyet a lap nem dönt el` (en: `the question of inherited sinfulness, which the entry leaves open`): Kizárási ok: az öröklött bűnösség kérdése, amelyet a lap nem dönt el. / Reason for exclusion: the question of inherited sinfulness, which the entry leaves open.
 - `kizaras_oka` = `az özönvíz-elbeszélés felidézése, az átok terjedése nélkül` (en: `recalling the flood narrative, without the spread of the curse`): Kizárási ok: az özönvíz-elbeszélés felidézése, az átok terjedése nélkül. / Reason for exclusion: recalling the flood narrative, without the spread of the curse.
 - `kizaras_oka` = `az „Isten előtt” kifejezés, nem a motívum` (en: `the expression "before God", not the motif`): Kizárási ok: az „Isten előtt” kifejezés, nem a motívum. / Reason for exclusion: the expression "before God", not the motif.
 - `kizaras_oka` = `csak az egyik szó vagy más szó áll a versben (összesítő sor)` (en: `only one of the words, or another word, in the verse (summary row)`): Kizárási ok: csak az egyik szó vagy más szó áll a versben (összesítő sor). / Reason for exclusion: only one of the words, or another word, in the verse (summary row).

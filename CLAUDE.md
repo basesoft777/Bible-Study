@@ -49,9 +49,9 @@ Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet
 
 Az értelmező próza egy kézben, egy modellel készül, és aki belenyúl, az egészet olvassa; csomagmód csak adat- és motívumot nem író folyamatfeladatra (KONTEXTUS K1).
 
-A `lexikon/[ID]_TUDOMANYOS.md` kilenc rése (a `tanitoi` kivezetés alatt, DT643: motívumonként, a teljes folyamat lapgenerálásával; `kivonat`, `2b`, `miert_fontos`,
-`minosites`, `alatamasztas`, `ertelmezes`, `alkalmazas`, `tanitoi`,
-`modszertan`; az `alkalmazas` és a `tanitoi` a DT276 óta) is a kimenet
+A `lexikon/[ID]_TUDOMANYOS.md` nyolc rése (a `tanitoi` kivezetés alatt, DT643: motívumonként, a teljes folyamat lapgenerálásával; `kivonat`, `2b`, `miert_fontos`,
+`minosites`, `alatamasztas`, `ertelmezes`, `tanitoi`,
+`modszertan`; a `tanitoi` a DT276 óta; az `alkalmazas` rést kivezettük, DT-F182m) is a kimenet
 rétegbe tartozik: a fejlécsoruk az `adat/res_forras.tsv`-ből, a törzsük a
 motívum tematikus tanulmányából (migrált motívumnál a forrásából), a tanítói
 fájljából vagy a kereszthivatkozás-naplójából
