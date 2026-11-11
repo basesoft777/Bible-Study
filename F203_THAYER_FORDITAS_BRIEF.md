@@ -13,6 +13,7 @@ kovetkezo: "Folytatás: a tételek a jelentés (naplok/F203_jelentes.md) szerint
 olvas: [CLAUDE.md, NYITOTT_FELADATOK.md, adat/SEMA.md, naplok/F186_jelentes.md, eszkozok/thayer_jelolt/, eszkozok/glossza_lexikon_forditas.py, eszkozok/szakasz_cimke_levezet.py, eszkozok/muhely_allapot.py, adat/lap_atnezesek.tsv]
 ir: [eszkozok/thayer_jelolt/bont.py, eszkozok/thayer_jelolt/vers_jelentes.py, eszkozok/thayer_jelolt/forditas_atkulcsol.py, eszkozok/thayer_jelolt/teszt_bont.py, eszkozok/thayer_jelolt/teszt_vers_jelentes.py, eszkozok/thayer_jelolt/teszt_forditas_atkulcsol.py, eszkozok/thayer_jelolt/teszt_lanc.py, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_forras_javitas.tsv, adat/forditasok.tsv, adat/SEMA.md, eszkozok/glossza_lexikon_forditas.py, eszkozok/teszt_glossza_lexikon_forditas.py, eszkozok/szakasz_cimke_levezet.py, eszkozok/muhely_allapot.py, eszkozok/lapdiff_blokk.py, eszkozok/teszt_lapdiff_blokk.py, eszkozok/teszt_futtat.py, MUNKAMENET.md, naplok/F203_jelentes.md, dontesek/uj/f203-thayer-forditas.md, nyitott/uj/f203-thayer-forditas.md]
 fugg: []
+nem_fugg: [121, 123, 156, 161, 178]
 ---
 
 # F203 — A Thayer-lánc, a fordítási lista és a Feed 9. kapujának hibajavítása
