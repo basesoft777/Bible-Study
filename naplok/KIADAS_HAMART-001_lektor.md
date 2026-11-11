@@ -4,15 +4,17 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 
 ## Lektor kérdései
 
+*2. kör (2026-11-11, `claude-fable-5-2`): a 1., 2., 4., 6., 9., 11., 15., 18., 19., 35., 36. és 45. tétel „Javaslat” sora konkrétabb. A lektor a szerepe szerint nem ír új szöveget: ahol nincs „Javasolt szöveg”, a javítás feltételét és helyét adja, a próza gazdája fogalmazza meg. A 6. és a 11. tétel határkérdés: a szerkesztő dönt. A részletes forráshivatkozások a lektor 2. körének kimenetében vannak (adat/elofordulasok.tsv:235, :237; konkordancia/TAHOT_kivonat.tsv; konkordancia/Karoli_kereszthivatkozasok.tsv:18044–18054, 19044–19046; konkordancia/BDB_rokon_irasok.tsv, H2403).*
+
 **1. Lap eleje › „A motívum.” · –**
 - Erre vonatkozik: „A motívum. A bűn következményeinek gyűrűzése — átok, föld és romlás.” (sor 5)
 - Mi a gond: 2. kérdés (érthetőség). A bekezdés szó szerint a lapcímet ismétli (sor 3), meghatározást nem ad.
-- Javaslat: eldönteni, kell-e ide tényleges egymondatos meghatározás, vagy a címismétlés elhagyható.
+- Javaslat: Nincs új szöveg a javaslatban. A Kivonat első mondata már meghatározást ad („A motívum azt követi végig, hogyan terjed a bűn következménye az elkövetőn túl…”), ezért a lap elején a címismétlő bekezdés vagy mondjon olyat, amit a cím nem, vagy maradjon el. A döntés a próza gazdáé.
 
 **2. Lap eleje › „Negatív elhatárolás.” · –**
 - Erre vonatkozik: „Negatív elhatárolás. A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá)…” (sor 7)
 - Mi a gond: 2. kérdés. A „Negatív elhatárolás” címke alatt az első hosszú mondat a pozitív feltétel, a kizárás csak a második mondatban jön. A „genezisi lánc” itt még bevezetés nélkül áll, mert a láncot csak a Kivonat mutatja be.
-- Javaslat: a címke és a tartalom viszonyát, valamint a „lánc” első említését átnézni.
+- Javaslat: Nincs új szöveg a javaslatban. A pozitív feltétel szinte szó szerint kétszer áll a lapon (a lap elején a „Negatív elhatárolás” címke alatt, és a Kivonat 3. bekezdésében). A két szabályszöveg ne térjen el egymástól: a Kivonatban van „a föld szava nélkül” és az erőszak szava a „megtelt” és a „hallatszik” szókapcsolata nélkül, a lap elején egyik sincs (l. 6. és 11. tétel). A címke fedje a tartalmát, és a „lánc” első említése legyen önmagában érthető.
 
 **3. Lap eleje › „Negatív elhatárolás.” · –**
 - Erre vonatkozik: „A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide.” (sor 7)
@@ -22,7 +24,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **4. Lap eleje › „Fölérendelt fogalom” · –**
 - Erre vonatkozik: „(a tágabb kategória, amely felé a motívum hígulna: ha egy hely csak ezen át tartozna ide, kimarad)” (sor 9)
 - Mi a gond: 3. kérdés. A „hígulna” a kutatási protokoll belső szava.
-- Javaslat: megnézni, kell-e a zárójeles módszertani magyarázat az olvasói lap elejére.
+- Javaslat: Nincs új szöveg a javaslatban. A zárójel második fele („ha egy hely csak ezen át tartozna ide, kimarad”) a „hígulna” szó nélkül is érthető: vagy e szó nélkül álljon, vagy maradjon el a lap elejéről. A választás a próza gazdáé.
 
 **5. Kivonat › 2. bekezdés · kivonat rés**
 - Erre vonatkozik: „a próféták mondatait arról, hogy a föld megtelt erőszakkal (Ez 7:23, 8:17)” (sor 19)
@@ -32,7 +34,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **6. Kivonat › 3. bekezdés · kivonat rés**
 - Erre vonatkozik: „Az sem tartozik ide, amely az átkot vagy a föld elvesztését csak a szövetség rendjében mondja ki, a föld szava nélkül: ilyenek a törvény átok-kimondásai (5Móz 27:15-26) és Izrael fogságba vitele a föld színéről (1Kir 13:34, 2Kir 17:23).” (sor 21)
 - Mi a gond: 1. kérdés, három ponton. A „föld szava nélkül” nem áll: az 1Kir 13:34-ben és a 2Kir 17:23-ban a TAHOT szerint ott az adámá (H0127), és a 11. szakasz 1. pontja maga is ezt mondja. Az 1Kir 13:34 nem Izrael fogságáról szól, hanem Jeroboám házának kiirtásáról (`Karoli_1908.tsv:9220`). A 2Kir 17:23-ban „az ő földéből” áll, „színe” nélkül (`Karoli_1908.tsv:10009`).
-- Javaslat: tisztázni, hogy a „föld szava nélkül” csak az 5Móz 27-re vonatkozik-e, és a két Királyok-helyet a saját szövegük szerint megnevezni.
+- Javaslat: ⚠ HATÁRKÉRDÉS — a szerkesztő dönt. Adat: az 1Kir 13:34-ben a héber szövegben a „föld színéről” áll az adámával (tárgya Jeroboám háza, nem Izrael fogsága); a 2Kir 17:23-ban „az ő földjéről” áll, szintén adámával, „színe” nélkül; az 5Móz 27:15-ben az átok igéje áll, adámá nélkül (a 16–26. verset a lektor nem nézte meg). (A) A kizárás oka a szövetség rendje, a föld szavától függetlenül (ahogy a lap eleje mondja): a határ nem változik, csak a Kivonat mondata, amelyben a „föld szava nélkül” csak az 5Móz 27-re állhat, a két Királyok-helyet pedig a saját tartalmuk szerint kell megnevezni. (B) A kizárás oka valóban a föld szavának hiánya: akkor a két Királyok-hely ezzel az indokkal nem zárható ki, más indok kell, vagy újra kell nézni őket; változik a lap eleje, a Kivonat, a 11. szakasz megfelelő mondata és a kizárt helyek táblája.
 
 **7. Kivonat › 3. bekezdés · kivonat rés**
 - Erre vonatkozik: „A különbséget az Ez 12:19 és a Sof 1:2-3 mutatja: az elsőben a föld a lakói erőszaka miatt üresedik ki teljességéből, a másodikban az özönvíz előtti egyetemes felsorolás (ember, barom, madár) áll.” (sor 21)
@@ -47,7 +49,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **9. 2.1 Az igehelyek szövege › Jer 6:7 · „Funkció:” sor előtt**
 - Erre vonatkozik: „A város úgy őrzi gonoszságát, mint a kút a vizét, és az erőszak hangja Isten előtt szüntelen; az ítélet ennek a hangnak felel.” (sor 545)
 - Mi a gond: 1. és 4. kérdés. A versben Isten előtt szüntelen a „betegség és vereség” van, nem az erőszak hangja (sor 544). Az „ítélet ennek a hangnak felel” állítást sem a vers, sem az adatsor nem tartalmazza másként, mint a próza szavaival (`elofordulasok.tsv:235`).
-- Javaslat: a mondatot a vers szövegéhez igazítani, az ítélet-állítás forrását megnevezni vagy elhagyni.
+- Javaslat: Nincs új szöveg a javaslatban. A héber szerint a „hallatszik” ige alanya az erőszak és az önkény, helye „benne”, vagyis a városban; az „előttem szüntelen” alanya a betegség és a seb. A mondat tehát két tagmondatot von össze, amely a versben nem áll így; az „ítélet ennek a hangnak felel” mondathoz a versben nincs ítélet-szó (a 6:6 és 6:8 szövegét a lektor nem nézte meg). A mondat a vers két állítását külön mondja, az ítélet-mondat vagy megnevezi a versét, vagy elmarad. A javítás helye a forrás (a mondat az előfordulások adatában is áll), nem a lap.
 
 **10. 2.1 › Jer 6:7 és Hab 1:2 · „Funkció:” sor előtt**
 - Erre vonatkozik: „Az erőszak szava az 1Móz 6:11 és 6:13 szava, és a szópár maga utal vissza a láncra.” (sor 545 és sor 610)
@@ -57,7 +59,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **11. 2.1 › Hab 1:2 · „Funkció:” sor előtt**
 - Erre vonatkozik: „Itt a próféta kiált az erőszak miatt, és úgy érzi, Isten nem hallja; a szókapcsolat a panasz oldaláról mutatja a láncot.” (sor 610)
 - Mi a gond: 1. és 4. kérdés. A versben a hallás igéjének alanya Isten („nem hallgatsz meg”), nem az erőszak hallatszik; a „hallatszik az erőszak” szókapcsolat itt nem áll fenn (TAHOT, Hab 1:2). A Kivonat kizárja „az erőszak szav[át] a »megtelt« és a »hallatszik« szókapcsolata nélkül” (sor 21). A 11. szakasz szerint „a Habakuk és a Jónás erőszak-helyei” kikerültek (sor 3494), ez a hely viszont bent van (`elofordulasok.tsv:237`, `gerinc_elem` = sámá+chámász).
-- Javaslat: tisztázni, miben különbözik a Hab 1:2 a kivett Habakuk-helyektől, vagy a határt újra megnézni.
+- Javaslat: ⚠ HATÁRKÉRDÉS — a szerkesztő dönt. Adat: a héber szerint a Hab 1:2-ben a hallás igéje és az erőszak szava ugyanabban a versben áll, de nem egy szerkezetben (a „nem hallgatsz meg” alanya Isten, tárgya a kiáltás, az erőszak a kiáltás tartalma); a kizárt Hab 2:8-ban és 2:17-ben a hallás igéje nincs, a különbség tehát valós. A hely szerkesztői döntéssel (2026-11-10: „a szópár itt fordított irányban áll”) került be. (A) Bent marad: a Hab 1:2 „a szókapcsolat” szava nem állhat így, mondja ki, hogy a két szó egy versben áll és a hallás a kiáltásra vonatkozik; a lap elején és a Kivonatban a „hallatszik az erőszak” szópár meghatározását ki kell tágítani úgy, hogy ezt az együttállást is fedje. (B) Kikerül: változik a Kivonat számai (47 hely, 54 vers, 18 ószövetségi hely), a 2.1 blokk és az előfordulás-tábla, a kapcsolatok 1Móz 6:11 → Hab 1:2 sora, a kereszthivatkozás-blokk Hab 1:2 tétele és összesítői (27 hely, 115 találat, 57%), az LXX-tábla sora. Mellékes: a Hab 1:2 és a Jer 6:7 záró mondata („a szópár maga utal vissza a láncra”) betűre azonos, holott a szópár a két helyen másképp áll.
 
 **12. 2.1 › Jer 51:46 · „Funkció:” sor előtt**
 - Erre vonatkozik: „A föld és az erőszak szava itt a hallás igéjével áll együtt, és a hír a birodalom összeomlását vetíti előre.” (sor 552)
@@ -77,7 +79,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **15. 6. Kereszthivatkozások › Sof 1:9 · GENERÁLT: kereszthivatkozasok**
 - Erre vonatkozik: „Károli-KH: Mk 3:22-30” / „Károli-KH: Luk 11:14-26” / „Károli-KH: Luk 11:29-32” (sor 2876–2878)
 - Mi a gond: 1. és 4. kérdés. A három utalás tartalmilag nem illik a Sof 1:9-hez. A forrástáblában a szomszédos Sof 1:8 sora is idegennek látszik (`konkordancia/Karoli_kereszthivatkozasok.tsv:18050–18053`). A blokk bevezetője a Jer 6:7-nél jelez ilyen másolt listát, itt nem.
-- Javaslat: megnézni, elcsúszott lista-e, mint a Jer 6:7-nél, és ha igen, ugyanúgy kezelni.
+- Javaslat: Nincs új szöveg a javaslatban; a javítás helye a lap generátorának kihagyó listája, nem a lap. Adat: a Sof 1:9 három utalása betűre azonos a Mt 12:22 utalásaival, a szomszédos Sofóniás-sorok (1:3, 1:4, 1:8, 1:10) a Zakariás 13 sorait ismétlik; ez ugyanaz a jelenség, mint a Jer 6:7-nél, amelyet a blokk bevezetője már kihagy. Ha a Sof 1:9 ugyanígy kimarad, a bevezető számai (27 hely, 115 találat, 57%, a kimaradt hely) újraszámolandók. Nyitott: a Sof 1:3 → Zsolt 16:4 sor megjelenik-e a lapon a Sof 1:2-3 alatt; ha igen, rá is ez vonatkozik.
 
 **16. 6. Kereszthivatkozások › bevezető jegyzet · GENERÁLT: kereszthivatkozasok**
 - Erre vonatkozik: „Ez a blokk a motívum 47 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 27 igehely ad legalább egy találatot (115 találat összesen), 6 igehely versenkénti kereséssel nem vizsgálható.” (sor 2742)
@@ -92,12 +94,12 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **18. 7. Kapcsolatok › tábla, PaRDeS-szint oszlop · GENERÁLT: kapcsolatok**
 - Erre vonatkozik: „1Móz 3:17 | Ézs 24:5-6 | Párhuzam | a föld átka a lakói miatt, más átok-szóval | közepes | Remez” (sor 3163; ugyanígy a 3:17 → Hós 4:1-3 és a 6:11 → Hab 1:2 sor)
 - Mi a gond: 1. kérdés. A kapcsolat szintje Remez, a célhely az előfordulás-adatban Drash (`kapcsolatok.tsv:44`, `:45`, `:74` ↔ `elofordulasok.tsv:239`, `:240`, `:237`). A lap a Remezt úgy határozza meg, hogy „milyen más helyekkel cseng össze” (sor 3456), miközben az indoklás szerint „közös lánc-szó nincs”.
-- Javaslat: eldönteni, mit jelent a szint a kapcsolaton, és a tematikus soroknál ehhez igazítani.
+- Javaslat: Nincs döntés; szerkesztői kérdés. A három tematikus sor (1Móz 3:17 → Ézs 24:5-6, 1Móz 3:17 → Hós 4:1-3, 1Móz 6:11 → Hab 1:2) Remez szintű, miközben a célhely az előfordulások adatában Drash, és a lap indoklása szerint „közös lánc-szó nincs”. A kérdés: a kapcsolat szintje a kapcsolat jellegét mondja-e (akkor a közös szó nélküli tematikus sor Remez-jelölése szorul indoklásra), vagy a célhely szintjét örökli (akkor a három sor Drash). Bármelyik válasznál a lap egy helyen mondja meg, mit jelent ez az oszlop. A javítás helye a kapcsolatok adata, a blokk generált.
 
 **19. 7. Kapcsolatok › Alátámasztás · GENERÁLT-RÉS: alatamasztas**
 - Erre vonatkozik: „Mért: a tövis és bogáncs szópárja (קוֹץ וְדַרְדַּר, kóc vedardar). Összeköti: a lap prózája; innen a magas bizonyosság.” (sor 3340; ugyanez a minta sor 3355 és 3369: 6:12 → 9:15, 6:17 → 9:11)
 - Mi a gond: 4. és 2. kérdés. A bizonyosság indoka „a lap prózája”, vagyis a lap önmagára hivatkozik. Az olvasó nem tudja meg, mi a független alap.
-- Javaslat: tisztázni, hogy az „Összeköti: a lap prózája” bizonyíték-e vagy csak jelzés, és a szintet a mért adathoz kötni.
+- Javaslat: Nincs új szöveg a javaslatban; a javítás helye a rés generátora és sablonmondata. Kilenc sorban az egyetlen megnevezett összekötő „a lap prózája”. A bizonyosság ezekben a mért részt követi: szópár vagy fordulat esetén magas, egyetlen közös szó vagy szócsalád esetén közepes; az „innen a … bizonyosság” így rossz tagmondathoz kapcsolódik. A mondat a bizonyosságot a mért egyezéshez kösse; ahol nincs külső gyűjtemény, ezt mondja ki, és ne a lapot nevezze meg tanúként.
 
 **20. 7. Kapcsolatok › Alátámasztás · GENERÁLT-RÉS: alatamasztas**
 - Erre vonatkozik: „Mért: a két helyen további 2 szó szó szerint visszatér. Összeköti: a TSK (10 szavazat); innen a magas bizonyosság.” (sor 3332, 1Móz 3:16 → 1Móz 4:7; a sor végén: „szerkesztői döntés, 2026-11-10 | forrás: a lap adattáblája; kézi szerkesztés, 2026-11-10”)
@@ -177,12 +179,12 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **35. 10. Értelmezés › Drash — mit tanít · ertelmezes rés**
 - Erre vonatkozik: „Ez az értelmezés lépése: a szöveg nem állítja, hogy minden szenvedés egy konkrét bűn következménye, de azt igen, hogy a bűnnek mindig vannak az elkövetőn túli hatásai.” (sor 3468)
 - Mi a gond: 4. kérdés. A „mindig” általános tétel, amelyet a lap a szövegnek tulajdonít; a szöveg eseteket mond, szabályt nem. Az „Ez az értelmezés lépése” bevezetés után a mondat mégis azt rögzíti, mit „állít a szöveg”.
-- Javaslat: eldönteni, hogy ez a lap olvasata vagy a szöveg állítása, és a „mindig”-et ehhez mérni.
+- Javaslat: Nincs új szöveg a javaslatban. A bekezdés „A lap olvasata három tételben” címmel nyit, a zárómondat mégis a szövegnek tulajdonít általános tételt („mindig”); a lap másutt ugyanezt „mindig” nélkül mondja („a következményei kiterjednek”). Vagy a lap olvasataként álljon, vagy a „mindig” nélkül, a másik hely mértéke szerint.
 
 **36. 10. Értelmezés › Sod — az átok mint kimondott szó · ertelmezes rés**
 - Erre vonatkozik: „A lánc ezért nem azzal ér véget, hogy az átok szavát visszavonják, hanem azzal, hogy mellette egy másik szó hangzik el” (sor 3470)
 - Mi a gond: 1. kérdés (feszültség). Az adatban az Ézs 60:18 funkciója „a lánc végidei visszavonása” (`elofordulasok.tsv:234`; lap sor 540), a Jel 22:3-é „az átok megszűnik” (`:246`). A Vitatott pontok szerint a lap az 1Móz 8:21 kérdését „nem dönti el” (sor 3474), ez a mondat viszont a második olvasat felé dönt. A Sod-szintű Ézs 60:18 a bekezdésben nem szerepel.
-- Javaslat: a „visszavonás” szót a blokkok és a Sod-bekezdés között egyeztetni, és megnézni, összefér-e a „nem dönti el” kijelentéssel.
+- Javaslat: Nincs új szöveg a javaslatban. A Sod-bekezdés szűk állítása megáll (a lap helyei között nincs, amely az átkot ugyanazzal az igével vonná vissza). A következő mondat többet mond („nem azzal ér véget, hogy az átok szavát visszavonják”), és ez három helyen feszül: az Ézs 60:18 funkcióját a lap „a lánc végidei visszavonásá”-nak nevezi (de ott az erőszak hangja szűnik meg, nem az átok); a bekezdés idézi a Jel 22:3-at („semmi elátkozott nem lesz többé”); a Vitatott pontok szerint a lap az 1Móz 8:21 kérdését „nem dönti el”. A „visszavonás” szó a lapon egy dolgot jelentsen, és a Sod-mondat maradjon az ige-szintű állításnál.
 
 **37. 10. Értelmezés › Vitatott pontok › A forrásrétegek · ertelmezes rés**
 - Erre vonatkozik: „A bibliatudomány egy része a Genezis láncának szavait két forráshoz rendeli: az átok, a föld és a fáradság szavait az egyikhez, a romlás és az erőszak szavait a másikhoz.” (sor 3482)
@@ -229,7 +231,7 @@ Lektor: `lektor` subagent, `claude-fable-5-2` (a próza modellje a kolofon szeri
 **45. 4.8 Nyelvi háttér › Háttér: rokon nyelvek (BDB) · tábla**
 - Erre vonatkozik: „a rokon nyelvi adat kinyerése még nem történt meg” (sor 2437, a חַטָּאת (chattát) sora)
 - Mi a gond: a mondat a munka állapotát mondja, nem a szóról szól: az olvasó nem tudja, hiányzik-e az adat, vagy nincs ilyen adat.
-- Javaslat: eldönteni, hogy az adatot pótolni kell, vagy a sort olvasói megfogalmazással („a BDB nem említ rokon nyelvi megfelelőt” vagy hasonló, ha ez igaz) lezárni.
+- Javaslat: Nincs új szöveg a javaslatban; a javítás helye a tábla forrása. A sor állítása („még nem történt meg”) az adatnak ellentmond: a rokon írások lekérdezése lefutott (2026-11-08), és a chattát szócikkének elején rokon alak nem áll; a tőige (chátá) szócikke viszont ad rokon alakokat (késői héber, arámi, asszír, sabeus, arab, etióp), ahogy az iccávón sora is a tő rokon alakjait adja. A sor a szóról szóljon (a szócikkben nincs rokon alak; a tőnél van), ne a munka állapotáról; hogy a tő-sorok felkerüljenek-e, a gazda dönti.
 
 **46. 2. Előfordulások › tábla, Jel 22:3 sora**
 - Erre vonatkozik: „(nincs görög szó)” (sor 278)
