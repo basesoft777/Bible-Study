@@ -29,6 +29,12 @@ változtatás nélkül menti a feladat jelentésfájljába (`naplok/F<nn>_jelent
 nem módosítasz, nem törölsz — akkor sem, ha hibát találsz. A hibát jelented, nem
 javítod.
 
+## Hatókör: a generált kimenetet nem olvasod (DT742)
+
+A diffből a kód-, adat- és szabályváltozásokat nézed. **A generált kimenetet tartalmilag nem olvasod**: a lapot a CI kapui és a lektor fedik le, nem te. Generált kimenet: `lexikon/*_TUDOMANYOS.md`, `lexikon/*_TORZSCIKK.md`, `lexikon/*_KIZARASOK.md`, a `nyilt_mag/`, a `generalt*/` alatti fájlok, és minden fájl, amelynek fejlécében `# GENERÁLT` áll. A `git diff` / `--stat` kimenetében ezeket kihagyod (`-- ':!lexikon/*_TUDOMANYOS.md'` stb.), vagy csak a `--numstat` sorukat nézed.
+
+Helyette csak ennyit ellenőrzöl: (1) lefut-e a generátor hiba nélkül (a CI-jelentésből, vagy a megengedett parancsokkal); (2) a CI- vagy helyi kapuk zöldek-e, köztük az E28 (a generált nézet egyezése) és az E29, az olvasói kapuk (a CI-jelentésből, a Diéta 1. pontja szerint). Ha egy kódváltozás a lap egy blokkját érinti, a lapból **csak azt a blokkot** nézheted meg, célzottan (`git diff base..head -- <lap>` szűkítve, vagy `lekerdez.py`); a lap egészét nem. Az A1–A6 és a többi ellenőrzési pont ettől változatlan marad, a kód-, adat- és szabályváltozásra.
+
 ## Mit ellenőrzöl a base..head diffen
 
 0. **Modell-ellenőrzés (első pont).** Írd ki a saját tényleges modellnevedet, és vesd össze a saját kért modelleddel (e fájl fejlécének `model` mezője: `opus`). Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A kért modell `opus`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, briefből vagy korábbi sorból másolni tilos (`CLAUDE.md` „Modell-ellenőrzés”). Ezen felül a jelentésben ellenőrizd, hogy a menet által írt `modell` mezők (adattáblák, naplók) a tényleges modellt mutatják-e, nem a brief fejlécéből másoltat.
