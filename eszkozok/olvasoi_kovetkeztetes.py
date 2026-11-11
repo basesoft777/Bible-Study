@@ -375,9 +375,11 @@ def kapcsolatok(n, csomopont, tipusok, magas, kozepes=None):
         szerk = 'a motívum helyei ószövetségi ígéretből újszövetségi beteljesedésbe tartó láncot alkotnak'
     elif fo_n / n >= 0.67:
         szerk = 'a motívum helyei túlnyomórészt %s jellegűek' % fo_t.lower()
-        if fo_t.lower() == 'párhuzam':
-            # lektor 17.: a „párhuzam” típus nem mond ellent a láncnak; a későbbi hely ugyanazt a szót vagy
-            # szerkezetet hozza vissza, és nem egy korábbi ígéretet teljesít be
+        if fo_t.lower() == 'párhuzam' and kozepes is None:
+            szerk = 'a motívum helyei túlnyomórészt párhuzamos előfordulások, nem egymásra épülő lánc'
+        elif fo_t.lower() == 'párhuzam':
+            # lektor 17. (csak az új szerkezetű lapon, ahol a hívó a közepes számot átadja; a régi lapok szövege
+            # változatlan, E28): a „párhuzam” típus nem mond ellent a láncnak
             szerk = ('a motívum helyeit túlnyomórészt párhuzam köti össze: a későbbi hely ugyanazt a szót vagy '
                      'szerkezetet hozza vissza, nem egy korábbi ígéretet teljesít be')
     else:

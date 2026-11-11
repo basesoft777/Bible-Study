@@ -5209,7 +5209,8 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
     blokk_szoveg = _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], [LC('projekt_adat')], hatokor, torzs,
                                   OK.kapcsolatok(len(sorok_ehhez), len(igehelyek), _tipus_szam(sorok_ehhez),
                                                  sum(1 for r in sorok_ehhez if r['bizonyossag'] == 'magas'),
-                                                 sum(1 for r in sorok_ehhez if r['bizonyossag'] == 'közepes'))
+                                                 sum(1 for r in sorok_ehhez if r['bizonyossag'] == 'közepes')
+                                                 if uj_szerkezet(m['id']) else None)
                                   or olvasoi('kapcsolatok', n=len(sorok_ehhez)))
     return blokk_szoveg, [('adat/kapcsolatok.tsv', LC('projekt_adat'))]
 
