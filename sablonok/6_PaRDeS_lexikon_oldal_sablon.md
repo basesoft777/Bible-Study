@@ -1,5 +1,7 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
+*v4.1 — 2026.11.11 (F193; DT-F193a–c, a követelménylista döntései: DT738): az új szakaszrend — 9. Hatástörténet: ókori fordítások és értelmezők, 10. Értelmezés, 11. Módszertan és nyitott kérdések, 12. Irodalom és idézés —, „A 9. Hatástörténet szabályai”, „Alcím és hang”; a lenti A) rész és a Minőségi kapu elavult pontjai jelölve (B01, B02, B03, B05, B11, B12). Az új szerkezetű lapon a fájl végi v4 szakasz az irányadó.*
+
 *v4 — 2026.11.08 (F178): az új lapszerkezet és a HAMART-001 regressziós kapui — a fájl végén, „Az új lapszerkezet és a HAMART-001 regressziós kapui”.*
 
 *v3.1 — 2026.11.02 (F123.3, DT546, DT547): az 1/a igehelyenként a `kapcsolodas` kerek mondata alatt a „Funkció:” sort is mutatja (DT-F1Ab); a két mező kötelező formáját a `9_PaRDeS_motivum_forras_sablon.md` 4. pontja rögzíti. A Minőségi kapu kiegészül az L8 ponttal (24., 25. szabály, olvasói kapu, a felhasználó vizuális átnézése). A kapu többi pontjának elavulása (OLVASHATÓ, törzscikk) változatlanul nyitott: N-F10a.*
@@ -96,10 +98,19 @@ nélküliek; a szerzőséget a Kolofon mondata adja (l. ott). Az olvasói
 kapu a „(kézi)” / „(generált)” jelölést a lapon belső jelnek veszi
 (BELSO, BUKÁS).
 
+**Az A) rész a régi szerkezetű lapé** (számozás: 1/b, 5/b, 6/b). Új cikk
+és 2. kiadás az új szerkezetet követi (a fájl végén, „Az új lapszerkezet
+és a HAMART-001 regressziós kapui”; arany: HAMART-001). Ahol az A) rész
+egy pontját a követelménylista döntése (`sablonok/KESZ_LAP_KOVETELMENY.md`
+(b) lista, DT738) elavultnak mondta, ott *Elavult* jelölés áll; az a
+régi lapon sem követendő.
+
 ### `# 📖 ID — cím` + Kivonat (kézi)
-A motívum ID-je és teljes címe fejlécként, alatta egy rövid (3-5
-mondatos) prózai kivonat: mi a motívum, milyen azonosság-típusú, hány
-igehelyen, mi a legfontosabb lexikai lelet.
+A motívum ID-je és teljes címe fejlécként, alatta prózai kivonat: mi a
+motívum, milyen azonosság-típusú, hány igehelyen, mi a legfontosabb
+lexikai lelet. *Elavult (B01): a „rövid (3-5 mondatos)” hossz; a Kivonat
+négy bekezdés, a tartalma a `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`
+1. pontja szerint.*
 
 ### Tartalomjegyzék (generált)
 A lenti szakaszok listája horgony-linkekkel (`[1. Előfordulások](#1-elofordulasok)`
@@ -125,8 +136,8 @@ eredeti `fordítás függőben` jelöléssel; `egyertelmu=nem` esetén minden
 jelölt jelentés felsorolva) | Megbízhatóság · azonosítás módja. Az
 igehely horgony-link az 1/a alszakaszra mutat. A `proveniencia` és az
 `igazolas` a tábla alatti számozott lábjegyzetben.
-*Arany lap (ISTENTISZT-001, F131; a többi lapra a kiterjesztés külön
-feladat):* a „Szótári jelentés” helyén „Jelentés (a szó)” áll (a szótári
+*A két jelentés-oszlop (a forma az ISTENTISZT-001-en született, F131; az
+arany ma a HAMART-001, B12):* a „Szótári jelentés” helyén „Jelentés (a szó)” áll (a szótári
 szakasz címkéje és jele, `adat/szotar_szakasz_cimke.tsv`; a címke forrása
 a sor lábjegyzetében; a lábjegyzet-jel mellett külön ⓘ nem áll), mellette „Funkció (a motívumban)” (ikon/emoji nélkül, csak a címke szövege); az
 „UBS-jelentés” ÓSZ-sornál is kitöltött: az UBS DBH igehelyszintű
@@ -253,6 +264,10 @@ felismerés NEM állít" bekezdés és egy "Nyitott kérdés a folytatáshoz"
 bekezdés.
 
 ### 6/b. Alkalmazás és tanítói egyezés (kézi)
+*Elavult az új szerkezetű lapon (B03, B04): a tanítói rés kivezetve
+(DT643), az Alkalmazás is (DT756; a felhasználó, 2026-11-10: „nincs is
+alkalmazás”); új cikkben egyik sem írandó, a lapon nem áll. A régi lapon
+a motívum teljes folyamatáig marad.*
 *(DT276, #127.)* Két rés egy szakaszban, a 6. Értelmezés után (a
 szakaszszámozás nem tolódik, az „1/b.” mintájára):
 
@@ -269,7 +284,11 @@ ciklusai teszik a forrásba. A törzscikkben a szakasz nem jelenik meg
 (D34).
 
 ### 7. Módszertan és nyitott kérdések (kézi)
-Táblázat: # | Módszer | Eredmény — a study elkészítésekor futtatott
+*Elavult (B05): a táblázat (# | Módszer | Eredmény) és a chat-napló- vagy
+fájlnév-mutató; a vizsgálati rétegeket próza írja le, olvasói nyelven,
+fájlnév nélkül (a HAMART-001 11. szakasza; a tartalom:
+`sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pont, „Az értelmező
+szakaszok kötelező elemei”).* A régi előírás: táblázat: # | Módszer | Eredmény — a study elkészítésekor futtatott
 összes ellenőrzési réteg, tömören összefoglalva. Alatta egy mondat, ami
 a teljes indoklás helyére mutat (chat-napló dátuma,
 kereszthivatkozás-napló fájlneve).
@@ -283,7 +302,8 @@ folyamat.
 
 ### 8. Irodalom és idézés (generált)
 „Hogyan hivatkozz" alszakasz (ID, cím, `statusz_verzio`,
-`statusz_datum`, a generálás dátuma, a fájl GitHub-URL-je), alatta a
+`statusz_datum`, a generálás dátuma, a hely; *elavult (B11): a fájl
+GitHub-URL-je; helyette a `<KANONIKUS_FORRAS_URL>` helyőrző áll*), alatta a
 felhasznált szótárak listája a forrás-README-k szerinti teljes
 megnevezéssel. A teljes szakirodalmi bibliográfia-tábla nem ennek a
 menetnek a tárgya (LEXV2_3).
@@ -451,7 +471,12 @@ futtatandó
 A `4_PaRDeS_tematikus_sablon.md` Minőségi kapujából adaptálva, a
 lexikon-oldal saját kockázataira szabva:
 
-- [ ] **L1. Szerkezeti teljesség** — a TUDOMÁNYOS változat mind a 15
+- [ ] **L1. Szerkezeti teljesség** — az új szerkezetű lapon a v4
+      szakaszrend minden szakasza jelen van, a megadott sorrendben (a
+      fájl végén, „Szakaszrend”; B02). Utólagos szerkesztésnél külön
+      ellenőrizendő, hogy egy korábban meglévő szakasz nem maradt-e ki.
+      Az OLVASHATÓ változat megszűnt (C3), nem része a kapunak. *A régi
+      szerkezetű lap szöveg szerinti előírása (elavult, B02):* a TUDOMÁNYOS változat mind a 15
       kötelező szakasza jelen van (cím+Kivonat, Tartalomjegyzék,
       Jelmagyarázat és rövidítések, 1. Előfordulások + 1/a, 1/b. Kizárt
       és vizsgált helyek, 2. Szótári háttér [+2/b és Miért fontos ez a
@@ -487,8 +512,13 @@ lexikon-oldal saját kockázataira szabva:
       RENDBEN; új cikknél a teljesség-mérés (három háló, `9_` 4. pont)
       lefutott; az olvasói kapu (Feed 9) 0 BUKÁS; a felhasználó a renderelt lapot
       átnézte, és ez rögzítve (`MUNKAMENET.md` C-o, C-v). Ez a pont a
-      lezárás feltétele, nem csak a commité.
-- [ ] **L5. Nevesített tanítói szakasz átvéve** — ha a forrás-study
+      lezárás feltétele, nem csak a commité. A lezárás sorrendje
+      (gépi kapuk → lektor → átnézés a lektor listájával → egy
+      javítókör → 1. kiadás): `MUNKAMENET.md` „A lezárás menete
+      motívumonként” (B06).
+- [ ] ~~**L5. Nevesített tanítói szakasz átvéve**~~ — *elavult (B03,
+      DT643): a nevesített tanítói rész nem áll a lapon; a pont nem
+      része a kapunak.* A régi szöveg: ha a forrás-study
       5. pontja tartalmaz nevesített tanítói egyezés-keresést, az a
       lexikon-oldalon is szerepel (jelenleg nincs kötelező szakaszként
       nevesítve a fő struktúrában — ha hiányzik, ez önmagában nem
@@ -524,24 +554,35 @@ kapcsolatok explicit el vannak-e választva egymástól.*
 
 *v4 — 2026.11.08 (F178.3–F178.5, a felhasználó jóváhagyásával: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”; „Számozzuk is át / ne legyen b/ alszekció. Folyamatos számozás”). Egyeztetett eltérés: az új szerkezet első lépésben csak a HAMART-001 lapján áll (`lexikon_general.UJ_LAPSZERKEZET`); a többi lap motívumonként, a teljes folyamaton át követi (határ, próza, kinyerés két kézzel, visszhang, kapuk, a felhasználó átnézése; a felhasználó: „Ne a régi hibákkal írjuk újra a többi lapot. Minden menjen át a teljes folyamaton”), nem egy generátor-körben. Ahol ez a szakasz és a fenti A) rész eltér, az új szerkezetű lapon ez az irányadó.*
 
-**Szakaszrend (folyamatos számozás, „/b” alszakasz nincs):** Kivonat · Tartalomjegyzék · Jelmagyarázat · **1. Döntési út** (1.1 A keresés tárgya · 1.2 A keresés forrásai (névszói alcím, harmadik személyben; DT760) · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések; makett: artifact `BWNbfmsofYpnfT9v87of1G`) · **2. Előfordulások** (2.1 Az igehelyek szövege) · **3. Kizárt és vizsgált helyek** · **4. Szótári háttér** (elején az áttekintő tábla: szavanként kiejtés, alapjelentés, LXX-megfelelő, helyek száma; a szótári pontok 4.1–4.14; 4.11 a visszhang-blokk) · **5. LXX-fordítói döntések** · **6. Kereszthivatkozások** · **7. Kapcsolatok** · **8. Kapcsolódó motívumok** · **9. Értelmezés** · **10. Módszertan és nyitott kérdések** · **11. Irodalom és idézés** · Kolofon. A nevesített tanítói rész nem áll a lapon (a `tanitoi` rés sorsa: DT643), és az Alkalmazás sem (F17, B04: a felhasználó, 2026-11-10: „nincs is alkalmazás”; az `alkalmazas` rés lépcsős kivezetése a DT643 mintájára, DT756; a szöveg archívumba kerül). A lapot a motívum **azonosító táblája** nyitja, a cím után és a Kivonat előtt (ID, rövid cím, teljes cím, téma, PaRDeS-szint, státusz, azonosság típusa, negatív kritérium, fölérendelt fogalom; olvasói mezőnevekkel; a státusz a kiadási állapotból, `adat/kiadasok.tsv`; F18). A Döntési út minden vizsgált, nem beépült verse a saját indokával a **kizárt helyek mellékletlapján** áll (`lexikon/[ID]_KIZARASOK.md`, generált), a lapról okonként linkkel; kapu: a melléklet igehelyeinek uniója = a Döntési út csoportos + egyenkénti száma, egy vers egyszer (két keresés csoportjában is álló vers az elsőnél), eltérésnél a melléklet nem renderel (F3 módosítva, B14).
+**Szakaszrend (folyamatos számozás, „/b” alszakasz nincs):** Kivonat · Tartalomjegyzék · Jelmagyarázat · **1. Döntési út** (1.1 A keresés tárgya · 1.2 A keresés forrásai (névszói alcím, harmadik személyben; DT760) · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések; makett: artifact `BWNbfmsofYpnfT9v87of1G`) · **2. Előfordulások** (2.1 Az igehelyek szövege) · **3. Kizárt és vizsgált helyek** · **4. Szótári háttér** (elején az áttekintő tábla: szavanként kiejtés, alapjelentés, LXX-megfelelő, helyek száma; a szótári pontok 4.1–4.14; a 4.11 helyén legfeljebb egysoros mutató a 9. szakaszra, vagy a pont megszűnik — a generátor döntése, DT-F193a, N-F193a) · **5. LXX-fordítói döntések** · **6. Kereszthivatkozások** · **7. Kapcsolatok** · **8. Kapcsolódó motívumok** · **9. Hatástörténet: ókori fordítások és értelmezők** (számozatlan alcímekkel; a visszhang 1 és 2; szabályai alább, „A 9. Hatástörténet szabályai”) · **10. Értelmezés** · **11. Módszertan és nyitott kérdések** · **12. Irodalom és idézés** · Kolofon (DT-F193a, 2026-11-11; a DT756 10–11. számozását módosítja). A nevesített tanítói rész nem áll a lapon (a `tanitoi` rés sorsa: DT643), és az Alkalmazás sem (F17, B04: a felhasználó, 2026-11-10: „nincs is alkalmazás”; az `alkalmazas` rés lépcsős kivezetése a DT643 mintájára, DT756; a szöveg archívumba kerül). A lapot a motívum **azonosító táblája** nyitja, a cím után és a Kivonat előtt (ID, rövid cím, teljes cím, téma, PaRDeS-szint, státusz, azonosság típusa, negatív kritérium, fölérendelt fogalom; olvasói mezőnevekkel; a státusz a kiadási állapotból, `adat/kiadasok.tsv`; F18). A Döntési út minden vizsgált, nem beépült verse a saját indokával a **kizárt helyek mellékletlapján** áll (`lexikon/[ID]_KIZARASOK.md`, generált), a lapról okonként linkkel; kapu: a melléklet igehelyeinek uniója = a Döntési út csoportos + egyenkénti száma, egy vers egyszer (két keresés csoportjában is álló vers az elsőnél), eltérésnél a melléklet nem renderel (F3 módosítva, B14).
 
-**A Döntési út szabályai:** minden vers egyszer számít; az összeadás-sor kiírva (a motívumhoz tartozik + csoportosan kizárva + egyenként elutasítva [+ döntésre vár] = megvizsgált vers); a döntés nélküli vers száma kimondva; a csoportos és az egyenkénti okok lenyitható részletekben; az 1.4 a beépített sorok szavai szerint csoportosít, tételenként a `funkcio` magyarázatával.
+**A Döntési út szabályai:** minden vers egyszer számít; az összeadás-sor kiírva (a motívumhoz tartozik + csoportosan kizárva + egyenként elutasítva [+ döntésre vár] = megvizsgált vers); a döntés nélküli vers száma kimondva; a csoportos és az egyenkénti okok lenyitható részletekben; az 1.4 a beépített sorok szavai szerint csoportosít, tételenként a `funkcio` magyarázatával. Az **1.5 Határesetek és nyitott kérdések** tartalma (J1, DT738): a nem magas megbízhatóságú helyek linkkel; a nyitott kérdések egy-egy mondatban; és megnevezve, hol áll a kifejtésük (a 10. Értelmezés vitatott pontjai, a 11. Módszertan és nyitott kérdések).
+
+**Alcím és hang** (DT-F193c; B07, DT760): minden alcím névszói alakú — nem kérdő, nem felszólító, nem „mi”-hangú (minta: „1.1 A keresés tárgya · 1.2 A keresés forrásai”; nem „Mit keresünk”, „Hol kerestünk”). A lap harmadik személyben szól, a generált bevezetők és a lábjegyzetek is; első személyű igealak csak Károli-idézetben állhat. Ez a „Konfliktuskezelés” TUDOMÁNYOS-hangnem szabályának (L6 (c), (f)) alkalmazása a címekre és a generált szövegre.
 
 **Olvasható döntések, belső jel olvasói formában:** fájlnév, döntés- és feladatazonosító, a blokk technikai kódja, a nyers proveniencia-sor helyett olvasói forrásnév és dátum; a nyers proveniencia-sor a lap forrásában HTML-megjegyzésben megmarad (CLAUDE.md 1. szabály). A döntés olvasói neve „szerkesztői döntés”.
 
-**Visszhang-blokk (4.11; DT639, DT645, DT664):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat); a szabályok tételesen alább („A 4.11 visszhang-blokk szabályai”; a kiemelés: 3. pont). Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
+**Visszhang-blokk (a 9. Hatástörténet első része, a visszhang 1; DT639, DT645, DT664, DT-F193a):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat); a szabályok tételesen alább („A 4.11 visszhang-blokk szabályai”; a kiemelés: 3. pont). Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
 
-**A 4.11 visszhang-blokk szabályai, tételesen** (DT639, DT645, DT646, DT664; kapu: `olvasoi_kapu.py` VISSZHANG, a V-alszabályok: `adat/SEMA.md` 3.11;
-teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-001 4.11 blokkja):
+**A 9. Hatástörténet szabályai** (DT-F193a, DT-F193b; a felhasználó, 2026-11-11: „a visszhang 1-2 kötelező”):
+
+1. **Helye és címe.** „9. Hatástörténet: ókori fordítások és értelmezők”, a 8. Kapcsolódó motívumok után, a 10. Értelmezés előtt. Számozott alpontja nincs, csak számozatlan alcíme (mint a 10. Értelmezésben), névszói alakban („Alcím és hang”). A „visszhang” szó belső rétegnév: alcímben és olvasói szövegben nem áll.
+2. **Tartalma, és mindkét rész az 1. kiadás feltétele.** (a) A **visszhang 1**: az ÓSZ-ág, a fordítások visszhangja a láncversekben (Targum, Vulgata, LXX), a lenti „A 4.11 visszhang-blokk szabályai” szerint (a cím a hivatkozások miatt marad, a blokk helye a 9. szakasz). (b) A **visszhang 2**: az ÚSZ-ág (a motívum újszövetségi helyein lánc-szavanként a Vulgata megfelelője, az ÓSZ-ág formájában; szövegváltozat csak a lánc szavát érintve; az ÓSZ-előkép a meglévő LXX-hídból) és a tanúréteg (3–5. pont). A blokk tartalma egy helyen áll: a 4. Szótári háttérben legfeljebb mutató marad rá. A visszhang 2 részletszabályait a #183 a HAMART-001-en véglegesíti (a követelménylista K67a–K67f).
+3. **A tanúréteg forrásai** (DT-F193b): (a) az egyházatyai tanú a `konkordancia/Tanu_atyak_index.tsv`-ből (HCF; vers → atya → mű → URL → év, idézet nélkül); (b) a rabbinikus tanú a `konkordancia/Tanu_rabbinikus_index.tsv`-ből (Sefaria links, CC BY, DT740), csak az ÓSZ-helyen át; (c) második, független tanúként a Chain Lineage Browser (Blidstein és mtsai) saját lekérdezéssel, versenként. Webes keresésből és emlékezetből tanú nem kerül be.
+4. **A Chain Lineage Browserből csak tényadat** (DT-F193b): szerző, mű, század, nyelv, az idézett vers, a társversek, a forrás-URL, a lekérdezés dátuma, és „BiblIndex ✓”, ha a böngésző jelzi. Egyházatyai szövegrész és tömeges kivonat nem kerül át (licenc nincs megadva). Hagyományonként legfeljebb egy tanú; ha a két forrás ugyanazt a szerzőt és helyet adja, az erősebb jel. Ha a lapon ilyen tanú áll, a 12. Irodalom és idézés és a Kolofon forrástáblája két forrást nevez meg: a böngészőt („Chain Lineage Browser (Blidstein és mtsai), lekérdezve: <dátum>”, URL-lel), és a bibliai hivatkozások eredetét: BiblIndex (Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).
+5. **Glossa Ordinaria** (DT-F193b): szabad forrása nincs. A lap ezt egy olvasói mondatban kimondja („a Glossa Ordinaria szabad, idézhető kiadásban nem érhető el”); a Glossa nem az 1. kiadás feltétele, és helyette más anyag nem kerül be (CLAUDE.md 3. szabály).
+6. **Az értelmező próza és a 9.** A 10. Értelmezés a 9.-ről nem állít többet, mint a blokk alapvonala és a tanúsorok (a sablon 10 „A 9. Hatástörténet”).
+
+**A 4.11 visszhang-blokk szabályai, tételesen** (DT639, DT645, DT646, DT664; a blokk helye 2026-11-11 óta a 9. Hatástörténet, DT-F193a; kapu: `olvasoi_kapu.py` VISSZHANG, a V-alszabályok: `adat/SEMA.md` 3.11;
+teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-001 visszhang-blokkja):
 
 0. A lánc a motívumadatból (DT648, SEMA 2.53): lánc-szó a beépített sorok egyetlen héber Strongból álló `gerinc_elem`-je (a szópár, a tematikus és a görög elem nem), a lánc kulcsszavai a gerinc-elemek, nem az 1.2 teljes szólistája (HAMART-001: 6 kulcsszó); láncvers a motívum Pesat-gerincének azon verse, amelyben a kulcsszó a héber szövegben (TAHOT) áll — a motívum saját verse (a beépített sorok versei, a tartomány versenként), nem a szó teljes előfordulása (a gerincen belül sem); a motívum Pesat-gerince: ha a negatív kritérium (2.1) megnevezi a láncot („az 1Móz 3–9 láncára”), az; különben a motívum Pesat-sorainak (`pardes_szint` ∋ Peshat) fejezet-tartománya az első Pesat-sor könyvében; Pesat-sor nélkül nincs lánc (rögzített szakasz nincs; `lexikon_general.lanc_mag`). A lapon a „gerinc” szó nem állhat (olvasói kapu): a bevezető „Peshat-mag”-ot és „a lánc N kulcsszava”-t mond, az 1.2 szólistájától megkülönböztetve (ELLENOR_F178_2 1.). A szabályt a blokk bevezetője és lábjegyzete kimondja. A kinyerő tábla csak a cellákat adja; lánc-szó a tábla soraiból nem lesz. Tórán kívüli láncversnél a Targum-cella „nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi)” — nem hiány-kitöltés, és a Targum `N`-jébe nem számít.
-1. Lánc-szavanként egy sor; a lánc-szó lemmája (a 4.11-ben és a BDB-háttérben) a láncversek saját Strong-változatából (TBESH `a`/`b`: 1Móz 4:7 → H2403b חַטָּאת, chattát, nem az alapváltozat; `lexikon_general.strong_valtozat_versben`, ELLENOR_F178_2 3.); a cella a fordítás szava kiejtéssel és az `n/N` (a lelet a cellában áll, a „Mit mutat” nem ismétli). A lánc-szó glosszája a láncbeli jelentés: ha a láncversekben a BDB más törzset ad, mint a Qal, a törzs szerinti magyar glossza („megátkozni (Piél)”, `lanc_szo_jelentes`). Két különböző héber lánc-szó két sor.
+1. Lánc-szavanként egy sor; a lánc-szó lemmája (a visszhang-blokkban és a BDB-háttérben) a láncversek saját Strong-változatából (TBESH `a`/`b`: 1Móz 4:7 → H2403b חַטָּאת, chattát, nem az alapváltozat; `lexikon_general.strong_valtozat_versben`, ELLENOR_F178_2 3.); a cella a fordítás szava kiejtéssel és az `n/N` (a lelet a cellában áll, a „Mit mutat” nem ismétli). A lánc-szó glosszája a láncbeli jelentés: ha a láncversekben a BDB más törzset ad, mint a Qal, a törzs szerinti magyar glossza („megátkozni (Piél)”, `lanc_szo_jelentes`). Két különböző héber lánc-szó két sor.
 2. A „Mit mutat” csak a LXX alapvonalát és a különleges leletet mondja; a Targum és a Vulgata alapvonala nem mérhető, ezt a bevezető egyszer mondja ki, a sorok nem ismétlik. A LXX alapvonala gépi: a héber szó láncon kívüli ószövetségi verseiben — csak a láncbeli jelentés előfordulásain (a TAHOT-tükörfordítás közös szótöve) — ugyanaz a szócsalád (`lexikon_general.lxx_alapvonal`); a mondat a nevezőt és a találatot külön mondja: „a láncon kívüli N versből x versben (y%)” — nem „a versek y%-ában (N vers)”, mert a zárójeles szám a nevező, az olvasó találatnak érti (ELLENOR_F178 5.; V7 a három szám egyezését is méri); a sávok (V7): ≥ 80% „a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet”; 40–80% „a szó gyakori, de nem kizárólagos fordítása”; < 40% kiemelt „a láncban más szót választ, mint máshol”; a láncon kívül elő nem forduló szónál „az alapvonal nem mérhető”.
 3. Kiemelt (félkövér) következtetés csak alapvonallal (V5). Két héber lánc-szó egy szóval / szócsaláddal: a Targumnál és a Vulgatánál „a láncban mindkét héber szót ugyanazzal a szóval adja vissza; hogy máshol is így fordítja-e, ebből a forrásból nem mérhető” (nem kiemelt); a LXX-nél a két szó alapvonalával: mindkettő ≥ 80% „ez a láncon kívül is így van (x%, y%)”, bármelyik < 40% kiemelt („a láncon kívül viszont nem így”), egyébként „gyakran, de nem kizárólag”. A mondat az első szó sorában áll, a másodikban „l. az … sorát”.
 4. Két lemma: „ugyanaz a szócsalád”, nem „ugyanaz a szó” (V4); egy eltérő vers: „egy versben más szó (…)”; csupa különböző szónál „három különböző szó”, szám nélkül.
 5. Betoldás-sor: a betoldó fordítás cellája „… · betoldás”, a többi „nincs betoldás”; a következtetés csak a lelet (a fordító a lánc szavát olyan láncversbe teszi, ahol a héberben nincs).
-6. BDB-háttér (a 4.8 Nyelvi háttér pont végén, „Háttér: rokon nyelvek (BDB)” alcímmel; F13, B13, DT755 — a DT639 6. pontjának módosítása: a 4.11-ben csak a fordítások visszhangja áll, a végén hivatkozás a 4.8-ra): a háttér-táblában csak a lánc-szavak és tövük állnak; csak valódi rokon nyelv (akkád/asszír, arab, etióp, szír, arámi, óarámi, ugariti, Tell el-Amarna, sabeus); újhéber, targumi arámi (ᵑ7), Sirák nem (V2); nyelvenként egy sor; tartalom nélküli sor nem áll; angol maradék nem állhat (V1); „nem azonosítható” (a BDB-szócikk a lekérdezésben nem azonosított) ≠ „nincs rokon nyelvi adat” (V3). Minden nem latin betűs alak mellett kiejtés; pontozatlan héber betűs alaknál mássalhangzós átírás a kiejtési szabály betűivel (קללם → k-l-l-m). Főnévnél, amelynek szócikkében nincs rokon alak, az igei tő szócikke (`bdb_to_strong`: חָמָס → חָמַס, עִצָּבוֹן → עָצַב): „a főnév szócikkében nincs; a tő, a … ige szócikke szerint:”, alatta a tő nyelvenkénti sorai.
+6. BDB-háttér (a 4.8 Nyelvi háttér pont végén, „Háttér: rokon nyelvek (BDB)” alcímmel; F13, B13, DT755 — a DT639 6. pontjának módosítása: a visszhang-blokkban (ma a 9. Hatástörténetben) csak a fordítások visszhangja áll, a végén hivatkozás a 4.8-ra): a háttér-táblában csak a lánc-szavak és tövük állnak; csak valódi rokon nyelv (akkád/asszír, arab, etióp, szír, arámi, óarámi, ugariti, Tell el-Amarna, sabeus); újhéber, targumi arámi (ᵑ7), Sirák nem (V2); nyelvenként egy sor; tartalom nélküli sor nem áll; angol maradék nem állhat (V1); „nem azonosítható” (a BDB-szócikk a lekérdezésben nem azonosított) ≠ „nincs rokon nyelvi adat” (V3). Minden nem latin betűs alak mellett kiejtés; pontozatlan héber betűs alaknál mássalhangzós átírás a kiejtési szabály betűivel (קללם → k-l-l-m). Főnévnél, amelynek szócikkében nincs rokon alak, az igei tő szócikke (`bdb_to_strong`: חָמָס → חָמַס, עִצָּבוֹן → עָצַב): „a főnév szócikkében nincs; a tő, a … ige szócikke szerint:”, alatta a tő nyelvenkénti sorai.
 7. Ugyanaz a tagmondat (a számok és a fordító neve nélkül) legfeljebb kétszer a táblán, cellán belül is számolva (V6).
 8. Hiány kimondva, nem kitöltve: kinyerés nélkül „a megfelelő kinyerése még nem történt meg”, ellenőrizetlen sorral „nincs ellenőrzött adat”, ellenőrzött, alak nélküli sorral „nincs megfelelő szó”; a „Mit mutat” a más szót és az adat nélküli verset nem keveri („3 versben nincs ellenőrzött adat”, nem „más szó”). A háttér-táblában lánc-szó `bdb` sor nélkül: „a rokon nyelvi adat kinyerése még nem történt meg”.
 
