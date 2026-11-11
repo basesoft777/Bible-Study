@@ -43,7 +43,7 @@ ELOF = [
     {'id': 'X-001', 'igehely': '1Móz 6:11', 'gerinc_elem': 'H2555', 'strong': 'H2555'},
     {'id': 'X-001', 'igehely': 'Ez 8:17', 'gerinc_elem': 'málé+chámász', 'strong': 'H2555'},
 ]
-VERSEK_KELL = ['1Móz 4:14', '1Móz 6:11', '1Móz 8:21', 'Ez 7:23', 'Ez 8:17', 'Ez 12:19', '2Kir 17:23', '1Kir 14:15',
+VERSEK_KELL = ['Ézs 24:5-6', 'Hós 4:1-3', '1Móz 4:14', '1Móz 6:11', '1Móz 8:21', 'Ez 7:23', 'Ez 8:17', 'Ez 12:19', '2Kir 17:23', '1Kir 14:15',
                'Ámós 9:8', '5Móz 27:15']
 
 _KORNYEZET = {}
@@ -103,7 +103,26 @@ class Tagadas(unittest.TestCase):
         self.assertFalse(P.neg_ervenyes(s, neg, s.index('(5Móz'), ''))
 
 
+class Normalizalas(unittest.TestCase):
+    def test_strong_norm_f62(self):
+        """ELLENOR_F200 2.: az ötjegyű G-kiegészítő kód nem csonkolódik másik létező számmá."""
+        self.assertEqual(P.strong_norm('G20447'), 'G20447')
+        self.assertEqual(P.strong_norm('H127'), 'H0127')
+        self.assertEqual(P.strong_norm('málé'), '')
+
+    def test_vonatkozo_mellekmondat(self):
+        """ELLENOR_F200 1.: az előző igehelyre szóló „…, ahol …” mellékmondat a következő csoport záradékából kimarad."""
+        self.assertEqual(P.zaradek_sajat(', ahol az átok más héber szóval emészti meg a földet, a '), ' a ')
+        self.assertEqual(P.zaradek_sajat(', a föld megtelt erőszakkal '), ', a föld megtelt erőszakkal ')
+
+
 class GepiProbak(unittest.TestCase):
+    def test_mas_szo_az_elozo_csoporte(self):
+        sorok = futtat('Ilyen az Ézs 24:5-6, ahol a föld más héber szóval áll, és a Hós 4:1-3.')
+        it = iteletek(sorok, 'szójelenlét')
+        self.assertTrue([v for v, _ in it if v == 'Ézs 24:5-6'])
+        self.assertFalse([v for v, _ in it if v == 'Hós 4:1-3'])
+
     def test_szopar_alanya_eltér(self):
         sorok = futtat('A próféták mondják, hogy a föld megtelt erőszakkal (Ez 7:23).')
         self.assertIn(('Ez 7:23', 'ELTÉR'), iteletek(sorok, 'szópár'))

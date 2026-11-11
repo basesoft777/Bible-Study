@@ -53,6 +53,7 @@ if ESZKOZOK not in sys.path:
 import lekerdez as L  # noqa: E402  (parse_range, in_range)
 import olvasoi_kapu as OK  # noqa: E402  (normal_szoveg, karoli_egyezik, IDEZET_RX)
 import heber_kiejtes as HK  # noqa: E402  (kiejt: az átírás feloldása)
+import strong_util as SU  # noqa: E402  (F62: az egyetlen Strong-normalizáló)
 
 KONK = os.path.join(ROOT, 'konkordancia')
 ADAT = os.path.join(ROOT, 'adat')
@@ -97,8 +98,13 @@ def tsv_dict(ut):
 
 
 def strong_norm(s):
-    m = re.match(r'^([HG])0*(\d{1,4})', (s or '').strip())
-    return '%s%04d' % (m.group(1), int(m.group(2))) if m else ''
+    """A Strong-szám SEMA 1.2 alakja az F62 normalizálóval (`strong_util`), a betűutótag nélkül (a motívum adata
+    utótag nélküli); a G-kiegészítő kód (G + öt számjegy) megmarad. Nem Strong-szám (átírás, „tematikus:”): ''."""
+    try:
+        n = SU.strong_normalizal((s or '').split('+')[0].strip(), utotag='megtart')
+    except ValueError:
+        return ''
+    return re.sub(r'(?<=\d)[A-Za-z]+$', '', n)
 
 
 def ascii_konyv(konyv):
@@ -499,6 +505,16 @@ ABSZOLUT = re.compile(r'(?<![%s])(?:először|elsőként|egyetlen|mindig|soha|se
 IDEZET_KI = re.compile(r'„[^”]*”|"[^"]*"')
 
 
+VONATKOZO = re.compile(r'^[\s),]*(?:ahol|amely\w*|ami\w*|aki\w*|mely\w*)(?![%s])[^,;]*[,;]?' % BETU, re.I)
+
+
+def zaradek_sajat(zaradek):
+    """Az előző igehely-csoportra visszautaló vonatkozó mellékmondat („…(Ézs 24:5-6), ahol az átok más héber szóval
+    …, a”) nem a következő csoport állítása: a záradék eleje a mellékmondat végéig levágva."""
+    m = VONATKOZO.match(zaradek)
+    return zaradek[m.end():] if m else zaradek
+
+
 def zaradek_vege(zaradek):
     """A záradék utolsó tagmondata (a ; : — utáni rész), legfeljebb 120 karakter: az implicit szó-jelzés ablaka."""
     vege = re.split(r'[;:—]', zaradek)[-1]
@@ -585,6 +601,8 @@ class Ellenor:
             vizsgalt, elozo = [], 0
             for kezdet, veg, refek in csoportok:
                 zaradek = szoveg[elozo:kezdet] if kezdet > elozo else szoveg[max(0, kezdet - 200):kezdet]
+                if elozo:
+                    zaradek = zaradek_sajat(zaradek)
                 vizsgalt.append((kezdet, veg, refek, zaradek))
                 elozo = veg
         lefedett = set()   # a vers, amelyre az egész állítás egy idézet (gépi ítélet született)
@@ -618,7 +636,7 @@ class Ellenor:
                 # negatív szójelenlét: a tagadás a záradékban, vagy előtte, tagmondat-határ nélkül
                 if neg and (e.alap_ref or neg_ervenyes(szoveg, neg, kezdet, zaradek)):
                     self._negalt(e, ref, versek, strongok, neg.group(1), szoveg)
-                if mas and (e.alap_ref or mas_csoport == kezdet or mas.group(0) in zaradek):
+                if mas and (e.alap_ref or mas_csoport == kezdet or mas.group(0) in zaradek_vege(zaradek)):
                     mas_zaradek = zaradek + ' ' + szoveg[veg:mas.end()] if mas.start() >= veg else zaradek
                     self._mas_szo(e, ref, versek, strongok, mas_zaradek, szoveg, idezet_refek)
                 # pozitív szójelenlét a záradékban
@@ -855,7 +873,7 @@ class Ellenor:
                                if s and s not in self.adat.gramm and not s.startswith('H90')
                                and set(OK.normal_szoveg(hu).split()) & idez_szavak})
                 kozos = [s for s in tart if s in strongok]
-                if tart and kozos:
+                if tart and 2 * len(kozos) >= len(tart):   # az idézet tartalmi szavainak legalább fele közös
                     self.sorok.append(Sor(e, ref, szoveg, 'ELTÉR',
                                           'a mondat szerint itt más szó áll, mint a(z) %s idézetében; a(z) %s idézett '
                                           'szavai közül itt is áll: %s' % (forras_ref, forras_ref,

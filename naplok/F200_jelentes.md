@@ -32,6 +32,17 @@
 - **Igehely nélküli olvasat:** a Peshat alá sorolt következtetés (30), a forrásra rá nem kötött állítás (37). A kizárólagos szavakon („mindig”, „először”, „egyetlen”) túl nincs gépi fogása.
 - **Generált blokk:** a lap generált része (N-F200a).
 
+## Független ellenőrzés és javítókör
+
+A `fuggetlen-ellenor` (opus) a 9926ae54..2de13efd diffen két ELTÉRÉS-t talált, egy javítókörben mindkettő javult (F200.4):
+
+1. **A „más szó” állítás a következő igehelyre tapadt:** a záradék az előző és a következő igehely-csoport közötti szöveg volt, ezért a „…(Ézs 24:5-6), ahol az átok más héber szóval …” mellékmondat a Hós 4:1-3-ra is ítéletet adott (itt véletlenül „egyezik”). Javítás: az előző csoportra visszautaló vonatkozó mellékmondat (`ahol`, `amely…`, `aki…`) a következő csoport záradékából kimarad (`zaradek_sajat`), és a „más szó” próba csak a saját csoportjára szól. Teszt: `test_vonatkozo_mellekmondat`, `test_mas_szo_az_elozo_csoporte`.
+2. **Saját Strong-normalizáló:** az ötjegyű G-kiegészítő kódot csonkolta volna (G20447 → G2044). Javítás: az F62 `strong_util.strong_normalizal`. Teszt: `test_strong_norm_f62`.
+
+A két figyelmeztetésből: a „más kulcsszóval” próba most csak akkor ELTÉR, ha az idézett mondat tartalmi szavainak legalább fele a versben is áll (a HAMART-on az Ez 7:2, 7:6, Ámós 8:2 sora marad); a PR címe az E16 szerint `[ELLENŐRZŐ]` előtagú (a CI-munkafolyamat változik). A harmadik (az előző mondatban megnevezett vers idézete) nyitott, a kézi lista fogja; a HAMART-próbán nem fordult elő.
+
+A javítás után a próba száma változatlan (gépi 5, kézi 18, nem látja 11; 10 ELTÉR), az „egyezik” sorok száma 109 → 108.
+
 ## A folyamatba építés
 
 - `MUNKAMENET.md` C-szakasz: új **C-a** sor (a C-w után, a C-g és a lektor, C-k előtt); a „lezárás menete” 1. pontja ezzel bővül.

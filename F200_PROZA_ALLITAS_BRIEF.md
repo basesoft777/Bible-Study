@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/f200-versallitas-e49cf6
-pr:
+pr: 697
 ad: gépi ellenőrző a kézi forrás értelmező prózájához — szójelenlét, szópár és alanya, fordulat, idézet, szám gépi ítélettel, a többi ellenőrzési listán (Károli + héber/görög sor), JELENTÉS szinten; a MUNKAMENET C-szakaszában és a 10-es sablonban új lépés az U3 után, a lektor előtt
 kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az ISTENTISZT-001 új cikkének U3 menete már ezzel az ellenőrzéssel fut"
 munka: folyamat
