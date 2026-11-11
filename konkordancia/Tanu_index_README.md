@@ -9,9 +9,9 @@ szavas összefoglalóval, a CLAUDE.md 2. szabálya szerint (keresési találatb�
 
 | Fájl | Sor | Tartalom |
 |---|---|---|
-| `Tanu_atyak_index.tsv` | 97 679 | Károli-alakú igehely-tartomány → atya, év, `mu_id`, `hcf_id` (HCF, a kanonikus 66 könyv) |
-| `Tanu_atyak_mu.tsv` | 21 855 | `mu_id` → atya, atya-kategória, kiegészítés, mű (`source_title`), forrás-URL |
-| `Tanu_rabbinikus_index.tsv` | 5 267 | Károli-alakú igehely-tartomány → rabbinikus mű + hely (Midrash / Talmud / Mishnah / Tosefta / Targum) |
+| `Tanu_atyak_index.tsv` | 97 572 | Károli-alakú igehely-tartomány → atya, év, `mu_id`, `hcf_id` (HCF, a kanonikus 66 könyv) |
+| `Tanu_atyak_mu.tsv` | 21 790 | `mu_id` → atya, atya-kategória, kiegészítés, mű (`source_title`), forrás-URL |
+| `Tanu_rabbinikus_index.tsv` | 5 259 | Károli-alakú igehely-tartomány → rabbinikus mű + hely (Midrash / Talmud / Mishnah / Tosefta / Targum) |
 
 Mind generált (`# GENERÁLT: eszkozok/tanu_index.py …`), kézzel nem szerkeszthető. Olvasás `split('\t')`, a `#` fejlécsorok kimaradnak.
 Üres `igehely_veg` = egy verses tartomány; üres `atvezetes` = egyező. A `szelesseg` a tartomány verszáma: **1 = pontos egyvers**; a 10-nél
@@ -19,7 +19,7 @@ szélesebb sorok (259 az atyáknál) fejezet- vagy szakaszszintű megjegyzések,
 
 ### `Tanu_atyak_index.tsv` oszlopai
 `igehely_kezdet`, `igehely_veg`, `szelesseg`, `atya` (HCF `father_name`), `ev` (a bejegyzés HCF-éve; eltérhet az atya alapévétől), `mu_id`,
-`hcf_id` (a HCF `commentary.id` első 10 hexa jegye; a nyers adatbázisban a sor és az idézet innen keresendő), `atvezetes`.
+`hcf_id` (a HCF `commentary.id` első 10 karaktere, a kötőjellel együtt; a nyers adatbázisban a sor és az idézet innen keresendő), `atvezetes`.
 Az `atya_kategoria` (`Tanu_atyak_mu.tsv`) szűrésre való: a HCF nem csak atyákat tartalmaz (Reformation & Modern, Pseudonymous Works,
 Canonical Scriptures, Apocrypha … is), a tanúréteghez a korhoz illő kategóriákat kell kiválasztani.
 
@@ -68,23 +68,23 @@ repóba tételt (Rendszerfejlesztesi_playbook 2. pont, „Nyers forrás megőrz�
 
 - **Számozás.** A HCF az angol (KJV) számozást, a Sefaria a masszoretikus (MT) számozást használja; a Károli-számra a `Karoli_versmegfeleltetes.tsv`
   `igehely_kjv`, illetve `igehely_mt` oszlopa vezet át (a tartomány eleje és vége külön). `atvezetes`: `egyezo` (üres) | `tabla` (a szám változott) |
-  `tabla_hianyzik` (OT-vers, amely a táblában nincs: az azonos szám marad; 109 sor az atyáknál, 5 a rabbinikusnál) | `nt_feltetelezett`
+  `tabla_hianyzik` (OT-vers, amely a táblában nincs: az azonos szám marad; 2 sor az atyáknál, 5 a rabbinikusnál) | `nt_feltetelezett`
   (az UT-re nincs átvezető tábla: azonos szám feltételezve, 63 972 sor; az UT néhány ismert eltérése kézzel ellenőrizendő).
-- **Eldobva (HCF):** a `txt` (idézet); a `file_name`; 2 043 sor az apokrif könyvekből (Wisdom, Sirach, Tobit, 1–2 Maccabees, Baruch, Prayer of Azariah,
-  Judith — nincs Károli-megfelelő); 2 fordított tartományú sor. A `append_to_author_name` a `Tanu_atyak_mu.tsv` `atya_kiegeszites` oszlopában marad.
+- **Eldobva (HCF):** a Google Books-URL `dq=`/`q=` paramétere (idézetszöveget hordoz); a `txt` (idézet); a `file_name`; 2 043 sor az apokrif könyvekből (Wisdom, Sirach, Tobit, 1–2 Maccabees, Baruch, Prayer of Azariah,
+  Judith — nincs Károli-megfelelő); 2 fordított tartományú sor; **107 sor, amelynek (átvezetés utáni) kezdőverse nem létezik a Károlinál** — a görög Dániel/Eszter-kiegészítések (Dán 13–14, Eszt 10:6, 15:13…) és a Károli-számozástól eltérő versek (pl. KJV Jób 38:39–41 = Károli Jób 39:1–3, mert a versmegfeleltetés ezeket nem tartalmazza) — ezek nem kaphatnak hamis Károli-kulcsot, ezért kimaradtak (`nincs_karoli_vers`). Ehhez jön: a 0. vers az 1. versre, a `≥999`/üres vég a fejezet utolsó versére írva; az átvezetés után megfordult tartomány egy versesre zsugorodik. A `append_to_author_name` a `Tanu_atyak_mu.tsv` `atya_kiegeszites` oszlopában marad.
   261 mű-sor `source_title` nélküli, 9 204 `source_url` nélküli: üresen maradt (a hiányt nem töltjük ki).
 - **Eldobva (Sefaria):** minden szöveg; minden nem rabbinikus kategória (Tanakh–Tanakh keresztkapcsolatok, Reference, Jewish Thought, Chasidut, Halakhah,
   Kabbalah, Musar, Liturgy, Responsa, Second Temple); a **középkori Tanakh-kommentárok** (Rashi, Ramban, Ibn Ezra …: Tanakh–Tanakh típusú kapcsolatok, nem
-  rabbinikus-kategóriájúak); a Tanakh-oldalon nem csupasz könyvnevű sorok (kommentár-kapcsolatok); 46 fejezetszintű ref nem értelmezhető (Lamentations 1–5,
-  Joel 4: az eltérő Károli-számozás miatt a fejezetszintű ref nem vezethető át).
+  rabbinikus-kategóriájúak); a Tanakh-oldalon nem csupasz könyvnevű sorok (kommentár-kapcsolatok); 40 fejezetszintű ref nem értelmezhető (Lamentations 1–5: a siralmak fejezetszintű refje a verszámlálás hiánya miatt nem bontható; a fejezet végét az MT-fejezet hossza adja, nem a Károlié). A 7-től eltérő oszlopszámú Sefaria-sorok és a nem egyértelmű `targum`-sorok számlálás nélkül kimaradnak; az azonos (tartomány, mű, ref) hármas egyszer szerepel (a duplikátumok száma a futás kimenetén áll, a fejlécben nem).
 - **Csoportosítás (Sefaria):** a (tartomány, kategória, mű, kapcsolat-típus) azonos sorai egyetlen sorba kerülnek; a `darab` a számot, a `hely` az összes refet mutatja.
+- **A Sefaria-kategóriák nem tiszta „rabbinikus” kategóriák:** a `Talmud` és a `Mishnah` kategória kései kommentárokat is tartalmaz (Steinsaltz, Ben Yehoyada, Nachalat Avot, Hartman-jegyzetek …; a `mu` oszlopban „ on ”-t tartalmazó nevek). Pl. az 1Móz 4:7 „Mishnah” sorai mind kommentárok. A lapra kerülő tanúhoz a `mu` ellenőrzendő; az `mu`-ban „ on ” szerkezet = kommentár a műhöz.
 - **Targum:** a Sefaria `targum` típusú kapcsolatából (mindkét oldal Tanakh-kategóriájú); a Tanakh-oldal a csupasz könyvnév.
 
 ## Hatókör
 
-- **Atyák:** a teljes Károli-kanon (66 könyv), 97 679 sor, 6,1 + 3,4 MB.
+- **Atyák:** a teljes Károli-kanon (66 könyv), 97 572 sor, 6,1 + 3,4 MB.
 - **Rabbinikus:** a teljes Tanakh 254 250 sor / ~24 MB lenne, ez a „pár MB”-nál sokkal több, ezért az első körben **csak a lexikonmotívumok igehelyeivel
-  átfedő sorok** (`adat/elofordulasok.tsv`, 289 vers; 5 267 sor, 0,5 MB). Új motívum vagy új vers esetén újragenerálás (a nyers adat a `D:\pardes_tanu\`-n),
+  átfedő sorok** (`adat/elofordulasok.tsv`, 289 vers; 5 259 sor, 0,5 MB). Új motívum vagy új vers esetén újragenerálás (a nyers adat a `D:\pardes_tanu\`-n),
   vagy a teljes változat (`--teljes`, N-F191a).
 
 ## Újragenerálás
@@ -106,11 +106,11 @@ A `python eszkozok/tanu_index.py minta` kimenete (pontos egyvers / a verset fed�
 
 | Vers | atya (pontos) | atya (fedő ≤10) | rabbinikus hely (pontos) | rabbinikus (fedő ≤10) |
 |---|---|---|---|---|
-| 1Móz 3:17 | 8 | 16 | 48 mű (Midrash 38, Talmud 7, Targum 3) | 54 sor / 48 mű |
-| 1Móz 4:7 | 4 | 7 | 48 mű (Midrash 22, Mishnah 2, Talmud 20, Targum 4) | 49 sor / 47 mű |
-| 1Móz 4:11 | 2 | 5 | 9 mű (Midrash 6, Targum 3) | 10 sor / 10 mű |
-| 1Móz 6:5 | 2 | 5 | 54 mű (Midrash 26, Mishnah 7, Talmud 16, Targum 3, Tosefta 4) | 58 sor / 55 mű |
-| 1Móz 6:11 | 1 | 1 | 16 mű (Midrash 7, Mishnah 2, Talmud 3, Targum 4) | 16 sor / 16 mű |
+| 1Móz 3:17 | 8 | 16 | 48 sor / 46 mű (Midrash 38, Talmud 7, Targum 3) | 54 sor / 48 mű |
+| 1Móz 4:7 | 4 | 7 | 48 sor / 47 mű (Midrash 22, Mishnah 2, Talmud 20, Targum 4) | 49 sor / 47 mű |
+| 1Móz 4:11 | 2 | 5 | 9 sor / 9 mű (Midrash 6, Targum 3) | 10 sor / 10 mű |
+| 1Móz 6:5 | 2 | 5 | 54 sor / 54 mű (Midrash 26, Mishnah 7, Talmud 16, Targum 3, Tosefta 4) | 58 sor / 55 mű |
+| 1Móz 6:11 | 1 | 1 | 16 sor / 16 mű (Midrash 7, Mishnah 2, Talmud 3, Targum 4) | 16 sor / 16 mű |
 
 Az atyai pontos darabszámok egyeznek a tanúforrás-felmérés (2026-11-11) kézi mérésével (8 / 4 / 2 / 2 / 1).
 

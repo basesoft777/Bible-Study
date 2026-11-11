@@ -3,7 +3,7 @@
 # forras=Sefaria-Export links/links0.csv … links17.csv (https://storage.googleapis.com/sefaria-export/links/) | sha256(elso16)=links0.csv=6cad6cf262b0d157 links1.csv=3458162e147b642c links2.csv=fd04427884a5165d links3.csv=8085156cd3b756a6 links4.csv=f65e5489a6a1ae18 links5.csv=949539ae0edcf06d links6.csv=c1b37c592021bcea links7.csv=21fb57f9b2512e02 links8.csv=23d03b99e3565eb5 links9.csv=7cc5f48368631350 links10.csv=1827a03809e4b235 links11.csv=6282c6c7c388aaad links12.csv=e1d45ec0d80dda36 links13.csv=2793510a3578aff3 links14.csv=496184eb19f0cb14 links15.csv=f8d63b4852f14198 links16.csv=bc1fb3a0b9721389 links17.csv=0ed5d3559f5e621d | letoltve=2026-11-11
 # licenc: CC BY — „Sefaria’s links dataset … is released under the CC-BY license” (https://developers.sefaria.org/docs/usage-of-our-name-and-logo, 2026-11-11); forrásmegjelölés: Sefaria.org; a változás (szűrés, Károli-átvezetés) jelezve.
 # hatokor: a lexikonmotívumok igehelyei (adat/elofordulasok.tsv, 289 vers): csak az ezekkel átfedő tartományok (a teljes Tanakh ~24 MB; N-F191a)
-# proveniencia: scope=links(5193925 olvasott sor, 330493 rabbinikus Tanakh-sor, 323358 hatókörön kívül, 46 nem értelmezhető Tanakh-ref) | forras=Sefaria-Export links | ts=2026-11-11
+# proveniencia: scope=links(5193925 olvasott sor, 330493 rabbinikus Tanakh-sor, 323373 hatókörön kívül, 40 nem értelmezhető Tanakh-ref) | forras=Sefaria-Export links | ts=2026-11-11
 # igehely: Károli-szám (a Sefaria MT-számát a Karoli_versmegfeleltetes.tsv igehely_mt oszlopa szerint átvezetve); a szelesseg a tartomány verszáma (1 = pontos egyvers; a nagy értékű sorok fejezet- vagy szakaszszintű kapcsolatok).
 igehely_kezdet	igehely_veg	szelesseg	kategoria	mu	darab	hely	kapcsolat_tipus	atvezetes
 1Móz 1:1	1Móz 1:2	2	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 1:5	midrash	
@@ -3352,8 +3352,8 @@ Jób 14:1	Jób 14:22	22	Midrash	Vayikra Rabbah	1	Vayikra Rabbah 31:3
 Jób 14:1	Jób 14:22	22	Talmud	Jerusalem Talmud Rosh Hashanah	1	Jerusalem Talmud Rosh Hashanah 1:3:4		
 Jób 14:13		1	Midrash	Midrash Tehillim	1	Midrash Tehillim 143:1		
 Jób 14:13		1	Targum	Aramaic Targum to Job	1	Aramaic Targum to Job 14:13	targum	
-Jób 17:1	Jób 17:14	14	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 57:4		tabla
-Jób 17:1	Jób 17:14	14	Midrash	Ruth Rabbah (Lerner)	1	Ruth Rabbah (Lerner) 8:3:1		tabla
+Jób 17:1	Jób 17:15	15	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 57:4		tabla
+Jób 17:1	Jób 17:15	15	Midrash	Ruth Rabbah (Lerner)	1	Ruth Rabbah (Lerner) 8:3:1		tabla
 Jób 17:12		1	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 30:8		tabla
 Jób 17:12		1	Targum	Aramaic Targum to Job	1	Aramaic Targum to Job 17:13	targum	tabla
 Jób 17:15		1	Targum	Aramaic Targum to Job	1	Aramaic Targum to Job 17:16	targum	tabla
@@ -4454,15 +4454,15 @@ Péld 30:16		1	Talmud	Rashi on Berakhot	1	Rashi on Berakhot 15b:21:1
 Péld 30:16		1	Talmud	Sanhedrin	1	Sanhedrin 92a:22		
 Péld 30:16		1	Talmud	Steinsaltz on Sanhedrin	1	Steinsaltz on Sanhedrin 92a:22		
 Péld 30:16		1	Targum	Aramaic Targum to Proverbs	1	Aramaic Targum to Proverbs 30:16	targum	
-Préd 9:1	Préd 9:23	23	Midrash	Bereshit Rabbah	2	Bereshit Rabbah 17:2 ; Bereshit Rabbah 65:12		
-Préd 9:1	Préd 9:23	23	Midrash	Midrash Lekach Tov, Deuteronomy	1	Midrash Lekach Tov, Deuteronomy 3:23:1	commentary	
-Préd 9:1	Préd 9:23	23	Midrash	Midrash Lekach Tov, Leviticus	5	Midrash Lekach Tov, Leviticus 2:1:1 ; Midrash Lekach Tov, Leviticus 21:1:2 ; Midrash Lekach Tov, Leviticus 21:1:3 ; Midrash Lekach Tov, Leviticus 24:23:1 ; Midrash Lekach Tov, Leviticus 25:1:2	commentary	
-Préd 9:1	Préd 9:23	23	Midrash	Tanna DeBei Eliyahu Rabbah	1	Tanna DeBei Eliyahu Rabbah 7:1		
-Préd 9:1	Préd 9:23	23	Midrash	Vayikra Rabbah	3	Vayikra Rabbah 20:1 ; Vayikra Rabbah 20:2 ; Vayikra Rabbah 34:6		
-Préd 9:1	Préd 9:23	23	Talmud	Avot DeRabbi Natan	1	Avot DeRabbi Natan 12:9		
-Préd 9:1	Préd 9:23	23	Talmud	Ohr LaYesharim on Jerusalem Talmud Berakhot	1	Ohr LaYesharim on Jerusalem Talmud Berakhot 2:3:15		
-Préd 9:1	Préd 9:23	23	Talmud	Rif Ketubot	1	Rif Ketubot 32a:3		
-Préd 9:1	Préd 9:23	23	Tosefta	Tosefta Kiddushin	1	Tosefta Kiddushin 1:11		
+Préd 9:1	Préd 9:20	20	Midrash	Bereshit Rabbah	2	Bereshit Rabbah 17:2 ; Bereshit Rabbah 65:12		
+Préd 9:1	Préd 9:20	20	Midrash	Midrash Lekach Tov, Deuteronomy	1	Midrash Lekach Tov, Deuteronomy 3:23:1	commentary	
+Préd 9:1	Préd 9:20	20	Midrash	Midrash Lekach Tov, Leviticus	5	Midrash Lekach Tov, Leviticus 2:1:1 ; Midrash Lekach Tov, Leviticus 21:1:2 ; Midrash Lekach Tov, Leviticus 21:1:3 ; Midrash Lekach Tov, Leviticus 24:23:1 ; Midrash Lekach Tov, Leviticus 25:1:2	commentary	
+Préd 9:1	Préd 9:20	20	Midrash	Tanna DeBei Eliyahu Rabbah	1	Tanna DeBei Eliyahu Rabbah 7:1		
+Préd 9:1	Préd 9:20	20	Midrash	Vayikra Rabbah	3	Vayikra Rabbah 20:1 ; Vayikra Rabbah 20:2 ; Vayikra Rabbah 34:6		
+Préd 9:1	Préd 9:20	20	Talmud	Avot DeRabbi Natan	1	Avot DeRabbi Natan 12:9		
+Préd 9:1	Préd 9:20	20	Talmud	Ohr LaYesharim on Jerusalem Talmud Berakhot	1	Ohr LaYesharim on Jerusalem Talmud Berakhot 2:3:15		
+Préd 9:1	Préd 9:20	20	Talmud	Rif Ketubot	1	Rif Ketubot 32a:3		
+Préd 9:1	Préd 9:20	20	Tosefta	Tosefta Kiddushin	1	Tosefta Kiddushin 1:11		
 Préd 9:11	Préd 9:12	2	Mishnah	Yein Levanon on Avot	1	Yein Levanon on Avot 3:16:2		
 Préd 9:12		1	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 65:12		
 Préd 9:12		1	Midrash	Ein Yaakov, Sanhedrin	1	Ein Yaakov, Sanhedrin 9:7		
@@ -5064,19 +5064,11 @@ Hós 13:14		1	Talmud	Pesachim	1	Pesachim 87b:20
 Hós 13:14		1	Talmud	Steinsaltz on Pesachim	1	Steinsaltz on Pesachim 87b:20		
 Hós 13:14		1	Talmud	Yevamot	1	Yevamot 17a:7		
 Hós 13:14		1	Targum	Targum Jonathan on Hosea	1	Targum Jonathan on Hosea 13:14	targum	
-Jóel 2:1	Jóel 2:32	32	Midrash	Beur HaRadal on Pirkei DeRabbi Eliezer	1	Beur HaRadal on Pirkei DeRabbi Eliezer 12:19		
-Jóel 2:1	Jóel 2:32	32	Midrash	Midrash Lekach Tov, Numbers	1	Midrash Lekach Tov, Numbers 5:14:1	commentary	
-Jóel 2:1	Jóel 2:32	32	Midrash	Shemot Rabbah	1	Shemot Rabbah 46:4		
-Jóel 2:1	Jóel 2:32	32	Midrash	Vayikra Rabbah	2	Vayikra Rabbah 24:4 ; Vayikra Rabbah 31:9		
-Jóel 2:1	Jóel 2:32	32	Mishnah	Pirkei Avot	1	Pirkei Avot 2:14		
-Jóel 2:1	Jóel 2:32	32	Talmud	Jerusalem Talmud Berakhot	1	Jerusalem Talmud Berakhot 9:1:18		
-Jóel 2:1	Jóel 2:32	32	Talmud	Jerusalem Talmud Taanit	1	Jerusalem Talmud Taanit 2:1:1		
-Jóel 2:1	Jóel 2:32	32	Talmud	Ohr LaYesharim on Jerusalem Talmud Taanit	1	Ohr LaYesharim on Jerusalem Talmud Taanit 1:2:5		
-Jóel 2:28	Jóel 3:21	26	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 51:8		tabla
-Jóel 2:28	Jóel 3:21	26	Midrash	Ein Yaakov (Glick Edition), Sanhedrin	1	Ein Yaakov (Glick Edition), Sanhedrin 11:15		tabla
-Jóel 2:28	Jóel 3:21	26	Midrash	Ruth Rabbah	1	Ruth Rabbah 1:7		tabla
-Jóel 2:28	Jóel 3:21	26	Midrash	Vayikra Rabbah	1	Vayikra Rabbah 22:6		tabla
-Jóel 2:28	Jóel 3:21	26	Talmud	Haggahot and Marei Mekomot on Tractate Kallah Rabbati	1	Haggahot and Marei Mekomot on Tractate Kallah Rabbati 8:11:15		tabla
+Jóel 2:28	Jóel 2:32	5	Midrash	Bereshit Rabbah	1	Bereshit Rabbah 51:8		tabla
+Jóel 2:28	Jóel 2:32	5	Midrash	Ein Yaakov (Glick Edition), Sanhedrin	1	Ein Yaakov (Glick Edition), Sanhedrin 11:15		tabla
+Jóel 2:28	Jóel 2:32	5	Midrash	Ruth Rabbah	1	Ruth Rabbah 1:7		tabla
+Jóel 2:28	Jóel 2:32	5	Midrash	Vayikra Rabbah	1	Vayikra Rabbah 22:6		tabla
+Jóel 2:28	Jóel 2:32	5	Talmud	Haggahot and Marei Mekomot on Tractate Kallah Rabbati	1	Haggahot and Marei Mekomot on Tractate Kallah Rabbati 8:11:15		tabla
 Jóel 2:32		1	Midrash	Chiddushei HaRadal on Devarim Rabbah	1	Chiddushei HaRadal on Devarim Rabbah 2:15:2		tabla
 Jóel 2:32		1	Midrash	Ein Yaakov, Khullin	1	Ein Yaakov, Khullin 10:3		tabla
 Jóel 2:32		1	Midrash	Ein Yaakov, Sanhedrin	1	Ein Yaakov, Sanhedrin 11:13		tabla

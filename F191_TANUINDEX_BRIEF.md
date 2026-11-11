@@ -40,7 +40,7 @@ lekérdezés `python eszkozok/tanu_index.py keres \"<igehely>\"`”); Sefaria-sz
 2. **Licenc.** HCF: a `LICENSE` „PUBLIC DOMAIN DEDICATION” a metaadatra, a „FAIR USE NOTICE” az idézetekre → csak metaadat. Sefaria links: a fejlesztői oldal „Links License” szakasza
    „CC-BY” (a verzió nincs megadva → `licencek.tsv`: tisztázatlan, N-F191c); a `LICENSE.md` csak a szövegekről szól. Mindkét nyers fájl letöltve (HCF 176 242 688 bájt, Sefaria 18 CSV
    ~680 MB), sha256 a README-ben.
-3. **Index.** `Tanu_atyak_index.tsv` + `Tanu_atyak_mu.tsv` (97 679 sor, 9,5 MB; a teljes kanon), `Tanu_rabbinikus_index.tsv` (5 267 sor, 0,5 MB; a teljes Tanakh 24 MB lenne → első körben csak a
+3. **Index.** `Tanu_atyak_index.tsv` + `Tanu_atyak_mu.tsv` (97 572 sor, 9,5 MB; a teljes kanon), `Tanu_rabbinikus_index.tsv` (5 259 sor, 0,5 MB; a teljes Tanakh 24 MB lenne → első körben csak a
    lexikonmotívumok 289 versével átfedő sorok, N-F191a). A rabbinikus kategóriák: Midrash, Talmud, Mishnah, Tosefta, Targum.
 4. **Szkript és teszt:** `eszkozok/tanu_index.py` (`epit-atyak`, `epit-rabb`, `keres`, `minta`), `eszkozok/teszt_tanu_index.py` (22 teszt, zöld).
 5. Egy független ellenőrzés, legfeljebb egy javítókör; jelentés (`naplok/F191_jelentes.md`), draft PR.

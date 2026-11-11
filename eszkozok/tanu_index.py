@@ -99,6 +99,7 @@ class Kulcs:
                 self.step2k[m[0]] = m[1]
                 self.k2step[m[1]] = m[0]
         self.rend = {k: i for i, k in enumerate(self.step2k.values())}
+        self.mtmax = {}            # (Karoli-konyv, MT-fejezet) -> utolso MT-vers (az igehely_mt oszlop; ures = a Karoli-szam)
         self.chmax = {}            # (Karoli-konyv, fejezet) -> utolso vers (OT: a versmegfeleltetes tablabol)
         self.kjv2k = {}            # (Karoli-konyv, 'f:v') -> Karoli 'f:v'
         self.mt2k = {}
@@ -119,6 +120,10 @@ class Kulcs:
                     self.kjv2k.setdefault((konyv, m[1]), fv)
                 if m[2]:
                     self.mt2k.setdefault((konyv, m[2]), fv)
+                mf, _, mv = (m[2] or fv).partition(':')
+                if mf.isdigit() and mv.isdigit():
+                    mc = (konyv, int(mf))
+                    self.mtmax[mc] = max(self.mtmax.get(mc, 0), int(mv))
 
     def szelesseg(self, konyv, f1, v1, f2, v2):
         """A Karoli-szamozasu tartomany verszama (a fejezethatart a chmax-szal szamolva; ismeretlen fejezet: csak a vegpont)."""
@@ -168,6 +173,16 @@ def tisztit(s):
     return s.replace('\t', ' ').replace('\r', ' ').replace('\n', ' ').strip()
 
 
+def tisztit_url(u):
+    """A Google Books-URL `dq=`/`q=` parametere idezetszoveget hordoz: kiveszi (a szoveg nem kerul az indexbe)."""
+    u = tisztit(u)
+    if '?' not in u:
+        return u
+    alap, _, qs = u.partition('?')
+    resz = [x for x in qs.split('&') if not x.startswith(('dq=', 'q='))]
+    return alap + ('?' + '&'.join(resz) if resz else '')
+
+
 def sha256_fajl(path):
     h = hashlib.sha256()
     with open(path, 'rb') as f:
@@ -199,7 +214,7 @@ def epit_atyak(sqlite_path, ki, ts):
     con = sqlite3.connect('file:%s?mode=ro' % sqlite_path.replace('\\', '/'), uri=True)
     meta = {n: (kat, ev) for n, ev, kat in con.execute('select name, default_year, father_category from father_meta')}
     sorok, kulcsok, mu_kulcsok = [], [], set()
-    kimarad = {'nem_kanonikus_konyv': 0, 'fordított_tartomany': 0}
+    kimarad = {'nem_kanonikus_konyv': 0, 'fordított_tartomany': 0, 'nincs_karoli_vers': 0}
     kimaradt_konyvek = {}
     for (cid, atya, ts_ev, konyv, ls, le, url, cim, kieg) in con.execute(
             'select id, father_name, ts, book, location_start, location_end, source_url, source_title, '
@@ -223,9 +238,12 @@ def epit_atyak(sqlite_path, ki, ts):
         kf2, kv2, j2 = k.atvezet(kk, f2, v2, 'kjv')
         if (kf2, kv2) < (kf1, kv1):       # az atvezetes megfordította: a tartomany egy verses lesz
             kf2, kv2 = kf1, kv1
+        if kk in k.ot and kv1 > k.chmax.get((kk, kf1), 0):
+            kimarad['nincs_karoli_vers'] += 1     # pl. Dán 13–14, Eszt 10:6 (görög kiegészítés), Jób 38:39–41: nincs ilyen Károli-vers
+            continue
         jel = j1 if j1 == j2 else ('tabla' if 'tabla' in (j1, j2) else j1 if j1 != 'egyezo' else j2)
         kat = meta.get(atya, ('', ''))[0]
-        mkulcs = (tisztit(atya), tisztit(kat), tisztit(kieg or ''), tisztit(cim or ''), tisztit(url or ''))
+        mkulcs = (tisztit(atya), tisztit(kat), tisztit(kieg or ''), tisztit(cim or ''), tisztit_url(url or ''))
         mu_kulcsok.add(mkulcs)
         sorok.append([igehely_str(kk, kf1, kv1), '' if (kf1, kv1) == (kf2, kv2) else igehely_str(kk, kf2, kv2),
                       k.szelesseg(kk, kf1, kv1, kf2, kv2), mkulcs[0], '' if ts_ev is None else ts_ev, mkulcs,
@@ -271,10 +289,10 @@ def sefaria_tanakh_ref(s, k):
     if s in SEFARIA_KONYV:      # egesz konyv
         step = SEFARIA_KONYV[s]
         kk = k.step2k[step]
-        fs = [f for (b, f) in k.chmax if b == kk]
+        fs = [f for (b, f) in k.mtmax if b == kk]
         if not fs:
             return None
-        return step, 1, 1, max(fs), k.chmax[(kk, max(fs))]
+        return step, 1, 1, max(fs), k.mtmax[(kk, max(fs))]
     m = _REF.match(s)
     if not m or m.group('konyv') not in SEFARIA_KONYV:
         return None
@@ -294,7 +312,7 @@ def sefaria_tanakh_ref(s, k):
     if v1 is None:
         v1 = 1
     if v2 is None:
-        v2 = k.chmax.get((kk, f2))
+        v2 = k.mtmax.get((kk, f2))      # MT-fejezethossz (a Karoli-fejezet hossza Joel/Mal/Zsolt stb. esetén más)
         if v2 is None:
             return None
     return step, f1, v1, f2, v2
