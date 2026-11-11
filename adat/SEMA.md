@@ -740,8 +740,9 @@ A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
 
 ### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
 
-Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` kivezetés alatt, DT643: a
-motívum sora a motívum teljes folyamatának lapgenerálásával kerül ki; sor nélkül a rés nem renderel)
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése (a `tanitoi` és az `alkalmazas` kivezetés alatt,
+DT643, DT-F182m: a motívum sora a motívum teljes folyamatának lapgenerálásával kerül ki; sor nélkül a rés nem renderel;
+a HAMART-001 mindkét sora kivezetve)
 (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
 `alkalmazas`, `tanitoi`, `modszertan`) motívumonkénti és résenkénti forrása — a
 render-elv szerint a rés törzse nem a lexikonoldalon él, hanem a tanulmányban
@@ -2463,6 +2464,10 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
 | `MUNKASZO` | BUKÁS | munkaszó vagy munkajelölő az olvasói szövegben (a `MUNKASZAVAK` lista: „próba”, „javaslat”, „ellenőrzendő”, „függőben”, „nincs bekötve”, „kutatói jelölés”, „azonosításra vár”, „D-minta”, „Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, F24, F35) |
 | `SZAKASZ_HIV` | BUKÁS | a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat (a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b)) |
+| `NYERS_JEL` | BUKÁS | nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, „igazolas:”, `jelentes_szam`, „sorszám N”, „napló: …”, „(4/b. rész)”, `halo=`, `blokk=`, „lanc ±1”, „csalad H…”, „indoklás (nyers)”, „szónézet: /szo/…”, tW-azonosító `kt/…`, `other/…`, `karoli_szo`, a címszó belső számlálója `_226`); csak az új szerkezetű lapon (F182: A08, A11, A17, KH-lábjegyzet) |
+| `MI_HANG` | BUKÁS | „mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, B07, K12) |
+| `NEVELO` | BUKÁS | „a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új szerkezetű lapon (F182: A06, F4 (c), K48) |
+| `KOV_ISM` | BUKÁS | ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10) |
 | `BDB_OLVASOI` | BUKÁS | a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak az új szerkezetű lapon (F104, F187) |
 
 **A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai”)
@@ -2524,6 +2529,8 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 39 | Határ-frissesség: a modelles rész a mai beépített sorokon készült (F178.1) |
 | 40 | A HAMART-001 regressziós kapui minden lapon (F178.3) |
 | 41 | „Felhasználó” / „orkesztrátor” a közleményben (F178.6) |
+| 42 | A lapon szereplő Strong érvényes fordítása a lapon is áll (F182, F31) |
+| 43 | A szótári szöveg hivatkozása létező Károli-versre mutat (F182, F32) |
 
 **CI-szabályok** (`.github/workflows/ellenorzes.yml`)
 

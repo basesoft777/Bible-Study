@@ -7013,12 +7013,12 @@ def blokk_dontesi_ut(m, sorai):
     nyitott = _modszertan_nyitott(mid)
     if nyitott:
         r5.append('\n'.join('- **%s.** %s' % (c, t) for c, t in nyitott))
-        r5.append('A kérdések kifejtése a 9. (Értelmezés) és a 11. szakaszban (Módszertan és nyitott kérdések) áll.')
+        r5.append('A kérdések kifejtése a 9. (Értelmezés) és a 10. szakaszban (Módszertan és nyitott kérdések) áll.')
     if len(r5) == 1:
         r5.append('A motívumnak nincs határesete és nyitott kérdése.')
     reszek.append('\n\n'.join(r5))
 
-    olv = ('A lap első lépése, az igehelyek előtt: mit keresünk, hol kerestünk, mi esett ki és miért, és mi maradt. '
+    olv = ('A lap első lépése, az igehelyek előtt: mit keres a lap, hol keresett, mi esett ki és miért, és mi maradt. '
            '%s megvizsgált versből %s tartozik a motívumhoz; minden vers egyszer számít, és a számok összeadódnak.'
            % (OK._ezres(a['osszes']), OK._ezres(a['bent'])))
     torzs = '\n\n'.join(reszek)
@@ -7241,6 +7241,9 @@ def _olvasoi_resz(t):
     t = re.sub(r'(?<=\S) sorszám \d+(?:, \d+)*(?=\))', '', t)
     t = t.replace('előfordulás-táblája jelentes_szam', 'előfordulás-táblájában a jelentésszám')
     t = re.sub(r'\bjelentes_szam\b', 'jelentésszám', t)
+    # F182 (K05): a dőlt forrássor címkéje olvasói („Forrás:”), a nyers mezőnév („Proveniencia:”) nélkül
+    t = re.sub(r'\bProveniencia: (`?)forrás: ', r'\1Forrás: ', t)
+    t = re.sub(r'\(proveniencia: (`?)forrás: ', r'(\1forrás: ', t)
     t = t.replace('az `adat/jeloltek.tsv`-n át', 'a jelöltek döntésnaplóján át')
     t = re.sub(r'\bkaroli_szo\b', 'a Károli-szó mezője', t)
     import nyilt_mag_export as NYM   # F178.6: „szerkesztői döntés” — a lapon és a nyílt magban ugyanaz a csere

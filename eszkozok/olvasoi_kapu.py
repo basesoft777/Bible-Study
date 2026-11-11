@@ -79,6 +79,17 @@ KAPUK = (
                         'F24, F35)'),
     ('SZAKASZ_HIV', BUKAS, 'a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat '
                            '(a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b))'),
+    ('NYERS_JEL', BUKAS, 'nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, '
+                         '„igazolas:”, `jelentes_szam`, „sorszám N”, „napló: …”, „(4/b. rész)”, `halo=`, `blokk=`, „lanc ±1”, '
+                         '„csalad H…”, „indoklás (nyers)”, „szónézet: /szo/…”, tW-azonosító `kt/…`, `other/…`, `karoli_szo`, a '
+                         'címszó belső számlálója `_226`); csak az új szerkezetű lapon (F182: A08, A11, A17, KH-lábjegyzet)'),
+    ('MI_HANG', BUKAS, '„mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” '
+                       'idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, '
+                       'B07, K12)'),
+    ('NEVELO', BUKAS, '„a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új '
+                      'szerkezetű lapon (F182: A06, F4 (c), K48)'),
+    ('KOV_ISM', BUKAS, 'ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden '
+                       'pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10)'),
     ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan '
                            'rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint '
                            'jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak '
@@ -196,6 +207,7 @@ def lathato(s):
     """A sor látható szövege: megjegyzés, horgony, link-cél és lábjegyzet-hivatkozás nélkül."""
     s = re.sub(r'<!--.*?-->', '', s)
     s = re.sub(r'<a id="[^"]*"></a>', '', s)
+    s = re.sub(r'<a href="[^"]*">', '<a>', s)   # F182: a HTML-link célja nem látható szöveg (a kizárt helyek melléklete)
     # a jelölt Strong-szám (DT-F181b): „[mizbéah](/szo/H4196)<sup class="strong" …>H4196</sup>” → „mizbéah H4196”
     s = re.sub(r'\[([^\]]*)\]\((/szo/[^)]*)\)(?=<sup class="strong")', r'\1', s)
     s = re.sub(r'<sup class="strong"[^>]*>([^<]*)</sup>', r' \1', s)
@@ -488,6 +500,102 @@ MUNKASZAVAK = [
 ]
 
 
+# F182 (3. menet): a nyers mezőnév és a belső jel mintái egy helyen (a generátor olvasói átírása:
+# `lexikon_general.jelolt_labjegyzet_olvasoi`, `_olvasoi_resz`, `kesz_lap_utana`)
+NYERS_JELEK = [
+    (re.compile(r'\bproveniencia\s*:', re.I), 'nyers mezőnév (proveniencia:)'),
+    (re.compile(r'\bigazolas\s*:'), 'nyers mezőnév (igazolas:)'),
+    (re.compile(r'\bjelentes_szam\b'), 'nyers mezőnév (jelentes_szam)'),
+    (re.compile(r'\bkaroli_szo\b'), 'nyers mezőnév (karoli_szo)'),
+    (re.compile(r'\bsorszám \d+(?:, \d+)*\)'), 'nyers sorszám a forrásmegjelölésben'),
+    (re.compile(r'\bnapló:\s'), 'napló-hivatkozás'),
+    (re.compile(r'\(\d+/[a-z]\. rész\)'), 'a régi /b-alpontos naplószakasz'),
+    (re.compile(r'\b(?:halo|blokk|osztaly)='), 'belső keresési jel'),
+    (re.compile(r'\blanc ±\d'), 'belső keresési jel (lanc)'),
+    (re.compile(r'\bcsalad [HG]\d{4}'), 'belső keresési jel (csalad)'),
+    (re.compile(r'indoklás \(nyers\)'), 'nyers indoklás'),
+    (re.compile(r'szónézet: /szo/'), 'nyers szónézet-útvonal'),
+    (re.compile(r'(?<![\w/])(?:kt|other|names)/[a-z]'), 'tW-azonosító'),
+    (re.compile(r'(?<=[֐-׿יִ-ﭏ\]])\u200e?_\d+\b'), 'a címszó belső számlálója'),
+]
+
+
+def ell_nyers_jel(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        for rx, nev in NYERS_JELEK:
+            for m in rx.finditer(s.szoveg):
+                ki.append(talalat('NYERS_JEL', BUKAS, s.n, kornyezet(s.szoveg, m), nev + ': ' + m.group(0),
+                                  nev + m.group(0)))
+    return ki
+
+
+# első személyű többes számú múlt idejű igealak (a névutós személyragos alakok nélkül: alattuk, közöttük …)
+MI_HANG_RX = re.compile(r'(?<![\w-])([a-záéíóöőúüű]+(?:[lnrsztv]t|tt)(?:ük|uk|ünk|unk))(?![\w-])')
+MI_HANG_KIVETEL = {'alattuk', 'felettük', 'fölöttük', 'közöttük', 'között', 'mellettük', 'előttük', 'mögöttük',
+                   'körülöttük', 'helyettük', 'miattuk', 'értük', 'velük', 'nélkülük', 'rajtuk', 'bennük', 'tőlük'}
+IDEZET_KI_RX = re.compile(r'„[^”]*”|"[^"]*"|\*[^*]+\*')
+
+
+def ell_mi_hang(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        t = IDEZET_KI_RX.sub(' ', s.szoveg)
+        if s.fajta == 'cim':
+            # a sablon 6 v4 kötelező alcíme (K33: „1.2 Hol kerestünk”); a K12-vel való ütközése a felhasználó döntése
+            t = re.sub(r'\b1\.2\.? Hol kerestünk\b', ' ', t)
+        for m in MI_HANG_RX.finditer(t):
+            if m.group(1).lower() in MI_HANG_KIVETEL:
+                continue
+            ki.append(talalat('MI_HANG', BUKAS, s.n, kornyezet(t, m), '„mi”-hangú igealak: ' + m.group(1), m.group(1)))
+    return ki
+
+
+NEVELO_RX = re.compile(r'(?<![\w.-])[Aa] (?=[aáeéiíoóöőuúüű][a-záéíóöőúüű])')
+
+
+def ell_nevelo(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        t = IDEZET_KI_RX.sub(' ', s.szoveg)
+        for m in NEVELO_RX.finditer(t):
+            ki.append(talalat('NEVELO', BUKAS, s.n, kornyezet(t, m), '„a” magánhangzó előtt', t[m.start():m.start() + 12]))
+    return ki
+
+
+KOV_RX = re.compile(r'\*\*Következtetés:\*\*\s*([^.]*\.)')
+KOV_ISM_MAX = 2
+
+
+def ell_kov_ism(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki, db = [], {}
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        for m in KOV_RX.finditer(s.szoveg):
+            kulcs = (s.szakasz, re.sub(r'\d+', 'N', m.group(1)))
+            db.setdefault(kulcs, []).append(s.n)
+    for (szak, mondat), nn in db.items():
+        if len(nn) > KOV_ISM_MAX:
+            ki.append(talalat('KOV_ISM', BUKAS, nn[0], mondat[:120],
+                              'ugyanaz a következtetés %d-szor a(z) „%s” szakaszban' % (len(nn), szak), mondat))
+    return ki
+
+
 def ell_munkaszo(sorok):
     ki = []
     suly = BUKAS if KIVETEL_NELKUL else FIGY
@@ -629,6 +737,8 @@ def ell_atiras(sorok):
     for s in sorok:
         if s.fajta in ('komment', 'kod', 'ures', 'karoli') or s.szakasz.startswith(KIZART_SZAKASZ):
             continue  # a Károli-vers alakja („Seol”) nem a lap kiejtése
+        if s.alszakasz.startswith('Háttér: rokon nyelvek'):
+            continue  # F182 (A22): a rokon nyelvi alak (arab, arámi) más szó, saját kiejtéssel; nem a héber szó változata
         reszek = re.findall(r'(?<!\*)\*([^*]+)\*(?!\*)|\(([^()]*)\)', s.szoveg)
         for dolt, zar in reszek:
             for w in re.findall(r'[A-Za-zÁ-ž]+', dolt or zar):
@@ -935,7 +1045,8 @@ SZINT_ARANY = 0.25      # a szakasz szószáma az arany lap azonos szakaszáéna
 SZINT_MIN_ARANY = 150   # csak az arany lapon legalább ennyi szavas szakaszokat mérjük
 # csak az értelmező (kézi) és a kapcsolati szakaszokat: az 1., 1/b., 2–4. hossza az előfordulások számával arányos
 SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan',
-                 '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan')
+                 '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan',
+                 '10. Módszertan')   # F182 (A21): az Alkalmazás nélküli lapon a Módszertan a 10.
 
 
 def szakasz_szoszam(sorok):
@@ -1284,7 +1395,8 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv]
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_nyers_jel, ell_mi_hang,
+                ell_nevelo, ell_kov_ism]
 
 
 def arany_szoszam():
