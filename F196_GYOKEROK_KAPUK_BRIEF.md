@@ -9,7 +9,7 @@ allapot: megallt
 ag: claude/gyokerok-kapuk-a1d120
 pr: 689
 ad: két gépi kapu a visszatérő laphibák gyökérokára — a lap számai és „nincs …” mondatai a saját adatukhoz mérve; a kész lap követelménylistájának gépi sorai „N/M követelmény teljesül (gépi)” összegzéssel a CI-ben; mindkettő JELENTÉS
-kovetkezo: "Te: a draft PR #689 áttekintése és merge-e; a HIBA-szintre emelés (DT-F196a) a HAMART-001 kiadása után, külön döntéssel"
+kovetkezo: "Te: a draft PR #689 áttekintése és merge-e; a HIBA-szintre emelés (DT771) a HAMART-001 kiadása után, külön döntéssel"
 munka: folyamat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, .github/workflows/ellenorzes.yml]
 ir: [eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/kovetelmeny_kapu.py, eszkozok/teszt_gyokerok_kapuk.py, .github/workflows/ellenorzes.yml, naplok/F196_jelentes.md, naplok/ELLENOR_F196.md, dontesek/uj/gyokerok-kapuk-a1d120.md, nyitott/uj/gyokerok-kapuk-a1d120.md, F196_GYOKEROK_KAPUK_BRIEF.md]
@@ -41,6 +41,6 @@ fugg: []
 - G2: a két kapu kilépési kódja JELENTÉS-szinten 0; a `--szigoru` (később) 1-et ad eltérésnél.
 - G3: a kapu az adatot nem tölti ki: a nem számolható adatkulcs „nem mérhető”, nem egyezés; a lapon nem álló állítás nem mér.
 - G4: TSV-olvasás a `general.tsv_beolvas`-on át (`split('\t')`), UTF-8 wrapper minden új szkriptben.
-- D1 (DT-F196b): E-szám nélkül, önálló szkriptként fut, mert az E-szám a `adat/SEMA.md` 3.11 generált kapulistáját írná (E37), az `adat/`-hoz pedig ez a menet nem nyúl (ugyanígy indult az F188 T2 SZAMISMETLES).
-- D2 (DT-F196a): a HIBA-szintre emelés a HAMART-001 kiadása után, külön döntéssel.
+- D1 (DT772): E-szám nélkül, önálló szkriptként fut, mert az E-szám a `adat/SEMA.md` 3.11 generált kapulistáját írná (E37), az `adat/`-hoz pedig ez a menet nem nyúl (ugyanígy indult az F188 T2 SZAMISMETLES).
+- D2 (DT771): a HIBA-szintre emelés a HAMART-001 kiadása után, külön döntéssel.
 - ⛔ A merge a felhasználóé.

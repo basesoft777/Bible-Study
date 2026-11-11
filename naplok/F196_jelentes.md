@@ -54,7 +54,7 @@ A négy régi lap a mai adatnál régebbi generálás: a lapon álló szám igaz
 
 ## 5. Ami nyitva marad
 
-- **DT-F196a:** a HIBA-szintre emelés a HAMART-001 kiadása után (E-szám, SEMA 3.11, `--szigoru`).
+- **DT771:** a HIBA-szintre emelés a HAMART-001 kiadása után (E-szám, SEMA 3.11, `--szigoru`).
 - **N-F196a:** a hat `SAJAT_SZAMOLAS` hely kiemelése a generátorba közös függvénnyé.
 - **N-F196b:** a négy régi lap újragenerálása.
 - **N-F196c:** további állítás-típusok (6. Kereszthivatkozások, 1.2 keresési számai, 4.6 szavankénti LXX, szabad próza).

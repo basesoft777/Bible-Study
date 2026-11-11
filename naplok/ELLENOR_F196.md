@@ -29,4 +29,4 @@ Mellékes megjegyzések: az N-F196d szövege szerint a kapu „utána felismerje
 | 2 | Az `LXX_OSSZESITES` minta mindkét címkekészletet ismeri; a HAMART-001-en 5 új mért állítás (158 → 163, mind egyezik); teszt. |
 | 3 | „olvasói kapu” a cellában → `olvasoi_egesz` szabály (0 BUKÁS a lapon); a vegyes cella „részben gépi” jelölést kap, a jelentés megszámolja; teszt. |
 | 4 | Csupa nem mérhető állításnál az állítás–adat szabály nem gyűjthető; teszt. |
-| + | Az E32 JELENTÉS-e (a `DT-F196a` helyőrző string-literálban): a négy literál számfüggetlen lett. Az N-F196c/d szövege pontosítva. |
+| + | Az E32 JELENTÉS-e (a `DT771` helyőrző string-literálban): a négy literál számfüggetlen lett. Az N-F196c/d szövege pontosítva. |
