@@ -12,7 +12,8 @@ kovetkezo: "Te: a draft PR áttekintése; merge-et az orkesztrátor végzi a fel
 munka: folyamat
 olvas: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py]
 ir: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, nyilt_mag/, F199_NYILT_MAG_CIM_BRIEF.md]
-fugg: [198]
+fugg: []
+nem_fugg: [198]
 ---
 
 # F199_NYILT_MAG_CIM_BRIEF.md — A nyílt mag címe, szerzője, DOI-ja
