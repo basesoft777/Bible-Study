@@ -2468,6 +2468,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `MI_HANG` | BUKÁS | „mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, B07, K12) |
 | `NEVELO` | BUKÁS | „a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új szerkezetű lapon (F182: A06, F4 (c), K48) |
 | `KOV_ISM` | BUKÁS | ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10) |
+| `INDOKLAS` | BUKÁS | a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat („érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, K47, K48) |
 | `BDB_OLVASOI` | BUKÁS | a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak az új szerkezetű lapon (F104, F187) |
 
 **A VISSZHANG alszabályai** (a szabályok: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 4.11 visszhang-blokk szabályai”)

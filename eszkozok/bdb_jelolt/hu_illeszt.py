@@ -423,7 +423,7 @@ def szocikkhatar_kezi(ki, ts):
         kezdet = int(f[9]) + f[11].index(uj_c) if f[9] else ''
         f[10], f[11] = str(len(uj_f)), uj_f
         c[9], c[10], c[11] = str(kezdet), str(len(uj_c)), uj_c
-        c[13] = ('scope=manual | forras=bdb_jelolt/hu_illeszt.py SZOCIKKHATAR_KEZI (DT-F182q; a %s %s. sorából vágva) | ts=%s'
+        c[13] = ('scope=manual | forras=bdb_jelolt/hu_illeszt.py SZOCIKKHATAR_KEZI, a %s %s. sorából vágva | ts=%s'
                  % (st, n, ts))
     return ki
 
