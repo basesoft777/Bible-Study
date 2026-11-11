@@ -160,8 +160,9 @@ Mérés a valós git-történeten:
 - **N-F131v (görög rövid glossza):** a TBESG 9 362 Strongjából 201-nek volt magyar rövid sora; **9 161 hiányzik** (87 442 karakter
   forrás). A lapokon ténylegesen látszó hiány 68 Strong (2. pont); **lefordítva (F203.4b)**: `glossza_api_koteg.py`, 4 kérés,
   előfizetői keret (a felhasználó, 2026-11-11: „mehet előfizetésből”), general-purpose subagent `claude-sonnet-5-5` a `prompt`
-  fájljából; kapu 67/68, egy javító kör (G0165 „korszak; kor” → „korszak”), 68/68; 68 új sor. A teljes tábla (9 093 további Strong)
-  külön menet (N-F203c); a becslés a lánc `szaraz`-a szerint arányos (68 Strong ≈ 4 kérés, ≈ 36 K karakter prompt).
+  fájljából; kapu 67/68, egy javító kör (G0165 „korszak; kor” → „korszak”), 68/68; 68 új sor. A maradék 9 093 Strong (≈ 455
+  kérés) a felhasználó döntése szerint (2026-11-11: „Csak az olvasó-fázisban döntsünk”) most nem fordul; az út és az időzítés az
+  olvasó-fázisé (N-F203c).
 - **Gyökérok a glossza-láncban:** a G0076 „Adam” → „ádám” (a F161.11 után második előfordulás, N88 (2)). Új mankó-jelzés: a TIPNR
   tulajdonnév-indexében álló Strong kisbetűs fordítása jelzés, a beírás `--jelzes-atnezve`-t kér (nem gátol: a népnév a magyarban
   kisbetűs, G3019 „lévita” átnézve helyes). A G0076 kézzel „Ádám”, jelölve.
