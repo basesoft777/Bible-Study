@@ -4,8 +4,8 @@ cim: Az olvasó szerver három nyitott hibája — N-F99a, N117, N118
 kod: OLVASO_HIBAK
 tipus: feladat
 fazis: folyamat
-modell: claude-sonnet-5-5
-allapot: kesz
+modell: sonnet
+allapot: lezarva
 ag: claude/unruffled-diffie-bcef47
 ad: a tW-blokk Markdownja renderelve, a BDB jelmagyarázat hiányzó jelei felvéve, a `/szo/<strong>?vers=` paraméter átvéve; mindegyikre teszt
 kovetkezo: "Te: a draft PR áttekintése; merge-et az orkesztrátor végzi"
@@ -13,7 +13,7 @@ munka: folyamat
 olvas: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, eszkozok/olvaso_szerver/teszt_olvaso_hibak.py, NYITOTT_FELADATOK.md, F204_OLVASO_HIBAK_BRIEF.md]
 fugg: []
-nem_fugg: [182, 201, 202, 203]
+nem_fugg: []
 ---
 
 # F204_OLVASO_HIBAK_BRIEF.md — Az olvasó három hibája
