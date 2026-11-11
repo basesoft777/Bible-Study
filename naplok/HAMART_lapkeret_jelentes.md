@@ -28,3 +28,8 @@
 - **Jelzés (hiány):** a „Nyilatkozat a mesterséges intelligencia használatáról” a lapon relatív linkkel a közleményre mutat (`../kozlemeny/MI_NYILATKOZAT.md`); a szöveg nem a lap része, és a nyilvános webcíme még nincs eldöntve (a közlemények kanonikus címe a nyitóoldal-tétel része). A régi lapok és a nyílt mag, a CITATION.cff, a közlemények: nem változtak (külön tétel).
 
 Ellenőrzés: `ellenoriz.py` 0 SÉRTÉS; olvasói kapu 0 BUKÁS; nyílt mag kapu 0 BUKÁS; `teszt_kesz_lap_hamart` 37/37, `teszt_ellenoriz_35` OK, `teszt_gyokerok_kapuk` OK, `teszt_hatastortenet` OK, `teszt_olvasoi_kapu` 68/69 (az `Arany.G7` az alapvonalon is bukik).
+
+## F182.70 — a nyílt mag DOI-ja egy beállításból (a felhasználó, 2026-11-11: Zenodo-feltöltés „még nem volt”)
+
+- `NYILT_MAG_DOI` (üres alapértékkel; a HAMART kiadása utáni Zenodo-közléskor a concept DOI ide kerül). Amíg üres, a „Hogyan idézd” mondata: „A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is megjelennek; az adatkészlet DOI-ja az első Zenodo-közléskor kerül ide.”; DOI-val: „… nyílt adatkészletként is elérhetők: DOI: <doi>.”
+- Az `ellenoriz.py` 35. szabálya a két alak közös elejét keresi (a régi „… is elérhetők” literál helyett); a HELYORZO-kapu az üres „DOI: .” alakot nem engedi. `ellenoriz.py` 0 SÉRTÉS; `teszt_ellenoriz_35` OK; `teszt_kesz_lap_hamart` OK; olvasói kapu 0 BUKÁS.

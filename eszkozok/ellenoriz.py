@@ -2053,7 +2053,9 @@ def szabaly33_osszesito_versszam(adat_dir):
 # a lapon (a GitHub nem kanonikus forras). A szoveget a generator (lexikon_general.py, KOZLEMENY) adja, kezzel nem irjuk.
 KOZLEMENY_KOLOFON = (('](../kozlemeny/MI_NYILATKOZAT.md)', 'MI-nyilatkozat hivatkozása'),
                      ('**Hogyan idézd.**', '„Hogyan idézd” bekezdés'),
-                     ('A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők',
+                     # a közös eleje: „… is elérhetők: DOI …” (a DOI ismeretében) vagy „… is megjelennek; … DOI-ja az
+                     # első Zenodo-közléskor kerül ide” (az új szerkezetű lapon, amíg nincs DOI; 2026-11-11)
+                     ('A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is',
                       'a nyílt adatkészletre mutató mondat'))
 KOZLEMENY_JELMAGYARAZAT = (('](../kozlemeny/PARDES_RECEPCIOS_KERET.md)', 'recepciós keret hivatkozása'),)
 PROJEKT_GITHUB_RX = re.compile(r'github\.com/basesoft777/', re.I)

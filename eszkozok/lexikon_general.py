@@ -660,9 +660,12 @@ SZERZO_HELYORZO = '[HELYŐRZŐ: SZERZŐ NEVE]'
 SZERZO_NEV = 'Demeter Tamás'
 LEXIKON_CIM = 'Logosz Lexikon'
 KANONIKUS_ALAP_URL = 'https://logoszlexikon.hu'
-NYILT_ADAT_DOI = ''   # a nyílt adatmag DOI-ja (Zenodo); üres: még nincs
+# a nyílt adatmag concept DOI-ja (Zenodo); a felhasználó (2026-11-11): Zenodo-feltöltés „még nem volt” — a HAMART kiadása
+# után a felhasználó lépése, a kapott DOI ide kerül
+NYILT_MAG_DOI = ''
 KANONIKUS_URL_HIANY = 'a lap állandó webcíme az első nyilvános megjelenéskor kerül ide'
-DOI_HIANY = 'a nyílt adatkészlet DOI-ja az első Zenodo-közléskor kerül ide'
+NYILT_ADAT_MUTATO_UJ = 'A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is megjelennek'
+DOI_HIANY = 'az adatkészlet DOI-ja az első Zenodo-közléskor kerül ide'
 
 
 def kanonikus_cim(motivum_id, kiadas=None):
@@ -5565,10 +5568,11 @@ def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
         kiadasszam = kiadasok[-1]['kiadas'].strip() if kiadasok else None
         datum = (kiadasok[-1].get('datum') or '').strip() if kiadasok else G.TS
         kiadas_szoveg = ('%s. kiadás' % kiadasszam) if kiadasszam else 'kiadás előtti változat, még nem idézhető'
-        idezes = ('**Hogyan idézd.** %s: *%s*, „%s” (%s), %s, %s, %s. %s: %s.' % (
+        nyilt = ('%s: DOI: %s.' % (NYILT_ADAT_MUTATO, NYILT_MAG_DOI) if NYILT_MAG_DOI
+                 else '%s; %s.' % (NYILT_ADAT_MUTATO_UJ, DOI_HIANY))
+        idezes = ('**Hogyan idézd.** %s: *%s*, „%s” (%s), %s, %s, %s. %s' % (
             SZERZO_NEV, LEXIKON_CIM, m.get('cim') or m['id'], m['id'], kiadas_szoveg, datum,
-            kanonikus_cim(m['id'], kiadasszam), NYILT_ADAT_MUTATO,
-            ('DOI: %s' % NYILT_ADAT_DOI) if NYILT_ADAT_DOI else DOI_HIANY))
+            kanonikus_cim(m['id'], kiadasszam), nyilt))
     modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
                'Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti '
                'hihetőséget nem), [A módszer Hays hét kritériumának tükrében](%s) mutatja be.' % KOZLEMENY['hays'])
