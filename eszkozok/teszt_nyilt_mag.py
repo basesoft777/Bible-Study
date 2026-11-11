@@ -265,8 +265,23 @@ class Negativ(Alap):
 
     def test_hianyzo_helyorzo(self):
         f = self.uj()
-        f['OLVASSEL.md'] = f['OLVASSEL.md'].replace('<KANONIKUS_FORRAS_URL>', 'x')
+        f['OLVASSEL.md'] = f['OLVASSEL.md'].replace(E.KANONIKUS_HELY, 'x')
         self.assertTrue(bukasok(f, 'KANONIKUS'))
+
+    def test_nyers_helyorzo_bukik(self):
+        for nyers in ('[A LEXIKON CÍME]', '[HELYŐRZŐ: szerző]', '<KANONIKUS_FORRAS_URL>'):
+            f = self.uj()
+            f['README.md'] += nyers + '\n'
+            self.assertTrue(bukasok(f, 'HELYORZO'), nyers)
+
+    def test_cim_szerzo_doi_megvan(self):
+        self.assertEqual([], bukasok(self.fajlok, 'HELYORZO'))
+        for rel in ('OLVASSEL.md', 'README.md'):
+            for kell in ('Logosz Lexikon', 'Demeter Tamás', '0009-0005-9254-9731', '10.5281/zenodo.24141612',
+                         '10.5281/zenodo.24141884', 'logoszlexikon.hu'):
+                self.assertIn(kell, self.fajlok[rel], (rel, kell))
+        self.assertIn('10.5281/zenodo.24141612', self.fajlok['KIADAS.txt'])
+        self.assertIn('10.5281/zenodo.24141612', self.fajlok['RELEASE.txt'])
 
     def test_termekreteg_kapcsolodas_oszlop(self):
         f = self.uj()

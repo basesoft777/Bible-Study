@@ -1,6 +1,6 @@
-# [A LEXIKON CÍME] — Open Core — Read Me
+# Logosz Lexikon — Open Core — Read Me
 
-# GENERATED: export of the [A LEXIKON CÍME] open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+# GENERATED: export of the Logosz Lexikon open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 
 *Magyar változat: `OLVASSEL.md`.*
 
@@ -61,11 +61,13 @@ The filtering follows the project's licence inventory. **Excluded sources** (the
 
 ## Place of publication
 
-The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a placeholder, filled in at publication). A version is identified by the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a development repository or a commit.
+The canonical place of publication of the package: `https://doi.org/10.5281/zenodo.24141612` (the DOI of the open data core: 10.5281/zenodo.24141612). The website of the lexicon: `https://logoszlexikon.hu`. A version is identified by the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a development repository or a commit. The pairing of the Károli text with Strong numbers is a separate dataset (DOI: 10.5281/zenodo.24141884); it is not part of this package.
 
 ## Citation and the use of artificial intelligence
 
-With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
+**Cite as:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz Lexikon — open data core. DOI: 10.5281/zenodo.24141612.
+
+With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
 
 ## English layer
 

@@ -1,4 +1,4 @@
-release_id: 2026-11-10-a7a2cb6c1bcb71be
+release_id: 2026-11-10-ddffefec3d4e3c43
 data_state_date: 2026-11-10
-content_hash_sha256: a7a2cb6c1bcb71be67c112384444c682ef952559184b1e45d3106316daf0393f
-publication_place: <KANONIKUS_FORRAS_URL>
+content_hash_sha256: ddffefec3d4e3c4330ec69388c491dec6b7fa1ae4c1b61bf742a77aac432e545
+publication_place: https://doi.org/10.5281/zenodo.24141612

@@ -1,6 +1,6 @@
 # Kódkönyv / Codebook
 
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz Lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, in Hungarian and English.
 

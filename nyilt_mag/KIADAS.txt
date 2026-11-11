@@ -1,4 +1,4 @@
-kiadas_azonosito: 2026-11-10-a7a2cb6c1bcb71be
+kiadas_azonosito: 2026-11-10-ddffefec3d4e3c43
 adatallapot_datuma: 2026-11-10
-tartalmi_hash_sha256: a7a2cb6c1bcb71be67c112384444c682ef952559184b1e45d3106316daf0393f
-kozzeteteli_hely: <KANONIKUS_FORRAS_URL>
+tartalmi_hash_sha256: ddffefec3d4e3c4330ec69388c491dec6b7fa1ae4c1b61bf742a77aac432e545
+kozzeteteli_hely: https://doi.org/10.5281/zenodo.24141612
