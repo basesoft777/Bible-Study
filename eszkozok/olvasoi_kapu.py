@@ -72,6 +72,13 @@ KAPUK = (
     ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
     ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
                           'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
+    ('MUNKASZO', BUKAS, 'munkaszó vagy munkajelölő az olvasói szövegben (a `MUNKASZAVAK` lista: „próba”, „javaslat”, '
+                        '„ellenőrzendő”, „függőben”, „nincs bekötve”, „kutatói jelölés”, „azonosításra vár”, „D-minta”, '
+                        '„Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); '
+                        'az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, '
+                        'F24, F35)'),
+    ('SZAKASZ_HIV', BUKAS, 'a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat '
+                           '(a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b))'),
     ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan '
                            'rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint '
                            'jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak '
@@ -455,6 +462,81 @@ def ell_pont(sorok):
             else:
                 ki.append(talalat('PONT', FIGY, s.n, kornyezet(s.szoveg, m),
                                   '„%s. pont”: a lap szakaszait nem pontnak hívja; a forrás saját számozása?' % szam))
+    return ki
+
+
+# F182 (2. fázis; F22 (a), H4 (a), F24 (a)(c), F35): a munkaszavak és munkajelölők listája EGY helyen. A „próba” csak önálló
+# szóként („próbatétel” nem); a „független” csak a közös bemenetű keresésről (F24 (a)); a mért BDB-pontosság csak a
+# módszertani dokumentációban áll (F35, DT733). A generátor új szerkezetű lapon olvasói alakra írja át ezeket
+# (`lexikon_general.UJ_OLVASOI_MUNKASZO`); a régi lapok a saját teljes folyamatukban.
+MUNKASZAVAK = [
+    (re.compile(r'\bpróba(?:ként|jelleg\w*|i)?\b', re.I), 'munkajelölő (próba)'),
+    (re.compile(r'\bjavaslat\w*', re.I), 'munkajelölő (javaslat)'),
+    (re.compile(r'ellenőrzendő', re.I), 'munkajelölő (ellenőrzendő)'),
+    (re.compile(r'függőben', re.I), 'munkajelölő (függőben)'),
+    (re.compile(r'nincs bekötve', re.I), 'munkajelölő (nincs bekötve)'),
+    (re.compile(r'kutatói jelölés', re.I), 'munkajelölő (kutatói jelölés)'),
+    (re.compile(r'azonosításra vár', re.I), 'munkajelölő (azonosításra vár)'),
+    (re.compile(r'\bD-minta'), 'munkaszó (D-minta)'),
+    (re.compile(r'\bQ\d-fegyelem'), 'munkaszó (Q-fegyelem)'),
+    (re.compile(r'\bstudy\b', re.I), 'munkaszó (study)'),
+    (re.compile(r'\baudit\w*', re.I), 'munkaszó (audit)'),
+    (re.compile(r'\btoken\w*', re.I), 'munkaszó (token)'),
+    (re.compile(r'↳\s*Alpont:'), 'belső címke (↳ Alpont:)'),
+    (re.compile(r'független\w*\s+keresés\w*', re.I), 'közös bemenetű keresések „független”-ként (F24 (a))'),
+    (re.compile(r'[Mm]ért pontosság'), 'mért BDB-pontosság a lapon (F35: csak a módszertani dokumentációban)'),
+]
+
+
+def ell_munkaszo(sorok):
+    ki = []
+    suly = BUKAS if KIVETEL_NELKUL else FIGY
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        for rx, nev in MUNKASZAVAK:
+            for m in rx.finditer(s.szoveg):
+                ki.append(talalat('MUNKASZO', suly, s.n, kornyezet(s.szoveg, m), nev + ': ' + m.group(0),
+                                  nev + m.group(0).lower()))
+    return ki
+
+
+SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
+SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
+SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
+SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')
+
+
+def ell_szakasz_hiv(sorok):
+    """F22 (b): az új szerkezetű lap „N. szakasz” és „N. (Név)” hivatkozása a lap tényleges szakaszára mutat."""
+    if not KIVETEL_NELKUL:
+        return []
+    cimek = szakasz_cimek(sorok)
+    elso_szavak = {re.split(r'[\s-]', c)[0].lower()[:6] for c in cimek.values() if c}
+    ki = []
+    for s in sorok:
+        if not s.olvasoi or s.fajta == 'cim':
+            continue
+        # „a 6. Értelmezésben”: szám + a lap valamelyik szakaszcímének első szava (zárójel nélkül)
+        for m in SZAKASZ_HIV_CIMSZO.finditer(s.szoveg):
+            szo = m.group(2).lower()[:6]
+            if szo not in elso_szavak or SZAKASZ_HIV_IDEGEN.search(s.szoveg[:m.start()]):
+                continue
+            if m.group(1) not in cimek or not cimek[m.group(1)].lower().startswith(szo):
+                ki.append(talalat('SZAKASZ_HIV', BUKAS, s.n, kornyezet(s.szoveg, m),
+                                  '„%s”: a lap %s. szakasza „%s”' % (m.group(0).strip(), m.group(1),
+                                                                     cimek.get(m.group(1), '—'))))
+        for rx in (SZAKASZ_HIV_NEV, SZAKASZ_HIV_SZO):
+            for m in rx.finditer(s.szoveg):
+                szam, nev = m.group(1), m.group(2)
+                if SZAKASZ_HIV_IDEGEN.search(s.szoveg[:m.start()]):
+                    continue    # a BDB vagy a szócikk saját szakasza
+                if szam not in cimek:
+                    ki.append(talalat('SZAKASZ_HIV', BUKAS, s.n, kornyezet(s.szoveg, m),
+                                      '„%s”: a lapon nincs %s. szakasz' % (m.group(0).strip(), szam)))
+                elif nev and not cimek[szam].lower().startswith(nev.split(' ')[0].lower()[:6]):
+                    ki.append(talalat('SZAKASZ_HIV', BUKAS, s.n, kornyezet(s.szoveg, m),
+                                      '„%s”: a lap %s. szakasza „%s”' % (m.group(0).strip(), szam, cimek[szam])))
     return ki
 
 
@@ -1202,7 +1284,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi]
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv]
 
 
 def arany_szoszam():

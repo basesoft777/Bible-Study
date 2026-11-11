@@ -1410,9 +1410,10 @@ def _letezo_tetelek(gyoker):
                                     | set(re.findall(r'^\s*\*\s+N(\d+)\s+—', n, re.M))))
 
 
-def lap_hibak(szoveg, letezo_dt, letezo_n):
+def lap_hibak(szoveg, letezo_dt, letezo_n, dontes_allapot=None):
     """A 21. szabaly egy lapra: {(i)/(ii)/(iv): [lelet]}. A (iii) (jeloletlen forditatlan egyseg) nem gepi:
-    a merese renderelest kivan (N-F148a, `naplok/F148_meres.py --forditas`)."""
+    a merese renderelest kivan (N-F148a, `naplok/F148_meres.py --forditas`). F182 (F27): a (iv) az ervenytelen
+    (felulirt, visszavont, okafogyott; a `DONTESEK.md` jelolese, `dontes_allapot`) dontesre hivatkozast is jelzi."""
     ki = {'i': [], 'ii': [], 'iv': []}
     for h in sorted(set(LAP_HELYORZO_RE.findall(szoveg))):
         ki['i'].append('helyőrző: %s' % h)
@@ -1428,6 +1429,12 @@ def lap_hibak(szoveg, letezo_dt, letezo_n):
     if letezo_n is not None:
         for d in sorted({x for x in LAP_N_RE.findall(szoveg) if x not in letezo_n}, key=int):
             ki['iv'].append('nem létező nyitott tétel: N%s' % d)
+    if dontes_allapot:
+        for d in sorted({x for x in LAP_DT_RE.findall(szoveg)}, key=int):
+            a = dontes_allapot.get('DT' + d)
+            if a and not a['ervenyes']:
+                ki['iv'].append('érvénytelen döntés a lapon: DT%s (%s%s)' % (
+                    d, a['ok'], (', helyette: %s' % a['utod']) if a['utod'] else ''))
     return ki
 
 
@@ -1444,6 +1451,8 @@ def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
         return Sor(cim, 'KÉZI', megjegyzes='nincs lexikon/ könyvtár')
     main = main_agon() if main is None else main
     letezo_dt, letezo_n = _letezo_tetelek(gyoker)
+    import dontes_allapot as DA
+    dontes_allapot = DA.betolt(gyoker)
     hibak, jelentes = [], []
     for nev in sorted(os.listdir(lex_dir)):
         utotag = next((u for u in LAP_UTOTAG if nev.endswith(u)), None)
@@ -1452,7 +1461,7 @@ def szabaly21_lap_tisztasag(adat_dir, kivetel=None, main=None):
         mid = nev[:-len(utotag)]
         with open(os.path.join(lex_dir, nev), encoding='utf-8') as f:
             szoveg = f.read()
-        for pont, leletek in sorted(lap_hibak(szoveg, letezo_dt, letezo_n).items()):
+        for pont, leletek in sorted(lap_hibak(szoveg, letezo_dt, letezo_n, dontes_allapot).items()):
             for lelet in leletek:
                 sor = '%s (%s): %s' % (nev, pont, lelet)
                 if mid in kivetel or (pont == 'i' and not main):

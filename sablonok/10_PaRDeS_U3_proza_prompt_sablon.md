@@ -45,6 +45,9 @@ alátámasztja.
 - minden héber, arámi és görög szó mellett a magyaros kiejtés (a lapon egy szónak egy kiejtése van);
 - belső szó nem kerül a szövegbe: döntés-azonosító, feladatszám, fájlnév, „gerinc”, „szerep”, „orkesztrátor”, „felhasználó”; a döntés olvasói neve „szerkesztői döntés”;
 - a beépítés indoka szerkezeti jegy (lánc, visszautalás, szókapcsolat), nem a szó puszta egyezése;
+- „független” csak akkor, ha a két forrásnak nincs közös bemenete: a motívum keresései közös szavakból (Strong-listából) indulnak, ezért egybeesésük „egybeesés, nem független megerősítés” (F24 (a); a kapu: `olvasoi_kapu.MUNKASZAVAK`);
+- a zárómondat (Sod és minden szakasz vége) a motívum saját leletéből áll; más lap zárómondata, a lapok közötti sablonmondat („A motívum legmélyebb rétege ezért … az a remény”) tilos (F24 (b));
+- munkaszó és munkajelölő nem kerül a szövegbe („próba”, „javaslat”, „ellenőrzendő”, „függőben”, „audit”, „token” — a teljes lista: `olvasoi_kapu.MUNKASZAVAK`);
 - hiányt nem töltesz ki asszociatív anyaggal: ha nincs adat, kimondod (CLAUDE.md 3. szabály).
 
 **Önellenőrzés a commit előtt** (mind fusson le, a kimenet a menetnaplóba):

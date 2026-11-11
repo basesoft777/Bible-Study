@@ -6350,6 +6350,24 @@ def olvasoi_forrasnev(fajl):
 _dontes_datum_cache = None
 
 
+_dontes_allapot_cache = None
+
+
+def ervenyes_dontes(azon):
+    """F182 (F27): a lapra csak érvényes döntés kerül — felülírt döntés helyett a felülíró (a `DONTESEK.md` jelölése,
+    `dontes_allapot`); érvénytelen, utód nélküli döntésnél maga az azonosító marad (dátum nélkül), és az `ellenoriz.py`
+    21. szabálya SÉRTÉS-t ad."""
+    global _dontes_allapot_cache
+    if _dontes_allapot_cache is None:
+        import dontes_allapot as DA
+        _dontes_allapot_cache = DA.betolt(ROOT)
+    import dontes_allapot as DA
+    if azon not in _dontes_allapot_cache:
+        return azon
+    utod = DA.ervenyes_utod(azon, _dontes_allapot_cache)
+    return utod if utod else ''
+
+
 def dontes_datum(azon):
     """A végleges döntés (DTnnn) dátuma a `DONTESEK.md` sorából (az első dátum a sorban); ismeretlen: ''."""
     global _dontes_datum_cache
@@ -6368,6 +6386,32 @@ def dontes_datum(azon):
 
 _FAJL_RX = re.compile(r'(?<![\w/.-])(?:[\w.-]+/)*[\w-]+\.(?:tsv|py|md|txt|json)\b(?:\s*§\s*([\w/]+))?')
 _PROV_RX = re.compile(r'scope=[^`<]*?(?:ts=[\dT:Z.-]+|(?=`)|$)')
+# F182 (2. fázis; F22, H4, F24 (c)): a generátor közös szövegeinek munkaszavai az új szerkezetű lapon olvasói alakban (a régi
+# lapok szövege változatlan, E28). A tiltott szavak listája egy helyen: `olvasoi_kapu.MUNKASZAVAK` (a MUNKASZO kapu).
+UJ_OLVASOI_MUNKASZO = (
+    (re.compile(r'\*\(üres blokk: .*?; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal\)\*'),
+     '*(Ennél a pontnál a lap nem közöl adatot; a hiányt nem tölti ki gyenge vagy asszociatív anyaggal.)*'),
+    (re.compile(r'\*\(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő\)\*'),
+     '*(a magyar szakaszhatár gépi illesztésű)*'),
+    (re.compile(r'(?:kutatói|az) azonosítás függőben'), 'a megfelelő nincs megállapítva'),
+    (re.compile(r'azonosításra vár'), 'megállapítatlan'),
+    (re.compile(r'\*\(nincs G-token\)\*'), '*(nincs görög szó)*'),
+    (re.compile(r'\b(Strong-)?token(\w*)'), lambda m: _token_olvasoi(m.group(1), m.group(2))),
+    (re.compile(r'négyforrásos audit a napló §7 szerint, retroaktív\s+betöltés'),
+     'négy forrás összevetése a motívum korábbi kereszthivatkozás-naplójában (7. rész), utólagos betöltés'),
+)
+_TOKEN_RAG = {'': 'szó', 'je': 'szava', 'jét': 'szavát', 'jei': 'szavai', 'jeihez': 'szavaihoz', 'enként': 'szavanként',
+              're': 'szóra', 'hez': 'szóhoz', 'ek': 'szavak', 'sorrend': 'szósorrend'}
+_STRONG_TOKEN_RAG = {'': 'Strong-szám', 'je': 'Strong-száma', 'jét': 'Strong-számát', 'jei': 'Strong-számai',
+                     'jeihez': 'Strong-számaihoz', 'ek': 'Strong-számok'}
+
+
+def _token_olvasoi(strong, rag):
+    """F182 (F22): a „token” munkaszó olvasói alakja (a „Strong-token” a Strong-szám, a puszta „token” a szó)."""
+    tabla = _STRONG_TOKEN_RAG if strong else _TOKEN_RAG
+    return tabla.get(rag, ('Strong-szám' if strong else 'szó') + rag)
+
+
 _ZSARGON = (
     (re.compile(r'Forrás-study'), 'Kézi forrás'),
     (re.compile(r'\bstudy-j?\w*'), 'tanulmány'),
@@ -6428,14 +6472,16 @@ def _olvasoi_resz(t):
                lambda m: '(forrás: %s)' % olvasoi_forrasnev(m.group(1)), t)
     t = _FAJL_RX.sub(lambda m: olvasoi_forrasnev(m.group(0).split('§')[0].strip())
                      + ((' (%s. rész)' % m.group(1)) if m.group(1) else ''), t)
-    t = _DT_RX.sub(lambda m: 'szerkesztői döntés' + ((', ' + dontes_datum(m.group(0))) if dontes_datum(m.group(0))
-                                                      else ''), t)
+    t = _DT_RX.sub(lambda m: 'szerkesztői döntés' + ((', ' + dontes_datum(ervenyes_dontes(m.group(0))))
+                                                      if dontes_datum(ervenyes_dontes(m.group(0))) else ''), t)
     t = _TETEL_RX.sub('', t)
     t = _KOD_RX.sub('', t)
     t = t.replace('`', '')
     for rx, uj in _ZSARGON:
         t = rx.sub(uj, t)
     t = re.sub(r'\bmanual\b', 'kézi szerkesztés', t)
+    for rx, uj in UJ_OLVASOI_MUNKASZO:
+        t = rx.sub(uj, t)
     t = re.sub(r'Szótári gerinc\b', 'Szótári tagolás', t)
     t = re.sub(r'\bgerinc-?elem\w*', 'a motívum szava', t)
     t = re.sub(r'\bgerinc\w*', 'szótári tagolás', t)

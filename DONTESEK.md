@@ -6,7 +6,7 @@
 
 *PR-onkénti fájl (ütközésmentesség): az ágon az új döntés sora nem ide, hanem a `dontesek/uj/<ágnév>.md` fájlba kerül (ugyanez a sorformátum); a `szamkiosztas` Action a main-en ide olvasztja be a sort és számot ad (`CLAUDE.md`, `eszkozok/dontes_nezet.py`). Meglévő sor módosítása közvetlenül itt történik.*
 
-Állapot: 🟡 nyitott · 🟢 eldöntve, alkalmazásra vár · ✅ alkalmazva
+Állapot: 🟡 nyitott · 🟢 eldöntve, alkalmazásra vár · ✅ alkalmazva · ⛔ érvénytelen: felülírva, visszavonva vagy okafogyott. Az érvénytelen sor „Állapot” cellája ⛔-vel kezdődik, a „Döntés” cellája pedig a jelöléssel: `**FELÜLÍRVA → DT<n>**` (a felülíró döntés azonosítójával), `**VISSZAVONVA**` vagy `**OKAFOGYOTT**` (a régi szöveg utána marad). Érvénytelen döntés nem kerülhet lapra: a lapgenerátor a felülíró döntést írja, az `ellenoriz.py` 21. szabálya SÉRTÉS-t ad (F182, F27; olvasó: `eszkozok/dontes_allapot.py`).
 
 | # | Feladat | Kérdés | Opciók | Javaslat | Állapot | Döntés | Napló |
 |---|---|---|---|---|---|---|---|

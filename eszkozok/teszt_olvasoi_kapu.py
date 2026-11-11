@@ -451,5 +451,70 @@ class BdbOlvasoiReteg(unittest.TestCase):
         self.assertEqual(self.bdb(lap(tobbi='## 1. Döntési út\n\n' + self.kartya('- 1. apa (J)', marker=False))), [])
 
 
+
+def uj_lap(torzs, cimek=('2. Előfordulások', '9. Értelmezés', '11. Módszertan és nyitott kérdések')):
+    reszek = ['# 📖 X-001 — Minta', '', '## 1. Döntési út', '', 'Bevezető.', '']
+    for c in cimek:
+        reszek += ['## ' + c, '', 'Szöveg.', '']
+    return '\n'.join(reszek + [torzs, '', KOLOFON_JO])
+
+
+def talalatok(szoveg, azon):
+    return [t for t in meres(szoveg) if t['azonosito'] == azon]
+
+
+class MunkaszoSzakaszHiv(unittest.TestCase):
+    """F182 (2. fázis; F22 (a)(b), H4 (a), F24 (a)(c), F35): a MUNKASZO és a SZAKASZ_HIV kapu."""
+
+    def test_munkaszo_uj_lapon_bukas(self):
+        for hibas in ('A hely próba jellegű.', 'Az azonosítás függőben.', 'A sor ellenőrzendő.', 'Ez egy javaslat.',
+                      'A tokenek száma 5.', 'Négyforrásos audit szerint.', 'D-minta: passzív szerkezet.',
+                      'Három független keresés egybeesése.', 'Mért pontosság: 94,0%.', '↳ Alpont: a hely',
+                      'A szavak nincs bekötve.', '*(kutatói jelölés: x)*', 'azonosításra vár 3'):
+            t = talalatok(uj_lap(hibas), 'MUNKASZO')
+            self.assertTrue(t and all(x['sulyossag'] == K.BUKAS for x in t), hibas)
+
+    def test_munkaszo_nem_jelez(self):
+        for jo in ('A próbatétel gyakorlati végrehajtása.', 'A két gyűjtemény független egymástól.',
+                   'Ennél a pontnál a lap nem közöl adatot.'):
+            self.assertEqual(talalatok(uj_lap(jo), 'MUNKASZO'), [], jo)
+
+    def test_munkaszo_regi_lapon_figyelmeztetes(self):
+        t = talalatok(lap(tobbi='## 3. Valami\n\nA hely próba jellegű.'), 'MUNKASZO')
+        self.assertTrue(t and all(x['sulyossag'] == K.FIGY for x in t))
+
+    def test_szakasz_hivatkozas(self):
+        self.assertEqual(talalatok(uj_lap('A kifejtés a 9. (Értelmezés) és a 11. szakaszban (Módszertan és nyitott '
+                                          'kérdések) áll; a részletek a 2. szakaszban.'), 'SZAKASZ_HIV'), [])
+        self.assertEqual(talalatok(uj_lap('A BDB az 1. szakaszban idézi; a szócikk 5. szakaszának fordítása.'),
+                                   'SZAKASZ_HIV'), [])
+        for hibas in ('A kifejtés a 6. Értelmezésben áll, l. a 7. szakaszt.', 'A kifejtés a 9. (Kapcsolatok) pontban.',
+                      'A részletek a 11. szakaszban (Értelmezés).'):
+            self.assertTrue(talalatok(uj_lap(hibas), 'SZAKASZ_HIV'), hibas)
+
+    def test_szakasz_hivatkozas_regi_lapon_nem_fut(self):
+        self.assertEqual(talalatok(lap(tobbi='## 3. Valami\n\nA részletek a 7. szakaszban.'), 'SZAKASZ_HIV'), [])
+
+
+class HamartLapMunkaszo(unittest.TestCase):
+    """F182: a HAMART-001 lapján a MUNKASZO és a SZAKASZ_HIV 0 BUKÁS; a rontott másolat jelez."""
+
+    @classmethod
+    def setUpClass(cls):
+        ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'lexikon', 'HAMART-001_TUDOMANYOS.md')
+        with open(ut, encoding='utf-8') as f:
+            cls.lap = f.read()
+
+    def test_hamart_tiszta(self):
+        for azon in ('MUNKASZO', 'SZAKASZ_HIV'):
+            self.assertEqual([t for t in talalatok(self.lap, azon) if t['sulyossag'] == K.BUKAS], [], azon)
+
+    def test_rontott_masolat_jelez(self):
+        self.assertIn('9. (Értelmezés)', self.lap)
+        rontott = self.lap.replace('9. (Értelmezés)', '9. (Kapcsolatok)', 1).replace(
+            '## Kivonat\n\n', '## Kivonat\n\nA lap próba, a forrás ellenőrzendő. ', 1)
+        self.assertTrue([t for t in talalatok(rontott, 'MUNKASZO') if t['sulyossag'] == K.BUKAS])
+        self.assertTrue(talalatok(rontott, 'SZAKASZ_HIV'))
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
