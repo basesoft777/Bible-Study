@@ -307,11 +307,49 @@ class TesztHatarFrissesseg(unittest.TestCase):
         self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'nincs_jel')
         self.assertEqual(ELL.hatar_frissesseg(adat, 'Z-001', naplo)[0], 'nincs_naplo')
 
-    def test_hamart_a_valos_adaton_nem_friss(self):
-        """A HAMART-001 modelles része 60 soros állapotra készült, a mai sorszám más (az F178.1 oka)."""
+    def test_hamart_a_valos_adaton_hatardontessel_lezart(self):
+        """F182 (F26): a HAMART-001 modelles része 48 soros állapotra készült; a K1–K6 döntései után (47 sor) a határ
+        döntéssel lezárt, a határdöntés-jel szerint friss."""
         import ellenoriz as ELL
-        allapot, _ = ELL.hatar_frissesseg(os.path.join(M.GYOKER, 'adat'), 'HAMART-001')
-        self.assertNotEqual(allapot, 'friss')
+        allapot, szoveg = ELL.hatar_frissesseg(os.path.join(M.GYOKER, 'adat'), 'HAMART-001')
+        self.assertEqual(allapot, 'friss')
+        self.assertIn('döntésével lezárt', szoveg)
+
+    # F182 (F26 (c)): a határdöntés-jel
+    def _dontesek(self, adat, sorok):
+        with open(os.path.join(os.path.dirname(adat), 'DONTESEK.md'), 'w', encoding='utf-8') as f:
+            f.write('| # | F | K | O | J | Állapot | Döntés | N |\n|---|---|---|---|---|---|---|---|\n' + '\n'.join(sorok) + '\n')
+
+    def _hd_kornyezet(self, sorok_utana, allapot='✅'):
+        import ellenoriz as ELL
+        elotte = ('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tb')
+        adat, _ = self._kornyezet(None, sorok=elotte)
+        nd, ujjd = ELL.hatar_ujjlenyomat(adat, 'X-001', dt_nelkul=True)
+        modelles = ('<!-- SORÁLLAPOT: n=3 ujj=000000000000 -->\n' + 'második vélemény ' * 5 +
+                    '\n<!-- HATÁRDÖNTÉS: n=%d ujjd=%s | DT-F9a -->' % (nd, ujjd))
+        adat, naplo = self._kornyezet(modelles, sorok=sorok_utana)
+        self._dontesek(adat, ['| DT-F9a | #9 x | k | o | j | %s | (a), 2026-11-11 | n |' % allapot])
+        return adat, naplo
+
+    def test_hatardontes_friss(self):
+        import ellenoriz as ELL
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tb'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
+
+    def test_hatardontes_szamkiosztas_utan_is_friss(self):
+        import ellenoriz as ELL
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT777', 'X-001\t1Móz 1:2\tb'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
+
+    def test_hatardontes_utani_sorvaltozas_elavult(self):
+        import ellenoriz as ELL
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tMÓDOSÍTVA'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'elavult')
+
+    def test_ervenytelen_hatardontes_nem_friss(self):
+        import ellenoriz as ELL
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tb'), allapot='⛔')
+        self.assertNotEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
 
 
 if __name__ == '__main__':

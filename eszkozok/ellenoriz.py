@@ -2226,11 +2226,21 @@ SORALLAPOT_RX = re.compile(r'<!--\s*SORÁLLAPOT:\s*n=(\d+)\s+ujj=([0-9a-f]{12})\
 MODELLES_SORSZAM_RX = re.compile(r'(\d+)\s+beépített sor')
 
 
-def hatar_ujjlenyomat(adat_dir, mid):
-    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül)."""
+# F182 (F26 (c)): a határdöntés-jel (a modelles rész végén, mert az újrafuttatáskor csak az marad meg; a döntés commitja írja; a szabály: a 9-es sablon „hét szabály”
+# 2. pontja). Az ujjlenyomata DT/N-azonosítók nélkül készül (`ujjd`), mert a döntés-helyőrzőt (DT-F…) a merge utáni
+# számkiosztás a sorokban lecseréli: az nem sor-változás.
+HATARDONTES_RX = re.compile(r'<!--\s*HATÁRDÖNTÉS:\s*n=(\d+)\s+ujjd=([0-9a-f]{12})\s*\\?\|\s*(.*?)\s*-->')
+_DT_MASZK = re.compile(r'(?<![\w-])(?:DT-?F?\d+[a-z]{0,2}|N-F\d+[a-z]{0,2}|N\d{1,3})\b')
+
+
+def hatar_ujjlenyomat(adat_dir, mid, dt_nelkul=False):
+    """(sorok száma, ujjlenyomat) a motívum `elofordulasok.tsv`-soraiból (rendezve, sorvég nélkül); `dt_nelkul`: a
+    döntés- és tétel-azonosítók maszkolva (a határdöntés-jelhez)."""
     with open(os.path.join(adat_dir, 'elofordulasok.tsv'), encoding='utf-8') as f:
         sorok = [s.rstrip('\r\n') for s in f]
     sajat = sorted(s for s in sorok if s.split('\t', 1)[0] == mid)
+    if dt_nelkul:
+        sajat = sorted(_DT_MASZK.sub('DT', s) for s in sajat)
     return len(sajat), hashlib.sha256('\n'.join(sajat).encode('utf-8')).hexdigest()[:12]
 
 
@@ -2248,9 +2258,19 @@ def hatar_frissesseg(adat_dir, mid, naplo_dir=None):
         return 'nincs_modelles', 'a HATAR_%s.md modelles része üres' % mid
     n, ujj = hatar_ujjlenyomat(adat_dir, mid)
     jel = SORALLAPOT_RX.search(modelles)
+    if jel and (int(jel.group(1)), jel.group(2)) == (n, ujj):
+        return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
+    hd = HATARDONTES_RX.search(t)
+    if hd:
+        nd, ujjd = hatar_ujjlenyomat(adat_dir, mid, dt_nelkul=True)
+        import dontes_allapot as DA
+        allapot = DA.betolt(os.path.dirname(os.path.abspath(adat_dir)))
+        dtk = [x.strip() for x in re.split(r'[,;]', hd.group(3)) if x.strip()]
+        rossz = [x for x in dtk if x not in allapot or not allapot[x]['ervenyes']]
+        if (int(hd.group(1)), hd.group(2)) == (nd, ujjd) and dtk and not rossz:
+            return 'friss', ('a határ a modelles rész kérdéseinek döntésével lezárt (%s); a mai %d sor a döntés állapota '
+                             '(ujjd=%s)' % (', '.join(dtk), nd, ujjd))
     if jel:
-        if (int(jel.group(1)), jel.group(2)) == (n, ujj):
-            return 'friss', 'a modelles rész a mai %d soron készült (ujj=%s)' % (n, ujj)
         return 'elavult', ('a modelles rész n=%s ujj=%s állapotra készült, a mai: n=%d ujj=%s'
                            % (jel.group(1), jel.group(2), n, ujj))
     regi = MODELLES_SORSZAM_RX.search(modelles)
@@ -2403,6 +2423,9 @@ def main():
     if args.hatar_ujjlenyomat:
         n, ujj = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat)
         print('<!-- SORÁLLAPOT: n=%d ujj=%s -->' % (n, ujj))
+        # F182 (F26 (c)): a határdöntés-jel sablonja (a döntés commitja írja, a modelles részen kívül, a döntések azonosítóival)
+        nd, ujjd = hatar_ujjlenyomat(args.adat, args.hatar_ujjlenyomat, dt_nelkul=True)
+        print('<!-- HATÁRDÖNTÉS: n=%d ujjd=%s | <a határkérdések döntései, vesszővel> -->' % (nd, ujjd))
         sys.exit(0)
 
     try:
