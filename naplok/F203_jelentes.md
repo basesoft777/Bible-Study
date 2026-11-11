@@ -101,6 +101,12 @@ hamis pontot mutat: „c (hivatkozás nélkül) — c — (Aeschylus, Euripides,
 töredéke, amely a javítás után a fejbe olvad. A fej fordítása ezzel elavul (összefűzve). A HAMART következő kiadása előtt a
 G2671 sz2 fordítandó (N-F203b). A vers-tábla a lapszavakon nem változott.
 
+**Mérve (repón kívüli render a mai fán, `PARDES_DATUM=2026-11-04`, a commitolt laphoz képest; `lapdiff_blokk.valtozott_blokkok`):**
+HAMART-001 37 sor (a `szocikkek` blokkban a G2671: a hamis „c” pont kiesik, „a szócikk egésze — kárhoztatás, átkozódás, átok”, az
+új fej-fordítás; az `lxx` blokkban a görög tooltipek magyar glosszája; a többi eltérés a dátumbélyeg és a ts), ALVIL-001 1, ANTROP-001
+2, ISTENTISZT-001 2, TEREMT-002 2 sor (mind az `lxx` blokk tooltipjei, F203.4b). A CI E28-ja ezért mind az 5 migrált lapon piros,
+amíg a lapok újra nem generálódnak (a merge előtt vagy vele, az orkesztrátoré).
+
 ## 2. B6 — a fordítási lista (F203.2)
 
 - **(1)–(2) téves hiány:** a lista eddig minden `forditas_ehhez`-hívást hiánynak vett, amely üres fordítást adott. Ide tartoztak a
