@@ -1190,6 +1190,11 @@ class F182LathatoHibak(unittest.TestCase):
         for t in ('*(nincs címke:', '*(nincs hozzárendelés)*', 'az útvonal nincs a szakasztáblában'):
             self.assertNotIn(t, self.lap, t)
 
+    def test_nincs_ures_felsorolasjel(self):
+        # a sor eleji „- 2. …” a Markdownban üres felsorolásjel + beágyazott számozott lista
+        import re
+        self.assertEqual(re.findall(r'(?m)^ *- \d+\. .*$', self.lap), [])
+
     def test_cella_glosszaval(self):
         self.assertIn('| Isten ellen · 1.b[^', self.lap)
         self.assertIn('| a szócikk egésze — fájdalom, fáradság[^', self.lap)

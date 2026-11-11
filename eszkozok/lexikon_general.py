@@ -3574,7 +3574,10 @@ def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, 
             if tobb:
                 nevek[k] = '%s, %s' % (szn, nevek[k])
             melyseg = len([x for x in re.split(r'[ .]', jel) if x]) - 1
-            jel_m = ('**%s**' % _jel_olvasoi(jel)) if k in felkover else _jel_olvasoi(jel)
+            # F182 (látható hiba): a sor eleji „2.” jelet a Markdown számozott listának veszi (üres felsorolásjel, beágyazott
+            # lista); a nem félkövér jel pontja ezért escape-elve áll („2\.”)
+            jel_m = ('**%s**' % _jel_olvasoi(jel)) if k in felkover else re.sub(r'^(\d+)\.(?=\s|$)', r'\1\\.',
+                                                                              _jel_olvasoi(jel))
             sorok.append('%s%s- %s%s%s' % (behuz, '  ' * max(0, melyseg), jel_m, ' — ' if (gl and elv == ' — ') or csak_alak else ' ',
                                            gl or csak_alak or '*(külön meghatározás nélkül)*'))
     bek = ['**A jelentések rendje a %s szerint** (félkövér: a motívum helyein álló jelentés)' % szotar, '\n'.join(sorok)]

@@ -1306,7 +1306,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 **A jelentések rendje a Thayer szerint** (félkövér: a motívum helyein álló jelentés)
 
 - **1.** megront, rosszabbá tesz
-- 2. elpusztítani, tönkretenni
+- 2\. elpusztítani, tönkretenni
   - 2.a felemészteni, a testi erőről és erőnlétről
   - **2.b** elpusztítani
 
@@ -1669,12 +1669,12 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 **A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)
 
 - **1.** a megművelt föld, amely táplál
-- 2. földdarab, földbirtok
+- 2\. földdarab, földbirtok
 - **3.** a föld mint anyag, amelyből az ember lett
 - **4.** a föld látható felszíne, a föld színe
-- 5. ország, terület, vidék
-- 6. az egész föld, a lakott föld
-- 7. tulajdonnév, helynév
+- 5\. ország, terület, vidék
+- 6\. az egész föld, a lakott föld
+- 7\. tulajdonnév, helynév
 
 **A motívum helyein:** 1Móz 3:17, 4:12, 8:21 → 1. a megművelt föld, amely táplál · 1Móz 3:19 → 3. a föld mint anyag, amelyből az ember lett · 1Móz 3:23 → 1. a megművelt föld, amely táplál; 3. a föld mint anyag, amelyből az ember lett · 1Móz 4:14, 6:7, 7:4, 7:23, Sof 1:2 → 4. a föld látható felszíne, a föld színe. Csak egy verstartomány részeként idézi, jelentésponthoz nem köthető: Sof 1:3.
 
@@ -1725,10 +1725,10 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)
 
-- 1. eskü tanúságtételben
-- 2. szövetségi eskü
+- 1\. eskü tanúságtételben
+- 2\. szövetségi eskü
 - **3.** átok, Istentől
-- 4. átkozódás
+- 4\. átkozódás
 
 **A motívum helyein:** Ézs 24:6 → 3. átok, Istentől. A szótár ezt a helyet nem idézi: Ézs 24:5.
 
@@ -1816,13 +1816,13 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
   - 1.d Isten bánása a bűnnel
   - 1.e engesztelés szerezhető érte
   - 1.f a pap engesztelést szerez valakiért
-- 2. a bűn állapota, a bűn vétke
-- 3. a bűn büntetése
-- 4. bűnért való áldozat
+- 2\. a bűn állapota, a bűn vétke
+- 3\. a bűn büntetése
+- 4\. bűnért való áldozat
   - 4.a a fejedelem bakkecskét mutasson be
   - 4.b bikát mutattak be a papokért
   - 4.c az engesztelés napján a főpap bűnért való áldozata egy bika volt
-- 5. megtisztulás a szertartási tisztátalanság bűneitől
+- 5\. megtisztulás a szertartási tisztátalanság bűneitől
 
 **A motívum helyein:** 1Móz 4:7 → 1.b Isten ellen.
 
@@ -1926,7 +1926,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 **A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)
 
 - **1.** tövisbokor, a bogánccsal együtt
-- 2. tövis, átvitt értelemben
+- 2\. tövis, átvitt értelemben
 
 **A motívum helyein:** 1Móz 3:18, Hós 10:8 → 1. tövisbokor, a bogánccsal együtt.
 
@@ -1959,28 +1959,28 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 **A jelentések rendje a BDB szerint** (félkövér: a motívum helyein álló jelentés)
 
 - *első szócikk*
-  - 1. rossz, kellemetlen, ártalmas
-  - 2. rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó
-  - 3. rossz, nem tetsző
-  - 4. a maga nemében rossz
-  - 5. rossz, azaz csekély értékű
-  - 6. rosszabb
-  - 7. szomorú, boldogtalan
-  - 8. gonosz tervet kigondolni
-  - 9. rossz, barátságtalan, rosszindulatú hajlamú vagy természetű
-  - 10. erkölcsileg rossz, gonosz, istentelen
+  - 1\. rossz, kellemetlen, ártalmas
+  - 2\. rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó
+  - 3\. rossz, nem tetsző
+  - 4\. a maga nemében rossz
+  - 5\. rossz, azaz csekély értékű
+  - 6\. rosszabb
+  - 7\. szomorú, boldogtalan
+  - 8\. gonosz tervet kigondolni
+  - 9\. rossz, barátságtalan, rosszindulatú hajlamú vagy természetű
+  - 10\. erkölcsileg rossz, gonosz, istentelen
     - 10.a általában
     - 10.b személyekről
     - **10.c** gonosz (a szív gondolatairól)
     - 10.d tettekről, cselekedetekről
 - *második szócikk*
-  - 1. rossz, szorongattatás, balszerencse
-  - 2. rossz, sérelem, jogtalanság
-  - 3. erkölcsi rossz
+  - 1\. rossz, szorongattatás, balszerencse
+  - 2\. rossz, sérelem, jogtalanság
+  - 3\. erkölcsi rossz
 - *harmadik szócikk*
-  - 1. rossz, nyomorúság, szorongattatás
-  - 2. rossz, sérelem, jogtalanság
-  - 3. erkölcsi rossz
+  - 1\. rossz, nyomorúság, szorongattatás
+  - 2\. rossz, sérelem, jogtalanság
+  - 3\. erkölcsi rossz
 
 **A motívum helyein:** 1Móz 6:5 → első szócikk, 10.c gonosz (a szív gondolatairól).
 
