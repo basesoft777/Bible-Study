@@ -1101,6 +1101,20 @@ def lexikon_hivatkozasok_ehhez(strong):
     return sorted(sorok, key=lambda r: (r['szotar'], r['jelentes_szam']))
 
 
+UJ_DOMEN_MAGYAR = [False]   # F182: a render idejére az új szerkezetű motívumnál igaz (`run`)
+
+
+def domen_magyar(szotar, kod, label):
+    hu = forditas_ehhez(szotar, EM_DASH, kod, 'domen', 'glosszak_hu')
+    return hu if hu else '%s %s' % (label, FORDITASRA_VAR)
+
+
+def tw_cim_magyar(c):
+    """F182 (A11): a tW-szócikk magyar címe (fordítási gyorsítótár), fordítás nélkül az angol cím „fordításra vár”-ral."""
+    hu = forditas_ehhez('tW_szocikkek', c['strong'].split('+')[0], c['tw_id'], 'cim', 'glosszak_hu')
+    return hu if hu else '%s %s' % (c['cim'], FORDITASRA_VAR)
+
+
 def domen_talalatok(strong):
     rows = L.load_sdbh_domenek() if strong.startswith('H') else L.load_sdgnt_domenek()
     hits = [r for r in rows if r['strong'] == strong]
@@ -1155,6 +1169,11 @@ def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcs
 
     domenek = domen_talalatok(strong)
     domen_szoveg = ', '.join('%s %s' % (kod, label) for kod, label in domenek) if domenek else EM_DASH
+    if UJ_DOMEN_MAGYAR[0]:
+        # F182 (A12, K11): az új szerkezetű lapon a doménnév magyarul (fordítási gyorsítótár), a kód nélkül; fordítás
+        # nélkül az angol név „fordításra vár” jelöléssel
+        domen_szoveg = '; '.join(domen_magyar('SDBH' if strong.startswith('H') else 'SDGNT', kod, label)
+                                 for kod, label in domenek) if domenek else EM_DASH
     domen_sorok = ['**Szemantikai domén:** %s' % domen_szoveg]
     domen_fajl = 'konkordancia/SDBH_domenek.tsv' if strong.startswith('H') else 'konkordancia/SDGNT_domenek.tsv'
     domen_licenc_kulcs = 'SDBH' if strong.startswith('H') else 'SDGNT'
@@ -2142,6 +2161,17 @@ SZEREP_EPITO = {
 def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
     """A szerep kitöltött bekezdései: lista. Üres lista = a szerepnek nincs adata ezekhez a tokenekhez."""
     kulcs = (nyelv, n)
+    if kulcs == ('gorog', 1) and uj_szerkezet(ctx.get('id')):
+        # F182 (A10; F5, K52): a görög szavak alapjelentése a STEPBible rövid szótárából (TBESG), ugyanúgy, mint a
+        # héber 4.1 (a magyar rövid jelentés a fordítási gyorsítótárból, `rovid_jelentes`); csak az új szerkezetű lapon
+        out = []
+        for t in tokenek_ny:
+            rj, van = rovid_jelentes(t)
+            out.append('**%s** · %s%s — a teljes TBESG-szócikk: [olvasd a szónézetben](%s)'
+                       % (_szo_irassal(t), rj, '' if van else '', SZONEZET_UT % t))
+        ctx['tbesg_tbesh'].add('TBESG')
+        out.append('*Forrás: a STEPBible görög rövid szótára (TBESG, CC BY 4.0), a rövid jelentés magyarul.*')
+        return out
     if ctx.get('gerinc') and kulcs in GERINC_SZEREP_EPITO:
         return GERINC_SZEREP_EPITO[kulcs](nyelv, n, tokenek_ny, reszek, ctx)
     if kulcs in SZEREP_EPITO:
@@ -2163,7 +2193,10 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
     elif SZEREP_SAJAT.get(kulcs) == 'domen':
         for t in tokenek_ny:
             d = reszek[t]['domen']
-            out.append('**%s** · %s' % (t, d[0]))
+            if uj_szerkezet(ctx.get('id')):   # F182 (A12): a szó írással és kiejtéssel
+                out.append('**%s** · %s' % (_szo_irassal(t), d[0]))
+            else:
+                out.append('**%s** · %s' % (t, d[0]))
             out.extend(d[1:])
     elif SZEREP_SAJAT.get(kulcs) == 'kiejtes':
         for t in tokenek_ny:
@@ -4481,10 +4514,24 @@ def _gerinc_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
 def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
     _sorok, idx = tw_szocikkek()
     out = []
+    uj = uj_szerkezet(ctx.get('id'))
     for t in tokenek_ny:
-        if nyelv == 'heber':
+        if nyelv == 'heber' and not uj:
             out.append('**%s** · %s' % (t, reszek[t]['twot']))
         cikkek = idx.get(t, [])
+        if uj:
+            # F182 (A11; F6 és pontosítása): szavanként egy sor, írással és kiejtéssel; a tW-cím magyarul, az azonosító
+            # nélkül, a szónézet link; a TWOT száma ugyanabban a sorban; a forrás egyszer, a pont végén
+            reszek_t = []
+            if nyelv == 'heber':
+                reszek_t.append(reszek[t]['twot'].replace('**TWOT:**', 'TWOT'))
+            if cikkek:
+                reszek_t.append('a translationWords szócikkei: %s' % ' · '.join('*%s*' % tw_cim_magyar(c) for c in cikkek))
+                ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
+            else:
+                reszek_t.append('a translationWords nem tárgyalja')
+            out.append('**%s** · %s — [olvasd a szónézetben](%s)' % (_szo_irassal(t), ' · '.join(reszek_t), SZONEZET_UT % t))
+            continue
         if cikkek:
             out.append('**%s** · tW: %s — a szócikkek szövege a szónézetben: %s'
                        % (t, ', '.join('`%s`' % c['tw_id'] for c in cikkek), _szonezet_mutato(t, TW_FAJL)))
@@ -4495,6 +4542,10 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
             out.append('**%s** · %s *(tW)*' % (t, NEM_TARGYALJA))
     if nyelv == 'heber':
         ctx['fl'].setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
+    if uj:
+        out.append('*Forrás: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul%s.*'
+                   % ('; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma' if nyelv == 'heber'
+                      else ''))
     return out
 
 
@@ -7326,7 +7377,11 @@ def kesz_lap_utana(szoveg, m, sorai):
         if mm:
             sor = mm.group(1) + jelolt_labjegyzet_olvasoi(mm.group(2)) + (mm.group(3) or '')
         ki.append(sor)
-    return '\n'.join(ki)
+    # F182 (F6 (2), F10 (6)): a szónézet linkje olvasói szöveggel, a nyers útvonal („szónézet: /szo/G1311”) nélkül
+    return SZONEZET_NYERS_RX.sub(r'[szónézet](\1)', '\n'.join(ki))
+
+
+SZONEZET_NYERS_RX = re.compile(r'\[szónézet: (/szo/[HG]\d{4}[a-z]?)\]\(\1\)')
 
 
 def uj_szerkezet_alkalmaz(szoveg, m, sorai):
@@ -8383,6 +8438,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             lemma_valtozat_beallit(sorai)        # F182 (A04): a lemma-változat a motívum szövegéhez
         else:
             LEMMA_VALTOZAT.clear()
+        UJ_DOMEN_MAGYAR[0] = uj_szerkezet(m['id'])   # F182 (A12)
         blokkok, tisztazatlan_erintve_szocikkek = render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek)
         osszesitett_tisztazatlan[m['id']] = tisztazatlan_erintve_szocikkek
 

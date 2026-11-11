@@ -816,6 +816,8 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 
 **A görög rövid jelentés (F121, DT428).** `szotar = TBESG`, `entry_id` = `strong` = a Strong (`G0071`), `jelentes_szam = rovid`, `mezo = glosszak_hu`: a 7. szerep (SECE) görög szavainak rövid magyar jelentése. Forrása a `TBESG.txt` sor 7. oszlopa (Strongonként az első sor; `forras_hash` = ennek SHA-1-e; feloldó: `glossza_lexikon_forditas.tovabbi_forras`). A generátor (`lexikon_general.rovid_jelentes`) ezt keresi; ahol nincs, az angol glossza + `fordításra vár`. Az `allapot` = `sonnet`. A héber párja az `adat/glosszak_heber_hu.tsv` (2.39).
 
+**A tW-szócikk címe és a szemantikai domén neve (F182, A11, A12).** `szotar = tW_szocikkek`, `strong` = a cikk `strong` oszlopának első eleme, `entry_id` = `tw_id`, `jelentes_szam = cim`, `mezo = glosszak_hu`: a `tW_szocikkek.tsv` `cim` oszlopa (a 3. szerep magyar címe, az azonosító helyett). `szotar = SDBH` / `SDGNT`, `strong` = `—`, `entry_id` = a `domen_kod`, `jelentes_szam = domen`, `mezo = glosszak_hu`: a `SDBH_domenek.tsv` / `SDGNT_domenek.tsv` `domen` oszlopa (a 4. szerep doménneve). A `forras_hash` a forrásszöveg SHA-1-e; feloldó: `glossza_lexikon_forditas.tovabbi_forras`. A generátor (`lexikon_general.tw_cim_magyar`, `domen_magyar`) az új szerkezetű lapon ezt keresi; ahol nincs, az angol név + `fordításra vár`. Az `allapot` = `sonnet`.
+
 **Szakaszonkénti BDB-sorok (F128; DT181 (b), DT269 (1), DT285–g).** A #38 a 7. adag előtti újrafordító adagtól
 (DT289: a 98 N-F107b Strong) szakaszonként fordít: a bemenet a `szakasz_bemenet.py` tokenes szövege (minden szakasz előtt
 `⟪<sorszam>⟫`), a prompt `forditas/prompt_v5.md`, a rögzítés `emeles.py szakasz_rogzit` → `szakasz_beir`. Egy Strong nem
