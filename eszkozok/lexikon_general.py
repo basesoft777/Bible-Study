@@ -5400,7 +5400,10 @@ def res_torzs(m, res, sor, sorai=None):
         return '' if res_ures_e(res, torzs) else torzs
     if forras == 'adat':
         mondat = sor.get('tanulmany')
-        if mondat:
+        # F182: a rögzített hiány-mondat („nincs rögzített kapcsolat”) csak adat híján áll; ha a kapcsolat-táblában van
+        # sora a motívumnak, a rés az adatból renderel (különben a lap hamisat állít; HAMART-001, F182.2 után 56 sor)
+        if mondat and not (mondat == ALATAMASZTAS_NINCS_KAPCSOLAT and res == 'alatamasztas'
+                           and any(r['id'] == m['id'] for r in kapcsolatok_sorok())):
             return mondat
         if res not in ADAT_RES_RENDEREK:
             raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
@@ -6532,6 +6535,9 @@ UJ_OLVASOI_MUNKASZO = (
     (re.compile(r'(?:kutatói|az) azonosítás függőben'), 'a megfelelő nincs megállapítva'),
     (re.compile(r'azonosításra vár'), 'megállapítatlan'),
     (re.compile(r'\*\(nincs G-token\)\*'), '*(nincs görög szó)*'),
+    # a fájlnév olvasói névre cseréje után maradó kettőzött névelő („Generált a a kapcsolat-tábla”) és a mezőnév
+    (re.compile(r'\b(Generált) a (?=a )'), r'\1 '),
+    (re.compile(r'\bindoklas mezőjéből\b'), 'indoklás mezőjéből'),
     (re.compile(r'\b(Strong-)?token(\w*)'), lambda m: _token_olvasoi(m.group(1), m.group(2))),
     (re.compile(r'négyforrásos audit a napló §7 szerint, retroaktív\s+betöltés'),
      'négy forrás összevetése a motívum korábbi kereszthivatkozás-naplójában (7. rész), utólagos betöltés'),

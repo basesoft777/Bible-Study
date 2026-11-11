@@ -161,6 +161,20 @@ class ResTorzsAdatAg(unittest.TestCase):
         self.assertEqual(LG.res_torzs({'id': 'PROBA-001'}, 'alatamasztas', sor, []),
                          'A motívumhoz nincs rögzített kapcsolat.')
 
+    def test_rogzitett_hianymondat_adat_mellett_nem_all(self):
+        # F182: a HAMART-001-nek kapcsolat-sorai vannak: a rögzített „nincs rögzített kapcsolat” nem állhat
+        sor = {'forras': 'adat', 'tanulmany': LG.ALATAMASZTAS_NINCS_KAPCSOLAT}
+        ki = LG.res_torzs({'id': 'HAMART-001'}, 'alatamasztas', sor, [])
+        self.assertNotIn('nincs rögzített kapcsolat', ki)
+        self.assertIn('1Móz', ki)
+        # üres (rontott) kapcsolat-készlettel a régi mondat áll
+        regi = LG.kapcsolatok_sorok
+        try:
+            LG.kapcsolatok_sorok = lambda: []
+            self.assertEqual(LG.res_torzs({'id': 'HAMART-001'}, 'alatamasztas', sor, []), LG.ALATAMASZTAS_NINCS_KAPCSOLAT)
+        finally:
+            LG.kapcsolatok_sorok = regi
+
     def test_ures_mezo_renderel(self):
         eredeti = LG.ADAT_RES_RENDEREK['2b']
         try:
