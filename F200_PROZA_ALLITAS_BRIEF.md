@@ -14,6 +14,7 @@ munka: folyamat
 olvas: [motivumok/HAMART-001.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/olvasoi_kapu.py, eszkozok/lekerdez.py, eszkozok/heber_kiejtes.py, eszkozok/ellenorzes/szabalyok.py, MUNKAMENET.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md]
 ir: [eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, naplok/ALLITAS_HAMART-001.md, naplok/F200_jelentes.md, naplok/ELLENOR_F200.md, MUNKAMENET.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, .github/workflows/ellenorzes.yml, dontesek/uj/f200-versallitas-e49cf6.md, nyitott/uj/f200-versallitas-e49cf6.md, F200_PROZA_ALLITAS_BRIEF.md]
 fugg: []
+nem_fugg: [38, 104, 121, 123, 138, 178, 181, 188]
 ---
 
 # F200_PROZA_ALLITAS_BRIEF.md — Próza-állítás ellenőrző
