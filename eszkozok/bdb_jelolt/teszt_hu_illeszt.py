@@ -237,6 +237,15 @@ class Szocikkhatar(unittest.TestCase):
         hu = 'A 1 után. (ו)ייחר Kt 2Sám 20:5'
         self.assertEqual(hi.strong_illeszt(sorok, hu)[0][3][2], hu.index('(ו)'))
 
+    def test_hosszabb_heber_szosor_elobb(self):
+        # H7585 BDB8375: a fordítás a két fejet egy mondatba vonta („l. שְׁאוֺל 1, a שְׁאֹל שְׁאוֺל alatt”); az első szó („שְׁאֹל”)
+        # tagolásjel után a szócikk belsejében is áll, a teljes szósor („שְׁאֹל שְׁאוֺל”) csak a fejnél
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'שְׁאָלָה Isa 7:11 see below', 'fej', 'fej'),
+                 bsor('B2', '', 'שְׁאֹל שְׁאוֺל, noun feminine', 'fej', 'fej')]
+        hu = 'שְׁאָלָה Ézs 7:11, l. a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév; — שְׁאֹל 1Kir 2:6'
+        e = hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(e[2][1:], ['שְׁאֹל שְׁאוֺל', hu.index('שְׁאֹל שְׁאוֺל')])
+
     def test_heber_cimszo_nelkul_valtozatlan(self):
         sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'thus'),
                  bsor('B2', '', 'adverb thus, as follows', 'fej', 'fej')]

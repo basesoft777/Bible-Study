@@ -312,41 +312,49 @@ def strong_illeszt(sorok, hu):
 # több találatnál az első, amely előtt tagolásjel („. ”, „; ”, „) ” …) áll, különben az utolsó (a szócikk vége előtti utalás,
 # „l. fent IV. צַר”, a következő fej előtt áll). Ha a forrássor nem héber szóval nyit, vagy a magyarban nincs meg, a sor
 # változatlan marad (a 27. szabály jelentése megmarad; a kézi javítás helye a fordítás, nem az illesztő).
-SZOCIKKFEJ_ELOTAG = re.compile(r'^((?:(?:VI|IV|V|I{1,3})\.\s+)?)(\[?)\s*((?:\([֐-׿יִ-ﭏ]+\))?[֐-׿יִ-ﭏ]+)')
+SZOCIKKFEJ_ELOTAG = re.compile(r'^((?:(?:VI|IV|V|I{1,3})\.\s+)?)(\[?)\s*((?:\([֐-׿יִ-ﭏ]+\))?[֐-׿יִ-ﭏ]+)((?: [֐-׿יִ-ﭏ]+)*)')
 SZOCIKKFEJ_HATAR = ('.', ';', ':', '!', '?', ')', ']', '—')
+_HB_UTANA = r'(?![֐-׿יִ-ﭏ])'
 
 
 def szocikkfej_elotag(x):
-    """A szócikkfej-sor magyar horgonyának mintája és megjelenített alakja: (regex, horgony) vagy (None, '')."""
+    """A szócikkfej-sor magyar horgonyának mintái, a hosszabbtól: [(regex, horgony)] — (1) a teljes vezető héber szósor
+    („שְׁאֹל שְׁאוֺל”, H7585 BDB8375: a fordítás a két szócikk fejét egy mondatba vonta, és az első szó a szócikk belsejében is
+    áll), (2) csak az első szó; üres lista, ha a sor nem héber szóval nyit."""
     m = SZOCIKKFEJ_ELOTAG.match(re.sub(r'<[^>]+>', '', (x.get('jel', '') + ' ' + x.get('szoveg', '')).strip()))
     if not m:
-        return None, ''
-    romai, zar, szo = m.groups()
-    minta = (re.escape(romai.strip()) + r'\s+' if romai else '') + (r'\[\s*' if zar else '') + re.escape(szo) \
-        + r'(?![֐-׿יִ-ﭏ])'
-    return re.compile(minta), (romai.strip() + ' ' if romai else '') + zar + szo
+        return []
+    romai, zar, szo, tobbi = m.groups()
+    eleje = (re.escape(romai.strip()) + r'\s+' if romai else '') + (r'\[\s*' if zar else '')
+    cim = (romai.strip() + ' ' if romai else '') + zar
+    ki = []
+    if tobbi:
+        szavak = [szo] + tobbi.split()
+        ki.append((re.compile(eleje + r'\s+'.join(re.escape(w) for w in szavak) + _HB_UTANA), cim + ' '.join(szavak)))
+    ki.append((re.compile(eleje + re.escape(szo) + _HB_UTANA), cim + szo))
+    return ki
 
 
 def szocikkfej_horgony(sorok, eredmeny, hu):
     """F202.1: a jelölő nélküli szócikkfej-sorok pozíciója (helyben, az `eredmeny` [kat, horgony, poz] elemein). A következő
-    fej csak az előző fej horgonya UTÁN kezdődhet (H0520 „III. [אַמָּה]” + „[אַמָּה K^§ 51”: a második nem köthet az első belsejébe)."""
+    fej csak az előző fej horgonya UTÁN kezdődhet (H0520 „III. [אַמָּה]” + „[אַמָּה K^§ 51”: a második nem köthet az első belsejébe).
+    A minták a hosszabbtól: az első, amelynek van találata, dönt."""
     vege = {}
     for i, (x, e) in enumerate(zip(sorok, eredmeny)):
         if (e[0] != 'jelolo_nelkul' or e[2] is not None or i < 2 or not x.get('bdb_id')
                 or x['bdb_id'] == sorok[i - 1].get('bdb_id')):
             continue
-        rx, horgony = szocikkfej_elotag(x)
-        if rx is None:
-            continue
         also = max([vege.get(t, r[2] + 1) for t, r in enumerate(eredmeny[:i]) if r[2] is not None] or [1])
         felso = min([r[2] for r in eredmeny[i + 1:] if r[2] is not None] or [len(hu)])
-        talalat = [m for m in rx.finditer(hu, also, felso)]
-        if not talalat:
-            continue
-        hatarral = [m for m in talalat if hu[:m.start()].rstrip().endswith(SZOCIKKFEJ_HATAR)]
-        m = hatarral[0] if hatarral else talalat[-1]
-        e[:] = ['jelolo_nelkul', horgony, m.start()]
-        vege[i] = m.end()
+        for rx, horgony in szocikkfej_elotag(x):
+            talalat = [m for m in rx.finditer(hu, also, felso)]
+            if not talalat:
+                continue
+            hatarral = [m for m in talalat if hu[:m.start()].rstrip().endswith(SZOCIKKFEJ_HATAR)]
+            m = hatarral[0] if hatarral else talalat[-1]
+            e[:] = ['jelolo_nelkul', horgony, m.start()]
+            vege[i] = m.end()
+            break
 
 
 def szocikkhatar_jelentesek(sorok_szak, sorok_hu):
