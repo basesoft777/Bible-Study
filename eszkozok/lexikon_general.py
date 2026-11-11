@@ -395,35 +395,21 @@ KIEJTES_HIANY = {}
 
 
 # F182 (A04, N-F178b): a betű nélküli Strong TBESH-változata (H2403a חַטָּאָה ↔ H2403b חַטָּאת) a motívum szövegéhez
-# illesztve: a motívum verseinek TAHOT-szótöve (`Szótő`) dönt. Csak az új szerkezetű lap generálása alatt áll be
+# illesztve: a 4.11 `strong_valtozat_versben` szabálya dönt. Csak az új szerkezetű lap generálása alatt áll be
 # (`lemma_valtozat_beallit`); a régi lapok a betű nélküli alapalakot kapják (E28).
 LEMMA_VALTOZAT = {}
 
 
-def _nikud_nelkul(x):
-    return re.sub(r'[\u0591-\u05af\u05bd\u05c0\u05c3]', '', unicodedata.normalize('NFC', x or ''))
-
-
 def lemma_valtozat_beallit(sorai):
-    """{Strong: változat-kulcs} a motívum soraiból: ha a Strongnak több TBESH-változata van, az, amelynek lemmája a
-    motívum versein a TAHOT-szótővel egyezik (egyértelmű egyezésnél)."""
+    """{Strong: változat-kulcs} a motívum soraiból, a 4.11 szabályával (`strong_valtozat_versben`: a versek TAHOT-szótöve a
+    változatok TBESH-lemmájával összevetve; egy szabály, egy hely)."""
     LEMMA_VALTOZAT.clear()
-    pontos, _alap = tbesg_tbesh_index()
     strongok = {t for s in sorai or [] for t in (s.get('strong') or '').split('+') if t.startswith('H')}
-    if not strongok:
-        return LEMMA_VALTOZAT
-    versek = {v for s in sorai for v in igehely_lista(s['igehely'])}
-    szotovek = {}
-    for r in L.load_tahot():
-        if r['Strong-szám'] in strongok and r['Igehely'] in versek:
-            szotovek.setdefault(r['Strong-szám'], set()).add(_nikud_nelkul(r.get('Szótő')))
+    versek = [v for s in sorai or [] for v in igehely_lista(s['igehely'])]
     for st in strongok:
-        valtozatok = [k for k in pontos if re.fullmatch(re.escape(st) + r'[a-z]', k)]
-        if len(valtozatok) < 2:
-            continue
-        egyezo = [k for k in valtozatok if _nikud_nelkul(pontos[k][0]) in szotovek.get(st, set())]
-        if len(egyezo) == 1:
-            LEMMA_VALTOZAT[st] = egyezo[0]
+        v = strong_valtozat_versben(st, versek)
+        if v != st:
+            LEMMA_VALTOZAT[st] = v
     return LEMMA_VALTOZAT
 
 
