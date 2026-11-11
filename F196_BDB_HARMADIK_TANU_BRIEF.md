@@ -4,7 +4,7 @@ cim: Harmadik tanú a BDB vers → jelentéspont hozzárendeléshez (Sefaria BDB
 kod: BDB_HARMADIK_TANU
 tipus: feladat
 fazis: folyamat
-modell: claude-opus-5-5
+modell: opus
 allapot: fut
 ad: a 2.29 jelentéspontjának harmadik, független tanúja (a Sefaria BDB-jelentésfája); egyezésnél `biztos`, eltérésnél `ketes`; kapcsolóval, alapból kikapcsolva
 kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
@@ -12,12 +12,12 @@ munka: adat
 olvas: [CLAUDE.md, adat/SEMA.md, naplok/F185_jelentes.md, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/bdb_jelolt/belso_tanu.py, adat/licencek.tsv]
 ir: [eszkozok/olvaso_szerver/bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/teszt_bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/bdb_jp_sefaria.tsv, adat/SEMA.md, naplok/F196_jelentes.md, naplok/F196_seed103_reszlet.tsv, naplok/F196_proba40_reszlet.tsv, dontesek/uj/bdb-harmadik-tanu-618784.md, nyitott/uj/bdb-harmadik-tanu-618784.md]
 fugg: [185]
-nem_fugg: [182, 183, 193, 194, 195]
+nem_fugg: [102, 121, 122, 182, 183]
 ---
 
 # F196_BDB_HARMADIK_TANU_BRIEF.md — Harmadik tanú a BDB jelentésponthoz
 
-*FELADATOK #196 · Modell: claude-opus-5-5 · v1 · 2026.11.11*
+*FELADATOK #196 · Modell: opus · v1 · 2026.11.11*
 
 *Az orkesztrátor indította, külön sessionben, ugyanezen az ágon; befogadás nélkül. A felhasználó jóváhagyása (2026-11-11), szó szerint.
 A leírás: „A BDB harmadik tanú: … Egy kész, nyílt BDB-feldolgozás (BrownDriverBriggs.jl, Sefaria-alapú) harmadik tanúként jelezné, hol téved:
