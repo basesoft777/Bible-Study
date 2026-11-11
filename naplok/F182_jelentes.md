@@ -275,6 +275,12 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 - Régi lapok: a 8 régi lap generált kimenete a menet előtti kód (e1080b2a, külön munkafa) kimenetével bájtra azonos.
 - A Windows-tesztkör és a `teszt_futtat.py --gyors` eredménye: a „Tesztkör” alszakaszban.
 
+### Tesztkör (3. menet)
+
+- **`python eszkozok/teszt_futtat.py --gyors`** (WSL): a `teszt_visszhang_kapu.py` a 4.8-ba költözött rokon nyelvi tábla miatt bukott (az arany minta a 4.11-ből olvasta), javítva (F182.43): 22 teszt, OK. A többi bukás (`teszt_bdb_vers_jelentes` CsoportOszlop, `teszt_olvaso_szerver` TestF104BdbJeloles és TestLapok, `teszt_pilot_aranymintaval` DT_F76f, DT_F76g) tesztnevenként azonos a menet előtti kód (e1080b2a, külön munkafa) futásával: a WSL-adatbázis állapotához kötött, nem e menet változása.
+- **Windows-kör** (`eszkozok/teszt_*.py`, 80 modul, modulonként), tesztnevenként összevetve az alapvonallal (ugyanazok a modulok a menet előtti munkafán): **csak az ágon bukott** a `teszt_strong_util` (a „—” kulcsú doménsorok, javítva: F182.44, utána OK), és három modul a meghajtó-eltérés miatt (`teszt_emeles` 4, `teszt_general_kinyeres` 4, `teszt_render_diff_osztalyoz` 1: „path is on mount 'C:', start on mount 'E:'” — a munkafa az E:-n, a teszt ideiglenes könyvtára a C:-n; az alapvonal-munkafa a C:-n állt, ott nem jön elő; a 2. fázis jelentése ugyanezt az E:-s alapvonalon is mérte). A többi bukó modul (bdb_adatblokk, bdb_psi_javit, bdb_zaras, ellenoriz_vedokorlat, forditas_kapuk, general_ellenorzo, jelolt_eloszures, lektor_kerdesek, lexikon_adatres, nyilt_mag, olvasoi_kapu, szakasz_cimke_levezet, szerep_karoli, szerep_nave, szerepmatrix, szotari_gerinc) tesztnevenként azonos az alapvonallal.
+- `ellenoriz.py` (a végső állapoton): 0 SÉRTÉS, RENDBEN 26, JELENTÉS 17, KÉZI 2. Nyílt mag: naprakész (az export a commitolt állapottal azonos).
+
 ### Mérési sorok
 
 *Modell: claude-opus-5-5 (a fordításnál claude-sonnet-5-5); effort: nem látható; a keret %-a előtte és utána: nem látható. Idő: a commitok ideje.*
@@ -290,7 +296,7 @@ A H7451 1Móz 6:5 `fej`-sora (2.29, poz 175 és 6238) nem jelenik meg pontként 
 | forrás (A07, A21), sablonok, döntések | 10:36 | 10:39 | 3 perc |
 | kapuk, tesztek, a lap újragenerálása | 10:39 | 10:46 | 7 perc |
 | `ellenoriz.py`, regresszió, lapnézet és saját átnézés, javítások | 10:46 | 10:54 | 8 perc |
-| követelménylista, jelentés, tesztkör, push | 10:54 | (a záró commit ideje) | |
+| követelménylista, jelentés, tesztkör (alapvonal-összevetéssel), két tesztlelet javítása, push | 10:54 | 11:19 | 25 perc |
 
 ### Lapnézet
 
