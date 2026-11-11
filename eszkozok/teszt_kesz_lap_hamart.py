@@ -266,6 +266,23 @@ class Kapuk(unittest.TestCase):
         self.assertTrue(kapu(uj_lap('A arar önmagában nem a motívum, csak a adamá.'), 'NEVELO'))
         self.assertEqual(kapu(uj_lap('Az árar és az adámá; a föld.'), 'NEVELO'), [])
 
+    def test_indoklas(self):
+        """F182 javítókör (ELLENOR_F182 #8): az indoklásban írás kiejtés nélkül, más sorra hivatkozás, munkajavaslat."""
+        for hibas in ('| Jób 31:40 | x | **elutasítva** — tövis: más szavakat használt (חוֹחַ, בָּאְשָׁה) |',
+                      '| Luk 1:6 | x | **elutasítva** — ok: Az „Isten előtt” (לִפְנֵי) kifejezés |',
+                      '| Mt 13:7 | x | **elutasítva** — ok: kettős szókapcsolatával (ἄκανθα + τρίβολος együtt) |',
+                      '| Ez 28:17 | x | **elutasítva** — ok: A hely az Ez 28:16 sorának folytatása. |',
+                      '| Ez 7:6 | x | **elutasítva** — ok: önálló motívum-jelöltként érdemes lehet külön vizsgálatra |'):
+            self.assertTrue(kapu(uj_lap(hibas), 'INDOKLAS'), hibas)
+        for jo in ('| Jób 31:40 | x | **elutasítva** — tövis: (חוֹחַ (chóach) és בָּאְשָׁה (bosá)) |',
+                   '| Róm 8:21 | x | **beépítve** — a romlás (φθορά, fthora) és az אֲדָמָה (adámá: föld) |',
+                   '| Ez 7:23 | x | **beépítve** — מָלְאָה ... חָמָס (málá ... chámász) |',
+                   '| Jób 14:1 | x | **elutasítva** — a rokon [עֶצֶב](/szo/H6089)<sup class="strong" title="H6089">H6089</sup> '
+                   '(ecev) szót |',
+                   'Prózában a חָמָס szó, döntéscella nélkül.'):
+            self.assertEqual(kapu(uj_lap(jo), 'INDOKLAS'), [], jo)
+        self.assertEqual(kapu('# X\n\n## 3. Kizárt\n\n| a | x | **elutasítva** — (לִפְנֵי) |\n', 'INDOKLAS'), [])
+
     def test_kov_ism(self):
         mondat = '**Következtetés:** a szó itt nem a motívum.'
         self.assertTrue(kapu(uj_lap('\n\n'.join([mondat] * 3)), 'KOV_ISM'))

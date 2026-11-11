@@ -90,6 +90,10 @@ KAPUK = (
                       'szerkezetű lapon (F182: A06, F4 (c), K48)'),
     ('KOV_ISM', BUKAS, 'ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden '
                        'pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10)'),
+    ('INDOKLAS', BUKAS, 'a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög '
+                        'írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat '
+                        '(„érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, '
+                        'K47, K48)'),
     ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan '
                            'rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint '
                            'jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak '
@@ -597,6 +601,58 @@ def ell_kov_ism(sorok):
         if len(nn) > KOV_ISM_MAX:
             ki.append(talalat('KOV_ISM', BUKAS, nn[0], mondat[:120],
                               'ugyanaz a következtetés %d-szor a(z) „%s” szakaszban' % (len(nn), szak), mondat))
+    return ki
+
+
+# F182 javítókör (ELLENOR_F182 #8; A05, A06, B08): az indoklás-cella olvasói alakja. Egy írásfutam (héber vagy görög
+# szó, szókapcsolat; „A + B”, „A, B”, „A … B” egy csoport) után zárójeles vagy vesszős kiejtés áll („(chámász)”,
+# „(φθορά, fthora)”, „(adámá: föld)”); a jelölt Strong-szám („עֶצֶב H6089 (ecev)”) közbeállhat.
+INDOKLAS_CELLA_RX = re.compile(r'\*\*(?:elutasítva|beépítve|nyitva)\*\*')
+_IRAS_BETU = '\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF'
+IRAS_FUTAM_RX = re.compile(r'[%s](?:[%s\u05BE׳״]|[ ](?=[%s]))*' % (_IRAS_BETU, _IRAS_BETU, _IRAS_BETU))
+IRAS_LANC_RX = re.compile(r'\s*(?:\+|,|/|\.\.\.|…)\s*(?=[%s])' % _IRAS_BETU)
+IRAS_KIEJTES_RX = re.compile(r'(?: [HG]\d{4}[a-z]?)?\s*(?:\(|,|:)\s*[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ\'’]')
+INDOKLAS_TILOS = (
+    (re.compile(r'sorának folytatása|[Uu]gyanaz az indok,? mint'), 'más sorra hivatkozik'),
+    (re.compile(r'érdemes lehet|külön vizsgálatra'), 'munkajavaslat az olvasói szövegben'),
+)
+
+
+def iras_kiejtes_nelkul(t):
+    """[írásfutam]: a szövegben kiejtés nélkül álló héber/görög szó vagy szókapcsolat."""
+    ki, i = [], 0
+    while True:
+        m = IRAS_FUTAM_RX.search(t, i)
+        if not m:
+            return ki
+        v = m.end()
+        while True:
+            lanc = IRAS_LANC_RX.match(t, v)
+            m2 = IRAS_FUTAM_RX.match(t, lanc.end()) if lanc else None
+            if not m2:
+                break
+            v = m2.end()
+        if not IRAS_KIEJTES_RX.match(t, v):
+            ki.append(t[m.start():v])
+        i = v
+
+
+def ell_indoklas(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if not s.olvasoi:
+            continue
+        m = INDOKLAS_CELLA_RX.search(s.szoveg)
+        if not m:
+            continue
+        t = s.szoveg[m.end():]
+        for f in iras_kiejtes_nelkul(t):
+            ki.append(talalat('INDOKLAS', BUKAS, s.n, f, 'írás kiejtés nélkül az indoklásban', f))
+        for rx, nev in INDOKLAS_TILOS:
+            for mm in rx.finditer(t):
+                ki.append(talalat('INDOKLAS', BUKAS, s.n, kornyezet(t, mm), nev, mm.group(0)))
     return ki
 
 
@@ -1400,7 +1456,7 @@ def ell_bdb_olvasoi(sorok):
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
                 ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_nyers_jel, ell_mi_hang,
-                ell_nevelo, ell_kov_ism]
+                ell_nevelo, ell_kov_ism, ell_indoklas]
 
 
 def arany_szoszam():
