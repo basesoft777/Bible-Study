@@ -4373,6 +4373,21 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
             out.append('**%s** · a BDB-szócikk feje magyarul nem áll rendelkezésre; a forrásszöveg a 2. szerepben.' % t)
             continue
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
+        if uj_szerkezet(ctx.get('id')):
+            # F182 (A15; F13): alapjelentés (a nyelvtani alakok nélkül) és gyök; a rokon nyelvi sorok a pont végén, a
+            # táblában (a 4.11-ből áthelyezve), a teljes szócikkfej a 4.2-ben — egyszer kimondva, nem szavanként
+            alap = re.split(r'\s+—\s+', alap)[0].strip(' ;,')
+            r_t = []
+            if alap:
+                r_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t, bdb_betu_javit_aktiv(ctx.get('id'))))
+            else:
+                rj, van = rovid_jelentes(t)
+                if van:
+                    r_t.append('alapjelentés: %s *(a STEPBible rövid szótára szerint)*' % rj)
+            if gyok:
+                r_t.append('gyök (√): %s' % gyok)
+            out.append('**%s** · %s' % (_szo_irassal(t), ' · '.join(r_t) or EM_DASH))
+            continue
         reszek_t = []
         if alap:
             reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t, bdb_betu_javit_aktiv(ctx.get('id'))))
@@ -7327,6 +7342,7 @@ def uj_szerkezet_alkalmaz(szoveg, m, sorai):
         'mutatja.')
     szoveg = attekinto_beszur(szoveg, m, sorai)
     szoveg = visszhang_beszur(szoveg, m, sorai)
+    szoveg = rokon_tabla_48(szoveg, m)
     szoveg = azonosito_tabla_beszur(szoveg, m)
     szoveg = kesz_lap_elotte(szoveg, m, sorai)
     return kesz_lap_utana(olvasoi_atiras(szoveg), m, sorai)
@@ -7945,7 +7961,8 @@ def blokk_visszhang(m, sorai):
                 'LXX-nél mérhető, hogyan fordítja ugyanazt a szót a láncon kívül; a Targumnál és a Vulgatánál a cella '
                 'csak a láncot mutatja, mert hogy a szó a fordító szokásos szava-e, ebből a forrásból nem mérhető.'
                 % (honnan, len(szavak), teljes['targum'], teljes['vulgata'], teljes['lxx']))
-    reszek = ['#### 4.11. Visszhang: ókori fordítások és rokon nyelvek', olvasoi_bekezdes(bevezeto), '\n'.join(tabla),
+    reszek = ['#### 4.11. Visszhang: ókori fordítások' if uj_szerkezet(m['id']) else
+              '#### 4.11. Visszhang: ókori fordítások és rokon nyelvek', olvasoi_bekezdes(bevezeto), '\n'.join(tabla),
               '*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX '
               'alapvonalát és a különleges leletet mondja: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli '
               'jelentéssel) a görög versben ugyanaz a szócsalád-e (versszintű együtt-előfordulás, nem szóillesztés); '
@@ -7957,9 +7974,31 @@ def blokk_visszhang(m, sorai):
               % (int(ALAPVONAL_SZOKASOS * 100), int(ALAPVONAL_RITKA * 100), int(ALAPVONAL_SZOKASOS * 100),
                  int(ALAPVONAL_RITKA * 100))]
     hatter = blokk_visszhang_hatter([r for r in sorok if r['forras'] == 'bdb'], lanc_versek, szavak)
-    if hatter:
+    if hatter and uj_szerkezet(m['id']):
+        # F182 (A15; F13 döntése: „igen”, 2026-11-09): a rokon nyelvi tábla a 4.8-ban áll (`rokon_tabla_48`)
+        reszek.append('A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.')
+        ROKON_TABLA_48[m['id']] = hatter
+    elif hatter:
         reszek += hatter
     return '\n\n'.join(reszek)
+
+
+ROKON_TABLA_48 = {}
+
+
+def rokon_tabla_48(szoveg, m):
+    """F182 (A15): a 4.11-ből áthelyezett rokon nyelvi tábla a héber 4.8 pont végére (a V2/V3 kapu a „Háttér: rokon
+    nyelvek” alcím alatt mér, a helyétől függetlenül); a pont zárómondata a teljes szócikkfejre mutat."""
+    hatter = ROKON_TABLA_48.pop(m['id'], None)
+    i = szoveg.find('### Héber szavak')
+    j = szoveg.find('#### 4.8. Nyelvi háttér', i) if i >= 0 else -1
+    k = szoveg.find('#### 4.9.', j) if j >= 0 else -1
+    if k < 0:
+        return szoveg
+    betet = ['A szavak teljes BDB-szócikkfeje (a nyelvtani alakokkal) a 4.2 pontban áll.']
+    if hatter:
+        betet += [h.replace('| Lánc-szó |', '| Szó |') for h in hatter]
+    return szoveg[:k].rstrip('\n') + '\n\n' + '\n\n'.join(betet) + '\n\n' + szoveg[k:]
 
 
 def _magyar_jelentes(t):
