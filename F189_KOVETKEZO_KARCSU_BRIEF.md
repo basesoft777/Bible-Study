@@ -10,7 +10,7 @@ ag: claude/teher-kovetkezo-claude-4e1093
 ad: a brief egyszer olvasódik (a session hajtja végre, ha a modellje egyezik a briefével), és a minden kérésben betöltődő CLAUDE.md csak szabályokat tartalmaz, a magyarázat a CSAPDAK.md-be kerül
 kovetkezo: "Folytatás: A) és B) átírás, ellenőrzés, draft PR"
 munka: folyamat
-olvas: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, .claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/agents/, eszkozok/feladatok.py, eszkozok/ellenorzes/szabalyok.py]
+olvas: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/kovetkezo.md, .claude/commands/elteres.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, CLAUDE.md, CSAPDAK.md, MUNKAMENET.md, eszkozok/feladatok.py]
 fugg: []
 ---
