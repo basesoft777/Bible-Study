@@ -4841,6 +4841,12 @@ def lxx_osszevetes(sorai, tokenek):
 
             egyezo = [r for r in sorai_ehhez_vershez
                       if gorog_tokenek and lxx_os_strong_normalizalt(r.get('strong')) in gorog_tokenek]
+            if egyezo and vh_idx is not None:
+                # F182 javítókör (ELLENOR_F182 #4): az egyező görög szó csak a sor héber kulcsszavának saját LXX-megfelelője
+                # lehet (a 4.11 párja), nem a vers bármely motívumszava (1Móz 3:17: adámá ↔ γῆ, nem ἐπικατάρατος)
+                sajat_par = {_nfc_ekezet_nelkul(vh_idx[(vers, ht)][0]) for ht in heber_tokenek if (vers, ht) in vh_idx}
+                if sajat_par:
+                    egyezo = [r for r in egyezo if _nfc_ekezet_nelkul(r.get('lemma') or '') in sajat_par]
             if egyezo:
                 szamol('egyező')
                 gm = gorog_megfelelo_szoveg(egyezo[0])
@@ -4930,10 +4936,11 @@ def lxx_egyforras_ellenoriz(motivum_id, tabla_sorok):
         vh = [(st, l) for (v, st), (l, _k) in idx.items() if v == vers]
         if not vh:
             continue
-        if not any(_nfc_ekezet_nelkul(l) in g_szavak for _st, l in vh):
-            # csak akkor ellentmondás, ha a sor héber kulcsszavának Strongjára van 4.11-sor
-            kulcs_st = [st for st, _l in vh if _heber_kulcsszo_strong(vers, st) == cellak[2]]
-            for st in kulcs_st:
+        # csak akkor ellentmondás, ha a sor héber kulcsszavának Strongjára van 4.11-sor; a cellában ennek a Strongnak a
+        # saját párja kell álljon, nem a vers egy másik szaváé (F182 javítókör, ELLENOR_F182 #4: 1Móz 3:17 adámá ↔ γῆ)
+        kulcs_st = [st for st, _l in vh if _heber_kulcsszo_strong(vers, st) == cellak[2]]
+        for st in kulcs_st:
+            if _nfc_ekezet_nelkul(idx[(vers, st)][0]) not in g_szavak:
                 elter.append((vers, st, gorog, idx[(vers, st)][0]))
     return elter
 

@@ -174,6 +174,23 @@ class Generator(unittest.TestCase):
         sor = '| %s | %s | %s | ἄκανθα (akantha) | eltérő | Septuaginta |' % (vers, vers, kulcsszo)
         self.assertTrue(LG.lxx_egyforras_ellenoriz('HAMART-001', [sor]))
 
+    def test_lxx_sajat_par_1moz_3_17(self):
+        """F182 javítókör (ELLENOR_F182 #4): az 5. szakaszban a héber kulcsszó a saját LXX-párjával áll (1Móz 3:17:
+        adámá ↔ γῆ), nem a vers egy másik motívumszavával (ἐπικατάρατος, az árar párja); a kapu a régi párosítást jelzi."""
+        import general as G
+        _, elo = G.tsv_beolvas(os.path.join(GYOKER, 'adat', 'elofordulasok.tsv'))
+        sorai = [r for r in elo if r['id'] == 'HAMART-001']
+        tabla = LG.lxx_osszevetes(sorai, LG.motivum_strong_tokenek(sorai))[0]
+        s317 = [s for s in tabla if s.startswith('| 1Móz 3:17 |')]
+        self.assertEqual(len(s317), 1)
+        self.assertIn('γῆ', s317[0])
+        self.assertNotIn('ἐπικατάρατος', s317[0])
+        self.assertNotIn('| egyező |', s317[0])
+        self.assertEqual(LG.lxx_egyforras_ellenoriz('HAMART-001', tabla), [])
+        kulcsszo = LG._heber_kulcsszo_strong('1Móz 3:17', 'H0127')
+        rontott = '| 1Móz 3:17 | 1Móz 3:17 | %s | ἐπικατάρατος (epikataratosz) | egyező | Septuaginta |' % kulcsszo
+        self.assertTrue(LG.lxx_egyforras_ellenoriz('HAMART-001', [rontott]))
+
 
 class Kovetkeztetes(unittest.TestCase):
     def test_a03_sulypont_es_szovetseg(self):
