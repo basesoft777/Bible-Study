@@ -174,7 +174,14 @@ jobs:
           # F196: az allitas-adat kapu es a kovetelmenylista-kapu tesztjei (a kapuk maguk jelentes modban futnak, fent)
           python eszkozok/teszt_gyokerok_kapuk.py
           K7=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F183: a 9. Hatastortenet szakasz szabalyai, a tanureteg es a vitatott pontok szakirodalma (ELLENOR_F183 5.)
+          python eszkozok/teszt_hatastortenet.py
+          K8=$?
+          python eszkozok/visszhang/tanu_kinyer.py ellenoriz
+          K9=$?
+          python eszkozok/szakirodalom_kinyer.py ellenoriz
+          K10=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 

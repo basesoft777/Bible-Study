@@ -510,8 +510,9 @@ class HamartLapMunkaszo(unittest.TestCase):
             self.assertEqual([t for t in talalatok(self.lap, azon) if t['sulyossag'] == K.BUKAS], [], azon)
 
     def test_rontott_masolat_jelez(self):
-        self.assertIn('9. (Értelmezés)', self.lap)
-        rontott = self.lap.replace('9. (Értelmezés)', '9. (Kapcsolatok)', 1).replace(
+        # F183: a 9. a Hatástörténet, az Értelmezés a 10.
+        self.assertIn('10. (Értelmezés)', self.lap)
+        rontott = self.lap.replace('10. (Értelmezés)', '10. (Kapcsolatok)', 1).replace(
             '## Kivonat\n\n', '## Kivonat\n\nA lap próba, a forrás ellenőrzendő. ', 1)
         self.assertTrue([t for t in talalatok(rontott, 'MUNKASZO') if t['sulyossag'] == K.BUKAS])
         self.assertTrue(talalatok(rontott, 'SZAKASZ_HIV'))
