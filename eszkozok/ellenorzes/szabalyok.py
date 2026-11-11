@@ -2375,7 +2375,7 @@ _E30_AZONOSITO = re.compile(r'\b[A-Za-zÁ-ű]*[A-Z0-9][A-Za-z0-9_\-]*\d[A-Za-z0-
 _E30_SZO = re.compile(r'(?<![\w/\\.\-])([a-z]{3,})(?![\w/\\\-=]|\.\w)')
 _E30_ACC_SZO = re.compile(r'[a-záéíóöőúüű]*[áéíóöőúüű][a-záéíóöőúüű]*')
 E30_GEPI_ELEJE = ('szamkiosztas:',)
-E30_GEPI_RESZ = ('FELADATOK.md frissítés (gép)',)
+E30_GEPI_RESZ = ('FELADATOK.md frissítés (gép)', 'GERINC_TERKEP frissítés (gép)', 'ELOSZURES frissítés (gép)')
 
 
 def e30_gepi_e(uzenet):

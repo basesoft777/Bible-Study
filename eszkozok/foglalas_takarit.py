@@ -34,7 +34,8 @@ def teljesult(gyoker, remote='origin', foag='main'):
     """A foglalasok szamai, amelyeknek a foagon mar van `F<nn>_*` fajlja."""
     _git(gyoker, 'fetch', '--quiet', '--prune', remote)
     _, ki, _ = _git(gyoker, 'for-each-ref', '--format=%(refname)', 'refs/remotes/%s/%s*' % (remote, ELOTAG))
-    foglalt = sorted(int(r.strip().rsplit('F', 1)[1]) for r in ki.split('\n') if r.strip())
+    talalatok = (re.search(r'/foglalas/F(\d+)$', r.strip()) for r in ki.split('\n') if r.strip())
+    foglalt = sorted(int(m.group(1)) for m in talalatok if m)
     _, fajlok, _ = _git(gyoker, 'ls-tree', '--name-only', '%s/%s' % (remote, foag))
     van = {int(m.group(1)) for m in (BRIEF.match(f.strip()) for f in fajlok.split('\n')) if m}
     return [n for n in foglalt if n in van]

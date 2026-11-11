@@ -22,7 +22,7 @@ nem_fugg: [111, 121, 123, 133, 151, 156, 182, 188, 192]
 
 **Jóváhagyás (a felhasználó, 2026-11-11, az orkesztrátor közvetítésében), szó szerint:** „csináljuk meg a generátor hibákat”.
 
-**Hatókör.** Csak a GitHub Actionök és a feladatkövető eszközei. A `lexikon/`-hoz, a `motivumok/`-hoz és az `eszkozok/lexikon_general.py` tartalmi részéhez nem nyúl (a HAMART javítókör és az F200 dolgozik rajtuk); a generátort csak hívja.
+**Hatókör.** A GitHub Actionök, a feladatkövető eszközei és (a bővítésből) az E26 CI-szabály. A `lexikon/`-hoz, a `motivumok/`-hoz és az `eszkozok/lexikon_general.py` tartalmi részéhez nem nyúl (a HAMART javítókör és az F200 dolgozik rajtuk); a generátort csak hívja.
 
 ## A három hiba és a javítás
 1. **A számkiosztás után a main bepirul (E28/E35).** A lap a DT-számból oldja fel a döntés dátumát, ezért a szám nélküli lap más szöveg volna; ezért a javítás az újragenerálás ugyanabban a commitban: `eszkozok/szamkiosztas_ujragen.py` (marker-blokkok, migrált lapok a saját `ts=` dátumukkal, nyílt mag). DT-F201a.

@@ -1300,7 +1300,9 @@ def tavoli_szamok(gyoker, remote='origin', frissit=True):
             continue
         nev = ref[len('refs/remotes/%s/' % remote):]
         if nev.startswith(FOGLALAS_ELOTAG):
-            szamok.add(int(nev[len(FOGLALAS_ELOTAG):]))
+            m = re.match(r'^(\d+)$', nev[len(FOGLALAS_ELOTAG):])
+            if m:
+                szamok.add(int(m.group(1)))
             continue
         if nev == 'HEAD':
             continue

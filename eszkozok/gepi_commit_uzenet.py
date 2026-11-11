@@ -51,7 +51,7 @@ def uzenet(fajlok, szam_uzenet=None):
     elif cimek:
         elso = cimek[0]
     else:
-        elso = 'Gépi frissítés (gép)'
+        elso = 'FELADATOK.md frissítés (gép)'
     sorok = [elso, '']
     if szam_uzenet and len(szam_uzenet.strip().split('\n')) > 1:
         sorok += szam_uzenet.strip().split('\n')[1:] + ['']

@@ -86,17 +86,22 @@ jobs:
         env:
           ELOTTE: ${{ github.event.before }}
         run: |
-          # a push elotti allapot es a munkafa kozotti kulonbseg (a szamkiosztas es a generalas sajat
-          # valtozasait is tartalmazza); kezi inditasnal (nincs `before`) a ket generalas kimarad
-          : > "$RUNNER_TEMP/valtozott.txt"
+          # ALLAPOTALAPU (egy kiszoritott futas valtozasat a kovetkezo sem veszti el): az utolso gepi
+          # kimenet ota valtozott fajlok + a push elotti allapot es a munkafa kozti kulonbseg (ez a
+          # szamkiosztas es a generalas sajat valtozasait is tartalmazza)
+          : > "$RUNNER_TEMP/valtozott_g.txt"; : > "$RUNNER_TEMP/valtozott_e.txt"
+          LAST_G=$(git log -1 --format=%H -- naplok/GERINC_TERKEP.tsv)
+          LAST_E=$(git log -1 --format=%H -- 'naplok/ELOSZURES_*.tsv')
+          if [ -n "$LAST_G" ]; then git diff --name-only "$LAST_G" > "$RUNNER_TEMP/valtozott_g.txt"; fi
+          if [ -n "$LAST_E" ]; then git diff --name-only "$LAST_E" > "$RUNNER_TEMP/valtozott_e.txt"; fi
           if [ -n "$ELOTTE" ] && [ "$ELOTTE" != "0000000000000000000000000000000000000000" ] \
              && git cat-file -e "$ELOTTE^{commit}" 2>/dev/null; then
-            git diff --name-only "$ELOTTE" > "$RUNNER_TEMP/valtozott.txt"
+            git diff --name-only "$ELOTTE" | tee -a "$RUNNER_TEMP/valtozott_g.txt" >> "$RUNNER_TEMP/valtozott_e.txt"
           fi
           GERINC='^(adat/(motivumok|elofordulasok|jeloltek|grammatikai_strongok)\.tsv|konkordancia/(TAHOT_kivonat|TAGNT_kivonat|Konyv_normalizalo_tabla)\.tsv|(genezis|ujszovetseg|melyelemzesek)/|eszkozok/(gerinc_terkep|gerinc_kartya|gerinc_szuro|general|lekerdez|strong_util)\.py|\.github/workflows/(gerinc_terkep|feladatok)\.yml)'
           ELOSZ='^(adat/(jeloltek|elofordulasok|motivumok|grammatikai_strongok)\.tsv|konkordancia/(TAHOT_kivonat|TAGNT_kivonat|Karoli_1908)\.tsv|eszkozok/jelolt_eloszures\.py|\.github/workflows/(jelolt_eloszures|feladatok)\.yml)'
-          if grep -Eq "$GERINC" "$RUNNER_TEMP/valtozott.txt"; then echo "gerinc=igen" >> "$GITHUB_OUTPUT"; else echo "gerinc=nem" >> "$GITHUB_OUTPUT"; fi
-          if grep -Eq "$ELOSZ" "$RUNNER_TEMP/valtozott.txt"; then echo "eloszures=igen" >> "$GITHUB_OUTPUT"; else echo "eloszures=nem" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq "$GERINC" "$RUNNER_TEMP/valtozott_g.txt"; then echo "gerinc=igen" >> "$GITHUB_OUTPUT"; else echo "gerinc=nem" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq "$ELOSZ" "$RUNNER_TEMP/valtozott_e.txt"; then echo "eloszures=igen" >> "$GITHUB_OUTPUT"; else echo "eloszures=nem" >> "$GITHUB_OUTPUT"; fi
 
       - name: Terkep generalasa (GERINC_TERKEP, F124)
         id: gerinc
