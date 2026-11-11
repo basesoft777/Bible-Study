@@ -368,8 +368,8 @@ A végén: a lap egyszer újragenerálva (F182.58; a melléklet nem változott);
 | nyílt mag, angol pár (Sonnet subagent: kb. 30 mp) (F182.57) | 12:03 | 12:06 | 3 perc |
 | lap újragenerálása, lapdiff (F182.58) | 12:06 | 12:08 | 2 perc |
 | lapnézet, saját átnézés | 12:08 | 12:12 | 4 perc |
-| CI, `ellenoriz.py`, tesztek, alapvonal; E32/E37 (F182.59) | 12:12 | 12:42 | 30 perc (ebből kb. 20 perc várakozás a közös ellenőrzési zárra) |
-| jelentés, push | 12:42 | 12:45 | 3 perc |
+| CI, `ellenoriz.py`, tesztek, alapvonal; E32/E37 (F182.59) | 12:12 | 12:37 | 25 perc (ebből kb. 20 perc várakozás a közös ellenőrzési zárra) |
+| jelentés, push | 12:37 | 12:40 | 3 perc |
 
 ### Nyitott pontok
 
