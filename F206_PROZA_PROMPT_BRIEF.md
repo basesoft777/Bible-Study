@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/epic-hawking-d0313a
+pr: 705
 ad: gyökérok-tábla a lektor 46 tételére, a független ellenőr 17 eltérésére és a gépi versellenőrzés 14 eltérésére; a 10. sablonban „Állítás a versről — írás közben” hét szabállyal és valós rossz/jó példapárokkal, a belső-szó szabály pontosítva; a 9. sablonban a lap eleje és a Kivonat határszabályának egyezése; a proza_allitas.py két új ⚑ jelzése (kapcsolat-állítás, hatókör) teszttel
 kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az ISTENTISZT-001 U3 menete ezzel a prompttal fut; az olvasói kapu bővítése (N-F206a) a #699 merge-e után"
 munka: folyamat
