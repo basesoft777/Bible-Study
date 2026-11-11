@@ -54,7 +54,7 @@ akkor javítottam, és a próbát a javított szabállyal futtattam. A ⛔ szán
 | **v3 (végleges)** | **0 / 28** | **7** | **1** | **1** | **7** |
 
 A v1 a 40 soron még több hasznot adott, mint zajt (8 : 4); a 200 ponton már nem (8 : 28). A v2 és a v3 elvi javítás, nem egyes sorokra
-szabott, de a „0 téves riasztás” **mintán belüli** érték: a döntés, hogy ez elég-e, a felhasználóé (DT-F196a, 🟡); a mintán kívüli
+szabott, de a „0 téves riasztás” **mintán belüli** érték: a felhasználó döntése (DT-F196a, 🟢, 2026-11-11): a tanú kikapcsolva kerül be, és csak egy független, kb. 40 soros kézi szúrópróba után kapcsolható be (N-F196a); a mintán kívüli
 mérés a következő vak minta (N-F196b).
 
 ## 3. A seed-103 200 pontjának újramérése
