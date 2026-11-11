@@ -165,6 +165,23 @@ def karoli_megfelelok(sorai, tabla=None):
     return sorted(((l, alak[l], sorted(h, key=vers_kulcs)) for l, h in hely.items()), key=lambda x: (-len(x[2]), x[0]))
 
 
+CSALAD_MIN = 5   # a ragozott maradék a legalább ennyi betűs szótári alakba olvad („erőszakossággal” → „erőszak”)
+
+
+def szocsalad(tetel):
+    """F182 (A24; javítókör, ELLENOR_F182 #9): [(szótári alak, [szóalak], [igehely])] a `karoli_megfelelok` tételeiből,
+    szócsaládonként: a ragozott maradék (a szótárialak-tábla hiánya) a rövidebb, legalább `CSALAD_MIN` betűs szótári
+    alakba olvad. A 4.13 prózája és listája ugyanezt a szabályt használja (egy szabály, egy hely)."""
+    d = collections.OrderedDict((l, (list(a), list(h))) for l, a, h in tetel)
+    for l in sorted(d, key=len, reverse=True):
+        alap = next((x for x in d if x != l and len(x) >= CSALAD_MIN and l.startswith(x)), None)
+        if alap:
+            a, h = d.pop(l)
+            d[alap][0].extend(w for w in a if w not in d[alap][0])
+            d[alap][1].extend(x for x in h if x not in d[alap][1])
+    return sorted(((l, a, sorted(h, key=vers_kulcs)) for l, (a, h) in d.items()), key=lambda x: (-len(x[2]), x[0]))
+
+
 def grammatikai_strongok():
     if 'gram' not in _CACHE:
         fej, sorok = _sorok(GRAMMATIKAI)
@@ -356,14 +373,20 @@ def _prov(scope, forras, n, ts):
     return '*(proveniencia: scope=%s | forras=%s | n=%d | ts=%s)*' % (scope, forras, n, ts)
 
 
-def blokk_13(sorai, ts):
-    """A 13. szerep bekezdései (lista); üres, ha a motívumsoroknak nincs `karoli_szo`-ja."""
+def blokk_13(sorai, ts, csalad=False):
+    """A 13. szerep bekezdései (lista); üres, ha a motívumsoroknak nincs `karoli_szo`-ja. `csalad` (F182 javítókör, az új
+    szerkezetű lap): a lista szócsaládonként (`szocsalad`), a próza (`lexikon_general.olvasoi_13_szavankent`) alapján."""
     mid = sorai[0]['id'] if sorai else ''
     tetel = karoli_megfelelok(sorai)
     if not tetel:
         return []
     out = ['*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként '
            '(`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*']
+    if csalad:
+        tetel = szocsalad(tetel)
+        out = ['*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szócsaládonként: a '
+               'szótári alak (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), a ragozott maradék a rövidebb szótári '
+               'alakba olvasztva, névelő nélkül; a szóalakok, és hány igehelyen, melyiken.*']
     out.append('\n'.join('- **%s** (%d) — %s: %s' % (l, len(h), ', '.join(a), ', '.join(h)) for l, a, h in tetel))
     if szpa_aktiv():
         out.append('*+SZPA (konkordáns alternatíva): jelölt hiány — a hiány nincs kitöltve.*')

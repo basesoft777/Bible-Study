@@ -2607,7 +2607,6 @@ def olvasoi_13(sorai):
 # alatt) a szóról nincs következtetés (K10).
 KAROLI_MIN_HELY = 3
 KAROLI_ALLANDO = 0.67
-CSALAD_MIN = 5   # a ragozott maradék a legalább ennyi betűs szótári alakba olvad („erőszakossággal” → „erőszak”)
 
 
 def _szo_irassal(strong):
@@ -2632,13 +2631,9 @@ def _idezett_nevelovel(w):
 
 
 def _szocsalad(tetel):
-    """[(szótári alak, [igehely])] a karoli_megfelelok tételeiből, a ragozott maradék a rövidebb alakba olvasztva."""
-    d = collections.OrderedDict((l, list(h)) for l, _a, h in tetel)
-    for l in sorted(d, key=len, reverse=True):
-        alap = next((x for x in d if x != l and len(x) >= CSALAD_MIN and l.startswith(x)), None)
-        if alap:
-            d[alap] += [h for h in d.pop(l) if h not in d[alap]]
-    return sorted(d.items(), key=lambda x: (-len(x[1]), x[0]))
+    """[(szótári alak, [igehely])] a karoli_megfelelok tételeiből, a ragozott maradék a rövidebb alakba olvasztva (a
+    szabály egy helyen: `szerep_karoli.szocsalad`; a 4.13 listája is ezt használja)."""
+    return [(l, h) for l, _a, h in SZK.szocsalad(tetel)]
 
 
 def karoli_szavankent(sorai):
@@ -2661,8 +2656,9 @@ def olvasoi_13_szavankent(sorai):
     merheto = [(k, db, cs) for k, db, cs in szavak if db >= KAROLI_MIN_HELY]
     reszek = ['%s %d helyéből %d helyen „%s”' % (_kombo_nevelovel(k), db, len(cs[0][1]), cs[0][0])
               for k, db, cs in merheto]
-    lelet = ('A motívum %d igehelyén a Károli %d különböző magyar szót használ (szótári alakonként). A motívumot több héber '
-             'és görög szó hordozza, ezért a magyar szavakat szavanként érdemes nézni' % (n, len(tetel)))
+    # F182 javítókör (ELLENOR_F182 #9): a szám a 4.13 listájáéval egy alapon, szócsaládonként
+    lelet = ('A motívum %d igehelyén a Károli %d különböző magyar szót használ (szócsaládonként). A motívumot több héber '
+             'és görög szó hordozza, ezért a magyar szavakat szavanként érdemes nézni' % (n, len(SZK.szocsalad(tetel))))
     lelet += (': a legalább %d helyen álló szavaknál a leggyakoribb magyar szó %s.' % (KAROLI_MIN_HELY, '; '.join(reszek))
               if reszek else '; egyik szó sem áll %d helynél többen.' % (KAROLI_MIN_HELY - 1))
     kevés = len(szavak) - len(merheto)
@@ -4594,7 +4590,7 @@ def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
     if not sorai or sorai[0].get('id') not in SZEREP_KAROLI_MOTIVUMOK:
         return []
     uj = uj_szerkezet(sorai[0].get('id'))
-    out = (SZK.blokk_13(sorai, G.TS) if n == 13 else
+    out = (SZK.blokk_13(sorai, G.TS, csalad=uj) if n == 13 else
            SZK.blokk_14(sorai, G.TS, szo_nev=_szo_irassal if uj else _szo_kiejtessel, tomor=uj, kulcs_nev=_kombo_nev))
     if out:
         ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')

@@ -159,6 +159,9 @@ _k('mond', 'monda', 'mondá', 'mondék', 'mondának', 'mondotta', 'mondja', ige=
 _k('van', 'vala', 'valának', 'valék', 'valál', 'valánk', 'valátok', 'volt', 'voltak', 'vagyon', 'vagynak', 'vagyok', 'vagyunk', 'vagytok',
    ige=True)
 _k('nincs', 'nincsen', 'nincsenek')
+# F182 javítókör (ELLENOR_F182 #9): az -ik-es ige szótári alakja a szabály „megroml” csonkja helyett (a HAMART-001 4.13-a,
+# Zsolt 14:1, 53:2; a többi -ik-es csonk, pl. „elroml”, „leroml”: N-F182i)
+_k('megromlik', 'megromlott', 'megromlottak', 'megromlottam', 'megromlunk', ige=True)
 _k('lesz', 'lesz', 'lesznek', 'leszek', 'leszel', 'leszünk', 'lesztek', ige=True)
 _k('visz', 'visz', 'viszen', 'visznek', ige=True)
 _k('hisz', 'hisz', 'hiszen', 'hisznek', ige=True)

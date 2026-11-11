@@ -82,6 +82,16 @@ class Szintetikus(unittest.TestCase):
         self.assertEqual([x[0] for x in h], ['V 2:2'])            # 2:1 gerinces, 2:3-ból hiányzik a kulcsszó, 1:1 saját
         self.assertEqual(h[0][2], ['H1'])                          # a részleges gerinc kiíródik
 
+    def test_szocsalad(self):
+        """F182 javítókör (ELLENOR_F182 #9): a ragozott maradék a rövidebb szótári alakba olvad, a helyek egyszer."""
+        tetel = [('erőszakossággal', ['erőszakossággal'], ['V 1:1', 'V 1:2']), ('erőszak', ['erőszak'], ['V 1:3']),
+                 ('erőszaktétel', ['erőszaktétel'], ['V 1:2']), ('föld', ['föld'], ['V 2:1'])]
+        cs = SK.szocsalad(tetel)
+        self.assertEqual(cs[0][0], 'erőszak')
+        self.assertEqual(cs[0][2], ['V 1:1', 'V 1:2', 'V 1:3'])
+        self.assertEqual(set(cs[0][1]), {'erőszak', 'erőszakossággal', 'erőszaktétel'})
+        self.assertEqual([x[0] for x in cs], ['erőszak', 'föld'])
+
     def test_hamis_tartomany_kulcs(self):
         """F182 javítókör (ELLENOR_F182 #3): a tartomány-kulcsú motívumsor („V 3:1-2”) minden verse a motívumé, ezért
         egyik sem kerülhet a hamis párhuzamok közé (a hiba: a 4.14 hat motívumverset, pl. a Gal 3:13-at, hamisnak mért)."""

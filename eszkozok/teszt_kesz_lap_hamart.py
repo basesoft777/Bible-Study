@@ -100,6 +100,20 @@ class Lap(unittest.TestCase):
         self.assertIn('ezzel a módszerrel nem mérhető', self.lap)
         self.assertNotIn('### A motívum kulcsszavai', self.lap)
 
+    def test_413_lista_es_proza_egy_alapon(self):
+        """F182 javítókör (ELLENOR_F182 #9): a 4.13 listája a prózával egy alapon (szócsaládonként) számol, és a
+        szótári alak szó („megromlik”, nem „megroml”)."""
+        p413 = self.lap.split('#### 4.13. Károli-megfelelők', 1)[1].split('#### 4.14.', 1)[0]
+        m = re.search(r'a חָמָס \(chámász\) (\d+) helyéből (\d+) helyen „erőszak”', p413)
+        self.assertIsNotNone(m)
+        lista = re.search(r'^- \*\*erőszak\*\* \((\d+)\)', p413, re.M)
+        self.assertIsNotNone(lista)
+        self.assertEqual(lista.group(1), m.group(2))
+        self.assertNotIn('**megroml**', p413)
+        self.assertIn('**megromlik**', p413)
+        n_proza = int(re.search(r'a Károli (\d+) különböző magyar szót használ \(szócsaládonként\)', p413).group(1))
+        self.assertEqual(n_proza, len(re.findall(r'^- \*\*', p413, re.M)))
+
     def test_a15_rokon_tabla_a_48_ban(self):
         heber = self.lap.split('### Héber szavak', 1)[1]
         p48 = heber.split('#### 4.8. Nyelvi háttér', 1)[1].split('#### 4.9.', 1)[0]
