@@ -16,7 +16,7 @@
 | (2a) stílusosztály-nevek ütközése | **ELTÉRÉS** | `arculat_szinkron.py:262-268`; `olvaso.css:39, 57, 102, 105, 185, 203, 208, 213` | a stílusosztály neve a betűméret-kulcs; legalább 11 egyben szerverosztály (`.versszam`, `.jelleg`, `.sor`, `.ubs`, `.logo`, `.torzs`, `.igehely`, `.utmutato`, `.lxx-sor`, `.allapot`, `.szoalcim`). Az előnézetben a szerver markupja idegen `font-family`-t, `line-height`-ot, `letter-spacing`-et kap |
 | (3) bundle.css változói | OK | `arculat_szinkron.py:276-284` | az `--fs/--lh/--space/--radius` négy előtagon kívüli minden hivatkozás (színek, `arnyek`, `g-*`, `--font-*`) a tokens.css-ből jön; az olvaso.css nem definiál változót |
 | (4) DT153/DT154 | OK | `arculat_szinkron.py:15, 148, 177` | `7e12a25f szamkiosztas: DT-F98a → DT153, DT-F98b → DT154`; tartalmilag is egyezik |
-| A1–A6 | OK / nem alkalmazható | — | eszközkód, nincs adatállítás; az N-F195a állapota ellenőrizve |
+| A1–A6 | OK / nem alkalmazható | — | eszközkód, nincs adatállítás; az N156 állapota ellenőrizve |
 | CI | OK | — | `futtat.py --valtozott … --diff-alap 7095bc63 --diff-fej 849e589a`: kilépési kód 0, E32 = 0; az E25/E27/E34 jelzései a diffen kívüli, meglévő fájlokra |
 | Ellenőrzőlista 1–5 | OK | — | 6 törölt sor (3 helyőrző-csere, 2 kiírás-átírás, 1 tesztbővítés); `adat/`, `konkordancia/` Δ = 0; a ⛔ betartva |
 
