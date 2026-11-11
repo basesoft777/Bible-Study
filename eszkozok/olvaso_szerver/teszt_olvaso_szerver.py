@@ -9,6 +9,7 @@ Környezeti változók:
 
 A tesztek csak olvasnak; a pardes.db-t nem módosítják, a repóba nem írnak.
 """
+import math
 import os
 import re
 import sqlite3
@@ -597,14 +598,16 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(blokkok._rovidites(K(), blokkok.Markup('<p>in Sh®°ôl</p>'))), '<p>in Sheʾôl</p>')
 
     def test_bdb_proba_es_mert_pontossag(self):
-        """DT-F99l (c), F102 DT-F102c (a): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll
-        (F102, seed-102: 183/200)."""
+        """DT-F99l (c), F185 DT-F185e: a BDB-blokkban a nyers mért pontosság és a konfidencia-intervallum áll (seed-103: 188/200,
+        a szakasztábla hozzárendelése), a „próba” felirat nélkül, a kétes pontok jelölésének említésével."""
         t = self.get('/r/szo/H7451').get_data(as_text=True)
-        self.assertIn('Gépi szeletelés (próba)', t)
-        self.assertIn('91,5%', t)
-        self.assertIn('86,7–95,0%', t)
-        self.assertNotIn('92,0%', t)          # a seed-101 régi száma
-        self.assertNotIn('93,0%', t)          # az ítélet utáni érték csak a naplóban
+        self.assertIn('Gépi szeletelés:', t)
+        self.assertNotIn('(próba)', t)
+        self.assertIn('kétes pontjai', t)
+        # F185 (DT-F185h, a felhasználó döntése): a mért pontosság a dobozban nem áll (az adat a konfigban marad)
+        self.assertNotIn('Mért pontosság', t)
+        self.assertNotIn('94,0%', t)
+        self.assertNotIn('91,5%', t)
 
     def test_bdb_jelentes_cime_es_vazlata(self):
         """A főjelentés címe a szócikk saját szavaiból képződik (gépi): saját szöveg híján az első alpontéból (H0776 אֶרֶץ: 1 „föld”,
@@ -1417,20 +1420,29 @@ def _gyok(f):
     return (lo + hi) / 2
 
 
+def _wilson(k, n, z=1.959964):
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+
+
 class TestF104Egysegek(unittest.TestCase):
     """Adatbázis nélkül: a pontosság egy forrásból, a hivatkozás-felismerés, a jelölő a saját fixture-ön (tippelés nélkül)."""
 
     def test_bdb_pontossag_egy_forrasbol(self):
         p = blokkok.BDB_PONTOSSAG
-        self.assertEqual((p['talalt'], p['minta']), (183, 200))           # DT658 (a): a seed-102 nyers száma (F102 14.)
-        self.assertIn('91,5%', blokkok.BDB_MERT_PONTOSSAG)
-        self.assertIn('86,7–95,0%', blokkok.BDB_MERT_PONTOSSAG)
-        also, felso = _clopper_pearson(p['talalt'], p['minta'])
+        self.assertEqual((p['talalt'], p['minta']), (188, 200))           # F185 (DT-F185e): a seed-103 nyers száma (F185 8.)
+        self.assertIn('94,0%', blokkok.BDB_MERT_PONTOSSAG)
+        self.assertIn('89,8–96,5%', blokkok.BDB_MERT_PONTOSSAG)
+        # F185: a seed-103 eljárása (naplok/F185_jelentes.md 4.5) Wilson-féle 95%-os intervallumot rögzített (a seed-102 Clopper–Pearson volt)
+        also, felso = _wilson(p['talalt'], p['minta'])
         self.assertEqual(round(also * 100, 1), p['ci_also'])
         self.assertEqual(round(felso * 100, 1), p['ci_felso'])
         self.assertTrue(p['proveniencia'].startswith('scope=') and '| forras=' in p['proveniencia'] and '| ts=' in p['proveniencia'])
         forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
-        for szam in ('91,5', '86,7', '95,0', '183/200'):
+        for szam in ('94,0', '89,8', '96,5', '188/200'):
             self.assertNotIn(szam, forras, 'a szám kézzel a kódban: %s' % szam)
         self.assertIn('title="proveniencia: scope=', str(blokkok._pontossag_html()))
 
@@ -1503,7 +1515,7 @@ class TestF104BdbJeloles(unittest.TestCase):
     def jeloles_nelkul(b):
         """A blokk a jelölés elemei nélkül: a doboz, a felirat, a próba-bekezdés és a jelölő osztályok ki."""
         b = re.sub(r'<div class="bdb-ebben">.*?</div>', '', b, flags=re.S)
-        b = re.sub(r'<p class="megj">Gépi szeletelés \(próba\).*?</p>', '', b, flags=re.S)
+        b = re.sub(r'<p class="megj">Gépi szeletelés:.*?</p>', '', b, flags=re.S)
         b = re.sub(r'<span class="bdb-jelzes"[^>]*>[^<]*</span>', '', b)
         b = re.sub(r' class="bdb-(?:itt|vonatkozhat)"', '', b)
         return b.replace('igehely bdb-itt', 'igehely').replace('igehely bdb-vonatkozhat', 'igehely').replace(
@@ -1555,8 +1567,8 @@ class TestF104BdbJeloles(unittest.TestCase):
         for u in ('/r/szo/H1242?ig=1Moz/1/5', '/r/szo/H3615?ig=1Moz/6/16', '/r/szo/H7451?ig=1Moz/19/19'):
             b = self.blokk(u)
             doboz = re.search(r'<div class="bdb-ebben">.*?</div>', b, re.S).group(0)
-            self.assertIn('Gépi szeletelés (próba)', doboz, u)
-            self.assertIn(blokkok.BDB_MERT_PONTOSSAG, doboz.replace('&#34;', '"'), u)
+            self.assertIn('Gépi szeletelés:', doboz, u)
+            self.assertNotIn('Mért pontosság', doboz, u)          # DT-F185h
 
     def test_pontos_hivatkozasszam(self):
         """A szám a tábla feloldott, szűrt hivatkozásaié (szurt=0, maszoréta vers), csomópontonként és a címszónál."""

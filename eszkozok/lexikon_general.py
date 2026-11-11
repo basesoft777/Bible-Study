@@ -3921,13 +3921,21 @@ BDB_JAHVE_CIM = BR.JAHVE_CIM
 BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 
 
+# A BETŰJAVÍTÁS KAPCSOLÓJA (F185, DT-F185f, orkesztrátori döntés, 2026-11-10): a 2.31 pe/mem és rés/dálet javításait
+# (`bdb_rovidites.betu_javit`) a lexikon-generátor csak bekapcsolt állapotban alkalmazza; ma ki van kapcsolva, így minden lap
+# bájtra a korábbi alakjában generálódik (E28). Tömeges újragenerálás nincs: a #182 kapcsolja be, a lapok motívumonként, a
+# teljes folyamatban kapják meg (az F35 mellé). Az olvasó (`olvaso_szerver/blokkok.py`) a javítást mindig alkalmazza.
+# A kapcsoló egyetlen helye ez.
+BDB_BETU_JAVIT = False
+
+
 def bdb_rovidites_jelol(szoveg, strong):
     """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a torz átírás javítása (B3; a magyar bekezdésben a magyar
     alak, a „fordításra vár” jelű angol bekezdésben a helyreállított átírás), a Biblia által igazolt héber sorrend-javítás,
     a futam utáni szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
     lk = lemma_kiejtes(strong)
     szoveg = BR.atiras_javit(szoveg, strong, magyar=FORDITASRA_VAR not in szoveg)
-    szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong))
+    szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong, betu=BDB_BETU_JAVIT))
     return BR.jelol(szoveg, lemma_cim(lk) if lk else '', BR.alapbetu(lk[0]) if lk else '')
 
 

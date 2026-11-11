@@ -43,7 +43,7 @@ KI_UT = os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv')
 MEM, PE, DAG = 'מ', 'פ', 'ּ'
 HEBER_SZO = re.compile(r'[֐-׿]+')
 FEJLEC = ['strong', 'sorszam', 'bdb_id', 'hiba', 'szo_sorszam', 'elofordulas', 'forras_alak', 'javitott_alak',
-          'allapot', 'indok', 'proveniencia']
+          'allapot', 'indok', 'proveniencia', 'tanu']
 
 
 def sha256_fajl(ut):
@@ -121,11 +121,15 @@ def tabla_sorok():
     return [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
 
 
-def general(ts, ts_heber=None, ts_atiras=None, ts_vers=None):
+def general(ts, ts_heber=None, ts_atiras=None, ts_vers=None, ts_tanu=None, sefaria_cache=None):
     lex = lexikon_szavak()
     ki, stat = [], collections.Counter()
     prov = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=%s'
-    for r in tabla_sorok():
+    prov_tanu = 'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc) + belso_tanu.py | ts=%s'
+    cache = SEFARIA_CACHE if sefaria_cache is None else sefaria_cache
+    tsor = tabla_sorok()
+    szov = _strong_szovegek(tsor)
+    for r in tsor:
         szavak = HEBER_SZO.findall(unicodedata.normalize('NFD', r['szoveg']))
         for si, szo in enumerate(szavak, 1):
             helyek = mem_dagesh_helyek(szo)
@@ -145,16 +149,138 @@ def general(ts, ts_heber=None, ts_atiras=None, ts_vers=None):
                     allapot, jav, indok = 'valodi_mem', '', 'a dagesses mem-es alak a %s szócikkben áll: nem hiba' % r['bdb_id']
                 else:
                     allapot, jav, indok = 'jelolt_marad', '', 'egyik alak sincs a %s szócikk héber szavai között' % r['bdb_id']
+                tanu, sts = '', ts
+                if allapot == 'jelolt_marad':
+                    # F185 P4: tanús döntés (belső tanú, ahol kétes: Sefaria-gyorsítótár)
+                    jel = [egy] + ([mind] if len(helyek) > 1 else [])
+                    itelet, tanu = _tanu_dont(r['strong'], szov[r['strong']], set(jel), szo, cache,
+                                              kulcs=(r['strong'], r['sorszam'], 'pe_mem', str(si), str(ei), szo))
+                    sts = ts_tanu or ts
+                    if itelet == 'javit':
+                        import belso_tanu as BT
+                        s1 = BT.tanu_halmaz()[0]
+                        jav = egy if BT.norm1(egy) in s1 or len(helyek) == 1 else mind
+                        allapot, indok = 'javitva', 'a pe-s alak a tanúban áll, a mem-es nem (%s)' % tanu
+                    elif itelet == 'marad':
+                        indok += '; a mem-es alak létező szó (a helyet nem igazolja; %s)' % tanu
+                    else:
+                        indok += '; a tanú nem dönt (%s)' % tanu
                 stat[allapot] += 1
                 ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'pe_mem', str(si), str(ei), szo, jav, allapot, indok,
-                           prov % (r['strong'], ts)])
+                           (prov_tanu if tanu else prov) % (r['strong'], sts), tanu])
     ki.extend(kezi_sorok(stat))
     ki.extend(hivatkozas_sorok(stat, ts))
     ki.extend(kezi_hivatkozas_sorok(stat))
     ki.extend(heber_sorrend_sorok(stat, ts_heber or ts, ts_vers))
     ki.extend(atiras_sorok(stat, ts_atiras or ts))
     ki.extend(kezi_szoveg_sorok(stat))
+    ki.extend(res_dalet_sorok(stat, ts_tanu or ts, cache))
+    for s in ki:
+        while len(s) < len(FEJLEC):
+            s.append('')
     return ki, stat
+
+
+# ---------------------------------------------------------------- tanús döntés (F185 P4; DT-F185c, DT-F185d)
+# A `pe_mem` `jelolt_marad` sorai és az új `res_dalet` osztály a `belso_tanu.py` szabályával: előbb a belső tanú (TAHOT/OSHB, L1,
+# majd L2), ahol az kétes, a Sefaria-BDB ítélete a repón KÍVÜLI gyorsítótárból (`--sefaria-cache`, alap: a `BDB_SEFARIA_CACHE`
+# környezeti változó; nélküle a mai tábla rögzített Sefaria-ítélete marad); ellentmondásnál `ketes`. A `tanu` oszlop: `<tanú>:<szint>:<ítélet>`
+# (`tahot/oshb:L1:javit`, `sefaria-api 2026-11-10:L1:marad`, `tahot/oshb:ketes` …). A `javit` ítélet `javitva` sor (a javított
+# alakkal), a `marad` és a `ketes` `jelolt_marad` (a `marad` csak a szó létezését igazolja, a helyet nem).
+SEFARIA_CACHE = os.environ.get('BDB_SEFARIA_CACHE', '')
+_LEMMA = None
+
+
+def _lemma(strong):
+    global _LEMMA
+    if _LEMMA is None:
+        _LEMMA = {}
+        with open(os.path.join(GYOKER, 'konkordancia', 'Strong_szotar.tsv'), encoding='utf-8') as f:
+            for sor in f:
+                m = sor.rstrip('\n').split('\t')
+                if len(m) > 1 and m[0].startswith('H'):
+                    _LEMMA.setdefault(m[0], m[1])
+    return _LEMMA.get(strong, '')
+
+
+_ROGZITETT = None
+
+
+def _rogzitett(kulcs):
+    """A mai 2.31 `tanu` mezője a sor kulcsán (strong, sorszam, hiba, szo_sorszam, elofordulas, forras_alak); a gyorsítótár
+    nélküli újragenerálás ebből tartja meg a rögzített Sefaria-ítéletet."""
+    global _ROGZITETT
+    if _ROGZITETT is None:
+        _ROGZITETT = {}
+        if os.path.exists(KI_UT):
+            with open(KI_UT, encoding='utf-8') as f:
+                sorok = [x.rstrip('\n').split('\t') for x in f if not x.startswith('#')]
+            fej = sorok[0] if sorok else []
+            for x in sorok[1:]:
+                d = dict(zip(fej, x))
+                if d.get('tanu'):
+                    _ROGZITETT[(d['strong'], d['sorszam'], d['hiba'], d['szo_sorszam'], d['elofordulas'], d['forras_alak'])] = d['tanu']
+    return _ROGZITETT.get(kulcs, '')
+
+
+def _tanu_dont(strong, szoveg_strong, jeloltek, hibas, cache, csak_l1=False, kulcs=None):
+    import belso_tanu as BT
+    belso = BT.belso_itelet(jeloltek, hibas)
+    if csak_l1 and belso[1] == 'L2':
+        # rés/dálet: a jelöltet maga a vázszűrés választotta, ezért a belső vázszint körkörös — csak az L1 dönt
+        belso = ('ketes', 'L1')
+    kulso = ('', '')
+    if belso[0] == 'ketes':
+        kulso = BT.sefaria_itelet(cache, _lemma(strong), szoveg_strong, jeloltek, hibas)
+        if kulso == ('', '') and kulcs is not None:
+            # a gyorsítótár nélkül (vagy a szó nincs benne) a rögzített Sefaria-ítélet marad (SEMA 2.31 `tanu`)
+            kulso = BT.rogzitett_itelet(_rogzitett(kulcs))
+    return BT.osszesit(belso, kulso)
+
+
+def _strong_szovegek(sorok):
+    ki = collections.defaultdict(list)
+    for r in sorok:
+        ki[r['strong']].append(r['szoveg'])
+    return {k: ' '.join(v) for k, v in ki.items()}
+
+
+def res_dalet_sorok(stat, ts, cache):
+    import belso_tanu as BT
+    sorok = tabla_sorok()
+    szov = _strong_szovegek(sorok)
+    ki = []
+    for r, k, w, alt in BT.res_dalet_jeloltek(sorok):
+        itelet, tanu = _tanu_dont(r['strong'], szov[r['strong']], {alt}, w, cache, csak_l1=True,
+                                  kulcs=(r['strong'], r['sorszam'], 'res_dalet', str(k), '', w))
+        if itelet == 'javit':
+            allapot, jav, indok = 'javitva', alt, 'a rés/dálet-cserélt alak a tanúban áll, a forrásé nem (%s)' % tanu
+        elif itelet == 'marad':
+            allapot, jav, indok = 'jelolt_marad', '', 'a forrás alakja létező szó (a helyet nem igazolja; %s)' % tanu
+        else:
+            allapot, jav, indok = 'jelolt_marad', '', 'a tanú nem dönt (%s)' % tanu
+        stat['res_dalet_' + allapot] += 1
+        ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'res_dalet', str(k), '', w, jav, allapot, indok,
+                   'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc) + belso_tanu.py | ts=%s' % (r['strong'], ts), tanu])
+    return ki
+
+
+def sefaria_lekerdezendo(cache=''):
+    """A belső tanú után kétes `pe_mem` `jelolt_marad` és `res_dalet` sorok Sefaria-lekérdező szavai (a hívó szkript a repón kívül
+    kérdez; ez a lista determinisztikus)."""
+    import belso_tanu as BT
+    sorok, _ = general('x', sefaria_cache='')
+    ki = []
+    for s in sorok:
+        if s[3] in ('pe_mem', 'res_dalet') and s[11].startswith(BT.BELSO_TANU + ':ketes'):
+            jel = {s[7]} if s[7] else ({cserel(s[6], [h]) for h in mem_dagesh_helyek(s[6])} if s[3] == 'pe_mem' else set())
+            if s[3] == 'res_dalet' and not jel:
+                jel = {BT.csere(s[6], i) for i, ch in enumerate(BT.vaz(s[6])) if ch in 'רד'}
+            for q in BT.sefaria_kerdesek(_lemma(s[0]), jel):
+                if q not in ki:
+                    ki.append(q)
+    return ki
+
 
 
 # ---------------------------------------------------------------- heber_sorrend (N-F131y, DT445)
@@ -629,10 +755,11 @@ def kezi_sorok(stat):
     return ki
 
 
-def fajl_szoveg(sorok, ts, ts_heber=None, ts_atiras=None, ts_vers=None):
+def fajl_szoveg(sorok, ts, ts_heber=None, ts_atiras=None, ts_vers=None, ts_tanu=None):
     fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s%s — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben (a heber_sorrend sorok a forrás alakjában).'
            % (ts, (' --ts-heber-sorrend %s' % ts_heber if ts_heber else '') + (' --ts-atiras %s' % ts_atiras if ts_atiras else '')
-              + (' --ts-hivatkozott-vers %s' % ts_vers if ts_vers else '')),
+              + (' --ts-hivatkozott-vers %s' % ts_vers if ts_vers else '') + (' --ts-tanu %s' % ts_tanu if ts_tanu else '')
+              + ' --sefaria-cache <a repón kívüli Sefaria-gyorsítótár; nélküle a rögzített Sefaria-ítéletek maradnak>'),
            '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás és darabhatár) + '
            'konkordancia/lexikonok_nyers/DictBDB.json@%s + konkordancia/TAHOT_kivonat.tsv@%s (heber_sorrend) + '
            'konkordancia/BDB_teljes_unabridged.tsv@%s + adat/bdb_vers_jelentes.tsv@%s (adatsorok, a fejléc nélkül; heber_sorrend, hivatkozott vers; F105) + kód@%s'
@@ -648,15 +775,17 @@ def main():
     ap.add_argument('--ts-heber-sorrend', help='a heber_sorrend sorok proveniencia-ts-e (alap: --ts)')
     ap.add_argument('--ts-atiras', help='az atiras sorok proveniencia-ts-e (alap: --ts)')
     ap.add_argument('--ts-hivatkozott-vers', help='a hivatkozott-vers-próbával javított heber_sorrend sorok ts-e (alap: --ts; F105)')
+    ap.add_argument('--ts-tanu', help='a tanús döntésű pe_mem és a res_dalet sorok ts-e (alap: --ts; F185 P4)')
+    ap.add_argument('--sefaria-cache', default=None, help='a Sefaria-válaszok gyorsítótára (a repón kívül; alap: BDB_SEFARIA_CACHE)')
     ap.add_argument('--meres', action='store_true')
     ap.add_argument('--ellenoriz', action='store_true')
     a = ap.parse_args()
-    sorok, stat = general(a.ts, a.ts_heber_sorrend, a.ts_atiras, a.ts_hivatkozott_vers)
+    sorok, stat = general(a.ts, a.ts_heber_sorrend, a.ts_atiras, a.ts_hivatkozott_vers, a.ts_tanu, a.sefaria_cache)
     print('sor: %d (pe_mem + kezi); %s; érintett Strong (javitva): %d' % (
         len(sorok), dict(stat), len(set(s[0] for s in sorok if s[8] == 'javitva'))))
     if a.meres:
         return 0
-    szoveg = fajl_szoveg(sorok, a.ts, a.ts_heber_sorrend, a.ts_atiras, a.ts_hivatkozott_vers)
+    szoveg = fajl_szoveg(sorok, a.ts, a.ts_heber_sorrend, a.ts_atiras, a.ts_hivatkozott_vers, a.ts_tanu)
     if a.ellenoriz:
         with open(KI_UT, encoding='utf-8', newline='') as f:
             if f.read() != szoveg:

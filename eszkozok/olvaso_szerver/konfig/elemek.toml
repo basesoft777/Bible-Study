@@ -964,7 +964,7 @@ tulajdonsag = [
 # F104 (FELADATOK #104, DT178): a BDB-blokk vers szerinti jelölése (a versből megnyitott szó-lapon)
 [[elem]]
 id = "bdb-ebben"
-nev = "BDB „Ebben a versben” doboz (a próba felirattal és a mért pontossággal)"
+nev = "BDB „Ebben a versben” doboz (a szeletelés megjegyzésével és a mért pontossággal)"
 csoport = "BDB-jelentésszerkezet"
 szelektor = ".bdb-ebben"
 tulajdonsag = [
@@ -1335,7 +1335,7 @@ tan-olvaso = "a tanulmány-oldal „Az olvasóban” sora (F149): a muted színt
 tan-toc = "a tanulmány-oldal szakaszjegyzéke (F149): tisztán szerkezeti"
 szint-3 = "a tanulmány-oldal szakaszjegyzékében a ### címsor behúzása (F149): tisztán szerkezeti"
 tan-szoveg = "a tanulmány-oldal generált szövege (F149): tisztán szerkezeti"
-bdb-pontossag = "szövegrész-horog (F104): a BDB-szeletelő mért pontossága a próba felirat mellett, proveniencia-súgóval; a megjegyzés (megj) tokenjeit örökli"
+bdb-pontossag = "szövegrész-horog (F104): a BDB vers → jelentéspont hozzárendelés mért pontossága (F185: a próba felirat helyett), proveniencia-súgóval; a megjegyzés (megj) tokenjeit örökli"
 legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-megjegyzes, muted tokenek"
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"

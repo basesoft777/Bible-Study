@@ -1301,8 +1301,9 @@ def _okok(vj, dom):
     return sorted({o for r in vj.gyenge if r['_dom'] == dom for o in _vj_bizonytalan(r)})
 
 
-# DT-F99l (c) (felhasználó, 2026-10-15): a BDB-szeletelő „próba” jelöléssel élesedik; a lapon a NYERS mért pontosság áll (Clopper–Pearson
-# 95%), az ítélet utáni érték csak a naplóban. F102 (DT658 (a)): a seed-102 nyers száma; a „próba” jelölés marad (a 97%-os mérce nem teljesült).
+# DT-F99l (c) (felhasználó, 2026-10-15): a lapon a NYERS mért pontosság áll (95%-os CI), az ítélet utáni érték csak a naplóban.
+# F185 (DT-F185e, orkesztrátori döntés, 2026-11-10): a „próba” felirat kivezetve; helyette a mért szám (seed-103, a szakasztábla
+# hozzárendelése, valóban vak) és az, hogy a kétes pontok jelölve vannak („vonatkozhat”, `bdb_vj_szabaly.BIZONYTALAN_PONT`).
 # F104: a szám egyetlen forrása a `konfig/bdb_pontossag.toml` (proveniencia-sorral); a százalék a találat / minta hányadosa.
 def _bdb_pontossag_betolt(nev='bdb_pontossag.toml'):
     import tomllib
@@ -1396,7 +1397,7 @@ def _f_bdb_apparatus(K):
 
 
 def _ebben_html(vj, ig, proba):
-    """A BDB-blokk „Ebben a versben” doboza (DT178): erős, gyenge vagy „nem idézi”, a „próba” felirattal és a mért pontossággal
+    """A BDB-blokk „Ebben a versben” doboza (DT178): erős, gyenge vagy „nem idézi”, a szeletelés megjegyzésével és a mért pontossággal
     ugyanabban a dobozban. A pontok a részletes jelentésre ugranak."""
     def pontok(lista):
         ki, lat = [], set()
@@ -1453,8 +1454,11 @@ def _r_bdb_apparatus(d, K):
     ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', ('Lefordítva · %s' % d['meta']) if hu else 'Magyar fordítás nincs · az angol eredeti áll')
     if d['alias']:
         ki += _alias_megj(d['alias'])
-    proba = Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); '
-                   'hibás határ előfordulhat. A szöveg nem változik. %s</p>') % _pontossag_html()
+    # F185 (DT-F185h, a felhasználó döntése, 2026-11-10: „semmi helye ott”): a mért pontosság (`BDB_MERT_PONTOSSAG`) a dobozban
+    # nem áll; az adat a `konfig/bdb_pontossag.toml`-ban és a dokumentációban (SEMA, jelentés) marad, a módszertan helyén
+    proba = Markup('<p class="megj">Gépi szeletelés: a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, '
+                   'törzsnevek); hibás határ előfordulhat. A szöveg nem változik. A vers → jelentéspont hozzárendelés kétes pontjai '
+                   '„vonatkozhat” jelölést kapnak.</p>')
     ki += _ebben_html(vj, ig, proba) if ig else proba
     talalt = set()
     fej = a['fej']
