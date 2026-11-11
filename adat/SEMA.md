@@ -1424,6 +1424,12 @@ találatból nem lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 Kulcs: `strong` + `sorszam` (egyedi; a `strong` + `bdb_id` + `utvonal` a jelöletlen bekezdések miatt nem egyedi — a DT190 kulcsához ez döntendő).
 Állapot (F107.29, 2026-10-18): 36 621 sor; illesztés: `egyezik` 7 916, `szocikk_resze` 30, `reszleges` 94, `sikertelen` 15, `csonk` 35 Strong. A fej-felismerés szabályai (DT229 (a)): a fejet közvetlenül „)”, „,”, „;”, „]” követi → hivatkozás, nem fej; a homonima-szakasz (`szakasz`); a bekezdésen belüli fej (előtte „.”, „—”, „:”, „;” vagy „,”, utána nem „)”, „,”, „;”, „.”, „]”, törzsnév után nem szám; a bekezdés végén csak ha a következő blokk fejjel nyit); a szóköz nélküli kombinált fej („1.a.”) két token A negyedik szabály (DT230 (a), F107.29): a JSON blokk eleji feje hivatkozás, ha a `BDB.lexicon` ugyanazon szócikkében ugyanez a fej a szövegen belül, hivatkozó szó után áll; a fejsorbeli törzsnév („verb Pa`el”) a törzsállapot. Mérés (F107.29): aranyminta 411 / 425 (96,7%), a `forras_hiba` nélkül 411 / 416 (98,8%, elfogadva: DT233; a maradék: N-F107c), seed-101 9 / 13 (9 / 10), korpusz 85,4% (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3, 4.5, 4.8).
 
+**Szócikkhatár a zárójel-töredéknél (F202.2; N147, N103):** a rövid (< 4 ujjlenyomat-token) blokk, amely az előző bekezdés nyitva
+maradt zárójelét zárja („(compare | Niph`al )”, H3988; „(compare מַלְכוּת | 2, מַמְלָכוּת 3).”, H4467), az előző szócikk része, nem a
+következő szócikk-kezdeté (a kettévágott szócikk-kezdet összevonása, DT-F107e (b), korábban a töredéket a következő szócikkhez
+vitte). Érintett: 7 Strong (H3952, H3988, H4467, H4468, H5973, H7704, H8018; a H8018 illesztése `reszleges` helyett `egyezik`); teszt:
+`teszt_bont.F202Szocikkhatar`.
+
 **A `szoveg` és a javítótábla viszonya (DT231 (d), felhasználó, 2026-10-18):** a tábla a nyers szöveget hordozza, a javítás külön
 táblában áll (`bdb_forras_javitas.tsv`, 2.31), a `strong` + `sorszam` (+ `szo_sorszam` / `elofordulas`) kulccsal; a javított szöveg **nézet**
 (`eszkozok/bdb_jelolt/nezet_general.py`: a tábla + a `javitva` sorok), a táblát a javítás nem írja át. A `BDB_teljes_unabridged.tsv` változatlan;

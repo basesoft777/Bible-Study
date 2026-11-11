@@ -666,6 +666,33 @@ class F185Fejek(unittest.TestCase):
         self.assertEqual(len(self.t), 36621)
 
 
+class F202Szocikkhatar(unittest.TestCase):
+    """F202.2 (C1/C2, N147): a nyitott zárójelet záró rövid blokk az előző szócikk vége, nem a következő szócikk-kezdet része."""
+
+    @classmethod
+    def setUpClass(cls):
+        _, sorok = tabla()
+        cls.t = {(d['strong'], d['sorszam']): d for d in sorok}
+
+    def test_egyseg(self):
+        self.assertTrue(bont.zarojel_folytatas('be rejected (compare Niph`al', 'Niph`al )'))
+        self.assertTrue(bont.zarojel_folytatas('the reign of (compare מַלְכוּת', '2, מַמְלָכוּת 3).'))
+        self.assertFalse(bont.zarojel_folytatas('closed (here) text', 'Niph`al )'))
+        self.assertFalse(bont.zarojel_folytatas('open (here', 'II. [מָאַס] verb Niph`al flow (Aramaic id.)'))
+
+    def test_valos(self):
+        # (Strong, a töredék sorszáma, az előző szócikk, a következő szócikk feje)
+        for st, n, elozo, kov in (('H3988', 9, 'BDB4494', 10), ('H4467', 6, 'BDB4679', None), ('H5973', 30, 'BDB6145', 31),
+                                  ('H7704', 7, 'BDB8170', 8)):
+            d = self.t[(st, str(n))]
+            self.assertEqual(d['bdb_id'], elozo, (st, n))
+            self.assertNotEqual(d['utvonal'], 'fej', (st, n))
+            if kov:
+                k = self.t[(st, str(kov))]
+                self.assertNotEqual(k['bdb_id'], elozo, (st, kov))
+                self.assertEqual(k['utvonal'], 'fej', (st, kov))
+
+
 class Determinizmus(unittest.TestCase):
     def test_ellenoriz(self):
         with open(TABLA, encoding='utf-8') as f:

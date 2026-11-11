@@ -265,7 +265,7 @@ class SzocikkhatarValos(unittest.TestCase):
 
     def test_felso_korlat(self):
         j = hi.szocikkhatar_jelentesek(self.szak, self.hu)
-        self.assertLessEqual(len(j), 13, j)
+        self.assertLessEqual(len(j), 4, j)
 
     def test_hamart_szocikkhatarok(self):
         hu = {(r['strong'], r['sorszam']): r for r in self.hu}
