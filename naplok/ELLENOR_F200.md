@@ -23,8 +23,8 @@ ELTÉRÉS: 2 tétel
 | CI | NEM ELLENŐRIZHETŐ | a saját `futtat.py`: **E16 HIBA**, ha a PR címe nem `[ELLENŐRZŐ]` előtagú (a workflow változik); E25/E27/E34 jelentések a diffen kívül |
 | A1, A2, A6 | OK | proveniencia; N-F200a–d új; E12–E15 0 |
 | 1–5. (törlés, kulcstartomány, nulla-diff, TSV Δ, ⛔) | OK | adatsort a diff nem töröl; TSV Δ = 0; a merge a felhasználóé |
-| 10-es sablon, C-a | OK, megjegyzéssel | „a lektor csak az ELTÉR-sorok javítása után indul” szigorúbb a DT-F200b „kilépőkód 0”-jánál, de nem ellentétes |
-| DT-F200a/c/d | OK, megjegyzéssel | „a végrehajtó döntése” 🟢, van előzménye; a felhasználó a merge-nél dönt |
+| 10-es sablon, C-a | OK, megjegyzéssel | „a lektor csak az ELTÉR-sorok javítása után indul” szigorúbb a DT785 „kilépőkód 0”-jánál, de nem ellentétes |
+| DT784/c/d | OK, megjegyzéssel | „a végrehajtó döntése” 🟢, van előzménye; a felhasználó a merge-nél dönt |
 
 **Nem ELTÉRÉS, de figyelendő:** E16 (a PR címe); a „más kulcsszóval” próba egyetlen közös tartalmi szóra is ELTÉR-t ad; az idézetpróba csak a mondaton belüli igehelyekhez mér (az előző mondatban megnevezett vers idézetére téves ELTÉR adódhat).
 

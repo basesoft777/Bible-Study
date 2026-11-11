@@ -1,6 +1,6 @@
 # F201 jelentés — a gépi Actionök három folyamathibája
 
-*2026-11-11 · sonnet · brief: `F201_SZAMKIOSZTAS_BRIEF.md` · döntések: DT-F201a–c (javaslat, jóváhagyás a felhasználóé)*
+*2026-11-11 · sonnet · brief: `F201_SZAMKIOSZTAS_BRIEF.md` · döntések: DT788–c (javaslat, jóváhagyás a felhasználóé)*
 
 ## Mi változott
 | Hiba | Javítás | Hol |
@@ -13,7 +13,7 @@
 **Miért a foglalás, és nem az `F-<ágnév>` helyőrző:** a helyőrző a fájlnevek, mappák, ágnevek és pontszámok merge utáni átnevezését kívánná.
 
 ## Teszt: a számkiosztás utáni E28/E35 (a workflow lépéseinek helyi szimulációja)
-Próba-állapot: a #182 számkiosztása előtti commit (`7095bc63^`, 31 helyőrző: DT-F141a, DT-F182a…r, N-F182a…). A lépések: `szamkiosztas.py --ir`, majd E28 (teljes) és E35.
+Próba-állapot: a #182 számkiosztása előtti commit (`7095bc63^`, 31 helyőrző: DT783, DT-F182a…r, N-F182a…). A lépések: `szamkiosztas.py --ir`, majd E28 (teljes) és E35.
 
 | Lépés | E28 | E35 |
 |---|---|---|
@@ -36,7 +36,7 @@ Az újragenerálás idempotens: a jelenlegi fán lefuttatva (Windows, `autocrlf`
 
 ## Bővítés (az orkesztrátor kérése)
 - **`.py` literálba írt helyőrző (N-F119a, N-F12d):** nincs új szabály, mert az E32 (`eszkozok/ellenorzes/szabalyok.py`, #141) ezt már jelzi az `eszkozok/**/*.py` string-literáljaiban: a már kiosztott és a merge-kor kiosztásra váró helyőrzőt is, PR-ban. A szabály a diff által nem érintett sorokat JELENTÉS-re minősíti (D8), ezért egy régi literál nem blokkol, de látszik. A `szamkiosztas.py` a `.py`-t szándékosan nem írja át (egy kód-literál átírása a tábla és a generátor eltérését rejtené el). Ha egy konkrét eset (pl. `bdb_jelolt/forras_javit.py`) mégis átcsúszott, annak az E32 `--teljes` futása mutatja meg a sorát; ezt külön tétel vizsgálja.
-- **Rossz helyű döntésfájl:** új E26-ág (DT-F201d): a helyőrzős tételt tartalmazó fájl csak a `dontesek/uj/`, `nyitott/uj/` mappában vagy a fő fájlban állhat; a `dontes/`, a `dontesek/` és a `nyitott/` gyökerében álló .md HIBA. Teszt: `test_szamkiosztas.py` (16 teszt zöld).
+- **Rossz helyű döntésfájl:** új E26-ág (DT791): a helyőrzős tételt tartalmazó fájl csak a `dontesek/uj/`, `nyitott/uj/` mappában vagy a fő fájlban állhat; a `dontes/`, a `dontesek/` és a `nyitott/` gyökerében álló .md HIBA. Teszt: `test_szamkiosztas.py` (16 teszt zöld).
 
 ## Az ellenőrzés után (egy javítókör)
 Javítva: (a) a GERINC/ELOSZURES indítása állapotalapú (az utolsó gépi kimenet óta változott fájlok), így egy kiszorított futás változását a következő sem veszti el; (b) a nem numerikus `foglalas/F…` ref nem állítja le a számolást és a takarítást; (c) az E30 a GERINC/ELOSZURES gépi alakot is ismeri, a tartalék első sor a FELADATOK-alak; (d) a brief hatóköri mondata az E26-bővítést is említi.

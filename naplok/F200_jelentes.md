@@ -47,6 +47,6 @@ A javítás után a próba száma változatlan (gépi 5, kézi 18, nem látja 11
 
 - `MUNKAMENET.md` C-szakasz: új **C-a** sor (a C-w után, a C-g és a lektor, C-k előtt); a „lezárás menete” 1. pontja ezzel bővül.
 - `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`: az önellenőrzés után „Állítás-ellenőrzés” lépés: az ELTÉR-sorok javítása a forrásban, a ⚑ tételek átnézése, a kézi lista átadása az olcsó modellnek vagy embernek, mindez a lektor előtt.
-- Kapu-szint JELENTÉS (DT-F200b); CI: a tesztek a „Szabaly-tesztek” lépésben.
+- Kapu-szint JELENTÉS (DT785); CI: a tesztek a „Szabaly-tesztek” lépésben.
 
 (proveniencia: scope=motivumok/HAMART-001.md + adat/elofordulasok.tsv (id=HAMART-001) @7095bc63; naplok/KIADAS_HAMART-001_lektor.md @origin/claude/kiadas-hamart-d4c26f | forras=eszkozok/proza_allitas.py | ts=2026-11-11)

@@ -48,9 +48,9 @@ nem_fugg: [38, 104, 121, 123, 138, 178, 181, 188]
 - G1: a diff csak a fenti `ir` fájlokat érinti.
 - G2: a kilépőkód JELENTÉS szinten 0; a `--szigoru` 1-et ad ELTÉR-sornál.
 - G3: a TSV-olvasás `split('\t')`; UTF-8 wrapper az importblokk után.
-- G4: a Károli-párosítás (`adat/karoli_strong/`, modell-kimenet, javaslat) csak jelzésre és a magyar szó → Strong-szám feloldására szolgál; a gépi ítélet a TAHOT/TAGNT Strong-során, a Károli-szövegen vagy az adaton áll (DT-F200c).
-- D1 (DT-F200a): a forrás a rések mellett a `kapcsolodas` próza is.
-- D2 (DT-F200b): JELENTÉS szint, E-szám nélkül; a CI csak a teszteket futtatja.
-- D3 (DT-F200c): a párosítás szerepe (G4).
-- D4 (DT-F200d): a szám gépi ítélete csak a lap/motívum egészére szóló számra.
+- G4: a Károli-párosítás (`adat/karoli_strong/`, modell-kimenet, javaslat) csak jelzésre és a magyar szó → Strong-szám feloldására szolgál; a gépi ítélet a TAHOT/TAGNT Strong-során, a Károli-szövegen vagy az adaton áll (DT786).
+- D1 (DT784): a forrás a rések mellett a `kapcsolodas` próza is.
+- D2 (DT785): JELENTÉS szint, E-szám nélkül; a CI csak a teszteket futtatja.
+- D3 (DT786): a párosítás szerepe (G4).
+- D4 (DT787): a szám gépi ítélete csak a lap/motívum egészére szóló számra.
 - ⛔ A merge a felhasználóé (az orkesztrátor végzi a kérésére).
