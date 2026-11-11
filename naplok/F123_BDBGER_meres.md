@@ -28,14 +28,14 @@ azonosítója (az OSHL-azonosítók listája, pl. `h.cd.ab,…`).
 | több BDB-szócikkű Strong | 1 583 |
 | ebből a régi generátor összevonta a fejüket | 1 583 (mind) |
 | ebből a fejen kívüli útvonalat is több szócikkből vont össze | 133 |
-| szócikken belül nem szomszédos ismétlődő útvonal (nem e tétel tárgya, N-F123gc) | 231 |
+| szócikken belül nem szomszédos ismétlődő útvonal (nem e tétel tárgya, N113) | 231 |
 | 2.29-sor a több szócikkű Strongokban (szurt≠1, Károli-verssel) | 58 476 |
 | — szócikk az útvonalból (egy szócikkben áll) | 42 018 |
 | — szócikk a helyből (`poz`; útvonal több szócikkben vagy fej) | 14 375 |
 | — nem azonosítható (a lapon explicit ⓘ, választás nélkül) | 2 083 |
 | a hely ellenőrzése az útvonalból egyértelmű 41 050 soron: egyezik / ellentmond | 40 462 / 588 (579 egyértelműen) |
-| Strong, amelyben a hely ezért nem dönt (N-F123gb) | 102 |
-| 2.32 szócikkhatáron át elnyelt (jelölő nélküli, magyar szöveg nélküli) sor (N-F123ga) | 192 Strong, 264 sor |
+| Strong, amelyben a hely ezért nem dönt (N112) | 102 |
+| 2.32 szócikkhatáron át elnyelt (jelölő nélküli, magyar szöveg nélküli) sor (N111) | 192 Strong, 264 sor |
 
 A feladatleírás felső becslése (427 Strong, ebből 24 lapon, pl. H3068, H3605, H4672, H6213) nem ugyanez a mérés:
 a H3068, H4672, H6213 ismétlődése szócikken belüli (a 231-es osztály), a H3068 nem is szerepel az
@@ -82,7 +82,7 @@ H3548, H3678, H4467 mind azonosítható.
   BDB8776, H7585 → BDB8375, H8414 → BDB9112); író: `naplok/F123_BDBGER_cimke_migracio.py` (írás előtt és után
   összevet; a #608 ágán is egyértelmű: 28 sor, 15 BDB, a H5315 → egy szócikk).
 - `eszkozok/ellenoriz.py` 17. szabály: a kulcs (szotar, strong, bdb_id, szakasz); BDB-sorban a `bdb_id` kötelező, és
-  a szakasz ennek a szócikknek az útvonala; 18. szabály: a generátor kulcsával. Új **27. szabály** (DT-F123gb).
+  a szakasz ennek a szócikknek az útvonala; 18. szabály: a generátor kulcsával. Új **27. szabály** (DT673).
 - `eszkozok/ellenorzes/szabalyok.py` E19: a kutatói leképezés szakaszai a szócikk soraira szűkítve.
 - `eszkozok/szakasz_cimke_levezet.py`: a gépi levezetés szócikk-tudatos (a több szócikkben álló számozás J2, „több
   szócikk”, nem választ); a tábla írója az új oszloppal.
@@ -115,18 +115,18 @@ proveniencia-lábjegyzetben és a 8. szerep generált rövid fejsorában áll. A
 | `ellenorzes/tesztek/test_szabalyok.py` | 209/209 OK |
 | `feladatok.py ellenoriz` | 181 brief, 0 hiba |
 | `teszt_feladatok.py`, `teszt_olvasoi_kapu.py` | OK |
-| `teszt_szotari_gerinc.py` | 68 teszt, 5 bukik — ugyanaz az 5, mint a HEAD-en (N-F123gd); az új `SzocikkKulcs` és `Szabaly27` (6 teszt) zöld |
-| `teszt_szakasz_cimke_levezet.py` | 21 teszt, 2 bukik — ugyanaz a 2, mint a HEAD-en (N-F123gd); az új `test_tobb_szocikk` zöld |
+| `teszt_szotari_gerinc.py` | 68 teszt, 5 bukik — ugyanaz az 5, mint a HEAD-en (N114); az új `SzocikkKulcs` és `Szabaly27` (6 teszt) zöld |
+| `teszt_szakasz_cimke_levezet.py` | 21 teszt, 2 bukik — ugyanaz a 2, mint a HEAD-en (N114); az új `test_tobb_szocikk` zöld |
 | `teszt_ellenoriz_vedokorlat.py` | 1 bukik (`test_20_21_a_repon`) — a HEAD-en is |
 
 ## 7. Ami nem e tételé
 
-N-F123ga (a `hu_illeszt.py` elnyelése), N-F123gb (a 2.29 saját `bdb_id`-je), N-F123gc (szócikken belüli ismétlés),
-N-F123gd (a main-en is bukó tesztek). A PR #608 rebase-ekor a `szotar_szakasz_cimke.tsv` új sorait a
+N111 (a `hu_illeszt.py` elnyelése), N112 (a 2.29 saját `bdb_id`-je), N113 (szócikken belüli ismétlés),
+N114 (a main-en is bukó tesztek). A PR #608 rebase-ekor a `szotar_szakasz_cimke.tsv` új sorait a
 `naplok/F123_BDBGER_cimke_migracio.py` szerint kell átkulcsolni (a H5315 sora egy szócikkű, egyértelmű), és az
 ANTROP-001 lapot újragenerálni.
 
-## 8. Átnézés (DT569 mintája, DT-F123ga)
+## 8. Átnézés (DT569 mintája, DT672)
 
 - ALVIL-001: az átnézés érvényes marad, a változott lapra (lap-commit cfb10b07) új sor az `adat/lap_atnezesek.tsv`-ben, a `naplok/F123_atnezes_ALVIL-001.md` mondatával.
 - ISTENTISZT-001: az átnézés érvényes marad (csak a generált szótári gerinc változott: H8034 két szócikkfej, az arámi BDB9963 láthatóvá vált; próza és az olvasói kapu bájtra azonos); a lapnak az `adat/lap_atnezesek.tsv`-ben nincs sora, új kiadásszám nem kell.

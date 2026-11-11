@@ -287,7 +287,10 @@ class TestPilotAranymintaval(unittest.TestCase):
                 # egyezését nézzük (a héber sorrend-javítás tesztje a bdb_rovidites saját tesztjében van)
                 def latin(x):
                     return re.sub(r'\s+', ' ', re.sub('[\u0590-\u05ff\ufb1d-\ufb4f\u200e\u200f]', '', x))
-                self.assertIn(latin(szoveg(l['bdb_hu']))[:30], latin(t), strong)
+                # F104 (HAMART-001 F10 (5)): a BDB-sor kulcsa (Strong + STEP-átírás) nem jelenik meg, a gyakoriság-számláló
+                # („_560”) alsó index: a pilot szövegét ugyanígy normalizáljuk
+                pilot = re.sub(r'_(\d+)', r' \1 ', blokkok._sor_kulcs_nelkul(l['bdb_hu']))
+                self.assertIn(latin(szoveg(pilot))[:30], latin(t), strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
                 self.assertIn('%d Károli-előfordulás, ebből %d magas' % (l['karoli_osszes'], l['karoli_magas']), t, strong)
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """F182 HAMART-001, 1. fázis, határ (2026-11-10): a `naplok/HATAR_HAMART-001.md` (48 sor, 6 kérdés) K1, K5 és K6
 pontjának átvezetése a jeloltek.tsv-n át (DT28; CLAUDE.md 2. szabály). Helyőrzők: DT-F182a (K1), DT-F182b (K5),
-DT-F182c (K6); a K2 lezárt (DT-F123ha (B), DT-F123hc), a K3 lezárt (N-F123hc, DT-F123hd), a K4 a felhasználóé
+DT-F182c (K6); a K2 lezárt (DT683 (B), DT685), a K3 lezárt (N116, DT686), a K4 a felhasználóé
 (DT-F182d, nyitott) — ezekhez a szkript nem nyúl.
 
 - K1 (DT-F182a): az 1Móz 4:2-3 elutasítva, és kikerül az elofordulasok.tsv-ből. Azonos jegy, azonos sors: az
@@ -9,7 +9,7 @@ DT-F182c (K6); a K2 lezárt (DT-F123ha (B), DT-F123hc), a K3 lezárt (N-F123hc, 
   a negatív kritérium szerint a „föld mint talaj” általános használat, és a vers az átkot nem mondja ki, nem
   ismétli, nem fordítja meg. Az 1Móz 9:20 indoklása ugyanerre a szövegre igazodik (a döntése nem változik).
   Az elutasitasi_okok.tsv HAMART 112-es mintája az új szöveget is felismeri („elbeszélő használat”).
-- K5 (DT-F182b): az 1Móz 6:5 bent marad (DT-F123ha (E), DT-F123hc K8); az indoklása a kivezetett רַע (ra)
+- K5 (DT-F182b): az 1Móz 6:5 bent marad (DT683 (E), DT685 K8); az indoklása a kivezetett רַע (ra)
   helyett a mai hordozót mondja ki, és azt, miben különbözik a Jer 17:9, Jer 4:14, Mt 15:19, Mk 7:21-23 kizárásától.
 - K6 (DT-F182c): a Zsid 6:7-8 tartománya marad; az indoklása kimondja, miért kezdődik a 6:7-tel (a 6:8 mondatának
   alanya, a föld, ott áll), szemben a Róm 8:21-gyel, amely maga hordozza az alanyt és a romlás szavát.
@@ -46,7 +46,7 @@ VALTOZAS = {
                  'indokkal tér vissza rá („mert az ember szívének gondolatja gonosz”). A szív hajlamáról szóló többi '
                  'hely (Jer 17:9, Jer 4:14, Mt 15:19, Mk 7:21-23) a lánc elbeszélésén kívül áll, a láncra nem utal '
                  'vissza, és a szív romlott hajlamának önálló tárgyához tartozik, ezért kint.',
-                 'DT-F123ha · DT-F123hc · DT-F182b'),
+                 'DT683 · DT685 · DT-F182b'),
     'Zsid 6:7-8': ('beépítve', 'beépítve',
                    'Beépítve: a föld, „a mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az '
                    'átokhoz”. A görög szöveg az 1Móz 3:17-18 görög fordításának három szavát hozza együtt: γῆ (gé, '

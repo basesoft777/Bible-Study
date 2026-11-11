@@ -6,11 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: megallt
+ag: claude/f104-bdb-megjelenites
 ad: a szó-lap BDB-blokkjában a teljes szócikk mindig látszik, két jelölési szinttel (erős: „a BDB itt idézi”; gyenge: „vonatkozhat”), kattintható igehelyekkel és pontos hivatkozásszámmal, a „próba” felirat és a mért pontosság a kiemelés mellett
-kovetkezo: Indítható a fugg szerint (a #102 és a #103 után; a #76 nem függés, DT297)
+kovetkezo: "Te: [elteres_kor 1/2] ELLENOR_F104_2 TISZTA (a 4.2 számai a táblából, a bizonytalan okkód gyenge, E27 javítva); felhasználói próba a futó szerveren (H1242, H7451, H3615, versből) és a bekapcsolt 4.2-minta átnézése (repón kívül); nyitott: a jelentések rendjében a csak gyenge sor által idézett pont félkövére; a KETRETEGU_BDB_KARTYA kapcsolót a #182 kapcsolja be"
 olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
-ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py]
+ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/olvasoi_kapu.py, eszkozok/teszt_olvasoi_kapu.py, adat/SEMA.md, eszkozok/bdb_vj_szabaly.py]
 fugg: [99, 102, 103]
 nem_fugg: [122, 123, 138]
 ---

@@ -122,7 +122,7 @@ def general(ts):
 
 
 def fajl_szoveg(sorok, ts):
-    fej = ['# GENERÁLT: eszkozok/thayer_jelolt/forras_javit.py --ts %s — kézzel nem szerkesztendő (F132, DT-F132i (2); séma: '
+    fej = ['# GENERÁLT: eszkozok/thayer_jelolt/forras_javit.py --ts %s — kézzel nem szerkesztendő (F132, DT333 (2); séma: '
            'adat/SEMA.md 2.38).' % ts,
            '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (a hiányzó szöveg és az igazolás) + '
            'konkordancia/Thayer_teljes.tsv@%s + kód@%s'

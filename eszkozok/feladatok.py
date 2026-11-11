@@ -29,6 +29,10 @@ Parancsok:
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
                     fejlecekbe (--szaraz: csak kiir)
     kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1
+    szint SZAM..    F188 T5: az ellenorzesi szint (`teljes` / `konnyitett`) es a javitokor-korlat,
+                    a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
+                    a befogadando brief javasolt fejlece (mint a `fuggesek`-nel); --jelentes FAJL:
+                    az ellenori jelentes(ek): az eszkalacio (`SZINT-ESZKALÁCIÓ:` sor) teljesre emel
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
@@ -89,6 +93,28 @@ KESZ_NAPOK = 14
 # `fut` + FOLYTATAS_ELOTAG = felbemaradt, folytathato; `fut` mas = valoban dolgozik rajta
 # valaki. A `.claude/commands/kovetkezo.md` 8. lepese erre a konstansra hivatkozik.
 FOLYTATAS_ELOTAG = 'Folytatás:'
+
+# F188 T5 (DT-F188b (c), kiterjesztve; ELLENOR_F188 1.): kockazat szerinti ellenorzesi szint (a szabaly: MUNKAMENET.md
+# „Menet-ellenőrzés”). Uj fejlecmezo nincs. Alapbol `teljes` (2 javitokor). `konnyitett` (1 javitokor) csak akkor, ha a
+# feladat nem ertelmezo munka, es az `ir` MINDEN eleme a lenti szuk, kifejezett listara esik (dokumentacio, teszt, CI,
+# parancs, koordinacio), es egyik sem allit elo olvasoi kimenetet. Uj mappa (nyilt_*, forditas/, f172/ ...), ures `ir`,
+# ismeretlen elem, glob es perjel nelkuli konyvtarnev mind `teljes`. Ez a lista egyetlen helye.
+SZINT_KONNYITETT_KONYVTAR = ('.claude/', '.github/', 'dontesek/uj/', 'nyitott/uj/', 'beerkezo/',
+                             'eszkozok/ellenorzes/')
+SZINT_KONNYITETT_FAJL = ('CLAUDE.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md', 'FELADATOK.md', 'DONTESEK.md',
+                         'NYITOTT_FELADATOK.md', 'DONTES_KERDES_SABLON.md', 'Rendszerfejlesztesi_playbook.md',
+                         'GitHub_feltoltesi_workflow.md', 'eszkozok/feladatok.py', 'eszkozok/teszt_futtat.py',
+                         'eszkozok/szamkiosztas.py', 'eszkozok/dontes_nezet.py')
+# fnmatch-minta, `/`-en at nem illeszt (a gyoker briefjei; tesztfajl barhol az eszkozok/ alatt)
+# A `naplok/` nem egeszeben konnyitett (ELLENOR_F188_2 2.): csak a szoveges `*.md`; a `naplok/*.py`, `*.tsv`, `*.txt`
+# es minden mas (pl. a `naplok/FORDITAS_P4_ellenoriz.py`, amelyet az olvaso-szerver lanca betolt) teljes.
+SZINT_KONNYITETT_MINTA = ('*_BRIEF.md', 'naplok/*.md', 'naplok/*/*.md', 'eszkozok/teszt_*.py', 'eszkozok/*/teszt_*.py',
+                          'eszkozok/*/test_*.py', 'eszkozok/*/*/teszt_*.py', 'eszkozok/*/*/test_*.py')
+# Olvasoi kimenetet eloallito kod: mindig `teljes`, akkor is, ha egy fenti minta (pl. teszt-nev) illeszkedne ra.
+SZINT_OLVASOI_KIMENET = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/lexikon_general.py',
+                         'eszkozok/olvasoi_kapu.py', 'eszkozok/nyilt_mag_export.py')
+SZINT_OLVASOI_MINTA = ('eszkozok/*general*.py',)
+SZINT_KOROK = {'teljes': 2, 'konnyitett': 1}
 VAR_RAD_ELOTAG = 'Te:'
 
 ALLAPOT_JEL = {
@@ -1241,6 +1267,102 @@ def kovetkezo_szam(briefek):
     return (max(hasznalt) if hasznalt else 0) + 1
 
 
+def ellenorzesi_szint(b):
+    """F188 T5: (szint, javitokor-korlat, ok) a brief fejlecebol."""
+    munka = b.fej.get('munka', '')
+    if munka == 'ertelmezo':
+        return 'teljes', SZINT_KOROK['teljes'], 'munka: ertelmezo'
+    if b.regi:
+        return 'teljes', SZINT_KOROK['teljes'], 'nincs `ir` (régi fejléc)'
+    ir = b.fej.get('ir', [])
+    if not ir:
+        return 'teljes', SZINT_KOROK['teljes'], 'üres `ir`'
+    for u in ir:
+        ok = szint_teljes_ok(_norm(u))
+        if ok:
+            return 'teljes', SZINT_KOROK['teljes'], ok
+    return 'konnyitett', SZINT_KOROK['konnyitett'], 'az `ir` minden eleme dokumentáció, teszt, CI vagy parancs'
+
+
+# F188 (ELLENOR_F188_2 3.): a fuggetlen ellenor eszkalacios jelolese -- onallo sor barhol a jelentesben (a regi
+# ELLENOR_* fajlban es a jelentesfajl szakaszaban is), sor eleji illesztessel, a ⛔ elso sortol fuggetlenul.
+ESZKALACIO_MINTA = re.compile(r'^SZINT-ESZKALÁCIÓ:\s*konnyitett\s*(?:→|->)\s*teljes\b', re.MULTILINE)
+
+
+def eszkalacio(szoveg):
+    """Van-e a jelentes szovegeben eszkalacios sor (`SZINT-ESZKALÁCIÓ: konnyitett → teljes …`)."""
+    return bool(ESZKALACIO_MINTA.search((szoveg or '').replace('\r\n', '\n')))
+
+
+def eszkalacio_fajl(ut):
+    with open(ut, encoding='utf-8') as f:
+        return eszkalacio(f.read())
+
+
+# DT-F188e (a), ELLENOR_F188_3 2.: az olvasoi kod altal hivatkozott `naplok/`-fajlok (pl. a `nyilt_mag_export.py`
+# `kh_meres()` bemenete, `naplok/KAROLI_KH_EPSEG_jelentes.md`) teljes szintuek, akkor is, ha `*.md`-k. A lista egyetlen
+# helye a gepi gyujtes: a `SZINT_OLVASOI_*` fajlok szovegebol a `'naplok/<nev>'` es az `'naplok', '<nev>'` alaku
+# literalok (a `%s` / `{…}` helyen `*`). Korlat: a futasidoben osszerakott, literal nelkuli utat nem latja.
+_OLVASOI_NAPLO_LITERAL = re.compile(r'''['"]naplok/([^'"\s]+)['"]''')
+_OLVASOI_NAPLO_JOIN = re.compile(r'''['"]naplok['"]\s*,\s*['"]([^'"\s]+)['"]''')
+_OLVASOI_NAPLOK_CACHE = {}
+
+
+def olvasoi_kod_fajlok(gyoker=REPO):
+    """A `SZINT_OLVASOI_*` listara eso .py fajlok (repo-relativ)."""
+    ki = set()
+    for e in SZINT_OLVASOI_KIMENET:
+        ut = os.path.join(gyoker, *e.rstrip('/').split('/'))
+        if e.endswith('/'):
+            for gy, _, nevek in os.walk(ut):
+                for n in nevek:
+                    if n.endswith('.py'):
+                        ki.add(os.path.relpath(os.path.join(gy, n), gyoker).replace(os.sep, '/'))
+        elif os.path.isfile(ut):
+            ki.add(e)
+    for m in SZINT_OLVASOI_MINTA:
+        for ut in glob.glob(os.path.join(gyoker, *m.split('/'))):
+            ki.add(os.path.relpath(ut, gyoker).replace(os.sep, '/'))
+    return sorted(ki)
+
+
+def olvasoi_naplok(gyoker=REPO):
+    """Az olvasoi kod altal hivatkozott `naplok/` utak fnmatch-mintai (gepi gyujtes, gyorsitotarazva)."""
+    if gyoker in _OLVASOI_NAPLOK_CACHE:
+        return _OLVASOI_NAPLOK_CACHE[gyoker]
+    mintak = set()
+    for rel in olvasoi_kod_fajlok(gyoker):
+        try:
+            with open(os.path.join(gyoker, *rel.split('/')), encoding='utf-8') as f:
+                szoveg = f.read()
+        except (OSError, UnicodeDecodeError):
+            continue
+        for nev in _OLVASOI_NAPLO_LITERAL.findall(szoveg) + _OLVASOI_NAPLO_JOIN.findall(szoveg):
+            nev = re.sub(r'%[sd]|\{[^}]*\}', '*', nev)
+            if nev and not nev.endswith('/'):
+                mintak.add('naplok/' + nev)
+    _OLVASOI_NAPLOK_CACHE[gyoker] = tuple(sorted(mintak))
+    return _OLVASOI_NAPLOK_CACHE[gyoker]
+
+
+def szint_teljes_ok(ut):
+    """F188 T5: miért teljes szintű egy `ir`-elem (szöveg), vagy None, ha a könnyített listára esik."""
+    if ut.startswith(SZINT_OLVASOI_KIMENET) or ut in SZINT_OLVASOI_KIMENET or \
+            any(fnmatch.fnmatchcase(ut, m) for m in SZINT_OLVASOI_MINTA):
+        return 'olvasói kimenetet állít elő: %s' % ut
+    if ut.startswith('naplok/') and any(fnmatch.fnmatchcase(ut, m) for m in olvasoi_naplok()):
+        return 'olvasói kód bemenete: %s' % ut
+    if any(c in ut for c in '*?['):
+        return 'glob az `ir`-ben: %s' % ut
+    if ut.endswith('/'):
+        return None if ut.startswith(SZINT_KONNYITETT_KONYVTAR) else 'nem a könnyített listán: %s' % ut
+    if ut in SZINT_KONNYITETT_FAJL or ut.startswith(SZINT_KONNYITETT_KONYVTAR):
+        return None
+    if any(fnmatch.fnmatchcase(ut, m) and ut.count('/') == m.count('/') for m in SZINT_KONNYITETT_MINTA):
+        return None
+    return 'nem a könnyített listán: %s' % ut
+
+
 def extra_hozzaad(briefek, utak):
     """A befogadando brief(ek) javasolt fejlecet a szamitashoz hozzaadja (nem ir semmit).
 
@@ -1325,6 +1447,13 @@ def main(argv=None):
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
     alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
+    sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
+    sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
+    sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
+                    help='a befogadandó brief javasolt fejléce (a repón kívüli fájl)')
+    sz.add_argument('--jelentes', action='append', default=[], metavar='FAJL',
+                    help='a feladat ellenőri jelentése(i) (régi ELLENOR_* vagy a jelentésfájl); ha bármelyikben '
+                         '`SZINT-ESZKALÁCIÓ: konnyitett → teljes` sor áll, a tényleges kör-korlát a teljes szinté')
     arg = p.parse_args(argv)
     ma = datetime.strptime(arg.ma, '%Y-%m-%d').date() if arg.ma else None
 
@@ -1391,6 +1520,28 @@ def main(argv=None):
         if arg.parancs == 'kovetkezo_szam':
             print(kovetkezo_szam(briefek))
             return 0
+        if arg.parancs == 'szint':
+            regi = {id(b) for b in briefek}
+            briefek = extra_hozzaad(briefek, arg.extra)
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            kert = list(arg.feladatok) + [b.szam for b in briefek if id(b) not in regi and b.szam is not None]
+            if not kert:
+                print('HIBA: SZAM vagy --extra kell', file=sys.stderr)
+                return 2
+            rossz = 0
+            for n in kert:
+                b = by.get(n)
+                if b is None:
+                    print('NINCS\t#%d' % n)
+                    rossz += 1
+                    continue
+                szint, korok, ok = ellenorzesi_szint(b)
+                eszk = [j for j in arg.jelentes if eszkalacio_fajl(j)]
+                if eszk and szint != 'teljes':
+                    szint, korok, ok = 'teljes', SZINT_KOROK['teljes'], 'ellenőri eszkaláció: %s (levezetve: %s)' % (
+                        ', '.join(eszk), ok)
+                print('SZINT\t#%d\t%s\t%d kör\t%s' % (n, szint, korok, ok))
+            return 1 if rossz else 0
     except (OSError, ValueError) as ex:
         print('HIBA: %s' % ex, file=sys.stderr)
         return 2

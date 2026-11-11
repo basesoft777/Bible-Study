@@ -594,8 +594,9 @@ class CsoportAranyminta(unittest.TestCase):
 class CsoportOszlop(unittest.TestCase):
     """F103 (DT-F103a (A), orkesztrátori döntés, 2026-11-09): a 2.29 két új oszlopa; a régi oszlopok és az `utvonal` változatlan."""
     # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
-    # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő
-    REGI_OSZLOPOK_SHA256 = '63373512b29fe3cb5b3a37494c9b411da240df7270c2999c7821b264e2347447'
+    # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő.
+    # F185 (a jelentéspont a szakasztáblából, a H7585 tételes felülírásával; naplok/F185_jelentes.md): új érték
+    REGI_OSZLOPOK_SHA256 = '35bb8019983e1e41a484750e38ffab0ff8c89e9bf3a3ebd2d5e394c2852e3ddf'
 
     @classmethod
     def setUpClass(cls):
@@ -603,7 +604,8 @@ class CsoportOszlop(unittest.TestCase):
         cls.i = {k: n for n, k in enumerate(V.FEJ)}
 
     def test_fejlec(self):
-        self.assertEqual(V.FEJ[V.FEJ.index('szurt') + 1:], ['csoport', 'csoport_jel', 'proveniencia'])
+        # F185: a `bizonyossag` a `proveniencia` után (P2)
+        self.assertEqual(V.FEJ[V.FEJ.index('szurt') + 1:], ['csoport', 'csoport_jel', 'proveniencia', 'bizonyossag'])
 
     def test_csoport_a_jelentesponton_belul(self):
         i = self.i
@@ -625,7 +627,7 @@ class CsoportOszlop(unittest.TestCase):
         with open(V.KI, encoding='utf-8', newline='') as f:
             sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
         fej = sorok[0].split('\t')
-        regi = [k for k in V.FEJ if k not in ('csoport', 'csoport_jel')]
+        regi = [k for k in V.FEJ if k not in ('csoport', 'csoport_jel', 'bizonyossag')]
         idx = [fej.index(k) for k in regi]
         h = hashlib.sha256()
         for s in sorok[1:]:

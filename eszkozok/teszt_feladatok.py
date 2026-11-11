@@ -203,6 +203,15 @@ class FuggesTest(Alap):
         self.assertEqual(fugg, {1: {}, 2: {}})
         self.assertEqual(utk, [])
 
+    def test_sajat_jelentesfajl_nem_utkozik(self):
+        # F188 T1: a napló, a zárás és az ellenőri jelentés egy fájlban (naplok/F<nn>_jelentes.md); a feladat
+        # saját fájlja (_kozos), ezért két, egymás jelentését nem író feladat között nem ad ütközést
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['a'], ir=['x', 'naplok/F01_jelentes.md']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, olvas=['b'], ir=['y', 'naplok/F02_jelentes.md']))
+        fugg, utk, _, _ = self.fugg()
+        self.assertEqual(fugg, {1: {}, 2: {}})
+        self.assertEqual(utk, [])
+
     def test_regi_fejlec(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['adat/x.tsv']))
         self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, ir=['a']))
@@ -225,6 +234,123 @@ class FuggesTest(Alap):
         szoveg = F.fuggesek_szoveg(self.g.briefek(), {})
         self.assertIn('FUGGES\t1\t2\tadat/x.tsv*', szoveg)
         self.assertIn('FUGGES\t1\t3\tkezi', szoveg)
+
+
+class SzintTest(unittest.TestCase):
+    """F188 T5: a kockázat szerinti ellenőrzési szint a `munka` és az `ir` mezőből."""
+
+    def szint(self, **kw):
+        fej, torzs, hibak = F.fejlec_elemez(brief_szoveg(1, **kw))
+        return F.ellenorzesi_szint(F.Brief('F01_A_BRIEF.md', fej, torzs, hibak))[:2]
+
+    def test_adatot_iro_teljes(self):
+        self.assertEqual(self.szint(ir=['adat/elofordulasok.tsv'], munka='adat'), ('teljes', 2))
+        self.assertEqual(self.szint(ir=['"adat/*.tsv"'], munka='folyamat'), ('teljes', 2))
+
+    def test_lexikon_motivum_sablon_teljes(self):
+        for ut in ('lexikon/HAMART-001_TUDOMANYOS.md', 'motivumok/HAMART-001.md', 'sablonok/6_x.md',
+                   'adat/SEMA.md'):
+            self.assertEqual(self.szint(ir=[ut], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_generator_teljes(self):
+        self.assertEqual(self.szint(ir=['eszkozok/lexikon_general.py'], munka='adat'), ('teljes', 2))
+
+    def test_ertelmezo_es_regi_teljes(self):
+        self.assertEqual(self.szint(ir=['eszkozok/x.py'], munka='ertelmezo'), ('teljes', 2))
+        self.assertEqual(self.szint(), ('teljes', 2))
+
+    def test_doku_teszt_ci_konnyitett(self):
+        # ELLENOR_F188 1.: könnyített csak, ha az `ir` minden eleme a szűk listán áll
+        self.assertEqual(self.szint(ir=['.claude/commands/kovetkezo.md', 'eszkozok/ellenorzes/szabalyok.py',
+                                        'naplok/F01_jelentes.md', 'MUNKAMENET.md', 'BRIEF_SABLON.md',
+                                        'dontesek/uj/x.md', 'nyitott/uj/x.md', 'F01_A_BRIEF.md',
+                                        '.github/workflows/ellenorzes.yml', 'eszkozok/ellenorzes/tesztek/'],
+                                    munka='folyamat'), ('konnyitett', 1))
+        self.assertEqual(self.szint(ir=['eszkozok/teszt_futtat.py', 'eszkozok/teszt_x.py',
+                                        'eszkozok/karoli_strong/teszt_pontossag.py'], munka='adat'), ('konnyitett', 1))
+
+    def test_valos_adat_ir_teljes(self):
+        # F174 / F159 / F172 típusú `ir` (nyílt adatkészlet, fordítás-mappa, új adatmappa, szkript)
+        for ir in (['nyilt_karoli_modern/', 'eszkozok/karoli_modern_export.py', 'eszkozok/teszt_karoli_modern_export.py'],
+                   ['eszkozok/thayer_api_koteg.py', 'eszkozok/teszt_thayer_api_koteg.py', 'forditas/thayer_api/',
+                    'naplok/THAYER_B_UT_naplo.md'],
+                   ['f172/', 'naplok/KAROLI_PONTOSSAG_jelentes.md', 'eszkozok/karoli_strong/pontossag_meres.py']):
+            self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
+
+    def test_olvasoi_kimenet_teljes(self):
+        for ut in ('eszkozok/olvaso_szerver/blokkok.py', 'eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/adat.py',
+                   'eszkozok/olvasoi_kapu.py', 'eszkozok/nyilt_mag_export.py', 'eszkozok/general.py',
+                   'eszkozok/olvaso_szerver/teszt_arculat.py'):
+            self.assertEqual(self.szint(ir=[ut, 'naplok/F01_jelentes.md'], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_naplok_csak_md_konnyitett(self):
+        # ELLENOR_F188_2 2.: a naplok/ nem egészben könnyített
+        self.assertEqual(self.szint(ir=['naplok/F188_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
+        for ut in ('naplok/FORDITAS_P4_ellenoriz.py', 'naplok/ELOSZURES_x.tsv', 'naplok/THAYER_B_UT_mero_strongok.txt',
+                   'naplok/'):
+            self.assertEqual(self.szint(ir=[ut], munka='folyamat'), ('teljes', 2), ut)
+
+    def test_olvasoi_kod_naplo_bemenete_teljes(self):
+        # DT-F188e (a), ELLENOR_F188_3 2.: a nyilt_mag_export.py kh_meres() bemenete teljes; a saját jelentés könnyített
+        self.assertEqual(self.szint(ir=['naplok/KAROLI_KH_EPSEG_jelentes.md'], munka='folyamat'), ('teljes', 2))
+        self.assertEqual(self.szint(ir=['naplok/F188_jelentes.md'], munka='folyamat'), ('konnyitett', 1))
+        mintak = F.olvasoi_naplok()
+        self.assertIn('naplok/KAROLI_KH_EPSEG_jelentes.md', mintak)
+        self.assertIn('naplok/F123_teljesseg_*.tsv', mintak)  # a `%s` helyen `*`
+        self.assertFalse(any(m.endswith('/') for m in mintak))
+
+    def test_lassu_lefedett_kodja_teljes(self):
+        # ELLENOR_F188_2 2.: a két lista nem mondhat ellent egymásnak: amit a teszt_futtat.py LASSU_LEFEDETT olvasói
+        # kódnak vesz, az a szint szerint teljes (kivétel a futtató maga, amely nem állít elő olvasói kimenetet)
+        import importlib.util
+        ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'teszt_futtat.py')
+        spec = importlib.util.spec_from_file_location('teszt_futtat_szint', ut)
+        TF = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(TF)
+        elemek = {e for lista in TF.LASSU_LEFEDETT.values() for e in lista} - {'eszkozok/teszt_futtat.py'}
+        self.assertTrue(elemek)
+        for e in sorted(elemek):
+            self.assertIsNotNone(F.szint_teljes_ok(e), e)
+            if e.endswith('/'):
+                self.assertIsNotNone(F.szint_teljes_ok(e + 'x.py'), e)
+
+    def test_szelso_esetek_teljes(self):
+        for ir in ([], ['lexikon'], ['ismeretlen.md'], ['"naplok/*.md"'], ['"**/README.md"'], ['naplok']):
+            self.assertEqual(self.szint(ir=ir, munka='folyamat'), ('teljes', 2), ir)
+
+
+class EszkalacioTest(unittest.TestCase):
+    """ELLENOR_F188_2 3.: az eszkalációs sor bárhol a jelentésben, sor eleji illesztéssel."""
+
+    def test_barhol_a_jelentesben(self):
+        for szoveg in ('ELTÉRÉS: 2 tétel\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — adat a diffben\n',
+                       '⛔ DÖNTÉS KELL: x\nELTÉRÉS: 1 tétel\n\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — x\n',
+                       '## Független ellenőrzés — 2. ellenőrzés\r\n\r\nTISZTA\r\n| a | b |\r\n'
+                       'SZINT-ESZKALÁCIÓ: konnyitett -> teljes — x\r\n'):
+            self.assertTrue(F.eszkalacio(szoveg), szoveg)
+
+    def test_nem_sor_eleji_vagy_mas_irany(self):
+        for szoveg in ('TISZTA\n', 'a jelölés: `SZINT-ESZKALÁCIÓ: konnyitett → teljes` (idézet)\n',
+                       ' SZINT-ESZKALÁCIÓ: konnyitett → teljes\n', 'SZINT-ESZKALÁCIÓ: teljes → konnyitett\n'):
+            self.assertFalse(F.eszkalacio(szoveg), szoveg)
+
+    def test_szint_parancs_a_jelentessel(self):
+        feladatok_py = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'feladatok.py')
+        with tempfile.TemporaryDirectory() as d:
+            brief = os.path.join(d, 'fej.md')
+            with open(brief, 'w', encoding='utf-8') as f:
+                f.write(brief_szoveg(None, ir=['.claude/commands/x.md'], munka='folyamat'))
+            jel = os.path.join(d, 'ELLENOR_F9.md')
+            with open(jel, 'w', encoding='utf-8') as f:
+                f.write('⛔ DÖNTÉS KELL: x\nELTÉRÉS: 1\nSZINT-ESZKALÁCIÓ: konnyitett → teljes — x\n')
+            gyoker = os.path.join(d, 'repo')
+            os.makedirs(gyoker)
+            ki = subprocess.run([sys.executable, feladatok_py, '--gyoker', gyoker, 'szint', '--extra', brief],
+                                capture_output=True, text=True, encoding='utf-8')
+            self.assertIn('\tkonnyitett\t1 kör', ki.stdout, ki.stderr)
+            ki = subprocess.run([sys.executable, feladatok_py, '--gyoker', gyoker, 'szint', '--extra', brief,
+                                 '--jelentes', jel], capture_output=True, text=True, encoding='utf-8')
+            self.assertIn('\tteljes\t2 kör\tellenőri eszkaláció', ki.stdout, ki.stderr)
 
 
 class EllenorizTest(Alap):

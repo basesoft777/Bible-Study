@@ -228,7 +228,26 @@ class Javitas(unittest.TestCase):
             if s['allapot'] == 'javitva' and s['hiba'] == 'pe_mem':
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
                 self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
-                self.assertTrue(s['bdb_id'])
+                # a lexikon szerinti javításnak bdb_id kell; a tanús (F185 P4) javításnak a tanú `javit` ítélete
+                self.assertTrue(s['bdb_id'] or s.get('tanu', '').split(';')[0].endswith(':javit'))
+
+    def test_tanus_dontes(self):
+        # F185 P4 (DT-F185c, DT-F185d): a tanús sorok mezője `<tanú>:<szint>:<ítélet>`; `javit` → javitva, különben jelolt_marad;
+        # a rés/dálet belső döntése csak L1 (a vázszint körkörös); ellentmondásnál ketes
+        t = [s for s in self.sorok if s.get('tanu')]
+        self.assertTrue(t)
+        for s in t:
+            self.assertIn(s['hiba'], ('pe_mem', 'res_dalet'))
+            elso = s['tanu'].split(';')[0]
+            self.assertTrue(elso.startswith(('tahot/oshb:', 'sefaria-api 2026-11-10:')), s['tanu'])
+            if 'ellentmondás' in s['tanu']:
+                self.assertEqual(s['allapot'], 'jelolt_marad')
+            elif elso.endswith(':javit'):
+                self.assertEqual(s['allapot'], 'javitva')
+            else:
+                self.assertEqual(s['allapot'], 'jelolt_marad')
+            if s['hiba'] == 'res_dalet' and elso.startswith('tahot/oshb:'):
+                self.assertNotIn(':L2:', elso)
 
     def test_heber_sorrend_sorok(self):
         # DT-F131z: javitva csak tiszta, Biblia által igazolt tétel; az indokban a TAHOT-vers
@@ -526,6 +545,127 @@ class HuIlleszt(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
 
+class F185Fejek(unittest.TestCase):
+    """F185 P1 (N103 (2), N106): a hamis bekezdés-eleji fej, a hivatkozással összetapadt betűfej, a jelöletlen alcímszó, a
+    számozott pont alatti nagybetűs csoport és a bővített törzsnévlista. Az esetek a seed-101/102 ítéleteiből és a korpuszból."""
+
+    @classmethod
+    def setUpClass(cls):
+        _, sorok = tabla()
+        cls.t = {}
+        for d in sorok:
+            cls.t[(d['strong'], d['sorszam'])] = d
+
+    def ut(self, strong, sorszam):
+        return self.t[(strong, str(sorszam))]['utvonal']
+
+    # --- egység: a környezeti szabály (a)–(d)
+    def test_zarojel_belsejeben(self):
+        # H2388 „(subject ׳י; but Co reads | Pi`el as Ezek 30:24) .”
+        self.assertEqual(bont.hamis_fej_kornyezet('30:25 (subject ׳י; but Co reads', 'as Ezek 30:24) .', [('torzs', 'Pi`el')], {}), 'a')
+
+    def test_above_below(self):
+        self.assertEqual(bont.hamis_fej_kornyezet('On Hosea 4:8 see', 'above In H, Lev 23:19', [('szam', '1')], {}), 'b')
+
+    def test_utalo_szo_csak_torzsnel(self):
+        self.assertEqual(bont.hamis_fej_kornyezet('Est 3:8 (see', 'Est 3:8', [('torzs', 'Qal')], {}), 'c')
+        # számfej utaló szó után valódi (H3205 „yet see | 2 less often beget:”, H1518 „compare | 2 transitive”)
+        self.assertEqual(bont.hamis_fej_kornyezet('Deut 32:18 yet see', 'less often beget:', [('szam', '2')], {}), '')
+        self.assertEqual(bont.hamis_fej_kornyezet('38:8, compare', 'transitive', [('szam', '2')], {}), '')
+
+    def test_sorrendsertes_mondat_kozepen(self):
+        # seed-101 M154 H2471 „burnt on the altar with | c. Lev 8:26”
+        self.assertEqual(bont.hamis_fej_kornyezet('burnt on the altar with', 'Lev 8:26, but usually', [('betu', 'c.')], {'betu': 'd'}), 'd')
+        # mondatzáró jel után, vagy „a.” újrakezdés: valódi (H2850 „usually | a. collective”)
+        self.assertEqual(bont.hamis_fej_kornyezet('Exod 29:23 = Lev 8:26.', 'x', [('betu', 'c.')], {'betu': 'd'}), '')
+        self.assertEqual(bont.hamis_fej_kornyezet('usually', 'collective', [('betu', 'a.')], {'betu': 'n'}), '')
+        # a következő betű (sorrendben) valódi
+        self.assertEqual(bont.hamis_fej_kornyezet('with', 'x', [('betu', 'e.')], {'betu': 'd'}), '')
+
+    def test_hivatkozassal_tapadt_betufej(self):
+        self.assertEqual(bont.hivatkozas_fej('<b>3b. b.</b> qualitatively', {'betu': 'a'})[:2], ('3b. b.', 'b'))
+        self.assertEqual(bont.hivatkozas_fej('<b>3b, c. c.</b> x', {'betu': 'b'})[:2], ('3b, c. c.', 'c'))
+        self.assertIsNone(bont.hivatkozas_fej('<b>3b. b.</b> x', {'betu': 'c'}))     # nem a várt betű
+
+    def test_alcimszo_sub1_nelkul(self):
+        self.assertTrue(bont.alcimszo_nyito(' <heb>סוֺפֵר סֹפֵר,</heb> <b>noun masculine</b> enumerator'))
+        self.assertFalse(bont.alcimszo_nyito(' <heb>סוֺפֵר</heb> noun masculine enumerator'))
+
+    def test_uj_torzsnevek(self):
+        for nev in ('Hithpa`lel', 'Hithpo`lel', 'Po`lel', 'Hothpa`al', 'Pi`lel'):
+            tok, _ = bont.fej_bont('<b>%s</b> Perfect' % nev)
+            self.assertEqual(tok, [('torzs', nev)], nev)
+        tok, _ = bont.fej_bont('<b>Hithpa.</b> x')
+        self.assertEqual(tok, [])
+
+    # --- a kiírt tábla (seed-101/102 esetek)
+    def test_tabla_h2388_hiphil_folytatodik(self):
+        # seed-102 M002/M221: a „(… Co reads Pi`el as Ezek 30:24)” nem törzsfej; a 4–6. pont a Hiph`il-é
+        self.assertEqual(self.t[('H2388', '39')]['jel'], '')
+        self.assertEqual([self.ut('H2388', n) for n in (40, 42, 43, 45)], ["Hiph'il/4/-", "Hiph'il/6/-", "Hiph'il/6/a", "Hiph'il/6/c"])
+
+    def test_tabla_h2403_see_1_above(self):
+        # N99 (HAMART): a „see 1 above” nem fej; a P fokozatai a 4. pont alpontjai
+        self.assertEqual([self.ut('H2403', n) for n in (13, 14, 15, 16)], ['-/4/-', '-/4/a', '-/4/b', '-/4/c'])
+
+    def test_tabla_h3117_below_3_below(self):
+        # seed-102 M198/M201
+        self.assertEqual([self.ut('H3117', n) for n in (10, 11, 12)], ['-/2/-', '-/2/d', '-/2/e'])
+
+    def test_tabla_h3588_dr_nb(self):
+        # seed-101 M004: „(see Dr N.B.) 2” nem fej; a 3. pont folytatódik
+        self.assertEqual([self.ut('H3588', n) for n in (18, 19, 20)], ['-/3/a', '-/3/b', '-/3/c'])
+
+    def test_tabla_h9004_hivatkozas_es_fej(self):
+        # seed-101 M184: „see 3b. b.” = b.; a „(see היה II. 2 c)” nem fej
+        self.assertEqual([self.ut('H9004', n) for n in (7, 8)], ['-/1/b', '-/1/b'])
+
+    def test_tabla_h2471_sorrendsertes(self):
+        # seed-101 M154
+        self.assertEqual(self.ut('H2471', 9), '-/2/d')
+
+    def test_tabla_h5676_csoport_a_szam_alatt(self):
+        # seed-102 M226: „1 … A. east Jordan … B. West Jordan … 2”
+        self.assertEqual([self.ut('H5676', n) for n in (5, 6, 7)], ['-.A/1/-', '-.B/1/-', '-/2/-'])
+
+    def test_tabla_h7812_hithpalel(self):
+        # seed-102 M223/M233
+        self.assertEqual([self.ut('H7812', n) for n in (5, 6, 7)], ["Hithpa'lel/-/-", "Hithpa'lel/1/-", "Hithpa'lel/1/a"])
+
+    def test_tabla_belso_fejek(self):
+        # DT-F185b (a): a bekezdés közepi fej a sorbelső oszlopban (seed-102 M056/M194 H3452; seed-101 M117 H0539 a 2.31 kézi
+        # soraival; M057 H4994 „3b, c. c.”; seed-102 M042 H5066 „, 1 human subject”); a sor `utvonal`-a a sor eleji állapot
+        self.assertEqual(self.t[('H3452', '3')]['belso_fejek'].split('|')[1:], ['b.', '-/-/b'])
+        self.assertEqual([f.split('|')[2] for f in self.t[('H0539', '8')]['belso_fejek'].split(';')], ["Niph'al/-/-", "Niph'al/1/-"])
+        self.assertEqual(self.t[('H4994', '12')]['belso_fejek'].split('|')[1:], ['3b, c. c.', '-/4/c'])
+        self.assertEqual(self.t[('H5066', '3')]['belso_fejek'].split('|')[1:], ['1', 'Qal/1/-'])
+        self.assertEqual(self.ut('H3318', 3), 'Qal/1/-')     # 2.31 kézi: a hiányzó „Qal” a sor eleji jelölőhöz
+
+    def test_forditasok_kulcsai_valtozatlanok(self):
+        # DT-F185b (a), kötelező: a `forditasok.tsv` minden BDB `sz<n>` sorának kulcsa megvan, és a szakasz-nézet hash-e a sor
+        # `forras_hash`-ével egyezik (az F185 előtt 29 311 / 29 311; a sorbelső fejek és a hamis fejek a `jel` + `szoveg`-et nem
+        # változtatják)
+        import re
+        import szakasz_bemenet as sb
+        ford = []
+        with open(os.path.join(GYOKER, 'adat', 'forditasok.tsv'), encoding='utf-8') as f:
+            for sor in f:
+                m = sor.rstrip('\n').split('\t')
+                if len(m) > 5 and m[0] == 'BDB' and re.match(r'^sz\d+$', m[3]):
+                    ford.append((m[1], int(m[3][2:]), m[5]))
+        h = {}
+        for st in sorted({x[0] for x in ford}):
+            for x in sb.szakaszok(st) or []:
+                h[(st, int(x['sorszam']))] = x['hash']
+        rossz = [x for x in ford if h.get(x[:2]) != x[2]]
+        self.assertEqual(rossz, [])
+        self.assertGreaterEqual(len(ford), 29311)
+
+    def test_tabla_sorszam_nem_valtozik(self):
+        # az F185 szabályai sort nem vágnak: a fordítások (`forditasok.tsv` sz<n>) és a 2.31 horgonyai érvényesek maradnak
+        self.assertEqual(len(self.t), 36621)
+
+
 class Determinizmus(unittest.TestCase):
     def test_ellenoriz(self):
         with open(TABLA, encoding='utf-8') as f:
@@ -540,8 +680,13 @@ class Determinizmus(unittest.TestCase):
         ts = elso.split('--ts ')[1].split(' ')[0]
         tsh = elso.split('--ts-heber-sorrend ')[1].split(' ')[0] if '--ts-heber-sorrend ' in elso else ts
         tsa = elso.split('--ts-atiras ')[1].split(' ')[0] if '--ts-atiras ' in elso else ts
+        tsv = elso.split('--ts-hivatkozott-vers ')[1].split(' ')[0] if '--ts-hivatkozott-vers ' in elso else ts
+        tst = elso.split('--ts-tanu ')[1].split(' ')[0] if '--ts-tanu ' in elso else ts
+        # F185: a Sefaria-gyorsítótár nélkül (üres útvonal) a rögzített Sefaria-ítéletek maradnak (SEMA 2.31 `tanu`): a tábla
+        # gyorsítótárral és anélkül is bájtra azonos
         r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ts-heber-sorrend', tsh,
-                            '--ts-atiras', tsa, '--ellenoriz'],
+                            '--ts-atiras', tsa, '--ts-hivatkozott-vers', tsv, '--ts-tanu', tst, '--sefaria-cache', '',
+                            '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 

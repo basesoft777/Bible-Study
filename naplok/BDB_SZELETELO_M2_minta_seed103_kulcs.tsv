@@ -1,0 +1,202 @@
+# F185 seed-103 KULCS: a 2.29 (adat/bdb_vers_jelentes.tsv, a mintavételkori állapot) sorai a vak lap azonosítóival. A kitöltőnek NEM adandó.
+azon	strong	sorszam	poz	nyers	konyv_feloldas	mt_vers	karoli_vers	szakasz	resz	utvonal	okkod	szurt	bizonyossag	jelolve
+N001	H3117	68	2054	23:12	orokolt	2Móz 23:12	2Móz 23:12			-/2/a		0	biztos	igen
+N002	H4481	3	183	6:14	orokolt	Ezsd 6:14	Ezsd 6:14			fej		0	biztos	igen
+N003	H5771	125	2402	Psa 78:38	kiirt	Zsolt 78:38	Zsolt 78:38			-/1/c		0	biztos	igen
+N004	H8248	56	1815	Psa 69:22	kiirt	Zsolt 69:22	Zsolt 69:22			Qal/2		0	ketes:jp_tanu_elter	igen
+N005	H8544	6	222	4:16	orokolt	5Móz 4:16	5Móz 4:16			fej		0	biztos	igen
+N006	H0775	2	82	, 24	folytatas	1Móz 10:24	1Móz 10:24			tagolatlan		0	biztos	igen
+N007	H5307	135	3859	2Sam 21:22	kiirt	2Sám 21:22	2Sám 21:22			Qal/2/a		0	biztos	igen
+N008	H1931	132	6857	Gen 9:3	kiirt	1Móz 9:3	1Móz 9:3			-/2/c		0	biztos	igen
+N009	H4714	19	1110	Isa 7:18	kiirt	Ézs 7:18	Ézs 7:18			-/1/a		0	biztos	igen
+N010	H9005	121	4825	1Sam 4:10	kiirt	1Sám 4:10	1Sám 4:10			-/1/g		0	biztos	igen
+N011	H8193	87	2340	Isa 37:29	kiirt	Ézs 37:29	Ézs 37:29			-/1/f		0	biztos	igen
+N012	H6475	6	348	144:11	orokolt	Zsolt 144:11	Zsolt 144:11			Qal/-		0	biztos	igen
+N013	H2469	2	92	11:30	orokolt	1Krón 11:30	1Krón 11:30			fej		0	biztos	igen
+N014	H3707	27	1043	Judg 2:12	kiirt	Bír 2:12	Bír 2:12			Hiph'il/2		0	biztos	igen
+N015	H3548	359	7975	Neh 8:2	kiirt	Neh 8:2	Neh 8:2			-/7		0	biztos	igen
+N016	H9009	4	1418	Judg 20:5	kiirt	Bír 20:5	Bír 20:5			-/1/a		0	biztos	igen
+N017	H4310	159	4987	Mal 3:2	kiirt	Mal 3:2	Mal 3:2			-/-/f		0	biztos	igen
+N018	H3847	126	4240	Job 10:11	kiirt	Jób 10:11	Jób 10:11			Hiph'il/1/b		0	biztos	igen
+N019	H0160	11	350	, 6	folytatas	Préd 9:6	Préd 9:8			-/1		0	biztos	igen
+N020	H1250	10	170	Prov 11:26	kiirt	Péld 11:26	Péld 11:26	III		tagolatlan		0	biztos	igen
+N021	H6913	40	1193	Jer 5:16	kiirt	Jer 5:16	Jer 5:16			tagolatlan		0	biztos	igen
+N022	H5291	66	1093	3:2	orokolt	Ruth 3:2	Ruth 3:2	II		-/2		0	biztos	igen
+N023	H7725	571	16239	2Chr 26:2	kiirt	2Krón 26:2	2Krón 26:2			Hiph'il/1/d		0	biztos	igen
+N024	H7993	57	1978	Psa 2:3	kiirt	Zsolt 2:3	Zsolt 2:3			Hiph'il/1/c		0	biztos	igen
+N025	H0834	133	6927	21:4	orokolt	2Kir 21:4	2Kir 21:4			-/4/d		0	biztos	igen
+N026	H0403	1	196	Gen 28:16	kiirt	1Móz 28:16	1Móz 28:16			-/-/a		0	biztos	igen
+N027	H5927	202	4832	46:7	orokolt	Jer 46:7	Jer 46:7			Qal/5		0	biztos	igen
+N028	H7451	114	3162	Jer 13:10	kiirt	Jer 13:10	Jer 13:10			-/10/b		0	ketes:jp_tanu_elter	igen
+N029	H6722	21	549	2Kin 23:13	kiirt	2Kir 23:13	2Kir 23:13			tagolatlan		0	biztos	igen
+N030	H3808	191	6522	18:15	orokolt	Jer 18:15	Jer 18:15			-/2/b		0	biztos	igen
+N031	H7339	48	1032	, 3	folytatas	Neh 8:3	Neh 8:3	I		tagolatlan		0	biztos	igen
+N032	H2654	16	883	1Sam 18:22	kiirt	1Sám 18:22	1Sám 18:22			Qal/1/a		0	biztos	igen
+N033	H1319	9	645	Psa 68:12	kiirt	Zsolt 68:12	Zsolt 68:12			Pi'el/-		0	biztos	igen
+N034	H2022	307	9279	40:20	orokolt	Jób 40:20	Jób 40:15			-/1/h		0	biztos	igen
+N035	H1763	3	197	2:31	orokolt	Dán 2:31	Dán 2:31			Pe'al/-		0	biztos	igen
+N036	H1818	79	1973	22:4	orokolt	Ez 22:4	Ez 22:4			-/2/b		0	biztos	igen
+N037	H0212	20	546	, 9	folytatas	Ez 10:9	Ez 10:9			-/-/b		0	biztos	igen
+N038	H2474	8	236	1Kin 6:4	kiirt	1Kir 6:4	1Kir 6:4			tagolatlan		0	biztos	igen
+N039	H6413	4	185	Gen 45:7	kiirt	1Móz 45:7	1Móz 45:7			-/1		0	biztos	igen
+N040	H3881	155	3383	24:30	orokolt	1Krón 24:30	1Krón 24:30			-/2/c		0	ketes:jp_tanu_elter	igen
+N041	H7311	14	895	Deut 17:20	kiirt	5Móz 17:20	5Móz 17:20			Qal/-		0	biztos	igen
+N042	H8426	10	483	42:5	orokolt	Zsolt 42:5	Zsolt 42:5			-/2		0	biztos	igen
+N043	H1259	31	688	28:17	orokolt	Ézs 28:17	Ézs 28:17			tagolatlan		0	biztos	igen
+N044	H5034	35	2438	Psa 1:3	kiirt	Zsolt 1:3	Zsolt 1:3			Qal/2		0	biztos	igen
+N045	H7563	27	636	29:2	orokolt	Péld 29:2	Péld 29:2			-/1		0	biztos	igen
+N046	H0520	40	1709	, 9	folytatas	Ez 40:9	Ez 40:9	II		-/1		0	biztos	igen
+N047	H4428	183	3660	5:12	orokolt	2Sám 5:12	2Sám 5:12	I		-/5/c		0	biztos	igen
+N048	H2263	8	409	Lam 4:5	kiirt	JSir 4:5	Sir 4:5			Pi'el/-		0	biztos	igen
+N049	H1992	18	1199	Num 31:16	kiirt	4Móz 31:16	4Móz 31:16			-/1/a		0	biztos	igen
+N050	H0834	117	6303	Judg 8:15	kiirt	Bír 8:15	Bír 8:15			-/4/c		0	biztos	igen
+N051	H1320	82	1075	36:26	orokolt	Ez 36:26	Ez 36:26			-/1/b		0	biztos	igen
+N052	H0430	94	2282	32:31	orokolt	2Móz 32:31	2Móz 32:31			-/1/d		0	biztos	igen
+N053	H1576	12	431	Prov 19:17	kiirt	Péld 19:17	Péld 19:17			-/2		0	biztos	igen
+N054	H3068	266	8326	25:17	orokolt	3Móz 25:17	3Móz 25:17		II	-/2/c		0	ketes:jp_tanu_elter	igen
+N055	H8199	7	716	Ruth 1:1	kiirt	Ruth 1:1	Ruth 1:1			Qal/-		0	biztos	igen
+N056	H4758	33	1155	Ezek 1:27	kiirt	Ez 1:27	Ez 1:27			-/1/b		0	ketes:jp_illesztes	nem
+N057	H7617	41	1598	Exod 22:9	kiirt	2Móz 22:9	2Móz 22:10			Niph'al/-		0	biztos	igen
+N058	H3915	84	2364	Josh 2:2	kiirt	Józs 2:2	Józs 2:2			-/8		0	ketes:jp_tanu_elter	igen
+N059	H6726	66	1703	78:68	orokolt	Zsolt 78:68	Zsolt 78:68			tagolatlan		0	biztos	igen
+N060	H4437	31	556	6:1	orokolt	Dán 6:1	Dán 5:31			-/2		0	biztos	igen
+N061	H7663	12	883	Psa 104:27	kiirt	Zsolt 104:27	Zsolt 104:27	II		-/2		0	ketes:jp_tanu_elter	igen
+N062	H8511	2	191	Deut 28:66	kiirt	5Móz 28:66	5Móz 28:66			Qal/-		0	biztos	igen
+N063	H6285	10	622	Lev 19:9	kiirt	3Móz 19:9	3Móz 19:9			-/1		0	biztos	igen
+N064	H7800	19	410	9:18	orokolt	Eszt 9:18	Eszt 9:18	II		tagolatlan		0	biztos	igen
+N065	H1980	258	8008	41:55	orokolt	1Móz 41:55	1Móz 41:55		I	Qal/1/d		0	biztos	igen
+N066	H2493	4	145	2:4	orokolt	Dán 2:4	Dán 2:4			tagolatlan		0	biztos	igen
+N067	H3205	32	1239	Job 14:1	kiirt	Jób 14:1	Jób 14:1			Qal/-		0	biztos	igen
+N068	H1870	461	8986	28:6	orokolt	Péld 28:6	Péld 28:6			-/6/d		0	biztos	igen
+N069	H3444	26	687	35:3	orokolt	Zsolt 35:3	Zsolt 35:3			-/3		0	biztos	igen
+N070	H3201	57	1769	40:35	orokolt	2Móz 40:35	2Móz 40:35			Qal/1/a		0	biztos	igen
+N071	H5186	166	5956	Mal 3:5	kiirt	Mal 3:5	Mal 3:5			Hiph'il/3/h		0	ketes:jp_illesztes	nem
+N072	H2142	51	1953	137:6	orokolt	Zsolt 137:6	Zsolt 137:6		I	Qal/1/a		0	biztos	igen
+N073	H1144	31	615	, 21	folytatas	Bír 20:21	Bír 20:21			-/1		0	biztos	igen
+N074	H4941	27	736	Deut 1:17	kiirt	5Móz 1:17	5Móz 1:17			-/1/a		0	biztos	igen
+N075	H6403	23	766	Psalm 40:18	kiirt	Zsolt 40:18	Zsolt 40:18			Pi'el/1		0	biztos	igen
+N076	H7651	23	1096	, 28	folytatas	3Móz 26:28	3Móz 26:28			-/1/a		0	ketes:jp_tanu_elter	igen
+N077	H3458	9	334	, 16	folytatas	Jer 40:16	Jer 40:16			-/2		0	ketes:jp_tanu_elter	igen
+N078	H7227	23	851	Psa 19:11	kiirt	Zsolt 19:11	Zsolt 19:11	I		-/1/a		0	biztos	igen
+N079	H3588	441	14673	28:19	orokolt	Ézs 28:19	Ézs 28:19			-/3/c		0	biztos	igen
+N080	H2416	473	9467	Prov 5:6	kiirt	Péld 5:6	Péld 5:6			-/2		0	biztos	igen
+N081	H7969	35	1673	Est 3:12	kiirt	Eszt 3:12	Eszt 3:12			-/2		0	ketes:jp_tanu_elter	igen
+N082	H6659	1	27	1Kin 1:26	kiirt	1Kir 1:26	1Kir 1:26			fej		0	biztos	igen
+N083	H0175	33	624	Josh 21:19	kiirt	Józs 21:19	Józs 21:19			tagolatlan		0	biztos	igen
+N084	H5674	226	7014	18:13	orokolt	Bír 18:13	Bír 18:13			Qal/5/a		0	biztos	igen
+N085	H8147	51	2188	1Kin 15:25	kiirt	1Kir 15:25	1Kir 15:25			-/1/b		0	biztos	igen
+N086	H0687	5	127	, 42	folytatas	1Krón 1:42	1Krón 1:42			tagolatlan		0	biztos	igen
+N087	H1692	69	2829	38:38	orokolt	Jób 38:38	Jób 38:38			Pu'al/1		0	biztos	igen
+N088	H1280	43	992	15:5	orokolt	Ézs 15:5	Ézs 15:5			-/1/b		0	biztos	igen
+N089	H6621	6	515	29:1	orokolt	Péld 29:1	Péld 29:1			tagolatlan		0	biztos	igen
+N090	H4150	41	929	Exod 9:5	kiirt	2Móz 9:5	2Móz 9:5			-/1/a		0	biztos	igen
+N091	H7993	13	649	Psa 147:17	kiirt	Zsolt 147:17	Zsolt 147:17			fej		0	biztos	igen
+N092	H3427	287	7495	3:6	orokolt	Sof 3:6	Sof 3:6			Qal/3		0	biztos	igen
+N093	H3045	148	5425	, 15	folytatas	5Móz 1:15	5Móz 1:15			Qal/2		0	biztos	igen
+N094	H3899	136	3190	Num 28:24	kiirt	4Móz 28:24	4Móz 28:24	I		-/2/c		0	ketes:jp_tanu_elter	igen
+N095	H5704	106	3495	24:20	orokolt	2Kir 24:20	2Kir 24:20	III	I	-/2/a		0	biztos	igen
+N096	H3789	103	4225	1Chr 4:41	kiirt	1Krón 4:41	1Krón 4:41			Qal/3		0	biztos	igen
+N097	H6213	94	3405	1Sam 28:18	kiirt	1Sám 28:18	1Sám 28:18	I	I	Qal/1/a		0	biztos	igen
+N098	H4100	30	1212	31:36	orokolt	1Móz 31:36	1Móz 31:36			-/1/a		0	biztos	igen
+N099	H5656	12	422	Neh 10:38	kiirt	Neh 10:38	Neh 10:37			-/1		0	biztos	igen
+N100	H0319	40	1472	10:14	orokolt	Dán 10:14	Dán 10:14			-/-/b		0	biztos	igen
+N101	H7340	1	123	2Sam 10:8	kiirt	2Sám 10:8	2Sám 10:8	II		-/1/a		0	ketes:jp_tanu_elter	igen
+N102	H5087	1	125	Psa 132:2	kiirt	Zsolt 132:2	Zsolt 132:2			Qal/-		0	biztos	igen
+N103	H1407	1	153	Exod 16:31	kiirt	2Móz 16:31	2Móz 16:31	I		tagolatlan		0	biztos	igen
+N104	H3548	100	2956	, 18	folytatas	1Sám 22:18	1Sám 22:18			-/4		0	biztos	igen
+N105	H3881	114	2704	, 11	folytatas	1Krón 15:11	1Krón 15:11			-/2/a		0	ketes:jp_tanu_elter	igen
+N106	H3658	7	592	Gen 4:21	kiirt	1Móz 4:21	1Móz 4:21			tagolatlan		0	biztos	igen
+N107	H1241	49	1478	Num 28:11	kiirt	4Móz 28:11	4Móz 28:11			-/1/a		0	biztos	igen
+N108	H6536	7	775	11:4	orokolt	3Móz 11:4	3Móz 11:4			Hiph'il/-		0	biztos	igen
+N109	H1835	57	1069	Jer 4:15	kiirt	Jer 4:15	Jer 4:15			-/3		0	biztos	igen
+N110	H1961	241	7967	Zech 14:17	kiirt	Zak 14:17	Zak 14:17		I	Qal/2/b		0	biztos	igen
+N111	H2091	149	4782	2Kin 5:5	kiirt	2Kir 5:5	2Kir 5:5			-/9/a		0	biztos	igen
+N112	H6270	14	283	2Chr 22:12	kiirt	2Krón 22:12	2Krón 22:12			-/1		0	biztos	igen
+N113	H0698	1	77	Isa 25:11	kiirt	Ézs 25:11	Ézs 25:11			tagolatlan		0	biztos	igen
+N114	H4480	231	10610	17:1	orokolt	Bír 17:1	Bír 17:1			-/2/c		0	biztos	igen
+N115	H8163	19	608	Lev 9:15	kiirt	3Móz 9:15	3Móz 9:15	II		tagolatlan		0	biztos	igen
+N116	H8542	3	317	Dan 11:37	kiirt					tagolatlan	sigla_tapadt	1	biztos	igen
+N117	H0541	47	1844	Isa 44:14	kiirt	Ézs 44:14	Ézs 44:14			Pi'el/2		0	biztos	igen
+N118	H5672	3	225	2Chr 4:5	kiirt	2Krón 4:5	2Krón 4:5			tagolatlan		0	biztos	igen
+N119	H7223	89	2421	Est 1:14	kiirt	Eszt 1:14	Eszt 1:14			-/2/b		0	biztos	igen
+N120	H3925	46	1444	, 14	folytatas	5Móz 4:14	5Móz 4:14			Pi'el/-		0	biztos	igen
+N121	H6891	4	300	1Kin 4:12	kiirt	1Kir 4:12	1Kir 4:12			tagolatlan		0	biztos	igen
+N122	H7451	54	1637	31:24	orokolt	1Móz 31:24	1Móz 31:24			-/2		0	ketes:jp_tanu_elter	igen
+N123	H5496	7	372	1Chr 21:1	kiirt	1Krón 21:1	1Krón 21:1			Hiph'il/-		0	biztos	igen
+N124	H5920	264	9808	56:1	orokolt	Zsolt 56:1	Zsolt 56:1		I	-/1/f		0	ketes:jp_tanu_elter	igen
+N125	H1471	89	2119	, 16	folytatas	1Móz 17:16	1Móz 17:16			-/1/b		0	biztos	igen
+N126	H3027	141	5007	20:5	orokolt	Ez 20:5	Ez 20:5			-/1/d		0	biztos	igen
+N127	H6828	15	724	Ezek 42:17	kiirt	Ez 42:17	Ez 42:17	I		tagolatlan		0	biztos	igen
+N128	H4480	550	21358	Exod 33:6	kiirt	2Móz 33:6	2Móz 33:6			-/4/a		0	biztos	igen
+N129	H7420	12	327	4:15	orokolt	Neh 4:15	Neh 4:21			tagolatlan		0	biztos	igen
+N130	H3320	35	1440	, 16	folytatas	1Sám 12:16	1Sám 12:16			Hithpa'el/-/b		0	biztos	igen
+N131	H7725	679	18857	, 43	folytatas	5Móz 32:43	5Móz 32:43			Hiph'il/4/b		0	biztos	igen
+N132	H3015	14	329	45:3	orokolt	Jer 45:3	Jer 45:3			tagolatlan		0	biztos	igen
+N133	H1293	44	865	Job 29:13	kiirt	Jób 29:13	Jób 29:13	I		-/1/d		0	biztos	igen
+N134	H8405	1	62	Judg 9:50	kiirt	Bír 9:50	Bír 9:50			tagolatlan		0	biztos	igen
+N135	H6663	34	1306	Ezek 16:52	kiirt	Ez 16:52	Ez 16:52			Pi'el/-		0	ketes:jp_illesztes	nem
+N136	H2022	190	5258	Num 3:1	kiirt	4Móz 3:1	4Móz 3:1			-/1/a		0	biztos	igen
+N137	H6862	48	1924	Ezra 4:1	kiirt	Ezsd 4:1	Ezsd 4:1	III		tagolatlan		0	biztos	igen
+N138	H0977	157	3093	2Chr 11:1	kiirt	2Krón 11:1	2Krón 11:1			Qal/7		0	biztos	igen
+N139	H6241	5	249	Exod 29:40	kiirt	2Móz 29:40	2Móz 29:40			tagolatlan		0	biztos	igen
+N140	H5771	83	1690	Exod 34:7	kiirt	2Móz 34:7	2Móz 34:7			-/1/c		0	biztos	igen
+N141	H1969	39	1769	28:5	orokolt	4Móz 28:5	4Móz 28:5			-/2		0	biztos	igen
+N142	H0996	25	940	Prov 26:13	kiirt	Péld 26:13	Péld 26:13			-/1		0	biztos	igen
+N143	H4581	20	786	, 10	folytatas	Dán 11:10	Dán 11:10			-/1		0	biztos	igen
+N144	H1935	32	1774	Dan 10:8	kiirt	Dán 10:8	Dán 10:8	I		-/3/c		0	biztos	igen
+N145	H6316	2	124	Jer 46:9	kiirt	Jer 46:9	Jer 46:9			tagolatlan		0	biztos	igen
+N146	H0343	27	845	2Sam 22:19	kiirt	2Sám 22:19	2Sám 22:19			-/3		0	biztos	igen
+N147	H3819	4	166	2:3	orokolt	Hós 2:3	Hós 1:11			tagolatlan		0	biztos	igen
+N148	H0430	104	2657	17:27	orokolt	2Kir 17:27	2Kir 17:27			-/2/a		0	biztos	igen
+N149	H8605	18	419	Jer 7:16	kiirt	Jer 7:16	Jer 7:16			-/1/b		0	biztos	igen
+N150	H3117	435	12554	1Sam 7:2	kiirt	1Sám 7:2	1Sám 7:2			-/7/d		0	biztos	igen
+N151	H3588	614	20868	1Sam 26:10	kiirt	1Sám 26:10	1Sám 26:10			-/2/b		0	ketes:jp_tanu_elter	igen
+N152	H5234	51	2144	Job 7:10	kiirt	Jób 7:10	Jób 7:10	I		Hiph'il/4		0	biztos	igen
+N153	H5414	412	15190	Jer 23:40	kiirt	Jer 23:40	Jer 23:40			Qal/2/b		0	biztos	igen
+N154	H9000	52	3278	1Sam 12:2	kiirt	1Sám 12:2	1Sám 12:2			-/1		0	biztos	igen
+N155	H5437	186	7446	1Chr 12:24	kiirt	1Krón 12:24	1Krón 12:23			Hiph'il/1/b		0	biztos	igen
+N156	H7430	18	818	7:21	orokolt	1Móz 7:21	1Móz 7:21			Qal/2/c		0	biztos	igen
+N157	H8548	30	647	69:24	orokolt	Zsolt 69:24	Zsolt 69:24			-/1/a		0	biztos	igen
+N158	H3426	88	4640	, 4	folytatas	Neh 5:4	Neh 5:4			-/2/c		0	biztos	igen
+N159	H1755	84	2533	Psa 22:31	kiirt	Zsolt 22:31	Zsolt 22:31	I		-/2/c		0	biztos	igen
+N160	H5262	39	763	, 19	folytatas	4Móz 29:19	4Móz 29:19			-/1		0	biztos	igen
+N161	H6040	35	562	Lam 1:9	kiirt	JSir 1:9	Sir 1:9			-/1		0	biztos	igen
+N162	H6872	2	135	Amos 9:9	kiirt	Ámós 9:9	Ámós 9:9	I		tagolatlan		0	biztos	igen
+N163	H5234	12	746	Gen 38:26	kiirt	1Móz 38:26	1Móz 38:26	I		Hiph'il/-		0	biztos	igen
+N164	H8462	21	853	2Sam 17:9	kiirt	2Sám 17:9	2Sám 17:9			tagolatlan		0	biztos	igen
+N165	H5315	301	6975	Gen 12:5	kiirt	1Móz 12:5	1Móz 12:5			-/4/c		0	biztos	igen
+N166	H3820	426	7899	2Sam 17:10	kiirt	2Sám 17:10	2Sám 17:10		II	-/9/b		0	biztos	igen
+N167	H6342	30	954	Isa 51:13	kiirt	Ézs 51:13	Ézs 51:13			Pi'el/-		0	biztos	igen
+N168	H7941	10	290	Lev 10:9	kiirt	3Móz 10:9	3Móz 10:9			tagolatlan		0	biztos	igen
+N169	H4405	10	325	Psa 19:5	kiirt	Zsolt 19:5	Zsolt 19:5			tagolatlan		0	biztos	igen
+N170	H3405	8	431	1Kin 16:34	kiirt	1Kir 16:34	1Kir 16:34			tagolatlan		0	biztos	igen
+N171	H1368	66	1287	Judg 6:12	kiirt	Bír 6:12	Bír 6:12			-/2		0	biztos	igen
+N172	H7704	63	1648	1Sam 17:44	kiirt	1Sám 17:44	1Sám 17:44			-/1/c		0	biztos	igen
+N173	H6389	4	105	1Chr 1:19	kiirt	1Krón 1:19	1Krón 1:19	II		tagolatlan		0	biztos	igen
+N174	H2671	28	710	20:38	orokolt	1Sám 20:38	1Sám 20:38			-/1		0	biztos	igen
+N175	H3374	48	1076	22:4	orokolt	Jób 22:4	Jób 22:4			-/3		0	biztos	igen
+N176	H8179	146	4060	2Chr 23:20	kiirt	2Krón 23:20	2Krón 23:20			-/3/b		0	biztos	igen
+N177	H3282	32	1088	Num 11:20	kiirt	4Móz 11:20	4Móz 11:20			-/2/b		0	biztos	igen
+N178	H0517	131	2905	19:2	orokolt	Ez 19:2	Ez 19:2			-/2		0	biztos	igen
+N179	H3742	11	1321	Isa 37:16	kiirt	Ézs 37:16	Ézs 37:16			-/3		0	biztos	igen
+N180	H6041	85	1703	16:19	orokolt	Péld 16:19	Péld 16:19			-/4		0	biztos	igen
+N181	H4480	628	24219	6:7	orokolt	1Móz 6:7	1Móz 6:7			-/5/b		0	ketes:jp_tanu_elter	igen
+N182	H3318	129	3465	Psa 109:7	kiirt	Zsolt 109:7	Zsolt 109:7			Qal/1/c		0	biztos	igen
+N183	H4847	25	324	6:62	orokolt	1Krón 6:62	1Krón 6:77	I		tagolatlan		0	biztos	igen
+N184	H1580	8	578	Psa 131:2	kiirt	Zsolt 131:2	Zsolt 131:2			Qal/-		0	biztos	igen
+N185	H8081	6	216	Hosea 2:7	kiirt	Hós 2:7	Hós 2:4			fej		0	biztos	igen
+N186	H2799	1	95	Exod 31:5	kiirt	2Móz 31:5	2Móz 31:5	I		tagolatlan		0	biztos	igen
+N187	H7218	13	1249	2Kin 9:30	kiirt	2Kir 9:30	2Kir 9:30	I		-/1/a		0	biztos	igen
+N188	H3162	48	2200	49:3	orokolt	Jer 49:3	Jer 49:3			fej		0	biztos	igen
+N189	H2022	268	7840	Deut 1:7	kiirt	5Móz 1:7	5Móz 1:7			-/1/e		0	biztos	igen
+N190	H3462	11	462	Psa 3:6	kiirt	Zsolt 3:6	Zsolt 3:6			Qal/-		0	biztos	igen
+N191	H6663	45	1830	1Kin 8:32	kiirt	1Kir 8:32	1Kir 8:32			Hiph'il/-		0	biztos	igen
+N192	H6076	1	86	2Kin 5:24	kiirt	2Kir 5:24	2Kir 5:24	I		tagolatlan		0	biztos	igen
+N193	H3045	229	8102	Lev 4:14	kiirt	3Móz 4:14	3Móz 4:14			Niph'al/-		0	biztos	igen
+N194	H1375	16	335	25:34	orokolt	2Móz 25:34	2Móz 25:34			tagolatlan		0	biztos	igen
+N195	H1731	5	232	Jer 24:1	kiirt	Jer 24:1	Jer 24:1			fej		0	biztos	igen
+N196	H5707	32	985	Jer 32:10	kiirt	Jer 32:10	Jer 32:10			-/2/c		0	biztos	igen
+N197	H5493	139	4724	1Kin 20:24	kiirt	1Kir 20:24	1Kir 20:24			Hiph'il/-		0	biztos	igen
+N198	H0637	16	470	Psalm 65:14	kiirt	Zsolt 65:14	Zsolt 65:14	II		-/1		0	biztos	igen
+N199	H7198	8	575	Isa 5:28	kiirt	Ézs 5:28	Ézs 5:28			fej		0	biztos	igen
+N200	H5271	50	1176	Prov 5:18	kiirt	Péld 5:18	Péld 5:18			tagolatlan		0	biztos	igen

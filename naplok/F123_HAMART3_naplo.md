@@ -14,7 +14,7 @@ A kért modell (a brief `modell` mezője): `opus`; a session tényleges modellje
 
 **A szűretlen Strong-blokkok kézi átnézése (DT543 (b))** gépi mintakereséssel (`naplok/F123_HAMART3_formula.py`, `.tsv`): az 582 versből 42 a négy mintára (F1 adamá + pānîm + pusztító ige; F2 sáchat + föld; F3 chámász + erec; F4 chattát + föld), mind a 42 elolvasva a Károli-szöveggel.
 
-**A javaslat** (a teljes szöveg a session-csoport jegyzetmappájában: `HAMART-001_U2_javaslat.md`) és **a döntés — DT-F123ha:** az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03), 2026-11-05: „A–E: mehet, mind, ahogy a javaslatban áll.”
+**A javaslat** (a teljes szöveg a session-csoport jegyzetmappájában: `HAMART-001_U2_javaslat.md`) és **a döntés — DT683:** az orkesztrátor döntése a felhasználó felhatalmazásával: »az orkesztrátor vegye magához a döntéseket és hozza is meg« (2026-11-03), 2026-11-05: „A–E: mehet, mind, ahogy a javaslatban áll.”
 
 | Tétel | Döntés |
 |---|---|
@@ -41,7 +41,7 @@ Kikötés (végrehajtva): az Ez 12:19 és a Sof 1:2-3 indoklása kimondja a kül
 
 ## U3b. A 12. szótári blokk (Nave) — DT595
 
-A jelöltlista a mai 60 soron újraszámolva (34 téma; az U1 listája 52 soron 31-et adott). **Döntés (DT-F123hb, az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-05: „U3b Nave: mehet, ahogy javasoltad.”):** 7 `kivalasztott` (CURSE, FALL OF MAN, GROUND, FLOOD, ANTEDILUVIANS, THISTLE, BANISHMENT), 2 `tiltott` (SIN, DEPRAVITY OF MAN: a bűn általában felé hígítana), 25 `kizart` (személy, könyv, mellékes vagy túl tág téma), indokkal (`naplok/F123_HAMART3_nave.py`). A 23 magyar név Sonnet-tervezet (claude-sonnet-5-5), a `glossza_lexikon_forditas.py nave` kapui után; három a lap szóhasználatára simítva (`naplok/F123_HAMART3_nave_hu.py`). A lap 12. blokkja: 7 téma, magyarul.
+A jelöltlista a mai 60 soron újraszámolva (34 téma; az U1 listája 52 soron 31-et adott). **Döntés (DT684, az orkesztrátor döntése a felhasználó felhatalmazásával, 2026-11-05: „U3b Nave: mehet, ahogy javasoltad.”):** 7 `kivalasztott` (CURSE, FALL OF MAN, GROUND, FLOOD, ANTEDILUVIANS, THISTLE, BANISHMENT), 2 `tiltott` (SIN, DEPRAVITY OF MAN: a bűn általában felé hígítana), 25 `kizart` (személy, könyv, mellékes vagy túl tág téma), indokkal (`naplok/F123_HAMART3_nave.py`). A 23 magyar név Sonnet-tervezet (claude-sonnet-5-5), a `glossza_lexikon_forditas.py nave` kapui után; három a lap szóhasználatára simítva (`naplok/F123_HAMART3_nave_hu.py`). A lap 12. blokkja: 7 téma, magyarul.
 
 ## Fordítás (a cikk menetében, Sonnettel; DT587 mintája)
 
@@ -61,7 +61,7 @@ A lap Thayer/BDB-szövegéből fordítatlan volt: **Thayer G1261** (διαλογ
 
 ## Ami a felhasználóra és az orkesztrátorra vár
 
-- ~~A Nave-döntés jóváhagyása (U3b)~~ — megvan: DT-F123hb.
+- ~~A Nave-döntés jóváhagyása (U3b)~~ — megvan: DT684.
 - A lap vizuális átnézése (U6), a felhasználóé; utána egy javítókör, 1. kiadás.
 - A független ellenőrzés (`fuggetlen-ellenor`) a PR diffjén.
 

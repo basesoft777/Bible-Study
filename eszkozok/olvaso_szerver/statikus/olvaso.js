@@ -458,6 +458,22 @@
     if (r.top > hatar - 40 || r.top < sav) { window.scrollBy({ top: r.top - Math.max(sav + 8, Math.min(80, hatar / 3)), behavior: 'smooth' }); }
   }
 
+  // F104 (DT178): a versből megnyitott szó lapján a BDB-blokk első erős („a BDB itt idézi”), ennek híján első gyenge
+  // („vonatkozhat”) jelölésére görget a lapon belül; a kiemelés a szerver jelölése, itt csak a görgetés történik
+  function bdbOdagorget() {
+    var cel = tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-itt')
+      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] a.bdb-itt')
+      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] div.torzs.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] a.bdb-vonatkozhat');
+    if (!cel) { return; }
+    // a görgetés a végleges elrendezésen (betűk, ragadós fejléc-igazítás után): a teljes lapnál a load után, töredéknél a következő képkockán
+    // a lap ragadós fejsora (lapFej) ne takarja a jelölés elejét
+    var gorget = function () {
+      cel.scrollIntoView({ block: 'start' });
+      if (lapFej && lap.scrollTop > 0) { lap.scrollTop = Math.max(0, lap.scrollTop - lapFej.getBoundingClientRect().height - 8); }
+    };
+    if (document.readyState === 'complete') { window.requestAnimationFrame(gorget); } else { window.addEventListener('load', gorget, { once: true }); }
+  }
+
   function megjelenit(all, html) {
     aktualis = all;
     lap.setAttribute('data-mod', all.mod);
@@ -472,6 +488,7 @@
       if (all.mod === 'vers') { fulValt(all.ful || 'vers'); }
     }
     lap.scrollTop = 0;
+    if (all.mod === 'szo') { bdbOdagorget(); }
     var vers = helybeliVers(all);
     var el = kijelol(vers);
     muveletsor();
@@ -667,5 +684,6 @@
   if (kicsiMedia && kicsiMedia.addEventListener) { kicsiMedia.addEventListener('change', szelessegValt); }
   muveletsor();
   fejsor();
+  if (aktualis.mod === 'szo') { bdbOdagorget(); }
   if (aktualis.mod === 'vers') { legutobbHoz(lapUrl({ mod: 'vers', vers: aktualis.vers }), (lap.getAttribute('data-kk') || slug) + ' ' + fej + ':' + aktualis.vers); }
 })();

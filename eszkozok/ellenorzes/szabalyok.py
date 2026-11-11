@@ -249,7 +249,7 @@ SZANDEKOS_JELOLES_MINTA = re.compile(
 
 
 # DT-F<nn><betu> / N-F<nn><betu> helyorzo (a betu elhagyhato)
-HELYORZO_MINTA = re.compile(r'\b(DT|N)-F\d+[a-z]?\b')
+HELYORZO_MINTA = re.compile(r'\b(DT|N)-F\d+[a-z]*\b')
 
 
 def _cimsor_szoveg_kulcs(cimsor):
@@ -1419,9 +1419,9 @@ _E26_VEGLEGES_DEF = {
     'D': re.compile(r'^\|\s*(D\d+)\s*\|'),
 }
 _E26_HELYORZO_DEF = {
-    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]?)\s*\|'),
-    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]?)(?![A-Za-z0-9])'),
-    'D': re.compile(r'^\|\s*(D-F\d+[a-z]?)\s*\|'),
+    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]*)\s*\|'),
+    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]*)(?![A-Za-z0-9])'),
+    'D': re.compile(r'^\|\s*(D-F\d+[a-z]*)\s*\|'),
 }
 _E26_DT_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])DT(\d+)(?![A-Za-z0-9])')
 _E26_N_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])N(\d{1,3})(?![A-Za-z0-9])')
@@ -2005,6 +2005,21 @@ def _migralt_lista():
     return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
 
 
+E28_CSAK_VALTOZO = 'PARDES_E28_CSAK'
+
+
+def e28_csak_szures():
+    """F188 T4: a migrált nézetek szűkítése helyi futásban (a független ellenőr diétája): a `PARDES_E28_CSAK`
+    környezeti változó vesszős ID-listája, vagy None (nincs szűkítés). A GitHub-futásban (`GITHUB_ACTIONS`) a
+    változót figyelmen kívül hagyja: a CI-ben mindig a teljes E28 fut."""
+    if os.environ.get('GITHUB_ACTIONS'):
+        return None
+    nyers = os.environ.get(E28_CSAK_VALTOZO, '').strip()
+    if not nyers:
+        return None
+    return {x.strip() for x in nyers.split(',') if x.strip()}
+
+
 def _lf(szoveg):
     return szoveg.replace('\r\n', '\n')
 
@@ -2182,6 +2197,13 @@ def e28_generalt_nezet_egyezes(fajlok):
 
     # (2) migrált nézetek
     lista = _migralt_lista()
+    csak = e28_csak_szures()
+    if csak is not None:
+        # F188 T4: a független ellenőr helyi futása az érintett lapokra szűkíthet; a CI ezt nem állítja be
+        kihagyott = [d['id'].strip() for _, d in lista if d.get('id', '').strip() not in csak]
+        lista = [(n, d) for n, d in lista if d.get('id', '').strip() in csak]
+        E28_JEGYZETEK.append('E28: szűkítve (%s=%s); kihagyva: %s' % (
+            E28_CSAK_VALTOZO, ','.join(sorted(csak)), ', '.join(kihagyott) or '-'))
     if not lista:
         E28_JEGYZETEK.append('E28: 0 migrált nézet')
     else:
@@ -2560,7 +2582,7 @@ E32_KIZART_FAJLOK = {
 }
 E32_KIZART_ELOTAG = ('eszkozok/ellenorzes/tesztek/',)
 E32_KIHAGY_JELOLESEK = ('e32-kihagy', 'szamkiosztas-kihagy')
-_E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]?)\s*→\s*((?:DT|N|D)\d+)')
+_E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]*)\s*→\s*((?:DT|N|D)\d+)')
 
 
 def _szamkiosztas_modul():
@@ -2703,7 +2725,7 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
     varo = {} if fajlok and fajlok[0] == '__TELJES__' else _e32_kiosztasra_varo()
     if not kiosztott and not varo:
         return talalatok
-    minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]?(?![A-Za-z0-9-])')
+    minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]*(?![A-Za-z0-9-])')
     for relut in py_fajlok:
         ut = os.path.join(ROOT, *relut.split('/'))
         try:
@@ -3362,6 +3384,76 @@ def kapulista_ir(root=None):
 SZINT['E37'] = 'HIBA'
 FAJLSZINTU_SZABALYOK.add('E37')
 SZABALYOK_FUGGVENYEI['E37'] = e37_kapulista_naprakesz
+
+
+# ---------------------------------------------------------------------------
+# F188 T2 -- szamot csak egy helyen: tabla-szam ismetlese nyitott tetelben, README-ben, jelentesben (JELENTES)
+# ---------------------------------------------------------------------------
+# A nyitott-tetel, a README es a jelentes nem ismetli meg egy tabla szamait: hivatkozik ra, vagy a szam generalt
+# blokkbol jon. Ez a fuggveny a heurisztikus felismeres: olyan sor, amely egy `.tsv` tablat nevez meg, es darabszamot
+# mond (`312 sor`, `14 976 tétel`), proveniencia-sor (`scope=`) nelkul, generalt blokkon, kodblokkon es backtickes
+# kodon kivul. Szint: csak JELENTES (nem gatol). Meg NINCS a SZABALYOK_FUGGVENYEI-ben: a CI-szaballya (E38) emeles a
+# `SZINT`/`SZABALY_LEIRAS` es az `adat/SEMA.md` 3.11 generalt kapulista egyideju modositasat kivanja, a SEMA-t pedig a
+# #104 merge-e elott nem irjuk (N-F188a). Addig az `elojavit.py` jelzi a commit elott.
+SZAMISMETLES_AZON = 'SZAMISMETLES'
+SZAMISMETLES_FAJLOK = (re.compile(r'^NYITOTT_FELADATOK\.md$'), re.compile(r'^nyitott/uj/[^/]+\.md$'),
+                       re.compile(r'^(?:.+/)?README\.md$'), re.compile(r'^naplok/[^/]+_jelentes\.md$'))
+_SZAMISMETLES_TABLA = re.compile(r'[\w./-]+\.tsv\b')
+_SZAMISMETLES_DARAB = re.compile(
+    r'(?<![\w.,:/-])(\d{1,3}(?:[   ]\d{3})+|\d+)\s+'
+    r'(sor|tétel|előfordulás|bejegyzés|kulcs|hely|vers)[a-záéíóöőúüű]{0,4}(?![\w-])', re.IGNORECASE)
+_SZAMISMETLES_GEN_KEZD = re.compile(r'<!--\s*GENERÁLT-KEZDET')
+_SZAMISMETLES_GEN_VEGE = re.compile(r'<!--\s*GENERÁLT-VÉGE')
+
+
+def szamismetles_hatokor(relut):
+    relut = relut.replace('\\', '/')
+    return any(m.match(relut) for m in SZAMISMETLES_FAJLOK)
+
+
+def szamismetles_sorok(sorok):
+    """[(sorszam, tabla, szam-kifejezes)] a sorlistabol (a fajl tartalma)."""
+    ki = []
+    kodblokk = generalt = False
+    for i, sor in enumerate(sorok, start=1):
+        if sor.strip().startswith('```'):
+            kodblokk = not kodblokk
+            continue
+        if _SZAMISMETLES_GEN_KEZD.search(sor):
+            generalt = True
+            continue
+        if _SZAMISMETLES_GEN_VEGE.search(sor):
+            generalt = False
+            continue
+        if kodblokk or generalt or PROVENIENCIA_MINTA.search(sor):
+            continue
+        tabla = _SZAMISMETLES_TABLA.search(sor)
+        if not tabla:
+            continue
+        tisztitott = re.sub(r'`[^`]*`', ' ', sor)
+        m = _SZAMISMETLES_DARAB.search(tisztitott)
+        if m:
+            ki.append((i, tabla.group(0), m.group(0)))
+    return ki
+
+
+def szamismetles(fajlok):
+    """F188 T2: a hatokorbe eso fajlok tabla-szam ismetlesei, JELENTES szinten (l. fent)."""
+    talalatok = []
+    for relut in fajlok:
+        relut = relut.replace('\\', '/')
+        if not szamismetles_hatokor(relut):
+            continue
+        try:
+            sorok = md_olvasas(repo_ut(relut))
+        except (IOError, OSError):
+            continue
+        for n, tabla, kif in szamismetles_sorok(sorok):
+            talalatok.append(Talalat(
+                SZAMISMETLES_AZON, 'JELENTES', relut, n,
+                'a `%s` számát („%s”) ismétli: hivatkozz a táblára vagy a generált blokkra, vagy írd mellé a '
+                'lekérdezés proveniencia-sorát (`scope=… | forras=… | ts=…`)' % (tabla, kif)))
+    return talalatok
 
 
 if __name__ == '__main__':

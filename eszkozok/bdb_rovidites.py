@@ -194,9 +194,112 @@ def _heber_jel(c):
     return 'א' <= c <= 'ת' or '\ufb1d' <= c <= '\ufb4f' or '֑' <= c <= 'ׇ' or c in '׳״'
 
 
-def heber_sorrend_javit(szoveg, strong, javitasok=None):
+# ---------------------------------------------------------------- rafe-maqqéf (F105, DT-F105a)
+# A forrás a maqqéf (U+05BE) helyén a két szót egybeírja, és rafét (U+05BF) tesz a szóhatár melletti betűre: hol a második
+# szó első betűjére (`מִןהָֿאָרֶץ`, `יֿוֺם`: a magánhangzót gyakran a következő mater-betű hordozza), ritkán az első szó
+# utolsó betűjére (`עִםֿ הַחֲמוֺר`, `בַּתֿ צִיּוֺן`). Szabály: végbetű-alak, vagy a token utolsó betűje (utána nem héber betű
+# vagy geres áll) → a szóhatár utána; minden más betű → előtte (a második szó eleje). „Előtte”: maqqéf a betű elé, az előző betű végbetű-alakra (ha nem rövidítés); csak ha a szóban van
+# előző betű. „Utána”: maqqéf a betű jelei után, ha ott héber betű áll, vagy a közvetlen szóköz helyére, ha utána héber
+# betű jön. Ahol egyik sem áll, a rafe marad (nem találgatunk). Kivétel (`_szotag_zaro`, ELLENOR_F105 3.): pont nélküli
+# rafés betű nyitott szótag után → utána (`אֶתֿכֹּל` → `אֶת־כֹּל`), ha pedig mater-betű (ו / י) követi, szón belüli rafe → marad.
+# Mérés (a magánhangzó-pont szerinti változat elvetve):
+# `naplok/F105_naplo.md`, `naplok/F105_maqqef_meres.py`.
+RAFE = 'ֿ'
+MAQQEF = '־'
+_VEGBETU = dict(zip('כמנפצ', 'ךםןףץ'))
+
+
+def _betu(c):
+    return 'א' <= c <= 'ת'
+
+
+def _jel(c):
+    return '֑' <= c <= 'ׇ' and c != MAQQEF
+
+
+_PONT = set('ְֱֲֳִֵֶַָׇֹֺֻ')   # magánhangzó-pontok (a sva is)
+
+
+def _szotag_zaro(s, b, e):
+    """A rafét hordozó (b) betű nyitott szótag után áll: neki nincs magánhangzó-pontja, az előtte álló betűnek van (a sva nem
+    számít), és az nem mater-betű (ו / י: `לוֺ`, `עֲלֵי` után a következő betű a második szó eleje). Ilyenkor a betű az első
+    szó szótagját zárja (`אֶתֿכֹּל` → 'utana'), kivéve ha utána mater-betű (ו / י) jön: az a szón belüli rafe (`חֲטֻבֿוֺת`,
+    `מִמֵּנֿוּ`), nem maqqéf → 'marad'; a pont nélküli (néma) álef is szón belüli (`בָּאֿזִקִּים`, ELLENOR_F105) → 'marad'.
+    Más esetben None (az általános szabály dönt)."""
+    sajat = any(c in _PONT for c in s[b + 1:e])
+    p = b - 1
+    while p >= 0 and _jel(s[p]):
+        p -= 1
+    if p < 0 or not _betu(s[p]) or s[p] in 'וי':
+        return None
+    if not any(c in _PONT and c != 'ְ' for c in s[p + 1:b]):
+        return None
+    if sajat:
+        return None
+    return 'marad' if (e < len(s) and s[e] in 'וי') or s[b] == 'א' else 'utana'
+
+
+def maqqef_javit(szoveg):
+    """A rafe-maqqéf feloldása (l. fent); idempotens, a rafe nélküli szöveget nem változtatja."""
+    if not szoveg or RAFE not in szoveg:
+        return szoveg
+    s = list(szoveg)
+    i = 0
+    while i < len(s):
+        if s[i] != RAFE:
+            i += 1
+            continue
+        b = i - 1                                   # a rafét hordozó betű
+        while b >= 0 and _jel(s[b]):
+            b -= 1
+        if b < 0 or not _betu(s[b]):
+            i += 1
+            continue
+        e = b + 1                                   # a betű jeleinek vége
+        while e < len(s) and _jel(s[e]):
+            e += 1
+        kov = s[e] if e < len(s) else ''
+        zaro = _szotag_zaro(s, b, e)
+        if zaro == 'marad':
+            i += 1
+            continue
+        elotte = s[b] not in 'ךםןףץ' and (_betu(kov) or kov == '׳') and zaro != 'utana'
+        if elotte:
+            p = b - 1                               # az előző betű (a jelei és a geres átugrásával)
+            while p >= 0 and (_jel(s[p]) or s[p] == '׳'):
+                p -= 1
+            if p < 0 or not _betu(s[p]):
+                i += 1
+                continue
+            rov = any(x == '׳' for x in s[p + 1:b])
+            if not rov and s[p] in _VEGBETU:
+                s[p] = _VEGBETU[s[p]]
+            del s[i]
+            s.insert(b, MAQQEF)
+            i += 1
+        else:
+            if kov and _betu(kov):
+                del s[i]
+                s.insert(e - 1, MAQQEF)
+            elif kov == ' ' and e + 1 < len(s) and _betu(s[e + 1]):
+                del s[i]
+                s[e - 1] = MAQQEF
+            else:
+                i += 1
+    return ''.join(s)
+
+
+def heber_sorrend_javit(szoveg, strong, javitasok=None, betu=True):
     """A Strong `javitva` héber kifejezéseinek cseréje a szövegben (betű szerint, héber betűvel nem határos előfordulás;
-    a hosszabb kifejezés elsőbbséggel, átfedés nélkül)."""
+    a hosszabb kifejezés elsőbbséggel, átfedés nélkül), utána a rafe-maqqéf feloldása (`maqqef_javit`, F105), majd a pe/mem
+    és rés/dálet betűjavítás (`betu_javit`, F185 P4): a megjelenítés egyetlen héber javító lépése, az olvasó
+    (`blokkok._rovidites`) és a lexikon-generátor is ezt hívja, az angol és a magyar szövegre egyaránt. `betu`: a betűjavítás
+    kapcsolója (DT-F185f: az olvasóban be, a lexikon-generátorban a `lexikon_general.BDB_BETU_JAVIT` szerint)."""
+    s = maqqef_javit(_sorrend_csere(szoveg, strong, javitasok))
+    return betu_javit(s, strong) if betu else s
+
+
+def _sorrend_csere(szoveg, strong, javitasok=None):
     parok = (javitasok if javitasok is not None else sorrend_javitasok()).get(_strong_kulcs(strong))
     if not parok or not szoveg:
         return szoveg
@@ -213,6 +316,61 @@ def heber_sorrend_javit(szoveg, strong, javitasok=None):
     for i, e, uj in sorted(cserek, reverse=True):
         szoveg = szoveg[:i] + uj + szoveg[e:]
     return szoveg
+
+
+# ---------------------------------------------------------------- betűjavítás (F185 P4: pe/mem, rés/dálet)
+# A `adat/bdb_forras_javitas.tsv` `pe_mem` és `res_dalet` / `javitva` sorai (a digitalizálás betűhibája: dagesses mem a pe
+# helyett, rés ↔ dálet), megjelenítéskor, MINDKÉT nyelvre: az angol forrásszövegben és a magyar fordítás (#38) héber tokenjeiben
+# is (a fordítás a hibás alakot szó szerint átvette; a `forditasok.tsv` nem íródik át). Pontos héber tokenre (betűk és
+# pontozás, NFD; a rövidítő geres nem a token része), Strongonként; a tábla a forrásbeli helyet (`sorszam`, `szo_sorszam`) a
+# magyar szövegre nem hordozza, ezért egy alak csak akkor cserélődik, ha a Strongban minden előfordulása javított (ha ugyanaz az
+# alak máshol `valodi_mem` vagy `jelolt_marad`, kimarad: nem egyértelmű).
+_BETU = None
+_TOKEN_RE = re.compile('[%s][%s%s]*' % (HEB_BETU, HEB_BETU, '\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4-\u05c7'))
+
+
+def betu_javitasok(ut=None):
+    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad)."""
+    global _BETU
+    if _BETU is not None and not ut:
+        return _BETU
+    jav, tilt = {}, {}
+    try:
+        with open(ut or JAVITAS_UT, encoding='utf-8') as f:
+            sorok = [x.rstrip('\n').split('\t') for x in f if not x.startswith('#')]
+    except OSError:
+        sorok = []
+    fej = sorok[0] if sorok else []
+    for x in sorok[1:]:
+        d = dict(zip(fej, x))
+        if d.get('hiba') not in ('pe_mem', 'res_dalet'):
+            continue
+        a = unicodedata.normalize('NFD', d.get('forras_alak', '')).strip('׳')
+        if d.get('allapot') == 'javitva' and d.get('javitott_alak'):
+            jav.setdefault(d['strong'], {}).setdefault(a, set()).add(
+                unicodedata.normalize('NFD', d['javitott_alak']).strip('׳'))
+        else:
+            tilt.setdefault(d['strong'], set()).add(a)
+    ki = {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
+          for st, t in jav.items()}
+    if not ut:
+        _BETU = ki
+    return ki
+
+
+def betu_javit(szoveg, strong, javitasok=None):
+    """A Strong pe/mem és rés/dálet javításai a szöveg héber tokenjein (pontos tokenre; a token Unicode-alakja megmarad)."""
+    t = (javitasok if javitasok is not None else betu_javitasok()).get(_strong_kulcs(strong))
+    if not t or not szoveg:
+        return szoveg
+
+    def csere(m):
+        tok = m.group(0)
+        uj = t.get(unicodedata.normalize('NFD', tok))
+        if uj is None:
+            return tok
+        return uj if tok == unicodedata.normalize('NFD', tok) else unicodedata.normalize('NFC', uj)
+    return _TOKEN_RE.sub(csere, szoveg)
 
 
 # ---------------------------------------------------------------- izolálás (a jelentés 9. szakasza)

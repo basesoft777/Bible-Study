@@ -5,12 +5,13 @@ kod: KAROLI_KH_JELOLTEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+ag: claude/f181-karoli-kh-jeloltek
+allapot: megallt
 ad: a 2 863 jelölt sor mért bontása; jóváhagyott, tesztelt gépi beemelési szabály; rétegzett szúrópróba hibaaránnyal; frissített Karoli_KH_javitott.tsv; N-F177b lezárása
-kovetkezo: a lapok a motívumonkénti teljes folyamatban kapják meg (N-F177a)
+kovetkezo: "Te: draft PR #675 (a 2/2-es javítókör-korlát betelt, a maradék két tétel az orkesztrátor döntésével rendezve: F181.48, F181.49); a merge a felhasználóé"
 munka: folyamat
 olvas: [konkordancia/Karoli_KH_javitott.tsv, konkordancia/Karoli_KH_MEK.tsv, konkordancia/Karoli_KH_MEK_README.md, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_1908.tsv, F177_KAROLI_KH_MEK_BRIEF.md, naplok/F177_jelentes.md, adat/SEMA.md]
-ir: [konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, konkordancia/Karoli_KH_MEK_README.md, naplok/F181_jelentes.md]
+ir: [konkordancia/Karoli_KH_javitott.tsv, eszkozok/karoli_kh_mek.py, eszkozok/teszt_karoli_kh_mek.py, konkordancia/Karoli_KH_MEK_README.md, naplok/F181_jelentes.md, eszkozok/karoli_kh_szuro.py, eszkozok/lekerdez.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_mockup/nav_kinyer.py, dontesek/uj/f181-karoli-kh-jeloltek.md, nyitott/uj/f181-karoli-kh-jeloltek.md, nyilt_mag/*]
 fugg: [177]
 ---
 

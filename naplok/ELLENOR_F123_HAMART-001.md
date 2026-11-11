@@ -38,7 +38,7 @@ ELTÉRÉS: 12 tétel
 | CI E19: 7 HIBA (BDB H0127/1, /3, /4 és további 4) | **ELTÉRÉS (közepes)** | `lexikon_hivatkozasok.tsv` | `futtat.py` |
 | CI E16 (a PR-cím „[ELLENŐRZŐ]” előtagja), E27 (5 HIBA, tételek nem látszanak) | NEM ELLENŐRIZHETŐ | | |
 | L3 nulla-diff a többi lapon | NEM ELLENŐRIZHETŐ (generátort nem futtathat) | | |
-| Kritérium-átírás: a negatív kritérium tartalmilag bővült (szópár, szövetségi kizárás, „név szerint”), a DT-F123ha ezt nem nevezi meg | megjegyzés | `motivumok.tsv` | |
+| Kritérium-átírás: a negatív kritérium tartalmilag bővült (szópár, szövetségi kizárás, „név szerint”), a DT683 ezt nem nevezi meg | megjegyzés | `motivumok.tsv` | |
 
 ## Az ELTÉRÉS-ek súlyossági sorrendben
 
@@ -74,4 +74,4 @@ ELTÉRÉS: 12 tétel
 | — | CI E16 | a PR címe „[ELLENŐRZŐ]” előtagot kap (a PR ellenőrzőt is módosít) |
 | — | E2, E4 (a saját CI-futásból) | E2: az `archivum/` alatti fájl kimarad (mint az E9-ben); E4: a teljes-scan napló az archivált motívum régi naplója is lehet (`archivum/<ID>/`). Mindkettő `eszkozok/ellenorzes/szabalyok.py`. A `test_szabalyok.py` 26 hibája a main szabályfájljával is ugyanígy jelentkezik (E27-tesztek, környezetfüggő). |
 
-Nem javított, csak rögzített: a Nave két megjegyzése (a döntés az orkesztrátoré volt, DT-F123hb); a „Sir 3:47” kulcs és a kapu `Sir`-kezelése (külön tétel, nem a cikké); a negatív kritérium bővülése (a DT-F123ha a szövegét nem nevezi meg; a javasolt szöveg az U2-javaslat E pontjának következménye) — az orkesztrátornak jelezve.
+Nem javított, csak rögzített: a Nave két megjegyzése (a döntés az orkesztrátoré volt, DT684); a „Sir 3:47” kulcs és a kapu `Sir`-kezelése (külön tétel, nem a cikké); a negatív kritérium bővülése (a DT683 a szövegét nem nevezi meg; a javasolt szöveg az U2-javaslat E pontjának következménye) — az orkesztrátornak jelezve.

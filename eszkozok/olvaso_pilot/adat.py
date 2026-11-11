@@ -33,7 +33,7 @@ _ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
 _ap.add_argument('--kimenet', default=None,
                  help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
 _ap.add_argument('--kiadas', choices=('belso', 'nyilvanos', 'kereskedelmi'), default='belso',
-                 help='a kiadás típusa (DT-F60a): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
+                 help='a kiadás típusa (DT124): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
                       'kereskedelmi: a KJV-Strong és az MCGED blokk is kimarad')
 _args = _ap.parse_args()
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -193,7 +193,15 @@ for r in tsk_kulcs.forras_sorok(_tsk_nyers, set(VERSEK)):
 kh = defaultdict(list)
 STEP_HU = step_tabla()
 # F177: csak a MEK-kel megerősített sor (karoli_kh_szuro.elfogad) jut át
-for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
+# F181: a csak a MEK-ben álló, megerősített sorok is (karoli_kh_szuro.mek_sorok)
+_MEK_KH = [[x['Igehely'], x['Kapcsolódó igehely'], x['Kapcsolódó igehely magyar megjelenítése']]
+           for x in karoli_kh_szuro.mek_sorok()]
+_KH_FEJ = ['Igehely', 'Kapcsolódó igehely', 'Kapcsolódó igehely magyar megjelenítése']
+# F181 E6: a HunKar-sor megjelenítése is a repó egységes könyvnevével (ApCsel, nem Csel)
+_HK_KH = [r[:2] + [karoli_kh_szuro.hu_megjelenites(dict(zip(_KH_FEJ, r)))] + r[3:] if len(r) > 2 else r
+          for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv')]
+# F181.33 (DT-F181p): azonos kulcsú sor egyszer (karoli_kh_szuro.egyedi)
+for r in karoli_kh_szuro.egyedi([r for r in _HK_KH + _MEK_KH if len(r) > 1], kulcs=lambda r: (r[0], r[1])):
     m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
     if m and len(r) > 2 and karoli_kh_szuro.elfogad(r[0], r[1]):
         kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
@@ -478,7 +486,8 @@ for r in sorok('konkordancia/Thayer_teljes.tsv'):
         thayer[n] = r[2]
 gor_hu = defaultdict(list)
 for r in sorok('adat/forditasok.tsv'):
-    if len(r) > 7 and r[0] in ('Thayer', 'UBS_DNTG') and r[6].strip():
+    # F187 (N-F186g): csak az érvényes sor — az `elavult` és az összevonási tagsor (`sz<n>~<m>`, SEMA 2.14) nem
+    if len(r) > 7 and r[0] in ('Thayer', 'UBS_DNTG') and r[6].strip() and r[7] != 'elavult' and '~' not in r[3]:
         n = hnorm(r[1])
         if n in gor_szavak:
             gor_hu[n].append({'szotar': r[0], 'szam': r[3], 'szoveg': r[6].replace('\\n', '\n')})
@@ -567,7 +576,9 @@ prov = {
     'parok': 'scope=%s | forras=adat/karoli_strong/%s | ts=%s' % (SZAKASZ, PAROK_F, TS),
     'lxx': 'scope=%s | forras=%s | ts=%s' % (SZAKASZ, LXX_F, TS),
     'tsk': 'scope=%s | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
-    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
+    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv (HunKar) + konkordancia/Karoli_KH_MEK.tsv '
+          '(MEK 00161, Országos Széchényi Könyvtár, közkincs) + konkordancia/Karoli_KH_javitott.tsv (szűrő: a megerősített szint) '
+          '| ts=%s' % (SZAKASZ, TS),
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
     'bdb_alias': 'scope=strong | forras=konkordancia/BDB_strong_alias.tsv (alias-párosítás, csak ha a Strong-számnak nincs saját BDB-szócikke) | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),
