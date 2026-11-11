@@ -18,16 +18,16 @@ Minden tábla: kódkönyv-sor (79 új sor az `adat/nyilt_kodkonyv.tsv`-ben), OSI
 ## Mi nem került be, és miért
 
 - **Chain Lineage-tanú** (nincs licenc; a felhasználó: „ez most így marad”): az exportáló nem veszi át (4 sor), a kapu új `VISSZHANG` ellenőrzése bukik, ha bármely cellában a neve, a végpontja vagy a BiblIndex szerepel.
-- **`bdb` megfelelő-sor** (31 sor: 19 ellenőrzött, 12 ellenőrizetlen): nincs a jóváhagyott listán (DT-F198a, N-F198a).
+- **`bdb` megfelelő-sor** (31 sor: 19 ellenőrzött, 12 ellenőrizetlen): nincs a jóváhagyott listán (DT778, N157).
 - **Ellenőrizetlen sor** (1 `lxx`; a 12 `bdb` fent): a lapon sem renderel.
-- **A vitatott források összefoglaló-szövege** (DT-F198b): az absztrakt licence forrásonként eltér.
+- **A vitatott források összefoglaló-szövege** (DT779): az absztrakt licence forrásonként eltér.
 - **HCF GitHub-URL** (1 sor): a csomagban a GitHub-hivatkozás tiltott (KANONIKUS); a sor `forras_url`-je üres, a forrás megnevezése áll.
 - A `megjegyzes`-ből a munkaközi ellenőri jelölések (`[ellenőri …]`, `[lemma megerősítve …]`) kimaradnak; hat LXX-sor „fordításra vár” jelentése üres marad (hiány, nem kitöltve).
 
 ## Licenc: két figyelmeztetés
 
-1. **LXX-sorok.** A kinyerés a szó kiválasztásához a `LXX_versszintu_parok`-at (a zárt, származtatott réteg) is használta; a csomagba a kiválasztott szó (egy vers egy tényszava) és a CC BY LXX_OS szövegéből való alak megy, `forras_licenc` = CC BY 4.0. Ezt a felhasználónak kell megerősítenie (DT-F198a). Ha nemet mond, az `lxx` kivétele egy sor az exportálóban.
-2. **A vitatott források bibliográfiai adata** OpenAlexből és Crossrefből való; a `licencek.tsv`-ben ehhez nincs sor, ezért a táblának nincs `forras_licenc` oszlopa: a szerző, a cím és a DOI tényadat, szöveg nincs benne. A licenc-leltár bővítése külön tétel lehet (N-F198b javaslat).
+1. **LXX-sorok.** A kinyerés a szó kiválasztásához a `LXX_versszintu_parok`-at (a zárt, származtatott réteg) is használta; a csomagba a kiválasztott szó (egy vers egy tényszava) és a CC BY LXX_OS szövegéből való alak megy, `forras_licenc` = CC BY 4.0. Ezt a felhasználónak kell megerősítenie (DT778). Ha nemet mond, az `lxx` kivétele egy sor az exportálóban.
+2. **A vitatott források bibliográfiai adata** OpenAlexből és Crossrefből való; a `licencek.tsv`-ben ehhez nincs sor, ezért a táblának nincs `forras_licenc` oszlopa: a szerző, a cím és a DOI tényadat, szöveg nincs benne. A licenc-leltár bővítése külön tétel lehet (N158 javaslat).
 
 ## Kapuk
 
@@ -38,10 +38,10 @@ Minden tábla: kódkönyv-sor (79 új sor az `adat/nyilt_kodkonyv.tsv`-ben), OSI
 
 ## Ellenőri javítókör (ELTÉRÉS 10 tétel, egy kör)
 
-- Számütközés: a #688 már F197-et foglalt; a feladat F198-ra, a helyőrzők DT-F198a/b-re, N-F198a/b-re számozva.
+- Számütközés: a #688 már F197-et foglalt; a feladat F198-ra, a helyőrzők DT778/b-re, N157/b-re számozva.
 - SBLGNT: a tartomány-igehelyek (pl. Gal 3:13-14, Zsid 6:7-8) versenként illesztve; a jegyzetek száma ennek megfelelően nőtt.
 - „Ellenőrzött”: az LXX-sorok 27-ét gépi ellenőrzés hagyta jóvá (egyetlen lemma a versben), nem második kéz; az OLVASSEL/README ezt kimondja.
 - Angol pár: az Efrém-sor és az „átkozta (őt: a földet)” javítva.
 - Kódkönyv: az SBLGNT `igehely_osis` a forrás saját számozását mondja; a teljes SBLGNT-megjelölés az OLVASSEL/README-ben áll.
-- DT-F198b 🟡-re (a felhasználó dönt); N-F198b felvéve (OpenAlex/Crossref licenc-sor).
+- DT779 🟡-re (a felhasználó dönt); N158 felvéve (OpenAlex/Crossref licenc-sor).
 - Nyitva marad, jelezve: a HCF-metaadat jogi átnézése kereskedelmi kiadás előtt (`licencek.tsv`); a kapu `minden jog fenntartva` címkét nem tilt a hatástörténet-táblákban (a `forrasok_es_licencek` kapu azt a kizárásnál fogja).
