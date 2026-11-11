@@ -1,6 +1,6 @@
 # Mitől kész egy lexikonlap — a lezárt követelménylista (HAMART-001 mércéjével)
 
-*F190 · v1 · 2026-11-11 · lezárva a szerkesztő döntéseivel (DT-F190a, 2026-11-11); nyitott pont csak a K67a–K67f pontosítása a #183 után. A felhasználó jóváhagyása a feladatra (2026-11-11): „igen. mert a hamartból akarjuk megírni a követelményt”.*
+*F190 · v1 · 2026-11-11 · lezárva a szerkesztő döntéseivel (DT738, 2026-11-11); nyitott pont csak a K67a–K67f pontosítása a #183 után. A felhasználó jóváhagyása a feladatra (2026-11-11): „igen. mert a hamartból akarjuk megírni a követelményt”.*
 
 **Mire való.** Ez a lista a lexikonlap 1. kiadásának mércéje. Ami rajta van, az a kész lap feltétele; ami nincs rajta, az nem feltétele az 1. kiadásnak. A lista a lektor és a szerkesztő átnézésének bemenete, és a „Kiadható-e az 1. kiadás?” kérdés mércéje. Az a kérdés akkor kap igen választ, ha a lapon nincs hamis állítás, a kapuk zöldek, és a lista minden pontja vagy teljesül, vagy tudatosan a 2. kiadásra került.
 
@@ -242,7 +242,7 @@ A „hiányzik” és a „részben” sorok hiányzó része. A „hol javul”
 
 ## (b) Ellentmondó vagy elavult követelmények — a szerkesztő döntésével
 
-Minden tétel döntött (DT-F190a). Ahol a döntés egy szabályhely igazítását kéri (sablon, MUNKAMENET, DONTESEK), az a szabályhely saját feladata; ez a lista csak a döntést rögzíti.
+Minden tétel döntött (DT738). Ahol a döntés egy szabályhely igazítását kéri (sablon, MUNKAMENET, DONTESEK), az a szabályhely saját feladata; ez a lista csak a döntést rögzíti.
 
 | # | Mi ütközik | Döntés | Állapot |
 |---|---|---|---|
@@ -300,4 +300,4 @@ Csak lista; új kaput ez a feladat nem ír.
 
 ---
 
-*Utolsó frissítés: 2026-11-11 (F190.7). **A lista lezárva** a szerkesztő döntéseivel (DT-F190a): a B01–B19 és a J1–J4 döntve (2026-11-11: „Igen, mind”; az F14-re: „Mindkettő most készüljön”). Egyetlen nyitott pont: a K67a–K67f pontosítása a #183 után, a tényleges HAMART visszhang 2 szerint, a lektor előtt.*
+*Utolsó frissítés: 2026-11-11 (F190.7). **A lista lezárva** a szerkesztő döntéseivel (DT738): a B01–B19 és a J1–J4 döntve (2026-11-11: „Igen, mind”; az F14-re: „Mindkettő most készüljön”). Egyetlen nyitott pont: a K67a–K67f pontosítása a #183 után, a tényleges HAMART visszhang 2 szerint, a lektor előtt.*

@@ -37,7 +37,7 @@ A lap követelményei ma négy helyen állnak: a lapsablonban, a döntésekben, 
 1. Modell-ellenőrzés (CLAUDE.md).
 2. A források célzott olvasása; a `DONTESEK.md`-ből csak a lapra vonatkozó, érvényes döntések (az elavult jelölve).
 3. A HAMART-lap mérése a legfrissebb commiton, ideiglenes, leválasztott munkafán (`olvasoi_kapu.py`, `proza_1a.py`, `ellenoriz.py`, `muhely_allapot.py`), és a lap célzott olvasása.
-4. A lista megírása; a (b) döntésre váró tételei helyőrzős döntésként (DT-F190a).
+4. A lista megírása; a (b) döntésre váró tételei helyőrzős döntésként (DT738).
 5. Draft PR. ⛔ A lista elfogadása és a merge a felhasználóé.
 
 ## 4. Elfogadási feltételek
@@ -50,7 +50,7 @@ A lap követelményei ma négy helyen állnak: a lapsablonban, a döntésekben, 
 
 ## 5. Döntésnapló
 
-- **DT-F190a** 🟡 — a lista elfogadása és a (b) tételek döntése (`dontesek/uj/kesz-lap-kovetelmeny-15a3b5.md`).
+- **DT738** 🟡 — a lista elfogadása és a (b) tételek döntése (`dontesek/uj/kesz-lap-kovetelmeny-15a3b5.md`).
 
 ## 6. Jelentés
 
@@ -59,7 +59,7 @@ A lap követelményei ma négy helyen állnak: a lapsablonban, a döntésekben, 
 - A 109 sor állapota: 53 teljesül, 29 hiányzik, 15 részben, 6 nem eldönthető, 6 hátralévő lépés. A 26 pótlandó tétel (az (a) lista; az A18 törölve) a hiányzó és a részben teljesülő sorokból áll össze.
 - F190.6 (a felhasználó szó szerint idézett döntései, az orkesztrátor továbbításával): a K57 megfordult („semmi helye ott”, 2026-11-10: a lapon nincs mért BDB-pontosság; új B19, az A18 törölve). Döntve: B04, B06, B13, B14, B15 (F3, F18: az 1. kiadás feltételei). Nyitott: az F14. Javaslat, a szerkesztő jóváhagyására vár: B01–B03, B05, B07–B12, B16–B18, J1–J4.
 - Kiegészítés (F190.5, az orkesztrátor továbbításával): a felhasználó döntése (2026-11-11): „a visszhang 1-2 kötelező”. A K67 forrása ez, állapota „hiányzik (#183 folyamatban)”. A visszhang 2 hat sora (K67a–K67f) az `F183_VISSZHANG_USZ_TANU_BRIEF.md` V1–V3 pontjából és a `visszhang-reteg-terv` memóriából jön, „a briefből, a #183 után a HAMART szerint véglegesítendő” jelöléssel. Új (a)-tétel: A27.
-- F190.7: a felhasználó 2026-11-11-i szava („Igen, mind”; az F14-re: „Mindkettő most készüljön”) minden (b)- és J-tételt eldöntött; az F14 (4.13, 4.14) az 1. kiadás feltétele. A lista lezárva, a DT-F190a 🟢.
+- F190.7: a felhasználó 2026-11-11-i szava („Igen, mind”; az F14-re: „Mindkettő most készüljön”) minden (b)- és J-tételt eldöntött; az F14 (4.13, 4.14) az 1. kiadás feltétele. A lista lezárva, a DT738 🟢.
 - **Hátralévő:** a #183 után egy frissítés a K67a–K67f sorokat a tényleges HAMART visszhang 2 szerint pontosítja; a lista ezzel zárul le, a lektor előtt.
 
 - A mérés alapja: a lap `4f51e371` (F182.21), az ág feje `9e74455e`. Olvasói kapu: 0 BUKÁS, 19 FIGYELMEZTETÉS; 1/a: 47/47; `ellenoriz.py`: a 36–40. szabály a HAMART-ra tiszta.
