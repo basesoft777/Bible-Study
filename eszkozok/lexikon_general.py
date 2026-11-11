@@ -662,7 +662,9 @@ LEXIKON_CIM = 'Logosz Lexikon'
 KANONIKUS_ALAP_URL = 'https://logoszlexikon.hu'
 # a nyílt adatmag concept DOI-ja (Zenodo); a felhasználó (2026-11-11): Zenodo-feltöltés „még nem volt” — a HAMART kiadása
 # után a felhasználó lépése, a kapott DOI ide kerül
-NYILT_MAG_DOI = ''
+# a felhasználó (2026-11-11): „nyílt adatmag doi: 10.5281/zenodo.24141612” — egy Zenodo-piszkozat lefoglalt DOI-ja; a
+# rekord a HAMART kiadása után, ugyanezzel a DOI-val lesz közzétéve (addig a link nem oldódik fel: ez nem hiba)
+NYILT_MAG_DOI = '10.5281/zenodo.24141612'
 KANONIKUS_URL_HIANY = 'a lap állandó webcíme az első nyilvános megjelenéskor kerül ide'
 NYILT_ADAT_MUTATO_UJ = 'A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is megjelennek'
 DOI_HIANY = 'az adatkészlet DOI-ja az első Zenodo-közléskor kerül ide'
@@ -5568,7 +5570,7 @@ def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
         kiadasszam = kiadasok[-1]['kiadas'].strip() if kiadasok else None
         datum = (kiadasok[-1].get('datum') or '').strip() if kiadasok else G.TS
         kiadas_szoveg = ('%s. kiadás' % kiadasszam) if kiadasszam else 'kiadás előtti változat, még nem idézhető'
-        nyilt = ('%s: DOI: %s.' % (NYILT_ADAT_MUTATO, NYILT_MAG_DOI) if NYILT_MAG_DOI
+        nyilt = ('%s: https://doi.org/%s.' % (NYILT_ADAT_MUTATO, NYILT_MAG_DOI) if NYILT_MAG_DOI
                  else '%s; %s.' % (NYILT_ADAT_MUTATO_UJ, DOI_HIANY))
         idezes = ('**Hogyan idézd.** %s: *%s*, „%s” (%s), %s, %s, %s. %s' % (
             SZERZO_NEV, LEXIKON_CIM, m.get('cim') or m['id'], m['id'], kiadas_szoveg, datum,
