@@ -827,6 +827,10 @@ def ell_konyv(sorok):
         if s.szakasz.startswith(KIZART_SZAKASZ):
             continue
         t = kod_nelkul(s.szoveg)
+        # F183 (K67f): a szakirodalom bibliográfiai címe az eredeti alakjában áll (pl. „(Gen 6:5–9:17)”), nem olvasói
+        # igehely-hivatkozás; a 12. Irodalom „Szakirodalom” listájának DOI-s sorai kivételek
+        if s.szakasz.startswith('12. Irodalom') and 'DOI: 10.' in t:
+            continue
         for m in KONYV_RX.finditer(t):
             if m.group(1) not in hu and not SZOTAR_ALAK.search(t[max(0, m.start() - 20):m.start()]):
                 ki.append(talalat('KONYV', BUKAS, s.n, kornyezet(s.szoveg, m, 30),

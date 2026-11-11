@@ -75,3 +75,15 @@ A brief V0–V6 tételei helyett az orkesztrátor által rögzített, lezárt ha
 - **K66 (a 4 hiány-cella):** az adat megvolt, ezért javítva. Az 1Móz 3:23 és 4:12 LXX-cellája (γῆ) és a 9:15 LXX-cellája (ἐξαλείφω — más szó, a φθείρω-családon kívül) modell-kinyerés (claude-opus-5-5), második kéz claude-sonnet-5-5; a 4:12 Vulgata-sora (*eam*, névmás; kinyerő claude-sonnet-5-5) második kéz claude-opus-5-5; a betoldás-sor LXX-cellája (ἔργα, nincs betoldás) második kéz claude-sonnet-5-5 (az első ítélet a sort megfelelés-sornak olvasta, a SEMA 2.53 betoldás-sémájának megadása után újraítélte). A táblában „nincs ellenőrzött adat” nem maradt; a LXX sora: adámá 12/12, sáchat 5/6 (egy versben más szó).
 - **A Chain Lineage licence a lapon:** „licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva” (a `licencek.tsv` belső jelölése `tisztazatlan` marad; a forrás a nyílt magba nem kerül).
 - **K67f:** nyitott, a felhasználó döntésére vár.
+
+## K67f — akadémiai hang a vitatott pontoknál (F183.13; a felhasználó döntése, 2026-11-11: „mehet”)
+
+| Pont | Eredmény | Forrás |
+|---|---|---|
+| Az 1Móz 8:21 hatóköre | hiány, kimondva | a kérdésről (visszavonja-e a 8:21 a 3:17 földátkát) lektorált forrás nem került elő; a közeli találatok (Hess 1991, Otto 2025, Scarlata 2024) csak a témáról szólnak |
+| Örökölt bűn vagy terjedő következmény | hiány, kimondva | a talált művek (Mulzac 2000, Faro 2024, Gnuse 2002, Umbarger 2023) csak a témáról szólnak |
+| A forrásrétegek | forrás | David M. Carr, „Precursors to the Flood Narrative (Gen 6:5–9:17)”, in: The Formation of Genesis 1–11, OUP 2020, 141–177, DOI 10.1093/oso/9780190062545.003.0007 (az absztrakt alapján; a teljes szöveg zárt; a szókincs-hozzárendelést az absztrakt nem említi, a lap mondata erre nem hivatkozik) |
+
+- Keresés: claude-sonnet-5-5 subagent (OpenAlex, Crossref; a DOAB REST-végpontja 403-at adott); napló: `naplok/F183_akademiai_kereses.md`. Kinyerő és összefoglaló: claude-opus-5-5; második kéz: claude-sonnet-5-5 (saját lekérdezésekkel; 3/3 `jo`).
+- Adat: `adat/vitatott_forrasok.tsv` (SEMA 2.58), író: `eszkozok/szakirodalom_kinyer.py`; generátor: `szakirodalom_beszur` (a pont bekezdése után „*Szakirodalom:*” sor; a teljes hivatkozás a 12. Irodalomban); a rés-olvasásból (`regi_szerkezetre`) a generált sor kimarad; az olvasói KONYV-kapu a DOI-s bibliográfiai sort nem olvassa igehelynek.
+- Ellenőrzés: `ellenoriz.py` 0 SÉRTÉS, olvasói kapu 0 BUKÁS, `teszt_hatastortenet` (18 teszt); a CI-ben a `szakirodalom_kinyer.py ellenoriz` is fut.

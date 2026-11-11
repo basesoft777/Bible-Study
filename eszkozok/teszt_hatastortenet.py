@@ -127,6 +127,31 @@ class TanuBlokk(unittest.TestCase):
         self.assertNotIn('átok, a föld és a romlás', self.blokk([]))
 
 
+class Szakirodalom(unittest.TestCase):
+    """F183 (K67f): a vitatott pontok szakirodalma — a lapon pontonként egy sor; a hiány kimondva; a forrás a 12.
+    Irodalomban; a régi szerkezetű rés-olvasásból a generált sor kimarad."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(LAP, encoding='utf-8') as f:
+            cls.lap = f.read()
+
+    def test_pontonkent_egy_sor(self):
+        i = self.lap.find('### ⚠️ Vitatott pontok')
+        j = self.lap.find('\n## 11.', i)
+        self.assertEqual(self.lap[i:j].count('*Szakirodalom:*'), len(LG.vitatott_forrasok('HAMART-001')))
+
+    def test_hiany_kimondva_es_forras_az_irodalomban(self):
+        for r in LG.vitatott_forrasok('HAMART-001'):
+            if r['szerzo']:
+                self.assertIn('DOI: %s' % r['doi'], self.lap)
+            else:
+                self.assertIn(r['osszefoglalo'], self.lap)
+
+    def test_res_olvasasbol_kimarad(self):
+        self.assertNotIn('*Szakirodalom:*', LG.regi_szerkezetre(self.lap))
+
+
 class TanuSzabaly(unittest.TestCase):
     def setUp(self):
         self.eredeti = LG.visszhang_tanuk

@@ -3477,9 +3477,15 @@ A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utal�
 
 **Az 1Móz 8:21 hatóköre.** Két olvasat felel arra, mit ígér Isten az özönvíz után. Az egyik szerint az ígéret az 1Móz 3:17 átkának visszavonása: a föld átka megszűnt, és Lámek vigasztalás-várása (1Móz 5:29) teljesült. A másik szerint az ígéret csak azt zárja ki, hogy Isten még egyszer özönvízszerű ítélettel sújtsa a földet; a 3:17 átka mint állapot megmarad. A héber szöveg a második olvasatot támogatja annyiban, hogy nem az átok igéjét (árar), hanem egy másik igét (qalal) tagad; Pál is úgy beszél a teremtett világról, mint amely még a romlás rabságában van (Róm 8:21). Az első olvasat mellett szól, hogy a Genezisben a 8:21 után Isten a földet többé nem átkozza meg. A lap a kérdést nem dönti el, a két olvasatot dokumentálja.
 
+*Szakirodalom:* A kérdésről (visszavonja-e az 1Móz 8:21 a 3:17 földátkát) lektorált forrás a vizsgált adatbázisokban nem került elő. (Keresve: OpenAlex, Crossref, 2026-11-11.)
+
 **Örökölt bűn vagy terjedő következmény.** A lánc azt mutatja, hogy a bűn következményei kiterjednek, nem azt, hogy a bűnösség öröklődik. Az „eredendő bűn” kérdése egy másik szöveghez, az Ádám és Krisztus párhuzamához (Róm 5:12-21) tartozik, amely nem e motívum része; a lap ezért nem dönt benne.
 
+*Szakirodalom:* A kérdésről (a Genezis 3–11 a bűn terjedését vagy az örökölt bűnösséget mutatja-e) lektorált forrás a vizsgált adatbázisokban nem került elő; a talált művek csak a témáról szólnak. (Keresve: OpenAlex, Crossref, 2026-11-11.)
+
 **A forrásrétegek.** A bibliatudomány egy része a Genezis láncának szavait két forráshoz rendeli: az átok, a föld és a fáradság szavait az egyikhez, a romlás és az erőszak szavait a másikhoz. A lap a kanonikus szöveggel dolgozik, amelyben a két szócsoport egy elbeszélésben, egymásra épülve áll; a forráskérdést nem dönti el.
+
+*Szakirodalom:* Carr az 1Móz 6:5–9:17 özönvíz-elbeszélését egy papi és egy korábbi, nem papi forrás összefésülésének tartja, amelyeket utólagos kiegészítések hangoltak össze; a nem papi elbeszélést a korábbi őstörténet irodalmi bővítésének látja. (Carr, 2020; a teljes hivatkozás a 12. szakaszban.)
 
 *Forrás: a lap munkaanyaga; kézi szerkesztés, 2026-11-05 · az első olvasat melletti mondat (a 8:21 után a földre nem hangzik el átok; az átok igéje a Genezis hátralévő részében csak személyre vagy indulatra áll: 9:25, 12:3, 27:29, 49:7): forrás: a STEPBible héber szövege (TAHOT), 2026-11-08*<!-- eredeti: *Proveniencia: scope=manual | forras=archivum/HAMART-001/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md (a régi tanulmány három vitatott pontja; ellenőrzött lekérdezés nélkül) | ts=2026-11-05 · az első olvasat melletti mondat (a 8:21 után a földre nem hangzik el átok; az átok igéje a Genezis hátralévő részében csak személyre vagy indulatra áll: 9:25, 12:3, 27:29, 49:7): scope=range:1Móz 9:1-50:26 | forras=TAHOT_kivonat.tsv | strong=H0779 | n=4 | ts=2026-11-08T10:55Z* -->
 
@@ -3538,6 +3544,10 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (az UBS Dictionary of Biblical Hebrew, CC BY-SA 4.0)
 - tW (Translation Words — unfoldingWord) (a translationWords szócikkei, CC BY-SA 4.0)
 
+**Szakirodalom (a vitatott pontokhoz):**
+
+- David M. Carr, 2020: *Precursors to the Flood Narrative (Gen 6:5–9:17)*. In: The Formation of Genesis 1–11. Oxford University Press, 141–177. DOI: 10.1093/oso/9780190062545.003.0007
+
 **Adatforrások:**
 - a BDB-szótár (közkincs)
 - a BDB-szótár versenkénti jelentései (közkincs)
@@ -3559,6 +3569,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - a tiltott fordulatok listája (minden jog fenntartva)
 - a visszhang-megfelelők táblája (minden jog fenntartva)
 - a tanúréteg kinyerő táblája (minden jog fenntartva)
+- a vitatott pontok szakirodalom-táblája (minden jog fenntartva)
 - a Károli-fordítás (1908) (közkincs)
 - a Károli-kereszthivatkozások (közkincs)
 - a Károli-versmegfeleltetés (minden jog fenntartva)
@@ -3578,7 +3589,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -3653,6 +3664,7 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 | 2. Előfordulások |
 | az UBS Dictionary of New Testament Greek | CC BY-SA 4.0 | 2. Előfordulások, 4. Szótári háttér |
 | a visszhang-megfelelők táblája | minden jog fenntartva | 5. LXX-fordítói döntések, 9. Hatástörténet |
+| a vitatott pontok szakirodalom-táblája | minden jog fenntartva | 10. Értelmezés |
 | a Vulgata (Clementina) | közkincs | 9. Hatástörténet |
 
 *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*

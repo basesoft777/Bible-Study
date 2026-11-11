@@ -5580,7 +5580,7 @@ def kolofon_lektoralas(motivum_id, ut=None):
 KOLOFON_SZAKASZNEV = {'elofordulasok': '2. Előfordulások', 'kizart': '3. Kizárt és vizsgált helyek',
                       'szocikkek': '4. Szótári háttér', 'lxx': '5. LXX-fordítói döntések',
                       'kereszthivatkozasok': '6. Kereszthivatkozások', 'kapcsolatok': '7. Kapcsolatok',
-                      'hatastortenet': '9. Hatástörténet'}   # F183
+                      'hatastortenet': '9. Hatástörténet', 'ertelmezes': '10. Értelmezés'}   # F183
 
 
 def kolofon_forrastabla_olvasoi(per_fajl):
@@ -6503,6 +6503,8 @@ def regi_szerkezetre(szoveg):
     rés fejléce a helyén. A régi szerkezetű lap változatlan."""
     if not UJ_SZERKEZET_RX.search(szoveg):
         return szoveg
+    # F183 (K67f): a vitatott pontok szakirodalom-sora generált, nem a rés része (a rés a kézi forrásé)
+    szoveg = re.sub(r'\n\n\*Szakirodalom:\* [^\n]*', '', szoveg)
     # F183: a 9. Hatástörténet szakasz a régi szerkezetben nincs (a régi 4.11 helyén a mutató áll); a rés-határok
     # olvasásához a szakasz kimarad
     h = re.compile(r'(?m)^## 9\. Hatástörténet[^\n]*\n').search(szoveg)
@@ -7113,6 +7115,7 @@ OLVASOI_FORRASNEV = (
     (r'Targum_PD\.tsv', 'a Targum (közkincs)'),
     (r'Vulgata_Clementina\.tsv', 'a Vulgata (Clementina)'),
     (r'visszhang_tanuk\.tsv', 'a tanúréteg kinyerő táblája'),                                   # F183
+    (r'vitatott_forrasok\.tsv', 'a vitatott pontok szakirodalom-táblája'),                       # F183 (K67f)
     (r'SBLGNT_apparatus\.tsv', 'az SBL Greek New Testament apparátusa'),
     (r'TAGNT_valtozatok\.tsv', 'a STEPBible TAGNT változatjegyzéke'),
     (r'Glossa_Ordinaria\.tsv', 'a Glossa Ordinaria (Migne, 1880)'),
@@ -7472,6 +7475,7 @@ def uj_szerkezet_alkalmaz(szoveg, m, sorai):
     szoveg = visszhang_beszur(szoveg, m, sorai)
     szoveg = rokon_tabla_48(szoveg, m)
     szoveg = hatastortenet_athelyez(szoveg, m, sorai)   # F183
+    szoveg = szakirodalom_beszur(szoveg, m)             # F183 (K67f)
     szoveg = azonosito_tabla_beszur(szoveg, m)
     szoveg = kesz_lap_elotte(szoveg, m, sorai)
     return kesz_lap_utana(olvasoi_atiras(szoveg), m, sorai)
@@ -8448,6 +8452,59 @@ def hatastortenet_forrasok(m):
     return ki
 
 
+# --- F183 (K67f): a vitatott pontok lektorált szakirodalma -------------------------------------------------------
+# A felhasználó döntése (2026-11-11, „mehet”): a 10. Értelmezés „⚠️ Vitatott pontok” részében pontonként legfeljebb egy
+# lektorált forrás (OpenAlex, Crossref, DOAB), egymondatos, saját szavas összefoglalóval; ahol nincs a kérdésről szóló
+# forrás, a lap kimondja. Forrás: `adat/vitatott_forrasok.tsv` (SEMA 2.58), csak ellenőrzött sor; a pont bekezdését a
+# kézi forrás adja, a generátor csak utána illeszti a szakirodalom-sort (DT28: a forrásba nem ír vissza).
+VITATOTT_FORRASOK_TSV_REL = 'adat/vitatott_forrasok.tsv'
+
+
+def vitatott_forrasok(motivum_id):
+    ut = os.path.join(ADAT, 'vitatott_forrasok.tsv')
+    if not os.path.exists(ut):
+        return []
+    _, sorok = G.tsv_beolvas(ut)
+    return [r for r in sorok if r.get('motivum') == motivum_id and r.get('ellenorzes')]
+
+
+def _szakirodalom_hivatkozas(r):
+    return '%s, %s: *%s*. %s.%s' % (r['szerzo'], r['ev'], r['cim'], r['megjelenes'],
+                                    (' DOI: %s' % r['doi']) if r['doi'] else (' %s' % r['url']))
+
+
+def szakirodalom_beszur(szoveg, m):
+    """F183 (K67f): a vitatott pontok bekezdése után a szakirodalom-sor; a 12. Irodalomba a teljes hivatkozás."""
+    if not uj_szerkezet(m['id']):
+        return szoveg
+    sorok = vitatott_forrasok(m['id'])
+    if not sorok:
+        return szoveg
+    i = szoveg.find('### ⚠️ Vitatott pontok')
+    if i < 0:
+        return szoveg
+    for r in sorok:
+        j = szoveg.find('**%s.**' % r['pont'], i)
+        if j < 0:
+            continue
+        k = szoveg.find('\n\n', j)
+        k = k if k >= 0 else len(szoveg)
+        if r['szerzo']:
+            sor = '*Szakirodalom:* %s (%s, %s; a teljes hivatkozás a 12. szakaszban.)' % (
+                r['osszefoglalo'], r['szerzo'].split(',')[0].split()[-1], r['ev'])
+        else:
+            sor = '*Szakirodalom:* %s (Keresve: OpenAlex, Crossref, %s.)' % (r['osszefoglalo'], r['lekerdezve'])
+        szoveg = szoveg[:k] + '\n\n' + sor + szoveg[k:]
+    forrasok = [r for r in sorok if r['szerzo']]
+    if forrasok:
+        h = szoveg.find('**Adatforrások:**')
+        if h >= 0:
+            blokk = '**Szakirodalom (a vitatott pontokhoz):**\n\n' + '\n'.join(
+                '- %s' % _szakirodalom_hivatkozas(r) for r in forrasok) + '\n\n'
+            szoveg = szoveg[:h] + blokk + szoveg[h:]
+    return szoveg
+
+
 def hatastortenet_athelyez(szoveg, m, sorai):
     """F183: a 4.11 visszhang-blokk tartalma a 9. Hatástörténet szakaszba (az „Ókori fordítások: Ószövetség” alcím
     alá), mellé az újszövetségi ág és a tanúréteg; a 4.11 helyén mutató. A szakasz a 10. Értelmezés elé kerül."""
@@ -8734,6 +8791,8 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
         + [(fajl, licenc, 'kereszthivatkozasok') for fajl, licenc in fl_kereszthiv]
         + [(fajl, licenc, 'kapcsolatok') for fajl, licenc in fl_kapcsolatok]
         + [(fajl, licenc, 'hatastortenet') for fajl, licenc in hatastortenet_forrasok(m)]   # F183
+        + ([(VITATOTT_FORRASOK_TSV_REL, LC('projekt_adat'), 'ertelmezes')] if uj_szerkezet(m['id'])
+           and vitatott_forrasok(m['id']) else [])                                              # F183 (K67f)
     )
     blokk_idezes_szov = blokk_idezes(m, fajl_licenc_blokk_lista)
     # F131.17: a tW „Módosítás” mondata a tényleges felhasználást követi (szövegközlés vagy csak azonosító)

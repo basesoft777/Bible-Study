@@ -2287,6 +2287,31 @@ mű a válaszban a lánccsalád minden magversét idézi.
 (Blidstein, Inowlocki, Verheyden; URL, lekérdezési dátum) és a bibliai hivatkozások eredete (BiblIndex, Institut des
 Sources Chrétiennes, CNRS – HiSoMA, Lyon); a HCF-tanúnál a HistoricalChristianFaith adatbázis; a rabbinikusnál a Sefaria.
 
+### 2.58 `vitatott_forrasok.tsv` — a vitatott pontok lektorált szakirodalma (F183, K67f, 2026-11-11)
+
+A felhasználó döntése (2026-11-11, „mehet”): a lexikonlap 10. Értelmezés „⚠️ Vitatott pontok” részében minden vitatott
+ponthoz legfeljebb egy lektorált forrás (folyóiratcikk vagy tudományos kiadó könyve) OpenAlexből, Crossrefből vagy
+DOAB-ból, DOI-val vagy nyílt eléréssel, egymondatos, saját szavas összefoglalóval; a forrás ugyanarról a kérdésről szóljon,
+ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `eszkozok/szakirodalom_kinyer.py` (`beolvas`,
+`ellenoriz`); a keresés naplója a motívum jelentésében (HAMART-001: `naplok/F183_akademiai_kereses.md`).
+
+| Oszlop | Tartalom |
+|---|---|
+| `motivum` | a motívum azonosítója |
+| `pont` | a vitatott pont félkövér címe a forrásprózában, a záró pont nélkül (a generátor ezt keresi: `**<pont>.**`) |
+| `szerzo`, `cim`, `megjelenes`, `ev` | a bibliográfiai adat az API válaszából; a hiány-sornál üres |
+| `doi`, `url` | a forrás-sornál legalább az egyik kötelező |
+| `nyilt_eleres` | `igen` \| `nem` (az API szerint) |
+| `osszefoglalo` | egy mondat, saját szavakkal, idézet nélkül; csak azt állítja, amit a kinyerő a forrásból (legalább az absztraktból) olvasott; a hiány-sornál a hiány kimondása |
+| `lekerdezes` | a lekérdezés URL-je (vagy a napló hivatkozása) |
+| `lekerdezve` | a lekérdezés napja |
+| `kinyeres`, `modell` | `modell` \| `kezi`; a kinyerő tényleges modellneve |
+| `ellenorzes` | a második kéz (tényleges modellnév, dátum, indok); **üres: a lapon nem renderel** |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` |
+
+**Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
+Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

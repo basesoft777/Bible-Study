@@ -159,7 +159,9 @@ jobs:
           K7=$?
           python eszkozok/visszhang/tanu_kinyer.py ellenoriz
           K8=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          python eszkozok/szakirodalom_kinyer.py ellenoriz
+          K9=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
