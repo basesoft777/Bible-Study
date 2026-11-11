@@ -665,6 +665,9 @@ KANONIKUS_ALAP_URL = 'https://logoszlexikon.hu'
 # a felhasználó (2026-11-11): „nyílt adatmag doi: 10.5281/zenodo.24141612” — egy Zenodo-piszkozat lefoglalt DOI-ja; a
 # rekord a HAMART kiadása után, ugyanezzel a DOI-val lesz közzétéve (addig a link nem oldódik fel: ez nem hiba)
 NYILT_MAG_DOI = '10.5281/zenodo.24141612'
+# a Károli–Strong párosítás lefoglalt DOI-ja (a felhasználó, 2026-11-11: „károli strong: 10.5281/zenodo.24141884”;
+# Zenodo-piszkozat, a közzététel később); a Kolofon forrástáblájának sorában hivatkozásként áll
+KAROLI_STRONG_DOI = '10.5281/zenodo.24141884'
 KANONIKUS_URL_HIANY = 'a lap állandó webcíme az első nyilvános megjelenéskor kerül ide'
 NYILT_ADAT_MUTATO_UJ = 'A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is megjelennek'
 DOI_HIANY = 'az adatkészlet DOI-ja az első Zenodo-közléskor kerül ide'
@@ -5652,7 +5655,8 @@ def olvasoi_licencek(fajl, licencek):
     elif fajl in NYILT_MAG_ADAT and projekt in lic:
         lic = (lic - {projekt}) | {NYILT_MAG_LICENC}
     elif fajl.rstrip('/').endswith('karoli_strong') and projekt in lic:
-        lic = (lic - {projekt}) | {LC('Karoli_Strong_parok')}
+        lic = (lic - {projekt}) | {LC('Karoli_Strong_parok') + (', https://doi.org/%s' % KAROLI_STRONG_DOI
+                                                                 if KAROLI_STRONG_DOI else '')}
     elif fajl.endswith('forditasok.tsv') and projekt in lic:
         # a fordítások forrása vegyes licencű (BDB, Thayer közkincs; UBS CC BY-SA 4.0): a forrás licence a szótár
         # sorában áll, itt csak a fordításé (ELLENOR_HAMART_lapkeret 1.)

@@ -3546,7 +3546,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - a héber glosszák magyar táblája (CC BY 4.0)
 - a jelöltek döntésnaplója (CC BY 4.0, a nyílt adatmagban)
 - a kapcsolat-tábla (CC BY 4.0, a nyílt adatmagban)
-- a Károli–Strong párosítás (CC BY 4.0)
+- a Károli–Strong párosítás (CC BY 4.0, https://doi.org/10.5281/zenodo.24141884)
 - a lap szótári hivatkozástáblája (közkincs)
 - az LXX-fordítói döntések táblája (minden jog fenntartva)
 - a motívumtábla (CC BY 4.0, a nyílt adatmagban)
@@ -3629,7 +3629,7 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a Károli-kereszthivatkozások | közkincs | 6. Kereszthivatkozások |
 | a Károli-szavak szótári alakjai | minden jog fenntartva | 4. Szótári háttér |
 | a Károli-versmegfeleltetés | minden jog fenntartva | 2. Előfordulások |
-| a Károli–Strong párosítás | CC BY 4.0 | 4. Szótári háttér |
+| a Károli–Strong párosítás | CC BY 4.0, https://doi.org/10.5281/zenodo.24141884 | 4. Szótári háttér |
 | a lap fordítástáblája | a magyar fordítás: minden jog fenntartva; a lefordított szótárszöveg licence a szótár saját soránál áll | 2. Előfordulások, 4. Szótári háttér |
 | a lap szótári hivatkozástáblája | közkincs | 4. Szótári háttér |
 | az LXX-fordítói döntések táblája | minden jog fenntartva | 5. LXX-fordítói döntések |
