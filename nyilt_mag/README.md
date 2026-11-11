@@ -41,7 +41,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 |---|---|
 | `beepitesi_dontesek.tsv` | 252 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
-| `dontesnaplo.tsv` | 11 |
+| `dontesnaplo.tsv` | 15 |
 | `elofordulasok.tsv` | 250 |
 | `forrasok_es_licencek.tsv` | 64 |
 | `kapcsolatok.tsv` | 88 |
