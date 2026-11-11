@@ -62,11 +62,38 @@ class Lap(unittest.TestCase):
     def test_sajat_adat_licence_a_nyilt_mag_szerint(self):
         """A felhasználó jelzése (2026-11-11): a nyílt magban kiadott saját adat nem „minden jog fenntartva”."""
         kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
-        for nev in ('a motívum előfordulás-táblája', 'a motívumtábla', 'a kapcsolat-tábla'):
+        for nev in ('a motívumtábla', 'a kapcsolat-tábla'):
             sor = [s for s in kolofon.split('\n') if s.startswith('| %s |' % nev)]
             self.assertTrue(sor and 'CC BY 4.0' in sor[0] and 'minden jog fenntartva' not in sor[0], nev)
+        # az előfordulás-táblánál csak az adatoszlopok vannak a nyílt magban (ELLENOR_HAMART_lapkeret 1.)
+        sor = [s for s in kolofon.split('\n') if s.startswith('| a motívum előfordulás-táblája |')]
+        self.assertTrue(sor and 'az adatoszlopok CC BY 4.0' in sor[0] and 'magyarázat' in sor[0])
         sor = [s for s in kolofon.split('\n') if s.startswith('| a lap fordítástáblája |')]
         self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
+
+    def test_olvasoi_licencek_generator(self):
+        """ELLENOR_HAMART_lapkeret 1., 6.: a licenc-leképezés rontott bemenettel is (nem csak a commitolt lapon)."""
+        projekt = LG.LC('projekt_adat')
+        self.assertEqual(LG.olvasoi_licencek('adat/kapcsolatok.tsv', {projekt}), {LG.NYILT_MAG_LICENC})
+        self.assertEqual(LG.olvasoi_licencek('adat/jeloltek.tsv', {projekt}), {LG.NYILT_MAG_LICENC})
+        elo = LG.olvasoi_licencek('adat/elofordulasok.tsv', {projekt})
+        self.assertTrue(len(elo) == 1 and 'magyarázat' in next(iter(elo)))
+        self.assertEqual(LG.olvasoi_licencek('adat/karoli_strong', {projekt}), {LG.LC('Karoli_Strong_parok')})
+        ford = next(iter(LG.olvasoi_licencek('adat/forditasok.tsv', {projekt, 'közkincs'})))
+        self.assertNotIn('forrásszöveg közkincs', ford)
+        self.assertIn('szótár saját soránál', ford)
+        # a nyílt magon kívüli saját tábla licence nem változik
+        self.assertEqual(LG.olvasoi_licencek('adat/tiltott_fordulatok.tsv', {projekt}), {projekt})
+        self.assertNotIn('((', self.lap)
+
+    def test_egyszerusitett_kolofon_az_adatbol(self):
+        m = next(r for r in LG.G.tsv_beolvas(LG.os.path.join(LG.ADAT, 'motivumok.tsv'))[1] if r['id'] == 'HAMART-001')
+        blokk = LG.egyszerusitett_kolofon(m)
+        self.assertIn(m['negativ_kriterium'], blokk)
+        self.assertIn(m['folerendelt_fogalom'][1:].rstrip('.'), blokk)
+        self.assertIn(blokk, self.lap)
+        rontott = dict(m, negativ_kriterium='')
+        self.assertIn('**Negatív elhatárolás.** —', LG.egyszerusitett_kolofon(rontott))
 
     def test_idezes_egy_helyen_helyorzo_nelkul(self):
         """A felhasználó döntései (2026-11-11): szerző, lexikon címe, kanonikus cím a beállításból; egy idézési forma

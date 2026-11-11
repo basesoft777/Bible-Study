@@ -4,7 +4,7 @@
 
 ## Mi változott (csak az új szerkezetű lapon, `uj_szerkezet`; a régi lapok kimenete változatlan)
 
-1. **A lap eleje — egyszerűsített kolofon** (DT-F182s; a felhasználó: „a motívum megfogalmazása / negatív elhatárolás / fölérendelt fogalom ahogy a régiben volt — a legvégén a teljes”). A cím alatt: **A motívum.** (a teljes cím) · **Negatív elhatárolás.** (a negatív kritérium) · **Fölérendelt fogalom** (egy mondatos magyarázattal) · mutató a Kolofonra. A „régi” forma keresése: a git-történetben (a HAMART-lap minden változata, a régi törzscikk, a régi tematikus tanulmány, az ISTENTISZT-001) a három mező a Kolofon táblájában állt (teljes cím, negatív kritérium, fölérendelt fogalom, a `motivumok.tsv`-ből); prózai változat nem volt. Ezért a három mező olvasói alakban áll, a szövegük a motívumtábla adata (`lexikon_general.egyszerusitett_kolofon`).
+1. **A lap eleje — egyszerűsített kolofon** (DT-F182s; a felhasználó: „a motívum megfogalmazása / negatív elhatárolás / fölérendelt fogalom ahogy a régiben volt — a legvégén a teljes”). A cím alatt: **A motívum.** (a teljes cím) · **Negatív elhatárolás.** (a negatív kritérium) · **Fölérendelt fogalom** (egy mondatos magyarázattal) · mutató a Kolofonra. A „régi” forma keresése: a git-történetben prózai változat nem volt; a régi törzscikkben és az első lexikonlapon („0. Metaadatok”) a lap ELEJÉN kulcs–érték tábla állt, benne a negatív kritériummal és a fölérendelt fogalommal (ELLENOR_HAMART_lapkeret 2.: az első változat „a Kolofon táblájában állt” állítása hamis volt). Ezért a három mező olvasói alakban áll, a szövegük a motívumtábla adata (`lexikon_general.egyszerusitett_kolofon`).
 2. **A Kolofon táblája — a teljes azonosító adat:** ID, rövid cím, teljes cím, téma, PaRDeS-szint, státusz (a kiadási állapotból), azonosság típusa, negatív kritérium, fölérendelt fogalom; utána a sablon-megfelelőség és a kiadás sorai. A „Kézi forrás” és a „Kereszthivatkozás-napló” belső sora kikerült.
 3. **A Kolofon licencei** (`olvasoi_licencek`, a forrástáblában és a 12. Irodalom „Adatforrások” listájában): a nyílt adatmagban (CC BY 4.0) kiadott saját adat — a motívumtábla, az előfordulás-tábla, a jelöltek döntésnaplója, a kapcsolat-tábla, a motívumközi kapcsolatok, az elutasítási okok (`nyilt_mag_export.py` forrásai) — „CC BY 4.0 (a nyílt adatmagban)”; a Károli–Strong párosítás CC BY 4.0 (DT623, `Karoli_Strong_parok`); a fordítástábla: „a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva”. A nyílt magba nem kerülő saját táblák (pl. a Károli-szavak szótári alakjai, a versmegfeleltetés, az LXX-döntések táblája) licence „minden jog fenntartva” marad — ez igaz.
 4. **Módszertani elvek:** a bekezdés eddig egy link-címet hordozott („[A módszer Hays hét kritériumának tükrében](…)”), amely olvasóként kitöltetlen helyőrzőnek látszott. Helyette saját szavas próza a közlemény (`kozlemeny/HAYS_LEKEPEZES.md`) táblája szerint: mit fed a módszer Hays hét kérdéséből, mit részben, mit nem; a közlemény címe idézőjelben, link-szintaxis nélkül.
@@ -33,3 +33,16 @@ Ellenőrzés: `ellenoriz.py` 0 SÉRTÉS; olvasói kapu 0 BUKÁS; nyílt mag kapu
 
 - `NYILT_MAG_DOI` (üres alapértékkel; a HAMART kiadása utáni Zenodo-közléskor a concept DOI ide kerül). Amíg üres, a „Hogyan idézd” mondata: „A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is megjelennek; az adatkészlet DOI-ja az első Zenodo-közléskor kerül ide.”; DOI-val: „… nyílt adatkészletként is elérhetők: DOI: <doi>.”
 - Az `ellenoriz.py` 35. szabálya a két alak közös elejét keresi (a régi „… is elérhetők” literál helyett); a HELYORZO-kapu az üres „DOI: .” alakot nem engedi. `ellenoriz.py` 0 SÉRTÉS; `teszt_ellenoriz_35` OK; `teszt_kesz_lap_hamart` OK; olvasói kapu 0 BUKÁS.
+
+## Javítókör (ELLENOR_HAMART_lapkeret, egy kör; F182.72)
+
+| # | Tétel | Javítva |
+|---|---|---|
+| 1 | a fordítástábla és az előfordulás-tábla licencsora | igen: a fordítástábla „a magyar fordítás: minden jog fenntartva; a lefordított szótárszöveg licence a szótár saját soránál áll” (az UBS-glosszák CC BY-SA 4.0 forrása a saját sorában); az előfordulás-tábla „az adatoszlopok CC BY 4.0, a nyílt adatmagban; az igehelyenkénti magyarázat: minden jog fenntartva” (a nyílt mag a magyarázatot nem adja ki) |
+| 2 | a „régi forma” premisszája | a DT-F182s és ez a jelentés helyesbítve (a régi lapokon a lap elején kulcs–érték tábla állt); a forma (bekezdés vagy háromsoros tábla) a felhasználó kérdése, az orkesztrátoron át |
+| 3, 6 | generátorszintű teszt rontott bemenettel | igen: `test_olvasoi_licencek_generator`, `test_egyszerusitett_kolofon_az_adatbol` (a `motivumok.tsv`-vel összevetve; üres mezőre „—”) |
+| 4 | az A02 leírása | igen |
+| 5 | halott kód, elavult megjegyzések | igen: az `azonosito_tabla()` törölve, a megjegyzések az új formára |
+| 7 | kettős zárójel | igen: „CC BY 4.0, a nyílt adatmagban” |
+
+Ellenőrzés: `ellenoriz.py` 0 SÉRTÉS; olvasói kapu 0 BUKÁS; `teszt_kesz_lap_hamart` 39/39, `teszt_ellenoriz_35`, `teszt_gyokerok_kapuk`, `teszt_hatastortenet` OK.

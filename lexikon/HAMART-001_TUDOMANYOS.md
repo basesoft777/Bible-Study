@@ -3541,15 +3541,15 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 **Adatforrások:**
 - a BDB-szótár (közkincs)
 - a BDB-szótár versenkénti jelentései (közkincs)
-- a motívum előfordulás-táblája (CC BY 4.0 (a nyílt adatmagban))
-- a lap fordítástáblája (a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva)
+- a motívum előfordulás-táblája (az adatoszlopok CC BY 4.0, a nyílt adatmagban; az igehelyenkénti magyarázat: minden jog fenntartva)
+- a lap fordítástáblája (a magyar fordítás: minden jog fenntartva; a lefordított szótárszöveg licence a szótár saját soránál áll)
 - a héber glosszák magyar táblája (CC BY 4.0)
-- a jelöltek döntésnaplója (CC BY 4.0 (a nyílt adatmagban))
-- a kapcsolat-tábla (CC BY 4.0 (a nyílt adatmagban))
+- a jelöltek döntésnaplója (CC BY 4.0, a nyílt adatmagban)
+- a kapcsolat-tábla (CC BY 4.0, a nyílt adatmagban)
 - a Károli–Strong párosítás (CC BY 4.0)
 - a lap szótári hivatkozástáblája (közkincs)
 - az LXX-fordítói döntések táblája (minden jog fenntartva)
-- a motívumtábla (CC BY 4.0 (a nyílt adatmagban))
+- a motívumtábla (CC BY 4.0, a nyílt adatmagban)
 - a Nave-témák magyar nevei (minden jog fenntartva)
 - a szótári szakaszok címketáblája (minden jog fenntartva)
 - a szótári pontok rendje (minden jog fenntartva)
@@ -3623,19 +3623,19 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a Glossa Ordinaria (Migne, 1880) | közkincs | 9. Hatástörténet |
 | a HistoricalChristianFaith kommentár-adatbázis (metaadat) | közkincs | 9. Hatástörténet |
 | a héber glosszák magyar táblája | CC BY 4.0 | 4. Szótári háttér |
-| a jelöltek döntésnaplója | CC BY 4.0 (a nyílt adatmagban) | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
-| a kapcsolat-tábla | CC BY 4.0 (a nyílt adatmagban) | 7. Kapcsolatok |
+| a jelöltek döntésnaplója | CC BY 4.0, a nyílt adatmagban | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
+| a kapcsolat-tábla | CC BY 4.0, a nyílt adatmagban | 7. Kapcsolatok |
 | a Károli-fordítás (1908) | közkincs | 2. Előfordulások, 4. Szótári háttér |
 | a Károli-kereszthivatkozások | közkincs | 6. Kereszthivatkozások |
 | a Károli-szavak szótári alakjai | minden jog fenntartva | 4. Szótári háttér |
 | a Károli-versmegfeleltetés | minden jog fenntartva | 2. Előfordulások |
 | a Károli–Strong párosítás | CC BY 4.0 | 4. Szótári háttér |
-| a lap fordítástáblája | a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
+| a lap fordítástáblája | a magyar fordítás: minden jog fenntartva; a lefordított szótárszöveg licence a szótár saját soránál áll | 2. Előfordulások, 4. Szótári háttér |
 | a lap szótári hivatkozástáblája | közkincs | 4. Szótári háttér |
 | az LXX-fordítói döntések táblája | minden jog fenntartva | 5. LXX-fordítói döntések |
 | az MCGED görög szótár | © Mounce 1993 | 4. Szótári háttér |
-| a motívum előfordulás-táblája | CC BY 4.0 (a nyílt adatmagban) | 2. Előfordulások, 4. Szótári háttér |
-| a motívumtábla | CC BY 4.0 (a nyílt adatmagban) | 3. Kizárt és vizsgált helyek |
+| a motívum előfordulás-táblája | az adatoszlopok CC BY 4.0, a nyílt adatmagban; az igehelyenkénti magyarázat: minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
+| a motívumtábla | CC BY 4.0, a nyílt adatmagban | 3. Kizárt és vizsgált helyek |
 | Nave tárgymutatója (1897) | közkincs | 4. Szótári háttér |
 | a Nave-témák magyar nevei | minden jog fenntartva | 4. Szótári háttér |
 | az Open Scriptures héber lexikona | CC BY 4.0 | 4. Szótári háttér |

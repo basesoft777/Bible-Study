@@ -5632,20 +5632,29 @@ KOLOFON_SZAKASZNEV = {'elofordulasok': '2. Előfordulások', 'kizart': '3. Kizá
 # nyílt mag szerint áll, nem „minden jog fenntartva” (a felhasználó jelzése, 2026-11-11)
 NYILT_MAG_ADAT = frozenset({'adat/motivumok.tsv', 'adat/elofordulasok.tsv', 'adat/jeloltek.tsv', 'adat/kapcsolatok.tsv',
                             'adat/motivum_kapcsolatok.tsv', 'adat/elutasitasi_okok.tsv'})
-NYILT_MAG_LICENC = 'CC BY 4.0 (a nyílt adatmagban)'
+NYILT_MAG_LICENC = 'CC BY 4.0, a nyílt adatmagban'
+# az előfordulás-tábla igehelyenkénti magyarázata (`kapcsolodas`, a funkció magyarázata) a nyílt magból kimarad
+# (`nyilt_mag_export.py` `funkcio_cimke`, README „Not included”): a lapon ez a rész a projekté (ELLENOR_HAMART_lapkeret 1.)
+ELOFORDULAS_LICENC = 'az adatoszlopok CC BY 4.0, a nyílt adatmagban; az igehelyenkénti magyarázat: %s'
+FORDITAS_LICENC = 'a magyar fordítás: %s; a lefordított szótárszöveg licence a szótár saját soránál áll'
 
 
 def olvasoi_licencek(fajl, licencek):
-    """Az új szerkezetű lap forráslistájának licence: a nyílt magban kiadott saját adat CC BY 4.0; a Károli–Strong
-    párosítás CC BY 4.0 (DT623); a fordítástáblában a forrásszöveg közkincs, a fordítás a projekté."""
+    """Az új szerkezetű lap forráslistájának licence: a nyílt magban kiadott saját adat CC BY 4.0 (az előfordulás-
+    táblánál csak az adatoszlopok; a magyarázat a projekté); a Károli–Strong párosítás CC BY 4.0 (DT623); a
+    fordítástáblában a fordítás a projekté, a lefordított szótárszöveg licence a szótár saját soránál."""
     lic = set(licencek)
     projekt = LC('projekt_adat')
-    if fajl in NYILT_MAG_ADAT and projekt in lic:
+    if fajl.endswith('adat/elofordulasok.tsv') and projekt in lic:
+        lic = (lic - {projekt}) | {ELOFORDULAS_LICENC % projekt}
+    elif fajl in NYILT_MAG_ADAT and projekt in lic:
         lic = (lic - {projekt}) | {NYILT_MAG_LICENC}
     elif fajl.rstrip('/').endswith('karoli_strong') and projekt in lic:
         lic = (lic - {projekt}) | {LC('Karoli_Strong_parok')}
     elif fajl.endswith('forditasok.tsv') and projekt in lic:
-        lic = {'a forrásszöveg közkincs; a magyar fordítás: %s' % projekt}
+        # a fordítások forrása vegyes licencű (BDB, Thayer közkincs; UBS CC BY-SA 4.0): a forrás licence a szótár
+        # sorában áll, itt csak a fordításé (ELLENOR_HAMART_lapkeret 1.)
+        lic = {FORDITAS_LICENC % projekt}
     return lic
 
 
@@ -5691,8 +5700,9 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     kiadas_meta, kiadas_jegyzek = kolofon_kiadas_sorok(kiadasok)
     uj = uj_szerkezet(m['id'])
     if uj:
-        # F182 (A02; F18 (e)): az azonosító mezők a lap elején állnak (`azonosito_tabla`); a Kolofonban a forrás, a
-        # napló, a sablon és a kiadás adatai maradnak, olvasói mezőnévvel
+        # F182 (A02; F18 (e)), a felhasználó (2026-11-11): a lap elején az egyszerűsített kolofon
+        # (`egyszerusitett_kolofon`), a Kolofonban a teljes azonosító tábla, a sablon és a kiadás adatai, olvasói
+        # mezőnévvel
         # a felhasználó (2026-11-11): az elején egyszerűsített kolofon, „a legvégén a teljes”; a „Kézi forrás” és a
         # „Kereszthivatkozás-napló” belső sora nem olvasói, kimarad
         metaadat_sorok = (metaadat_sorok[:2]
@@ -6647,14 +6657,6 @@ def kiadasi_statusz(motivum_id, kiadasok=None):
         return NINCS_KIADVA
     u = kiadasok[-1]
     return '%s. kiadás (%s)' % (u['kiadas'].strip(), (u.get('datum') or '').strip() or EM_DASH)
-
-
-def azonosito_tabla(m):
-    sorok = ['| Mező | Érték |', '|---|---|']
-    for nev, kulcs in AZONOSITO_MEZOK:
-        ertek = kiadasi_statusz(m['id']) if kulcs is None else (m.get(kulcs) or EM_DASH)
-        sorok.append('| %s | %s |' % (nev, ertek))
-    return '\n'.join(sorok)
 
 
 def _nagy_kezdo(t):
