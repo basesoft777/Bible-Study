@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/olvaso_szerver/bdb_sefaria_tanu.py tabla --ts 2026-11-11 — kézzel nem szerkesztendő (F196; séma: adat/SEMA.md 2.29.1).
+# GENERÁLT: eszkozok/olvaso_szerver/bdb_sefaria_tanu.py tabla --ts 2026-11-11 — kézzel nem szerkesztendő (F197; séma: adat/SEMA.md 2.29.1).
 # forras: Sefaria /api/words (BDB Dictionary, BDB Aramaic Dictionary; Brown–Driver–Briggs, Oxford 1906; közkincs, DT631), a nyers válaszok a repón kívül (D:\pardes_tanu\bdb\api; lekérések: lekeresek.tsv) + adat/bdb_vers_jelentes.tsv (strong, sorszam, mt_vers). Csak a Sefaria-pont normalizált útvonala áll, Sefaria-szöveg nem.
 strong	sorszam	mt_vers	sefaria_rid	illesztes	sefaria_ut	proveniencia
 H0139	1	Józs 10:1		nincs		scope=H0139 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-"""bdb_sefaria_tanu.py — F196: harmadik tanú a BDB vers → jelentéspont hozzárendeléshez (adat/bdb_vers_jelentes.tsv, 2.29).
+"""bdb_sefaria_tanu.py — F197: harmadik tanú a BDB vers → jelentéspont hozzárendeléshez (adat/bdb_vers_jelentes.tsv, 2.29).
 
 A tanú a Sefaria BDB-feldolgozása (`/api/words`, „BDB Dictionary” / „BDB Aramaic Dictionary”): ugyanaz az 1906-os szöveg,
 de a jelentésfát (törzs → szám → betű) és az igehely-linkeket (`data-ref`) a Sefaria saját feldolgozása adja, a mi
 szeletelőnktől (`bdb_szelet`) és szakasztáblánktól (2.30) függetlenül. Ahol a két pont eltér, a sor `ketes:jp_tanu_sefaria`;
-egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (az egyezés nem emel; DT-F196a).
+egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (az egyezés nem emel; DT-F197a).
 
 Három lépés, mind külön alparancs:
   letolt   a Sefaria-válaszok gyorsítótárba, a REPÓN KÍVÜL (alapból D:\\pardes_tanu\\bdb\\api; `--cache`), kérésenként
@@ -67,7 +67,7 @@ SEF_KONYV = {
     'Malachi': 'Mal',
 }
 REF_RX = re.compile(r'data-ref="([^"]+)"')
-# a törzsnév egyetlen szó (betű, átírásjel, aposztróf, pont); a többszavas vagy írásjeles `form` fejléc, nem törzs (ELLENOR_F196)
+# a törzsnév egyetlen szó (betű, átírásjel, aposztróf, pont); a többszavas vagy írásjeles `form` fejléc, nem törzs (ELLENOR_F197)
 TORZS_FORM = re.compile(r"^[A-Za-z\u00C0-\u024F\u02BE\u02BF'`.]+$")
 HEB = re.compile('[\u0590-\u05FF]+')
 ROMAI = re.compile(r'^(I|II|III|IV|V|VI|VII|VIII|IX|X)$')
@@ -308,9 +308,9 @@ def tabla_pont(szakasz, resz, utvonal):
 
 def pont_egyezik(tp, sp, sef_tobb_homonima):
     """A tábla pontja (tabla_pont) és egy Sefaria-pont (ut_bont) összefér-e.
-    homonima: NEM vetjük össze (v2, DT-F196a): a Sefaria felső indexe (²) a Sefaria saját sorszáma az azonos alakú címszavakra,
+    homonima: NEM vetjük össze (v2, DT-F197a): a Sefaria felső indexe (²) a Sefaria saját sorszáma az azonos alakú címszavakra,
       nem a BDB római száma (pl. H2022 הַר: a BDB-ben számozatlan, a Sefariában „²”); a v1 ezen a seed-103 helyes sorain
-      téves riasztást adott (naplok/F196_jelentes.md 3.);
+      téves riasztást adott (naplok/F197_jelentes.md 3.);
     rész: csak ha mindkettő megadja; törzs: ha mindkettő megadja, egyik a másik előtagja (rövidítés: „Hiph.” ~ „Hiph'il”);
     szám: mindkét oldalon azonos (a hiány is: „fej” ↔ „1.” eltérés); betű: ha mindkettő megadja, azonos."""
     thom, tresz, tt, tsz, tb = tp
@@ -408,7 +408,7 @@ def tabla(cache, ts, strongok=None):
 
 def tabla_ir(sorok, ts, ki=KI):
     with open(ki, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: eszkozok/olvaso_szerver/bdb_sefaria_tanu.py tabla --ts %s — kézzel nem szerkesztendő (F196; séma: adat/SEMA.md 2.29.1).\n' % ts)
+        f.write('# GENERÁLT: eszkozok/olvaso_szerver/bdb_sefaria_tanu.py tabla --ts %s — kézzel nem szerkesztendő (F197; séma: adat/SEMA.md 2.29.1).\n' % ts)
         f.write('# forras: Sefaria /api/words (BDB Dictionary, BDB Aramaic Dictionary; Brown–Driver–Briggs, Oxford 1906; közkincs, DT631), '
                 'a nyers válaszok a repón kívül (D:\\pardes_tanu\\bdb\\api; lekérések: lekeresek.tsv) + adat/bdb_vers_jelentes.tsv '
                 '(strong, sorszam, mt_vers). Csak a Sefaria-pont normalizált útvonala áll, Sefaria-szöveg nem.\n')
@@ -477,7 +477,7 @@ def meres(cache, csak40, ki_tsv=None):
         k, ok, jp, resz = minta[a]
         it = itelet(tanu, k['strong'], k['sorszam'], k['mt_vers'], k['szakasz'], k['resz'], k['utvonal'])
         biz = k['bizonyossag'].split(':')[0]
-        uj = 'ketes' if it == 'elter' else biz          # a bekötött szabály: csak az eltérés jelöl (DT-F196a)
+        uj = 'ketes' if it == 'elter' else biz          # a bekötött szabály: csak az eltérés jelöl (DT-F197a)
         uj_a = biz if it == 'nincs' else ('biztos' if it == 'egyezik' else 'ketes')   # az elvetett változat: az egyezés emel
         szaml[('A', ok, uj_a)] += 1
         szaml[(ok, biz, it)] += 1

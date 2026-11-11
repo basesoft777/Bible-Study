@@ -103,7 +103,7 @@ JAVITAS = os.path.join(REPO, 'adat', 'bdb_forras_javitas.tsv')
 # nagybetűs és a zárójeles szint nélkül nem azonos, és egyik sem előtagja a másiknak); (c) a hely egy szakasz első 3 karakterén
 # belül vagy egy sorbelső fej előtt 3 karakteren belül áll (`jp_hatar`). Különben `biztos`.
 SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
-# F196 (DT-F196a): harmadik tanú, a Sefaria BDB-feldolgozása (adat/bdb_jp_sefaria.tsv, SEMA 2.29.1; az összevetés szabálya:
+# F197 (DT-F197a): harmadik tanú, a Sefaria BDB-feldolgozása (adat/bdb_jp_sefaria.tsv, SEMA 2.29.1; az összevetés szabálya:
 # bdb_sefaria_tanu.osszevet). Bekapcsolva: ahol a Sefaria-pont a tábla pontjától eltér, a sor `ketes` (`jp_tanu_sefaria`, ha más
 # ok nem áll előtte); egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (a `biztos` marad); a `jp_kezi` sort
 # nem érinti. ALAPBÓL KIKAPCSOLVA (a felhasználó feladatleírása, 2026-11-11: a HAMART kiadása alatt a lap ne változzon); a
@@ -371,7 +371,7 @@ def mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, konyv, c, v):
 
 def general(ts, strongok=None, sefaria_tanu=None):
     """A tábla sorai (és a kód-hash); `strongok`: csak ezek a szócikkek (tesztekhez); `sefaria_tanu`: None = a SEFARIA_TANU
-    kapcsoló, True/False = erre a futásra (F196)."""
+    kapcsoló, True/False = erre a futásra (F197)."""
     tanu = ST.tanu_betolt(SEFARIA_TABLA) if (SEFARIA_TANU if sefaria_tanu is None else sefaria_tanu) else None
     K = B._konyvtabla()
     en, lem, bdb_id, vm_karoli, vm_mt, elvetett, tahot, f85 = betolt()
@@ -490,7 +490,7 @@ def general(ts, strongok=None, sefaria_tanu=None):
             # F103: a hivatkozás csoportja — a jelentéspontjának (szakasz + útvonal) a hivatkozást tartalmazó csoportsávja
             cs = next((x for x in csav if x[0] <= h['poz'] < x[1] and x[2] == cimke and x[3].rsplit('/', 1)[0] == ut), None)
             if tanu is not None and not kezi and not szurt and mt:
-                # egyezésnél a bizonyosság marad (a `ketes` nem emelkedik: a homonima-hibát a tanú nem látja, F196 3.)
+                # egyezésnél a bizonyosság marad (a `ketes` nem emelkedik: a homonima-hibát a tanú nem látja, F197 3.)
                 if ST.itelet(tanu, strong, n, mt, szak, resz, ut) == 'elter' and not ketes:
                     ketes = ['jp_tanu_sefaria']
             sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], kmod, mt, kar, vmod,
@@ -508,7 +508,7 @@ def kiir(sorok, modhash, ts, sefaria_tanu=False):
            'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py+bdb_sefaria_tanu.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (a szakasztábla és a sorbelső fejek; bizonyosság: P2)'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), fajl_hash(SZAKASZOK), modhash)
-           + ((' + F196 harmadik tanú BEKAPCSOLVA: adat/bdb_jp_sefaria.tsv@%s (Sefaria BDB; eltérés → ketes, egyezésnél változatlan, F196)'
+           + ((' + F197 harmadik tanú BEKAPCSOLVA: adat/bdb_jp_sefaria.tsv@%s (Sefaria BDB; eltérés → ketes, egyezésnél változatlan, F197)'
                % fajl_hash(SEFARIA_TABLA)) if sefaria_tanu else ''),
            '\t'.join(FEJ)]
     for s in sorok:
@@ -590,7 +590,7 @@ def main():
     ap.add_argument('--minta-kulcs', default=None)
     ap.add_argument('--ts', help='a proveniencia ts mezője (a futás napja); azonos ts-sel bájtra azonos a kimenet')
     ap.add_argument('--ellenoriz', action='store_true', help='nem ír: újragenerál és összeveti a meglévő táblával')
-    ap.add_argument('--sefaria-tanu', action='store_true', help='F196: a harmadik tanú erre a futásra bekapcsolva (alapból a SEFARIA_TANU kapcsoló)')
+    ap.add_argument('--sefaria-tanu', action='store_true', help='F197: a harmadik tanú erre a futásra bekapcsolva (alapból a SEFARIA_TANU kapcsoló)')
     a = ap.parse_args()
     if a.minta is not None:
         alap = 'BDB_SZELETELO_M2_minta' if a.minta == 99 else 'BDB_SZELETELO_M2_minta_seed%d' % a.minta

@@ -1,4 +1,4 @@
-"""F196: a harmadik tanú (Sefaria BDB) összevetési szabályának és kapcsolójának tesztjei.
+"""F197: a harmadik tanú (Sefaria BDB) összevetési szabályának és kapcsolójának tesztjei.
 Futtatás: python eszkozok/teszt_futtat.py (a gyorsítótár és a hálózat nélkül fut)."""
 import os
 import sys
@@ -68,7 +68,7 @@ class Osszevet(unittest.TestCase):
 
 class Kapcsolo(unittest.TestCase):
     def test_alapbol_kikapcsolva(self):
-        # DT-F196a: a HAMART kiadása alatt a 2.29 nem változhat; a bekapcsolás külön lépés
+        # DT-F197a: a HAMART kiadása alatt a 2.29 nem változhat; a bekapcsolás külön lépés
         self.assertFalse(V.SEFARIA_TANU)
 
     def test_itelet_mas_vers(self):

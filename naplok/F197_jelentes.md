@@ -1,4 +1,4 @@
-# F196 — harmadik tanú a BDB jelentésponthoz (Sefaria BDB): jelentés
+# F197 — harmadik tanú a BDB jelentésponthoz (Sefaria BDB): jelentés
 
 *Proveniencia: scope=seed-103 (200 pont, 183 szócikk) + a 183 szócikk minden 2.29-sora (38 735 tanú-sor) | forras=Sefaria /api/words
 (210 kérés, 2026-11-11; nyers válaszok: `D:\pardes_tanu\bdb\api`, napló: `D:\pardes_tanu\bdb\lekeresek.tsv`) + adat/bdb_vers_jelentes.tsv
@@ -20,7 +20,7 @@ kód: eszkozok/olvaso_szerver/bdb_sefaria_tanu.py `meres` | modell: claude-opus-
 ## 2. ⛔ A 40 soros téves-riasztási próba
 
 A minta: a seed-103 mind a 19 `ketes` sora, az egyetlen hibás `biztos` sor és 20 helyes `biztos` sor (`random.Random(195)`); részlet:
-`naplok/F196_proba40_reszlet.tsv`.
+`naplok/F197_proba40_reszlet.tsv`.
 
 | | db |
 |---|---:|
@@ -32,7 +32,7 @@ A minta: a seed-103 mind a 19 `ketes` sora, az egyetlen hibás `biztos` sor és 
 | — **a tanú eltér (megfogva)** | **7** |
 | — a tanú egyezik | 5 |
 
-**Ítélet a végleges (v3) szabállyal: a próba jó** (0 téves riasztás, 7/12 megfogott hiba). **De ez nem független kapu** (ELLENOR_F196, 1. eltérés), l. lent.
+**Ítélet a végleges (v3) szabállyal: a próba jó** (0 téves riasztás, 7/12 megfogott hiba). **De ez nem független kapu** (ELLENOR_F197, 1. eltérés), l. lent.
 
 **Fontos, nyíltan:** a szabályt a mintán javítottam, a mérés ezért **mintán belüli**. Három változat volt:
 - **v1** (homonima-összevetéssel): az első, még részleges adatú futáson a helyes `biztos` sorok közül sok homonima-eltérést jelzett. Ok: a
@@ -41,7 +41,7 @@ A minta: a seed-103 mind a 19 `ketes` sora, az egyetlen hibás `biztos` sor és 
 - **v3:** a 2.29 kifejezetten törzs nélküli számozott pontja (`-/2`) és a Sefaria-törzs (`Pi./2`) eltérés. Ez a szám-szabály
   („a hiány is eltérés”) párja. A mintán egyetlen sort érint (s103-N061), és azt megfogja.
 - A törzsnév-kulcs az átírás ékezetei nélkül (Unicode NFD): „Pōʿlēl” ~ „Pol'el”. Ez a mintán nem változtat.
-- Javítókör (ELLENOR_F196): a nem törzs jellegű `form` (pl. H0996 „With other prepositions:—”) nem törzs; több Sefaria-bejegyzésben
+- Javítókör (ELLENOR_F197): a nem törzs jellegű `form` (pl. H0996 „With other prepositions:—”) nem törzs; több Sefaria-bejegyzésben
   álló versnél nincs bejegyzéseken átnyúló k-adik illesztés (`barmely`). A mintán egyik sem változtat.
 
 **A ⛔ kapu menete, nyíltan.** A v1 hibáját egy még részleges adatú hibakereső futáson láttam, a formális 40 soros próba előtt; a szabályt
@@ -54,12 +54,12 @@ akkor javítottam, és a próbát a javított szabállyal futtattam. A ⛔ szán
 | **v3 (végleges)** | **0 / 28** | **7** | **1** | **1** | **7** |
 
 A v1 a 40 soron még több hasznot adott, mint zajt (8 : 4); a 200 ponton már nem (8 : 28). A v2 és a v3 elvi javítás, nem egyes sorokra
-szabott, de a „0 téves riasztás” **mintán belüli** érték: a felhasználó döntése (DT-F196a, 🟢, 2026-11-11): a tanú kikapcsolva kerül be, és csak egy független, kb. 40 soros kézi szúrópróba után kapcsolható be (N-F196a); a mintán kívüli
-mérés a következő vak minta (N-F196b).
+szabott, de a „0 téves riasztás” **mintán belüli** érték: a felhasználó döntése (DT-F197a, 🟢, 2026-11-11): a tanú kikapcsolva kerül be, és csak egy független, kb. 40 soros kézi szúrópróba után kapcsolható be (N-F197a); a mintán kívüli
+mérés a következő vak minta (N-F197b).
 
 ## 3. A seed-103 200 pontjának újramérése
 
-Részlet: `naplok/F196_seed103_reszlet.tsv`.
+Részlet: `naplok/F197_seed103_reszlet.tsv`.
 
 | | db |
 |---|---:|
@@ -78,7 +78,7 @@ Részlet: `naplok/F196_seed103_reszlet.tsv`.
 
 Az egyetlen hibás `biztos` sort (s103-N013, `fej` ↔ `-/1`) a tanú megfogja, egy helyes sort (s103-N087) tévesen jelöl.
 
-**Az egyezés nem emel** (DT-F196a). A feladat szerint: „egyezésnél a pont `biztos` marad”. A mérés szerint az emelés 5 hibás pontot vinne
+**Az egyezés nem emel** (DT-F197a). A feladat szerint: „egyezésnél a pont `biztos` marad”. A mérés szerint az emelés 5 hibás pontot vinne
 a `biztos` sorok közé: a homonima-hibákat a tanú nem látja, és az s103-N004-ben a Sefaria ugyanazt a téves törzset adja.
 
 ## 4. Mintán kívül: a zaj a teljes szócikkeken (arany nélkül)
@@ -92,7 +92,7 @@ A 183 szócikk minden nem szűrt ószövetségi 2.29-során (a bekapcsolt gener�
 - **Kézi szúrópróba (a forrásszöveg, `BDB_teljes_unabridged.tsv`):** H8081 Ez 23:41: a forrás „… k. offered to idols Isa 57:9; Ezek
   16:18-19, 23:41” — a tábla (`-/2/k`) helyes, a Sefaria (`j`) téved. H3847 3Móz 6:4: a forrás „1. a. literally put on …” — a tábla
   (`Qal/1/a`) helyes, a Sefaria-fából a „1.” hiányzik. A `biztos` sorokon mért 0,6%-os hibaarány (F185) mellett **a 635 jelzés nagy része
-  várhatóan a Sefaria saját feldolgozási hibája**; a pontos arányt nem mértem (N-F196a).
+  várhatóan a Sefaria saját feldolgozási hibája**; a pontos arányt nem mértem (N-F197a).
 
 ## 5. Bekötés (kapcsolóval, alapból KIKAPCSOLVA)
 
@@ -102,9 +102,9 @@ A 183 szócikk minden nem szűrt ószövetségi 2.29-során (a bekapcsolt gener�
 - Kikapcsolva a 2.29 adatsorai **bájtra azonosak**, csak a `# forras` fejlécsor kód-hash-e változott (a `bdb_sefaria_tanu.py` bekerült a
   `KOD_FAJLOK`-ba). `--ts 2026-11-10 --ellenoriz`: bájtra azonos. A lexikonlapot nem generáltam újra; a HAMART-lap nem változik.
 - `adat/bdb_jp_sefaria.tsv` (SEMA 2.29.1): 38 735 sor, csak a 183 lekérdezett Strong. A teljes BDB letöltése (≈ 8–9 ezer Strong, becslés
-  3–4 óra) a bekapcsolás előfeltétele (N-F196a).
+  3–4 óra) a bekapcsolás előfeltétele (N-F197a).
 
 ## 6. Nyitott
 
-- N-F196a: a bekapcsolás külön lépés; előtte a teljes letöltés és a `biztos` → `ketes` jelzések kézi szúrópróbája (a téves riasztás mintán kívüli aránya).
-- N-F196b: a mintán belüli szabály (v2, v3) mintán kívüli mérése a következő vak mintán.
+- N-F197a: a bekapcsolás külön lépés; előtte a teljes letöltés és a `biztos` → `ketes` jelzések kézi szúrópróbája (a téves riasztás mintán kívüli aránya).
+- N-F197b: a mintán belüli szabály (v2, v3) mintán kívüli mérése a következő vak mintán.

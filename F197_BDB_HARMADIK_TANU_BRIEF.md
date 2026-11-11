@@ -1,5 +1,5 @@
 ---
-feladat: 196
+feladat: 197
 cim: Harmadik tanú a BDB vers → jelentéspont hozzárendeléshez (Sefaria BDB)
 kod: BDB_HARMADIK_TANU
 tipus: feladat
@@ -10,14 +10,14 @@ ad: a 2.29 jelentéspontjának harmadik, független tanúja (a Sefaria BDB-jelen
 kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
 munka: adat
 olvas: [CLAUDE.md, adat/SEMA.md, naplok/F185_jelentes.md, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/bdb_jelolt/belso_tanu.py, adat/licencek.tsv]
-ir: [eszkozok/olvaso_szerver/bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/teszt_bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/bdb_jp_sefaria.tsv, adat/SEMA.md, naplok/F196_jelentes.md, naplok/F196_seed103_reszlet.tsv, naplok/F196_proba40_reszlet.tsv, dontesek/uj/bdb-harmadik-tanu-618784.md, nyitott/uj/bdb-harmadik-tanu-618784.md]
+ir: [eszkozok/olvaso_szerver/bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/teszt_bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/bdb_jp_sefaria.tsv, adat/SEMA.md, naplok/F197_jelentes.md, naplok/F197_seed103_reszlet.tsv, naplok/F197_proba40_reszlet.tsv, dontesek/uj/bdb-harmadik-tanu-618784.md, nyitott/uj/bdb-harmadik-tanu-618784.md]
 fugg: [185]
 nem_fugg: [102, 121, 122, 182, 183]
 ---
 
-# F196_BDB_HARMADIK_TANU_BRIEF.md — Harmadik tanú a BDB jelentésponthoz
+# F197_BDB_HARMADIK_TANU_BRIEF.md — Harmadik tanú a BDB jelentésponthoz
 
-*FELADATOK #196 · Modell: opus · v1 · 2026.11.11*
+*FELADATOK #197 · Modell: opus · v1 · 2026.11.11*
 
 *Az orkesztrátor indította, külön sessionben, ugyanezen az ágon; befogadás nélkül. A felhasználó jóváhagyása (2026-11-11), szó szerint.
 A leírás: „A BDB harmadik tanú: … Egy kész, nyílt BDB-feldolgozás (BrownDriverBriggs.jl, Sefaria-alapú) harmadik tanúként jelezné, hol téved:
@@ -52,4 +52,4 @@ A 2.29 sorai kikapcsolt tanúval bájtra azonosak maradnak (csak a fejléc kód-
 
 ## 5. Döntések
 
-DT-F196a (helyőrző): a dontesek/uj/bdb-harmadik-tanu-618784.md-ben.
+DT-F197a (helyőrző): a dontesek/uj/bdb-harmadik-tanu-618784.md-ben.
