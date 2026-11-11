@@ -343,6 +343,19 @@ def dontesek_beolvas():
     return ki
 
 
+OLVASOI_DONTES = 'egy korábbi szerkesztői döntés'
+# a „döntés” szó ragozott alakja a DT-hivatkozás kötőjeles ragja szerint (DT542-ből → döntésből)
+_RAG = {'-val': 'sel', '-vel': 'sel', '-t': 't', '-et': 't', '-at': 't', '-ot': 't', '-a': 'e', '-e': 'e', '-je': 'e',
+        '-ja': 'e', '-nak': 'nek', '-ból': 'ből', '-ban': 'ben', '-ra': 're', '-hoz': 'hez', '-ról': 'ről'}
+
+
+def olvasoi_rag(rag):
+    """A kötőjeles rag a „döntés” szóhoz illesztve (magas hangrend)."""
+    if not rag:
+        return ''
+    return _RAG.get(rag, rag[1:])
+
+
 class Dontesnaplo:
     """Nyilvános döntés-azonosítók (NYD-nnn). A számozás a DT-szám szerint rendezett, tehát determinisztikus."""
 
@@ -367,11 +380,19 @@ class Dontesnaplo:
         return self.azon.get(dt, '')
 
     def csere(self, szoveg):
-        """A szövegbeli DT-hivatkozás (és az utána álló „K4” alpont-jel) a nyilvános azonosítóra cserélődik; a
-        feloldatlan hivatkozás egyszerűen elmarad."""
+        """A szövegbeli DT-hivatkozás (és az utána álló „K4” alpont-jel) a nyilvános azonosítóra cserélődik. A feloldatlan
+        hivatkozás olvasói mondatrészre íródik (F182, F28: „egy korábbi szerkesztői döntés”, a raggal együtt), ha a helyén
+        lyuk maradna (rag, kettőspont vagy névelő áll mellette); különben elmarad, mint eddig."""
         def f(m):
-            return self.azon.get(m.group(1), '')
-        szoveg = re.sub(r'(DT-?F?\d+[a-z]?)(?: K\d)?', f, szoveg)
+            nyilv = self.azon.get(m.group('dt'))
+            rag = m.group('rag') or ''
+            if nyilv:
+                return (m.group('nevelo') or '') + nyilv + rag
+            elotte = szoveg[max(0, m.start() - 2):m.start()]
+            if rag or m.group('nevelo') or elotte.endswith(':') or elotte.endswith(': '):
+                return OLVASOI_DONTES + olvasoi_rag(rag)
+            return ''
+        szoveg = re.sub(r'(?P<nevelo>(?<![\w-])[Aa]z? )?(?P<dt>DT-?F?\d+[a-z]?)(?P<rag>-[a-záéíóöőúüű]+)?(?: K\d)?', f, szoveg)
         szoveg = re.sub(r'\(\s*(?:,\s*)*\)', '', szoveg)
         szoveg = re.sub(r'\s*\(\s*([^()]*?)\s*[,;]\s*\)', r' (\1)', szoveg)
         szoveg = re.sub(r'\(\s*[,;]\s*', '(', szoveg)
@@ -400,8 +421,11 @@ BELSO_KOD_RX = re.compile(r'\b[a-zA-Z]+(?:_[a-zA-Z0-9]+)+(?:=\S+)?')
 
 
 def fajl_szo(m):
-    """A fájlnév olvasói főnévre cserélődik (a név maga belső jel)."""
+    """A fájlnév olvasói főnévre cserélődik (a név maga belső jel). F182 (F28): a határ-ellenőrzés jegyzőkönyve
+    „határ-ellenőrzés” néven (névelő nélkül: a mondat névelője előtte áll)."""
     s = m.group(0).strip('`')
+    if re.search(r'(?:^|/)HATAR_[\w-]+\.md$', s):
+        return 'határ-ellenőrzés'
     if s.endswith('.tsv') or s.endswith('.json'):
         return 'adattábla'
     if s.endswith('.py'):
@@ -521,6 +545,8 @@ def tisztit(szoveg, dn):
     t = t.replace('**', '')
     t = step_atiras(t)
     t = FAJL_RX.sub(fajl_szo, t)
+    # F182 (F28): a belső kódnév ragos alakja olvasói főnévre (a kivágás után a rag árván maradna: „8:21 -je”)
+    t = re.sub(r'`?gerinc_elem`?-(?:je|jét|jei|jeit)\b', 'motívumszava', t)
     t = t.replace('`', '')
     t = BELSO_KOD_RX.sub('', t)
     for rx, ujra in CSERE_SZAVAK:
@@ -537,7 +563,15 @@ def egy_mondat(szoveg, ig=380, min_hossz=90):
     if len(t) <= ig:
         return t
     vag = t[:ig]
-    k = max(vag.rfind('. '), vag.rfind('; '))
+    # F182 (F28): csak zárójelen kívüli mondathatáron vág (a „(8 régi: …; 27 …)” belsejében vágva a zárójel nyitva marad)
+    mely, k = 0, -1
+    for i, c in enumerate(vag):
+        if c in '(„':
+            mely += 1
+        elif c in ')”' and mely:
+            mely -= 1
+        elif c in '.;' and not mely and vag[i + 1:i + 2] == ' ':
+            k = i
     if k >= min_hossz:
         return vag[:k + 1].rstrip(';').rstrip()
     k = vag.rfind(' ')

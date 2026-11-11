@@ -433,5 +433,37 @@ class TesztSzerkesztoi(unittest.TestCase):
         self.assertTrue(all(t.suly == G.BUKAS for t in tal))
 
 
+
+class F28Lyuk(Alap):
+    """F182 (F28): a kivágott belső hivatkozás helyén nem marad lyuk; a LYUK kapu jelez."""
+
+    def test_feloldatlan_dt_olvasoi_mondatresz(self):
+        dn = E.Dontesnaplo({})
+        self.assertEqual(dn.csere('8 régi: DT544; 27 a DT542-ből'),
+                         '8 régi: egy korábbi szerkesztői döntés; 27 egy korábbi szerkesztői döntésből')
+        self.assertEqual(dn.csere('a gerinc-elem (DT593)').strip(), 'a gerinc-elem')     # zárójelben: elmarad, mint eddig
+
+    def test_kodnev_rag(self):
+        self.assertEqual(E.tisztit('az 1Móz 6:5 és 8:21 `gerinc_elem`-je', E.Dontesnaplo({})),
+                         'az 1Móz 6:5 és 8:21 motívumszava')
+
+    def test_egy_mondat_zarojelen_kivul_vag(self):
+        t = 'A 109 sor (8 régi: x; 27 y; ' + 'z ' * 150 + ') és a többi. Második mondat.'
+        ki = E.egy_mondat(t, ig=120, min_hossz=10)
+        self.assertTrue(ki.endswith('…'))
+        self.assertNotIn('; 27 y;', ki[-8:])
+
+    def test_lyuk_kapu(self):
+        f = self.uj()
+        sz = f['dontesnaplo.tsv']
+        sor = [x for x in sz.split('\n') if x.startswith('NYD-002\t')][0]
+        c = sor.split('\t')
+        c[1] = 'A sor (8 régi:; 27 a -ből) kérdése'
+        f['dontesnaplo.tsv'] = sz.replace(sor, '\t'.join(c), 1)
+        self.assertTrue(bukasok(f, 'LYUK'))
+
+    def test_teljes_mag_nincs_lyuk(self):
+        self.assertEqual(bukasok(self.uj(), 'LYUK'), [])
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
