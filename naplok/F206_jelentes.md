@@ -165,7 +165,8 @@ A lektor 34 pontossági tételéből a `proza_allitas.py` ma gépileg 5-öt fog 
   - a fejléc kimondja: a próza mondatszintű szabályai itt állnak, a forma szabályai a 9-esben (F184; DT-F206a).
 - **9. sablon** (`sablonok/9_PaRDeS_motivum_forras_sablon.md`, v2.2):
   - „A Kivonat két kötelező határ-eleme” 1. pontja alatt: egy szabály, két hely, egy szöveg (V8), példapárral;
-  - az 1/a 1. pontja egy mondattal hivatkozik a 10-es „Állítás a versről” szabályaira.
+  - az 1/a 1. pontja egy mondattal hivatkozik a 10-es „Állítás a versről” szabályaira;
+  - „A lap elején a meghatározás áll” (a lektor 1. tétele). A #699 javítása után a lap elején az azonosság típusa állt a meghatározás helyett; ezt az orkesztrátor jelezte. A szabály: egy-két mondatos meghatározás, nem a cím, nem az azonosság típusa, rossz/jó párral. A mezőt (`meghatarozas`) és a kaput a #182 vezeti be a #699-ben, ez a menet a generátorhoz és az adathoz nem nyúl (F206.5).
 - **`MUNKAMENET.md`:** nem változott. A lépések sorrendje ugyanaz: az U3 → C-a állítás-ellenőrzés → lektor sorrend megmaradt.
 
 A sablon mérete: a 10-es 9 806 bájtról 14 686 bájtra nő (+50%), a 9-es 50 312-ről 51 900 körülire. A növekmény hét szabályból és nyolc példapárból áll. A szabályszöveg tömörített, a ⚑-bekezdés rövidebb lett. A példák a valós mondatok rövidített (…) alakjai, egy sorban.
