@@ -151,10 +151,12 @@ class Tabla(unittest.TestCase):
         self.assertIn("Hiph'il.A/1/a", [x['utvonal'] for x in self.st['H5117']])
 
     def test_homonima_szakasz(self):
-        # DT-F107g (a) (2): a H6440 „I.”, „II.” szakasz (resz üres); a H3068 (M203) és a H8478 (M130) római feje fő tagolás
+        # DT-F107g (a) (2): a H3068 (M203) és a H8478 (M130) római feje fő tagolás. F185 (seed-101 M029, seed-102 M024): a H6440
+        # „I. 1. face” / „II. פְּנֵי with prepositions” római feje is fő tagolás (`resz`; homonima-szakasz csak héber címszó előtt) —
+        # a teszt a F185 óta elavult elvárása (szakasz I/II) F202.5-ben igazítva
         h = self.st['H6440']
-        self.assertEqual(set(x['szakasz'] for x in h if x['sorszam'] not in ('1', '2', '3')), {'I', 'II'})
-        self.assertEqual(set(x['resz'] for x in h), {''})
+        self.assertEqual(set(x['resz'] for x in h if x['sorszam'] not in ('1', '2', '3')), {'I', 'II'})
+        self.assertEqual(set(x['szakasz'] for x in h), {''})
         self.assertIn('II', [x['resz'] for x in self.st['H3068']])
         self.assertIn('II', [x['resz'] for x in self.st['H8478']])
 
@@ -169,7 +171,7 @@ class Tabla(unittest.TestCase):
 
     def test_negyedik_szabaly_a_tablaban(self):
         # DT-F107h (a): a H6440 II. szakaszában a hamis „Niph`al” után a 4–8. jelentés a szakaszé; a H0430 „3” fej marad
-        h = [x['utvonal'] for x in self.st['H6440'] if x['szakasz'] == 'II']
+        h = [x['utvonal'] for x in self.st['H6440'] if x['resz'] == 'II']      # F185: a II. fő tagolás (F202.5)
         self.assertIn('-/4/a', h)
         self.assertIn('-/8/b', h)
         self.assertNotIn("Niph'al/4/a", h)
@@ -216,7 +218,10 @@ class Javitas(unittest.TestCase):
         k = [s for s in self.sorok if s['hiba'] == 'hivatkozas_kezi']
         self.assertEqual([(s['strong'], s['sorszam'], s['elofordulas'], s['forras_alak'], s['javitott_alak']) for s in k],
                          [('H8034', '7', '1', '26:35', '26:25'), ('H7585', '10', '1', '25:11', '15:11'),
-                          ('H8414', '4', '1', '49:19', '49:4')])
+                          ('H8414', '4', '1', '49:19', '49:4'),
+                          # F202.4 (N102): a H1004 könyvnév-hibás helyei, a javított alak a könyvvel
+                          ('H1004', '17', '1', '10:20', '1Kir 12:20'), ('H1004', '17', '1', '10:26', '1Kir 12:26'),
+                          ('H1004', '17', '1', '13:2', '1Kir 13:2'), ('H1004', '17', '1', '14:8', '1Kir 14:8')])
 
     def test_allapotok(self):
         self.assertEqual(set(s['allapot'] for s in self.sorok),
@@ -256,10 +261,13 @@ class Javitas(unittest.TestCase):
         szoveg = {(s['strong'], s['sorszam']): s for s in self.sorok}
         for s in h:
             self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
-            self.assertTrue(s['elofordulas'].isdigit() and s['proveniencia'].startswith('scope=%s |' % s['strong']))
+            # a kézi szórend-sor proveniencia `manual` (CLAUDE.md 1. szabály; F202.5: az elvárás a kézi sorok óta elavult)
+            self.assertTrue(s['elofordulas'].isdigit()
+                            and (s['proveniencia'] == 'manual' or s['proveniencia'].startswith('scope=%s |' % s['strong'])))
             if s['allapot'] == 'javitva':
                 self.assertNotRegex(s['forras_alak'], r'[,;.:0-9A-Za-z]')
-                self.assertIn('TAHOT', s['indok'])
+                if s['proveniencia'] != 'manual':
+                    self.assertIn('TAHOT', s['indok'])
                 self.assertEqual(sorted(s['forras_alak'].replace(' ', '')), sorted(s['javitott_alak'].replace(' ', '')))
         self.assertTrue(szoveg)
 
