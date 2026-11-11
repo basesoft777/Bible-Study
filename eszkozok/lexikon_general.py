@@ -1036,11 +1036,12 @@ def blokk_kizart(m, n_motivum=0):
     if sorok_ehhez:
         # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
         # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
-        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'], strong_cim=strong_cim)
+        cs_n = csoport_n(m['id']) if uj_szerkezet(m['id']) else None   # F182 (K34)
+        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'], strong_cim=strong_cim, csoport_n=cs_n)
         okok = sorted(((k, v) for k, v in ossz['ok'].items() if k != 'nyitott döntés'),
                       key=lambda x: (-x[1], x[0]))
         # F123.TUD1B: verseket számol; az összesítő sor versszáma a `forras_kereses`-ből (szerep_kizart.csoport_versszam)
-        v = SZKZ.vizsgalt_versek(sorok_ehhez)
+        v = SZKZ.vizsgalt_versek(sorok_ehhez, csoport_n=cs_n)
         kizart_olv = (OK.kizart_uj if uj_szerkezet(m['id']) else OK.kizart)(v['egyenkent'], v['csoport_vers'], v['csoport_sor'], v['elutasitva'], v['nyitva'], okok,
                                [(c, ossz['forras'][c]) for c in SZKZ.CSOPORTOK if ossz['forras'].get(c)], n_motivum)
         reszek.append(SZKZ.osszesito_sor(ossz))
@@ -6582,6 +6583,38 @@ def _versek_halmaz(helyek):
     return ki
 
 
+_csoport_egyedi_cache = {}
+
+
+def csoport_egyedi(mid):
+    """F182 (A23 kapujának lelete, K34): {a csoportos sor igehelye: (egyedi versszám, [egyedi tagok])}. Egy vers két
+    háló csoportjában is állhat (pl. a Károli-szó és a Strong szerinti keresés ugyanazt a tövis-verset); a vers a
+    jelöltek döntésnaplójában előbb álló csoportnál számít, a későbbiben nem. Taglista nélkül a sor versszáma marad."""
+    if mid not in _csoport_egyedi_cache:
+        import nyilt_mag_export as NYM
+        jel = [r for r in jeloltek_sorok() if r['id'] == mid]
+        kulon = {(r['id'], r['igehely']) for r in jel if 'külön sor' in (r.get('forras_kereses') or '')
+                 and not NYM.CSOPORT_RX.match(r.get('indoklas') or '')}
+        latott, ki = set(), {}
+        for r in jel:
+            n = SZKZ.csoport_versszam(r.get('forras_kereses'))
+            if n is None or r.get('dontes') not in ('elutasítva', 'nyitva'):
+                continue
+            _db, tagok = NYM.csoport_tagjai(r, kulon)
+            if len(tagok) != n:
+                ki[r['igehely']] = (n, None)
+                continue
+            uj = [t for t in tagok if t not in latott]
+            latott.update(uj)
+            ki[r['igehely']] = (len(uj), uj)
+        _csoport_egyedi_cache[mid] = ki
+    return _csoport_egyedi_cache[mid]
+
+
+def csoport_n(mid):
+    return {h: n for h, (n, _t) in csoport_egyedi(mid).items()}
+
+
 def dontesi_ut_adat(m, sorai):
     """A Döntési út számai (minden vers egyszer): {'bent', 'egyen', 'csoport', 'nyitva', 'osszes', 'csoport_ok',
     'egyen_ok', 'tsk'}. Az egyenként elutasított vers, amely egy beépített sorban is áll, a beépítetteknél számít."""
@@ -6591,10 +6624,13 @@ def dontesi_ut_adat(m, sorai):
     egyen = collections.OrderedDict()
     csoport_ok, egyen_ok = collections.Counter(), collections.OrderedDict()
     csoport = nyitva_cs = tsk = 0
+    egyedi = csoport_n(mid) if uj_szerkezet(mid) else {}
     for r in jeloltek_sorok():
         if r['id'] != mid or r.get('dontes') not in ('elutasítva', 'nyitva'):
             continue
         n = SZKZ.csoport_versszam(r.get('forras_kereses'))
+        if n is not None and r['igehely'] in egyedi:
+            n = egyedi[r['igehely']]   # F182 (K34): a más csoportban is álló vers egyszer számít
         fo_ind = (r.get('indoklas') or '').partition(' | ')[0]
         ok = SZKZ.olvasoi_ok(SZKZ.elutasitas_oka(fo_ind, minta)) if r.get('dontes') == 'elutasítva' else None
         if SZKZ.jeloles_oka(r.get('forras_kereses'))[0] in SZKZ.CSOPORTOK[:2]:
@@ -6621,6 +6657,110 @@ def dontesi_ut_adat(m, sorai):
     return {'bent': len(bent), 'egyen': n_egyen, 'csoport': csoport, 'nyitva': nyitva,
             'osszes': len(bent) + n_egyen + csoport + nyitva, 'csoport_ok': csoport_ok, 'egyen_ok': egyen_ok,
             'tsk': tsk, 'pelda': {}}
+
+
+# --- F182 (A23; F3 módosítva, B14, K39): a kizárt helyek mellékletlapja ------------------------------------------------
+# A felhasználó (2026-11-09, a módosított változatra: „mehet”): minden vizsgált, nem beépült vers a saját indokával egy
+# generált mellékletlapon áll (`lexikon/[ID]_KIZARASOK.md`), a lapról okonként linkkel. Kapu (HIBA): a melléklet
+# igehelyeinek uniója egyenlő a Döntési út csoportos + egyenkénti számával, a csoportonkénti taglista hossza a csoport
+# versszámával, és minden igehely a jelöltek döntésnaplójából vagy a teljesség-mérés csoportlistájából jön; eltérésnél
+# a melléklet nem renderel, a generálás megáll (nincs kitöltés).
+KIZARASOK_UTOTAG = '_KIZARASOK.md'
+KIZARASOK_NYITVA_HATAR = 10   # ennyi versig a lista nyitva áll, fölötte csukva (F3 megjelenés)
+
+
+class MellekletHiba(ValueError):
+    pass
+
+
+def kizarasok_adat(m, sorai):
+    """{'csoport': {ok: [igehely, …]}, 'egyen': {ok: [igehely, …]}, 'nyitva': [igehely, …]} a Döntési út szabályával
+    (`dontesi_ut_adat`): a csoportos sor tagjai a teljesség-mérés csoportlistájából (`nyilt_mag_export.csoport_tagjai`),
+    az egyenkénti versek a jelöltek döntésnaplójából. Kapu: `MellekletHiba` eltérésnél."""
+    import nyilt_mag_export as NYM
+    mid = m['id']
+    a = dontesi_ut_adat(m, sorai)
+    minta = SZKZ.okok(mid)
+    jel = [r for r in jeloltek_sorok() if r['id'] == mid]
+    kulon = {(r['id'], r['igehely']) for r in jel
+             if 'külön sor' in (r.get('forras_kereses') or '') and not NYM.CSOPORT_RX.match(r.get('indoklas') or '')}
+    csoport = collections.OrderedDict()
+    hibak = []
+    for r in jel:
+        if r.get('dontes') != 'elutasítva':
+            continue
+        n = SZKZ.csoport_versszam(r.get('forras_kereses'))
+        if n is None:
+            continue
+        ok = SZKZ.olvasoi_ok(SZKZ.elutasitas_oka((r.get('indoklas') or '').partition(' | ')[0], minta))
+        n_egyedi, tagok = csoport_egyedi(mid).get(r['igehely'], (n, None))
+        if tagok is None:
+            hibak.append('%s: a csoport %d versének taglistája nem igazolja a számot' % (r['igehely'], n))
+            continue
+        csoport.setdefault(ok, []).extend(tagok)
+    egyen = collections.OrderedDict((ok, list(vv)) for ok, vv in a['egyen_ok'].items())
+    for ok, n in a['csoport_ok'].items():
+        if len(csoport.get(ok, [])) != n:
+            hibak.append('„%s”: %d vers helyett %d a mellékletben' % (ok, n, len(csoport.get(ok, []))))
+    unio = [v for vv in csoport.values() for v in vv] + [v for vv in egyen.values() for v in vv]
+    if len(unio) != len(set(unio)):
+        hibak.append('%d vers többször áll' % (len(unio) - len(set(unio))))
+    if len(set(unio)) != a['csoport'] + a['egyen']:
+        hibak.append('a melléklet %d verse ≠ a Döntési út %d csoportos + %d egyenkénti verse'
+                     % (len(set(unio)), a['csoport'], a['egyen']))
+    bent = _versek_halmaz(s['igehely'] for s in sorai)
+    if set(unio) & bent:
+        hibak.append('%d beépített vers a mellékletben' % len(set(unio) & bent))
+    if hibak:
+        raise MellekletHiba('%s: a kizárt helyek melléklete nem renderel — %s' % (mid, '; '.join(hibak)))
+    return {'csoport': csoport, 'egyen': egyen, 'a': a}
+
+
+def _konyvenkent(versek):
+    konyvek = collections.OrderedDict()
+    for v in sorted(set(versek), key=SZK.vers_kulcs):
+        k, h = v.rsplit(' ', 1)
+        konyvek.setdefault(k, []).append(h)
+    return '\n'.join('- **%s** (%d): %s' % (k, len(hh), ', '.join(hh)) for k, hh in konyvek.items())
+
+
+def kizarasok_cim(ok, n):
+    return '%s — %s vers' % (ok, OK._ezres(n))
+
+
+def kizarasok_link(mid, ok, n):
+    return '%s%s#%s' % (mid, KIZARASOK_UTOTAG, _heading_slug(kizarasok_cim(ok, n)))
+
+
+def kizarasok_melleklet(m, sorai):
+    d = kizarasok_adat(m, sorai)
+    mid, a = m['id'], d['a']
+    megj = SZKZ.ok_megjegyzesek(mid)
+    ki = ['<!-- GENERÁLT: general.py --cel lexikon | melléklet: %s -->' % mid, '',
+          '# 📎 %s — Kizárt és vizsgált versek (melléklet)' % mid, '',
+          'A [%s lap](%s_TUDOMANYOS.md#1-döntési-út) Döntési útjának melléklete: a motívum %s versén túl megvizsgált, '
+          'a motívumhoz nem tartozó mind %s %s vers, okonként, a saját indokával. A csoportosan kizárt verseket gépi '
+          'mérés sorolja egy közös okba, az egyenként elutasítottakat egyedi döntés. Egy vers egyszer áll: ha két '
+          'keresés csoportjában is szerepel, az elsőnél.'
+          % (mid, mid, OK._ezres(a['bent']), _nevelo(str(a['csoport'] + a['egyen'])),
+             OK._ezres(a['csoport'] + a['egyen'])), '',
+          '**Összeadás:** %s (csoportosan kizárva) + %s (egyenként elutasítva) = %s vers.'
+          % (OK._ezres(a['csoport']), OK._ezres(a['egyen']), OK._ezres(a['csoport'] + a['egyen']))]
+    for cim, csop in (('Csoportosan kizárt versek, okonként', d['csoport']),
+                      ('Egyenként elutasított versek, okonként', d['egyen'])):
+        if not csop:
+            continue
+        ki += ['', '## %s' % cim]
+        for ok, vv in sorted(csop.items(), key=lambda x: (-len(x[1]), x[0])):
+            ki += ['', '### %s' % kizarasok_cim(ok, len(vv)), '', megj.get(ok) or ok, '']
+            lista = _konyvenkent(vv)
+            if len(vv) > KIZARASOK_NYITVA_HATAR:
+                ki += ['<details>', '<summary>A %s vers</summary>' % OK._ezres(len(vv)), '', lista, '', '</details>']
+            else:
+                ki.append(lista)
+    ki += ['', '*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: '
+           'a kizárások és a csoportos kizárások táblája); generálva: %s.*' % G.TS, '']
+    return '\n'.join(ki)
 
 
 def _reszletek(cim, n, szoveg_reszek, nyitva=False):
@@ -6742,8 +6882,13 @@ def blokk_dontesi_ut(m, sorai):
                 p.append('<p>Példák (a Károli-szöveggel):</p><ul>%s</ul>'
                          % ''.join('<li>%s: <em>%s</em></li>' % (h, html_escape(karoli.get(h, '')))
                                    for h in pelda if karoli.get(h)))
-            p.append('<p>A csoport %s a lap nyílt adatkészletében áll.</p>'
-                     % ('egyetlen verse' if n == 1 else 'mind a %s verse' % OK._ezres(n)))
+            if uj_szerkezet(mid):   # F182 (A23): a teljes lista a mellékletlapon, okonként linkkel
+                p.append('<p>A csoport %s a <a href="%s">kizárt helyek mellékletében</a> áll.</p>'
+                         % ('egyetlen verse' if n == 1 else 'mind a %s verse' % OK._ezres(n),
+                            html_escape(kizarasok_link(mid, ok, n))))
+            else:
+                p.append('<p>A csoport %s a lap nyílt adatkészletében áll.</p>'
+                         % ('egyetlen verse' if n == 1 else 'mind a %s verse' % OK._ezres(n)))
             dd.append(_reszletek(ok, n, p))
         r3.append('\n'.join(dd))
     if a['egyen_ok']:
@@ -6751,7 +6896,9 @@ def blokk_dontesi_ut(m, sorai):
         dd = []
         for ok, vv in sorted(a['egyen_ok'].items(), key=lambda x: (-len(x[1]), x[0])):
             dd.append(_reszletek(ok, len(vv), ['<p>%s</p>' % html_escape(megj.get(ok) or ok),
-                                               '<p>Versek: %s.</p>' % ', '.join(vv)]))
+                                               '<p>Versek: %s.</p>' % ', '.join(vv)]
+                                 + (['<p>A <a href="%s">kizárt helyek mellékletében</a> is.</p>'
+                                     % html_escape(kizarasok_link(mid, ok, len(vv)))] if uj_szerkezet(mid) else [])))
         r3.append('\n'.join(dd))
     reszek.append('\n\n'.join(r3))
 
@@ -7281,8 +7428,12 @@ def attekinto_beszur(szoveg, m, sorai):
                          '(Septuaginta) leggyakoribb szava ugyanazokban a versekben, és hogy hány helyen áll a szó a '
                          'motívumban. A részletek szavanként a 4.1–4.10 pontban.' % n),
         tabla,
-        '*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem '
-        'szóillesztés; a „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.*', ''])
+        # F182 (A25, K51): a lábjegyzet megmondja, mit mér az oszlop a 4.11 láncbeli megfelelőjéhez képest
+        '*Az LXX-megfelelő versszintű együtt-előfordulás (a 4.6 pont párjai, Dice-társulással), nem szóillesztés, és a '
+        'szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncverseiben álló görög megfelelőt '
+        'a 4.11 pont adja, ezért a kettő eltérhet.%s*'
+        % (' A „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.' if re.search(r'(?m)^\| [^|]+ \| — \|', tabla)
+           else ''), ''])
     return szoveg[:j.start()] + betet + '\n' + szoveg[j.start():]
 
 
@@ -8244,6 +8395,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         os.makedirs(kimenet_gyoker, exist_ok=True)
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(uj_szoveg)
+        if uj_szerkezet(m['id']):
+            # F182 (A23): a kizárt helyek melléklete a lap mellett (a kapu a kizarasok_adat-ban)
+            mell_ut = os.path.join(kimenet_gyoker, '%s%s' % (m['id'], KIZARASOK_UTOTAG))
+            with io.open(mell_ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(kizarasok_melleklet(m, sorai))
+            print('  %s: %s (melléklet, %d bájt)' % (m['id'], G.kiirt_ut(mell_ut), os.path.getsize(mell_ut)))
         print('  %s: %s (%s, %d bájt)'
               % (m['id'], G.kiirt_ut(cel_ut), allapot, os.path.getsize(cel_ut)))
         h = KIEJTES_JELOLT_HIANY.get(m['id']) or []

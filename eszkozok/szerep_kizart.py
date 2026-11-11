@@ -155,7 +155,7 @@ def versszam_hibak(sorok):
     return ki
 
 
-def vizsgalt_versek(sorok):
+def vizsgalt_versek(sorok, csoport_n=None):
     """A vizsgált versek száma az 1/b. összesítőhöz: {'egyenkent', 'csoport_vers', 'csoport_sor', 'osszes',
     'elutasitva', 'nyitva'}. Az egyenként vizsgált versek különbözők (a tartomány kibontva, az ismétlődő vers egyszer;
     ha bármely sora nyitva, a vers nyitott); az összesítő sor a `csoport_versszam` szerinti verset fedi (a blokk versei
@@ -165,6 +165,8 @@ def vizsgalt_versek(sorok):
     dontes_vers = collections.Counter()
     for r in sorok:
         n = csoport_versszam(r.get('forras_kereses'))
+        if n is not None and csoport_n:
+            n = csoport_n.get(r.get('igehely'), n)   # F182 (K34): a más csoportban is álló vers egyszer számít
         if n is not None:
             cs_vers += n
             cs_sor += 1
@@ -419,7 +421,7 @@ def osszevon(sorok_c):
     return eredmeny
 
 
-def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
+def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None, csoport_n=None):
     """(törzs-sorok listája, lábjegyzetek listája, összesítő dict) az 1/b. blokkhoz. `strong_cim`: a jelölt Strong-szám
     `title`-je (`lexikon_general.strong_cim`; alapból a szám)."""
     minta = okok(motivum_id, okok_ut)
@@ -436,6 +438,8 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None):
         c, miert = jeloles_oka(r.get('forras_kereses'))
         # F123.TUD1B: a súly a sor verseinek száma (összesítő sor: a blokk, tartomány: a kibontott versek)
         suly = csoport_versszam(r.get('forras_kereses')) or len(versek(r.get('igehely')))
+        if csoport_n and csoport_versszam(r.get('forras_kereses')) is not None:
+            suly = csoport_n.get(r.get('igehely'), suly)   # F182 (K34): a más csoportban is álló vers egyszer számít
         forras_szaml[c] += suly
         ind = r.get('indoklas') or ''
         fo_ind, _sep, farok = ind.partition(' | ')
