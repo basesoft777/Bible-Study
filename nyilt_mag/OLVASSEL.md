@@ -1,6 +1,6 @@
-# Logosz Lexikon — nyílt mag — olvass el
+# Logosz-lexikon — nyílt mag — olvass el
 
-# GENERÁLT: a(z) Logosz Lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 *English version: `README.md`.*
 
@@ -65,7 +65,7 @@ A csomag kanonikus közzétételi helye: `https://doi.org/10.5281/zenodo.2414161
 
 ## Idézés és a mesterséges intelligencia használata
 
-**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz Lexikon — nyílt adatmag. DOI: 10.5281/zenodo.24141612.
+**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz-lexikon — nyílt adatmag. DOI: 10.5281/zenodo.24141612.
 
 A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
 

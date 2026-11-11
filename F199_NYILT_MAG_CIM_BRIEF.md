@@ -5,9 +5,9 @@ kod: NYILT_MAG_CIM
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/nyilt-mag-cim
-ad: a nyílt mag fejléceiben és szövegeiben a „[A LEXIKON CÍME]” és a „<KANONIKUS_FORRAS_URL>” helyőrző helyén a megállapított adat (Logosz Lexikon, Demeter Tamás, ORCID, DOI, logoszlexikon.hu); új kapu a nyers helyőrző ellen
+ad: a nyílt mag fejléceiben és szövegeiben a „[A LEXIKON CÍME]” és a „<KANONIKUS_FORRAS_URL>” helyőrző helyén a megállapított adat (magyar szövegben „Logosz-lexikon”, angolban „Logosz Lexikon”; Demeter Tamás, ORCID, DOI, logoszlexikon.hu); új kapu a nyers helyőrző ellen
 kovetkezo: "Te: a draft PR áttekintése; merge-et az orkesztrátor végzi a felhasználó kérésére"
 munka: folyamat
 olvas: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py]

@@ -274,10 +274,16 @@ class Negativ(Alap):
             f['README.md'] += nyers + '\n'
             self.assertTrue(bukasok(f, 'HELYORZO'), nyers)
 
+    def test_cim_hu_es_en(self):
+        self.assertEqual(('Logosz-lexikon', 'Logosz Lexikon'), (E.LEXIKON_CIM_HU, E.LEXIKON_CIM_EN))
+        self.assertIn('# Logosz-lexikon — nyílt mag', self.fajlok['OLVASSEL.md'])
+        self.assertIn('# Logosz Lexikon — Open Core', self.fajlok['README.md'])
+        self.assertNotIn('Logosz Lexikon', self.fajlok['OLVASSEL.md'])
+
     def test_cim_szerzo_doi_megvan(self):
         self.assertEqual([], bukasok(self.fajlok, 'HELYORZO'))
         for rel in ('OLVASSEL.md', 'README.md'):
-            for kell in ('Logosz Lexikon', 'Demeter Tamás', '0009-0005-9254-9731', '10.5281/zenodo.24141612',
+            for kell in (E.LEXIKON_CIM_HU if rel == 'OLVASSEL.md' else E.LEXIKON_CIM_EN, 'Demeter Tamás', '0009-0005-9254-9731', '10.5281/zenodo.24141612',
                          '10.5281/zenodo.24141884', 'logoszlexikon.hu'):
                 self.assertIn(kell, self.fajlok[rel], (rel, kell))
         self.assertIn('10.5281/zenodo.24141612', self.fajlok['KIADAS.txt'])
