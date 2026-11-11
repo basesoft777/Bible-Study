@@ -1,4 +1,4 @@
-kiadas_azonosito: 2026-11-10-433f30fa20c16f7b
+kiadas_azonosito: 2026-11-10-302f959bdb19cf1c
 adatallapot_datuma: 2026-11-10
-tartalmi_hash_sha256: 433f30fa20c16f7b30b8fa05c528c4ce5dc3bcc8c93b3757c31cee0e647e558f
+tartalmi_hash_sha256: 302f959bdb19cf1c9eaa8ee59c4c6d32bb4378219820f42a1bed4ac568493bf9
 kozzeteteli_hely: https://doi.org/10.5281/zenodo.24141612

@@ -6702,7 +6702,8 @@ def alkalmazas_resz_ki(szoveg):
 # előtt áll, olvasói mezőnevekkel (F18 (d)); a státusz a kiadási állapotból (`adat/kiadasok.tsv`, F18 (c)), nem a
 # motívumtábla régi `statusz` mezőjéből. A Kolofonban a kiadási és a forrásadatok maradnak (F18 (e)).
 AZONOSITO_MEZOK = (('ID', 'id'), ('Rövid cím', 'ui_cimke'), ('Teljes cím', 'cim'), ('Téma', 'tema'),
-                   ('PaRDeS-szint', 'pardes_szint'), ('Státusz', None), ('Azonosság típusa', 'azonossag_tipusa'),
+                   ('PaRDeS-szint', 'pardes_szint'), ('Státusz', None), ('Meghatározás', 'meghatarozas'),
+                   ('Azonosság típusa', 'azonossag_tipusa'),
                    ('Negatív kritérium', 'negativ_kriterium'), ('Fölérendelt fogalom', 'folerendelt_fogalom'))
 
 
@@ -6741,8 +6742,12 @@ def egyszerusitett_kolofon(m):
     második címke a tartalmát fedi (a negatív kritérium a hely minimális jegye: mi tartozik ide, és mi nem); a
     harmadik zárójele a belső „hígulna” szó nélkül."""
     tipus = (m.get('azonossag_tipusa') or '').strip()
+    # a felhasználó (2026-11-11): „hiányolom a motívum definíciót … a kolofonban is és az elején”: a meghatározás
+    # (`motivumok.tsv` `meghatarozas`) áll elöl, utána az azonosság típusa egy mondatban
+    megh = (m.get('meghatarozas') or '').strip()
+    tip = AZONOSSAG_OLVASOI.get(tipus, '' if megh else '%s.' % (m.get('cim') or m['id']).rstrip('.'))
     return '\n\n'.join([
-        '**A motívum.** %s' % AZONOSSAG_OLVASOI.get(tipus, '%s.' % (m.get('cim') or m['id']).rstrip('.')),
+        '**A motívum.** %s' % ' '.join(x for x in (megh, tip) if x),
         '**Mi tartozik ide, és mi nem.** %s' % (m.get('negativ_kriterium') or EM_DASH),
         '**Fölérendelt fogalom** (a tágabb kategória: ha egy hely csak ezen át tartozna ide, kimarad). %s.'
         % _nagy_kezdo((m.get('folerendelt_fogalom') or EM_DASH).rstrip('.')),

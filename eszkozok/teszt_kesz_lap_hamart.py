@@ -414,6 +414,21 @@ class Kapuk(unittest.TestCase):
         self.assertEqual(ki.split('\n')[0], '| A szótár a héber vagy a görög versszámozás szerint idézi a helyet | x |')
         self.assertEqual(ki.split('\n')[2], '- a kód')
 
+    def test_meghatarozas_kapu(self):
+        """A felhasználó (2026-11-11): „hiányolom a motívum definíciót”: a „A motívum.” bekezdés és a Kolofon
+        Meghatározás-sora; rontott bemenettel (üres, cím, csak az azonosság típusa, hiányzó Kolofon-sor)."""
+        def lap(bek, kol='| Meghatározás | A bűn következménye a földre és az emberiségre terjed a lánc szavaival. |'):
+            return uj_lap('x').replace('# 📖 X-001 — Minta', '# 📖 X-001 — Minta\n\n' + bek) + \
+                '\n## Kolofon\n\n| Mező | Érték |\n|---|---|\n' + kol + '\n'
+        jo = '**A motívum.** A bűn következménye a földre és az egész emberiségre terjed, hat szó láncán át.'
+        self.assertEqual(kapu(lap(jo), 'MEGHATAROZAS'), [])
+        for rossz in ('**A motívum.** Minta.', '**A motívum.**',
+                      '**A motívum.** Szerkezeti motívum: azonosságát nem egyetlen szó adja, hanem egy szerkezet.'):
+            self.assertTrue(kapu(lap(rossz), 'MEGHATAROZAS'), rossz)
+        self.assertTrue(kapu(lap(jo, kol='| Azonosság típusa | x |'), 'MEGHATAROZAS'))
+        self.assertIn('**Meghatározás**', self.lap.replace('| Meghatározás |', '**Meghatározás**')
+                      if hasattr(self, 'lap') else _olvas(LAP).replace('| Meghatározás |', '**Meghatározás**'))
+
     def test_kh_masolt_kapu_rontott(self):
         """ELLENOR_HAMART_lapjavit: a KH_MASOLT kapu az új szerkezetű lapon BUKÁS-t ad a másolt listára."""
         lap = uj_lap('x').replace('## 2. Előfordulások', '## 6. Kereszthivatkozások\n\n#### Sof 1:9\n- Károli-KH: Mk 3:22-30')

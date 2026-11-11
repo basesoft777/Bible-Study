@@ -92,6 +92,8 @@ KAPUK = (
                        'B07, K12)'),
     ('NEVELO', BUKAS, '„a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új '
                       'szerkezetű lapon (F182: A06, F4 (c), K48)'),
+    ('MEGHATAROZAS', BUKAS, 'a lap elején „A motívum.” bekezdés üres, a címet ismétli vagy csak az azonosság típusát mondja, '
+                            'vagy a Kolofonban nincs „Meghatározás” sor; csak az új szerkezetű lapon (lap-javit HAMART-001)'),
     ('LISTA_NEVELO', BUKAS, 'lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név '
                             'és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új '
                             'szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel)'),
@@ -726,6 +728,35 @@ def ell_lista_nevelo(sorok):
             if NEVELO_ELEM_RX.match(e):
                 ki.append(talalat('LISTA_NEVELO', BUKAS, s.n, e[:80], 'a lista- vagy táblaelem névelővel kezdődik: a név '
                                   'névelő nélkül álljon, a névelőt csak a folyó szöveg teszi elé'))
+    return ki
+
+
+# A motívum meghatározása (a felhasználó, 2026-11-11: „hiányolom a motívum definíciót … a kolofonban is és az elején”):
+# az új szerkezetű lapon a „**A motívum.**” bekezdés nem üres, nem a cím, és nem csak az azonosság típusának mondata;
+# a Kolofonban „Meghatározás” sor áll, értékkel.
+AZONOSSAG_MONDAT_RX = re.compile(r'(?:Szavas|Fordulat-|Utalás-|Fogalmi|Szerkezeti) ?motívum: [^.]*\.')
+MEGHATAROZAS_MIN_SZO = 8
+
+
+def ell_meghatarozas(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    cim = next((re.sub(r'^#\s+(?:\S+\s+)?[\w-]+\s+—\s+', '', s.nyers.strip()) for s in sorok
+                if s.nyers.startswith('# ')), '')
+    bek = next((s for s in sorok if s.nyers.strip().startswith('**A motívum.**')), None)
+    if bek is None:
+        ki.append(talalat('MEGHATAROZAS', BUKAS, 1, '', 'a lap elején nincs „A motívum.” bekezdés'))
+    else:
+        t = bek.nyers.strip()[len('**A motívum.**'):].strip()
+        marad = AZONOSSAG_MONDAT_RX.sub('', t).strip()
+        if not t or t.rstrip('.') == cim.rstrip('.') or len(marad.split()) < MEGHATAROZAS_MIN_SZO \
+                or marad.rstrip('.') == cim.rstrip('.'):
+            ki.append(talalat('MEGHATAROZAS', BUKAS, bek.n, t[:80], '„A motívum.” bekezdés üres, a címet ismétli, vagy '
+                              'csak az azonosság típusát mondja: a motívum meghatározása hiányzik'))
+    kol = [s for s in sorok if s.szakasz.startswith('Kolofon') and re.match(r'^\|\s*Meghatározás\s*\|', s.nyers.strip())]
+    if not kol or not re.sub(r'[\s|—-]', '', kol[0].nyers.strip()[len('| Meghatározás'):]):
+        ki.append(talalat('MEGHATAROZAS', BUKAS, kol[0].n if kol else 1, '', 'a Kolofonban nincs „Meghatározás” sor értékkel'))
     return ki
 
 
@@ -1519,7 +1550,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_lista_nevelo, ell_nyers_jel, ell_mi_hang,
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_lista_nevelo, ell_meghatarozas, ell_nyers_jel, ell_mi_hang,
                 ell_nevelo, ell_kov_ism, ell_indoklas]
 
 

@@ -116,6 +116,10 @@
 
 A `fuggetlen-ellenor` (claude-opus-5-5) az F125.LJ1–LJ3-at nézte: ELTÉRÉS 17. Az egyetlen javítókör (F125.LJ6) tételenként a `naplok/ELLENOR_HAMART_lapjavit.md` végén. A legsúlyosabb: a 2Kir 17:23 „szín” szava (Isten színe, nem a földé) — javítva; az Ez 28:16/17 megszólítottja a jelöltsorokban és a nyílt magban — javítva; a `nevelo_le` mondat-cellái és kódblokkja — javítva; a „többsége közepes” feltétele — javítva. Az „Emberi lektorálás” sor: a helyekre a modell-lektor (claude-fable-5-2) mutatott rá, a jóváhagyás a felhasználóé, az orkesztrátoron át.
 
+## A motívum meghatározása (DT-F125j)
+
+A felhasználó a lapnézetben jelezte, hogy a meghatározás hiányzik a lap elejéről és a Kolofonból („hiányolom a motívum definíciót”). Gyökérok: az 1. lektori tételnél a címismétlés helyére az azonosság típusa került, nem meghatározás; a motívumtáblában meghatározás-mező nem volt. Javítás: új `meghatarozas` mező (SEMA 2.1), a lap elején „A motívum.” után, a Kolofonban „Meghatározás” sor, MEGHATAROZAS kapu (BUKÁS) teszttel, KESZ_LAP_KOVETELMENY K21a, a nyílt mag motívumtáblájában is (angol pár F170 szerint). A szöveget a felhasználó jóváhagyta („Jóváhagyom”).
+
 ## A 46 tétel — hol és hogyan
 
 | # | Hol | Hogyan |

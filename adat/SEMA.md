@@ -173,6 +173,7 @@ egy külön állítást, nem vonja vissza.
 | `folerendelt_fogalom` | szabad szöveg | ✔ | Az a tágabb kategória, amely felé a motívum hígulni fog (HAMART-001: *a bűn / hamartológia általában*). Minden új sornál egyetlen kérdés: *csak ezen keresztül tartozik ide?* Ha igen, kizárandó. |
 | `sablon_verzio` | `v<N>` vagy `v<N> részleges (érintett: …)` | | A megfelelőségi kör eredménye — l. az F5.2 szabályt. Teljes `v<N>` csak akkor írható, ha az ellenőrzés **minden** szakaszra lefutott. |
 | `forras_study` | fájlút | | Pl. `tematikus_lezart/Rafaim_tematikus.md`. Több érték `;` jellel. |
+| `meghatarozas` | szabad szöveg, 1–2 mondat | | A motívum olvasói meghatározása: mi a motívum, mért állítással; nem a cím, nem az azonosság típusa, és nem a negatív kritérium ismétlése. A lap elején („A motívum.”) és a Kolofon azonosító táblájában („Meghatározás”) áll; üres értéknél a generátor nem ír semmit (a régi lapok nem változnak). Az új szerkezetű lapon kötelező (olvasói kapu MEGHATAROZAS). Lap-javit HAMART-001, a felhasználó: „hiányolom a motívum definíciót”. |
 
 #### 2.1.1 A háromértékű státusz
 
@@ -2562,6 +2563,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `NYERS_JEL` | BUKÁS | nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, „igazolas:”, `jelentes_szam`, „sorszám N”, „napló: …”, „(4/b. rész)”, `halo=`, `blokk=`, „lanc ±1”, „csalad H…”, „indoklás (nyers)”, „szónézet: /szo/…”, tW-azonosító `kt/…`, `other/…`, `karoli_szo`, a címszó belső számlálója `_226`); csak az új szerkezetű lapon (F182: A08, A11, A17, KH-lábjegyzet) |
 | `MI_HANG` | BUKÁS | „mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, B07, K12) |
 | `NEVELO` | BUKÁS | „a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új szerkezetű lapon (F182: A06, F4 (c), K48) |
+| `MEGHATAROZAS` | BUKÁS | a lap elején „A motívum.” bekezdés üres, a címet ismétli vagy csak az azonosság típusát mondja, vagy a Kolofonban nincs „Meghatározás” sor; csak az új szerkezetű lapon (lap-javit HAMART-001) |
 | `LISTA_NEVELO` | BUKÁS | lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel) |
 | `KOV_ISM` | BUKÁS | ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10) |
 | `INDOKLAS` | BUKÁS | a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat („érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, K47, K48) |
