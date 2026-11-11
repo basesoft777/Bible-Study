@@ -391,7 +391,8 @@ def _tomor_lista(hamis, szo_nev):
     for h, _sz, g in hamis:
         konyv, hely = h.rsplit(' ', 1)
         konyvek.setdefault(konyv, []).append(hely + (' (a versben: %s)' % ', '.join(szo_nev(x) for x in g) if g else ''))
-    return '\n'.join('- **%s** (%d): %s' % (k, len(v), ', '.join(v)) for k, v in konyvek.items())
+    # a könyvnév az első hely előtt áll (a szótári hivatkozás-elemző így örökíti a könyvet a többi helyre)
+    return '\n'.join('- %s %s — %d vers' % (k, ', '.join(v), len(v)) for k, v in konyvek.items())
 
 
 def blokk_14(sorai, ts, szo_nev=None, tomor=False, kulcs_nev=None):

@@ -693,7 +693,8 @@ def res_egyezik(elvart, tenyleges):
         return True
     # F178.4: az új szerkezetű lapon a rés is olvasói átíráson megy át, és a lapszintű kiejtés-pótlás (az első
     # előfordulás kiejtése) a rés héber/görög szavát is érintheti: a kiejtés-zárójel nélkül összevetve
-    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.olvasoi_atiras(elvart)), strong_cim=LG.strong_cim)
+    # F182 (3. menet): az új szerkezetű lap olvasói utómunkája (a jelölt-lábjegyzet, a szónézet-link) is
+    uj = OU.alkalmaz(LG.cimjeloles_ki(LG.kesz_lap_utana(LG.olvasoi_atiras(elvart), None, None)), strong_cim=LG.strong_cim)
     return tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj)
 
 
@@ -733,8 +734,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
         motivum_resek.setdefault(r['id'], set()).add(r['res'])
     for motivum_id, resek in motivum_resek.items():
         for res in LG.RES_SORREND:
-            if res == 'tanitoi' and res not in resek:
-                continue   # DT-F178b: a tanítói rés lépcsős kivezetése (motívumonként, a teljes folyamattal)
+            if res in LG.KIVEZETETT_RES_FEJLEC and res not in resek:
+                continue   # DT-F178b, DT-F182m: a tanítói és az alkalmazás rés lépcsős kivezetése (motívumonként)
             if res not in resek:
                 hibas.append('%s / %s -- hiányzó res_forras.tsv sor' % (motivum_id, res))
         for res in sorted(resek - set(LG.RES_SORREND)):
@@ -2461,7 +2462,8 @@ def szabaly42_forditas_a_lapon(adat_dir, lex_dir=None):
 # számozása, amelyet a megjelenítő nem ismer; a forrás nem változik).
 def szotari_hivatkozas_hibak(lap, karoli_versek):
     import lexikon_general as LG
-    m = re.search(r'(?ms)^## 4\. Szótári háttér.*?(?=^## 5\.)', lap)
+    # F182 (A24): a 4.13–4.14 Károli-listája nem szótári szöveg (a hamis párhuzam igehelyei a Károliból jönnek)
+    m = re.search(r'(?ms)^## 4\. Szótári háttér.*?(?=^#### 4\.13\.|^## 5\.)', lap)
     if not m:
         return []
     t = re.sub(r'<!--.*?-->', '', m.group(0), flags=re.S)
