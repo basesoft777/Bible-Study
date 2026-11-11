@@ -123,10 +123,28 @@ class Tabla(unittest.TestCase):
                 self.assertIn(r['karoli_vers'], kk)
                 self.assertEqual(r['karoli_vers'],
                                  '%s %s:%s' % (V.KAROLI_KONYV.get(r['konyv'], r['konyv']), r['fejezet'], r['vers']))
+            elif 'nem_bibliai' in r['proveniencia']:
+                pass  # F203 (N124): nem bibliai mű hivatkozása — a vers létezhet, mégsem bibliai hely
             else:
                 ures += 1
                 self.assertNotIn('%s %s:%s' % (V.KAROLI_KONYV.get(r['konyv'], r['konyv']), r['fejezet'], r['vers']), kk)
         self.assertLess(ures, 100)
+
+    def test_g0027_ascensio_nem_bibliai(self):
+        # F203 (N124): G0027 „(cf. Ascensio Isa. (edited by Dillmann) Luk 7:23; Luk 8:18, Luk 8:25, etc.)” — a forrás bcv-je a mű
+        # fejezet:versét Lukácsnak jelöli; a sor megmarad, Károli-vers nélkül, `nem_bibliai` jelöléssel; a többi Lukács-hely marad
+        g = {r['sorszam']: r for r in adat()['sorok'] if r['strong'] == 'G0027'}
+        for n in ('12', '13', '14'):
+            self.assertEqual((g[n]['konyv'], g[n]['karoli_vers']), ('Luk', ''), n)
+            self.assertIn('nem_bibliai', g[n]['proveniencia'])
+        self.assertEqual(g['11']['karoli_vers'], 'Luk 20:13')
+        nb = [r for r in adat()['sorok'] if 'nem_bibliai' in r['proveniencia']]
+        self.assertEqual(len(nb), 3)
+
+    def test_nem_bibliai_zarojel(self):
+        raw = 'x (cf. Ascensio Isa. (edited by Dillmann) <ref onclick="bcv(42,7,23)">Luk 7:23</ref>); <ref onclick="bcv(42,1,1)">Luk 1:1</ref>'
+        self.assertTrue(V.nem_bibliai(raw, raw.index('<ref')))
+        self.assertFalse(V.nem_bibliai(raw, raw.rindex('<ref')))
 
     def test_g1941_motivumhelyek(self):
         # napló M2: a 10 motívumhelyből 7-et idéz bcv-vel; 1Pét 1:17 az 1. pont alatt, a többi az 5. alatt
@@ -145,7 +163,10 @@ class Tabla(unittest.TestCase):
         for r in adat()['sorok']:
             self.assertIn(r['proveniencia'].split(' | ')[:2],
                           (['scope=%s' % r['strong'], 'forras=thayer_jelolt/vers_jelentes.py (fejléc)'],
-                           ['scope=%s' % r['strong'], 'forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)']))
+                           ['scope=%s' % r['strong'], 'forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)'],
+                   # F203 (N124): a nem bibliai mű hivatkozása
+                   ['scope=%s' % r['strong'], 'forras=thayer_jelolt/vers_jelentes.py (fejléc, nem_bibliai)'],
+                   ['scope=%s' % r['strong'], 'forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas, nem_bibliai)']))
 
     def test_konyvszam_lekepezes(self):
         kv = V.konyvek()
@@ -163,7 +184,10 @@ ARANY = os.path.join(GYOKER, 'adat', 'thayer_aranyminta.tsv')
 # zárójeles etimológiában), K5 (görög α félkövér latin „a.”-ként; az U014 is ez).
 # A seed-204 (valóban vak mérés, 196/200) maradéka: K2c (további utalás-töredékek), K1e (új betűsor a bekezdésen belül, a várt
 # következő betű helyett „a.”) — mérve, nem javítva (az orkesztrátori döntés szerint a seed-204 után nincs további javítókör).
-NEM_JAVITOTT = {'K3', 'K4', 'K1d', 'K1e', 'K2c', 'K2d', 'K5'}
+# F203 (N125, N126): a K2c (utalás-töredék), a K2d (zárójeles etimológia) és a K1d („Rec.” után) javítva — a seed-203/204 hét
+# sora (V007, V042, V069, V092, V095, W020, W089, W118) az arany értéken; a K1e és a K5 a „visszaugró betű” mechanizmusa, nincs
+# javítva (naplok/F203_jelentes.md).
+NEM_JAVITOTT = {'K3', 'K4', 'K1e', 'K5'}
 NEM_JAVITOTT_SOR = {'U014'}
 
 
@@ -206,6 +230,18 @@ class Aranyminta(unittest.TestCase):
     def test_k1c_j_kimarad(self):
         # seed-202 (második kör): U036, U165
         self.assertEqual(len(self._osztaly('K1c')), 2)
+
+    def test_k2c_utalas_toredek(self):
+        # F203: seed-203 V042, V069, V095; seed-204 W020, W089, W118
+        self.assertEqual(len(self._osztaly('K2c')), 6)
+
+    def test_k2d_zarojeles_etimologia(self):
+        # F203: seed-203 V092
+        self.assertEqual(len(self._osztaly('K2d')), 1)
+
+    def test_k1d_rec_utan(self):
+        # F203: seed-203 V007
+        self.assertEqual(len(self._osztaly('K1d')), 1)
 
     def test_minden_arany_sor(self):
         # a K1/K2 javítás nem ront el más sort: minden nem K3 sor könyv/verse és jelentéspontja az arany érték

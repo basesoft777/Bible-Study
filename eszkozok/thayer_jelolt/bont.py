@@ -16,6 +16,8 @@ Fejek a bekezdés elején: `<span class="lexheading">I.</span>` római (romai) �
   következő betű: A, B, …) · `<b>1.</b>` szám (szam) · `<b>a.</b>` betű (betu). A felsőbb szint a mélyebbeket törli.
   F186 K2: a bekezdés eleji félkövér jelölő nem fej, ha „)”, „,”, „;”, „]” vagy kettőzött betű („bb.”) követi (a forrás
   kereszthivatkozás közepén tört bekezdést, pl. G4151 „<b>b.</b> bb.;”, G1909 „<b>c.</b>)):”).
+  F203 K2c/K2d (N126): betűjelölőnél akkor sem fej, ha szám, „and d.” vagy a bekezdésben nem nyitott „)” követi (utalás-töredék),
+  vagy ha a jelölő egy első fej előtti bekezdésben nyílt, később lezáruló zárójelben áll (zárójeles etimológia); `hamis_fej`.
 Bekezdésen belüli fej (F186 K1; a seed-201 vak mérés 9 hibája, naplok/F186_jelentes.md): a forrás a bekezdés belsejében
   félkövér nélkül is nyit pontot („is used a. of time”, „; a: Luk 1:14”, „etc. h. of age”, „). 2. When …, it answers a.”).
   Ilyenkor a bekezdés a fejnél **kettéválik**: egy sor = egy szakasz (a bekezdés, vagy a bekezdésen belüli fejnél kezdődő
@@ -78,6 +80,57 @@ WS = re.compile(r'\s+')
 # kettétört kereszthivatkozás töredéke („<b>b.</b> bb.; γεννάω, …”, „<b>c.</b>)): as …”), nem fej (seed-201 T145).
 # F186 K2b (második kör, seed-202 U014): „<b>d.</b> at the end):” — utalás-töredék záró zárójellel.
 HAMIS_FEJ_UTAN = re.compile(r'\s*[),;\]]|\s+([a-z])\1\.|\s+(?:at the end|above|below)\s*\)')
+# F203 K2c (N126; seed-203 V042, V069, V095, seed-204 W020, W089, W118): a bekezdés eleji félkövér jelölő további
+# utalás-töredék alakjai — (1) betűjelölő után szám („<b>c.</b> 6, p. 397”, „<b>c.</b> 142 (and in the classics))”: oldal-,
+# fejezet- vagy versszám egy kettétört hivatkozásból); (2) felsorolt utalás („<b>c.</b> and d.;”); (3) a jelölő utáni első
+# `HAMIS_ZAROJEL_ABLAK` karakterben a bekezdésben nem nyitott „)” („<b>d.</b> Br. an d. Gal., p. 194ff):”, „<b>b.</b> (aa.)),”,
+# „<b>d.</b> at the end; (Liddell and Scott, II. 3)),”, „<b>b.</b> e. above);”): a jelölő egy előző bekezdésben nyílt
+# zárójel belsejében áll. A korpuszon átnézve (naplok/F203_jelentes.md): a találatok mind töredékek; a valódi fejek
+# („<b>2.</b> 2 aorist active …”, „<b>a.</b> above, in a higher place”) nem esnek bele (a szám csak betűjelölőnél tilt).
+HAMIS_BETU_UTAN = re.compile(r'\s*(?:\d|(?:and|or)\s+[a-z]\.)')
+HAMIS_ZAROJEL_ABLAK = 80
+# F203 K2d (N126; seed-203 V092, G0536 „(from ἀπάρχομαι: <b>a.</b> … <b>b.</b> …)”): a bekezdés eleji félkövér jelölő nem
+# fej, ha egy előző bekezdés vége felé nyílt kerek zárójel még nincs lezárva (zárójeles etimológia, pl. G0329 „(τό ζώπυρον
+# i. e. <b>a.</b> … <b>b.</b> … bellows)”, G2855 „(from κόλλυβος equivalent to a. …”): a jelölő a zárójel belsejében áll.
+# A hordozott zárójel csak akkor számít, ha a bekezdés utolsó `NYITOTT_ZAROJEL_VEG` karakterén belül nyílt (a forrás
+# szórványos, lezáratlan zárójele így nem nyel el egy egész szócikket).
+NYITOTT_ZAROJEL_VEG = 120
+ZAROJEL_ZARAS_ABLAK = 3
+
+
+def zarojel_nyitott_eleje(tk, kezdet, n):
+    """Igaz, ha a takart szöveg `kezdet` utáni első `n` nem takart karakterében (a címkék és a hivatkozások nem számítanak)
+    egy itt nem nyitott „)” áll (F203 K2c (3))."""
+    d = 0
+    for ch in tk[kezdet:]:
+        if ch == '\x00':
+            continue
+        n -= 1
+        if n < 0:
+            break
+        if ch == '(':
+            d += 1
+        elif ch == ')':
+            if d == 0:
+                return True
+            d -= 1
+    return False
+
+
+def zarojel_hordoz(tk, mely):
+    """A bekezdés végén nyitva maradó kerek zárójelek száma (F203 K2d), a `mely` bejövő mélységről indulva: a bejövő
+    mélység a záró „)”-kkel fogy; a bekezdésben nyílt, le nem zárt zárójel csak akkor számít, ha az utolsó
+    `NYITOTT_ZAROJEL_VEG` karakteren belül nyílt."""
+    nyitott = []
+    for i, ch in enumerate(tk):
+        if ch == '(':
+            nyitott.append(i)
+        elif ch == ')':
+            if nyitott:
+                nyitott.pop()
+            elif mely:
+                mely -= 1
+    return mely + sum(1 for i in nyitott if i >= len(tk) - NYITOTT_ZAROJEL_VEG)
 # F186 K1: bekezdésen belüli fej (félkövér nélkül is): kisbetű „a.”/„a:”/„i.:” vagy szám „2.” a szövegben (a címkék és a
 # <ref>/<ref0> tartalma kitakarva), a sorrendben várt következő jelölő; l. `belso_fejek`.
 TAKAR = re.compile(r'<(ref0?)\b[^>]*>.*?</\1>|<[^>]+>|&[#\w]+;', re.S)
@@ -86,7 +139,10 @@ BELSO_SZAM = re.compile(r'(?<=[.;:)][\s\x00])(\d{1,2})\.(?=\s+[\x00A-Za-z])')
 # az előző szó, amely után a betű nem fej (rövidítés, utalás, hivatkozás): „i. e.”, „cf. a.”, „see b.”, „l. c.”, „p. 5 a.” …
 NEM_FEJ_ELOTT = {'i', 'e', 'p', 'pp', 'l', 'cf', 'see', 'comp', 'vol', 'ed', 'no', 'ch', 'sq', 'ff', 'sub', 'under', 'art',
                  'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                 'Rev', 'Rec', 'ad', 'et', 'ib', 'ibid', 'op', 'cit', 'loc', 'viz', 'q', 'v', 's', 'u', 'an'}
+                 'Rev', 'ad', 'et', 'ib', 'ibid', 'op', 'cit', 'loc', 'viz', 'q', 'v', 's', 'u', 'an'}
+# F203 K1d (N125; seed-203 V007, G5547 „Act 19:4 Rec. b. ὁ Χριστός is a proper name”): a „Rec.” (Textus Receptus) a hivatkozás
+# végén áll, utána új mondat és fej nyílhat; kizáró előzményként a korpuszon 10 szócikkben valódi fejet nyelt el (G1209 d.,
+# G2632 b., G3768 b., G4160 f. …; naplok/F203_jelentes.md), ezért nincs a listában.
 # F186 K1b (második kör, seed-202): a „to” és a „,” előzmény nem kizáró („applied to a. the O. T. prophets”, „τί, a.
 # properly”, „i. e., a. what one wishes”); helyette a nyitott zárójelen belüli jelölő nem fej („(some refer this to b. in
 # the sense …)”), és a felsorolt utalás („I. 1 a. and c.”) sem. A német „an d.” („Brief an d. Heb”) rövidítés.
@@ -157,13 +213,31 @@ def tsv_beolvas(ut=TSV_UT):
     return ki
 
 
-def fej_felismer(raw, tagolas):
-    """-> (szint, jel) vagy (None, ''); a `tagolas` a szócikk eddigi állapota (a nagybetűs fej sorrendjéhez)."""
+def hamis_fej(raw, m, zarojelben=0):
+    """Igaz, ha a bekezdés eleji félkövér jelölő (`m`: a `FEJ_B` találata) nem fej (F186 K2, K2b; F203 K2c, K2d). A K2c (3)
+    nem számít, ha a „)” előtt kettőspont áll: a jelölő után már tartalom kezdődött (G1799 „a. properly: … (Rev 14:5 Rec.))”,
+    a forrás fölös zárójele)."""
+    if HAMIS_FEJ_UTAN.match(raw, m.end()):
+        return True
+    if m.group(1)[0].isdigit():
+        # a K2c és a K2d csak betűjelölőre: a számjelölő után a fölös „)” és a hordozott zárójel a korpuszon valódi fejet
+        # nyelt el (G0966 „3.”, G1389 „1.”/„2.”, G3180 „1.”/„2.”, G4613 „5.”; naplok/F203_jelentes.md)
+        return False
+    if zarojelben or HAMIS_BETU_UTAN.match(sima(raw[m.end():])):
+        return True
+    tk = _takar(raw)
+    kettospont = tk.find(':', m.end())
+    return zarojel_nyitott_eleje(tk[:kettospont] if kettospont >= 0 else tk, m.end(), HAMIS_ZAROJEL_ABLAK)
+
+
+def fej_felismer(raw, tagolas, zarojelben=0):
+    """-> (szint, jel) vagy (None, ''); a `tagolas` a szócikk eddigi állapota (a nagybetűs fej sorrendjéhez); a `zarojelben`
+    az előző bekezdésekből hordozott, le nem zárt kerek zárójelek száma (F203 K2d, `zarojel_hordoz`)."""
     m = FEJ_ROMAI.match(raw)
     if m:
         return 'romai', m.group(1)
     m = FEJ_B.match(raw)
-    if m and not HAMIS_FEJ_UTAN.match(raw, m.end()):
+    if m and not hamis_fej(raw, m, zarojelben):
         return ('szam' if m.group(1)[0].isdigit() else 'betu'), m.group(1)
     m = FEJ_NAGY.match(sima(raw))
     if m and not raw.lstrip().startswith('<'):
@@ -280,14 +354,22 @@ def belso_fejek(raw, t, kezdet=0):
 def szerkezet(definition, osszevonas=True):
     """-> [{'raw', 'plain', 'utvonal', 'jel', 'bekezdes'}] a szócikk szakaszaira: a bekezdések, a bekezdésen belüli fejeknél
     (F186 K1) kettévágva; a `bekezdes` a forrásbekezdés sorszáma (1-től, a cím is; az F186 előtti tábla `sorszam`-a)."""
-    ki, t, allapot = [], {}, 'kezdet'
-    for bek, raw in enumerate(szegmensek(definition), 1):
+    ki, t, allapot, zarojel = [], {}, 'kezdet', 0
+    szegm = szegmensek(definition)
+    # F203 K2d: a hordozott zárójel csak akkor számít, ha a következő `ZAROJEL_ZARAS_ABLAK` bekezdés egyikében le is zárul
+    # (egy itt nem nyitott „)”); a soha le nem zárt forrászárójel (G0156 „(ας, ἡ;”) a fejeket nem nyeli el
+    zar = [zarojel_nyitott_eleje(_takar(r), 0, len(r)) for r in szegm]
+    for bek, raw in enumerate(szegm, 1):
         plain = sima(raw)
         if CIM.match(raw):
-            t, allapot = {}, 'cim'
+            t, allapot, zarojel = {}, 'cim', 0
             ki.append({'raw': raw, 'plain': plain, 'utvonal': 'cim', 'jel': '', 'bekezdes': bek})
             continue
-        szint, jel = fej_felismer(raw, t)
+        if zarojel and not any(zar[bek - 1:bek - 1 + ZAROJEL_ZARAS_ABLAK]):
+            zarojel = 0
+        szint, jel = fej_felismer(raw, t, zarojel)
+        # F203 K2d: a zárójel csak az első fej előtti (fej-) bekezdésekből hordozódik (zárójeles etimológia a szócikk elején)
+        zarojel = zarojel_hordoz(_takar(raw), zarojel) if not szint and allapot != 'fejes' else 0
         if szint:
             t[szint] = jel.rstrip('.')
             for x in TOROL[szint]:

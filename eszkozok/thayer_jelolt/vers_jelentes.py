@@ -13,6 +13,12 @@ fejezetben, `; c:v` ugyanabban a könyvben, amíg a lánc tart; a verstartomány
 `</ref>` után indulhat, és megszakad, ha a szám után könyvnév jön („, 2 Esdr. 10:2”) vagy a szám után kettőspont áll
 („, 34:”). Az ilyen sor proveniencia-forrása `(fejléc, folytatas)`.
 
+Nem bibliai mű (F203, N124; a BDB DT166 (1) `nem_bibliai` mintája): ha a hivatkozás egy nyitott zárójelben áll, amely egy
+`NEM_BIBLIAI_MU` szerinti nem bibliai művel kezdődik („(cf. Ascensio Isa. (edited by Dillmann) Luk 7:23; Luk 8:18, Luk 8:25,
+etc.)”, G0027: a forrás `bcv`-je a mű fejezet:versét Lukácsnak jelöli), a sor megmarad (a `sorszam` és a nyers koordináta
+változatlan), de a `karoli_vers` üres, és a proveniencia `nem_bibliai`: a fogyasztók (lap, olvasó, teljesség-mérés) a
+`karoli_vers`-en át keresnek, így bibliai helyként nem jelenik meg.
+
 Módok: (alap) írás · --meres · --ellenoriz (a fájl fejlécének --ts-ével újragenerál és bájtra összevet).
 TSV: split('\\t') / '\\t'.join, csv modul nélkül.
 """
@@ -52,6 +58,22 @@ _UTANA = r'(?![\d:])(?!\s*[A-Za-z][A-Za-z.]*\s*\d)'
 FOLYT_VERS = re.compile(r'\s*,\s*(\d{1,3})' + _UTANA)
 FOLYT_FEJEZET = re.compile(r'\s*;\s*(\d{1,3}):(\d{1,3})' + _UTANA)
 FOLYT_TARTOMANY = re.compile(r'\s*[-–]\s*\d{1,3}' + _UTANA)
+
+
+# F203 (N124): a zárójel elején álló nem bibliai mű (zárt lista; új elem a korpusz átnézése után kerül ide)
+NEM_BIBLIAI_MU = re.compile(r'\(\s*(?:cf\.\s*)?(?:Ascensio Isa\.)')
+
+
+def nem_bibliai(raw, poz):
+    """Igaz, ha a `poz`-on álló hivatkozás egy olyan nyitott kerek zárójelben áll, amely nem bibliai művel kezdődik (F203)."""
+    tk = bont._takar(raw)
+    nyitott = []
+    for i, ch in enumerate(tk[:poz]):
+        if ch == '(':
+            nyitott.append(i)
+        elif ch == ')' and nyitott:
+            nyitott.pop()
+    return any(NEM_BIBLIAI_MU.match(tk, p) for p in nyitott)
 
 
 def folytatasok(raw, poz, fejezet):
@@ -114,25 +136,28 @@ def general(ts):
         for sz_i, x in enumerate(bont.szerkezet(d), 1):
             for m in BCV.finditer(x['raw']):
                 k, f0, v0 = (int(g) for g in m.groups())
+                nb = nem_bibliai(x['raw'], m.start())
                 konyv = kv.get(k, '')
                 vege = REF_VEG.search(x['raw'], m.end())
                 lanc = folytatasok(x['raw'], vege.end(), f0) if vege else []
                 for i, (f, v) in enumerate([(f0, v0)] + lanc):
                     n += 1
                     kar = '%s %d:%d' % (KAROLI_KONYV.get(konyv, konyv), f, v) if konyv else ''
-                    if kar not in kk:
+                    if kar not in kk or nb:
                         kar = ''
                     resz = 'usz' if k >= 40 else 'osz'
                     stat[resz] += 1
                     if i:
                         stat['folytatas'] += 1
-                    if not konyv:
+                    if nb:
+                        stat['nem_bibliai'] += 1
+                    elif not konyv:
                         stat['ismeretlen_konyv'] += 1
                     elif not kar:
                         stat['nincs_karoli_' + resz] += 1
                     sorok.append([sp, str(n), str(sz_i), konyv or str(k), str(f), str(v), kar, x['utvonal'],
-                                  'scope=%s | forras=thayer_jelolt/vers_jelentes.py (fejléc%s) | ts=%s'
-                                  % (sp, ', folytatas' if i else '', ts)])
+                                  'scope=%s | forras=thayer_jelolt/vers_jelentes.py (fejléc%s%s) | ts=%s'
+                                  % (sp, ', folytatas' if i else '', ', nem_bibliai' if nb else '', ts)])
         # a szerkezeten kívüli (üres bekezdésbe eső) bcv nem lehet: a teszt a teljes számot a nyers HTML-lel veti össze
     stat['sor'] = len(sorok)
     return sorok, stat
@@ -158,9 +183,9 @@ def main():
     ts = a.ts or (bont.fajl_ts(KI_UT) if a.ellenoriz and os.path.exists(KI_UT) else None) or datetime.date.today().isoformat()
     sorok, stat = general(ts)
     print('sor: %d (ebből jelöletlen folytatás %d); ÚSZ %d, ÓSZ %d; Károli-vers nélkül: ÚSZ %d, ÓSZ %d; ismeretlen könyv %d; '
-          'bcv nélküli <ref>: %d'
+          'nem bibliai mű %d; bcv nélküli <ref>: %d'
           % (stat['sor'], stat['folytatas'], stat['usz'], stat['osz'], stat['nincs_karoli_usz'], stat['nincs_karoli_osz'],
-             stat['ismeretlen_konyv'], stat['ref_nem_bcv']))
+             stat['ismeretlen_konyv'], stat['nem_bibliai'], stat['ref_nem_bcv']))
     if a.meres:
         return 0
     szoveg = fajl_szoveg(sorok, ts)
