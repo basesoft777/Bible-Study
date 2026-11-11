@@ -14,6 +14,15 @@ motívum `adat/elofordulasok.tsv`-sorainak `kapcsolodas` prózájából kigyűjt
 - **idézet** (`„…”`, legalább három szó): a Károli 1908 szövege, az olvasói kapu egyeztetésével
   (`olvasoi_kapu.karoli_egyezik`, az E34-gyel azonos tűréssel).
 
+F206 (a HAMART-001 lektori körének két ismétlődő hibaosztálya, ⚑ jelzéssel a kézi listán):
+
+- **kapcsolat-állítás** („utal vissza”, „visszatér”, „visszhangzik”, „felidézi”): a hely kapcsolat-sora
+  (`adat/kapcsolatok.tsv`, a motívum sorai; kapcsolat-adat nélküli motívumon a próba nem fut). A `kapcsolodas`-sornál ⚑, ha a helynek nincs kapcsolat-sora, vagy egyik
+  sora sem `magas` bizonyosságú; a rés mondatánál ⚑, ha a megnevezett (a motívumban álló) helynek nincs
+  kapcsolat-sora;
+- **hatókör**: a mondat egy helycsoport (a motívum, az újszövetségi … helyei) minden helyére a lánc szavát állítja,
+  miközben a csoportban tematikus hely is van (a `gerinc_elem` `tematikus:` kezdetű: a lánc szava nélkül áll).
+
 Ahol az állítás nem gépies (ki az alany, mi telik meg mivel, mire utal vissza), az ellenőrzési listára kerül: az
 állítás, a Károli-vers és a héber/görög sor egymás mellett, a gépi jelzésekkel (⚑: a magyar szó a versben más
 héber/görög szót fordít, mint a lánc szava; a szó nincs a versben). A listát olcsó modell vagy ember nézi át;
@@ -62,6 +71,7 @@ T_KAROLI = os.path.join(KONK, 'Karoli_1908.tsv')
 T_TAHOT = os.path.join(KONK, 'TAHOT_kivonat.tsv')
 T_TAGNT = os.path.join(KONK, 'TAGNT_kivonat.tsv')
 T_ELOF = os.path.join(ADAT, 'elofordulasok.tsv')
+T_KAPCS = os.path.join(ADAT, 'kapcsolatok.tsv')
 T_GRAMM = os.path.join(ADAT, 'grammatikai_strongok.tsv')
 D_PAROK = os.path.join(ADAT, 'karoli_strong')
 
@@ -503,6 +513,15 @@ FORDULAT_TAV = 80      # a rövid idézett fordulat és a hozzá tartozó igehel
 ABSZOLUT = re.compile(r'(?<![%s])(?:először|elsőként|egyetlen|mindig|soha|sehol|kizárólag|mindhárom'
                       r'|mind a (?:két|három|négy|öt|hat)|minden előfordulás\w*)(?![%s])' % (BETU, BETU), re.I)
 IDEZET_KI = re.compile(r'„[^”]*”|"[^"]*"')
+# F206: a kapcsolat-állítás igéi (a lektor 10., 14. tétele; az ellenőr Hab 1:2-tétele): a hely a láncra visszautal,
+# a lánc szava visszatér — ez a `kapcsolatok.tsv` sorát kívánja, és annál többet nem mondhat
+# (a „visszatérés” főnév tartalmi szó is lehet — „nincs visszatérés az alvilágból” —, ezért nem tartozik ide)
+VISSZAUTAL = re.compile(r'(?<![%s])(?:vissza\s?utal\w*|utal\w*\s+vissza|vissza\s?tér(?!és)\w*|tér\w*\s+vissza|visszhang\w*'
+                        r'|felidéz\w*)(?![%s])' % (BETU, BETU), re.I)
+# F206: helycsoport minden helyére szóló állítás (a lektor 26., 40. tétele): „a motívum hat újszövetségi helyén …”
+HELYCSOPORT = re.compile(r'(?<![%s])hely(?:én|ein|eken|ei)(?![%s])' % (BETU, BETU), re.I)
+LANC_SZAVA = re.compile(r'(?<![%s])(?:lánc|motívum)\w*\s+(?:\w+\s+)?szav(?:a|ai|ait|át)(?![%s])' % (BETU, BETU), re.I)
+TEMATIKUS_KIMONDVA = re.compile(r'tematikus|nélkül', re.I)
 
 
 VONATKOZO = re.compile(r'^[\s),]*(?:ahol|amely\w*|ami\w*|aki\w*|mely\w*)(?![%s])[^,;]*[,;]?' % BETU, re.I)
@@ -550,9 +569,15 @@ def szam_ertek(s):
 
 
 class Ellenor:
-    def __init__(self, mid, adat, szk, elof_sorok, igeh):
+    def __init__(self, mid, adat, szk, elof_sorok, igeh, kapcsolatok=()):
         self.mid, self.adat, self.szk, self.elof, self.igeh = mid, adat, szk, elof_sorok, igeh
         self.sorok = []
+        # F206: a motívum kapcsolat-sorai versenként (a tartomány minden verse a sor tagja)
+        self.kapcs = {}
+        for d in kapcsolatok:
+            for vege in ('forras_igehely', 'cel_igehely'):
+                for k in adat.versek(d.get(vege, '')):
+                    self.kapcs.setdefault(k, []).append(d)
         self.szamok = self._szamok()
         self.motivum_versek = [k for d in elof_sorok for k in adat.versek(d['igehely'])]
 
@@ -611,6 +636,9 @@ class Ellenor:
             self._fordulat(e, szoveg, csoportok, self.motivum_versek)
         self._szamok_ell(e, szoveg, [(k, v) for k, v, _ in csoportok])
         abszolut = ABSZOLUT.search(IDEZET_KI.sub(' ', szoveg))
+        visszautal = VISSZAUTAL.search(IDEZET_KI.sub(' ', szoveg))
+        if e.forras.startswith('rés:'):
+            self._hatokor(e, szoveg)
         if not vizsgalt:
             if abszolut and e.forras.startswith('rés:'):
                 self.sorok.append(Sor(e, '–', szoveg, 'kézi', '⚑ kizárólagos vagy egyetemes állítás („%s”) '
@@ -675,6 +703,8 @@ class Ellenor:
                 if abszolut and (e.alap_ref or abszolut.group(0) in zaradek):
                     jelzesek.append('⚑ kizárólagos vagy egyetemes állítás („%s”): lekérdezéssel igazolandó, vagy '
                                     'olvasatként jelölendő' % abszolut.group(0))
+                if visszautal:
+                    jelzesek += self._kapcsolat(visszautal.group(0), ref, versek, bool(e.alap_ref))
                 uj = self.sorok[n0:]
                 if any(s.itelet == 'ELTÉR' for s in uj) and not jelzesek:
                     continue   # a gépi ELTÉR már javítást kér
@@ -684,6 +714,58 @@ class Ellenor:
                 self.sorok.append(Sor(e, ref, szoveg, 'kézi', '; '.join(jelzesek + [
                     'gépileg egyezik, de az állítás ennél több — ' + x for x in egyezo]), 'kézi',
                     jelzes='⚑' if jelzesek else ''))
+
+    def _kapcsolat(self, ige, ref, versek, sajat):
+        """F206: kapcsolat-állítás („utal vissza”, „visszatér”) a hely kapcsolat-sorai mellett. A `kapcsolodas`-sor
+        (`sajat`) a saját helyéről állít: ⚑, ha nincs kapcsolat-sora, vagy egyik sem `magas`; a rés mondata több helyet
+        sorol: ott csak a kapcsolat-sor nélküli hely kap ⚑-t."""
+        if not self.kapcs:
+            return []   # a motívumnak nincs kapcsolat-adata: adathiány, nem a mondat hibája
+        if not sajat and not set(versek) & set(self.motivum_versek):
+            return []   # a motívumon kívüli hely (pl. a nyitott kérdések visszatérő formulája): nincs kapcsolat-adata
+        sorok = []
+        for k in versek:
+            sorok += [d for d in self.kapcs.get(k, []) if d not in sorok]
+        if not sorok:
+            return ['⚑ kapcsolat-állítás („%s”), de a(z) %s helynek nincs kapcsolat-sora: a mondat a versben álló közös '
+                    'szót mondja ki, visszautalást nem' % (ige, ref)]
+        if sajat and not any(d.get('bizonyossag', '') == 'magas' for d in sorok):
+            return ['⚑ kapcsolat-állítás („%s”); a kapcsolat-adat: %s: a mondat nem mondhat többet a mért közös szónál'
+                    % (ige, '; '.join('%s → %s, %s, %s' % (d.get('forras_igehely', ''), d.get('cel_igehely', ''),
+                                                          d.get('tipus', ''), d.get('bizonyossag', ''))
+                                      for d in sorok))]
+        return []
+
+    def _hatokor(self, e, szoveg):
+        """F206: helycsoport minden helyére szóló szó-állítás („a motívum hat újszövetségi helyén a motívum szava …”),
+        miközben a csoportban tematikus (a lánc szava nélküli) hely is van, és a mondat ezt nem mondja ki."""
+        tiszta = IDEZET_KI.sub(' ', szoveg)
+        m = HELYCSOPORT.search(tiszta)
+        if not m or not LANC_SZAVA.search(tiszta) or TEMATIKUS_KIMONDVA.search(tiszta):
+            return
+        elotte = tiszta[max(0, m.start() - 60):m.end()]
+        csop = self._szam_csoport(elotte)
+        if csop is None and re.search(r'\b(?:a lap|a motívum)\b', elotte, re.I):
+            csop = 'összes'
+        if csop is None or csop == 'tematikus':
+            return
+        tem = [d['igehely'] for d in self._csoport_sorai(csop) if d.get('gerinc_elem', '').startswith('tematikus')]
+        if tem:
+            self.sorok.append(Sor(e, '–', szoveg, 'kézi', '⚑ hatókör: a mondat a(z) %s helyek mindegyikére a lánc '
+                                  'szavát állítja, de köztük tematikus hely is van, ahol a lánc szava nem áll (%s): a '
+                                  'mondat nevezze meg a kivételt, vagy szűkítse a csoportot' % (csop, ', '.join(tem)),
+                                  'hatókör', jelzes='⚑'))
+
+    def _csoport_sorai(self, csop):
+        def konyv(d):
+            return d['igehely'].rsplit(' ', 1)[0]
+        return {
+            'összes': self.elof,
+            'Genezis': [d for d in self.elof if konyv(d) == '1Móz'],
+            'Ószövetség többi': [d for d in self.elof if konyv(d) != '1Móz' and konyv(d) not in UJSZ_KONYVEK],
+            'ószövetségi': [d for d in self.elof if konyv(d) not in UJSZ_KONYVEK],
+            'újszövetségi': [d for d in self.elof if konyv(d) in UJSZ_KONYVEK],
+        }[csop]
 
     def _tartalmi(self, s):
         return bool(s) and s not in self.adat.gramm and not s.startswith('H90') and not s.startswith('H99')
@@ -1170,7 +1252,8 @@ def futtat(mid, md_ut=None, elof_ut=T_ELOF):
     adat.betolt_szavak(versek, fej_strongok)
     adat.betolt_parok(versek)
     szk = Szokeszlet(forras, elof_sorok, adat)
-    ell = Ellenor(mid, adat, szk, elof_sorok, igeh)
+    kapcsolatok = [d for d in tsv_dict(T_KAPCS) if d.get('id') == mid] if os.path.exists(T_KAPCS) else []
+    ell = Ellenor(mid, adat, szk, elof_sorok, igeh, kapcsolatok)
     for e in egysegek:
         ell.egyseg(e)
     ell.egysegek = egysegek
