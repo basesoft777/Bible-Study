@@ -277,11 +277,27 @@ class Tabla(unittest.TestCase):
         self.assertEqual(x[V.FEJ.index('utvonal')], 'tagolatlan')
         self.assertEqual(x[V.FEJ.index('karoli_vers')], 'Zak 11:15')
 
-    def test_orokles_nem_letezo_fejezetre_bizonytalan(self):
-        # seed-100 M013: „Malachi 3:20 … 5:9; … 143:1” — a Malakiásnak nincs 143. fejezete: a könyv nem öröklődik
+    def test_orokles_nem_letezo_fejezetre_tahot_kapuval(self):
+        # seed-100 M013: „Malachi 3:20 … 5:9; … 143:1” — a Malakiásnak nincs 143. fejezete: a Malakiás nem öröklődik; F202.3 (C5,
+        # N141): a korábban kiírt könyvek közül az elsőre oldódik, amelynek versében a TAHOT a Strong-számot hordozza (Zsolt 143:1)
         i = {k: n for n, k in enumerate(V.FEJ)}
         x = sor(self.sorok, strong='H6666', nyers='143:1')[0]
-        self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('feloldhatatlan', '', 'orokles_hibas', '0'))
+        self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']], x[i['szurt']]),
+                         ('orokolt', 'Zsolt 143:1', 'orokles_tahot', '0'))
+        # a TAHOT-igazolás nélküli hely bizonytalan marad (H0343 „Obadiah 13 … || צָרה יוֺם 46:12”: a BDB itt a párhuzamos
+        # kifejezés versére utal, a Strong-szám az Abd 1:12-ben nem áll)
+        for x in sor(V.general('2026-10-15', ['H0343'])[0], strong='H0343', nyers='46:12'):
+            self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']]), ('feloldhatatlan', '', 'orokles_hibas'))
+
+    def test_orokles_tahot_egyseg(self):
+        versek = {'Mal': {3: {20}}, 'Zsolt': {143: {1}}, 'Abd': {1: set(range(1, 22))}, 'Jer': {49: {18}}}
+        osz = set(versek)
+        h = {'c': 143, 'v': 1, 'korabbi_konyvek': ('Mal', 'Zsolt')}
+        self.assertEqual(V.orokles_tahot(h, 'H6666', lambda k, c, v: k == 'Zsolt', versek, osz), ('Zsolt', 143, 1))
+        self.assertIsNone(V.orokles_tahot(h, 'H6666', lambda k, c, v: False, versek, osz))
+        # az egyfejezetes könyv 1:v verse előbb, mint a korábbi könyv azonos számú verse
+        h = {'c': 49, 'v': 18, 'egyfej_konyv': 'Abd', 'korabbi_konyvek': ('Jer',)}
+        self.assertEqual(V.orokles_tahot(h, 'H6215', lambda k, c, v: True, versek, osz), ('Abd', 1, 18))
 
     def test_forras_hiba_okkod(self):
         # seed-100 M006: a forrás „Joel 1:4, 12”-t ír (a szó a Jón 1:4-ben áll): a tábla a forrást rögzíti, okkóddal
@@ -318,9 +334,12 @@ class Tabla(unittest.TestCase):
         x = sor(self.sorok, strong='H0669', nyers='31:1')[0]
         self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['karoli_vers']], x[i['okkod']], x[i['szurt']]),
                          ('orokolt', '2Krón 31:1', '2Krón 31:1', 'orokles_egyfejezetes', '0'))
-        # H6215 „Obadiah 6, … 49:18”: a TAHOT a Jer 49:18-ban nem hordozza a szót → marad bizonytalan, könyv nélkül
-        for x in sor(self.sorok, strong='H6215', nyers='49:18'):
-            self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']]), ('feloldhatatlan', '', 'orokles_hibas'))
+        # H6215 „Obadiah 6, … 49:18”: a TAHOT a Jer 49:18-ban nem hordozza a szót; F202.3 (N101): a forrás az Abdiás-verset az előző
+        # Jeremiás-fejezet számával írja — az Abd 1:18-ban a TAHOT hordozza, ezért oda oldódik
+        xs = sor(self.sorok, strong='H6215', nyers='49:18')
+        self.assertEqual(len(xs), 3)
+        for x in xs:
+            self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']]), ('orokolt', 'Abd 1:18', 'orokles_tahot'))
 
     def test_nem_bibliai_utan_tahot_kapuval(self):
         # F102 (c), ELLENOR_F99 12.: H2623 „2 Macc 14:6 …; so perhaps 116:15; 149:1; 149:5; 149:9” → Zsolt (TAHOT-igazolt), a „7:13”
@@ -596,7 +615,9 @@ class CsoportOszlop(unittest.TestCase):
     # a régi 15 oszlop (oszlopnév szerint, soronként tab-join, SHA-256) a F103 előtti main-en (94c4c2ac) és utána
     # (naplok/F103_oszlop_hash.py); szándékos újragenerálásnál (bemenet- vagy szabályváltozás) a naplóval együtt frissítendő.
     # F185 (a jelentéspont a szakasztáblából, a H7585 tételes felülírásával; naplok/F185_jelentes.md): új érték
-    REGI_OSZLOPOK_SHA256 = 'd0cf1fb5c42112a1b553606b1004a789ea21f1a1314c3d1fef4cc84e562224a3'
+    # F202 (naplok/F202_jelentes.md): a 2.30 szócikkhatára a zárójel-töredéknél (F202.2: 25 sor útvonala vagy szakasza) és a nem
+    # létező fejezetre öröklődő hely TAHOT-igazolt feloldása (F202.3: 77 `orokles_hibas` → `orokles_tahot`): új érték
+    REGI_OSZLOPOK_SHA256 = '28387ec501dbdccb1b8e3aca65983b2e36be281234f05c1b5a5024cc6d315cce'
 
     @classmethod
     def setUpClass(cls):

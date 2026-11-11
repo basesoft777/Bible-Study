@@ -369,6 +369,29 @@ def mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, konyv, c, v):
     return mt, karoli, mod, kieg
 
 
+def tahot_igazol(K, versek, mt2k, vm_karoli, vm_mt, elvetett, f85, tahot, strong, konyv, c, v):
+    """A TAHOT a hely Károli-versében (annak híján az azonos számú versben) hordozza-e a Strong-számot (a DT-F99k mintája)."""
+    _mt, _kar, _vm, _k = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, konyv, c, v)
+    _kar = f85.get(_mt) or EZS3.get(_mt) or _kar or '%s %d:%d' % (KAROLI_KONYV.get(konyv, konyv), c, v)
+    return int(re.match(r'^H0*(\d+)', strong).group(1)) in tahot.get(_kar, ())
+
+
+def orokles_tahot(h, strong, igazol, versek, osz):
+    """F202.3 (C5; N141, N101): a nem létező fejezetre öröklődő, könyvnév nélküli hely (`orokles_hibas`) feloldása, csak TAHOT-
+    igazolással. Jelöltek sorrendben: (1) ha a hely egyfejezetes könyvről öröklődik („Obadiah 6, … 49:18; 49:9”, H6215; „Obadiah
+    13 … 46:12; 46:14”, H0343: a forrás az Abdiás-verset az előző Jeremiás-fejezet számával írja), az egyfejezetes könyv 1:v verse;
+    (2) a szócikkben korábban kiírt többi bibliai könyv, a legutóbbi elöl, ahol a c:v vers létezik. Az első, amelynek versében a
+    TAHOT a Strong-számot hordozza: (könyv, c, v); különben None (a sor `orokles_hibas` marad)."""
+    jel = []
+    e = h.get('egyfej_konyv')
+    if e in osz and h['v'] in versek.get(e, {}).get(1, ()):
+        jel.append((e, 1, h['v']))
+    for k in h.get('korabbi_konyvek', ()):
+        if k in osz and h['v'] in versek.get(k, {}).get(h['c'], ()):
+            jel.append((k, h['c'], h['v']))
+    return next((j for j in jel if igazol(*j)), None)
+
+
 def general(ts, strongok=None, sefaria_tanu=None):
     """A tábla sorai (és a kód-hash); `strongok`: csak ezek a szócikkek (tesztekhez); `sefaria_tanu`: None = a SEFARIA_TANU
     kapcsoló, True/False = erre a futásra (F197)."""
@@ -448,6 +471,12 @@ def general(ts, strongok=None, sefaria_tanu=None):
                     h = dict(h, konyv=None)
                     ok = 'orokles_hibas'
                     kmod = 'feloldhatatlan'
+            if ok == 'orokles_hibas':
+                fel = orokles_tahot(h, strong, lambda kv, c, v: tahot_igazol(K, versek, mt2k, vm_karoli, vm_mt, elvetett, f85,
+                                                                             tahot, strong, kv, c, v), versek, osz)
+                if fel:
+                    h = dict(h, konyv=fel[0], c=fel[1], v=fel[2])
+                    ok, kmod = 'orokles_tahot', 'orokolt'
             if (strong, h['poz']) in FORRAS_HIBA:
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
             if h.get('forras_javitas'):
