@@ -79,6 +79,10 @@ class SefariaRefTeszt(unittest.TestCase):
     def test_fejezet(self):
         self.assertEqual(self.r('Genesis 3'), ('Gen', 3, 1, 3, self.k.chmax[('1Móz', 3)]))
 
+    def test_fejezet_mt_hossz(self):
+        # Jóel MT 3 = 5 vers (Károli Jóel 2:28–32): a fejezet vége az MT-hossz, nem a Károli-fejezeté
+        self.assertEqual(self.r('Joel 3'), ('Jol', 3, 1, 3, 5))
+
     def test_nem_tanakh(self):
         self.assertIsNone(self.r('Bereshit Rabbah 20:10'))
         self.assertIsNone(self.r('Abarbanel on Amos 1:1:10'))
