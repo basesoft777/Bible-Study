@@ -43,6 +43,7 @@ def olvasoi_glossza(jel, cimke, szoveg):
         return vegyes_cim_nelkul(jel, cimke).strip(' ,;—–-') or None
     s = vegyes_cim_nelkul(jel, jelolo_levag(szoveg or '', jel))
     s = re.sub(r'_\d+', '', re.sub(r'^\s*(?:(?:\d+|[a-z])\.\s*)+', '', s)).lstrip(' =—–-')
+    s = _glossza_elotag_nelkul(s)
     m = _GLOSSZA_VAG.search(s)
     if m:
         s = s[:m.start()]
@@ -54,6 +55,26 @@ def olvasoi_glossza(jel, cimke, szoveg):
     if _ALAKTANI_KEZDET.match(s):
         return None
     return s if re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', s) else None
+
+
+# F182 (N139, F29/F34): a szakasz elején álló, meghatározás előtti elem (a forrás-besorolás, a „+ <héber> <nyelvtani>:”
+# szerkezet, a héber kifejezés) nem a glossza; utána áll a meghatározás. Csak az elejéről vág; ha utána nem marad szó, a
+# szöveg változatlan.
+_FORRAS_ELOTAG = re.compile(r'^\s*(?:a|az)\s+(?:[JEPDHR]|JE)(?:\s*\((?:[JEPDHR]|JE)\))?\s+szerint\s+')
+_PLUSZ_ELOTAG = re.compile(r'^\s*\+\s*[֐-׿יִ-ﭏ][^:]{0,40}:\s*')
+_HEBER_ELOTAG = re.compile(r'^\s*(?:[֐-׿יִ-ﭏ()\u200e\u200f־]+\s*)+')
+
+
+def _glossza_elotag_nelkul(s):
+    for rx in (_FORRAS_ELOTAG, _PLUSZ_ELOTAG):
+        m = rx.match(s)
+        if m and re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', s[m.end():]):
+            return s[m.end():]
+    m = _HEBER_ELOTAG.match(s)
+    if m and re.search('[֐-׿יִ-ﭏ]', m.group(0)) and re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', s[m.end():]):
+        # a héber kifejezés utáni magyar meghatározás; a benne álló zárójeles magyarázat elmarad („gonosz (ártalmas) tervet”)
+        return re.sub(r'\s*\([^()]*\)', '', s[m.end():], count=1)
+    return s
 
 
 _ALAKTANI_KEZDET = re.compile(r'(?i)(?:perfectum|imperfectum|participium|infinitivus|imperativus|status|suffixum|többes '

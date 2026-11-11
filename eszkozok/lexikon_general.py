@@ -3232,13 +3232,18 @@ def kiemel(szoveg, celok):
     return szoveg, talalt, hianyzik
 
 
-def _elso_tagmondat(szoveg, hatar=90):
+def _elso_tagmondat(szoveg, hatar=90, csonkit_jel=False):
+    """A vázlatsor: a szöveg első tagmondata. `csonkit_jel` (F182, N137: a kétrétegű kártya): ha a tagmondat-határ után
+    a szöveg folytatódik, a sor „…”-re végződik — a cím hivatkozásszáma a teljes szakaszé, a sor csak az elejét mutatja."""
     s = re.sub(r'^\s*(?:(?:\d+|[a-z]|T:\S+)\.?\s+){1,2}', '', szoveg or '').strip()
     # a tagmondat-határ csak zárójelen kívül (F123.GENKOR: „(|| אוֺת; így …)” belsejében nem vág; olvasói kapu ZAROJEL)
     m = next((m for m in re.finditer(r'(?<!\d):|:(?!\d)|;', s)
               if s[:m.start()].count('(') <= s[:m.start()].count(')')), None)
     if m and m.start() <= hatar:
+        folytatodik = bool(s[m.end():].strip(' .;:'))
         s = s[:m.start()]
+        if csonkit_jel and folytatodik:
+            s = s.rstrip(' ,;:') + ' …'
     elif len(s) > hatar:
         s = s[:hatar].rstrip()
         # nyitva maradó zárójel elé vágunk (olvasói kapu ZAROJEL, N-F123f)
@@ -3618,7 +3623,7 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
                 # F29 (d) nem javítva (F187, N-F187a): a vázlatsor az első tagmondat; a teljes szöveg a kiejtés-szabály
                 # hiányát 21-ről 126-ra emelné a HAMART-001-en
                 vazlat = '- `%s` — %s' % (jel, vegyes_cim_nelkul(jel, cimke) if cimke else
-                                         vegyes_cim_nelkul(jel, _elso_tagmondat(hu or angol)))
+                                         vegyes_cim_nelkul(jel, _elso_tagmondat(hu or angol, csonkit_jel=True)))
             if kat == 'horgonnyal':
                 # ELLENOR_SZOTARI_GERINC 4. (7.2a): a határjelölés az összecsukott szakaszon is látszik
                 vazlat += HORGONNYAL_JELOLES
