@@ -19,6 +19,7 @@ ennek a táblának ellenőrzött sora kerül (CLAUDE.md 2. szabály). Három út
              szerzo, mu) egy lekérdezést ad; a szkript a `chain_lineage.lekerdez` futásával újra lekérdezi, és csak akkor ír
              sort, ha a megadott szerző és mű a válaszban mindkét magverset idézi. A `kapcsolat` gépi mondat (a lánc
              magversei Károli-alakban); az `ellenorzes` a lekérdezés újrafuttatása (gépi), a válasz szövege nem kerül át.
+             A SPEC `tanu_nev` oszlopa (nem kötelező) a szerző magyar névalakja a lapon (Origen → Órigenész).
     ellenoriz
              a tábla szerkezete: oszlopszám, zárt értékek, kulcs-egyediség, hagyományonként helyenként legfeljebb egy
              sor, proveniencia; kilépési kód 1 hibánál.
@@ -44,7 +45,7 @@ TABLA = os.path.join(GYOKER, 'adat', 'visszhang_tanuk.tsv')
 OSZLOPOK = ['motivum', 'igehely', 'tanu_hely', 'hagyomany', 'tanu', 'mu', 'kor', 'kapcsolat', 'forras', 'forras_url',
             'lekerdezve', 'biblindex', 'kinyeres', 'modell', 'ellenorzes', 'proveniencia']
 HAGYOMANYOK = ('gorog', 'latin', 'szir', 'rabbinikus')
-FORRASOK = ('hcf', 'sefaria', 'chain_lineage')
+FORRASOK = ('hcf', 'sefaria', 'glossa', 'chain_lineage')
 KINYERES = ('gepi', 'modell')
 FEJ_MEGJ = ('# A hatástörténeti szakasz tanúrétegének kinyerő táblája (F183). Kulcs: motivum + igehely + hagyomany + tanu + '
             'forras. Séma: adat/SEMA.md 2.57. Ellenőrizetlen sor (üres `ellenorzes`) a lapon nem renderel. Szöveget '
@@ -136,7 +137,7 @@ def beolvas(a):
     uj = []
     for r in kinyert:
         r = {o: (r.get(o) or '').strip() for o in OSZLOPOK}
-        if r['hagyomany'] not in HAGYOMANYOK or r['forras'] not in ('hcf', 'sefaria') or r['kinyeres'] != 'modell':
+        if r['hagyomany'] not in HAGYOMANYOK or r['forras'] not in ('hcf', 'sefaria', 'glossa') or r['kinyeres'] != 'modell':
             raise SystemExit('HIBA: zárt érték: %s / %s / %s' % (r['hagyomany'], r['forras'], r['kinyeres']))
         at = atnezes.get((r['motivum'], r['igehely'], r['hagyomany'], r['tanu']))
         if r['modell'] == a.ellenor:
@@ -171,7 +172,9 @@ def cl(a):
         r = {o: '' for o in OSZLOPOK}
         r.update({
             'motivum': s['motivum'], 'igehely': s['igehely'], 'tanu_hely': '; '.join(versek),
-            'hagyomany': s['hagyomany'], 'tanu': szerzo, 'mu': mu.replace('[BiblIndex] ', ''),
+            # a `tanu_nev` a szerző magyar névalakja (a SPEC adja; a lekérdezés a forrás névalakjára illeszt)
+            'hagyomany': s['hagyomany'], 'tanu': (s.get('tanu_nev') or '').strip() or szerzo,
+            'mu': mu.replace('[BiblIndex] ', ''),
             'kor': '%s. sz.' % szazad, 'forras': 'chain_lineage', 'forras_url': url, 'lekerdezve': ma(),
             'biblindex': 'igen' if mu.startswith('[BiblIndex]') else '',
             'kapcsolat': 'Egy versláncban idézi a következő helyeket: %s.' % ', '.join(versek),

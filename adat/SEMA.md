@@ -2108,6 +2108,7 @@ Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT
 |---|---|
 | `Targum_PD.tsv` | `igehely`, `forras_vers`, `targum` (`Onkelos` \| `Jonatan`), `forras_mu`, `verzio`, `forras_kulcs`, `szoveg` |
 | `Vulgata_Clementina.tsv` | `igehely`, `forras_vers` (USFM-kód + fejezet:vers), `forras_kulcs`, `szoveg` (Glossa-lábjegyzet nélkül) |
+| `Glossa_Ordinaria.tsv` (F183) | `igehely`, `forras_vers`, `forras_kulcs`, `sorszam`, `jegyzet` — a Vulgata-csomag Glossa-lábjegyzetei (Migne, 1880, közkincs; `eszkozok/visszhang/glossza_import.py`) |
 | `SBLGNT_apparatus.tsv` | `igehely`, `forras_vers`, `sorszam`, `forras_kulcs`, `jegyzet` (szó szerint; az alapszöveg nincs benne) |
 | `TAGNT_valtozatok.tsv` | `igehely`, `forras_ref`, `szamozas` (`nrsv` \| `kjv` \| `egyeb` \| `na`), `szo_sorszam`, `tipus`, `strong`, `gorog`, `kiadasok`, `hianyzik_ebbol`, `mozgatas`, `jelentesvaltozat`, `forras_kulcs`; a THGNT (`Tyn`) szövege nincs benne, csak a jelölés |
 | `BDB_rokon_irasok.tsv` | `strong`, `sefaria_ref`, `nyelv` (`arab` \| `etióp` \| `szír`), `szoalak`, `kontextus` (≤ 120 karakter; a token körüli szövegrész a BDB-szócikkből, nem a szócikk feje, mert az mutatja a rokon szót: DT634), `proveniencia` (soronként: `scope=… \| forras=… \| ts=…`) |
@@ -2260,7 +2261,7 @@ nem a lap sora: a lapra csak e tábla ellenőrzött sora kerül (CLAUDE.md 2. sz
 | `mu` | a mű címe (a forrás alakjában) |
 | `kor` | a forrás szerinti kor (`N. sz.`; a HCF éve zárójelben); a forrás nélkül üres — emlékezetből nem tölthető |
 | `kapcsolat` | egy mondat, **saját szavakkal, idézet nélkül**: mit lát a tanú; a `gepi` sornál a lánc magversei |
-| `forras` | `hcf` (HistoricalChristianFaith metaadat + a helyi szöveg olvasása) \| `sefaria` (Sefaria-szöveg olvasása) \| `chain_lineage` (tényadat) |
+| `forras` | `hcf` (HistoricalChristianFaith metaadat + a helyi szöveg olvasása) \| `sefaria` (Sefaria-szöveg olvasása) \| `glossa` (a Glossa Ordinaria jegyzete, `konkordancia/Glossa_Ordinaria.tsv`) \| `chain_lineage` (tényadat) |
 | `forras_url` | a forrás helye (a `chain_lineage` sornál a lekérdezés JSON-végpontja) |
 | `lekerdezve` | a lekérdezés napja |
 | `biblindex` | `igen`, ha a Chain Lineage-tanú a BiblIndex-láncból jön; különben üres |
@@ -2505,7 +2506,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `LABJEGYZET` | BUKÁS | definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) |
 | `PROZA_1A` | BUKÁS | az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`) |
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
-| `VISSZHANG` | BUKÁS | a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
+| `VISSZHANG` | BUKÁS | a visszhang-blokk szabályai (a 9. Hatástörténet ószövetségi táblája, korábban 4.11; F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
 | `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
 | `MUNKASZO` | BUKÁS | munkaszó vagy munkajelölő az olvasói szövegben (a `MUNKASZAVAK` lista: „próba”, „javaslat”, „ellenőrzendő”, „függőben”, „nincs bekötve”, „kutatói jelölés”, „azonosításra vár”, „D-minta”, „Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, F24, F35) |
 | `SZAKASZ_HIV` | BUKÁS | a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat (a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b)) |
