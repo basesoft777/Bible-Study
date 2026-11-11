@@ -2,7 +2,7 @@
 
 **Állapot: v2 (F178, 2026-11-08): a HAMART-001 mint arany — a lezárás hét szabálya (4. pont).** Előző: v1 (a #123 DT585 tétele, 2026-11-03). A v1 a v0.5 és az ALVIL-001 új cikkének öt tanulsága mint sablonszabály (4. pont, „Az új cikk öt szabálya”); a menetszabályok a `MUNKAMENET.md` „A lezárás menete motívumonként” szakaszában állnak. A #12-höz igazítás kérdése tárgytalan (a #12 2026-11-02-án lezárult, a TEREMT-002 a #123-é). Az első motívum, amely a v1-re íródik: ANTROP-001.
 
-*v2.1 — 2026.11.11 (F193; DT738, DT-F193a, DT-F193c): a 4. pontban „Az értelmező szakaszok kötelező elemei” (J2–J4), a szakasztábla a lap új számaival (10. Értelmezés, 11. Módszertan), a kerek 1/a mintája a HAMART-001-ből (B12).*
+*v2.1 — 2026.11.11 (F193; DT738, DT766, DT768): a 4. pontban „Az értelmező szakaszok kötelező elemei” (J2–J4), a szakasztábla a lap új számaival (10. Értelmezés, 11. Módszertan), a kerek 1/a mintája a HAMART-001-ből (B12).*
 
 *v2 — 2026.11.08 (F178.2–F178.3, a felhasználó jóváhagyásával, 2026-11-08: a 4. pontban az öt szabály után „A HAMART-001 mint arany: a lezárás hét szabálya” — U2/U3 két kézben, határ-frissesség, a Kivonat fordulópontja, szerkezeti indok, kerek 1/a, Nave, U3-prompt.)*
 
@@ -86,7 +86,7 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 | 2.S | Szótári háttér — szerepmátrix | `generalt` (5. pont) | `apparatus` | mindig | `ADAT-NÉZET` (`--cel lexikon#…#szocikkek`) |
 | 2/b | Kiegészítő szótári adatok | `adat` (`lexikon_hivatkozasok.tsv`, SEMA 2.5) | `apparatus` | feltételes: van a generált blokkon túli szótári anyag | nincs kézi blokk; a kísérő mondatok a „Miért fontos” résbe |
 | 2.M | Miért fontos ez a lelet | `kezi_forras` | `apparatus` | feltételes: többforrásos szerep-blokk | `RÉS: miert_fontos` |
-| 3 | PaRDeS: Peshat, Remez, Drash, Sod (a lapon: 10. Értelmezés; DT-F193a) | `kezi_forras` | `olvasoi` | tematikus (3. pont) | `RÉS: ertelmezes` |
+| 3 | PaRDeS: Peshat, Remez, Drash, Sod (a lapon: 10. Értelmezés; DT766) | `kezi_forras` | `olvasoi` | tematikus (3. pont) | `RÉS: ertelmezes` |
 | 3.V | ⚠️ Vitatott pontok | `kezi_forras` | `olvasoi` | értelmezői: tudományosan vitatott | próza vagy `INAKTÍV` |
 | 3.U | Új felismerés | `kezi_forras` (a 3. szakasz része) | `olvasoi` | feltételes: van ilyen | próza a 3. szakaszon belül |
 | 4 | Kapcsolódás a kutatási sablonhoz | `kezi_forras` | `apparatus` | értelmezői: van pünkösdi/karizmatikus szakirodalmi vonatkozás | próza vagy `INAKTÍV` |
@@ -162,12 +162,12 @@ Mindhárom háló találata a motívum `elofordulasok.tsv`- és `jeloltek.tsv`-s
 6. **A Nave-blokk (Tematikus index) nem üres**, a döntések az `adat/tematikus_temak.tsv`-ben (DT595).
 7. **A próza nulláról, egy kézből, a `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md` szerint** (`MUNKAMENET.md` C-w).
 
-**Az értelmező szakaszok kötelező elemei** (F193; a követelménylista J2–J4, DT738: „Igen, mind”; minta: a HAMART-001 10. és 11. szakasza). A lap számozása: 9. Hatástörténet (generált, a próza nem írja), 10. Értelmezés, 11. Módszertan és nyitott kérdések (DT-F193a).
+**Az értelmező szakaszok kötelező elemei** (F193; a követelménylista J2–J4, DT738: „Igen, mind”; minta: a HAMART-001 10. és 11. szakasza). A lap számozása: 9. Hatástörténet (generált, a próza nem írja), 10. Értelmezés, 11. Módszertan és nyitott kérdések (DT766).
 
 1. **Az Értelmezés eleje olvasói magyarázat** (J3): egy rövid bekezdés arról, mit jelent a négy szint (Peshat, Remez, Drash, Sod) ezen a lapon, belső szó nélkül. A szintek állításai alatt a mért adat forrássora áll (melyik szakasz, melyik szám igazolja), nem a próza feltevése.
 2. **A Vitatott pontok mindkét olvasatot adatból igazolt érvvel mondják** (J4), és kimondják: „a lap a kérdést nem dönti el”. Az egyik olvasat nem szalmabáb; ha az egyikhez nincs adat, a pont nem vitatott, hanem nyitott kérdés (11.).
 3. **A Módszertanban „A határ második ellenőrzése” bekezdés áll** (J2): mi került ki a független határkörben (`MUNKAMENET.md` C-h) és miért, olvasói nyelven, számokkal; ha semmi, ezt mondja ki. A vizsgálati rétegeket próza írja le, nem táblázat (B05).
-4. **Hang és címek:** harmadik személy, névszói alcímek (a 6-os sablon „Alcím és hang”, DT-F193c). Alkalmazás-szakasz nincs (DT756).
+4. **Hang és címek:** harmadik személy, névszói alcímek (a 6-os sablon „Alcím és hang”, DT768). Alkalmazás-szakasz nincs (DT756).
 
 A szabályok gépi része a lexikonlap regressziós HIBA-kapuja (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A HAMART-001 regressziós kapui”); ahol egy meglévő lap elbukik, a hiba a lap 2. kiadásának tétele, nem kivétel és nem kézi folt.
 

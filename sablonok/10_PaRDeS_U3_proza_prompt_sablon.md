@@ -1,6 +1,6 @@
 # 10. PaRDeS U3-prompt sablon — a motívum teljes prózája nulláról, egy kézből
 
-**Állapot: v1.1 (F193, 2026-11-11: a lap új számozása — 9. Hatástörténet, 10. Értelmezés, 11. Módszertan és nyitott kérdések, DT-F193a; J2–J4; hang és alcím, DT-F193c). v1: F178.3, 2026-11-08.** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete, nem szabályforrás — ellentmondásnál a 9-es sablon az irányadó.
+**Állapot: v1.1 (F193, 2026-11-11: a lap új számozása — 9. Hatástörténet, 10. Értelmezés, 11. Módszertan és nyitott kérdések, DT766; J2–J4; hang és alcím, DT768). v1: F178.3, 2026-11-08.** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete, nem szabályforrás — ellentmondásnál a 9-es sablon az irányadó.
 
 *Használat: a `[…]` helyőrzőket a session indítója tölti ki; a prompt többi része szó szerint megy. A session modellje `opus` (értelmező próza, egy kéz: CLAUDE.md, KONTEXTUS K1).*
 
@@ -43,7 +43,7 @@ alátámasztja; egyházatyai vagy rabbinikus tanúra csak a 9. sora alapján hiv
 **Olvasói szöveg — mindenütt:**
 
 - a lelettel kezdesz (számok, a szavak kiejtéssel, példahely), és szabály szerinti következtetéssel zársz;
-- harmadik személyben írsz: „mi”-hang, olvasót megszólító mondat és első személyű ellenőrzési állítás („megnéztük”, „vizsgáltuk”) nincs; ha alcímet írsz, névszói alakú (6-os sablon „Alcím és hang”, DT-F193c);
+- harmadik személyben írsz: „mi”-hang, olvasót megszólító mondat és első személyű ellenőrzési állítás („megnéztük”, „vizsgáltuk”) nincs; ha alcímet írsz, névszói alakú (6-os sablon „Alcím és hang”, DT768);
 - minden héber, arámi és görög szó mellett a magyaros kiejtés (a lapon egy szónak egy kiejtése van);
 - belső szó nem kerül a szövegbe: döntés-azonosító, feladatszám, fájlnév, „gerinc”, „szerep”, „orkesztrátor”, „felhasználó”; a döntés olvasói neve „szerkesztői döntés”;
 - a beépítés indoka szerkezeti jegy (lánc, visszautalás, szókapcsolat), nem a szó puszta egyezése;
