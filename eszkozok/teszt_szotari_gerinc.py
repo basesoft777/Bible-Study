@@ -1196,8 +1196,10 @@ class F182LathatoHibak(unittest.TestCase):
 
     def test_regi_lapon_valtozatlan(self):
         a = LG.gerinc_adat()
-        sor = {'lexikon_szotar': 'BDB', 'lexikon_entry_id': 'H6093', 'strong': 'H6093', 'jelentes_szam': '',
-               'igehely': '1Móz 3:16'}
+        import general as G
+        _, elo = G.tsv_beolvas(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'adat',
+                                            'elofordulasok.tsv'))
+        sor = next(r for r in elo if r['id'] == 'HAMART-001' and r['igehely'] == '1Móz 3:16')
         self.assertEqual(LG.jelentes_cella(a, sor)[0], '*(nincs hozzárendelés)*')
         self.assertTrue(LG.jelentes_cella(a, sor, uj=True)[0].startswith('a szócikk egésze'))
 
