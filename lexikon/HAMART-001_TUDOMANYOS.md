@@ -2,17 +2,13 @@
 
 # 📖 HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás
 
-| Mező | Érték |
-|---|---|
-| ID | HAMART-001 |
-| Rövid cím | Bűn gyűrűzése |
-| Teljes cím | A bűn következményeinek gyűrűzése — átok, föld és romlás |
-| Téma | Hamartológia |
-| PaRDeS-szint | Remez/Drash |
-| Státusz | nincs kiadva — feldolgozás alatt |
-| Azonosság típusa | strukturális |
-| Negatív kritérium | A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, romlandó test), és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki. A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide. Az újszövetségi helyeknél a Textus Receptus a mérce. |
-| Fölérendelt fogalom | a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
+**A motívum.** A bűn következményeinek gyűrűzése — átok, föld és romlás.
+
+**Negatív elhatárolás.** A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, romlandó test), és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki. A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide. Az újszövetségi helyeknél a Textus Receptus a mérce.
+
+**Fölérendelt fogalom** (a tágabb kategória, amely felé a motívum hígulna: ha egy hely csak ezen át tartozna ide, kimarad). A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül.
+
+*A lap azonosító és technikai adatai (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a [Kolofonban](#kolofon) állnak.*
 
 ## Kivonat
 
@@ -3551,15 +3547,15 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 **Adatforrások:**
 - a BDB-szótár (közkincs)
 - a BDB-szótár versenkénti jelentései (közkincs)
-- a motívum előfordulás-táblája (minden jog fenntartva)
-- a lap fordítástáblája (közkincs, minden jog fenntartva)
+- a motívum előfordulás-táblája (CC BY 4.0 (a nyílt adatmagban))
+- a lap fordítástáblája (a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva)
 - a héber glosszák magyar táblája (CC BY 4.0)
-- a jelöltek döntésnaplója (minden jog fenntartva)
-- a kapcsolat-tábla (minden jog fenntartva)
-- a Károli–Strong párosítás (minden jog fenntartva)
+- a jelöltek döntésnaplója (CC BY 4.0 (a nyílt adatmagban))
+- a kapcsolat-tábla (CC BY 4.0 (a nyílt adatmagban))
+- a Károli–Strong párosítás (CC BY 4.0)
 - a lap szótári hivatkozástáblája (közkincs)
 - az LXX-fordítói döntések táblája (minden jog fenntartva)
-- a motívumtábla (minden jog fenntartva)
+- a motívumtábla (CC BY 4.0 (a nyílt adatmagban))
 - a Nave-témák magyar nevei (minden jog fenntartva)
 - a szótári szakaszok címketáblája (minden jog fenntartva)
 - a szótári pontok rendje (minden jog fenntartva)
@@ -3599,14 +3595,21 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 **Hogyan idézd.** [HELYŐRZŐ: SZERZŐ NEVE]: *[HELYŐRZŐ: A LEXIKON CÍME]*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), kiadás előtti változat, még nem idézhető, <KANONIKUS_FORRAS_URL>. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: DOI: <DOI>.
 
-**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti hihetőséget nem), [A módszer Hays hét kritériumának tükrében](../kozlemeny/HAYS_LEKEPEZES.md) mutatja be.
+**Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).
 
 **Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet ([Az ókori közel-keleti háttér határa](../kozlemeny/KOZEL_KELETI_HATAR.md)).
 
 | Mező | Érték |
 |---|---|
-| Kézi forrás | a motívum kézi forrása |
-| Kereszthivatkozás-napló | generált (a jelöltek döntésnaplója); a régi napló archívum: a motívum korábbi kereszthivatkozás-naplója |
+| ID | HAMART-001 |
+| Rövid cím | Bűn gyűrűzése |
+| Teljes cím | A bűn következményeinek gyűrűzése — átok, föld és romlás |
+| Téma | Hamartológia |
+| PaRDeS-szint | Remez/Drash |
+| Státusz | nincs kiadva — feldolgozás alatt |
+| Azonosság típusa | strukturális |
+| Negatív kritérium | A versben a genezisi lánc egyik szava áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal; hallatszik az erőszak), és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, romlandó test), és az sem, amely a föld elvesztését csak a szövetségi rendben mondja ki. A szavak nélkül a hely csak „tematikus, nem lexikai” jelöléssel, név szerint tartozik ide. Az újszövetségi helyeknél a Textus Receptus a mérce. |
+| Fölérendelt fogalom | a bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
 | Kiadás | nincs kiadva — feldolgozás alatt |
 | Próza modellje | nincs kiadva — feldolgozás alatt |
@@ -3625,19 +3628,19 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a Glossa Ordinaria (Migne, 1880) | közkincs | 9. Hatástörténet |
 | a HistoricalChristianFaith kommentár-adatbázis (metaadat) | közkincs | 9. Hatástörténet |
 | a héber glosszák magyar táblája | CC BY 4.0 | 4. Szótári háttér |
-| a jelöltek döntésnaplója | minden jog fenntartva | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
-| a kapcsolat-tábla | minden jog fenntartva | 7. Kapcsolatok |
+| a jelöltek döntésnaplója | CC BY 4.0 (a nyílt adatmagban) | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
+| a kapcsolat-tábla | CC BY 4.0 (a nyílt adatmagban) | 7. Kapcsolatok |
 | a Károli-fordítás (1908) | közkincs | 2. Előfordulások, 4. Szótári háttér |
 | a Károli-kereszthivatkozások | közkincs | 6. Kereszthivatkozások |
 | a Károli-szavak szótári alakjai | minden jog fenntartva | 4. Szótári háttér |
 | a Károli-versmegfeleltetés | minden jog fenntartva | 2. Előfordulások |
-| a Károli–Strong párosítás | minden jog fenntartva | 4. Szótári háttér |
-| a lap fordítástáblája | közkincs, minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
+| a Károli–Strong párosítás | CC BY 4.0 | 4. Szótári háttér |
+| a lap fordítástáblája | a forrásszöveg közkincs; a magyar fordítás: minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
 | a lap szótári hivatkozástáblája | közkincs | 4. Szótári háttér |
 | az LXX-fordítói döntések táblája | minden jog fenntartva | 5. LXX-fordítói döntések |
 | az MCGED görög szótár | © Mounce 1993 | 4. Szótári háttér |
-| a motívum előfordulás-táblája | minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
-| a motívumtábla | minden jog fenntartva | 3. Kizárt és vizsgált helyek |
+| a motívum előfordulás-táblája | CC BY 4.0 (a nyílt adatmagban) | 2. Előfordulások, 4. Szótári háttér |
+| a motívumtábla | CC BY 4.0 (a nyílt adatmagban) | 3. Kizárt és vizsgált helyek |
 | Nave tárgymutatója (1897) | közkincs | 4. Szótári háttér |
 | a Nave-témák magyar nevei | minden jog fenntartva | 4. Szótári háttér |
 | az Open Scriptures héber lexikona | CC BY 4.0 | 4. Szótári háttér |

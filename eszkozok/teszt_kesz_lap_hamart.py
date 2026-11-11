@@ -46,10 +46,31 @@ class Lap(unittest.TestCase):
         cls.lathato = re.sub(r'<!--.*?-->', '', cls.lap, flags=re.S)
 
     def test_a02_azonosito_tabla_a_lap_elejen(self):
+        """A felhasználó (2026-11-11): a lap elején egyszerűsített kolofon — a motívum, a negatív elhatárolás, a
+        fölérendelt fogalom, olvasói alakban; a teljes azonosító tábla a Kolofonban."""
         eleje = self.lap.split('\n## Kivonat\n', 1)[0]
-        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| Fölérendelt fogalom |'):
+        for mezo in ('**A motívum.**', '**Negatív elhatárolás.**', '**Fölérendelt fogalom**', '(#kolofon)'):
             self.assertIn(mezo, eleje)
-        self.assertIn('| Státusz | %s |' % LG.kiadasi_statusz('HAMART-001'), eleje)
+        self.assertNotIn('| ID |', eleje)
+        kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
+        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| Fölérendelt fogalom |'):
+            self.assertIn(mezo, kolofon)
+        self.assertIn('| Státusz | %s |' % LG.kiadasi_statusz('HAMART-001'), kolofon)
+        for belso in ('| Kézi forrás |', '| Kereszthivatkozás-napló |'):
+            self.assertNotIn(belso, kolofon)
+
+    def test_sajat_adat_licence_a_nyilt_mag_szerint(self):
+        """A felhasználó jelzése (2026-11-11): a nyílt magban kiadott saját adat nem „minden jog fenntartva”."""
+        kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
+        for nev in ('a motívum előfordulás-táblája', 'a motívumtábla', 'a kapcsolat-tábla'):
+            sor = [s for s in kolofon.split('\n') if s.startswith('| %s |' % nev)]
+            self.assertTrue(sor and 'CC BY 4.0' in sor[0] and 'minden jog fenntartva' not in sor[0], nev)
+        sor = [s for s in kolofon.split('\n') if s.startswith('| a lap fordítástáblája |')]
+        self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
+
+    def test_modszertani_elvek_proza(self):
+        self.assertNotIn('[A módszer Hays hét kritériumának tükrében](', self.lap)
+        self.assertIn('**Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje', self.lap)
         self.assertNotIn('Rövid UI-címke', self.lathato)
         self.assertNotIn('publikálható (v1', self.lathato)
 

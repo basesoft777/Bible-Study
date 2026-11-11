@@ -5343,7 +5343,7 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
         # F182 (B10): az olvasói forrásnév egyszer áll (több fájlja egy forrás), a licencek egyesítve
         csop = collections.OrderedDict()
         for fajl in adat_fajlok + beazonositatlan:
-            csop.setdefault(olvasoi_forrasnev(fajl), set()).update(per_fajl[fajl])
+            csop.setdefault(olvasoi_forrasnev(fajl), set()).update(olvasoi_licencek(fajl, per_fajl[fajl]))
         adatforrasok = ['**Adatforrások:**'] + ['- %s (%s)' % (nev, ', '.join(sorted(lic))) for nev, lic in csop.items()]
 
     torzs = '\n'.join(hogyan) + '\n\n' + '\n'.join(szotarak) + '\n\n' + '\n'.join(adatforrasok)
@@ -5541,6 +5541,16 @@ def kolofon_kozlemenyek(m, kiadasok, kk_sor=None):
     modszer = ('**Módszertani elvek.** Hogy a módszer elemei a bibliai intertextualitás-kutatásban bevett mérce, '
                'Richard B. Hays hét kritériuma közül melyiknek felelnek meg, és melyiket nem fedik (a történeti '
                'hihetőséget nem), [A módszer Hays hét kritériumának tükrében](%s) mutatja be.' % KOZLEMENY['hays'])
+    if uj_szerkezet(m['id']):
+        # a felhasználó jelzése (2026-11-11): a link-cím olvasóként kitöltetlen helyőrzőnek látszott; a bekezdés a
+        # közlemény (`kozlemeny/HAYS_LEKEPEZES.md`) táblája szerint mondja ki, mit fed a módszer
+        modszer = ('**Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése '
+                   'arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a '
+                   'kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-'
+                   'megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a '
+                   'teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; '
+                   'a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes '
+                   'leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).')
     hatokor = ('**Hatókör.** A lap állításai a bibliai korpuszra (héber Ószövetség, görög Újszövetség, Septuaginta) '
                'vonatkoznak. Ókori közel-keleti (ugariti, mezopotámiai, egyiptomi) összehasonlító réteg a munkában nincs, '
                'ezért ha a lap nem hoz közel-keleti párhuzamot, az a módszer határa, nem negatív lelet '
@@ -5583,11 +5593,32 @@ KOLOFON_SZAKASZNEV = {'elofordulasok': '2. Előfordulások', 'kizart': '3. Kizá
                       'hatastortenet': '9. Hatástörténet', 'ertelmezes': '10. Értelmezés'}   # F183
 
 
+# a nyílt mag (`nyilt_mag/`, CC BY 4.0) a saját adatból ezeket adja ki (`nyilt_mag_export.py`): a lapon ezek licence a
+# nyílt mag szerint áll, nem „minden jog fenntartva” (a felhasználó jelzése, 2026-11-11)
+NYILT_MAG_ADAT = frozenset({'adat/motivumok.tsv', 'adat/elofordulasok.tsv', 'adat/jeloltek.tsv', 'adat/kapcsolatok.tsv',
+                            'adat/motivum_kapcsolatok.tsv', 'adat/elutasitasi_okok.tsv'})
+NYILT_MAG_LICENC = 'CC BY 4.0 (a nyílt adatmagban)'
+
+
+def olvasoi_licencek(fajl, licencek):
+    """Az új szerkezetű lap forráslistájának licence: a nyílt magban kiadott saját adat CC BY 4.0; a Károli–Strong
+    párosítás CC BY 4.0 (DT623); a fordítástáblában a forrásszöveg közkincs, a fordítás a projekté."""
+    lic = set(licencek)
+    projekt = LC('projekt_adat')
+    if fajl in NYILT_MAG_ADAT and projekt in lic:
+        lic = (lic - {projekt}) | {NYILT_MAG_LICENC}
+    elif fajl.rstrip('/').endswith('karoli_strong') and projekt in lic:
+        lic = (lic - {projekt}) | {LC('Karoli_Strong_parok')}
+    elif fajl.endswith('forditasok.tsv') and projekt in lic:
+        lic = {'a forrásszöveg közkincs; a magyar fordítás: %s' % projekt}
+    return lic
+
+
 def kolofon_forrastabla_olvasoi(per_fajl):
     csop = collections.OrderedDict()
     for fajl in sorted(per_fajl, key=lambda f: olvasoi_forrasnev(f).lstrip('az ').lower()):
         r = csop.setdefault(olvasoi_forrasnev(fajl), {'licenc': set(), 'blokkok': set()})
-        r['licenc'].update(per_fajl[fajl]['licenc'])
+        r['licenc'].update(olvasoi_licencek(fajl, per_fajl[fajl]['licenc']))
         r['blokkok'].update(per_fajl[fajl]['blokkok'])
     sorrend = list(KOLOFON_SZAKASZNEV)
     sorok = ['| Forrás | Licenc | Szakasz |', '|---|---|---|']
@@ -5627,7 +5658,12 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     if uj:
         # F182 (A02; F18 (e)): az azonosító mezők a lap elején állnak (`azonosito_tabla`); a Kolofonban a forrás, a
         # napló, a sablon és a kiadás adatai maradnak, olvasói mezőnévvel
-        metaadat_sorok = (metaadat_sorok[:2] + ['| Kézi forrás | %s |' % forras_study_cella] + metaadat_sorok[-2:])
+        # a felhasználó (2026-11-11): az elején egyszerűsített kolofon, „a legvégén a teljes”; a „Kézi forrás” és a
+        # „Kereszthivatkozás-napló” belső sora nem olvasói, kimarad
+        metaadat_sorok = (metaadat_sorok[:2]
+                          + ['| %s | %s |' % (nev, kiadasi_statusz(m['id']) if kulcs is None else (m.get(kulcs) or EM_DASH))
+                             for nev, kulcs in AZONOSITO_MEZOK]
+                          + metaadat_sorok[-1:])
     metaadat_sorok += kiadas_meta
     lektoralas = kolofon_lektoralas(m['id'])
     if lektoralas:
@@ -6582,11 +6618,28 @@ def azonosito_tabla(m):
     return '\n'.join(sorok)
 
 
+def _nagy_kezdo(t):
+    return t[:1].upper() + t[1:]
+
+
+def egyszerusitett_kolofon(m):
+    """A lap elején a motívum három meghatározó adata olvasói alakban (a felhasználó, 2026-11-11: „a motívum
+    megfogalmazása / negatív elhatárolás / fölérendelt fogalom ahogy a régiben volt — a legvégén a teljes”); a
+    technikai mezők (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a Kolofonban."""
+    return '\n\n'.join([
+        '**A motívum.** %s.' % (m.get('cim') or m['id']).rstrip('.'),
+        '**Negatív elhatárolás.** %s' % (m.get('negativ_kriterium') or EM_DASH),
+        '**Fölérendelt fogalom** (a tágabb kategória, amely felé a motívum hígulna: ha egy hely csak ezen át tartozna '
+        'ide, kimarad). %s.' % _nagy_kezdo((m.get('folerendelt_fogalom') or EM_DASH).rstrip('.')),
+        '*A lap azonosító és technikai adatai (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a '
+        '[Kolofonban](#kolofon) állnak.*'])
+
+
 def azonosito_tabla_beszur(szoveg, m):
     i = szoveg.find('\n## Kivonat\n')
     if i < 0:
         raise ValueError('%s: nincs „## Kivonat” címsor az azonosító tábla helyéhez' % m['id'])
-    return szoveg[:i + 1] + azonosito_tabla(m) + '\n\n' + szoveg[i + 1:]
+    return szoveg[:i + 1] + egyszerusitett_kolofon(m) + '\n\n' + szoveg[i + 1:]
 
 
 def _ige_link(hely):
