@@ -54,9 +54,11 @@ A lap követelményei ma négy helyen állnak: a lapsablonban, a döntésekben, 
 
 ## 6. Jelentés
 
-**103 követelmény · 26 HAMART-hiány · 18 ellentmondó vagy elavult követelmény** (+ 4 javasolt felvétel, 16 gépesíthető emberi ellenőrzés).
+**109 követelmény · 27 HAMART-hiány · 18 ellentmondó vagy elavult követelmény** (+ 4 javasolt felvétel, 16 gépesíthető emberi ellenőrzés).
 
-- A 103 sor állapota: 52 teljesül, 22 hiányzik, 16 részben, 6 nem eldönthető, 7 hátralévő lépés. A 26 pótlandó tétel (az (a) lista) a 22 hiányzó és a 16 részben teljesülő sorból áll össze.
+- A 109 sor állapota: 52 teljesül, 29 hiányzik, 16 részben, 6 nem eldönthető, 6 hátralévő lépés. A 27 pótlandó tétel (az (a) lista) a 29 hiányzó és a 16 részben teljesülő sorból áll össze.
+- Kiegészítés (F190.5, az orkesztrátor továbbításával): a felhasználó döntése (2026-11-11): „a visszhang 1-2 kötelező”. A K67 forrása ez, állapota „hiányzik (#183 folyamatban)”. A visszhang 2 hat sora (K67a–K67f) az `F183_VISSZHANG_USZ_TANU_BRIEF.md` V1–V3 pontjából és a `visszhang-reteg-terv` memóriából jön, „a briefből, a #183 után a HAMART szerint véglegesítendő” jelöléssel. Új (a)-tétel: A27.
+- **Hátralévő:** a #183 után egy frissítés a K67a–K67f sorokat a tényleges HAMART visszhang 2 szerint pontosítja; a lista ezzel zárul le, a lektor előtt.
 
 - A mérés alapja: a lap `4f51e371` (F182.21), az ág feje `9e74455e`. Olvasói kapu: 0 BUKÁS, 19 FIGYELMEZTETÉS; 1/a: 47/47; `ellenoriz.py`: a 36–40. szabály a HAMART-ra tiszta.
 - A legsúlyosabb lelet: **hamis állítás** a lapon. Az Alátámasztás „A motívumhoz nincs rögzített kapcsolat.” mondatot hoz az 56 kapcsolatsor alatt (A01, K77). Ez a leletlistában nem szerepelt.
