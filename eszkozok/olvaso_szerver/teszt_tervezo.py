@@ -434,6 +434,14 @@ class TestSzinkron(unittest.TestCase):
         self.assertIn('--space-fejlec-sor: %s;' % self.a.adat['terkoz']['fejlec-sor'], tc)
         self.assertIn('.karoli-folyo {\n  font-family: var(--font-text);\n  font-size: 1.25rem;', tc)
         self.assertIn('src: url("fonts/x.woff2") format("woff2");', tc)
+        # ELLENOR_F195: a szerverrel azonos nevű stílusosztály ds- előtagot kap, a többi marad
+        tc2 = self.sz.tokens_css(ki, self.css)
+        self.assertIn('\n.ds-versszam {', tc2)
+        self.assertNotIn('\n.versszam {', tc2)
+        self.assertIn('\n.karoli-folyo {', tc2)
+        for nev in self.sz.szerver_osztalyok(self.css):
+            self.assertNotIn('\n.%s {' % nev, tc2)
+        self.assertEqual([t['name'] for t in ki['shadow']['tokens']], ['arnyek-reszletek', 'arnyek-konyvpanel', 'arnyek-navlap-nyitva'])
         bc = self.sz.bundle_css(self.a, self.css, 'teszt@0')
         self.assertTrue(bc.endswith(self.css))
         self.assertIn('  --fs-karoli-folyo: 1.25rem;\n', bc)

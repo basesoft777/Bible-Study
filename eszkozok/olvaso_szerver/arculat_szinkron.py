@@ -224,8 +224,18 @@ def _megj(s):
     return (s or '').replace('*/', '* /').replace('\n', ' ')
 
 
-def tokens_css(tj):
-    """A design system `tokens.css`-e a `tokens.json`-ból (a típus „tokens.css as compiled” szerkezete)."""
+def szerver_osztalyok(css):
+    """A stíluslap osztálynevei (a kommentek nélkül)."""
+    return set(re.findall(r'\.([a-zA-Z][\w-]*)', re.sub(r'/\*.*?\*/', '', css, flags=re.S)))
+
+
+def tokens_css(tj, css=None):
+    """A design system `tokens.css`-e a `tokens.json`-ból (a típus „tokens.css as compiled” szerkezete).
+
+    Ha a szerver stíluslapja (`css`) meg van adva, az ott is használt nevű stílus osztálya `ds-` előtagot kap (F195,
+    ELLENOR_F195): így a design system előnézeteiben a szerver markupjára (`.versszam`, `.sor`, `.ubs` …) nem kerül idegen
+    betűcsalád vagy sorköz."""
+    utkozo = szerver_osztalyok(css) if css else set()
     temak = [t['id'] for t in tj['color']['themes']]
     elso = temak[0]
 
@@ -258,7 +268,8 @@ def tokens_css(tj):
                 s['name'], s.get('fontWeight', '400'), s['fontSize'], s.get('lineHeight', 'normal'), csalad, _megj(s.get('usage'))))
     sorok.append('}')
     for s, csalad in stilusok:
-        sorok += ['.%s {' % s['name'], '  font-family: var(--font-%s);' % csalad, '  font-size: %s;' % s['fontSize'],
+        osztaly = ('ds-' + s['name']) if s['name'] in utkozo else s['name']
+        sorok += ['.%s {' % osztaly, '  font-family: var(--font-%s);' % csalad, '  font-size: %s;' % s['fontSize'],
                   '  line-height: %s;' % s.get('lineHeight', 'normal'), '  font-weight: %s;' % s.get('fontWeight', '400'),
                   '  letter-spacing: %s;' % (s.get('letterSpacing') or '0')]
         if s.get('fontStyle') and s['fontStyle'] != 'normal':
@@ -306,7 +317,7 @@ def main():
         len(ki['radius']['tokens']), len(ki['shadow']['tokens']), arc.hash))
     if a.tokens_css:
         with open(a.tokens_css, 'w', encoding='utf-8', newline='\n') as f:
-            f.write(tokens_css(ki))
+            f.write(tokens_css(ki, css))
         print('kiírva: %s' % a.tokens_css)
     if a.bundle_css:
         with open(a.bundle_css, 'w', encoding='utf-8', newline='\n') as f:
