@@ -52,4 +52,4 @@ A 2.29 sorai kikapcsolt tanúval bájtra azonosak maradnak (csak a fejléc kód-
 
 ## 5. Döntések
 
-DT-F197a (helyőrző): a dontesek/uj/bdb-harmadik-tanu-618784.md-ben.
+DT776 (helyőrző): a dontesek/uj/bdb-harmadik-tanu-618784.md-ben.

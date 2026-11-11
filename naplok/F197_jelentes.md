@@ -54,7 +54,7 @@ akkor javítottam, és a próbát a javított szabállyal futtattam. A ⛔ szán
 | **v3 (végleges)** | **0 / 28** | **7** | **1** | **1** | **7** |
 
 A v1 a 40 soron még több hasznot adott, mint zajt (8 : 4); a 200 ponton már nem (8 : 28). A v2 és a v3 elvi javítás, nem egyes sorokra
-szabott, de a „0 téves riasztás” **mintán belüli** érték: a felhasználó döntése (DT-F197a, 🟢, 2026-11-11): a tanú kikapcsolva kerül be, és csak egy független, kb. 40 soros kézi szúrópróba után kapcsolható be (N-F197a); a mintán kívüli
+szabott, de a „0 téves riasztás” **mintán belüli** érték: a felhasználó döntése (DT776, 🟢, 2026-11-11): a tanú kikapcsolva kerül be, és csak egy független, kb. 40 soros kézi szúrópróba után kapcsolható be (N-F197a); a mintán kívüli
 mérés a következő vak minta (N-F197b).
 
 ## 3. A seed-103 200 pontjának újramérése
@@ -78,7 +78,7 @@ Részlet: `naplok/F197_seed103_reszlet.tsv`.
 
 Az egyetlen hibás `biztos` sort (s103-N013, `fej` ↔ `-/1`) a tanú megfogja, egy helyes sort (s103-N087) tévesen jelöl.
 
-**Az egyezés nem emel** (DT-F197a). A feladat szerint: „egyezésnél a pont `biztos` marad”. A mérés szerint az emelés 5 hibás pontot vinne
+**Az egyezés nem emel** (DT776). A feladat szerint: „egyezésnél a pont `biztos` marad”. A mérés szerint az emelés 5 hibás pontot vinne
 a `biztos` sorok közé: a homonima-hibákat a tanú nem látja, és az s103-N004-ben a Sefaria ugyanazt a téves törzset adja.
 
 ## 4. Mintán kívül: a zaj a teljes szócikkeken (arany nélkül)
