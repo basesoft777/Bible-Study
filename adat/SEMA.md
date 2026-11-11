@@ -2111,7 +2111,7 @@ Kulcs: `id`. Új sor, ha egy motívum prózája közel-keleti hátteret kezd eml
 
 ---
 
-### 2.52 A visszhang-réteg adatkészletei — `Targum_PD`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`, `BDB_rokon_irasok` (F176, FELADATOK #176, 2026-11-08)
+### 2.52 A visszhang-réteg adatkészletei — `Targum_PD`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`, `BDB_rokon_irasok`, `Glossa_Ordinaria` (F176, FELADATOK #176, 2026-11-08; a Glossa: F183)
 
 Öt `konkordancia/` tábla a lexikonlap „visszhang” rétegéhez (ókori fordítások, az ÚSZ kritikai apparátusa és
 szövegváltozat-jelölése, a BDB rokon nyelvi írásai). **Generált nézetek** (`eszkozok/visszhang/*.py`): kézzel nem
@@ -2131,6 +2131,7 @@ Károli-vers**; a Károli-feloldás nézetoldali, a versmegfeleltetésen át (DT
 |---|---|
 | `Targum_PD.tsv` | `igehely`, `forras_vers`, `targum` (`Onkelos` \| `Jonatan`), `forras_mu`, `verzio`, `forras_kulcs`, `szoveg` |
 | `Vulgata_Clementina.tsv` | `igehely`, `forras_vers` (USFM-kód + fejezet:vers), `forras_kulcs`, `szoveg` (Glossa-lábjegyzet nélkül) |
+| `Glossa_Ordinaria.tsv` (F183) | `igehely`, `forras_vers`, `forras_kulcs`, `sorszam`, `jegyzet` — a Vulgata-csomag Glossa-lábjegyzetei (Migne, 1880, közkincs; `eszkozok/visszhang/glossza_import.py`) |
 | `SBLGNT_apparatus.tsv` | `igehely`, `forras_vers`, `sorszam`, `forras_kulcs`, `jegyzet` (szó szerint; az alapszöveg nincs benne) |
 | `TAGNT_valtozatok.tsv` | `igehely`, `forras_ref`, `szamozas` (`nrsv` \| `kjv` \| `egyeb` \| `na`), `szo_sorszam`, `tipus`, `strong`, `gorog`, `kiadasok`, `hianyzik_ebbol`, `mozgatas`, `jelentesvaltozat`, `forras_kulcs`; a THGNT (`Tyn`) szövege nincs benne, csak a jelölés |
 | `BDB_rokon_irasok.tsv` | `strong`, `sefaria_ref`, `nyelv` (`arab` \| `etióp` \| `szír`), `szoalak`, `kontextus` (≤ 120 karakter; a token körüli szövegrész a BDB-szócikkből, nem a szócikk feje, mert az mutatja a rokon szót: DT634), `proveniencia` (soronként: `scope=… \| forras=… \| ts=…`) |
@@ -2263,6 +2264,76 @@ veti össze vele (hibaosztályonként).
 | `indoklas` | az ítélet forrásidézettel |
 | `kitolto_modell` | a két kitöltő tényleges modellje (`A=…; B=…`) |
 | `proveniencia` | `scope=seed-<n> vak minta (<azon>) \| forras=Thayer.lexicon + két vak Opus-kitöltő + kézi ítélet (<modell>) \| ts=<nap>`; a seed-202/203 sorain „két korlátozottan vak Opus-kitöltő (… a gépi bekezdés-vágást látták …)” |
+
+### 2.57 `visszhang_tanuk.tsv` — a hatástörténeti szakasz tanúrétege (F183, FELADATOK #183, 2026-11-11)
+
+A lexikonlap „9. Hatástörténet: ókori fordítások és értelmezők” szakaszának „Ókori értelmezők” része ebből a táblából
+renderel. Egy sor = egy ókori értelmező (tanú), aki a motívum egy helyét **ugyanazzal a kapcsolattal** olvassa, amelyet a
+lap leír. A keresési találat (a tanúindex, `konkordancia/Tanu_*` — 2.52 mellett F191; a Chain Lineage Browser) jelölt,
+nem a lap sora: a lapra csak e tábla ellenőrzött sora kerül (CLAUDE.md 2. szabály). Író:
+`eszkozok/visszhang/tanu_kinyer.py` (`beolvas`, `cl`, `ellenoriz`); a Chain Lineage-lekérdezés:
+`eszkozok/visszhang/chain_lineage.py`.
+
+| Oszlop | Tartalom |
+|---|---|
+| `motivum` | a motívum azonosítója |
+| `igehely` | a motívum helye (Károli-alak, az `elofordulasok.tsv` `igehely`-e); csak Remez- vagy Sod-szintű hely (a generátor a többit nem rendereli) |
+| `tanu_hely` | ahol a tanú a kapcsolatot teszi: a tárgyalt vers(ek), Károli-alakban, `; `-vel |
+| `hagyomany` | `gorog` \| `latin` \| `szir` \| `rabbinikus`; helyenként hagyományonként legfeljebb egy ellenőrzött sor |
+| `tanu` | a szerző (magyar névalak, ahol van) vagy a rabbinikus mű |
+| `mu` | a mű címe (a forrás alakjában) |
+| `kor` | a forrás szerinti kor (`N. sz.`; a HCF éve zárójelben); a forrás nélkül üres — emlékezetből nem tölthető |
+| `kapcsolat` | egy mondat, **saját szavakkal, idézet nélkül**: mit lát a tanú; a `gepi` sornál a lánc magversei |
+| `forras` | `hcf` (HistoricalChristianFaith metaadat + a helyi szöveg olvasása) \| `sefaria` (Sefaria-szöveg olvasása) \| `glossa` (a Glossa Ordinaria jegyzete, `konkordancia/Glossa_Ordinaria.tsv`) \| `chain_lineage` (tényadat) |
+| `forras_url` | a forrás helye (a `chain_lineage` sornál a lekérdezés JSON-végpontja) |
+| `lekerdezve` | a lekérdezés napja |
+| `biblindex` | `igen`, ha a Chain Lineage-tanú a BiblIndex-láncból jön; különben üres |
+| `kinyeres` | `modell` \| `gepi` |
+| `modell` | a kinyerő tényleges modellneve; `gepi` sornál üres |
+| `ellenorzes` | a második kéz (tényleges modellnév, dátum, a soronkénti indok), a `gepi` sornál a lekérdezés újrafuttatása; **üres: ellenőrizetlen, a lapon nem renderel** |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` (a HCF-sornál a `hcf_id` és a nyers adatbázis sha256-ja) |
+
+**Kulcs:** `motivum` + `igehely` + `hagyomany` + `tanu` + `forras`.
+
+**Szöveg nincs a táblában.** A HCF-idézetek egy része jogvédett (2.52 mellett: `konkordancia/Tanu_index_README.md`), a
+Chain Lineage Browser licencet nem ad meg (a felhasználó döntése, 2026-11-11: csak tényadat és hivatkozás), a Sefaria-
+szövegek licence szövegenként eltér. Ezért a tábla csak tényadatot és egy saját szavas mondatot hordoz; az olvasott
+szöveg a kinyerő és az ellenőr munkaanyaga, a repóba nem kerül.
+
+**Két kéz.** A `modell` sor `kapcsolat` mondatát egy másik modell ellenőrzi a forrásszövegen (a mondat hű-e, a tanú
+ugyanazt a kapcsolatot látja-e, a szerző, mű és kor egyezik-e, nem szó szerinti idézet-e); az ítélet soronkénti, érdemi
+indokkal áll az átnézés-bemenetben (`motivum`, `igehely`, `hagyomany`, `tanu`, `atnezo`, `itelet` = `jo` \| `elvet`,
+`megjegyzes`). A `gepi` sor a lekérdezés újrafuttatásával ellenőrzött: a sor csak akkor íródik, ha a megadott szerző és
+mű a válaszban a lánccsalád minden magversét idézi.
+
+**Forrásmegjelölés a lapon** (a felhasználó jóváhagyásával, 2026-11-11): a Chain Lineage-tanúnál a böngésző
+(Blidstein, Inowlocki, Verheyden; URL, lekérdezési dátum) és a bibliai hivatkozások eredete (BiblIndex, Institut des
+Sources Chrétiennes, CNRS – HiSoMA, Lyon); a HCF-tanúnál a HistoricalChristianFaith adatbázis; a rabbinikusnál a Sefaria.
+
+### 2.58 `vitatott_forrasok.tsv` — a vitatott pontok lektorált szakirodalma (F183, K67f, 2026-11-11)
+
+A felhasználó döntése (2026-11-11, „mehet”): a lexikonlap 10. Értelmezés „⚠️ Vitatott pontok” részében minden vitatott
+ponthoz legfeljebb egy lektorált forrás (folyóiratcikk vagy tudományos kiadó könyve) OpenAlexből, Crossrefből vagy
+DOAB-ból, DOI-val vagy nyílt eléréssel, egymondatos, saját szavas összefoglalóval; a forrás ugyanarról a kérdésről szóljon,
+ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `eszkozok/szakirodalom_kinyer.py` (`beolvas`,
+`ellenoriz`); a keresés naplója a motívum jelentésében (HAMART-001: `naplok/F183_akademiai_kereses.md`).
+
+| Oszlop | Tartalom |
+|---|---|
+| `motivum` | a motívum azonosítója |
+| `pont` | a vitatott pont félkövér címe a forrásprózában, a záró pont nélkül (a generátor ezt keresi: `**<pont>.**`) |
+| `szerzo`, `cim`, `megjelenes`, `ev` | a bibliográfiai adat az API válaszából; a hiány-sornál üres |
+| `doi`, `url` | a forrás-sornál legalább az egyik kötelező |
+| `nyilt_eleres` | `igen` \| `nem` (az API szerint) |
+| `osszefoglalo` | egy mondat, saját szavakkal, idézet nélkül; csak azt állítja, amit a kinyerő a forrásból (legalább az absztraktból) olvasott; a hiány-sornál a hiány kimondása |
+| `lekerdezes` | a lekérdezés URL-je (vagy a napló hivatkozása) |
+| `lekerdezve` | a lekérdezés napja |
+| `kinyeres`, `modell` | `modell` \| `kezi`; a kinyerő tényleges modellneve |
+| `ellenorzes` | a második kéz (tényleges modellnév, dátum, indok); **üres: a lapon nem renderel** |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` |
+
+**Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
+Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
 
 ## 3. Integritási szabályok
 
@@ -2483,7 +2554,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `LABJEGYZET` | BUKÁS | definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) |
 | `PROZA_1A` | BUKÁS | az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`) |
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
-| `VISSZHANG` | BUKÁS | a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
+| `VISSZHANG` | BUKÁS | a visszhang-blokk szabályai (a 9. Hatástörténet ószövetségi táblája, korábban 4.11; F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7 |
 | `NAVE_ANGOL` | BUKÁS | a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör) |
 | `MUNKASZO` | BUKÁS | munkaszó vagy munkajelölő az olvasói szövegben (a `MUNKASZAVAK` lista: „próba”, „javaslat”, „ellenőrzendő”, „függőben”, „nincs bekötve”, „kutatói jelölés”, „azonosításra vár”, „D-minta”, „Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, F24, F35) |
 | `SZAKASZ_HIV` | BUKÁS | a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat (a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b)) |

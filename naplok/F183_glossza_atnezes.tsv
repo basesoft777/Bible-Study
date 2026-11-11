@@ -1,0 +1,30 @@
+# F183 — a Glossa Ordinaria átnézése a HAMART-001 Remez/Sod-helyein (ELLENOR_F183 3.). Forrás: konkordancia/Glossa_Ordinaria.tsv; a zsoltároknál a Vulgata számozása. Ítélet: claude-opus-5-5 (kinyerő), 2026-11-11.
+igehely	pardes_szint	glossza_kulcsok	jegyzet_db	itelet
+1Móz 4:10-11	Peshat/Remez	1Móz 4:10, 1Móz 4:11	2	tanú (latin): a RAB.-jegyzet az 1Móz 3:17 és a 4:11 átkát köti össze (adat/visszhang_tanuk.tsv)
+1Móz 5:29	Remez	1Móz 5:29	0	nincs jegyzet
+1Móz 6:13	Peshat/Drash/Sod	1Móz 6:13	1	a jegyzet a lánc kapcsolatát nem mondja ki
+1Móz 8:21	Remez	1Móz 8:21	1	a jegyzet a lánc kapcsolatát nem mondja ki
+1Móz 9:11	Remez	1Móz 9:11	0	nincs jegyzet
+1Móz 9:15	Remez	1Móz 9:15	0	nincs jegyzet
+1Móz 12:3	Remez/Drash	1Móz 12:3	0	nincs jegyzet
+5Móz 28:18	Remez	5Móz 28:18	0	nincs jegyzet
+Zsolt 14:1	Remez	Zsolt 13:1	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Zsolt 53:2	Remez	Zsolt 52:1, Zsolt 52:2	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Ez 7:23	Remez	Ez 7:23	0	nincs jegyzet
+Ez 8:17	Remez	Ez 8:17	0	nincs jegyzet
+Ez 12:19	Remez	Ez 12:19	0	nincs jegyzet
+Ez 28:16	Remez	Ez 28:16	0	nincs jegyzet
+Zsolt 74:20	Remez	Zsolt 73:20	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Mik 6:12	Remez	Mik 6:12	0	nincs jegyzet
+Sof 1:2-3	Remez	Sof 1:2, Sof 1:3	0	nincs jegyzet
+Sof 1:9	Remez	Sof 1:9	0	nincs jegyzet
+Ézs 60:18	Sod	Ézs 60:18	0	nincs jegyzet
+Jer 6:7	Remez	Jer 6:7	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Jer 51:46	Remez	Jer 51:46	0	nincs jegyzet
+Hós 10:8	Remez	Hós 10:8	0	nincs jegyzet
+Róm 8:21	Drash/Sod	Róm 8:21	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Gal 3:13-14	Remez	Gal 3:13, Gal 3:14	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Zsid 6:7-8	Remez/Drash	Zsid 6:7, Zsid 6:8	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Jel 11:18	Sod	Jel 11:18	1	a jegyzet a lánc kapcsolatát nem mondja ki
+Jel 19:2	Remez/Sod	Jel 19:2	0	nincs jegyzet
+Jel 22:3	Sod	Jel 22:3	0	nincs jegyzet
