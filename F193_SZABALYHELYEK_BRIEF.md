@@ -5,9 +5,9 @@ kod: SZABALYHELYEK
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/szabalyhelyek-97e545
-pr: 0
+pr: 687
 ad: a sablon 6, 9, 10 és a MUNKAMENET a HAMART új szerkezetét (9. Hatástörténet, 10–12. átszámozva) és a KESZ_LAP_KOVETELMENY (b) és J döntéseit írja elő; az ISTENTISZT-001 prózaírója nem ismétli a „10. Alkalmazás”-hibát
 kovetkezo: "Te: a DT-F193d (részleges felülírás-jelölés) jóváhagyása, a draft PR áttekintése és merge-e; az ISTENTISZT-001 prózája ezután és a visszhang 2 adata (#183) után indulhat (sablon 10 előfeltétel 3.)"
 munka: folyamat
