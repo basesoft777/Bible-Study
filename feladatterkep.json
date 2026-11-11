@@ -5800,7 +5800,7 @@
     "sor": 772
    },
    {
-    "id": "DT-F182s",
+    "id": "DT781",
     "feladat": "#182 HAMART_JAVITO (a lap eleje és a Kolofon; 2026-11-11)",
     "kerdes": "A lap elején álló teljes azonosító tábla helyett mi álljon a cím alatt, és hová kerüljenek a technikai mezők?",
     "allapot": "alkalmazasra_var",
@@ -5810,7 +5810,7 @@
     "sor": 775
    },
    {
-    "id": "DT-F182t",
+    "id": "DT782",
     "feladat": "#182 HAMART_JAVITO (az idézés adatai és a kanonikus cím; 2026-11-11)",
     "kerdes": "Mi álljon a lapon a szerző, a lexikon címe és a kanonikus cím helyőrzője helyén, és honnan jöjjön a cím?",
     "allapot": "alkalmazasra_var",

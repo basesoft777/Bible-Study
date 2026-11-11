@@ -23,7 +23,7 @@ ELTÉRÉS: 7 tétel
 | Sablon 6 ↔ kód | OK | `sablonok/6_PaRDeS_lexikon_oldal_sablon.md:557` | Egyezik; a forrás- és a magyarázórész kettéválasztását (1.) a sablon sem mondja. |
 | K21 | OK | `sablonok/KESZ_LAP_KOVETELMENY.md:55` | |
 | A02 | **ELTÉRÉS (4)** | `sablonok/KESZ_LAP_KOVETELMENY.md:214` | A státusz frissült, a leírás maradt („Az azonosító tábla a lap elején…”). |
-| DT-F182s, helyőrző | OK | `dontesek/uj/hamart-lapkeret.md:1` | Helyőrzős, végleges szám nincs az ágon. A felhasználó idézett szavai NEM ELLENŐRIZHETŐK. |
+| DT781, helyőrző | OK | `dontesek/uj/hamart-lapkeret.md:1` | Helyőrzős, végleges szám nincs az ágon. A felhasználó idézett szavai NEM ELLENŐRIZHETŐK. |
 | Halott kód, elavult megjegyzések | **ELTÉRÉS (5)** | `eszkozok/lexikon_general.py:6613-6618, 6594-6597, 5659-5660` | Az `azonosito_tabla()`-t semmi nem hívja; a megjegyzések szerint még a tábla „nyitja a lapot”. |
 | Kettős zárójel | **ELTÉRÉS (7)** | lap `:3550, 3553, 3554, 3558` | „(CC BY 4.0 (a nyílt adatmagban))”: a `'- %s (%s)'` formátum és a `NYILT_MAG_LICENC` zárójele egymásba ágyazódik. |
 | A1 | OK | — | A „régi forma” állítás lekérdezés-hiányos (2.). |
@@ -36,6 +36,6 @@ ELTÉRÉS: 7 tétel
 **Az ELTÉRÉS-ek súlyossági sorrendben:**
 
 1. **(tartalmi)** A fordítástábla licencsora hamis („a forrásszöveg közkincs” nem igaz az UBS-glosszákra, CC BY-SA 4.0); az előfordulás-tábla CC BY sora az igehelyenkénti magyarázatra is kiterjed, holott az a nyílt magból kimarad.
-2. **(tartalmi, döntést kíván)** A DT-F182s és a jelentés történeti premisszája hamis: a „régi” formában a tábla a lap **elején** állt, kulcs–érték alakban; a prózai alak a végrehajtó értelmezése. A forma kérdése a felhasználóé.
+2. **(tartalmi, döntést kíván)** A DT781 és a jelentés történeti premisszája hamis: a „régi” formában a tábla a lap **elején** állt, kulcs–érték alakban; a prózai alak a végrehajtó értelmezése. A forma kérdése a felhasználóé.
 3. **(mechanikus)** A tesztek nem fogják el az 1. tételt (6.).
 4. **(mechanikus)** Az A02 leírása elavult (4.); halott kód és elavult megjegyzések (5.); kettős zárójel (7.).
