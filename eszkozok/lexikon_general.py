@@ -8260,8 +8260,9 @@ def blokk_hatas_usz(m, sorai):
                 lemma.setdefault(r['strong'], to)
     # szócsaládok: összefüggő komponensek — két Strong egy családban, ha közös a tövük, vagy a Strong-szótár
     # származtatása köti össze (φθορά ← φθείρω; διαφθείρω ~ φθείρω a tő szerint)
+    # determinisztikus sorrend (E28): az első előfordulás, egyezésnél a Strong-szám (két szó ugyanabban a versben)
     strongok = sorted({r['strong'] for r in usz},
-                      key=lambda s_: min(sorrend.get(x['igehely'], 999) for x in usz if x['strong'] == s_))
+                      key=lambda s_: (min(sorrend.get(x['igehely'], 999) for x in usz if x['strong'] == s_), s_))
     tovek = {st: _gorog_tovek(lemma.get(st, '')) for st in strongok}
     csoportok = []
     for st in strongok:
@@ -8272,6 +8273,7 @@ def blokk_hatas_usz(m, sorai):
             cs['strongok'] = c['strongok'] + cs['strongok']
             cs['tovek'] |= c['tovek']
             csoportok.remove(c)
+        cs['strongok'].sort(key=strongok.index)
         csoportok.append(cs)
     csoportok.sort(key=lambda c: min(strongok.index(x) for x in c['strongok']))
     szolista, _mag = lanc_szavak(m, sorai)
