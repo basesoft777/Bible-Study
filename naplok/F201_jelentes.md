@@ -33,3 +33,7 @@ Az újragenerálás idempotens: a jelenlegi fán lefuttatva (Windows, `autocrlf`
 ## Nyitva
 - A `/befogad` a `--foglal`-t az 5. lépésben hívja; amíg nem fut ténylegesen, az orkesztrátor adja a számot.
 - A foglalás push: a CLAUDE.md „push csak kérésre” szabálya miatt a `--foglal` külön kapcsoló.
+
+## Bővítés (az orkesztrátor kérése)
+- **`.py` literálba írt helyőrző (N-F119a, N-F12d):** nincs új szabály, mert az E32 (`eszkozok/ellenorzes/szabalyok.py`, #141) ezt már jelzi az `eszkozok/**/*.py` string-literáljaiban: a már kiosztott és a merge-kor kiosztásra váró helyőrzőt is, PR-ban. A szabály a diff által nem érintett sorokat JELENTÉS-re minősíti (D8), ezért egy régi literál nem blokkol, de látszik. A `szamkiosztas.py` a `.py`-t szándékosan nem írja át (egy kód-literál átírása a tábla és a generátor eltérését rejtené el). Ha egy konkrét eset (pl. `bdb_jelolt/forras_javit.py`) mégis átcsúszott, annak az E32 `--teljes` futása mutatja meg a sorát; ezt külön tétel vizsgálja.
+- **Rossz helyű döntésfájl:** új E26-ág (DT-F201d): a helyőrzős tételt tartalmazó fájl csak a `dontesek/uj/`, `nyitott/uj/` mappában vagy a fő fájlban állhat; a `dontes/`, a `dontesek/` és a `nyitott/` gyökerében álló .md HIBA. Teszt: `test_szamkiosztas.py` (16 teszt zöld).

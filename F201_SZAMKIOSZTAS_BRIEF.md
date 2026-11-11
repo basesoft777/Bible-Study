@@ -11,7 +11,7 @@ ad: a `szamkiosztas` workflow a csere után újragenerálja a számtól függő 
 kovetkezo: "Te: a draft PR áttekintése; merge-et az orkesztrátor végzi a felhasználó kérésére"
 munka: folyamat
 olvas: [.github/workflows/feladatok.yml, .github/workflows/gerinc_terkep.yml, .github/workflows/jelolt_eloszures.yml, eszkozok/szamkiosztas.py, eszkozok/feladatok.py]
-ir: [.github/workflows/feladatok.yml, .github/workflows/szamkiosztas.yml, .github/workflows/gerinc_terkep.yml, .github/workflows/jelolt_eloszures.yml, eszkozok/szamkiosztas_ujragen.py, eszkozok/gepi_commit_uzenet.py, eszkozok/foglalas_takarit.py, eszkozok/feladatok.py, eszkozok/szamkiosztas.py, eszkozok/teszt_f201.py, .claude/commands/befogad.md, dontesek/uj/f201-szamkiosztas-083885.md, F201_SZAMKIOSZTAS_BRIEF.md, naplok/F201_jelentes.md]
+ir: [.github/workflows/feladatok.yml, .github/workflows/szamkiosztas.yml, .github/workflows/gerinc_terkep.yml, .github/workflows/jelolt_eloszures.yml, eszkozok/szamkiosztas_ujragen.py, eszkozok/gepi_commit_uzenet.py, eszkozok/foglalas_takarit.py, eszkozok/feladatok.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szamkiosztas.py, eszkozok/teszt_f201.py, .claude/commands/befogad.md, dontesek/uj/f201-szamkiosztas-083885.md, F201_SZAMKIOSZTAS_BRIEF.md, naplok/F201_jelentes.md]
 fugg: []
 nem_fugg: [111, 121, 123, 133, 151, 156, 182, 188, 192]
 ---
@@ -33,3 +33,7 @@ nem_fugg: [111, 121, 123, 133, 151, 156, 182, 188, 192]
 - G1: egy próba-helyőrzővel (a #182 számkiosztása előtti állapot) a workflow lépéseinek helyi szimulációja: újragenerálás nélkül E28/E35 piros, vele zöld (`naplok/F201_jelentes.md`).
 - G2: a `szamkiosztas:` commit-üzenet első sora változatlan (E32).
 - ⛔ A merge nem ennek a sessionnek a dolga; a workflow csak a main-en futtatható, a próbája `workflow_dispatch` a merge után.
+
+## Bővítés (az orkesztrátor kérése, 2026-11-11; a felhasználó: „minden generátorhibát javítsunk a tapasztalatok alapján”)
+4. **`.py` literálba írt helyőrző:** az E32 ezt már jelzi (kiosztott és kiosztásra váró helyőrzőt is); új szabály nincs, a jelentés rögzíti.
+5. **Rossz helyű döntés-/nyitott-fájl** (`dontes/uj/` az érvényes `dontesek/uj/` helyett): az E26 új ága elutasítja. DT-F201d, teszt: `test_szamkiosztas.py`.
