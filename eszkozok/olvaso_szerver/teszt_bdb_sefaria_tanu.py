@@ -19,7 +19,7 @@ class Osszevet(unittest.TestCase):
         self.assertEqual(S.osszevet('', '', "Hiph'il/1/a", '1||Hiph./1/a', False), 'egyezik')
 
     def test_szam_hiany_elteres(self):
-        # a „fej” ↔ „1.”: a szám hiánya is eltérés (seed-103 N013 osztálya)
+        # a „fej” ↔ „1.”: a szám hiánya is eltérés (seed-103 s103-N013 osztálya)
         self.assertEqual(S.osszevet('', '', 'fej', '1||-/1/-', False), 'elter')
         self.assertEqual(S.osszevet('', '', 'fej', '1||-/-/-', False), 'egyezik')
 
@@ -40,7 +40,7 @@ class Osszevet(unittest.TestCase):
         self.assertEqual(S.osszevet('', '', '-/1/f', '2|II|-/1/f', False), 'egyezik')
 
     def test_torzs_hiany(self):
-        # v3: a táblában kifejezetten törzs nélküli számozott pont ↔ Sefaria-törzs: eltérés (N061); a fej nem
+        # v3: a táblában kifejezetten törzs nélküli számozott pont ↔ Sefaria-törzs: eltérés (s103-N061); a fej nem
         self.assertEqual(S.osszevet('II', '', '-/2', '2||Pi./2/-', True), 'elter')
         self.assertEqual(S.osszevet('', '', 'fej', '1||Qal/-/-', False), 'egyezik')
         self.assertEqual(S.osszevet('', '', '-/2', '1||-/2/-', False), 'egyezik')

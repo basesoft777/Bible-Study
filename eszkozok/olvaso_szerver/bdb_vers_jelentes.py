@@ -508,7 +508,7 @@ def kiir(sorok, modhash, ts, sefaria_tanu=False):
            'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py+bdb_sefaria_tanu.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (a szakasztábla és a sorbelső fejek; bizonyosság: P2)'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), fajl_hash(SZAKASZOK), modhash)
-           + ((' + F196 harmadik tanú BEKAPCSOLVA: adat/bdb_jp_sefaria.tsv@%s (Sefaria BDB; egyezés → biztos, eltérés → ketes, DT-F196a)'
+           + ((' + F196 harmadik tanú BEKAPCSOLVA: adat/bdb_jp_sefaria.tsv@%s (Sefaria BDB; eltérés → ketes, egyezésnél változatlan, F196)'
                % fajl_hash(SEFARIA_TABLA)) if sefaria_tanu else ''),
            '\t'.join(FEJ)]
     for s in sorok:

@@ -3,8 +3,8 @@
 
 A tanú a Sefaria BDB-feldolgozása (`/api/words`, „BDB Dictionary” / „BDB Aramaic Dictionary”): ugyanaz az 1906-os szöveg,
 de a jelentésfát (törzs → szám → betű) és az igehely-linkeket (`data-ref`) a Sefaria saját feldolgozása adja, a mi
-szeletelőnktől (`bdb_szelet`) és szakasztáblánktól (2.30) függetlenül. Ahol a két pont egyezik, a pont `biztos`; ahol
-eltér, `ketes:jp_tanu_sefaria`; ahol a Sefaria a verset nem linkeli, a bizonyosság változatlan (DT-F196a).
+szeletelőnktől (`bdb_szelet`) és szakasztáblánktól (2.30) függetlenül. Ahol a két pont eltér, a sor `ketes:jp_tanu_sefaria`;
+egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (az egyezés nem emel; DT-F196a).
 
 Három lépés, mind külön alparancs:
   letolt   a Sefaria-válaszok gyorsítótárba, a REPÓN KÍVÜL (alapból D:\\pardes_tanu\\bdb\\api; `--cache`), kérésenként
@@ -67,6 +67,8 @@ SEF_KONYV = {
     'Malachi': 'Mal',
 }
 REF_RX = re.compile(r'data-ref="([^"]+)"')
+# a törzsnév egyetlen szó (betű, átírásjel, aposztróf, pont); a többszavas vagy írásjeles `form` fejléc, nem törzs (ELLENOR_F196)
+TORZS_FORM = re.compile(r"^[A-Za-z\u00C0-\u024F\u02BE\u02BF'`.]+$")
 HEB = re.compile('[\u0590-\u05FF]+')
 ROMAI = re.compile(r'^(I|II|III|IV|V|VI|VII|VIII|IX|X)$')
 ROMAI_ERT = {'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, 'VI': 6, 'VII': 7, 'VIII': 8, 'IX': 9, 'X': 10}
@@ -232,8 +234,8 @@ def fa_utak(bejegyzes):
     ki = []
 
     def bejar(s, resz, torzs, szam, betu):
-        if s.get('form'):
-            torzs = s['form']
+        if s.get('form') and TORZS_FORM.match(s['form'].strip()):
+            torzs = s['form'].strip()
             resz, szam, betu = '', '', ''
         if s.get('num'):
             f, e = _szint(s['num'])
@@ -285,7 +287,7 @@ def _torzs_kulcs(t):
 def _torzs_egyezik(a, b):
     """`a`: a tábla törzse ('-': a táblában kifejezetten törzs nélküli számozott pont), `b`: a Sefaria-pont törzse."""
     if a == '-':
-        return not b      # v3: a törzs hiánya eltérés, ha a Sefaria törzset ad (a szám-szabály párja; N061)
+        return not b      # v3: a törzs hiánya eltérés, ha a Sefaria törzset ad (a szám-szabály párja; s103-N061)
     a, b = _torzs_kulcs(a), _torzs_kulcs(b)
     if not a or not b:
         return True
@@ -360,12 +362,14 @@ def strong_utak(cache, st, fej, alakok):
         bej = azonos
     bej = [e for e in bej if fa_utak(e)]
     utak = collections.defaultdict(list)
+    bejegyzes = collections.defaultdict(set)   # vers → a bejegyzések, amelyekben áll
     for e in sorted(bej, key=lambda e: e.get('rid') or ''):
         h = homonima(e.get('headword', ''))
         for v, p in fa_utak(e):
             utak[v].append(ut_szoveg(h, p))
+            bejegyzes[v].add(e.get('rid') or '')
     tobb = len({homonima(e.get('headword', '')) for e in bej}) > 1
-    return [e.get('rid') or '' for e in bej], utak, tobb
+    return [e.get('rid') or '' for e in bej], utak, tobb, {v for v, r in bejegyzes.items() if len(r) > 1}
 
 
 def tabla(cache, ts, strongok=None):
@@ -383,7 +387,7 @@ def tabla(cache, ts, strongok=None):
         u = strong_utak(cache, st, fej.get(st, ''), alak.get(st, []))
         if u is None:
             continue  # nincs lekérdezve: nincs sor (a hiány nem ítélet)
-        rid, utak, tobb = u
+        rid, utak, tobb, tobb_bej = u
         hanyadik = collections.Counter()
         osszes = collections.Counter(r['mt_vers'] for r in per[st])
         for r in sorted(per[st], key=lambda r: int(r['sorszam'])):
@@ -393,7 +397,7 @@ def tabla(cache, ts, strongok=None):
             lst = utak.get(v, [])
             if not lst:
                 ill, su = 'nincs', ''
-            elif len(lst) == osszes[v]:
+            elif len(lst) == osszes[v] and v not in tobb_bej:  # bejegyzéseken át nincs k-adik illesztés
                 ill, su = 'pontos', lst[k]
             else:
                 ill, su = 'barmely', ';'.join(sorted(set(lst), key=lst.index))
@@ -436,7 +440,7 @@ def _m2():
 
 
 def seed103_helyes():
-    """{azon: (kulcssor, helyes-e)} a F185_seed103_osszevet.py szabálya szerint (arany: A = B; az N182 ítélete B)."""
+    """{azon: (kulcssor, helyes-e)} a F185_seed103_osszevet.py szabálya szerint (arany: A = B; az s103-N182 ítélete B)."""
     M2 = _m2()
     N = os.path.join(NAPLO, 'BDB_SZELETELO_M2_')
     kulcs = {r['azon']: r for r in M2.olvas(N + 'minta_seed103_kulcs.tsv')}

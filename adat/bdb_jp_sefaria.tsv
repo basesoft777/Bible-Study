@@ -1224,7 +1224,7 @@ H0519	67	1Kir 3:20	BDB00579	pontos	1||-/2/-	scope=H0519 | forras=Sefaria /api/wo
 H0519	68	1Sám 1:11	BDB00579	pontos	1||-/2/-	scope=H0519 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0519	69	Zsolt 86:16	BDB00579	pontos	1||-/2/-	scope=H0519 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0519	70	Zsolt 116:16	BDB00579	pontos	1||-/2/-	scope=H0519 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0520	1	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0520	1	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	barmely+hom	3||-/-/-;4||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	2	1Móz 6:15	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	3	5Móz 3:11	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	4	Jer 51:13	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -1315,8 +1315,8 @@ H0520	88	1Sám 17:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-
 H0520	89	Józs 3:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/1/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	90	2Krón 3:3	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/1/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	91	Jer 51:13	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	3||-/2/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0520	92	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	4||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0520	93	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	4||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0520	92	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	barmely+hom	3||-/-/-;4||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0520	93	Ézs 6:4	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	barmely+hom	3||-/-/-;4||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	94	Dán 3:1	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	1||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	95	Dán 3:1	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	1||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0520	96	Ezsd 6:3	BDB00587,BDB00588,BDB00589,BDB00590,BDBA0049	pontos+hom	1||-/-/-	scope=H0520 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -2953,28 +2953,28 @@ H0996	69	Péld 6:19	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/w
 H0996	70	1Kir 5:26	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0996	71	1Kir 14:9	BDB01154	nincs		scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0996	72	Neh 5:18	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	73	Ez 31:10	BDB01154	pontos	1||With other prepositions:—/-/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	74	Ez 31:14	BDB01154	pontos	1||With other prepositions:—/-/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	75	Ez 10:2	BDB01154	pontos	1||With other prepositions:—/-/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	76	Ézs 44:4	BDB01154	pontos	1||With other prepositions:—/-/b	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	77	Ez 19:11	BDB01154	pontos	1||With other prepositions:—/-/c	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	78	1Móz 49:10	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	79	2Móz 25:22	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	80	4Móz 7:89	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	81	Hós 2:4	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	82	Zak 6:1	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	83	Zak 9:7	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	84	5Móz 28:57	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	85	2Kir 16:14	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	86	Ez 47:18	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	87	4Móz 17:2	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	88	Zsolt 104:12	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	89	Jer 48:45	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	90	4Móz 21:28	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	91	Ez 37:21	BDB01154	pontos	1||With other prepositions:—/-/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	92	Ez 10:2	BDB01154	pontos	1||With other prepositions:—/-/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	93	Ez 10:6	BDB01154	pontos	1||With other prepositions:—/-/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H0996	94	Ez 10:7	BDB01154	pontos	1||With other prepositions:—/-/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	73	Ez 31:10	BDB01154	pontos	1||-/1/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	74	Ez 31:14	BDB01154	pontos	1||-/1/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	75	Ez 10:2	BDB01154	pontos	1||-/1/a	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	76	Ézs 44:4	BDB01154	pontos	1||-/1/b	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	77	Ez 19:11	BDB01154	pontos	1||-/1/c	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	78	1Móz 49:10	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	79	2Móz 25:22	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	80	4Móz 7:89	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	81	Hós 2:4	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	82	Zak 6:1	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	83	Zak 9:7	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	84	5Móz 28:57	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	85	2Kir 16:14	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	86	Ez 47:18	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	87	4Móz 17:2	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	88	Zsolt 104:12	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	89	Jer 48:45	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	90	4Móz 21:28	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	91	Ez 37:21	BDB01154	pontos	1||-/1/d	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	92	Ez 10:2	BDB01154	pontos	1||-/1/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	93	Ez 10:6	BDB01154	pontos	1||-/1/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H0996	94	Ez 10:7	BDB01154	pontos	1||-/1/e	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0996	95	1Sám 17:4	BDB01154	pontos	1||-/2/-	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0996	96	1Sám 17:23	BDB01154	pontos	1||-/2/-	scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H0996	97	Ez 41:9	BDB01154	nincs		scope=H0996 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -10501,14 +10501,14 @@ H2474	38	Ez 40:29	BDB03099	pontos	1||-/-/-	scope=H2474 | forras=Sefaria /api/wor
 H2474	39	Ez 40:33	BDB03099	pontos	1||-/-/-	scope=H2474 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2474	40	Ez 40:36	BDB03099	pontos	1||-/-/-	scope=H2474 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2474	41	Ez 41:16	BDB03099	pontos	1||-/-/-	scope=H2474 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H2492	1	Jób 39:4	BDB03108,BDB03110	pontos+hom	1||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H2492	1	Jób 39:4	BDB03108,BDB03110	barmely+hom	1||Qal/-/-;2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	2	Ézs 38:16	BDB03108,BDB03110	pontos+hom	1||Hiph./-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	3	1Móz 42:9	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	4	Dán 2:1	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	5	1Móz 37:9	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	6	1Móz 37:6	BDB03108,BDB03110	barmely+hom	2||Qal/-/-;2||Qal/-/b	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	7	Ézs 29:8	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H2492	8	Jób 39:4	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H2492	8	Jób 39:4	BDB03108,BDB03110	barmely+hom	1||Qal/-/-;2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	9	1Móz 40:5	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	10	Jóel 3:1	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2492	11	1Móz 41:11	BDB03108,BDB03110	pontos+hom	2||Qal/-/-	scope=H2492 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -10639,8 +10639,8 @@ H2654	79	Bír 13:23	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/2/b	scope=H2654
 H2654	80	1Sám 2:25	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/2/b	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2654	81	Ézs 53:10	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/2/b	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2654	82	Ézs 42:21	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/2/c	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H2654	83	Jób 40:17	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/2/c	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H2654	85	Jób 40:17	BDB03340,BDB03341,BDB03344	pontos+hom	1||Qal/-/-	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H2654	83	Jób 40:17	BDB03340,BDB03341,BDB03344	barmely+hom	1||Qal/2/c;1||Qal/-/-	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H2654	85	Jób 40:17	BDB03340,BDB03341,BDB03344	barmely+hom	1||Qal/2/c;1||Qal/-/-	scope=H2654 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2655	1	Zsolt 5:5	BDB03340,BDB03341	pontos+hom	2||-/-/-	scope=H2655 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2655	2	Mal 3:1	BDB03340,BDB03341	pontos+hom	2||-/-/-	scope=H2655 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H2655	3	Neh 1:11	BDB03340,BDB03341	pontos+hom	2||-/-/-	scope=H2655 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -20242,9 +20242,9 @@ H4437	59	Ezsd 6:15	BDBA0458	pontos	1||-/4/-	scope=H4437 | forras=Sefaria /api/wo
 H4442	1	1Móz 14:18	BDB05453	pontos	1||-/-/-	scope=H4442 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4442	2	Zsolt 110:4	BDB05453	pontos	1||-/-/-	scope=H4442 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	1	4Móz 11:9	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H4478	3	2Móz 16:15	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H4478	3	2Móz 16:15	BDB05495,BDB05496	barmely+hom	1||-/-/-;2||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	4	Neh 9:20	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H4478	5	2Móz 16:15	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H4478	5	2Móz 16:15	BDB05495,BDB05496	barmely+hom	1||-/-/-;2||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	6	2Móz 16:31	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	7	2Móz 16:33	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	8	2Móz 16:35	BDB05495,BDB05496	barmely+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -20261,7 +20261,7 @@ H4478	18	5Móz 8:3	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Se
 H4478	19	5Móz 8:16	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	20	Zsolt 78:24	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4478	21	Neh 9:20	BDB05495,BDB05496	pontos+hom	1||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H4478	22	2Móz 16:15	BDB05495,BDB05496	pontos+hom	2||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H4478	22	2Móz 16:15	BDB05495,BDB05496	barmely+hom	1||-/-/-;2||-/-/-	scope=H4478 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4479	1	Dán 3:6	BDBA0463	pontos	1||-/-/-	scope=H4479 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4479	2	Ezsd 5:3	BDBA0463	pontos	1||-/1/-	scope=H4479 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H4479	3	Ezsd 5:9	BDBA0463	pontos	1||-/1/-	scope=H4479 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -21926,7 +21926,7 @@ H5034	40	Ézs 28:4	BDB06045,BDB06050	pontos	1||Qal/2/-	scope=H5034 | forras=Sefa
 H5034	41	Zsolt 37:2	BDB06045,BDB06050	pontos	1||Qal/2/-	scope=H5034 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5034	42	Ézs 24:4	BDB06045,BDB06050	pontos	1||Qal/2/-	scope=H5034 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	1	Jer 13:12	BDB06043,BDB06044	pontos+hom	1||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H5035	2	1Sám 10:5	BDB06043,BDB06044	pontos+hom	1||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H5035	2	1Sám 10:5	BDB06043,BDB06044	barmely+hom	1||-/-/-;2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	3	1Sám 10:3	BDB06043,BDB06044	pontos+hom	1||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	4	1Sám 1:24	BDB06043,BDB06044	pontos+hom	1||-/1/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	5	1Sám 10:3	BDB06043,BDB06044	pontos+hom	1||-/1/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -21940,7 +21940,7 @@ H5035	12	Zsolt 2:9	BDB06043,BDB06044	pontos+hom	1||-/2/-	scope=H5035 | forras=Se
 H5035	13	JSir 4:2	BDB06043,BDB06044	pontos+hom	1||-/2/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	14	Ézs 30:14	BDB06043,BDB06044	pontos+hom	1||-/2/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	15	Zsolt 57:9	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H5035	16	1Sám 10:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H5035	16	1Sám 10:5	BDB06043,BDB06044	barmely+hom	1||-/-/-;2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	17	Zsolt 71:22	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	18	Ámós 6:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	19	2Sám 6:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -21951,7 +21951,7 @@ H5035	23	Ámós 6:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=S
 H5035	24	Ézs 14:11	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	25	Ézs 5:12	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	26	1Kir 10:12	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H5035	27	1Sám 10:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H5035	27	1Sám 10:5	BDB06043,BDB06044	barmely+hom	1||-/-/-;2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	28	Ézs 5:12	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	29	2Sám 6:5	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H5035	30	Zsolt 57:9	BDB06043,BDB06044	pontos+hom	2||-/-/-	scope=H5035 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -30933,7 +30933,7 @@ H6865	35	Zsolt 83:8		nincs		scope=H6865 | forras=Sefaria /api/words (fejléc) | 
 H6865	36	Zsolt 87:4		nincs		scope=H6865 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6865	37	Hós 9:13		nincs		scope=H6865 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	1	Hag 1:6	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H6872	2	Ámós 9:9	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H6872	2	Ámós 9:9	BDB08605,BDB08614,BDB08615	barmely+hom	1||-/-/-;2||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	3	1Móz 42:35	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	4	1Móz 42:35	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	5	1Móz 42:35	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -30943,7 +30943,7 @@ H6872	8	1Sám 25:29	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 |
 H6872	9	Jób 14:17	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	10	Hag 1:6	BDB08605,BDB08614,BDB08615	pontos+hom	1||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	11	2Sám 17:13	BDB08605,BDB08614,BDB08615	pontos+hom	2||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H6872	12	Ámós 9:9	BDB08605,BDB08614,BDB08615	pontos+hom	2||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H6872	12	Ámós 9:9	BDB08605,BDB08614,BDB08615	barmely+hom	1||-/-/-;2||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6872	13	1Sám 9:1	BDB08605,BDB08614,BDB08615	pontos+hom	3||-/-/-	scope=H6872 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6887	1	Jer 4:31	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	2||Hiph./-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6887	2	Jer 49:24	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	2||Hiph./-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -30980,8 +30980,8 @@ H6887	32	Eszt 3:10	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	3||Qal/-/-	sco
 H6887	33	Eszt 8:1	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	3||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6887	34	Eszt 9:10	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	3||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6887	35	Eszt 9:24	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	3||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H6887	36	3Móz 18:18	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	3||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H6887	37	3Móz 18:18	BDB08600,BDB08604,BDB08607,BDB08610	pontos+hom	4||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H6887	36	3Móz 18:18	BDB08600,BDB08604,BDB08607,BDB08610	barmely+hom	3||Qal/-/-;4||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H6887	37	3Móz 18:18	BDB08600,BDB08604,BDB08607,BDB08610	barmely+hom	3||Qal/-/-;4||Qal/-/-	scope=H6887 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6891	1	Józs 3:16	BDB08619	pontos	1||-/-/-	scope=H6891 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6891	2	1Kir 7:46	BDB08619	pontos	1||-/-/-	scope=H6891 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H6891	3	2Krón 4:17	BDB08619	pontos	1||-/-/-	scope=H6891 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -32600,7 +32600,7 @@ H7451	51	Ézs 3:11	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Se
 H7451	52	Jer 2:19	BDB09465,BDB09466	barmely+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	53	1Móz 24:50	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	54	1Móz 31:24	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H7451	55	1Móz 31:29	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H7451	55	1Móz 31:29	BDB09465,BDB09466	barmely+hom	2||-/2/-;3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	56	2Sám 13:22	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	57	1Sám 16:14	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	58	1Sám 16:16	BDB09465,BDB09466	pontos+hom	2||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -32710,7 +32710,7 @@ H7451	161	Zak 1:4	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Se
 H7451	162	Ezsd 9:13	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	163	Zak 1:4	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	164	Neh 9:35	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H7451	165	Hab 2:9	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H7451	165	Hab 2:9	BDB09465,BDB09466	barmely+hom	2||-/10/d;3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	166	Jer 23:10	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	167	Ez 6:11	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	168	Ez 8:9	BDB09465,BDB09466	pontos+hom	2||-/10/d	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
@@ -32742,10 +32742,10 @@ H7451	193	Jób 5:19	BDB09465,BDB09466	pontos+hom	3||-/1/-	scope=H7451 | forras=S
 H7451	194	Jób 31:29	BDB09465,BDB09466	pontos+hom	3||-/1/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	195	Péld 12:21	BDB09465,BDB09466	pontos+hom	3||-/1/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	196	Péld 19:23	BDB09465,BDB09466	pontos+hom	3||-/1/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H7451	197	Hab 2:9	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H7451	197	Hab 2:9	BDB09465,BDB09466	barmely+hom	2||-/10/d;3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	198	Jób 2:10	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	199	Péld 21:10	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
-H7451	200	1Móz 31:29	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
+H7451	200	1Móz 31:29	BDB09465,BDB09466	barmely+hom	2||-/2/-;3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	201	Jer 39:12	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	202	Hós 7:15	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
 H7451	203	Péld 6:14	BDB09465,BDB09466	pontos+hom	3||-/2/-	scope=H7451 | forras=Sefaria /api/words (fejléc) | ts=2026-11-11
