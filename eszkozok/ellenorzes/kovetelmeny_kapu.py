@@ -129,6 +129,9 @@ def szabalyok_a_cellabol(cella, olvasoi=None):
             szab.append(Szabaly('olvasoi', m.group(1)))
     for m in re.finditer(r'\bV([1-7])\b', tisztitott):
         szab.append(Szabaly('visszhang', 'V' + m.group(1)))
+    # az olvasói kapu egésze (K03: „olvasói kapu (Feed 9)”): a lapon 0 BUKÁS
+    if re.search(r'olvasói kapu', tisztitott):
+        szab.append(Szabaly('olvasoi_egesz', 'BUKÁS'))
     # az állítás–adat kapu (F196): a lista „Ellenőrzés” cellája ezen a néven hivatkozhat rá (N-F196d)
     if re.search(r'\ballitas_adat\b|állítás–adat kapu', tisztitott):
         szab.append(Szabaly('allitas', 'allitas_adat'))
@@ -140,12 +143,26 @@ def szabalyok_a_cellabol(cella, olvasoi=None):
         if re.search(r'\btervezett\b', torzs):
             return EMBER, [], 'nincs gépi szabály (%s)' % torzs
         return NEM_GYUJTHETO, [], torzs or c
+    if VEGYES.search(tisztitott):
+        return GEPI, egyedi, 'részben gépi: ' + torzs
     return GEPI, egyedi, torzs
+
+
+# A cella nem gépi része (lektor, szerkesztő, „grep”, „nincs”): a sor gépi mérése csak részleges.
+VEGYES = re.compile(r'\blektor|\bszerkesztő|\bgrep\b|:\s*nincs\b')
 
 
 # ---------------------------------------------------------------------------
 # A szabályok futtatása egy lapra
 # ---------------------------------------------------------------------------
+
+# CI-szabályok, amelyek a lapfájlra nem adnak mérést (a találatuk az adattáblára esik, vagy a lapot nem olvassák): a
+# rájuk hivatkozó sor ezen a részén nem gyűjthető, nem teljesülés.
+CI_LAPRA_NEM_FUT = {
+    'E19': 'csak az adat/ szótári tábláin fut (E19_FAJLOK)',
+    'E34': 'a találata az adat/elofordulasok.tsv-re esik (E34_TABLA)',
+}
+
 
 class Futtato(object):
     """A szabályok eredménye egy motívum lapjára, gyorsítótárral (egy szabály egyszer fut)."""
@@ -243,6 +260,9 @@ class Futtato(object):
         if e == 'E28' and not self.e28:
             self._ci[e] = (None, 'nem futott (az E28 a generátort futtatja; --e28 kapcsolóval fut)', None)
             return self._ci[e]
+        if e in CI_LAPRA_NEM_FUT:
+            self._ci[e] = (None, 'a %s nem a lapfájlon fut (%s)' % (e, CI_LAPRA_NEM_FUT[e]), None)
+            return self._ci[e]
         fv = SZ.SZABALYOK_FUGGVENYEI.get(e)
         if fv is None:
             self._ci[e] = (None, 'a %s nem fájlra futó szabály' % e, None)
@@ -267,11 +287,25 @@ class Futtato(object):
             if e['hiba']:
                 self._ci['allitas'] = (None, e['hiba'], None)
             else:
-                n = sum(1 for r in e['lap'] + e['melleklet'] if r.allapot == AA.ELTER)
-                self._ci['allitas'] = ((n == 0), '%d állítás eltér az adattól' % n if n else 'nincs eltérés', bool(n))
+                minden = e['lap'] + e['melleklet']
+                n = sum(1 for r in minden if r.allapot == AA.ELTER)
+                mert = sum(1 for r in minden if r.allapot != AA.NEM_MERHETO)
+                if not mert:   # csupa nem mérhető (vagy semmi): se teljesülés, se nem teljesülés
+                    self._ci['allitas'] = (None, 'nincs mért állítás', None)
+                else:
+                    self._ci['allitas'] = ((n == 0), '%d állítás eltér az adattól' % n if n else
+                                           '%d mért állítás, nincs eltérés' % mert, bool(n))
         return self._ci['allitas']
 
+    def olvasoi_egesz_eredmeny(self):
+        if not os.path.exists(os.path.join(GYOKER, self.lap_rel)):
+            return None, 'nincs lap', None
+        t = [x for x in self.olvasoi() if x['sulyossag'] == 'BUKÁS']
+        return (not t), ('%d BUKÁS' % sum(x.get('db', 1) for x in t)) if t else '0 BUKÁS', bool(t)
+
     def eredmeny(self, sz):
+        if sz.tipus == 'olvasoi_egesz':
+            return self.olvasoi_egesz_eredmeny()
         if sz.tipus == 'allitas':
             return self.allitas_eredmeny()
         if sz.tipus == 'olvasoi':
@@ -321,7 +355,7 @@ def meres(mid, sorok=None, e28=False, futtato=None):
 
 
 def _szab_nev(sz):
-    return {'olvasoi': '%s', 'visszhang': 'VISSZHANG %s', 'ellenoriz': 'ellenoriz.py %s.', 'ci': 'CI %s',
+    return {'olvasoi': '%s', 'olvasoi_egesz': 'olvasói kapu (%s)', 'visszhang': 'VISSZHANG %s', 'ellenoriz': 'ellenoriz.py %s.', 'ci': 'CI %s',
             'allitas': 'állítás–adat kapu (%s)'}[sz.tipus] % sz.azon
 
 
@@ -352,8 +386,10 @@ def jelentes(mid, eredmeny, hamart_osszevetes=None):
     ember = [m for m in eredmeny if m.osztaly == EMBER]
     ngy = [m for m in eredmeny if m.osztaly == NEM_GYUJTHETO]
     ki = ['## %s' % osszegzo_sor(mid, eredmeny), '',
-          '%d K-sor: %d gépi szabállyal mérve, %d ember ellenőrzi, %d gépi, de a kapu nem gyűjti.'
-          % (len(eredmeny), len(gepi), len(ember), len(ngy)), '']
+          '%d K-sor: %d gépi szabállyal mérve (ebből %d csak részben: a cella lektori, „grep” vagy „nincs” részét a '
+          'gép nem méri), %d ember ellenőrzi, %d gépi, de a kapu nem gyűjti.'
+          % (len(eredmeny), len(gepi), sum(1 for m in gepi if (m.megjegyzes or '').startswith('részben gépi')),
+             len(ember), len(ngy)), '']
     if nem:
         ki += ['**Nem teljesül (gépi):**', '',
                '| K | Blokk | Szint | Szabály: eredmény |' + (' A lista szerint |' if hamart_osszevetes else ''),
@@ -388,11 +424,11 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description='Követelménylista-kapu (F196): a K-sorok gépi szabályai egy lapra, JELENTÉS.')
     ap.add_argument('id', nargs='*', default=['HAMART-001'], help='motívum-azonosító(k); alap: HAMART-001')
     ap.add_argument('--e28', action='store_true', help='az E28 (generátor-futtatás, lassú) is fusson')
-    ap.add_argument('--szigoru', action='store_true', help='nem teljesülő gépi sornál 1-es kilépési kód (DT-F196a után)')
+    ap.add_argument('--szigoru', action='store_true', help='nem teljesülő gépi sornál 1-es kilépési kód (a HIBA-szintre emelés után)')
     args = ap.parse_args(argv)
     sorok = lista_sorai()
     print('# Követelménylista-kapu (F196, JELENTÉS)\n')
-    print('*Forrás: `sablonok/KESZ_LAP_KOVETELMENY.md` (%d K-sor). Szint: JELENTÉS, nem gátol (DT-F196a).*\n' % len(sorok))
+    print('*Forrás: `sablonok/KESZ_LAP_KOVETELMENY.md` (%d K-sor). Szint: JELENTÉS, nem gátol (a HIBA-szint külön döntés).*\n' % len(sorok))
     van_nem = False
     eredmenyek = []
     for mid in args.id:

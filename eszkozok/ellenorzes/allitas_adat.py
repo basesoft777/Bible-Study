@@ -372,7 +372,9 @@ ALLITASOK = [
      [('n', 'lxx_n'), ('egyezo', 'lxx_egyezo'), ('eltero', 'lxx_eltero'), ('minusz', 'lxx_minusz'),
       ('egyeb', 'lxx_egyeb')], 'lap'),
     ('LXX_OSSZESITES', 'az 5. tábla összesítő sora',
-     r'Összesítés: egyező=%s, eltérő=%s, LXX-minusz=%s, kutatói azonosítás függőben=%s, szamozas_elteres=%s'
+     # a régi lapon a tábla-címkék, az új szerkezetűn az olvasói utófeldolgozás címkéi (olvasoi_utofeldolg)
+     r'Összesítés: egyező=%s, eltérő=%s, LXX-minusz=%s, (?:kutatói azonosítás függőben|a megfelelő nincs megállapítva)=%s, '
+     r'(?:szamozas_elteres|versszámozás miatt nem párosítva)=%s'
      % (_n('egyezo'), _n('eltero'), _n('minusz'), _n('fugg'), _n('szam')),
      [('egyezo', 'lxx_egyezo'), ('eltero', 'lxx_eltero'), ('minusz', 'lxx_minusz'), ('fugg', 'lxx_fuggoben'),
       ('szam', 'lxx_szamozas')], 'lap'),
@@ -596,7 +598,7 @@ def _cella(x):
 def jelentes(eredmenyek, reszletes=False):
     """Markdown jelentés: {mid: meres(mid)} → szöveg."""
     ki = ['# Állítás–adat kapu (F196, JELENTÉS)', '',
-          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: JELENTÉS, nem gátol (DT-F196a).*', '']
+          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: JELENTÉS, nem gátol (a HIBA-szint külön döntés).*', '']
     for mid, e in eredmenyek.items():
         if e['hiba']:
             ki += ['## %s' % mid, '', 'Nem mérhető: %s' % e['hiba'], '']
@@ -630,7 +632,7 @@ def main(argv=None):
     ap.add_argument('id', nargs='*', help='motívum-azonosító(k), pl. HAMART-001')
     ap.add_argument('--minden', action='store_true', help='minden lexikon/*_TUDOMANYOS.md lap')
     ap.add_argument('--reszletes', action='store_true', help='az egyező állítások is')
-    ap.add_argument('--szigoru', action='store_true', help='eltérésnél 1-es kilépési kód (a HIBA-szint, DT-F196a után)')
+    ap.add_argument('--szigoru', action='store_true', help='eltérésnél 1-es kilépési kód (a HIBA-szintre emelés után)')
     args = ap.parse_args(argv)
     idk = osszes_lap_id() if args.minden or not args.id else args.id
     eredmenyek = collections.OrderedDict((mid, meres(mid)) for mid in idk)

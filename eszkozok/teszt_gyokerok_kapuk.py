@@ -75,6 +75,15 @@ class AllitasAdat(unittest.TestCase):
         self.assertEqual(allapotok(e), [('NINCS_KAPCS', 0, 56, A.ELTER)])
         self.assertEqual(e[0].sor, 3)
 
+    def test_lxx_osszesito_uj_cimkekkel(self):
+        """ELLENOR_F196 2.: az új szerkezetű lap 5. táblájának összesítője olvasói címkékkel."""
+        szov = ('*Összesítés: egyező=6, eltérő=28, LXX-minusz=0, a megfelelő nincs megállapítva=11, versszámozás miatt '
+                'nem párosítva=1.*')
+        e = A.meres_szoveg(szov, AlAdat({'lxx_egyezo': 6, 'lxx_eltero': 28, 'lxx_minusz': 0, 'lxx_fuggoben': 11,
+                                         'lxx_szamozas': 2}))
+        self.assertEqual([(r.lapon, r.adatban) for r in e if r.allapot == A.ELTER], [(1, 2)])
+        self.assertEqual(len(e), 5)
+
     def test_nincs_mondat_ures_adatnal_egyezik(self):
         e = A.meres_szoveg('Ehhez a motívumhoz nincs rögzített kapcsolat.', AlAdat({'kapcs': 0}))
         self.assertEqual(allapotok(e), [('NINCS_KAPCS', 0, 0, A.EGYEZIK)])
@@ -212,6 +221,14 @@ class Cella(unittest.TestCase):
         self.assertEqual(self.cel('gépi: az állítás–adat kapu (`allitas_adat.py`)')[1],
                          [K.Szabaly('allitas', 'allitas_adat')])
 
+    def test_olvasoi_kapu_egesze_es_vegyes_cella(self):
+        """ELLENOR_F196 3.: a K03 „olvasói kapu (Feed 9)” szabálya; a vegyes cella „részben gépi” jelölést kap."""
+        o, sz, megj = self.cel('gépi: olvasói kapu (Feed 9), `ellenoriz.py` 40.')
+        self.assertIn(K.Szabaly('olvasoi_egesz', 'BUKÁS'), sz)
+        self.assertFalse(megj.startswith('részben gépi'))
+        for c in ('gépi: BELSO; lektor', 'gépi: grep a markerre; CI E11', 'gépi: BELSO; a mért számra: nincs'):
+            self.assertTrue(self.cel(c)[2].startswith('részben gépi'), c)
+
     def test_nem_gyujtheto(self):
         for c in ('gépi: az F24 kapuja', 'gépi: az F27 (b) kapuja (a #182 2. fázisa)', 'gépi: a lap 1.2 táblája',
                   'gépi + szerkesztő'):
@@ -260,6 +277,22 @@ class KovetelmenyMeres(unittest.TestCase):
         e = K.meres('X-001', self.sorok(), futtato=f)
         self.assertEqual([(m.sor.k, m.kemeny) for m in e if m.osztaly == K.GEPI], [('K01', True), ('K02', False)])
         self.assertIn('2 nem teljesülőből 1 gátló szintű, 1 csak figyelmeztetés', K.osszegzo_sor('X-001', e))
+
+    def test_lapra_nem_futo_ci_szabaly_nem_teljesul(self):
+        """ELLENOR_F196 1.: az E19 és az E34 a lapfájlra nem mér: nem gyűjthető, nem „teljesül”."""
+        f = K.Futtato('HAMART-001')
+        for e in ('E19', 'E34'):
+            self.assertIsNone(f.ci_eredmeny(e)[0], e)
+
+    def test_csupa_nem_merheto_allitas_nem_teljesul(self):
+        """ELLENOR_F196 4.: csupa nem mérhető állításnál az állítás–adat szabály nem gyűjthető."""
+        regi = A.meres
+        try:
+            A.meres = lambda mid: {'lap': [A.Eredmeny('X', 'x', 'lap', 1, 0, None, A.NEM_MERHETO, '')],
+                                   'melleklet': [], 'hiba': None}
+            self.assertIsNone(K.Futtato('X-001').allitas_eredmeny()[0])
+        finally:
+            A.meres = regi
 
     def test_nem_gyujtott_szabaly_nem_teljesules(self):
         f = AlFuttato({K.Szabaly('olvasoi', 'BELSO'): (None, 'hiba', None)})
