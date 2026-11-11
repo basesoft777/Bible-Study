@@ -1,2 +1,0 @@
-- N-F198a: a `bdb` megfelelő-sorok (19 ellenőrzött sor) nem kerültek a nyílt magba, mert a jóváhagyott lista nem nevezi őket; a BDB közkincs (`BDB_rokon_irasok`), felvételük a #688 (BDB-tanú) beolvasztása után külön döntés (DT-F198a).
-- N-F198b: az OpenAlex és a Crossref (a `vitatott_forrasok.tsv` bibliográfiai adatának forrása) nem szerepel a `licencek.tsv`-ben; a „forrásonként licenccel” állítás teljességéhez sor kell (DT-F198b).

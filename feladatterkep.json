@@ -1188,7 +1188,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "Te: a draft PR áttekintése; a két nyitott licenc-kérdés (DT-F198a, DT-F198b) eldöntése; merge a HAMART-001 /kiadas-a előtt",
+   "most": "Te: a draft PR áttekintése; a két nyitott licenc-kérdés (DT778, DT779) eldöntése; merge a HAMART-001 /kiadas-a előtt",
    "fugg": "#162 (kész), #170 (kész), #171*, #176 (kész), #178*, #183 (kész), #191",
    "tervezett": false,
    "reszletes": "",
@@ -6607,7 +6607,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F198a",
+    "id": "DT778",
     "feladat": "#198 NYILT_MAG_HATASTORTENET (a BDB-sorok és az LXX-sorok licencállítása; 2026-11-11)",
     "kerdes": "A jóváhagyott lista (Vulgata, Targum, Glossa, LXX-híd, SBLGNT, HCF, Sefaria, vitatott források) nem nevezi a `bdb` megfelelő-sorokat; az `lxx` sorok kiválasztása a `LXX_versszintu_parok` (zárt, származtatott réteg) Dice-arányán is múlik, a szó maga a CC BY LXX_OS-ból való. Kerüljenek-e be?",
     "allapot": "ellenorizendo",
@@ -6619,7 +6619,7 @@
     "fejlec_oszlopszam": 8
    },
    {
-    "id": "DT-F198b",
+    "id": "DT779",
     "feladat": "#198 NYILT_MAG_HATASTORTENET (a vitatott pontok szakirodalma és a HCF-hivatkozás; 2026-11-11)",
     "kerdes": "A `vitatott_forrasok` összefoglaló-mondata (saját szavas) kerüljön-e a nyílt magba? A HCF-sor GitHub-URL-je (`forras_url`) tiltott a csomagban (KANONIKUS).",
     "allapot": "ellenorizendo",
