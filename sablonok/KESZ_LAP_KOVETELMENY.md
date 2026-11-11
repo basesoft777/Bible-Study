@@ -1,0 +1,303 @@
+# Mitől kész egy lexikonlap — a lezárt követelménylista (HAMART-001 mércéjével)
+
+*F190 · v1 · 2026-11-11 · lezárva a szerkesztő döntéseivel (DT-F190a, 2026-11-11); nyitott pont csak a K67a–K67f pontosítása a #183 után. A felhasználó jóváhagyása a feladatra (2026-11-11): „igen. mert a hamartból akarjuk megírni a követelményt”.*
+
+**Mire való.** Ez a lista a lexikonlap 1. kiadásának mércéje. Ami rajta van, az a kész lap feltétele; ami nincs rajta, az nem feltétele az 1. kiadásnak. A lista a lektor és a szerkesztő átnézésének bemenete, és a „Kiadható-e az 1. kiadás?” kérdés mércéje. Az a kérdés akkor kap igen választ, ha a lapon nincs hamis állítás, a kapuk zöldek, és a lista minden pontja vagy teljesül, vagy tudatosan a 2. kiadásra került.
+
+**Mi nem ez a fájl.** Ez nem szabályforrás. A szabályok szövege a kanonikus helyükön áll: a lapszabály a `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`-ben, a forrás- és prózaszabály a `sablonok/9_PaRDeS_motivum_forras_sablon.md`-ben és a `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`-ben, a munkamenet a `MUNKAMENET.md`-ben, a döntés a `DONTESEK.md`-ben (CLAUDE.md, F184: egy szabály, egy hely). Ez a fájl a szabályok listája és a HAMART-001 mért állapota. Ha egy sor és a kanonikus hely eltér, a kanonikus hely az irányadó, az eltérés pedig a (b) listába kerül.
+
+**A mérés alapja.** A lap: `lexikon/HAMART-001_TUDOMANYOS.md` a `claude/hamart-javito` ágon (a #182 2. fázisa), utolsó lapváltozás: `4f51e371` (F182.21), az ág feje a mérés idején: `9e74455e`. A kapuk ezen a commiton, ideiglenes leválasztott munkafán futottak, a lap és az ág nem változott:
+
+- olvasói kapu (`olvasoi_kapu.py`, a HAMART-001-re): 0 BUKÁS, 19 FIGYELMEZTETÉS (ANGOL_SOR 7, MOTIVUM_ID 5, ATIRAS_VALT 4, KIVONAT_SZAM 2, HIANYJEL 1);
+- `proza_1a.py HAMART-001`: 47/47 igehely kerek próza és „Funkció:” sor;
+- `ellenoriz.py`: 26 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 17 JELENTÉS. A HAMART-ra a 36–40. szabály tiszta. A HAMART-ot érintő jelentés: a 22. (66 kiejtés nélküli hely), a 23. (próza-lefedettség: 6 előfordulás, 14 kapcsolat), a 27. (4 szócikkhatáron átcsúszott magyar BDB-szöveg) és a 43. szabály (8 nem létező Károli-vers). A 42. és a 43. szabály a #182 ágán született (F31, F32), a main-en még nincs;
+- `muhely_allapot.py --motivum HAMART-001` (Feed): csak a „mérés: HAMART-001” sort írta, ezért a Feed állapota nem eldönthető.
+
+A „L123” jelölés a lap sorszáma ebben a commitban. A #182 2. fázisa még fut: a „hiányzik” jelölésű tételek egy része annak a menetnek a tárgya (leletlista F1–F35).
+
+**Jelölések.**
+
+- **Forrás:** DT-szám, sablonpont, memória (`memória: <név>`) vagy F-lelet (`F<n>`; a leletlista a közös jegyzetmappában: `HAMART_kovetkezo_menet_leletek_2026-11-08.md` és `…_2026-11-10_kieg.md`). A memória a felhasználó saját jegyzete; ahol a követelmény csak ott áll, ezt a (b) lista jelzi.
+- **Ellenőrzés:** `gépi: <kapu>` (olvasói kapu-osztály, `ellenoriz.py` szabályszám, CI E-szám; a lista: `adat/SEMA.md` 3.11), `lektor` (a `/kiadas` lektora, friss kontextusú subagent) vagy `szerkesztő` (a felhasználó átnézése a renderelt lapon).
+- **HAMART-állapot:** **teljesül** · **részben** (a követelmény egy része hiányzik; a hiányzó rész az (a) listában áll) · **hiányzik** · **nem eldönthető** (nem mértem, vagy csak a renderelt nézetben, illetve egy hátralévő lépés után dönthető el) · **hátralévő lépés** (folyamatlépés, amely a lap mai állapotában még nem futhatott).
+
+---
+
+## 1. Az egész lapra vonatkozó követelmények
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K01 | egész lap | A lap generált kimenet: kézzel nem szerkeszthető, a hibát a forrásban, az adatban vagy a generátorban kell javítani, utána újragenerálni. | CLAUDE.md „Rétegek”; RENDER_BRIEF G4; sablon 10 „Önellenőrzés” | gépi: CI E28, `ellenoriz.py` 11. | **teljesül** — GENERÁLT-fej (L1), 11. szabály RENDBEN. Az E28 itt nem futott. |
+| K02 | egész lap | A szakaszrend a v4 szerinti, folyamatos számozással, „/b” alszakasz nélkül: Kivonat · Tartalomjegyzék · Jelmagyarázat · 1. Döntési út … 12. Irodalom és idézés · Kolofon. | sablon 6 v4 „Szakaszrend”; memória: lexikon-ag-lezaras-2026-11-08 | gépi: `ellenoriz.py` 40. (Döntési út megléte), SZAKASZ_HIV | **teljesül** — L17–39. A 10. Alkalmazás sorsa: K83, B04. |
+| K03 | egész lap | Az olvasói kapu kivétel nélkül 0 BUKÁS. Ez érvényes a Tartalomjegyzékre, a Jelmagyarázatra, a Kolofonra, az Irodalomra, a technikai dőlt sorra és a lábjegyzetre is. | sablon 6 v4 „regressziós kapui”; DT547 (9. kapu); MUNKAMENET C-o; memória: hamart-uj-arany | gépi: olvasói kapu (Feed 9), `ellenoriz.py` 40. | **teljesül** — 0 BUKÁS (mért). |
+| K04 | egész lap | Az olvasói szövegben nincs belső jel: fájlnév, DT-, N- vagy F-azonosító, tételszám, blokk-kód, „gerinc”, „szerep”, „felhasználó”, „orkesztrátor”, munkaszó. A döntés olvasói neve „szerkesztői döntés”. | sablon 6 v4 „Olvasható döntések”; sablon 10 „Olvasói szöveg”; F22; memória: nyilvanos-szoveg-szohasznalat | gépi: BELSO, MUNKASZO, PONT | **részben** — a kapu 0 BUKÁS, de a 4.8 tíz szónál „a teljes szócikkfej a 2. szerepben” mutatót hoz (L2400 és utána; F13 (1)). |
+| K05 | egész lap | A látható szövegben olvasói forrásnév és dátum áll; a nyers proveniencia-sor csak a lap forrásában, HTML-megjegyzésben marad meg. | sablon 6 v4 „Olvasható döntések”; CLAUDE.md 1. szabály; memória: hamart-uj-arany | gépi: BELSO (részben) | **részben** — két lábjegyzetben látható a nyers mezőnév: „proveniencia: … \| igazolas: TAHOT-igazolt” (L288, L312). |
+| K06 | egész lap | Felülírt, okafogyott vagy visszavont döntés nem kerül a lapra; a felülíró döntés jelenik meg. | F27; DT-F182i; memória: lap-jovahagyas-elott | gépi: az F27 (b) kapuja (a #182 2. fázisa) | **nem eldönthető** — a jelölés a DONTESEK-fejbe került (DT-F182i), a kapu futását itt nem mértem. |
+| K07 | egész lap | A héber és a görög szó mellett magyaros kiejtés áll: szakaszonként az első előfordulásnál, minden címsorban és táblafejben. Héberül a jóváhagyott kivétel vagy a gépi alak áll, jelölés nélkül. Egy szónak egy kiejtése van. | sablon 6 „Közös szabályok”, „Kiejtés és olvasói szöveg”; sablon 10 | gépi: ATIRAS (BUKÁS), ATIRAS_VALT (FIGY), `ellenoriz.py` 22. (JELENTÉS) | **részben** — ATIRAS 0. Az ATIRAS_VALT 4 helyet jelez: L881 „adamá”, L1066 „arar”, L2410 „chamasz”, L2498 „adama”. A 22. szabály 66 jelentést ad; ezek egy része hamis pozitív (pl. י׳ a Jelmagyarázatban). |
+| K08 | egész lap | A H2403 a láncversek saját Strong-változata szerint áll: חַטָּאת (chattát), nem az alapváltozat (chattáá). | sablon 6 v4 4.11 1. pont; F8 (3); F12 (3); N-F178b | gépi: nincs (a 4.11-ben a `strong_valtozat_versben`) | **hiányzik** — 15 sorban „chattáá” áll (L120, L184, L1258, az áttekintő tábla, a 4.9). A Kivonat (L9) és a 4.11 helyesen „chattát”. |
+| K09 | egész lap | Az olvasói magyarázó szöveg a lelettel kezdődik (számok, a szavak kiejtéssel, példahely). Szabály szerinti következtetéssel zárul, amelyet az adatból számolt szabály ad (`olvasoi_kovetkeztetes.py`). | sablon 6 „Kiejtés és olvasói szöveg”; memória: olvasoi-szoveg-adatbol-kovetkeztetes | gépi: V7 (csak a 4.11); egyébként lektor | **részben** — a blokkbevezetők ilyenek. Hibás vagy semmitmondó következtetés: K41 (2.), K62 (4.7), K64 (4.9). A 7. szakasz következtetése („nem egymásra épülő lánc”, L3060) ellentmond a Kivonat láncának; ez lektori kérdés. |
+| K10 | egész lap | Kis elemszámnál nincs „Következtetés”. A „gyakran” vagy „többnyire” csak elég elemszámnál állhat. Ugyanaz a következtetés-mondat nem ismétlődik szavanként. | F7; F12; sablon 6 4.11 7. pont (V6) | gépi: V6 (csak a 4.11) | **hiányzik** — a 4.7 (L1514, L2275) és a 4.9 (L1570, L2422) szavanként ismétli a mondatot. |
+| K11 | egész lap | Az olvasói szövegben nincs angol maradék. Angol eredeti legfeljebb `title`-ben állhat; licenc-attribúció kivétel. | olvasói kapu ANGOL, ANGOL_SOR, NAVE_ANGOL; memória: lexikon-ag-lezaras-2026-11-08 | gépi: ANGOL (BUKÁS), ANGOL_SOR (FIGY) | **részben** — ANGOL 0. A 4.4 doménnevei angolul állnak („Destroy, Sickness, Disease…”, L1482–1490). Az ANGOL_SOR 7 jelzése licencsor vagy `title`, elfogadható. |
+| K12 | egész lap | TUDOMÁNYOS hangnem: semleges, harmadik személyű. Nincs olvasót megszólító vagy „mi”-hangú mondat, és tartalmi mondatba ágyazott, első személyű ellenőrzési állítás sem. | sablon 6 „Konfliktuskezelés”, L6 (c), (f); DT68 (2) | lektor | **hiányzik** — L13 („átnéztük”, „vettük fel”), L669 (generált: „vizsgáltunk”, „kerestük”, „döntöttünk”), L3306 („átnéztük”, „elbíráltuk”). L. B07. |
+| K13 | egész lap | Napló-jellegű megjegyzés csak 【NAPLO】 blokkban állhat, prózába ágyazva soha; a kiadható kimenetben 0 【NAPLO】 és 0 `belso` jelölés van. | sablon 6 L2, L6 (a)–(d); DT68 (2) | gépi: CI E29 | **teljesül** — 0 „【NAPLO” a látható szövegben. |
+| K14 | egész lap | Blockquote csak eredeti nyelvű idézetet tartalmaz; a magyar fordítás normál bekezdés. | sablon 6 L6 (e) | lektor | **teljesül** — a lapon nincs blockquote. |
+| K15 | egész lap | Az idézőjel a magyar „…”; egyenes " nincs. A könyvrövidítés a normalizáló tábla alakja, az igehely szóköz nélkül áll („1Kir 18:24”). | sablon 6 „Közös szabályok”; sablon 9 4. pont 1. | gépi: IDEZOJEL, KONYV, CI E8 | **teljesül** — 0 BUKÁS. |
+| K16 | egész lap | „Szent Szellem” áll („Szentlélek” nem). A szótári fordításban a πνεῦμα *szellem*, a ψυχή *lélek*; a Károli-idézet szövege változatlan. | sablon 6 „Közös szabályok”, Jelmagyarázat | gépi: CI E10 | **teljesül** — L97; 0 „Szentlélek”. |
+| K17 | egész lap | Minden generált blokk markere viseli a felhasznált források licencét; a TWOT-ból csak a szám áll. | sablon 6 „Licenc és nyilvános repó”; D7, D9 | gépi: grep a markerre; CI E11 | **részben** — a markerek licencet viselnek (pl. L19), a TWOT csak szám (L3483). A SECE „közkincs”, a Mounce „© Mounce 1993” jelölést kap, a sablon szerint mindkettő „tisztazatlan”. L. B09. |
+| K18 | egész lap | Nyilvános szövegben a GitHub-URL nem kanonikus forrás; helyette a `<KANONIKUS_FORRAS_URL>` helyőrző áll. | memória: github-nem-kanonikus-forras | lektor | **teljesül** — L3338, L3395. A L3479 lxx-morph-URL licenc-attribúció. |
+| K19 | egész lap | Hiányt nem tölt ki gyenge vagy asszociatív anyag. Az üres eredményt a lap olvasói nyelven, belső szó nélkül mondja ki, szakaszonként egyszer. | CLAUDE.md 3. szabály; sablon 10; F5 (2); F16 (b) | gépi: HIANYJEL (FIGY), SZINT_ALATT, `ellenoriz.py` 31. | **részben** — az üres blokk mondata olvasói (L1296). L268: „(nincs görög szó)” (HIANYJEL). Az Alátámasztás hiánymondata hamis: K77. |
+| K20 | egész lap | A lap számai egymással és az adattal egyeznek (Kivonat ↔ tábla ↔ Döntési út), helyes mértékegységgel (hely vagy vers). | MUNKAMENET C-o (Kivonat ↔ adat); memória: lap-jovahagyas-elott 2. | gépi: KIVONAT_SZAM (FIGY) | **részben** — a Kivonat és a Döntési út egyezik (47 hely, 54 vers, 1 810 megvizsgált vers). A 4.6 és az 5. szakasz „46 ószövetségi helyéből” mond (L1508, L2591), ez valójában 46 vers (41 hely). A KIVONAT_SZAM 2 jelzése (L11, L15) hamis riasztás. |
+
+## 2. Lapfej és azonosító tábla
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K21 | lapfej | Az azonosító tábla nyitja a lapot, a cím után és a Kivonat előtt. Mezői: ID, rövid cím, teljes cím, téma, PaRDeS-szint, státusz, azonosság típusa, negatív kritérium, fölérendelt fogalom. Az 1. kiadás feltétele (B15). | F18 (a), (b) — szerkesztői döntés, 2026-11-09: „ezzel a kolofon résszel induljon az oldal minden esetben” | gépi: nincs | **hiányzik** — a tábla csak a Kolofonban áll (L3401–3416). |
+| K22 | lapfej | A tábla mezőnevei olvasói nyelvűek („Rövid UI-címke” helyett pl. „Rövid cím”). | F18 (d) | lektor | **hiányzik** — L3404. |
+| K23 | lapfej | A „Státusz” a kiadási állapotból generálódik: kiadás előtt nem „publikálható (v1, 2026.09.11)”. | F18 (c); DT492 (`adat/kiadasok.tsv`) | gépi: tervezett (F18 (c)) | **hiányzik** — L3336, L3408. |
+
+## 3. Kivonat
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K24 | Kivonat | Minden blokk elején egy-két mondatos olvasói bevezető áll („Mit mutat ez a rész?” címke nélkül, `<!-- olvasói -->` jellel). | sablon 6 „Olvasói bevezető” (2026-11-03) | lektor | **teljesül** — L7; minden szakasz elején. |
+| K25 | Kivonat | Az 1. bekezdés a lánc menetét és fordulópontját mondja ki a kulcshelyeken. A fordulópontot az adat igazolja (`funkcio`, szó, igealak), nem feltevés. | sablon 10 1.; sablon 9 hét szabály 3.; memória: hamart-uj-arany (helyesbítés) | lektor | **teljesül** — L9: a 8:21 a fordulópont, más igével; a 9:25 kizárva. |
+| K26 | Kivonat | A 2. bekezdés a lap adatából adja a számokat (helyek, versek, könyvek, ÓSZ/ÚSZ) és a későbbi helyek csoportjait. | sablon 10 1. | gépi: KIVONAT_SZAM (FIGY) | **teljesül** — L11 (47 hely, 54 vers; 23 + 18 + 6). |
+| K27 | Kivonat | A 3. bekezdés tartalmazza a negatív kritériumot szó szerint ellenőrizhetően (mely alak tartozik ide, mely nem), a kivételeket név szerint, indokkal, és strukturális hordozónál a „keresési módszer eredménye, nem kimerítő felsorolás” mondatot. | sablon 9 4. pont „két kötelező határ-elem” 1., „Teljesség-mérés”; sablon 10 1. | lektor | **teljesül** — L13 és L15 (a négy tematikus kivétel név szerint). A „mi”-hang: K12. |
+| K28 | Kivonat | Az ÚSZ-mérce a Kivonatban: a Károli alapszövege, a Textus Receptus. | sablon 9 öt szabály 3.; DT563 | lektor | **teljesül** — L15. |
+| K29 | Kivonat | A 4. bekezdés a fölérendelt fogalmat olvasói nyelven mondja ki („nem a … általában, hanem …”), belső szó és forrásnév nélkül. | sablon 9 4. pont „két kötelező határ-elem” 2.; sablon 10 1. | gépi: BELSO; lektor | **teljesül** — L15. |
+
+## 4. Tartalomjegyzék és Jelmagyarázat
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K30 | Tartalomjegyzék | A tartalomjegyzék minden szakaszt horgony-linkkel sorol fel. | sablon 6 A) „Tartalomjegyzék” | gépi: SZAKASZ_HIV | **teljesül** — L25–39. A „10. Alkalmazás” sorsa: K83. |
+| K31 | Jelmagyarázat | Közös, minden lapon szó szerint azonos blokk. Tartalma: a PaRDeS-szintek a gyorsreferenciából, a rövidítés-lista teljes névvel és a kötelező πνεῦμα/ψυχή-mondat. | sablon 6 A) „Jelmagyarázat” | gépi: E28 (generált) | **teljesül** — L43–100. Lektori apróság: L66 „a motívum saját tanulmány átvett megnevezéssel” nem magyar mondat, és belső „tanulmány”-ra utal; L84 „(dőlt, forrás: a lap munkaanyaga alakú)”. |
+| K32 | Jelmagyarázat | A BDB rövidítései és jelei a Jelmagyarázatban, vagy az első előfordulásnál feloldva állnak. | F9 (3); F10 (5); F25 (DT690) | gépi: BDB_OLVASOI (az olvasói rétegre) | **teljesül** — L92–95; BDB_OLVASOI 0. |
+
+## 5. 1. Döntési út
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K33 | 1. Döntési út | Öt alszakasz: 1.1 Mit keresünk · 1.2 Hol kerestünk · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések. | sablon 6 v4 „Szakaszrend” | gépi: `ellenoriz.py` 40. | **teljesül** — L102–208. |
+| K34 | 1. Döntési út | Minden vers egyszer számít. Az összeadás-sor ki van írva (motívumhoz tartozik + csoportosan kizárva + egyenként elutasítva = megvizsgált vers), a döntés nélküli versek száma kimondva, és ez a szám 0. | sablon 6 v4 „A Döntési út szabályai”, „regressziós kapui” | gépi: `ellenoriz.py` 40. | **teljesül** — L141: 54 + 1 520 + 236 = 1 810; döntés nélkül 0. |
+| K35 | 1. Döntési út | A csoportos és az egyenkénti okok lenyitható részletekben állnak; az 1.4 a beépített sorok szavai szerint csoportosít, tételenként a `funkcio` magyarázatával. | sablon 6 v4 „A Döntési út szabályai” | lektor | **teljesül** — L145–194 (a „chattáá” címke: K08). |
+| K36 | 1. Döntési út | Nincs „egyéb” elutasítási ok; a motívum jellemző okai motívumonkénti mintasorként állnak. | sablon 9 öt szabály 1.; DT674 | gépi: `ellenoriz.py` 28. | **teljesül** — 28. RENDBEN. |
+| K37 | 1. Döntési út | A beépített sor nem esik a lap saját csoportos kizárási okába; strukturális vagy fogalmi motívumnál a beépítés indoka szerkezeti jegy, nem „csak e szó miatt”; egy vers nem lehet egyszerre előfordulás és csoportos kizárás. | sablon 9 hét szabály 4.; memória: hamart-uj-arany | gépi: `ellenoriz.py` 36., 37., 38. | **teljesül** — mindhárom RENDBEN. |
+| K38 | 1. Döntési út | A teljesség-mérés más szavas találatai lexémánként egy blokk-sorba kerülnek, nem egyenként. | sablon 9 öt szabály 2.; DT564 | gépi: `ellenoriz.py` 33. (versszám géppel olvasható) | **teljesül** — 33. RENDBEN; a csoportos okok L145–148. |
+| K39 | 1. Döntési út | Minden vizsgált, nem beépült vers a saját indokával egy generált mellékletlapon áll (`lexikon/[ID]_KIZARASOK.md`), a lapról okonként linkkel. Kapu: a melléklet igehelyeinek uniója egyenlő a bevezető számával. Az 1. kiadás feltétele (B14, B15). | F3 módosítva (szerkesztői döntés, „mehet”, 2026-11-09) | gépi: tervezett (F3 (c)) | **hiányzik** — a lap csak annyit mond: „A csoport mind a … verse a lap nyílt adatkészletében áll” (L145–148). Melléklet nincs. |
+
+## 6. 2. Előfordulások és 2.1 Az igehelyek szövege
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K40 | 2. Előfordulások | A tábla oszlopai: Igehely · Kulcsszó (Károli-szó + eredeti alak kiejtéssel) · Jelentés (a szó) · Funkció (a motívumban) · PaRDeS-szint · Strong · UBS-jelentés (ÓSZ-sornál is) · Megbízhatóság. A szó jelentése és a hely funkciója két külön oszlopban áll. | sablon 6 A) 1.; DT-F121a (d); memória: szotar-es-motivum-ket-reteg | gépi: FUNKCIO_URES | **teljesül** — L220–268. |
+| K41 | 2. Előfordulások | A blokk összegző következtetése a súlypont- és a szövetségarány-szabályt követi („mindkét szövetség” fordulat nélkül). | F1 (szerkesztői döntés, 2026-11-09: „jó így”) | gépi: `teszt_olvasoi_kovetkeztetes.py` (tervezett) | **hiányzik** — L216: „a Biblia sok könyvében, mindkét szövetségben fordul elő”. |
+| K42 | 2. Előfordulások | Minden lábjegyzetjelhez van definíció, és a lábjegyzet olvasói nyelvű (nem „… sorszám 12, 23”). | sablon 6 L8 (24. szabály); F25 (a #182-é) | gépi: `ellenoriz.py` 24., LABJEGYZET | **részben** — 24. RENDBEN; a „sorszám” 25 lábjegyzetben áll (L270–310). |
+| K43 | 2.1 | Minden igehelynél a Károli-vers szó szerint áll, alatta egy kerek `kapcsolodas`-mondat és új bekezdésben a „Funkció:” sor („címke — magyarázat”); töredék súlyos hiba. | sablon 6 A) 1/a; sablon 9 4. pont; sablon 9 hét szabály 5.; DT546; memória: 1a-kerek-proza | gépi: `ellenoriz.py` 25., `proza_1a.py`, PROZA_1A | **teljesül** — 47/47 (mért). |
+| K44 | 2.1 | Az idézőjeles rész a fölötte álló Károli-vers szó szerinti része, vagy „saját fordításban” jelölésű; értelmet változtató csonkítás nincs. | sablon 9 öt szabály 5.; F2; a #166 lektori ellenőrzőlistája | gépi: IDEZET, CI E34; a csonkításra lektor | **részben** — IDEZET 0; az F2 helye (1Móz 7:23) javítva. A csonkítás többi helyét a lektor nézi; ez nem eldönthető. |
+| K45 | 2.1 | A próza nem hivatkozik a régi tanulmány pontszámaira, csak a lap saját szakaszaira, a szakasz nevével. | sablon 9 4. pont (v0.5) | gépi: PONT, SZAKASZ_HIV | **teljesül** — 0 BUKÁS. |
+
+## 7. 3. Kizárt és vizsgált helyek, és a 6. Minősítés indoklásai
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K46 | 3. Kizárt helyek | Az elutasított és a nyitott jelöltek indoklással állnak, okonkénti összesítővel. | sablon 6 A) 1/b; DT680 | gépi: `ellenoriz.py` 28., 33. | **teljesül** — L665–. |
+| K47 | 3., Minősítés | Az indoklás olvasható mondat. Nem hivatkozik más sorra („Ugyanaz az indok, mint …”), sem a „tanulmány”-ra vagy a „napló”-ra; nincs benne szakzsargon. | DT675, DT676 (29. szabály); memória: hamart-uj-arany | gépi: `ellenoriz.py` 29. (csak a belső jelre) | **hiányzik** — L697 és L2851 „Ugyanaz az indok, mint Jer 17:9-nél”; L696, L759 „a naplóban”; L176, L688 „amelyet a tanulmány nem dönt el”. |
+| K48 | 3. Kizárt helyek | Az indoklásban helyes a névelő („az árar”), és a héber szó írással, zárójeles kiejtéssel áll; csupasz átírás nincs. | F4 és kiegészítése | gépi: tervezett (F4 (c)) | **hiányzik** — „a adamá” 34 sorban (pl. L753). L. B08. |
+
+## 8. 4. Szótári háttér
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K49 | 4. bevezető | A szavak héber/görög írással és zárójeles kiejtéssel állnak; a Strong-szám nem a zárójelben van. A pontrendszer magyarázata a Jelmagyarázatban áll, nem a szóbevezetőben. | F8 | gépi: tervezett (F8) | **hiányzik** — L1258 („héberül az ával (H0056) … a chattáá (H2403)”); a görög bevezető L1293. |
+| K50 | 4. áttekintés | Az elején áttekintő tábla áll: szavanként kiejtés, alapjelentés, LXX-megfelelő és a helyek száma. | sablon 6 v4 „Szakaszrend” 4. | lektor | **teljesül** — L1262–1286; a görög alapjelentés is kitöltve (F2-lelet). |
+| K51 | 4. áttekintés | A tábla megmondja, mit mutat az LXX-oszlop a 4.11 láncbeli megfelelőjéhez képest (összes vers vagy láncbeli). | leletlista 1. pont (2026-11-08) | lektor | **részben** — a lábjegyzet (L1288) a mérés módját mondja, a 4.11-hez való viszonyt nem (chámász: itt ἀσέβεια, a 4.11-ben ἀδικία). |
+| K52 | 4.1 | A görög szavak alapjelentése (TBESG) be van kötve, ugyanúgy, mint a héberé. | F5 (1); F21; F31 | gépi: a #182 42. szabálya (F31) | **hiányzik** — L1295 üres blokk. |
+| K53 | 4.2 | A fő szótár szócikke kétrétegű: olvasói kártya (jelentésfa glosszákkal, „A motívum helyein” sor), alatta csukott „Szótári apparátus”. A motívumot hordozó jelentések ki vannak bontva; az ismétlődő tagolás-bekezdés egyszer áll. A teljes, olvasóbarát szótári nézet az olvasóé, nem a lapé. | DT690; F25; memória: befogadasra-var 13. („Olvasóba, utána”, 2026-11-11) | gépi: BDB_OLVASOI | **teljesül** — „Szótári apparátus” 15 helyen (pl. L1318). |
+| K54 | 4.2 | Az olvasói rétegben nincs feloldatlan rövidítés, belső címke, nyers sorszám, szócikk-azonosító (BDBnnnn, `_226`), és a szócikk feje nem jelentéspont; egy vers nem áll kétszer. | F9 (4); F10 (3), (5); F29 (b), (c) | gépi: BDB_OLVASOI | **nem eldönthető** — BDB_OLVASOI 0; de L1994 „ra ' I. רַע‎_226” belső számlálót hoz. Hogy ez az olvasói rétegben vagy az apparátusban áll, a renderelt nézetben kell megnézni. |
+| K55 | 4.2 | A csukott jelentéscím mellett ott a jelentés rövid glosszája (nem csak „2 (1 szakasz)”). | F10 (2) | lektor | **részben** — két cím glossza nélkül: L1652 „Hithpa'el – Hiph'il (2 szakasz)”, L1792 „Niph'al – Hoph'al (3 szakasz)”. |
+| K56 | 4.2 | A BDB magyar szövege a saját szócikkében és szakaszában áll; a szakaszhatár helyes. | F9 (1); F29 (d); N-F102a, N-F102b | gépi: `ellenoriz.py` 26., 27. | **hiányzik** — a 27. szabály 4 jelentést ad a HAMART-ra: H2403 (BDB9520 fej a BDB2699 -/5/- sorában, kétszer), H7451 (BDB8033 a BDB8032 10.d-ben, BDB8034 a BDB8033 3.-ban). |
+| K57 | 4.2 | A lapon nincs „próba”, „ellenőrzendő” vagy „kutatói jelölés” jelölő, és nem áll mért BDB-pontosság (sem a 94,0%, sem a bontása). A mért szám csak a módszertani dokumentációban áll; az olvasóba sem kerül. | F19; a felhasználó, 2026-11-10 19:00, a „Mért pontosság (seed-103, 2026-11-10): 94,0% …” sorra: „semmi helye ott” (felülírja az F35-öt és módosítását, valamint a DT730-at; l. B19) | gépi: MUNKASZO; a mért számra: nincs | **teljesül** — jelölő 0; „94,0” 0 találat. |
+| K58 | 4.2 | A szótári szöveg hivatkozása Károli-számozású, az eredeti számot jelöli; a nem létező versre mutató hivatkozás gyenge jelöléssel, átirányítás nélkül áll. | F32; N-F182e | gépi: a #182 43. szabálya (F32, JELENTÉS) | **teljesül** — a megjelenítés szabályos. A 8 hibás hivatkozás forrásadat-javítása (N-F182e) a 2. kiadásé lehet. |
+| K59 | 4.1–4.5 | Ha egy Strongnak van érvényes fordítássora, az a lapon áll, és nem az elavult sor jelenik meg; a fordítatlan egység „(fordításra vár)” jelölést kap. | F31; MUNKAMENET C-y; CI E19 | gépi: a #182 42. szabálya (F31), CI E19 | **teljesül** — a HAMART nincs a 42. szabály listáján. |
+| K60 | 4.3 | Szavanként egy sor, írással és kiejtéssel. A tW-címek magyarul állnak, az azonosító (`kt/…`, `other/…`) nélkül; a forrás egyszer, a pont végén. | F6 és pontosítása („mehet”, 2026-11-09) | gépi: ANGOL_SOR (tervezett: HIBA) | **hiányzik** — L1468–1476 és a héber 4.3 (L2131–): „tW: kt/perish, other/corrupt …”, „szónézet: /szo/G1311”. |
+| K61 | 4.6 | Szavanként egy teljes mondat, lelet → következtetés; kategórianév helyett olvasói szó áll, a hivatkozás link. | F11 | lektor | **hiányzik** — L1510 („egyező 7 · eltérő 23 · megállapítatlan 15”), héberül L2227 („… használja-e: megállapítatlan 3”). |
+| K62 | 4.7 | Csak ott van következtetés, ahol a SECE a párt adja; hamis, ismételt következtetés nincs. | F12 | gépi: tervezett (V6 kiterjesztése) | **hiányzik** — L1514 („a szókapcsolatban nem ez a szó, hanem a diaftheiró felel meg”), L2275 (héber, szavanként). |
+| K63 | 4.8 | A rokon nyelvi tábla a 4.8-ban áll (szavanként alapjelentés, rokon nyelvi sorok alakkal, kiejtéssel, jelentéssel), a V2/V3 szabállyal. A 4.11-ben csak a fordítások visszhangja marad. Nincs „2. szerep”-mutató, nyelvtani alak és „késői héber”. | F13 és döntése („igen”, 2026-11-09) | gépi: V2, V3 (áthelyezve) | **hiányzik** — L2398– („rokon nyelvi adat: asszír — … a 2. szerepben”); a tábla még a 4.11-ben (L2488). L. B13. |
+| K64 | 4.9 | Egy csoportosított mondat áll, a kivételek igehellyel; kis elemszámnál nincs következtetés. | F7 és kiegészítése | gépi: tervezett | **hiányzik** — L1570 (görög, „0 helyen … áll”), L2422 (héber, tízszer ugyanaz a tagmondat). |
+| K65 | 4.11 | A visszhang-blokk a sablon 0–8. szabálya szerint áll: lánc a motívumadatból, alapvonal, kiemelés csak alapvonallal, n/N, betoldás-sor, hiány kimondva. | sablon 6 v4 „A 4.11 visszhang-blokk szabályai”; DT639, DT645, DT646, DT648, DT664 | gépi: VISSZHANG (V1–V7) | **teljesül** — VISSZHANG 0 BUKÁS (L2472–). |
+| K66 | 4.11 | A kinyerő tábla sorait két kéz ellenőrizte; ellenőrizetlen sor nem renderel. | MUNKAMENET C-vh; `adat/SEMA.md` 2.53; leletlista 4. pont | gépi: `megfelelo_kinyer.py ellenoriz` | **nem eldönthető** — a blokk 4 cellában „nincs ellenőrzött adat”-ot mond (adámá 3:23 és 4:12, sáchat 9:15, a betoldás-sor LXX-cellája). Ez szabályos kimondás, de a teljesség a #183 után dől el. |
+| K67 | 4.11 | A visszhang-réteg mindkét része az 1. kiadás kötelező feltétele: a visszhang 1 (a 4.11 mai blokkja, K65) és a visszhang 2 (#183: ÚSZ-ág, tanúréteg). | szerkesztői döntés (2026-11-11, az orkesztrátoron át: „a visszhang 1-2 kötelező”); memória: visszhang-reteg-terv („Hamart legyen teljes, új arany”); az ütemezés (2026-11-11): #182 → #183 → lektor | gépi: VISSZHANG | **hiányzik (#183 folyamatban)** — a visszhang 1 teljesül (K65), a visszhang 2 még nincs a lapon. |
+| K67a | 4.11 · visszhang 2 | ÚSZ-ág: a motívum újszövetségi helyein lánc-szavanként, az ÓSZ-ág formájában áll a Vulgata (Clementina) megfelelője, n/N alakban. *A briefből, a #183 után a HAMART szerint véglegesítendő.* | F183 V1; szerkesztői döntés (2026-11-11: „a visszhang 1-2 kötelező”) | gépi: VISSZHANG (bővítendő) | **hiányzik (#183 folyamatban)** |
+| K67b | 4.11 · visszhang 2 | A szövegváltozat (SBLGNT-apparátus, TAGNT) csak akkor áll, ha a lánc szavát érinti. Peshitta helyett kimondott hiány: „nem azonosítható: szabad forrás nincs”, nem kitöltés. *A briefből, a #183 után a HAMART szerint véglegesítendő.* | F183 V1; CLAUDE.md 3. szabály | lektor | **hiányzik (#183 folyamatban)** |
+| K67c | 4.11 · visszhang 2 | Az ÓSZ-előkép a meglévő LXX-hídból jön (a görög lánc-szó a LXX-ben), nem új forrásból. *A briefből, a #183 után a HAMART szerint véglegesítendő.* | F183 V1 | lektor | **hiányzik (#183 folyamatban)** |
+| K67d | 4.11 · visszhang 2 | A tanúréteg csak Remez- vagy Sod-helyen áll, hagyományonként legfeljebb egy tanúval, és csak ha a tanú ugyanazt a kapcsolatot látja. Három forrása van. Az egyházatyai index helyet, szerzőt és művet ad, idézet nélkül; a szöveget szabad kiadásból egy mondat foglalja össze, linkkel. A rabbinikus tanú csak az ÓSZ-helyen át állhat. A Glossa Ordinaria forrásként értékelve kerül be. *A briefből, a #183 után a HAMART szerint véglegesítendő.* | F183 V2; memória: visszhang-reteg-terv | lektor | **hiányzik (#183 folyamatban)** |
+| K67e | 4.11 · visszhang 2 | A tanúsorok kinyerő táblából renderelnek (`adat/visszhang_tanuk.tsv`). Minden sor hordozza a forrás-URL-t, a lekérdezési dátumot és a proveniencia-sort. Két kéz dolgozik: aki kinyer, nem ellenőriz. Ellenőrizetlen sor nem renderel, emlékezetből semmi nem kerül be, és érvényes az arány-kapu (1% FIGY, 5% HIBA). *A briefből, a #183 után a HAMART szerint véglegesítendő.* | F183 V2; memória: visszhang-reteg-terv; DT32 | gépi: tervezett (a #183) + arány-kapu | **hiányzik (#183 folyamatban)** |
+| K67f | 9. Vitatott pontok · visszhang 2 | Akadémiai hang csak a vitatott pontoknál áll: lektorált forrásból (OpenAlex, Crossref, DOAB), lehetőleg több hagyományból, emlékezetből semmi. Nem kerül be: NC-licencű forrás, a bible-mcp kimenete, Strack–Billerbeck, igehirdető vagy gyülekezeti tanító. *A briefből, a #183 után a HAMART szerint véglegesítendő. (A brief „7. szakasz”-a a v4 szerkezetben a 9. Értelmezés „⚠️ Vitatott pontok” alszakasza.)* | F183 V3 és „Nem része”; memória: visszhang-reteg-terv; DT32 | lektor | **hiányzik (#183 folyamatban)** |
+| K68 | 4.12 | A Nave-blokk nem üres. A döntések az `adat/tematikus_temak.tsv`-ben állnak, indokkal; angol témanév csak `title`-ben, nyers HTML-kód nincs. | DT595, DT684; sablon 9 hét szabály 6.; memória: nave-blokk-minden-cikkben | gépi: `ellenoriz.py` 40., NAVE_ANGOL | **teljesül** — 7 téma (L2510–2539). |
+| K69 | 4.13–4.14 | A Károli-megfelelők és a rejtett/hamis párhuzam a Károli–Strong párosításból generálódik, a hosszú lista csukva. Az 1. kiadás feltétele, a 4.13 és a 4.14 is (a felhasználó, 2026-11-11: „Mindkettő most készüljön”; B15). | F14 | gépi: tervezett (a szerep számai = a párosítás tábla számai) | **hiányzik** — L2545, L2552 üres blokk. |
+| K70 | Miért fontos | Minden többforrásos szócikk után egy bekezdés mondja meg, mit ad hozzá a második forrás, vagy hogy semmit. | sablon 6 A) „Miért fontos ez a lelet” | lektor | **részben** — 6 bekezdés van a 15 szóra (L2557–2585). Hogy minden többforrásos szónál áll-e bekezdés, nem mértem. |
+
+## 9. 5. LXX-fordítói döntések
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K71 | 5. LXX | Minden ÓSZ-versre egy sor jut (Károli-igehely, LXX-igehely, héber kulcsszó kiejtéssel, görög megfelelő, egyezés, forrás); automatikus tippelés nincs; a belső címke olvasói alakban áll. | sablon 6 A) 3.; F15 (b) | lektor | **teljesül** — L2595–; „a megfelelő nincs megállapítva”. |
+| K72 | 5. LXX | Ugyanarra a (vers, Strong) párra a lap két helyén nem állhat eltérő LXX-megfelelő; a megfelelő egy forrásból jön. | F15 (a), (c) | gépi: tervezett (F15 (c)) | **hiányzik** — 1Móz 7:4, 7:23, 8:21: az 5. szakaszban „—”, a 4.11-ben γῆ (gé). |
+
+## 10. 6. Kereszthivatkozások és Minősítés
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K73 | 6. Kereszthiv. | Minden vizsgált igehelyre lefut a TSK (Votes ≥ 15) és a Károli-KH, Károli-formátumban. A nem vizsgálható helyek fel vannak sorolva, a másolt Károli-KH lista kimarad. | sablon 6 A) 4.; N-F156a | gépi: KH_MASOLT | **teljesül** — L2648–2656 (6 nem vizsgálható; Jer 6:7 kimarad). |
+| K74 | 6. Kereszthiv. | A Károli-KH és a TSK két egyenrangú rendszer, egyik sem a másik ellenőrzője; a metszetük erősebb jel. | memória: kereszthivatkozas-ket-rendszer; DT695 | lektor | **teljesül** — L2829–2835. A „független megerősítés” szóhasználat: B16. |
+| K75 | Minősítés | Találatonként áll a minősítés (független megerősítés / új találat / nem releváns), indoklással; a hamis nyomok is dokumentálva vannak. | sablon 6 A) „Minősítés” | lektor | **teljesül** — 99 minősített jelölt, indokkal (L2846–). Az indoklások hibái: K47. |
+
+## 11. 7. Kapcsolatok, 8. Kapcsolódó motívumok
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K76 | 7. Kapcsolatok | Elöl a tábla (Forrás, Cél, Típus, Funkció, Bizonyosság, PaRDeS-szint), alatta `<details>`-ben Mermaid-diagram. A sorok a jelöltek útján, döntéssel kerültek be. | sablon 6 A) 5.; F16 (a); DT-F182e; CLAUDE.md 2. szabály | gépi: `ellenoriz.py` 2. | **teljesül** — 56 sor (L3060–), diagram L3126. A kapcsolat-jelölt helye nyitott (N-F182a). |
+| K77 | Alátámasztás | A tábla minden sorára megindokolja a funkciót és a bizonyosságot, konkrét szövegi alappal. | sablon 6 A) „Alátámasztás”; DT2 | lektor | **hiányzik** — L3236: „A motívumhoz nincs rögzített kapcsolat.” Ez **hamis állítás** az 56 sor alatt. |
+| K78 | 8. Kapcsolódó motívumok | A motívumközi kapcsolat sorai linkkel a másik lapra, a döntésre váró jelöltek csak számként; kapcsolat nélkül kimondott hiánymondat áll. | sablon 6 A) 5/b; DT277 | gépi: `ellenoriz.py` 2/b | **teljesül** — L3238–3254. |
+
+## 12. 9. Értelmezés, 10. Alkalmazás, 11. Módszertan
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K79 | 9. Értelmezés | A négy PaRDeS-szint és a ⚠️ Vitatott pontok állnak. Rétegfegyelem: egy réteg eszköze nem olvad a másik tanításába; a Sod szövegből levezetett. | sablon 6 A) 6., L7; sablon 9 3. | lektor | **teljesül** szerkezetileg (L3256–3286). A tartalmat a lektor nézi. |
+| K80 | 9. Értelmezés | A Sod-zárás a motívum saját leletéből áll, nem a lapok közt ismétlődő sablonmondat. | F24 (b) | lektor | **teljesül** — L3276. |
+| K81 | 9., 11. | A „független” szó csak ott áll, ahol a bemenet valóban független; közös bemenetnél „egybeesés, nem független megerősítés”. | F24 (a) | gépi: az F24 kapuja | **teljesül** — L3306. |
+| K82 | 9. Értelmezés | A próza a 4.11-ről nem állít többet, mint a blokk alapvonala. | sablon 10 „A 4.11 visszhang-blokk” | lektor | **teljesül** — a 9. a fordítók „hallásáról” nem állít semmit. |
+| K83 | 10. Alkalmazás | Az Alkalmazás kikerül a tudományos lapról, a számozás folyamatos marad; a szöveg archívumba kerül. | F17 (szerkesztői döntés, „igen”, 2026-11-09); a felhasználó, 2026-11-10: „nincs is alkalmazás” (B04) | gépi: tervezett | **hiányzik** — L3288–3300 a lapon („A hívő számára …”, „A lelkigondozásban …”). |
+| K84 | 11. Módszertan | A szakasz leírja a vizsgálati rétegeket, és számozott listában adja a nyitott kérdéseket. A tartalmi kérdés itt marad; a séma-korlát és az adatállapot N-tétel vagy 【NAPLO】. | sablon 6 A) 7.; sablon 9 7.N; sablon 10 3. | lektor | **teljesül** — L3302–3323. |
+| K85 | 11. Módszertan | Az ÚSZ-helyeken a TR/kritikai eltérést a lap jelöli. | DT563; sablon 9 öt szabály 3. | lektor | **teljesül** — L3314. |
+| K86 | 11. Módszertan | Ha a motívumnak van közel-keleti mondata, az itt áll, tárgyszerűen, a nyitott kérdések alatt; az általános határmondat a Kolofonban marad. | F20 | lektor | **teljesül** (tárgytalan: a HAMART-nak nincs ilyen sora; a Kolofon mondata L3399). |
+
+## 13. 12. Irodalom és idézés, Kolofon
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K87 | 12. Irodalom | A „Hogyan hivatkozz” rész tartalma: ID, cím, státusz, generálás dátuma, hely (helyőrző). Alatta a felhasznált szótárak teljes névvel. | sablon 6 A) 8.; memória: github-nem-kanonikus-forras | lektor | **teljesül** — L3333–3355. A státusz: K23. |
+| K88 | Kolofon | A „Hogyan idézd” csak a lapot idézi, plusz egy mutatót: „A lap adatai … nyílt adatkészletként is elérhetők: DOI”. Rétegmagyarázat és CITATION-hivatkozás nincs. | memória: nyilvanos-szoveg-szohasznalat (#638) | lektor | **teljesül** — L3395. |
+| K89 | Kolofon | A szerzőségi mondat adatból áll (az értelmező szakaszok neve, a próza modellje, az átnézés), és a lap mai szakaszneveit használja. | DT603; sablon 6 „Kolofon” | gépi: KOLOFON | **részben** — a kiadás előtti mondat helyes (L3393), de a régi „Alkalmazás és tanítványság” nevet hozza. |
+| K90 | Kolofon | A kiadás-sor és a változásjegyzék az `adat/kiadasok.tsv`-ből jön; a próza modellje a tényleges modellnév. | DT492; DT473; sablon 6 „Kolofon” | gépi: KOLOFON | **teljesül** a kiadás előtti állapotra (L3415–3420); a modellnév a C5-ben kerül be. |
+| K91 | Kolofon | A forrástábla (Forrás · Fájl · Licenc · Blokk) a ténylegesen felhasznált forrásokat adja, licenccel. A licenc-attribúciók állnak. | sablon 6 „Kolofon”, „Licenc és nyilvános repó” | gépi: KOLOFON | **részben** — az attribúciók állnak (L3477–3489). A „Fájl” oszlop az olvasói forrásnevet ismétli, ugyanaz a forrás többször áll (pl. a Septuaginta tízszer, L3448–3457). L. B10. |
+| K92 | Kolofon | Az „Emberi lektorálás” sor a `/lap-javit` naplójából generálódik. | DT599 | gépi: KOLOFON | **hátralévő lépés** — a `/lap-javit` még nem futott. |
+
+## 14. A lezárás folyamatfeltételei (a lap mellett)
+
+| # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
+|---|---|---|---|---|---|
+| K93 | folyamat | A határ kész (`nyitva` 0), és a határ-ellenőrzés modelles része a mai beépített sorokon készült (SORÁLLAPOT-jel). | sablon 9 hét szabály 2.; sablon 10 „Előfeltétel” 1.; MUNKAMENET C-h | gépi: `ellenoriz.py` 39., Feed 5 | **teljesül** — a HAMART nincs a 39. szabály listáján. |
+| K94 | folyamat | Szerkesztői döntéssel lezárt határkérdés nem nyílik újra; a HAMART határa lezárt. | F26 (a)–(c); DT-F182a–d; memória: lap-menet-szintje | gépi: 39. (a döntés-commit frissíti az ujjlenyomatot) | **teljesül** — DT-F182a–d. |
+| K95 | folyamat | A határ (U2) és a próza (U3) két kézben készül, vagy a független határ-ellenőrzés az U3 előtt fut. A próza nulláról, egy kézből, a 10-es prompttal készül. | sablon 9 hét szabály 1., 7.; MUNKAMENET C-w | lektor (a menetnaplóból) | **nem eldönthető** — a #182 a határdöntést (DT-F182a–d) és prózajavítást (F2) is végzett; a sorrendet a #182 jelentése mondja meg. |
+| K96 | folyamat | A teljesség-mérés három hálóval lefutott, dokumentálva, üres eredménynél is. | DT548; sablon 9 „Teljesség-mérés” | gépi: a lap 1.2 táblája | **teljesül** — L122–128. |
+| K97 | folyamat | A próza-lefedettségi lista üres, vagy minden tétele indokolt; a lista a naplóban áll. | DT471; MUNKAMENET C-z | gépi: `ellenoriz.py` 23., `proza_lefedettseg.py` | **nem eldönthető** — a 23. szabály szerint 6 előfordulás és 14 kapcsolat nincs a prózában megnevezve; az indoklást nem láttam. |
+| K98 | folyamat | A Feed mind a 9 kapuja zöld (a 9. az olvasói kapu). | DT547; MUNKAMENET C5 | gépi: `muhely_allapot.py` | **nem eldönthető** — a Feed futása itt csak a fejsort írta. |
+| K99 | folyamat | A gépi kapuk után előbb a lektor fut (friss kontextusú, a prózát író modelltől eltérő modell): listát ad a lektor-felületen, nem javít. | DT473; a felhasználó, 2026-11-10: „pedig jó lenne látni a lektor által találtakat”; a sorrendről korábban: „mindegyik véthető” (B06); memória: lezaras-rogzitett-lepesszam | lektor | **hátralévő lépés**. |
+| K100 | folyamat | A szerkesztő a renderelt lapot a lektor listájával együtt nézi át, a lektor-felületen (lapnézet, privát artifact, világos téma), és tételenként dönt. A jóváhagyás szó szerinti idézettel az `adat/lap_atnezesek.tsv`-be kerül. | DT547, DT554, DT665; MUNKAMENET C-v és 6.–7. menetszabály; B06 (a felhasználó, 2026-11-10); memória: lap-jovahagyas-elott | szerkesztő | **hátralévő lépés**. |
+| K101 | folyamat | Egy közös javítókör a prózát író sessionben (`/lap-javit`, ugyanaz a kéz); utána a gépi kapuk újra zöldek. Második kör nincs. | DT566; MUNKAMENET „A lezárás menete” 3.; memória: lezaras-rogzitett-lepesszam | gépi + szerkesztő | **hátralévő lépés**. |
+| K102 | folyamat | A szerkesztő a változáslistát nézi; utána az orkesztrátor felteszi a kérdést: „Kiadható-e az 1. kiadás?” | memória: lezaras-rogzitett-lepesszam (2026-11-11) | szerkesztő | **hátralévő lépés**. |
+| K103 | folyamat | 1. kiadás: `adat/kiadasok.tsv` sora (`kiadas=1`, `proza_modell`), a `motivumok.tsv` verzióemelése és a lap újragenerálása. A `tanitoi` rés kivezetése egy commitban történik. Mindkét tábla írása előtt soronkénti összevetés kell. | MUNKAMENET C5; DT492; DT643 | gépi: `ellenoriz.py` 32. (kiadott lapon BUKÁS = SÉRTÉS) | **hátralévő lépés**. |
+
+---
+
+## (a) A HAMART hiányai — a pótlandó tételek
+
+A „hiányzik” és a „részben” sorok hiányzó része. A „hol javul” oszlop a CLAUDE.md rétegszabálya szerint mondja meg, hol kell javítani; a lapon soha. A **hatókör** oszlop a befagyasztott HAMART-hatókörhöz (hibajavítás igen, új funkció nem) méri a tételt. Az új generátor-részt kérő tételek (F3, F14, F18) a szerkesztő döntése szerint az 1. kiadás feltételei (B15).
+
+| # | Tétel | K | Hol javul | Hatókör | Leletlista |
+|---|---|---|---|---|---|
+| A01 | Hamis állítás: az Alátámasztás „nincs rögzített kapcsolat”-ot mond 56 kapcsolat alatt; a soronkénti alátámasztás hiányzik. | K77 | rés-forrás vagy generátor (adatból vezetett mondat), próza | hibajavítás | — (új lelet) |
+| A02 | Az azonosító tábla a lap elején, olvasói mezőnevekkel, a kiadási állapotból generált státusszal. | K21–K23 | generátor | 1. kiadás feltétele (a felhasználó, 2026-11-09: „minden esetben”) | F18 |
+| A03 | A 2. szakasz összegző következtetése az F1-szabály szerint. | K41 | `olvasoi_kovetkeztetes.py` + teszt | hibajavítás | F1 |
+| A04 | H2403: „chattáá” → חַטָּאת (chattát) az 1.2-ben, az 1.4-ben, az áttekintő táblában, a 4. bevezetőben és a 4.9-ben. | K08 | generátor (Strong-változat) | hibajavítás | F8 (3), N-F178b |
+| A05 | Az indoklások: más sorra, a „tanulmány”-ra és a „napló”-ra nem hivatkozhatnak. | K47 | adat (`jeloltek.tsv` indoklás, szkripttel, összevetéssel) | hibajavítás | — (memória: hamart-uj-arany) |
+| A06 | Az indoklások névelője és átírása („a adamá” 34 sor). | K48 | adat (`jeloltek.tsv`) + a nyílt mag fordítása | hibajavítás | F4 |
+| A07 | A „mi”-hangú mondatok a Kivonatban, a 3. szakasz generált bevezetőjében és a Módszertanban. | K12 | próza (forrás) + generátor (bevezető) | hibajavítás, a B07 döntése után | — |
+| A08 | Két lábjegyzetben nyers mezőnév („proveniencia:”, „igazolas:”); a lábjegyzetek „sorszám”-nyelve. | K05, K42 | generátor (olvasói átírás) | hibajavítás | F25 |
+| A09 | A 4. bevezető szólistája: írás és zárójeles kiejtés, Strong-szám nélkül; a pontrendszer magyarázata a Jelmagyarázatba. | K49 | generátor | hibajavítás | F8 |
+| A10 | A görög 4.1 bekötése (TBESG). | K52 | adat + generátor | hibajavítás | F5, F21, F31 |
+| A11 | A 4.3 tW-sorai: magyar cím, azonosító nélkül, a forrás egyszer. | K60 | generátor | hibajavítás | F6 |
+| A12 | A 4.4 angol doménnevei. | K11 | adat (fordítás) vagy generátor | hibajavítás | — |
+| A13 | A 4.6 szavankénti mondata. | K61 | generátor | hibajavítás | F11 |
+| A14 | A 4.7 hamis, ismételt következtetései. | K62 | generátor | hibajavítás | F12 |
+| A15 | A 4.8: a rokon nyelvi tábla áthelyezése, a „2. szerep”-mutató és a nyelvtani alakok elhagyása. | K63, K04 | generátor | szerkezeti változás (B13) | F13 |
+| A16 | A 4.9 csoportosított mondata, következtetés kis elemszámnál nélkül. | K64, K10 | generátor | hibajavítás | F7 |
+| A17 | A BDB magyar szövegének szócikkhatár-hibái (H2403, H7451); két glossza nélküli csukott cím; a `_226` belső számláló (L1994). | K54–K56 | adat (`bdb_szakasz_hu.tsv`) + generátor | hibajavítás | F9, F10, F29 (d), F34 |
+| A18 | ~~A mért BDB-pontosság a lapon.~~ Törölve: a K57 megfordult (a felhasználó, 2026-11-10: „semmi helye ott”); a lapon nincs mit pótolni. | K57 | — | — | F35 (felülírva) |
+| A19 | Az 5. szakasz és a 4.11 LXX-megfelelője egy forrásból (1Móz 7:4, 7:23, 8:21). | K72 | generátor | hibajavítás | F15 |
+| A20 | Hely/vers mértékegység: a 4.6 és az 5. szakasz „46 ószövetségi hely”-e valójában 46 vers. | K20 | generátor (`olvasoi_kovetkeztetes.py`) | hibajavítás | — (új lelet) |
+| A21 | A 10. Alkalmazás lekerül; a Kolofon szerzőségi mondata a mai szakasznevekkel. | K83, K89 | generátor + forrás (archiválás) | 1. kiadás feltétele (a felhasználó, 2026-11-10: „nincs is alkalmazás”) | F17 |
+| A22 | Az ATIRAS_VALT 4 helye (adamá, arar, chamasz, adama) egységes kiejtésre. | K07 | adat / generátor | hibajavítás | leletlista 3. |
+| A23 | A teljes elutasítási lista mellékletlapon. | K39 | generátor | 1. kiadás feltétele (a felhasználó, 2026-11-09: „mehet”) | F3 |
+| A24 | A 4.13 Károli-megfelelők és a 4.14 rejtett/hamis párhuzam. | K69 | generátor (új rész) | 1. kiadás feltétele (a felhasználó, 2026-11-11: „Mindkettő most készüljön”) | F14 |
+| A25 | Az áttekintő tábla LXX-oszlopának viszonya a 4.11-hez (oszlopfej vagy lábjegyzet). | K51 | generátor | hibajavítás | leletlista 1. |
+| A26 | Lektori apróságok a Jelmagyarázatban (L66, L84). | K31 | generátor | hibajavítás | — |
+| A27 | A visszhang 2 (ÚSZ-ág, tanúréteg, akadémiai hang a vitatott pontoknál). A sorok a briefből valók, a #183 után a tényleges HAMART visszhang 2 szerint pontosulnak; a lista ezzel zárul le, még a lektor előtt. | K67, K67a–K67f | adat (kinyerő tábla, két kéz) + generátor | kötelező az 1. kiadáshoz (szerkesztői döntés, 2026-11-11) | #183 |
+
+**Nem eldönthető, a lektorra vagy egy későbbi lépésre vár:** K06 (az F27 kapuja), K44 (csonkítás), K54 (`_226` rétege), K66 (a #183 után), K70 (Miért fontos teljessége), K95 (U2/U3), K97 (próza-lefedettség), K98 (Feed). Ezek nem hiányok, de a „Kiadható-e?” kérdés előtt mindegyikre válasz kell.
+
+## (b) Ellentmondó vagy elavult követelmények — a szerkesztő döntésével
+
+Minden tétel döntött (DT-F190a). Ahol a döntés egy szabályhely igazítását kéri (sablon, MUNKAMENET, DONTESEK), az a szabályhely saját feladata; ez a lista csak a döntést rögzíti.
+
+| # | Mi ütközik | Döntés | Állapot |
+|---|---|---|---|
+| B01 | A Kivonat hossza: a sablon 6 A) része „3–5 mondatos prózai kivonat”-ot ír, a sablon 10 négy bekezdést (a HAMART négy bekezdés). | A sablon 10 az irányadó; a sablon 6 A) mondata elavultként jelölendő. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B02 | A sablon 6 L1 pontja „15 kötelező szakasz”-t sorol a régi számozással (1/b, 5/b, 6/b), és a megszűnt OLVASHATÓ változat 7 szakaszát is kéri. Ezzel szemben áll a v4 szakaszrend. | Az L1 a v4 szakaszrendre hivatkozzon; az OLVASHATÓ-rész kerüljön ki a kapuból. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B03 | A sablon 6 L5 pontja a tanítói szakasz átvételét kéri, ezzel szemben áll a DT643 (a `tanitoi` rés kivezetése) és a v4 („a nevesített tanítói rész nem áll a lapon”). | Az L5 elavult. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B04 | A 10. Alkalmazás: a v4 szakaszrend, a DT276, a sablon 10 3. pontja és a sablon 9 „5. Alkalmazás” pontja még tartalmazza. Az F17 szerkesztői döntés (2026-11-09: „igen”) kiveszi, de helyőrzős DT nincs róla. | Az Alkalmazás lekerül a lapról, az 1. kiadáson már nem áll (a felhasználó, 2026-11-10: „nincs is alkalmazás”). Utána a négy szabályhely igazítása. | **döntve** |
+| B05 | A Módszertan formája: a sablon 6 A) 7. pontja táblázatot kér („# · Módszer · Eredmény”), a HAMART prózában írja le (a sablon 10 a sablon 9-re utal). | A táblázat-előírás elavult; a próza az irányadó. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B06 | A lezárás menete: a MUNKAMENET „A lezárás menete” és a DT566 szerint a sorrend: gépi kapuk → szerkesztő → javítókör → 1. kiadás; a lektor és a C-k (`/kiadas`) a 2. kiadás bemenete. A memória (2026-11-10/11) és az ütemezés szerint viszont lektor előbb. | Új sorrend: gépi kapuk → a lektor előbb fut, és csak listát ad → a szerkesztő a lektor listájával együtt néz (lektor-felület) → egy közös javítókör → változáslista → „Kiadható-e?” → `/kiadas` (a felhasználó, 2026-11-10: „pedig jó lenne látni a lektor által találtakat”; a sorrendről: „mindegyik véthető”). Utána a MUNKAMENET „A lezárás menete” és a C-k sor igazítása; a `/kiadas` szerepe az 1. kiadásnál külön kimondandó. | **döntve** |
+| B07 | „Mi”-hang: a sablon 6 L6 (c) és (f) pontja tiltja; a 3. szakasz generált bevezetője („vizsgáltunk”) és a HAMART prózája (L13, L3306) használja. | A szabály marad, a generátor bevezetője és a próza harmadik személyre vált (a javítókörben). A másik lehetőség: kimondott kivétel az olvasói bevezetőre. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B08 | Kiejtés-forma: az F4 kiegészítése szerint az olvasói szövegben az írás + zárójeles kiejtés kötelező, a csupasz átírás HIBA. A sablon 6 és a sablon 10 csak a kiejtést kéri, és a HAMART folyó prózája „az átok (árar)” alakot használ, írás nélkül. | Táblában, listában, indoklásban és címsorban írás + kiejtés; folyó prózában a magyar szó + zárójeles kiejtés elfogadott (ez a HAMART gyakorlata). A szabály a sablon 6 „Kiejtés” pontjába kerüljön. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B09 | Licencjelölés: a sablon 6 „Tisztázatlan licencű források” szerint a SECE és az MCGED `tisztazatlan`; a lapon a SECE „közkincs”, a Mounce „© Mounce 1993”. | Ellenőrizni kell a mai licenctáblát. Ha a D9 döntés megfordult, a sablon bekezdése elavult; ha nem, a generátor jelölése hibás. Nem eldönthető. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B10 | A Kolofon forrástáblája: a sablon fájlonkénti „Fájl” oszlopot kér, az olvasói forma szabálya (fájlnév nem állhat a lapon) ezt az olvasói névre cseréli, ezért a két oszlop azonos, és ugyanaz a forrás többször áll. | A „Fájl” oszlop elhagyása, és forrásonként egy sor (generátor). Szerkesztői döntés. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B11 | A sablon 6 A) 8. pontja „a fájl GitHub-URL-jét” kéri, a memória (github-nem-kanonikus-forras) helyőrzőt. | A sablon szövege elavult; a helyőrző az irányadó. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B12 | A sablon 6 A) 1. pontja az ISTENTISZT-001-et nevezi arany lapnak („Arany lap (ISTENTISZT-001, F131…)”); az új arany a HAMART (sablon 6 v4). | Az A) arany-hivatkozásai a HAMART-ra mutassanak. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B13 | A rokon nyelvi háttér helye: a sablon 6 v4 4.11 6. pontja (DT639) a 4.11-be teszi, az F13 a 4.8-ba. | A 4.8-ba kerül (az F13 szerkesztői döntés, 2026-11-09: „igen”). Utána helyőrzős DT a #182 ágán (a DT639 6. pontjának módosítása), és a sablon 6. pontja a 4.8-hoz kerül. | **döntve** |
+| B14 | Az F3 három változata: a „végleges” (a teljes lista a lapon, csukva) és a „módosított” (mellékletlap) közül a későbbi a módosított, tehát a lapon belüli teljes lista elavult. A mai lap egyiket sem valósítja meg (a nyílt adatkészletre mutat). | A mellékletlap az irányadó, és az 1. kiadás feltétele (a felhasználó, 2026-11-09: „mehet”, a módosított változatra). A „végleges” (lapon belüli) változat elavult. | **döntve** |
+| B15 | A HAMART hatóköre be van fagyasztva (hibajavítás igen, új funkció nem), de három lelet új generátor-részt kér: F14 (4.13/4.14), F18 (azonosító tábla a lap elején), F3 (melléklet). | Az F3 és az F18 a felhasználó 2026-11-09-i döntése („mehet”; „minden esetben”), ezért az 1. kiadás feltétele, nem új funkció. Az F14 (4.13 és 4.14) is az 1. kiadás feltétele (a felhasználó, 2026-11-11: „Mindkettő most készüljön”). | **döntve** |
+| B16 | „Független megerősítés” (6. szakasz, Minősítés): az N-F182d szerint ütközhet az egyenrangúsággal. A memória szerint viszont a felhasználó 2026-11-09-én „igen”-nel megtartotta a metszet-logikát („két független, egyenrangú rendszer egyezése erősebb jel”). | A szó marad, az N-F182d ezzel lezárható. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B17 | A DT547 (Fable/lektor az 1. kiadás előtt) állapota 🟢, felülírás-jelölés nélkül, pedig a DT566 a 2. kiadásra tette. | A DT547 kapjon „felülírta: DT566” jelölést (a DT-F182i jelölése szerint). | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B18 | Elavult számozás a memóriában: az `1a-kerek-proza` „Feed 8/8”-at mond (ma 9/9, DT547), a `nave-blokk-minden-cikkben` „12. blokk”-ot (ma 4.12). | Memóriafrissítés; szabályváltozás nincs. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| B19 | A mért BDB-pontosság: az F35 és módosítása (2026-11-10: a bontás nem kell, a 94,0% marad) és a DT730 („próba” helyett a mért szám a lapon) a lapra tenné a mért számot. A felhasználó később, ugyanaznap: „semmi helye ott” (2026-11-10 19:00). A DT733 (az olvasó szólapjának mért szövege) ugyanezt a kérdést érinti. | Felülírta: a felhasználó, 2026-11-10. A lapon és az olvasóban nincs mért pontosság, csak a módszertani dokumentációban (K57). Az F35, a DT730 és a DT733 „felülírta: a felhasználó 2026-11-10” jelölést kap (a DT-F182i szerinti jelöléssel). | **döntve** |
+
+**Felvett gyakorlat** — a HAMART-on jó, eddig sehol nem volt leírva; a szerkesztő felvette (2026-11-11: „Igen, mind”). A szabályhelyre kerülésük a megnevezett hely feladata:
+
+| # | Mi | Hol látszik | Javasolt hely | Állapot |
+|---|---|---|---|---|
+| J1 | Az 1.5 tartalma: a nem magas megbízhatóságú helyek linkkel, a nyitott kérdések egy-egy mondatban, a kifejtés helye (9., 11.) megnevezve. | L196–208 | sablon 6 v4 „A Döntési út szabályai” | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| J2 | A Módszertanban „A határ második ellenőrzése” bekezdés: mi került ki a független határkörben és miért, olvasói nyelven. | L3308 | sablon 9 4. pont vagy sablon 10 3. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| J3 | Az Értelmezés elején olvasói magyarázat („Mit jelent ez a négy szint?”), és az állítások alatt a mért adat forrássora. | L3262, L3270 | sablon 10 3. | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+| J4 | A Vitatott pontok mindkét olvasatot adatból igazolt érvvel mondják, és kimondják: „a lap a kérdést nem dönti el”. | L3280 | sablon 9 4. pont („⚠️ Vitatott pontok”) | **döntve** (a felhasználó, 2026-11-11: „Igen, mind”) |
+
+## (c) Ma csak ember ellenőrzi, de gépileg is ellenőrizhető lenne
+
+Csak lista; új kaput ez a feladat nem ír.
+
+| # | Mit | K | Hogyan lehetne gépi |
+|---|---|---|---|
+| C01 | A hiánymondat és az adat ellentmondása (pl. „nincs rögzített kapcsolat” N > 0 kapcsolatsor alatt). | K77, K19 | A szakasz hiánymondata csak 0 adatsornál állhat. |
+| C02 | Az indoklás más sorra, „tanulmány”-ra vagy „napló”-ra hivatkozik. | K47 | Mintalista a 29. szabályhoz vagy a BELSO-hoz („Ugyanaz az indok”, „a tanulmány”, „a naplóban”). |
+| C03 | „Mi”-hangú ige a TUDOMÁNYOS lapon. | K12 | Többes szám első személyű igevég (-tük, -tünk, -juk) az olvasói szövegben. |
+| C04 | Névelő magánhangzós átírás előtt („a adamá”). | K48 | Az F4 (c) kapuja. |
+| C05 | Nyers mezőnév a látható lábjegyzetben („proveniencia:”, „igazolas:”). | K05 | A BELSO bővítése ékezet nélküli mezőnevekkel. |
+| C06 | Eltérő LXX-megfelelő ugyanarra a (vers, Strong) párra a 4.11-ben és az 5. szakaszban. | K72 | Az F15 (c) kapuja. |
+| C07 | A státusz és a kiadási állapot egyezése. | K23 | Az F18 (c) kapuja. |
+| C08 | Szavanként ismétlődő következtetés-mondat minden szótári pontban (nem csak a 4.11-ben). | K10 | A V6 kiterjesztése (F12). |
+| C09 | „Következtetés” kis elemszámnál. | K10, K64 | Küszöb a `olvasoi_kovetkeztetes.py`-ban (F7). |
+| C10 | Hely és vers keverése a számmondatokban. | K20 | A KIVONAT_SZAM mértékegység szerinti összevetése. |
+| C11 | tW-azonosító (`kt/…`, `other/…`) az olvasói szövegben. | K60 | Az ANGOL_SOR helyett HIBA-minta (F6). |
+| C12 | Angol doménnév vagy más angol mezőérték a szótári pontokban. | K11 | Az ANGOL kiterjesztése a doménnevekre. |
+| C13 | Glossza nélküli csukott jelentéscím („X – Y (n szakasz)”). | K55 | Minta a BDB_OLVASOI-ban. |
+| C14 | A Kolofon szerzőségi mondatának szakasznevei a lap tényleges címsoraival. | K89 | Összevetés a címsorlistával. |
+| C15 | A lánc-szó Strong-változata (chattát) a lap minden szólistájában. | K08 | A `strong_valtozat_versben` alkalmazása az 1.2/1.4/4. listákra, kapuval. |
+| C16 | A Kivonat négy bekezdése és a kötelező határ-elemek (TR-mondat, „keresési módszer” mondat strukturális hordozónál). | K26–K28 | Bekezdésszám + kulcsmondat-minták. |
+
+---
+
+*Utolsó frissítés: 2026-11-11 (F190.7). **A lista lezárva** a szerkesztő döntéseivel (DT-F190a): a B01–B19 és a J1–J4 döntve (2026-11-11: „Igen, mind”; az F14-re: „Mindkettő most készüljön”). Egyetlen nyitott pont: a K67a–K67f pontosítása a #183 után, a tényleges HAMART visszhang 2 szerint, a lektor előtt.*
