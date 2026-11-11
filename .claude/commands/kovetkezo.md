@@ -47,7 +47,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 5. EGYEZTETÉS (kötelező, soha nem hagyod ki):
    a) Javaslat, legfeljebb 10 sorban (csomagnál legfeljebb 15 sorban, feladatonként egy sor):
       a javasolt feladat vagy csomag és miért ez; a `FOLYTATAS` (félbemaradt, folytatható) és a `VAR_RAD` (a felhasználóra vár) feladat külön sorban, mindkettő akkor is, ha nem ez a javaslat; brief; modell; ág; a brief ⛔ pontjai;
-      hiányzó előfeltétel; a végrehajtás módja (6. lépés: a session maga, ha a modellje egyezik a brief `modell` mezőjével; eltérésnél „új session a brief modelljével, vagy végrehajtó subagent?” — a felhasználó választ); legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
+      hiányzó előfeltétel; a brief `modell` mezője, és hogy a végrehajtás alapesetben subagent nélküli (6. lépés; a modell-egyezést nem itt méred, mert ez a forduló a parancs frontmatter-modelljén futhat, hanem a 6. lépés elején, és eltérés esetén ott kérdezed meg: új session vagy subagent); legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
       Csomagnál a felhasználó tagot vehet ki, vagy kérheti az egyfeladatos futást.
    b) Várj. A felhasználó kérdezhet, más feladatot választhat, szűkítheti vagy módosíthatja
       a hatókört, vagy leállíthatja a menetet. Kérdésre válaszolj, módosításnál írd ki az

@@ -67,7 +67,7 @@ Az áthelyezett szakaszok minden szabálya és állítása:
 | G2 | a commit-üzenet UTF-8 fájlból megy, inline `-m` soha; a parancs | `CLAUDE.md` „Git” (a parancs egy sorban) | megmaradt |
 | G3 | az ékezetes üzenet (a `git log --grep` miatt) | `CLAUDE.md` „Git” („ékezetesen”); az ok a `CSAPDAK.md`-ben | megmaradt, tiltásként kimondva |
 | G4 | a granularitás és a fájlból írt üzenet oka | `CSAPDAK.md` | ok áthelyezve |
-| M1–M3, M5–M7 | a „Modell-ellenőrzés” szakasz: első lépés; a kért modell a végrehajtónak a brief `modell` mezője, az ellenőrnek a saját fájlja; `külső:<név>`; eltérésnél nincs munka; az adattábla `modell` mezője | `CLAUDE.md` „Modell-ellenőrzés” | megmaradt (szó szerint) |
+| M1–M3, M5–M7 | a „Modell-ellenőrzés” szakasz: első lépés; a kért modell a végrehajtónak a brief `modell` mezője, az ellenőrnek a saját fájlja; `külső:<név>`; eltérésnél nincs munka; az adattábla `modell` mezője | `CLAUDE.md` „Modell-ellenőrzés” | megmaradt (tartalmilag azonos; a „közvetlenül futtató session” helyett „a briefet végrehajtó session”, a többi szó szerint) |
 | M4 | „a `/kovetkezo` orkesztrátor nem végrehajt …, az ellenőrzése a végrehajtóra hárul” | `CLAUDE.md` „Modell-ellenőrzés” + `kovetkezo.md` 6. lépés | **szándékosan megváltozott** (DT-F189a): az ellenőrzés a sessionre hárul; eltérésnél a session nem dolgozik, a felhasználó új sessiont vagy subagentet választ |
 
 Eredmény: a szabályok közül egy sem veszett el. Kettő szigorodott, mert kimondott tiltás lett, ami korábban csak indoklásban állt (S2, G3). Szándékosan egy változott (M4). Az áthelyezett tartalom indoklás, mért kár vagy részlet. Ezt a `CSAPDAK.md` szó szerint hordozza, és szakaszonként visszamutat a szabály helyére. A többi szakasz (Rétegek, Három szabály, Kutatási menet, Új motívum-ID, Igehely-formátum, a Git helyőrző-szabályai) változatlan.
@@ -130,3 +130,21 @@ A kért modell `opus`, a tényleges modellem `claude-opus-5-5`, a kettő egyezik
 
 - Két futtatásomban a `futtat.py` kimenetét `grep`/`head` csővel rövidítettem. Ez szigorúan véve túllépi a megengedett parancskört. Az eredményt nem befolyásolja, a kilépési kódot a `PIPESTATUS` adta.
 - A szerepleírásom saját ellenőri jelentésfájlt (`naplok/ELLENOR_<tétel>.md`) írna elő. A megbízó viszont válaszként kérte a jelentést, ezért fájlt nem írtam.
+
+### Válasz az 1. ellenőrzéshez (javítókör 1/1, F189.5)
+
+Mind a négy tétel `mechanikus`, javítva:
+1. `kovetkezo.md` 5a: a javaslat a brief `modell` mezőjét és az alapesetet nevezi meg. A modell-egyezést nem méri, mert ez a forduló a parancs frontmatter-modelljén futhat. A mérés és az „új session vagy subagent” kérdés a 6. lépés elején van.
+2. `vegrehajto-*.md` leírás és `MUNKAMENET.md`: a korlátozás csak a `/kovetkezo`-ra és a `/elteres`-re szól. A más helyen kifejezetten előírt hívás (MUNKAMENET C0, `sonnet_koteg.py`) változatlan. A törzs megjegyzése a `/elteres` `tartalmi` ágát is megnevezi.
+3. A brief döntésnaplója: DT-F189a 🟢, a fejléc alatti jóváhagyás-idézettel. A jóváhagyás a megbízó session üzenetéből származik, a repóban nincs más nyoma.
+4. A jelentés M1–M3 sora: „tartalmilag azonos”, az átfogalmazás megnevezve.
+
+A szint `konnyitett` (1 kör). Ez volt az egyetlen kör, újraellenőrzés nincs: a takarékos szabály szerint a folytatásról az orkesztrátor dönt.
+
+## Zárás
+
+- **A)** A `/kovetkezo` és a `/elteres` alapesete a subagent nélküli végrehajtás (DT-F189a). Subagent marad: eltérő modellnél (ha a felhasználó nem kér új sessiont), csomagmódban és `külső:<név>` briefnél. A `fuggetlen-ellenor` mindig subagent.
+- **B)** A `CLAUDE.md` mérete 18 132 → 14 102 bájt (CRLF), 223 → 164 sor. A magyarázat a `CSAPDAK.md`-be került. A szabálylista-összevetés szerint egy szabály sem veszett el, kettő szigorodott, egy szándékosan változott (M4).
+- Helyi E-ellenőrzés: 0 HIBA. `teszt_futtat.py --gyors`: zöld. Független ellenőrzés: 1 kör (ELTÉRÉS: 4 tétel), egy javítókör, mind a négy javítva.
+- PR: #682 (draft). A merge a felhasználóé.
+- Nyitott: a `KIZAR` a #182-vel a `MUNKAMENET.md`-n (egy pont). A parancs-frontmatter `model` sorának tényleges hatása nem mért, a szabály ezért nem is támaszkodik rá. További karcsúsítási jelölt a „Rétegek” szakasz „kilenc rés” bekezdése.
