@@ -217,7 +217,20 @@ class F206(unittest.TestCase):
         self.assertFalse(kapcs_jelzes(futtat_k('Ebből a mélységből nincs visszatérés a földre.', KAPCS_MASIK)))
 
     def test_ige_nelkul_nem_jelez(self):
-        self.assertFalse(kapcs_jelzes(futtat_k('A föld megtelt erőszakkal a próféta idejében.', [])))
+        self.assertFalse(kapcs_jelzes(futtat_k('A föld megtelt erőszakkal a próféta idejében.', KAPCS_MASIK)))
+
+    def test_res_ige_masik_tagmondatban(self):
+        """A rés mondatában a kapcsolat-ige a saját záradékra szól: a másik tagmondat helye nem kap jelzést."""
+        sorok = futtat_k('Az átok szava visszatér (1Móz 6:11); a próféta a földről is beszél (Ez 8:17).', KAPCS_MASIK,
+                         forras='rés:ertelmezes', alap_ref=None)
+        self.assertFalse([s for s in kapcs_jelzes(sorok) if 'Ez 8:17' in s.bizonyitek])
+
+    def test_hatokor_mas_nelkul_nem_nemit(self):
+        """A „nélkül” csak a lánc szavával együtt mondja ki a kivételt (ELLENOR_F206)."""
+        elof = ELOF + [{'id': 'X-001', 'igehely': 'Jel 22:3', 'gerinc_elem': 'tematikus:1Móz 3:17', 'strong': ''}]
+        mondat = 'A motívum újszövetségi helyén a motívum szava kétség nélkül ugyanott áll.'
+        sorok = futtat_k(mondat, [], forras='rés:modszertan', alap_ref=None, elof=elof)
+        self.assertTrue([s for s in sorok if s.tipus == 'hatókör'])
 
     def test_res_motivumon_kivuli_hely(self):
         sorok = futtat_k('A formula Ezékielnél is visszatér (Ez 7:23).', KAPCS_MASIK, forras='rés:modszertan', alap_ref=None)

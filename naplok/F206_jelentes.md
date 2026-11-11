@@ -14,7 +14,7 @@
 - kapcsolat-állítás a kapcsolat-adat erején túl (V5);
 - hatókör: a csoport minden helyére tett szó-állítás, miközben a csoportban tematikus hely is van (V4).
 
-A HAMART-001 lektori próbáján a ⚑ jelzéssel kézi listára kerülő tételek száma 9-ről 13-ra nő, a „nem látja” 11-ről 10-re csökken. Hat másik motívumon nincs új jelzés, tehát téves riasztás sincs.
+A HAMART-001 lektori próbáján a ⚑ jelzéssel kézi listára kerülő tételek száma 9-ről 13-ra nő (új ⚑: a 9., 10., 11. tétel kapcsolat-jelzéssel, a 40. hatókör-jelzéssel, ez utóbbi korábban „nem látja” volt), a „nem látja” 11-ről 10-re csökken. A kapcsolat-próba csak kapcsolat-adattal rendelkező motívumon fut (HAMART-001, ISTENTISZT-001, KIRALY-001, TEREMT-002): a másik hármon 0 új jelzés. A hatókör-próba tematikus helyet igényel, ilyen ma csak a HAMART-001-ben van; a többi motívumon tehát nem mérhető. A téves riasztás aránya ezért csak a HAMART-001-en mérhető, ott a 6 kapcsolat-jelzés mind valós kérdést mutat.
 
 A belső szavak gépi bővítése (`olvasoi_kapu.py`) a #699 merge-e után jön: **N-F206a**. A javítás társ-példányainak kapuja: **N-F206b**.
 
@@ -40,7 +40,7 @@ A belső szavak gépi bővítése (`olvasoi_kapu.py`) a #699 merge-e után jön:
 | **V8 A határszabály két helyen két szöveggel** | a lap eleje (`motivumok.tsv` `negativ_kriterium`) és a Kivonat határ-bekezdése eltér; a kizárás oka nem a valódi ok | (a)+(c) | 9. sablon, „A Kivonat két kötelező határ-eleme” 1. pontja alatt | nem gépi megbízhatóan (két szabad szöveg összevetése); lektor |
 | **V9 Belső szó, műhelynyelv, munkaállapot** | „hígulna”, „séma-korlátok”, „Strong-keresés”, „mintakeresés”, „láncvers”, „Peshat-mag”, „alapvonal”, „cella”, „modell emeli ki, másik kéz ellenőrzi”, „még nem történt meg” | (a) a forrás prózájában, (b) a generált blokkban | 10. sablon, a meglévő belső-szó szabály pontosítva | **N-F206a:** `olvasoi_kapu.py` BELSO/MUNKASZAVAK bővítése a #699 merge-e után |
 | **V10 Idézet nem betűhív** | az idézőjeles szöveg nem a Károli szövege („útja”, „elveszti”, „földjét”) | (a); a szabály megvolt (9. sablon, új cikk 5. szabálya) | — | megvan: `proza_allitas.py` idézetpróba, `olvasoi_kapu.py` IDEZET |
-| **V11 Proveniencia hiányzik** | új lekérdezésből (TAHOT) vett állítás mellől hiányzik a proveniencia-sor | (a); a szabály megvolt (CLAUDE.md 1.) | 10. sablon, egysoros hivatkozás | nem gépi; független ellenőr |
+| **V11 Proveniencia hiányzik** | új lekérdezésből (TAHOT) vett állítás mellől hiányzik a proveniencia-sor | (a); a szabály megvolt (CLAUDE.md 1.; a lábjegyzet-alak: 9. sablon 6. pont) | új szabály nincs (a CLAUDE.md-t ismételné) | nem gépi; független ellenőr |
 | **V12 A javítás nem terjed át a társ-példányokra** | a lapon javult, a jelöltsorban és a nyílt magban nem (Ez 28:16 „fejedelem”, Ézs 60:18 „visszavonás”) | (c) | — (a `/lap-javit` menetének dolga) | **N-F206b:** a régi mondatrész keresése az `adat/` tábláiban a javítás után |
 
 ## Gyökérok tételenként
@@ -52,19 +52,19 @@ Jelölés: (a) prompt- vagy forrásszabály hiánya, (b) generátor (a CS3 viszi
 | # | Hely | Osztály | Gyökérok | Gépi |
 |---|---|---|---|---|
 | 1 | lap eleje, „A motívum.” | V7 (címismétlés) | (b) generátor + (c) `motivumok.tsv` | – |
-| 2 | lap eleje, „Negatív elhatárolás” | V7 + V8 | (c) `negativ_kriterium` + (a) | – |
+| 2 | lap eleje, „Negatív elhatárolás” | V7 + V8 | (b) generátor (a címke) + (c) `negativ_kriterium` + (a) | – |
 | 3 | lap eleje, „név szerint tartozik ide” | V9 | (c) `negativ_kriterium` | – |
 | 4 | lap eleje, „hígulna” | V9 | (b) generátor | – |
 | 5 | Kivonat, Ez 7:23 | V1 | (a) | ELTÉR |
 | 6 | Kivonat, 1Kir 13:34, 2Kir 17:23 | V8 + V1 (az ok nem a valódi ok; a tárgy Jeroboám háza) | (a) | ELTÉR |
 | 7 | Kivonat, Ez 12:19 és Sof 1:2-3 | V7 (felvett és kizárt hely összemosva) | (a) | – |
 | 8 | Kivonat, „a görög szó”, a keresés köre | V4 | (a) | kézi ⚑ |
-| 9 | 2.1 Jer 6:7 | V1 (két tagmondat összevonva; ítélet-szó nincs) | (a) a `kapcsolodas`-ban | kézi |
+| 9 | 2.1 Jer 6:7 | V1 (két tagmondat összevonva; ítélet-szó nincs) | (a) a `kapcsolodas`-ban | kézi ⚑ (új: kapcsolat) |
 | 10 | 2.1 Jer 6:7, Hab 1:2 | V5 | (a) a `kapcsolodas`-ban | kézi ⚑ (új: kapcsolat) |
-| 11 | 2.1 Hab 1:2 | V1 + V8 (határ, (A) döntés) | (a) | kézi |
+| 11 | 2.1 Hab 1:2 | V1 + V8 (határ, (A) döntés) | (a) | kézi ⚑ (új: kapcsolat) |
 | 12 | 2.1 Jer 51:46 | V2 (erec) + V5 (nincs kapcsolat-sor) | (a) | kézi ⚑ |
 | 13 | 2.1 Ez 28:16 | V1 (megszólított, névalak) | (a) | kézi |
-| 14 | 2.1 Ez 28:16, Sof 1:9 | V5 + V2 | (a) | kézi ⚑ (új: kapcsolat) |
+| 14 | 2.1 Ez 28:16, Sof 1:9 | V5 + V2 | (a) | kézi ⚑ (már előtte is, az erec miatt; most kapcsolat-jelzés is) |
 | 15 | 6. Sof 1:9 KH-lista | — (másolt lista) | (b) | nem látja (generált) |
 | 16 | 6. bevezető jegyzet | V9 | (b) | – |
 | 17 | 7. következtetés-mondat | V5 (közepes → „bizonytalan”) | (b) | nem látja (generált) |
@@ -160,7 +160,6 @@ A lektor 34 pontossági tételéből a `proza_allitas.py` ma gépileg 5-öt fog 
 - **10. sablon** (`sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`, v1.2):
   - új blokk: „Állítás a versről — írás közben”, V1–V7, szabályonként egy rossz/jó párral;
   - a belső-szó szabály pontosítva (V9), példapárral;
-  - a proveniencia (V11) egy hivatkozó sorral;
   - az „Állítás-ellenőrzés” ⚑-bekezdése rövidebb lett: a javítás módja a fenti szabályokra mutat, a két új ⚑-fajta megnevezve;
   - a fejléc kimondja: a próza mondatszintű szabályai itt állnak, a forma szabályai a 9-esben (F184; DT-F206a).
 - **9. sablon** (`sablonok/9_PaRDeS_motivum_forras_sablon.md`, v2.2):
@@ -178,19 +177,22 @@ A sablon mérete: a 10-es 9 806 bájtról 14 686 bájtra nő (+50%), a 9-es 50 3
   - A rés mondatánál ⚑, ha a megnevezett, a motívumban álló helynek nincs kapcsolat-sora.
   - Kapcsolat-adat nélküli motívumon (ALVIL-001) a próba nem fut: az adathiány, nem a mondat hibája.
 - **Hatókör (V4).** A rés mondata helycsoportra szól („a motívum hat újszövetségi helyén”, „az újszövetségi helyeken”), és a lánc vagy a motívum szavát állítja. Ha a csoportban tematikus hely van (`gerinc_elem` `tematikus:`), és a mondat ezt nem mondja ki, ⚑ jár.
-- **Tesztek:** `eszkozok/teszt_proza_allitas.py`, `F206` osztály, 9 teszt. Az esetek:
+- **Tesztek:** `eszkozok/teszt_proza_allitas.py`, `F206` osztály, 11 teszt. Az esetek:
   - nincs sor / közepes / magas;
   - kapcsolat-ige nélkül;
   - a motívumon kívüli hely;
   - a motívum helye sor nélkül;
   - kapcsolat-adat nélküli motívum;
   - „visszatérés” főnév;
+  - a kapcsolat-ige másik tagmondatban (rés);
+  - a „nélkül” csak a lánc szavával együtt némít;
   - hatókör kimondva és kimondatlanul.
   
-  Teljes futás: 29 OK.
+  Teljes futás: 31 OK.
 - **Mérés:**
   - HAMART-001, javítás előtti forrás, `--lektor`: gépi 5, kézi 19 (⚑ 13), nem látja 10. Előtte: 5 / 18 (⚑ 9) / 11. Az új jelzés a 10., 12., 14. és 40. tételt fogja meg. A kézi lista 200 helyett 201 sor.
-  - A többi motívum (ISTENTISZT-001, ALVIL-001, TEREMT-001, TEREMT-002, KIRALY-001, HODIT-001, MENNY-001): 0 új jelzés.
+  - A kapcsolat-adattal rendelkező többi motívum (ISTENTISZT-001, KIRALY-001, TEREMT-002): 0 új jelzés. Az ALVIL-001, TEREMT-001, HODIT-001 és MENNY-001 motívumnak nincs kapcsolat-sora, ott a próba nem fut; tematikus hely csak a HAMART-001-ben van.
+  - *Proveniencia: scope=motivumok/HAMART-001.md (main, 5b2d9fe1) + adat/elofordulasok.tsv + adat/kapcsolatok.tsv; a lektori lista: origin/claude/kiadas-hamart-d4c26f:naplok/KIADAS_HAMART-001_lektor.md | forras=eszkozok/proza_allitas.py --lektor (F206.6 állapot) | n=34 pontossági tétel | ts=2026-11-11T21:15Z · scope=ISTENTISZT-001, KIRALY-001, TEREMT-002 | forras=eszkozok/proza_allitas.py | ts=2026-11-11T21:15Z · a sablonméret: wc -c, ts=2026-11-11*
 - **Kapu-szint:** változatlanul JELENTÉS (DT785).
 
 ## Ami gépileg nem fogható — a lektor dolga marad
@@ -200,12 +202,30 @@ A sablon mérete: a 10-es 9 806 bájtról 14 686 bájtra nő (+50%), a 9-es 50 3
 - **V7:** bevezetetlen fogalom, nem fedő címke, ismétlés.
 - **V8:** a lap eleje és a Kivonat határszabályának egyezése (két szabad szöveg).
 - **V11:** a proveniencia-sor megléte a rés új lekérdezés-állításai mellett (ezt a független ellenőr nézi).
+- **A `proza_allitas.py` új jelzéseinek korlátai** (ELLENOR_F206): a szó szerinti „visszatér” (Ábrám visszatér az oltárhoz, ISTENTISZT-001 1Móz 13:4) is kapcsolat-igének számít, ott csak a `magas` sor miatt nem jelez; a rokon fordulatot („kötődik a lánchoz”, „köti össze”) nem fogja, ezért a sor nélküli helyen is átmegy. A rés mondatában az ige a csoport saját záradékára szól (F206.6), a „nélkül” csak a lánc vagy a motívum szavával együtt némítja a hatókör-jelzést (F206.6).
 
 ## Nyitott (külön tétel)
 
-- **N-F206a:** az `olvasoi_kapu.py` belső szavainak bővítése (V9) a #699 merge-e után.
+- **N-F206a:** az `olvasoi_kapu.py` belső szavainak bővítése (V9) a #699 merge-e után. Előfeltétel: a 6. sablon ma előírja a generált 9. szakaszban a „Peshat-mag” és „az alapvonal nem mérhető” fordulatot (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`, „A 9. Hatástörténet” szabályai). A kapu ezt buktatná, ezért előbb a 6. sablont és a generátort kell átírni (CS3), utána jöhet a kapu.
 - **N-F206b:** a `/lap-javit` javításának társ-példányai (V12).
 
 ## Független ellenőrzés és javítókör
 
-*(a menet végén kerül ide)*
+A `fuggetlen-ellenor` (claude-opus-5-5) az F206.0–F206.4 tartományát (`5b2d9fe1..0896aaf5`) nézte. Eredmény: **ELTÉRÉS 10**, a teljes jelentés: `naplok/ELLENOR_F206.md`. Az egyetlen javítókör (F206.6) tételenként:
+
+| ELTÉRÉS | Javítás |
+|---|---|
+| 1. A mérési számok ellentmondanak (⚑ 13 a szövegben, 11 a táblában; a 12. nem új) | A tábla a `--lektor` kimenete szerint: új ⚑ a 9., 10., 11. (kapcsolat) és a 40. (hatókör); a 14. és a 12. már előtte is ⚑ volt. A szöveg ezt mondja. |
+| 2. „Téves riasztás sincs” nem áll | Kimondva: a kapcsolat-próba csak a 4 kapcsolat-adatos motívumon fut, a hatókör-próba csak tematikus hellyel; a téves riasztás csak a HAMART-001-en mérhető. |
+| 3. Ütközés a 6. sablonnal (Peshat-mag, alapvonal) | Az N-F206a előfeltétele lett: előbb a 6. sablon és a generátor (CS3), utána a kapu. A 10. sablon szabálya a kézi prózára szól, a generált szövegre nem. |
+| 4. Proveniencia hiányzik a futtatásból vett számok mellől | Proveniencia-sor a mérés alatt. |
+| 5. A V11-sor (példapár nélkül, formaszabály, a CLAUDE.md ismétlése) | A sor kikerült a 10. sablonból; a V11-nél a jelentés a meglévő szabályra mutat. |
+| 6. A `proza_allitas.py` korlátai nincsenek dokumentálva | Két korlát javítva: a rés mondatában az ige a saját záradékhoz kötődik; a „nélkül” csak a lánc szavával együtt némít. Mindkettőre van teszt. A másik kettő (a szó szerinti „visszatér”, a rokon fordulatok) a „Mit nem fog” részben áll. |
+| 7. Feszültség a „beépítés indoka szerkezeti jegy” és az 5. szabály között | Az 5. szabály kimondja: a szerkezeti jegy a hely jegye, nem a másik helytől való függés. |
+| 8. A 2. tételből hiányzik a (b) | Pótolva. |
+| 9. Az N-F206a tétellistája hiányos | A 20. és a 27. tétel bekerült. |
+| 10. Üres teszt (`test_ige_nelkul_nem_jelez`) | `KAPCS_MASIK`-kal fut. |
+
+A javítás után a próba számai változatlanok (gépi 5, kézi 19, ebből ⚑ 13, nem látja 10), a tesztek 31 OK.
+
+**A megjegyzésekből.** Az F206.5 „jó” példája a javítás előtti Kivonat-mondatot idézte. Közben a lap-javit ága (LJ7, DT-F125j) valódi meghatározást kapott a lap elejére. Ezért a példa most ez a javított mondat lett.

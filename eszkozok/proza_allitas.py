@@ -521,7 +521,7 @@ VISSZAUTAL = re.compile(r'(?<![%s])(?:vissza\s?utal\w*|utal\w*\s+vissza|vissza\s
 # F206: helycsoport minden helyére szóló állítás (a lektor 26., 40. tétele): „a motívum hat újszövetségi helyén …”
 HELYCSOPORT = re.compile(r'(?<![%s])hely(?:én|ein|eken|ei)(?![%s])' % (BETU, BETU), re.I)
 LANC_SZAVA = re.compile(r'(?<![%s])(?:lánc|motívum)\w*\s+(?:\w+\s+)?szav(?:a|ai|ait|át)(?![%s])' % (BETU, BETU), re.I)
-TEMATIKUS_KIMONDVA = re.compile(r'tematikus|nélkül', re.I)
+TEMATIKUS_KIMONDVA = re.compile(r'tematikus|(?:lánc|motívum)\w*\s+(?:\w+\s+)?szav\w*\s+nélkül', re.I)
 
 
 VONATKOZO = re.compile(r'^[\s),]*(?:ahol|amely\w*|ami\w*|aki\w*|mely\w*)(?![%s])[^,;]*[,;]?' % BETU, re.I)
@@ -651,7 +651,12 @@ class Ellenor:
         if mas:
             elotte = [c for c in vizsgalt if c[1] <= mas.start() and mas.start() - c[1] < 80]
             mas_csoport = elotte[-1][0] if elotte else None
-        for kezdet, veg, refek, zaradek in vizsgalt:
+        for i_cs, (kezdet, veg, refek, zaradek) in enumerate(vizsgalt):
+            # F206: a rés mondatában a kapcsolat-ige a csoport saját záradékára szól (előtte vagy közvetlenül utána,
+            # a következő csoportig, tagmondat-határon belül), nem a mondat egészére
+            utana = szoveg[veg:vizsgalt[i_cs + 1][0]] if i_cs + 1 < len(vizsgalt) else szoveg[veg:]
+            sajat_ige = (e.alap_ref or VISSZAUTAL.search(IDEZET_KI.sub(' ', zaradek))
+                         or VISSZAUTAL.search(IDEZET_KI.sub(' ', re.split(r'[;:.]', utana)[0])))
             for ref in refek:
                 versek = self.adat.versek(ref)
                 if not versek:
@@ -703,7 +708,7 @@ class Ellenor:
                 if abszolut and (e.alap_ref or abszolut.group(0) in zaradek):
                     jelzesek.append('⚑ kizárólagos vagy egyetemes állítás („%s”): lekérdezéssel igazolandó, vagy '
                                     'olvasatként jelölendő' % abszolut.group(0))
-                if visszautal:
+                if visszautal and sajat_ige:
                     jelzesek += self._kapcsolat(visszautal.group(0), ref, versek, bool(e.alap_ref))
                 uj = self.sorok[n0:]
                 if any(s.itelet == 'ELTÉR' for s in uj) and not jelzesek:

@@ -50,8 +50,7 @@ alátámasztja; egyházatyai vagy rabbinikus tanúra csak a 9. sora alapján hiv
 - „független” csak akkor, ha a két forrásnak nincs közös bemenete: a motívum keresései közös szavakból (Strong-listából) indulnak, ezért egybeesésük „egybeesés, nem független megerősítés” (F24 (a); a kapu: `olvasoi_kapu.MUNKASZAVAK`);
 - a zárómondat (Sod és minden szakasz vége) a motívum saját leletéből áll; más lap zárómondata, a lapok közötti sablonmondat („A motívum legmélyebb rétege ezért … az a remény”) tilos (F24 (b));
 - munkaszó és munkajelölő nem kerül a szövegbe („próba”, „javaslat”, „ellenőrzendő”, „függőben”, „audit”, „token” — a teljes lista: `olvasoi_kapu.MUNKASZAVAK`);
-- hiányt nem töltesz ki asszociatív anyaggal: ha nincs adat, kimondod (CLAUDE.md 3. szabály);
-- az írás közben futtatott lekérdezésből vett állítás (pl. „a TAHOT szerint itt az erec áll”) bekezdése után proveniencia-sor áll (CLAUDE.md 1. szabály; F206).
+- hiányt nem töltesz ki asszociatív anyaggal: ha nincs adat, kimondod (CLAUDE.md 3. szabály).
 
 **Állítás a versről — írás közben** (F206; ugyanezeket a hibaosztályokat találta a HAMART-001 lektora és az újraírt prózán a második kéz: `naplok/F206_jelentes.md`). Minden versre hivatkozó mondatnál, megíráskor:
 
@@ -63,7 +62,7 @@ alátámasztja; egyházatyai vagy rabbinikus tanúra csak a 9. sora alapján hiv
    *Rossz:* „Ábrám elhívásában pedig az átok szava először áll az áldás keretében (1Móz 12:3).” *Jó:* „Ábrám elhívásában pedig az átok igéje Isten áldás-ígéretének egy mondatában áll (1Móz 12:3); Noé szavában az átok és az áldás még két külön kimondás (1Móz 9:25-26).”
 4. **A hatókör a csoport minden tagjára igaz;** a kivételt (tematikus hely) megnevezed; a szám mellett a számlálás köre (mely szavak, melyik keresés); egy versből következetesség nem mondható.
    *Rossz:* „A motívum hat újszövetségi helyén a motívum szava a Textus Receptusban és a kritikai kiadásokban ugyanott áll.” *Jó:* „A motívum öt lexikai újszövetségi helyén a lánc szava … ugyanott áll. A hatodik, a Jel 22:3, tematikus hely, a lánc szava nélkül; …”
-5. **A kapcsolat legfeljebb az adat erejével:** „visszautal”, „visszatér” csak a hely `kapcsolatok.tsv`-sorával; közepes vagy hiányzó sornál a közös szót mondod, függést nem; szakaszra csak az ott ténylegesen álló tárgyalásra utalsz.
+5. **A kapcsolat legfeljebb az adat erejével:** „visszautal”, „visszatér” csak a hely `kapcsolatok.tsv`-sorával; közepes vagy hiányzó sornál a közös szót mondod, függést nem (a beépítés szerkezeti jegye, pl. a szókapcsolat, így is kimondható: az a hely jegye, nem a másik helytől való függés); szakaszra csak az ott ténylegesen álló tárgyalásra utalsz.
    *Rossz* (Jer 6:7, Hab 1:2, közepes sor): „Az erőszak szava az 1Móz 6:11 és 6:13 szava, és a szópár maga utal vissza a láncra.” *Jó* (Jer 6:7): „A lánccal az erőszak szava (chámász) köti össze, az 1Móz 6:11 és 6:13 szava; a »hallatszik« ige a Genezis láncában nem áll, a szókapcsolat a próféták saját fordulata.”
 6. **Az olvasat a lap olvasataként áll:** a Peshat csak a vers szavát mondja; következtetés és általános tétel a lap olvasata (Drash), nem a szöveg állítása; szerzőnek csak a forrássora szerinti állítást tulajdonítasz.
    *Rossz:* „…de azt igen, hogy a bűnnek mindig vannak az elkövetőn túli hatásai.” *Jó:* „…a lap helyei azt mutatják, hogy a bűn következményei kiterjednek az elkövetőn túl.”
