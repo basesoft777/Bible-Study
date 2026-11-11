@@ -14,7 +14,7 @@ tényadat és hivatkozás).
         a családok, amelyeknek MAGJÁBAN mindkét vers áll, és a tanúk, akik mindkét magverset idézik (core_cov = 1).
         Kimenet: tabulált sorok (csalad, mag, szerzo, mu, szazad, nyelv, n_bi) és a proveniencia-sor.
 
-A lekérdezés eredménye a tanú-jelölt, nem a lap sora: a lapra csak az `adat/visszhang_tanuk.tsv` (SEMA 2.58) ellenőrzött
+A lekérdezés eredménye a tanú-jelölt, nem a lap sora: a lapra csak az `adat/visszhang_tanuk.tsv` (SEMA 2.57) ellenőrzött
 során át kerül (CLAUDE.md 2. szabály). Forrásmegjelölés a lapon: a böngésző és a bibliai hivatkozások eredete (BiblIndex,
 Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).
 """

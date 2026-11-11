@@ -1,4 +1,4 @@
-release_id: 2026-11-10-c5069640d77201cc
+release_id: 2026-11-10-85a64d244a941332
 data_state_date: 2026-11-10
-content_hash_sha256: c5069640d77201ccdec5ea67d4b97ecbf8d6b25c20a69947c87047b3a41e17e0
+content_hash_sha256: 85a64d244a9413325dcb623e98c7ba1120300455408b261969eedbd85e414a4d
 publication_place: <KANONIKUS_FORRAS_URL>

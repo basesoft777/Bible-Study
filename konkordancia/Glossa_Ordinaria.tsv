@@ -1,6 +1,6 @@
 # GENERÁLT: eszkozok/visszhang/glossza_import.py (F183); kézzel nem szerkeszthető.
 # forras=https://ebible.org/Scriptures/latVUC_usfm.zip ("Clementine Vulgate of 1598 with Glossa Ordinaria Migne edition 1880 in Latin"; licenc: Public Domain, ebible.org/latVUC/copr.htm), sha256=5d73ce3473e40b70cfcc976b967e0f259cbb031d6c0cd4f9798fbabf9f5b4e6c | ts=2026-11-11
-# a Glossa Ordinaria (Migne, 1880) lábjegyzetei versenként; a csomag lábjegyzetei: 12968, átvett sor: 12968 (a kanonikus 66 könyvből; a deuterokanonikus könyvek a Vulgata_Clementina.tsv-hez hasonlóan kimaradtak)
+# a Glossa Ordinaria (Migne, 1880) lábjegyzetei versenként; a 66 kanonikus könyv lábjegyzetei: 12968, átvett sor: 12968 (a 66 könyvből; a deuterokanonikus könyvek a Vulgata_Clementina.tsv-hez hasonlóan kimaradtak)
 # igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse, a lábjegyzet \fr hivatkozása szerint; NEM Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér); forras_kulcs: a kulcs létezik-e a Károliban.
 # jegyzet: a lemma-idézet (\fk) « »-ben, utána a magyarázat; a forrásmegjelölések (AUG., BEDA, HIERON. …) a szövegben, ahogy a kiadás adja.
 igehely	forras_vers	forras_kulcs	sorszam	jegyzet

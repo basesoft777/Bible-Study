@@ -154,7 +154,12 @@ jobs:
           # F168: az ellenoriz.py 35. szabalya (kozlemeny-hivatkozasok a lapon) es a kolofon kozlemeny-szovege
           python eszkozok/teszt_ellenoriz_35.py
           K6=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F183: a 9. Hatastortenet szakasz szabalyai es a tanureteg kinyero tablaja (ELLENOR_F183 5.)
+          python eszkozok/teszt_hatastortenet.py
+          K7=$?
+          python eszkozok/visszhang/tanu_kinyer.py ellenoriz
+          K8=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 

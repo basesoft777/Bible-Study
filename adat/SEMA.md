@@ -2088,7 +2088,7 @@ Kulcs: `id`. Új sor, ha egy motívum prózája közel-keleti hátteret kezd eml
 
 ---
 
-### 2.52 A visszhang-réteg adatkészletei — `Targum_PD`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`, `BDB_rokon_irasok` (F176, FELADATOK #176, 2026-11-08)
+### 2.52 A visszhang-réteg adatkészletei — `Targum_PD`, `Vulgata_Clementina`, `SBLGNT_apparatus`, `TAGNT_valtozatok`, `BDB_rokon_irasok`, `Glossa_Ordinaria` (F176, FELADATOK #176, 2026-11-08; a Glossa: F183)
 
 Öt `konkordancia/` tábla a lexikonlap „visszhang” rétegéhez (ókori fordítások, az ÚSZ kritikai apparátusa és
 szövegváltozat-jelölése, a BDB rokon nyelvi írásai). **Generált nézetek** (`eszkozok/visszhang/*.py`): kézzel nem

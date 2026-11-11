@@ -80,7 +80,7 @@ def fut(zippath, ki):
         'forras=https://ebible.org/Scriptures/latVUC_usfm.zip ("Clementine Vulgate of 1598 with Glossa Ordinaria Migne '
         'edition 1880 in Latin"; licenc: Public Domain, ebible.org/latVUC/copr.htm), sha256=%s | ts=%s'
         % (K.sha256_fajl(zippath), K.ts()),
-        'a Glossa Ordinaria (Migne, 1880) lábjegyzetei versenként; a csomag lábjegyzetei: %d, átvett sor: %d (a kanonikus '
+        'a Glossa Ordinaria (Migne, 1880) lábjegyzetei versenként; a 66 kanonikus könyv lábjegyzetei: %d, átvett sor: %d (a '
         '66 könyvből; a deuterokanonikus könyvek a Vulgata_Clementina.tsv-hez hasonlóan kimaradtak)' % (osszes, len(sorok)),
         'igehely = magyar könyvrövidítés + a FORRÁS (Vulgata-) fejezet:verse, a lábjegyzet \\fr hivatkozása szerint; NEM '
         'Károli-átszámozás (a zsoltárok és egyes könyvek számozása eltér); forras_kulcs: a kulcs létezik-e a Károliban.',

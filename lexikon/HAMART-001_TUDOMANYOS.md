@@ -3425,31 +3425,31 @@ Az újszövetségi helyeken a lánc görög szavai állnak. A táblázat szócsa
 
 | Görög szó · helyek | Vulgata | Szövegváltozat | Előkép a Septuagintában | Mit mutat |
 |---|---|---|---|---|
-| διαφθείρω (diaftheiró) · φθορά (fthora) · φθείρω (ftheiró)<br>Róm 8:21, Jel 11:18, Jel 19:2 | Róm 8:21 *corruptionis*; Jel 11:18 *exterminandi · corruperunt*; Jel 19:2 *corrupit* · 3/3 | Jel 19:2: ἔφθειρεν (eftheiren) — NA28, NA27, Tyn, SBL, WH, Treg, TR; διέφθειρεν (dieftheiren) — Byz | 6:11, 6:12, 6:13, 6:17, 9:11 (φθείρω, καταφθείρω) | A Vulgata az újszövetségi helyeken 3/3 versben a *corru-* szócsaládot használja; a Genezis-lánc előképverseiben ugyanezt 2/5 versben: a latin szóválasztás a két szövetség között csak részben egyezik. |
-| ἐπικατάρατος (epikataratosz) · κατάρα (katara)<br>Gal 3:13, Zsid 6:8 | Gal 3:13 *Maledictus · maledicto · maledictum*; Zsid 6:8 *maledicto* · 2/2 | nincs a lánc szavát érintő változat | 3:14, 3:17, 4:11, 5:29 (ἐπικατάρατος, καταράομαι) | A Vulgata az újszövetségi helyeken és a Genezis-lánc 4 előképversében is ugyanazt a latin szócsaládot használja (*maled-*): a latin olvasó a két szövetség helyeit egy szóval olvassa. |
+| διαφθείρω (diaftheiró) · φθορά (fthora) · φθείρω (ftheiró)<br>Róm 8:21, Jel 11:18, Jel 19:2 | Róm 8:21 *corruptionis*; Jel 11:18 *exterminandi · corruperunt*; Jel 19:2 *corrupit* · 3/3 | Jel 19:2: ἔφθειρεν (eftheiren) — NA28, NA27, Tyn, SBL, WH, Treg, TR; διέφθειρεν (dieftheiren) — Byz | 6:11, 6:12, 6:13, 6:17, 9:11 (φθείρω, καταφθείρω) | A Vulgata az újszövetségi helyeken 3/3 versben a *corru-* szócsaládot használja; a Genezis-lánc előképverseiben ugyanezt 2/5 versben: a latin szóválasztás a két szövetség között csak részben egyezik. A szövegváltozat ugyanabban a görög szócsaládban marad: a lánc szava minden kiadásban áll. |
+| κατάρα (katara) · ἐπικατάρατος (epikataratosz)<br>Gal 3:13, Zsid 6:8 | Gal 3:13 *Maledictus · maledicto · maledictum*; Zsid 6:8 *maledicto* · 2/2 | nincs a lánc szavát érintő változat | 3:14, 3:17, 4:11, 5:29 (ἐπικατάρατος, καταράομαι) | A Vulgata az újszövetségi helyeken és a Genezis-lánc 4 előképversében is ugyanazt a latin szócsaládot használja (*maled-*): a latin olvasó a két szövetség helyeit egy szóval olvassa. |
 
 *A Vulgata-cella a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin megfelelőt modell emeli ki, egy másik kéz ellenőrzi. Szövegváltozat: az SBL Greek New Testament apparátusa (CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a lánc szavát érinti. Előkép: ugyanaz a görög szócsalád a Genezis-lánc ellenőrzött Septuaginta-soraiban (az ószövetségi táblázat LXX-oszlopa). Vulgata: Clementina (közkincs). A szír fordítás (Peshitta) nem vizsgált: szabad, digitális forrása nem áll rendelkezésre.*
 
 ### Ókori értelmezők
 
-Az ókori értelmezők közül azok állnak itt, akik a motívum egy helyét ugyanazzal a kapcsolattal olvassák, amelyet a lap leír: a bűn következménye az átok, a föld és a romlás láncán terjed. Hagyományonként (görög, latin, szír, rabbinikus) helyenként legfeljebb egy tanú áll, csak a lánc Remez- és Sod-szintű helyein; a mondat a tanú olvasatának saját szavas összefoglalása, nem idézet. A motívum 6 helyén 10 tanú áll.<!-- olvasói -->
+Az ókori értelmezők, akik a motívum egy helyét a lánc egy másik helyével együtt olvassák. Két fajta tanú áll itt: akinek olvasatát a forrás szövege alapján egy saját szavas mondat foglalja össze — ő ugyanazt a kapcsolatot látja, amelyet a lap leír —, és akit egy versláncban a hely a lánc más verseivel együtt idéz (a Chain Lineage Browser tényadata; a kapcsolat értelmezését a lap ezekről nem állítja). Hagyományonként (görög, latin, szír, rabbinikus) helyenként legfeljebb egy tanú áll, csak a Remez- és Sod-szintű helyeken; idézet nincs. A motívum 6 helyén 10 tanú áll.<!-- olvasói -->
 
 | Hely | Tanú · hagyomány · kor | Mit lát | Forrás |
 |---|---|---|---|
-| [1Móz 4:10-11](#ige-1móz-4-10-11) | Órigenész, *In Numeros homiliae XXVIII (2nd éd.)* · görög · 3. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:14, 1Móz 3:17, 1Móz 4:11, 4Móz 23:7. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 · BiblIndex |
+| [1Móz 4:10-11](#ige-1móz-4-10-11) | Órigenész, *In Numeros homiliae XXVIII (2nd éd.)* · görög · 3. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:14, 1Móz 3:17, 1Móz 4:11, 4Móz 23:7. *(együtt-idézés)* | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 · BiblIndex |
 | [1Móz 4:10-11](#ige-1móz-4-10-11) | Glossa Ordinaria, *Glossa Ordinaria, jegyzet az 1Móz 4:11-hez (RAB. jelzéssel; Migne, 1880)* · latin | Kiemeli, hogy Ádám bűne miatt a föld lett átkozott, Kain viszont maga, mert az első vétek ítéletének tudatában testvérgyilkosságot tett hozzá. (Tárgyalt hely: 1Móz 4:11.) | Glossa Ordinaria (Migne, 1880) a Vulgata Clementina csomagjában (eBible, közkincs) |
 | [1Móz 5:29](#ige-1móz-5-29) | Szír Szent Efrém, *Commentary on Genesis 5.2.2* · szír · 4. sz. (HCF: 373) | Noé nevét Lámekh próféciájaként olvassa: Noé könnyebbséget hoz a föld miatt, amelyet az Úr megátkozott, Isten pedig a föld lakóinak bűne miatt a vízözönnel pusztítja el, amit a kezük munkája épített. | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
 | [1Móz 5:29](#ige-1móz-5-29) | Bereshit Rabba, *Bereshit Rabbah 25.2* · rabbinikus | Rabbi Jóhánán szerint Ádám bűne óta a barázda és az igavonó állat nem engedelmeskedett a szántónak, és Noé eljövetele vetett ennek véget. | Sefaria, lekérdezve: 2026-11-11 |
-| [1Móz 8:21](#ige-1móz-8-21) | Damaszkuszi Szent János, *Sacra Parallela* · görög · 7. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:16, 1Móz 3:17, 1Móz 8:21, Jób 7:1. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+| [1Móz 8:21](#ige-1móz-8-21) | Damaszkuszi Szent János, *Sacra Parallela* · görög · 7. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:16, 1Móz 3:17, 1Móz 8:21, Jób 7:1. *(együtt-idézés)* | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
 | [1Móz 8:21](#ige-1móz-8-21) | Szent Ambrus, *On Noah and the Ark 22.80* · latin · 4. sz. (HCF: 397) | A föld újabb megátkozásának elmaradását Isten irgalmaként magyarázza: Isten egyszer, példaként büntetett, a továbbiakban kímél, hogy a bűn keserűsége ne uralkodjon mindig az emberen. | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
-| [Róm 8:21](#ige-róm-8-21) | Aranyszájú Szent János, *Homily on Romans 14* · görög · 4–5. sz. (HCF: 407) | A teremtés romlandóságát az emberre vezeti vissza: mivel az ember halandó és szenvedő testet kapott, a föld is átkot kapott, és tövist és bogáncsot termett. (Tárgyalt hely: Róm 8:19-20.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
-| [Gal 3:13-14](#ige-gal-3-13-14) | Gabalai Szeveriánosz, *De serpente homilia* · görög · 4. sz. | Egy versláncban idézi a következő helyeket: Gal 3:13, 1Móz 3:14. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
-| [Gal 3:13-14](#ige-gal-3-13-14) | Szent Jeromos, *Commentary on Galatians* · latin · 4–5. sz. (HCF: 420) | A „fán függő átkozott” magyarázatában sorra veszi a Genezis átkait (a kígyót, a földet, Kaint, Kánaánt), és a keresztfát a jó és rossz tudásának fájával állítja szembe. (Tárgyalt hely: Gal 3:13.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
-| [Zsid 6:7-8](#ige-zsid-6-7-8) | Szent Jeromos, *Commentaria in Isaiam* · latin · 4. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:18, Zsid 6:8, Luk 12:49. | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+| [Róm 8:21](#ige-róm-8-21) | Aranyszájú Szent János, *Homily on Romans 14* · görög · 5. sz. (HCF: 407) | A teremtés romlandóságát az emberre vezeti vissza: mivel az ember halandó és szenvedő testet kapott, a föld is átkot kapott, és tövist és bogáncsot termett. (Tárgyalt hely: Róm 8:19-20.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [Gal 3:13-14](#ige-gal-3-13-14) | Gabalai Szeveriánosz, *De serpente homilia* · görög · 4. sz. | Egy versláncban idézi a következő helyeket: Gal 3:13, 1Móz 3:14. *(együtt-idézés)* | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
+| [Gal 3:13-14](#ige-gal-3-13-14) | Szent Jeromos, *Commentary on Galatians* · latin · 5. sz. (HCF: 420) | A „fán függő átkozott” magyarázatában sorra veszi a Genezis átkait (a kígyót, a földet, Kaint, Kánaánt), és a keresztfát a jó és rossz tudásának fájával állítja szembe. (Tárgyalt hely: Gal 3:13.) | HistoricalChristianFaith, lekérdezve: 2026-11-11 |
+| [Zsid 6:7-8](#ige-zsid-6-7-8) | Szent Jeromos, *Commentaria in Isaiam* · latin · 4. sz. | Egy versláncban idézi a következő helyeket: 1Móz 3:18, Zsid 6:8, Luk 12:49. *(együtt-idézés)* | Chain Lineage Browser (Blidstein és mtsai), lekérdezve: 2026-11-11 |
 
 *A tanú-jelölteket a tanúindex (HistoricalChristianFaith, Sefaria), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser adta; a lapra csak ellenőrzött sor kerül: a modell által írt mondatot egy másik kéz a forrásszövegen ellenőrzi, a Chain Lineage-sor tényadat (szerző, mű, század, nyelv, az együtt idézett versek), a lekérdezés újrafuttatásával ellenőrizve. Az egyházatyák és a rabbinikus források szövegét a lap nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*
 
-A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) jegyzetei a lánc Remez- és Sod-helyein átnézésre kerültek; tanúként ott áll, ahol ugyanezt a kapcsolatot mondja ki.
+A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) a táblázatban ott áll tanúként, ahol jegyzete ugyanezt a kapcsolatot mondja ki.
 
 ## 10. Értelmezés
 
@@ -3558,19 +3558,27 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 - a Thayer-szótár (közkincs)
 - a tiltott fordulatok listája (minden jog fenntartva)
 - a visszhang-megfelelők táblája (minden jog fenntartva)
+- a tanúréteg kinyerő táblája (minden jog fenntartva)
 - a Károli-fordítás (1908) (közkincs)
 - a Károli-kereszthivatkozások (közkincs)
 - a Károli-versmegfeleltetés (minden jog fenntartva)
 - a Septuaginta versszintű szópárjai (minden jog fenntartva)
 - a STEPBible héber szövege (TAHOT) (CC BY 4.0)
+- a Chain Lineage Browser (Blidstein, Inowlocki, Verheyden; a bibliai hivatkozások: BiblIndex, Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon) (tisztázatlan)
+- a Glossa Ordinaria (Migne, 1880) (közkincs)
 - Nave tárgymutatója (1897) (közkincs)
+- az SBL Greek New Testament apparátusa (CC BY 4.0)
 - a STEPBible görög szövege (TAGNT) (CC BY 4.0)
+- a HistoricalChristianFaith kommentár-adatbázis (metaadat) (közkincs)
+- a Sefaria kapcsolat-adata (CC BY 4.0)
+- a Targum (közkincs) (közkincs)
+- a Vulgata (Clementina) (közkincs)
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, tisztázatlan, © Mounce 1993 | ts=2026-11-11 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -3602,6 +3610,9 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 |---|---|---|
 | a BDB-szótár | közkincs | 4. Szótári háttér |
 | a BDB-szótár versenkénti jelentései | közkincs | 2. Előfordulások, 4. Szótári háttér |
+| a Chain Lineage Browser (Blidstein, Inowlocki, Verheyden; a bibliai hivatkozások: BiblIndex, Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon) | tisztázatlan | 9. Hatástörténet |
+| a Glossa Ordinaria (Migne, 1880) | közkincs | 9. Hatástörténet |
+| a HistoricalChristianFaith kommentár-adatbázis (metaadat) | közkincs | 9. Hatástörténet |
 | a héber glosszák magyar táblája | CC BY 4.0 | 4. Szótári háttér |
 | a jelöltek döntésnaplója | minden jog fenntartva | 3. Kizárt és vizsgált helyek, 4. Szótári háttér |
 | a kapcsolat-tábla | minden jog fenntartva | 7. Kapcsolatok |
@@ -3619,17 +3630,21 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | Nave tárgymutatója (1897) | közkincs | 4. Szótári háttér |
 | a Nave-témák magyar nevei | minden jog fenntartva | 4. Szótári háttér |
 | az Open Scriptures héber lexikona | CC BY 4.0 | 4. Szótári háttér |
+| az SBL Greek New Testament apparátusa | CC BY 4.0 | 9. Hatástörténet |
 | az SDBH szemantikai szótár | CC BY-SA 4.0 | 4. Szótári háttér |
 | az SDGNT szemantikai szótár | CC BY-SA 4.0 | 4. Szótári háttér |
 | a SECE szólista | közkincs | 4. Szótári háttér |
+| a Sefaria kapcsolat-adata | CC BY 4.0 | 9. Hatástörténet |
 | a Septuaginta szövege | CC BY 4.0 | 5. LXX-fordítói döntések |
 | a Septuaginta versszintű szópárjai | minden jog fenntartva | 4. Szótári háttér |
 | a STEPBible görög rövid szótára (TBESG) | CC BY 4.0 | 4. Szótári háttér |
-| a STEPBible görög szövege (TAGNT) | CC BY 4.0 | 4. Szótári háttér |
+| a STEPBible görög szövege (TAGNT) | CC BY 4.0 | 4. Szótári háttér, 9. Hatástörténet |
 | a STEPBible héber rövid szótára (TBESH) | CC BY 4.0 | 4. Szótári háttér |
 | a STEPBible héber szövege (TAHOT) | CC BY 4.0 | 2. Előfordulások, 4. Szótári háttér |
 | a szótári pontok rendje | minden jog fenntartva | 4. Szótári háttér |
 | a szótári szakaszok címketáblája | minden jog fenntartva | 2. Előfordulások, 4. Szótári háttér |
+| a tanúréteg kinyerő táblája | minden jog fenntartva | 9. Hatástörténet |
+| a Targum (közkincs) | közkincs | 9. Hatástörténet |
 | a tematikus index döntései | minden jog fenntartva | 4. Szótári háttér |
 | a Thayer-szótár | közkincs | 2. Előfordulások, 4. Szótári háttér |
 | a tiltott fordulatok listája | minden jog fenntartva | 4. Szótári háttér |
@@ -3637,7 +3652,8 @@ Még nincs kiadás, ezért nincs változás sem rögzítve; a jegyzék az első 
 | a Treasury of Scripture Knowledge | CC BY 4.0 | 6. Kereszthivatkozások |
 | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 | 2. Előfordulások |
 | az UBS Dictionary of New Testament Greek | CC BY-SA 4.0 | 2. Előfordulások, 4. Szótári háttér |
-| a visszhang-megfelelők táblája | minden jog fenntartva | 5. LXX-fordítói döntések |
+| a visszhang-megfelelők táblája | minden jog fenntartva | 5. LXX-fordítói döntések, 9. Hatástörténet |
+| a Vulgata (Clementina) | közkincs | 9. Hatástörténet |
 
 *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*
 

@@ -1,7 +1,7 @@
 # A visszhang-réteg adatkészletei (F176, FELADATOK #176)
 
 A lexikonlap „visszhang” rétegének **adatai**: ókori fordítások (Targum, Vulgata), az ÚSZ kritikai apparátusa és
-szövegváltozat-jelölése, valamint a BDB rokon nyelvi írásainak gyorsítótára. Ez a dokumentum az öt tábla leírása,
+szövegváltozat-jelölése, valamint a BDB rokon nyelvi írásainak gyorsítótára. Ez a dokumentum a hat tábla leírása (a hatodik, a Glossa Ordinaria: F183),
 licenc-igazolása és újragenerálása. **A lexikonlap ebben a körben nem változott** (a `lexikon_general.py`
 érintetlen); a lapra írás külön feladat.
 
@@ -21,9 +21,9 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 | SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | 63f3af16a91bdf3ef5a0911185459273045cada9aead13a33a16c509fdbf7daf | CC BY 4.0 |
 | TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | c7261e19591f6432f1b1c229a9ffaa726dec5316b970513a76ca3fd70d40ebd7 | CC BY 4.0 |
 | BDB_rokon_irasok | konkordancia/BDB_rokon_irasok.tsv | sor | gyorsítótár, nő | közkincs (BDB, 1906; DT-F33g) |
-| Glossa_Ordinaria | konkordancia/Glossa_Ordinaria.tsv | 12968 | 765f4455dca4b9b12f2f082d5c92036107f9b113aa442a3a8eda52996bece4aa | közkincs (Migne, 1880; eBible: Public Domain) |
+| Glossa_Ordinaria | konkordancia/Glossa_Ordinaria.tsv | 12968 | 0027a17be258def2a7400989dbdb96fced3b67f881d7c11e7755f17363c70ff6 | közkincs (Migne, 1880; eBible: Public Domain) |
 
-Közös szabály mind az öt táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
+Közös szabály mind a hat táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
 könyvrövidítés (a `Konyv_normalizalo_tabla.tsv` szerint) és a forrás fejezet:verse; **Károli-átszámozás nincs**
 (MT ↔ Károli, Vulgata ↔ Károli, NRSV ↔ Károli feloldása tartalmi döntés, DT-F176a). A `forras_vers` / `forras_ref`
 oszlop a forrás hivatkozását változatlanul őrzi. **Az `igehely` a forrás saját számozása (magyar könyvnévvel), nem

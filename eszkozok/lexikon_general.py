@@ -5579,7 +5579,8 @@ def kolofon_lektoralas(motivum_id, ut=None):
 # állhat a lapon, az olvasói név pedig a „Forrás” oszlop ismétlése volt); a blokk-kód helyett a lap szakaszának neve.
 KOLOFON_SZAKASZNEV = {'elofordulasok': '2. Előfordulások', 'kizart': '3. Kizárt és vizsgált helyek',
                       'szocikkek': '4. Szótári háttér', 'lxx': '5. LXX-fordítói döntések',
-                      'kereszthivatkozasok': '6. Kereszthivatkozások', 'kapcsolatok': '7. Kapcsolatok'}
+                      'kereszthivatkozasok': '6. Kereszthivatkozások', 'kapcsolatok': '7. Kapcsolatok',
+                      'hatastortenet': '9. Hatástörténet'}   # F183
 
 
 def kolofon_forrastabla_olvasoi(per_fajl):
@@ -7111,6 +7112,14 @@ OLVASOI_FORRASNEV = (
     (r'visszhang_megfelelok\.tsv', 'a visszhang-megfelelők táblája'),
     (r'Targum_PD\.tsv', 'a Targum (közkincs)'),
     (r'Vulgata_Clementina\.tsv', 'a Vulgata (Clementina)'),
+    (r'visszhang_tanuk\.tsv', 'a tanúréteg kinyerő táblája'),                                   # F183
+    (r'SBLGNT_apparatus\.tsv', 'az SBL Greek New Testament apparátusa'),
+    (r'TAGNT_valtozatok\.tsv', 'a STEPBible TAGNT változatjegyzéke'),
+    (r'Glossa_Ordinaria\.tsv', 'a Glossa Ordinaria (Migne, 1880)'),
+    (r'Tanu_atyak_(?:index|mu)\.tsv', 'a HistoricalChristianFaith kommentár-adatbázis (metaadat)'),
+    (r'Tanu_rabbinikus_index\.tsv', 'a Sefaria kapcsolat-adata'),
+    (r'chain-lineages', 'a Chain Lineage Browser (Blidstein, Inowlocki, Verheyden; a bibliai hivatkozások: BiblIndex, '
+                        'Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon)'),
     (r'motivumok/[\w-]+\.md', 'a motívum kézi forrása'),
     (r'SEMA\.md', 'az adatséma'),
     (r'PaRDeS_gyorsreferencia\.md', 'a PaRDeS-gyorsreferencia'),
@@ -8134,8 +8143,10 @@ VISSZHANG_TANU_TSV_REL = 'adat/visszhang_tanuk.tsv'
 TANU_HAGYOMANY = (('gorog', 'görög'), ('latin', 'latin'), ('szir', 'szír'), ('rabbinikus', 'rabbinikus'))
 # A Glossa Ordinaria (a felhasználó döntése, 2026-11-11: „1”): a Vulgata-csomag lábjegyzeteiből
 # (`konkordancia/Glossa_Ordinaria.tsv`, `eszkozok/visszhang/glossza_import.py`) a tanúréteg egy tanúja, a szabály ugyanaz.
-GLOSSZA_MONDAT = ('A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) jegyzetei a lánc Remez- és '
-                  'Sod-helyein átnézésre kerültek; tanúként ott áll, ahol ugyanezt a kapcsolatot mondja ki.')
+# ELLENOR_F183 3.: a mondat csak akkor áll, ha a motívumnak van Glossa-tanúja (adat), és csak ezt mondja ki; az
+# átnézés helyenkénti nyoma a motívum jelentésében (HAMART-001: `naplok/F183_glossza_atnezes.tsv`).
+GLOSSZA_MONDAT = ('A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) a táblázatban ott áll '
+                  'tanúként, ahol jegyzete ugyanezt a kapcsolatot mondja ki.')
 PESHITTA_MONDAT = 'A szír fordítás (Peshitta) nem vizsgált: szabad, digitális forrása nem áll rendelkezésre.'
 
 
@@ -8219,6 +8230,17 @@ def _usz_valtozatok(igehely, strongok):
     return ki
 
 
+def _alak_tovek(alak):
+    """A ragozott görög alak tövei az augmentum nélkül is (ELLENOR_F183 1.): διέφθειρεν → δι + ε + φθειρεν; a
+    `_gorog_tovek` a szótári alakra készült, a múlt idejű ε-augmentumot nem ismeri."""
+    t = ''.join(c for c in unicodedata.normalize('NFD', alak.lower()) if not unicodedata.combining(c))
+    tovek = set(_gorog_tovek(t))
+    for elotag in ('', 'δι', 'κατ', 'επ', 'απ', 'εξ', 'συν', 'προ'):
+        if t.startswith(elotag + 'ε') and len(t) > len(elotag) + 3:
+            tovek |= _gorog_tovek(t[len(elotag) + 1:])
+    return frozenset(tovek)
+
+
 def blokk_hatas_usz(m, sorai):
     """Az újszövetségi ág: a motívum görög lánc-szavai szócsaládonként; Vulgata (a kinyerő tábla ellenőrzött sora), a
     lánc szavát érintő szövegváltozat, és a LXX-előkép (ugyanaz a görög szócsalád a Genezis-lánc ellenőrzött
@@ -8278,7 +8300,7 @@ def blokk_hatas_usz(m, sorai):
                 if mas:
                     valt.append('%s: %s (%s) — %s; %s (%s) — %s' % (v, alak, _gorog_kiejtes(alak), kiad, mas,
                                                                    _gorog_kiejtes(mas), hiany))
-                    if _gorog_tovek(mas) & cs['tovek']:
+                    if _alak_tovek(mas) & cs['tovek']:
                         valt_csaladon_belul = True
                 else:
                     valt.append('%s: %s (%s) — %s; eltér: %s' % (v, alak, _gorog_kiejtes(alak), kiad, hiany))
@@ -8347,10 +8369,15 @@ def blokk_hatas_tanuk(m, sorai):
     """A tanúréteg. Adat nélkül is áll: a lap kimondja, mit vizsgált (üres eredmény, nem kitöltés)."""
     tanuk = tanuk_lapra(m, sorai)
     hagy_nev = dict(TANU_HAGYOMANY)
-    bevezeto = ('Az ókori értelmezők közül azok állnak itt, akik a motívum egy helyét ugyanazzal a kapcsolattal '
-                'olvassák, amelyet a lap leír: a bűn következménye az átok, a föld és a romlás láncán terjed. '
-                'Hagyományonként (görög, latin, szír, rabbinikus) helyenként legfeljebb egy tanú áll, csak a lánc '
-                'Remez- és Sod-szintű helyein; a mondat a tanú olvasatának saját szavas összefoglalása, nem idézet.')
+    # ELLENOR_F183 2–3.: a bevezető motívumfüggetlen, és a két tanúfajtát külön mondja ki: az olvasat (a forrásszöveg
+    # alapján, két kézzel: ugyanazt a kapcsolatot látja) és az együtt-idézés (Chain Lineage, tényadat: a kapcsolat
+    # értelmezését a lap ezekről nem állítja)
+    bevezeto = ('Az ókori értelmezők, akik a motívum egy helyét a lánc egy másik helyével együtt olvassák. Két fajta '
+                'tanú áll itt: akinek olvasatát a forrás szövege alapján egy saját szavas mondat foglalja össze — ő '
+                'ugyanazt a kapcsolatot látja, amelyet a lap leír —, és akit egy versláncban a hely a lánc más '
+                'verseivel együtt idéz (a Chain Lineage Browser tényadata; a kapcsolat értelmezését a lap ezekről nem '
+                'állítja). Hagyományonként (görög, latin, szír, rabbinikus) helyenként legfeljebb egy tanú áll, csak '
+                'a Remez- és Sod-szintű helyeken; idézet nincs.')
     if tanuk:
         bevezeto += ' A motívum %d helyén %d tanú áll.' % (len({r['igehely'] for r in tanuk}), len(tanuk))
     else:
@@ -8371,8 +8398,9 @@ def blokk_hatas_tanuk(m, sorai):
         tanu_hely = '' if r['tanu_hely'] in ('', r['igehely']) or r['forras'] == 'chain_lineage' \
             else ' (Tárgyalt hely: %s.)' % r['tanu_hely']
         mu = re.sub(r'(\d+):(\d+)$', r'\1.\2', r['mu']) if r['forras'] == 'sefaria' else r['mu']
-        tabla.append('| %s | %s, *%s* · %s%s | %s%s | %s |' % (
-            _ige_link(r['igehely']), r['tanu'], mu, hagy_nev[r['hagyomany']], kor, r['kapcsolat'], tanu_hely,
+        fajta = ' *(együtt-idézés)*' if r['forras'] == 'chain_lineage' else ''
+        tabla.append('| %s | %s, *%s* · %s%s | %s%s%s | %s |' % (
+            _ige_link(r['igehely']), r['tanu'], mu, hagy_nev[r['hagyomany']], kor, r['kapcsolat'], tanu_hely, fajta,
             forras))
     lab = ('*A tanú-jelölteket a tanúindex (HistoricalChristianFaith, Sefaria), a Glossa Ordinaria jegyzetei és a Chain '
            'Lineage Browser adta; a lapra '
@@ -8383,8 +8411,34 @@ def blokk_hatas_tanuk(m, sorai):
     reszek = [olvasoi_bekezdes(bevezeto)]
     if tanuk:
         reszek.append('\n'.join(tabla))
-    reszek += [lab, GLOSSZA_MONDAT]
+    reszek.append(lab)
+    if any(r['forras'] == 'glossa' for r in tanuk):
+        reszek.append(GLOSSZA_MONDAT)
     return '\n\n'.join(reszek)
+
+
+def hatastortenet_forrasok(m):
+    """F183: a 9. Hatástörténet szakasz forrásai a Kolofon forrástáblájához és az Irodalomhoz [(fájl, licenc)]; csak az
+    új szerkezetű lapon, csak a ténylegesen használt forrás (a tanúréteg forrásai a tábla ellenőrzött soraiból)."""
+    if not uj_szerkezet(m['id']):
+        return []
+    ki = [('adat/visszhang_megfelelok.tsv', LC('projekt_adat')), ('konkordancia/Targum_PD.tsv', LC('Targum_PD')),
+          ('konkordancia/Vulgata_Clementina.tsv', LC('Vulgata_Clementina')),
+          ('konkordancia/SBLGNT_apparatus.tsv', LC('SBLGNT_apparatus')),
+          ('konkordancia/TAGNT_valtozatok.tsv', LC('TAGNT_valtozatok'))]
+    tanuk = [r for r in visszhang_tanuk(m['id']) if r['ellenorzes']]
+    if tanuk:
+        ki.append(('adat/visszhang_tanuk.tsv', LC('projekt_adat')))
+    forrasok = {r['forras'] for r in tanuk}
+    if 'hcf' in forrasok:
+        ki.append(('konkordancia/Tanu_atyak_index.tsv', LC('Tanu_atyak_index')))
+    if 'sefaria' in forrasok:
+        ki.append(('konkordancia/Tanu_rabbinikus_index.tsv', LC('Tanu_rabbinikus_index')))
+    if 'glossa' in forrasok:
+        ki.append(('konkordancia/Glossa_Ordinaria.tsv', LC('Glossa_Ordinaria')))
+    if 'chain_lineage' in forrasok:
+        ki.append(('chain-lineages', LC('Chain_Lineage_Browser')))
+    return ki
 
 
 def hatastortenet_athelyez(szoveg, m, sorai):
@@ -8672,6 +8726,7 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
         + [(fajl, licenc, 'lxx') for fajl, licenc in fl_lxx]
         + [(fajl, licenc, 'kereszthivatkozasok') for fajl, licenc in fl_kereszthiv]
         + [(fajl, licenc, 'kapcsolatok') for fajl, licenc in fl_kapcsolatok]
+        + [(fajl, licenc, 'hatastortenet') for fajl, licenc in hatastortenet_forrasok(m)]   # F183
     )
     blokk_idezes_szov = blokk_idezes(m, fajl_licenc_blokk_lista)
     # F131.17: a tW „Módosítás” mondata a tényleges felhasználást követi (szövegközlés vagy csak azonosító)

@@ -73,6 +73,60 @@ class HamartLap(unittest.TestCase):
         self.assertNotIn('## 9. Hatástörténet', LG.regi_szerkezetre(self.lap))
 
 
+class UszAg(unittest.TestCase):
+    """ELLENOR_F183 1., 5.: az ÚSZ-tábla a lapon — két szócsalád, n/N, a változat-mondat (az augmentummal)."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(LAP, encoding='utf-8') as f:
+            lap = f.read()
+        i = lap.find('\n### %s\n' % LG.HATAS_USZ)
+        cls.usz = lap[i:lap.find('\n### ', i + 5)]
+
+    def test_augmentum(self):
+        self.assertTrue(LG._alak_tovek('διέφθειρεν') & LG._gorog_tovek('φθείρω'))
+        self.assertFalse(LG._gorog_tovek('διέφθειρεν') & LG._gorog_tovek('φθείρω'))   # a régi hiba (rontott minta)
+
+    def test_ket_szocsalad_es_nN(self):
+        sorok = [s for s in self.usz.split('\n') if s.startswith('| ') and '<br>' in s]
+        self.assertEqual(len(sorok), 2)
+        self.assertIn('· 3/3', self.usz)
+        self.assertIn('· 2/2', self.usz)
+
+    def test_valtozat_mondat(self):
+        self.assertIn('Jel 19:2: ἔφθειρεν', self.usz)
+        self.assertIn('A szövegváltozat ugyanabban a görög szócsaládban marad', self.usz)
+
+
+class TanuBlokk(unittest.TestCase):
+    """ELLENOR_F183 2–3.: a két tanúfajta külön jelölve; a Glossa-mondat csak Glossa-tanúval; nincs motívumtartalom a
+    közös bevezetőben."""
+
+    def setUp(self):
+        self.eredeti = LG.visszhang_tanuk
+
+    def tearDown(self):
+        LG.visszhang_tanuk = self.eredeti
+
+    def blokk(self, sorok):
+        LG.visszhang_tanuk = lambda _mid: sorok
+        return LG.blokk_hatas_tanuk({'id': 'X-001'}, [{'igehely': '1Móz 5:29', 'pardes_szint': 'Remez'}])
+
+    def test_glossza_mondat_csak_glossza_tanuval(self):
+        self.assertNotIn(LG.GLOSSZA_MONDAT, self.blokk([tanu('1Móz 5:29', 'szir', 'Efrém')]))
+        g = tanu('1Móz 5:29', 'latin', 'Glossa Ordinaria')
+        g['forras'] = 'glossa'
+        self.assertIn(LG.GLOSSZA_MONDAT, self.blokk([g]))
+
+    def test_egyutt_idezes_jelolve(self):
+        c = tanu('1Móz 5:29', 'gorog', 'Órigenész')
+        c['forras'] = 'chain_lineage'
+        self.assertIn('*(együtt-idézés)*', self.blokk([c]))
+
+    def test_bevezeto_motivumfuggetlen(self):
+        self.assertNotIn('átok, a föld és a romlás', self.blokk([]))
+
+
 class TanuSzabaly(unittest.TestCase):
     def setUp(self):
         self.eredeti = LG.visszhang_tanuk

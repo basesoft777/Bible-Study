@@ -28,7 +28,7 @@ A brief V0–V6 tételei helyett az orkesztrátor által rögzített, lezárt ha
 
 - **Ókori fordítások: Ószövetség:** a korábbi 4.11 blokk változatlanul (VISSZHANG 0 BUKÁS).
 - **Ókori fordítások: Újszövetség:** két görög szócsalád. A φθείρω-család (Róm 8:21, Jel 11:18, Jel 19:2): Vulgata *corru-* 3/3; a Genezis-lánc előképverseiben (6:11, 6:12, 6:13, 6:17, 9:11) ugyanez 2/5 → a latin szóválasztás a két szövetség között csak részben egyezik; egy szövegváltozat (Jel 19:2 ἔφθειρεν / Byz διέφθειρεν), a szócsaládon belül. A κατάρα-család (Gal 3:13, Zsid 6:8): Vulgata *maled-* 2/2, az előképversekben (3:14, 3:17, 4:11, 5:29) is → a latin olvasó a két szövetség helyeit egy szóval olvassa. Peshitta: kimondott hiány.
-- **Ókori értelmezők:** 10 tanú 7 helyen (görög 4, latin 4, szír 1, rabbinikus 1); a Glossa mondata igaz (nincs „nincs szabad forrás”).
+- **Ókori értelmezők:** 10 tanú 6 helyen (görög 4, latin 4, szír 1, rabbinikus 1); a Glossa mondata igaz (nincs „nincs szabad forrás”).
 
 ## Ellenőrzés (helyben)
 
@@ -45,3 +45,27 @@ A brief V0–V6 tételei helyett az orkesztrátor által rögzített, lezárt ha
 | generátor (9. szakasz, ÚSZ-tábla, tanúblokk) | claude-opus-5-5 | 13:34–13:42 | nem látható |
 | Glossa: letöltés, import, átnézés, második kéz | claude-opus-5-5 + claude-sonnet-5-5 | 13:42–13:50 | nem látható |
 | kapuk, tesztek, sablon, lista, commitok, beolvasztás | claude-opus-5-5 | 13:50–14:10 | nem látható |
+| független ellenőrzés (fuggetlen-ellenor) | claude-opus-5-5 | 14:10–14:28 | nem látható |
+| javítókör (ELLENOR_F183 1–13., a Kolofon-bekötés) | claude-opus-5-5 | 14:30–14:40 | nem látható |
+
+## Javítókör (ELLENOR_F183, egy kör, 2026-11-11)
+
+| # | Tétel | Javítva | Hogyan |
+|---|---|---|---|
+| 1 | a változat-mondat hiányzott (augmentum) | igen | `_alak_tovek` (az ε-augmentum nélkül is); teszt: `UszAg.test_augmentum` rontott mintával, `test_valtozat_mondat`; a lapon a mondat áll |
+| 2 | „ugyanazt a kapcsolatot látja” a gépi sorokra is | igen | a bevezető a két tanúfajtát külön mondja ki (olvasat ↔ együtt-idézés, tényadat); a Chain Lineage-sor „*(együtt-idézés)*” jelölést kap; sablon 6 3. szabály, K67d; teszt: `TanuBlokk` |
+| 3 | beégetett szöveg, adat nélküli Glossa-mondat | igen | a bevezető motívumfüggetlen; a Glossa-mondat csak Glossa-tanúval áll, és csak azt mondja ki; az átnézés helyenkénti nyoma: `naplok/F183_glossza_atnezes.tsv` (28 hely: 1 tanú, 10 jegyzet nem mondja ki, 17 hely jegyzet nélkül); teszt |
+| 4 | K67f / A27 állapota | igen | K67f „nyitott” (N-F183a), K67 és A27 „részben” |
+| 5 | kapu / CI | igen | a `teszt_hatastortenet.py` (15 teszt; az ÚSZ-tábla is) és a `tanu_kinyer.py ellenoriz` a CI „Szabaly-tesztek” lépésében (`.github/workflows/ellenorzes.yml`, a brief `ir`-listáján); HIBA-szintű olvasói kapu nem készült — a tesztek a CI-ben buktatnak |
+| 6 | N-F176a teljes lezárása | igen | „RÉSZBEN LEZÁRVA”: a Glossa-rész; a Vulgata-kiadás megjelölése nyitott |
+| 7 | „4–5. sz.” kor | igen | a HCF évéből: 5. sz. (407, 420); Jeromos két kora két forrásból (HCF-év 420; a Chain Lineage század-mezője: 4.) — a lap mindkettőt a forrásával mondja |
+| 8 | latin idézet az `ellenorzes` mezőben | igen | saját szavas összefoglalóra cserélve |
+| 9 | „7 helyen” | igen | 6 hely (jelentés, K67d) |
+| 10 | „F183.2 (generátor)” | igen | F183.3 (K65, K67a–c) |
+| 11 | elavult számok | igen | `chain_lineage.py` SEMA 2.57; VISSZHANG_README „hat tábla”; SEMA 2.52 címe; a Glossa-fejléc „a 66 kanonikus könyv lábjegyzetei” (a tábla újragenerálva, a README sha256-ja frissítve) |
+| 12 | a Chain Lineage Browser leltársora | igen | `licencek.tsv` (licenc nincs megadva → `tisztazatlan`, csak tényadat, DT-F183c) és `datasetek.tsv`; a Kolofon és az Irodalom a 9. szakasz forrásait a generátor gyűjtőlistájából kapja (`hatastortenet_forrasok`): Chain Lineage + BiblIndex, Glossa, SBLGNT-apparátus, TAGNT-változatok, Vulgata, Targum, tanúindex, a tanútábla |
+| 13 | az `ir`-mező túllépése | kimondva | a lezárt hatókör (az orkesztrátor és a felhasználó döntései) a briefnél több fájlt írt: sablonok/6, 10, KESZ_LAP_KOVETELMENY, MUNKAMENET, NYITOTT_FELADATOK, adat/jeloltek, licencek, nyilt_angol, konkordancia/Glossa_Ordinaria, eszkozok/olvasoi_kapu.py, teszt_*.py, nyilt_mag/*; a `.github/workflows/ellenorzes.yml` a javítókörben módosult |
+
+**A javítókörön kívül, de a lezárt hatókörben (a fő szál lelete):** a Kolofon forrástáblája és a 12. Irodalom a 9. szakasz forrásait (köztük a Chain Lineage Browsert és a BiblIndexet, az orkesztrátor kérése szerint) eddig nem nevezte meg — a 12. tétellel együtt pótolva.
+
+**Ellenőrzés a javítókör után:** `ellenoriz.py` 0 SÉRTÉS (27 RENDBEN); olvasói kapu 0 BUKÁS; nyílt mag kapu 0 BUKÁS (az angol pár teljes: 1047/1047); `teszt_hatastortenet` 15/15, `teszt_kesz_lap_hamart` 34/34, `teszt_visszhang_kapu` 22/22, `teszt_olvasoi_kapu` 68/69 (az `Arany.G7` az alapvonalon is bukik).
