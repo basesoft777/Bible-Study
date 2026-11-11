@@ -209,6 +209,30 @@ class Generator(unittest.TestCase):
         self.assertNotIn('lXX', j)
         self.assertNotIn('károli', j)
 
+    def test_szocikkhatar_kezi(self):
+        """F182 javítókör (A17 / K56, DT-F182q): a tételes szócikkhatár-javítás a következő szócikk fejénél vág; a forrás
+        változásakor (a horgony nincs meg) a generálás megáll; a HAMART-001-en a 27. szabály nem jelez."""
+        sys.path.insert(0, os.path.join(GYOKER, 'eszkozok', 'bdb_jelolt'))
+        import hu_illeszt as HI
+        eredeti = dict(HI.SZOCIKKHATAR_KEZI)
+        try:
+            HI.SZOCIKKHATAR_KEZI.clear()
+            HI.SZOCIKKHATAR_KEZI[('H1', '2')] = ('3', ' nőnemű főnév: x', 1, 'teszt')
+            sor = lambda n, sz, k='0': ['H1', n, 'B', '', '', 'u', '', 'k', '', k, str(len(sz)), sz, 'h', 'p']
+            ki = [sor('2', 'a vége. QQ nőnemű főnév: x y'), sor('3', '', '')]
+            HI.szocikkhatar_kezi(ki, 'T')
+            self.assertEqual(ki[0][11], 'a vége.')
+            self.assertEqual(ki[1][11], 'QQ nőnemű főnév: x y')
+            self.assertIn('scope=manual', ki[1][13])
+            with self.assertRaises(HI.SzocikkhatarHiba):
+                HI.szocikkhatar_kezi([sor('2', 'a vége, horgony nélkül'), sor('3', '', '')], 'T')
+        finally:
+            HI.SZOCIKKHATAR_KEZI.clear()
+            HI.SZOCIKKHATAR_KEZI.update(eredeti)
+        import ellenoriz as E
+        _h, jelentes = E.gerinc_szocikk_hibak(os.path.join(GYOKER, 'adat'))
+        self.assertEqual([j for j in jelentes if j.startswith('HAMART-001')], [])
+
     def test_bdb_fej_es_szamlalo(self):
         s = '**A szócikk feje (nyelvi háttér).** H7451. ra \' I. רַע‎_226 melléknév'
         s = LG.BDB_SZAMLALO_RX.sub('', LG.BDB_FEJ_NYERS_RX.sub(r'\1', s))
