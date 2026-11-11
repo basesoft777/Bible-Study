@@ -542,6 +542,30 @@ def bdb_angol(con, s):
 _VJ_OSZLOPOK = ('sorszam', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz', 'utvonal', 'okkod', 'szurt')
 
 
+def _tabla_sorok(con, tabla, s):
+    """[dict] egy `adat/` tábla Strong-sorai (minden oszlop, szövegként), None, ha a tábla hiányzik (régebbi adatbázis)."""
+    try:
+        oszl = [r[1] for r in con.execute('PRAGMA table_info(%s)' % tabla)]
+        if not oszl or 'strong' not in oszl:
+            return None
+        sorok = con.execute('SELECT %s FROM %s WHERE strong=?' % (', '.join('"%s"' % o for o in oszl), tabla), (s,)).fetchall()
+    except sqlite3.OperationalError:
+        return None
+    return [dict(zip(oszl, ['' if x is None else str(x) for x in r])) for r in sorok]
+
+
+def bdb_szakasz_sorok(con, s):
+    """F33 (F182): a BDB-szócikk szakasztáblájának sorai (`adat/bdb_szakaszok.tsv`, SEMA 2.30) — a tagolás egyetlen forrása
+    (`bdb_tagolas`). None, ha a tábla hiányzik."""
+    return _tabla_sorok(con, 'bdb_szakaszok', s)
+
+
+def bdb_szakasz_hu_sorok(con, s):
+    """F33 (F182): a szakasztábla magyar bontása (`adat/bdb_szakasz_hu.tsv`, SEMA 2.32): {sorszám: sor}. None, ha hiányzik."""
+    sorok = _tabla_sorok(con, 'bdb_szakasz_hu', s)
+    return None if sorok is None else {r['sorszam']: r for r in sorok}
+
+
 def bdb_vers_jelentes(con, s):
     """F104: a BDB-szócikk igehely-hivatkozásai jelentésponttal (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29), a szócikkön belüli
     sorrendben: [dict] a `_VJ_OSZLOPOK` mezőivel, és ha a tábla már hordozza (F103), a `csoport`-tal (különben ''). A `s` a

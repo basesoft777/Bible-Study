@@ -44,6 +44,7 @@ import szerep_nave as SZN
 import szerep_kizart as SZKZ
 import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
 import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
+import bdb_tagolas as BT  # a BDB-szócikk tagolása a szakasztáblából, közös az olvasóval (F182, F33)
 import olvasoi_utofeldolg as OU  # az olvasói szöveg egységesítése a kész lapon (olvasói kapu, 2026-11-02)
 import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
 import bdb_vj_szabaly as VJ  # a 2.29 sorainak minősítése, közös az olvasó-szerverrel (DT-F104d/e)
@@ -3458,6 +3459,13 @@ def helyek_pontjai(vers_pont, szocikkek):
     return pontok
 
 
+def fan_kivuli_pontok(vers_pont, szocikkek):
+    """F33 (F182): [(vers, kulcs)] — a vers → pont párok, amelyek pontja (nem fej, nem a tagolatlan szócikk egésze) nem
+    csomópontja a megjelenített fának (`bdb_tagolas.szocikkek`). A kártya ezeket nem nevezi meg pontként."""
+    fa = {sz_k for sz in szocikkek for sz_k, _j, _h, _a, _f in sz['szakaszok']}
+    return [(v, k) for v, k in vers_pont if k[1] not in ('fej', 'tagolatlan') and k not in fa]
+
+
 def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, tartomanyban, pont_nelkul, gyenge=None,
                       szotar='BDB', fej_hu=None):
     """Az olvasói réteg bekezdései: a jelentések rendje (hordozó szakasz félkövér) és „A motívum helyein” sor.
@@ -3468,6 +3476,12 @@ def bdb_olvasoi_reteg(adat, strong, szocikkek, hordozo, vers_pont, nem_idezett, 
     meghatározás nélküli szakasz „csak alakot/párhuzamot közöl”; a fej meghatározása `fej_hu`-ból)."""
     gyenge = gyenge or {}
     thayer = szotar == 'Thayer'
+    # F33 (F182): a „A motívum helyein” sor pontja a megjelenített fa csomópontja; a fán kívüli pont (pl. a szakasztábla
+    # sorbelső feje, amelyet a fa nem bont külön) nem kap kitalált nevet, a vers a „nem azonosítható” helyek közé kerül
+    kint = fan_kivuli_pontok(vers_pont, szocikkek)
+    if kint:
+        vers_pont = [x for x in vers_pont if x not in kint]
+        pont_nelkul = list(pont_nelkul) + [v for v, _k in kint]
     hiv_db = thayer_hivatkozas_szam(adat, strong) if thayer else bdb_hivatkozas_szam(adat, strong)
     glossza = thayer_glossza if thayer else olvasoi_glossza
     lathato = [sz for sz in szocikkek if sz['szakaszok'] or (sz['fej'] and sz['fej'][2])]
@@ -3644,49 +3658,18 @@ def _szonezet_mutato(strong, forras):
 
 
 def bdb_gerinc_szocikkek(adat, strong):
-    """A Strong BDB-szócikkei a 2.30 (a BDB) sorrendjében: ([{'bdb_id', 'fej', 'szakaszok'}], elnyelt).
-    A szakasz (kulcs, jel, szöveg_hu, angol, kategória), a kulcs (bdb_id, utvonal): szócikken belül útvonalanként
-    összevonva (a `jelolo_nelkul` sor szövege az előző szakaszé), `cim` nélkül; a `fej` külön. Különböző szócikkek
-    azonos útvonalú szakaszai nem vonódnak össze (F123.BDBGER). `elnyelt`: {kulcs: kulcs} — a jelölő nélküli, magyar
-    szöveg nélküli szakasz, amelynek szövege a 2.32 szerint az előző sorban, egy másik szócikk szakaszában áll."""
-    sorrend, adatok, elnyelt = [], {}, {}
-    utolso_hu = None
-    for r in sorted(adat['bdb_sz'].get(strong, []), key=lambda x: int(x['sorszam'])):
-        ut = r['utvonal']
-        if ut == 'cim':
-            continue
-        k = (r.get('bdb_id', ''), ut)
-        hu = adat['bdb_hu'].get((strong, r['sorszam'])) or {}
-        if k not in adatok:
-            sorrend.append(k)
-            adatok[k] = {'hu': [], 'en': [], 'kat': '', 'elnyelo': None, 'ures': True}
-        e = adatok[k]
-        if hu.get('szoveg_hu'):
-            e['hu'].append(hu['szoveg_hu'])
-            utolso_hu = k
-        elif hu.get('kategoria') == 'jelolo_nelkul' and utolso_hu and utolso_hu[0] != k[0] and e['elnyelo'] is None:
-            e['elnyelo'] = utolso_hu
-        if (r.get('szoveg') or '').strip():
-            e['en'].append(('%s %s' % (r.get('jel') or '', r['szoveg'])).strip())
-        if hu.get('kategoria') in ('horgonnyal', 'elakad') or not e['kat']:
-            e['kat'] = hu.get('kategoria') or e['kat']
-    szocikkek = []
-    for k in sorrend:
-        e = adatok[k]
-        hu = ' '.join(e['hu']) if e['hu'] else None
-        if e['kat'] == 'elakad':
-            hu = None
-        if hu is None and e['elnyelo'] and e['kat'] == 'jelolo_nelkul':
-            elnyelt[k] = e['elnyelo']
-        # F123.GENKOR: a digitalizálásban elveszett zárójel (`bdb_forras_javitas.tsv` `zarojel`) a rövidítés előtt javul
-        sz = (k, szakasz_jel(k[1]), BR.zarojel_javit(hu, strong), BR.zarojel_javit(' '.join(e['en']), strong), e['kat'])
-        if not szocikkek or szocikkek[-1]['bdb_id'] != k[0]:
-            szocikkek.append({'bdb_id': k[0], 'fej': None, 'szakaszok': []})
-        if k[1] == 'fej':
-            szocikkek[-1]['fej'] = sz
-        else:
-            szocikkek[-1]['szakaszok'].append(sz)
-    return szocikkek, elnyelt
+    """A Strong BDB-szócikkei a 2.30 (a BDB) sorrendjében: ([{'bdb_id', 'fej', 'szakaszok'}], elnyelt). A fa egyetlen
+    helye a `bdb_tagolas.szocikkek` (F33, egy szabály, egy hely: a kártya és az olvasó tagolása a szakasztáblából);
+    itt csak a megjelenítés előtti zárójel-javítás (F123.GENKOR, `bdb_forras_javitas.tsv` `zarojel`) és a szakaszjel
+    szabálya csatlakozik."""
+    return BT.szocikkek(adat['bdb_sz'].get(strong, []), _bdb_hu_strong(adat, strong), szakasz_jel,
+                        lambda t: BR.zarojel_javit(t, strong))
+
+
+def _bdb_hu_strong(adat, strong):
+    """{sorszám: a 2.32 sora} egy Strongra (a `gerinc_adat` `bdb_hu` indexéből)."""
+    return {r['sorszam']: adat['bdb_hu'][(strong, r['sorszam'])] for r in adat['bdb_sz'].get(strong, [])
+            if (strong, r['sorszam']) in adat['bdb_hu']}
 
 
 def bdb_gerinc_szakaszok(adat, strong):
