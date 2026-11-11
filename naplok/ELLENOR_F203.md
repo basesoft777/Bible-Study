@@ -37,6 +37,17 @@ ELTÉRÉS: 3 tétel
 
 ELTÉRÉS-ek súlyossági sorrendben: (1) F203.5: a kész-feltétel (zöld tesztek) nem teljesül, a bukások függetlensége nem igazolt; (2) a 68 TBESG-sor provenienciája F161-es menetjelölést és nem egyedi `custom_id`-t visel; (3) E17/DT3: a `thayer_szakaszok.tsv` −41 sorának nincs sorszintű bontása (−52/+11).
 
+## Az ellenőr kiegészítése (a saját `futtat.py`-futása után)
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| A6, E12–E15 | OK | — | `futtat.py --valtozott <25 fájl> --diff-alap 9926ae54… --diff-fej HEAD`: E12–E15 0 találat |
+| CI-egyezés / 1.6 E28 | OK (merge-feltétel) | `lexikon/ISTENTISZT-001…:866`, `ALVIL-001…:1114`, `TEREMT-002…:423` + 2 | E28 5 HIBA („5 migrált nézet”), az LXX-blokk tooltipjeiben: egyezik a jelentés 1.6 pontjával |
+| a CI egyéb találatai | OK | — | E25, E27, E34, E36 korábbi sorokra; E32 a `muhely_allapot.py:829` régi során; E30 (3 FIGYELMEZTETÉS) ékezet nélküli blokk-/függvénynév a `da6590fa`, `f217a636` üzenetében |
+| E1 / 13. szabály | NEM ELLENŐRIZHETŐ | — | a `futtat.py` nem futtatja |
+
+Az ELTÉRÉS-ek száma és sorrendje változatlan (3).
+
 ## Javítókör 1 (a végrehajtó, 2026-11-11)
 
 A végrehajtó válasza és javításai: `naplok/F203_jelentes.md` 7. pont.
