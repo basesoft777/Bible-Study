@@ -53,6 +53,13 @@ class Lap(unittest.TestCase):
         self.assertNotIn('Rövid UI-címke', self.lathato)
         self.assertNotIn('publikálható (v1', self.lathato)
 
+    def test_dontesi_ut_alcimek(self):
+        """F182 javítókör (N-F182g, DT-F182p): az 1.1–1.2 alcím névszói, az 1.3–1.5 változatlan."""
+        for c in ('### 1.1. A keresés tárgya', '### 1.2. A keresés forrásai', '### 1.3.', '### 1.4.', '### 1.5.'):
+            self.assertIn(c, self.lap)
+        self.assertNotIn('Mit keresünk', self.lap)
+        self.assertNotIn('Hol kerestünk', self.lap)
+
     def test_a21_nincs_alkalmazas(self):
         self.assertNotIn('## 10. Alkalmazás', self.lap)
         self.assertIn('## 10. Módszertan és nyitott kérdések', self.lap)
@@ -274,6 +281,8 @@ class Kapuk(unittest.TestCase):
 
     def test_mi_hang(self):
         self.assertTrue(kapu(uj_lap('A szavakat átnéztük, és a helyeket elbíráltuk.'), 'MI_HANG'))
+        # F182 javítókör (DT-F182p): a régi „1.2 Hol kerestünk” alcím már nem kivétel
+        self.assertTrue(kapu(uj_lap('### 1.2. Hol kerestünk'), 'MI_HANG'))
         self.assertEqual(kapu(uj_lap('A helyek átnézésre kerültek. Alattuk és közöttük „vétkeztünk”.'), 'MI_HANG'), [])
 
     def test_nevelo(self):

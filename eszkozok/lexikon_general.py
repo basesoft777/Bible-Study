@@ -6891,12 +6891,12 @@ def blokk_dontesi_ut(m, sorai):
     karoli = L.load_karoli_1908()
     reszek = []
 
-    # 1.1 Mit keresünk
+    # 1.1 A keresés tárgya (DT-F182p: névszói alcím, a K12 harmadik személyű szabálya szerint)
     neg = (m.get('negativ_kriterium') or '').strip()
     neg = SZKZ.olvasoi_indok(neg) or neg
     ide, sep, nem = neg.partition('Nem tartozik ide')
     fol = (m.get('folerendelt_fogalom') or '').strip()
-    r1 = ['### 1.1. Mit keresünk', '**A motívum:** %s.' % (m.get('cim') or mid).rstrip('.')]
+    r1 = ['### 1.1. A keresés tárgya', '**A motívum:** %s.' % (m.get('cim') or mid).rstrip('.')]
     if ide.strip():
         r1.append('**Ami ide tartozik:** %s' % ide.strip())
     if sep:
@@ -6906,7 +6906,7 @@ def blokk_dontesi_ut(m, sorai):
         r1.append('**Ami nem:** %s.' % (fol[:1].upper() + fol[1:].rstrip('.')))
     reszek.append('\n\n'.join(r1))
 
-    # 1.2 Hol kerestünk
+    # 1.2 A keresés forrásai (DT-F182p)
     lanc = []
     for s in sorai:
         for e in (s.get('gerinc_elem') or '').split('+'):
@@ -6918,7 +6918,7 @@ def blokk_dontesi_ut(m, sorai):
         lk = lemma_kiejtes(s)
         jel = rovid_jelentes(s)
         szavak.append('%s%s' % (lemma_cim(lk) if lk else s, (', %s' % jel[0]) if jel[1] else ''))
-    r2 = ['### 1.2. Hol kerestünk']
+    r2 = ['### 1.2. A keresés forrásai']
     if szavak:
         r2.append('**A motívum szavai:** %s.' % '; '.join(szavak))
     tabla = ['| Keresés | Vers | Mit nézett |', '|---|---|---|']

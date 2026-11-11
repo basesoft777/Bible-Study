@@ -557,9 +557,7 @@ def ell_mi_hang(sorok):
         if not s.olvasoi:
             continue
         t = IDEZET_KI_RX.sub(' ', s.szoveg)
-        if s.fajta == 'cim':
-            # a sablon 6 v4 kötelező alcíme (K33: „1.2 Hol kerestünk”); a K12-vel való ütközése a felhasználó döntése
-            t = re.sub(r'\b1\.2\.? Hol kerestünk\b', ' ', t)
+        # F182 javítókör (DT-F182p): az 1.2 alcím névszói („A keresés forrásai”), kivétel nincs
         for m in MI_HANG_RX.finditer(t):
             if m.group(1).lower() in MI_HANG_KIVETEL:
                 continue

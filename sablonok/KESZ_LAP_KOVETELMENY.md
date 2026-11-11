@@ -79,7 +79,7 @@ A „L123” jelölés a lap sorszáma ebben a commitban. A #182 2. fázisa még
 
 | # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
 |---|---|---|---|---|---|
-| K33 | 1. Döntési út | Öt alszakasz: 1.1 Mit keresünk · 1.2 Hol kerestünk · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések. | sablon 6 v4 „Szakaszrend” | gépi: `ellenoriz.py` 40. | **teljesül** — L102–208. |
+| K33 | 1. Döntési út | Öt alszakasz: 1.1 A keresés tárgya · 1.2 A keresés forrásai (DT-F182p; korábban „Mit keresünk · Hol kerestünk”) · 1.3 Mi esett ki és miért · 1.4 Mi maradt és miért · 1.5 Határesetek és nyitott kérdések. | sablon 6 v4 „Szakaszrend” | gépi: `ellenoriz.py` 40. | **teljesül** — L102–208. |
 | K34 | 1. Döntési út | Minden vers egyszer számít. Az összeadás-sor ki van írva (motívumhoz tartozik + csoportosan kizárva + egyenként elutasítva = megvizsgált vers), a döntés nélküli versek száma kimondva, és ez a szám 0. | sablon 6 v4 „A Döntési út szabályai”, „regressziós kapui” | gépi: `ellenoriz.py` 40. | **teljesül** — L141: 54 + 1 520 + 236 = 1 810; döntés nélkül 0. |
 | K35 | 1. Döntési út | A csoportos és az egyenkénti okok lenyitható részletekben állnak; az 1.4 a beépített sorok szavai szerint csoportosít, tételenként a `funkcio` magyarázatával. | sablon 6 v4 „A Döntési út szabályai” | lektor | **teljesül** — L145–194 (a „chattáá” címke: K08). |
 | K36 | 1. Döntési út | Nincs „egyéb” elutasítási ok; a motívum jellemző okai motívumonkénti mintasorként állnak. | sablon 9 öt szabály 1.; DT674 | gépi: `ellenoriz.py` 28. | **teljesül** — 28. RENDBEN. |
