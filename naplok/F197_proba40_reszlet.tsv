@@ -1,0 +1,41 @@
+azon	strong	mt_vers	tabla_pont	arany	gepi	bizonyossag	tanu	uj_bizonyossag	illesztes	sefaria_ut
+N004	H8248	Zsolt 69:22	  Qal/2	Hiph`il/2 	HIBAS	ketes:jp_tanu_elter	egyezik	ketes	pontos	1||Qal/2/-
+N028	H7451	Jer 13:10	  -/10/b	I -/10/b 	HIBAS	ketes:jp_tanu_elter	egyezik	ketes	pontos+hom	2||-/10/b
+N040	H3881	1Krón 24:30	  -/2/c	II -/3/2/c 	HIBAS	ketes:jp_tanu_elter	elter	ketes	pontos+hom	2||-/3/c
+N054	H3068	3Móz 25:17	 II -/2/c	-/2/c II	helyes	ketes:jp_tanu_elter	egyezik	ketes	pontos	1|II|-/2/c
+N056	H4758	Ez 1:27	  -/1/b	-/1/b 	helyes	ketes:jp_illesztes	egyezik	ketes	pontos	2||-/1/b
+N058	H3915	Józs 2:2	  -/8	-/1/b 	HIBAS	ketes:jp_tanu_elter	elter	ketes	pontos	1||-/1/-
+N061	H7663	Zsolt 104:27	II  -/2	II Pi`el/2 	HIBAS	ketes:jp_tanu_elter	elter	ketes	pontos+hom	2||Pi./2/-
+N071	H5186	Mal 3:5	  Hiph'il/3/h	Hiph`il 	HIBAS	ketes:jp_illesztes	elter	ketes	pontos	1||Hiph./-/-
+N076	H7651	3Móz 26:28	  -/1/a	I -/1/a 	HIBAS	ketes:jp_tanu_elter	egyezik	ketes	pontos+hom	1||-/1/a
+N077	H3458	Jer 40:16	  -/2	-/2 	helyes	ketes:jp_tanu_elter	egyezik	ketes	pontos	2||-/2/-
+N081	H7969	Eszt 3:12	  -/2	-/2 	helyes	ketes:jp_tanu_elter	nincs	ketes	nincs	
+N094	H3899	4Móz 28:24	I  -/2/c	-/2/c 	HIBAS	ketes:jp_tanu_elter	egyezik	ketes	pontos	1||-/2/c
+N101	H7340	2Sám 10:8	II  -/1/a	II -/1/a 	helyes	ketes:jp_tanu_elter	egyezik	ketes	pontos	2||-/1/a
+N105	H3881	1Krón 15:11	  -/2/a	II -/3/2/a 	HIBAS	ketes:jp_tanu_elter	elter	ketes	pontos+hom	2||-/3/a
+N122	H7451	1Móz 31:24	  -/2	I -/2 	HIBAS	ketes:jp_tanu_elter	egyezik	ketes	pontos+hom	2||-/2/-
+N124	H5920	Zsolt 56:1	 I -/1/f	-/1/f II	HIBAS	ketes:jp_tanu_elter	elter	ketes	pontos	2|II|-/1/f
+N135	H6663	Ez 16:52	  Pi'el/-	Pi`el 	helyes	ketes:jp_illesztes	egyezik	ketes	barmely	1||Qal/-/-;1||Qal/4/-;1||Pi./-/-
+N151	H3588	1Sám 26:10	  -/2/b	-/2/b 	helyes	ketes:jp_tanu_elter	nincs	ketes	nincs+hom	
+N181	H4480	1Móz 6:7	  -/5/b	-/5/b 	helyes	ketes:jp_tanu_elter	nincs	ketes	nincs	
+N013	H2469	1Krón 11:30	  fej	-/1 	HIBAS	biztos	elter	ketes	pontos	1||-/1/-
+N012	H6475	Zsolt 144:11	  Qal/-	Qal 	helyes	biztos	egyezik	biztos	barmely	1||Qal/-/-;1||Qal/2/-
+N019	H0160	Préd 9:6	  -/1	-/1 	helyes	biztos	egyezik	biztos	pontos	1||-/1/-
+N023	H7725	2Krón 26:2	  Hiph'il/1/d	Hiph`il/1/d 	helyes	biztos	egyezik	biztos	pontos	1||Hiph./1/d
+N057	H7617	2Móz 22:9	  Niph'al/-	Niph`al 	helyes	biztos	egyezik	biztos	pontos	1||Niph./-/-
+N059	H6726	Zsolt 78:68	  tagolatlan	tagolatlan 	helyes	biztos	egyezik	biztos	pontos	1||-/-/-
+N062	H8511	5Móz 28:66	  Qal/-	Qal 	helyes	biztos	egyezik	biztos	pontos	1||Qal/-/-
+N069	H3444	Zsolt 35:3	  -/3	-/3 	helyes	biztos	egyezik	biztos	pontos	1||-/3/-
+N090	H4150	2Móz 9:5	  -/1/a	-/1/a 	helyes	biztos	egyezik	biztos	pontos	1||-/1/a
+N095	H5704	2Kir 24:20	III I -/2/a	III -/2/a I	helyes	biztos	egyezik	biztos	pontos+hom	4|I|-/2/a
+N102	H5087	Zsolt 132:2	  Qal/-	Qal 	helyes	biztos	egyezik	biztos	pontos	1||Qal/-/-
+N117	H0541	Ézs 44:14	  Pi'el/2	Pi`el/2 	helyes	biztos	nincs	biztos	nincs	
+N128	H4480	2Móz 33:6	  -/4/a	-/4/a 	helyes	biztos	nincs	biztos	nincs	
+N150	H3117	1Sám 7:2	  -/7/d	-/7/d 	helyes	biztos	egyezik	biztos	pontos	1||-/7/d
+N160	H5262	4Móz 29:19	  -/1	-/1 	helyes	biztos	egyezik	biztos	pontos	1||-/1/-
+N164	H8462	2Sám 17:9	  tagolatlan	tagolatlan 	helyes	biztos	egyezik	biztos	pontos	1||-/-/-
+N172	H7704	1Sám 17:44	  -/1/c	-/1/c 	helyes	biztos	nincs	biztos	nincs	
+N178	H0517	Ez 19:2	  -/2	-/2 	helyes	biztos	egyezik	biztos	pontos	2||-/2/-
+N185	H8081	Hós 2:7	  fej	fej 	helyes	biztos	egyezik	biztos	pontos	1||-/-/-
+N186	H2799	2Móz 31:5	I  tagolatlan	I tagolatlan 	helyes	biztos	nincs	biztos	nincs	
+N193	H3045	3Móz 4:14	  Niph'al/-	Niph`al 	helyes	biztos	egyezik	biztos	pontos	1||Niph./-/-
