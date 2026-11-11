@@ -1131,5 +1131,29 @@ class F187KartyaJavitasok(unittest.TestCase):
         self.assertIsNone(LG.thayer_fej_glossza('φθορᾶς, ἡ (φθείρω), Aeschylus és Hérodotosz óta:'))
 
 
+
+class F182Glossza(unittest.TestCase):
+    """F182 (N137, N139): a csonkítási jel a kártya vázlatsorán; a glossza nélküli szakasz három általános esete."""
+
+    def test_n139_forras_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('1.f', '', 'f. a P (H) szerint a pap engesztelést szerez valakiért (על כמּר) bűnért'),
+                         'a pap engesztelést szerez valakiért')
+
+    def test_n139_plusz_heber_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('6', '', '+ מִן comparativus: rosszabb, mint, 2Sám 19:8'), 'rosszabb')
+
+    def test_n139_heber_kifejezes_elotag(self):
+        self.assertEqual(LG.olvasoi_glossza('8', '', 'מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10'),
+                         'gonosz tervet kigondolni')
+
+    def test_n139_zarojeles_kezdet_valtozatlan(self):
+        self.assertIsNone(LG.olvasoi_glossza('1', '', '(vö. alább) bűn: x'))
+
+    def test_n137_csonkitasi_jel(self):
+        t = 'a. ember ellen 1Móz 31:36; 50:17 (E), 4Móz 12:11 (J)'
+        self.assertEqual(LG._elso_tagmondat(t), 'ember ellen 1Móz 31:36')
+        self.assertEqual(LG._elso_tagmondat(t, csonkit_jel=True), 'ember ellen 1Móz 31:36 …')
+        self.assertEqual(LG._elso_tagmondat('a. ember ellen 1Móz 31:36', csonkit_jel=True), 'ember ellen 1Móz 31:36')
+
 if __name__ == '__main__':
     unittest.main()
