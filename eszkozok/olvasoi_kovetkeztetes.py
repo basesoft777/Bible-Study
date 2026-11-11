@@ -38,6 +38,41 @@ def _szamlista(parok):
 
 # --- 1. Előfordulások ---
 
+SULYPONT_KUSZOB = 0.40   # F1 (szerkesztői döntés, 2026-11-09: „jó így”): ennyi hely egy könyvben = súlypont
+SZOVETSEG_KUSZOB = 0.20  # ennél kisebb arányú szövetség: „főként ószövetségi / újszövetségi”
+
+
+def elofordulasok_uj(n, osz, usz, konyvek, top_konyvek, magas, konyvnev=None):
+    """F182 (A03; F1, K41): az új szerkezetű lap összegző mondata — a súlypont (egy könyvben a helyek legalább 40%-a), a
+    szövetség-arány (20% alatt „főként”), a megbízhatóság csak ha nem egyértelmű; a „mindkét szövetség” fordulat nélkül.
+    `konyvnev`: a könyv teljes magyar neve a rövidítésből (pl. „1Móz” → „Mózes első könyve”)."""
+    if not n:
+        return None
+    lelet = 'A motívum %d igehelyen fordul elő, %d bibliai könyvben' % (n, konyvek)
+    resz = ', '.join('%d %s' % (m, c) for c, m in (('ószövetségi', osz), ('újszövetségi', usz)) if m)
+    lelet += ' (%s hely)' % resz if resz else ''
+    lelet += '. %d hely azonosítása magas megbízhatóságú' % magas
+    if n - magas:
+        lelet += ', %d alacsonyabb' % (n - magas)
+    lelet += '.'
+    kov = []
+    if top_konyvek and top_konyvek[0][1] / n >= SULYPONT_KUSZOB:
+        k, db = top_konyvek[0]
+        nev = (konyvnev or (lambda x: x))(k)
+        kov.append('a motívum súlypontja %s (%d helyből %d)' % (nev, n, db))
+    if usz and osz and usz / n < SZOVETSEG_KUSZOB:
+        kov.append('főként ószövetségi; az Újszövetségben %d hely' % usz)
+    elif usz and osz and osz / n < SZOVETSEG_KUSZOB:
+        kov.append('főként újszövetségi; az Ószövetségben %d hely' % osz)
+    elif usz and osz:
+        kov.append('az Ószövetségben %d, az Újszövetségben %d hely' % (osz, usz))
+    else:
+        kov.append('csak az Ószövetségben' if osz else 'csak az Újszövetségben')
+    if fok(magas / n) in ('fele', 'keves'):
+        kov.append('sok a bizonytalan azonosítás')
+    return '%s %s %s.' % (lelet, KOVETKEZTETES, '; '.join(kov))
+
+
 def elofordulasok(n, osz, usz, konyvek, top_konyvek, magas):
     """`konyvek`: a könyvek száma; `top_konyvek`: [(könyv, szám)] csökkenő sorrendben; `magas`: a magas megbízhatóságú
     helyek száma."""
@@ -89,6 +124,28 @@ def _szorzo(x):
 def _ezres(n):
     """Ezres tagolás nem törő szóközzel (1 728)."""
     return '{:,}'.format(n).replace(',', '\u00a0')
+
+
+def kizart_uj(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forrasok, n_motivum):
+    """F182 (A07; B07, K12): a `kizart` mondata harmadik személyben (a „vizsgáltunk”, „kerestük”, „döntöttünk” nélkül);
+    a számok és a szabály ugyanazok."""
+    sz = kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forrasok, n_motivum)
+    if not sz:
+        return sz
+    csere = (
+        (' verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük, és a kereszthivatkozások '
+         'ajánlásait is megnéztük.', ' vers került vizsgálat alá: a motívum szavainak keresése a teljes Ó- és Újszövetségre '
+         'kiterjedt, és a kereszthivatkozások ajánlásaira is.'),
+        (' verset vizsgáltunk meg: a motívum szavait a teljes Ó- és Újszövetségben kerestük.',
+         ' vers került vizsgálat alá: a motívum szavainak keresése a teljes Ó- és Újszövetségre kiterjedt.'),
+        (' verset vizsgáltunk meg, jelöltként.', ' vers került vizsgálat alá, jelöltként.'),
+        (' versről egyenként döntöttünk, ', ' versről egyenként született döntés, '),
+        (' verset vizsgáltunk, mint ahány hely a motívumhoz tartozik', ' vers került vizsgálat alá, mint ahány hely a '
+         'motívumhoz tartozik'),
+    )
+    for a, b in csere:
+        sz = sz.replace(a, b)
+    return sz
 
 
 def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forrasok, n_motivum):
@@ -217,6 +274,57 @@ def lxx(n, egyezo, eltero, hianyzik, egyeb, gorog_nev, nincs_gorog=False):
     return '%s %s %s.' % (lelet, KOVETKEZTETES, kov)
 
 
+def lxx_uj(n, egyezo, eltero, hianyzik, egyeb):
+    """F182 (A20, K20): az 5. szakasz és a 4.6 összegzése versben mérve (a tábla soronként egy Károli-vers); a
+    toldalék a „vers” szón áll, nem a számon."""
+    if not n:
+        return None
+    lelet = ('A motívum ószövetségi helyei %d versre terjednek; ezek közül %d versben a görög fordítás (Septuaginta) '
+             'ugyanazt a szót használja, mint az Újszövetség' % (n, egyezo))
+    tobbi = []
+    if eltero:
+        tobbi.append('%d versben mást' % eltero)
+    if hianyzik:
+        tobbi.append('%d versben a görögből hiányzik' % hianyzik)
+    if egyeb:
+        tobbi.append('%d versben a megfelelő nincs megállapítva' % egyeb)
+    lelet += ('; ' + ', '.join(tobbi) if tobbi else '') + '.'
+    p = szazalek(egyezo, n)
+    kov = {'szinte': 'a görög Ószövetség szinte minden versben (%d%%) ugyanazzal a szóval adja vissza a motívumot, ezért '
+                     'az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez' % p,
+           'tobbseg': 'a görög Ószövetség a versek többségében (%d%%) ugyanazzal a szóval adja vissza a motívumot, ezért '
+                      'az újszövetségi helyek nyelvileg is visszakapcsolódnak az ószövetségiekhez' % p,
+           'fele': 'a görög Ószövetség a versek felén-kétharmadán (%d%%) adja vissza ugyanazzal a szóval a motívumot; a '
+                   'nyelvi kapcsolat részleges' % p,
+           'keves': 'a görög Ószövetség csak a versek %d%%-ában használja ugyanazt a szót: a kapcsolat nem nyelvi, csak '
+                    'tartalmi' % p}[fok(egyezo / n)]
+    return '%s %s %s.' % (lelet, KOVETKEZTETES, kov)
+
+
+LXX_SZO_MIN = 5   # F182 (A13, K10): ennyi vers alatt a szóról nincs következtetés
+
+
+def lxx_szo(nev, n, egyezo, eltero, hianyzik, egyeb, szamozas=0):
+    """F182 (A13; F11, K61): a 4.6 szavankénti mondata — lelet egy teljes mondatban, következtetés csak elég versnél."""
+    if not n:
+        return None
+    reszek = []
+    for k, t in ((egyezo, 'ugyanaz a görög szó áll, mint az Újszövetségben'), (eltero, 'más görög szó áll'),
+                 (hianyzik, 'a szó a görögből hiányzik'), (egyeb, 'a megfelelő nincs megállapítva'),
+                 (szamozas, 'a versszámozás eltérése miatt nincs párosítva')):
+        if k:
+            reszek.append('%d versben %s' % (k, t))
+    lelet = '%s a motívum %d ószövetségi versében áll; a görög fordításban %s.' % (
+        nev[0].upper() + nev[1:], n, '; '.join(reszek) if reszek else 'egyikről sincs adat')
+    if n < LXX_SZO_MIN:
+        return lelet
+    if egyezo / n >= 0.67:
+        return '%s %s ennél a szónál a görög Ószövetség az újszövetségi szót használja.' % (lelet, KOVETKEZTETES)
+    if egyezo / n <= 0.10 and eltero / n >= 0.5:
+        return '%s %s ennél a szónál a görög Ószövetség nem az újszövetségi szót használja.' % (lelet, KOVETKEZTETES)
+    return lelet
+
+
 # --- 4. Kereszthivatkozások ---
 
 def kereszthivatkozasok(n, talalt, osszes):
@@ -327,6 +435,60 @@ def sece(szo_nev, n_megfelelo, sajat_nevek, tars='', nincs_masik=False, lxx_neve
                 'másik nyelv szavának.' % (lelet, KOVETKEZTETES, tars))
     return ('%s; a motívum másik nyelvű szava nincs köztük. %s a szótár ezt a párt nem ismeri; a kapcsolatot csak a '
             'fordítás (LXX) mutatja.' % (lelet, KOVETKEZTETES))
+
+
+def sece_csoport(nyelv_nev, szavak):
+    """F182 (A14; F12, K62): a 4.7 egy mondata. `szavak`: [(szónév írással, megfelelők száma, [a motívum másik nyelvű
+    saját szavai írással])]. Következtetés csak ott, ahol a SECE a párt adja; a többi szóról csak a lelet."""
+    szavak = [x for x in szavak if x[1]]
+    if not szavak:
+        return None
+    par = [(nev, sj) for nev, _db, sj in szavak if sj]
+    nincs = [nev for nev, _db, sj in szavak if not sj]
+    if par:
+        lelet = ('A kétnyelvű szótár (SECE) a motívum %s szavai közül %s megfelelői között adja a motívum másik nyelvű '
+                 'szavát: %s' % (nyelv_nev, _lista([nev for nev, _sj in par]),
+                                 '; '.join('%s mellett %s' % (nev, _lista(sj)) for nev, sj in par)))
+        lelet += ('; a többi %d szónál a megfelelők között nincs a motívum másik nyelvű szava.' % len(nincs)
+                  if nincs else '.')
+        return '%s %s a szótár %s; a többi szó párját a fordítás (4.6) mutatja, nem a szótár.' % (
+            lelet, KOVETKEZTETES, 'ezt a párt megerősíti' if len(par) == 1 else 'ezeket a párokat megerősíti')
+    return ('A kétnyelvű szótár (SECE) a motívum %s szavainál (%s) a megfelelők között nem adja a motívum másik nyelvű '
+            'szavát; a párt csak a fordítás (4.6) mutatja.' % (nyelv_nev, _lista(nincs)))
+
+
+VERSENKENTI_KIS = 2   # F182 (A16; F7, K10): ha minden szó legfeljebb ennyi helyen áll, nincs következtetés
+
+
+def versenkenti_csoport(nyelv_nev, tesz, szavak, hely_szam):
+    """F182 (A16; F7, K64): a 4.9 egy csoportosított mondata. `szavak`: [(szónév írással, helyek, egy jelentésű helyek,
+    [a nem egyértelmű helyek igehelye])]; `hely_szam`: a motívum különböző helyeinek száma ezen a nyelven. A kivételek
+    igehellyel; kis elemszámnál (minden szó ≤ 2 helyen) következtetés nélkül."""
+    szavak = [x for x in szavak if x[1]]
+    if not szavak:
+        return None
+    egy = [nev for nev, n, e, _h in szavak if e == n]
+    tobb = [(nev, h) for nev, n, e, h in szavak if e < n]
+    if not tobb:
+        lelet = 'A %s szavak jelentése a motívum minden %s helyén egyértelmű (%d hely).' % (nyelv_nev, tesz, hely_szam)
+    else:
+        kiv = _lista(['%s (%s)' % (nev, ', '.join(h)) for nev, h in tobb])
+        n_tobb = len({x for _n, h in tobb for x in h})
+        if egy:
+            lelet = ('A %s szavak közül %s jelentése a helyén egyértelmű; %s helyén a szótár több jelentést enged, ezeknél '
+                     'a vers dönt (ez %d hely a motívum %d %s helyéből).'
+                     % (nyelv_nev, _lista(egy), kiv, n_tobb, hely_szam, tesz))
+        else:
+            lelet = ('A %s szavak egyikének jelentése sem egyértelmű a helyén: %s; ezeknél a vers dönt.' % (nyelv_nev, kiv))
+    if max(n for _nev, n, _e, _h in szavak) <= VERSENKENTI_KIS:
+        return lelet
+    ossz_n = sum(n for _nev, n, _e, _h in szavak)
+    ossz_egy = sum(e for _nev, _n, e, _h in szavak)
+    kov = {'szinte': 'a szavak jelentése a motívum helyein szinte mindenütt egyértelmű',
+           'tobbseg': 'a szavak jelentése a motívum helyeinek többségén egyértelmű',
+           'fele': 'a szavak jelentése a helyek felén-kétharmadán egyértelmű; a többinél a vers dönt',
+           'keves': 'a szavak jelentését a motívum helyeinek többségén a vers dönti el'}[fok(ossz_egy / ossz_n)]
+    return '%s %s %s.' % (lelet, KOVETKEZTETES, kov)
 
 
 # --- 9. szerep (versenkénti jelentés) ---

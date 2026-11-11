@@ -369,9 +369,36 @@ def blokk_13(sorai, ts):
     return out
 
 
-def blokk_14(sorai, ts, szo_nev=None):
+def hamis_strongjai(hamis, kulcs, tabla=None):
+    """F182 (A24): {kulcsszó: [(Strong, versszám), …]} — a hamis párhuzam verseiben a Károli–Strong párosítás szerint
+    melyik (nem nyelvtani) Strong áll a kulcsszó mögött, gyakoriság szerint. A párosítás javaslat-állapotú (SEMA 2.20):
+    a szám a párosítás tábla száma, a pár nélküli vers nem számít."""
+    par = parok([h for h, _sz, _g in hamis])
+    ki = collections.OrderedDict()
+    for kw in [w for v in kulcs.values() for w in v]:
+        c = collections.Counter()
+        for h, _sz, _g in hamis:
+            st = {s for hu, s in par.get(h, []) if egyezik(hu, kw, tabla) and not nyelvtani(s)}
+            c.update(st)
+        ki[kw] = c.most_common()
+    return ki
+
+
+def _tomor_lista(hamis, szo_nev):
+    """F182 (A24, F3-szabály): a hosszú hamis-párhuzam lista könyvenként, csak igehellyel (a vers szövege nélkül); a
+    versben álló motívumszó a hely után."""
+    konyvek = collections.OrderedDict()
+    for h, _sz, g in hamis:
+        konyv, hely = h.rsplit(' ', 1)
+        konyvek.setdefault(konyv, []).append(hely + (' (a versben: %s)' % ', '.join(szo_nev(x) for x in g) if g else ''))
+    return '\n'.join('- **%s** (%d): %s' % (k, len(v), ', '.join(v)) for k, v in konyvek.items())
+
+
+def blokk_14(sorai, ts, szo_nev=None, tomor=False, kulcs_nev=None):
     """A 14. szerep bekezdései (lista); üres, ha nincs kulcsszó (nincs `karoli_szo` vagy `strong`). `szo_nev`: a
-    versben álló motívumszó olvasói neve Strong-számból („kárá (H7121)”, F152 A.3); alapból a Strong-szám."""
+    versben álló motívumszó olvasói neve Strong-számból („kárá (H7121)”, F152 A.3); alapból a Strong-szám. `tomor`
+    (F182, az új szerkezetű lap): a technikai sor olvasói alakban (`kulcs_nev`: a kombináció olvasói neve), a hosszú
+    hamis-lista könyvenként, igehellyel."""
     szo_nev = szo_nev or (lambda s: s)
     mid = sorai[0]['id'] if sorai else ''
     kulcs = collections.OrderedDict((k, v) for k, v in kulcsszavak(sorai).items() if v)
@@ -382,20 +409,40 @@ def blokk_14(sorai, ts, szo_nev=None):
     out = ['*Kulcsszavak gerinc-kombinációnként: %s — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében '
            'álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: '
            'jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*' % kulcs_sz]
+    if tomor:
+        out = ['*Kulcsszó szavanként: %s — a szó motívumhelyein a Károli-szóalakok legalább felében álló szótári alak '
+               '(a Károli–Strong párosításban csak más szóra párosuló magyar szó nélkül). A lista csak megjelenítés: '
+               'motívumhely ebből csak egyedi döntéssel lehet (a jelöltek döntésnaplóján át).*'
+               % '; '.join('%s: %s' % ((kulcs_nev or (lambda k: '+'.join(sorted(k))))(k), ', '.join('„%s”' % w for w in v))
+                           for k, v in kulcs.items())]
     rejt = rejtett_parhuzamok(sorai, kulcs=kulcs)
-    out.append('**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját '
-               'szókapcsolatának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
-    if rejt:
-        out.append('\n'.join('- %s — „%s” (%s; hiányzik: %s)' % (h, k, s, ', '.join(hi)) for h, k, s, hi in rejt))
+    if tomor:
+        out.append('**Rejtett párhuzam** (a motívum szava áll, de a Károli nem a kulcsszóval fordítja) — %d hely.' % len(rejt))
+        if rejt:
+            out.append('\n'.join('- %s — „%s” (a szó: %s; a kulcsszó: %s)' % (h, k, (kulcs_nev or str)(_komb({'strong': s})),
+                                                                               ', '.join('„%s”' % x for x in hi))
+                                 for h, k, s, hi in rejt))
+    else:
+        out.append('**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját '
+                   'szókapcsolatának valamely kulcsszavát nem használja — %d hely.' % len(rejt))
+        if rejt:
+            out.append('\n'.join('- %s — „%s” (%s; hiányzik: %s)' % (h, k, s, ', '.join(hi)) for h, k, s, hi in rejt))
     hamis = hamis_parhuzamok(sorai, kulcs=kulcs)
-    out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a motívum szókapcsolata nélkül): Károli-versek valamely '
-               'szókapcsolat minden kulcsszavával, amelyekben a motívum egyik szókapcsolata sem teljes — %d vers. A versben '
-               'álló motívumszó (a szókapcsolat egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben '
-               'ugyanazt a kifejezést keresik.' % len(hamis))
+    if tomor:
+        out.append('**Hamis párhuzam** (a magyar kulcsszó áll, de az eredetiben nem a motívum szava): a motívumon kívüli '
+                   'Károli-versek, amelyekben valamely kulcsszó áll, a hozzá tartozó motívumszó pedig nem — %d vers, '
+                   'könyvenként. Ha a versben a motívum egy másik szava áll, a hely után zárójelben.' % len(hamis))
+    else:
+        out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a motívum szókapcsolata nélkül): Károli-versek valamely '
+                   'szókapcsolat minden kulcsszavával, amelyekben a motívum egyik szókapcsolata sem teljes — %d vers. A versben '
+                   'álló motívumszó (a szókapcsolat egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben '
+                   'ugyanazt a kifejezést keresik.' % len(hamis))
     if hamis:
         sorok = '\n'.join('- %s — %s · *a motívum szavaiból a versben: %s*%s' % (
             h, sz, ', '.join(szo_nev(x) for x in g) if g else 'nincs', ' · *jelölt: %s*' % dontes[h] if h in dontes else '')
             for h, sz, g in hamis)
+        if tomor and len(hamis) > RESZLET_HATAR:
+            sorok = _tomor_lista(hamis, szo_nev)
         out.append('<details>\n<summary>A %d vers</summary>\n\n%s\n\n</details>' % (len(hamis), sorok)
                    if len(hamis) > RESZLET_HATAR else sorok)
     out.append(_prov('Károli teljes (%s)' % kulcs_sz,
