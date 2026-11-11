@@ -109,6 +109,10 @@ JELENTESPONT_KEZI = {
     ('H7585', 2802): ('', '', '-/2/b', 'DictBDB H7585: „… Ezek 31:15-16, 17; 32:21, 27 b. righteous shall not be aban-doned, ׳לשׁ '
                                        'Psa 16:10 (|| שַׁחַת q. v. …)” — a „b.” a sor közepén, félkövér nélkül, „27” után áll (a '
                                        'sorbelső fej szabálya írásjelet vár), a hely a 2.b-ben'),
+    # F182 (2. fázis, 6. tétel; DT-F182f): a HAMART-001 lapján álló kétes pont (`ketes:jp_tanu_elter`), a forrással igazolva
+    ('H7451', 3531): ('', '', '-/10/c', 'DictBDB H7451 (BDB8032, 10. erkölcsileg rossz): „c. of thoughts, יֵצֶר Gen 6:5; 8:21 (J), '
+                                        'הָרָע הַלֵּב Jer 3:17 …” — a hely a 10.c-ben; a szeletelő mint tanú más pontot adott, '
+                                        'a forrás szövege a táblát igazolja'),
 }
 HB_SZO = re.compile(r'[\u0590-\u05ff\ufb1d-\ufb4f][\u0590-\u05ff\ufb1d-\ufb4f\u05be]*')
 
