@@ -49,7 +49,7 @@ class Lap(unittest.TestCase):
         """A felhasználó (2026-11-11): a lap elején egyszerűsített kolofon — a motívum, a negatív elhatárolás, a
         fölérendelt fogalom, olvasói alakban; a teljes azonosító tábla a Kolofonban."""
         eleje = self.lap.split('\n## Kivonat\n', 1)[0]
-        for mezo in ('**A motívum.**', '**Negatív elhatárolás.**', '**Fölérendelt fogalom**', '(#kolofon)'):
+        for mezo in ('**A motívum.**', '**Mi tartozik ide, és mi nem.**', '**Fölérendelt fogalom**', '(#kolofon)'):
             self.assertIn(mezo, eleje)
         self.assertNotIn('| ID |', eleje)
         kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
@@ -62,13 +62,13 @@ class Lap(unittest.TestCase):
     def test_sajat_adat_licence_a_nyilt_mag_szerint(self):
         """A felhasználó jelzése (2026-11-11): a nyílt magban kiadott saját adat nem „minden jog fenntartva”."""
         kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
-        for nev in ('a motívumtábla', 'a kapcsolat-tábla'):
+        for nev in ('Motívumtábla', 'Kapcsolat-tábla'):   # névelő nélkül (lap-javit HAMART-001)
             sor = [s for s in kolofon.split('\n') if s.startswith('| %s |' % nev)]
             self.assertTrue(sor and 'CC BY 4.0' in sor[0] and 'minden jog fenntartva' not in sor[0], nev)
         # az előfordulás-táblánál csak az adatoszlopok vannak a nyílt magban (ELLENOR_HAMART_lapkeret 1.)
-        sor = [s for s in kolofon.split('\n') if s.startswith('| a motívum előfordulás-táblája |')]
-        self.assertTrue(sor and 'az adatoszlopok CC BY 4.0' in sor[0] and 'magyarázat' in sor[0])
-        sor = [s for s in kolofon.split('\n') if s.startswith('| a lap fordítástáblája |')]
+        sor = [s for s in kolofon.split('\n') if s.startswith('| Motívum előfordulás-táblája |')]
+        self.assertTrue(sor and 'adatoszlopok: CC BY 4.0' in sor[0] and 'magyarázat' in sor[0])
+        sor = [s for s in kolofon.split('\n') if s.startswith('| Lap fordítástáblája |')]
         self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
 
     def test_olvasoi_licencek_generator(self):
@@ -94,7 +94,11 @@ class Lap(unittest.TestCase):
         self.assertIn(m['folerendelt_fogalom'][1:].rstrip('.'), blokk)
         self.assertIn(blokk, self.lap)
         rontott = dict(m, negativ_kriterium='')
-        self.assertIn('**Negatív elhatárolás.** —', LG.egyszerusitett_kolofon(rontott))
+        self.assertIn('**Mi tartozik ide, és mi nem.** —', LG.egyszerusitett_kolofon(rontott))
+        # lektor 1.: „A motívum.” nem a címet ismétli, hanem az azonosság hordozóját mondja
+        self.assertNotIn('**A motívum.** %s' % m['cim'], blokk)
+        self.assertIn(LG.AZONOSSAG_OLVASOI[m['azonossag_tipusa']], blokk)
+        self.assertNotIn('hígul', blokk)
 
     def test_idezes_egy_helyen_helyorzo_nelkul(self):
         """A felhasználó döntései (2026-11-11): szerző, lexikon címe, kanonikus cím a beállításból; egy idézési forma
@@ -381,6 +385,42 @@ class Kapuk(unittest.TestCase):
     def test_nevelo(self):
         self.assertTrue(kapu(uj_lap('A arar önmagában nem a motívum, csak a adamá.'), 'NEVELO'))
         self.assertEqual(kapu(uj_lap('Az árar és az adámá; a föld.'), 'NEVELO'), [])
+
+    def test_lista_nevelo(self):
+        """lap-javit HAMART-001 (orkesztrátori tétel): lista- és táblaelem nem kezdődik kisbetűs névelővel."""
+        for hibas in ('- a BDB-szótár (közkincs)', '| a Glossa Ordinaria | közkincs |', '* az LXX szövege'):
+            self.assertTrue(kapu(uj_lap(hibas), 'LISTA_NEVELO'), hibas)
+        for jo in ('- BDB-szótár (közkincs)', '| Glossa Ordinaria | közkincs |',
+                   '1. **A föld elvesztése.** A szövetségi helyek.', 'A folyó szövegben a BDB-szótár áll.'):
+            self.assertEqual(kapu(uj_lap(jo), 'LISTA_NEVELO'), [], jo)
+
+    def test_nevelo_le_generator(self):
+        """A generátor szabálya rontott bemenettel: a kisbetűs névelő lemarad, nagy kezdőbetű; a megjegyzés és a
+        mondatkezdő „A” marad."""
+        be = '\n'.join(['- a BDB-szótár (közkincs)', '| a föld színe | az ég | x |', '<!-- | a nyers | -->',
+                        '1. A föld elvesztése.', '| a x <!-- a | b --> | y |'])
+        ki = LG.nevelo_le(be).split('\n')
+        self.assertEqual(ki[0], '- BDB-szótár (közkincs)')
+        self.assertEqual(ki[1], '| Föld színe | Ég | x |')
+        self.assertEqual(ki[2], '<!-- | a nyers | -->')
+        self.assertEqual(ki[3], '1. A föld elvesztése.')
+        self.assertEqual(ki[4], '| X <!-- a | b --> | y |')
+        self.assertEqual(LG.olvasoi_forrasnev('adat/kapcsolatok.tsv'), 'a kapcsolat-tábla')
+        self.assertEqual(LG.olvasoi_forrasnev('adat/kapcsolatok.tsv', nevelovel=False), 'Kapcsolat-tábla')
+        self.assertEqual(LG.olvasoi_forrasnev('konkordancia/UBS_DBH_x.tsv'), 'az UBS Dictionary of Biblical Hebrew')
+        self.assertEqual(kapu(LG.nevelo_le(uj_lap('- a BDB-szótár (közkincs)')), 'LISTA_NEVELO'), [])
+
+    def test_kh_reszlista_masolat(self):
+        """Lektor 15.: a Sof 1:9 Károli-KH listája a Mt 12:22 listájának része (részlista-másolat); a történeti
+        karantén-szabály (reszlista=False) nem látja, az új igen."""
+        import karoli_kh_epseg as KHE
+        kh, tsk = KHE.betolt()
+        uj = KHE.gyanus_forrasok(kh, tsk)
+        self.assertIn('Zep.1.9', uj)
+        self.assertIn('Mat.12.22', uj['Zep.1.9'])
+        self.assertNotIn('Zep.1.9', KHE.gyanus_forrasok(kh, tsk, reszlista=False))
+        self.assertNotIn('Mat.12.22', uj)
+        self.assertNotIn('#### Sof 1:9\n- Károli-KH', _olvas(LAP))
 
     def test_indoklas(self):
         """F182 javítókör (ELLENOR_F182 #8): az indoklásban írás kiejtés nélkül, más sorra hivatkozás, munkajavaslat."""

@@ -101,7 +101,12 @@ class Szovegek(unittest.TestCase):
         self.assertIn('nincs független külső megerősítése', OK.minosites(0, 0, 10))
 
     def test_kapcsolatok(self):
-        self.assertIn('túlnyomórészt párhuzamos', OK.kapcsolatok(25, 31, [('Párhuzam', 22), ('Variáns', 3)], 19))
+        self.assertIn('túlnyomórészt párhuzam köti össze', OK.kapcsolatok(25, 31, [('Párhuzam', 22), ('Variáns', 3)], 19))
+        self.assertNotIn('nem egymásra épülő', OK.kapcsolatok(25, 31, [('Párhuzam', 22), ('Variáns', 3)], 19))
+        # lektor 17.: a közepes sor nem „bizonytalan”
+        k = OK.kapcsolatok(56, 42, [('Párhuzam', 43), ('Kontraszt', 7), ('Variáns', 6)], 26, kozepes=30)
+        self.assertIn('30 közepes bizonyosságú', k)
+        self.assertNotIn('bizonytalan', k)
         self.assertIn('beteljesedésbe tartó láncot', OK.kapcsolatok(4, 5, [('Beteljesedés', 3), ('Párhuzam', 1)], 4))
 
     def test_kapcsolodo(self):

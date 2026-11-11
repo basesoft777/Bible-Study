@@ -2550,7 +2550,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `KOLOFON` | BUKÁS | hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező |
 | `HIANYJEL` | FIGYELMEZTETÉS | belső hiányjelzés az olvasói cellában („(nincs …)”) |
 | `SZINT_ALATT` | FIGYELMEZTETÉS | üres vagy az arany laphoz mérve szint alatti blokk |
-| `KH_MASOLT` | FIGYELMEZTETÉS | a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a) |
+| `KH_MASOLT` | FIGYELMEZTETÉS | a Károli-KH lista más vers listájának teljes vagy részleges másolata (`karoli_kh_epseg.py`; javítás: N-F156a); az új szerkezetű lapon BUKÁS (lap-javit HAMART-001, lektor 15.) |
 | `LABJEGYZET` | BUKÁS | definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) |
 | `PROZA_1A` | BUKÁS | az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`) |
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
@@ -2562,6 +2562,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `NYERS_JEL` | BUKÁS | nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, „igazolas:”, `jelentes_szam`, „sorszám N”, „napló: …”, „(4/b. rész)”, `halo=`, `blokk=`, „lanc ±1”, „csalad H…”, „indoklás (nyers)”, „szónézet: /szo/…”, tW-azonosító `kt/…`, `other/…`, `karoli_szo`, a címszó belső számlálója `_226`); csak az új szerkezetű lapon (F182: A08, A11, A17, KH-lábjegyzet) |
 | `MI_HANG` | BUKÁS | „mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, B07, K12) |
 | `NEVELO` | BUKÁS | „a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új szerkezetű lapon (F182: A06, F4 (c), K48) |
+| `LISTA_NEVELO` | BUKÁS | lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel) |
 | `KOV_ISM` | BUKÁS | ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10) |
 | `INDOKLAS` | BUKÁS | a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat („érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, K47, K48) |
 | `BDB_OLVASOI` | BUKÁS | a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak az új szerkezetű lapon (F104, F187) |

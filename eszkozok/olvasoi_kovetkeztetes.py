@@ -358,24 +358,35 @@ def minosites(parok, erintett, n, osszes=None):
 
 # --- 5. Kapcsolatok ---
 
-def kapcsolatok(n, csomopont, tipusok, magas):
-    """`tipusok`: [(típus, szám)] csökkenő sorrendben; `magas`: a magas bizonyosságú sorok száma."""
+def kapcsolatok(n, csomopont, tipusok, magas, kozepes=None):
+    """`tipusok`: [(típus, szám)] csökkenő sorrendben; `magas`: a magas bizonyosságú sorok száma; `kozepes`: a közepes
+    bizonyosságúaké (ha megadott, a nem magas sorokat nem nevezi „bizonytalannak”, lap-javit HAMART-001, lektor 17.)."""
     if not n:
         return None
     lelet = '%d kapcsolat %d helyet köt össze: %s; %d magas' % (
         n, csomopont, ', '.join('%d %s' % (m, t.lower()) for t, m in tipusok), magas)
-    lelet += ', %d alacsonyabb bizonyosságú.' % (n - magas) if n - magas else ' bizonyosságú.'
+    if kozepes is not None and n - magas:
+        alacsony = n - magas - kozepes
+        lelet += ', %d közepes%s bizonyosságú.' % (kozepes, (', %d alacsony' % alacsony) if alacsony else '')
+    else:
+        lelet += ', %d alacsonyabb bizonyosságú.' % (n - magas) if n - magas else ' bizonyosságú.'
     fo_t, fo_n = tipusok[0]
     if fo_t.lower() == 'beteljesedés' and fo_n / n >= 0.5:
         szerk = 'a motívum helyei ószövetségi ígéretből újszövetségi beteljesedésbe tartó láncot alkotnak'
     elif fo_n / n >= 0.67:
         szerk = 'a motívum helyei túlnyomórészt %s jellegűek' % fo_t.lower()
         if fo_t.lower() == 'párhuzam':
-            szerk = 'a motívum helyei túlnyomórészt párhuzamos előfordulások, nem egymásra épülő lánc'
+            # lektor 17.: a „párhuzam” típus nem mond ellent a láncnak; a későbbi hely ugyanazt a szót vagy
+            # szerkezetet hozza vissza, és nem egy korábbi ígéretet teljesít be
+            szerk = ('a motívum helyeit túlnyomórészt párhuzam köti össze: a későbbi hely ugyanazt a szót vagy '
+                     'szerkezetet hozza vissza, nem egy korábbi ígéretet teljesít be')
     else:
         szerk = 'a motívum helyei között többféle kapcsolat van, egyik sem uralkodó'
+    keves = 'a kapcsolatok többsége bizonytalan'
+    if kozepes is not None and kozepes >= (n - magas) / 2:
+        keves = 'a kapcsolatok többsége közepes bizonyosságú'
     biz = {'szinte': 'a kapcsolatok szinte mind biztosak', 'tobbseg': 'a kapcsolatok többsége biztos',
-           'fele': 'a kapcsolatok fele-kétharmada biztos', 'keves': 'a kapcsolatok többsége bizonytalan'}[fok(magas / n)]
+           'fele': 'a kapcsolatok fele-kétharmada biztos', 'keves': keves}[fok(magas / n)]
     return '%s %s %s, és %s.' % (lelet, KOVETKEZTETES, szerk, biz)
 
 

@@ -65,7 +65,8 @@ KAPUK = (
     ('KOLOFON', BUKAS, 'hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező'),
     ('HIANYJEL', FIGY, 'belső hiányjelzés az olvasói cellában („(nincs …)”)'),
     ('SZINT_ALATT', FIGY, 'üres vagy az arany laphoz mérve szint alatti blokk'),
-    ('KH_MASOLT', FIGY, 'a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a)'),
+    ('KH_MASOLT', FIGY, 'a Károli-KH lista más vers listájának teljes vagy részleges másolata (`karoli_kh_epseg.py`; '
+                        'javítás: N-F156a); az új szerkezetű lapon BUKÁS (lap-javit HAMART-001, lektor 15.)'),
     ('LABJEGYZET', BUKAS, 'definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van)'),
     ('PROZA_1A', BUKAS, 'az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)'),
     ('CELLA_ISMETLES', BUKAS, 'egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3)'),
@@ -91,6 +92,9 @@ KAPUK = (
                        'B07, K12)'),
     ('NEVELO', BUKAS, '„a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új '
                       'szerkezetű lapon (F182: A06, F4 (c), K48)'),
+    ('LISTA_NEVELO', BUKAS, 'lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név '
+                            'és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új '
+                            'szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel)'),
     ('KOV_ISM', BUKAS, 'ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden '
                        'pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10)'),
     ('INDOKLAS', BUKAS, 'a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög '
@@ -693,6 +697,38 @@ def ell_helyorzo(sorok):
     return ki
 
 
+# Névelő a lista- és táblaelem elején (lap-javit HAMART-001, orkesztrátori tétel, a felhasználó: „pedig ezt külön
+# megjelöltük” — második előfordulás; LISTA_NEVELO): a forrásnév a listában és a táblacellában névelő nélkül áll („BDB-szótár
+# (közkincs)”, nem „a BDB-szótár (közkincs)”); a névelőt csak a folyó szöveg teszi elé. A kisbetűs „a”/„az” a
+# névtöredék jele; a nagybetűs „A”/„Az” mondatkezdő listaelem (pl. a Nyitott kérdések pontjai), az megengedett.
+NEVELO_ELEM_RX = re.compile(r'^(?:\*\*|\*|\[|`)?(?:a|az)\s')
+NEVELO_LISTA_RX = re.compile(r'^\s*(?:[-*]|\d+\.)\s+(.*)$')
+
+
+def ell_lista_nevelo(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if s.fajta in ('komment', 'kod', 'ures', 'cim'):
+            continue
+        t = re.sub(r'<!--.*?-->', '', s.nyers).strip()
+        elemek = []
+        if t.startswith('|'):
+            if re.match(r'^\|[\s:|-]+\|$', t):
+                continue
+            elemek = [c.strip() for c in re.split(r'(?<!\\)\|', t.strip('|'))]
+        else:
+            m = NEVELO_LISTA_RX.match(t)
+            if m:
+                elemek = [m.group(1).strip()]
+        for e in elemek:
+            if NEVELO_ELEM_RX.match(e):
+                ki.append(talalat('LISTA_NEVELO', BUKAS, s.n, e[:80], 'a lista- vagy táblaelem névelővel kezdődik: a név '
+                                  'névelő nélkül álljon, a névelőt csak a folyó szöveg teszi elé'))
+    return ki
+
+
 def ell_szakasz_hiv(sorok):
     """F22 (b): az új szerkezetű lap „N. szakasz” és „N. (Név)” hivatkozása a lap tényleges szakaszára mutat."""
     if not KIVETEL_NELKUL:
@@ -1175,7 +1211,9 @@ def ell_kh(sorok):
     _, step, _ = konyvek()
     ki, jelzett = [], set()
     for s in sorok:
-        if not s.szakasz.startswith('4. Kereszthivatkoz') or not s.szoveg.strip().startswith('- Károli-KH'):
+        # a szakasz száma a lapszerkezettől függ (régi lap: 4., új szerkezet: 6.); lap-javit HAMART-001, lektor 15.:
+        # a „4.” rögzítése miatt az új szerkezetű lapon az ellenőrzés nem futott
+        if not re.match(r'\d+\. Kereszthivatkoz', s.szakasz) or not s.szoveg.strip().startswith('- Károli-KH'):
             continue
         m = re.match(r'(\S+)\s+(\d+):(\d+)', s.alszakasz)
         if not m or m.group(1) not in step:
@@ -1183,9 +1221,11 @@ def ell_kh(sorok):
         forras = '%s.%s.%s' % (step[m.group(1)], m.group(2), m.group(3))
         if forras in _KH_GYANUS and forras not in jelzett:
             jelzett.add(forras)
-            ki.append(talalat('KH_MASOLT', FIGY, s.n, '%s → %s' % (s.alszakasz, s.szoveg.strip()[2:]),
-                              'a Károli-KH lista feltehetően más vers másolata (azonos listájú: %s); javítás: N-F156a'
-                              % ', '.join(_KH_GYANUS[forras][:3])))
+            # új szerkezetű lapon (KIVETEL_NELKUL) a másolt lista BUKÁS: a generátor kiszűri, a lapra nem kerülhet
+            ki.append(talalat('KH_MASOLT', BUKAS if KIVETEL_NELKUL else FIGY, s.n,
+                              '%s → %s' % (s.alszakasz, s.szoveg.strip()[2:]),
+                              'a Károli-KH lista feltehetően más vers listájának (teljes vagy részleges) másolata (gazdája: '
+                              '%s); javítás: N-F156a' % ', '.join(_KH_GYANUS[forras][:3])))
     return ki
 
 
@@ -1479,7 +1519,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_nyers_jel, ell_mi_hang,
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_lista_nevelo, ell_nyers_jel, ell_mi_hang,
                 ell_nevelo, ell_kov_ism, ell_indoklas]
 
 
