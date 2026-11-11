@@ -39,7 +39,7 @@ Ellenőrzések (azonosító — súlyosság):
     OSIS         igehely-oszlop OSIS-pár nélkül; az OSIS-kulcs hiányzik, szabálytalan, ismeretlen könyvkódú, vagy
                  nem egyezik a magyar igehely leképezésével (F170, kapu (a))                                 — BUKÁS
     VISSZHANG    a hatástörténet-táblákban Chain Lineage-tanú / BDB-sor / nem jóváhagyott forrás, összefoglaló-szöveg,
-                 forrás-megnevezés vagy licenc nélküli sor (F197)                                            — BUKÁS
+                 forrás-megnevezés vagy licenc nélküli sor (F198)                                            — BUKÁS
     ARANY        forrásonként a nyílt mag tételeinek aránya a forrás tételszámához (F176.4): 1% felett
                  FIGYELMEZTETÉS (átnézés a következő kiadás előtt), 5% felett BUKÁS (a további átvétel a felhasználó
                  döntésével vagy ügyvédi vélemény után); a küszöbök óvatos mérnöki értékek, jogi alapjuk nincs
@@ -89,7 +89,7 @@ def angol_oszlop(o):
     return o in ANGOL_OSZLOP or o.endswith('_en') or o.endswith('_osis')
 # a forrásleltár dataset-neve és szerepe: a datasetek nyilvános nevei (snake_case, angol nevek is)
 SNAKE_KIVETEL = {'dataset', 'szerepe_a_csomagban', 'szerepe_a_csomagban_en'}
-# a hivatkozás-oszlopok (URL, DOI) a forrás saját alakjában állnak: a snake_case-minta nem vonatkozik rájuk (F197)
+# a hivatkozás-oszlopok (URL, DOI) a forrás saját alakjában állnak: a snake_case-minta nem vonatkozik rájuk (F198)
 URL_OSZLOP = {'forras_url', 'url', 'doi'}
 # nyilvános fájlnevek (a csomag saját fájljai: a „belső fájl” mintából kivéve)
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
@@ -762,7 +762,7 @@ def ell_arany(fajlok):
     return ki
 
 
-# --- VISSZHANG (F197): a hatástörténet-táblák csak a jóváhagyott forrásokból állhatnak ----------------------------
+# --- VISSZHANG (F198): a hatástörténet-táblák csak a jóváhagyott forrásokból állhatnak ----------------------------
 VISSZHANG_ENGEDETT = {
     'visszhang_megfelelok.tsv': ('forras', {'targum', 'vulgata', 'lxx'}),
     'visszhang_tanuk.tsv': ('forras', {'hcf', 'sefaria', 'glossa'}),

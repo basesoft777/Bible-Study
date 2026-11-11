@@ -170,7 +170,9 @@ ADAT_LICENC = {'morf_kulcs_heber': ['morf_kulcs_heber'], 'morf_nyelv_aramai': ['
                # F140 (K8, DT-F140b): a magyar glosszák a TBESH-glosszák fordításai (CC BY 4.0, forrásjelölés kötelező); a `fo` sor
                # kiválasztásában a TAHOT „Rövid jelentés” oszlopának többségi értéke dönt (szöveg nem kerül át), ezért a TAHOT
                # is a listán van (F99-precedens); a fordítás maga projekt_adat
-               'glosszak_heber_hu': ['TBESH', 'TAHOT', 'projekt_adat']}
+               'glosszak_heber_hu': ['TBESH', 'TAHOT', 'projekt_adat'],
+               # F197: a Sefaria /api/words BDB-jelentésfájából (közkincs, DT631; a licencsor a BDB_rokon_irasok-é, ugyanez a forrás)
+               'bdb_jp_sefaria': ['BDB_rokon_irasok', 'projekt_adat']}
 
 ADAT_KIHAGYOTT = {'karoli_variancia'}  # külön kezelve (szarmaztatott licenc)
 

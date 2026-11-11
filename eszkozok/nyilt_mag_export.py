@@ -1078,9 +1078,9 @@ def hogyan_olvasd_en(p):
             % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
 
 
-# --- a visszhang-réteg (hatástörténet) táblái (F197): a jóváhagyott források, forrásonként a licenccel. Csak a második
+# --- a visszhang-réteg (hatástörténet) táblái (F198): a jóváhagyott források, forrásonként a licenccel. Csak a második
 # kéz által ellenőrzött sor kerül át (üres `ellenorzes`: nem exportálódik, mint a lapon sem). A Chain Lineage-tanú
-# nem kerül be (nincs licence; a felhasználó döntése, 2026-11-11), és a `bdb` megfelelő-sor sem (DT-F197a).
+# nem kerül be (nincs licence; a felhasználó döntése, 2026-11-11), és a `bdb` megfelelő-sor sem (DT-F198a).
 VISSZHANG_FORRAS = {
     'targum': ('Targum (Onkelos és Jonatán, Sefaria-kiadás)', 'Targum_PD'),
     'vulgata': ('Vulgata (Clementina, 1598)', 'Vulgata_Clementina'),
@@ -1157,7 +1157,7 @@ def visszhang_tablak(lic, elo):
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], s['hagyomany'], s['tanu'], s['forras']))
     ki['visszhang_tanuk.tsv'] = (fej, sorok)
 
-    # --- vitatott_forrasok.tsv: csak a bibliográfiai adat (az `osszefoglalo` nincs, DT-F197b); a hiány-sor
+    # --- vitatott_forrasok.tsv: csak a bibliográfiai adat (az `osszefoglalo` nincs, DT-F198b); a hiány-sor
     # (üres szerző) kimondott hiány: ehhez a ponthoz nincs a kérdésről szóló lektorált forrás
     _, vt = tsv('adat/vitatott_forrasok.tsv')
     fej = ['motivum_azonosito', 'pont', 'szerzo', 'cim', 'megjelenes', 'ev', 'doi', 'url', 'nyilt_eleres', 'datum']
@@ -1180,7 +1180,13 @@ def visszhang_tablak(lic, elo):
     fej = ['motivum_azonosito', 'igehely', 'sorszam', 'jegyzet', 'forras_megnevezes', 'forras_licenc']
     sorok, latott = [], set()
     for e in elo:
-        for a in jegyzetek.get(e['igehely'], []):
+        m = IGEHELY_RX.match(e['igehely'])
+        if m:    # tartomány-igehely (pl. Gal 3:13-14): minden verse külön, a forrás saját számozásában
+            vk = ['%s %s:%d' % (m.group(1), m.group(2), v)
+                  for v in range(int(m.group(3)), int(m.group(4) or m.group(3)) + 1)]
+        else:
+            vk = [e['igehely']]
+        for a in [x for v in vk for x in jegyzetek.get(v, [])]:
             k = (e['id'], a['igehely'], a['sorszam'])
             if k in latott:
                 continue
@@ -1389,7 +1395,7 @@ def export(kimenet):
     fajlok['dontesnaplo.tsv'] = oszlop_tsv(fej, sorok, 'dontesnaplo.tsv')
     stat['dontesnaplo.tsv'] = len(sorok)
 
-    # --- a visszhang-réteg táblái (F197)
+    # --- a visszhang-réteg táblái (F198)
     vtablak, vhasznalt = visszhang_tablak(lic, elo)
     for rel, (vfej, vsorok) in vtablak.items():
         fajlok[rel] = oszlop_tsv(vfej, vsorok, rel)
@@ -1539,7 +1545,7 @@ def export(kimenet):
           'idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: '
           'csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem '
           'került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai '
-          'apparátusa). Csak a második kéz által ellenőrzött sor szerepel bennük.', '',
+          'apparátusa). Csak ellenőrzött sor szerepel bennük: a Septuaginta-megfelelők közül azok, amelyeknél a versben egyetlen lemma jön szóba, gépi ellenőrzéssel; a többi sort második kéz nézte át.', '',
           '**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi '
           'sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és '
           'saját szavas egy mondat.', '',
@@ -1623,7 +1629,7 @@ def export(kimenet):
            '`vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an '
            'empty author denotes a gap row: no peer-reviewed source on the question was found in the databases '
            'searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament '
-           'passages). Only rows verified by a second hand are included.', '',
+           'passages). Only verified rows are included: of the Septuagint counterparts, those where a single lemma comes into question in the verse were verified by machine; all other rows were checked by a second hand.', '',
            '**Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the '
            'cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) '
            'is not in the package, only factual data and one sentence in our own words.', '',

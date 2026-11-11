@@ -1412,9 +1412,9 @@ Az előző oszlop (forras_licenc) értékének rövid angol címkéje a kódkön
 
 ### `forras_megnevezes`
 
-A forrás olvasói neve, a kötelező megjelöléssel: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (sblgnt.com).
+A forrás olvasói neve; a teljes kötelező megjelölés (SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0, sblgnt.com) az OLVASSEL.md-ben áll.
 
-*The reader-facing name of the source, with the required credit: SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (sblgnt.com).*
+*The reader-facing name of the source; the full required credit (SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0, sblgnt.com) is given in README.md.*
 
 
 ### `igehely`
@@ -1426,9 +1426,9 @@ Az igehely, amelyhez az apparátus-jegyzet tartozik: magyar könyvrövidítés �
 
 ### `igehely_osis`
 
-Az előző oszlop (igehely) igehelye OSIS-kulccsal (pl. 1Kgs.13.31; tartomány: Gen.4.10-Gen.4.11). A könyvkód az OSIS 2.1.1 szabványé, a fejezet- és versszám a Károli-fordítás versszámozása; ahol ez eltér a KJV- vagy a STEPBible-számozástól, az OSIS-kulcs a Károli-verset jelöli.
+Az előző oszlop (igehely) igehelye OSIS-kulccsal; a fejezet- és versszám itt a forrás (SBLGNT) saját számozása, nem a Károli-fordításé.
 
-*The passage of the preceding column (igehely) as an OSIS reference (e.g. 1Kgs.13.31; range: Gen.4.10-Gen.4.11). The book code follows the OSIS 2.1.1 standard; chapter and verse numbers follow the versification of the Károli translation; where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse.*
+*The passage of the preceding column (igehely) as an OSIS reference; chapter and verse here follow the source’s own (SBLGNT) numbering, not that of the Károli translation.*
 
 
 ### `jegyzet`

@@ -50,7 +50,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
-| `sblgnt_apparatus.tsv` | 35 |
+| `sblgnt_apparatus.tsv` | 61 |
 | `visszhang_megfelelok.tsv` | 101 |
 | `visszhang_tanuk.tsv` | 6 |
 | `vitatott_forrasok.tsv` | 3 |
@@ -73,7 +73,7 @@ A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlop
 
 ## Hatástörténet (visszhang-réteg)
 
-Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: `visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), `visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai apparátusa). Csak a második kéz által ellenőrzött sor szerepel bennük.
+Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: `visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), `visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai apparátusa). Csak ellenőrzött sor szerepel bennük: a Septuaginta-megfelelők közül azok, amelyeknél a versben egyetlen lemma jön szóba, gépi ellenőrzéssel; a többi sort második kéz nézte át.
 
 **Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és saját szavas egy mondat.
 

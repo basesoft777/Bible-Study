@@ -50,7 +50,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
-| `sblgnt_apparatus.tsv` | 35 |
+| `sblgnt_apparatus.tsv` | 61 |
 | `visszhang_megfelelok.tsv` | 101 |
 | `visszhang_tanuk.tsv` | 6 |
 | `vitatott_forrasok.tsv` | 3 |
@@ -73,7 +73,7 @@ The column names and values of the package are Hungarian; English parallel colum
 
 ## Reception history (the echo layer)
 
-Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work, what they see in the passage; no quotation, one sentence in our own words), `vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an empty author denotes a gap row: no peer-reviewed source on the question was found in the databases searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament passages). Only rows verified by a second hand are included.
+Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work, what they see in the passage; no quotation, one sentence in our own words), `vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an empty author denotes a gap row: no peer-reviewed source on the question was found in the databases searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament passages). Only verified rows are included: of the Septuagint counterparts, those where a single lemma comes into question in the verse were verified by machine; all other rows were checked by a second hand.
 
 **Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) is not in the package, only factual data and one sentence in our own words.
 

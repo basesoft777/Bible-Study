@@ -466,8 +466,8 @@ class F28Lyuk(Alap):
         self.assertEqual(bukasok(self.uj(), 'LYUK'), [])
 
 
-class F197Visszhang(Alap):
-    """F197: a hatástörténet (visszhang-réteg) a nyílt magban, forrásonként licenccel; a Chain Lineage kiszűrve."""
+class F198Visszhang(Alap):
+    """F198: a hatástörténet (visszhang-réteg) a nyílt magban, forrásonként licenccel; a Chain Lineage kiszűrve."""
     TABLAK = ('visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'vitatott_forrasok.tsv', 'sblgnt_apparatus.tsv')
 
     def sorok(self, rel):
