@@ -897,9 +897,11 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertIn('Szótári gerinc (DT272)', szov)
         self.assertIn('<summary>4 (1 szakasz)</summary>', szov)
 
-    def test_kapcsolo_alapbol_ki(self):
-        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset())
-        self.assertFalse(LG.bdb_kartya_aktiv('HAMART-001'))
+    def test_kapcsolo_csak_a_hamart(self):
+        # F182 (2. fázis, F25): az F33 után a HAMART-001 bekapcsolva; a régi lapok a saját teljes folyamatukban
+        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset({'HAMART-001'}))
+        self.assertTrue(LG.bdb_kartya_aktiv('HAMART-001'))
+        self.assertFalse(LG.bdb_kartya_aktiv('ANTROP-001'))
 
     def test_csak_alakot_kozlo_szakasz(self):
         sz = {'H0056': [
@@ -1003,25 +1005,23 @@ class F185BetuJavitas(unittest.TestCase):
         self.assertEqual(BR.heber_sorrend_javit('(מִן־הָא ׳עָפָד)', 'H0127'), '(מִן־הָא ׳עָפָר)')
         self.assertEqual(BR.heber_sorrend_javit('vö. még מְּנֵי הָא׳', 'H0127', betu=False), 'vö. még מְּנֵי הָא׳')
 
-    def _blokk(self):
-        return '\n'.join(LG.gerinc_blokk(LG.gerinc_adat(), 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')])[0])
+    def _blokk(self, mid=None):
+        return '\n'.join(LG.gerinc_blokk(LG.gerinc_adat(), 'BDB', 'H0127', [elo('1Móz 2:7', '', strong='H0127', entry='H0127')],
+                                          {'id': mid, 'fl': {}} if mid else None)[0])
 
     def test_h0127_blokk_magyar_bekapcsolva(self):
-        regi = LG.BDB_BETU_JAVIT
-        LG.BDB_BETU_JAVIT = True
-        try:
-            szov = self._blokk()
-        finally:
-            LG.BDB_BETU_JAVIT = regi
+        # F182 (2. fázis, F25): a kapcsoló motívumhalmaz; a HAMART-001 lapján bekapcsolva
+        szov = self._blokk('HAMART-001')
         self.assertIn('(מִן־הָא ׳עָפָר)', szov)            # a HAMART-001 1606. sorának esete (rés/dálet)
         self.assertNotIn('עָפָד', szov)
         self.assertIn('vö. még פְּנֵי הָא׳', szov)           # a 1616. sor esete (pe/mem)
         self.assertNotIn('מְּנֵי', szov)
 
     def test_kapcsolo_kikapcsolva_hatastalan(self):
-        # DT-F185f: a generátorban ma kikapcsolva; a kimenet a régi (a lap E28-a ezért zöld újragenerálás nélkül)
-        self.assertFalse(LG.BDB_BETU_JAVIT)
-        szov = self._blokk()
+        # DT731 (b): a régi lapokon kikapcsolva; a kimenet a régi (az E28 újragenerálás nélkül zöld)
+        self.assertEqual(LG.BDB_BETU_JAVIT, frozenset({'HAMART-001'}))
+        self.assertFalse(LG.bdb_betu_javit_aktiv('ANTROP-001'))
+        szov = self._blokk('ANTROP-001')
         self.assertIn('עָפָד', szov)
         self.assertIn('מְּנֵי', szov)
 

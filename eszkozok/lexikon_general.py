@@ -2290,7 +2290,7 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
             kozos.add(int(s['sorrend']))
 
     ctx = {'fl': fajl_licenc_kulcsok, 'tbesg_tbesh': fajl_licenc_kulcsok_tbesg_tbesh, 'sorai': sorai or [],
-           'gerinc': gerinc_aktiv(motivum_id), 'bdb_kartya': bdb_kartya_aktiv(motivum_id)}
+           'gerinc': gerinc_aktiv(motivum_id), 'bdb_kartya': bdb_kartya_aktiv(motivum_id), 'id': motivum_id}
     reszek_szoveg = []
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
@@ -3292,7 +3292,8 @@ def elnyelo_mondat(kulcsok):
 # bájtra a korábbi alakjában generálódik (E28). A #182 a HAMART-001 újragenerálásakor veszi fel; a régi lapok a saját
 # teljes folyamatukban. A kapcsoló egyetlen helye ez; a kapu (`olvasoi_kapu.BDB_OLVASOI`) a lap jelölőjéhez igazodik.
 # F187: ugyanez a kapcsoló a görög 4.2 Thayer-kártyáját is kétrétegűvé teszi (egy kapcsoló, egy jelölő, egy kapu).
-KETRETEGU_BDB_KARTYA = frozenset()
+# F182 (2. fázis, F25): a HAMART-001 az F33 (a tagolás a szakasztáblából, egy forrásból) után kapcsolva be.
+KETRETEGU_BDB_KARTYA = frozenset({'HAMART-001'})
 
 
 def bdb_kartya_aktiv(motivum_id):
@@ -3844,7 +3845,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         napl['nem_talalt'] += hiany
         bek.extend(lista)
     if szotar == 'BDB':
-        bek[2:] = [bdb_rovidites_jelol(b, strong) for b in bek[2:]]
+        betu = bdb_betu_javit_aktiv((ctx or {}).get('id'))
+        bek[2:] = [bdb_rovidites_jelol(b, strong, betu) for b in bek[2:]]
     napl['elnyelt'] = ['%s → %s' % (' '.join(k), ' '.join(v)) for k, v in sorted(elnyelt.items())]
     if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban'] or napl['elnyelt']:
         reszek = []
@@ -3909,16 +3911,21 @@ BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 # bájtra a korábbi alakjában generálódik (E28). Tömeges újragenerálás nincs: a #182 kapcsolja be, a lapok motívumonként, a
 # teljes folyamatban kapják meg (az F35 mellé). Az olvasó (`olvaso_szerver/blokkok.py`) a javítást mindig alkalmazza.
 # A kapcsoló egyetlen helye ez.
-BDB_BETU_JAVIT = False
+# F182 (2. fázis, F25): motívumhalmaz, a `KETRETEGU_BDB_KARTYA` mintájára; a HAMART-001 az F33 után kapcsolva be.
+BDB_BETU_JAVIT = frozenset({'HAMART-001'})
 
 
-def bdb_rovidites_jelol(szoveg, strong):
+def bdb_betu_javit_aktiv(motivum_id):
+    return bool(motivum_id) and motivum_id in BDB_BETU_JAVIT
+
+
+def bdb_rovidites_jelol(szoveg, strong, betu=False):
     """A BDB-szöveg megjelenítése (`bdb_rovidites`, DT-F131z): a torz átírás javítása (B3; a magyar bekezdésben a magyar
     alak, a „fordításra vár” jelű angol bekezdésben a helyreállított átírás), a Biblia által igazolt héber sorrend-javítás,
     a futam utáni szám izolálása (LRM), majd az egybetűs rövidítések: „׳י” / „י׳” → `<abbr class="rovidites" title="…">י׳</abbr>`."""
     lk = lemma_kiejtes(strong)
     szoveg = BR.atiras_javit(szoveg, strong, magyar=FORDITASRA_VAR not in szoveg)
-    szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong, betu=BDB_BETU_JAVIT))
+    szoveg = BR.izolal(BR.heber_sorrend_javit(szoveg, strong, betu=betu))
     return BR.jelol(szoveg, lemma_cim(lk) if lk else '', BR.alapbetu(lk[0]) if lk else '')
 
 
@@ -3998,7 +4005,7 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
         reszek_t = []
         if alap:
-            reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t))
+            reszek_t.append('alapjelentés: %s' % bdb_rovidites_jelol(alap, t, bdb_betu_javit_aktiv(ctx.get('id'))))
         else:
             # a BDB-fej nem mondja ki az alapjelentést (pl. H7585): a TBESH rövid magyar jelentése, jelölve
             rj, van = rovid_jelentes(t)
