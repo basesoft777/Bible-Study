@@ -9,7 +9,7 @@ A brief V0–V6 tételei helyett az orkesztrátor által rögzített, lezárt ha
 1. cím és szerkezet: „9. Hatástörténet: ókori fordítások és értelmezők” főszakasz a 10. Értelmezés előtt, számozatlan alcímekkel; a visszhang 1 (a 4.11) áthelyezve, a 4.11 helyén mutató; utána 10. Értelmezés, 11. Módszertan és nyitott kérdések, 12. Irodalom és idézés (DT766);
 2. ÚSZ-ág: Vulgata, SBLGNT-apparátus (és a TAGNT-változatjegyzék), előkép a Septuagintában; a Targum az ószövetségi ágban marad (az újszövetségi helyekre nincs Targum);
 3. tanúréteg: a tanúindex (HCF, Sefaria) és a Chain Lineage Browser csak tényadatként (DT767);
-4. Glossa Ordinaria: a felmérés („szabad forrás nincs”) téves volt — a Vulgata-csomag lábjegyzeteiben közkincsként megvan; a felhasználó döntése (DT-F183b, „1”): most bekerül, egy tanúként, ugyanazzal a szabállyal.
+4. Glossa Ordinaria: a felmérés („szabad forrás nincs”) téves volt — a Vulgata-csomag lábjegyzeteiben közkincsként megvan; a felhasználó döntése (DT774, „1”): most bekerül, egy tanúként, ugyanazzal a szabállyal.
 
 **Nem része (N-tétel):** az akadémiai hang a vitatott pontoknál (brief V3, K67f → N-F183a); a brief V4 hézagai (N-F176b, N-F176c: nem érintett); a makett-lépés (V5): a formát a felhasználó a döntéseivel rögzítette (cím, alcímek, sorrend), a lap saját átnézése és a független ellenőrzés helyettesíti.
 
