@@ -1718,7 +1718,8 @@ def szabaly26_bdb_szakasz_hu(adat_dir):
 
 
 GERINC_BDB_CIM_RE = re.compile(r'^##### (H\d{4})\b.*· BDB\s*$')
-GERINC_SZOCIKK_FEJ_RE = re.compile(r'^\*\*(BDB\d+)(?: · [^*]*)?\*\*')
+# F182: a kétrétegű kártya apparátusában a szócikkfej olvasható alakban áll („**BDB 2699. szócikk**”, N-F187b); mindkét alak
+GERINC_SZOCIKK_FEJ_RE = re.compile(r'^\*\*BDB ?(\d+)(?:\. szócikk)?(?: · [^*]*)?\*\*')
 
 
 def bdb_szocikk_sorrend(adat_dir):
@@ -1763,7 +1764,7 @@ def gerinc_szocikk_hibak(adat_dir):
             j = i + 1
             while j < len(sorok) and not sorok[j].startswith('#'):
                 j += 1
-            fejek = [f.group(1) for f in (GERINC_SZOCIKK_FEJ_RE.match(x) for x in sorok[i + 1:j]) if f]
+            fejek = ['BDB' + f.group(1) for f in (GERINC_SZOCIKK_FEJ_RE.match(x) for x in sorok[i + 1:j]) if f]
             vart = ids.get(strong, [])
             if len(vart) > 1 and fejek != vart:
                 hibak.append('%s %s: a BDB-gerinc nem szócikkenként áll (a lapon: %s; a bdb_szakaszok.tsv szócikkei: %s), '
