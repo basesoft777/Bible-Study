@@ -144,6 +144,45 @@ def mek_sorok(forras=None):
     return [r for r in _MEK_SOROK if forras is None or r['Igehely'] == forras]
 
 
+NYERS = os.path.join(GYOKER, 'konkordancia', 'Karoli_kereszthivatkozasok.tsv')
+_NYERS_SOROK = None
+
+
+def _nyers_sorok():
+    """A nyers HunKar-tábla sorai (split('\\t'); CLAUDE.md, TSV-olvasás). Csak ez a modul nyitja meg a fájlt (F212,
+    DT-F212c: a hozzáférési pont); más eszköz a `megerositett_sorok`-at hívja."""
+    global _NYERS_SOROK
+    if _NYERS_SOROK is None:
+        ki, fej = [], None
+        with open(NYERS, encoding='utf-8', newline='') as f:
+            for s in f:
+                s = s.rstrip('\n').rstrip('\r')
+                if not s or s.startswith('#'):
+                    continue
+                m = s.split('\t')
+                if fej is None:
+                    fej = m
+                    continue
+                ki.append(dict(zip(fej, m)))
+        _NYERS_SOROK = ki
+    return _NYERS_SOROK
+
+
+def szures(forras=None):
+    """F212 (DT-F212c), a hozzáférési pont: (megerősített sorok, nem megerősített nyers sorok száma) — a nyers HunKar-sorok
+    és a csak a MEK-ben álló megerősített sorok (`mek_sorok`), azonos kulcsú sor egyszer (`egyedi`), és csak a javított
+    táblában `megerositett` sor (`elfogad`); a `lekerdez.py` ugyanezt a sorrendet követi. `forras`: STEP-alakú forrásvers."""
+    nyers = [r for r in _nyers_sorok() if forras is None or r['Igehely'] == forras]
+    sorok = egyedi(nyers + mek_sorok(forras))
+    jo = [r for r in sorok if elfogad(r['Igehely'], r['Kapcsolódó igehely'])]
+    return jo, len(sorok) - len(jo)
+
+
+def megerositett_sorok(forras=None):
+    """A MEK-kel megerősített Károli-KH sorok (l. `szures`)."""
+    return szures(forras)[0]
+
+
 def hu_megjelenites(sor):
     """A `Kapcsolódó igehely magyar megjelenítése` a repó egységes könyvnevével (l. a modul docstringjét): a HunKar-tábla
     szentiras.hu-alakú könyvnevét (`Csel 11,23`) a normalizáló tábla nevére (`ApCsel 11,23`) cseréli, a tartomány és a

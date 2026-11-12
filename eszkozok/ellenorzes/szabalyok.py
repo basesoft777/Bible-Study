@@ -3508,6 +3508,68 @@ def szamismetles(fajlok):
     return talalatok
 
 
+# --------------------------------------------------------------------------
+# E40 -- a nyers Karoli-KH tabla egyetlen hozzaferesi pontja (F212, DT-F212c)
+# --------------------------------------------------------------------------
+# Ismetlodo hiba (a felhasznalo: „Ismét ezt hozza / már több alkalomma / vizsgáljuk ki mi ennek az oka”): az F177 a
+# javitott tablat uj fajlkent es szurokent hozta be, a nyers `konkordancia/Karoli_kereszthivatkozasok.tsv` viszont a
+# „termeszetes” bemenet maradt, es a lapgenerator azt olvasta. A gyokerok-kapu: a nyers tablat csak a KH-modulok
+# nyithatjak meg; minden mas fogyaszto a `karoli_kh_szuro` hozzaferesi pontjat (`megerositett_sorok`, `szures`) hivja.
+# Megnyitasnak szamit a fajlnev egy sorban a megnyito/utvonal-epito hivassal; a proveniencia-szoveg (`forras=…`,
+# forrasnev-lista) nem.
+E40_ENGEDELYEZETT = (
+    'eszkozok/karoli_kh_szuro.py', 'eszkozok/karoli_kh_epseg.py', 'eszkozok/karoli_kh_mek.py',
+    'eszkozok/karoli_kh_gyanus_general.py', 'eszkozok/karoli_kh_osis_konverzio.py',
+    'eszkozok/sqlite_epit.py',      # a `karoli_kh_szuro.egyedi` + `mek_sorok` szuressel tolt (752. sor korul)
+    'eszkozok/lekerdez.py',         # a `load_karoli_kh` utan a `karoli_kh_szuro.elfogad` szur (F177, F181)
+)
+# Regi, nem elo eszkozok (kivetel, indokkal): a pilot- es mockup-meresek, a lezart feladatok egyszeri szkriptjei
+E40_KIVETEL = {
+    'eszkozok/olvaso_pilot/': 'az olvasoi pilot meroeszkozei (F60), lezart, nem fut a lapgeneralasban',
+    'eszkozok/olvaso_mockup/': 'a design-mockup egyszeri kinyeroje, nem fut a lapgeneralasban',
+    'eszkozok/f110_': 'az F110 lezart szuro-pilotjanak egyszeri szkriptjei',
+    'eszkozok/t1_teremt002_': 'a TEREMT-002 lezart betoltesenek egyszeri munkalapja',
+}
+E40_NYITAS_RX = re.compile(r'Karoli_kereszthivatkozasok\.tsv')
+E40_HIVAS_RX = re.compile(r'\bopen\(|read_tsv\(|tsv_beolvas\(|os\.path\.join\(|\bPath\(|\bsorok\(|/\s*["\']Karoli_k|'
+                          r'\+\s*["\'][^"\']*/Karoli_k|\bR\(')
+
+
+def e40_karoli_kh_hozzaferes(fajlok=None, root=None):
+    """E40: HIBA, ha a nyers `Karoli_kereszthivatkozasok.tsv`-t a KH-modulokon (`E40_ENGEDELYEZETT`) es a megnevezett
+    regi eszkozokon (`E40_KIVETEL`) kivul egy eszkoz megnyitja. Fajlszintu, mindig fut. A tesztfajlok kimaradnak."""
+    root = root or ROOT
+    talalatok = []
+    for dirpath, _dirs, files in os.walk(os.path.join(root, 'eszkozok')):
+        for fn in files:
+            if not fn.endswith('.py') or fn.startswith('teszt_') or fn.startswith('test_'):
+                continue
+            rel = os.path.relpath(os.path.join(dirpath, fn), root).replace(os.sep, '/')
+            if '/tesztek/' in rel or rel in E40_ENGEDELYEZETT or any(rel.startswith(k) for k in E40_KIVETEL):
+                continue
+            try:
+                with open(os.path.join(dirpath, fn), encoding='utf-8') as f:
+                    sorok = f.read().split('\n')
+            except (OSError, UnicodeDecodeError):
+                continue
+            for n, s in enumerate(sorok, 1):
+                if s.lstrip().startswith('#') or not E40_NYITAS_RX.search(s) or '_gyanus' in s:
+                    continue
+                if E40_HIVAS_RX.search(s):
+                    talalatok.append(Talalat('E40', SZINT['E40'], rel, n,
+                                             'a nyers Károli-KH táblát a hozzáférési ponton kívül nyitja meg; használd a '
+                                             '`karoli_kh_szuro.megerositett_sorok`-at (DT-F212c)'))
+    return talalatok
+
+
+SZINT['E40'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E40')
+SZABALYOK_FUGGVENYEI['E40'] = e40_karoli_kh_hozzaferes
+SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a '
+                         '`karoli_kh_szuro` hozzáférési pontját hívja (DT-F212c)')
+
+
+
 if __name__ == '__main__':
     import argparse
     _ap = argparse.ArgumentParser(description='A kapuk szabálylistája (adat/SEMA.md 3.11), F184 D3.')

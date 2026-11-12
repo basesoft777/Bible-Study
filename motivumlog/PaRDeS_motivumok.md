@@ -24,7 +24,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
-- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 47 igehely-sor — publikálható (v3, 2026.11.12)
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 47 igehely-sor — publikálható (v2, 2026.11.12)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -155,7 +155,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v4, 2026.11.03), 7 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ANTROP-001.md`-ből fűződik ide)*
 
-**A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v3, 2026.11.12), 4 fő előfordulás.
+**A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v2, 2026.11.12), 4 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/HAMART-001.md`-ből fűződik ide)*
 
 **Rafeusok/óriás-népek** `[ID: HODIT-001]` — publikálható (v3, 2026.09.10), 1 fő előfordulás.

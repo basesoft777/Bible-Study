@@ -5441,22 +5441,25 @@ _kh_gazda = {}   # a kihagyott forrásvers -> a lista gazdája (STEP-alak), az o
 
 
 def kh_index():
-    """A Károli-KH listák forrásversenként. A másolat-gyanús forrásversek listája nem kerül a lapra (DT-F156n, N-F156a:
-    a lista egy másik vers listájának másolata, `karoli_kh_epseg.gyanus_forrasok`); ezek a `_kh_kihagyott` halmazba
-    kerülnek, és a blokk hatókör-sora megnevezi a számukat."""
+    """A Károli-KH listák forrásversenként — csak a MEK-kel megerősített sorok (F212, DT-F212c: a `karoli_kh_szuro`
+    hozzáférési pontja, ugyanaz a szűrés, mint a `lekerdez.py`-ban: nyers + csak MEK-beli megerősített sor, `egyedi`,
+    `elfogad`). A nem megerősített sorok száma forrásversenként a `_kh_elvetett`-be kerül (a blokk hatókör-sora mondja ki);
+    a régi másolat-karantén (`karoli_kh_epseg.gyanus_forrasok`) a javított táblában `kiesik`, ezért itt nem kell."""
     global _kh_by_step
     if _kh_by_step is None:
-        import karoli_kh_epseg as KHE
-        gyanus = KHE.gyanus_forrasok()
+        import karoli_kh_szuro as KHS
         idx = {}
-        for r in L.load_karoli_kh():
-            if r['Igehely'] in gyanus:
-                _kh_kihagyott.add(r['Igehely'])
-                _kh_gazda[r['Igehely']] = gyanus[r['Igehely']]
-                continue
+        for r in KHS.megerositett_sorok():
+            r = dict(r, **{'Kapcsolódó igehely magyar megjelenítése': KHS.hu_megjelenites(r)})
             idx.setdefault(r['Igehely'], []).append(r)
+        for r in KHS.egyedi(KHS._nyers_sorok() + KHS.mek_sorok()):
+            if not KHS.elfogad(r['Igehely'], r['Kapcsolódó igehely']):
+                _kh_elvetett[r['Igehely']] = _kh_elvetett.get(r['Igehely'], 0) + 1
         _kh_by_step = idx
     return _kh_by_step
+
+
+_kh_elvetett = {}   # F212: forrásvers -> a nem megerősített (kimaradt) Károli-KH sorok száma
 
 
 # A Minősítés olvasói szövegéhez: a 4. szakasz találatszáma és a rés párjai motívumonként (a rés később épül).
@@ -5482,8 +5485,8 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             continue
 
         kh_index()
-        if step in _kh_kihagyott:
-            kh_kihagyva.append(igehely)
+        if _kh_elvetett.get(step):
+            kh_kihagyva.append((igehely, _kh_elvetett[step]))
         tsk_talalatok = sorted(
             [r for r in tsk_index().get(igehely, []) if int(r['Votes']) >= 15],
             key=lambda r: -int(r['Votes'])
@@ -5511,8 +5514,8 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                '%d igehely versenkénti kereséssel nem vizsgálható.'
                % (m['id'], len(sorai_rendezve), len(bekezdesek), talalat_szam, len(nem_vizsgalhato)))
     if kh_kihagyva:
-        hatokor += (' %d igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata '
-                    '(`eszkozok/karoli_kh_epseg.py`, DT557): %s.' % (len(kh_kihagyva), ', '.join(kh_kihagyva)))
+        hatokor += (' %d Károli-KH sor nem áll itt (%d igehelyen): a MEK 00161 kiadás nem erősíti meg.'
+                    % (sum(n for _i, n in kh_kihagyva), len(kh_kihagyva)))
     if uj_szerkezet(m['id']):
         # lap-javit HAMART-001 (lektor 16.): olvasói jegyzet műhelyszavak nélkül, a nem vizsgált helyek okával és a
         # kimaradt listák gazdájával
@@ -5530,10 +5533,10 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             hatokor += (' %d hely több versre terjed (%s): a gyűjtemények versenként adnak utalást, ezért ezekre a '
                         'vizsgálat nem keres.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
         if kh_kihagyva:
-            hatokor += (' %d hely Károli-utalásai nem állnak itt, mert egy másik vers utalás-listájának (teljes vagy '
-                        'részleges) másolatai: %s.' % (len(kh_kihagyva), '; '.join(
-                            '%s (a %s listája)' % (ige, _hu(_kh_gazda.get(L.to_step(ige), ['?'])[0]))
-                            for ige in kh_kihagyva)))
+            # F212 (DT-F212c): a lapra csak a MEK-kel megerősített Károli-utalás kerül; a kimaradt utalások száma
+            hatokor += (' %d hely %d Károli-utalása nem áll itt, mert a Károli-fordítás nyomtatott kiadása (MEK 00161) '
+                        'nem erősíti meg: %s.' % (len(kh_kihagyva), sum(n for _i, n in kh_kihagyva),
+                                                    ', '.join(i for i, _n in kh_kihagyva)))
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],

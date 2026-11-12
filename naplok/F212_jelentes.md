@@ -46,6 +46,18 @@
   `HAMART-001 | 2 | 2026.11.12 | A generátor-kör (F212) javításai: a generált szakaszok műhelyszavai olvasói nyelvre, az ismétlődő címkék és a továbbküldő sorok összevonva, az LXX-összevetés egy számításból és egy társulási mércével (a hídszó elsőbbségével: szócsalád szerint 13/14 vers), az 5. tábla forrásoszlopa magyarázó sorba, a Kolofon forrássorai; a próza nem változott. | claude-opus-5-5 | scope=manual | forras=a felhasználó jóváhagyása (…) | ts=…`
   A jóváhagyás után: a sor, `general.py --cel lexikon --id HAMART-001 --ir`, a napló- és a nyitott-nézet, a nyílt mag, helyi kapufutás (a `/kiadas` 5–6. lépése).
 
+## F212.8–F212.9 — kapuemelés, a 2. kiadás visszavonása, a javított Károli-KH
+
+- **DT-F212b** (F212.8): E38 és E39 gátló a CI-ben, a befagyasztott lapok kihagyásával; HAMART: E38 140/140, E39 0 gátló.
+- **A 2. kiadás sora** az F212.8-ban megíródott, majd az orkesztrátor lelete (a lapgenerátor a nyers Károli-KH táblát
+  olvasta) miatt az F212.9 **visszavonta** (kiadasok.tsv sor ki, statusz_verzio v3 → v2). Új jóváhagyás a frissített
+  változás-nézet után kell.
+- **DT-F212c** (F212.9): a lapgenerátor a `karoli_kh_szuro` hozzáférési pontján át olvas (nyers + MEK, `egyedi`,
+  `elfogad`); HAMART-001: 8 nem megerősített Károli-utalás kiesett 5 helyen (Jer 6:7, Jer 51:46, Ez 12:19, Mik 6:12,
+  Sof 1:9), 9 csak MEK-beli megerősített bekerült; 112 → 117 utalás, 26 → 23 hely; a külső megerősítés 5 párja és a 13%
+  nem változott. ISTENTISZT-001: 21 → 20 utalás, 8 → 9 megerősített pár (szándékos változás). Gyökérok-kapu: E40 (HIBA).
+  Az `ellenoriz.py` 11. szabálya a befagyasztott lapot kihagyja (DT-F212a).
+
 ## Zárás
 
 - **Kész:** F212.1–F212.6 a draft PR #715-ön. A sablonmondat-lista 32 döntése, a befagyasztás, a Kolofon-forrássor, az egyezés-kapu és a C6 a generátorban és az adatban; a HAMART-001 lapja generáltan frissült.

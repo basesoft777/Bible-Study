@@ -784,6 +784,8 @@ def szabaly11_res_forras_egyezes(adat_dir):
     lex_szoveg_cache = {}
     for r in erintett:
         motivum_id, res = r['id'], r['res']
+        if motivum_id in LG.BEFAGYASZTOTT:
+            continue   # F212 (DT-F212a): a befagyasztott lap nem generálódik újra
         if motivum_id not in lex_szoveg_cache:
             lex_path = os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % motivum_id)
             if not os.path.exists(lex_path):

@@ -2391,9 +2391,9 @@ A motívum ószövetségi helyei 46 versre terjednek. A görög Ószövetség é
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-12 -->
 
-A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 112. **Következtetés:** a helyek 55%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
+A motívum 47 helyéből 23 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 117. **Következtetés:** a helyek 49%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*A szakasz a motívum 47 helyét veti össze két hagyományos kereszthivatkozás-gyűjteménnyel: a Treasury of Scripture Knowledge (TSK) erős, legalább 15 olvasói szavazatot kapott utalásaival és a Károli-fordítás utalásaival; 26 hely ad legalább egy utalást (összesen 112). 6 hely több versre terjed (1Móz 4:10-11, Ézs 24:5-6, Hós 4:1-3, Sof 1:2-3, Gal 3:13-14, Zsid 6:7-8): a gyűjtemények versenként adnak utalást, ezért ezekre a vizsgálat nem keres. 2 hely Károli-utalásai nem állnak itt, mert egy másik vers utalás-listájának (teljes vagy részleges) másolatai: Jer 6:7 (a Jer 10:12 listája); Sof 1:9 (a Mt 12:22 listája).*
+*A szakasz a motívum 47 helyét veti össze két hagyományos kereszthivatkozás-gyűjteménnyel: a Treasury of Scripture Knowledge (TSK) erős, legalább 15 olvasói szavazatot kapott utalásaival és a Károli-fordítás utalásaival; 23 hely ad legalább egy utalást (összesen 117). 6 hely több versre terjed (1Móz 4:10-11, Ézs 24:5-6, Hós 4:1-3, Sof 1:2-3, Gal 3:13-14, Zsid 6:7-8): a gyűjtemények versenként adnak utalást, ezért ezekre a vizsgálat nem keres. 5 hely 8 Károli-utalása nem áll itt, mert a Károli-fordítás nyomtatott kiadása (MEK 00161) nem erősíti meg: Jer 6:7, Jer 51:46, Ez 12:19, Mik 6:12, Sof 1:9.*
 
 #### 1Móz 3:14
 - TSK: Mik 7:17 (17 szavazat)
@@ -2500,18 +2500,12 @@ A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyom�
 #### Ézs 60:18
 - Károli-KH: Ez 48:35
 
-#### Jer 51:46
-- Károli-KH: Hós 4:4
-
 #### Ez 7:23
 - Károli-KH: Jer 27:2
+- Károli-KH: 2Kir 21:16
 
 #### Ez 8:17
 - Károli-KH: Ez 9:10
-
-#### Ez 12:19
-- Károli-KH: 2Kir 17:15-19
-- Károli-KH: 2Kir 21:15-16
 
 #### Ez 28:16
 - Károli-KH: Ez 28:14
@@ -2519,9 +2513,8 @@ A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyom�
 #### Hós 10:8
 - Károli-KH: Ézs 2:19
 - Károli-KH: Jel 6:16
-
-#### Mik 6:12
-- Károli-KH: Ézs 16:6-12
+- Károli-KH: Hós 4:15
+- Károli-KH: Hós 9:6
 
 #### Hab 1:2
 - Károli-KH: Zsolt 13:2
@@ -2531,11 +2524,17 @@ A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyom�
 
 #### Jel 11:18
 - Károli-KH: Jel 6:15-17
+- Károli-KH: Mt 25:31
+- Károli-KH: Mt 25:40
+- Károli-KH: Luk 22:28
+- Károli-KH: Luk 22:30
 
 #### Jel 19:2
 - Károli-KH: Jel 16:7
 - Károli-KH: Zsolt 19:10
 - Károli-KH: Zsolt 119:137
+- Károli-KH: Jel 18:20
+- Károli-KH: 5Móz 32:43
 
 #### Jel 22:3
 - TSK: Mt 25:21 (147 szavazat)
@@ -2563,7 +2562,7 @@ A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyom�
 
 ### Minősítés
 
-A 112 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 47-ből. **Következtetés:** a motívum helyeinek a 13%-a a régi kereszthivatkozás-gyűjteményekben (TSK, Károli) is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
+A 117 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 47-ből. **Következtetés:** a motívum helyeinek a 13%-a a régi kereszthivatkozás-gyűjteményekben (TSK, Károli) is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -3141,7 +3140,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 **Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Módszertan és nyitott kérdések) mesterséges intelligencia (claude-opus-5-5) írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
 
-**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), 2. kiadás, 2026.11.12, https://logoszlexikon.hu/HAMART-001/2. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
+**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), 1. kiadás, 2026.11.12, https://logoszlexikon.hu/HAMART-001/1. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
 
 **Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).
 
@@ -3154,14 +3153,14 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Teljes cím | A bűn következményeinek gyűrűzése — átok, föld és romlás |
 | Téma | Hamartológia |
 | PaRDeS-szint | Remez/Drash |
-| Státusz | 2. kiadás (2026.11.12) |
+| Státusz | 1. kiadás (2026.11.12) |
 | Meghatározás | A bűn következménye az 1Mózes 3–9. fejezetében nem marad az elkövetőnél: a kígyótól és az első emberpártól Kainon és Lámeken át az özönvíz egész nemzedékéig terjed, a személytől a földig és az egész emberiségig, és ezt a terjedést hat héber szó lánca hordozza (átok, föld, fáradság, bűn, erőszak, romlás). A motívum ezt a láncot és azokat a későbbi bibliai helyeket foglalja magában, amelyek ugyanezekkel a szavakkal idézik fel. |
 | Azonosság típusa | strukturális |
 | Negatív kritérium | A versben az 1Mózes 3–9. fejezetének szóláncából (átok, föld, fáradság, bűn, erőszak, romlás) egy szó áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal), vagy az erőszak szava a hallás igéjével ugyanabban a versben, és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, az erőszak a megtelés és a hallás szava nélkül, romlandó test), és az sem, amely az átkot vagy a föld elvesztését a szövetség rendjében, a szövetség megszegésének büntetéseként mondja ki. A lánc szavai nélkül csak az a néhány hely tartozik ide, amely ugyanezt a szerkezetet más szavakkal mondja ki; ezeket a vizsgálat egyenként, tematikus helyként veszi fel. Az újszövetségi helyeknél a Textus Receptus a mérce. |
 | Fölérendelt fogalom | A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
 | Generálva | 2026-11-12 |
-| Kiadás | 2 |
+| Kiadás | 1 |
 | Próza modellje | claude-opus-5-5 |
 | Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11–12) |
 | Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |
@@ -3171,7 +3170,6 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.12 | A lap első kiadása, a modell-lektor 43 jelzett helyének és a szerkesztői átnézésnek a javításaival: a próza és a generált szakaszok olvasói nyelvre javítva (a lap önmagára utaló szavai kimaradtak), a tábla jegyzetei a tábla alatt állnak, a két határkérdés a szerkesztő döntése szerint rendeződött, a Jel 22:3 a tematikus sorok mintájára, az LXX-híd következtetése és a szám-egyezések javítva, a BDB- és Thayer-szócikkekben a motívum helyei kiemelve; az olvasói kapu 0 BUKÁS-sal zárult. |
-| 2 | 2026.11.12 | A generátor-kör javításai: a generált szakaszok műhelyszavai olvasói nyelvre, az ismétlődő címkék és a továbbküldő sorok összevonva, az LXX-összevetés egy számításból és egy társulási mércével (a hídszó elsőbbségével: szócsalád szerint 13/14 vers), az 5. tábla forrásoszlopa magyarázó sorba, a Kolofon forrássorai; a próza nem változott. |
 
 ---
 

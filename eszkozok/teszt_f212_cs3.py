@@ -122,5 +122,37 @@ class Munkaszo(unittest.TestCase):
             self.assertFalse(any(rx.search(szoveg) for rx, _n in K.MUNKASZAVAK), szoveg)
 
 
+class KaroliKhHozzaferes(unittest.TestCase):
+    """F212 (DT-F212c): a nyers Károli-KH tábla egyetlen hozzáférési pontja (E40) és a lap Károli-KH sorai."""
+
+    def futtat(self, fajlok):
+        sys.path.insert(0, os.path.join(ESZKOZOK, 'ellenorzes'))
+        import szabalyok as S
+        with tempfile.TemporaryDirectory() as d:
+            for rel, tartalom in fajlok.items():
+                ut = os.path.join(d, *rel.split('/'))
+                os.makedirs(os.path.dirname(ut), exist_ok=True)
+                with open(ut, 'w', encoding='utf-8') as f:
+                    f.write(tartalom)
+            return S.e40_karoli_kh_hozzaferes(root=d)
+
+    def test_nyers_megnyitas_hiba(self):
+        t = self.futtat({'eszkozok/uj_fogyaszto.py': "x = open('konkordancia/Karoli_kereszthivatkozasok.tsv')\n"})
+        self.assertEqual(len(t), 1)
+
+    def test_engedelyezett_es_proveniencia_nem_hiba(self):
+        t = self.futtat({'eszkozok/karoli_kh_szuro.py': "open('konkordancia/Karoli_kereszthivatkozasok.tsv')\n",
+                         'eszkozok/lap.py': "F = ['konkordancia/Karoli_kereszthivatkozasok.tsv']  # forrásnév\n",
+                         'eszkozok/olvaso_pilot/a.py': "open('konkordancia/Karoli_kereszthivatkozasok.tsv')\n"})
+        self.assertEqual(t, [])
+
+    def test_a_lap_kh_sorai_megerositettek(self):
+        import karoli_kh_szuro as KHS
+        idx = LG.kh_index()
+        for forras, sorok in idx.items():
+            for r in sorok:
+                self.assertTrue(KHS.elfogad(forras, r['Kapcsolódó igehely']), (forras, r['Kapcsolódó igehely']))
+
+
 if __name__ == '__main__':
     unittest.main()
