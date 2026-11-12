@@ -230,3 +230,21 @@ Megjegyzések (nem ELTÉRÉS), tudomásul véve: a `Mai` teszt első állítása
 állítás); a `lapdiff_blokk._normal` a sorvégi szóközt nem számítja (Markdown-sortörés) — a generált lapokon sorvégi kettős szóköz nincs
 használatban, de a rés nyitott; a G2671 sz2 egyedi írószkriptje a repón kívül van (a beírt sor a `beir` szabványos alakja, a hash a mai
 sz2-é: `teszt_forditas_atkulcsol.py` `Mai` második állítása ezt gépileg igazolja).
+
+## 8. A main beolvasztása és a lapok újragenerálása (2026-11-12; orkesztrátori ütemezés, (c) út)
+
+- **F203.7** — az `origin/main` (79807601: #703 BDB-lánc, #696 HAMART-001 1. kiadás) ütközés nélkül; a Thayer-táblák `--ellenoriz`
+  azonos, a `forditasok.tsv`-ben a main egy UBS_DNTG-sort hozott.
+- **F203.8** — az 5 migrált lap `general.py --cel lexikon --id … --ir`, `PARDES_DATUM` = a lap saját `ts`-e. Blokkonként
+  (`lapdiff_blokk`): ALVIL, ANTROP, ISTENTISZT, TEREMT-002 csak `szocikkek` (tooltip-glossza); HAMART-001 `szocikkek` + `lxx` (a G2671
+  hamis „c” pontja kiesik, „a szócikk egésze — kárhoztatás, átkozódás, átok”, az új fej-fordítás; tooltipek). Más blokk nem változott;
+  a HAMART változása a Thayer-láncból (és a F203.4b tooltip-glosszáiból) jön. Generált blokk-változás: a következő kiadás
+  változásjegyzékébe (F168), lektori kör nélkül.
+- **F203.9 (DT-F203b, orkesztrátori hatókör-bővítés)** — a G2671 új fordítása („Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)”) az
+  olvasói kapu `SZAKASZ_HIV_NEV` mintáján hamis BUKÁS-t adott (a „c. 3. (…)” caput-hivatkozás „a lap 3. szakasza”), és ezzel az
+  `ellenoriz.py` 32. és 40. szabálya SÉRTÉS lett, a nyílt mag pedig a HAMART-ot „régi feldolgozás”-ba sorolta volna. Javítás:
+  negatív lookbehind a „c.”, „p.”, „§” után; teszt: `teszt_olvasoi_kapu.py`
+  `test_szakasz_hivatkozas_forrasrovidites_utan_nem_jelez` (a hamis pozitív nem jelez, a „3. (Előfordulások)” rossz hivatkozás továbbra
+  is BUKÁS). A HAMART-001 olvasói kapuja: 1 → 0 BUKÁS; a nyílt mag újragenerálva változatlan (HAMART „lezárt kiadás”).
+  A `teszt_olvasoi_kapu.py` `Arany.test_G7_dt_a_prozaban` a módosítás nélküli kapuval és a main ISTENTISZT-lapjával is bukik (a main
+  hibája, nem e változásé).

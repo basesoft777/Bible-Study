@@ -679,7 +679,9 @@ def ell_munkaszo(sorok):
     return ki
 
 
-SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
+# F203 (orkesztrátori hatókör-bővítés, 2026-11-12; DT-F203b): a hivatkozás-rövidítés („c.” caput, „p.” pagina, „§”) utáni szám
+# forrás-hivatkozás, nem a lap szakasza (G2671: „Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)” — hamis BUKÁS volt)
+SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(?<!\bc\. )(?<!\bp\. )(?<!§ )(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
 SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
 SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
 SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')

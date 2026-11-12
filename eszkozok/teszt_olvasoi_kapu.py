@@ -492,6 +492,15 @@ class MunkaszoSzakaszHiv(unittest.TestCase):
                       'A részletek a 11. szakaszban (Értelmezés).'):
             self.assertTrue(talalatok(uj_lap(hibas), 'SZAKASZ_HIV'), hibas)
 
+    def test_szakasz_hivatkozas_forrasrovidites_utan_nem_jelez(self):
+        # F203 (DT-F203b): a G2671 Thayer-fordítása „c. 3. (…)” caput-hivatkozást tartalmaz — nem a lap 3. szakasza
+        for jo in ('ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi, c. 3. (Aiszkhülosz, Eurípidész, Platón, mások.)',
+                   'Winer, p. 5. (Lipcse kiadás) szerint.', 'Lásd § 3. (Hivatkozás) alatt.'):
+            self.assertEqual(talalatok(uj_lap(jo), 'SZAKASZ_HIV'), [], jo)
+        # a valódi, rossz nevű szakaszhivatkozás továbbra is BUKÁS
+        t = talalatok(uj_lap('A részletek a 3. (Előfordulások) alatt állnak.'), 'SZAKASZ_HIV')
+        self.assertTrue(t and all(x['sulyossag'] == K.BUKAS for x in t))
+
     def test_szakasz_hivatkozas_regi_lapon_nem_fut(self):
         self.assertEqual(talalatok(lap(tobbi='## 3. Valami\n\nA részletek a 7. szakaszban.'), 'SZAKASZ_HIV'), [])
 
