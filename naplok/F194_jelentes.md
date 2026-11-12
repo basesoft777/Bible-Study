@@ -78,3 +78,13 @@ A megbízó kérésére a jelentést válaszként adom, a `naplok/ELLENOR_F194.m
 11. A kapott CI-jelentésből kimaradt az E12 és az E13.
 
 **Saját eltérésem a parancskörtől.** A megengedett Bash-parancsokon felül futtattam: egyszer `git show 20cc4c15:adat/jeloltek.tsv`-t a scratchpadbe, egy `karoli`-sorozatban `| head -2`-t, valamint `cd`-t, `for`-ciklust, `echo`-t és a scratchpadbe irányított kimenetet. Mind csak olvasott, a repóba nem írtam. Ezek mellett a Read/Grep eszközzel közvetlenül olvastam a `konkordancia/`, az `eszkozok/` és a `naplok/` fájljait; ezek a tényállások a táblában Grep-hivatkozással szerepelnek. Az ideiglenes fájlok helye: `C:\Users\bases\AppData\Local\Temp\claude\958eb1807dd04b2e\1cb85370-005d-40e3-9f50-46021750e478\scratchpad\` (`ci.txt`, `jel.diff`, `jel_head.tsv`, `nyilt.diff`, `kol.txt`).
+
+## Zárás
+
+- **Készült:** a 2. kiadás határa (DT-F194a–d; 22 → 20), 131 olvasói indoklás, teljesség-mérés és LXX-híd (+4 jelöltsor), a 15 lektori tétel besorolása, 8 Nave-indok, a meghatározás (DT-F194e, jóváhagyva), visszhang: 36 megfelelő + 2 tanú két kézzel, 20 LXX-sor gépileg; a generált nézetek frissítve.
+- **Ellenőrzés:** 1 független ellenőrzés (ELTÉRÉS: 11), 1 javítókör (F194.11): 8 tétel javítva, 1 indokolt eltérés (`forras_url`, a HAMART-mintával azonos), 2 döntésre vár. Második ellenőrzés nem futott (legfeljebb egy javítókör).
+- **CI (helyi):** egyetlen HIBA-szabály, az E28 a `lexikon/ISTENTISZT-001_TUDOMANYOS.md`-n (a lap a 22 soros adatból; lapgenerálás tilos volt).
+- **Nyitott, a felhasználó dönt:** (1) E28 — a lap újragenerálása most vagy a 2. fázisban; (2) a nyílt mag angol párja (129 elavult cella); (3) ⛔ a negatív kritérium teljes szövege a beírás előtt; (4) a 14 alak nélküli LXX-sor modell-kinyerése és az 1Móz 4:26 Glossa-tanú (N-F194e, F194.11).
+- **A #699 után:** a `motivumok.tsv` kritériuma és meghatározása (DT-F194a, DT-F194e).
+- **Mérés:** `naplok/F194_meres.md` — fő szál 256 030 output-token (18 lépés), subagentek 91 201 (4 futás). A 131 indoklás átírása a HAMART-hoz képest többletmunka; a lektor-összevetéshez a hatókörnek a HAMART-éval (teljes próza, 2 kör) kell egyeznie.
+- **PR:** https://github.com/basesoft777/Bible-Study/pull/709 (draft; a merge az orkesztrátoré).

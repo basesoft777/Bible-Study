@@ -7,7 +7,7 @@ fazis: lexikon
 modell: opus
 allapot: dontesre_var
 ag: claude/istentiszt-uj-cikk-992f57
-pr: 0
+pr: 709
 ad: az ISTENTISZT-001 határa, jelöltjei, előfordulás-prózája, hiányzó fordításai és hatástörténet-anyaga a kész lap követelménylistája szerint, lépésenkénti méréssel
 kovetkezo: "Te: (1) a lap E28-eltérése — a lap a 2. fázisig elavult, vagy a 2. fázis előtt újragenerálódik; (2) a nyílt mag angol párja (129 elavult cella); (3) a kritérium teljes szövegének jóváhagyása (⛔). Utána a 2. fázis (próza U3, lap), külön jelre."
 munka: adat
