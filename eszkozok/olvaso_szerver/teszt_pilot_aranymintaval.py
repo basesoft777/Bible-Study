@@ -314,7 +314,7 @@ class TestPilotAranymintaval(unittest.TestCase):
                 b = blokkok._bdb_bontas(K)
                 if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
                     self.assertEqual((a['szoveg'], a['nyelv'], a['tisztitott']), (b['alap']['szoveg'], 'hu', b['alap']['tisztitott']), strong)
-                    self.assertEqual(b['alap'], blokkok.bdb_szelet.alap_jelentes(b['appar']['alap']), strong)
+                    self.assertEqual(b['alap'], blokkok._alap_jelentes(b['appar']['alap']), strong)
                     self.assertNotRegex(a['szoveg'], r'\d+:\d+', strong)         # H0559: „… mondani Gen 3:17” — a hivatkozás nem jelentés
                     hu += 1
                 else:

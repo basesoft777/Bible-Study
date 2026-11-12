@@ -792,6 +792,20 @@ def _ref_szam(t):
     return len(bdb_szelet.REF.findall(t or ''))
 
 
+_SOR_VEGI_REF = re.compile(r'\s+(?:\d?[A-Za-z]{1,8}\.?\s+)?\d+:\d+.*$')
+
+
+def _alap_jelentes(alap):
+    """A fejléc alapjelentése a szakasztábla `alap` szövegéből: a közös `bdb_szelet.alap_jelentes`, de a jelentés után álló igehely-hivatkozás
+    előtt levágva (H0559: „ige: kimondani, mondani Gen 3:17; Num …” → „ige: kimondani, mondani”). A levágás itt áll, nem a `bdb_szelet.py`-ban:
+    annak kód-hash-e a generált `adat/bdb_vers_jelentes.tsv` fejében van (F207)."""
+    if alap:
+        fej = re.split(r';| — |\(', alap)[0]                    # a `bdb_szelet.alap_jelentes` első jelentés-sora
+        if _SOR_VEGI_REF.search(fej):
+            alap = _SOR_VEGI_REF.sub('', fej, count=1).strip() + alap[len(fej):]
+    return bdb_szelet.alap_jelentes(alap)
+
+
 def _bdb_bontas(K):
     """A BDB-szócikk tagolása a szakasztáblából (F182, F33; SEMA 2.30): a `bdb_tagolas.szeletelo_alak` fája — ugyanaz a tábla, amelyből
     a 2.29 jelentéspontja (DT726) és a lexikon-generátor 4.2-es kártyája épül (egy szabály, egy hely). A csomópont szövege a magyar bontás
@@ -811,7 +825,7 @@ def _bdb_bontas(K):
         if not appar:
             return None
         return {'appar': appar, 'hu': hu, 'meta': q.bdb_magyar_meta(K.con, forras_strong) if hu else None, 'alias': d['alias'],
-                'alap': bdb_szelet.alap_jelentes(appar['alap']) if hu and appar.get('alap') else None,
+                'alap': _alap_jelentes(appar['alap']) if hu and appar.get('alap') else None,
                 'sorok': sorok, 'cim': cim}
     return K.memo('bdb_bontas', f)
 

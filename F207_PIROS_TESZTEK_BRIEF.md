@@ -10,8 +10,8 @@ ag: claude/lucid-tesla-29681d
 ad: a `python eszkozok/teszt_futtat.py --gyors` újra zöld; minden bukás besorolva (a/b/c), a tiltott fájlokba nem nyúltunk
 kovetkezo: "Te: a draft PR áttekintése; merge-et az orkesztrátor végzi"
 munka: folyamat
-olvas: [eszkozok/teszt_futtat.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/teszt_szotari_gerinc.py]
-ir: [eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/teszt_szotari_gerinc.py, nyitott/uj/lucid-tesla-29681d.md]
+olvas: [eszkozok/teszt_futtat.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/teszt_szotari_gerinc.py]
+ir: [eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/teszt_szotari_gerinc.py, nyitott/uj/lucid-tesla-29681d.md]
 fugg: []
 nem_fugg: []
 ---
@@ -31,7 +31,7 @@ A `~/pardes/pardes.db` (WSL-natív) 2026-11-02-i, 1048 MB — **elavult** az `ad
 | `teszt_olvaso_szerver` `TestD2PilotEgyezes.test_1moz_1_25`, `test_zsolt_22` | az F187.2 (`9861d9cf`, N-F186g) az `adat.py`-ban és a `lekerdezesek.magyar_gorog`-ban csak az érvényes (nem `elavult`, nem `~`) Thayer/UBS-sort számolja; a `db_meres.db_gorog` még mindet | **(b)** a mérőeszköz | `db_meres.py`: ugyanaz a szűrés |
 | `teszt_pilot_aranymintaval` F76g | az F182.10 (`09c74179`) óta a bontás a szakasztáblából épül (`bdb_tagolas`), nem a pilot szeletelőjéből; a pilot aranya mind a 256 lapnál eltér (`fej.cimke`, `irodalom`, `krit`, …) | **(a)** a teszt | a tartalom-egyezés helyett szerkezet-invariáns; a tartalmat a `teszt_bdb_tagolas.py` fedi; a hu/meta/alias egyezés megmarad |
 | ugyanott, **H4725** | a szakasztáblában (`adat/bdb_szakaszok.tsv`) nincs sora, noha van BDB-szócikke és magyar fordítása | **adathiány** (tiltott terület) | önlejáró kivétel a tesztben (`BDB_TAGOLAS_HIANYZIK`), N-F207a |
-| `teszt_pilot_aranymintaval` F76f | ugyanaz az ok (az `alap` a szakasztáblából jön); ráadásul a H0559 alapjelentése hivatkozást hordozott („… mondani Gen 3:17”) | **(a)** + **(b)** | a teszt az invariánst nézi (közös `alap_jelentes`, nincs `\d+:\d+`); `bdb_szelet.alap_jelentes`: a sor végi hivatkozás levágva |
+| `teszt_pilot_aranymintaval` F76f | ugyanaz az ok (az `alap` a szakasztáblából jön); ráadásul a H0559 alapjelentése hivatkozást hordozott („… mondani Gen 3:17”) | **(a)** + **(b)** | a teszt az invariánst nézi (közös `alap_jelentes`, nincs `\d+:\d+`); új `blokkok._alap_jelentes`: a sor végi hivatkozás levágva a közös `bdb_szelet.alap_jelentes` előtt (a `bdb_szelet.py` kód-hash-e a generált `adat/bdb_vers_jelentes.tsv` fejében áll: a módosítása a `teszt_bdb_vers_jelentes.test_bajtra_azonos`-t buktatta, ezért ott nem módosítunk) |
 | `teszt_szotari_gerinc.test_kapcsolo` | a HAMART-001 migrált (`51949f07`), a kivétellistán nincs | **(a)** | a teszt `aktiv`-ot vár |
 
 ## Nem javított (határ vagy tartalom) — helyőrzős nyitott tételek
