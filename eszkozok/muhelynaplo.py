@@ -152,8 +152,6 @@ DOLT_SZABALYOK = (
     (r'^\*Generált a kapcsolat-tábla indoklás mezőjéből', None, None),
     (r'^\*A magyar szöveg a szakaszonkénti (?:Thayer|BDB)-fordításból', None, None),
     (r'^\*ⓘ Kutatói megjegyzés:', None, None),
-    (r'^\*Hivatkozás: a motívum saját szavaihoz nincs LSJ-sor',
-     '*A klasszikus görög nagyszótár (LSJ) adata a motívum szavaihoz a lap forrásaiban nem áll rendelkezésre.*', None),
     (r'^\*Ez a blokk a motívum (\d+) kapcsolat-sorát fedi \(forrás: a kapcsolat-tábla\), (\d+) igehely-csomóponttal\.',
      r'*A blokk a motívum \1 kapcsolatát mutatja, \2 helyet összekötve.', None),
 )

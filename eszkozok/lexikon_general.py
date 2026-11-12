@@ -933,20 +933,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         funkcio_cella = ikon_nelkul(funkcio_cimke) if funkcio_teljes else EM_DASH
         funkcio_magyarazat = ikon_nelkul(funkcio_magyarazat)
 
-        if gerinc and uj_szerkezet(m['id']) and (s.get('gerinc_elem') or '').startswith('tematikus:') \
-                and not (s.get('strong') or '').strip():
-            # a felhasználó átnézése (3.): a lánc szava nélküli tematikus sor egyszerű: a Károli-szó, egy rövid
-            # megjegyzés, egy jegyzet, gondolatjel-cella nélkül; a vers saját szava (nem a lánc szava) csak a
-            # felhasználó döntése után (`TEMATIKUS_SAJAT_SZO`)
-            sajat = TEMATIKUS_SAJAT_SZO.get((m['id'], s['igehely'])) if TEMATIKUS_SAJAT_SZO_LAPON else None
-            lk = lemma_kiejtes(sajat) if sajat else None
-            szo = (s.get('karoli_szo') or '') + (
-                ' — %s (%s), nem a lánc szava' % (lk[0], lk[1]) if lk else '')
-            sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
-                igehely_link, szo, 'tematikus hely: a lánc szava nélkül%s' % labjegyzet_jel, funkcio_cella,
-                s.get('pardes_szint') or EM_DASH, sajat or 'nincs lánc-szó', 'nem alkalmazható (tematikus hely)',
-                megb.replace(labjegyzet_jel, '') if labjegyzet_jel else megb))
-        elif gerinc:
+        if gerinc:
             sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
                 igehely_link, kulcsszo_cella(s), _cella(szotari_jelentes), funkcio_cella,
                 s.get('pardes_szint') or EM_DASH, s.get('strong') or EM_DASH,
@@ -2213,8 +2200,8 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
         out = []
         for t in tokenek_ny:
             rj, van = rovid_jelentes(t)
-            # a felhasználó átnézése (4.): „**szó** — jelentés · Strong · [szónézet]”, a címke nélkül
-            out.append('**%s** — %s · %s · [szónézet](%s)' % (_szo_irassal(t), rj, t, SZONEZET_UT % t))
+            out.append('**%s** · %s%s — a teljes TBESG-szócikk: [olvasd a szónézetben](%s)'
+                       % (_szo_irassal(t), rj, '' if van else '', SZONEZET_UT % t))
         ctx['tbesg_tbesh'].add('TBESG')
         out.append('*Forrás: a STEPBible görög rövid szótára (TBESG, CC BY 4.0), a rövid jelentés magyarul.*')
         return out
@@ -4466,12 +4453,6 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
             continue
         alap, gyok, nyelvek = bdb_fej_rovid(fej[2])
         if uj_szerkezet(ctx.get('id')):
-            # a felhasználó átnézése (10.): az alapjelentés a 4.1-et ismételné; a gyök egy mondatba (a pont végén)
-            if gyok:
-                lk = lemma_kiejtes(t)
-                out.append('A BDB %s %s gyökét is megadja: %s.' % (_nevelo(lk[1] if lk and lk[1] else t),
-                                                                 _szo_irassal(t), gyok))
-            continue
             # F182 (A15; F13): alapjelentés (a nyelvtani alakok nélkül) és gyök; a rokon nyelvi sorok a pont végén, a
             # táblában (a 4.11-ből áthelyezve), a teljes szócikkfej a 4.2-ben — egyszer kimondva, nem szavanként
             alap = re.split(r'\s+—\s+', alap)[0].strip(' ;,')
@@ -4546,10 +4527,6 @@ def _tartalom_ubs_oszlop(nyelv, n, tokenek_ny, reszek, ctx):
     mondat a sorszámmal és a szónézet linkje (ISTENTISZT-001 arany lap, 2026-10-29)."""
     tesz = 'ószövetségi' if nyelv == 'heber' else 'újszövetségi'
     forras = UBS_DBH_JELENTESEK_FAJL if nyelv == 'heber' else UBS_DNTG_JELENTESEK_FAJL
-    if uj_szerkezet(ctx.get('id')):
-        # a felhasználó átnézése (11.): a soronként csak navigáló sorok helyett egy olvasói mondat
-        return ['Hogy a szó az egyes helyeken melyik jelentésében áll, a [2. Előfordulások](#2-előfordulások) táblázatának '
-                '„UBS-jelentés” oszlopa mutatja; a szó teljes jelentéslistája a szónézetben.']
     out = []
     for t in tokenek_ny:
         sz, h, j = _ubs_oszlop_szamlalo(t, ctx)
@@ -4571,15 +4548,6 @@ SZEREP_EPITO[('gorog', 9)] = _tartalom_ubs_oszlop
 def _gerinc_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
     adat = gerinc_adat()
     out = []
-    if uj_szerkezet(ctx.get('id')):
-        # a felhasználó átnézése (4.): a sor a szóval kezdődik; a forrás egyszer, a pont végén (a bevezető is mondja)
-        for t in tokenek_ny:
-            g = adat['glossza'].get(t)
-            out.append('**%s** — %s · %s · [szónézet](%s)' % (
-                _szo_irassal(t), g['glossza_hu'] if g else 'a szótár nem ad magyar rövid jelentést', t, SZONEZET_UT % t))
-        ctx['fl'].setdefault(GLOSSZAK_HEBER_HU_FAJL, set()).add('TBESH')
-        out.append('*Forrás: a STEPBible héber rövid szótára (TBESH, CC BY 4.0), a rövid jelentés magyarul.*')
-        return out
     for t in tokenek_ny:
         g = adat['glossza'].get(t)
         rovid = ('%s *(a TBESH rövid jelentése magyarul)*' % g['glossza_hu']
@@ -4600,19 +4568,15 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
         if uj:
             # F182 (A11; F6 és pontosítása): szavanként egy sor, írással és kiejtéssel; a tW-cím magyarul, az azonosító
             # nélkül, a szónézet link; a TWOT száma ugyanabban a sorban; a forrás egyszer, a pont végén
-            # a felhasználó átnézése (7.): „**szó** — *cím* · *cím* · TWOT 6 · [szónézet]”; a címke a bevezetőben
             reszek_t = []
+            if nyelv == 'heber':
+                reszek_t.append(reszek[t]['twot'].replace('**TWOT:**', 'TWOT'))
             if cikkek:
-                reszek_t.append(' · '.join('*%s*' % tw_cim_magyar(c) for c in cikkek))
+                reszek_t.append('a translationWords szócikkei: %s' % ' · '.join('*%s*' % tw_cim_magyar(c) for c in cikkek))
                 ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
             else:
                 reszek_t.append('a translationWords nem tárgyalja')
-            if nyelv == 'heber':
-                reszek_t.append(reszek[t]['twot'].replace('**TWOT:**', 'TWOT').replace('TWOT:', 'TWOT'))
-            if not out:
-                out.append('Szavanként a translationWords magyar szócikkcímei%s; a szócikkek a szónézetben olvashatók.'
-                           % (' és a TWOT-szám (Theological Wordbook of the Old Testament)' if nyelv == 'heber' else ''))
-            out.append('**%s** — %s · [szónézet](%s)' % (_szo_irassal(t), ' · '.join(reszek_t), SZONEZET_UT % t))
+            out.append('**%s** · %s — [olvasd a szónézetben](%s)' % (_szo_irassal(t), ' · '.join(reszek_t), SZONEZET_UT % t))
             continue
         if cikkek:
             out.append('**%s** · tW: %s — a szócikkek szövege a szónézetben: %s'
@@ -4631,43 +4595,7 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
     return out
 
 
-# A felhasználó átnézése (8.): a 4.5 tartalom nélküli sorai. „mondat”: egyetlen mondat szavankénti linkkel;
-# „tartalom”: szavanként az UBS-szótár magyar glosszái jelentésenként (a fordítási tábla `glosszak_hu` sorai).
-# A döntés a felhasználóé (az orkesztrátoron át); addig a „mondat” áll.
-# A felhasználó átnézése (3.): a lánc szava nélküli tematikus sorban álljon-e a vers saját (nem lánc-) szava; a
-# döntésig nem (a TAGNT: Jel 22:3 G2652 κατάθεμα minden kiadásban, a szótári címszó κατανάθεμα).
-TEMATIKUS_SAJAT_SZO = {('HAMART-001', 'Jel 22:3'): 'G2652'}
-TEMATIKUS_SAJAT_SZO_LAPON = False
-NEGY5_MOD = None   # None: a régi sorok (a felhasználó döntéséig); 'mondat' (A) vagy 'tartalom' (B)
-
-
-def _ubs_glosszak_hu(szotar, t):
-    sorok = [(k[2], r['forditas_hu']) for k, r in forditasok_index().items()
-             if k[0] == szotar and k[1] == t and k[4] == 'glosszak_hu' and (r.get('forditas_hu') or '').strip()]
-    return [g for _e, g in sorted(sorok)]
-
-
-def _ubs_45_uj(nyelv, tokenek_ny, ctx):
-    szotar = 'UBS_DNTG' if nyelv == 'gorog' else 'UBS_DBH'
-    nev = 'újszövetségi' if nyelv == 'gorog' else 'héber'
-    if NEGY5_MOD == 'tartalom':
-        out = ['Az UBS %s szótárának jelentései szavanként, a jelentések magyar glosszájával; a teljes szócikk a '
-               'szónézetben.' % nev]
-        for t in tokenek_ny:
-            gl = _ubs_glosszak_hu(szotar, t)
-            out.append('**%s** — %s · [szónézet](%s)' % (
-                _szo_irassal(t), ' · '.join('%d. %s' % (i, g) for i, g in enumerate(gl, 1)) if gl else
-                'a szótár nem ad magyar glosszát', SZONEZET_UT % t))
-        return out
-    return ['Az UBS %s szótárának jelentései szavanként a szónézetben olvashatók: %s.' % (
-        nev, ', '.join('[%s](%s)' % (_szo_irassal(t), SZONEZET_UT % t) for t in tokenek_ny))]
-
-
 def _gerinc_ubs_mutato(nyelv, n, tokenek_ny, reszek, ctx):
-    if uj_szerkezet(ctx.get('id')) and n == 5 and NEGY5_MOD:
-        if nyelv == 'gorog' and any(mcged_sor(t) for t in tokenek_ny):
-            ctx['fl'].setdefault(MCGED_FAJL, set()).add('MCGED')
-        return _ubs_45_uj(nyelv, tokenek_ny, ctx)
     if nyelv == 'gorog':
         # F131.21 (DT383 (a) a Mounce-ra, ELLENOR_SZOTARI_GERINC_2 5.): a mutató a Mounce-ot név szerint megnevezi,
         # ezért a Mounce (MCGED, „redistribution with attribution”) az Irodalomban és a kolofonban áll (a tW útján,
@@ -9115,8 +9043,9 @@ def blokk_visszhang_hatter(hatter, lanc_versek=None, szavak=None):
             # rokon írások lekérdezése lefutott, és a szócikkben nincs rokon alak, ezt mondja ki, a tőre utalva
             if bdb_rokon_szocikk(s) is not None:
                 to = bdb_to_strong(s)
-                ht.append('| %s | A szótár a szónál nem ad rokon nyelvi alakot%s | — | — |' % (cim, (
-                    '; a tőnél (%s) ad, ezek a táblában nem szerepelnek' % _to_iras_kiejtes(to)) if to else ''))
+                ht.append('| %s | Nincs rokon nyelvi alak a BDB szócikkében%s | — | — |' % (cim, (
+                    '; az igei tő, a %s szócikke ad rokon alakokat, ezek a táblában nem szerepelnek'
+                    % _to_iras_kiejtes(to)) if to else ''))
             else:
                 ht.append('| %s | a rokon nyelvi adat kinyerése még nem történt meg | — | — |' % cim)
             continue
@@ -9124,15 +9053,16 @@ def blokk_visszhang_hatter(hatter, lanc_versek=None, szavak=None):
         if any(not r['alak'] and not r['lemma'] for r in hs):
             to = bdb_to_strong(s)
             if bdb_rokon_szocikk(s) == 0:
-                elo = ('A szótár a szónál nem ad rokon nyelvi alakot' if bdb_helyi_szocikk(s)
-                       else 'A szótár szócikke nem azonosítható')
+                elo = ('a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon '
+                       'nyelvi alak nem áll' if bdb_helyi_szocikk(s) else 'nem azonosítható: a BDB-szócikk nem található')
             else:
-                elo = 'A szótár a szónál nem ad rokon nyelvi alakot'
+                elo = 'a BDB-szócikkben nincs rokon nyelvi adat'
             to_sorok = _hatter_sorok([r for r in hatter if r['strong'] == to]) if to and to in tohoz else []
             if to_sorok:
                 lk = lemma_kiejtes(to)
                 tonev = lemma_cim(lk) if lk else to
-                ht.append('| %s | %s; a tőnél (%s): | — | — |' % (cim, elo, tonev))
+                ht.append('| %s | %s; a tő, a %s ige szócikke szerint: | — | — |' % (
+                    cim, elo.replace('a BDB-szócikkben nincs', 'a főnév szócikkében nincs'), tonev))
                 for nyelv, szavak, jelek, megj in to_sorok:
                     ht.append('| ↳ tő: %s | %s%s | %s | %s |' % (tonev, nyelv, (' ' + ' · '.join(szavak)) if szavak else '',
                                                                _cella('; '.join(jelek) or '—'), megj))
@@ -9142,14 +9072,6 @@ def blokk_visszhang_hatter(hatter, lanc_versek=None, szavak=None):
         for nyelv, szavak, jelek, megj in _hatter_sorok(hs):
             ht.append('| %s | %s%s | %s | %s |' % (cim, nyelv, (' ' + ' · '.join(szavak)) if szavak else '',
                                                   _cella('; '.join(jelek) or '—'), megj))
-    # a felhasználó átnézése (10.): a soronként ismétlődő „írás nélkül” megjegyzés egyszer, a tábla alatt
-    iras_nelkul = any('a BDB az alakot írás nélkül adja' in h for h in ht)
-    ht = [h.replace('A BDB az alakot írás nélkül adja; ', '').replace('; a BDB az alakot írás nélkül adja', '')
-          .replace('| A BDB az alakot írás nélkül adja |', '| — |').replace('| a BDB az alakot írás nélkül adja |', '| — |')
-          for h in ht]
-    if iras_nelkul:
-        ht.append('')
-        ht.append('*Ahol a sorban nincs írás, a BDB a rokon alakot írás nélkül, csak jelentéssel adja.*')
     return ['##### Háttér: rokon nyelvek (BDB)',
             olvasoi_bekezdes('A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, '
                              'etióp, szír, arámi, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A '

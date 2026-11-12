@@ -998,19 +998,13 @@ A lapon: A motívum korábbi kereszthivatkozás-naplója.
 - a lapon: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul
 - teljes sor: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul.
 
-- dőlt bevezető: Hivatkozás: a motívum saját szavaihoz nincs LSJ-sor (forrás: a lap szótári hivatkozástáblája), és a rokon szavaknál sincs: jelölt hiány.
-### <a id="f-4-3"></a>Forrás (4. Szótári háttér)
-
-- a lapon: a STEPBible héber rövid szótára (TBESH, CC BY 4.0), a rövid jelentés magyarul
-- teljes sor: a STEPBible héber rövid szótára (TBESH, CC BY 4.0), a rövid jelentés magyarul.
-
 - dőlt bevezető: Szótári tagolás (szerkesztői döntés, 2026-10-19): szavanként előbb a jelentések rendje a BDB szerint, rövid magyar meghatározással, és hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a rövidítésekkel, az alakok jegyzékével és az igehelyekkel; a motívum helyei közül a BDB saját példahelyei kiemelve. A szótári blokk a szóról szól; a hely motívumbeli funkcióját a 2. szakasz táblázata adja.
 - dőlt bevezető: ⓘ Kutatói megjegyzés: a szótár nem idézi: Hós 4:1, Hós 4:2.
 - dőlt bevezető: ⓘ Kutatói megjegyzés: Sof 1:3: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban a Sof 1:2–3 verstartomány belsejében (a BDB-ben: „Zeph 1:2-3”; a BDB-szótár versenkénti jelentései); a tartomány nincs kibontva (szerkesztői döntés, 2026-10-28 (A)), ezért a hely nem BDB-példa.
 - dőlt bevezető: ⓘ Kutatói megjegyzés: a szótár nem idézi: Ézs 24:5.
 - dőlt bevezető: ⓘ Kutatói megjegyzés: a szótár nem idézi: 1Móz 4:10, 5Móz 28:18.
 - dőlt bevezető: ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: a BDB-szótár versenkénti jelentései sorszám 267 (1Móz 6:5, fej): nem azonosítható, melyik szócikkében (a fej útvonal a H7451 szócikkében áll (BDB 8032. szócikk, BDB 8033. szócikk, BDB 8034. szócikk), a hivatkozás helye (poz 6238) szerint: BDB 8033. szócikk, BDB 8034. szócikk).
-### <a id="f-4-4"></a>Forrás (4. Szótári háttér)
+### <a id="f-4-3"></a>Forrás (4. Szótári háttér)
 
 - a lapon: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma
 - teljes sor: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma.
@@ -1019,7 +1013,7 @@ A lapon: A motívum korábbi kereszthivatkozás-naplója.
 - sor (*(forrás: Nave tárgymutatója (1897); a tematikus index döntései; a Nave-témák ma): `*(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-12)*`
 - sor (*(forrás: a motívum előfordulás-táblája; a Károli-szavak szótári alakjai, 2026-1): `*(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=47 | ts=2026-11-12)*`
 - sor (*(forrás: a Károli-fordítás (1908); a STEPBible héber szövege (TAHOT); a STEPBib): `*(proveniencia: scope=Károli teljes (H0127: „föld”; H0779: „átkoz”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=2313 | ts=2026-11-12)*`
-### <a id="f-4-5"></a>Forrás (4. Szótári háttér)
+### <a id="f-4-4"></a>Forrás (4. Szótári háttér)
 
 - a lapon: a Károli-fordítás (1908); a Károli-szavak szótári alakjai; a STEPBible héber szövege (TAHOT)
 - teljes sor: a lap munkaanyaga, 2026-11-08 · forrás: a Károli-fordítás (1908); a Károli-szavak szótári alakjai, 2026-11-03 · a föld (adámá) a lap genezisi verseiben: forrás: a lap munkaanyaga, 2026-11-11 · az 1Móz 6:11-13 földje: forrás: a STEPBible héber szövege (TAHOT), 2026-11-11
