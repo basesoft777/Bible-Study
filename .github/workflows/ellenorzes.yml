@@ -181,7 +181,10 @@ jobs:
           K9=$?
           python eszkozok/szakirodalom_kinyer.py ellenoriz
           K10=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F200: a proza-allitas ellenorzo probai (az eszkoz maga JELENTES szinten, kezi lepes: MUNKAMENET C-a)
+          python eszkozok/teszt_proza_allitas.py
+          K11=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 

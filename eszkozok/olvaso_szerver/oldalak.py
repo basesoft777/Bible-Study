@@ -490,8 +490,8 @@ class OldalGyar:
             ki.append(('BDB magyarul: %d/%d' % (sz['bdb_hu'], sz['heber']), sz['bdb_hu'] < sz['heber']))
         return ki + [('Károli–Strong: %d könyv' % sz['konyv'], False)]
 
-    def szo_lap(self, strong, reteg, szint, ut):
-        s, fej, torzs, alapjel = self.szo_torzs(strong, szint)
+    def szo_lap(self, strong, reteg, szint, ut, ig=None):
+        s, fej, torzs, alapjel = self.szo_torzs(strong, szint, ig)
         return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', reteg=reteg, ut=ut, szint=szint,
                             cim=s)
 

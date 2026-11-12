@@ -8,7 +8,7 @@
 
 **Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).
 
-**Feldolgozási állapot.** A motívumok közül 3 lezárt kiadás (a lexikonlapja kiadott, és az olvasói kapun hiba nélkül átment), 6 régi feldolgozás, amely a későbbi változatokban frissül; motívumonként a `motivumok.tsv` `feldolgozasi_allapot` oszlopa mondja meg.
+**Feldolgozási állapot.** A motívumok közül 4 lezárt kiadás (a lexikonlapja kiadott, és az olvasói kapun hiba nélkül átment), 5 régi feldolgozás, amely a későbbi változatokban frissül; motívumonként a `motivumok.tsv` `feldolgozasi_allapot` oszlopa mondja meg.
 
 **Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).
 
@@ -47,7 +47,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 438 |
+| `kodkonyv.tsv` | 440 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 61 |

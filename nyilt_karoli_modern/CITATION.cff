@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "Ha az adatokat használja, kérjük, ezt az adatkészletet idézze. / If you use the data, please cite this dataset."
+type: dataset
+title: "Modernizált Károli – Strong / Modernised Károli – Strong"
+authors:
+  - family-names: "Demeter"
+    given-names: "Tamás"
+    orcid: "https://orcid.org/0009-0005-9254-9731"
+doi: "10.5281/zenodo.24141950"
+license: CC-BY-4.0
+abstract: >-
+  A Károli-biblia 1908-as szövegének modernizált változata (helyesírás és
+  igealak), szavanként összekapcsolva a héber és görög eredeti szavak
+  Strong-számaival (STEPBible TAHOT/TAGNT, CC BY 4.0). (English) The 1908
+  Károli Bible text modernised in spelling and verb forms, linked word by word
+  to the Strong's numbers of the Hebrew and Greek source words (STEPBible
+  TAHOT/TAGNT, CC BY 4.0).
+keywords:
+  - Károli-biblia
+  - Strong-számok
+  - szópárosítás
+  - Hungarian Bible
+  - word alignment
+references:
+  - type: dataset
+    title: "Károli 1908 – Strong szóillesztés / Károli 1908 – Strong word alignment"
+    authors:
+      - family-names: "Demeter"
+        given-names: "Tamás"
+    doi: "10.5281/zenodo.24141884"
+  - type: dataset
+    title: "Logosz Lexikon — open data core"
+    authors:
+      - family-names: "Demeter"
+        given-names: "Tamás"
+    doi: "10.5281/zenodo.24141612"

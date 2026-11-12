@@ -1,0 +1,987 @@
+# GENERÁLT: a(z) Logosz-lexikon – Modernizált Károli – Strong nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Modernised Károli – Strong open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	token	alak_1908	alak_modern	valtozott	kieso	gazda_token	bizonytalan	allapot	strong	eredeti_token	kapcsolat	bizonyossag
+Nah.1.1	1	Ninive	Ninive					javaslat	H5210	2	szo	alacsony
+Nah.1.1	2	terhe	terhe					javaslat	H4853	1	szo	alacsony
+Nah.1.1	3	az	az					betoldas				
+Nah.1.1	4	elkosi	elkosi					javaslat	H9009	6	morfema	alacsony
+Nah.1.1	4	elkosi	elkosi					javaslat	H0512	7	szo	alacsony
+Nah.1.1	5	Náhum	Náhum					javaslat	H5151	5	szo	alacsony
+Nah.1.1	6	látásának	látásának					javaslat	H2377	4	szo	alacsony
+Nah.1.1	7	könyve	könyve					javaslat	H5612	3	szo	alacsony
+Nah.1.2	1	Buzgón	Buzgón					javaslat	H7072	2	szo	alacsony
+Nah.1.2	2	szerető	szerető					javaslat	H7072	2	szo	alacsony
+Nah.1.2	3	és	és					javaslat	H9002	3	morfema	alacsony
+Nah.1.2	4	bosszúálló	bosszúálló					javaslat	H5358	4	szo	alacsony
+Nah.1.2	5	Isten	Isten					javaslat	H0410	1	szo	alacsony
+Nah.1.2	6	az	az					betoldas				
+Nah.1.2	7	Úr	Úr					javaslat	H3068	5	szo	alacsony
+Nah.1.2	8	bosszúálló	bosszúálló					javaslat	H5358	6	szo	alacsony
+Nah.1.2	9	az	az					betoldas				
+Nah.1.2	10	Úr	Úr					javaslat	H3068	7	szo	alacsony
+Nah.1.2	11	és	és					javaslat	H9002	8	morfema	alacsony
+Nah.1.2	12	telve	telve					javaslat	H1167	9	szo	alacsony
+Nah.1.2	13	haraggal	haraggal					javaslat	H2534	10	szo	alacsony
+Nah.1.2	14	bosszút	bosszút					javaslat	H5358	11	szo	alacsony
+Nah.1.2	15	áll	áll					javaslat	H5358	11	szo	alacsony
+Nah.1.2	16	az	az					betoldas				
+Nah.1.2	17	Úr	Úr					javaslat	H3068	12	szo	alacsony
+Nah.1.2	18	az	az					betoldas				
+Nah.1.2	19	ő	ő					javaslat	H9023	15	morfema	alacsony
+Nah.1.2	20	ellenségein	ellenségein					javaslat	H9005	13	morfema	alacsony
+Nah.1.2	20	ellenségein	ellenségein					javaslat	H6862	14	szo	alacsony
+Nah.1.2	20	ellenségein	ellenségein					javaslat	H9023	15	morfema	alacsony
+Nah.1.2	21	és	és					javaslat	H9002	16	morfema	alacsony
+Nah.1.2	22	haragot	haragot					javaslat	H5201	17	szo	alacsony
+Nah.1.2	23	tartó	tartó					javaslat	H5201	17	szo	alacsony
+Nah.1.2	24	az	az					betoldas				
+Nah.1.2	25	ő	ő					javaslat	H1931	18	szo	alacsony
+Nah.1.2	25	ő	ő					javaslat	H9023	21	morfema	alacsony
+Nah.1.2	26	gyűlölői	gyűlölői					javaslat	H9005	19	morfema	alacsony
+Nah.1.2	26	gyűlölői	gyűlölői					javaslat	H0341	20	szo	alacsony
+Nah.1.2	26	gyűlölői	gyűlölői					javaslat	H9023	21	morfema	alacsony
+Nah.1.2	27	ellen	ellen					javaslat	H9005	19	morfema	alacsony
+Nah.1.3	1	Hosszútűrő	Hosszútűrő					javaslat	H0750	2	szo	alacsony
+Nah.1.3	1	Hosszútűrő	Hosszútűrő					javaslat	H0639	3	szo	alacsony
+Nah.1.3	2	az	az					betoldas				
+Nah.1.3	3	Úr	Úr					javaslat	H3068	1	szo	alacsony
+Nah.1.3	4	és	és					javaslat	H9002	4	morfema	alacsony
+Nah.1.3	5	nagyhatalmú	nagyhatalmú					javaslat	H1419	5	szo	alacsony
+Nah.1.3	5	nagyhatalmú	nagyhatalmú					javaslat	H3581	6	szo	alacsony
+Nah.1.3	6	és	és					javaslat	H9002	7	morfema	alacsony
+Nah.1.3	7	nem	nem					javaslat	H3808	9	szo	alacsony
+Nah.1.3	8	hagy	hagy					javaslat	H5352	10	szo	alacsony
+Nah.1.3	9	büntetlenül	büntetlenül					javaslat	H5352	8	szo	alacsony
+Nah.1.3	9	büntetlenül	büntetlenül					javaslat	H5352	10	szo	alacsony
+Nah.1.3	10	Szélvészben	Szélvészben					javaslat	H9003	12	morfema	alacsony
+Nah.1.3	10	Szélvészben	Szélvészben					javaslat	H5492	13	szo	alacsony
+Nah.1.3	11	és	és					javaslat	H9002	14	morfema	alacsony
+Nah.1.3	12	viharban	viharban					javaslat	H9003	15	morfema	alacsony
+Nah.1.3	12	viharban	viharban					javaslat	H8183	16	szo	alacsony
+Nah.1.3	13	van	van					betoldas				
+Nah.1.3	14	az	az					betoldas				
+Nah.1.3	15	Úrnak	Úrnak					javaslat	H3068	11	szo	alacsony
+Nah.1.3	16	útja	útja					javaslat	H1870	17	szo	alacsony
+Nah.1.3	16	útja	útja					javaslat	H9023	18	morfema	alacsony
+Nah.1.3	17	és	és					javaslat	H9002	19	morfema	alacsony
+Nah.1.3	18	lábainak	lábainak					javaslat	H7272	22	szo	alacsony
+Nah.1.3	18	lábainak	lábainak					javaslat	H9023	23	morfema	alacsony
+Nah.1.3	19	pora	pora					javaslat	H0080	21	szo	alacsony
+Nah.1.3	20	a	a					betoldas				
+Nah.1.3	21	felhő	felhő					javaslat	H6051	20	szo	alacsony
+Nah.1.4	1	Megfeddi	Megfeddi					javaslat	H1605	1	szo	alacsony
+Nah.1.4	2	a	a					betoldas				
+Nah.1.4	3	tengert	tengert					javaslat	H9003	2	morfema	alacsony
+Nah.1.4	3	tengert	tengert					javaslat	H3220	3	szo	alacsony
+Nah.1.4	4	és	és					javaslat	H9001	4	morfema	alacsony
+Nah.1.4	5	kiapasztja	kiapasztja					javaslat	H3001	5	szo	alacsony
+Nah.1.4	6	azt	azt					javaslat	H9033	6	morfema	alacsony
+Nah.1.4	7	és	és					javaslat	H9002	7	morfema	alacsony
+Nah.1.4	8	minden	minden					javaslat	H3605	8	szo	alacsony
+Nah.1.4	9	folyamot	folyamot					javaslat	H5104	10	szo	alacsony
+Nah.1.4	10	kiszáraszt	kiszáraszt					javaslat	H2717	11	szo	alacsony
+Nah.1.4	11	Elfonnyad	Elfonnyad					javaslat	H0535	12	szo	alacsony
+Nah.1.4	12	a	a					betoldas				
+Nah.1.4	13	Básán	Básán					javaslat	H1316	13	szo	alacsony
+Nah.1.4	14	és	és					javaslat	H9002	14	morfema	alacsony
+Nah.1.4	15	a	a					betoldas				
+Nah.1.4	16	Kármel	Kármel					javaslat	H3760	15	szo	alacsony
+Nah.1.4	17	és	és					javaslat	H9002	16	morfema	alacsony
+Nah.1.4	18	a	a					betoldas				
+Nah.1.4	19	Libánon	Libánon					javaslat	H3844	18	szo	alacsony
+Nah.1.4	20	virága	virága					javaslat	H6525	17	szo	alacsony
+Nah.1.4	21	elfonnyad	elfonnyad					javaslat	H0535	19	szo	alacsony
+Nah.1.5	1	A	A					betoldas				
+Nah.1.5	2	hegyek	hegyek					javaslat	H2022	1	szo	alacsony
+Nah.1.5	3	reszketnek	reszketnek					javaslat	H7493	2	szo	alacsony
+Nah.1.5	4	előtte	előtte					javaslat	H4480	3	szo	alacsony
+Nah.1.5	4	előtte	előtte					javaslat	H9033	4	morfema	alacsony
+Nah.1.5	5	és	és					javaslat	H9002	5	morfema	alacsony
+Nah.1.5	6	a	a					betoldas				
+Nah.1.5	7	halmok	halmok					javaslat	H1389	7	szo	alacsony
+Nah.1.5	8	szétmállanak	szétmállanak					javaslat	H4127	8	szo	alacsony
+Nah.1.5	9	Tekintetétől	Tekintetétől					javaslat	H9006	13	morfema	alacsony
+Nah.1.5	9	Tekintetétől	Tekintetétől					javaslat	H6440	14	szo	alacsony
+Nah.1.5	9	Tekintetétől	Tekintetétől					javaslat	H9023	15	morfema	alacsony
+Nah.1.5	10	megrendül	megrendül					javaslat	H5375	10	szo	alacsony
+Nah.1.5	11	a	a					betoldas				
+Nah.1.5	12	föld	föld					javaslat	H0776	12	szo	alacsony
+Nah.1.5	13	és	és					javaslat	H9002	16	morfema	alacsony
+Nah.1.5	14	a	a					betoldas				
+Nah.1.5	15	világ	világ					javaslat	H8398	17	szo	alacsony
+Nah.1.5	16	és	és					javaslat	H9002	18	morfema	alacsony
+Nah.1.5	17	minden	minden					javaslat	H3605	19	szo	alacsony
+Nah.1.5	18	a		igen	osszevonva	19		betoldas				
+Nah.1.5	19	mi	ami	igen				betoldas				
+Nah.1.5	20	rajta	rajta					javaslat	H9003	21	morfema	alacsony
+Nah.1.5	20	rajta	rajta					javaslat	H9034	22	morfema	alacsony
+Nah.1.5	21	él	él					javaslat	H3427	20	szo	alacsony
+Nah.1.6	1	Ki	Ki					javaslat	H4310	5	szo	alacsony
+Nah.1.6	2	állhatna	állhatna					javaslat	H5975	6	szo	alacsony
+Nah.1.6	3	meg	meg					javaslat	H5975	6	szo	alacsony
+Nah.1.6	4	haragja	haragja					javaslat	H2195	3	szo	alacsony
+Nah.1.6	4	haragja	haragja					javaslat	H9023	4	morfema	alacsony
+Nah.1.6	5	előtt	előtt					javaslat	H9005	1	morfema	alacsony
+Nah.1.6	5	előtt	előtt					javaslat	H6440	2	szo	alacsony
+Nah.1.6	6	és	és					javaslat	H9002	7	morfema	alacsony
+Nah.1.6	7	ki	ki					javaslat	H4310	8	szo	alacsony
+Nah.1.6	8	birhatná	birhatná					javaslat	H6965	9	szo	alacsony
+Nah.1.6	9	ki	ki					betoldas				
+Nah.1.6	10	búsulásának	búsulásának					javaslat	H0639	12	szo	alacsony
+Nah.1.6	10	búsulásának	búsulásának					javaslat	H9023	13	morfema	alacsony
+Nah.1.6	11	tüzét	tüzét					javaslat	H2740	11	szo	alacsony
+Nah.1.6	12	Heve	Heve					javaslat	H2534	14	szo	alacsony
+Nah.1.6	12	Heve	Heve					javaslat	H9023	15	morfema	alacsony
+Nah.1.6	13	szétfoly	szétfoly					javaslat	H5413	16	szo	alacsony
+Nah.1.6	14	mint	mint					javaslat	H9004	17	morfema	alacsony
+Nah.1.6	15	a	a					betoldas				
+Nah.1.6	16	láng	láng					javaslat	H0784	18	szo	alacsony
+Nah.1.6	17	és	és					javaslat	H9002	19	morfema	alacsony
+Nah.1.6	18	a	a					betoldas				
+Nah.1.6	19	kőszálak	kőszálak					javaslat	H6697	21	szo	alacsony
+Nah.1.6	20	is	is					betoldas				
+Nah.1.6	21	szétporlanak	szétporlanak					javaslat	H5422	22	szo	alacsony
+Nah.1.6	22	tőle	tőle					javaslat	H4480	23	szo	alacsony
+Nah.1.6	22	tőle	tőle					javaslat	H9033	24	morfema	alacsony
+Nah.1.7	1	Jó	Jó					javaslat	H2896	1	szo	alacsony
+Nah.1.7	2	az	az					betoldas				
+Nah.1.7	3	Úr	Úr					javaslat	H3068	2	szo	alacsony
+Nah.1.7	4	erősség	erősség					javaslat	H9005	3	morfema	alacsony
+Nah.1.7	4	erősség	erősség					javaslat	H4581	4	szo	alacsony
+Nah.1.7	5	a	a					betoldas				
+Nah.1.7	6	szorongatás	szorongatás					javaslat	H6869	7	szo	alacsony
+Nah.1.7	7	idején	idején					javaslat	H9003	5	morfema	alacsony
+Nah.1.7	7	idején	idején					javaslat	H3117	6	szo	alacsony
+Nah.1.7	8	és	és					javaslat	H9002	8	morfema	alacsony
+Nah.1.7	9	ő	ő					betoldas				
+Nah.1.7	10	ismeri	ismeri					javaslat	H3045	9	szo	alacsony
+Nah.1.7	11	a	a					betoldas				
+Nah.1.7	12	benne	benne					javaslat	H9003	11	morfema	alacsony
+Nah.1.7	12	benne	benne					javaslat	H9033	12	morfema	alacsony
+Nah.1.7	13	bízókat	bízókat					javaslat	H2620	10	szo	alacsony
+Nah.1.8	1	De	De					javaslat	H9002	1	morfema	alacsony
+Nah.1.8	2	gáttörő	gáttörő					javaslat	H5674	4	szo	alacsony
+Nah.1.8	3	árvízként	árvízként					javaslat	H9003	2	morfema	alacsony
+Nah.1.8	3	árvízként	árvízként					javaslat	H7858	3	szo	alacsony
+Nah.1.8	4	pusztít	pusztít					javaslat	H3617	5	szo	alacsony
+Nah.1.8	4	pusztít	pusztít					javaslat	H6213	6	szo	alacsony
+Nah.1.8	5	annak	annak					javaslat	H9024	8	morfema	alacsony
+Nah.1.8	6	helyén	helyén					javaslat	H4725	7	szo	alacsony
+Nah.1.8	6	helyén	helyén					javaslat	H9024	8	morfema	alacsony
+Nah.1.8	7	és	és					javaslat	H9002	9	morfema	alacsony
+Nah.1.8	8	gyűlölőit	gyűlölőit					javaslat	H0341	10	szo	alacsony
+Nah.1.8	8	gyűlölőit	gyűlölőit					javaslat	H9023	11	morfema	alacsony
+Nah.1.8	9	setétség	sötétség	igen				javaslat	H2822	13	szo	alacsony
+Nah.1.8	10	üldözi	üldözi					javaslat	H7291	12	szo	alacsony
+Nah.1.9	1	Mit	Mit					javaslat	H4100	1	szo	alacsony
+Nah.1.9	2	koholtok	koholtok					javaslat	H2803	2	szo	alacsony
+Nah.1.9	3	az	az					betoldas				
+Nah.1.9	4	Úr	Úr					javaslat	H3068	5	szo	alacsony
+Nah.1.9	5	ellen	ellen					javaslat	H0413	4	szo	alacsony
+Nah.1.9	6	Elpusztít	Elpusztít					javaslat	H3617	6	szo	alacsony
+Nah.1.9	6	Elpusztít	Elpusztít					javaslat	H6213	8	szo	alacsony
+Nah.1.9	7	ő	ő					javaslat	H1931	7	szo	alacsony
+Nah.1.9	8	nem	nem					javaslat	H3808	9	szo	alacsony
+Nah.1.9	9	lészen	lesz	igen				javaslat	H6965	10	szo	alacsony
+Nah.1.9	10	kétszer	kétszer					javaslat	H6471	11	szo	alacsony
+Nah.1.9	11	veszedelem	veszedelem					javaslat	H6869	12	szo	alacsony
+Nah.1.10	1	Ha	Ha					javaslat	H3588	1	szo	alacsony
+Nah.1.10	2	annyira	annyira					javaslat	H5704	2	szo	alacsony
+Nah.1.10	3	összefonódnak	összefonódnak					javaslat	H5440	4	szo	alacsony
+Nah.1.10	4	is	is					betoldas				
+Nah.1.10	5	mint	mint					javaslat	H5704	2	szo	alacsony
+Nah.1.10	6	a	a					betoldas				
+Nah.1.10	7	tüskebokrok	tüskebokrok					javaslat	H5518	3	szo	alacsony
+Nah.1.10	8	és	és					javaslat	H9002	5	morfema	alacsony
+Nah.1.10	9	olyan	olyan					betoldas				
+Nah.1.10	10	ázottak	ázottak					javaslat	H5433	9	szo	alacsony
+Nah.1.10	11	is	is					betoldas				
+Nah.1.10	12	mint	mint					javaslat	H9004	6	morfema	alacsony
+Nah.1.10	13	az	az					betoldas				
+Nah.1.10	14	italuk	italuk					javaslat	H5435	7	szo	alacsony
+Nah.1.10	14	italuk	italuk					javaslat	H9028	8	morfema	alacsony
+Nah.1.10	15	megemésztetnek	megemésztetnek					javaslat	H0398	10	szo	alacsony
+Nah.1.10	16	mint	mint					javaslat	H9004	11	morfema	alacsony
+Nah.1.10	17	a	a					betoldas				
+Nah.1.10	18	teljesen	teljesen					javaslat	H4392	14	szo	alacsony
+Nah.1.10	19	megszáradt	megszáradt					javaslat	H3002	13	szo	alacsony
+Nah.1.10	20	tarló	tarló					javaslat	H7179	12	szo	alacsony
+Nah.1.11	1	Belőled	Belőled					javaslat	H4480	1	szo	alacsony
+Nah.1.11	1	Belőled	Belőled					javaslat	H9032	2	morfema	alacsony
+Nah.1.11	2	származott	származott					javaslat	H3318	3	szo	alacsony
+Nah.1.11	3	a		igen	osszevonva	4		betoldas				
+Nah.1.11	4	ki	aki	igen				betoldas				
+Nah.1.11	5	gonoszt	gonoszt					javaslat	H7451	7	szo	alacsony
+Nah.1.11	6	koholt	koholt					javaslat	H2803	4	szo	alacsony
+Nah.1.11	7	az	az					betoldas				
+Nah.1.11	8	Úr	Úr					javaslat	H3068	6	szo	alacsony
+Nah.1.11	9	ellen	ellen					javaslat	H5921	5	szo	alacsony
+Nah.1.11	10	a		igen	osszevonva	11		betoldas				
+Nah.1.11	11	ki	aki	igen				betoldas				
+Nah.1.11	12	álnokságot	álnokságot					javaslat	H1100	9	szo	alacsony
+Nah.1.11	13	tanácsolt	tanácsolt					javaslat	H3289	8	szo	alacsony
+Nah.1.12	1	Így	Így					javaslat	H3541	1	szo	alacsony
+Nah.1.12	2	szól	szól					javaslat	H0559	2	szo	alacsony
+Nah.1.12	3	az	az					betoldas				
+Nah.1.12	4	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Nah.1.12	5	Ha	Ha					javaslat	H0518	4	szo	alacsony
+Nah.1.12	6	teljes	teljes					javaslat	H8003	5	szo	alacsony
+Nah.1.12	7	erőben	erőben					javaslat	H8003	5	szo	alacsony
+Nah.1.12	8	és	és					javaslat	H9002	6	morfema	alacsony
+Nah.1.12	9	sokan	sokan					javaslat	H7227	8	szo	alacsony
+Nah.1.12	10	vannak	vannak					betoldas				
+Nah.1.12	11	is	is					javaslat	H3651	7	szo	alacsony
+Nah.1.12	12	mégis	mégis					javaslat	H9002	9	morfema	alacsony
+Nah.1.12	12	mégis	mégis					javaslat	H3651	10	szo	alacsony
+Nah.1.12	13	levágatnak	levágatnak					javaslat	H1494	11	szo	alacsony
+Nah.1.12	14	és	és					javaslat	H9001	12	morfema	alacsony
+Nah.1.12	15	elenyésznek	elenyésznek					javaslat	H5674	13	szo	alacsony
+Nah.1.12	16	Megaláztalak	Megaláztalak					javaslat	H6031	15	szo	alacsony
+Nah.1.12	16	Megaláztalak	Megaláztalak					javaslat	H9032	16	morfema	alacsony
+Nah.1.12	17	téged	téged					javaslat	H9032	16	morfema	alacsony
+Nah.1.12	18	de	de					javaslat	H9001	14	morfema	alacsony
+Nah.1.12	19	nem	nem					javaslat	H3808	17	szo	alacsony
+Nah.1.12	20	foglak	foglak					betoldas				
+Nah.1.12	21	többé	többé					javaslat	H5750	20	szo	alacsony
+Nah.1.12	22	megalázni	megalázni					javaslat	H6031	18	szo	alacsony
+Nah.1.12	22	megalázni	megalázni					javaslat	H9032	19	morfema	alacsony
+Nah.1.13	1	Most	Most					javaslat	H6258	2	szo	alacsony
+Nah.1.13	2	már	már					betoldas				
+Nah.1.13	3	leveszem	leveszem					javaslat	H7665	3	szo	alacsony
+Nah.1.13	4	rólad	rólad					javaslat	H9006	6	morfema	alacsony
+Nah.1.13	4	rólad	rólad					javaslat	H5921	7	szo	alacsony
+Nah.1.13	4	rólad	rólad					javaslat	H9032	8	morfema	alacsony
+Nah.1.13	5	az	az					betoldas				
+Nah.1.13	6	ő	ő					javaslat	H9023	5	morfema	alacsony
+Nah.1.13	7	igáját	igáját					javaslat	H4132	4	szo	alacsony
+Nah.1.13	7	igáját	igáját					javaslat	H9023	5	morfema	alacsony
+Nah.1.13	8	és	és					javaslat	H9002	9	morfema	alacsony
+Nah.1.13	9	bilincseidet	bilincseidet					javaslat	H4147	10	szo	alacsony
+Nah.1.13	9	bilincseidet	bilincseidet					javaslat	H9022	11	morfema	alacsony
+Nah.1.13	10	leszaggatom	leszaggatom					javaslat	H5423	12	szo	alacsony
+Nah.1.14	1	Felőled	Felőled					javaslat	H5921	3	szo	alacsony
+Nah.1.14	1	Felőled	Felőled					javaslat	H9031	4	morfema	alacsony
+Nah.1.14	2	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Nah.1.14	3	azt	azt					betoldas				
+Nah.1.14	4	rendeli	rendeli					javaslat	H6680	2	szo	alacsony
+Nah.1.14	5	az	az					betoldas				
+Nah.1.14	6	Úr	Úr					javaslat	H3068	5	szo	alacsony
+Nah.1.14	7	Nevednek	Nevednek					javaslat	H9006	8	morfema	alacsony
+Nah.1.14	7	Nevednek	Nevednek					javaslat	H8034	9	szo	alacsony
+Nah.1.14	7	Nevednek	Nevednek					javaslat	H9021	10	morfema	alacsony
+Nah.1.14	8	ne	ne					javaslat	H3808	6	szo	alacsony
+Nah.1.14	9	támadjon	támadjon					javaslat	H2232	7	szo	alacsony
+Nah.1.14	10	többé	többé					javaslat	H5750	11	szo	alacsony
+Nah.1.14	11	magva	magva					javaslat	H2232	7	szo	alacsony
+Nah.1.14	12	isteneid	isteneid					javaslat	H0430	14	szo	alacsony
+Nah.1.14	12	isteneid	isteneid					javaslat	H9021	15	morfema	alacsony
+Nah.1.14	13	házából	házából					javaslat	H9006	12	morfema	alacsony
+Nah.1.14	13	házából	házából					javaslat	H1004	13	szo	alacsony
+Nah.1.14	14	kivesztem	kivesztem					javaslat	H3772	16	szo	alacsony
+Nah.1.14	15	a	a					betoldas				
+Nah.1.14	16	faragott	faragott					javaslat	H6459	17	szo	alacsony
+Nah.1.14	17	és	és					javaslat	H9002	18	morfema	alacsony
+Nah.1.14	18	öntött	öntött					javaslat	H4541	19	szo	alacsony
+Nah.1.14	19	képeket	képeket					betoldas				
+Nah.1.14	20	megásom	megásom					javaslat	H7760	20	szo	alacsony
+Nah.1.14	21	sírodat	sírodat					javaslat	H6913	21	szo	alacsony
+Nah.1.14	21	sírodat	sírodat					javaslat	H9021	22	morfema	alacsony
+Nah.1.14	22	mert	mert					javaslat	H3588	23	szo	alacsony
+Nah.1.14	23	becstelen	becstelen					javaslat	H7043	24	szo	alacsony
+Nah.1.14	24	vagy	vagy					javaslat	H7043	24	szo	alacsony
+Nah.1.15	1	Ímé	Ímé					javaslat	H2009	1	szo	alacsony
+Nah.1.15	2	a	a					betoldas				
+Nah.1.15	3	hegyeken	hegyeken					javaslat	H5921	2	szo	alacsony
+Nah.1.15	3	hegyeken	hegyeken					javaslat	H9009	3	morfema	alacsony
+Nah.1.15	3	hegyeken	hegyeken					javaslat	H2022	4	szo	alacsony
+Nah.1.15	4	örömhírhozónak	örömhírhozónak					javaslat	H1319	6	szo	alacsony
+Nah.1.15	5	lábai	lábai					javaslat	H7272	5	szo	alacsony
+Nah.1.15	6	Békességet	Békességet					javaslat	H7965	8	szo	alacsony
+Nah.1.15	7	hirdet	hirdet					javaslat	H8085	7	szo	alacsony
+Nah.1.15	8	Ünnepeld	Ünnepeld					javaslat	H2287	9	szo	alacsony
+Nah.1.15	9	Júda	Júda					javaslat	H3063	10	szo	alacsony
+Nah.1.15	10	ünnepeidet	ünnepeidet					javaslat	H2282	11	szo	alacsony
+Nah.1.15	10	ünnepeidet	ünnepeidet					javaslat	H9022	12	morfema	alacsony
+Nah.1.15	11	fizesd	fizesd					javaslat	H7999	13	szo	alacsony
+Nah.1.15	12	le	le					javaslat	H7999	13	szo	alacsony
+Nah.1.15	13	fogadásaidat	fogadásaidat					javaslat	H5088	14	szo	alacsony
+Nah.1.15	13	fogadásaidat	fogadásaidat					javaslat	H9022	15	morfema	alacsony
+Nah.1.15	14	mert	mert					javaslat	H3588	16	szo	alacsony
+Nah.1.15	15	nem	nem					javaslat	H3808	17	szo	alacsony
+Nah.1.15	16	vonul	vonul					javaslat	H9005	20	morfema	alacsony
+Nah.1.15	16	vonul	vonul					javaslat	H5674	21	szo	alacsony
+Nah.1.15	17	át	át					javaslat	H5674	21	szo	alacsony
+Nah.1.15	18	rajtad	rajtad					javaslat	H9003	22	morfema	alacsony
+Nah.1.15	18	rajtad	rajtad					javaslat	H9032	23	morfema	alacsony
+Nah.1.15	19	többé	többé					javaslat	H3254	18	szo	alacsony
+Nah.1.15	19	többé	többé					javaslat	H5750	19	szo	alacsony
+Nah.1.15	20	a	a					betoldas				
+Nah.1.15	21	semmirekellő	semmirekellő					javaslat	H1100	24	szo	alacsony
+Nah.1.15	22	mindenestől	mindenestől					javaslat	H3605	25	szo	alacsony
+Nah.1.15	22	mindenestől	mindenestől					javaslat	H9023	26	morfema	alacsony
+Nah.1.15	23	kiirtatott	kiirtatott					javaslat	H3772	27	szo	alacsony
+Nah.2.1	1	Pusztító	Pusztító					javaslat	H6327	2	szo	alacsony
+Nah.2.1	2	jön	jön					javaslat	H5927	1	szo	alacsony
+Nah.2.1	3	fel	fel					javaslat	H5927	1	szo	alacsony
+Nah.2.1	4	ellened	ellened					javaslat	H5921	3	szo	alacsony
+Nah.2.1	4	ellened	ellened					javaslat	H6440	4	szo	alacsony
+Nah.2.1	4	ellened	ellened					javaslat	H9022	5	morfema	alacsony
+Nah.2.1	5	őrizd	őrizd					javaslat	H5341	6	szo	alacsony
+Nah.2.1	6	a	a					betoldas				
+Nah.2.1	7	várat	várat					javaslat	H4694	7	szo	alacsony
+Nah.2.1	8	nézzed	nézzed					javaslat	H6822	8	szo	alacsony
+Nah.2.1	9	az	az					betoldas				
+Nah.2.1	10	útat	útat					javaslat	H1870	9	szo	alacsony
+Nah.2.1	11	erősítsd	erősítsd					javaslat	H2388	10	szo	alacsony
+Nah.2.1	12	derekadat	derekadat					javaslat	H4975	11	szo	alacsony
+Nah.2.1	13	keményítsd	keményítsd					javaslat	H0553	12	szo	alacsony
+Nah.2.1	14	meg	meg					javaslat	H0553	12	szo	alacsony
+Nah.2.1	15	erődet	erődet					javaslat	H3581	13	szo	alacsony
+Nah.2.1	16	igen	igen					javaslat	H3966	14	szo	alacsony
+Nah.2.2	1	Mert	Mert					javaslat	H3588	1	szo	alacsony
+Nah.2.2	2	helyreállítja	helyreállítja					javaslat	H7725	2	szo	alacsony
+Nah.2.2	3	az	az					betoldas				
+Nah.2.2	4	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Nah.2.2	5	Jákób	Jákób					javaslat	H3290	6	szo	alacsony
+Nah.2.2	6	büszkeségét	büszkeségét					javaslat	H1347	5	szo	alacsony
+Nah.2.2	7	mint	mint					javaslat	H9004	7	morfema	alacsony
+Nah.2.2	8	Izráel	Izráel					javaslat	H3478	9	szo	alacsony
+Nah.2.2	9	büszkeségét	büszkeségét					javaslat	H1347	8	szo	alacsony
+Nah.2.2	10	mert	mert					javaslat	H3588	10	szo	alacsony
+Nah.2.2	11	rablók	rablók					javaslat	H1238	13	szo	alacsony
+Nah.2.2	12	rabolták	rabolták					javaslat	H1238	11	szo	alacsony
+Nah.2.2	13	ki	ki					javaslat	H1238	11	szo	alacsony
+Nah.2.2	14	őket	őket					javaslat	H9038	12	morfema	alacsony
+Nah.2.2	15	csemetéiket	csemetéiket					javaslat	H2156	15	szo	alacsony
+Nah.2.2	15	csemetéiket	csemetéiket					javaslat	H9028	16	morfema	alacsony
+Nah.2.2	16	pedig	pedig					javaslat	H9002	14	morfema	alacsony
+Nah.2.2	17	kivágták	kivágták					javaslat	H7843	17	szo	alacsony
+Nah.2.3	1	Vitézeinek	Vitézeinek					javaslat	H1368	2	szo	alacsony
+Nah.2.3	1	Vitézeinek	Vitézeinek					javaslat	H9023	3	morfema	alacsony
+Nah.2.3	2	pajzsa	pajzsa					javaslat	H4043	1	szo	alacsony
+Nah.2.3	3	veres	veres					javaslat	H0119	4	szo	alacsony
+Nah.2.3	4	katonáinak	katonáinak					javaslat	H0582	5	szo	alacsony
+Nah.2.3	4	katonáinak	katonáinak					javaslat	H2428	6	szo	alacsony
+Nah.2.3	5	ruházata	ruházata					javaslat	H8529	7	szo	alacsony
+Nah.2.3	6	bíborszínű	bíborszínű					javaslat	H8529	7	szo	alacsony
+Nah.2.3	7	hadiszekere	hadiszekere					javaslat	H7393	12	szo	alacsony
+Nah.2.3	8	aczéltűzben	acéltűzben	igen				javaslat	H9003	8	morfema	alacsony
+Nah.2.3	8	aczéltűzben	acéltűzben	igen				javaslat	H0784	9	szo	alacsony
+Nah.2.3	8	aczéltűzben	acéltűzben	igen				javaslat	H6393	10	szo	alacsony
+Nah.2.3	9	ragyog	ragyog					betoldas				
+Nah.2.3	10	fegyverkezése	fegyverkezése					javaslat	H3559	15	szo	alacsony
+Nah.2.3	10	fegyverkezése	fegyverkezése					javaslat	H9043	16	morfema	alacsony
+Nah.2.3	11	napján	napján					javaslat	H9003	13	morfema	alacsony
+Nah.2.3	11	napján	napján					javaslat	H3117	14	szo	alacsony
+Nah.2.3	12	és	és					javaslat	H9002	17	morfema	alacsony
+Nah.2.3	13	a	a					betoldas				
+Nah.2.3	14	dárdákat	dárdákat					javaslat	H9009	18	morfema	alacsony
+Nah.2.3	14	dárdákat	dárdákat					javaslat	H1265	19	szo	alacsony
+Nah.2.3	15	rengetik	rengetik					javaslat	H7477	20	szo	alacsony
+Nah.2.4	1	Az	Az					betoldas				
+Nah.2.4	2	utczákon	utcákon	igen				javaslat	H9003	1	morfema	alacsony
+Nah.2.4	2	utczákon	utcákon	igen				javaslat	H2351	2	szo	alacsony
+Nah.2.4	3	robognak	robognak					javaslat	H1984	3	szo	alacsony
+Nah.2.4	4	a	a					betoldas				
+Nah.2.4	5	szekerek	szekerek					javaslat	H7393	5	szo	alacsony
+Nah.2.4	6	összeütköznek	összeütköznek					javaslat	H8264	6	szo	alacsony
+Nah.2.4	7	a	a					betoldas				
+Nah.2.4	8	piaczokon	piacokon	igen				javaslat	H9003	8	morfema	alacsony
+Nah.2.4	8	piaczokon	piacokon	igen				javaslat	H7339	9	szo	alacsony
+Nah.2.4	9	tekintetök	tekintetök					javaslat	H4758	10	szo	alacsony
+Nah.2.4	9	tekintetök	tekintetök					javaslat	H9029	11	morfema	alacsony
+Nah.2.4	10	mint	mint					javaslat	H9004	12	morfema	alacsony
+Nah.2.4	11	a	a					betoldas				
+Nah.2.4	12	fáklyák	fáklyák					javaslat	H3940	13	szo	alacsony
+Nah.2.4	13	futkosnak	futkosnak					javaslat	H7323	16	szo	alacsony
+Nah.2.4	14	mint	mint					javaslat	H9004	14	morfema	alacsony
+Nah.2.4	15	a	a					betoldas				
+Nah.2.4	16	villámok	villámok					javaslat	H1300	15	szo	alacsony
+Nah.2.5	1	Emlegeti	Emlegeti					javaslat	H2142	1	szo	alacsony
+Nah.2.5	2	vitézlő	vitézlő					javaslat	H0117	2	szo	alacsony
+Nah.2.5	3	hőseit	hőseit					javaslat	H0117	2	szo	alacsony
+Nah.2.5	3	hőseit	hőseit					javaslat	H9023	3	morfema	alacsony
+Nah.2.5	4	ingadoznak	ingadoznak					javaslat	H3782	4	szo	alacsony
+Nah.2.5	5	lépéseikben	lépéseikben					javaslat	H9003	5	morfema	alacsony
+Nah.2.5	5	lépéseikben	lépéseikben					javaslat	H1979	6	szo	alacsony
+Nah.2.5	5	lépéseikben	lépéseikben					javaslat	H9028	7	morfema	alacsony
+Nah.2.5	6	sietnek	sietnek					javaslat	H4116	8	szo	alacsony
+Nah.2.5	7	a	a					betoldas				
+Nah.2.5	8	kőfalra	kőfalra					javaslat	H2346	9	szo	alacsony
+Nah.2.5	8	kőfalra	kőfalra					javaslat	H9024	10	morfema	alacsony
+Nah.2.5	9	és	és					javaslat	H9001	11	morfema	alacsony
+Nah.2.5	10	felállíttatik	felállíttatik					javaslat	H3559	12	szo	alacsony
+Nah.2.5	11	a	a					betoldas				
+Nah.2.5	12	védősáncz	védősánc	igen				javaslat	H5526	14	szo	alacsony
+Nah.2.6	1	A	A					betoldas				
+Nah.2.6	2	folyóvizek	folyóvizek					javaslat	H5104	3	szo	alacsony
+Nah.2.6	3	kapui	kapui					javaslat	H8179	1	szo	alacsony
+Nah.2.6	4	megnyílnak	megnyílnak					javaslat	H6605	4	szo	alacsony
+Nah.2.6	5	és	és					javaslat	H9002	5	morfema	alacsony
+Nah.2.6	6	a	a					betoldas				
+Nah.2.6	7	palota	palota					javaslat	H1964	7	szo	alacsony
+Nah.2.6	8	megrendül	megrendül					javaslat	H4127	8	szo	alacsony
+Nah.2.7	1	De	De					javaslat	H9002	1	morfema	alacsony
+Nah.2.7	2	elvégeztetett	elvégeztetett					javaslat	H5324	2	szo	alacsony
+Nah.2.7	3	felfedik	felfedik					javaslat	H1540	3	szo	alacsony
+Nah.2.7	4	elvitetik	elvitetik					javaslat	H5927	4	szo	alacsony
+Nah.2.7	5	és	és					javaslat	H9002	5	morfema	alacsony
+Nah.2.7	6	szolgálói	szolgálói					javaslat	H0519	6	szo	alacsony
+Nah.2.7	6	szolgálói	szolgálói					javaslat	H9024	7	morfema	alacsony
+Nah.2.7	7	keseregnek	keseregnek					javaslat	H5090	8	szo	alacsony
+Nah.2.7	8	mint	mint					javaslat	H9004	9	morfema	alacsony
+Nah.2.7	9	nyögő	nyögő					javaslat	H6963	10	szo	alacsony
+Nah.2.7	10	galambok	galambok					javaslat	H3123	11	szo	alacsony
+Nah.2.7	11	mellöket	mellöket					javaslat	H5921	13	szo	alacsony
+Nah.2.7	11	mellöket	mellöket					javaslat	H3824	14	szo	alacsony
+Nah.2.7	11	mellöket	mellöket					javaslat	H9029	15	morfema	alacsony
+Nah.2.7	12	vervén	verve	igen				javaslat	H8608	12	szo	alacsony
+Nah.2.8	1	Pedig	Pedig					javaslat	H9002	1	morfema	alacsony
+Nah.2.8	2	Ninive	Ninive					javaslat	H5210	2	szo	alacsony
+Nah.2.8	3	olyan	olyan					javaslat	H9004	3	morfema	alacsony
+Nah.2.8	4	mint	mint					javaslat	H9004	3	morfema	alacsony
+Nah.2.8	5	a	a					betoldas				
+Nah.2.8	6	bővizű	bővizű					javaslat	H4325	5	szo	alacsony
+Nah.2.8	7	tó	tó					javaslat	H1295	4	szo	alacsony
+Nah.2.8	8	eleitől	eleitől					javaslat	H3117	7	szo	alacsony
+Nah.2.8	8	eleitől	eleitől					javaslat	H1931	8	szo	alacsony
+Nah.2.8	9	fogva	fogva					javaslat	H9006	6	morfema	alacsony
+Nah.2.8	10	mégis	mégis					javaslat	H9002	9	morfema	alacsony
+Nah.2.8	11	futnak	futnak					javaslat	H5127	11	szo	alacsony
+Nah.2.8	12	ők	ők					javaslat	H1992	10	szo	alacsony
+Nah.2.8	13	Álljatok	Álljatok					javaslat	H5975	12	szo	alacsony
+Nah.2.8	14	meg	meg					javaslat	H5975	12	szo	alacsony
+Nah.2.8	15	álljatok	álljatok					javaslat	H5975	13	szo	alacsony
+Nah.2.8	16	meg	meg					javaslat	H5975	13	szo	alacsony
+Nah.2.8	17	De	De					javaslat	H9002	14	morfema	alacsony
+Nah.2.8	18	vissza	vissza					javaslat	H6437	16	szo	alacsony
+Nah.2.8	19	se	se					javaslat	H0369	15	szo	alacsony
+Nah.2.8	20	tekint	tekint					javaslat	H6437	16	szo	alacsony
+Nah.2.8	21	senki	senki					javaslat	H0369	15	szo	alacsony
+Nah.2.9	1	Raboljatok	Raboljatok					javaslat	H0962	1	szo	alacsony
+Nah.2.9	2	ezüstöt	ezüstöt					javaslat	H3701	2	szo	alacsony
+Nah.2.9	3	raboljatok	raboljatok					javaslat	H0962	3	szo	alacsony
+Nah.2.9	4	aranyat	aranyat					javaslat	H2091	4	szo	alacsony
+Nah.2.9	5	száma	száma					javaslat	H7097	7	szo	alacsony
+Nah.2.9	6	sincs	sincs					javaslat	H9002	5	morfema	alacsony
+Nah.2.9	6	sincs	sincs					javaslat	H0369	6	szo	alacsony
+Nah.2.9	7	a	a					betoldas				
+Nah.2.9	8	rejtett	rejtett					javaslat	H8498	9	szo	alacsony
+Nah.2.9	9	kincseknek	kincseknek					javaslat	H9005	8	morfema	alacsony
+Nah.2.9	9	kincseknek	kincseknek					javaslat	H8498	9	szo	alacsony
+Nah.2.9	10	gazdag	gazdag					javaslat	H3519	10	szo	alacsony
+Nah.2.9	11	minden	minden					javaslat	H3605	12	szo	alacsony
+Nah.2.9	12	drága	drága					javaslat	H2532	14	szo	alacsony
+Nah.2.9	13	edényben	edényben					javaslat	H9006	11	morfema	alacsony
+Nah.2.9	13	edényben	edényben					javaslat	H3627	13	szo	alacsony
+Nah.2.10	1	Feldúlva	Feldúlva					javaslat	H0950	1	szo	alacsony
+Nah.2.10	2	széthányva	széthányva					javaslat	H4003	3	szo	alacsony
+Nah.2.10	3	kifosztatva	kifosztatva					javaslat	H1110	5	szo	alacsony
+Nah.2.10	4	Szíve	Szíve					javaslat	H3820	7	szo	alacsony
+Nah.2.10	5	megolvadt	megolvadt					javaslat	H4549	8	szo	alacsony
+Nah.2.10	6	a	a					betoldas				
+Nah.2.10	7	térdek	térdek					javaslat	H1290	11	szo	alacsony
+Nah.2.10	8	reszketnek	reszketnek					javaslat	H6375	10	szo	alacsony
+Nah.2.10	9	fájdalom	fájdalom					javaslat	H2479	13	szo	alacsony
+Nah.2.10	10	van	van					betoldas				
+Nah.2.10	11	egész	egész					javaslat	H3605	15	szo	alacsony
+Nah.2.10	12	derekában	derekában					javaslat	H9003	14	morfema	alacsony
+Nah.2.10	12	derekában	derekában					javaslat	H4975	16	szo	alacsony
+Nah.2.10	13	és	és					javaslat	H9002	17	morfema	alacsony
+Nah.2.10	14	mindnyájok	mindnyájuk	igen				javaslat	H3605	19	szo	alacsony
+Nah.2.10	14	mindnyájok	mindnyájuk	igen				javaslat	H9028	20	morfema	alacsony
+Nah.2.10	15	arcza	arca	igen				javaslat	H6440	18	szo	alacsony
+Nah.2.10	16	elvesztette	elvesztette					javaslat	H6908	21	szo	alacsony
+Nah.2.10	17	pirosságát	pirosságát					javaslat	H6289	22	szo	alacsony
+Nah.2.11	1	Hol	Hol					javaslat	H0346	1	szo	alacsony
+Nah.2.11	2	van	van					betoldas				
+Nah.2.11	3	az	az					betoldas				
+Nah.2.11	4	oroszlánok	oroszlánok					javaslat	H0738	3	szo	alacsony
+Nah.2.11	5	tanyája	tanyája					javaslat	H4583	2	szo	alacsony
+Nah.2.11	6	és	és					javaslat	H9002	4	morfema	alacsony
+Nah.2.11	7	az	az					betoldas				
+Nah.2.11	8	oroszlán	oroszlán					javaslat	H3715	8	szo	alacsony
+Nah.2.11	9	kölyköknek	kölyköknek					javaslat	H9005	7	morfema	alacsony
+Nah.2.11	9	kölyköknek	kölyköknek					javaslat	H3715	8	szo	alacsony
+Nah.2.11	10	ama	ama					javaslat	H1931	6	szo	alacsony
+Nah.2.11	11	legelője	legelője					javaslat	H4829	5	szo	alacsony
+Nah.2.11	12	a		igen	osszevonva	13		betoldas				
+Nah.2.11	13	hová	ahová	igen				javaslat	H0834	9	szo	alacsony
+Nah.2.11	13	hová	ahová	igen				javaslat	H8033	13	szo	alacsony
+Nah.2.11	14	járt	járt					javaslat	H1980	10	szo	alacsony
+Nah.2.11	15	a	a					betoldas				
+Nah.2.11	16	nőstény	nőstény					javaslat	H3833	12	szo	alacsony
+Nah.2.11	17	és	és					betoldas				
+Nah.2.11	18	hímoroszlán	hímoroszlán					javaslat	H0738	11	szo	alacsony
+Nah.2.11	19	az	az					betoldas				
+Nah.2.11	20	oroszlán	oroszlán					javaslat	H0738	15	szo	alacsony
+Nah.2.11	21	kölyök	kölyök					javaslat	H1482	14	szo	alacsony
+Nah.2.11	22	és	és					javaslat	H9002	16	morfema	alacsony
+Nah.2.11	23	nem	nem					javaslat	H0369	17	szo	alacsony
+Nah.2.11	24	volt	volt					betoldas				
+Nah.2.11	25	a		igen	osszevonva	26		betoldas				
+Nah.2.11	26	ki	aki	igen				betoldas				
+Nah.2.11	27	elriaszsza	elriassza	igen				javaslat	H2729	18	szo	alacsony
+Nah.2.12	1	Az	Az					betoldas				
+Nah.2.12	2	oroszlán	oroszlán					javaslat	H0738	1	szo	alacsony
+Nah.2.12	3	torkig	torkig					javaslat	H9003	3	morfema	alacsony
+Nah.2.12	4	valót	valót					javaslat	H1767	4	szo	alacsony
+Nah.2.12	5	ragadozott	ragadozott					javaslat	H2963	2	szo	alacsony
+Nah.2.12	6	kölykeinek	kölykeinek					javaslat	H1484	5	szo	alacsony
+Nah.2.12	6	kölykeinek	kölykeinek					javaslat	H9023	6	morfema	alacsony
+Nah.2.12	7	és	és					javaslat	H9002	7	morfema	alacsony
+Nah.2.12	8	fojtogatott	fojtogatott					javaslat	H2614	8	szo	alacsony
+Nah.2.12	9	nőstényeinek	nőstényeinek					javaslat	H9005	9	morfema	alacsony
+Nah.2.12	9	nőstényeinek	nőstényeinek					javaslat	H3833	10	szo	alacsony
+Nah.2.12	9	nőstényeinek	nőstényeinek					javaslat	H9023	11	morfema	alacsony
+Nah.2.12	10	és	és					javaslat	H9001	12	morfema	alacsony
+Nah.2.12	11	megtöltötte	megtöltötte					javaslat	H4390	13	szo	alacsony
+Nah.2.12	12	barlangjait	barlangjait					javaslat	H2356	15	szo	alacsony
+Nah.2.12	12	barlangjait	barlangjait					javaslat	H9023	16	morfema	alacsony
+Nah.2.12	13	zsákmánynyal	zsákmánnyal	igen				javaslat	H2964	14	szo	alacsony
+Nah.2.12	14	tanyáit	tanyáit					javaslat	H4585	18	szo	alacsony
+Nah.2.12	14	tanyáit	tanyáit					javaslat	H9023	19	morfema	alacsony
+Nah.2.12	15	pedig	pedig					javaslat	H9002	17	morfema	alacsony
+Nah.2.12	16	prédával	prédával					javaslat	H2966	20	szo	alacsony
+Nah.2.13	1	Ímé	Ímé					javaslat	H2005	1	szo	alacsony
+Nah.2.13	2	rád	rád					javaslat	H0413	3	szo	alacsony
+Nah.2.13	2	rád	rád					javaslat	H9032	4	morfema	alacsony
+Nah.2.13	3	török	török					javaslat	H9040	2	morfema	alacsony
+Nah.2.13	4	azt	azt					betoldas				
+Nah.2.13	5	mondja	mondja					javaslat	H5002	5	szo	alacsony
+Nah.2.13	6	a	a					betoldas				
+Nah.2.13	7	Seregek	Seregek					javaslat	H6635	7	szo	alacsony
+Nah.2.13	8	Ura	Ura					javaslat	H3068	6	szo	alacsony
+Nah.2.13	9	és	és					javaslat	H9001	8	morfema	alacsony
+Nah.2.13	10	füstté	füstté					javaslat	H9003	10	morfema	alacsony
+Nah.2.13	10	füstté	füstté					javaslat	H6227	11	szo	alacsony
+Nah.2.13	11	égetem	égetem					javaslat	H1197	9	szo	alacsony
+Nah.2.13	12	szekereit	szekereit					javaslat	H7393	12	szo	alacsony
+Nah.2.13	12	szekereit	szekereit					javaslat	H9024	13	morfema	alacsony
+Nah.2.13	13	Oroszlán	Oroszlán					javaslat	H3715	15	szo	alacsony
+Nah.2.13	14	kölykeidet	kölykeidet					javaslat	H3715	15	szo	alacsony
+Nah.2.13	14	kölykeidet	kölykeidet					javaslat	H9022	16	morfema	alacsony
+Nah.2.13	15	kard	kard					javaslat	H2719	18	szo	alacsony
+Nah.2.13	16	emészti	emészti					javaslat	H0398	17	szo	alacsony
+Nah.2.13	17	meg	meg					javaslat	H0398	17	szo	alacsony
+Nah.2.13	18	és	és					javaslat	H9001	19	morfema	alacsony
+Nah.2.13	19	kiirtom	kiirtom					javaslat	H3772	20	szo	alacsony
+Nah.2.13	20	e	e					betoldas				
+Nah.2.13	21	földről	földről					javaslat	H9006	21	morfema	alacsony
+Nah.2.13	21	földről	földről					javaslat	H0776	22	szo	alacsony
+Nah.2.13	22	zsákmányodat	zsákmányodat					javaslat	H2964	23	szo	alacsony
+Nah.2.13	22	zsákmányodat	zsákmányodat					javaslat	H9022	24	morfema	alacsony
+Nah.2.13	23	és	és					javaslat	H9002	25	morfema	alacsony
+Nah.2.13	24	nem	nem					javaslat	H3808	26	szo	alacsony
+Nah.2.13	25	hallatszik	hallatszik					javaslat	H8085	27	szo	alacsony
+Nah.2.13	26	többé	többé					javaslat	H5750	28	szo	alacsony
+Nah.2.13	27	követeidnek	követeidnek					javaslat	H4397	30	szo	alacsony
+Nah.2.13	27	követeidnek	követeidnek					javaslat	H9022	31	morfema	alacsony
+Nah.2.13	28	szava	szava					javaslat	H6963	29	szo	alacsony
+Nah.3.1	1	Jaj	Jaj					javaslat	H1945	1	szo	alacsony
+Nah.3.1	2	a	a					betoldas				
+Nah.3.1	3	vérszopó	vérszopó					javaslat	H1818	3	szo	alacsony
+Nah.3.1	4	városnak	városnak					javaslat	H5892	2	szo	alacsony
+Nah.3.1	5	Mindenestől	Mindenestől					javaslat	H3605	4	szo	alacsony
+Nah.3.1	5	Mindenestől	Mindenestől					javaslat	H9024	5	morfema	alacsony
+Nah.3.1	6	hazug	hazug					javaslat	H3585	6	szo	alacsony
+Nah.3.1	7	és	és					betoldas				
+Nah.3.1	8	erőszakkal	erőszakkal					javaslat	H6563	7	szo	alacsony
+Nah.3.1	9	telve	telve					javaslat	H4392	8	szo	alacsony
+Nah.3.1	10	és	és					betoldas				
+Nah.3.1	11	nem	nem					javaslat	H3808	9	szo	alacsony
+Nah.3.1	12	szűnik	szűnik					javaslat	H4185	10	szo	alacsony
+Nah.3.1	13	rabolni	rabolni					javaslat	H2964	11	szo	alacsony
+Nah.3.2	1	Ostor	Ostor					javaslat	H7752	2	szo	alacsony
+Nah.3.2	2	csattogás	csattogás					javaslat	H6963	1	szo	alacsony
+Nah.3.2	3	kerék	kerék					javaslat	H0212	6	szo	alacsony
+Nah.3.2	4	zörgés	zörgés					javaslat	H7494	5	szo	alacsony
+Nah.3.2	5	zaja	zaja					javaslat	H6963	4	szo	alacsony
+Nah.3.2	6	dobogó	dobogó					javaslat	H1725	9	szo	alacsony
+Nah.3.2	7	ló	ló					javaslat	H5483	8	szo	alacsony
+Nah.3.2	8	robogó	robogó					javaslat	H7540	12	szo	alacsony
+Nah.3.2	9	szekér	szekér					javaslat	H4818	11	szo	alacsony
+Nah.3.3	1	Törtető	Törtető					javaslat	H5927	2	szo	alacsony
+Nah.3.3	2	lovag	lovag					javaslat	H6571	1	szo	alacsony
+Nah.3.3	3	kardok	kardok					javaslat	H2719	5	szo	alacsony
+Nah.3.3	4	villogása	villogása					javaslat	H3851	4	szo	alacsony
+Nah.3.3	5	dárda	dárda					javaslat	H2595	8	szo	alacsony
+Nah.3.3	6	villanása	villanása					javaslat	H1300	7	szo	alacsony
+Nah.3.3	7	sebesült	sebesült					javaslat	H2491	11	szo	alacsony
+Nah.3.3	8	tömegek	tömegek					javaslat	H7230	10	szo	alacsony
+Nah.3.3	9	holtak	holtak					javaslat	H6297	14	szo	alacsony
+Nah.3.3	10	sokasága	sokasága					javaslat	H3514	13	szo	alacsony
+Nah.3.3	11	nincs	nincs					javaslat	H0369	16	szo	alacsony
+Nah.3.3	12	számok	számok					javaslat	H7097	17	szo	alacsony
+Nah.3.3	13	az	az					betoldas				
+Nah.3.3	14	elesetteknek	elesetteknek					javaslat	H9005	18	morfema	alacsony
+Nah.3.3	14	elesetteknek	elesetteknek					javaslat	H1472	19	szo	alacsony
+Nah.3.3	15	megbotlanak	megbotlanak					javaslat	H3782	21	szo	alacsony
+Nah.3.3	16	hulláikban	hulláikban					javaslat	H9003	22	morfema	alacsony
+Nah.3.3	16	hulláikban	hulláikban					javaslat	H1472	23	szo	alacsony
+Nah.3.3	16	hulláikban	hulláikban					javaslat	H9028	24	morfema	alacsony
+Nah.3.4	1	A	A					betoldas				
+Nah.3.4	2	szép	szép					javaslat	H2896	5	szo	alacsony
+Nah.3.4	2	szép	szép					javaslat	H2580	6	szo	alacsony
+Nah.3.4	3	parázna	parázna					javaslat	H2181	4	szo	alacsony
+Nah.3.4	4	sok	sok					javaslat	H7230	2	szo	alacsony
+Nah.3.4	5	paráznaságáért	paráznaságáért					javaslat	H9006	1	morfema	alacsony
+Nah.3.4	5	paráznaságáért	paráznaságáért					javaslat	H2183	3	szo	alacsony
+Nah.3.4	6	a	a					betoldas				
+Nah.3.4	7	hitetésnek	hitetésnek					javaslat	H3785	8	szo	alacsony
+Nah.3.4	8	mesternője	mesternője					javaslat	H1172	7	szo	alacsony
+Nah.3.4	9	miatt	miatt					javaslat	H9006	1	morfema	alacsony
+Nah.3.4	10	a		igen	osszevonva	11		javaslat	H9009	9	morfema	alacsony
+Nah.3.4	11	ki	aki	igen				javaslat	H9009	9	morfema	alacsony
+Nah.3.4	12	népeket	népeket					javaslat	H1471	11	szo	alacsony
+Nah.3.4	13	ejtett	ejtett					javaslat	H4376	10	szo	alacsony
+Nah.3.4	14	meg	meg					javaslat	H4376	10	szo	alacsony
+Nah.3.4	15	paráznaságával	paráznaságával					javaslat	H9003	12	morfema	alacsony
+Nah.3.4	15	paráznaságával	paráznaságával					javaslat	H2183	13	szo	alacsony
+Nah.3.4	15	paráznaságával	paráznaságával					javaslat	H9024	14	morfema	alacsony
+Nah.3.4	16	és	és					javaslat	H9002	15	morfema	alacsony
+Nah.3.4	17	nemzetségeket	nemzetségeket					javaslat	H4940	16	szo	alacsony
+Nah.3.4	18	bűbájaival	bűbájaival					javaslat	H9003	17	morfema	alacsony
+Nah.3.4	18	bűbájaival	bűbájaival					javaslat	H3785	18	szo	alacsony
+Nah.3.4	18	bűbájaival	bűbájaival					javaslat	H9024	19	morfema	alacsony
+Nah.3.5	1	Ímé	Ímé					javaslat	H2005	1	szo	alacsony
+Nah.3.5	2	rád	rád					javaslat	H0413	3	szo	alacsony
+Nah.3.5	2	rád	rád					javaslat	H9032	4	morfema	alacsony
+Nah.3.5	3	török	török					javaslat	H9040	2	morfema	alacsony
+Nah.3.5	4	azt	azt					betoldas				
+Nah.3.5	5	mondja	mondja					javaslat	H5002	5	szo	alacsony
+Nah.3.5	6	a	a					betoldas				
+Nah.3.5	7	Seregek	Seregek					javaslat	H6635	7	szo	alacsony
+Nah.3.5	8	Ura	Ura					javaslat	H3068	6	szo	alacsony
+Nah.3.5	9	és	és					javaslat	H9001	8	morfema	alacsony
+Nah.3.5	10	orczádra	orcádra	igen				javaslat	H5921	12	szo	alacsony
+Nah.3.5	10	orczádra	orcádra	igen				javaslat	H6440	13	szo	alacsony
+Nah.3.5	10	orczádra	orcádra	igen				javaslat	H9022	14	morfema	alacsony
+Nah.3.5	11	fordítom	fordítom					javaslat	H1540	9	szo	alacsony
+Nah.3.5	12	ruhádnak	ruhádnak					javaslat	H9022	11	morfema	alacsony
+Nah.3.5	13	alját	alját					javaslat	H7757	10	szo	alacsony
+Nah.3.5	14	és	és					javaslat	H9001	15	morfema	alacsony
+Nah.3.5	15	népeknek	népeknek					javaslat	H1471	17	szo	alacsony
+Nah.3.5	16	mutatom	mutatom					javaslat	H7200	16	szo	alacsony
+Nah.3.5	17	meg	meg					javaslat	H7200	16	szo	alacsony
+Nah.3.5	18	meztelenségedet	meztelenségedet					javaslat	H4626	18	szo	alacsony
+Nah.3.5	18	meztelenségedet	meztelenségedet					javaslat	H9022	19	morfema	alacsony
+Nah.3.5	19	és	és					javaslat	H9002	20	morfema	alacsony
+Nah.3.5	20	országoknak	országoknak					javaslat	H4467	21	szo	alacsony
+Nah.3.5	21	gyalázatodat	gyalázatodat					javaslat	H7036	22	szo	alacsony
+Nah.3.5	21	gyalázatodat	gyalázatodat					javaslat	H9022	23	morfema	alacsony
+Nah.3.6	1	Rútságot	Rútságot					javaslat	H8251	5	szo	alacsony
+Nah.3.6	2	hányatok	hányatok					javaslat	H7993	2	szo	alacsony
+Nah.3.6	3	rád	rád					javaslat	H5921	3	szo	alacsony
+Nah.3.6	3	rád	rád					javaslat	H9032	4	morfema	alacsony
+Nah.3.6	4	és	és					javaslat	H9001	6	morfema	alacsony
+Nah.3.6	5	gyalázattal	gyalázattal					javaslat	H5034	7	szo	alacsony
+Nah.3.6	6	illetlek	illetlek					javaslat	H5034	7	szo	alacsony
+Nah.3.6	6	illetlek	illetlek					javaslat	H9032	8	morfema	alacsony
+Nah.3.6	7	téged	téged					javaslat	H9032	8	morfema	alacsony
+Nah.3.6	8	és	és					javaslat	H9001	9	morfema	alacsony
+Nah.3.6	9	olyanná	olyanná					betoldas				
+Nah.3.6	10	teszlek	teszlek					javaslat	H7760	10	szo	alacsony
+Nah.3.6	10	teszlek	teszlek					javaslat	H9032	11	morfema	alacsony
+Nah.3.6	11	mint	mint					javaslat	H9004	12	morfema	alacsony
+Nah.3.6	12	a		igen	osszevonva	13		betoldas				
+Nah.3.6	13	kit	akit	igen				betoldas				
+Nah.3.6	14	csudálnak	csudálnak					javaslat	H7210	13	szo	alacsony
+Nah.3.7	1	És	És					javaslat	H9001	1	morfema	alacsony
+Nah.3.7	2	mind	mind					javaslat	H3605	3	szo	alacsony
+Nah.3.7	3	a		igen	osszevonva	4		betoldas				
+Nah.3.7	4	ki	aki	igen				betoldas				
+Nah.3.7	5	meglát	meglát					javaslat	H7200	4	szo	alacsony
+Nah.3.7	5	meglát	meglát					javaslat	H9032	5	morfema	alacsony
+Nah.3.7	6	elmenekül	elmenekül					javaslat	H5074	6	szo	alacsony
+Nah.3.7	7	tőled	tőled					javaslat	H4480	7	szo	alacsony
+Nah.3.7	7	tőled	tőled					javaslat	H9032	8	morfema	alacsony
+Nah.3.7	8	és	és					javaslat	H9001	9	morfema	alacsony
+Nah.3.7	9	ezt	ezt					betoldas				
+Nah.3.7	10	mondja	mondja					javaslat	H0559	10	szo	alacsony
+Nah.3.7	11	Elpusztult	Elpusztult					javaslat	H7703	11	szo	alacsony
+Nah.3.7	12	Ninive	Ninive					javaslat	H5210	12	szo	alacsony
+Nah.3.7	13	Ki	Ki					javaslat	H4310	13	szo	alacsony
+Nah.3.7	14	bánkódik	bánkódik					javaslat	H5110	14	szo	alacsony
+Nah.3.7	15	rajta	rajta					javaslat	H9005	15	morfema	alacsony
+Nah.3.7	15	rajta	rajta					javaslat	H9034	16	morfema	alacsony
+Nah.3.7	16	Hol	Hol					javaslat	H9006	17	morfema	alacsony
+Nah.3.7	16	Hol	Hol					javaslat	H0370	18	szo	alacsony
+Nah.3.7	17	keressek	keressek					javaslat	H1245	19	szo	alacsony
+Nah.3.7	18	néked	neked	igen				javaslat	H9005	21	morfema	alacsony
+Nah.3.7	18	néked	neked	igen				javaslat	H9032	22	morfema	alacsony
+Nah.3.7	19	vígasztalókat	vígasztalókat					javaslat	H5162	20	szo	alacsony
+Nah.3.8	1	Avagy	Avagy					javaslat	H9008	1	morfema	alacsony
+Nah.3.8	2	jobb	jobb					javaslat	H3190	2	szo	alacsony
+Nah.3.8	3	vagy	vagy					javaslat	H3190	2	szo	alacsony
+Nah.3.8	4	é	é					javaslat	H9008	1	morfema	alacsony
+Nah.3.8	5	Nó	Nó					javaslat	H4996	4	szo	alacsony
+Nah.3.8	6	Amonnál	Amonnál					javaslat	H9006	3	morfema	alacsony
+Nah.3.8	6	Amonnál	Amonnál					javaslat	H0528	5	szo	alacsony
+Nah.3.8	7	a		igen	osszevonva	8		javaslat	H9009	6	morfema	alacsony
+Nah.3.8	8	mely	amely	igen				javaslat	H9009	6	morfema	alacsony
+Nah.3.8	9	a	a					betoldas				
+Nah.3.8	10	folyamoknál	folyamoknál					javaslat	H9003	8	morfema	alacsony
+Nah.3.8	10	folyamoknál	folyamoknál					javaslat	H2975	9	szo	alacsony
+Nah.3.8	11	fekszik	fekszik					javaslat	H3427	7	szo	alacsony
+Nah.3.8	12	vizek	vizek					javaslat	H4325	10	szo	alacsony
+Nah.3.8	13	veszik	veszik					javaslat	H5439	11	szo	alacsony
+Nah.3.8	14	körül	körül					javaslat	H5439	11	szo	alacsony
+Nah.3.8	14	körül	körül					javaslat	H9005	12	morfema	alacsony
+Nah.3.8	14	körül	körül					javaslat	H9034	13	morfema	alacsony
+Nah.3.8	15	a		igen	osszevonva	16		javaslat	H0834	14	szo	alacsony
+Nah.3.8	16	melynek	amelynek	igen				javaslat	H0834	14	szo	alacsony
+Nah.3.8	17	tenger	tenger					javaslat	H3220	16	szo	alacsony
+Nah.3.8	18	a	a					betoldas				
+Nah.3.8	19	sáncza	sánca	igen				javaslat	H2426	15	szo	alacsony
+Nah.3.8	20	tenger	tenger					javaslat	H9006	17	morfema	alacsony
+Nah.3.8	20	tenger	tenger					javaslat	H3220	18	szo	alacsony
+Nah.3.8	21	a	a					betoldas				
+Nah.3.8	22	kőfala	kőfala					javaslat	H2346	19	szo	alacsony
+Nah.3.8	22	kőfala	kőfala					javaslat	H9024	20	morfema	alacsony
+Nah.3.9	1	Kús	Kús					javaslat	H3568	1	szo	alacsony
+Nah.3.9	2	volt	volt					betoldas				
+Nah.3.9	3	erőssége	erőssége					javaslat	H6109	2	szo	alacsony
+Nah.3.9	3	erőssége	erőssége					javaslat	H9024	3	morfema	alacsony
+Nah.3.9	4	meg	meg					javaslat	H9002	4	morfema	alacsony
+Nah.3.9	5	Égyiptom	Égyiptom					javaslat	H4714	5	szo	alacsony
+Nah.3.9	6	és	és					javaslat	H9002	6	morfema	alacsony
+Nah.3.9	7	száma	száma					javaslat	H7097	8	szo	alacsony
+Nah.3.9	8	sem	sem					javaslat	H0369	7	szo	alacsony
+Nah.3.9	9	volt	volt					betoldas				
+Nah.3.9	10	annak	annak					javaslat	H9024	3	morfema	alacsony
+Nah.3.9	11	Puth	Puth					javaslat	H6316	9	szo	alacsony
+Nah.3.9	12	és	és					javaslat	H9002	10	morfema	alacsony
+Nah.3.9	13	Libia	Libia					javaslat	H3864	11	szo	alacsony
+Nah.3.9	14	is	is					betoldas				
+Nah.3.9	15	segítőid	segítőid					javaslat	H9003	13	morfema	alacsony
+Nah.3.9	15	segítőid	segítőid					javaslat	H5833	14	szo	alacsony
+Nah.3.9	15	segítőid	segítőid					javaslat	H9022	15	morfema	alacsony
+Nah.3.9	16	voltak	voltak					javaslat	H1961	12	szo	alacsony
+Nah.3.10	1	De	De					betoldas				
+Nah.3.10	2	ez	ez					javaslat	H1931	2	szo	alacsony
+Nah.3.10	3	is	is					javaslat	H1571	1	szo	alacsony
+Nah.3.10	4	számkivetésbe	számkivetésbe					javaslat	H9005	3	morfema	alacsony
+Nah.3.10	4	számkivetésbe	számkivetésbe					javaslat	H1473	4	szo	alacsony
+Nah.3.10	5	fogságba	fogságba					javaslat	H9003	6	morfema	alacsony
+Nah.3.10	5	fogságba	fogságba					javaslat	H7628	7	szo	alacsony
+Nah.3.10	6	jutott	jutott					javaslat	H1980	5	szo	alacsony
+Nah.3.10	7	kisdedeik	kisdedeik					javaslat	H5768	9	szo	alacsony
+Nah.3.10	7	kisdedeik	kisdedeik					javaslat	H9024	10	morfema	alacsony
+Nah.3.10	8	is	is					javaslat	H1571	8	szo	alacsony
+Nah.3.10	9	falhoz	falhoz					betoldas				
+Nah.3.10	10	verettek	verettek					javaslat	H7376	11	szo	alacsony
+Nah.3.10	11	minden	minden					javaslat	H3605	14	szo	alacsony
+Nah.3.10	12	utcza	utca	igen				javaslat	H2351	15	szo	alacsony
+Nah.3.10	13	sarkán	sarkán					javaslat	H9003	12	morfema	alacsony
+Nah.3.10	13	sarkán	sarkán					javaslat	H7218	13	szo	alacsony
+Nah.3.10	14	főembereire	főembereire					javaslat	H5921	17	szo	alacsony
+Nah.3.10	14	főembereire	főembereire					javaslat	H3513	18	szo	alacsony
+Nah.3.10	14	főembereire	főembereire					javaslat	H9034	19	morfema	alacsony
+Nah.3.10	15	sorsot	sorsot					javaslat	H1486	21	szo	alacsony
+Nah.3.10	16	vetettek	vetettek					javaslat	H3032	20	szo	alacsony
+Nah.3.10	17	és	és					javaslat	H9002	22	morfema	alacsony
+Nah.3.10	18	nagyjait	nagyjait					javaslat	H1419	24	szo	alacsony
+Nah.3.10	18	nagyjait	nagyjait					javaslat	H9024	25	morfema	alacsony
+Nah.3.10	19	mind	mind					javaslat	H3605	23	szo	alacsony
+Nah.3.10	20	bilincsekbe	bilincsekbe					javaslat	H9003	27	morfema	alacsony
+Nah.3.10	20	bilincsekbe	bilincsekbe					javaslat	H2131	28	szo	alacsony
+Nah.3.10	21	verték	verték					javaslat	H7576	26	szo	alacsony
+Nah.3.11	1	Te	Te					javaslat	H0859	2	szo	alacsony
+Nah.3.11	2	is	is					javaslat	H1571	1	szo	alacsony
+Nah.3.11	3	megrészegedel	megrészegedel					javaslat	H7937	3	szo	alacsony
+Nah.3.11	4	elfeledtté	elfeledtté					javaslat	H5956	5	szo	alacsony
+Nah.3.11	5	leszel	leszel					javaslat	H1961	4	szo	alacsony
+Nah.3.11	6	te	te					javaslat	H0859	7	szo	alacsony
+Nah.3.11	7	is	is					javaslat	H1571	6	szo	alacsony
+Nah.3.11	8	keresel	keresel					javaslat	H1245	8	szo	alacsony
+Nah.3.11	9	majd	majd					betoldas				
+Nah.3.11	10	menedéket	menedéket					javaslat	H4581	9	szo	alacsony
+Nah.3.11	11	a	a					betoldas				
+Nah.3.11	12	gyűlölködő	gyűlölködő					javaslat	H0341	11	szo	alacsony
+Nah.3.11	13	elől	elől					javaslat	H9006	10	morfema	alacsony
+Nah.3.12	1	Minden	Minden					javaslat	H3605	1	szo	alacsony
+Nah.3.12	2	erősséged	erősséged					javaslat	H4013	2	szo	alacsony
+Nah.3.12	2	erősséged	erősséged					javaslat	H9022	3	morfema	alacsony
+Nah.3.12	3	olyan	olyan					betoldas				
+Nah.3.12	4	mint	mint					betoldas				
+Nah.3.12	5	a	a					betoldas				
+Nah.3.12	6	zsenge	zsenge					javaslat	H1061	6	szo	alacsony
+Nah.3.12	7	gyümölcsű	gyümölcsű					javaslat	H5973	5	szo	alacsony
+Nah.3.12	7	gyümölcsű	gyümölcsű					javaslat	H1061	6	szo	alacsony
+Nah.3.12	8	fügefa	fügefa					javaslat	H8384	4	szo	alacsony
+Nah.3.12	9	ha	ha					javaslat	H0518	7	szo	alacsony
+Nah.3.12	10	megrázatnak	megrázatnak					javaslat	H5128	8	szo	alacsony
+Nah.3.12	11	az	az					betoldas				
+Nah.3.12	12	evő	evő					javaslat	H0398	13	szo	alacsony
+Nah.3.12	13	szájába	szájába					javaslat	H5921	11	szo	alacsony
+Nah.3.12	13	szájába	szájába					javaslat	H6310	12	szo	alacsony
+Nah.3.12	14	hullnak	hullnak					javaslat	H5307	10	szo	alacsony
+Nah.3.13	1	Ímé	Ímé					javaslat	H2009	1	szo	alacsony
+Nah.3.13	2	a	a					betoldas				
+Nah.3.13	3	te	te					javaslat	H9022	3	morfema	alacsony
+Nah.3.13	4	néped	néped					javaslat	H5971	2	szo	alacsony
+Nah.3.13	4	néped	néped					javaslat	H9022	3	morfema	alacsony
+Nah.3.13	5	asszonynép	asszonynép					javaslat	H0802	4	szo	alacsony
+Nah.3.13	6	te	te					javaslat	H9022	7	morfema	alacsony
+Nah.3.13	7	benned	benned					javaslat	H9003	5	morfema	alacsony
+Nah.3.13	7	benned	benned					javaslat	H7130	6	szo	alacsony
+Nah.3.13	7	benned	benned					javaslat	H9022	7	morfema	alacsony
+Nah.3.13	8	földednek	földednek					javaslat	H0776	14	szo	alacsony
+Nah.3.13	8	földednek	földednek					javaslat	H9022	15	morfema	alacsony
+Nah.3.13	9	kapui	kapui					javaslat	H8179	13	szo	alacsony
+Nah.3.13	10	tárva	tárva					javaslat	H6605	11	szo	alacsony
+Nah.3.13	11	kitárulnak	kitárulnak					javaslat	H6605	12	szo	alacsony
+Nah.3.13	12	gyűlölőidnek	gyűlölőidnek					javaslat	H9005	8	morfema	alacsony
+Nah.3.13	12	gyűlölőidnek	gyűlölőidnek					javaslat	H0341	9	szo	alacsony
+Nah.3.13	12	gyűlölőidnek	gyűlölőidnek					javaslat	H9022	10	morfema	alacsony
+Nah.3.13	13	tűz	tűz					javaslat	H0784	17	szo	alacsony
+Nah.3.13	14	emészti	emészti					javaslat	H0398	16	szo	alacsony
+Nah.3.13	15	meg	meg					javaslat	H0398	16	szo	alacsony
+Nah.3.13	16	záraidat	záraidat					javaslat	H1280	18	szo	alacsony
+Nah.3.13	16	záraidat	záraidat					javaslat	H9022	19	morfema	alacsony
+Nah.3.14	1	Meríts	Meríts					javaslat	H7579	3	szo	alacsony
+Nah.3.14	2	magadnak	magadnak					javaslat	H9005	4	morfema	alacsony
+Nah.3.14	2	magadnak	magadnak					javaslat	H9032	5	morfema	alacsony
+Nah.3.14	3	ostromhoz	ostromhoz					javaslat	H4692	2	szo	alacsony
+Nah.3.14	4	való	való					betoldas				
+Nah.3.14	5	vizet	vizet					javaslat	H4325	1	szo	alacsony
+Nah.3.14	6	javítsd	javítsd					javaslat	H2388	6	szo	alacsony
+Nah.3.14	7	erősségeidet	erősségeidet					javaslat	H4013	7	szo	alacsony
+Nah.3.14	7	erősségeidet	erősségeidet					javaslat	H9022	8	morfema	alacsony
+Nah.3.14	8	menj	menj					javaslat	H0935	9	szo	alacsony
+Nah.3.14	9	be	be					javaslat	H0935	9	szo	alacsony
+Nah.3.14	10	a	a					betoldas				
+Nah.3.14	11	sárba	sárba					javaslat	H9003	10	morfema	alacsony
+Nah.3.14	11	sárba	sárba					javaslat	H2916	11	szo	alacsony
+Nah.3.14	12	taposd	taposd					javaslat	H7429	13	szo	alacsony
+Nah.3.14	13	az	az					betoldas				
+Nah.3.14	14	agyagot	agyagot					javaslat	H9003	14	morfema	alacsony
+Nah.3.14	14	agyagot	agyagot					javaslat	H2563	15	szo	alacsony
+Nah.3.14	15	javítsd	javítsd					javaslat	H2388	16	szo	alacsony
+Nah.3.14	16	a	a					betoldas				
+Nah.3.14	17	tégla	tégla					javaslat	H4404	17	szo	alacsony
+Nah.3.14	18	vetőt	vetőt					javaslat	H4404	17	szo	alacsony
+Nah.3.15	1	Legott	Legott					javaslat	H8033	1	szo	alacsony
+Nah.3.15	2	tűz	tűz					javaslat	H0784	4	szo	alacsony
+Nah.3.15	3	emészt	emészt					javaslat	H0398	2	szo	alacsony
+Nah.3.15	4	meg	meg					javaslat	H0398	2	szo	alacsony
+Nah.3.15	5	téged	téged					javaslat	H9032	3	morfema	alacsony
+Nah.3.15	6	fegyver	fegyver					javaslat	H2719	7	szo	alacsony
+Nah.3.15	7	irt	irt					javaslat	H3772	5	szo	alacsony
+Nah.3.15	8	ki	ki					javaslat	H3772	5	szo	alacsony
+Nah.3.15	9	téged	téged					javaslat	H9032	6	morfema	alacsony
+Nah.3.15	10	megemészt	megemészt					javaslat	H0398	8	szo	alacsony
+Nah.3.15	10	megemészt	megemészt					javaslat	H9032	9	morfema	alacsony
+Nah.3.15	11	mint	mint					javaslat	H9004	10	morfema	alacsony
+Nah.3.15	12	a	a					betoldas				
+Nah.3.15	13	szöcske	szöcske					javaslat	H3218	11	szo	alacsony
+Nah.3.15	14	szaporodjál	szaporodjál					javaslat	H3513	12	szo	alacsony
+Nah.3.15	15	bár	bár					betoldas				
+Nah.3.15	16	mint	mint					javaslat	H9004	13	morfema	alacsony
+Nah.3.15	17	a	a					betoldas				
+Nah.3.15	18	szöcske	szöcske					javaslat	H3218	14	szo	alacsony
+Nah.3.15	19	szaporodjál	szaporodjál					javaslat	H3513	15	szo	alacsony
+Nah.3.15	20	bár	bár					betoldas				
+Nah.3.15	21	mint	mint					javaslat	H9004	16	morfema	alacsony
+Nah.3.15	22	a	a					betoldas				
+Nah.3.15	23	sáska	sáska					javaslat	H0697	17	szo	alacsony
+Nah.3.16	1	Többen	Többen					javaslat	H7235	1	szo	alacsony
+Nah.3.16	2	voltak	voltak					javaslat	H7235	1	szo	alacsony
+Nah.3.16	3	kalmáraid	kalmáraid					javaslat	H7402	2	szo	alacsony
+Nah.3.16	3	kalmáraid	kalmáraid					javaslat	H9022	3	morfema	alacsony
+Nah.3.16	4	mint	mint					javaslat	H9006	4	morfema	alacsony
+Nah.3.16	5	az	az					betoldas				
+Nah.3.16	6	égnek	égnek					javaslat	H9009	6	morfema	alacsony
+Nah.3.16	6	égnek	égnek					javaslat	H8064	7	szo	alacsony
+Nah.3.16	7	csillagai	csillagai					javaslat	H3556	5	szo	alacsony
+Nah.3.16	8	a	a					betoldas				
+Nah.3.16	9	szöcske	szöcske					javaslat	H3218	8	szo	alacsony
+Nah.3.16	10	csapong	csapong					javaslat	H6584	9	szo	alacsony
+Nah.3.16	11	és	és					javaslat	H9001	10	morfema	alacsony
+Nah.3.16	12	elrepül	elrepül					javaslat	H5774	11	szo	alacsony
+Nah.3.17	1	Fejedelmeid	Fejedelmeid					javaslat	H4502	1	szo	alacsony
+Nah.3.17	1	Fejedelmeid	Fejedelmeid					javaslat	H9022	2	morfema	alacsony
+Nah.3.17	2	mint	mint					javaslat	H9004	3	morfema	alacsony
+Nah.3.17	3	a	a					betoldas				
+Nah.3.17	4	sáska	sáska					javaslat	H0697	4	szo	alacsony
+Nah.3.17	5	vezéreid	vezéreid					javaslat	H2951	6	szo	alacsony
+Nah.3.17	5	vezéreid	vezéreid					javaslat	H9022	7	morfema	alacsony
+Nah.3.17	6	mint	mint					javaslat	H9004	8	morfema	alacsony
+Nah.3.17	7	a	a					betoldas				
+Nah.3.17	8	tücsök	tücsök					javaslat	H1462	9	szo	alacsony
+Nah.3.17	9	raj	raj					javaslat	H1462	10	szo	alacsony
+Nah.3.17	10	hideg	hideg					javaslat	H7135	17	szo	alacsony
+Nah.3.17	11	időkben	időkben					javaslat	H9003	15	morfema	alacsony
+Nah.3.17	11	időkben	időkben					javaslat	H3117	16	szo	alacsony
+Nah.3.17	12	gyepűkben	gyepűkben					javaslat	H9003	13	morfema	alacsony
+Nah.3.17	12	gyepűkben	gyepűkben					javaslat	H1448	14	szo	alacsony
+Nah.3.17	13	tanyáz	tanyáz					javaslat	H9009	11	morfema	alacsony
+Nah.3.17	13	tanyáz	tanyáz					javaslat	H2583	12	szo	alacsony
+Nah.3.17	14	napkeletkor	napkeletkor					javaslat	H8121	18	szo	alacsony
+Nah.3.17	14	napkeletkor	napkeletkor					javaslat	H2224	19	szo	alacsony
+Nah.3.17	15	pedig	pedig					javaslat	H9002	20	morfema	alacsony
+Nah.3.17	16	elrepül	elrepül					javaslat	H5074	21	szo	alacsony
+Nah.3.17	17	és	és					javaslat	H9002	22	morfema	alacsony
+Nah.3.17	18	helye	helye					javaslat	H4725	25	szo	alacsony
+Nah.3.17	18	helye	helye					javaslat	H9023	26	morfema	alacsony
+Nah.3.17	19	sem	sem					javaslat	H3808	23	szo	alacsony
+Nah.3.17	20	tudható	tudható					javaslat	H3045	24	szo	alacsony
+Nah.3.17	21	meg	meg					javaslat	H3045	24	szo	alacsony
+Nah.3.17	22	hol	hol					javaslat	H0335	27	szo	alacsony
+Nah.3.17	23	volt	volt					javaslat	H9048	28	morfema	alacsony
+Nah.3.18	1	Szunnyadoznak	Szunnyadoznak					javaslat	H5123	1	szo	alacsony
+Nah.3.18	2	pásztoraid	pásztoraid					javaslat	H7462	2	szo	alacsony
+Nah.3.18	2	pásztoraid	pásztoraid					javaslat	H9021	3	morfema	alacsony
+Nah.3.18	3	Assiria	Assiria					javaslat	H0804	5	szo	alacsony
+Nah.3.18	4	királya	királya					javaslat	H4428	4	szo	alacsony
+Nah.3.18	5	feküsznek	feküsznek					javaslat	H7931	6	szo	alacsony
+Nah.3.18	6	vitézlő	vitézlő					javaslat	H0117	7	szo	alacsony
+Nah.3.18	7	hőseid	hőseid					javaslat	H0117	7	szo	alacsony
+Nah.3.18	7	hőseid	hőseid					javaslat	H9021	8	morfema	alacsony
+Nah.3.18	8	néped	néped					javaslat	H5971	10	szo	alacsony
+Nah.3.18	8	néped	néped					javaslat	H9021	11	morfema	alacsony
+Nah.3.18	9	a	a					betoldas				
+Nah.3.18	10	hegyeken	hegyeken					javaslat	H5921	12	szo	alacsony
+Nah.3.18	10	hegyeken	hegyeken					javaslat	H9009	13	morfema	alacsony
+Nah.3.18	10	hegyeken	hegyeken					javaslat	H2022	14	szo	alacsony
+Nah.3.18	11	széledez	széledez					javaslat	H6335	9	szo	alacsony
+Nah.3.18	12	és	és					javaslat	H9002	15	morfema	alacsony
+Nah.3.18	13	nincsen	nincsen					javaslat	H0369	16	szo	alacsony
+Nah.3.18	14	a		igen	osszevonva	15		betoldas				
+Nah.3.18	15	ki	aki	igen				betoldas				
+Nah.3.18	16	összegyűjtse	összegyűjtse					javaslat	H6908	17	szo	alacsony
+Nah.3.19	1	Nincs	Nincs					javaslat	H0369	1	szo	alacsony
+Nah.3.19	2	enyhítés	enyhítés					javaslat	H3545	2	szo	alacsony
+Nah.3.19	3	a	a					betoldas				
+Nah.3.19	4	te	te					javaslat	H9021	5	morfema	alacsony
+Nah.3.19	5	sebedre	sebedre					javaslat	H9005	3	morfema	alacsony
+Nah.3.19	5	sebedre	sebedre					javaslat	H7667	4	szo	alacsony
+Nah.3.19	5	sebedre	sebedre					javaslat	H9021	5	morfema	alacsony
+Nah.3.19	6	gyógyíthatatlan	gyógyíthatatlan					javaslat	H2470	6	szo	alacsony
+Nah.3.19	7	a	a					betoldas				
+Nah.3.19	8	te	te					javaslat	H9021	8	morfema	alacsony
+Nah.3.19	9	nyavalyád	nyavalyád					javaslat	H4347	7	szo	alacsony
+Nah.3.19	9	nyavalyád	nyavalyád					javaslat	H9021	8	morfema	alacsony
+Nah.3.19	10	A		igen	osszevonva	11		betoldas				
+Nah.3.19	11	kik	Akik	igen				betoldas				
+Nah.3.19	12	híredet	híredet					javaslat	H8088	11	szo	alacsony
+Nah.3.19	12	híredet	híredet					javaslat	H9021	12	morfema	alacsony
+Nah.3.19	13	hallják	hallják					javaslat	H8085	10	szo	alacsony
+Nah.3.19	14	mind	mind					javaslat	H3605	9	szo	alacsony
+Nah.3.19	15	tapsolnak	tapsolnak					javaslat	H8628	13	szo	alacsony
+Nah.3.19	15	tapsolnak	tapsolnak					javaslat	H3709	14	szo	alacsony
+Nah.3.19	16	feletted	feletted					javaslat	H5921	15	szo	alacsony
+Nah.3.19	16	feletted	feletted					javaslat	H9031	16	morfema	alacsony
+Nah.3.19	17	mert	mert					javaslat	H3588	17	szo	alacsony
+Nah.3.19	18	kire	kire					javaslat	H5921	18	szo	alacsony
+Nah.3.19	18	kire	kire					javaslat	H4310	19	szo	alacsony
+Nah.3.19	19	nem	nem					javaslat	H3808	20	szo	alacsony
+Nah.3.19	20	hatott	hatott					javaslat	H5674	21	szo	alacsony
+Nah.3.19	21	volna	volna					betoldas				
+Nah.3.19	22	ki	ki					javaslat	H5674	21	szo	alacsony
+Nah.3.19	23	a	a					betoldas				
+Nah.3.19	24	te	te					javaslat	H9021	23	morfema	alacsony
+Nah.3.19	25	gonoszságod	gonoszságod					javaslat	H7451	22	szo	alacsony
+Nah.3.19	25	gonoszságod	gonoszságod					javaslat	H9021	23	morfema	alacsony
+Nah.3.19	26	soha	soha					javaslat	H8548	24	szo	alacsony

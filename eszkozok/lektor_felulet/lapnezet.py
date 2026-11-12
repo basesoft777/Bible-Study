@@ -20,10 +20,18 @@ címsornál maga a cím (`Kivonat`, `Kolofon`); az `n` a szakaszon belüli blokk
     python eszkozok/lektor_felulet/lapnezet.py <ID> <kimenet.html> [--ref <ág|commit>]
     python eszkozok/lektor_felulet/lapnezet.py <ID> --jel "1/a·12" [--ref <ág|commit>]
 
+    python eszkozok/lektor_felulet/lapnezet.py <ID> <kimenet.html> --valtozas <alap-commit> [--ref <ág|commit>]
+    python eszkozok/lektor_felulet/lapnezet.py <ID> --valtozas <alap-commit> [--ref <ág|commit>]   (szöveges kiírás)
+
+`--valtozas` (F209, gyors út, `/lap-javit` 7. pont): csak a változott blokkokat mutatja, előtte–utána párban,
+kiemelve (a törölt szó áthúzva, az új szó kiemelve). Az alap a lap fájlja az `<alap-commit>`-ban, az „utána” a
+munkafa vagy a `--ref`. Önálló, rövid HTML (a `lapnezet_sablon.html`-t nem használja); `--jel`-lel nem együtt.
+
 A kimenet a repón kívülre megy; a publikálás `capabilities` nélkül (vagy `{}`-vel, ha a tárolt képességeket
 törölni kell).
 """
 import argparse
+import difflib
 import json
 import os
 import re
@@ -154,13 +162,91 @@ def epit(motivum, ref=None, root=ROOT):
     return html, meta, bl
 
 
+def valtozasok(regi_md, uj_md):
+    """[{tipus, jel, hely, regi, uj}] a megváltozott blokkokról: `csere` (módosult), `uj` (beszúrt), `torolt`.
+    Az illesztés a blokkok szövege szerint megy (difflib); a jel a mai (utána) lap jele, törölt blokknál a régié."""
+    r, u = blokkok(regi_md), blokkok(uj_md)
+    op = difflib.SequenceMatcher(None, [b['md'] for b in r], [b['md'] for b in u], autojunk=False).get_opcodes()
+    ki = []
+    for tag, i1, i2, j1, j2 in op:
+        if tag == 'equal':
+            continue
+        regi, uj = r[i1:i2], u[j1:j2]
+        for k in range(max(len(regi), len(uj))):
+            a = regi[k] if k < len(regi) else None
+            b = uj[k] if k < len(uj) else None
+            x = b or a
+            ki.append({'tipus': 'csere' if a and b else ('torolt' if a else 'uj'),
+                       'jel': x['jel'] or x['md'][:40], 'hely': x['hely'],
+                       'regi': a['md'] if a else '', 'uj': b['md'] if b else ''})
+    return ki
+
+
+def _szoveg_diff(regi, uj):
+    """(regi_html, uj_html): szószintű kiemelés (del / ins)."""
+    ra, ub = re.findall(r'\s+|\S+', regi), re.findall(r'\s+|\S+', uj)
+    ho, hu = [], []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, ra, ub, autojunk=False).get_opcodes():
+        x, y = _esc(''.join(ra[i1:i2])), _esc(''.join(ub[j1:j2]))
+        if tag == 'equal':
+            ho.append(x)
+            hu.append(y)
+            continue
+        if x:
+            ho.append('<del>%s</del>' % x)
+        if y:
+            hu.append('<ins>%s</ins>' % y)
+    return ''.join(ho), ''.join(hu)
+
+
+CSS = ('body{font:15px/1.5 system-ui,sans-serif;margin:16px;max-width:1100px;background:#fff;color:#111}'
+       '.par{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 20px;border-top:2px solid #888;padding-top:6px}'
+       '.jel{grid-column:1/3;font:12px monospace;color:#555}.c{white-space:pre-wrap;border:1px solid #ccc;padding:8px}'
+       'del{background:#fbb;text-decoration:line-through}ins{background:#bfb;text-decoration:none}'
+       '@media(max-width:700px){.par{grid-template-columns:1fr}.jel{grid-column:1}}'
+       '@media(prefers-color-scheme:dark){body{background:#111;color:#eee}del{background:#722}ins{background:#252}'
+       '.c{border-color:#555}.jel{color:#aaa}}')
+
+
+def valtozas_html(motivum, vl, alap, meta):
+    reszek = []
+    for v in vl:
+        ho, hu = _szoveg_diff(v['regi'], v['uj'])
+        reszek.append('<div class="par"><div class="jel">%s · %s · %s</div><div class="c">%s</div><div class="c">%s</div></div>'
+                      % (_esc(v['jel']), v['tipus'], _esc(v['hely']), ho or '<i>(nem volt)</i>', hu or '<i>(törölve)</i>'))
+    fej = '%s változások: %s → %s · %d blokk' % (motivum, alap, meta['commit'], len(vl))
+    return ('<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,'
+            'initial-scale=1"><title>%s változásnézet</title><style>%s</style></head><body><h1>%s</h1>%s</body></html>'
+            % (_esc(motivum), CSS, _esc(fej), ''.join(reszek) or '<p>Nincs változott blokk.</p>'))
+
+
 def main():
-    ap = argparse.ArgumentParser(description='F165 -- lexikonlap-nézet blokkjelekkel')
+    ap =argparse.ArgumentParser(description='F165 -- lexikonlap-nézet blokkjelekkel')
     ap.add_argument('motivum')
     ap.add_argument('kimenet', nargs='?')
     ap.add_argument('--ref', default=None, help='git-ág vagy commit, amelynek állapotából a lap készül (alap: munkafa)')
     ap.add_argument('--jel', default=None, help='egy blokk szövegének kiírása a jele alapján (pl. "1/a·12")')
+    ap.add_argument('--valtozas', default=None, metavar='ALAP_COMMIT',
+                    help='csak a változott blokkok, előtte–utána párban (a régi: a lap fájlja az alap-commitban)')
     a = ap.parse_args()
+    if a.valtozas:
+        if a.jel:
+            raise ValueError('--valtozas és --jel nem együtt')
+        regi = _fajl(ROOT, 'lexikon/%s_TUDOMANYOS.md' % a.motivum, a.valtozas)
+        md, meta = betolt(a.motivum, a.ref)
+        vl = valtozasok(regi, md)
+        if a.kimenet:
+            kimenet = os.path.abspath(a.kimenet)
+            if kimenet.startswith(os.path.abspath(ROOT) + os.sep):
+                raise ValueError('a kimenet a repón kívülre menjen (scratch), ne a repóba')
+            with open(kimenet, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(valtozas_html(a.motivum, vl, a.valtozas, meta))
+            print('  %s: %d változott blokk' % (kimenet, len(vl)), file=sys.stderr)
+        else:
+            for v in vl:
+                print('[%s] %s · %s\n- %s\n+ %s\n' % (v['tipus'], v['jel'], v['hely'], v['regi'].replace('\n', ' '),
+                                                     v['uj'].replace('\n', ' ')))
+        return 0
     if a.jel:
         md, meta = betolt(a.motivum, a.ref)
         b = keres(blokkok(md), a.jel)
