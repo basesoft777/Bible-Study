@@ -5,11 +5,12 @@ kod: PROZA_ALLITAS
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: a próza versállítás-ellenőrzője (eszkozok/proza_allitas.py), a MUNKAMENET C-a lépése és a 10. sablon; a független ellenőrzés és a javítókör kész
 ag: claude/f200-versallitas-e49cf6
 pr: 697
 ad: gépi ellenőrző a kézi forrás értelmező prózájához — szójelenlét, szópár és alanya, fordulat, idézet, szám gépi ítélettel, a többi ellenőrzési listán (Károli + héber/görög sor), JELENTÉS szinten; a MUNKAMENET C-szakaszában és a 10-es sablonban új lépés az U3 után, a lektor előtt
-kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az ISTENTISZT-001 új cikkének U3 menete már ezzel az ellenőrzéssel fut"
+kovetkezo: "lezárva; a PR #697 a main-en (2026-11-11)"
 munka: folyamat
 olvas: [motivumok/HAMART-001.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/olvasoi_kapu.py, eszkozok/lekerdez.py, eszkozok/heber_kiejtes.py, eszkozok/ellenorzes/szabalyok.py, MUNKAMENET.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md]
 ir: [eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, naplok/ALLITAS_HAMART-001.md, naplok/F200_jelentes.md, naplok/ELLENOR_F200.md, MUNKAMENET.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, .github/workflows/ellenorzes.yml, dontesek/uj/f200-versallitas-e49cf6.md, nyitott/uj/f200-versallitas-e49cf6.md, F200_PROZA_ALLITAS_BRIEF.md]
