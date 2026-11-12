@@ -1101,7 +1101,10 @@ class TestD2PilotEgyezes(unittest.TestCase):
         con = self.con
         tb = q.tbesg(con, g)
         db, vdb, _ = q.usz(con, g)
-        return {'tbesg': tb[3] if tb else '', 'tbesg_alak': tb[:3] if tb else None, 'thayer': q.thayer(con, g) or '', 'hu_db': len(q.magyar_gorog(con, g)),
+        # F215: a szerver a Thayer-szöveget a `thayer_forras_javitas` beszúrásaival adja (`q.thayer`); a pilot D2-mérce (a nyers TSV és
+        # a nyers `thayer` tábla egyezése) a nyers táblát méri, ezért itt a nyers sor áll. A javított szöveg tesztje: `teszt_angol_javitott.py`.
+        nyers = con.execute('SELECT teljes_szocikk FROM thayer WHERE strong=?', (g,)).fetchone()
+        return {'tbesg': tb[3] if tb else '', 'tbesg_alak': tb[:3] if tb else None, 'thayer': nyers[0] if nyers else '', 'hu_db': len(q.magyar_gorog(con, g)),
                 'usz_db': db, 'usz_versek_db': vdb, 'heber': q.lxx_bridge_g(con, g)[:5]}
 
     def _szakasz(self, szakasz, azon):
