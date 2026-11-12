@@ -7,8 +7,9 @@ fazis: folyamat
 modell: opus
 allapot: fut
 ag: claude/f213-szotari-nezet-a55839
+pr: 720
 ad: a szónézet (/szo/<Strong>) BDB-blokkja végleges, olvasóbarát szókártya (lemmafej csukott alakokkal és rokon nyelvekkel, jelentés-tartalomjegyzék, jelentésenként glossza, használati sorok, csukott apparátus és angol eredeti, három nézetkapcsoló, jelentésszintű héber–görög pár, az F104 kétszintű „ebben a versben” jelölése); a szófej és a szópanel magyar bekötése (alapjelentés, magyar glossza, versszintű UBS); ugyanez a komponens a későbbi motívumlap-nézet alapja
-kovetkezo: "Te: a mockup átnézése és jóváhagyása a design-vásznon, a „Szótári nézet” oldalon (⛔ 1.); utána a szerver"
+kovetkezo: "Te: a draft PR #720 böngészős átnézése a 192.168.1.172:9765 címen (az F213 próba-példánya fut; ⛔ merge előtt); utána a fő példány visszaállítása; merge az orkesztrátoré"
 munka: folyamat
 olvas: [adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_forras_javitas.tsv, adat/szotar_szakasz_cimke.tsv, adat/elofordulasok.tsv, adat/grammatikai_strongok.tsv, "konkordancia/Macula_heber_*.tsv", eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/olvaso_szerver/, F104_BDB_MEGJELENITES_BRIEF.md]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/olvaso_szerver/teszt_olvaso_hibak.py, naplok/F213_fustproba.py, naplok/F213_alapjelentes_meres.py, naplok/F213_bekotes_meres.py, naplok/F213_fustproba_audit.py, eszkozok/olvaso_szerver/sablonok/szo.html, eszkozok/olvaso_szerver/sablonok/_szo_panel.html, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/statikus/olvaso.js, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_szokartya.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/README.md, F104_BDB_MEGJELENITES_BRIEF.md, F213_SZOTARI_NEZET_BRIEF.md, naplok/F213_jelentes.md]

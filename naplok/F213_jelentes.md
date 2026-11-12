@@ -24,10 +24,10 @@ A brief a `BRIEF_SABLON.md` szerint; az F104 (PR #671, a main-en) lezárva, a h�
 
 | | előtte | utána |
 |---|---|---|
-| héber (8718) | magyar BDB 6528 · csak szófaj 710 · angol 1475 · nincs 5 | magyar glossza 8718 |
+| héber (8718) | magyar BDB 6591 · csak szófaj 647 · angol 1475 · nincs 5 | magyar glossza 8718 |
 | görög (5629) | angol 5603 · nincs 26 | magyar glossza 269 · angol 5334 · nincs 26 |
 
-Javul: héber 2190, görög 269; angol marad: héber 0, görög 5334 (N-F213c).
+Javul: héber 2127, görög 269 (a „csak szófaj” küszöb javítása után mérve; az első mérés a rövid szót, pl. „kő”, is szófajnak vette: 2190); angol marad: héber 0, görög 5334 (N-F213c).
 
 **Mérés — bekötési audit** (`naplok/F213_bekotes_meres.py`) *(proveniencia: scope=pardes.db forditasok, nave_tema_hu, glosszak_heber_hu | forras=naplok/F213_bekotes_meres.py, pardes.db 2026-11-12T15:51:52Z | ts=2026-11-12)*: TBESH-glossza 8176 / 9345 Strong; SDBH-domén 3647 / 8557; SDGNT-domén 123 / 5312; TBESG-glossza 269 / 10 847 (szócikk 4); LSJ 2; tW-cikk 29 / 598; TBESH-szócikk 1; Nave 23 téma (1506 vers).
 
