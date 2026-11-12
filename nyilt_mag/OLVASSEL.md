@@ -19,8 +19,8 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 ### 1. Mely versek tartoznak az ISTENTISZT-001-hez, és melyik szón?
 
 1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot az `ISTENTISZT-001` értékre.
-2. Az eredmény 22 sor: minden sor egy vers (`igehely`).
-3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: `H7121 + H8034` (16 sor), `G1941` (6 sor). A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Kir 18:24: „segítségül hívom az Úrnak nevét”).
+2. Az eredmény 20 sor: minden sor egy vers (`igehely`).
+3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: `H7121 + H8034` (16 sor), `G1941` (4 sor). A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Kir 18:24: „segítségül hívom az Úrnak nevét”).
 4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „lezárt kiadás”.
 
 ### 2. Miért nincs benne a Róm 10:12?
@@ -31,28 +31,28 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 
 ### 3. Átnézték-e minden helyet, ahol a szópár előfordul?
 
-1. A `kizarasok.tsv`-ben az `ISTENTISZT-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 5 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „a hívás igéje a név nélkül” (246 vers, első verse: 1Móz 1:5); „elnevezés, nem a név segítségül hívása” (126 vers, első verse: 1Móz 2:19); „a Károli-szó más szót fordít” (51 vers, első verse: 2Móz 18:4); „a hívás és a név nem egy szerkezetben” (21 vers, első verse: 1Móz 41:52); „nem JHVH áll a név után” (12 vers, első verse: 2Móz 31:2).
-2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `ISTENTISZT-001`): 456 vers.
-3. Együtt: 22 előfordulás, 104 egyenként kizárt vers és 456 csoportban kizárt vers, összesen 582 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat az „Ami nincs a csomagban” szakasz adja.
+1. A `kizarasok.tsv`-ben az `ISTENTISZT-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 6 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „a hívás igéje a név nélkül” (246 vers, első verse: 1Móz 1:5); „elnevezés, nem a név segítségül hívása” (126 vers, első verse: 1Móz 2:19); „a Károli-szó más szót fordít” (51 vers, első verse: 2Móz 18:4); „a hívás és a név nem egy szerkezetben” (21 vers, első verse: 1Móz 41:52); „passzív szerkezet vagy megnevezés (negatív kritérium)” (14 vers, első verse: 5Móz 12:5); „nem az Úr neve áll a név után” (12 vers, első verse: 2Móz 31:2).
+2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `ISTENTISZT-001`): 470 vers.
+3. Együtt: 20 előfordulás, 109 egyenként kizárt vers és 470 csoportban kizárt vers, összesen 599 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat az „Ami nincs a csomagban” szakasz adja.
 
 ## Fájlok és sorszámuk
 
 | Fájl | Sor |
 |---|---|
-| `beepitesi_dontesek.tsv` | 252 |
+| `beepitesi_dontesek.tsv` | 250 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 15 |
-| `elofordulasok.tsv` | 250 |
+| `elofordulasok.tsv` | 248 |
 | `forrasok_es_licencek.tsv` | 65 |
-| `kapcsolatok.tsv` | 88 |
-| `kizaras_csoportok.tsv` | 3984 |
-| `kizarasok.tsv` | 540 |
+| `kapcsolatok.tsv` | 86 |
+| `kizaras_csoportok.tsv` | 3998 |
+| `kizarasok.tsv` | 546 |
 | `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
-| `sblgnt_apparatus.tsv` | 61 |
-| `visszhang_megfelelok.tsv` | 101 |
-| `visszhang_tanuk.tsv` | 6 |
+| `sblgnt_apparatus.tsv` | 60 |
+| `visszhang_megfelelok.tsv` | 130 |
+| `visszhang_tanuk.tsv` | 8 |
 | `vitatott_forrasok.tsv` | 3 |
 
 ## Licencszűrés

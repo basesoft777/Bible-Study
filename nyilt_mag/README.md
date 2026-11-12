@@ -19,8 +19,8 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 ### 1. Which verses belong to ISTENTISZT-001, and on which word?
 
 1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `ISTENTISZT-001`.
-2. The result is 22 rows: each row is one verse (`igehely`).
-3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: `H7121 + H8034` (16 rows), `G1941` (6 rows). The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Kir 18:24: "segítségül hívom az Úrnak nevét").
+2. The result is 20 rows: each row is one verse (`igehely`).
+3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: `H7121 + H8034` (16 rows), `G1941` (4 rows). The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Kir 18:24: "segítségül hívom az Úrnak nevét").
 4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: "lezárt kiadás".
 
 ### 2. Why is Róm 10:12 not included?
@@ -31,28 +31,28 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 
 ### 3. Was every place where the word pair occurs examined?
 
-1. Among the `ISTENTISZT-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 5. Each stands for a group of verses excluded for one reason: "a hívás igéje a név nélkül" (246 verses, first verse: 1Móz 1:5); "elnevezés, nem a név segítségül hívása" (126 verses, first verse: 1Móz 2:19); "a Károli-szó más szót fordít" (51 verses, first verse: 2Móz 18:4); "a hívás és a név nem egy szerkezetben" (21 verses, first verse: 1Móz 41:52); "nem JHVH áll a név után" (12 verses, first verse: 2Móz 31:2).
-2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `ISTENTISZT-001`): 456 verses.
-3. Together: 22 occurrences, 104 verses excluded one by one and 456 verses excluded in groups, 582 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is not in the package".
+1. Among the `ISTENTISZT-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 6. Each stands for a group of verses excluded for one reason: "a hívás igéje a név nélkül" (246 verses, first verse: 1Móz 1:5); "elnevezés, nem a név segítségül hívása" (126 verses, first verse: 1Móz 2:19); "a Károli-szó más szót fordít" (51 verses, first verse: 2Móz 18:4); "a hívás és a név nem egy szerkezetben" (21 verses, first verse: 1Móz 41:52); "passzív szerkezet vagy megnevezés (negatív kritérium)" (14 verses, first verse: 5Móz 12:5); "nem az Úr neve áll a név után" (12 verses, first verse: 2Móz 31:2).
+2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `ISTENTISZT-001`): 470 verses.
+3. Together: 20 occurrences, 109 verses excluded one by one and 470 verses excluded in groups, 599 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is not in the package".
 
 ## Files and their row counts
 
 | File | Rows |
 |---|---|
-| `beepitesi_dontesek.tsv` | 252 |
+| `beepitesi_dontesek.tsv` | 250 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 15 |
-| `elofordulasok.tsv` | 250 |
+| `elofordulasok.tsv` | 248 |
 | `forrasok_es_licencek.tsv` | 65 |
-| `kapcsolatok.tsv` | 88 |
-| `kizaras_csoportok.tsv` | 3984 |
-| `kizarasok.tsv` | 540 |
+| `kapcsolatok.tsv` | 86 |
+| `kizaras_csoportok.tsv` | 3998 |
+| `kizarasok.tsv` | 546 |
 | `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
-| `sblgnt_apparatus.tsv` | 61 |
-| `visszhang_megfelelok.tsv` | 101 |
-| `visszhang_tanuk.tsv` | 6 |
+| `sblgnt_apparatus.tsv` | 60 |
+| `visszhang_megfelelok.tsv` | 130 |
+| `visszhang_tanuk.tsv` | 8 |
 | `vitatott_forrasok.tsv` | 3 |
 
 ## Licence filtering
