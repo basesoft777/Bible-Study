@@ -56,7 +56,7 @@ FAJL_LEIRAS = [
      'feldolgozási állapot',
      'the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage'),
     ('elofordulasok.tsv', 'az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, '
-     'eredetjelölés', 'the occurrences: passage, anchor word and its Strong\'s number, dictionary sense, Károli word, '
+     'eredetjelölés', 'the occurrences: passage, anchor word and its Strong\'s number, dictionary meaning, Károli word, '
      'provenance'),
     ('beepitesi_dontesek.tsv', 'a felvett helyek döntése, indoklással', 'the inclusion decisions, with rationale'),
     ('kizarasok.tsv', 'a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel',
@@ -434,7 +434,7 @@ yet decided ({nyitva}) are not in the package. Where a row refers to an editoria
 ## 5. The occurrence row
 
 Every occurrence is a passage and names what its assignment rests on (`horgony_tipus`, `horgony`): {horgony_en}.
-The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary sense,
+The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary meaning,
 and `strong_glossza_en` the short English STEPBible gloss.
 
 **The Károli word.** {karoli_hol} the corresponding word of the Károli translation. The Károli word

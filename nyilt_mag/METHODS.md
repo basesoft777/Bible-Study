@@ -60,7 +60,7 @@ yet decided (20) are not in the package. Where a row refers to an editorial deci
 ## 5. The occurrence row
 
 Every occurrence is a passage and names what its assignment rests on (`horgony_tipus`, `horgony`): lexical base: 197; shared lexical base: 33; collocation (word pair in one verse): 13; thematic link: 4; formula link: 1; reference link: 1; quotation link: 1.
-The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary sense,
+The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary meaning,
 and `strong_glossza_en` the short English STEPBible gloss.
 
 **The Károli word.** Every occurrence also gives the corresponding word of the Károli translation. The Károli word

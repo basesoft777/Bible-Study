@@ -13,7 +13,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | file | content | rows |
 |---|---|---:|
 | `motivumok.tsv` | the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage | 9 |
-| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary sense, Károli word, provenance | 250 |
+| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary meaning, Károli word, provenance | 250 |
 | `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 252 |
 | `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 540 |
 | `kizaras_csoportok.tsv` | every verse of the summary-row groups | 3,984 |
