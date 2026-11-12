@@ -1,104 +1,98 @@
-# Logosz-lexikon — nyílt mag — olvass el
+# Logosz-lexikon — nyílt adatmag: bibliai motívumok
 
-# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
-*English version: `README.md`.*
+Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró jegyei, előfordulásaik a héber és görög szöveg szavain, a megvizsgált, de kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A Logosz-lexikon nyílt adatmagjainak egyike. *English version: `README.md`.*
 
-**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.
+- **Licenc:** CC BY 4.0 (`LICENSE`); a `cc_by_sa_reteg/` könyvtár külön, CC BY-SA 4.0 licenc alatt áll. A felhasznált külső adatok forrásmegjelölése és a kizárt források: `ATTRIBUCIO.md`.
+- **DOI:** 10.5281/zenodo.24141612 — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
+- **Szerző:** Demeter Tamás (ORCID 0009-0005-9254-9731).
 
-**Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).
+## Tartalom
 
-**Feldolgozási állapot.** A motívumok közül 4 lezárt kiadás (a lexikonlapja kiadott, és az olvasói kapun hiba nélkül átment), 5 régi feldolgozás, amely a későbbi változatokban frissül; motívumonként a `motivumok.tsv` `feldolgozasi_allapot` oszlopa mondja meg.
+| fájl | tartalom | sor |
+|---|---|---:|
+| `motivumok.tsv` | a motívumok: cím, meghatározás, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot | 9 |
+| `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 250 |
+| `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 252 |
+| `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 554 |
+| `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 4 034 |
+| `kapcsolatok.tsv` | igehely-kapcsolatok egy motívumon belül | 86 |
+| `motivum_kapcsolatok.tsv` | kapcsolatok két motívum között | 3 |
+| `dontesnaplo.tsv` | a hivatkozott szerkesztői döntések (`NYD-nnn`) | 15 |
+| `visszhang_megfelelok.tsv` | a horgonyszavak megfelelője a Targumban, a Vulgatában és a Septuagintában | 144 |
+| `visszhang_tanuk.tsv` | egyházatyai, rabbinikus és Glossa Ordinaria-tanúk, idézet nélkül | 8 |
+| `vitatott_forrasok.tsv` | a vitatott pontok lektorált szakirodalma (bibliográfiai adat) | 3 |
+| `sblgnt_apparatus.tsv` | az SBL Greek New Testament kritikai apparátusa az újszövetségi helyekhez | 60 |
+| `forrasok_es_licencek.tsv` | a projekt forrásleltára: licenc és szerep a csomagban | 65 |
+| `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 441 |
+| `KODKONYV.md` | ugyanez olvasható formában |  |
+| `cc_by_sa_reteg/szemantikai_domenek.tsv` | szemantikai domének (UBS SDBH/SDGNT), **külön licenc: CC BY-SA 4.0** | 231 |
+| `cc_by_sa_reteg/OLVASSEL.md` | a külön réteg licence és forrásmegjelölése |  |
+| `MODSZER.md` | hogyan készült az adat (angolul: `METHODS.md`) |  |
+| `ISMERT_HIBAK.md` | ismert hibák és korlátok (angolul: `KNOWN_ISSUES.md`) |  |
+| `ATTRIBUCIO.md` | forrásmegjelölés, licencek, kizárt források |  |
+| `LICENSE` | a csomag licence |  |
+| `CITATION.cff` | idézési adatok |  |
+| `KIADAS.txt` | a kiadás azonosítója és tartalmi hash-e (angolul: `RELEASE.txt`) |  |
+| `ELLENORZO_OSSZEG.sha256` | minden fájl SHA-256 összege |  |
 
-**Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).
+## Számokban
+
+- 9 motívum: 1 lezárt kiadás, 8 korábbi feldolgozás, újraírás alatt; az adatuk a csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 250 előfordulás és 252 felvételi döntés.
+- 554 kizárás-sor 62 okkal: 454 egyenként eldöntött hely, és 100 összesítő sor, amely 4 034 verset képvisel.
+- 86 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
+- A visszhang-rétegben 144 megfelelő, 8 tanú, 3 vitatott pont és 60 apparátus-jegyzet.
+
+**Ismert hibák:** `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`). **Módszer:** `MODSZER.md`.
 
 ## Hogyan olvasd
 
-Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítségül hívni az Úr nevét). A válaszok számai ebből a kiadásból generálódnak.
+Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn következményeinek gyűrűzése — átok, föld és romlás). A válaszok számai ebből a kiadásból generálódnak.
 
-### 1. Mely versek tartoznak az ISTENTISZT-001-hez, és melyik szón?
+### 1. Mely versek tartoznak a HAMART-001-hez, és melyik szón?
 
-1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot az `ISTENTISZT-001` értékre.
-2. Az eredmény 20 sor: minden sor egy vers (`igehely`).
-3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: `H7121 + H8034` (16 sor), `G1941` (4 sor). A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Kir 18:24: „segítségül hívom az Úrnak nevét”).
+1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot a `HAMART-001` értékre.
+2. Az eredmény 49 sor: minden sor egy igehely (`igehely`), egy vers vagy egy versszakasz.
+3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: `H0127` (10 sor), `H7843` (7 sor), `málé + chámász` (6 sor), és további 13 horgony. A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Móz 12:3: „megátkozom”).
 4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „lezárt kiadás”.
 
-### 2. Miért nincs benne a Róm 10:12?
+### 2. Miért nincs benne az 1Móz 9:25?
 
-1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `ISTENTISZT-001` és az `igehely` = `Róm 10:12` értékre (`jelolt_tipus` = `elofordulas`).
-2. A `kizaras_oka` oszlop: „név nélküli forma”. Az `indoklas` oszlop teljes mondatban mondja el, miért.
-3. A `dontesek` oszlop (`NYD-005`) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.
+1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `HAMART-001` és az `igehely` = `1Móz 9:25` értékre (`jelolt_tipus` = `elofordulas`).
+2. A `kizaras_oka` oszlop: „emberi átkozódás, nem a genezisi lánc folytatása”. Az `indoklas` oszlop teljes mondatban mondja el, miért.
+3. A `dontesek` oszlop (`NYD-010`) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.
 
-### 3. Átnézték-e minden helyet, ahol a szópár előfordul?
+### 3. Átnézték-e minden helyet, ahol a motívum szavai előfordulnak?
 
-1. A `kizarasok.tsv`-ben az `ISTENTISZT-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 6 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „a hívás igéje a név nélkül” (246 vers, első verse: 1Móz 1:5); „elnevezés, nem a név segítségül hívása” (126 vers, első verse: 1Móz 2:19); „a Károli-szó más szót fordít” (51 vers, első verse: 2Móz 18:4); „a hívás és a név nem egy szerkezetben” (21 vers, első verse: 1Móz 41:52); „passzív szerkezet vagy megnevezés (negatív kritérium)” (14 vers, első verse: 5Móz 12:5); „nem az Úr neve áll a név után” (12 vers, első verse: 2Móz 31:2).
-2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `ISTENTISZT-001`): 470 vers.
-3. Együtt: 20 előfordulás, 109 egyenként kizárt vers és 470 csoportban kizárt vers, összesen 599 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat az „Ami nincs a csomagban” szakasz adja.
-
-## Fájlok és sorszámuk
-
-| Fájl | Sor |
-|---|---|
-| `beepitesi_dontesek.tsv` | 252 |
-| `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
-| `dontesnaplo.tsv` | 15 |
-| `elofordulasok.tsv` | 250 |
-| `forrasok_es_licencek.tsv` | 65 |
-| `kapcsolatok.tsv` | 86 |
-| `kizaras_csoportok.tsv` | 4034 |
-| `kizarasok.tsv` | 554 |
-| `kodkonyv.tsv` | 441 |
-| `motivum_kapcsolatok.tsv` | 3 |
-| `motivumok.tsv` | 9 |
-| `sblgnt_apparatus.tsv` | 60 |
-| `visszhang_megfelelok.tsv` | 144 |
-| `visszhang_tanuk.tsv` | 8 |
-| `vitatott_forrasok.tsv` | 3 |
-
-## Licencszűrés
-
-A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz belőlük): `BDB_forditas`, `Chain_Lineage_Browser`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. Okuk soronként a `forrasok_es_licencek.tsv` `ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt származtatott rétege). Ez a leltár, nem jogi vélemény.
-
-## Közzétételi hely
-
-A csomag kanonikus közzétételi helye: `https://doi.org/10.5281/zenodo.24141612` (a nyílt adatmag DOI-ja: 10.5281/zenodo.24141612). A lexikon honlapja: `https://logoszlexikon.hu`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A Károli-szöveg Strong-számos párosítása külön adatkészlet (DOI: 10.5281/zenodo.24141884); nem része ennek a csomagnak.
-
-## Idézés és a mesterséges intelligencia használata
-
-**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz-lexikon — nyílt adatmag. DOI: 10.5281/zenodo.24141612.
-
-A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
-
-## Angol réteg
-
-A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.
-
-## Hatástörténet (visszhang-réteg)
-
-Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: `visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), `visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai apparátusa). Csak ellenőrzött sor szerepel bennük: a Septuaginta-megfelelők közül azok, amelyeknél a versben egyetlen lemma jön szóba, gépi ellenőrzéssel; a többi sort második kéz nézte át.
-
-**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és saját szavas egy mondat.
-
-**Forrásmegjelölés.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com): az `sblgnt_apparatus.tsv` jegyzetei. Sefaria, CC BY: a rabbinikus tanú (a változás: szűrés és Károli-átvezetés). A Septuaginta megfelelői az OpenScriptorium LXX-morph adatán alapulnak (CC BY 4.0; a Rahlfs-szöveg közkincs). Az egyházatyai tanúk metaadata a HistoricalChristianFaith-gyűjteményből való (a gyűjtemény közkincs-nyilatkozata a kompilációra és a metaadatra szól; az idézetszövegek nincsenek a csomagban). A Targum (Sefaria-kiadás), a Vulgata (Clementina) és a Glossa Ordinaria (Migne) szövege közkincs.
-
-## Csoportos kizárás
-
-A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.
+1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 78 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (571 vers, szó: רַע, ra‘; első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, szó: חַטָּאת, chattát; első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (173 vers, szó: אֲדָמָה, adámá; első verse: 1Kir 7:46); és további 75 csoport.
+2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `HAMART-001`): 1556 vers.
+3. Együtt: 49 előfordulás, 218 egyenként kizárt hely és 1556 csoportban kizárt vers, összesen 1823 sor, amelyről döntés van. A számlálás egysége a sor, és egy sor több verset is fedhet (például: 1Kir 14:15-16); ezért ez az összeg eltérhet a lexikonlap döntési útjának versszámától. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
 
 ## Mi van benne, mi nincs (az adatmag és a lexikon)
 
 A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva.
 
-**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a kapcsolatok; a proveniencia (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a döntésnapló.
+**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, szóbázis, szótári jelentés, Károli-szó); a kizárások és a felvételi döntések indoklással; a kapcsolatok; az eredetjelölés (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a döntésnapló.
 
 **Nincs benne (a lexikon):** az értelmező próza (kivonat, értelmezés, igehelyenkénti kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.
 
-## Ami nincs a csomagban
+**Nincs a csomagban továbbá:** a még el nem döntött jelöltek (20); a források szövege (idézet); a belső munkajelek (azonosítók, munkafájlok, lekérdezés-nyomok). Ahol egy sor döntésre hivatkozik, a nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.
 
-- A `nyitva` állapotú (még el nem döntött) jelöltek: 20 db.
-- A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a tanulmányok és a lexikonlapok.
-- A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.
+## Idézés és közzétételi hely
+
+**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz-lexikon — nyílt adatmag: bibliai motívumok. DOI: 10.5281/zenodo.24141612. Az idézési adatok: `CITATION.cff`.
+
+A csomag kanonikus közzétételi helye: `https://doi.org/10.5281/zenodo.24141612`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A lexikon honlapja: `https://logoszlexikon.hu`.
+
+## Kapcsolódó adatkészletek
+
+- Károli 1908 – Strong szóillesztés: https://doi.org/10.5281/zenodo.24141884
+- Modernizált Károli – Strong: https://doi.org/10.5281/zenodo.24141950
+
+A Károli-szöveg teljes Strong-párosítása ezekben áll; ez a csomag csak a motívumszó Károli-megfelelőjét adja.
 
 ## Ellenőrzés
 
-A `ELLENORZO_OSSZEG.sha256` fájl minden fájl SHA-256 összegét tartalmazza; az export újrafuttatva bájtazonos.
+Az `ELLENORZO_OSSZEG.sha256` minden kiadott fájl SHA-256 összegét tartalmazza; az export újrafuttatva bájtazonos. A `kozlemeny/` mappa a megjelenési közlemény tervezete, nem része a kiadásnak.

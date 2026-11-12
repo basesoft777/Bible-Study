@@ -760,9 +760,31 @@ def tbesg(con, g):
     return (r[0], r[1], r[2], tisztit_tbesg(r[3] or ''))
 
 
+def thayer_javitas(szoveg, javitasok):
+    """A `thayer_forras_javitas` `javitva` soraival (`elotte`, `javitott_alak`) kiegészített szöveg (F215). A `Thayer_teljes.tsv` 15
+    Strongban egy-egy összefüggő szövegrészt elveszít (F132, M1); a beszúrás helye az `elotte` (a sor szövegének a lyuk előtti 20
+    karaktere), amely a teljes szócikkben pontosan egyszer áll: ha nem így van, hiba (néma elcsúszás helyett). Az alkalmazás
+    gépi azonossága a magyar ággal: `thayer_bemenet.javitott_szoveg` ugyanezt az `elotte` + `javitott_alak` párt használja."""
+    for elotte, alak in javitasok:
+        if szoveg.count(elotte) != 1:
+            raise ValueError('Thayer-javítás: az `elotte` (%r) %d helyen áll a szövegben, nem egyen' % (elotte, szoveg.count(elotte)))
+        p = szoveg.index(elotte) + len(elotte)
+        szoveg = szoveg[:p] + alak + szoveg[p:]
+    return szoveg
+
+
 def thayer(con, g):
+    """A Thayer-szócikk angol szövege a `thayer_forras_javitas` beszúrásaival (F215; a nyers `teljes_szocikk` 15 Strongban szöveget
+    veszít). A javítótábla a DB-ben áll (az építő viszi át), a régi/teszt-DB-ben nincs: ott a nyers szöveg."""
     r = con.execute('SELECT teljes_szocikk FROM thayer WHERE strong=?', (g,)).fetchone()
-    return r[0] if r else None
+    if not r:
+        return None
+    try:
+        jav = con.execute("SELECT elotte, javitott_alak FROM thayer_forras_javitas WHERE strong=? AND allapot='javitva' "
+                          "ORDER BY CAST(sorszam AS INTEGER), CAST(sor_poz AS INTEGER) DESC", (g,)).fetchall()
+    except sqlite3.OperationalError:
+        return r[0]
+    return thayer_javitas(r[0], jav) if jav else r[0]
 
 
 def magyar_gorog(con, g):

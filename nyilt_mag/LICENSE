@@ -1,0 +1,20 @@
+Logosz-lexikon — nyílt adatmag / Logosz Lexikon — open data core
+Copyright (c) 2026 Demeter Tamás
+
+A csomag saját része (a motívumadatok, a döntések és indoklásuk, a kódkönyv és a leíró szövegek) licence:
+The package's own part (the motif data, the decisions and their rationale, the codebook and the descriptive texts)
+is licensed under:
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Kivétel: a cc_by_sa_reteg/ könyvtár tartalma CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+Exception: the contents of the cc_by_sa_reteg/ directory are under CC BY-SA 4.0.
+
+A felhasznált külső adatok licence és forrásmegjelölése: ATTRIBUCIO.md.
+Licences and attribution of the third-party data used: ATTRIBUCIO.md.
+
+A lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva; nem része
+ennek a csomagnak.
+The lexicon (its interpretive text, the Hungarian translation of the dictionaries and the volume) is a separate
+work, all rights reserved; it is not part of this package.
