@@ -695,20 +695,7 @@ def res_egyezik(elvart, tenyleges):
     # előfordulás kiejtése) a rés héber/görög szavát is érintheti: a kiejtés-zárójel nélkül összevetve
     # F182 (3. menet): az új szerkezetű lap olvasói utómunkája (a jelölt-lábjegyzet, a szónézet-link) is
     uj = OU.alkalmaz(LG.cimjeloles_ki(LG.kesz_lap_utana(LG.olvasoi_atiras(elvart), None, None)), strong_cim=LG.strong_cim)
-    if tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj):
-        return True
-    # lap-javit HAMART-001 (S1–S2): az új szerkezetű lap műhelyszövege a műhelynapló-mellékletbe költözik
-    # (`muhelynaplo.kivalaszt`); a jegyzetszám és a melléklet-link a szakaszhoz kötött, ezért azok nélkül összevetve
-    import muhelynaplo as MH
-    uj2 = MH.kivalaszt(LG.nevelo_le(uj), 'X')[0]
-    return _muhely_norm(_kiejtes_nelkul(tenyleges)) == _muhely_norm(_kiejtes_nelkul(uj2))
-
-
-def _muhely_norm(szoveg):
-    s = re.sub(r'(?:#|id=")[jf]-[\w.-]+', '#J', szoveg or '')
-    s = re.sub(r'\[[\w-]+\.\d+\]', '[N]', s)
-    s = re.sub(r'\([\w-]+_MUHELYNAPLO\.md', '(M', s)
-    return s.strip()
+    return tenyleges == uj or _kiejtes_nelkul(tenyleges) == _kiejtes_nelkul(uj)
 
 
 _KIEJTES_ZAROJEL_RX = re.compile(r'([֐-׿Ͱ-Ͽἀ-῿]+(?:\]\([^)]*\))?'
