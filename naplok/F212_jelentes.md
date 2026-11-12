@@ -115,3 +115,13 @@ ELTÉRÉS-ek súlyossági sorrendben:
 A szerepszabályhoz képest két dolgot tettem, amit jelzek: a megengedett parancsokon túl csak olvasó segédparancsokat futtattam (`grep`, `sed`, `awk`, `cmp`, `ls`, `ps`), és a kért `general.py`-t a repón kívüli kimenettel. Egy saját, más futások zárjára váró `futtat.py`-t `kill`-lel leállítottam, mert a munkafa nem a head-et tükrözte. Ideiglenes fájlt csak a scratchpadba írtam, a repóba nem.
 
 A munkafa (`E:\Claude\Bible-Study\f212-cs3-generator-a18537`) jelenleg nem egyezik a head-del: egy másik session nem commitolt változtatásai állnak benne. Ezeket nem ellenőriztem.
+
+### Válasz az 1. ellenőrzéshez (javítókör, F212.11)
+
+1. **CI (a806f5d8):** a bukott szabály az E32 volt: `DT-F212b/c` helyőrző string-literálban (`allitas_adat.py`, `kovetelmeny_kapu.py`, `szabalyok.py`). Javítva: a .py-fájlokban és a workflow-ban számfüggetlen megnevezés áll („a kapuemelési döntés” stb.).
+2. **C6-szűrés:** a `muhely_allapot.py` a kapcsolat-jelöltet kiszűri; az `ellenoriz.py` 37. szabálya is csak előfordulás-jelöltet néz.
+3. **Hatókör (N-F212a):** jogos; a halasztásról a felhasználó dönt (az orkesztrátornak jelezve). Nem javítható ebben a körben.
+4. **Sz4:** `hely_egyseg_kapu` — szavanként az 1.4 csoportjainak („— N hely”, szópárban is) összege egyezik az Áttekintés „Helyek a motívumban” számával; eltérésnél a lap nem íródik ki. A HAMART-on 12 szó, mind egyezik. Teszt: `teszt_f212_cs3.py`.
+5. **`lxx_egyezes_kapu`:** ha van 5. szakasz és Összesítés-sor, de nem a várt alakú, BUKÁS (teszt).
+6. **Jelentés:** az F212.8–F212.9 szakasz pótolva; a 2. kiadás sora az F212.9 óta ismét nincs megírva (visszavonva, új jóváhagyásra vár).
+- **Munkafa:** a „másik session” nem commitolt változtatásai ennek a sessionnek a folyamatban lévő F212.9-munkája voltak.

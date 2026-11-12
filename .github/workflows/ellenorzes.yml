@@ -132,10 +132,10 @@ jobs:
             head -c 900000 tanulmany_audit.md
           } >> "$GITHUB_STEP_SUMMARY"
 
-      # F196, F212 (DT-F212b; a felhasznalo: "Igen, a CS3 utan", "mehet"): a gyokerok-kapuk gatloak. E38: az allitas-adat
+      # F196, F212 (a kapuemelési döntés; a felhasznalo: "Igen, a CS3 utan", "mehet"): a gyokerok-kapuk gatloak. E38: az allitas-adat
       # kapu minden nem befagyasztott lapon, minden elteres HIBA; E39: a kovetelmenylista-kapu a HAMART-001-en, csak a
       # gatlo szintu hiany HIBA, a figyelmeztetes jelentes. A befagyasztott lapot (adat/lap_befagyasztas.tsv) kihagyjak.
-      - name: E38-E39 Gyokerok-kapuk (allitas-adat, kovetelmenylista; HIBA, DT-F212b)
+      - name: E38-E39 Gyokerok-kapuk (allitas-adat, kovetelmenylista; HIBA, F212)
         if: always()
         run: |
           set +e

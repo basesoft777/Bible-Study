@@ -150,7 +150,7 @@ _NYERS_SOROK = None
 
 def _nyers_sorok():
     """A nyers HunKar-tábla sorai (split('\\t'); CLAUDE.md, TSV-olvasás). Csak ez a modul nyitja meg a fájlt (F212,
-    DT-F212c: a hozzáférési pont); más eszköz a `megerositett_sorok`-at hívja."""
+    a Károli-KH döntés: a hozzáférési pont); más eszköz a `megerositett_sorok`-at hívja."""
     global _NYERS_SOROK
     if _NYERS_SOROK is None:
         ki, fej = [], None
@@ -169,7 +169,7 @@ def _nyers_sorok():
 
 
 def szures(forras=None):
-    """F212 (DT-F212c), a hozzáférési pont: (megerősített sorok, nem megerősített nyers sorok száma) — a nyers HunKar-sorok
+    """F212 (a Károli-KH döntés), a hozzáférési pont: (megerősített sorok, nem megerősített nyers sorok száma) — a nyers HunKar-sorok
     és a csak a MEK-ben álló megerősített sorok (`mek_sorok`), azonos kulcsú sor egyszer (`egyedi`), és csak a javított
     táblában `megerositett` sor (`elfogad`); a `lekerdez.py` ugyanezt a sorrendet követi. `forras`: STEP-alakú forrásvers."""
     nyers = [r for r in _nyers_sorok() if forras is None or r['Igehely'] == forras]

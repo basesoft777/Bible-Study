@@ -1,4 +1,4 @@
-"""A befagyasztott lexikonlapok jegyzéke (F212, DT-F212a): egy hely, gépileg olvasható.
+"""A befagyasztott lexikonlapok jegyzéke (F212, a befagyasztási döntés): egy hely, gépileg olvasható.
 
 A befagyasztott motívum lapja (`lexikon/<ID>_TUDOMANYOS.md`) a generátor javításai után nem generálódik újra: új
 cikkként, nulláról készül majd (F123). Az adata és a forrása a helyén marad, a nyílt magban az adata benne marad.

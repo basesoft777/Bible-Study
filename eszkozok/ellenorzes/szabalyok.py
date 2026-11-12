@@ -2035,7 +2035,7 @@ def _migralt_lista():
 
 
 def _befagyasztott_idk():
-    """F212 (DT-F212a): a befagyasztott lapok (`adat/lap_befagyasztas.tsv`, az `eszkozok/lap_befagyasztas.py`
+    """F212 (a befagyasztási döntés): a befagyasztott lapok (`adat/lap_befagyasztas.tsv`, az `eszkozok/lap_befagyasztas.py`
     olvasójával; a tesztben átállított ROOT alól)."""
     eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if eszkozok not in sys.path:
@@ -2236,7 +2236,7 @@ def e28_generalt_nezet_egyezes(fajlok):
 
     # (2) migrált nézetek
     lista = _migralt_lista()
-    # F212 (DT-F212a): a befagyasztott lap nem generálódik újra, ezért az E28 nem veti össze
+    # F212 (a befagyasztási döntés): a befagyasztott lap nem generálódik újra, ezért az E28 nem veti össze
     fagy = _befagyasztott_idk()
     if fagy:
         kihagyott = [d['id'].strip() for _, d in lista if d.get('id', '').strip() in fagy]
@@ -3124,11 +3124,11 @@ KULSO_SZABALYOK = (
      '`eszkozok/ellenoriz.py`'),
     ('E18', 'HIBA', 'a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja',
      '`eszkozok/feladatok.py ellenoriz`'),
-    # F212 (DT-F212b, a felhasználó: „Igen, a CS3 után”, „mehet”): a gyökérok-kapuk gátlóak, a befagyasztott lap kimarad
+    # F212 (a kapuemelési döntés, a felhasználó: „Igen, a CS3 után”, „mehet”): a gyökérok-kapuk gátlóak, a befagyasztott lap kimarad
     ('E38', 'HIBA', 'állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott '
      'lapon (`--minden --szigoru`)', '`eszkozok/ellenorzes/allitas_adat.py`'),
     ('E39', 'HIBA', 'követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés '
-     'jelentés (`--szigoru`, DT-F212b)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
+     'jelentés (`--szigoru`, a kapuemelési döntés)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
 )
 
 
@@ -3509,7 +3509,7 @@ def szamismetles(fajlok):
 
 
 # --------------------------------------------------------------------------
-# E40 -- a nyers Karoli-KH tabla egyetlen hozzaferesi pontja (F212, DT-F212c)
+# E40 -- a nyers Karoli-KH tabla egyetlen hozzaferesi pontja (F212, a Károli-KH döntés)
 # --------------------------------------------------------------------------
 # Ismetlodo hiba (a felhasznalo: „Ismét ezt hozza / már több alkalomma / vizsgáljuk ki mi ennek az oka”): az F177 a
 # javitott tablat uj fajlkent es szurokent hozta be, a nyers `konkordancia/Karoli_kereszthivatkozasok.tsv` viszont a
@@ -3558,7 +3558,7 @@ def e40_karoli_kh_hozzaferes(fajlok=None, root=None):
                 if E40_HIVAS_RX.search(s):
                     talalatok.append(Talalat('E40', SZINT['E40'], rel, n,
                                              'a nyers Károli-KH táblát a hozzáférési ponton kívül nyitja meg; használd a '
-                                             '`karoli_kh_szuro.megerositett_sorok`-at (DT-F212c)'))
+                                             '`karoli_kh_szuro.megerositett_sorok`-at (a Károli-KH döntés)'))
     return talalatok
 
 
@@ -3566,7 +3566,7 @@ SZINT['E40'] = 'HIBA'
 FAJLSZINTU_SZABALYOK.add('E40')
 SZABALYOK_FUGGVENYEI['E40'] = e40_karoli_kh_hozzaferes
 SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a '
-                         '`karoli_kh_szuro` hozzáférési pontját hívja (DT-F212c)')
+                         '`karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés)')
 
 
 

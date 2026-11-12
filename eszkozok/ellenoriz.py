@@ -785,7 +785,7 @@ def szabaly11_res_forras_egyezes(adat_dir):
     for r in erintett:
         motivum_id, res = r['id'], r['res']
         if motivum_id in LG.BEFAGYASZTOTT:
-            continue   # F212 (DT-F212a): a befagyasztott lap nem generálódik újra
+            continue   # F212 (a befagyasztási döntés): a befagyasztott lap nem generálódik újra
         if motivum_id not in lex_szoveg_cache:
             lex_path = os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % motivum_id)
             if not os.path.exists(lex_path):
@@ -2184,7 +2184,7 @@ def beepitett_csoportos_okban(adat_dir):
     egy összesítő (csoportos) elutasított sora visel; a minták az `elutasitasi_okok.tsv` sorai ezzel a címkével (a
     motívum saját és a `*` sorai), az `^összesítő sor` horgonyú minták nélkül (ezek beépített sorra nem illhetnek)."""
     import szerep_kizart as SZKZ
-    _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
+    jel = G.elofordulas_jeloltek(G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))[1])   # F212 (C6)
     ok_ut = os.path.join(adat_dir, 'elutasitasi_okok.tsv')
     _, okok = G.tsv_beolvas(ok_ut) if os.path.exists(ok_ut) else ([], [])
     ki = []

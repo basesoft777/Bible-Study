@@ -50,6 +50,20 @@ class Egyezeskapu(unittest.TestCase):
         with self.assertRaises(ValueError):
             LG.lxx_egyezes_kapu(self.lap(nincs='23'), 'X-001')
 
+    def test_hibas_osszesites_nem_enged_at(self):
+        lap = '## 5. LXX-fordítói döntések\n\n*Összesítés: egyező=7, más címke=6.*'
+        with self.assertRaises(ValueError):
+            LG.lxx_egyezes_kapu(lap, 'X-001')
+
+    def test_hely_egyseg_kapu(self):
+        att = '\n'.join([LG.ATTEKINTO_CIM, '', '| Szó (kiejtés) | Alapjelentés | LXX-megfelelő | Helyek a motívumban |',
+                         '|---|---|---|---|', '| חָמָס (chámász) | erőszak | — | 12 |', ''])
+        jo = ('<summary><strong>חָמָס (chámász) — erőszak</strong> — 2 hely</summary>\n'
+              '<summary><strong>szópár: málé + chámász</strong> — 10 hely</summary>\n' + att)
+        self.assertEqual(LG.hely_egyseg_kapu(jo, 'X-001'), 1)
+        with self.assertRaises(ValueError):
+            LG.hely_egyseg_kapu(jo.replace('— 10 hely', '— 9 hely'), 'X-001')
+
     def test_osszesites_nelkul_nem_mer(self):
         self.assertEqual(LG.lxx_egyezes_kapu('nincs LXX-szakasz', 'X-001'), {})
 
@@ -123,7 +137,7 @@ class Munkaszo(unittest.TestCase):
 
 
 class KaroliKhHozzaferes(unittest.TestCase):
-    """F212 (DT-F212c): a nyers Károli-KH tábla egyetlen hozzáférési pontja (E40) és a lap Károli-KH sorai."""
+    """F212 (a Károli-KH döntés): a nyers Károli-KH tábla egyetlen hozzáférési pontja (E40) és a lap Károli-KH sorai."""
 
     def futtat(self, fajlok):
         sys.path.insert(0, os.path.join(ESZKOZOK, 'ellenorzes'))

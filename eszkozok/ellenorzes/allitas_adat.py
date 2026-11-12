@@ -594,7 +594,7 @@ def meres(mid):
 
 
 def osszes_lap_id():
-    """Minden lap, a befagyasztottak nélkül (F212, DT-F212a: a befagyasztott lap nem generálódik újra, a számai a
+    """Minden lap, a befagyasztottak nélkül (F212, a befagyasztási döntés: a befagyasztott lap nem generálódik újra, a számai a
     régi adatot mutatják; új cikkként készül)."""
     import lap_befagyasztas
     fagy = lap_befagyasztas.befagyasztott_idk()
@@ -616,7 +616,7 @@ def _cella(x):
 def jelentes(eredmenyek, reszletes=False):
     """Markdown jelentés: {mid: meres(mid)} → szöveg."""
     ki = ['# Állítás–adat kapu (F196, E38)', '',
-          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: a CI-ben E38 (DT-F212b): minden eltérés HIBA; a befagyasztott lap kimarad.*', '']
+          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: a CI-ben E38 (a kapuemelési döntés): minden eltérés HIBA; a befagyasztott lap kimarad.*', '']
     for mid, e in eredmenyek.items():
         if e['hiba']:
             ki += ['## %s' % mid, '', 'Nem mérhető: %s' % e['hiba'], '']

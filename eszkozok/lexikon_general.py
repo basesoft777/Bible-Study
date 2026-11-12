@@ -40,7 +40,7 @@ import tablajegyzet as TJ
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
-import lap_befagyasztas as LB  # F212 (DT-F212a): a befagyasztott lapok jegyzéke
+import lap_befagyasztas as LB  # F212 (a befagyasztási döntés): a befagyasztott lapok jegyzéke
 import szerep_karoli as SZK
 import szerep_nave as SZN
 import szerep_kizart as SZKZ
@@ -1979,6 +1979,9 @@ def lxx_egyezes_kapu(szoveg, motivum_id):
     lathato = re.sub(r'<!--.*?-->', '', szoveg, flags=re.S)
     m = _LXX_OSSZESITES_RX.search(lathato)
     if not m:
+        if re.search(r'(?m)^## 5\. LXX-fordítói döntések', lathato) and '*Összesítés:' in lathato:
+            # a független ellenőr lelete (F212): a címke változása ne kapcsolja ki némán a kaput
+            raise ValueError('%s: az 5. szakasz Összesítés-sora nem a várt alakú (egyezés-kapu, F212)' % motivum_id)
         return {}
     egy, csal, elt, nincs, minusz, megall, szam = (int(x) for x in m.groups())
     n = egy + csal + elt + nincs + minusz + megall + szam
@@ -2003,6 +2006,49 @@ def lxx_egyezes_kapu(szoveg, motivum_id):
         raise ValueError('%s: az LXX-számok a blokkok között eltérnek (egyezés-kapu, F212): %s'
                          % (motivum_id, '; '.join(hibak)))
     return {'n': n, 'egyezo': egy, 'szocsalad': csal, 'eltero': elt, 'nincs_par': nincs, 'szavankent': sum(szo)}
+
+
+_HELY_14_RX = re.compile(r'<summary><strong>([^<]+?)</strong> — (\d+) hely</summary>')
+_HELY_ATT_RX = re.compile(r'^\| ([^|]+?) \| [^|]* \| [^|]* \| (\d+) \|$')
+
+
+def _kiejtesek(nev):
+    """A csoport- vagy szónév kiejtései: „חָמָס (chámász) — erőszak” → {chámász}; „szópár: málé + chámász” → {málé,
+    chámász}; „קוֹץ (kóc) + דַּרְדַּר (dardar)” → {kóc, dardar}."""
+    nev = nev.split(' — ')[0]
+    zar = re.findall(r'\(([^()]+)\)', nev)
+    if zar:
+        return set(z.strip() for z in zar)
+    if nev.startswith('szópár:'):
+        return set(x.strip() for x in nev[len('szópár:'):].split('+'))
+    return set()
+
+
+def hely_egyseg_kapu(szoveg, motivum_id):
+    """F212 (Sz4, egyezés-kapu az egységre): ugyanaz az egységű szám („hely”) két blokkban ugyanaz — a szavanként az
+    1.4 („<szó> — N hely”) és az Áttekintés „Helyek a motívumban” oszlopa. Eltérésnél ValueError (a lap nem íródik ki).
+    Visszaad: az összevetett szavak száma."""
+    lathato = re.sub(r'<!--.*?-->', '', szoveg, flags=re.S)
+    egy4 = {}
+    for nev, n in _HELY_14_RX.findall(lathato):     # szavanként minden csoport, amelyben a szó áll (szópárban is)
+        for k in _kiejtesek(nev):
+            egy4[k] = egy4.get(k, 0) + int(n)
+    i = lathato.find(ATTEKINTO_CIM)
+    if i < 0 or not egy4:
+        return 0
+    att = {}
+    for sor in lathato[i:].split('\n')[1:]:
+        if sor.startswith('#'):
+            break
+        mm = _HELY_ATT_RX.match(sor.strip())
+        if mm:
+            for k in _kiejtesek(mm.group(1)):
+                att[k] = int(mm.group(2))
+    kozos = [sz for sz in egy4 if sz in att]
+    hibak = ['%s: 1.4 %d hely ↔ Áttekintés %d hely' % (sz, egy4[sz], att[sz]) for sz in kozos if egy4[sz] != att[sz]]
+    if hibak:
+        raise ValueError('%s: a helyszám a blokkok között eltér (egység-kapu, F212): %s' % (motivum_id, '; '.join(hibak)))
+    return len(kozos)
 
 
 def _lxx_ctx(ctx):
@@ -5441,7 +5487,7 @@ _kh_gazda = {}   # a kihagyott forrásvers -> a lista gazdája (STEP-alak), az o
 
 
 def kh_index():
-    """A Károli-KH listák forrásversenként — csak a MEK-kel megerősített sorok (F212, DT-F212c: a `karoli_kh_szuro`
+    """A Károli-KH listák forrásversenként — csak a MEK-kel megerősített sorok (F212, a Károli-KH döntés: a `karoli_kh_szuro`
     hozzáférési pontja, ugyanaz a szűrés, mint a `lekerdez.py`-ban: nyers + csak MEK-beli megerősített sor, `egyedi`,
     `elfogad`). A nem megerősített sorok száma forrásversenként a `_kh_elvetett`-be kerül (a blokk hatókör-sora mondja ki);
     a régi másolat-karantén (`karoli_kh_epseg.gyanus_forrasok`) a javított táblában `kiesik`, ezért itt nem kell."""
@@ -5533,7 +5579,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             hatokor += (' %d hely több versre terjed (%s): a gyűjtemények versenként adnak utalást, ezért ezekre a '
                         'vizsgálat nem keres.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
         if kh_kihagyva:
-            # F212 (DT-F212c): a lapra csak a MEK-kel megerősített Károli-utalás kerül; a kimaradt utalások száma
+            # F212 (a Károli-KH döntés): a lapra csak a MEK-kel megerősített Károli-utalás kerül; a kimaradt utalások száma
             hatokor += (' %d hely %d Károli-utalása nem áll itt, mert a Károli-fordítás nyomtatott kiadása (MEK 00161) '
                         'nem erősíti meg: %s.' % (len(kh_kihagyva), sum(n for _i, n in kh_kihagyva),
                                                     ', '.join(i for i, _n in kh_kihagyva)))
@@ -9881,7 +9927,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             continue
 
         if m['id'] in BEFAGYASZTOTT:
-            # F212 (DT-F212a): a befagyasztott lap új cikkként, nulláról készül újra; addig nem generálódik
+            # F212 (a befagyasztási döntés): a befagyasztott lap új cikkként, nulláról készül újra; addig nem generálódik
             print('  %s: BEFAGYASZTVA -- a lap nem generálódik újra (adat/lap_befagyasztas.tsv)' % m['id'])
             continue
 
@@ -9918,6 +9964,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             # alakja, a 2. és 3. tábla jegyzetei a tábla alatt
             uj_szoveg = TJ.alkalmaz(uj_szoveg)
             lxx_egyezes_kapu(uj_szoveg, m['id'])   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
+            hely_egyseg_kapu(uj_szoveg, m['id'])   # F212 (Sz4): az azonos egységű helyszám a blokkok közt = BUKÁS
             allapot = ('új fájl' if meglevo_uj is None else
                        'változatlan' if uj_szoveg == meglevo_uj else 'frissítve')
         elif os.path.exists(cel_ut):
