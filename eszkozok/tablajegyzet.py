@@ -67,7 +67,7 @@ def olvasoi_jegyzet(lathato, ujszov=False):
     ki = []
     for seg in [x.strip() for x in t.split(' · ')]:
         seg = re.sub(r'^(?:Forrás|forrás):\s*', '', seg).strip()
-        if not seg or _KOD_RX.fullmatch(seg) or seg.startswith(('döntés:', 'lap-javit')) \
+        if not seg or _KOD_RX.fullmatch(seg) or seg.startswith(('döntés:', 'lap-javit', 'a lap teljesség-mérése')) \
                 or 'versszám-felmérése' in seg or re.match(r'U\d:', seg):
             continue
         seg = _KOD_RX.sub('', seg)
@@ -79,8 +79,15 @@ def olvasoi_jegyzet(lathato, ujszov=False):
         if seg == 'a héber szöveg (TAHOT) hatókörén kívül':
             seg = 'újszövetségi hely: a szó a görög szövegből (TAGNT)' if ujszov else \
                 'a héber szöveg-igazolás itt nem alkalmazható'
-        if seg.startswith('teljesség-mérés'):
-            m = re.search(r'(?:csoportos sor|blokk-sor)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
+        # F194 (az ISTENTISZT-001 forrássorai): a „U1 teljesség-mérés …, blokk-kizárás (…): N vers” és az LXX-híd is
+        seg = re.sub(r'\bZef\b', 'Sof', seg)
+        seg = re.sub(r'\s*Votes \d+', '', seg)
+        seg = re.sub(r'szerkesztői döntés K\d+', 'szerkesztői döntés', seg)
+        seg = seg.replace('a motívumtábla folerendelt_fogalom', 'a motívum meghatározása')
+        seg = seg.replace('pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív betöltés',
+                          'a kifejezés keresése, a szótárak, a kereszthivatkozások és a Septuaginta összevetésével')
+        if re.match(r'(?:U\d |LXX-híd )?teljesség-mérés', seg):
+            m = re.search(r'(?:csoportos sor|blokk-sor|blokk-kizárás)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
             seg = 'csoportos kizárás, %s vers' % m.group(1).strip() if m else \
                 'a motívum szavainak teljes bibliai keresése, egyenkénti döntés'   # F212: blokk-sor nélkül nem csoportos
         if seg.startswith('négy forrás összevetése'):

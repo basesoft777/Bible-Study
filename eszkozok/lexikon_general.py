@@ -3887,7 +3887,7 @@ def elnyelo_mondat(kulcsok):
 # teljes folyamatukban. A kapcsoló egyetlen helye ez; a kapu (`olvasoi_kapu.BDB_OLVASOI`) a lap jelölőjéhez igazodik.
 # F187: ugyanez a kapcsoló a görög 4.2 Thayer-kártyáját is kétrétegűvé teszi (egy kapcsoló, egy jelölő, egy kapu).
 # F182 (2. fázis, F25): a HAMART-001 az F33 (a tagolás a szakasztáblából, egy forrásból) után kapcsolva be.
-KETRETEGU_BDB_KARTYA = frozenset({'HAMART-001'})
+KETRETEGU_BDB_KARTYA = frozenset({'HAMART-001', 'ISTENTISZT-001'})
 
 
 def bdb_kartya_aktiv(motivum_id):
@@ -4550,7 +4550,7 @@ BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 # teljes folyamatban kapják meg (az F35 mellé). Az olvasó (`olvaso_szerver/blokkok.py`) a javítást mindig alkalmazza.
 # A kapcsoló egyetlen helye ez.
 # F182 (2. fázis, F25): motívumhalmaz, a `KETRETEGU_BDB_KARTYA` mintájára; a HAMART-001 az F33 után kapcsolva be.
-BDB_BETU_JAVIT = frozenset({'HAMART-001'})
+BDB_BETU_JAVIT = frozenset({'HAMART-001', 'ISTENTISZT-001'})
 
 
 def bdb_betu_javit_aktiv(motivum_id):
@@ -8068,6 +8068,10 @@ UJ_OLVASOI_MUNKASZO = (
     # F212 (A1): a jelölttábla indoklásának műhelyszövege (`jeloltek.tsv` `indoklas`) olvasói alakban; az adat marad
     (re.compile(r'Összesítő sor (\d+) versre \(a sor igehelye a blokk egy verse áll\):\s*'),
      r'A sor \1 verset foglal össze (az igehely az első közülük): '),
+    # F194 (az ISTENTISZT-001 indoklásai és forrássorai): ugyanez az „(az első itt áll)” alakkal, és a szenvedő szerkezet
+    (re.compile(r'Összesítő sor (\d+) versre \(az első itt áll\):\s*'),
+     r'A sor \1 verset foglal össze (az igehely az első közülük): '),
+    (re.compile(r'\(D-minta\)'), '(a szenvedő szerkezet mintája)'),
     (re.compile(r'\s*Szerkesztői döntés \(\d{4}-\d\d-\d\d: „[^”]*”\) szerint blokk-kizárás\.'),
      ' A szerkesztő ezeket a verseket együtt zárta ki.'),
     (re.compile(r'\bKutatói felvetés\b'), 'Szerkesztői felvetés'),
@@ -9723,18 +9727,30 @@ def _hatter_sorok(hs, nyelv_nev_elotag=''):
         for r, jel in lista:
             for a in [x.strip() for x in r['alak'].split('·') if x.strip()]:
                 if re.search('[֐-׿]', a):
-                    k = HK.kiejt(a) or massalhangzos_atiras(a)
+                    k = HK.kiejt(a) or _azonos_iras_kiejtes(a, r['strong']) or massalhangzos_atiras(a)
                 else:
                     k = re.sub(r'\s*\(.*?\)', '', r['kiejtes'] or '').split('·')[0].strip()
                 szavak.append('%s (%s)' % (a, k) if k else a)
             if not r['alak']:
-                megj.add('a BDB az alakot írás nélkül adja')
+                # F194: a romlott alakot a sor megjegyzése mondja ki, nem az írás hiányát
+                megj.add('a BDB szövegében az alak romlottan áll' if 'romlott' in (r['megjegyzes'] or '')
+                         else 'a BDB az alakot írás nélkül adja')
             if re.search(r'\?|possibly|bizonytalan|valószínűleg|kétséges|dubious|ritka', (r['megjegyzes'] or '') + jel):
                 megj.add('a BDB szerint bizonytalan vagy ritka')
             if jel and jel not in jelek:
                 jelek.append(jel)
         ki.append((nyelv, szavak, jelek, '; '.join(sorted(megj)) or '—'))
     return ki
+
+
+def _azonos_iras_kiejtes(alak, strong):
+    """F194 (K07, egy szónak egy kiejtése): a pontozatlan rokon alak, amelynek mássalhangzói a lánc-szó lemmájáéval
+    azonosak (óarámi קרא ~ héber קָרָא), a lánc-szó kiejtését kapja, nem gépi mássalhangzós átírást; különben ''."""
+    lk = lemma_kiejtes(strong)
+    if not lk:
+        return ''
+    massal = lambda x: re.sub('[֑-ׇ]', '', x or '')
+    return (lk[1] or '') if massal(lk[0]) == massal(alak) else ''
 
 
 def _to_iras_kiejtes(strong):
