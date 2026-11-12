@@ -36,6 +36,7 @@ import general as G
 import lekerdez as L
 import tsk_kulcs as TK
 import ubs_hozzarendeles as UBS
+import muhelynaplo as MH
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
@@ -6081,10 +6082,13 @@ def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
             sorok.append('| %s | %s |' % (_cella('; '.join(parok)), SZKZ.indok_cella(fo)))
         dt = sorted({d for f in farkak for d in re.findall(r'\bDT\d+\b', f)})
         datumok = sorted({dontes_datum(d) for d in dt if dontes_datum(d)})
-        sorok += ['', '*Az indoklások egy szerkesztői döntésből valók%s; a mért egyezéseket a héber és a görög szöveg, a '
-                  'Septuaginta és a két hagyományos kereszthivatkozás-gyűjtemény (TSK, Károli) adja.*%s'
-                  % ((' (%s)' % ', '.join(datumok)) if datumok else '',
-                     ''.join('<!-- %s -->' % f.replace('--', '—') for f in farkak))]
+        # a felhasználó átnézése (14.): olvasói mondat; a döntés dátuma és a nyers farok a műhelynaplóba (az „eredeti”
+        # megjegyzésként, amelyet a `muhelynaplo.kivalaszt` a mellékletbe költöztet)
+        sorok += ['', '*Az egyezéseket a héber és a görög szöveg, a Septuaginta és a két kereszthivatkozás-gyűjtemény '
+                  '(TSK, Károli) méri; az indoklás a lap szerkesztőjéé.*%s'
+                  % ''.join('<!-- eredeti: %s%s -->' % (f.replace('--', '—'),
+                                                        (' (%s)' % ', '.join(datumok)) if datumok else '')
+                            for f in farkak)]
     elif csoportok:
         sorok += ['| Kapcsolat | Alátámasztás |', '|---|---|']
         for indoklas, parok in csoportok:
@@ -6155,6 +6159,8 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
     out = ['*Generált: a független megerősítés a TSK (Votes ≥ 15) és a Károli-KH találatainak metszete a '
            'motívum előfordulás-igehelyeivel; a minősített jelöltek a `jeloltek.tsv`-ből (`forras_kereses`: '
            'TSK / Károli-KH).*']
+    if uj_szerkezet(motivum_id):
+        return _minosites_uj(motivum_id, parok, jelolt_sorok)
     if parok:
         out.append('**Független megerősítés** (%d pár):\n\n%s' % (len(parok), '\n'.join(parok)))
     else:
@@ -6183,6 +6189,42 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
             out.append(kozos)
     else:
         out.append('**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.')
+    return '\n\n'.join(out)
+
+
+# lap-javit HAMART-001 (a felhasználó átnézése, 13.): az új szerkezetű lapon a Minősítés olvasói bevezetővel, „Votes”
+# nélkül áll; az elutasított kereszthivatkozás-jelölt nem a lapon, hanem a Kizárások mellékletében (saját alcímmel),
+# a jegyzete a műhelynapló-mellékletben. Szabály: elutasított jelölt nem kerül a lapra.
+MINOSITES_KIZART = {}
+MINOSITES_KIZART_CIM = 'Kereszthivatkozásból jött, elutasított jelöltek'
+
+
+def _minosites_uj(motivum_id, parok, jelolt_sorok):
+    out = []
+    if parok:
+        out.append('Az alábbi %d hely-párt két egymástól független kereszthivatkozás-gyűjtemény (TSK, Károli) is '
+                   'összeköti, és a pár mindkét helye a motívumhoz tartozik.\n\n%s'
+                   % (len(parok), '\n'.join(p.replace(' — TSK (Votes ', ' — TSK (').split(' (')[0]
+                                             if ' — TSK (' in p else p for p in parok)))
+    else:
+        out.append('A két hagyományos kereszthivatkozás-gyűjtemény egyetlen olyan utalást sem ad, amely a motívum két '
+                   'saját helyét kötné össze.')
+    jeloltek = [j for j in jelolt_sorok if j['id'] == motivum_id
+                and (j.get('forras_kereses') or '').startswith(JELOLT_KERESZTHIV_ELOTAGOK)]
+    elut = [j for j in jeloltek if j['dontes'] == 'elutasítva']
+    marad = [j for j in jeloltek if j['dontes'] != 'elutasítva']
+    if elut:
+        sorok_md, labj = minosites_jelolt_sorok(motivum_id, elut)
+        MINOSITES_KIZART[motivum_id] = (sorok_md, labj)
+        out.append('A kereszthivatkozások további %d helyet ajánlottak; ezek egyike sem tartozik a motívumhoz, az indokok '
+                   'a [Kizárások mellékletében](%s%s#%s) olvashatók.'
+                   % (len(elut), motivum_id, KIZARASOK_UTOTAG, _heading_slug(MINOSITES_KIZART_CIM)))
+    else:
+        MINOSITES_KIZART.pop(motivum_id, None)
+    if marad:
+        sorok_md, labj = minosites_jelolt_sorok(motivum_id, marad)
+        out.append('\n'.join(['| Igehely | Miért lett jelölt | Döntés és indok |', '|---|---|---|'] + sorok_md))
+        out.append('\n'.join('[^mj%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
     return '\n\n'.join(out)
 
 
@@ -7027,6 +7069,15 @@ def kizarasok_melleklet(m, sorai):
                 ki += ['<details>', '<summary>A %s vers</summary>' % OK._ezres(len(vv)), '', lista, '', '</details>']
             else:
                 ki.append(lista)
+    if mid in MINOSITES_KIZART:
+        # lap-javit HAMART-001 (13.): a kereszthivatkozásból jött, elutasított jelöltek (a lapról ide költözve); a
+        # jegyzetek (forrás, döntés nyoma) a műhelynapló-mellékletben
+        sorok_md, _labj = MINOSITES_KIZART[mid]
+        ki += ['', '## %s' % MINOSITES_KIZART_CIM, '',
+               'A hagyományos kereszthivatkozás-gyűjtemények (TSK, Károli) által a motívum helyeihez ajánlott, de a '
+               'motívumhoz nem tartozó %d hely, az elutasítás okával.' % len(sorok_md), '',
+               '| Igehely | Miért lett jelölt | Döntés és indok |', '|---|---|---|']
+        ki += [MH.s1_tisztit(re.sub(r'\[\^mj\d+\]', '', s)) for s in sorok_md]
     ki += ['', '*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: '
            'a kizárások és a csoportos kizárások táblája); generálva: %s.*' % G.TS, '']
     return '\n'.join(ki)
@@ -7554,10 +7605,17 @@ UJ_JELMAGYARAZAT_CSERE = (
     ('**Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen\n'
      'körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az\n'
      'ellenőrzéshez való, olvasáskor átugorható.',
-     '**Forrásmegjelölés** (dőlt sor vagy lábjegyzet, „forrás: …” alakú): melyik adattáblából vagy lekérdezésből és mikor\n'
-     'származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A teljes, gépi alakú forrássor a lap\n'
-     'forrásában, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
-    ('áll, a teljes proveniencia-sor egyszer, a blokk alatt.', 'áll, a teljes forrásmegjelölés egyszer, a blokk alatt.'),
+     '**Jegyzetek és források**: a táblák jegyzetei a tábla alatt állnak, számmal (pl. 2.5); a szakaszok végén a\n'
+     '„Forrás:” sor a felhasznált forrásműveket nevezi meg. A jegyzet száma és a „részletek” link a lap\n'
+     '[műhelynapló-mellékletére](%s) mutat, ahol a teljes forrássor, a dátum és a döntés nyoma áll.'),
+    # lap-javit HAMART-001 (S1): a közös forrásmegjelölés jele (‹E1› …) a lapon nem áll, a mellékletbe költözött
+    ('\n\n**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel\n'
+     'áll, a teljes proveniencia-sor egyszer, a blokk alatt. Az előtag a blokkot jelöli: E az előfordulások, K a kizárt és\n'
+     'vizsgált helyek, M a minősítés.', ''),
+    ('**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai\n'
+     'mondat a lap készítőinek szól.',
+     '**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt mondat a blokk\n'
+     'adatát írja le.'),
 )
 
 
@@ -7592,7 +7650,7 @@ def kesz_lap_elotte(szoveg, m, sorai):
     for regi, uj in UJ_JELMAGYARAZAT_CSERE:
         if regi not in szoveg:
             raise ValueError('a Jelmagyarázat cserélendő szövege nincs a lapon: %r' % regi[:60])
-        szoveg = szoveg.replace(regi, uj, 1)
+        szoveg = szoveg.replace(regi, uj.replace('(%s)', '(%s%s)' % (m['id'], MH.MUHELYNAPLO_UTOTAG)), 1)
     jel = '\n\n**Olvasói bevezető** — '
     if jel not in szoveg:
         raise ValueError('a Jelmagyarázat „Olvasói bevezető” bekezdése nincs a lapon')
@@ -9281,6 +9339,8 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = uj_szerkezet_alkalmaz(uj_szoveg, m, sorai)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
             uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
+            # lap-javit HAMART-001 (S1–S2): a műhelyszöveg a műhelynapló-mellékletbe, a táblajegyzet a tábla alá
+            uj_szoveg, muhely_md = MH.kivalaszt(uj_szoveg, m['id'])
             allapot = ('új fájl' if meglevo_uj is None else
                        'változatlan' if uj_szoveg == meglevo_uj else 'frissítve')
         elif os.path.exists(cel_ut):
@@ -9319,6 +9379,15 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             with io.open(mell_ut, 'w', encoding='utf-8', newline='\n') as f:
                 f.write(kizarasok_melleklet(m, sorai))
             print('  %s: %s (melléklet, %d bájt)' % (m['id'], G.kiirt_ut(mell_ut), os.path.getsize(mell_ut)))
+            muh_ut = os.path.join(kimenet_gyoker, '%s%s' % (m['id'], MH.MUHELYNAPLO_UTOTAG))
+            if m['id'] in MINOSITES_KIZART:
+                _sorok, labj = MINOSITES_KIZART[m['id']]
+                muhely_md += ('\n## %s (a Kizárások mellékletéből)\n\n' % MINOSITES_KIZART_CIM
+                              + '\n'.join('- `[^mj%d]` (%s) %s' % (i, re.match(r'\|\s*([^|]+?)\s*\|', s).group(1), t)
+                                          for i, (s, t) in enumerate(zip(_sorok, labj), 1)) + '\n')
+            with io.open(muh_ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(muhely_md)
+            print('  %s: %s (műhelynapló, %d bájt)' % (m['id'], G.kiirt_ut(muh_ut), os.path.getsize(muh_ut)))
         print('  %s: %s (%s, %d bájt)'
               % (m['id'], G.kiirt_ut(cel_ut), allapot, os.path.getsize(cel_ut)))
         h = KIEJTES_JELOLT_HIANY.get(m['id']) or []
