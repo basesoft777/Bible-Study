@@ -45,9 +45,9 @@ UJ = {
         '➕ jelzővel bővült név — a segítségül hívott név mellé az örökkévaló Isten jelzője kerül'),
     '1Móz 26:25': (
         'Izsák oltárt épít, „és segítségűl hívá az Úrnak nevét”, felüti a sátrát, szolgái pedig kutat ásnak. Ugyanaz '
-        'a három elem áll itt, oltár, sátor és segítségül hívás, mint Ábrám helyén az 1Móz 12:8-ban: a gyakorlat a '
-        'következő nemzedéknél tér vissza.',
-        '👨‍👦 öröklés — Ábrahám gyakorlata Izsáknál ugyanazokkal az elemekkel tér vissza'),
+        'a három elem áll itt, oltár, sátor és segítségül hívás, mint Ábrám helyén az 1Móz 12:8-ban: a gyakorlatot a '
+        'következő nemzedék folytatja.',
+        '👨‍👦 öröklés — Ábrahám gyakorlatát Izsák ugyanazokkal az elemekkel folytatja'),
     '2Móz 33:19': (
         'Az Úr azt ígéri Mózesnek, hogy dicsősége elvonul előtte, és azt mondja: „kiáltom előtted az Úr nevét”. A '
         'héber szerkezet ugyanaz, mint a segítségül hívás formulájában, a hívás igéje, a név és utána az Úr neve; a '
@@ -113,8 +113,8 @@ UJ = {
         '💧 keresztség — a segítségül hívás a megtérés és a keresztség mellett'),
     'Róm 10:13': (
         'Pál a hitről és a vallástételről szóló érvelésében Jóelt idézi: „minden, a ki segítségül hívja az Úr nevét, '
-        'megtartatik”. A görög mondat ugyanaz, mint a Jóel 2:32 görög fordítása és az ApCsel 2:21; az előző vers '
-        'szerint ebben nincs különbség zsidó és görög között.',
+        'megtartatik”. A görög mondat a Jóel 2:32 görög fordításának mondata, a bevezető tagmondat (καὶ ἔσται, kai '
+        'esztai) nélkül és egy kötőszóval (γάρ, gar); az előző vers szerint ebben nincs különbség zsidó és görög között.',
         '🎯 idézet — Pál a Jóel-ígéretet mindenkire érvényesnek mondja'),
     '1Kor 1:2': (
         'Pál a korinthusi gyülekezetet köszönti, „mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül '
