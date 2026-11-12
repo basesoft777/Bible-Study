@@ -939,6 +939,9 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 * **ÚJ (F174, 2026.11.12) — N-F174b: a #174 kapuja és tesztje a CI-ban.** Az `eszkozok/karoli_modern_kapu.py --gyors` és az `eszkozok/teszt_karoli_modern_export.py` (kb. 1–2 perc, a teljes export kétszer fut) még nincs a `.github/workflows/ellenorzes.yml`-ben; a workflow nem a #174 `ir` mezőjében áll. Felvételükkel a forrásadat (`adat/karoli_modern/`, `adat/karoli_strong/`) változása a nyílt magot is ellenőrzi; a `nyilt_karoli_modern/` újragenerálása a #173 (párjavítás) és az N-F96h javítása után kötelező, a kapu UJRA pontja ezt jelzi.
 - **N159** `feladatok.py szint`: a `gyors` szint levezetése (opcionális; a szint ma a `/lap-javit` 7. pontja szerint, nem brief-feladat). Nem sürgős.
 - **N160** A gyors út mérése az első két használat után (tényleges idő a megjegyzéslista lezárásától a merge-ig, visszaesések, piros CI oka); a `/lap-javit` 7. pont „Mérés” bekezdése szerint.
+- N161: a chattát (H2403) rokon nyelvi sora a 4.8-ban: a BDB szócikkében nincs rokon alak, az igei tő (חָטָא, H2398) szócikke ad rokon alakokat (késői héber, arámi, asszír, sabeus, arab, etióp); ezek kinyerése és felvétele (két kézzel, a visszhang-réteg bdb-soraként) külön tétel (lap-javit HAMART-001, lektor 45.).
+- N162: a Károli-KH részlista-szabálya (DT798) a teljes táblán 27 további forrásverset szűr; a régi szerkezetű lapok ezt csak a teljes folyamaton átmenve kapják meg; a `karoli_kh_mek.py` által olvasott archív karantén-fájl a régi szabállyal készült, a #177 MEK-összevetésre gyakorolt hatása nincs felmérve.
+- N163: az `adat/lap_javitasok.tsv` ISTENTISZT-001-sorai között négy ismétlődő kulcs (`id` + `hely`) áll (pl. „6/b. Alkalmazás, bevezető”); a SEMA 2.49 kulcsa szerint ez nem egyedi — az `ellenoriz.py` 30. szabálya nem jelzi.
 <!-- NYITOTT-UJ-HELY -->
 
 

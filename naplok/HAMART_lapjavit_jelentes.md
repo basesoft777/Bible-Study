@@ -116,7 +116,7 @@
 
 A `fuggetlen-ellenor` (claude-opus-5-5) az F125.LJ1–LJ3-at nézte: ELTÉRÉS 17. Az egyetlen javítókör (F125.LJ6) tételenként a `naplok/ELLENOR_HAMART_lapjavit.md` végén. A legsúlyosabb: a 2Kir 17:23 „szín” szava (Isten színe, nem a földé) — javítva; az Ez 28:16/17 megszólítottja a jelöltsorokban és a nyílt magban — javítva; a `nevelo_le` mondat-cellái és kódblokkja — javítva; a „többsége közepes” feltétele — javítva. Az „Emberi lektorálás” sor: a helyekre a modell-lektor (claude-fable-5-2) mutatott rá, a jóváhagyás a felhasználóé, az orkesztrátoron át.
 
-## A motívum meghatározása (DT-F125j)
+## A motívum meghatározása (DT799)
 
 A felhasználó a lapnézetben jelezte, hogy a meghatározás hiányzik a lap elejéről és a Kolofonból („hiányolom a motívum definíciót”). Gyökérok: az 1. lektori tételnél a címismétlés helyére az azonosság típusa került, nem meghatározás; a motívumtáblában meghatározás-mező nem volt. Javítás: új `meghatarozas` mező (SEMA 2.1), a lap elején „A motívum.” után, a Kolofonban „Meghatározás” sor, MEGHATAROZAS kapu (BUKÁS) teszttel, KESZ_LAP_KOVETELMENY K21a, a nyílt mag motívumtáblájában is (angol pár F170 szerint). A szöveget a felhasználó jóváhagyta („Jóváhagyom”).
 
@@ -127,18 +127,18 @@ A felhasználó a lapnézetben jelezte, hogy a meghatározás hiányzik a lap el
 | 1, 2, 3, 4 | a lap eleje | generátor (`egyszerusitett_kolofon`, `AZONOSSAG_OLVASOI`) + `motivumok.tsv` |
 | 5, 6, 7, 8, 11 | Kivonat | egybeírás; a 6. és a 11. a felhasználó (A) döntése szerint |
 | 9, 10, 11, 12, 13, 14 | 2.1 | `elofordulasok.tsv` kapcsolódás a jelöltek során át (Jer 6:7, Hab 1:2, Jer 51:46, Ez 28:16, Sof 1:9, Mik 6:12) |
-| 15 | 6. Kereszthivatkozások | generátor + kapu (DT-F125i) |
+| 15 | 6. Kereszthivatkozások | generátor + kapu (DT798) |
 | 16 | 6., jegyzet | generátor |
 | 17 | 7., következtetés | generátor (csak az új szerkezetben) |
-| 18 | 7., PaRDeS-oszlop | orkesztrátori döntés; jegyzet + az indoklás (DT-F125h) |
+| 18 | 7., PaRDeS-oszlop | orkesztrátori döntés; jegyzet + az indoklás (DT797) |
 | 19, 20 | 7., Alátámasztás | `kapcsolatok.tsv` indoklás (`naplok/F125_lapjavit_kapcsolat.py`) + generátor (farok) |
 | 21, 22 | Miért fontos | egybeírás |
 | 23, 24, 25, 26, 27, 44 | 9. Hatástörténet | generátor |
 | 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 | 10. Értelmezés | egybeírás; a 32. a kapcsolat-indoklásban is (Ez 12:19); a 36. az Ézs 60:18 funkciójában is |
 | 38, 39, 40, 41, 42, 43 | 11. Módszertan | egybeírás |
-| 45 | 4.8 | generátor; a tő sorai: N-F125f |
+| 45 | 4.8 | generátor; a tő sorai: N161 |
 | 46 | 2. Előfordulások | generátor |
-| névelő | minden lista és tábla | generátor + kapu (DT-F125g) |
+| névelő | minden lista és tábla | generátor + kapu (DT796) |
 
 ## A 12 nyitott tétel döntése
 
@@ -194,6 +194,6 @@ A felhasználó a lapnézetben jelezte, hogy a meghatározás hiányzik a lap el
 
 ## Nyitott (külön tétel)
 
-- N-F125f: a chattát tövének rokon nyelvi sorai.
-- N-F125g: a részlista-szabály hatása a régi lapokra és a #177 MEK-összevetésre.
-- N-F125h: az ISTENTISZT-001 négy ismétlődő kulcsa a `lap_javitasok.tsv`-ben.
+- N161: a chattát tövének rokon nyelvi sorai.
+- N162: a részlista-szabály hatása a régi lapokra és a #177 MEK-összevetésre.
+- N163: az ISTENTISZT-001 négy ismétlődő kulcsa a `lap_javitasok.tsv`-ben.

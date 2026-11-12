@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-12",
-   "commit": "1e14b66e"
+   "commit": "3211505b"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5835,6 +5835,56 @@
      "🟢"
     ],
     "sor": 776
+   },
+   {
+    "id": "DT795",
+    "feladat": "/lap-javit HAMART-001 (a lap eleje és a határ megfogalmazása; 2026-11-11)",
+    "kerdes": "A lektor 1–4., 6. és 11. tétele: mit mondjon a lap eleje a cím helyett, fedje-e a második címke a tartalmát, és a határkérdésekben (1Kir 13:34, 2Kir 17:23; Hab 1:2) mi változzon?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 786
+   },
+   {
+    "id": "DT796",
+    "feladat": "/lap-javit HAMART-001 (névelő a lista- és táblaelem elején; 2026-11-11)",
+    "kerdes": "Hogyan álljon a forrásnév és a leíró elem a generált listában és táblában („a BDB-szótár (közkincs)”)? Második előfordulás.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 787
+   },
+   {
+    "id": "DT797",
+    "feladat": "/lap-javit HAMART-001 (a kapcsolat szintje és indoklása; 2026-11-11)",
+    "kerdes": "A lektor 18–20. és 32. tétele: a kapcsolat PaRDeS-szintje a kapcsolat jellegét írja-e le, vagy a célhely szintjét örökli; mi a bizonyosság alapja, ha a két helyet csak a lap prózája köti össze?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 788
+   },
+   {
+    "id": "DT798",
+    "feladat": "/lap-javit HAMART-001 (a Károli-kereszthivatkozás részlista-másolata; 2026-11-11)",
+    "kerdes": "A lektor 15. tétele: a Sof 1:9 Károli-KH listája a Mt 12:22 listájának része (a Mt 9:34 nélkül), ezért a csak teljes egyezést kereső szabály (DT557, N-F156a) nem szűrte ki.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 789
+   },
+   {
+    "id": "DT799",
+    "feladat": "/lap-javit HAMART-001 (a motívum meghatározása; 2026-11-11)",
+    "kerdes": "Hol álljon a motívum meghatározása, és mi legyen a szövege? (A lap elején az 1. lektori tétel után az azonosság típusa állt a meghatározás helyett, a Kolofonban meghatározás-sor nem volt.)",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 790
    }
   ],
   "javasolt": [],
