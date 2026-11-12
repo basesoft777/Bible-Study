@@ -265,8 +265,29 @@ class Negativ(Alap):
 
     def test_hianyzo_helyorzo(self):
         f = self.uj()
-        f['OLVASSEL.md'] = f['OLVASSEL.md'].replace('<KANONIKUS_FORRAS_URL>', 'x')
+        f['OLVASSEL.md'] = f['OLVASSEL.md'].replace(E.KANONIKUS_HELY, 'x')
         self.assertTrue(bukasok(f, 'KANONIKUS'))
+
+    def test_nyers_helyorzo_bukik(self):
+        for nyers in ('[A LEXIKON CÍME]', '[HELYŐRZŐ: szerző]', '<KANONIKUS_FORRAS_URL>'):
+            f = self.uj()
+            f['README.md'] += nyers + '\n'
+            self.assertTrue(bukasok(f, 'HELYORZO'), nyers)
+
+    def test_cim_hu_es_en(self):
+        self.assertEqual(('Logosz-lexikon', 'Logosz Lexikon'), (E.LEXIKON_CIM_HU, E.LEXIKON_CIM_EN))
+        self.assertIn('# Logosz-lexikon — nyílt mag', self.fajlok['OLVASSEL.md'])
+        self.assertIn('# Logosz Lexikon — Open Core', self.fajlok['README.md'])
+        self.assertNotIn('Logosz Lexikon', self.fajlok['OLVASSEL.md'])
+
+    def test_cim_szerzo_doi_megvan(self):
+        self.assertEqual([], bukasok(self.fajlok, 'HELYORZO'))
+        for rel in ('OLVASSEL.md', 'README.md'):
+            for kell in (E.LEXIKON_CIM_HU if rel == 'OLVASSEL.md' else E.LEXIKON_CIM_EN, 'Demeter Tamás', '0009-0005-9254-9731', '10.5281/zenodo.24141612',
+                         '10.5281/zenodo.24141884', 'logoszlexikon.hu'):
+                self.assertIn(kell, self.fajlok[rel], (rel, kell))
+        self.assertIn('10.5281/zenodo.24141612', self.fajlok['KIADAS.txt'])
+        self.assertIn('10.5281/zenodo.24141612', self.fajlok['RELEASE.txt'])
 
     def test_termekreteg_kapcsolodas_oszlop(self):
         f = self.uj()
@@ -464,6 +485,75 @@ class F28Lyuk(Alap):
 
     def test_teljes_mag_nincs_lyuk(self):
         self.assertEqual(bukasok(self.uj(), 'LYUK'), [])
+
+
+class F198Visszhang(Alap):
+    """F198: a hatástörténet (visszhang-réteg) a nyílt magban, forrásonként licenccel; a Chain Lineage kiszűrve."""
+    TABLAK = ('visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'vitatott_forrasok.tsv', 'sblgnt_apparatus.tsv')
+
+    def sorok(self, rel):
+        fej, ds = E.tsv_szoveg(self.fajlok[rel])
+        return ds
+
+    def test_tablak_megvannak_es_nem_uresek(self):
+        for rel in self.TABLAK:
+            self.assertTrue(self.sorok(rel), rel)
+
+    def test_nincs_chain_lineage_es_bdb(self):
+        for rel in self.TABLAK:
+            for d in self.sorok(rel):
+                for v in d.values():
+                    self.assertNotRegex(v.lower(), r'chain[ _-]?lineage|mblida|biblindex')
+        self.assertTrue(all(d['forras'] in ('targum', 'vulgata', 'lxx') for d in self.sorok('visszhang_megfelelok.tsv')))
+        self.assertTrue(all(d['forras'] in ('hcf', 'sefaria', 'glossa') for d in self.sorok('visszhang_tanuk.tsv')))
+
+    def test_csak_ellenorzott_sor(self):
+        _, forras = E.tsv('adat/visszhang_megfelelok.tsv')
+        db = sum(1 for r in forras if r['forras'] in E.VISSZHANG_MEGFELELO and r['ellenorzes'].strip())
+        self.assertEqual(db, len(self.sorok('visszhang_megfelelok.tsv')))
+
+    def test_nincs_osszefoglalo_es_nincs_munkajel(self):
+        fej, _ = E.tsv_szoveg(self.fajlok['vitatott_forrasok.tsv'])
+        self.assertNotIn('osszefoglalo', fej)
+        for d in self.sorok('visszhang_megfelelok.tsv'):
+            self.assertNotIn('[ellenőri', d['megjegyzes'])
+            self.assertNotIn('fordításra vár', d['jelentes'])
+
+    def test_licenc_minden_soron(self):
+        for rel in ('visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'sblgnt_apparatus.tsv'):
+            for d in self.sorok(rel):
+                self.assertIn(d['forras_licenc'], ('közkincs', 'CC BY 4.0'))
+                self.assertTrue(d['forras_megnevezes'])
+
+    def test_licencleltar_forrasnak_jelzi(self):
+        leltar = {d['dataset']: d for d in self.sorok('forrasok_es_licencek.tsv')}
+        for ds in ('Targum_PD', 'Vulgata_Clementina', 'LXX_OS', 'SBLGNT_apparatus', 'Tanu_atyak_index',
+                   'Tanu_rabbinikus_index', 'Glossa_Ordinaria'):
+            self.assertTrue(leltar[ds]['szerepe_a_csomagban'].startswith('forrás'), ds)
+        self.assertEqual('kizárva', leltar['Chain_Lineage_Browser']['szerepe_a_csomagban'])
+
+    def test_kapu_elkapja_a_chain_lineage_sort(self):
+        f = self.uj()
+        sz = f['visszhang_tanuk.tsv']
+        sor = sz.split('\n')[2]
+        c = sor.split('\t')
+        c[4] = 'Órigenész (Chain Lineage)'
+        f['visszhang_tanuk.tsv'] = sz.replace(sor, '\t'.join(c), 1)
+        self.assertTrue(bukasok(f, 'VISSZHANG'))
+
+    def test_kapu_elkapja_a_tiltott_forrast_es_az_osszefoglalot(self):
+        f = self.uj()
+        f['visszhang_megfelelok.tsv'] = f['visszhang_megfelelok.tsv'].replace('\ttargum\t', '\tbdb\t', 1)
+        self.assertTrue(bukasok(f, 'VISSZHANG'))
+        f = self.uj()
+        sz = f['vitatott_forrasok.tsv'].split('\n')
+        sz[1] = sz[1] + '\tosszefoglalo'
+        f['vitatott_forrasok.tsv'] = '\n'.join(sz)
+        self.assertTrue(bukasok(f, 'VISSZHANG'))
+
+    def test_a_csomag_0_visszhang_bukas(self):
+        self.assertEqual([], bukasok(self.fajlok, 'VISSZHANG'))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

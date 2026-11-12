@@ -1,6 +1,6 @@
-# [A LEXIKON CÍME] — nyílt mag — olvass el
+# Logosz-lexikon — nyílt mag — olvass el
 
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 *English version: `README.md`.*
 
@@ -41,31 +41,45 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 |---|---|
 | `beepitesi_dontesek.tsv` | 252 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
-| `dontesnaplo.tsv` | 11 |
+| `dontesnaplo.tsv` | 15 |
 | `elofordulasok.tsv` | 250 |
-| `forrasok_es_licencek.tsv` | 63 |
+| `forrasok_es_licencek.tsv` | 65 |
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 359 |
+| `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
+| `sblgnt_apparatus.tsv` | 61 |
+| `visszhang_megfelelok.tsv` | 101 |
+| `visszhang_tanuk.tsv` | 6 |
+| `vitatott_forrasok.tsv` | 3 |
 
 ## Licencszűrés
 
-A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz belőlük): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. Okuk soronként a `forrasok_es_licencek.tsv` `ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt származtatott rétege). Ez a leltár, nem jogi vélemény.
+A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz belőlük): `BDB_forditas`, `Chain_Lineage_Browser`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. Okuk soronként a `forrasok_es_licencek.tsv` `ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt származtatott rétege). Ez a leltár, nem jogi vélemény.
 
 ## Közzétételi hely
 
-A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit.
+A csomag kanonikus közzétételi helye: `https://doi.org/10.5281/zenodo.24141612` (a nyílt adatmag DOI-ja: 10.5281/zenodo.24141612). A lexikon honlapja: `https://logoszlexikon.hu`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A Károli-szöveg Strong-számos párosítása külön adatkészlet (DOI: 10.5281/zenodo.24141884); nem része ennek a csomagnak.
 
 ## Idézés és a mesterséges intelligencia használata
 
-A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
+**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz-lexikon — nyílt adatmag. DOI: 10.5281/zenodo.24141612.
+
+A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
 
 ## Angol réteg
 
 A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.
+
+## Hatástörténet (visszhang-réteg)
+
+Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: `visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), `visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai apparátusa). Csak ellenőrzött sor szerepel bennük: a Septuaginta-megfelelők közül azok, amelyeknél a versben egyetlen lemma jön szóba, gépi ellenőrzéssel; a többi sort második kéz nézte át.
+
+**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és saját szavas egy mondat.
+
+**Forrásmegjelölés.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com): az `sblgnt_apparatus.tsv` jegyzetei. Sefaria, CC BY: a rabbinikus tanú (a változás: szűrés és Károli-átvezetés). A Septuaginta megfelelői az OpenScriptorium LXX-morph adatán alapulnak (CC BY 4.0; a Rahlfs-szöveg közkincs). Az egyházatyai tanúk metaadata a HistoricalChristianFaith-gyűjteményből való (a gyűjtemény közkincs-nyilatkozata a kompilációra és a metaadatra szól; az idézetszövegek nincsenek a csomagban). A Targum (Sefaria-kiadás), a Vulgata (Clementina) és a Glossa Ordinaria (Migne) szövege közkincs.
 
 ## Csoportos kizárás
 

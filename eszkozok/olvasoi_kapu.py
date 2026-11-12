@@ -69,7 +69,7 @@ KAPUK = (
     ('LABJEGYZET', BUKAS, 'definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van)'),
     ('PROZA_1A', BUKAS, 'az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)'),
     ('CELLA_ISMETLES', BUKAS, 'egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3)'),
-    ('VISSZHANG', BUKAS, 'a 4.11 visszhang-blokk szabályai (F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
+    ('VISSZHANG', BUKAS, 'a visszhang-blokk szabályai (a 9. Hatástörténet ószövetségi táblája, korábban 4.11; F178.5, DT645, DT646): a `VISSZHANG_ALSZABALYOK` V1–V7'),
     ('NAVE_ANGOL', BUKAS, 'a Nave-blokkban angol témanév az olvasói szövegben (nem `title`-ben), vagy bárhol nyers '
                           'HTML-karakterkód (`&#8221`) (F123.HAMART3 javítókör)'),
     ('MUNKASZO', BUKAS, 'munkaszó vagy munkajelölő az olvasói szövegben (a `MUNKASZAVAK` lista: „próba”, „javaslat”, '
@@ -77,6 +77,9 @@ KAPUK = (
                         '„Q3-fegyelem”, „study”, „audit”, „token”, „↳ Alpont:”, „független keresés”, „mért pontosság”); '
                         'az új szerkezetű lapon BUKÁS (a /kiadas jelölő-kapuja is), a régin FIGYELMEZTETÉS (F182: F22, H4, '
                         'F24, F35)'),
+    ('HELYORZO', BUKAS, 'nyers helyőrző a lapon („<KANONIKUS_FORRAS_URL>”, „[HELYŐRZŐ…]”, „<DOI>”, üres „DOI: .”); '
+                        'csak az új szerkezetű lapon (a felhasználó döntései, 2026-11-11: a szerző, a lexikon címe és a '
+                        'kanonikus cím a generátor beállításából, hiányuk olvasói mondattal)'),
     ('SZAKASZ_HIV', BUKAS, 'a lap „N. szakasz” / „N. (Név)” hivatkozása nem létező szakaszra vagy más nevű szakaszra mutat '
                            '(a BDB és a szócikk saját szakaszai nem); csak az új szerkezetű lapon (F182: F22 (b))'),
     ('NYERS_JEL', BUKAS, 'nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, '
@@ -557,7 +560,7 @@ def ell_mi_hang(sorok):
         if not s.olvasoi:
             continue
         t = IDEZET_KI_RX.sub(' ', s.szoveg)
-        # F182 javítókör (DT-F182p): az 1.2 alcím névszói („A keresés forrásai”), kivétel nincs
+        # F182 javítókör (DT760): az 1.2 alcím névszói („A keresés forrásai”), kivétel nincs
         for m in MI_HANG_RX.finditer(t):
             if m.group(1).lower() in MI_HANG_KIVETEL:
                 continue
@@ -671,6 +674,23 @@ SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜ�
 SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
 SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
 SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')
+
+
+HELYORZO_RX = re.compile(r'<KANONIKUS_FORRAS_URL>|\[HELYŐRZŐ[^\]]*\]|<DOI>|DOI:\s*[.`]?\s*$|DOI:\s*\.')
+
+
+def ell_helyorzo(sorok):
+    """A felhasználó döntései (2026-11-11): az új szerkezetű lapon nyers helyőrző nem állhat (a megjegyzés kivétel)."""
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if s.fajta in ('komment', 'kod'):
+            continue
+        m = HELYORZO_RX.search(s.szoveg)
+        if m:
+            ki.append(talalat('HELYORZO', BUKAS, s.n, kornyezet(s.szoveg, m), 'nyers helyőrző a lapon: „%s”' % m.group(0)))
+    return ki
 
 
 def ell_szakasz_hiv(sorok):
@@ -827,6 +847,10 @@ def ell_konyv(sorok):
         if s.szakasz.startswith(KIZART_SZAKASZ):
             continue
         t = kod_nelkul(s.szoveg)
+        # F183 (K67f): a szakirodalom bibliográfiai címe az eredeti alakjában áll (pl. „(Gen 6:5–9:17)”), nem olvasói
+        # igehely-hivatkozás; a 12. Irodalom „Szakirodalom” listájának DOI-s sorai kivételek
+        if s.szakasz.startswith('12. Irodalom') and 'DOI: 10.' in t:
+            continue
         for m in KONYV_RX.finditer(t):
             if m.group(1) not in hu and not SZOTAR_ALAK.search(t[max(0, m.start() - 20):m.start()]):
                 ki.append(talalat('KONYV', BUKAS, s.n, kornyezet(s.szoveg, m, 30),
@@ -1104,7 +1128,7 @@ SZINT_MIN_ARANY = 150   # csak az arany lapon legalább ennyi szavas szakaszokat
 # csak az értelmező (kézi) és a kapcsolati szakaszokat: az 1., 1/b., 2–4. hossza az előfordulások számával arányos
 SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan',
                  '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan',
-                 '10. Módszertan')   # F182 (A21): az Alkalmazás nélküli lapon a Módszertan a 10.
+                 '10. Módszertan', '10. Értelmezés')   # F182 (A21); F183: a 9. a Hatástörténet, az Értelmezés a 10.
 
 
 def szakasz_szoszam(sorok):
@@ -1277,7 +1301,9 @@ def ell_visszhang(sorok):
     ki = []
     mondatok = {}
     for s in sorok:
+        # F183: a visszhang-blokk a 9. Hatástörténet „Ókori fordítások: Ószövetség” alcíme alatt áll (a 4.11 helyén mutató)
         if s.fajta not in ('tabla', 'proza') or not (s.alszakasz.startswith('4.11.') or
+                                                    s.alszakasz.startswith('Ókori fordítások: Ószövetség') or
                                                     s.alszakasz.startswith('Háttér: rokon nyelvek')):
             continue
         t = s.szoveg
@@ -1453,7 +1479,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_nyers_jel, ell_mi_hang,
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_nyers_jel, ell_mi_hang,
                 ell_nevelo, ell_kov_ism, ell_indoklas]
 
 

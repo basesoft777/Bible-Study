@@ -132,6 +132,23 @@ jobs:
             head -c 900000 tanulmany_audit.md
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # F196 (DT-F196b): a gyokerok-kapuk jelentes modban, E-szam nelkul -- az allitas-adat kapu minden lapon (a lap
+      # szamai es "nincs" mondatai az adathoz merve), a kovetelmenylista-kapu a HAMART-001-en ("N/M kovetelmeny
+      # teljesul (gepi)"). Nem bukik; a HIBA-szintre emeles kulon dontes (DT-F196a).
+      - name: Gyokerok-kapuk (allitas-adat, kovetelmenylista; jelentes mod, nem bukik)
+        if: always()
+        continue-on-error: true
+        run: |
+          python eszkozok/ellenorzes/kovetelmeny_kapu.py HAMART-001 > kovetelmeny_kapu.md || true
+          python eszkozok/ellenorzes/allitas_adat.py --minden > allitas_adat.md || true
+          {
+            echo "## Gyokerok-kapuk (jelentes mod, nem bukik)"
+            echo ""
+            head -c 400000 kovetelmeny_kapu.md
+            echo ""
+            head -c 400000 allitas_adat.md
+          } >> "$GITHUB_STEP_SUMMARY"
+
       # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E29, F37 tanulmany-szabalyok)
       - name: Szabaly-tesztek
         id: tesztek
@@ -154,7 +171,20 @@ jobs:
           # F168: az ellenoriz.py 35. szabalya (kozlemeny-hivatkozasok a lapon) es a kolofon kozlemeny-szovege
           python eszkozok/teszt_ellenoriz_35.py
           K6=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F196: az allitas-adat kapu es a kovetelmenylista-kapu tesztjei (a kapuk maguk jelentes modban futnak, fent)
+          python eszkozok/teszt_gyokerok_kapuk.py
+          K7=$?
+          # F183: a 9. Hatastortenet szakasz szabalyai, a tanureteg es a vitatott pontok szakirodalma (ELLENOR_F183 5.)
+          python eszkozok/teszt_hatastortenet.py
+          K8=$?
+          python eszkozok/visszhang/tanu_kinyer.py ellenoriz
+          K9=$?
+          python eszkozok/szakirodalom_kinyer.py ellenoriz
+          K10=$?
+          # F200: a proza-allitas ellenorzo probai (az eszkoz maga JELENTES szinten, kezi lepes: MUNKAMENET C-a)
+          python eszkozok/teszt_proza_allitas.py
+          K11=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 

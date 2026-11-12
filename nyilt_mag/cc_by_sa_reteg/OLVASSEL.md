@@ -1,6 +1,6 @@
 # CC BY-SA 4.0 réteg — szemantikai domének
 
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 Ez a könyvtár **külön** áll a csomag többi (CC BY 4.0) részétől: tartalma a Creative Commons Attribution-ShareAlike 4.0 International licenc alatt áll, a belőle származtatott munka is ezen a licencen adható tovább (nem zárható el).
 

@@ -46,15 +46,83 @@ class Lap(unittest.TestCase):
         cls.lathato = re.sub(r'<!--.*?-->', '', cls.lap, flags=re.S)
 
     def test_a02_azonosito_tabla_a_lap_elejen(self):
+        """A felhasználó (2026-11-11): a lap elején egyszerűsített kolofon — a motívum, a negatív elhatárolás, a
+        fölérendelt fogalom, olvasói alakban; a teljes azonosító tábla a Kolofonban."""
         eleje = self.lap.split('\n## Kivonat\n', 1)[0]
-        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| Fölérendelt fogalom |'):
+        for mezo in ('**A motívum.**', '**Negatív elhatárolás.**', '**Fölérendelt fogalom**', '(#kolofon)'):
             self.assertIn(mezo, eleje)
-        self.assertIn('| Státusz | %s |' % LG.kiadasi_statusz('HAMART-001'), eleje)
+        self.assertNotIn('| ID |', eleje)
+        kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
+        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| Fölérendelt fogalom |'):
+            self.assertIn(mezo, kolofon)
+        self.assertIn('| Státusz | %s |' % LG.kiadasi_statusz('HAMART-001'), kolofon)
+        for belso in ('| Kézi forrás |', '| Kereszthivatkozás-napló |'):
+            self.assertNotIn(belso, kolofon)
+
+    def test_sajat_adat_licence_a_nyilt_mag_szerint(self):
+        """A felhasználó jelzése (2026-11-11): a nyílt magban kiadott saját adat nem „minden jog fenntartva”."""
+        kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
+        for nev in ('a motívumtábla', 'a kapcsolat-tábla'):
+            sor = [s for s in kolofon.split('\n') if s.startswith('| %s |' % nev)]
+            self.assertTrue(sor and 'CC BY 4.0' in sor[0] and 'minden jog fenntartva' not in sor[0], nev)
+        # az előfordulás-táblánál csak az adatoszlopok vannak a nyílt magban (ELLENOR_HAMART_lapkeret 1.)
+        sor = [s for s in kolofon.split('\n') if s.startswith('| a motívum előfordulás-táblája |')]
+        self.assertTrue(sor and 'az adatoszlopok CC BY 4.0' in sor[0] and 'magyarázat' in sor[0])
+        sor = [s for s in kolofon.split('\n') if s.startswith('| a lap fordítástáblája |')]
+        self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
+
+    def test_olvasoi_licencek_generator(self):
+        """ELLENOR_HAMART_lapkeret 1., 6.: a licenc-leképezés rontott bemenettel is (nem csak a commitolt lapon)."""
+        projekt = LG.LC('projekt_adat')
+        self.assertEqual(LG.olvasoi_licencek('adat/kapcsolatok.tsv', {projekt}), {LG.NYILT_MAG_LICENC})
+        self.assertEqual(LG.olvasoi_licencek('adat/jeloltek.tsv', {projekt}), {LG.NYILT_MAG_LICENC})
+        elo = LG.olvasoi_licencek('adat/elofordulasok.tsv', {projekt})
+        self.assertTrue(len(elo) == 1 and 'magyarázat' in next(iter(elo)))
+        ks = next(iter(LG.olvasoi_licencek('adat/karoli_strong', {projekt})))
+        self.assertTrue(ks.startswith(LG.LC('Karoli_Strong_parok')) and (not LG.KAROLI_STRONG_DOI or LG.KAROLI_STRONG_DOI in ks))
+        ford = next(iter(LG.olvasoi_licencek('adat/forditasok.tsv', {projekt, 'közkincs'})))
+        self.assertNotIn('forrásszöveg közkincs', ford)
+        self.assertIn('szótár saját soránál', ford)
+        # a nyílt magon kívüli saját tábla licence nem változik
+        self.assertEqual(LG.olvasoi_licencek('adat/tiltott_fordulatok.tsv', {projekt}), {projekt})
+        self.assertNotIn('((', self.lap)
+
+    def test_egyszerusitett_kolofon_az_adatbol(self):
+        m = next(r for r in LG.G.tsv_beolvas(LG.os.path.join(LG.ADAT, 'motivumok.tsv'))[1] if r['id'] == 'HAMART-001')
+        blokk = LG.egyszerusitett_kolofon(m)
+        self.assertIn(m['negativ_kriterium'], blokk)
+        self.assertIn(m['folerendelt_fogalom'][1:].rstrip('.'), blokk)
+        self.assertIn(blokk, self.lap)
+        rontott = dict(m, negativ_kriterium='')
+        self.assertIn('**Negatív elhatárolás.** —', LG.egyszerusitett_kolofon(rontott))
+
+    def test_idezes_egy_helyen_helyorzo_nelkul(self):
+        """A felhasználó döntései (2026-11-11): szerző, lexikon címe, kanonikus cím a beállításból; egy idézési forma
+        (a Kolofonban), az Irodalomban mutató; nyers helyőrző nem áll; a HELYORZO kapu a rontott másolatra jelez."""
+        self.assertIn('**Hogyan idézd.** %s: *%s*' % (LG.SZERZO_NEV, LG.LEXIKON_CIM_HU), self.lap)
+        self.assertIn(LG.kanonikus_cim('HAMART-001'), self.lap)
+        self.assertEqual(self.lap.count('**Hogyan idézd.**'), 1)
+        self.assertIn('**Hogyan hivatkozz:** az idézési forma a [Kolofon](#kolofon)', self.lap)
+        for nyers in ('<KANONIKUS_FORRAS_URL>', '[HELYŐRZŐ', '<DOI>', 'DOI: .'):
+            self.assertNotIn(nyers, self.lap)
+        import olvasoi_kapu as OK
+        rontott = self.lap.replace(LG.kanonikus_cim('HAMART-001'), '<KANONIKUS_FORRAS_URL>', 1)
+        regi = OK.KIVETEL_NELKUL
+        OK.KIVETEL_NELKUL = True
+        try:
+            self.assertTrue(OK.ell_helyorzo(OK.tagol(rontott)))
+            self.assertFalse(OK.ell_helyorzo(OK.tagol(self.lap)))
+        finally:
+            OK.KIVETEL_NELKUL = regi
+
+    def test_modszertani_elvek_proza(self):
+        self.assertNotIn('[A módszer Hays hét kritériumának tükrében](', self.lap)
+        self.assertIn('**Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje', self.lap)
         self.assertNotIn('Rövid UI-címke', self.lathato)
         self.assertNotIn('publikálható (v1', self.lathato)
 
     def test_dontesi_ut_alcimek(self):
-        """F182 javítókör (N-F182g, DT-F182p): az 1.1–1.2 alcím névszói, az 1.3–1.5 változatlan."""
+        """F182 javítókör (N155, DT760): az 1.1–1.2 alcím névszói, az 1.3–1.5 változatlan."""
         for c in ('### 1.1. A keresés tárgya', '### 1.2. A keresés forrásai', '### 1.3.', '### 1.4.', '### 1.5.'):
             self.assertIn(c, self.lap)
         self.assertNotIn('Mit keresünk', self.lap)
@@ -62,8 +130,9 @@ class Lap(unittest.TestCase):
 
     def test_a21_nincs_alkalmazas(self):
         self.assertNotIn('## 10. Alkalmazás', self.lap)
-        self.assertIn('## 10. Módszertan és nyitott kérdések', self.lap)
-        self.assertIn('## 11. Irodalom és idézés', self.lap)
+        # F183: a 9. szakasz a Hatástörténet, ezért a Módszertan a 11., az Irodalom a 12.
+        self.assertIn('## 11. Módszertan és nyitott kérdések', self.lap)
+        self.assertIn('## 12. Irodalom és idézés', self.lap)
         self.assertNotIn('Alkalmazás és tanítványság', self.lathato)
         self.assertNotIn('A hívő számára', self.lathato)
 
@@ -210,7 +279,7 @@ class Generator(unittest.TestCase):
         self.assertNotIn('károli', j)
 
     def test_szocikkhatar_kezi(self):
-        """F182 javítókör (A17 / K56, DT-F182q): a tételes szócikkhatár-javítás a következő szócikk fejénél vág; a forrás
+        """F182 javítókör (A17 / K56, DT761): a tételes szócikkhatár-javítás a következő szócikk fejénél vág; a forrás
         változásakor (a horgony nincs meg) a generálás megáll; a HAMART-001-en a 27. szabály nem jelez."""
         sys.path.insert(0, os.path.join(GYOKER, 'eszkozok', 'bdb_jelolt'))
         import hu_illeszt as HI
@@ -305,7 +374,7 @@ class Kapuk(unittest.TestCase):
 
     def test_mi_hang(self):
         self.assertTrue(kapu(uj_lap('A szavakat átnéztük, és a helyeket elbíráltuk.'), 'MI_HANG'))
-        # F182 javítókör (DT-F182p): a régi „1.2 Hol kerestünk” alcím már nem kivétel
+        # F182 javítókör (DT760): a régi „1.2 Hol kerestünk” alcím már nem kivétel
         self.assertTrue(kapu(uj_lap('### 1.2. Hol kerestünk'), 'MI_HANG'))
         self.assertEqual(kapu(uj_lap('A helyek átnézésre kerültek. Alattuk és közöttük „vétkeztünk”.'), 'MI_HANG'), [])
 

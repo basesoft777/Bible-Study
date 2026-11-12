@@ -15,18 +15,8 @@ name: jelolt-eloszures
 # A workflow agon nem fut le irassal; a probaja `workflow_dispatch` a merge utan.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'adat/jeloltek.tsv'
-      - 'adat/elofordulasok.tsv'
-      - 'adat/motivumok.tsv'
-      - 'adat/grammatikai_strongok.tsv'
-      - 'konkordancia/TAHOT_kivonat.tsv'
-      - 'konkordancia/TAGNT_kivonat.tsv'
-      - 'konkordancia/Karoli_1908.tsv'
-      - 'eszkozok/jelolt_eloszures.py'
-      - '.github/workflows/jelolt_eloszures.yml'
+  # F201 (DT-F201c): a push-esemenyre futast a feladatok.yml vegzi, egy commitban a szamkiosztassal es a
+  # FELADATOK.md-frissitessel; ez a workflow csak az utemezett es a kezi futast tartja meg.
   schedule:
     - cron: '37 4 * * 1'      # tartalek: hetfo 04:37 UTC
   workflow_dispatch:

@@ -1,7 +1,7 @@
 # A visszhang-réteg adatkészletei (F176, FELADATOK #176)
 
 A lexikonlap „visszhang” rétegének **adatai**: ókori fordítások (Targum, Vulgata), az ÚSZ kritikai apparátusa és
-szövegváltozat-jelölése, valamint a BDB rokon nyelvi írásainak gyorsítótára. Ez a dokumentum az öt tábla leírása,
+szövegváltozat-jelölése, valamint a BDB rokon nyelvi írásainak gyorsítótára. Ez a dokumentum a hat tábla leírása (a hatodik, a Glossa Ordinaria: F183),
 licenc-igazolása és újragenerálása. **A lexikonlap ebben a körben nem változott** (a `lexikon_general.py`
 érintetlen); a lapra írás külön feladat.
 
@@ -21,8 +21,9 @@ sorszámot ellenőrzi, a hash-t a generátor újrafuttatása igazolja).
 | SBLGNT_apparatus | konkordancia/SBLGNT_apparatus.tsv | 6934 | 63f3af16a91bdf3ef5a0911185459273045cada9aead13a33a16c509fdbf7daf | CC BY 4.0 |
 | TAGNT_valtozatok | konkordancia/TAGNT_valtozatok.tsv | 11777 | c7261e19591f6432f1b1c229a9ffaa726dec5316b970513a76ca3fd70d40ebd7 | CC BY 4.0 |
 | BDB_rokon_irasok | konkordancia/BDB_rokon_irasok.tsv | sor | gyorsítótár, nő | közkincs (BDB, 1906; DT-F33g) |
+| Glossa_Ordinaria | konkordancia/Glossa_Ordinaria.tsv | 12968 | 0027a17be258def2a7400989dbdb96fced3b67f881d7c11e7755f17363c70ff6 | közkincs (Migne, 1880; eBible: Public Domain) |
 
-Közös szabály mind az öt táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
+Közös szabály mind a hat táblára: **a versszámozás a forrás saját számozása**. Az `igehely` oszlop a magyar
 könyvrövidítés (a `Konyv_normalizalo_tabla.tsv` szerint) és a forrás fejezet:verse; **Károli-átszámozás nincs**
 (MT ↔ Károli, Vulgata ↔ Károli, NRSV ↔ Károli feloldása tartalmi döntés, DT-F176a). A `forras_vers` / `forras_ref`
 oszlop a forrás hivatkozását változatlanul őrzi. **Az `igehely` a forrás saját számozása (magyar könyvnévvel), nem
@@ -61,6 +62,19 @@ adatban. A `Konyv_normalizalo_tabla.tsv`-vel normalizált könyvkulcs nélkül n
   66 kanonikus könyv; a deuterokanonikus könyvek (TOB, JDT, WIS, SIR, BAR, 1MA, 2MA) kimaradtak. A zsoltárok
   Vulgata-számozásúak; az Eszter- és Dániel-kiegészítések a forrás fejezetszámán állnak.
 - **Újragenerálás:** `python -I eszkozok/visszhang/vulgata_import.py --zip <latVUC_usfm.zip>`.
+
+## 3b. Glossa Ordinaria — `Glossa_Ordinaria.tsv` (F183, N-F176a lezárva)
+
+- **Forrás:** ugyanaz a csomag, mint a 3. pontban (eBible latVUC_usfm.zip, sha256 `5d73ce3473e40b70cfcc976b967e0f259cbb031d6c0cd4f9798fbabf9f5b4e6c`,
+  letöltve újra 2026-11-11, a hash egyezik); a Vulgata-szöveg lábjegyzetei (USFM `\f + \fr F.V \fk … \ft … \f*`), a Glossa
+  Ordinaria Migne-kiadása (1880). A `vulgata_import.py` ezeket kihagyta; a `eszkozok/visszhang/glossza_import.py` versenként
+  nyeri ki őket.
+- **Licenc:** közkincs (a kiadás kora; az eBible „Public Domain” megjelölése). A szöveg átvehető; a lapra a tanúréteg
+  (`adat/visszhang_tanuk.tsv`, SEMA 2.57) saját szavas összefoglalója és a hivatkozás kerül.
+- **Oszlopok:** `igehely` (magyar könyvrövidítés + a Vulgata fejezet:verse, a lábjegyzet `\fr` hivatkozása szerint; nem
+  Károli-átszámozás), `forras_vers`, `forras_kulcs`, `sorszam` (a vers lábjegyzeteinek sorrendje), `jegyzet` (a lemma-idézet
+  « »-ben, utána a magyarázat, a kiadás forrásjelöléseivel: AUG., BEDA, HIERON., RAB., STRAB. …). 12968 sor, a csomag mind a
+  12 968 lábjegyzete (a 66 kanonikus könyvből).
 
 ## 4. SBLGNT apparátus — `SBLGNT_apparatus.tsv`
 
@@ -133,4 +147,4 @@ a visszhang-források aránya 0%.
   a `BDB_rokon_irasok.tsv` szír tokenjei a BDB szócikkéből jönnek, nem Peshitta-szövegből.
 - **Kizárt források:** ETCBC és SEDRA Peshitta (NC), Nova Vulgata, THGNT-szöveg, Sahidica, AlHaTorah, a Sefaria NC- és
   „unknown” verziói, a Sefaria CC BY-SA verziói (jemeni Onkelos).
-- **Tanúréteg** (sermonindex, Sefaria kapcsolattábla), a Vulgata Glossa Ordinaria, a lapra írás: következő fázis.
+- **Tanúréteg:** a F183 óta a lapon (`adat/visszhang_tanuk.tsv`, SEMA 2.57): a tanúindex (`konkordancia/Tanu_*`, F191), a Glossa Ordinaria (3b. pont) és a Chain Lineage Browser tényadata.

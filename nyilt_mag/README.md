@@ -1,6 +1,6 @@
-# [A LEXIKON CÍME] — Open Core — Read Me
+# Logosz Lexikon — Open Core — Read Me
 
-# GENERATED: export of the [A LEXIKON CÍME] open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+# GENERATED: export of the Logosz Lexikon open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 
 *Magyar változat: `OLVASSEL.md`.*
 
@@ -41,31 +41,45 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 |---|---|
 | `beepitesi_dontesek.tsv` | 252 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
-| `dontesnaplo.tsv` | 11 |
+| `dontesnaplo.tsv` | 15 |
 | `elofordulasok.tsv` | 250 |
-| `forrasok_es_licencek.tsv` | 63 |
+| `forrasok_es_licencek.tsv` | 65 |
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 359 |
+| `kodkonyv.tsv` | 438 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
+| `sblgnt_apparatus.tsv` | 61 |
+| `visszhang_megfelelok.tsv` | 101 |
+| `visszhang_tanuk.tsv` | 6 |
+| `vitatott_forrasok.tsv` | 3 |
 
 ## Licence filtering
 
-The filtering follows the project's licence inventory. **Excluded sources** (the package contains no value from them): `BDB_forditas`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. The reason for each is given in the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the project's closed derived layer). This is an inventory, not a legal opinion.
+The filtering follows the project's licence inventory. **Excluded sources** (the package contains no value from them): `BDB_forditas`, `Chain_Lineage_Browser`, `Cremer_nyers`, `Girdlestone`, `Heber_ETCBC_modulok`, `KJV_ASV_Strongs`, `KJV_Strongs_teljes`, `KJV_teljes_szoveg`, `Karoli_Strong_kivonat`, `Karoli_versmegfeleltetes`, `LSJ`, `LXX_kivonat`, `LXX_lexicon`, `LXX_versszintu_parok`, `MCGED`, `SDBH_SDGNT_segedtablak`, `UBS_DBH`, `UBS_DNTG`, `karoli_modern`, `karoli_variancia`, `lexikonok_nyers`, `simplemma_nyelvi_adat`, `szoto_tablak`, `tW_szocikkek`. The reason for each is given in the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the project's closed derived layer). This is an inventory, not a legal opinion.
 
 ## Place of publication
 
-The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a placeholder, filled in at publication). A version is identified by the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a development repository or a commit.
+The canonical place of publication of the package: `https://doi.org/10.5281/zenodo.24141612` (the DOI of the open data core: 10.5281/zenodo.24141612). The website of the lexicon: `https://logoszlexikon.hu`. A version is identified by the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a development repository or a commit. The pairing of the Károli text with Strong numbers is a separate dataset (DOI: 10.5281/zenodo.24141884); it is not part of this package.
 
 ## Citation and the use of artificial intelligence
 
-With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication; their fields to be completed by the author are placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
+**Cite as:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz Lexikon — open data core. DOI: 10.5281/zenodo.24141612.
+
+With the release, citation metadata (Citation File Format) and a statement on the use of artificial intelligence are provided at the place of publication. The statement separates two layers: the open data core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).
 
 ## English layer
 
 The column names and values of the package are Hungarian; English parallel columns stand next to them. **Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book code is standard, chapter and verse follow the versification of the Károli translation — where it differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. **Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); `jelentes_en` is separate, a dictionary excerpt.
+
+## Reception history (the echo layer)
+
+Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work, what they see in the passage; no quotation, one sentence in our own words), `vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an empty author denotes a gap row: no peer-reviewed source on the question was found in the databases searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament passages). Only verified rows are included: of the Septuagint counterparts, those where a single lemma comes into question in the verse were verified by machine; all other rows were checked by a second hand.
+
+**Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) is not in the package, only factual data and one sentence in our own words.
+
+**Credits.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 (https://sblgnt.com): the notes of `sblgnt_apparatus.tsv`. Sefaria, CC BY: the rabbinic witness (changes: filtering and conversion to Károli numbering). The Septuagint counterparts rest on the OpenScriptorium LXX-morph data (CC BY 4.0; the Rahlfs text is public domain). The metadata of the patristic witnesses come from the HistoricalChristianFaith collection (the collection’s public-domain dedication covers the compilation and the metadata; the quotation texts are not in the package). The text of the Targum (Sefaria edition), the Vulgate (Clementine) and the Glossa Ordinaria (Migne) is in the public domain.
 
 ## Group exclusion
 

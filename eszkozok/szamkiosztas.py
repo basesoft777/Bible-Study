@@ -6,7 +6,9 @@ dontesnaplo- (D) szamok kiosztasa merge-kor.
 
 Az agon csak helyorzo all: DT-F<nn>, N-F<nn>, D-F<nn> (tobb eseten `a`, `b`
 betuvel: DT-F21a). A veglegesszamot ez az eszkoz osztja ki a main-en, a
-`.github/workflows/szamkiosztas.yml` Action-bol: a helyorzok a definicios
+`.github/workflows/feladatok.yml` Action-bol (F201: a szamkiosztas, az utana
+való ujragenerálas es a tobbi gepi frissites egy futasban, egy commitban; az
+ujragenerálas: eszkozok/szamkiosztas_ujragen.py): a helyorzok a definicios
 helyuk fajlbeli sorrendjeben kapjak a kovetkezo szabad szamot, es a repo
 osszes .md es .tsv fajljaban cserelodnek.
 
