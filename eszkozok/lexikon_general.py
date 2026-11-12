@@ -36,6 +36,7 @@ import general as G
 import lekerdez as L
 import tsk_kulcs as TK
 import ubs_hozzarendeles as UBS
+import tablajegyzet as TJ
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
@@ -572,6 +573,21 @@ def olvasoi(kulcs, **adat):
     return OLVASOI_SABLON[kulcs] % adat if adat else OLVASOI_SABLON[kulcs]
 
 
+# A felhasználó átnézése (4., 7.): az új szerkezetű lap szótári pontjainak bevezetője; a forrás és a soronként ismétlődő
+# címke itt áll egyszer.
+UJ_OLVASOI_SZEREP = {
+    ('heber', 1): 'A szó alapjelentése röviden, a STEPBible héber rövid szótára (TBESH, CC BY 4.0) szerint, magyarul; a '
+                  'teljes szócikk a szónézetben.',
+    ('gorog', 1): 'A szó alapjelentése röviden, a STEPBible görög rövid szótára (TBESG, CC BY 4.0) szerint, magyarul; a '
+                  'teljes szócikk a szónézetben.',
+    ('heber', 3): 'Szavanként a translationWords (unfoldingWord, CC BY-SA 4.0) magyar szócikkcímei és a szó TWOT-száma: '
+                  'a szócikk száma a Theological Wordbook of the Old Testamentben. A szócikkek a szónézetben '
+                  'olvashatók.',
+    ('gorog', 3): 'Szavanként a translationWords (unfoldingWord, CC BY-SA 4.0) magyar szócikkcímei; a szócikkek a '
+                  'szónézetben olvashatók.',
+}
+
+
 def olvasoi_szerep(nyelv, n, gerinc=False):
     """A szerep-blokk olvasói mondata, vagy None, ha a szerepre nincs sablon."""
     if gerinc and (nyelv, n, 'gerinc') in OLVASOI_SZEREP:
@@ -932,7 +948,15 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         funkcio_cella = ikon_nelkul(funkcio_cimke) if funkcio_teljes else EM_DASH
         funkcio_magyarazat = ikon_nelkul(funkcio_magyarazat)
 
-        if gerinc:
+        if gerinc and uj_szerkezet(m['id']) and (s.get('gerinc_elem') or '').startswith('tematikus:') \
+                and not (s.get('strong') or '').strip():
+            # a felhasználó átnézése (3.): a lánc szava nélküli tematikus sor: a Károli-szó, rövid megjegyzés, a jegyzet
+            # egyszer (a sor végén), „— —” és üres gondolatjel-cella nélkül; a vers saját görög szava nem áll (nincs
+            # róla döntés)
+            sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
+                igehely_link, s.get('karoli_szo') or EM_DASH, 'tematikus hely: a lánc szava nélkül', funkcio_cella,
+                s.get('pardes_szint') or EM_DASH, 'nincs lánc-szó', 'nem alkalmazható (tematikus hely)', megb))
+        elif gerinc:
             sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
                 igehely_link, kulcsszo_cella(s), _cella(szotari_jelentes), funkcio_cella,
                 s.get('pardes_szint') or EM_DASH, s.get('strong') or EM_DASH,
@@ -2196,13 +2220,12 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
     if kulcs == ('gorog', 1) and uj_szerkezet(ctx.get('id')):
         # F182 (A10; F5, K52): a görög szavak alapjelentése a STEPBible rövid szótárából (TBESG), ugyanúgy, mint a
         # héber 4.1 (a magyar rövid jelentés a fordítási gyorsítótárból, `rovid_jelentes`); csak az új szerkezetű lapon
+        # a felhasználó átnézése (4.): „**szó** — jelentés · Strong · [szónézet]”; a forrás egyszer, a bevezetőben
         out = []
         for t in tokenek_ny:
             rj, van = rovid_jelentes(t)
-            out.append('**%s** · %s%s — a teljes TBESG-szócikk: [olvasd a szónézetben](%s)'
-                       % (_szo_irassal(t), rj, '' if van else '', SZONEZET_UT % t))
+            out.append('**%s** — %s · %s · [szónézet](%s)' % (_szo_irassal(t), rj, t, SZONEZET_UT % t))
         ctx['tbesg_tbesh'].add('TBESG')
-        out.append('*Forrás: a STEPBible görög rövid szótára (TBESG, CC BY 4.0), a rövid jelentés magyarul.*')
         return out
     if ctx.get('gerinc') and kulcs in GERINC_SZEREP_EPITO:
         return GERINC_SZEREP_EPITO[kulcs](nyelv, n, tokenek_ny, reszek, ctx)
@@ -2276,6 +2299,83 @@ def _motivum_tokenek(sorai):
     return out
 
 
+def _sece_strongok(t):
+    idx = lemma_strong_index()
+    masik = 'H' if t.startswith('G') else 'G'
+    ki = []
+    for szo in sece_megfelelok(t) or []:
+        for x in idx.get(unicodedata.normalize('NFC', szo), []):
+            if x.startswith(masik) and x not in ki:
+                ki.append(x)
+    return ki
+
+
+def _gorog_csalad(a, b):
+    la, lb = lemma_kiejtes(a), lemma_kiejtes(b)
+    if not la or not lb:
+        return False
+    return bool(_gorog_tovek(la[0]) & _gorog_tovek(lb[0])) or _strong_szarmazas(a) == b or _strong_szarmazas(b) == a
+
+
+def _helyek_strongra(sorai, strong, usz):
+    return [s['igehely'] for s in sorai if strong in (s.get('strong') or '').split('+')
+            and (G.konyv_teszamentum(G.konyv_token(s['igehely'])) != 'ÓSZ') == usz]
+
+
+def _jelentes_rovid(t):
+    rj, van = rovid_jelentes(t)
+    return ' ’%s’' % rj if van and rj else ''
+
+
+def sece_hid_olvasoi(nyelv, tokenek_ny, sorai, tok):
+    """A 4.7 olvasói mondatai (a felhasználó átnézése, 9.): a görög Biblia és a kétnyelvű szótár hídja a motívum héber és
+    görög szavai között. Rövid mondatok: miért érdekes, aztán a lelet példával; a megfeleltetés a szócsaládra is néz
+    (árar → kataraomai ~ epikataratosz, katara); ahol a szótár nem ad kapcsolatot, ezt mondja ki."""
+    heber = nyelv == 'heber'
+    sajat_masik = [x for x in tok if x.startswith('G' if heber else 'H')]
+    if heber:
+        ki = ['A görög Biblia a héber szavakat görög szavakkal adja vissza. Ha ez a görög szó ugyanaz, amely az '
+              'Újszövetségben áll, a két rész szó szerint is összekapcsolódik.']
+    else:
+        ki = ['Az Újszövetség görög szavai a görög Bibliában héber szavakat fordítanak. Ha a héber szó a motívum saját '
+              'szava, a két rész szó szerint is összekapcsolódik.']
+    van = []
+    csoport = {}                    # azonos lelet (ugyanazok a pontos megfelelők) -> a szavak
+    for t in tokenek_ny:
+        eq = _sece_strongok(t)
+        pontos = tuple(x for x in eq if x in sajat_masik)
+        if pontos:
+            csoport.setdefault(pontos, []).append(t)
+            van.append(t)
+            continue
+        if heber:
+            csalad_e = [e for e in eq if any(_gorog_csalad(e, g) for g in sajat_masik)]
+            if csalad_e:
+                e = csalad_e[0]
+                gs = [g for g in sajat_masik if _gorog_csalad(e, g)]
+                helyek = list(dict.fromkeys(h for g in gs for h in _helyek_strongra(sorai, g, True)))
+                ki.append('%s a szótár szerint görögül %s%s; ennek szócsaládjából %s áll az Újszövetségben (%s).' % (
+                    _nagy_kezdo(_szo_irassal_nevelovel(t)), _szo_irassal(e), _jelentes_rovid(e),
+                    OK._lista([_szo_irassal_nevelovel(g) + _jelentes_rovid(g) for g in gs]), ', '.join(helyek[:4])))
+                van.append(t)
+    for pontos, szavak in csoport.items():
+        helyek = list(dict.fromkeys(h for x in pontos for h in _helyek_strongra(sorai, x, heber)))
+        alany = _nagy_kezdo(OK._lista([_szo_irassal_nevelovel(t) for t in szavak]))
+        if heber:
+            ki.append('%s ilyen: a kétnyelvű szótár szerint görögül %s, és az Újszövetség is %s beszél (%s).' % (
+                alany, OK._lista([_szo_irassal(x) for x in pontos]),
+                'ezekkel a szavakkal' if len(pontos) > 1 else 'ezzel a szóval', ', '.join(helyek[:4])))
+        else:
+            ki.append('%s ilyen: a kétnyelvű szótár szerint héberül %s felel meg %s, és a motívum ószövetségi helyein ez '
+                      'a szó áll (%s).' % (alany, OK._lista([_szo_irassal_nevelovel(x) for x in pontos]),
+                                           'nekik' if len(szavak) > 1 else 'neki',
+                                           ', '.join(helyek[:4]) + (', …' if len(helyek) > 4 else '')))
+    if len(van) < len(tokenek_ny):
+        ki.append('A többi szónál a szótár nem ad ilyen kapcsolatot.' if van else
+                  'A motívum szavainál a szótár nem ad ilyen kapcsolatot.')
+    return ' '.join(ki)
+
+
 def sece_sajat(t, sajat):
     """(a SECE-megfelelők száma, [a motívum saját Strongjai köztük]) — a sece_tabla egyezés-szabályával."""
     lista = sece_megfelelok(t) or []
@@ -2297,7 +2397,10 @@ def szerep_olvasoi(nyelv, n, tokenek_ny, ctx):
     if n == 6:
         return lxx_olvasoi(lxx_osszevetes(sorai, tok)[1], tok, uj=uj)
     if n == 7 and uj:
-        # F182 (A14; F12): egy mondat a lényegről — melyik szónál adja a SECE a motívum másik nyelvű szavát
+        # a felhasználó átnézése (9.): olvasói mondatok a 9. tétel mintájára (miért érdekes → lelet példával); a
+        # megfeleltetés a szócsaládra is néz (árar → kataraomai ~ katara); ahol a szótár nem ad kapcsolatot, ezt mondja
+        return sece_hid_olvasoi(nyelv, tokenek_ny, sorai, tok)
+    if n == 7 and uj:
         return OK.sece_csoport('héber' if nyelv == 'heber' else 'görög',
                                [(_szo_irassal_nevelovel(t), db, [_szo_irassal(x) for x in sj])
                                 for t, (db, sj) in ((t, sece_sajat(t, set(tok))) for t in tokenek_ny)])
@@ -2348,6 +2451,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
             olv = (olvasoi_13_szavankent if n == 13 else olvasoi_14_szavankent)(ctx['sorai']) or olv
         else:
             olv = (olvasoi_13 if n == 13 else olvasoi_14)(ctx['sorai']) or olv
+    if uj_szerkezet(ctx.get('id')) and (nyelv, n) in UJ_OLVASOI_SZEREP:
+        olv = UJ_OLVASOI_SZEREP[(nyelv, n)]
     if olv:
         szakasz.append(olvasoi_bekezdes(olv))
     ctx['szerep'] = szerep
@@ -3646,17 +3751,18 @@ APPARATUS_VEGE = '<!-- APPARATUS-VÉGE: %s -->'
 APPARATUS_CIM = 'Szótári apparátus'
 APPARATUS_RX = re.compile(r'<!-- APPARATUS-(KEZDET|VÉGE): (\S+) -->')
 UJ_GERINC_BEVEZETO = {
-    'BDB': ('*Szótári tagolás (DT272): szavanként előbb a jelentések rendje a BDB szerint, rövid magyar '
-            'meghatározással, és hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem '
-            'idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a '
-            'rövidítésekkel, az alakok jegyzékével és az igehelyekkel; a motívum helyei közül a BDB saját példahelyei '
-            'kiemelve. A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*'),
-    'Thayer': ('*Szótári tagolás (DT272): szavanként előbb a jelentések rendje a Thayer szerint, rövid magyar '
-               'meghatározással, és hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem '
-               'idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes Thayer-szócikk magyarul, '
-               'a görög alakok jegyzékével, a klasszikus párhuzamokkal és az igehelyekkel; a motívum helyei közül a Thayer '
-               'saját példahelyei kiemelve. A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz '
-               'táblázata adja.*'),
+    # a felhasználó átnézése (5.): olvasói mondat, a döntés-hivatkozás és a dátum nélkül
+    'BDB': ('*Szavanként előbb a jelentések rendje áll a BDB szerint, rövid magyar meghatározással, és az, hogy a motívum '
+            'helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, '
+            'összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a rövidítésekkel, az alakok jegyzékével és '
+            'az igehelyekkel; a motívum helyei közül a BDB saját példahelyei kiemelve, az egérmutató alatt a teljes '
+            'igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*'),
+    'Thayer': ('*Szavanként előbb a jelentések rendje áll a Thayer szerint, rövid magyar meghatározással, és az, hogy a '
+               'motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. '
+               'Alatta, összecsukva, a szótári apparátus: a teljes Thayer-szócikk magyarul, a görög alakok jegyzékével, a '
+               'klasszikus párhuzamokkal és az igehelyekkel; a motívum helyei közül a Thayer saját példahelyei kiemelve, '
+               'az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. '
+               'szakasz táblázata adja.*'),
 }
 
 # F187 (DT-F104b Thayer-ága): a vers -> jelentéspont hozzárendelés mért pontossága a lap bevezetőjében nem áll (a szó-lapon
@@ -4560,6 +4666,15 @@ SZEREP_EPITO[('gorog', 9)] = _tartalom_ubs_oszlop
 def _gerinc_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
     adat = gerinc_adat()
     out = []
+    if uj_szerkezet(ctx.get('id')):
+        # a felhasználó átnézése (4.): „**אָבַל (ával)** — gyászolni · H0056 · [szónézet]”; a forrás és a „TBESH rövid
+        # jelentése” egyszer, a bevezetőben (`UJ_OLVASOI_SZEREP`)
+        for t in tokenek_ny:
+            g = adat['glossza'].get(t)
+            out.append('**%s** — %s · %s · [szónézet](%s)' % (
+                _szo_irassal(t), g['glossza_hu'] if g else 'a szótár nem ad magyar rövid jelentést', t, SZONEZET_UT % t))
+        ctx['fl'].setdefault(GLOSSZAK_HEBER_HU_FAJL, set()).add('TBESH')
+        return out
     for t in tokenek_ny:
         g = adat['glossza'].get(t)
         rovid = ('%s *(a TBESH rövid jelentése magyarul)*' % g['glossza_hu']
@@ -4580,15 +4695,17 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
         if uj:
             # F182 (A11; F6 és pontosítása): szavanként egy sor, írással és kiejtéssel; a tW-cím magyarul, az azonosító
             # nélkül, a szónézet link; a TWOT száma ugyanabban a sorban; a forrás egyszer, a pont végén
+            # a felhasználó átnézése (7.): a sorban a szó, a címek, a TWOT-szám és a szónézet; a felirat és a
+            # TWOT-magyarázat egyszer, a bevezetőben (`UJ_OLVASOI_SZEREP`)
             reszek_t = []
-            if nyelv == 'heber':
-                reszek_t.append(reszek[t]['twot'].replace('**TWOT:**', 'TWOT'))
             if cikkek:
-                reszek_t.append('a translationWords szócikkei: %s' % ' · '.join('*%s*' % tw_cim_magyar(c) for c in cikkek))
+                reszek_t.append(' · '.join('*%s*' % tw_cim_magyar(c) for c in cikkek))
                 ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
             else:
                 reszek_t.append('a translationWords nem tárgyalja')
-            out.append('**%s** · %s — [olvasd a szónézetben](%s)' % (_szo_irassal(t), ' · '.join(reszek_t), SZONEZET_UT % t))
+            if nyelv == 'heber':
+                reszek_t.append(reszek[t]['twot'].replace('**TWOT:**', 'TWOT').replace('TWOT:', 'TWOT'))
+            out.append('**%s** — %s · [szónézet](%s)' % (_szo_irassal(t), ' · '.join(reszek_t), SZONEZET_UT % t))
             continue
         if cikkek:
             out.append('**%s** · tW: %s — a szócikkek szövege a szónézetben: %s'
@@ -4600,10 +4717,6 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
             out.append('**%s** · %s *(tW)*' % (t, NEM_TARGYALJA))
     if nyelv == 'heber':
         ctx['fl'].setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
-    if uj:
-        out.append('*Forrás: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul%s.*'
-                   % ('; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma' if nyelv == 'heber'
-                      else ''))
     return out
 
 
@@ -6094,10 +6207,17 @@ def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
             sorok.append('| %s | %s |' % (_cella('; '.join(parok)), SZKZ.indok_cella(fo)))
         dt = sorted({d for f in farkak for d in re.findall(r'\bDT\d+\b', f)})
         datumok = sorted({dontes_datum(d) for d in dt if dontes_datum(d)})
-        sorok += ['', '*Az indoklások egy szerkesztői döntésből valók%s; a mért egyezéseket a héber és a görög szöveg, a '
-                  'Septuaginta és a két hagyományos kereszthivatkozás-gyűjtemény (TSK, Károli) adja.*%s'
-                  % ((' (%s)' % ', '.join(datumok)) if datumok else '',
-                     ''.join('<!-- %s -->' % f.replace('--', '—') for f in farkak))]
+        if uj_szerkezet(motivum_id):
+            # a felhasználó átnézése (14.): olvasói mondat; a döntés dátuma és a nyers farok a rejtett megjegyzésben
+            sorok += ['', '*Az egyezéseket a héber és a görög szöveg, a Septuaginta és a két kereszthivatkozás-gyűjtemény '
+                      '(TSK, Károli) méri; az indoklás a lap szerkesztőjéé.*%s'
+                      % ''.join('<!-- %s%s -->' % (f.replace('--', '—'),
+                                                   (' (%s)' % ', '.join(datumok)) if datumok else '') for f in farkak)]
+        else:
+            sorok += ['', '*Az indoklások egy szerkesztői döntésből valók%s; a mért egyezéseket a héber és a görög szöveg, a '
+                      'Septuaginta és a két hagyományos kereszthivatkozás-gyűjtemény (TSK, Károli) adja.*%s'
+                      % ((' (%s)' % ', '.join(datumok)) if datumok else '',
+                         ''.join('<!-- %s -->' % f.replace('--', '—') for f in farkak))]
     elif csoportok:
         sorok += ['| Kapcsolat | Alátámasztás |', '|---|---|']
         for indoklas, parok in csoportok:
@@ -7570,7 +7690,11 @@ UJ_JELMAGYARAZAT_CSERE = (
      '**Forrásmegjelölés** (dőlt sor vagy lábjegyzet, „forrás: …” alakú): melyik adattáblából vagy lekérdezésből és mikor\n'
      'származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A teljes, gépi alakú forrássor a lap\n'
      'forrásában, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
-    ('áll, a teljes proveniencia-sor egyszer, a blokk alatt.', 'áll, a teljes forrásmegjelölés egyszer, a blokk alatt.'),
+    # a felhasználó átnézése (2.): a közös forrásmegjelölés jele (‹E1› …) a jegyzetekben nem áll, a feloldása a rejtett
+    # megjegyzésben; a jelmagyarázata ezért nem áll a lapon
+    ('\n\n**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel\n'
+     'áll, a teljes proveniencia-sor egyszer, a blokk alatt. Az előtag a blokkot jelöli: E az előfordulások, K a kizárt és\n'
+     'vizsgált helyek, M a minősítés.', ''),
 )
 
 
@@ -9294,6 +9418,9 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = uj_szerkezet_alkalmaz(uj_szoveg, m, sorai)
             uj_szoveg = kiejtes_potol(uj_szoveg, m['id'])
             uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
+            # lap-javit HAMART-001 (a felhasználó átnézése, 2., 12.; „mehet így”): a jegyzetek és a forrássorok olvasói
+            # alakja, a 2. és 3. tábla jegyzetei a tábla alatt
+            uj_szoveg = TJ.alkalmaz(uj_szoveg)
             allapot = ('új fájl' if meglevo_uj is None else
                        'változatlan' if uj_szoveg == meglevo_uj else 'frissítve')
         elif os.path.exists(cel_ut):

@@ -470,5 +470,61 @@ class Kapuk(unittest.TestCase):
         self.assertEqual(kapu(uj_lap('\n\n'.join([mondat] * 2)), 'KOV_ISM'), [])
 
 
+class Tablajegyzet(unittest.TestCase):
+    """A felhasználó átnézése (2., 12.; „mehet így”): a jegyzetek és a forrássorok olvasói alakja, a 2. és 3. tábla
+    jegyzetei a tábla alatt; a rejtett eredeti-megjegyzés marad."""
+
+    def test_k_jegyzet(self):
+        import tablajegyzet as TJ
+        lath = ('forrás: TSK-ajánlás (1Móz 4:11, 4:12; szavazat: 2-4) · ‹K1› · döntés: szerkesztői döntés, 2026-10-18 '
+                '· a kereszthivatkozások versszám-felmérése C. rész<!-- eredeti: E -->')
+        self.assertEqual(TJ.olvasoi_jegyzet(lath), 'Forrás: TSK-ajánlás (1Móz 4:11, 4:12).')
+
+    def test_e_jegyzet(self):
+        import tablajegyzet as TJ
+        lath = ('Forrás: ‹E1› · a héber szöveg (TAHOT) igazolja · a jelentés címkéje: BDB-példa: a BDB a Qal szakaszban '
+                'maga idézi a helyet (a BDB-szótár versenkénti jelentései); ez a szerkesztői hozzárendelés (Qal → Qal) '
+                'alá esik, a címke a finomabb útvonalé')
+        self.assertEqual(TJ.olvasoi_jegyzet(lath),
+                         'A héber szöveg (TAHOT) igazolja; a jelentés: a BDB a Qal szakaszban maga idézi a helyet.')
+
+    def test_jegyzet_a_helyen_marad(self):
+        # a lap szerkezete nem változik: a tábla és a hivatkozás-jel marad, a jegyzet a helyén, olvasói szöveggel
+        import tablajegyzet as TJ
+        lap = '\n'.join(['## 2. Előfordulások', '', '| A | B |', '|---|---|', '| x[^1] | y[^1] |', '',
+                         '[^1]: forrás: TSK-ajánlás (1Móz 4:11; szavazat: 2) · ‹K1›<!-- eredeti: E1 -->',
+                         '[^k3]: forrás: Strong-keresés: אָרַר (árar) · ‹K1›', '',
+                         '*A közös forrásmegjelölések: ‹K1› = forrás: a napló*<!-- eredeti: N -->', ''])
+        ki = TJ.alkalmaz(lap)
+        self.assertIn('| x[^1] | y[^1] |', ki)
+        self.assertIn('[^1]: Forrás: TSK-ajánlás (1Móz 4:11).<!-- eredeti: E1 -->', ki)
+        self.assertIn('[^k3]: Forrás: szókeresés: אָרַר (árar).', ki)
+        self.assertNotIn('‹K1›', re.sub(r'<!--.*?-->', '', ki, flags=re.S))
+        self.assertIn('<!-- közös forrásmegjelölés: A közös forrásmegjelölések: ‹K1› = forrás: a napló --><!-- eredeti: N -->',
+                      ki)
+
+    def test_forras_sor(self):
+        import tablajegyzet as TJ
+        ki = TJ.alkalmaz('*Forrás: a lap munkaanyaga; a kapcsolat-tábla, 2026-11-12*<!-- eredeti: P -->')
+        self.assertEqual(ki, '*Forrás: a kapcsolat-tábla.*<!-- eredeti: P -->')
+        ki = TJ.alkalmaz('*(forrás: Nave tárgymutatója (1897); a Nave-témák magyar nevei, 2026-11-12)*<!-- eredeti: P -->')
+        self.assertEqual(ki, '*(forrás: Nave tárgymutatója (1897); a Nave-témák magyar nevei)*<!-- eredeti: P -->')
+
+    def test_a_lapon(self):
+        lap = _olvas(LAP)
+        lathato = re.sub(r'<!--.*?-->', '', lap, flags=re.S)
+        for minta in (r'‹[A-Z]\d›', 'szerkesztői hozzárendelés', 'versszám-felmérése', r'\bU\d:'):
+            self.assertIsNone(re.search(minta, lathato), minta)
+        # a felhasználó átnézése (3.): a Jel 22:3 sora „— —” és gondolatjel-cella nélkül, a jegyzet egyszer, a görög
+        # versnél nem a TAHOT-ra hivatkozik
+        jel = next(s for s in lap.split('\n') if s.startswith('| [Jel 22:3]'))
+        self.assertNotIn('— —', jel)
+        self.assertNotIn('| — |', jel)
+        refek = re.findall(r'\[\^(\w+)\]', jel)
+        self.assertEqual(len(refek), 1)
+        jegyzet = next(s for s in lathato.split('\n') if s.startswith('[^%s]:' % refek[0]))
+        self.assertNotIn('TAHOT', jegyzet)
+
+
 if __name__ == '__main__':
     unittest.main()

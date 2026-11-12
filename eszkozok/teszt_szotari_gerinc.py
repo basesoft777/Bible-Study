@@ -901,9 +901,12 @@ class KetreteguBdbKartya(unittest.TestCase):
     def test_bevezeto_egyszer(self):
         ctx = {'bdb_kartya': True, 'fl': {}}
         elso, masodik = self._blokk(ctx), self._blokk(ctx)
-        self.assertEqual(elso.count('Szótári tagolás (DT272)'), 1)
-        self.assertLess(elso.index('Szótári tagolás'), elso.index('##### H8034'))
-        self.assertNotIn('Szótári tagolás', masodik)
+        # a felhasználó átnézése (5.): a bevezető olvasói mondat, döntés-hivatkozás és dátum nélkül
+        bev = 'Szavanként előbb a jelentések rendje áll a BDB szerint'
+        self.assertEqual(elso.count(bev), 1)
+        self.assertNotIn('DT272', elso)
+        self.assertLess(elso.index(bev), elso.index('##### H8034'))
+        self.assertNotIn(bev, masodik)
 
     def test_regi_ut_valtozatlan(self):
         szov = self._blokk(None)
