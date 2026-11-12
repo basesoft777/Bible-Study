@@ -728,6 +728,7 @@ def hivatkozasok(szoveg):
         if m.start() not in lefedett:
             kiirt.setdefault(m.start(), (m.start(), m.end(), None, int(m.group(1)), int(m.group(2)), m.group(0)))
     ki, utolso, kint, egyfej_elott, utolso_bibliai = [], None, None, None, None
+    nevezett = []        # F202.3 (C5, N141): a szócikkben eddig kiírt bibliai könyvek, a legutóbbi elöl
     bent = _zarojelben(s)
     for p in sorted(kiirt):
         a, e, alak, c, v, nyers = kiirt[p]
@@ -752,6 +753,9 @@ def hivatkozasok(szoveg):
             utolso = (konyv, ok)
             if konyv:
                 utolso_bibliai = konyv
+                if konyv in nevezett:
+                    nevezett.remove(konyv)
+                nevezett.insert(0, konyv)
             if not bent[a] or ok == '':
                 # F99 M2: a zárójelen belüli nem bibliai/ismeretlen könyvjelölő („(… compare also Di 2:2)”, „(Ecclus … Ecclesiasticus
                 # 50:12a)”) nem öröklődik a zárójelen kívülre: ott a zárójel előtti könyv folytatódik (H1714, H5409)
@@ -763,6 +767,13 @@ def hivatkozasok(szoveg):
             konyv, ok, mod = None, 'nincs_elozmeny', 'feloldhatatlan'
         else:
             (konyv, ok), mod = utolso, 'orokolt'
+        orokles = {}
+        if mod == 'orokolt':
+            # F202.3 (C5; N141, N101): a 2.29 TAHOT-igazolt feloldásához — a korábban kiírt többi bibliai könyv (a legutóbbi elöl), és
+            # az egyfejezetes könyv, ha a hely arról öröklődik, de nem az 1. fejezet („Obadiah 6, … 49:18”, H6215: az Abdiás-vers)
+            orokles['korabbi_konyvek'] = tuple(k for k in nevezett if k != konyv)
+            if konyv in EGYFEJEZETES_KONYV and c != 1:
+                orokles['egyfej_konyv'] = konyv
         if mod == 'orokolt' and konyv in EGYFEJEZETES_KONYV and c != 1 and egyfej_elott is not None:
             # F102 (b), seed-101 M092: „2Chr 17:2; compare 34:6; … Obadiah 19; hence … 31:1” — az egyfejezetes könyvnek nincs 31.
             # fejezete: a könyv nélküli hely a közbeékelt egyfejezetes könyv előtti könyvet folytatja (2Krón 31:1), okkóddal
@@ -797,7 +808,7 @@ def hivatkozasok(szoveg):
                         sajat = ''
         if atugrott and sajat == '':
             sajat = 'orokles_egyfejezetes'
-        hiv = {'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat}
+        hiv = dict({'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat}, **orokles)
         if sajat == 'nem_bibliai' and mod == 'orokolt' and utolso_bibliai:
             # F102 (c), seed-101 (ELLENOR_F99 12.): a nem bibliai jelölőről öröklődő könyv („see 1Macc 2:42; 7:13; 2 Macc 14:6 …;
             # so perhaps 116:15; 149:1”, H2623) — a jelölő előtti utolsó bibliai könyv a jelölt; a generátor TAHOT-igazolással dönt
@@ -812,7 +823,7 @@ def hivatkozasok(szoveg):
             if not f or f.start(1) in kiirt:
                 break
             ki.append(dict({'poz': f.start(1), 'veg': f.end(), 'nyers': f.group(0).strip(), 'konyv': konyv, 'c': c, 'v': int(f.group(1)),
-                            'konyv_mod': 'folytatas', 'okkod': sajat}, **({'alt_konyv': hiv['alt_konyv']} if 'alt_konyv' in hiv else {})))
+                            'konyv_mod': 'folytatas', 'okkod': sajat}, **dict(orokles, **({'alt_konyv': hiv['alt_konyv']} if 'alt_konyv' in hiv else {}))))
             q = f.end()
     return ki
 

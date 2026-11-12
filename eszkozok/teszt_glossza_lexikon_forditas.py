@@ -168,5 +168,51 @@ class Kulcsszo(unittest.TestCase):
         self.assertEqual(G.kulcsszo_ellenorzes({'strong': 'G0086'}, 'hell', term, Counter({'pokol': 3}), '')[0][3], 'nem_heber')
 
 
+class Lista(unittest.TestCase):
+    """F203 (N-F12e): a lista csak a lapon látszó hiányt listázza, a repóba nem ír, és render nélkül megáll."""
+
+    def test_latszo_es_rejtett_hiany(self):
+        hivasok = {('BDB', 'H0127', 'H0127', '3', 'forditas_hu'): (False, G.JELOLO % 0),
+                   ('TBESG', 'G3956', 'G3956', 'rovid', 'glosszak_hu'): (False, G.JELOLO % 1),
+                   ('UBS_DBH', 'H0127', 'x', G.EM_DASH, 'glosszak_hu'): (True, None)}
+        latszo, rejtett = G.latszo_hianyok(hivasok, 'title="G3956 · %s"' % (G.JELOLO % 1))
+        self.assertEqual(latszo, [('TBESG', 'G3956', 'G3956', 'rovid', 'glosszak_hu')])
+        self.assertEqual(rejtett, [('BDB', 'H0127', 'H0127', '3', 'forditas_hu')])
+
+    def test_jelolo_nem_elotag_utkozes(self):
+        # a jelölő zárt (⟦GLF:1⟧ nem része a ⟦GLF:12⟧-nek), így az 1-es kulcs nem látszik a 12-es jelölőtől
+        hivasok = {('A',): (False, G.JELOLO % 1), ('B',): (False, G.JELOLO % 12)}
+        self.assertEqual(G.latszo_hianyok(hivasok, G.JELOLO % 12), ([('B',)], [('A',)]))
+
+    def test_kimenet_nem_a_repoban(self):
+        d = tempfile.mkdtemp()
+        try:
+            self.assertEqual(G.kimeneti_ut(d), os.path.join(d, G.LISTA_NEV))
+            self.assertFalse(os.path.abspath(G.kimeneti_ut(d)).startswith(G.GYOKER))
+            self.assertEqual(G.kimeneti_ut(d, '/x/y.tsv'), '/x/y.tsv')
+        finally:
+            shutil.rmtree(d)
+
+    def test_render_nelkul_megall(self):
+        regi = G.lista_keszit
+        G.lista_keszit = lambda mid, kim: {}
+        d = tempfile.mkdtemp()
+        try:
+            with self.assertRaises(SystemExit):
+                G.lista('NINCS-001', d)
+            self.assertEqual(os.listdir(d), [])
+        finally:
+            G.lista_keszit = regi
+            shutil.rmtree(d)
+
+    def test_kimenet_a_repoban_tilos(self):
+        with self.assertRaises(SystemExit):
+            G.lista('X-001', os.path.join(G.GYOKER, 'naplok'))
+
+    def test_szakasz_cimke_levezet_alapkimenete_a_repon_kivul(self):
+        import szakasz_cimke_levezet as SCL
+        self.assertFalse(os.path.abspath(SCL.ki_ut_alap('ALVIL-001')).startswith(G.GYOKER))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

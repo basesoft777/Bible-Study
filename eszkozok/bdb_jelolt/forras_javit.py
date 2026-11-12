@@ -677,6 +677,22 @@ KEZI_HIVATKOZAS = [
      'Ézs 49:19 versében nincs H8414-token), a TAHOT szerint az idézett „לְתֹהוּ וְהֶבֶל כֹּחִי כִלֵּיתִי” az Ézs 49:4-ben áll '
      '(H8414), és a heber_sorrend sor is a TAHOT Ézs 49:4 versével igazolja a szórendet: sajtóhiba a forrásban, '
      '49:19 → 49:4 (a DT381 (a) mintájára)'),
+    # F202.4 (N102): a H1004 5.c pontja „דָּוִד בֵּית … 1Kin 12:19 2Chr 10:19, 2 Chronicles 10:20; 2 Chronicles 10:26; 13:2; 14:8;
+    # 2Kin 17:21” — a BDB nyomtatott alakja „1 K 12:19 = 2 Ch 10:19, 1 K 12:20, 26; 13:2; 14:8”: a forrás a „1 K” könyvnevet
+    # 2Krónikának, a 12. fejezetet 10.-nek írta (a 2Krón 10-ben 19 vers van). A javított alak a könyvet is megnevezi.
+    ('H1004', '2 Chronicles 10:20', '10:20', '1Kir 12:20',
+     'a BDB „2 Chronicles 10:20” sora nem létező verset idéz (a 2Krón 10-ben 19 vers van); a „Dávid háza” (H1004 + H1732) a TAHOT '
+     'szerint az 1Kir 12:20-ban áll, és a hely a „1Kin 12:19 = 2Chr 10:19” párhuzam folytatása: könyvnév- és fejezethiba a '
+     'forrásban, 2Krón 10:20 → 1Kir 12:20 (a DT381 (a) mintájára)'),
+    ('H1004', '2 Chronicles 10:26', '10:26', '1Kir 12:26',
+     'a BDB „2 Chronicles 10:26” sora nem létező verset idéz; a „Dávid háza” a TAHOT szerint az 1Kir 12:26-ban áll: könyvnév- és '
+     'fejezethiba a forrásban, 2Krón 10:26 → 1Kir 12:26'),
+    ('H1004', '2 Chronicles 10:26; 13:2', '13:2', '1Kir 13:2',
+     'a „13:2” a hibás „2 Chronicles” könyvnevet örökli; a TAHOT szerint a „Dávid háza” az 1Kir 13:2-ben áll, a 2Krón 13:2-ben a '
+     'H1004 nem áll: 2Krón 13:2 → 1Kir 13:2'),
+    ('H1004', '13:2; 14:8', '14:8', '1Kir 14:8',
+     'a „14:8” a hibás „2 Chronicles” könyvnevet örökli; a TAHOT szerint a „Dávid háza” az 1Kir 14:8-ban áll, a 2Krón 14:8-ban a '
+     'H1004 nem áll: 2Krón 14:8 → 1Kir 14:8'),
 ]
 
 

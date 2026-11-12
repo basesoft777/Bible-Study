@@ -229,6 +229,184 @@ def terv(sorok, szakaszok, elso):
     return ki
 
 
+# ---------------------------------------------------------------------------------------------------------------------------
+# F203 (N125/N126 javítása után; gyökérok-szabály): általános átkulcsolás a RÉGI és a MAI szakasztábla összevetéséből. Az F186
+# két köre egy-egy egyszeri, a saját szabályváltozásához kötött térképet használt (`bekezdes_elso`, `osszevonas_terkep`); a
+# `bont.py` minden további szabályváltozása újabb egyedi módot kívánna. Ez a mód a változás fajtájától független: a régi
+# szakaszt a szócikk szövegében elfoglalt helye szerint a mai szakaszra vetíti (a legnagyobb átfedés), így bármely vágás,
+# összevonás vagy újraszámozás után ugyanaz a szabály fut. Használat a `bont.py` bármely változása után, a commit előtt:
+#   python eszkozok/thayer_jelolt/forditas_atkulcsol.py --regi-rev HEAD [--ir]
+# ---------------------------------------------------------------------------------------------------------------------------
+TAGSOR_ALT = re.compile(r'^sz(\d+)~(\d+)$')
+
+
+def _nows_hossz(s):
+    return len(re.sub(r'\s+', '', s or ''))
+
+
+def intervallumok(szak):
+    """[{sorszam, szoveg}] -> {sorszam: (kezdet, vég)} a szócikk szóközök nélküli szövegében (a szakaszok sorban, hézag nélkül)."""
+    ki, p = {}, 0
+    for x in szak:
+        h = _nows_hossz(x['szoveg'])
+        ki[x['sorszam']] = (p, p + h)
+        p += h
+    return ki
+
+
+def vetites(regi_szak, uj_szak):
+    """{régi sorszám: mai sorszám}: a régi szakasz a mai szakaszok közül arra esik, amellyel a szövegben a legnagyobb az átfedése
+    (döntetlennél a kisebb sorszám; üres régi szakasznál az, amelyik a kezdőpontját tartalmazza)."""
+    ri, ui = intervallumok(regi_szak), intervallumok(uj_szak)
+    ki = {}
+    for n, (a, b) in ri.items():
+        legjobb, atf = None, -1
+        for m, (c, d) in ui.items():
+            o = min(b, d) - max(a, c)
+            if b == a:
+                o = 0 if c <= a < d or (a == d and m == max(ui)) else -1
+            if o > atf:
+                legjobb, atf = m, o
+        ki[n] = legjobb
+    return ki
+
+
+def terv_tabla(sorok, regi, mai, datum='', jegy_elotag='F203'):
+    """Általános terv. sorok: [(sorindex, {mezők})]; regi(sp) / mai(sp) -> [{sorszam, hash, szoveg}] (a `thayer_bemenet.szakaszok`
+    alakja, a régi és a mai táblából). Soronként (Thayer, forditas_hu):
+      * nem `elavult`, a hash a mai sz<n>-é: változatlan;
+      * nem `elavult`, a hash pontosan egy mai szakaszé: `atkulcsol` (a fordítás és a hash változatlan);
+      * nem `elavult`, különben: `elavult`, a kulcs a vetített mai szakasz (`vetites`); `kezi` sor nem avulhat el (megáll);
+      * `elavult` sor: a kulcsa a vetítést követi (`athelyez`);
+      * `sz<a>~<b>` tagsor: az `a` az sz<a> sor új kulcsát követi.
+    Ütközés (egy mai kulcsra több sor): érvényes sor mellé más sor nem kerülhet sz<m> kulcsra — azok `sz<m>~<régi>` tagsorok
+    (`elavult`); ha nincs érvényes sor, a legkisebb régi sorszámú kapja az sz<m>-et, a fordítások sorrendben egy szóközzel fűzve
+    (DT-F186f mintája, `osszefuz`), a többi tagsor. -> [{'i', 'strong', 'regi', 'uj', 'tipus', 'uj_kulcs', 'hu'}]"""
+    csoport = collections.defaultdict(list)
+    for i, r in sorok:
+        if r.get('szotar') == 'Thayer' and r.get('mezo') == 'forditas_hu' and (
+                SZ.match(r.get('jelentes_szam', '')) or TAGSOR_ALT.match(r.get('jelentes_szam', ''))):
+            csoport[kulcs.strong_pad(r['strong'])].append((i, r))
+    ki = []
+    for sp in sorted(csoport):
+        rs, ms = regi(sp) or [], mai(sp) or []
+        if [(x['hash'], x.get('utvonal')) for x in rs] == [(x['hash'], x.get('utvonal')) for x in ms]:
+            continue
+        vet = vetites(rs, ms)
+        mai_hash = {x['sorszam']: x['hash'] for x in ms}
+        hol = collections.defaultdict(list)
+        for x in ms:
+            hol[x['hash']].append(x['sorszam'])
+        cel = {}            # sorindex -> (mai sorszám, érvényes-e, típus)
+        fej_uj = {}         # régi sz<n> (fősor) -> mai sorszám
+        for i, r in csoport[sp]:
+            m = SZ.match(r['jelentes_szam'])
+            if not m:
+                continue
+            n = int(m.group(1))
+            if n not in vet:
+                raise SystemExit('%s sz%d: a régi sorszám nincs a régi táblában — megállok' % (sp, n))
+            fh = r.get('forras_hash', '')
+            if r.get('allapot') != 'elavult':
+                if mai_hash.get(n) == fh:
+                    cel[i] = (n, True, None)
+                elif len(hol.get(fh, [])) == 1:
+                    cel[i] = (hol[fh][0], True, 'atkulcsol')
+                else:
+                    if r.get('allapot') == 'kezi':
+                        raise SystemExit('%s sz%d: védett kezi sor lenne elavult — megállok' % (sp, n))
+                    cel[i] = (vet[n], False, 'elavult')
+            else:
+                cel[i] = (vet[n], False, 'athelyez' if vet[n] != n else None)
+            fej_uj[n] = cel[i][0]
+        # ütközések: mai kulcs -> sorok
+        kulcson = collections.defaultdict(list)
+        for i, r in csoport[sp]:
+            if i in cel:
+                kulcson[cel[i][0]].append((int(SZ.match(r['jelentes_szam']).group(1)), i, r))
+        for m_, tagok in sorted(kulcson.items()):
+            tagok.sort()
+            ervenyes = [t for t in tagok if cel[t[1]][1]]
+            if len(ervenyes) > 1:
+                raise SystemExit('%s sz%d: két érvényes fordítás egy szakaszon — megállok' % (sp, m_))
+            if ervenyes:
+                fo, tobbi = ervenyes[0], [t for t in tagok if t is not ervenyes[0]]
+                fo_tipus = cel[fo[1]][2]
+                if fo_tipus:
+                    ki.append({'i': fo[1], 'strong': sp, 'regi': fo[0], 'uj': m_, 'tipus': fo_tipus,
+                               'uj_kulcs': 'sz%d' % m_, 'hu': None})
+                for n, i, r in tobbi:
+                    ki.append({'i': i, 'strong': sp, 'regi': n, 'uj': m_, 'tipus': 'tagsor', 'uj_kulcs': 'sz%d~%d' % (m_, n),
+                               'hu': None, 'fo': 'sz%d' % m_})
+                continue
+            fo, tobbi = tagok[0], tagok[1:]
+            n0, i0, r0 = fo
+            if tobbi:
+                hu = ' '.join(x for x in [r0.get('forditas_hu', '')] + [r.get('forditas_hu', '') for _, _, r in tobbi] if x)
+                ki.append({'i': i0, 'strong': sp, 'regi': n0, 'uj': m_, 'tipus': 'osszefuz', 'uj_kulcs': 'sz%d' % m_, 'hu': hu,
+                           'tagok': ['sz%d~%d' % (m_, n) for n, _, _ in tobbi]})
+                for n, i, r in tobbi:
+                    ki.append({'i': i, 'strong': sp, 'regi': n, 'uj': m_, 'tipus': 'tagsor', 'uj_kulcs': 'sz%d~%d' % (m_, n),
+                               'hu': None, 'fo': 'sz%d' % m_})
+            elif cel[i0][2]:
+                ki.append({'i': i0, 'strong': sp, 'regi': n0, 'uj': m_, 'tipus': cel[i0][2], 'uj_kulcs': 'sz%d' % m_, 'hu': None})
+        # a meglévő tagsorok (sz<a>~<b>) a fősoruk új kulcsát követik
+        for i, r in csoport[sp]:
+            t = TAGSOR_ALT.match(r['jelentes_szam'])
+            if t and int(t.group(1)) in fej_uj and fej_uj[int(t.group(1))] != int(t.group(1)):
+                a_uj = fej_uj[int(t.group(1))]
+                ki.append({'i': i, 'strong': sp, 'regi': int(t.group(1)), 'uj': a_uj, 'tipus': 'tagsor_kovet',
+                           'uj_kulcs': 'sz%d~%s' % (a_uj, t.group(2)), 'hu': None, 'regi_kulcs': r['jelentes_szam']})
+    return ki
+
+
+def alkalmaz_tabla(sorok, fej, valtozasok, datum, elotag='F203'):
+    """-> az új sorlista; csak a `valtozasok` sorai változnak (a sorok száma és sorrendje marad)."""
+    i_jsz, i_all, i_megj, i_hu = (fej.index('jelentes_szam'), fej.index('allapot'), fej.index('megjegyzes'),
+                                  fej.index('forditas_hu'))
+    uj = list(sorok)
+    for v in valtozasok:
+        m = uj[v['i']].split(TAB)
+        regi_kulcs = m[i_jsz]
+        m[i_jsz] = v['uj_kulcs']
+        t = v['tipus']
+        if t == 'atkulcsol':
+            jegy = '%s (%s): átkulcsolva %s → %s, azonos forras_hash (szakasztábla-változás)' % (elotag, datum, regi_kulcs, v['uj_kulcs'])
+        elif t == 'athelyez':
+            jegy = '%s (%s): elavult sor áthelyezve %s → %s (szakasztábla-változás)' % (elotag, datum, regi_kulcs, v['uj_kulcs'])
+        elif t == 'elavult':
+            m[i_all] = 'elavult'
+            jegy = '%s (%s): elavult — a szakasz szövege megváltozott (szakasztábla-változás); %s → %s' % (
+                elotag, datum, regi_kulcs, v['uj_kulcs'])
+        elif t == 'osszefuz':
+            m[i_all] = 'elavult'
+            m[i_hu] = v['hu']
+            jegy = ('%s (%s): elavult — a szakaszok egy mai szakaszba estek (szakasztábla-változás): %s → %s; a fordítások '
+                    'egy szóközzel fűzve, a forras_hash az elsőé; tagsor: %s' % (elotag, datum, regi_kulcs, v['uj_kulcs'],
+                                                                               ', '.join(v['tagok'])))
+        elif t == 'tagsor':
+            m[i_all] = 'elavult'
+            jegy = '%s (%s): elavult tagsor (a régi %s); a szakasz mai kulcsa %s' % (elotag, datum, regi_kulcs, v['fo'])
+        else:  # tagsor_kovet
+            jegy = '%s (%s): tagsor áthelyezve %s → %s (a fősor új kulcsa)' % (elotag, datum, regi_kulcs, v['uj_kulcs'])
+        m[i_megj] = '; '.join(x for x in (m[i_megj], jegy) if x)
+        uj[v['i']] = TAB.join(m)
+    return uj
+
+
+def regi_tabla_gitbol(rev, ut='adat/thayer_szakaszok.tsv'):
+    """A `rev` commit `ut` táblája (alapból a szakasztábla) egy ideiglenes fájlba (a régi tábla a `--regi-rev` módhoz)."""
+    import subprocess
+    import tempfile
+    o = subprocess.run(['git', 'show', '%s:%s' % (rev, ut)], cwd=bont.GYOKER, capture_output=True)
+    if o.returncode:
+        raise SystemExit('a régi tábla nem olvasható (%s): %s' % (rev, o.stderr.decode('utf-8', 'replace')[:200]))
+    f = tempfile.NamedTemporaryFile('wb', suffix='.tsv', delete=False)
+    f.write(o.stdout)
+    f.close()
+    return f.name
+
+
 def beolvas(ut):
     with open(ut, encoding='utf-8', newline='') as f:
         szoveg = f.read()
@@ -285,8 +463,33 @@ def main():
     ap.add_argument('--forditasok', default=FORDITASOK_UT)
     ap.add_argument('--osszevonas', action='store_true',
                     help='a második kör (ELLENOR_F186_2 1–2.): az azonos útvonalú szakaszok összevonása utáni átkulcsolás')
+    ap.add_argument('--regi-tabla', help='F203: általános mód — a régi thayer_szakaszok.tsv útja')
+    ap.add_argument('--regi-rev', help='F203: általános mód — a régi tábla ebből a git-commitból (pl. HEAD)')
     a = ap.parse_args()
     szoveg, sorok, fej, adat = beolvas(a.forditasok)
+    if a.regi_tabla or a.regi_rev:
+        regi_ut = a.regi_tabla or regi_tabla_gitbol(a.regi_rev)
+        # a régi táblához a régi javítótábla tartozik (a `sorszam`-a a régi számozásé)
+        regi_jav = regi_tabla_gitbol(a.regi_rev, 'adat/thayer_forras_javitas.tsv') if a.regi_rev else None
+        v = terv_tabla(adat, lambda sp: TB.szakaszok(sp, regi_ut, regi_jav), TB.szakaszok)
+        db = collections.Counter(x['tipus'] for x in v)
+        print('általános mód (régi tábla: %s): %s; érintett Strong: %d' % (
+            a.regi_tabla or a.regi_rev, ', '.join('%s %d' % kv for kv in sorted(db.items())) or 'nincs teendő',
+            len({x['strong'] for x in v})))
+        if a.lista:
+            with open(a.lista, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('strong\tregi\tuj_kulcs\ttipus\n')
+                for x in v:
+                    f.write('%s\t%s\t%s\t%s\n' % (x['strong'], x.get('regi_kulcs') or 'sz%d' % x['regi'], x['uj_kulcs'], x['tipus']))
+        uj = alkalmaz_tabla(sorok, fej, v, a.datum)
+        ellenoriz_iras(sorok, uj, v, fej)
+        if not a.ir:
+            print('terv (írás nélkül); --ir ír')
+            return 0
+        with open(a.forditasok, 'w', encoding='utf-8', newline='') as f:
+            f.write('\n'.join(uj) + '\n')
+        print('írva: %s' % a.forditasok)
+        return 0
     lex = bont.lexikon_beolvas()
     if a.osszevonas:
         v = terv_osszevonas(adat, TB.szakaszok, lambda sp: osszevonas_terkep(sp, lex))
