@@ -2034,6 +2034,16 @@ def _migralt_lista():
     return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
 
 
+def _befagyasztott_idk():
+    """F212 (a befagyasztási döntés): a befagyasztott lapok (`adat/lap_befagyasztas.tsv`, az `eszkozok/lap_befagyasztas.py`
+    olvasójával; a tesztben átállított ROOT alól)."""
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import lap_befagyasztas
+    return lap_befagyasztas.befagyasztott_idk(os.path.join(ROOT, 'adat', 'lap_befagyasztas.tsv'))
+
+
 E28_CSAK_VALTOZO = 'PARDES_E28_CSAK'
 
 
@@ -2226,6 +2236,14 @@ def e28_generalt_nezet_egyezes(fajlok):
 
     # (2) migrált nézetek
     lista = _migralt_lista()
+    # F212 (a befagyasztási döntés): a befagyasztott lap nem generálódik újra, ezért az E28 nem veti össze
+    fagy = _befagyasztott_idk()
+    if fagy:
+        kihagyott = [d['id'].strip() for _, d in lista if d.get('id', '').strip() in fagy]
+        lista = [(n, d) for n, d in lista if d.get('id', '').strip() not in fagy]
+        if kihagyott:
+            E28_JEGYZETEK.append('E28: befagyasztva, nem vetve össze (adat/lap_befagyasztas.tsv): %s'
+                                 % ', '.join(kihagyott))
     csak = e28_csak_szures()
     if csak is not None:
         # F188 T4: a független ellenőr helyi futása az érintett lapokra szűkíthet; a CI ezt nem állítja be
@@ -3106,6 +3124,11 @@ KULSO_SZABALYOK = (
      '`eszkozok/ellenoriz.py`'),
     ('E18', 'HIBA', 'a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja',
      '`eszkozok/feladatok.py ellenoriz`'),
+    # F212 (a kapuemelési döntés, a felhasználó: „Igen, a CS3 után”, „mehet”): a gyökérok-kapuk gátlóak, a befagyasztott lap kimarad
+    ('E38', 'HIBA', 'állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott '
+     'lapon (`--minden --szigoru`)', '`eszkozok/ellenorzes/allitas_adat.py`'),
+    ('E39', 'HIBA', 'követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés '
+     'jelentés (`--szigoru`, a kapuemelési döntés)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
 )
 
 
@@ -3483,6 +3506,68 @@ def szamismetles(fajlok):
                 'a `%s` számát („%s”) ismétli: hivatkozz a táblára vagy a generált blokkra, vagy írd mellé a '
                 'lekérdezés proveniencia-sorát (`scope=… | forras=… | ts=…`)' % (tabla, kif)))
     return talalatok
+
+
+# --------------------------------------------------------------------------
+# E40 -- a nyers Karoli-KH tabla egyetlen hozzaferesi pontja (F212, a Károli-KH döntés)
+# --------------------------------------------------------------------------
+# Ismetlodo hiba (a felhasznalo: „Ismét ezt hozza / már több alkalomma / vizsgáljuk ki mi ennek az oka”): az F177 a
+# javitott tablat uj fajlkent es szurokent hozta be, a nyers `konkordancia/Karoli_kereszthivatkozasok.tsv` viszont a
+# „termeszetes” bemenet maradt, es a lapgenerator azt olvasta. A gyokerok-kapu: a nyers tablat csak a KH-modulok
+# nyithatjak meg; minden mas fogyaszto a `karoli_kh_szuro` hozzaferesi pontjat (`megerositett_sorok`, `szures`) hivja.
+# Megnyitasnak szamit a fajlnev egy sorban a megnyito/utvonal-epito hivassal; a proveniencia-szoveg (`forras=…`,
+# forrasnev-lista) nem.
+E40_ENGEDELYEZETT = (
+    'eszkozok/karoli_kh_szuro.py', 'eszkozok/karoli_kh_epseg.py', 'eszkozok/karoli_kh_mek.py',
+    'eszkozok/karoli_kh_gyanus_general.py', 'eszkozok/karoli_kh_osis_konverzio.py',
+    'eszkozok/sqlite_epit.py',      # a `karoli_kh_szuro.egyedi` + `mek_sorok` szuressel tolt (752. sor korul)
+    'eszkozok/lekerdez.py',         # a `load_karoli_kh` utan a `karoli_kh_szuro.elfogad` szur (F177, F181)
+)
+# Regi, nem elo eszkozok (kivetel, indokkal): a pilot- es mockup-meresek, a lezart feladatok egyszeri szkriptjei
+E40_KIVETEL = {
+    'eszkozok/olvaso_pilot/': 'az olvasoi pilot meroeszkozei (F60), lezart, nem fut a lapgeneralasban',
+    'eszkozok/olvaso_mockup/': 'a design-mockup egyszeri kinyeroje, nem fut a lapgeneralasban',
+    'eszkozok/f110_': 'az F110 lezart szuro-pilotjanak egyszeri szkriptjei',
+    'eszkozok/t1_teremt002_': 'a TEREMT-002 lezart betoltesenek egyszeri munkalapja',
+}
+E40_NYITAS_RX = re.compile(r'Karoli_kereszthivatkozasok\.tsv')
+E40_HIVAS_RX = re.compile(r'\bopen\(|read_tsv\(|tsv_beolvas\(|os\.path\.join\(|\bPath\(|\bsorok\(|/\s*["\']Karoli_k|'
+                          r'\+\s*["\'][^"\']*/Karoli_k|\bR\(')
+
+
+def e40_karoli_kh_hozzaferes(fajlok=None, root=None):
+    """E40: HIBA, ha a nyers `Karoli_kereszthivatkozasok.tsv`-t a KH-modulokon (`E40_ENGEDELYEZETT`) es a megnevezett
+    regi eszkozokon (`E40_KIVETEL`) kivul egy eszkoz megnyitja. Fajlszintu, mindig fut. A tesztfajlok kimaradnak."""
+    root = root or ROOT
+    talalatok = []
+    for dirpath, _dirs, files in os.walk(os.path.join(root, 'eszkozok')):
+        for fn in files:
+            if not fn.endswith('.py') or fn.startswith('teszt_') or fn.startswith('test_'):
+                continue
+            rel = os.path.relpath(os.path.join(dirpath, fn), root).replace(os.sep, '/')
+            if '/tesztek/' in rel or rel in E40_ENGEDELYEZETT or any(rel.startswith(k) for k in E40_KIVETEL):
+                continue
+            try:
+                with open(os.path.join(dirpath, fn), encoding='utf-8') as f:
+                    sorok = f.read().split('\n')
+            except (OSError, UnicodeDecodeError):
+                continue
+            for n, s in enumerate(sorok, 1):
+                if s.lstrip().startswith('#') or not E40_NYITAS_RX.search(s) or '_gyanus' in s:
+                    continue
+                if E40_HIVAS_RX.search(s):
+                    talalatok.append(Talalat('E40', SZINT['E40'], rel, n,
+                                             'a nyers Károli-KH táblát a hozzáférési ponton kívül nyitja meg; használd a '
+                                             '`karoli_kh_szuro.megerositett_sorok`-at (a Károli-KH döntés)'))
+    return talalatok
+
+
+SZINT['E40'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E40')
+SZABALYOK_FUGGVENYEI['E40'] = e40_karoli_kh_hozzaferes
+SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a '
+                         '`karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés)')
+
 
 
 if __name__ == '__main__':
