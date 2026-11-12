@@ -580,9 +580,13 @@ def meres(mid):
 
 
 def osszes_lap_id():
+    """Minden lap, a befagyasztottak nélkül (F212, DT-F212a: a befagyasztott lap nem generálódik újra, a számai a
+    régi adatot mutatják; új cikkként készül)."""
+    import lap_befagyasztas
+    fagy = lap_befagyasztas.befagyasztott_idk()
     ki = []
     for nev in sorted(os.listdir(LEXIKON)):
-        if nev.endswith('_TUDOMANYOS.md'):
+        if nev.endswith('_TUDOMANYOS.md') and nev[:-len('_TUDOMANYOS.md')] not in fagy:
             ki.append(nev[:-len('_TUDOMANYOS.md')])
     return ki
 

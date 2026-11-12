@@ -2034,6 +2034,16 @@ def _migralt_lista():
     return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
 
 
+def _befagyasztott_idk():
+    """F212 (DT-F212a): a befagyasztott lapok (`adat/lap_befagyasztas.tsv`, az `eszkozok/lap_befagyasztas.py`
+    olvasójával; a tesztben átállított ROOT alól)."""
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import lap_befagyasztas
+    return lap_befagyasztas.befagyasztott_idk(os.path.join(ROOT, 'adat', 'lap_befagyasztas.tsv'))
+
+
 E28_CSAK_VALTOZO = 'PARDES_E28_CSAK'
 
 
@@ -2226,6 +2236,14 @@ def e28_generalt_nezet_egyezes(fajlok):
 
     # (2) migrált nézetek
     lista = _migralt_lista()
+    # F212 (DT-F212a): a befagyasztott lap nem generálódik újra, ezért az E28 nem veti össze
+    fagy = _befagyasztott_idk()
+    if fagy:
+        kihagyott = [d['id'].strip() for _, d in lista if d.get('id', '').strip() in fagy]
+        lista = [(n, d) for n, d in lista if d.get('id', '').strip() not in fagy]
+        if kihagyott:
+            E28_JEGYZETEK.append('E28: befagyasztva, nem vetve össze (adat/lap_befagyasztas.tsv): %s'
+                                 % ', '.join(kihagyott))
     csak = e28_csak_szures()
     if csak is not None:
         # F188 T4: a független ellenőr helyi futása az érintett lapokra szűkíthet; a CI ezt nem állítja be

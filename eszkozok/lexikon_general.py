@@ -40,6 +40,7 @@ import tablajegyzet as TJ
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
+import lap_befagyasztas as LB  # F212 (DT-F212a): a befagyasztott lapok jegyzéke
 import szerep_karoli as SZK
 import szerep_nave as SZN
 import szerep_kizart as SZKZ
@@ -9565,6 +9566,9 @@ def frissit_meglevo_fajlt(meglevo_szoveg, m, blokkok):
     return szoveg
 
 
+BEFAGYASZTOTT = LB.befagyasztott_idk()
+
+
 def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
     elof_id_szerint = G.elofordulasok_id_szerint(elofordulasok)
     kimenet_gyoker = (
@@ -9577,6 +9581,11 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
     for m in motivumok:
         sorai = elof_id_szerint.get(m['id'], [])
         if not sorai:
+            continue
+
+        if m['id'] in BEFAGYASZTOTT:
+            # F212 (DT-F212a): a befagyasztott lap új cikkként, nulláról készül újra; addig nem generálódik
+            print('  %s: BEFAGYASZTVA -- a lap nem generálódik újra (adat/lap_befagyasztas.tsv)' % m['id'])
             continue
 
         if res_forras_teljesen_hianyzik_e(m['id']):

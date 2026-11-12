@@ -29,6 +29,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 | `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
+| `lap_befagyasztas.tsv` | `id` | kézzel, a felhasználó döntésével (2.59) |
 
 ---
 
@@ -2360,6 +2361,26 @@ ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `
 
 **Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
 Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
+
+### 2.59 `lap_befagyasztas.tsv` — a befagyasztott lexikonlapok (F212, DT-F212a, 2026-11-12)
+
+A felhasználó döntése (2026-11-12, „Igen, így”): a hét régi lap (KIRALY-001, TEREMT-001, ALVIL-001, MENNY-001,
+ANTROP-001, HODIT-001, TEREMT-002) befagyasztva várja az újraírást; új cikkként, nulláról készül (F123). A
+generátorjavítások után a lapja **nem generálódik újra**; az adata és a forrása a helyén marad, a nyílt magban az
+adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok/lap_befagyasztas.py`
+(`befagyasztott_idk`) olvassa, és ebből kapja a generátor (`lexikon_general.run`: a lapot nem írja), az E28
+(`ellenorzes/szabalyok.py`: nem veti össze; a jelentés megnevezi a kihagyott lapot) és az állítás–adat kapu
+(`ellenorzes/allitas_adat.py --minden`: nem méri).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója |
+| `ok` | miért befagyasztott, és mi következik (pl. „új cikkként, nulláról készül újra (F123), később”) |
+| `dontes` | a döntés forrása: a felhasználó szava, dátummal; a döntés azonosítója |
+| `datum` | a befagyasztás napja |
+
+**Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
+generálódik, és az E28 újra méri.
 
 ## 3. Integritási szabályok
 
