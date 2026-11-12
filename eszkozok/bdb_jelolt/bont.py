@@ -392,6 +392,11 @@ def _elol_zar(t, n=120):
     return False
 
 
+def zarojel_folytatas(elozo_sima, sima_szoveg):
+    """F202.2: a bekezdés az előző bekezdés nyitva maradt zárójelét zárja (a JSON a zárójel közepén tört bekezdést)."""
+    return bool(_nyitott_zarojel(elozo_sima)) and _elol_zar(sima_szoveg)
+
+
 def hamis_fej_kornyezet(elozo_sima, maradek_sima, tokenek, allapot):
     """F185: a bekezdés-eleji fej a környezete szerint hivatkozás (l. fent (a)–(d)); visszaadja a jel betűjelét vagy ''."""
     if _nyitott_zarojel(elozo_sima) and _elol_zar(maradek_sima):
@@ -661,6 +666,12 @@ def strong_illeszt(strong_eredeti, blokkok, szocikk, index, cimke_szerint):
         tokenek, mar = fej_bont(blokkok[i][0])
         if fej_valodi(tokenek, mar) and any(sz != 'romai' for sz, _ in tokenek):
             # számozott / betűs / törzs-fejű bekezdés nem nyit új szócikket
+            hozz[i] = aktualis
+            continue
+        if len(fps[i]) < 4 and zarojel_folytatas(sima(blokkok[i - 1][0]), sima(blokkok[i][0])):
+            # F202.2 (C1/C2, N147): a rövid blokk az előző bekezdés nyitott zárójelét zárja („compare Niph`al )”, H3988;
+            # „(compare מַלְכוּת 2, מַמְלָכוּת 3).”, H4467): az előző szócikk vége, nem a következő szócikk-kezdet része (a
+            # `kezdo_fp` a rövid blokkot a következővel együtt mérte, és a töredék a következő szócikkhez került)
             hozz[i] = aktualis
             continue
         # a későbbi szócikk-kezdet küszöbe azonos az elsőével (ILL_KUSZOB; F107.14: a 0,85 a H1817 BDB1943-at elvétette)
