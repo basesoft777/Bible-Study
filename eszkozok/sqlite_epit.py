@@ -116,7 +116,6 @@ SZARMAZTATOTT_LICENC = {
     # F210: az olvasó bibliaválasztójának versszintű szövegei (a Strong-réteg a meglévő token-táblákból jön)
     'szoveg_kjv': ['KJV_teljes_szoveg'], 'szoveg_modern': ['karoli_modern', 'Karoli_1908'],
     'token_modern': ['karoli_modern', 'Karoli_1908'],
-    'szoveg_targum': ['Targum_PD'], 'szoveg_vulgata': ['Vulgata_Clementina'],
     'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
     'igehely_tartomany': ['projekt_adat'], 'normalizalas_jelentes': ['projekt_adat'],
@@ -937,9 +936,7 @@ class Epito(object):
           A kieső token (pl. a „vala” segédige) üres alakkal nem kerül át.
         - `szoveg_kjv`: a KJV teljes szövege (a `kjv` tábla csak a Strong-címkés szavakat hordozza); a Károli-kulcs a
           `_kjv` leképezésével (Karoli_versmegfeleltetes, különben azonos számozás feltételezve).
-        - `szoveg_targum`, `szoveg_vulgata`: a forrás SAJÁT számozásával (VISSZHANG_README 1.); a `konyv`/`fejezet`/`vers`
-          a forrás számozása, NEM Károli-vers, és versegyezést nem állít (a `forras_kulcs` csak azt jelzi, hogy ugyanez a
-          szám létezik-e a Károliban).
+        A választóba csak szószintű Strong-kapcsolatú szöveg kerül (a felhasználó, 2026-11-12): a Targum és a Vulgata nem.
         """
         km = os.path.join(self.gyoker, 'adat', 'karoli_modern')
         if self.licenc_ellenorzes('szoveg_modern', SZARMAZTATOTT_LICENC['szoveg_modern']):
@@ -990,24 +987,6 @@ class Epito(object):
             self.tabla('szoveg_kjv', [('igehely', 'TEXT'), ('sorrend', 'INTEGER'), ('step_nyers', 'TEXT'),
                                       ('kk_lekepezes', 'TEXT'), ('szoveg', 'TEXT'), ('szoveg_jelolt', 'TEXT')],
                        ki, SZARMAZTATOTT_LICENC['szoveg_kjv'], ['igehely'])
-        for nev, fajl, extra in (('szoveg_targum', 'Targum_PD.tsv', ('targum', 'forras_mu')),
-                                 ('szoveg_vulgata', 'Vulgata_Clementina.tsv', ())):
-            if not self.licenc_ellenorzes(nev, SZARMAZTATOTT_LICENC[nev]):
-                continue
-            ki = []
-            for sor, r in enumerate(G.tsv_beolvas(os.path.join(self.konk, fajl))[1]):
-                p = hu_igehely_parse(r['igehely'])
-                if p is None or p[3:] != p[1:3]:
-                    self.jelent_norm(nev, r['igehely'], 'nem egy vers')
-                    continue
-                if self.minta is not None and r['igehely'] not in self.minta:
-                    continue
-                ki.append((r['igehely'], p[0], p[1], p[2], sor + 1, r['forras_vers'], r['forras_kulcs'])
-                          + tuple(r[e] for e in extra) + (r['szoveg'],))
-            self.tabla(nev, [('igehely', 'TEXT'), ('konyv', 'TEXT'), ('fejezet', 'INTEGER'), ('vers', 'INTEGER'),
-                             ('sorrend', 'INTEGER'), ('forras_vers', 'TEXT'), ('forras_kulcs', 'TEXT')]
-                       + [(e, 'TEXT') for e in extra] + [('szoveg', 'TEXT')],
-                       ki, SZARMAZTATOTT_LICENC[nev], ['konyv, fejezet, vers'])
 
     def _karoli_strong_kivonat(self):
         if not self.licenc_ellenorzes('karoli_strong_kivonat', SZARMAZTATOTT_LICENC['karoli_strong_kivonat']):

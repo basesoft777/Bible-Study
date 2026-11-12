@@ -1,7 +1,7 @@
 {% extends "alap.html" %}
 {% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo{% if bq %}&amp;{{ bq }}{% endif %}#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
 {% macro tan_jel(v) %}{% for t in v.tan %}{% set felirat = ('Folytatás – ' if t[3] else '') ~ ('Mélyelemzés' if t[1] == 'melyelemzes' else 'Tanulmány') ~ ': ' ~ t[2] %}<a class="tan-jel" href="/tanulmany/{{ t[0] }}" data-jel="▸ {{ felirat }}" aria-label="{{ felirat }}" title="A tanulmány oldala"></a>{% endfor %}{% endmacro %}
-{% macro vers_folyo(v) %}{{ tan_jel(v) }}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">{% if v.link is false %}<span class="versszam" title="{{ 'A forrás versszáma; a Károliban ilyen vers nincs' if v.nincs_karoli else 'A forrás versszáma (eltérhet a Károlitól)' }}">{{ v.vers }}{{ '†' if v.nincs_karoli else '' }}</span>{% else %}<a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{{ '?' ~ bq if bq else '' }}#v{{ v.vers }}">{{ v.vers }}</a>{% endif %}{% if v.jel %}<span class="forras-versszam">{{ v.jel }}</span>{% endif %}{{ szavak(v) }}</span> {% endmacro %}
+{% macro vers_folyo(v) %}{{ tan_jel(v) }}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{{ '?' ~ bq if bq else '' }}#v{{ v.vers }}">{{ v.vers }}</a>{% if v.jel %}<span class="forras-versszam">{{ v.jel }}</span>{% endif %}{{ szavak(v) }}</span> {% endmacro %}
 {% macro interlinearis(v) %}
 {{ tan_jel(v) }}<div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>
@@ -45,7 +45,7 @@
         {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}{{ '?' ~ bq if bq else '' }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
         <a class="lap-info" href="/{{ slug }}/{{ fej }}?ful=info{% if bq %}&amp;{{ bq }}{% endif %}">Forrás és számlálók</a>
       </p>
-      {# F210: a nem Károli 1908-as Biblia jegye: mi ez, hogyan olvasható (szóra koppintva vagy versenként), a számozása #}
+      {# F210: a nem Károli 1908-as Biblia jegye: mi ez, hogyan olvasható, a számozása #}
       {% if bjegy %}<div class="biblia-jegy"><p><b>{{ biblia.nev }}.</b> {{ bjegy.leiras }}</p><p>{{ bjegy.mod }} {{ bjegy.szam }}</p></div>{% endif %}
     </div>
     {% if il %}

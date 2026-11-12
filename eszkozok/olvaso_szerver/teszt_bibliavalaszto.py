@@ -23,7 +23,7 @@ sys.path.insert(0, D)
 import bibliak
 from teszt_olvaso_szerver import VAN_DB, VAN_FLASK, app_keszit
 
-UJ_TABLAK = ('szoveg_modern', 'token_modern', 'szoveg_kjv', 'szoveg_targum', 'szoveg_vulgata')
+UJ_TABLAK = ('szoveg_modern', 'token_modern', 'szoveg_kjv')
 
 
 class TestSegedek(unittest.TestCase):
@@ -33,10 +33,11 @@ class TestSegedek(unittest.TestCase):
         self.assertEqual(bibliak.kod_kerese(''), 'karoli')
         self.assertEqual(bibliak.parameter('karoli'), '')
         self.assertEqual(bibliak.parameter('vulgata'), 'biblia=vulgata')
-        self.assertEqual([b.kod for b in bibliak.BIBLIAK],
-                         ['karoli', 'modern', 'tahot', 'tagnt', 'lxx', 'kjv', 'bsb', 'targum', 'vulgata'])
-        self.assertEqual({b.kod for b in bibliak.BIBLIAK if b.szamozas == 'forras'}, {'targum', 'vulgata'})
-        self.assertEqual({b.kod for b in bibliak.BIBLIAK if not b.strong}, {'targum', 'vulgata'})
+        # csak szószintű Strong-kapcsolatú szöveg (a felhasználó, 2026-11-12): a Targum és a Vulgata nem választható
+        self.assertEqual([b.kod for b in bibliak.BIBLIAK], ['karoli', 'modern', 'tahot', 'tagnt', 'lxx', 'kjv', 'bsb'])
+        self.assertEqual(bibliak.kod_kerese('vulgata'), 'karoli')
+        self.assertEqual(bibliak.kod_kerese('targum'), 'karoli')
+        self.assertTrue(all(b.strong_tablak for b in bibliak.BIBLIAK))
 
     def test_tahot_osszefuzes(self):
         # 1Móz 1:1: בְּ + רֵאשִׁית (előtag a szóhoz), הַ + שָּׁמַיִם; a nyelvtani elemre nincs koppintás
@@ -88,7 +89,7 @@ class TestBibliavalaszto(unittest.TestCase):
         # sorrend: Biblia → Könyv → Fejezet
         self.assertLess(f.index('class="bibliavalaszto"'), f.index('<div class="mufaj"'))
         self.assertLess(f.index('<div class="mufaj"'), f.index('id="fejezetracs"'))
-        self.assertEqual(re.findall(r'<span class="biblia-csoport-cim">([^<]+)</span>', f), ['Magyar', 'Eredeti nyelv', 'Angol', 'Ókori fordítás'])
+        self.assertEqual(re.findall(r'<span class="biblia-csoport-cim">([^<]+)</span>', f), ['Magyar', 'Eredeti nyelv', 'Angol'])
         gombok = re.findall(r'<a class="biblia-gomb( itt)?" href="([^"]+)" data-biblia="(\w+)"', f)
         self.assertEqual([g[2] for g in gombok], [b.kod for b in bibliak.BIBLIAK])
         self.assertEqual([g[2] for g in gombok if g[0]], ['karoli'])
@@ -96,8 +97,8 @@ class TestBibliavalaszto(unittest.TestCase):
         self.assertEqual(cel['karoli'], '/1Moz/1')                  # a Károli útvonala változatlan, paraméter nélkül
         self.assertEqual(cel['tahot'], '/1Moz/1?biblia=tahot')
         self.assertEqual(cel['tagnt'], '/Mt/1?biblia=tagnt')         # az ÓSZ-ban nincs: a Biblia első fejezete
-        self.assertIn('Targum<small>arámi · csak Ószövetség · versenként</small>', f)
-        self.assertNotIn('ASV', f)
+        for nincs in ('ASV', 'Targum', 'Vulgata', 'versenként'):
+            self.assertNotIn(nincs, f)
 
     def test_karoli_utvonal_valtozatlan(self):
         h = self.h('/1Moz/1')
@@ -109,11 +110,9 @@ class TestBibliavalaszto(unittest.TestCase):
         self.assertIn('<span class="morzsa-biblia">Károli 1908 ·</span>', self.h('/1Moz/1?biblia=asv'))
 
     def test_minden_biblia_olvashato(self):
-        for kod, ut, minta, strong in (('modern', '/1Moz/1', 'Kezdetben', True), ('tahot', '/1Moz/1', 'אֱלֹהִ֑ים', True),
-                                       ('lxx', '/1Moz/1', 'ἀρχῇ', True), ('kjv', '/1Moz/1', 'beginning', True), ('bsb', '/1Moz/1', 'the beginning', True),
-                                       ('targum', '/1Moz/1', 'יְיָ', False), ('vulgata', '/1Moz/1', 'In principio creavit', False),
-                                       ('modern', '/Mt/1', 'Ábrahám', True), ('tagnt', '/Mt/1', 'Βίβλος', True), ('kjv', '/Mt/1', 'Abraham', True),
-                                       ('vulgata', '/Mt/1', 'Abraham', False)):
+        for kod, ut, minta in (('modern', '/1Moz/1', 'Kezdetben'), ('tahot', '/1Moz/1', 'אֱלֹהִ֑ים'), ('lxx', '/1Moz/1', 'ἀρχῇ'),
+                               ('kjv', '/1Moz/1', 'beginning'), ('bsb', '/1Moz/1', 'the beginning'),
+                               ('modern', '/Mt/1', 'Ábrahám'), ('tagnt', '/Mt/1', 'Βίβλος'), ('kjv', '/Mt/1', 'Abraham')):
             u = '%s?biblia=%s' % (ut, kod)
             h = self.h(u)
             sz = self.szoveg(h)
@@ -122,16 +121,10 @@ class TestBibliavalaszto(unittest.TestCase):
             self.assertIn('<span class="morzsa-biblia">%s ·</span>' % b.morzsa, h, u)
             self.assertIn('class="biblia-jegy"', h, u)
             linkek = re.findall(r'<a class="szo[^"]*" href="([^"]+)" data-strong="([HG]\d{4}[A-Z]?)"', sz)
-            if strong:
-                self.assertTrue(linkek, u)
-                self.assertNotIn('&amp;amp;', sz, u)
-                self.assertTrue(all('biblia=%s' % kod in l for l, _ in linkek), u)
-                self.assertIn('szóra koppintva', h, u)
-            else:
-                self.assertFalse(linkek, u)
-                self.assertNotIn('<a class="versszam"', sz, u)       # versenként: a forrás versszáma nem hivatkozás
-                self.assertIn('Versenként olvasható', h, u)
-                self.assertIn('a forrás saját számozása', h, u)
+            self.assertTrue(linkek, u)
+            self.assertNotIn('&amp;amp;', sz, u)
+            self.assertTrue(all('biblia=%s' % kod in l for l, _ in linkek), u)
+            self.assertIn('szóra koppintva', h, u)
             # a fejezetrács és a lapozó a Bibliában marad
             self.assertIn('href="/%s/2?biblia=%s"' % (ut.split('/')[1], kod), h, u)
 
@@ -144,14 +137,25 @@ class TestBibliavalaszto(unittest.TestCase):
         r = self.c.get('/r/szo/H0430?ig=1Moz/1/1')
         self.assertEqual(r.status_code, 200)
 
-    def test_forras_szamozas_zsoltar(self):
-        # Vulgata Zsolt 22 = a héber/Károli Zsolt 23 („Dominus regit me”): a lap a forrás számozását mutatja, egyezést nem állít
-        h = self.h('/Zsolt/22?biblia=vulgata')
-        self.assertIn('Dominus regit me', unicodedata.normalize('NFC', html_modul.unescape(self.szoveg(h))))
-        self.assertIn('eltérhet a Károlitól', h)
-        # a Targum csak az ÓSZ-ban (Tóra, Próféták): az Újszövetségben nincs fejezete
-        self.h('/Mt/1?biblia=targum', 404)
+    def test_strong_nelkuli_nincs(self):
+        # a Strong nélküli szöveg nem választható: a régi kód az alapra (Károli) esik vissza, nem hiba
+        for kod in ('targum', 'vulgata'):
+            h = self.h('/Zsolt/23?biblia=%s' % kod)
+            self.assertIn('<span class="morzsa-biblia">Károli 1908 ·</span>', h)
+            self.assertNotIn('class="biblia-jegy"', h)
+        # a TAHOT az Újszövetségben nem olvasható
         self.h('/Mt/1?biblia=tahot', 404)
+        # az eltérő forrásszám a vers elején (LXX Zsolt 23 = LXX 22)
+        self.assertIn('<span class="forras-versszam">LXX 22:1</span>', self.h('/Zsolt/23?biblia=lxx'))
+
+    def test_kiadas_strong_reteg_nelkul(self):
+        # a nyilvanos kiadásban a KJV Strong-címkéi kizártak (DT124): a KJV nem kerül a választóba, a címe 404
+        app = app_keszit('nyilvanos')
+        c = app.test_client()
+        h = c.get('/1Moz/1').get_data(as_text=True)
+        self.assertNotIn('data-biblia="kjv"', h)
+        self.assertIn('data-biblia="bsb"', h)
+        self.assertEqual(c.get('/1Moz/1?biblia=kjv').status_code, 404)
 
     def test_konyvracs_a_biblia_konyvei(self):
         f = self.fej(self.h('/1Moz/1?biblia=bsb'))

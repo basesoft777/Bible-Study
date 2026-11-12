@@ -306,10 +306,9 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
 .biblia-csoport-cim { flex: 0 0 120px; align-self: center; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
 .biblia-gomb { display: grid; gap: 1px; min-height: 32px; padding: 6px 12px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); color: var(--fg); text-decoration: none; font: 500 var(--fs-gomb) var(--font-ui); }
 .biblia-gomb small { font-size: var(--fs-megjegyzes); font-weight: 400; color: var(--muted); }
-a.biblia-gomb:hover, a.biblia-gomb:focus-visible { background: var(--accent-soft); }
+.biblia-gomb:hover, .biblia-gomb:focus-visible { background: var(--accent-soft); }
 .biblia-gomb.itt { background: var(--accent); border-color: var(--accent); color: var(--panel); }
 .biblia-gomb.itt small { color: var(--panel); }
-.biblia-gomb.biblia-nincs { opacity: .55; cursor: not-allowed; }
 .bibliavalaszto-megj { margin: 0; max-width: 80ch; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
 .morzsa-biblia { margin-right: 4px; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
 .biblia-jegy { margin: 6px 0 12px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); font: var(--fs-szoveg-jegy)/var(--lh-szoveg-jegy) var(--font-ui); color: var(--muted); }

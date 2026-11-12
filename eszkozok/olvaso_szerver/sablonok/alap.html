@@ -36,10 +36,10 @@
         <p class="bibliavalaszto-cim">Biblia</p>
         {% for cs in nav.bibliak %}
         <div class="biblia-csoport"><span class="biblia-csoport-cim">{{ cs.nev }}</span>
-          {% for g in cs.gombok %}{% if g.href %}<a class="biblia-gomb{{ ' itt' if g.itt else '' }}" href="{{ g.href }}" data-biblia="{{ g.kod }}"{% if g.itt %} aria-current="true"{% endif %}>{{ g.nev }}<small>{{ g.alcim }}</small></a>{% else %}<span class="biblia-gomb biblia-nincs" title="Ez a szöveg az adatbázisban (vagy ebben a kiadásban) nem érhető el">{{ g.nev }}<small>nincs az adatbázisban</small></span>{% endif %}{% endfor %}
+          {% for g in cs.gombok %}<a class="biblia-gomb{{ ' itt' if g.itt else '' }}" href="{{ g.href }}" data-biblia="{{ g.kod }}"{% if g.itt %} aria-current="true"{% endif %}>{{ g.nev }}<small>{{ g.alcim }}</small></a>{% endfor %}
         </div>
         {% endfor %}
-        <p class="bibliavalaszto-megj">A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. A Strong-jelölés nélküli szöveg versenként olvasható, szóra koppintani nem lehet benne.</p>
+        <p class="bibliavalaszto-megj">A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.</p>
       </div>
       <p class="bibliavalaszto-cim">Könyv</p>
       {% for m in nav.mufajok %}

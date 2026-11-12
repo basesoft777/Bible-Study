@@ -1012,16 +1012,6 @@ def biblia_fejezetek_karoli_kulcs(con, tabla):
     return {kk: sorted(fl) for kk, fl in ki.items()}
 
 
-def biblia_fejezetek_forras(con, tabla):
-    """{kk: [fejezet, ...]} a forrás-számozású szövegtáblára (Targum, Vulgata; a fejezet a forrásé)."""
-    sql = {'szoveg_targum': 'SELECT DISTINCT konyv, fejezet FROM szoveg_targum',
-           'szoveg_vulgata': 'SELECT DISTINCT konyv, fejezet FROM szoveg_vulgata'}[tabla]
-    ki = defaultdict(list)
-    for kk, f in con.execute(sql):
-        ki[kk].append(f)
-    return {kk: sorted(fl) for kk, fl in ki.items()}
-
-
 def modern_fejezet(con, kk, fej):
     """({igehely: modern versszöveg}, {igehely: [(sorszam, alak)]}) a modernizált Károli fejezetére."""
     szoveg = dict(con.execute('SELECT t.igehely, t.szoveg FROM szoveg_modern t JOIN vers v ON v.igehely=t.igehely WHERE v.konyv=? AND v.fejezet=?', (kk, fej)))
@@ -1052,18 +1042,17 @@ def lxx_fejezet(con, kk, fej):
     return ki
 
 
-def kjv_fejezet(con, kk, fej, strong_is=True):
-    """({igehely: [(step_nyers, szoveg)]}, {igehely: [(angol_szo, strong)]}) a KJV fejezetére (Károli-kulcs). A Strong-címkés
-    szavak (a `kjv` tábla) csak `strong_is` esetén: a kiadás a `kjv` táblát kizárhatja (adatbazis.TABLA_KIZARAS)."""
+def kjv_fejezet(con, kk, fej):
+    """({igehely: [(step_nyers, szoveg)]}, {igehely: [(angol_szo, strong)]}) a KJV fejezetére (Károli-kulcs): a teljes szöveg és a
+    Strong-címkés szavak (a `kjv` tábla; a kiadás kizárhatja, ilyenkor a KJV nem választható, bibliak.Tar.van)."""
     szoveg = defaultdict(list)
     for ig, step, sz in con.execute('SELECT t.igehely, t.step_nyers, t.szoveg FROM szoveg_kjv t JOIN vers v ON v.igehely=t.igehely '
                                     'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorrend', (kk, fej)):
         szoveg[ig].append((step or '', sz or ''))
     cimke = defaultdict(list)
-    if strong_is:
-        for ig, szo, st in con.execute('SELECT t.igehely, t.angol_szo, t.strong FROM kjv t JOIN vers v ON v.igehely=t.igehely '
-                                       'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorszam', (kk, fej)):
-            cimke[ig].append((szo or '', st or ''))
+    for ig, szo, st in con.execute('SELECT t.igehely, t.angol_szo, t.strong FROM kjv t JOIN vers v ON v.igehely=t.igehely '
+                                   'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorszam', (kk, fej)):
+        cimke[ig].append((szo or '', st or ''))
     return szoveg, cimke
 
 
@@ -1074,10 +1063,3 @@ def bsb_fejezet(con, kk, fej):
                                    "WHERE v.konyv=? AND v.fejezet=? AND t.angol_szo<>'' ORDER BY v.vers, t.sorszam", (kk, fej)):
         ki[ig].append((szo, st or ''))
     return ki
-
-
-def forras_fejezet(con, tabla, kk, fej):
-    """[(vers, forras_vers, forras_kulcs, szoveg)] a Targum vagy a Vulgata fejezetére, a forrás saját számozásával."""
-    sql = {'szoveg_targum': 'SELECT vers, forras_vers, forras_kulcs, szoveg FROM szoveg_targum WHERE konyv=? AND fejezet=? ORDER BY vers, sorrend',
-           'szoveg_vulgata': 'SELECT vers, forras_vers, forras_kulcs, szoveg FROM szoveg_vulgata WHERE konyv=? AND fejezet=? ORDER BY vers, sorrend'}[tabla]
-    return con.execute(sql, (kk, fej)).fetchall()

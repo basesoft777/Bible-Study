@@ -2,13 +2,14 @@
 szövegekhez. Flask és SQL nélkül: az SQL a `lekerdezesek.py`-ban áll.
 
 A Károli 1908 az alapnézet (döntés, 2026-10-22): a választás a `?biblia=<kód>` paraméterben él, a Károli kódja nem kerül a
-címbe, így a meglévő Károli-útvonalak változatlanok. Két számozás van:
-- `karoli`: a szöveg az adatbázisban a Károli-vers kulcsán áll (modern Károli, TAHOT, TAGNT, BSB; a KJV és a Septuaginta a
-  meglévő leképező táblával), a lap a Károli-fejezetet mutatja, a versszám a Károlié;
-- `forras`: a Targum és a Vulgata a forrás SAJÁT számozását hordozza (`konkordancia/VISSZHANG_README.md` 1.); a lap a forrás
-  fejezetét és versszámát mutatja, és kimondja, hogy ez eltérhet a Károlitól. Versegyezést nem állítunk.
-A Strong-jelölt szövegben a szó a szópanelt nyitja (a meglévő `?szo=` útvonal, a Károli-vers kontextusával); a Strong nélküli
-szöveg (Targum, Vulgata) versenként olvasható.
+címbe, így a meglévő Károli-útvonalak változatlanok. Minden szöveg az adatbázisban a Károli-vers kulcsán áll (modern Károli,
+TAHOT, TAGNT, BSB; a KJV és a Septuaginta a meglévő leképező táblával): a lap a Károli-fejezetet mutatja, a versszám a Károlié,
+az eltérő forrásszám a vers elején áll.
+
+A választóba csak szószintű Strong-kapcsolatú szöveg kerül (a felhasználó, 2026-11-12: „ahol nincs strong kapcsolat olyan szöveg
+ne kerüljön be”): a Targum és a Vulgata nem, és az a Biblia sem, amelynek Strong-rétegét a kiadás kizárja (a KJV-címkék a
+nyilvanos és a kereskedelmi kiadásban, adatbazis.TABLA_KIZARAS). A szó a szópanelt nyitja (a meglévő `?szo=` útvonal, a
+Károli-vers kontextusával). A mért lefedettség: `naplok/F210_jelentes.md` 2.
 """
 import re
 import threading
@@ -17,7 +18,7 @@ from dataclasses import dataclass
 import lekerdezesek as q
 
 ALAP = 'karoli'
-CSOPORTOK = (('magyar', 'Magyar'), ('eredeti', 'Eredeti nyelv'), ('angol', 'Angol'), ('okori', 'Ókori fordítás'))
+CSOPORTOK = (('magyar', 'Magyar'), ('eredeti', 'Eredeti nyelv'), ('angol', 'Angol'))
 
 
 @dataclass(frozen=True)
@@ -27,9 +28,8 @@ class Biblia:
     morzsa: str           # a fejléc morzsája („Károli 1908 · 1Móz 1”)
     csoport: str
     alcim: str            # a gomb kis sora (a mockup szerint)
-    tabla: str            # az elérhetőség forrása (lekerdezesek.biblia_fejezetek_*)
-    szamozas: str         # 'karoli' | 'forras'
-    strong: bool          # szószintű Strong-jelölés (a KJV-é kiadásfüggő: a `kjv` tábla kizárható)
+    tabla: str            # az elérhetőség forrása (lekerdezesek.biblia_fejezetek_karoli_kulcs)
+    strong_tablak: tuple  # a Strong-réteg táblái: ha bármelyik hiányzik vagy a kiadás kizárja, a Biblia nem választható
     lang: str
     irany: str            # 'ltr' | 'rtl'
     licenc_tablak: tuple  # a forrássor táblái (tabla_licenc)
@@ -37,27 +37,22 @@ class Biblia:
 
 
 BIBLIAK = (
-    Biblia('karoli', 'Károli 1908', 'Károli 1908', 'magyar', 'alapnézet · Strong', 'vers', 'karoli', True, 'hu', 'ltr', ('vers',), ''),
-    Biblia('modern', 'Modernizált Károli', 'Modernizált Károli', 'magyar', 'Strong', 'szoveg_modern', 'karoli', True, 'hu', 'ltr',
+    Biblia('karoli', 'Károli 1908', 'Károli 1908', 'magyar', 'alapnézet · Strong', 'vers', ('token_par',), 'hu', 'ltr', ('vers',), ''),
+    Biblia('modern', 'Modernizált Károli', 'Modernizált Károli', 'magyar', 'Strong', 'szoveg_modern', ('token_modern', 'token_par'), 'hu', 'ltr',
            ('szoveg_modern', 'token_modern', 'token_par'),
            'A Károli 1908 helyesírásban és igealakokban modernizált szövege (gépi szabálykészlet, #96); a szavak Strong-párja a Károli 1908-é.'),
-    Biblia('tahot', 'Héber Ószövetség', 'Héber ÓSZ', 'eredeti', 'TAHOT · Strong', 'token_eredeti:H', 'karoli', True, 'he', 'rtl',
+    Biblia('tahot', 'Héber Ószövetség', 'Héber ÓSZ', 'eredeti', 'TAHOT · Strong', 'token_eredeti:H', ('token_eredeti',), 'he', 'rtl',
            ('token_eredeti',),
            'A héber (és arámi) maszoréta szöveg a TAHOT szerint, a Károli-versek kulcsán (a TAHOT kulcsa a Károli-vers). Az előtagok és a szuffixumok a TAHOT-ban külön tokenek; a nyelvtani elemre nem lehet koppintani.'),
-    Biblia('tagnt', 'Görög Újszövetség', 'Görög ÚSZ', 'eredeti', 'TAGNT · Strong', 'token_eredeti:G', 'karoli', True, 'el', 'ltr',
+    Biblia('tagnt', 'Görög Újszövetség', 'Görög ÚSZ', 'eredeti', 'TAGNT · Strong', 'token_eredeti:G', ('token_eredeti',), 'el', 'ltr',
            ('token_eredeti',), 'A görög Újszövetség a TAGNT szerint, a Károli-versek kulcsán.'),
-    Biblia('lxx', 'Septuaginta', 'Septuaginta', 'eredeti', 'görög Ószövetség · Strong', 'lxx_token', 'karoli', True, 'el', 'ltr',
+    Biblia('lxx', 'Septuaginta', 'Septuaginta', 'eredeti', 'görög Ószövetség · Strong', 'lxx_token', ('lxx_token',), 'el', 'ltr',
            ('lxx_token', 'lxx_versszam'),
            'A Septuaginta (lxx-morph) a Károli-versekhez rendelve, a meglévő versmegfeleltetés szerint; ahol az LXX számozása eltér, a vers elején áll. A Károli-vers nélküli LXX-szakasz itt nem jelenik meg.'),
-    Biblia('kjv', 'KJV', 'KJV', 'angol', 'Strong', 'szoveg_kjv', 'karoli', True, 'en', 'ltr', ('szoveg_kjv', 'kjv'),
+    Biblia('kjv', 'KJV', 'KJV', 'angol', 'Strong', 'szoveg_kjv', ('kjv',), 'en', 'ltr', ('szoveg_kjv', 'kjv'),
            'A King James Version (1769) szövege, a Károli-versek kulcsán (a versmegfeleltetés szerint).'),
-    Biblia('bsb', 'BSB', 'BSB', 'angol', 'csak Ószövetség · Strong', 'bsb', 'karoli', True, 'en', 'ltr', ('bsb',),
+    Biblia('bsb', 'BSB', 'BSB', 'angol', 'csak Ószövetség · Strong', 'bsb', ('bsb',), 'en', 'ltr', ('bsb',),
            'A Berean Standard Bible ószövetségi szövege a Strong-táblából (szavanként, írásjel nélkül), a Károli-versek kulcsán; a forrásfájlból (BSB_Strongs.tsv) hiányzik a 2Sám, az Ezsd és a Dán.'),
-    Biblia('targum', 'Targum', 'Targum', 'okori', 'arámi · csak Ószövetség · versenként', 'szoveg_targum', 'forras', False, 'arc', 'rtl',
-           ('szoveg_targum',),
-           'Targum Onkelosz (Tóra) és Targum Jonatán (Próféták), arámi, a Sefaria közkincs változata.'),
-    Biblia('vulgata', 'Vulgata', 'Vulgata', 'okori', 'latin · versenként', 'szoveg_vulgata', 'forras', False, 'la', 'ltr',
-           ('szoveg_vulgata',), 'A Vulgata Clementina (1598), latin, az eBible közkincs változata; a deuterokanonikus könyvek nélkül.'),
 )
 BIBLIA = {b.kod: b for b in BIBLIAK}
 KODOK = tuple(BIBLIA)
@@ -82,16 +77,11 @@ class Tar:
         self._zar = threading.Lock()
 
     def van(self, b):
-        """A Biblia táblái megvannak-e az adatbázisban (és a kiadás nem zárja ki őket)."""
+        """A Biblia választható-e: a szöveg és a Strong-réteg táblái megvannak az adatbázisban, és a kiadás nem zárja ki őket.
+        Strong-réteg nélkül a Biblia nem kerül a választóba."""
         if b.kod == ALAP:
             return True
-        t = b.tabla.split(':')[0]
-        return t in self.kozos.licenc and t not in self.db.kizart
-
-    def strong_is(self, b):
-        if b.kod == 'kjv':
-            return 'kjv' in self.kozos.licenc and 'kjv' not in self.db.kizart
-        return b.strong
+        return all(t in self.kozos.licenc and t not in self.db.kizart for t in (b.tabla.split(':')[0],) + b.strong_tablak)
 
     def fejezetek(self, kod):
         """{kk: [fejezet]} a Biblia elérhető fejezetei ({} ha nincs az adatbázisban)."""
@@ -102,8 +92,6 @@ class Tar:
             if kod not in self._fej:
                 if not self.van(b):
                     self._fej[kod] = {}
-                elif b.szamozas == 'forras':
-                    self._fej[kod] = q.biblia_fejezetek_forras(self.db.kapcsolat(), b.tabla)
                 else:
                     self._fej[kod] = q.biblia_fejezetek_karoli_kulcs(self.db.kapcsolat(), b.tabla)
         return self._fej[kod]
@@ -182,16 +170,11 @@ def _lxx_valaszt(tokenek):
     return [t for t in tokenek if t[0] == forma]
 
 
-def fejezet_versek(con, kozos, b, kk, fej, karoli_versek, karoli_szavak, szofaj_fn, strong_is):
+def fejezet_versek(con, kozos, b, kk, fej, karoli_versek, karoli_szavak, szofaj_fn):
     """A nem Károli 1908-as Biblia fejezetének versei. `karoli_versek`: [(ig, vers, szoveg)] (a Károli-fejezet), `karoli_szavak`:
     a `lekerdezesek.fejezet_szavak` (a modern Károli Strong-párjaihoz), `szofaj_fn`: strongok -> szófaj-térkép."""
     ny = kozos.nyelvtani
     ki = []
-    if b.szamozas == 'forras':
-        for vers, forras_vers, forras_kulcs, szoveg in q.forras_fejezet(con, b.tabla, kk, fej):
-            ki.append({'vers': vers, 'ig': None, 'link': False, 'szavak': [], 'szoveg': szoveg, 'jel': '',
-                       'nincs_karoli': forras_kulcs == 'nem'})
-        return ki
     if b.kod == 'modern':
         szoveg, tok = q.modern_fejezet(con, kk, fej)
         parok_ig = {ig: {sz: parok for sz, _, parok in lista} for ig, lista in karoli_szavak.items()}
@@ -235,7 +218,7 @@ def fejezet_versek(con, kozos, b, kk, fej, karoli_versek, karoli_szavak, szofaj_
             ki.append({'vers': v, 'ig': ig, 'link': True, 'szavak': ws, 'szoveg': '', 'jel': jel})
         return ki
     if b.kod == 'kjv':
-        szoveg, cimke = q.kjv_fejezet(con, kk, fej, strong_is)
+        szoveg, cimke = q.kjv_fejezet(con, kk, fej)
         for ig, v, _ in karoli_versek:
             if ig not in szoveg:
                 continue
@@ -243,7 +226,7 @@ def fejezet_versek(con, kozos, b, kk, fej, karoli_versek, karoli_szavak, szofaj_
             sz = ' '.join(s for _, s in reszek)
             szam = [r[0].split('.', 1)[-1].replace('.', ':') for r in reszek]
             jel = '' if szam == ['%d:%d' % (fej, v)] else 'KJV ' + ', '.join(szam)
-            ws = _kjv_szavak(sz, cimke.get(ig, []), ny) if strong_is else []
+            ws = _kjv_szavak(sz, cimke.get(ig, []), ny)
             ki.append({'vers': v, 'ig': ig, 'link': True, 'szavak': ws, 'szoveg': sz, 'jel': jel})
         return ki
     if b.kod == 'bsb':
