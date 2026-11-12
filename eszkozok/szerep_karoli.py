@@ -323,7 +323,10 @@ def jelolt_dontesek(motivum_id):
     """{igehely: döntés} a `jeloltek.tsv` motívumsoraiból (az utolsó sor a mérvadó)."""
     fej, sorok = _sorok(JELOLTEK)
     i, h, d = fej.index('id'), fej.index('igehely'), fej.index('dontes')
-    return {r[h]: r[d] for r in sorok if len(r) > d and r[i] == motivum_id}
+    t = fej.index('jelolt_tipus') if 'jelolt_tipus' in fej else None
+    # F212 (C6): a kapcsolat-jelölt (igehely-pár) döntése nem a hely döntése
+    return {r[h]: r[d] for r in sorok if len(r) > d and r[i] == motivum_id
+            and not (t is not None and len(r) > t and r[t] == 'kapcsolat')}
 
 
 def _hianyzo(szoveg, kulcsok, tabla=None):

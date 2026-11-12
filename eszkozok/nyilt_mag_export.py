@@ -1219,6 +1219,9 @@ def export(kimenet):
     _, mot = tsv('adat/motivumok.tsv')
     _, elo = tsv('adat/elofordulasok.tsv')
     _, jel = tsv('adat/jeloltek.tsv')
+    # F212 (C6): a kapcsolat-jelölt (motívumon belüli igehely-pár) nem kizárt hely és nem beépítési döntés: a nyílt mag
+    # táblái (kizarasok, beepitesi_dontesek) nem viszik; a beépített pár a kapcsolatok.tsv-ből kerül a magba
+    jel = [j for j in jel if j.get('jelolt_tipus') != 'kapcsolat']
     _, kap = tsv('adat/kapcsolatok.tsv')
     _, mkap = tsv('adat/motivum_kapcsolatok.tsv')
     dforras = dontesek_beolvas()

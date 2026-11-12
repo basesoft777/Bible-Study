@@ -149,7 +149,9 @@ def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, je
         if sor['id'] not in motivum_id_halmaz:
             hibas.append('jeloltek: %s / %s' % (sor['id'], sor['igehely']))
         # DT-F127b: a motívumközi jelölt célmotívuma is létező ID
-        if not G.jelolt_elofordulas_e(sor) and (sor.get('cel_id') or '') not in motivum_id_halmaz:
+        # F212 (C6): a kapcsolat-jelöltnek nincs célmotívuma (a pár a motívumon belül áll)
+        if not G.jelolt_elofordulas_e(sor) and not G.kapcsolat_jelolt_e(sor) \
+                and (sor.get('cel_id') or '') not in motivum_id_halmaz:
             hibas.append('jeloltek (cel_id): %s / %s -> %s' % (sor['id'], sor['igehely'], sor.get('cel_id', '')))
     for sor in auditok:
         if sor['id'] not in motivum_id_halmaz:
@@ -214,14 +216,28 @@ def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir
         return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
     kulcsok = {}
     beepitett_mk = {}
+    beepitett_kapcs, kapcs_motivumok = set(), set()
     for j in jeloltek:
         tipus = j.get('jelolt_tipus', '')
         hely = '%s / %s' % (j['id'], j['igehely'])
         if tipus not in G.JELOLT_TIPUSOK:
             hibas.append('jeloltek: %s -- ismeretlen jelolt_tipus: %r' % (hely, tipus))
             continue
-        k = (j['id'], j['igehely'], tipus, j.get('cel_id', ''))
+        # F212 (C6): a kapcsolat-jelölt kulcsa a cél-igehellyel bővül (egy forrás-helyről több cél)
+        k = (j['id'], j['igehely'], tipus, j.get('cel_igehely', '') if tipus == 'kapcsolat' else j.get('cel_id', ''))
         kulcsok[k] = kulcsok.get(k, 0) + 1
+        if tipus == 'kapcsolat':
+            if j.get('cel_id') or j.get('cel_alpont'):
+                hibas.append('jeloltek: %s -- kapcsolat-jelöltnek nincs cel_id-je és cel_alpont-ja (a pár a '
+                             'motívumon belül áll)' % hely)
+            if len(_igehely_lista(j.get('cel_igehely'))) != 1:
+                hibas.append('jeloltek: %s -- kapcsolat-jelöltnek pontosan egy cel_igehely-e van' % hely)
+            if j.get('dontes') not in DONTES_ERTEKEK:
+                hibas.append('jeloltek: %s -- érvénytelen dontes' % hely)
+            if j.get('dontes') == 'beépítve':
+                beepitett_kapcs.add((j['id'], j['igehely'], j.get('cel_igehely', '')))
+            kapcs_motivumok.add(j['id'])
+            continue
         if tipus == 'elofordulas':
             if j.get('cel_id') or j.get('cel_igehely') or j.get('cel_alpont'):
                 hibas.append('jeloltek: %s -- előfordulás-jelöltnek nem lehet cel_* mezője' % hely)
@@ -241,6 +257,15 @@ def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir
     for k, n in kulcsok.items():
         if n > 1:
             hibas.append('jeloltek: ismétlődő kulcs (%d×): %s' % (n, ' · '.join(k)))
+    # F212 (C6, 2. szabály): ahol a motívumnak kapcsolat-jelöltjei vannak, a `kapcsolatok.tsv` minden sora mögött
+    # beépített kapcsolat-jelölt áll (nincs kapcsolat jelölt-döntés nélkül)
+    kp = os.path.join(adat_dir, 'kapcsolatok.tsv')
+    if kapcs_motivumok and os.path.exists(kp):
+        for r in G.tsv_beolvas(kp)[1]:
+            if r.get('id') in kapcs_motivumok and \
+                    (r['id'], r.get('forras_igehely', ''), r.get('cel_igehely', '')) not in beepitett_kapcs:
+                hibas.append('kapcsolatok: %s %s → %s -- nincs mögötte beépített kapcsolat-jelölt'
+                             % (r['id'], r.get('forras_igehely', ''), r.get('cel_igehely', '')))
 
     mk_path = os.path.join(adat_dir, 'motivum_kapcsolatok.tsv')
     if not os.path.exists(mk_path):
@@ -2213,7 +2238,7 @@ def csak_szo_indoklas(adat_dir):
     tematikus = {(r['id'], r['igehely']) for r in elo if (r.get('gerinc_elem') or '').startswith('tematikus')}
     _, jel = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
     ki = []
-    for r in jel:
+    for r in G.elofordulas_jeloltek(jel):   # F212 (C6): a kapcsolat-jelölt indoklása a pár mérését mondja, nem a helyét
         if r.get('dontes') != 'beépítve' or tipus.get(r['id']) not in ('strukturális', 'fogalmi'):
             continue
         if (r['id'], r['igehely']) in tematikus:

@@ -276,7 +276,14 @@ UJSZOVETSEGI_TOKENEK = ujszovetsegi_tokenek_betolt()
 # eszközök csak az `elofordulas` sorokat látják; a mező HIÁNYA (régi, 9 oszlopos
 # munkalap vagy tesztadat) `elofordulas`-nak számít, az ÜRES érték nem (azt az
 # ellenoriz.py 2/b. szabálya hibának jelzi).
-JELOLT_TIPUSOK = ('elofordulas', 'motivumkozi')
+# F212 (C6, N151, DT759): a `kapcsolat` a motívumon belüli igehely-pár jelöltje (`igehely` → `cel_igehely`, `cel_id`
+# üres); a döntés után a `kapcsolatok.tsv` sora lesz belőle. Nem előfordulás és nem kizárt hely: az előfordulás-
+# jelöltet olvasó eszköz nem látja, a nyílt mag kizárásai nem viszik.
+JELOLT_TIPUSOK = ('elofordulas', 'motivumkozi', 'kapcsolat')
+
+
+def kapcsolat_jelolt_e(sor):
+    return sor.get('jelolt_tipus') == 'kapcsolat'
 
 
 def jelolt_elofordulas_e(sor):

@@ -329,7 +329,7 @@ Kulcs: `forras_igehely` + `cel_igehely` + `id`.
 
 ### 2.4 `jeloltek.tsv` — a kereszthivatkozás-napló gépi alakja
 
-Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`).
+Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`); a `kapcsolat` jelöltnél `cel_id` helyett `cel_igehely` (F212, C6: egy forrás-helyről több cél).
 **Ez a tábla a rendszer legfontosabb szerkezeti javítása.**
 
 A tábla két jelöltfajtát hordoz, és ez az egyetlen kapu mindkettőhöz (2. szabály):
@@ -353,9 +353,9 @@ nem kizárt hely, nem a motívum vizsgált verse, és nem igazol előfordulást.
 | `azonositas_modja` | `AZONOSITAS_MODJA` | | |
 | `megbizhatosag` | `MEGBIZHATOSAG` | | |
 | `datum` | `DATUM` | ✔ | |
-| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277). A #127 előtti 627 sor `elofordulas`. |
-| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. |
-| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). |
+| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277) \| `kapcsolat` (F212, C6, N151, DT759: a motívumon belüli igehely-pár jelöltje — az `igehely` a kapcsolat forrása, a `cel_igehely` a célja, a `cel_id` üres; a `beépítve` jelölt a `kapcsolatok.tsv` sora lesz (2.3), és az `ellenoriz.py` 2/b. szabálya szerint a kapcsolat-jelöltes motívum minden kapcsolat-sora mögött beépített kapcsolat-jelölt áll; a mérés bizonyítékai és a kapcsolat típusa a `dontes_ref`-ben; előfordulást nem igazol, a nyílt mag kizárásai nem viszik; az első 103 sor: a HAMART-001, `naplok/F212_kapcsolat_atkoltoztet.py`). A #127 előtti 627 sor `elofordulas`. |
+| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. A `kapcsolat` jelöltnél üres. |
+| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál és `kapcsolat`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). A `kapcsolat` jelöltnél pontosan egy igehely, a motívum saját helye, és kulcs. |
 | `cel_alpont` | szabad szöveg (a célalpont neve) | | DT277 (C): a kapcsolat célja a másik motívum egy ↳ alpontja. Amíg az alpontnak nincs adatbeli azonosítója, a jelölt `nyitva` marad (az `ellenoriz.py` 2/b. szabálya a `beépítve` + `cel_alpont` párt elutasítja), kapcsolat-sor nem keletkezik belőle. Nem kulcs (DT279). |
 | `dontes_ref` | szabad szöveg (elemei ` · `-tal elválasztva) | | A döntés gépi nyoma (F123.INDOKLAS, 2026-11-04): a döntés-azonosító(k) (`DT476 K2`, `N59`, `F110`), a hivatkozott fájl(ok) (`naplok/…`, `motivumok.tsv folerendelt_fogalom`), az indoklás proveniencia-sora(i) (`scope=… \| forras=… \| ts=…`), a kinyerés gerinc-eleme (`gerinc: H7121`, DT202 (d)). A nyílt adat kutatója ezen át éri el a döntés forrását (kódkönyv: `DONTESEK.md`, `NYITOTT_FELADATOK.md`); a lapon csak a lábjegyzetben jelenik meg. Üres, ha az indoklás nem hivatkozik semmire. A 2026-11-04-i szétválasztás régi → új alakja soronként: `naplok/INDOKLAS_szetvalasztas.md`. Nem kulcs. |
 
