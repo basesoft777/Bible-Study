@@ -54,9 +54,9 @@ UJ = {
         'magyar fordítás itt kiáltásként adja vissza, nem segítségül hívásként.',
         '📣 kiáltás a néven — a formula szerkezete az Úr saját mondatában; a fordítás kiáltásként adja vissza'),
     '2Móz 34:5': (
-        'Az Úr felhőben leszáll, megáll Mózes mellett, „és nevén kiáltá az Urat”. Ez a 2Móz 33:19-ben ígért jelenet; '
-        'a héberben ugyanaz a szerkezet áll, a magyar fordítás itt is kiáltásként adja vissza, és a vers nem mondja '
-        'meg, ki a kiáltó.',
+        'Az Úr felhőben leszáll, „és ott álla ő vele, és nevén kiáltá az Urat”. Ez a 2Móz 33:19-ben ígért jelenet; a '
+        'héberben ugyanaz a szerkezet áll, a magyar fordítás itt is kiáltásként adja vissza, és a vers nem mondja meg, '
+        'ki áll ott és ki a kiáltó.',
         '📣 kiáltás a néven — a 2Móz 33:19-ben ígért jelenetben ugyanaz a szerkezet áll'),
     '1Kir 18:24': (
         'Illés két hívást állít szembe egymással: „hívjátok segítségül a ti istenteknek nevét, és én is segítségül '
@@ -67,7 +67,7 @@ UJ = {
         'Illés felszólítja a Baál prófétáit, hogy készítsék el elsőként a tulkot, „és hívjátok segítségül a ti '
         'istenteknek nevét”. A név után itt nem az Úr neve áll, hanem a „ti istenteknek” neve, a héberben אֱלֹהֵיכֶם '
         '(elóhéchem); a hely ellenpontként tartozik a motívumhoz.',
-        '⚔️ ellenpont — a formula a Baál prófétáinak szájában, az Úr neve nélkül'),
+        '⚔️ ellenpont — Illés a Baál prófétáit a formulával szólítja fel, az Úr neve nélkül'),
     '1Kir 18:26': (
         'A Baál prófétái reggeltől délig „segítségül hívák a Baálnak nevét”, de „nem jött szó, sem felelet”. A '
         'formula szerkezete megvan, a név helyén azonban a Baál neve áll, a héberben הַבַּעַל (habbaal), és a hívásra '
@@ -118,9 +118,9 @@ UJ = {
         '🎯 idézet — Pál a Jóel-ígéretet mindenkire érvényesnek mondja'),
     '1Kor 1:2': (
         'Pál a korinthusi gyülekezetet köszönti, „mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül '
-        'hívják bármely helyen”. A név után itt Jézus Krisztus neve áll, és a segítségül hívók megnevezése a '
-        'gyülekezetet jelöli.',
-        '⛪ a gyülekezet neve — a segítségül hívók Jézus Krisztus nevét hívják'),
+        'hívják bármely helyen”. A név után itt Jézus Krisztus neve áll, és a vers a gyülekezet mellé állítja mindazokat, '
+        'akik őt segítségül hívják.',
+        '⛪ Jézus Krisztus neve — a segítségül hívók Jézus Krisztus nevét hívják, a gyülekezettel együtt'),
 }
 
 KULSO_VERS = {'ApCsel 22:16': None, 'Róm 10:13': None}  # a mondat a szomszédos versre csak hivatkozik, nem idéz
