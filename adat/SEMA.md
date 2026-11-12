@@ -173,6 +173,7 @@ egy külön állítást, nem vonja vissza.
 | `folerendelt_fogalom` | szabad szöveg | ✔ | Az a tágabb kategória, amely felé a motívum hígulni fog (HAMART-001: *a bűn / hamartológia általában*). Minden új sornál egyetlen kérdés: *csak ezen keresztül tartozik ide?* Ha igen, kizárandó. |
 | `sablon_verzio` | `v<N>` vagy `v<N> részleges (érintett: …)` | | A megfelelőségi kör eredménye — l. az F5.2 szabályt. Teljes `v<N>` csak akkor írható, ha az ellenőrzés **minden** szakaszra lefutott. |
 | `forras_study` | fájlút | | Pl. `tematikus_lezart/Rafaim_tematikus.md`. Több érték `;` jellel. |
+| `meghatarozas` | szabad szöveg, 1–2 mondat | | A motívum olvasói meghatározása: mi a motívum, mért állítással; nem a cím, nem az azonosság típusa, és nem a negatív kritérium ismétlése. A lap elején („A motívum.”) és a Kolofon azonosító táblájában („Meghatározás”) áll; üres értéknél a generátor nem ír semmit (a régi lapok nem változnak). Az új szerkezetű lapon kötelező (olvasói kapu MEGHATAROZAS). Lap-javit HAMART-001, a felhasználó: „hiányolom a motívum definíciót”. |
 
 #### 2.1.1 A háromértékű státusz
 
@@ -1997,6 +1998,13 @@ tab és sortörés nem állhat (többsoros szövegrész egy sorba vonva).
 (dátumok); lektorálók: …”. Az N a nem `generátor` típusú sorok száma (a lapon ténylegesen javított helyek), a dátumok és a
 lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rendezve. Sor nélkül a Kolofon nem ír semmit, és a blokk
 forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.
+Az új szerkezetű lapon (HAMART-001-től, a felhasználó döntése, 2026-11-12) e sor helyett kettő áll, ebben a
+sorrendben: elöl „Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett
+helyek javítását ő hagyta jóvá, módosította vagy vetette el (dátumtartomány)” (a `lap_javitasok.tsv` felhasználó által
+jóváhagyott soraiból; a felhasználó: „de ember hagyja jóvá és változtat”), utána „Modell-lektor (<modell>) | N jelzett
+hely (dátum)” — a `/kiadas` lektorának kérdéslistájából (`naplok/KIADAS_<ID>_lektor.md`: a „Lektor:” sor `claude-…`
+neve, a „Lektor kérdései” szakasz számozott tételei). Az „Emberi lektorálás” sor egy későbbi, nevesített emberi
+lektornak marad.
 
 **Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
 átnézi (`lap_atnezesek.tsv`; az érvényesség: 2.48); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.
@@ -2535,6 +2543,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 |---|---|---|
 | `BELSO` | BUKÁS | belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor, gerinc, .tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög szó és a kiejtése — a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / „(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603) |
 | `MOTIVUM_ID` | FIGYELMEZTETÉS | más motívum azonosítója link nélkül |
+| `ONREF` | FIGYELMEZTETÉS | önreferáló „a lap” fordulat az új szerkezetű lap látható szövegében (a lap az oldal önmagára utalva: helyette a valódi alany, a motívum, a vizsgálat, a keresés vagy a szócikk); kivétel a Kolofon és a más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.) |
 | `PONT` | BUKÁS | „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS |
 | `ANGOL` | BUKÁS | angol maradék és munkazsargon a szólistából |
 | `ANGOL_SOR` | FIGYELMEZTETÉS | ≥3 angol funkciószó egy sorban |
@@ -2550,7 +2559,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `KOLOFON` | BUKÁS | hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező |
 | `HIANYJEL` | FIGYELMEZTETÉS | belső hiányjelzés az olvasói cellában („(nincs …)”) |
 | `SZINT_ALATT` | FIGYELMEZTETÉS | üres vagy az arany laphoz mérve szint alatti blokk |
-| `KH_MASOLT` | FIGYELMEZTETÉS | a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a) |
+| `KH_MASOLT` | FIGYELMEZTETÉS | a Károli-KH lista más vers listájának teljes vagy részleges másolata (`karoli_kh_epseg.py`; javítás: N-F156a); az új szerkezetű lapon BUKÁS (lap-javit HAMART-001, lektor 15.) |
 | `LABJEGYZET` | BUKÁS | definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van) |
 | `PROZA_1A` | BUKÁS | az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`) |
 | `CELLA_ISMETLES` | BUKÁS | egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3) |
@@ -2562,6 +2571,8 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `NYERS_JEL` | BUKÁS | nyers mezőnév vagy belső jel az olvasói szövegben, a lábjegyzetben is („proveniencia:”, „igazolas:”, `jelentes_szam`, „sorszám N”, „napló: …”, „(4/b. rész)”, `halo=`, `blokk=`, „lanc ±1”, „csalad H…”, „indoklás (nyers)”, „szónézet: /szo/…”, tW-azonosító `kt/…`, `other/…`, `karoli_szo`, a címszó belső számlálója `_226`); csak az új szerkezetű lapon (F182: A08, A11, A17, KH-lábjegyzet) |
 | `MI_HANG` | BUKÁS | „mi”-hangú (első személyű többes számú) igealak az olvasói szövegben, a Károli-idézeten és a „…” idézeten kívül („átnéztük”, „vizsgáltunk”, „döntöttünk”); csak az új szerkezetű lapon (F182: A07, B07, K12) |
 | `NEVELO` | BUKÁS | „a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új szerkezetű lapon (F182: A06, F4 (c), K48) |
+| `MEGHATAROZAS` | BUKÁS | a lap elején „A motívum.” bekezdés üres, a címet ismétli vagy csak az azonosság típusát mondja, vagy a Kolofonban nincs „Meghatározás” sor; csak az új szerkezetű lapon (lap-javit HAMART-001) |
+| `LISTA_NEVELO` | BUKÁS | lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel) |
 | `KOV_ISM` | BUKÁS | ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10) |
 | `INDOKLAS` | BUKÁS | a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat („érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, K47, K48) |
 | `BDB_OLVASOI` | BUKÁS | a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak az új szerkezetű lapon (F104, F187) |

@@ -37,16 +37,24 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# F178.7: a központi keretezésben (cím, GENERÁLT-fejléc) a lexikon címének helyőrzője áll; a munkanév
-# „Bibliai motívum-kereszthivatkozás lexikon” / „Biblical Motif Cross-Reference Lexicon”. A „PaRDeS-szint” oszlop
-# és a tartalmi említések maradnak (a felhasználó jóváhagyásával, 2026-11-08).
-LEXIKON_CIME = '[A LEXIKON CÍME]'
-LEXIKON_CIME_EN = '[A LEXIKON CÍME]'
+# A központi keretezés (cím, GENERÁLT-fejléc) a lexikon címét, a szerzőt és a közzétételi helyet hordozza. A szerkesztői
+# döntés (2026-11-11): a lexikon címe „Logosz Lexikon”, a szerző Demeter Tamás (ORCID), a nyílt adatmag lefoglalt DOI-ja,
+# a Károli–Strong-adatkészlet DOI-ja, a kanonikus domain logoszlexikon.hu. A „PaRDeS-szint” oszlop és a tartalmi
+# említések maradnak (2026-11-08).
+LEXIKON_CIM_HU = 'Logosz-lexikon'
+LEXIKON_CIM_EN = 'Logosz Lexikon'
+SZERZO = 'Demeter Tamás'
+ORCID = '0009-0005-9254-9731'
+DOI_MAG = '10.5281/zenodo.24141612'
+DOI_KAROLI_STRONG = '10.5281/zenodo.24141884'
+DOMAIN = 'logoszlexikon.hu'
+KANONIKUS_HELY = 'https://doi.org/' + DOI_MAG
+NYERS_HELYORZO = re.compile(r'\[A LEXIKON CÍME\]|\[HELYŐRZŐ[^\]]*\]|<[A-Z_]+_URL>')
 FEJLEC = ('# GENERÁLT: a(z) %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
-          'szerkesztendő; a „#” kezdetű sor megjegyzés.' % LEXIKON_CIME)
+          'szerkesztendő; a „#” kezdetű sor megjegyzés.' % LEXIKON_CIM_HU)
 KOD_FEJLEC = FEJLEC
 FEJLEC_EN = ('# GENERATED: export of the %s open core (CC BY 4.0), generated from the project data — do not '
-             'edit by hand; a line starting with "#" is a comment.' % LEXIKON_CIME_EN)
+             'edit by hand; a line starting with "#" is a comment.' % LEXIKON_CIM_EN)
 
 # F178.6: a szerkesztői döntés olvasói neve. A belső adat nem változik (a `jeloltek.tsv`, a `DONTESEK.md` szövege
 # marad); a csomag minden fájlja az ellenőrző összeg előtt ezen a cserén megy át, magyarul és angolul. A tárolt
@@ -171,7 +179,7 @@ def cimke_bovit(tabla, fej, sorok):
 # export csak kiolvassa. Kulcs: tábla + oszlop + sorkulcs; a fordítás csak akkor kerül a csomagba, ha a tárolt
 # forrás-hash a mai magyar cella hash-e (különben a magyar forrás újabb: a fordítás elavult, a kapu bukik).
 SZABAD = {
-    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom'],
+    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas'],
     'elofordulasok.tsv': ['funkcio'],
     'kizarasok.tsv': ['indoklas', 'korabbi_minosites'],
     'beepitesi_dontesek.tsv': ['indoklas', 'korabbi_minosites'],
@@ -1241,13 +1249,15 @@ def export(kimenet):
     # --- motivumok.tsv
     lezart = feldolgozasi_allapot()
     fej = ['motivum_azonosito', 'cim', 'rovid_cimke', 'tema', 'pardes_szint', 'statusz', 'statusz_datum',
-           'feldolgozasi_allapot', 'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom']
+           'feldolgozasi_allapot', 'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas']
     sorok = [{'motivum_azonosito': m['id'], 'cim': m['cim'], 'rovid_cimke': m['ui_cimke'], 'tema': m['tema'],
               'pardes_szint': m['pardes_szint'], 'statusz': m['statusz'], 'statusz_datum': m['statusz_datum'],
               'feldolgozasi_allapot': lezart.get(m['id'], ALLAPOT_REGI),
               'azonossag_tipusa': m['azonossag_tipusa'],
               'negativ_kriterium': tisztit(m['negativ_kriterium'], dn),
-              'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn)} for m in mot]
+              'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn),
+              # a motívum meghatározása (lap-javit HAMART-001; a felhasználó, 2026-11-11: „Igen, kerüljön be”)
+              'meghatarozas': tisztit(m.get('meghatarozas') or '', dn)} for m in mot]
     fajlok['motivumok.tsv'] = oszlop_tsv(fej, sorok, 'motivumok.tsv')
     stat['motivumok.tsv'] = len(sorok)
 
@@ -1455,7 +1465,7 @@ def export(kimenet):
                            'domen_neve': s['domen'], 'glossza': s['glossza']})
     sd.sort(key=lambda s: (s['strong'], s['szotar'], s['jelentes_azonosito']))
     sd_fej, sd = cimke_bovit('cc_by_sa_reteg/szemantikai_domenek.tsv', sd_fej, sd)
-    sa_fejlec = ('# GENERÁLT: a(z) ' + LEXIKON_CIME + ' nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
+    sa_fejlec = ('# GENERÁLT: a(z) ' + LEXIKON_CIM_HU + ' nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
                  'kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.')
     fajlok['cc_by_sa_reteg/szemantikai_domenek.tsv'] = (
         sa_fejlec + '\n' + '\t'.join(sd_fej) + '\n' +
@@ -1505,7 +1515,7 @@ def export(kimenet):
     # --- OLVASSEL.md
     peldak = olvasasi_peldak(fajlok)
     sorszamok = ''.join('| `%s` | %d |\n' % (k, v) for k, v in sorted(stat.items()))
-    ol = ['# %s — nyílt mag — olvass el' % LEXIKON_CIME, '', FEJLEC, '', '*English version: `README.md`.*', '',
+    ol = ['# %s — nyílt mag — olvass el' % LEXIKON_CIM_HU, '', FEJLEC, '', '*English version: `README.md`.*', '',
           '**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma '
           'külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.', '',
           '**Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, '
@@ -1524,14 +1534,16 @@ def export(kimenet):
           '`ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt '
           'származtatott rétege). Ez a leltár, nem jogi vélemény.', '',
           '## Közzétételi hely', '',
-          'A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). '
-          'A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), '
-          'nem egy fejlesztői tár vagy commit.', '',
+          'A csomag kanonikus közzétételi helye: `' + KANONIKUS_HELY + '` (a nyílt adatmag DOI-ja: ' + DOI_MAG + '). '
+          'A lexikon honlapja: `https://' + DOMAIN + '`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az '
+          'adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A Károli-szöveg Strong-számos '
+          'párosítása külön adatkészlet (DOI: ' + DOI_KAROLI_STRONG + '); nem része ennek a csomagnak.', '',
           '## Idézés és a mesterséges intelligencia használata', '',
+          '**Idézd így:** ' + SZERZO + ' (ORCID: ' + ORCID + '): ' + LEXIKON_CIM_HU + ' — nyílt adatmag. DOI: ' + DOI_MAG +
+          '.', '',
           'A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról '
-          'szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig '
-          'helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a '
-          'lexikont mint önálló művet (minden jog fenntartva).', '',
+          'szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot '
+          '(CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).', '',
           '## Angol réteg', '',
           'A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden '
           'igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és '
@@ -1584,7 +1596,7 @@ def export(kimenet):
     fajlok['OLVASSEL.md'] = '\n'.join(ol)
 
     # --- README.md (az OLVASSEL.md angol megfelelője: ugyanaz a tartalom)
-    re_ = ['# %s — Open Core — Read Me' % LEXIKON_CIME_EN, '', FEJLEC_EN, '',
+    re_ = ['# %s — Open Core — Read Me' % LEXIKON_CIM_EN, '', FEJLEC_EN, '',
            '*Magyar változat: `OLVASSEL.md`.*', '',
            "**Licence:** CC BY 4.0 (the open core's own data and text). The contents of the `cc_by_sa_reteg/` "
            'directory are under a separate licence, CC BY-SA 4.0; see the `OLVASSEL.md` there.', '',
@@ -1606,14 +1618,17 @@ def export(kimenet):
            'the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the '
            "project's closed derived layer). This is an inventory, not a legal opinion.", '',
            '## Place of publication', '',
-           'The canonical place of publication of the package: `<KANONIKUS_FORRAS_URL>` (a placeholder, filled in '
-           'at publication). A version is identified by the release identifier (`RELEASE.txt`: the date of the '
-           'data state and the content hash), not by a development repository or a commit.', '',
+           'The canonical place of publication of the package: `' + KANONIKUS_HELY + '` (the DOI of the open data '
+           'core: ' + DOI_MAG + '). The website of the lexicon: `https://' + DOMAIN + '`. A version is identified by '
+           'the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a '
+           'development repository or a commit. The pairing of the Károli text with Strong numbers is a separate '
+           'dataset (DOI: ' + DOI_KAROLI_STRONG + '); it is not part of this package.', '',
            '## Citation and the use of artificial intelligence', '',
+           '**Cite as:** ' + SZERZO + ' (ORCID: ' + ORCID + '): ' + LEXIKON_CIM_EN + ' — open data core. DOI: ' +
+           DOI_MAG + '.', '',
            'With the release, citation metadata (Citation File Format) and a statement on the use of artificial '
-           'intelligence are provided at the place of publication; their fields to be completed by the author are '
-           'placeholders until publication. The statement separates two layers: the open data core (CC BY 4.0, this '
-           'package) and the lexicon as a separate work (all rights reserved).', '',
+           'intelligence are provided at the place of publication. The statement separates two layers: the open data '
+           'core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).', '',
            '## English layer', '',
            'The column names and values of the package are Hungarian; English parallel columns stand next to them. '
            '**Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book '
@@ -1689,9 +1704,9 @@ def export(kimenet):
     hash_ = hashlib.sha256(fajlok['ELLENORZO_OSSZEG.sha256'].encode('utf-8')).hexdigest()
     datum = max(datumok) if datumok else 'nincs rögzítve'
     fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
-                            'kozzeteteli_hely: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
+                            'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
-                             'publication_place: <KANONIKUS_FORRAS_URL>\n' % (datum, hash_[:16], datum, hash_))
+                             'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
                     'sd_db': len(sd), 'strong_db': len(strongok),

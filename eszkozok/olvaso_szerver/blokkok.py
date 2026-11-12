@@ -792,6 +792,20 @@ def _ref_szam(t):
     return len(bdb_szelet.REF.findall(t or ''))
 
 
+_SOR_VEGI_REF = re.compile(r'\s+(?:\d?[A-Za-z]{1,8}\.?\s+)?\d+:\d+.*$')
+
+
+def _alap_jelentes(alap):
+    """A fejléc alapjelentése a szakasztábla `alap` szövegéből: a közös `bdb_szelet.alap_jelentes`, de a jelentés után álló igehely-hivatkozás
+    előtt levágva (H0559: „ige: kimondani, mondani Gen 3:17; Num …” → „ige: kimondani, mondani”). A levágás itt áll, nem a `bdb_szelet.py`-ban:
+    annak kód-hash-e a generált `adat/bdb_vers_jelentes.tsv` fejében van (F207)."""
+    if alap:
+        fej = re.split(r';| — |\(', alap)[0]                    # a `bdb_szelet.alap_jelentes` első jelentés-sora
+        if _SOR_VEGI_REF.search(fej):
+            alap = _SOR_VEGI_REF.sub('', fej, count=1).strip() + alap[len(fej):]
+    return bdb_szelet.alap_jelentes(alap)
+
+
 def _bdb_bontas(K):
     """A BDB-szócikk tagolása a szakasztáblából (F182, F33; SEMA 2.30): a `bdb_tagolas.szeletelo_alak` fája — ugyanaz a tábla, amelyből
     a 2.29 jelentéspontja (DT726) és a lexikon-generátor 4.2-es kártyája épül (egy szabály, egy hely). A csomópont szövege a magyar bontás
@@ -811,7 +825,7 @@ def _bdb_bontas(K):
         if not appar:
             return None
         return {'appar': appar, 'hu': hu, 'meta': q.bdb_magyar_meta(K.con, forras_strong) if hu else None, 'alias': d['alias'],
-                'alap': bdb_szelet.alap_jelentes(appar['alap']) if hu and appar.get('alap') else None,
+                'alap': _alap_jelentes(appar['alap']) if hu and appar.get('alap') else None,
                 'sorok': sorok, 'cim': cim}
     return K.memo('bdb_bontas', f)
 
@@ -1636,8 +1650,55 @@ def _f_tw(K):
     return q.tw(K.con, K.strong)
 
 
+_MD_LINK_RE = re.compile(r'\[([^\]]*)\]\([^)]*\)')
+_MD_FELKOV_RE = re.compile(r'(\*\*|__)(?=\S)(.+?)(?<=\S)\1')
+_MD_KOV_RE = re.compile(r'(?<![\w*])\*(?=[^\s*])([^*]+?)(?<=[^\s*])\*(?![\w*])')
+
+
+def _md_inline(s):
+    """Soron belüli Markdown (translationWords): a hivatkozás csak a szövegét adja (a rc:// és a ../kt/x.md cél a szó-lapon nem
+    követhető), **x** / __x__ → <strong>, *x* → <em>; minden más escape-elt szöveg."""
+    s = _MD_LINK_RE.sub(lambda m: m.group(1), s)
+    h = str(e(s))
+    h = _MD_FELKOV_RE.sub(lambda m: '<strong>%s</strong>' % m.group(2), h)
+    h = _MD_KOV_RE.sub(lambda m: '<em>%s</em>' % m.group(1), h)
+    return Markup(h)
+
+
+def _md_tw(szoveg, cim=None):
+    """A translationWords-szócikk Markdownja HTML-lé (N-F99a). Az adatban a sortörés szó szerinti perjel+n (két karakter); a
+    fejléc-sorok (#, ##), a `* ` felsorolás és a bekezdések kapnak elemet. Az első, a blokk címével azonos `# cím` sor kimarad
+    (a blokk h4-e már kiírja). Nyers perjel+n, `#` vagy `*` jel a kimenetben nem maradhat."""
+    sorok = (szoveg or '').replace('\\n', '\n').split('\n')
+    ki, lista, elso = [], [], True
+    def lista_zar():
+        if lista:
+            ki.append(Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % x for x in lista))
+            lista.clear()
+    for sor in sorok:
+        t = sor.strip()
+        if not t:
+            lista_zar()
+            continue
+        m = re.match(r'^(#{1,6})\s+(.*)$', t)
+        if m:
+            lista_zar()
+            if elso and len(m.group(1)) == 1 and (cim is None or m.group(2).strip() == (cim or '').strip()):
+                elso = False
+                continue
+            ki.append(Markup('<h5>%s</h5>') % _md_inline(m.group(2)))
+        elif re.match(r'^[*\-]\s+', t):
+            lista.append(_md_inline(re.sub(r'^[*\-]\s+', '', t)))
+        else:
+            lista_zar()
+            ki.append(Markup('<p>%s</p>') % _md_inline(t))
+        elso = False
+    lista_zar()
+    return Markup('<div class="szoveg gordul">%s</div>') % Markup('').join(ki)
+
+
 def _r_tw(d, K):
-    return Markup('').join(Markup('<h4>%s <span class="megj">(%s, %s)</span></h4>') % (cim, kat or '', twid) + _szoveg(sz) for twid, kat, cim, sz in d)
+    return Markup('').join(Markup('<h4>%s <span class="megj">(%s, %s)</span></h4>') % (cim, kat or '', twid) + _md_tw(sz, cim) for twid, kat, cim, sz in d)
 
 
 def _f_nyelvtani(K):

@@ -1,6 +1,6 @@
-# [A LEXIKON CÍME] — nyílt mag — olvass el
+# Logosz-lexikon — nyílt mag — olvass el
 
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 *English version: `README.md`.*
 
@@ -47,7 +47,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 438 |
+| `kodkonyv.tsv` | 440 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 61 |
@@ -61,11 +61,13 @@ A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a
 
 ## Közzétételi hely
 
-A csomag kanonikus közzétételi helye: `<KANONIKUS_FORRAS_URL>` (helyőrző; a közzétételkor töltődik ki). A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit.
+A csomag kanonikus közzétételi helye: `https://doi.org/10.5281/zenodo.24141612` (a nyílt adatmag DOI-ja: 10.5281/zenodo.24141612). A lexikon honlapja: `https://logoszlexikon.hu`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A Károli-szöveg Strong-számos párosítása külön adatkészlet (DOI: 10.5281/zenodo.24141884); nem része ennek a csomagnak.
 
 ## Idézés és a mesterséges intelligencia használata
 
-A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen; a szerző által kitöltendő mezőik a közzétételig helyőrzők. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
+**Idézd így:** Demeter Tamás (ORCID: 0009-0005-9254-9731): Logosz-lexikon — nyílt adatmag. DOI: 10.5281/zenodo.24141612.
+
+A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot (CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).
 
 ## Angol réteg
 

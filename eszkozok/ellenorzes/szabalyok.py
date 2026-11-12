@@ -1468,6 +1468,34 @@ def _e26_definiciok(szoveg, minta):
     return ki
 
 
+def _e26_rossz_helyu_helyorzo_fajlok(base_ref, head_ref):
+    """F201 (DT-F201d): a helyorzos dontes-/nyitott-fajl csak a `dontesek/uj/` es a `nyitott/uj/` mappaban
+    all (vagy a fo fajlokban); mashol (pl. `dontes/uj/`, a `dontesek/` vagy a `nyitott/` gyokere) a
+    szamkiosztas nem olvassa be, es a dontes merge utan nemaan elveszne. HIBA."""
+    ki = []
+    try:
+        nevek = subprocess.check_output(
+            ['git', 'diff', '--name-only', '--diff-filter=AM', '-z', '%s..%s' % (base_ref, head_ref), '--', '*.md'],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace').split('\0')
+    except (subprocess.CalledProcessError, OSError):
+        return ki
+    engedett_fo = set(_E26_FAJL.values())
+    for ut in (n for n in nevek if n):
+        if ut in engedett_fo or ut in _E26_KIZART_FAJL or ut.startswith(
+                ('dontesek/uj/', 'nyitott/uj/', 'konkordancia/', 'generalt_proba/', 'beerkezo/')):
+            continue
+        szoveg = _e26_git_fajl(head_ref, ut)
+        elso = next((s for s in szoveg.splitlines() if s.strip()), '')
+        mappa_hiba = re.match(r'^(?:dontes|dontesek|nyitott)/[^/]+\.md$', ut) or ut.startswith('dontes/')
+        alak_hiba = any(m.match(elso) for m in (_E26_HELYORZO_DEF['DT'], _E26_HELYORZO_DEF['N']))
+        if mappa_hiba or alak_hiba:
+            ki.append(Talalat('E26', SZINT['E26'], ut, 1,
+                              'Helyőrzős döntés- vagy nyitott-tétel fájl rossz helyen: a szamkiosztas csak a '
+                              '`dontesek/uj/` és a `nyitott/uj/` mappát olvassa be, ezért a tétel merge után '
+                              'elveszne. Helye: `dontesek/uj/<ágnév>.md` / `nyitott/uj/<ágnév>.md`.'))
+    return ki
+
+
 def e26_vegleges_szam_agon(base_ref, head_ref, commit_uzenet='', esemeny=''):
     talalatok = []
     if not base_ref or not head_ref or esemeny == 'push':
@@ -1501,6 +1529,7 @@ def e26_vegleges_szam_agon(base_ref, head_ref, commit_uzenet='', esemeny=''):
             szamok = []
         legnagyobb[kulcs] = max(szamok) if szamok else 0
 
+    talalatok.extend(_e26_rossz_helyu_helyorzo_fajlok(base_ref, head_ref))
     try:
         kimenet = subprocess.check_output(
             ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref), '--', '*.md', '*.tsv'],
@@ -2346,7 +2375,7 @@ _E30_AZONOSITO = re.compile(r'\b[A-Za-zÁ-ű]*[A-Z0-9][A-Za-z0-9_\-]*\d[A-Za-z0-
 _E30_SZO = re.compile(r'(?<![\w/\\.\-])([a-z]{3,})(?![\w/\\\-=]|\.\w)')
 _E30_ACC_SZO = re.compile(r'[a-záéíóöőúüű]*[áéíóöőúüű][a-záéíóöőúüű]*')
 E30_GEPI_ELEJE = ('szamkiosztas:',)
-E30_GEPI_RESZ = ('FELADATOK.md frissítés (gép)',)
+E30_GEPI_RESZ = ('FELADATOK.md frissítés (gép)', 'GERINC_TERKEP frissítés (gép)', 'ELOSZURES frissítés (gép)')
 
 
 def e30_gepi_e(uzenet):

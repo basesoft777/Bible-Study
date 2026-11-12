@@ -187,6 +187,19 @@ class E26Teszt(unittest.TestCase):
         t = self._futtat(gy, {'DONTESEK.md': '| DT-F50a | #50 |\n', 'naplo.md': 'l. DT-F50a, DT5, N7\n'})
         self.assertEqual(t, [])
 
+    def test_rossz_helyu_dontes_fajl_hiba(self):
+        # F201 (DT-F201d): a `dontes/uj/` (elirt mappa) es a `dontesek/` gyokere nem olvasodik be
+        for ut in ('dontes/uj/x.md', 'dontesek/x.md', 'nyitott/x.md'):
+            gy = self._repo()
+            sor = ('- **N-F50a -- x**' if ut.startswith('nyitott') else '| DT-F50a | #50 |') + '\n'
+            t = self._futtat(gy, {ut: sor})
+            self.assertTrue(any('rossz helyen' in x.reszlet for x in t), ut)
+
+    def test_helyes_helyu_dontes_fajl_rendben(self):
+        gy = self._repo()
+        t = self._futtat(gy, {'dontesek/uj/x.md': '| DT-F50a | #50 |\n', 'nyitott/uj/x.md': '- **N-F50a -- x**\n'})
+        self.assertEqual(t, [])
+
     def test_vegleges_sor_hiba(self):
         gy = self._repo()
         t = self._futtat(gy, {'DONTESEK.md': '| DT6 | #50 |\n'})

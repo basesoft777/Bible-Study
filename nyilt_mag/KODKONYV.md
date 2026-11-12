@@ -1,6 +1,6 @@
 # Kódkönyv / Codebook
 
-# GENERÁLT: a(z) [A LEXIKON CÍME] nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 
 Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, in Hungarian and English.
 
@@ -1299,6 +1299,20 @@ Az előző oszlop (folerendelt_fogalom) szövegének angol párja: **gépi ford�
 A sor angol párhuzamos mezőinek (`…_en`, szabad szöveg) készítési módja: `gépi fordítás (<modell>)` — a ténylegesen futott modell neve; `…; részben hiányzik` — a sor egyik szabad szöveges mezőjének nincs érvényes fordítása; `nincs fordítás` — egyiknek sincs; üres — a sorban nincs szabad szöveg. A zárt értékek `_en` címkéje nem gépi fordítás, hanem a kódkönyv szerkesztett címkéje.
 
 *How the row’s English parallel fields (`…_en`, free text) were made: `gépi fordítás (<model>)` = machine translation by the model actually run; `…; részben hiányzik` = one free-text field of the row has no valid translation; `nincs fordítás` = none has; empty = the row has no free text. The `_en` labels of closed-vocabulary values are not machine translations but edited codebook labels.*
+
+
+### `meghatarozas`
+
+A motívum olvasói meghatározása egy-két mondatban: mi a motívum. Nem a cím, nem az azonosság típusa, és nem a negatív kritérium; üres, ha a motívumnak még nincs meghatározása.
+
+*The reader-facing definition of the motif in one or two sentences: what the motif is. Not the title, not the identity type and not the exclusion criterion; empty when the motif has no definition yet.*
+
+
+### `meghatarozas_en`
+
+Az előző oszlop (meghatarozas) szövegének angol párja: **gépi fordítás**, a sor `forditas_modja` oszlopa nevezi meg a modellt. A fordítás a magyar szöveg adott változatához tartozik (forrás-hash); ha a magyar szöveg változott, a cella üres, és a `forditas_modja` kimondja a hiányt. Bibliai idézetnél a magyar Károli-szöveg marad, mögötte szögletes zárójelben szó szerinti angol fordítás (nem angol bibliafordítás szövege).
+
+*English counterpart of the text in the preceding column (meghatarozas): a **machine translation**; the row’s `forditas_modja` column names the model. The translation belongs to the given version of the Hungarian text (source hash); if the Hungarian text has changed, the cell is empty and `forditas_modja` states the gap. In a biblical quotation the Hungarian Károli text is kept, followed by a literal English rendering in square brackets (not the text of an English Bible translation).*
 
 
 ### `motivum_azonosito`

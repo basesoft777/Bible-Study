@@ -106,6 +106,54 @@ class Lapnezet(unittest.TestCase):
         self.assertFalse(os.path.exists(os.path.join(N.ROOT, 'x.html')))
 
 
+class Valtozas(unittest.TestCase):
+    def test_csak_a_valtozott_blokkok(self):
+        uj = (MINTA.replace('Első bekezdés.', 'Első bekezdés, javítva.')
+              .replace('- tétel kettő', '- tétel három')
+              .replace('Kizárt.', 'Kizárt.\n\nÚj blokk.'))
+        vl = N.valtozasok(MINTA, uj)
+        self.assertEqual([(v['tipus'], v['jel']) for v in vl],
+                         [('csere', 'Kivonat·1'), ('csere', '1·1'), ('uj', '1/b·2')])
+        self.assertEqual(vl[0]['regi'], 'Első bekezdés.')
+        self.assertEqual(vl[0]['uj'], 'Első bekezdés, javítva.')
+        # törölt blokk
+        self.assertEqual([(v['tipus'], v['regi']) for v in N.valtozasok(MINTA, MINTA.replace('Kizárt.\n', ''))],
+                         [('torolt', 'Kizárt.')])
+        # változatlan lap: nincs találat
+        self.assertEqual(N.valtozasok(MINTA, MINTA), [])
+
+    def test_html_kiemel(self):
+        vl = N.valtozasok(MINTA, MINTA.replace('Első', 'Első <b>'))
+        h = N.valtozas_html('X-001', vl, 'abc', {'commit': 'def'})
+        self.assertIn('<ins>', h)
+        self.assertIn('&lt;b&gt;', h)
+        self.assertNotIn('<b>', h)
+
+    def test_git_alappal(self):
+        # az alap-commit lapja vs. a munkafa, ideiglenes git-repóban
+        import subprocess
+        tmp = tempfile.mkdtemp(prefix='teszt_f209_')
+        try:
+            def g(*a):
+                return subprocess.run(['git', '-C', tmp, '-c', 'user.name=t', '-c', 'user.email=t@t'] + list(a),
+                                      check=True, capture_output=True).stdout.decode('utf-8')
+            os.makedirs(os.path.join(tmp, 'lexikon'))
+            lap = os.path.join(tmp, 'lexikon', 'X-001_TUDOMANYOS.md')
+            g('init', '-q')
+            with open(lap, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(MINTA)
+            g('add', '.')
+            g('commit', '-q', '-m', 'alap')
+            alap = g('rev-parse', 'HEAD').strip()
+            with open(lap, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(MINTA.replace('Második', 'Harmadik'))
+            regi = N._fajl(tmp, 'lexikon/X-001_TUDOMANYOS.md', alap)
+            md, _ = N.betolt('X-001', None, tmp)
+            self.assertEqual([v['jel'] for v in N.valtozasok(regi, md)], ['Kivonat·2'])
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)  # Windowson a csak olvasható git-objektumok miatt
+
+
 def sor(**k):
     r = {'id': 'ISTENTISZT-001', 'hely': 'Kivonat·2', 'tipus': 'próza', 'gond': 'homályos', 'regi': 'a', 'uj': 'b',
          'javasolta': 'claude-opus-5-5', 'jovahagyta': 'felhasználó', 'datum': '2026.11.08',
