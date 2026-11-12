@@ -115,7 +115,7 @@ Column names and values are Hungarian; English parallel columns stand next to th
 ## 9. Licence filtering
 
 The package takes values only from public-domain, CC0 or CC BY 4.0 sources, following the project's licence
-inventory. 24 sources were excluded: those under a non-commercial or GPL licence, those with an unclear
+inventory. 23 sources were excluded: those under a non-commercial or GPL licence, those with an unclear
 licence, and the project's closed derived layers. The list of excluded sources and the reason for each are in
 `ATTRIBUCIO.md` and `forrasok_es_licencek.tsv`. The semantic domains (UBS SDBH/SDGNT), under CC BY-SA 4.0, are in a
 separate directory (`cc_by_sa_reteg/`), because the ShareAlike condition extends to work derived from them; the rest

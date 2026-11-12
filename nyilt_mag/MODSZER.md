@@ -112,7 +112,7 @@ Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok 
 ## 9. Licencszűrés
 
 A csomag csak közkincs, CC0 vagy CC BY 4.0 licencű forrásból vesz át értéket, a projekt licencleltára szerint.
-24 forrást kizártunk: nem kereskedelmi vagy GPL licencűt, tisztázatlan licencűt, és a projekt zárt,
+23 forrást kizártunk: nem kereskedelmi vagy GPL licencűt, tisztázatlan licencűt, és a projekt zárt,
 származtatott rétegeit. A kizárt források listája és oka az `ATTRIBUCIO.md`-ben és a `forrasok_es_licencek.tsv`-ben
 áll. A CC BY-SA 4.0 licencű szemantikai domének (UBS SDBH/SDGNT) külön könyvtárban vannak (`cc_by_sa_reteg/`),
 mert a ShareAlike feltétel a belőlük származó munkára is kiterjed; a csomag többi része ettől független. A leltár
