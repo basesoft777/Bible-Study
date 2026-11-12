@@ -10,7 +10,7 @@ ad: a 2. sablonban igehelyenként hat jelölt blokk (funkció, negatív próba, 
 kovetkezo: "a HAMART-001 1. kiadása (/kiadas, PR #696) merge-e után indul; első lépés az M0 séma-javaslat ⛔"
 munka: folyamat
 olvas: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/KESZ_LAP_KOVETELMENY.md, adat/SEMA.md, adat/jeloltek.tsv, adat/visszhang_tanuk.tsv, adat/visszhang_megfelelok.tsv, adat/vitatott_forrasok.tsv, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/gerinc_kartya.py, eszkozok/forditas_vedelem.py, naplok/F182_jelentes.md]
-ir: [MUNKAMENET.md, adat/SEMA.md, adat/jelentespont_olvasat.tsv, eszkozok/tanulmany_kinyer.py, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, eszkozok/teszt_tanulmany_kinyer.py, eszkozok/szakasz_forditas.py, eszkozok/teszt_szakasz_forditas.py, F205_IGESZAKASZ_ELOKESZITES_BRIEF.md]
+ir: [MUNKAMENET.md, adat/SEMA.md, adat/jelentespont_olvasat.tsv, eszkozok/tanulmany_kinyer.py, eszkozok/teszt_tanulmany_kinyer.py, eszkozok/szakasz_forditas.py, eszkozok/teszt_szakasz_forditas.py, F205_IGESZAKASZ_ELOKESZITES_BRIEF.md]
 fugg: [125]
 ---
 
