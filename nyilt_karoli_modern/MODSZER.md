@@ -1,6 +1,6 @@
 # Módszer — a modernizált Károli és a Strong-összekapcsolás
 
-*Modernizált Károli – Strong · Logosz-lexikon · adatállapot: 2026-11-01 · DOI: 10.5281/zenodo.24141950*
+*Modernizált Károli – Strong · Logosz-lexikon · adatállapot: 2026-11-12 · DOI: 10.5281/zenodo.24141950*
 
 ## 1. Mi ez az adatkészlet
 
@@ -127,4 +127,4 @@ könyvön a régi számot (418 633) is igazolja.
 
 - A párosítás gépi javaslat; a pontossága fent, az ismert hibák az `ISMERT_HIBAK.md`-ben.
 - A modernizálás nem fordítás és nem revízió: a szókincs és a szórend a Károlié.
-- A szövegkörnyezettől függő igealakok egy része bizonytalannak jelölt (2 361 szó).
+- A szövegkörnyezettől függő igealakok egy része bizonytalannak jelölt (2 358 szó).

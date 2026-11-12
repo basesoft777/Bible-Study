@@ -1,6 +1,6 @@
 # Methods — the modernised Károli and the Strong linkage
 
-*Modernised Károli – Strong · Logosz Lexikon · data state: 2026-11-01 · DOI: 10.5281/zenodo.24141950*
+*Modernised Károli – Strong · Logosz Lexikon · data state: 2026-11-12 · DOI: 10.5281/zenodo.24141950*
 
 ## 1. What this dataset is
 
@@ -134,4 +134,4 @@ verifies the earlier figure (418,633) on the 61 books.
 
 - The alignment is a machine proposal; its accuracy is given above, known issues in `KNOWN_ISSUES.md`.
 - The modernisation is neither a new translation nor a revision: vocabulary and word order are Károli's.
-- Some context-dependent verb forms are marked uncertain (2,361 words).
+- Some context-dependent verb forms are marked uncertain (2,358 words).
