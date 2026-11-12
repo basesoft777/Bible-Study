@@ -33,7 +33,7 @@
 | BSB | 244 337 | 244 337 (100%) | 21 424 (az ÓSZ 92,3%-a) | 100% |
 | KJV | 789 255 szó; 348 705 címke | a nem nyelvtani címkék 99,99%-a illeszkedik a szövegbe (310 155 / 310 183) | 31 078 | 31 075 (100%) |
 
-A Károli és a modern Károli tokenarányát a betoldott (fordítói) szavak és a nyelvtani elemek adják; ez a Károli alapnézet szintje. **Részleges, jelezve:** (a) a BSB forrásfájljából (`BSB_Strongs.tsv`) hiányzik a 2Sám, az Ezsd és a Dán (N-F210a); (b) a Septuaginta 383 ÓSZ-versnél nem rendelhető Károli-vershez, és a Károli-vers nélküli LXX-szakaszok nem olvashatók; (c) a KJV Strong-rétege a `nyilvanos` és a `kereskedelmi` kiadásban kizárt: ott a KJV nem jelenik meg (a teljes szöveg Strong nélkül nem kerül be). Ezeken túl nincs részleges lefedettségű szöveg; a lista az orkesztrátor által megnevezett hét szöveg.
+A Károli és a modern Károli tokenarányát a betoldott (fordítói) szavak és a nyelvtani elemek adják; ez a Károli alapnézet szintje. **Részleges, jelezve:** (a) a BSB forrásfájljából (`BSB_Strongs.tsv`) hiányzik a 2Sám, az Ezsd és a Dán (N171); (b) a Septuaginta 383 ÓSZ-versnél nem rendelhető Károli-vershez, és a Károli-vers nélküli LXX-szakaszok nem olvashatók; (c) a KJV Strong-rétege a `nyilvanos` és a `kereskedelmi` kiadásban kizárt: ott a KJV nem jelenik meg (a teljes szöveg Strong nélkül nem kerül be). Ezeken túl nincs részleges lefedettségű szöveg; a lista az orkesztrátor által megnevezett hét szöveg.
 
 ## 3. Építő (`eszkozok/sqlite_epit.py`, `_bibliak`)
 
@@ -62,4 +62,6 @@ A `python eszkozok/teszt_futtat.py` a WSL-ben a saját zárja megszerzése után
 
 ## 7. Zárás
 
-Kész: a bibliaválasztó a mockup szerint, csak szószintű Strong-kapcsolatú szöveggel (Károli 1908, modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB); az építő 3 új táblája; 11 új teszt. Nyitott: N-F210a–c (`nyitott/uj/`), DT-F210a 🟡. ⛔ A merge előtt a felhasználó a böngészőben átnézi; a merge az orkesztrátoré.
+Kész: a bibliaválasztó a mockup szerint, csak szószintű Strong-kapcsolatú szöveggel (Károli 1908, modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB); az építő 3 új táblája; 11 új teszt. Nyitott: N171–c (`nyitott/uj/`), DT811 🟡. ⛔ A merge előtt a felhasználó a böngészőben átnézi; a merge az orkesztrátoré.
+
+**Merge után (2026-11-12).** A felhasználó jóváhagyta („mehet”), a #717 mergelve (33abfd1c); a számkiosztás: DT-F210a → DT811, N-F210a–c → N171–N173. Az átnézés alatt a 9765-ös porton (portproxy → WSL 8765) az F210-példány futott (`~/pardes_f210/pardes.db`). Utána a fő `pardes.db` újraépült a fő checkout építőjével (`python eszkozok/sqlite_epit.py --mod teljes`: 118,8 s, 1110 MB, 108 tábla, `epites_ts` 2026-11-12T15:51:52Z), a fő példány az `indit.sh belso 8765`-tel újraindult (az indító átmásolta az új adatbázist a `~/pardes/pardes.db`-be), és a próba-adatbázis törlődött. A lábléc a 192.168.1.172:9765-ön: `Kiadás: belso · ág: main · commit: 33abfd1c · adatbázis építve: 2026-11-12T15:51:52Z`, figyelmeztetés nélkül; a választóban hét Biblia.

@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-12",
-   "commit": "d882f0a4"
+   "commit": "0fc2c721"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -6837,6 +6837,18 @@
      "🟡"
     ],
     "sor": 796,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT811",
+    "feladat": "#210 OLVASO_BIBLIAVALASZTO (a bibliaválasztó a szerveren; 2026-11-12)",
+    "kerdes": "Hogyan éljen a választott Biblia, és milyen számozással álljanak a nem Károli 1908-as szövegek az olvasóban?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 797,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    }
