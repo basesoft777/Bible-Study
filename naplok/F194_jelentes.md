@@ -89,3 +89,13 @@ A megbízó kérésére a jelentést válaszként adom, a `naplok/ELLENOR_F194.m
 - **Mérés:** `naplok/F194_meres.md` — fő szál 256 030 output-token (18 lépés), subagentek 91 201 (4 futás). A 131 indoklás átírása a HAMART-hoz képest többletmunka; a lektor-összevetéshez a hatókörnek a HAMART-éval (teljes próza, 2 kör) kell egyeznie.
 - **PR:** https://github.com/basesoft777/Bible-Study/pull/709 (draft; a merge az orkesztrátoré).
 - **Döntések a zárás után (a felhasználó, 2026-11-12, az orkesztrátoron át):** a kritérium szövege jóváhagyva, az utolsó, döntés-jegyzet mondata nélkül („Igen, a mondat nélkül”; DT-F194a 🟢). Az E28 és a 129 angol cella: „A 2. fázisban” — a CS3 és a #699 után, egy menetben; a #709 addig draft. A brief `megallt` (F194.14).
+
+## 2. fázis (F194.19–F194.32; 2026-11-12)
+
+**Mi készült:** a main behozása; a teljesség-mérés a mai Strong-halmazzal (új jelöltvers nincs); a lap az új szerkezetben (a HAMART-001 2. kiadásának mintája), a 9. szakasz ószövetségi táblázatával (DT-F194h); a próza nulláról, egy kézből (`motivumok/ISTENTISZT-001.md`, a 20 1/a-sor); a BDB rokon nyelvi sorok két kézzel; a „Jahve” a generátorban és a pontozatlan rokon alak átírás nélkül (a HAMART-001 három sora, `adat/lap_javitasok.tsv`); az 1. kiadás sorának olvasói átírása. Kapuk: olvasói kapu 0 BUKÁS (a HAMART-mércéhez igazítva: ONREF 0), állítás-ellenőrzés ELTÉR 0, 1/a 20/20.
+
+**Ellenőrzés:** kézi állítás-tételek (Sonnet, 54 tétel, 9 HIBA, javítva); lektor (Fable, a teljes értelmező próza, 22 tétel, 3 súlyos; egy javítókör, `naplok/KIADAS_ISTENTISZT-001_lektor_2kiadas.md`); független ellenőr (Opus, `naplok/ELLENOR_F194_2.md`, ELTÉRÉS: 10; egy javítókör F194.31–32: 1., 2., 3., 5., 7., 8., 9., 10. javítva, 4. a brief a 2. fázishoz igazítva, 6. N-F194i).
+
+**Mérés (a 2. fázis, `naplok/F194_meres.md` 20–26. lépés és S7–S10):** a fő szál output 281 996, input 668, cache-olvasás 191 363 846, cache-írás 807 945, 323 üzenet; a subagentek (S7–S10) output 188 904, input 602, cache-olvasás 63 032 818, cache-írás 811 128, 299 üzenet. A legnagyobb tétel a próza és a generátor-igazítás (22. lépés: output 102 680) és a független ellenőr (S10: output 108 397). A HAMART-hoz képest többletmunka a 2. fázisban: a generátor szópárra igazítása (DT-F194h, két kapu), a régi forrás- és indoklásminták olvasói leképezése, és a régi szerkezetet mintának használó tesztek átkötése. A lektor hatóköre a HAMART-éval egyezik (a teljes értelmező próza).
+
+**Vár:** N-F194h (a lap elején álló, jóváhagyott kritérium és meghatározás három pontja) a felhasználó döntésére; a 2. kiadás `kiadasok.tsv`-sora a felhasználó lapátnézése után.

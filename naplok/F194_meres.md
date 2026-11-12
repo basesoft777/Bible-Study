@@ -37,8 +37,17 @@
 | 17 | F194.10–11: a jelentés mentése, javítókör (8 tétel), Glossa/SBLGNT, a mérés zárása | 11-12 09:24–09:31 | 27 403 | 54 | 6 230 794 | 50 004 | 26 | 15 / 3 (261 mérése, ujjlenyomat, Glossa) | 11 ellenőri tétel | — |
 | 18 | F194.15: a main behozása (5 generált ütközés), a kritérium és a meghatározás a `motivumok.tsv`-ben, a fordítás újramérése; a 2. adag felmérése és első keze (LXX, Glossa) | 11-12 13:38–13:46 | 29 703 | 78 | 5 350 110 | 124 568 | 39 | 12 / 3 (sorösszevetés, export, fordítási lista) | 1 merge; 2 mező; 14 LXX-sor; 15 Glossa-hely | — |
 | 19 | F194.16: a második kéz alatt N-F194f/g, javítókör (3 megjegyzés), beolvasás, generált nézetek, napló | 11-12 13:46–13:53 | 15 453 | 42 | 3 748 731 | 28 127 | 19 | 8 / 2 (`ellenoriz`, Glossa-kulcsok) | 14 LXX-sor; 1 elvetett tanújelölt | — |
+| 20 | F194.19–21: a main behozása, a teljesség-mérés a mai halmazzal, a lap az új szerkezetben (két szópár-kapu, teszt), a függési kör | 11-12 19:24–19:47 | 42 294 | 152 | 23 881 929 | 340 398 | 73 | — | 3 háló; 1 lap; 2 kapu | — |
+| 21 | F194.22: a 9. szakasz ószövetségi táblázata szópárra (DT-F194h), teszt | 11-12 19:47–19:55 | 21 434 | 50 | 10 058 786 | 38 612 | 24 | — | 1 generátor-ág; 16 vers | — |
+| 22 | F194.23–25: a generátor HAMART-kapcsolói és olvasói leképezése, a BDB rokon nyelvi sorok (2. kéz), a próza nulláról és a 20 1/a-sor | 11-12 19:55–20:20 | 102 680 | 180 | 52 995 818 | 231 545 | 90 | — | 20 1/a-sor; 4 értelmező rés; 7 bdb-sor | — |
+| 23 | F194.26–28: Jahve, pontozatlan rokon alak, a HAMART 3 sora, az 1. kiadás-sor, a kézi állítás-tételek javítása | 11-12 20:20–20:33 | 33 665 | 88 | 29 815 610 | 52 500 | 43 | — | 54 kézi tétel (9 HIBA) | — |
+| 24 | F194.29–30: a szabály-tesztek, a lektor, a javítókör (22 tétel) | 11-12 20:33–20:50 | 39 990 | 78 | 26 927 274 | 70 814 | 36 | — | 22 lektori tétel | — |
+| 25 | A független ellenőr futása alatt; F194.31 (a javítókör 1. része) | 11-12 20:50–21:28 | 17 952 | 40 | 14 681 268 | 34 416 | 18 | — | 10 ellenőri tétel | — |
+| 26 | F194.32: az ellenőr maradék hat eltérése, a brief, a mérés (a keret-szünet után) | 11-12 21:28– (a mérés zárásáig) | 23 981 | 80 | 33 003 161 | 39 660 | 39 | — | 6 ellenőri tétel | — |
 
-**Összesen (fő szál, 0–19):** output 301 186, input 606, cache-olvasás 78 373 521, cache-írás 1 120 167, 290 üzenet. *A 19. lépés után a helyi CI, a commit és a push nincs mérve.*
+**Összesen (fő szál, 0–19, 1. fázis):** output 301 186, input 606, cache-olvasás 78 373 521, cache-írás 1 120 167, 290 üzenet.
+
+**Összesen (fő szál, 20–26, 2. fázis):** output 281 996, input 668, cache-olvasás 191 363 846, cache-írás 807 945, 323 üzenet. *A 2. fázis ablakait a commitok ideje határolja; a 26. lépés a mérés zárásáig tart, a végső main-behozás, a nyílt mag exportja, a helyi CI és a push nincs mérve. A 25. és a 26. lépés között a session a keret elfogyása miatt állt.*
 
 ## Subagentek
 
@@ -50,8 +59,12 @@
 | S4 | Független ellenőr (`fuggetlen-ellenor`), teljes szint, 99da7c34..20cc4c15 | claude-opus-5-5 | 11-12 09:06–09:24 | 58 265 | 162 | 10 213 080 | 202 572 | 81 | 13 commit; 11 eltérés |
 | S5 | Második kéz, 2. adag: 14 LXX-sor, 1 Glossa-tanújelölt, a Glossa-nyom | claude-sonnet-5-5 | 11-12 13:46–13:50 | 26 936 | 38 | 1 724 171 | 121 424 | 19 | 15 sor (3 + 1 elvetve) |
 | S6 | Második kéz, 2. adag javítóköre: 3 LXX-sor | claude-sonnet-5-5 | 11-12 13:51 | 2 437 | 8 | 371 133 | 6 118 | 3 | 3 sor |
+| S7 | BDB rokon nyelv, első kéz (H7121), javítókörrel | claude-sonnet-5-5 | 11-12 20:07–20:09 | 5 334 | 24 | 717 561 | 85 666 | 10 | 7 sor |
+| S8 | Állítás-ellenőrzés, kézi tételek (K1–K54) | claude-sonnet-5-5 | 11-12 20:20–20:29 | 45 234 | 66 | 5 394 273 | 228 429 | 33 | 54 tétel |
+| S9 | Lektor (`lektor`), a teljes értelmező próza | claude-fable-5-2 | 11-12 20:38–20:43 | 29 939 | 18 | 768 848 | 174 583 | 9 | 22 tétel |
+| S10 | Független ellenőr (`fuggetlen-ellenor`), efefb910..2ae45dae | claude-opus-5-5 | 11-12 20:49–21:19 | 108 397 | 494 | 56 152 136 | 322 450 | 247 | 12 commit; 10 eltérés |
 
-**Összesen (subagentek):** output 120 574, input 254, cache-olvasás 14 190 566, cache-írás 536 232, 125 üzenet.
+**Összesen (subagentek, S1–S6, 1. fázis):** output 120 574, input 254, cache-olvasás 14 190 566, cache-írás 536 232, 125 üzenet. **S7–S10 (2. fázis):** output 188 904, input 602, cache-olvasás 63 032 818, cache-írás 811 128, 299 üzenet.
 
 **Megjegyzés a 2. lépéshez:** a jelöltindoklások olvasói átírása (131 sor, ebből 94 sértette a kapu-szabályokat) **többletmunka, amely a HAMART-nál ebben a fázisban nem volt**: a HAMART indoklásait a #182 javító menete hozta olvasói alakra (F182.33, F182.53). Arányosításnál ezt az egységet külön kell számolni.
 

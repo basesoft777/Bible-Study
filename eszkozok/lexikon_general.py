@@ -496,7 +496,7 @@ OLVASOI_SABLON = {
                   'ez a rész üres; a szótári anyag a másik nyelv szavainál áll.',
     'nyelvfuggetlen': 'A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar '
                       'szavai, és a rejtett vagy hamis párhuzamok.',
-    'rokon': 'A motívum szavaival rokon, a lapon hivatkozott szavak (%(szavak)s) szótári anyaga.',
+    'rokon': 'A motívum szavaival rokon, a szócikkben hivatkozott szavak (%(szavak)s) szótári anyaga.',   # F194.32
 }
 # A rések (kézi vagy adatból generált) olvasói bevezetője: a generátor írja a rés címe alá (ISTENTISZT-001 arany lap, 2026-10-29); a rés törzse
 # (a kézi próza) változatlan.
@@ -7846,6 +7846,11 @@ OLVASOI_FORRASNEV = (
     (r'TBESG\.txt', 'a', 'STEPBible görög rövid szótára (TBESG)'),
     (r'forditasok\.tsv', 'a', 'lexikon fordítástáblája'),
     (r'lexikon_hivatkozasok\.tsv', 'a', 'lexikon szótári hivatkozástáblája'),
+    # F194.32 (a független ellenőr 7. tétele): az ISTENTISZT-001 forrásfájljai a „lap adattáblája/generátora” helyett
+    (r'(?:konkordancia/)?LSJ_teljes\.tsv', 'az', 'LSJ-szótár'),
+    (r'(?:konkordancia/)?LXX_OS/[a-z0-9-]+\.tsv', 'a', 'Septuaginta szövege'),
+    (r'(?:eszkozok/)?lekerdez\.py', 'a', 'szókereső eszköz'),
+    (r'naplok/F126_lefedetlen\.py', 'a', 'lefedettségi mérés szkriptje'),
     (r'tematikus_temak\.tsv', 'a', 'tematikus index döntései'),
     (r'nave_tema_hu\.tsv', 'a', 'Nave-témák magyar nevei'),
     (r'Nave_\w+\.tsv', '', 'Nave tárgymutatója (1897)'),
