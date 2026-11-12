@@ -6,10 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: lezarva
 pr: 707
+lezarva_osszegzes: "PR #707 (F174.1–9): nyilt_karoli_modern/ (598 715 pár, 488 659 Strongos token, kapu 0 BUKÁS, bájtazonos), MODSZER/METHODS, közlemény hu/en; a szövegek szerkesztői jóváhagyással (2026-11-12); a 3 E/1 → T/3 hiba a forrásnál javítva (F174.8); jelentés: naplok/F174_jelentes.md"
 ad: a modernizált Károli (#96) és a hozzá vetített Strong-párok CC BY 4.0 alatt közölhető nyílt magja (nyilt_karoli_modern/), MODSZER.md-vel, saját kapuval, és a modernizálás módszerének közlemény-szövege (hu/en)
-kovetkezo: "Te (⛔ 4. lépés): a MODSZER.md/METHODS.md és a kozlemeny/ hu/en tervezetének átnézése a draft PR-ban; utána merge, majd a Zenodo-feltöltés (DOI 10.5281/zenodo.24141950) a te lépésed; előtte az N-F174a (licencek.tsv sor)"
+kovetkezo: "lezárva; a Zenodo-feltöltés (DOI 10.5281/zenodo.24141950) a felhasználó lépése; előtte a `licencek.tsv` N-F174a sora"
 olvas: [adat/karoli_modern/, adat/karoli_strong/, naplok/KAROLI_MODERN_zaras.md, naplok/KAROLI_MODERN_meres.md, naplok/ELLENOR_F96.md, naplok/ELLENOR_F96_2.md, naplok/ELLENOR_F96_3.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_modern/, adat/SEMA.md, adat/licencek.tsv, F96_KAROLI_MODERN_BRIEF.md, F137_KAROLI_MODERN_DB_BRIEF.md, F162_NYILT_MAG_BRIEF.md, DONTESEK.md, NYITOTT_FELADATOK.md]
 ir: [nyilt_karoli_modern/, eszkozok/karoli_modern_export.py, eszkozok/karoli_modern_kapu.py, eszkozok/teszt_karoli_modern_export.py, eszkozok/karoli_modern/igealak.py, eszkozok/karoli_modern/karoli_modern.py, adat/karoli_modern/]
 fugg: [96, 172]
