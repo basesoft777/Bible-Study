@@ -16,7 +16,8 @@ module. Rare and doubtful verb forms were reviewed by language models, blind, in
 at least two independent proposals agreed and the stem check let it through. An independent reviewer examined the text
 in four rounds. On the reviewer's fresh 100-verse sample 0 of the 92 verb-form replacements
 were wrong (95% upper bound of the error rate 4.0%), and 0 of the 230 replacements
-in the spelling sample; the 102-item check set for bare "a mi" had 1 error. On the same fresh sample
+in the spelling sample, and 0 of the 216 replacements in
+the second, 140-verse verb-form sample; the 102-item check set for bare "a mi" had 1 error. On the same fresh sample
 94.8% of archaic verb forms were modernised (92 replacements, 5 misses; 95%:
 88.5–97.8%), which projects to about 1,560 verb forms left archaic in the whole text (95% band about
 500–3,600). The remaining errors are named in the published list of known issues.

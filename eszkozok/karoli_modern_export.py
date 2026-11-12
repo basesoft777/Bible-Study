@@ -77,6 +77,7 @@ FEJLEC_HU = ('# GENERÁLT: a(z) %s – %s nyílt magjának exportja (CC BY 4.0),
 FEJLEC_EN = ('# GENERATED: export of the %s – %s open core (CC BY 4.0), generated from the project data — do not '
              'edit by hand; a line starting with "#" is a comment.' % (LEXIKON_EN, CIM_EN))
 STEP_ATTRIB = ('Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)')
+K96_NELKUL = ('Mt', 'Mk', 'Luk', 'Ján', 'ApCsel')   # a #96 lezárásakor még nem párosított könyvek
 MORFEMA_RX = re.compile(r'^H90(0[1-9]|[1-4]\d)$')       # H9001–H9049: a TAHOT előtag-/rag-morfémái
 
 
@@ -274,6 +275,11 @@ def szamok(modern, konyvek, par_db, allapot, versek):
     N['minta2_hiba_w'] = wilson(N['minta2_hiba'], N['minta2_csere'])
     N['hminta_hiba_w'] = wilson(N['hminta_ossz'] - N['hminta_jo'], N['hminta_ossz'])
     N['ami_hiba'] = N['ami_ossz'] - N['ami_jo']
+    # a #96 lezárásakor párosított könyvek (az ÚSZ öt könyve később készült; a kapu ugyanezt méri)
+    N['strongos_61'] = sum(1 for k, a in allapot.items()
+                           if a['allapot'] == 'parositva' and k[0].rsplit(' ', 1)[0] not in K96_NELKUL)
+    N['konyv_61'] = N['konyv'] - len(K96_NELKUL)
+    N['konyv_uj'] = len(K96_NELKUL)
     N['hminta_ossz_hiba'] = N['hminta_ossz'] - N['hminta_jo']
     # a párosítás pontossága (#172)
     o = _f172(F172_MERES, 'cimke', 'OSSZES (súlyozott)')
@@ -332,6 +338,8 @@ def fmt(N, nyelv):
     F['lef_p'] = N['lef_p'] if nyelv == 'hu' else N['lef_p'].replace(',', '.')
     F['ami_p'] = N['ami_p'] if nyelv == 'hu' else N['ami_p'].replace(',', '.')
     F['doi'] = DOI
+    F['uj_konyvek_hu'] = 'Máté, Márk, Lukács, János, Apostolok cselekedetei'
+    F['uj_konyvek_en'] = 'Matthew, Mark, Luke, John, Acts'
     F['doi_ks'] = DOI_KAROLI_STRONG
     F['doi_mag'] = DOI_MAG
     F['lex_hu'] = LEXIKON_HU
@@ -587,8 +595,7 @@ körben, vakon (a modell a szabály jelöltjét nem látta):
 A modell válasza önmagában semmit nem írt át. Csere ott történt, ahol legalább két jelölt (a szabály, az első és a
 második modell) egyezett, és a tőellenőrzés átengedte: a modern alak egyetlen szó, és megtartja a régi alak
 igekötőjét és igetövét, így a modell nem cserélhette másik szóra. Ahol nem volt egyezés, a szó változatlan
-maradt. A modellek előfizetésből futottak (Claude Code), a felhasznált token a hívásnaplók szerint: az első
-modell {llm_sonnet_m}, a második {llm_opus_m}.
+maradt. A felhasznált token a hívásnaplók szerint: az első modell {llm_sonnet_m}, a második {llm_opus_m}.
 
 Néhány alak kézi kivétellistába került, ahol a szabály vagy a szótári tábla hibás alakot adott volna (*gyűl-*,
 *dűl-* marad; *érte* névutós névmás, nem ige).
@@ -641,7 +648,13 @@ A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy f
 A modern szöveg és a párosítás összekapcsolása kulcs szerinti illesztés: a vers és a szó sorszáma. Új pár nem
 keletkezik, és egy sem vész el. Gépi kapu igazolja: mind a {par} pár átkerült, mind a {strongos_token} párosított
 szó kulcsa megvan a modern táblában, azonos 1908-as alakkal; minden modern szó szerepel; a csomag újragenerálva
-bájtra azonos. A betoldott ({betoldas}) és a függőben lévő ({fuggoben}) szónak nincs párja.
+bájtra azonos. A betoldott ({betoldas}) és a függőben lévő ({fuggoben}) szónak nincs párja; a három szám összege a
+szöveg {token} szava.
+
+A modernizálás lezárásakor a párosítás még {konyv_61} könyvön állt: ezeken {strongos_61} párosított szó volt, és mind
+illeszkedett a modern szöveghez. Azóta elkészült a további {konyv_uj} könyv ({uj_konyvek_hu}) párosítása; a modern
+szöveg ezeken is szóról szóra illeszkedik. Ezért áll itt {strongos_token} párosított szó; a kapu a {konyv_61}
+könyvön a régi számot ({strongos_61}) is igazolja.
 
 ## 7. Korlátok
 
@@ -717,8 +730,7 @@ For rare and unmarked archaic forms the rule only proposes a candidate. These we
 A model's answer on its own changed nothing. A replacement was made where at least two candidates (the rule, the first
 and the second model) agreed and the stem check passed: the modern form is a single word and keeps the verbal prefix
 and stem of the old form, so the model could not substitute another word. Where there was no agreement, the word
-stayed unchanged. The models ran on a subscription (Claude Code); tokens used according to the call logs: first model
-{llm_sonnet_m}, second model {llm_opus_m}.
+stayed unchanged. Tokens used according to the call logs: first model {llm_sonnet_m}, second model {llm_opus_m}.
 
 Some forms went into a manual exception list where the rule or the dictionary table would have produced a wrong form
 (*gyűl-*, *dűl-* stay; *érte* is a pronoun with postposition, not a verb).
@@ -775,7 +787,13 @@ with Strong's numbers:
 Linking the modern text and the alignment is a join on the key: verse and word position. No pair is created and none
 is lost. An automatic gate verifies that all {par} pairs were carried over, that the key of all {strongos_token}
 aligned words is in the modern table with the same 1908 form, that every modern word is present, and that the package
-regenerates byte for byte. Added ({betoldas}) and pending ({fuggoben}) words have no pair.
+regenerates byte for byte. Added ({betoldas}) and pending ({fuggoben}) words have no pair; the three numbers add up to
+the {token} words of the text.
+
+When the modernisation was completed, the alignment covered {konyv_61} books: they had {strongos_61} aligned words, all
+of which matched the modern text. Since then the remaining {konyv_uj} books ({uj_konyvek_en}) have been aligned, and
+the modern text matches them word for word as well. Hence the {strongos_token} aligned words here; the gate also
+verifies the earlier figure ({strongos_61}) on the {konyv_61} books.
 
 ## 7. Limitations
 
@@ -920,8 +938,8 @@ módszertani leírásban olvasható. A szöveg {vers} versében {valtozo_vers} v
 és kétes igealakokat nyelvi modellek nézték át, vakon, öt körben; egy alak csak ott változott, ahol legalább két
 független javaslat egyezett, és a szótő ellenőrzése átengedte. A szöveget független ellenőr négy körben vizsgálta. Az ő
 friss, {ell_vers} verses mintáján a {lef_csere} igealak-cseréből {ell_hiba} volt hibás (a hibaarány
-95%-os felső határa {ell_hiba_w_f}%), a helyesírási minta {hminta_ossz} cseréjéből szintén {hminta_ossz_hiba}; a
-puszta „a mi” {ami_ossz} elemes ellenőrző halmazán {ami_hiba} hiba volt. Ugyanezen a friss mintán a régies igealakok
+95%-os felső határa {ell_hiba_w_f}%), a helyesírási minta {hminta_ossz} cseréjéből szintén {hminta_ossz_hiba}, a második, {minta2_vers} verses igealak-minta
+{minta2_csere} cseréjéből szintén {minta2_hiba}; a puszta „a mi” {ami_ossz} elemes ellenőrző halmazán {ami_hiba} hiba volt. Ugyanezen a friss mintán a régies igealakok
 {lef_p}%-a lett modern ({lef_csere} csere, {lef_kihagyas} kihagyás; 95%: {lef_w_a}–{lef_w_f}%); ebből a teljes
 szövegben kb. {korp} régies alakban maradt igealak becsülhető (95%-os sáv kb. {korp_a}–{korp_f}). A maradék ismert
 hibákat a közölt ismert-hibák lista meg is nevezi.
@@ -957,7 +975,8 @@ module. Rare and doubtful verb forms were reviewed by language models, blind, in
 at least two independent proposals agreed and the stem check let it through. An independent reviewer examined the text
 in four rounds. On the reviewer's fresh {ell_vers}-verse sample {ell_hiba} of the {lef_csere} verb-form replacements
 were wrong (95% upper bound of the error rate {ell_hiba_w_f}%), and {hminta_ossz_hiba} of the {hminta_ossz} replacements
-in the spelling sample; the {ami_ossz}-item check set for bare "a mi" had {ami_hiba} error. On the same fresh sample
+in the spelling sample, and {minta2_hiba} of the {minta2_csere} replacements in
+the second, {minta2_vers}-verse verb-form sample; the {ami_ossz}-item check set for bare "a mi" had {ami_hiba} error. On the same fresh sample
 {lef_p}% of archaic verb forms were modernised ({lef_csere} replacements, {lef_kihagyas} misses; 95%:
 {lef_w_a}–{lef_w_f}%), which projects to about {korp} verb forms left archaic in the whole text (95% band about
 {korp_a}–{korp_f}). The remaining errors are named in the published list of known issues.

@@ -49,7 +49,7 @@ import karoli_modern_export as E  # noqa: E402
 GYOKER = E.GYOKER
 BUKAS, FIGYELEM, OK = 'BUKÁS', 'FIGYELEM', 'OK'
 K3B_96 = 418633                                   # naplok/KAROLI_MODERN_zaras.md: a #96 zárásakor, 61 könyv
-K3B_96_NELKUL = {'Mt', 'Mk', 'Luk', 'Ján', 'ApCsel'}  # a #96 zárásakor még nem párosított könyvek
+K3B_96_NELKUL = set(E.K96_NELKUL)                 # a #96 zárásakor még nem párosított könyvek
 
 Talalat = collections.namedtuple('Talalat', 'azon suly uzenet')
 

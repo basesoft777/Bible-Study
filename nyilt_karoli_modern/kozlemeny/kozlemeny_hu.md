@@ -15,8 +15,8 @@ módszertani leírásban olvasható. A szöveg 31 158 versében 21 636 vers v�
 és kétes igealakokat nyelvi modellek nézték át, vakon, öt körben; egy alak csak ott változott, ahol legalább két
 független javaslat egyezett, és a szótő ellenőrzése átengedte. A szöveget független ellenőr négy körben vizsgálta. Az ő
 friss, 100 verses mintáján a 92 igealak-cseréből 0 volt hibás (a hibaarány
-95%-os felső határa 4,0%), a helyesírási minta 230 cseréjéből szintén 0; a
-puszta „a mi” 102 elemes ellenőrző halmazán 1 hiba volt. Ugyanezen a friss mintán a régies igealakok
+95%-os felső határa 4,0%), a helyesírási minta 230 cseréjéből szintén 0, a második, 140 verses igealak-minta
+216 cseréjéből szintén 0; a puszta „a mi” 102 elemes ellenőrző halmazán 1 hiba volt. Ugyanezen a friss mintán a régies igealakok
 94,8%-a lett modern (92 csere, 5 kihagyás; 95%: 88,5–97,8%); ebből a teljes
 szövegben kb. 1 560 régies alakban maradt igealak becsülhető (95%-os sáv kb. 500–3 600). A maradék ismert
 hibákat a közölt ismert-hibák lista meg is nevezi.

@@ -62,8 +62,7 @@ körben, vakon (a modell a szabály jelöltjét nem látta):
 A modell válasza önmagában semmit nem írt át. Csere ott történt, ahol legalább két jelölt (a szabály, az első és a
 második modell) egyezett, és a tőellenőrzés átengedte: a modern alak egyetlen szó, és megtartja a régi alak
 igekötőjét és igetövét, így a modell nem cserélhette másik szóra. Ahol nem volt egyezés, a szó változatlan
-maradt. A modellek előfizetésből futottak (Claude Code), a felhasznált token a hívásnaplók szerint: az első
-modell 1,42 M, a második 1,48 M.
+maradt. A felhasznált token a hívásnaplók szerint: az első modell 1,42 M, a második 1,48 M.
 
 Néhány alak kézi kivétellistába került, ahol a szabály vagy a szótári tábla hibás alakot adott volna (*gyűl-*,
 *dűl-* marad; *érte* névutós névmás, nem ige).
@@ -116,7 +115,13 @@ A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy f
 A modern szöveg és a párosítás összekapcsolása kulcs szerinti illesztés: a vers és a szó sorszáma. Új pár nem
 keletkezik, és egy sem vész el. Gépi kapu igazolja: mind a 598 715 pár átkerült, mind a 488 659 párosított
 szó kulcsa megvan a modern táblában, azonos 1908-as alakkal; minden modern szó szerepel; a csomag újragenerálva
-bájtra azonos. A betoldott (109 914) és a függőben lévő (794) szónak nincs párja.
+bájtra azonos. A betoldott (109 914) és a függőben lévő (794) szónak nincs párja; a három szám összege a
+szöveg 599 367 szava.
+
+A modernizálás lezárásakor a párosítás még 61 könyvön állt: ezeken 418 633 párosított szó volt, és mind
+illeszkedett a modern szöveghez. Azóta elkészült a további 5 könyv (Máté, Márk, Lukács, János, Apostolok cselekedetei) párosítása; a modern
+szöveg ezeken is szóról szóra illeszkedik. Ezért áll itt 488 659 párosított szó; a kapu a 61
+könyvön a régi számot (418 633) is igazolja.
 
 ## 7. Korlátok
 

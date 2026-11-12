@@ -65,8 +65,7 @@ For rare and unmarked archaic forms the rule only proposes a candidate. These we
 A model's answer on its own changed nothing. A replacement was made where at least two candidates (the rule, the first
 and the second model) agreed and the stem check passed: the modern form is a single word and keeps the verbal prefix
 and stem of the old form, so the model could not substitute another word. Where there was no agreement, the word
-stayed unchanged. The models ran on a subscription (Claude Code); tokens used according to the call logs: first model
-1.42 M, second model 1.48 M.
+stayed unchanged. Tokens used according to the call logs: first model 1.42 M, second model 1.48 M.
 
 Some forms went into a manual exception list where the rule or the dictionary table would have produced a wrong form
 (*gyűl-*, *dűl-* stay; *érte* is a pronoun with postposition, not a verb).
@@ -123,7 +122,13 @@ with Strong's numbers:
 Linking the modern text and the alignment is a join on the key: verse and word position. No pair is created and none
 is lost. An automatic gate verifies that all 598,715 pairs were carried over, that the key of all 488,659
 aligned words is in the modern table with the same 1908 form, that every modern word is present, and that the package
-regenerates byte for byte. Added (109,914) and pending (794) words have no pair.
+regenerates byte for byte. Added (109,914) and pending (794) words have no pair; the three numbers add up to
+the 599,367 words of the text.
+
+When the modernisation was completed, the alignment covered 61 books: they had 418,633 aligned words, all
+of which matched the modern text. Since then the remaining 5 books (Matthew, Mark, Luke, John, Acts) have been aligned, and
+the modern text matches them word for word as well. Hence the 488,659 aligned words here; the gate also
+verifies the earlier figure (418,633) on the 61 books.
 
 ## 7. Limitations
 
