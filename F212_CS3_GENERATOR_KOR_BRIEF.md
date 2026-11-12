@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/f212-cs3-generator-a18537
+pr: 715
 ad: 1. lépés: a `naplok/F212_sablonmondat_lista.md` (a generátor minden olvasói sablonmondata és címkéje, HAMART-példával, előfordulásszámmal, blokkal, osztályozva); 2. lépés: a felhasználó döntései szerinti generátor-javítás kapuval, az LXX-statisztika egy forrásból, egyezés-kapu, a C6 sémabővítés és a 103 kapcsolat-jelölt átköltöztetése
 kovetkezo: "Te: a sablonmondat-lista átnézése és a döntések (osztályonként vagy tételenként); a 2. lépés kódírása csak a #703 (F202) és a #704 (F203) merge-e után, friss main-ről"
 munka: folyamat

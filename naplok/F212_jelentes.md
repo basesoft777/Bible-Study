@@ -13,6 +13,6 @@
 
 ## Zárás
 
-- **Kész:** az 1. lépés (lista, draft PR). ⛔ Megállás: a felhasználó a listát nézi át.
+- **Kész:** az 1. lépés (lista, draft PR #715, commit 76c26c8e). ⛔ Megállás: a felhasználó a listát nézi át.
 - **Nem készült:** generátor-kód, lap, adat; a `lexikon/` érintetlen.
 - **Folytatási pont:** a felhasználó döntései (tételenként vagy osztályonként) után F212.2; a kódírás csak a #703 (F202) és a #704 (F203) merge-e után, friss main-ről.
