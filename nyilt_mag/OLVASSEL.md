@@ -39,15 +39,15 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 
 | Fájl | Sor |
 |---|---|
-| `beepitesi_dontesek.tsv` | 252 |
+| `beepitesi_dontesek.tsv` | 254 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 15 |
-| `elofordulasok.tsv` | 250 |
+| `elofordulasok.tsv` | 252 |
 | `forrasok_es_licencek.tsv` | 65 |
 | `kapcsolatok.tsv` | 88 |
-| `kizaras_csoportok.tsv` | 4028 |
-| `kizarasok.tsv` | 542 |
-| `kodkonyv.tsv` | 440 |
+| `kizaras_csoportok.tsv` | 4020 |
+| `kizarasok.tsv` | 548 |
+| `kodkonyv.tsv` | 441 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 61 |

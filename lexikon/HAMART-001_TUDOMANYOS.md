@@ -3179,7 +3179,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 **Szerzőség.** Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Módszertan és nyitott kérdések) mesterséges intelligencia (claude-opus-5-5) írta az adatok alapján; a szerző jóváhagyta. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
 
-**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), 1. kiadás, 2026.11.12, https://logoszlexikon.hu/HAMART-001/1. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
+**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), 2. kiadás, 2026.11.12, https://logoszlexikon.hu/HAMART-001/2. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
 
 **Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).
 
@@ -3192,14 +3192,14 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Teljes cím | A bűn következményeinek gyűrűzése — átok, föld és romlás |
 | Téma | Hamartológia |
 | PaRDeS-szint | Remez/Drash |
-| Státusz | 1. kiadás (2026.11.12) |
+| Státusz | 2. kiadás (2026.11.12) |
 | Meghatározás | A bűn következménye az 1Mózes 3–9. fejezetében nem marad az elkövetőnél: a kígyótól és az első emberpártól Kainon és Lámeken át az özönvíz egész nemzedékéig terjed, a személytől a földig és az egész emberiségig, és ezt a terjedést hat héber szó lánca hordozza (átok, föld, fáradság, bűn, erőszak, romlás). A motívum ezt a láncot és azokat a későbbi bibliai helyeket foglalja magában, amelyek ugyanezekkel a szavakkal idézik fel. |
 | Azonosság típusa | strukturális |
 | Negatív kritérium | A versben az 1Mózes 3–9. fejezetének szóláncából (átok, föld, fáradság, bűn, erőszak, romlás) egy szó áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal), vagy az erőszak szava a hallás igéjével ugyanabban a versben, és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, az erőszak a megtelés és a hallás szava nélkül, romlandó test), és az sem, amely az átkot vagy a föld elvesztését a szövetség rendjében, a szövetség megszegésének büntetéseként mondja ki. A lánc szavai nélkül csak az a néhány hely tartozik ide, amely ugyanezt a szerkezetet más szavakkal mondja ki; ezeket a vizsgálat egyenként, tematikus helyként veszi fel. Az újszövetségi helyeknél a Textus Receptus a mérce. |
 | Fölérendelt fogalom | A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
 | Generálva | 2026-11-12 |
-| Kiadás | 1 |
+| Kiadás | 2 |
 | Próza modellje | claude-opus-5-5 |
 | Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11–12) |
 | Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |
@@ -3209,6 +3209,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Kiadás | Dátum | Mi változott |
 |---|---|---|
 | 1 | 2026.11.12 | A lap első kiadása, a modell-lektor 43 jelzett helyének és a szerkesztői átnézésnek a javításaival: a próza és a generált szakaszok olvasói nyelvre javítva (a lap önmagára utaló szavai kimaradtak), a tábla jegyzetei a tábla alatt állnak, a két határkérdés a szerkesztő döntése szerint rendeződött, a Jel 22:3 a tematikus sorok mintájára, az LXX-híd következtetése és a szám-egyezések javítva, a BDB- és Thayer-szócikkekben a motívum helyei kiemelve; az olvasói kapu 0 BUKÁS-sal zárult. |
+| 2 | 2026.11.12 | A lap 2. kiadása, a CS3 generátor-kör javításaival: a motívum két új tematikus hellyel bővült, a Jer 12:4-gyel (a benne lakók gonoszsága miatt gyászol a föld) és a Jer 23:10-zel (az átok miatt gyászol a föld), így 49 helyen, 56 versben áll; a gyászoló föld további hat versét a szerkesztő egyenként, indoklással zárta ki. A Károli-kereszthivatkozások a javított táblából állnak (csak a megerősített sorok), a teljességi keresés a mai adattal újramérve, forrássora a mellékletben. A generált szakaszok olvasói nyelve, az LXX-híd számainak egyezése, a Kolofon forrásnevei és a tábla alatti jegyzetek javítva; az olvasói kapu 0 BUKÁS-sal, az állítás–adat mérés 0 eltéréssel zárult. |
 
 ---
 
