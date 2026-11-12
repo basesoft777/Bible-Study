@@ -6,10 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: dontesre_var
+allapot: lezarva
 pr: 712
+lezarva_osszegzes: "PR #712 (F175.1–7): nyilt_karoli_strong/ (598 715 pár, 1 210 763 szó, 31 158 vers, meres.tsv; kapu 0 BUKÁS, bájtazonos), MODSZER/METHODS, ISMERT_HIBAK, rövid közlemény hu/en; a második data paper kézirata a kozlemeny/data_paper/ alatt (DT-F175b); a szövegek szerkesztői átnézéssel (11.12), névelő-szabály kapuval; N-F175a–c nyitva"
 ad: a Károli–héber/görög szóillesztés a #172-ben mért állapotban, CC BY 4.0 alatt közölhető nyílt magként (nyilt_karoli_strong/: generált export, kétnyelvű kódkönyv, ismert hibák, MODSZER.md, saját kapu, saját kozlemeny/ mappa), és a hozzá tartozó második data paper kézirata (hu/en) a gyökérbeli kozlemeny/data_paper/ alatt
-kovetkezo: "Te: a szövegek átnézése (MODSZER/METHODS, ISMERT_HIBAK, a nyilt_karoli_strong/kozlemeny/ rövid közleménye, a kozlemeny/data_paper/karoli_strong_kezirat_hu/en.md kézirat) és a DT-F175a–b; utána a brief lezárható, a merge és a Zenodo-feltöltés a felhasználóé"
+kovetkezo: "lezárva; a merge az orkesztrátoré, a Zenodo-feltöltés (DOI 10.5281/zenodo.24141884) a felhasználóé; nyitva: N-F175a (CI), N-F175b (névelő-szabály a modernizált csomagban), N-F175c (a motívum-csomag címe a #710 után)"
 olvas: [naplok/KAROLI_PONTOSSAG_jelentes.md, f172/, adat/karoli_strong/, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, F162_NYILT_MAG_BRIEF.md, F174_KAROLI_MODERN_STRONG_BRIEF.md, CITATION.cff, DONTESEK.md, kozlemeny/data_paper/folyoirat_lehetosegek.md]
 ir: [nyilt_karoli_strong/, kozlemeny/data_paper/karoli_strong_kezirat_hu.md, kozlemeny/data_paper/karoli_strong_kezirat_en.md, eszkozok/karoli_strong_export.py, eszkozok/karoli_strong_szovegek.py, eszkozok/karoli_strong_kapu.py, eszkozok/teszt_karoli_strong_export.py]
 fugg: [171, 172, 174]
@@ -66,4 +67,5 @@ A #172 megmérte a gépi Károli–héber/görög szópárosítás (`adat/karoli
 - 2026-11-08 (felhasználó): a magok saját gyökérszintű mappát kapnak (a mappa 1:1-ben a nyilvános repó gyökere, magonként külön repó); a közlemény a mag mappája alá kerül; harmadik fél adata nem megy be; elég egy `MODSZER.md`; a mappanév `nyilt_karoli_strong/` (a korábbi `nyilt_karoli_szoillesztes/` helyett).
 - DT-F172b (a #172-ből): a párosítás nyílt adat, CC BY 4.0; a megjelenítés fizetős lehet.
 - 2026-11-12 (végrehajtás): DT-F175a — a csomag héber/görög szóalak nélkül, a #174 fájlkészletével (`parok/`, `szavak/`, `versek.tsv`, `meres.tsv`); 🟡, átnézés a 4. lépésben.
+- 2026-11-12 (felhasználó, a szövegek átnézése, az orkesztrátoron át): öt jóváhagyott javítás — névelő a számok előtt a kiejtés szerint (generátor + kapu), ISMERT_HIBAK 1. „négy helyen”, MODSZER 6. „nem is ekként közöljük”, OLVASSEL/README „A csomag minden fájlja a kiadás része.”, a közlemény első mondata; a többi szöveg rendben.
 - 2026-11-12 (orkesztrátori döntés, a generált csomagmappa védelme): DT-F175b — a `kozlemeny/data_paper/` nem költözik a `nyilt_mag/kozlemeny/`-be (az a #710 óta a csomag generált rövid közleménye); a 3. lépés a csomag saját `kozlemeny/` mappájára és a brief mezőire szűkül; a második data paper kézirata a gyökérbeli `kozlemeny/data_paper/` alá kerül.

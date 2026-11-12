@@ -60,14 +60,14 @@ könyvet a költségkeret miatt egy modell, a Claude Sonnet párosította; ezek 
 modellhívás nélkül, bájtra azonosan újraépíthetők.
 
 **Az eredmény.** 488 659 magyar szónak van párja, 109 914 betoldás; 547 585 eredeti szó párosított,
-63 017 fordítatlan. A 598 715 párból 466 785 héber és 131 930 görög; 157 163 egy héber előtag- vagy
+63 017 fordítatlan. Az 598 715 párból 466 785 héber és 131 930 görög; 157 163 egy héber előtag- vagy
 ragmorféma párja.
 
 ## 5. A pontosság mérése
 
 A pontosságot két, egymást kiegészítő úton mértük.
 
-**Vak ellenőrzés, rétegzett mintán.** A 598 715 párt nyolc rétegre osztottuk (Mózes két modellel és egy modellel; a
+**Vak ellenőrzés, rétegzett mintán.** Az 598 715 párt nyolc rétegre osztottuk (Mózes két modellel és egy modellel; a
 történeti, a költői és a prófétai könyvek; az evangéliumok és az Apostolok cselekedetei; a levelek; a Jelenések), és
 rétegenként 200 párt húztunk véletlenszerűen. Egy harmadik nyelvi modell (Claude Opus) a minta minden céljára a
 vers szövegéből és az eredeti szavakból maga jelölte ki a megfelelő eredeti szavakat, ugyanazokkal a szabályokkal, a gépi
@@ -108,14 +108,14 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
   hibája, a fő szavak pontossága így 99,81% (95%: 99,56–99,92%).
 - A fejezetek klaszterek, nem véletlen mintaelemek; a valódi bizonytalanság nagyobb, mint az intervallum.
 
-**Hibatípusok.** A 1 600 mintapárból 72 tért el az ellenőrtől: szomszédos szó 37 (tartalmi
+**Hibatípusok.** Az 1 600 mintapárból 72 tért el az ellenőrtől: szomszédos szó 37 (tartalmi
 20, morféma 17), rossz szó a versben 17, fölös pár
 16, azonos lexéma más előfordulása 2. A mérés minden száma a `meres.tsv`-ben
 áll.
 
 ## 6. Miért nyílt adat
 
-A párosítás nem hibátlan, és nem is így kerül közlésre. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
+A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
 típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot és a bizonyosság-jelölés minden
 páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített

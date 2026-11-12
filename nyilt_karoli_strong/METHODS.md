@@ -118,7 +118,7 @@ main-word pairs only.
 
 ## 6. Why open data
 
-The alignment is not error-free, and it is not published as such. By editorial decision it is released as open data
+The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
 error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state and the confidence label remain
 on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the

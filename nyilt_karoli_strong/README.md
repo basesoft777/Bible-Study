@@ -3,8 +3,7 @@
 The 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word to the Hebrew and Greek
 source words and their Strong's numbers. One of the open data cores of the Logosz Lexikon.
 
-This folder is the root of a self-contained public repository: its content can be uploaded unchanged, and every file
-in it is part of the release (except the `kozlemeny/` subfolder, a draft until publication).
+Every file of the package is part of the release.
 
 - **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
 - **DOI:** 10.5281/zenodo.24141884 — release identifier and content hash: `RELEASE.txt`.

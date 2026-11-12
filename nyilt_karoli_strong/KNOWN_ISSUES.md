@@ -7,7 +7,7 @@ into release 2, with a new measurement (`METHODS.md` 7).
 
 ## Confirmed errors
 
-1. **Five confirmed pair errors** in the sample and the compared chapters: Prov 3:18 (the pairs of "Életnek" and "fája"
+1. **Five confirmed pair errors, in four places (two in Prov 3:18)** in the sample and the compared chapters: Prov 3:18 (the pairs of "Életnek" and "fája"
    are swapped, two pairs), Ezek 43:13 ("közsinget": the pair belongs to another word), 2Kgs 10:15 (the
    interrogative "-é" is the interrogative particle, H9008, not H3426), Rom 1:12 ("Azaz": G1161 is untranslated and not
    part of the pair).

@@ -2,9 +2,9 @@
 
 *Közlemény-tervezet · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141884*
 
-Aki a Károli-bibliát olvasva azt kérdezi, milyen héber vagy görög szó áll egy magyar szó mögött, ma kézikönyvekhez és
-konkordanciákhoz fordul. A Logosz-lexikon most szabad licenccel közreadja a Károli 1908-as szövegének szavankénti
-párosítását az eredeti szöveggel: a 598 715 szópár mindegyike megmondja, melyik héber vagy görög szót fordítja az adott
+Aki a Károli-bibliát olvasva azt kérdezi, milyen héber vagy görög szó áll egy magyar szó mögött, eddig nem talált
+olyan szabad adatot, amely ezt szavanként, mért pontossággal megmondja. A Logosz-lexikon most szabad licenccel közreadja a Károli 1908-as szövegének szavankénti
+párosítását az eredeti szöveggel: az 598 715 szópár mindegyike megmondja, melyik héber vagy görög szót fordítja az adott
 magyar szó, és mi a Strong-száma.
 
 **Hogyan készült.** A párosítást nyelvi modellek végezték, versenként, egy írott szabálykészlet szerint: mikor betoldás a

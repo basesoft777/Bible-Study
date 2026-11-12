@@ -62,7 +62,7 @@ PAR_FEJ = ['osis', 'token', 'alak_1908', 'eredeti_token', 'strong', 'kapcsolat',
 SZO_FEJ = ['osis', 'oldal', 'token', 'alak_1908', 'allapot', 'partner_token', 'strong', 'bizonyossag']
 VERS_FEJ = ['osis', 'szoveg_1908']
 MERES_FEJ = ['szakasz', 'cimke', 'n', 'x', 'p', 'also95', 'felso95', 'modszer']
-FEJLEC_HU = ('# GENERÁLT: a(z) %s – %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel '
+FEJLEC_HU = ('# GENERÁLT: a %s – %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel '
              'nem szerkesztendő; a „#” kezdetű sor megjegyzés.' % (NM.LEXIKON_CIM_HU, CIM_HU))
 FEJLEC_EN = ('# GENERATED: export of the %s – %s open core (CC BY 4.0), generated from the project data — do not '
              'edit by hand; a line starting with "#" is a comment.' % (NM.LEXIKON_CIM_EN, CIM_EN))
@@ -324,6 +324,44 @@ def szamok(konyvek, vsorok, msorok):
     return N
 
 
+# ----------------------------------------------------------------------------- névelő (a/az)
+
+# névelő + szám (ezres tagolással vagy anélkül, sorszámnévvel is: „az 1. kiadás”); a szám után nem állhat betű
+NEVELO_SZAM_RX = re.compile(r'(?<![\w(])([Aa]z?) (\d{1,3}(?: \d{3})+|\d+)(?![\w(])')
+MAGANHANGZO = 'aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ'
+
+
+def szam_nevelo(szam):
+    """A szám elé illő névelő a kiejtés szerint: „az”, ha a kiejtés magánhangzóval kezdődik (egy, öt, ezer, ötven,
+    ötszáz, egymillió…; sorszámnévként első, ötödik, ezredik…), egyébként „a”. A vezető számcsoport dönt: az 5-tel
+    kezdődő csoport mindig „öt…”; az egyjegyű 1-es csoport „egy/ezer/egymillió/első”; a 1x és 1xx „tíz/tizen/száz”."""
+    vezeto = szam.split(' ')[0]
+    return 'az' if vezeto[0] == '5' or vezeto == '1' else 'a'
+
+
+def szo_nevelo(szo):
+    """A szó (vagy szám) elé illő névelő."""
+    if szo[:1].isdigit():
+        return szam_nevelo(szo)
+    return 'az' if szo[:1] in MAGANHANGZO else 'a'
+
+
+def nevelo_javit(szoveg):
+    """Magyar szövegben a szám előtti névelőt a kiejtéshez igazítja (a nagybetűt megtartja)."""
+    def csere(m):
+        uj = szam_nevelo(m.group(2))
+        return (uj.capitalize() if m.group(1)[0] == 'A' else uj) + ' ' + m.group(2)
+    return NEVELO_SZAM_RX.sub(csere, szoveg)
+
+
+def nevelo_hibak(szoveg):
+    """A szám előtti hibás névelők listája (a kapu használja), és a kiejtés szerint el nem döntött „a(z)” alak."""
+    ki = ['%s %s' % (m.group(1), m.group(2)) for m in NEVELO_SZAM_RX.finditer(szoveg)
+          if m.group(1).lower() != szam_nevelo(m.group(2))]
+    ki += ['a(z)' for _ in re.finditer(r'\b[Aa]\(z\)', szoveg)]
+    return ki
+
+
 def ezres(n, nyelv='hu'):
     s = '{:,}'.format(int(n))
     return s.replace(',', ' ' if nyelv == 'hu' else ',')
@@ -395,7 +433,7 @@ def export():
                                         [list(s) for s in SZ.KODKONYV_SOROK])
     fajlok['KODKONYV.md'] = kodkonyv_md()
     for nev, sablon, d in SZ.SZOVEGEK:
-        fajlok[nev] = sablon.format(**(hu if d == 'hu' else en))
+        fajlok[nev] = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
     fajlok['.gitattributes'] = SZ.GITATTRIBUTES
     # ellenőrző összeg: minden kiadott fájl, a közlemény-tervezet nélkül
     sor = ['%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel) for rel in sorted(fajlok)]
@@ -408,7 +446,7 @@ def export():
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
     for nev, sablon, d in SZ.KOZLEMENY:
-        fajlok[KOZLEMENY_DIR + nev] = sablon.format(**(hu if d == 'hu' else en))
+        fajlok[KOZLEMENY_DIR + nev] = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
     return fajlok, N
 
 
@@ -418,7 +456,7 @@ def kezirat(N):
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
     ki = {}
     for rel, sablon, d in SZ.KEZIRAT:
-        torzs = sablon.format(**(hu if d == 'hu' else en))
+        torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
         ki[rel] = (torzs, SZ.KEZIRAT_FEJ + torzs)
     return ki
 

@@ -63,7 +63,7 @@ vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészlet
 | fő szavak, háromutas ítélet után | 99,81% | 99,56–99,92% |
 
 A rétegek egyezése 92,00% (Mózes, egy modell) és 99,00% (Mózes, két modell egyezése)
-között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. A 1 600 mintapárból
+között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. Az 1 600 mintapárból
 72 tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó (37), jellemzően egy héber
 előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés 34 eltéréséből
 5 maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.

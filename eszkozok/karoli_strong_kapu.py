@@ -16,7 +16,9 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
     UJRA        (d) az export újrafuttatva bájtazonos a lemezen állóval                                 — BUKÁS
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
-                (így nem is központi keretezés); a „repó-gyökér” kimondva a README-ben és az OLVASSEL-ben — BUKÁS
+                (így nem is központi keretezés); a README és az OLVASSEL jóváhagyott kiadás-mondata áll — BUKÁS
+    NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti (az 598 715, a 34, az 1. kiadás),
+                és nincs el nem döntött „a(z)” alak                                                      — BUKÁS
     KOZLEMENY   a `kozlemeny/` hu/en tervezete (rövid közlemény) megvan, nincs az ellenőrző összegben, a
                 `.gitattributes` kihagyja a kiadásból (export-ignore)                                    — BUKÁS
     KEZIRAT     a második data paper kézirata (`kozlemeny/data_paper/karoli_strong_kezirat_hu/en.md`, a repó
@@ -79,7 +81,10 @@ TILTOTT = [
     (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
     (re.compile(r'régi arany|old gold', re.I), 'belső fogalom (régi arany)'),
 ]
-REPO_GYOKER = {'OLVASSEL.md': 'önálló nyilvános adattároló gyökere', 'README.md': 'root of a self-contained public repository'}
+KIADAS_MONDAT = {'OLVASSEL.md': 'A csomag minden fájlja a kiadás része.',
+                 'README.md': 'Every file of the package is part of the release.'}
+MAGYAR = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'ATTRIBUCIO.md', 'LICENSE', 'KODKONYV.md', 'kodkonyv.tsv',
+          'kozlemeny/kozlemeny_hu.md')
 KIHAGYOTT = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
 
 
@@ -225,10 +230,20 @@ def nyilvanos(fajlok):
         for rx, nev in TILTOTT:
             for m in rx.finditer(t):
                 ki.append(Talalat('NYILVANOS', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
-    for rel, minta in REPO_GYOKER.items():
+    for rel, minta in KIADAS_MONDAT.items():
         if minta not in fajlok.get(rel, ''):
-            ki.append(Talalat('NYILVANOS', BUKAS, '%s: nem mondja ki, hogy a mappa a nyilvános adattároló gyökere' % rel))
+            ki.append(Talalat('NYILVANOS', BUKAS, '%s: hiányzik a jóváhagyott mondat: %r' % (rel, minta)))
     return ki or [Talalat('NYILVANOS', OK, 'nincs belső jelölés a nyilvános szövegben')]
+
+
+def nevelo(fajlok):
+    """A magyar szövegekben (és minden TSV magyar megjegyzéssorában) a szám előtti névelő a kiejtés szerinti."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        if rel in MAGYAR or rel.endswith('.tsv'):
+            for h in E.nevelo_hibak(nyilvanos_szoveg(rel, sz)):
+                ki.append(Talalat('NEVELO', BUKAS, '%s: %r' % (rel, h)))
+    return ki or [Talalat('NEVELO', OK, 'a számok előtti névelő a kiejtés szerinti')]
 
 
 def kozlemeny(fajlok):
@@ -295,6 +310,9 @@ def kezirat(N, lemez=True):
         for rx, nev in TILTOTT:
             for m in rx.finditer(torzs):
                 ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
+        if rel.endswith('_hu.md'):
+            for h in E.nevelo_hibak(torzs):
+                ki.append(Talalat('KEZIRAT', BUKAS, '%s: hibás névelő: %r' % (rel, h)))
         for rx, nev in ((HEBER_GOROG, 'héber/görög írásjel'), (ZART_FORRAS, 'zárt külső forrás neve'),
                         (NEM_KOMPATIBILIS, 'nem kompatibilis licenc')):
             m = rx.search(torzs)
@@ -312,7 +330,8 @@ def kezirat(N, lemez=True):
 
 
 def mer(fajlok, ujra_is=True, git_is=True):
-    t = teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + kozlemeny(fajlok) + osszeg(fajlok)
+    t = (teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + nevelo(fajlok) + kozlemeny(fajlok)
+         + osszeg(fajlok))
     if ujra_is:
         t += ujra(fajlok)
         t += kezirat(E.export()[1])

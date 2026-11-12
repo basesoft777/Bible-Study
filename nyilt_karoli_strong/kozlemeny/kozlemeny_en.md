@@ -3,7 +3,7 @@
 *Announcement draft · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141884*
 
 A reader of the Károli Bible, the classic Hungarian translation, who asks which Hebrew or Greek word stands behind a
-Hungarian word, today turns to handbooks and concordances. The Logosz Lexikon now releases, under a free licence, a word-by-word
+Hungarian word has so far found no free data that answers this word by word, with measured accuracy. The Logosz Lexikon now releases, under a free licence, a word-by-word
 alignment of the 1908 Károli text with the source text: each of the 598,715 word pairs states which Hebrew or Greek word
 the Hungarian word translates, and its Strong's number.
 

@@ -30,6 +30,19 @@ def bukasok(fajlok, azon=None):
 
 
 class Egyseg(unittest.TestCase):
+    def test_szam_nevelo(self):
+        az = ('1', '5', '1 600', '598 715', '50', '500', '5 078', '1 000 000')
+        a = ('2', '10', '12', '100', '160', '200', '34', '31 158', '466 785', '95')
+        for s in az:
+            self.assertEqual(E.szam_nevelo(s), 'az', s)
+        for s in a:
+            self.assertEqual(E.szam_nevelo(s), 'a', s)
+        self.assertEqual(E.nevelo_javit('A 598 715 párt; a 1 600 közül az 34, a 2. és a 1. kiadás'),
+                         'Az 598 715 párt; az 1 600 közül a 34, a 2. és az 1. kiadás')
+        self.assertEqual(E.nevelo_javit('a 3:18 és a 2Kir'), 'a 3:18 és a 2Kir')
+        self.assertEqual(E.szo_nevelo('Logosz-lexikon'), 'a')
+        self.assertEqual(E.szo_nevelo('Ószövetség'), 'az')
+
     def test_kapcsolat(self):
         self.assertEqual(E.kapcsolat('H9003'), 'morfema')
         self.assertEqual(E.kapcsolat('H9049'), 'morfema')
@@ -146,10 +159,16 @@ class Csomag(unittest.TestCase):
             f['MODSZER.md'] += '\n' + szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
 
-    def test_repo_gyoker(self):
+    def test_kiadas_mondat(self):
         f = self.uj()
-        f['README.md'] = f['README.md'].replace('root of a self-contained public repository', 'folder')
+        f['README.md'] = f['README.md'].replace('Every file of the package is part of the release.', '')
         self.assertTrue(bukasok(f, 'NYILVANOS'))
+
+    def test_nevelo_hiba(self):
+        for rossz in ('A 598 715 pár', 'a 1 600 minta', 'az 34 eltérés', 'a(z) Logosz-lexikon', 'a 1. kiadás'):
+            f = self.uj()
+            f['MODSZER.md'] += '\n' + rossz + '\n'
+            self.assertTrue(bukasok(f, 'NEVELO'), rossz)
 
     def test_heber_gorog_es_zart_forras(self):
         f = self.uj()

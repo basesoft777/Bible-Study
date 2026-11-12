@@ -96,8 +96,7 @@ OLVASSEL = """# {cim} — nyílt adatkészlet
 A Károli Gáspár-féle bibliafordítás 1908-as szövege, szavanként összekapcsolva a héber és görög eredeti szavakkal és
 azok Strong-számaival. A {lex_hu} nyílt adatmagjainak egyike.
 
-Ez a mappa egy önálló nyilvános adattároló gyökere: a tartalma változtatás nélkül feltölthető, és minden benne álló
-fájl a kiadás része (a `kozlemeny/` almappa kivételével, amely a megjelenésig tervezet).
+A csomag minden fájlja a kiadás része.
 
 - **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `ATTRIBUCIO.md`.
 - **DOI:** {doi} — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
@@ -151,8 +150,7 @@ README = """# {cim_en} — open dataset
 The 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word to the Hebrew and Greek
 source words and their Strong's numbers. One of the open data cores of the {lex_en}.
 
-This folder is the root of a self-contained public repository: its content can be uploaded unchanged, and every file
-in it is part of the release (except the `kozlemeny/` subfolder, a draft until publication).
+Every file of the package is part of the release.
 
 - **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
 - **DOI:** {doi} — release identifier and content hash: `RELEASE.txt`.
@@ -306,7 +304,7 @@ javítása a 2. kiadásba kerül, új méréssel (`MODSZER.md` 7.).
 
 ## Megerősített hibák
 
-1. **Öt megerősített párhiba** a mintában és az összevetett fejezetekben: Péld 3:18 (az „Életnek” és a „fája” párja
+1. **Öt megerősített párhiba, négy helyen (a Péld 3:18-ban kettő)** a mintában és az összevetett fejezetekben: Péld 3:18 (az „Életnek” és a „fája” párja
    felcserélt, két pár), Ez 43:13 („közsinget”: a pár más szóra tartozik), 2Kir 10:15 (a kérdő „-é” a kérdő
    partikula, H9008, nem H3426), Róm 1:12 („Azaz”: a G1161 fordítatlan, nem része a párnak).
 
@@ -349,7 +347,7 @@ into release 2, with a new measurement (`METHODS.md` 7).
 
 ## Confirmed errors
 
-1. **Five confirmed pair errors** in the sample and the compared chapters: Prov 3:18 (the pairs of "Életnek" and "fája"
+1. **Five confirmed pair errors, in four places (two in Prov 3:18)** in the sample and the compared chapters: Prov 3:18 (the pairs of "Életnek" and "fája"
    are swapped, two pairs), Ezek 43:13 ("közsinget": the pair belongs to another word), 2Kgs 10:15 (the
    interrogative "-é" is the interrogative particle, H9008, not H3426), Rom 1:12 ("Azaz": G1161 is untranslated and not
    part of the pair).
@@ -503,7 +501,7 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
 
 ## 6. Miért nyílt adat
 
-A párosítás nem hibátlan, és nem is így kerül közlésre. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
+A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
 típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot és a bizonyosság-jelölés minden
 páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
@@ -644,7 +642,7 @@ main-word pairs only.
 
 ## 6. Why open data
 
-The alignment is not error-free, and it is not published as such. By editorial decision it is released as open data
+The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
 error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state and the confidence label remain
 on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
@@ -672,8 +670,8 @@ KOZLEMENY_HU = """# A Károli-biblia szavanként az eredeti nyelvekhez kötve �
 
 *Közlemény-tervezet · {cim} · {lex_hu} · DOI: {doi}*
 
-Aki a Károli-bibliát olvasva azt kérdezi, milyen héber vagy görög szó áll egy magyar szó mögött, ma kézikönyvekhez és
-konkordanciákhoz fordul. A {lex_hu} most szabad licenccel közreadja a Károli 1908-as szövegének szavankénti
+Aki a Károli-bibliát olvasva azt kérdezi, milyen héber vagy görög szó áll egy magyar szó mögött, eddig nem talált
+olyan szabad adatot, amely ezt szavanként, mért pontossággal megmondja. A {lex_hu} most szabad licenccel közreadja a Károli 1908-as szövegének szavankénti
 párosítását az eredeti szöveggel: a {par} szópár mindegyike megmondja, melyik héber vagy görög szót fordítja az adott
 magyar szó, és mi a Strong-száma.
 
@@ -706,7 +704,7 @@ KOZLEMENY_EN = """# The Károli Bible linked word by word to the original langua
 *Announcement draft · {cim_en} · {lex_en} · DOI: {doi}*
 
 A reader of the Károli Bible, the classic Hungarian translation, who asks which Hebrew or Greek word stands behind a
-Hungarian word, today turns to handbooks and concordances. The {lex_en} now releases, under a free licence, a word-by-word
+Hungarian word has so far found no free data that answers this word by word, with measured accuracy. The {lex_en} now releases, under a free licence, a word-by-word
 alignment of the 1908 Károli text with the source text: each of the {par} word pairs states which Hebrew or Greek word
 the Hungarian word translates, and its Strong's number.
 

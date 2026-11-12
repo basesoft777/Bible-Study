@@ -7,7 +7,7 @@ javítása a 2. kiadásba kerül, új méréssel (`MODSZER.md` 7.).
 
 ## Megerősített hibák
 
-1. **Öt megerősített párhiba** a mintában és az összevetett fejezetekben: Péld 3:18 (az „Életnek” és a „fája” párja
+1. **Öt megerősített párhiba, négy helyen (a Péld 3:18-ban kettő)** a mintában és az összevetett fejezetekben: Péld 3:18 (az „Életnek” és a „fája” párja
    felcserélt, két pár), Ez 43:13 („közsinget”: a pár más szóra tartozik), 2Kir 10:15 (a kérdő „-é” a kérdő
    partikula, H9008, nem H3426), Róm 1:12 („Azaz”: a G1161 fordítatlan, nem része a párnak).
 

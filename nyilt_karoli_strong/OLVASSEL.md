@@ -3,8 +3,7 @@
 A Károli Gáspár-féle bibliafordítás 1908-as szövege, szavanként összekapcsolva a héber és görög eredeti szavakkal és
 azok Strong-számaival. A Logosz-lexikon nyílt adatmagjainak egyike.
 
-Ez a mappa egy önálló nyilvános adattároló gyökere: a tartalma változtatás nélkül feltölthető, és minden benne álló
-fájl a kiadás része (a `kozlemeny/` almappa kivételével, amely a megjelenésig tervezet).
+A csomag minden fájlja a kiadás része.
 
 - **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `ATTRIBUCIO.md`.
 - **DOI:** 10.5281/zenodo.24141884 — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
