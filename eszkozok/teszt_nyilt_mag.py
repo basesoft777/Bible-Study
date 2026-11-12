@@ -95,7 +95,7 @@ class Pozitiv(Alap):
     def test_kizart_forras_listaja_kimondva(self):
         for ds in ('MCGED', 'KJV_Strongs_teljes', 'Heber_ETCBC_modulok'):
             self.assertIn(ds, self.info['kizartak'])
-            self.assertIn(ds, self.fajlok['OLVASSEL.md'])
+            self.assertIn(ds, self.fajlok['ATTRIBUCIO.md'])
 
     def test_sdbh_csak_a_kulon_retegben(self):
         for rel, sz in self.fajlok.items():
@@ -276,8 +276,8 @@ class Negativ(Alap):
 
     def test_cim_hu_es_en(self):
         self.assertEqual(('Logosz-lexikon', 'Logosz Lexikon'), (E.LEXIKON_CIM_HU, E.LEXIKON_CIM_EN))
-        self.assertIn('# Logosz-lexikon — nyílt mag', self.fajlok['OLVASSEL.md'])
-        self.assertIn('# Logosz Lexikon — Open Core', self.fajlok['README.md'])
+        self.assertIn('# Logosz-lexikon — nyílt adatmag', self.fajlok['OLVASSEL.md'])
+        self.assertIn('# Logosz Lexikon — open data core', self.fajlok['README.md'])
         self.assertNotIn('Logosz Lexikon', self.fajlok['OLVASSEL.md'])
 
     def test_cim_szerzo_doi_megvan(self):
@@ -553,6 +553,71 @@ class F198Visszhang(Alap):
 
     def test_a_csomag_0_visszhang_bukas(self):
         self.assertEqual([], bukasok(self.fajlok, 'VISSZHANG'))
+
+
+class EgysegesKeszlet(Alap):
+    """F208: a nyílt adatmagok egységes készlete (a modernizált Károli – Strong csomag mintájára)."""
+
+    def test_a_minta_fajlkeszlete_megvan(self):
+        for rel in ('MODSZER.md', 'METHODS.md', 'ATTRIBUCIO.md', 'LICENSE', 'CITATION.cff', '.gitattributes',
+                    'kozlemeny/kozlemeny_hu.md', 'kozlemeny/kozlemeny_en.md', 'ISMERT_HIBAK.md', 'KNOWN_ISSUES.md',
+                    'KIADAS.txt', 'RELEASE.txt', 'ELLENORZO_OSSZEG.sha256'):
+            self.assertIn(rel, self.fajlok)
+            self.assertIn(rel, G.KOTELEZO)
+
+    def test_a_kozlemeny_nincs_az_osszegben(self):
+        self.assertNotIn('kozlemeny/', self.fajlok['ELLENORZO_OSSZEG.sha256'])
+        self.assertIn('kozlemeny/ export-ignore', self.fajlok['.gitattributes'])
+        self.assertEqual([], bukasok(self.fajlok, 'KOZLEMENY'))
+
+    def test_kozlemeny_az_osszegben_bukik(self):
+        f = self.uj()
+        f['ELLENORZO_OSSZEG.sha256'] += '0' * 64 + '  kozlemeny/kozlemeny_hu.md\n'
+        self.assertTrue(bukasok(f, 'KOZLEMENY'))
+        f = self.uj()
+        f['.gitattributes'] = '* text eol=lf\n'
+        self.assertTrue(bukasok(f, 'KOZLEMENY'))
+
+    def test_a_csomag_0_nyilvanos_bukas(self):
+        self.assertEqual([], [(x.fajl, x.idezet) for x in bukasok(self.fajlok, 'NYILVANOS')])
+
+    def test_nyilvanos_tiltott_szavak(self):
+        for rel, szo in (('MODSZER.md', 'a termékréteg része'), ('METHODS.md', 'a PaRDeS method'),
+                         ('kozlemeny/kozlemeny_hu.md', 'l. DT612'), ('CITATION.cff', 'url: https://github.com/x/y'),
+                         ('LICENSE', 'felhasználói döntés'), ('ATTRIBUCIO.md', 'naplok/valami'),
+                         ('README.md', 'the orchestrator decided'), ('OLVASSEL.md', 'a gerinc szerint')):
+            f = self.uj()
+            f[rel] += szo + '\n'
+            self.assertTrue(bukasok(f, 'NYILVANOS'), (rel, szo))
+
+    def test_pardes_szint_oszlopnev_megengedett(self):
+        f = self.uj()
+        f['MODSZER.md'] += 'A `pardes_szint` oszlop leírása a kódkönyvben.\n'
+        self.assertEqual([], bukasok(f, 'NYILVANOS'))
+
+    def test_kizart_forras_hianyzik_az_attribuciobol(self):
+        f = self.uj()
+        f['ATTRIBUCIO.md'] = f['ATTRIBUCIO.md'].replace('`MCGED`', '')
+        self.assertTrue(bukasok(f, 'LICENC'))
+
+    def test_tartalomjegyzek_sorszam(self):
+        f = self.uj()
+        f['README.md'] = f['README.md'].replace('| 3,984 |', '| 3,985 |')
+        self.assertTrue(bukasok(f, 'KETNYELV'))
+
+    def test_szamok_a_csomagbol(self):
+        sz = E.csomag_szamok(self.fajlok, {'ALVIL-001': 1}, 0, [], '2026-01-01')
+        self.assertEqual(sz['elo'], self.info['stat']['elofordulasok.tsv'])
+        self.assertEqual(sz['kiz'], self.info['stat']['kizarasok.tsv'])
+        self.assertEqual(sz['csoport_vers'], self.info['stat']['kizaras_csoportok.tsv'])
+        self.assertEqual(sz['kiz_egyedi'] + sz['osszesito'], sz['kiz'])
+        self.assertEqual(1, sz['lezart'])
+
+    def test_citation_szerzo_orcid_doi(self):
+        c = self.fajlok['CITATION.cff']
+        for kell in ('family-names: "Demeter"', 'given-names: "Tamás"', 'orcid: "https://orcid.org/0009-0005-9254-9731"',
+                     'doi: "10.5281/zenodo.24141612"', '10.5281/zenodo.24141884', '10.5281/zenodo.24141950'):
+            self.assertIn(kell, c)
 
 
 if __name__ == '__main__':
