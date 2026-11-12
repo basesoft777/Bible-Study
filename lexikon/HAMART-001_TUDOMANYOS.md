@@ -267,7 +267,7 @@ A motívum 47 igehelyen fordul elő, 14 bibliai könyvben (41 ószövetségi, 6 
 | [Zsid 6:7-8](#ige-zsid-6-7-8) | átokhoz — κατάρας (katarasz) | átok, átkozódás · Thayer fej<sup>[2.17](#j-2-17)</sup> | példázat | Remez/Drash | G2671 | átkozott; elátkozott [ⓘ](/szo/G2671) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú<sup>[2.17](#j-2-17)</sup> |
 | [Jel 11:18](#ige-jel-11-18) | pusztítják — διαφθείροντας (diaftheirontasz) | megront, rosszabbá tesz · Thayer 1<sup>[2.16](#j-2-16)</sup> | tükörítélet | Sod | G1311 | teljesen elpusztítani [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)*; megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú<sup>[2.16](#j-2-16)</sup> |
 | [Jel 19:2](#ige-jel-19-2) | megrontotta — ἔφθειρεν (eftheiren) | megront, elpusztít · Thayer fej<sup>[2.17](#j-2-17)</sup> | ítélet | Remez/Sod | G5351 | megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G5351) | magas · tartalom-alapú<sup>[2.17](#j-2-17)</sup> |
-| [Jel 22:3](#ige-jel-22-3) | elátkozott — — | —<sup>[2.18](#j-2-18)</sup> | tematikus, nem lexikai | Sod | — | — *(tematikus hely: a lánc szava nélkül áll a lapon, l. a Kivonatot)* | közepes · tartalom-alapú<sup>[2.18](#j-2-18)</sup> |
+| [Jel 22:3](#ige-jel-22-3) | elátkozott | tematikus hely: a lánc szava nélkül<sup>[2.18](#j-2-18)</sup> | tematikus, nem lexikai | Sod | nincs lánc-szó | nem alkalmazható (tematikus hely) | közepes · tartalom-alapú |
 
 - <a id="j-2-1"></a><sup>[2.1](HAMART-001_MUHELYNAPLO.md#j-2-1)</sup> A héber szöveg (TAHOT) igazolja; a jelentés: a BDB a Qal szakaszban maga idézi a helyet.
 - <a id="j-2-2"></a><sup>[2.2](HAMART-001_MUHELYNAPLO.md#j-2-2)</sup> A héber szöveg (TAHOT) igazolja; a jelentés: a szócikk egésze (a szótár nem tagolja számozott jelentésekre).
@@ -1035,15 +1035,15 @@ A motívumot hordozó görög szavak: διαφθείρω (diaftheiró), ἐπι
 
 A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
-**διαφθείρω (diaftheiró)** · elpusztítani — a teljes TBESG-szócikk: [olvasd a szónézetben](/szo/G1311)
+**διαφθείρω (diaftheiró)** — elpusztítani · G1311 · [szónézet](/szo/G1311)
 
-**ἐπικατάρατος (epikataratosz)** · átkozott — a teljes TBESG-szócikk: [olvasd a szónézetben](/szo/G1944)
+**ἐπικατάρατος (epikataratosz)** — átkozott · G1944 · [szónézet](/szo/G1944)
 
-**κατάρα (katara)** · átok — a teljes TBESG-szócikk: [olvasd a szónézetben](/szo/G2671)
+**κατάρα (katara)** — átok · G2671 · [szónézet](/szo/G2671)
 
-**φθείρω (ftheiró)** · elpusztítani — a teljes TBESG-szócikk: [olvasd a szónézetben](/szo/G5351)
+**φθείρω (ftheiró)** — elpusztítani · G5351 · [szónézet](/szo/G5351)
 
-**φθορά (fthora)** · megromlás — a teljes TBESG-szócikk: [olvasd a szónézetben](/szo/G5356)
+**φθορά (fthora)** — megromlás · G5356 · [szónézet](/szo/G5356)
 
 *Forrás: a STEPBible görög rövid szótára (TBESG, CC BY 4.0), a rövid jelentés magyarul.* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-1)
 
@@ -1201,15 +1201,17 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
 
-**διαφθείρω (diaftheiró)** · a translationWords szócikkei: *elpusztul* · *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* — [olvasd a szónézetben](/szo/G1311)
+Szavanként a translationWords magyar szócikkcímei; a szócikkek a szónézetben olvashatók.
 
-**ἐπικατάρατος (epikataratosz)** · a translationWords szócikkei: *átok, átkozott, átkozódás* — [olvasd a szónézetben](/szo/G1944)
+**διαφθείρω (diaftheiró)** — *elpusztul* · *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* · [szónézet](/szo/G1311)
 
-**κατάρα (katara)** · a translationWords szócikkei: *átok, átkozott, átkozódás* — [olvasd a szónézetben](/szo/G2671)
+**ἐπικατάρατος (epikataratosz)** — *átok, átkozott, átkozódás* · [szónézet](/szo/G1944)
 
-**φθείρω (ftheiró)** · a translationWords szócikkei: *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* — [olvasd a szónézetben](/szo/G5351)
+**κατάρα (katara)** — *átok, átkozott, átkozódás* · [szónézet](/szo/G2671)
 
-**φθορά (fthora)** · a translationWords szócikkei: *elpusztul* · *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* — [olvasd a szónézetben](/szo/G5356)
+**φθείρω (ftheiró)** — *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* · [szónézet](/szo/G5351)
+
+**φθορά (fthora)** — *elpusztul* · *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* · [szónézet](/szo/G5356)
 
 *Forrás: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul.* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-2)
 
@@ -1301,21 +1303,13 @@ A kétnyelvű szótár (SECE) a motívum görög szavai közül a διαφθε�
 
 A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).<!-- olvasói -->
 
-*Hivatkozás: a motívum saját szavaihoz nincs LSJ-sor (forrás: a lap szótári hivatkozástáblája), és a rokon szavaknál sincs: jelölt hiány.*
+*A klasszikus görög nagyszótár (LSJ) adata a motívum szavaihoz a lap forrásaiban nem áll rendelkezésre.*
 
 #### 4.9. Versenkénti jelentés
 
 A görög szavak közül a φθείρω (ftheiró) és a φθορά (fthora) jelentése a helyén egyértelmű; a διαφθείρω (diaftheiró) (Jel 11:18), az ἐπικατάρατος (epikataratosz) (Gal 3:13-14) és a κατάρα (katara) (Zsid 6:7-8) helyén a szótár több jelentést enged, ezeknél a vers dönt (ez 3 hely a motívum 5 újszövetségi helyéből).<!-- olvasói -->
 
-**G1311 — διαφθείρω (diaftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1311) · forrás: az UBS Dictionary of New Testament Greek.
-
-**G1944 — ἐπικατάρατος (epikataratosz)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1944) · forrás: az UBS Dictionary of New Testament Greek.
-
-**G2671 — κατάρα (katara)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G2671) · forrás: az UBS Dictionary of New Testament Greek.
-
-**G5351 — φθείρω (ftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5351) · forrás: az UBS Dictionary of New Testament Greek.
-
-**G5356 — φθορά (fthora)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5356) · forrás: az UBS Dictionary of New Testament Greek.
+Hogy a szó az egyes helyeken melyik jelentésében áll, a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja; a szó teljes jelentéslistája a szónézetben.
 
 #### 4.10. Kiejtés (magyaros)
 
@@ -1339,25 +1333,27 @@ A motívumot hordozó héber szavak: אָבַל (ával), אֲדָמָה (adámá
 
 A szó alapjelentése röviden, a STEPBible rövid szótára szerint.<!-- olvasói -->
 
-**H0056** · gyászolni *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H0056) · forrás: a STEPBible héber rövid szótára (TBESH)
+**אָבַל (ával)** — gyászolni · H0056 · [szónézet](/szo/H0056)
 
-**H0127** · föld: talaj *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H0127) · forrás: a STEPBible héber rövid szótára (TBESH)
+**אֲדָמָה (adámá)** — föld: talaj · H0127 · [szónézet](/szo/H0127)
 
-**H0423** · eskü *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H0423) · forrás: a STEPBible héber rövid szótára (TBESH)
+**אָלָה (álá)** — eskü · H0423 · [szónézet](/szo/H0423)
 
-**H0779** · megátkozni *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H0779) · forrás: a STEPBible héber rövid szótára (TBESH)
+**אָרַר (árar)** — megátkozni · H0779 · [szónézet](/szo/H0779)
 
-**H2403** · bűn *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H2403) · forrás: a STEPBible héber rövid szótára (TBESH)
+**חַטָּאת (chattát)** — bűn · H2403 · [szónézet](/szo/H2403)
 
-**H2555** · erőszak *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H2555) · forrás: a STEPBible héber rövid szótára (TBESH)
+**חָמָס (chámász)** — erőszak · H2555 · [szónézet](/szo/H2555)
 
-**H6093** · fáradság *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H6093) · forrás: a STEPBible héber rövid szótára (TBESH)
+**עִצָּבוֹן (iccávón)** — fáradság · H6093 · [szónézet](/szo/H6093)
 
-**H6975** · tövis *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H6975) · forrás: a STEPBible héber rövid szótára (TBESH)
+**קוֹץ (kóc)** — tövis · H6975 · [szónézet](/szo/H6975)
 
-**H7451** · nyomorúság: kár *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H7451) · forrás: a STEPBible héber rövid szótára (TBESH)
+**רַע (ra)** — nyomorúság: kár · H7451 · [szónézet](/szo/H7451)
 
-**H7843** · elpusztítani, megrontani *(a TBESH rövid jelentése magyarul)* · a teljes TBESH-szócikk: [szónézet](/szo/H7843) · forrás: a STEPBible héber rövid szótára (TBESH)
+**שָׁחַת (sáchat)** — elpusztítani, megrontani · H7843 · [szónézet](/szo/H7843)
+
+*Forrás: a STEPBible héber rövid szótára (TBESH, CC BY 4.0), a rövid jelentés magyarul.* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-3)
 
 #### 4.2. Mélységi szócikk
 
@@ -1859,27 +1855,29 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 Teológiai szócikk a szóról (mit jelent a bibliai gondolkodásban), vagy a hivatkozás arra, ahol olvasható.<!-- olvasói -->
 
-**אָבַל (ával)** · TWOT 6 · a translationWords szócikkei: *sirat, siralom* · *gyászol, gyászoló, sírás* — [olvasd a szónézetben](/szo/H0056)
+Szavanként a translationWords magyar szócikkcímei és a TWOT-szám (Theological Wordbook of the Old Testament); a szócikkek a szónézetben olvashatók.
 
-**אֲדָמָה (adámá)** · TWOT 25b · a translationWords szócikkei: *föld, ország* — [olvasd a szónézetben](/szo/H0127)
+**אָבַל (ával)** — *sirat, siralom* · *gyászol, gyászoló, sírás* · TWOT 6 · [szónézet](/szo/H0056)
 
-**אָלָה (álá)** · TWOT 94a · a translationWords szócikkei: *átok, átkozott, átkozódás* · *eskü, fogadalom, esküszik, esküvés, megesküszik valamire, megesküdött* — [olvasd a szónézetben](/szo/H0423)
+**אֲדָמָה (adámá)** — *föld, ország* · TWOT 25b · [szónézet](/szo/H0127)
 
-**אָרַר (árar)** · TWOT 168 · a translationWords szócikkei: *átok, átkozott, átkozódás* — [olvasd a szónézetben](/szo/H0779)
+**אָלָה (álá)** — *átok, átkozott, átkozódás* · *eskü, fogadalom, esküszik, esküvés, megesküszik valamire, megesküdött* · TWOT 94a · [szónézet](/szo/H0423)
 
-**חַטָּאת (chattát)** · TWOT 638c, 638e · a translationWords szócikkei: *tiszta, megtisztít, megtisztulás* · *bűn, bűnös, bűnös ember, vétkezés* · *elkövet, elkövetett* · *áldozat, felajánlás* · *bűnáldozat, megtisztulási áldozat* — [olvasd a szónézetben](/szo/H2403)
+**אָרַר (árar)** — *átok, átkozott, átkozódás* · TWOT 168 · [szónézet](/szo/H0779)
 
-**חָמָס (chámász)** · TWOT 678a · a translationWords szócikkei: *igazságos, igazság, igazságtalan, igazságtalanság, megigazít, megigazulás* · *igaz, igazság, igaztalan, igaztalanság, becsületes, becsületesség* · *helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó* — [olvasd a szónézetben](/szo/H2555)
+**חַטָּאת (chattát)** — *tiszta, megtisztít, megtisztulás* · *bűn, bűnös, bűnös ember, vétkezés* · *elkövet, elkövetett* · *áldozat, felajánlás* · *bűnáldozat, megtisztulási áldozat* · TWOT 638c, 638e · [szónézet](/szo/H2403)
 
-**עִצָּבוֹן (iccávón)** · TWOT 1666e · a translationWords nem tárgyalja — [olvasd a szónézetben](/szo/H6093)
+**חָמָס (chámász)** — *igazságos, igazság, igazságtalan, igazságtalanság, megigazít, megigazulás* · *igaz, igazság, igaztalan, igaztalanság, becsületes, becsületesség* · *helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó* · TWOT 678a · [szónézet](/szo/H2555)
 
-**קוֹץ (kóc)** · TWOT 2003a · a translationWords szócikkei: *tövis, tüskebokor, bogáncs* — [olvasd a szónézetben](/szo/H6975)
+**עִצָּבוֹן (iccávón)** — a translationWords nem tárgyalja · TWOT 1666e · [szónézet](/szo/H6093)
 
-**רַע (ra)** · TWOT 2191a, 2191c · a translationWords szócikkei: *démon, gonosz szellem, tisztátalan szellem* · *gonosz, rossz, gonoszság, kellemetlen* · *sanyargat, nyomorúság, szorongatás* · *rom, romok, romba dőlt* · *zaklat, megzavar, felkavar, szorongatás, nehézség, csapás* · *helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó* — [olvasd a szónézetben](/szo/H7451)
+**קוֹץ (kóc)** — *tövis, tüskebokor, bogáncs* · TWOT 2003a · [szónézet](/szo/H6975)
 
-**שָׁחַת (sáchat)** · TWOT 2370 · a translationWords szócikkei: *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* · *pusztít, pusztaság* · *kívánság, kéjes, szenvedély, vágy* · *rom, romok, romba dőlt* · *pusztaság, elpusztított, puszta vidék, elgyengül* — [olvasd a szónézetben](/szo/H7843)
+**רַע (ra)** — *démon, gonosz szellem, tisztátalan szellem* · *gonosz, rossz, gonoszság, kellemetlen* · *sanyargat, nyomorúság, szorongatás* · *rom, romok, romba dőlt* · *zaklat, megzavar, felkavar, szorongatás, nehézség, csapás* · *helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó* · TWOT 2191a, 2191c · [szónézet](/szo/H7451)
 
-*Forrás: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma.* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-3)
+**שָׁחַת (sáchat)** — *romlott, megromlott, romlás, romolhatatlanság, elvetemült* · *pusztít, pusztulás, megsemmisít* · *pusztít, pusztaság* · *kívánság, kéjes, szenvedély, vágy* · *rom, romok, romba dőlt* · *pusztaság, elpusztított, puszta vidék, elgyengül* · TWOT 2370 · [szónézet](/szo/H7843)
+
+*Forrás: unfoldingWord translationWords (CC BY-SA 4.0), a szócikkek címe magyarul; a TWOT-ból (Theological Wordbook of the Old Testament) csak a szócikk száma.* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-4)
 
 #### 4.4. Jelentésszerkezet, szemantikai mező
 
@@ -2106,25 +2104,7 @@ A kétnyelvű szótár (SECE) a motívum héber szavai közül a שָׁחַת (s
 
 A szó eredete és nyelvi háttere.<!-- olvasói -->
 
-**אָבַל (ával)** · alapjelentés: gyászolni *(a STEPBible rövid szótára szerint)*
-
-**אֲדָמָה (adámá)** · alapjelentés: föld, termőföld · gyök (√): דם vö. arab bekenni
-
-**אָלָה (álá)** · alapjelentés: eskü *(a STEPBible rövid szótára szerint)*
-
-**אָרַר (árar)** · alapjelentés: átkozni
-
-**חַטָּאת (chattát)** · alapjelentés: bűn *(a STEPBible rövid szótára szerint)*
-
-**חָמָס (chámász)** · alapjelentés: erőszak, jogtalanság
-
-**עִצָּבוֹן (iccávón)** · alapjelentés: fájdalom, fáradság
-
-**קוֹץ (kóc)** · alapjelentés: tövisbokor, tövis
-
-**רַע (ra)** · alapjelentés: rossz, gonosz
-
-**שָׁחַת (sáchat)** · alapjelentés: tönkremenni
+A BDB az אֲדָמָה (adámá) gyökét is megadja: דם vö. arab bekenni.
 
 A szavak teljes BDB-szócikkfeje (a nyelvtani alakokkal) a 4.2 pontban áll.
 
@@ -2135,44 +2115,28 @@ A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/ass
 | Szó | Rokon nyelv · szó (kiejtés) | Jelentés | Megjegyzés |
 |---|---|---|---|
 | אָרַר (árar) — megátkozni | asszír arâru (aráru) | átkozni | — |
-| עִצָּבוֹן (iccávón) — fáradság | A rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll; a tő, a עָצַב (ácav) ige szócikke szerint: | — | — |
-| ↳ tő: עָצַב (ácav) | etióp | kemény, nehéz | A BDB az alakot írás nélkül adja |
+| עִצָּבוֹן (iccávón) — fáradság | A szótár a szónál nem ad rokon nyelvi alakot; a tőnél (עָצַב (ácav)): | — | — |
+| ↳ tő: עָצַב (ácav) | etióp | kemény, nehéz | — |
 | ↳ tő: עָצַב (ácav) | arab | haragos, mérges | A BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka |
 | אֲדָמָה (adámá) — föld: talaj | arab أَدَمَة (adama) · دَمَّ (damma) | bőr (simán befedő, szorosan simuló); kenni, bekenni (felületen szétteríteni) | — |
-| חַטָּאת (chattát) — bűn | Nincs rokon nyelvi alak a BDB szócikkében; az igei tő, a חָטָא (chátá) szócikke ad rokon alakokat, ezek a táblában nem szerepelnek | — | — |
+| חַטָּאת (chattát) — bűn | A szótár a szónál nem ad rokon nyelvi alakot; a tőnél (חָטָא (chátá)) ad, ezek a táblában nem szerepelnek | — | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | asszír šêtu (sétu) | menekülni, megmenekülni | BDB szerint bizonytalan vagy ritka |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | arámi שְׁחַת (sechat) | megcsonkítani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | óarámi (Zindzsirli) שחת (s-ch-t) | elpusztít | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | arab سَحَتَ (szaháta) | kiirtani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | szír ܫܰܚܶܛ (sachet) | megcsonkítani | — |
 | שָׁחַת (sáchat) — elpusztítani, megrontani | etióp ሰሐጠ (szeháta) | megsérteni, erőszakot tenni | — |
-| חָמָס (chámász) — erőszak | A főnév szócikkében nincs rokon nyelvi adat; a tő, a חָמַס (chámasz) ige szócikke szerint: | — | — |
-| ↳ tő: חָמַס (chámasz) | arab | kemény, szigorú, könyörtelen | A BDB az alakot írás nélkül adja |
+| חָמָס (chámász) — erőszak | A szótár a szónál nem ad rokon nyelvi alakot; a tőnél (חָמַס (chámasz)): | — | — |
+| ↳ tő: חָמַס (chámasz) | arab | kemény, szigorú, könyörtelen | — |
 | ↳ tő: חָמַס (chámasz) | arámi חֲמַס (chamasz) | erőszakosan megragad | BDB szerint bizonytalan vagy ritka |
+
+*Ahol a sorban nincs írás, a BDB a rokon alakot írás nélkül, csak jelentéssel adja.*
 
 #### 4.9. Versenkénti jelentés
 
 A héber szavak közül az אָבַל (ával), az אֲדָמָה (adámá), az אָלָה (álá), az אָרַר (árar), a חַטָּאת (chattát), a חָמָס (chámász), az עִצָּבוֹן (iccávón) és a קוֹץ (kóc) jelentése a helyén egyértelmű; a רַע (ra) (1Móz 6:5) és a שָׁחַת (sáchat) (1Móz 6:12) helyén a szótár több jelentést enged, ezeknél a vers dönt (ez 2 hely a motívum 41 ószövetségi helyéből). **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
-**H0056 — אָבַל (ával)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H0127 — אֲדָמָה (adámá)** · a motívum 10 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (10 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0127) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H0423 — אָלָה (álá)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0423) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H0779 — אָרַר (árar)** · a motívum 4 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (4 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H2403 — חַטָּאת (chattát)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H2555 — חָמָס (chámász)** · a motívum 12 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (12 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H6093 — עִצָּבוֹן (iccávón)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6093) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H6975 — קוֹץ (kóc)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6975) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H7451 — רַע (ra)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7451) · forrás: az UBS Dictionary of Biblical Hebrew.
-
-**H7843 — שָׁחַת (sáchat)** · a motívum 7 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (6 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7843) · forrás: az UBS Dictionary of Biblical Hebrew.
+Hogy a szó az egyes helyeken melyik jelentésében áll, a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja; a szó teljes jelentéslistája a szónézetben.
 
 #### 4.10. Kiejtés (magyaros)
 
@@ -2375,7 +2339,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 **Jelentősége:** a Károli a lánc szavait nem mindig ugyanazzal a magyar szóval adja vissza, ezért a magyar olvasó a láncot csak részben látja. Az átok igéje többnyire „átkozott” és „megátkoz”, de az 1Móz 8:21-ben, ahol a héberben más ige áll, szintén „átkozom”. A romlás igéje az 1Móz 6:11-12-ben „romlott”, „megrontotta”, az 1Móz 6:13 és 6:17 ítéletében viszont „elvesztem” és „elveszessek”, így a magyar szövegben elvész, hogy a bűn és az ítélet ugyanaz az ige. Az erőszak szava „erőszakoskodás”, „erőszakosság”, „erőszak” (Hab 1:2, Sof 1:9), „erőszaktétel” (Ézs 60:18), „ragadomány” (Mik 6:12), „zsaroló” (Zsolt 74:20) és „álnokság” (Ez 12:19). A fáradság szava „fájdalom” (1Móz 3:16), „fáradságos munkával” (1Móz 3:17) és „terhes fáradozás” (1Móz 5:29).
 
-*Forrás: a Károli-fordítás (1908); a Károli-szavak szótári alakjai; a STEPBible héber szövege (TAHOT).* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-4)
+*Forrás: a Károli-fordítás (1908); a Károli-szavak szótári alakjai; a STEPBible héber szövege (TAHOT).* [részletek](HAMART-001_MUHELYNAPLO.md#f-4-5)
 
 ## 5. LXX-fordítói döntések
 
