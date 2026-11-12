@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: megallt
 ad: a modernizált Károli (#96) és a hozzá vetített Strong-párok CC BY 4.0 alatt közölhető nyílt magja (nyilt_karoli_modern/), MODSZER.md-vel, saját kapuval, és a modernizálás módszerének közlemény-szövege (hu/en)
-kovetkezo: "Te: a PR #644 jóváhagyása és mergelése; utána /kovetkezo. Sorrend: (1) vetítés és kapu, (2) MODSZER.md, (3) közlemény-szöveg; a #175 erre épül"
+kovetkezo: "Te (⛔ 4. lépés): a MODSZER.md/METHODS.md és a kozlemeny/ hu/en tervezetének átnézése a draft PR-ban; utána merge, majd a Zenodo-feltöltés (DOI 10.5281/zenodo.24141950) a te lépésed; előtte az N-F174a (licencek.tsv sor)"
 olvas: [adat/karoli_modern/, adat/karoli_strong/, naplok/KAROLI_MODERN_zaras.md, naplok/KAROLI_MODERN_meres.md, naplok/ELLENOR_F96.md, naplok/ELLENOR_F96_2.md, naplok/ELLENOR_F96_3.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_modern/, adat/SEMA.md, adat/licencek.tsv, F96_KAROLI_MODERN_BRIEF.md, F137_KAROLI_MODERN_DB_BRIEF.md, F162_NYILT_MAG_BRIEF.md, DONTESEK.md, NYITOTT_FELADATOK.md]
 ir: [nyilt_karoli_modern/, eszkozok/karoli_modern_export.py, eszkozok/karoli_modern_kapu.py, eszkozok/teszt_karoli_modern_export.py]
 fugg: [96, 172]
@@ -70,3 +70,4 @@ Az összekapcsolás nem származtat új Strong-állítást: a vetítés determin
 
 - 2026-11-08 (felhasználó): az N-F96h dokumentálva megy ki, nem javítva; a modernizált Károli a projekt munkája; a nyílt magok saját gyökérszintű mappát kapnak, harmadik fél adata nem megy be, elég egy `MODSZER.md`.
 - DT305/DT314 (a #96-ból): a Strong a #22 párosításból jön, a modern réteg nem tárolja; a kieső token a gazdaszón át érhető el.
+- 2026-11-12 (végrehajtás, `claude-opus-5-5`): a vetítés és a kapu lefutott (0 BUKÁS, UJRA bájtazonos). A teljességi pont a mai 66 könyvön mér: 598 715 pár, 488 659 Strongos token; a brief 418 633-as száma a #96 zárásakori 61 könyvé (a Mt, Mk, Luk, Ján, ApCsel párosítása később készült), és a kapu ezt a 61 könyvön külön is igazolja (418 633 / 418 633). A modern réteg az 5 új könyvön is illeszkedik (0 alakeltérés). Formátum: páronként egy sor, a pár nélküli token egy sorban; `kapcsolat` = `morfema` a H9001–H9049 Strongon, egyébként `szo`. A `kozlemeny/` generált, az ellenőrző összegen kívül, `.gitattributes` export-ignore-ral. A #137 viszonya: a #137 a kieső token Strongját a csomag `gazda_token` oszlopa szerint köti (DT314); a #174 a Strong-kötés előfeltétele. Nyitott: N-F174a (licencek.tsv), N-F174b (CI).
