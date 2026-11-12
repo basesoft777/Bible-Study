@@ -77,7 +77,10 @@ KOTELEZO = ['motivumok.tsv', 'elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_do
             'visszhang_megfelelok.tsv', 'visszhang_tanuk.tsv', 'vitatott_forrasok.tsv', 'sblgnt_apparatus.tsv',
             'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256', 'KIADAS.txt',
             'README.md', 'KNOWN_ISSUES.md', 'RELEASE.txt',
-            'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md']
+            'cc_by_sa_reteg/szemantikai_domenek.tsv', 'cc_by_sa_reteg/OLVASSEL.md',
+            # F208: a nyílt adatmagok egységes készlete (a modernizált Károli – Strong csomag mintájára)
+            'MODSZER.md', 'METHODS.md', 'ATTRIBUCIO.md', 'LICENSE', 'CITATION.cff', '.gitattributes',
+            'kozlemeny/kozlemeny_hu.md', 'kozlemeny/kozlemeny_en.md']
 
 # a zárt értékkészletű oszlopok (egy helyen: az exportban; F170.2), amelyeknek minden értékét a kódkönyv leírja,
 # és amelyek mellett az export `<oszlop>_en` címke-oszlopot ad
@@ -97,7 +100,8 @@ URL_OSZLOP = {'forras_url', 'url', 'doi'}
 CSOMAG_NEVEK = re.compile(r'\b(?:motivumok|elofordulasok|kizarasok|kizaras_csoportok|beepitesi_dontesek|kapcsolatok|'
                           r'motivum_kapcsolatok|dontesnaplo|forrasok_es_licencek|kodkonyv|szemantikai_domenek|'
                           r'visszhang_megfelelok|visszhang_tanuk|vitatott_forrasok|sblgnt_apparatus)\.tsv'
-                          r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK|README|KNOWN_ISSUES)\.md|ELLENORZO_OSSZEG\.sha256')
+                          r'|\b(?:KODKONYV|OLVASSEL|ISMERT_HIBAK|README|KNOWN_ISSUES|MODSZER|METHODS|ATTRIBUCIO)\.md'
+                          r'|\bkozlemeny_(?:hu|en)\.md|ELLENORZO_OSSZEG\.sha256')
 
 EXTRA_BELSO = [
     (re.compile(r'gerinc_elem'), 'belső oszlopnév (gerinc_elem)'),
@@ -112,10 +116,11 @@ SNAKE = EXTRA_BELSO[-1][0]
 
 # a kizárt dataset-nevek, amelyek nem állhatnak a csomagban (a forrásleltár-tábla és a leíró md kivétel)
 KIZART_NEV_KIVETEL = ('forrasok_es_licencek.tsv', 'OLVASSEL.md', 'ISMERT_HIBAK.md', 'ELLENORZO_OSSZEG.sha256',
-                      'KODKONYV.md', 'README.md', 'KNOWN_ISSUES.md')
+                      'KODKONYV.md', 'README.md', 'KNOWN_ISSUES.md', 'ATTRIBUCIO.md', 'MODSZER.md', 'METHODS.md')
 # kétnyelvű vagy angol attribúciós fájlok: az ANGOL-ellenőrzés kivétele (a kódkönyv angol leírása szándékos)
 ANGOL_FAJL_KIVETEL = ('KODKONYV.md', 'kodkonyv.tsv', 'README.md', 'KNOWN_ISSUES.md', 'cc_by_sa_reteg/OLVASSEL.md',
-                      'cc_by_sa_reteg/szemantikai_domenek.tsv')
+                      'cc_by_sa_reteg/szemantikai_domenek.tsv', 'METHODS.md', 'ATTRIBUCIO.md',
+                      'kozlemeny/kozlemeny_en.md')
 
 
 class Talalat:
@@ -348,10 +353,11 @@ def ell_licenc(fajlok):
         st, _ = lic.allapot(d['dataset'])
         if st == 'kizart' and d['szerepe_a_csomagban'] != 'kizárva':
             ki.append(Talalat('LICENC', BUKAS, 'forrasok_es_licencek.tsv', n, d['dataset'], 'kizárt forrás nincs kizárva'))
-    olv = fajlok['OLVASSEL.md']
+    # F208: a kizárt források listája a forrásmegjelölésben áll (a minta szerint), magyarul és angolul
+    attr = fajlok.get('ATTRIBUCIO.md', '')
     for ds in sorted(kizart):
-        if ds not in olv:
-            ki.append(Talalat('LICENC', BUKAS, 'OLVASSEL.md', 1, ds, 'a kizárt dataset listája nem mondja ki'))
+        if attr.count('`%s`' % ds) < 2:
+            ki.append(Talalat('LICENC', BUKAS, 'ATTRIBUCIO.md', 1, ds, 'a kizárt dataset listája nem mondja ki (mindkét nyelven)'))
     return ki
 
 
@@ -580,14 +586,18 @@ def ell_ketnyelv(fajlok):
     hu, en = fajlok.get('OLVASSEL.md', ''), fajlok.get('README.md', '')
     for rel, sz in sorted(fajlok.items()):
         if rel.endswith('.tsv') and rel != 'kodkonyv.tsv' and not rel.startswith('cc_by_sa_reteg/'):
-            sor = '| `%s` | %d |' % (rel, len([x for x in sz.split(chr(10)) if x.strip() and not x.startswith('#')]) - 1)
+            db = len([x for x in sz.split(chr(10)) if x.strip() and not x.startswith('#')]) - 1
+            for nev, t, nyelv in (('OLVASSEL.md', hu, 'hu'), ('README.md', en, 'en')):
+                # F208: a tartalomjegyzék sora: | `fájl` | leírás | sorszám |
+                if not re.search(r'^\| `%s` \| [^\n]* \| %s \|$' % (re.escape(rel), re.escape(E.SZ.ezres(db, nyelv))), t,
+                                 re.M):
+                    ki.append(Talalat('KETNYELV', BUKAS, nev, 1, rel, 'a fájl sorszáma nem egyezik / hiányzik'))
+    for rel in sorted(fajlok):
+        if not rel.startswith(E.SZ.KOZLEMENY_DIR) and rel not in ('RELEASE.txt', 'KNOWN_ISSUES.md', 'METHODS.md',
+                                                                  'README.md', 'OLVASSEL.md', '.gitattributes'):
             for nev, t in (('OLVASSEL.md', hu), ('README.md', en)):
-                if sor not in t:
-                    ki.append(Talalat('KETNYELV', BUKAS, nev, 1, sor, 'a fájl sorszáma nem egyezik / hiányzik'))
-    kizart = sorted(ds for ds in E.Licenc().sor if E.Licenc().allapot(ds)[0] == 'kizart')
-    for ds in kizart:
-        if ds not in en:
-            ki.append(Talalat('KETNYELV', BUKAS, 'README.md', 1, ds, 'a kizárt dataset listája nem mondja ki'))
+                if '`%s`' % rel not in t:
+                    ki.append(Talalat('KETNYELV', BUKAS, nev, 1, rel, 'a kiadott fájl nincs a tartalomjegyzékben'))
     for kell in (E.KANONIKUS_HELY, E.SZERZO, E.ORCID, '## What is in it and what is not', 'RELEASE.txt', 'KNOWN_ISSUES.md',
                  'OLVASSEL.md'):
         if kell not in en:
@@ -640,7 +650,7 @@ def ell_osszeg(fajlok):
         h, _, rel = s.partition('  ')
         elvart[rel] = h
     for rel, sz in fajlok.items():
-        if rel in ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt'):
+        if rel in ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt') or rel.startswith(E.SZ.KOZLEMENY_DIR):
             continue
         h = hashlib.sha256(sz.encode('utf-8')).hexdigest()
         if elvart.get(rel) != h:
@@ -810,6 +820,84 @@ def ell_helyorzo(fajlok):
     return ki
 
 
+# --- F208: a nyilvános próza szabályai (a modernizált Károli – Strong csomag kapujának mintájára) ---------------
+# A próza-fájlok: az olvasónak szóló leíró szövegek. A TSV-adatsor és a kódkönyv nem próza (ott a „PaRDeS” tartalmi
+# említés, pl. a `pardes_szint` oszlop leírása, megengedett; a belső jelölést a BELSO méri).
+PROZA = ('README.md', 'OLVASSEL.md', 'MODSZER.md', 'METHODS.md', 'ATTRIBUCIO.md', 'LICENSE', 'CITATION.cff',
+         'ISMERT_HIBAK.md', 'KNOWN_ISSUES.md', 'cc_by_sa_reteg/OLVASSEL.md')
+NYILVANOS_TILTOTT = [
+    (re.compile(r'(?<![\w-])DT-?F?\d+'), 'döntés-azonosító'),
+    (re.compile(r'(?<![\w-])N-F?\d+\b'), 'nyitott tétel azonosítója'),
+    (re.compile(r'(?<![\w/.#-])F\d{2,3}(?:\.\d+)?\b'), 'feladat-azonosító'),
+    (re.compile(r'(?<![\w&/])#\d{2,3}\b'), 'feladatszám'),
+    (re.compile(r'\b(?:naplok|eszkozok|adat|konkordancia|lexikon|motivumlog|tematikus_lezart|genezis)/'), 'belső útvonal'),
+    (re.compile(r'\b(?:scope|forras|ts)='), 'proveniencia-kulcs'),
+    (re.compile(r'[Oo]rkesztr|[Oo]rchestrat'), '„orkesztrátor”'),
+    (re.compile(r'[Ff]elhasználó'), '„felhasználó”'),
+    (re.compile(r"user's decision|\bthe user\b", re.I), '„user” mint döntéshozó'),
+    (re.compile(r'\btermék|\bproduct\b', re.I), '„termék”'),
+    (re.compile(r'github', re.I), 'GitHub'),
+    (re.compile(r'PaRDeS', re.I), '„PaRDeS” (nem lehet központi keretezés)'),
+    (re.compile(r'HELYŐRZŐ|<[A-Z_]+_URL>|\[A LEXIKON CÍME\]'), 'helyőrző'),
+    (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
+]
+PARDES_OSZLOP = re.compile(r'`?pardes_szint(?:_en)?`?')
+
+
+def proza_fajlok(fajlok):
+    return [rel for rel in sorted(fajlok) if rel in PROZA or rel.startswith(E.SZ.KOZLEMENY_DIR)]
+
+
+def ell_nyilvanos(fajlok):
+    """NYILVANOS (F208): a nyilvános prózában (olvass-el, módszer, forrásmegjelölés, licenc, idézés, ismert hibák,
+    közlemény) nincs belső jelölés (DT/N/F-szám, feladatszám, belső útvonal, proveniencia-kulcs), „orkesztrátor”,
+    „felhasználó”, „termék”, GitHub, helyőrző, „gerinc”, és a „PaRDeS” nem áll benne (a `pardes_szint` oszlopnév
+    kivétel: az oszlop a kódkönyvben van leírva)."""
+    ki = []
+    for rel in proza_fajlok(fajlok):
+        for i, sor in enumerate(fajlok[rel].split('\n'), 1):
+            s = PARDES_OSZLOP.sub('', sor)
+            for rx, nev in NYILVANOS_TILTOTT:
+                m = rx.search(s)
+                if m:
+                    ki.append(Talalat('NYILVANOS', BUKAS, rel, i, kor(s, m), 'nyilvános szövegben: %s' % nev))
+    return ki
+
+
+def ell_nevelo(fajlok):
+    """NEVELO (F208): a magyar prózában a szám előtti névelő a kiejtés szerinti (az 5, a 47, az 1. pont), és nem áll
+    el nem döntött „a(z)” alak; a fejlécek a csomag minden fájljában."""
+    ki = []
+    for rel in E.MAGYAR_PROZA:
+        for h in E.SZ.nevelo_hibak(fajlok.get(rel, '')):
+            ki.append(Talalat('NEVELO', BUKAS, rel, 1, h, 'a névelő nem a kiejtés szerinti'))
+    for rel, t in fajlok.items():
+        if re.search(r'\b[Aa]\(z\)', '\n'.join(t.split('\n')[:4])):
+            ki.append(Talalat('NEVELO', BUKAS, rel, 1, 'a(z)', 'el nem döntött „a(z)” a fejlécben'))
+    return ki
+
+
+def ell_kozlemeny(fajlok):
+    """KOZLEMENY (F208): a `kozlemeny/` hu/en tervezete megvan, nincs az ellenőrző összegben, és a `.gitattributes`
+    kihagyja a kiadási archívumból; a `.gitattributes` az LF sorvéget rögzíti (az összeg az LF-es bájtokra szól)."""
+    ki = []
+    g = fajlok.get('.gitattributes', '')
+    if 'kozlemeny/ export-ignore' not in g:
+        ki.append(Talalat('KOZLEMENY', BUKAS, '.gitattributes', 1, '', 'a kozlemeny/ mappát nem hagyja ki a kiadásból'))
+    if '* text eol=lf' not in g:
+        ki.append(Talalat('KOZLEMENY', BUKAS, '.gitattributes', 1, '', 'nem rögzíti az LF sorvéget'))
+    if E.SZ.KOZLEMENY_DIR in fajlok.get('ELLENORZO_OSSZEG.sha256', ''):
+        ki.append(Talalat('KOZLEMENY', BUKAS, 'ELLENORZO_OSSZEG.sha256', 1, '', 'a kozlemeny/ az ellenőrző összegben áll'))
+    for kell in ('CC BY 4.0', E.DOI_MAG):
+        for rel in ('kozlemeny/kozlemeny_hu.md', 'kozlemeny/kozlemeny_en.md', 'CITATION.cff', 'LICENSE'):
+            if rel != 'LICENSE' or kell != E.DOI_MAG:
+                if kell not in fajlok.get(rel, ''):
+                    ki.append(Talalat('KOZLEMENY', BUKAS, rel, 1, kell, 'hiányzik'))
+    if E.ORCID not in fajlok.get('CITATION.cff', ''):
+        ki.append(Talalat('KOZLEMENY', BUKAS, 'CITATION.cff', 1, E.ORCID, 'hiányzik az ORCID'))
+    return ki
+
+
 def mer(fajlok, kimenet=None, ujra=True):
     ki = []
     for rel in KOTELEZO:
@@ -819,7 +907,7 @@ def mer(fajlok, kimenet=None, ujra=True):
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
-              ell_szerkeszto, ell_lyuk, ell_visszhang, ell_helyorzo):
+              ell_szerkeszto, ell_lyuk, ell_visszhang, ell_helyorzo, ell_nyilvanos, ell_kozlemeny, ell_nevelo):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')
