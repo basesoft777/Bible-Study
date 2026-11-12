@@ -53,6 +53,7 @@ A „L123” jelölés a lap sorszáma ebben a commitban. A #182 2. fázisa még
 | # | Blokk | Követelmény | Forrás | Ellenőrzés | HAMART-állapot |
 |---|---|---|---|---|---|
 | K21 | lapfej | Az egyszerűsített kolofon nyitja a lapot, a cím után és a Kivonat előtt: a motívum, a negatív elhatárolás, a fölérendelt fogalom, olvasói alakban, mutatóval a Kolofonra; a teljes azonosító tábla (ID, rövid cím, teljes cím, téma, PaRDeS-szint, státusz, azonosság típusa, negatív kritérium, fölérendelt fogalom) a Kolofonban. Az 1. kiadás feltétele (B15). | F18 (a), (b) — szerkesztői döntés, 2026-11-09: „ezzel a kolofon résszel induljon az oldal minden esetben”; a felhasználó, 2026-11-11: „a motívum megfogalmazása / negatív elhatárolás / fölérendelt fogalom ahogy a régiben volt — a legvégén a teljes” (DT781) | gépi: `teszt_kesz_lap_hamart.py` (`test_a02_…`) | **teljesül** — #182, F182.30; átalakítva: HAMART-lapkeret, F182.67. |
+| K21a | lapfej | A motívum meghatározása (`motivumok.tsv` `meghatarozas`, 1–2 mondat) áll a lap elején, a „A motívum.” bekezdésben, és a Kolofon azonosító táblájában („Meghatározás” sor, az azonosság típusa előtt); nem a cím, nem az azonosság típusa, és nem a negatív kritérium ismétlése. | a felhasználó, 2026-11-11: „hiányolom a motívum definíciót … a kolofonban is és az elején” | gépi: olvasói kapu MEGHATAROZAS (BUKÁS), teszt | **teljesül** — lap-javit HAMART-001 (#699) |
 | K22 | lapfej | A tábla mezőnevei olvasói nyelvűek („Rövid UI-címke” helyett pl. „Rövid cím”). | F18 (d) | lektor | **teljesül** — #182, F182.30 („Rövid cím”). |
 | K23 | lapfej | A „Státusz” a kiadási állapotból generálódik: kiadás előtt nem „publikálható (v1, 2026.09.11)”. | F18 (c); DT492 (`adat/kiadasok.tsv`) | gépi: tervezett (F18 (c)) | **teljesül** — #182, F182.30 (`kiadasi_statusz`; az Irodalom „Hogyan hivatkozz” státusza is). |
 
@@ -184,7 +185,7 @@ A „L123” jelölés a lap sorszáma ebben a commitban. A #182 2. fázisa még
 | K89 | Kolofon | A szerzőségi mondat adatból áll (az értelmező szakaszok neve, a próza modellje, az átnézés), és a lap mai szakaszneveit használja. | DT603; sablon 6 „Kolofon” | gépi: KOLOFON | **teljesül** — #182, F182.30 (a szerzőségi mondat az Alkalmazás nélkül). |
 | K90 | Kolofon | A kiadás-sor és a változásjegyzék az `adat/kiadasok.tsv`-ből jön; a próza modellje a tényleges modellnév. | DT492; DT473; sablon 6 „Kolofon” | gépi: KOLOFON | **teljesül** a kiadás előtti állapotra (L3415–3420); a modellnév a C5-ben kerül be. |
 | K91 | Kolofon | A forrástábla (Forrás · Fájl · Licenc · Blokk) a ténylegesen felhasznált forrásokat adja, licenccel. A licenc-attribúciók állnak. | sablon 6 „Kolofon”, „Licenc és nyilvános repó” | gépi: KOLOFON | **teljesül** — #182, F182.30, F182.41 (forrásonként egy sor, „Fájl” oszlop nélkül, olvasói névvel). |
-| K92 | Kolofon | Az „Emberi lektorálás” sor a `/lap-javit` naplójából generálódik. | DT599 | gépi: KOLOFON | **hátralévő lépés** — a `/lap-javit` még nem futott. |
+| K92 | Kolofon | Az „Emberi lektorálás” sor a `/lap-javit` naplójából generálódik; az új szerkezetű lapon helyette elöl a „Szerkesztői átnézés és javítás”, utána a „Modell-lektor” sor áll (`kolofon_lektor_uj`). | DT599 | gépi: KOLOFON | **hátralévő lépés** — a `/lap-javit` még nem futott. |
 
 ## 14. A lezárás folyamatfeltételei (a lap mellett)
 

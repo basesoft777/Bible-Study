@@ -16,7 +16,7 @@ A „mehet”, „jó”, „igen” csak arra a helyre vonatkozik, amelyről é
 
 ## 1. Beolvasás
 
-1. **A teljes próza (K1).** Aki belenyúl, az egészet olvassa. A lap kézi réseinek forrása az `adat/res_forras.tsv` szerint: migrált motívumnál a `motivumok/<ID>.md`, nem migráltnál a tematikus tanulmány és a kereszthivatkozás-napló `<!-- RÉS-KEZDET: … -->` / `<!-- RÉS-VÉGE: … -->` jelölői közötti szöveg. Ezeket egészben olvasod; a generált lapot (`lexikon/<ID>_TUDOMANYOS.md`) csak a rámutatott hely környékén.
+1. **A teljes próza (K1).** Aki belenyúl, az egészet olvassa. *(Kivétel: a 7. pont „Gyors út” pontcseréje.)* A lap kézi réseinek forrása az `adat/res_forras.tsv` szerint: migrált motívumnál a `motivumok/<ID>.md`, nem migráltnál a tematikus tanulmány és a kereszthivatkozás-napló `<!-- RÉS-KEZDET: … -->` / `<!-- RÉS-VÉGE: … -->` jelölői közötti szöveg. Ezeket egészben olvasod; a generált lapot (`lexikon/<ID>_TUDOMANYOS.md`) csak a rámutatott hely környékén.
 2. **A lektor kérdéslistája**, ha van: `naplok/KIADAS_<ID>_lektor.md` (a `/kiadas` 3. lépése). A nyitott kérdések jó jelöltek, de a parancs nem dolgozza fel őket magától: a felhasználó mutat rá.
 3. **Kiadási állapot.** `adat/kiadasok.tsv`: a motívum legnagyobb `kiadas` értéke (nincs sor: nem kiadott lap). `adat/lap_atnezesek.tsv`: van-e érvényes átnézés (a `lap_commit` a lap mai utolsó commitja, `git log -1 --format=%H -- lexikon/<ID>_TUDOMANYOS.md`; DT554). `adat/lap_javitasok.tsv`: a korábbi javítások.
 
@@ -98,6 +98,33 @@ A felhasználó a lapot a **lapnézet-artifactban** olvassa. A nézet csak a gen
 4. **Kiadott lap** (van sora az `adat/kiadasok.tsv`-ben), ha a felhasználó nem kért új kiadást: a forrásba **nem** írsz. A lezárt kiadás utáni lelet a következő kiadásé (lezárási szabály). A jóváhagyott javítás `N-F…` helyőrzős nyitott tételként kerül a `nyitott/uj/<ágnév>.md`-be („<ID> <n+1>. kiadás javítandója”: jel, hely, régi, új, gond, osztály). A `lap_javitasok.tsv`-be ilyenkor nem kerül sor, mert a kolofon onnan a lapon ténylegesen javított helyeket számolja; a sor a következő kiadás menetében, a tényleges javítással együtt íródik.
 5. **A próza gazdája.** Ha a lap prózáján épp egy másik session dolgozik (pl. az új cikk saját ága), a próza egy kézben marad (K1): a próza-osztályú javítást nem írod be, hanem `SendMessage`-dzsel átadod a próza gazdájának (jel, hely, régi, új, gond, a felhasználó jóváhagyó szava); a beírás és a `lap_javitasok.tsv`-sor az ő menetében történik. Adat-, forrás- és generátorhibánál a 3.b–3.d útja a tiéd (saját ágon, saját PR-ban), de a hatásról a próza gazdáját is értesíted.
 6. **Zárás.** Az 5. pont után a nézetet a javított lapból újraépíted, és ugyanarra az URL-re publikálod; a jelek az új commit szerint frissülnek.
+
+## 7. Gyors út — a szövegszintű javításra (F209)
+
+Cél: egy átnézési körből jött kis szövegjavítás 15–30 perc alatt a main-re kerül, ugyanazzal a biztonsággal (a CI marad), a fölösleges lépések nélkül. A gyors út **kivétel** a fenti pontok alól, csak az itt kimondott helyeken.
+
+**Mikor jár (mind a négy feltétel).**
+1. Csak szöveg változik: a kézi próza (`motivumok/<ID>.md` rései) és/vagy a generátor egy olvasói sablonmondata vagy címkéje.
+2. Nem változik: adattábla (`adat/*.tsv`), a lap szerkezete (blokk törlése, összevonása, áthelyezése), szám, kapu-logika, séma.
+3. Kicsi: legfeljebb kb. 30 csere, mindegyik tagmondat-szintű (`régi → új`).
+4. A felhasználó megjegyzéséből jön, egy átnézési körből, összegyűjtve; a gyors út a gyűjtés lezárásakor egyszer fut, nem megjegyzésenként.
+
+Ha bármelyik nem teljesül: a rendes út (1–6. pont, független ellenőrrel).
+
+**Menet (egy session, egy commit).**
+0. **Kimondás az elején:** „gyors út: csak szöveg, N csere, adat és szerkezet nem változik.” Ha menet közben adat vagy szerkezet kell, megállsz és jelzed; a rendes útra kerül.
+1. **Beolvasás:** csak az érintett rések és a gyűjtött megjegyzéslista. A K1 teljes prózaolvasás (1. pont) pontcserénél itt nem kötelező.
+2. **Csere:** pontcsere a forrásban vagy a sablonmondatban (a 3.a szabályai: legkisebb javítás, a hang marad); a `régi → új` lista a jelentésbe és a PR leírásába kerül. A felhasználó jóváhagyása a gyűjtött listára vonatkozik (a „mehet” csak arra a listára szól).
+3. **Újragenerálás:** csak az érintett lap(ok): `python eszkozok/general.py --cel lexikon --id <ID> --ir`. Ha sablonmondat változott, a többi lap bájtazonossága (E28) ellenőrzendő.
+4. **Helyi ellenőrzés (kb. 2–5 perc), csak ez:** `olvasoi_kapu.py <ID>` (0 BUKÁS, nem több FIGYELMEZTETÉS); `proza_allitas.py <ID>`, ha a csere versre vonatkozó mondatot érint; a lap saját tesztje (`teszt_kesz_lap_<id>.py`), ha van; `ellenoriz.py` a diff fájljain.
+5. **Naplózás:** a javított helyek sorai a 4. pont szerint (`lap_javitasok.tsv`), ha a felhasználó jóváhagyta.
+6. **Push és draft PR**, a cím `[GYORS]` előtaggal; a leírásban a `régi → új` lista. Az átnézéshez a felhasználónak a változás-nézetet add: `python eszkozok/lektor_felulet/lapnezet.py <ID> <scratch>/<ID>_valtozas.html --valtozas <alap-commit>` (csak a változott blokkok, előtte–utána párban, kiemelve; a 6. pont szerint publikálva).
+
+**Mi marad ki:** független ellenőr, teljes tesztsor, lassú tesztek, javítókör (a CI ezeket a PR-on úgyis futtatja; ellenőrzési szint: `gyors`, `MUNKAMENET.md` „Menet-ellenőrzés”).
+
+**Biztosíték.** A CI változatlanul fut (E28 frissesség, olvasói kapu, szabálytesztek), és zöldnek kell lennie a merge-hez (az orkesztrátor merge-el); a CI-eredmény csak a pusholt commitra érvényes (`/kovetkezo` 10. lépés, CI-szabály). **Piros CI-nél nem javítgatsz a gyors úton:** megnevezed a hibát, és a rendes útra kerül. Kiadott lapnál a gyors út javítása a következő kiadás változásjegyzékébe kerül, új lektori kör nélkül.
+
+**Mérés.** Cél: a megjegyzéslista lezárásától a merge-ig legfeljebb 30 perc (ebből a CI kb. 10). Az első két gyors út után a tényleges idő és a visszaesések (piros CI, és miért) a jelentésbe és az `N-F209…` tételbe kerülnek.
 
 ## Kimenet
 
