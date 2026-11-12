@@ -1019,7 +1019,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 |---|---|---|---|---|---|---|
 | Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` | publikálható | v3 | 2026.11.03 | 6 fő / 74 sor | 0 | motivumok/ALVIL-001.md |
 | Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` | publikálható | v4 | 2026.11.03 | 7 fő / 11 sor | 0 | motivumok/ANTROP-001.md |
-| A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | publikálható | v1 | 2026.09.11 | 4 fő / 47 sor | 0 | motivumok/HAMART-001.md |
+| A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | publikálható | v2 | 2026.11.12 | 4 fő / 47 sor | 0 | motivumok/HAMART-001.md |
 | Rafeusok/óriás-népek `[ID: HODIT-001]` | publikálható | v3 | 2026.09.10 | 1 fő / 33 sor | 14 | tematikus_lezart/Rafaim_tematikus.md |
 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | publikálható | v4 | 2026.11.02 | 5 fő / 22 sor | 0 | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md |
 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | publikálható | v2 | 2026.09.10 | 1 fő / 9 sor | 1 | tematikus_lezart/Melkizedek_tematikus.md |
