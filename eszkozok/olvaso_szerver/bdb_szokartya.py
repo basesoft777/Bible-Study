@@ -91,6 +91,16 @@ def apparatusba(s, ref_tokenek, apparatus_e, forrasjel_re):
     return re.sub(r'\s{2,}', ' ', ''.join(ki)), forras, app
 
 
+def _szerkezet_e(s, f):
+    """A héber futam önálló szerkezet-e: zárójelen kívül áll, és nem tapad hozzá magyar rag vagy szó (kötőjellel vagy közvetlenül)."""
+    elotte = s[:f.start()]
+    if elotte.count('(') + elotte.count('[') > elotte.count(')') + elotte.count(']'):
+        return False
+    if re.match(r'-?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]', s[f.end():]) or f.group(0).endswith('-'):
+        return False
+    return not re.search(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]$', elotte)
+
+
 def egysegek(s, ref_tokenek):
     """A jelentés saját szövegének használati sorai: [{'szerk', 'magy', 'hely', 'egesz'}]. `ref_tokenek(szöveg)` →
     [(kezdet, vég, kulcs)] (a `blokkok._ref_tokenek`). `hely`: a szövegrész az első hivatkozástól (a hivatkozások és a köztük álló
@@ -112,7 +122,9 @@ def egysegek(s, ref_tokenek):
             sor.update(magy=d.strip(), hely='', egesz=True)
             sorok.append(sor)
             continue
-        futamok = list(HEB_FUTAM.finditer(elo))
+        # a szerkezet csak a zárójelen kívüli, ragtalan héber kifejezés: a magyar mondatba ágyazott, ragos alak („szemben
+        # לַיְלָה-val”) a magyarázat része marad, különben a rag leválik és a sor összekeveredik
+        futamok = [f for f in HEB_FUTAM.finditer(elo) if _szerkezet_e(elo, f)]
         if futamok:
             f = futamok[0]
             sor['szerk'] = f.group(0).strip(' ,')

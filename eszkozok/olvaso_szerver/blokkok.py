@@ -635,7 +635,9 @@ def _f_ebben(K):
             karoli = (hu, fo)
             break
     sz = q.strong_szotar(K.con, K.strong) if getattr(K, 'szotar_ok', True) else None
-    return {'talalat': talalat, 'ubs': ubs, 'karoli': karoli, 'glossza': _glossza_hu(K), 'glossza_en': (sz or ('',) * 4)[3]}
+    # F213: az UBS angol glosszáinak magyarja a szó glossza-fordításaiból (pontos angol egyezés), a glossza forrásblokkja szerint
+    gl_hu = q.glosszak_heber_hu_angol(K.con, K.strong) if (ubs and getattr(K, 'glossza_ok', True)) else {}
+    return {'talalat': talalat, 'ubs': ubs, 'karoli': karoli, 'glossza': _glossza_hu(K), 'glossza_en': (sz or ('',) * 4)[3], 'gl_hu': gl_hu}
 
 
 def _r_ebben(d, K):
@@ -674,8 +676,9 @@ def _r_ebben(d, K):
                 ki += Markup('<div class="ubs"><span class="dom">%s</span> <span class="def">%s</span> <span class="gl">Glosszák: %s</span>'
                              '<span class="angol-kis" lang="en">%s · %s</span></div>') % (dom or '', df_hu or df or '', gl_hu or gl or '', df or '', gl or '')
             else:
-                ki += Markup('<div class="ubs"><span class="dom">%s</span> <span class="def" lang="en">%s</span> <span class="gl" lang="en">Glosszák: %s</span>'
-                             '<span class="megj">A UBS-jelentés magyar fordítása ehhez a szóhoz még nincs.</span></div>') % (dom or '', df or '', gl or '')
+                gl_hu = '; '.join(d['gl_hu'][g] for g in re.split(r'\s*[;,]\s*', gl or '') if g in d.get('gl_hu', {}))
+                ki += Markup('<div class="ubs"><span class="dom">%s</span> <span class="def" lang="en">%s</span> <span class="gl">Glosszák: %s</span>'
+                             '<span class="megj">A UBS-jelentés magyar fordítása ehhez a szóhoz még nincs.</span></div>') % (dom or '', df or '', _hu_en(gl_hu, gl))
     else:
         ki += Markup('<p class="megj">A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást.</p>')
     return ki
@@ -1599,6 +1602,13 @@ def _szk_csomopont(cx, n, nid, elotag, ti, jel, al, tn, cimke, en_kulcs=None):
     return gl, kezi, sorok, also, egyben, meta, szint, van_mot
 
 
+def _szk_reszfa_db(vj, jid, j, elotag, ti):
+    """A jelentés a tartalomjegyzékben: a saját és az alpontjai hivatkozásainak száma (a teljes részfa); 0 esetén nem áll."""
+    if not vj.van:
+        return j.get('ref') or 0
+    return vj.db(jid) + sum(vj.db(_jel_id(elotag, ti, j['jel'], s['jel'])) for s in j['al'])
+
+
 def _szk_torzsek(cx, tl, elotag, cimke):
     """A törzsek és jelentéseik szókártya-alakban; (HTML, a tartalomjegyzék sorai)."""
     vj = cx['vj']
@@ -1637,7 +1647,7 @@ def _szk_torzsek(cx, tl, elotag, cimke):
                 tj.append(Markup('<li class="szk-tj-sor%s%s"><a href="#%s"><span class="szk-jelszam">%s</span><span class="szk-tj-gl">%s</span>'
                                  '<span class="szk-tj-db">%s</span></a>%s</li>') % (
                     ' szk-van-mot' if van_mot else '', ' bdb-itt' if szint == 'eros' else '', jid, j['jel'], gl or '—',
-                    vj.db(jid) if vj.van else (j.get('ref') or ''),
+                    _szk_reszfa_db(vj, jid, j, elotag, ti) or '',
                     Markup('<span class="szk-tag szk-tag-ez">ez a vers</span>') if szint == 'eros' else ''))
         tid = Markup(' id="%s"') % tdom if tdom else Markup('')
         ki += Markup('<div class="torzs szk-torzs%s"%s>%s<ol class="szk-jelentesek">%s</ol></div>') % (

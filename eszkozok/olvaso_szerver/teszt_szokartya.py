@@ -42,6 +42,13 @@ class Szabalyok(unittest.TestCase):
         self.assertIn('1Sám 14:36', sorok[0]['hely'])
         self.assertEqual(sorok[1]['szerk'], 'לָאוֺר')
 
+    def test_ragos_heber_szo_nem_szerkezet(self):
+        """Átnézés (2026-11-12): a magyar mondatba ágyazott, ragos héber alak nem válik le szerkezetként (bidi: „-לַיְלָה (szemben val)”)."""
+        sorok = szk.egysegek('az éjszaka végéről (szemben לַיְלָה-val) 2Móz 10:13', ref_tokenek)
+        self.assertEqual(sorok[0]['szerk'], '')
+        self.assertEqual(sorok[0]['magy'], 'az éjszaka végéről (szemben לַיְלָה-val)')
+        self.assertEqual(szk.egysegek('reggel, לָאוֺר Jób 24:14', ref_tokenek)[0]['szerk'], 'לָאוֺר')
+
     def test_zarojelen_beluli_pontosvesszo_nem_bont(self):
         sorok = szk.egysegek('föld (a; b) 1Móz 1:1; ég 1Móz 1:2', ref_tokenek)
         self.assertEqual([x['magy'] for x in sorok], ['föld (a; b)', 'ég'])
@@ -128,6 +135,14 @@ class Szokartya(unittest.TestCase):
         self.assertIn('<details class="szk-alakok"><summary>Alakok</summary>', b)
         self.assertIn('<details class="szk-rokon"><summary>Rokon nyelvek és eredet</summary>', b)
 
+    def test_tartalomjegyzek_a_reszfa_szama(self):
+        """Átnézés (2026-11-12): a jelentés száma a tartalomjegyzékben a saját és az alpontjai hivatkozásaié (H1242 1.: csak alpontos)."""
+        b = blokk(self.get('/szo/H1242'))
+        tj = re.search(r'<nav class="szk-tj".*?</nav>', b, re.S).group(0)
+        db = re.findall(r'<span class="szk-tj-db">([^<]*)</span>', tj)
+        self.assertTrue(db[0].isdigit() and int(db[0]) > 0, db[:2])
+        self.assertNotIn('<span class="szk-tj-db">0</span>', tj)
+
     def test_nem_bonthato_sor(self):
         b = blokk(self.get('/szo/H0127'))
         self.assertRegex(b, r'<li class="szk-sor szk-egesz"><span class="szk-magy">a bűnbánatéként')
@@ -198,6 +213,7 @@ class Szokartya(unittest.TestCase):
         b = blokk(self.get('/szo/H1242?vers=1Moz/1/5'), 'szo.ebben')
         self.assertIn('Glossza: reggel <span class="angol-kis" lang="en">morning</span>', b)
         self.assertIn('A UBS-jelentés magyar fordítása ehhez a szóhoz még nincs.', b)
+        self.assertIn('Glosszák: reggel <span class="angol-kis" lang="en">morning</span>', b)          # az UBS-glossza magyarul elöl
         b2 = blokk(self.get('/szo/H0127?vers=1Moz/3/17'), 'szo.ebben')
         self.assertNotIn('még nincs', b2)                                                   # a H0127-nek van magyar UBS-fordítása
         self.assertRegex(b2, r'<span class="def">= [^<]*föld')
