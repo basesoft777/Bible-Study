@@ -3,7 +3,7 @@ feladat: 194
 cim: Az ISTENTISZT-001 új cikke (2. kiadás) a HAMART-001 mércéjén — 1. fázis, adat
 kod: ISTENTISZT_UJ_CIKK
 tipus: feladat
-fazis: lexikon
+fazis: folyamat
 modell: opus
 allapot: megallt
 ag: claude/istentiszt-uj-cikk-992f57
