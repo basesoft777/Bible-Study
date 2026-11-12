@@ -189,6 +189,9 @@ A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi
    |---|---|---|---|
    | `teljes` (alapértelmezés) | minden feladat, amely nem könnyített: `munka: ertelmezo`; régi fejléc `ir` nélkül; üres `ir`; az `ir` bármely eleme, amely nincs a könnyített listán (adat, motívum, lexikon, forrás, sablon, nyílt adatkészlet, új mappa, szkript), glob vagy perjel nélküli könyvtárnév; és mindig az olvasói kimenetet előállító kód (`eszkozok/olvaso_szerver/`, `eszkozok/olvaso_pilot/`, `lexikon_general.py`, `olvasoi_kapu.py`, `nyilt_mag_export.py`, `*general*.py`) | a teljes ellenőrzőlista | legfeljebb 2 |
    | `konnyitett` | csak ha az `ir` **minden** eleme a szűk, kifejezett listára esik: dokumentáció és koordináció (a `naplok/` szöveges `*.md` fájljai — a `.py`, `.tsv` és minden más nem —, `dontesek/uj/`, `nyitott/uj/`, `*_BRIEF.md`, a folyamat-dokumentumok), teszt (`teszt_*` / `test_*`, `tesztek/`), CI és parancs (`.claude/`, `.github/`, `eszkozok/ellenorzes/`, `feladatok.py`); a lista egyetlen helye: `eszkozok/feladatok.py` `SZINT_KONNYITETT_*` és `SZINT_OLVASOI_*` (DT721 (c)) | a könnyített lista (`.claude/agents/fuggetlen-ellenor.md`, „Ellenőrzési szint”) | legfeljebb 1 |
+   | `gyors` | nem brief-feladat: a lexikonlap szövegszintű javítása, amely a `/lap-javit` 7. pontjának mind a négy feltételét teljesíti (F209) | nincs | nincs (piros CI: rendes útra) |
+
+   A `gyors` szint szabálya és menete a `/lap-javit` 7. pontjában áll (`.claude/commands/lap-javit.md`); a PR-on a CI teljes egészében kötelező. A `feladatok.py szint` ezt nem vezeti le (N-F209a).
 
    - **Minden szinten megmarad:**
      - a PR teljes CI-je (E1–E37; a szint egyetlen szabályt sem kapcsol ki);

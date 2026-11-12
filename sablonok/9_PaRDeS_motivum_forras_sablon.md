@@ -2,7 +2,7 @@
 
 **Állapot: v2 (F178, 2026-11-08): a HAMART-001 mint arany — a lezárás hét szabálya (4. pont).** Előző: v1 (a #123 DT585 tétele, 2026-11-03). A v1 a v0.5 és az ALVIL-001 új cikkének öt tanulsága mint sablonszabály (4. pont, „Az új cikk öt szabálya”); a menetszabályok a `MUNKAMENET.md` „A lezárás menete motívumonként” szakaszában állnak. A #12-höz igazítás kérdése tárgytalan (a #12 2026-11-02-án lezárult, a TEREMT-002 a #123-é). Az első motívum, amely a v1-re íródik: ANTROP-001.
 
-*v2.2 — 2026.11.11 (F206, a HAMART-001 lektori körének tanulsága, gyökérok: `naplok/F206_jelentes.md`): a Kivonat határ-elemének 1. pontjában „Egy szabály, két hely, egy szöveg” (a lap eleje és a Kivonat határszabálya egyezik, a kizárás oka a valódi ok); „A lap elején a meghatározás áll” (nem a cím, nem az azonosság típusa; a mező a #182-é); az 1/a 1. pontja a lánchoz kötő mondatnál a 10. sablon „Állítás a versről” 5. szabályára hivatkozik. A próza mondatszintű szabályai a 10. sablonban állnak (DT-F206a).*
+*v2.2 — 2026.11.11 (F206, a HAMART-001 lektori körének tanulsága, gyökérok: `naplok/F206_jelentes.md`): a Kivonat határ-elemének 1. pontjában „Egy szabály, két hely, egy szöveg” (a lap eleje és a Kivonat határszabálya egyezik, a kizárás oka a valódi ok); „A lap elején a meghatározás áll” (nem a cím, nem az azonosság típusa; a mező a #182-é); az 1/a 1. pontja a lánchoz kötő mondatnál a 10. sablon „Állítás a versről” 5. szabályára hivatkozik. A próza mondatszintű szabályai a 10. sablonban állnak (DT793).*
 
 *v2.1 — 2026.11.11 (F193; DT738, DT766, DT768): a 4. pontban „Az értelmező szakaszok kötelező elemei” (J2–J4), a szakasztábla a lap új számaival (10. Értelmezés, 11. Módszertan), a kerek 1/a mintája a HAMART-001-ből (B12).*
 

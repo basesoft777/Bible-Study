@@ -5,11 +5,12 @@ kod: PROZA_PROMPT
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: a prózaíró prompt (10. sablon v1.2) és a forrássablon (9. sablon v2.2) a HAMART-001 lektori körének 12 hibaosztályával; a független ellenőrzés és a javítókör kész; nyitott: N-F206a (olvasói kapu, a #699 után)
 ag: claude/epic-hawking-d0313a
 pr: 705
 ad: gyökérok-tábla a lektor 46 tételére, a független ellenőr 17 eltérésére és a gépi versellenőrzés 14 eltérésére; a 10. sablonban „Állítás a versről — írás közben” hét szabállyal és valós rossz/jó példapárokkal, a belső-szó szabály pontosítva; a 9. sablonban a lap eleje és a Kivonat határszabályának egyezése; a proza_allitas.py két új ⚑ jelzése (kapcsolat-állítás, hatókör) teszttel
-kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az ISTENTISZT-001 U3 menete ezzel a prompttal fut; az olvasói kapu bővítése (N-F206a) a #699 merge-e után"
+kovetkezo: "lezárva; a PR #705 a main-en (2026-11-11)"
 munka: folyamat
 olvas: [sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, adat/kapcsolatok.tsv]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py]
@@ -60,5 +61,5 @@ A `MUNKAMENET.md` nem változik: a lépések sorrendje ugyanaz.
 - G2: a `proza_allitas.py` kapu-szintje változatlanul JELENTÉS (DT785); a tesztek a CI „Szabaly-tesztek” lépésében futnak.
 - G3: a TSV-olvasás `split('\t')`.
 - G4: példapár csak a HAMART-001 valós mondataiból áll (rossz: a lektor által látott main-szöveg; jó: a #699 javított szövege); kitalált példa nincs.
-- D1 (DT-F206a): a próza mondatszintű szabályai a 10. sablonban állnak, a forma- és szerkezeti szabályok a 9.-ben.
+- D1 (DT793): a próza mondatszintű szabályai a 10. sablonban állnak, a forma- és szerkezeti szabályok a 9.-ben.
 - ⛔ A merge a felhasználóé (az orkesztrátor végzi a kérésére).
