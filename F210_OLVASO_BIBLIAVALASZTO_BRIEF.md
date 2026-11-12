@@ -11,7 +11,7 @@ ad: az olvasó könyvválasztójának legfelső szintje a bibliaválasztó csak 
 kovetkezo: "Te: a draft PR böngészős átnézése a mockup és a #60 pilot mellé téve (⛔); merge-et az orkesztrátor végzi"
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/, eszkozok/sqlite_epit.py, adat/karoli_modern/karoli_modern.tsv, adat/karoli_modern/karoli_modern_versek.tsv, konkordancia/KJV_teljes_szoveg.tsv, adat/licencek.tsv]
-ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/sablonok/fejezet.html, eszkozok/olvaso_szerver/statikus/olvaso.js, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_bibliavalaszto.py, eszkozok/olvaso_szerver/README.md, F210_OLVASO_BIBLIAVALASZTO_BRIEF.md, naplok/F210_jelentes.md]
+ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/sablonok/fejezet.html, eszkozok/olvaso_szerver/statikus/olvaso.js, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_bibliavalaszto.py, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/README.md, F210_OLVASO_BIBLIAVALASZTO_BRIEF.md, naplok/F210_jelentes.md]
 fugg: []
 nem_fugg: [101, 122, 135, 137, 140, 147, 149, 181, 195]
 ---

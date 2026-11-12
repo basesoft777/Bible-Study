@@ -54,6 +54,12 @@ A Károli és a modern Károli tokenarányát a betoldott (fordítói) szavak é
 - Élő szerver (WSL, 8790-es port, az új adatbázis másolatával): a választó a mockup szerint; a TAHOT-szóra koppintva a szópanel (H0430) nyílik, a cím `?biblia=tahot`-tal marad; a KJV (Zsolt 3) és az LXX (Zsolt 23) lapja helyes.
 - A teljes tesztkör: l. a Zárást.
 
-## 6. Zárás
+## 6. Tesztkör
 
-A teljes tesztkör eredménye, a PR és a nyitott pontok (N-F210a–c): a PR leírásában és a `nyitott/uj/` fájlban. ⛔ A merge előtt a felhasználó a böngészőben átnézi.
+*proveniencia: scope=eszkozok/olvaso_szerver/teszt_*.py, egyenként (`python teszt_X.py`, a WSL venv-vel, PARDES_DB=a F210 adatbázisa) | forras=a futás kimenete | ts=2026-11-12*
+
+A `python eszkozok/teszt_futtat.py` a WSL-ben a saját zárja megszerzése után a tesztek előtt elakadt (gyermekfolyamat nélkül, egy órán át alvó állapotban, kimenet nélkül); leállítottam, és a tesztfájlokat a futtató `fut` függvényének mintájára egyenként futtattam. Zöld: `teszt_arculat` (27), `teszt_bdb_sefaria_tanu` (13), `teszt_bdb_vers_jelentes` (52), `teszt_bibliavalaszto` (11), `teszt_indito` (39), `teszt_kereses` (36), `teszt_megfelelo_kinyer` (27), `teszt_olvaso_hibak` (7), `teszt_olvaso_szerver` (111, 1 kihagyva), `teszt_pilot_aranymintaval` (22), `teszt_tanulmany_oldal` (17), `teszt_tervezo` (51; az első futásban 3 hiba volt: a regiszter elemszáma és a `.biblia-jegy` szelektor a teszt Károli-lapjain, egy körben javítva), `teszt_ubs_dbh` (6). **Piros, de nem az F210 okozza:** `teszt_szintek` (2 hiba, 1 kivétel: BDB-szócikk, „Ebben a versben”, a H0120 szó-lapja) és `teszt_visszhang_kapu` (2 hiba: a 4.11 Visszhang-bevezető); mindkettő az `origin/main` (3a85fa41) kódján, ugyanezzel az adatbázissal pontosan ugyanígy bukik.
+
+## 7. Zárás
+
+Kész: a bibliaválasztó a mockup szerint, csak szószintű Strong-kapcsolatú szöveggel (Károli 1908, modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB); az építő 3 új táblája; 11 új teszt. Nyitott: N-F210a–c (`nyitott/uj/`), DT-F210a 🟡. ⛔ A merge előtt a felhasználó a böngészőben átnézi; a merge az orkesztrátoré.
