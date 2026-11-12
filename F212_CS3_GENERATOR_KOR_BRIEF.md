@@ -5,16 +5,16 @@ kod: CS3_GENERATOR_KOR
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/f212-cs3-generator-a18537
 pr: 715
 ad: 1. lépés: a `naplok/F212_sablonmondat_lista.md` (a generátor minden olvasói sablonmondata és címkéje, HAMART-példával, előfordulásszámmal, blokkal, osztályozva); 2. lépés: a felhasználó döntései szerinti generátor-javítás kapuval, az LXX-statisztika egy forrásból, egyezés-kapu, a C6 sémabővítés és a 103 kapcsolat-jelölt átköltöztetése
-kovetkezo: "Te: a sablonmondat-lista átnézése és a döntések (osztályonként vagy tételenként); a 2. lépés kódírása csak a #703 (F202) és a #704 (F203) merge-e után, friss main-ről"
+kovetkezo: "Folytatás: F212.2 — a 32 jóváhagyott tétel (naplok/F212_dontesek.tsv) a generátorban, kapuval; befagyasztás, Kolofon-forrássor, C6, HAMART 2. kiadás előkészítése"
 munka: folyamat
-olvas: [eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/szotari_glossza.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/szerep_karoli.py, eszkozok/szerep_nave.py, eszkozok/szerep_kizart.py, eszkozok/nyilt_mag_export.py, eszkozok/general.py, eszkozok/olvasoi_kapu.py, lexikon/HAMART-001_TUDOMANYOS.md]
-ir: [naplok/F212_sablonmondat_kigyujt.py, naplok/F212_sablonmondat_lista.md]
+olvas: [eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/szotari_glossza.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/szerep_karoli.py, eszkozok/szerep_nave.py, eszkozok/szerep_kizart.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/szabalyok.py, lexikon/HAMART-001_TUDOMANYOS.md, motivumok/HAMART-001.md, "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/SEMA.md, naplok/F182_kapcsolat_jeloltek.tsv]
+ir: [naplok/F212_sablonmondat_kigyujt.py, naplok/F212_sablonmondat_lista.md, eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/tablajegyzet.py, eszkozok/szerep_kizart.py, eszkozok/szerep_karoli.py, eszkozok/szerep_nave.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/szabalyok.py, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/SEMA.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md]
 fugg: []
-nem_fugg: []
+nem_fugg: [104, 121, 123, 125, 146, 156, 161, 178, 179, 196]
 ---
 
 # F212_CS3_GENERATOR_KOR_BRIEF.md — CS3 generátor-kör
