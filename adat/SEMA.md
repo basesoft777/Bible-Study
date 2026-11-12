@@ -2362,7 +2362,7 @@ ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `
 **Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
 Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
 
-### 2.59 `lap_befagyasztas.tsv` — a befagyasztott lexikonlapok (F212, DT-F212a, 2026-11-12)
+### 2.59 `lap_befagyasztas.tsv` — a befagyasztott lexikonlapok (F212, DT816, 2026-11-12)
 
 A felhasználó döntése (2026-11-12, „Igen, így”): a hét régi lap (KIRALY-001, TEREMT-001, ALVIL-001, MENNY-001,
 ANTROP-001, HODIT-001, TEREMT-002) befagyasztva várja az újraírást; új cikkként, nulláról készül (F123). A

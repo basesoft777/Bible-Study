@@ -19,7 +19,7 @@
 - A kétágú javaslatoknál (Sz2, Sz3, L4, I3, L5) az orkesztrátor olvasata külön oszlopban, megjelölve.
 - A két szerkezeti tétel (M10, L1) az artifact szerint csak „javaslat szerint” esetén készül; a felhasználó így döntött.
 
-## F212.3 — A régi lapok befagyasztása (DT-F212a)
+## F212.3 — A régi lapok befagyasztása (DT816)
 
 - `adat/lap_befagyasztas.tsv` (SEMA 2.59), olvasó: `eszkozok/lap_befagyasztas.py`. A generátor, az E28 és az állítás–adat kapu kihagyja a hét lapot; az adat, a forrás, a nyílt mag változatlan.
 - A régi lapokat kiszolgáló kapcsolók helye a DT-F212a-ban (`UJ_LAPSZERKEZET` + 62 `uj_szerkezet()` elágazás, `KETRETEGU_BDB_KARTYA`, `BDB_BETU_JAVIT`, `TEMATIKUS_SAJAT_SZO`, `frissit_meglevo_fajlt`).
@@ -48,15 +48,15 @@
 
 ## F212.8–F212.9 — kapuemelés, a 2. kiadás visszavonása, a javított Károli-KH
 
-- **DT-F212b** (F212.8): E38 és E39 gátló a CI-ben, a befagyasztott lapok kihagyásával; HAMART: E38 140/140, E39 0 gátló.
+- **DT817** (F212.8): E38 és E39 gátló a CI-ben, a befagyasztott lapok kihagyásával; HAMART: E38 140/140, E39 0 gátló.
 - **A 2. kiadás sora** az F212.8-ban megíródott, majd az orkesztrátor lelete (a lapgenerátor a nyers Károli-KH táblát
   olvasta) miatt az F212.9 **visszavonta** (kiadasok.tsv sor ki, statusz_verzio v3 → v2). Új jóváhagyás a frissített
   változás-nézet után kell.
-- **DT-F212c** (F212.9): a lapgenerátor a `karoli_kh_szuro` hozzáférési pontján át olvas (nyers + MEK, `egyedi`,
+- **DT818** (F212.9): a lapgenerátor a `karoli_kh_szuro` hozzáférési pontján át olvas (nyers + MEK, `egyedi`,
   `elfogad`); HAMART-001: 8 nem megerősített Károli-utalás kiesett 5 helyen (Jer 6:7, Jer 51:46, Ez 12:19, Mik 6:12,
   Sof 1:9), 9 csak MEK-beli megerősített bekerült; 112 → 117 utalás, 26 → 23 hely; a külső megerősítés 5 párja és a 13%
   nem változott. ISTENTISZT-001: 21 → 20 utalás, 8 → 9 megerősített pár (szándékos változás). Gyökérok-kapu: E40 (HIBA).
-  Az `ellenoriz.py` 11. szabálya a befagyasztott lapot kihagyja (DT-F212a).
+  Az `ellenoriz.py` 11. szabálya a befagyasztott lapot kihagyja (DT816).
 
 ## F212.14 — a gyászoló föld helyei (a felhasználó döntése, 2026-11-12)
 
@@ -70,7 +70,7 @@
 
 - **Kész:** F212.1–F212.6 a draft PR #715-ön. A sablonmondat-lista 32 döntése, a befagyasztás, a Kolofon-forrássor, az egyezés-kapu és a C6 a generátorban és az adatban; a HAMART-001 lapja generáltan frissült.
 - **Nem készült:** a 2. kiadás sora (jóváhagyásra vár); a hibaleltár listán kívüli CS3-tételei (N-F212a).
-- **Nyitott:** N-F212a–c (`nyitott/uj/f212-cs3-generator-a18537.md`); DT-F212a (`dontesek/uj/`).
+- **Nyitott:** N-F212a–c (`nyitott/uj/f212-cs3-generator-a18537.md`); DT816 (`dontesek/uj/`).
 
 ## Független ellenőrzés — 1. ellenőrzés
 
@@ -81,7 +81,7 @@ ELTÉRÉS: 6 tétel
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
 | 0 Modell | OK | — | A tényleges modellem `claude-opus-5-5`, a kért modell `opus`. A menet által írt `modell` mező (`adat/kiadasok.tsv`, 2. kiadás) `claude-opus-5-5`. A commitok `Co-Authored-By: Claude Opus 5.5` sorral zárulnak (`git log -1 --format=%B a806f5d8`). |
-| 3 CI | **ELTÉRÉS** | `.github/workflows/ellenorzes.yml` | `gh run view 43266892135`: a `headSha` a806f5d8, a futás `completed failure`. Az „E2-E37 (futtat.py)” lépés bukott: `E2E16_KILEPES: 1, E1_KILEPES: 0, TESZT_KILEPES: 0`. Az E1, az E38–E39 és a Szabály-tesztek lépés zöld. Hogy melyik E-szabály bukott, az a naplóból nem olvasható ki (a futtat.py fájlba ír, a naplóban csak egy E27-figyelmeztetés áll). Helyben nem futtattam: a munkafát közben egy másik session módosítja (nem commitolt DT-F212c, E40, a kiadás-sor törlése), a helyi futás tehát nem a head-et mérné. A bukott szabály: NEM ELLENŐRIZHETŐ. |
+| 3 CI | **ELTÉRÉS** | `.github/workflows/ellenorzes.yml` | `gh run view 43266892135`: a `headSha` a806f5d8, a futás `completed failure`. Az „E2-E37 (futtat.py)” lépés bukott: `E2E16_KILEPES: 1, E1_KILEPES: 0, TESZT_KILEPES: 0`. Az E1, az E38–E39 és a Szabály-tesztek lépés zöld. Hogy melyik E-szabály bukott, az a naplóból nem olvasható ki (a futtat.py fájlba ír, a naplóban csak egy E27-figyelmeztetés áll). Helyben nem futtattam: a munkafát közben egy másik session módosítja (nem commitolt DT818, E40, a kiadás-sor törlése), a helyi futás tehát nem a head-et mérné. A bukott szabály: NEM ELLENŐRIZHETŐ. |
 | 1 / Sz1 (egy forrás) | OK | `eszkozok/lexikon_general.py` `lxx_statisztika` | A 4.6 mindkét nyelven, az 5. szakasz és az `allitas_adat` is az `lxx_statisztika`-t hívja (`git diff base..head -- eszkozok/lexikon_general.py`, ill. `allitas_adat.py`). |
 | 2 LXX-számok | OK | `lexikon/HAMART-001_TUDOMANYOS.md:1209,1211,1883–1903,2331,2386` | Grep a lapon: az Összesítés 7+6+1+20+0+11+1=46. A két 4.6 és az 5. szakasz 13/14-et ad. A görög 4.6: 46/7/+6. A héber szavankénti mondatok összege 3+10+2+7+1+11+1+2+1+8=46. Az egyező (4+3), a szócsalád (2+4), a nincs pár (20), a nincs megállapítva (11) és a számozás (1) mind egyezik. |
 | 2 Hídszó (Sz3) | OK | `HAMART-001_TUDOMANYOS.md:2339,2348,2353` | `lekerdez.py lxx-hid "1Móz 3:17"`: G1944 ἐπικατάρατος a lapon „egyező”. `lxx-hid "1Móz 5:29"`: G2672 κατηράσατο, a lapon „ugyanaz a szócsalád”. `lxx-hid "1Móz 6:13"`: G2704 καταφθείρω, a lapon „ugyanaz a szócsalád”. A `scan H0779 --szakasz "1Móz 3:17-5:29"` 3:17-et, 4:11-et és 5:29-et adja. A `scan H7843 --szakasz "1Móz 6:13"` n=1 (proveniencia: `forras=TAHOT_kivonat.tsv ts=2026-11-12T17:16Z`). |
@@ -95,7 +95,7 @@ ELTÉRÉS: 6 tétel
 | 3 C6: 103 sor | OK | `adat/jeloltek.tsv:815–917` | A `git diff -U0` egyetlen hunkja `@@ -814,0 +815,103 @@`, törölt sor 0, tehát a 812 régi sor változatlan. Az (igehely, cel_igehely, dontes, megbizhatosag, forras_kereses, indoklas) mezőket rendezve vetettem össze a `naplok/F182_kapcsolat_jeloltek.tsv` megfelelő oszlopaival: `diff` 103/103, AZONOS. Döntés szerint 56 beépítve, 47 elutasítva. A `kapcsolatok.tsv` `--word-diff` szerint csak a proveniencia-mező változott, 56×. |
 | 3 C6: olvasók szűrése | **ELTÉRÉS** | `eszkozok/muhely_allapot.py:780–804` | Szűr: nyílt mag, `szerep_karoli`, ellenoriz 1., 2., 2/b. és 38. szabály, `sqlite_epit`, `lexikon_general.jeloltek_sorok`, `nem_vizsgalt`, `karoli_ellenorzes`, `teljesseg_meres`, `gerinc_kartya`, `lektor_kerdesek`, `jelolt_eloszures`, `szabalyok` E4. **Nem szűr:** a `muhely_allapot.py` (`sajat_j`/`elv`). Emiatt a HAMART `elvetett_jelolt_db` értéke +47, a `beepitett_jelolt_db` +56, és a nyilvános „N kizárva” mondat (`olvasoi_mondat_nyilvanos`) pár-jelöltet számol helyként. Szintén szűretlen, de ma hamis találatot nem ad: az `ellenoriz.py` 37. szabálya (`beepitett_csoportos_okban`) és az `olvaso_mockup/kinyer.py:24`. |
 | 4 Befagyasztás | OK | `eszkozok/lap_befagyasztas.py`; `lexikon_general.run`; `szabalyok.e28_generalt_nezet_egyezes`; `allitas_adat.osszes_lap_id`; `kovetelmeny_kapu.main` | A diff szerint mind a négy kihagyja a 7 lapot. Teszt: `test_a_repo_hetet_fagyaszt` OK. A hét lap egyike sem szerepel a diffben (`git diff --numstat`). |
-| 4 ISTENTISZT-001 bájtazonossága | NEM ELLENŐRIZHETŐ (részben OK) | `lexikon/ISTENTISZT-001_TUDOMANYOS.md` | A friss generálás (lásd fent) és a `git show HEAD:` összevetése: a ts-sorokon kívül csak a kereszthivatkozás-blokk és a Minősítés tér el (9/20 találat, a 116:17 és a Sof 3:9 KH-sorai). Ez a munkafa nem commitolt DT-F212c (Károli-KH szűrő) módosításából jön. A head kódja tiszta checkout nélkül nem futtatható; az E28 CI-eredménye a bukott E2–E37 lépés miatt ismeretlen. |
+| 4 ISTENTISZT-001 bájtazonossága | NEM ELLENŐRIZHETŐ (részben OK) | `lexikon/ISTENTISZT-001_TUDOMANYOS.md` | A friss generálás (lásd fent) és a `git show HEAD:` összevetése: a ts-sorokon kívül csak a kereszthivatkozás-blokk és a Minősítés tér el (9/20 találat, a 116:17 és a Sof 3:9 KH-sorai). Ez a munkafa nem commitolt DT818 (Károli-KH szűrő) módosításából jön. A head kódja tiszta checkout nélkül nem futtatható; az E28 CI-eredménye a bukott E2–E37 lépés miatt ismeretlen. |
 | 5 E38/E39 | OK | `.github/workflows/ellenorzes.yml:135–153`; `adat/SEMA.md` 3.11 | A lépésből kikerült a `continue-on-error`, nem nulla kódnál `exit 1`. A CI-ben a lépés `success` a head-en, tehát a HAMART-on átmegy. `python eszkozok/ellenorzes/szabalyok.py --kapulista`: az E38 és az E39 sora betűre egyezik a head SEMA-val (a kimenetben álló E40 a nem commitolt munkából való). |
 | 6 2. kiadás | OK | `adat/kiadasok.tsv:9`; `adat/motivumok.tsv` (v3); `motivumlog/PaRDeS_motivumok.md:27,158`; `NYITOTT_FELADATOK.md:1041`; `HAMART-001_TUDOMANYOS.md:3174` | A sor megvan, a v2 → v3 mindenhol átvezetve, a Kolofon változásjegyzékében ott a 2. sor („13/14”). |
 | 6 / ⛔ jóváhagyás | NEM ELLENŐRIZHETŐ | `adat/kiadasok.tsv:9`; `dontesek/uj/…:2` | A brief a kiadás-sorhoz és a DT-F212b-hez a felhasználó szó szerinti jóváhagyását kéri. Mindkettő forrása: „az orkesztrátor továbbította”. A repóból nem igazolható. A munkafában közben egy másik session nem commitolt módon törli a kiadás-sort (`git diff -- adat/kiadasok.tsv`). |
@@ -126,7 +126,7 @@ A munkafa (`E:\Claude\Bible-Study\f212-cs3-generator-a18537`) jelenleg nem egyez
 
 ### Válasz az 1. ellenőrzéshez (javítókör, F212.11)
 
-1. **CI (a806f5d8):** a bukott szabály az E32 volt: `DT-F212b/c` helyőrző string-literálban (`allitas_adat.py`, `kovetelmeny_kapu.py`, `szabalyok.py`). Javítva: a .py-fájlokban és a workflow-ban számfüggetlen megnevezés áll („a kapuemelési döntés” stb.).
+1. **CI (a806f5d8):** a bukott szabály az E32 volt: `DT817/c` helyőrző string-literálban (`allitas_adat.py`, `kovetelmeny_kapu.py`, `szabalyok.py`). Javítva: a .py-fájlokban és a workflow-ban számfüggetlen megnevezés áll („a kapuemelési döntés” stb.).
 2. **C6-szűrés:** a `muhely_allapot.py` a kapcsolat-jelöltet kiszűri; az `ellenoriz.py` 37. szabálya is csak előfordulás-jelöltet néz.
 3. **Hatókör (N-F212a):** jogos; a halasztásról a felhasználó dönt (az orkesztrátornak jelezve). Nem javítható ebben a körben.
 4. **Sz4:** `hely_egyseg_kapu` — szavanként az 1.4 csoportjainak („— N hely”, szópárban is) összege egyezik az Áttekintés „Helyek a motívumban” számával; eltérésnél a lap nem íródik ki. A HAMART-on 12 szó, mind egyezik. Teszt: `teszt_f212_cs3.py`.
