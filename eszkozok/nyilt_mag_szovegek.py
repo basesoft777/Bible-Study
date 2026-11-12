@@ -214,8 +214,8 @@ def readme(sz, how, stat, adatmag_lexikon_en):
           '- **Author:** {szerzo} (ORCID {orcid}).'.format(**f), '',
           '## Contents', ''] + tartalom_tabla(stat, 'en') + [
           '', '## In numbers', '',
-          '- {mot} motifs: {lezart} closed release(s), {regi} earlier processing, being rewritten; their data stay in '
-          'the package (`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
+          '- {mot} motifs. Closed releases: {lezart}; earlier processing, being rewritten: {regi}, and their data stay '
+          'in the package (`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
           '- {elo} occurrences and {beep} inclusion decisions.'.format(**f),
           '- {kiz} exclusion rows with {okok} reasons: {kiz_egyedi} passages decided one by one, and {osszesito} '
           'summary rows standing for {csoport_vers} verses.'.format(**f),
@@ -261,29 +261,30 @@ MODSZER = """# Módszer — a motívum-adatmag
 
 ## 1. Mi ez az adatkészlet
 
-Bibliai motívumok nyílt adatkészlete. Motívumnak olyan visszatérő bibliai témát nevezünk, amelynek jelenléte egy
-versben a héber vagy a görög szövegen ellenőrizhető: egy szón, egy állandó szókapcsolaton vagy szavak
-együttállásán. A csomag {mot} motívumot tartalmaz, {elo} előfordulással. Mellettük ugyanolyan részletesen áll a
-másik oldal is: {kiz} kizárás-sor rögzíti indoklással azokat a helyeket, amelyeket megvizsgáltunk, de a
-motívumhoz nem soroltunk.
+Ez a csomag bibliai motívumok nyílt adatkészlete. Motívumnak olyan visszatérő bibliai témát nevezünk, amelynek
+jelenléte egy versben a héber vagy a görög szövegen ellenőrizhető: egy szón, egy állandó szókapcsolaton vagy szavak
+együttállásán. A csomag {mot} motívumot tartalmaz, {elo} előfordulással. Ugyanilyen részletesen szerepel a másik
+oldal is: {kiz} kizárás-sor rögzíti indoklással azokat a helyeket, amelyeket megvizsgáltunk, de a motívumhoz nem
+soroltunk.
 
 {adatmag_lexikon} Az adatmagban döntések és rövid indoklások állnak, értelmező próza nem.
 
 ## 2. A motívum meghatározása
 
-Egy motívum akkor kap azonosítót, ha négy kérdésre megvan a válasz: mi hordozza az azonosságát; mi az a legkisebb
-jegy, amely nélkül egy hely nem tartozik ide (a kizáró jegy); ha egy hely két motívumhoz is tartozik, más-e a
-szerepe a kettőben; és nem részhalmaza-e egy másik motívumnak. Minden motívum megnevezi azt a tágabb fogalmat is,
-amely felé a határa szétfolyna (fölérendelt fogalom). Ha egy hely csak ezen keresztül kapcsolódik, kimarad.
+Egy motívum akkor kap azonosítót, ha négy kérdésre megvan a válasz. Mi hordozza az azonosságát? Mi az a legkisebb
+jegy, amely nélkül egy hely nem tartozik ide (a kizáró jegy)? Ha egy hely két motívumhoz is tartozik, más-e a
+szerepe a kettőben? És nem részhalmaza-e a motívum egy másiknak? Minden motívum megnevezi azt a tágabb fogalmat is,
+amely felé a határa szétfolyna (fölérendelt fogalom). Az a hely, amely csak ezen a tágabb fogalmon keresztül
+kapcsolódik a motívumhoz, kimarad.
 
-A `motivumok.tsv` ezt három oszlopban adja: az azonosság hordozója (`azonossag_tipusa`; ebben a kiadásban
+A `motivumok.tsv` ezt három oszlopban adja meg: az azonosság hordozója (`azonossag_tipusa`; ebben a kiadásban
 {tipus_hu}), a kizáró jegy (`negativ_kriterium`) és a fölérendelt fogalom (`folerendelt_fogalom`). Az olvasói
 meghatározás (`meghatarozas`) egy-két mondatban mondja meg, mi a motívum; ebben a kiadásban {meghat} motívumnál áll,
 a többinél üres. A motívum határát azonban nem a meghatározás rajzolja meg, hanem a kizárások.
 
 ## 3. A jelöltek gyűjtése
 
-A lehetséges előfordulásokat (jelölteket) rögzített sorrendű keresések hozzák elő:
+A lehetséges előfordulásokat, vagyis a jelölteket rögzített sorrendű keresések hozzák elő:
 
 1. a motívum törzshelyein közösen előforduló szavak Strong-számai, a névelők, kötőszók és más nyelvtani szavak
    nélkül;
@@ -294,19 +295,24 @@ A lehetséges előfordulásokat (jelölteket) rögzített sorrendű keresések h
 5. az igealak ellenőrzése;
 6. a Septuaginta-megfelelés.
 
-Az 1. és a 3–6. lépést program végzi, ugyanarra a bemenetre ugyanazt az eredményt adja. Jelöltet hoztak még a
-kereszthivatkozások (Treasury of Scripture Knowledge; a Károli-kiadás kereszthivatkozásai, l. `ISMERT_HIBAK.md`),
-szótári szócikkek és a szerkesztői teljességi felmérés. Hogy egy döntött jelölt honnan jött, a `kizarasok.tsv` és
-a `beepitesi_dontesek.tsv` `keresesi_mod` oszlopa mondja meg (ebben a kiadásban {keresesi_modok} keresési mód).
+Az 1. és a 3–6. lépést program végzi, amely ugyanarra a bemenetre mindig ugyanazt az eredményt adja. Jelöltet hoztak
+még a kereszthivatkozások (a Treasury of Scripture Knowledge és a Károli-kiadás kereszthivatkozásai), a szótári
+szócikkek és a szerkesztői teljességi felmérés. Hogy egy eldöntött jelölt honnan jött, azt a `kizarasok.tsv` és a
+`beepitesi_dontesek.tsv` `keresesi_mod` oszlopa mondja meg (ebben a kiadásban {keresesi_modok} keresési mód).
+
+A Károli-kiadás kereszthivatkozás-táblájában másolat-típusú hibát találtunk. Ezt egy független második tanúval, a
+Károli-fordítás MEK 00161 kiadásának kereszthivatkozásaival javítottuk, és a jelöltkeresés már a javított táblát
+használja. A nyílt adatmag maga nem tartalmaz kereszthivatkozás-adatot; a hiba és a javítás részletei az
+`ISMERT_HIBAK.md` 1. pontjában állnak.
 
 ## 4. Döntés minden jelöltről
 
-Keresési találatból nem lesz közvetlenül előfordulás. Minden jelöltről döntés születik, indoklással. A felvett
-jelölt az `elofordulasok.tsv`-be kerül, a döntés indoklása a `beepitesi_dontesek.tsv`-be ({beep} sor); az
-elutasított a `kizarasok.tsv`-be, egy kizárási okkal ({okok} ok) és indoklással.
+Keresési találatból nem lesz közvetlenül előfordulás: minden jelöltről döntés születik, indoklással. A felvett
+jelölt az `elofordulasok.tsv`-be kerül, a döntés indoklása a `beepitesi_dontesek.tsv`-be ({beep} sor). Az
+elutasított jelölt a `kizarasok.tsv`-be kerül, egy kizárási okkal ({okok} ok) és indoklással.
 
 A kizárás-sorok közül {kiz_egyedi} egy-egy helyről szól. {osszesito} sor összesítő: egy csoportot képvisel,
-amelynek minden versét ugyanabból az okból utasítottuk el; a csoportok {csoport_vers} versét a
+amelynek minden versét ugyanabból az okból utasítottuk el. A csoportok {csoport_vers} versét a
 `kizaras_csoportok.tsv` sorolja fel, és az összesítő sor indoklása a csoport minden versére érvényes.
 
 Ha egy keresés üres, az eredmény üres marad: a hiányt nem töltjük ki gyenge vagy asszociatív anyaggal. A még el
@@ -319,26 +325,31 @@ Minden előfordulás egy igehely, és megnevezi, mire épül a besorolása (`hor
 A `strong` oszlop a horgonyszó Strong-száma, a `jelentes_en` a szótári jelentés kivonata, a `strong_glossza_en` a
 STEPBible rövid angol glosszája.
 
-**A Károli-szó.** {karoli_hol} ott áll a Károli-fordítás megfelelő szava is. A Károli-szó nem bizonyíték:
-azt mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) {karoli_tartalom} esetben a
-szerkesztő végezte a Károli-szöveg olvasásával, {karoli_gepi} esetben gépi szópárosítás adta (csak magas
-bizonyosságú pár igazolhat sort), {karoli_kovet} esetben következtetés. A bizonyosság (`megbizhatosag`)
+**A Károli-szó.** {karoli_hol} ott áll a Károli-fordítás megfelelő szava is. A Károli-szó nem bizonyíték: azt
+mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) {karoli_tartalom} esetben a
+szerkesztő végezte a Károli-szöveg olvasásával, {karoli_gepi} esetben gépi szópárosítás adta (sort csak magas
+bizonyosságú pár igazolhat), {karoli_kovet} esetben következtetés. A bizonyosság (`megbizhatosag`)
 {karoli_magas} esetben magas, {karoli_kozepes} esetben közepes. A vers többi szavának párosítása nem része ennek az
 adatkészletnek; az a kapcsolódó Károli – Strong adatkészletekben áll.
 
-**Eredetjelölés.** Minden sor megnevezi, honnan származik: ha lekérdezésből, akkor a lekérdezés típusát, a forrást,
-annak licencét és a dátumot; ha nem, azt, hogy kézi döntés, lekérdezés nélkül. Az előfordulások közül {kezi}
-kézi döntés, {lekerd} egy lekérdezés közvetlen eredménye. A „kézi döntés” nem azt jelenti, hogy a sor ellenőrzött,
-hanem azt, hogy nem egyetlen lekérdezés adta. A Strong-hozzárendelést {tahot_igazolt} sorban a TAHOT héber szövegén
-tételesen visszakerestük (`igazolas`).
+**Eredetjelölés.** Minden sor megnevezi, honnan származik. Ha lekérdezésből, akkor megadja a lekérdezés típusát, a
+forrást, annak licencét és a dátumot; ha nem, akkor azt mondja ki, hogy kézi döntés, lekérdezés nélkül. Az
+előfordulások közül {kezi} kézi döntés, {lekerd} egy lekérdezés közvetlen eredménye. A „kézi döntés” nem azt
+jelenti, hogy a sor ellenőrzött, hanem azt, hogy nem egyetlen lekérdezés adta. A Strong-hozzárendelést
+{tahot_igazolt} sorban a TAHOT héber szövegén tételesen visszakerestük (`igazolas`).
 
 ## 6. Feldolgozási állapot
 
-{lezart} motívum lezárt kiadás ({lezart_lista}): a lexikonlapjuk kiadott, és hiba nélkül átment az olvasói kapun. A
-többi {regi} a projekt korábbi szakaszában, régebbi eljárással készült. Adataik a mai sémában állnak, és ugyanazon
-a kapun mennek át, de a kiadási eljárás átnézései rájuk még nem vonatkoznak, és a későbbi változatokban
-módosulhatnak. Az állapot a `motivumok.tsv` `feldolgozasi_allapot` oszlopában áll; aki csak a lezárt anyaggal
-dolgozna, ezen szűrhet.
+Lezárt kiadás az a motívum, amelynek lexikonlapja a kész lap mai mércéje szerint jelent meg (ez a mérce 2026-11-11
+óta érvényes), és hiba nélkül átment az olvasói kapun. Ilyen motívum ebben a kiadásban {lezart} van: {lezart_lista}.
+
+A többi motívum, szám szerint {regi}, korábbi feldolgozás, újraírás alatt. Ezek a munka korábbi szakaszában,
+régebbi eljárással készültek, és a lexikonlapjukat a mai mérce szerint újraírjuk. Az adatuk a csomagban marad, a mai
+sémában áll, és a csomag gépi kapuján ugyanúgy átmegy, mint a lezárt motívumoké; a kiadási eljárás átnézései azonban
+rájuk még nem vonatkoznak, ezért az adatuk az újraírás során változhat.
+
+Az állapot a `motivumok.tsv` `feldolgozasi_allapot` oszlopában áll; aki csak a lezárt anyaggal dolgozna, ezen az
+oszlopon szűrhet.
 
 ## 7. A visszhang-réteg
 
@@ -347,22 +358,25 @@ Négy tábla a motívumok ókori fordításbeli és értelmezői visszhangját a
 - `visszhang_megfelelok.tsv` ({vh_megf} sor): a horgonyszavak megfelelője a Targumban ({vh_targum}), a
   Vulgatában ({vh_vulgata}) és a Septuagintában ({vh_lxx});
 - `visszhang_tanuk.tsv` ({vh_tanu} sor): egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit
-  lát a helyen, saját szavas egy mondatban, idézet nélkül;
+  lát a helyen, egyetlen saját szavas mondatban, idézet nélkül;
 - `vitatott_forrasok.tsv` ({vit} sor): a vitatott pontok lektorált szakirodalma, csak bibliográfiai adat; az üres
   szerző azt jelenti, hogy a vizsgált adatbázisokban a pontról lektorált forrás nem került elő;
 - `sblgnt_apparatus.tsv` ({sbl} sor): az újszövetségi helyek kritikai apparátusa.
 
-Csak ellenőrzött sor kerül be. A Septuaginta-megfelelők közül azokat, amelyeknél a versben egyetlen lemma jön
-szóba, gép ellenőrizte; minden más sort egy második kéz nézett át. Nincs a csomagban: a Chain Lineage Browser
-tanúi (a böngésző licencet nem közöl), a BDB rokon nyelvi sorai (külön döntésre várnak), és a források szövege.
+Ezekbe a táblákba csak ellenőrzött sor kerül be. A Septuaginta-megfelelők közül azokat, amelyeknél a versben egyetlen
+lemma jön szóba, gép ellenőrizte; minden más sort egy második kéz nézett át. Három dolog nincs a csomagban: a Chain
+Lineage Browser tanúi (a böngésző licencet nem közöl), a BDB rokon nyelvi sorai (külön döntésre várnak) és a források
+szövege.
 
 ## 8. Az angol réteg
 
 Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok állnak.
 
-- **Igehely:** minden igehely-oszlop mellett `…_osis`, szabványos OSIS-kulccsal. A könyvkód szabványos, a fejezet- és
-  versszám a Károli-fordítás számozása; ahol ez eltér a STEPBible-számozástól, a kulcs a Károli-verset jelöli.
-- **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv szerkesztett angol címkéjével.
+- **Igehely:** minden igehely-oszlop mellett `…_osis` oszlop áll, szabványos OSIS-kulccsal. A könyvkód szabványos, a
+  fejezet- és versszám a Károli-fordítás számozását követi; ahol ez eltér a STEPBible-számozástól, a kulcs a
+  Károli-verset jelöli.
+- **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en` oszlop áll, a kódkönyv szerkesztett angol
+  címkéjével.
 - **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi
   fordítás** ({modellek_hu}). A sor `forditas_modja` oszlopa megnevezi a modellt, és kimondja a hiányt
   ({nincs_ford} sorban hiányzik a fordítás teljesen vagy részben).
@@ -370,42 +384,45 @@ Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok 
 ## 9. Licencszűrés
 
 A csomag csak közkincs, CC0 vagy CC BY 4.0 licencű forrásból vesz át értéket, a projekt licencleltára szerint.
-{kizart_db} forrást kizártunk: nem kereskedelmi vagy GPL licencűt, tisztázatlan licencűt, és a projekt zárt,
-származtatott rétegeit. A kizárt források listája és oka az `ATTRIBUCIO.md`-ben és a `forrasok_es_licencek.tsv`-ben
-áll. A CC BY-SA 4.0 licencű szemantikai domének (UBS SDBH/SDGNT) külön könyvtárban vannak (`cc_by_sa_reteg/`),
-mert a ShareAlike feltétel a belőlük származó munkára is kiterjed; a csomag többi része ettől független. A leltár
-nem jogi vélemény.
+{kizart_db} forrást kizártunk: a nem kereskedelmi és a GPL licencűeket, a tisztázatlan licencűeket, valamint a
+projekt zárt, származtatott rétegeit. A kizárt források listája és a kizárás oka az `ATTRIBUCIO.md`-ben és a
+`forrasok_es_licencek.tsv`-ben áll. A CC BY-SA 4.0 licencű szemantikai domének (UBS SDBH/SDGNT) külön könyvtárban
+vannak (`cc_by_sa_reteg/`), mert a ShareAlike feltétel a belőlük származó munkára is kiterjed; a csomag többi része
+ettől független. A leltár nem jogi vélemény.
 
 ## 10. A mesterséges intelligencia használata
 
-A keresések determinisztikus programok. Hogy egy jelölt a motívumhoz tartozik-e, arról mesterséges intelligenciával
-segített munkamenet dönt, a szerkesztő irányításával, és minden döntés indoklással rögzül. Gép végezte még a
+A keresések determinisztikus programok. Arról, hogy egy jelölt a motívumhoz tartozik-e, mesterséges intelligenciával
+segített munkamenet dönt a szerkesztő irányításával, és minden döntés indoklással rögzül. Gép végezte még a
 Károli-szó gépi párosítását (5. pont), a szabad szöveges mezők angol fordítását (8. pont) és a Septuaginta-megfelelők
 egyértelmű eseteinek ellenőrzését (7. pont). Az adattáblákat program állítja elő az adatból, nyelvi modell nem írja
-őket; ugyanabból az adatból mindig ugyanaz a csomag készül. A leíró szövegeket (ez a módszerleírás, az olvass-el és
-a közlemény) nyelvi modell fogalmazta, a számokat az export adja, a szöveget a szerkesztő hagyta jóvá. A modell nem
-szerző; a tartalomért a szerző felel.
+őket; ugyanabból az adatból mindig ugyanaz a csomag készül. A leíró szövegeket (ezt a módszerleírást, az olvass-el
+fájlt és a közleményt) nyelvi modell fogalmazta, a számokat az export adja, a szöveget a szerkesztő hagyta jóvá. A
+modell nem szerző; a tartalomért a szerző felel.
 
 ## 11. Ellenőrzés
 
-A csomag saját gépi kapuja minden kiadás előtt fut. Méri a belső munkajelölést, a kódkönyv lefedettségét (minden
-oszlop és zárt érték, mindkét nyelven), a licencszűrést, a döntés- és motívum-hivatkozások feloldását, az összesítő
-sorok tagszámát, az OSIS-kulcsokat, a fordítás frissességét és a bájtazonos újragenerálást. Az
-`ELLENORZO_OSSZEG.sha256` minden kiadott fájl SHA-256 összegét tartalmazza; a `KIADAS.txt` tartalmi hash-e ennek a
-listának az összege.
+A csomag saját gépi kapuja minden kiadás előtt lefut. Azt vizsgálja, hogy nem maradt-e a csomagban belső
+munkajelölés, hogy a kódkönyv minden oszlopot és zárt értéket lefed-e mindkét nyelven, hogy érvényesül-e a
+licencszűrés, hogy feloldható-e minden döntés- és motívum-hivatkozás, hogy egyezik-e az összesítő sorok tagszáma,
+hogy helyesek-e az OSIS-kulcsok, hogy friss-e a fordítás, és hogy az újragenerálás bájtra azonos csomagot ad-e. Az
+`ELLENORZO_OSSZEG.sha256` minden kiadott fájl SHA-256 összegét tartalmazza; a `KIADAS.txt` tartalmi lenyomata (hash)
+ennek a listának az összege.
 
-A kiadott lexikonlapon az olvasói kapu nulla hibát követel. A munka minden lépésének változásait egy friss
-kontextusú modell saját lekérdezéssel újra ellenőrzi; a motívum határát egy második modell nézi át. Ez nem
+A kiadott lexikonlapon az olvasói kapu nulla hibát követel. A munka minden lépésének változásait egy előzmények
+nélkül induló nyelvi modell saját lekérdezéssel újra ellenőrzi; a motívum határát egy második modell nézi át. Ez nem
 független szakmai lektorálás: a szerzőn kívül minden ellenőr program vagy nyelvi modell.
 
 ## 12. Korlátok
 
-- Lezárt kiadás csak {lezart} motívum; {regi} régi feldolgozás (6. pont).
+- Lezárt kiadás csak {lezart} motívum. A többi, szám szerint {regi}, korábbi feldolgozás, újraírás alatt, és az
+  adata az újraírás során változhat (6. pont).
 - A teljesség nem bizonyított. A keresések azt mérik, mennyit fog meg a lista a lexikai jegyek alapján; a
-  tematikus kapcsolatot nem.
-- Független szakmai lektorálás és annotátorok közötti egyezésmérés nem volt.
+  tematikus kapcsolatot nem mérik.
+- Független szakmai lektorálás nem volt, és annotátorok közötti egyezést sem mértünk.
 - A motívumokat a kutatási program választotta ki; nem reprezentatív mintái a Bibliának.
-- A forrásadatok ismert hibáit és kezelésüket az `ISMERT_HIBAK.md` írja le.
+- A forrásadatok ismert hibáit és kezelésüket az `ISMERT_HIBAK.md` írja le; a Károli-kiadás kereszthivatkozásainak
+  javítása az 1. pontjában áll.
 """
 
 METHODS = """# Methods — the motif data core
@@ -414,20 +431,20 @@ METHODS = """# Methods — the motif data core
 
 ## 1. What this dataset is
 
-An open dataset of biblical motifs. A motif here is a recurring biblical theme whose presence in a verse can be
-checked on the Hebrew or Greek text: on a word, a fixed phrase or a co-occurrence of words. The package contains
-{mot} motifs with {elo} occurrences. The other side is recorded in the same detail: {kiz} exclusion rows give, with
-a rationale, the passages that were examined but not assigned to the motif.
+This package is an open dataset of biblical motifs. By a motif we mean a recurring biblical theme whose presence in
+a verse can be checked on the Hebrew or Greek text: on a word, on a fixed phrase or on a co-occurrence of words. The
+package contains {mot} motifs with {elo} occurrences. The other side is recorded in the same detail: {kiz}
+exclusion rows record, with a rationale, the passages that we examined but did not assign to the motif.
 
 {adatmag_lexikon} The data core holds decisions and short rationales, not interpretive prose.
 
 ## 2. Defining a motif
 
-A motif receives an identifier once four questions are answered: what carries its identity; what is the smallest
-feature without which a passage does not belong to it (the exclusion criterion); if a passage belongs to two motifs,
-does it play a different role in each; and is it a subset of another motif. Every motif also names the broader
-concept towards which its boundary would dissolve (the superordinate concept). A passage connected only through
-that concept is left out.
+A motif receives an identifier once four questions are answered. What carries its identity? What is the smallest
+feature without which a passage does not belong to it (the exclusion criterion)? If a passage belongs to two motifs,
+does it play a different role in each? And is the motif a subset of another one? Every motif also names the broader
+concept towards which its boundary would dissolve (the superordinate concept). A passage that is connected to the
+motif only through this broader concept is left out.
 
 `motivumok.tsv` gives this in three columns: the carrier of identity (`azonossag_tipusa`; in this release
 {tipus_en}), the exclusion criterion (`negativ_kriterium`) and the superordinate concept (`folerendelt_fogalom`).
@@ -437,80 +454,93 @@ not by the definition.
 
 ## 3. Gathering candidates
 
-Possible occurrences (candidates) are brought up by searches in a fixed order:
+The possible occurrences, that is, the candidates, are brought up by searches in a fixed order:
 
 1. the Strong's numbers of the words shared by the core passages of the motif, without articles, conjunctions and
    other grammatical words;
-2. a hypothesis of the semantic field: the only step not done by machine, so the words of the field are recorded;
-3. a scan of the whole Old and New Testament by Strong's number, on the tagged STEPBible text (TAHOT, TAGNT);
-4. two words occurring together in one verse;
+2. the hypothesis of the semantic field: this is the only step not done by machine, so the words of the field are
+   recorded;
+3. a scan of the whole Old and New Testament text by Strong's number, on the tagged text of STEPBible (TAHOT,
+   TAGNT);
+4. the co-occurrence of two words in one verse;
 5. a check of the verb form;
 6. the Septuagint correspondence.
 
-Steps 1 and 3–6 are run by programs and give the same result for the same input. Candidates also came from
-cross-references (Treasury of Scripture Knowledge; the cross-references of the Károli edition, see
-`KNOWN_ISSUES.md`), dictionary entries and editorial completeness surveys. Where a decided candidate came from is
-given in the `keresesi_mod` column of `kizarasok.tsv` and `beepitesi_dontesek.tsv` ({keresesi_modok} search modes
-in this release).
+Steps 1 and 3–6 are done by a program that always gives the same result for the same input. Further candidates came
+from the cross-references (the Treasury of Scripture Knowledge and the cross-references of the Károli edition), from
+dictionary entries and from the editorial completeness survey. Where a decided candidate came from is given by the
+`keresesi_mod` column of `kizarasok.tsv` and `beepitesi_dontesek.tsv` (in this release {keresesi_modok} search
+modes).
+
+We found a copy-type error in the cross-reference table of the Károli edition. We corrected it with an independent
+second witness, the cross-references of the MEK 00161 edition of the Károli translation, and the candidate search
+already uses the corrected table. The open data core itself contains no cross-reference data; the error and the
+correction are described in section 1 of `KNOWN_ISSUES.md`.
 
 ## 4. A decision on every candidate
 
-A search hit never becomes an occurrence directly. Every candidate receives a decision with a rationale. An included
-candidate goes to `elofordulasok.tsv`, the rationale of the decision to `beepitesi_dontesek.tsv` ({beep} rows); a
-rejected one goes to `kizarasok.tsv`, with a reason ({okok} reasons) and a rationale.
+A search hit never becomes an occurrence directly: every candidate receives a decision with a rationale. An accepted
+candidate goes into `elofordulasok.tsv`, the rationale of the decision into `beepitesi_dontesek.tsv` ({beep} rows).
+A rejected candidate goes into `kizarasok.tsv`, with an exclusion reason ({okok} reasons) and a rationale.
 
-Of the {kiz} exclusion rows, {kiz_egyedi} concern a single passage. {osszesito} rows are summary rows: each stands
-for a group of verses rejected for the same reason; `kizaras_csoportok.tsv` lists the {csoport_vers} verses of the
-groups, and the rationale of a summary row applies to every verse of its group.
+Of the exclusion rows, {kiz_egyedi} concern a single passage each. {osszesito} rows are summary rows: each stands for
+a group whose verses were all rejected for the same reason. The {csoport_vers} verses of the groups are listed in
+`kizaras_csoportok.tsv`, and the rationale of the summary row applies to every verse of the group.
 
 If a search is empty, the result stays empty: a gap is not filled with weak or associative material. Candidates not
-yet decided ({nyitva}) are not in the package. Where a row refers to an editorial decision, its public identifier
-(`NYD-nnn`) can be resolved in `dontesnaplo.tsv` ({dontes} decisions).
+yet decided ({nyitva}) are not in the package. Where a row refers to an editorial decision, the public identifier
+of the decision (`NYD-nnn`) is resolved in `dontesnaplo.tsv` ({dontes} decisions).
 
 ## 5. The occurrence row
 
-Every occurrence is a passage and names what its assignment rests on (`horgony_tipus`, `horgony`): {horgony_en}.
+Every occurrence is a passage, and it names what its assignment rests on (`horgony_tipus`, `horgony`): {horgony_en}.
 The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary meaning,
-and `strong_glossza_en` the short English STEPBible gloss.
+`strong_glossza_en` the short English gloss of STEPBible.
 
-**The Károli word.** {karoli_hol} the corresponding word of the Károli translation. The Károli word
-is not evidence: it shows what the Hungarian reader sees of the passage. The pairing (`azonositas_modja`) was made
-in {karoli_tartalom} cases by the editor reading the Károli text, in {karoli_gepi} cases by machine word alignment
-(only a high-confidence pair may justify a row), and in {karoli_kovet} cases by inference. The confidence
-(`megbizhatosag`) is high in {karoli_magas} cases and medium in {karoli_kozepes}. The alignment of the other words of
-the verse is not part of this dataset; it is in the related Károli – Strong datasets.
+**The Károli word.** {karoli_hol} also give the corresponding word of the Károli translation. The Károli word is not
+evidence: it shows what the Hungarian reader sees of the passage. The alignment (`azonositas_modja`) was made by the
+editor reading the Károli text in {karoli_tartalom} cases, by machine word alignment in {karoli_gepi} cases (only a
+high-confidence pair may justify a row) and by inference in {karoli_kovet} cases. The confidence (`megbizhatosag`)
+is high in {karoli_magas} cases and medium in {karoli_kozepes}. The alignment of the other words of the verse is not
+part of this dataset; it is in the related Károli – Strong datasets.
 
-**Provenance.** Every row names its origin: if it comes from a query, the type of query, the source, its licence and
-the date; if not, that it is an editorial decision without a query. Of the {elo} occurrences, {kezi} are editorial
-decisions and {lekerd} the direct result of a query. "Editorial decision" does not mean that the row is verified, only
-that no single query produced it. For {tahot_igazolt} rows the Strong's assignment was traced item by item in the
-Hebrew text of TAHOT (`igazolas`).
+**Provenance.** Every row names where it comes from. If it comes from a query, it gives the type of the query, the
+source, its licence and the date; if not, it states that it is a decision made by hand, without a query. Of the
+occurrences, {kezi} are decisions made by hand and {lekerd} the direct result of a query. "Made by hand" does not
+mean that the row was verified; it means that no single query produced it. For {tahot_igazolt} rows the Strong's
+assignment was traced back item by item on the Hebrew text of TAHOT (`igazolas`).
 
 ## 6. Processing stage
 
-{lezart} motifs are closed releases ({lezart_lista}): their lexicon pages are released and passed the reader check
-without error. The other {regi} were made at an earlier stage of the project with an older procedure. Their data are
-in the current schema and pass the same check, but the reviews of the release procedure do not yet cover them, and
-they may change in later versions. The stage is in the `feldolgozasi_allapot` column of `motivumok.tsv`; to work only
-with the closed material, filter on it.
+A motif is a closed release if its lexicon page was released under the current standard for a finished page (this
+standard has applied since 2026-11-11) and passed the reader check without error. The number of such motifs in
+this release is {lezart}: {lezart_lista}.
+
+The other motifs, {regi} in number, are earlier processing, being rewritten. They were built at an earlier stage of
+the work with an older procedure, and their lexicon pages are being rewritten to the current standard. Their data
+stay in the package, follow the current schema and pass the package's own automated check just as the closed motifs
+do; the reviews of the release procedure, however, do not yet apply to them, so their data may change during the
+rewrite.
+
+The stage is given in the `feldolgozasi_allapot` column of `motivumok.tsv`; anyone who wishes to work only with
+closed material can filter on this column.
 
 ## 7. The echo layer
 
-Four tables give the echo of the motifs in the ancient translations and interpreters, with the licence for each
-source:
+Four tables give the echo of the motifs in ancient translations and interpreters, with the licence of each source:
 
-- `visszhang_megfelelok.tsv` ({vh_megf} rows): the counterparts of the anchor words in the Targum ({vh_targum}), the
-  Vulgate ({vh_vulgata}) and the Septuagint ({vh_lxx});
+- `visszhang_megfelelok.tsv` ({vh_megf} rows): the counterparts of the anchor words in the Targum ({vh_targum}),
+  the Vulgate ({vh_vulgata}) and the Septuagint ({vh_lxx});
 - `visszhang_tanuk.tsv` ({vh_tanu} rows): patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work,
-  what they see in the passage, in one sentence in our own words, without quotation;
+  sees what in the passage, in one sentence in our own words, without quotation;
 - `vitatott_forrasok.tsv` ({vit} rows): the peer-reviewed literature on the disputed points, bibliographic data only;
   an empty author means that no peer-reviewed source on the point was found in the databases searched;
 - `sblgnt_apparatus.tsv` ({sbl} rows): the critical apparatus for the New Testament passages.
 
-Only verified rows are included. Of the Septuagint counterparts, those where a single lemma comes into question in
-the verse were checked by machine; every other row was reviewed by a second hand. Not in the package: the witnesses
-of the Chain Lineage Browser (the browser states no licence), the cognate-language rows of the BDB (they await a
-separate decision), and the text of the sources.
+Only verified rows enter these tables. Of the Septuagint counterparts, those where a single lemma comes into question
+in the verse were checked by machine; every other row was reviewed by a second hand. Three things are not in the
+package: the witnesses of the Chain Lineage Browser (the browser states no licence), the cognate-language rows of the
+BDB (they await a separate decision) and the text of the sources.
 
 ## 8. The English layer
 
@@ -526,44 +556,48 @@ Column names and values are Hungarian; English parallel columns stand next to th
 
 ## 9. Licence filtering
 
-The package takes values only from public-domain, CC0 or CC BY 4.0 sources, following the project's licence
-inventory. {kizart_db} sources were excluded: those under a non-commercial or GPL licence, those with an unclear
-licence, and the project's closed derived layers. The list of excluded sources and the reason for each are in
-`ATTRIBUCIO.md` and `forrasok_es_licencek.tsv`. The semantic domains (UBS SDBH/SDGNT), under CC BY-SA 4.0, are in a
-separate directory (`cc_by_sa_reteg/`), because the ShareAlike condition extends to work derived from them; the rest
-of the package is independent of it. The inventory is not a legal opinion.
+The package takes values only from sources in the public domain or under CC0 or CC BY 4.0, according to the licence
+inventory of the project. {kizart_db} sources were excluded: those under non-commercial and GPL licences, those with
+an unclear licence, and the closed, derived layers of the project. The list of excluded sources and the reason for
+each exclusion are in `ATTRIBUCIO.md` and `forrasok_es_licencek.tsv`. The semantic domains under CC BY-SA 4.0 (UBS
+SDBH/SDGNT) are in a separate directory (`cc_by_sa_reteg/`), because the ShareAlike condition extends to work derived
+from them; the rest of the package is independent of it. The inventory is not a legal opinion.
 
 ## 10. Use of artificial intelligence
 
 The searches are deterministic programs. Whether a candidate belongs to the motif is decided in a working session
-assisted by artificial intelligence, under the direction of the editor, and every decision is recorded with a
-rationale. Machines also made the machine alignment of the Károli word (section 5), the English translation of the
-free-text fields (section 8) and the check of the unambiguous Septuagint counterparts (section 7). The data tables
-are produced from the data by a program, not written by a language model; the same data always yield the same
-package. The descriptive texts (these methods, the read-me and the announcement) were drafted by a language model,
-the numbers come from the export, and the text was approved by the editor. The model is not an author; the author is
+assisted by artificial intelligence under the direction of the editor, and every decision is recorded with a
+rationale. Machines also did the machine alignment of the Károli word (section 5), the English translation of the
+free-text fields (section 8) and the check of the unambiguous Septuagint counterparts (section 7). The data tables are
+produced from the data by a program; a language model does not write them, and the same data always yield the same
+package. The descriptive texts (these methods, the readme and the announcement) were drafted by a language model, the
+numbers come from the export, and the text was approved by the editor. The model is not an author; the author is
 responsible for the content.
 
 ## 11. Verification
 
-The package's own automatic check runs before every release. It measures internal working marks, codebook coverage
-(every column and closed value, in both languages), licence filtering, the resolution of decision and motif
-references, the member counts of summary rows, the OSIS keys, the freshness of the translation, and byte-identical
-regeneration. `ELLENORZO_OSSZEG.sha256` contains the SHA-256 sum of every released file; the content hash in
-`RELEASE.txt` is the sum of that list.
+The package's own automated check runs before every release. It checks that no internal working mark remains in the
+package, that the codebook covers every column and closed value in both languages, that the licence filtering holds,
+that every reference to a decision or a motif can be resolved, that the member counts of the summary rows agree, that
+the OSIS keys are correct, that the translation is current, and that regeneration yields a byte-identical package.
+`ELLENORZO_OSSZEG.sha256` contains the SHA-256 checksum of every released file; the content fingerprint (hash) in
+`RELEASE.txt` is the checksum of this list.
 
-On a released lexicon page the reader check requires zero errors. The changes of every step of the work are
-re-checked by a fresh-context model with its own queries; the boundary of the motif is reviewed by a second model.
-This is not independent peer review: apart from the author, every checker is a program or a language model.
+On a released lexicon page the reader check requires zero errors. The changes of every step of the work are checked
+again, with its own queries, by a language model that starts without prior context; the boundary of a motif is
+reviewed by a second model. This is not independent scholarly peer review: apart from the author, every checker is a
+program or a language model.
 
 ## 12. Limitations
 
-- Only {lezart} motifs are closed releases; {regi} come from an earlier stage (section 6).
-- Completeness is not proven. The searches measure how much the list catches on lexical features; thematic links
-  are not measured.
-- There was no independent peer review and no inter-annotator agreement measurement.
+- The number of closed releases is only {lezart}. The other motifs, {regi} in number, are earlier processing,
+  being rewritten, and their data may change during the rewrite (section 6).
+- Completeness is not proven. The searches measure how much the list catches on lexical features; they do not measure
+  thematic connection.
+- There was no independent scholarly peer review, and no inter-annotator agreement was measured.
 - The motifs were chosen by the research programme; they are not a representative sample of the Bible.
-- The known errors of the source data and their handling are described in `KNOWN_ISSUES.md`.
+- The known errors of the source data and their handling are described in `KNOWN_ISSUES.md`; the correction of the
+  cross-references of the Károli edition is in its section 1.
 """
 
 
@@ -780,13 +814,14 @@ KOZLEMENY_HU = """# Kizárva, okkal: bibliai motívumok nyílt adatkészlete
 
 *Közlemény-tervezet · {cim_hu} — nyílt adatmag · DOI: {doi}*
 
-Mikor tartozik egy vers egy bibliai motívumhoz, és mikor nem? A {cim_hu} szabad licenccel közreadja motívumkutatása
-adatrétegét. Nemcsak azt rögzíti, hol fordul elő egy motívum, hanem azt is, melyik helyet vizsgálta meg, és miért
-hagyta ki.
+Mikor tartozik egy vers egy bibliai motívumhoz, és mikor nem? A {cim_hu} szabad licenccel közreadja motívumkutatásának
+adatrétegét. Ez az adat nemcsak azt rögzíti, hol fordul elő egy motívum, hanem azt is, mely helyeket vizsgáltuk meg,
+és miért hagytuk ki őket.
 
 **Mi van benne.** {mot} motívum, köztük {lezart_cimkek}, összesen {elo} előfordulással. Minden előfordulás a héber
-vagy a görög szöveg egy szaván áll, mellette a Károli-fordítás megfelelő szavával. A kizárások ugyanilyen részletesek:
-{kiz_egyedi} egyenként eldöntött hely és {csoport_vers} csoportban elutasított vers, {okok} okkal és indoklással.
+vagy a görög szöveg egy szaván áll, és mellette ott van a Károli-fordítás megfelelő szava. A kizárások ugyanilyen
+részletesek: {kiz_egyedi} egyenként eldöntött hely és {csoport_vers} csoportban elutasított vers, {okok} okkal és
+indoklással.
 
 **Hogyan.** Minden motívum négy kérdéssel indul, és a legfontosabb közülük az, hogy mi az a legkisebb jegy, amely
 nélkül egy hely nem tartozik ide. A jelölteket hat, rögzített sorrendű keresés hozza elő a héber és a görög
@@ -798,16 +833,19 @@ meghatározása rajzolja meg, hanem a kizárásai. Minden sor megnevezi, honnan 
 döntésből. Ahol pedig a keresés üres volt, az adat is üres marad, mert az üres eredmény is eredmény.
 
 **Az ókori visszhang.** Egyes motívumoknál a kulcsszavak megfelelője is szerepel a Targumban, a Vulgatában és a
-Septuagintában, egyházatyai és rabbinikus tanúkkal, idézet nélkül, forrásonként a licenccel.
+Septuagintában, egyházatyai és rabbinikus tanúkkal együtt. A tanúk idézet nélkül állnak, és minden forrás mellett
+ott a licence.
 
-**Állapot.** {lezart} motívum lezárt kiadás; {regi} egy korábbi feldolgozásból való, és a későbbi változatokban
-frissül. Az állapot motívumonként az adatban áll, így a lezárt anyag külön is használható.
+**Állapot.** Lezárt kiadás {lezart} motívum: a lexikonlapja a kész lap mai mércéje szerint jelent meg, és hiba nélkül
+átment az olvasói kapun. A többi, szám szerint {regi}, korábbi feldolgozás, újraírás alatt: a lexikonlapjukat a mai
+mérce szerint újraírjuk, az adatuk a csomagban marad, de az újraírás során változhat. Az állapot motívumonként az
+adatban áll, így a lezárt anyag külön is használható.
 
-**Kinek.** Kutatóknak, akik bibliai intertextualitást vizsgálnak, és a felvétel mellett a kizárás dokumentált nyomát
-is látni akarják; a magyar fordítástörténet kutatóinak, akik a Károli szóválasztását az eredeti szóval együtt
-vizsgálnák; fejlesztőknek, akik indokolt felvételeket és kizárásokat használnának próbaanyagként.
+**Kinek.** Kutatóknak, akik a bibliai intertextualitást vizsgálják, és a felvétel mellett a kizárás dokumentált nyomát
+is látni akarják. A magyar fordítástörténet kutatóinak, akik a Károli szóválasztását az eredeti szóval együtt
+vizsgálnák. Fejlesztőknek, akik indokolt felvételeket és kizárásokat használnának próbaanyagként.
 
-Az adatkészlet CC BY 4.0 licenccel szabadon felhasználható (a szemantikai domének külön rétege CC BY-SA 4.0):
+Az adatkészlet CC BY 4.0 licenccel szabadon használható (a szemantikai domének külön rétege CC BY-SA 4.0):
 https://doi.org/{doi}
 """
 
@@ -816,8 +854,8 @@ KOZLEMENY_EN = """# Excluded, with reasons: an open dataset of biblical motifs
 *Announcement draft · {cim_en} — open data core · DOI: {doi}*
 
 When does a verse belong to a biblical motif, and when does it not? The {cim_en} releases the data layer of its motif
-research under an open licence. It records not only where a motif occurs, but also which passages were examined
-and why they were left out.
+research under an open licence. These data record not only where a motif occurs, but also which passages we examined
+and why we left them out.
 
 **What is in it.** {mot} motifs, among them {lezart_cimkek}, with {elo} occurrences in all. Every occurrence rests on
 a word of the Hebrew or Greek text, with the corresponding word of the Károli translation beside it. The exclusions
@@ -835,17 +873,21 @@ exclusions. Every row names its origin, a query or a decision made by hand. And 
 stay empty, because an empty result is a result too.
 
 **The ancient echo.** For some motifs the counterparts of the key words in the Targum, the Vulgate and the
-Septuagint are included, with patristic and rabbinic witnesses, without quotation, and with the licence of each
-source.
+Septuagint are included as well, together with patristic and rabbinic witnesses. The witnesses stand without
+quotation, and every source carries its licence.
 
-**Status.** {lezart} motifs are closed releases; {regi} come from an earlier stage and will be updated in later
-versions. The status of each motif is part of the data, so the closed material can be used on its own.
+**Status.** The number of closed releases is {lezart}: the lexicon page of such a motif was released under the
+current standard for a finished page and passed the reader check without error. The other motifs, {regi} in
+number, are earlier processing, being rewritten:
+their lexicon pages are being rewritten to the current standard, and their data stay in the package but may change
+during the rewrite. The status of each motif is part of the data, so the closed material can also be used on its
+own.
 
 **For whom.** Researchers of biblical intertextuality who want to see the documented trace of exclusion as well as
-of inclusion; researchers of Hungarian translation history who would study Károli's word choices together with the
-original word; developers who would use reasoned inclusions and exclusions as test material.
+of inclusion. Researchers of Hungarian translation history who would study Károli's word choices together with the
+original word. Developers who would use reasoned inclusions and exclusions as test material.
 
-The dataset is freely usable under CC BY 4.0 (the separate layer of semantic domains is under CC BY-SA 4.0):
+The dataset can be freely used under CC BY 4.0 (the separate layer of semantic domains is under CC BY-SA 4.0):
 https://doi.org/{doi}
 """
 

@@ -39,7 +39,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 
 ## In numbers
 
-- 9 motifs: 1 closed release(s), 8 earlier processing, being rewritten; their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 9 motifs. Closed releases: 1; earlier processing, being rewritten: 8, and their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 occurrences and 252 inclusion decisions.
 - 540 exclusion rows with 61 reasons: 443 passages decided one by one, and 97 summary rows standing for 3,984 verses.
 - 88 relations between passages, 3 relations between motifs, 15 public editorial decisions.

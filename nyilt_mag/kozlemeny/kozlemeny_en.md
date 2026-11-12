@@ -3,8 +3,8 @@
 *Announcement draft · Logosz Lexikon — open data core · DOI: 10.5281/zenodo.24141612*
 
 When does a verse belong to a biblical motif, and when does it not? The Logosz Lexikon releases the data layer of its motif
-research under an open licence. It records not only where a motif occurs, but also which passages were examined
-and why they were left out.
+research under an open licence. These data record not only where a motif occurs, but also which passages we examined
+and why we left them out.
 
 **What is in it.** 9 motifs, among them “The rippling out of the consequences of sin — curse, earth and corruption”, with 250 occurrences in all. Every occurrence rests on
 a word of the Hebrew or Greek text, with the corresponding word of the Károli translation beside it. The exclusions
@@ -22,15 +22,19 @@ exclusions. Every row names its origin, a query or a decision made by hand. And 
 stay empty, because an empty result is a result too.
 
 **The ancient echo.** For some motifs the counterparts of the key words in the Targum, the Vulgate and the
-Septuagint are included, with patristic and rabbinic witnesses, without quotation, and with the licence of each
-source.
+Septuagint are included as well, together with patristic and rabbinic witnesses. The witnesses stand without
+quotation, and every source carries its licence.
 
-**Status.** 1 motifs are closed releases; 8 come from an earlier stage and will be updated in later
-versions. The status of each motif is part of the data, so the closed material can be used on its own.
+**Status.** The number of closed releases is 1: the lexicon page of such a motif was released under the
+current standard for a finished page and passed the reader check without error. The other motifs, 8 in
+number, are earlier processing, being rewritten:
+their lexicon pages are being rewritten to the current standard, and their data stay in the package but may change
+during the rewrite. The status of each motif is part of the data, so the closed material can also be used on its
+own.
 
 **For whom.** Researchers of biblical intertextuality who want to see the documented trace of exclusion as well as
-of inclusion; researchers of Hungarian translation history who would study Károli's word choices together with the
-original word; developers who would use reasoned inclusions and exclusions as test material.
+of inclusion. Researchers of Hungarian translation history who would study Károli's word choices together with the
+original word. Developers who would use reasoned inclusions and exclusions as test material.
 
-The dataset is freely usable under CC BY 4.0 (the separate layer of semantic domains is under CC BY-SA 4.0):
+The dataset can be freely used under CC BY 4.0 (the separate layer of semantic domains is under CC BY-SA 4.0):
 https://doi.org/10.5281/zenodo.24141612
