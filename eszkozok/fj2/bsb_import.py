@@ -36,7 +36,7 @@ F214 (FELADATOK #214, N48; felhasznaloi dontes 2026.11.12): (1) az egyenertekű 
 `Form/Spelling/Meaning of` soraibol; mindket oldal halmaza ugyanarra a fo szamra kepezve, a kuszob (95%) es a definicio (TAHOT/TAGNT ⊆ BSB) valtozatlan (DT6);
 (2) az UJSZOVETSEG is ugyanazzal a merceval merodik (a forras a TAGNT, a kulcs a BSB-vers szama: a Karoli_versmegfeleltetes nem tartalmaz USZ-sort, azonos szam);
 a kuszobot elero konyv importalodik, a tobbi explicit ures eredmeny (NEM_ERI_EL). A nyers (normalizalas nelkuli) szazalek az `egyezes_szazalek` oszlopban marad
-(elotte), az `egyezes_normalizalt` a kuszob alapja (utana); a konyvenkenti elotte-utana tabla: naplok/F214_normalizalt_meres.tsv. Az NA28-szurt USZ-meres
+(elotte), az `egyezes_normalizalt` a kuszob alapja (utana); a konyvenkenti elotte-utana tabla: a könyvenkénti előtte–utána napló (még nincs meg). Az NA28-szurt USZ-meres
 (NT_NA28_SZURES, --nt-na28) a kuszob alapjava csak felhasznaloi dontessel valik (DT-F214b); alapertelmezetten kikapcsolt.
 A kuszobot elero OSZ-konyveket importalja: konkordancia/BSB_Strongs.tsv (a KJV_Strongs_*.tsv
 formatumaban: Igehely STEP-alakban, Szosorszam, Strong-szam, Angol szo, Morfologiai kod (ures)).
