@@ -24,9 +24,11 @@ maradhatnak a lépéslistán kívül (EGYEZES_KIVETEL).
 import argparse
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
+import time
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -116,6 +118,21 @@ def ci_egyezes(szoveg=None):
     return hibak
 
 
+TMP_KONYVTAR = None   # a lépések ideiglenes könyvtára (a main() állítja be)
+
+
+def ideiglenes_konyvtar():
+    """Ideiglenes könyvtár a repóval azonos meghajtón. Windowson a szabály-tesztek (test_szabalyok.py) a repó gyökeréhez
+    képest relatív útvonalat képeznek az ideiglenes fájlokból, és ez más meghajtón ValueError-ral bukik (pl. a worktree
+    E:-n, a %TEMP% C:-n). Ilyenkor a meghajtó gyökerében készül a könyvtár."""
+    alap = None
+    if os.name == 'nt':
+        if os.path.splitdrive(tempfile.gettempdir())[0].lower() != os.path.splitdrive(ROOT)[0].lower():
+            alap = os.path.splitdrive(ROOT)[0] + os.sep + 'push_elott_tmp'
+            os.makedirs(alap, exist_ok=True)
+    return tempfile.mkdtemp(prefix='push_elott_', dir=alap)
+
+
 class Futas:
     def __init__(self):
         self.hibas = []   # (lépés, kilépési kód)
@@ -124,8 +141,12 @@ class Futas:
     def lepes(self, nev, argv, stdin_szoveg=None, fajlba=None):
         """Egy lépés: stdout+stderr összegyűjtve. Kiírja az állapotot; HIBA esetén a HIBA-sorokat, vagy a kimenet végét."""
         env = dict(os.environ, PYTHONIOENCODING='utf-8')
+        if TMP_KONYVTAR:
+            env.update(TEMP=TMP_KONYVTAR, TMP=TMP_KONYVTAR, TMPDIR=TMP_KONYVTAR)
+        t0 = time.time()
         r = subprocess.run(argv, cwd=ROOT, capture_output=True, encoding='utf-8', errors='replace',
                            input=stdin_szoveg, env=env)
+        nev = '%s [%d mp]' % (nev, time.time() - t0)
         kimenet = (r.stdout or '') + (('\n' + r.stderr) if r.stderr else '')
         if fajlba:
             with open(fajlba, 'w', encoding='utf-8') as f:
@@ -191,7 +212,8 @@ def main():
     print('push_elott: alap %s, fej %s, %d változott fájl, PR-cím: %s' % (alap[:8], fej[:8], len(fajlok), pr_cim or '(nincs)'))
 
     fut = Futas()
-    tmp = tempfile.mkdtemp(prefix='push_elott_')
+    global TMP_KONYVTAR
+    tmp = TMP_KONYVTAR = ideiglenes_konyvtar()
 
     # 0. a lépéslista egyezik a workflow-val
     for h in ci_egyezes():
@@ -237,6 +259,7 @@ def main():
     fut.lepes('E18 feladatok.py ellenoriz', [PY, 'eszkozok/feladatok.py', 'ellenoriz', '--pr-alap', alap])
     fut.lepes('feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
 
+    shutil.rmtree(tmp, ignore_errors=True)
     print()
     if fut.hibas:
         print('HIBA: %d bukott lépés: %s' % (len(fut.hibas), '; '.join(n for n, _ in fut.hibas)))

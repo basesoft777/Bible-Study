@@ -118,7 +118,7 @@ Ha bármelyik nem teljesül: a rendes út (1–6. pont, független ellenőrrel).
 3. **Újragenerálás:** csak az érintett lap(ok): `python eszkozok/general.py --cel lexikon --id <ID> --ir`. Ha sablonmondat változott, a többi lap bájtazonossága (E28) ellenőrzendő.
 4. **Helyi ellenőrzés (kb. 2–5 perc), csak ez:** `olvasoi_kapu.py <ID>` (0 BUKÁS, nem több FIGYELMEZTETÉS); `proza_allitas.py <ID>`, ha a csere versre vonatkozó mondatot érint; a lap saját tesztje (`teszt_kesz_lap_<id>.py`), ha van; `ellenoriz.py` a diff fájljain.
 5. **Naplózás:** a javított helyek sorai a 4. pont szerint (`lap_javitasok.tsv`), ha a felhasználó jóváhagyta.
-6. **Push és draft PR**, a cím `[GYORS]` előtaggal; a leírásban a `régi → új` lista. Az átnézéshez a felhasználónak a változás-nézetet add: `python eszkozok/lektor_felulet/lapnezet.py <ID> <scratch>/<ID>_valtozas.html --valtozas <alap-commit>` (csak a változott blokkok, előtte–utána párban, kiemelve; a 6. pont szerint publikálva).
+6. **Push és draft PR**, a cím `[GYORS]` előtaggal; a push előtt `python eszkozok/push_elott.py --pr-cim "[GYORS] …"` 0 HIBA-val (a szabály: `/kovetkezo` 6. lépés, „PUSH ELŐTT”); a leírásban a `régi → új` lista. Az átnézéshez a felhasználónak a változás-nézetet add: `python eszkozok/lektor_felulet/lapnezet.py <ID> <scratch>/<ID>_valtozas.html --valtozas <alap-commit>` (csak a változott blokkok, előtte–utána párban, kiemelve; a 6. pont szerint publikálva).
 
 **Mi marad ki:** független ellenőr, teljes tesztsor, lassú tesztek, javítókör (a CI ezeket a PR-on úgyis futtatja; ellenőrzési szint: `gyors`, `MUNKAMENET.md` „Menet-ellenőrzés”).
 
