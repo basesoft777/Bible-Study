@@ -220,6 +220,61 @@ class F186Fejek(unittest.TestCase):
         self.assertEqual([x[1] for x in sz], ['', '4.', 'a.', '', '', 'b.'])
 
 
+class F203Fejek(unittest.TestCase):
+    """F203 (N125, N126): a seed-203/204 mért, az F186-ban nem javított osztályai — K2c, K2d, K1d (naplok/F203_jelentes.md)."""
+
+    def test_k2c_betu_utan_szam(self):
+        # V095 G4990 „<b>c.</b> 6, p. 397{b}, 20); …”; G0321 „<b>c.</b> 142 (and in the classics)): …” — hivatkozás-töredék
+        sz = _ut('<p><b>1.</b> u</p><p><b>c.</b> 6, p. 397, 20); w <ref onclick="bcv(50,3,20)">Phi 3:20</ref></p>', osszevonas=False)
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/-'])
+
+    def test_k2c_szamjelolo_utan_szam_fej(self):
+        # G1817: „<b>2.</b> 2 aorist active to rise …” — számjelölő után a szám valódi fej
+        sz = _ut('<p><b>1.</b> u</p><p><b>2.</b> 2 aorist active to rise</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/2/-'])
+
+    def test_k2c_felsorolt_utalas(self):
+        # V069 G1519 „<b>c.</b> and d.; στρέφειν τί εἰς τί Rev 11:6”
+        sz = _ut('<p><b>1.</b> u</p><p><b>c.</b> and d.; w <ref onclick="bcv(66,11,6)">Rev 11:6</ref></p>', osszevonas=False)
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/-'])
+
+    def test_k2c_nem_nyitott_zarojel(self):
+        # W020 G2041 „<b>d.</b> Br. an d. Gal., p. 194ff): …”; W089 G3686 „<b>b.</b> (aa.)), …”; W118 G2983 „<b>d.</b> at the end;
+        # (Liddell and Scott, II. 3)), …”; V042 G2443 „<b>b.</b> e. above); …”
+        for d in ('<p><b>d.</b> Br. an d. Gal., p. 194ff): <ref onclick="bcv(45,3,20)">Rom 3:20</ref></p>',
+                  '<p><b>b.</b> (aa.)), <ref onclick="bcv(40,28,19)">Mat 28:19</ref></p>',
+                  '<p><b>d.</b> at the end; (Liddell and Scott, II. 3)), by which x</p>',
+                  '<p><b>b.</b> e. above); y</p>'):
+            sz = _ut('<p><b>3.</b> u</p>' + d, osszevonas=False)
+            self.assertEqual([x[0] for x in sz], ['cim', '-/3/-', '-/3/-'], d)
+
+    def test_k2c_kettospont_utan_zarojel_fej(self):
+        # G1799 „<b>a.</b> properly: … (Rev 14:5 Rec.)); …” — a kettőspont után a fölös „)” nem töredék: fej
+        sz = _ut('<p><b>1.</b> u</p><p><b>a.</b> properly: x, <ref onclick="bcv(66,1,4)">Rev 1:4</ref>; (Rev 14:5 Rec.)); y</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/1/-', '-/1/a'])
+
+    def test_k2d_zarojeles_etimologia(self):
+        # V092 G0536 „(from ἀπάρχομαι: <b>a.</b> … <b>b.</b> … ἀποδεκατόω), in the Sept. …”, utána valódi fejek
+        sz = _ut('<p>ἀπαρχῆς, ἡ (from ἀπάρχομαι:</p><p><b>a.</b> to offer firstlings;</p><p><b>b.</b> to take away the first-fruits; '
+                 'cf. x), in the Sept. y</p><p><b>b.</b> of persons</p><p><b>c.</b> z</p>', osszevonas=False)
+        self.assertEqual([x[0] for x in sz], ['cim', 'fej', 'fej', 'fej', '-/-/b', '-/-/c'])
+
+    def test_k2d_le_nem_zart_zarojel_nem_nyel(self):
+        # G0156 „(ας, ἡ;” — a forrás soha le nem zárt zárójele a fejeket nem nyeli el
+        sz = _ut('<p>(ας, ἡ;</p><p><b>1.</b> cause, reason: x</p><p><b>2.</b> cause for which</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', 'fej', '-/1/-', '-/2/-'])
+
+    def test_k2d_szamjelolo_nem(self):
+        # G1389 „<b>1.</b> to ensnare … <b>2.</b> to corrupt, (… 59) …”: számjelölőre a hordozott zárójel nem vonatkozik
+        sz = _ut('<p>δολῶ (from δόλος;</p><p><b>1.</b> to ensnare</p><p><b>2.</b> to corrupt, x 59) y</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', 'fej', '-/1/-', '-/2/-'])
+
+    def test_k1d_rec_utan_fej(self):
+        # V007 G5547 „Act 19:4 Rec. b. ὁ Χριστός is a proper name”
+        sz = _ut('<p><b>2.</b> u</p><p><b>a.</b> x <ref onclick="bcv(44,19,4)">Act 19:4</ref> Rec. b. ὁ Χριστός is a proper name</p>')
+        self.assertEqual([x[0] for x in sz], ['cim', '-/2/-', '-/2/a', '-/2/b'])
+
+
 class Tabla(unittest.TestCase):
     def test_fejlec(self):
         with open(TABLA, encoding='utf-8') as f:

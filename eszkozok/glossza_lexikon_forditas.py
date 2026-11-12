@@ -4,10 +4,13 @@
 eszkozok/glossza_lexikon_forditas.py -- F121 GLOSSZA_FORDITAS (DT-F121c: a #140 eszkozetol kulon fajl):
 a lexikonoldalak "(forditasra var)" jelolesu szotari egysegeinek listaja es rogzitese.
 
-  lista --id ISTENTISZT-001 [--kimenet <repon kivuli konyvtar>]
+  lista --id ISTENTISZT-001 [--kimenet <repon kivuli konyvtar>] [--ki <lista.tsv>]
       A generator sajat forditas_ehhez() hivasait naplozza egy repon kivuli lexikon-renderben, igy a
-      kulcs es a forrasszoveg pontosan az, amit a lap keres. Kimenet: naplok/F121_GLOSSZA_FORDITAS_lista.tsv
-      (kulcs, forrasszoveg, forras_hash, allapot: megvan / hianyzik / elavult).
+      kulcs es a forrasszoveg pontosan az, amit a lap keres. F203 (N-F12e): a hianyzo kulcs a renderben egyedi
+      jelolot kap, es csak az a kulcs kerul a listara, amelynek jeloloje a renderelt lapon all (a lapon tenylegesen
+      forditatlan egyseg; a mas forrasbol -- pl. a bdb_szakasz_hu.tsv-bol -- magyarul allo vagy a lapra nem kerulo
+      hivas nem hiany). Kimenet: a --ki, kulonben <kimenet>/F121_GLOSSZA_FORDITAS_lista.tsv (a repoba csak
+      kifejezett --ki-vel ir); ha a lap nem renderelodott (pl. nincs res_forras-sora), megall.
   A forrasszoveg-feloldo (forras_szoveg) a 13. szabaly (ellenoriz.py) forrasa is: egy feloldo, nem ket masolat.
 
 Olvasas split('\\t')-bel (CLAUDE.md: a csv modul tilos).
@@ -24,7 +27,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KONKORDANCIA = os.path.join(GYOKER, 'konkordancia')
-LISTA = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_lista.tsv')
+LISTA_NEV = 'F121_GLOSSZA_FORDITAS_lista.tsv'      # F203: a render könyvtárában (repón kívül), hacsak a --ki mást nem mond
+JELOLO = '⟦GLF:%d⟧'                                 # F203: a hiányzó kulcs helye a renderben (csak a lista futásában)
 DBH_JELENTESEK = os.path.join(KONKORDANCIA, 'UBS_DBH_jelentesek.tsv')
 FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash', 'forras_hossz',
           'allapot', 'forrasszoveg']
@@ -198,7 +202,9 @@ def _strong_padded(s):
 
 
 def lista_keszit(motivum_id, kimenet):
-    """A generator forditas_ehhez() hivasait naplozva rendereli a lapot kimenet-be (repon kivuli konyvtar)."""
+    """A generator forditas_ehhez() hivasait naplozva rendereli a lapot kimenet-be (repon kivuli konyvtar).
+    -> {kulcs: (van_forditas, jelolo)}; a hiányzó kulcs a fordítás helyett egyedi jelölőt kap (`JELOLO`), így a renderből
+    kiolvasható, hogy a hiány a lapra került-e (F203, N-F12e)."""
     sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
     import lexikon_general as lg
     import general
@@ -207,8 +213,10 @@ def lista_keszit(motivum_id, kimenet):
 
     def naplozo(szotar, strong, entry_id, jelentes_szam, mezo):
         hu = eredeti(szotar, strong, entry_id, jelentes_szam, mezo)
-        hivasok.setdefault((szotar, strong, entry_id, jelentes_szam, mezo), bool(hu))
-        return hu
+        k = (szotar, strong, entry_id, jelentes_szam, mezo)
+        if k not in hivasok:
+            hivasok[k] = (bool(hu), None if hu else JELOLO % len(hivasok))
+        return hu or hivasok[k][1]
 
     lg.forditas_ehhez = naplozo
     regi_argv = sys.argv
@@ -221,19 +229,53 @@ def lista_keszit(motivum_id, kimenet):
     return hivasok
 
 
-def lista(motivum_id, kimenet=None):
+def render_szoveg(kimenet):
+    """A render könyvtár szövegfájljai egybefűzve (a lista a jelölőket ebben keresi)."""
+    ki = []
+    for gy, _, fajlok in os.walk(kimenet):
+        for nev in sorted(fajlok):
+            if nev == LISTA_NEV or not nev.endswith(('.md', '.html', '.txt')):
+                continue
+            with open(os.path.join(gy, nev), encoding='utf-8', errors='replace') as f:
+                ki.append(f.read())
+    return '\n'.join(ki)
+
+
+def latszo_hianyok(hivasok, szoveg):
+    """(látszó, rejtett): a hiányzó kulcsok közül azok, amelyeknek a jelölője a renderelt szövegben áll (a lapon látszó
+    hiány), és azok, amelyeké nem (a hívás eredménye nem került a lapra, vagy más forrás adja a magyar szöveget)."""
+    latszo, rejtett = [], []
+    for kulcs, (van, jel) in sorted(hivasok.items()):
+        if van:
+            continue
+        (latszo if jel in szoveg else rejtett).append(kulcs)
+    return latszo, rejtett
+
+
+def kimeneti_ut(kimenet, ki=None):
+    """F203 (N-F12e (3)): a lista útja — a `--ki`, különben a render (repón kívüli) könyvtára; a repóba csak kifejezett
+    `--ki` ír."""
+    return ki or os.path.join(kimenet, LISTA_NEV)
+
+
+def lista(motivum_id, kimenet=None, ki=None):
     kimenet = kimenet or tempfile.mkdtemp(prefix='F121_lista_')
     if os.path.abspath(kimenet).startswith(GYOKER):
         raise SystemExit('a --kimenet a repon kivuli konyvtar legyen')
     hivasok = lista_keszit(motivum_id, kimenet)
+    szoveg = render_szoveg(kimenet)
+    if not hivasok or not szoveg.strip():
+        # N-F12e (4): a render kihagyva (pl. nincs res_forras-sor) — üres lista helyett megáll
+        raise SystemExit('a lap nem renderelodott (%s): nincs forditas_ehhez-hivas vagy kimenet -- a lista nem keszult'
+                         % motivum_id)
+    latszo, rejtett = latszo_hianyok(hivasok, szoveg)
     cache = {}
     kimeneti = []
-    for kulcs, van in sorted(hivasok.items()):
-        if van:
-            continue
+    for kulcs in latszo:
         kimeneti.append((kulcs, forras_szoveg(dict(zip(('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo'), kulcs)),
                                               cache=cache)))
-    with open(LISTA, 'w', encoding='utf-8', newline='') as f:
+    lista_ut = kimeneti_ut(kimenet, ki)
+    with open(lista_ut, 'w', encoding='utf-8', newline='') as f:
         f.write('\t'.join(FEJLEC) + '\n')
         for kulcs, forras in kimeneti:
             if forras is None:
@@ -241,7 +283,8 @@ def lista(motivum_id, kimenet=None):
             else:
                 sor = list(kulcs) + [sha1(forras), str(len(forras)), 'hianyzik', forras.replace('\t', ' ')]
             f.write('\t'.join(sor) + '\n')
-    print('hianyzo egyedi egyseg: %d (lista: %s; render: %s)' % (len(kimeneti), LISTA, kimenet))
+    print('hianyzo egyedi egyseg a lapon: %d (a lapra nem kerulo vagy mas forrasbol magyarul allo hivas: %d; lista: %s; '
+          'render: %s)' % (len(kimeneti), len(rejtett), lista_ut, kimenet))
     for kulcs, forras in kimeneti:
         print(' ', kulcs, '' if forras is not None else '-- nincs forrasszoveg')
     return kimeneti
@@ -595,10 +638,10 @@ def main():
     if a and a[0] == 'nave':
         return parancs_nave(opt('--be'), opt('--ki'))
     if not a or a[0] != 'lista' or '--id' not in a:
-        raise SystemExit('hasznalat: glossza_lexikon_forditas.py lista --id <ID> [--kimenet <konyvtar>] | manko | szojegyzek | '
+        raise SystemExit('hasznalat: glossza_lexikon_forditas.py lista --id <ID> [--kimenet <konyvtar>] [--ki <lista.tsv>] | manko | szojegyzek | '
                          'visszamenoleges | nave --be <tervezet.tsv> [--ki <kimenet>]')
     kim = a[a.index('--kimenet') + 1] if '--kimenet' in a else None
-    lista(a[a.index('--id') + 1], kim)
+    lista(a[a.index('--id') + 1], kim, opt('--ki'))
 
 
 if __name__ == '__main__':
