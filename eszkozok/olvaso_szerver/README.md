@@ -10,7 +10,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `oldalak.py` | a lapelőállítás (HTML-szöveg), **nem függ a Flasktól**; a statikus export erre épül |
 | `blokkok.py` | a blokk-regiszter (46 azonosító: az M2 40-e a pilot 39 mért adatblokkjára + az M2b 6 új blokkja a pilot kirajzolt készletéhez), jelleg-címke, forrás- és licencsor |
 | `lekerdezesek.py` | az összes SQL, paraméterezve (N-F76c) |
-| `bibliak.py` | a bibliaválasztó (F210): a választható Bibliák regisztere (Károli 1908 = alap; modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB: csak szószintű Strong-kapcsolatú szöveg), az elérhetőség (könyvenként a fejezetek), és a nem Károli 1908-as fejezet szövegoszlopának modellje; Flask és SQL nélkül |
+| `bibliak.py` | a bibliaválasztó (F210): a választható Bibliák regisztere (Károli 1908 = alap; modern Károli, TAHOT, TAGNT, Septuaginta, KJV; a BSB nem választható, F214: csak szószintű Strong-kapcsolatú szöveg), az elérhetőség (könyvenként a fejezetek), és a nem Károli 1908-as fejezet szövegoszlopának modellje; Flask és SQL nélkül |
 | `kereses.py` | a keresés (M3): a bemenet értelmezése és normalizálása, a négy ág (Strong, magyar szó három móddal, magyar frázis, héber frázis), a héber előtag-toleráns illesztés, a kulcsos lapozás, a kiemelés; Flask és SQL nélkül |
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |

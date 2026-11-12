@@ -34,7 +34,7 @@ class TestSegedek(unittest.TestCase):
         self.assertEqual(bibliak.parameter('karoli'), '')
         self.assertEqual(bibliak.parameter('vulgata'), 'biblia=vulgata')
         # csak szószintű Strong-kapcsolatú szöveg (a felhasználó, 2026-11-12): a Targum és a Vulgata nem választható
-        self.assertEqual([b.kod for b in bibliak.BIBLIAK], ['karoli', 'modern', 'tahot', 'tagnt', 'lxx', 'kjv', 'bsb'])
+        self.assertEqual([b.kod for b in bibliak.BIBLIAK], ['karoli', 'modern', 'tahot', 'tagnt', 'lxx', 'kjv'])
         self.assertEqual(bibliak.kod_kerese('vulgata'), 'karoli')
         self.assertEqual(bibliak.kod_kerese('targum'), 'karoli')
         self.assertTrue(all(b.strong_tablak for b in bibliak.BIBLIAK))
@@ -111,7 +111,7 @@ class TestBibliavalaszto(unittest.TestCase):
 
     def test_minden_biblia_olvashato(self):
         for kod, ut, minta in (('modern', '/1Moz/1', 'Kezdetben'), ('tahot', '/1Moz/1', 'אֱלֹהִ֑ים'), ('lxx', '/1Moz/1', 'ἀρχῇ'),
-                               ('kjv', '/1Moz/1', 'beginning'), ('bsb', '/1Moz/1', 'the beginning'),
+                               ('kjv', '/1Moz/1', 'beginning'),
                                ('modern', '/Mt/1', 'Ábrahám'), ('tagnt', '/Mt/1', 'Βίβλος'), ('kjv', '/Mt/1', 'Abraham')):
             u = '%s?biblia=%s' % (ut, kod)
             h = self.h(u)
@@ -154,17 +154,17 @@ class TestBibliavalaszto(unittest.TestCase):
         c = app.test_client()
         h = c.get('/1Moz/1').get_data(as_text=True)
         self.assertNotIn('data-biblia="kjv"', h)
-        self.assertIn('data-biblia="bsb"', h)
+        self.assertNotIn('data-biblia="bsb"', h)         # a BSB nem választható (F214: nem teljes)
         self.assertEqual(c.get('/1Moz/1?biblia=kjv').status_code, 404)
 
     def test_konyvracs_a_biblia_konyvei(self):
-        f = self.fej(self.h('/1Moz/1?biblia=bsb'))
+        f = self.fej(self.h('/1Moz/1?biblia=tahot'))
         konyvek = re.findall(r'<a class="konyvgomb[^"]*" href="([^"]+)" data-kk="([^"]+)"', f)
-        # a BSB csak az Ószövetség, és a forrásfájlból (BSB_Strongs.tsv) hiányzik a 2Sám, az Ezsd és a Dán: 36 könyv
-        self.assertEqual(len(konyvek), 36)
-        self.assertFalse({'2Sám', 'Ezsd', 'Dán', 'Mt'} & {kk for _, kk in konyvek})
-        self.assertTrue(all(h.endswith('?biblia=bsb') for h, _ in konyvek))
-        self.assertIn('data-bq="?biblia=bsb"', f)
+        # a héber ÓSZ csak az Ószövetség: az Újszövetség könyvei nincsenek a rácsban
+        self.assertEqual(len(konyvek), 39)
+        self.assertFalse({'Mt', 'Jel'} & {kk for _, kk in konyvek})
+        self.assertTrue(all(h.endswith('?biblia=tahot') for h, _ in konyvek))
+        self.assertIn('data-bq="?biblia=tahot"', f)
 
 
 if __name__ == '__main__':
