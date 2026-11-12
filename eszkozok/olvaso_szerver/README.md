@@ -30,7 +30,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `teszt_indito.py` | az indító tesztjei (#100): szinkron-döntés, git-olvasás, lábléc, `indit.sh` ideiglenes adatbázisokkal |
 | `m4_meres.py` | az M4 lapidő-mérése a VPS-t utánzó korláttal (`systemd-run --scope`: 1 vCPU, 2 GB, csere nélkül; gunicorn a `gunicorn_conf.py` szerint), a korlát igazolásával, hideg/meleg/LRU idővel; rootként fut a WSL-ben (`drop_caches`), a repóba nem ír. Eredmény: `naplok/OLVASOI_KONKORDANCIA_meres.md` |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
-| `teszt_szokartya.py` | a BDB-szókártya tesztjei (F213): a megjelenítési szabályok adatbázis nélkül; a szókártya, az alapjelentés (DT-F213a), a Strong-szótár és az „Ebben a versben” magyar sora a valódi lapokon |
+| `teszt_szokartya.py` | a BDB-szókártya tesztjei (F213): a megjelenítési szabályok adatbázis nélkül; a szókártya, az alapjelentés (DT813), a Strong-szótár és az „Ebben a versben” magyar sora a valódi lapokon |
 | `teszt_kereses.py` | a keresés tesztjei (M3): értelmezés, független lekérdezéssel összevetett találatok, vershatár, üres eredmény, lapozás, SQL-injekció, XSS, a fejléc mezője réteggel és nélküle, kiadás (authorizer-napló), hozzáférési szint |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
 | `teszt_tervezo.py` | a tervező mód tesztjei (#98 M2): regiszter, regiszter-őr, szabálytérkép, értékszűrés, a végpont biztonsága kiadásonként, atomi írás, ETag, szinkron-kimenet, a szelektorok a valódi lapokon |
