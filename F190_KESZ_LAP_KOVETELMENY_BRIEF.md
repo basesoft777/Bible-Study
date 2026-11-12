@@ -6,7 +6,7 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: lezarva
-lezarva_osszegzes: a kész lap követelménylistája a HAMART-001 mércéjével; a K67a–K67f pontosítása a #183 után: N-F190a
+lezarva_osszegzes: a kész lap követelménylistája a HAMART-001 mércéjével; a K67a–K67f pontosítása a #183 után: N164
 ag: claude/kesz-lap-kovetelmeny-15a3b5
 pr: 683
 ad: egy helyen, blokkonként áll, mitől kész egy lexikonlap; a HAMART-001 mért állapota soronként; a hiányok, az ellentmondások és a gépesíthető emberi ellenőrzések listája
