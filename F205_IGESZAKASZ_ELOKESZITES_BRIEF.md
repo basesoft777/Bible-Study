@@ -12,6 +12,8 @@ munka: folyamat
 olvas: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/KESZ_LAP_KOVETELMENY.md, adat/SEMA.md, adat/jeloltek.tsv, adat/visszhang_tanuk.tsv, adat/visszhang_megfelelok.tsv, adat/vitatott_forrasok.tsv, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/gerinc_kartya.py, eszkozok/forditas_vedelem.py, naplok/F182_jelentes.md]
 ir: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, adat/SEMA.md, adat/jelentespont_olvasat.tsv, eszkozok/tanulmany_kinyer.py, eszkozok/teszt_tanulmany_kinyer.py, eszkozok/szakasz_forditas.py, eszkozok/teszt_szakasz_forditas.py, F205_IGESZAKASZ_ELOKESZITES_BRIEF.md]
 fugg: [125]
+ag: claude/f205-igeszakasz-elokeszites
+pr: 716
 ---
 
 # F205_IGESZAKASZ_ELOKESZITES_BRIEF.md — Az igeszakasz-tanulmány előkészíti a motívumcikket
