@@ -10,7 +10,7 @@ munka: folyamat
 ad: a `nyilt_mag/` ugyanazt a fájlkészletet adja, mint a modernizált Károli – Strong csomag (MODSZER/METHODS, LICENSE, ATTRIBUCIO, CITATION.cff, kozlemeny/ hu/en, .gitattributes), generált számokkal, a kapu nyilvános szöveg-szabályaival
 kovetkezo: "Folytatás: a generátor bővítése, a kapu, majd ⛔ a szövegek átnézése a draft PR-ban"
 olvas: [F162_NYILT_MAG_BRIEF.md, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, adat/licencek.tsv, CITATION.cff, kozlemeny/MI_NYILATKOZAT.md, kozlemeny/data_paper/kezirat_hu.md]
-ir: [nyilt_mag/, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py]
+ir: [nyilt_mag/, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_szovegek.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py]
 fugg: [162]
 ---
 

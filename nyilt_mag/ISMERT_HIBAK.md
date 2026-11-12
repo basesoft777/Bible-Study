@@ -1,8 +1,10 @@
-# Ismert hibák a forrásadatokban
+# Ismert hibák és korlátok
 
-# GENERÁLT: a(z) Logosz-lexikon nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
-A nyílt mag készítői itt mondják ki azokat a forráshibákat, amelyeket a saját méréseik kimutattak, és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív lelet.
+*Logosz-lexikon — nyílt adatmag · adatállapot: 2026-11-10*
+
+Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív lelet. A módszer korlátait a `MODSZER.md` 12. pontja sorolja fel.
 
 ## 1. Károli-kereszthivatkozások: más vers listájának másolata
 
@@ -27,3 +29,5 @@ A külön réteg (`cc_by_sa_reteg/`) az UBS SDBH/SDGNT szemantikai doménjeit ta
 ## 3. A Károli-szó gépi párosítása
 
 Az `elofordulasok.tsv` `azonositas_modja` oszlopának `szó-szintű-gépi` értéke modell-kimenet: a Károli-szó és a Strong-szám párosítását gép végezte, csak magas bizonyosságú pár igazolhat sort. A mód azt mondja meg, hogyan azonosítottuk a szót, nem azt, hogy a párosítást ember ellenőrizte.
+
+A javítások a következő kiadásba kerülnek; a kiadás a `KIADAS.txt` azonosítójával idézhető.

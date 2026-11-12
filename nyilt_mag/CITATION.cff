@@ -1,0 +1,62 @@
+cff-version: 1.2.0
+message: "Ha az adatokat használja, kérjük, ezt az adatkészletet idézze. / If you use the data, please cite this dataset."
+type: dataset
+title: "Logosz-lexikon — nyílt adatmag: bibliai motívumok / Logosz Lexikon — open data core: biblical motifs"
+authors:
+  - family-names: "Demeter"
+    given-names: "Tamás"
+    orcid: "https://orcid.org/0009-0005-9254-9731"
+doi: "10.5281/zenodo.24141612"
+license:
+  - CC-BY-4.0
+  - CC-BY-SA-4.0
+abstract: >-
+  Bibliai motívumok nyílt adatkészlete: 9 motívum, 250 előfordulás és 540
+  kizárás-sor. Minden motívumhoz rögzített kizáró jegy és a tágabb fogalom
+  tartozik, amely felé hígulna; minden előfordulás a héber vagy görög szöveg
+  egy szaván áll, mellette a Károli-fordítás szavával; a megvizsgált, de
+  kizárt helyek indoklással szerepelnek; minden sor megnevezi az eredetét. A
+  szemantikai domének külön rétege CC BY-SA 4.0, a csomag többi része CC BY
+  4.0. A nyílt adatmag a lexikon adatrétege; maga a lexikon önálló mű, minden
+  jog fenntartva.
+  (English) An open dataset of biblical motifs: 9 motifs, 250 occurrences and
+  540 exclusion rows. Every motif has a fixed exclusion criterion and the broader
+  concept towards which it would dilute; every occurrence rests on a word of
+  the Hebrew or Greek text, with the word of the Károli translation; passages
+  examined but excluded are listed with a rationale; every row names its
+  origin. The separate layer of semantic domains is under CC BY-SA 4.0, the
+  rest of the package under CC BY 4.0. The open data core is the data layer
+  of the lexicon; the lexicon itself is a separate work, all rights reserved.
+keywords:
+  - bibliai motívumok
+  - kizárási döntések
+  - Károli-biblia
+  - biblical motifs
+  - intertextuality
+  - Hebrew Bible
+  - New Testament
+  - Septuagint
+references:
+  - type: dataset
+    title: "Károli 1908 – Strong szóillesztés / Károli 1908 – Strong word alignment"
+    authors:
+      - family-names: "Demeter"
+        given-names: "Tamás"
+    doi: "10.5281/zenodo.24141884"
+  - type: dataset
+    title: "Modernizált Károli – Strong / Modernised Károli – Strong"
+    authors:
+      - family-names: "Demeter"
+        given-names: "Tamás"
+    doi: "10.5281/zenodo.24141950"
+  - type: generic
+    title: "Logosz-lexikon / Logosz Lexikon"
+    authors:
+      - family-names: "Demeter"
+        given-names: "Tamás"
+    url: "https://logoszlexikon.hu"
+    abstract: >-
+      A lexikon, önálló mű: értelmező szövege, a szótárak magyar fordítása és a
+      kötet. Minden jog fenntartva. (English) The lexicon, a separate work: its
+      interpretive text, the Hungarian translation of the dictionaries and the
+      volume. All rights reserved.

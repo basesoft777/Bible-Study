@@ -31,6 +31,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import nyilt_mag_szovegek as SZ  # noqa: E402  (F208: a nyilvános szövegek prózája)
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 if hasattr(sys.stderr, 'reconfigure'):
@@ -47,6 +50,7 @@ SZERZO = 'Demeter Tamás'
 ORCID = '0009-0005-9254-9731'
 DOI_MAG = '10.5281/zenodo.24141612'
 DOI_KAROLI_STRONG = '10.5281/zenodo.24141884'
+DOI_KAROLI_MODERN = '10.5281/zenodo.24141950'     # a modernizált Károli – Strong lefoglalt DOI-ja (F174, 2026-11-11)
 DOMAIN = 'logoszlexikon.hu'
 KANONIKUS_HELY = 'https://doi.org/' + DOI_MAG
 NYERS_HELYORZO = re.compile(r'\[A LEXIKON CÍME\]|\[HELYŐRZŐ[^\]]*\]|<[A-Z_]+_URL>')
@@ -868,14 +872,14 @@ def kh_meres():
     }
 
 
-def ismert_hibak(sz):
+def ismert_hibak(sz, datum):
     kh = kh_meres()
     szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'nincs mérve'
-    gy = kh['gyanus']
-    ki = ['# Ismert hibák a forrásadatokban', '', FEJLEC, '',
-          'A nyílt mag készítői itt mondják ki azokat a forráshibákat, amelyeket a saját méréseik kimutattak, '
-          'és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az '
-          'üres eredmény nem negatív lelet.', '',
+    ki = ['# Ismert hibák és korlátok', '', SZ.MD_FEJLEC % LEXIKON_CIM_HU, '',
+          '*%s — nyílt adatmag · adatállapot: %s*' % (LEXIKON_CIM_HU, datum), '',
+          'Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli '
+          'őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív '
+          'lelet. A módszer korlátait a `MODSZER.md` 12. pontja sorolja fel.', '',
           '## 1. Károli-kereszthivatkozások: más vers listájának másolata', '',
           'A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthivatkozásai, KH) egy része '
           'nem a saját versének, hanem egy másik versnek a listáját hordozza (például az ApCsel 2:27 sorai '
@@ -902,18 +906,20 @@ def ismert_hibak(sz):
           'Az `elofordulasok.tsv` `azonositas_modja` oszlopának `szó-szintű-gépi` értéke modell-kimenet: '
           'a Károli-szó és a Strong-szám párosítását gép végezte, csak magas bizonyosságú pár igazolhat '
           'sort. A mód azt mondja meg, hogyan azonosítottuk a szót, nem azt, hogy a párosítást ember '
-          'ellenőrizte.', '']
+          'ellenőrizte.', '',
+          'A javítások a következő kiadásba kerülnek; a kiadás a `KIADAS.txt` azonosítójával idézhető.', '']
     return '\n'.join(ki)
 
 
-def known_issues_en(sz):
+def known_issues_en(sz, datum):
     """KNOWN_ISSUES.md: az `ISMERT_HIBAK.md` angol megfelelője (ugyanazok a mért számok, ugyanaz a tartalom)."""
     kh = kh_meres()
     szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'not measured'
-    ki = ['# Known Errors in the Source Data', '', FEJLEC_EN, '',
-          'The makers of the open core state here the source errors that their own measurements revealed, and how '
-          'the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result '
-          'is not a negative finding.', '',
+    ki = ['# Known issues and limitations', '', SZ.MD_FEJLEC_EN % LEXIKON_CIM_EN, '',
+          '*%s — open data core · data state: %s*' % (LEXIKON_CIM_EN, datum), '',
+          'We state here the source errors that our own measurements revealed, and how the package handles them. A '
+          'gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding. The '
+          'limitations of the method are listed in section 12 of `METHODS.md`.', '',
           "## 1. Károli cross-references: a copy of another verse's list", '',
           'Part of the cross-reference table of the Károli Bible (the cross-references of the Károli edition, KH) '
           'carries not the list of its own verse but that of another verse (for example, the rows of Acts 2:27 are '
@@ -941,7 +947,8 @@ def known_issues_en(sz):
           "The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: "
           "the alignment of the Károli word with the Strong's number was done by machine, and only a "
           'high-confidence pair may justify a row. The mode states how the word was identified, not that a human '
-          'verified the alignment.', '']
+          'verified the alignment.', '',
+          'Corrections go into the next release; a release can be cited by the identifier in `RELEASE.txt`.', '']
     return '\n'.join(ki)
 
 
@@ -1047,8 +1054,8 @@ def hogyan_olvasd_hu(p):
             '2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = '
             '`%s`): %d vers.' % (p['motivum'], p['tag_db']),
             '3. Együtt: %d előfordulás, %d egyenként kizárt vers és %d csoportban kizárt vers, összesen %d vers, '
-            'amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat az „Ami nincs a '
-            'csomagban” szakasz adja.'
+            'amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, '
+            'mi nincs” szakasz adja.'
             % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
 
 
@@ -1083,7 +1090,7 @@ def hogyan_olvasd_en(p):
             '%d verses.' % (p['motivum'], p['tag_db']),
             '3. Together: %d occurrences, %d verses excluded one by one and %d verses excluded in groups, %d verses '
             'with a decision in all. Candidates not yet decided are not in the package; their number is given under '
-            '"What is not in the package".'
+            '"What is in it and what is not".'
             % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
 
 
@@ -1206,6 +1213,98 @@ def visszhang_tablak(lic, elo):
     sorok.sort(key=lambda s: (s['motivum_azonosito'], s['igehely'], int(s['sorszam'])))
     ki['sblgnt_apparatus.tsv'] = (fej, sorok)
     return ki, hasznalt
+
+
+def adatallapot_datuma(fajlok):
+    """Az adatállapot dátuma: a legkésőbbi döntés-dátum az előfordulás-, kizárás- és felvételi táblában."""
+    datumok = []
+    for rel in ('elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv'):
+        _, ds = tsv_szoveg(fajlok[rel])
+        datumok += [d['datum'].replace('.', '-') for d in ds if re.match(r'\d{4}[-.]\d{2}[-.]\d{2}', d['datum'])]
+    return max(datumok) if datumok else 'nincs rögzítve'
+
+
+MODELL_RX = re.compile(r'claude-[a-z]+-\d+(?:-\d+)*')
+NINCS_FORD_RX = re.compile(r'nincs fordítás|részben hiányzik')
+
+
+def csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum):
+    """A nyilvános szövegek (F208, `nyilt_mag_szovegek.py`) számai, a már generált csomagtáblákból. Itt minden szám
+    a csomagból jön; a kapu a szövegeket ugyanebből a függvényből újraszámolva méri (BAJTAZONOS)."""
+    t = {rel: tsv_szoveg(fajlok[rel])[1] for rel in fajlok if rel.endswith('.tsv') and not rel.startswith('cc_by_sa')}
+    mot, elo, kiz = t['motivumok.tsv'], t['elofordulasok.tsv'], t['kizarasok.tsv']
+
+    def szamlal(sorok, o, o_en=None):
+        db = {}
+        for s in sorok:
+            k = (s[o], s.get(o_en, '') if o_en else '')
+            db[k] = db.get(k, 0) + 1
+        return sorted(db.items(), key=lambda x: (-x[1], x[0]))
+
+    def lista(parok, nyelv):
+        return '; '.join('%s: %s' % (k[0] if nyelv == 'hu' else k[1], SZ.ezres(n, nyelv)) for k, n in parok)
+
+    tipus = szamlal(mot, 'azonossag_tipusa', 'azonossag_tipusa_en')
+    horg = szamlal(elo, 'horgony_tipus', 'horgony_tipus_en')
+    zart = [m for m in mot if m['motivum_azonosito'] in lezart]
+    karoli = [e for e in elo if e['karoli_szo']]
+    modell = {}
+    nincs_ford = 0
+    for rel, sorok in t.items():
+        for s in sorok:
+            fm = s.get('forditas_modja', '')
+            for m in MODELL_RX.findall(fm):
+                modell[m] = modell.get(m, 0) + 1
+            if NINCS_FORD_RX.search(fm):
+                nincs_ford += 1
+    modellek = [m for m, _ in sorted(modell.items(), key=lambda x: (-x[1], x[0]))]
+    if not modellek:
+        raise SystemExit('csomag_szamok: a fordítás modellje nem olvasható a forditas_modja oszlopokból')
+    vh = t['visszhang_megfelelok.tsv']
+    ok = {k['kizaras_oka'].replace(' (összesítő sor)', '') for k in kiz if k['kizaras_oka']}
+    kmod = {s['keresesi_mod'] for rel in ('kizarasok.tsv', 'beepitesi_dontesek.tsv') for s in t[rel] if s['keresesi_mod']}
+    csaladnev, _, utonev = SZERZO.partition(' ')
+    return {
+        'cim_hu': LEXIKON_CIM_HU, 'cim_en': LEXIKON_CIM_EN, 'szerzo': SZERZO, 'csaladnev': csaladnev, 'utonev': utonev,
+        'orcid': ORCID, 'doi': DOI_MAG, 'doi_karoli_strong': DOI_KAROLI_STRONG, 'doi_karoli_modern': DOI_KAROLI_MODERN,
+        'kanonikus': KANONIKUS_HELY, 'domain': DOMAIN, 'datum': datum,
+        'mot': len(mot), 'lezart': len(zart), 'regi': len(mot) - len(zart),
+        'lezart_lista_hu': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'hu'),
+        'lezart_lista_en': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'en'),
+        'lezart_cimkek_hu': SZ.felsorol(['„%s”' % m['rovid_cimke'] for m in zart], 'hu'),
+        'lezart_cimkek_en': SZ.felsorol(['“%s”' % m['rovid_cimke_en'] for m in zart], 'en'),
+        'tipus_hu': lista(tipus, 'hu'),
+        'tipus_en': lista(tipus, 'en'),
+        'horgony_hu': lista(horg, 'hu'), 'horgony_en': lista(horg, 'en'),
+        'elo': len(elo), 'beep': len(t['beepitesi_dontesek.tsv']), 'kiz': len(kiz),
+        'kiz_egyedi': sum(1 for k in kiz if not k['csoport_versszam']),
+        'osszesito': sum(1 for k in kiz if k['csoport_versszam']),
+        'csoport_vers': len(t['kizaras_csoportok.tsv']), 'okok': len(ok), 'keresesi_modok': len(kmod),
+        'kap': len(t['kapcsolatok.tsv']), 'mkap': len(t['motivum_kapcsolatok.tsv']),
+        'dontes': len(t['dontesnaplo.tsv']), 'nyitva': nyitva_db,
+        'karoli': len(karoli),
+        'karoli_hol_hu': ('Minden előfordulásnál' if len(karoli) == len(elo)
+                          else '%s előfordulásnál' % SZ.ezres(len(karoli), 'hu')),
+        'karoli_hol_en': ('Every occurrence also gives' if len(karoli) == len(elo)
+                          else '%s occurrences also give' % SZ.ezres(len(karoli), 'en')),
+        'karoli_tartalom': sum(1 for e in karoli if e['azonositas_modja'] == 'tartalom-alapú'),
+        'karoli_gepi': sum(1 for e in karoli if e['azonositas_modja'] == 'szó-szintű-gépi'),
+        'karoli_kovet': sum(1 for e in karoli if e['azonositas_modja'] == 'kikövetkeztetett'),
+        'karoli_magas': sum(1 for e in karoli if e['megbizhatosag'] == 'magas'),
+        'karoli_kozepes': sum(1 for e in karoli if e['megbizhatosag'] == 'közepes'),
+        'kezi': sum(1 for e in elo if e['lekerdezes_tipusa'] == scope_ford(None)),
+        'lekerd': sum(1 for e in elo if e['lekerdezes_tipusa'] != scope_ford(None)),
+        'tahot_igazolt': sum(1 for e in elo if e['igazolas'] == 'TAHOT-igazolt'),
+        'vh_megf': len(vh), 'vh_targum': sum(1 for v in vh if v['forras'] == 'targum'),
+        'vh_vulgata': sum(1 for v in vh if v['forras'] == 'vulgata'), 'vh_lxx': sum(1 for v in vh if v['forras'] == 'lxx'),
+        'vh_tanu': len(t['visszhang_tanuk.tsv']), 'vit': len(t['vitatott_forrasok.tsv']),
+        'sbl': len(t['sblgnt_apparatus.tsv']),
+        'modellek_hu': 'főként `%s`' % modellek[0] + (('; kis részben ' + ', '.join('`%s`' % m for m in modellek[1:]))
+                                                     if modellek[1:] else ''),
+        'modellek_en': 'mainly `%s`' % modellek[0] + (('; in a few cells ' + ', '.join('`%s`' % m for m in modellek[1:]))
+                                                      if modellek[1:] else ''),
+        'nincs_ford': nincs_ford, 'kizart_db': len(kizartak),
+    }
 
 
 def export(kimenet):
@@ -1470,7 +1569,7 @@ def export(kimenet):
         ''.join('\t'.join(s[f] for f in sd_fej) + '\n' for s in sd))
     stat['cc_by_sa_reteg/szemantikai_domenek.tsv'] = len(sd)
     fajlok['cc_by_sa_reteg/OLVASSEL.md'] = (
-        '# CC BY-SA 4.0 réteg — szemantikai domének\n\n' + sa_fejlec + '\n\n'
+        '# CC BY-SA 4.0 réteg — szemantikai domének\n\n' + SZ.MD_FEJLEC % LEXIKON_CIM_HU + '\n\n'
         'Ez a könyvtár **külön** áll a csomag többi (CC BY 4.0) részétől: tartalma a Creative Commons '
         'Attribution-ShareAlike 4.0 International licenc alatt áll, a belőle származtatott munka is ezen a '
         'licencen adható tovább (nem zárható el).\n\n'
@@ -1484,9 +1583,10 @@ def export(kimenet):
         'A csomag szóbázisaira (Strong-számaira) választott sorok szerepelnek; a domén az ószövetségi '
         'szókincs kb. 90%-át fedi, a hiányzó bejegyzés **nem negatív lelet** (l. `../ISMERT_HIBAK.md`).\n')
 
-    # --- ismert hibák
-    fajlok['ISMERT_HIBAK.md'] = ismert_hibak(stat)
-    fajlok['KNOWN_ISSUES.md'] = known_issues_en(stat)
+    # --- ismert hibák (az adatállapot dátuma a már generált táblákból)
+    datum = adatallapot_datuma(fajlok)
+    fajlok['ISMERT_HIBAK.md'] = ismert_hibak(stat, datum)
+    fajlok['KNOWN_ISSUES.md'] = known_issues_en(stat, datum)
 
     # --- kódkönyv (az adat/nyilt_kodkonyv.tsv-ből: a TSV és az olvasható változat)
     kk_fej, kk = tsv('adat/nyilt_kodkonyv.tsv')
@@ -1494,7 +1594,7 @@ def export(kimenet):
     kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en', 'cimke_en']
     fajlok['kodkonyv.tsv'] = oszlop_tsv(kf, kk)
     stat['kodkonyv.tsv'] = len(kk)
-    md = ['# Kódkönyv / Codebook', '', KOD_FEJLEC, '',
+    md = ['# Kódkönyv / Codebook', '', SZ.MD_FEJLEC % LEXIKON_CIM_HU, '',
           'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
           'in Hungarian and English.', '',
           '**Adatréteg / data layer.** %s / %s' % (ADATMAG_LEXIKON_HU, ADATMAG_LEXIKON_EN), '']
@@ -1510,177 +1610,22 @@ def export(kimenet):
             md += ['', '### `%s`' % s['oszlop'], '', s['leiras_hu'], '', '*' + s['leiras_en'] + '*', '']
     fajlok['KODKONYV.md'] = '\n'.join(md) + '\n'
 
-    # --- OLVASSEL.md
+    # --- a nyilvános szövegek (F208): a próza a `nyilt_mag_szovegek.py`-ban, minden szám az itt generált táblákból
+    sz = csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum)
     peldak = olvasasi_peldak(fajlok)
-    sorszamok = ''.join('| `%s` | %d |\n' % (k, v) for k, v in sorted(stat.items()))
-    ol = ['# %s — nyílt mag — olvass el' % LEXIKON_CIM_HU, '', FEJLEC, '', '*English version: `README.md`.*', '',
-          '**Licenc:** CC BY 4.0 (a nyílt mag saját adata és szövege). A `cc_by_sa_reteg/` könyvtár tartalma '
-          'külön, CC BY-SA 4.0 licenc alatt áll; l. az ottani `OLVASSEL.md`-t.', '',
-          '**Mi ez.** Egy bibliai motívumkutatás (PaRDeS-módszer) nyílt magja: a motívumok meghatározó jegyei, '
-          'az előfordulás-lista, a kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A fájlok az '
-          'adatból generált, olvasónak szóló nézetek; a munkaközi jelölések feloldva vannak. Az oszlopok '
-          'és kódok leírása: `kodkonyv.tsv` / `KODKONYV.md` (magyar és angol).', '',
-          '**Feldolgozási állapot.** A motívumok közül %d lezárt kiadás (a lexikonlapja kiadott, és az olvasói '
-          'kapun hiba nélkül átment), %d régi feldolgozás, amely a későbbi változatokban frissül; motívumonként a '
-          '`motivumok.tsv` `feldolgozasi_allapot` oszlopa mondja meg.' % (len(lezart), len(mot) - len(lezart)), '',
-          '**Ismert hibák:** l. `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`).', '',
-          ] + hogyan_olvasd_hu(peldak) + [
-          '## Fájlok és sorszámuk', '', '| Fájl | Sor |', '|---|---|', sorszamok.rstrip('\n'), '',
-          '## Licencszűrés', '',
-          'A szűrés a projekt licenc-leltára szerint történt. **Kizárt források** (a csomag értéket nem tartalmaz '
-          'belőlük): ' + ', '.join('`%s`' % k for k in kizartak) + '. Okuk soronként a `forrasok_es_licencek.tsv` '
-          '`ok` oszlopában áll (nem kereskedelmi vagy GPL licenc, tisztázatlan licenc, a projekt zárt '
-          'származtatott rétege). Ez a leltár, nem jogi vélemény.', '',
-          '## Közzétételi hely', '',
-          'A csomag kanonikus közzétételi helye: `' + KANONIKUS_HELY + '` (a nyílt adatmag DOI-ja: ' + DOI_MAG + '). '
-          'A lexikon honlapja: `https://' + DOMAIN + '`. A változatot a kiadás azonosítója jelöli (`KIADAS.txt`: az '
-          'adatállapot dátuma és a tartalmi hash), nem egy fejlesztői tár vagy commit. A Károli-szöveg Strong-számos '
-          'párosítása külön adatkészlet (DOI: ' + DOI_KAROLI_STRONG + '); nem része ennek a csomagnak.', '',
-          '## Idézés és a mesterséges intelligencia használata', '',
-          '**Idézd így:** ' + SZERZO + ' (ORCID: ' + ORCID + '): ' + LEXIKON_CIM_HU + ' — nyílt adatmag. DOI: ' + DOI_MAG +
-          '.', '',
-          'A kiadás mellé idézési metaadat (Citation File Format) és a mesterséges intelligencia használatáról '
-          'szóló nyilatkozat kerül a közzétételi helyen. A nyilatkozat két réteget különít el: a nyílt adatmagot '
-          '(CC BY 4.0, ez a csomag) és a lexikont mint önálló művet (minden jog fenntartva).', '',
-          '## Angol réteg', '',
-          'A csomag oszlopnevei és értékei magyarok; mellettük angol párhuzamos oszlopok állnak. **Igehely:** minden '
-          'igehely-oszlop mellett `…_osis` (szabványos OSIS-igehelykulcs, alakja a kódkönyvben); a könyvkód szabványos, a fejezet- és '
-          'versszám a Károli-fordítás számozása — ahol ez eltér a KJV- vagy a STEPBible-számozástól, a kulcs a '
-          'Károli-verset jelöli. **Zárt értékek:** minden zárt értékkészletű oszlop mellett `…_en`, a kódkönyv '
-          'szerkesztett angol címkéjével. **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a '
-          'döntésnapló): `…_en` párhuzamos mező, **gépi fordítás**; a sor `forditas_modja` oszlopa nevezi meg a '
-          'modellt, a hiányt kimondja. **Szófogódzó:** az `elofordulasok.tsv` `strong_glossza_en` oszlopa a '
-          'Strong-szám STEPBible-glosszája (Data created by www.STEPBible.org based on work at Tyndale House '
-          'Cambridge, CC BY 4.0); a `jelentes_en` ettől külön, szótári kivonat.', '',
-          '## Hatástörténet (visszhang-réteg)', '',
-          'Négy fájl a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel: '
-          '`visszhang_megfelelok.tsv` (a láncszavak megfelelője a Targumban, a Vulgatában és a Septuagintában), '
-          '`visszhang_tanuk.tsv` (egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit lát a helyen; '
-          'idézet nélkül, saját szavas egy mondat), `vitatott_forrasok.tsv` (a vitatott pontok lektorált szakirodalma: '
-          'csak bibliográfiai adat; az üres szerző hiány-sort jelent: ehhez a ponthoz a vizsgált adatbázisokban nem '
-          'került elő a kérdésről szóló lektorált forrás) és `sblgnt_apparatus.tsv` (az újszövetségi helyek kritikai '
-          'apparátusa). Csak ellenőrzött sor szerepel bennük: a Septuaginta-megfelelők közül azok, amelyeknél a versben egyetlen lemma jön szóba, gépi ellenőrzéssel; a többi sort második kéz nézte át.', '',
-          '**Nincs benne:** a Chain Lineage Browser tanúi (a böngésző licencet nem közöl), és a BDB rokon nyelvi '
-          'sorai (azok külön döntésre várnak). A források szövege (idézet) nincs a csomagban, csak tényadat és '
-          'saját szavas egy mondat.', '',
-          '**Forrásmegjelölés.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos '
-          'Bible Software, CC BY 4.0 (https://sblgnt.com): az `sblgnt_apparatus.tsv` jegyzetei. Sefaria, CC BY: a '
-          'rabbinikus tanú (a változás: szűrés és Károli-átvezetés). A Septuaginta megfelelői az OpenScriptorium '
-          'LXX-morph adatán alapulnak (CC BY 4.0; a Rahlfs-szöveg közkincs). Az egyházatyai tanúk metaadata a '
-          'HistoricalChristianFaith-gyűjteményből való (a gyűjtemény közkincs-nyilatkozata a kompilációra és a '
-          'metaadatra szól; az idézetszövegek nincsenek a csomagban). A Targum (Sefaria-kiadás), a Vulgata '
-          '(Clementina) és a Glossa Ordinaria (Migne) szövege közkincs.', '',
-          '## Csoportos kizárás', '',
-          'A `kizarasok.tsv` egyes sorai **összesítő sorok**: egy csoport (azonos ok miatt kizárt versek) első '
-          'versét nevezik meg, a `csoport_versszam` oszlop a csoport verseinek számát adja, a csoport összes '
-          'versét a `kizaras_csoportok.tsv` sorolja fel. Az összesítő sor indoklása a csoportra érvényes.', '',
-          '## Mi van benne, mi nincs (az adatmag és a lexikon)', '',
-          ADATMAG_LEXIKON_HU, '',
-          '**Benne van (adatréteg):** a motívum azonosítója, címe és kizáró jegye; az előfordulások (igehely, '
-          'szóbázis, szótári jelentés, Károli-szó); a kizárások és a beépítési döntések indoklással; a '
-          'kapcsolatok; a proveniencia (a forrás megnevezése, licence, a lekérdezés típusa, dátum); a '
-          'döntésnapló.', '',
-          '**Nincs benne (a lexikon):** az értelmező próza (kivonat, értelmezés, igehelyenkénti '
-          'kifejtés), a magyar szótári fordítások, a kötetanyag és a lexikonlapok.', '',
-          '## Ami nincs a csomagban', '',
-          '- A `nyitva` állapotú (még el nem döntött) jelöltek: %d db.' % nyitva_db,
-          '- A lexikon szövege (értelmező próza, magyar szótári fordítások, Strong-számos Károli-szöveg), a '
-          'tanulmányok és a lexikonlapok.',
-          '- A belső munkajelek: azonosítók, munkafájlok, lekérdezés-nyomok. Ahol egy döntésre hivatkozás áll, a '
-          'nyilvános azonosító (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel.', '',
-          '## Ellenőrzés', '',
-          'A `ELLENORZO_OSSZEG.sha256` fájl minden fájl SHA-256 összegét tartalmazza; az export újrafuttatva '
-          'bájtazonos.', '']
-    fajlok['OLVASSEL.md'] = '\n'.join(ol)
-
-    # --- README.md (az OLVASSEL.md angol megfelelője: ugyanaz a tartalom)
-    re_ = ['# %s — Open Core — Read Me' % LEXIKON_CIM_EN, '', FEJLEC_EN, '',
-           '*Magyar változat: `OLVASSEL.md`.*', '',
-           "**Licence:** CC BY 4.0 (the open core's own data and text). The contents of the `cc_by_sa_reteg/` "
-           'directory are under a separate licence, CC BY-SA 4.0; see the `OLVASSEL.md` there.', '',
-           '**What this is.** The open core of a study of biblical motifs (the PaRDeS method): the defining '
-           'features of the motifs, the list of occurrences, the excluded passages with reasons, the relations '
-           'between passages and the decision log. The files are reader-facing views generated from the data; '
-           'working marks are resolved. The columns and codes are described in `kodkonyv.tsv` / `KODKONYV.md` '
-           '(Hungarian and English).', '',
-           '**Processing stage.** Of the motifs, %d are closed releases (their lexicon page is released and passed '
-           'the reader check without error) and %d come from an earlier stage and will be updated in later '
-           'versions; the `feldolgozasi_allapot` column of `motivumok.tsv` gives the stage of each motif.'
-           % (len(lezart), len(mot) - len(lezart)), '',
-           '**Known errors:** see `KNOWN_ISSUES.md`.', '',
-           ] + hogyan_olvasd_en(peldak) + [
-           '## Files and their row counts', '', '| File | Rows |', '|---|---|', sorszamok.rstrip('\n'), '',
-           '## Licence filtering', '',
-           "The filtering follows the project's licence inventory. **Excluded sources** (the package contains no "
-           'value from them): ' + ', '.join('`%s`' % k for k in kizartak) + '. The reason for each is given in '
-           'the `ok` column of `forrasok_es_licencek.tsv` (non-commercial or GPL licence, unclear licence, the '
-           "project's closed derived layer). This is an inventory, not a legal opinion.", '',
-           '## Place of publication', '',
-           'The canonical place of publication of the package: `' + KANONIKUS_HELY + '` (the DOI of the open data '
-           'core: ' + DOI_MAG + '). The website of the lexicon: `https://' + DOMAIN + '`. A version is identified by '
-           'the release identifier (`RELEASE.txt`: the date of the data state and the content hash), not by a '
-           'development repository or a commit. The pairing of the Károli text with Strong numbers is a separate '
-           'dataset (DOI: ' + DOI_KAROLI_STRONG + '); it is not part of this package.', '',
-           '## Citation and the use of artificial intelligence', '',
-           '**Cite as:** ' + SZERZO + ' (ORCID: ' + ORCID + '): ' + LEXIKON_CIM_EN + ' — open data core. DOI: ' +
-           DOI_MAG + '.', '',
-           'With the release, citation metadata (Citation File Format) and a statement on the use of artificial '
-           'intelligence are provided at the place of publication. The statement separates two layers: the open data '
-           'core (CC BY 4.0, this package) and the lexicon as a separate work (all rights reserved).', '',
-           '## English layer', '',
-           'The column names and values of the package are Hungarian; English parallel columns stand next to them. '
-           '**Passages:** next to every passage column, `…_osis` (an OSIS reference, e.g. `1Kgs.13.31`); the book '
-           'code is standard, chapter and verse follow the versification of the Károli translation — where it '
-           'differs from the KJV or STEPBible numbering, the key denotes the Károli verse. **Closed values:** next '
-           'to every closed-vocabulary column, `…_en`, with the edited English label of the codebook. **Free '
-           'text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, '
-           'a **machine translation**; the row’s `forditas_modja` column names the model and states any gap. '
-           '**Word cue:** the `strong_glossza_en` column of `elofordulasok.tsv` is the STEPBible gloss of the '
-           'Strong number (Data created by www.STEPBible.org based on work at Tyndale House Cambridge, CC BY 4.0); '
-           '`jelentes_en` is separate, a dictionary excerpt.', '',
-           '## Reception history (the echo layer)', '',
-           'Four files give the echo of the motifs in the ancient translations and interpreters, with the licence for '
-           'each source: `visszhang_megfelelok.tsv` (the counterparts of the chain words in the Targum, the Vulgate '
-           'and the Septuagint), `visszhang_tanuk.tsv` (patristic, rabbinic and Glossa Ordinaria witnesses: who, in '
-           'which work, what they see in the passage; no quotation, one sentence in our own words), '
-           '`vitatott_forrasok.tsv` (the peer-reviewed literature on the disputed points: bibliographic data only; an '
-           'empty author denotes a gap row: no peer-reviewed source on the question was found in the databases '
-           'searched for that point) and `sblgnt_apparatus.tsv` (the critical apparatus for the New Testament '
-           'passages). Only verified rows are included: of the Septuagint counterparts, those where a single lemma comes into question in the verse were verified by machine; all other rows were checked by a second hand.', '',
-           '**Not included:** the witnesses of the Chain Lineage Browser (the browser states no licence) and the '
-           'cognate-language rows of the BDB (they await a separate decision). The text of the sources (quotation) '
-           'is not in the package, only factual data and one sentence in our own words.', '',
-           '**Credits.** SBL Greek New Testament, Copyright 2010 Society of Biblical Literature and Logos Bible '
-           'Software, CC BY 4.0 (https://sblgnt.com): the notes of `sblgnt_apparatus.tsv`. Sefaria, CC BY: the rabbinic '
-           'witness (changes: filtering and conversion to Károli numbering). The Septuagint counterparts rest on the '
-           'OpenScriptorium LXX-morph data (CC BY 4.0; the Rahlfs text is public domain). The metadata of the '
-           'patristic witnesses come from the HistoricalChristianFaith collection (the collection’s public-domain '
-           'dedication covers the compilation and the metadata; the quotation texts are not in the package). The '
-           'text of the Targum (Sefaria edition), the Vulgate (Clementine) and the Glossa Ordinaria (Migne) is in '
-           'the public domain.', '',
-           '## Group exclusion', '',
-           'Some rows of `kizarasok.tsv` are **summary rows**: they name the first verse of a group (verses '
-           'excluded for the same reason), the `csoport_versszam` column gives the number of verses in the group, '
-           'and `kizaras_csoportok.tsv` lists all verses of the group. The rationale of a summary row applies to '
-           'the whole group.', '',
-           '## What is in it and what is not (the data core and the lexicon)', '',
-           ADATMAG_LEXIKON_EN, '',
-           '**Included (data layer):** the motif identifier, title and exclusion criterion; the occurrences '
-           '(passage, lexical base, dictionary meaning, Károli word); the exclusions and inclusion decisions with '
-           'rationale; the relations; provenance (the naming of the source, its licence, the type of query, the '
-           'date); the decision log.', '',
-           '**Not included (the lexicon):** the interpretive prose (summary, interpretation, passage-by-passage '
-           'exposition), the Hungarian dictionary translations, the volume material and the lexicon pages.', '',
-           '## What is not in the package', '',
-           '- Candidates in the `nyitva` (open, not yet decided) state: %d.' % nyitva_db,
-           "- The text of the lexicon (interpretive prose, Hungarian dictionary translations, Károli text with "
-           "Strong's numbers), the studies and the lexicon pages.",
-           '- Internal working marks: identifiers, working files, query traces. Where a decision is referred to, '
-           'the public identifier (`NYD-nnn`) can be resolved in `dontesnaplo.tsv`.', '',
-           '## Verification', '',
-           'The file `ELLENORZO_OSSZEG.sha256` contains the SHA-256 sum of every file; rerunning the export is '
-           'byte-identical.', '']
-    fajlok['README.md'] = '\n'.join(re_)
+    fajlok['OLVASSEL.md'] = SZ.olvassel(sz, hogyan_olvasd_hu(peldak), stat, ADATMAG_LEXIKON_HU)
+    fajlok['README.md'] = SZ.readme(sz, hogyan_olvasd_en(peldak), stat, ADATMAG_LEXIKON_EN)
+    fajlok['MODSZER.md'] = SZ.modszer(sz, ADATMAG_LEXIKON_HU)
+    fajlok['METHODS.md'] = SZ.methods(sz, ADATMAG_LEXIKON_EN)
+    _, fl = tsv_szoveg(fajlok['forrasok_es_licencek.tsv'])
+    forrasok = [(d['dataset'], d['licenc'], d['licenc_en']) for d in fl
+                if d['szerepe_a_csomagban'].startswith('forrás')]
+    fajlok['ATTRIBUCIO.md'] = SZ.attribucio(sz, forrasok, kizartak)
+    fajlok['LICENSE'] = SZ.license_(sz)
+    fajlok['CITATION.cff'] = SZ.citation(sz)
+    fajlok['.gitattributes'] = SZ.GITATTRIBUTES
+    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_hu.md'] = SZ.kozlemeny_hu(sz)
+    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_en.md'] = SZ.kozlemeny_en(sz)
 
     if CIMKE_HIANY:
         raise SystemExit('a zárt érték angol címkéje (cimke_en) hiányzik a kódkönyvből: %s' % '; '.join(
@@ -1691,16 +1636,14 @@ def export(kimenet):
         fajlok[rel] = szerkesztoi(fajlok[rel])
 
     # --- ellenőrző összeg
+    # (F208) a `kozlemeny/` tervezet nincs az összegben: a megjelenésig nem része a kiadásnak (.gitattributes)
     sor = []
     for rel in sorted(fajlok):
+        if rel.startswith(SZ.KOZLEMENY_DIR):
+            continue
         sor.append('%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel))
     fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
-    datumok = []
-    for rel in ('elofordulasok.tsv', 'kizarasok.tsv', 'beepitesi_dontesek.tsv'):
-        _, ds = tsv_szoveg(fajlok[rel])
-        datumok += [d['datum'].replace('.', '-') for d in ds if re.match(r'\d{4}[-.]\d{2}[-.]\d{2}', d['datum'])]
     hash_ = hashlib.sha256(fajlok['ELLENORZO_OSSZEG.sha256'].encode('utf-8')).hexdigest()
-    datum = max(datumok) if datumok else 'nincs rögzítve'
     fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
                             'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'

@@ -1,8 +1,10 @@
-# Known Errors in the Source Data
+# Known issues and limitations
 
-# GENERATED: export of the Logosz Lexikon open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+<!-- GENERATED: export of the Logosz Lexikon open data core, generated from the project data; do not edit by hand. -->
 
-The makers of the open core state here the source errors that their own measurements revealed, and how the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding.
+*Logosz Lexikon — open data core · data state: 2026-11-10*
+
+We state here the source errors that our own measurements revealed, and how the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding. The limitations of the method are listed in section 12 of `METHODS.md`.
 
 ## 1. Károli cross-references: a copy of another verse's list
 
@@ -27,3 +29,5 @@ The separate layer (`cc_by_sa_reteg/`) contains the UBS SDBH/SDGNT semantic doma
 ## 3. Machine alignment of the Károli word
 
 The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: the alignment of the Károli word with the Strong's number was done by machine, and only a high-confidence pair may justify a row. The mode states how the word was identified, not that a human verified the alignment.
+
+Corrections go into the next release; a release can be cited by the identifier in `RELEASE.txt`.
