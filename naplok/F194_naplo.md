@@ -52,3 +52,17 @@ Forrás: `naplok/LEKTOR_ISTENTISZT-001.tsv`, `lektor:ISTENTISZT-001:1–15`, min
 ## F194.4 — Nave-blokk (K68)
 
 A 20 versen a jelöltképzés (2 vers és 1%-os küszöb) öt kiválasztott témát ad: REVIVALS (4 vers), OBLIGATION, IDOL, GLORY, SEEKERS (2–2). A blokk tehát nem üres. A kiválasztott PRAYERLESSNESS (0 vers: a Jer 10:25 és a Zsolt 79:6 kívül esik), PENITENT (1 vers) és TESTIMONY (2/261, 1% alatt) a 2. kiadás határán nem jelölt. A döntés (DT424) nem változik, csak az indok: a 8 kiválasztott téma indoka versekkel áll (`naplok/F194_nave_indok.py`).
+
+## F194.5 — a `motivumok.tsv` és a fordítás (2026-11-12)
+
+- A `motivumok.tsv` ISTENTISZT-sora visszaállítva (az orkesztrátor kérése: a #699 új `meghatarozas` oszlopa miatt sorütközés lenne); a kritérium új szövege az F194.1 pontjában áll, a #699 merge-e után kerül a táblába.
+- **Fordítás (C-y):** a `glossza_lexikon_forditas.py lista --id ISTENTISZT-001` öt hiányzó egységet ad. A négy görög rövid glosszát (G1510, G2250, G3004, G3956) a #704 (`claude/f203-thayer-forditas`, nyitott PR) már tartalmazza: itt nincs mit fordítani. A H8034 teljes TBESH-szócikke a felhasználó döntése szerint nem fordul (N87, az olvasó-fázis kérdése; az új lap a kulcsot nem kéri). Az `emeles.py lista` 18 fordítandó teljes szócikke közül egy sem ISTENTISZT-001-é.
+- **Lelet (a generátoré, nem a menet tárgya):** az `ellenoriz.py` 42. szabálya szerint a G1941 Thayer sz3 érvényes fordítása nem áll az ISTENTISZT lapján: a bekötés a generátorban; a lap újragenerálásakor (2. fázis) újramérendő.
+
+## F194.6 — a meghatározás (`motivumok.tsv` `meghatarozas`)
+
+A HAMART-001 mintájára (F125.LJ7, DT-F125j): mi a motívum, mi hordozza, mit foglal magában. **A felhasználó jóváhagyta, 2026-11-12** (az orkesztrátoron át: „Jóváhagyom”; DT-F194e). A `motivumok.tsv`-be a #699 merge-e és a main behozása után kerül, az F194.1 kritérium-szövegével együtt.
+
+> Az Úr nevének segítségül hívása a Bibliában rögzült formula: a héberben קָרָא בְּשֵׁם יְהוָה (kárá besém Jahve), „segítségül hívni az Úr nevét”. Énós nemzedékében hangzik el először (1Móz 4:26), a pátriárkák oltárainál ismétlődik, a Kármel-próbán a Baál nevének hívásával áll szemben, Jóel próféciájában a megmenekülés ígérete (Jóel 2:32); az Újszövetség ezt az ígéretet idézi (ApCsel 2:21, Róm 10:13), és a gyülekezet Jézus Krisztus nevét hívja segítségül (1Kor 1:2). A motívum ezt a formulát foglalja magában ott, ahol a név után az Úr neve áll; az imádság és a segítségül hívás általában nem tartozik ide.
+
+*A motívum mai 20 helyének lefedése: 1Móz 4:26, 12:8, 13:4, 21:33, 26:25 (Énós, pátriárkák); 1Kir 18:24–26 (Kármel); 2Móz 33:19, 34:5, 2Kir 5:11, Zsolt 116:4, 13, 17, Sof 3:9 (a mondat nem nevezi meg, a formula része); Jóel 2:32; ApCsel 2:21, 22:16, Róm 10:13, 1Kor 1:2.*
