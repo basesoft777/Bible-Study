@@ -267,6 +267,8 @@ TOKEN_KIVETEL = {
     ('Ján 6:58', 18): 'ették', ('2Móz 16:35', 8): 'ették',
     ('ApCsel 13:36', 13): 'helyeztetett',  # helyhezteték: másutt tárgyas T/3 (helyezték), itt szenvedő E/3
     ('Neh 13:21', 3): 'tettem', ('Dán 9:4', 10): 'tettem', ('Jer 35:5', 13): 'tettem',
+    # F174 (szerkesztői döntés, 2026-11-12): az ek_E1_T3 itt T/3-at adott, a beszélő E/1-ben szól (N-F96h)
+    ('1Móz 39:15', 9): 'kezdtem', ('Dán 7:16', 10): 'kértem', ('Ez 22:30', 2): 'kerestem',
 }
 # DT-F96p: a j nélküli birtokos T/3 -ök → -ük, ahol a tő többes száma a korpuszban -ek (szív → szívek, ezért a
 # szívök csak birtokos); a nemök (a nemek nem áll a korpuszban) kézi listából. Kimarad a múlt idejű T/2 ige
@@ -1204,7 +1206,7 @@ def bemenet_hash():
 def kiir(vers_ki, gy, alakok, fd, a):
     ki_dir = a.kimenet or os.path.join(ROOT, KI_DIR)
     os.makedirs(ki_dir, exist_ok=True)
-    hk = bemenet_hash()
+    hk = bemenet_hash().replace(os.sep, '/')  # F174.9: platformfüggetlen fejléc (posix útvonal)
     fejlec = ('# GENERÁLT: %s (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában '
               '(KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, '
               'E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | '
