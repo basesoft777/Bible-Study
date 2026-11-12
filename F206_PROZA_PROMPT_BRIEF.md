@@ -60,5 +60,5 @@ A `MUNKAMENET.md` nem változik: a lépések sorrendje ugyanaz.
 - G2: a `proza_allitas.py` kapu-szintje változatlanul JELENTÉS (DT785); a tesztek a CI „Szabaly-tesztek” lépésében futnak.
 - G3: a TSV-olvasás `split('\t')`.
 - G4: példapár csak a HAMART-001 valós mondataiból áll (rossz: a lektor által látott main-szöveg; jó: a #699 javított szövege); kitalált példa nincs.
-- D1 (DT-F206a): a próza mondatszintű szabályai a 10. sablonban állnak, a forma- és szerkezeti szabályok a 9.-ben.
+- D1 (DT793): a próza mondatszintű szabályai a 10. sablonban állnak, a forma- és szerkezeti szabályok a 9.-ben.
 - ⛔ A merge a felhasználóé (az orkesztrátor végzi a kérésére).

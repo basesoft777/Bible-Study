@@ -161,7 +161,7 @@ A lektor 34 pontossági tételéből a `proza_allitas.py` ma gépileg 5-öt fog 
   - új blokk: „Állítás a versről — írás közben”, V1–V7, szabályonként egy rossz/jó párral;
   - a belső-szó szabály pontosítva (V9), példapárral;
   - az „Állítás-ellenőrzés” ⚑-bekezdése rövidebb lett: a javítás módja a fenti szabályokra mutat, a két új ⚑-fajta megnevezve;
-  - a fejléc kimondja: a próza mondatszintű szabályai itt állnak, a forma szabályai a 9-esben (F184; DT-F206a).
+  - a fejléc kimondja: a próza mondatszintű szabályai itt állnak, a forma szabályai a 9-esben (F184; DT793).
 - **9. sablon** (`sablonok/9_PaRDeS_motivum_forras_sablon.md`, v2.2):
   - „A Kivonat két kötelező határ-eleme” 1. pontja alatt: egy szabály, két hely, egy szöveg (V8), példapárral;
   - az 1/a 1. pontja egy mondattal hivatkozik a 10-es „Állítás a versről” szabályaira;
