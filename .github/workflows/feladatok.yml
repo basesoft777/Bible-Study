@@ -1,20 +1,33 @@
 name: feladatok-frissites
 
-# F20 B6 (D25): a FELADATOK.md generalt blokkjat csak ez a main-re futo
-# Action irja; PR nem szerkesztheti (E18). A main-t ruleset vedi (PR kotelezo,
-# kotelezo checkek), az egyetlen bypass a `pardes-feladatok` GitHub App
-# (Contents: read and write, csak erre a repora telepitve). A push ennek az
-# App-nak a tokenjevel megy; a workflow sajat GITHUB_TOKEN-je csak olvas.
-# Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY.
+# F20 B6 (D25) + F30 + F124 + F150 + F201: a main-re futo gepi Action. EGY futas, EGY commit.
 #
-# Az App-tokennel vegzett push uj futast indit (a GITHUB_TOKEN-nel nem), ezert a
-# gep sajat commitjanak futasa a `[bot]` actor miatt kimarad; ha mégis lefutna,
-# a general idempotens (nincs diff -> nincs commit), tehat nincs vegtelen hurok.
+# Eddig negy kulon workflow commitolt a main-re minden merge utan (szamkiosztas, FELADATOK.md-frissites,
+# GERINC_TERKEP, ELOSZURES); most ez a workflow csinalja a ketto elsot, es a masik kettot is, ha az
+# esemeny azokat erinti (F201, DT-F201c). A lepesek sorrendje:
+#   1. szamkiosztas (eszkozok/szamkiosztas.py): a DT-F/N-F/D-F helyorzobol veglegesszam;
+#   2. ha tortent kiosztas: a szamtol fuggo generalt nezetek ujragenerálasa (eszkozok/szamkiosztas_ujragen.py:
+#      migralt lexikonlapok, marker-blokkok, nyilt mag) -- ugyanabban a commitban, kulonben az E28/E35 a
+#      main-en pirosra valt (F201, DT-F201a);
+#   3. FELADATOK.md + feladattérkép;
+#   4. GERINC_TERKEP es ELOSZURES, ha a push az ő bemenetüket érintette (a regi `paths:` listak itt);
+#   5. egyetlen gepi commit, egyetlen push (eszkozok/gepi_commit_uzenet.py adja az uzenetet);
+#   6. a lefoglalt (foglalas/F<nn>) feladatszamok torlese, ha a szamnak mar van briefje.
+# A GERINC_TERKEP es az ELOSZURES sajat workflow-ja (gerinc_terkep.yml, jelolt_eloszures.yml) csak az utemezett
+# es a kezi futast tartja meg.
+#
+# A main-t ruleset vedi (PR kotelezo, kotelezo checkek), az egyetlen bypass a `pardes-feladatok` GitHub App
+# (Contents: read and write, csak erre a repora telepitve). A push ennek az App-nak a tokenjevel megy; a
+# workflow sajat GITHUB_TOKEN-je csak olvas. Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY.
+#
+# Az App-tokennel vegzett push uj futast indit (a GITHUB_TOKEN-nel nem), ezert a gep sajat commitjanak
+# futasa a `[bot]` actor miatt kimarad; ha mégis lefutna, minden lepes idempotens (nincs diff -> nincs
+# commit), tehat nincs vegtelen hurok.
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:   # kézi újragenerálás, ha egy frissítés elakadt (N-F118a, 2026-10-18)
+  workflow_dispatch:   # kézi újragenerálás / számkiosztás, ha egy futás elveszett (N-F118a, CI.PRALAP.2)
 
 permissions:
   contents: read
@@ -38,9 +51,10 @@ jobs:
           app-id: ${{ secrets.FELADATOK_APP_ID }}
           private-key: ${{ secrets.FELADATOK_APP_KEY }}
 
-      - name: Checkout
+      - name: Checkout (a main aktualis csucsa, nem az esemeny commitja)
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
           token: ${{ steps.app.outputs.token }}
 
@@ -48,6 +62,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Szamkiosztas (van-e helyorzo?)
+        run: python eszkozok/szamkiosztas.py --ir --uzenet-fajl "$RUNNER_TEMP/szamkiosztas_uzenet.txt"
+
+      - name: A szamtol fuggo generalt nezetek ujragenerálasa (E28, E35; csak kiosztas utan)
+        run: |
+          if [ -f "$RUNNER_TEMP/szamkiosztas_uzenet.txt" ]; then
+            python eszkozok/szamkiosztas_ujragen.py
+          fi
 
       - name: Fejlecek ellenorzese
         run: python eszkozok/feladatok.py ellenoriz
@@ -58,16 +81,66 @@ jobs:
       - name: Feladatterkep generalasa (F53)
         run: python eszkozok/feladatterkep.py
 
-      - name: Gepi commit, ha van valtozas
+      - name: Mi valtozott az esemenyben (a GERINC_TERKEP es az ELOSZURES bemenete)
+        id: valt
+        env:
+          ELOTTE: ${{ github.event.before }}
         run: |
-          if git diff --quiet -- FELADATOK.md FELADATTERKEP.html feladatterkep.json; then
-            echo "FELADATOK.md es a feladatterkep valtozatlan."
+          # ALLAPOTALAPU (egy kiszoritott futas valtozasat a kovetkezo sem veszti el): az utolso gepi
+          # kimenet ota valtozott fajlok + a push elotti allapot es a munkafa kozti kulonbseg (ez a
+          # szamkiosztas es a generalas sajat valtozasait is tartalmazza)
+          : > "$RUNNER_TEMP/valtozott_g.txt"; : > "$RUNNER_TEMP/valtozott_e.txt"
+          LAST_G=$(git log -1 --format=%H -- naplok/GERINC_TERKEP.tsv)
+          LAST_E=$(git log -1 --format=%H -- 'naplok/ELOSZURES_*.tsv')
+          if [ -n "$LAST_G" ]; then git diff --name-only "$LAST_G" > "$RUNNER_TEMP/valtozott_g.txt"; fi
+          if [ -n "$LAST_E" ]; then git diff --name-only "$LAST_E" > "$RUNNER_TEMP/valtozott_e.txt"; fi
+          if [ -n "$ELOTTE" ] && [ "$ELOTTE" != "0000000000000000000000000000000000000000" ] \
+             && git cat-file -e "$ELOTTE^{commit}" 2>/dev/null; then
+            git diff --name-only "$ELOTTE" | tee -a "$RUNNER_TEMP/valtozott_g.txt" >> "$RUNNER_TEMP/valtozott_e.txt"
+          fi
+          GERINC='^(adat/(motivumok|elofordulasok|jeloltek|grammatikai_strongok)\.tsv|konkordancia/(TAHOT_kivonat|TAGNT_kivonat|Konyv_normalizalo_tabla)\.tsv|(genezis|ujszovetseg|melyelemzesek)/|eszkozok/(gerinc_terkep|gerinc_kartya|gerinc_szuro|general|lekerdez|strong_util)\.py|\.github/workflows/(gerinc_terkep|feladatok)\.yml)'
+          ELOSZ='^(adat/(jeloltek|elofordulasok|motivumok|grammatikai_strongok)\.tsv|konkordancia/(TAHOT_kivonat|TAGNT_kivonat|Karoli_1908)\.tsv|eszkozok/jelolt_eloszures\.py|\.github/workflows/(jelolt_eloszures|feladatok)\.yml)'
+          if grep -Eq "$GERINC" "$RUNNER_TEMP/valtozott_g.txt"; then echo "gerinc=igen" >> "$GITHUB_OUTPUT"; else echo "gerinc=nem" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq "$ELOSZ" "$RUNNER_TEMP/valtozott_e.txt"; then echo "eloszures=igen" >> "$GITHUB_OUTPUT"; else echo "eloszures=nem" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Terkep generalasa (GERINC_TERKEP, F124)
+        id: gerinc
+        if: ${{ steps.valt.outputs.gerinc == 'igen' }}
+        continue-on-error: true
+        run: python eszkozok/gerinc_terkep.py --kimenet naplok
+
+      - name: Elo-szures generalasa (ELOSZURES, F150)
+        id: eloszures
+        if: ${{ steps.valt.outputs.eloszures == 'igen' }}
+        continue-on-error: true
+        run: python eszkozok/jelolt_eloszures.py --kimenet naplok
+
+      - name: Hibas gepi kimenet visszaallitasa (egy masodlagos generalas hibaja nem akasztja a commitot)
+        if: ${{ steps.gerinc.outcome == 'failure' || steps.eloszures.outcome == 'failure' }}
+        run: |
+          if [ "${{ steps.gerinc.outcome }}" = "failure" ]; then
+            git checkout -- naplok/GERINC_TERKEP.tsv naplok/GERINC_TERKEP.md
+          fi
+          if [ "${{ steps.eloszures.outcome }}" = "failure" ]; then
+            git checkout -- 'naplok/ELOSZURES_*.tsv'
+            git clean -fq -- 'naplok/ELOSZURES_*.tsv'
+          fi
+          echo "::warning::egy masodlagos generalas hibaval allt le; a kimenete nem kerul a commitba"
+
+      - name: Egyetlen gepi commit, ha van valtozas
+        run: |
+          git add -u
+          git add -A -- FELADATOK.md FELADATTERKEP.html feladatterkep.json naplok nyilt_mag
+          if git diff --cached --quiet; then
+            echo "Nincs valtozas: nincs commit."
             exit 0
           fi
           git config user.name "pardes-feladatok[bot]"
           git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
-          git add FELADATOK.md FELADATTERKEP.html feladatterkep.json
-          printf 'FELADATOK.md frissítés (gép)\n' > commit_uzenet.txt
-          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          python eszkozok/gepi_commit_uzenet.py --szam-uzenet "$RUNNER_TEMP/szamkiosztas_uzenet.txt" > "$RUNNER_TEMP/commit_uzenet.txt"
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Teljesult feladatszam-foglalasok torlese (F201)
+        run: python eszkozok/foglalas_takarit.py

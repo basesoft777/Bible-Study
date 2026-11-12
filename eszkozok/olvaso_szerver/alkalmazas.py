@@ -188,17 +188,24 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         ut = aktualis_ut()
         return kiszolgal({}, lambda reteg, szint: gyar.tanulmany_lap(tid, reteg, szint, ut))
 
+    def vers_kontextus(nev):
+        """A szó-lap vers-kontextusa a `?<nev>=1Moz/1/2` paraméterből (az „Ebben a versben” blokkhoz és a BDB-jelöléshez); csak
+        szigorúan ellenőrzött alakban, különben None (N118)."""
+        m = re.match(r'^([A-Za-z0-9]{1,12})/([0-9]{1,3})/([0-9]{1,3})$', request.args.get(nev, ''))
+        kk = gyar.kozos.slug_kk.get(m.group(1)) if m else None
+        return '%s %d:%d' % (kk, int(m.group(2)), int(m.group(3))) if kk else None
+
     @app.get('/szo/<strong>')
     def szo_lap(strong):
+        # `?vers=1Moz/1/2`: a vers-kontextus az önálló szó-lapon is (N118; a /r/szo `ig` paraméterének mintájára)
         ut = aktualis_ut()
-        return kiszolgal({}, lambda reteg, szint: gyar.szo_lap(strong, reteg, szint, ut))
+        ig = vers_kontextus('vers')
+        return kiszolgal({'ig': ig or ''}, lambda reteg, szint: gyar.szo_lap(strong, reteg, szint, ut, ig))
 
     @app.get('/r/szo/<strong>')
     def szo_toredek(strong):
         # `?ig=1Moz/1/2`: a vers-kontextus (az „Ebben a versben” blokkhoz); csak szigorúan ellenőrzött alakban
-        m = re.match(r'^([A-Za-z0-9]{1,12})/([0-9]{1,3})/([0-9]{1,3})$', request.args.get('ig', ''))
-        kk = gyar.kozos.slug_kk.get(m.group(1)) if m else None
-        ig = '%s %d:%d' % (kk, int(m.group(2)), int(m.group(3))) if kk else None
+        ig = vers_kontextus('ig')
         return kiszolgal({'ig': ig or ''}, lambda reteg, szint: gyar.szo_fragment(strong, szint, ig), fragment=True)
 
     @app.get('/r/vers/<konyv>/<int:fej>/<int:vers>')
