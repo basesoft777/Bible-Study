@@ -264,7 +264,8 @@ class Megjelenites(unittest.TestCase):
     def test_kapcsolo(self):
         self.assertTrue(LG.gerinc_aktiv('ISTENTISZT-001'))
         self.assertTrue(LG.gerinc_aktiv('ALVIL-001'))  # F123 (DT-F123g (a)): a migrációval bekapcsolva
-        for mid in ('HAMART-001', 'KIRALY-001', 'TEREMT-001', None):
+        self.assertTrue(LG.gerinc_aktiv('HAMART-001'))  # a HAMART-001 migrált (F123.HAMART3.5, 51949f07): `aktiv`, nem kivétel
+        for mid in ('KIRALY-001', 'TEREMT-001', None):
             self.assertFalse(LG.gerinc_aktiv(mid))
 
     def test_kivetellista_adatbol(self):
