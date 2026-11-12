@@ -7,6 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: fut
 ag: claude/f210-bibliavalaszto-b8d821
+pr: 717
 ad: az olvasó könyvválasztójának legfelső szintje a bibliaválasztó csak szószintű Strong-kapcsolatú szöveggel (Károli 1908 az alap; modernizált Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB), a fejléc morzsája a választott Bibliát is mutatja; a hiányzó szövegek az adatbázis-építőből
 kovetkezo: "Te: a draft PR böngészős átnézése a mockup és a #60 pilot mellé téve (⛔); merge-et az orkesztrátor végzi"
 munka: folyamat
