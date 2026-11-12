@@ -864,6 +864,19 @@ def ell_nyilvanos(fajlok):
     return ki
 
 
+def ell_nevelo(fajlok):
+    """NEVELO (F208): a magyar prózában a szám előtti névelő a kiejtés szerinti (az 5, a 47, az 1. pont), és nem áll
+    el nem döntött „a(z)” alak; a fejlécek a csomag minden fájljában."""
+    ki = []
+    for rel in E.MAGYAR_PROZA:
+        for h in E.SZ.nevelo_hibak(fajlok.get(rel, '')):
+            ki.append(Talalat('NEVELO', BUKAS, rel, 1, h, 'a névelő nem a kiejtés szerinti'))
+    for rel, t in fajlok.items():
+        if re.search(r'\b[Aa]\(z\)', '\n'.join(t.split('\n')[:4])):
+            ki.append(Talalat('NEVELO', BUKAS, rel, 1, 'a(z)', 'el nem döntött „a(z)” a fejlécben'))
+    return ki
+
+
 def ell_kozlemeny(fajlok):
     """KOZLEMENY (F208): a `kozlemeny/` hu/en tervezete megvan, nincs az ellenőrző összegben, és a `.gitattributes`
     kihagyja a kiadási archívumból; a `.gitattributes` az LF sorvéget rögzíti (az összeg az LF-es bájtokra szól)."""
@@ -894,7 +907,7 @@ def mer(fajlok, kimenet=None, ujra=True):
         return ki
     for f in (ell_belso, ell_angol, ell_kodkonyv, ell_licenc, ell_reteg, ell_hibak, ell_hivatkozas, ell_csoport, ell_kh_nev,
               ell_osis, ell_cimke, ell_forditas, ell_glossza, ell_osszeg, ell_kanonikus, ell_termekreteg, ell_ketnyelv, ell_olvasas, ell_arany,
-              ell_szerkeszto, ell_lyuk, ell_visszhang, ell_helyorzo, ell_nyilvanos, ell_kozlemeny):
+              ell_szerkeszto, ell_lyuk, ell_visszhang, ell_helyorzo, ell_nyilvanos, ell_kozlemeny, ell_nevelo):
         ki += f(fajlok)
     if ujra:
         ki += ell_ujragenerals(fajlok, kimenet or 'nyilt_mag')

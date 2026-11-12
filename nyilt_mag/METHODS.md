@@ -78,8 +78,8 @@ Hebrew text of TAHOT (`igazolas`).
 
 ## 6. Processing stage
 
-4 motifs are closed releases (ALVIL-001, ANTROP-001, HAMART-001 and ISTENTISZT-001): their lexicon pages are released and passed the reader check
-without error. The other 5 were made at an earlier stage of the project with an older procedure. Their data are
+1 motifs are closed releases (HAMART-001): their lexicon pages are released and passed the reader check
+without error. The other 8 were made at an earlier stage of the project with an older procedure. Their data are
 in the current schema and pass the same check, but the reviews of the release procedure do not yet cover them, and
 they may change in later versions. The stage is in the `feldolgozasi_allapot` column of `motivumok.tsv`; to work only
 with the closed material, filter on it.
@@ -148,7 +148,7 @@ This is not independent peer review: apart from the author, every checker is a p
 
 ## 12. Limitations
 
-- Only 4 motifs are closed releases; 5 come from an earlier stage (section 6).
+- Only 1 motifs are closed releases; 8 come from an earlier stage (section 6).
 - Completeness is not proven. The searches measure how much the list catches on lexical features; thematic links
   are not measured.
 - There was no independent peer review and no inter-annotator agreement measurement.

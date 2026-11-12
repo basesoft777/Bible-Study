@@ -77,8 +77,8 @@ tételesen visszakerestük (`igazolas`).
 
 ## 6. Feldolgozási állapot
 
-4 motívum lezárt kiadás (ALVIL-001, ANTROP-001, HAMART-001 és ISTENTISZT-001): a lexikonlapjuk kiadott, és hiba nélkül átment az olvasói kapun. A
-többi 5 a projekt korábbi szakaszában, régebbi eljárással készült. Adataik a mai sémában állnak, és ugyanazon
+1 motívum lezárt kiadás (HAMART-001): a lexikonlapjuk kiadott, és hiba nélkül átment az olvasói kapun. A
+többi 8 a projekt korábbi szakaszában, régebbi eljárással készült. Adataik a mai sémában állnak, és ugyanazon
 a kapun mennek át, de a kiadási eljárás átnézései rájuk még nem vonatkoznak, és a későbbi változatokban
 módosulhatnak. Az állapot a `motivumok.tsv` `feldolgozasi_allapot` oszlopában áll; aki csak a lezárt anyaggal
 dolgozna, ezen szűrhet.
@@ -143,7 +143,7 @@ független szakmai lektorálás: a szerzőn kívül minden ellenőr program vagy
 
 ## 12. Korlátok
 
-- Lezárt kiadás csak 4 motívum; 5 régi feldolgozás (6. pont).
+- Lezárt kiadás csak 1 motívum; 8 régi feldolgozás (6. pont).
 - A teljesség nem bizonyított. A keresések azt mérik, mennyit fog meg a lista a lexikai jegyek alapján; a
   tematikus kapcsolatot nem.
 - Független szakmai lektorálás és annotátorok közötti egyezésmérés nem volt.

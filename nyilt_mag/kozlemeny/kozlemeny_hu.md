@@ -6,7 +6,7 @@ Mikor tartozik egy vers egy bibliai motívumhoz, és mikor nem? A Logosz-lexikon
 adatrétegét. Nemcsak azt rögzíti, hol fordul elő egy motívum, hanem azt is, melyik helyet vizsgálta meg, és miért
 hagyta ki.
 
-**Mi van benne.** 9 motívum, köztük „Hádész (Seol) — a halottak birodalma”, „Pneuma/pszükhé megkülönböztetés”, „A bűn következményeinek gyűrűzése — átok, föld és romlás” és „Segítségül hívni az Úr nevét”, összesen 250 előfordulással. Minden előfordulás a héber
+**Mi van benne.** 9 motívum, köztük „A bűn következményeinek gyűrűzése — átok, föld és romlás”, összesen 250 előfordulással. Minden előfordulás a héber
 vagy a görög szöveg egy szaván áll, mellette a Károli-fordítás megfelelő szavával. A kizárások ugyanilyen részletesek:
 443 egyenként eldöntött hely és 3 984 csoportban elutasított vers, 61 okkal és indoklással.
 
@@ -22,7 +22,7 @@ döntésből. Ahol pedig a keresés üres volt, az adat is üres marad, mert az 
 **Az ókori visszhang.** Egyes motívumoknál a kulcsszavak megfelelője is szerepel a Targumban, a Vulgatában és a
 Septuagintában, egyházatyai és rabbinikus tanúkkal, idézet nélkül, forrásonként a licenccel.
 
-**Állapot.** 4 motívum lezárt kiadás; 5 egy korábbi feldolgozásból való, és a későbbi változatokban
+**Állapot.** 1 motívum lezárt kiadás; 8 egy korábbi feldolgozásból való, és a későbbi változatokban
 frissül. Az állapot motívumonként az adatban áll, így a lezárt anyag külön is használható.
 
 **Kinek.** Kutatóknak, akik bibliai intertextualitást vizsgálnak, és a felvétel mellett a kizárás dokumentált nyomát

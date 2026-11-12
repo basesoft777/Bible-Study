@@ -39,7 +39,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 
 ## In numbers
 
-- 9 motifs: 4 closed releases, 5 from an earlier stage that will be updated in later versions (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 9 motifs: 1 closed release(s), 8 earlier processing, being rewritten; their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 occurrences and 252 inclusion decisions.
 - 540 exclusion rows with 61 reasons: 443 passages decided one by one, and 97 summary rows standing for 3,984 verses.
 - 88 relations between passages, 3 relations between motifs, 15 public editorial decisions.
@@ -49,26 +49,26 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 
 ## How to read
 
-Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the answers are generated from this release. The column names and values are Hungarian: next to each closed-vocabulary column the `_en` column gives the English label, next to each passage column the `_osis` column gives the OSIS reference, and every column is explained in `KODKONYV.md`.
+Three questions, step by step, on the motif `HAMART-001`. The numbers in the answers are generated from this release. The column names and values are Hungarian: next to each closed-vocabulary column the `_en` column gives the English label, next to each passage column the `_osis` column gives the OSIS reference, and every column is explained in `KODKONYV.md`.
 
-### 1. Which verses belong to ISTENTISZT-001, and on which word?
+### 1. Which verses belong to HAMART-001, and on which word?
 
-1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `ISTENTISZT-001`.
-2. The result is 22 rows: each row is one verse (`igehely`).
-3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: `H7121 + H8034` (16 rows), `G1941` (6 rows). The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Kir 18:24: "segítségül hívom az Úrnak nevét").
+1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `HAMART-001`.
+2. The result is 47 rows: each row is one verse (`igehely`).
+3. The `horgony` column gives the Hebrew or Greek word (Strong's number or word combination) the verse rests on: `H0127` (10 rows), `H7843` (7 rows), `málé + chámász` (6 rows), and 13 further anchors. The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Móz 12:3: "megátkozom").
 4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: "lezárt kiadás".
 
-### 2. Why is Róm 10:12 not included?
+### 2. Why is 1Móz 9:25 not included?
 
-1. Open `kizarasok.tsv` and filter on `motivum_azonosito` = `ISTENTISZT-001` and `igehely` = `Róm 10:12` (`jelolt_tipus` = `elofordulas`).
-2. The `kizaras_oka` column: "név nélküli forma". The `indoklas` column states the reason in full.
-3. The `dontesek` column (`NYD-005`) is the public identifier of the decision; its text is in `dontesnaplo.tsv`.
+1. Open `kizarasok.tsv` and filter on `motivum_azonosito` = `HAMART-001` and `igehely` = `1Móz 9:25` (`jelolt_tipus` = `elofordulas`).
+2. The `kizaras_oka` column: "emberi átkozódás, nem a genezisi lánc folytatása". The `indoklas` column states the reason in full.
+3. The `dontesek` column (`NYD-010`) is the public identifier of the decision; its text is in `dontesnaplo.tsv`.
 
-### 3. Was every place where the word pair occurs examined?
+### 3. Was every place where the words of the motif occur examined?
 
-1. Among the `ISTENTISZT-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 5. Each stands for a group of verses excluded for one reason: "a hívás igéje a név nélkül" (246 verses, first verse: 1Móz 1:5); "elnevezés, nem a név segítségül hívása" (126 verses, first verse: 1Móz 2:19); "a Károli-szó más szót fordít" (51 verses, first verse: 2Móz 18:4); "a hívás és a név nem egy szerkezetben" (21 verses, first verse: 1Móz 41:52); "nem JHVH áll a név után" (12 verses, first verse: 2Móz 31:2).
-2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `ISTENTISZT-001`): 456 verses.
-3. Together: 22 occurrences, 104 verses excluded one by one and 456 verses excluded in groups, 582 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
+1. Among the `HAMART-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 76. Each stands for a group of verses excluded for one reason: "más szó áll a versben, nem a motívum lexémája" (573 verses, first verse: 1Kir 1:52); "a szó áll, de általános használatban, a lánc nélkül" (255 verses, first verse: 1Kir 8:36); "a szó áll, de általános használatban, a lánc nélkül" (174 verses, first verse: 1Kir 7:46); and 73 further groups.
+2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `HAMART-001`): 1520 verses.
+3. Together: 47 occurrences, 212 verses excluded one by one and 1520 verses excluded in groups, 1779 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
 
 ## What is in it and what is not (the data core and the lexicon)
 

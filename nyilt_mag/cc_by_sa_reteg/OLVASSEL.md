@@ -1,6 +1,6 @@
 # CC BY-SA 4.0 réteg — szemantikai domének
 
-<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
 Ez a könyvtár **külön** áll a csomag többi (CC BY 4.0) részétől: tartalma a Creative Commons Attribution-ShareAlike 4.0 International licenc alatt áll, a belőle származtatott munka is ezen a licencen adható tovább (nem zárható el).
 

@@ -20,7 +20,9 @@ Part of the cross-reference table of the Károli Bible (the cross-references of 
 
 A source verse is **suspect** if its list is identical word for word to that of another source verse, no element of its own list is supported (neither the TSK context of ±3 verses nor the back-reference of the target confirms it), while the list of the verse with the identical list is supported.
 
-**Handling.** The open core does not contain the KH table data, and none of its rows builds on it: candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and hand-made assessment, marked with the search mode "Károli cross-reference". The limit: the measurement catches the copy-type error, not an individual faulty list that is not duplicated. Correcting the faulty lists is an open task of the project; after the correction the measures will change.
+**Handling.** The open core does not contain the KH table data, and none of its rows builds on it: candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and hand-made assessment, marked with the search mode "Károli cross-reference". The limit: the measurement catches the copy-type error, not an individual faulty list that is not duplicated.
+
+**Correction.** We compared the table with an independent second witness, the cross-references of the Károli translation in the edition of the Hungarian Electronic Library (MEK 00161). In the corrected table every row receives a level: 23,979 rows are confirmed (the two witnesses agree, or the second witness gives the row and nothing contradicts it), 11,040 rows drop out, and 181 rows are still undecided. The remaining error of the rows taken over from the second witness is the MEK's own misprints; we measured it with a sample check. The candidate search already uses the corrected table; the table above measures the original table before the correction. **Still open:** the 181 undecided rows, and the cross-reference block of the lexicon pages, which switches to the corrected table when the pages are next generated.
 
 ## 2. Semantic domains: incomplete coverage
 

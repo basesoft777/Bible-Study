@@ -10,6 +10,7 @@ szám nem áll. Az export importálja ezt a modult; ez a modul az exportot nem i
 
 Használat: csak az exportból (`nyilt_mag_export.export`).
 """
+import re
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -20,7 +21,42 @@ if hasattr(sys.stderr, 'reconfigure'):
 KOZLEMENY_DIR = 'kozlemeny/'
 
 # a Markdown-fájlok GENERÁLT-jelölése HTML-megjegyzés: a „#” kezdetű sor a Markdownban főcím lenne (F208)
-MD_FEJLEC = '<!-- GENERÁLT: a(z) %s nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->'
+MD_FEJLEC = '<!-- GENERÁLT: %s nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->'
+
+
+# --- névelő (a/az): a szó elé a kezdőhang, a szám elé a kiejtés szerint. A szám-szabály a Károli 1908 – Strong
+# csomag generátoráé (`karoli_strong_export.szam_nevelo`, a szerkesztői átnézés döntése, 2026-11-12); itt csak
+# hívjuk, hívás közben importálva (a modul maga is a `nyilt_mag_export`-ot importálja).
+def _ks():
+    import karoli_strong_export as KS
+    return KS
+
+
+def nevelo(szo):
+    """A határozott névelő a szó (vagy szám) előtt."""
+    if szo[:1].isdigit():
+        # a vezető szám dönt („az 1Móz 9:25”: első Mózes; „a 2Kir”; „az 5 motívum”)
+        return _ks().szam_nevelo(re.match(r'\d+(?: \d{3})*', szo).group(0))
+    return 'az' if szo[:1].lower() in 'aáeéiíoóöőuúüű' else 'a'
+
+
+def nevelos(szo):
+    """A szó a határozott névelőjével („a Logosz-lexikon”)."""
+    return '%s %s' % (nevelo(szo), szo)
+
+
+def md_fejlec(cim):
+    return MD_FEJLEC % nevelos(cim)
+
+
+def nevelo_javit(szoveg):
+    """Magyar szövegben a szám előtti névelő a kiejtés szerint."""
+    return _ks().nevelo_javit(szoveg)
+
+
+def nevelo_hibak(szoveg):
+    """A szám előtti hibás névelők és az el nem döntött „a(z)” alak (a kapu NEVELO pontja)."""
+    return _ks().nevelo_hibak(szoveg)
 MD_FEJLEC_EN = '<!-- GENERATED: export of the %s open data core, generated from the project data; do not edit by hand. -->'
 
 
@@ -117,7 +153,7 @@ ANGOL_PAR = {'MODSZER.md': 'METHODS.md', 'ISMERT_HIBAK.md': 'KNOWN_ISSUES.md', '
 
 def olvassel(sz, hogyan, stat, adatmag_lexikon):
     f = fmt(sz, 'hu')
-    ki = ['# {cim_hu} — nyílt adatmag: bibliai motívumok'.format(**f), '', MD_FEJLEC % f['cim_hu'], '',
+    ki = ['# {cim_hu} — nyílt adatmag: bibliai motívumok'.format(**f), '', md_fejlec(f['cim_hu']), '',
           'Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró jegyei, előfordulásaik a héber és '
           'görög szöveg szavain, a megvizsgált, de kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A '
           '{cim_hu} nyílt adatmagjainak egyike. *English version: `README.md`.*'.format(**f), '',
@@ -127,8 +163,8 @@ def olvassel(sz, hogyan, stat, adatmag_lexikon):
           '- **Szerző:** {szerzo} (ORCID {orcid}).'.format(**f), '',
           '## Tartalom', ''] + tartalom_tabla(stat, 'hu') + [
           '', '## Számokban', '',
-          '- {mot} motívum: {lezart} lezárt kiadás, {regi} régi feldolgozás, amely a későbbi változatokban frissül '
-          '(`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
+          '- {mot} motívum: {lezart} lezárt kiadás, {regi} korábbi feldolgozás, újraírás alatt; az adatuk a '
+          'csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
           '- {elo} előfordulás és {beep} felvételi döntés.'.format(**f),
           '- {kiz} kizárás-sor {okok} okkal: {kiz_egyedi} egyenként eldöntött hely, és {osszesito} összesítő sor, '
           'amely {csoport_vers} verset képvisel.'.format(**f),
@@ -178,8 +214,8 @@ def readme(sz, how, stat, adatmag_lexikon_en):
           '- **Author:** {szerzo} (ORCID {orcid}).'.format(**f), '',
           '## Contents', ''] + tartalom_tabla(stat, 'en') + [
           '', '## In numbers', '',
-          '- {mot} motifs: {lezart} closed releases, {regi} from an earlier stage that will be updated in later '
-          'versions (`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
+          '- {mot} motifs: {lezart} closed release(s), {regi} earlier processing, being rewritten; their data stay in '
+          'the package (`motivumok.tsv`, `feldolgozasi_allapot`).'.format(**f),
           '- {elo} occurrences and {beep} inclusion decisions.'.format(**f),
           '- {kiz} exclusion rows with {okok} reasons: {kiz_egyedi} passages decided one by one, and {osszesito} '
           'summary rows standing for {csoport_vers} verses.'.format(**f),
@@ -595,7 +631,7 @@ def attribucio(sz, forrasok, kizartak):
     forrasok = sorted(forrasok, key=lambda x: rend.index(x[0]))
     f_hu, f_en = fmt(sz, 'hu'), fmt(sz, 'en')
     kiz = ', '.join('`%s`' % k for k in kizartak)
-    ki = ['# Forrásmegjelölés és licencek / Attribution and licences', '', MD_FEJLEC % f_hu['cim_hu'], '',
+    ki = ['# Forrásmegjelölés és licencek / Attribution and licences', '', md_fejlec(f_hu['cim_hu']), '',
           '## Magyarul', '',
           '| összetevő | licenc | szerepe a csomagban |', '|---|---|---|',
           '| a motívumadatok, a döntések és indoklásuk, a kódkönyv, a leíró szövegek | CC BY 4.0 | a projekt saját '

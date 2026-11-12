@@ -613,6 +613,28 @@ class EgysegesKeszlet(Alap):
         self.assertEqual(sz['kiz_egyedi'] + sz['osszesito'], sz['kiz'])
         self.assertEqual(1, sz['lezart'])
 
+    def test_lezart_kiadas_a_mai_mercevel(self):
+        # a szerkesztő döntése (2026-11-12): lezárt kiadás csak a kész lap mércéje (2026-11-11) óta kiadott lap;
+        # az ISTENTISZT-001 1. kiadása (2026.11.04) korábbi, az ALVIL/ANTROP-001 lapja befagyasztható (F212)
+        allapot = E.feldolgozasi_allapot()
+        self.assertEqual('lezárt kiadás', allapot.get('HAMART-001'))
+        for mid in ('ISTENTISZT-001', 'ALVIL-001', 'ANTROP-001'):
+            self.assertNotIn(mid, allapot)
+        _, mot = G.tsv_sorok(self.fajlok['motivumok.tsv'])
+        self.assertEqual({'lezárt kiadás', 'korábbi feldolgozás, újraírás alatt'},
+                         {d['feldolgozasi_allapot'] for _, d in mot})
+
+    def test_nevelo_szabaly(self):
+        self.assertEqual('az', E.SZ.nevelo('1Móz 9:25'))
+        self.assertEqual('a', E.SZ.nevelo('2Kir 1:1'))
+        self.assertEqual('a Logosz-lexikon', E.SZ.nevelos('Logosz-lexikon'))
+        for rel, t in self.fajlok.items():
+            self.assertNotRegex('\n'.join(t.split('\n')[:4]), r'\b[Aa]\(z\)', rel)
+        self.assertEqual([], bukasok(self.fajlok, 'NEVELO'))
+        f = self.uj()
+        f['MODSZER.md'] = f['MODSZER.md'] + '\nA 5 motívum.\n'
+        self.assertTrue(bukasok(f, 'NEVELO'))
+
     def test_citation_szerzo_orcid_doi(self):
         c = self.fajlok['CITATION.cff']
         for kell in ('family-names: "Demeter"', 'given-names: "Tamás"', 'orcid: "https://orcid.org/0009-0005-9254-9731"',

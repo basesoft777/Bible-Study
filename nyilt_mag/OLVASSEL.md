@@ -1,6 +1,6 @@
 # Logosz-lexikon — nyílt adatmag: bibliai motívumok
 
-<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
 Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró jegyei, előfordulásaik a héber és görög szöveg szavain, a megvizsgált, de kizárt helyek okkal, az igehely-kapcsolatok és a döntésnapló. A Logosz-lexikon nyílt adatmagjainak egyike. *English version: `README.md`.*
 
@@ -39,7 +39,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 
 ## Számokban
 
-- 9 motívum: 4 lezárt kiadás, 5 régi feldolgozás, amely a későbbi változatokban frissül (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 9 motívum: 1 lezárt kiadás, 8 korábbi feldolgozás, újraírás alatt; az adatuk a csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 előfordulás és 252 felvételi döntés.
 - 540 kizárás-sor 61 okkal: 443 egyenként eldöntött hely, és 97 összesítő sor, amely 3 984 verset képvisel.
 - 88 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
@@ -49,26 +49,26 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 
 ## Hogyan olvasd
 
-Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítségül hívni az Úr nevét). A válaszok számai ebből a kiadásból generálódnak.
+Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn következményeinek gyűrűzése — átok, föld és romlás). A válaszok számai ebből a kiadásból generálódnak.
 
-### 1. Mely versek tartoznak az ISTENTISZT-001-hez, és melyik szón?
+### 1. Mely versek tartoznak a HAMART-001-hez, és melyik szón?
 
-1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot az `ISTENTISZT-001` értékre.
-2. Az eredmény 22 sor: minden sor egy vers (`igehely`).
-3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: `H7121 + H8034` (16 sor), `G1941` (6 sor). A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Kir 18:24: „segítségül hívom az Úrnak nevét”).
+1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot a `HAMART-001` értékre.
+2. Az eredmény 47 sor: minden sor egy vers (`igehely`).
+3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: `H0127` (10 sor), `H7843` (7 sor), `málé + chámász` (6 sor), és további 13 horgony. A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Móz 12:3: „megátkozom”).
 4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „lezárt kiadás”.
 
-### 2. Miért nincs benne a Róm 10:12?
+### 2. Miért nincs benne az 1Móz 9:25?
 
-1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `ISTENTISZT-001` és az `igehely` = `Róm 10:12` értékre (`jelolt_tipus` = `elofordulas`).
-2. A `kizaras_oka` oszlop: „név nélküli forma”. Az `indoklas` oszlop teljes mondatban mondja el, miért.
-3. A `dontesek` oszlop (`NYD-005`) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.
+1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `HAMART-001` és az `igehely` = `1Móz 9:25` értékre (`jelolt_tipus` = `elofordulas`).
+2. A `kizaras_oka` oszlop: „emberi átkozódás, nem a genezisi lánc folytatása”. Az `indoklas` oszlop teljes mondatban mondja el, miért.
+3. A `dontesek` oszlop (`NYD-010`) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.
 
-### 3. Átnézték-e minden helyet, ahol a szópár előfordul?
+### 3. Átnézték-e minden helyet, ahol a motívum szavai előfordulnak?
 
-1. A `kizarasok.tsv`-ben az `ISTENTISZT-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 5 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „a hívás igéje a név nélkül” (246 vers, első verse: 1Móz 1:5); „elnevezés, nem a név segítségül hívása” (126 vers, első verse: 1Móz 2:19); „a Károli-szó más szót fordít” (51 vers, első verse: 2Móz 18:4); „a hívás és a név nem egy szerkezetben” (21 vers, első verse: 1Móz 41:52); „nem JHVH áll a név után” (12 vers, első verse: 2Móz 31:2).
-2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `ISTENTISZT-001`): 456 vers.
-3. Együtt: 22 előfordulás, 104 egyenként kizárt vers és 456 csoportban kizárt vers, összesen 582 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
+1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 76 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (573 vers, első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (174 vers, első verse: 1Kir 7:46); és további 73 csoport.
+2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `HAMART-001`): 1520 vers.
+3. Együtt: 47 előfordulás, 212 egyenként kizárt vers és 1520 csoportban kizárt vers, összesen 1779 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
 
 ## Mi van benne, mi nincs (az adatmag és a lexikon)
 

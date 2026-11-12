@@ -1,6 +1,6 @@
 # Ismert hibák és korlátok
 
-<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
 *Logosz-lexikon — nyílt adatmag · adatállapot: 2026-11-10*
 
@@ -20,7 +20,9 @@ A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthiva
 
 **Gyanús** az a forrásvers, amelynek a listája szó szerint megegyezik egy másik forrásversével, a saját listájának egyetlen eleme sem támogatott (sem a TSK ±3 verses környezete, sem a cél visszautalása nem igazolja), a vele azonos listájú vers listája viszont támogatott.
 
-**Kezelés.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve. A határ: a mérés a másolat-típusú hibát fogja meg, az egyedi, nem duplikált hibás listát nem. A hibás listák javítása a projekt nyitott tétele; a javítás után a mérőszámok megváltoznak.
+**Kezelés.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve. A határ: a mérés a másolat-típusú hibát fogja meg, az egyedi, nem duplikált hibás listát nem.
+
+**Javítás.** A táblát egy független második tanúval, a Károli-fordítás Magyar Elektronikus Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A javított táblában minden sor szintet kap: 23 979 sor megerősített (a két tanú egyezik, vagy a második tanú adja, és nem mond neki ellent), 11 040 sor kiesik, 181 sorról még nincs döntés. A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük. A jelöltkeresés már a javított táblát használja; a fenti táblázat a javítás előtti, eredeti tábla mérése. **Nyitva maradt:** a döntés nélküli 181 sor, és a lexikonlapok kereszthivatkozás-blokkja, amely a lapok következő generálásakor áll át a javított táblára.
 
 ## 2. Szemantikai domének: nem teljes lefedés
 

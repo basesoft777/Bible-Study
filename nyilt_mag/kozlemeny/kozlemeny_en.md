@@ -6,7 +6,7 @@ When does a verse belong to a biblical motif, and when does it not? The Logosz L
 research under an open licence. It records not only where a motif occurs, but also which passages were examined
 and why they were left out.
 
-**What is in it.** 9 motifs, among them “Hades (Sheol) — the realm of the dead”, “Pneuma/pszükhé distinction”, “The rippling out of the consequences of sin — curse, earth and corruption” and “Calling on the name of the Lord”, with 250 occurrences in all. Every occurrence rests on
+**What is in it.** 9 motifs, among them “The rippling out of the consequences of sin — curse, earth and corruption”, with 250 occurrences in all. Every occurrence rests on
 a word of the Hebrew or Greek text, with the corresponding word of the Károli translation beside it. The exclusions
 are just as detailed: 443 passages decided one by one and 3,984 verses rejected in groups, with
 61 reasons and a rationale.
@@ -25,7 +25,7 @@ stay empty, because an empty result is a result too.
 Septuagint are included, with patristic and rabbinic witnesses, without quotation, and with the licence of each
 source.
 
-**Status.** 4 motifs are closed releases; 5 come from an earlier stage and will be updated in later
+**Status.** 1 motifs are closed releases; 8 come from an earlier stage and will be updated in later
 versions. The status of each motif is part of the data, so the closed material can be used on its own.
 
 **For whom.** Researchers of biblical intertextuality who want to see the documented trace of exclusion as well as

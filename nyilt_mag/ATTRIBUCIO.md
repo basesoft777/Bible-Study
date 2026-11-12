@@ -1,6 +1,6 @@
 # Forrásmegjelölés és licencek / Attribution and licences
 
-<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
 ## Magyarul
 

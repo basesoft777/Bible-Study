@@ -1,6 +1,6 @@
 # Kódkönyv / Codebook
 
-<!-- GENERÁLT: a(z) Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
+<!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
 Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, in Hungarian and English.
 
@@ -1266,12 +1266,12 @@ Az előző oszlop (cim) szövegének angol párja: **gépi fordítás**, a sor `
 
 ### `feldolgozasi_allapot`
 
-A motívum feldolgozási állapota, az adatból számolva: lezárt kiadás, ha a motívumnak van kiadása, és a kiadott lexikonlapján az olvasói kapu nem talál hibát; minden más motívum régi feldolgozás.
+A motívum feldolgozási állapota, az adatból számolva: lezárt kiadás, ha a motívum lexikonlapja a kész lap mai mércéje szerint (2026-11-11 óta) jelent meg, az olvasói kapu nem talál rajta hibát, és a lap nincs újraírásra félretéve; minden más motívum korábbi feldolgozás, újraírás alatt.
 
-*The processing stage of the motif, computed from the data: a closed release if the motif has a release and the reader check finds no error on its released lexicon page; every other motif comes from the earlier stage.*
+*The processing stage of the motif, computed from the data: a closed release if the lexicon page of the motif was released under the current standard for a finished page (since 2026-11-11), the reader check finds no error on it, and the page is not set aside for rewriting; every other motif is an earlier processing, being rewritten.*
 
+- `feldolgozasi_allapot` = `korábbi feldolgozás, újraírás alatt` (en: `earlier processing, being rewritten`): A motívum a projekt korábbi szakaszában, régebbi eljárással készült, és a lexikonlapja a mai mérce szerint újraíródik. Adatai a mai sémában állnak, és a csomagban maradnak, de az újraírás során módosulhatnak. / The motif was built at an earlier stage of the project with an older procedure, and its lexicon page is being rewritten to the current standard. Its data follow the current schema and stay in the package, but they may change during the rewrite.
 - `feldolgozasi_allapot` = `lezárt kiadás` (en: `closed release`): A motívum végigment a teljes kiadási eljáráson: lexikonlapja kiadott, az olvasói kapun hiba nélkül átment, és a szerző átnézte. / The motif has passed the full release procedure: its lexicon page is released, passed the reader check without error and was reviewed by the author.
-- `feldolgozasi_allapot` = `régi feldolgozás, frissítés alatt` (en: `earlier stage, being updated`): A motívum a projekt korábbi szakaszában, régebbi eljárással készült; adatai a mai sémában állnak, de a teljes ellenőrzés még hátravan, és a későbbi változatokban módosulhatnak. / The motif was built at an earlier stage of the project with an older procedure; its data follow the current schema, but the full review is still pending and they may change in later versions.
 
 ### `feldolgozasi_allapot_en`
 

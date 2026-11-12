@@ -54,8 +54,8 @@ DOI_KAROLI_MODERN = '10.5281/zenodo.24141950'     # a modernizált Károli – S
 DOMAIN = 'logoszlexikon.hu'
 KANONIKUS_HELY = 'https://doi.org/' + DOI_MAG
 NYERS_HELYORZO = re.compile(r'\[A LEXIKON CÍME\]|\[HELYŐRZŐ[^\]]*\]|<[A-Z_]+_URL>')
-FEJLEC = ('# GENERÁLT: a(z) %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
-          'szerkesztendő; a „#” kezdetű sor megjegyzés.' % LEXIKON_CIM_HU)
+FEJLEC = ('# GENERÁLT: %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem '
+          'szerkesztendő; a „#” kezdetű sor megjegyzés.' % SZ.nevelos(LEXIKON_CIM_HU))
 KOD_FEJLEC = FEJLEC
 FEJLEC_EN = ('# GENERATED: export of the %s open core (CC BY 4.0), generated from the project data — do not '
              'edit by hand; a line starting with "#" is a comment.' % LEXIKON_CIM_EN)
@@ -872,10 +872,60 @@ def kh_meres():
     }
 
 
+KH_JAVITOTT = 'konkordancia/Karoli_KH_javitott.tsv'
+# a csomag tisztán magyar prózafájljai (a névelő-szabály és a kapu NEVELO pontja ezekre fut)
+MAGYAR_PROZA = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'kozlemeny/kozlemeny_hu.md')
+
+
+def kh_javitott():
+    """A javított KH-tábla (a MEK 00161 mint második tanú) szintjeinek száma: {szint: sor}; a tábla hiányában üres."""
+    if not os.path.exists(os.path.join(GYOKER, KH_JAVITOTT)):
+        return {}
+    db = {}
+    with open(os.path.join(GYOKER, KH_JAVITOTT), encoding='utf-8') as f:
+        sorok = [s.rstrip('\r\n') for s in f if s.strip() and not s.startswith('#')]
+    fej = sorok[0].split('\t')
+    i = fej.index('szint')
+    for s in sorok[1:]:
+        c = s.split('\t')
+        db[c[i]] = db.get(c[i], 0) + 1
+    return db
+
+
+def kh_javitas_hu(j):
+    if not j:
+        return ('**Javítás.** A javított tábla ebben a kiadásban nem mérhető; a hibás listák javítása nyitott.')
+    return ('**Javítás.** A táblát egy független második tanúval, a Károli-fordítás Magyar Elektronikus '
+            'Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A javított táblában minden '
+            'sor szintet kap: %s sor megerősített (a két tanú egyezik, vagy a második tanú adja, és nem mond neki '
+            'ellent), %s sor kiesik, %s sorról még nincs döntés. A második tanútól átvett sorok maradék hibája a MEK '
+            'saját elírása; ezt szúrópróbával mértük. A jelöltkeresés már a javított táblát használja; a fenti '
+            'táblázat a javítás előtti, eredeti tábla mérése. **Nyitva maradt:** a döntés nélküli %s sor, és a '
+            'lexikonlapok kereszthivatkozás-blokkja, amely a lapok következő generálásakor áll át a javított '
+            'táblára.' % (SZ.ezres(j.get('megerositett', 0), 'hu'), SZ.ezres(j.get('kiesik', 0), 'hu'),
+                          SZ.ezres(j.get('jelolt', 0), 'hu'), SZ.ezres(j.get('jelolt', 0), 'hu')))
+
+
+def kh_javitas_en(j):
+    if not j:
+        return ('**Correction.** The corrected table cannot be measured in this release; correcting the faulty '
+                'lists remains open.')
+    return ('**Correction.** We compared the table with an independent second witness, the cross-references of the '
+            'Károli translation in the edition of the Hungarian Electronic Library (MEK 00161). In the corrected '
+            'table every row receives a level: %s rows are confirmed (the two witnesses agree, or the second witness '
+            'gives the row and nothing contradicts it), %s rows drop out, and %s rows are still undecided. The '
+            'remaining error of the rows taken over from the second witness is the MEK\'s own misprints; we measured '
+            'it with a sample check. The candidate search already uses the corrected table; the table above measures '
+            'the original table before the correction. **Still open:** the %s undecided rows, and the cross-reference '
+            'block of the lexicon pages, which switches to the corrected table when the pages are next generated.'
+            % (SZ.ezres(j.get('megerositett', 0), 'en'), SZ.ezres(j.get('kiesik', 0), 'en'),
+               SZ.ezres(j.get('jelolt', 0), 'en'), SZ.ezres(j.get('jelolt', 0), 'en')))
+
+
 def ismert_hibak(sz, datum):
     kh = kh_meres()
     szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'nincs mérve'
-    ki = ['# Ismert hibák és korlátok', '', SZ.MD_FEJLEC % LEXIKON_CIM_HU, '',
+    ki = ['# Ismert hibák és korlátok', '', SZ.md_fejlec(LEXIKON_CIM_HU), '',
           '*%s — nyílt adatmag · adatállapot: %s*' % (LEXIKON_CIM_HU, datum), '',
           'Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli '
           'őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív '
@@ -896,8 +946,8 @@ def ismert_hibak(sz, datum):
           '**Kezelés.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a '
           'kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján '
           'szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve. A határ: a mérés a másolat-típusú '
-          'hibát fogja meg, az egyedi, nem duplikált hibás listát nem. A hibás listák javítása a projekt '
-          'nyitott tétele; a javítás után a mérőszámok megváltoznak.', '',
+          'hibát fogja meg, az egyedi, nem duplikált hibás listát nem.', '',
+          kh_javitas_hu(kh_javitott()), '',
           '## 2. Szemantikai domének: nem teljes lefedés', '',
           'A külön réteg (`cc_by_sa_reteg/`) az UBS SDBH/SDGNT szemantikai doménjeit tartalmazza a csomag '
           'szóbázisaira. A domén-adat az ószövetségi szókincs kb. 90%-át fedi: a hiányzó bejegyzés **nem '
@@ -936,8 +986,8 @@ def known_issues_en(sz, datum):
           '**Handling.** The open core does not contain the KH table data, and none of its rows builds on it: '
           'candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and hand-made '
           'assessment, marked with the search mode "Károli cross-reference". The limit: the measurement '
-          'catches the copy-type error, not an individual faulty list that is not duplicated. Correcting the faulty '
-          'lists is an open task of the project; after the correction the measures will change.', '',
+          'catches the copy-type error, not an individual faulty list that is not duplicated.', '',
+          kh_javitas_en(kh_javitott()), '',
           '## 2. Semantic domains: incomplete coverage', '',
           "The separate layer (`cc_by_sa_reteg/`) contains the UBS SDBH/SDGNT semantic domains for the lexical "
           "bases (Strong's numbers) of the package. The domain data cover about 90% of the Old Testament "
@@ -954,20 +1004,39 @@ def known_issues_en(sz, datum):
 
 # --- a motívum feldolgozási állapota (F167.3)
 ALLAPOT_LEZART = 'lezárt kiadás'
-ALLAPOT_REGI = 'régi feldolgozás, frissítés alatt'
+ALLAPOT_REGI = 'korábbi feldolgozás, újraírás alatt'
+# F208 (a felhasználó, 2026-11-12): lezárt kiadás csak a kész lap mai mércéje szerint kiadott lap; a mérce a
+# `sablonok/KESZ_LAP_KOVETELMENY.md` lezárt követelménylistája (DT738, 2026-11-11). Az ennél korábbi kiadás régi.
+MERCE_DATUM = '2026.11.11'
+BEFAGYASZTAS = 'adat/lap_befagyasztas.tsv'  # F212 (DT-F212a): a befagyasztott, újraírásra váró lapok jegyzéke
+
+
+def befagyasztott_idk():
+    """A befagyasztott lapok azonosítói (`adat/lap_befagyasztas.tsv`, F212); a tábla hiányában üres halmaz."""
+    if not os.path.exists(os.path.join(GYOKER, BEFAGYASZTAS)):
+        return set()
+    _, sorok = tsv(BEFAGYASZTAS)
+    return {s['id'].strip() for s in sorok if s.get('id', '').strip()}
 
 
 def feldolgozasi_allapot():
-    """{motívum: állapot} a lezárt motívumokra. Lezárt kiadás az a motívum, amelynek van sora az
-    `adat/kiadasok.tsv`-ben, és a kiadott lexikonlapján az olvasói kapu 0 BUKÁS-t ad (az `ellenoriz.py`
-    32. szabályának mércéje); minden más motívum régi feldolgozás, frissítés alatt."""
+    """{motívum: állapot} a lezárt motívumokra. Lezárt kiadás az a motívum, amelynek a legutóbbi kiadása az
+    `adat/kiadasok.tsv`-ben a kész lap mércéje (MERCE_DATUM) óta jelent meg, a kiadott lexikonlapján az olvasói
+    kapu 0 BUKÁS-t ad (az `ellenoriz.py` 32. szabályának mércéje), és a lapja nincs befagyasztva (F212); minden más
+    motívum korábbi feldolgozás, újraírás alatt."""
     eszk = os.path.dirname(os.path.abspath(__file__))
     if eszk not in sys.path:
         sys.path.insert(0, eszk)
     import olvasoi_kapu as OK
     _, kiad = tsv('adat/kiadasok.tsv')
+    fagy = befagyasztott_idk()
+    utolso = {}
+    for k in kiad:
+        mid = k['id'].strip()
+        if mid:
+            utolso[mid] = max(utolso.get(mid, ''), k['datum'].strip())
     ki = {}
-    for mid in sorted({k['id'].strip() for k in kiad if k['id'].strip()}):
+    for mid in sorted(m for m, d in utolso.items() if d >= MERCE_DATUM and m not in fagy):
         ut = os.path.join(GYOKER, 'lexikon', mid + '_TUDOMANYOS.md')
         if not os.path.exists(ut):
             continue
@@ -979,8 +1048,9 @@ def feldolgozasi_allapot():
 
 
 # --- „Hogyan olvasd”: három kidolgozott példa, a generált táblákból számolva (F167.3)
-PELDA_MOTIVUM = 'ISTENTISZT-001'
-PELDA_KIZART = 'Róm 10:12'
+PELDA_MOTIVUM = 'HAMART-001'  # F208: a lezárt kiadás a példa (a felhasználó, 2026-11-12)
+PELDA_KIZART = '1Móz 9:25'
+PELDA_LISTA = 3  # a horgony- és csoportlistából ennyi elem áll a szövegben, a többi számmal
 
 
 def olvasasi_peldak(fajlok):
@@ -1019,14 +1089,16 @@ def olvasasi_peldak(fajlok):
     }
 
 
-def nevelo(szo):
-    """A határozott névelő a szó előtt: magánhangzós kezdetnél „az”."""
-    return 'az' if szo[:1].lower() in 'aáeéiíoóöőuúüű' else 'a'
+nevelo = SZ.nevelo  # a névelő-szabály egy helyen: nyilt_mag_szovegek.nevelo
 
 
 def hogyan_olvasd_hu(p):
-    h = ', '.join('`%s` (%d sor)' % hd for hd in p['horgony'])
-    cs_ = '; '.join('„%s” (%d vers, első verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'])
+    h = ', '.join('`%s` (%d sor)' % hd for hd in p['horgony'][:PELDA_LISTA])
+    if len(p['horgony']) > PELDA_LISTA:
+        h += ', és további %d horgony' % (len(p['horgony']) - PELDA_LISTA)
+    cs_ = '; '.join('„%s” (%d vers, első verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'][:PELDA_LISTA])
+    if len(p['csoportok']) > PELDA_LISTA:
+        cs_ += '; és további %d csoport' % (len(p['csoportok']) - PELDA_LISTA)
     dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'itt üres'
     return ['## Hogyan olvasd', '',
             'Három kérdés lépésről lépésre, %s `%s` motívumon (%s). A válaszok számai ebből a kiadásból '
@@ -1035,19 +1107,19 @@ def hogyan_olvasd_hu(p):
             '1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot %s `%s` értékre.'
             % (nevelo(p['motivum']), p['motivum']),
             '2. Az eredmény %d sor: minden sor egy vers (`igehely`).' % p['elo_db'],
-            '3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon) áll a vers: %s. '
+            '3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: %s. '
             'A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például %s: „%s”).'
             % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
             '4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „%s”.'
             % p['allapot'], '',
-            '### 2. Miért nincs benne a %s?' % p['kizart'], '',
+            '### 2. Miért nincs benne %s?' % SZ.nevelos(p['kizart']), '',
             '1. Nyisd meg a `kizarasok.tsv`-t, és szűrd a `motivum_azonosito` = `%s` és az `igehely` = `%s` '
             'értékre (`jelolt_tipus` = `elofordulas`).' % (p['motivum'], p['kizart']),
             '2. A `kizaras_oka` oszlop: „%s”. Az `indoklas` oszlop teljes mondatban mondja el, miért.'
             % p['kizart_ok'],
             '3. A `dontesek` oszlop (%s) a döntés nyilvános azonosítója; a szövegét a `dontesnaplo.tsv` adja.'
             % dontes, '',
-            '### 3. Átnézték-e minden helyet, ahol a szópár előfordul?', '',
+            '### 3. Átnézték-e minden helyet, ahol a motívum szavai előfordulnak?', '',
             '1. A `kizarasok.tsv`-ben %s `%s` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` '
             'oszlopa ki van töltve: %d ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját '
             'képviseli: %s.' % (nevelo(p['motivum']), p['motivum'], p['csoport_db'], cs_),
@@ -1060,8 +1132,12 @@ def hogyan_olvasd_hu(p):
 
 
 def hogyan_olvasd_en(p):
-    h = ', '.join('`%s` (%d rows)' % hd for hd in p['horgony'])
-    cs_ = '; '.join('"%s" (%d verses, first verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'])
+    h = ', '.join('`%s` (%d rows)' % hd for hd in p['horgony'][:PELDA_LISTA])
+    if len(p['horgony']) > PELDA_LISTA:
+        h += ', and %d further anchors' % (len(p['horgony']) - PELDA_LISTA)
+    cs_ = '; '.join('"%s" (%d verses, first verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'][:PELDA_LISTA])
+    if len(p['csoportok']) > PELDA_LISTA:
+        cs_ += '; and %d further groups' % (len(p['csoportok']) - PELDA_LISTA)
     dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'empty here'
     return ['## How to read', '',
             'Three questions, step by step, on the motif `%s`. The numbers in the answers are generated from '
@@ -1071,7 +1147,7 @@ def hogyan_olvasd_en(p):
             '### 1. Which verses belong to %s, and on which word?' % p['motivum'], '',
             '1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `%s`.' % p['motivum'],
             '2. The result is %d rows: each row is one verse (`igehely`).' % p['elo_db'],
-            "3. The `horgony` column gives the Hebrew or Greek word (Strong's number) the verse rests on: %s. "
+            "3. The `horgony` column gives the Hebrew or Greek word (Strong's number or word combination) the verse rests on: %s. "
             'The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. %s: "%s").'
             % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
             '4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: '
@@ -1082,7 +1158,7 @@ def hogyan_olvasd_en(p):
             '2. The `kizaras_oka` column: "%s". The `indoklas` column states the reason in full.' % p['kizart_ok'],
             '3. The `dontesek` column (%s) is the public identifier of the decision; its text is in '
             '`dontesnaplo.tsv`.' % dontes, '',
-            '### 3. Was every place where the word pair occurs examined?', '',
+            '### 3. Was every place where the words of the motif occur examined?', '',
             '1. Among the `%s` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary '
             'rows: there are %d. Each stands for a group of verses excluded for one reason: %s.'
             % (p['motivum'], p['csoport_db'], cs_),
@@ -1565,14 +1641,14 @@ def export(kimenet):
                            'domen_neve': s['domen'], 'glossza': s['glossza']})
     sd.sort(key=lambda s: (s['strong'], s['szotar'], s['jelentes_azonosito']))
     sd_fej, sd = cimke_bovit('cc_by_sa_reteg/szemantikai_domenek.tsv', sd_fej, sd)
-    sa_fejlec = ('# GENERÁLT: a(z) ' + LEXIKON_CIM_HU + ' nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
+    sa_fejlec = ('# GENERÁLT: ' + SZ.nevelos(LEXIKON_CIM_HU) + ' nyílt magjának külön rétege — CC BY-SA 4.0 (UBS SDBH v0.9.2, SDGNT v1.1); '
                  'kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.')
     fajlok['cc_by_sa_reteg/szemantikai_domenek.tsv'] = (
         sa_fejlec + '\n' + '\t'.join(sd_fej) + '\n' +
         ''.join('\t'.join(s[f] for f in sd_fej) + '\n' for s in sd))
     stat['cc_by_sa_reteg/szemantikai_domenek.tsv'] = len(sd)
     fajlok['cc_by_sa_reteg/OLVASSEL.md'] = (
-        '# CC BY-SA 4.0 réteg — szemantikai domének\n\n' + SZ.MD_FEJLEC % LEXIKON_CIM_HU + '\n\n'
+        '# CC BY-SA 4.0 réteg — szemantikai domének\n\n' + SZ.md_fejlec(LEXIKON_CIM_HU) + '\n\n'
         'Ez a könyvtár **külön** áll a csomag többi (CC BY 4.0) részétől: tartalma a Creative Commons '
         'Attribution-ShareAlike 4.0 International licenc alatt áll, a belőle származtatott munka is ezen a '
         'licencen adható tovább (nem zárható el).\n\n'
@@ -1597,7 +1673,7 @@ def export(kimenet):
     kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en', 'cimke_en']
     fajlok['kodkonyv.tsv'] = oszlop_tsv(kf, kk)
     stat['kodkonyv.tsv'] = len(kk)
-    md = ['# Kódkönyv / Codebook', '', SZ.MD_FEJLEC % LEXIKON_CIM_HU, '',
+    md = ['# Kódkönyv / Codebook', '', SZ.md_fejlec(LEXIKON_CIM_HU), '',
           'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
           'in Hungarian and English.', '',
           '**Adatréteg / data layer.** %s / %s' % (ADATMAG_LEXIKON_HU, ADATMAG_LEXIKON_EN), '']
@@ -1637,6 +1713,9 @@ def export(kimenet):
     # --- F178.6: a szerkesztői döntés olvasói neve, minden fájlban (az ellenőrző összeg előtt)
     for rel in list(fajlok):
         fajlok[rel] = szerkesztoi(fajlok[rel])
+    # --- F208: a magyar prózában a szám előtti névelő a kiejtés szerint (a Károli 1908 – Strong csomag szabálya)
+    for rel in MAGYAR_PROZA:
+        fajlok[rel] = SZ.nevelo_javit(fajlok[rel])
 
     # --- ellenőrző összeg
     # (F208) a `kozlemeny/` tervezet nincs az összegben: a megjelenésig nem része a kiadásnak (.gitattributes)
