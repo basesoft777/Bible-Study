@@ -139,6 +139,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
+- BSB Strong-réteg kiegészítése (Újszövetség, 2Sám, Ezsd, Dán) (#214, BSB_KIEGESZITES): "mérés: 2Sám/Ezsd/Dán TBESH-normalizálással 95% fölött, az Újszövetség mind a 27 könyve alatta; a BSB kikerült a bibliaválasztóból (nincs teljes 66 könyv); import nincs, N174/b" (merge `0fc2c721`, 2026-11-12)
 - Bibliaválasztó az olvasó könyvválasztójának legfelső szintjén (#210, OLVASO_BIBLIAVALASZTO): "Bibliaválasztó az olvasó könyvválasztójának legfelső szintjén, csak szószintű Strong-kapcsolatú szöveggel (Károli 1908, modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB); a ?biblia= cím, az építő három új táblája (#717)" (merge `9d2e04e4`, 2026-11-12)
 - Gyors út a lexikonlap szövegszintű javítására (/lap-javit 7. pont, gyors szint, lapnézet --valtozas) (#209, GYORS_UT): a `/lap-javit` 7. pontja (gyors út), a `MUNKAMENET.md` `gyors` szint-sora, a `lapnezet.py --valtozas` kapcsoló teszttel (merge `ee9bcb42`, 2026-11-12)
 - A gyors tesztsor piros tesztjei — gyökérok szerint (elavult teszt, kódhiba, elavult adatbázis) (#207, PIROS_TESZTEK): a `python eszkozok/teszt_futtat.py --gyors` újra zöld; minden bukás besorolva (a/b/c), a tiltott fájlokba nem nyúltunk (merge `154e5d88`, 2026-11-12)

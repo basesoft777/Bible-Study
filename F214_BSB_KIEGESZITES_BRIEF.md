@@ -12,7 +12,7 @@ kovetkezo: "Te: a draft PR átnézése; merge az orkesztrátoré"
 munka: adat
 olvas: [CLAUDE.md, NYITOTT_FELADATOK.md, konkordancia/README.md, eszkozok/fj2/bsb_import.py, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_nem_egyezo_versek.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, eszkozok/sqlite_epit.py]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/teszt_bibliavalaszto.py, eszkozok/olvaso_szerver/README.md, naplok/F214_hiany_meres.md, F214_BSB_KIEGESZITES_BRIEF.md]
-lezarva_osszegzes: "mérés: 2Sám/Ezsd/Dán TBESH-normalizálással 95% fölött, az Újszövetség mind a 27 könyve alatta; a BSB kikerült a bibliaválasztóból (nincs teljes 66 könyv); import nincs, N-F214a/b"
+lezarva_osszegzes: "mérés: 2Sám/Ezsd/Dán TBESH-normalizálással 95% fölött, az Újszövetség mind a 27 könyve alatta; a BSB kikerült a bibliaválasztóból (nincs teljes 66 könyv); import nincs, N174/b"
 fugg: []
 ---
 
@@ -50,4 +50,4 @@ Az Újszövetség és a három ószövetségi könyv mérve van; a küszöböt e
 
 Új döntés helyőrzővel: `dontesek/uj/f214-bsb-kiegeszites-a36557.md`. A jelentés: `naplok/F214_jelentes.md`.
 
-**Lezárás (2026-11-12).** A felhasználó szabálya: a BSB csak teljes (66 könyv) lehet a választóban; az NT mind a 27 könyve küszöb alatt, ezért a BSB kikerült (`bibliak.py`), az adat a `konkordancia/`-ban marad, import nem történt. A mérés: `naplok/F214_hiany_meres.md` (az NA28-szűrt NT-mérce csak ott szerepel). Folytatás: N-F214a, N-F214b.
+**Lezárás (2026-11-12).** A felhasználó szabálya: a BSB csak teljes (66 könyv) lehet a választóban; az NT mind a 27 könyve küszöb alatt, ezért a BSB kikerült (`bibliak.py`), az adat a `konkordancia/`-ban marad, import nem történt. A mérés: `naplok/F214_hiany_meres.md` (az NA28-szűrt NT-mérce csak ott szerepel). Folytatás: N174, N175.
