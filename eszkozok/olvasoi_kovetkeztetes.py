@@ -301,6 +301,96 @@ def lxx_uj(n, egyezo, eltero, hianyzik, egyeb):
     return '%s %s %s.' % (lelet, KOVETKEZTETES, kov)
 
 
+_SZAMNEV = {1: 'egy', 2: 'két', 3: 'három', 4: 'négy', 5: 'öt', 6: 'hat', 7: 'hét', 8: 'nyolc', 9: 'kilenc', 10: 'tíz'}
+
+
+def szam_bol(n):
+    """A szám -ból/-ből ragja a kiejtett alak utolsó szava szerint (46-ból, 47-ből, 100-ból, 1000-ből)."""
+    n = abs(int(n))
+    e, t10 = n % 10, (n // 10) % 10
+    if e:
+        return 'ből' if e in (1, 2, 4, 5, 7, 9) else 'ból'
+    if t10:
+        return 'ből' if t10 in (1, 4, 5, 7, 9) else 'ból'
+    if n and n % 1000 == 0 and n % 1000000:
+        return 'ből'
+    return 'ból'
+
+
+def nevelo_szam(n):
+    """A számnév előtti névelő: „az” a magánhangzóval kezdődő kiejtés előtt (1, 5, 50–59, 500–599, 1000–1999)."""
+    n = abs(int(n))
+    return 'az' if n == 1 or str(n)[0] == '5' or 1000 <= n < 2000 else 'a'
+
+
+def lxx_hid(n, egyezo, szocsalad, eltero, nincs_par, nincs_megall, szamozas, hianyzik, par_nevek):
+    """A lektor és a Fable közös véleménye (1–2.): az 5. szakasz és a 4.6 összegzése. A görög Ószövetség és az
+    Újszövetség közti szóhíd azokon a héber szavakon át vezet, amelyeknek a motívumban van újszövetségi párja; a többi
+    szónál egyezés eleve nem várható, ott nincs következtetés. A „nincs megállapítva” és a „nem párosítva” külön áll."""
+    if not n:
+        return None
+    ki = ['A motívum ószövetségi helyei %d versre terjednek.' % n]
+    par_n = egyezo + szocsalad + eltero
+    if par_nevek:
+        reszek = []
+        for k, sz in ((egyezo, 'ugyanazt a szót használja, mint az Újszövetség'),
+                      (szocsalad, 'ugyanannak a szócsaládnak egy másik tagját'), (eltero, 'mást')):
+            if k:
+                reszek.append('%d versben %s' % (k, sz))
+        ki.append('A görög Ószövetség és az Újszövetség közti szóhíd %s szón át vezet, %s szaván: ezek %d megállapított '
+                  'versében a görög fordítás %s.' % (_SZAMNEV.get(len(par_nevek), str(len(par_nevek))),
+                                                     _lista(par_nevek), par_n, ', '.join(reszek) or 'egyikben sem áll'))
+    if nincs_par and par_nevek:
+        ki.append('A többi szónak a motívumban nincs újszövetségi párja (%d vers), ott egyezés nem várható.' % nincs_par)
+    elif nincs_par:
+        ki.append('A motívum héber szavainak a motívumban nincs újszövetségi párja (%d vers), ezért egyezés nem várható.'
+                  % nincs_par)
+    tobbi = []
+    if nincs_megall:
+        tobbi.append('%d versben a megfelelő nincs megállapítva' % nincs_megall)
+    if szamozas:
+        tobbi.append('%d versben a versszámozás eltérése miatt nincs párosítva' % szamozas)
+    if hianyzik:
+        tobbi.append('%d versben a szó a görögből hiányzik' % hianyzik)
+    if tobbi:
+        ki.append(_lista(tobbi)[0].upper() + _lista(tobbi)[1:] + '.')
+    if par_n:
+        arany = (egyezo + szocsalad) / par_n
+        jelzo = 'erős' if arany >= 0.67 else 'részleges' if arany >= 0.34 else 'gyenge'
+        ki.append('%s a nyelvi híd %s szón át vezet, és ott %s: szócsalád szerint %d/%d vers.'
+                  % (KOVETKEZTETES, _SZAMNEV.get(len(par_nevek), str(len(par_nevek))), jelzo, egyezo + szocsalad, par_n))
+    return ' '.join(ki)
+
+
+def lxx_szo_uj(nev, n, egyezo, szocsalad, eltero, nincs_par, hianyzik, egyeb, szamozas, van_par):
+    """A lektor és a Fable közös véleménye (1.): a 4.6 szavankénti mondata. Újszövetségi pár nélküli szónál a lelet
+    kimondja, hogy egyezés nem várható, és következtetés nincs; párral bíró szónál a szócsaládot is számolja."""
+    if not n:
+        return None
+    nev = nev[0].upper() + nev[1:]
+    if not van_par:
+        reszek = ['%d versben más görög szó áll' % (nincs_par + eltero)] if nincs_par + eltero else []
+        for k, sz in ((hianyzik, 'a szó a görögből hiányzik'), (egyeb, 'a megfelelő nincs megállapítva'),
+                      (szamozas, 'a versszámozás eltérése miatt nincs párosítva')):
+            if k:
+                reszek.append('%d versben %s' % (k, sz))
+        return ('%s a motívum %d ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés '
+                'nem várható. A görög fordításban %s.' % (nev, n, '; '.join(reszek) if reszek else 'egyikről sincs adat'))
+    reszek = []
+    for k, sz in ((egyezo, 'ugyanaz a görög szó áll, mint az Újszövetségben'),
+                  (szocsalad, 'ugyanannak a szócsaládnak egy másik tagja áll'), (eltero, 'más görög szó áll'),
+                  (hianyzik, 'a szó a görögből hiányzik'), (egyeb, 'a megfelelő nincs megállapítva'),
+                  (szamozas, 'a versszámozás eltérése miatt nincs párosítva')):
+        if k:
+            reszek.append('%d versben %s' % (k, sz))
+    lelet = '%s a motívum %d ószövetségi versében áll; a görög fordításban %s.' % (
+        nev, n, '; '.join(reszek) if reszek else 'egyikről sincs adat')
+    if n >= LXX_SZO_MIN and (egyezo + szocsalad) / n >= 0.67:
+        return ('%s %s ennél a szónál a görög Ószövetség az újszövetségi szót vagy annak szócsaládját használja '
+                '(%d/%d vers).' % (lelet, KOVETKEZTETES, egyezo + szocsalad, n))
+    return lelet
+
+
 LXX_SZO_MIN = 5   # F182 (A13, K10): ennyi vers alatt a szóról nincs következtetés
 
 
@@ -341,14 +431,16 @@ def kereszthivatkozasok(n, talalt, osszes):
 
 # --- Minősítés ---
 
-def minosites(parok, erintett, n, osszes=None):
+def minosites(parok, erintett, n, osszes=None, rag=False):
     if not n:
         return None
     if not parok:
         return ('A hagyományos gyűjtemények utalásai közül egy sem köti össze a motívum két saját helyét. %s a motívumnak '
                 'nincs független külső megerősítése.' % KOVETKEZTETES)
-    lelet = ('%s %d a motívum két saját helyét köti össze, ez %d helyet érint a %d-ból.'
-             % ('A %d utalásból' % osszes if osszes else 'Az utalások közül', parok, erintett, n))
+    # a lektor és a Fable közös véleménye (5.): `rag` (az új szerkezetű lap) — a rag és a névelő a számhoz igazodik
+    lelet = ('%s %d a motívum két saját helyét köti össze, ez %d helyet érint %s.'
+             % ('A %d utalásból' % osszes if osszes else 'Az utalások közül', parok, erintett,
+                ('%s %d-%s' % (nevelo_szam(n), n, szam_bol(n))) if rag else 'a %d-ból' % n))
     p = szazalek(erintett, n)
     fokozat = 'erős' if erintett / n >= 0.67 else 'közepes' if erintett / n >= 0.34 else 'gyenge'
     resz = 'a fele (%d%%)' % p if 45 <= p <= 55 else 'a %d%%-a' % p

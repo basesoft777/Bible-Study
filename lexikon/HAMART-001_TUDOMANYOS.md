@@ -80,7 +80,9 @@ doménekkel), L–N (Louw–Nida doménkód), SDBH/SDGNT (Semantic Dictionary
 of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Theological Wordbook of the Old Testament — csak számhivatkozás), TSK
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
-(Septuaginta), MT (Masoretic Text), KJV (King James Version).
+(Septuaginta), MT (Masoretic Text), KJV (King James Version), HCF (HistoricalChristianFaith
+Commentaries Database, az egyházatyai tanúk adatbázisa; a „HCF: 373” alakban a szám az adatbázisban
+a szerzőhöz rendelt évszám).
 
 **Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés, mindkét nyelven szabályos átírás. A
 héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
@@ -271,7 +273,7 @@ A motívum 47 igehelyen fordul elő, 14 bibliai könyvben (41 ószövetségi, 6 
 | [Zsid 6:7-8](#ige-zsid-6-7-8) | átokhoz — κατάρας (katarasz) | átok, átkozódás · Thayer fej[^44] | példázat | Remez/Drash | G2671 | átkozott; elátkozott [ⓘ](/szo/G2671) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^44] |
 | [Jel 11:18](#ige-jel-11-18) | pusztítják — διαφθείροντας (diaftheirontasz) | megront, rosszabbá tesz · Thayer 1[^45] | tükörítélet | Sod | G1311 | teljesen elpusztítani [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)*; megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G1311) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^45] |
 | [Jel 19:2](#ige-jel-19-2) | megrontotta — ἔφθειρεν (eftheiren) | megront, elpusztít · Thayer fej[^46] | ítélet | Remez/Sod | G5351 | megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni [ⓘ](/szo/G5351) | magas · tartalom-alapú[^46] |
-| [Jel 22:3](#ige-jel-22-3) | elátkozott | tematikus hely: a lánc szava nélkül | tematikus, nem lexikai | Sod | nincs lánc-szó | nem alkalmazható (tematikus hely) | közepes · tartalom-alapú[^47] |
+| [Jel 22:3](#ige-jel-22-3) | elátkozott — κατάθεμα (katathema) | tematikus hely: a lánc szava nélkül | tematikus, nem lexikai | Sod | G2652 | átkozott; elátkozott [ⓘ](/szo/G2652) | közepes · tartalom-alapú[^47] |
 
 [^1]: A héber szöveg (TAHOT) igazolja; a jelentés: a BDB a Qal szakaszban maga idézi a helyet.<!-- eredeti: [^1]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: BDB-példa: a BDB a Qal szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 12, 23); ez a kutatói hozzárendelés (Qal → Qal) alá esik, a címke a finomabb útvonalé -->
 [^2]: A héber szöveg (TAHOT) igazolja; a jelentés: a szócikk egésze (a szótár nem tagolja számozott jelentésekre).<!-- eredeti: [^2]: proveniencia: ‹E1› | igazolas: TAHOT-igazolt | jelentés-címke: a kutatói jelentésszám („tagolatlan”) nincs leképezve a BDB tagolására (`adat/szotar_szakasz_cimke.tsv`) -->
@@ -319,7 +321,7 @@ A motívum 47 igehelyen fordul elő, 14 bibliai könyvben (41 ószövetségi, 6 
 [^44]: Újszövetségi hely: a szó a görög szövegből (TAGNT); a jelentés: a Thayer szócikkfeje.<!-- eredeti: [^44]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`) -->
 [^45]: Újszövetségi hely: a szó a görög szövegből (TAGNT); a jelentés: a Thayer 1 szakasza.<!-- eredeti: [^45]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „1” → Thayer 1, `adat/szotar_szakasz_cimke.tsv`) -->
 [^46]: Újszövetségi hely: a szó a görög szövegből (TAGNT); a jelentés: a Thayer szócikkfeje.<!-- eredeti: [^46]: proveniencia: ‹E3› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: kutatói hozzárendelés a Thayer tagolása szerint (`elofordulasok.tsv` jelentes_szam „fej” → Thayer fej, `adat/szotar_szakasz_cimke.tsv`) -->
-[^47]: Tematikus hely: a versben a lánc szava nem áll.<!-- eredeti: [^47]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: a sornak nincs Strong-tokenje -->
+[^47]: Tematikus hely: a vers görög szava, a κατάθεμα (katathema) nem a lánc szava; forrás: a STEPBible görög szövege (TAGNT), G2652.<!-- eredeti: [^47]: proveniencia: ‹E1› | igazolas: TAHOT-hatokoron-kivul | jelentés-címke: Tematikus hely: a vers görög szava, a κατάθεμα (katathema) nem a lánc szava; forrás: a STEPBible görög szövege (TAGNT), G2652 -->
 
 <!-- közös forrásmegjelölés: A közös forrásmegjelölések: ‹E1› = forrás: kézi szerkesztés, 2026-11-05 (37 sor) · ‹E2› = forrás: kézi szerkesztés, 2026-11-10 (5 sor) · ‹E3› = forrás: kézi szerkesztés, 2026-11-08 (3 sor) --><!-- eredeti: *A közös forrásmegjelölések: ‹E1› = `scope=manual | forras=F123 HAMART-001 új cikk, U3 (claude-opus-5-5; a jeloltek.tsv beépített sora, DT683) | ts=2026-11-05` (37 sor) · ‹E2› = `scope=manual | forras=F182 HAMART-001, K4 (DT747 (A), a felhasználó 2026-11-10: „a”; claude-opus-5-5) | ts=2026-11-10` (5 sor) · ‹E3› = `scope=manual | forras=F123 HAMART-001 határkör (claude-opus-5-5; naplok/HATAR_HAMART-001.md K1–K10, DT685) | ts=2026-11-08` (3 sor)* -->
 
@@ -1266,7 +1268,7 @@ A motívumot 10 héber szó és 5 görög szó hordozza; héberül: אָבַל (
 
 ### Áttekintés: a motívum szavai
 
-A motívum 15 szava egy táblában: a kiejtés, a rövid alapjelentés, a görög fordítás (Septuaginta) leggyakoribb szava ugyanazokban a versekben, és hogy hány helyen áll a szó a motívumban. A részletek szavanként a 4.1–4.10 pontban.<!-- olvasói -->
+A motívum 15 szava egy táblában: a kiejtés, a rövid alapjelentés, a görög fordítás (Septuaginta) az a szava, amely a héber szó verseiben a legjellemzőbben áll vele együtt (a társulás mértéke szerint, nem a puszta gyakoriság szerint), és hogy hány helyen áll a szó a motívumban. A részletek szavanként a 4.1–4.10 pontban.<!-- olvasói -->
 
 | Szó (kiejtés) | Alapjelentés | LXX-megfelelő | Helyek a motívumban |
 |---|---|---|---|
@@ -1310,7 +1312,7 @@ A szó alapjelentése röviden, a STEPBible görög rövid szótára (TBESG, CC 
 
 A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
-*Szavanként előbb a jelentések rendje áll a Thayer szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes Thayer-szócikk magyarul, a görög alakok jegyzékével, a klasszikus párhuzamokkal és az igehelyekkel; a motívum helyei közül a Thayer saját példahelyei kiemelve, az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*
+*Szavanként előbb a jelentések rendje áll a Thayer szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes Thayer-szócikk magyarul, a görög alakok jegyzékével, a klasszikus párhuzamokkal és az igehelyekkel. A szócikkben kiemelve áll minden vers, amely a motívum helye, bármelyik szón áll a motívum sora; az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*
 
 ##### G1311 — διαφθείρω (diaftheiró) · Thayer
 
@@ -1399,7 +1401,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
-**A szócikk feje (nyelvi háttér).** κατάρας, ἡ (κατά és ἄρα, vö. német Verfiuchung,Verwünschung (vö. κατά, III. 4)); a Septuaginta főként a כְּלָלָה szóra; kiátkozás, elátkozás, átok: szemben a εὐλογία szóval, az elátkozottsággal szemben (l. ott), Jak 3:10; γῆ κατάρας ἐγγύς, Isten közelében, azaz a terméketlenségnek való kiszolgáltatottság közelében (utalás az 1Móz 3:17k.-ra), <mark class="motivumhely" title="a motívum helye: Zsid 6:8">Zsid 6:8</mark>; ὑπό κατάραν εἶναι, átok alatt lenni, azaz az elátkozás megszabott büntetésének hatálya alá tartozni, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, megváltani azt, aki az átok kimondott büntetésének van kitéve, Gal 3:13; τέκνα κατάρας, kiátkozásra méltó emberek, 2Pét 2:14; elvont jelentés konkrétként: az, akiben az átok megmutatkozik, azaz aki az elátkozás megszabott büntetését szenvedi, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi,
+**A szócikk feje (nyelvi háttér).** κατάρας, ἡ (κατά és ἄρα, vö. német Verfiuchung,Verwünschung (vö. κατά, III. 4)); a Septuaginta főként a כְּלָלָה szóra; kiátkozás, elátkozás, átok: szemben a εὐλογία szóval, az elátkozottsággal szemben (l. ott), Jak 3:10; γῆ κατάρας ἐγγύς, Isten közelében, azaz a terméketlenségnek való kiszolgáltatottság közelében (utalás az <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">1Móz 3:17</mark>k.-ra), <mark class="motivumhely" title="a motívum helye: Zsid 6:8">Zsid 6:8</mark>; ὑπό κατάραν εἶναι, átok alatt lenni, azaz az elátkozás megszabott büntetésének hatálya alá tartozni, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, megváltani azt, aki az átok kimondott büntetésének van kitéve, <mark class="motivumhely" title="a motívum helye: Gal 3:13">Gal 3:13</mark>; τέκνα κατάρας, kiátkozásra méltó emberek, 2Pét 2:14; elvont jelentés konkrétként: az, akiben az átok megmutatkozik, azaz aki az elátkozás megszabott büntetését szenvedi, <mark class="motivumhely" title="a motívum helye: Gal 3:13">Gal 3:13</mark>; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi,
 
 <details>
 <summary>c (hivatkozás nélkül)</summary>
@@ -1516,9 +1518,9 @@ A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes
 
 #### 4.6. LXX-híd
 
-A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 28 versben mást, 12 versben a megfelelő nincs megállapítva. **Következtetés:** a görög Ószövetség csak a versek 13%-ában használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.<!-- olvasói -->
+A motívum ószövetségi helyei 46 versre terjednek. A görög Ószövetség és az Újszövetség közti szóhíd két szón át vezet, az אָרַר (árar) és a שָׁחַת (sáchat) szaván: ezek 11 megállapított versében a görög fordítás 6 versben ugyanazt a szót használja, mint az Újszövetség, 4 versben ugyanannak a szócsaládnak egy másik tagját, 1 versben mást. A többi szónak a motívumban nincs újszövetségi párja (23 vers), ott egyezés nem várható. 11 versben a megfelelő nincs megállapítva és 1 versben a versszámozás eltérése miatt nincs párosítva. **Következtetés:** a nyelvi híd két szón át vezet, és ott erős: szócsalád szerint 10/11 vers.<!-- olvasói -->
 
-A motívum görög szavai (διαφθείρω (diaftheiró), ἐπικατάρατος (epikataratosz), κατάρα (katara), φθείρω (ftheiró) és φθορά (fthora)) az ószövetségi helyek 46 verséből 6 versben állnak a Septuaginta szövegében is. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A motívum görög szavai (διαφθείρω (diaftheiró), ἐπικατάρατος (epikataratosz), κατάρα (katara), φθείρω (ftheiró) és φθορά (fthora)) az ószövetségi helyek 46 verséből 6 versben állnak a Septuaginta szövegében is; további 4 versben ugyanannak a szócsaládnak egy másik tagja áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
 #### 4.7. Megfelelők a másik nyelven
 
@@ -1580,15 +1582,15 @@ A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).<!-- o
 
 A görög szavak közül a φθείρω (ftheiró) és a φθορά (fthora) jelentése a helyén egyértelmű; a διαφθείρω (diaftheiró) (Jel 11:18), az ἐπικατάρατος (epikataratosz) (Gal 3:13-14) és a κατάρα (katara) (Zsid 6:7-8) helyén a szótár több jelentést enged, ezeknél a vers dönt (ez 3 hely a motívum 5 újszövetségi helyéből).<!-- olvasói -->
 
-**G1311 — διαφθείρω (diaftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1311) · forrás: az UBS Dictionary of New Testament Greek.
+**G1311 — διαφθείρω (diaftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1311) · forrás: az UBS Dictionary of New Testament Greek.
 
-**G1944 — ἐπικατάρατος (epikataratosz)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1944) · forrás: az UBS Dictionary of New Testament Greek.
+**G1944 — ἐπικατάρατος (epikataratosz)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G1944) · forrás: az UBS Dictionary of New Testament Greek.
 
-**G2671 — κατάρα (katara)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G2671) · forrás: az UBS Dictionary of New Testament Greek.
+**G2671 — κατάρα (katara)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G2671) · forrás: az UBS Dictionary of New Testament Greek.
 
-**G5351 — φθείρω (ftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5351) · forrás: az UBS Dictionary of New Testament Greek.
+**G5351 — φθείρω (ftheiró)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5351) · forrás: az UBS Dictionary of New Testament Greek.
 
-**G5356 — φθορά (fthora)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5356) · forrás: az UBS Dictionary of New Testament Greek.
+**G5356 — φθορά (fthora)** · a motívum 1 újszövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/G5356) · forrás: az UBS Dictionary of New Testament Greek.
 
 #### 4.10. Kiejtés (magyaros)
 
@@ -1636,7 +1638,7 @@ A szó alapjelentése röviden, a STEPBible héber rövid szótára (TBESH, CC B
 
 A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.<!-- olvasói -->
 
-*Szavanként előbb a jelentések rendje áll a BDB szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a rövidítésekkel, az alakok jegyzékével és az igehelyekkel; a motívum helyei közül a BDB saját példahelyei kiemelve, az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*
+*Szavanként előbb a jelentések rendje áll a BDB szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó; ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a rövidítésekkel, az alakok jegyzékével és az igehelyekkel. A szócikkben kiemelve áll minden vers, amely a motívum helye, bármelyik szón áll a motívum sora; az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*
 
 ##### H0056 — אָבַל (ával) · BDB
 
@@ -1698,7 +1700,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **1 — a megművelt föld, amely táplál**
 
-  > föld (mint megművelt, eltartást adó) 1Móz 2:5, 9; <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">3:17</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 3:23">23</mark>; 4:2-3, <mark class="motivumhely" title="a motívum helye: 1Móz 4:12">12</mark>; 5:29; <mark class="motivumhely" title="a motívum helye: 1Móz 8:21">8:21</mark>; 19:25; 47:23; 2Móz 34:26 (mind J); 23:19 (E) 5Móz 7:13; 11:17; 26:2, 10, 15; 28:4, 11, 18, 33, 42, 51; 30:9; 2Sám 9:10; Ézs 1:7; 28:24; 30:23 (a versben kétszer); 30:24; Jer 7:20; 14:4; 25:33; Hag 1:11; Mal 3:11; Zsolt 83:11; 105:35; Péld 12:10 (héber számozás: 12:11); 28:19; 1Krón 27:26; Neh 10:35 (héber számozás: 10:36); 10:37 (héber számozás: 10:38), vö. átvitt értelemben Jób 5:6 (|| עפר); megszemélyesítve 31:38; Jóel 1:10; továbbá אִישׁ הָא׳‎ 1Móz 9:20 (J): földművelő, gazda; metonímiával אֹהֵב <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr>‎ 2Krón 26:10, azaz a földművelés kedvelője (vagy ezek a földművelés korábbi jelentésére utalnak ? vö. Dl Pr 105) אִישׁ עֹבֵד <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Zak 13:5.
+  > föld (mint megművelt, eltartást adó) 1Móz 2:5, 9; <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">3:17</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 3:23">23</mark>; 4:2-3, <mark class="motivumhely" title="a motívum helye: 1Móz 4:12">12</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 5:29">5:29</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 8:21">8:21</mark>; 19:25; 47:23; 2Móz 34:26 (mind J); 23:19 (E) 5Móz 7:13; 11:17; 26:2, 10, 15; 28:4, 11, 18, 33, 42, 51; 30:9; 2Sám 9:10; Ézs 1:7; 28:24; 30:23 (a versben kétszer); 30:24; Jer 7:20; 14:4; 25:33; Hag 1:11; Mal 3:11; Zsolt 83:11; 105:35; Péld 12:10 (héber számozás: 12:11); 28:19; 1Krón 27:26; Neh 10:35 (héber számozás: 10:36); 10:37 (héber számozás: 10:38), vö. átvitt értelemben Jób 5:6 (|| עפר); megszemélyesítve 31:38; Jóel 1:10; továbbá אִישׁ הָא׳‎ 1Móz 9:20 (J): földművelő, gazda; metonímiával אֹהֵב <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr>‎ 2Krón 26:10, azaz a földművelés kedvelője (vagy ezek a földművelés korábbi jelentésére utalnak ? vö. Dl Pr 105) אִישׁ עֹבֵד <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Zak 13:5.
 
 <details>
 <summary>2. — földdarab, földbirtok (6 hivatkozás)</summary>
@@ -1713,7 +1715,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **4 — a föld látható felszíne, a föld színe**
 
-  > föld mint a föld látható felszíne; הָא ׳רֶמֶס‎ 1Móz 1:25; 6:20 (mindkettő P) Hós 2:17 (héber számozás: 2:20), vö. 1Móz 7:8; 9:2 (J ?) 3Móz 20:25 (P) 5Móz 4:18; Ez 38:20; továbbá 1Móz 4:10 (J) Ézs 24:21; Ámós 3:5; <mark class="motivumhely" title="a motívum helye: Sof 1:2">Sof 1:2</mark>-3, mint harmattal nedves 2Sám 17:12; eső 1Kir 17:14; 18:1; vö. megszemélyesítve פָּֽצְתָה הָא׳ אֶת־מִּיהָ‎ 4Móz 16:30 (P) (|| ארץ‎ 16:32), l. 16:31; egy bizonyos helyről, pontról <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> קֹדֶשׁ‎ 2Móz 3:5, különösen mint az ember lakóhelye 1Móz 4:11; 2Móz 10:6; 5Móz 4:10, 40; 12:1; 1Sám 20:31; 2Sám 14:7; gyakran פְּנֵי הָא׳‎ 1Móz 2:6; <mark class="motivumhely" title="a motívum helye: 1Móz 4:14">4:14</mark>; 6:1, <mark class="motivumhely" title="a motívum helye: 1Móz 6:7">7</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 7:4">7:4</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 7:23">23</mark>; 8:8, 13; 2Móz 32:12; 33:16; 4Móz 12:3; 5Móz 6:15; 7:6 (mind J, D) 1Sám 20:15, összesen 9-szer.
+  > föld mint a föld látható felszíne; הָא ׳רֶמֶס‎ 1Móz 1:25; 6:20 (mindkettő P) Hós 2:17 (héber számozás: 2:20), vö. 1Móz 7:8; 9:2 (J ?) 3Móz 20:25 (P) 5Móz 4:18; Ez 38:20; továbbá <mark class="motivumhely" title="a motívum helye: 1Móz 4:10">1Móz 4:10</mark> (J) Ézs 24:21; Ámós 3:5; <mark class="motivumhely" title="a motívum helye: Sof 1:2">Sof 1:2</mark>-3, mint harmattal nedves 2Sám 17:12; eső 1Kir 17:14; 18:1; vö. megszemélyesítve פָּֽצְתָה הָא׳ אֶת־מִּיהָ‎ 4Móz 16:30 (P) (|| ארץ‎ 16:32), l. 16:31; egy bizonyos helyről, pontról <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> קֹדֶשׁ‎ 2Móz 3:5, különösen mint az ember lakóhelye <mark class="motivumhely" title="a motívum helye: 1Móz 4:11">1Móz 4:11</mark>; 2Móz 10:6; 5Móz 4:10, 40; 12:1; 1Sám 20:31; 2Sám 14:7; gyakran פְּנֵי הָא׳‎ 1Móz 2:6; <mark class="motivumhely" title="a motívum helye: 1Móz 4:14">4:14</mark>; 6:1, <mark class="motivumhely" title="a motívum helye: 1Móz 6:7">7</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 7:4">7:4</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 7:23">23</mark>; 8:8, 13; 2Móz 32:12; 33:16; 4Móz 12:3; 5Móz 6:15; 7:6 (mind J, D) 1Sám 20:15, összesen 9-szer.
 
 <details>
 <summary>5. – 7. (3 szakasz): ország, terület, vidék · az egész föld, a lakott föld · tulajdonnév, helynév</summary>
@@ -1797,7 +1799,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Qal — átkoz, átkozott**
 
-  > Qal perfectum אָרוֺתִיהָ וְאָרוֺתִ֫י, Mal 2:2; imperfectum 2. hímnemű egyes szám תָּאֹר‎ 2Móz 22:28 (héber számozás: 22:27); 4Móz 22:6, 12; אָאֹר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">1Móz 12:3</mark>; imperativus אָ֫רָה‎ 4Móz 22:6; 23:7; אֹרוּ אוֺרוּ, & infinitivus absolutus אָרוֺר mind Bír 5:23; participium אֹרֲרֵי Jób 3:8; אֹרֲרֶיךָ‎ 1Móz 27:29; 4Móz 24:9; אָרוּר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, összesen 36-szor stb.; — átkozni || בֵּרֵךְ áldani, főként a J E D költői és jogi forrásaiban & későbbi utánzataikban: <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">12:3</mark>; 27:29 (J) 4Móz 22:6, 12; 23:7; 24:9 (E) 2Móz 22:28 (héber számozás: 22:27) (E) Mal 2:2; אֹרוּ אָרוֺר ישְׁבֶיהָ = átkozzátok örökre a lakóit Bír 5:23; אֹרֲרֵי יוֺם a nap átkozói (varázslók, akiknek átkai szerencsétlenné tették a napokat) Jób 3:8. Passzív participium אָרוּר, főként felkiáltásként, || בָּרוּךְ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, 17; <mark class="motivumhely" title="a motívum helye: 1Móz 4:11">4:11</mark>; 9:25; 27:29; 49:7; 4Móz 22:12; 24:9 (E, költészet) 5Móz 27:15-26 Bír 21:18; 1Sám 14:24; 14:28; 1Sám 26:29 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Jer 11:3; 17:5; 20:14-15, 48:10 (a versben kétszer); Mal 1:14; אֲרוּרִים הַשֹּׁגִים מִמִּצְוֺתֶיךָ átkozottak, akik eltévelyednek parancsolataidtól Zsolt 119:21 (ᵑ6 ᵐ5 Jerome De Ri), הָאֲרוּרָה הַזּאֹת ez az átkozott asszony 2Kir 9:34.
+  > Qal perfectum אָרוֺתִיהָ וְאָרוֺתִ֫י, Mal 2:2; imperfectum 2. hímnemű egyes szám תָּאֹר‎ 2Móz 22:28 (héber számozás: 22:27); 4Móz 22:6, 12; אָאֹר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">1Móz 12:3</mark>; imperativus אָ֫רָה‎ 4Móz 22:6; 23:7; אֹרוּ אוֺרוּ, & infinitivus absolutus אָרוֺר mind Bír 5:23; participium אֹרֲרֵי Jób 3:8; אֹרֲרֶיךָ‎ 1Móz 27:29; 4Móz 24:9; אָרוּר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, összesen 36-szor stb.; — átkozni || בֵּרֵךְ áldani, főként a J E D költői és jogi forrásaiban & későbbi utánzataikban: <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">12:3</mark>; 27:29 (J) 4Móz 22:6, 12; 23:7; 24:9 (E) 2Móz 22:28 (héber számozás: 22:27) (E) Mal 2:2; אֹרוּ אָרוֺר ישְׁבֶיהָ = átkozzátok örökre a lakóit Bír 5:23; אֹרֲרֵי יוֺם a nap átkozói (varázslók, akiknek átkai szerencsétlenné tették a napokat) Jób 3:8. Passzív participium אָרוּר, főként felkiáltásként, || בָּרוּךְ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">17</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 4:11">4:11</mark>; 9:25; 27:29; 49:7; 4Móz 22:12; 24:9 (E, költészet) 5Móz 27:15-26 Bír 21:18; 1Sám 14:24; 14:28; 1Sám 26:29 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Jer 11:3; 17:5; 20:14-15, 48:10 (a versben kétszer); Mal 1:14; אֲרוּרִים הַשֹּׁגִים מִמִּצְוֺתֶיךָ átkozottak, akik eltévelyednek parancsolataidtól Zsolt 119:21 (ᵑ6 ᵐ5 Jerome De Ri), הָאֲרוּרָה הַזּאֹת ez az átkozott asszony 2Kir 9:34.
 
 <details>
 <summary>Niph'al – Hoph'al (3 szakasz): átkozott · átkozni, átok alá vetni · átkozottnak lenni</summary>
@@ -1862,7 +1864,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **1.b**
 
-  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 4:7">1Móz 4:7</mark> (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban Hós 10:8; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
+  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 4:7">1Móz 4:7</mark> (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban <mark class="motivumhely" title="a motívum helye: Hós 10:8">Hós 10:8</mark>; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
 
 <details>
 <summary>1.c – 5. (11 szakasz): az embereknek meg kell térniük a bűnből · Isten bánása a bűnnel · engesztelés szerezhető érte · a pap engesztelést szerez valakiért …</summary>
@@ -1904,7 +1906,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>Szótári apparátus</summary>
 
-**A szócikk feje (nyelvi háttér).** חָמָס hímnemű főnév Zsolt 7:17: erőszak, jogtalanság — status absolutus <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 1Móz 6:11 és máshol, összesen 44-szer; status constructus חֲמַס Bír 9:24, összesen 7-szer; suffixummal חֲמָסִי‎ 1Móz 16:5; Jer 51:35 (mindkettőben = a nekem okozott jogtalanság); חֲמָסוֺ Zsolt 7:17; többes szám חֲמָסִים‎ 2Sám 22:49, összesen 3-szor; — erőszak, kifejezetten fizikai erőszak Bír 9:24; 2Sám 22:3 (nem || Zsolt 18:3), Abd 10; Hab 1:9; Jer 51:35 (a káldeusokról), Hab 2:8, 17 (a versben kétszer); Jóel 3:19 (héber számozás: 4:19); Zsolt 72:14; de jogtalanság is, beleértve a sértő beszédet, a durva bánásmódot stb. 1Móz 16:5 (J, a Hágár által Sárának okozott jogtalanságról), Jób 19:7; Mal 2:16; általában az emberek nyers gonoszságáról, lármás, vad kíméletlenségükről Mik 6:12; Hab 1:2; Sof 1:9; Péld 10:6, 11; 13:2; 26:6 + Ez 7:11 (si vera lectio, l. Co), || שֹׁד Ámós 3:10; Hab 1:3; Jer 6:7; 20:8; Ez 45:9; Ézs 60:18, || רִיב Zsolt 55:10, || עָמָל‎ 7:17, || גַּאֲוָה‎ 73:6, אֹהֵב <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 11:5 (|| רָשָׁע), tagadva, a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> szolgájáról Ézs 53:9, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בארץ Jer 51:46, vö. 1Móz 6:11, 13 (P), Ez 8:17; 12:19; ח נְאוֺת ׳מַחֲשַׁכֵּי־אֶרֶץ מָֽלְאוּ Zsolt 74:20, הָעִיר מָֽלְאָה <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Ez 7:23; 28:16, שֶׁבֶת <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Ámós 6:3: (valószínűleg) az erőszak trónra emelése; כְּלֵי <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 1Móz 49:5 (költemény): az erőszak eszközei, fegyverei; — további kifejezések: <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּיָדַיִם Jón 3:8; 1Krón 12:16 (héber számozás: 12:17), vö. Jób 16:17, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> יְדֵיכֶם Zsolt 58:3 és פֹּעַל <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּכַפֵּיהֶם Ézs 59:6; ח ׳עֵד, azaz erőszakot és jogtalanságot előmozdító tanú 2Móz 23:1 (JE), 5Móz 19:16, עֵדֵי <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Zsolt 35:11; חָמָס וִיפֵהַ שֶׁקֶר עֵדֵי‎ 27:12; שׂנאת <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 25:19 +? erőszak; אִישׁ חָמָס = erőszakos ember 18:49 (a 2Sám 22:49 a későbbi <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> חמסים alakot adja, vö. alább) Zsolt 140:12; Péld 3:31; 16:29; אישׁ חמסים (későbbi) Zsolt 140:2; 140:5; 2Sám 22:49; יֵין חֲמָסִים Péld 4:17, azaz erőszakkal szerzett bor (|| לֶחֶם רֶשַׁע).
+**A szócikk feje (nyelvi háttér).** חָמָס hímnemű főnév Zsolt 7:17: erőszak, jogtalanság — status absolutus <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:11">1Móz 6:11</mark> és máshol, összesen 44-szer; status constructus חֲמַס Bír 9:24, összesen 7-szer; suffixummal חֲמָסִי‎ 1Móz 16:5; Jer 51:35 (mindkettőben = a nekem okozott jogtalanság); חֲמָסוֺ Zsolt 7:17; többes szám חֲמָסִים‎ 2Sám 22:49, összesen 3-szor; — erőszak, kifejezetten fizikai erőszak Bír 9:24; 2Sám 22:3 (nem || Zsolt 18:3), Abd 10; Hab 1:9; Jer 51:35 (a káldeusokról), Hab 2:8, 17 (a versben kétszer); Jóel 3:19 (héber számozás: 4:19); Zsolt 72:14; de jogtalanság is, beleértve a sértő beszédet, a durva bánásmódot stb. 1Móz 16:5 (J, a Hágár által Sárának okozott jogtalanságról), Jób 19:7; Mal 2:16; általában az emberek nyers gonoszságáról, lármás, vad kíméletlenségükről <mark class="motivumhely" title="a motívum helye: Mik 6:12">Mik 6:12</mark>; <mark class="motivumhely" title="a motívum helye: Hab 1:2">Hab 1:2</mark>; <mark class="motivumhely" title="a motívum helye: Sof 1:9">Sof 1:9</mark>; Péld 10:6, 11; 13:2; 26:6 + Ez 7:11 (si vera lectio, l. Co), || שֹׁד Ámós 3:10; Hab 1:3; <mark class="motivumhely" title="a motívum helye: Jer 6:7">Jer 6:7</mark>; 20:8; Ez 45:9; <mark class="motivumhely" title="a motívum helye: Ézs 60:18">Ézs 60:18</mark>, || רִיב Zsolt 55:10, || עָמָל‎ 7:17, || גַּאֲוָה‎ 73:6, אֹהֵב <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 11:5 (|| רָשָׁע), tagadva, a <abbr class="rovidites" title="יְהוָה (JHVH), az Úr">י׳</abbr> szolgájáról Ézs 53:9, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בארץ <mark class="motivumhely" title="a motívum helye: Jer 51:46">Jer 51:46</mark>, vö. <mark class="motivumhely" title="a motívum helye: 1Móz 6:11">1Móz 6:11</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 6:13">13</mark> (P), <mark class="motivumhely" title="a motívum helye: Ez 8:17">Ez 8:17</mark>; <mark class="motivumhely" title="a motívum helye: Ez 12:19">12:19</mark>; ח נְאוֺת ׳מַחֲשַׁכֵּי־אֶרֶץ מָֽלְאוּ <mark class="motivumhely" title="a motívum helye: Zsolt 74:20">Zsolt 74:20</mark>, הָעִיר מָֽלְאָה <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> <mark class="motivumhely" title="a motívum helye: Ez 7:23">Ez 7:23</mark>; <mark class="motivumhely" title="a motívum helye: Ez 28:16">28:16</mark>, שֶׁבֶת <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Ámós 6:3: (valószínűleg) az erőszak trónra emelése; כְּלֵי <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 1Móz 49:5 (költemény): az erőszak eszközei, fegyverei; — további kifejezések: <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּיָדַיִם Jón 3:8; 1Krón 12:16 (héber számozás: 12:17), vö. Jób 16:17, <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> יְדֵיכֶם Zsolt 58:3 és פֹּעַל <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> בְּכַפֵּיהֶם Ézs 59:6; ח ׳עֵד, azaz erőszakot és jogtalanságot előmozdító tanú 2Móz 23:1 (JE), 5Móz 19:16, עֵדֵי <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr> Zsolt 35:11; חָמָס וִיפֵהַ שֶׁקֶר עֵדֵי‎ 27:12; שׂנאת <abbr class="rovidites" title="a címszó: חָמָס (chámász)">ח׳</abbr>‎ 25:19 +? erőszak; אִישׁ חָמָס = erőszakos ember 18:49 (a 2Sám 22:49 a későbbi <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> חמסים alakot adja, vö. alább) Zsolt 140:12; Péld 3:31; 16:29; אישׁ חמסים (későbbi) Zsolt 140:2; 140:5; 2Sám 22:49; יֵין חֲמָסִים Péld 4:17, azaz erőszakkal szerzett bor (|| לֶחֶם רֶשַׁע).
 
 *A teljes szócikk: [szónézet](/szo/H2555) · forrás: a BDB-szótár*
 
@@ -1925,7 +1927,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>Szótári apparátus</summary>
 
-**A szócikk feje (nyelvi háttér).** עִצָּבוֺן főnév [hímnemű]: fájdalom, fáradság; — <abbr class="rovidites" title="a címszó: עִצָּבוֹן (iccávón)">ע׳</abbr> status absolutus 1Móz 3:17 fáradság; status constructus עִצְּבוֺן יָדֵינוּ‎ 5:29 (mindkettő a földművelésről); suffixummal עִצְּבוֺנֵךְ‎ 3:16 (a szülés fájdalmáról; mind J).
+**A szócikk feje (nyelvi háttér).** עִצָּבוֺן főnév [hímnemű]: fájdalom, fáradság; — <abbr class="rovidites" title="a címszó: עִצָּבוֹן (iccávón)">ע׳</abbr> status absolutus <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">1Móz 3:17</mark> fáradság; status constructus עִצְּבוֺן יָדֵינוּ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 5:29">5:29</mark> (mindkettő a földművelésről); suffixummal עִצְּבוֺנֵךְ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:16">3:16</mark> (a szülés fájdalmáról; mind J).
 
 *A teljes szócikk: [szónézet](/szo/H6093) · forrás: a BDB-szótár*
 
@@ -2025,7 +2027,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **10.c — gonosz (a szív gondolatairól)**
 
-  > gondolatokról, יֵצֶר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:5">1Móz 6:5</mark>; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
+  > gondolatokról, יֵצֶר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:5">1Móz 6:5</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 8:21">8:21</mark> (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
 
 <details>
 <summary>10.d — tettekről, cselekedetekről (28 hivatkozás)</summary>
@@ -2049,7 +2051,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **BDB 8034. szócikk · רָעָה** *(a H7451 3. BDB-szócikke a 3-ből)*
 
-**A szócikk feje (nyelvi háttér).** רָעָה nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem; — status absolutus <abbr class="rovidites" title="a címszó: רַע (ra)">ר׳</abbr>‎ 1Móz 26:29 és máshol; status constructus רָעַת‎ 6:5 és máshol; suffixummal רָֽעָתִי Zsolt 35:4 és máshol; רָעָֽתְךָ‎ 1Kir 2:44 és máshol; רָֽעָתֵכִי Jer 11:15 (a szöveg kétséges); רָֽעַתְכֶם‎ 1Sám 12:17 stb.; többes szám רָעוֺת‎ 5Móz 31:17 és máshol; רָעֹת Jer 44:9; 2Móz 23:2; suffixummal רָעוֺתֵיכֶם‎ 1Sám 10:19 és máshol, stb.; —
+**A szócikk feje (nyelvi háttér).** רָעָה nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem; — status absolutus <abbr class="rovidites" title="a címszó: רַע (ra)">ר׳</abbr>‎ 1Móz 26:29 és máshol; status constructus רָעַת‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:5">6:5</mark> és máshol; suffixummal רָֽעָתִי Zsolt 35:4 és máshol; רָעָֽתְךָ‎ 1Kir 2:44 és máshol; רָֽעָתֵכִי Jer 11:15 (a szöveg kétséges); רָֽעַתְכֶם‎ 1Sám 12:17 stb.; többes szám רָעוֺת‎ 5Móz 31:17 és máshol; רָעֹת Jer 44:9; 2Móz 23:2; suffixummal רָעוֺתֵיכֶם‎ 1Sám 10:19 és máshol, stb.; —
 
 <details>
 <summary>1. – 3. (3 szakasz): rossz, nyomorúság, szorongattatás · rossz, sérelem, jogtalanság · erkölcsi rossz</summary>
@@ -2214,29 +2216,29 @@ A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes
 
 #### 4.6. LXX-híd
 
-A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 28 versben mást, 12 versben a megfelelő nincs megállapítva. **Következtetés:** a görög Ószövetség csak a versek 13%-ában használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.<!-- olvasói -->
+A motívum ószövetségi helyei 46 versre terjednek. A görög Ószövetség és az Újszövetség közti szóhíd két szón át vezet, az אָרַר (árar) és a שָׁחַת (sáchat) szaván: ezek 11 megállapított versében a görög fordítás 6 versben ugyanazt a szót használja, mint az Újszövetség, 4 versben ugyanannak a szócsaládnak egy másik tagját, 1 versben mást. A többi szónak a motívumban nincs újszövetségi párja (23 vers), ott egyezés nem várható. 11 versben a megfelelő nincs megállapítva és 1 versben a versszámozás eltérése miatt nincs párosítva. **Következtetés:** a nyelvi híd két szón át vezet, és ott erős: szócsalád szerint 10/11 vers.<!-- olvasói -->
 
 *Hivatkozás: l. az 5. szakaszt (LXX-fordítói döntések).*
 
-Az אָבַל (ával) a motívum 3 ószövetségi versében áll; a görög fordításban 3 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+Az אָבַל (ával) a motívum 3 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 3 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-Az אֲדָמָה (adámá) a motívum 11 ószövetségi versében áll; a görög fordításban 9 versben más görög szó áll; 2 versben a megfelelő nincs megállapítva. **Következtetés:** ennél a szónál a görög Ószövetség nem az újszövetségi szót használja. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+Az אֲדָמָה (adámá) a motívum 11 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 9 versben más görög szó áll; 2 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-Az אָלָה (álá) a motívum 2 ószövetségi versében áll; a görög fordításban 2 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+Az אָלָה (álá) a motívum 2 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 2 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-Az אָרַר (árar) a motívum 5 ószövetségi versében áll; a görög fordításban 3 versben ugyanaz a görög szó áll, mint az Újszövetségben; 1 versben más görög szó áll; 1 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+Az אָרַר (árar) a motívum 5 ószövetségi versében áll; a görög fordításban 3 versben ugyanaz a görög szó áll, mint az Újszövetségben; 1 versben ugyanannak a szócsaládnak egy másik tagja áll; 1 versben a megfelelő nincs megállapítva. **Következtetés:** ennél a szónál a görög Ószövetség az újszövetségi szót vagy annak szócsaládját használja (4/5 vers). Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-A חַטָּאת (chattát) a motívum 1 ószövetségi versében áll; a görög fordításban 1 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A חַטָּאת (chattát) a motívum 1 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 1 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-A חָמָס (chámász) a motívum 12 ószövetségi versében áll; a görög fordításban 9 versben más görög szó áll; 2 versben a megfelelő nincs megállapítva; 1 versben a versszámozás eltérése miatt nincs párosítva. **Következtetés:** ennél a szónál a görög Ószövetség nem az újszövetségi szót használja. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A חָמָס (chámász) a motívum 12 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 9 versben más görög szó áll; 2 versben a megfelelő nincs megállapítva; 1 versben a versszámozás eltérése miatt nincs párosítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-Az עִצָּבוֹן (iccávón) a motívum 2 ószövetségi versében áll; a görög fordításban 1 versben más görög szó áll; 1 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+Az עִצָּבוֹן (iccávón) a motívum 2 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 2 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-A קוֹץ (kóc) a motívum 2 ószövetségi versében áll; a görög fordításban 1 versben más görög szó áll; 1 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A קוֹץ (kóc) a motívum 2 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 1 versben más görög szó áll; 1 versben a megfelelő nincs megállapítva. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-A רַע (ra) a motívum 1 ószövetségi versében áll; a görög fordításban 1 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A רַע (ra) a motívum 1 ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban 1 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
-A שָׁחַת (sáchat) a motívum 7 ószövetségi versében áll; a görög fordításban 3 versben ugyanaz a görög szó áll, mint az Újszövetségben; 4 versben más görög szó áll. Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
+A שָׁחַת (sáchat) a motívum 7 ószövetségi versében áll; a görög fordításban 3 versben ugyanaz a görög szó áll, mint az Újszövetségben; 3 versben ugyanannak a szócsaládnak egy másik tagja áll; 1 versben más görög szó áll. **Következtetés:** ennél a szónál a görög Ószövetség az újszövetségi szót vagy annak szócsaládját használja (6/7 vers). Versenként: [5. LXX-fordítói döntések](#5-lxx-fordítói-döntések).
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a szó összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
@@ -2437,25 +2439,25 @@ A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/ass
 
 A héber szavak közül az אָבַל (ával), az אֲדָמָה (adámá), az אָלָה (álá), az אָרַר (árar), a חַטָּאת (chattát), a חָמָס (chámász), az עִצָּבוֹן (iccávón) és a קוֹץ (kóc) jelentése a helyén egyértelmű; a רַע (ra) (1Móz 6:5) és a שָׁחַת (sáchat) (1Móz 6:12) helyén a szótár több jelentést enged, ezeknél a vers dönt (ez 2 hely a motívum 41 ószövetségi helyéből). **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
 
-**H0056 — אָבַל (ával)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H0056 — אָבַל (ával)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H0127 — אֲדָמָה (adámá)** · a motívum 10 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (10 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0127) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H0127 — אֲדָמָה (adámá)** · a motívum 10 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (10 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0127) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H0423 — אָלָה (álá)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0423) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H0423 — אָלָה (álá)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0423) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H0779 — אָרַר (árar)** · a motívum 4 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (4 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H0779 — אָרַר (árar)** · a motívum 4 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (4 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H2403 — חַטָּאת (chattát)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H2403 — חַטָּאת (chattát)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H2555 — חָמָס (chámász)** · a motívum 12 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (12 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H2555 — חָמָס (chámász)** · a motívum 12 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (12 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H6093 — עִצָּבוֹן (iccávón)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6093) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H6093 — עִצָּבוֹן (iccávón)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6093) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H6975 — קוֹץ (kóc)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6975) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H6975 — קוֹץ (kóc)** · a motívum 2 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (2 helyen egy jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H6975) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H7451 — רַע (ra)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7451) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H7451 — רַע (ra)** · a motívum 1 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7451) · forrás: az UBS Dictionary of Biblical Hebrew.
 
-**H7843 — שָׁחַת (sáchat)** · a motívum 7 ószövetségi helyén a vers-szintű jelentést az [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (6 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7843) · forrás: az UBS Dictionary of Biblical Hebrew.
+**H7843 — שָׁחַת (sáchat)** · a motívum 7 ószövetségi helyén a vers-szintű jelentést a [2. Előfordulások](#2-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (6 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet](/szo/H7843) · forrás: az UBS Dictionary of Biblical Hebrew.
 
 #### 4.10. Kiejtés (magyaros)
 
@@ -2664,52 +2666,52 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, adat/visszhang_megfelelok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-12 -->
 
-A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 28 versben mást, 12 versben a megfelelő nincs megállapítva. **Következtetés:** a görög Ószövetség csak a versek 13%-ában használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.<!-- olvasói -->
+A motívum ószövetségi helyei 46 versre terjednek. A görög Ószövetség és az Újszövetség közti szóhíd két szón át vezet, az אָרַר (árar) és a שָׁחַת (sáchat) szaván: ezek 11 megállapított versében a görög fordítás 6 versben ugyanazt a szót használja, mint az Újszövetség, 4 versben ugyanannak a szócsaládnak egy másik tagját, 1 versben mást. A többi szónak a motívumban nincs újszövetségi párja (23 vers), ott egyezés nem várható. 11 versben a megfelelő nincs megállapítva és 1 versben a versszámozás eltérése miatt nincs párosítva. **Következtetés:** a nyelvi híd két szón át vezet, és ott erős: szócsalád szerint 10/11 vers.<!-- olvasói -->
 
 *Ez a blokk a motívum ÓSZ-i előfordulásait veti össze a Septuaginta szövegével, soronként a Károli-vers minden versére.*
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
 | 1Móz 3:14 | 1Móz 3:14 | אָר֤וּר (árúr) | ἐπικατάρατος (epikataratosz) (ἐπικατάρατος, [epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>) | egyező | Septuaginta |
-| 1Móz 3:16 | 1Móz 3:16 | עִצְּבוֹנֵ֣ךְ (iccevónéch) | λύπη ([lüpé](/szo/G3077)<sup class="strong" title="G3077">G3077</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 3:17 | 1Móz 3:17 | הָֽאֲדָמָה֙ (háadámá) | γῆ (gé) | eltérő | gépi társítás (versszintű) |
-| 1Móz 3:18 | 1Móz 3:18 | וְק֥וֹץ (vekóc) | ἄκανθα ([akantha](/szo/G0173)<sup class="strong" title="G0173 · tövis">G0173</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 3:19 | 1Móz 3:19 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 3:23 | 1Móz 3:23 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 4:7 | 1Móz 4:7 | חַטָּ֣את (chattát) | ἁμαρτάνω ([hamartanó](/szo/G0264)<sup class="strong" title="G0264 · vétkezni">G0264</sup>) | eltérő | LXX-fordítói döntések táblája |
+| 1Móz 3:16 | 1Móz 3:16 | עִצְּבוֹנֵ֣ךְ (iccevónéch) | λύπη ([lüpé](/szo/G3077)<sup class="strong" title="G3077">G3077</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 3:17 | 1Móz 3:17 | הָֽאֲדָמָה֙ (háadámá) | γῆ (gé) | nincs újszövetségi pár | gépi társítás (versszintű) |
+| 1Móz 3:18 | 1Móz 3:18 | וְק֥וֹץ (vekóc) | ἄκανθα ([akantha](/szo/G0173)<sup class="strong" title="G0173 · tövis">G0173</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 3:19 | 1Móz 3:19 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 3:23 | 1Móz 3:23 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 4:7 | 1Móz 4:7 | חַטָּ֣את (chattát) | ἁμαρτάνω ([hamartanó](/szo/G0264)<sup class="strong" title="G0264 · vétkezni">G0264</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | 1Móz 4:10 | 1Móz 4:10 | — | — | Megfelelő nincs megállapítva | Septuaginta |
 | 1Móz 4:11 | 1Móz 4:11 | אָר֣וּר (árúr) | ἐπικατάρατος (ἐπικατάρατος, [epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>) | egyező | Septuaginta |
-| 1Móz 4:12 | 1Móz 4:12 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 4:14 | 1Móz 4:14 | הָֽאֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 5:29 | 1Móz 5:29 | וּמֵעִצְּב֣וֹן (úméiccevón) | λύπη (lüpé) | eltérő | gépi társítás (versszintű) |
-| 1Móz 6:5 | 1Móz 6:5 | רַ֖ע (ra) | πονηρός ([ponérosz](/szo/G4190)<sup class="strong" title="G4190 · gonosz/rossz">G4190</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 6:7 | 1Móz 6:7 | הָֽאֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | eltérő | LXX-fordítói döntések táblája |
+| 1Móz 4:12 | 1Móz 4:12 | הָ֣אֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 4:14 | 1Móz 4:14 | הָֽאֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 5:29 | 1Móz 5:29 | וּמֵעִצְּב֣וֹן (úméiccevón) | λύπη (lüpé) | nincs újszövetségi pár | gépi társítás (versszintű) |
+| 1Móz 6:5 | 1Móz 6:5 | רַ֖ע (ra) | πονηρός ([ponérosz](/szo/G4190)<sup class="strong" title="G4190 · gonosz/rossz">G4190</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 6:7 | 1Móz 6:7 | הָֽאֲדָמָ֔ה (háadámá) | γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | 1Móz 6:11 | 1Móz 6:11 | וַתִּשָּׁחֵ֥ת (vattissáchét) | ἐφθάρη (eftharé) (φθείρω, [ftheiró](/szo/G5351)<sup class="strong" title="G5351 · elpusztítani">G5351</sup>) | egyező | Septuaginta |
-| 1Móz 6:12 | 1Móz 6:12 | הִשְׁחִ֧ית (hischít) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 6:13 | 1Móz 6:13 | חָמָ֖ס (chámász) | ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 6:17 | 1Móz 6:17 | לְשַׁחֵ֣ת (lesachét) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 7:4 | 1Móz 7:4 | הָֽאֲדָמָֽה (háadámá) | γῆ (gé) | eltérő | gépi társítás (versszintű) |
-| 1Móz 7:23 | 1Móz 7:23 | הָֽאֲדָמָ֗ה (háadámá) | γῆ (gé) | eltérő | gépi társítás (versszintű) |
-| 1Móz 8:21 | 1Móz 8:21 | הָֽאֲדָמָה֙ (háadámá) | γῆ (gé) | eltérő | gépi társítás (versszintű) |
-| 1Móz 9:11 | 1Móz 9:11 | לְשַׁחֵ֥ת (lesachét) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | eltérő | LXX-fordítói döntések táblája |
+| 1Móz 6:12 | 1Móz 6:12 | הִשְׁחִ֧ית (hischít) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | ugyanaz a szócsalád | LXX-fordítói döntések táblája |
+| 1Móz 6:13 | 1Móz 6:13 | חָמָ֖ס (chámász) | ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| 1Móz 6:17 | 1Móz 6:17 | לְשַׁחֵ֣ת (lesachét) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | ugyanaz a szócsalád | LXX-fordítói döntések táblája |
+| 1Móz 7:4 | 1Móz 7:4 | הָֽאֲדָמָֽה (háadámá) | γῆ (gé) | nincs újszövetségi pár | gépi társítás (versszintű) |
+| 1Móz 7:23 | 1Móz 7:23 | הָֽאֲדָמָ֗ה (háadámá) | γῆ (gé) | nincs újszövetségi pár | gépi társítás (versszintű) |
+| 1Móz 8:21 | 1Móz 8:21 | הָֽאֲדָמָה֙ (háadámá) | γῆ (gé) | nincs újszövetségi pár | gépi társítás (versszintű) |
+| 1Móz 9:11 | 1Móz 9:11 | לְשַׁחֵ֥ת (lesachét) | καταφθείρω ([kataftheiró](/szo/G2704)<sup class="strong" title="G2704 · megrontani">G2704</sup>) | ugyanaz a szócsalád | LXX-fordítói döntések táblája |
 | 1Móz 9:15 | 1Móz 9:15 | לְשַׁחֵ֖ת (lesachét) | ἐξαλείφω ([exaleifó](/szo/G1813)<sup class="strong" title="G1813 · eltörölni">G1813</sup>) | eltérő | LXX-fordítói döntések táblája |
-| 1Móz 12:3 | 1Móz 12:3 | אָאֹ֑ר (áór) | καταράομαι ([kataraomai](/szo/G2672)<sup class="strong" title="G2672 · megátkozni">G2672</sup>) | eltérő | LXX-fordítói döntések táblája |
+| 1Móz 12:3 | 1Móz 12:3 | אָאֹ֑ר (áór) | καταράομαι ([kataraomai](/szo/G2672)<sup class="strong" title="G2672 · megátkozni">G2672</sup>) | ugyanaz a szócsalád | LXX-fordítói döntések táblája |
 | 5Móz 28:18 | 5Móz 28:18 | אָר֥וּר (árúr) | ἐπικατάρατα (epikatarata) (ἐπικατάρατος, [epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>) | egyező | Septuaginta |
 | Zsolt 14:1 | Zsolt(LXX) 13:1 | הִֽשְׁחִ֗יתוּ (hischítú) | διέφθειραν (dieftheiran) (διαφθείρω, [diaftheiró](/szo/G1311)<sup class="strong" title="G1311 · elpusztítani">G1311</sup>) | egyező | Septuaginta |
 | Zsolt 53:2 | Zsolt(LXX) 52:2 | הִֽ֝שְׁחִ֗יתוּ (hischítú) | διεφθάρησαν (dieftharészan) (διαφθείρω, [diaftheiró](/szo/G1311)<sup class="strong" title="G1311 · elpusztítani">G1311</sup>) | egyező | Septuaginta |
-| Ez 7:23 | Ez 7:23 | חָמָֽס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | eltérő | LXX-fordítói döntések táblája |
-| Ez 8:17 | Ez 8:17 | חָמָ֗ס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | eltérő | LXX-fordítói döntések táblája |
+| Ez 7:23 | Ez 7:23 | חָמָֽס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| Ez 8:17 | Ez 8:17 | חָמָ֗ס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | Ez 12:19 | Ez 12:19 | מֵחֲמַ֖ס (méchamasz) | — | Megfelelő nincs megállapítva | Septuaginta |
-| Ez 28:16 | Ez 28:16 | חָמָ֖ס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | eltérő | LXX-fordítói döntések táblája |
-| Zsolt 74:20 | Zsolt(LXX) 73:20 | חָמָֽס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | eltérő | LXX-fordítói döntések táblája |
+| Ez 28:16 | Ez 28:16 | חָמָ֖ס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| Zsolt 74:20 | Zsolt(LXX) 73:20 | חָמָֽס (chámász) | ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | Mik 6:12 | Mik 6:12 | חָמָ֔ס (chámász) | — | Megfelelő nincs megállapítva | Septuaginta |
 | Sof 1:2 | Sof 1:2 | הָאֲדָמָ֖ה (háadámá) | — | Megfelelő nincs megállapítva | Septuaginta |
 | Sof 1:3 | Sof 1:3 | הָאֲדָמָ֖ה (háadámá) | — | Megfelelő nincs megállapítva | Septuaginta |
-| Sof 1:9 | Sof 1:9 | חָמָ֥ס (chámász) | ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>) | eltérő | LXX-fordítói döntések táblája |
-| Ézs 60:18 | Ézs 60:18 | חָמָס֙ (chámász) | ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>) | eltérő | LXX-fordítói döntések táblája |
-| Jer 6:7 | Jer 6:7 | חָמָ֣ס (chámász) | ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>) | eltérő | LXX-fordítói döntések táblája |
+| Sof 1:9 | Sof 1:9 | חָמָ֥ס (chámász) | ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| Ézs 60:18 | Ézs 60:18 | חָמָס֙ (chámász) | ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
+| Jer 6:7 | Jer 6:7 | חָמָ֣ס (chámász) | ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | Jer 51:46 | — | וְחָמָ֣ס (vechámász) | — | versszámozás miatt nem párosítva | Septuaginta |
-| Hab 1:2 | Hab 1:2 | חָמָ֖ס (chámász) | ἀδικέω ([adikeó](/szo/G0091)<sup class="strong" title="G0091">G0091</sup>) | eltérő | LXX-fordítói döntések táblája |
+| Hab 1:2 | Hab 1:2 | חָמָ֖ס (chámász) | ἀδικέω ([adikeó](/szo/G0091)<sup class="strong" title="G0091">G0091</sup>) | nincs újszövetségi pár | LXX-fordítói döntések táblája |
 | Hós 10:8 | Hós 10:8 | ק֣וֹץ (kóc) | — | Megfelelő nincs megállapítva | Septuaginta |
 | Ézs 24:5 | Ézs 24:5 | — | — | Megfelelő nincs megállapítva | Septuaginta |
 | Ézs 24:6 | Ézs 24:6 | אָלָה֙ (álá) | — | Megfelelő nincs megállapítva | Septuaginta |
@@ -2717,7 +2719,7 @@ A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a g
 | Hós 4:2 | Hós 4:2 | — | — | Megfelelő nincs megállapítva | Septuaginta |
 | Hós 4:3 | Hós 4:3 | תֶּאֱבַ֣ל (teeval) | — | Megfelelő nincs megállapítva | Septuaginta |
 
-*Összesítés: egyező=6, eltérő=28, LXX-minusz=0, a megfelelő nincs megállapítva=11, versszámozás miatt nem párosítva=1.*
+*Összesítés: egyező=6, ugyanaz a szócsalád=4, eltérő=1, nincs újszövetségi pár=23, LXX-minusz=0, a megfelelő nincs megállapítva=11, versszámozás miatt nem párosítva=1.*
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#lxx -->
 
@@ -2897,7 +2899,7 @@ A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyom�
 
 ### Minősítés
 
-A 112 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 47-ból. **Következtetés:** a motívum helyeinek a 13%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
+A 112 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet érint a 47-ből. **Következtetés:** a motívum helyeinek a 13%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -3395,6 +3397,8 @@ A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító a Genezis l
 
 *A cella a fordítás szava (kiejtéssel) és az, hány láncversben áll ugyanaz (n/N). A „Mit mutat” azt mondja meg, szokásos-e ez a fordítás: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád áll-e. A mérés versenként veti össze a két szöveget, nem szavanként; 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A görög megfelelő a Septuaginta szövegéből versenként társítva, az arámi és a latin megfelelő a fordítás szövegéből, a forrásszövegen ellenőrizve; ellenőrizetlen sor nem áll a táblázatban.*
 
+Ez a tábla a láncon belüli fordítói következetességet méri: ugyanazzal a szóval adja-e vissza a fordító a héber szót a lánc minden versében. Hogy a görög szó azonos-e az újszövetségi helyek szavával, azt az [5. szakasz](#5-lxx-fordítói-döntések) mutatja.
+
 A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.
 
 ### Ókori fordítások: Újszövetség
@@ -3593,7 +3597,8 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Generálva | 2026-11-12 |
 | Kiadás | nincs kiadva — feldolgozás alatt |
 | Próza modellje | nincs kiadva — feldolgozás alatt |
-| Emberi lektorálás | 32 hely (2026.11.11); lektorálók: szerkesztő |
+| Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |
+| Szerkesztői átnézés és jóváhagyás | A teljes lap; a jelzett helyek javításait a szerkesztő hagyta jóvá (2026.11.11) |
 
 **Változásjegyzék**
 

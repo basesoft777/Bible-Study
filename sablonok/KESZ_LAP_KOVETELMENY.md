@@ -185,7 +185,7 @@ A „L123” jelölés a lap sorszáma ebben a commitban. A #182 2. fázisa még
 | K89 | Kolofon | A szerzőségi mondat adatból áll (az értelmező szakaszok neve, a próza modellje, az átnézés), és a lap mai szakaszneveit használja. | DT603; sablon 6 „Kolofon” | gépi: KOLOFON | **teljesül** — #182, F182.30 (a szerzőségi mondat az Alkalmazás nélkül). |
 | K90 | Kolofon | A kiadás-sor és a változásjegyzék az `adat/kiadasok.tsv`-ből jön; a próza modellje a tényleges modellnév. | DT492; DT473; sablon 6 „Kolofon” | gépi: KOLOFON | **teljesül** a kiadás előtti állapotra (L3415–3420); a modellnév a C5-ben kerül be. |
 | K91 | Kolofon | A forrástábla (Forrás · Fájl · Licenc · Blokk) a ténylegesen felhasznált forrásokat adja, licenccel. A licenc-attribúciók állnak. | sablon 6 „Kolofon”, „Licenc és nyilvános repó” | gépi: KOLOFON | **teljesül** — #182, F182.30, F182.41 (forrásonként egy sor, „Fájl” oszlop nélkül, olvasói névvel). |
-| K92 | Kolofon | Az „Emberi lektorálás” sor a `/lap-javit` naplójából generálódik. | DT599 | gépi: KOLOFON | **hátralévő lépés** — a `/lap-javit` még nem futott. |
+| K92 | Kolofon | Az „Emberi lektorálás” sor a `/lap-javit` naplójából generálódik; az új szerkezetű lapon helyette a „Modell-lektor” és a „Szerkesztői átnézés és jóváhagyás” sor áll (`kolofon_lektor_uj`). | DT599 | gépi: KOLOFON | **hátralévő lépés** — a `/lap-javit` még nem futott. |
 
 ## 14. A lezárás folyamatfeltételei (a lap mellett)
 

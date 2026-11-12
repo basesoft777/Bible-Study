@@ -526,5 +526,94 @@ class Tablajegyzet(unittest.TestCase):
         self.assertNotIn('TAHOT', jegyzet)
 
 
+class KiadasElott(unittest.TestCase):
+    """A kiadás előtti javítócsomag (a lektor és a Fable közös véleménye; a felhasználó: „Igen, egyben”, „Mindhármat”)."""
+
+    def test_rag_es_nevelo(self):
+        self.assertEqual([OK.szam_bol(n) for n in (46, 47, 100, 1000, 10, 3, 5, 112)],
+                         ['ból', 'ből', 'ból', 'ből', 'ből', 'ból', 'ből', 'ből'])
+        self.assertEqual([OK.nevelo_szam(n) for n in (1, 2, 5, 47, 50, 1000)], ['az', 'a', 'az', 'a', 'az', 'az'])
+        self.assertIn('érint a 47-ből', OK.minosites(5, 6, 47, osszes=112, rag=True))
+        self.assertIn('érint a 47-ból', OK.minosites(5, 6, 47, osszes=112))   # a régi lapok útja változatlan
+
+    def test_lxx_hid(self):
+        m = OK.lxx_hid(46, 6, 4, 1, 23, 11, 1, 0, ['az árar', 'a sáchat'])
+        self.assertIn('két szón át vezet, az árar és a sáchat szaván', m)
+        self.assertIn('ezek 11 megállapított versében', m)
+        self.assertIn('11 versben a megfelelő nincs megállapítva és 1 versben a versszámozás', m)
+        self.assertIn('szócsalád szerint 10/11 vers', m)
+        self.assertNotIn('nem nyelvi', m)
+
+    def test_szo_par_nelkul_nincs_kovetkeztetes(self):
+        m = OK.lxx_szo_uj('a föld', 11, 0, 0, 0, 9, 0, 2, 0, False)
+        self.assertIn('nincs újszövetségi párja', m)
+        self.assertNotIn('Következtetés', m)
+
+    def test_kiemeles_minden_motivumhely(self):
+        sz = 'föld 1Móz 2:5, 9; 3:17, 23; 5:29'
+        uj, t, h = LG.kiemel(sz, [('1Móz 3:17', 'a')], mark=True, extra={'1Móz 5:29', '1Móz 3:17'})
+        self.assertIn('title="a motívum helye: 1Móz 5:29">5:29</mark>', uj)
+        self.assertEqual(uj.count('<mark'), 2)
+        self.assertEqual((t, h), (['a'], []))
+        regi, _t, _h = LG.kiemel(sz, [('1Móz 3:17', 'a')], extra={'1Móz 5:29'})
+        self.assertNotIn('5:29**', regi)
+
+    def test_link_nevelo(self):
+        import tablajegyzet as TJ
+        self.assertEqual(TJ._szam_link_nevelo('az [2. Előfordulások](#2) és a [5. LXX](#5)'),
+                         'a [2. Előfordulások](#2) és az [5. LXX](#5)')
+
+    def test_kolofon_lektor(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            lek = os.path.join(d, 'lek.md')
+            jav = os.path.join(d, 'jav.tsv')
+            with io.open(lek, 'w', encoding='utf-8') as f:
+                f.write('# x\n\nLektor: `lektor` subagent, `claude-fable-5-2`.\n\n## Lektor kérdései\n\n*kör (2026-11-11)*\n\n'
+                        '**1. A › b**\n- x\n\n**2. C › d**\n\n## Orkesztrátori észrevételek\n\n**3. E**\n')
+            with io.open(jav, 'w', encoding='utf-8') as f:
+                f.write('id\thely\ttipus\tgond\tregi\tuj\tjavasolta\tjovahagyta\tdatum\tproveniencia\n'
+                        'X-001\th\tpróza\thomályos\ta\tb\tclaude-opus-5-5\tfelhasználó\t2026.11.11\tscope=manual\n')
+            sorok = LG.kolofon_lektor_uj('X-001', lektor_ut=lek, javitas_ut=jav)
+        self.assertEqual(sorok, ['| Modell-lektor (claude-fable-5-2) | 2 jelzett hely (2026.11.11) |',
+                                 '| Szerkesztői átnézés és jóváhagyás | a teljes lap; a jelzett helyek javításait a '
+                                 'szerkesztő hagyta jóvá (2026.11.11) |'])
+
+    def test_a_lapon(self):
+        lap = _olvas(LAP)
+        lathato = re.sub(r'<!--.*?-->', '', lap, flags=re.S)
+        self.assertNotIn('a kapcsolat nem nyelvi, csak tartalmi', lathato)
+        self.assertNotIn('nem az újszövetségi szót használja', lathato)
+        self.assertEqual(lathato.count('szóhíd két szón át vezet'), 3)          # a két 4.6 és az 5. szakasz
+        self.assertIn('Ez a tábla a láncon belüli fordítói következetességet méri', lathato)
+        self.assertIn('HCF (HistoricalChristianFaith', lathato)
+        self.assertNotIn('az [2.', lathato)
+        self.assertIn('érint a 47-ből', lathato)
+        self.assertNotIn('leggyakoribb szava ugyanazokban', lathato)
+        self.assertNotIn('| Emberi lektorálás |', lathato)
+        self.assertRegex(lathato, r'\| Modell-lektor \(claude-[\w.-]+\) \| \d+ jelzett hely')
+        jel = next(s for s in lap.split('\n') if s.startswith('| [Jel 22:3]'))
+        self.assertIn('elátkozott — ', jel)
+        self.assertIn(' (katathema) |', jel)
+        self.assertIn('| G2652 |', jel)
+        # az 5. szakasz: négy egyezés-érték, és a 4.6 szavankénti összege = az összesítés
+        i = lap.index('## 5. LXX-fordítói döntések')
+        ertekek = {s.split(' | ')[4] for s in lap[i:lap.index('## 6.', i)].split('\n')
+                   if s.startswith('| ') and s.count(' | ') >= 5 and not s.startswith('| Igehely')}
+        self.assertTrue({'egyező', 'ugyanaz a szócsalád', 'eltérő', 'nincs újszövetségi pár'} <= ertekek, ertekek)
+        ossz = re.search(r'\*Összesítés: egyező=(\d+), ugyanaz a szócsalád=(\d+), eltérő=(\d+), nincs újszövetségi '
+                         r'pár=(\d+)', lap)
+        self.assertIsNotNone(ossz)
+        mondatok = [s for s in lathato.split('\n') if 'ószövetségi versében áll' in s]
+
+        def osszeg(minta):
+            return sum(int(x) for s in mondatok for x in re.findall(r'(\d+) versben ' + minta, s))
+        self.assertEqual(osszeg('ugyanaz a görög szó áll'), int(ossz.group(1)))
+        self.assertEqual(osszeg('ugyanannak a szócsaládnak'), int(ossz.group(2)))
+        # a 4.2: az 1Móz 5:29 az adámá (H0127) szócikkében is kiemelt (a sora az iccávón szaván áll)
+        h0127 = lap[lap.index('##### H0127'):lap.index('##### H0423')]
+        self.assertIn('title="a motívum helye: 1Móz 5:29"', h0127)
+
+
 if __name__ == '__main__':
     unittest.main()

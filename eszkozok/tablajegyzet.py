@@ -54,6 +54,11 @@ def olvasoi_jegyzet(lathato, ujszov=False):
     t = _KOMMENT_RX.sub('', lathato).strip()
     if 'a sornak nincs Strong-száma' in t:
         return 'Tematikus hely: a versben a lánc szava nem áll.'
+    # a vers saját (nem lánc-) szava a tematikus sorban (Jel 22:3): a címke maga az olvasói jegyzet
+    m = re.search(r'a jelentés címkéje:\s*(Tematikus hely:[^·]*)', t)
+    if m:
+        s = m.group(1).strip()
+        return s + ('' if s.endswith('.') else '.')
     forras_elotag = t.startswith('forrás:')
     t = re.sub(r'^(?:Forrás|forrás):\s*', '', t)
     ki = []
@@ -150,4 +155,19 @@ def alkalmaz(szoveg):
                 continue
         ki.append(s)
         i += 1
-    return re.sub(r'\n{3,}', '\n\n', '\n'.join(ki))
+    return _szam_link_nevelo(re.sub(r'\n{3,}', '\n\n', '\n'.join(ki)))
+
+
+_SZAM_LINK_RX = re.compile(r'(?<![\w-])([Aa]z?) \[(\d+)\.')
+
+
+def _szam_link_nevelo(szoveg):
+    """A számozott szakaszra mutató link előtti névelő a számhoz igazodik (a lektor és a Fable közös véleménye, 5.: „az
+    [2. Előfordulások]” → „a [2. Előfordulások]”; a link a szakaszok átszámozásakor kapja az új számot)."""
+    def csere(m):
+        n = int(m.group(2))
+        jo = 'az' if n == 1 or str(n)[0] == '5' or 1000 <= n < 2000 else 'a'
+        if m.group(1)[0] == 'A':
+            jo = jo.capitalize()
+        return '%s [%s.' % (jo, m.group(2))
+    return _SZAM_LINK_RX.sub(csere, szoveg)
