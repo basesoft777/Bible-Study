@@ -63,3 +63,5 @@ A `python eszkozok/teszt_futtat.py` a WSL-ben a saját zárja megszerzése után
 ## 7. Zárás
 
 Kész: a bibliaválasztó a mockup szerint, csak szószintű Strong-kapcsolatú szöveggel (Károli 1908, modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB); az építő 3 új táblája; 11 új teszt. Nyitott: N171–c (`nyitott/uj/`), DT811 🟡. ⛔ A merge előtt a felhasználó a böngészőben átnézi; a merge az orkesztrátoré.
+
+**Merge után (2026-11-12).** A felhasználó jóváhagyta („mehet”), a #717 mergelve (33abfd1c); a számkiosztás: DT-F210a → DT811, N-F210a–c → N171–N173. Az átnézés alatt a 9765-ös porton (portproxy → WSL 8765) az F210-példány futott (`~/pardes_f210/pardes.db`). Utána a fő `pardes.db` újraépült a fő checkout építőjével (`python eszkozok/sqlite_epit.py --mod teljes`: 118,8 s, 1110 MB, 108 tábla, `epites_ts` 2026-11-12T15:51:52Z), a fő példány az `indit.sh belso 8765`-tel újraindult (az indító átmásolta az új adatbázist a `~/pardes/pardes.db`-be), és a próba-adatbázis törlődött. A lábléc a 192.168.1.172:9765-ön: `Kiadás: belso · ág: main · commit: 33abfd1c · adatbázis építve: 2026-11-12T15:51:52Z`, figyelmeztetés nélkül; a választóban hét Biblia.
