@@ -811,15 +811,15 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>5 (1 szakasz)</summary>
 
-- `5` — = emlékjel, emlékmű Ézs 55:13 (|| אוֺת; így Che Du > = hírnév Di-Kit), וגו מִבָּנִים ׳טוֺב… *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)* *(a magyar szöveg a BDB9963 szócikk fejét is tartalmazza)*
+- `5` — = emlékjel, emlékmű Ézs 55:13 (|| אוֺת; így Che Du > = hírnév Di-Kit), וגו מִבָּנִים ׳טוֺב… *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő)*
 
 </details>
 
 **BDB9963 · שֻׁם (sum) · arámi** *(a H8034 2. BDB-szócikke a 2-ből)*
 
-**A szócikk feje (nyelvi háttér).** *A magyar szöveg a BDB8776 szócikk 5. szakaszának fordításában áll (a fordítás nem választja külön).*
+**A szócikk feje (nyelvi háttér).** שֻׁם hímnemű főnév: név (l. bibliai héber שֵׁם); — status constructus <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr> Ezsd 5:1 és máshol; suffixummal שְׁמֵהּ Dán 2:20 és máshol; többes szám, status constructus שְׁמָהָת Ezsd 5:4, suffixummal תְהֹם‎- 5:10; — név, istenségé: Dán 2:20; 4:5; Ezsd 5:1; 6:12; emberé: Dán 2:26; 4:15; 4:16; 5:12 (mind Dániel), Ezsd 5:4, 10 (a versben kétszer), továbbá 5:14, amihez vö. S-C K 4, 5, s k., 12 k.
 
-*ⓘ Kutatói megjegyzés: a magyar szöveg szócikkhatáron át az előző sorban áll (`adat/bdb_szakasz_hu.tsv`, jelölő nélküli sor): BDB9963 fej → BDB8776 -/5/- · a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”; `adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
+*ⓘ Kutatói megjegyzés: a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a 4. szakaszban az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”; `adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
 
 *A teljes szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
