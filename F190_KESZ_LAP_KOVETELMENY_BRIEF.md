@@ -5,11 +5,12 @@ kod: KESZ_LAP_KOVETELMENY
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: a kész lap követelménylistája a HAMART-001 mércéjével; a K67a–K67f pontosítása a #183 után: N-F190a
 ag: claude/kesz-lap-kovetelmeny-15a3b5
 pr: 683
 ad: egy helyen, blokkonként áll, mitől kész egy lexikonlap; a HAMART-001 mért állapota soronként; a hiányok, az ellentmondások és a gépesíthető emberi ellenőrzések listája
-kovetkezo: "Te: a PR #683 merge-e; a #183 után ugyanez a feladat pontosítja a K67a–K67f sorokat"
+kovetkezo: "lezárva; a PR #683 a main-en"
 munka: folyamat
 olvas: [sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, DONTESEK.md, adat/SEMA.md]
 ir: [sablonok/KESZ_LAP_KOVETELMENY.md, dontesek/uj/kesz-lap-kovetelmeny-15a3b5.md, F190_KESZ_LAP_KOVETELMENY_BRIEF.md]
