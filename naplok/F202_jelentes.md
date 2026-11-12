@@ -39,7 +39,7 @@ a commitolt táblákból újra előállíthatók (`hu_illeszt.szocikkhatar_jelen
 **C1 (N147, N100, K56) — javítva.** A horgonyos illesztés a jelölő nélküli szócikkfejnek (a sor `bdb_id`-je más, mint az előző soré)
 eddig nem keresett kezdetet. Most a forrássor címszó-előtagja (homonimaszám, „[”, a vezető héber szósor, ennek híján az első szó) a
 horgony, az előző és a következő illesztett pozíció között; több találatnál az első tagolásjel utáni, különben az utolsó; a következő fej
-csak az előző fej horgonya után. A maradék 4 sor három külön ok (N-F202b). A gyökérok egyik fele a 2.30-ban volt: a bontó a rövid,
+csak az előző fej horgonya után. A maradék 4 sor három külön ok (N167). A gyökérok egyik fele a 2.30-ban volt: a bontó a rövid,
 zárójelet záró töredéket („compare | Niph`al )”) a következő szócikk-kezdethez vonta; ez is javítva (F202.2).
 
 **C2 — részben.** Javítva: a szócikkhatár a zárójel-töredéknél (F202.2; N103 (2) rokon osztálya). Az N99 2.30-as része már az F185 óta
@@ -84,7 +84,7 @@ szócikk helyett a fő szócikk feje), így az ALVIL H7585 nyelvi háttere megma
 
 ## 6. Tesztek
 
-- `bdb_jelolt`: `teszt_bont.py` 79/79, `teszt_hu_illeszt.py` 29/29 zöld. `teszt_szakasz_bemenet.py`: 1 előzetes bukás (a base-en is; N-F202d).
+- `bdb_jelolt`: `teszt_bont.py` 79/79, `teszt_hu_illeszt.py` 29/29 zöld. `teszt_szakasz_bemenet.py`: 1 előzetes bukás (a base-en is; N169).
 - `teszt_futtat.py --gyors`: zöld, kivéve a `teszt_olvaso_szerver.py` (2) és a `teszt_pilot_aranymintaval.py` (2) bukását — mind a
   négy a base-en is bukik, azonos hibaüzenettel (előzetes, nem e csomagé).
 - `ellenoriz.py`: 0 SÉRTÉS (a 27. szabály a base-en JELENTÉS (2), most RENDBEN). `--ellenoriz`: `bont.py --ts 2026-11-11`, `hu_illeszt.py --ts 2026-11-11`, `forras_javit.py` (a fejléc `--ts`-eivel), `bdb_vers_jelentes.py
@@ -92,8 +92,8 @@ szócikk helyett a fő szócikk feje), így az ALVIL H7585 nyelvi háttere megma
 
 ## 7. Nyitott tételek és döntés (helyőrzővel)
 
-`nyitott/uj/epic-spence-e4ece9.md`: N-F202a (a 2.29 nem különíti el a homonimaszám nélküli második szócikket; mért hatás 1 069 sor),
-N-F202b (a C1 maradék 4 sora), N-F202c (a forrás könyvnév-hibája ismétlődő osztály, gépi felismerés nélkül), N-F202d (a
+`nyitott/uj/epic-spence-e4ece9.md`: N166 (a 2.29 nem különíti el a homonimaszám nélküli második szócikket; mért hatás 1 069 sor),
+N167 (a C1 maradék 4 sora), N168 (a forrás könyvnév-hibája ismétlődő osztály, gépi felismerés nélkül), N169 (a
 `teszt_szakasz_bemenet` előzetes hibái), N-F202e (a generátor szótári összefoglalója az első szócikk fejéből). `dontesek/uj/epic-spence-e4ece9.md`:
-DT-F202a (a H5973 2.29-címkéje, 🟡). Lezárva a `NYITOTT_FELADATOK.md`-ben: N100, N101, N102, N120, N121, N141, N147; kiegészítve: N99, N104,
+DT801 (a H5973 2.29-címkéje, 🟡). Lezárva a `NYITOTT_FELADATOK.md`-ben: N100, N101, N102, N120, N121, N141, N147; kiegészítve: N99, N104,
 N113, N122.

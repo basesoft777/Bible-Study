@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: megallt
 ad: a BDB-lánc (2.30 szakasztábla, 2.31 forrásjavítás, 2.32 magyar illesztés, 2.29 szeletelő-hivatkozások) ismétlődő hibái gyökérok-szinten javítva, minden javított osztályra gépi védelem (teszt vagy kapu), mért előtte–utána számokkal; a lexikonlapok nincsenek újragenerálva, a hatás mérve
-kovetkezo: "Te: a draft PR áttekintése; a merge az orkesztrátoré, a HAMART-001 /kiadas után; az ALVIL-001 újragenerálása előtt az N-F202e (generátor); döntés: DT-F202a"
+kovetkezo: "Te: a draft PR áttekintése; a merge az orkesztrátoré, a HAMART-001 /kiadas után; az ALVIL-001 újragenerálása előtt az N-F202e (generátor); döntés: DT801"
 munka: adat
 olvas: [CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/olvaso_szerver/bdb_szelet.py]
 ir: [F202_BDB_LANC_BRIEF.md, eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/bdb_jelolt/teszt_hu_illeszt.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_igehely_javitas.tsv, adat/bdb_vers_jelentes.tsv, adat/SEMA.md, naplok/F202_jelentes.md, NYITOTT_FELADATOK.md, dontesek/uj/epic-spence-e4ece9.md, nyitott/uj/epic-spence-e4ece9.md]
