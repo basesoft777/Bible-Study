@@ -12,6 +12,8 @@ Használat (a repó gyökeréből, az ág commitjai után, push előtt):
     python eszkozok/push_elott.py                      # az alap: a `git merge-base origin/main HEAD`
     python eszkozok/push_elott.py --alap origin/main   # más alap
     python eszkozok/push_elott.py --pr-cim "[ELLENŐRZŐ] ..."   # az E16-hoz (alapból a nyitott PR címe, ha a `gh` látja)
+    python eszkozok/push_elott.py --lepes E18          # csak a nevében a szöveget tartalmazó lépések (javítás utáni gyors újrafutás;
+                                                       # a push előtti kapu a teljes futás)
     python eszkozok/push_elott.py --ci-egyezes         # csak annak ellenőrzése, hogy a lépéslista egyezik a workflow-val
 Kilépési kód: 0 = 0 HIBA (push mehet), 1 = van HIBA, 2 = futási hiba.
 
@@ -134,27 +136,30 @@ def ideiglenes_konyvtar():
 
 
 class Futas:
-    def __init__(self):
+    def __init__(self, szuro=None):
+        self.szuro = szuro
         self.hibas = []   # (lépés, kilépési kód)
         self.hiba_sorok = []
 
     def lepes(self, nev, argv, stdin_szoveg=None, fajlba=None):
         """Egy lépés: stdout+stderr összegyűjtve. Kiírja az állapotot; HIBA esetén a HIBA-sorokat, vagy a kimenet végét."""
+        if self.szuro and self.szuro not in nev:
+            return 0, ''
         env = dict(os.environ, PYTHONIOENCODING='utf-8')
         if TMP_KONYVTAR:
             env.update(TEMP=TMP_KONYVTAR, TMP=TMP_KONYVTAR, TMPDIR=TMP_KONYVTAR)
         t0 = time.time()
         r = subprocess.run(argv, cwd=ROOT, capture_output=True, encoding='utf-8', errors='replace',
                            input=stdin_szoveg, env=env)
-        nev = '%s [%d mp]' % (nev, time.time() - t0)
+        felirat = '%s [%d mp]' % (nev, time.time() - t0)
         kimenet = (r.stdout or '') + (('\n' + r.stderr) if r.stderr else '')
         if fajlba:
             with open(fajlba, 'w', encoding='utf-8') as f:
                 f.write(r.stdout or '')
         if r.returncode == 0:
-            print('RENDBEN  %s' % nev)
+            print('RENDBEN  %s' % felirat)
         else:
-            print('HIBA     %s (kilépési kód: %d)' % (nev, r.returncode))
+            print('HIBA     %s (kilépési kód: %d)' % (felirat, r.returncode))
             self.hibas.append((nev, r.returncode))
             sorok = kimenet.splitlines()
             hiba = [s for s in sorok if 'HIBA' in s or 'SÉRTÉS' in s or 'FAIL' in s or 'Error' in s or 'Traceback' in s]
@@ -171,6 +176,7 @@ def main():
     ap = argparse.ArgumentParser(description='F216: a CI bukó lépései helyben, push előtt.')
     ap.add_argument('--alap', default=None, help='a diff alapja (alap: git merge-base origin/main HEAD)')
     ap.add_argument('--pr-cim', default=None, help='a PR címe (E16); alap: a nyitott PR címe, ha a gh elérhető')
+    ap.add_argument('--lepes', default=None, help='csak a nevében ezt a szöveget tartalmazó lépések futnak (a teljes futás a kapu)')
     ap.add_argument('--ci-egyezes', action='store_true', help='csak a lépéslista és a workflow egyezését ellenőrzi')
     args = ap.parse_args()
 
@@ -211,7 +217,7 @@ def main():
             pass
     print('push_elott: alap %s, fej %s, %d változott fájl, PR-cím: %s' % (alap[:8], fej[:8], len(fajlok), pr_cim or '(nincs)'))
 
-    fut = Futas()
+    fut = Futas(args.lepes)
     global TMP_KONYVTAR
     tmp = TMP_KONYVTAR = ideiglenes_konyvtar()
 
@@ -232,6 +238,8 @@ def main():
             '--commit-uzenet-fajl', uzenet_fajl, '--minta', MINTA])
     else:
         print('RENDBEN  E2-E39 (nincs változott fájl)')
+    if args.lepes:
+        print('FIGYELEM: részleges futás (--lepes %s); a push előtti kapu a teljes futás.' % args.lepes)
 
     # 2. E1
     rc, study = fut.lepes('E1 szűrés (study_fajlok_szurese.py)',
@@ -265,6 +273,9 @@ def main():
         print('HIBA: %d bukott lépés: %s' % (len(fut.hibas), '; '.join(n for n, _ in fut.hibas)))
         print('A push ne menjen, amíg nincs 0 HIBA.')
         return 1
+    if args.lepes:
+        print('0 HIBA a futtatott lépésekben (részleges futás: ez nem a push előtti kapu).')
+        return 0
     print('0 HIBA: a push mehet.')
     return 0
 
