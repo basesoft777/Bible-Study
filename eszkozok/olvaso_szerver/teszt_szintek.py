@@ -190,8 +190,9 @@ class TestSzintekValodiLapokon(unittest.TestCase):
                     for b in HEBER_ZART[:2]:
                         self.assertIn(b, idk_fent, strong)
                     self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], szoveg(fent), strong)
-                    # alapjelentés: lent az angol Strong-glossza, fent a magyar
-                    a = l['alapjelentes']['szoveg'] if l['alapjelentes'] else None
+                    # alapjelentés: lent az angol Strong-glossza, fent a magyar (DT-F213a: a magyar glossza elöl, ennek híján a BDB-fejsor)
+                    g = q.glossza_heber_hu(self.con, strong)
+                    a = g[0] if g else (l['alapjelentes']['szoveg'] if l['alapjelentes'] else None)
                     if a:
                         self.assertNotIn('Alapjelentés %s' % a, szoveg(lent), strong)
                         self.assertIn('Alapjelentés %s' % a, szoveg(fent), strong)
@@ -247,9 +248,11 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         self.assertNotIn('arc, arcok is', t)
         self.assertIn('face', t)
 
-    def test_bdb_szocikk_minden_resze_alapbol_nyitva(self):
-        """A bontott BDB minden lenyitható része (alakok, további szakaszok, jelentésszerkezet) alapállapotban nyitva (a pilot `mindNyit`-ja szerint is)."""
+    def test_bdb_szokartya_jelentesei_alapbol_nyitva(self):
+        """F213 (a jóváhagyott mockup): a szónézetben minden jelentés alapállapotban nyitva; csukva csak a lenyílók (alakok, rokon nyelvek,
+        apparátus, angol eredeti, jelmagyarázat), amelyek a „Minden apparátus nyitva” nézetben nyílnak."""
         n = 0
+        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat')
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
                 if not l['appar']:
@@ -257,15 +260,10 @@ class TestSzintekValodiLapokon(unittest.TestCase):
                 h = self.szo(strong, FELSO)
                 i = h.index('data-blokk="szo.bdb_apparatus"')
                 blokk = h[i:h.index('</section>', i)]
-                zart = re.findall(r'<details(?![^>]*\bopen\b)[^>]*>', blokk)
-                self.assertEqual(zart, [], '%s: lenyitható rész zárva' % strong)
-                n += len(re.findall(r'<details', blokk))
+                zart = re.findall(r'<details class="([^"]*)"(?![^>]*\bopen\b)[^>]*>', blokk)
+                self.assertEqual([z for z in zart if z not in lenyilo], [], '%s: jelentés zárva' % strong)
+                n += len(re.findall(r'<details class="szk-jel-d" open>', blokk))
         self.assertGreater(n, 300)
-        blokk = self.szo('H6440', FELSO)
-        self.assertIn('<h4>Jelentésszerkezet', blokk)
-        j = blokk.index('<h4>Jelentésszerkezet')
-        # az F98.11 óta a részletes lista előtt a vázlat (nav.jel-vazlat) áll: a szakasz első lenyitható része legyen nyitva
-        self.assertTrue(blokk.startswith('<details open>', blokk.index('<details', j)))
 
     # -- F76.36: a szűrés kikerülhetetlen (ellenőri 4. kör) ------------------------------------------------------------------------
     def _gyar(self, blokk_szint):
