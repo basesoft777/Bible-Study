@@ -6,9 +6,27 @@
 
 Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív lelet. A módszer korlátait a `MODSZER.md` 12. pontja sorolja fel.
 
-## 1. Károli-kereszthivatkozások: más vers listájának másolata
+## 1. Károli-kereszthivatkozások: a hibás listák javítása
 
-A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthivatkozásai, KH) egy része nem a saját versének, hanem egy másik versnek a listáját hordozza (például az ApCsel 2:27 sorai azonosak az ApCsel 7:14 soraival; Ézs 34:11 = Ézs 40:11; Zsolt 116:13 = Zsolt 140:4).
+A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthivatkozásai, KH) egy része nem a saját versének, hanem egy másik versnek a listáját hordozta (például az ApCsel 2:27 sorai azonosak voltak az ApCsel 7:14 soraival; Ézs 34:11 = Ézs 40:11; Zsolt 116:13 = Zsolt 140:4).
+
+**A javított tábla.** A hibát egy független második tanúval javítottuk: a táblát a Károli-fordítás Magyar Elektronikus Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A javított táblában minden sor szintet kap:
+
+| Szint | Sor |
+|---|---|
+| megerősített: a két tanú egyezik, vagy a második tanú adja, és semmi nem mond neki ellent | 23 979 |
+| kiesik | 11 040 |
+| jelölt: róla még nincs döntés | 181 |
+
+A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük.
+
+**Használat.** A jelöltkeresés és az olvasó adatbázisa a javított táblának csak a megerősített sorait használja. A lexikonlapok generátora még nem a javított táblán át olvas.
+
+**Nyitva.** A jelölt szintű 181 sorról még nincs döntés; amíg nincs, egyik fogyasztó sem használja őket.
+
+**A csomagban.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve.
+
+**A javítás előtti mérés.** A hibát a javítatlan tábla épségmérése mutatta ki:
 
 | Mérőszám | Érték |
 |---|---|
@@ -18,11 +36,7 @@ A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthiva
 | ebből gyanús (másolt) forrásvers | 5078 |
 | a gyanús listák KH-sorai | 7971 |
 
-**Gyanús** az a forrásvers, amelynek a listája szó szerint megegyezik egy másik forrásversével, a saját listájának egyetlen eleme sem támogatott (sem a TSK ±3 verses környezete, sem a cél visszautalása nem igazolja), a vele azonos listájú vers listája viszont támogatott.
-
-**Kezelés.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve. A határ: a mérés a másolat-típusú hibát fogja meg, az egyedi, nem duplikált hibás listát nem.
-
-**Javítás.** A táblát egy független második tanúval, a Károli-fordítás Magyar Elektronikus Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A javított táblában minden sor szintet kap: 23 979 sor megerősített (a két tanú egyezik, vagy a második tanú adja, és nem mond neki ellent), 11 040 sor kiesik, 181 sorról még nincs döntés. A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük. A jelöltkeresés már a javított táblát használja; a fenti táblázat a javítás előtti, eredeti tábla mérése. **Nyitva maradt:** a döntés nélküli 181 sor, és a lexikonlapok kereszthivatkozás-blokkja, amely a lapok következő generálásakor áll át a javított táblára.
+**Gyanús** az a forrásvers, amelynek a listája szó szerint megegyezik egy másik forrásversével, a saját listájának egyetlen eleme sem támogatott (sem a TSK ±3 verses környezete, sem a cél visszautalása nem igazolja), a vele azonos listájú vers listája viszont támogatott. Ez a mérés a másolat-típusú hibát fogja meg, az egyedi, nem duplikált hibás listát nem; a második tanú ott is jelez, ahol a két kiadás listája eltér.
 
 ## 2. Szemantikai domének: nem teljes lefedés
 

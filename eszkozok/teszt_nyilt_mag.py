@@ -624,6 +624,19 @@ class EgysegesKeszlet(Alap):
         self.assertEqual({'lezárt kiadás', 'korábbi feldolgozás, újraírás alatt'},
                          {d['feldolgozasi_allapot'] for _, d in mot})
 
+    def test_kh_pont_az_adatbol(self):
+        # a gyökérok (2026-11-12): a sablon rögzített mondata („a javítás a projekt nyitott tétele”) a javítás után
+        # is a régi állapotot mondta; az 1. pont a javított táblából és a fogyasztók forráskódjából épül
+        self.assertNotIn('nyitott tétele', self.fajlok['ISMERT_HIBAK.md'])
+        j = E.kh_javitott()
+        self.assertTrue(j.get('megerositett'))
+        self.assertIn(E.SZ.ezres(j['megerositett'], 'hu'), self.fajlok['ISMERT_HIBAK.md'])
+        mind = [(h, e, True) for h, e, _ in E.kh_hasznalat()]
+        szoveg = '\n'.join(E.kh_pont_hu(E.kh_meres(), j, mind))
+        self.assertNotIn('még nem a javított táblán át', szoveg)
+        szoveg = '\n'.join(E.kh_pont_hu(E.kh_meres(), dict(j, jelolt=0), mind))
+        self.assertIn('Nincs döntés nélküli sor.', szoveg)
+
     def test_nevelo_szabaly(self):
         self.assertEqual('az', E.SZ.nevelo('1Móz 9:25'))
         self.assertEqual('a', E.SZ.nevelo('2Kir 1:1'))

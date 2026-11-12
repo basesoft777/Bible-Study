@@ -892,34 +892,127 @@ def kh_javitott():
     return db
 
 
-def kh_javitas_hu(j):
-    if not j:
-        return ('**Javítás.** A javított tábla ebben a kiadásban nem mérhető; a hibás listák javítása nyitott.')
-    return ('**Javítás.** A táblát egy független második tanúval, a Károli-fordítás Magyar Elektronikus '
-            'Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A javított táblában minden '
-            'sor szintet kap: %s sor megerősített (a két tanú egyezik, vagy a második tanú adja, és nem mond neki '
-            'ellent), %s sor kiesik, %s sorról még nincs döntés. A második tanútól átvett sorok maradék hibája a MEK '
-            'saját elírása; ezt szúrópróbával mértük. A jelöltkeresés már a javított táblát használja; a fenti '
-            'táblázat a javítás előtti, eredeti tábla mérése. **Nyitva maradt:** a döntés nélküli %s sor, és a '
-            'lexikonlapok kereszthivatkozás-blokkja, amely a lapok következő generálásakor áll át a javított '
-            'táblára.' % (SZ.ezres(j.get('megerositett', 0), 'hu'), SZ.ezres(j.get('kiesik', 0), 'hu'),
-                          SZ.ezres(j.get('jelolt', 0), 'hu'), SZ.ezres(j.get('jelolt', 0), 'hu')))
+# A javított tábla fogyasztói: bekötött az, amelyik a táblát a `karoli_kh_szuro` modulon át olvassa (az csak a
+# `megerositett` sort engedi át). Az állapot a forráskódból jön, nem rögzített mondatból (a felhasználó, 2026-11-12:
+# az 1. pont a régi állapotot ismételte, mert a sablon mondta ki, hogy a javítás nyitott).
+KH_FOGYASZTOK = [
+    ('eszkozok/lekerdez.py', 'a jelöltkeresés', 'the candidate search'),
+    ('eszkozok/sqlite_epit.py', 'az olvasó adatbázisa', 'the reader database'),
+    ('eszkozok/lexikon_general.py', 'a lexikonlapok generátora', 'the generator of the lexicon pages'),
+]
 
 
-def kh_javitas_en(j):
+def kh_hasznalat():
+    """[(magyar név, angol név, bekötött-e)] a javított KH-tábla fogyasztóira."""
+    ki = []
+    for rel, hu, en in KH_FOGYASZTOK:
+        ut = os.path.join(GYOKER, rel)
+        kod = olvas(rel) if os.path.exists(ut) else ''
+        ki.append((hu, en, 'karoli_kh_szuro' in kod))
+    return ki
+
+
+def _kezdo_nagy(s):
+    return s[:1].upper() + s[1:]
+
+
+def kh_pont_hu(kh, j, hasznalat):
+    szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'nincs mérve'
+    ki = ['## 1. Károli-kereszthivatkozások: a hibás listák javítása', '',
+          'A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthivatkozásai, KH) egy része nem a '
+          'saját versének, hanem egy másik versnek a listáját hordozta (például az ApCsel 2:27 sorai azonosak voltak '
+          'az ApCsel 7:14 soraival; Ézs 34:11 = Ézs 40:11; Zsolt 116:13 = Zsolt 140:4).', '']
     if not j:
-        return ('**Correction.** The corrected table cannot be measured in this release; correcting the faulty '
-                'lists remains open.')
-    return ('**Correction.** We compared the table with an independent second witness, the cross-references of the '
-            'Károli translation in the edition of the Hungarian Electronic Library (MEK 00161). In the corrected '
-            'table every row receives a level: %s rows are confirmed (the two witnesses agree, or the second witness '
-            'gives the row and nothing contradicts it), %s rows drop out, and %s rows are still undecided. The '
-            'remaining error of the rows taken over from the second witness is the MEK\'s own misprints; we measured '
-            'it with a sample check. The candidate search already uses the corrected table; the table above measures '
-            'the original table before the correction. **Still open:** the %s undecided rows, and the cross-reference '
-            'block of the lexicon pages, which switches to the corrected table when the pages are next generated.'
-            % (SZ.ezres(j.get('megerositett', 0), 'en'), SZ.ezres(j.get('kiesik', 0), 'en'),
-               SZ.ezres(j.get('jelolt', 0), 'en'), SZ.ezres(j.get('jelolt', 0), 'en')))
+        ki += ['**A javított tábla** ebben a kiadásban nem mérhető; a hibás listák javítása nyitott.', '']
+    else:
+        ki += ['**A javított tábla.** A hibát egy független második tanúval javítottuk: a táblát a Károli-fordítás '
+               'Magyar Elektronikus Könyvtárbeli kiadásának (MEK 00161) kereszthivatkozásaival vetettük össze. A '
+               'javított táblában minden sor szintet kap:', '',
+               '| Szint | Sor |', '|---|---|',
+               '| megerősített: a két tanú egyezik, vagy a második tanú adja, és semmi nem mond neki ellent | %s |'
+               % SZ.ezres(j.get('megerositett', 0), 'hu'),
+               '| kiesik | %s |' % SZ.ezres(j.get('kiesik', 0), 'hu'),
+               '| jelölt: róla még nincs döntés | %s |' % SZ.ezres(j.get('jelolt', 0), 'hu'), '',
+               'A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük.', '']
+        be = [h for h, _, b_ in hasznalat if b_]
+        nem = [h for h, _, b_ in hasznalat if not b_]
+        mondat = []
+        if be:
+            mondat.append('%s a javított táblának csak a megerősített sorait használja.' % _kezdo_nagy(SZ.felsorol(be, 'hu')))
+        if nem:
+            mondat.append('%s még nem a javított táblán át olvas.' % _kezdo_nagy(SZ.felsorol(nem, 'hu')))
+        ki += ['**Használat.** ' + ' '.join(mondat), '']
+        ki += ['**Nyitva.** ' + ('A jelölt szintű %s sorról még nincs döntés; amíg nincs, egyik fogyasztó sem '
+                                'használja őket.' % SZ.ezres(j['jelolt'], 'hu') if j.get('jelolt')
+                                else 'Nincs döntés nélküli sor.'), '']
+    ki += ['**A csomagban.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a '
+           'kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján '
+           'szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve.', '',
+           '**A javítás előtti mérés.** A hibát a javítatlan tábla épségmérése mutatta ki:', '',
+           '| Mérőszám | Érték |', '|---|---|',
+           '| a KH-táblában forrásvers (van kereszthivatkozás-listája) | %s |' % szam('forrasvers'),
+           '| KH-sor összesen | %s |' % szam('kh_sor'),
+           '| a listája szó szerint megegyezik egy másik forrásversével | %s |' % szam('azonos'),
+           '| ebből gyanús (másolt) forrásvers | %s |' % szam('gyanus'),
+           '| a gyanús listák KH-sorai | %s |' % szam('gyanus_sor'), '',
+           '**Gyanús** az a forrásvers, amelynek a listája szó szerint megegyezik egy másik forrásversével, a '
+           'saját listájának egyetlen eleme sem támogatott (sem a TSK ±3 verses környezete, sem a cél '
+           'visszautalása nem igazolja), a vele azonos listájú vers listája viszont támogatott. Ez a mérés a '
+           'másolat-típusú hibát fogja meg, az egyedi, nem duplikált hibás listát nem; a második tanú ott is '
+           'jelez, ahol a két kiadás listája eltér.', '']
+    return ki
+
+
+def kh_pont_en(kh, j, hasznalat):
+    szam = lambda k: ('%d' % kh[k]) if kh[k] is not None else 'not measured'
+    ki = ['## 1. Károli cross-references: correcting the faulty lists', '',
+          'Part of the cross-reference table of the Károli Bible (the cross-references of the Károli edition, KH) '
+          'carried not the list of its own verse but that of another verse (for example, the rows of Acts 2:27 were '
+          'identical to those of Acts 7:14; Isa 34:11 = Isa 40:11; Ps 116:13 = Ps 140:4).', '']
+    if not j:
+        ki += ['**The corrected table** cannot be measured in this release; correcting the faulty lists remains '
+               'open.', '']
+    else:
+        ki += ['**The corrected table.** We corrected the error with an independent second witness: we compared the '
+               'table with the cross-references of the Károli translation in the edition of the Hungarian Electronic '
+               'Library (MEK 00161). In the corrected table every row receives a level:', '',
+               '| Level | Rows |', '|---|---|',
+               '| confirmed: the two witnesses agree, or the second witness gives the row and nothing contradicts it '
+               '| %s |' % SZ.ezres(j.get('megerositett', 0), 'en'),
+               '| drops out | %s |' % SZ.ezres(j.get('kiesik', 0), 'en'),
+               '| candidate: not yet decided | %s |' % SZ.ezres(j.get('jelolt', 0), 'en'), '',
+               "The remaining error of the rows taken over from the second witness is the MEK's own misprints; we "
+               'measured it with a sample check.', '']
+        be = [e for _, e, b_ in hasznalat if b_]
+        nem = [e for _, e, b_ in hasznalat if not b_]
+        mondat = []
+        if be:
+            mondat.append('%s %s only the confirmed rows of the corrected table.'
+                          % (_kezdo_nagy(SZ.felsorol(be, 'en')), 'uses' if len(be) == 1 else 'use'))
+        if nem:
+            mondat.append('%s %s not yet read through the corrected table.'
+                          % (_kezdo_nagy(SZ.felsorol(nem, 'en')), 'does' if len(nem) == 1 else 'do'))
+        ki += ['**Use.** ' + ' '.join(mondat), '']
+        ki += ['**Open.** ' + ('The %s rows at the candidate level are not yet decided; until they are, no consumer '
+                               'uses them.' % SZ.ezres(j['jelolt'], 'en') if j.get('jelolt')
+                               else 'There is no undecided row.'), '']
+    ki += ['**In the package.** The open core does not contain the KH table data, and none of its rows builds on it: '
+           'candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and '
+           'hand-made assessment, marked with the search mode "Károli cross-reference".', '',
+           '**The measurement before the correction.** The error was revealed by the integrity measurement of the '
+           'uncorrected table:', '',
+           '| Measure | Value |', '|---|---|',
+           '| source verses in the KH table (with a cross-reference list) | %s |' % szam('forrasvers'),
+           '| KH rows in total | %s |' % szam('kh_sor'),
+           '| list identical word for word to that of another source verse | %s |' % szam('azonos'),
+           '| of these, suspect (copied) source verses | %s |' % szam('gyanus'),
+           '| KH rows of the suspect lists | %s |' % szam('gyanus_sor'), '',
+           'A source verse is **suspect** if its list is identical word for word to that of another source verse, '
+           'no element of its own list is supported (neither the TSK context of ±3 verses nor the back-reference of '
+           'the target confirms it), while the list of the verse with the identical list is supported. This '
+           'measurement catches the copy-type error, not an individual faulty list that is not duplicated; the '
+           'second witness also flags places where the lists of the two editions differ.', '']
+    return ki
 
 
 def ismert_hibak(sz, datum):
@@ -930,24 +1023,7 @@ def ismert_hibak(sz, datum):
           'Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli '
           'őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív '
           'lelet. A módszer korlátait a `MODSZER.md` 12. pontja sorolja fel.', '',
-          '## 1. Károli-kereszthivatkozások: más vers listájának másolata', '',
-          'A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthivatkozásai, KH) egy része '
-          'nem a saját versének, hanem egy másik versnek a listáját hordozza (például az ApCsel 2:27 sorai '
-          'azonosak az ApCsel 7:14 soraival; Ézs 34:11 = Ézs 40:11; Zsolt 116:13 = Zsolt 140:4).', '',
-          '| Mérőszám | Érték |', '|---|---|',
-          '| a KH-táblában forrásvers (van kereszthivatkozás-listája) | %s |' % szam('forrasvers'),
-          '| KH-sor összesen | %s |' % szam('kh_sor'),
-          '| a listája szó szerint megegyezik egy másik forrásversével | %s |' % szam('azonos'),
-          '| ebből gyanús (másolt) forrásvers | %s |' % szam('gyanus'),
-          '| a gyanús listák KH-sorai | %s |' % szam('gyanus_sor'), '',
-          '**Gyanús** az a forrásvers, amelynek a listája szó szerint megegyezik egy másik forrásversével, a '
-          'saját listájának egyetlen eleme sem támogatott (sem a TSK ±3 verses környezete, sem a cél '
-          'visszautalása nem igazolja), a vele azonos listájú vers listája viszont támogatott.', '',
-          '**Kezelés.** A nyílt mag a KH-tábla adatát nem tartalmazza, és egyetlen sora sem épít rá: a '
-          'kereszthivatkozás-alapú jelöltek az itteni `kizarasok.tsv`-ben a TSK és a kézi minősítés alapján '
-          'szerepelnek, a „Károli-kereszthivatkozás” keresési móddal jelölve. A határ: a mérés a másolat-típusú '
-          'hibát fogja meg, az egyedi, nem duplikált hibás listát nem.', '',
-          kh_javitas_hu(kh_javitott()), '',
+          ] + kh_pont_hu(kh, kh_javitott(), kh_hasznalat()) + [
           '## 2. Szemantikai domének: nem teljes lefedés', '',
           'A külön réteg (`cc_by_sa_reteg/`) az UBS SDBH/SDGNT szemantikai doménjeit tartalmazza a csomag '
           'szóbázisaira. A domén-adat az ószövetségi szókincs kb. 90%-át fedi: a hiányzó bejegyzés **nem '
@@ -970,24 +1046,7 @@ def known_issues_en(sz, datum):
           'We state here the source errors that our own measurements revealed, and how the package handles them. A '
           'gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding. The '
           'limitations of the method are listed in section 12 of `METHODS.md`.', '',
-          "## 1. Károli cross-references: a copy of another verse's list", '',
-          'Part of the cross-reference table of the Károli Bible (the cross-references of the Károli edition, KH) '
-          'carries not the list of its own verse but that of another verse (for example, the rows of Acts 2:27 are '
-          'identical to those of Acts 7:14; Isa 34:11 = Isa 40:11; Ps 116:13 = Ps 140:4).', '',
-          '| Measure | Value |', '|---|---|',
-          '| source verses in the KH table (with a cross-reference list) | %s |' % szam('forrasvers'),
-          '| KH rows in total | %s |' % szam('kh_sor'),
-          '| list identical word for word to that of another source verse | %s |' % szam('azonos'),
-          '| of these, suspect (copied) source verses | %s |' % szam('gyanus'),
-          '| KH rows of the suspect lists | %s |' % szam('gyanus_sor'), '',
-          'A source verse is **suspect** if its list is identical word for word to that of another source verse, '
-          'no element of its own list is supported (neither the TSK context of ±3 verses nor the back-reference of '
-          'the target confirms it), while the list of the verse with the identical list is supported.', '',
-          '**Handling.** The open core does not contain the KH table data, and none of its rows builds on it: '
-          'candidates based on cross-references appear in the `kizarasok.tsv` here on the basis of the TSK and hand-made '
-          'assessment, marked with the search mode "Károli cross-reference". The limit: the measurement '
-          'catches the copy-type error, not an individual faulty list that is not duplicated.', '',
-          kh_javitas_en(kh_javitott()), '',
+          ] + kh_pont_en(kh, kh_javitott(), kh_hasznalat()) + [
           '## 2. Semantic domains: incomplete coverage', '',
           "The separate layer (`cc_by_sa_reteg/`) contains the UBS SDBH/SDGNT semantic domains for the lexical "
           "bases (Strong's numbers) of the package. The domain data cover about 90% of the Old Testament "
