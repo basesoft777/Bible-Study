@@ -1206,7 +1206,7 @@ def bemenet_hash():
 def kiir(vers_ki, gy, alakok, fd, a):
     ki_dir = a.kimenet or os.path.join(ROOT, KI_DIR)
     os.makedirs(ki_dir, exist_ok=True)
-    hk = bemenet_hash()
+    hk = bemenet_hash().replace(os.sep, '/')  # F174.9: platformfüggetlen fejléc (posix útvonal)
     fejlec = ('# GENERÁLT: %s (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában '
               '(KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, '
               'E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | '
