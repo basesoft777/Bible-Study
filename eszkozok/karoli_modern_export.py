@@ -856,7 +856,9 @@ references:
     doi: "{doi_mag}"
 """
 
-GITATTRIBUTES = """# A közlemény-tervezet a megjelenésig nem része a kiadásnak.
+GITATTRIBUTES = """# Sorvég: minden fájl LF-fel, minden checkouton (az ellenőrző összeg az LF-es bájtokra szól).
+* text eol=lf
+# A közlemény-tervezet a megjelenésig nem része a kiadásnak.
 kozlemeny/ export-ignore
 """
 

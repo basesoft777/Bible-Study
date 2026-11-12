@@ -239,6 +239,8 @@ def kozlemeny(fajlok):
             ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s%s' % (E.KOZLEMENY_DIR, n)))
     if 'kozlemeny/ export-ignore' not in fajlok.get('.gitattributes', ''):
         ki.append(Talalat('KOZLEMENY', BUKAS, 'a .gitattributes nem hagyja ki a kozlemeny/ mappát'))
+    if '* text eol=lf' not in fajlok.get('.gitattributes', ''):
+        ki.append(Talalat('OSSZEG', BUKAS, 'a .gitattributes nem rögzíti az LF sorvéget (CRLF-checkouton az összeg elromlik)'))
     if E.KOZLEMENY_DIR in fajlok.get('ELLENORZO_OSSZEG.sha256', ''):
         ki.append(Talalat('KOZLEMENY', BUKAS, 'a kozlemeny/ az ellenőrző összegben áll'))
     return ki or [Talalat('KOZLEMENY', OK, 'a tervezet megvan, a kiadásból kihagyva')]
