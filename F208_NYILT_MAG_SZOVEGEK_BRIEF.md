@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: megallt
+pr: 710
 munka: folyamat
 ad: a `nyilt_mag/` ugyanazt a fájlkészletet adja, mint a modernizált Károli – Strong csomag (MODSZER/METHODS, LICENSE, ATTRIBUCIO, CITATION.cff, kozlemeny/ hu/en, .gitattributes), generált számokkal, a kapu nyilvános szöveg-szabályaival
 kovetkezo: "Te (⛔): a nyilt_mag/ szövegeinek átnézése a draft PR-ban (MODSZER/METHODS, OLVASSEL/README, ATTRIBUCIO, LICENSE, CITATION.cff, kozlemeny/); utána merge, majd a Zenodo-feltöltés a te lépésed"
