@@ -1,0 +1,3 @@
+- **N-F210a** A BSB forrásfájljából (`konkordancia/BSB_Strongs.tsv`) hiányzik a 2Sám, az Ezsd és a Dán (a BSB a választóban 36 ószövetségi könyvvel áll). Forráspótlás: a BSB teljes Strong-táblájának újraletöltése (#16 BSB_IMPORT nyomán).
+- **N-F210b** A #137 (modern Károli a keresőben) a F210 `szoveg_modern`/`token_modern` tábláját használhatja (a `token_modern.sorszam` a `token_karoli` sorszáma); a 1908/modern vers-lap kapcsoló is oda tartozik.
+- **N-F210c** A kereső javaslata és az ugrás (`/ugras`) a Károli-címre visz, a választott Bibliát nem viszi tovább; a részletek lapja (szó, vers) a Károli-vers adataival nyílik. A Septuaginta Károli-vers nélküli szakaszai (pl. a görög Eszter-kiegészítések) a választóban nem olvashatók.
