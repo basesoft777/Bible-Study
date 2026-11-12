@@ -17,6 +17,8 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
 7. Szám: a lap egészére szóló szám az adattal; részhalmazra szóló szám kézi.
 8. Kizárólagos állítás igehely nélkül: kézi ⚑.
 9. A lektori lista pontossági tételei (1. vagy 4. kérdés).
+10. F206: kapcsolat-állítás a kapcsolat-sor mellett (nincs sor / csak közepes: ⚑; magas: nincs jelzés; a motívumon
+    kívüli hely és a kapcsolat-adat nélküli motívum nem jelez); hatókör: a helycsoport tematikus helye.
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
 """
@@ -173,6 +175,80 @@ class GepiProbak(unittest.TestCase):
     def test_erec_jelzes(self):
         sorok = futtat('Az özönvíz előtt a föld romlott meg (1Móz 6:11).')
         self.assertTrue(any(s.jelzes and 'H0776' in s.bizonyitek for s in sorok))
+
+
+KAPCS_KOZEPES = [{'forras_igehely': '1Móz 6:11', 'cel_igehely': 'Ez 8:17', 'id': 'X-001', 'tipus': 'Párhuzam',
+                  'bizonyossag': 'közepes'}]
+KAPCS_MAGAS = [dict(KAPCS_KOZEPES[0], bizonyossag='magas')]
+KAPCS_MASIK = [dict(KAPCS_KOZEPES[0], forras_igehely='1Móz 4:14', cel_igehely='1Móz 6:11')]
+
+
+def futtat_k(mondat, kapcsolatok, forras='adat:kapcsolodas', alap_ref='Ez 8:17', elof=None):
+    k = kornyezet()
+    ell = P.Ellenor('X-001', k['adat'], k['szk'], elof or ELOF, k['igeh'], kapcsolatok)
+    ell.egyseg(P.Egyseg(forras, 'teszt:1', mondat, alap_ref=alap_ref))
+    return ell.sorok
+
+
+def kapcs_jelzes(sorok):
+    return [s for s in sorok if 'kapcsolat-állítás' in s.bizonyitek]
+
+
+class F206(unittest.TestCase):
+    """F206: a HAMART-001 lektori körének két ismétlődő hibaosztálya (lektor 10., 14., 26., 40.)."""
+    MONDAT = 'A föld megtelt erőszakkal, és a szópár maga utal vissza a láncra.'
+
+    def test_kapcsolat_sor_nelkul(self):
+        self.assertTrue(kapcs_jelzes(futtat_k(self.MONDAT, KAPCS_MASIK)))
+
+    def test_kapcsolat_kozepes(self):
+        sorok = kapcs_jelzes(futtat_k(self.MONDAT, KAPCS_KOZEPES))
+        self.assertTrue(sorok and 'közepes' in sorok[0].bizonyitek)
+
+    def test_kapcsolat_magas_nem_jelez(self):
+        self.assertFalse(kapcs_jelzes(futtat_k(self.MONDAT, KAPCS_MAGAS)))
+
+    def test_kapcsolat_adat_nelkuli_motivum(self):
+        """Kapcsolat-adat nélküli motívumon (pl. ALVIL-001) a próba nem fut: adathiány, nem a mondat hibája."""
+        self.assertFalse(kapcs_jelzes(futtat_k(self.MONDAT, [])))
+
+    def test_visszateres_fonev_nem_jelez(self):
+        """A „visszatérés” főnév tartalmi szó lehet („nincs visszatérés”), nem kapcsolat-állítás."""
+        self.assertFalse(kapcs_jelzes(futtat_k('Ebből a mélységből nincs visszatérés a földre.', KAPCS_MASIK)))
+
+    def test_ige_nelkul_nem_jelez(self):
+        self.assertFalse(kapcs_jelzes(futtat_k('A föld megtelt erőszakkal a próféta idejében.', KAPCS_MASIK)))
+
+    def test_res_ige_masik_tagmondatban(self):
+        """A rés mondatában a kapcsolat-ige a saját záradékra szól: a másik tagmondat helye nem kap jelzést."""
+        sorok = futtat_k('Az átok szava visszatér (1Móz 6:11); a próféta a földről is beszél (Ez 8:17).', KAPCS_MASIK,
+                         forras='rés:ertelmezes', alap_ref=None)
+        self.assertFalse([s for s in kapcs_jelzes(sorok) if 'Ez 8:17' in s.bizonyitek])
+
+    def test_hatokor_mas_nelkul_nem_nemit(self):
+        """A „nélkül” csak a lánc szavával együtt mondja ki a kivételt (ELLENOR_F206)."""
+        elof = ELOF + [{'id': 'X-001', 'igehely': 'Jel 22:3', 'gerinc_elem': 'tematikus:1Móz 3:17', 'strong': ''}]
+        mondat = 'A motívum újszövetségi helyén a motívum szava kétség nélkül ugyanott áll.'
+        sorok = futtat_k(mondat, [], forras='rés:modszertan', alap_ref=None, elof=elof)
+        self.assertTrue([s for s in sorok if s.tipus == 'hatókör'])
+
+    def test_res_motivumon_kivuli_hely(self):
+        sorok = futtat_k('A formula Ezékielnél is visszatér (Ez 7:23).', KAPCS_MASIK, forras='rés:modszertan', alap_ref=None)
+        self.assertFalse(kapcs_jelzes(sorok))
+
+    def test_res_motivum_helye_sor_nelkul(self):
+        sorok = futtat_k('A lánc szava Ezékielnél is visszatér (Ez 8:17).', KAPCS_MASIK, forras='rés:ertelmezes', alap_ref=None)
+        self.assertTrue(kapcs_jelzes(sorok))
+
+    def test_hatokor_tematikus(self):
+        elof = ELOF + [{'id': 'X-001', 'igehely': 'Róm 8:21', 'gerinc_elem': 'G5356', 'strong': 'G5356'},
+                       {'id': 'X-001', 'igehely': 'Jel 22:3', 'gerinc_elem': 'tematikus:1Móz 3:17', 'strong': ''}]
+        mondat = 'A motívum két újszövetségi helyén a motívum szava a kritikai kiadásokban ugyanott áll.'
+        sorok = futtat_k(mondat, [], forras='rés:modszertan', alap_ref=None, elof=elof)
+        self.assertTrue([s for s in sorok if s.tipus == 'hatókör' and 'Jel 22:3' in s.bizonyitek])
+        kimondva = mondat.replace('áll.', 'áll; a Jel 22:3 tematikus.')
+        sorok = futtat_k(kimondva, [], forras='rés:modszertan', alap_ref=None, elof=elof)
+        self.assertFalse([s for s in sorok if s.tipus == 'hatókör'])
 
 
 class Lektor(unittest.TestCase):
